@@ -1,0 +1,35 @@
+# https://taskfile.dev
+
+version: "3"
+
+interval: 200ms
+
+tasks:
+  tools:
+    cmds:
+      - go install github.com/valyala/quicktemplate/qtc@latest
+    sources:
+      - echo `which qtc`
+
+  qt:
+    deps:
+      - tools
+    sources:
+      - "**/*.qtpl"
+    generates:
+      - "**/*.qtpl.go"
+    cmds:
+      - qtc
+
+  gen:
+    deps:
+      - qt
+    sources:
+      - "**/*.go"
+    cmds:
+      - go run cmd/gen/*.go
+
+  default:
+    deps:
+      - gen
+    silent: true

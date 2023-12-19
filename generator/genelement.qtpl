@@ -1,0 +1,286 @@
+
+{%
+import (
+    "github.com/delaneyj/toolbelt"
+    "strings"
+) %}
+
+
+{%- func GenerateElement(packageName string, e *Element) -%}
+{% code
+
+
+tagPascal := toolbelt.Pascal(e.Tag)
+elementName := tagPascal+"Element"
+// attributesName := tagPascal + "Attributes"
+// eventHandlersName := tagPascal + "EventHandlers"
+%}
+/* cSpell:disable */
+
+package  {%s packageName %}
+
+type {%s elementName %} struct {
+    *Element
+}
+
+func {%s toolbelt.Upper(tagPascal) %}() *{%s elementName %} {
+    return &{%s elementName %}{
+        Element: &Element{
+            Tag: "{%s e.Tag %}",
+            IsSelfClosing: {%v len(e.ChildElementsOrCategories) == 0 %},
+        },
+    }
+}
+
+func (e *{%s elementName %}) AddChildren(children ...*Element) *{%s elementName %} {
+    e.Children = append(e.Children, children...)
+	return e
+}
+{% for _, a := range e.Attributes %}
+{%- code
+attrPascal := toolbelt.Pascal(a.Name)
+isBool := len(a.ValidValueTypes)==1 && a.ValidValueTypes[0] == "boolean_attribute"
+-%}
+
+// {%s attrPascal %} is the "{%s a.Name %}" attribute.
+// {%s strings.ReplaceAll(a.Description,"\n","  ") %}
+// Valid values are constrained to the following:
+{%- for _, v := range a.ValidValueTypes -%}
+//   * {%s v %}
+{%- endfor -%}
+{%- if isBool -%}
+func (e *{%s elementName %}) {%s attrPascal %}() *{%s elementName %} {
+    e.BoolAttributes["{%s a.Name %}"] = struct{}{}
+    return e
+}
+
+func (e *{%s elementName %}) {%s attrPascal %}Remove() *{%s elementName %} {
+    delete(e.BoolAttributes,"{%s a.Name %}")
+    return e
+}
+
+func (e *{%s elementName %}) {%s attrPascal %}Set(v bool) *{%s elementName %} {
+    if v {
+        e.{%s attrPascal %}()
+    } else {
+        e.{%s attrPascal %}Remove()
+    }
+    return e
+}
+{%- elseif a.IsKV -%}
+func (e *{%s elementName %}) {%s attrPascal %}(k,v string) *{%s elementName %} {
+    htmlStringer,ok := e.DelimitedKVAttributes["{%s a.Name %}"]
+    if !ok {
+        htmlStringer = NewEqualSemicolonDelimitedKVString()
+        e.DelimitedKVAttributes["{%s a.Name %}"] = htmlStringer
+    }
+    htmlStringer.Add(k,v)
+    return e
+}
+
+func (e *{%s elementName %}) {%s attrPascal %}Remove(k string) *{%s elementName %} {
+    htmlStringer,ok := e.DelimitedKVAttributes["{%s a.Name %}"]
+    if ok {
+        htmlStringer.Remove(k)
+    }
+    return e
+}
+{%- else -%}
+func (e *{%s elementName %}) {%s attrPascal %}(v string) *{%s elementName %} {
+    htmlStringer := NewSpaceDelimitedString()
+    e.DelimitedStringAttributes["{%s a.Name %}"] = htmlStringer
+    htmlStringer.Add(v)
+    return e
+}
+
+func (e *{%s elementName %}) {%s attrPascal %}Add(v string) *{%s elementName %} {
+    htmlStringer,ok := e.DelimitedStringAttributes["{%s a.Name %}"]
+    if !ok {
+        htmlStringer = NewSpaceDelimitedString()
+        e.DelimitedStringAttributes["{%s a.Name %}"] = htmlStringer
+    }
+    htmlStringer.Add(v)
+    return e
+}
+
+func (e *{%s elementName %}) {%s attrPascal %}Remove(v string) *{%s elementName %} {
+    htmlStringer,ok := e.DelimitedStringAttributes["{%s a.Name %}"]
+    if ok {
+        htmlStringer.Remove(v)
+    }
+    return e
+}
+{%- endif -%}
+{%- endfor -%}
+
+
+{% for _, eh := range e.EventHandlers %}
+{%- code
+    evt := "On" + toolbelt.Pascal(eh.Name[2:])
+-%}
+
+func (e *{%s elementName %}) {%s evt %}(evt string) (*{%s elementName %}) {
+    htmlStringer,ok := e.DelimitedStringAttributes["{%s eh.Name %}"]
+    if !ok {
+        htmlStringer = NewSpaceDelimitedString()
+        e.DelimitedStringAttributes["{%s eh.Name %}"] = htmlStringer
+    }
+    htmlStringer.Add(evt)
+    return e
+}
+
+func (e *{%s elementName %}) {%s evt %}Remove(evt string) (*{%s elementName %}) {
+    htmlStringer,ok := e.DelimitedStringAttributes["{%s eh.Name %}"]
+    if ok {
+        htmlStringer.Remove(evt)
+    }
+    return e
+}
+
+{%- endfor -%}
+
+{%- endfunc -%}
+
+{%- func BaseFile(packageName string) -%}
+package {%s packageName %}
+
+import (
+	"slices"
+	"strings"
+
+	"github.com/samber/lo"
+)
+
+type Element struct {
+	Tag                       string
+	IsSelfClosing             bool
+	BoolAttributes            map[string]struct{}
+	DelimitedStringAttributes map[string]*DelimitedString
+	DelimitedKVAttributes     map[string]*DelimitedKVString
+	Children                  []*Element
+}
+
+func (e *Element) String() string {
+	sb := &strings.Builder{}
+
+	sb.WriteRune('<')
+	sb.WriteString(e.Tag)
+
+	values := lo.Entries(e.DelimitedStringAttributes)
+	slices.SortFunc(values, func(a, b lo.Entry[string, *DelimitedString]) int {
+		return strings.Compare(a.Key, b.Key)
+	})
+	for _, entry := range values {
+		sb.WriteRune(' ')
+		sb.WriteString(entry.Key)
+		sb.WriteRune('=')
+		sb.WriteRune('"')
+		sb.WriteString(entry.Value.String())
+		sb.WriteRune('"')
+	}
+
+	kvValues := lo.Entries(e.DelimitedKVAttributes)
+	slices.SortFunc(kvValues, func(a, b lo.Entry[string, *DelimitedKVString]) int {
+		return strings.Compare(a.Key, b.Key)
+	})
+	for _, entry := range kvValues {
+		sb.WriteRune(' ')
+		sb.WriteString(entry.Key)
+		sb.WriteRune('=')
+		sb.WriteRune('"')
+		sb.WriteString(entry.Value.String())
+		sb.WriteRune('"')
+	}
+
+	boolStrings := lo.Keys(e.BoolAttributes)
+	slices.Sort(boolStrings)
+	for _, name := range boolStrings {
+		sb.WriteRune(' ')
+		sb.WriteString(name)
+	}
+
+	if e.IsSelfClosing {
+		sb.WriteString(" />")
+		return sb.String()
+	}
+
+	sb.WriteRune('>')
+	for _, child := range e.Children {
+		sb.WriteString(child.String())
+	}
+	sb.WriteString("</")
+	sb.WriteString(e.Tag)
+	sb.WriteRune('>')
+
+	return sb.String()
+}
+
+type DelimitedString struct {
+	delimiter string
+	values    map[string]struct{}
+}
+
+func (ds *DelimitedString) Add(values ...string) {
+	for _, value := range values {
+		ds.values[value] = struct{}{}
+	}
+}
+
+func (ds *DelimitedString) Remove(values ...string) {
+	for _, value := range values {
+		delete(ds.values, value)
+	}
+}
+
+func (ds *DelimitedString) String() string {
+	values := lo.Keys(ds.values)
+	slices.Sort(values)
+	return strings.Join(values, ds.delimiter)
+}
+
+func NewDelimitedString(delimiter string) *DelimitedString {
+	return &DelimitedString{
+		delimiter: delimiter,
+		values:    make(map[string]struct{}),
+	}
+}
+
+func NewSpaceDelimitedString() *DelimitedString {
+	return NewDelimitedString(" ")
+}
+
+type DelimitedKVString struct {
+	associationDelimiter string
+	delimiter            string
+	values               map[string]string
+}
+
+func (ds *DelimitedKVString) Add(key, value string) {
+	ds.values[key] = value
+}
+
+func (ds *DelimitedKVString) Remove(key string) {
+	delete(ds.values, key)
+}
+
+func (ds *DelimitedKVString) String() string {
+	values := make([]string, 0, len(ds.values))
+	for k, v := range ds.values {
+		values = append(values, k+ds.associationDelimiter+v)
+	}
+	slices.Sort(values)
+	return strings.Join(values, ds.delimiter)
+}
+
+func NewDelimitedKVString(associationDelimiter, delimiter string) *DelimitedKVString {
+	return &DelimitedKVString{
+		delimiter:            delimiter,
+		associationDelimiter: associationDelimiter,
+		values:               make(map[string]string),
+	}
+}
+
+func NewEqualSemicolonDelimitedKVString() *DelimitedKVString {
+	return NewDelimitedKVString("=", ";")
+}
+{%- endfunc -%}
