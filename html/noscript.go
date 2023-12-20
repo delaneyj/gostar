@@ -12,7 +12,7 @@ func NOSCRIPT(children ...fmt.Stringer) *NoscriptHTMLElement {
     return &NoscriptHTMLElement{
         Element: &Element{
             Tag: "noscript",
-            IsSelfClosing: true,
+            IsSelfClosing: false,
             Descendants: children,
         },
     }

@@ -12,7 +12,7 @@ func COLGROUP(children ...fmt.Stringer) *ColgroupHTMLElement {
     return &ColgroupHTMLElement{
         Element: &Element{
             Tag: "colgroup",
-            IsSelfClosing: true,
+            IsSelfClosing: false,
             Descendants: children,
         },
     }

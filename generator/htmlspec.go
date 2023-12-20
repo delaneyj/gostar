@@ -71,6 +71,7 @@ type Element struct {
 	ChildElementsOrCategories []string
 	Attributes                []*Attribute
 	EventHandlers             []*EventHandler
+	IsVoidElement             bool
 }
 
 type CustomAttribute struct {
@@ -228,7 +229,7 @@ func GenerateAllElements(ctx context.Context, args *GenerateElementArgs) (err er
 				ElementName:   fmt.Sprintf("%sHTMLElement", elName.Pascal),
 				NewElement:    elName.Upper,
 				Tag:           element.Tag,
-				IsSelfClosing: len(element.ChildElementsOrCategories) == 0,
+				IsSelfClosing: element.IsVoidElement,
 			}
 
 			for _, attribute := range element.Attributes {
@@ -335,6 +336,12 @@ func scrapeHTMLSpec(ctx context.Context, args *GenerateElementArgs) (elements []
 }
 
 func readElements(htmlSpecDoc *goquery.Document) (map[string]*Element, error) {
+	log.Printf("reading void elements")
+	voidElements := []string{}
+	htmlSpecDoc.Find("#void-elements").First().Parent().Parent().Find("dd").First().Find("a").Each(func(i int, veLink *goquery.Selection) {
+		voidElements = append(voidElements, veLink.Text())
+	})
+
 	expectedColumns := 7
 	elements := map[string]*Element{}
 	var err error
@@ -382,6 +389,7 @@ func readElements(htmlSpecDoc *goquery.Document) (map[string]*Element, error) {
 				Interface:                 interfaceName,
 				Categories:                categories,
 				ChildElementsOrCategories: childElementsOrCategories,
+				IsVoidElement:             lo.Contains(voidElements, tag),
 			}
 			elements[tag] = el
 		}

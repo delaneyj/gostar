@@ -12,7 +12,7 @@ func HTML(children ...fmt.Stringer) *HtmlHTMLElement {
     return &HtmlHTMLElement{
         Element: &Element{
             Tag: "html",
-            IsSelfClosing: true,
+            IsSelfClosing: false,
             Descendants: children,
         },
     }

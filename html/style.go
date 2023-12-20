@@ -12,7 +12,7 @@ func STYLE(children ...fmt.Stringer) *StyleHTMLElement {
     return &StyleHTMLElement{
         Element: &Element{
             Tag: "style",
-            IsSelfClosing: true,
+            IsSelfClosing: false,
             Descendants: children,
         },
     }

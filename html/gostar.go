@@ -198,11 +198,11 @@ func RAW(raw string) *RawContent {
 	}
 }
 
-type Group struct {
+type Grouper struct {
 	Children []fmt.Stringer
 }
 
-func (g *Group) String() string {
+func (g *Grouper) String() string {
 	sb := &strings.Builder{}
 	for _, child := range g.Children {
 		sb.WriteString(child.String())
@@ -210,33 +210,33 @@ func (g *Group) String() string {
 	return sb.String()
 }
 
-func GROUP(children ...fmt.Stringer) *Group {
-	return &Group{
+func Group(children ...fmt.Stringer) *Grouper {
+	return &Grouper{
 		Children: children,
 	}
 }
 
 
-func IF(condition bool, children ...fmt.Stringer) fmt.Stringer {
+func If(condition bool, children ...fmt.Stringer) fmt.Stringer {
 	if condition {
-		return GROUP(children...)
+		return Group(children...)
 	}
 	return nil
 }
 
-func TERN(condition bool, trueChildren, falseChildren fmt.Stringer) fmt.Stringer {
+func Tern(condition bool, trueChildren, falseChildren fmt.Stringer) fmt.Stringer {
 	if condition {
 		return trueChildren
 	}
 	return falseChildren
 }
 
-func RANGE[T any](values []T, cb func(T) fmt.Stringer) fmt.Stringer {
+func Range[T any](values []T, cb func(T) fmt.Stringer) fmt.Stringer {
 	children := make([]fmt.Stringer, 0, len(values))
 	for _, value := range values {
 		children = append(children, cb(value))
 	}
-	return GROUP(children...)
+	return Group(children...)
 }
 
 func NewElement(tag string, children ...fmt.Stringer) *Element {

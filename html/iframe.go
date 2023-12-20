@@ -12,7 +12,7 @@ func IFRAME(children ...fmt.Stringer) *IframeHTMLElement {
     return &IframeHTMLElement{
         Element: &Element{
             Tag: "iframe",
-            IsSelfClosing: true,
+            IsSelfClosing: false,
             Descendants: children,
         },
     }

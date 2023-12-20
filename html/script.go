@@ -12,7 +12,7 @@ func SCRIPT(children ...fmt.Stringer) *ScriptHTMLElement {
     return &ScriptHTMLElement{
         Element: &Element{
             Tag: "script",
-            IsSelfClosing: true,
+            IsSelfClosing: false,
             Descendants: children,
         },
     }

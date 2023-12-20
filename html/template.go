@@ -12,7 +12,7 @@ func TEMPLATE(children ...fmt.Stringer) *TemplateHTMLElement {
     return &TemplateHTMLElement{
         Element: &Element{
             Tag: "template",
-            IsSelfClosing: true,
+            IsSelfClosing: false,
             Descendants: children,
         },
     }
