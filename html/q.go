@@ -40,23 +40,21 @@ func(e *QHTMLElement) TernChildren(condition bool, trueChildren, falseChildren E
 }
 
 func (e *QHTMLElement) Text(text string) *QHTMLElement {
-    e.Descendants = append(e.Descendants, TEXT(text))
+    e.Descendants = append(e.Descendants, Text(text))
     return e
 }
 
 func (e *QHTMLElement) TextF(format string, args ...any) *QHTMLElement {
-    TEXT(fmt.Sprintf(format, args...))
-    return e
+    return e.Text(fmt.Sprintf(format, args...))
 }
 
 func (e *QHTMLElement) Raw(text string) *QHTMLElement {
-    e.Descendants = append(e.Descendants, RAW(text))
+    e.Descendants = append(e.Descendants, Raw(text))
     return e
 }
 
 func (e *QHTMLElement) RawF(format string, args ...any) *QHTMLElement {
-    RAW(fmt.Sprintf(format, args...))
-    return e
+    return e.Raw(fmt.Sprintf(format, args...))
 }
 
 func (e *QHTMLElement) CustomData(key, value string) *QHTMLElement {

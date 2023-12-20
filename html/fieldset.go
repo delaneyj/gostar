@@ -40,23 +40,21 @@ func(e *FieldsetHTMLElement) TernChildren(condition bool, trueChildren, falseChi
 }
 
 func (e *FieldsetHTMLElement) Text(text string) *FieldsetHTMLElement {
-    e.Descendants = append(e.Descendants, TEXT(text))
+    e.Descendants = append(e.Descendants, Text(text))
     return e
 }
 
 func (e *FieldsetHTMLElement) TextF(format string, args ...any) *FieldsetHTMLElement {
-    TEXT(fmt.Sprintf(format, args...))
-    return e
+    return e.Text(fmt.Sprintf(format, args...))
 }
 
 func (e *FieldsetHTMLElement) Raw(text string) *FieldsetHTMLElement {
-    e.Descendants = append(e.Descendants, RAW(text))
+    e.Descendants = append(e.Descendants, Raw(text))
     return e
 }
 
 func (e *FieldsetHTMLElement) RawF(format string, args ...any) *FieldsetHTMLElement {
-    RAW(fmt.Sprintf(format, args...))
-    return e
+    return e.Raw(fmt.Sprintf(format, args...))
 }
 
 func (e *FieldsetHTMLElement) CustomData(key, value string) *FieldsetHTMLElement {

@@ -40,23 +40,21 @@ func(e *LegendHTMLElement) TernChildren(condition bool, trueChildren, falseChild
 }
 
 func (e *LegendHTMLElement) Text(text string) *LegendHTMLElement {
-    e.Descendants = append(e.Descendants, TEXT(text))
+    e.Descendants = append(e.Descendants, Text(text))
     return e
 }
 
 func (e *LegendHTMLElement) TextF(format string, args ...any) *LegendHTMLElement {
-    TEXT(fmt.Sprintf(format, args...))
-    return e
+    return e.Text(fmt.Sprintf(format, args...))
 }
 
 func (e *LegendHTMLElement) Raw(text string) *LegendHTMLElement {
-    e.Descendants = append(e.Descendants, RAW(text))
+    e.Descendants = append(e.Descendants, Raw(text))
     return e
 }
 
 func (e *LegendHTMLElement) RawF(format string, args ...any) *LegendHTMLElement {
-    RAW(fmt.Sprintf(format, args...))
-    return e
+    return e.Raw(fmt.Sprintf(format, args...))
 }
 
 func (e *LegendHTMLElement) CustomData(key, value string) *LegendHTMLElement {

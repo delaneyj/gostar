@@ -40,23 +40,21 @@ func(e *MetaHTMLElement) TernChildren(condition bool, trueChildren, falseChildre
 }
 
 func (e *MetaHTMLElement) Text(text string) *MetaHTMLElement {
-    e.Descendants = append(e.Descendants, TEXT(text))
+    e.Descendants = append(e.Descendants, Text(text))
     return e
 }
 
 func (e *MetaHTMLElement) TextF(format string, args ...any) *MetaHTMLElement {
-    TEXT(fmt.Sprintf(format, args...))
-    return e
+    return e.Text(fmt.Sprintf(format, args...))
 }
 
 func (e *MetaHTMLElement) Raw(text string) *MetaHTMLElement {
-    e.Descendants = append(e.Descendants, RAW(text))
+    e.Descendants = append(e.Descendants, Raw(text))
     return e
 }
 
 func (e *MetaHTMLElement) RawF(format string, args ...any) *MetaHTMLElement {
-    RAW(fmt.Sprintf(format, args...))
-    return e
+    return e.Raw(fmt.Sprintf(format, args...))
 }
 
 func (e *MetaHTMLElement) CustomData(key, value string) *MetaHTMLElement {

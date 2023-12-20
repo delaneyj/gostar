@@ -40,23 +40,21 @@ func(e *AudioHTMLElement) TernChildren(condition bool, trueChildren, falseChildr
 }
 
 func (e *AudioHTMLElement) Text(text string) *AudioHTMLElement {
-    e.Descendants = append(e.Descendants, TEXT(text))
+    e.Descendants = append(e.Descendants, Text(text))
     return e
 }
 
 func (e *AudioHTMLElement) TextF(format string, args ...any) *AudioHTMLElement {
-    TEXT(fmt.Sprintf(format, args...))
-    return e
+    return e.Text(fmt.Sprintf(format, args...))
 }
 
 func (e *AudioHTMLElement) Raw(text string) *AudioHTMLElement {
-    e.Descendants = append(e.Descendants, RAW(text))
+    e.Descendants = append(e.Descendants, Raw(text))
     return e
 }
 
 func (e *AudioHTMLElement) RawF(format string, args ...any) *AudioHTMLElement {
-    RAW(fmt.Sprintf(format, args...))
-    return e
+    return e.Raw(fmt.Sprintf(format, args...))
 }
 
 func (e *AudioHTMLElement) CustomData(key, value string) *AudioHTMLElement {

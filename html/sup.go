@@ -40,23 +40,21 @@ func(e *SupHTMLElement) TernChildren(condition bool, trueChildren, falseChildren
 }
 
 func (e *SupHTMLElement) Text(text string) *SupHTMLElement {
-    e.Descendants = append(e.Descendants, TEXT(text))
+    e.Descendants = append(e.Descendants, Text(text))
     return e
 }
 
 func (e *SupHTMLElement) TextF(format string, args ...any) *SupHTMLElement {
-    TEXT(fmt.Sprintf(format, args...))
-    return e
+    return e.Text(fmt.Sprintf(format, args...))
 }
 
 func (e *SupHTMLElement) Raw(text string) *SupHTMLElement {
-    e.Descendants = append(e.Descendants, RAW(text))
+    e.Descendants = append(e.Descendants, Raw(text))
     return e
 }
 
 func (e *SupHTMLElement) RawF(format string, args ...any) *SupHTMLElement {
-    RAW(fmt.Sprintf(format, args...))
-    return e
+    return e.Raw(fmt.Sprintf(format, args...))
 }
 
 func (e *SupHTMLElement) CustomData(key, value string) *SupHTMLElement {

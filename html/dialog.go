@@ -40,23 +40,21 @@ func(e *DialogHTMLElement) TernChildren(condition bool, trueChildren, falseChild
 }
 
 func (e *DialogHTMLElement) Text(text string) *DialogHTMLElement {
-    e.Descendants = append(e.Descendants, TEXT(text))
+    e.Descendants = append(e.Descendants, Text(text))
     return e
 }
 
 func (e *DialogHTMLElement) TextF(format string, args ...any) *DialogHTMLElement {
-    TEXT(fmt.Sprintf(format, args...))
-    return e
+    return e.Text(fmt.Sprintf(format, args...))
 }
 
 func (e *DialogHTMLElement) Raw(text string) *DialogHTMLElement {
-    e.Descendants = append(e.Descendants, RAW(text))
+    e.Descendants = append(e.Descendants, Raw(text))
     return e
 }
 
 func (e *DialogHTMLElement) RawF(format string, args ...any) *DialogHTMLElement {
-    RAW(fmt.Sprintf(format, args...))
-    return e
+    return e.Raw(fmt.Sprintf(format, args...))
 }
 
 func (e *DialogHTMLElement) CustomData(key, value string) *DialogHTMLElement {

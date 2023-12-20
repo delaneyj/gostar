@@ -40,23 +40,21 @@ func(e *ButtonHTMLElement) TernChildren(condition bool, trueChildren, falseChild
 }
 
 func (e *ButtonHTMLElement) Text(text string) *ButtonHTMLElement {
-    e.Descendants = append(e.Descendants, TEXT(text))
+    e.Descendants = append(e.Descendants, Text(text))
     return e
 }
 
 func (e *ButtonHTMLElement) TextF(format string, args ...any) *ButtonHTMLElement {
-    TEXT(fmt.Sprintf(format, args...))
-    return e
+    return e.Text(fmt.Sprintf(format, args...))
 }
 
 func (e *ButtonHTMLElement) Raw(text string) *ButtonHTMLElement {
-    e.Descendants = append(e.Descendants, RAW(text))
+    e.Descendants = append(e.Descendants, Raw(text))
     return e
 }
 
 func (e *ButtonHTMLElement) RawF(format string, args ...any) *ButtonHTMLElement {
-    RAW(fmt.Sprintf(format, args...))
-    return e
+    return e.Raw(fmt.Sprintf(format, args...))
 }
 
 func (e *ButtonHTMLElement) CustomData(key, value string) *ButtonHTMLElement {

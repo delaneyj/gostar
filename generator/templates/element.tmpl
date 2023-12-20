@@ -40,23 +40,21 @@ func(e *{{.ElementName }}) TernChildren(condition bool, trueChildren, falseChild
 }
 
 func (e *{{.ElementName }}) Text(text string) *{{.ElementName }} {
-    e.Descendants = append(e.Descendants, TEXT(text))
+    e.Descendants = append(e.Descendants, Text(text))
     return e
 }
 
 func (e *{{.ElementName }}) TextF(format string, args ...any) *{{.ElementName }} {
-    TEXT(fmt.Sprintf(format, args...))
-    return e
+    return e.Text(fmt.Sprintf(format, args...))
 }
 
 func (e *{{.ElementName }}) Raw(text string) *{{.ElementName }} {
-    e.Descendants = append(e.Descendants, RAW(text))
+    e.Descendants = append(e.Descendants, Raw(text))
     return e
 }
 
 func (e *{{.ElementName }}) RawF(format string, args ...any) *{{.ElementName }} {
-    RAW(fmt.Sprintf(format, args...))
-    return e
+    return e.Raw(fmt.Sprintf(format, args...))
 }
 
 func (e *{{.ElementName}}) CustomData(key, value string) *{{.ElementName}} {

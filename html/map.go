@@ -40,23 +40,21 @@ func(e *MapHTMLElement) TernChildren(condition bool, trueChildren, falseChildren
 }
 
 func (e *MapHTMLElement) Text(text string) *MapHTMLElement {
-    e.Descendants = append(e.Descendants, TEXT(text))
+    e.Descendants = append(e.Descendants, Text(text))
     return e
 }
 
 func (e *MapHTMLElement) TextF(format string, args ...any) *MapHTMLElement {
-    TEXT(fmt.Sprintf(format, args...))
-    return e
+    return e.Text(fmt.Sprintf(format, args...))
 }
 
 func (e *MapHTMLElement) Raw(text string) *MapHTMLElement {
-    e.Descendants = append(e.Descendants, RAW(text))
+    e.Descendants = append(e.Descendants, Raw(text))
     return e
 }
 
 func (e *MapHTMLElement) RawF(format string, args ...any) *MapHTMLElement {
-    RAW(fmt.Sprintf(format, args...))
-    return e
+    return e.Raw(fmt.Sprintf(format, args...))
 }
 
 func (e *MapHTMLElement) CustomData(key, value string) *MapHTMLElement {

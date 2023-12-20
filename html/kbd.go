@@ -40,23 +40,21 @@ func(e *KbdHTMLElement) TernChildren(condition bool, trueChildren, falseChildren
 }
 
 func (e *KbdHTMLElement) Text(text string) *KbdHTMLElement {
-    e.Descendants = append(e.Descendants, TEXT(text))
+    e.Descendants = append(e.Descendants, Text(text))
     return e
 }
 
 func (e *KbdHTMLElement) TextF(format string, args ...any) *KbdHTMLElement {
-    TEXT(fmt.Sprintf(format, args...))
-    return e
+    return e.Text(fmt.Sprintf(format, args...))
 }
 
 func (e *KbdHTMLElement) Raw(text string) *KbdHTMLElement {
-    e.Descendants = append(e.Descendants, RAW(text))
+    e.Descendants = append(e.Descendants, Raw(text))
     return e
 }
 
 func (e *KbdHTMLElement) RawF(format string, args ...any) *KbdHTMLElement {
-    RAW(fmt.Sprintf(format, args...))
-    return e
+    return e.Raw(fmt.Sprintf(format, args...))
 }
 
 func (e *KbdHTMLElement) CustomData(key, value string) *KbdHTMLElement {

@@ -40,23 +40,21 @@ func(e *LabelHTMLElement) TernChildren(condition bool, trueChildren, falseChildr
 }
 
 func (e *LabelHTMLElement) Text(text string) *LabelHTMLElement {
-    e.Descendants = append(e.Descendants, TEXT(text))
+    e.Descendants = append(e.Descendants, Text(text))
     return e
 }
 
 func (e *LabelHTMLElement) TextF(format string, args ...any) *LabelHTMLElement {
-    TEXT(fmt.Sprintf(format, args...))
-    return e
+    return e.Text(fmt.Sprintf(format, args...))
 }
 
 func (e *LabelHTMLElement) Raw(text string) *LabelHTMLElement {
-    e.Descendants = append(e.Descendants, RAW(text))
+    e.Descendants = append(e.Descendants, Raw(text))
     return e
 }
 
 func (e *LabelHTMLElement) RawF(format string, args ...any) *LabelHTMLElement {
-    RAW(fmt.Sprintf(format, args...))
-    return e
+    return e.Raw(fmt.Sprintf(format, args...))
 }
 
 func (e *LabelHTMLElement) CustomData(key, value string) *LabelHTMLElement {

@@ -40,23 +40,21 @@ func(e *NoscriptHTMLElement) TernChildren(condition bool, trueChildren, falseChi
 }
 
 func (e *NoscriptHTMLElement) Text(text string) *NoscriptHTMLElement {
-    e.Descendants = append(e.Descendants, TEXT(text))
+    e.Descendants = append(e.Descendants, Text(text))
     return e
 }
 
 func (e *NoscriptHTMLElement) TextF(format string, args ...any) *NoscriptHTMLElement {
-    TEXT(fmt.Sprintf(format, args...))
-    return e
+    return e.Text(fmt.Sprintf(format, args...))
 }
 
 func (e *NoscriptHTMLElement) Raw(text string) *NoscriptHTMLElement {
-    e.Descendants = append(e.Descendants, RAW(text))
+    e.Descendants = append(e.Descendants, Raw(text))
     return e
 }
 
 func (e *NoscriptHTMLElement) RawF(format string, args ...any) *NoscriptHTMLElement {
-    RAW(fmt.Sprintf(format, args...))
-    return e
+    return e.Raw(fmt.Sprintf(format, args...))
 }
 
 func (e *NoscriptHTMLElement) CustomData(key, value string) *NoscriptHTMLElement {

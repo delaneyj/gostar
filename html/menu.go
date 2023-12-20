@@ -40,23 +40,21 @@ func(e *MenuHTMLElement) TernChildren(condition bool, trueChildren, falseChildre
 }
 
 func (e *MenuHTMLElement) Text(text string) *MenuHTMLElement {
-    e.Descendants = append(e.Descendants, TEXT(text))
+    e.Descendants = append(e.Descendants, Text(text))
     return e
 }
 
 func (e *MenuHTMLElement) TextF(format string, args ...any) *MenuHTMLElement {
-    TEXT(fmt.Sprintf(format, args...))
-    return e
+    return e.Text(fmt.Sprintf(format, args...))
 }
 
 func (e *MenuHTMLElement) Raw(text string) *MenuHTMLElement {
-    e.Descendants = append(e.Descendants, RAW(text))
+    e.Descendants = append(e.Descendants, Raw(text))
     return e
 }
 
 func (e *MenuHTMLElement) RawF(format string, args ...any) *MenuHTMLElement {
-    RAW(fmt.Sprintf(format, args...))
-    return e
+    return e.Raw(fmt.Sprintf(format, args...))
 }
 
 func (e *MenuHTMLElement) CustomData(key, value string) *MenuHTMLElement {

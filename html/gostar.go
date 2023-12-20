@@ -196,7 +196,7 @@ func (tc *TextContent) Build(sb *strings.Builder) error {
 	return nil
 }
 
-func TEXT(text string) *TextContent {
+func Text(text string) *TextContent {
 	return &TextContent{
 		text: html.EscapeString(text),
 	}
@@ -211,7 +211,7 @@ func (rc *RawContent) Build(sb *strings.Builder) error {
 	return nil
 }
 
-func RAW(raw string) *RawContent {
+func Raw(raw string) *RawContent {
 	return &RawContent{
 		raw: raw,
 	}

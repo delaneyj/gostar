@@ -40,23 +40,21 @@ func(e *AddressHTMLElement) TernChildren(condition bool, trueChildren, falseChil
 }
 
 func (e *AddressHTMLElement) Text(text string) *AddressHTMLElement {
-    e.Descendants = append(e.Descendants, TEXT(text))
+    e.Descendants = append(e.Descendants, Text(text))
     return e
 }
 
 func (e *AddressHTMLElement) TextF(format string, args ...any) *AddressHTMLElement {
-    TEXT(fmt.Sprintf(format, args...))
-    return e
+    return e.Text(fmt.Sprintf(format, args...))
 }
 
 func (e *AddressHTMLElement) Raw(text string) *AddressHTMLElement {
-    e.Descendants = append(e.Descendants, RAW(text))
+    e.Descendants = append(e.Descendants, Raw(text))
     return e
 }
 
 func (e *AddressHTMLElement) RawF(format string, args ...any) *AddressHTMLElement {
-    RAW(fmt.Sprintf(format, args...))
-    return e
+    return e.Raw(fmt.Sprintf(format, args...))
 }
 
 func (e *AddressHTMLElement) CustomData(key, value string) *AddressHTMLElement {

@@ -40,23 +40,21 @@ func(e *OptgroupHTMLElement) TernChildren(condition bool, trueChildren, falseChi
 }
 
 func (e *OptgroupHTMLElement) Text(text string) *OptgroupHTMLElement {
-    e.Descendants = append(e.Descendants, TEXT(text))
+    e.Descendants = append(e.Descendants, Text(text))
     return e
 }
 
 func (e *OptgroupHTMLElement) TextF(format string, args ...any) *OptgroupHTMLElement {
-    TEXT(fmt.Sprintf(format, args...))
-    return e
+    return e.Text(fmt.Sprintf(format, args...))
 }
 
 func (e *OptgroupHTMLElement) Raw(text string) *OptgroupHTMLElement {
-    e.Descendants = append(e.Descendants, RAW(text))
+    e.Descendants = append(e.Descendants, Raw(text))
     return e
 }
 
 func (e *OptgroupHTMLElement) RawF(format string, args ...any) *OptgroupHTMLElement {
-    RAW(fmt.Sprintf(format, args...))
-    return e
+    return e.Raw(fmt.Sprintf(format, args...))
 }
 
 func (e *OptgroupHTMLElement) CustomData(key, value string) *OptgroupHTMLElement {

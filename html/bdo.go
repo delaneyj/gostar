@@ -40,23 +40,21 @@ func(e *BdoHTMLElement) TernChildren(condition bool, trueChildren, falseChildren
 }
 
 func (e *BdoHTMLElement) Text(text string) *BdoHTMLElement {
-    e.Descendants = append(e.Descendants, TEXT(text))
+    e.Descendants = append(e.Descendants, Text(text))
     return e
 }
 
 func (e *BdoHTMLElement) TextF(format string, args ...any) *BdoHTMLElement {
-    TEXT(fmt.Sprintf(format, args...))
-    return e
+    return e.Text(fmt.Sprintf(format, args...))
 }
 
 func (e *BdoHTMLElement) Raw(text string) *BdoHTMLElement {
-    e.Descendants = append(e.Descendants, RAW(text))
+    e.Descendants = append(e.Descendants, Raw(text))
     return e
 }
 
 func (e *BdoHTMLElement) RawF(format string, args ...any) *BdoHTMLElement {
-    RAW(fmt.Sprintf(format, args...))
-    return e
+    return e.Raw(fmt.Sprintf(format, args...))
 }
 
 func (e *BdoHTMLElement) CustomData(key, value string) *BdoHTMLElement {

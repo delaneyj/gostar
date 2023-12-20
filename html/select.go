@@ -40,23 +40,21 @@ func(e *SelectHTMLElement) TernChildren(condition bool, trueChildren, falseChild
 }
 
 func (e *SelectHTMLElement) Text(text string) *SelectHTMLElement {
-    e.Descendants = append(e.Descendants, TEXT(text))
+    e.Descendants = append(e.Descendants, Text(text))
     return e
 }
 
 func (e *SelectHTMLElement) TextF(format string, args ...any) *SelectHTMLElement {
-    TEXT(fmt.Sprintf(format, args...))
-    return e
+    return e.Text(fmt.Sprintf(format, args...))
 }
 
 func (e *SelectHTMLElement) Raw(text string) *SelectHTMLElement {
-    e.Descendants = append(e.Descendants, RAW(text))
+    e.Descendants = append(e.Descendants, Raw(text))
     return e
 }
 
 func (e *SelectHTMLElement) RawF(format string, args ...any) *SelectHTMLElement {
-    RAW(fmt.Sprintf(format, args...))
-    return e
+    return e.Raw(fmt.Sprintf(format, args...))
 }
 
 func (e *SelectHTMLElement) CustomData(key, value string) *SelectHTMLElement {

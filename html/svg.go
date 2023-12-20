@@ -40,23 +40,21 @@ func(e *SvgHTMLElement) TernChildren(condition bool, trueChildren, falseChildren
 }
 
 func (e *SvgHTMLElement) Text(text string) *SvgHTMLElement {
-    e.Descendants = append(e.Descendants, TEXT(text))
+    e.Descendants = append(e.Descendants, Text(text))
     return e
 }
 
 func (e *SvgHTMLElement) TextF(format string, args ...any) *SvgHTMLElement {
-    TEXT(fmt.Sprintf(format, args...))
-    return e
+    return e.Text(fmt.Sprintf(format, args...))
 }
 
 func (e *SvgHTMLElement) Raw(text string) *SvgHTMLElement {
-    e.Descendants = append(e.Descendants, RAW(text))
+    e.Descendants = append(e.Descendants, Raw(text))
     return e
 }
 
 func (e *SvgHTMLElement) RawF(format string, args ...any) *SvgHTMLElement {
-    RAW(fmt.Sprintf(format, args...))
-    return e
+    return e.Raw(fmt.Sprintf(format, args...))
 }
 
 func (e *SvgHTMLElement) CustomData(key, value string) *SvgHTMLElement {

@@ -40,23 +40,21 @@ func(e *BlockquoteHTMLElement) TernChildren(condition bool, trueChildren, falseC
 }
 
 func (e *BlockquoteHTMLElement) Text(text string) *BlockquoteHTMLElement {
-    e.Descendants = append(e.Descendants, TEXT(text))
+    e.Descendants = append(e.Descendants, Text(text))
     return e
 }
 
 func (e *BlockquoteHTMLElement) TextF(format string, args ...any) *BlockquoteHTMLElement {
-    TEXT(fmt.Sprintf(format, args...))
-    return e
+    return e.Text(fmt.Sprintf(format, args...))
 }
 
 func (e *BlockquoteHTMLElement) Raw(text string) *BlockquoteHTMLElement {
-    e.Descendants = append(e.Descendants, RAW(text))
+    e.Descendants = append(e.Descendants, Raw(text))
     return e
 }
 
 func (e *BlockquoteHTMLElement) RawF(format string, args ...any) *BlockquoteHTMLElement {
-    RAW(fmt.Sprintf(format, args...))
-    return e
+    return e.Raw(fmt.Sprintf(format, args...))
 }
 
 func (e *BlockquoteHTMLElement) CustomData(key, value string) *BlockquoteHTMLElement {

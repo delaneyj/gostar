@@ -40,23 +40,21 @@ func(e *TrackHTMLElement) TernChildren(condition bool, trueChildren, falseChildr
 }
 
 func (e *TrackHTMLElement) Text(text string) *TrackHTMLElement {
-    e.Descendants = append(e.Descendants, TEXT(text))
+    e.Descendants = append(e.Descendants, Text(text))
     return e
 }
 
 func (e *TrackHTMLElement) TextF(format string, args ...any) *TrackHTMLElement {
-    TEXT(fmt.Sprintf(format, args...))
-    return e
+    return e.Text(fmt.Sprintf(format, args...))
 }
 
 func (e *TrackHTMLElement) Raw(text string) *TrackHTMLElement {
-    e.Descendants = append(e.Descendants, RAW(text))
+    e.Descendants = append(e.Descendants, Raw(text))
     return e
 }
 
 func (e *TrackHTMLElement) RawF(format string, args ...any) *TrackHTMLElement {
-    RAW(fmt.Sprintf(format, args...))
-    return e
+    return e.Raw(fmt.Sprintf(format, args...))
 }
 
 func (e *TrackHTMLElement) CustomData(key, value string) *TrackHTMLElement {

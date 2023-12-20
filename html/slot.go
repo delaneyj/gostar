@@ -40,23 +40,21 @@ func(e *SlotHTMLElement) TernChildren(condition bool, trueChildren, falseChildre
 }
 
 func (e *SlotHTMLElement) Text(text string) *SlotHTMLElement {
-    e.Descendants = append(e.Descendants, TEXT(text))
+    e.Descendants = append(e.Descendants, Text(text))
     return e
 }
 
 func (e *SlotHTMLElement) TextF(format string, args ...any) *SlotHTMLElement {
-    TEXT(fmt.Sprintf(format, args...))
-    return e
+    return e.Text(fmt.Sprintf(format, args...))
 }
 
 func (e *SlotHTMLElement) Raw(text string) *SlotHTMLElement {
-    e.Descendants = append(e.Descendants, RAW(text))
+    e.Descendants = append(e.Descendants, Raw(text))
     return e
 }
 
 func (e *SlotHTMLElement) RawF(format string, args ...any) *SlotHTMLElement {
-    RAW(fmt.Sprintf(format, args...))
-    return e
+    return e.Raw(fmt.Sprintf(format, args...))
 }
 
 func (e *SlotHTMLElement) CustomData(key, value string) *SlotHTMLElement {

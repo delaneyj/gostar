@@ -40,23 +40,21 @@ func(e *CiteHTMLElement) TernChildren(condition bool, trueChildren, falseChildre
 }
 
 func (e *CiteHTMLElement) Text(text string) *CiteHTMLElement {
-    e.Descendants = append(e.Descendants, TEXT(text))
+    e.Descendants = append(e.Descendants, Text(text))
     return e
 }
 
 func (e *CiteHTMLElement) TextF(format string, args ...any) *CiteHTMLElement {
-    TEXT(fmt.Sprintf(format, args...))
-    return e
+    return e.Text(fmt.Sprintf(format, args...))
 }
 
 func (e *CiteHTMLElement) Raw(text string) *CiteHTMLElement {
-    e.Descendants = append(e.Descendants, RAW(text))
+    e.Descendants = append(e.Descendants, Raw(text))
     return e
 }
 
 func (e *CiteHTMLElement) RawF(format string, args ...any) *CiteHTMLElement {
-    RAW(fmt.Sprintf(format, args...))
-    return e
+    return e.Raw(fmt.Sprintf(format, args...))
 }
 
 func (e *CiteHTMLElement) CustomData(key, value string) *CiteHTMLElement {

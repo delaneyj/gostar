@@ -40,23 +40,21 @@ func(e *RubyHTMLElement) TernChildren(condition bool, trueChildren, falseChildre
 }
 
 func (e *RubyHTMLElement) Text(text string) *RubyHTMLElement {
-    e.Descendants = append(e.Descendants, TEXT(text))
+    e.Descendants = append(e.Descendants, Text(text))
     return e
 }
 
 func (e *RubyHTMLElement) TextF(format string, args ...any) *RubyHTMLElement {
-    TEXT(fmt.Sprintf(format, args...))
-    return e
+    return e.Text(fmt.Sprintf(format, args...))
 }
 
 func (e *RubyHTMLElement) Raw(text string) *RubyHTMLElement {
-    e.Descendants = append(e.Descendants, RAW(text))
+    e.Descendants = append(e.Descendants, Raw(text))
     return e
 }
 
 func (e *RubyHTMLElement) RawF(format string, args ...any) *RubyHTMLElement {
-    RAW(fmt.Sprintf(format, args...))
-    return e
+    return e.Raw(fmt.Sprintf(format, args...))
 }
 
 func (e *RubyHTMLElement) CustomData(key, value string) *RubyHTMLElement {

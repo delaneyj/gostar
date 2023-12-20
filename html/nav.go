@@ -40,23 +40,21 @@ func(e *NavHTMLElement) TernChildren(condition bool, trueChildren, falseChildren
 }
 
 func (e *NavHTMLElement) Text(text string) *NavHTMLElement {
-    e.Descendants = append(e.Descendants, TEXT(text))
+    e.Descendants = append(e.Descendants, Text(text))
     return e
 }
 
 func (e *NavHTMLElement) TextF(format string, args ...any) *NavHTMLElement {
-    TEXT(fmt.Sprintf(format, args...))
-    return e
+    return e.Text(fmt.Sprintf(format, args...))
 }
 
 func (e *NavHTMLElement) Raw(text string) *NavHTMLElement {
-    e.Descendants = append(e.Descendants, RAW(text))
+    e.Descendants = append(e.Descendants, Raw(text))
     return e
 }
 
 func (e *NavHTMLElement) RawF(format string, args ...any) *NavHTMLElement {
-    RAW(fmt.Sprintf(format, args...))
-    return e
+    return e.Raw(fmt.Sprintf(format, args...))
 }
 
 func (e *NavHTMLElement) CustomData(key, value string) *NavHTMLElement {

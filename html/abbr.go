@@ -40,23 +40,21 @@ func(e *AbbrHTMLElement) TernChildren(condition bool, trueChildren, falseChildre
 }
 
 func (e *AbbrHTMLElement) Text(text string) *AbbrHTMLElement {
-    e.Descendants = append(e.Descendants, TEXT(text))
+    e.Descendants = append(e.Descendants, Text(text))
     return e
 }
 
 func (e *AbbrHTMLElement) TextF(format string, args ...any) *AbbrHTMLElement {
-    TEXT(fmt.Sprintf(format, args...))
-    return e
+    return e.Text(fmt.Sprintf(format, args...))
 }
 
 func (e *AbbrHTMLElement) Raw(text string) *AbbrHTMLElement {
-    e.Descendants = append(e.Descendants, RAW(text))
+    e.Descendants = append(e.Descendants, Raw(text))
     return e
 }
 
 func (e *AbbrHTMLElement) RawF(format string, args ...any) *AbbrHTMLElement {
-    RAW(fmt.Sprintf(format, args...))
-    return e
+    return e.Raw(fmt.Sprintf(format, args...))
 }
 
 func (e *AbbrHTMLElement) CustomData(key, value string) *AbbrHTMLElement {

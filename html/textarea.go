@@ -40,23 +40,21 @@ func(e *TextareaHTMLElement) TernChildren(condition bool, trueChildren, falseChi
 }
 
 func (e *TextareaHTMLElement) Text(text string) *TextareaHTMLElement {
-    e.Descendants = append(e.Descendants, TEXT(text))
+    e.Descendants = append(e.Descendants, Text(text))
     return e
 }
 
 func (e *TextareaHTMLElement) TextF(format string, args ...any) *TextareaHTMLElement {
-    TEXT(fmt.Sprintf(format, args...))
-    return e
+    return e.Text(fmt.Sprintf(format, args...))
 }
 
 func (e *TextareaHTMLElement) Raw(text string) *TextareaHTMLElement {
-    e.Descendants = append(e.Descendants, RAW(text))
+    e.Descendants = append(e.Descendants, Raw(text))
     return e
 }
 
 func (e *TextareaHTMLElement) RawF(format string, args ...any) *TextareaHTMLElement {
-    RAW(fmt.Sprintf(format, args...))
-    return e
+    return e.Raw(fmt.Sprintf(format, args...))
 }
 
 func (e *TextareaHTMLElement) CustomData(key, value string) *TextareaHTMLElement {
