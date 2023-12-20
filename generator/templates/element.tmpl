@@ -1,0 +1,152 @@
+package  {{.PackageName}}
+
+import (
+    "fmt"
+	"github.com/delaneyj/gostar"
+)
+
+type {{.ElementName }} struct {
+    *gostar.Element
+}
+
+func {{.NewElement }}(children ...fmt.Stringer) *{{.ElementName }} {
+    return &{{.ElementName }}{
+        Element: &gostar.Element{
+            Tag: "{{.Tag}}",
+            IsSelfClosing: {{.IsSelfClosing}},
+            Children: children,
+        },
+    }
+}
+
+func (e *{{.ElementName }}) AddChildren(children ...fmt.Stringer) *{{.ElementName }} {
+    e.Children = append(e.Children, children...)
+    return e
+}
+
+func (e *{{.ElementName }}) TEXT(text string) *{{.ElementName }} {
+    e.Children = append(e.Children, gostar.TEXT(text))
+    return e
+}
+
+func (e *{{.ElementName }}) RAW(text string) *{{.ElementName }} {
+    e.Children = append(e.Children, gostar.RAW(text))
+    return e
+}
+
+func (e *{{.ElementName}}) CustomData(key, value string) *{{.ElementName}} {
+    if e.CustomDataAttributes == nil {
+        e.CustomDataAttributes = map[string]string{}
+    }
+	e.CustomDataAttributes[key] = value
+	return e
+}
+
+func (e *{{.ElementName}}) CustomDataRemove(key string) *{{.ElementName}} {
+	if e.CustomDataAttributes == nil {
+		return e
+	}
+	delete(e.CustomDataAttributes, key)
+	return e
+}
+
+{{ range .Attributes }}
+// {{.Name}} sets the "{{.Key}}" attribute.
+{{- range .Description }}
+// {{.}}
+{{- end }}
+// Values values are constrained to:
+{{- range .ValidValueTypes}}
+//  * {{.}}
+{{- end }}
+{{- if (eq .Mode "bool") }}
+func (e *{{$.ElementName}}) {{.Name}}() *{{$.ElementName}} {
+    if e.BoolAttributes == nil {
+        e.BoolAttributes = map[string]struct{}{}
+    }
+    e.BoolAttributes["{{.Key}}"] = struct{}{}
+    return e
+}
+
+func (e *{{$.ElementName}}) Remove{{.Name}}() *{{$.ElementName}} {
+    if e.BoolAttributes == nil {
+        return e
+    }
+    delete(e.BoolAttributes, "{{.Key}}")
+    return e
+}
+
+func (e *{{$.ElementName}}) Set{{.Name}}(b bool) *{{$.ElementName}} {
+    if b {
+        return e.{{.Name}}()
+    }
+    return e.Remove{{.Name}}()
+}
+{{- else if (eq .Mode "kv") }}
+func (e *{{$.ElementName}}) {{.Name}}(k,v string) *{{$.ElementName}} {
+    if e.DelimitedKVAttributes == nil {
+        e.DelimitedKVAttributes = map[string]*gostar.DelimitedKVString{}
+    }
+    kv, ok := e.DelimitedKVAttributes["{{.Key}}"]
+    if !ok {
+        kv = gostar.NewEqualSemicolonDelimitedKVString()
+        e.DelimitedKVAttributes["{{.Key}}"] = kv
+    }
+    kv.Add(k,v)
+    return e
+}
+
+func (e *{{$.ElementName}}) Remove{{.Name}}(k string) *{{$.ElementName}} {
+    kv, ok := e.DelimitedKVAttributes["{{.Key}}"]
+    if !ok {
+        return e
+    }
+    kv.Remove(k)
+    return e
+}
+{{- else if (eq .Mode "space-delimited") }}
+func(e *{{$.ElementName}}) {{.Name}}(v string) *{{$.ElementName}} {
+    if e.DelimitedStringAttributes == nil {
+        e.DelimitedStringAttributes = map[string]*gostar.DelimitedString{}
+    }
+    kv, ok := e.DelimitedStringAttributes["{{.Key}}"]
+    if !ok {
+        kv = gostar.NewSpaceDelimitedString()
+        e.DelimitedStringAttributes["{{.Key}}"] = kv
+    }
+    kv.Add(v)
+    return e
+}
+
+func (e *{{$.ElementName}}) Set{{.Name}}(v string) *{{$.ElementName}} {
+    kv := gostar.NewSpaceDelimitedString()
+    e.DelimitedStringAttributes["{{.Key}}"] = kv
+    kv.Add(v)
+    return e
+}
+
+func (e *{{$.ElementName}}) Remove{{.Name}}(v string) *{{$.ElementName}} {
+    kv, ok := e.DelimitedStringAttributes["{{.Key}}"]
+    if !ok {
+        return e
+    }
+    kv.Remove(v)
+    return e
+}
+
+{{- else if (eq .Mode "string") }}
+func (e *{{$.ElementName}}) {{.Name}}(v string) *{{$.ElementName}} {
+    if e.StringAttributes == nil {
+        e.StringAttributes = map[string]string{}
+    }
+    e.StringAttributes["{{.Key}}"] = v
+    return e
+}
+
+func (e *{{$.ElementName}}) Remove{{.Name}}(v string) *{{$.ElementName}} {
+    delete(e.StringAttributes, "{{.Key}}")
+    return e
+}
+
+{{- end -}}
+{{ end }}

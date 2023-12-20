@@ -21,10 +21,10 @@ func main() {
 }
 
 func run(ctx context.Context) error {
+
 	if err := generator.GenerateAllElements(ctx, &generator.GenerateElementArgs{
-		OutputPath:   "./elements",
-		TempDir:      "./tmp",
-		KvAttributes: []string{},
+		OutputPath: "./elements",
+		TempDir:    "./tmp",
 	}); err != nil {
 		return err
 	}

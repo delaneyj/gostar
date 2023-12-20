@@ -11,25 +11,22 @@ tasks:
     sources:
       - echo `which qtc`
 
-  qt:
-    deps:
-      - tools
-    sources:
-      - "**/*.qtpl"
-    generates:
-      - "**/*.qtpl.go"
-    cmds:
-      - qtc
-
   gen:
-    deps:
-      - qt
     sources:
       - "**/*.go"
+      - "**/*.*tmpl"
     cmds:
       - go run cmd/gen/*.go
 
-  default:
+  test:
     deps:
       - gen
+    sources:
+      - "**/*.go"
+    cmds:
+      - go test ./...
+
+  default:
+    deps:
+      - test
     silent: true

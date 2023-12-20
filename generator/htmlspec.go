@@ -2,6 +2,8 @@ package generator
 
 import (
 	"context"
+	"embed"
+	"errors"
 	"fmt"
 	"log"
 	"net/http"
@@ -11,6 +13,7 @@ import (
 	"slices"
 	"strings"
 	"sync"
+	"text/template"
 
 	"github.com/PuerkitoBio/goquery"
 	"github.com/delaneyj/toolbelt"
@@ -20,11 +23,24 @@ import (
 	"k8s.io/apimachinery/pkg/util/sets"
 )
 
+//go:embed templates
+var templatesFS embed.FS
+
+type AttributeMode string
+
+const (
+	AttributeModeString         AttributeMode = "string"
+	AttributeModeKV             AttributeMode = "kv"
+	AttributeModeBool           AttributeMode = "bool"
+	AttributeModeSpaceDelimited AttributeMode = "space-delimited"
+)
+
 type Attribute struct {
 	Name            string
+	Key             string
 	Description     string
 	ValidValueTypes []string
-	IsKV            bool
+	Mode            AttributeMode
 }
 
 type EventHandler struct {
@@ -57,10 +73,17 @@ type Element struct {
 	EventHandlers             []*EventHandler
 }
 
+type CustomAttribute struct {
+	Name        string
+	AllowedTags []string
+	Valuer      fmt.Stringer
+}
+
 type GenerateElementArgs struct {
-	TempDir      string
-	OutputPath   string
-	KvAttributes []string
+	TempDir                  string
+	OutputPath               string
+	KvAttributes             []string
+	SpaceDelimitedAttributes []string
 }
 
 func NewGenerateElementArgs() *GenerateElementArgs {
@@ -90,6 +113,9 @@ func GenerateAllElements(ctx context.Context, args *GenerateElementArgs) (err er
 	args.KvAttributes = append(args.KvAttributes, "style")
 	args.KvAttributes = lo.Uniq(args.KvAttributes)
 
+	args.SpaceDelimitedAttributes = append(args.SpaceDelimitedAttributes, "class")
+	args.SpaceDelimitedAttributes = lo.Uniq(args.SpaceDelimitedAttributes)
+
 	cleanAndUpsertFolder := func(path string, shouldClear bool) (string, error) {
 		path, err = filepath.Abs(path)
 		if err != nil {
@@ -116,7 +142,7 @@ func GenerateAllElements(ctx context.Context, args *GenerateElementArgs) (err er
 		return fmt.Errorf("could not clean and upsert %s: %v", args.OutputPath, err)
 	}
 
-	elements, err := scrapeHTMLSpec(ctx, args.TempDir, args.KvAttributes)
+	elements, err := scrapeHTMLSpec(ctx, args)
 	if err != nil {
 		return fmt.Errorf("could not scrape HTML spec: %v", err)
 	}
@@ -141,46 +167,91 @@ func GenerateAllElements(ctx context.Context, args *GenerateElementArgs) (err er
 		}
 	}
 
+	tmpls, err := template.ParseFS(templatesFS, "templates/*.tmpl")
+	if err != nil {
+		return fmt.Errorf("could not parse templates: %v", err)
+	}
+
 	log.Printf("generating %d elements", len(elements))
 	outputPathParts := strings.Split(args.OutputPath, string(os.PathSeparator))
 	lastOutputPathPart := outputPathParts[len(outputPathParts)-1]
 
-	packageName := strcase.ToSnake(lastOutputPathPart)
+	packageName := toolbelt.ToCasedString(lastOutputPathPart)
+
+	type AttributeCtx struct {
+		Name            string
+		Key             string
+		ValidValueTypes []string
+		Mode            AttributeMode
+		Description     []string
+	}
+
+	type ElementCtx struct {
+		PackageName   string
+		ElementName   string
+		NewElement    string
+		Tag           string
+		IsSelfClosing bool
+		Attributes    []AttributeCtx
+	}
+
 	wg := &sync.WaitGroup{}
-	wg.Add(len(elements) + 1)
-
-	go func() {
-		defer wg.Done()
-		contents := BaseFile(packageName)
-		filename := "gen__gostar.go"
-		fullPath := filepath.Join(args.OutputPath, filename)
-		if err := os.WriteFile(fullPath, []byte(contents), 0644); err != nil {
-			panic(fmt.Errorf("could not write %s: %v", fullPath, err))
-		}
-	}()
-
+	wg.Add(len(elements))
+	errs := make(chan error, len(elements))
 	for _, element := range elements {
 		go func(element *Element) {
 			defer wg.Done()
-			contents := GenerateElement(packageName, element)
-			filename := fmt.Sprintf("gen_%s.go", toolbelt.Snake(element.Tag))
-			fullPath := filepath.Join(args.OutputPath, filename)
+			elName := toolbelt.ToCasedString(element.Tag)
+			elCtx := ElementCtx{
+				PackageName:   packageName.Snake,
+				ElementName:   fmt.Sprintf("%sElement", elName.Pascal),
+				NewElement:    elName.Upper,
+				Tag:           element.Tag,
+				IsSelfClosing: len(element.ChildElementsOrCategories) == 0,
+			}
 
-			if err := os.WriteFile(fullPath, []byte(contents), 0644); err != nil {
-				panic(fmt.Errorf("could not write %s: %v", fullPath, err))
+			for _, attribute := range element.Attributes {
+				attrCtx := AttributeCtx{
+					Name:            attribute.Name,
+					Key:             attribute.Key,
+					ValidValueTypes: attribute.ValidValueTypes,
+					Mode:            attribute.Mode,
+					Description:     strings.Split(attribute.Description, "\n"),
+				}
+				elCtx.Attributes = append(elCtx.Attributes, attrCtx)
+			}
+
+			fName := fmt.Sprintf("%s.go", elName.Snake)
+			f, err := os.Create(filepath.Join(args.OutputPath, fName))
+			if err != nil {
+				errs <- fmt.Errorf("could not create file %s: %v", fName, err)
+				return
+			}
+
+			if err := tmpls.ExecuteTemplate(f, "element.tmpl", elCtx); err != nil {
+				errs <- fmt.Errorf("could not execute template: %v", err)
+				return
 			}
 		}(element)
 	}
 	wg.Wait()
+	close(errs)
+	allErrs := []error{}
+	for err := range errs {
+		allErrs = append(allErrs, err)
+	}
+	if len(allErrs) > 0 {
+		return errors.Join(allErrs...)
+	}
 
 	return nil
 }
 
 // Scrapes the W3C HTML spec for information about HTML elements and attributes.
-func scrapeHTMLSpec(ctx context.Context, genTmpDir string, kvAttributes []string) (elements []*Element, err error) {
+func scrapeHTMLSpec(ctx context.Context, args *GenerateElementArgs) (elements []*Element, err error) {
 	isCachedStr := "Is HTML spec cached? "
 
-	cachedJSON := filepath.Join(genTmpDir, "html_spec.json")
+	cachedJSON := filepath.Join(args.TempDir, "html_spec.json")
 
 	if _, err := os.Stat(cachedJSON); err == nil {
 		log.Println(isCachedStr + "yes")
@@ -215,7 +286,7 @@ func scrapeHTMLSpec(ctx context.Context, genTmpDir string, kvAttributes []string
 		}
 
 		log.Printf("applying attributes")
-		if err := applyAttributes(htmlSpecDoc, elementsMap, kvAttributes); err != nil {
+		if err := applyAttributes(htmlSpecDoc, elementsMap, args); err != nil {
 			return nil, fmt.Errorf("could not read attributes: %v", err)
 		}
 
@@ -303,7 +374,7 @@ func readElements(htmlSpecDoc *goquery.Document) (map[string]*Element, error) {
 	return elements, nil
 }
 
-func applyAttributes(htmlSpecDoc *goquery.Document, elements map[string]*Element, kvAttributes []string) error {
+func applyAttributes(htmlSpecDoc *goquery.Document, elements map[string]*Element, args *GenerateElementArgs) error {
 	if len(elements) == 0 {
 		return fmt.Errorf("no elements")
 	}
@@ -339,16 +410,27 @@ func applyAttributes(htmlSpecDoc *goquery.Document, elements map[string]*Element
 			return false
 		}
 
-		name := columns.Eq(0).Find("code").Text()
+		name := toolbelt.ToCasedString(columns.Eq(0).Find("code").Text())
+
 		attr := &Attribute{
-			Name:        name,
+			Name:        toolbelt.Upper(name.Snake),
+			Key:         name.Kebab,
 			Description: strings.TrimSpace(columns.Eq(2).Text()),
-			IsKV:        lo.Contains(kvAttributes, name),
+			Mode:        AttributeModeString,
 		}
 
 		columns.Eq(3).Find("a, code").Each(func(i int, a *goquery.Selection) {
 			attr.ValidValueTypes = append(attr.ValidValueTypes, strcase.ToSnake(a.Text()))
 		})
+
+		if lo.Contains(args.KvAttributes, name.Lower) {
+			attr.Mode = AttributeModeKV
+		} else if lo.Contains(args.SpaceDelimitedAttributes, name.Lower) {
+			attr.Mode = AttributeModeSpaceDelimited
+		} else if len(attr.ValidValueTypes) == 1 && attr.ValidValueTypes[0] == "boolean_attribute" {
+			attr.Mode = AttributeModeBool
+		}
+
 		attributes[attr.Name] = attr
 
 		columns.Eq(1).Find("a").EachWithBreak(func(i int, a *goquery.Selection) bool {
