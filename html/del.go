@@ -8,7 +8,7 @@ type DelHTMLElement struct {
     *Element
 }
 
-func DEL(children ...fmt.Stringer) *DelHTMLElement {
+func DEL(children ...ElementBuilder) *DelHTMLElement {
     return &DelHTMLElement{
         Element: &Element{
             Tag: "del",
@@ -18,19 +18,19 @@ func DEL(children ...fmt.Stringer) *DelHTMLElement {
     }
 }
 
-func (e *DelHTMLElement) Children(children ...fmt.Stringer) *DelHTMLElement {
+func (e *DelHTMLElement) Children(children ...ElementBuilder) *DelHTMLElement {
     e.Descendants = append(e.Descendants, children...)
     return e
 }
 
-func(e *DelHTMLElement) IfChildren(condition bool, children ...fmt.Stringer) *DelHTMLElement {
+func(e *DelHTMLElement) IfChildren(condition bool, children ...ElementBuilder) *DelHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, children...)
     }
     return e
 }
 
-func(e *DelHTMLElement) TernChildren(condition bool, trueChildren, falseChildren fmt.Stringer) *DelHTMLElement {
+func(e *DelHTMLElement) TernChildren(condition bool, trueChildren, falseChildren ElementBuilder) *DelHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, trueChildren)
     } else {

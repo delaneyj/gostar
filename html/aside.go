@@ -8,7 +8,7 @@ type AsideHTMLElement struct {
     *Element
 }
 
-func ASIDE(children ...fmt.Stringer) *AsideHTMLElement {
+func ASIDE(children ...ElementBuilder) *AsideHTMLElement {
     return &AsideHTMLElement{
         Element: &Element{
             Tag: "aside",
@@ -18,19 +18,19 @@ func ASIDE(children ...fmt.Stringer) *AsideHTMLElement {
     }
 }
 
-func (e *AsideHTMLElement) Children(children ...fmt.Stringer) *AsideHTMLElement {
+func (e *AsideHTMLElement) Children(children ...ElementBuilder) *AsideHTMLElement {
     e.Descendants = append(e.Descendants, children...)
     return e
 }
 
-func(e *AsideHTMLElement) IfChildren(condition bool, children ...fmt.Stringer) *AsideHTMLElement {
+func(e *AsideHTMLElement) IfChildren(condition bool, children ...ElementBuilder) *AsideHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, children...)
     }
     return e
 }
 
-func(e *AsideHTMLElement) TernChildren(condition bool, trueChildren, falseChildren fmt.Stringer) *AsideHTMLElement {
+func(e *AsideHTMLElement) TernChildren(condition bool, trueChildren, falseChildren ElementBuilder) *AsideHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, trueChildren)
     } else {

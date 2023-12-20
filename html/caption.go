@@ -8,7 +8,7 @@ type CaptionHTMLElement struct {
     *Element
 }
 
-func CAPTION(children ...fmt.Stringer) *CaptionHTMLElement {
+func CAPTION(children ...ElementBuilder) *CaptionHTMLElement {
     return &CaptionHTMLElement{
         Element: &Element{
             Tag: "caption",
@@ -18,19 +18,19 @@ func CAPTION(children ...fmt.Stringer) *CaptionHTMLElement {
     }
 }
 
-func (e *CaptionHTMLElement) Children(children ...fmt.Stringer) *CaptionHTMLElement {
+func (e *CaptionHTMLElement) Children(children ...ElementBuilder) *CaptionHTMLElement {
     e.Descendants = append(e.Descendants, children...)
     return e
 }
 
-func(e *CaptionHTMLElement) IfChildren(condition bool, children ...fmt.Stringer) *CaptionHTMLElement {
+func(e *CaptionHTMLElement) IfChildren(condition bool, children ...ElementBuilder) *CaptionHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, children...)
     }
     return e
 }
 
-func(e *CaptionHTMLElement) TernChildren(condition bool, trueChildren, falseChildren fmt.Stringer) *CaptionHTMLElement {
+func(e *CaptionHTMLElement) TernChildren(condition bool, trueChildren, falseChildren ElementBuilder) *CaptionHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, trueChildren)
     } else {

@@ -10,6 +10,10 @@ import (
 	"github.com/samber/lo"
 )
 
+type ElementBuilder interface{
+	Build(sb *strings.Builder) error
+}
+
 type Element struct {
 	Tag                       string
 	IsSelfClosing             bool
@@ -18,11 +22,16 @@ type Element struct {
 	DelimitedStringAttributes map[string]*DelimitedString
 	DelimitedKVAttributes     map[string]*DelimitedKVString
 	CustomDataAttributes      map[string]string
-	Descendants               []fmt.Stringer
+	Descendants               []ElementBuilder
 }
 
-func (e *Element) String() string {
+func(e *Element) String() string {
 	sb := &strings.Builder{}
+	e.Build(sb)
+	return sb.String()
+}
+
+func (e *Element) Build(sb *strings.Builder) error {
 
 	sb.WriteRune('<')
 	sb.WriteString(e.Tag)
@@ -61,7 +70,9 @@ func (e *Element) String() string {
 		sb.WriteString(entry.Key)
 		sb.WriteRune('=')
 		sb.WriteRune('"')
-		sb.WriteString(entry.Value.String())
+		if err := entry.Value.Build(sb); err != nil {
+			return fmt.Errorf("failed to build element: %w", err)
+		}
 		sb.WriteRune('"')
 	}
 
@@ -74,7 +85,9 @@ func (e *Element) String() string {
 		sb.WriteString(entry.Key)
 		sb.WriteRune('=')
 		sb.WriteRune('"')
-		sb.WriteString(entry.Value.String())
+		if err := entry.Value.Build(sb); err != nil {
+			return fmt.Errorf("failed to build element: %w", err)
+		}
 		sb.WriteRune('"')
 	}
 
@@ -87,18 +100,20 @@ func (e *Element) String() string {
 
 	if e.IsSelfClosing {
 		sb.WriteString(" />")
-		return sb.String()
+		return nil
 	}
 
 	sb.WriteRune('>')
 	for _, child := range e.Descendants {
-		sb.WriteString(child.String())
+		if err := child.Build(sb); err != nil {
+			return fmt.Errorf("failed to build element: %w", err)
+		}
 	}
 	sb.WriteString("</")
 	sb.WriteString(e.Tag)
 	sb.WriteRune('>')
 
-	return sb.String()
+	return nil
 }
 
 type DelimitedString struct {
@@ -118,10 +133,11 @@ func (ds *DelimitedString) Remove(values ...string) {
 	}
 }
 
-func (ds *DelimitedString) String() string {
+func (ds *DelimitedString) Build(sb *strings.Builder) error {
 	values := lo.Keys(ds.values)
 	slices.Sort(values)
-	return strings.Join(values, ds.delimiter)
+	_, err := sb.WriteString(strings.Join(values, ds.delimiter))
+	return err
 }
 
 func NewDelimitedString(delimiter string) *DelimitedString {
@@ -149,13 +165,14 @@ func (ds *DelimitedKVString) Remove(key string) {
 	delete(ds.values, key)
 }
 
-func (ds *DelimitedKVString) String() string {
+func (ds *DelimitedKVString) Build(sb *strings.Builder) error {
 	values := make([]string, 0, len(ds.values))
 	for k, v := range ds.values {
 		values = append(values, k+ds.associationDelimiter+v)
 	}
 	slices.Sort(values)
-	return strings.Join(values, ds.delimiter)
+	sb.WriteString(strings.Join(values, ds.delimiter))
+	return nil
 }
 
 func NewDelimitedKVString(associationDelimiter, delimiter string) *DelimitedKVString {
@@ -174,8 +191,9 @@ type TextContent struct {
 	text string
 }
 
-func (tc *TextContent) String() string {
-	return tc.text
+func (tc *TextContent) Build(sb *strings.Builder) error {
+	sb.WriteString(tc.text)
+	return nil
 }
 
 func TEXT(text string) *TextContent {
@@ -188,8 +206,9 @@ type RawContent struct {
 	raw string
 }
 
-func (rc *RawContent) String() string {
-	return rc.raw
+func (rc *RawContent) Build(sb *strings.Builder) error {
+	sb.WriteString(rc.raw)
+	return nil
 }
 
 func RAW(raw string) *RawContent {
@@ -199,47 +218,48 @@ func RAW(raw string) *RawContent {
 }
 
 type Grouper struct {
-	Children []fmt.Stringer
+	Children []ElementBuilder
 }
 
-func (g *Grouper) String() string {
-	sb := &strings.Builder{}
+func (g *Grouper) Build(sb *strings.Builder) error {
 	for _, child := range g.Children {
-		sb.WriteString(child.String())
+		if err := child.Build(sb); err != nil {
+			return fmt.Errorf("failed to build element: %w", err)
+		}
 	}
-	return sb.String()
+	return nil
 }
 
-func Group(children ...fmt.Stringer) *Grouper {
+func Group(children ...ElementBuilder) *Grouper {
 	return &Grouper{
 		Children: children,
 	}
 }
 
 
-func If(condition bool, children ...fmt.Stringer) fmt.Stringer {
+func If(condition bool, children ...ElementBuilder) ElementBuilder {
 	if condition {
 		return Group(children...)
 	}
 	return nil
 }
 
-func Tern(condition bool, trueChildren, falseChildren fmt.Stringer) fmt.Stringer {
+func Tern(condition bool, trueChildren, falseChildren ElementBuilder) ElementBuilder {
 	if condition {
 		return trueChildren
 	}
 	return falseChildren
 }
 
-func Range[T any](values []T, cb func(T) fmt.Stringer) fmt.Stringer {
-	children := make([]fmt.Stringer, 0, len(values))
+func Range[T any](values []T, cb func(T) ElementBuilder) ElementBuilder {
+	children := make([]ElementBuilder, 0, len(values))
 	for _, value := range values {
 		children = append(children, cb(value))
 	}
 	return Group(children...)
 }
 
-func NewElement(tag string, children ...fmt.Stringer) *Element {
+func NewElement(tag string, children ...ElementBuilder) *Element {
 	return &Element{
 		Tag:      tag,
 		Descendants: children,
@@ -260,6 +280,16 @@ func (e *Element) Attrs(attrs ...string) *Element {
 	for i := 0; i < len(attrs); i += 2 {
 		k := attrs[i]
 		v := attrs[i+1]
+		e.StringAttributes[k] = v
+	}
+	return e
+}
+
+func (e *Element) AttrsMap(attrs map[string]string) *Element {
+	if e.StringAttributes == nil {
+		e.StringAttributes = map[string]string{}
+	}
+	for k, v := range attrs {
 		e.StringAttributes[k] = v
 	}
 	return e

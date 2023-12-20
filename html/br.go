@@ -8,7 +8,7 @@ type BrHTMLElement struct {
     *Element
 }
 
-func BR(children ...fmt.Stringer) *BrHTMLElement {
+func BR(children ...ElementBuilder) *BrHTMLElement {
     return &BrHTMLElement{
         Element: &Element{
             Tag: "br",
@@ -18,19 +18,19 @@ func BR(children ...fmt.Stringer) *BrHTMLElement {
     }
 }
 
-func (e *BrHTMLElement) Children(children ...fmt.Stringer) *BrHTMLElement {
+func (e *BrHTMLElement) Children(children ...ElementBuilder) *BrHTMLElement {
     e.Descendants = append(e.Descendants, children...)
     return e
 }
 
-func(e *BrHTMLElement) IfChildren(condition bool, children ...fmt.Stringer) *BrHTMLElement {
+func(e *BrHTMLElement) IfChildren(condition bool, children ...ElementBuilder) *BrHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, children...)
     }
     return e
 }
 
-func(e *BrHTMLElement) TernChildren(condition bool, trueChildren, falseChildren fmt.Stringer) *BrHTMLElement {
+func(e *BrHTMLElement) TernChildren(condition bool, trueChildren, falseChildren ElementBuilder) *BrHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, trueChildren)
     } else {

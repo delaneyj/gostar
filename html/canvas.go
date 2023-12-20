@@ -8,7 +8,7 @@ type CanvasHTMLElement struct {
     *Element
 }
 
-func CANVAS(children ...fmt.Stringer) *CanvasHTMLElement {
+func CANVAS(children ...ElementBuilder) *CanvasHTMLElement {
     return &CanvasHTMLElement{
         Element: &Element{
             Tag: "canvas",
@@ -18,19 +18,19 @@ func CANVAS(children ...fmt.Stringer) *CanvasHTMLElement {
     }
 }
 
-func (e *CanvasHTMLElement) Children(children ...fmt.Stringer) *CanvasHTMLElement {
+func (e *CanvasHTMLElement) Children(children ...ElementBuilder) *CanvasHTMLElement {
     e.Descendants = append(e.Descendants, children...)
     return e
 }
 
-func(e *CanvasHTMLElement) IfChildren(condition bool, children ...fmt.Stringer) *CanvasHTMLElement {
+func(e *CanvasHTMLElement) IfChildren(condition bool, children ...ElementBuilder) *CanvasHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, children...)
     }
     return e
 }
 
-func(e *CanvasHTMLElement) TernChildren(condition bool, trueChildren, falseChildren fmt.Stringer) *CanvasHTMLElement {
+func(e *CanvasHTMLElement) TernChildren(condition bool, trueChildren, falseChildren ElementBuilder) *CanvasHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, trueChildren)
     } else {

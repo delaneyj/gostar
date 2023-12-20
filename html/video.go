@@ -8,7 +8,7 @@ type VideoHTMLElement struct {
     *Element
 }
 
-func VIDEO(children ...fmt.Stringer) *VideoHTMLElement {
+func VIDEO(children ...ElementBuilder) *VideoHTMLElement {
     return &VideoHTMLElement{
         Element: &Element{
             Tag: "video",
@@ -18,19 +18,19 @@ func VIDEO(children ...fmt.Stringer) *VideoHTMLElement {
     }
 }
 
-func (e *VideoHTMLElement) Children(children ...fmt.Stringer) *VideoHTMLElement {
+func (e *VideoHTMLElement) Children(children ...ElementBuilder) *VideoHTMLElement {
     e.Descendants = append(e.Descendants, children...)
     return e
 }
 
-func(e *VideoHTMLElement) IfChildren(condition bool, children ...fmt.Stringer) *VideoHTMLElement {
+func(e *VideoHTMLElement) IfChildren(condition bool, children ...ElementBuilder) *VideoHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, children...)
     }
     return e
 }
 
-func(e *VideoHTMLElement) TernChildren(condition bool, trueChildren, falseChildren fmt.Stringer) *VideoHTMLElement {
+func(e *VideoHTMLElement) TernChildren(condition bool, trueChildren, falseChildren ElementBuilder) *VideoHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, trueChildren)
     } else {

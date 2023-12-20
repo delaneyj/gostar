@@ -8,7 +8,7 @@ type ScriptHTMLElement struct {
     *Element
 }
 
-func SCRIPT(children ...fmt.Stringer) *ScriptHTMLElement {
+func SCRIPT(children ...ElementBuilder) *ScriptHTMLElement {
     return &ScriptHTMLElement{
         Element: &Element{
             Tag: "script",
@@ -18,19 +18,19 @@ func SCRIPT(children ...fmt.Stringer) *ScriptHTMLElement {
     }
 }
 
-func (e *ScriptHTMLElement) Children(children ...fmt.Stringer) *ScriptHTMLElement {
+func (e *ScriptHTMLElement) Children(children ...ElementBuilder) *ScriptHTMLElement {
     e.Descendants = append(e.Descendants, children...)
     return e
 }
 
-func(e *ScriptHTMLElement) IfChildren(condition bool, children ...fmt.Stringer) *ScriptHTMLElement {
+func(e *ScriptHTMLElement) IfChildren(condition bool, children ...ElementBuilder) *ScriptHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, children...)
     }
     return e
 }
 
-func(e *ScriptHTMLElement) TernChildren(condition bool, trueChildren, falseChildren fmt.Stringer) *ScriptHTMLElement {
+func(e *ScriptHTMLElement) TernChildren(condition bool, trueChildren, falseChildren ElementBuilder) *ScriptHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, trueChildren)
     } else {

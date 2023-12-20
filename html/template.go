@@ -8,7 +8,7 @@ type TemplateHTMLElement struct {
     *Element
 }
 
-func TEMPLATE(children ...fmt.Stringer) *TemplateHTMLElement {
+func TEMPLATE(children ...ElementBuilder) *TemplateHTMLElement {
     return &TemplateHTMLElement{
         Element: &Element{
             Tag: "template",
@@ -18,19 +18,19 @@ func TEMPLATE(children ...fmt.Stringer) *TemplateHTMLElement {
     }
 }
 
-func (e *TemplateHTMLElement) Children(children ...fmt.Stringer) *TemplateHTMLElement {
+func (e *TemplateHTMLElement) Children(children ...ElementBuilder) *TemplateHTMLElement {
     e.Descendants = append(e.Descendants, children...)
     return e
 }
 
-func(e *TemplateHTMLElement) IfChildren(condition bool, children ...fmt.Stringer) *TemplateHTMLElement {
+func(e *TemplateHTMLElement) IfChildren(condition bool, children ...ElementBuilder) *TemplateHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, children...)
     }
     return e
 }
 
-func(e *TemplateHTMLElement) TernChildren(condition bool, trueChildren, falseChildren fmt.Stringer) *TemplateHTMLElement {
+func(e *TemplateHTMLElement) TernChildren(condition bool, trueChildren, falseChildren ElementBuilder) *TemplateHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, trueChildren)
     } else {

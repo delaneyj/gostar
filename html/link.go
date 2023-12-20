@@ -8,7 +8,7 @@ type LinkHTMLElement struct {
     *Element
 }
 
-func LINK(children ...fmt.Stringer) *LinkHTMLElement {
+func LINK(children ...ElementBuilder) *LinkHTMLElement {
     return &LinkHTMLElement{
         Element: &Element{
             Tag: "link",
@@ -18,19 +18,19 @@ func LINK(children ...fmt.Stringer) *LinkHTMLElement {
     }
 }
 
-func (e *LinkHTMLElement) Children(children ...fmt.Stringer) *LinkHTMLElement {
+func (e *LinkHTMLElement) Children(children ...ElementBuilder) *LinkHTMLElement {
     e.Descendants = append(e.Descendants, children...)
     return e
 }
 
-func(e *LinkHTMLElement) IfChildren(condition bool, children ...fmt.Stringer) *LinkHTMLElement {
+func(e *LinkHTMLElement) IfChildren(condition bool, children ...ElementBuilder) *LinkHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, children...)
     }
     return e
 }
 
-func(e *LinkHTMLElement) TernChildren(condition bool, trueChildren, falseChildren fmt.Stringer) *LinkHTMLElement {
+func(e *LinkHTMLElement) TernChildren(condition bool, trueChildren, falseChildren ElementBuilder) *LinkHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, trueChildren)
     } else {

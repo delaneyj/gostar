@@ -8,7 +8,7 @@ type PreHTMLElement struct {
     *Element
 }
 
-func PRE(children ...fmt.Stringer) *PreHTMLElement {
+func PRE(children ...ElementBuilder) *PreHTMLElement {
     return &PreHTMLElement{
         Element: &Element{
             Tag: "pre",
@@ -18,19 +18,19 @@ func PRE(children ...fmt.Stringer) *PreHTMLElement {
     }
 }
 
-func (e *PreHTMLElement) Children(children ...fmt.Stringer) *PreHTMLElement {
+func (e *PreHTMLElement) Children(children ...ElementBuilder) *PreHTMLElement {
     e.Descendants = append(e.Descendants, children...)
     return e
 }
 
-func(e *PreHTMLElement) IfChildren(condition bool, children ...fmt.Stringer) *PreHTMLElement {
+func(e *PreHTMLElement) IfChildren(condition bool, children ...ElementBuilder) *PreHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, children...)
     }
     return e
 }
 
-func(e *PreHTMLElement) TernChildren(condition bool, trueChildren, falseChildren fmt.Stringer) *PreHTMLElement {
+func(e *PreHTMLElement) TernChildren(condition bool, trueChildren, falseChildren ElementBuilder) *PreHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, trueChildren)
     } else {

@@ -8,7 +8,7 @@ type SvgHTMLElement struct {
     *Element
 }
 
-func SVG(children ...fmt.Stringer) *SvgHTMLElement {
+func SVG(children ...ElementBuilder) *SvgHTMLElement {
     return &SvgHTMLElement{
         Element: &Element{
             Tag: "svg",
@@ -18,19 +18,19 @@ func SVG(children ...fmt.Stringer) *SvgHTMLElement {
     }
 }
 
-func (e *SvgHTMLElement) Children(children ...fmt.Stringer) *SvgHTMLElement {
+func (e *SvgHTMLElement) Children(children ...ElementBuilder) *SvgHTMLElement {
     e.Descendants = append(e.Descendants, children...)
     return e
 }
 
-func(e *SvgHTMLElement) IfChildren(condition bool, children ...fmt.Stringer) *SvgHTMLElement {
+func(e *SvgHTMLElement) IfChildren(condition bool, children ...ElementBuilder) *SvgHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, children...)
     }
     return e
 }
 
-func(e *SvgHTMLElement) TernChildren(condition bool, trueChildren, falseChildren fmt.Stringer) *SvgHTMLElement {
+func(e *SvgHTMLElement) TernChildren(condition bool, trueChildren, falseChildren ElementBuilder) *SvgHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, trueChildren)
     } else {

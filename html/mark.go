@@ -8,7 +8,7 @@ type MarkHTMLElement struct {
     *Element
 }
 
-func MARK(children ...fmt.Stringer) *MarkHTMLElement {
+func MARK(children ...ElementBuilder) *MarkHTMLElement {
     return &MarkHTMLElement{
         Element: &Element{
             Tag: "mark",
@@ -18,19 +18,19 @@ func MARK(children ...fmt.Stringer) *MarkHTMLElement {
     }
 }
 
-func (e *MarkHTMLElement) Children(children ...fmt.Stringer) *MarkHTMLElement {
+func (e *MarkHTMLElement) Children(children ...ElementBuilder) *MarkHTMLElement {
     e.Descendants = append(e.Descendants, children...)
     return e
 }
 
-func(e *MarkHTMLElement) IfChildren(condition bool, children ...fmt.Stringer) *MarkHTMLElement {
+func(e *MarkHTMLElement) IfChildren(condition bool, children ...ElementBuilder) *MarkHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, children...)
     }
     return e
 }
 
-func(e *MarkHTMLElement) TernChildren(condition bool, trueChildren, falseChildren fmt.Stringer) *MarkHTMLElement {
+func(e *MarkHTMLElement) TernChildren(condition bool, trueChildren, falseChildren ElementBuilder) *MarkHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, trueChildren)
     } else {

@@ -8,7 +8,7 @@ type WbrHTMLElement struct {
     *Element
 }
 
-func WBR(children ...fmt.Stringer) *WbrHTMLElement {
+func WBR(children ...ElementBuilder) *WbrHTMLElement {
     return &WbrHTMLElement{
         Element: &Element{
             Tag: "wbr",
@@ -18,19 +18,19 @@ func WBR(children ...fmt.Stringer) *WbrHTMLElement {
     }
 }
 
-func (e *WbrHTMLElement) Children(children ...fmt.Stringer) *WbrHTMLElement {
+func (e *WbrHTMLElement) Children(children ...ElementBuilder) *WbrHTMLElement {
     e.Descendants = append(e.Descendants, children...)
     return e
 }
 
-func(e *WbrHTMLElement) IfChildren(condition bool, children ...fmt.Stringer) *WbrHTMLElement {
+func(e *WbrHTMLElement) IfChildren(condition bool, children ...ElementBuilder) *WbrHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, children...)
     }
     return e
 }
 
-func(e *WbrHTMLElement) TernChildren(condition bool, trueChildren, falseChildren fmt.Stringer) *WbrHTMLElement {
+func(e *WbrHTMLElement) TernChildren(condition bool, trueChildren, falseChildren ElementBuilder) *WbrHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, trueChildren)
     } else {

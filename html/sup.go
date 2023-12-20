@@ -8,7 +8,7 @@ type SupHTMLElement struct {
     *Element
 }
 
-func SUP(children ...fmt.Stringer) *SupHTMLElement {
+func SUP(children ...ElementBuilder) *SupHTMLElement {
     return &SupHTMLElement{
         Element: &Element{
             Tag: "sup",
@@ -18,19 +18,19 @@ func SUP(children ...fmt.Stringer) *SupHTMLElement {
     }
 }
 
-func (e *SupHTMLElement) Children(children ...fmt.Stringer) *SupHTMLElement {
+func (e *SupHTMLElement) Children(children ...ElementBuilder) *SupHTMLElement {
     e.Descendants = append(e.Descendants, children...)
     return e
 }
 
-func(e *SupHTMLElement) IfChildren(condition bool, children ...fmt.Stringer) *SupHTMLElement {
+func(e *SupHTMLElement) IfChildren(condition bool, children ...ElementBuilder) *SupHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, children...)
     }
     return e
 }
 
-func(e *SupHTMLElement) TernChildren(condition bool, trueChildren, falseChildren fmt.Stringer) *SupHTMLElement {
+func(e *SupHTMLElement) TernChildren(condition bool, trueChildren, falseChildren ElementBuilder) *SupHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, trueChildren)
     } else {

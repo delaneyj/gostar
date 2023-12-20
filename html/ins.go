@@ -8,7 +8,7 @@ type InsHTMLElement struct {
     *Element
 }
 
-func INS(children ...fmt.Stringer) *InsHTMLElement {
+func INS(children ...ElementBuilder) *InsHTMLElement {
     return &InsHTMLElement{
         Element: &Element{
             Tag: "ins",
@@ -18,19 +18,19 @@ func INS(children ...fmt.Stringer) *InsHTMLElement {
     }
 }
 
-func (e *InsHTMLElement) Children(children ...fmt.Stringer) *InsHTMLElement {
+func (e *InsHTMLElement) Children(children ...ElementBuilder) *InsHTMLElement {
     e.Descendants = append(e.Descendants, children...)
     return e
 }
 
-func(e *InsHTMLElement) IfChildren(condition bool, children ...fmt.Stringer) *InsHTMLElement {
+func(e *InsHTMLElement) IfChildren(condition bool, children ...ElementBuilder) *InsHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, children...)
     }
     return e
 }
 
-func(e *InsHTMLElement) TernChildren(condition bool, trueChildren, falseChildren fmt.Stringer) *InsHTMLElement {
+func(e *InsHTMLElement) TernChildren(condition bool, trueChildren, falseChildren ElementBuilder) *InsHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, trueChildren)
     } else {

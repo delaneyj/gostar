@@ -8,7 +8,7 @@ type TimeHTMLElement struct {
     *Element
 }
 
-func TIME(children ...fmt.Stringer) *TimeHTMLElement {
+func TIME(children ...ElementBuilder) *TimeHTMLElement {
     return &TimeHTMLElement{
         Element: &Element{
             Tag: "time",
@@ -18,19 +18,19 @@ func TIME(children ...fmt.Stringer) *TimeHTMLElement {
     }
 }
 
-func (e *TimeHTMLElement) Children(children ...fmt.Stringer) *TimeHTMLElement {
+func (e *TimeHTMLElement) Children(children ...ElementBuilder) *TimeHTMLElement {
     e.Descendants = append(e.Descendants, children...)
     return e
 }
 
-func(e *TimeHTMLElement) IfChildren(condition bool, children ...fmt.Stringer) *TimeHTMLElement {
+func(e *TimeHTMLElement) IfChildren(condition bool, children ...ElementBuilder) *TimeHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, children...)
     }
     return e
 }
 
-func(e *TimeHTMLElement) TernChildren(condition bool, trueChildren, falseChildren fmt.Stringer) *TimeHTMLElement {
+func(e *TimeHTMLElement) TernChildren(condition bool, trueChildren, falseChildren ElementBuilder) *TimeHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, trueChildren)
     } else {

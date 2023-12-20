@@ -8,7 +8,7 @@ type MetaHTMLElement struct {
     *Element
 }
 
-func META(children ...fmt.Stringer) *MetaHTMLElement {
+func META(children ...ElementBuilder) *MetaHTMLElement {
     return &MetaHTMLElement{
         Element: &Element{
             Tag: "meta",
@@ -18,19 +18,19 @@ func META(children ...fmt.Stringer) *MetaHTMLElement {
     }
 }
 
-func (e *MetaHTMLElement) Children(children ...fmt.Stringer) *MetaHTMLElement {
+func (e *MetaHTMLElement) Children(children ...ElementBuilder) *MetaHTMLElement {
     e.Descendants = append(e.Descendants, children...)
     return e
 }
 
-func(e *MetaHTMLElement) IfChildren(condition bool, children ...fmt.Stringer) *MetaHTMLElement {
+func(e *MetaHTMLElement) IfChildren(condition bool, children ...ElementBuilder) *MetaHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, children...)
     }
     return e
 }
 
-func(e *MetaHTMLElement) TernChildren(condition bool, trueChildren, falseChildren fmt.Stringer) *MetaHTMLElement {
+func(e *MetaHTMLElement) TernChildren(condition bool, trueChildren, falseChildren ElementBuilder) *MetaHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, trueChildren)
     } else {

@@ -8,7 +8,7 @@ type HgroupHTMLElement struct {
     *Element
 }
 
-func HGROUP(children ...fmt.Stringer) *HgroupHTMLElement {
+func HGROUP(children ...ElementBuilder) *HgroupHTMLElement {
     return &HgroupHTMLElement{
         Element: &Element{
             Tag: "hgroup",
@@ -18,19 +18,19 @@ func HGROUP(children ...fmt.Stringer) *HgroupHTMLElement {
     }
 }
 
-func (e *HgroupHTMLElement) Children(children ...fmt.Stringer) *HgroupHTMLElement {
+func (e *HgroupHTMLElement) Children(children ...ElementBuilder) *HgroupHTMLElement {
     e.Descendants = append(e.Descendants, children...)
     return e
 }
 
-func(e *HgroupHTMLElement) IfChildren(condition bool, children ...fmt.Stringer) *HgroupHTMLElement {
+func(e *HgroupHTMLElement) IfChildren(condition bool, children ...ElementBuilder) *HgroupHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, children...)
     }
     return e
 }
 
-func(e *HgroupHTMLElement) TernChildren(condition bool, trueChildren, falseChildren fmt.Stringer) *HgroupHTMLElement {
+func(e *HgroupHTMLElement) TernChildren(condition bool, trueChildren, falseChildren ElementBuilder) *HgroupHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, trueChildren)
     } else {

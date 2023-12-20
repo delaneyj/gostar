@@ -8,7 +8,7 @@ type LegendHTMLElement struct {
     *Element
 }
 
-func LEGEND(children ...fmt.Stringer) *LegendHTMLElement {
+func LEGEND(children ...ElementBuilder) *LegendHTMLElement {
     return &LegendHTMLElement{
         Element: &Element{
             Tag: "legend",
@@ -18,19 +18,19 @@ func LEGEND(children ...fmt.Stringer) *LegendHTMLElement {
     }
 }
 
-func (e *LegendHTMLElement) Children(children ...fmt.Stringer) *LegendHTMLElement {
+func (e *LegendHTMLElement) Children(children ...ElementBuilder) *LegendHTMLElement {
     e.Descendants = append(e.Descendants, children...)
     return e
 }
 
-func(e *LegendHTMLElement) IfChildren(condition bool, children ...fmt.Stringer) *LegendHTMLElement {
+func(e *LegendHTMLElement) IfChildren(condition bool, children ...ElementBuilder) *LegendHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, children...)
     }
     return e
 }
 
-func(e *LegendHTMLElement) TernChildren(condition bool, trueChildren, falseChildren fmt.Stringer) *LegendHTMLElement {
+func(e *LegendHTMLElement) TernChildren(condition bool, trueChildren, falseChildren ElementBuilder) *LegendHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, trueChildren)
     } else {

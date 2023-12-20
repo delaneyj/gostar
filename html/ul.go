@@ -8,7 +8,7 @@ type UlHTMLElement struct {
     *Element
 }
 
-func UL(children ...fmt.Stringer) *UlHTMLElement {
+func UL(children ...ElementBuilder) *UlHTMLElement {
     return &UlHTMLElement{
         Element: &Element{
             Tag: "ul",
@@ -18,19 +18,19 @@ func UL(children ...fmt.Stringer) *UlHTMLElement {
     }
 }
 
-func (e *UlHTMLElement) Children(children ...fmt.Stringer) *UlHTMLElement {
+func (e *UlHTMLElement) Children(children ...ElementBuilder) *UlHTMLElement {
     e.Descendants = append(e.Descendants, children...)
     return e
 }
 
-func(e *UlHTMLElement) IfChildren(condition bool, children ...fmt.Stringer) *UlHTMLElement {
+func(e *UlHTMLElement) IfChildren(condition bool, children ...ElementBuilder) *UlHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, children...)
     }
     return e
 }
 
-func(e *UlHTMLElement) TernChildren(condition bool, trueChildren, falseChildren fmt.Stringer) *UlHTMLElement {
+func(e *UlHTMLElement) TernChildren(condition bool, trueChildren, falseChildren ElementBuilder) *UlHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, trueChildren)
     } else {

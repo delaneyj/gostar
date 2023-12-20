@@ -8,7 +8,7 @@ type MathHTMLElement struct {
     *Element
 }
 
-func MATH(children ...fmt.Stringer) *MathHTMLElement {
+func MATH(children ...ElementBuilder) *MathHTMLElement {
     return &MathHTMLElement{
         Element: &Element{
             Tag: "math",
@@ -18,19 +18,19 @@ func MATH(children ...fmt.Stringer) *MathHTMLElement {
     }
 }
 
-func (e *MathHTMLElement) Children(children ...fmt.Stringer) *MathHTMLElement {
+func (e *MathHTMLElement) Children(children ...ElementBuilder) *MathHTMLElement {
     e.Descendants = append(e.Descendants, children...)
     return e
 }
 
-func(e *MathHTMLElement) IfChildren(condition bool, children ...fmt.Stringer) *MathHTMLElement {
+func(e *MathHTMLElement) IfChildren(condition bool, children ...ElementBuilder) *MathHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, children...)
     }
     return e
 }
 
-func(e *MathHTMLElement) TernChildren(condition bool, trueChildren, falseChildren fmt.Stringer) *MathHTMLElement {
+func(e *MathHTMLElement) TernChildren(condition bool, trueChildren, falseChildren ElementBuilder) *MathHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, trueChildren)
     } else {

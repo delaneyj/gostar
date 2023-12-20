@@ -8,7 +8,7 @@ type IframeHTMLElement struct {
     *Element
 }
 
-func IFRAME(children ...fmt.Stringer) *IframeHTMLElement {
+func IFRAME(children ...ElementBuilder) *IframeHTMLElement {
     return &IframeHTMLElement{
         Element: &Element{
             Tag: "iframe",
@@ -18,19 +18,19 @@ func IFRAME(children ...fmt.Stringer) *IframeHTMLElement {
     }
 }
 
-func (e *IframeHTMLElement) Children(children ...fmt.Stringer) *IframeHTMLElement {
+func (e *IframeHTMLElement) Children(children ...ElementBuilder) *IframeHTMLElement {
     e.Descendants = append(e.Descendants, children...)
     return e
 }
 
-func(e *IframeHTMLElement) IfChildren(condition bool, children ...fmt.Stringer) *IframeHTMLElement {
+func(e *IframeHTMLElement) IfChildren(condition bool, children ...ElementBuilder) *IframeHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, children...)
     }
     return e
 }
 
-func(e *IframeHTMLElement) TernChildren(condition bool, trueChildren, falseChildren fmt.Stringer) *IframeHTMLElement {
+func(e *IframeHTMLElement) TernChildren(condition bool, trueChildren, falseChildren ElementBuilder) *IframeHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, trueChildren)
     } else {

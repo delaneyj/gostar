@@ -8,7 +8,7 @@ type OptionHTMLElement struct {
     *Element
 }
 
-func OPTION(children ...fmt.Stringer) *OptionHTMLElement {
+func OPTION(children ...ElementBuilder) *OptionHTMLElement {
     return &OptionHTMLElement{
         Element: &Element{
             Tag: "option",
@@ -18,19 +18,19 @@ func OPTION(children ...fmt.Stringer) *OptionHTMLElement {
     }
 }
 
-func (e *OptionHTMLElement) Children(children ...fmt.Stringer) *OptionHTMLElement {
+func (e *OptionHTMLElement) Children(children ...ElementBuilder) *OptionHTMLElement {
     e.Descendants = append(e.Descendants, children...)
     return e
 }
 
-func(e *OptionHTMLElement) IfChildren(condition bool, children ...fmt.Stringer) *OptionHTMLElement {
+func(e *OptionHTMLElement) IfChildren(condition bool, children ...ElementBuilder) *OptionHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, children...)
     }
     return e
 }
 
-func(e *OptionHTMLElement) TernChildren(condition bool, trueChildren, falseChildren fmt.Stringer) *OptionHTMLElement {
+func(e *OptionHTMLElement) TernChildren(condition bool, trueChildren, falseChildren ElementBuilder) *OptionHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, trueChildren)
     } else {

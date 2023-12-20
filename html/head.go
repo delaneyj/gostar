@@ -8,7 +8,7 @@ type HeadHTMLElement struct {
     *Element
 }
 
-func HEAD(children ...fmt.Stringer) *HeadHTMLElement {
+func HEAD(children ...ElementBuilder) *HeadHTMLElement {
     return &HeadHTMLElement{
         Element: &Element{
             Tag: "head",
@@ -18,19 +18,19 @@ func HEAD(children ...fmt.Stringer) *HeadHTMLElement {
     }
 }
 
-func (e *HeadHTMLElement) Children(children ...fmt.Stringer) *HeadHTMLElement {
+func (e *HeadHTMLElement) Children(children ...ElementBuilder) *HeadHTMLElement {
     e.Descendants = append(e.Descendants, children...)
     return e
 }
 
-func(e *HeadHTMLElement) IfChildren(condition bool, children ...fmt.Stringer) *HeadHTMLElement {
+func(e *HeadHTMLElement) IfChildren(condition bool, children ...ElementBuilder) *HeadHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, children...)
     }
     return e
 }
 
-func(e *HeadHTMLElement) TernChildren(condition bool, trueChildren, falseChildren fmt.Stringer) *HeadHTMLElement {
+func(e *HeadHTMLElement) TernChildren(condition bool, trueChildren, falseChildren ElementBuilder) *HeadHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, trueChildren)
     } else {

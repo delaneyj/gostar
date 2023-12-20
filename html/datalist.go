@@ -8,7 +8,7 @@ type DatalistHTMLElement struct {
     *Element
 }
 
-func DATALIST(children ...fmt.Stringer) *DatalistHTMLElement {
+func DATALIST(children ...ElementBuilder) *DatalistHTMLElement {
     return &DatalistHTMLElement{
         Element: &Element{
             Tag: "datalist",
@@ -18,19 +18,19 @@ func DATALIST(children ...fmt.Stringer) *DatalistHTMLElement {
     }
 }
 
-func (e *DatalistHTMLElement) Children(children ...fmt.Stringer) *DatalistHTMLElement {
+func (e *DatalistHTMLElement) Children(children ...ElementBuilder) *DatalistHTMLElement {
     e.Descendants = append(e.Descendants, children...)
     return e
 }
 
-func(e *DatalistHTMLElement) IfChildren(condition bool, children ...fmt.Stringer) *DatalistHTMLElement {
+func(e *DatalistHTMLElement) IfChildren(condition bool, children ...ElementBuilder) *DatalistHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, children...)
     }
     return e
 }
 
-func(e *DatalistHTMLElement) TernChildren(condition bool, trueChildren, falseChildren fmt.Stringer) *DatalistHTMLElement {
+func(e *DatalistHTMLElement) TernChildren(condition bool, trueChildren, falseChildren ElementBuilder) *DatalistHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, trueChildren)
     } else {

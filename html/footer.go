@@ -8,7 +8,7 @@ type FooterHTMLElement struct {
     *Element
 }
 
-func FOOTER(children ...fmt.Stringer) *FooterHTMLElement {
+func FOOTER(children ...ElementBuilder) *FooterHTMLElement {
     return &FooterHTMLElement{
         Element: &Element{
             Tag: "footer",
@@ -18,19 +18,19 @@ func FOOTER(children ...fmt.Stringer) *FooterHTMLElement {
     }
 }
 
-func (e *FooterHTMLElement) Children(children ...fmt.Stringer) *FooterHTMLElement {
+func (e *FooterHTMLElement) Children(children ...ElementBuilder) *FooterHTMLElement {
     e.Descendants = append(e.Descendants, children...)
     return e
 }
 
-func(e *FooterHTMLElement) IfChildren(condition bool, children ...fmt.Stringer) *FooterHTMLElement {
+func(e *FooterHTMLElement) IfChildren(condition bool, children ...ElementBuilder) *FooterHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, children...)
     }
     return e
 }
 
-func(e *FooterHTMLElement) TernChildren(condition bool, trueChildren, falseChildren fmt.Stringer) *FooterHTMLElement {
+func(e *FooterHTMLElement) TernChildren(condition bool, trueChildren, falseChildren ElementBuilder) *FooterHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, trueChildren)
     } else {

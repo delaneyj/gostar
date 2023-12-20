@@ -8,7 +8,7 @@ type SourceHTMLElement struct {
     *Element
 }
 
-func SOURCE(children ...fmt.Stringer) *SourceHTMLElement {
+func SOURCE(children ...ElementBuilder) *SourceHTMLElement {
     return &SourceHTMLElement{
         Element: &Element{
             Tag: "source",
@@ -18,19 +18,19 @@ func SOURCE(children ...fmt.Stringer) *SourceHTMLElement {
     }
 }
 
-func (e *SourceHTMLElement) Children(children ...fmt.Stringer) *SourceHTMLElement {
+func (e *SourceHTMLElement) Children(children ...ElementBuilder) *SourceHTMLElement {
     e.Descendants = append(e.Descendants, children...)
     return e
 }
 
-func(e *SourceHTMLElement) IfChildren(condition bool, children ...fmt.Stringer) *SourceHTMLElement {
+func(e *SourceHTMLElement) IfChildren(condition bool, children ...ElementBuilder) *SourceHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, children...)
     }
     return e
 }
 
-func(e *SourceHTMLElement) TernChildren(condition bool, trueChildren, falseChildren fmt.Stringer) *SourceHTMLElement {
+func(e *SourceHTMLElement) TernChildren(condition bool, trueChildren, falseChildren ElementBuilder) *SourceHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, trueChildren)
     } else {

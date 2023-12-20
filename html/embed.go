@@ -8,7 +8,7 @@ type EmbedHTMLElement struct {
     *Element
 }
 
-func EMBED(children ...fmt.Stringer) *EmbedHTMLElement {
+func EMBED(children ...ElementBuilder) *EmbedHTMLElement {
     return &EmbedHTMLElement{
         Element: &Element{
             Tag: "embed",
@@ -18,19 +18,19 @@ func EMBED(children ...fmt.Stringer) *EmbedHTMLElement {
     }
 }
 
-func (e *EmbedHTMLElement) Children(children ...fmt.Stringer) *EmbedHTMLElement {
+func (e *EmbedHTMLElement) Children(children ...ElementBuilder) *EmbedHTMLElement {
     e.Descendants = append(e.Descendants, children...)
     return e
 }
 
-func(e *EmbedHTMLElement) IfChildren(condition bool, children ...fmt.Stringer) *EmbedHTMLElement {
+func(e *EmbedHTMLElement) IfChildren(condition bool, children ...ElementBuilder) *EmbedHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, children...)
     }
     return e
 }
 
-func(e *EmbedHTMLElement) TernChildren(condition bool, trueChildren, falseChildren fmt.Stringer) *EmbedHTMLElement {
+func(e *EmbedHTMLElement) TernChildren(condition bool, trueChildren, falseChildren ElementBuilder) *EmbedHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, trueChildren)
     } else {

@@ -8,7 +8,7 @@ type FormHTMLElement struct {
     *Element
 }
 
-func FORM(children ...fmt.Stringer) *FormHTMLElement {
+func FORM(children ...ElementBuilder) *FormHTMLElement {
     return &FormHTMLElement{
         Element: &Element{
             Tag: "form",
@@ -18,19 +18,19 @@ func FORM(children ...fmt.Stringer) *FormHTMLElement {
     }
 }
 
-func (e *FormHTMLElement) Children(children ...fmt.Stringer) *FormHTMLElement {
+func (e *FormHTMLElement) Children(children ...ElementBuilder) *FormHTMLElement {
     e.Descendants = append(e.Descendants, children...)
     return e
 }
 
-func(e *FormHTMLElement) IfChildren(condition bool, children ...fmt.Stringer) *FormHTMLElement {
+func(e *FormHTMLElement) IfChildren(condition bool, children ...ElementBuilder) *FormHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, children...)
     }
     return e
 }
 
-func(e *FormHTMLElement) TernChildren(condition bool, trueChildren, falseChildren fmt.Stringer) *FormHTMLElement {
+func(e *FormHTMLElement) TernChildren(condition bool, trueChildren, falseChildren ElementBuilder) *FormHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, trueChildren)
     } else {

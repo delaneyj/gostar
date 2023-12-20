@@ -8,7 +8,7 @@ type LabelHTMLElement struct {
     *Element
 }
 
-func LABEL(children ...fmt.Stringer) *LabelHTMLElement {
+func LABEL(children ...ElementBuilder) *LabelHTMLElement {
     return &LabelHTMLElement{
         Element: &Element{
             Tag: "label",
@@ -18,19 +18,19 @@ func LABEL(children ...fmt.Stringer) *LabelHTMLElement {
     }
 }
 
-func (e *LabelHTMLElement) Children(children ...fmt.Stringer) *LabelHTMLElement {
+func (e *LabelHTMLElement) Children(children ...ElementBuilder) *LabelHTMLElement {
     e.Descendants = append(e.Descendants, children...)
     return e
 }
 
-func(e *LabelHTMLElement) IfChildren(condition bool, children ...fmt.Stringer) *LabelHTMLElement {
+func(e *LabelHTMLElement) IfChildren(condition bool, children ...ElementBuilder) *LabelHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, children...)
     }
     return e
 }
 
-func(e *LabelHTMLElement) TernChildren(condition bool, trueChildren, falseChildren fmt.Stringer) *LabelHTMLElement {
+func(e *LabelHTMLElement) TernChildren(condition bool, trueChildren, falseChildren ElementBuilder) *LabelHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, trueChildren)
     } else {

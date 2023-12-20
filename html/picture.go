@@ -8,7 +8,7 @@ type PictureHTMLElement struct {
     *Element
 }
 
-func PICTURE(children ...fmt.Stringer) *PictureHTMLElement {
+func PICTURE(children ...ElementBuilder) *PictureHTMLElement {
     return &PictureHTMLElement{
         Element: &Element{
             Tag: "picture",
@@ -18,19 +18,19 @@ func PICTURE(children ...fmt.Stringer) *PictureHTMLElement {
     }
 }
 
-func (e *PictureHTMLElement) Children(children ...fmt.Stringer) *PictureHTMLElement {
+func (e *PictureHTMLElement) Children(children ...ElementBuilder) *PictureHTMLElement {
     e.Descendants = append(e.Descendants, children...)
     return e
 }
 
-func(e *PictureHTMLElement) IfChildren(condition bool, children ...fmt.Stringer) *PictureHTMLElement {
+func(e *PictureHTMLElement) IfChildren(condition bool, children ...ElementBuilder) *PictureHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, children...)
     }
     return e
 }
 
-func(e *PictureHTMLElement) TernChildren(condition bool, trueChildren, falseChildren fmt.Stringer) *PictureHTMLElement {
+func(e *PictureHTMLElement) TernChildren(condition bool, trueChildren, falseChildren ElementBuilder) *PictureHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, trueChildren)
     } else {

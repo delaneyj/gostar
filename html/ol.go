@@ -8,7 +8,7 @@ type OlHTMLElement struct {
     *Element
 }
 
-func OL(children ...fmt.Stringer) *OlHTMLElement {
+func OL(children ...ElementBuilder) *OlHTMLElement {
     return &OlHTMLElement{
         Element: &Element{
             Tag: "ol",
@@ -18,19 +18,19 @@ func OL(children ...fmt.Stringer) *OlHTMLElement {
     }
 }
 
-func (e *OlHTMLElement) Children(children ...fmt.Stringer) *OlHTMLElement {
+func (e *OlHTMLElement) Children(children ...ElementBuilder) *OlHTMLElement {
     e.Descendants = append(e.Descendants, children...)
     return e
 }
 
-func(e *OlHTMLElement) IfChildren(condition bool, children ...fmt.Stringer) *OlHTMLElement {
+func(e *OlHTMLElement) IfChildren(condition bool, children ...ElementBuilder) *OlHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, children...)
     }
     return e
 }
 
-func(e *OlHTMLElement) TernChildren(condition bool, trueChildren, falseChildren fmt.Stringer) *OlHTMLElement {
+func(e *OlHTMLElement) TernChildren(condition bool, trueChildren, falseChildren ElementBuilder) *OlHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, trueChildren)
     } else {

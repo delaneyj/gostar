@@ -8,7 +8,7 @@ type StyleHTMLElement struct {
     *Element
 }
 
-func STYLE(children ...fmt.Stringer) *StyleHTMLElement {
+func STYLE(children ...ElementBuilder) *StyleHTMLElement {
     return &StyleHTMLElement{
         Element: &Element{
             Tag: "style",
@@ -18,19 +18,19 @@ func STYLE(children ...fmt.Stringer) *StyleHTMLElement {
     }
 }
 
-func (e *StyleHTMLElement) Children(children ...fmt.Stringer) *StyleHTMLElement {
+func (e *StyleHTMLElement) Children(children ...ElementBuilder) *StyleHTMLElement {
     e.Descendants = append(e.Descendants, children...)
     return e
 }
 
-func(e *StyleHTMLElement) IfChildren(condition bool, children ...fmt.Stringer) *StyleHTMLElement {
+func(e *StyleHTMLElement) IfChildren(condition bool, children ...ElementBuilder) *StyleHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, children...)
     }
     return e
 }
 
-func(e *StyleHTMLElement) TernChildren(condition bool, trueChildren, falseChildren fmt.Stringer) *StyleHTMLElement {
+func(e *StyleHTMLElement) TernChildren(condition bool, trueChildren, falseChildren ElementBuilder) *StyleHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, trueChildren)
     } else {

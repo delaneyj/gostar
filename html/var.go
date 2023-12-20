@@ -8,7 +8,7 @@ type VarHTMLElement struct {
     *Element
 }
 
-func VAR(children ...fmt.Stringer) *VarHTMLElement {
+func VAR(children ...ElementBuilder) *VarHTMLElement {
     return &VarHTMLElement{
         Element: &Element{
             Tag: "var",
@@ -18,19 +18,19 @@ func VAR(children ...fmt.Stringer) *VarHTMLElement {
     }
 }
 
-func (e *VarHTMLElement) Children(children ...fmt.Stringer) *VarHTMLElement {
+func (e *VarHTMLElement) Children(children ...ElementBuilder) *VarHTMLElement {
     e.Descendants = append(e.Descendants, children...)
     return e
 }
 
-func(e *VarHTMLElement) IfChildren(condition bool, children ...fmt.Stringer) *VarHTMLElement {
+func(e *VarHTMLElement) IfChildren(condition bool, children ...ElementBuilder) *VarHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, children...)
     }
     return e
 }
 
-func(e *VarHTMLElement) TernChildren(condition bool, trueChildren, falseChildren fmt.Stringer) *VarHTMLElement {
+func(e *VarHTMLElement) TernChildren(condition bool, trueChildren, falseChildren ElementBuilder) *VarHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, trueChildren)
     } else {

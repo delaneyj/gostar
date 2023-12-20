@@ -8,7 +8,7 @@ type SummaryHTMLElement struct {
     *Element
 }
 
-func SUMMARY(children ...fmt.Stringer) *SummaryHTMLElement {
+func SUMMARY(children ...ElementBuilder) *SummaryHTMLElement {
     return &SummaryHTMLElement{
         Element: &Element{
             Tag: "summary",
@@ -18,19 +18,19 @@ func SUMMARY(children ...fmt.Stringer) *SummaryHTMLElement {
     }
 }
 
-func (e *SummaryHTMLElement) Children(children ...fmt.Stringer) *SummaryHTMLElement {
+func (e *SummaryHTMLElement) Children(children ...ElementBuilder) *SummaryHTMLElement {
     e.Descendants = append(e.Descendants, children...)
     return e
 }
 
-func(e *SummaryHTMLElement) IfChildren(condition bool, children ...fmt.Stringer) *SummaryHTMLElement {
+func(e *SummaryHTMLElement) IfChildren(condition bool, children ...ElementBuilder) *SummaryHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, children...)
     }
     return e
 }
 
-func(e *SummaryHTMLElement) TernChildren(condition bool, trueChildren, falseChildren fmt.Stringer) *SummaryHTMLElement {
+func(e *SummaryHTMLElement) TernChildren(condition bool, trueChildren, falseChildren ElementBuilder) *SummaryHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, trueChildren)
     } else {

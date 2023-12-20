@@ -8,7 +8,7 @@ type DfnHTMLElement struct {
     *Element
 }
 
-func DFN(children ...fmt.Stringer) *DfnHTMLElement {
+func DFN(children ...ElementBuilder) *DfnHTMLElement {
     return &DfnHTMLElement{
         Element: &Element{
             Tag: "dfn",
@@ -18,19 +18,19 @@ func DFN(children ...fmt.Stringer) *DfnHTMLElement {
     }
 }
 
-func (e *DfnHTMLElement) Children(children ...fmt.Stringer) *DfnHTMLElement {
+func (e *DfnHTMLElement) Children(children ...ElementBuilder) *DfnHTMLElement {
     e.Descendants = append(e.Descendants, children...)
     return e
 }
 
-func(e *DfnHTMLElement) IfChildren(condition bool, children ...fmt.Stringer) *DfnHTMLElement {
+func(e *DfnHTMLElement) IfChildren(condition bool, children ...ElementBuilder) *DfnHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, children...)
     }
     return e
 }
 
-func(e *DfnHTMLElement) TernChildren(condition bool, trueChildren, falseChildren fmt.Stringer) *DfnHTMLElement {
+func(e *DfnHTMLElement) TernChildren(condition bool, trueChildren, falseChildren ElementBuilder) *DfnHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, trueChildren)
     } else {

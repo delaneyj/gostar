@@ -8,7 +8,7 @@ type TdHTMLElement struct {
     *Element
 }
 
-func TD(children ...fmt.Stringer) *TdHTMLElement {
+func TD(children ...ElementBuilder) *TdHTMLElement {
     return &TdHTMLElement{
         Element: &Element{
             Tag: "td",
@@ -18,19 +18,19 @@ func TD(children ...fmt.Stringer) *TdHTMLElement {
     }
 }
 
-func (e *TdHTMLElement) Children(children ...fmt.Stringer) *TdHTMLElement {
+func (e *TdHTMLElement) Children(children ...ElementBuilder) *TdHTMLElement {
     e.Descendants = append(e.Descendants, children...)
     return e
 }
 
-func(e *TdHTMLElement) IfChildren(condition bool, children ...fmt.Stringer) *TdHTMLElement {
+func(e *TdHTMLElement) IfChildren(condition bool, children ...ElementBuilder) *TdHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, children...)
     }
     return e
 }
 
-func(e *TdHTMLElement) TernChildren(condition bool, trueChildren, falseChildren fmt.Stringer) *TdHTMLElement {
+func(e *TdHTMLElement) TernChildren(condition bool, trueChildren, falseChildren ElementBuilder) *TdHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, trueChildren)
     } else {

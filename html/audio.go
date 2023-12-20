@@ -8,7 +8,7 @@ type AudioHTMLElement struct {
     *Element
 }
 
-func AUDIO(children ...fmt.Stringer) *AudioHTMLElement {
+func AUDIO(children ...ElementBuilder) *AudioHTMLElement {
     return &AudioHTMLElement{
         Element: &Element{
             Tag: "audio",
@@ -18,19 +18,19 @@ func AUDIO(children ...fmt.Stringer) *AudioHTMLElement {
     }
 }
 
-func (e *AudioHTMLElement) Children(children ...fmt.Stringer) *AudioHTMLElement {
+func (e *AudioHTMLElement) Children(children ...ElementBuilder) *AudioHTMLElement {
     e.Descendants = append(e.Descendants, children...)
     return e
 }
 
-func(e *AudioHTMLElement) IfChildren(condition bool, children ...fmt.Stringer) *AudioHTMLElement {
+func(e *AudioHTMLElement) IfChildren(condition bool, children ...ElementBuilder) *AudioHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, children...)
     }
     return e
 }
 
-func(e *AudioHTMLElement) TernChildren(condition bool, trueChildren, falseChildren fmt.Stringer) *AudioHTMLElement {
+func(e *AudioHTMLElement) TernChildren(condition bool, trueChildren, falseChildren ElementBuilder) *AudioHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, trueChildren)
     } else {

@@ -8,7 +8,7 @@ type ButtonHTMLElement struct {
     *Element
 }
 
-func BUTTON(children ...fmt.Stringer) *ButtonHTMLElement {
+func BUTTON(children ...ElementBuilder) *ButtonHTMLElement {
     return &ButtonHTMLElement{
         Element: &Element{
             Tag: "button",
@@ -18,19 +18,19 @@ func BUTTON(children ...fmt.Stringer) *ButtonHTMLElement {
     }
 }
 
-func (e *ButtonHTMLElement) Children(children ...fmt.Stringer) *ButtonHTMLElement {
+func (e *ButtonHTMLElement) Children(children ...ElementBuilder) *ButtonHTMLElement {
     e.Descendants = append(e.Descendants, children...)
     return e
 }
 
-func(e *ButtonHTMLElement) IfChildren(condition bool, children ...fmt.Stringer) *ButtonHTMLElement {
+func(e *ButtonHTMLElement) IfChildren(condition bool, children ...ElementBuilder) *ButtonHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, children...)
     }
     return e
 }
 
-func(e *ButtonHTMLElement) TernChildren(condition bool, trueChildren, falseChildren fmt.Stringer) *ButtonHTMLElement {
+func(e *ButtonHTMLElement) TernChildren(condition bool, trueChildren, falseChildren ElementBuilder) *ButtonHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, trueChildren)
     } else {

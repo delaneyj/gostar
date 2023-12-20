@@ -8,7 +8,7 @@ type TrackHTMLElement struct {
     *Element
 }
 
-func TRACK(children ...fmt.Stringer) *TrackHTMLElement {
+func TRACK(children ...ElementBuilder) *TrackHTMLElement {
     return &TrackHTMLElement{
         Element: &Element{
             Tag: "track",
@@ -18,19 +18,19 @@ func TRACK(children ...fmt.Stringer) *TrackHTMLElement {
     }
 }
 
-func (e *TrackHTMLElement) Children(children ...fmt.Stringer) *TrackHTMLElement {
+func (e *TrackHTMLElement) Children(children ...ElementBuilder) *TrackHTMLElement {
     e.Descendants = append(e.Descendants, children...)
     return e
 }
 
-func(e *TrackHTMLElement) IfChildren(condition bool, children ...fmt.Stringer) *TrackHTMLElement {
+func(e *TrackHTMLElement) IfChildren(condition bool, children ...ElementBuilder) *TrackHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, children...)
     }
     return e
 }
 
-func(e *TrackHTMLElement) TernChildren(condition bool, trueChildren, falseChildren fmt.Stringer) *TrackHTMLElement {
+func(e *TrackHTMLElement) TernChildren(condition bool, trueChildren, falseChildren ElementBuilder) *TrackHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, trueChildren)
     } else {

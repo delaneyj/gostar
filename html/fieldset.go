@@ -8,7 +8,7 @@ type FieldsetHTMLElement struct {
     *Element
 }
 
-func FIELDSET(children ...fmt.Stringer) *FieldsetHTMLElement {
+func FIELDSET(children ...ElementBuilder) *FieldsetHTMLElement {
     return &FieldsetHTMLElement{
         Element: &Element{
             Tag: "fieldset",
@@ -18,19 +18,19 @@ func FIELDSET(children ...fmt.Stringer) *FieldsetHTMLElement {
     }
 }
 
-func (e *FieldsetHTMLElement) Children(children ...fmt.Stringer) *FieldsetHTMLElement {
+func (e *FieldsetHTMLElement) Children(children ...ElementBuilder) *FieldsetHTMLElement {
     e.Descendants = append(e.Descendants, children...)
     return e
 }
 
-func(e *FieldsetHTMLElement) IfChildren(condition bool, children ...fmt.Stringer) *FieldsetHTMLElement {
+func(e *FieldsetHTMLElement) IfChildren(condition bool, children ...ElementBuilder) *FieldsetHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, children...)
     }
     return e
 }
 
-func(e *FieldsetHTMLElement) TernChildren(condition bool, trueChildren, falseChildren fmt.Stringer) *FieldsetHTMLElement {
+func(e *FieldsetHTMLElement) TernChildren(condition bool, trueChildren, falseChildren ElementBuilder) *FieldsetHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, trueChildren)
     } else {

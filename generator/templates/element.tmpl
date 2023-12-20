@@ -8,7 +8,7 @@ type {{.ElementName }} struct {
     *Element
 }
 
-func {{.NewElement }}(children ...fmt.Stringer) *{{.ElementName }} {
+func {{.NewElement }}(children ...ElementBuilder) *{{.ElementName }} {
     return &{{.ElementName }}{
         Element: &Element{
             Tag: "{{.Tag}}",
@@ -18,19 +18,19 @@ func {{.NewElement }}(children ...fmt.Stringer) *{{.ElementName }} {
     }
 }
 
-func (e *{{.ElementName }}) Children(children ...fmt.Stringer) *{{.ElementName }} {
+func (e *{{.ElementName }}) Children(children ...ElementBuilder) *{{.ElementName }} {
     e.Descendants = append(e.Descendants, children...)
     return e
 }
 
-func(e *{{.ElementName }}) IfChildren(condition bool, children ...fmt.Stringer) *{{.ElementName }} {
+func(e *{{.ElementName }}) IfChildren(condition bool, children ...ElementBuilder) *{{.ElementName }} {
     if condition {
         e.Descendants = append(e.Descendants, children...)
     }
     return e
 }
 
-func(e *{{.ElementName }}) TernChildren(condition bool, trueChildren, falseChildren fmt.Stringer) *{{.ElementName }} {
+func(e *{{.ElementName }}) TernChildren(condition bool, trueChildren, falseChildren ElementBuilder) *{{.ElementName }} {
     if condition {
         e.Descendants = append(e.Descendants, trueChildren)
     } else {

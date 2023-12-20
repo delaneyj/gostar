@@ -8,7 +8,7 @@ type RpHTMLElement struct {
     *Element
 }
 
-func RP(children ...fmt.Stringer) *RpHTMLElement {
+func RP(children ...ElementBuilder) *RpHTMLElement {
     return &RpHTMLElement{
         Element: &Element{
             Tag: "rp",
@@ -18,19 +18,19 @@ func RP(children ...fmt.Stringer) *RpHTMLElement {
     }
 }
 
-func (e *RpHTMLElement) Children(children ...fmt.Stringer) *RpHTMLElement {
+func (e *RpHTMLElement) Children(children ...ElementBuilder) *RpHTMLElement {
     e.Descendants = append(e.Descendants, children...)
     return e
 }
 
-func(e *RpHTMLElement) IfChildren(condition bool, children ...fmt.Stringer) *RpHTMLElement {
+func(e *RpHTMLElement) IfChildren(condition bool, children ...ElementBuilder) *RpHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, children...)
     }
     return e
 }
 
-func(e *RpHTMLElement) TernChildren(condition bool, trueChildren, falseChildren fmt.Stringer) *RpHTMLElement {
+func(e *RpHTMLElement) TernChildren(condition bool, trueChildren, falseChildren ElementBuilder) *RpHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, trueChildren)
     } else {

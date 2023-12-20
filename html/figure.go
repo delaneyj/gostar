@@ -8,7 +8,7 @@ type FigureHTMLElement struct {
     *Element
 }
 
-func FIGURE(children ...fmt.Stringer) *FigureHTMLElement {
+func FIGURE(children ...ElementBuilder) *FigureHTMLElement {
     return &FigureHTMLElement{
         Element: &Element{
             Tag: "figure",
@@ -18,19 +18,19 @@ func FIGURE(children ...fmt.Stringer) *FigureHTMLElement {
     }
 }
 
-func (e *FigureHTMLElement) Children(children ...fmt.Stringer) *FigureHTMLElement {
+func (e *FigureHTMLElement) Children(children ...ElementBuilder) *FigureHTMLElement {
     e.Descendants = append(e.Descendants, children...)
     return e
 }
 
-func(e *FigureHTMLElement) IfChildren(condition bool, children ...fmt.Stringer) *FigureHTMLElement {
+func(e *FigureHTMLElement) IfChildren(condition bool, children ...ElementBuilder) *FigureHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, children...)
     }
     return e
 }
 
-func(e *FigureHTMLElement) TernChildren(condition bool, trueChildren, falseChildren fmt.Stringer) *FigureHTMLElement {
+func(e *FigureHTMLElement) TernChildren(condition bool, trueChildren, falseChildren ElementBuilder) *FigureHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, trueChildren)
     } else {

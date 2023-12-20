@@ -8,7 +8,7 @@ type ColHTMLElement struct {
     *Element
 }
 
-func COL(children ...fmt.Stringer) *ColHTMLElement {
+func COL(children ...ElementBuilder) *ColHTMLElement {
     return &ColHTMLElement{
         Element: &Element{
             Tag: "col",
@@ -18,19 +18,19 @@ func COL(children ...fmt.Stringer) *ColHTMLElement {
     }
 }
 
-func (e *ColHTMLElement) Children(children ...fmt.Stringer) *ColHTMLElement {
+func (e *ColHTMLElement) Children(children ...ElementBuilder) *ColHTMLElement {
     e.Descendants = append(e.Descendants, children...)
     return e
 }
 
-func(e *ColHTMLElement) IfChildren(condition bool, children ...fmt.Stringer) *ColHTMLElement {
+func(e *ColHTMLElement) IfChildren(condition bool, children ...ElementBuilder) *ColHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, children...)
     }
     return e
 }
 
-func(e *ColHTMLElement) TernChildren(condition bool, trueChildren, falseChildren fmt.Stringer) *ColHTMLElement {
+func(e *ColHTMLElement) TernChildren(condition bool, trueChildren, falseChildren ElementBuilder) *ColHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, trueChildren)
     } else {

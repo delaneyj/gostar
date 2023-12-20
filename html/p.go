@@ -8,7 +8,7 @@ type PHTMLElement struct {
     *Element
 }
 
-func P(children ...fmt.Stringer) *PHTMLElement {
+func P(children ...ElementBuilder) *PHTMLElement {
     return &PHTMLElement{
         Element: &Element{
             Tag: "p",
@@ -18,19 +18,19 @@ func P(children ...fmt.Stringer) *PHTMLElement {
     }
 }
 
-func (e *PHTMLElement) Children(children ...fmt.Stringer) *PHTMLElement {
+func (e *PHTMLElement) Children(children ...ElementBuilder) *PHTMLElement {
     e.Descendants = append(e.Descendants, children...)
     return e
 }
 
-func(e *PHTMLElement) IfChildren(condition bool, children ...fmt.Stringer) *PHTMLElement {
+func(e *PHTMLElement) IfChildren(condition bool, children ...ElementBuilder) *PHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, children...)
     }
     return e
 }
 
-func(e *PHTMLElement) TernChildren(condition bool, trueChildren, falseChildren fmt.Stringer) *PHTMLElement {
+func(e *PHTMLElement) TernChildren(condition bool, trueChildren, falseChildren ElementBuilder) *PHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, trueChildren)
     } else {

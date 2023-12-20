@@ -8,7 +8,7 @@ type SectionHTMLElement struct {
     *Element
 }
 
-func SECTION(children ...fmt.Stringer) *SectionHTMLElement {
+func SECTION(children ...ElementBuilder) *SectionHTMLElement {
     return &SectionHTMLElement{
         Element: &Element{
             Tag: "section",
@@ -18,19 +18,19 @@ func SECTION(children ...fmt.Stringer) *SectionHTMLElement {
     }
 }
 
-func (e *SectionHTMLElement) Children(children ...fmt.Stringer) *SectionHTMLElement {
+func (e *SectionHTMLElement) Children(children ...ElementBuilder) *SectionHTMLElement {
     e.Descendants = append(e.Descendants, children...)
     return e
 }
 
-func(e *SectionHTMLElement) IfChildren(condition bool, children ...fmt.Stringer) *SectionHTMLElement {
+func(e *SectionHTMLElement) IfChildren(condition bool, children ...ElementBuilder) *SectionHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, children...)
     }
     return e
 }
 
-func(e *SectionHTMLElement) TernChildren(condition bool, trueChildren, falseChildren fmt.Stringer) *SectionHTMLElement {
+func(e *SectionHTMLElement) TernChildren(condition bool, trueChildren, falseChildren ElementBuilder) *SectionHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, trueChildren)
     } else {

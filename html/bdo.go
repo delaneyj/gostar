@@ -8,7 +8,7 @@ type BdoHTMLElement struct {
     *Element
 }
 
-func BDO(children ...fmt.Stringer) *BdoHTMLElement {
+func BDO(children ...ElementBuilder) *BdoHTMLElement {
     return &BdoHTMLElement{
         Element: &Element{
             Tag: "bdo",
@@ -18,19 +18,19 @@ func BDO(children ...fmt.Stringer) *BdoHTMLElement {
     }
 }
 
-func (e *BdoHTMLElement) Children(children ...fmt.Stringer) *BdoHTMLElement {
+func (e *BdoHTMLElement) Children(children ...ElementBuilder) *BdoHTMLElement {
     e.Descendants = append(e.Descendants, children...)
     return e
 }
 
-func(e *BdoHTMLElement) IfChildren(condition bool, children ...fmt.Stringer) *BdoHTMLElement {
+func(e *BdoHTMLElement) IfChildren(condition bool, children ...ElementBuilder) *BdoHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, children...)
     }
     return e
 }
 
-func(e *BdoHTMLElement) TernChildren(condition bool, trueChildren, falseChildren fmt.Stringer) *BdoHTMLElement {
+func(e *BdoHTMLElement) TernChildren(condition bool, trueChildren, falseChildren ElementBuilder) *BdoHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, trueChildren)
     } else {

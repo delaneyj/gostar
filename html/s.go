@@ -8,7 +8,7 @@ type SHTMLElement struct {
     *Element
 }
 
-func S(children ...fmt.Stringer) *SHTMLElement {
+func S(children ...ElementBuilder) *SHTMLElement {
     return &SHTMLElement{
         Element: &Element{
             Tag: "s",
@@ -18,19 +18,19 @@ func S(children ...fmt.Stringer) *SHTMLElement {
     }
 }
 
-func (e *SHTMLElement) Children(children ...fmt.Stringer) *SHTMLElement {
+func (e *SHTMLElement) Children(children ...ElementBuilder) *SHTMLElement {
     e.Descendants = append(e.Descendants, children...)
     return e
 }
 
-func(e *SHTMLElement) IfChildren(condition bool, children ...fmt.Stringer) *SHTMLElement {
+func(e *SHTMLElement) IfChildren(condition bool, children ...ElementBuilder) *SHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, children...)
     }
     return e
 }
 
-func(e *SHTMLElement) TernChildren(condition bool, trueChildren, falseChildren fmt.Stringer) *SHTMLElement {
+func(e *SHTMLElement) TernChildren(condition bool, trueChildren, falseChildren ElementBuilder) *SHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, trueChildren)
     } else {

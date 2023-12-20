@@ -8,7 +8,7 @@ type TbodyHTMLElement struct {
     *Element
 }
 
-func TBODY(children ...fmt.Stringer) *TbodyHTMLElement {
+func TBODY(children ...ElementBuilder) *TbodyHTMLElement {
     return &TbodyHTMLElement{
         Element: &Element{
             Tag: "tbody",
@@ -18,19 +18,19 @@ func TBODY(children ...fmt.Stringer) *TbodyHTMLElement {
     }
 }
 
-func (e *TbodyHTMLElement) Children(children ...fmt.Stringer) *TbodyHTMLElement {
+func (e *TbodyHTMLElement) Children(children ...ElementBuilder) *TbodyHTMLElement {
     e.Descendants = append(e.Descendants, children...)
     return e
 }
 
-func(e *TbodyHTMLElement) IfChildren(condition bool, children ...fmt.Stringer) *TbodyHTMLElement {
+func(e *TbodyHTMLElement) IfChildren(condition bool, children ...ElementBuilder) *TbodyHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, children...)
     }
     return e
 }
 
-func(e *TbodyHTMLElement) TernChildren(condition bool, trueChildren, falseChildren fmt.Stringer) *TbodyHTMLElement {
+func(e *TbodyHTMLElement) TernChildren(condition bool, trueChildren, falseChildren ElementBuilder) *TbodyHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, trueChildren)
     } else {

@@ -8,7 +8,7 @@ type ProgressHTMLElement struct {
     *Element
 }
 
-func PROGRESS(children ...fmt.Stringer) *ProgressHTMLElement {
+func PROGRESS(children ...ElementBuilder) *ProgressHTMLElement {
     return &ProgressHTMLElement{
         Element: &Element{
             Tag: "progress",
@@ -18,19 +18,19 @@ func PROGRESS(children ...fmt.Stringer) *ProgressHTMLElement {
     }
 }
 
-func (e *ProgressHTMLElement) Children(children ...fmt.Stringer) *ProgressHTMLElement {
+func (e *ProgressHTMLElement) Children(children ...ElementBuilder) *ProgressHTMLElement {
     e.Descendants = append(e.Descendants, children...)
     return e
 }
 
-func(e *ProgressHTMLElement) IfChildren(condition bool, children ...fmt.Stringer) *ProgressHTMLElement {
+func(e *ProgressHTMLElement) IfChildren(condition bool, children ...ElementBuilder) *ProgressHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, children...)
     }
     return e
 }
 
-func(e *ProgressHTMLElement) TernChildren(condition bool, trueChildren, falseChildren fmt.Stringer) *ProgressHTMLElement {
+func(e *ProgressHTMLElement) TernChildren(condition bool, trueChildren, falseChildren ElementBuilder) *ProgressHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, trueChildren)
     } else {

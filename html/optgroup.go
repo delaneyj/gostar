@@ -8,7 +8,7 @@ type OptgroupHTMLElement struct {
     *Element
 }
 
-func OPTGROUP(children ...fmt.Stringer) *OptgroupHTMLElement {
+func OPTGROUP(children ...ElementBuilder) *OptgroupHTMLElement {
     return &OptgroupHTMLElement{
         Element: &Element{
             Tag: "optgroup",
@@ -18,19 +18,19 @@ func OPTGROUP(children ...fmt.Stringer) *OptgroupHTMLElement {
     }
 }
 
-func (e *OptgroupHTMLElement) Children(children ...fmt.Stringer) *OptgroupHTMLElement {
+func (e *OptgroupHTMLElement) Children(children ...ElementBuilder) *OptgroupHTMLElement {
     e.Descendants = append(e.Descendants, children...)
     return e
 }
 
-func(e *OptgroupHTMLElement) IfChildren(condition bool, children ...fmt.Stringer) *OptgroupHTMLElement {
+func(e *OptgroupHTMLElement) IfChildren(condition bool, children ...ElementBuilder) *OptgroupHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, children...)
     }
     return e
 }
 
-func(e *OptgroupHTMLElement) TernChildren(condition bool, trueChildren, falseChildren fmt.Stringer) *OptgroupHTMLElement {
+func(e *OptgroupHTMLElement) TernChildren(condition bool, trueChildren, falseChildren ElementBuilder) *OptgroupHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, trueChildren)
     } else {

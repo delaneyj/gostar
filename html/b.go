@@ -8,7 +8,7 @@ type BHTMLElement struct {
     *Element
 }
 
-func B(children ...fmt.Stringer) *BHTMLElement {
+func B(children ...ElementBuilder) *BHTMLElement {
     return &BHTMLElement{
         Element: &Element{
             Tag: "b",
@@ -18,19 +18,19 @@ func B(children ...fmt.Stringer) *BHTMLElement {
     }
 }
 
-func (e *BHTMLElement) Children(children ...fmt.Stringer) *BHTMLElement {
+func (e *BHTMLElement) Children(children ...ElementBuilder) *BHTMLElement {
     e.Descendants = append(e.Descendants, children...)
     return e
 }
 
-func(e *BHTMLElement) IfChildren(condition bool, children ...fmt.Stringer) *BHTMLElement {
+func(e *BHTMLElement) IfChildren(condition bool, children ...ElementBuilder) *BHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, children...)
     }
     return e
 }
 
-func(e *BHTMLElement) TernChildren(condition bool, trueChildren, falseChildren fmt.Stringer) *BHTMLElement {
+func(e *BHTMLElement) TernChildren(condition bool, trueChildren, falseChildren ElementBuilder) *BHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, trueChildren)
     } else {

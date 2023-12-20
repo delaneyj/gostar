@@ -8,7 +8,7 @@ type H1HTMLElement struct {
     *Element
 }
 
-func H1(children ...fmt.Stringer) *H1HTMLElement {
+func H1(children ...ElementBuilder) *H1HTMLElement {
     return &H1HTMLElement{
         Element: &Element{
             Tag: "h1",
@@ -18,19 +18,19 @@ func H1(children ...fmt.Stringer) *H1HTMLElement {
     }
 }
 
-func (e *H1HTMLElement) Children(children ...fmt.Stringer) *H1HTMLElement {
+func (e *H1HTMLElement) Children(children ...ElementBuilder) *H1HTMLElement {
     e.Descendants = append(e.Descendants, children...)
     return e
 }
 
-func(e *H1HTMLElement) IfChildren(condition bool, children ...fmt.Stringer) *H1HTMLElement {
+func(e *H1HTMLElement) IfChildren(condition bool, children ...ElementBuilder) *H1HTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, children...)
     }
     return e
 }
 
-func(e *H1HTMLElement) TernChildren(condition bool, trueChildren, falseChildren fmt.Stringer) *H1HTMLElement {
+func(e *H1HTMLElement) TernChildren(condition bool, trueChildren, falseChildren ElementBuilder) *H1HTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, trueChildren)
     } else {

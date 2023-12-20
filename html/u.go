@@ -8,7 +8,7 @@ type UHTMLElement struct {
     *Element
 }
 
-func U(children ...fmt.Stringer) *UHTMLElement {
+func U(children ...ElementBuilder) *UHTMLElement {
     return &UHTMLElement{
         Element: &Element{
             Tag: "u",
@@ -18,19 +18,19 @@ func U(children ...fmt.Stringer) *UHTMLElement {
     }
 }
 
-func (e *UHTMLElement) Children(children ...fmt.Stringer) *UHTMLElement {
+func (e *UHTMLElement) Children(children ...ElementBuilder) *UHTMLElement {
     e.Descendants = append(e.Descendants, children...)
     return e
 }
 
-func(e *UHTMLElement) IfChildren(condition bool, children ...fmt.Stringer) *UHTMLElement {
+func(e *UHTMLElement) IfChildren(condition bool, children ...ElementBuilder) *UHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, children...)
     }
     return e
 }
 
-func(e *UHTMLElement) TernChildren(condition bool, trueChildren, falseChildren fmt.Stringer) *UHTMLElement {
+func(e *UHTMLElement) TernChildren(condition bool, trueChildren, falseChildren ElementBuilder) *UHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, trueChildren)
     } else {

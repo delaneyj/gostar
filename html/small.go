@@ -8,7 +8,7 @@ type SmallHTMLElement struct {
     *Element
 }
 
-func SMALL(children ...fmt.Stringer) *SmallHTMLElement {
+func SMALL(children ...ElementBuilder) *SmallHTMLElement {
     return &SmallHTMLElement{
         Element: &Element{
             Tag: "small",
@@ -18,19 +18,19 @@ func SMALL(children ...fmt.Stringer) *SmallHTMLElement {
     }
 }
 
-func (e *SmallHTMLElement) Children(children ...fmt.Stringer) *SmallHTMLElement {
+func (e *SmallHTMLElement) Children(children ...ElementBuilder) *SmallHTMLElement {
     e.Descendants = append(e.Descendants, children...)
     return e
 }
 
-func(e *SmallHTMLElement) IfChildren(condition bool, children ...fmt.Stringer) *SmallHTMLElement {
+func(e *SmallHTMLElement) IfChildren(condition bool, children ...ElementBuilder) *SmallHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, children...)
     }
     return e
 }
 
-func(e *SmallHTMLElement) TernChildren(condition bool, trueChildren, falseChildren fmt.Stringer) *SmallHTMLElement {
+func(e *SmallHTMLElement) TernChildren(condition bool, trueChildren, falseChildren ElementBuilder) *SmallHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, trueChildren)
     } else {

@@ -8,7 +8,7 @@ type BlockquoteHTMLElement struct {
     *Element
 }
 
-func BLOCKQUOTE(children ...fmt.Stringer) *BlockquoteHTMLElement {
+func BLOCKQUOTE(children ...ElementBuilder) *BlockquoteHTMLElement {
     return &BlockquoteHTMLElement{
         Element: &Element{
             Tag: "blockquote",
@@ -18,19 +18,19 @@ func BLOCKQUOTE(children ...fmt.Stringer) *BlockquoteHTMLElement {
     }
 }
 
-func (e *BlockquoteHTMLElement) Children(children ...fmt.Stringer) *BlockquoteHTMLElement {
+func (e *BlockquoteHTMLElement) Children(children ...ElementBuilder) *BlockquoteHTMLElement {
     e.Descendants = append(e.Descendants, children...)
     return e
 }
 
-func(e *BlockquoteHTMLElement) IfChildren(condition bool, children ...fmt.Stringer) *BlockquoteHTMLElement {
+func(e *BlockquoteHTMLElement) IfChildren(condition bool, children ...ElementBuilder) *BlockquoteHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, children...)
     }
     return e
 }
 
-func(e *BlockquoteHTMLElement) TernChildren(condition bool, trueChildren, falseChildren fmt.Stringer) *BlockquoteHTMLElement {
+func(e *BlockquoteHTMLElement) TernChildren(condition bool, trueChildren, falseChildren ElementBuilder) *BlockquoteHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, trueChildren)
     } else {

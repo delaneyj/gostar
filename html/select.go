@@ -8,7 +8,7 @@ type SelectHTMLElement struct {
     *Element
 }
 
-func SELECT(children ...fmt.Stringer) *SelectHTMLElement {
+func SELECT(children ...ElementBuilder) *SelectHTMLElement {
     return &SelectHTMLElement{
         Element: &Element{
             Tag: "select",
@@ -18,19 +18,19 @@ func SELECT(children ...fmt.Stringer) *SelectHTMLElement {
     }
 }
 
-func (e *SelectHTMLElement) Children(children ...fmt.Stringer) *SelectHTMLElement {
+func (e *SelectHTMLElement) Children(children ...ElementBuilder) *SelectHTMLElement {
     e.Descendants = append(e.Descendants, children...)
     return e
 }
 
-func(e *SelectHTMLElement) IfChildren(condition bool, children ...fmt.Stringer) *SelectHTMLElement {
+func(e *SelectHTMLElement) IfChildren(condition bool, children ...ElementBuilder) *SelectHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, children...)
     }
     return e
 }
 
-func(e *SelectHTMLElement) TernChildren(condition bool, trueChildren, falseChildren fmt.Stringer) *SelectHTMLElement {
+func(e *SelectHTMLElement) TernChildren(condition bool, trueChildren, falseChildren ElementBuilder) *SelectHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, trueChildren)
     } else {

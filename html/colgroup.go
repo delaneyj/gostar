@@ -8,7 +8,7 @@ type ColgroupHTMLElement struct {
     *Element
 }
 
-func COLGROUP(children ...fmt.Stringer) *ColgroupHTMLElement {
+func COLGROUP(children ...ElementBuilder) *ColgroupHTMLElement {
     return &ColgroupHTMLElement{
         Element: &Element{
             Tag: "colgroup",
@@ -18,19 +18,19 @@ func COLGROUP(children ...fmt.Stringer) *ColgroupHTMLElement {
     }
 }
 
-func (e *ColgroupHTMLElement) Children(children ...fmt.Stringer) *ColgroupHTMLElement {
+func (e *ColgroupHTMLElement) Children(children ...ElementBuilder) *ColgroupHTMLElement {
     e.Descendants = append(e.Descendants, children...)
     return e
 }
 
-func(e *ColgroupHTMLElement) IfChildren(condition bool, children ...fmt.Stringer) *ColgroupHTMLElement {
+func(e *ColgroupHTMLElement) IfChildren(condition bool, children ...ElementBuilder) *ColgroupHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, children...)
     }
     return e
 }
 
-func(e *ColgroupHTMLElement) TernChildren(condition bool, trueChildren, falseChildren fmt.Stringer) *ColgroupHTMLElement {
+func(e *ColgroupHTMLElement) TernChildren(condition bool, trueChildren, falseChildren ElementBuilder) *ColgroupHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, trueChildren)
     } else {

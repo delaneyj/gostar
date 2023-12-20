@@ -8,7 +8,7 @@ type RtHTMLElement struct {
     *Element
 }
 
-func RT(children ...fmt.Stringer) *RtHTMLElement {
+func RT(children ...ElementBuilder) *RtHTMLElement {
     return &RtHTMLElement{
         Element: &Element{
             Tag: "rt",
@@ -18,19 +18,19 @@ func RT(children ...fmt.Stringer) *RtHTMLElement {
     }
 }
 
-func (e *RtHTMLElement) Children(children ...fmt.Stringer) *RtHTMLElement {
+func (e *RtHTMLElement) Children(children ...ElementBuilder) *RtHTMLElement {
     e.Descendants = append(e.Descendants, children...)
     return e
 }
 
-func(e *RtHTMLElement) IfChildren(condition bool, children ...fmt.Stringer) *RtHTMLElement {
+func(e *RtHTMLElement) IfChildren(condition bool, children ...ElementBuilder) *RtHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, children...)
     }
     return e
 }
 
-func(e *RtHTMLElement) TernChildren(condition bool, trueChildren, falseChildren fmt.Stringer) *RtHTMLElement {
+func(e *RtHTMLElement) TernChildren(condition bool, trueChildren, falseChildren ElementBuilder) *RtHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, trueChildren)
     } else {

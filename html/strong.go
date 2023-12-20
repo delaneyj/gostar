@@ -8,7 +8,7 @@ type StrongHTMLElement struct {
     *Element
 }
 
-func STRONG(children ...fmt.Stringer) *StrongHTMLElement {
+func STRONG(children ...ElementBuilder) *StrongHTMLElement {
     return &StrongHTMLElement{
         Element: &Element{
             Tag: "strong",
@@ -18,19 +18,19 @@ func STRONG(children ...fmt.Stringer) *StrongHTMLElement {
     }
 }
 
-func (e *StrongHTMLElement) Children(children ...fmt.Stringer) *StrongHTMLElement {
+func (e *StrongHTMLElement) Children(children ...ElementBuilder) *StrongHTMLElement {
     e.Descendants = append(e.Descendants, children...)
     return e
 }
 
-func(e *StrongHTMLElement) IfChildren(condition bool, children ...fmt.Stringer) *StrongHTMLElement {
+func(e *StrongHTMLElement) IfChildren(condition bool, children ...ElementBuilder) *StrongHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, children...)
     }
     return e
 }
 
-func(e *StrongHTMLElement) TernChildren(condition bool, trueChildren, falseChildren fmt.Stringer) *StrongHTMLElement {
+func(e *StrongHTMLElement) TernChildren(condition bool, trueChildren, falseChildren ElementBuilder) *StrongHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, trueChildren)
     } else {

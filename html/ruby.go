@@ -8,7 +8,7 @@ type RubyHTMLElement struct {
     *Element
 }
 
-func RUBY(children ...fmt.Stringer) *RubyHTMLElement {
+func RUBY(children ...ElementBuilder) *RubyHTMLElement {
     return &RubyHTMLElement{
         Element: &Element{
             Tag: "ruby",
@@ -18,19 +18,19 @@ func RUBY(children ...fmt.Stringer) *RubyHTMLElement {
     }
 }
 
-func (e *RubyHTMLElement) Children(children ...fmt.Stringer) *RubyHTMLElement {
+func (e *RubyHTMLElement) Children(children ...ElementBuilder) *RubyHTMLElement {
     e.Descendants = append(e.Descendants, children...)
     return e
 }
 
-func(e *RubyHTMLElement) IfChildren(condition bool, children ...fmt.Stringer) *RubyHTMLElement {
+func(e *RubyHTMLElement) IfChildren(condition bool, children ...ElementBuilder) *RubyHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, children...)
     }
     return e
 }
 
-func(e *RubyHTMLElement) TernChildren(condition bool, trueChildren, falseChildren fmt.Stringer) *RubyHTMLElement {
+func(e *RubyHTMLElement) TernChildren(condition bool, trueChildren, falseChildren ElementBuilder) *RubyHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, trueChildren)
     } else {

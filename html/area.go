@@ -8,7 +8,7 @@ type AreaHTMLElement struct {
     *Element
 }
 
-func AREA(children ...fmt.Stringer) *AreaHTMLElement {
+func AREA(children ...ElementBuilder) *AreaHTMLElement {
     return &AreaHTMLElement{
         Element: &Element{
             Tag: "area",
@@ -18,19 +18,19 @@ func AREA(children ...fmt.Stringer) *AreaHTMLElement {
     }
 }
 
-func (e *AreaHTMLElement) Children(children ...fmt.Stringer) *AreaHTMLElement {
+func (e *AreaHTMLElement) Children(children ...ElementBuilder) *AreaHTMLElement {
     e.Descendants = append(e.Descendants, children...)
     return e
 }
 
-func(e *AreaHTMLElement) IfChildren(condition bool, children ...fmt.Stringer) *AreaHTMLElement {
+func(e *AreaHTMLElement) IfChildren(condition bool, children ...ElementBuilder) *AreaHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, children...)
     }
     return e
 }
 
-func(e *AreaHTMLElement) TernChildren(condition bool, trueChildren, falseChildren fmt.Stringer) *AreaHTMLElement {
+func(e *AreaHTMLElement) TernChildren(condition bool, trueChildren, falseChildren ElementBuilder) *AreaHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, trueChildren)
     } else {

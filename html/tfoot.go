@@ -8,7 +8,7 @@ type TfootHTMLElement struct {
     *Element
 }
 
-func TFOOT(children ...fmt.Stringer) *TfootHTMLElement {
+func TFOOT(children ...ElementBuilder) *TfootHTMLElement {
     return &TfootHTMLElement{
         Element: &Element{
             Tag: "tfoot",
@@ -18,19 +18,19 @@ func TFOOT(children ...fmt.Stringer) *TfootHTMLElement {
     }
 }
 
-func (e *TfootHTMLElement) Children(children ...fmt.Stringer) *TfootHTMLElement {
+func (e *TfootHTMLElement) Children(children ...ElementBuilder) *TfootHTMLElement {
     e.Descendants = append(e.Descendants, children...)
     return e
 }
 
-func(e *TfootHTMLElement) IfChildren(condition bool, children ...fmt.Stringer) *TfootHTMLElement {
+func(e *TfootHTMLElement) IfChildren(condition bool, children ...ElementBuilder) *TfootHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, children...)
     }
     return e
 }
 
-func(e *TfootHTMLElement) TernChildren(condition bool, trueChildren, falseChildren fmt.Stringer) *TfootHTMLElement {
+func(e *TfootHTMLElement) TernChildren(condition bool, trueChildren, falseChildren ElementBuilder) *TfootHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, trueChildren)
     } else {

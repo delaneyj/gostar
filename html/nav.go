@@ -8,7 +8,7 @@ type NavHTMLElement struct {
     *Element
 }
 
-func NAV(children ...fmt.Stringer) *NavHTMLElement {
+func NAV(children ...ElementBuilder) *NavHTMLElement {
     return &NavHTMLElement{
         Element: &Element{
             Tag: "nav",
@@ -18,19 +18,19 @@ func NAV(children ...fmt.Stringer) *NavHTMLElement {
     }
 }
 
-func (e *NavHTMLElement) Children(children ...fmt.Stringer) *NavHTMLElement {
+func (e *NavHTMLElement) Children(children ...ElementBuilder) *NavHTMLElement {
     e.Descendants = append(e.Descendants, children...)
     return e
 }
 
-func(e *NavHTMLElement) IfChildren(condition bool, children ...fmt.Stringer) *NavHTMLElement {
+func(e *NavHTMLElement) IfChildren(condition bool, children ...ElementBuilder) *NavHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, children...)
     }
     return e
 }
 
-func(e *NavHTMLElement) TernChildren(condition bool, trueChildren, falseChildren fmt.Stringer) *NavHTMLElement {
+func(e *NavHTMLElement) TernChildren(condition bool, trueChildren, falseChildren ElementBuilder) *NavHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, trueChildren)
     } else {

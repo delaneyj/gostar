@@ -8,7 +8,7 @@ type SubHTMLElement struct {
     *Element
 }
 
-func SUB(children ...fmt.Stringer) *SubHTMLElement {
+func SUB(children ...ElementBuilder) *SubHTMLElement {
     return &SubHTMLElement{
         Element: &Element{
             Tag: "sub",
@@ -18,19 +18,19 @@ func SUB(children ...fmt.Stringer) *SubHTMLElement {
     }
 }
 
-func (e *SubHTMLElement) Children(children ...fmt.Stringer) *SubHTMLElement {
+func (e *SubHTMLElement) Children(children ...ElementBuilder) *SubHTMLElement {
     e.Descendants = append(e.Descendants, children...)
     return e
 }
 
-func(e *SubHTMLElement) IfChildren(condition bool, children ...fmt.Stringer) *SubHTMLElement {
+func(e *SubHTMLElement) IfChildren(condition bool, children ...ElementBuilder) *SubHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, children...)
     }
     return e
 }
 
-func(e *SubHTMLElement) TernChildren(condition bool, trueChildren, falseChildren fmt.Stringer) *SubHTMLElement {
+func(e *SubHTMLElement) TernChildren(condition bool, trueChildren, falseChildren ElementBuilder) *SubHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, trueChildren)
     } else {

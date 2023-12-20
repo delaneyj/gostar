@@ -8,7 +8,7 @@ type EmHTMLElement struct {
     *Element
 }
 
-func EM(children ...fmt.Stringer) *EmHTMLElement {
+func EM(children ...ElementBuilder) *EmHTMLElement {
     return &EmHTMLElement{
         Element: &Element{
             Tag: "em",
@@ -18,19 +18,19 @@ func EM(children ...fmt.Stringer) *EmHTMLElement {
     }
 }
 
-func (e *EmHTMLElement) Children(children ...fmt.Stringer) *EmHTMLElement {
+func (e *EmHTMLElement) Children(children ...ElementBuilder) *EmHTMLElement {
     e.Descendants = append(e.Descendants, children...)
     return e
 }
 
-func(e *EmHTMLElement) IfChildren(condition bool, children ...fmt.Stringer) *EmHTMLElement {
+func(e *EmHTMLElement) IfChildren(condition bool, children ...ElementBuilder) *EmHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, children...)
     }
     return e
 }
 
-func(e *EmHTMLElement) TernChildren(condition bool, trueChildren, falseChildren fmt.Stringer) *EmHTMLElement {
+func(e *EmHTMLElement) TernChildren(condition bool, trueChildren, falseChildren ElementBuilder) *EmHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, trueChildren)
     } else {

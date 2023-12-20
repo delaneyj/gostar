@@ -8,7 +8,7 @@ type DialogHTMLElement struct {
     *Element
 }
 
-func DIALOG(children ...fmt.Stringer) *DialogHTMLElement {
+func DIALOG(children ...ElementBuilder) *DialogHTMLElement {
     return &DialogHTMLElement{
         Element: &Element{
             Tag: "dialog",
@@ -18,19 +18,19 @@ func DIALOG(children ...fmt.Stringer) *DialogHTMLElement {
     }
 }
 
-func (e *DialogHTMLElement) Children(children ...fmt.Stringer) *DialogHTMLElement {
+func (e *DialogHTMLElement) Children(children ...ElementBuilder) *DialogHTMLElement {
     e.Descendants = append(e.Descendants, children...)
     return e
 }
 
-func(e *DialogHTMLElement) IfChildren(condition bool, children ...fmt.Stringer) *DialogHTMLElement {
+func(e *DialogHTMLElement) IfChildren(condition bool, children ...ElementBuilder) *DialogHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, children...)
     }
     return e
 }
 
-func(e *DialogHTMLElement) TernChildren(condition bool, trueChildren, falseChildren fmt.Stringer) *DialogHTMLElement {
+func(e *DialogHTMLElement) TernChildren(condition bool, trueChildren, falseChildren ElementBuilder) *DialogHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, trueChildren)
     } else {

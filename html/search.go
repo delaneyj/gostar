@@ -8,7 +8,7 @@ type SearchHTMLElement struct {
     *Element
 }
 
-func SEARCH(children ...fmt.Stringer) *SearchHTMLElement {
+func SEARCH(children ...ElementBuilder) *SearchHTMLElement {
     return &SearchHTMLElement{
         Element: &Element{
             Tag: "search",
@@ -18,19 +18,19 @@ func SEARCH(children ...fmt.Stringer) *SearchHTMLElement {
     }
 }
 
-func (e *SearchHTMLElement) Children(children ...fmt.Stringer) *SearchHTMLElement {
+func (e *SearchHTMLElement) Children(children ...ElementBuilder) *SearchHTMLElement {
     e.Descendants = append(e.Descendants, children...)
     return e
 }
 
-func(e *SearchHTMLElement) IfChildren(condition bool, children ...fmt.Stringer) *SearchHTMLElement {
+func(e *SearchHTMLElement) IfChildren(condition bool, children ...ElementBuilder) *SearchHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, children...)
     }
     return e
 }
 
-func(e *SearchHTMLElement) TernChildren(condition bool, trueChildren, falseChildren fmt.Stringer) *SearchHTMLElement {
+func(e *SearchHTMLElement) TernChildren(condition bool, trueChildren, falseChildren ElementBuilder) *SearchHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, trueChildren)
     } else {

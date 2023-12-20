@@ -8,7 +8,7 @@ type LiHTMLElement struct {
     *Element
 }
 
-func LI(children ...fmt.Stringer) *LiHTMLElement {
+func LI(children ...ElementBuilder) *LiHTMLElement {
     return &LiHTMLElement{
         Element: &Element{
             Tag: "li",
@@ -18,19 +18,19 @@ func LI(children ...fmt.Stringer) *LiHTMLElement {
     }
 }
 
-func (e *LiHTMLElement) Children(children ...fmt.Stringer) *LiHTMLElement {
+func (e *LiHTMLElement) Children(children ...ElementBuilder) *LiHTMLElement {
     e.Descendants = append(e.Descendants, children...)
     return e
 }
 
-func(e *LiHTMLElement) IfChildren(condition bool, children ...fmt.Stringer) *LiHTMLElement {
+func(e *LiHTMLElement) IfChildren(condition bool, children ...ElementBuilder) *LiHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, children...)
     }
     return e
 }
 
-func(e *LiHTMLElement) TernChildren(condition bool, trueChildren, falseChildren fmt.Stringer) *LiHTMLElement {
+func(e *LiHTMLElement) TernChildren(condition bool, trueChildren, falseChildren ElementBuilder) *LiHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, trueChildren)
     } else {

@@ -8,7 +8,7 @@ type DivHTMLElement struct {
     *Element
 }
 
-func DIV(children ...fmt.Stringer) *DivHTMLElement {
+func DIV(children ...ElementBuilder) *DivHTMLElement {
     return &DivHTMLElement{
         Element: &Element{
             Tag: "div",
@@ -18,19 +18,19 @@ func DIV(children ...fmt.Stringer) *DivHTMLElement {
     }
 }
 
-func (e *DivHTMLElement) Children(children ...fmt.Stringer) *DivHTMLElement {
+func (e *DivHTMLElement) Children(children ...ElementBuilder) *DivHTMLElement {
     e.Descendants = append(e.Descendants, children...)
     return e
 }
 
-func(e *DivHTMLElement) IfChildren(condition bool, children ...fmt.Stringer) *DivHTMLElement {
+func(e *DivHTMLElement) IfChildren(condition bool, children ...ElementBuilder) *DivHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, children...)
     }
     return e
 }
 
-func(e *DivHTMLElement) TernChildren(condition bool, trueChildren, falseChildren fmt.Stringer) *DivHTMLElement {
+func(e *DivHTMLElement) TernChildren(condition bool, trueChildren, falseChildren ElementBuilder) *DivHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, trueChildren)
     } else {

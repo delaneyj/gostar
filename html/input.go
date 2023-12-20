@@ -8,7 +8,7 @@ type InputHTMLElement struct {
     *Element
 }
 
-func INPUT(children ...fmt.Stringer) *InputHTMLElement {
+func INPUT(children ...ElementBuilder) *InputHTMLElement {
     return &InputHTMLElement{
         Element: &Element{
             Tag: "input",
@@ -18,19 +18,19 @@ func INPUT(children ...fmt.Stringer) *InputHTMLElement {
     }
 }
 
-func (e *InputHTMLElement) Children(children ...fmt.Stringer) *InputHTMLElement {
+func (e *InputHTMLElement) Children(children ...ElementBuilder) *InputHTMLElement {
     e.Descendants = append(e.Descendants, children...)
     return e
 }
 
-func(e *InputHTMLElement) IfChildren(condition bool, children ...fmt.Stringer) *InputHTMLElement {
+func(e *InputHTMLElement) IfChildren(condition bool, children ...ElementBuilder) *InputHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, children...)
     }
     return e
 }
 
-func(e *InputHTMLElement) TernChildren(condition bool, trueChildren, falseChildren fmt.Stringer) *InputHTMLElement {
+func(e *InputHTMLElement) TernChildren(condition bool, trueChildren, falseChildren ElementBuilder) *InputHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, trueChildren)
     } else {

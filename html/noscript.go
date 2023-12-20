@@ -8,7 +8,7 @@ type NoscriptHTMLElement struct {
     *Element
 }
 
-func NOSCRIPT(children ...fmt.Stringer) *NoscriptHTMLElement {
+func NOSCRIPT(children ...ElementBuilder) *NoscriptHTMLElement {
     return &NoscriptHTMLElement{
         Element: &Element{
             Tag: "noscript",
@@ -18,19 +18,19 @@ func NOSCRIPT(children ...fmt.Stringer) *NoscriptHTMLElement {
     }
 }
 
-func (e *NoscriptHTMLElement) Children(children ...fmt.Stringer) *NoscriptHTMLElement {
+func (e *NoscriptHTMLElement) Children(children ...ElementBuilder) *NoscriptHTMLElement {
     e.Descendants = append(e.Descendants, children...)
     return e
 }
 
-func(e *NoscriptHTMLElement) IfChildren(condition bool, children ...fmt.Stringer) *NoscriptHTMLElement {
+func(e *NoscriptHTMLElement) IfChildren(condition bool, children ...ElementBuilder) *NoscriptHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, children...)
     }
     return e
 }
 
-func(e *NoscriptHTMLElement) TernChildren(condition bool, trueChildren, falseChildren fmt.Stringer) *NoscriptHTMLElement {
+func(e *NoscriptHTMLElement) TernChildren(condition bool, trueChildren, falseChildren ElementBuilder) *NoscriptHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, trueChildren)
     } else {

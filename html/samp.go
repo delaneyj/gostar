@@ -8,7 +8,7 @@ type SampHTMLElement struct {
     *Element
 }
 
-func SAMP(children ...fmt.Stringer) *SampHTMLElement {
+func SAMP(children ...ElementBuilder) *SampHTMLElement {
     return &SampHTMLElement{
         Element: &Element{
             Tag: "samp",
@@ -18,19 +18,19 @@ func SAMP(children ...fmt.Stringer) *SampHTMLElement {
     }
 }
 
-func (e *SampHTMLElement) Children(children ...fmt.Stringer) *SampHTMLElement {
+func (e *SampHTMLElement) Children(children ...ElementBuilder) *SampHTMLElement {
     e.Descendants = append(e.Descendants, children...)
     return e
 }
 
-func(e *SampHTMLElement) IfChildren(condition bool, children ...fmt.Stringer) *SampHTMLElement {
+func(e *SampHTMLElement) IfChildren(condition bool, children ...ElementBuilder) *SampHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, children...)
     }
     return e
 }
 
-func(e *SampHTMLElement) TernChildren(condition bool, trueChildren, falseChildren fmt.Stringer) *SampHTMLElement {
+func(e *SampHTMLElement) TernChildren(condition bool, trueChildren, falseChildren ElementBuilder) *SampHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, trueChildren)
     } else {

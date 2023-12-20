@@ -8,7 +8,7 @@ type TitleHTMLElement struct {
     *Element
 }
 
-func TITLE(children ...fmt.Stringer) *TitleHTMLElement {
+func TITLE(children ...ElementBuilder) *TitleHTMLElement {
     return &TitleHTMLElement{
         Element: &Element{
             Tag: "title",
@@ -18,19 +18,19 @@ func TITLE(children ...fmt.Stringer) *TitleHTMLElement {
     }
 }
 
-func (e *TitleHTMLElement) Children(children ...fmt.Stringer) *TitleHTMLElement {
+func (e *TitleHTMLElement) Children(children ...ElementBuilder) *TitleHTMLElement {
     e.Descendants = append(e.Descendants, children...)
     return e
 }
 
-func(e *TitleHTMLElement) IfChildren(condition bool, children ...fmt.Stringer) *TitleHTMLElement {
+func(e *TitleHTMLElement) IfChildren(condition bool, children ...ElementBuilder) *TitleHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, children...)
     }
     return e
 }
 
-func(e *TitleHTMLElement) TernChildren(condition bool, trueChildren, falseChildren fmt.Stringer) *TitleHTMLElement {
+func(e *TitleHTMLElement) TernChildren(condition bool, trueChildren, falseChildren ElementBuilder) *TitleHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, trueChildren)
     } else {

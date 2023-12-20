@@ -8,7 +8,7 @@ type CiteHTMLElement struct {
     *Element
 }
 
-func CITE(children ...fmt.Stringer) *CiteHTMLElement {
+func CITE(children ...ElementBuilder) *CiteHTMLElement {
     return &CiteHTMLElement{
         Element: &Element{
             Tag: "cite",
@@ -18,19 +18,19 @@ func CITE(children ...fmt.Stringer) *CiteHTMLElement {
     }
 }
 
-func (e *CiteHTMLElement) Children(children ...fmt.Stringer) *CiteHTMLElement {
+func (e *CiteHTMLElement) Children(children ...ElementBuilder) *CiteHTMLElement {
     e.Descendants = append(e.Descendants, children...)
     return e
 }
 
-func(e *CiteHTMLElement) IfChildren(condition bool, children ...fmt.Stringer) *CiteHTMLElement {
+func(e *CiteHTMLElement) IfChildren(condition bool, children ...ElementBuilder) *CiteHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, children...)
     }
     return e
 }
 
-func(e *CiteHTMLElement) TernChildren(condition bool, trueChildren, falseChildren fmt.Stringer) *CiteHTMLElement {
+func(e *CiteHTMLElement) TernChildren(condition bool, trueChildren, falseChildren ElementBuilder) *CiteHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, trueChildren)
     } else {

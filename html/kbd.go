@@ -8,7 +8,7 @@ type KbdHTMLElement struct {
     *Element
 }
 
-func KBD(children ...fmt.Stringer) *KbdHTMLElement {
+func KBD(children ...ElementBuilder) *KbdHTMLElement {
     return &KbdHTMLElement{
         Element: &Element{
             Tag: "kbd",
@@ -18,19 +18,19 @@ func KBD(children ...fmt.Stringer) *KbdHTMLElement {
     }
 }
 
-func (e *KbdHTMLElement) Children(children ...fmt.Stringer) *KbdHTMLElement {
+func (e *KbdHTMLElement) Children(children ...ElementBuilder) *KbdHTMLElement {
     e.Descendants = append(e.Descendants, children...)
     return e
 }
 
-func(e *KbdHTMLElement) IfChildren(condition bool, children ...fmt.Stringer) *KbdHTMLElement {
+func(e *KbdHTMLElement) IfChildren(condition bool, children ...ElementBuilder) *KbdHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, children...)
     }
     return e
 }
 
-func(e *KbdHTMLElement) TernChildren(condition bool, trueChildren, falseChildren fmt.Stringer) *KbdHTMLElement {
+func(e *KbdHTMLElement) TernChildren(condition bool, trueChildren, falseChildren ElementBuilder) *KbdHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, trueChildren)
     } else {

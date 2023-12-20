@@ -8,7 +8,7 @@ type AddressHTMLElement struct {
     *Element
 }
 
-func ADDRESS(children ...fmt.Stringer) *AddressHTMLElement {
+func ADDRESS(children ...ElementBuilder) *AddressHTMLElement {
     return &AddressHTMLElement{
         Element: &Element{
             Tag: "address",
@@ -18,19 +18,19 @@ func ADDRESS(children ...fmt.Stringer) *AddressHTMLElement {
     }
 }
 
-func (e *AddressHTMLElement) Children(children ...fmt.Stringer) *AddressHTMLElement {
+func (e *AddressHTMLElement) Children(children ...ElementBuilder) *AddressHTMLElement {
     e.Descendants = append(e.Descendants, children...)
     return e
 }
 
-func(e *AddressHTMLElement) IfChildren(condition bool, children ...fmt.Stringer) *AddressHTMLElement {
+func(e *AddressHTMLElement) IfChildren(condition bool, children ...ElementBuilder) *AddressHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, children...)
     }
     return e
 }
 
-func(e *AddressHTMLElement) TernChildren(condition bool, trueChildren, falseChildren fmt.Stringer) *AddressHTMLElement {
+func(e *AddressHTMLElement) TernChildren(condition bool, trueChildren, falseChildren ElementBuilder) *AddressHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, trueChildren)
     } else {

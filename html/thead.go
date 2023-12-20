@@ -8,7 +8,7 @@ type TheadHTMLElement struct {
     *Element
 }
 
-func THEAD(children ...fmt.Stringer) *TheadHTMLElement {
+func THEAD(children ...ElementBuilder) *TheadHTMLElement {
     return &TheadHTMLElement{
         Element: &Element{
             Tag: "thead",
@@ -18,19 +18,19 @@ func THEAD(children ...fmt.Stringer) *TheadHTMLElement {
     }
 }
 
-func (e *TheadHTMLElement) Children(children ...fmt.Stringer) *TheadHTMLElement {
+func (e *TheadHTMLElement) Children(children ...ElementBuilder) *TheadHTMLElement {
     e.Descendants = append(e.Descendants, children...)
     return e
 }
 
-func(e *TheadHTMLElement) IfChildren(condition bool, children ...fmt.Stringer) *TheadHTMLElement {
+func(e *TheadHTMLElement) IfChildren(condition bool, children ...ElementBuilder) *TheadHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, children...)
     }
     return e
 }
 
-func(e *TheadHTMLElement) TernChildren(condition bool, trueChildren, falseChildren fmt.Stringer) *TheadHTMLElement {
+func(e *TheadHTMLElement) TernChildren(condition bool, trueChildren, falseChildren ElementBuilder) *TheadHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, trueChildren)
     } else {

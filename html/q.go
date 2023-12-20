@@ -8,7 +8,7 @@ type QHTMLElement struct {
     *Element
 }
 
-func Q(children ...fmt.Stringer) *QHTMLElement {
+func Q(children ...ElementBuilder) *QHTMLElement {
     return &QHTMLElement{
         Element: &Element{
             Tag: "q",
@@ -18,19 +18,19 @@ func Q(children ...fmt.Stringer) *QHTMLElement {
     }
 }
 
-func (e *QHTMLElement) Children(children ...fmt.Stringer) *QHTMLElement {
+func (e *QHTMLElement) Children(children ...ElementBuilder) *QHTMLElement {
     e.Descendants = append(e.Descendants, children...)
     return e
 }
 
-func(e *QHTMLElement) IfChildren(condition bool, children ...fmt.Stringer) *QHTMLElement {
+func(e *QHTMLElement) IfChildren(condition bool, children ...ElementBuilder) *QHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, children...)
     }
     return e
 }
 
-func(e *QHTMLElement) TernChildren(condition bool, trueChildren, falseChildren fmt.Stringer) *QHTMLElement {
+func(e *QHTMLElement) TernChildren(condition bool, trueChildren, falseChildren ElementBuilder) *QHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, trueChildren)
     } else {

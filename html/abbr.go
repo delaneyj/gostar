@@ -8,7 +8,7 @@ type AbbrHTMLElement struct {
     *Element
 }
 
-func ABBR(children ...fmt.Stringer) *AbbrHTMLElement {
+func ABBR(children ...ElementBuilder) *AbbrHTMLElement {
     return &AbbrHTMLElement{
         Element: &Element{
             Tag: "abbr",
@@ -18,19 +18,19 @@ func ABBR(children ...fmt.Stringer) *AbbrHTMLElement {
     }
 }
 
-func (e *AbbrHTMLElement) Children(children ...fmt.Stringer) *AbbrHTMLElement {
+func (e *AbbrHTMLElement) Children(children ...ElementBuilder) *AbbrHTMLElement {
     e.Descendants = append(e.Descendants, children...)
     return e
 }
 
-func(e *AbbrHTMLElement) IfChildren(condition bool, children ...fmt.Stringer) *AbbrHTMLElement {
+func(e *AbbrHTMLElement) IfChildren(condition bool, children ...ElementBuilder) *AbbrHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, children...)
     }
     return e
 }
 
-func(e *AbbrHTMLElement) TernChildren(condition bool, trueChildren, falseChildren fmt.Stringer) *AbbrHTMLElement {
+func(e *AbbrHTMLElement) TernChildren(condition bool, trueChildren, falseChildren ElementBuilder) *AbbrHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, trueChildren)
     } else {

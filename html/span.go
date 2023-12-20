@@ -8,7 +8,7 @@ type SpanHTMLElement struct {
     *Element
 }
 
-func SPAN(children ...fmt.Stringer) *SpanHTMLElement {
+func SPAN(children ...ElementBuilder) *SpanHTMLElement {
     return &SpanHTMLElement{
         Element: &Element{
             Tag: "span",
@@ -18,19 +18,19 @@ func SPAN(children ...fmt.Stringer) *SpanHTMLElement {
     }
 }
 
-func (e *SpanHTMLElement) Children(children ...fmt.Stringer) *SpanHTMLElement {
+func (e *SpanHTMLElement) Children(children ...ElementBuilder) *SpanHTMLElement {
     e.Descendants = append(e.Descendants, children...)
     return e
 }
 
-func(e *SpanHTMLElement) IfChildren(condition bool, children ...fmt.Stringer) *SpanHTMLElement {
+func(e *SpanHTMLElement) IfChildren(condition bool, children ...ElementBuilder) *SpanHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, children...)
     }
     return e
 }
 
-func(e *SpanHTMLElement) TernChildren(condition bool, trueChildren, falseChildren fmt.Stringer) *SpanHTMLElement {
+func(e *SpanHTMLElement) TernChildren(condition bool, trueChildren, falseChildren ElementBuilder) *SpanHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, trueChildren)
     } else {

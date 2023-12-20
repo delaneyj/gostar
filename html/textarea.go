@@ -8,7 +8,7 @@ type TextareaHTMLElement struct {
     *Element
 }
 
-func TEXTAREA(children ...fmt.Stringer) *TextareaHTMLElement {
+func TEXTAREA(children ...ElementBuilder) *TextareaHTMLElement {
     return &TextareaHTMLElement{
         Element: &Element{
             Tag: "textarea",
@@ -18,19 +18,19 @@ func TEXTAREA(children ...fmt.Stringer) *TextareaHTMLElement {
     }
 }
 
-func (e *TextareaHTMLElement) Children(children ...fmt.Stringer) *TextareaHTMLElement {
+func (e *TextareaHTMLElement) Children(children ...ElementBuilder) *TextareaHTMLElement {
     e.Descendants = append(e.Descendants, children...)
     return e
 }
 
-func(e *TextareaHTMLElement) IfChildren(condition bool, children ...fmt.Stringer) *TextareaHTMLElement {
+func(e *TextareaHTMLElement) IfChildren(condition bool, children ...ElementBuilder) *TextareaHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, children...)
     }
     return e
 }
 
-func(e *TextareaHTMLElement) TernChildren(condition bool, trueChildren, falseChildren fmt.Stringer) *TextareaHTMLElement {
+func(e *TextareaHTMLElement) TernChildren(condition bool, trueChildren, falseChildren ElementBuilder) *TextareaHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, trueChildren)
     } else {

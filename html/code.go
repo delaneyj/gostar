@@ -8,7 +8,7 @@ type CodeHTMLElement struct {
     *Element
 }
 
-func CODE(children ...fmt.Stringer) *CodeHTMLElement {
+func CODE(children ...ElementBuilder) *CodeHTMLElement {
     return &CodeHTMLElement{
         Element: &Element{
             Tag: "code",
@@ -18,19 +18,19 @@ func CODE(children ...fmt.Stringer) *CodeHTMLElement {
     }
 }
 
-func (e *CodeHTMLElement) Children(children ...fmt.Stringer) *CodeHTMLElement {
+func (e *CodeHTMLElement) Children(children ...ElementBuilder) *CodeHTMLElement {
     e.Descendants = append(e.Descendants, children...)
     return e
 }
 
-func(e *CodeHTMLElement) IfChildren(condition bool, children ...fmt.Stringer) *CodeHTMLElement {
+func(e *CodeHTMLElement) IfChildren(condition bool, children ...ElementBuilder) *CodeHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, children...)
     }
     return e
 }
 
-func(e *CodeHTMLElement) TernChildren(condition bool, trueChildren, falseChildren fmt.Stringer) *CodeHTMLElement {
+func(e *CodeHTMLElement) TernChildren(condition bool, trueChildren, falseChildren ElementBuilder) *CodeHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, trueChildren)
     } else {

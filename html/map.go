@@ -8,7 +8,7 @@ type MapHTMLElement struct {
     *Element
 }
 
-func MAP(children ...fmt.Stringer) *MapHTMLElement {
+func MAP(children ...ElementBuilder) *MapHTMLElement {
     return &MapHTMLElement{
         Element: &Element{
             Tag: "map",
@@ -18,19 +18,19 @@ func MAP(children ...fmt.Stringer) *MapHTMLElement {
     }
 }
 
-func (e *MapHTMLElement) Children(children ...fmt.Stringer) *MapHTMLElement {
+func (e *MapHTMLElement) Children(children ...ElementBuilder) *MapHTMLElement {
     e.Descendants = append(e.Descendants, children...)
     return e
 }
 
-func(e *MapHTMLElement) IfChildren(condition bool, children ...fmt.Stringer) *MapHTMLElement {
+func(e *MapHTMLElement) IfChildren(condition bool, children ...ElementBuilder) *MapHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, children...)
     }
     return e
 }
 
-func(e *MapHTMLElement) TernChildren(condition bool, trueChildren, falseChildren fmt.Stringer) *MapHTMLElement {
+func(e *MapHTMLElement) TernChildren(condition bool, trueChildren, falseChildren ElementBuilder) *MapHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, trueChildren)
     } else {

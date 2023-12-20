@@ -8,7 +8,7 @@ type SlotHTMLElement struct {
     *Element
 }
 
-func SLOT(children ...fmt.Stringer) *SlotHTMLElement {
+func SLOT(children ...ElementBuilder) *SlotHTMLElement {
     return &SlotHTMLElement{
         Element: &Element{
             Tag: "slot",
@@ -18,19 +18,19 @@ func SLOT(children ...fmt.Stringer) *SlotHTMLElement {
     }
 }
 
-func (e *SlotHTMLElement) Children(children ...fmt.Stringer) *SlotHTMLElement {
+func (e *SlotHTMLElement) Children(children ...ElementBuilder) *SlotHTMLElement {
     e.Descendants = append(e.Descendants, children...)
     return e
 }
 
-func(e *SlotHTMLElement) IfChildren(condition bool, children ...fmt.Stringer) *SlotHTMLElement {
+func(e *SlotHTMLElement) IfChildren(condition bool, children ...ElementBuilder) *SlotHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, children...)
     }
     return e
 }
 
-func(e *SlotHTMLElement) TernChildren(condition bool, trueChildren, falseChildren fmt.Stringer) *SlotHTMLElement {
+func(e *SlotHTMLElement) TernChildren(condition bool, trueChildren, falseChildren ElementBuilder) *SlotHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, trueChildren)
     } else {

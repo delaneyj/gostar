@@ -8,7 +8,7 @@ type MenuHTMLElement struct {
     *Element
 }
 
-func MENU(children ...fmt.Stringer) *MenuHTMLElement {
+func MENU(children ...ElementBuilder) *MenuHTMLElement {
     return &MenuHTMLElement{
         Element: &Element{
             Tag: "menu",
@@ -18,19 +18,19 @@ func MENU(children ...fmt.Stringer) *MenuHTMLElement {
     }
 }
 
-func (e *MenuHTMLElement) Children(children ...fmt.Stringer) *MenuHTMLElement {
+func (e *MenuHTMLElement) Children(children ...ElementBuilder) *MenuHTMLElement {
     e.Descendants = append(e.Descendants, children...)
     return e
 }
 
-func(e *MenuHTMLElement) IfChildren(condition bool, children ...fmt.Stringer) *MenuHTMLElement {
+func(e *MenuHTMLElement) IfChildren(condition bool, children ...ElementBuilder) *MenuHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, children...)
     }
     return e
 }
 
-func(e *MenuHTMLElement) TernChildren(condition bool, trueChildren, falseChildren fmt.Stringer) *MenuHTMLElement {
+func(e *MenuHTMLElement) TernChildren(condition bool, trueChildren, falseChildren ElementBuilder) *MenuHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, trueChildren)
     } else {

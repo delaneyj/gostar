@@ -8,7 +8,7 @@ type DetailsHTMLElement struct {
     *Element
 }
 
-func DETAILS(children ...fmt.Stringer) *DetailsHTMLElement {
+func DETAILS(children ...ElementBuilder) *DetailsHTMLElement {
     return &DetailsHTMLElement{
         Element: &Element{
             Tag: "details",
@@ -18,19 +18,19 @@ func DETAILS(children ...fmt.Stringer) *DetailsHTMLElement {
     }
 }
 
-func (e *DetailsHTMLElement) Children(children ...fmt.Stringer) *DetailsHTMLElement {
+func (e *DetailsHTMLElement) Children(children ...ElementBuilder) *DetailsHTMLElement {
     e.Descendants = append(e.Descendants, children...)
     return e
 }
 
-func(e *DetailsHTMLElement) IfChildren(condition bool, children ...fmt.Stringer) *DetailsHTMLElement {
+func(e *DetailsHTMLElement) IfChildren(condition bool, children ...ElementBuilder) *DetailsHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, children...)
     }
     return e
 }
 
-func(e *DetailsHTMLElement) TernChildren(condition bool, trueChildren, falseChildren fmt.Stringer) *DetailsHTMLElement {
+func(e *DetailsHTMLElement) TernChildren(condition bool, trueChildren, falseChildren ElementBuilder) *DetailsHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, trueChildren)
     } else {

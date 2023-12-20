@@ -8,7 +8,7 @@ type MeterHTMLElement struct {
     *Element
 }
 
-func METER(children ...fmt.Stringer) *MeterHTMLElement {
+func METER(children ...ElementBuilder) *MeterHTMLElement {
     return &MeterHTMLElement{
         Element: &Element{
             Tag: "meter",
@@ -18,19 +18,19 @@ func METER(children ...fmt.Stringer) *MeterHTMLElement {
     }
 }
 
-func (e *MeterHTMLElement) Children(children ...fmt.Stringer) *MeterHTMLElement {
+func (e *MeterHTMLElement) Children(children ...ElementBuilder) *MeterHTMLElement {
     e.Descendants = append(e.Descendants, children...)
     return e
 }
 
-func(e *MeterHTMLElement) IfChildren(condition bool, children ...fmt.Stringer) *MeterHTMLElement {
+func(e *MeterHTMLElement) IfChildren(condition bool, children ...ElementBuilder) *MeterHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, children...)
     }
     return e
 }
 
-func(e *MeterHTMLElement) TernChildren(condition bool, trueChildren, falseChildren fmt.Stringer) *MeterHTMLElement {
+func(e *MeterHTMLElement) TernChildren(condition bool, trueChildren, falseChildren ElementBuilder) *MeterHTMLElement {
     if condition {
         e.Descendants = append(e.Descendants, trueChildren)
     } else {
