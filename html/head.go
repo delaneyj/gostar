@@ -76,8 +76,8 @@ func (e *HeadHTMLElement) CustomDataRemove(key string) *HeadHTMLElement {
 // ACCESSKEY sets the "accesskey" attribute.
 // Keyboard shortcut to activate or focus element
 // Values values are constrained to:
-//   - ordered_set_of_unique_space_separated_tokens
 //   - identical_to
+//   - ordered_set_of_unique_space_separated_tokens
 func (e *HeadHTMLElement) ACCESSKEY(v string) *HeadHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -101,18 +101,12 @@ func (e *HeadHTMLElement) RemoveACCESSKEY(v string) *HeadHTMLElement {
 // AUTOCAPITALIZE sets the "autocapitalize" attribute.
 // Recommended autocapitalization behavior (for supported input methods)
 // Values values are constrained to:
-//   - on
-//   - on
-//   - off
-//   - off
+//   - characters
 //   - none
-//   - none
-//   - sentences
+//   - off
+//   - on
 //   - sentences
 //   - words
-//   - words
-//   - characters
-//   - characters
 func (e *HeadHTMLElement) AUTOCAPITALIZE(v string) *HeadHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -210,9 +204,9 @@ func (e *HeadHTMLElement) RemoveCLASS(v string) *HeadHTMLElement {
 // CONTENTEDITABLE sets the "contenteditable" attribute.
 // Whether the element is editable
 // Values values are constrained to:
-//   - true
-//   - plaintext_only
 //   - false
+//   - plaintext_only
+//   - true
 func (e *HeadHTMLElement) CONTENTEDITABLE(v string) *HeadHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -237,8 +231,6 @@ func (e *HeadHTMLElement) RemoveCONTENTEDITABLE(v string) *HeadHTMLElement {
 // The text directionality of the element
 // Values values are constrained to:
 //   - ltr
-//   - ltr
-//   - rtl
 //   - rtl
 func (e *HeadHTMLElement) DIR(v string) *HeadHTMLElement {
 	if e.StringAttributes == nil {
@@ -263,8 +255,8 @@ func (e *HeadHTMLElement) RemoveDIR(v string) *HeadHTMLElement {
 // DRAGGABLE sets the "draggable" attribute.
 // Whether the element is draggable
 // Values values are constrained to:
-//   - true
 //   - false
+//   - true
 func (e *HeadHTMLElement) DRAGGABLE(v string) *HeadHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -288,19 +280,12 @@ func (e *HeadHTMLElement) RemoveDRAGGABLE(v string) *HeadHTMLElement {
 // ENTERKEYHINT sets the "enterkeyhint" attribute.
 // Hint for selecting an enter key action
 // Values values are constrained to:
-//   - enter
-//   - enter
 //   - done
-//   - done
-//   - go
+//   - enter
 //   - go
 //   - next
-//   - next
-//   - previous
 //   - previous
 //   - search
-//   - search
-//   - send
 //   - send
 func (e *HeadHTMLElement) ENTERKEYHINT(v string) *HeadHTMLElement {
 	if e.StringAttributes == nil {
@@ -325,10 +310,8 @@ func (e *HeadHTMLElement) RemoveENTERKEYHINT(v string) *HeadHTMLElement {
 // HIDDEN sets the "hidden" attribute.
 // Whether the element is relevant
 // Values values are constrained to:
-//   - until_found
-//   - until_found
 //   - hidden
-//   - hidden
+//   - until_found
 func (e *HeadHTMLElement) HIDDEN(v string) *HeadHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -410,22 +393,14 @@ func (e *HeadHTMLElement) SetINERT(b bool) *HeadHTMLElement {
 // INPUTMODE sets the "inputmode" attribute.
 // Hint for selecting an input modality
 // Values values are constrained to:
-//   - none
-//   - none
-//   - text
-//   - text
-//   - tel
-//   - tel
-//   - email
-//   - email
-//   - url
-//   - url
-//   - numeric
-//   - numeric
 //   - decimal
-//   - decimal
+//   - email
+//   - none
+//   - numeric
 //   - search
-//   - search
+//   - tel
+//   - text
+//   - url
 func (e *HeadHTMLElement) INPUTMODE(v string) *HeadHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -449,8 +424,8 @@ func (e *HeadHTMLElement) RemoveINPUTMODE(v string) *HeadHTMLElement {
 // IS sets the "is" attribute.
 // Creates a customized built-in element
 // Values values are constrained to:
-//   - valid_custom_element_name
 //   - customized_built_in_element
+//   - valid_custom_element_name
 func (e *HeadHTMLElement) IS(v string) *HeadHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -498,9 +473,9 @@ func (e *HeadHTMLElement) RemoveITEMID(v string) *HeadHTMLElement {
 // ITEMPROP sets the "itemprop" attribute.
 // Property names of a microdata item
 // Values values are constrained to:
+//   - defined_property_names
 //   - unordered_set_of_unique_space_separated_tokens
 //   - valid_absolute_ur_ls
-//   - defined_property_names
 func (e *HeadHTMLElement) ITEMPROP(v string) *HeadHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -655,8 +630,6 @@ func (e *HeadHTMLElement) RemoveNONCE(v string) *HeadHTMLElement {
 // Makes the element a popover element
 // Values values are constrained to:
 //   - auto
-//   - auto
-//   - manual
 //   - manual
 func (e *HeadHTMLElement) POPOVER(v string) *HeadHTMLElement {
 	if e.StringAttributes == nil {
@@ -705,8 +678,8 @@ func (e *HeadHTMLElement) RemoveSLOT(v string) *HeadHTMLElement {
 // SPELLCHECK sets the "spellcheck" attribute.
 // Whether the element is to have its spelling and grammar checked
 // Values values are constrained to:
-//   - true
 //   - false
+//   - true
 func (e *HeadHTMLElement) SPELLCHECK(v string) *HeadHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -813,8 +786,8 @@ func (e *HeadHTMLElement) RemoveTITLE(v string) *HeadHTMLElement {
 // TRANSLATE sets the "translate" attribute.
 // Whether the element is to be translated when the page is localized
 // Values values are constrained to:
-//   - yes
 //   - no
+//   - yes
 func (e *HeadHTMLElement) TRANSLATE(v string) *HeadHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}

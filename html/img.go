@@ -76,8 +76,8 @@ func (e *ImgHTMLElement) CustomDataRemove(key string) *ImgHTMLElement {
 // ACCESSKEY sets the "accesskey" attribute.
 // Keyboard shortcut to activate or focus element
 // Values values are constrained to:
-//   - ordered_set_of_unique_space_separated_tokens
 //   - identical_to
+//   - ordered_set_of_unique_space_separated_tokens
 func (e *ImgHTMLElement) ACCESSKEY(v string) *ImgHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -125,18 +125,12 @@ func (e *ImgHTMLElement) RemoveALT(v string) *ImgHTMLElement {
 // AUTOCAPITALIZE sets the "autocapitalize" attribute.
 // Recommended autocapitalization behavior (for supported input methods)
 // Values values are constrained to:
-//   - on
-//   - on
-//   - off
-//   - off
+//   - characters
 //   - none
-//   - none
-//   - sentences
+//   - off
+//   - on
 //   - sentences
 //   - words
-//   - words
-//   - characters
-//   - characters
 func (e *ImgHTMLElement) AUTOCAPITALIZE(v string) *ImgHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -234,9 +228,9 @@ func (e *ImgHTMLElement) RemoveCLASS(v string) *ImgHTMLElement {
 // CONTENTEDITABLE sets the "contenteditable" attribute.
 // Whether the element is editable
 // Values values are constrained to:
-//   - true
-//   - plaintext_only
 //   - false
+//   - plaintext_only
+//   - true
 func (e *ImgHTMLElement) CONTENTEDITABLE(v string) *ImgHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -261,8 +255,6 @@ func (e *ImgHTMLElement) RemoveCONTENTEDITABLE(v string) *ImgHTMLElement {
 // How the element handles crossorigin requests
 // Values values are constrained to:
 //   - anonymous
-//   - anonymous
-//   - use_credentials
 //   - use_credentials
 func (e *ImgHTMLElement) CROSSORIGIN(v string) *ImgHTMLElement {
 	if e.StringAttributes == nil {
@@ -287,12 +279,9 @@ func (e *ImgHTMLElement) RemoveCROSSORIGIN(v string) *ImgHTMLElement {
 // DECODING sets the "decoding" attribute.
 // Decoding hint to use when processing this image for presentation
 // Values values are constrained to:
-//   - sync
-//   - sync
-//   - async
 //   - async
 //   - auto
-//   - auto
+//   - sync
 func (e *ImgHTMLElement) DECODING(v string) *ImgHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -317,8 +306,6 @@ func (e *ImgHTMLElement) RemoveDECODING(v string) *ImgHTMLElement {
 // The text directionality of the element
 // Values values are constrained to:
 //   - ltr
-//   - ltr
-//   - rtl
 //   - rtl
 func (e *ImgHTMLElement) DIR(v string) *ImgHTMLElement {
 	if e.StringAttributes == nil {
@@ -343,8 +330,8 @@ func (e *ImgHTMLElement) RemoveDIR(v string) *ImgHTMLElement {
 // DRAGGABLE sets the "draggable" attribute.
 // Whether the element is draggable
 // Values values are constrained to:
-//   - true
 //   - false
+//   - true
 func (e *ImgHTMLElement) DRAGGABLE(v string) *ImgHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -368,19 +355,12 @@ func (e *ImgHTMLElement) RemoveDRAGGABLE(v string) *ImgHTMLElement {
 // ENTERKEYHINT sets the "enterkeyhint" attribute.
 // Hint for selecting an enter key action
 // Values values are constrained to:
-//   - enter
-//   - enter
 //   - done
-//   - done
-//   - go
+//   - enter
 //   - go
 //   - next
-//   - next
-//   - previous
 //   - previous
 //   - search
-//   - search
-//   - send
 //   - send
 func (e *ImgHTMLElement) ENTERKEYHINT(v string) *ImgHTMLElement {
 	if e.StringAttributes == nil {
@@ -406,10 +386,7 @@ func (e *ImgHTMLElement) RemoveENTERKEYHINT(v string) *ImgHTMLElement {
 // Sets the priority for fetches initiated by the element
 // Values values are constrained to:
 //   - auto
-//   - auto
 //   - high
-//   - high
-//   - low
 //   - low
 func (e *ImgHTMLElement) FETCHPRIORITY(v string) *ImgHTMLElement {
 	if e.StringAttributes == nil {
@@ -458,10 +435,8 @@ func (e *ImgHTMLElement) RemoveHEIGHT(v int) *ImgHTMLElement {
 // HIDDEN sets the "hidden" attribute.
 // Whether the element is relevant
 // Values values are constrained to:
-//   - until_found
-//   - until_found
 //   - hidden
-//   - hidden
+//   - until_found
 func (e *ImgHTMLElement) HIDDEN(v string) *ImgHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -543,22 +518,14 @@ func (e *ImgHTMLElement) SetINERT(b bool) *ImgHTMLElement {
 // INPUTMODE sets the "inputmode" attribute.
 // Hint for selecting an input modality
 // Values values are constrained to:
-//   - none
-//   - none
-//   - text
-//   - text
-//   - tel
-//   - tel
-//   - email
-//   - email
-//   - url
-//   - url
-//   - numeric
-//   - numeric
 //   - decimal
-//   - decimal
+//   - email
+//   - none
+//   - numeric
 //   - search
-//   - search
+//   - tel
+//   - text
+//   - url
 func (e *ImgHTMLElement) INPUTMODE(v string) *ImgHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -582,8 +549,8 @@ func (e *ImgHTMLElement) RemoveINPUTMODE(v string) *ImgHTMLElement {
 // IS sets the "is" attribute.
 // Creates a customized built-in element
 // Values values are constrained to:
-//   - valid_custom_element_name
 //   - customized_built_in_element
+//   - valid_custom_element_name
 func (e *ImgHTMLElement) IS(v string) *ImgHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -665,9 +632,9 @@ func (e *ImgHTMLElement) RemoveITEMID(v string) *ImgHTMLElement {
 // ITEMPROP sets the "itemprop" attribute.
 // Property names of a microdata item
 // Values values are constrained to:
+//   - defined_property_names
 //   - unordered_set_of_unique_space_separated_tokens
 //   - valid_absolute_ur_ls
-//   - defined_property_names
 func (e *ImgHTMLElement) ITEMPROP(v string) *ImgHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -797,10 +764,8 @@ func (e *ImgHTMLElement) RemoveLANG(v string) *ImgHTMLElement {
 // LOADING sets the "loading" attribute.
 // Used when determining loading deferral
 // Values values are constrained to:
-//   - lazy
-//   - lazy
 //   - eager
-//   - eager
+//   - lazy
 func (e *ImgHTMLElement) LOADING(v string) *ImgHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -849,8 +814,6 @@ func (e *ImgHTMLElement) RemoveNONCE(v string) *ImgHTMLElement {
 // Makes the element a popover element
 // Values values are constrained to:
 //   - auto
-//   - auto
-//   - manual
 //   - manual
 func (e *ImgHTMLElement) POPOVER(v string) *ImgHTMLElement {
 	if e.StringAttributes == nil {
@@ -947,8 +910,8 @@ func (e *ImgHTMLElement) RemoveSLOT(v string) *ImgHTMLElement {
 // SPELLCHECK sets the "spellcheck" attribute.
 // Whether the element is to have its spelling and grammar checked
 // Values values are constrained to:
-//   - true
 //   - false
+//   - true
 func (e *ImgHTMLElement) SPELLCHECK(v string) *ImgHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -1103,8 +1066,8 @@ func (e *ImgHTMLElement) RemoveTITLE(v string) *ImgHTMLElement {
 // TRANSLATE sets the "translate" attribute.
 // Whether the element is to be translated when the page is localized
 // Values values are constrained to:
-//   - yes
 //   - no
+//   - yes
 func (e *ImgHTMLElement) TRANSLATE(v string) *ImgHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}

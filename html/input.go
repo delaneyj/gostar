@@ -76,11 +76,11 @@ func (e *InputHTMLElement) CustomDataRemove(key string) *InputHTMLElement {
 // ACCEPT sets the "accept" attribute.
 // Hint for expected file type in file upload controls
 // Values values are constrained to:
+//   - audio/*
+//   - image/*
 //   - set_of_comma_separated_tokens
 //   - valid_mime_type_strings_with_no_parameters
-//   - audio/*
 //   - video/*
-//   - image/*
 func (e *InputHTMLElement) ACCEPT(v string) *InputHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -104,8 +104,8 @@ func (e *InputHTMLElement) RemoveACCEPT(v string) *InputHTMLElement {
 // ACCESSKEY sets the "accesskey" attribute.
 // Keyboard shortcut to activate or focus element
 // Values values are constrained to:
-//   - ordered_set_of_unique_space_separated_tokens
 //   - identical_to
+//   - ordered_set_of_unique_space_separated_tokens
 func (e *InputHTMLElement) ACCESSKEY(v string) *InputHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -153,18 +153,12 @@ func (e *InputHTMLElement) RemoveALT(v string) *InputHTMLElement {
 // AUTOCAPITALIZE sets the "autocapitalize" attribute.
 // Recommended autocapitalization behavior (for supported input methods)
 // Values values are constrained to:
-//   - on
-//   - on
-//   - off
-//   - off
+//   - characters
 //   - none
-//   - none
-//   - sentences
+//   - off
+//   - on
 //   - sentences
 //   - words
-//   - words
-//   - characters
-//   - characters
 func (e *InputHTMLElement) AUTOCAPITALIZE(v string) *InputHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -320,9 +314,9 @@ func (e *InputHTMLElement) RemoveCLASS(v string) *InputHTMLElement {
 // CONTENTEDITABLE sets the "contenteditable" attribute.
 // Whether the element is editable
 // Values values are constrained to:
-//   - true
-//   - plaintext_only
 //   - false
+//   - plaintext_only
+//   - true
 func (e *InputHTMLElement) CONTENTEDITABLE(v string) *InputHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -347,8 +341,6 @@ func (e *InputHTMLElement) RemoveCONTENTEDITABLE(v string) *InputHTMLElement {
 // The text directionality of the element
 // Values values are constrained to:
 //   - ltr
-//   - ltr
-//   - rtl
 //   - rtl
 func (e *InputHTMLElement) DIR(v string) *InputHTMLElement {
 	if e.StringAttributes == nil {
@@ -431,8 +423,8 @@ func (e *InputHTMLElement) SetDISABLED(b bool) *InputHTMLElement {
 // DRAGGABLE sets the "draggable" attribute.
 // Whether the element is draggable
 // Values values are constrained to:
-//   - true
 //   - false
+//   - true
 func (e *InputHTMLElement) DRAGGABLE(v string) *InputHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -456,19 +448,12 @@ func (e *InputHTMLElement) RemoveDRAGGABLE(v string) *InputHTMLElement {
 // ENTERKEYHINT sets the "enterkeyhint" attribute.
 // Hint for selecting an enter key action
 // Values values are constrained to:
-//   - enter
-//   - enter
 //   - done
-//   - done
-//   - go
+//   - enter
 //   - go
 //   - next
-//   - next
-//   - previous
 //   - previous
 //   - search
-//   - search
-//   - send
 //   - send
 func (e *InputHTMLElement) ENTERKEYHINT(v string) *InputHTMLElement {
 	if e.StringAttributes == nil {
@@ -542,10 +527,7 @@ func (e *InputHTMLElement) RemoveFORMACTION(v string) *InputHTMLElement {
 // Entry list encoding type to use for form submission
 // Values values are constrained to:
 //   - application/x_www_form_urlencoded
-//   - application/x_www_form_urlencoded
 //   - multipart/form_data
-//   - multipart/form_data
-//   - text/plain
 //   - text/plain
 func (e *InputHTMLElement) FORMENCTYPE(v string) *InputHTMLElement {
 	if e.StringAttributes == nil {
@@ -570,9 +552,9 @@ func (e *InputHTMLElement) RemoveFORMENCTYPE(v string) *InputHTMLElement {
 // FORMMETHOD sets the "formmethod" attribute.
 // Variant to use for form submission
 // Values values are constrained to:
+//   - dialog
 //   - get
 //   - post
-//   - dialog
 func (e *InputHTMLElement) FORMMETHOD(v string) *InputHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -678,10 +660,8 @@ func (e *InputHTMLElement) RemoveHEIGHT(v int) *InputHTMLElement {
 // HIDDEN sets the "hidden" attribute.
 // Whether the element is relevant
 // Values values are constrained to:
-//   - until_found
-//   - until_found
 //   - hidden
-//   - hidden
+//   - until_found
 func (e *InputHTMLElement) HIDDEN(v string) *InputHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -763,22 +743,14 @@ func (e *InputHTMLElement) SetINERT(b bool) *InputHTMLElement {
 // INPUTMODE sets the "inputmode" attribute.
 // Hint for selecting an input modality
 // Values values are constrained to:
-//   - none
-//   - none
-//   - text
-//   - text
-//   - tel
-//   - tel
-//   - email
-//   - email
-//   - url
-//   - url
-//   - numeric
-//   - numeric
 //   - decimal
-//   - decimal
+//   - email
+//   - none
+//   - numeric
 //   - search
-//   - search
+//   - tel
+//   - text
+//   - url
 func (e *InputHTMLElement) INPUTMODE(v string) *InputHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -802,8 +774,8 @@ func (e *InputHTMLElement) RemoveINPUTMODE(v string) *InputHTMLElement {
 // IS sets the "is" attribute.
 // Creates a customized built-in element
 // Values values are constrained to:
-//   - valid_custom_element_name
 //   - customized_built_in_element
+//   - valid_custom_element_name
 func (e *InputHTMLElement) IS(v string) *InputHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -851,9 +823,9 @@ func (e *InputHTMLElement) RemoveITEMID(v string) *InputHTMLElement {
 // ITEMPROP sets the "itemprop" attribute.
 // Property names of a microdata item
 // Values values are constrained to:
+//   - defined_property_names
 //   - unordered_set_of_unique_space_separated_tokens
 //   - valid_absolute_ur_ls
-//   - defined_property_names
 func (e *InputHTMLElement) ITEMPROP(v string) *InputHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -1234,8 +1206,6 @@ func (e *InputHTMLElement) RemovePLACEHOLDER(v string) *InputHTMLElement {
 // Makes the element a popover element
 // Values values are constrained to:
 //   - auto
-//   - auto
-//   - manual
 //   - manual
 func (e *InputHTMLElement) POPOVER(v string) *InputHTMLElement {
 	if e.StringAttributes == nil {
@@ -1284,12 +1254,9 @@ func (e *InputHTMLElement) RemovePOPOVERTARGET(v string) *InputHTMLElement {
 // POPOVERTARGETACTION sets the "popovertargetaction" attribute.
 // Indicates whether a targeted popover element is to be toggled, shown, or hidden
 // Values values are constrained to:
-//   - toggle
-//   - toggle
-//   - show
-//   - show
 //   - hide
-//   - hide
+//   - show
+//   - toggle
 func (e *InputHTMLElement) POPOVERTARGETACTION(v string) *InputHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -1429,8 +1396,8 @@ func (e *InputHTMLElement) RemoveSLOT(v string) *InputHTMLElement {
 // SPELLCHECK sets the "spellcheck" attribute.
 // Whether the element is to have its spelling and grammar checked
 // Values values are constrained to:
-//   - true
 //   - false
+//   - true
 func (e *InputHTMLElement) SPELLCHECK(v string) *InputHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -1478,8 +1445,8 @@ func (e *InputHTMLElement) RemoveSRC(v string) *InputHTMLElement {
 // STEP sets the "step" attribute.
 // Granularity to be matched by the form control's value
 // Values values are constrained to:
-//   - valid_floating_point_number
 //   - any
+//   - valid_floating_point_number
 func (e *InputHTMLElement) STEP(v string) *InputHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -1586,8 +1553,8 @@ func (e *InputHTMLElement) RemoveTITLE(v string) *InputHTMLElement {
 // TRANSLATE sets the "translate" attribute.
 // Whether the element is to be translated when the page is localized
 // Values values are constrained to:
-//   - yes
 //   - no
+//   - yes
 func (e *InputHTMLElement) TRANSLATE(v string) *InputHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -1611,9 +1578,9 @@ func (e *InputHTMLElement) RemoveTRANSLATE(v string) *InputHTMLElement {
 // TYPE sets the "type" attribute.
 // Type of script
 // Values values are constrained to:
+//   - java_script_mime_type_essence_match
 //   - module
 //   - valid_mime_type_string
-//   - java_script_mime_type_essence_match
 func (e *InputHTMLElement) TYPE(v string) *InputHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}

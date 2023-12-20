@@ -226,13 +226,13 @@ func GenerateAllElements(ctx context.Context, args *GenerateElementArgs) (err er
 				Name:            attribute.Name,
 				Key:             attribute.Key,
 				KeyConst:        fmt.Sprintf("attribute%sKey", attribute.Name),
-				ValidValueTypes: attribute.ValidValueTypes,
+				ValidValueTypes: lo.Uniq(attribute.ValidValueTypes),
 				Mode:            attribute.Mode,
 				Description:     strings.Split(attribute.Description, "\n"),
 			}
+			slices.Sort(attrCtx.ValidValueTypes)
 			elCtx.Attributes = append(elCtx.Attributes, attrCtx)
 		}
-
 		elementCtxs = append(elementCtxs, &elCtx)
 	}
 	slices.SortFunc(elementCtxs, func(a, b *ElementCtx) int {

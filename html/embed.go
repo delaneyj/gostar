@@ -76,8 +76,8 @@ func (e *EmbedHTMLElement) CustomDataRemove(key string) *EmbedHTMLElement {
 // ACCESSKEY sets the "accesskey" attribute.
 // Keyboard shortcut to activate or focus element
 // Values values are constrained to:
-//   - ordered_set_of_unique_space_separated_tokens
 //   - identical_to
+//   - ordered_set_of_unique_space_separated_tokens
 func (e *EmbedHTMLElement) ACCESSKEY(v string) *EmbedHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -101,18 +101,12 @@ func (e *EmbedHTMLElement) RemoveACCESSKEY(v string) *EmbedHTMLElement {
 // AUTOCAPITALIZE sets the "autocapitalize" attribute.
 // Recommended autocapitalization behavior (for supported input methods)
 // Values values are constrained to:
-//   - on
-//   - on
-//   - off
-//   - off
+//   - characters
 //   - none
-//   - none
-//   - sentences
+//   - off
+//   - on
 //   - sentences
 //   - words
-//   - words
-//   - characters
-//   - characters
 func (e *EmbedHTMLElement) AUTOCAPITALIZE(v string) *EmbedHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -210,9 +204,9 @@ func (e *EmbedHTMLElement) RemoveCLASS(v string) *EmbedHTMLElement {
 // CONTENTEDITABLE sets the "contenteditable" attribute.
 // Whether the element is editable
 // Values values are constrained to:
-//   - true
-//   - plaintext_only
 //   - false
+//   - plaintext_only
+//   - true
 func (e *EmbedHTMLElement) CONTENTEDITABLE(v string) *EmbedHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -237,8 +231,6 @@ func (e *EmbedHTMLElement) RemoveCONTENTEDITABLE(v string) *EmbedHTMLElement {
 // The text directionality of the element
 // Values values are constrained to:
 //   - ltr
-//   - ltr
-//   - rtl
 //   - rtl
 func (e *EmbedHTMLElement) DIR(v string) *EmbedHTMLElement {
 	if e.StringAttributes == nil {
@@ -263,8 +255,8 @@ func (e *EmbedHTMLElement) RemoveDIR(v string) *EmbedHTMLElement {
 // DRAGGABLE sets the "draggable" attribute.
 // Whether the element is draggable
 // Values values are constrained to:
-//   - true
 //   - false
+//   - true
 func (e *EmbedHTMLElement) DRAGGABLE(v string) *EmbedHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -288,19 +280,12 @@ func (e *EmbedHTMLElement) RemoveDRAGGABLE(v string) *EmbedHTMLElement {
 // ENTERKEYHINT sets the "enterkeyhint" attribute.
 // Hint for selecting an enter key action
 // Values values are constrained to:
-//   - enter
-//   - enter
 //   - done
-//   - done
-//   - go
+//   - enter
 //   - go
 //   - next
-//   - next
-//   - previous
 //   - previous
 //   - search
-//   - search
-//   - send
 //   - send
 func (e *EmbedHTMLElement) ENTERKEYHINT(v string) *EmbedHTMLElement {
 	if e.StringAttributes == nil {
@@ -349,10 +334,8 @@ func (e *EmbedHTMLElement) RemoveHEIGHT(v int) *EmbedHTMLElement {
 // HIDDEN sets the "hidden" attribute.
 // Whether the element is relevant
 // Values values are constrained to:
-//   - until_found
-//   - until_found
 //   - hidden
-//   - hidden
+//   - until_found
 func (e *EmbedHTMLElement) HIDDEN(v string) *EmbedHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -434,22 +417,14 @@ func (e *EmbedHTMLElement) SetINERT(b bool) *EmbedHTMLElement {
 // INPUTMODE sets the "inputmode" attribute.
 // Hint for selecting an input modality
 // Values values are constrained to:
-//   - none
-//   - none
-//   - text
-//   - text
-//   - tel
-//   - tel
-//   - email
-//   - email
-//   - url
-//   - url
-//   - numeric
-//   - numeric
 //   - decimal
-//   - decimal
+//   - email
+//   - none
+//   - numeric
 //   - search
-//   - search
+//   - tel
+//   - text
+//   - url
 func (e *EmbedHTMLElement) INPUTMODE(v string) *EmbedHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -473,8 +448,8 @@ func (e *EmbedHTMLElement) RemoveINPUTMODE(v string) *EmbedHTMLElement {
 // IS sets the "is" attribute.
 // Creates a customized built-in element
 // Values values are constrained to:
-//   - valid_custom_element_name
 //   - customized_built_in_element
+//   - valid_custom_element_name
 func (e *EmbedHTMLElement) IS(v string) *EmbedHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -522,9 +497,9 @@ func (e *EmbedHTMLElement) RemoveITEMID(v string) *EmbedHTMLElement {
 // ITEMPROP sets the "itemprop" attribute.
 // Property names of a microdata item
 // Values values are constrained to:
+//   - defined_property_names
 //   - unordered_set_of_unique_space_separated_tokens
 //   - valid_absolute_ur_ls
-//   - defined_property_names
 func (e *EmbedHTMLElement) ITEMPROP(v string) *EmbedHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -679,8 +654,6 @@ func (e *EmbedHTMLElement) RemoveNONCE(v string) *EmbedHTMLElement {
 // Makes the element a popover element
 // Values values are constrained to:
 //   - auto
-//   - auto
-//   - manual
 //   - manual
 func (e *EmbedHTMLElement) POPOVER(v string) *EmbedHTMLElement {
 	if e.StringAttributes == nil {
@@ -729,8 +702,8 @@ func (e *EmbedHTMLElement) RemoveSLOT(v string) *EmbedHTMLElement {
 // SPELLCHECK sets the "spellcheck" attribute.
 // Whether the element is to have its spelling and grammar checked
 // Values values are constrained to:
-//   - true
 //   - false
+//   - true
 func (e *EmbedHTMLElement) SPELLCHECK(v string) *EmbedHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -861,8 +834,8 @@ func (e *EmbedHTMLElement) RemoveTITLE(v string) *EmbedHTMLElement {
 // TRANSLATE sets the "translate" attribute.
 // Whether the element is to be translated when the page is localized
 // Values values are constrained to:
-//   - yes
 //   - no
+//   - yes
 func (e *EmbedHTMLElement) TRANSLATE(v string) *EmbedHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -886,9 +859,9 @@ func (e *EmbedHTMLElement) RemoveTRANSLATE(v string) *EmbedHTMLElement {
 // TYPE sets the "type" attribute.
 // Type of script
 // Values values are constrained to:
+//   - java_script_mime_type_essence_match
 //   - module
 //   - valid_mime_type_string
-//   - java_script_mime_type_essence_match
 func (e *EmbedHTMLElement) TYPE(v string) *EmbedHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}

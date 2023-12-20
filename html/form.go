@@ -101,8 +101,8 @@ func (e *FormHTMLElement) RemoveACCEPT_CHARSET(v string) *FormHTMLElement {
 // ACCESSKEY sets the "accesskey" attribute.
 // Keyboard shortcut to activate or focus element
 // Values values are constrained to:
-//   - ordered_set_of_unique_space_separated_tokens
 //   - identical_to
+//   - ordered_set_of_unique_space_separated_tokens
 func (e *FormHTMLElement) ACCESSKEY(v string) *FormHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -150,18 +150,12 @@ func (e *FormHTMLElement) RemoveACTION(v string) *FormHTMLElement {
 // AUTOCAPITALIZE sets the "autocapitalize" attribute.
 // Recommended autocapitalization behavior (for supported input methods)
 // Values values are constrained to:
-//   - on
-//   - on
-//   - off
-//   - off
+//   - characters
 //   - none
-//   - none
-//   - sentences
+//   - off
+//   - on
 //   - sentences
 //   - words
-//   - words
-//   - characters
-//   - characters
 func (e *FormHTMLElement) AUTOCAPITALIZE(v string) *FormHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -283,9 +277,9 @@ func (e *FormHTMLElement) RemoveCLASS(v string) *FormHTMLElement {
 // CONTENTEDITABLE sets the "contenteditable" attribute.
 // Whether the element is editable
 // Values values are constrained to:
-//   - true
-//   - plaintext_only
 //   - false
+//   - plaintext_only
+//   - true
 func (e *FormHTMLElement) CONTENTEDITABLE(v string) *FormHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -310,8 +304,6 @@ func (e *FormHTMLElement) RemoveCONTENTEDITABLE(v string) *FormHTMLElement {
 // The text directionality of the element
 // Values values are constrained to:
 //   - ltr
-//   - ltr
-//   - rtl
 //   - rtl
 func (e *FormHTMLElement) DIR(v string) *FormHTMLElement {
 	if e.StringAttributes == nil {
@@ -336,8 +328,8 @@ func (e *FormHTMLElement) RemoveDIR(v string) *FormHTMLElement {
 // DRAGGABLE sets the "draggable" attribute.
 // Whether the element is draggable
 // Values values are constrained to:
-//   - true
 //   - false
+//   - true
 func (e *FormHTMLElement) DRAGGABLE(v string) *FormHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -362,10 +354,7 @@ func (e *FormHTMLElement) RemoveDRAGGABLE(v string) *FormHTMLElement {
 // Entry list encoding type to use for form submission
 // Values values are constrained to:
 //   - application/x_www_form_urlencoded
-//   - application/x_www_form_urlencoded
 //   - multipart/form_data
-//   - multipart/form_data
-//   - text/plain
 //   - text/plain
 func (e *FormHTMLElement) ENCTYPE(v string) *FormHTMLElement {
 	if e.StringAttributes == nil {
@@ -390,19 +379,12 @@ func (e *FormHTMLElement) RemoveENCTYPE(v string) *FormHTMLElement {
 // ENTERKEYHINT sets the "enterkeyhint" attribute.
 // Hint for selecting an enter key action
 // Values values are constrained to:
-//   - enter
-//   - enter
 //   - done
-//   - done
-//   - go
+//   - enter
 //   - go
 //   - next
-//   - next
-//   - previous
 //   - previous
 //   - search
-//   - search
-//   - send
 //   - send
 func (e *FormHTMLElement) ENTERKEYHINT(v string) *FormHTMLElement {
 	if e.StringAttributes == nil {
@@ -427,10 +409,8 @@ func (e *FormHTMLElement) RemoveENTERKEYHINT(v string) *FormHTMLElement {
 // HIDDEN sets the "hidden" attribute.
 // Whether the element is relevant
 // Values values are constrained to:
-//   - until_found
-//   - until_found
 //   - hidden
-//   - hidden
+//   - until_found
 func (e *FormHTMLElement) HIDDEN(v string) *FormHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -512,22 +492,14 @@ func (e *FormHTMLElement) SetINERT(b bool) *FormHTMLElement {
 // INPUTMODE sets the "inputmode" attribute.
 // Hint for selecting an input modality
 // Values values are constrained to:
-//   - none
-//   - none
-//   - text
-//   - text
-//   - tel
-//   - tel
-//   - email
-//   - email
-//   - url
-//   - url
-//   - numeric
-//   - numeric
 //   - decimal
-//   - decimal
+//   - email
+//   - none
+//   - numeric
 //   - search
-//   - search
+//   - tel
+//   - text
+//   - url
 func (e *FormHTMLElement) INPUTMODE(v string) *FormHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -551,8 +523,8 @@ func (e *FormHTMLElement) RemoveINPUTMODE(v string) *FormHTMLElement {
 // IS sets the "is" attribute.
 // Creates a customized built-in element
 // Values values are constrained to:
-//   - valid_custom_element_name
 //   - customized_built_in_element
+//   - valid_custom_element_name
 func (e *FormHTMLElement) IS(v string) *FormHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -600,9 +572,9 @@ func (e *FormHTMLElement) RemoveITEMID(v string) *FormHTMLElement {
 // ITEMPROP sets the "itemprop" attribute.
 // Property names of a microdata item
 // Values values are constrained to:
+//   - defined_property_names
 //   - unordered_set_of_unique_space_separated_tokens
 //   - valid_absolute_ur_ls
-//   - defined_property_names
 func (e *FormHTMLElement) ITEMPROP(v string) *FormHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -732,12 +704,9 @@ func (e *FormHTMLElement) RemoveLANG(v string) *FormHTMLElement {
 // METHOD sets the "method" attribute.
 // Variant to use for form submission
 // Values values are constrained to:
-//   - get
+//   - dialog
 //   - get
 //   - post
-//   - post
-//   - dialog
-//   - dialog
 func (e *FormHTMLElement) METHOD(v string) *FormHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -844,8 +813,6 @@ func (e *FormHTMLElement) SetNOVALIDATE(b bool) *FormHTMLElement {
 // Makes the element a popover element
 // Values values are constrained to:
 //   - auto
-//   - auto
-//   - manual
 //   - manual
 func (e *FormHTMLElement) POPOVER(v string) *FormHTMLElement {
 	if e.StringAttributes == nil {
@@ -894,8 +861,8 @@ func (e *FormHTMLElement) RemoveSLOT(v string) *FormHTMLElement {
 // SPELLCHECK sets the "spellcheck" attribute.
 // Whether the element is to have its spelling and grammar checked
 // Values values are constrained to:
-//   - true
 //   - false
+//   - true
 func (e *FormHTMLElement) SPELLCHECK(v string) *FormHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -1026,8 +993,8 @@ func (e *FormHTMLElement) RemoveTITLE(v string) *FormHTMLElement {
 // TRANSLATE sets the "translate" attribute.
 // Whether the element is to be translated when the page is localized
 // Values values are constrained to:
-//   - yes
 //   - no
+//   - yes
 func (e *FormHTMLElement) TRANSLATE(v string) *FormHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}

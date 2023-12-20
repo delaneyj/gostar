@@ -76,8 +76,8 @@ func (e *DdHTMLElement) CustomDataRemove(key string) *DdHTMLElement {
 // ACCESSKEY sets the "accesskey" attribute.
 // Keyboard shortcut to activate or focus element
 // Values values are constrained to:
-//   - ordered_set_of_unique_space_separated_tokens
 //   - identical_to
+//   - ordered_set_of_unique_space_separated_tokens
 func (e *DdHTMLElement) ACCESSKEY(v string) *DdHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -101,18 +101,12 @@ func (e *DdHTMLElement) RemoveACCESSKEY(v string) *DdHTMLElement {
 // AUTOCAPITALIZE sets the "autocapitalize" attribute.
 // Recommended autocapitalization behavior (for supported input methods)
 // Values values are constrained to:
-//   - on
-//   - on
-//   - off
-//   - off
+//   - characters
 //   - none
-//   - none
-//   - sentences
+//   - off
+//   - on
 //   - sentences
 //   - words
-//   - words
-//   - characters
-//   - characters
 func (e *DdHTMLElement) AUTOCAPITALIZE(v string) *DdHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -210,9 +204,9 @@ func (e *DdHTMLElement) RemoveCLASS(v string) *DdHTMLElement {
 // CONTENTEDITABLE sets the "contenteditable" attribute.
 // Whether the element is editable
 // Values values are constrained to:
-//   - true
-//   - plaintext_only
 //   - false
+//   - plaintext_only
+//   - true
 func (e *DdHTMLElement) CONTENTEDITABLE(v string) *DdHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -237,8 +231,6 @@ func (e *DdHTMLElement) RemoveCONTENTEDITABLE(v string) *DdHTMLElement {
 // The text directionality of the element
 // Values values are constrained to:
 //   - ltr
-//   - ltr
-//   - rtl
 //   - rtl
 func (e *DdHTMLElement) DIR(v string) *DdHTMLElement {
 	if e.StringAttributes == nil {
@@ -263,8 +255,8 @@ func (e *DdHTMLElement) RemoveDIR(v string) *DdHTMLElement {
 // DRAGGABLE sets the "draggable" attribute.
 // Whether the element is draggable
 // Values values are constrained to:
-//   - true
 //   - false
+//   - true
 func (e *DdHTMLElement) DRAGGABLE(v string) *DdHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -288,19 +280,12 @@ func (e *DdHTMLElement) RemoveDRAGGABLE(v string) *DdHTMLElement {
 // ENTERKEYHINT sets the "enterkeyhint" attribute.
 // Hint for selecting an enter key action
 // Values values are constrained to:
-//   - enter
-//   - enter
 //   - done
-//   - done
-//   - go
+//   - enter
 //   - go
 //   - next
-//   - next
-//   - previous
 //   - previous
 //   - search
-//   - search
-//   - send
 //   - send
 func (e *DdHTMLElement) ENTERKEYHINT(v string) *DdHTMLElement {
 	if e.StringAttributes == nil {
@@ -325,10 +310,8 @@ func (e *DdHTMLElement) RemoveENTERKEYHINT(v string) *DdHTMLElement {
 // HIDDEN sets the "hidden" attribute.
 // Whether the element is relevant
 // Values values are constrained to:
-//   - until_found
-//   - until_found
 //   - hidden
-//   - hidden
+//   - until_found
 func (e *DdHTMLElement) HIDDEN(v string) *DdHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -410,22 +393,14 @@ func (e *DdHTMLElement) SetINERT(b bool) *DdHTMLElement {
 // INPUTMODE sets the "inputmode" attribute.
 // Hint for selecting an input modality
 // Values values are constrained to:
-//   - none
-//   - none
-//   - text
-//   - text
-//   - tel
-//   - tel
-//   - email
-//   - email
-//   - url
-//   - url
-//   - numeric
-//   - numeric
 //   - decimal
-//   - decimal
+//   - email
+//   - none
+//   - numeric
 //   - search
-//   - search
+//   - tel
+//   - text
+//   - url
 func (e *DdHTMLElement) INPUTMODE(v string) *DdHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -449,8 +424,8 @@ func (e *DdHTMLElement) RemoveINPUTMODE(v string) *DdHTMLElement {
 // IS sets the "is" attribute.
 // Creates a customized built-in element
 // Values values are constrained to:
-//   - valid_custom_element_name
 //   - customized_built_in_element
+//   - valid_custom_element_name
 func (e *DdHTMLElement) IS(v string) *DdHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -498,9 +473,9 @@ func (e *DdHTMLElement) RemoveITEMID(v string) *DdHTMLElement {
 // ITEMPROP sets the "itemprop" attribute.
 // Property names of a microdata item
 // Values values are constrained to:
+//   - defined_property_names
 //   - unordered_set_of_unique_space_separated_tokens
 //   - valid_absolute_ur_ls
-//   - defined_property_names
 func (e *DdHTMLElement) ITEMPROP(v string) *DdHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -655,8 +630,6 @@ func (e *DdHTMLElement) RemoveNONCE(v string) *DdHTMLElement {
 // Makes the element a popover element
 // Values values are constrained to:
 //   - auto
-//   - auto
-//   - manual
 //   - manual
 func (e *DdHTMLElement) POPOVER(v string) *DdHTMLElement {
 	if e.StringAttributes == nil {
@@ -705,8 +678,8 @@ func (e *DdHTMLElement) RemoveSLOT(v string) *DdHTMLElement {
 // SPELLCHECK sets the "spellcheck" attribute.
 // Whether the element is to have its spelling and grammar checked
 // Values values are constrained to:
-//   - true
 //   - false
+//   - true
 func (e *DdHTMLElement) SPELLCHECK(v string) *DdHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -813,8 +786,8 @@ func (e *DdHTMLElement) RemoveTITLE(v string) *DdHTMLElement {
 // TRANSLATE sets the "translate" attribute.
 // Whether the element is to be translated when the page is localized
 // Values values are constrained to:
-//   - yes
 //   - no
+//   - yes
 func (e *DdHTMLElement) TRANSLATE(v string) *DdHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}

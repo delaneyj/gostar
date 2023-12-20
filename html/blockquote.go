@@ -76,8 +76,8 @@ func (e *BlockquoteHTMLElement) CustomDataRemove(key string) *BlockquoteHTMLElem
 // ACCESSKEY sets the "accesskey" attribute.
 // Keyboard shortcut to activate or focus element
 // Values values are constrained to:
-//   - ordered_set_of_unique_space_separated_tokens
 //   - identical_to
+//   - ordered_set_of_unique_space_separated_tokens
 func (e *BlockquoteHTMLElement) ACCESSKEY(v string) *BlockquoteHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -101,18 +101,12 @@ func (e *BlockquoteHTMLElement) RemoveACCESSKEY(v string) *BlockquoteHTMLElement
 // AUTOCAPITALIZE sets the "autocapitalize" attribute.
 // Recommended autocapitalization behavior (for supported input methods)
 // Values values are constrained to:
-//   - on
-//   - on
-//   - off
-//   - off
+//   - characters
 //   - none
-//   - none
-//   - sentences
+//   - off
+//   - on
 //   - sentences
 //   - words
-//   - words
-//   - characters
-//   - characters
 func (e *BlockquoteHTMLElement) AUTOCAPITALIZE(v string) *BlockquoteHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -234,9 +228,9 @@ func (e *BlockquoteHTMLElement) RemoveCLASS(v string) *BlockquoteHTMLElement {
 // CONTENTEDITABLE sets the "contenteditable" attribute.
 // Whether the element is editable
 // Values values are constrained to:
-//   - true
-//   - plaintext_only
 //   - false
+//   - plaintext_only
+//   - true
 func (e *BlockquoteHTMLElement) CONTENTEDITABLE(v string) *BlockquoteHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -261,8 +255,6 @@ func (e *BlockquoteHTMLElement) RemoveCONTENTEDITABLE(v string) *BlockquoteHTMLE
 // The text directionality of the element
 // Values values are constrained to:
 //   - ltr
-//   - ltr
-//   - rtl
 //   - rtl
 func (e *BlockquoteHTMLElement) DIR(v string) *BlockquoteHTMLElement {
 	if e.StringAttributes == nil {
@@ -287,8 +279,8 @@ func (e *BlockquoteHTMLElement) RemoveDIR(v string) *BlockquoteHTMLElement {
 // DRAGGABLE sets the "draggable" attribute.
 // Whether the element is draggable
 // Values values are constrained to:
-//   - true
 //   - false
+//   - true
 func (e *BlockquoteHTMLElement) DRAGGABLE(v string) *BlockquoteHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -312,19 +304,12 @@ func (e *BlockquoteHTMLElement) RemoveDRAGGABLE(v string) *BlockquoteHTMLElement
 // ENTERKEYHINT sets the "enterkeyhint" attribute.
 // Hint for selecting an enter key action
 // Values values are constrained to:
-//   - enter
-//   - enter
 //   - done
-//   - done
-//   - go
+//   - enter
 //   - go
 //   - next
-//   - next
-//   - previous
 //   - previous
 //   - search
-//   - search
-//   - send
 //   - send
 func (e *BlockquoteHTMLElement) ENTERKEYHINT(v string) *BlockquoteHTMLElement {
 	if e.StringAttributes == nil {
@@ -349,10 +334,8 @@ func (e *BlockquoteHTMLElement) RemoveENTERKEYHINT(v string) *BlockquoteHTMLElem
 // HIDDEN sets the "hidden" attribute.
 // Whether the element is relevant
 // Values values are constrained to:
-//   - until_found
-//   - until_found
 //   - hidden
-//   - hidden
+//   - until_found
 func (e *BlockquoteHTMLElement) HIDDEN(v string) *BlockquoteHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -434,22 +417,14 @@ func (e *BlockquoteHTMLElement) SetINERT(b bool) *BlockquoteHTMLElement {
 // INPUTMODE sets the "inputmode" attribute.
 // Hint for selecting an input modality
 // Values values are constrained to:
-//   - none
-//   - none
-//   - text
-//   - text
-//   - tel
-//   - tel
-//   - email
-//   - email
-//   - url
-//   - url
-//   - numeric
-//   - numeric
 //   - decimal
-//   - decimal
+//   - email
+//   - none
+//   - numeric
 //   - search
-//   - search
+//   - tel
+//   - text
+//   - url
 func (e *BlockquoteHTMLElement) INPUTMODE(v string) *BlockquoteHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -473,8 +448,8 @@ func (e *BlockquoteHTMLElement) RemoveINPUTMODE(v string) *BlockquoteHTMLElement
 // IS sets the "is" attribute.
 // Creates a customized built-in element
 // Values values are constrained to:
-//   - valid_custom_element_name
 //   - customized_built_in_element
+//   - valid_custom_element_name
 func (e *BlockquoteHTMLElement) IS(v string) *BlockquoteHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -522,9 +497,9 @@ func (e *BlockquoteHTMLElement) RemoveITEMID(v string) *BlockquoteHTMLElement {
 // ITEMPROP sets the "itemprop" attribute.
 // Property names of a microdata item
 // Values values are constrained to:
+//   - defined_property_names
 //   - unordered_set_of_unique_space_separated_tokens
 //   - valid_absolute_ur_ls
-//   - defined_property_names
 func (e *BlockquoteHTMLElement) ITEMPROP(v string) *BlockquoteHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -679,8 +654,6 @@ func (e *BlockquoteHTMLElement) RemoveNONCE(v string) *BlockquoteHTMLElement {
 // Makes the element a popover element
 // Values values are constrained to:
 //   - auto
-//   - auto
-//   - manual
 //   - manual
 func (e *BlockquoteHTMLElement) POPOVER(v string) *BlockquoteHTMLElement {
 	if e.StringAttributes == nil {
@@ -729,8 +702,8 @@ func (e *BlockquoteHTMLElement) RemoveSLOT(v string) *BlockquoteHTMLElement {
 // SPELLCHECK sets the "spellcheck" attribute.
 // Whether the element is to have its spelling and grammar checked
 // Values values are constrained to:
-//   - true
 //   - false
+//   - true
 func (e *BlockquoteHTMLElement) SPELLCHECK(v string) *BlockquoteHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -837,8 +810,8 @@ func (e *BlockquoteHTMLElement) RemoveTITLE(v string) *BlockquoteHTMLElement {
 // TRANSLATE sets the "translate" attribute.
 // Whether the element is to be translated when the page is localized
 // Values values are constrained to:
-//   - yes
 //   - no
+//   - yes
 func (e *BlockquoteHTMLElement) TRANSLATE(v string) *BlockquoteHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}

@@ -76,8 +76,8 @@ func (e *AreaHTMLElement) CustomDataRemove(key string) *AreaHTMLElement {
 // ACCESSKEY sets the "accesskey" attribute.
 // Keyboard shortcut to activate or focus element
 // Values values are constrained to:
-//   - ordered_set_of_unique_space_separated_tokens
 //   - identical_to
+//   - ordered_set_of_unique_space_separated_tokens
 func (e *AreaHTMLElement) ACCESSKEY(v string) *AreaHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -125,18 +125,12 @@ func (e *AreaHTMLElement) RemoveALT(v string) *AreaHTMLElement {
 // AUTOCAPITALIZE sets the "autocapitalize" attribute.
 // Recommended autocapitalization behavior (for supported input methods)
 // Values values are constrained to:
-//   - on
-//   - on
-//   - off
-//   - off
+//   - characters
 //   - none
-//   - none
-//   - sentences
+//   - off
+//   - on
 //   - sentences
 //   - words
-//   - words
-//   - characters
-//   - characters
 func (e *AreaHTMLElement) AUTOCAPITALIZE(v string) *AreaHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -234,9 +228,9 @@ func (e *AreaHTMLElement) RemoveCLASS(v string) *AreaHTMLElement {
 // CONTENTEDITABLE sets the "contenteditable" attribute.
 // Whether the element is editable
 // Values values are constrained to:
-//   - true
-//   - plaintext_only
 //   - false
+//   - plaintext_only
+//   - true
 func (e *AreaHTMLElement) CONTENTEDITABLE(v string) *AreaHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -285,8 +279,6 @@ func (e *AreaHTMLElement) RemoveCOORDS(v string) *AreaHTMLElement {
 // The text directionality of the element
 // Values values are constrained to:
 //   - ltr
-//   - ltr
-//   - rtl
 //   - rtl
 func (e *AreaHTMLElement) DIR(v string) *AreaHTMLElement {
 	if e.StringAttributes == nil {
@@ -334,8 +326,8 @@ func (e *AreaHTMLElement) RemoveDOWNLOAD(v string) *AreaHTMLElement {
 // DRAGGABLE sets the "draggable" attribute.
 // Whether the element is draggable
 // Values values are constrained to:
-//   - true
 //   - false
+//   - true
 func (e *AreaHTMLElement) DRAGGABLE(v string) *AreaHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -359,19 +351,12 @@ func (e *AreaHTMLElement) RemoveDRAGGABLE(v string) *AreaHTMLElement {
 // ENTERKEYHINT sets the "enterkeyhint" attribute.
 // Hint for selecting an enter key action
 // Values values are constrained to:
-//   - enter
-//   - enter
 //   - done
-//   - done
-//   - go
+//   - enter
 //   - go
 //   - next
-//   - next
-//   - previous
 //   - previous
 //   - search
-//   - search
-//   - send
 //   - send
 func (e *AreaHTMLElement) ENTERKEYHINT(v string) *AreaHTMLElement {
 	if e.StringAttributes == nil {
@@ -396,10 +381,8 @@ func (e *AreaHTMLElement) RemoveENTERKEYHINT(v string) *AreaHTMLElement {
 // HIDDEN sets the "hidden" attribute.
 // Whether the element is relevant
 // Values values are constrained to:
-//   - until_found
-//   - until_found
 //   - hidden
-//   - hidden
+//   - until_found
 func (e *AreaHTMLElement) HIDDEN(v string) *AreaHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -505,22 +488,14 @@ func (e *AreaHTMLElement) SetINERT(b bool) *AreaHTMLElement {
 // INPUTMODE sets the "inputmode" attribute.
 // Hint for selecting an input modality
 // Values values are constrained to:
-//   - none
-//   - none
-//   - text
-//   - text
-//   - tel
-//   - tel
-//   - email
-//   - email
-//   - url
-//   - url
-//   - numeric
-//   - numeric
 //   - decimal
-//   - decimal
+//   - email
+//   - none
+//   - numeric
 //   - search
-//   - search
+//   - tel
+//   - text
+//   - url
 func (e *AreaHTMLElement) INPUTMODE(v string) *AreaHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -544,8 +519,8 @@ func (e *AreaHTMLElement) RemoveINPUTMODE(v string) *AreaHTMLElement {
 // IS sets the "is" attribute.
 // Creates a customized built-in element
 // Values values are constrained to:
-//   - valid_custom_element_name
 //   - customized_built_in_element
+//   - valid_custom_element_name
 func (e *AreaHTMLElement) IS(v string) *AreaHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -593,9 +568,9 @@ func (e *AreaHTMLElement) RemoveITEMID(v string) *AreaHTMLElement {
 // ITEMPROP sets the "itemprop" attribute.
 // Property names of a microdata item
 // Values values are constrained to:
+//   - defined_property_names
 //   - unordered_set_of_unique_space_separated_tokens
 //   - valid_absolute_ur_ls
-//   - defined_property_names
 func (e *AreaHTMLElement) ITEMPROP(v string) *AreaHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -775,8 +750,6 @@ func (e *AreaHTMLElement) RemovePING(v string) *AreaHTMLElement {
 // Makes the element a popover element
 // Values values are constrained to:
 //   - auto
-//   - auto
-//   - manual
 //   - manual
 func (e *AreaHTMLElement) POPOVER(v string) *AreaHTMLElement {
 	if e.StringAttributes == nil {
@@ -850,12 +823,8 @@ func (e *AreaHTMLElement) RemoveREL(v string) *AreaHTMLElement {
 // The kind of shape to be created in an image map
 // Values values are constrained to:
 //   - circle
-//   - circle
-//   - default
 //   - default
 //   - poly
-//   - poly
-//   - rect
 //   - rect
 func (e *AreaHTMLElement) SHAPE(v string) *AreaHTMLElement {
 	if e.StringAttributes == nil {
@@ -904,8 +873,8 @@ func (e *AreaHTMLElement) RemoveSLOT(v string) *AreaHTMLElement {
 // SPELLCHECK sets the "spellcheck" attribute.
 // Whether the element is to have its spelling and grammar checked
 // Values values are constrained to:
-//   - true
 //   - false
+//   - true
 func (e *AreaHTMLElement) SPELLCHECK(v string) *AreaHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -1036,8 +1005,8 @@ func (e *AreaHTMLElement) RemoveTITLE(v string) *AreaHTMLElement {
 // TRANSLATE sets the "translate" attribute.
 // Whether the element is to be translated when the page is localized
 // Values values are constrained to:
-//   - yes
 //   - no
+//   - yes
 func (e *AreaHTMLElement) TRANSLATE(v string) *AreaHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}

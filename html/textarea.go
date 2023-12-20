@@ -76,8 +76,8 @@ func (e *TextareaHTMLElement) CustomDataRemove(key string) *TextareaHTMLElement 
 // ACCESSKEY sets the "accesskey" attribute.
 // Keyboard shortcut to activate or focus element
 // Values values are constrained to:
-//   - ordered_set_of_unique_space_separated_tokens
 //   - identical_to
+//   - ordered_set_of_unique_space_separated_tokens
 func (e *TextareaHTMLElement) ACCESSKEY(v string) *TextareaHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -101,18 +101,12 @@ func (e *TextareaHTMLElement) RemoveACCESSKEY(v string) *TextareaHTMLElement {
 // AUTOCAPITALIZE sets the "autocapitalize" attribute.
 // Recommended autocapitalization behavior (for supported input methods)
 // Values values are constrained to:
-//   - on
-//   - on
-//   - off
-//   - off
+//   - characters
 //   - none
-//   - none
-//   - sentences
+//   - off
+//   - on
 //   - sentences
 //   - words
-//   - words
-//   - characters
-//   - characters
 func (e *TextareaHTMLElement) AUTOCAPITALIZE(v string) *TextareaHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -258,9 +252,9 @@ func (e *TextareaHTMLElement) RemoveCOLS(v int) *TextareaHTMLElement {
 // CONTENTEDITABLE sets the "contenteditable" attribute.
 // Whether the element is editable
 // Values values are constrained to:
-//   - true
-//   - plaintext_only
 //   - false
+//   - plaintext_only
+//   - true
 func (e *TextareaHTMLElement) CONTENTEDITABLE(v string) *TextareaHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -285,8 +279,6 @@ func (e *TextareaHTMLElement) RemoveCONTENTEDITABLE(v string) *TextareaHTMLEleme
 // The text directionality of the element
 // Values values are constrained to:
 //   - ltr
-//   - ltr
-//   - rtl
 //   - rtl
 func (e *TextareaHTMLElement) DIR(v string) *TextareaHTMLElement {
 	if e.StringAttributes == nil {
@@ -369,8 +361,8 @@ func (e *TextareaHTMLElement) SetDISABLED(b bool) *TextareaHTMLElement {
 // DRAGGABLE sets the "draggable" attribute.
 // Whether the element is draggable
 // Values values are constrained to:
-//   - true
 //   - false
+//   - true
 func (e *TextareaHTMLElement) DRAGGABLE(v string) *TextareaHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -394,19 +386,12 @@ func (e *TextareaHTMLElement) RemoveDRAGGABLE(v string) *TextareaHTMLElement {
 // ENTERKEYHINT sets the "enterkeyhint" attribute.
 // Hint for selecting an enter key action
 // Values values are constrained to:
-//   - enter
-//   - enter
 //   - done
-//   - done
-//   - go
+//   - enter
 //   - go
 //   - next
-//   - next
-//   - previous
 //   - previous
 //   - search
-//   - search
-//   - send
 //   - send
 func (e *TextareaHTMLElement) ENTERKEYHINT(v string) *TextareaHTMLElement {
 	if e.StringAttributes == nil {
@@ -455,10 +440,8 @@ func (e *TextareaHTMLElement) RemoveFORM(v string) *TextareaHTMLElement {
 // HIDDEN sets the "hidden" attribute.
 // Whether the element is relevant
 // Values values are constrained to:
-//   - until_found
-//   - until_found
 //   - hidden
-//   - hidden
+//   - until_found
 func (e *TextareaHTMLElement) HIDDEN(v string) *TextareaHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -540,22 +523,14 @@ func (e *TextareaHTMLElement) SetINERT(b bool) *TextareaHTMLElement {
 // INPUTMODE sets the "inputmode" attribute.
 // Hint for selecting an input modality
 // Values values are constrained to:
-//   - none
-//   - none
-//   - text
-//   - text
-//   - tel
-//   - tel
-//   - email
-//   - email
-//   - url
-//   - url
-//   - numeric
-//   - numeric
 //   - decimal
-//   - decimal
+//   - email
+//   - none
+//   - numeric
 //   - search
-//   - search
+//   - tel
+//   - text
+//   - url
 func (e *TextareaHTMLElement) INPUTMODE(v string) *TextareaHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -579,8 +554,8 @@ func (e *TextareaHTMLElement) RemoveINPUTMODE(v string) *TextareaHTMLElement {
 // IS sets the "is" attribute.
 // Creates a customized built-in element
 // Values values are constrained to:
-//   - valid_custom_element_name
 //   - customized_built_in_element
+//   - valid_custom_element_name
 func (e *TextareaHTMLElement) IS(v string) *TextareaHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -628,9 +603,9 @@ func (e *TextareaHTMLElement) RemoveITEMID(v string) *TextareaHTMLElement {
 // ITEMPROP sets the "itemprop" attribute.
 // Property names of a microdata item
 // Values values are constrained to:
+//   - defined_property_names
 //   - unordered_set_of_unique_space_separated_tokens
 //   - valid_absolute_ur_ls
-//   - defined_property_names
 func (e *TextareaHTMLElement) ITEMPROP(v string) *TextareaHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -881,8 +856,6 @@ func (e *TextareaHTMLElement) RemovePLACEHOLDER(v string) *TextareaHTMLElement {
 // Makes the element a popover element
 // Values values are constrained to:
 //   - auto
-//   - auto
-//   - manual
 //   - manual
 func (e *TextareaHTMLElement) POPOVER(v string) *TextareaHTMLElement {
 	if e.StringAttributes == nil {
@@ -1023,8 +996,8 @@ func (e *TextareaHTMLElement) RemoveSLOT(v string) *TextareaHTMLElement {
 // SPELLCHECK sets the "spellcheck" attribute.
 // Whether the element is to have its spelling and grammar checked
 // Values values are constrained to:
-//   - true
 //   - false
+//   - true
 func (e *TextareaHTMLElement) SPELLCHECK(v string) *TextareaHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -1131,8 +1104,8 @@ func (e *TextareaHTMLElement) RemoveTITLE(v string) *TextareaHTMLElement {
 // TRANSLATE sets the "translate" attribute.
 // Whether the element is to be translated when the page is localized
 // Values values are constrained to:
-//   - yes
 //   - no
+//   - yes
 func (e *TextareaHTMLElement) TRANSLATE(v string) *TextareaHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -1156,10 +1129,8 @@ func (e *TextareaHTMLElement) RemoveTRANSLATE(v string) *TextareaHTMLElement {
 // WRAP sets the "wrap" attribute.
 // How the value of the form control is to be wrapped for form submission
 // Values values are constrained to:
-//   - soft
-//   - soft
 //   - hard
-//   - hard
+//   - soft
 func (e *TextareaHTMLElement) WRAP(v string) *TextareaHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}

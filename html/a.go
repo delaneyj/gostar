@@ -76,8 +76,8 @@ func (e *AHTMLElement) CustomDataRemove(key string) *AHTMLElement {
 // ACCESSKEY sets the "accesskey" attribute.
 // Keyboard shortcut to activate or focus element
 // Values values are constrained to:
-//   - ordered_set_of_unique_space_separated_tokens
 //   - identical_to
+//   - ordered_set_of_unique_space_separated_tokens
 func (e *AHTMLElement) ACCESSKEY(v string) *AHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -101,18 +101,12 @@ func (e *AHTMLElement) RemoveACCESSKEY(v string) *AHTMLElement {
 // AUTOCAPITALIZE sets the "autocapitalize" attribute.
 // Recommended autocapitalization behavior (for supported input methods)
 // Values values are constrained to:
-//   - on
-//   - on
-//   - off
-//   - off
+//   - characters
 //   - none
-//   - none
-//   - sentences
+//   - off
+//   - on
 //   - sentences
 //   - words
-//   - words
-//   - characters
-//   - characters
 func (e *AHTMLElement) AUTOCAPITALIZE(v string) *AHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -210,9 +204,9 @@ func (e *AHTMLElement) RemoveCLASS(v string) *AHTMLElement {
 // CONTENTEDITABLE sets the "contenteditable" attribute.
 // Whether the element is editable
 // Values values are constrained to:
-//   - true
-//   - plaintext_only
 //   - false
+//   - plaintext_only
+//   - true
 func (e *AHTMLElement) CONTENTEDITABLE(v string) *AHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -237,8 +231,6 @@ func (e *AHTMLElement) RemoveCONTENTEDITABLE(v string) *AHTMLElement {
 // The text directionality of the element
 // Values values are constrained to:
 //   - ltr
-//   - ltr
-//   - rtl
 //   - rtl
 func (e *AHTMLElement) DIR(v string) *AHTMLElement {
 	if e.StringAttributes == nil {
@@ -286,8 +278,8 @@ func (e *AHTMLElement) RemoveDOWNLOAD(v string) *AHTMLElement {
 // DRAGGABLE sets the "draggable" attribute.
 // Whether the element is draggable
 // Values values are constrained to:
-//   - true
 //   - false
+//   - true
 func (e *AHTMLElement) DRAGGABLE(v string) *AHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -311,19 +303,12 @@ func (e *AHTMLElement) RemoveDRAGGABLE(v string) *AHTMLElement {
 // ENTERKEYHINT sets the "enterkeyhint" attribute.
 // Hint for selecting an enter key action
 // Values values are constrained to:
-//   - enter
-//   - enter
 //   - done
-//   - done
-//   - go
+//   - enter
 //   - go
 //   - next
-//   - next
-//   - previous
 //   - previous
 //   - search
-//   - search
-//   - send
 //   - send
 func (e *AHTMLElement) ENTERKEYHINT(v string) *AHTMLElement {
 	if e.StringAttributes == nil {
@@ -348,10 +333,8 @@ func (e *AHTMLElement) RemoveENTERKEYHINT(v string) *AHTMLElement {
 // HIDDEN sets the "hidden" attribute.
 // Whether the element is relevant
 // Values values are constrained to:
-//   - until_found
-//   - until_found
 //   - hidden
-//   - hidden
+//   - until_found
 func (e *AHTMLElement) HIDDEN(v string) *AHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -480,22 +463,14 @@ func (e *AHTMLElement) SetINERT(b bool) *AHTMLElement {
 // INPUTMODE sets the "inputmode" attribute.
 // Hint for selecting an input modality
 // Values values are constrained to:
-//   - none
-//   - none
-//   - text
-//   - text
-//   - tel
-//   - tel
-//   - email
-//   - email
-//   - url
-//   - url
-//   - numeric
-//   - numeric
 //   - decimal
-//   - decimal
+//   - email
+//   - none
+//   - numeric
 //   - search
-//   - search
+//   - tel
+//   - text
+//   - url
 func (e *AHTMLElement) INPUTMODE(v string) *AHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -519,8 +494,8 @@ func (e *AHTMLElement) RemoveINPUTMODE(v string) *AHTMLElement {
 // IS sets the "is" attribute.
 // Creates a customized built-in element
 // Values values are constrained to:
-//   - valid_custom_element_name
 //   - customized_built_in_element
+//   - valid_custom_element_name
 func (e *AHTMLElement) IS(v string) *AHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -568,9 +543,9 @@ func (e *AHTMLElement) RemoveITEMID(v string) *AHTMLElement {
 // ITEMPROP sets the "itemprop" attribute.
 // Property names of a microdata item
 // Values values are constrained to:
+//   - defined_property_names
 //   - unordered_set_of_unique_space_separated_tokens
 //   - valid_absolute_ur_ls
-//   - defined_property_names
 func (e *AHTMLElement) ITEMPROP(v string) *AHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -750,8 +725,6 @@ func (e *AHTMLElement) RemovePING(v string) *AHTMLElement {
 // Makes the element a popover element
 // Values values are constrained to:
 //   - auto
-//   - auto
-//   - manual
 //   - manual
 func (e *AHTMLElement) POPOVER(v string) *AHTMLElement {
 	if e.StringAttributes == nil {
@@ -848,8 +821,8 @@ func (e *AHTMLElement) RemoveSLOT(v string) *AHTMLElement {
 // SPELLCHECK sets the "spellcheck" attribute.
 // Whether the element is to have its spelling and grammar checked
 // Values values are constrained to:
-//   - true
 //   - false
+//   - true
 func (e *AHTMLElement) SPELLCHECK(v string) *AHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -980,8 +953,8 @@ func (e *AHTMLElement) RemoveTITLE(v string) *AHTMLElement {
 // TRANSLATE sets the "translate" attribute.
 // Whether the element is to be translated when the page is localized
 // Values values are constrained to:
-//   - yes
 //   - no
+//   - yes
 func (e *AHTMLElement) TRANSLATE(v string) *AHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -1005,9 +978,9 @@ func (e *AHTMLElement) RemoveTRANSLATE(v string) *AHTMLElement {
 // TYPE sets the "type" attribute.
 // Type of script
 // Values values are constrained to:
+//   - java_script_mime_type_essence_match
 //   - module
 //   - valid_mime_type_string
-//   - java_script_mime_type_essence_match
 func (e *AHTMLElement) TYPE(v string) *AHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}

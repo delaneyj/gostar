@@ -76,8 +76,8 @@ func (e *TdHTMLElement) CustomDataRemove(key string) *TdHTMLElement {
 // ACCESSKEY sets the "accesskey" attribute.
 // Keyboard shortcut to activate or focus element
 // Values values are constrained to:
-//   - ordered_set_of_unique_space_separated_tokens
 //   - identical_to
+//   - ordered_set_of_unique_space_separated_tokens
 func (e *TdHTMLElement) ACCESSKEY(v string) *TdHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -101,18 +101,12 @@ func (e *TdHTMLElement) RemoveACCESSKEY(v string) *TdHTMLElement {
 // AUTOCAPITALIZE sets the "autocapitalize" attribute.
 // Recommended autocapitalization behavior (for supported input methods)
 // Values values are constrained to:
-//   - on
-//   - on
-//   - off
-//   - off
+//   - characters
 //   - none
-//   - none
-//   - sentences
+//   - off
+//   - on
 //   - sentences
 //   - words
-//   - words
-//   - characters
-//   - characters
 func (e *TdHTMLElement) AUTOCAPITALIZE(v string) *TdHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -234,9 +228,9 @@ func (e *TdHTMLElement) RemoveCOLSPAN(v int) *TdHTMLElement {
 // CONTENTEDITABLE sets the "contenteditable" attribute.
 // Whether the element is editable
 // Values values are constrained to:
-//   - true
-//   - plaintext_only
 //   - false
+//   - plaintext_only
+//   - true
 func (e *TdHTMLElement) CONTENTEDITABLE(v string) *TdHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -261,8 +255,6 @@ func (e *TdHTMLElement) RemoveCONTENTEDITABLE(v string) *TdHTMLElement {
 // The text directionality of the element
 // Values values are constrained to:
 //   - ltr
-//   - ltr
-//   - rtl
 //   - rtl
 func (e *TdHTMLElement) DIR(v string) *TdHTMLElement {
 	if e.StringAttributes == nil {
@@ -287,8 +279,8 @@ func (e *TdHTMLElement) RemoveDIR(v string) *TdHTMLElement {
 // DRAGGABLE sets the "draggable" attribute.
 // Whether the element is draggable
 // Values values are constrained to:
-//   - true
 //   - false
+//   - true
 func (e *TdHTMLElement) DRAGGABLE(v string) *TdHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -312,19 +304,12 @@ func (e *TdHTMLElement) RemoveDRAGGABLE(v string) *TdHTMLElement {
 // ENTERKEYHINT sets the "enterkeyhint" attribute.
 // Hint for selecting an enter key action
 // Values values are constrained to:
-//   - enter
-//   - enter
 //   - done
-//   - done
-//   - go
+//   - enter
 //   - go
 //   - next
-//   - next
-//   - previous
 //   - previous
 //   - search
-//   - search
-//   - send
 //   - send
 func (e *TdHTMLElement) ENTERKEYHINT(v string) *TdHTMLElement {
 	if e.StringAttributes == nil {
@@ -373,10 +358,8 @@ func (e *TdHTMLElement) RemoveHEADERS(v string) *TdHTMLElement {
 // HIDDEN sets the "hidden" attribute.
 // Whether the element is relevant
 // Values values are constrained to:
-//   - until_found
-//   - until_found
 //   - hidden
-//   - hidden
+//   - until_found
 func (e *TdHTMLElement) HIDDEN(v string) *TdHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -458,22 +441,14 @@ func (e *TdHTMLElement) SetINERT(b bool) *TdHTMLElement {
 // INPUTMODE sets the "inputmode" attribute.
 // Hint for selecting an input modality
 // Values values are constrained to:
-//   - none
-//   - none
-//   - text
-//   - text
-//   - tel
-//   - tel
-//   - email
-//   - email
-//   - url
-//   - url
-//   - numeric
-//   - numeric
 //   - decimal
-//   - decimal
+//   - email
+//   - none
+//   - numeric
 //   - search
-//   - search
+//   - tel
+//   - text
+//   - url
 func (e *TdHTMLElement) INPUTMODE(v string) *TdHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -497,8 +472,8 @@ func (e *TdHTMLElement) RemoveINPUTMODE(v string) *TdHTMLElement {
 // IS sets the "is" attribute.
 // Creates a customized built-in element
 // Values values are constrained to:
-//   - valid_custom_element_name
 //   - customized_built_in_element
+//   - valid_custom_element_name
 func (e *TdHTMLElement) IS(v string) *TdHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -546,9 +521,9 @@ func (e *TdHTMLElement) RemoveITEMID(v string) *TdHTMLElement {
 // ITEMPROP sets the "itemprop" attribute.
 // Property names of a microdata item
 // Values values are constrained to:
+//   - defined_property_names
 //   - unordered_set_of_unique_space_separated_tokens
 //   - valid_absolute_ur_ls
-//   - defined_property_names
 func (e *TdHTMLElement) ITEMPROP(v string) *TdHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -703,8 +678,6 @@ func (e *TdHTMLElement) RemoveNONCE(v string) *TdHTMLElement {
 // Makes the element a popover element
 // Values values are constrained to:
 //   - auto
-//   - auto
-//   - manual
 //   - manual
 func (e *TdHTMLElement) POPOVER(v string) *TdHTMLElement {
 	if e.StringAttributes == nil {
@@ -777,8 +750,8 @@ func (e *TdHTMLElement) RemoveSLOT(v string) *TdHTMLElement {
 // SPELLCHECK sets the "spellcheck" attribute.
 // Whether the element is to have its spelling and grammar checked
 // Values values are constrained to:
-//   - true
 //   - false
+//   - true
 func (e *TdHTMLElement) SPELLCHECK(v string) *TdHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -885,8 +858,8 @@ func (e *TdHTMLElement) RemoveTITLE(v string) *TdHTMLElement {
 // TRANSLATE sets the "translate" attribute.
 // Whether the element is to be translated when the page is localized
 // Values values are constrained to:
-//   - yes
 //   - no
+//   - yes
 func (e *TdHTMLElement) TRANSLATE(v string) *TdHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}

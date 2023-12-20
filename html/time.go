@@ -76,8 +76,8 @@ func (e *TimeHTMLElement) CustomDataRemove(key string) *TimeHTMLElement {
 // ACCESSKEY sets the "accesskey" attribute.
 // Keyboard shortcut to activate or focus element
 // Values values are constrained to:
-//   - ordered_set_of_unique_space_separated_tokens
 //   - identical_to
+//   - ordered_set_of_unique_space_separated_tokens
 func (e *TimeHTMLElement) ACCESSKEY(v string) *TimeHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -101,18 +101,12 @@ func (e *TimeHTMLElement) RemoveACCESSKEY(v string) *TimeHTMLElement {
 // AUTOCAPITALIZE sets the "autocapitalize" attribute.
 // Recommended autocapitalization behavior (for supported input methods)
 // Values values are constrained to:
-//   - on
-//   - on
-//   - off
-//   - off
+//   - characters
 //   - none
-//   - none
-//   - sentences
+//   - off
+//   - on
 //   - sentences
 //   - words
-//   - words
-//   - characters
-//   - characters
 func (e *TimeHTMLElement) AUTOCAPITALIZE(v string) *TimeHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -210,9 +204,9 @@ func (e *TimeHTMLElement) RemoveCLASS(v string) *TimeHTMLElement {
 // CONTENTEDITABLE sets the "contenteditable" attribute.
 // Whether the element is editable
 // Values values are constrained to:
-//   - true
-//   - plaintext_only
 //   - false
+//   - plaintext_only
+//   - true
 func (e *TimeHTMLElement) CONTENTEDITABLE(v string) *TimeHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -236,16 +230,16 @@ func (e *TimeHTMLElement) RemoveCONTENTEDITABLE(v string) *TimeHTMLElement {
 // DATETIME sets the "datetime" attribute.
 // Machine-readable value
 // Values values are constrained to:
-//   - valid_month_string
 //   - valid_date_string
-//   - valid_yearless_date_string
-//   - valid_time_string
-//   - valid_local_date_and_time_string
-//   - valid_time_zone_offset_string
-//   - valid_global_date_and_time_string
-//   - valid_week_string
-//   - valid_non_negative_integer
 //   - valid_duration_string
+//   - valid_global_date_and_time_string
+//   - valid_local_date_and_time_string
+//   - valid_month_string
+//   - valid_non_negative_integer
+//   - valid_time_string
+//   - valid_time_zone_offset_string
+//   - valid_week_string
+//   - valid_yearless_date_string
 func (e *TimeHTMLElement) DATETIME(v string) *TimeHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -270,8 +264,6 @@ func (e *TimeHTMLElement) RemoveDATETIME(v string) *TimeHTMLElement {
 // The text directionality of the element
 // Values values are constrained to:
 //   - ltr
-//   - ltr
-//   - rtl
 //   - rtl
 func (e *TimeHTMLElement) DIR(v string) *TimeHTMLElement {
 	if e.StringAttributes == nil {
@@ -296,8 +288,8 @@ func (e *TimeHTMLElement) RemoveDIR(v string) *TimeHTMLElement {
 // DRAGGABLE sets the "draggable" attribute.
 // Whether the element is draggable
 // Values values are constrained to:
-//   - true
 //   - false
+//   - true
 func (e *TimeHTMLElement) DRAGGABLE(v string) *TimeHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -321,19 +313,12 @@ func (e *TimeHTMLElement) RemoveDRAGGABLE(v string) *TimeHTMLElement {
 // ENTERKEYHINT sets the "enterkeyhint" attribute.
 // Hint for selecting an enter key action
 // Values values are constrained to:
-//   - enter
-//   - enter
 //   - done
-//   - done
-//   - go
+//   - enter
 //   - go
 //   - next
-//   - next
-//   - previous
 //   - previous
 //   - search
-//   - search
-//   - send
 //   - send
 func (e *TimeHTMLElement) ENTERKEYHINT(v string) *TimeHTMLElement {
 	if e.StringAttributes == nil {
@@ -358,10 +343,8 @@ func (e *TimeHTMLElement) RemoveENTERKEYHINT(v string) *TimeHTMLElement {
 // HIDDEN sets the "hidden" attribute.
 // Whether the element is relevant
 // Values values are constrained to:
-//   - until_found
-//   - until_found
 //   - hidden
-//   - hidden
+//   - until_found
 func (e *TimeHTMLElement) HIDDEN(v string) *TimeHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -443,22 +426,14 @@ func (e *TimeHTMLElement) SetINERT(b bool) *TimeHTMLElement {
 // INPUTMODE sets the "inputmode" attribute.
 // Hint for selecting an input modality
 // Values values are constrained to:
-//   - none
-//   - none
-//   - text
-//   - text
-//   - tel
-//   - tel
-//   - email
-//   - email
-//   - url
-//   - url
-//   - numeric
-//   - numeric
 //   - decimal
-//   - decimal
+//   - email
+//   - none
+//   - numeric
 //   - search
-//   - search
+//   - tel
+//   - text
+//   - url
 func (e *TimeHTMLElement) INPUTMODE(v string) *TimeHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -482,8 +457,8 @@ func (e *TimeHTMLElement) RemoveINPUTMODE(v string) *TimeHTMLElement {
 // IS sets the "is" attribute.
 // Creates a customized built-in element
 // Values values are constrained to:
-//   - valid_custom_element_name
 //   - customized_built_in_element
+//   - valid_custom_element_name
 func (e *TimeHTMLElement) IS(v string) *TimeHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -531,9 +506,9 @@ func (e *TimeHTMLElement) RemoveITEMID(v string) *TimeHTMLElement {
 // ITEMPROP sets the "itemprop" attribute.
 // Property names of a microdata item
 // Values values are constrained to:
+//   - defined_property_names
 //   - unordered_set_of_unique_space_separated_tokens
 //   - valid_absolute_ur_ls
-//   - defined_property_names
 func (e *TimeHTMLElement) ITEMPROP(v string) *TimeHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -688,8 +663,6 @@ func (e *TimeHTMLElement) RemoveNONCE(v string) *TimeHTMLElement {
 // Makes the element a popover element
 // Values values are constrained to:
 //   - auto
-//   - auto
-//   - manual
 //   - manual
 func (e *TimeHTMLElement) POPOVER(v string) *TimeHTMLElement {
 	if e.StringAttributes == nil {
@@ -738,8 +711,8 @@ func (e *TimeHTMLElement) RemoveSLOT(v string) *TimeHTMLElement {
 // SPELLCHECK sets the "spellcheck" attribute.
 // Whether the element is to have its spelling and grammar checked
 // Values values are constrained to:
-//   - true
 //   - false
+//   - true
 func (e *TimeHTMLElement) SPELLCHECK(v string) *TimeHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -846,8 +819,8 @@ func (e *TimeHTMLElement) RemoveTITLE(v string) *TimeHTMLElement {
 // TRANSLATE sets the "translate" attribute.
 // Whether the element is to be translated when the page is localized
 // Values values are constrained to:
-//   - yes
 //   - no
+//   - yes
 func (e *TimeHTMLElement) TRANSLATE(v string) *TimeHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}

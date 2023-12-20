@@ -76,8 +76,8 @@ func (e *DelHTMLElement) CustomDataRemove(key string) *DelHTMLElement {
 // ACCESSKEY sets the "accesskey" attribute.
 // Keyboard shortcut to activate or focus element
 // Values values are constrained to:
-//   - ordered_set_of_unique_space_separated_tokens
 //   - identical_to
+//   - ordered_set_of_unique_space_separated_tokens
 func (e *DelHTMLElement) ACCESSKEY(v string) *DelHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -101,18 +101,12 @@ func (e *DelHTMLElement) RemoveACCESSKEY(v string) *DelHTMLElement {
 // AUTOCAPITALIZE sets the "autocapitalize" attribute.
 // Recommended autocapitalization behavior (for supported input methods)
 // Values values are constrained to:
-//   - on
-//   - on
-//   - off
-//   - off
+//   - characters
 //   - none
-//   - none
-//   - sentences
+//   - off
+//   - on
 //   - sentences
 //   - words
-//   - words
-//   - characters
-//   - characters
 func (e *DelHTMLElement) AUTOCAPITALIZE(v string) *DelHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -234,9 +228,9 @@ func (e *DelHTMLElement) RemoveCLASS(v string) *DelHTMLElement {
 // CONTENTEDITABLE sets the "contenteditable" attribute.
 // Whether the element is editable
 // Values values are constrained to:
-//   - true
-//   - plaintext_only
 //   - false
+//   - plaintext_only
+//   - true
 func (e *DelHTMLElement) CONTENTEDITABLE(v string) *DelHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -260,16 +254,16 @@ func (e *DelHTMLElement) RemoveCONTENTEDITABLE(v string) *DelHTMLElement {
 // DATETIME sets the "datetime" attribute.
 // Machine-readable value
 // Values values are constrained to:
-//   - valid_month_string
 //   - valid_date_string
-//   - valid_yearless_date_string
-//   - valid_time_string
-//   - valid_local_date_and_time_string
-//   - valid_time_zone_offset_string
-//   - valid_global_date_and_time_string
-//   - valid_week_string
-//   - valid_non_negative_integer
 //   - valid_duration_string
+//   - valid_global_date_and_time_string
+//   - valid_local_date_and_time_string
+//   - valid_month_string
+//   - valid_non_negative_integer
+//   - valid_time_string
+//   - valid_time_zone_offset_string
+//   - valid_week_string
+//   - valid_yearless_date_string
 func (e *DelHTMLElement) DATETIME(v string) *DelHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -294,8 +288,6 @@ func (e *DelHTMLElement) RemoveDATETIME(v string) *DelHTMLElement {
 // The text directionality of the element
 // Values values are constrained to:
 //   - ltr
-//   - ltr
-//   - rtl
 //   - rtl
 func (e *DelHTMLElement) DIR(v string) *DelHTMLElement {
 	if e.StringAttributes == nil {
@@ -320,8 +312,8 @@ func (e *DelHTMLElement) RemoveDIR(v string) *DelHTMLElement {
 // DRAGGABLE sets the "draggable" attribute.
 // Whether the element is draggable
 // Values values are constrained to:
-//   - true
 //   - false
+//   - true
 func (e *DelHTMLElement) DRAGGABLE(v string) *DelHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -345,19 +337,12 @@ func (e *DelHTMLElement) RemoveDRAGGABLE(v string) *DelHTMLElement {
 // ENTERKEYHINT sets the "enterkeyhint" attribute.
 // Hint for selecting an enter key action
 // Values values are constrained to:
-//   - enter
-//   - enter
 //   - done
-//   - done
-//   - go
+//   - enter
 //   - go
 //   - next
-//   - next
-//   - previous
 //   - previous
 //   - search
-//   - search
-//   - send
 //   - send
 func (e *DelHTMLElement) ENTERKEYHINT(v string) *DelHTMLElement {
 	if e.StringAttributes == nil {
@@ -382,10 +367,8 @@ func (e *DelHTMLElement) RemoveENTERKEYHINT(v string) *DelHTMLElement {
 // HIDDEN sets the "hidden" attribute.
 // Whether the element is relevant
 // Values values are constrained to:
-//   - until_found
-//   - until_found
 //   - hidden
-//   - hidden
+//   - until_found
 func (e *DelHTMLElement) HIDDEN(v string) *DelHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -467,22 +450,14 @@ func (e *DelHTMLElement) SetINERT(b bool) *DelHTMLElement {
 // INPUTMODE sets the "inputmode" attribute.
 // Hint for selecting an input modality
 // Values values are constrained to:
-//   - none
-//   - none
-//   - text
-//   - text
-//   - tel
-//   - tel
-//   - email
-//   - email
-//   - url
-//   - url
-//   - numeric
-//   - numeric
 //   - decimal
-//   - decimal
+//   - email
+//   - none
+//   - numeric
 //   - search
-//   - search
+//   - tel
+//   - text
+//   - url
 func (e *DelHTMLElement) INPUTMODE(v string) *DelHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -506,8 +481,8 @@ func (e *DelHTMLElement) RemoveINPUTMODE(v string) *DelHTMLElement {
 // IS sets the "is" attribute.
 // Creates a customized built-in element
 // Values values are constrained to:
-//   - valid_custom_element_name
 //   - customized_built_in_element
+//   - valid_custom_element_name
 func (e *DelHTMLElement) IS(v string) *DelHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -555,9 +530,9 @@ func (e *DelHTMLElement) RemoveITEMID(v string) *DelHTMLElement {
 // ITEMPROP sets the "itemprop" attribute.
 // Property names of a microdata item
 // Values values are constrained to:
+//   - defined_property_names
 //   - unordered_set_of_unique_space_separated_tokens
 //   - valid_absolute_ur_ls
-//   - defined_property_names
 func (e *DelHTMLElement) ITEMPROP(v string) *DelHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -712,8 +687,6 @@ func (e *DelHTMLElement) RemoveNONCE(v string) *DelHTMLElement {
 // Makes the element a popover element
 // Values values are constrained to:
 //   - auto
-//   - auto
-//   - manual
 //   - manual
 func (e *DelHTMLElement) POPOVER(v string) *DelHTMLElement {
 	if e.StringAttributes == nil {
@@ -762,8 +735,8 @@ func (e *DelHTMLElement) RemoveSLOT(v string) *DelHTMLElement {
 // SPELLCHECK sets the "spellcheck" attribute.
 // Whether the element is to have its spelling and grammar checked
 // Values values are constrained to:
-//   - true
 //   - false
+//   - true
 func (e *DelHTMLElement) SPELLCHECK(v string) *DelHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -870,8 +843,8 @@ func (e *DelHTMLElement) RemoveTITLE(v string) *DelHTMLElement {
 // TRANSLATE sets the "translate" attribute.
 // Whether the element is to be translated when the page is localized
 // Values values are constrained to:
-//   - yes
 //   - no
+//   - yes
 func (e *DelHTMLElement) TRANSLATE(v string) *DelHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}

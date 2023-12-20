@@ -76,8 +76,8 @@ func (e *SummaryHTMLElement) CustomDataRemove(key string) *SummaryHTMLElement {
 // ACCESSKEY sets the "accesskey" attribute.
 // Keyboard shortcut to activate or focus element
 // Values values are constrained to:
-//   - ordered_set_of_unique_space_separated_tokens
 //   - identical_to
+//   - ordered_set_of_unique_space_separated_tokens
 func (e *SummaryHTMLElement) ACCESSKEY(v string) *SummaryHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -101,18 +101,12 @@ func (e *SummaryHTMLElement) RemoveACCESSKEY(v string) *SummaryHTMLElement {
 // AUTOCAPITALIZE sets the "autocapitalize" attribute.
 // Recommended autocapitalization behavior (for supported input methods)
 // Values values are constrained to:
-//   - on
-//   - on
-//   - off
-//   - off
+//   - characters
 //   - none
-//   - none
-//   - sentences
+//   - off
+//   - on
 //   - sentences
 //   - words
-//   - words
-//   - characters
-//   - characters
 func (e *SummaryHTMLElement) AUTOCAPITALIZE(v string) *SummaryHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -210,9 +204,9 @@ func (e *SummaryHTMLElement) RemoveCLASS(v string) *SummaryHTMLElement {
 // CONTENTEDITABLE sets the "contenteditable" attribute.
 // Whether the element is editable
 // Values values are constrained to:
-//   - true
-//   - plaintext_only
 //   - false
+//   - plaintext_only
+//   - true
 func (e *SummaryHTMLElement) CONTENTEDITABLE(v string) *SummaryHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -237,8 +231,6 @@ func (e *SummaryHTMLElement) RemoveCONTENTEDITABLE(v string) *SummaryHTMLElement
 // The text directionality of the element
 // Values values are constrained to:
 //   - ltr
-//   - ltr
-//   - rtl
 //   - rtl
 func (e *SummaryHTMLElement) DIR(v string) *SummaryHTMLElement {
 	if e.StringAttributes == nil {
@@ -263,8 +255,8 @@ func (e *SummaryHTMLElement) RemoveDIR(v string) *SummaryHTMLElement {
 // DRAGGABLE sets the "draggable" attribute.
 // Whether the element is draggable
 // Values values are constrained to:
-//   - true
 //   - false
+//   - true
 func (e *SummaryHTMLElement) DRAGGABLE(v string) *SummaryHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -288,19 +280,12 @@ func (e *SummaryHTMLElement) RemoveDRAGGABLE(v string) *SummaryHTMLElement {
 // ENTERKEYHINT sets the "enterkeyhint" attribute.
 // Hint for selecting an enter key action
 // Values values are constrained to:
-//   - enter
-//   - enter
 //   - done
-//   - done
-//   - go
+//   - enter
 //   - go
 //   - next
-//   - next
-//   - previous
 //   - previous
 //   - search
-//   - search
-//   - send
 //   - send
 func (e *SummaryHTMLElement) ENTERKEYHINT(v string) *SummaryHTMLElement {
 	if e.StringAttributes == nil {
@@ -325,10 +310,8 @@ func (e *SummaryHTMLElement) RemoveENTERKEYHINT(v string) *SummaryHTMLElement {
 // HIDDEN sets the "hidden" attribute.
 // Whether the element is relevant
 // Values values are constrained to:
-//   - until_found
-//   - until_found
 //   - hidden
-//   - hidden
+//   - until_found
 func (e *SummaryHTMLElement) HIDDEN(v string) *SummaryHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -410,22 +393,14 @@ func (e *SummaryHTMLElement) SetINERT(b bool) *SummaryHTMLElement {
 // INPUTMODE sets the "inputmode" attribute.
 // Hint for selecting an input modality
 // Values values are constrained to:
-//   - none
-//   - none
-//   - text
-//   - text
-//   - tel
-//   - tel
-//   - email
-//   - email
-//   - url
-//   - url
-//   - numeric
-//   - numeric
 //   - decimal
-//   - decimal
+//   - email
+//   - none
+//   - numeric
 //   - search
-//   - search
+//   - tel
+//   - text
+//   - url
 func (e *SummaryHTMLElement) INPUTMODE(v string) *SummaryHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -449,8 +424,8 @@ func (e *SummaryHTMLElement) RemoveINPUTMODE(v string) *SummaryHTMLElement {
 // IS sets the "is" attribute.
 // Creates a customized built-in element
 // Values values are constrained to:
-//   - valid_custom_element_name
 //   - customized_built_in_element
+//   - valid_custom_element_name
 func (e *SummaryHTMLElement) IS(v string) *SummaryHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -498,9 +473,9 @@ func (e *SummaryHTMLElement) RemoveITEMID(v string) *SummaryHTMLElement {
 // ITEMPROP sets the "itemprop" attribute.
 // Property names of a microdata item
 // Values values are constrained to:
+//   - defined_property_names
 //   - unordered_set_of_unique_space_separated_tokens
 //   - valid_absolute_ur_ls
-//   - defined_property_names
 func (e *SummaryHTMLElement) ITEMPROP(v string) *SummaryHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -655,8 +630,6 @@ func (e *SummaryHTMLElement) RemoveNONCE(v string) *SummaryHTMLElement {
 // Makes the element a popover element
 // Values values are constrained to:
 //   - auto
-//   - auto
-//   - manual
 //   - manual
 func (e *SummaryHTMLElement) POPOVER(v string) *SummaryHTMLElement {
 	if e.StringAttributes == nil {
@@ -705,8 +678,8 @@ func (e *SummaryHTMLElement) RemoveSLOT(v string) *SummaryHTMLElement {
 // SPELLCHECK sets the "spellcheck" attribute.
 // Whether the element is to have its spelling and grammar checked
 // Values values are constrained to:
-//   - true
 //   - false
+//   - true
 func (e *SummaryHTMLElement) SPELLCHECK(v string) *SummaryHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -813,8 +786,8 @@ func (e *SummaryHTMLElement) RemoveTITLE(v string) *SummaryHTMLElement {
 // TRANSLATE sets the "translate" attribute.
 // Whether the element is to be translated when the page is localized
 // Values values are constrained to:
-//   - yes
 //   - no
+//   - yes
 func (e *SummaryHTMLElement) TRANSLATE(v string) *SummaryHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}

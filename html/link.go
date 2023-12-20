@@ -76,8 +76,8 @@ func (e *LinkHTMLElement) CustomDataRemove(key string) *LinkHTMLElement {
 // ACCESSKEY sets the "accesskey" attribute.
 // Keyboard shortcut to activate or focus element
 // Values values are constrained to:
-//   - ordered_set_of_unique_space_separated_tokens
 //   - identical_to
+//   - ordered_set_of_unique_space_separated_tokens
 func (e *LinkHTMLElement) ACCESSKEY(v string) *LinkHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -101,16 +101,11 @@ func (e *LinkHTMLElement) RemoveACCESSKEY(v string) *LinkHTMLElement {
 // AS sets the "as" attribute.
 // Potential destination for a preload request (for rel="preload" and rel="modulepreload")
 // Values values are constrained to:
+//   - modulepreload
 //   - potential_destination
-//   - rel
-//   - rel
 //   - preload
-//   - preload
+//   - rel
 //   - script_like_destination
-//   - rel
-//   - rel
-//   - modulepreload
-//   - modulepreload
 func (e *LinkHTMLElement) AS(v string) *LinkHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -134,18 +129,12 @@ func (e *LinkHTMLElement) RemoveAS(v string) *LinkHTMLElement {
 // AUTOCAPITALIZE sets the "autocapitalize" attribute.
 // Recommended autocapitalization behavior (for supported input methods)
 // Values values are constrained to:
-//   - on
-//   - on
-//   - off
-//   - off
+//   - characters
 //   - none
-//   - none
-//   - sentences
+//   - off
+//   - on
 //   - sentences
 //   - words
-//   - words
-//   - characters
-//   - characters
 func (e *LinkHTMLElement) AUTOCAPITALIZE(v string) *LinkHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -291,9 +280,9 @@ func (e *LinkHTMLElement) RemoveCOLOR(v string) *LinkHTMLElement {
 // CONTENTEDITABLE sets the "contenteditable" attribute.
 // Whether the element is editable
 // Values values are constrained to:
-//   - true
-//   - plaintext_only
 //   - false
+//   - plaintext_only
+//   - true
 func (e *LinkHTMLElement) CONTENTEDITABLE(v string) *LinkHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -318,8 +307,6 @@ func (e *LinkHTMLElement) RemoveCONTENTEDITABLE(v string) *LinkHTMLElement {
 // How the element handles crossorigin requests
 // Values values are constrained to:
 //   - anonymous
-//   - anonymous
-//   - use_credentials
 //   - use_credentials
 func (e *LinkHTMLElement) CROSSORIGIN(v string) *LinkHTMLElement {
 	if e.StringAttributes == nil {
@@ -345,8 +332,6 @@ func (e *LinkHTMLElement) RemoveCROSSORIGIN(v string) *LinkHTMLElement {
 // The text directionality of the element
 // Values values are constrained to:
 //   - ltr
-//   - ltr
-//   - rtl
 //   - rtl
 func (e *LinkHTMLElement) DIR(v string) *LinkHTMLElement {
 	if e.StringAttributes == nil {
@@ -405,8 +390,8 @@ func (e *LinkHTMLElement) SetDISABLED(b bool) *LinkHTMLElement {
 // DRAGGABLE sets the "draggable" attribute.
 // Whether the element is draggable
 // Values values are constrained to:
-//   - true
 //   - false
+//   - true
 func (e *LinkHTMLElement) DRAGGABLE(v string) *LinkHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -430,19 +415,12 @@ func (e *LinkHTMLElement) RemoveDRAGGABLE(v string) *LinkHTMLElement {
 // ENTERKEYHINT sets the "enterkeyhint" attribute.
 // Hint for selecting an enter key action
 // Values values are constrained to:
-//   - enter
-//   - enter
 //   - done
-//   - done
-//   - go
+//   - enter
 //   - go
 //   - next
-//   - next
-//   - previous
 //   - previous
 //   - search
-//   - search
-//   - send
 //   - send
 func (e *LinkHTMLElement) ENTERKEYHINT(v string) *LinkHTMLElement {
 	if e.StringAttributes == nil {
@@ -468,10 +446,7 @@ func (e *LinkHTMLElement) RemoveENTERKEYHINT(v string) *LinkHTMLElement {
 // Sets the priority for fetches initiated by the element
 // Values values are constrained to:
 //   - auto
-//   - auto
 //   - high
-//   - high
-//   - low
 //   - low
 func (e *LinkHTMLElement) FETCHPRIORITY(v string) *LinkHTMLElement {
 	if e.StringAttributes == nil {
@@ -496,10 +471,8 @@ func (e *LinkHTMLElement) RemoveFETCHPRIORITY(v string) *LinkHTMLElement {
 // HIDDEN sets the "hidden" attribute.
 // Whether the element is relevant
 // Values values are constrained to:
-//   - until_found
-//   - until_found
 //   - hidden
-//   - hidden
+//   - until_found
 func (e *LinkHTMLElement) HIDDEN(v string) *LinkHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -676,22 +649,14 @@ func (e *LinkHTMLElement) SetINERT(b bool) *LinkHTMLElement {
 // INPUTMODE sets the "inputmode" attribute.
 // Hint for selecting an input modality
 // Values values are constrained to:
-//   - none
-//   - none
-//   - text
-//   - text
-//   - tel
-//   - tel
-//   - email
-//   - email
-//   - url
-//   - url
-//   - numeric
-//   - numeric
 //   - decimal
-//   - decimal
+//   - email
+//   - none
+//   - numeric
 //   - search
-//   - search
+//   - tel
+//   - text
+//   - url
 func (e *LinkHTMLElement) INPUTMODE(v string) *LinkHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -739,8 +704,8 @@ func (e *LinkHTMLElement) RemoveINTEGRITY(v string) *LinkHTMLElement {
 // IS sets the "is" attribute.
 // Creates a customized built-in element
 // Values values are constrained to:
-//   - valid_custom_element_name
 //   - customized_built_in_element
+//   - valid_custom_element_name
 func (e *LinkHTMLElement) IS(v string) *LinkHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -788,9 +753,9 @@ func (e *LinkHTMLElement) RemoveITEMID(v string) *LinkHTMLElement {
 // ITEMPROP sets the "itemprop" attribute.
 // Property names of a microdata item
 // Values values are constrained to:
+//   - defined_property_names
 //   - unordered_set_of_unique_space_separated_tokens
 //   - valid_absolute_ur_ls
-//   - defined_property_names
 func (e *LinkHTMLElement) ITEMPROP(v string) *LinkHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -969,8 +934,6 @@ func (e *LinkHTMLElement) RemoveNONCE(v string) *LinkHTMLElement {
 // Makes the element a popover element
 // Values values are constrained to:
 //   - auto
-//   - auto
-//   - manual
 //   - manual
 func (e *LinkHTMLElement) POPOVER(v string) *LinkHTMLElement {
 	if e.StringAttributes == nil {
@@ -1091,8 +1054,8 @@ func (e *LinkHTMLElement) RemoveSLOT(v string) *LinkHTMLElement {
 // SPELLCHECK sets the "spellcheck" attribute.
 // Whether the element is to have its spelling and grammar checked
 // Values values are constrained to:
-//   - true
 //   - false
+//   - true
 func (e *LinkHTMLElement) SPELLCHECK(v string) *LinkHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -1199,8 +1162,8 @@ func (e *LinkHTMLElement) RemoveTITLE(v string) *LinkHTMLElement {
 // TRANSLATE sets the "translate" attribute.
 // Whether the element is to be translated when the page is localized
 // Values values are constrained to:
-//   - yes
 //   - no
+//   - yes
 func (e *LinkHTMLElement) TRANSLATE(v string) *LinkHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
@@ -1224,9 +1187,9 @@ func (e *LinkHTMLElement) RemoveTRANSLATE(v string) *LinkHTMLElement {
 // TYPE sets the "type" attribute.
 // Type of script
 // Values values are constrained to:
+//   - java_script_mime_type_essence_match
 //   - module
 //   - valid_mime_type_string
-//   - java_script_mime_type_essence_match
 func (e *LinkHTMLElement) TYPE(v string) *LinkHTMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = map[string]string{}
