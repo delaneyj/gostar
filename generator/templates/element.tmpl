@@ -2,35 +2,60 @@ package  {{.PackageName}}
 
 import (
     "fmt"
-	"github.com/delaneyj/gostar"
 )
 
 type {{.ElementName }} struct {
-    *gostar.Element
+    *Element
 }
 
 func {{.NewElement }}(children ...fmt.Stringer) *{{.ElementName }} {
     return &{{.ElementName }}{
-        Element: &gostar.Element{
+        Element: &Element{
             Tag: "{{.Tag}}",
             IsSelfClosing: {{.IsSelfClosing}},
-            Children: children,
+            Descendants: children,
         },
     }
 }
 
-func (e *{{.ElementName }}) AddChildren(children ...fmt.Stringer) *{{.ElementName }} {
-    e.Children = append(e.Children, children...)
+func (e *{{.ElementName }}) Children(children ...fmt.Stringer) *{{.ElementName }} {
+    e.Descendants = append(e.Descendants, children...)
     return e
 }
 
-func (e *{{.ElementName }}) TEXT(text string) *{{.ElementName }} {
-    e.Children = append(e.Children, gostar.TEXT(text))
+func(e *{{.ElementName }}) IfChildren(condition bool, children ...fmt.Stringer) *{{.ElementName }} {
+    if condition {
+        e.Descendants = append(e.Descendants, children...)
+    }
     return e
 }
 
-func (e *{{.ElementName }}) RAW(text string) *{{.ElementName }} {
-    e.Children = append(e.Children, gostar.RAW(text))
+func(e *{{.ElementName }}) TernChildren(condition bool, trueChildren, falseChildren fmt.Stringer) *{{.ElementName }} {
+    if condition {
+        e.Descendants = append(e.Descendants, trueChildren)
+    } else {
+        e.Descendants = append(e.Descendants, falseChildren)
+    }
+    return e
+}
+
+func (e *{{.ElementName }}) Text(text string) *{{.ElementName }} {
+    e.Descendants = append(e.Descendants, TEXT(text))
+    return e
+}
+
+func (e *{{.ElementName }}) TextF(format string, args ...any) *{{.ElementName }} {
+    TEXT(fmt.Sprintf(format, args...))
+    return e
+}
+
+func (e *{{.ElementName }}) Raw(text string) *{{.ElementName }} {
+    e.Descendants = append(e.Descendants, RAW(text))
+    return e
+}
+
+func (e *{{.ElementName }}) RawF(format string, args ...any) *{{.ElementName }} {
+    RAW(fmt.Sprintf(format, args...))
     return e
 }
 
@@ -85,11 +110,11 @@ func (e *{{$.ElementName}}) Set{{.Name}}(b bool) *{{$.ElementName}} {
 {{- else if (eq .Mode "kv") }}
 func (e *{{$.ElementName}}) {{.Name}}(k,v string) *{{$.ElementName}} {
     if e.DelimitedKVAttributes == nil {
-        e.DelimitedKVAttributes = map[string]*gostar.DelimitedKVString{}
+        e.DelimitedKVAttributes = map[string]*DelimitedKVString{}
     }
     kv, ok := e.DelimitedKVAttributes["{{.Key}}"]
     if !ok {
-        kv = gostar.NewEqualSemicolonDelimitedKVString()
+        kv = NewEqualSemicolonDelimitedKVString()
         e.DelimitedKVAttributes["{{.Key}}"] = kv
     }
     kv.Add(k,v)
@@ -107,11 +132,11 @@ func (e *{{$.ElementName}}) Remove{{.Name}}(k string) *{{$.ElementName}} {
 {{- else if (eq .Mode "space-delimited") }}
 func(e *{{$.ElementName}}) {{.Name}}(v string) *{{$.ElementName}} {
     if e.DelimitedStringAttributes == nil {
-        e.DelimitedStringAttributes = map[string]*gostar.DelimitedString{}
+        e.DelimitedStringAttributes = map[string]*DelimitedString{}
     }
     kv, ok := e.DelimitedStringAttributes["{{.Key}}"]
     if !ok {
-        kv = gostar.NewSpaceDelimitedString()
+        kv = NewSpaceDelimitedString()
         e.DelimitedStringAttributes["{{.Key}}"] = kv
     }
     kv.Add(v)
@@ -119,7 +144,7 @@ func(e *{{$.ElementName}}) {{.Name}}(v string) *{{$.ElementName}} {
 }
 
 func (e *{{$.ElementName}}) Set{{.Name}}(v string) *{{$.ElementName}} {
-    kv := gostar.NewSpaceDelimitedString()
+    kv := NewSpaceDelimitedString()
     e.DelimitedStringAttributes["{{.Key}}"] = kv
     kv.Add(v)
     return e

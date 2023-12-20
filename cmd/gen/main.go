@@ -23,7 +23,7 @@ func main() {
 func run(ctx context.Context) error {
 
 	if err := generator.GenerateAllElements(ctx, &generator.GenerateElementArgs{
-		OutputPath: "./elements",
+		OutputPath: "./html",
 		TempDir:    "./tmp",
 	}); err != nil {
 		return err

@@ -196,15 +196,36 @@ func GenerateAllElements(ctx context.Context, args *GenerateElementArgs) (err er
 	}
 
 	wg := &sync.WaitGroup{}
-	wg.Add(len(elements))
-	errs := make(chan error, len(elements))
+	wg.Add(len(elements) + 1)
+	errs := make(chan error, len(elements)+1)
+
+	go func() {
+		defer wg.Done()
+
+		fName := "gostar.go"
+		f, err := os.Create(filepath.Join(args.OutputPath, fName))
+		if err != nil {
+			errs <- fmt.Errorf("could not create file %s: %v", fName, err)
+			return
+		}
+
+		if err := tmpls.ExecuteTemplate(f, "gostar.tmpl", struct {
+			PackageName string
+		}{
+			PackageName: packageName.Snake,
+		}); err != nil {
+			errs <- fmt.Errorf("could not execute template: %v", err)
+			return
+		}
+	}()
+
 	for _, element := range elements {
 		go func(element *Element) {
 			defer wg.Done()
 			elName := toolbelt.ToCasedString(element.Tag)
 			elCtx := ElementCtx{
 				PackageName:   packageName.Snake,
-				ElementName:   fmt.Sprintf("%sElement", elName.Pascal),
+				ElementName:   fmt.Sprintf("%sHTMLElement", elName.Pascal),
 				NewElement:    elName.Upper,
 				Tag:           element.Tag,
 				IsSelfClosing: len(element.ChildElementsOrCategories) == 0,
