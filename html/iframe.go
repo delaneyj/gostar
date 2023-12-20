@@ -48,13 +48,13 @@ func (e *IframeHTMLElement) TextF(format string, args ...any) *IframeHTMLElement
     return e.Text(fmt.Sprintf(format, args...))
 }
 
-func (e *IframeHTMLElement) Raw(text string) *IframeHTMLElement {
-    e.Descendants = append(e.Descendants, Raw(text))
+func (e *IframeHTMLElement) Escaped(text string) *IframeHTMLElement {
+    e.Descendants = append(e.Descendants, Escaped(text))
     return e
 }
 
-func (e *IframeHTMLElement) RawF(format string, args ...any) *IframeHTMLElement {
-    return e.Raw(fmt.Sprintf(format, args...))
+func (e *IframeHTMLElement) EscapedF(format string, args ...any) *IframeHTMLElement {
+    return e.Escaped(fmt.Sprintf(format, args...))
 }
 
 func (e *IframeHTMLElement) CustomData(key, value string) *IframeHTMLElement {
@@ -87,6 +87,13 @@ func (e *IframeHTMLElement) ACCESSKEY(v string) *IframeHTMLElement {
     return e
 }
 
+func (e *IframeHTMLElement) IfACCESSKEY(cond bool, v string) *IframeHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ACCESSKEY(v)
+}
+
 func (e *IframeHTMLElement) RemoveACCESSKEY(v string) *IframeHTMLElement {
     delete(e.StringAttributes, "accesskey")
     return e
@@ -103,6 +110,13 @@ func (e *IframeHTMLElement) ALLOW(v string) *IframeHTMLElement {
     return e
 }
 
+func (e *IframeHTMLElement) IfALLOW(cond bool, v string) *IframeHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ALLOW(v)
+}
+
 func (e *IframeHTMLElement) RemoveALLOW(v string) *IframeHTMLElement {
     delete(e.StringAttributes, "allow")
     return e
@@ -117,6 +131,13 @@ func (e *IframeHTMLElement) ALLOWFULLSCREEN() *IframeHTMLElement {
     }
     e.BoolAttributes["allowfullscreen"] = struct{}{}
     return e
+}
+
+func (e *IframeHTMLElement) IfALLOWFULLSCREEN(cond bool) *IframeHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ALLOWFULLSCREEN()
 }
 
 func (e *IframeHTMLElement) RemoveALLOWFULLSCREEN() *IframeHTMLElement {
@@ -156,6 +177,13 @@ func (e *IframeHTMLElement) AUTOCAPITALIZE(v string) *IframeHTMLElement {
     return e
 }
 
+func (e *IframeHTMLElement) IfAUTOCAPITALIZE(cond bool, v string) *IframeHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.AUTOCAPITALIZE(v)
+}
+
 func (e *IframeHTMLElement) RemoveAUTOCAPITALIZE(v string) *IframeHTMLElement {
     delete(e.StringAttributes, "autocapitalize")
     return e
@@ -170,6 +198,13 @@ func (e *IframeHTMLElement) AUTOFOCUS() *IframeHTMLElement {
     }
     e.BoolAttributes["autofocus"] = struct{}{}
     return e
+}
+
+func (e *IframeHTMLElement) IfAUTOFOCUS(cond bool) *IframeHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.AUTOFOCUS()
 }
 
 func (e *IframeHTMLElement) RemoveAUTOFOCUS() *IframeHTMLElement {
@@ -203,6 +238,13 @@ func(e *IframeHTMLElement) CLASS(v string) *IframeHTMLElement {
     return e
 }
 
+func (e *IframeHTMLElement) IfCLASS(cond bool, v string) *IframeHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.CLASS(v)
+}
+
 func (e *IframeHTMLElement) SetCLASS(v string) *IframeHTMLElement {
     kv := NewSpaceDelimitedString()
     e.DelimitedStringAttributes["class"] = kv
@@ -232,6 +274,13 @@ func (e *IframeHTMLElement) CONTENTEDITABLE(v string) *IframeHTMLElement {
     return e
 }
 
+func (e *IframeHTMLElement) IfCONTENTEDITABLE(cond bool, v string) *IframeHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.CONTENTEDITABLE(v)
+}
+
 func (e *IframeHTMLElement) RemoveCONTENTEDITABLE(v string) *IframeHTMLElement {
     delete(e.StringAttributes, "contenteditable")
     return e
@@ -251,6 +300,13 @@ func (e *IframeHTMLElement) DIR(v string) *IframeHTMLElement {
     return e
 }
 
+func (e *IframeHTMLElement) IfDIR(cond bool, v string) *IframeHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.DIR(v)
+}
+
 func (e *IframeHTMLElement) RemoveDIR(v string) *IframeHTMLElement {
     delete(e.StringAttributes, "dir")
     return e
@@ -266,6 +322,13 @@ func (e *IframeHTMLElement) DRAGGABLE(v string) *IframeHTMLElement {
     }
     e.StringAttributes["draggable"] = v
     return e
+}
+
+func (e *IframeHTMLElement) IfDRAGGABLE(cond bool, v string) *IframeHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.DRAGGABLE(v)
 }
 
 func (e *IframeHTMLElement) RemoveDRAGGABLE(v string) *IframeHTMLElement {
@@ -297,6 +360,13 @@ func (e *IframeHTMLElement) ENTERKEYHINT(v string) *IframeHTMLElement {
     return e
 }
 
+func (e *IframeHTMLElement) IfENTERKEYHINT(cond bool, v string) *IframeHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ENTERKEYHINT(v)
+}
+
 func (e *IframeHTMLElement) RemoveENTERKEYHINT(v string) *IframeHTMLElement {
     delete(e.StringAttributes, "enterkeyhint")
     return e
@@ -311,6 +381,13 @@ func (e *IframeHTMLElement) HEIGHT(v string) *IframeHTMLElement {
     }
     e.StringAttributes["height"] = v
     return e
+}
+
+func (e *IframeHTMLElement) IfHEIGHT(cond bool, v string) *IframeHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.HEIGHT(v)
 }
 
 func (e *IframeHTMLElement) RemoveHEIGHT(v string) *IframeHTMLElement {
@@ -332,6 +409,13 @@ func (e *IframeHTMLElement) HIDDEN(v string) *IframeHTMLElement {
     return e
 }
 
+func (e *IframeHTMLElement) IfHIDDEN(cond bool, v string) *IframeHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.HIDDEN(v)
+}
+
 func (e *IframeHTMLElement) RemoveHIDDEN(v string) *IframeHTMLElement {
     delete(e.StringAttributes, "hidden")
     return e
@@ -348,6 +432,13 @@ func (e *IframeHTMLElement) ID(v string) *IframeHTMLElement {
     return e
 }
 
+func (e *IframeHTMLElement) IfID(cond bool, v string) *IframeHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ID(v)
+}
+
 func (e *IframeHTMLElement) RemoveID(v string) *IframeHTMLElement {
     delete(e.StringAttributes, "id")
     return e
@@ -362,6 +453,13 @@ func (e *IframeHTMLElement) INERT() *IframeHTMLElement {
     }
     e.BoolAttributes["inert"] = struct{}{}
     return e
+}
+
+func (e *IframeHTMLElement) IfINERT(cond bool) *IframeHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.INERT()
 }
 
 func (e *IframeHTMLElement) RemoveINERT() *IframeHTMLElement {
@@ -405,6 +503,13 @@ func (e *IframeHTMLElement) INPUTMODE(v string) *IframeHTMLElement {
     return e
 }
 
+func (e *IframeHTMLElement) IfINPUTMODE(cond bool, v string) *IframeHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.INPUTMODE(v)
+}
+
 func (e *IframeHTMLElement) RemoveINPUTMODE(v string) *IframeHTMLElement {
     delete(e.StringAttributes, "inputmode")
     return e
@@ -422,6 +527,13 @@ func (e *IframeHTMLElement) IS(v string) *IframeHTMLElement {
     return e
 }
 
+func (e *IframeHTMLElement) IfIS(cond bool, v string) *IframeHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.IS(v)
+}
+
 func (e *IframeHTMLElement) RemoveIS(v string) *IframeHTMLElement {
     delete(e.StringAttributes, "is")
     return e
@@ -436,6 +548,13 @@ func (e *IframeHTMLElement) ITEMID(v string) *IframeHTMLElement {
     }
     e.StringAttributes["itemid"] = v
     return e
+}
+
+func (e *IframeHTMLElement) IfITEMID(cond bool, v string) *IframeHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMID(v)
 }
 
 func (e *IframeHTMLElement) RemoveITEMID(v string) *IframeHTMLElement {
@@ -456,6 +575,13 @@ func (e *IframeHTMLElement) ITEMPROP(v string) *IframeHTMLElement {
     return e
 }
 
+func (e *IframeHTMLElement) IfITEMPROP(cond bool, v string) *IframeHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMPROP(v)
+}
+
 func (e *IframeHTMLElement) RemoveITEMPROP(v string) *IframeHTMLElement {
     delete(e.StringAttributes, "itemprop")
     return e
@@ -472,6 +598,13 @@ func (e *IframeHTMLElement) ITEMREF(v string) *IframeHTMLElement {
     return e
 }
 
+func (e *IframeHTMLElement) IfITEMREF(cond bool, v string) *IframeHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMREF(v)
+}
+
 func (e *IframeHTMLElement) RemoveITEMREF(v string) *IframeHTMLElement {
     delete(e.StringAttributes, "itemref")
     return e
@@ -486,6 +619,13 @@ func (e *IframeHTMLElement) ITEMSCOPE() *IframeHTMLElement {
     }
     e.BoolAttributes["itemscope"] = struct{}{}
     return e
+}
+
+func (e *IframeHTMLElement) IfITEMSCOPE(cond bool) *IframeHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMSCOPE()
 }
 
 func (e *IframeHTMLElement) RemoveITEMSCOPE() *IframeHTMLElement {
@@ -515,6 +655,13 @@ func (e *IframeHTMLElement) ITEMTYPE(v string) *IframeHTMLElement {
     return e
 }
 
+func (e *IframeHTMLElement) IfITEMTYPE(cond bool, v string) *IframeHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMTYPE(v)
+}
+
 func (e *IframeHTMLElement) RemoveITEMTYPE(v string) *IframeHTMLElement {
     delete(e.StringAttributes, "itemtype")
     return e
@@ -528,6 +675,13 @@ func (e *IframeHTMLElement) LANG(v string) *IframeHTMLElement {
     }
     e.StringAttributes["lang"] = v
     return e
+}
+
+func (e *IframeHTMLElement) IfLANG(cond bool, v string) *IframeHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.LANG(v)
 }
 
 func (e *IframeHTMLElement) RemoveLANG(v string) *IframeHTMLElement {
@@ -549,6 +703,13 @@ func (e *IframeHTMLElement) LOADING(v string) *IframeHTMLElement {
     return e
 }
 
+func (e *IframeHTMLElement) IfLOADING(cond bool, v string) *IframeHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.LOADING(v)
+}
+
 func (e *IframeHTMLElement) RemoveLOADING(v string) *IframeHTMLElement {
     delete(e.StringAttributes, "loading")
     return e
@@ -565,6 +726,13 @@ func (e *IframeHTMLElement) NAME(v string) *IframeHTMLElement {
     return e
 }
 
+func (e *IframeHTMLElement) IfNAME(cond bool, v string) *IframeHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.NAME(v)
+}
+
 func (e *IframeHTMLElement) RemoveNAME(v string) *IframeHTMLElement {
     delete(e.StringAttributes, "name")
     return e
@@ -579,6 +747,13 @@ func (e *IframeHTMLElement) NONCE(v string) *IframeHTMLElement {
     }
     e.StringAttributes["nonce"] = v
     return e
+}
+
+func (e *IframeHTMLElement) IfNONCE(cond bool, v string) *IframeHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.NONCE(v)
 }
 
 func (e *IframeHTMLElement) RemoveNONCE(v string) *IframeHTMLElement {
@@ -600,6 +775,13 @@ func (e *IframeHTMLElement) POPOVER(v string) *IframeHTMLElement {
     return e
 }
 
+func (e *IframeHTMLElement) IfPOPOVER(cond bool, v string) *IframeHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.POPOVER(v)
+}
+
 func (e *IframeHTMLElement) RemovePOPOVER(v string) *IframeHTMLElement {
     delete(e.StringAttributes, "popover")
     return e
@@ -614,6 +796,13 @@ func (e *IframeHTMLElement) REFERRERPOLICY(v string) *IframeHTMLElement {
     }
     e.StringAttributes["referrerpolicy"] = v
     return e
+}
+
+func (e *IframeHTMLElement) IfREFERRERPOLICY(cond bool, v string) *IframeHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.REFERRERPOLICY(v)
 }
 
 func (e *IframeHTMLElement) RemoveREFERRERPOLICY(v string) *IframeHTMLElement {
@@ -659,6 +848,13 @@ func (e *IframeHTMLElement) SANDBOX(v string) *IframeHTMLElement {
     return e
 }
 
+func (e *IframeHTMLElement) IfSANDBOX(cond bool, v string) *IframeHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SANDBOX(v)
+}
+
 func (e *IframeHTMLElement) RemoveSANDBOX(v string) *IframeHTMLElement {
     delete(e.StringAttributes, "sandbox")
     return e
@@ -673,6 +869,13 @@ func (e *IframeHTMLElement) SLOT(v string) *IframeHTMLElement {
     }
     e.StringAttributes["slot"] = v
     return e
+}
+
+func (e *IframeHTMLElement) IfSLOT(cond bool, v string) *IframeHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SLOT(v)
 }
 
 func (e *IframeHTMLElement) RemoveSLOT(v string) *IframeHTMLElement {
@@ -692,6 +895,13 @@ func (e *IframeHTMLElement) SPELLCHECK(v string) *IframeHTMLElement {
     return e
 }
 
+func (e *IframeHTMLElement) IfSPELLCHECK(cond bool, v string) *IframeHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SPELLCHECK(v)
+}
+
 func (e *IframeHTMLElement) RemoveSPELLCHECK(v string) *IframeHTMLElement {
     delete(e.StringAttributes, "spellcheck")
     return e
@@ -706,6 +916,13 @@ func (e *IframeHTMLElement) SRC(v string) *IframeHTMLElement {
     }
     e.StringAttributes["src"] = v
     return e
+}
+
+func (e *IframeHTMLElement) IfSRC(cond bool, v string) *IframeHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SRC(v)
 }
 
 func (e *IframeHTMLElement) RemoveSRC(v string) *IframeHTMLElement {
@@ -726,6 +943,13 @@ func (e *IframeHTMLElement) SRCDOC(v string) *IframeHTMLElement {
     return e
 }
 
+func (e *IframeHTMLElement) IfSRCDOC(cond bool, v string) *IframeHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SRCDOC(v)
+}
+
 func (e *IframeHTMLElement) RemoveSRCDOC(v string) *IframeHTMLElement {
     delete(e.StringAttributes, "srcdoc")
     return e
@@ -744,6 +968,13 @@ func (e *IframeHTMLElement) STYLE(k,v string) *IframeHTMLElement {
     }
     kv.Add(k,v)
     return e
+}
+
+func (e *IframeHTMLElement) IfSTYLE(cond bool, k string) *IframeHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.STYLE(k, "")
 }
 
 func (e *IframeHTMLElement) RemoveSTYLE(k string) *IframeHTMLElement {
@@ -767,6 +998,13 @@ func (e *IframeHTMLElement) TABINDEX(v string) *IframeHTMLElement {
     return e
 }
 
+func (e *IframeHTMLElement) IfTABINDEX(cond bool, v string) *IframeHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TABINDEX(v)
+}
+
 func (e *IframeHTMLElement) RemoveTABINDEX(v string) *IframeHTMLElement {
     delete(e.StringAttributes, "tabindex")
     return e
@@ -781,6 +1019,13 @@ func (e *IframeHTMLElement) TITLE(v string) *IframeHTMLElement {
     }
     e.StringAttributes["title"] = v
     return e
+}
+
+func (e *IframeHTMLElement) IfTITLE(cond bool, v string) *IframeHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TITLE(v)
 }
 
 func (e *IframeHTMLElement) RemoveTITLE(v string) *IframeHTMLElement {
@@ -800,6 +1045,13 @@ func (e *IframeHTMLElement) TRANSLATE(v string) *IframeHTMLElement {
     return e
 }
 
+func (e *IframeHTMLElement) IfTRANSLATE(cond bool, v string) *IframeHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TRANSLATE(v)
+}
+
 func (e *IframeHTMLElement) RemoveTRANSLATE(v string) *IframeHTMLElement {
     delete(e.StringAttributes, "translate")
     return e
@@ -814,6 +1066,13 @@ func (e *IframeHTMLElement) WIDTH(v string) *IframeHTMLElement {
     }
     e.StringAttributes["width"] = v
     return e
+}
+
+func (e *IframeHTMLElement) IfWIDTH(cond bool, v string) *IframeHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.WIDTH(v)
 }
 
 func (e *IframeHTMLElement) RemoveWIDTH(v string) *IframeHTMLElement {

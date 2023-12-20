@@ -48,13 +48,13 @@ func (e *ScriptHTMLElement) TextF(format string, args ...any) *ScriptHTMLElement
     return e.Text(fmt.Sprintf(format, args...))
 }
 
-func (e *ScriptHTMLElement) Raw(text string) *ScriptHTMLElement {
-    e.Descendants = append(e.Descendants, Raw(text))
+func (e *ScriptHTMLElement) Escaped(text string) *ScriptHTMLElement {
+    e.Descendants = append(e.Descendants, Escaped(text))
     return e
 }
 
-func (e *ScriptHTMLElement) RawF(format string, args ...any) *ScriptHTMLElement {
-    return e.Raw(fmt.Sprintf(format, args...))
+func (e *ScriptHTMLElement) EscapedF(format string, args ...any) *ScriptHTMLElement {
+    return e.Escaped(fmt.Sprintf(format, args...))
 }
 
 func (e *ScriptHTMLElement) CustomData(key, value string) *ScriptHTMLElement {
@@ -87,6 +87,13 @@ func (e *ScriptHTMLElement) ACCESSKEY(v string) *ScriptHTMLElement {
     return e
 }
 
+func (e *ScriptHTMLElement) IfACCESSKEY(cond bool, v string) *ScriptHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ACCESSKEY(v)
+}
+
 func (e *ScriptHTMLElement) RemoveACCESSKEY(v string) *ScriptHTMLElement {
     delete(e.StringAttributes, "accesskey")
     return e
@@ -101,6 +108,13 @@ func (e *ScriptHTMLElement) ASYNC() *ScriptHTMLElement {
     }
     e.BoolAttributes["async"] = struct{}{}
     return e
+}
+
+func (e *ScriptHTMLElement) IfASYNC(cond bool) *ScriptHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ASYNC()
 }
 
 func (e *ScriptHTMLElement) RemoveASYNC() *ScriptHTMLElement {
@@ -140,6 +154,13 @@ func (e *ScriptHTMLElement) AUTOCAPITALIZE(v string) *ScriptHTMLElement {
     return e
 }
 
+func (e *ScriptHTMLElement) IfAUTOCAPITALIZE(cond bool, v string) *ScriptHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.AUTOCAPITALIZE(v)
+}
+
 func (e *ScriptHTMLElement) RemoveAUTOCAPITALIZE(v string) *ScriptHTMLElement {
     delete(e.StringAttributes, "autocapitalize")
     return e
@@ -154,6 +175,13 @@ func (e *ScriptHTMLElement) AUTOFOCUS() *ScriptHTMLElement {
     }
     e.BoolAttributes["autofocus"] = struct{}{}
     return e
+}
+
+func (e *ScriptHTMLElement) IfAUTOFOCUS(cond bool) *ScriptHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.AUTOFOCUS()
 }
 
 func (e *ScriptHTMLElement) RemoveAUTOFOCUS() *ScriptHTMLElement {
@@ -182,6 +210,13 @@ func (e *ScriptHTMLElement) BLOCKING(v string) *ScriptHTMLElement {
     return e
 }
 
+func (e *ScriptHTMLElement) IfBLOCKING(cond bool, v string) *ScriptHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.BLOCKING(v)
+}
+
 func (e *ScriptHTMLElement) RemoveBLOCKING(v string) *ScriptHTMLElement {
     delete(e.StringAttributes, "blocking")
     return e
@@ -201,6 +236,13 @@ func(e *ScriptHTMLElement) CLASS(v string) *ScriptHTMLElement {
     }
     kv.Add(v)
     return e
+}
+
+func (e *ScriptHTMLElement) IfCLASS(cond bool, v string) *ScriptHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.CLASS(v)
 }
 
 func (e *ScriptHTMLElement) SetCLASS(v string) *ScriptHTMLElement {
@@ -232,6 +274,13 @@ func (e *ScriptHTMLElement) CONTENTEDITABLE(v string) *ScriptHTMLElement {
     return e
 }
 
+func (e *ScriptHTMLElement) IfCONTENTEDITABLE(cond bool, v string) *ScriptHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.CONTENTEDITABLE(v)
+}
+
 func (e *ScriptHTMLElement) RemoveCONTENTEDITABLE(v string) *ScriptHTMLElement {
     delete(e.StringAttributes, "contenteditable")
     return e
@@ -251,6 +300,13 @@ func (e *ScriptHTMLElement) CROSSORIGIN(v string) *ScriptHTMLElement {
     return e
 }
 
+func (e *ScriptHTMLElement) IfCROSSORIGIN(cond bool, v string) *ScriptHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.CROSSORIGIN(v)
+}
+
 func (e *ScriptHTMLElement) RemoveCROSSORIGIN(v string) *ScriptHTMLElement {
     delete(e.StringAttributes, "crossorigin")
     return e
@@ -265,6 +321,13 @@ func (e *ScriptHTMLElement) DEFER() *ScriptHTMLElement {
     }
     e.BoolAttributes["defer"] = struct{}{}
     return e
+}
+
+func (e *ScriptHTMLElement) IfDEFER(cond bool) *ScriptHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.DEFER()
 }
 
 func (e *ScriptHTMLElement) RemoveDEFER() *ScriptHTMLElement {
@@ -296,6 +359,13 @@ func (e *ScriptHTMLElement) DIR(v string) *ScriptHTMLElement {
     return e
 }
 
+func (e *ScriptHTMLElement) IfDIR(cond bool, v string) *ScriptHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.DIR(v)
+}
+
 func (e *ScriptHTMLElement) RemoveDIR(v string) *ScriptHTMLElement {
     delete(e.StringAttributes, "dir")
     return e
@@ -311,6 +381,13 @@ func (e *ScriptHTMLElement) DRAGGABLE(v string) *ScriptHTMLElement {
     }
     e.StringAttributes["draggable"] = v
     return e
+}
+
+func (e *ScriptHTMLElement) IfDRAGGABLE(cond bool, v string) *ScriptHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.DRAGGABLE(v)
 }
 
 func (e *ScriptHTMLElement) RemoveDRAGGABLE(v string) *ScriptHTMLElement {
@@ -342,6 +419,13 @@ func (e *ScriptHTMLElement) ENTERKEYHINT(v string) *ScriptHTMLElement {
     return e
 }
 
+func (e *ScriptHTMLElement) IfENTERKEYHINT(cond bool, v string) *ScriptHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ENTERKEYHINT(v)
+}
+
 func (e *ScriptHTMLElement) RemoveENTERKEYHINT(v string) *ScriptHTMLElement {
     delete(e.StringAttributes, "enterkeyhint")
     return e
@@ -363,6 +447,13 @@ func (e *ScriptHTMLElement) FETCHPRIORITY(v string) *ScriptHTMLElement {
     return e
 }
 
+func (e *ScriptHTMLElement) IfFETCHPRIORITY(cond bool, v string) *ScriptHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.FETCHPRIORITY(v)
+}
+
 func (e *ScriptHTMLElement) RemoveFETCHPRIORITY(v string) *ScriptHTMLElement {
     delete(e.StringAttributes, "fetchpriority")
     return e
@@ -382,6 +473,13 @@ func (e *ScriptHTMLElement) HIDDEN(v string) *ScriptHTMLElement {
     return e
 }
 
+func (e *ScriptHTMLElement) IfHIDDEN(cond bool, v string) *ScriptHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.HIDDEN(v)
+}
+
 func (e *ScriptHTMLElement) RemoveHIDDEN(v string) *ScriptHTMLElement {
     delete(e.StringAttributes, "hidden")
     return e
@@ -398,6 +496,13 @@ func (e *ScriptHTMLElement) ID(v string) *ScriptHTMLElement {
     return e
 }
 
+func (e *ScriptHTMLElement) IfID(cond bool, v string) *ScriptHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ID(v)
+}
+
 func (e *ScriptHTMLElement) RemoveID(v string) *ScriptHTMLElement {
     delete(e.StringAttributes, "id")
     return e
@@ -412,6 +517,13 @@ func (e *ScriptHTMLElement) INERT() *ScriptHTMLElement {
     }
     e.BoolAttributes["inert"] = struct{}{}
     return e
+}
+
+func (e *ScriptHTMLElement) IfINERT(cond bool) *ScriptHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.INERT()
 }
 
 func (e *ScriptHTMLElement) RemoveINERT() *ScriptHTMLElement {
@@ -455,6 +567,13 @@ func (e *ScriptHTMLElement) INPUTMODE(v string) *ScriptHTMLElement {
     return e
 }
 
+func (e *ScriptHTMLElement) IfINPUTMODE(cond bool, v string) *ScriptHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.INPUTMODE(v)
+}
+
 func (e *ScriptHTMLElement) RemoveINPUTMODE(v string) *ScriptHTMLElement {
     delete(e.StringAttributes, "inputmode")
     return e
@@ -469,6 +588,13 @@ func (e *ScriptHTMLElement) INTEGRITY(v string) *ScriptHTMLElement {
     }
     e.StringAttributes["integrity"] = v
     return e
+}
+
+func (e *ScriptHTMLElement) IfINTEGRITY(cond bool, v string) *ScriptHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.INTEGRITY(v)
 }
 
 func (e *ScriptHTMLElement) RemoveINTEGRITY(v string) *ScriptHTMLElement {
@@ -488,6 +614,13 @@ func (e *ScriptHTMLElement) IS(v string) *ScriptHTMLElement {
     return e
 }
 
+func (e *ScriptHTMLElement) IfIS(cond bool, v string) *ScriptHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.IS(v)
+}
+
 func (e *ScriptHTMLElement) RemoveIS(v string) *ScriptHTMLElement {
     delete(e.StringAttributes, "is")
     return e
@@ -502,6 +635,13 @@ func (e *ScriptHTMLElement) ITEMID(v string) *ScriptHTMLElement {
     }
     e.StringAttributes["itemid"] = v
     return e
+}
+
+func (e *ScriptHTMLElement) IfITEMID(cond bool, v string) *ScriptHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMID(v)
 }
 
 func (e *ScriptHTMLElement) RemoveITEMID(v string) *ScriptHTMLElement {
@@ -522,6 +662,13 @@ func (e *ScriptHTMLElement) ITEMPROP(v string) *ScriptHTMLElement {
     return e
 }
 
+func (e *ScriptHTMLElement) IfITEMPROP(cond bool, v string) *ScriptHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMPROP(v)
+}
+
 func (e *ScriptHTMLElement) RemoveITEMPROP(v string) *ScriptHTMLElement {
     delete(e.StringAttributes, "itemprop")
     return e
@@ -538,6 +685,13 @@ func (e *ScriptHTMLElement) ITEMREF(v string) *ScriptHTMLElement {
     return e
 }
 
+func (e *ScriptHTMLElement) IfITEMREF(cond bool, v string) *ScriptHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMREF(v)
+}
+
 func (e *ScriptHTMLElement) RemoveITEMREF(v string) *ScriptHTMLElement {
     delete(e.StringAttributes, "itemref")
     return e
@@ -552,6 +706,13 @@ func (e *ScriptHTMLElement) ITEMSCOPE() *ScriptHTMLElement {
     }
     e.BoolAttributes["itemscope"] = struct{}{}
     return e
+}
+
+func (e *ScriptHTMLElement) IfITEMSCOPE(cond bool) *ScriptHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMSCOPE()
 }
 
 func (e *ScriptHTMLElement) RemoveITEMSCOPE() *ScriptHTMLElement {
@@ -581,6 +742,13 @@ func (e *ScriptHTMLElement) ITEMTYPE(v string) *ScriptHTMLElement {
     return e
 }
 
+func (e *ScriptHTMLElement) IfITEMTYPE(cond bool, v string) *ScriptHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMTYPE(v)
+}
+
 func (e *ScriptHTMLElement) RemoveITEMTYPE(v string) *ScriptHTMLElement {
     delete(e.StringAttributes, "itemtype")
     return e
@@ -594,6 +762,13 @@ func (e *ScriptHTMLElement) LANG(v string) *ScriptHTMLElement {
     }
     e.StringAttributes["lang"] = v
     return e
+}
+
+func (e *ScriptHTMLElement) IfLANG(cond bool, v string) *ScriptHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.LANG(v)
 }
 
 func (e *ScriptHTMLElement) RemoveLANG(v string) *ScriptHTMLElement {
@@ -610,6 +785,13 @@ func (e *ScriptHTMLElement) NOMODULE() *ScriptHTMLElement {
     }
     e.BoolAttributes["nomodule"] = struct{}{}
     return e
+}
+
+func (e *ScriptHTMLElement) IfNOMODULE(cond bool) *ScriptHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.NOMODULE()
 }
 
 func (e *ScriptHTMLElement) RemoveNOMODULE() *ScriptHTMLElement {
@@ -638,6 +820,13 @@ func (e *ScriptHTMLElement) NONCE(v string) *ScriptHTMLElement {
     return e
 }
 
+func (e *ScriptHTMLElement) IfNONCE(cond bool, v string) *ScriptHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.NONCE(v)
+}
+
 func (e *ScriptHTMLElement) RemoveNONCE(v string) *ScriptHTMLElement {
     delete(e.StringAttributes, "nonce")
     return e
@@ -657,6 +846,13 @@ func (e *ScriptHTMLElement) POPOVER(v string) *ScriptHTMLElement {
     return e
 }
 
+func (e *ScriptHTMLElement) IfPOPOVER(cond bool, v string) *ScriptHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.POPOVER(v)
+}
+
 func (e *ScriptHTMLElement) RemovePOPOVER(v string) *ScriptHTMLElement {
     delete(e.StringAttributes, "popover")
     return e
@@ -673,6 +869,13 @@ func (e *ScriptHTMLElement) REFERRERPOLICY(v string) *ScriptHTMLElement {
     return e
 }
 
+func (e *ScriptHTMLElement) IfREFERRERPOLICY(cond bool, v string) *ScriptHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.REFERRERPOLICY(v)
+}
+
 func (e *ScriptHTMLElement) RemoveREFERRERPOLICY(v string) *ScriptHTMLElement {
     delete(e.StringAttributes, "referrerpolicy")
     return e
@@ -687,6 +890,13 @@ func (e *ScriptHTMLElement) SLOT(v string) *ScriptHTMLElement {
     }
     e.StringAttributes["slot"] = v
     return e
+}
+
+func (e *ScriptHTMLElement) IfSLOT(cond bool, v string) *ScriptHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SLOT(v)
 }
 
 func (e *ScriptHTMLElement) RemoveSLOT(v string) *ScriptHTMLElement {
@@ -706,6 +916,13 @@ func (e *ScriptHTMLElement) SPELLCHECK(v string) *ScriptHTMLElement {
     return e
 }
 
+func (e *ScriptHTMLElement) IfSPELLCHECK(cond bool, v string) *ScriptHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SPELLCHECK(v)
+}
+
 func (e *ScriptHTMLElement) RemoveSPELLCHECK(v string) *ScriptHTMLElement {
     delete(e.StringAttributes, "spellcheck")
     return e
@@ -720,6 +937,13 @@ func (e *ScriptHTMLElement) SRC(v string) *ScriptHTMLElement {
     }
     e.StringAttributes["src"] = v
     return e
+}
+
+func (e *ScriptHTMLElement) IfSRC(cond bool, v string) *ScriptHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SRC(v)
 }
 
 func (e *ScriptHTMLElement) RemoveSRC(v string) *ScriptHTMLElement {
@@ -740,6 +964,13 @@ func (e *ScriptHTMLElement) STYLE(k,v string) *ScriptHTMLElement {
     }
     kv.Add(k,v)
     return e
+}
+
+func (e *ScriptHTMLElement) IfSTYLE(cond bool, k string) *ScriptHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.STYLE(k, "")
 }
 
 func (e *ScriptHTMLElement) RemoveSTYLE(k string) *ScriptHTMLElement {
@@ -763,6 +994,13 @@ func (e *ScriptHTMLElement) TABINDEX(v string) *ScriptHTMLElement {
     return e
 }
 
+func (e *ScriptHTMLElement) IfTABINDEX(cond bool, v string) *ScriptHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TABINDEX(v)
+}
+
 func (e *ScriptHTMLElement) RemoveTABINDEX(v string) *ScriptHTMLElement {
     delete(e.StringAttributes, "tabindex")
     return e
@@ -777,6 +1015,13 @@ func (e *ScriptHTMLElement) TITLE(v string) *ScriptHTMLElement {
     }
     e.StringAttributes["title"] = v
     return e
+}
+
+func (e *ScriptHTMLElement) IfTITLE(cond bool, v string) *ScriptHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TITLE(v)
 }
 
 func (e *ScriptHTMLElement) RemoveTITLE(v string) *ScriptHTMLElement {
@@ -796,6 +1041,13 @@ func (e *ScriptHTMLElement) TRANSLATE(v string) *ScriptHTMLElement {
     return e
 }
 
+func (e *ScriptHTMLElement) IfTRANSLATE(cond bool, v string) *ScriptHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TRANSLATE(v)
+}
+
 func (e *ScriptHTMLElement) RemoveTRANSLATE(v string) *ScriptHTMLElement {
     delete(e.StringAttributes, "translate")
     return e
@@ -812,6 +1064,13 @@ func (e *ScriptHTMLElement) TYPE(v string) *ScriptHTMLElement {
     }
     e.StringAttributes["type"] = v
     return e
+}
+
+func (e *ScriptHTMLElement) IfTYPE(cond bool, v string) *ScriptHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TYPE(v)
 }
 
 func (e *ScriptHTMLElement) RemoveTYPE(v string) *ScriptHTMLElement {

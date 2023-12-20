@@ -48,13 +48,13 @@ func (e *FooterHTMLElement) TextF(format string, args ...any) *FooterHTMLElement
     return e.Text(fmt.Sprintf(format, args...))
 }
 
-func (e *FooterHTMLElement) Raw(text string) *FooterHTMLElement {
-    e.Descendants = append(e.Descendants, Raw(text))
+func (e *FooterHTMLElement) Escaped(text string) *FooterHTMLElement {
+    e.Descendants = append(e.Descendants, Escaped(text))
     return e
 }
 
-func (e *FooterHTMLElement) RawF(format string, args ...any) *FooterHTMLElement {
-    return e.Raw(fmt.Sprintf(format, args...))
+func (e *FooterHTMLElement) EscapedF(format string, args ...any) *FooterHTMLElement {
+    return e.Escaped(fmt.Sprintf(format, args...))
 }
 
 func (e *FooterHTMLElement) CustomData(key, value string) *FooterHTMLElement {
@@ -87,6 +87,13 @@ func (e *FooterHTMLElement) ACCESSKEY(v string) *FooterHTMLElement {
     return e
 }
 
+func (e *FooterHTMLElement) IfACCESSKEY(cond bool, v string) *FooterHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ACCESSKEY(v)
+}
+
 func (e *FooterHTMLElement) RemoveACCESSKEY(v string) *FooterHTMLElement {
     delete(e.StringAttributes, "accesskey")
     return e
@@ -114,6 +121,13 @@ func (e *FooterHTMLElement) AUTOCAPITALIZE(v string) *FooterHTMLElement {
     return e
 }
 
+func (e *FooterHTMLElement) IfAUTOCAPITALIZE(cond bool, v string) *FooterHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.AUTOCAPITALIZE(v)
+}
+
 func (e *FooterHTMLElement) RemoveAUTOCAPITALIZE(v string) *FooterHTMLElement {
     delete(e.StringAttributes, "autocapitalize")
     return e
@@ -128,6 +142,13 @@ func (e *FooterHTMLElement) AUTOFOCUS() *FooterHTMLElement {
     }
     e.BoolAttributes["autofocus"] = struct{}{}
     return e
+}
+
+func (e *FooterHTMLElement) IfAUTOFOCUS(cond bool) *FooterHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.AUTOFOCUS()
 }
 
 func (e *FooterHTMLElement) RemoveAUTOFOCUS() *FooterHTMLElement {
@@ -161,6 +182,13 @@ func(e *FooterHTMLElement) CLASS(v string) *FooterHTMLElement {
     return e
 }
 
+func (e *FooterHTMLElement) IfCLASS(cond bool, v string) *FooterHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.CLASS(v)
+}
+
 func (e *FooterHTMLElement) SetCLASS(v string) *FooterHTMLElement {
     kv := NewSpaceDelimitedString()
     e.DelimitedStringAttributes["class"] = kv
@@ -190,6 +218,13 @@ func (e *FooterHTMLElement) CONTENTEDITABLE(v string) *FooterHTMLElement {
     return e
 }
 
+func (e *FooterHTMLElement) IfCONTENTEDITABLE(cond bool, v string) *FooterHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.CONTENTEDITABLE(v)
+}
+
 func (e *FooterHTMLElement) RemoveCONTENTEDITABLE(v string) *FooterHTMLElement {
     delete(e.StringAttributes, "contenteditable")
     return e
@@ -209,6 +244,13 @@ func (e *FooterHTMLElement) DIR(v string) *FooterHTMLElement {
     return e
 }
 
+func (e *FooterHTMLElement) IfDIR(cond bool, v string) *FooterHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.DIR(v)
+}
+
 func (e *FooterHTMLElement) RemoveDIR(v string) *FooterHTMLElement {
     delete(e.StringAttributes, "dir")
     return e
@@ -224,6 +266,13 @@ func (e *FooterHTMLElement) DRAGGABLE(v string) *FooterHTMLElement {
     }
     e.StringAttributes["draggable"] = v
     return e
+}
+
+func (e *FooterHTMLElement) IfDRAGGABLE(cond bool, v string) *FooterHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.DRAGGABLE(v)
 }
 
 func (e *FooterHTMLElement) RemoveDRAGGABLE(v string) *FooterHTMLElement {
@@ -255,6 +304,13 @@ func (e *FooterHTMLElement) ENTERKEYHINT(v string) *FooterHTMLElement {
     return e
 }
 
+func (e *FooterHTMLElement) IfENTERKEYHINT(cond bool, v string) *FooterHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ENTERKEYHINT(v)
+}
+
 func (e *FooterHTMLElement) RemoveENTERKEYHINT(v string) *FooterHTMLElement {
     delete(e.StringAttributes, "enterkeyhint")
     return e
@@ -274,6 +330,13 @@ func (e *FooterHTMLElement) HIDDEN(v string) *FooterHTMLElement {
     return e
 }
 
+func (e *FooterHTMLElement) IfHIDDEN(cond bool, v string) *FooterHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.HIDDEN(v)
+}
+
 func (e *FooterHTMLElement) RemoveHIDDEN(v string) *FooterHTMLElement {
     delete(e.StringAttributes, "hidden")
     return e
@@ -290,6 +353,13 @@ func (e *FooterHTMLElement) ID(v string) *FooterHTMLElement {
     return e
 }
 
+func (e *FooterHTMLElement) IfID(cond bool, v string) *FooterHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ID(v)
+}
+
 func (e *FooterHTMLElement) RemoveID(v string) *FooterHTMLElement {
     delete(e.StringAttributes, "id")
     return e
@@ -304,6 +374,13 @@ func (e *FooterHTMLElement) INERT() *FooterHTMLElement {
     }
     e.BoolAttributes["inert"] = struct{}{}
     return e
+}
+
+func (e *FooterHTMLElement) IfINERT(cond bool) *FooterHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.INERT()
 }
 
 func (e *FooterHTMLElement) RemoveINERT() *FooterHTMLElement {
@@ -347,6 +424,13 @@ func (e *FooterHTMLElement) INPUTMODE(v string) *FooterHTMLElement {
     return e
 }
 
+func (e *FooterHTMLElement) IfINPUTMODE(cond bool, v string) *FooterHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.INPUTMODE(v)
+}
+
 func (e *FooterHTMLElement) RemoveINPUTMODE(v string) *FooterHTMLElement {
     delete(e.StringAttributes, "inputmode")
     return e
@@ -364,6 +448,13 @@ func (e *FooterHTMLElement) IS(v string) *FooterHTMLElement {
     return e
 }
 
+func (e *FooterHTMLElement) IfIS(cond bool, v string) *FooterHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.IS(v)
+}
+
 func (e *FooterHTMLElement) RemoveIS(v string) *FooterHTMLElement {
     delete(e.StringAttributes, "is")
     return e
@@ -378,6 +469,13 @@ func (e *FooterHTMLElement) ITEMID(v string) *FooterHTMLElement {
     }
     e.StringAttributes["itemid"] = v
     return e
+}
+
+func (e *FooterHTMLElement) IfITEMID(cond bool, v string) *FooterHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMID(v)
 }
 
 func (e *FooterHTMLElement) RemoveITEMID(v string) *FooterHTMLElement {
@@ -398,6 +496,13 @@ func (e *FooterHTMLElement) ITEMPROP(v string) *FooterHTMLElement {
     return e
 }
 
+func (e *FooterHTMLElement) IfITEMPROP(cond bool, v string) *FooterHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMPROP(v)
+}
+
 func (e *FooterHTMLElement) RemoveITEMPROP(v string) *FooterHTMLElement {
     delete(e.StringAttributes, "itemprop")
     return e
@@ -414,6 +519,13 @@ func (e *FooterHTMLElement) ITEMREF(v string) *FooterHTMLElement {
     return e
 }
 
+func (e *FooterHTMLElement) IfITEMREF(cond bool, v string) *FooterHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMREF(v)
+}
+
 func (e *FooterHTMLElement) RemoveITEMREF(v string) *FooterHTMLElement {
     delete(e.StringAttributes, "itemref")
     return e
@@ -428,6 +540,13 @@ func (e *FooterHTMLElement) ITEMSCOPE() *FooterHTMLElement {
     }
     e.BoolAttributes["itemscope"] = struct{}{}
     return e
+}
+
+func (e *FooterHTMLElement) IfITEMSCOPE(cond bool) *FooterHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMSCOPE()
 }
 
 func (e *FooterHTMLElement) RemoveITEMSCOPE() *FooterHTMLElement {
@@ -457,6 +576,13 @@ func (e *FooterHTMLElement) ITEMTYPE(v string) *FooterHTMLElement {
     return e
 }
 
+func (e *FooterHTMLElement) IfITEMTYPE(cond bool, v string) *FooterHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMTYPE(v)
+}
+
 func (e *FooterHTMLElement) RemoveITEMTYPE(v string) *FooterHTMLElement {
     delete(e.StringAttributes, "itemtype")
     return e
@@ -470,6 +596,13 @@ func (e *FooterHTMLElement) LANG(v string) *FooterHTMLElement {
     }
     e.StringAttributes["lang"] = v
     return e
+}
+
+func (e *FooterHTMLElement) IfLANG(cond bool, v string) *FooterHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.LANG(v)
 }
 
 func (e *FooterHTMLElement) RemoveLANG(v string) *FooterHTMLElement {
@@ -486,6 +619,13 @@ func (e *FooterHTMLElement) NONCE(v string) *FooterHTMLElement {
     }
     e.StringAttributes["nonce"] = v
     return e
+}
+
+func (e *FooterHTMLElement) IfNONCE(cond bool, v string) *FooterHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.NONCE(v)
 }
 
 func (e *FooterHTMLElement) RemoveNONCE(v string) *FooterHTMLElement {
@@ -507,6 +647,13 @@ func (e *FooterHTMLElement) POPOVER(v string) *FooterHTMLElement {
     return e
 }
 
+func (e *FooterHTMLElement) IfPOPOVER(cond bool, v string) *FooterHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.POPOVER(v)
+}
+
 func (e *FooterHTMLElement) RemovePOPOVER(v string) *FooterHTMLElement {
     delete(e.StringAttributes, "popover")
     return e
@@ -521,6 +668,13 @@ func (e *FooterHTMLElement) SLOT(v string) *FooterHTMLElement {
     }
     e.StringAttributes["slot"] = v
     return e
+}
+
+func (e *FooterHTMLElement) IfSLOT(cond bool, v string) *FooterHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SLOT(v)
 }
 
 func (e *FooterHTMLElement) RemoveSLOT(v string) *FooterHTMLElement {
@@ -538,6 +692,13 @@ func (e *FooterHTMLElement) SPELLCHECK(v string) *FooterHTMLElement {
     }
     e.StringAttributes["spellcheck"] = v
     return e
+}
+
+func (e *FooterHTMLElement) IfSPELLCHECK(cond bool, v string) *FooterHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SPELLCHECK(v)
 }
 
 func (e *FooterHTMLElement) RemoveSPELLCHECK(v string) *FooterHTMLElement {
@@ -558,6 +719,13 @@ func (e *FooterHTMLElement) STYLE(k,v string) *FooterHTMLElement {
     }
     kv.Add(k,v)
     return e
+}
+
+func (e *FooterHTMLElement) IfSTYLE(cond bool, k string) *FooterHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.STYLE(k, "")
 }
 
 func (e *FooterHTMLElement) RemoveSTYLE(k string) *FooterHTMLElement {
@@ -581,6 +749,13 @@ func (e *FooterHTMLElement) TABINDEX(v string) *FooterHTMLElement {
     return e
 }
 
+func (e *FooterHTMLElement) IfTABINDEX(cond bool, v string) *FooterHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TABINDEX(v)
+}
+
 func (e *FooterHTMLElement) RemoveTABINDEX(v string) *FooterHTMLElement {
     delete(e.StringAttributes, "tabindex")
     return e
@@ -595,6 +770,13 @@ func (e *FooterHTMLElement) TITLE(v string) *FooterHTMLElement {
     }
     e.StringAttributes["title"] = v
     return e
+}
+
+func (e *FooterHTMLElement) IfTITLE(cond bool, v string) *FooterHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TITLE(v)
 }
 
 func (e *FooterHTMLElement) RemoveTITLE(v string) *FooterHTMLElement {
@@ -612,6 +794,13 @@ func (e *FooterHTMLElement) TRANSLATE(v string) *FooterHTMLElement {
     }
     e.StringAttributes["translate"] = v
     return e
+}
+
+func (e *FooterHTMLElement) IfTRANSLATE(cond bool, v string) *FooterHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TRANSLATE(v)
 }
 
 func (e *FooterHTMLElement) RemoveTRANSLATE(v string) *FooterHTMLElement {

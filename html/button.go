@@ -48,13 +48,13 @@ func (e *ButtonHTMLElement) TextF(format string, args ...any) *ButtonHTMLElement
     return e.Text(fmt.Sprintf(format, args...))
 }
 
-func (e *ButtonHTMLElement) Raw(text string) *ButtonHTMLElement {
-    e.Descendants = append(e.Descendants, Raw(text))
+func (e *ButtonHTMLElement) Escaped(text string) *ButtonHTMLElement {
+    e.Descendants = append(e.Descendants, Escaped(text))
     return e
 }
 
-func (e *ButtonHTMLElement) RawF(format string, args ...any) *ButtonHTMLElement {
-    return e.Raw(fmt.Sprintf(format, args...))
+func (e *ButtonHTMLElement) EscapedF(format string, args ...any) *ButtonHTMLElement {
+    return e.Escaped(fmt.Sprintf(format, args...))
 }
 
 func (e *ButtonHTMLElement) CustomData(key, value string) *ButtonHTMLElement {
@@ -87,6 +87,13 @@ func (e *ButtonHTMLElement) ACCESSKEY(v string) *ButtonHTMLElement {
     return e
 }
 
+func (e *ButtonHTMLElement) IfACCESSKEY(cond bool, v string) *ButtonHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ACCESSKEY(v)
+}
+
 func (e *ButtonHTMLElement) RemoveACCESSKEY(v string) *ButtonHTMLElement {
     delete(e.StringAttributes, "accesskey")
     return e
@@ -114,6 +121,13 @@ func (e *ButtonHTMLElement) AUTOCAPITALIZE(v string) *ButtonHTMLElement {
     return e
 }
 
+func (e *ButtonHTMLElement) IfAUTOCAPITALIZE(cond bool, v string) *ButtonHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.AUTOCAPITALIZE(v)
+}
+
 func (e *ButtonHTMLElement) RemoveAUTOCAPITALIZE(v string) *ButtonHTMLElement {
     delete(e.StringAttributes, "autocapitalize")
     return e
@@ -128,6 +142,13 @@ func (e *ButtonHTMLElement) AUTOFOCUS() *ButtonHTMLElement {
     }
     e.BoolAttributes["autofocus"] = struct{}{}
     return e
+}
+
+func (e *ButtonHTMLElement) IfAUTOFOCUS(cond bool) *ButtonHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.AUTOFOCUS()
 }
 
 func (e *ButtonHTMLElement) RemoveAUTOFOCUS() *ButtonHTMLElement {
@@ -161,6 +182,13 @@ func(e *ButtonHTMLElement) CLASS(v string) *ButtonHTMLElement {
     return e
 }
 
+func (e *ButtonHTMLElement) IfCLASS(cond bool, v string) *ButtonHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.CLASS(v)
+}
+
 func (e *ButtonHTMLElement) SetCLASS(v string) *ButtonHTMLElement {
     kv := NewSpaceDelimitedString()
     e.DelimitedStringAttributes["class"] = kv
@@ -190,6 +218,13 @@ func (e *ButtonHTMLElement) CONTENTEDITABLE(v string) *ButtonHTMLElement {
     return e
 }
 
+func (e *ButtonHTMLElement) IfCONTENTEDITABLE(cond bool, v string) *ButtonHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.CONTENTEDITABLE(v)
+}
+
 func (e *ButtonHTMLElement) RemoveCONTENTEDITABLE(v string) *ButtonHTMLElement {
     delete(e.StringAttributes, "contenteditable")
     return e
@@ -209,6 +244,13 @@ func (e *ButtonHTMLElement) DIR(v string) *ButtonHTMLElement {
     return e
 }
 
+func (e *ButtonHTMLElement) IfDIR(cond bool, v string) *ButtonHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.DIR(v)
+}
+
 func (e *ButtonHTMLElement) RemoveDIR(v string) *ButtonHTMLElement {
     delete(e.StringAttributes, "dir")
     return e
@@ -223,6 +265,13 @@ func (e *ButtonHTMLElement) DISABLED() *ButtonHTMLElement {
     }
     e.BoolAttributes["disabled"] = struct{}{}
     return e
+}
+
+func (e *ButtonHTMLElement) IfDISABLED(cond bool) *ButtonHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.DISABLED()
 }
 
 func (e *ButtonHTMLElement) RemoveDISABLED() *ButtonHTMLElement {
@@ -250,6 +299,13 @@ func (e *ButtonHTMLElement) DRAGGABLE(v string) *ButtonHTMLElement {
     }
     e.StringAttributes["draggable"] = v
     return e
+}
+
+func (e *ButtonHTMLElement) IfDRAGGABLE(cond bool, v string) *ButtonHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.DRAGGABLE(v)
 }
 
 func (e *ButtonHTMLElement) RemoveDRAGGABLE(v string) *ButtonHTMLElement {
@@ -281,6 +337,13 @@ func (e *ButtonHTMLElement) ENTERKEYHINT(v string) *ButtonHTMLElement {
     return e
 }
 
+func (e *ButtonHTMLElement) IfENTERKEYHINT(cond bool, v string) *ButtonHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ENTERKEYHINT(v)
+}
+
 func (e *ButtonHTMLElement) RemoveENTERKEYHINT(v string) *ButtonHTMLElement {
     delete(e.StringAttributes, "enterkeyhint")
     return e
@@ -297,6 +360,13 @@ func (e *ButtonHTMLElement) FORM(v string) *ButtonHTMLElement {
     return e
 }
 
+func (e *ButtonHTMLElement) IfFORM(cond bool, v string) *ButtonHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.FORM(v)
+}
+
 func (e *ButtonHTMLElement) RemoveFORM(v string) *ButtonHTMLElement {
     delete(e.StringAttributes, "form")
     return e
@@ -311,6 +381,13 @@ func (e *ButtonHTMLElement) FORMACTION(v string) *ButtonHTMLElement {
     }
     e.StringAttributes["formaction"] = v
     return e
+}
+
+func (e *ButtonHTMLElement) IfFORMACTION(cond bool, v string) *ButtonHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.FORMACTION(v)
 }
 
 func (e *ButtonHTMLElement) RemoveFORMACTION(v string) *ButtonHTMLElement {
@@ -334,6 +411,13 @@ func (e *ButtonHTMLElement) FORMENCTYPE(v string) *ButtonHTMLElement {
     return e
 }
 
+func (e *ButtonHTMLElement) IfFORMENCTYPE(cond bool, v string) *ButtonHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.FORMENCTYPE(v)
+}
+
 func (e *ButtonHTMLElement) RemoveFORMENCTYPE(v string) *ButtonHTMLElement {
     delete(e.StringAttributes, "formenctype")
     return e
@@ -352,6 +436,13 @@ func (e *ButtonHTMLElement) FORMMETHOD(v string) *ButtonHTMLElement {
     return e
 }
 
+func (e *ButtonHTMLElement) IfFORMMETHOD(cond bool, v string) *ButtonHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.FORMMETHOD(v)
+}
+
 func (e *ButtonHTMLElement) RemoveFORMMETHOD(v string) *ButtonHTMLElement {
     delete(e.StringAttributes, "formmethod")
     return e
@@ -366,6 +457,13 @@ func (e *ButtonHTMLElement) FORMNOVALIDATE() *ButtonHTMLElement {
     }
     e.BoolAttributes["formnovalidate"] = struct{}{}
     return e
+}
+
+func (e *ButtonHTMLElement) IfFORMNOVALIDATE(cond bool) *ButtonHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.FORMNOVALIDATE()
 }
 
 func (e *ButtonHTMLElement) RemoveFORMNOVALIDATE() *ButtonHTMLElement {
@@ -394,6 +492,13 @@ func (e *ButtonHTMLElement) FORMTARGET(v string) *ButtonHTMLElement {
     return e
 }
 
+func (e *ButtonHTMLElement) IfFORMTARGET(cond bool, v string) *ButtonHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.FORMTARGET(v)
+}
+
 func (e *ButtonHTMLElement) RemoveFORMTARGET(v string) *ButtonHTMLElement {
     delete(e.StringAttributes, "formtarget")
     return e
@@ -413,6 +518,13 @@ func (e *ButtonHTMLElement) HIDDEN(v string) *ButtonHTMLElement {
     return e
 }
 
+func (e *ButtonHTMLElement) IfHIDDEN(cond bool, v string) *ButtonHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.HIDDEN(v)
+}
+
 func (e *ButtonHTMLElement) RemoveHIDDEN(v string) *ButtonHTMLElement {
     delete(e.StringAttributes, "hidden")
     return e
@@ -429,6 +541,13 @@ func (e *ButtonHTMLElement) ID(v string) *ButtonHTMLElement {
     return e
 }
 
+func (e *ButtonHTMLElement) IfID(cond bool, v string) *ButtonHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ID(v)
+}
+
 func (e *ButtonHTMLElement) RemoveID(v string) *ButtonHTMLElement {
     delete(e.StringAttributes, "id")
     return e
@@ -443,6 +562,13 @@ func (e *ButtonHTMLElement) INERT() *ButtonHTMLElement {
     }
     e.BoolAttributes["inert"] = struct{}{}
     return e
+}
+
+func (e *ButtonHTMLElement) IfINERT(cond bool) *ButtonHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.INERT()
 }
 
 func (e *ButtonHTMLElement) RemoveINERT() *ButtonHTMLElement {
@@ -486,6 +612,13 @@ func (e *ButtonHTMLElement) INPUTMODE(v string) *ButtonHTMLElement {
     return e
 }
 
+func (e *ButtonHTMLElement) IfINPUTMODE(cond bool, v string) *ButtonHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.INPUTMODE(v)
+}
+
 func (e *ButtonHTMLElement) RemoveINPUTMODE(v string) *ButtonHTMLElement {
     delete(e.StringAttributes, "inputmode")
     return e
@@ -503,6 +636,13 @@ func (e *ButtonHTMLElement) IS(v string) *ButtonHTMLElement {
     return e
 }
 
+func (e *ButtonHTMLElement) IfIS(cond bool, v string) *ButtonHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.IS(v)
+}
+
 func (e *ButtonHTMLElement) RemoveIS(v string) *ButtonHTMLElement {
     delete(e.StringAttributes, "is")
     return e
@@ -517,6 +657,13 @@ func (e *ButtonHTMLElement) ITEMID(v string) *ButtonHTMLElement {
     }
     e.StringAttributes["itemid"] = v
     return e
+}
+
+func (e *ButtonHTMLElement) IfITEMID(cond bool, v string) *ButtonHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMID(v)
 }
 
 func (e *ButtonHTMLElement) RemoveITEMID(v string) *ButtonHTMLElement {
@@ -537,6 +684,13 @@ func (e *ButtonHTMLElement) ITEMPROP(v string) *ButtonHTMLElement {
     return e
 }
 
+func (e *ButtonHTMLElement) IfITEMPROP(cond bool, v string) *ButtonHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMPROP(v)
+}
+
 func (e *ButtonHTMLElement) RemoveITEMPROP(v string) *ButtonHTMLElement {
     delete(e.StringAttributes, "itemprop")
     return e
@@ -553,6 +707,13 @@ func (e *ButtonHTMLElement) ITEMREF(v string) *ButtonHTMLElement {
     return e
 }
 
+func (e *ButtonHTMLElement) IfITEMREF(cond bool, v string) *ButtonHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMREF(v)
+}
+
 func (e *ButtonHTMLElement) RemoveITEMREF(v string) *ButtonHTMLElement {
     delete(e.StringAttributes, "itemref")
     return e
@@ -567,6 +728,13 @@ func (e *ButtonHTMLElement) ITEMSCOPE() *ButtonHTMLElement {
     }
     e.BoolAttributes["itemscope"] = struct{}{}
     return e
+}
+
+func (e *ButtonHTMLElement) IfITEMSCOPE(cond bool) *ButtonHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMSCOPE()
 }
 
 func (e *ButtonHTMLElement) RemoveITEMSCOPE() *ButtonHTMLElement {
@@ -596,6 +764,13 @@ func (e *ButtonHTMLElement) ITEMTYPE(v string) *ButtonHTMLElement {
     return e
 }
 
+func (e *ButtonHTMLElement) IfITEMTYPE(cond bool, v string) *ButtonHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMTYPE(v)
+}
+
 func (e *ButtonHTMLElement) RemoveITEMTYPE(v string) *ButtonHTMLElement {
     delete(e.StringAttributes, "itemtype")
     return e
@@ -609,6 +784,13 @@ func (e *ButtonHTMLElement) LANG(v string) *ButtonHTMLElement {
     }
     e.StringAttributes["lang"] = v
     return e
+}
+
+func (e *ButtonHTMLElement) IfLANG(cond bool, v string) *ButtonHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.LANG(v)
 }
 
 func (e *ButtonHTMLElement) RemoveLANG(v string) *ButtonHTMLElement {
@@ -627,6 +809,13 @@ func (e *ButtonHTMLElement) NAME(v string) *ButtonHTMLElement {
     return e
 }
 
+func (e *ButtonHTMLElement) IfNAME(cond bool, v string) *ButtonHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.NAME(v)
+}
+
 func (e *ButtonHTMLElement) RemoveNAME(v string) *ButtonHTMLElement {
     delete(e.StringAttributes, "name")
     return e
@@ -641,6 +830,13 @@ func (e *ButtonHTMLElement) NONCE(v string) *ButtonHTMLElement {
     }
     e.StringAttributes["nonce"] = v
     return e
+}
+
+func (e *ButtonHTMLElement) IfNONCE(cond bool, v string) *ButtonHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.NONCE(v)
 }
 
 func (e *ButtonHTMLElement) RemoveNONCE(v string) *ButtonHTMLElement {
@@ -662,6 +858,13 @@ func (e *ButtonHTMLElement) POPOVER(v string) *ButtonHTMLElement {
     return e
 }
 
+func (e *ButtonHTMLElement) IfPOPOVER(cond bool, v string) *ButtonHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.POPOVER(v)
+}
+
 func (e *ButtonHTMLElement) RemovePOPOVER(v string) *ButtonHTMLElement {
     delete(e.StringAttributes, "popover")
     return e
@@ -676,6 +879,13 @@ func (e *ButtonHTMLElement) POPOVERTARGET(v string) *ButtonHTMLElement {
     }
     e.StringAttributes["popovertarget"] = v
     return e
+}
+
+func (e *ButtonHTMLElement) IfPOPOVERTARGET(cond bool, v string) *ButtonHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.POPOVERTARGET(v)
 }
 
 func (e *ButtonHTMLElement) RemovePOPOVERTARGET(v string) *ButtonHTMLElement {
@@ -699,6 +909,13 @@ func (e *ButtonHTMLElement) POPOVERTARGETACTION(v string) *ButtonHTMLElement {
     return e
 }
 
+func (e *ButtonHTMLElement) IfPOPOVERTARGETACTION(cond bool, v string) *ButtonHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.POPOVERTARGETACTION(v)
+}
+
 func (e *ButtonHTMLElement) RemovePOPOVERTARGETACTION(v string) *ButtonHTMLElement {
     delete(e.StringAttributes, "popovertargetaction")
     return e
@@ -713,6 +930,13 @@ func (e *ButtonHTMLElement) SLOT(v string) *ButtonHTMLElement {
     }
     e.StringAttributes["slot"] = v
     return e
+}
+
+func (e *ButtonHTMLElement) IfSLOT(cond bool, v string) *ButtonHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SLOT(v)
 }
 
 func (e *ButtonHTMLElement) RemoveSLOT(v string) *ButtonHTMLElement {
@@ -730,6 +954,13 @@ func (e *ButtonHTMLElement) SPELLCHECK(v string) *ButtonHTMLElement {
     }
     e.StringAttributes["spellcheck"] = v
     return e
+}
+
+func (e *ButtonHTMLElement) IfSPELLCHECK(cond bool, v string) *ButtonHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SPELLCHECK(v)
 }
 
 func (e *ButtonHTMLElement) RemoveSPELLCHECK(v string) *ButtonHTMLElement {
@@ -750,6 +981,13 @@ func (e *ButtonHTMLElement) STYLE(k,v string) *ButtonHTMLElement {
     }
     kv.Add(k,v)
     return e
+}
+
+func (e *ButtonHTMLElement) IfSTYLE(cond bool, k string) *ButtonHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.STYLE(k, "")
 }
 
 func (e *ButtonHTMLElement) RemoveSTYLE(k string) *ButtonHTMLElement {
@@ -773,6 +1011,13 @@ func (e *ButtonHTMLElement) TABINDEX(v string) *ButtonHTMLElement {
     return e
 }
 
+func (e *ButtonHTMLElement) IfTABINDEX(cond bool, v string) *ButtonHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TABINDEX(v)
+}
+
 func (e *ButtonHTMLElement) RemoveTABINDEX(v string) *ButtonHTMLElement {
     delete(e.StringAttributes, "tabindex")
     return e
@@ -787,6 +1032,13 @@ func (e *ButtonHTMLElement) TITLE(v string) *ButtonHTMLElement {
     }
     e.StringAttributes["title"] = v
     return e
+}
+
+func (e *ButtonHTMLElement) IfTITLE(cond bool, v string) *ButtonHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TITLE(v)
 }
 
 func (e *ButtonHTMLElement) RemoveTITLE(v string) *ButtonHTMLElement {
@@ -804,6 +1056,13 @@ func (e *ButtonHTMLElement) TRANSLATE(v string) *ButtonHTMLElement {
     }
     e.StringAttributes["translate"] = v
     return e
+}
+
+func (e *ButtonHTMLElement) IfTRANSLATE(cond bool, v string) *ButtonHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TRANSLATE(v)
 }
 
 func (e *ButtonHTMLElement) RemoveTRANSLATE(v string) *ButtonHTMLElement {
@@ -824,6 +1083,13 @@ func (e *ButtonHTMLElement) TYPE(v string) *ButtonHTMLElement {
     return e
 }
 
+func (e *ButtonHTMLElement) IfTYPE(cond bool, v string) *ButtonHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TYPE(v)
+}
+
 func (e *ButtonHTMLElement) RemoveTYPE(v string) *ButtonHTMLElement {
     delete(e.StringAttributes, "type")
     return e
@@ -838,6 +1104,13 @@ func (e *ButtonHTMLElement) VALUE(v string) *ButtonHTMLElement {
     }
     e.StringAttributes["value"] = v
     return e
+}
+
+func (e *ButtonHTMLElement) IfVALUE(cond bool, v string) *ButtonHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.VALUE(v)
 }
 
 func (e *ButtonHTMLElement) RemoveVALUE(v string) *ButtonHTMLElement {

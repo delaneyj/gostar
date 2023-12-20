@@ -48,13 +48,13 @@ func (e *IHTMLElement) TextF(format string, args ...any) *IHTMLElement {
     return e.Text(fmt.Sprintf(format, args...))
 }
 
-func (e *IHTMLElement) Raw(text string) *IHTMLElement {
-    e.Descendants = append(e.Descendants, Raw(text))
+func (e *IHTMLElement) Escaped(text string) *IHTMLElement {
+    e.Descendants = append(e.Descendants, Escaped(text))
     return e
 }
 
-func (e *IHTMLElement) RawF(format string, args ...any) *IHTMLElement {
-    return e.Raw(fmt.Sprintf(format, args...))
+func (e *IHTMLElement) EscapedF(format string, args ...any) *IHTMLElement {
+    return e.Escaped(fmt.Sprintf(format, args...))
 }
 
 func (e *IHTMLElement) CustomData(key, value string) *IHTMLElement {
@@ -87,6 +87,13 @@ func (e *IHTMLElement) ACCESSKEY(v string) *IHTMLElement {
     return e
 }
 
+func (e *IHTMLElement) IfACCESSKEY(cond bool, v string) *IHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ACCESSKEY(v)
+}
+
 func (e *IHTMLElement) RemoveACCESSKEY(v string) *IHTMLElement {
     delete(e.StringAttributes, "accesskey")
     return e
@@ -114,6 +121,13 @@ func (e *IHTMLElement) AUTOCAPITALIZE(v string) *IHTMLElement {
     return e
 }
 
+func (e *IHTMLElement) IfAUTOCAPITALIZE(cond bool, v string) *IHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.AUTOCAPITALIZE(v)
+}
+
 func (e *IHTMLElement) RemoveAUTOCAPITALIZE(v string) *IHTMLElement {
     delete(e.StringAttributes, "autocapitalize")
     return e
@@ -128,6 +142,13 @@ func (e *IHTMLElement) AUTOFOCUS() *IHTMLElement {
     }
     e.BoolAttributes["autofocus"] = struct{}{}
     return e
+}
+
+func (e *IHTMLElement) IfAUTOFOCUS(cond bool) *IHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.AUTOFOCUS()
 }
 
 func (e *IHTMLElement) RemoveAUTOFOCUS() *IHTMLElement {
@@ -161,6 +182,13 @@ func(e *IHTMLElement) CLASS(v string) *IHTMLElement {
     return e
 }
 
+func (e *IHTMLElement) IfCLASS(cond bool, v string) *IHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.CLASS(v)
+}
+
 func (e *IHTMLElement) SetCLASS(v string) *IHTMLElement {
     kv := NewSpaceDelimitedString()
     e.DelimitedStringAttributes["class"] = kv
@@ -190,6 +218,13 @@ func (e *IHTMLElement) CONTENTEDITABLE(v string) *IHTMLElement {
     return e
 }
 
+func (e *IHTMLElement) IfCONTENTEDITABLE(cond bool, v string) *IHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.CONTENTEDITABLE(v)
+}
+
 func (e *IHTMLElement) RemoveCONTENTEDITABLE(v string) *IHTMLElement {
     delete(e.StringAttributes, "contenteditable")
     return e
@@ -209,6 +244,13 @@ func (e *IHTMLElement) DIR(v string) *IHTMLElement {
     return e
 }
 
+func (e *IHTMLElement) IfDIR(cond bool, v string) *IHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.DIR(v)
+}
+
 func (e *IHTMLElement) RemoveDIR(v string) *IHTMLElement {
     delete(e.StringAttributes, "dir")
     return e
@@ -224,6 +266,13 @@ func (e *IHTMLElement) DRAGGABLE(v string) *IHTMLElement {
     }
     e.StringAttributes["draggable"] = v
     return e
+}
+
+func (e *IHTMLElement) IfDRAGGABLE(cond bool, v string) *IHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.DRAGGABLE(v)
 }
 
 func (e *IHTMLElement) RemoveDRAGGABLE(v string) *IHTMLElement {
@@ -255,6 +304,13 @@ func (e *IHTMLElement) ENTERKEYHINT(v string) *IHTMLElement {
     return e
 }
 
+func (e *IHTMLElement) IfENTERKEYHINT(cond bool, v string) *IHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ENTERKEYHINT(v)
+}
+
 func (e *IHTMLElement) RemoveENTERKEYHINT(v string) *IHTMLElement {
     delete(e.StringAttributes, "enterkeyhint")
     return e
@@ -274,6 +330,13 @@ func (e *IHTMLElement) HIDDEN(v string) *IHTMLElement {
     return e
 }
 
+func (e *IHTMLElement) IfHIDDEN(cond bool, v string) *IHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.HIDDEN(v)
+}
+
 func (e *IHTMLElement) RemoveHIDDEN(v string) *IHTMLElement {
     delete(e.StringAttributes, "hidden")
     return e
@@ -290,6 +353,13 @@ func (e *IHTMLElement) ID(v string) *IHTMLElement {
     return e
 }
 
+func (e *IHTMLElement) IfID(cond bool, v string) *IHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ID(v)
+}
+
 func (e *IHTMLElement) RemoveID(v string) *IHTMLElement {
     delete(e.StringAttributes, "id")
     return e
@@ -304,6 +374,13 @@ func (e *IHTMLElement) INERT() *IHTMLElement {
     }
     e.BoolAttributes["inert"] = struct{}{}
     return e
+}
+
+func (e *IHTMLElement) IfINERT(cond bool) *IHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.INERT()
 }
 
 func (e *IHTMLElement) RemoveINERT() *IHTMLElement {
@@ -347,6 +424,13 @@ func (e *IHTMLElement) INPUTMODE(v string) *IHTMLElement {
     return e
 }
 
+func (e *IHTMLElement) IfINPUTMODE(cond bool, v string) *IHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.INPUTMODE(v)
+}
+
 func (e *IHTMLElement) RemoveINPUTMODE(v string) *IHTMLElement {
     delete(e.StringAttributes, "inputmode")
     return e
@@ -364,6 +448,13 @@ func (e *IHTMLElement) IS(v string) *IHTMLElement {
     return e
 }
 
+func (e *IHTMLElement) IfIS(cond bool, v string) *IHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.IS(v)
+}
+
 func (e *IHTMLElement) RemoveIS(v string) *IHTMLElement {
     delete(e.StringAttributes, "is")
     return e
@@ -378,6 +469,13 @@ func (e *IHTMLElement) ITEMID(v string) *IHTMLElement {
     }
     e.StringAttributes["itemid"] = v
     return e
+}
+
+func (e *IHTMLElement) IfITEMID(cond bool, v string) *IHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMID(v)
 }
 
 func (e *IHTMLElement) RemoveITEMID(v string) *IHTMLElement {
@@ -398,6 +496,13 @@ func (e *IHTMLElement) ITEMPROP(v string) *IHTMLElement {
     return e
 }
 
+func (e *IHTMLElement) IfITEMPROP(cond bool, v string) *IHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMPROP(v)
+}
+
 func (e *IHTMLElement) RemoveITEMPROP(v string) *IHTMLElement {
     delete(e.StringAttributes, "itemprop")
     return e
@@ -414,6 +519,13 @@ func (e *IHTMLElement) ITEMREF(v string) *IHTMLElement {
     return e
 }
 
+func (e *IHTMLElement) IfITEMREF(cond bool, v string) *IHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMREF(v)
+}
+
 func (e *IHTMLElement) RemoveITEMREF(v string) *IHTMLElement {
     delete(e.StringAttributes, "itemref")
     return e
@@ -428,6 +540,13 @@ func (e *IHTMLElement) ITEMSCOPE() *IHTMLElement {
     }
     e.BoolAttributes["itemscope"] = struct{}{}
     return e
+}
+
+func (e *IHTMLElement) IfITEMSCOPE(cond bool) *IHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMSCOPE()
 }
 
 func (e *IHTMLElement) RemoveITEMSCOPE() *IHTMLElement {
@@ -457,6 +576,13 @@ func (e *IHTMLElement) ITEMTYPE(v string) *IHTMLElement {
     return e
 }
 
+func (e *IHTMLElement) IfITEMTYPE(cond bool, v string) *IHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMTYPE(v)
+}
+
 func (e *IHTMLElement) RemoveITEMTYPE(v string) *IHTMLElement {
     delete(e.StringAttributes, "itemtype")
     return e
@@ -470,6 +596,13 @@ func (e *IHTMLElement) LANG(v string) *IHTMLElement {
     }
     e.StringAttributes["lang"] = v
     return e
+}
+
+func (e *IHTMLElement) IfLANG(cond bool, v string) *IHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.LANG(v)
 }
 
 func (e *IHTMLElement) RemoveLANG(v string) *IHTMLElement {
@@ -486,6 +619,13 @@ func (e *IHTMLElement) NONCE(v string) *IHTMLElement {
     }
     e.StringAttributes["nonce"] = v
     return e
+}
+
+func (e *IHTMLElement) IfNONCE(cond bool, v string) *IHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.NONCE(v)
 }
 
 func (e *IHTMLElement) RemoveNONCE(v string) *IHTMLElement {
@@ -507,6 +647,13 @@ func (e *IHTMLElement) POPOVER(v string) *IHTMLElement {
     return e
 }
 
+func (e *IHTMLElement) IfPOPOVER(cond bool, v string) *IHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.POPOVER(v)
+}
+
 func (e *IHTMLElement) RemovePOPOVER(v string) *IHTMLElement {
     delete(e.StringAttributes, "popover")
     return e
@@ -521,6 +668,13 @@ func (e *IHTMLElement) SLOT(v string) *IHTMLElement {
     }
     e.StringAttributes["slot"] = v
     return e
+}
+
+func (e *IHTMLElement) IfSLOT(cond bool, v string) *IHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SLOT(v)
 }
 
 func (e *IHTMLElement) RemoveSLOT(v string) *IHTMLElement {
@@ -538,6 +692,13 @@ func (e *IHTMLElement) SPELLCHECK(v string) *IHTMLElement {
     }
     e.StringAttributes["spellcheck"] = v
     return e
+}
+
+func (e *IHTMLElement) IfSPELLCHECK(cond bool, v string) *IHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SPELLCHECK(v)
 }
 
 func (e *IHTMLElement) RemoveSPELLCHECK(v string) *IHTMLElement {
@@ -558,6 +719,13 @@ func (e *IHTMLElement) STYLE(k,v string) *IHTMLElement {
     }
     kv.Add(k,v)
     return e
+}
+
+func (e *IHTMLElement) IfSTYLE(cond bool, k string) *IHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.STYLE(k, "")
 }
 
 func (e *IHTMLElement) RemoveSTYLE(k string) *IHTMLElement {
@@ -581,6 +749,13 @@ func (e *IHTMLElement) TABINDEX(v string) *IHTMLElement {
     return e
 }
 
+func (e *IHTMLElement) IfTABINDEX(cond bool, v string) *IHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TABINDEX(v)
+}
+
 func (e *IHTMLElement) RemoveTABINDEX(v string) *IHTMLElement {
     delete(e.StringAttributes, "tabindex")
     return e
@@ -595,6 +770,13 @@ func (e *IHTMLElement) TITLE(v string) *IHTMLElement {
     }
     e.StringAttributes["title"] = v
     return e
+}
+
+func (e *IHTMLElement) IfTITLE(cond bool, v string) *IHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TITLE(v)
 }
 
 func (e *IHTMLElement) RemoveTITLE(v string) *IHTMLElement {
@@ -612,6 +794,13 @@ func (e *IHTMLElement) TRANSLATE(v string) *IHTMLElement {
     }
     e.StringAttributes["translate"] = v
     return e
+}
+
+func (e *IHTMLElement) IfTRANSLATE(cond bool, v string) *IHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TRANSLATE(v)
 }
 
 func (e *IHTMLElement) RemoveTRANSLATE(v string) *IHTMLElement {

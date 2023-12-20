@@ -48,13 +48,13 @@ func (e *ColgroupHTMLElement) TextF(format string, args ...any) *ColgroupHTMLEle
     return e.Text(fmt.Sprintf(format, args...))
 }
 
-func (e *ColgroupHTMLElement) Raw(text string) *ColgroupHTMLElement {
-    e.Descendants = append(e.Descendants, Raw(text))
+func (e *ColgroupHTMLElement) Escaped(text string) *ColgroupHTMLElement {
+    e.Descendants = append(e.Descendants, Escaped(text))
     return e
 }
 
-func (e *ColgroupHTMLElement) RawF(format string, args ...any) *ColgroupHTMLElement {
-    return e.Raw(fmt.Sprintf(format, args...))
+func (e *ColgroupHTMLElement) EscapedF(format string, args ...any) *ColgroupHTMLElement {
+    return e.Escaped(fmt.Sprintf(format, args...))
 }
 
 func (e *ColgroupHTMLElement) CustomData(key, value string) *ColgroupHTMLElement {
@@ -87,6 +87,13 @@ func (e *ColgroupHTMLElement) ACCESSKEY(v string) *ColgroupHTMLElement {
     return e
 }
 
+func (e *ColgroupHTMLElement) IfACCESSKEY(cond bool, v string) *ColgroupHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ACCESSKEY(v)
+}
+
 func (e *ColgroupHTMLElement) RemoveACCESSKEY(v string) *ColgroupHTMLElement {
     delete(e.StringAttributes, "accesskey")
     return e
@@ -114,6 +121,13 @@ func (e *ColgroupHTMLElement) AUTOCAPITALIZE(v string) *ColgroupHTMLElement {
     return e
 }
 
+func (e *ColgroupHTMLElement) IfAUTOCAPITALIZE(cond bool, v string) *ColgroupHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.AUTOCAPITALIZE(v)
+}
+
 func (e *ColgroupHTMLElement) RemoveAUTOCAPITALIZE(v string) *ColgroupHTMLElement {
     delete(e.StringAttributes, "autocapitalize")
     return e
@@ -128,6 +142,13 @@ func (e *ColgroupHTMLElement) AUTOFOCUS() *ColgroupHTMLElement {
     }
     e.BoolAttributes["autofocus"] = struct{}{}
     return e
+}
+
+func (e *ColgroupHTMLElement) IfAUTOFOCUS(cond bool) *ColgroupHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.AUTOFOCUS()
 }
 
 func (e *ColgroupHTMLElement) RemoveAUTOFOCUS() *ColgroupHTMLElement {
@@ -161,6 +182,13 @@ func(e *ColgroupHTMLElement) CLASS(v string) *ColgroupHTMLElement {
     return e
 }
 
+func (e *ColgroupHTMLElement) IfCLASS(cond bool, v string) *ColgroupHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.CLASS(v)
+}
+
 func (e *ColgroupHTMLElement) SetCLASS(v string) *ColgroupHTMLElement {
     kv := NewSpaceDelimitedString()
     e.DelimitedStringAttributes["class"] = kv
@@ -190,6 +218,13 @@ func (e *ColgroupHTMLElement) CONTENTEDITABLE(v string) *ColgroupHTMLElement {
     return e
 }
 
+func (e *ColgroupHTMLElement) IfCONTENTEDITABLE(cond bool, v string) *ColgroupHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.CONTENTEDITABLE(v)
+}
+
 func (e *ColgroupHTMLElement) RemoveCONTENTEDITABLE(v string) *ColgroupHTMLElement {
     delete(e.StringAttributes, "contenteditable")
     return e
@@ -209,6 +244,13 @@ func (e *ColgroupHTMLElement) DIR(v string) *ColgroupHTMLElement {
     return e
 }
 
+func (e *ColgroupHTMLElement) IfDIR(cond bool, v string) *ColgroupHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.DIR(v)
+}
+
 func (e *ColgroupHTMLElement) RemoveDIR(v string) *ColgroupHTMLElement {
     delete(e.StringAttributes, "dir")
     return e
@@ -224,6 +266,13 @@ func (e *ColgroupHTMLElement) DRAGGABLE(v string) *ColgroupHTMLElement {
     }
     e.StringAttributes["draggable"] = v
     return e
+}
+
+func (e *ColgroupHTMLElement) IfDRAGGABLE(cond bool, v string) *ColgroupHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.DRAGGABLE(v)
 }
 
 func (e *ColgroupHTMLElement) RemoveDRAGGABLE(v string) *ColgroupHTMLElement {
@@ -255,6 +304,13 @@ func (e *ColgroupHTMLElement) ENTERKEYHINT(v string) *ColgroupHTMLElement {
     return e
 }
 
+func (e *ColgroupHTMLElement) IfENTERKEYHINT(cond bool, v string) *ColgroupHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ENTERKEYHINT(v)
+}
+
 func (e *ColgroupHTMLElement) RemoveENTERKEYHINT(v string) *ColgroupHTMLElement {
     delete(e.StringAttributes, "enterkeyhint")
     return e
@@ -274,6 +330,13 @@ func (e *ColgroupHTMLElement) HIDDEN(v string) *ColgroupHTMLElement {
     return e
 }
 
+func (e *ColgroupHTMLElement) IfHIDDEN(cond bool, v string) *ColgroupHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.HIDDEN(v)
+}
+
 func (e *ColgroupHTMLElement) RemoveHIDDEN(v string) *ColgroupHTMLElement {
     delete(e.StringAttributes, "hidden")
     return e
@@ -290,6 +353,13 @@ func (e *ColgroupHTMLElement) ID(v string) *ColgroupHTMLElement {
     return e
 }
 
+func (e *ColgroupHTMLElement) IfID(cond bool, v string) *ColgroupHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ID(v)
+}
+
 func (e *ColgroupHTMLElement) RemoveID(v string) *ColgroupHTMLElement {
     delete(e.StringAttributes, "id")
     return e
@@ -304,6 +374,13 @@ func (e *ColgroupHTMLElement) INERT() *ColgroupHTMLElement {
     }
     e.BoolAttributes["inert"] = struct{}{}
     return e
+}
+
+func (e *ColgroupHTMLElement) IfINERT(cond bool) *ColgroupHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.INERT()
 }
 
 func (e *ColgroupHTMLElement) RemoveINERT() *ColgroupHTMLElement {
@@ -347,6 +424,13 @@ func (e *ColgroupHTMLElement) INPUTMODE(v string) *ColgroupHTMLElement {
     return e
 }
 
+func (e *ColgroupHTMLElement) IfINPUTMODE(cond bool, v string) *ColgroupHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.INPUTMODE(v)
+}
+
 func (e *ColgroupHTMLElement) RemoveINPUTMODE(v string) *ColgroupHTMLElement {
     delete(e.StringAttributes, "inputmode")
     return e
@@ -364,6 +448,13 @@ func (e *ColgroupHTMLElement) IS(v string) *ColgroupHTMLElement {
     return e
 }
 
+func (e *ColgroupHTMLElement) IfIS(cond bool, v string) *ColgroupHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.IS(v)
+}
+
 func (e *ColgroupHTMLElement) RemoveIS(v string) *ColgroupHTMLElement {
     delete(e.StringAttributes, "is")
     return e
@@ -378,6 +469,13 @@ func (e *ColgroupHTMLElement) ITEMID(v string) *ColgroupHTMLElement {
     }
     e.StringAttributes["itemid"] = v
     return e
+}
+
+func (e *ColgroupHTMLElement) IfITEMID(cond bool, v string) *ColgroupHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMID(v)
 }
 
 func (e *ColgroupHTMLElement) RemoveITEMID(v string) *ColgroupHTMLElement {
@@ -398,6 +496,13 @@ func (e *ColgroupHTMLElement) ITEMPROP(v string) *ColgroupHTMLElement {
     return e
 }
 
+func (e *ColgroupHTMLElement) IfITEMPROP(cond bool, v string) *ColgroupHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMPROP(v)
+}
+
 func (e *ColgroupHTMLElement) RemoveITEMPROP(v string) *ColgroupHTMLElement {
     delete(e.StringAttributes, "itemprop")
     return e
@@ -414,6 +519,13 @@ func (e *ColgroupHTMLElement) ITEMREF(v string) *ColgroupHTMLElement {
     return e
 }
 
+func (e *ColgroupHTMLElement) IfITEMREF(cond bool, v string) *ColgroupHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMREF(v)
+}
+
 func (e *ColgroupHTMLElement) RemoveITEMREF(v string) *ColgroupHTMLElement {
     delete(e.StringAttributes, "itemref")
     return e
@@ -428,6 +540,13 @@ func (e *ColgroupHTMLElement) ITEMSCOPE() *ColgroupHTMLElement {
     }
     e.BoolAttributes["itemscope"] = struct{}{}
     return e
+}
+
+func (e *ColgroupHTMLElement) IfITEMSCOPE(cond bool) *ColgroupHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMSCOPE()
 }
 
 func (e *ColgroupHTMLElement) RemoveITEMSCOPE() *ColgroupHTMLElement {
@@ -457,6 +576,13 @@ func (e *ColgroupHTMLElement) ITEMTYPE(v string) *ColgroupHTMLElement {
     return e
 }
 
+func (e *ColgroupHTMLElement) IfITEMTYPE(cond bool, v string) *ColgroupHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMTYPE(v)
+}
+
 func (e *ColgroupHTMLElement) RemoveITEMTYPE(v string) *ColgroupHTMLElement {
     delete(e.StringAttributes, "itemtype")
     return e
@@ -470,6 +596,13 @@ func (e *ColgroupHTMLElement) LANG(v string) *ColgroupHTMLElement {
     }
     e.StringAttributes["lang"] = v
     return e
+}
+
+func (e *ColgroupHTMLElement) IfLANG(cond bool, v string) *ColgroupHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.LANG(v)
 }
 
 func (e *ColgroupHTMLElement) RemoveLANG(v string) *ColgroupHTMLElement {
@@ -486,6 +619,13 @@ func (e *ColgroupHTMLElement) NONCE(v string) *ColgroupHTMLElement {
     }
     e.StringAttributes["nonce"] = v
     return e
+}
+
+func (e *ColgroupHTMLElement) IfNONCE(cond bool, v string) *ColgroupHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.NONCE(v)
 }
 
 func (e *ColgroupHTMLElement) RemoveNONCE(v string) *ColgroupHTMLElement {
@@ -507,6 +647,13 @@ func (e *ColgroupHTMLElement) POPOVER(v string) *ColgroupHTMLElement {
     return e
 }
 
+func (e *ColgroupHTMLElement) IfPOPOVER(cond bool, v string) *ColgroupHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.POPOVER(v)
+}
+
 func (e *ColgroupHTMLElement) RemovePOPOVER(v string) *ColgroupHTMLElement {
     delete(e.StringAttributes, "popover")
     return e
@@ -521,6 +668,13 @@ func (e *ColgroupHTMLElement) SLOT(v string) *ColgroupHTMLElement {
     }
     e.StringAttributes["slot"] = v
     return e
+}
+
+func (e *ColgroupHTMLElement) IfSLOT(cond bool, v string) *ColgroupHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SLOT(v)
 }
 
 func (e *ColgroupHTMLElement) RemoveSLOT(v string) *ColgroupHTMLElement {
@@ -539,6 +693,13 @@ func (e *ColgroupHTMLElement) SPAN(v string) *ColgroupHTMLElement {
     return e
 }
 
+func (e *ColgroupHTMLElement) IfSPAN(cond bool, v string) *ColgroupHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SPAN(v)
+}
+
 func (e *ColgroupHTMLElement) RemoveSPAN(v string) *ColgroupHTMLElement {
     delete(e.StringAttributes, "span")
     return e
@@ -554,6 +715,13 @@ func (e *ColgroupHTMLElement) SPELLCHECK(v string) *ColgroupHTMLElement {
     }
     e.StringAttributes["spellcheck"] = v
     return e
+}
+
+func (e *ColgroupHTMLElement) IfSPELLCHECK(cond bool, v string) *ColgroupHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SPELLCHECK(v)
 }
 
 func (e *ColgroupHTMLElement) RemoveSPELLCHECK(v string) *ColgroupHTMLElement {
@@ -574,6 +742,13 @@ func (e *ColgroupHTMLElement) STYLE(k,v string) *ColgroupHTMLElement {
     }
     kv.Add(k,v)
     return e
+}
+
+func (e *ColgroupHTMLElement) IfSTYLE(cond bool, k string) *ColgroupHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.STYLE(k, "")
 }
 
 func (e *ColgroupHTMLElement) RemoveSTYLE(k string) *ColgroupHTMLElement {
@@ -597,6 +772,13 @@ func (e *ColgroupHTMLElement) TABINDEX(v string) *ColgroupHTMLElement {
     return e
 }
 
+func (e *ColgroupHTMLElement) IfTABINDEX(cond bool, v string) *ColgroupHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TABINDEX(v)
+}
+
 func (e *ColgroupHTMLElement) RemoveTABINDEX(v string) *ColgroupHTMLElement {
     delete(e.StringAttributes, "tabindex")
     return e
@@ -611,6 +793,13 @@ func (e *ColgroupHTMLElement) TITLE(v string) *ColgroupHTMLElement {
     }
     e.StringAttributes["title"] = v
     return e
+}
+
+func (e *ColgroupHTMLElement) IfTITLE(cond bool, v string) *ColgroupHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TITLE(v)
 }
 
 func (e *ColgroupHTMLElement) RemoveTITLE(v string) *ColgroupHTMLElement {
@@ -628,6 +817,13 @@ func (e *ColgroupHTMLElement) TRANSLATE(v string) *ColgroupHTMLElement {
     }
     e.StringAttributes["translate"] = v
     return e
+}
+
+func (e *ColgroupHTMLElement) IfTRANSLATE(cond bool, v string) *ColgroupHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TRANSLATE(v)
 }
 
 func (e *ColgroupHTMLElement) RemoveTRANSLATE(v string) *ColgroupHTMLElement {

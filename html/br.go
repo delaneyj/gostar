@@ -48,13 +48,13 @@ func (e *BrHTMLElement) TextF(format string, args ...any) *BrHTMLElement {
     return e.Text(fmt.Sprintf(format, args...))
 }
 
-func (e *BrHTMLElement) Raw(text string) *BrHTMLElement {
-    e.Descendants = append(e.Descendants, Raw(text))
+func (e *BrHTMLElement) Escaped(text string) *BrHTMLElement {
+    e.Descendants = append(e.Descendants, Escaped(text))
     return e
 }
 
-func (e *BrHTMLElement) RawF(format string, args ...any) *BrHTMLElement {
-    return e.Raw(fmt.Sprintf(format, args...))
+func (e *BrHTMLElement) EscapedF(format string, args ...any) *BrHTMLElement {
+    return e.Escaped(fmt.Sprintf(format, args...))
 }
 
 func (e *BrHTMLElement) CustomData(key, value string) *BrHTMLElement {
@@ -87,6 +87,13 @@ func (e *BrHTMLElement) ACCESSKEY(v string) *BrHTMLElement {
     return e
 }
 
+func (e *BrHTMLElement) IfACCESSKEY(cond bool, v string) *BrHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ACCESSKEY(v)
+}
+
 func (e *BrHTMLElement) RemoveACCESSKEY(v string) *BrHTMLElement {
     delete(e.StringAttributes, "accesskey")
     return e
@@ -114,6 +121,13 @@ func (e *BrHTMLElement) AUTOCAPITALIZE(v string) *BrHTMLElement {
     return e
 }
 
+func (e *BrHTMLElement) IfAUTOCAPITALIZE(cond bool, v string) *BrHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.AUTOCAPITALIZE(v)
+}
+
 func (e *BrHTMLElement) RemoveAUTOCAPITALIZE(v string) *BrHTMLElement {
     delete(e.StringAttributes, "autocapitalize")
     return e
@@ -128,6 +142,13 @@ func (e *BrHTMLElement) AUTOFOCUS() *BrHTMLElement {
     }
     e.BoolAttributes["autofocus"] = struct{}{}
     return e
+}
+
+func (e *BrHTMLElement) IfAUTOFOCUS(cond bool) *BrHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.AUTOFOCUS()
 }
 
 func (e *BrHTMLElement) RemoveAUTOFOCUS() *BrHTMLElement {
@@ -161,6 +182,13 @@ func(e *BrHTMLElement) CLASS(v string) *BrHTMLElement {
     return e
 }
 
+func (e *BrHTMLElement) IfCLASS(cond bool, v string) *BrHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.CLASS(v)
+}
+
 func (e *BrHTMLElement) SetCLASS(v string) *BrHTMLElement {
     kv := NewSpaceDelimitedString()
     e.DelimitedStringAttributes["class"] = kv
@@ -190,6 +218,13 @@ func (e *BrHTMLElement) CONTENTEDITABLE(v string) *BrHTMLElement {
     return e
 }
 
+func (e *BrHTMLElement) IfCONTENTEDITABLE(cond bool, v string) *BrHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.CONTENTEDITABLE(v)
+}
+
 func (e *BrHTMLElement) RemoveCONTENTEDITABLE(v string) *BrHTMLElement {
     delete(e.StringAttributes, "contenteditable")
     return e
@@ -209,6 +244,13 @@ func (e *BrHTMLElement) DIR(v string) *BrHTMLElement {
     return e
 }
 
+func (e *BrHTMLElement) IfDIR(cond bool, v string) *BrHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.DIR(v)
+}
+
 func (e *BrHTMLElement) RemoveDIR(v string) *BrHTMLElement {
     delete(e.StringAttributes, "dir")
     return e
@@ -224,6 +266,13 @@ func (e *BrHTMLElement) DRAGGABLE(v string) *BrHTMLElement {
     }
     e.StringAttributes["draggable"] = v
     return e
+}
+
+func (e *BrHTMLElement) IfDRAGGABLE(cond bool, v string) *BrHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.DRAGGABLE(v)
 }
 
 func (e *BrHTMLElement) RemoveDRAGGABLE(v string) *BrHTMLElement {
@@ -255,6 +304,13 @@ func (e *BrHTMLElement) ENTERKEYHINT(v string) *BrHTMLElement {
     return e
 }
 
+func (e *BrHTMLElement) IfENTERKEYHINT(cond bool, v string) *BrHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ENTERKEYHINT(v)
+}
+
 func (e *BrHTMLElement) RemoveENTERKEYHINT(v string) *BrHTMLElement {
     delete(e.StringAttributes, "enterkeyhint")
     return e
@@ -274,6 +330,13 @@ func (e *BrHTMLElement) HIDDEN(v string) *BrHTMLElement {
     return e
 }
 
+func (e *BrHTMLElement) IfHIDDEN(cond bool, v string) *BrHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.HIDDEN(v)
+}
+
 func (e *BrHTMLElement) RemoveHIDDEN(v string) *BrHTMLElement {
     delete(e.StringAttributes, "hidden")
     return e
@@ -290,6 +353,13 @@ func (e *BrHTMLElement) ID(v string) *BrHTMLElement {
     return e
 }
 
+func (e *BrHTMLElement) IfID(cond bool, v string) *BrHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ID(v)
+}
+
 func (e *BrHTMLElement) RemoveID(v string) *BrHTMLElement {
     delete(e.StringAttributes, "id")
     return e
@@ -304,6 +374,13 @@ func (e *BrHTMLElement) INERT() *BrHTMLElement {
     }
     e.BoolAttributes["inert"] = struct{}{}
     return e
+}
+
+func (e *BrHTMLElement) IfINERT(cond bool) *BrHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.INERT()
 }
 
 func (e *BrHTMLElement) RemoveINERT() *BrHTMLElement {
@@ -347,6 +424,13 @@ func (e *BrHTMLElement) INPUTMODE(v string) *BrHTMLElement {
     return e
 }
 
+func (e *BrHTMLElement) IfINPUTMODE(cond bool, v string) *BrHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.INPUTMODE(v)
+}
+
 func (e *BrHTMLElement) RemoveINPUTMODE(v string) *BrHTMLElement {
     delete(e.StringAttributes, "inputmode")
     return e
@@ -364,6 +448,13 @@ func (e *BrHTMLElement) IS(v string) *BrHTMLElement {
     return e
 }
 
+func (e *BrHTMLElement) IfIS(cond bool, v string) *BrHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.IS(v)
+}
+
 func (e *BrHTMLElement) RemoveIS(v string) *BrHTMLElement {
     delete(e.StringAttributes, "is")
     return e
@@ -378,6 +469,13 @@ func (e *BrHTMLElement) ITEMID(v string) *BrHTMLElement {
     }
     e.StringAttributes["itemid"] = v
     return e
+}
+
+func (e *BrHTMLElement) IfITEMID(cond bool, v string) *BrHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMID(v)
 }
 
 func (e *BrHTMLElement) RemoveITEMID(v string) *BrHTMLElement {
@@ -398,6 +496,13 @@ func (e *BrHTMLElement) ITEMPROP(v string) *BrHTMLElement {
     return e
 }
 
+func (e *BrHTMLElement) IfITEMPROP(cond bool, v string) *BrHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMPROP(v)
+}
+
 func (e *BrHTMLElement) RemoveITEMPROP(v string) *BrHTMLElement {
     delete(e.StringAttributes, "itemprop")
     return e
@@ -414,6 +519,13 @@ func (e *BrHTMLElement) ITEMREF(v string) *BrHTMLElement {
     return e
 }
 
+func (e *BrHTMLElement) IfITEMREF(cond bool, v string) *BrHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMREF(v)
+}
+
 func (e *BrHTMLElement) RemoveITEMREF(v string) *BrHTMLElement {
     delete(e.StringAttributes, "itemref")
     return e
@@ -428,6 +540,13 @@ func (e *BrHTMLElement) ITEMSCOPE() *BrHTMLElement {
     }
     e.BoolAttributes["itemscope"] = struct{}{}
     return e
+}
+
+func (e *BrHTMLElement) IfITEMSCOPE(cond bool) *BrHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMSCOPE()
 }
 
 func (e *BrHTMLElement) RemoveITEMSCOPE() *BrHTMLElement {
@@ -457,6 +576,13 @@ func (e *BrHTMLElement) ITEMTYPE(v string) *BrHTMLElement {
     return e
 }
 
+func (e *BrHTMLElement) IfITEMTYPE(cond bool, v string) *BrHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMTYPE(v)
+}
+
 func (e *BrHTMLElement) RemoveITEMTYPE(v string) *BrHTMLElement {
     delete(e.StringAttributes, "itemtype")
     return e
@@ -470,6 +596,13 @@ func (e *BrHTMLElement) LANG(v string) *BrHTMLElement {
     }
     e.StringAttributes["lang"] = v
     return e
+}
+
+func (e *BrHTMLElement) IfLANG(cond bool, v string) *BrHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.LANG(v)
 }
 
 func (e *BrHTMLElement) RemoveLANG(v string) *BrHTMLElement {
@@ -486,6 +619,13 @@ func (e *BrHTMLElement) NONCE(v string) *BrHTMLElement {
     }
     e.StringAttributes["nonce"] = v
     return e
+}
+
+func (e *BrHTMLElement) IfNONCE(cond bool, v string) *BrHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.NONCE(v)
 }
 
 func (e *BrHTMLElement) RemoveNONCE(v string) *BrHTMLElement {
@@ -507,6 +647,13 @@ func (e *BrHTMLElement) POPOVER(v string) *BrHTMLElement {
     return e
 }
 
+func (e *BrHTMLElement) IfPOPOVER(cond bool, v string) *BrHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.POPOVER(v)
+}
+
 func (e *BrHTMLElement) RemovePOPOVER(v string) *BrHTMLElement {
     delete(e.StringAttributes, "popover")
     return e
@@ -521,6 +668,13 @@ func (e *BrHTMLElement) SLOT(v string) *BrHTMLElement {
     }
     e.StringAttributes["slot"] = v
     return e
+}
+
+func (e *BrHTMLElement) IfSLOT(cond bool, v string) *BrHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SLOT(v)
 }
 
 func (e *BrHTMLElement) RemoveSLOT(v string) *BrHTMLElement {
@@ -538,6 +692,13 @@ func (e *BrHTMLElement) SPELLCHECK(v string) *BrHTMLElement {
     }
     e.StringAttributes["spellcheck"] = v
     return e
+}
+
+func (e *BrHTMLElement) IfSPELLCHECK(cond bool, v string) *BrHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SPELLCHECK(v)
 }
 
 func (e *BrHTMLElement) RemoveSPELLCHECK(v string) *BrHTMLElement {
@@ -558,6 +719,13 @@ func (e *BrHTMLElement) STYLE(k,v string) *BrHTMLElement {
     }
     kv.Add(k,v)
     return e
+}
+
+func (e *BrHTMLElement) IfSTYLE(cond bool, k string) *BrHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.STYLE(k, "")
 }
 
 func (e *BrHTMLElement) RemoveSTYLE(k string) *BrHTMLElement {
@@ -581,6 +749,13 @@ func (e *BrHTMLElement) TABINDEX(v string) *BrHTMLElement {
     return e
 }
 
+func (e *BrHTMLElement) IfTABINDEX(cond bool, v string) *BrHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TABINDEX(v)
+}
+
 func (e *BrHTMLElement) RemoveTABINDEX(v string) *BrHTMLElement {
     delete(e.StringAttributes, "tabindex")
     return e
@@ -595,6 +770,13 @@ func (e *BrHTMLElement) TITLE(v string) *BrHTMLElement {
     }
     e.StringAttributes["title"] = v
     return e
+}
+
+func (e *BrHTMLElement) IfTITLE(cond bool, v string) *BrHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TITLE(v)
 }
 
 func (e *BrHTMLElement) RemoveTITLE(v string) *BrHTMLElement {
@@ -612,6 +794,13 @@ func (e *BrHTMLElement) TRANSLATE(v string) *BrHTMLElement {
     }
     e.StringAttributes["translate"] = v
     return e
+}
+
+func (e *BrHTMLElement) IfTRANSLATE(cond bool, v string) *BrHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TRANSLATE(v)
 }
 
 func (e *BrHTMLElement) RemoveTRANSLATE(v string) *BrHTMLElement {

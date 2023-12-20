@@ -48,13 +48,13 @@ func (e *EmbedHTMLElement) TextF(format string, args ...any) *EmbedHTMLElement {
     return e.Text(fmt.Sprintf(format, args...))
 }
 
-func (e *EmbedHTMLElement) Raw(text string) *EmbedHTMLElement {
-    e.Descendants = append(e.Descendants, Raw(text))
+func (e *EmbedHTMLElement) Escaped(text string) *EmbedHTMLElement {
+    e.Descendants = append(e.Descendants, Escaped(text))
     return e
 }
 
-func (e *EmbedHTMLElement) RawF(format string, args ...any) *EmbedHTMLElement {
-    return e.Raw(fmt.Sprintf(format, args...))
+func (e *EmbedHTMLElement) EscapedF(format string, args ...any) *EmbedHTMLElement {
+    return e.Escaped(fmt.Sprintf(format, args...))
 }
 
 func (e *EmbedHTMLElement) CustomData(key, value string) *EmbedHTMLElement {
@@ -87,6 +87,13 @@ func (e *EmbedHTMLElement) ACCESSKEY(v string) *EmbedHTMLElement {
     return e
 }
 
+func (e *EmbedHTMLElement) IfACCESSKEY(cond bool, v string) *EmbedHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ACCESSKEY(v)
+}
+
 func (e *EmbedHTMLElement) RemoveACCESSKEY(v string) *EmbedHTMLElement {
     delete(e.StringAttributes, "accesskey")
     return e
@@ -114,6 +121,13 @@ func (e *EmbedHTMLElement) AUTOCAPITALIZE(v string) *EmbedHTMLElement {
     return e
 }
 
+func (e *EmbedHTMLElement) IfAUTOCAPITALIZE(cond bool, v string) *EmbedHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.AUTOCAPITALIZE(v)
+}
+
 func (e *EmbedHTMLElement) RemoveAUTOCAPITALIZE(v string) *EmbedHTMLElement {
     delete(e.StringAttributes, "autocapitalize")
     return e
@@ -128,6 +142,13 @@ func (e *EmbedHTMLElement) AUTOFOCUS() *EmbedHTMLElement {
     }
     e.BoolAttributes["autofocus"] = struct{}{}
     return e
+}
+
+func (e *EmbedHTMLElement) IfAUTOFOCUS(cond bool) *EmbedHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.AUTOFOCUS()
 }
 
 func (e *EmbedHTMLElement) RemoveAUTOFOCUS() *EmbedHTMLElement {
@@ -161,6 +182,13 @@ func(e *EmbedHTMLElement) CLASS(v string) *EmbedHTMLElement {
     return e
 }
 
+func (e *EmbedHTMLElement) IfCLASS(cond bool, v string) *EmbedHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.CLASS(v)
+}
+
 func (e *EmbedHTMLElement) SetCLASS(v string) *EmbedHTMLElement {
     kv := NewSpaceDelimitedString()
     e.DelimitedStringAttributes["class"] = kv
@@ -190,6 +218,13 @@ func (e *EmbedHTMLElement) CONTENTEDITABLE(v string) *EmbedHTMLElement {
     return e
 }
 
+func (e *EmbedHTMLElement) IfCONTENTEDITABLE(cond bool, v string) *EmbedHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.CONTENTEDITABLE(v)
+}
+
 func (e *EmbedHTMLElement) RemoveCONTENTEDITABLE(v string) *EmbedHTMLElement {
     delete(e.StringAttributes, "contenteditable")
     return e
@@ -209,6 +244,13 @@ func (e *EmbedHTMLElement) DIR(v string) *EmbedHTMLElement {
     return e
 }
 
+func (e *EmbedHTMLElement) IfDIR(cond bool, v string) *EmbedHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.DIR(v)
+}
+
 func (e *EmbedHTMLElement) RemoveDIR(v string) *EmbedHTMLElement {
     delete(e.StringAttributes, "dir")
     return e
@@ -224,6 +266,13 @@ func (e *EmbedHTMLElement) DRAGGABLE(v string) *EmbedHTMLElement {
     }
     e.StringAttributes["draggable"] = v
     return e
+}
+
+func (e *EmbedHTMLElement) IfDRAGGABLE(cond bool, v string) *EmbedHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.DRAGGABLE(v)
 }
 
 func (e *EmbedHTMLElement) RemoveDRAGGABLE(v string) *EmbedHTMLElement {
@@ -255,6 +304,13 @@ func (e *EmbedHTMLElement) ENTERKEYHINT(v string) *EmbedHTMLElement {
     return e
 }
 
+func (e *EmbedHTMLElement) IfENTERKEYHINT(cond bool, v string) *EmbedHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ENTERKEYHINT(v)
+}
+
 func (e *EmbedHTMLElement) RemoveENTERKEYHINT(v string) *EmbedHTMLElement {
     delete(e.StringAttributes, "enterkeyhint")
     return e
@@ -269,6 +325,13 @@ func (e *EmbedHTMLElement) HEIGHT(v string) *EmbedHTMLElement {
     }
     e.StringAttributes["height"] = v
     return e
+}
+
+func (e *EmbedHTMLElement) IfHEIGHT(cond bool, v string) *EmbedHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.HEIGHT(v)
 }
 
 func (e *EmbedHTMLElement) RemoveHEIGHT(v string) *EmbedHTMLElement {
@@ -290,6 +353,13 @@ func (e *EmbedHTMLElement) HIDDEN(v string) *EmbedHTMLElement {
     return e
 }
 
+func (e *EmbedHTMLElement) IfHIDDEN(cond bool, v string) *EmbedHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.HIDDEN(v)
+}
+
 func (e *EmbedHTMLElement) RemoveHIDDEN(v string) *EmbedHTMLElement {
     delete(e.StringAttributes, "hidden")
     return e
@@ -306,6 +376,13 @@ func (e *EmbedHTMLElement) ID(v string) *EmbedHTMLElement {
     return e
 }
 
+func (e *EmbedHTMLElement) IfID(cond bool, v string) *EmbedHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ID(v)
+}
+
 func (e *EmbedHTMLElement) RemoveID(v string) *EmbedHTMLElement {
     delete(e.StringAttributes, "id")
     return e
@@ -320,6 +397,13 @@ func (e *EmbedHTMLElement) INERT() *EmbedHTMLElement {
     }
     e.BoolAttributes["inert"] = struct{}{}
     return e
+}
+
+func (e *EmbedHTMLElement) IfINERT(cond bool) *EmbedHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.INERT()
 }
 
 func (e *EmbedHTMLElement) RemoveINERT() *EmbedHTMLElement {
@@ -363,6 +447,13 @@ func (e *EmbedHTMLElement) INPUTMODE(v string) *EmbedHTMLElement {
     return e
 }
 
+func (e *EmbedHTMLElement) IfINPUTMODE(cond bool, v string) *EmbedHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.INPUTMODE(v)
+}
+
 func (e *EmbedHTMLElement) RemoveINPUTMODE(v string) *EmbedHTMLElement {
     delete(e.StringAttributes, "inputmode")
     return e
@@ -380,6 +471,13 @@ func (e *EmbedHTMLElement) IS(v string) *EmbedHTMLElement {
     return e
 }
 
+func (e *EmbedHTMLElement) IfIS(cond bool, v string) *EmbedHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.IS(v)
+}
+
 func (e *EmbedHTMLElement) RemoveIS(v string) *EmbedHTMLElement {
     delete(e.StringAttributes, "is")
     return e
@@ -394,6 +492,13 @@ func (e *EmbedHTMLElement) ITEMID(v string) *EmbedHTMLElement {
     }
     e.StringAttributes["itemid"] = v
     return e
+}
+
+func (e *EmbedHTMLElement) IfITEMID(cond bool, v string) *EmbedHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMID(v)
 }
 
 func (e *EmbedHTMLElement) RemoveITEMID(v string) *EmbedHTMLElement {
@@ -414,6 +519,13 @@ func (e *EmbedHTMLElement) ITEMPROP(v string) *EmbedHTMLElement {
     return e
 }
 
+func (e *EmbedHTMLElement) IfITEMPROP(cond bool, v string) *EmbedHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMPROP(v)
+}
+
 func (e *EmbedHTMLElement) RemoveITEMPROP(v string) *EmbedHTMLElement {
     delete(e.StringAttributes, "itemprop")
     return e
@@ -430,6 +542,13 @@ func (e *EmbedHTMLElement) ITEMREF(v string) *EmbedHTMLElement {
     return e
 }
 
+func (e *EmbedHTMLElement) IfITEMREF(cond bool, v string) *EmbedHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMREF(v)
+}
+
 func (e *EmbedHTMLElement) RemoveITEMREF(v string) *EmbedHTMLElement {
     delete(e.StringAttributes, "itemref")
     return e
@@ -444,6 +563,13 @@ func (e *EmbedHTMLElement) ITEMSCOPE() *EmbedHTMLElement {
     }
     e.BoolAttributes["itemscope"] = struct{}{}
     return e
+}
+
+func (e *EmbedHTMLElement) IfITEMSCOPE(cond bool) *EmbedHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMSCOPE()
 }
 
 func (e *EmbedHTMLElement) RemoveITEMSCOPE() *EmbedHTMLElement {
@@ -473,6 +599,13 @@ func (e *EmbedHTMLElement) ITEMTYPE(v string) *EmbedHTMLElement {
     return e
 }
 
+func (e *EmbedHTMLElement) IfITEMTYPE(cond bool, v string) *EmbedHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMTYPE(v)
+}
+
 func (e *EmbedHTMLElement) RemoveITEMTYPE(v string) *EmbedHTMLElement {
     delete(e.StringAttributes, "itemtype")
     return e
@@ -486,6 +619,13 @@ func (e *EmbedHTMLElement) LANG(v string) *EmbedHTMLElement {
     }
     e.StringAttributes["lang"] = v
     return e
+}
+
+func (e *EmbedHTMLElement) IfLANG(cond bool, v string) *EmbedHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.LANG(v)
 }
 
 func (e *EmbedHTMLElement) RemoveLANG(v string) *EmbedHTMLElement {
@@ -502,6 +642,13 @@ func (e *EmbedHTMLElement) NONCE(v string) *EmbedHTMLElement {
     }
     e.StringAttributes["nonce"] = v
     return e
+}
+
+func (e *EmbedHTMLElement) IfNONCE(cond bool, v string) *EmbedHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.NONCE(v)
 }
 
 func (e *EmbedHTMLElement) RemoveNONCE(v string) *EmbedHTMLElement {
@@ -523,6 +670,13 @@ func (e *EmbedHTMLElement) POPOVER(v string) *EmbedHTMLElement {
     return e
 }
 
+func (e *EmbedHTMLElement) IfPOPOVER(cond bool, v string) *EmbedHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.POPOVER(v)
+}
+
 func (e *EmbedHTMLElement) RemovePOPOVER(v string) *EmbedHTMLElement {
     delete(e.StringAttributes, "popover")
     return e
@@ -537,6 +691,13 @@ func (e *EmbedHTMLElement) SLOT(v string) *EmbedHTMLElement {
     }
     e.StringAttributes["slot"] = v
     return e
+}
+
+func (e *EmbedHTMLElement) IfSLOT(cond bool, v string) *EmbedHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SLOT(v)
 }
 
 func (e *EmbedHTMLElement) RemoveSLOT(v string) *EmbedHTMLElement {
@@ -556,6 +717,13 @@ func (e *EmbedHTMLElement) SPELLCHECK(v string) *EmbedHTMLElement {
     return e
 }
 
+func (e *EmbedHTMLElement) IfSPELLCHECK(cond bool, v string) *EmbedHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SPELLCHECK(v)
+}
+
 func (e *EmbedHTMLElement) RemoveSPELLCHECK(v string) *EmbedHTMLElement {
     delete(e.StringAttributes, "spellcheck")
     return e
@@ -570,6 +738,13 @@ func (e *EmbedHTMLElement) SRC(v string) *EmbedHTMLElement {
     }
     e.StringAttributes["src"] = v
     return e
+}
+
+func (e *EmbedHTMLElement) IfSRC(cond bool, v string) *EmbedHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SRC(v)
 }
 
 func (e *EmbedHTMLElement) RemoveSRC(v string) *EmbedHTMLElement {
@@ -590,6 +765,13 @@ func (e *EmbedHTMLElement) STYLE(k,v string) *EmbedHTMLElement {
     }
     kv.Add(k,v)
     return e
+}
+
+func (e *EmbedHTMLElement) IfSTYLE(cond bool, k string) *EmbedHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.STYLE(k, "")
 }
 
 func (e *EmbedHTMLElement) RemoveSTYLE(k string) *EmbedHTMLElement {
@@ -613,6 +795,13 @@ func (e *EmbedHTMLElement) TABINDEX(v string) *EmbedHTMLElement {
     return e
 }
 
+func (e *EmbedHTMLElement) IfTABINDEX(cond bool, v string) *EmbedHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TABINDEX(v)
+}
+
 func (e *EmbedHTMLElement) RemoveTABINDEX(v string) *EmbedHTMLElement {
     delete(e.StringAttributes, "tabindex")
     return e
@@ -627,6 +816,13 @@ func (e *EmbedHTMLElement) TITLE(v string) *EmbedHTMLElement {
     }
     e.StringAttributes["title"] = v
     return e
+}
+
+func (e *EmbedHTMLElement) IfTITLE(cond bool, v string) *EmbedHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TITLE(v)
 }
 
 func (e *EmbedHTMLElement) RemoveTITLE(v string) *EmbedHTMLElement {
@@ -644,6 +840,13 @@ func (e *EmbedHTMLElement) TRANSLATE(v string) *EmbedHTMLElement {
     }
     e.StringAttributes["translate"] = v
     return e
+}
+
+func (e *EmbedHTMLElement) IfTRANSLATE(cond bool, v string) *EmbedHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TRANSLATE(v)
 }
 
 func (e *EmbedHTMLElement) RemoveTRANSLATE(v string) *EmbedHTMLElement {
@@ -664,6 +867,13 @@ func (e *EmbedHTMLElement) TYPE(v string) *EmbedHTMLElement {
     return e
 }
 
+func (e *EmbedHTMLElement) IfTYPE(cond bool, v string) *EmbedHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TYPE(v)
+}
+
 func (e *EmbedHTMLElement) RemoveTYPE(v string) *EmbedHTMLElement {
     delete(e.StringAttributes, "type")
     return e
@@ -678,6 +888,13 @@ func (e *EmbedHTMLElement) WIDTH(v string) *EmbedHTMLElement {
     }
     e.StringAttributes["width"] = v
     return e
+}
+
+func (e *EmbedHTMLElement) IfWIDTH(cond bool, v string) *EmbedHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.WIDTH(v)
 }
 
 func (e *EmbedHTMLElement) RemoveWIDTH(v string) *EmbedHTMLElement {

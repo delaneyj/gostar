@@ -48,13 +48,13 @@ func (e *MapHTMLElement) TextF(format string, args ...any) *MapHTMLElement {
     return e.Text(fmt.Sprintf(format, args...))
 }
 
-func (e *MapHTMLElement) Raw(text string) *MapHTMLElement {
-    e.Descendants = append(e.Descendants, Raw(text))
+func (e *MapHTMLElement) Escaped(text string) *MapHTMLElement {
+    e.Descendants = append(e.Descendants, Escaped(text))
     return e
 }
 
-func (e *MapHTMLElement) RawF(format string, args ...any) *MapHTMLElement {
-    return e.Raw(fmt.Sprintf(format, args...))
+func (e *MapHTMLElement) EscapedF(format string, args ...any) *MapHTMLElement {
+    return e.Escaped(fmt.Sprintf(format, args...))
 }
 
 func (e *MapHTMLElement) CustomData(key, value string) *MapHTMLElement {
@@ -87,6 +87,13 @@ func (e *MapHTMLElement) ACCESSKEY(v string) *MapHTMLElement {
     return e
 }
 
+func (e *MapHTMLElement) IfACCESSKEY(cond bool, v string) *MapHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ACCESSKEY(v)
+}
+
 func (e *MapHTMLElement) RemoveACCESSKEY(v string) *MapHTMLElement {
     delete(e.StringAttributes, "accesskey")
     return e
@@ -114,6 +121,13 @@ func (e *MapHTMLElement) AUTOCAPITALIZE(v string) *MapHTMLElement {
     return e
 }
 
+func (e *MapHTMLElement) IfAUTOCAPITALIZE(cond bool, v string) *MapHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.AUTOCAPITALIZE(v)
+}
+
 func (e *MapHTMLElement) RemoveAUTOCAPITALIZE(v string) *MapHTMLElement {
     delete(e.StringAttributes, "autocapitalize")
     return e
@@ -128,6 +142,13 @@ func (e *MapHTMLElement) AUTOFOCUS() *MapHTMLElement {
     }
     e.BoolAttributes["autofocus"] = struct{}{}
     return e
+}
+
+func (e *MapHTMLElement) IfAUTOFOCUS(cond bool) *MapHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.AUTOFOCUS()
 }
 
 func (e *MapHTMLElement) RemoveAUTOFOCUS() *MapHTMLElement {
@@ -161,6 +182,13 @@ func(e *MapHTMLElement) CLASS(v string) *MapHTMLElement {
     return e
 }
 
+func (e *MapHTMLElement) IfCLASS(cond bool, v string) *MapHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.CLASS(v)
+}
+
 func (e *MapHTMLElement) SetCLASS(v string) *MapHTMLElement {
     kv := NewSpaceDelimitedString()
     e.DelimitedStringAttributes["class"] = kv
@@ -190,6 +218,13 @@ func (e *MapHTMLElement) CONTENTEDITABLE(v string) *MapHTMLElement {
     return e
 }
 
+func (e *MapHTMLElement) IfCONTENTEDITABLE(cond bool, v string) *MapHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.CONTENTEDITABLE(v)
+}
+
 func (e *MapHTMLElement) RemoveCONTENTEDITABLE(v string) *MapHTMLElement {
     delete(e.StringAttributes, "contenteditable")
     return e
@@ -209,6 +244,13 @@ func (e *MapHTMLElement) DIR(v string) *MapHTMLElement {
     return e
 }
 
+func (e *MapHTMLElement) IfDIR(cond bool, v string) *MapHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.DIR(v)
+}
+
 func (e *MapHTMLElement) RemoveDIR(v string) *MapHTMLElement {
     delete(e.StringAttributes, "dir")
     return e
@@ -224,6 +266,13 @@ func (e *MapHTMLElement) DRAGGABLE(v string) *MapHTMLElement {
     }
     e.StringAttributes["draggable"] = v
     return e
+}
+
+func (e *MapHTMLElement) IfDRAGGABLE(cond bool, v string) *MapHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.DRAGGABLE(v)
 }
 
 func (e *MapHTMLElement) RemoveDRAGGABLE(v string) *MapHTMLElement {
@@ -255,6 +304,13 @@ func (e *MapHTMLElement) ENTERKEYHINT(v string) *MapHTMLElement {
     return e
 }
 
+func (e *MapHTMLElement) IfENTERKEYHINT(cond bool, v string) *MapHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ENTERKEYHINT(v)
+}
+
 func (e *MapHTMLElement) RemoveENTERKEYHINT(v string) *MapHTMLElement {
     delete(e.StringAttributes, "enterkeyhint")
     return e
@@ -274,6 +330,13 @@ func (e *MapHTMLElement) HIDDEN(v string) *MapHTMLElement {
     return e
 }
 
+func (e *MapHTMLElement) IfHIDDEN(cond bool, v string) *MapHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.HIDDEN(v)
+}
+
 func (e *MapHTMLElement) RemoveHIDDEN(v string) *MapHTMLElement {
     delete(e.StringAttributes, "hidden")
     return e
@@ -290,6 +353,13 @@ func (e *MapHTMLElement) ID(v string) *MapHTMLElement {
     return e
 }
 
+func (e *MapHTMLElement) IfID(cond bool, v string) *MapHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ID(v)
+}
+
 func (e *MapHTMLElement) RemoveID(v string) *MapHTMLElement {
     delete(e.StringAttributes, "id")
     return e
@@ -304,6 +374,13 @@ func (e *MapHTMLElement) INERT() *MapHTMLElement {
     }
     e.BoolAttributes["inert"] = struct{}{}
     return e
+}
+
+func (e *MapHTMLElement) IfINERT(cond bool) *MapHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.INERT()
 }
 
 func (e *MapHTMLElement) RemoveINERT() *MapHTMLElement {
@@ -347,6 +424,13 @@ func (e *MapHTMLElement) INPUTMODE(v string) *MapHTMLElement {
     return e
 }
 
+func (e *MapHTMLElement) IfINPUTMODE(cond bool, v string) *MapHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.INPUTMODE(v)
+}
+
 func (e *MapHTMLElement) RemoveINPUTMODE(v string) *MapHTMLElement {
     delete(e.StringAttributes, "inputmode")
     return e
@@ -364,6 +448,13 @@ func (e *MapHTMLElement) IS(v string) *MapHTMLElement {
     return e
 }
 
+func (e *MapHTMLElement) IfIS(cond bool, v string) *MapHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.IS(v)
+}
+
 func (e *MapHTMLElement) RemoveIS(v string) *MapHTMLElement {
     delete(e.StringAttributes, "is")
     return e
@@ -378,6 +469,13 @@ func (e *MapHTMLElement) ITEMID(v string) *MapHTMLElement {
     }
     e.StringAttributes["itemid"] = v
     return e
+}
+
+func (e *MapHTMLElement) IfITEMID(cond bool, v string) *MapHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMID(v)
 }
 
 func (e *MapHTMLElement) RemoveITEMID(v string) *MapHTMLElement {
@@ -398,6 +496,13 @@ func (e *MapHTMLElement) ITEMPROP(v string) *MapHTMLElement {
     return e
 }
 
+func (e *MapHTMLElement) IfITEMPROP(cond bool, v string) *MapHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMPROP(v)
+}
+
 func (e *MapHTMLElement) RemoveITEMPROP(v string) *MapHTMLElement {
     delete(e.StringAttributes, "itemprop")
     return e
@@ -414,6 +519,13 @@ func (e *MapHTMLElement) ITEMREF(v string) *MapHTMLElement {
     return e
 }
 
+func (e *MapHTMLElement) IfITEMREF(cond bool, v string) *MapHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMREF(v)
+}
+
 func (e *MapHTMLElement) RemoveITEMREF(v string) *MapHTMLElement {
     delete(e.StringAttributes, "itemref")
     return e
@@ -428,6 +540,13 @@ func (e *MapHTMLElement) ITEMSCOPE() *MapHTMLElement {
     }
     e.BoolAttributes["itemscope"] = struct{}{}
     return e
+}
+
+func (e *MapHTMLElement) IfITEMSCOPE(cond bool) *MapHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMSCOPE()
 }
 
 func (e *MapHTMLElement) RemoveITEMSCOPE() *MapHTMLElement {
@@ -457,6 +576,13 @@ func (e *MapHTMLElement) ITEMTYPE(v string) *MapHTMLElement {
     return e
 }
 
+func (e *MapHTMLElement) IfITEMTYPE(cond bool, v string) *MapHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMTYPE(v)
+}
+
 func (e *MapHTMLElement) RemoveITEMTYPE(v string) *MapHTMLElement {
     delete(e.StringAttributes, "itemtype")
     return e
@@ -470,6 +596,13 @@ func (e *MapHTMLElement) LANG(v string) *MapHTMLElement {
     }
     e.StringAttributes["lang"] = v
     return e
+}
+
+func (e *MapHTMLElement) IfLANG(cond bool, v string) *MapHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.LANG(v)
 }
 
 func (e *MapHTMLElement) RemoveLANG(v string) *MapHTMLElement {
@@ -488,6 +621,13 @@ func (e *MapHTMLElement) NAME(v string) *MapHTMLElement {
     return e
 }
 
+func (e *MapHTMLElement) IfNAME(cond bool, v string) *MapHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.NAME(v)
+}
+
 func (e *MapHTMLElement) RemoveNAME(v string) *MapHTMLElement {
     delete(e.StringAttributes, "name")
     return e
@@ -502,6 +642,13 @@ func (e *MapHTMLElement) NONCE(v string) *MapHTMLElement {
     }
     e.StringAttributes["nonce"] = v
     return e
+}
+
+func (e *MapHTMLElement) IfNONCE(cond bool, v string) *MapHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.NONCE(v)
 }
 
 func (e *MapHTMLElement) RemoveNONCE(v string) *MapHTMLElement {
@@ -523,6 +670,13 @@ func (e *MapHTMLElement) POPOVER(v string) *MapHTMLElement {
     return e
 }
 
+func (e *MapHTMLElement) IfPOPOVER(cond bool, v string) *MapHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.POPOVER(v)
+}
+
 func (e *MapHTMLElement) RemovePOPOVER(v string) *MapHTMLElement {
     delete(e.StringAttributes, "popover")
     return e
@@ -537,6 +691,13 @@ func (e *MapHTMLElement) SLOT(v string) *MapHTMLElement {
     }
     e.StringAttributes["slot"] = v
     return e
+}
+
+func (e *MapHTMLElement) IfSLOT(cond bool, v string) *MapHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SLOT(v)
 }
 
 func (e *MapHTMLElement) RemoveSLOT(v string) *MapHTMLElement {
@@ -554,6 +715,13 @@ func (e *MapHTMLElement) SPELLCHECK(v string) *MapHTMLElement {
     }
     e.StringAttributes["spellcheck"] = v
     return e
+}
+
+func (e *MapHTMLElement) IfSPELLCHECK(cond bool, v string) *MapHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SPELLCHECK(v)
 }
 
 func (e *MapHTMLElement) RemoveSPELLCHECK(v string) *MapHTMLElement {
@@ -574,6 +742,13 @@ func (e *MapHTMLElement) STYLE(k,v string) *MapHTMLElement {
     }
     kv.Add(k,v)
     return e
+}
+
+func (e *MapHTMLElement) IfSTYLE(cond bool, k string) *MapHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.STYLE(k, "")
 }
 
 func (e *MapHTMLElement) RemoveSTYLE(k string) *MapHTMLElement {
@@ -597,6 +772,13 @@ func (e *MapHTMLElement) TABINDEX(v string) *MapHTMLElement {
     return e
 }
 
+func (e *MapHTMLElement) IfTABINDEX(cond bool, v string) *MapHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TABINDEX(v)
+}
+
 func (e *MapHTMLElement) RemoveTABINDEX(v string) *MapHTMLElement {
     delete(e.StringAttributes, "tabindex")
     return e
@@ -611,6 +793,13 @@ func (e *MapHTMLElement) TITLE(v string) *MapHTMLElement {
     }
     e.StringAttributes["title"] = v
     return e
+}
+
+func (e *MapHTMLElement) IfTITLE(cond bool, v string) *MapHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TITLE(v)
 }
 
 func (e *MapHTMLElement) RemoveTITLE(v string) *MapHTMLElement {
@@ -628,6 +817,13 @@ func (e *MapHTMLElement) TRANSLATE(v string) *MapHTMLElement {
     }
     e.StringAttributes["translate"] = v
     return e
+}
+
+func (e *MapHTMLElement) IfTRANSLATE(cond bool, v string) *MapHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TRANSLATE(v)
 }
 
 func (e *MapHTMLElement) RemoveTRANSLATE(v string) *MapHTMLElement {

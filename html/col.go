@@ -48,13 +48,13 @@ func (e *ColHTMLElement) TextF(format string, args ...any) *ColHTMLElement {
     return e.Text(fmt.Sprintf(format, args...))
 }
 
-func (e *ColHTMLElement) Raw(text string) *ColHTMLElement {
-    e.Descendants = append(e.Descendants, Raw(text))
+func (e *ColHTMLElement) Escaped(text string) *ColHTMLElement {
+    e.Descendants = append(e.Descendants, Escaped(text))
     return e
 }
 
-func (e *ColHTMLElement) RawF(format string, args ...any) *ColHTMLElement {
-    return e.Raw(fmt.Sprintf(format, args...))
+func (e *ColHTMLElement) EscapedF(format string, args ...any) *ColHTMLElement {
+    return e.Escaped(fmt.Sprintf(format, args...))
 }
 
 func (e *ColHTMLElement) CustomData(key, value string) *ColHTMLElement {
@@ -87,6 +87,13 @@ func (e *ColHTMLElement) ACCESSKEY(v string) *ColHTMLElement {
     return e
 }
 
+func (e *ColHTMLElement) IfACCESSKEY(cond bool, v string) *ColHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ACCESSKEY(v)
+}
+
 func (e *ColHTMLElement) RemoveACCESSKEY(v string) *ColHTMLElement {
     delete(e.StringAttributes, "accesskey")
     return e
@@ -114,6 +121,13 @@ func (e *ColHTMLElement) AUTOCAPITALIZE(v string) *ColHTMLElement {
     return e
 }
 
+func (e *ColHTMLElement) IfAUTOCAPITALIZE(cond bool, v string) *ColHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.AUTOCAPITALIZE(v)
+}
+
 func (e *ColHTMLElement) RemoveAUTOCAPITALIZE(v string) *ColHTMLElement {
     delete(e.StringAttributes, "autocapitalize")
     return e
@@ -128,6 +142,13 @@ func (e *ColHTMLElement) AUTOFOCUS() *ColHTMLElement {
     }
     e.BoolAttributes["autofocus"] = struct{}{}
     return e
+}
+
+func (e *ColHTMLElement) IfAUTOFOCUS(cond bool) *ColHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.AUTOFOCUS()
 }
 
 func (e *ColHTMLElement) RemoveAUTOFOCUS() *ColHTMLElement {
@@ -161,6 +182,13 @@ func(e *ColHTMLElement) CLASS(v string) *ColHTMLElement {
     return e
 }
 
+func (e *ColHTMLElement) IfCLASS(cond bool, v string) *ColHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.CLASS(v)
+}
+
 func (e *ColHTMLElement) SetCLASS(v string) *ColHTMLElement {
     kv := NewSpaceDelimitedString()
     e.DelimitedStringAttributes["class"] = kv
@@ -190,6 +218,13 @@ func (e *ColHTMLElement) CONTENTEDITABLE(v string) *ColHTMLElement {
     return e
 }
 
+func (e *ColHTMLElement) IfCONTENTEDITABLE(cond bool, v string) *ColHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.CONTENTEDITABLE(v)
+}
+
 func (e *ColHTMLElement) RemoveCONTENTEDITABLE(v string) *ColHTMLElement {
     delete(e.StringAttributes, "contenteditable")
     return e
@@ -209,6 +244,13 @@ func (e *ColHTMLElement) DIR(v string) *ColHTMLElement {
     return e
 }
 
+func (e *ColHTMLElement) IfDIR(cond bool, v string) *ColHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.DIR(v)
+}
+
 func (e *ColHTMLElement) RemoveDIR(v string) *ColHTMLElement {
     delete(e.StringAttributes, "dir")
     return e
@@ -224,6 +266,13 @@ func (e *ColHTMLElement) DRAGGABLE(v string) *ColHTMLElement {
     }
     e.StringAttributes["draggable"] = v
     return e
+}
+
+func (e *ColHTMLElement) IfDRAGGABLE(cond bool, v string) *ColHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.DRAGGABLE(v)
 }
 
 func (e *ColHTMLElement) RemoveDRAGGABLE(v string) *ColHTMLElement {
@@ -255,6 +304,13 @@ func (e *ColHTMLElement) ENTERKEYHINT(v string) *ColHTMLElement {
     return e
 }
 
+func (e *ColHTMLElement) IfENTERKEYHINT(cond bool, v string) *ColHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ENTERKEYHINT(v)
+}
+
 func (e *ColHTMLElement) RemoveENTERKEYHINT(v string) *ColHTMLElement {
     delete(e.StringAttributes, "enterkeyhint")
     return e
@@ -274,6 +330,13 @@ func (e *ColHTMLElement) HIDDEN(v string) *ColHTMLElement {
     return e
 }
 
+func (e *ColHTMLElement) IfHIDDEN(cond bool, v string) *ColHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.HIDDEN(v)
+}
+
 func (e *ColHTMLElement) RemoveHIDDEN(v string) *ColHTMLElement {
     delete(e.StringAttributes, "hidden")
     return e
@@ -290,6 +353,13 @@ func (e *ColHTMLElement) ID(v string) *ColHTMLElement {
     return e
 }
 
+func (e *ColHTMLElement) IfID(cond bool, v string) *ColHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ID(v)
+}
+
 func (e *ColHTMLElement) RemoveID(v string) *ColHTMLElement {
     delete(e.StringAttributes, "id")
     return e
@@ -304,6 +374,13 @@ func (e *ColHTMLElement) INERT() *ColHTMLElement {
     }
     e.BoolAttributes["inert"] = struct{}{}
     return e
+}
+
+func (e *ColHTMLElement) IfINERT(cond bool) *ColHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.INERT()
 }
 
 func (e *ColHTMLElement) RemoveINERT() *ColHTMLElement {
@@ -347,6 +424,13 @@ func (e *ColHTMLElement) INPUTMODE(v string) *ColHTMLElement {
     return e
 }
 
+func (e *ColHTMLElement) IfINPUTMODE(cond bool, v string) *ColHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.INPUTMODE(v)
+}
+
 func (e *ColHTMLElement) RemoveINPUTMODE(v string) *ColHTMLElement {
     delete(e.StringAttributes, "inputmode")
     return e
@@ -364,6 +448,13 @@ func (e *ColHTMLElement) IS(v string) *ColHTMLElement {
     return e
 }
 
+func (e *ColHTMLElement) IfIS(cond bool, v string) *ColHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.IS(v)
+}
+
 func (e *ColHTMLElement) RemoveIS(v string) *ColHTMLElement {
     delete(e.StringAttributes, "is")
     return e
@@ -378,6 +469,13 @@ func (e *ColHTMLElement) ITEMID(v string) *ColHTMLElement {
     }
     e.StringAttributes["itemid"] = v
     return e
+}
+
+func (e *ColHTMLElement) IfITEMID(cond bool, v string) *ColHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMID(v)
 }
 
 func (e *ColHTMLElement) RemoveITEMID(v string) *ColHTMLElement {
@@ -398,6 +496,13 @@ func (e *ColHTMLElement) ITEMPROP(v string) *ColHTMLElement {
     return e
 }
 
+func (e *ColHTMLElement) IfITEMPROP(cond bool, v string) *ColHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMPROP(v)
+}
+
 func (e *ColHTMLElement) RemoveITEMPROP(v string) *ColHTMLElement {
     delete(e.StringAttributes, "itemprop")
     return e
@@ -414,6 +519,13 @@ func (e *ColHTMLElement) ITEMREF(v string) *ColHTMLElement {
     return e
 }
 
+func (e *ColHTMLElement) IfITEMREF(cond bool, v string) *ColHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMREF(v)
+}
+
 func (e *ColHTMLElement) RemoveITEMREF(v string) *ColHTMLElement {
     delete(e.StringAttributes, "itemref")
     return e
@@ -428,6 +540,13 @@ func (e *ColHTMLElement) ITEMSCOPE() *ColHTMLElement {
     }
     e.BoolAttributes["itemscope"] = struct{}{}
     return e
+}
+
+func (e *ColHTMLElement) IfITEMSCOPE(cond bool) *ColHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMSCOPE()
 }
 
 func (e *ColHTMLElement) RemoveITEMSCOPE() *ColHTMLElement {
@@ -457,6 +576,13 @@ func (e *ColHTMLElement) ITEMTYPE(v string) *ColHTMLElement {
     return e
 }
 
+func (e *ColHTMLElement) IfITEMTYPE(cond bool, v string) *ColHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMTYPE(v)
+}
+
 func (e *ColHTMLElement) RemoveITEMTYPE(v string) *ColHTMLElement {
     delete(e.StringAttributes, "itemtype")
     return e
@@ -470,6 +596,13 @@ func (e *ColHTMLElement) LANG(v string) *ColHTMLElement {
     }
     e.StringAttributes["lang"] = v
     return e
+}
+
+func (e *ColHTMLElement) IfLANG(cond bool, v string) *ColHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.LANG(v)
 }
 
 func (e *ColHTMLElement) RemoveLANG(v string) *ColHTMLElement {
@@ -486,6 +619,13 @@ func (e *ColHTMLElement) NONCE(v string) *ColHTMLElement {
     }
     e.StringAttributes["nonce"] = v
     return e
+}
+
+func (e *ColHTMLElement) IfNONCE(cond bool, v string) *ColHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.NONCE(v)
 }
 
 func (e *ColHTMLElement) RemoveNONCE(v string) *ColHTMLElement {
@@ -507,6 +647,13 @@ func (e *ColHTMLElement) POPOVER(v string) *ColHTMLElement {
     return e
 }
 
+func (e *ColHTMLElement) IfPOPOVER(cond bool, v string) *ColHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.POPOVER(v)
+}
+
 func (e *ColHTMLElement) RemovePOPOVER(v string) *ColHTMLElement {
     delete(e.StringAttributes, "popover")
     return e
@@ -521,6 +668,13 @@ func (e *ColHTMLElement) SLOT(v string) *ColHTMLElement {
     }
     e.StringAttributes["slot"] = v
     return e
+}
+
+func (e *ColHTMLElement) IfSLOT(cond bool, v string) *ColHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SLOT(v)
 }
 
 func (e *ColHTMLElement) RemoveSLOT(v string) *ColHTMLElement {
@@ -539,6 +693,13 @@ func (e *ColHTMLElement) SPAN(v string) *ColHTMLElement {
     return e
 }
 
+func (e *ColHTMLElement) IfSPAN(cond bool, v string) *ColHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SPAN(v)
+}
+
 func (e *ColHTMLElement) RemoveSPAN(v string) *ColHTMLElement {
     delete(e.StringAttributes, "span")
     return e
@@ -554,6 +715,13 @@ func (e *ColHTMLElement) SPELLCHECK(v string) *ColHTMLElement {
     }
     e.StringAttributes["spellcheck"] = v
     return e
+}
+
+func (e *ColHTMLElement) IfSPELLCHECK(cond bool, v string) *ColHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SPELLCHECK(v)
 }
 
 func (e *ColHTMLElement) RemoveSPELLCHECK(v string) *ColHTMLElement {
@@ -574,6 +742,13 @@ func (e *ColHTMLElement) STYLE(k,v string) *ColHTMLElement {
     }
     kv.Add(k,v)
     return e
+}
+
+func (e *ColHTMLElement) IfSTYLE(cond bool, k string) *ColHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.STYLE(k, "")
 }
 
 func (e *ColHTMLElement) RemoveSTYLE(k string) *ColHTMLElement {
@@ -597,6 +772,13 @@ func (e *ColHTMLElement) TABINDEX(v string) *ColHTMLElement {
     return e
 }
 
+func (e *ColHTMLElement) IfTABINDEX(cond bool, v string) *ColHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TABINDEX(v)
+}
+
 func (e *ColHTMLElement) RemoveTABINDEX(v string) *ColHTMLElement {
     delete(e.StringAttributes, "tabindex")
     return e
@@ -611,6 +793,13 @@ func (e *ColHTMLElement) TITLE(v string) *ColHTMLElement {
     }
     e.StringAttributes["title"] = v
     return e
+}
+
+func (e *ColHTMLElement) IfTITLE(cond bool, v string) *ColHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TITLE(v)
 }
 
 func (e *ColHTMLElement) RemoveTITLE(v string) *ColHTMLElement {
@@ -628,6 +817,13 @@ func (e *ColHTMLElement) TRANSLATE(v string) *ColHTMLElement {
     }
     e.StringAttributes["translate"] = v
     return e
+}
+
+func (e *ColHTMLElement) IfTRANSLATE(cond bool, v string) *ColHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TRANSLATE(v)
 }
 
 func (e *ColHTMLElement) RemoveTRANSLATE(v string) *ColHTMLElement {

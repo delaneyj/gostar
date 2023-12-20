@@ -48,13 +48,13 @@ func (e *CodeHTMLElement) TextF(format string, args ...any) *CodeHTMLElement {
     return e.Text(fmt.Sprintf(format, args...))
 }
 
-func (e *CodeHTMLElement) Raw(text string) *CodeHTMLElement {
-    e.Descendants = append(e.Descendants, Raw(text))
+func (e *CodeHTMLElement) Escaped(text string) *CodeHTMLElement {
+    e.Descendants = append(e.Descendants, Escaped(text))
     return e
 }
 
-func (e *CodeHTMLElement) RawF(format string, args ...any) *CodeHTMLElement {
-    return e.Raw(fmt.Sprintf(format, args...))
+func (e *CodeHTMLElement) EscapedF(format string, args ...any) *CodeHTMLElement {
+    return e.Escaped(fmt.Sprintf(format, args...))
 }
 
 func (e *CodeHTMLElement) CustomData(key, value string) *CodeHTMLElement {
@@ -87,6 +87,13 @@ func (e *CodeHTMLElement) ACCESSKEY(v string) *CodeHTMLElement {
     return e
 }
 
+func (e *CodeHTMLElement) IfACCESSKEY(cond bool, v string) *CodeHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ACCESSKEY(v)
+}
+
 func (e *CodeHTMLElement) RemoveACCESSKEY(v string) *CodeHTMLElement {
     delete(e.StringAttributes, "accesskey")
     return e
@@ -114,6 +121,13 @@ func (e *CodeHTMLElement) AUTOCAPITALIZE(v string) *CodeHTMLElement {
     return e
 }
 
+func (e *CodeHTMLElement) IfAUTOCAPITALIZE(cond bool, v string) *CodeHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.AUTOCAPITALIZE(v)
+}
+
 func (e *CodeHTMLElement) RemoveAUTOCAPITALIZE(v string) *CodeHTMLElement {
     delete(e.StringAttributes, "autocapitalize")
     return e
@@ -128,6 +142,13 @@ func (e *CodeHTMLElement) AUTOFOCUS() *CodeHTMLElement {
     }
     e.BoolAttributes["autofocus"] = struct{}{}
     return e
+}
+
+func (e *CodeHTMLElement) IfAUTOFOCUS(cond bool) *CodeHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.AUTOFOCUS()
 }
 
 func (e *CodeHTMLElement) RemoveAUTOFOCUS() *CodeHTMLElement {
@@ -161,6 +182,13 @@ func(e *CodeHTMLElement) CLASS(v string) *CodeHTMLElement {
     return e
 }
 
+func (e *CodeHTMLElement) IfCLASS(cond bool, v string) *CodeHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.CLASS(v)
+}
+
 func (e *CodeHTMLElement) SetCLASS(v string) *CodeHTMLElement {
     kv := NewSpaceDelimitedString()
     e.DelimitedStringAttributes["class"] = kv
@@ -190,6 +218,13 @@ func (e *CodeHTMLElement) CONTENTEDITABLE(v string) *CodeHTMLElement {
     return e
 }
 
+func (e *CodeHTMLElement) IfCONTENTEDITABLE(cond bool, v string) *CodeHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.CONTENTEDITABLE(v)
+}
+
 func (e *CodeHTMLElement) RemoveCONTENTEDITABLE(v string) *CodeHTMLElement {
     delete(e.StringAttributes, "contenteditable")
     return e
@@ -209,6 +244,13 @@ func (e *CodeHTMLElement) DIR(v string) *CodeHTMLElement {
     return e
 }
 
+func (e *CodeHTMLElement) IfDIR(cond bool, v string) *CodeHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.DIR(v)
+}
+
 func (e *CodeHTMLElement) RemoveDIR(v string) *CodeHTMLElement {
     delete(e.StringAttributes, "dir")
     return e
@@ -224,6 +266,13 @@ func (e *CodeHTMLElement) DRAGGABLE(v string) *CodeHTMLElement {
     }
     e.StringAttributes["draggable"] = v
     return e
+}
+
+func (e *CodeHTMLElement) IfDRAGGABLE(cond bool, v string) *CodeHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.DRAGGABLE(v)
 }
 
 func (e *CodeHTMLElement) RemoveDRAGGABLE(v string) *CodeHTMLElement {
@@ -255,6 +304,13 @@ func (e *CodeHTMLElement) ENTERKEYHINT(v string) *CodeHTMLElement {
     return e
 }
 
+func (e *CodeHTMLElement) IfENTERKEYHINT(cond bool, v string) *CodeHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ENTERKEYHINT(v)
+}
+
 func (e *CodeHTMLElement) RemoveENTERKEYHINT(v string) *CodeHTMLElement {
     delete(e.StringAttributes, "enterkeyhint")
     return e
@@ -274,6 +330,13 @@ func (e *CodeHTMLElement) HIDDEN(v string) *CodeHTMLElement {
     return e
 }
 
+func (e *CodeHTMLElement) IfHIDDEN(cond bool, v string) *CodeHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.HIDDEN(v)
+}
+
 func (e *CodeHTMLElement) RemoveHIDDEN(v string) *CodeHTMLElement {
     delete(e.StringAttributes, "hidden")
     return e
@@ -290,6 +353,13 @@ func (e *CodeHTMLElement) ID(v string) *CodeHTMLElement {
     return e
 }
 
+func (e *CodeHTMLElement) IfID(cond bool, v string) *CodeHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ID(v)
+}
+
 func (e *CodeHTMLElement) RemoveID(v string) *CodeHTMLElement {
     delete(e.StringAttributes, "id")
     return e
@@ -304,6 +374,13 @@ func (e *CodeHTMLElement) INERT() *CodeHTMLElement {
     }
     e.BoolAttributes["inert"] = struct{}{}
     return e
+}
+
+func (e *CodeHTMLElement) IfINERT(cond bool) *CodeHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.INERT()
 }
 
 func (e *CodeHTMLElement) RemoveINERT() *CodeHTMLElement {
@@ -347,6 +424,13 @@ func (e *CodeHTMLElement) INPUTMODE(v string) *CodeHTMLElement {
     return e
 }
 
+func (e *CodeHTMLElement) IfINPUTMODE(cond bool, v string) *CodeHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.INPUTMODE(v)
+}
+
 func (e *CodeHTMLElement) RemoveINPUTMODE(v string) *CodeHTMLElement {
     delete(e.StringAttributes, "inputmode")
     return e
@@ -364,6 +448,13 @@ func (e *CodeHTMLElement) IS(v string) *CodeHTMLElement {
     return e
 }
 
+func (e *CodeHTMLElement) IfIS(cond bool, v string) *CodeHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.IS(v)
+}
+
 func (e *CodeHTMLElement) RemoveIS(v string) *CodeHTMLElement {
     delete(e.StringAttributes, "is")
     return e
@@ -378,6 +469,13 @@ func (e *CodeHTMLElement) ITEMID(v string) *CodeHTMLElement {
     }
     e.StringAttributes["itemid"] = v
     return e
+}
+
+func (e *CodeHTMLElement) IfITEMID(cond bool, v string) *CodeHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMID(v)
 }
 
 func (e *CodeHTMLElement) RemoveITEMID(v string) *CodeHTMLElement {
@@ -398,6 +496,13 @@ func (e *CodeHTMLElement) ITEMPROP(v string) *CodeHTMLElement {
     return e
 }
 
+func (e *CodeHTMLElement) IfITEMPROP(cond bool, v string) *CodeHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMPROP(v)
+}
+
 func (e *CodeHTMLElement) RemoveITEMPROP(v string) *CodeHTMLElement {
     delete(e.StringAttributes, "itemprop")
     return e
@@ -414,6 +519,13 @@ func (e *CodeHTMLElement) ITEMREF(v string) *CodeHTMLElement {
     return e
 }
 
+func (e *CodeHTMLElement) IfITEMREF(cond bool, v string) *CodeHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMREF(v)
+}
+
 func (e *CodeHTMLElement) RemoveITEMREF(v string) *CodeHTMLElement {
     delete(e.StringAttributes, "itemref")
     return e
@@ -428,6 +540,13 @@ func (e *CodeHTMLElement) ITEMSCOPE() *CodeHTMLElement {
     }
     e.BoolAttributes["itemscope"] = struct{}{}
     return e
+}
+
+func (e *CodeHTMLElement) IfITEMSCOPE(cond bool) *CodeHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMSCOPE()
 }
 
 func (e *CodeHTMLElement) RemoveITEMSCOPE() *CodeHTMLElement {
@@ -457,6 +576,13 @@ func (e *CodeHTMLElement) ITEMTYPE(v string) *CodeHTMLElement {
     return e
 }
 
+func (e *CodeHTMLElement) IfITEMTYPE(cond bool, v string) *CodeHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMTYPE(v)
+}
+
 func (e *CodeHTMLElement) RemoveITEMTYPE(v string) *CodeHTMLElement {
     delete(e.StringAttributes, "itemtype")
     return e
@@ -470,6 +596,13 @@ func (e *CodeHTMLElement) LANG(v string) *CodeHTMLElement {
     }
     e.StringAttributes["lang"] = v
     return e
+}
+
+func (e *CodeHTMLElement) IfLANG(cond bool, v string) *CodeHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.LANG(v)
 }
 
 func (e *CodeHTMLElement) RemoveLANG(v string) *CodeHTMLElement {
@@ -486,6 +619,13 @@ func (e *CodeHTMLElement) NONCE(v string) *CodeHTMLElement {
     }
     e.StringAttributes["nonce"] = v
     return e
+}
+
+func (e *CodeHTMLElement) IfNONCE(cond bool, v string) *CodeHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.NONCE(v)
 }
 
 func (e *CodeHTMLElement) RemoveNONCE(v string) *CodeHTMLElement {
@@ -507,6 +647,13 @@ func (e *CodeHTMLElement) POPOVER(v string) *CodeHTMLElement {
     return e
 }
 
+func (e *CodeHTMLElement) IfPOPOVER(cond bool, v string) *CodeHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.POPOVER(v)
+}
+
 func (e *CodeHTMLElement) RemovePOPOVER(v string) *CodeHTMLElement {
     delete(e.StringAttributes, "popover")
     return e
@@ -521,6 +668,13 @@ func (e *CodeHTMLElement) SLOT(v string) *CodeHTMLElement {
     }
     e.StringAttributes["slot"] = v
     return e
+}
+
+func (e *CodeHTMLElement) IfSLOT(cond bool, v string) *CodeHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SLOT(v)
 }
 
 func (e *CodeHTMLElement) RemoveSLOT(v string) *CodeHTMLElement {
@@ -538,6 +692,13 @@ func (e *CodeHTMLElement) SPELLCHECK(v string) *CodeHTMLElement {
     }
     e.StringAttributes["spellcheck"] = v
     return e
+}
+
+func (e *CodeHTMLElement) IfSPELLCHECK(cond bool, v string) *CodeHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SPELLCHECK(v)
 }
 
 func (e *CodeHTMLElement) RemoveSPELLCHECK(v string) *CodeHTMLElement {
@@ -558,6 +719,13 @@ func (e *CodeHTMLElement) STYLE(k,v string) *CodeHTMLElement {
     }
     kv.Add(k,v)
     return e
+}
+
+func (e *CodeHTMLElement) IfSTYLE(cond bool, k string) *CodeHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.STYLE(k, "")
 }
 
 func (e *CodeHTMLElement) RemoveSTYLE(k string) *CodeHTMLElement {
@@ -581,6 +749,13 @@ func (e *CodeHTMLElement) TABINDEX(v string) *CodeHTMLElement {
     return e
 }
 
+func (e *CodeHTMLElement) IfTABINDEX(cond bool, v string) *CodeHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TABINDEX(v)
+}
+
 func (e *CodeHTMLElement) RemoveTABINDEX(v string) *CodeHTMLElement {
     delete(e.StringAttributes, "tabindex")
     return e
@@ -595,6 +770,13 @@ func (e *CodeHTMLElement) TITLE(v string) *CodeHTMLElement {
     }
     e.StringAttributes["title"] = v
     return e
+}
+
+func (e *CodeHTMLElement) IfTITLE(cond bool, v string) *CodeHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TITLE(v)
 }
 
 func (e *CodeHTMLElement) RemoveTITLE(v string) *CodeHTMLElement {
@@ -612,6 +794,13 @@ func (e *CodeHTMLElement) TRANSLATE(v string) *CodeHTMLElement {
     }
     e.StringAttributes["translate"] = v
     return e
+}
+
+func (e *CodeHTMLElement) IfTRANSLATE(cond bool, v string) *CodeHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TRANSLATE(v)
 }
 
 func (e *CodeHTMLElement) RemoveTRANSLATE(v string) *CodeHTMLElement {

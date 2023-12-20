@@ -48,13 +48,13 @@ func (e *SampHTMLElement) TextF(format string, args ...any) *SampHTMLElement {
     return e.Text(fmt.Sprintf(format, args...))
 }
 
-func (e *SampHTMLElement) Raw(text string) *SampHTMLElement {
-    e.Descendants = append(e.Descendants, Raw(text))
+func (e *SampHTMLElement) Escaped(text string) *SampHTMLElement {
+    e.Descendants = append(e.Descendants, Escaped(text))
     return e
 }
 
-func (e *SampHTMLElement) RawF(format string, args ...any) *SampHTMLElement {
-    return e.Raw(fmt.Sprintf(format, args...))
+func (e *SampHTMLElement) EscapedF(format string, args ...any) *SampHTMLElement {
+    return e.Escaped(fmt.Sprintf(format, args...))
 }
 
 func (e *SampHTMLElement) CustomData(key, value string) *SampHTMLElement {
@@ -87,6 +87,13 @@ func (e *SampHTMLElement) ACCESSKEY(v string) *SampHTMLElement {
     return e
 }
 
+func (e *SampHTMLElement) IfACCESSKEY(cond bool, v string) *SampHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ACCESSKEY(v)
+}
+
 func (e *SampHTMLElement) RemoveACCESSKEY(v string) *SampHTMLElement {
     delete(e.StringAttributes, "accesskey")
     return e
@@ -114,6 +121,13 @@ func (e *SampHTMLElement) AUTOCAPITALIZE(v string) *SampHTMLElement {
     return e
 }
 
+func (e *SampHTMLElement) IfAUTOCAPITALIZE(cond bool, v string) *SampHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.AUTOCAPITALIZE(v)
+}
+
 func (e *SampHTMLElement) RemoveAUTOCAPITALIZE(v string) *SampHTMLElement {
     delete(e.StringAttributes, "autocapitalize")
     return e
@@ -128,6 +142,13 @@ func (e *SampHTMLElement) AUTOFOCUS() *SampHTMLElement {
     }
     e.BoolAttributes["autofocus"] = struct{}{}
     return e
+}
+
+func (e *SampHTMLElement) IfAUTOFOCUS(cond bool) *SampHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.AUTOFOCUS()
 }
 
 func (e *SampHTMLElement) RemoveAUTOFOCUS() *SampHTMLElement {
@@ -161,6 +182,13 @@ func(e *SampHTMLElement) CLASS(v string) *SampHTMLElement {
     return e
 }
 
+func (e *SampHTMLElement) IfCLASS(cond bool, v string) *SampHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.CLASS(v)
+}
+
 func (e *SampHTMLElement) SetCLASS(v string) *SampHTMLElement {
     kv := NewSpaceDelimitedString()
     e.DelimitedStringAttributes["class"] = kv
@@ -190,6 +218,13 @@ func (e *SampHTMLElement) CONTENTEDITABLE(v string) *SampHTMLElement {
     return e
 }
 
+func (e *SampHTMLElement) IfCONTENTEDITABLE(cond bool, v string) *SampHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.CONTENTEDITABLE(v)
+}
+
 func (e *SampHTMLElement) RemoveCONTENTEDITABLE(v string) *SampHTMLElement {
     delete(e.StringAttributes, "contenteditable")
     return e
@@ -209,6 +244,13 @@ func (e *SampHTMLElement) DIR(v string) *SampHTMLElement {
     return e
 }
 
+func (e *SampHTMLElement) IfDIR(cond bool, v string) *SampHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.DIR(v)
+}
+
 func (e *SampHTMLElement) RemoveDIR(v string) *SampHTMLElement {
     delete(e.StringAttributes, "dir")
     return e
@@ -224,6 +266,13 @@ func (e *SampHTMLElement) DRAGGABLE(v string) *SampHTMLElement {
     }
     e.StringAttributes["draggable"] = v
     return e
+}
+
+func (e *SampHTMLElement) IfDRAGGABLE(cond bool, v string) *SampHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.DRAGGABLE(v)
 }
 
 func (e *SampHTMLElement) RemoveDRAGGABLE(v string) *SampHTMLElement {
@@ -255,6 +304,13 @@ func (e *SampHTMLElement) ENTERKEYHINT(v string) *SampHTMLElement {
     return e
 }
 
+func (e *SampHTMLElement) IfENTERKEYHINT(cond bool, v string) *SampHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ENTERKEYHINT(v)
+}
+
 func (e *SampHTMLElement) RemoveENTERKEYHINT(v string) *SampHTMLElement {
     delete(e.StringAttributes, "enterkeyhint")
     return e
@@ -274,6 +330,13 @@ func (e *SampHTMLElement) HIDDEN(v string) *SampHTMLElement {
     return e
 }
 
+func (e *SampHTMLElement) IfHIDDEN(cond bool, v string) *SampHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.HIDDEN(v)
+}
+
 func (e *SampHTMLElement) RemoveHIDDEN(v string) *SampHTMLElement {
     delete(e.StringAttributes, "hidden")
     return e
@@ -290,6 +353,13 @@ func (e *SampHTMLElement) ID(v string) *SampHTMLElement {
     return e
 }
 
+func (e *SampHTMLElement) IfID(cond bool, v string) *SampHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ID(v)
+}
+
 func (e *SampHTMLElement) RemoveID(v string) *SampHTMLElement {
     delete(e.StringAttributes, "id")
     return e
@@ -304,6 +374,13 @@ func (e *SampHTMLElement) INERT() *SampHTMLElement {
     }
     e.BoolAttributes["inert"] = struct{}{}
     return e
+}
+
+func (e *SampHTMLElement) IfINERT(cond bool) *SampHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.INERT()
 }
 
 func (e *SampHTMLElement) RemoveINERT() *SampHTMLElement {
@@ -347,6 +424,13 @@ func (e *SampHTMLElement) INPUTMODE(v string) *SampHTMLElement {
     return e
 }
 
+func (e *SampHTMLElement) IfINPUTMODE(cond bool, v string) *SampHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.INPUTMODE(v)
+}
+
 func (e *SampHTMLElement) RemoveINPUTMODE(v string) *SampHTMLElement {
     delete(e.StringAttributes, "inputmode")
     return e
@@ -364,6 +448,13 @@ func (e *SampHTMLElement) IS(v string) *SampHTMLElement {
     return e
 }
 
+func (e *SampHTMLElement) IfIS(cond bool, v string) *SampHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.IS(v)
+}
+
 func (e *SampHTMLElement) RemoveIS(v string) *SampHTMLElement {
     delete(e.StringAttributes, "is")
     return e
@@ -378,6 +469,13 @@ func (e *SampHTMLElement) ITEMID(v string) *SampHTMLElement {
     }
     e.StringAttributes["itemid"] = v
     return e
+}
+
+func (e *SampHTMLElement) IfITEMID(cond bool, v string) *SampHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMID(v)
 }
 
 func (e *SampHTMLElement) RemoveITEMID(v string) *SampHTMLElement {
@@ -398,6 +496,13 @@ func (e *SampHTMLElement) ITEMPROP(v string) *SampHTMLElement {
     return e
 }
 
+func (e *SampHTMLElement) IfITEMPROP(cond bool, v string) *SampHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMPROP(v)
+}
+
 func (e *SampHTMLElement) RemoveITEMPROP(v string) *SampHTMLElement {
     delete(e.StringAttributes, "itemprop")
     return e
@@ -414,6 +519,13 @@ func (e *SampHTMLElement) ITEMREF(v string) *SampHTMLElement {
     return e
 }
 
+func (e *SampHTMLElement) IfITEMREF(cond bool, v string) *SampHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMREF(v)
+}
+
 func (e *SampHTMLElement) RemoveITEMREF(v string) *SampHTMLElement {
     delete(e.StringAttributes, "itemref")
     return e
@@ -428,6 +540,13 @@ func (e *SampHTMLElement) ITEMSCOPE() *SampHTMLElement {
     }
     e.BoolAttributes["itemscope"] = struct{}{}
     return e
+}
+
+func (e *SampHTMLElement) IfITEMSCOPE(cond bool) *SampHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMSCOPE()
 }
 
 func (e *SampHTMLElement) RemoveITEMSCOPE() *SampHTMLElement {
@@ -457,6 +576,13 @@ func (e *SampHTMLElement) ITEMTYPE(v string) *SampHTMLElement {
     return e
 }
 
+func (e *SampHTMLElement) IfITEMTYPE(cond bool, v string) *SampHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMTYPE(v)
+}
+
 func (e *SampHTMLElement) RemoveITEMTYPE(v string) *SampHTMLElement {
     delete(e.StringAttributes, "itemtype")
     return e
@@ -470,6 +596,13 @@ func (e *SampHTMLElement) LANG(v string) *SampHTMLElement {
     }
     e.StringAttributes["lang"] = v
     return e
+}
+
+func (e *SampHTMLElement) IfLANG(cond bool, v string) *SampHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.LANG(v)
 }
 
 func (e *SampHTMLElement) RemoveLANG(v string) *SampHTMLElement {
@@ -486,6 +619,13 @@ func (e *SampHTMLElement) NONCE(v string) *SampHTMLElement {
     }
     e.StringAttributes["nonce"] = v
     return e
+}
+
+func (e *SampHTMLElement) IfNONCE(cond bool, v string) *SampHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.NONCE(v)
 }
 
 func (e *SampHTMLElement) RemoveNONCE(v string) *SampHTMLElement {
@@ -507,6 +647,13 @@ func (e *SampHTMLElement) POPOVER(v string) *SampHTMLElement {
     return e
 }
 
+func (e *SampHTMLElement) IfPOPOVER(cond bool, v string) *SampHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.POPOVER(v)
+}
+
 func (e *SampHTMLElement) RemovePOPOVER(v string) *SampHTMLElement {
     delete(e.StringAttributes, "popover")
     return e
@@ -521,6 +668,13 @@ func (e *SampHTMLElement) SLOT(v string) *SampHTMLElement {
     }
     e.StringAttributes["slot"] = v
     return e
+}
+
+func (e *SampHTMLElement) IfSLOT(cond bool, v string) *SampHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SLOT(v)
 }
 
 func (e *SampHTMLElement) RemoveSLOT(v string) *SampHTMLElement {
@@ -538,6 +692,13 @@ func (e *SampHTMLElement) SPELLCHECK(v string) *SampHTMLElement {
     }
     e.StringAttributes["spellcheck"] = v
     return e
+}
+
+func (e *SampHTMLElement) IfSPELLCHECK(cond bool, v string) *SampHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SPELLCHECK(v)
 }
 
 func (e *SampHTMLElement) RemoveSPELLCHECK(v string) *SampHTMLElement {
@@ -558,6 +719,13 @@ func (e *SampHTMLElement) STYLE(k,v string) *SampHTMLElement {
     }
     kv.Add(k,v)
     return e
+}
+
+func (e *SampHTMLElement) IfSTYLE(cond bool, k string) *SampHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.STYLE(k, "")
 }
 
 func (e *SampHTMLElement) RemoveSTYLE(k string) *SampHTMLElement {
@@ -581,6 +749,13 @@ func (e *SampHTMLElement) TABINDEX(v string) *SampHTMLElement {
     return e
 }
 
+func (e *SampHTMLElement) IfTABINDEX(cond bool, v string) *SampHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TABINDEX(v)
+}
+
 func (e *SampHTMLElement) RemoveTABINDEX(v string) *SampHTMLElement {
     delete(e.StringAttributes, "tabindex")
     return e
@@ -595,6 +770,13 @@ func (e *SampHTMLElement) TITLE(v string) *SampHTMLElement {
     }
     e.StringAttributes["title"] = v
     return e
+}
+
+func (e *SampHTMLElement) IfTITLE(cond bool, v string) *SampHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TITLE(v)
 }
 
 func (e *SampHTMLElement) RemoveTITLE(v string) *SampHTMLElement {
@@ -612,6 +794,13 @@ func (e *SampHTMLElement) TRANSLATE(v string) *SampHTMLElement {
     }
     e.StringAttributes["translate"] = v
     return e
+}
+
+func (e *SampHTMLElement) IfTRANSLATE(cond bool, v string) *SampHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TRANSLATE(v)
 }
 
 func (e *SampHTMLElement) RemoveTRANSLATE(v string) *SampHTMLElement {

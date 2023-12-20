@@ -48,13 +48,13 @@ func (e *SelectHTMLElement) TextF(format string, args ...any) *SelectHTMLElement
     return e.Text(fmt.Sprintf(format, args...))
 }
 
-func (e *SelectHTMLElement) Raw(text string) *SelectHTMLElement {
-    e.Descendants = append(e.Descendants, Raw(text))
+func (e *SelectHTMLElement) Escaped(text string) *SelectHTMLElement {
+    e.Descendants = append(e.Descendants, Escaped(text))
     return e
 }
 
-func (e *SelectHTMLElement) RawF(format string, args ...any) *SelectHTMLElement {
-    return e.Raw(fmt.Sprintf(format, args...))
+func (e *SelectHTMLElement) EscapedF(format string, args ...any) *SelectHTMLElement {
+    return e.Escaped(fmt.Sprintf(format, args...))
 }
 
 func (e *SelectHTMLElement) CustomData(key, value string) *SelectHTMLElement {
@@ -87,6 +87,13 @@ func (e *SelectHTMLElement) ACCESSKEY(v string) *SelectHTMLElement {
     return e
 }
 
+func (e *SelectHTMLElement) IfACCESSKEY(cond bool, v string) *SelectHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ACCESSKEY(v)
+}
+
 func (e *SelectHTMLElement) RemoveACCESSKEY(v string) *SelectHTMLElement {
     delete(e.StringAttributes, "accesskey")
     return e
@@ -114,6 +121,13 @@ func (e *SelectHTMLElement) AUTOCAPITALIZE(v string) *SelectHTMLElement {
     return e
 }
 
+func (e *SelectHTMLElement) IfAUTOCAPITALIZE(cond bool, v string) *SelectHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.AUTOCAPITALIZE(v)
+}
+
 func (e *SelectHTMLElement) RemoveAUTOCAPITALIZE(v string) *SelectHTMLElement {
     delete(e.StringAttributes, "autocapitalize")
     return e
@@ -130,6 +144,13 @@ func (e *SelectHTMLElement) AUTOCOMPLETE(v string) *SelectHTMLElement {
     return e
 }
 
+func (e *SelectHTMLElement) IfAUTOCOMPLETE(cond bool, v string) *SelectHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.AUTOCOMPLETE(v)
+}
+
 func (e *SelectHTMLElement) RemoveAUTOCOMPLETE(v string) *SelectHTMLElement {
     delete(e.StringAttributes, "autocomplete")
     return e
@@ -144,6 +165,13 @@ func (e *SelectHTMLElement) AUTOFOCUS() *SelectHTMLElement {
     }
     e.BoolAttributes["autofocus"] = struct{}{}
     return e
+}
+
+func (e *SelectHTMLElement) IfAUTOFOCUS(cond bool) *SelectHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.AUTOFOCUS()
 }
 
 func (e *SelectHTMLElement) RemoveAUTOFOCUS() *SelectHTMLElement {
@@ -177,6 +205,13 @@ func(e *SelectHTMLElement) CLASS(v string) *SelectHTMLElement {
     return e
 }
 
+func (e *SelectHTMLElement) IfCLASS(cond bool, v string) *SelectHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.CLASS(v)
+}
+
 func (e *SelectHTMLElement) SetCLASS(v string) *SelectHTMLElement {
     kv := NewSpaceDelimitedString()
     e.DelimitedStringAttributes["class"] = kv
@@ -206,6 +241,13 @@ func (e *SelectHTMLElement) CONTENTEDITABLE(v string) *SelectHTMLElement {
     return e
 }
 
+func (e *SelectHTMLElement) IfCONTENTEDITABLE(cond bool, v string) *SelectHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.CONTENTEDITABLE(v)
+}
+
 func (e *SelectHTMLElement) RemoveCONTENTEDITABLE(v string) *SelectHTMLElement {
     delete(e.StringAttributes, "contenteditable")
     return e
@@ -225,6 +267,13 @@ func (e *SelectHTMLElement) DIR(v string) *SelectHTMLElement {
     return e
 }
 
+func (e *SelectHTMLElement) IfDIR(cond bool, v string) *SelectHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.DIR(v)
+}
+
 func (e *SelectHTMLElement) RemoveDIR(v string) *SelectHTMLElement {
     delete(e.StringAttributes, "dir")
     return e
@@ -239,6 +288,13 @@ func (e *SelectHTMLElement) DISABLED() *SelectHTMLElement {
     }
     e.BoolAttributes["disabled"] = struct{}{}
     return e
+}
+
+func (e *SelectHTMLElement) IfDISABLED(cond bool) *SelectHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.DISABLED()
 }
 
 func (e *SelectHTMLElement) RemoveDISABLED() *SelectHTMLElement {
@@ -266,6 +322,13 @@ func (e *SelectHTMLElement) DRAGGABLE(v string) *SelectHTMLElement {
     }
     e.StringAttributes["draggable"] = v
     return e
+}
+
+func (e *SelectHTMLElement) IfDRAGGABLE(cond bool, v string) *SelectHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.DRAGGABLE(v)
 }
 
 func (e *SelectHTMLElement) RemoveDRAGGABLE(v string) *SelectHTMLElement {
@@ -297,6 +360,13 @@ func (e *SelectHTMLElement) ENTERKEYHINT(v string) *SelectHTMLElement {
     return e
 }
 
+func (e *SelectHTMLElement) IfENTERKEYHINT(cond bool, v string) *SelectHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ENTERKEYHINT(v)
+}
+
 func (e *SelectHTMLElement) RemoveENTERKEYHINT(v string) *SelectHTMLElement {
     delete(e.StringAttributes, "enterkeyhint")
     return e
@@ -311,6 +381,13 @@ func (e *SelectHTMLElement) FORM(v string) *SelectHTMLElement {
     }
     e.StringAttributes["form"] = v
     return e
+}
+
+func (e *SelectHTMLElement) IfFORM(cond bool, v string) *SelectHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.FORM(v)
 }
 
 func (e *SelectHTMLElement) RemoveFORM(v string) *SelectHTMLElement {
@@ -332,6 +409,13 @@ func (e *SelectHTMLElement) HIDDEN(v string) *SelectHTMLElement {
     return e
 }
 
+func (e *SelectHTMLElement) IfHIDDEN(cond bool, v string) *SelectHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.HIDDEN(v)
+}
+
 func (e *SelectHTMLElement) RemoveHIDDEN(v string) *SelectHTMLElement {
     delete(e.StringAttributes, "hidden")
     return e
@@ -348,6 +432,13 @@ func (e *SelectHTMLElement) ID(v string) *SelectHTMLElement {
     return e
 }
 
+func (e *SelectHTMLElement) IfID(cond bool, v string) *SelectHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ID(v)
+}
+
 func (e *SelectHTMLElement) RemoveID(v string) *SelectHTMLElement {
     delete(e.StringAttributes, "id")
     return e
@@ -362,6 +453,13 @@ func (e *SelectHTMLElement) INERT() *SelectHTMLElement {
     }
     e.BoolAttributes["inert"] = struct{}{}
     return e
+}
+
+func (e *SelectHTMLElement) IfINERT(cond bool) *SelectHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.INERT()
 }
 
 func (e *SelectHTMLElement) RemoveINERT() *SelectHTMLElement {
@@ -405,6 +503,13 @@ func (e *SelectHTMLElement) INPUTMODE(v string) *SelectHTMLElement {
     return e
 }
 
+func (e *SelectHTMLElement) IfINPUTMODE(cond bool, v string) *SelectHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.INPUTMODE(v)
+}
+
 func (e *SelectHTMLElement) RemoveINPUTMODE(v string) *SelectHTMLElement {
     delete(e.StringAttributes, "inputmode")
     return e
@@ -422,6 +527,13 @@ func (e *SelectHTMLElement) IS(v string) *SelectHTMLElement {
     return e
 }
 
+func (e *SelectHTMLElement) IfIS(cond bool, v string) *SelectHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.IS(v)
+}
+
 func (e *SelectHTMLElement) RemoveIS(v string) *SelectHTMLElement {
     delete(e.StringAttributes, "is")
     return e
@@ -436,6 +548,13 @@ func (e *SelectHTMLElement) ITEMID(v string) *SelectHTMLElement {
     }
     e.StringAttributes["itemid"] = v
     return e
+}
+
+func (e *SelectHTMLElement) IfITEMID(cond bool, v string) *SelectHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMID(v)
 }
 
 func (e *SelectHTMLElement) RemoveITEMID(v string) *SelectHTMLElement {
@@ -456,6 +575,13 @@ func (e *SelectHTMLElement) ITEMPROP(v string) *SelectHTMLElement {
     return e
 }
 
+func (e *SelectHTMLElement) IfITEMPROP(cond bool, v string) *SelectHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMPROP(v)
+}
+
 func (e *SelectHTMLElement) RemoveITEMPROP(v string) *SelectHTMLElement {
     delete(e.StringAttributes, "itemprop")
     return e
@@ -472,6 +598,13 @@ func (e *SelectHTMLElement) ITEMREF(v string) *SelectHTMLElement {
     return e
 }
 
+func (e *SelectHTMLElement) IfITEMREF(cond bool, v string) *SelectHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMREF(v)
+}
+
 func (e *SelectHTMLElement) RemoveITEMREF(v string) *SelectHTMLElement {
     delete(e.StringAttributes, "itemref")
     return e
@@ -486,6 +619,13 @@ func (e *SelectHTMLElement) ITEMSCOPE() *SelectHTMLElement {
     }
     e.BoolAttributes["itemscope"] = struct{}{}
     return e
+}
+
+func (e *SelectHTMLElement) IfITEMSCOPE(cond bool) *SelectHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMSCOPE()
 }
 
 func (e *SelectHTMLElement) RemoveITEMSCOPE() *SelectHTMLElement {
@@ -515,6 +655,13 @@ func (e *SelectHTMLElement) ITEMTYPE(v string) *SelectHTMLElement {
     return e
 }
 
+func (e *SelectHTMLElement) IfITEMTYPE(cond bool, v string) *SelectHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMTYPE(v)
+}
+
 func (e *SelectHTMLElement) RemoveITEMTYPE(v string) *SelectHTMLElement {
     delete(e.StringAttributes, "itemtype")
     return e
@@ -528,6 +675,13 @@ func (e *SelectHTMLElement) LANG(v string) *SelectHTMLElement {
     }
     e.StringAttributes["lang"] = v
     return e
+}
+
+func (e *SelectHTMLElement) IfLANG(cond bool, v string) *SelectHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.LANG(v)
 }
 
 func (e *SelectHTMLElement) RemoveLANG(v string) *SelectHTMLElement {
@@ -544,6 +698,13 @@ func (e *SelectHTMLElement) MULTIPLE() *SelectHTMLElement {
     }
     e.BoolAttributes["multiple"] = struct{}{}
     return e
+}
+
+func (e *SelectHTMLElement) IfMULTIPLE(cond bool) *SelectHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.MULTIPLE()
 }
 
 func (e *SelectHTMLElement) RemoveMULTIPLE() *SelectHTMLElement {
@@ -572,6 +733,13 @@ func (e *SelectHTMLElement) NAME(v string) *SelectHTMLElement {
     return e
 }
 
+func (e *SelectHTMLElement) IfNAME(cond bool, v string) *SelectHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.NAME(v)
+}
+
 func (e *SelectHTMLElement) RemoveNAME(v string) *SelectHTMLElement {
     delete(e.StringAttributes, "name")
     return e
@@ -586,6 +754,13 @@ func (e *SelectHTMLElement) NONCE(v string) *SelectHTMLElement {
     }
     e.StringAttributes["nonce"] = v
     return e
+}
+
+func (e *SelectHTMLElement) IfNONCE(cond bool, v string) *SelectHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.NONCE(v)
 }
 
 func (e *SelectHTMLElement) RemoveNONCE(v string) *SelectHTMLElement {
@@ -607,6 +782,13 @@ func (e *SelectHTMLElement) POPOVER(v string) *SelectHTMLElement {
     return e
 }
 
+func (e *SelectHTMLElement) IfPOPOVER(cond bool, v string) *SelectHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.POPOVER(v)
+}
+
 func (e *SelectHTMLElement) RemovePOPOVER(v string) *SelectHTMLElement {
     delete(e.StringAttributes, "popover")
     return e
@@ -621,6 +803,13 @@ func (e *SelectHTMLElement) REQUIRED() *SelectHTMLElement {
     }
     e.BoolAttributes["required"] = struct{}{}
     return e
+}
+
+func (e *SelectHTMLElement) IfREQUIRED(cond bool) *SelectHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.REQUIRED()
 }
 
 func (e *SelectHTMLElement) RemoveREQUIRED() *SelectHTMLElement {
@@ -649,6 +838,13 @@ func (e *SelectHTMLElement) SIZE(v string) *SelectHTMLElement {
     return e
 }
 
+func (e *SelectHTMLElement) IfSIZE(cond bool, v string) *SelectHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SIZE(v)
+}
+
 func (e *SelectHTMLElement) RemoveSIZE(v string) *SelectHTMLElement {
     delete(e.StringAttributes, "size")
     return e
@@ -663,6 +859,13 @@ func (e *SelectHTMLElement) SLOT(v string) *SelectHTMLElement {
     }
     e.StringAttributes["slot"] = v
     return e
+}
+
+func (e *SelectHTMLElement) IfSLOT(cond bool, v string) *SelectHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SLOT(v)
 }
 
 func (e *SelectHTMLElement) RemoveSLOT(v string) *SelectHTMLElement {
@@ -680,6 +883,13 @@ func (e *SelectHTMLElement) SPELLCHECK(v string) *SelectHTMLElement {
     }
     e.StringAttributes["spellcheck"] = v
     return e
+}
+
+func (e *SelectHTMLElement) IfSPELLCHECK(cond bool, v string) *SelectHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SPELLCHECK(v)
 }
 
 func (e *SelectHTMLElement) RemoveSPELLCHECK(v string) *SelectHTMLElement {
@@ -700,6 +910,13 @@ func (e *SelectHTMLElement) STYLE(k,v string) *SelectHTMLElement {
     }
     kv.Add(k,v)
     return e
+}
+
+func (e *SelectHTMLElement) IfSTYLE(cond bool, k string) *SelectHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.STYLE(k, "")
 }
 
 func (e *SelectHTMLElement) RemoveSTYLE(k string) *SelectHTMLElement {
@@ -723,6 +940,13 @@ func (e *SelectHTMLElement) TABINDEX(v string) *SelectHTMLElement {
     return e
 }
 
+func (e *SelectHTMLElement) IfTABINDEX(cond bool, v string) *SelectHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TABINDEX(v)
+}
+
 func (e *SelectHTMLElement) RemoveTABINDEX(v string) *SelectHTMLElement {
     delete(e.StringAttributes, "tabindex")
     return e
@@ -737,6 +961,13 @@ func (e *SelectHTMLElement) TITLE(v string) *SelectHTMLElement {
     }
     e.StringAttributes["title"] = v
     return e
+}
+
+func (e *SelectHTMLElement) IfTITLE(cond bool, v string) *SelectHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TITLE(v)
 }
 
 func (e *SelectHTMLElement) RemoveTITLE(v string) *SelectHTMLElement {
@@ -754,6 +985,13 @@ func (e *SelectHTMLElement) TRANSLATE(v string) *SelectHTMLElement {
     }
     e.StringAttributes["translate"] = v
     return e
+}
+
+func (e *SelectHTMLElement) IfTRANSLATE(cond bool, v string) *SelectHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TRANSLATE(v)
 }
 
 func (e *SelectHTMLElement) RemoveTRANSLATE(v string) *SelectHTMLElement {

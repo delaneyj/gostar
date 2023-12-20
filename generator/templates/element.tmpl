@@ -48,13 +48,13 @@ func (e *{{.ElementName }}) TextF(format string, args ...any) *{{.ElementName }}
     return e.Text(fmt.Sprintf(format, args...))
 }
 
-func (e *{{.ElementName }}) Raw(text string) *{{.ElementName }} {
-    e.Descendants = append(e.Descendants, Raw(text))
+func (e *{{.ElementName }}) Escaped(text string) *{{.ElementName }} {
+    e.Descendants = append(e.Descendants, Escaped(text))
     return e
 }
 
-func (e *{{.ElementName }}) RawF(format string, args ...any) *{{.ElementName }} {
-    return e.Raw(fmt.Sprintf(format, args...))
+func (e *{{.ElementName }}) EscapedF(format string, args ...any) *{{.ElementName }} {
+    return e.Escaped(fmt.Sprintf(format, args...))
 }
 
 func (e *{{.ElementName}}) CustomData(key, value string) *{{.ElementName}} {
@@ -91,6 +91,13 @@ func (e *{{$.ElementName}}) {{.Name}}() *{{$.ElementName}} {
     return e
 }
 
+func (e *{{$.ElementName}}) If{{.Name}}(cond bool) *{{$.ElementName}} {
+    if !cond {
+        return e
+    }
+    return e.{{.Name}}()
+}
+
 func (e *{{$.ElementName}}) Remove{{.Name}}() *{{$.ElementName}} {
     if e.BoolAttributes == nil {
         return e
@@ -119,6 +126,13 @@ func (e *{{$.ElementName}}) {{.Name}}(k,v string) *{{$.ElementName}} {
     return e
 }
 
+func (e *{{$.ElementName}}) If{{.Name}}(cond bool, k string) *{{$.ElementName}} {
+    if !cond {
+        return e
+    }
+    return e.{{.Name}}(k, "")
+}
+
 func (e *{{$.ElementName}}) Remove{{.Name}}(k string) *{{$.ElementName}} {
     kv, ok := e.DelimitedKVAttributes["{{.Key}}"]
     if !ok {
@@ -139,6 +153,13 @@ func(e *{{$.ElementName}}) {{.Name}}(v string) *{{$.ElementName}} {
     }
     kv.Add(v)
     return e
+}
+
+func (e *{{$.ElementName}}) If{{.Name}}(cond bool, v string) *{{$.ElementName}} {
+    if !cond {
+        return e
+    }
+    return e.{{.Name}}(v)
 }
 
 func (e *{{$.ElementName}}) Set{{.Name}}(v string) *{{$.ElementName}} {
@@ -164,6 +185,13 @@ func (e *{{$.ElementName}}) {{.Name}}(v string) *{{$.ElementName}} {
     }
     e.StringAttributes["{{.Key}}"] = v
     return e
+}
+
+func (e *{{$.ElementName}}) If{{.Name}}(cond bool, v string) *{{$.ElementName}} {
+    if !cond {
+        return e
+    }
+    return e.{{.Name}}(v)
 }
 
 func (e *{{$.ElementName}}) Remove{{.Name}}(v string) *{{$.ElementName}} {

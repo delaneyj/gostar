@@ -48,13 +48,13 @@ func (e *H5HTMLElement) TextF(format string, args ...any) *H5HTMLElement {
     return e.Text(fmt.Sprintf(format, args...))
 }
 
-func (e *H5HTMLElement) Raw(text string) *H5HTMLElement {
-    e.Descendants = append(e.Descendants, Raw(text))
+func (e *H5HTMLElement) Escaped(text string) *H5HTMLElement {
+    e.Descendants = append(e.Descendants, Escaped(text))
     return e
 }
 
-func (e *H5HTMLElement) RawF(format string, args ...any) *H5HTMLElement {
-    return e.Raw(fmt.Sprintf(format, args...))
+func (e *H5HTMLElement) EscapedF(format string, args ...any) *H5HTMLElement {
+    return e.Escaped(fmt.Sprintf(format, args...))
 }
 
 func (e *H5HTMLElement) CustomData(key, value string) *H5HTMLElement {
@@ -87,6 +87,13 @@ func (e *H5HTMLElement) ACCESSKEY(v string) *H5HTMLElement {
     return e
 }
 
+func (e *H5HTMLElement) IfACCESSKEY(cond bool, v string) *H5HTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ACCESSKEY(v)
+}
+
 func (e *H5HTMLElement) RemoveACCESSKEY(v string) *H5HTMLElement {
     delete(e.StringAttributes, "accesskey")
     return e
@@ -114,6 +121,13 @@ func (e *H5HTMLElement) AUTOCAPITALIZE(v string) *H5HTMLElement {
     return e
 }
 
+func (e *H5HTMLElement) IfAUTOCAPITALIZE(cond bool, v string) *H5HTMLElement {
+    if !cond {
+        return e
+    }
+    return e.AUTOCAPITALIZE(v)
+}
+
 func (e *H5HTMLElement) RemoveAUTOCAPITALIZE(v string) *H5HTMLElement {
     delete(e.StringAttributes, "autocapitalize")
     return e
@@ -128,6 +142,13 @@ func (e *H5HTMLElement) AUTOFOCUS() *H5HTMLElement {
     }
     e.BoolAttributes["autofocus"] = struct{}{}
     return e
+}
+
+func (e *H5HTMLElement) IfAUTOFOCUS(cond bool) *H5HTMLElement {
+    if !cond {
+        return e
+    }
+    return e.AUTOFOCUS()
 }
 
 func (e *H5HTMLElement) RemoveAUTOFOCUS() *H5HTMLElement {
@@ -161,6 +182,13 @@ func(e *H5HTMLElement) CLASS(v string) *H5HTMLElement {
     return e
 }
 
+func (e *H5HTMLElement) IfCLASS(cond bool, v string) *H5HTMLElement {
+    if !cond {
+        return e
+    }
+    return e.CLASS(v)
+}
+
 func (e *H5HTMLElement) SetCLASS(v string) *H5HTMLElement {
     kv := NewSpaceDelimitedString()
     e.DelimitedStringAttributes["class"] = kv
@@ -190,6 +218,13 @@ func (e *H5HTMLElement) CONTENTEDITABLE(v string) *H5HTMLElement {
     return e
 }
 
+func (e *H5HTMLElement) IfCONTENTEDITABLE(cond bool, v string) *H5HTMLElement {
+    if !cond {
+        return e
+    }
+    return e.CONTENTEDITABLE(v)
+}
+
 func (e *H5HTMLElement) RemoveCONTENTEDITABLE(v string) *H5HTMLElement {
     delete(e.StringAttributes, "contenteditable")
     return e
@@ -209,6 +244,13 @@ func (e *H5HTMLElement) DIR(v string) *H5HTMLElement {
     return e
 }
 
+func (e *H5HTMLElement) IfDIR(cond bool, v string) *H5HTMLElement {
+    if !cond {
+        return e
+    }
+    return e.DIR(v)
+}
+
 func (e *H5HTMLElement) RemoveDIR(v string) *H5HTMLElement {
     delete(e.StringAttributes, "dir")
     return e
@@ -224,6 +266,13 @@ func (e *H5HTMLElement) DRAGGABLE(v string) *H5HTMLElement {
     }
     e.StringAttributes["draggable"] = v
     return e
+}
+
+func (e *H5HTMLElement) IfDRAGGABLE(cond bool, v string) *H5HTMLElement {
+    if !cond {
+        return e
+    }
+    return e.DRAGGABLE(v)
 }
 
 func (e *H5HTMLElement) RemoveDRAGGABLE(v string) *H5HTMLElement {
@@ -255,6 +304,13 @@ func (e *H5HTMLElement) ENTERKEYHINT(v string) *H5HTMLElement {
     return e
 }
 
+func (e *H5HTMLElement) IfENTERKEYHINT(cond bool, v string) *H5HTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ENTERKEYHINT(v)
+}
+
 func (e *H5HTMLElement) RemoveENTERKEYHINT(v string) *H5HTMLElement {
     delete(e.StringAttributes, "enterkeyhint")
     return e
@@ -274,6 +330,13 @@ func (e *H5HTMLElement) HIDDEN(v string) *H5HTMLElement {
     return e
 }
 
+func (e *H5HTMLElement) IfHIDDEN(cond bool, v string) *H5HTMLElement {
+    if !cond {
+        return e
+    }
+    return e.HIDDEN(v)
+}
+
 func (e *H5HTMLElement) RemoveHIDDEN(v string) *H5HTMLElement {
     delete(e.StringAttributes, "hidden")
     return e
@@ -290,6 +353,13 @@ func (e *H5HTMLElement) ID(v string) *H5HTMLElement {
     return e
 }
 
+func (e *H5HTMLElement) IfID(cond bool, v string) *H5HTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ID(v)
+}
+
 func (e *H5HTMLElement) RemoveID(v string) *H5HTMLElement {
     delete(e.StringAttributes, "id")
     return e
@@ -304,6 +374,13 @@ func (e *H5HTMLElement) INERT() *H5HTMLElement {
     }
     e.BoolAttributes["inert"] = struct{}{}
     return e
+}
+
+func (e *H5HTMLElement) IfINERT(cond bool) *H5HTMLElement {
+    if !cond {
+        return e
+    }
+    return e.INERT()
 }
 
 func (e *H5HTMLElement) RemoveINERT() *H5HTMLElement {
@@ -347,6 +424,13 @@ func (e *H5HTMLElement) INPUTMODE(v string) *H5HTMLElement {
     return e
 }
 
+func (e *H5HTMLElement) IfINPUTMODE(cond bool, v string) *H5HTMLElement {
+    if !cond {
+        return e
+    }
+    return e.INPUTMODE(v)
+}
+
 func (e *H5HTMLElement) RemoveINPUTMODE(v string) *H5HTMLElement {
     delete(e.StringAttributes, "inputmode")
     return e
@@ -364,6 +448,13 @@ func (e *H5HTMLElement) IS(v string) *H5HTMLElement {
     return e
 }
 
+func (e *H5HTMLElement) IfIS(cond bool, v string) *H5HTMLElement {
+    if !cond {
+        return e
+    }
+    return e.IS(v)
+}
+
 func (e *H5HTMLElement) RemoveIS(v string) *H5HTMLElement {
     delete(e.StringAttributes, "is")
     return e
@@ -378,6 +469,13 @@ func (e *H5HTMLElement) ITEMID(v string) *H5HTMLElement {
     }
     e.StringAttributes["itemid"] = v
     return e
+}
+
+func (e *H5HTMLElement) IfITEMID(cond bool, v string) *H5HTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMID(v)
 }
 
 func (e *H5HTMLElement) RemoveITEMID(v string) *H5HTMLElement {
@@ -398,6 +496,13 @@ func (e *H5HTMLElement) ITEMPROP(v string) *H5HTMLElement {
     return e
 }
 
+func (e *H5HTMLElement) IfITEMPROP(cond bool, v string) *H5HTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMPROP(v)
+}
+
 func (e *H5HTMLElement) RemoveITEMPROP(v string) *H5HTMLElement {
     delete(e.StringAttributes, "itemprop")
     return e
@@ -414,6 +519,13 @@ func (e *H5HTMLElement) ITEMREF(v string) *H5HTMLElement {
     return e
 }
 
+func (e *H5HTMLElement) IfITEMREF(cond bool, v string) *H5HTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMREF(v)
+}
+
 func (e *H5HTMLElement) RemoveITEMREF(v string) *H5HTMLElement {
     delete(e.StringAttributes, "itemref")
     return e
@@ -428,6 +540,13 @@ func (e *H5HTMLElement) ITEMSCOPE() *H5HTMLElement {
     }
     e.BoolAttributes["itemscope"] = struct{}{}
     return e
+}
+
+func (e *H5HTMLElement) IfITEMSCOPE(cond bool) *H5HTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMSCOPE()
 }
 
 func (e *H5HTMLElement) RemoveITEMSCOPE() *H5HTMLElement {
@@ -457,6 +576,13 @@ func (e *H5HTMLElement) ITEMTYPE(v string) *H5HTMLElement {
     return e
 }
 
+func (e *H5HTMLElement) IfITEMTYPE(cond bool, v string) *H5HTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMTYPE(v)
+}
+
 func (e *H5HTMLElement) RemoveITEMTYPE(v string) *H5HTMLElement {
     delete(e.StringAttributes, "itemtype")
     return e
@@ -470,6 +596,13 @@ func (e *H5HTMLElement) LANG(v string) *H5HTMLElement {
     }
     e.StringAttributes["lang"] = v
     return e
+}
+
+func (e *H5HTMLElement) IfLANG(cond bool, v string) *H5HTMLElement {
+    if !cond {
+        return e
+    }
+    return e.LANG(v)
 }
 
 func (e *H5HTMLElement) RemoveLANG(v string) *H5HTMLElement {
@@ -486,6 +619,13 @@ func (e *H5HTMLElement) NONCE(v string) *H5HTMLElement {
     }
     e.StringAttributes["nonce"] = v
     return e
+}
+
+func (e *H5HTMLElement) IfNONCE(cond bool, v string) *H5HTMLElement {
+    if !cond {
+        return e
+    }
+    return e.NONCE(v)
 }
 
 func (e *H5HTMLElement) RemoveNONCE(v string) *H5HTMLElement {
@@ -507,6 +647,13 @@ func (e *H5HTMLElement) POPOVER(v string) *H5HTMLElement {
     return e
 }
 
+func (e *H5HTMLElement) IfPOPOVER(cond bool, v string) *H5HTMLElement {
+    if !cond {
+        return e
+    }
+    return e.POPOVER(v)
+}
+
 func (e *H5HTMLElement) RemovePOPOVER(v string) *H5HTMLElement {
     delete(e.StringAttributes, "popover")
     return e
@@ -521,6 +668,13 @@ func (e *H5HTMLElement) SLOT(v string) *H5HTMLElement {
     }
     e.StringAttributes["slot"] = v
     return e
+}
+
+func (e *H5HTMLElement) IfSLOT(cond bool, v string) *H5HTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SLOT(v)
 }
 
 func (e *H5HTMLElement) RemoveSLOT(v string) *H5HTMLElement {
@@ -538,6 +692,13 @@ func (e *H5HTMLElement) SPELLCHECK(v string) *H5HTMLElement {
     }
     e.StringAttributes["spellcheck"] = v
     return e
+}
+
+func (e *H5HTMLElement) IfSPELLCHECK(cond bool, v string) *H5HTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SPELLCHECK(v)
 }
 
 func (e *H5HTMLElement) RemoveSPELLCHECK(v string) *H5HTMLElement {
@@ -558,6 +719,13 @@ func (e *H5HTMLElement) STYLE(k,v string) *H5HTMLElement {
     }
     kv.Add(k,v)
     return e
+}
+
+func (e *H5HTMLElement) IfSTYLE(cond bool, k string) *H5HTMLElement {
+    if !cond {
+        return e
+    }
+    return e.STYLE(k, "")
 }
 
 func (e *H5HTMLElement) RemoveSTYLE(k string) *H5HTMLElement {
@@ -581,6 +749,13 @@ func (e *H5HTMLElement) TABINDEX(v string) *H5HTMLElement {
     return e
 }
 
+func (e *H5HTMLElement) IfTABINDEX(cond bool, v string) *H5HTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TABINDEX(v)
+}
+
 func (e *H5HTMLElement) RemoveTABINDEX(v string) *H5HTMLElement {
     delete(e.StringAttributes, "tabindex")
     return e
@@ -595,6 +770,13 @@ func (e *H5HTMLElement) TITLE(v string) *H5HTMLElement {
     }
     e.StringAttributes["title"] = v
     return e
+}
+
+func (e *H5HTMLElement) IfTITLE(cond bool, v string) *H5HTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TITLE(v)
 }
 
 func (e *H5HTMLElement) RemoveTITLE(v string) *H5HTMLElement {
@@ -612,6 +794,13 @@ func (e *H5HTMLElement) TRANSLATE(v string) *H5HTMLElement {
     }
     e.StringAttributes["translate"] = v
     return e
+}
+
+func (e *H5HTMLElement) IfTRANSLATE(cond bool, v string) *H5HTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TRANSLATE(v)
 }
 
 func (e *H5HTMLElement) RemoveTRANSLATE(v string) *H5HTMLElement {

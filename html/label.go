@@ -48,13 +48,13 @@ func (e *LabelHTMLElement) TextF(format string, args ...any) *LabelHTMLElement {
     return e.Text(fmt.Sprintf(format, args...))
 }
 
-func (e *LabelHTMLElement) Raw(text string) *LabelHTMLElement {
-    e.Descendants = append(e.Descendants, Raw(text))
+func (e *LabelHTMLElement) Escaped(text string) *LabelHTMLElement {
+    e.Descendants = append(e.Descendants, Escaped(text))
     return e
 }
 
-func (e *LabelHTMLElement) RawF(format string, args ...any) *LabelHTMLElement {
-    return e.Raw(fmt.Sprintf(format, args...))
+func (e *LabelHTMLElement) EscapedF(format string, args ...any) *LabelHTMLElement {
+    return e.Escaped(fmt.Sprintf(format, args...))
 }
 
 func (e *LabelHTMLElement) CustomData(key, value string) *LabelHTMLElement {
@@ -87,6 +87,13 @@ func (e *LabelHTMLElement) ACCESSKEY(v string) *LabelHTMLElement {
     return e
 }
 
+func (e *LabelHTMLElement) IfACCESSKEY(cond bool, v string) *LabelHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ACCESSKEY(v)
+}
+
 func (e *LabelHTMLElement) RemoveACCESSKEY(v string) *LabelHTMLElement {
     delete(e.StringAttributes, "accesskey")
     return e
@@ -114,6 +121,13 @@ func (e *LabelHTMLElement) AUTOCAPITALIZE(v string) *LabelHTMLElement {
     return e
 }
 
+func (e *LabelHTMLElement) IfAUTOCAPITALIZE(cond bool, v string) *LabelHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.AUTOCAPITALIZE(v)
+}
+
 func (e *LabelHTMLElement) RemoveAUTOCAPITALIZE(v string) *LabelHTMLElement {
     delete(e.StringAttributes, "autocapitalize")
     return e
@@ -128,6 +142,13 @@ func (e *LabelHTMLElement) AUTOFOCUS() *LabelHTMLElement {
     }
     e.BoolAttributes["autofocus"] = struct{}{}
     return e
+}
+
+func (e *LabelHTMLElement) IfAUTOFOCUS(cond bool) *LabelHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.AUTOFOCUS()
 }
 
 func (e *LabelHTMLElement) RemoveAUTOFOCUS() *LabelHTMLElement {
@@ -161,6 +182,13 @@ func(e *LabelHTMLElement) CLASS(v string) *LabelHTMLElement {
     return e
 }
 
+func (e *LabelHTMLElement) IfCLASS(cond bool, v string) *LabelHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.CLASS(v)
+}
+
 func (e *LabelHTMLElement) SetCLASS(v string) *LabelHTMLElement {
     kv := NewSpaceDelimitedString()
     e.DelimitedStringAttributes["class"] = kv
@@ -190,6 +218,13 @@ func (e *LabelHTMLElement) CONTENTEDITABLE(v string) *LabelHTMLElement {
     return e
 }
 
+func (e *LabelHTMLElement) IfCONTENTEDITABLE(cond bool, v string) *LabelHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.CONTENTEDITABLE(v)
+}
+
 func (e *LabelHTMLElement) RemoveCONTENTEDITABLE(v string) *LabelHTMLElement {
     delete(e.StringAttributes, "contenteditable")
     return e
@@ -209,6 +244,13 @@ func (e *LabelHTMLElement) DIR(v string) *LabelHTMLElement {
     return e
 }
 
+func (e *LabelHTMLElement) IfDIR(cond bool, v string) *LabelHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.DIR(v)
+}
+
 func (e *LabelHTMLElement) RemoveDIR(v string) *LabelHTMLElement {
     delete(e.StringAttributes, "dir")
     return e
@@ -224,6 +266,13 @@ func (e *LabelHTMLElement) DRAGGABLE(v string) *LabelHTMLElement {
     }
     e.StringAttributes["draggable"] = v
     return e
+}
+
+func (e *LabelHTMLElement) IfDRAGGABLE(cond bool, v string) *LabelHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.DRAGGABLE(v)
 }
 
 func (e *LabelHTMLElement) RemoveDRAGGABLE(v string) *LabelHTMLElement {
@@ -255,6 +304,13 @@ func (e *LabelHTMLElement) ENTERKEYHINT(v string) *LabelHTMLElement {
     return e
 }
 
+func (e *LabelHTMLElement) IfENTERKEYHINT(cond bool, v string) *LabelHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ENTERKEYHINT(v)
+}
+
 func (e *LabelHTMLElement) RemoveENTERKEYHINT(v string) *LabelHTMLElement {
     delete(e.StringAttributes, "enterkeyhint")
     return e
@@ -269,6 +325,13 @@ func (e *LabelHTMLElement) FOR(v string) *LabelHTMLElement {
     }
     e.StringAttributes["for"] = v
     return e
+}
+
+func (e *LabelHTMLElement) IfFOR(cond bool, v string) *LabelHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.FOR(v)
 }
 
 func (e *LabelHTMLElement) RemoveFOR(v string) *LabelHTMLElement {
@@ -290,6 +353,13 @@ func (e *LabelHTMLElement) HIDDEN(v string) *LabelHTMLElement {
     return e
 }
 
+func (e *LabelHTMLElement) IfHIDDEN(cond bool, v string) *LabelHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.HIDDEN(v)
+}
+
 func (e *LabelHTMLElement) RemoveHIDDEN(v string) *LabelHTMLElement {
     delete(e.StringAttributes, "hidden")
     return e
@@ -306,6 +376,13 @@ func (e *LabelHTMLElement) ID(v string) *LabelHTMLElement {
     return e
 }
 
+func (e *LabelHTMLElement) IfID(cond bool, v string) *LabelHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ID(v)
+}
+
 func (e *LabelHTMLElement) RemoveID(v string) *LabelHTMLElement {
     delete(e.StringAttributes, "id")
     return e
@@ -320,6 +397,13 @@ func (e *LabelHTMLElement) INERT() *LabelHTMLElement {
     }
     e.BoolAttributes["inert"] = struct{}{}
     return e
+}
+
+func (e *LabelHTMLElement) IfINERT(cond bool) *LabelHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.INERT()
 }
 
 func (e *LabelHTMLElement) RemoveINERT() *LabelHTMLElement {
@@ -363,6 +447,13 @@ func (e *LabelHTMLElement) INPUTMODE(v string) *LabelHTMLElement {
     return e
 }
 
+func (e *LabelHTMLElement) IfINPUTMODE(cond bool, v string) *LabelHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.INPUTMODE(v)
+}
+
 func (e *LabelHTMLElement) RemoveINPUTMODE(v string) *LabelHTMLElement {
     delete(e.StringAttributes, "inputmode")
     return e
@@ -380,6 +471,13 @@ func (e *LabelHTMLElement) IS(v string) *LabelHTMLElement {
     return e
 }
 
+func (e *LabelHTMLElement) IfIS(cond bool, v string) *LabelHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.IS(v)
+}
+
 func (e *LabelHTMLElement) RemoveIS(v string) *LabelHTMLElement {
     delete(e.StringAttributes, "is")
     return e
@@ -394,6 +492,13 @@ func (e *LabelHTMLElement) ITEMID(v string) *LabelHTMLElement {
     }
     e.StringAttributes["itemid"] = v
     return e
+}
+
+func (e *LabelHTMLElement) IfITEMID(cond bool, v string) *LabelHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMID(v)
 }
 
 func (e *LabelHTMLElement) RemoveITEMID(v string) *LabelHTMLElement {
@@ -414,6 +519,13 @@ func (e *LabelHTMLElement) ITEMPROP(v string) *LabelHTMLElement {
     return e
 }
 
+func (e *LabelHTMLElement) IfITEMPROP(cond bool, v string) *LabelHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMPROP(v)
+}
+
 func (e *LabelHTMLElement) RemoveITEMPROP(v string) *LabelHTMLElement {
     delete(e.StringAttributes, "itemprop")
     return e
@@ -430,6 +542,13 @@ func (e *LabelHTMLElement) ITEMREF(v string) *LabelHTMLElement {
     return e
 }
 
+func (e *LabelHTMLElement) IfITEMREF(cond bool, v string) *LabelHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMREF(v)
+}
+
 func (e *LabelHTMLElement) RemoveITEMREF(v string) *LabelHTMLElement {
     delete(e.StringAttributes, "itemref")
     return e
@@ -444,6 +563,13 @@ func (e *LabelHTMLElement) ITEMSCOPE() *LabelHTMLElement {
     }
     e.BoolAttributes["itemscope"] = struct{}{}
     return e
+}
+
+func (e *LabelHTMLElement) IfITEMSCOPE(cond bool) *LabelHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMSCOPE()
 }
 
 func (e *LabelHTMLElement) RemoveITEMSCOPE() *LabelHTMLElement {
@@ -473,6 +599,13 @@ func (e *LabelHTMLElement) ITEMTYPE(v string) *LabelHTMLElement {
     return e
 }
 
+func (e *LabelHTMLElement) IfITEMTYPE(cond bool, v string) *LabelHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMTYPE(v)
+}
+
 func (e *LabelHTMLElement) RemoveITEMTYPE(v string) *LabelHTMLElement {
     delete(e.StringAttributes, "itemtype")
     return e
@@ -486,6 +619,13 @@ func (e *LabelHTMLElement) LANG(v string) *LabelHTMLElement {
     }
     e.StringAttributes["lang"] = v
     return e
+}
+
+func (e *LabelHTMLElement) IfLANG(cond bool, v string) *LabelHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.LANG(v)
 }
 
 func (e *LabelHTMLElement) RemoveLANG(v string) *LabelHTMLElement {
@@ -502,6 +642,13 @@ func (e *LabelHTMLElement) NONCE(v string) *LabelHTMLElement {
     }
     e.StringAttributes["nonce"] = v
     return e
+}
+
+func (e *LabelHTMLElement) IfNONCE(cond bool, v string) *LabelHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.NONCE(v)
 }
 
 func (e *LabelHTMLElement) RemoveNONCE(v string) *LabelHTMLElement {
@@ -523,6 +670,13 @@ func (e *LabelHTMLElement) POPOVER(v string) *LabelHTMLElement {
     return e
 }
 
+func (e *LabelHTMLElement) IfPOPOVER(cond bool, v string) *LabelHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.POPOVER(v)
+}
+
 func (e *LabelHTMLElement) RemovePOPOVER(v string) *LabelHTMLElement {
     delete(e.StringAttributes, "popover")
     return e
@@ -537,6 +691,13 @@ func (e *LabelHTMLElement) SLOT(v string) *LabelHTMLElement {
     }
     e.StringAttributes["slot"] = v
     return e
+}
+
+func (e *LabelHTMLElement) IfSLOT(cond bool, v string) *LabelHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SLOT(v)
 }
 
 func (e *LabelHTMLElement) RemoveSLOT(v string) *LabelHTMLElement {
@@ -554,6 +715,13 @@ func (e *LabelHTMLElement) SPELLCHECK(v string) *LabelHTMLElement {
     }
     e.StringAttributes["spellcheck"] = v
     return e
+}
+
+func (e *LabelHTMLElement) IfSPELLCHECK(cond bool, v string) *LabelHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SPELLCHECK(v)
 }
 
 func (e *LabelHTMLElement) RemoveSPELLCHECK(v string) *LabelHTMLElement {
@@ -574,6 +742,13 @@ func (e *LabelHTMLElement) STYLE(k,v string) *LabelHTMLElement {
     }
     kv.Add(k,v)
     return e
+}
+
+func (e *LabelHTMLElement) IfSTYLE(cond bool, k string) *LabelHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.STYLE(k, "")
 }
 
 func (e *LabelHTMLElement) RemoveSTYLE(k string) *LabelHTMLElement {
@@ -597,6 +772,13 @@ func (e *LabelHTMLElement) TABINDEX(v string) *LabelHTMLElement {
     return e
 }
 
+func (e *LabelHTMLElement) IfTABINDEX(cond bool, v string) *LabelHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TABINDEX(v)
+}
+
 func (e *LabelHTMLElement) RemoveTABINDEX(v string) *LabelHTMLElement {
     delete(e.StringAttributes, "tabindex")
     return e
@@ -611,6 +793,13 @@ func (e *LabelHTMLElement) TITLE(v string) *LabelHTMLElement {
     }
     e.StringAttributes["title"] = v
     return e
+}
+
+func (e *LabelHTMLElement) IfTITLE(cond bool, v string) *LabelHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TITLE(v)
 }
 
 func (e *LabelHTMLElement) RemoveTITLE(v string) *LabelHTMLElement {
@@ -628,6 +817,13 @@ func (e *LabelHTMLElement) TRANSLATE(v string) *LabelHTMLElement {
     }
     e.StringAttributes["translate"] = v
     return e
+}
+
+func (e *LabelHTMLElement) IfTRANSLATE(cond bool, v string) *LabelHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TRANSLATE(v)
 }
 
 func (e *LabelHTMLElement) RemoveTRANSLATE(v string) *LabelHTMLElement {

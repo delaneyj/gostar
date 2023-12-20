@@ -48,13 +48,13 @@ func (e *CiteHTMLElement) TextF(format string, args ...any) *CiteHTMLElement {
     return e.Text(fmt.Sprintf(format, args...))
 }
 
-func (e *CiteHTMLElement) Raw(text string) *CiteHTMLElement {
-    e.Descendants = append(e.Descendants, Raw(text))
+func (e *CiteHTMLElement) Escaped(text string) *CiteHTMLElement {
+    e.Descendants = append(e.Descendants, Escaped(text))
     return e
 }
 
-func (e *CiteHTMLElement) RawF(format string, args ...any) *CiteHTMLElement {
-    return e.Raw(fmt.Sprintf(format, args...))
+func (e *CiteHTMLElement) EscapedF(format string, args ...any) *CiteHTMLElement {
+    return e.Escaped(fmt.Sprintf(format, args...))
 }
 
 func (e *CiteHTMLElement) CustomData(key, value string) *CiteHTMLElement {
@@ -87,6 +87,13 @@ func (e *CiteHTMLElement) ACCESSKEY(v string) *CiteHTMLElement {
     return e
 }
 
+func (e *CiteHTMLElement) IfACCESSKEY(cond bool, v string) *CiteHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ACCESSKEY(v)
+}
+
 func (e *CiteHTMLElement) RemoveACCESSKEY(v string) *CiteHTMLElement {
     delete(e.StringAttributes, "accesskey")
     return e
@@ -114,6 +121,13 @@ func (e *CiteHTMLElement) AUTOCAPITALIZE(v string) *CiteHTMLElement {
     return e
 }
 
+func (e *CiteHTMLElement) IfAUTOCAPITALIZE(cond bool, v string) *CiteHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.AUTOCAPITALIZE(v)
+}
+
 func (e *CiteHTMLElement) RemoveAUTOCAPITALIZE(v string) *CiteHTMLElement {
     delete(e.StringAttributes, "autocapitalize")
     return e
@@ -128,6 +142,13 @@ func (e *CiteHTMLElement) AUTOFOCUS() *CiteHTMLElement {
     }
     e.BoolAttributes["autofocus"] = struct{}{}
     return e
+}
+
+func (e *CiteHTMLElement) IfAUTOFOCUS(cond bool) *CiteHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.AUTOFOCUS()
 }
 
 func (e *CiteHTMLElement) RemoveAUTOFOCUS() *CiteHTMLElement {
@@ -161,6 +182,13 @@ func(e *CiteHTMLElement) CLASS(v string) *CiteHTMLElement {
     return e
 }
 
+func (e *CiteHTMLElement) IfCLASS(cond bool, v string) *CiteHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.CLASS(v)
+}
+
 func (e *CiteHTMLElement) SetCLASS(v string) *CiteHTMLElement {
     kv := NewSpaceDelimitedString()
     e.DelimitedStringAttributes["class"] = kv
@@ -190,6 +218,13 @@ func (e *CiteHTMLElement) CONTENTEDITABLE(v string) *CiteHTMLElement {
     return e
 }
 
+func (e *CiteHTMLElement) IfCONTENTEDITABLE(cond bool, v string) *CiteHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.CONTENTEDITABLE(v)
+}
+
 func (e *CiteHTMLElement) RemoveCONTENTEDITABLE(v string) *CiteHTMLElement {
     delete(e.StringAttributes, "contenteditable")
     return e
@@ -209,6 +244,13 @@ func (e *CiteHTMLElement) DIR(v string) *CiteHTMLElement {
     return e
 }
 
+func (e *CiteHTMLElement) IfDIR(cond bool, v string) *CiteHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.DIR(v)
+}
+
 func (e *CiteHTMLElement) RemoveDIR(v string) *CiteHTMLElement {
     delete(e.StringAttributes, "dir")
     return e
@@ -224,6 +266,13 @@ func (e *CiteHTMLElement) DRAGGABLE(v string) *CiteHTMLElement {
     }
     e.StringAttributes["draggable"] = v
     return e
+}
+
+func (e *CiteHTMLElement) IfDRAGGABLE(cond bool, v string) *CiteHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.DRAGGABLE(v)
 }
 
 func (e *CiteHTMLElement) RemoveDRAGGABLE(v string) *CiteHTMLElement {
@@ -255,6 +304,13 @@ func (e *CiteHTMLElement) ENTERKEYHINT(v string) *CiteHTMLElement {
     return e
 }
 
+func (e *CiteHTMLElement) IfENTERKEYHINT(cond bool, v string) *CiteHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ENTERKEYHINT(v)
+}
+
 func (e *CiteHTMLElement) RemoveENTERKEYHINT(v string) *CiteHTMLElement {
     delete(e.StringAttributes, "enterkeyhint")
     return e
@@ -274,6 +330,13 @@ func (e *CiteHTMLElement) HIDDEN(v string) *CiteHTMLElement {
     return e
 }
 
+func (e *CiteHTMLElement) IfHIDDEN(cond bool, v string) *CiteHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.HIDDEN(v)
+}
+
 func (e *CiteHTMLElement) RemoveHIDDEN(v string) *CiteHTMLElement {
     delete(e.StringAttributes, "hidden")
     return e
@@ -290,6 +353,13 @@ func (e *CiteHTMLElement) ID(v string) *CiteHTMLElement {
     return e
 }
 
+func (e *CiteHTMLElement) IfID(cond bool, v string) *CiteHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ID(v)
+}
+
 func (e *CiteHTMLElement) RemoveID(v string) *CiteHTMLElement {
     delete(e.StringAttributes, "id")
     return e
@@ -304,6 +374,13 @@ func (e *CiteHTMLElement) INERT() *CiteHTMLElement {
     }
     e.BoolAttributes["inert"] = struct{}{}
     return e
+}
+
+func (e *CiteHTMLElement) IfINERT(cond bool) *CiteHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.INERT()
 }
 
 func (e *CiteHTMLElement) RemoveINERT() *CiteHTMLElement {
@@ -347,6 +424,13 @@ func (e *CiteHTMLElement) INPUTMODE(v string) *CiteHTMLElement {
     return e
 }
 
+func (e *CiteHTMLElement) IfINPUTMODE(cond bool, v string) *CiteHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.INPUTMODE(v)
+}
+
 func (e *CiteHTMLElement) RemoveINPUTMODE(v string) *CiteHTMLElement {
     delete(e.StringAttributes, "inputmode")
     return e
@@ -364,6 +448,13 @@ func (e *CiteHTMLElement) IS(v string) *CiteHTMLElement {
     return e
 }
 
+func (e *CiteHTMLElement) IfIS(cond bool, v string) *CiteHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.IS(v)
+}
+
 func (e *CiteHTMLElement) RemoveIS(v string) *CiteHTMLElement {
     delete(e.StringAttributes, "is")
     return e
@@ -378,6 +469,13 @@ func (e *CiteHTMLElement) ITEMID(v string) *CiteHTMLElement {
     }
     e.StringAttributes["itemid"] = v
     return e
+}
+
+func (e *CiteHTMLElement) IfITEMID(cond bool, v string) *CiteHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMID(v)
 }
 
 func (e *CiteHTMLElement) RemoveITEMID(v string) *CiteHTMLElement {
@@ -398,6 +496,13 @@ func (e *CiteHTMLElement) ITEMPROP(v string) *CiteHTMLElement {
     return e
 }
 
+func (e *CiteHTMLElement) IfITEMPROP(cond bool, v string) *CiteHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMPROP(v)
+}
+
 func (e *CiteHTMLElement) RemoveITEMPROP(v string) *CiteHTMLElement {
     delete(e.StringAttributes, "itemprop")
     return e
@@ -414,6 +519,13 @@ func (e *CiteHTMLElement) ITEMREF(v string) *CiteHTMLElement {
     return e
 }
 
+func (e *CiteHTMLElement) IfITEMREF(cond bool, v string) *CiteHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMREF(v)
+}
+
 func (e *CiteHTMLElement) RemoveITEMREF(v string) *CiteHTMLElement {
     delete(e.StringAttributes, "itemref")
     return e
@@ -428,6 +540,13 @@ func (e *CiteHTMLElement) ITEMSCOPE() *CiteHTMLElement {
     }
     e.BoolAttributes["itemscope"] = struct{}{}
     return e
+}
+
+func (e *CiteHTMLElement) IfITEMSCOPE(cond bool) *CiteHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMSCOPE()
 }
 
 func (e *CiteHTMLElement) RemoveITEMSCOPE() *CiteHTMLElement {
@@ -457,6 +576,13 @@ func (e *CiteHTMLElement) ITEMTYPE(v string) *CiteHTMLElement {
     return e
 }
 
+func (e *CiteHTMLElement) IfITEMTYPE(cond bool, v string) *CiteHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMTYPE(v)
+}
+
 func (e *CiteHTMLElement) RemoveITEMTYPE(v string) *CiteHTMLElement {
     delete(e.StringAttributes, "itemtype")
     return e
@@ -470,6 +596,13 @@ func (e *CiteHTMLElement) LANG(v string) *CiteHTMLElement {
     }
     e.StringAttributes["lang"] = v
     return e
+}
+
+func (e *CiteHTMLElement) IfLANG(cond bool, v string) *CiteHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.LANG(v)
 }
 
 func (e *CiteHTMLElement) RemoveLANG(v string) *CiteHTMLElement {
@@ -486,6 +619,13 @@ func (e *CiteHTMLElement) NONCE(v string) *CiteHTMLElement {
     }
     e.StringAttributes["nonce"] = v
     return e
+}
+
+func (e *CiteHTMLElement) IfNONCE(cond bool, v string) *CiteHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.NONCE(v)
 }
 
 func (e *CiteHTMLElement) RemoveNONCE(v string) *CiteHTMLElement {
@@ -507,6 +647,13 @@ func (e *CiteHTMLElement) POPOVER(v string) *CiteHTMLElement {
     return e
 }
 
+func (e *CiteHTMLElement) IfPOPOVER(cond bool, v string) *CiteHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.POPOVER(v)
+}
+
 func (e *CiteHTMLElement) RemovePOPOVER(v string) *CiteHTMLElement {
     delete(e.StringAttributes, "popover")
     return e
@@ -521,6 +668,13 @@ func (e *CiteHTMLElement) SLOT(v string) *CiteHTMLElement {
     }
     e.StringAttributes["slot"] = v
     return e
+}
+
+func (e *CiteHTMLElement) IfSLOT(cond bool, v string) *CiteHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SLOT(v)
 }
 
 func (e *CiteHTMLElement) RemoveSLOT(v string) *CiteHTMLElement {
@@ -538,6 +692,13 @@ func (e *CiteHTMLElement) SPELLCHECK(v string) *CiteHTMLElement {
     }
     e.StringAttributes["spellcheck"] = v
     return e
+}
+
+func (e *CiteHTMLElement) IfSPELLCHECK(cond bool, v string) *CiteHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SPELLCHECK(v)
 }
 
 func (e *CiteHTMLElement) RemoveSPELLCHECK(v string) *CiteHTMLElement {
@@ -558,6 +719,13 @@ func (e *CiteHTMLElement) STYLE(k,v string) *CiteHTMLElement {
     }
     kv.Add(k,v)
     return e
+}
+
+func (e *CiteHTMLElement) IfSTYLE(cond bool, k string) *CiteHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.STYLE(k, "")
 }
 
 func (e *CiteHTMLElement) RemoveSTYLE(k string) *CiteHTMLElement {
@@ -581,6 +749,13 @@ func (e *CiteHTMLElement) TABINDEX(v string) *CiteHTMLElement {
     return e
 }
 
+func (e *CiteHTMLElement) IfTABINDEX(cond bool, v string) *CiteHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TABINDEX(v)
+}
+
 func (e *CiteHTMLElement) RemoveTABINDEX(v string) *CiteHTMLElement {
     delete(e.StringAttributes, "tabindex")
     return e
@@ -595,6 +770,13 @@ func (e *CiteHTMLElement) TITLE(v string) *CiteHTMLElement {
     }
     e.StringAttributes["title"] = v
     return e
+}
+
+func (e *CiteHTMLElement) IfTITLE(cond bool, v string) *CiteHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TITLE(v)
 }
 
 func (e *CiteHTMLElement) RemoveTITLE(v string) *CiteHTMLElement {
@@ -612,6 +794,13 @@ func (e *CiteHTMLElement) TRANSLATE(v string) *CiteHTMLElement {
     }
     e.StringAttributes["translate"] = v
     return e
+}
+
+func (e *CiteHTMLElement) IfTRANSLATE(cond bool, v string) *CiteHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TRANSLATE(v)
 }
 
 func (e *CiteHTMLElement) RemoveTRANSLATE(v string) *CiteHTMLElement {

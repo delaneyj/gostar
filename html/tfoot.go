@@ -48,13 +48,13 @@ func (e *TfootHTMLElement) TextF(format string, args ...any) *TfootHTMLElement {
     return e.Text(fmt.Sprintf(format, args...))
 }
 
-func (e *TfootHTMLElement) Raw(text string) *TfootHTMLElement {
-    e.Descendants = append(e.Descendants, Raw(text))
+func (e *TfootHTMLElement) Escaped(text string) *TfootHTMLElement {
+    e.Descendants = append(e.Descendants, Escaped(text))
     return e
 }
 
-func (e *TfootHTMLElement) RawF(format string, args ...any) *TfootHTMLElement {
-    return e.Raw(fmt.Sprintf(format, args...))
+func (e *TfootHTMLElement) EscapedF(format string, args ...any) *TfootHTMLElement {
+    return e.Escaped(fmt.Sprintf(format, args...))
 }
 
 func (e *TfootHTMLElement) CustomData(key, value string) *TfootHTMLElement {
@@ -87,6 +87,13 @@ func (e *TfootHTMLElement) ACCESSKEY(v string) *TfootHTMLElement {
     return e
 }
 
+func (e *TfootHTMLElement) IfACCESSKEY(cond bool, v string) *TfootHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ACCESSKEY(v)
+}
+
 func (e *TfootHTMLElement) RemoveACCESSKEY(v string) *TfootHTMLElement {
     delete(e.StringAttributes, "accesskey")
     return e
@@ -114,6 +121,13 @@ func (e *TfootHTMLElement) AUTOCAPITALIZE(v string) *TfootHTMLElement {
     return e
 }
 
+func (e *TfootHTMLElement) IfAUTOCAPITALIZE(cond bool, v string) *TfootHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.AUTOCAPITALIZE(v)
+}
+
 func (e *TfootHTMLElement) RemoveAUTOCAPITALIZE(v string) *TfootHTMLElement {
     delete(e.StringAttributes, "autocapitalize")
     return e
@@ -128,6 +142,13 @@ func (e *TfootHTMLElement) AUTOFOCUS() *TfootHTMLElement {
     }
     e.BoolAttributes["autofocus"] = struct{}{}
     return e
+}
+
+func (e *TfootHTMLElement) IfAUTOFOCUS(cond bool) *TfootHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.AUTOFOCUS()
 }
 
 func (e *TfootHTMLElement) RemoveAUTOFOCUS() *TfootHTMLElement {
@@ -161,6 +182,13 @@ func(e *TfootHTMLElement) CLASS(v string) *TfootHTMLElement {
     return e
 }
 
+func (e *TfootHTMLElement) IfCLASS(cond bool, v string) *TfootHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.CLASS(v)
+}
+
 func (e *TfootHTMLElement) SetCLASS(v string) *TfootHTMLElement {
     kv := NewSpaceDelimitedString()
     e.DelimitedStringAttributes["class"] = kv
@@ -190,6 +218,13 @@ func (e *TfootHTMLElement) CONTENTEDITABLE(v string) *TfootHTMLElement {
     return e
 }
 
+func (e *TfootHTMLElement) IfCONTENTEDITABLE(cond bool, v string) *TfootHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.CONTENTEDITABLE(v)
+}
+
 func (e *TfootHTMLElement) RemoveCONTENTEDITABLE(v string) *TfootHTMLElement {
     delete(e.StringAttributes, "contenteditable")
     return e
@@ -209,6 +244,13 @@ func (e *TfootHTMLElement) DIR(v string) *TfootHTMLElement {
     return e
 }
 
+func (e *TfootHTMLElement) IfDIR(cond bool, v string) *TfootHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.DIR(v)
+}
+
 func (e *TfootHTMLElement) RemoveDIR(v string) *TfootHTMLElement {
     delete(e.StringAttributes, "dir")
     return e
@@ -224,6 +266,13 @@ func (e *TfootHTMLElement) DRAGGABLE(v string) *TfootHTMLElement {
     }
     e.StringAttributes["draggable"] = v
     return e
+}
+
+func (e *TfootHTMLElement) IfDRAGGABLE(cond bool, v string) *TfootHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.DRAGGABLE(v)
 }
 
 func (e *TfootHTMLElement) RemoveDRAGGABLE(v string) *TfootHTMLElement {
@@ -255,6 +304,13 @@ func (e *TfootHTMLElement) ENTERKEYHINT(v string) *TfootHTMLElement {
     return e
 }
 
+func (e *TfootHTMLElement) IfENTERKEYHINT(cond bool, v string) *TfootHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ENTERKEYHINT(v)
+}
+
 func (e *TfootHTMLElement) RemoveENTERKEYHINT(v string) *TfootHTMLElement {
     delete(e.StringAttributes, "enterkeyhint")
     return e
@@ -274,6 +330,13 @@ func (e *TfootHTMLElement) HIDDEN(v string) *TfootHTMLElement {
     return e
 }
 
+func (e *TfootHTMLElement) IfHIDDEN(cond bool, v string) *TfootHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.HIDDEN(v)
+}
+
 func (e *TfootHTMLElement) RemoveHIDDEN(v string) *TfootHTMLElement {
     delete(e.StringAttributes, "hidden")
     return e
@@ -290,6 +353,13 @@ func (e *TfootHTMLElement) ID(v string) *TfootHTMLElement {
     return e
 }
 
+func (e *TfootHTMLElement) IfID(cond bool, v string) *TfootHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ID(v)
+}
+
 func (e *TfootHTMLElement) RemoveID(v string) *TfootHTMLElement {
     delete(e.StringAttributes, "id")
     return e
@@ -304,6 +374,13 @@ func (e *TfootHTMLElement) INERT() *TfootHTMLElement {
     }
     e.BoolAttributes["inert"] = struct{}{}
     return e
+}
+
+func (e *TfootHTMLElement) IfINERT(cond bool) *TfootHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.INERT()
 }
 
 func (e *TfootHTMLElement) RemoveINERT() *TfootHTMLElement {
@@ -347,6 +424,13 @@ func (e *TfootHTMLElement) INPUTMODE(v string) *TfootHTMLElement {
     return e
 }
 
+func (e *TfootHTMLElement) IfINPUTMODE(cond bool, v string) *TfootHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.INPUTMODE(v)
+}
+
 func (e *TfootHTMLElement) RemoveINPUTMODE(v string) *TfootHTMLElement {
     delete(e.StringAttributes, "inputmode")
     return e
@@ -364,6 +448,13 @@ func (e *TfootHTMLElement) IS(v string) *TfootHTMLElement {
     return e
 }
 
+func (e *TfootHTMLElement) IfIS(cond bool, v string) *TfootHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.IS(v)
+}
+
 func (e *TfootHTMLElement) RemoveIS(v string) *TfootHTMLElement {
     delete(e.StringAttributes, "is")
     return e
@@ -378,6 +469,13 @@ func (e *TfootHTMLElement) ITEMID(v string) *TfootHTMLElement {
     }
     e.StringAttributes["itemid"] = v
     return e
+}
+
+func (e *TfootHTMLElement) IfITEMID(cond bool, v string) *TfootHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMID(v)
 }
 
 func (e *TfootHTMLElement) RemoveITEMID(v string) *TfootHTMLElement {
@@ -398,6 +496,13 @@ func (e *TfootHTMLElement) ITEMPROP(v string) *TfootHTMLElement {
     return e
 }
 
+func (e *TfootHTMLElement) IfITEMPROP(cond bool, v string) *TfootHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMPROP(v)
+}
+
 func (e *TfootHTMLElement) RemoveITEMPROP(v string) *TfootHTMLElement {
     delete(e.StringAttributes, "itemprop")
     return e
@@ -414,6 +519,13 @@ func (e *TfootHTMLElement) ITEMREF(v string) *TfootHTMLElement {
     return e
 }
 
+func (e *TfootHTMLElement) IfITEMREF(cond bool, v string) *TfootHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMREF(v)
+}
+
 func (e *TfootHTMLElement) RemoveITEMREF(v string) *TfootHTMLElement {
     delete(e.StringAttributes, "itemref")
     return e
@@ -428,6 +540,13 @@ func (e *TfootHTMLElement) ITEMSCOPE() *TfootHTMLElement {
     }
     e.BoolAttributes["itemscope"] = struct{}{}
     return e
+}
+
+func (e *TfootHTMLElement) IfITEMSCOPE(cond bool) *TfootHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMSCOPE()
 }
 
 func (e *TfootHTMLElement) RemoveITEMSCOPE() *TfootHTMLElement {
@@ -457,6 +576,13 @@ func (e *TfootHTMLElement) ITEMTYPE(v string) *TfootHTMLElement {
     return e
 }
 
+func (e *TfootHTMLElement) IfITEMTYPE(cond bool, v string) *TfootHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMTYPE(v)
+}
+
 func (e *TfootHTMLElement) RemoveITEMTYPE(v string) *TfootHTMLElement {
     delete(e.StringAttributes, "itemtype")
     return e
@@ -470,6 +596,13 @@ func (e *TfootHTMLElement) LANG(v string) *TfootHTMLElement {
     }
     e.StringAttributes["lang"] = v
     return e
+}
+
+func (e *TfootHTMLElement) IfLANG(cond bool, v string) *TfootHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.LANG(v)
 }
 
 func (e *TfootHTMLElement) RemoveLANG(v string) *TfootHTMLElement {
@@ -486,6 +619,13 @@ func (e *TfootHTMLElement) NONCE(v string) *TfootHTMLElement {
     }
     e.StringAttributes["nonce"] = v
     return e
+}
+
+func (e *TfootHTMLElement) IfNONCE(cond bool, v string) *TfootHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.NONCE(v)
 }
 
 func (e *TfootHTMLElement) RemoveNONCE(v string) *TfootHTMLElement {
@@ -507,6 +647,13 @@ func (e *TfootHTMLElement) POPOVER(v string) *TfootHTMLElement {
     return e
 }
 
+func (e *TfootHTMLElement) IfPOPOVER(cond bool, v string) *TfootHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.POPOVER(v)
+}
+
 func (e *TfootHTMLElement) RemovePOPOVER(v string) *TfootHTMLElement {
     delete(e.StringAttributes, "popover")
     return e
@@ -521,6 +668,13 @@ func (e *TfootHTMLElement) SLOT(v string) *TfootHTMLElement {
     }
     e.StringAttributes["slot"] = v
     return e
+}
+
+func (e *TfootHTMLElement) IfSLOT(cond bool, v string) *TfootHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SLOT(v)
 }
 
 func (e *TfootHTMLElement) RemoveSLOT(v string) *TfootHTMLElement {
@@ -538,6 +692,13 @@ func (e *TfootHTMLElement) SPELLCHECK(v string) *TfootHTMLElement {
     }
     e.StringAttributes["spellcheck"] = v
     return e
+}
+
+func (e *TfootHTMLElement) IfSPELLCHECK(cond bool, v string) *TfootHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SPELLCHECK(v)
 }
 
 func (e *TfootHTMLElement) RemoveSPELLCHECK(v string) *TfootHTMLElement {
@@ -558,6 +719,13 @@ func (e *TfootHTMLElement) STYLE(k,v string) *TfootHTMLElement {
     }
     kv.Add(k,v)
     return e
+}
+
+func (e *TfootHTMLElement) IfSTYLE(cond bool, k string) *TfootHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.STYLE(k, "")
 }
 
 func (e *TfootHTMLElement) RemoveSTYLE(k string) *TfootHTMLElement {
@@ -581,6 +749,13 @@ func (e *TfootHTMLElement) TABINDEX(v string) *TfootHTMLElement {
     return e
 }
 
+func (e *TfootHTMLElement) IfTABINDEX(cond bool, v string) *TfootHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TABINDEX(v)
+}
+
 func (e *TfootHTMLElement) RemoveTABINDEX(v string) *TfootHTMLElement {
     delete(e.StringAttributes, "tabindex")
     return e
@@ -595,6 +770,13 @@ func (e *TfootHTMLElement) TITLE(v string) *TfootHTMLElement {
     }
     e.StringAttributes["title"] = v
     return e
+}
+
+func (e *TfootHTMLElement) IfTITLE(cond bool, v string) *TfootHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TITLE(v)
 }
 
 func (e *TfootHTMLElement) RemoveTITLE(v string) *TfootHTMLElement {
@@ -612,6 +794,13 @@ func (e *TfootHTMLElement) TRANSLATE(v string) *TfootHTMLElement {
     }
     e.StringAttributes["translate"] = v
     return e
+}
+
+func (e *TfootHTMLElement) IfTRANSLATE(cond bool, v string) *TfootHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TRANSLATE(v)
 }
 
 func (e *TfootHTMLElement) RemoveTRANSLATE(v string) *TfootHTMLElement {

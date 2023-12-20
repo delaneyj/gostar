@@ -48,13 +48,13 @@ func (e *AbbrHTMLElement) TextF(format string, args ...any) *AbbrHTMLElement {
     return e.Text(fmt.Sprintf(format, args...))
 }
 
-func (e *AbbrHTMLElement) Raw(text string) *AbbrHTMLElement {
-    e.Descendants = append(e.Descendants, Raw(text))
+func (e *AbbrHTMLElement) Escaped(text string) *AbbrHTMLElement {
+    e.Descendants = append(e.Descendants, Escaped(text))
     return e
 }
 
-func (e *AbbrHTMLElement) RawF(format string, args ...any) *AbbrHTMLElement {
-    return e.Raw(fmt.Sprintf(format, args...))
+func (e *AbbrHTMLElement) EscapedF(format string, args ...any) *AbbrHTMLElement {
+    return e.Escaped(fmt.Sprintf(format, args...))
 }
 
 func (e *AbbrHTMLElement) CustomData(key, value string) *AbbrHTMLElement {
@@ -87,6 +87,13 @@ func (e *AbbrHTMLElement) ACCESSKEY(v string) *AbbrHTMLElement {
     return e
 }
 
+func (e *AbbrHTMLElement) IfACCESSKEY(cond bool, v string) *AbbrHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ACCESSKEY(v)
+}
+
 func (e *AbbrHTMLElement) RemoveACCESSKEY(v string) *AbbrHTMLElement {
     delete(e.StringAttributes, "accesskey")
     return e
@@ -114,6 +121,13 @@ func (e *AbbrHTMLElement) AUTOCAPITALIZE(v string) *AbbrHTMLElement {
     return e
 }
 
+func (e *AbbrHTMLElement) IfAUTOCAPITALIZE(cond bool, v string) *AbbrHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.AUTOCAPITALIZE(v)
+}
+
 func (e *AbbrHTMLElement) RemoveAUTOCAPITALIZE(v string) *AbbrHTMLElement {
     delete(e.StringAttributes, "autocapitalize")
     return e
@@ -128,6 +142,13 @@ func (e *AbbrHTMLElement) AUTOFOCUS() *AbbrHTMLElement {
     }
     e.BoolAttributes["autofocus"] = struct{}{}
     return e
+}
+
+func (e *AbbrHTMLElement) IfAUTOFOCUS(cond bool) *AbbrHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.AUTOFOCUS()
 }
 
 func (e *AbbrHTMLElement) RemoveAUTOFOCUS() *AbbrHTMLElement {
@@ -161,6 +182,13 @@ func(e *AbbrHTMLElement) CLASS(v string) *AbbrHTMLElement {
     return e
 }
 
+func (e *AbbrHTMLElement) IfCLASS(cond bool, v string) *AbbrHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.CLASS(v)
+}
+
 func (e *AbbrHTMLElement) SetCLASS(v string) *AbbrHTMLElement {
     kv := NewSpaceDelimitedString()
     e.DelimitedStringAttributes["class"] = kv
@@ -190,6 +218,13 @@ func (e *AbbrHTMLElement) CONTENTEDITABLE(v string) *AbbrHTMLElement {
     return e
 }
 
+func (e *AbbrHTMLElement) IfCONTENTEDITABLE(cond bool, v string) *AbbrHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.CONTENTEDITABLE(v)
+}
+
 func (e *AbbrHTMLElement) RemoveCONTENTEDITABLE(v string) *AbbrHTMLElement {
     delete(e.StringAttributes, "contenteditable")
     return e
@@ -209,6 +244,13 @@ func (e *AbbrHTMLElement) DIR(v string) *AbbrHTMLElement {
     return e
 }
 
+func (e *AbbrHTMLElement) IfDIR(cond bool, v string) *AbbrHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.DIR(v)
+}
+
 func (e *AbbrHTMLElement) RemoveDIR(v string) *AbbrHTMLElement {
     delete(e.StringAttributes, "dir")
     return e
@@ -224,6 +266,13 @@ func (e *AbbrHTMLElement) DRAGGABLE(v string) *AbbrHTMLElement {
     }
     e.StringAttributes["draggable"] = v
     return e
+}
+
+func (e *AbbrHTMLElement) IfDRAGGABLE(cond bool, v string) *AbbrHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.DRAGGABLE(v)
 }
 
 func (e *AbbrHTMLElement) RemoveDRAGGABLE(v string) *AbbrHTMLElement {
@@ -255,6 +304,13 @@ func (e *AbbrHTMLElement) ENTERKEYHINT(v string) *AbbrHTMLElement {
     return e
 }
 
+func (e *AbbrHTMLElement) IfENTERKEYHINT(cond bool, v string) *AbbrHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ENTERKEYHINT(v)
+}
+
 func (e *AbbrHTMLElement) RemoveENTERKEYHINT(v string) *AbbrHTMLElement {
     delete(e.StringAttributes, "enterkeyhint")
     return e
@@ -274,6 +330,13 @@ func (e *AbbrHTMLElement) HIDDEN(v string) *AbbrHTMLElement {
     return e
 }
 
+func (e *AbbrHTMLElement) IfHIDDEN(cond bool, v string) *AbbrHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.HIDDEN(v)
+}
+
 func (e *AbbrHTMLElement) RemoveHIDDEN(v string) *AbbrHTMLElement {
     delete(e.StringAttributes, "hidden")
     return e
@@ -290,6 +353,13 @@ func (e *AbbrHTMLElement) ID(v string) *AbbrHTMLElement {
     return e
 }
 
+func (e *AbbrHTMLElement) IfID(cond bool, v string) *AbbrHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ID(v)
+}
+
 func (e *AbbrHTMLElement) RemoveID(v string) *AbbrHTMLElement {
     delete(e.StringAttributes, "id")
     return e
@@ -304,6 +374,13 @@ func (e *AbbrHTMLElement) INERT() *AbbrHTMLElement {
     }
     e.BoolAttributes["inert"] = struct{}{}
     return e
+}
+
+func (e *AbbrHTMLElement) IfINERT(cond bool) *AbbrHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.INERT()
 }
 
 func (e *AbbrHTMLElement) RemoveINERT() *AbbrHTMLElement {
@@ -347,6 +424,13 @@ func (e *AbbrHTMLElement) INPUTMODE(v string) *AbbrHTMLElement {
     return e
 }
 
+func (e *AbbrHTMLElement) IfINPUTMODE(cond bool, v string) *AbbrHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.INPUTMODE(v)
+}
+
 func (e *AbbrHTMLElement) RemoveINPUTMODE(v string) *AbbrHTMLElement {
     delete(e.StringAttributes, "inputmode")
     return e
@@ -364,6 +448,13 @@ func (e *AbbrHTMLElement) IS(v string) *AbbrHTMLElement {
     return e
 }
 
+func (e *AbbrHTMLElement) IfIS(cond bool, v string) *AbbrHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.IS(v)
+}
+
 func (e *AbbrHTMLElement) RemoveIS(v string) *AbbrHTMLElement {
     delete(e.StringAttributes, "is")
     return e
@@ -378,6 +469,13 @@ func (e *AbbrHTMLElement) ITEMID(v string) *AbbrHTMLElement {
     }
     e.StringAttributes["itemid"] = v
     return e
+}
+
+func (e *AbbrHTMLElement) IfITEMID(cond bool, v string) *AbbrHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMID(v)
 }
 
 func (e *AbbrHTMLElement) RemoveITEMID(v string) *AbbrHTMLElement {
@@ -398,6 +496,13 @@ func (e *AbbrHTMLElement) ITEMPROP(v string) *AbbrHTMLElement {
     return e
 }
 
+func (e *AbbrHTMLElement) IfITEMPROP(cond bool, v string) *AbbrHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMPROP(v)
+}
+
 func (e *AbbrHTMLElement) RemoveITEMPROP(v string) *AbbrHTMLElement {
     delete(e.StringAttributes, "itemprop")
     return e
@@ -414,6 +519,13 @@ func (e *AbbrHTMLElement) ITEMREF(v string) *AbbrHTMLElement {
     return e
 }
 
+func (e *AbbrHTMLElement) IfITEMREF(cond bool, v string) *AbbrHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMREF(v)
+}
+
 func (e *AbbrHTMLElement) RemoveITEMREF(v string) *AbbrHTMLElement {
     delete(e.StringAttributes, "itemref")
     return e
@@ -428,6 +540,13 @@ func (e *AbbrHTMLElement) ITEMSCOPE() *AbbrHTMLElement {
     }
     e.BoolAttributes["itemscope"] = struct{}{}
     return e
+}
+
+func (e *AbbrHTMLElement) IfITEMSCOPE(cond bool) *AbbrHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMSCOPE()
 }
 
 func (e *AbbrHTMLElement) RemoveITEMSCOPE() *AbbrHTMLElement {
@@ -457,6 +576,13 @@ func (e *AbbrHTMLElement) ITEMTYPE(v string) *AbbrHTMLElement {
     return e
 }
 
+func (e *AbbrHTMLElement) IfITEMTYPE(cond bool, v string) *AbbrHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMTYPE(v)
+}
+
 func (e *AbbrHTMLElement) RemoveITEMTYPE(v string) *AbbrHTMLElement {
     delete(e.StringAttributes, "itemtype")
     return e
@@ -470,6 +596,13 @@ func (e *AbbrHTMLElement) LANG(v string) *AbbrHTMLElement {
     }
     e.StringAttributes["lang"] = v
     return e
+}
+
+func (e *AbbrHTMLElement) IfLANG(cond bool, v string) *AbbrHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.LANG(v)
 }
 
 func (e *AbbrHTMLElement) RemoveLANG(v string) *AbbrHTMLElement {
@@ -486,6 +619,13 @@ func (e *AbbrHTMLElement) NONCE(v string) *AbbrHTMLElement {
     }
     e.StringAttributes["nonce"] = v
     return e
+}
+
+func (e *AbbrHTMLElement) IfNONCE(cond bool, v string) *AbbrHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.NONCE(v)
 }
 
 func (e *AbbrHTMLElement) RemoveNONCE(v string) *AbbrHTMLElement {
@@ -507,6 +647,13 @@ func (e *AbbrHTMLElement) POPOVER(v string) *AbbrHTMLElement {
     return e
 }
 
+func (e *AbbrHTMLElement) IfPOPOVER(cond bool, v string) *AbbrHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.POPOVER(v)
+}
+
 func (e *AbbrHTMLElement) RemovePOPOVER(v string) *AbbrHTMLElement {
     delete(e.StringAttributes, "popover")
     return e
@@ -521,6 +668,13 @@ func (e *AbbrHTMLElement) SLOT(v string) *AbbrHTMLElement {
     }
     e.StringAttributes["slot"] = v
     return e
+}
+
+func (e *AbbrHTMLElement) IfSLOT(cond bool, v string) *AbbrHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SLOT(v)
 }
 
 func (e *AbbrHTMLElement) RemoveSLOT(v string) *AbbrHTMLElement {
@@ -538,6 +692,13 @@ func (e *AbbrHTMLElement) SPELLCHECK(v string) *AbbrHTMLElement {
     }
     e.StringAttributes["spellcheck"] = v
     return e
+}
+
+func (e *AbbrHTMLElement) IfSPELLCHECK(cond bool, v string) *AbbrHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SPELLCHECK(v)
 }
 
 func (e *AbbrHTMLElement) RemoveSPELLCHECK(v string) *AbbrHTMLElement {
@@ -558,6 +719,13 @@ func (e *AbbrHTMLElement) STYLE(k,v string) *AbbrHTMLElement {
     }
     kv.Add(k,v)
     return e
+}
+
+func (e *AbbrHTMLElement) IfSTYLE(cond bool, k string) *AbbrHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.STYLE(k, "")
 }
 
 func (e *AbbrHTMLElement) RemoveSTYLE(k string) *AbbrHTMLElement {
@@ -581,6 +749,13 @@ func (e *AbbrHTMLElement) TABINDEX(v string) *AbbrHTMLElement {
     return e
 }
 
+func (e *AbbrHTMLElement) IfTABINDEX(cond bool, v string) *AbbrHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TABINDEX(v)
+}
+
 func (e *AbbrHTMLElement) RemoveTABINDEX(v string) *AbbrHTMLElement {
     delete(e.StringAttributes, "tabindex")
     return e
@@ -595,6 +770,13 @@ func (e *AbbrHTMLElement) TITLE(v string) *AbbrHTMLElement {
     }
     e.StringAttributes["title"] = v
     return e
+}
+
+func (e *AbbrHTMLElement) IfTITLE(cond bool, v string) *AbbrHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TITLE(v)
 }
 
 func (e *AbbrHTMLElement) RemoveTITLE(v string) *AbbrHTMLElement {
@@ -612,6 +794,13 @@ func (e *AbbrHTMLElement) TRANSLATE(v string) *AbbrHTMLElement {
     }
     e.StringAttributes["translate"] = v
     return e
+}
+
+func (e *AbbrHTMLElement) IfTRANSLATE(cond bool, v string) *AbbrHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TRANSLATE(v)
 }
 
 func (e *AbbrHTMLElement) RemoveTRANSLATE(v string) *AbbrHTMLElement {

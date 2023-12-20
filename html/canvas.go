@@ -48,13 +48,13 @@ func (e *CanvasHTMLElement) TextF(format string, args ...any) *CanvasHTMLElement
     return e.Text(fmt.Sprintf(format, args...))
 }
 
-func (e *CanvasHTMLElement) Raw(text string) *CanvasHTMLElement {
-    e.Descendants = append(e.Descendants, Raw(text))
+func (e *CanvasHTMLElement) Escaped(text string) *CanvasHTMLElement {
+    e.Descendants = append(e.Descendants, Escaped(text))
     return e
 }
 
-func (e *CanvasHTMLElement) RawF(format string, args ...any) *CanvasHTMLElement {
-    return e.Raw(fmt.Sprintf(format, args...))
+func (e *CanvasHTMLElement) EscapedF(format string, args ...any) *CanvasHTMLElement {
+    return e.Escaped(fmt.Sprintf(format, args...))
 }
 
 func (e *CanvasHTMLElement) CustomData(key, value string) *CanvasHTMLElement {
@@ -87,6 +87,13 @@ func (e *CanvasHTMLElement) ACCESSKEY(v string) *CanvasHTMLElement {
     return e
 }
 
+func (e *CanvasHTMLElement) IfACCESSKEY(cond bool, v string) *CanvasHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ACCESSKEY(v)
+}
+
 func (e *CanvasHTMLElement) RemoveACCESSKEY(v string) *CanvasHTMLElement {
     delete(e.StringAttributes, "accesskey")
     return e
@@ -114,6 +121,13 @@ func (e *CanvasHTMLElement) AUTOCAPITALIZE(v string) *CanvasHTMLElement {
     return e
 }
 
+func (e *CanvasHTMLElement) IfAUTOCAPITALIZE(cond bool, v string) *CanvasHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.AUTOCAPITALIZE(v)
+}
+
 func (e *CanvasHTMLElement) RemoveAUTOCAPITALIZE(v string) *CanvasHTMLElement {
     delete(e.StringAttributes, "autocapitalize")
     return e
@@ -128,6 +142,13 @@ func (e *CanvasHTMLElement) AUTOFOCUS() *CanvasHTMLElement {
     }
     e.BoolAttributes["autofocus"] = struct{}{}
     return e
+}
+
+func (e *CanvasHTMLElement) IfAUTOFOCUS(cond bool) *CanvasHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.AUTOFOCUS()
 }
 
 func (e *CanvasHTMLElement) RemoveAUTOFOCUS() *CanvasHTMLElement {
@@ -161,6 +182,13 @@ func(e *CanvasHTMLElement) CLASS(v string) *CanvasHTMLElement {
     return e
 }
 
+func (e *CanvasHTMLElement) IfCLASS(cond bool, v string) *CanvasHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.CLASS(v)
+}
+
 func (e *CanvasHTMLElement) SetCLASS(v string) *CanvasHTMLElement {
     kv := NewSpaceDelimitedString()
     e.DelimitedStringAttributes["class"] = kv
@@ -190,6 +218,13 @@ func (e *CanvasHTMLElement) CONTENTEDITABLE(v string) *CanvasHTMLElement {
     return e
 }
 
+func (e *CanvasHTMLElement) IfCONTENTEDITABLE(cond bool, v string) *CanvasHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.CONTENTEDITABLE(v)
+}
+
 func (e *CanvasHTMLElement) RemoveCONTENTEDITABLE(v string) *CanvasHTMLElement {
     delete(e.StringAttributes, "contenteditable")
     return e
@@ -209,6 +244,13 @@ func (e *CanvasHTMLElement) DIR(v string) *CanvasHTMLElement {
     return e
 }
 
+func (e *CanvasHTMLElement) IfDIR(cond bool, v string) *CanvasHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.DIR(v)
+}
+
 func (e *CanvasHTMLElement) RemoveDIR(v string) *CanvasHTMLElement {
     delete(e.StringAttributes, "dir")
     return e
@@ -224,6 +266,13 @@ func (e *CanvasHTMLElement) DRAGGABLE(v string) *CanvasHTMLElement {
     }
     e.StringAttributes["draggable"] = v
     return e
+}
+
+func (e *CanvasHTMLElement) IfDRAGGABLE(cond bool, v string) *CanvasHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.DRAGGABLE(v)
 }
 
 func (e *CanvasHTMLElement) RemoveDRAGGABLE(v string) *CanvasHTMLElement {
@@ -255,6 +304,13 @@ func (e *CanvasHTMLElement) ENTERKEYHINT(v string) *CanvasHTMLElement {
     return e
 }
 
+func (e *CanvasHTMLElement) IfENTERKEYHINT(cond bool, v string) *CanvasHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ENTERKEYHINT(v)
+}
+
 func (e *CanvasHTMLElement) RemoveENTERKEYHINT(v string) *CanvasHTMLElement {
     delete(e.StringAttributes, "enterkeyhint")
     return e
@@ -269,6 +325,13 @@ func (e *CanvasHTMLElement) HEIGHT(v string) *CanvasHTMLElement {
     }
     e.StringAttributes["height"] = v
     return e
+}
+
+func (e *CanvasHTMLElement) IfHEIGHT(cond bool, v string) *CanvasHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.HEIGHT(v)
 }
 
 func (e *CanvasHTMLElement) RemoveHEIGHT(v string) *CanvasHTMLElement {
@@ -290,6 +353,13 @@ func (e *CanvasHTMLElement) HIDDEN(v string) *CanvasHTMLElement {
     return e
 }
 
+func (e *CanvasHTMLElement) IfHIDDEN(cond bool, v string) *CanvasHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.HIDDEN(v)
+}
+
 func (e *CanvasHTMLElement) RemoveHIDDEN(v string) *CanvasHTMLElement {
     delete(e.StringAttributes, "hidden")
     return e
@@ -306,6 +376,13 @@ func (e *CanvasHTMLElement) ID(v string) *CanvasHTMLElement {
     return e
 }
 
+func (e *CanvasHTMLElement) IfID(cond bool, v string) *CanvasHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ID(v)
+}
+
 func (e *CanvasHTMLElement) RemoveID(v string) *CanvasHTMLElement {
     delete(e.StringAttributes, "id")
     return e
@@ -320,6 +397,13 @@ func (e *CanvasHTMLElement) INERT() *CanvasHTMLElement {
     }
     e.BoolAttributes["inert"] = struct{}{}
     return e
+}
+
+func (e *CanvasHTMLElement) IfINERT(cond bool) *CanvasHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.INERT()
 }
 
 func (e *CanvasHTMLElement) RemoveINERT() *CanvasHTMLElement {
@@ -363,6 +447,13 @@ func (e *CanvasHTMLElement) INPUTMODE(v string) *CanvasHTMLElement {
     return e
 }
 
+func (e *CanvasHTMLElement) IfINPUTMODE(cond bool, v string) *CanvasHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.INPUTMODE(v)
+}
+
 func (e *CanvasHTMLElement) RemoveINPUTMODE(v string) *CanvasHTMLElement {
     delete(e.StringAttributes, "inputmode")
     return e
@@ -380,6 +471,13 @@ func (e *CanvasHTMLElement) IS(v string) *CanvasHTMLElement {
     return e
 }
 
+func (e *CanvasHTMLElement) IfIS(cond bool, v string) *CanvasHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.IS(v)
+}
+
 func (e *CanvasHTMLElement) RemoveIS(v string) *CanvasHTMLElement {
     delete(e.StringAttributes, "is")
     return e
@@ -394,6 +492,13 @@ func (e *CanvasHTMLElement) ITEMID(v string) *CanvasHTMLElement {
     }
     e.StringAttributes["itemid"] = v
     return e
+}
+
+func (e *CanvasHTMLElement) IfITEMID(cond bool, v string) *CanvasHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMID(v)
 }
 
 func (e *CanvasHTMLElement) RemoveITEMID(v string) *CanvasHTMLElement {
@@ -414,6 +519,13 @@ func (e *CanvasHTMLElement) ITEMPROP(v string) *CanvasHTMLElement {
     return e
 }
 
+func (e *CanvasHTMLElement) IfITEMPROP(cond bool, v string) *CanvasHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMPROP(v)
+}
+
 func (e *CanvasHTMLElement) RemoveITEMPROP(v string) *CanvasHTMLElement {
     delete(e.StringAttributes, "itemprop")
     return e
@@ -430,6 +542,13 @@ func (e *CanvasHTMLElement) ITEMREF(v string) *CanvasHTMLElement {
     return e
 }
 
+func (e *CanvasHTMLElement) IfITEMREF(cond bool, v string) *CanvasHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMREF(v)
+}
+
 func (e *CanvasHTMLElement) RemoveITEMREF(v string) *CanvasHTMLElement {
     delete(e.StringAttributes, "itemref")
     return e
@@ -444,6 +563,13 @@ func (e *CanvasHTMLElement) ITEMSCOPE() *CanvasHTMLElement {
     }
     e.BoolAttributes["itemscope"] = struct{}{}
     return e
+}
+
+func (e *CanvasHTMLElement) IfITEMSCOPE(cond bool) *CanvasHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMSCOPE()
 }
 
 func (e *CanvasHTMLElement) RemoveITEMSCOPE() *CanvasHTMLElement {
@@ -473,6 +599,13 @@ func (e *CanvasHTMLElement) ITEMTYPE(v string) *CanvasHTMLElement {
     return e
 }
 
+func (e *CanvasHTMLElement) IfITEMTYPE(cond bool, v string) *CanvasHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMTYPE(v)
+}
+
 func (e *CanvasHTMLElement) RemoveITEMTYPE(v string) *CanvasHTMLElement {
     delete(e.StringAttributes, "itemtype")
     return e
@@ -486,6 +619,13 @@ func (e *CanvasHTMLElement) LANG(v string) *CanvasHTMLElement {
     }
     e.StringAttributes["lang"] = v
     return e
+}
+
+func (e *CanvasHTMLElement) IfLANG(cond bool, v string) *CanvasHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.LANG(v)
 }
 
 func (e *CanvasHTMLElement) RemoveLANG(v string) *CanvasHTMLElement {
@@ -502,6 +642,13 @@ func (e *CanvasHTMLElement) NONCE(v string) *CanvasHTMLElement {
     }
     e.StringAttributes["nonce"] = v
     return e
+}
+
+func (e *CanvasHTMLElement) IfNONCE(cond bool, v string) *CanvasHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.NONCE(v)
 }
 
 func (e *CanvasHTMLElement) RemoveNONCE(v string) *CanvasHTMLElement {
@@ -523,6 +670,13 @@ func (e *CanvasHTMLElement) POPOVER(v string) *CanvasHTMLElement {
     return e
 }
 
+func (e *CanvasHTMLElement) IfPOPOVER(cond bool, v string) *CanvasHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.POPOVER(v)
+}
+
 func (e *CanvasHTMLElement) RemovePOPOVER(v string) *CanvasHTMLElement {
     delete(e.StringAttributes, "popover")
     return e
@@ -537,6 +691,13 @@ func (e *CanvasHTMLElement) SLOT(v string) *CanvasHTMLElement {
     }
     e.StringAttributes["slot"] = v
     return e
+}
+
+func (e *CanvasHTMLElement) IfSLOT(cond bool, v string) *CanvasHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SLOT(v)
 }
 
 func (e *CanvasHTMLElement) RemoveSLOT(v string) *CanvasHTMLElement {
@@ -554,6 +715,13 @@ func (e *CanvasHTMLElement) SPELLCHECK(v string) *CanvasHTMLElement {
     }
     e.StringAttributes["spellcheck"] = v
     return e
+}
+
+func (e *CanvasHTMLElement) IfSPELLCHECK(cond bool, v string) *CanvasHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SPELLCHECK(v)
 }
 
 func (e *CanvasHTMLElement) RemoveSPELLCHECK(v string) *CanvasHTMLElement {
@@ -574,6 +742,13 @@ func (e *CanvasHTMLElement) STYLE(k,v string) *CanvasHTMLElement {
     }
     kv.Add(k,v)
     return e
+}
+
+func (e *CanvasHTMLElement) IfSTYLE(cond bool, k string) *CanvasHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.STYLE(k, "")
 }
 
 func (e *CanvasHTMLElement) RemoveSTYLE(k string) *CanvasHTMLElement {
@@ -597,6 +772,13 @@ func (e *CanvasHTMLElement) TABINDEX(v string) *CanvasHTMLElement {
     return e
 }
 
+func (e *CanvasHTMLElement) IfTABINDEX(cond bool, v string) *CanvasHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TABINDEX(v)
+}
+
 func (e *CanvasHTMLElement) RemoveTABINDEX(v string) *CanvasHTMLElement {
     delete(e.StringAttributes, "tabindex")
     return e
@@ -611,6 +793,13 @@ func (e *CanvasHTMLElement) TITLE(v string) *CanvasHTMLElement {
     }
     e.StringAttributes["title"] = v
     return e
+}
+
+func (e *CanvasHTMLElement) IfTITLE(cond bool, v string) *CanvasHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TITLE(v)
 }
 
 func (e *CanvasHTMLElement) RemoveTITLE(v string) *CanvasHTMLElement {
@@ -630,6 +819,13 @@ func (e *CanvasHTMLElement) TRANSLATE(v string) *CanvasHTMLElement {
     return e
 }
 
+func (e *CanvasHTMLElement) IfTRANSLATE(cond bool, v string) *CanvasHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TRANSLATE(v)
+}
+
 func (e *CanvasHTMLElement) RemoveTRANSLATE(v string) *CanvasHTMLElement {
     delete(e.StringAttributes, "translate")
     return e
@@ -644,6 +840,13 @@ func (e *CanvasHTMLElement) WIDTH(v string) *CanvasHTMLElement {
     }
     e.StringAttributes["width"] = v
     return e
+}
+
+func (e *CanvasHTMLElement) IfWIDTH(cond bool, v string) *CanvasHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.WIDTH(v)
 }
 
 func (e *CanvasHTMLElement) RemoveWIDTH(v string) *CanvasHTMLElement {

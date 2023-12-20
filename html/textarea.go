@@ -48,13 +48,13 @@ func (e *TextareaHTMLElement) TextF(format string, args ...any) *TextareaHTMLEle
     return e.Text(fmt.Sprintf(format, args...))
 }
 
-func (e *TextareaHTMLElement) Raw(text string) *TextareaHTMLElement {
-    e.Descendants = append(e.Descendants, Raw(text))
+func (e *TextareaHTMLElement) Escaped(text string) *TextareaHTMLElement {
+    e.Descendants = append(e.Descendants, Escaped(text))
     return e
 }
 
-func (e *TextareaHTMLElement) RawF(format string, args ...any) *TextareaHTMLElement {
-    return e.Raw(fmt.Sprintf(format, args...))
+func (e *TextareaHTMLElement) EscapedF(format string, args ...any) *TextareaHTMLElement {
+    return e.Escaped(fmt.Sprintf(format, args...))
 }
 
 func (e *TextareaHTMLElement) CustomData(key, value string) *TextareaHTMLElement {
@@ -87,6 +87,13 @@ func (e *TextareaHTMLElement) ACCESSKEY(v string) *TextareaHTMLElement {
     return e
 }
 
+func (e *TextareaHTMLElement) IfACCESSKEY(cond bool, v string) *TextareaHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ACCESSKEY(v)
+}
+
 func (e *TextareaHTMLElement) RemoveACCESSKEY(v string) *TextareaHTMLElement {
     delete(e.StringAttributes, "accesskey")
     return e
@@ -114,6 +121,13 @@ func (e *TextareaHTMLElement) AUTOCAPITALIZE(v string) *TextareaHTMLElement {
     return e
 }
 
+func (e *TextareaHTMLElement) IfAUTOCAPITALIZE(cond bool, v string) *TextareaHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.AUTOCAPITALIZE(v)
+}
+
 func (e *TextareaHTMLElement) RemoveAUTOCAPITALIZE(v string) *TextareaHTMLElement {
     delete(e.StringAttributes, "autocapitalize")
     return e
@@ -130,6 +144,13 @@ func (e *TextareaHTMLElement) AUTOCOMPLETE(v string) *TextareaHTMLElement {
     return e
 }
 
+func (e *TextareaHTMLElement) IfAUTOCOMPLETE(cond bool, v string) *TextareaHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.AUTOCOMPLETE(v)
+}
+
 func (e *TextareaHTMLElement) RemoveAUTOCOMPLETE(v string) *TextareaHTMLElement {
     delete(e.StringAttributes, "autocomplete")
     return e
@@ -144,6 +165,13 @@ func (e *TextareaHTMLElement) AUTOFOCUS() *TextareaHTMLElement {
     }
     e.BoolAttributes["autofocus"] = struct{}{}
     return e
+}
+
+func (e *TextareaHTMLElement) IfAUTOFOCUS(cond bool) *TextareaHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.AUTOFOCUS()
 }
 
 func (e *TextareaHTMLElement) RemoveAUTOFOCUS() *TextareaHTMLElement {
@@ -177,6 +205,13 @@ func(e *TextareaHTMLElement) CLASS(v string) *TextareaHTMLElement {
     return e
 }
 
+func (e *TextareaHTMLElement) IfCLASS(cond bool, v string) *TextareaHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.CLASS(v)
+}
+
 func (e *TextareaHTMLElement) SetCLASS(v string) *TextareaHTMLElement {
     kv := NewSpaceDelimitedString()
     e.DelimitedStringAttributes["class"] = kv
@@ -204,6 +239,13 @@ func (e *TextareaHTMLElement) COLS(v string) *TextareaHTMLElement {
     return e
 }
 
+func (e *TextareaHTMLElement) IfCOLS(cond bool, v string) *TextareaHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.COLS(v)
+}
+
 func (e *TextareaHTMLElement) RemoveCOLS(v string) *TextareaHTMLElement {
     delete(e.StringAttributes, "cols")
     return e
@@ -220,6 +262,13 @@ func (e *TextareaHTMLElement) CONTENTEDITABLE(v string) *TextareaHTMLElement {
     }
     e.StringAttributes["contenteditable"] = v
     return e
+}
+
+func (e *TextareaHTMLElement) IfCONTENTEDITABLE(cond bool, v string) *TextareaHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.CONTENTEDITABLE(v)
 }
 
 func (e *TextareaHTMLElement) RemoveCONTENTEDITABLE(v string) *TextareaHTMLElement {
@@ -241,6 +290,13 @@ func (e *TextareaHTMLElement) DIR(v string) *TextareaHTMLElement {
     return e
 }
 
+func (e *TextareaHTMLElement) IfDIR(cond bool, v string) *TextareaHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.DIR(v)
+}
+
 func (e *TextareaHTMLElement) RemoveDIR(v string) *TextareaHTMLElement {
     delete(e.StringAttributes, "dir")
     return e
@@ -257,6 +313,13 @@ func (e *TextareaHTMLElement) DIRNAME(v string) *TextareaHTMLElement {
     return e
 }
 
+func (e *TextareaHTMLElement) IfDIRNAME(cond bool, v string) *TextareaHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.DIRNAME(v)
+}
+
 func (e *TextareaHTMLElement) RemoveDIRNAME(v string) *TextareaHTMLElement {
     delete(e.StringAttributes, "dirname")
     return e
@@ -271,6 +334,13 @@ func (e *TextareaHTMLElement) DISABLED() *TextareaHTMLElement {
     }
     e.BoolAttributes["disabled"] = struct{}{}
     return e
+}
+
+func (e *TextareaHTMLElement) IfDISABLED(cond bool) *TextareaHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.DISABLED()
 }
 
 func (e *TextareaHTMLElement) RemoveDISABLED() *TextareaHTMLElement {
@@ -298,6 +368,13 @@ func (e *TextareaHTMLElement) DRAGGABLE(v string) *TextareaHTMLElement {
     }
     e.StringAttributes["draggable"] = v
     return e
+}
+
+func (e *TextareaHTMLElement) IfDRAGGABLE(cond bool, v string) *TextareaHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.DRAGGABLE(v)
 }
 
 func (e *TextareaHTMLElement) RemoveDRAGGABLE(v string) *TextareaHTMLElement {
@@ -329,6 +406,13 @@ func (e *TextareaHTMLElement) ENTERKEYHINT(v string) *TextareaHTMLElement {
     return e
 }
 
+func (e *TextareaHTMLElement) IfENTERKEYHINT(cond bool, v string) *TextareaHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ENTERKEYHINT(v)
+}
+
 func (e *TextareaHTMLElement) RemoveENTERKEYHINT(v string) *TextareaHTMLElement {
     delete(e.StringAttributes, "enterkeyhint")
     return e
@@ -343,6 +427,13 @@ func (e *TextareaHTMLElement) FORM(v string) *TextareaHTMLElement {
     }
     e.StringAttributes["form"] = v
     return e
+}
+
+func (e *TextareaHTMLElement) IfFORM(cond bool, v string) *TextareaHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.FORM(v)
 }
 
 func (e *TextareaHTMLElement) RemoveFORM(v string) *TextareaHTMLElement {
@@ -364,6 +455,13 @@ func (e *TextareaHTMLElement) HIDDEN(v string) *TextareaHTMLElement {
     return e
 }
 
+func (e *TextareaHTMLElement) IfHIDDEN(cond bool, v string) *TextareaHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.HIDDEN(v)
+}
+
 func (e *TextareaHTMLElement) RemoveHIDDEN(v string) *TextareaHTMLElement {
     delete(e.StringAttributes, "hidden")
     return e
@@ -380,6 +478,13 @@ func (e *TextareaHTMLElement) ID(v string) *TextareaHTMLElement {
     return e
 }
 
+func (e *TextareaHTMLElement) IfID(cond bool, v string) *TextareaHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ID(v)
+}
+
 func (e *TextareaHTMLElement) RemoveID(v string) *TextareaHTMLElement {
     delete(e.StringAttributes, "id")
     return e
@@ -394,6 +499,13 @@ func (e *TextareaHTMLElement) INERT() *TextareaHTMLElement {
     }
     e.BoolAttributes["inert"] = struct{}{}
     return e
+}
+
+func (e *TextareaHTMLElement) IfINERT(cond bool) *TextareaHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.INERT()
 }
 
 func (e *TextareaHTMLElement) RemoveINERT() *TextareaHTMLElement {
@@ -437,6 +549,13 @@ func (e *TextareaHTMLElement) INPUTMODE(v string) *TextareaHTMLElement {
     return e
 }
 
+func (e *TextareaHTMLElement) IfINPUTMODE(cond bool, v string) *TextareaHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.INPUTMODE(v)
+}
+
 func (e *TextareaHTMLElement) RemoveINPUTMODE(v string) *TextareaHTMLElement {
     delete(e.StringAttributes, "inputmode")
     return e
@@ -454,6 +573,13 @@ func (e *TextareaHTMLElement) IS(v string) *TextareaHTMLElement {
     return e
 }
 
+func (e *TextareaHTMLElement) IfIS(cond bool, v string) *TextareaHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.IS(v)
+}
+
 func (e *TextareaHTMLElement) RemoveIS(v string) *TextareaHTMLElement {
     delete(e.StringAttributes, "is")
     return e
@@ -468,6 +594,13 @@ func (e *TextareaHTMLElement) ITEMID(v string) *TextareaHTMLElement {
     }
     e.StringAttributes["itemid"] = v
     return e
+}
+
+func (e *TextareaHTMLElement) IfITEMID(cond bool, v string) *TextareaHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMID(v)
 }
 
 func (e *TextareaHTMLElement) RemoveITEMID(v string) *TextareaHTMLElement {
@@ -488,6 +621,13 @@ func (e *TextareaHTMLElement) ITEMPROP(v string) *TextareaHTMLElement {
     return e
 }
 
+func (e *TextareaHTMLElement) IfITEMPROP(cond bool, v string) *TextareaHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMPROP(v)
+}
+
 func (e *TextareaHTMLElement) RemoveITEMPROP(v string) *TextareaHTMLElement {
     delete(e.StringAttributes, "itemprop")
     return e
@@ -504,6 +644,13 @@ func (e *TextareaHTMLElement) ITEMREF(v string) *TextareaHTMLElement {
     return e
 }
 
+func (e *TextareaHTMLElement) IfITEMREF(cond bool, v string) *TextareaHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMREF(v)
+}
+
 func (e *TextareaHTMLElement) RemoveITEMREF(v string) *TextareaHTMLElement {
     delete(e.StringAttributes, "itemref")
     return e
@@ -518,6 +665,13 @@ func (e *TextareaHTMLElement) ITEMSCOPE() *TextareaHTMLElement {
     }
     e.BoolAttributes["itemscope"] = struct{}{}
     return e
+}
+
+func (e *TextareaHTMLElement) IfITEMSCOPE(cond bool) *TextareaHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMSCOPE()
 }
 
 func (e *TextareaHTMLElement) RemoveITEMSCOPE() *TextareaHTMLElement {
@@ -547,6 +701,13 @@ func (e *TextareaHTMLElement) ITEMTYPE(v string) *TextareaHTMLElement {
     return e
 }
 
+func (e *TextareaHTMLElement) IfITEMTYPE(cond bool, v string) *TextareaHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMTYPE(v)
+}
+
 func (e *TextareaHTMLElement) RemoveITEMTYPE(v string) *TextareaHTMLElement {
     delete(e.StringAttributes, "itemtype")
     return e
@@ -560,6 +721,13 @@ func (e *TextareaHTMLElement) LANG(v string) *TextareaHTMLElement {
     }
     e.StringAttributes["lang"] = v
     return e
+}
+
+func (e *TextareaHTMLElement) IfLANG(cond bool, v string) *TextareaHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.LANG(v)
 }
 
 func (e *TextareaHTMLElement) RemoveLANG(v string) *TextareaHTMLElement {
@@ -578,6 +746,13 @@ func (e *TextareaHTMLElement) MAXLENGTH(v string) *TextareaHTMLElement {
     return e
 }
 
+func (e *TextareaHTMLElement) IfMAXLENGTH(cond bool, v string) *TextareaHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.MAXLENGTH(v)
+}
+
 func (e *TextareaHTMLElement) RemoveMAXLENGTH(v string) *TextareaHTMLElement {
     delete(e.StringAttributes, "maxlength")
     return e
@@ -592,6 +767,13 @@ func (e *TextareaHTMLElement) MINLENGTH(v string) *TextareaHTMLElement {
     }
     e.StringAttributes["minlength"] = v
     return e
+}
+
+func (e *TextareaHTMLElement) IfMINLENGTH(cond bool, v string) *TextareaHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.MINLENGTH(v)
 }
 
 func (e *TextareaHTMLElement) RemoveMINLENGTH(v string) *TextareaHTMLElement {
@@ -610,6 +792,13 @@ func (e *TextareaHTMLElement) NAME(v string) *TextareaHTMLElement {
     return e
 }
 
+func (e *TextareaHTMLElement) IfNAME(cond bool, v string) *TextareaHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.NAME(v)
+}
+
 func (e *TextareaHTMLElement) RemoveNAME(v string) *TextareaHTMLElement {
     delete(e.StringAttributes, "name")
     return e
@@ -626,6 +815,13 @@ func (e *TextareaHTMLElement) NONCE(v string) *TextareaHTMLElement {
     return e
 }
 
+func (e *TextareaHTMLElement) IfNONCE(cond bool, v string) *TextareaHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.NONCE(v)
+}
+
 func (e *TextareaHTMLElement) RemoveNONCE(v string) *TextareaHTMLElement {
     delete(e.StringAttributes, "nonce")
     return e
@@ -640,6 +836,13 @@ func (e *TextareaHTMLElement) PLACEHOLDER(v string) *TextareaHTMLElement {
     }
     e.StringAttributes["placeholder"] = v
     return e
+}
+
+func (e *TextareaHTMLElement) IfPLACEHOLDER(cond bool, v string) *TextareaHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.PLACEHOLDER(v)
 }
 
 func (e *TextareaHTMLElement) RemovePLACEHOLDER(v string) *TextareaHTMLElement {
@@ -661,6 +864,13 @@ func (e *TextareaHTMLElement) POPOVER(v string) *TextareaHTMLElement {
     return e
 }
 
+func (e *TextareaHTMLElement) IfPOPOVER(cond bool, v string) *TextareaHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.POPOVER(v)
+}
+
 func (e *TextareaHTMLElement) RemovePOPOVER(v string) *TextareaHTMLElement {
     delete(e.StringAttributes, "popover")
     return e
@@ -675,6 +885,13 @@ func (e *TextareaHTMLElement) READONLY() *TextareaHTMLElement {
     }
     e.BoolAttributes["readonly"] = struct{}{}
     return e
+}
+
+func (e *TextareaHTMLElement) IfREADONLY(cond bool) *TextareaHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.READONLY()
 }
 
 func (e *TextareaHTMLElement) RemoveREADONLY() *TextareaHTMLElement {
@@ -703,6 +920,13 @@ func (e *TextareaHTMLElement) REQUIRED() *TextareaHTMLElement {
     return e
 }
 
+func (e *TextareaHTMLElement) IfREQUIRED(cond bool) *TextareaHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.REQUIRED()
+}
+
 func (e *TextareaHTMLElement) RemoveREQUIRED() *TextareaHTMLElement {
     if e.BoolAttributes == nil {
         return e
@@ -729,6 +953,13 @@ func (e *TextareaHTMLElement) ROWS(v string) *TextareaHTMLElement {
     return e
 }
 
+func (e *TextareaHTMLElement) IfROWS(cond bool, v string) *TextareaHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ROWS(v)
+}
+
 func (e *TextareaHTMLElement) RemoveROWS(v string) *TextareaHTMLElement {
     delete(e.StringAttributes, "rows")
     return e
@@ -743,6 +974,13 @@ func (e *TextareaHTMLElement) SLOT(v string) *TextareaHTMLElement {
     }
     e.StringAttributes["slot"] = v
     return e
+}
+
+func (e *TextareaHTMLElement) IfSLOT(cond bool, v string) *TextareaHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SLOT(v)
 }
 
 func (e *TextareaHTMLElement) RemoveSLOT(v string) *TextareaHTMLElement {
@@ -760,6 +998,13 @@ func (e *TextareaHTMLElement) SPELLCHECK(v string) *TextareaHTMLElement {
     }
     e.StringAttributes["spellcheck"] = v
     return e
+}
+
+func (e *TextareaHTMLElement) IfSPELLCHECK(cond bool, v string) *TextareaHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SPELLCHECK(v)
 }
 
 func (e *TextareaHTMLElement) RemoveSPELLCHECK(v string) *TextareaHTMLElement {
@@ -780,6 +1025,13 @@ func (e *TextareaHTMLElement) STYLE(k,v string) *TextareaHTMLElement {
     }
     kv.Add(k,v)
     return e
+}
+
+func (e *TextareaHTMLElement) IfSTYLE(cond bool, k string) *TextareaHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.STYLE(k, "")
 }
 
 func (e *TextareaHTMLElement) RemoveSTYLE(k string) *TextareaHTMLElement {
@@ -803,6 +1055,13 @@ func (e *TextareaHTMLElement) TABINDEX(v string) *TextareaHTMLElement {
     return e
 }
 
+func (e *TextareaHTMLElement) IfTABINDEX(cond bool, v string) *TextareaHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TABINDEX(v)
+}
+
 func (e *TextareaHTMLElement) RemoveTABINDEX(v string) *TextareaHTMLElement {
     delete(e.StringAttributes, "tabindex")
     return e
@@ -817,6 +1076,13 @@ func (e *TextareaHTMLElement) TITLE(v string) *TextareaHTMLElement {
     }
     e.StringAttributes["title"] = v
     return e
+}
+
+func (e *TextareaHTMLElement) IfTITLE(cond bool, v string) *TextareaHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TITLE(v)
 }
 
 func (e *TextareaHTMLElement) RemoveTITLE(v string) *TextareaHTMLElement {
@@ -836,6 +1102,13 @@ func (e *TextareaHTMLElement) TRANSLATE(v string) *TextareaHTMLElement {
     return e
 }
 
+func (e *TextareaHTMLElement) IfTRANSLATE(cond bool, v string) *TextareaHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TRANSLATE(v)
+}
+
 func (e *TextareaHTMLElement) RemoveTRANSLATE(v string) *TextareaHTMLElement {
     delete(e.StringAttributes, "translate")
     return e
@@ -853,6 +1126,13 @@ func (e *TextareaHTMLElement) WRAP(v string) *TextareaHTMLElement {
     }
     e.StringAttributes["wrap"] = v
     return e
+}
+
+func (e *TextareaHTMLElement) IfWRAP(cond bool, v string) *TextareaHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.WRAP(v)
 }
 
 func (e *TextareaHTMLElement) RemoveWRAP(v string) *TextareaHTMLElement {

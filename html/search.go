@@ -48,13 +48,13 @@ func (e *SearchHTMLElement) TextF(format string, args ...any) *SearchHTMLElement
     return e.Text(fmt.Sprintf(format, args...))
 }
 
-func (e *SearchHTMLElement) Raw(text string) *SearchHTMLElement {
-    e.Descendants = append(e.Descendants, Raw(text))
+func (e *SearchHTMLElement) Escaped(text string) *SearchHTMLElement {
+    e.Descendants = append(e.Descendants, Escaped(text))
     return e
 }
 
-func (e *SearchHTMLElement) RawF(format string, args ...any) *SearchHTMLElement {
-    return e.Raw(fmt.Sprintf(format, args...))
+func (e *SearchHTMLElement) EscapedF(format string, args ...any) *SearchHTMLElement {
+    return e.Escaped(fmt.Sprintf(format, args...))
 }
 
 func (e *SearchHTMLElement) CustomData(key, value string) *SearchHTMLElement {
@@ -87,6 +87,13 @@ func (e *SearchHTMLElement) ACCESSKEY(v string) *SearchHTMLElement {
     return e
 }
 
+func (e *SearchHTMLElement) IfACCESSKEY(cond bool, v string) *SearchHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ACCESSKEY(v)
+}
+
 func (e *SearchHTMLElement) RemoveACCESSKEY(v string) *SearchHTMLElement {
     delete(e.StringAttributes, "accesskey")
     return e
@@ -114,6 +121,13 @@ func (e *SearchHTMLElement) AUTOCAPITALIZE(v string) *SearchHTMLElement {
     return e
 }
 
+func (e *SearchHTMLElement) IfAUTOCAPITALIZE(cond bool, v string) *SearchHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.AUTOCAPITALIZE(v)
+}
+
 func (e *SearchHTMLElement) RemoveAUTOCAPITALIZE(v string) *SearchHTMLElement {
     delete(e.StringAttributes, "autocapitalize")
     return e
@@ -128,6 +142,13 @@ func (e *SearchHTMLElement) AUTOFOCUS() *SearchHTMLElement {
     }
     e.BoolAttributes["autofocus"] = struct{}{}
     return e
+}
+
+func (e *SearchHTMLElement) IfAUTOFOCUS(cond bool) *SearchHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.AUTOFOCUS()
 }
 
 func (e *SearchHTMLElement) RemoveAUTOFOCUS() *SearchHTMLElement {
@@ -161,6 +182,13 @@ func(e *SearchHTMLElement) CLASS(v string) *SearchHTMLElement {
     return e
 }
 
+func (e *SearchHTMLElement) IfCLASS(cond bool, v string) *SearchHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.CLASS(v)
+}
+
 func (e *SearchHTMLElement) SetCLASS(v string) *SearchHTMLElement {
     kv := NewSpaceDelimitedString()
     e.DelimitedStringAttributes["class"] = kv
@@ -190,6 +218,13 @@ func (e *SearchHTMLElement) CONTENTEDITABLE(v string) *SearchHTMLElement {
     return e
 }
 
+func (e *SearchHTMLElement) IfCONTENTEDITABLE(cond bool, v string) *SearchHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.CONTENTEDITABLE(v)
+}
+
 func (e *SearchHTMLElement) RemoveCONTENTEDITABLE(v string) *SearchHTMLElement {
     delete(e.StringAttributes, "contenteditable")
     return e
@@ -209,6 +244,13 @@ func (e *SearchHTMLElement) DIR(v string) *SearchHTMLElement {
     return e
 }
 
+func (e *SearchHTMLElement) IfDIR(cond bool, v string) *SearchHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.DIR(v)
+}
+
 func (e *SearchHTMLElement) RemoveDIR(v string) *SearchHTMLElement {
     delete(e.StringAttributes, "dir")
     return e
@@ -224,6 +266,13 @@ func (e *SearchHTMLElement) DRAGGABLE(v string) *SearchHTMLElement {
     }
     e.StringAttributes["draggable"] = v
     return e
+}
+
+func (e *SearchHTMLElement) IfDRAGGABLE(cond bool, v string) *SearchHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.DRAGGABLE(v)
 }
 
 func (e *SearchHTMLElement) RemoveDRAGGABLE(v string) *SearchHTMLElement {
@@ -255,6 +304,13 @@ func (e *SearchHTMLElement) ENTERKEYHINT(v string) *SearchHTMLElement {
     return e
 }
 
+func (e *SearchHTMLElement) IfENTERKEYHINT(cond bool, v string) *SearchHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ENTERKEYHINT(v)
+}
+
 func (e *SearchHTMLElement) RemoveENTERKEYHINT(v string) *SearchHTMLElement {
     delete(e.StringAttributes, "enterkeyhint")
     return e
@@ -274,6 +330,13 @@ func (e *SearchHTMLElement) HIDDEN(v string) *SearchHTMLElement {
     return e
 }
 
+func (e *SearchHTMLElement) IfHIDDEN(cond bool, v string) *SearchHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.HIDDEN(v)
+}
+
 func (e *SearchHTMLElement) RemoveHIDDEN(v string) *SearchHTMLElement {
     delete(e.StringAttributes, "hidden")
     return e
@@ -290,6 +353,13 @@ func (e *SearchHTMLElement) ID(v string) *SearchHTMLElement {
     return e
 }
 
+func (e *SearchHTMLElement) IfID(cond bool, v string) *SearchHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ID(v)
+}
+
 func (e *SearchHTMLElement) RemoveID(v string) *SearchHTMLElement {
     delete(e.StringAttributes, "id")
     return e
@@ -304,6 +374,13 @@ func (e *SearchHTMLElement) INERT() *SearchHTMLElement {
     }
     e.BoolAttributes["inert"] = struct{}{}
     return e
+}
+
+func (e *SearchHTMLElement) IfINERT(cond bool) *SearchHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.INERT()
 }
 
 func (e *SearchHTMLElement) RemoveINERT() *SearchHTMLElement {
@@ -347,6 +424,13 @@ func (e *SearchHTMLElement) INPUTMODE(v string) *SearchHTMLElement {
     return e
 }
 
+func (e *SearchHTMLElement) IfINPUTMODE(cond bool, v string) *SearchHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.INPUTMODE(v)
+}
+
 func (e *SearchHTMLElement) RemoveINPUTMODE(v string) *SearchHTMLElement {
     delete(e.StringAttributes, "inputmode")
     return e
@@ -364,6 +448,13 @@ func (e *SearchHTMLElement) IS(v string) *SearchHTMLElement {
     return e
 }
 
+func (e *SearchHTMLElement) IfIS(cond bool, v string) *SearchHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.IS(v)
+}
+
 func (e *SearchHTMLElement) RemoveIS(v string) *SearchHTMLElement {
     delete(e.StringAttributes, "is")
     return e
@@ -378,6 +469,13 @@ func (e *SearchHTMLElement) ITEMID(v string) *SearchHTMLElement {
     }
     e.StringAttributes["itemid"] = v
     return e
+}
+
+func (e *SearchHTMLElement) IfITEMID(cond bool, v string) *SearchHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMID(v)
 }
 
 func (e *SearchHTMLElement) RemoveITEMID(v string) *SearchHTMLElement {
@@ -398,6 +496,13 @@ func (e *SearchHTMLElement) ITEMPROP(v string) *SearchHTMLElement {
     return e
 }
 
+func (e *SearchHTMLElement) IfITEMPROP(cond bool, v string) *SearchHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMPROP(v)
+}
+
 func (e *SearchHTMLElement) RemoveITEMPROP(v string) *SearchHTMLElement {
     delete(e.StringAttributes, "itemprop")
     return e
@@ -414,6 +519,13 @@ func (e *SearchHTMLElement) ITEMREF(v string) *SearchHTMLElement {
     return e
 }
 
+func (e *SearchHTMLElement) IfITEMREF(cond bool, v string) *SearchHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMREF(v)
+}
+
 func (e *SearchHTMLElement) RemoveITEMREF(v string) *SearchHTMLElement {
     delete(e.StringAttributes, "itemref")
     return e
@@ -428,6 +540,13 @@ func (e *SearchHTMLElement) ITEMSCOPE() *SearchHTMLElement {
     }
     e.BoolAttributes["itemscope"] = struct{}{}
     return e
+}
+
+func (e *SearchHTMLElement) IfITEMSCOPE(cond bool) *SearchHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMSCOPE()
 }
 
 func (e *SearchHTMLElement) RemoveITEMSCOPE() *SearchHTMLElement {
@@ -457,6 +576,13 @@ func (e *SearchHTMLElement) ITEMTYPE(v string) *SearchHTMLElement {
     return e
 }
 
+func (e *SearchHTMLElement) IfITEMTYPE(cond bool, v string) *SearchHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMTYPE(v)
+}
+
 func (e *SearchHTMLElement) RemoveITEMTYPE(v string) *SearchHTMLElement {
     delete(e.StringAttributes, "itemtype")
     return e
@@ -470,6 +596,13 @@ func (e *SearchHTMLElement) LANG(v string) *SearchHTMLElement {
     }
     e.StringAttributes["lang"] = v
     return e
+}
+
+func (e *SearchHTMLElement) IfLANG(cond bool, v string) *SearchHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.LANG(v)
 }
 
 func (e *SearchHTMLElement) RemoveLANG(v string) *SearchHTMLElement {
@@ -486,6 +619,13 @@ func (e *SearchHTMLElement) NONCE(v string) *SearchHTMLElement {
     }
     e.StringAttributes["nonce"] = v
     return e
+}
+
+func (e *SearchHTMLElement) IfNONCE(cond bool, v string) *SearchHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.NONCE(v)
 }
 
 func (e *SearchHTMLElement) RemoveNONCE(v string) *SearchHTMLElement {
@@ -507,6 +647,13 @@ func (e *SearchHTMLElement) POPOVER(v string) *SearchHTMLElement {
     return e
 }
 
+func (e *SearchHTMLElement) IfPOPOVER(cond bool, v string) *SearchHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.POPOVER(v)
+}
+
 func (e *SearchHTMLElement) RemovePOPOVER(v string) *SearchHTMLElement {
     delete(e.StringAttributes, "popover")
     return e
@@ -521,6 +668,13 @@ func (e *SearchHTMLElement) SLOT(v string) *SearchHTMLElement {
     }
     e.StringAttributes["slot"] = v
     return e
+}
+
+func (e *SearchHTMLElement) IfSLOT(cond bool, v string) *SearchHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SLOT(v)
 }
 
 func (e *SearchHTMLElement) RemoveSLOT(v string) *SearchHTMLElement {
@@ -538,6 +692,13 @@ func (e *SearchHTMLElement) SPELLCHECK(v string) *SearchHTMLElement {
     }
     e.StringAttributes["spellcheck"] = v
     return e
+}
+
+func (e *SearchHTMLElement) IfSPELLCHECK(cond bool, v string) *SearchHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SPELLCHECK(v)
 }
 
 func (e *SearchHTMLElement) RemoveSPELLCHECK(v string) *SearchHTMLElement {
@@ -558,6 +719,13 @@ func (e *SearchHTMLElement) STYLE(k,v string) *SearchHTMLElement {
     }
     kv.Add(k,v)
     return e
+}
+
+func (e *SearchHTMLElement) IfSTYLE(cond bool, k string) *SearchHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.STYLE(k, "")
 }
 
 func (e *SearchHTMLElement) RemoveSTYLE(k string) *SearchHTMLElement {
@@ -581,6 +749,13 @@ func (e *SearchHTMLElement) TABINDEX(v string) *SearchHTMLElement {
     return e
 }
 
+func (e *SearchHTMLElement) IfTABINDEX(cond bool, v string) *SearchHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TABINDEX(v)
+}
+
 func (e *SearchHTMLElement) RemoveTABINDEX(v string) *SearchHTMLElement {
     delete(e.StringAttributes, "tabindex")
     return e
@@ -595,6 +770,13 @@ func (e *SearchHTMLElement) TITLE(v string) *SearchHTMLElement {
     }
     e.StringAttributes["title"] = v
     return e
+}
+
+func (e *SearchHTMLElement) IfTITLE(cond bool, v string) *SearchHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TITLE(v)
 }
 
 func (e *SearchHTMLElement) RemoveTITLE(v string) *SearchHTMLElement {
@@ -612,6 +794,13 @@ func (e *SearchHTMLElement) TRANSLATE(v string) *SearchHTMLElement {
     }
     e.StringAttributes["translate"] = v
     return e
+}
+
+func (e *SearchHTMLElement) IfTRANSLATE(cond bool, v string) *SearchHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TRANSLATE(v)
 }
 
 func (e *SearchHTMLElement) RemoveTRANSLATE(v string) *SearchHTMLElement {

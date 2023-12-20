@@ -48,13 +48,13 @@ func (e *AudioHTMLElement) TextF(format string, args ...any) *AudioHTMLElement {
     return e.Text(fmt.Sprintf(format, args...))
 }
 
-func (e *AudioHTMLElement) Raw(text string) *AudioHTMLElement {
-    e.Descendants = append(e.Descendants, Raw(text))
+func (e *AudioHTMLElement) Escaped(text string) *AudioHTMLElement {
+    e.Descendants = append(e.Descendants, Escaped(text))
     return e
 }
 
-func (e *AudioHTMLElement) RawF(format string, args ...any) *AudioHTMLElement {
-    return e.Raw(fmt.Sprintf(format, args...))
+func (e *AudioHTMLElement) EscapedF(format string, args ...any) *AudioHTMLElement {
+    return e.Escaped(fmt.Sprintf(format, args...))
 }
 
 func (e *AudioHTMLElement) CustomData(key, value string) *AudioHTMLElement {
@@ -87,6 +87,13 @@ func (e *AudioHTMLElement) ACCESSKEY(v string) *AudioHTMLElement {
     return e
 }
 
+func (e *AudioHTMLElement) IfACCESSKEY(cond bool, v string) *AudioHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ACCESSKEY(v)
+}
+
 func (e *AudioHTMLElement) RemoveACCESSKEY(v string) *AudioHTMLElement {
     delete(e.StringAttributes, "accesskey")
     return e
@@ -114,6 +121,13 @@ func (e *AudioHTMLElement) AUTOCAPITALIZE(v string) *AudioHTMLElement {
     return e
 }
 
+func (e *AudioHTMLElement) IfAUTOCAPITALIZE(cond bool, v string) *AudioHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.AUTOCAPITALIZE(v)
+}
+
 func (e *AudioHTMLElement) RemoveAUTOCAPITALIZE(v string) *AudioHTMLElement {
     delete(e.StringAttributes, "autocapitalize")
     return e
@@ -128,6 +142,13 @@ func (e *AudioHTMLElement) AUTOFOCUS() *AudioHTMLElement {
     }
     e.BoolAttributes["autofocus"] = struct{}{}
     return e
+}
+
+func (e *AudioHTMLElement) IfAUTOFOCUS(cond bool) *AudioHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.AUTOFOCUS()
 }
 
 func (e *AudioHTMLElement) RemoveAUTOFOCUS() *AudioHTMLElement {
@@ -154,6 +175,13 @@ func (e *AudioHTMLElement) AUTOPLAY() *AudioHTMLElement {
     }
     e.BoolAttributes["autoplay"] = struct{}{}
     return e
+}
+
+func (e *AudioHTMLElement) IfAUTOPLAY(cond bool) *AudioHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.AUTOPLAY()
 }
 
 func (e *AudioHTMLElement) RemoveAUTOPLAY() *AudioHTMLElement {
@@ -187,6 +215,13 @@ func(e *AudioHTMLElement) CLASS(v string) *AudioHTMLElement {
     return e
 }
 
+func (e *AudioHTMLElement) IfCLASS(cond bool, v string) *AudioHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.CLASS(v)
+}
+
 func (e *AudioHTMLElement) SetCLASS(v string) *AudioHTMLElement {
     kv := NewSpaceDelimitedString()
     e.DelimitedStringAttributes["class"] = kv
@@ -216,6 +251,13 @@ func (e *AudioHTMLElement) CONTENTEDITABLE(v string) *AudioHTMLElement {
     return e
 }
 
+func (e *AudioHTMLElement) IfCONTENTEDITABLE(cond bool, v string) *AudioHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.CONTENTEDITABLE(v)
+}
+
 func (e *AudioHTMLElement) RemoveCONTENTEDITABLE(v string) *AudioHTMLElement {
     delete(e.StringAttributes, "contenteditable")
     return e
@@ -230,6 +272,13 @@ func (e *AudioHTMLElement) CONTROLS() *AudioHTMLElement {
     }
     e.BoolAttributes["controls"] = struct{}{}
     return e
+}
+
+func (e *AudioHTMLElement) IfCONTROLS(cond bool) *AudioHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.CONTROLS()
 }
 
 func (e *AudioHTMLElement) RemoveCONTROLS() *AudioHTMLElement {
@@ -261,6 +310,13 @@ func (e *AudioHTMLElement) CROSSORIGIN(v string) *AudioHTMLElement {
     return e
 }
 
+func (e *AudioHTMLElement) IfCROSSORIGIN(cond bool, v string) *AudioHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.CROSSORIGIN(v)
+}
+
 func (e *AudioHTMLElement) RemoveCROSSORIGIN(v string) *AudioHTMLElement {
     delete(e.StringAttributes, "crossorigin")
     return e
@@ -280,6 +336,13 @@ func (e *AudioHTMLElement) DIR(v string) *AudioHTMLElement {
     return e
 }
 
+func (e *AudioHTMLElement) IfDIR(cond bool, v string) *AudioHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.DIR(v)
+}
+
 func (e *AudioHTMLElement) RemoveDIR(v string) *AudioHTMLElement {
     delete(e.StringAttributes, "dir")
     return e
@@ -295,6 +358,13 @@ func (e *AudioHTMLElement) DRAGGABLE(v string) *AudioHTMLElement {
     }
     e.StringAttributes["draggable"] = v
     return e
+}
+
+func (e *AudioHTMLElement) IfDRAGGABLE(cond bool, v string) *AudioHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.DRAGGABLE(v)
 }
 
 func (e *AudioHTMLElement) RemoveDRAGGABLE(v string) *AudioHTMLElement {
@@ -326,6 +396,13 @@ func (e *AudioHTMLElement) ENTERKEYHINT(v string) *AudioHTMLElement {
     return e
 }
 
+func (e *AudioHTMLElement) IfENTERKEYHINT(cond bool, v string) *AudioHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ENTERKEYHINT(v)
+}
+
 func (e *AudioHTMLElement) RemoveENTERKEYHINT(v string) *AudioHTMLElement {
     delete(e.StringAttributes, "enterkeyhint")
     return e
@@ -345,6 +422,13 @@ func (e *AudioHTMLElement) HIDDEN(v string) *AudioHTMLElement {
     return e
 }
 
+func (e *AudioHTMLElement) IfHIDDEN(cond bool, v string) *AudioHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.HIDDEN(v)
+}
+
 func (e *AudioHTMLElement) RemoveHIDDEN(v string) *AudioHTMLElement {
     delete(e.StringAttributes, "hidden")
     return e
@@ -361,6 +445,13 @@ func (e *AudioHTMLElement) ID(v string) *AudioHTMLElement {
     return e
 }
 
+func (e *AudioHTMLElement) IfID(cond bool, v string) *AudioHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ID(v)
+}
+
 func (e *AudioHTMLElement) RemoveID(v string) *AudioHTMLElement {
     delete(e.StringAttributes, "id")
     return e
@@ -375,6 +466,13 @@ func (e *AudioHTMLElement) INERT() *AudioHTMLElement {
     }
     e.BoolAttributes["inert"] = struct{}{}
     return e
+}
+
+func (e *AudioHTMLElement) IfINERT(cond bool) *AudioHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.INERT()
 }
 
 func (e *AudioHTMLElement) RemoveINERT() *AudioHTMLElement {
@@ -418,6 +516,13 @@ func (e *AudioHTMLElement) INPUTMODE(v string) *AudioHTMLElement {
     return e
 }
 
+func (e *AudioHTMLElement) IfINPUTMODE(cond bool, v string) *AudioHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.INPUTMODE(v)
+}
+
 func (e *AudioHTMLElement) RemoveINPUTMODE(v string) *AudioHTMLElement {
     delete(e.StringAttributes, "inputmode")
     return e
@@ -435,6 +540,13 @@ func (e *AudioHTMLElement) IS(v string) *AudioHTMLElement {
     return e
 }
 
+func (e *AudioHTMLElement) IfIS(cond bool, v string) *AudioHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.IS(v)
+}
+
 func (e *AudioHTMLElement) RemoveIS(v string) *AudioHTMLElement {
     delete(e.StringAttributes, "is")
     return e
@@ -449,6 +561,13 @@ func (e *AudioHTMLElement) ITEMID(v string) *AudioHTMLElement {
     }
     e.StringAttributes["itemid"] = v
     return e
+}
+
+func (e *AudioHTMLElement) IfITEMID(cond bool, v string) *AudioHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMID(v)
 }
 
 func (e *AudioHTMLElement) RemoveITEMID(v string) *AudioHTMLElement {
@@ -469,6 +588,13 @@ func (e *AudioHTMLElement) ITEMPROP(v string) *AudioHTMLElement {
     return e
 }
 
+func (e *AudioHTMLElement) IfITEMPROP(cond bool, v string) *AudioHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMPROP(v)
+}
+
 func (e *AudioHTMLElement) RemoveITEMPROP(v string) *AudioHTMLElement {
     delete(e.StringAttributes, "itemprop")
     return e
@@ -485,6 +611,13 @@ func (e *AudioHTMLElement) ITEMREF(v string) *AudioHTMLElement {
     return e
 }
 
+func (e *AudioHTMLElement) IfITEMREF(cond bool, v string) *AudioHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMREF(v)
+}
+
 func (e *AudioHTMLElement) RemoveITEMREF(v string) *AudioHTMLElement {
     delete(e.StringAttributes, "itemref")
     return e
@@ -499,6 +632,13 @@ func (e *AudioHTMLElement) ITEMSCOPE() *AudioHTMLElement {
     }
     e.BoolAttributes["itemscope"] = struct{}{}
     return e
+}
+
+func (e *AudioHTMLElement) IfITEMSCOPE(cond bool) *AudioHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMSCOPE()
 }
 
 func (e *AudioHTMLElement) RemoveITEMSCOPE() *AudioHTMLElement {
@@ -528,6 +668,13 @@ func (e *AudioHTMLElement) ITEMTYPE(v string) *AudioHTMLElement {
     return e
 }
 
+func (e *AudioHTMLElement) IfITEMTYPE(cond bool, v string) *AudioHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMTYPE(v)
+}
+
 func (e *AudioHTMLElement) RemoveITEMTYPE(v string) *AudioHTMLElement {
     delete(e.StringAttributes, "itemtype")
     return e
@@ -541,6 +688,13 @@ func (e *AudioHTMLElement) LANG(v string) *AudioHTMLElement {
     }
     e.StringAttributes["lang"] = v
     return e
+}
+
+func (e *AudioHTMLElement) IfLANG(cond bool, v string) *AudioHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.LANG(v)
 }
 
 func (e *AudioHTMLElement) RemoveLANG(v string) *AudioHTMLElement {
@@ -557,6 +711,13 @@ func (e *AudioHTMLElement) LOOP() *AudioHTMLElement {
     }
     e.BoolAttributes["loop"] = struct{}{}
     return e
+}
+
+func (e *AudioHTMLElement) IfLOOP(cond bool) *AudioHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.LOOP()
 }
 
 func (e *AudioHTMLElement) RemoveLOOP() *AudioHTMLElement {
@@ -585,6 +746,13 @@ func (e *AudioHTMLElement) MUTED() *AudioHTMLElement {
     return e
 }
 
+func (e *AudioHTMLElement) IfMUTED(cond bool) *AudioHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.MUTED()
+}
+
 func (e *AudioHTMLElement) RemoveMUTED() *AudioHTMLElement {
     if e.BoolAttributes == nil {
         return e
@@ -611,6 +779,13 @@ func (e *AudioHTMLElement) NONCE(v string) *AudioHTMLElement {
     return e
 }
 
+func (e *AudioHTMLElement) IfNONCE(cond bool, v string) *AudioHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.NONCE(v)
+}
+
 func (e *AudioHTMLElement) RemoveNONCE(v string) *AudioHTMLElement {
     delete(e.StringAttributes, "nonce")
     return e
@@ -628,6 +803,13 @@ func (e *AudioHTMLElement) POPOVER(v string) *AudioHTMLElement {
     }
     e.StringAttributes["popover"] = v
     return e
+}
+
+func (e *AudioHTMLElement) IfPOPOVER(cond bool, v string) *AudioHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.POPOVER(v)
 }
 
 func (e *AudioHTMLElement) RemovePOPOVER(v string) *AudioHTMLElement {
@@ -651,6 +833,13 @@ func (e *AudioHTMLElement) PRELOAD(v string) *AudioHTMLElement {
     return e
 }
 
+func (e *AudioHTMLElement) IfPRELOAD(cond bool, v string) *AudioHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.PRELOAD(v)
+}
+
 func (e *AudioHTMLElement) RemovePRELOAD(v string) *AudioHTMLElement {
     delete(e.StringAttributes, "preload")
     return e
@@ -665,6 +854,13 @@ func (e *AudioHTMLElement) SLOT(v string) *AudioHTMLElement {
     }
     e.StringAttributes["slot"] = v
     return e
+}
+
+func (e *AudioHTMLElement) IfSLOT(cond bool, v string) *AudioHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SLOT(v)
 }
 
 func (e *AudioHTMLElement) RemoveSLOT(v string) *AudioHTMLElement {
@@ -684,6 +880,13 @@ func (e *AudioHTMLElement) SPELLCHECK(v string) *AudioHTMLElement {
     return e
 }
 
+func (e *AudioHTMLElement) IfSPELLCHECK(cond bool, v string) *AudioHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SPELLCHECK(v)
+}
+
 func (e *AudioHTMLElement) RemoveSPELLCHECK(v string) *AudioHTMLElement {
     delete(e.StringAttributes, "spellcheck")
     return e
@@ -698,6 +901,13 @@ func (e *AudioHTMLElement) SRC(v string) *AudioHTMLElement {
     }
     e.StringAttributes["src"] = v
     return e
+}
+
+func (e *AudioHTMLElement) IfSRC(cond bool, v string) *AudioHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SRC(v)
 }
 
 func (e *AudioHTMLElement) RemoveSRC(v string) *AudioHTMLElement {
@@ -718,6 +928,13 @@ func (e *AudioHTMLElement) STYLE(k,v string) *AudioHTMLElement {
     }
     kv.Add(k,v)
     return e
+}
+
+func (e *AudioHTMLElement) IfSTYLE(cond bool, k string) *AudioHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.STYLE(k, "")
 }
 
 func (e *AudioHTMLElement) RemoveSTYLE(k string) *AudioHTMLElement {
@@ -741,6 +958,13 @@ func (e *AudioHTMLElement) TABINDEX(v string) *AudioHTMLElement {
     return e
 }
 
+func (e *AudioHTMLElement) IfTABINDEX(cond bool, v string) *AudioHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TABINDEX(v)
+}
+
 func (e *AudioHTMLElement) RemoveTABINDEX(v string) *AudioHTMLElement {
     delete(e.StringAttributes, "tabindex")
     return e
@@ -755,6 +979,13 @@ func (e *AudioHTMLElement) TITLE(v string) *AudioHTMLElement {
     }
     e.StringAttributes["title"] = v
     return e
+}
+
+func (e *AudioHTMLElement) IfTITLE(cond bool, v string) *AudioHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TITLE(v)
 }
 
 func (e *AudioHTMLElement) RemoveTITLE(v string) *AudioHTMLElement {
@@ -772,6 +1003,13 @@ func (e *AudioHTMLElement) TRANSLATE(v string) *AudioHTMLElement {
     }
     e.StringAttributes["translate"] = v
     return e
+}
+
+func (e *AudioHTMLElement) IfTRANSLATE(cond bool, v string) *AudioHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TRANSLATE(v)
 }
 
 func (e *AudioHTMLElement) RemoveTRANSLATE(v string) *AudioHTMLElement {

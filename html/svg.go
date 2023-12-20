@@ -48,13 +48,13 @@ func (e *SvgHTMLElement) TextF(format string, args ...any) *SvgHTMLElement {
     return e.Text(fmt.Sprintf(format, args...))
 }
 
-func (e *SvgHTMLElement) Raw(text string) *SvgHTMLElement {
-    e.Descendants = append(e.Descendants, Raw(text))
+func (e *SvgHTMLElement) Escaped(text string) *SvgHTMLElement {
+    e.Descendants = append(e.Descendants, Escaped(text))
     return e
 }
 
-func (e *SvgHTMLElement) RawF(format string, args ...any) *SvgHTMLElement {
-    return e.Raw(fmt.Sprintf(format, args...))
+func (e *SvgHTMLElement) EscapedF(format string, args ...any) *SvgHTMLElement {
+    return e.Escaped(fmt.Sprintf(format, args...))
 }
 
 func (e *SvgHTMLElement) CustomData(key, value string) *SvgHTMLElement {
@@ -87,6 +87,13 @@ func (e *SvgHTMLElement) ACCESSKEY(v string) *SvgHTMLElement {
     return e
 }
 
+func (e *SvgHTMLElement) IfACCESSKEY(cond bool, v string) *SvgHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ACCESSKEY(v)
+}
+
 func (e *SvgHTMLElement) RemoveACCESSKEY(v string) *SvgHTMLElement {
     delete(e.StringAttributes, "accesskey")
     return e
@@ -114,6 +121,13 @@ func (e *SvgHTMLElement) AUTOCAPITALIZE(v string) *SvgHTMLElement {
     return e
 }
 
+func (e *SvgHTMLElement) IfAUTOCAPITALIZE(cond bool, v string) *SvgHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.AUTOCAPITALIZE(v)
+}
+
 func (e *SvgHTMLElement) RemoveAUTOCAPITALIZE(v string) *SvgHTMLElement {
     delete(e.StringAttributes, "autocapitalize")
     return e
@@ -128,6 +142,13 @@ func (e *SvgHTMLElement) AUTOFOCUS() *SvgHTMLElement {
     }
     e.BoolAttributes["autofocus"] = struct{}{}
     return e
+}
+
+func (e *SvgHTMLElement) IfAUTOFOCUS(cond bool) *SvgHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.AUTOFOCUS()
 }
 
 func (e *SvgHTMLElement) RemoveAUTOFOCUS() *SvgHTMLElement {
@@ -161,6 +182,13 @@ func(e *SvgHTMLElement) CLASS(v string) *SvgHTMLElement {
     return e
 }
 
+func (e *SvgHTMLElement) IfCLASS(cond bool, v string) *SvgHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.CLASS(v)
+}
+
 func (e *SvgHTMLElement) SetCLASS(v string) *SvgHTMLElement {
     kv := NewSpaceDelimitedString()
     e.DelimitedStringAttributes["class"] = kv
@@ -190,6 +218,13 @@ func (e *SvgHTMLElement) CONTENTEDITABLE(v string) *SvgHTMLElement {
     return e
 }
 
+func (e *SvgHTMLElement) IfCONTENTEDITABLE(cond bool, v string) *SvgHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.CONTENTEDITABLE(v)
+}
+
 func (e *SvgHTMLElement) RemoveCONTENTEDITABLE(v string) *SvgHTMLElement {
     delete(e.StringAttributes, "contenteditable")
     return e
@@ -209,6 +244,13 @@ func (e *SvgHTMLElement) DIR(v string) *SvgHTMLElement {
     return e
 }
 
+func (e *SvgHTMLElement) IfDIR(cond bool, v string) *SvgHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.DIR(v)
+}
+
 func (e *SvgHTMLElement) RemoveDIR(v string) *SvgHTMLElement {
     delete(e.StringAttributes, "dir")
     return e
@@ -224,6 +266,13 @@ func (e *SvgHTMLElement) DRAGGABLE(v string) *SvgHTMLElement {
     }
     e.StringAttributes["draggable"] = v
     return e
+}
+
+func (e *SvgHTMLElement) IfDRAGGABLE(cond bool, v string) *SvgHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.DRAGGABLE(v)
 }
 
 func (e *SvgHTMLElement) RemoveDRAGGABLE(v string) *SvgHTMLElement {
@@ -255,6 +304,13 @@ func (e *SvgHTMLElement) ENTERKEYHINT(v string) *SvgHTMLElement {
     return e
 }
 
+func (e *SvgHTMLElement) IfENTERKEYHINT(cond bool, v string) *SvgHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ENTERKEYHINT(v)
+}
+
 func (e *SvgHTMLElement) RemoveENTERKEYHINT(v string) *SvgHTMLElement {
     delete(e.StringAttributes, "enterkeyhint")
     return e
@@ -274,6 +330,13 @@ func (e *SvgHTMLElement) HIDDEN(v string) *SvgHTMLElement {
     return e
 }
 
+func (e *SvgHTMLElement) IfHIDDEN(cond bool, v string) *SvgHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.HIDDEN(v)
+}
+
 func (e *SvgHTMLElement) RemoveHIDDEN(v string) *SvgHTMLElement {
     delete(e.StringAttributes, "hidden")
     return e
@@ -290,6 +353,13 @@ func (e *SvgHTMLElement) ID(v string) *SvgHTMLElement {
     return e
 }
 
+func (e *SvgHTMLElement) IfID(cond bool, v string) *SvgHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ID(v)
+}
+
 func (e *SvgHTMLElement) RemoveID(v string) *SvgHTMLElement {
     delete(e.StringAttributes, "id")
     return e
@@ -304,6 +374,13 @@ func (e *SvgHTMLElement) INERT() *SvgHTMLElement {
     }
     e.BoolAttributes["inert"] = struct{}{}
     return e
+}
+
+func (e *SvgHTMLElement) IfINERT(cond bool) *SvgHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.INERT()
 }
 
 func (e *SvgHTMLElement) RemoveINERT() *SvgHTMLElement {
@@ -347,6 +424,13 @@ func (e *SvgHTMLElement) INPUTMODE(v string) *SvgHTMLElement {
     return e
 }
 
+func (e *SvgHTMLElement) IfINPUTMODE(cond bool, v string) *SvgHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.INPUTMODE(v)
+}
+
 func (e *SvgHTMLElement) RemoveINPUTMODE(v string) *SvgHTMLElement {
     delete(e.StringAttributes, "inputmode")
     return e
@@ -364,6 +448,13 @@ func (e *SvgHTMLElement) IS(v string) *SvgHTMLElement {
     return e
 }
 
+func (e *SvgHTMLElement) IfIS(cond bool, v string) *SvgHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.IS(v)
+}
+
 func (e *SvgHTMLElement) RemoveIS(v string) *SvgHTMLElement {
     delete(e.StringAttributes, "is")
     return e
@@ -378,6 +469,13 @@ func (e *SvgHTMLElement) ITEMID(v string) *SvgHTMLElement {
     }
     e.StringAttributes["itemid"] = v
     return e
+}
+
+func (e *SvgHTMLElement) IfITEMID(cond bool, v string) *SvgHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMID(v)
 }
 
 func (e *SvgHTMLElement) RemoveITEMID(v string) *SvgHTMLElement {
@@ -398,6 +496,13 @@ func (e *SvgHTMLElement) ITEMPROP(v string) *SvgHTMLElement {
     return e
 }
 
+func (e *SvgHTMLElement) IfITEMPROP(cond bool, v string) *SvgHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMPROP(v)
+}
+
 func (e *SvgHTMLElement) RemoveITEMPROP(v string) *SvgHTMLElement {
     delete(e.StringAttributes, "itemprop")
     return e
@@ -414,6 +519,13 @@ func (e *SvgHTMLElement) ITEMREF(v string) *SvgHTMLElement {
     return e
 }
 
+func (e *SvgHTMLElement) IfITEMREF(cond bool, v string) *SvgHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMREF(v)
+}
+
 func (e *SvgHTMLElement) RemoveITEMREF(v string) *SvgHTMLElement {
     delete(e.StringAttributes, "itemref")
     return e
@@ -428,6 +540,13 @@ func (e *SvgHTMLElement) ITEMSCOPE() *SvgHTMLElement {
     }
     e.BoolAttributes["itemscope"] = struct{}{}
     return e
+}
+
+func (e *SvgHTMLElement) IfITEMSCOPE(cond bool) *SvgHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMSCOPE()
 }
 
 func (e *SvgHTMLElement) RemoveITEMSCOPE() *SvgHTMLElement {
@@ -457,6 +576,13 @@ func (e *SvgHTMLElement) ITEMTYPE(v string) *SvgHTMLElement {
     return e
 }
 
+func (e *SvgHTMLElement) IfITEMTYPE(cond bool, v string) *SvgHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMTYPE(v)
+}
+
 func (e *SvgHTMLElement) RemoveITEMTYPE(v string) *SvgHTMLElement {
     delete(e.StringAttributes, "itemtype")
     return e
@@ -470,6 +596,13 @@ func (e *SvgHTMLElement) LANG(v string) *SvgHTMLElement {
     }
     e.StringAttributes["lang"] = v
     return e
+}
+
+func (e *SvgHTMLElement) IfLANG(cond bool, v string) *SvgHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.LANG(v)
 }
 
 func (e *SvgHTMLElement) RemoveLANG(v string) *SvgHTMLElement {
@@ -486,6 +619,13 @@ func (e *SvgHTMLElement) NONCE(v string) *SvgHTMLElement {
     }
     e.StringAttributes["nonce"] = v
     return e
+}
+
+func (e *SvgHTMLElement) IfNONCE(cond bool, v string) *SvgHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.NONCE(v)
 }
 
 func (e *SvgHTMLElement) RemoveNONCE(v string) *SvgHTMLElement {
@@ -507,6 +647,13 @@ func (e *SvgHTMLElement) POPOVER(v string) *SvgHTMLElement {
     return e
 }
 
+func (e *SvgHTMLElement) IfPOPOVER(cond bool, v string) *SvgHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.POPOVER(v)
+}
+
 func (e *SvgHTMLElement) RemovePOPOVER(v string) *SvgHTMLElement {
     delete(e.StringAttributes, "popover")
     return e
@@ -521,6 +668,13 @@ func (e *SvgHTMLElement) SLOT(v string) *SvgHTMLElement {
     }
     e.StringAttributes["slot"] = v
     return e
+}
+
+func (e *SvgHTMLElement) IfSLOT(cond bool, v string) *SvgHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SLOT(v)
 }
 
 func (e *SvgHTMLElement) RemoveSLOT(v string) *SvgHTMLElement {
@@ -538,6 +692,13 @@ func (e *SvgHTMLElement) SPELLCHECK(v string) *SvgHTMLElement {
     }
     e.StringAttributes["spellcheck"] = v
     return e
+}
+
+func (e *SvgHTMLElement) IfSPELLCHECK(cond bool, v string) *SvgHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SPELLCHECK(v)
 }
 
 func (e *SvgHTMLElement) RemoveSPELLCHECK(v string) *SvgHTMLElement {
@@ -558,6 +719,13 @@ func (e *SvgHTMLElement) STYLE(k,v string) *SvgHTMLElement {
     }
     kv.Add(k,v)
     return e
+}
+
+func (e *SvgHTMLElement) IfSTYLE(cond bool, k string) *SvgHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.STYLE(k, "")
 }
 
 func (e *SvgHTMLElement) RemoveSTYLE(k string) *SvgHTMLElement {
@@ -581,6 +749,13 @@ func (e *SvgHTMLElement) TABINDEX(v string) *SvgHTMLElement {
     return e
 }
 
+func (e *SvgHTMLElement) IfTABINDEX(cond bool, v string) *SvgHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TABINDEX(v)
+}
+
 func (e *SvgHTMLElement) RemoveTABINDEX(v string) *SvgHTMLElement {
     delete(e.StringAttributes, "tabindex")
     return e
@@ -595,6 +770,13 @@ func (e *SvgHTMLElement) TITLE(v string) *SvgHTMLElement {
     }
     e.StringAttributes["title"] = v
     return e
+}
+
+func (e *SvgHTMLElement) IfTITLE(cond bool, v string) *SvgHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TITLE(v)
 }
 
 func (e *SvgHTMLElement) RemoveTITLE(v string) *SvgHTMLElement {
@@ -612,6 +794,13 @@ func (e *SvgHTMLElement) TRANSLATE(v string) *SvgHTMLElement {
     }
     e.StringAttributes["translate"] = v
     return e
+}
+
+func (e *SvgHTMLElement) IfTRANSLATE(cond bool, v string) *SvgHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TRANSLATE(v)
 }
 
 func (e *SvgHTMLElement) RemoveTRANSLATE(v string) *SvgHTMLElement {

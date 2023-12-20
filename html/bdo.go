@@ -48,13 +48,13 @@ func (e *BdoHTMLElement) TextF(format string, args ...any) *BdoHTMLElement {
     return e.Text(fmt.Sprintf(format, args...))
 }
 
-func (e *BdoHTMLElement) Raw(text string) *BdoHTMLElement {
-    e.Descendants = append(e.Descendants, Raw(text))
+func (e *BdoHTMLElement) Escaped(text string) *BdoHTMLElement {
+    e.Descendants = append(e.Descendants, Escaped(text))
     return e
 }
 
-func (e *BdoHTMLElement) RawF(format string, args ...any) *BdoHTMLElement {
-    return e.Raw(fmt.Sprintf(format, args...))
+func (e *BdoHTMLElement) EscapedF(format string, args ...any) *BdoHTMLElement {
+    return e.Escaped(fmt.Sprintf(format, args...))
 }
 
 func (e *BdoHTMLElement) CustomData(key, value string) *BdoHTMLElement {
@@ -87,6 +87,13 @@ func (e *BdoHTMLElement) ACCESSKEY(v string) *BdoHTMLElement {
     return e
 }
 
+func (e *BdoHTMLElement) IfACCESSKEY(cond bool, v string) *BdoHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ACCESSKEY(v)
+}
+
 func (e *BdoHTMLElement) RemoveACCESSKEY(v string) *BdoHTMLElement {
     delete(e.StringAttributes, "accesskey")
     return e
@@ -114,6 +121,13 @@ func (e *BdoHTMLElement) AUTOCAPITALIZE(v string) *BdoHTMLElement {
     return e
 }
 
+func (e *BdoHTMLElement) IfAUTOCAPITALIZE(cond bool, v string) *BdoHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.AUTOCAPITALIZE(v)
+}
+
 func (e *BdoHTMLElement) RemoveAUTOCAPITALIZE(v string) *BdoHTMLElement {
     delete(e.StringAttributes, "autocapitalize")
     return e
@@ -128,6 +142,13 @@ func (e *BdoHTMLElement) AUTOFOCUS() *BdoHTMLElement {
     }
     e.BoolAttributes["autofocus"] = struct{}{}
     return e
+}
+
+func (e *BdoHTMLElement) IfAUTOFOCUS(cond bool) *BdoHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.AUTOFOCUS()
 }
 
 func (e *BdoHTMLElement) RemoveAUTOFOCUS() *BdoHTMLElement {
@@ -161,6 +182,13 @@ func(e *BdoHTMLElement) CLASS(v string) *BdoHTMLElement {
     return e
 }
 
+func (e *BdoHTMLElement) IfCLASS(cond bool, v string) *BdoHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.CLASS(v)
+}
+
 func (e *BdoHTMLElement) SetCLASS(v string) *BdoHTMLElement {
     kv := NewSpaceDelimitedString()
     e.DelimitedStringAttributes["class"] = kv
@@ -190,6 +218,13 @@ func (e *BdoHTMLElement) CONTENTEDITABLE(v string) *BdoHTMLElement {
     return e
 }
 
+func (e *BdoHTMLElement) IfCONTENTEDITABLE(cond bool, v string) *BdoHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.CONTENTEDITABLE(v)
+}
+
 func (e *BdoHTMLElement) RemoveCONTENTEDITABLE(v string) *BdoHTMLElement {
     delete(e.StringAttributes, "contenteditable")
     return e
@@ -209,6 +244,13 @@ func (e *BdoHTMLElement) DIR(v string) *BdoHTMLElement {
     return e
 }
 
+func (e *BdoHTMLElement) IfDIR(cond bool, v string) *BdoHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.DIR(v)
+}
+
 func (e *BdoHTMLElement) RemoveDIR(v string) *BdoHTMLElement {
     delete(e.StringAttributes, "dir")
     return e
@@ -224,6 +266,13 @@ func (e *BdoHTMLElement) DRAGGABLE(v string) *BdoHTMLElement {
     }
     e.StringAttributes["draggable"] = v
     return e
+}
+
+func (e *BdoHTMLElement) IfDRAGGABLE(cond bool, v string) *BdoHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.DRAGGABLE(v)
 }
 
 func (e *BdoHTMLElement) RemoveDRAGGABLE(v string) *BdoHTMLElement {
@@ -255,6 +304,13 @@ func (e *BdoHTMLElement) ENTERKEYHINT(v string) *BdoHTMLElement {
     return e
 }
 
+func (e *BdoHTMLElement) IfENTERKEYHINT(cond bool, v string) *BdoHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ENTERKEYHINT(v)
+}
+
 func (e *BdoHTMLElement) RemoveENTERKEYHINT(v string) *BdoHTMLElement {
     delete(e.StringAttributes, "enterkeyhint")
     return e
@@ -274,6 +330,13 @@ func (e *BdoHTMLElement) HIDDEN(v string) *BdoHTMLElement {
     return e
 }
 
+func (e *BdoHTMLElement) IfHIDDEN(cond bool, v string) *BdoHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.HIDDEN(v)
+}
+
 func (e *BdoHTMLElement) RemoveHIDDEN(v string) *BdoHTMLElement {
     delete(e.StringAttributes, "hidden")
     return e
@@ -290,6 +353,13 @@ func (e *BdoHTMLElement) ID(v string) *BdoHTMLElement {
     return e
 }
 
+func (e *BdoHTMLElement) IfID(cond bool, v string) *BdoHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ID(v)
+}
+
 func (e *BdoHTMLElement) RemoveID(v string) *BdoHTMLElement {
     delete(e.StringAttributes, "id")
     return e
@@ -304,6 +374,13 @@ func (e *BdoHTMLElement) INERT() *BdoHTMLElement {
     }
     e.BoolAttributes["inert"] = struct{}{}
     return e
+}
+
+func (e *BdoHTMLElement) IfINERT(cond bool) *BdoHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.INERT()
 }
 
 func (e *BdoHTMLElement) RemoveINERT() *BdoHTMLElement {
@@ -347,6 +424,13 @@ func (e *BdoHTMLElement) INPUTMODE(v string) *BdoHTMLElement {
     return e
 }
 
+func (e *BdoHTMLElement) IfINPUTMODE(cond bool, v string) *BdoHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.INPUTMODE(v)
+}
+
 func (e *BdoHTMLElement) RemoveINPUTMODE(v string) *BdoHTMLElement {
     delete(e.StringAttributes, "inputmode")
     return e
@@ -364,6 +448,13 @@ func (e *BdoHTMLElement) IS(v string) *BdoHTMLElement {
     return e
 }
 
+func (e *BdoHTMLElement) IfIS(cond bool, v string) *BdoHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.IS(v)
+}
+
 func (e *BdoHTMLElement) RemoveIS(v string) *BdoHTMLElement {
     delete(e.StringAttributes, "is")
     return e
@@ -378,6 +469,13 @@ func (e *BdoHTMLElement) ITEMID(v string) *BdoHTMLElement {
     }
     e.StringAttributes["itemid"] = v
     return e
+}
+
+func (e *BdoHTMLElement) IfITEMID(cond bool, v string) *BdoHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMID(v)
 }
 
 func (e *BdoHTMLElement) RemoveITEMID(v string) *BdoHTMLElement {
@@ -398,6 +496,13 @@ func (e *BdoHTMLElement) ITEMPROP(v string) *BdoHTMLElement {
     return e
 }
 
+func (e *BdoHTMLElement) IfITEMPROP(cond bool, v string) *BdoHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMPROP(v)
+}
+
 func (e *BdoHTMLElement) RemoveITEMPROP(v string) *BdoHTMLElement {
     delete(e.StringAttributes, "itemprop")
     return e
@@ -414,6 +519,13 @@ func (e *BdoHTMLElement) ITEMREF(v string) *BdoHTMLElement {
     return e
 }
 
+func (e *BdoHTMLElement) IfITEMREF(cond bool, v string) *BdoHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMREF(v)
+}
+
 func (e *BdoHTMLElement) RemoveITEMREF(v string) *BdoHTMLElement {
     delete(e.StringAttributes, "itemref")
     return e
@@ -428,6 +540,13 @@ func (e *BdoHTMLElement) ITEMSCOPE() *BdoHTMLElement {
     }
     e.BoolAttributes["itemscope"] = struct{}{}
     return e
+}
+
+func (e *BdoHTMLElement) IfITEMSCOPE(cond bool) *BdoHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMSCOPE()
 }
 
 func (e *BdoHTMLElement) RemoveITEMSCOPE() *BdoHTMLElement {
@@ -457,6 +576,13 @@ func (e *BdoHTMLElement) ITEMTYPE(v string) *BdoHTMLElement {
     return e
 }
 
+func (e *BdoHTMLElement) IfITEMTYPE(cond bool, v string) *BdoHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMTYPE(v)
+}
+
 func (e *BdoHTMLElement) RemoveITEMTYPE(v string) *BdoHTMLElement {
     delete(e.StringAttributes, "itemtype")
     return e
@@ -470,6 +596,13 @@ func (e *BdoHTMLElement) LANG(v string) *BdoHTMLElement {
     }
     e.StringAttributes["lang"] = v
     return e
+}
+
+func (e *BdoHTMLElement) IfLANG(cond bool, v string) *BdoHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.LANG(v)
 }
 
 func (e *BdoHTMLElement) RemoveLANG(v string) *BdoHTMLElement {
@@ -486,6 +619,13 @@ func (e *BdoHTMLElement) NONCE(v string) *BdoHTMLElement {
     }
     e.StringAttributes["nonce"] = v
     return e
+}
+
+func (e *BdoHTMLElement) IfNONCE(cond bool, v string) *BdoHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.NONCE(v)
 }
 
 func (e *BdoHTMLElement) RemoveNONCE(v string) *BdoHTMLElement {
@@ -507,6 +647,13 @@ func (e *BdoHTMLElement) POPOVER(v string) *BdoHTMLElement {
     return e
 }
 
+func (e *BdoHTMLElement) IfPOPOVER(cond bool, v string) *BdoHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.POPOVER(v)
+}
+
 func (e *BdoHTMLElement) RemovePOPOVER(v string) *BdoHTMLElement {
     delete(e.StringAttributes, "popover")
     return e
@@ -521,6 +668,13 @@ func (e *BdoHTMLElement) SLOT(v string) *BdoHTMLElement {
     }
     e.StringAttributes["slot"] = v
     return e
+}
+
+func (e *BdoHTMLElement) IfSLOT(cond bool, v string) *BdoHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SLOT(v)
 }
 
 func (e *BdoHTMLElement) RemoveSLOT(v string) *BdoHTMLElement {
@@ -538,6 +692,13 @@ func (e *BdoHTMLElement) SPELLCHECK(v string) *BdoHTMLElement {
     }
     e.StringAttributes["spellcheck"] = v
     return e
+}
+
+func (e *BdoHTMLElement) IfSPELLCHECK(cond bool, v string) *BdoHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SPELLCHECK(v)
 }
 
 func (e *BdoHTMLElement) RemoveSPELLCHECK(v string) *BdoHTMLElement {
@@ -558,6 +719,13 @@ func (e *BdoHTMLElement) STYLE(k,v string) *BdoHTMLElement {
     }
     kv.Add(k,v)
     return e
+}
+
+func (e *BdoHTMLElement) IfSTYLE(cond bool, k string) *BdoHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.STYLE(k, "")
 }
 
 func (e *BdoHTMLElement) RemoveSTYLE(k string) *BdoHTMLElement {
@@ -581,6 +749,13 @@ func (e *BdoHTMLElement) TABINDEX(v string) *BdoHTMLElement {
     return e
 }
 
+func (e *BdoHTMLElement) IfTABINDEX(cond bool, v string) *BdoHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TABINDEX(v)
+}
+
 func (e *BdoHTMLElement) RemoveTABINDEX(v string) *BdoHTMLElement {
     delete(e.StringAttributes, "tabindex")
     return e
@@ -595,6 +770,13 @@ func (e *BdoHTMLElement) TITLE(v string) *BdoHTMLElement {
     }
     e.StringAttributes["title"] = v
     return e
+}
+
+func (e *BdoHTMLElement) IfTITLE(cond bool, v string) *BdoHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TITLE(v)
 }
 
 func (e *BdoHTMLElement) RemoveTITLE(v string) *BdoHTMLElement {
@@ -612,6 +794,13 @@ func (e *BdoHTMLElement) TRANSLATE(v string) *BdoHTMLElement {
     }
     e.StringAttributes["translate"] = v
     return e
+}
+
+func (e *BdoHTMLElement) IfTRANSLATE(cond bool, v string) *BdoHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TRANSLATE(v)
 }
 
 func (e *BdoHTMLElement) RemoveTRANSLATE(v string) *BdoHTMLElement {

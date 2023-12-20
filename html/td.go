@@ -48,13 +48,13 @@ func (e *TdHTMLElement) TextF(format string, args ...any) *TdHTMLElement {
     return e.Text(fmt.Sprintf(format, args...))
 }
 
-func (e *TdHTMLElement) Raw(text string) *TdHTMLElement {
-    e.Descendants = append(e.Descendants, Raw(text))
+func (e *TdHTMLElement) Escaped(text string) *TdHTMLElement {
+    e.Descendants = append(e.Descendants, Escaped(text))
     return e
 }
 
-func (e *TdHTMLElement) RawF(format string, args ...any) *TdHTMLElement {
-    return e.Raw(fmt.Sprintf(format, args...))
+func (e *TdHTMLElement) EscapedF(format string, args ...any) *TdHTMLElement {
+    return e.Escaped(fmt.Sprintf(format, args...))
 }
 
 func (e *TdHTMLElement) CustomData(key, value string) *TdHTMLElement {
@@ -87,6 +87,13 @@ func (e *TdHTMLElement) ACCESSKEY(v string) *TdHTMLElement {
     return e
 }
 
+func (e *TdHTMLElement) IfACCESSKEY(cond bool, v string) *TdHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ACCESSKEY(v)
+}
+
 func (e *TdHTMLElement) RemoveACCESSKEY(v string) *TdHTMLElement {
     delete(e.StringAttributes, "accesskey")
     return e
@@ -114,6 +121,13 @@ func (e *TdHTMLElement) AUTOCAPITALIZE(v string) *TdHTMLElement {
     return e
 }
 
+func (e *TdHTMLElement) IfAUTOCAPITALIZE(cond bool, v string) *TdHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.AUTOCAPITALIZE(v)
+}
+
 func (e *TdHTMLElement) RemoveAUTOCAPITALIZE(v string) *TdHTMLElement {
     delete(e.StringAttributes, "autocapitalize")
     return e
@@ -128,6 +142,13 @@ func (e *TdHTMLElement) AUTOFOCUS() *TdHTMLElement {
     }
     e.BoolAttributes["autofocus"] = struct{}{}
     return e
+}
+
+func (e *TdHTMLElement) IfAUTOFOCUS(cond bool) *TdHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.AUTOFOCUS()
 }
 
 func (e *TdHTMLElement) RemoveAUTOFOCUS() *TdHTMLElement {
@@ -161,6 +182,13 @@ func(e *TdHTMLElement) CLASS(v string) *TdHTMLElement {
     return e
 }
 
+func (e *TdHTMLElement) IfCLASS(cond bool, v string) *TdHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.CLASS(v)
+}
+
 func (e *TdHTMLElement) SetCLASS(v string) *TdHTMLElement {
     kv := NewSpaceDelimitedString()
     e.DelimitedStringAttributes["class"] = kv
@@ -188,6 +216,13 @@ func (e *TdHTMLElement) COLSPAN(v string) *TdHTMLElement {
     return e
 }
 
+func (e *TdHTMLElement) IfCOLSPAN(cond bool, v string) *TdHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.COLSPAN(v)
+}
+
 func (e *TdHTMLElement) RemoveCOLSPAN(v string) *TdHTMLElement {
     delete(e.StringAttributes, "colspan")
     return e
@@ -204,6 +239,13 @@ func (e *TdHTMLElement) CONTENTEDITABLE(v string) *TdHTMLElement {
     }
     e.StringAttributes["contenteditable"] = v
     return e
+}
+
+func (e *TdHTMLElement) IfCONTENTEDITABLE(cond bool, v string) *TdHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.CONTENTEDITABLE(v)
 }
 
 func (e *TdHTMLElement) RemoveCONTENTEDITABLE(v string) *TdHTMLElement {
@@ -225,6 +267,13 @@ func (e *TdHTMLElement) DIR(v string) *TdHTMLElement {
     return e
 }
 
+func (e *TdHTMLElement) IfDIR(cond bool, v string) *TdHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.DIR(v)
+}
+
 func (e *TdHTMLElement) RemoveDIR(v string) *TdHTMLElement {
     delete(e.StringAttributes, "dir")
     return e
@@ -240,6 +289,13 @@ func (e *TdHTMLElement) DRAGGABLE(v string) *TdHTMLElement {
     }
     e.StringAttributes["draggable"] = v
     return e
+}
+
+func (e *TdHTMLElement) IfDRAGGABLE(cond bool, v string) *TdHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.DRAGGABLE(v)
 }
 
 func (e *TdHTMLElement) RemoveDRAGGABLE(v string) *TdHTMLElement {
@@ -271,6 +327,13 @@ func (e *TdHTMLElement) ENTERKEYHINT(v string) *TdHTMLElement {
     return e
 }
 
+func (e *TdHTMLElement) IfENTERKEYHINT(cond bool, v string) *TdHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ENTERKEYHINT(v)
+}
+
 func (e *TdHTMLElement) RemoveENTERKEYHINT(v string) *TdHTMLElement {
     delete(e.StringAttributes, "enterkeyhint")
     return e
@@ -285,6 +348,13 @@ func (e *TdHTMLElement) HEADERS(v string) *TdHTMLElement {
     }
     e.StringAttributes["headers"] = v
     return e
+}
+
+func (e *TdHTMLElement) IfHEADERS(cond bool, v string) *TdHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.HEADERS(v)
 }
 
 func (e *TdHTMLElement) RemoveHEADERS(v string) *TdHTMLElement {
@@ -306,6 +376,13 @@ func (e *TdHTMLElement) HIDDEN(v string) *TdHTMLElement {
     return e
 }
 
+func (e *TdHTMLElement) IfHIDDEN(cond bool, v string) *TdHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.HIDDEN(v)
+}
+
 func (e *TdHTMLElement) RemoveHIDDEN(v string) *TdHTMLElement {
     delete(e.StringAttributes, "hidden")
     return e
@@ -322,6 +399,13 @@ func (e *TdHTMLElement) ID(v string) *TdHTMLElement {
     return e
 }
 
+func (e *TdHTMLElement) IfID(cond bool, v string) *TdHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ID(v)
+}
+
 func (e *TdHTMLElement) RemoveID(v string) *TdHTMLElement {
     delete(e.StringAttributes, "id")
     return e
@@ -336,6 +420,13 @@ func (e *TdHTMLElement) INERT() *TdHTMLElement {
     }
     e.BoolAttributes["inert"] = struct{}{}
     return e
+}
+
+func (e *TdHTMLElement) IfINERT(cond bool) *TdHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.INERT()
 }
 
 func (e *TdHTMLElement) RemoveINERT() *TdHTMLElement {
@@ -379,6 +470,13 @@ func (e *TdHTMLElement) INPUTMODE(v string) *TdHTMLElement {
     return e
 }
 
+func (e *TdHTMLElement) IfINPUTMODE(cond bool, v string) *TdHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.INPUTMODE(v)
+}
+
 func (e *TdHTMLElement) RemoveINPUTMODE(v string) *TdHTMLElement {
     delete(e.StringAttributes, "inputmode")
     return e
@@ -396,6 +494,13 @@ func (e *TdHTMLElement) IS(v string) *TdHTMLElement {
     return e
 }
 
+func (e *TdHTMLElement) IfIS(cond bool, v string) *TdHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.IS(v)
+}
+
 func (e *TdHTMLElement) RemoveIS(v string) *TdHTMLElement {
     delete(e.StringAttributes, "is")
     return e
@@ -410,6 +515,13 @@ func (e *TdHTMLElement) ITEMID(v string) *TdHTMLElement {
     }
     e.StringAttributes["itemid"] = v
     return e
+}
+
+func (e *TdHTMLElement) IfITEMID(cond bool, v string) *TdHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMID(v)
 }
 
 func (e *TdHTMLElement) RemoveITEMID(v string) *TdHTMLElement {
@@ -430,6 +542,13 @@ func (e *TdHTMLElement) ITEMPROP(v string) *TdHTMLElement {
     return e
 }
 
+func (e *TdHTMLElement) IfITEMPROP(cond bool, v string) *TdHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMPROP(v)
+}
+
 func (e *TdHTMLElement) RemoveITEMPROP(v string) *TdHTMLElement {
     delete(e.StringAttributes, "itemprop")
     return e
@@ -446,6 +565,13 @@ func (e *TdHTMLElement) ITEMREF(v string) *TdHTMLElement {
     return e
 }
 
+func (e *TdHTMLElement) IfITEMREF(cond bool, v string) *TdHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMREF(v)
+}
+
 func (e *TdHTMLElement) RemoveITEMREF(v string) *TdHTMLElement {
     delete(e.StringAttributes, "itemref")
     return e
@@ -460,6 +586,13 @@ func (e *TdHTMLElement) ITEMSCOPE() *TdHTMLElement {
     }
     e.BoolAttributes["itemscope"] = struct{}{}
     return e
+}
+
+func (e *TdHTMLElement) IfITEMSCOPE(cond bool) *TdHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMSCOPE()
 }
 
 func (e *TdHTMLElement) RemoveITEMSCOPE() *TdHTMLElement {
@@ -489,6 +622,13 @@ func (e *TdHTMLElement) ITEMTYPE(v string) *TdHTMLElement {
     return e
 }
 
+func (e *TdHTMLElement) IfITEMTYPE(cond bool, v string) *TdHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMTYPE(v)
+}
+
 func (e *TdHTMLElement) RemoveITEMTYPE(v string) *TdHTMLElement {
     delete(e.StringAttributes, "itemtype")
     return e
@@ -502,6 +642,13 @@ func (e *TdHTMLElement) LANG(v string) *TdHTMLElement {
     }
     e.StringAttributes["lang"] = v
     return e
+}
+
+func (e *TdHTMLElement) IfLANG(cond bool, v string) *TdHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.LANG(v)
 }
 
 func (e *TdHTMLElement) RemoveLANG(v string) *TdHTMLElement {
@@ -518,6 +665,13 @@ func (e *TdHTMLElement) NONCE(v string) *TdHTMLElement {
     }
     e.StringAttributes["nonce"] = v
     return e
+}
+
+func (e *TdHTMLElement) IfNONCE(cond bool, v string) *TdHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.NONCE(v)
 }
 
 func (e *TdHTMLElement) RemoveNONCE(v string) *TdHTMLElement {
@@ -539,6 +693,13 @@ func (e *TdHTMLElement) POPOVER(v string) *TdHTMLElement {
     return e
 }
 
+func (e *TdHTMLElement) IfPOPOVER(cond bool, v string) *TdHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.POPOVER(v)
+}
+
 func (e *TdHTMLElement) RemovePOPOVER(v string) *TdHTMLElement {
     delete(e.StringAttributes, "popover")
     return e
@@ -553,6 +714,13 @@ func (e *TdHTMLElement) ROWSPAN(v string) *TdHTMLElement {
     }
     e.StringAttributes["rowspan"] = v
     return e
+}
+
+func (e *TdHTMLElement) IfROWSPAN(cond bool, v string) *TdHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ROWSPAN(v)
 }
 
 func (e *TdHTMLElement) RemoveROWSPAN(v string) *TdHTMLElement {
@@ -571,6 +739,13 @@ func (e *TdHTMLElement) SLOT(v string) *TdHTMLElement {
     return e
 }
 
+func (e *TdHTMLElement) IfSLOT(cond bool, v string) *TdHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SLOT(v)
+}
+
 func (e *TdHTMLElement) RemoveSLOT(v string) *TdHTMLElement {
     delete(e.StringAttributes, "slot")
     return e
@@ -586,6 +761,13 @@ func (e *TdHTMLElement) SPELLCHECK(v string) *TdHTMLElement {
     }
     e.StringAttributes["spellcheck"] = v
     return e
+}
+
+func (e *TdHTMLElement) IfSPELLCHECK(cond bool, v string) *TdHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SPELLCHECK(v)
 }
 
 func (e *TdHTMLElement) RemoveSPELLCHECK(v string) *TdHTMLElement {
@@ -606,6 +788,13 @@ func (e *TdHTMLElement) STYLE(k,v string) *TdHTMLElement {
     }
     kv.Add(k,v)
     return e
+}
+
+func (e *TdHTMLElement) IfSTYLE(cond bool, k string) *TdHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.STYLE(k, "")
 }
 
 func (e *TdHTMLElement) RemoveSTYLE(k string) *TdHTMLElement {
@@ -629,6 +818,13 @@ func (e *TdHTMLElement) TABINDEX(v string) *TdHTMLElement {
     return e
 }
 
+func (e *TdHTMLElement) IfTABINDEX(cond bool, v string) *TdHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TABINDEX(v)
+}
+
 func (e *TdHTMLElement) RemoveTABINDEX(v string) *TdHTMLElement {
     delete(e.StringAttributes, "tabindex")
     return e
@@ -643,6 +839,13 @@ func (e *TdHTMLElement) TITLE(v string) *TdHTMLElement {
     }
     e.StringAttributes["title"] = v
     return e
+}
+
+func (e *TdHTMLElement) IfTITLE(cond bool, v string) *TdHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TITLE(v)
 }
 
 func (e *TdHTMLElement) RemoveTITLE(v string) *TdHTMLElement {
@@ -660,6 +863,13 @@ func (e *TdHTMLElement) TRANSLATE(v string) *TdHTMLElement {
     }
     e.StringAttributes["translate"] = v
     return e
+}
+
+func (e *TdHTMLElement) IfTRANSLATE(cond bool, v string) *TdHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TRANSLATE(v)
 }
 
 func (e *TdHTMLElement) RemoveTRANSLATE(v string) *TdHTMLElement {

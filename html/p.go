@@ -48,13 +48,13 @@ func (e *PHTMLElement) TextF(format string, args ...any) *PHTMLElement {
     return e.Text(fmt.Sprintf(format, args...))
 }
 
-func (e *PHTMLElement) Raw(text string) *PHTMLElement {
-    e.Descendants = append(e.Descendants, Raw(text))
+func (e *PHTMLElement) Escaped(text string) *PHTMLElement {
+    e.Descendants = append(e.Descendants, Escaped(text))
     return e
 }
 
-func (e *PHTMLElement) RawF(format string, args ...any) *PHTMLElement {
-    return e.Raw(fmt.Sprintf(format, args...))
+func (e *PHTMLElement) EscapedF(format string, args ...any) *PHTMLElement {
+    return e.Escaped(fmt.Sprintf(format, args...))
 }
 
 func (e *PHTMLElement) CustomData(key, value string) *PHTMLElement {
@@ -87,6 +87,13 @@ func (e *PHTMLElement) ACCESSKEY(v string) *PHTMLElement {
     return e
 }
 
+func (e *PHTMLElement) IfACCESSKEY(cond bool, v string) *PHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ACCESSKEY(v)
+}
+
 func (e *PHTMLElement) RemoveACCESSKEY(v string) *PHTMLElement {
     delete(e.StringAttributes, "accesskey")
     return e
@@ -114,6 +121,13 @@ func (e *PHTMLElement) AUTOCAPITALIZE(v string) *PHTMLElement {
     return e
 }
 
+func (e *PHTMLElement) IfAUTOCAPITALIZE(cond bool, v string) *PHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.AUTOCAPITALIZE(v)
+}
+
 func (e *PHTMLElement) RemoveAUTOCAPITALIZE(v string) *PHTMLElement {
     delete(e.StringAttributes, "autocapitalize")
     return e
@@ -128,6 +142,13 @@ func (e *PHTMLElement) AUTOFOCUS() *PHTMLElement {
     }
     e.BoolAttributes["autofocus"] = struct{}{}
     return e
+}
+
+func (e *PHTMLElement) IfAUTOFOCUS(cond bool) *PHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.AUTOFOCUS()
 }
 
 func (e *PHTMLElement) RemoveAUTOFOCUS() *PHTMLElement {
@@ -161,6 +182,13 @@ func(e *PHTMLElement) CLASS(v string) *PHTMLElement {
     return e
 }
 
+func (e *PHTMLElement) IfCLASS(cond bool, v string) *PHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.CLASS(v)
+}
+
 func (e *PHTMLElement) SetCLASS(v string) *PHTMLElement {
     kv := NewSpaceDelimitedString()
     e.DelimitedStringAttributes["class"] = kv
@@ -190,6 +218,13 @@ func (e *PHTMLElement) CONTENTEDITABLE(v string) *PHTMLElement {
     return e
 }
 
+func (e *PHTMLElement) IfCONTENTEDITABLE(cond bool, v string) *PHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.CONTENTEDITABLE(v)
+}
+
 func (e *PHTMLElement) RemoveCONTENTEDITABLE(v string) *PHTMLElement {
     delete(e.StringAttributes, "contenteditable")
     return e
@@ -209,6 +244,13 @@ func (e *PHTMLElement) DIR(v string) *PHTMLElement {
     return e
 }
 
+func (e *PHTMLElement) IfDIR(cond bool, v string) *PHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.DIR(v)
+}
+
 func (e *PHTMLElement) RemoveDIR(v string) *PHTMLElement {
     delete(e.StringAttributes, "dir")
     return e
@@ -224,6 +266,13 @@ func (e *PHTMLElement) DRAGGABLE(v string) *PHTMLElement {
     }
     e.StringAttributes["draggable"] = v
     return e
+}
+
+func (e *PHTMLElement) IfDRAGGABLE(cond bool, v string) *PHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.DRAGGABLE(v)
 }
 
 func (e *PHTMLElement) RemoveDRAGGABLE(v string) *PHTMLElement {
@@ -255,6 +304,13 @@ func (e *PHTMLElement) ENTERKEYHINT(v string) *PHTMLElement {
     return e
 }
 
+func (e *PHTMLElement) IfENTERKEYHINT(cond bool, v string) *PHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ENTERKEYHINT(v)
+}
+
 func (e *PHTMLElement) RemoveENTERKEYHINT(v string) *PHTMLElement {
     delete(e.StringAttributes, "enterkeyhint")
     return e
@@ -274,6 +330,13 @@ func (e *PHTMLElement) HIDDEN(v string) *PHTMLElement {
     return e
 }
 
+func (e *PHTMLElement) IfHIDDEN(cond bool, v string) *PHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.HIDDEN(v)
+}
+
 func (e *PHTMLElement) RemoveHIDDEN(v string) *PHTMLElement {
     delete(e.StringAttributes, "hidden")
     return e
@@ -290,6 +353,13 @@ func (e *PHTMLElement) ID(v string) *PHTMLElement {
     return e
 }
 
+func (e *PHTMLElement) IfID(cond bool, v string) *PHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ID(v)
+}
+
 func (e *PHTMLElement) RemoveID(v string) *PHTMLElement {
     delete(e.StringAttributes, "id")
     return e
@@ -304,6 +374,13 @@ func (e *PHTMLElement) INERT() *PHTMLElement {
     }
     e.BoolAttributes["inert"] = struct{}{}
     return e
+}
+
+func (e *PHTMLElement) IfINERT(cond bool) *PHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.INERT()
 }
 
 func (e *PHTMLElement) RemoveINERT() *PHTMLElement {
@@ -347,6 +424,13 @@ func (e *PHTMLElement) INPUTMODE(v string) *PHTMLElement {
     return e
 }
 
+func (e *PHTMLElement) IfINPUTMODE(cond bool, v string) *PHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.INPUTMODE(v)
+}
+
 func (e *PHTMLElement) RemoveINPUTMODE(v string) *PHTMLElement {
     delete(e.StringAttributes, "inputmode")
     return e
@@ -364,6 +448,13 @@ func (e *PHTMLElement) IS(v string) *PHTMLElement {
     return e
 }
 
+func (e *PHTMLElement) IfIS(cond bool, v string) *PHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.IS(v)
+}
+
 func (e *PHTMLElement) RemoveIS(v string) *PHTMLElement {
     delete(e.StringAttributes, "is")
     return e
@@ -378,6 +469,13 @@ func (e *PHTMLElement) ITEMID(v string) *PHTMLElement {
     }
     e.StringAttributes["itemid"] = v
     return e
+}
+
+func (e *PHTMLElement) IfITEMID(cond bool, v string) *PHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMID(v)
 }
 
 func (e *PHTMLElement) RemoveITEMID(v string) *PHTMLElement {
@@ -398,6 +496,13 @@ func (e *PHTMLElement) ITEMPROP(v string) *PHTMLElement {
     return e
 }
 
+func (e *PHTMLElement) IfITEMPROP(cond bool, v string) *PHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMPROP(v)
+}
+
 func (e *PHTMLElement) RemoveITEMPROP(v string) *PHTMLElement {
     delete(e.StringAttributes, "itemprop")
     return e
@@ -414,6 +519,13 @@ func (e *PHTMLElement) ITEMREF(v string) *PHTMLElement {
     return e
 }
 
+func (e *PHTMLElement) IfITEMREF(cond bool, v string) *PHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMREF(v)
+}
+
 func (e *PHTMLElement) RemoveITEMREF(v string) *PHTMLElement {
     delete(e.StringAttributes, "itemref")
     return e
@@ -428,6 +540,13 @@ func (e *PHTMLElement) ITEMSCOPE() *PHTMLElement {
     }
     e.BoolAttributes["itemscope"] = struct{}{}
     return e
+}
+
+func (e *PHTMLElement) IfITEMSCOPE(cond bool) *PHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMSCOPE()
 }
 
 func (e *PHTMLElement) RemoveITEMSCOPE() *PHTMLElement {
@@ -457,6 +576,13 @@ func (e *PHTMLElement) ITEMTYPE(v string) *PHTMLElement {
     return e
 }
 
+func (e *PHTMLElement) IfITEMTYPE(cond bool, v string) *PHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMTYPE(v)
+}
+
 func (e *PHTMLElement) RemoveITEMTYPE(v string) *PHTMLElement {
     delete(e.StringAttributes, "itemtype")
     return e
@@ -470,6 +596,13 @@ func (e *PHTMLElement) LANG(v string) *PHTMLElement {
     }
     e.StringAttributes["lang"] = v
     return e
+}
+
+func (e *PHTMLElement) IfLANG(cond bool, v string) *PHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.LANG(v)
 }
 
 func (e *PHTMLElement) RemoveLANG(v string) *PHTMLElement {
@@ -486,6 +619,13 @@ func (e *PHTMLElement) NONCE(v string) *PHTMLElement {
     }
     e.StringAttributes["nonce"] = v
     return e
+}
+
+func (e *PHTMLElement) IfNONCE(cond bool, v string) *PHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.NONCE(v)
 }
 
 func (e *PHTMLElement) RemoveNONCE(v string) *PHTMLElement {
@@ -507,6 +647,13 @@ func (e *PHTMLElement) POPOVER(v string) *PHTMLElement {
     return e
 }
 
+func (e *PHTMLElement) IfPOPOVER(cond bool, v string) *PHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.POPOVER(v)
+}
+
 func (e *PHTMLElement) RemovePOPOVER(v string) *PHTMLElement {
     delete(e.StringAttributes, "popover")
     return e
@@ -521,6 +668,13 @@ func (e *PHTMLElement) SLOT(v string) *PHTMLElement {
     }
     e.StringAttributes["slot"] = v
     return e
+}
+
+func (e *PHTMLElement) IfSLOT(cond bool, v string) *PHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SLOT(v)
 }
 
 func (e *PHTMLElement) RemoveSLOT(v string) *PHTMLElement {
@@ -538,6 +692,13 @@ func (e *PHTMLElement) SPELLCHECK(v string) *PHTMLElement {
     }
     e.StringAttributes["spellcheck"] = v
     return e
+}
+
+func (e *PHTMLElement) IfSPELLCHECK(cond bool, v string) *PHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SPELLCHECK(v)
 }
 
 func (e *PHTMLElement) RemoveSPELLCHECK(v string) *PHTMLElement {
@@ -558,6 +719,13 @@ func (e *PHTMLElement) STYLE(k,v string) *PHTMLElement {
     }
     kv.Add(k,v)
     return e
+}
+
+func (e *PHTMLElement) IfSTYLE(cond bool, k string) *PHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.STYLE(k, "")
 }
 
 func (e *PHTMLElement) RemoveSTYLE(k string) *PHTMLElement {
@@ -581,6 +749,13 @@ func (e *PHTMLElement) TABINDEX(v string) *PHTMLElement {
     return e
 }
 
+func (e *PHTMLElement) IfTABINDEX(cond bool, v string) *PHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TABINDEX(v)
+}
+
 func (e *PHTMLElement) RemoveTABINDEX(v string) *PHTMLElement {
     delete(e.StringAttributes, "tabindex")
     return e
@@ -595,6 +770,13 @@ func (e *PHTMLElement) TITLE(v string) *PHTMLElement {
     }
     e.StringAttributes["title"] = v
     return e
+}
+
+func (e *PHTMLElement) IfTITLE(cond bool, v string) *PHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TITLE(v)
 }
 
 func (e *PHTMLElement) RemoveTITLE(v string) *PHTMLElement {
@@ -612,6 +794,13 @@ func (e *PHTMLElement) TRANSLATE(v string) *PHTMLElement {
     }
     e.StringAttributes["translate"] = v
     return e
+}
+
+func (e *PHTMLElement) IfTRANSLATE(cond bool, v string) *PHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TRANSLATE(v)
 }
 
 func (e *PHTMLElement) RemoveTRANSLATE(v string) *PHTMLElement {

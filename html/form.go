@@ -48,13 +48,13 @@ func (e *FormHTMLElement) TextF(format string, args ...any) *FormHTMLElement {
     return e.Text(fmt.Sprintf(format, args...))
 }
 
-func (e *FormHTMLElement) Raw(text string) *FormHTMLElement {
-    e.Descendants = append(e.Descendants, Raw(text))
+func (e *FormHTMLElement) Escaped(text string) *FormHTMLElement {
+    e.Descendants = append(e.Descendants, Escaped(text))
     return e
 }
 
-func (e *FormHTMLElement) RawF(format string, args ...any) *FormHTMLElement {
-    return e.Raw(fmt.Sprintf(format, args...))
+func (e *FormHTMLElement) EscapedF(format string, args ...any) *FormHTMLElement {
+    return e.Escaped(fmt.Sprintf(format, args...))
 }
 
 func (e *FormHTMLElement) CustomData(key, value string) *FormHTMLElement {
@@ -87,6 +87,13 @@ func (e *FormHTMLElement) ACCEPT_CHARSET(v string) *FormHTMLElement {
     return e
 }
 
+func (e *FormHTMLElement) IfACCEPT_CHARSET(cond bool, v string) *FormHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ACCEPT_CHARSET(v)
+}
+
 func (e *FormHTMLElement) RemoveACCEPT_CHARSET(v string) *FormHTMLElement {
     delete(e.StringAttributes, "accept-charset")
     return e
@@ -104,6 +111,13 @@ func (e *FormHTMLElement) ACCESSKEY(v string) *FormHTMLElement {
     return e
 }
 
+func (e *FormHTMLElement) IfACCESSKEY(cond bool, v string) *FormHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ACCESSKEY(v)
+}
+
 func (e *FormHTMLElement) RemoveACCESSKEY(v string) *FormHTMLElement {
     delete(e.StringAttributes, "accesskey")
     return e
@@ -118,6 +132,13 @@ func (e *FormHTMLElement) ACTION(v string) *FormHTMLElement {
     }
     e.StringAttributes["action"] = v
     return e
+}
+
+func (e *FormHTMLElement) IfACTION(cond bool, v string) *FormHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ACTION(v)
 }
 
 func (e *FormHTMLElement) RemoveACTION(v string) *FormHTMLElement {
@@ -147,6 +168,13 @@ func (e *FormHTMLElement) AUTOCAPITALIZE(v string) *FormHTMLElement {
     return e
 }
 
+func (e *FormHTMLElement) IfAUTOCAPITALIZE(cond bool, v string) *FormHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.AUTOCAPITALIZE(v)
+}
+
 func (e *FormHTMLElement) RemoveAUTOCAPITALIZE(v string) *FormHTMLElement {
     delete(e.StringAttributes, "autocapitalize")
     return e
@@ -163,6 +191,13 @@ func (e *FormHTMLElement) AUTOCOMPLETE(v string) *FormHTMLElement {
     return e
 }
 
+func (e *FormHTMLElement) IfAUTOCOMPLETE(cond bool, v string) *FormHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.AUTOCOMPLETE(v)
+}
+
 func (e *FormHTMLElement) RemoveAUTOCOMPLETE(v string) *FormHTMLElement {
     delete(e.StringAttributes, "autocomplete")
     return e
@@ -177,6 +212,13 @@ func (e *FormHTMLElement) AUTOFOCUS() *FormHTMLElement {
     }
     e.BoolAttributes["autofocus"] = struct{}{}
     return e
+}
+
+func (e *FormHTMLElement) IfAUTOFOCUS(cond bool) *FormHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.AUTOFOCUS()
 }
 
 func (e *FormHTMLElement) RemoveAUTOFOCUS() *FormHTMLElement {
@@ -210,6 +252,13 @@ func(e *FormHTMLElement) CLASS(v string) *FormHTMLElement {
     return e
 }
 
+func (e *FormHTMLElement) IfCLASS(cond bool, v string) *FormHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.CLASS(v)
+}
+
 func (e *FormHTMLElement) SetCLASS(v string) *FormHTMLElement {
     kv := NewSpaceDelimitedString()
     e.DelimitedStringAttributes["class"] = kv
@@ -239,6 +288,13 @@ func (e *FormHTMLElement) CONTENTEDITABLE(v string) *FormHTMLElement {
     return e
 }
 
+func (e *FormHTMLElement) IfCONTENTEDITABLE(cond bool, v string) *FormHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.CONTENTEDITABLE(v)
+}
+
 func (e *FormHTMLElement) RemoveCONTENTEDITABLE(v string) *FormHTMLElement {
     delete(e.StringAttributes, "contenteditable")
     return e
@@ -258,6 +314,13 @@ func (e *FormHTMLElement) DIR(v string) *FormHTMLElement {
     return e
 }
 
+func (e *FormHTMLElement) IfDIR(cond bool, v string) *FormHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.DIR(v)
+}
+
 func (e *FormHTMLElement) RemoveDIR(v string) *FormHTMLElement {
     delete(e.StringAttributes, "dir")
     return e
@@ -273,6 +336,13 @@ func (e *FormHTMLElement) DRAGGABLE(v string) *FormHTMLElement {
     }
     e.StringAttributes["draggable"] = v
     return e
+}
+
+func (e *FormHTMLElement) IfDRAGGABLE(cond bool, v string) *FormHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.DRAGGABLE(v)
 }
 
 func (e *FormHTMLElement) RemoveDRAGGABLE(v string) *FormHTMLElement {
@@ -294,6 +364,13 @@ func (e *FormHTMLElement) ENCTYPE(v string) *FormHTMLElement {
     }
     e.StringAttributes["enctype"] = v
     return e
+}
+
+func (e *FormHTMLElement) IfENCTYPE(cond bool, v string) *FormHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ENCTYPE(v)
 }
 
 func (e *FormHTMLElement) RemoveENCTYPE(v string) *FormHTMLElement {
@@ -325,6 +402,13 @@ func (e *FormHTMLElement) ENTERKEYHINT(v string) *FormHTMLElement {
     return e
 }
 
+func (e *FormHTMLElement) IfENTERKEYHINT(cond bool, v string) *FormHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ENTERKEYHINT(v)
+}
+
 func (e *FormHTMLElement) RemoveENTERKEYHINT(v string) *FormHTMLElement {
     delete(e.StringAttributes, "enterkeyhint")
     return e
@@ -344,6 +428,13 @@ func (e *FormHTMLElement) HIDDEN(v string) *FormHTMLElement {
     return e
 }
 
+func (e *FormHTMLElement) IfHIDDEN(cond bool, v string) *FormHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.HIDDEN(v)
+}
+
 func (e *FormHTMLElement) RemoveHIDDEN(v string) *FormHTMLElement {
     delete(e.StringAttributes, "hidden")
     return e
@@ -360,6 +451,13 @@ func (e *FormHTMLElement) ID(v string) *FormHTMLElement {
     return e
 }
 
+func (e *FormHTMLElement) IfID(cond bool, v string) *FormHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ID(v)
+}
+
 func (e *FormHTMLElement) RemoveID(v string) *FormHTMLElement {
     delete(e.StringAttributes, "id")
     return e
@@ -374,6 +472,13 @@ func (e *FormHTMLElement) INERT() *FormHTMLElement {
     }
     e.BoolAttributes["inert"] = struct{}{}
     return e
+}
+
+func (e *FormHTMLElement) IfINERT(cond bool) *FormHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.INERT()
 }
 
 func (e *FormHTMLElement) RemoveINERT() *FormHTMLElement {
@@ -417,6 +522,13 @@ func (e *FormHTMLElement) INPUTMODE(v string) *FormHTMLElement {
     return e
 }
 
+func (e *FormHTMLElement) IfINPUTMODE(cond bool, v string) *FormHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.INPUTMODE(v)
+}
+
 func (e *FormHTMLElement) RemoveINPUTMODE(v string) *FormHTMLElement {
     delete(e.StringAttributes, "inputmode")
     return e
@@ -434,6 +546,13 @@ func (e *FormHTMLElement) IS(v string) *FormHTMLElement {
     return e
 }
 
+func (e *FormHTMLElement) IfIS(cond bool, v string) *FormHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.IS(v)
+}
+
 func (e *FormHTMLElement) RemoveIS(v string) *FormHTMLElement {
     delete(e.StringAttributes, "is")
     return e
@@ -448,6 +567,13 @@ func (e *FormHTMLElement) ITEMID(v string) *FormHTMLElement {
     }
     e.StringAttributes["itemid"] = v
     return e
+}
+
+func (e *FormHTMLElement) IfITEMID(cond bool, v string) *FormHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMID(v)
 }
 
 func (e *FormHTMLElement) RemoveITEMID(v string) *FormHTMLElement {
@@ -468,6 +594,13 @@ func (e *FormHTMLElement) ITEMPROP(v string) *FormHTMLElement {
     return e
 }
 
+func (e *FormHTMLElement) IfITEMPROP(cond bool, v string) *FormHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMPROP(v)
+}
+
 func (e *FormHTMLElement) RemoveITEMPROP(v string) *FormHTMLElement {
     delete(e.StringAttributes, "itemprop")
     return e
@@ -484,6 +617,13 @@ func (e *FormHTMLElement) ITEMREF(v string) *FormHTMLElement {
     return e
 }
 
+func (e *FormHTMLElement) IfITEMREF(cond bool, v string) *FormHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMREF(v)
+}
+
 func (e *FormHTMLElement) RemoveITEMREF(v string) *FormHTMLElement {
     delete(e.StringAttributes, "itemref")
     return e
@@ -498,6 +638,13 @@ func (e *FormHTMLElement) ITEMSCOPE() *FormHTMLElement {
     }
     e.BoolAttributes["itemscope"] = struct{}{}
     return e
+}
+
+func (e *FormHTMLElement) IfITEMSCOPE(cond bool) *FormHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMSCOPE()
 }
 
 func (e *FormHTMLElement) RemoveITEMSCOPE() *FormHTMLElement {
@@ -527,6 +674,13 @@ func (e *FormHTMLElement) ITEMTYPE(v string) *FormHTMLElement {
     return e
 }
 
+func (e *FormHTMLElement) IfITEMTYPE(cond bool, v string) *FormHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMTYPE(v)
+}
+
 func (e *FormHTMLElement) RemoveITEMTYPE(v string) *FormHTMLElement {
     delete(e.StringAttributes, "itemtype")
     return e
@@ -540,6 +694,13 @@ func (e *FormHTMLElement) LANG(v string) *FormHTMLElement {
     }
     e.StringAttributes["lang"] = v
     return e
+}
+
+func (e *FormHTMLElement) IfLANG(cond bool, v string) *FormHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.LANG(v)
 }
 
 func (e *FormHTMLElement) RemoveLANG(v string) *FormHTMLElement {
@@ -563,6 +724,13 @@ func (e *FormHTMLElement) METHOD(v string) *FormHTMLElement {
     return e
 }
 
+func (e *FormHTMLElement) IfMETHOD(cond bool, v string) *FormHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.METHOD(v)
+}
+
 func (e *FormHTMLElement) RemoveMETHOD(v string) *FormHTMLElement {
     delete(e.StringAttributes, "method")
     return e
@@ -577,6 +745,13 @@ func (e *FormHTMLElement) NAME(v string) *FormHTMLElement {
     }
     e.StringAttributes["name"] = v
     return e
+}
+
+func (e *FormHTMLElement) IfNAME(cond bool, v string) *FormHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.NAME(v)
 }
 
 func (e *FormHTMLElement) RemoveNAME(v string) *FormHTMLElement {
@@ -595,6 +770,13 @@ func (e *FormHTMLElement) NONCE(v string) *FormHTMLElement {
     return e
 }
 
+func (e *FormHTMLElement) IfNONCE(cond bool, v string) *FormHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.NONCE(v)
+}
+
 func (e *FormHTMLElement) RemoveNONCE(v string) *FormHTMLElement {
     delete(e.StringAttributes, "nonce")
     return e
@@ -609,6 +791,13 @@ func (e *FormHTMLElement) NOVALIDATE() *FormHTMLElement {
     }
     e.BoolAttributes["novalidate"] = struct{}{}
     return e
+}
+
+func (e *FormHTMLElement) IfNOVALIDATE(cond bool) *FormHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.NOVALIDATE()
 }
 
 func (e *FormHTMLElement) RemoveNOVALIDATE() *FormHTMLElement {
@@ -640,6 +829,13 @@ func (e *FormHTMLElement) POPOVER(v string) *FormHTMLElement {
     return e
 }
 
+func (e *FormHTMLElement) IfPOPOVER(cond bool, v string) *FormHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.POPOVER(v)
+}
+
 func (e *FormHTMLElement) RemovePOPOVER(v string) *FormHTMLElement {
     delete(e.StringAttributes, "popover")
     return e
@@ -654,6 +850,13 @@ func (e *FormHTMLElement) SLOT(v string) *FormHTMLElement {
     }
     e.StringAttributes["slot"] = v
     return e
+}
+
+func (e *FormHTMLElement) IfSLOT(cond bool, v string) *FormHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SLOT(v)
 }
 
 func (e *FormHTMLElement) RemoveSLOT(v string) *FormHTMLElement {
@@ -671,6 +874,13 @@ func (e *FormHTMLElement) SPELLCHECK(v string) *FormHTMLElement {
     }
     e.StringAttributes["spellcheck"] = v
     return e
+}
+
+func (e *FormHTMLElement) IfSPELLCHECK(cond bool, v string) *FormHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SPELLCHECK(v)
 }
 
 func (e *FormHTMLElement) RemoveSPELLCHECK(v string) *FormHTMLElement {
@@ -691,6 +901,13 @@ func (e *FormHTMLElement) STYLE(k,v string) *FormHTMLElement {
     }
     kv.Add(k,v)
     return e
+}
+
+func (e *FormHTMLElement) IfSTYLE(cond bool, k string) *FormHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.STYLE(k, "")
 }
 
 func (e *FormHTMLElement) RemoveSTYLE(k string) *FormHTMLElement {
@@ -714,6 +931,13 @@ func (e *FormHTMLElement) TABINDEX(v string) *FormHTMLElement {
     return e
 }
 
+func (e *FormHTMLElement) IfTABINDEX(cond bool, v string) *FormHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TABINDEX(v)
+}
+
 func (e *FormHTMLElement) RemoveTABINDEX(v string) *FormHTMLElement {
     delete(e.StringAttributes, "tabindex")
     return e
@@ -728,6 +952,13 @@ func (e *FormHTMLElement) TARGET(v string) *FormHTMLElement {
     }
     e.StringAttributes["target"] = v
     return e
+}
+
+func (e *FormHTMLElement) IfTARGET(cond bool, v string) *FormHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TARGET(v)
 }
 
 func (e *FormHTMLElement) RemoveTARGET(v string) *FormHTMLElement {
@@ -746,6 +977,13 @@ func (e *FormHTMLElement) TITLE(v string) *FormHTMLElement {
     return e
 }
 
+func (e *FormHTMLElement) IfTITLE(cond bool, v string) *FormHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TITLE(v)
+}
+
 func (e *FormHTMLElement) RemoveTITLE(v string) *FormHTMLElement {
     delete(e.StringAttributes, "title")
     return e
@@ -761,6 +999,13 @@ func (e *FormHTMLElement) TRANSLATE(v string) *FormHTMLElement {
     }
     e.StringAttributes["translate"] = v
     return e
+}
+
+func (e *FormHTMLElement) IfTRANSLATE(cond bool, v string) *FormHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TRANSLATE(v)
 }
 
 func (e *FormHTMLElement) RemoveTRANSLATE(v string) *FormHTMLElement {

@@ -48,13 +48,13 @@ func (e *LinkHTMLElement) TextF(format string, args ...any) *LinkHTMLElement {
     return e.Text(fmt.Sprintf(format, args...))
 }
 
-func (e *LinkHTMLElement) Raw(text string) *LinkHTMLElement {
-    e.Descendants = append(e.Descendants, Raw(text))
+func (e *LinkHTMLElement) Escaped(text string) *LinkHTMLElement {
+    e.Descendants = append(e.Descendants, Escaped(text))
     return e
 }
 
-func (e *LinkHTMLElement) RawF(format string, args ...any) *LinkHTMLElement {
-    return e.Raw(fmt.Sprintf(format, args...))
+func (e *LinkHTMLElement) EscapedF(format string, args ...any) *LinkHTMLElement {
+    return e.Escaped(fmt.Sprintf(format, args...))
 }
 
 func (e *LinkHTMLElement) CustomData(key, value string) *LinkHTMLElement {
@@ -87,6 +87,13 @@ func (e *LinkHTMLElement) ACCESSKEY(v string) *LinkHTMLElement {
     return e
 }
 
+func (e *LinkHTMLElement) IfACCESSKEY(cond bool, v string) *LinkHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ACCESSKEY(v)
+}
+
 func (e *LinkHTMLElement) RemoveACCESSKEY(v string) *LinkHTMLElement {
     delete(e.StringAttributes, "accesskey")
     return e
@@ -110,6 +117,13 @@ func (e *LinkHTMLElement) AS(v string) *LinkHTMLElement {
     }
     e.StringAttributes["as"] = v
     return e
+}
+
+func (e *LinkHTMLElement) IfAS(cond bool, v string) *LinkHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.AS(v)
 }
 
 func (e *LinkHTMLElement) RemoveAS(v string) *LinkHTMLElement {
@@ -139,6 +153,13 @@ func (e *LinkHTMLElement) AUTOCAPITALIZE(v string) *LinkHTMLElement {
     return e
 }
 
+func (e *LinkHTMLElement) IfAUTOCAPITALIZE(cond bool, v string) *LinkHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.AUTOCAPITALIZE(v)
+}
+
 func (e *LinkHTMLElement) RemoveAUTOCAPITALIZE(v string) *LinkHTMLElement {
     delete(e.StringAttributes, "autocapitalize")
     return e
@@ -153,6 +174,13 @@ func (e *LinkHTMLElement) AUTOFOCUS() *LinkHTMLElement {
     }
     e.BoolAttributes["autofocus"] = struct{}{}
     return e
+}
+
+func (e *LinkHTMLElement) IfAUTOFOCUS(cond bool) *LinkHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.AUTOFOCUS()
 }
 
 func (e *LinkHTMLElement) RemoveAUTOFOCUS() *LinkHTMLElement {
@@ -181,6 +209,13 @@ func (e *LinkHTMLElement) BLOCKING(v string) *LinkHTMLElement {
     return e
 }
 
+func (e *LinkHTMLElement) IfBLOCKING(cond bool, v string) *LinkHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.BLOCKING(v)
+}
+
 func (e *LinkHTMLElement) RemoveBLOCKING(v string) *LinkHTMLElement {
     delete(e.StringAttributes, "blocking")
     return e
@@ -200,6 +235,13 @@ func(e *LinkHTMLElement) CLASS(v string) *LinkHTMLElement {
     }
     kv.Add(v)
     return e
+}
+
+func (e *LinkHTMLElement) IfCLASS(cond bool, v string) *LinkHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.CLASS(v)
 }
 
 func (e *LinkHTMLElement) SetCLASS(v string) *LinkHTMLElement {
@@ -229,6 +271,13 @@ func (e *LinkHTMLElement) COLOR(v string) *LinkHTMLElement {
     return e
 }
 
+func (e *LinkHTMLElement) IfCOLOR(cond bool, v string) *LinkHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.COLOR(v)
+}
+
 func (e *LinkHTMLElement) RemoveCOLOR(v string) *LinkHTMLElement {
     delete(e.StringAttributes, "color")
     return e
@@ -245,6 +294,13 @@ func (e *LinkHTMLElement) CONTENTEDITABLE(v string) *LinkHTMLElement {
     }
     e.StringAttributes["contenteditable"] = v
     return e
+}
+
+func (e *LinkHTMLElement) IfCONTENTEDITABLE(cond bool, v string) *LinkHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.CONTENTEDITABLE(v)
 }
 
 func (e *LinkHTMLElement) RemoveCONTENTEDITABLE(v string) *LinkHTMLElement {
@@ -266,6 +322,13 @@ func (e *LinkHTMLElement) CROSSORIGIN(v string) *LinkHTMLElement {
     return e
 }
 
+func (e *LinkHTMLElement) IfCROSSORIGIN(cond bool, v string) *LinkHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.CROSSORIGIN(v)
+}
+
 func (e *LinkHTMLElement) RemoveCROSSORIGIN(v string) *LinkHTMLElement {
     delete(e.StringAttributes, "crossorigin")
     return e
@@ -285,6 +348,13 @@ func (e *LinkHTMLElement) DIR(v string) *LinkHTMLElement {
     return e
 }
 
+func (e *LinkHTMLElement) IfDIR(cond bool, v string) *LinkHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.DIR(v)
+}
+
 func (e *LinkHTMLElement) RemoveDIR(v string) *LinkHTMLElement {
     delete(e.StringAttributes, "dir")
     return e
@@ -299,6 +369,13 @@ func (e *LinkHTMLElement) DISABLED() *LinkHTMLElement {
     }
     e.BoolAttributes["disabled"] = struct{}{}
     return e
+}
+
+func (e *LinkHTMLElement) IfDISABLED(cond bool) *LinkHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.DISABLED()
 }
 
 func (e *LinkHTMLElement) RemoveDISABLED() *LinkHTMLElement {
@@ -326,6 +403,13 @@ func (e *LinkHTMLElement) DRAGGABLE(v string) *LinkHTMLElement {
     }
     e.StringAttributes["draggable"] = v
     return e
+}
+
+func (e *LinkHTMLElement) IfDRAGGABLE(cond bool, v string) *LinkHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.DRAGGABLE(v)
 }
 
 func (e *LinkHTMLElement) RemoveDRAGGABLE(v string) *LinkHTMLElement {
@@ -357,6 +441,13 @@ func (e *LinkHTMLElement) ENTERKEYHINT(v string) *LinkHTMLElement {
     return e
 }
 
+func (e *LinkHTMLElement) IfENTERKEYHINT(cond bool, v string) *LinkHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ENTERKEYHINT(v)
+}
+
 func (e *LinkHTMLElement) RemoveENTERKEYHINT(v string) *LinkHTMLElement {
     delete(e.StringAttributes, "enterkeyhint")
     return e
@@ -378,6 +469,13 @@ func (e *LinkHTMLElement) FETCHPRIORITY(v string) *LinkHTMLElement {
     return e
 }
 
+func (e *LinkHTMLElement) IfFETCHPRIORITY(cond bool, v string) *LinkHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.FETCHPRIORITY(v)
+}
+
 func (e *LinkHTMLElement) RemoveFETCHPRIORITY(v string) *LinkHTMLElement {
     delete(e.StringAttributes, "fetchpriority")
     return e
@@ -397,6 +495,13 @@ func (e *LinkHTMLElement) HIDDEN(v string) *LinkHTMLElement {
     return e
 }
 
+func (e *LinkHTMLElement) IfHIDDEN(cond bool, v string) *LinkHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.HIDDEN(v)
+}
+
 func (e *LinkHTMLElement) RemoveHIDDEN(v string) *LinkHTMLElement {
     delete(e.StringAttributes, "hidden")
     return e
@@ -413,6 +518,13 @@ func (e *LinkHTMLElement) HREF(v string) *LinkHTMLElement {
     return e
 }
 
+func (e *LinkHTMLElement) IfHREF(cond bool, v string) *LinkHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.HREF(v)
+}
+
 func (e *LinkHTMLElement) RemoveHREF(v string) *LinkHTMLElement {
     delete(e.StringAttributes, "href")
     return e
@@ -426,6 +538,13 @@ func (e *LinkHTMLElement) HREFLANG(v string) *LinkHTMLElement {
     }
     e.StringAttributes["hreflang"] = v
     return e
+}
+
+func (e *LinkHTMLElement) IfHREFLANG(cond bool, v string) *LinkHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.HREFLANG(v)
 }
 
 func (e *LinkHTMLElement) RemoveHREFLANG(v string) *LinkHTMLElement {
@@ -444,6 +563,13 @@ func (e *LinkHTMLElement) ID(v string) *LinkHTMLElement {
     return e
 }
 
+func (e *LinkHTMLElement) IfID(cond bool, v string) *LinkHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ID(v)
+}
+
 func (e *LinkHTMLElement) RemoveID(v string) *LinkHTMLElement {
     delete(e.StringAttributes, "id")
     return e
@@ -458,6 +584,13 @@ func (e *LinkHTMLElement) IMAGESIZES(v string) *LinkHTMLElement {
     }
     e.StringAttributes["imagesizes"] = v
     return e
+}
+
+func (e *LinkHTMLElement) IfIMAGESIZES(cond bool, v string) *LinkHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.IMAGESIZES(v)
 }
 
 func (e *LinkHTMLElement) RemoveIMAGESIZES(v string) *LinkHTMLElement {
@@ -476,6 +609,13 @@ func (e *LinkHTMLElement) IMAGESRCSET(v string) *LinkHTMLElement {
     return e
 }
 
+func (e *LinkHTMLElement) IfIMAGESRCSET(cond bool, v string) *LinkHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.IMAGESRCSET(v)
+}
+
 func (e *LinkHTMLElement) RemoveIMAGESRCSET(v string) *LinkHTMLElement {
     delete(e.StringAttributes, "imagesrcset")
     return e
@@ -490,6 +630,13 @@ func (e *LinkHTMLElement) INERT() *LinkHTMLElement {
     }
     e.BoolAttributes["inert"] = struct{}{}
     return e
+}
+
+func (e *LinkHTMLElement) IfINERT(cond bool) *LinkHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.INERT()
 }
 
 func (e *LinkHTMLElement) RemoveINERT() *LinkHTMLElement {
@@ -533,6 +680,13 @@ func (e *LinkHTMLElement) INPUTMODE(v string) *LinkHTMLElement {
     return e
 }
 
+func (e *LinkHTMLElement) IfINPUTMODE(cond bool, v string) *LinkHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.INPUTMODE(v)
+}
+
 func (e *LinkHTMLElement) RemoveINPUTMODE(v string) *LinkHTMLElement {
     delete(e.StringAttributes, "inputmode")
     return e
@@ -547,6 +701,13 @@ func (e *LinkHTMLElement) INTEGRITY(v string) *LinkHTMLElement {
     }
     e.StringAttributes["integrity"] = v
     return e
+}
+
+func (e *LinkHTMLElement) IfINTEGRITY(cond bool, v string) *LinkHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.INTEGRITY(v)
 }
 
 func (e *LinkHTMLElement) RemoveINTEGRITY(v string) *LinkHTMLElement {
@@ -566,6 +727,13 @@ func (e *LinkHTMLElement) IS(v string) *LinkHTMLElement {
     return e
 }
 
+func (e *LinkHTMLElement) IfIS(cond bool, v string) *LinkHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.IS(v)
+}
+
 func (e *LinkHTMLElement) RemoveIS(v string) *LinkHTMLElement {
     delete(e.StringAttributes, "is")
     return e
@@ -580,6 +748,13 @@ func (e *LinkHTMLElement) ITEMID(v string) *LinkHTMLElement {
     }
     e.StringAttributes["itemid"] = v
     return e
+}
+
+func (e *LinkHTMLElement) IfITEMID(cond bool, v string) *LinkHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMID(v)
 }
 
 func (e *LinkHTMLElement) RemoveITEMID(v string) *LinkHTMLElement {
@@ -600,6 +775,13 @@ func (e *LinkHTMLElement) ITEMPROP(v string) *LinkHTMLElement {
     return e
 }
 
+func (e *LinkHTMLElement) IfITEMPROP(cond bool, v string) *LinkHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMPROP(v)
+}
+
 func (e *LinkHTMLElement) RemoveITEMPROP(v string) *LinkHTMLElement {
     delete(e.StringAttributes, "itemprop")
     return e
@@ -616,6 +798,13 @@ func (e *LinkHTMLElement) ITEMREF(v string) *LinkHTMLElement {
     return e
 }
 
+func (e *LinkHTMLElement) IfITEMREF(cond bool, v string) *LinkHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMREF(v)
+}
+
 func (e *LinkHTMLElement) RemoveITEMREF(v string) *LinkHTMLElement {
     delete(e.StringAttributes, "itemref")
     return e
@@ -630,6 +819,13 @@ func (e *LinkHTMLElement) ITEMSCOPE() *LinkHTMLElement {
     }
     e.BoolAttributes["itemscope"] = struct{}{}
     return e
+}
+
+func (e *LinkHTMLElement) IfITEMSCOPE(cond bool) *LinkHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMSCOPE()
 }
 
 func (e *LinkHTMLElement) RemoveITEMSCOPE() *LinkHTMLElement {
@@ -659,6 +855,13 @@ func (e *LinkHTMLElement) ITEMTYPE(v string) *LinkHTMLElement {
     return e
 }
 
+func (e *LinkHTMLElement) IfITEMTYPE(cond bool, v string) *LinkHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMTYPE(v)
+}
+
 func (e *LinkHTMLElement) RemoveITEMTYPE(v string) *LinkHTMLElement {
     delete(e.StringAttributes, "itemtype")
     return e
@@ -672,6 +875,13 @@ func (e *LinkHTMLElement) LANG(v string) *LinkHTMLElement {
     }
     e.StringAttributes["lang"] = v
     return e
+}
+
+func (e *LinkHTMLElement) IfLANG(cond bool, v string) *LinkHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.LANG(v)
 }
 
 func (e *LinkHTMLElement) RemoveLANG(v string) *LinkHTMLElement {
@@ -690,6 +900,13 @@ func (e *LinkHTMLElement) MEDIA(v string) *LinkHTMLElement {
     return e
 }
 
+func (e *LinkHTMLElement) IfMEDIA(cond bool, v string) *LinkHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.MEDIA(v)
+}
+
 func (e *LinkHTMLElement) RemoveMEDIA(v string) *LinkHTMLElement {
     delete(e.StringAttributes, "media")
     return e
@@ -704,6 +921,13 @@ func (e *LinkHTMLElement) NONCE(v string) *LinkHTMLElement {
     }
     e.StringAttributes["nonce"] = v
     return e
+}
+
+func (e *LinkHTMLElement) IfNONCE(cond bool, v string) *LinkHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.NONCE(v)
 }
 
 func (e *LinkHTMLElement) RemoveNONCE(v string) *LinkHTMLElement {
@@ -725,6 +949,13 @@ func (e *LinkHTMLElement) POPOVER(v string) *LinkHTMLElement {
     return e
 }
 
+func (e *LinkHTMLElement) IfPOPOVER(cond bool, v string) *LinkHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.POPOVER(v)
+}
+
 func (e *LinkHTMLElement) RemovePOPOVER(v string) *LinkHTMLElement {
     delete(e.StringAttributes, "popover")
     return e
@@ -739,6 +970,13 @@ func (e *LinkHTMLElement) REFERRERPOLICY(v string) *LinkHTMLElement {
     }
     e.StringAttributes["referrerpolicy"] = v
     return e
+}
+
+func (e *LinkHTMLElement) IfREFERRERPOLICY(cond bool, v string) *LinkHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.REFERRERPOLICY(v)
 }
 
 func (e *LinkHTMLElement) RemoveREFERRERPOLICY(v string) *LinkHTMLElement {
@@ -757,6 +995,13 @@ func (e *LinkHTMLElement) REL(v string) *LinkHTMLElement {
     return e
 }
 
+func (e *LinkHTMLElement) IfREL(cond bool, v string) *LinkHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.REL(v)
+}
+
 func (e *LinkHTMLElement) RemoveREL(v string) *LinkHTMLElement {
     delete(e.StringAttributes, "rel")
     return e
@@ -771,6 +1016,13 @@ func (e *LinkHTMLElement) SIZES(v string) *LinkHTMLElement {
     }
     e.StringAttributes["sizes"] = v
     return e
+}
+
+func (e *LinkHTMLElement) IfSIZES(cond bool, v string) *LinkHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SIZES(v)
 }
 
 func (e *LinkHTMLElement) RemoveSIZES(v string) *LinkHTMLElement {
@@ -789,6 +1041,13 @@ func (e *LinkHTMLElement) SLOT(v string) *LinkHTMLElement {
     return e
 }
 
+func (e *LinkHTMLElement) IfSLOT(cond bool, v string) *LinkHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SLOT(v)
+}
+
 func (e *LinkHTMLElement) RemoveSLOT(v string) *LinkHTMLElement {
     delete(e.StringAttributes, "slot")
     return e
@@ -804,6 +1063,13 @@ func (e *LinkHTMLElement) SPELLCHECK(v string) *LinkHTMLElement {
     }
     e.StringAttributes["spellcheck"] = v
     return e
+}
+
+func (e *LinkHTMLElement) IfSPELLCHECK(cond bool, v string) *LinkHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SPELLCHECK(v)
 }
 
 func (e *LinkHTMLElement) RemoveSPELLCHECK(v string) *LinkHTMLElement {
@@ -824,6 +1090,13 @@ func (e *LinkHTMLElement) STYLE(k,v string) *LinkHTMLElement {
     }
     kv.Add(k,v)
     return e
+}
+
+func (e *LinkHTMLElement) IfSTYLE(cond bool, k string) *LinkHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.STYLE(k, "")
 }
 
 func (e *LinkHTMLElement) RemoveSTYLE(k string) *LinkHTMLElement {
@@ -847,6 +1120,13 @@ func (e *LinkHTMLElement) TABINDEX(v string) *LinkHTMLElement {
     return e
 }
 
+func (e *LinkHTMLElement) IfTABINDEX(cond bool, v string) *LinkHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TABINDEX(v)
+}
+
 func (e *LinkHTMLElement) RemoveTABINDEX(v string) *LinkHTMLElement {
     delete(e.StringAttributes, "tabindex")
     return e
@@ -861,6 +1141,13 @@ func (e *LinkHTMLElement) TITLE(v string) *LinkHTMLElement {
     }
     e.StringAttributes["title"] = v
     return e
+}
+
+func (e *LinkHTMLElement) IfTITLE(cond bool, v string) *LinkHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TITLE(v)
 }
 
 func (e *LinkHTMLElement) RemoveTITLE(v string) *LinkHTMLElement {
@@ -880,6 +1167,13 @@ func (e *LinkHTMLElement) TRANSLATE(v string) *LinkHTMLElement {
     return e
 }
 
+func (e *LinkHTMLElement) IfTRANSLATE(cond bool, v string) *LinkHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TRANSLATE(v)
+}
+
 func (e *LinkHTMLElement) RemoveTRANSLATE(v string) *LinkHTMLElement {
     delete(e.StringAttributes, "translate")
     return e
@@ -896,6 +1190,13 @@ func (e *LinkHTMLElement) TYPE(v string) *LinkHTMLElement {
     }
     e.StringAttributes["type"] = v
     return e
+}
+
+func (e *LinkHTMLElement) IfTYPE(cond bool, v string) *LinkHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TYPE(v)
 }
 
 func (e *LinkHTMLElement) RemoveTYPE(v string) *LinkHTMLElement {

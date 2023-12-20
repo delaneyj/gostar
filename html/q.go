@@ -48,13 +48,13 @@ func (e *QHTMLElement) TextF(format string, args ...any) *QHTMLElement {
     return e.Text(fmt.Sprintf(format, args...))
 }
 
-func (e *QHTMLElement) Raw(text string) *QHTMLElement {
-    e.Descendants = append(e.Descendants, Raw(text))
+func (e *QHTMLElement) Escaped(text string) *QHTMLElement {
+    e.Descendants = append(e.Descendants, Escaped(text))
     return e
 }
 
-func (e *QHTMLElement) RawF(format string, args ...any) *QHTMLElement {
-    return e.Raw(fmt.Sprintf(format, args...))
+func (e *QHTMLElement) EscapedF(format string, args ...any) *QHTMLElement {
+    return e.Escaped(fmt.Sprintf(format, args...))
 }
 
 func (e *QHTMLElement) CustomData(key, value string) *QHTMLElement {
@@ -87,6 +87,13 @@ func (e *QHTMLElement) ACCESSKEY(v string) *QHTMLElement {
     return e
 }
 
+func (e *QHTMLElement) IfACCESSKEY(cond bool, v string) *QHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ACCESSKEY(v)
+}
+
 func (e *QHTMLElement) RemoveACCESSKEY(v string) *QHTMLElement {
     delete(e.StringAttributes, "accesskey")
     return e
@@ -114,6 +121,13 @@ func (e *QHTMLElement) AUTOCAPITALIZE(v string) *QHTMLElement {
     return e
 }
 
+func (e *QHTMLElement) IfAUTOCAPITALIZE(cond bool, v string) *QHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.AUTOCAPITALIZE(v)
+}
+
 func (e *QHTMLElement) RemoveAUTOCAPITALIZE(v string) *QHTMLElement {
     delete(e.StringAttributes, "autocapitalize")
     return e
@@ -128,6 +142,13 @@ func (e *QHTMLElement) AUTOFOCUS() *QHTMLElement {
     }
     e.BoolAttributes["autofocus"] = struct{}{}
     return e
+}
+
+func (e *QHTMLElement) IfAUTOFOCUS(cond bool) *QHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.AUTOFOCUS()
 }
 
 func (e *QHTMLElement) RemoveAUTOFOCUS() *QHTMLElement {
@@ -156,6 +177,13 @@ func (e *QHTMLElement) CITE(v string) *QHTMLElement {
     return e
 }
 
+func (e *QHTMLElement) IfCITE(cond bool, v string) *QHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.CITE(v)
+}
+
 func (e *QHTMLElement) RemoveCITE(v string) *QHTMLElement {
     delete(e.StringAttributes, "cite")
     return e
@@ -175,6 +203,13 @@ func(e *QHTMLElement) CLASS(v string) *QHTMLElement {
     }
     kv.Add(v)
     return e
+}
+
+func (e *QHTMLElement) IfCLASS(cond bool, v string) *QHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.CLASS(v)
 }
 
 func (e *QHTMLElement) SetCLASS(v string) *QHTMLElement {
@@ -206,6 +241,13 @@ func (e *QHTMLElement) CONTENTEDITABLE(v string) *QHTMLElement {
     return e
 }
 
+func (e *QHTMLElement) IfCONTENTEDITABLE(cond bool, v string) *QHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.CONTENTEDITABLE(v)
+}
+
 func (e *QHTMLElement) RemoveCONTENTEDITABLE(v string) *QHTMLElement {
     delete(e.StringAttributes, "contenteditable")
     return e
@@ -225,6 +267,13 @@ func (e *QHTMLElement) DIR(v string) *QHTMLElement {
     return e
 }
 
+func (e *QHTMLElement) IfDIR(cond bool, v string) *QHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.DIR(v)
+}
+
 func (e *QHTMLElement) RemoveDIR(v string) *QHTMLElement {
     delete(e.StringAttributes, "dir")
     return e
@@ -240,6 +289,13 @@ func (e *QHTMLElement) DRAGGABLE(v string) *QHTMLElement {
     }
     e.StringAttributes["draggable"] = v
     return e
+}
+
+func (e *QHTMLElement) IfDRAGGABLE(cond bool, v string) *QHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.DRAGGABLE(v)
 }
 
 func (e *QHTMLElement) RemoveDRAGGABLE(v string) *QHTMLElement {
@@ -271,6 +327,13 @@ func (e *QHTMLElement) ENTERKEYHINT(v string) *QHTMLElement {
     return e
 }
 
+func (e *QHTMLElement) IfENTERKEYHINT(cond bool, v string) *QHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ENTERKEYHINT(v)
+}
+
 func (e *QHTMLElement) RemoveENTERKEYHINT(v string) *QHTMLElement {
     delete(e.StringAttributes, "enterkeyhint")
     return e
@@ -290,6 +353,13 @@ func (e *QHTMLElement) HIDDEN(v string) *QHTMLElement {
     return e
 }
 
+func (e *QHTMLElement) IfHIDDEN(cond bool, v string) *QHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.HIDDEN(v)
+}
+
 func (e *QHTMLElement) RemoveHIDDEN(v string) *QHTMLElement {
     delete(e.StringAttributes, "hidden")
     return e
@@ -306,6 +376,13 @@ func (e *QHTMLElement) ID(v string) *QHTMLElement {
     return e
 }
 
+func (e *QHTMLElement) IfID(cond bool, v string) *QHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ID(v)
+}
+
 func (e *QHTMLElement) RemoveID(v string) *QHTMLElement {
     delete(e.StringAttributes, "id")
     return e
@@ -320,6 +397,13 @@ func (e *QHTMLElement) INERT() *QHTMLElement {
     }
     e.BoolAttributes["inert"] = struct{}{}
     return e
+}
+
+func (e *QHTMLElement) IfINERT(cond bool) *QHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.INERT()
 }
 
 func (e *QHTMLElement) RemoveINERT() *QHTMLElement {
@@ -363,6 +447,13 @@ func (e *QHTMLElement) INPUTMODE(v string) *QHTMLElement {
     return e
 }
 
+func (e *QHTMLElement) IfINPUTMODE(cond bool, v string) *QHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.INPUTMODE(v)
+}
+
 func (e *QHTMLElement) RemoveINPUTMODE(v string) *QHTMLElement {
     delete(e.StringAttributes, "inputmode")
     return e
@@ -380,6 +471,13 @@ func (e *QHTMLElement) IS(v string) *QHTMLElement {
     return e
 }
 
+func (e *QHTMLElement) IfIS(cond bool, v string) *QHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.IS(v)
+}
+
 func (e *QHTMLElement) RemoveIS(v string) *QHTMLElement {
     delete(e.StringAttributes, "is")
     return e
@@ -394,6 +492,13 @@ func (e *QHTMLElement) ITEMID(v string) *QHTMLElement {
     }
     e.StringAttributes["itemid"] = v
     return e
+}
+
+func (e *QHTMLElement) IfITEMID(cond bool, v string) *QHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMID(v)
 }
 
 func (e *QHTMLElement) RemoveITEMID(v string) *QHTMLElement {
@@ -414,6 +519,13 @@ func (e *QHTMLElement) ITEMPROP(v string) *QHTMLElement {
     return e
 }
 
+func (e *QHTMLElement) IfITEMPROP(cond bool, v string) *QHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMPROP(v)
+}
+
 func (e *QHTMLElement) RemoveITEMPROP(v string) *QHTMLElement {
     delete(e.StringAttributes, "itemprop")
     return e
@@ -430,6 +542,13 @@ func (e *QHTMLElement) ITEMREF(v string) *QHTMLElement {
     return e
 }
 
+func (e *QHTMLElement) IfITEMREF(cond bool, v string) *QHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMREF(v)
+}
+
 func (e *QHTMLElement) RemoveITEMREF(v string) *QHTMLElement {
     delete(e.StringAttributes, "itemref")
     return e
@@ -444,6 +563,13 @@ func (e *QHTMLElement) ITEMSCOPE() *QHTMLElement {
     }
     e.BoolAttributes["itemscope"] = struct{}{}
     return e
+}
+
+func (e *QHTMLElement) IfITEMSCOPE(cond bool) *QHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMSCOPE()
 }
 
 func (e *QHTMLElement) RemoveITEMSCOPE() *QHTMLElement {
@@ -473,6 +599,13 @@ func (e *QHTMLElement) ITEMTYPE(v string) *QHTMLElement {
     return e
 }
 
+func (e *QHTMLElement) IfITEMTYPE(cond bool, v string) *QHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMTYPE(v)
+}
+
 func (e *QHTMLElement) RemoveITEMTYPE(v string) *QHTMLElement {
     delete(e.StringAttributes, "itemtype")
     return e
@@ -486,6 +619,13 @@ func (e *QHTMLElement) LANG(v string) *QHTMLElement {
     }
     e.StringAttributes["lang"] = v
     return e
+}
+
+func (e *QHTMLElement) IfLANG(cond bool, v string) *QHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.LANG(v)
 }
 
 func (e *QHTMLElement) RemoveLANG(v string) *QHTMLElement {
@@ -502,6 +642,13 @@ func (e *QHTMLElement) NONCE(v string) *QHTMLElement {
     }
     e.StringAttributes["nonce"] = v
     return e
+}
+
+func (e *QHTMLElement) IfNONCE(cond bool, v string) *QHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.NONCE(v)
 }
 
 func (e *QHTMLElement) RemoveNONCE(v string) *QHTMLElement {
@@ -523,6 +670,13 @@ func (e *QHTMLElement) POPOVER(v string) *QHTMLElement {
     return e
 }
 
+func (e *QHTMLElement) IfPOPOVER(cond bool, v string) *QHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.POPOVER(v)
+}
+
 func (e *QHTMLElement) RemovePOPOVER(v string) *QHTMLElement {
     delete(e.StringAttributes, "popover")
     return e
@@ -537,6 +691,13 @@ func (e *QHTMLElement) SLOT(v string) *QHTMLElement {
     }
     e.StringAttributes["slot"] = v
     return e
+}
+
+func (e *QHTMLElement) IfSLOT(cond bool, v string) *QHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SLOT(v)
 }
 
 func (e *QHTMLElement) RemoveSLOT(v string) *QHTMLElement {
@@ -554,6 +715,13 @@ func (e *QHTMLElement) SPELLCHECK(v string) *QHTMLElement {
     }
     e.StringAttributes["spellcheck"] = v
     return e
+}
+
+func (e *QHTMLElement) IfSPELLCHECK(cond bool, v string) *QHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SPELLCHECK(v)
 }
 
 func (e *QHTMLElement) RemoveSPELLCHECK(v string) *QHTMLElement {
@@ -574,6 +742,13 @@ func (e *QHTMLElement) STYLE(k,v string) *QHTMLElement {
     }
     kv.Add(k,v)
     return e
+}
+
+func (e *QHTMLElement) IfSTYLE(cond bool, k string) *QHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.STYLE(k, "")
 }
 
 func (e *QHTMLElement) RemoveSTYLE(k string) *QHTMLElement {
@@ -597,6 +772,13 @@ func (e *QHTMLElement) TABINDEX(v string) *QHTMLElement {
     return e
 }
 
+func (e *QHTMLElement) IfTABINDEX(cond bool, v string) *QHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TABINDEX(v)
+}
+
 func (e *QHTMLElement) RemoveTABINDEX(v string) *QHTMLElement {
     delete(e.StringAttributes, "tabindex")
     return e
@@ -611,6 +793,13 @@ func (e *QHTMLElement) TITLE(v string) *QHTMLElement {
     }
     e.StringAttributes["title"] = v
     return e
+}
+
+func (e *QHTMLElement) IfTITLE(cond bool, v string) *QHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TITLE(v)
 }
 
 func (e *QHTMLElement) RemoveTITLE(v string) *QHTMLElement {
@@ -628,6 +817,13 @@ func (e *QHTMLElement) TRANSLATE(v string) *QHTMLElement {
     }
     e.StringAttributes["translate"] = v
     return e
+}
+
+func (e *QHTMLElement) IfTRANSLATE(cond bool, v string) *QHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TRANSLATE(v)
 }
 
 func (e *QHTMLElement) RemoveTRANSLATE(v string) *QHTMLElement {

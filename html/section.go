@@ -48,13 +48,13 @@ func (e *SectionHTMLElement) TextF(format string, args ...any) *SectionHTMLEleme
     return e.Text(fmt.Sprintf(format, args...))
 }
 
-func (e *SectionHTMLElement) Raw(text string) *SectionHTMLElement {
-    e.Descendants = append(e.Descendants, Raw(text))
+func (e *SectionHTMLElement) Escaped(text string) *SectionHTMLElement {
+    e.Descendants = append(e.Descendants, Escaped(text))
     return e
 }
 
-func (e *SectionHTMLElement) RawF(format string, args ...any) *SectionHTMLElement {
-    return e.Raw(fmt.Sprintf(format, args...))
+func (e *SectionHTMLElement) EscapedF(format string, args ...any) *SectionHTMLElement {
+    return e.Escaped(fmt.Sprintf(format, args...))
 }
 
 func (e *SectionHTMLElement) CustomData(key, value string) *SectionHTMLElement {
@@ -87,6 +87,13 @@ func (e *SectionHTMLElement) ACCESSKEY(v string) *SectionHTMLElement {
     return e
 }
 
+func (e *SectionHTMLElement) IfACCESSKEY(cond bool, v string) *SectionHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ACCESSKEY(v)
+}
+
 func (e *SectionHTMLElement) RemoveACCESSKEY(v string) *SectionHTMLElement {
     delete(e.StringAttributes, "accesskey")
     return e
@@ -114,6 +121,13 @@ func (e *SectionHTMLElement) AUTOCAPITALIZE(v string) *SectionHTMLElement {
     return e
 }
 
+func (e *SectionHTMLElement) IfAUTOCAPITALIZE(cond bool, v string) *SectionHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.AUTOCAPITALIZE(v)
+}
+
 func (e *SectionHTMLElement) RemoveAUTOCAPITALIZE(v string) *SectionHTMLElement {
     delete(e.StringAttributes, "autocapitalize")
     return e
@@ -128,6 +142,13 @@ func (e *SectionHTMLElement) AUTOFOCUS() *SectionHTMLElement {
     }
     e.BoolAttributes["autofocus"] = struct{}{}
     return e
+}
+
+func (e *SectionHTMLElement) IfAUTOFOCUS(cond bool) *SectionHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.AUTOFOCUS()
 }
 
 func (e *SectionHTMLElement) RemoveAUTOFOCUS() *SectionHTMLElement {
@@ -161,6 +182,13 @@ func(e *SectionHTMLElement) CLASS(v string) *SectionHTMLElement {
     return e
 }
 
+func (e *SectionHTMLElement) IfCLASS(cond bool, v string) *SectionHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.CLASS(v)
+}
+
 func (e *SectionHTMLElement) SetCLASS(v string) *SectionHTMLElement {
     kv := NewSpaceDelimitedString()
     e.DelimitedStringAttributes["class"] = kv
@@ -190,6 +218,13 @@ func (e *SectionHTMLElement) CONTENTEDITABLE(v string) *SectionHTMLElement {
     return e
 }
 
+func (e *SectionHTMLElement) IfCONTENTEDITABLE(cond bool, v string) *SectionHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.CONTENTEDITABLE(v)
+}
+
 func (e *SectionHTMLElement) RemoveCONTENTEDITABLE(v string) *SectionHTMLElement {
     delete(e.StringAttributes, "contenteditable")
     return e
@@ -209,6 +244,13 @@ func (e *SectionHTMLElement) DIR(v string) *SectionHTMLElement {
     return e
 }
 
+func (e *SectionHTMLElement) IfDIR(cond bool, v string) *SectionHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.DIR(v)
+}
+
 func (e *SectionHTMLElement) RemoveDIR(v string) *SectionHTMLElement {
     delete(e.StringAttributes, "dir")
     return e
@@ -224,6 +266,13 @@ func (e *SectionHTMLElement) DRAGGABLE(v string) *SectionHTMLElement {
     }
     e.StringAttributes["draggable"] = v
     return e
+}
+
+func (e *SectionHTMLElement) IfDRAGGABLE(cond bool, v string) *SectionHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.DRAGGABLE(v)
 }
 
 func (e *SectionHTMLElement) RemoveDRAGGABLE(v string) *SectionHTMLElement {
@@ -255,6 +304,13 @@ func (e *SectionHTMLElement) ENTERKEYHINT(v string) *SectionHTMLElement {
     return e
 }
 
+func (e *SectionHTMLElement) IfENTERKEYHINT(cond bool, v string) *SectionHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ENTERKEYHINT(v)
+}
+
 func (e *SectionHTMLElement) RemoveENTERKEYHINT(v string) *SectionHTMLElement {
     delete(e.StringAttributes, "enterkeyhint")
     return e
@@ -274,6 +330,13 @@ func (e *SectionHTMLElement) HIDDEN(v string) *SectionHTMLElement {
     return e
 }
 
+func (e *SectionHTMLElement) IfHIDDEN(cond bool, v string) *SectionHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.HIDDEN(v)
+}
+
 func (e *SectionHTMLElement) RemoveHIDDEN(v string) *SectionHTMLElement {
     delete(e.StringAttributes, "hidden")
     return e
@@ -290,6 +353,13 @@ func (e *SectionHTMLElement) ID(v string) *SectionHTMLElement {
     return e
 }
 
+func (e *SectionHTMLElement) IfID(cond bool, v string) *SectionHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ID(v)
+}
+
 func (e *SectionHTMLElement) RemoveID(v string) *SectionHTMLElement {
     delete(e.StringAttributes, "id")
     return e
@@ -304,6 +374,13 @@ func (e *SectionHTMLElement) INERT() *SectionHTMLElement {
     }
     e.BoolAttributes["inert"] = struct{}{}
     return e
+}
+
+func (e *SectionHTMLElement) IfINERT(cond bool) *SectionHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.INERT()
 }
 
 func (e *SectionHTMLElement) RemoveINERT() *SectionHTMLElement {
@@ -347,6 +424,13 @@ func (e *SectionHTMLElement) INPUTMODE(v string) *SectionHTMLElement {
     return e
 }
 
+func (e *SectionHTMLElement) IfINPUTMODE(cond bool, v string) *SectionHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.INPUTMODE(v)
+}
+
 func (e *SectionHTMLElement) RemoveINPUTMODE(v string) *SectionHTMLElement {
     delete(e.StringAttributes, "inputmode")
     return e
@@ -364,6 +448,13 @@ func (e *SectionHTMLElement) IS(v string) *SectionHTMLElement {
     return e
 }
 
+func (e *SectionHTMLElement) IfIS(cond bool, v string) *SectionHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.IS(v)
+}
+
 func (e *SectionHTMLElement) RemoveIS(v string) *SectionHTMLElement {
     delete(e.StringAttributes, "is")
     return e
@@ -378,6 +469,13 @@ func (e *SectionHTMLElement) ITEMID(v string) *SectionHTMLElement {
     }
     e.StringAttributes["itemid"] = v
     return e
+}
+
+func (e *SectionHTMLElement) IfITEMID(cond bool, v string) *SectionHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMID(v)
 }
 
 func (e *SectionHTMLElement) RemoveITEMID(v string) *SectionHTMLElement {
@@ -398,6 +496,13 @@ func (e *SectionHTMLElement) ITEMPROP(v string) *SectionHTMLElement {
     return e
 }
 
+func (e *SectionHTMLElement) IfITEMPROP(cond bool, v string) *SectionHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMPROP(v)
+}
+
 func (e *SectionHTMLElement) RemoveITEMPROP(v string) *SectionHTMLElement {
     delete(e.StringAttributes, "itemprop")
     return e
@@ -414,6 +519,13 @@ func (e *SectionHTMLElement) ITEMREF(v string) *SectionHTMLElement {
     return e
 }
 
+func (e *SectionHTMLElement) IfITEMREF(cond bool, v string) *SectionHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMREF(v)
+}
+
 func (e *SectionHTMLElement) RemoveITEMREF(v string) *SectionHTMLElement {
     delete(e.StringAttributes, "itemref")
     return e
@@ -428,6 +540,13 @@ func (e *SectionHTMLElement) ITEMSCOPE() *SectionHTMLElement {
     }
     e.BoolAttributes["itemscope"] = struct{}{}
     return e
+}
+
+func (e *SectionHTMLElement) IfITEMSCOPE(cond bool) *SectionHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMSCOPE()
 }
 
 func (e *SectionHTMLElement) RemoveITEMSCOPE() *SectionHTMLElement {
@@ -457,6 +576,13 @@ func (e *SectionHTMLElement) ITEMTYPE(v string) *SectionHTMLElement {
     return e
 }
 
+func (e *SectionHTMLElement) IfITEMTYPE(cond bool, v string) *SectionHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMTYPE(v)
+}
+
 func (e *SectionHTMLElement) RemoveITEMTYPE(v string) *SectionHTMLElement {
     delete(e.StringAttributes, "itemtype")
     return e
@@ -470,6 +596,13 @@ func (e *SectionHTMLElement) LANG(v string) *SectionHTMLElement {
     }
     e.StringAttributes["lang"] = v
     return e
+}
+
+func (e *SectionHTMLElement) IfLANG(cond bool, v string) *SectionHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.LANG(v)
 }
 
 func (e *SectionHTMLElement) RemoveLANG(v string) *SectionHTMLElement {
@@ -486,6 +619,13 @@ func (e *SectionHTMLElement) NONCE(v string) *SectionHTMLElement {
     }
     e.StringAttributes["nonce"] = v
     return e
+}
+
+func (e *SectionHTMLElement) IfNONCE(cond bool, v string) *SectionHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.NONCE(v)
 }
 
 func (e *SectionHTMLElement) RemoveNONCE(v string) *SectionHTMLElement {
@@ -507,6 +647,13 @@ func (e *SectionHTMLElement) POPOVER(v string) *SectionHTMLElement {
     return e
 }
 
+func (e *SectionHTMLElement) IfPOPOVER(cond bool, v string) *SectionHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.POPOVER(v)
+}
+
 func (e *SectionHTMLElement) RemovePOPOVER(v string) *SectionHTMLElement {
     delete(e.StringAttributes, "popover")
     return e
@@ -521,6 +668,13 @@ func (e *SectionHTMLElement) SLOT(v string) *SectionHTMLElement {
     }
     e.StringAttributes["slot"] = v
     return e
+}
+
+func (e *SectionHTMLElement) IfSLOT(cond bool, v string) *SectionHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SLOT(v)
 }
 
 func (e *SectionHTMLElement) RemoveSLOT(v string) *SectionHTMLElement {
@@ -538,6 +692,13 @@ func (e *SectionHTMLElement) SPELLCHECK(v string) *SectionHTMLElement {
     }
     e.StringAttributes["spellcheck"] = v
     return e
+}
+
+func (e *SectionHTMLElement) IfSPELLCHECK(cond bool, v string) *SectionHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SPELLCHECK(v)
 }
 
 func (e *SectionHTMLElement) RemoveSPELLCHECK(v string) *SectionHTMLElement {
@@ -558,6 +719,13 @@ func (e *SectionHTMLElement) STYLE(k,v string) *SectionHTMLElement {
     }
     kv.Add(k,v)
     return e
+}
+
+func (e *SectionHTMLElement) IfSTYLE(cond bool, k string) *SectionHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.STYLE(k, "")
 }
 
 func (e *SectionHTMLElement) RemoveSTYLE(k string) *SectionHTMLElement {
@@ -581,6 +749,13 @@ func (e *SectionHTMLElement) TABINDEX(v string) *SectionHTMLElement {
     return e
 }
 
+func (e *SectionHTMLElement) IfTABINDEX(cond bool, v string) *SectionHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TABINDEX(v)
+}
+
 func (e *SectionHTMLElement) RemoveTABINDEX(v string) *SectionHTMLElement {
     delete(e.StringAttributes, "tabindex")
     return e
@@ -595,6 +770,13 @@ func (e *SectionHTMLElement) TITLE(v string) *SectionHTMLElement {
     }
     e.StringAttributes["title"] = v
     return e
+}
+
+func (e *SectionHTMLElement) IfTITLE(cond bool, v string) *SectionHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TITLE(v)
 }
 
 func (e *SectionHTMLElement) RemoveTITLE(v string) *SectionHTMLElement {
@@ -612,6 +794,13 @@ func (e *SectionHTMLElement) TRANSLATE(v string) *SectionHTMLElement {
     }
     e.StringAttributes["translate"] = v
     return e
+}
+
+func (e *SectionHTMLElement) IfTRANSLATE(cond bool, v string) *SectionHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TRANSLATE(v)
 }
 
 func (e *SectionHTMLElement) RemoveTRANSLATE(v string) *SectionHTMLElement {

@@ -48,13 +48,13 @@ func (e *WbrHTMLElement) TextF(format string, args ...any) *WbrHTMLElement {
     return e.Text(fmt.Sprintf(format, args...))
 }
 
-func (e *WbrHTMLElement) Raw(text string) *WbrHTMLElement {
-    e.Descendants = append(e.Descendants, Raw(text))
+func (e *WbrHTMLElement) Escaped(text string) *WbrHTMLElement {
+    e.Descendants = append(e.Descendants, Escaped(text))
     return e
 }
 
-func (e *WbrHTMLElement) RawF(format string, args ...any) *WbrHTMLElement {
-    return e.Raw(fmt.Sprintf(format, args...))
+func (e *WbrHTMLElement) EscapedF(format string, args ...any) *WbrHTMLElement {
+    return e.Escaped(fmt.Sprintf(format, args...))
 }
 
 func (e *WbrHTMLElement) CustomData(key, value string) *WbrHTMLElement {
@@ -87,6 +87,13 @@ func (e *WbrHTMLElement) ACCESSKEY(v string) *WbrHTMLElement {
     return e
 }
 
+func (e *WbrHTMLElement) IfACCESSKEY(cond bool, v string) *WbrHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ACCESSKEY(v)
+}
+
 func (e *WbrHTMLElement) RemoveACCESSKEY(v string) *WbrHTMLElement {
     delete(e.StringAttributes, "accesskey")
     return e
@@ -114,6 +121,13 @@ func (e *WbrHTMLElement) AUTOCAPITALIZE(v string) *WbrHTMLElement {
     return e
 }
 
+func (e *WbrHTMLElement) IfAUTOCAPITALIZE(cond bool, v string) *WbrHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.AUTOCAPITALIZE(v)
+}
+
 func (e *WbrHTMLElement) RemoveAUTOCAPITALIZE(v string) *WbrHTMLElement {
     delete(e.StringAttributes, "autocapitalize")
     return e
@@ -128,6 +142,13 @@ func (e *WbrHTMLElement) AUTOFOCUS() *WbrHTMLElement {
     }
     e.BoolAttributes["autofocus"] = struct{}{}
     return e
+}
+
+func (e *WbrHTMLElement) IfAUTOFOCUS(cond bool) *WbrHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.AUTOFOCUS()
 }
 
 func (e *WbrHTMLElement) RemoveAUTOFOCUS() *WbrHTMLElement {
@@ -161,6 +182,13 @@ func(e *WbrHTMLElement) CLASS(v string) *WbrHTMLElement {
     return e
 }
 
+func (e *WbrHTMLElement) IfCLASS(cond bool, v string) *WbrHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.CLASS(v)
+}
+
 func (e *WbrHTMLElement) SetCLASS(v string) *WbrHTMLElement {
     kv := NewSpaceDelimitedString()
     e.DelimitedStringAttributes["class"] = kv
@@ -190,6 +218,13 @@ func (e *WbrHTMLElement) CONTENTEDITABLE(v string) *WbrHTMLElement {
     return e
 }
 
+func (e *WbrHTMLElement) IfCONTENTEDITABLE(cond bool, v string) *WbrHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.CONTENTEDITABLE(v)
+}
+
 func (e *WbrHTMLElement) RemoveCONTENTEDITABLE(v string) *WbrHTMLElement {
     delete(e.StringAttributes, "contenteditable")
     return e
@@ -209,6 +244,13 @@ func (e *WbrHTMLElement) DIR(v string) *WbrHTMLElement {
     return e
 }
 
+func (e *WbrHTMLElement) IfDIR(cond bool, v string) *WbrHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.DIR(v)
+}
+
 func (e *WbrHTMLElement) RemoveDIR(v string) *WbrHTMLElement {
     delete(e.StringAttributes, "dir")
     return e
@@ -224,6 +266,13 @@ func (e *WbrHTMLElement) DRAGGABLE(v string) *WbrHTMLElement {
     }
     e.StringAttributes["draggable"] = v
     return e
+}
+
+func (e *WbrHTMLElement) IfDRAGGABLE(cond bool, v string) *WbrHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.DRAGGABLE(v)
 }
 
 func (e *WbrHTMLElement) RemoveDRAGGABLE(v string) *WbrHTMLElement {
@@ -255,6 +304,13 @@ func (e *WbrHTMLElement) ENTERKEYHINT(v string) *WbrHTMLElement {
     return e
 }
 
+func (e *WbrHTMLElement) IfENTERKEYHINT(cond bool, v string) *WbrHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ENTERKEYHINT(v)
+}
+
 func (e *WbrHTMLElement) RemoveENTERKEYHINT(v string) *WbrHTMLElement {
     delete(e.StringAttributes, "enterkeyhint")
     return e
@@ -274,6 +330,13 @@ func (e *WbrHTMLElement) HIDDEN(v string) *WbrHTMLElement {
     return e
 }
 
+func (e *WbrHTMLElement) IfHIDDEN(cond bool, v string) *WbrHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.HIDDEN(v)
+}
+
 func (e *WbrHTMLElement) RemoveHIDDEN(v string) *WbrHTMLElement {
     delete(e.StringAttributes, "hidden")
     return e
@@ -290,6 +353,13 @@ func (e *WbrHTMLElement) ID(v string) *WbrHTMLElement {
     return e
 }
 
+func (e *WbrHTMLElement) IfID(cond bool, v string) *WbrHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ID(v)
+}
+
 func (e *WbrHTMLElement) RemoveID(v string) *WbrHTMLElement {
     delete(e.StringAttributes, "id")
     return e
@@ -304,6 +374,13 @@ func (e *WbrHTMLElement) INERT() *WbrHTMLElement {
     }
     e.BoolAttributes["inert"] = struct{}{}
     return e
+}
+
+func (e *WbrHTMLElement) IfINERT(cond bool) *WbrHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.INERT()
 }
 
 func (e *WbrHTMLElement) RemoveINERT() *WbrHTMLElement {
@@ -347,6 +424,13 @@ func (e *WbrHTMLElement) INPUTMODE(v string) *WbrHTMLElement {
     return e
 }
 
+func (e *WbrHTMLElement) IfINPUTMODE(cond bool, v string) *WbrHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.INPUTMODE(v)
+}
+
 func (e *WbrHTMLElement) RemoveINPUTMODE(v string) *WbrHTMLElement {
     delete(e.StringAttributes, "inputmode")
     return e
@@ -364,6 +448,13 @@ func (e *WbrHTMLElement) IS(v string) *WbrHTMLElement {
     return e
 }
 
+func (e *WbrHTMLElement) IfIS(cond bool, v string) *WbrHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.IS(v)
+}
+
 func (e *WbrHTMLElement) RemoveIS(v string) *WbrHTMLElement {
     delete(e.StringAttributes, "is")
     return e
@@ -378,6 +469,13 @@ func (e *WbrHTMLElement) ITEMID(v string) *WbrHTMLElement {
     }
     e.StringAttributes["itemid"] = v
     return e
+}
+
+func (e *WbrHTMLElement) IfITEMID(cond bool, v string) *WbrHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMID(v)
 }
 
 func (e *WbrHTMLElement) RemoveITEMID(v string) *WbrHTMLElement {
@@ -398,6 +496,13 @@ func (e *WbrHTMLElement) ITEMPROP(v string) *WbrHTMLElement {
     return e
 }
 
+func (e *WbrHTMLElement) IfITEMPROP(cond bool, v string) *WbrHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMPROP(v)
+}
+
 func (e *WbrHTMLElement) RemoveITEMPROP(v string) *WbrHTMLElement {
     delete(e.StringAttributes, "itemprop")
     return e
@@ -414,6 +519,13 @@ func (e *WbrHTMLElement) ITEMREF(v string) *WbrHTMLElement {
     return e
 }
 
+func (e *WbrHTMLElement) IfITEMREF(cond bool, v string) *WbrHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMREF(v)
+}
+
 func (e *WbrHTMLElement) RemoveITEMREF(v string) *WbrHTMLElement {
     delete(e.StringAttributes, "itemref")
     return e
@@ -428,6 +540,13 @@ func (e *WbrHTMLElement) ITEMSCOPE() *WbrHTMLElement {
     }
     e.BoolAttributes["itemscope"] = struct{}{}
     return e
+}
+
+func (e *WbrHTMLElement) IfITEMSCOPE(cond bool) *WbrHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMSCOPE()
 }
 
 func (e *WbrHTMLElement) RemoveITEMSCOPE() *WbrHTMLElement {
@@ -457,6 +576,13 @@ func (e *WbrHTMLElement) ITEMTYPE(v string) *WbrHTMLElement {
     return e
 }
 
+func (e *WbrHTMLElement) IfITEMTYPE(cond bool, v string) *WbrHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMTYPE(v)
+}
+
 func (e *WbrHTMLElement) RemoveITEMTYPE(v string) *WbrHTMLElement {
     delete(e.StringAttributes, "itemtype")
     return e
@@ -470,6 +596,13 @@ func (e *WbrHTMLElement) LANG(v string) *WbrHTMLElement {
     }
     e.StringAttributes["lang"] = v
     return e
+}
+
+func (e *WbrHTMLElement) IfLANG(cond bool, v string) *WbrHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.LANG(v)
 }
 
 func (e *WbrHTMLElement) RemoveLANG(v string) *WbrHTMLElement {
@@ -486,6 +619,13 @@ func (e *WbrHTMLElement) NONCE(v string) *WbrHTMLElement {
     }
     e.StringAttributes["nonce"] = v
     return e
+}
+
+func (e *WbrHTMLElement) IfNONCE(cond bool, v string) *WbrHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.NONCE(v)
 }
 
 func (e *WbrHTMLElement) RemoveNONCE(v string) *WbrHTMLElement {
@@ -507,6 +647,13 @@ func (e *WbrHTMLElement) POPOVER(v string) *WbrHTMLElement {
     return e
 }
 
+func (e *WbrHTMLElement) IfPOPOVER(cond bool, v string) *WbrHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.POPOVER(v)
+}
+
 func (e *WbrHTMLElement) RemovePOPOVER(v string) *WbrHTMLElement {
     delete(e.StringAttributes, "popover")
     return e
@@ -521,6 +668,13 @@ func (e *WbrHTMLElement) SLOT(v string) *WbrHTMLElement {
     }
     e.StringAttributes["slot"] = v
     return e
+}
+
+func (e *WbrHTMLElement) IfSLOT(cond bool, v string) *WbrHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SLOT(v)
 }
 
 func (e *WbrHTMLElement) RemoveSLOT(v string) *WbrHTMLElement {
@@ -538,6 +692,13 @@ func (e *WbrHTMLElement) SPELLCHECK(v string) *WbrHTMLElement {
     }
     e.StringAttributes["spellcheck"] = v
     return e
+}
+
+func (e *WbrHTMLElement) IfSPELLCHECK(cond bool, v string) *WbrHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SPELLCHECK(v)
 }
 
 func (e *WbrHTMLElement) RemoveSPELLCHECK(v string) *WbrHTMLElement {
@@ -558,6 +719,13 @@ func (e *WbrHTMLElement) STYLE(k,v string) *WbrHTMLElement {
     }
     kv.Add(k,v)
     return e
+}
+
+func (e *WbrHTMLElement) IfSTYLE(cond bool, k string) *WbrHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.STYLE(k, "")
 }
 
 func (e *WbrHTMLElement) RemoveSTYLE(k string) *WbrHTMLElement {
@@ -581,6 +749,13 @@ func (e *WbrHTMLElement) TABINDEX(v string) *WbrHTMLElement {
     return e
 }
 
+func (e *WbrHTMLElement) IfTABINDEX(cond bool, v string) *WbrHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TABINDEX(v)
+}
+
 func (e *WbrHTMLElement) RemoveTABINDEX(v string) *WbrHTMLElement {
     delete(e.StringAttributes, "tabindex")
     return e
@@ -595,6 +770,13 @@ func (e *WbrHTMLElement) TITLE(v string) *WbrHTMLElement {
     }
     e.StringAttributes["title"] = v
     return e
+}
+
+func (e *WbrHTMLElement) IfTITLE(cond bool, v string) *WbrHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TITLE(v)
 }
 
 func (e *WbrHTMLElement) RemoveTITLE(v string) *WbrHTMLElement {
@@ -612,6 +794,13 @@ func (e *WbrHTMLElement) TRANSLATE(v string) *WbrHTMLElement {
     }
     e.StringAttributes["translate"] = v
     return e
+}
+
+func (e *WbrHTMLElement) IfTRANSLATE(cond bool, v string) *WbrHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TRANSLATE(v)
 }
 
 func (e *WbrHTMLElement) RemoveTRANSLATE(v string) *WbrHTMLElement {

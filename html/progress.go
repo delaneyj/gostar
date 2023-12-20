@@ -48,13 +48,13 @@ func (e *ProgressHTMLElement) TextF(format string, args ...any) *ProgressHTMLEle
     return e.Text(fmt.Sprintf(format, args...))
 }
 
-func (e *ProgressHTMLElement) Raw(text string) *ProgressHTMLElement {
-    e.Descendants = append(e.Descendants, Raw(text))
+func (e *ProgressHTMLElement) Escaped(text string) *ProgressHTMLElement {
+    e.Descendants = append(e.Descendants, Escaped(text))
     return e
 }
 
-func (e *ProgressHTMLElement) RawF(format string, args ...any) *ProgressHTMLElement {
-    return e.Raw(fmt.Sprintf(format, args...))
+func (e *ProgressHTMLElement) EscapedF(format string, args ...any) *ProgressHTMLElement {
+    return e.Escaped(fmt.Sprintf(format, args...))
 }
 
 func (e *ProgressHTMLElement) CustomData(key, value string) *ProgressHTMLElement {
@@ -87,6 +87,13 @@ func (e *ProgressHTMLElement) ACCESSKEY(v string) *ProgressHTMLElement {
     return e
 }
 
+func (e *ProgressHTMLElement) IfACCESSKEY(cond bool, v string) *ProgressHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ACCESSKEY(v)
+}
+
 func (e *ProgressHTMLElement) RemoveACCESSKEY(v string) *ProgressHTMLElement {
     delete(e.StringAttributes, "accesskey")
     return e
@@ -114,6 +121,13 @@ func (e *ProgressHTMLElement) AUTOCAPITALIZE(v string) *ProgressHTMLElement {
     return e
 }
 
+func (e *ProgressHTMLElement) IfAUTOCAPITALIZE(cond bool, v string) *ProgressHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.AUTOCAPITALIZE(v)
+}
+
 func (e *ProgressHTMLElement) RemoveAUTOCAPITALIZE(v string) *ProgressHTMLElement {
     delete(e.StringAttributes, "autocapitalize")
     return e
@@ -128,6 +142,13 @@ func (e *ProgressHTMLElement) AUTOFOCUS() *ProgressHTMLElement {
     }
     e.BoolAttributes["autofocus"] = struct{}{}
     return e
+}
+
+func (e *ProgressHTMLElement) IfAUTOFOCUS(cond bool) *ProgressHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.AUTOFOCUS()
 }
 
 func (e *ProgressHTMLElement) RemoveAUTOFOCUS() *ProgressHTMLElement {
@@ -161,6 +182,13 @@ func(e *ProgressHTMLElement) CLASS(v string) *ProgressHTMLElement {
     return e
 }
 
+func (e *ProgressHTMLElement) IfCLASS(cond bool, v string) *ProgressHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.CLASS(v)
+}
+
 func (e *ProgressHTMLElement) SetCLASS(v string) *ProgressHTMLElement {
     kv := NewSpaceDelimitedString()
     e.DelimitedStringAttributes["class"] = kv
@@ -190,6 +218,13 @@ func (e *ProgressHTMLElement) CONTENTEDITABLE(v string) *ProgressHTMLElement {
     return e
 }
 
+func (e *ProgressHTMLElement) IfCONTENTEDITABLE(cond bool, v string) *ProgressHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.CONTENTEDITABLE(v)
+}
+
 func (e *ProgressHTMLElement) RemoveCONTENTEDITABLE(v string) *ProgressHTMLElement {
     delete(e.StringAttributes, "contenteditable")
     return e
@@ -209,6 +244,13 @@ func (e *ProgressHTMLElement) DIR(v string) *ProgressHTMLElement {
     return e
 }
 
+func (e *ProgressHTMLElement) IfDIR(cond bool, v string) *ProgressHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.DIR(v)
+}
+
 func (e *ProgressHTMLElement) RemoveDIR(v string) *ProgressHTMLElement {
     delete(e.StringAttributes, "dir")
     return e
@@ -224,6 +266,13 @@ func (e *ProgressHTMLElement) DRAGGABLE(v string) *ProgressHTMLElement {
     }
     e.StringAttributes["draggable"] = v
     return e
+}
+
+func (e *ProgressHTMLElement) IfDRAGGABLE(cond bool, v string) *ProgressHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.DRAGGABLE(v)
 }
 
 func (e *ProgressHTMLElement) RemoveDRAGGABLE(v string) *ProgressHTMLElement {
@@ -255,6 +304,13 @@ func (e *ProgressHTMLElement) ENTERKEYHINT(v string) *ProgressHTMLElement {
     return e
 }
 
+func (e *ProgressHTMLElement) IfENTERKEYHINT(cond bool, v string) *ProgressHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ENTERKEYHINT(v)
+}
+
 func (e *ProgressHTMLElement) RemoveENTERKEYHINT(v string) *ProgressHTMLElement {
     delete(e.StringAttributes, "enterkeyhint")
     return e
@@ -274,6 +330,13 @@ func (e *ProgressHTMLElement) HIDDEN(v string) *ProgressHTMLElement {
     return e
 }
 
+func (e *ProgressHTMLElement) IfHIDDEN(cond bool, v string) *ProgressHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.HIDDEN(v)
+}
+
 func (e *ProgressHTMLElement) RemoveHIDDEN(v string) *ProgressHTMLElement {
     delete(e.StringAttributes, "hidden")
     return e
@@ -290,6 +353,13 @@ func (e *ProgressHTMLElement) ID(v string) *ProgressHTMLElement {
     return e
 }
 
+func (e *ProgressHTMLElement) IfID(cond bool, v string) *ProgressHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ID(v)
+}
+
 func (e *ProgressHTMLElement) RemoveID(v string) *ProgressHTMLElement {
     delete(e.StringAttributes, "id")
     return e
@@ -304,6 +374,13 @@ func (e *ProgressHTMLElement) INERT() *ProgressHTMLElement {
     }
     e.BoolAttributes["inert"] = struct{}{}
     return e
+}
+
+func (e *ProgressHTMLElement) IfINERT(cond bool) *ProgressHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.INERT()
 }
 
 func (e *ProgressHTMLElement) RemoveINERT() *ProgressHTMLElement {
@@ -347,6 +424,13 @@ func (e *ProgressHTMLElement) INPUTMODE(v string) *ProgressHTMLElement {
     return e
 }
 
+func (e *ProgressHTMLElement) IfINPUTMODE(cond bool, v string) *ProgressHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.INPUTMODE(v)
+}
+
 func (e *ProgressHTMLElement) RemoveINPUTMODE(v string) *ProgressHTMLElement {
     delete(e.StringAttributes, "inputmode")
     return e
@@ -364,6 +448,13 @@ func (e *ProgressHTMLElement) IS(v string) *ProgressHTMLElement {
     return e
 }
 
+func (e *ProgressHTMLElement) IfIS(cond bool, v string) *ProgressHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.IS(v)
+}
+
 func (e *ProgressHTMLElement) RemoveIS(v string) *ProgressHTMLElement {
     delete(e.StringAttributes, "is")
     return e
@@ -378,6 +469,13 @@ func (e *ProgressHTMLElement) ITEMID(v string) *ProgressHTMLElement {
     }
     e.StringAttributes["itemid"] = v
     return e
+}
+
+func (e *ProgressHTMLElement) IfITEMID(cond bool, v string) *ProgressHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMID(v)
 }
 
 func (e *ProgressHTMLElement) RemoveITEMID(v string) *ProgressHTMLElement {
@@ -398,6 +496,13 @@ func (e *ProgressHTMLElement) ITEMPROP(v string) *ProgressHTMLElement {
     return e
 }
 
+func (e *ProgressHTMLElement) IfITEMPROP(cond bool, v string) *ProgressHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMPROP(v)
+}
+
 func (e *ProgressHTMLElement) RemoveITEMPROP(v string) *ProgressHTMLElement {
     delete(e.StringAttributes, "itemprop")
     return e
@@ -414,6 +519,13 @@ func (e *ProgressHTMLElement) ITEMREF(v string) *ProgressHTMLElement {
     return e
 }
 
+func (e *ProgressHTMLElement) IfITEMREF(cond bool, v string) *ProgressHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMREF(v)
+}
+
 func (e *ProgressHTMLElement) RemoveITEMREF(v string) *ProgressHTMLElement {
     delete(e.StringAttributes, "itemref")
     return e
@@ -428,6 +540,13 @@ func (e *ProgressHTMLElement) ITEMSCOPE() *ProgressHTMLElement {
     }
     e.BoolAttributes["itemscope"] = struct{}{}
     return e
+}
+
+func (e *ProgressHTMLElement) IfITEMSCOPE(cond bool) *ProgressHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMSCOPE()
 }
 
 func (e *ProgressHTMLElement) RemoveITEMSCOPE() *ProgressHTMLElement {
@@ -457,6 +576,13 @@ func (e *ProgressHTMLElement) ITEMTYPE(v string) *ProgressHTMLElement {
     return e
 }
 
+func (e *ProgressHTMLElement) IfITEMTYPE(cond bool, v string) *ProgressHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMTYPE(v)
+}
+
 func (e *ProgressHTMLElement) RemoveITEMTYPE(v string) *ProgressHTMLElement {
     delete(e.StringAttributes, "itemtype")
     return e
@@ -470,6 +596,13 @@ func (e *ProgressHTMLElement) LANG(v string) *ProgressHTMLElement {
     }
     e.StringAttributes["lang"] = v
     return e
+}
+
+func (e *ProgressHTMLElement) IfLANG(cond bool, v string) *ProgressHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.LANG(v)
 }
 
 func (e *ProgressHTMLElement) RemoveLANG(v string) *ProgressHTMLElement {
@@ -488,6 +621,13 @@ func (e *ProgressHTMLElement) MAX(v string) *ProgressHTMLElement {
     return e
 }
 
+func (e *ProgressHTMLElement) IfMAX(cond bool, v string) *ProgressHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.MAX(v)
+}
+
 func (e *ProgressHTMLElement) RemoveMAX(v string) *ProgressHTMLElement {
     delete(e.StringAttributes, "max")
     return e
@@ -502,6 +642,13 @@ func (e *ProgressHTMLElement) NONCE(v string) *ProgressHTMLElement {
     }
     e.StringAttributes["nonce"] = v
     return e
+}
+
+func (e *ProgressHTMLElement) IfNONCE(cond bool, v string) *ProgressHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.NONCE(v)
 }
 
 func (e *ProgressHTMLElement) RemoveNONCE(v string) *ProgressHTMLElement {
@@ -523,6 +670,13 @@ func (e *ProgressHTMLElement) POPOVER(v string) *ProgressHTMLElement {
     return e
 }
 
+func (e *ProgressHTMLElement) IfPOPOVER(cond bool, v string) *ProgressHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.POPOVER(v)
+}
+
 func (e *ProgressHTMLElement) RemovePOPOVER(v string) *ProgressHTMLElement {
     delete(e.StringAttributes, "popover")
     return e
@@ -537,6 +691,13 @@ func (e *ProgressHTMLElement) SLOT(v string) *ProgressHTMLElement {
     }
     e.StringAttributes["slot"] = v
     return e
+}
+
+func (e *ProgressHTMLElement) IfSLOT(cond bool, v string) *ProgressHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SLOT(v)
 }
 
 func (e *ProgressHTMLElement) RemoveSLOT(v string) *ProgressHTMLElement {
@@ -554,6 +715,13 @@ func (e *ProgressHTMLElement) SPELLCHECK(v string) *ProgressHTMLElement {
     }
     e.StringAttributes["spellcheck"] = v
     return e
+}
+
+func (e *ProgressHTMLElement) IfSPELLCHECK(cond bool, v string) *ProgressHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SPELLCHECK(v)
 }
 
 func (e *ProgressHTMLElement) RemoveSPELLCHECK(v string) *ProgressHTMLElement {
@@ -574,6 +742,13 @@ func (e *ProgressHTMLElement) STYLE(k,v string) *ProgressHTMLElement {
     }
     kv.Add(k,v)
     return e
+}
+
+func (e *ProgressHTMLElement) IfSTYLE(cond bool, k string) *ProgressHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.STYLE(k, "")
 }
 
 func (e *ProgressHTMLElement) RemoveSTYLE(k string) *ProgressHTMLElement {
@@ -597,6 +772,13 @@ func (e *ProgressHTMLElement) TABINDEX(v string) *ProgressHTMLElement {
     return e
 }
 
+func (e *ProgressHTMLElement) IfTABINDEX(cond bool, v string) *ProgressHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TABINDEX(v)
+}
+
 func (e *ProgressHTMLElement) RemoveTABINDEX(v string) *ProgressHTMLElement {
     delete(e.StringAttributes, "tabindex")
     return e
@@ -611,6 +793,13 @@ func (e *ProgressHTMLElement) TITLE(v string) *ProgressHTMLElement {
     }
     e.StringAttributes["title"] = v
     return e
+}
+
+func (e *ProgressHTMLElement) IfTITLE(cond bool, v string) *ProgressHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TITLE(v)
 }
 
 func (e *ProgressHTMLElement) RemoveTITLE(v string) *ProgressHTMLElement {
@@ -630,6 +819,13 @@ func (e *ProgressHTMLElement) TRANSLATE(v string) *ProgressHTMLElement {
     return e
 }
 
+func (e *ProgressHTMLElement) IfTRANSLATE(cond bool, v string) *ProgressHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TRANSLATE(v)
+}
+
 func (e *ProgressHTMLElement) RemoveTRANSLATE(v string) *ProgressHTMLElement {
     delete(e.StringAttributes, "translate")
     return e
@@ -644,6 +840,13 @@ func (e *ProgressHTMLElement) VALUE(v string) *ProgressHTMLElement {
     }
     e.StringAttributes["value"] = v
     return e
+}
+
+func (e *ProgressHTMLElement) IfVALUE(cond bool, v string) *ProgressHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.VALUE(v)
 }
 
 func (e *ProgressHTMLElement) RemoveVALUE(v string) *ProgressHTMLElement {

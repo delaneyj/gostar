@@ -48,13 +48,13 @@ func (e *DialogHTMLElement) TextF(format string, args ...any) *DialogHTMLElement
     return e.Text(fmt.Sprintf(format, args...))
 }
 
-func (e *DialogHTMLElement) Raw(text string) *DialogHTMLElement {
-    e.Descendants = append(e.Descendants, Raw(text))
+func (e *DialogHTMLElement) Escaped(text string) *DialogHTMLElement {
+    e.Descendants = append(e.Descendants, Escaped(text))
     return e
 }
 
-func (e *DialogHTMLElement) RawF(format string, args ...any) *DialogHTMLElement {
-    return e.Raw(fmt.Sprintf(format, args...))
+func (e *DialogHTMLElement) EscapedF(format string, args ...any) *DialogHTMLElement {
+    return e.Escaped(fmt.Sprintf(format, args...))
 }
 
 func (e *DialogHTMLElement) CustomData(key, value string) *DialogHTMLElement {
@@ -87,6 +87,13 @@ func (e *DialogHTMLElement) ACCESSKEY(v string) *DialogHTMLElement {
     return e
 }
 
+func (e *DialogHTMLElement) IfACCESSKEY(cond bool, v string) *DialogHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ACCESSKEY(v)
+}
+
 func (e *DialogHTMLElement) RemoveACCESSKEY(v string) *DialogHTMLElement {
     delete(e.StringAttributes, "accesskey")
     return e
@@ -114,6 +121,13 @@ func (e *DialogHTMLElement) AUTOCAPITALIZE(v string) *DialogHTMLElement {
     return e
 }
 
+func (e *DialogHTMLElement) IfAUTOCAPITALIZE(cond bool, v string) *DialogHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.AUTOCAPITALIZE(v)
+}
+
 func (e *DialogHTMLElement) RemoveAUTOCAPITALIZE(v string) *DialogHTMLElement {
     delete(e.StringAttributes, "autocapitalize")
     return e
@@ -128,6 +142,13 @@ func (e *DialogHTMLElement) AUTOFOCUS() *DialogHTMLElement {
     }
     e.BoolAttributes["autofocus"] = struct{}{}
     return e
+}
+
+func (e *DialogHTMLElement) IfAUTOFOCUS(cond bool) *DialogHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.AUTOFOCUS()
 }
 
 func (e *DialogHTMLElement) RemoveAUTOFOCUS() *DialogHTMLElement {
@@ -161,6 +182,13 @@ func(e *DialogHTMLElement) CLASS(v string) *DialogHTMLElement {
     return e
 }
 
+func (e *DialogHTMLElement) IfCLASS(cond bool, v string) *DialogHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.CLASS(v)
+}
+
 func (e *DialogHTMLElement) SetCLASS(v string) *DialogHTMLElement {
     kv := NewSpaceDelimitedString()
     e.DelimitedStringAttributes["class"] = kv
@@ -190,6 +218,13 @@ func (e *DialogHTMLElement) CONTENTEDITABLE(v string) *DialogHTMLElement {
     return e
 }
 
+func (e *DialogHTMLElement) IfCONTENTEDITABLE(cond bool, v string) *DialogHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.CONTENTEDITABLE(v)
+}
+
 func (e *DialogHTMLElement) RemoveCONTENTEDITABLE(v string) *DialogHTMLElement {
     delete(e.StringAttributes, "contenteditable")
     return e
@@ -209,6 +244,13 @@ func (e *DialogHTMLElement) DIR(v string) *DialogHTMLElement {
     return e
 }
 
+func (e *DialogHTMLElement) IfDIR(cond bool, v string) *DialogHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.DIR(v)
+}
+
 func (e *DialogHTMLElement) RemoveDIR(v string) *DialogHTMLElement {
     delete(e.StringAttributes, "dir")
     return e
@@ -224,6 +266,13 @@ func (e *DialogHTMLElement) DRAGGABLE(v string) *DialogHTMLElement {
     }
     e.StringAttributes["draggable"] = v
     return e
+}
+
+func (e *DialogHTMLElement) IfDRAGGABLE(cond bool, v string) *DialogHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.DRAGGABLE(v)
 }
 
 func (e *DialogHTMLElement) RemoveDRAGGABLE(v string) *DialogHTMLElement {
@@ -255,6 +304,13 @@ func (e *DialogHTMLElement) ENTERKEYHINT(v string) *DialogHTMLElement {
     return e
 }
 
+func (e *DialogHTMLElement) IfENTERKEYHINT(cond bool, v string) *DialogHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ENTERKEYHINT(v)
+}
+
 func (e *DialogHTMLElement) RemoveENTERKEYHINT(v string) *DialogHTMLElement {
     delete(e.StringAttributes, "enterkeyhint")
     return e
@@ -274,6 +330,13 @@ func (e *DialogHTMLElement) HIDDEN(v string) *DialogHTMLElement {
     return e
 }
 
+func (e *DialogHTMLElement) IfHIDDEN(cond bool, v string) *DialogHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.HIDDEN(v)
+}
+
 func (e *DialogHTMLElement) RemoveHIDDEN(v string) *DialogHTMLElement {
     delete(e.StringAttributes, "hidden")
     return e
@@ -290,6 +353,13 @@ func (e *DialogHTMLElement) ID(v string) *DialogHTMLElement {
     return e
 }
 
+func (e *DialogHTMLElement) IfID(cond bool, v string) *DialogHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ID(v)
+}
+
 func (e *DialogHTMLElement) RemoveID(v string) *DialogHTMLElement {
     delete(e.StringAttributes, "id")
     return e
@@ -304,6 +374,13 @@ func (e *DialogHTMLElement) INERT() *DialogHTMLElement {
     }
     e.BoolAttributes["inert"] = struct{}{}
     return e
+}
+
+func (e *DialogHTMLElement) IfINERT(cond bool) *DialogHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.INERT()
 }
 
 func (e *DialogHTMLElement) RemoveINERT() *DialogHTMLElement {
@@ -347,6 +424,13 @@ func (e *DialogHTMLElement) INPUTMODE(v string) *DialogHTMLElement {
     return e
 }
 
+func (e *DialogHTMLElement) IfINPUTMODE(cond bool, v string) *DialogHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.INPUTMODE(v)
+}
+
 func (e *DialogHTMLElement) RemoveINPUTMODE(v string) *DialogHTMLElement {
     delete(e.StringAttributes, "inputmode")
     return e
@@ -364,6 +448,13 @@ func (e *DialogHTMLElement) IS(v string) *DialogHTMLElement {
     return e
 }
 
+func (e *DialogHTMLElement) IfIS(cond bool, v string) *DialogHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.IS(v)
+}
+
 func (e *DialogHTMLElement) RemoveIS(v string) *DialogHTMLElement {
     delete(e.StringAttributes, "is")
     return e
@@ -378,6 +469,13 @@ func (e *DialogHTMLElement) ITEMID(v string) *DialogHTMLElement {
     }
     e.StringAttributes["itemid"] = v
     return e
+}
+
+func (e *DialogHTMLElement) IfITEMID(cond bool, v string) *DialogHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMID(v)
 }
 
 func (e *DialogHTMLElement) RemoveITEMID(v string) *DialogHTMLElement {
@@ -398,6 +496,13 @@ func (e *DialogHTMLElement) ITEMPROP(v string) *DialogHTMLElement {
     return e
 }
 
+func (e *DialogHTMLElement) IfITEMPROP(cond bool, v string) *DialogHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMPROP(v)
+}
+
 func (e *DialogHTMLElement) RemoveITEMPROP(v string) *DialogHTMLElement {
     delete(e.StringAttributes, "itemprop")
     return e
@@ -414,6 +519,13 @@ func (e *DialogHTMLElement) ITEMREF(v string) *DialogHTMLElement {
     return e
 }
 
+func (e *DialogHTMLElement) IfITEMREF(cond bool, v string) *DialogHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMREF(v)
+}
+
 func (e *DialogHTMLElement) RemoveITEMREF(v string) *DialogHTMLElement {
     delete(e.StringAttributes, "itemref")
     return e
@@ -428,6 +540,13 @@ func (e *DialogHTMLElement) ITEMSCOPE() *DialogHTMLElement {
     }
     e.BoolAttributes["itemscope"] = struct{}{}
     return e
+}
+
+func (e *DialogHTMLElement) IfITEMSCOPE(cond bool) *DialogHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMSCOPE()
 }
 
 func (e *DialogHTMLElement) RemoveITEMSCOPE() *DialogHTMLElement {
@@ -457,6 +576,13 @@ func (e *DialogHTMLElement) ITEMTYPE(v string) *DialogHTMLElement {
     return e
 }
 
+func (e *DialogHTMLElement) IfITEMTYPE(cond bool, v string) *DialogHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMTYPE(v)
+}
+
 func (e *DialogHTMLElement) RemoveITEMTYPE(v string) *DialogHTMLElement {
     delete(e.StringAttributes, "itemtype")
     return e
@@ -470,6 +596,13 @@ func (e *DialogHTMLElement) LANG(v string) *DialogHTMLElement {
     }
     e.StringAttributes["lang"] = v
     return e
+}
+
+func (e *DialogHTMLElement) IfLANG(cond bool, v string) *DialogHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.LANG(v)
 }
 
 func (e *DialogHTMLElement) RemoveLANG(v string) *DialogHTMLElement {
@@ -488,6 +621,13 @@ func (e *DialogHTMLElement) NONCE(v string) *DialogHTMLElement {
     return e
 }
 
+func (e *DialogHTMLElement) IfNONCE(cond bool, v string) *DialogHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.NONCE(v)
+}
+
 func (e *DialogHTMLElement) RemoveNONCE(v string) *DialogHTMLElement {
     delete(e.StringAttributes, "nonce")
     return e
@@ -502,6 +642,13 @@ func (e *DialogHTMLElement) OPEN() *DialogHTMLElement {
     }
     e.BoolAttributes["open"] = struct{}{}
     return e
+}
+
+func (e *DialogHTMLElement) IfOPEN(cond bool) *DialogHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.OPEN()
 }
 
 func (e *DialogHTMLElement) RemoveOPEN() *DialogHTMLElement {
@@ -533,6 +680,13 @@ func (e *DialogHTMLElement) POPOVER(v string) *DialogHTMLElement {
     return e
 }
 
+func (e *DialogHTMLElement) IfPOPOVER(cond bool, v string) *DialogHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.POPOVER(v)
+}
+
 func (e *DialogHTMLElement) RemovePOPOVER(v string) *DialogHTMLElement {
     delete(e.StringAttributes, "popover")
     return e
@@ -547,6 +701,13 @@ func (e *DialogHTMLElement) SLOT(v string) *DialogHTMLElement {
     }
     e.StringAttributes["slot"] = v
     return e
+}
+
+func (e *DialogHTMLElement) IfSLOT(cond bool, v string) *DialogHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SLOT(v)
 }
 
 func (e *DialogHTMLElement) RemoveSLOT(v string) *DialogHTMLElement {
@@ -564,6 +725,13 @@ func (e *DialogHTMLElement) SPELLCHECK(v string) *DialogHTMLElement {
     }
     e.StringAttributes["spellcheck"] = v
     return e
+}
+
+func (e *DialogHTMLElement) IfSPELLCHECK(cond bool, v string) *DialogHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SPELLCHECK(v)
 }
 
 func (e *DialogHTMLElement) RemoveSPELLCHECK(v string) *DialogHTMLElement {
@@ -584,6 +752,13 @@ func (e *DialogHTMLElement) STYLE(k,v string) *DialogHTMLElement {
     }
     kv.Add(k,v)
     return e
+}
+
+func (e *DialogHTMLElement) IfSTYLE(cond bool, k string) *DialogHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.STYLE(k, "")
 }
 
 func (e *DialogHTMLElement) RemoveSTYLE(k string) *DialogHTMLElement {
@@ -607,6 +782,13 @@ func (e *DialogHTMLElement) TABINDEX(v string) *DialogHTMLElement {
     return e
 }
 
+func (e *DialogHTMLElement) IfTABINDEX(cond bool, v string) *DialogHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TABINDEX(v)
+}
+
 func (e *DialogHTMLElement) RemoveTABINDEX(v string) *DialogHTMLElement {
     delete(e.StringAttributes, "tabindex")
     return e
@@ -621,6 +803,13 @@ func (e *DialogHTMLElement) TITLE(v string) *DialogHTMLElement {
     }
     e.StringAttributes["title"] = v
     return e
+}
+
+func (e *DialogHTMLElement) IfTITLE(cond bool, v string) *DialogHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TITLE(v)
 }
 
 func (e *DialogHTMLElement) RemoveTITLE(v string) *DialogHTMLElement {
@@ -638,6 +827,13 @@ func (e *DialogHTMLElement) TRANSLATE(v string) *DialogHTMLElement {
     }
     e.StringAttributes["translate"] = v
     return e
+}
+
+func (e *DialogHTMLElement) IfTRANSLATE(cond bool, v string) *DialogHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TRANSLATE(v)
 }
 
 func (e *DialogHTMLElement) RemoveTRANSLATE(v string) *DialogHTMLElement {

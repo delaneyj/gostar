@@ -48,13 +48,13 @@ func (e *HeaderHTMLElement) TextF(format string, args ...any) *HeaderHTMLElement
     return e.Text(fmt.Sprintf(format, args...))
 }
 
-func (e *HeaderHTMLElement) Raw(text string) *HeaderHTMLElement {
-    e.Descendants = append(e.Descendants, Raw(text))
+func (e *HeaderHTMLElement) Escaped(text string) *HeaderHTMLElement {
+    e.Descendants = append(e.Descendants, Escaped(text))
     return e
 }
 
-func (e *HeaderHTMLElement) RawF(format string, args ...any) *HeaderHTMLElement {
-    return e.Raw(fmt.Sprintf(format, args...))
+func (e *HeaderHTMLElement) EscapedF(format string, args ...any) *HeaderHTMLElement {
+    return e.Escaped(fmt.Sprintf(format, args...))
 }
 
 func (e *HeaderHTMLElement) CustomData(key, value string) *HeaderHTMLElement {
@@ -87,6 +87,13 @@ func (e *HeaderHTMLElement) ACCESSKEY(v string) *HeaderHTMLElement {
     return e
 }
 
+func (e *HeaderHTMLElement) IfACCESSKEY(cond bool, v string) *HeaderHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ACCESSKEY(v)
+}
+
 func (e *HeaderHTMLElement) RemoveACCESSKEY(v string) *HeaderHTMLElement {
     delete(e.StringAttributes, "accesskey")
     return e
@@ -114,6 +121,13 @@ func (e *HeaderHTMLElement) AUTOCAPITALIZE(v string) *HeaderHTMLElement {
     return e
 }
 
+func (e *HeaderHTMLElement) IfAUTOCAPITALIZE(cond bool, v string) *HeaderHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.AUTOCAPITALIZE(v)
+}
+
 func (e *HeaderHTMLElement) RemoveAUTOCAPITALIZE(v string) *HeaderHTMLElement {
     delete(e.StringAttributes, "autocapitalize")
     return e
@@ -128,6 +142,13 @@ func (e *HeaderHTMLElement) AUTOFOCUS() *HeaderHTMLElement {
     }
     e.BoolAttributes["autofocus"] = struct{}{}
     return e
+}
+
+func (e *HeaderHTMLElement) IfAUTOFOCUS(cond bool) *HeaderHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.AUTOFOCUS()
 }
 
 func (e *HeaderHTMLElement) RemoveAUTOFOCUS() *HeaderHTMLElement {
@@ -161,6 +182,13 @@ func(e *HeaderHTMLElement) CLASS(v string) *HeaderHTMLElement {
     return e
 }
 
+func (e *HeaderHTMLElement) IfCLASS(cond bool, v string) *HeaderHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.CLASS(v)
+}
+
 func (e *HeaderHTMLElement) SetCLASS(v string) *HeaderHTMLElement {
     kv := NewSpaceDelimitedString()
     e.DelimitedStringAttributes["class"] = kv
@@ -190,6 +218,13 @@ func (e *HeaderHTMLElement) CONTENTEDITABLE(v string) *HeaderHTMLElement {
     return e
 }
 
+func (e *HeaderHTMLElement) IfCONTENTEDITABLE(cond bool, v string) *HeaderHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.CONTENTEDITABLE(v)
+}
+
 func (e *HeaderHTMLElement) RemoveCONTENTEDITABLE(v string) *HeaderHTMLElement {
     delete(e.StringAttributes, "contenteditable")
     return e
@@ -209,6 +244,13 @@ func (e *HeaderHTMLElement) DIR(v string) *HeaderHTMLElement {
     return e
 }
 
+func (e *HeaderHTMLElement) IfDIR(cond bool, v string) *HeaderHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.DIR(v)
+}
+
 func (e *HeaderHTMLElement) RemoveDIR(v string) *HeaderHTMLElement {
     delete(e.StringAttributes, "dir")
     return e
@@ -224,6 +266,13 @@ func (e *HeaderHTMLElement) DRAGGABLE(v string) *HeaderHTMLElement {
     }
     e.StringAttributes["draggable"] = v
     return e
+}
+
+func (e *HeaderHTMLElement) IfDRAGGABLE(cond bool, v string) *HeaderHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.DRAGGABLE(v)
 }
 
 func (e *HeaderHTMLElement) RemoveDRAGGABLE(v string) *HeaderHTMLElement {
@@ -255,6 +304,13 @@ func (e *HeaderHTMLElement) ENTERKEYHINT(v string) *HeaderHTMLElement {
     return e
 }
 
+func (e *HeaderHTMLElement) IfENTERKEYHINT(cond bool, v string) *HeaderHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ENTERKEYHINT(v)
+}
+
 func (e *HeaderHTMLElement) RemoveENTERKEYHINT(v string) *HeaderHTMLElement {
     delete(e.StringAttributes, "enterkeyhint")
     return e
@@ -274,6 +330,13 @@ func (e *HeaderHTMLElement) HIDDEN(v string) *HeaderHTMLElement {
     return e
 }
 
+func (e *HeaderHTMLElement) IfHIDDEN(cond bool, v string) *HeaderHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.HIDDEN(v)
+}
+
 func (e *HeaderHTMLElement) RemoveHIDDEN(v string) *HeaderHTMLElement {
     delete(e.StringAttributes, "hidden")
     return e
@@ -290,6 +353,13 @@ func (e *HeaderHTMLElement) ID(v string) *HeaderHTMLElement {
     return e
 }
 
+func (e *HeaderHTMLElement) IfID(cond bool, v string) *HeaderHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ID(v)
+}
+
 func (e *HeaderHTMLElement) RemoveID(v string) *HeaderHTMLElement {
     delete(e.StringAttributes, "id")
     return e
@@ -304,6 +374,13 @@ func (e *HeaderHTMLElement) INERT() *HeaderHTMLElement {
     }
     e.BoolAttributes["inert"] = struct{}{}
     return e
+}
+
+func (e *HeaderHTMLElement) IfINERT(cond bool) *HeaderHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.INERT()
 }
 
 func (e *HeaderHTMLElement) RemoveINERT() *HeaderHTMLElement {
@@ -347,6 +424,13 @@ func (e *HeaderHTMLElement) INPUTMODE(v string) *HeaderHTMLElement {
     return e
 }
 
+func (e *HeaderHTMLElement) IfINPUTMODE(cond bool, v string) *HeaderHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.INPUTMODE(v)
+}
+
 func (e *HeaderHTMLElement) RemoveINPUTMODE(v string) *HeaderHTMLElement {
     delete(e.StringAttributes, "inputmode")
     return e
@@ -364,6 +448,13 @@ func (e *HeaderHTMLElement) IS(v string) *HeaderHTMLElement {
     return e
 }
 
+func (e *HeaderHTMLElement) IfIS(cond bool, v string) *HeaderHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.IS(v)
+}
+
 func (e *HeaderHTMLElement) RemoveIS(v string) *HeaderHTMLElement {
     delete(e.StringAttributes, "is")
     return e
@@ -378,6 +469,13 @@ func (e *HeaderHTMLElement) ITEMID(v string) *HeaderHTMLElement {
     }
     e.StringAttributes["itemid"] = v
     return e
+}
+
+func (e *HeaderHTMLElement) IfITEMID(cond bool, v string) *HeaderHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMID(v)
 }
 
 func (e *HeaderHTMLElement) RemoveITEMID(v string) *HeaderHTMLElement {
@@ -398,6 +496,13 @@ func (e *HeaderHTMLElement) ITEMPROP(v string) *HeaderHTMLElement {
     return e
 }
 
+func (e *HeaderHTMLElement) IfITEMPROP(cond bool, v string) *HeaderHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMPROP(v)
+}
+
 func (e *HeaderHTMLElement) RemoveITEMPROP(v string) *HeaderHTMLElement {
     delete(e.StringAttributes, "itemprop")
     return e
@@ -414,6 +519,13 @@ func (e *HeaderHTMLElement) ITEMREF(v string) *HeaderHTMLElement {
     return e
 }
 
+func (e *HeaderHTMLElement) IfITEMREF(cond bool, v string) *HeaderHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMREF(v)
+}
+
 func (e *HeaderHTMLElement) RemoveITEMREF(v string) *HeaderHTMLElement {
     delete(e.StringAttributes, "itemref")
     return e
@@ -428,6 +540,13 @@ func (e *HeaderHTMLElement) ITEMSCOPE() *HeaderHTMLElement {
     }
     e.BoolAttributes["itemscope"] = struct{}{}
     return e
+}
+
+func (e *HeaderHTMLElement) IfITEMSCOPE(cond bool) *HeaderHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMSCOPE()
 }
 
 func (e *HeaderHTMLElement) RemoveITEMSCOPE() *HeaderHTMLElement {
@@ -457,6 +576,13 @@ func (e *HeaderHTMLElement) ITEMTYPE(v string) *HeaderHTMLElement {
     return e
 }
 
+func (e *HeaderHTMLElement) IfITEMTYPE(cond bool, v string) *HeaderHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMTYPE(v)
+}
+
 func (e *HeaderHTMLElement) RemoveITEMTYPE(v string) *HeaderHTMLElement {
     delete(e.StringAttributes, "itemtype")
     return e
@@ -470,6 +596,13 @@ func (e *HeaderHTMLElement) LANG(v string) *HeaderHTMLElement {
     }
     e.StringAttributes["lang"] = v
     return e
+}
+
+func (e *HeaderHTMLElement) IfLANG(cond bool, v string) *HeaderHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.LANG(v)
 }
 
 func (e *HeaderHTMLElement) RemoveLANG(v string) *HeaderHTMLElement {
@@ -486,6 +619,13 @@ func (e *HeaderHTMLElement) NONCE(v string) *HeaderHTMLElement {
     }
     e.StringAttributes["nonce"] = v
     return e
+}
+
+func (e *HeaderHTMLElement) IfNONCE(cond bool, v string) *HeaderHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.NONCE(v)
 }
 
 func (e *HeaderHTMLElement) RemoveNONCE(v string) *HeaderHTMLElement {
@@ -507,6 +647,13 @@ func (e *HeaderHTMLElement) POPOVER(v string) *HeaderHTMLElement {
     return e
 }
 
+func (e *HeaderHTMLElement) IfPOPOVER(cond bool, v string) *HeaderHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.POPOVER(v)
+}
+
 func (e *HeaderHTMLElement) RemovePOPOVER(v string) *HeaderHTMLElement {
     delete(e.StringAttributes, "popover")
     return e
@@ -521,6 +668,13 @@ func (e *HeaderHTMLElement) SLOT(v string) *HeaderHTMLElement {
     }
     e.StringAttributes["slot"] = v
     return e
+}
+
+func (e *HeaderHTMLElement) IfSLOT(cond bool, v string) *HeaderHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SLOT(v)
 }
 
 func (e *HeaderHTMLElement) RemoveSLOT(v string) *HeaderHTMLElement {
@@ -538,6 +692,13 @@ func (e *HeaderHTMLElement) SPELLCHECK(v string) *HeaderHTMLElement {
     }
     e.StringAttributes["spellcheck"] = v
     return e
+}
+
+func (e *HeaderHTMLElement) IfSPELLCHECK(cond bool, v string) *HeaderHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SPELLCHECK(v)
 }
 
 func (e *HeaderHTMLElement) RemoveSPELLCHECK(v string) *HeaderHTMLElement {
@@ -558,6 +719,13 @@ func (e *HeaderHTMLElement) STYLE(k,v string) *HeaderHTMLElement {
     }
     kv.Add(k,v)
     return e
+}
+
+func (e *HeaderHTMLElement) IfSTYLE(cond bool, k string) *HeaderHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.STYLE(k, "")
 }
 
 func (e *HeaderHTMLElement) RemoveSTYLE(k string) *HeaderHTMLElement {
@@ -581,6 +749,13 @@ func (e *HeaderHTMLElement) TABINDEX(v string) *HeaderHTMLElement {
     return e
 }
 
+func (e *HeaderHTMLElement) IfTABINDEX(cond bool, v string) *HeaderHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TABINDEX(v)
+}
+
 func (e *HeaderHTMLElement) RemoveTABINDEX(v string) *HeaderHTMLElement {
     delete(e.StringAttributes, "tabindex")
     return e
@@ -595,6 +770,13 @@ func (e *HeaderHTMLElement) TITLE(v string) *HeaderHTMLElement {
     }
     e.StringAttributes["title"] = v
     return e
+}
+
+func (e *HeaderHTMLElement) IfTITLE(cond bool, v string) *HeaderHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TITLE(v)
 }
 
 func (e *HeaderHTMLElement) RemoveTITLE(v string) *HeaderHTMLElement {
@@ -612,6 +794,13 @@ func (e *HeaderHTMLElement) TRANSLATE(v string) *HeaderHTMLElement {
     }
     e.StringAttributes["translate"] = v
     return e
+}
+
+func (e *HeaderHTMLElement) IfTRANSLATE(cond bool, v string) *HeaderHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TRANSLATE(v)
 }
 
 func (e *HeaderHTMLElement) RemoveTRANSLATE(v string) *HeaderHTMLElement {

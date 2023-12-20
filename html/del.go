@@ -48,13 +48,13 @@ func (e *DelHTMLElement) TextF(format string, args ...any) *DelHTMLElement {
     return e.Text(fmt.Sprintf(format, args...))
 }
 
-func (e *DelHTMLElement) Raw(text string) *DelHTMLElement {
-    e.Descendants = append(e.Descendants, Raw(text))
+func (e *DelHTMLElement) Escaped(text string) *DelHTMLElement {
+    e.Descendants = append(e.Descendants, Escaped(text))
     return e
 }
 
-func (e *DelHTMLElement) RawF(format string, args ...any) *DelHTMLElement {
-    return e.Raw(fmt.Sprintf(format, args...))
+func (e *DelHTMLElement) EscapedF(format string, args ...any) *DelHTMLElement {
+    return e.Escaped(fmt.Sprintf(format, args...))
 }
 
 func (e *DelHTMLElement) CustomData(key, value string) *DelHTMLElement {
@@ -87,6 +87,13 @@ func (e *DelHTMLElement) ACCESSKEY(v string) *DelHTMLElement {
     return e
 }
 
+func (e *DelHTMLElement) IfACCESSKEY(cond bool, v string) *DelHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ACCESSKEY(v)
+}
+
 func (e *DelHTMLElement) RemoveACCESSKEY(v string) *DelHTMLElement {
     delete(e.StringAttributes, "accesskey")
     return e
@@ -114,6 +121,13 @@ func (e *DelHTMLElement) AUTOCAPITALIZE(v string) *DelHTMLElement {
     return e
 }
 
+func (e *DelHTMLElement) IfAUTOCAPITALIZE(cond bool, v string) *DelHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.AUTOCAPITALIZE(v)
+}
+
 func (e *DelHTMLElement) RemoveAUTOCAPITALIZE(v string) *DelHTMLElement {
     delete(e.StringAttributes, "autocapitalize")
     return e
@@ -128,6 +142,13 @@ func (e *DelHTMLElement) AUTOFOCUS() *DelHTMLElement {
     }
     e.BoolAttributes["autofocus"] = struct{}{}
     return e
+}
+
+func (e *DelHTMLElement) IfAUTOFOCUS(cond bool) *DelHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.AUTOFOCUS()
 }
 
 func (e *DelHTMLElement) RemoveAUTOFOCUS() *DelHTMLElement {
@@ -156,6 +177,13 @@ func (e *DelHTMLElement) CITE(v string) *DelHTMLElement {
     return e
 }
 
+func (e *DelHTMLElement) IfCITE(cond bool, v string) *DelHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.CITE(v)
+}
+
 func (e *DelHTMLElement) RemoveCITE(v string) *DelHTMLElement {
     delete(e.StringAttributes, "cite")
     return e
@@ -175,6 +203,13 @@ func(e *DelHTMLElement) CLASS(v string) *DelHTMLElement {
     }
     kv.Add(v)
     return e
+}
+
+func (e *DelHTMLElement) IfCLASS(cond bool, v string) *DelHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.CLASS(v)
 }
 
 func (e *DelHTMLElement) SetCLASS(v string) *DelHTMLElement {
@@ -206,6 +241,13 @@ func (e *DelHTMLElement) CONTENTEDITABLE(v string) *DelHTMLElement {
     return e
 }
 
+func (e *DelHTMLElement) IfCONTENTEDITABLE(cond bool, v string) *DelHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.CONTENTEDITABLE(v)
+}
+
 func (e *DelHTMLElement) RemoveCONTENTEDITABLE(v string) *DelHTMLElement {
     delete(e.StringAttributes, "contenteditable")
     return e
@@ -231,6 +273,13 @@ func (e *DelHTMLElement) DATETIME(v string) *DelHTMLElement {
     return e
 }
 
+func (e *DelHTMLElement) IfDATETIME(cond bool, v string) *DelHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.DATETIME(v)
+}
+
 func (e *DelHTMLElement) RemoveDATETIME(v string) *DelHTMLElement {
     delete(e.StringAttributes, "datetime")
     return e
@@ -250,6 +299,13 @@ func (e *DelHTMLElement) DIR(v string) *DelHTMLElement {
     return e
 }
 
+func (e *DelHTMLElement) IfDIR(cond bool, v string) *DelHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.DIR(v)
+}
+
 func (e *DelHTMLElement) RemoveDIR(v string) *DelHTMLElement {
     delete(e.StringAttributes, "dir")
     return e
@@ -265,6 +321,13 @@ func (e *DelHTMLElement) DRAGGABLE(v string) *DelHTMLElement {
     }
     e.StringAttributes["draggable"] = v
     return e
+}
+
+func (e *DelHTMLElement) IfDRAGGABLE(cond bool, v string) *DelHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.DRAGGABLE(v)
 }
 
 func (e *DelHTMLElement) RemoveDRAGGABLE(v string) *DelHTMLElement {
@@ -296,6 +359,13 @@ func (e *DelHTMLElement) ENTERKEYHINT(v string) *DelHTMLElement {
     return e
 }
 
+func (e *DelHTMLElement) IfENTERKEYHINT(cond bool, v string) *DelHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ENTERKEYHINT(v)
+}
+
 func (e *DelHTMLElement) RemoveENTERKEYHINT(v string) *DelHTMLElement {
     delete(e.StringAttributes, "enterkeyhint")
     return e
@@ -315,6 +385,13 @@ func (e *DelHTMLElement) HIDDEN(v string) *DelHTMLElement {
     return e
 }
 
+func (e *DelHTMLElement) IfHIDDEN(cond bool, v string) *DelHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.HIDDEN(v)
+}
+
 func (e *DelHTMLElement) RemoveHIDDEN(v string) *DelHTMLElement {
     delete(e.StringAttributes, "hidden")
     return e
@@ -331,6 +408,13 @@ func (e *DelHTMLElement) ID(v string) *DelHTMLElement {
     return e
 }
 
+func (e *DelHTMLElement) IfID(cond bool, v string) *DelHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ID(v)
+}
+
 func (e *DelHTMLElement) RemoveID(v string) *DelHTMLElement {
     delete(e.StringAttributes, "id")
     return e
@@ -345,6 +429,13 @@ func (e *DelHTMLElement) INERT() *DelHTMLElement {
     }
     e.BoolAttributes["inert"] = struct{}{}
     return e
+}
+
+func (e *DelHTMLElement) IfINERT(cond bool) *DelHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.INERT()
 }
 
 func (e *DelHTMLElement) RemoveINERT() *DelHTMLElement {
@@ -388,6 +479,13 @@ func (e *DelHTMLElement) INPUTMODE(v string) *DelHTMLElement {
     return e
 }
 
+func (e *DelHTMLElement) IfINPUTMODE(cond bool, v string) *DelHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.INPUTMODE(v)
+}
+
 func (e *DelHTMLElement) RemoveINPUTMODE(v string) *DelHTMLElement {
     delete(e.StringAttributes, "inputmode")
     return e
@@ -405,6 +503,13 @@ func (e *DelHTMLElement) IS(v string) *DelHTMLElement {
     return e
 }
 
+func (e *DelHTMLElement) IfIS(cond bool, v string) *DelHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.IS(v)
+}
+
 func (e *DelHTMLElement) RemoveIS(v string) *DelHTMLElement {
     delete(e.StringAttributes, "is")
     return e
@@ -419,6 +524,13 @@ func (e *DelHTMLElement) ITEMID(v string) *DelHTMLElement {
     }
     e.StringAttributes["itemid"] = v
     return e
+}
+
+func (e *DelHTMLElement) IfITEMID(cond bool, v string) *DelHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMID(v)
 }
 
 func (e *DelHTMLElement) RemoveITEMID(v string) *DelHTMLElement {
@@ -439,6 +551,13 @@ func (e *DelHTMLElement) ITEMPROP(v string) *DelHTMLElement {
     return e
 }
 
+func (e *DelHTMLElement) IfITEMPROP(cond bool, v string) *DelHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMPROP(v)
+}
+
 func (e *DelHTMLElement) RemoveITEMPROP(v string) *DelHTMLElement {
     delete(e.StringAttributes, "itemprop")
     return e
@@ -455,6 +574,13 @@ func (e *DelHTMLElement) ITEMREF(v string) *DelHTMLElement {
     return e
 }
 
+func (e *DelHTMLElement) IfITEMREF(cond bool, v string) *DelHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMREF(v)
+}
+
 func (e *DelHTMLElement) RemoveITEMREF(v string) *DelHTMLElement {
     delete(e.StringAttributes, "itemref")
     return e
@@ -469,6 +595,13 @@ func (e *DelHTMLElement) ITEMSCOPE() *DelHTMLElement {
     }
     e.BoolAttributes["itemscope"] = struct{}{}
     return e
+}
+
+func (e *DelHTMLElement) IfITEMSCOPE(cond bool) *DelHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMSCOPE()
 }
 
 func (e *DelHTMLElement) RemoveITEMSCOPE() *DelHTMLElement {
@@ -498,6 +631,13 @@ func (e *DelHTMLElement) ITEMTYPE(v string) *DelHTMLElement {
     return e
 }
 
+func (e *DelHTMLElement) IfITEMTYPE(cond bool, v string) *DelHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMTYPE(v)
+}
+
 func (e *DelHTMLElement) RemoveITEMTYPE(v string) *DelHTMLElement {
     delete(e.StringAttributes, "itemtype")
     return e
@@ -511,6 +651,13 @@ func (e *DelHTMLElement) LANG(v string) *DelHTMLElement {
     }
     e.StringAttributes["lang"] = v
     return e
+}
+
+func (e *DelHTMLElement) IfLANG(cond bool, v string) *DelHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.LANG(v)
 }
 
 func (e *DelHTMLElement) RemoveLANG(v string) *DelHTMLElement {
@@ -527,6 +674,13 @@ func (e *DelHTMLElement) NONCE(v string) *DelHTMLElement {
     }
     e.StringAttributes["nonce"] = v
     return e
+}
+
+func (e *DelHTMLElement) IfNONCE(cond bool, v string) *DelHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.NONCE(v)
 }
 
 func (e *DelHTMLElement) RemoveNONCE(v string) *DelHTMLElement {
@@ -548,6 +702,13 @@ func (e *DelHTMLElement) POPOVER(v string) *DelHTMLElement {
     return e
 }
 
+func (e *DelHTMLElement) IfPOPOVER(cond bool, v string) *DelHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.POPOVER(v)
+}
+
 func (e *DelHTMLElement) RemovePOPOVER(v string) *DelHTMLElement {
     delete(e.StringAttributes, "popover")
     return e
@@ -562,6 +723,13 @@ func (e *DelHTMLElement) SLOT(v string) *DelHTMLElement {
     }
     e.StringAttributes["slot"] = v
     return e
+}
+
+func (e *DelHTMLElement) IfSLOT(cond bool, v string) *DelHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SLOT(v)
 }
 
 func (e *DelHTMLElement) RemoveSLOT(v string) *DelHTMLElement {
@@ -579,6 +747,13 @@ func (e *DelHTMLElement) SPELLCHECK(v string) *DelHTMLElement {
     }
     e.StringAttributes["spellcheck"] = v
     return e
+}
+
+func (e *DelHTMLElement) IfSPELLCHECK(cond bool, v string) *DelHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SPELLCHECK(v)
 }
 
 func (e *DelHTMLElement) RemoveSPELLCHECK(v string) *DelHTMLElement {
@@ -599,6 +774,13 @@ func (e *DelHTMLElement) STYLE(k,v string) *DelHTMLElement {
     }
     kv.Add(k,v)
     return e
+}
+
+func (e *DelHTMLElement) IfSTYLE(cond bool, k string) *DelHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.STYLE(k, "")
 }
 
 func (e *DelHTMLElement) RemoveSTYLE(k string) *DelHTMLElement {
@@ -622,6 +804,13 @@ func (e *DelHTMLElement) TABINDEX(v string) *DelHTMLElement {
     return e
 }
 
+func (e *DelHTMLElement) IfTABINDEX(cond bool, v string) *DelHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TABINDEX(v)
+}
+
 func (e *DelHTMLElement) RemoveTABINDEX(v string) *DelHTMLElement {
     delete(e.StringAttributes, "tabindex")
     return e
@@ -636,6 +825,13 @@ func (e *DelHTMLElement) TITLE(v string) *DelHTMLElement {
     }
     e.StringAttributes["title"] = v
     return e
+}
+
+func (e *DelHTMLElement) IfTITLE(cond bool, v string) *DelHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TITLE(v)
 }
 
 func (e *DelHTMLElement) RemoveTITLE(v string) *DelHTMLElement {
@@ -653,6 +849,13 @@ func (e *DelHTMLElement) TRANSLATE(v string) *DelHTMLElement {
     }
     e.StringAttributes["translate"] = v
     return e
+}
+
+func (e *DelHTMLElement) IfTRANSLATE(cond bool, v string) *DelHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TRANSLATE(v)
 }
 
 func (e *DelHTMLElement) RemoveTRANSLATE(v string) *DelHTMLElement {

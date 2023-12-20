@@ -48,13 +48,13 @@ func (e *KbdHTMLElement) TextF(format string, args ...any) *KbdHTMLElement {
     return e.Text(fmt.Sprintf(format, args...))
 }
 
-func (e *KbdHTMLElement) Raw(text string) *KbdHTMLElement {
-    e.Descendants = append(e.Descendants, Raw(text))
+func (e *KbdHTMLElement) Escaped(text string) *KbdHTMLElement {
+    e.Descendants = append(e.Descendants, Escaped(text))
     return e
 }
 
-func (e *KbdHTMLElement) RawF(format string, args ...any) *KbdHTMLElement {
-    return e.Raw(fmt.Sprintf(format, args...))
+func (e *KbdHTMLElement) EscapedF(format string, args ...any) *KbdHTMLElement {
+    return e.Escaped(fmt.Sprintf(format, args...))
 }
 
 func (e *KbdHTMLElement) CustomData(key, value string) *KbdHTMLElement {
@@ -87,6 +87,13 @@ func (e *KbdHTMLElement) ACCESSKEY(v string) *KbdHTMLElement {
     return e
 }
 
+func (e *KbdHTMLElement) IfACCESSKEY(cond bool, v string) *KbdHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ACCESSKEY(v)
+}
+
 func (e *KbdHTMLElement) RemoveACCESSKEY(v string) *KbdHTMLElement {
     delete(e.StringAttributes, "accesskey")
     return e
@@ -114,6 +121,13 @@ func (e *KbdHTMLElement) AUTOCAPITALIZE(v string) *KbdHTMLElement {
     return e
 }
 
+func (e *KbdHTMLElement) IfAUTOCAPITALIZE(cond bool, v string) *KbdHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.AUTOCAPITALIZE(v)
+}
+
 func (e *KbdHTMLElement) RemoveAUTOCAPITALIZE(v string) *KbdHTMLElement {
     delete(e.StringAttributes, "autocapitalize")
     return e
@@ -128,6 +142,13 @@ func (e *KbdHTMLElement) AUTOFOCUS() *KbdHTMLElement {
     }
     e.BoolAttributes["autofocus"] = struct{}{}
     return e
+}
+
+func (e *KbdHTMLElement) IfAUTOFOCUS(cond bool) *KbdHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.AUTOFOCUS()
 }
 
 func (e *KbdHTMLElement) RemoveAUTOFOCUS() *KbdHTMLElement {
@@ -161,6 +182,13 @@ func(e *KbdHTMLElement) CLASS(v string) *KbdHTMLElement {
     return e
 }
 
+func (e *KbdHTMLElement) IfCLASS(cond bool, v string) *KbdHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.CLASS(v)
+}
+
 func (e *KbdHTMLElement) SetCLASS(v string) *KbdHTMLElement {
     kv := NewSpaceDelimitedString()
     e.DelimitedStringAttributes["class"] = kv
@@ -190,6 +218,13 @@ func (e *KbdHTMLElement) CONTENTEDITABLE(v string) *KbdHTMLElement {
     return e
 }
 
+func (e *KbdHTMLElement) IfCONTENTEDITABLE(cond bool, v string) *KbdHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.CONTENTEDITABLE(v)
+}
+
 func (e *KbdHTMLElement) RemoveCONTENTEDITABLE(v string) *KbdHTMLElement {
     delete(e.StringAttributes, "contenteditable")
     return e
@@ -209,6 +244,13 @@ func (e *KbdHTMLElement) DIR(v string) *KbdHTMLElement {
     return e
 }
 
+func (e *KbdHTMLElement) IfDIR(cond bool, v string) *KbdHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.DIR(v)
+}
+
 func (e *KbdHTMLElement) RemoveDIR(v string) *KbdHTMLElement {
     delete(e.StringAttributes, "dir")
     return e
@@ -224,6 +266,13 @@ func (e *KbdHTMLElement) DRAGGABLE(v string) *KbdHTMLElement {
     }
     e.StringAttributes["draggable"] = v
     return e
+}
+
+func (e *KbdHTMLElement) IfDRAGGABLE(cond bool, v string) *KbdHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.DRAGGABLE(v)
 }
 
 func (e *KbdHTMLElement) RemoveDRAGGABLE(v string) *KbdHTMLElement {
@@ -255,6 +304,13 @@ func (e *KbdHTMLElement) ENTERKEYHINT(v string) *KbdHTMLElement {
     return e
 }
 
+func (e *KbdHTMLElement) IfENTERKEYHINT(cond bool, v string) *KbdHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ENTERKEYHINT(v)
+}
+
 func (e *KbdHTMLElement) RemoveENTERKEYHINT(v string) *KbdHTMLElement {
     delete(e.StringAttributes, "enterkeyhint")
     return e
@@ -274,6 +330,13 @@ func (e *KbdHTMLElement) HIDDEN(v string) *KbdHTMLElement {
     return e
 }
 
+func (e *KbdHTMLElement) IfHIDDEN(cond bool, v string) *KbdHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.HIDDEN(v)
+}
+
 func (e *KbdHTMLElement) RemoveHIDDEN(v string) *KbdHTMLElement {
     delete(e.StringAttributes, "hidden")
     return e
@@ -290,6 +353,13 @@ func (e *KbdHTMLElement) ID(v string) *KbdHTMLElement {
     return e
 }
 
+func (e *KbdHTMLElement) IfID(cond bool, v string) *KbdHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ID(v)
+}
+
 func (e *KbdHTMLElement) RemoveID(v string) *KbdHTMLElement {
     delete(e.StringAttributes, "id")
     return e
@@ -304,6 +374,13 @@ func (e *KbdHTMLElement) INERT() *KbdHTMLElement {
     }
     e.BoolAttributes["inert"] = struct{}{}
     return e
+}
+
+func (e *KbdHTMLElement) IfINERT(cond bool) *KbdHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.INERT()
 }
 
 func (e *KbdHTMLElement) RemoveINERT() *KbdHTMLElement {
@@ -347,6 +424,13 @@ func (e *KbdHTMLElement) INPUTMODE(v string) *KbdHTMLElement {
     return e
 }
 
+func (e *KbdHTMLElement) IfINPUTMODE(cond bool, v string) *KbdHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.INPUTMODE(v)
+}
+
 func (e *KbdHTMLElement) RemoveINPUTMODE(v string) *KbdHTMLElement {
     delete(e.StringAttributes, "inputmode")
     return e
@@ -364,6 +448,13 @@ func (e *KbdHTMLElement) IS(v string) *KbdHTMLElement {
     return e
 }
 
+func (e *KbdHTMLElement) IfIS(cond bool, v string) *KbdHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.IS(v)
+}
+
 func (e *KbdHTMLElement) RemoveIS(v string) *KbdHTMLElement {
     delete(e.StringAttributes, "is")
     return e
@@ -378,6 +469,13 @@ func (e *KbdHTMLElement) ITEMID(v string) *KbdHTMLElement {
     }
     e.StringAttributes["itemid"] = v
     return e
+}
+
+func (e *KbdHTMLElement) IfITEMID(cond bool, v string) *KbdHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMID(v)
 }
 
 func (e *KbdHTMLElement) RemoveITEMID(v string) *KbdHTMLElement {
@@ -398,6 +496,13 @@ func (e *KbdHTMLElement) ITEMPROP(v string) *KbdHTMLElement {
     return e
 }
 
+func (e *KbdHTMLElement) IfITEMPROP(cond bool, v string) *KbdHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMPROP(v)
+}
+
 func (e *KbdHTMLElement) RemoveITEMPROP(v string) *KbdHTMLElement {
     delete(e.StringAttributes, "itemprop")
     return e
@@ -414,6 +519,13 @@ func (e *KbdHTMLElement) ITEMREF(v string) *KbdHTMLElement {
     return e
 }
 
+func (e *KbdHTMLElement) IfITEMREF(cond bool, v string) *KbdHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMREF(v)
+}
+
 func (e *KbdHTMLElement) RemoveITEMREF(v string) *KbdHTMLElement {
     delete(e.StringAttributes, "itemref")
     return e
@@ -428,6 +540,13 @@ func (e *KbdHTMLElement) ITEMSCOPE() *KbdHTMLElement {
     }
     e.BoolAttributes["itemscope"] = struct{}{}
     return e
+}
+
+func (e *KbdHTMLElement) IfITEMSCOPE(cond bool) *KbdHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMSCOPE()
 }
 
 func (e *KbdHTMLElement) RemoveITEMSCOPE() *KbdHTMLElement {
@@ -457,6 +576,13 @@ func (e *KbdHTMLElement) ITEMTYPE(v string) *KbdHTMLElement {
     return e
 }
 
+func (e *KbdHTMLElement) IfITEMTYPE(cond bool, v string) *KbdHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMTYPE(v)
+}
+
 func (e *KbdHTMLElement) RemoveITEMTYPE(v string) *KbdHTMLElement {
     delete(e.StringAttributes, "itemtype")
     return e
@@ -470,6 +596,13 @@ func (e *KbdHTMLElement) LANG(v string) *KbdHTMLElement {
     }
     e.StringAttributes["lang"] = v
     return e
+}
+
+func (e *KbdHTMLElement) IfLANG(cond bool, v string) *KbdHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.LANG(v)
 }
 
 func (e *KbdHTMLElement) RemoveLANG(v string) *KbdHTMLElement {
@@ -486,6 +619,13 @@ func (e *KbdHTMLElement) NONCE(v string) *KbdHTMLElement {
     }
     e.StringAttributes["nonce"] = v
     return e
+}
+
+func (e *KbdHTMLElement) IfNONCE(cond bool, v string) *KbdHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.NONCE(v)
 }
 
 func (e *KbdHTMLElement) RemoveNONCE(v string) *KbdHTMLElement {
@@ -507,6 +647,13 @@ func (e *KbdHTMLElement) POPOVER(v string) *KbdHTMLElement {
     return e
 }
 
+func (e *KbdHTMLElement) IfPOPOVER(cond bool, v string) *KbdHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.POPOVER(v)
+}
+
 func (e *KbdHTMLElement) RemovePOPOVER(v string) *KbdHTMLElement {
     delete(e.StringAttributes, "popover")
     return e
@@ -521,6 +668,13 @@ func (e *KbdHTMLElement) SLOT(v string) *KbdHTMLElement {
     }
     e.StringAttributes["slot"] = v
     return e
+}
+
+func (e *KbdHTMLElement) IfSLOT(cond bool, v string) *KbdHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SLOT(v)
 }
 
 func (e *KbdHTMLElement) RemoveSLOT(v string) *KbdHTMLElement {
@@ -538,6 +692,13 @@ func (e *KbdHTMLElement) SPELLCHECK(v string) *KbdHTMLElement {
     }
     e.StringAttributes["spellcheck"] = v
     return e
+}
+
+func (e *KbdHTMLElement) IfSPELLCHECK(cond bool, v string) *KbdHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SPELLCHECK(v)
 }
 
 func (e *KbdHTMLElement) RemoveSPELLCHECK(v string) *KbdHTMLElement {
@@ -558,6 +719,13 @@ func (e *KbdHTMLElement) STYLE(k,v string) *KbdHTMLElement {
     }
     kv.Add(k,v)
     return e
+}
+
+func (e *KbdHTMLElement) IfSTYLE(cond bool, k string) *KbdHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.STYLE(k, "")
 }
 
 func (e *KbdHTMLElement) RemoveSTYLE(k string) *KbdHTMLElement {
@@ -581,6 +749,13 @@ func (e *KbdHTMLElement) TABINDEX(v string) *KbdHTMLElement {
     return e
 }
 
+func (e *KbdHTMLElement) IfTABINDEX(cond bool, v string) *KbdHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TABINDEX(v)
+}
+
 func (e *KbdHTMLElement) RemoveTABINDEX(v string) *KbdHTMLElement {
     delete(e.StringAttributes, "tabindex")
     return e
@@ -595,6 +770,13 @@ func (e *KbdHTMLElement) TITLE(v string) *KbdHTMLElement {
     }
     e.StringAttributes["title"] = v
     return e
+}
+
+func (e *KbdHTMLElement) IfTITLE(cond bool, v string) *KbdHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TITLE(v)
 }
 
 func (e *KbdHTMLElement) RemoveTITLE(v string) *KbdHTMLElement {
@@ -612,6 +794,13 @@ func (e *KbdHTMLElement) TRANSLATE(v string) *KbdHTMLElement {
     }
     e.StringAttributes["translate"] = v
     return e
+}
+
+func (e *KbdHTMLElement) IfTRANSLATE(cond bool, v string) *KbdHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TRANSLATE(v)
 }
 
 func (e *KbdHTMLElement) RemoveTRANSLATE(v string) *KbdHTMLElement {

@@ -48,13 +48,13 @@ func (e *NoscriptHTMLElement) TextF(format string, args ...any) *NoscriptHTMLEle
     return e.Text(fmt.Sprintf(format, args...))
 }
 
-func (e *NoscriptHTMLElement) Raw(text string) *NoscriptHTMLElement {
-    e.Descendants = append(e.Descendants, Raw(text))
+func (e *NoscriptHTMLElement) Escaped(text string) *NoscriptHTMLElement {
+    e.Descendants = append(e.Descendants, Escaped(text))
     return e
 }
 
-func (e *NoscriptHTMLElement) RawF(format string, args ...any) *NoscriptHTMLElement {
-    return e.Raw(fmt.Sprintf(format, args...))
+func (e *NoscriptHTMLElement) EscapedF(format string, args ...any) *NoscriptHTMLElement {
+    return e.Escaped(fmt.Sprintf(format, args...))
 }
 
 func (e *NoscriptHTMLElement) CustomData(key, value string) *NoscriptHTMLElement {
@@ -87,6 +87,13 @@ func (e *NoscriptHTMLElement) ACCESSKEY(v string) *NoscriptHTMLElement {
     return e
 }
 
+func (e *NoscriptHTMLElement) IfACCESSKEY(cond bool, v string) *NoscriptHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ACCESSKEY(v)
+}
+
 func (e *NoscriptHTMLElement) RemoveACCESSKEY(v string) *NoscriptHTMLElement {
     delete(e.StringAttributes, "accesskey")
     return e
@@ -114,6 +121,13 @@ func (e *NoscriptHTMLElement) AUTOCAPITALIZE(v string) *NoscriptHTMLElement {
     return e
 }
 
+func (e *NoscriptHTMLElement) IfAUTOCAPITALIZE(cond bool, v string) *NoscriptHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.AUTOCAPITALIZE(v)
+}
+
 func (e *NoscriptHTMLElement) RemoveAUTOCAPITALIZE(v string) *NoscriptHTMLElement {
     delete(e.StringAttributes, "autocapitalize")
     return e
@@ -128,6 +142,13 @@ func (e *NoscriptHTMLElement) AUTOFOCUS() *NoscriptHTMLElement {
     }
     e.BoolAttributes["autofocus"] = struct{}{}
     return e
+}
+
+func (e *NoscriptHTMLElement) IfAUTOFOCUS(cond bool) *NoscriptHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.AUTOFOCUS()
 }
 
 func (e *NoscriptHTMLElement) RemoveAUTOFOCUS() *NoscriptHTMLElement {
@@ -161,6 +182,13 @@ func(e *NoscriptHTMLElement) CLASS(v string) *NoscriptHTMLElement {
     return e
 }
 
+func (e *NoscriptHTMLElement) IfCLASS(cond bool, v string) *NoscriptHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.CLASS(v)
+}
+
 func (e *NoscriptHTMLElement) SetCLASS(v string) *NoscriptHTMLElement {
     kv := NewSpaceDelimitedString()
     e.DelimitedStringAttributes["class"] = kv
@@ -190,6 +218,13 @@ func (e *NoscriptHTMLElement) CONTENTEDITABLE(v string) *NoscriptHTMLElement {
     return e
 }
 
+func (e *NoscriptHTMLElement) IfCONTENTEDITABLE(cond bool, v string) *NoscriptHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.CONTENTEDITABLE(v)
+}
+
 func (e *NoscriptHTMLElement) RemoveCONTENTEDITABLE(v string) *NoscriptHTMLElement {
     delete(e.StringAttributes, "contenteditable")
     return e
@@ -209,6 +244,13 @@ func (e *NoscriptHTMLElement) DIR(v string) *NoscriptHTMLElement {
     return e
 }
 
+func (e *NoscriptHTMLElement) IfDIR(cond bool, v string) *NoscriptHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.DIR(v)
+}
+
 func (e *NoscriptHTMLElement) RemoveDIR(v string) *NoscriptHTMLElement {
     delete(e.StringAttributes, "dir")
     return e
@@ -224,6 +266,13 @@ func (e *NoscriptHTMLElement) DRAGGABLE(v string) *NoscriptHTMLElement {
     }
     e.StringAttributes["draggable"] = v
     return e
+}
+
+func (e *NoscriptHTMLElement) IfDRAGGABLE(cond bool, v string) *NoscriptHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.DRAGGABLE(v)
 }
 
 func (e *NoscriptHTMLElement) RemoveDRAGGABLE(v string) *NoscriptHTMLElement {
@@ -255,6 +304,13 @@ func (e *NoscriptHTMLElement) ENTERKEYHINT(v string) *NoscriptHTMLElement {
     return e
 }
 
+func (e *NoscriptHTMLElement) IfENTERKEYHINT(cond bool, v string) *NoscriptHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ENTERKEYHINT(v)
+}
+
 func (e *NoscriptHTMLElement) RemoveENTERKEYHINT(v string) *NoscriptHTMLElement {
     delete(e.StringAttributes, "enterkeyhint")
     return e
@@ -274,6 +330,13 @@ func (e *NoscriptHTMLElement) HIDDEN(v string) *NoscriptHTMLElement {
     return e
 }
 
+func (e *NoscriptHTMLElement) IfHIDDEN(cond bool, v string) *NoscriptHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.HIDDEN(v)
+}
+
 func (e *NoscriptHTMLElement) RemoveHIDDEN(v string) *NoscriptHTMLElement {
     delete(e.StringAttributes, "hidden")
     return e
@@ -290,6 +353,13 @@ func (e *NoscriptHTMLElement) ID(v string) *NoscriptHTMLElement {
     return e
 }
 
+func (e *NoscriptHTMLElement) IfID(cond bool, v string) *NoscriptHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ID(v)
+}
+
 func (e *NoscriptHTMLElement) RemoveID(v string) *NoscriptHTMLElement {
     delete(e.StringAttributes, "id")
     return e
@@ -304,6 +374,13 @@ func (e *NoscriptHTMLElement) INERT() *NoscriptHTMLElement {
     }
     e.BoolAttributes["inert"] = struct{}{}
     return e
+}
+
+func (e *NoscriptHTMLElement) IfINERT(cond bool) *NoscriptHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.INERT()
 }
 
 func (e *NoscriptHTMLElement) RemoveINERT() *NoscriptHTMLElement {
@@ -347,6 +424,13 @@ func (e *NoscriptHTMLElement) INPUTMODE(v string) *NoscriptHTMLElement {
     return e
 }
 
+func (e *NoscriptHTMLElement) IfINPUTMODE(cond bool, v string) *NoscriptHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.INPUTMODE(v)
+}
+
 func (e *NoscriptHTMLElement) RemoveINPUTMODE(v string) *NoscriptHTMLElement {
     delete(e.StringAttributes, "inputmode")
     return e
@@ -364,6 +448,13 @@ func (e *NoscriptHTMLElement) IS(v string) *NoscriptHTMLElement {
     return e
 }
 
+func (e *NoscriptHTMLElement) IfIS(cond bool, v string) *NoscriptHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.IS(v)
+}
+
 func (e *NoscriptHTMLElement) RemoveIS(v string) *NoscriptHTMLElement {
     delete(e.StringAttributes, "is")
     return e
@@ -378,6 +469,13 @@ func (e *NoscriptHTMLElement) ITEMID(v string) *NoscriptHTMLElement {
     }
     e.StringAttributes["itemid"] = v
     return e
+}
+
+func (e *NoscriptHTMLElement) IfITEMID(cond bool, v string) *NoscriptHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMID(v)
 }
 
 func (e *NoscriptHTMLElement) RemoveITEMID(v string) *NoscriptHTMLElement {
@@ -398,6 +496,13 @@ func (e *NoscriptHTMLElement) ITEMPROP(v string) *NoscriptHTMLElement {
     return e
 }
 
+func (e *NoscriptHTMLElement) IfITEMPROP(cond bool, v string) *NoscriptHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMPROP(v)
+}
+
 func (e *NoscriptHTMLElement) RemoveITEMPROP(v string) *NoscriptHTMLElement {
     delete(e.StringAttributes, "itemprop")
     return e
@@ -414,6 +519,13 @@ func (e *NoscriptHTMLElement) ITEMREF(v string) *NoscriptHTMLElement {
     return e
 }
 
+func (e *NoscriptHTMLElement) IfITEMREF(cond bool, v string) *NoscriptHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMREF(v)
+}
+
 func (e *NoscriptHTMLElement) RemoveITEMREF(v string) *NoscriptHTMLElement {
     delete(e.StringAttributes, "itemref")
     return e
@@ -428,6 +540,13 @@ func (e *NoscriptHTMLElement) ITEMSCOPE() *NoscriptHTMLElement {
     }
     e.BoolAttributes["itemscope"] = struct{}{}
     return e
+}
+
+func (e *NoscriptHTMLElement) IfITEMSCOPE(cond bool) *NoscriptHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMSCOPE()
 }
 
 func (e *NoscriptHTMLElement) RemoveITEMSCOPE() *NoscriptHTMLElement {
@@ -457,6 +576,13 @@ func (e *NoscriptHTMLElement) ITEMTYPE(v string) *NoscriptHTMLElement {
     return e
 }
 
+func (e *NoscriptHTMLElement) IfITEMTYPE(cond bool, v string) *NoscriptHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMTYPE(v)
+}
+
 func (e *NoscriptHTMLElement) RemoveITEMTYPE(v string) *NoscriptHTMLElement {
     delete(e.StringAttributes, "itemtype")
     return e
@@ -470,6 +596,13 @@ func (e *NoscriptHTMLElement) LANG(v string) *NoscriptHTMLElement {
     }
     e.StringAttributes["lang"] = v
     return e
+}
+
+func (e *NoscriptHTMLElement) IfLANG(cond bool, v string) *NoscriptHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.LANG(v)
 }
 
 func (e *NoscriptHTMLElement) RemoveLANG(v string) *NoscriptHTMLElement {
@@ -486,6 +619,13 @@ func (e *NoscriptHTMLElement) NONCE(v string) *NoscriptHTMLElement {
     }
     e.StringAttributes["nonce"] = v
     return e
+}
+
+func (e *NoscriptHTMLElement) IfNONCE(cond bool, v string) *NoscriptHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.NONCE(v)
 }
 
 func (e *NoscriptHTMLElement) RemoveNONCE(v string) *NoscriptHTMLElement {
@@ -507,6 +647,13 @@ func (e *NoscriptHTMLElement) POPOVER(v string) *NoscriptHTMLElement {
     return e
 }
 
+func (e *NoscriptHTMLElement) IfPOPOVER(cond bool, v string) *NoscriptHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.POPOVER(v)
+}
+
 func (e *NoscriptHTMLElement) RemovePOPOVER(v string) *NoscriptHTMLElement {
     delete(e.StringAttributes, "popover")
     return e
@@ -521,6 +668,13 @@ func (e *NoscriptHTMLElement) SLOT(v string) *NoscriptHTMLElement {
     }
     e.StringAttributes["slot"] = v
     return e
+}
+
+func (e *NoscriptHTMLElement) IfSLOT(cond bool, v string) *NoscriptHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SLOT(v)
 }
 
 func (e *NoscriptHTMLElement) RemoveSLOT(v string) *NoscriptHTMLElement {
@@ -538,6 +692,13 @@ func (e *NoscriptHTMLElement) SPELLCHECK(v string) *NoscriptHTMLElement {
     }
     e.StringAttributes["spellcheck"] = v
     return e
+}
+
+func (e *NoscriptHTMLElement) IfSPELLCHECK(cond bool, v string) *NoscriptHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SPELLCHECK(v)
 }
 
 func (e *NoscriptHTMLElement) RemoveSPELLCHECK(v string) *NoscriptHTMLElement {
@@ -558,6 +719,13 @@ func (e *NoscriptHTMLElement) STYLE(k,v string) *NoscriptHTMLElement {
     }
     kv.Add(k,v)
     return e
+}
+
+func (e *NoscriptHTMLElement) IfSTYLE(cond bool, k string) *NoscriptHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.STYLE(k, "")
 }
 
 func (e *NoscriptHTMLElement) RemoveSTYLE(k string) *NoscriptHTMLElement {
@@ -581,6 +749,13 @@ func (e *NoscriptHTMLElement) TABINDEX(v string) *NoscriptHTMLElement {
     return e
 }
 
+func (e *NoscriptHTMLElement) IfTABINDEX(cond bool, v string) *NoscriptHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TABINDEX(v)
+}
+
 func (e *NoscriptHTMLElement) RemoveTABINDEX(v string) *NoscriptHTMLElement {
     delete(e.StringAttributes, "tabindex")
     return e
@@ -595,6 +770,13 @@ func (e *NoscriptHTMLElement) TITLE(v string) *NoscriptHTMLElement {
     }
     e.StringAttributes["title"] = v
     return e
+}
+
+func (e *NoscriptHTMLElement) IfTITLE(cond bool, v string) *NoscriptHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TITLE(v)
 }
 
 func (e *NoscriptHTMLElement) RemoveTITLE(v string) *NoscriptHTMLElement {
@@ -612,6 +794,13 @@ func (e *NoscriptHTMLElement) TRANSLATE(v string) *NoscriptHTMLElement {
     }
     e.StringAttributes["translate"] = v
     return e
+}
+
+func (e *NoscriptHTMLElement) IfTRANSLATE(cond bool, v string) *NoscriptHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TRANSLATE(v)
 }
 
 func (e *NoscriptHTMLElement) RemoveTRANSLATE(v string) *NoscriptHTMLElement {

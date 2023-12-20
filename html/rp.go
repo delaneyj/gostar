@@ -48,13 +48,13 @@ func (e *RpHTMLElement) TextF(format string, args ...any) *RpHTMLElement {
     return e.Text(fmt.Sprintf(format, args...))
 }
 
-func (e *RpHTMLElement) Raw(text string) *RpHTMLElement {
-    e.Descendants = append(e.Descendants, Raw(text))
+func (e *RpHTMLElement) Escaped(text string) *RpHTMLElement {
+    e.Descendants = append(e.Descendants, Escaped(text))
     return e
 }
 
-func (e *RpHTMLElement) RawF(format string, args ...any) *RpHTMLElement {
-    return e.Raw(fmt.Sprintf(format, args...))
+func (e *RpHTMLElement) EscapedF(format string, args ...any) *RpHTMLElement {
+    return e.Escaped(fmt.Sprintf(format, args...))
 }
 
 func (e *RpHTMLElement) CustomData(key, value string) *RpHTMLElement {
@@ -87,6 +87,13 @@ func (e *RpHTMLElement) ACCESSKEY(v string) *RpHTMLElement {
     return e
 }
 
+func (e *RpHTMLElement) IfACCESSKEY(cond bool, v string) *RpHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ACCESSKEY(v)
+}
+
 func (e *RpHTMLElement) RemoveACCESSKEY(v string) *RpHTMLElement {
     delete(e.StringAttributes, "accesskey")
     return e
@@ -114,6 +121,13 @@ func (e *RpHTMLElement) AUTOCAPITALIZE(v string) *RpHTMLElement {
     return e
 }
 
+func (e *RpHTMLElement) IfAUTOCAPITALIZE(cond bool, v string) *RpHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.AUTOCAPITALIZE(v)
+}
+
 func (e *RpHTMLElement) RemoveAUTOCAPITALIZE(v string) *RpHTMLElement {
     delete(e.StringAttributes, "autocapitalize")
     return e
@@ -128,6 +142,13 @@ func (e *RpHTMLElement) AUTOFOCUS() *RpHTMLElement {
     }
     e.BoolAttributes["autofocus"] = struct{}{}
     return e
+}
+
+func (e *RpHTMLElement) IfAUTOFOCUS(cond bool) *RpHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.AUTOFOCUS()
 }
 
 func (e *RpHTMLElement) RemoveAUTOFOCUS() *RpHTMLElement {
@@ -161,6 +182,13 @@ func(e *RpHTMLElement) CLASS(v string) *RpHTMLElement {
     return e
 }
 
+func (e *RpHTMLElement) IfCLASS(cond bool, v string) *RpHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.CLASS(v)
+}
+
 func (e *RpHTMLElement) SetCLASS(v string) *RpHTMLElement {
     kv := NewSpaceDelimitedString()
     e.DelimitedStringAttributes["class"] = kv
@@ -190,6 +218,13 @@ func (e *RpHTMLElement) CONTENTEDITABLE(v string) *RpHTMLElement {
     return e
 }
 
+func (e *RpHTMLElement) IfCONTENTEDITABLE(cond bool, v string) *RpHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.CONTENTEDITABLE(v)
+}
+
 func (e *RpHTMLElement) RemoveCONTENTEDITABLE(v string) *RpHTMLElement {
     delete(e.StringAttributes, "contenteditable")
     return e
@@ -209,6 +244,13 @@ func (e *RpHTMLElement) DIR(v string) *RpHTMLElement {
     return e
 }
 
+func (e *RpHTMLElement) IfDIR(cond bool, v string) *RpHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.DIR(v)
+}
+
 func (e *RpHTMLElement) RemoveDIR(v string) *RpHTMLElement {
     delete(e.StringAttributes, "dir")
     return e
@@ -224,6 +266,13 @@ func (e *RpHTMLElement) DRAGGABLE(v string) *RpHTMLElement {
     }
     e.StringAttributes["draggable"] = v
     return e
+}
+
+func (e *RpHTMLElement) IfDRAGGABLE(cond bool, v string) *RpHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.DRAGGABLE(v)
 }
 
 func (e *RpHTMLElement) RemoveDRAGGABLE(v string) *RpHTMLElement {
@@ -255,6 +304,13 @@ func (e *RpHTMLElement) ENTERKEYHINT(v string) *RpHTMLElement {
     return e
 }
 
+func (e *RpHTMLElement) IfENTERKEYHINT(cond bool, v string) *RpHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ENTERKEYHINT(v)
+}
+
 func (e *RpHTMLElement) RemoveENTERKEYHINT(v string) *RpHTMLElement {
     delete(e.StringAttributes, "enterkeyhint")
     return e
@@ -274,6 +330,13 @@ func (e *RpHTMLElement) HIDDEN(v string) *RpHTMLElement {
     return e
 }
 
+func (e *RpHTMLElement) IfHIDDEN(cond bool, v string) *RpHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.HIDDEN(v)
+}
+
 func (e *RpHTMLElement) RemoveHIDDEN(v string) *RpHTMLElement {
     delete(e.StringAttributes, "hidden")
     return e
@@ -290,6 +353,13 @@ func (e *RpHTMLElement) ID(v string) *RpHTMLElement {
     return e
 }
 
+func (e *RpHTMLElement) IfID(cond bool, v string) *RpHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ID(v)
+}
+
 func (e *RpHTMLElement) RemoveID(v string) *RpHTMLElement {
     delete(e.StringAttributes, "id")
     return e
@@ -304,6 +374,13 @@ func (e *RpHTMLElement) INERT() *RpHTMLElement {
     }
     e.BoolAttributes["inert"] = struct{}{}
     return e
+}
+
+func (e *RpHTMLElement) IfINERT(cond bool) *RpHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.INERT()
 }
 
 func (e *RpHTMLElement) RemoveINERT() *RpHTMLElement {
@@ -347,6 +424,13 @@ func (e *RpHTMLElement) INPUTMODE(v string) *RpHTMLElement {
     return e
 }
 
+func (e *RpHTMLElement) IfINPUTMODE(cond bool, v string) *RpHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.INPUTMODE(v)
+}
+
 func (e *RpHTMLElement) RemoveINPUTMODE(v string) *RpHTMLElement {
     delete(e.StringAttributes, "inputmode")
     return e
@@ -364,6 +448,13 @@ func (e *RpHTMLElement) IS(v string) *RpHTMLElement {
     return e
 }
 
+func (e *RpHTMLElement) IfIS(cond bool, v string) *RpHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.IS(v)
+}
+
 func (e *RpHTMLElement) RemoveIS(v string) *RpHTMLElement {
     delete(e.StringAttributes, "is")
     return e
@@ -378,6 +469,13 @@ func (e *RpHTMLElement) ITEMID(v string) *RpHTMLElement {
     }
     e.StringAttributes["itemid"] = v
     return e
+}
+
+func (e *RpHTMLElement) IfITEMID(cond bool, v string) *RpHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMID(v)
 }
 
 func (e *RpHTMLElement) RemoveITEMID(v string) *RpHTMLElement {
@@ -398,6 +496,13 @@ func (e *RpHTMLElement) ITEMPROP(v string) *RpHTMLElement {
     return e
 }
 
+func (e *RpHTMLElement) IfITEMPROP(cond bool, v string) *RpHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMPROP(v)
+}
+
 func (e *RpHTMLElement) RemoveITEMPROP(v string) *RpHTMLElement {
     delete(e.StringAttributes, "itemprop")
     return e
@@ -414,6 +519,13 @@ func (e *RpHTMLElement) ITEMREF(v string) *RpHTMLElement {
     return e
 }
 
+func (e *RpHTMLElement) IfITEMREF(cond bool, v string) *RpHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMREF(v)
+}
+
 func (e *RpHTMLElement) RemoveITEMREF(v string) *RpHTMLElement {
     delete(e.StringAttributes, "itemref")
     return e
@@ -428,6 +540,13 @@ func (e *RpHTMLElement) ITEMSCOPE() *RpHTMLElement {
     }
     e.BoolAttributes["itemscope"] = struct{}{}
     return e
+}
+
+func (e *RpHTMLElement) IfITEMSCOPE(cond bool) *RpHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMSCOPE()
 }
 
 func (e *RpHTMLElement) RemoveITEMSCOPE() *RpHTMLElement {
@@ -457,6 +576,13 @@ func (e *RpHTMLElement) ITEMTYPE(v string) *RpHTMLElement {
     return e
 }
 
+func (e *RpHTMLElement) IfITEMTYPE(cond bool, v string) *RpHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMTYPE(v)
+}
+
 func (e *RpHTMLElement) RemoveITEMTYPE(v string) *RpHTMLElement {
     delete(e.StringAttributes, "itemtype")
     return e
@@ -470,6 +596,13 @@ func (e *RpHTMLElement) LANG(v string) *RpHTMLElement {
     }
     e.StringAttributes["lang"] = v
     return e
+}
+
+func (e *RpHTMLElement) IfLANG(cond bool, v string) *RpHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.LANG(v)
 }
 
 func (e *RpHTMLElement) RemoveLANG(v string) *RpHTMLElement {
@@ -486,6 +619,13 @@ func (e *RpHTMLElement) NONCE(v string) *RpHTMLElement {
     }
     e.StringAttributes["nonce"] = v
     return e
+}
+
+func (e *RpHTMLElement) IfNONCE(cond bool, v string) *RpHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.NONCE(v)
 }
 
 func (e *RpHTMLElement) RemoveNONCE(v string) *RpHTMLElement {
@@ -507,6 +647,13 @@ func (e *RpHTMLElement) POPOVER(v string) *RpHTMLElement {
     return e
 }
 
+func (e *RpHTMLElement) IfPOPOVER(cond bool, v string) *RpHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.POPOVER(v)
+}
+
 func (e *RpHTMLElement) RemovePOPOVER(v string) *RpHTMLElement {
     delete(e.StringAttributes, "popover")
     return e
@@ -521,6 +668,13 @@ func (e *RpHTMLElement) SLOT(v string) *RpHTMLElement {
     }
     e.StringAttributes["slot"] = v
     return e
+}
+
+func (e *RpHTMLElement) IfSLOT(cond bool, v string) *RpHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SLOT(v)
 }
 
 func (e *RpHTMLElement) RemoveSLOT(v string) *RpHTMLElement {
@@ -538,6 +692,13 @@ func (e *RpHTMLElement) SPELLCHECK(v string) *RpHTMLElement {
     }
     e.StringAttributes["spellcheck"] = v
     return e
+}
+
+func (e *RpHTMLElement) IfSPELLCHECK(cond bool, v string) *RpHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SPELLCHECK(v)
 }
 
 func (e *RpHTMLElement) RemoveSPELLCHECK(v string) *RpHTMLElement {
@@ -558,6 +719,13 @@ func (e *RpHTMLElement) STYLE(k,v string) *RpHTMLElement {
     }
     kv.Add(k,v)
     return e
+}
+
+func (e *RpHTMLElement) IfSTYLE(cond bool, k string) *RpHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.STYLE(k, "")
 }
 
 func (e *RpHTMLElement) RemoveSTYLE(k string) *RpHTMLElement {
@@ -581,6 +749,13 @@ func (e *RpHTMLElement) TABINDEX(v string) *RpHTMLElement {
     return e
 }
 
+func (e *RpHTMLElement) IfTABINDEX(cond bool, v string) *RpHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TABINDEX(v)
+}
+
 func (e *RpHTMLElement) RemoveTABINDEX(v string) *RpHTMLElement {
     delete(e.StringAttributes, "tabindex")
     return e
@@ -595,6 +770,13 @@ func (e *RpHTMLElement) TITLE(v string) *RpHTMLElement {
     }
     e.StringAttributes["title"] = v
     return e
+}
+
+func (e *RpHTMLElement) IfTITLE(cond bool, v string) *RpHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TITLE(v)
 }
 
 func (e *RpHTMLElement) RemoveTITLE(v string) *RpHTMLElement {
@@ -612,6 +794,13 @@ func (e *RpHTMLElement) TRANSLATE(v string) *RpHTMLElement {
     }
     e.StringAttributes["translate"] = v
     return e
+}
+
+func (e *RpHTMLElement) IfTRANSLATE(cond bool, v string) *RpHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TRANSLATE(v)
 }
 
 func (e *RpHTMLElement) RemoveTRANSLATE(v string) *RpHTMLElement {

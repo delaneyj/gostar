@@ -48,13 +48,13 @@ func (e *MetaHTMLElement) TextF(format string, args ...any) *MetaHTMLElement {
     return e.Text(fmt.Sprintf(format, args...))
 }
 
-func (e *MetaHTMLElement) Raw(text string) *MetaHTMLElement {
-    e.Descendants = append(e.Descendants, Raw(text))
+func (e *MetaHTMLElement) Escaped(text string) *MetaHTMLElement {
+    e.Descendants = append(e.Descendants, Escaped(text))
     return e
 }
 
-func (e *MetaHTMLElement) RawF(format string, args ...any) *MetaHTMLElement {
-    return e.Raw(fmt.Sprintf(format, args...))
+func (e *MetaHTMLElement) EscapedF(format string, args ...any) *MetaHTMLElement {
+    return e.Escaped(fmt.Sprintf(format, args...))
 }
 
 func (e *MetaHTMLElement) CustomData(key, value string) *MetaHTMLElement {
@@ -87,6 +87,13 @@ func (e *MetaHTMLElement) ACCESSKEY(v string) *MetaHTMLElement {
     return e
 }
 
+func (e *MetaHTMLElement) IfACCESSKEY(cond bool, v string) *MetaHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ACCESSKEY(v)
+}
+
 func (e *MetaHTMLElement) RemoveACCESSKEY(v string) *MetaHTMLElement {
     delete(e.StringAttributes, "accesskey")
     return e
@@ -114,6 +121,13 @@ func (e *MetaHTMLElement) AUTOCAPITALIZE(v string) *MetaHTMLElement {
     return e
 }
 
+func (e *MetaHTMLElement) IfAUTOCAPITALIZE(cond bool, v string) *MetaHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.AUTOCAPITALIZE(v)
+}
+
 func (e *MetaHTMLElement) RemoveAUTOCAPITALIZE(v string) *MetaHTMLElement {
     delete(e.StringAttributes, "autocapitalize")
     return e
@@ -128,6 +142,13 @@ func (e *MetaHTMLElement) AUTOFOCUS() *MetaHTMLElement {
     }
     e.BoolAttributes["autofocus"] = struct{}{}
     return e
+}
+
+func (e *MetaHTMLElement) IfAUTOFOCUS(cond bool) *MetaHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.AUTOFOCUS()
 }
 
 func (e *MetaHTMLElement) RemoveAUTOFOCUS() *MetaHTMLElement {
@@ -156,6 +177,13 @@ func (e *MetaHTMLElement) CHARSET(v string) *MetaHTMLElement {
     return e
 }
 
+func (e *MetaHTMLElement) IfCHARSET(cond bool, v string) *MetaHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.CHARSET(v)
+}
+
 func (e *MetaHTMLElement) RemoveCHARSET(v string) *MetaHTMLElement {
     delete(e.StringAttributes, "charset")
     return e
@@ -175,6 +203,13 @@ func(e *MetaHTMLElement) CLASS(v string) *MetaHTMLElement {
     }
     kv.Add(v)
     return e
+}
+
+func (e *MetaHTMLElement) IfCLASS(cond bool, v string) *MetaHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.CLASS(v)
 }
 
 func (e *MetaHTMLElement) SetCLASS(v string) *MetaHTMLElement {
@@ -204,6 +239,13 @@ func (e *MetaHTMLElement) CONTENT(v string) *MetaHTMLElement {
     return e
 }
 
+func (e *MetaHTMLElement) IfCONTENT(cond bool, v string) *MetaHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.CONTENT(v)
+}
+
 func (e *MetaHTMLElement) RemoveCONTENT(v string) *MetaHTMLElement {
     delete(e.StringAttributes, "content")
     return e
@@ -220,6 +262,13 @@ func (e *MetaHTMLElement) CONTENTEDITABLE(v string) *MetaHTMLElement {
     }
     e.StringAttributes["contenteditable"] = v
     return e
+}
+
+func (e *MetaHTMLElement) IfCONTENTEDITABLE(cond bool, v string) *MetaHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.CONTENTEDITABLE(v)
 }
 
 func (e *MetaHTMLElement) RemoveCONTENTEDITABLE(v string) *MetaHTMLElement {
@@ -241,6 +290,13 @@ func (e *MetaHTMLElement) DIR(v string) *MetaHTMLElement {
     return e
 }
 
+func (e *MetaHTMLElement) IfDIR(cond bool, v string) *MetaHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.DIR(v)
+}
+
 func (e *MetaHTMLElement) RemoveDIR(v string) *MetaHTMLElement {
     delete(e.StringAttributes, "dir")
     return e
@@ -256,6 +312,13 @@ func (e *MetaHTMLElement) DRAGGABLE(v string) *MetaHTMLElement {
     }
     e.StringAttributes["draggable"] = v
     return e
+}
+
+func (e *MetaHTMLElement) IfDRAGGABLE(cond bool, v string) *MetaHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.DRAGGABLE(v)
 }
 
 func (e *MetaHTMLElement) RemoveDRAGGABLE(v string) *MetaHTMLElement {
@@ -287,6 +350,13 @@ func (e *MetaHTMLElement) ENTERKEYHINT(v string) *MetaHTMLElement {
     return e
 }
 
+func (e *MetaHTMLElement) IfENTERKEYHINT(cond bool, v string) *MetaHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ENTERKEYHINT(v)
+}
+
 func (e *MetaHTMLElement) RemoveENTERKEYHINT(v string) *MetaHTMLElement {
     delete(e.StringAttributes, "enterkeyhint")
     return e
@@ -304,6 +374,13 @@ func (e *MetaHTMLElement) HIDDEN(v string) *MetaHTMLElement {
     }
     e.StringAttributes["hidden"] = v
     return e
+}
+
+func (e *MetaHTMLElement) IfHIDDEN(cond bool, v string) *MetaHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.HIDDEN(v)
 }
 
 func (e *MetaHTMLElement) RemoveHIDDEN(v string) *MetaHTMLElement {
@@ -331,6 +408,13 @@ func (e *MetaHTMLElement) HTTP_EQUIV(v string) *MetaHTMLElement {
     return e
 }
 
+func (e *MetaHTMLElement) IfHTTP_EQUIV(cond bool, v string) *MetaHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.HTTP_EQUIV(v)
+}
+
 func (e *MetaHTMLElement) RemoveHTTP_EQUIV(v string) *MetaHTMLElement {
     delete(e.StringAttributes, "http-equiv")
     return e
@@ -347,6 +431,13 @@ func (e *MetaHTMLElement) ID(v string) *MetaHTMLElement {
     return e
 }
 
+func (e *MetaHTMLElement) IfID(cond bool, v string) *MetaHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ID(v)
+}
+
 func (e *MetaHTMLElement) RemoveID(v string) *MetaHTMLElement {
     delete(e.StringAttributes, "id")
     return e
@@ -361,6 +452,13 @@ func (e *MetaHTMLElement) INERT() *MetaHTMLElement {
     }
     e.BoolAttributes["inert"] = struct{}{}
     return e
+}
+
+func (e *MetaHTMLElement) IfINERT(cond bool) *MetaHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.INERT()
 }
 
 func (e *MetaHTMLElement) RemoveINERT() *MetaHTMLElement {
@@ -404,6 +502,13 @@ func (e *MetaHTMLElement) INPUTMODE(v string) *MetaHTMLElement {
     return e
 }
 
+func (e *MetaHTMLElement) IfINPUTMODE(cond bool, v string) *MetaHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.INPUTMODE(v)
+}
+
 func (e *MetaHTMLElement) RemoveINPUTMODE(v string) *MetaHTMLElement {
     delete(e.StringAttributes, "inputmode")
     return e
@@ -421,6 +526,13 @@ func (e *MetaHTMLElement) IS(v string) *MetaHTMLElement {
     return e
 }
 
+func (e *MetaHTMLElement) IfIS(cond bool, v string) *MetaHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.IS(v)
+}
+
 func (e *MetaHTMLElement) RemoveIS(v string) *MetaHTMLElement {
     delete(e.StringAttributes, "is")
     return e
@@ -435,6 +547,13 @@ func (e *MetaHTMLElement) ITEMID(v string) *MetaHTMLElement {
     }
     e.StringAttributes["itemid"] = v
     return e
+}
+
+func (e *MetaHTMLElement) IfITEMID(cond bool, v string) *MetaHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMID(v)
 }
 
 func (e *MetaHTMLElement) RemoveITEMID(v string) *MetaHTMLElement {
@@ -455,6 +574,13 @@ func (e *MetaHTMLElement) ITEMPROP(v string) *MetaHTMLElement {
     return e
 }
 
+func (e *MetaHTMLElement) IfITEMPROP(cond bool, v string) *MetaHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMPROP(v)
+}
+
 func (e *MetaHTMLElement) RemoveITEMPROP(v string) *MetaHTMLElement {
     delete(e.StringAttributes, "itemprop")
     return e
@@ -471,6 +597,13 @@ func (e *MetaHTMLElement) ITEMREF(v string) *MetaHTMLElement {
     return e
 }
 
+func (e *MetaHTMLElement) IfITEMREF(cond bool, v string) *MetaHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMREF(v)
+}
+
 func (e *MetaHTMLElement) RemoveITEMREF(v string) *MetaHTMLElement {
     delete(e.StringAttributes, "itemref")
     return e
@@ -485,6 +618,13 @@ func (e *MetaHTMLElement) ITEMSCOPE() *MetaHTMLElement {
     }
     e.BoolAttributes["itemscope"] = struct{}{}
     return e
+}
+
+func (e *MetaHTMLElement) IfITEMSCOPE(cond bool) *MetaHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMSCOPE()
 }
 
 func (e *MetaHTMLElement) RemoveITEMSCOPE() *MetaHTMLElement {
@@ -514,6 +654,13 @@ func (e *MetaHTMLElement) ITEMTYPE(v string) *MetaHTMLElement {
     return e
 }
 
+func (e *MetaHTMLElement) IfITEMTYPE(cond bool, v string) *MetaHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMTYPE(v)
+}
+
 func (e *MetaHTMLElement) RemoveITEMTYPE(v string) *MetaHTMLElement {
     delete(e.StringAttributes, "itemtype")
     return e
@@ -527,6 +674,13 @@ func (e *MetaHTMLElement) LANG(v string) *MetaHTMLElement {
     }
     e.StringAttributes["lang"] = v
     return e
+}
+
+func (e *MetaHTMLElement) IfLANG(cond bool, v string) *MetaHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.LANG(v)
 }
 
 func (e *MetaHTMLElement) RemoveLANG(v string) *MetaHTMLElement {
@@ -545,6 +699,13 @@ func (e *MetaHTMLElement) MEDIA(v string) *MetaHTMLElement {
     return e
 }
 
+func (e *MetaHTMLElement) IfMEDIA(cond bool, v string) *MetaHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.MEDIA(v)
+}
+
 func (e *MetaHTMLElement) RemoveMEDIA(v string) *MetaHTMLElement {
     delete(e.StringAttributes, "media")
     return e
@@ -561,6 +722,13 @@ func (e *MetaHTMLElement) NAME(v string) *MetaHTMLElement {
     return e
 }
 
+func (e *MetaHTMLElement) IfNAME(cond bool, v string) *MetaHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.NAME(v)
+}
+
 func (e *MetaHTMLElement) RemoveNAME(v string) *MetaHTMLElement {
     delete(e.StringAttributes, "name")
     return e
@@ -575,6 +743,13 @@ func (e *MetaHTMLElement) NONCE(v string) *MetaHTMLElement {
     }
     e.StringAttributes["nonce"] = v
     return e
+}
+
+func (e *MetaHTMLElement) IfNONCE(cond bool, v string) *MetaHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.NONCE(v)
 }
 
 func (e *MetaHTMLElement) RemoveNONCE(v string) *MetaHTMLElement {
@@ -596,6 +771,13 @@ func (e *MetaHTMLElement) POPOVER(v string) *MetaHTMLElement {
     return e
 }
 
+func (e *MetaHTMLElement) IfPOPOVER(cond bool, v string) *MetaHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.POPOVER(v)
+}
+
 func (e *MetaHTMLElement) RemovePOPOVER(v string) *MetaHTMLElement {
     delete(e.StringAttributes, "popover")
     return e
@@ -610,6 +792,13 @@ func (e *MetaHTMLElement) SLOT(v string) *MetaHTMLElement {
     }
     e.StringAttributes["slot"] = v
     return e
+}
+
+func (e *MetaHTMLElement) IfSLOT(cond bool, v string) *MetaHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SLOT(v)
 }
 
 func (e *MetaHTMLElement) RemoveSLOT(v string) *MetaHTMLElement {
@@ -627,6 +816,13 @@ func (e *MetaHTMLElement) SPELLCHECK(v string) *MetaHTMLElement {
     }
     e.StringAttributes["spellcheck"] = v
     return e
+}
+
+func (e *MetaHTMLElement) IfSPELLCHECK(cond bool, v string) *MetaHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SPELLCHECK(v)
 }
 
 func (e *MetaHTMLElement) RemoveSPELLCHECK(v string) *MetaHTMLElement {
@@ -647,6 +843,13 @@ func (e *MetaHTMLElement) STYLE(k,v string) *MetaHTMLElement {
     }
     kv.Add(k,v)
     return e
+}
+
+func (e *MetaHTMLElement) IfSTYLE(cond bool, k string) *MetaHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.STYLE(k, "")
 }
 
 func (e *MetaHTMLElement) RemoveSTYLE(k string) *MetaHTMLElement {
@@ -670,6 +873,13 @@ func (e *MetaHTMLElement) TABINDEX(v string) *MetaHTMLElement {
     return e
 }
 
+func (e *MetaHTMLElement) IfTABINDEX(cond bool, v string) *MetaHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TABINDEX(v)
+}
+
 func (e *MetaHTMLElement) RemoveTABINDEX(v string) *MetaHTMLElement {
     delete(e.StringAttributes, "tabindex")
     return e
@@ -684,6 +894,13 @@ func (e *MetaHTMLElement) TITLE(v string) *MetaHTMLElement {
     }
     e.StringAttributes["title"] = v
     return e
+}
+
+func (e *MetaHTMLElement) IfTITLE(cond bool, v string) *MetaHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TITLE(v)
 }
 
 func (e *MetaHTMLElement) RemoveTITLE(v string) *MetaHTMLElement {
@@ -701,6 +918,13 @@ func (e *MetaHTMLElement) TRANSLATE(v string) *MetaHTMLElement {
     }
     e.StringAttributes["translate"] = v
     return e
+}
+
+func (e *MetaHTMLElement) IfTRANSLATE(cond bool, v string) *MetaHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TRANSLATE(v)
 }
 
 func (e *MetaHTMLElement) RemoveTRANSLATE(v string) *MetaHTMLElement {

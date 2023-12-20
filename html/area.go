@@ -48,13 +48,13 @@ func (e *AreaHTMLElement) TextF(format string, args ...any) *AreaHTMLElement {
     return e.Text(fmt.Sprintf(format, args...))
 }
 
-func (e *AreaHTMLElement) Raw(text string) *AreaHTMLElement {
-    e.Descendants = append(e.Descendants, Raw(text))
+func (e *AreaHTMLElement) Escaped(text string) *AreaHTMLElement {
+    e.Descendants = append(e.Descendants, Escaped(text))
     return e
 }
 
-func (e *AreaHTMLElement) RawF(format string, args ...any) *AreaHTMLElement {
-    return e.Raw(fmt.Sprintf(format, args...))
+func (e *AreaHTMLElement) EscapedF(format string, args ...any) *AreaHTMLElement {
+    return e.Escaped(fmt.Sprintf(format, args...))
 }
 
 func (e *AreaHTMLElement) CustomData(key, value string) *AreaHTMLElement {
@@ -87,6 +87,13 @@ func (e *AreaHTMLElement) ACCESSKEY(v string) *AreaHTMLElement {
     return e
 }
 
+func (e *AreaHTMLElement) IfACCESSKEY(cond bool, v string) *AreaHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ACCESSKEY(v)
+}
+
 func (e *AreaHTMLElement) RemoveACCESSKEY(v string) *AreaHTMLElement {
     delete(e.StringAttributes, "accesskey")
     return e
@@ -101,6 +108,13 @@ func (e *AreaHTMLElement) ALT(v string) *AreaHTMLElement {
     }
     e.StringAttributes["alt"] = v
     return e
+}
+
+func (e *AreaHTMLElement) IfALT(cond bool, v string) *AreaHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ALT(v)
 }
 
 func (e *AreaHTMLElement) RemoveALT(v string) *AreaHTMLElement {
@@ -130,6 +144,13 @@ func (e *AreaHTMLElement) AUTOCAPITALIZE(v string) *AreaHTMLElement {
     return e
 }
 
+func (e *AreaHTMLElement) IfAUTOCAPITALIZE(cond bool, v string) *AreaHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.AUTOCAPITALIZE(v)
+}
+
 func (e *AreaHTMLElement) RemoveAUTOCAPITALIZE(v string) *AreaHTMLElement {
     delete(e.StringAttributes, "autocapitalize")
     return e
@@ -144,6 +165,13 @@ func (e *AreaHTMLElement) AUTOFOCUS() *AreaHTMLElement {
     }
     e.BoolAttributes["autofocus"] = struct{}{}
     return e
+}
+
+func (e *AreaHTMLElement) IfAUTOFOCUS(cond bool) *AreaHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.AUTOFOCUS()
 }
 
 func (e *AreaHTMLElement) RemoveAUTOFOCUS() *AreaHTMLElement {
@@ -177,6 +205,13 @@ func(e *AreaHTMLElement) CLASS(v string) *AreaHTMLElement {
     return e
 }
 
+func (e *AreaHTMLElement) IfCLASS(cond bool, v string) *AreaHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.CLASS(v)
+}
+
 func (e *AreaHTMLElement) SetCLASS(v string) *AreaHTMLElement {
     kv := NewSpaceDelimitedString()
     e.DelimitedStringAttributes["class"] = kv
@@ -206,6 +241,13 @@ func (e *AreaHTMLElement) CONTENTEDITABLE(v string) *AreaHTMLElement {
     return e
 }
 
+func (e *AreaHTMLElement) IfCONTENTEDITABLE(cond bool, v string) *AreaHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.CONTENTEDITABLE(v)
+}
+
 func (e *AreaHTMLElement) RemoveCONTENTEDITABLE(v string) *AreaHTMLElement {
     delete(e.StringAttributes, "contenteditable")
     return e
@@ -220,6 +262,13 @@ func (e *AreaHTMLElement) COORDS(v string) *AreaHTMLElement {
     }
     e.StringAttributes["coords"] = v
     return e
+}
+
+func (e *AreaHTMLElement) IfCOORDS(cond bool, v string) *AreaHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.COORDS(v)
 }
 
 func (e *AreaHTMLElement) RemoveCOORDS(v string) *AreaHTMLElement {
@@ -241,6 +290,13 @@ func (e *AreaHTMLElement) DIR(v string) *AreaHTMLElement {
     return e
 }
 
+func (e *AreaHTMLElement) IfDIR(cond bool, v string) *AreaHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.DIR(v)
+}
+
 func (e *AreaHTMLElement) RemoveDIR(v string) *AreaHTMLElement {
     delete(e.StringAttributes, "dir")
     return e
@@ -254,6 +310,13 @@ func (e *AreaHTMLElement) DOWNLOAD(v string) *AreaHTMLElement {
     }
     e.StringAttributes["download"] = v
     return e
+}
+
+func (e *AreaHTMLElement) IfDOWNLOAD(cond bool, v string) *AreaHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.DOWNLOAD(v)
 }
 
 func (e *AreaHTMLElement) RemoveDOWNLOAD(v string) *AreaHTMLElement {
@@ -271,6 +334,13 @@ func (e *AreaHTMLElement) DRAGGABLE(v string) *AreaHTMLElement {
     }
     e.StringAttributes["draggable"] = v
     return e
+}
+
+func (e *AreaHTMLElement) IfDRAGGABLE(cond bool, v string) *AreaHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.DRAGGABLE(v)
 }
 
 func (e *AreaHTMLElement) RemoveDRAGGABLE(v string) *AreaHTMLElement {
@@ -302,6 +372,13 @@ func (e *AreaHTMLElement) ENTERKEYHINT(v string) *AreaHTMLElement {
     return e
 }
 
+func (e *AreaHTMLElement) IfENTERKEYHINT(cond bool, v string) *AreaHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ENTERKEYHINT(v)
+}
+
 func (e *AreaHTMLElement) RemoveENTERKEYHINT(v string) *AreaHTMLElement {
     delete(e.StringAttributes, "enterkeyhint")
     return e
@@ -321,6 +398,13 @@ func (e *AreaHTMLElement) HIDDEN(v string) *AreaHTMLElement {
     return e
 }
 
+func (e *AreaHTMLElement) IfHIDDEN(cond bool, v string) *AreaHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.HIDDEN(v)
+}
+
 func (e *AreaHTMLElement) RemoveHIDDEN(v string) *AreaHTMLElement {
     delete(e.StringAttributes, "hidden")
     return e
@@ -335,6 +419,13 @@ func (e *AreaHTMLElement) HREF(v string) *AreaHTMLElement {
     }
     e.StringAttributes["href"] = v
     return e
+}
+
+func (e *AreaHTMLElement) IfHREF(cond bool, v string) *AreaHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.HREF(v)
 }
 
 func (e *AreaHTMLElement) RemoveHREF(v string) *AreaHTMLElement {
@@ -353,6 +444,13 @@ func (e *AreaHTMLElement) ID(v string) *AreaHTMLElement {
     return e
 }
 
+func (e *AreaHTMLElement) IfID(cond bool, v string) *AreaHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ID(v)
+}
+
 func (e *AreaHTMLElement) RemoveID(v string) *AreaHTMLElement {
     delete(e.StringAttributes, "id")
     return e
@@ -367,6 +465,13 @@ func (e *AreaHTMLElement) INERT() *AreaHTMLElement {
     }
     e.BoolAttributes["inert"] = struct{}{}
     return e
+}
+
+func (e *AreaHTMLElement) IfINERT(cond bool) *AreaHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.INERT()
 }
 
 func (e *AreaHTMLElement) RemoveINERT() *AreaHTMLElement {
@@ -410,6 +515,13 @@ func (e *AreaHTMLElement) INPUTMODE(v string) *AreaHTMLElement {
     return e
 }
 
+func (e *AreaHTMLElement) IfINPUTMODE(cond bool, v string) *AreaHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.INPUTMODE(v)
+}
+
 func (e *AreaHTMLElement) RemoveINPUTMODE(v string) *AreaHTMLElement {
     delete(e.StringAttributes, "inputmode")
     return e
@@ -427,6 +539,13 @@ func (e *AreaHTMLElement) IS(v string) *AreaHTMLElement {
     return e
 }
 
+func (e *AreaHTMLElement) IfIS(cond bool, v string) *AreaHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.IS(v)
+}
+
 func (e *AreaHTMLElement) RemoveIS(v string) *AreaHTMLElement {
     delete(e.StringAttributes, "is")
     return e
@@ -441,6 +560,13 @@ func (e *AreaHTMLElement) ITEMID(v string) *AreaHTMLElement {
     }
     e.StringAttributes["itemid"] = v
     return e
+}
+
+func (e *AreaHTMLElement) IfITEMID(cond bool, v string) *AreaHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMID(v)
 }
 
 func (e *AreaHTMLElement) RemoveITEMID(v string) *AreaHTMLElement {
@@ -461,6 +587,13 @@ func (e *AreaHTMLElement) ITEMPROP(v string) *AreaHTMLElement {
     return e
 }
 
+func (e *AreaHTMLElement) IfITEMPROP(cond bool, v string) *AreaHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMPROP(v)
+}
+
 func (e *AreaHTMLElement) RemoveITEMPROP(v string) *AreaHTMLElement {
     delete(e.StringAttributes, "itemprop")
     return e
@@ -477,6 +610,13 @@ func (e *AreaHTMLElement) ITEMREF(v string) *AreaHTMLElement {
     return e
 }
 
+func (e *AreaHTMLElement) IfITEMREF(cond bool, v string) *AreaHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMREF(v)
+}
+
 func (e *AreaHTMLElement) RemoveITEMREF(v string) *AreaHTMLElement {
     delete(e.StringAttributes, "itemref")
     return e
@@ -491,6 +631,13 @@ func (e *AreaHTMLElement) ITEMSCOPE() *AreaHTMLElement {
     }
     e.BoolAttributes["itemscope"] = struct{}{}
     return e
+}
+
+func (e *AreaHTMLElement) IfITEMSCOPE(cond bool) *AreaHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMSCOPE()
 }
 
 func (e *AreaHTMLElement) RemoveITEMSCOPE() *AreaHTMLElement {
@@ -520,6 +667,13 @@ func (e *AreaHTMLElement) ITEMTYPE(v string) *AreaHTMLElement {
     return e
 }
 
+func (e *AreaHTMLElement) IfITEMTYPE(cond bool, v string) *AreaHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMTYPE(v)
+}
+
 func (e *AreaHTMLElement) RemoveITEMTYPE(v string) *AreaHTMLElement {
     delete(e.StringAttributes, "itemtype")
     return e
@@ -533,6 +687,13 @@ func (e *AreaHTMLElement) LANG(v string) *AreaHTMLElement {
     }
     e.StringAttributes["lang"] = v
     return e
+}
+
+func (e *AreaHTMLElement) IfLANG(cond bool, v string) *AreaHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.LANG(v)
 }
 
 func (e *AreaHTMLElement) RemoveLANG(v string) *AreaHTMLElement {
@@ -551,6 +712,13 @@ func (e *AreaHTMLElement) NONCE(v string) *AreaHTMLElement {
     return e
 }
 
+func (e *AreaHTMLElement) IfNONCE(cond bool, v string) *AreaHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.NONCE(v)
+}
+
 func (e *AreaHTMLElement) RemoveNONCE(v string) *AreaHTMLElement {
     delete(e.StringAttributes, "nonce")
     return e
@@ -566,6 +734,13 @@ func (e *AreaHTMLElement) PING(v string) *AreaHTMLElement {
     }
     e.StringAttributes["ping"] = v
     return e
+}
+
+func (e *AreaHTMLElement) IfPING(cond bool, v string) *AreaHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.PING(v)
 }
 
 func (e *AreaHTMLElement) RemovePING(v string) *AreaHTMLElement {
@@ -587,6 +762,13 @@ func (e *AreaHTMLElement) POPOVER(v string) *AreaHTMLElement {
     return e
 }
 
+func (e *AreaHTMLElement) IfPOPOVER(cond bool, v string) *AreaHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.POPOVER(v)
+}
+
 func (e *AreaHTMLElement) RemovePOPOVER(v string) *AreaHTMLElement {
     delete(e.StringAttributes, "popover")
     return e
@@ -603,6 +785,13 @@ func (e *AreaHTMLElement) REFERRERPOLICY(v string) *AreaHTMLElement {
     return e
 }
 
+func (e *AreaHTMLElement) IfREFERRERPOLICY(cond bool, v string) *AreaHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.REFERRERPOLICY(v)
+}
+
 func (e *AreaHTMLElement) RemoveREFERRERPOLICY(v string) *AreaHTMLElement {
     delete(e.StringAttributes, "referrerpolicy")
     return e
@@ -617,6 +806,13 @@ func (e *AreaHTMLElement) REL(v string) *AreaHTMLElement {
     }
     e.StringAttributes["rel"] = v
     return e
+}
+
+func (e *AreaHTMLElement) IfREL(cond bool, v string) *AreaHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.REL(v)
 }
 
 func (e *AreaHTMLElement) RemoveREL(v string) *AreaHTMLElement {
@@ -642,6 +838,13 @@ func (e *AreaHTMLElement) SHAPE(v string) *AreaHTMLElement {
     return e
 }
 
+func (e *AreaHTMLElement) IfSHAPE(cond bool, v string) *AreaHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SHAPE(v)
+}
+
 func (e *AreaHTMLElement) RemoveSHAPE(v string) *AreaHTMLElement {
     delete(e.StringAttributes, "shape")
     return e
@@ -656,6 +859,13 @@ func (e *AreaHTMLElement) SLOT(v string) *AreaHTMLElement {
     }
     e.StringAttributes["slot"] = v
     return e
+}
+
+func (e *AreaHTMLElement) IfSLOT(cond bool, v string) *AreaHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SLOT(v)
 }
 
 func (e *AreaHTMLElement) RemoveSLOT(v string) *AreaHTMLElement {
@@ -673,6 +883,13 @@ func (e *AreaHTMLElement) SPELLCHECK(v string) *AreaHTMLElement {
     }
     e.StringAttributes["spellcheck"] = v
     return e
+}
+
+func (e *AreaHTMLElement) IfSPELLCHECK(cond bool, v string) *AreaHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SPELLCHECK(v)
 }
 
 func (e *AreaHTMLElement) RemoveSPELLCHECK(v string) *AreaHTMLElement {
@@ -693,6 +910,13 @@ func (e *AreaHTMLElement) STYLE(k,v string) *AreaHTMLElement {
     }
     kv.Add(k,v)
     return e
+}
+
+func (e *AreaHTMLElement) IfSTYLE(cond bool, k string) *AreaHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.STYLE(k, "")
 }
 
 func (e *AreaHTMLElement) RemoveSTYLE(k string) *AreaHTMLElement {
@@ -716,6 +940,13 @@ func (e *AreaHTMLElement) TABINDEX(v string) *AreaHTMLElement {
     return e
 }
 
+func (e *AreaHTMLElement) IfTABINDEX(cond bool, v string) *AreaHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TABINDEX(v)
+}
+
 func (e *AreaHTMLElement) RemoveTABINDEX(v string) *AreaHTMLElement {
     delete(e.StringAttributes, "tabindex")
     return e
@@ -730,6 +961,13 @@ func (e *AreaHTMLElement) TARGET(v string) *AreaHTMLElement {
     }
     e.StringAttributes["target"] = v
     return e
+}
+
+func (e *AreaHTMLElement) IfTARGET(cond bool, v string) *AreaHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TARGET(v)
 }
 
 func (e *AreaHTMLElement) RemoveTARGET(v string) *AreaHTMLElement {
@@ -748,6 +986,13 @@ func (e *AreaHTMLElement) TITLE(v string) *AreaHTMLElement {
     return e
 }
 
+func (e *AreaHTMLElement) IfTITLE(cond bool, v string) *AreaHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TITLE(v)
+}
+
 func (e *AreaHTMLElement) RemoveTITLE(v string) *AreaHTMLElement {
     delete(e.StringAttributes, "title")
     return e
@@ -763,6 +1008,13 @@ func (e *AreaHTMLElement) TRANSLATE(v string) *AreaHTMLElement {
     }
     e.StringAttributes["translate"] = v
     return e
+}
+
+func (e *AreaHTMLElement) IfTRANSLATE(cond bool, v string) *AreaHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TRANSLATE(v)
 }
 
 func (e *AreaHTMLElement) RemoveTRANSLATE(v string) *AreaHTMLElement {

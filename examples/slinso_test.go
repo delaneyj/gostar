@@ -45,7 +45,7 @@ func TestSlinso(t *testing.T) {
 
 	header := func(title string) ElementBuilder {
 		return HEADER(
-			TITLE().RawF("%s's Home Page", title),
+			TITLE().TextF("%s's Home Page", title),
 			DIV().CLASS("header").Text("Page Header"),
 		)
 	}
@@ -68,7 +68,7 @@ func TestSlinso(t *testing.T) {
 
 	index := func(u *User, nav []*Navigation, title string) ElementBuilder {
 		return Group(
-			Raw("<!DOCTYPE html>"),
+			Text("<!DOCTYPE html>"),
 			HTML(
 				BODY(
 					header(title),
@@ -77,8 +77,8 @@ func TestSlinso(t *testing.T) {
 						DIV(
 							DIV(
 								H4().TextF("Hello %s", u.FirstName),
-								DIV().CLASS("raw").Raw(u.RawContent),
-								DIV().CLASS("enc").Text(u.EscapedContent),
+								DIV().CLASS("raw").Text(u.RawContent),
+								DIV().CLASS("enc").Escaped(u.EscapedContent),
 							).CLASS("welcome"),
 							Range(lo.Range(5), func(i int) ElementBuilder {
 								count := i + 1

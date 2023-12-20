@@ -48,13 +48,13 @@ func (e *SpanHTMLElement) TextF(format string, args ...any) *SpanHTMLElement {
     return e.Text(fmt.Sprintf(format, args...))
 }
 
-func (e *SpanHTMLElement) Raw(text string) *SpanHTMLElement {
-    e.Descendants = append(e.Descendants, Raw(text))
+func (e *SpanHTMLElement) Escaped(text string) *SpanHTMLElement {
+    e.Descendants = append(e.Descendants, Escaped(text))
     return e
 }
 
-func (e *SpanHTMLElement) RawF(format string, args ...any) *SpanHTMLElement {
-    return e.Raw(fmt.Sprintf(format, args...))
+func (e *SpanHTMLElement) EscapedF(format string, args ...any) *SpanHTMLElement {
+    return e.Escaped(fmt.Sprintf(format, args...))
 }
 
 func (e *SpanHTMLElement) CustomData(key, value string) *SpanHTMLElement {
@@ -87,6 +87,13 @@ func (e *SpanHTMLElement) ACCESSKEY(v string) *SpanHTMLElement {
     return e
 }
 
+func (e *SpanHTMLElement) IfACCESSKEY(cond bool, v string) *SpanHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ACCESSKEY(v)
+}
+
 func (e *SpanHTMLElement) RemoveACCESSKEY(v string) *SpanHTMLElement {
     delete(e.StringAttributes, "accesskey")
     return e
@@ -114,6 +121,13 @@ func (e *SpanHTMLElement) AUTOCAPITALIZE(v string) *SpanHTMLElement {
     return e
 }
 
+func (e *SpanHTMLElement) IfAUTOCAPITALIZE(cond bool, v string) *SpanHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.AUTOCAPITALIZE(v)
+}
+
 func (e *SpanHTMLElement) RemoveAUTOCAPITALIZE(v string) *SpanHTMLElement {
     delete(e.StringAttributes, "autocapitalize")
     return e
@@ -128,6 +142,13 @@ func (e *SpanHTMLElement) AUTOFOCUS() *SpanHTMLElement {
     }
     e.BoolAttributes["autofocus"] = struct{}{}
     return e
+}
+
+func (e *SpanHTMLElement) IfAUTOFOCUS(cond bool) *SpanHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.AUTOFOCUS()
 }
 
 func (e *SpanHTMLElement) RemoveAUTOFOCUS() *SpanHTMLElement {
@@ -161,6 +182,13 @@ func(e *SpanHTMLElement) CLASS(v string) *SpanHTMLElement {
     return e
 }
 
+func (e *SpanHTMLElement) IfCLASS(cond bool, v string) *SpanHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.CLASS(v)
+}
+
 func (e *SpanHTMLElement) SetCLASS(v string) *SpanHTMLElement {
     kv := NewSpaceDelimitedString()
     e.DelimitedStringAttributes["class"] = kv
@@ -190,6 +218,13 @@ func (e *SpanHTMLElement) CONTENTEDITABLE(v string) *SpanHTMLElement {
     return e
 }
 
+func (e *SpanHTMLElement) IfCONTENTEDITABLE(cond bool, v string) *SpanHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.CONTENTEDITABLE(v)
+}
+
 func (e *SpanHTMLElement) RemoveCONTENTEDITABLE(v string) *SpanHTMLElement {
     delete(e.StringAttributes, "contenteditable")
     return e
@@ -209,6 +244,13 @@ func (e *SpanHTMLElement) DIR(v string) *SpanHTMLElement {
     return e
 }
 
+func (e *SpanHTMLElement) IfDIR(cond bool, v string) *SpanHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.DIR(v)
+}
+
 func (e *SpanHTMLElement) RemoveDIR(v string) *SpanHTMLElement {
     delete(e.StringAttributes, "dir")
     return e
@@ -224,6 +266,13 @@ func (e *SpanHTMLElement) DRAGGABLE(v string) *SpanHTMLElement {
     }
     e.StringAttributes["draggable"] = v
     return e
+}
+
+func (e *SpanHTMLElement) IfDRAGGABLE(cond bool, v string) *SpanHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.DRAGGABLE(v)
 }
 
 func (e *SpanHTMLElement) RemoveDRAGGABLE(v string) *SpanHTMLElement {
@@ -255,6 +304,13 @@ func (e *SpanHTMLElement) ENTERKEYHINT(v string) *SpanHTMLElement {
     return e
 }
 
+func (e *SpanHTMLElement) IfENTERKEYHINT(cond bool, v string) *SpanHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ENTERKEYHINT(v)
+}
+
 func (e *SpanHTMLElement) RemoveENTERKEYHINT(v string) *SpanHTMLElement {
     delete(e.StringAttributes, "enterkeyhint")
     return e
@@ -274,6 +330,13 @@ func (e *SpanHTMLElement) HIDDEN(v string) *SpanHTMLElement {
     return e
 }
 
+func (e *SpanHTMLElement) IfHIDDEN(cond bool, v string) *SpanHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.HIDDEN(v)
+}
+
 func (e *SpanHTMLElement) RemoveHIDDEN(v string) *SpanHTMLElement {
     delete(e.StringAttributes, "hidden")
     return e
@@ -290,6 +353,13 @@ func (e *SpanHTMLElement) ID(v string) *SpanHTMLElement {
     return e
 }
 
+func (e *SpanHTMLElement) IfID(cond bool, v string) *SpanHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ID(v)
+}
+
 func (e *SpanHTMLElement) RemoveID(v string) *SpanHTMLElement {
     delete(e.StringAttributes, "id")
     return e
@@ -304,6 +374,13 @@ func (e *SpanHTMLElement) INERT() *SpanHTMLElement {
     }
     e.BoolAttributes["inert"] = struct{}{}
     return e
+}
+
+func (e *SpanHTMLElement) IfINERT(cond bool) *SpanHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.INERT()
 }
 
 func (e *SpanHTMLElement) RemoveINERT() *SpanHTMLElement {
@@ -347,6 +424,13 @@ func (e *SpanHTMLElement) INPUTMODE(v string) *SpanHTMLElement {
     return e
 }
 
+func (e *SpanHTMLElement) IfINPUTMODE(cond bool, v string) *SpanHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.INPUTMODE(v)
+}
+
 func (e *SpanHTMLElement) RemoveINPUTMODE(v string) *SpanHTMLElement {
     delete(e.StringAttributes, "inputmode")
     return e
@@ -364,6 +448,13 @@ func (e *SpanHTMLElement) IS(v string) *SpanHTMLElement {
     return e
 }
 
+func (e *SpanHTMLElement) IfIS(cond bool, v string) *SpanHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.IS(v)
+}
+
 func (e *SpanHTMLElement) RemoveIS(v string) *SpanHTMLElement {
     delete(e.StringAttributes, "is")
     return e
@@ -378,6 +469,13 @@ func (e *SpanHTMLElement) ITEMID(v string) *SpanHTMLElement {
     }
     e.StringAttributes["itemid"] = v
     return e
+}
+
+func (e *SpanHTMLElement) IfITEMID(cond bool, v string) *SpanHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMID(v)
 }
 
 func (e *SpanHTMLElement) RemoveITEMID(v string) *SpanHTMLElement {
@@ -398,6 +496,13 @@ func (e *SpanHTMLElement) ITEMPROP(v string) *SpanHTMLElement {
     return e
 }
 
+func (e *SpanHTMLElement) IfITEMPROP(cond bool, v string) *SpanHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMPROP(v)
+}
+
 func (e *SpanHTMLElement) RemoveITEMPROP(v string) *SpanHTMLElement {
     delete(e.StringAttributes, "itemprop")
     return e
@@ -414,6 +519,13 @@ func (e *SpanHTMLElement) ITEMREF(v string) *SpanHTMLElement {
     return e
 }
 
+func (e *SpanHTMLElement) IfITEMREF(cond bool, v string) *SpanHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMREF(v)
+}
+
 func (e *SpanHTMLElement) RemoveITEMREF(v string) *SpanHTMLElement {
     delete(e.StringAttributes, "itemref")
     return e
@@ -428,6 +540,13 @@ func (e *SpanHTMLElement) ITEMSCOPE() *SpanHTMLElement {
     }
     e.BoolAttributes["itemscope"] = struct{}{}
     return e
+}
+
+func (e *SpanHTMLElement) IfITEMSCOPE(cond bool) *SpanHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMSCOPE()
 }
 
 func (e *SpanHTMLElement) RemoveITEMSCOPE() *SpanHTMLElement {
@@ -457,6 +576,13 @@ func (e *SpanHTMLElement) ITEMTYPE(v string) *SpanHTMLElement {
     return e
 }
 
+func (e *SpanHTMLElement) IfITEMTYPE(cond bool, v string) *SpanHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMTYPE(v)
+}
+
 func (e *SpanHTMLElement) RemoveITEMTYPE(v string) *SpanHTMLElement {
     delete(e.StringAttributes, "itemtype")
     return e
@@ -470,6 +596,13 @@ func (e *SpanHTMLElement) LANG(v string) *SpanHTMLElement {
     }
     e.StringAttributes["lang"] = v
     return e
+}
+
+func (e *SpanHTMLElement) IfLANG(cond bool, v string) *SpanHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.LANG(v)
 }
 
 func (e *SpanHTMLElement) RemoveLANG(v string) *SpanHTMLElement {
@@ -486,6 +619,13 @@ func (e *SpanHTMLElement) NONCE(v string) *SpanHTMLElement {
     }
     e.StringAttributes["nonce"] = v
     return e
+}
+
+func (e *SpanHTMLElement) IfNONCE(cond bool, v string) *SpanHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.NONCE(v)
 }
 
 func (e *SpanHTMLElement) RemoveNONCE(v string) *SpanHTMLElement {
@@ -507,6 +647,13 @@ func (e *SpanHTMLElement) POPOVER(v string) *SpanHTMLElement {
     return e
 }
 
+func (e *SpanHTMLElement) IfPOPOVER(cond bool, v string) *SpanHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.POPOVER(v)
+}
+
 func (e *SpanHTMLElement) RemovePOPOVER(v string) *SpanHTMLElement {
     delete(e.StringAttributes, "popover")
     return e
@@ -521,6 +668,13 @@ func (e *SpanHTMLElement) SLOT(v string) *SpanHTMLElement {
     }
     e.StringAttributes["slot"] = v
     return e
+}
+
+func (e *SpanHTMLElement) IfSLOT(cond bool, v string) *SpanHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SLOT(v)
 }
 
 func (e *SpanHTMLElement) RemoveSLOT(v string) *SpanHTMLElement {
@@ -538,6 +692,13 @@ func (e *SpanHTMLElement) SPELLCHECK(v string) *SpanHTMLElement {
     }
     e.StringAttributes["spellcheck"] = v
     return e
+}
+
+func (e *SpanHTMLElement) IfSPELLCHECK(cond bool, v string) *SpanHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SPELLCHECK(v)
 }
 
 func (e *SpanHTMLElement) RemoveSPELLCHECK(v string) *SpanHTMLElement {
@@ -558,6 +719,13 @@ func (e *SpanHTMLElement) STYLE(k,v string) *SpanHTMLElement {
     }
     kv.Add(k,v)
     return e
+}
+
+func (e *SpanHTMLElement) IfSTYLE(cond bool, k string) *SpanHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.STYLE(k, "")
 }
 
 func (e *SpanHTMLElement) RemoveSTYLE(k string) *SpanHTMLElement {
@@ -581,6 +749,13 @@ func (e *SpanHTMLElement) TABINDEX(v string) *SpanHTMLElement {
     return e
 }
 
+func (e *SpanHTMLElement) IfTABINDEX(cond bool, v string) *SpanHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TABINDEX(v)
+}
+
 func (e *SpanHTMLElement) RemoveTABINDEX(v string) *SpanHTMLElement {
     delete(e.StringAttributes, "tabindex")
     return e
@@ -595,6 +770,13 @@ func (e *SpanHTMLElement) TITLE(v string) *SpanHTMLElement {
     }
     e.StringAttributes["title"] = v
     return e
+}
+
+func (e *SpanHTMLElement) IfTITLE(cond bool, v string) *SpanHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TITLE(v)
 }
 
 func (e *SpanHTMLElement) RemoveTITLE(v string) *SpanHTMLElement {
@@ -612,6 +794,13 @@ func (e *SpanHTMLElement) TRANSLATE(v string) *SpanHTMLElement {
     }
     e.StringAttributes["translate"] = v
     return e
+}
+
+func (e *SpanHTMLElement) IfTRANSLATE(cond bool, v string) *SpanHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TRANSLATE(v)
 }
 
 func (e *SpanHTMLElement) RemoveTRANSLATE(v string) *SpanHTMLElement {

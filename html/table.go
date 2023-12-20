@@ -48,13 +48,13 @@ func (e *TableHTMLElement) TextF(format string, args ...any) *TableHTMLElement {
     return e.Text(fmt.Sprintf(format, args...))
 }
 
-func (e *TableHTMLElement) Raw(text string) *TableHTMLElement {
-    e.Descendants = append(e.Descendants, Raw(text))
+func (e *TableHTMLElement) Escaped(text string) *TableHTMLElement {
+    e.Descendants = append(e.Descendants, Escaped(text))
     return e
 }
 
-func (e *TableHTMLElement) RawF(format string, args ...any) *TableHTMLElement {
-    return e.Raw(fmt.Sprintf(format, args...))
+func (e *TableHTMLElement) EscapedF(format string, args ...any) *TableHTMLElement {
+    return e.Escaped(fmt.Sprintf(format, args...))
 }
 
 func (e *TableHTMLElement) CustomData(key, value string) *TableHTMLElement {
@@ -87,6 +87,13 @@ func (e *TableHTMLElement) ACCESSKEY(v string) *TableHTMLElement {
     return e
 }
 
+func (e *TableHTMLElement) IfACCESSKEY(cond bool, v string) *TableHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ACCESSKEY(v)
+}
+
 func (e *TableHTMLElement) RemoveACCESSKEY(v string) *TableHTMLElement {
     delete(e.StringAttributes, "accesskey")
     return e
@@ -114,6 +121,13 @@ func (e *TableHTMLElement) AUTOCAPITALIZE(v string) *TableHTMLElement {
     return e
 }
 
+func (e *TableHTMLElement) IfAUTOCAPITALIZE(cond bool, v string) *TableHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.AUTOCAPITALIZE(v)
+}
+
 func (e *TableHTMLElement) RemoveAUTOCAPITALIZE(v string) *TableHTMLElement {
     delete(e.StringAttributes, "autocapitalize")
     return e
@@ -128,6 +142,13 @@ func (e *TableHTMLElement) AUTOFOCUS() *TableHTMLElement {
     }
     e.BoolAttributes["autofocus"] = struct{}{}
     return e
+}
+
+func (e *TableHTMLElement) IfAUTOFOCUS(cond bool) *TableHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.AUTOFOCUS()
 }
 
 func (e *TableHTMLElement) RemoveAUTOFOCUS() *TableHTMLElement {
@@ -161,6 +182,13 @@ func(e *TableHTMLElement) CLASS(v string) *TableHTMLElement {
     return e
 }
 
+func (e *TableHTMLElement) IfCLASS(cond bool, v string) *TableHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.CLASS(v)
+}
+
 func (e *TableHTMLElement) SetCLASS(v string) *TableHTMLElement {
     kv := NewSpaceDelimitedString()
     e.DelimitedStringAttributes["class"] = kv
@@ -190,6 +218,13 @@ func (e *TableHTMLElement) CONTENTEDITABLE(v string) *TableHTMLElement {
     return e
 }
 
+func (e *TableHTMLElement) IfCONTENTEDITABLE(cond bool, v string) *TableHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.CONTENTEDITABLE(v)
+}
+
 func (e *TableHTMLElement) RemoveCONTENTEDITABLE(v string) *TableHTMLElement {
     delete(e.StringAttributes, "contenteditable")
     return e
@@ -209,6 +244,13 @@ func (e *TableHTMLElement) DIR(v string) *TableHTMLElement {
     return e
 }
 
+func (e *TableHTMLElement) IfDIR(cond bool, v string) *TableHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.DIR(v)
+}
+
 func (e *TableHTMLElement) RemoveDIR(v string) *TableHTMLElement {
     delete(e.StringAttributes, "dir")
     return e
@@ -224,6 +266,13 @@ func (e *TableHTMLElement) DRAGGABLE(v string) *TableHTMLElement {
     }
     e.StringAttributes["draggable"] = v
     return e
+}
+
+func (e *TableHTMLElement) IfDRAGGABLE(cond bool, v string) *TableHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.DRAGGABLE(v)
 }
 
 func (e *TableHTMLElement) RemoveDRAGGABLE(v string) *TableHTMLElement {
@@ -255,6 +304,13 @@ func (e *TableHTMLElement) ENTERKEYHINT(v string) *TableHTMLElement {
     return e
 }
 
+func (e *TableHTMLElement) IfENTERKEYHINT(cond bool, v string) *TableHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ENTERKEYHINT(v)
+}
+
 func (e *TableHTMLElement) RemoveENTERKEYHINT(v string) *TableHTMLElement {
     delete(e.StringAttributes, "enterkeyhint")
     return e
@@ -274,6 +330,13 @@ func (e *TableHTMLElement) HIDDEN(v string) *TableHTMLElement {
     return e
 }
 
+func (e *TableHTMLElement) IfHIDDEN(cond bool, v string) *TableHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.HIDDEN(v)
+}
+
 func (e *TableHTMLElement) RemoveHIDDEN(v string) *TableHTMLElement {
     delete(e.StringAttributes, "hidden")
     return e
@@ -290,6 +353,13 @@ func (e *TableHTMLElement) ID(v string) *TableHTMLElement {
     return e
 }
 
+func (e *TableHTMLElement) IfID(cond bool, v string) *TableHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ID(v)
+}
+
 func (e *TableHTMLElement) RemoveID(v string) *TableHTMLElement {
     delete(e.StringAttributes, "id")
     return e
@@ -304,6 +374,13 @@ func (e *TableHTMLElement) INERT() *TableHTMLElement {
     }
     e.BoolAttributes["inert"] = struct{}{}
     return e
+}
+
+func (e *TableHTMLElement) IfINERT(cond bool) *TableHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.INERT()
 }
 
 func (e *TableHTMLElement) RemoveINERT() *TableHTMLElement {
@@ -347,6 +424,13 @@ func (e *TableHTMLElement) INPUTMODE(v string) *TableHTMLElement {
     return e
 }
 
+func (e *TableHTMLElement) IfINPUTMODE(cond bool, v string) *TableHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.INPUTMODE(v)
+}
+
 func (e *TableHTMLElement) RemoveINPUTMODE(v string) *TableHTMLElement {
     delete(e.StringAttributes, "inputmode")
     return e
@@ -364,6 +448,13 @@ func (e *TableHTMLElement) IS(v string) *TableHTMLElement {
     return e
 }
 
+func (e *TableHTMLElement) IfIS(cond bool, v string) *TableHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.IS(v)
+}
+
 func (e *TableHTMLElement) RemoveIS(v string) *TableHTMLElement {
     delete(e.StringAttributes, "is")
     return e
@@ -378,6 +469,13 @@ func (e *TableHTMLElement) ITEMID(v string) *TableHTMLElement {
     }
     e.StringAttributes["itemid"] = v
     return e
+}
+
+func (e *TableHTMLElement) IfITEMID(cond bool, v string) *TableHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMID(v)
 }
 
 func (e *TableHTMLElement) RemoveITEMID(v string) *TableHTMLElement {
@@ -398,6 +496,13 @@ func (e *TableHTMLElement) ITEMPROP(v string) *TableHTMLElement {
     return e
 }
 
+func (e *TableHTMLElement) IfITEMPROP(cond bool, v string) *TableHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMPROP(v)
+}
+
 func (e *TableHTMLElement) RemoveITEMPROP(v string) *TableHTMLElement {
     delete(e.StringAttributes, "itemprop")
     return e
@@ -414,6 +519,13 @@ func (e *TableHTMLElement) ITEMREF(v string) *TableHTMLElement {
     return e
 }
 
+func (e *TableHTMLElement) IfITEMREF(cond bool, v string) *TableHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMREF(v)
+}
+
 func (e *TableHTMLElement) RemoveITEMREF(v string) *TableHTMLElement {
     delete(e.StringAttributes, "itemref")
     return e
@@ -428,6 +540,13 @@ func (e *TableHTMLElement) ITEMSCOPE() *TableHTMLElement {
     }
     e.BoolAttributes["itemscope"] = struct{}{}
     return e
+}
+
+func (e *TableHTMLElement) IfITEMSCOPE(cond bool) *TableHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMSCOPE()
 }
 
 func (e *TableHTMLElement) RemoveITEMSCOPE() *TableHTMLElement {
@@ -457,6 +576,13 @@ func (e *TableHTMLElement) ITEMTYPE(v string) *TableHTMLElement {
     return e
 }
 
+func (e *TableHTMLElement) IfITEMTYPE(cond bool, v string) *TableHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMTYPE(v)
+}
+
 func (e *TableHTMLElement) RemoveITEMTYPE(v string) *TableHTMLElement {
     delete(e.StringAttributes, "itemtype")
     return e
@@ -470,6 +596,13 @@ func (e *TableHTMLElement) LANG(v string) *TableHTMLElement {
     }
     e.StringAttributes["lang"] = v
     return e
+}
+
+func (e *TableHTMLElement) IfLANG(cond bool, v string) *TableHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.LANG(v)
 }
 
 func (e *TableHTMLElement) RemoveLANG(v string) *TableHTMLElement {
@@ -486,6 +619,13 @@ func (e *TableHTMLElement) NONCE(v string) *TableHTMLElement {
     }
     e.StringAttributes["nonce"] = v
     return e
+}
+
+func (e *TableHTMLElement) IfNONCE(cond bool, v string) *TableHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.NONCE(v)
 }
 
 func (e *TableHTMLElement) RemoveNONCE(v string) *TableHTMLElement {
@@ -507,6 +647,13 @@ func (e *TableHTMLElement) POPOVER(v string) *TableHTMLElement {
     return e
 }
 
+func (e *TableHTMLElement) IfPOPOVER(cond bool, v string) *TableHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.POPOVER(v)
+}
+
 func (e *TableHTMLElement) RemovePOPOVER(v string) *TableHTMLElement {
     delete(e.StringAttributes, "popover")
     return e
@@ -521,6 +668,13 @@ func (e *TableHTMLElement) SLOT(v string) *TableHTMLElement {
     }
     e.StringAttributes["slot"] = v
     return e
+}
+
+func (e *TableHTMLElement) IfSLOT(cond bool, v string) *TableHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SLOT(v)
 }
 
 func (e *TableHTMLElement) RemoveSLOT(v string) *TableHTMLElement {
@@ -538,6 +692,13 @@ func (e *TableHTMLElement) SPELLCHECK(v string) *TableHTMLElement {
     }
     e.StringAttributes["spellcheck"] = v
     return e
+}
+
+func (e *TableHTMLElement) IfSPELLCHECK(cond bool, v string) *TableHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SPELLCHECK(v)
 }
 
 func (e *TableHTMLElement) RemoveSPELLCHECK(v string) *TableHTMLElement {
@@ -558,6 +719,13 @@ func (e *TableHTMLElement) STYLE(k,v string) *TableHTMLElement {
     }
     kv.Add(k,v)
     return e
+}
+
+func (e *TableHTMLElement) IfSTYLE(cond bool, k string) *TableHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.STYLE(k, "")
 }
 
 func (e *TableHTMLElement) RemoveSTYLE(k string) *TableHTMLElement {
@@ -581,6 +749,13 @@ func (e *TableHTMLElement) TABINDEX(v string) *TableHTMLElement {
     return e
 }
 
+func (e *TableHTMLElement) IfTABINDEX(cond bool, v string) *TableHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TABINDEX(v)
+}
+
 func (e *TableHTMLElement) RemoveTABINDEX(v string) *TableHTMLElement {
     delete(e.StringAttributes, "tabindex")
     return e
@@ -595,6 +770,13 @@ func (e *TableHTMLElement) TITLE(v string) *TableHTMLElement {
     }
     e.StringAttributes["title"] = v
     return e
+}
+
+func (e *TableHTMLElement) IfTITLE(cond bool, v string) *TableHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TITLE(v)
 }
 
 func (e *TableHTMLElement) RemoveTITLE(v string) *TableHTMLElement {
@@ -612,6 +794,13 @@ func (e *TableHTMLElement) TRANSLATE(v string) *TableHTMLElement {
     }
     e.StringAttributes["translate"] = v
     return e
+}
+
+func (e *TableHTMLElement) IfTRANSLATE(cond bool, v string) *TableHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TRANSLATE(v)
 }
 
 func (e *TableHTMLElement) RemoveTRANSLATE(v string) *TableHTMLElement {

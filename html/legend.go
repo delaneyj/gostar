@@ -48,13 +48,13 @@ func (e *LegendHTMLElement) TextF(format string, args ...any) *LegendHTMLElement
     return e.Text(fmt.Sprintf(format, args...))
 }
 
-func (e *LegendHTMLElement) Raw(text string) *LegendHTMLElement {
-    e.Descendants = append(e.Descendants, Raw(text))
+func (e *LegendHTMLElement) Escaped(text string) *LegendHTMLElement {
+    e.Descendants = append(e.Descendants, Escaped(text))
     return e
 }
 
-func (e *LegendHTMLElement) RawF(format string, args ...any) *LegendHTMLElement {
-    return e.Raw(fmt.Sprintf(format, args...))
+func (e *LegendHTMLElement) EscapedF(format string, args ...any) *LegendHTMLElement {
+    return e.Escaped(fmt.Sprintf(format, args...))
 }
 
 func (e *LegendHTMLElement) CustomData(key, value string) *LegendHTMLElement {
@@ -87,6 +87,13 @@ func (e *LegendHTMLElement) ACCESSKEY(v string) *LegendHTMLElement {
     return e
 }
 
+func (e *LegendHTMLElement) IfACCESSKEY(cond bool, v string) *LegendHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ACCESSKEY(v)
+}
+
 func (e *LegendHTMLElement) RemoveACCESSKEY(v string) *LegendHTMLElement {
     delete(e.StringAttributes, "accesskey")
     return e
@@ -114,6 +121,13 @@ func (e *LegendHTMLElement) AUTOCAPITALIZE(v string) *LegendHTMLElement {
     return e
 }
 
+func (e *LegendHTMLElement) IfAUTOCAPITALIZE(cond bool, v string) *LegendHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.AUTOCAPITALIZE(v)
+}
+
 func (e *LegendHTMLElement) RemoveAUTOCAPITALIZE(v string) *LegendHTMLElement {
     delete(e.StringAttributes, "autocapitalize")
     return e
@@ -128,6 +142,13 @@ func (e *LegendHTMLElement) AUTOFOCUS() *LegendHTMLElement {
     }
     e.BoolAttributes["autofocus"] = struct{}{}
     return e
+}
+
+func (e *LegendHTMLElement) IfAUTOFOCUS(cond bool) *LegendHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.AUTOFOCUS()
 }
 
 func (e *LegendHTMLElement) RemoveAUTOFOCUS() *LegendHTMLElement {
@@ -161,6 +182,13 @@ func(e *LegendHTMLElement) CLASS(v string) *LegendHTMLElement {
     return e
 }
 
+func (e *LegendHTMLElement) IfCLASS(cond bool, v string) *LegendHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.CLASS(v)
+}
+
 func (e *LegendHTMLElement) SetCLASS(v string) *LegendHTMLElement {
     kv := NewSpaceDelimitedString()
     e.DelimitedStringAttributes["class"] = kv
@@ -190,6 +218,13 @@ func (e *LegendHTMLElement) CONTENTEDITABLE(v string) *LegendHTMLElement {
     return e
 }
 
+func (e *LegendHTMLElement) IfCONTENTEDITABLE(cond bool, v string) *LegendHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.CONTENTEDITABLE(v)
+}
+
 func (e *LegendHTMLElement) RemoveCONTENTEDITABLE(v string) *LegendHTMLElement {
     delete(e.StringAttributes, "contenteditable")
     return e
@@ -209,6 +244,13 @@ func (e *LegendHTMLElement) DIR(v string) *LegendHTMLElement {
     return e
 }
 
+func (e *LegendHTMLElement) IfDIR(cond bool, v string) *LegendHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.DIR(v)
+}
+
 func (e *LegendHTMLElement) RemoveDIR(v string) *LegendHTMLElement {
     delete(e.StringAttributes, "dir")
     return e
@@ -224,6 +266,13 @@ func (e *LegendHTMLElement) DRAGGABLE(v string) *LegendHTMLElement {
     }
     e.StringAttributes["draggable"] = v
     return e
+}
+
+func (e *LegendHTMLElement) IfDRAGGABLE(cond bool, v string) *LegendHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.DRAGGABLE(v)
 }
 
 func (e *LegendHTMLElement) RemoveDRAGGABLE(v string) *LegendHTMLElement {
@@ -255,6 +304,13 @@ func (e *LegendHTMLElement) ENTERKEYHINT(v string) *LegendHTMLElement {
     return e
 }
 
+func (e *LegendHTMLElement) IfENTERKEYHINT(cond bool, v string) *LegendHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ENTERKEYHINT(v)
+}
+
 func (e *LegendHTMLElement) RemoveENTERKEYHINT(v string) *LegendHTMLElement {
     delete(e.StringAttributes, "enterkeyhint")
     return e
@@ -274,6 +330,13 @@ func (e *LegendHTMLElement) HIDDEN(v string) *LegendHTMLElement {
     return e
 }
 
+func (e *LegendHTMLElement) IfHIDDEN(cond bool, v string) *LegendHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.HIDDEN(v)
+}
+
 func (e *LegendHTMLElement) RemoveHIDDEN(v string) *LegendHTMLElement {
     delete(e.StringAttributes, "hidden")
     return e
@@ -290,6 +353,13 @@ func (e *LegendHTMLElement) ID(v string) *LegendHTMLElement {
     return e
 }
 
+func (e *LegendHTMLElement) IfID(cond bool, v string) *LegendHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ID(v)
+}
+
 func (e *LegendHTMLElement) RemoveID(v string) *LegendHTMLElement {
     delete(e.StringAttributes, "id")
     return e
@@ -304,6 +374,13 @@ func (e *LegendHTMLElement) INERT() *LegendHTMLElement {
     }
     e.BoolAttributes["inert"] = struct{}{}
     return e
+}
+
+func (e *LegendHTMLElement) IfINERT(cond bool) *LegendHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.INERT()
 }
 
 func (e *LegendHTMLElement) RemoveINERT() *LegendHTMLElement {
@@ -347,6 +424,13 @@ func (e *LegendHTMLElement) INPUTMODE(v string) *LegendHTMLElement {
     return e
 }
 
+func (e *LegendHTMLElement) IfINPUTMODE(cond bool, v string) *LegendHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.INPUTMODE(v)
+}
+
 func (e *LegendHTMLElement) RemoveINPUTMODE(v string) *LegendHTMLElement {
     delete(e.StringAttributes, "inputmode")
     return e
@@ -364,6 +448,13 @@ func (e *LegendHTMLElement) IS(v string) *LegendHTMLElement {
     return e
 }
 
+func (e *LegendHTMLElement) IfIS(cond bool, v string) *LegendHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.IS(v)
+}
+
 func (e *LegendHTMLElement) RemoveIS(v string) *LegendHTMLElement {
     delete(e.StringAttributes, "is")
     return e
@@ -378,6 +469,13 @@ func (e *LegendHTMLElement) ITEMID(v string) *LegendHTMLElement {
     }
     e.StringAttributes["itemid"] = v
     return e
+}
+
+func (e *LegendHTMLElement) IfITEMID(cond bool, v string) *LegendHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMID(v)
 }
 
 func (e *LegendHTMLElement) RemoveITEMID(v string) *LegendHTMLElement {
@@ -398,6 +496,13 @@ func (e *LegendHTMLElement) ITEMPROP(v string) *LegendHTMLElement {
     return e
 }
 
+func (e *LegendHTMLElement) IfITEMPROP(cond bool, v string) *LegendHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMPROP(v)
+}
+
 func (e *LegendHTMLElement) RemoveITEMPROP(v string) *LegendHTMLElement {
     delete(e.StringAttributes, "itemprop")
     return e
@@ -414,6 +519,13 @@ func (e *LegendHTMLElement) ITEMREF(v string) *LegendHTMLElement {
     return e
 }
 
+func (e *LegendHTMLElement) IfITEMREF(cond bool, v string) *LegendHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMREF(v)
+}
+
 func (e *LegendHTMLElement) RemoveITEMREF(v string) *LegendHTMLElement {
     delete(e.StringAttributes, "itemref")
     return e
@@ -428,6 +540,13 @@ func (e *LegendHTMLElement) ITEMSCOPE() *LegendHTMLElement {
     }
     e.BoolAttributes["itemscope"] = struct{}{}
     return e
+}
+
+func (e *LegendHTMLElement) IfITEMSCOPE(cond bool) *LegendHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMSCOPE()
 }
 
 func (e *LegendHTMLElement) RemoveITEMSCOPE() *LegendHTMLElement {
@@ -457,6 +576,13 @@ func (e *LegendHTMLElement) ITEMTYPE(v string) *LegendHTMLElement {
     return e
 }
 
+func (e *LegendHTMLElement) IfITEMTYPE(cond bool, v string) *LegendHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMTYPE(v)
+}
+
 func (e *LegendHTMLElement) RemoveITEMTYPE(v string) *LegendHTMLElement {
     delete(e.StringAttributes, "itemtype")
     return e
@@ -470,6 +596,13 @@ func (e *LegendHTMLElement) LANG(v string) *LegendHTMLElement {
     }
     e.StringAttributes["lang"] = v
     return e
+}
+
+func (e *LegendHTMLElement) IfLANG(cond bool, v string) *LegendHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.LANG(v)
 }
 
 func (e *LegendHTMLElement) RemoveLANG(v string) *LegendHTMLElement {
@@ -486,6 +619,13 @@ func (e *LegendHTMLElement) NONCE(v string) *LegendHTMLElement {
     }
     e.StringAttributes["nonce"] = v
     return e
+}
+
+func (e *LegendHTMLElement) IfNONCE(cond bool, v string) *LegendHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.NONCE(v)
 }
 
 func (e *LegendHTMLElement) RemoveNONCE(v string) *LegendHTMLElement {
@@ -507,6 +647,13 @@ func (e *LegendHTMLElement) POPOVER(v string) *LegendHTMLElement {
     return e
 }
 
+func (e *LegendHTMLElement) IfPOPOVER(cond bool, v string) *LegendHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.POPOVER(v)
+}
+
 func (e *LegendHTMLElement) RemovePOPOVER(v string) *LegendHTMLElement {
     delete(e.StringAttributes, "popover")
     return e
@@ -521,6 +668,13 @@ func (e *LegendHTMLElement) SLOT(v string) *LegendHTMLElement {
     }
     e.StringAttributes["slot"] = v
     return e
+}
+
+func (e *LegendHTMLElement) IfSLOT(cond bool, v string) *LegendHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SLOT(v)
 }
 
 func (e *LegendHTMLElement) RemoveSLOT(v string) *LegendHTMLElement {
@@ -538,6 +692,13 @@ func (e *LegendHTMLElement) SPELLCHECK(v string) *LegendHTMLElement {
     }
     e.StringAttributes["spellcheck"] = v
     return e
+}
+
+func (e *LegendHTMLElement) IfSPELLCHECK(cond bool, v string) *LegendHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SPELLCHECK(v)
 }
 
 func (e *LegendHTMLElement) RemoveSPELLCHECK(v string) *LegendHTMLElement {
@@ -558,6 +719,13 @@ func (e *LegendHTMLElement) STYLE(k,v string) *LegendHTMLElement {
     }
     kv.Add(k,v)
     return e
+}
+
+func (e *LegendHTMLElement) IfSTYLE(cond bool, k string) *LegendHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.STYLE(k, "")
 }
 
 func (e *LegendHTMLElement) RemoveSTYLE(k string) *LegendHTMLElement {
@@ -581,6 +749,13 @@ func (e *LegendHTMLElement) TABINDEX(v string) *LegendHTMLElement {
     return e
 }
 
+func (e *LegendHTMLElement) IfTABINDEX(cond bool, v string) *LegendHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TABINDEX(v)
+}
+
 func (e *LegendHTMLElement) RemoveTABINDEX(v string) *LegendHTMLElement {
     delete(e.StringAttributes, "tabindex")
     return e
@@ -595,6 +770,13 @@ func (e *LegendHTMLElement) TITLE(v string) *LegendHTMLElement {
     }
     e.StringAttributes["title"] = v
     return e
+}
+
+func (e *LegendHTMLElement) IfTITLE(cond bool, v string) *LegendHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TITLE(v)
 }
 
 func (e *LegendHTMLElement) RemoveTITLE(v string) *LegendHTMLElement {
@@ -612,6 +794,13 @@ func (e *LegendHTMLElement) TRANSLATE(v string) *LegendHTMLElement {
     }
     e.StringAttributes["translate"] = v
     return e
+}
+
+func (e *LegendHTMLElement) IfTRANSLATE(cond bool, v string) *LegendHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TRANSLATE(v)
 }
 
 func (e *LegendHTMLElement) RemoveTRANSLATE(v string) *LegendHTMLElement {

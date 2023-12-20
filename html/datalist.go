@@ -48,13 +48,13 @@ func (e *DatalistHTMLElement) TextF(format string, args ...any) *DatalistHTMLEle
     return e.Text(fmt.Sprintf(format, args...))
 }
 
-func (e *DatalistHTMLElement) Raw(text string) *DatalistHTMLElement {
-    e.Descendants = append(e.Descendants, Raw(text))
+func (e *DatalistHTMLElement) Escaped(text string) *DatalistHTMLElement {
+    e.Descendants = append(e.Descendants, Escaped(text))
     return e
 }
 
-func (e *DatalistHTMLElement) RawF(format string, args ...any) *DatalistHTMLElement {
-    return e.Raw(fmt.Sprintf(format, args...))
+func (e *DatalistHTMLElement) EscapedF(format string, args ...any) *DatalistHTMLElement {
+    return e.Escaped(fmt.Sprintf(format, args...))
 }
 
 func (e *DatalistHTMLElement) CustomData(key, value string) *DatalistHTMLElement {
@@ -87,6 +87,13 @@ func (e *DatalistHTMLElement) ACCESSKEY(v string) *DatalistHTMLElement {
     return e
 }
 
+func (e *DatalistHTMLElement) IfACCESSKEY(cond bool, v string) *DatalistHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ACCESSKEY(v)
+}
+
 func (e *DatalistHTMLElement) RemoveACCESSKEY(v string) *DatalistHTMLElement {
     delete(e.StringAttributes, "accesskey")
     return e
@@ -114,6 +121,13 @@ func (e *DatalistHTMLElement) AUTOCAPITALIZE(v string) *DatalistHTMLElement {
     return e
 }
 
+func (e *DatalistHTMLElement) IfAUTOCAPITALIZE(cond bool, v string) *DatalistHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.AUTOCAPITALIZE(v)
+}
+
 func (e *DatalistHTMLElement) RemoveAUTOCAPITALIZE(v string) *DatalistHTMLElement {
     delete(e.StringAttributes, "autocapitalize")
     return e
@@ -128,6 +142,13 @@ func (e *DatalistHTMLElement) AUTOFOCUS() *DatalistHTMLElement {
     }
     e.BoolAttributes["autofocus"] = struct{}{}
     return e
+}
+
+func (e *DatalistHTMLElement) IfAUTOFOCUS(cond bool) *DatalistHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.AUTOFOCUS()
 }
 
 func (e *DatalistHTMLElement) RemoveAUTOFOCUS() *DatalistHTMLElement {
@@ -161,6 +182,13 @@ func(e *DatalistHTMLElement) CLASS(v string) *DatalistHTMLElement {
     return e
 }
 
+func (e *DatalistHTMLElement) IfCLASS(cond bool, v string) *DatalistHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.CLASS(v)
+}
+
 func (e *DatalistHTMLElement) SetCLASS(v string) *DatalistHTMLElement {
     kv := NewSpaceDelimitedString()
     e.DelimitedStringAttributes["class"] = kv
@@ -190,6 +218,13 @@ func (e *DatalistHTMLElement) CONTENTEDITABLE(v string) *DatalistHTMLElement {
     return e
 }
 
+func (e *DatalistHTMLElement) IfCONTENTEDITABLE(cond bool, v string) *DatalistHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.CONTENTEDITABLE(v)
+}
+
 func (e *DatalistHTMLElement) RemoveCONTENTEDITABLE(v string) *DatalistHTMLElement {
     delete(e.StringAttributes, "contenteditable")
     return e
@@ -209,6 +244,13 @@ func (e *DatalistHTMLElement) DIR(v string) *DatalistHTMLElement {
     return e
 }
 
+func (e *DatalistHTMLElement) IfDIR(cond bool, v string) *DatalistHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.DIR(v)
+}
+
 func (e *DatalistHTMLElement) RemoveDIR(v string) *DatalistHTMLElement {
     delete(e.StringAttributes, "dir")
     return e
@@ -224,6 +266,13 @@ func (e *DatalistHTMLElement) DRAGGABLE(v string) *DatalistHTMLElement {
     }
     e.StringAttributes["draggable"] = v
     return e
+}
+
+func (e *DatalistHTMLElement) IfDRAGGABLE(cond bool, v string) *DatalistHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.DRAGGABLE(v)
 }
 
 func (e *DatalistHTMLElement) RemoveDRAGGABLE(v string) *DatalistHTMLElement {
@@ -255,6 +304,13 @@ func (e *DatalistHTMLElement) ENTERKEYHINT(v string) *DatalistHTMLElement {
     return e
 }
 
+func (e *DatalistHTMLElement) IfENTERKEYHINT(cond bool, v string) *DatalistHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ENTERKEYHINT(v)
+}
+
 func (e *DatalistHTMLElement) RemoveENTERKEYHINT(v string) *DatalistHTMLElement {
     delete(e.StringAttributes, "enterkeyhint")
     return e
@@ -274,6 +330,13 @@ func (e *DatalistHTMLElement) HIDDEN(v string) *DatalistHTMLElement {
     return e
 }
 
+func (e *DatalistHTMLElement) IfHIDDEN(cond bool, v string) *DatalistHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.HIDDEN(v)
+}
+
 func (e *DatalistHTMLElement) RemoveHIDDEN(v string) *DatalistHTMLElement {
     delete(e.StringAttributes, "hidden")
     return e
@@ -290,6 +353,13 @@ func (e *DatalistHTMLElement) ID(v string) *DatalistHTMLElement {
     return e
 }
 
+func (e *DatalistHTMLElement) IfID(cond bool, v string) *DatalistHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ID(v)
+}
+
 func (e *DatalistHTMLElement) RemoveID(v string) *DatalistHTMLElement {
     delete(e.StringAttributes, "id")
     return e
@@ -304,6 +374,13 @@ func (e *DatalistHTMLElement) INERT() *DatalistHTMLElement {
     }
     e.BoolAttributes["inert"] = struct{}{}
     return e
+}
+
+func (e *DatalistHTMLElement) IfINERT(cond bool) *DatalistHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.INERT()
 }
 
 func (e *DatalistHTMLElement) RemoveINERT() *DatalistHTMLElement {
@@ -347,6 +424,13 @@ func (e *DatalistHTMLElement) INPUTMODE(v string) *DatalistHTMLElement {
     return e
 }
 
+func (e *DatalistHTMLElement) IfINPUTMODE(cond bool, v string) *DatalistHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.INPUTMODE(v)
+}
+
 func (e *DatalistHTMLElement) RemoveINPUTMODE(v string) *DatalistHTMLElement {
     delete(e.StringAttributes, "inputmode")
     return e
@@ -364,6 +448,13 @@ func (e *DatalistHTMLElement) IS(v string) *DatalistHTMLElement {
     return e
 }
 
+func (e *DatalistHTMLElement) IfIS(cond bool, v string) *DatalistHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.IS(v)
+}
+
 func (e *DatalistHTMLElement) RemoveIS(v string) *DatalistHTMLElement {
     delete(e.StringAttributes, "is")
     return e
@@ -378,6 +469,13 @@ func (e *DatalistHTMLElement) ITEMID(v string) *DatalistHTMLElement {
     }
     e.StringAttributes["itemid"] = v
     return e
+}
+
+func (e *DatalistHTMLElement) IfITEMID(cond bool, v string) *DatalistHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMID(v)
 }
 
 func (e *DatalistHTMLElement) RemoveITEMID(v string) *DatalistHTMLElement {
@@ -398,6 +496,13 @@ func (e *DatalistHTMLElement) ITEMPROP(v string) *DatalistHTMLElement {
     return e
 }
 
+func (e *DatalistHTMLElement) IfITEMPROP(cond bool, v string) *DatalistHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMPROP(v)
+}
+
 func (e *DatalistHTMLElement) RemoveITEMPROP(v string) *DatalistHTMLElement {
     delete(e.StringAttributes, "itemprop")
     return e
@@ -414,6 +519,13 @@ func (e *DatalistHTMLElement) ITEMREF(v string) *DatalistHTMLElement {
     return e
 }
 
+func (e *DatalistHTMLElement) IfITEMREF(cond bool, v string) *DatalistHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMREF(v)
+}
+
 func (e *DatalistHTMLElement) RemoveITEMREF(v string) *DatalistHTMLElement {
     delete(e.StringAttributes, "itemref")
     return e
@@ -428,6 +540,13 @@ func (e *DatalistHTMLElement) ITEMSCOPE() *DatalistHTMLElement {
     }
     e.BoolAttributes["itemscope"] = struct{}{}
     return e
+}
+
+func (e *DatalistHTMLElement) IfITEMSCOPE(cond bool) *DatalistHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMSCOPE()
 }
 
 func (e *DatalistHTMLElement) RemoveITEMSCOPE() *DatalistHTMLElement {
@@ -457,6 +576,13 @@ func (e *DatalistHTMLElement) ITEMTYPE(v string) *DatalistHTMLElement {
     return e
 }
 
+func (e *DatalistHTMLElement) IfITEMTYPE(cond bool, v string) *DatalistHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMTYPE(v)
+}
+
 func (e *DatalistHTMLElement) RemoveITEMTYPE(v string) *DatalistHTMLElement {
     delete(e.StringAttributes, "itemtype")
     return e
@@ -470,6 +596,13 @@ func (e *DatalistHTMLElement) LANG(v string) *DatalistHTMLElement {
     }
     e.StringAttributes["lang"] = v
     return e
+}
+
+func (e *DatalistHTMLElement) IfLANG(cond bool, v string) *DatalistHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.LANG(v)
 }
 
 func (e *DatalistHTMLElement) RemoveLANG(v string) *DatalistHTMLElement {
@@ -486,6 +619,13 @@ func (e *DatalistHTMLElement) NONCE(v string) *DatalistHTMLElement {
     }
     e.StringAttributes["nonce"] = v
     return e
+}
+
+func (e *DatalistHTMLElement) IfNONCE(cond bool, v string) *DatalistHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.NONCE(v)
 }
 
 func (e *DatalistHTMLElement) RemoveNONCE(v string) *DatalistHTMLElement {
@@ -507,6 +647,13 @@ func (e *DatalistHTMLElement) POPOVER(v string) *DatalistHTMLElement {
     return e
 }
 
+func (e *DatalistHTMLElement) IfPOPOVER(cond bool, v string) *DatalistHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.POPOVER(v)
+}
+
 func (e *DatalistHTMLElement) RemovePOPOVER(v string) *DatalistHTMLElement {
     delete(e.StringAttributes, "popover")
     return e
@@ -521,6 +668,13 @@ func (e *DatalistHTMLElement) SLOT(v string) *DatalistHTMLElement {
     }
     e.StringAttributes["slot"] = v
     return e
+}
+
+func (e *DatalistHTMLElement) IfSLOT(cond bool, v string) *DatalistHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SLOT(v)
 }
 
 func (e *DatalistHTMLElement) RemoveSLOT(v string) *DatalistHTMLElement {
@@ -538,6 +692,13 @@ func (e *DatalistHTMLElement) SPELLCHECK(v string) *DatalistHTMLElement {
     }
     e.StringAttributes["spellcheck"] = v
     return e
+}
+
+func (e *DatalistHTMLElement) IfSPELLCHECK(cond bool, v string) *DatalistHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SPELLCHECK(v)
 }
 
 func (e *DatalistHTMLElement) RemoveSPELLCHECK(v string) *DatalistHTMLElement {
@@ -558,6 +719,13 @@ func (e *DatalistHTMLElement) STYLE(k,v string) *DatalistHTMLElement {
     }
     kv.Add(k,v)
     return e
+}
+
+func (e *DatalistHTMLElement) IfSTYLE(cond bool, k string) *DatalistHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.STYLE(k, "")
 }
 
 func (e *DatalistHTMLElement) RemoveSTYLE(k string) *DatalistHTMLElement {
@@ -581,6 +749,13 @@ func (e *DatalistHTMLElement) TABINDEX(v string) *DatalistHTMLElement {
     return e
 }
 
+func (e *DatalistHTMLElement) IfTABINDEX(cond bool, v string) *DatalistHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TABINDEX(v)
+}
+
 func (e *DatalistHTMLElement) RemoveTABINDEX(v string) *DatalistHTMLElement {
     delete(e.StringAttributes, "tabindex")
     return e
@@ -595,6 +770,13 @@ func (e *DatalistHTMLElement) TITLE(v string) *DatalistHTMLElement {
     }
     e.StringAttributes["title"] = v
     return e
+}
+
+func (e *DatalistHTMLElement) IfTITLE(cond bool, v string) *DatalistHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TITLE(v)
 }
 
 func (e *DatalistHTMLElement) RemoveTITLE(v string) *DatalistHTMLElement {
@@ -612,6 +794,13 @@ func (e *DatalistHTMLElement) TRANSLATE(v string) *DatalistHTMLElement {
     }
     e.StringAttributes["translate"] = v
     return e
+}
+
+func (e *DatalistHTMLElement) IfTRANSLATE(cond bool, v string) *DatalistHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TRANSLATE(v)
 }
 
 func (e *DatalistHTMLElement) RemoveTRANSLATE(v string) *DatalistHTMLElement {

@@ -48,13 +48,13 @@ func (e *MarkHTMLElement) TextF(format string, args ...any) *MarkHTMLElement {
     return e.Text(fmt.Sprintf(format, args...))
 }
 
-func (e *MarkHTMLElement) Raw(text string) *MarkHTMLElement {
-    e.Descendants = append(e.Descendants, Raw(text))
+func (e *MarkHTMLElement) Escaped(text string) *MarkHTMLElement {
+    e.Descendants = append(e.Descendants, Escaped(text))
     return e
 }
 
-func (e *MarkHTMLElement) RawF(format string, args ...any) *MarkHTMLElement {
-    return e.Raw(fmt.Sprintf(format, args...))
+func (e *MarkHTMLElement) EscapedF(format string, args ...any) *MarkHTMLElement {
+    return e.Escaped(fmt.Sprintf(format, args...))
 }
 
 func (e *MarkHTMLElement) CustomData(key, value string) *MarkHTMLElement {
@@ -87,6 +87,13 @@ func (e *MarkHTMLElement) ACCESSKEY(v string) *MarkHTMLElement {
     return e
 }
 
+func (e *MarkHTMLElement) IfACCESSKEY(cond bool, v string) *MarkHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ACCESSKEY(v)
+}
+
 func (e *MarkHTMLElement) RemoveACCESSKEY(v string) *MarkHTMLElement {
     delete(e.StringAttributes, "accesskey")
     return e
@@ -114,6 +121,13 @@ func (e *MarkHTMLElement) AUTOCAPITALIZE(v string) *MarkHTMLElement {
     return e
 }
 
+func (e *MarkHTMLElement) IfAUTOCAPITALIZE(cond bool, v string) *MarkHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.AUTOCAPITALIZE(v)
+}
+
 func (e *MarkHTMLElement) RemoveAUTOCAPITALIZE(v string) *MarkHTMLElement {
     delete(e.StringAttributes, "autocapitalize")
     return e
@@ -128,6 +142,13 @@ func (e *MarkHTMLElement) AUTOFOCUS() *MarkHTMLElement {
     }
     e.BoolAttributes["autofocus"] = struct{}{}
     return e
+}
+
+func (e *MarkHTMLElement) IfAUTOFOCUS(cond bool) *MarkHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.AUTOFOCUS()
 }
 
 func (e *MarkHTMLElement) RemoveAUTOFOCUS() *MarkHTMLElement {
@@ -161,6 +182,13 @@ func(e *MarkHTMLElement) CLASS(v string) *MarkHTMLElement {
     return e
 }
 
+func (e *MarkHTMLElement) IfCLASS(cond bool, v string) *MarkHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.CLASS(v)
+}
+
 func (e *MarkHTMLElement) SetCLASS(v string) *MarkHTMLElement {
     kv := NewSpaceDelimitedString()
     e.DelimitedStringAttributes["class"] = kv
@@ -190,6 +218,13 @@ func (e *MarkHTMLElement) CONTENTEDITABLE(v string) *MarkHTMLElement {
     return e
 }
 
+func (e *MarkHTMLElement) IfCONTENTEDITABLE(cond bool, v string) *MarkHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.CONTENTEDITABLE(v)
+}
+
 func (e *MarkHTMLElement) RemoveCONTENTEDITABLE(v string) *MarkHTMLElement {
     delete(e.StringAttributes, "contenteditable")
     return e
@@ -209,6 +244,13 @@ func (e *MarkHTMLElement) DIR(v string) *MarkHTMLElement {
     return e
 }
 
+func (e *MarkHTMLElement) IfDIR(cond bool, v string) *MarkHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.DIR(v)
+}
+
 func (e *MarkHTMLElement) RemoveDIR(v string) *MarkHTMLElement {
     delete(e.StringAttributes, "dir")
     return e
@@ -224,6 +266,13 @@ func (e *MarkHTMLElement) DRAGGABLE(v string) *MarkHTMLElement {
     }
     e.StringAttributes["draggable"] = v
     return e
+}
+
+func (e *MarkHTMLElement) IfDRAGGABLE(cond bool, v string) *MarkHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.DRAGGABLE(v)
 }
 
 func (e *MarkHTMLElement) RemoveDRAGGABLE(v string) *MarkHTMLElement {
@@ -255,6 +304,13 @@ func (e *MarkHTMLElement) ENTERKEYHINT(v string) *MarkHTMLElement {
     return e
 }
 
+func (e *MarkHTMLElement) IfENTERKEYHINT(cond bool, v string) *MarkHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ENTERKEYHINT(v)
+}
+
 func (e *MarkHTMLElement) RemoveENTERKEYHINT(v string) *MarkHTMLElement {
     delete(e.StringAttributes, "enterkeyhint")
     return e
@@ -274,6 +330,13 @@ func (e *MarkHTMLElement) HIDDEN(v string) *MarkHTMLElement {
     return e
 }
 
+func (e *MarkHTMLElement) IfHIDDEN(cond bool, v string) *MarkHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.HIDDEN(v)
+}
+
 func (e *MarkHTMLElement) RemoveHIDDEN(v string) *MarkHTMLElement {
     delete(e.StringAttributes, "hidden")
     return e
@@ -290,6 +353,13 @@ func (e *MarkHTMLElement) ID(v string) *MarkHTMLElement {
     return e
 }
 
+func (e *MarkHTMLElement) IfID(cond bool, v string) *MarkHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ID(v)
+}
+
 func (e *MarkHTMLElement) RemoveID(v string) *MarkHTMLElement {
     delete(e.StringAttributes, "id")
     return e
@@ -304,6 +374,13 @@ func (e *MarkHTMLElement) INERT() *MarkHTMLElement {
     }
     e.BoolAttributes["inert"] = struct{}{}
     return e
+}
+
+func (e *MarkHTMLElement) IfINERT(cond bool) *MarkHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.INERT()
 }
 
 func (e *MarkHTMLElement) RemoveINERT() *MarkHTMLElement {
@@ -347,6 +424,13 @@ func (e *MarkHTMLElement) INPUTMODE(v string) *MarkHTMLElement {
     return e
 }
 
+func (e *MarkHTMLElement) IfINPUTMODE(cond bool, v string) *MarkHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.INPUTMODE(v)
+}
+
 func (e *MarkHTMLElement) RemoveINPUTMODE(v string) *MarkHTMLElement {
     delete(e.StringAttributes, "inputmode")
     return e
@@ -364,6 +448,13 @@ func (e *MarkHTMLElement) IS(v string) *MarkHTMLElement {
     return e
 }
 
+func (e *MarkHTMLElement) IfIS(cond bool, v string) *MarkHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.IS(v)
+}
+
 func (e *MarkHTMLElement) RemoveIS(v string) *MarkHTMLElement {
     delete(e.StringAttributes, "is")
     return e
@@ -378,6 +469,13 @@ func (e *MarkHTMLElement) ITEMID(v string) *MarkHTMLElement {
     }
     e.StringAttributes["itemid"] = v
     return e
+}
+
+func (e *MarkHTMLElement) IfITEMID(cond bool, v string) *MarkHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMID(v)
 }
 
 func (e *MarkHTMLElement) RemoveITEMID(v string) *MarkHTMLElement {
@@ -398,6 +496,13 @@ func (e *MarkHTMLElement) ITEMPROP(v string) *MarkHTMLElement {
     return e
 }
 
+func (e *MarkHTMLElement) IfITEMPROP(cond bool, v string) *MarkHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMPROP(v)
+}
+
 func (e *MarkHTMLElement) RemoveITEMPROP(v string) *MarkHTMLElement {
     delete(e.StringAttributes, "itemprop")
     return e
@@ -414,6 +519,13 @@ func (e *MarkHTMLElement) ITEMREF(v string) *MarkHTMLElement {
     return e
 }
 
+func (e *MarkHTMLElement) IfITEMREF(cond bool, v string) *MarkHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMREF(v)
+}
+
 func (e *MarkHTMLElement) RemoveITEMREF(v string) *MarkHTMLElement {
     delete(e.StringAttributes, "itemref")
     return e
@@ -428,6 +540,13 @@ func (e *MarkHTMLElement) ITEMSCOPE() *MarkHTMLElement {
     }
     e.BoolAttributes["itemscope"] = struct{}{}
     return e
+}
+
+func (e *MarkHTMLElement) IfITEMSCOPE(cond bool) *MarkHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMSCOPE()
 }
 
 func (e *MarkHTMLElement) RemoveITEMSCOPE() *MarkHTMLElement {
@@ -457,6 +576,13 @@ func (e *MarkHTMLElement) ITEMTYPE(v string) *MarkHTMLElement {
     return e
 }
 
+func (e *MarkHTMLElement) IfITEMTYPE(cond bool, v string) *MarkHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMTYPE(v)
+}
+
 func (e *MarkHTMLElement) RemoveITEMTYPE(v string) *MarkHTMLElement {
     delete(e.StringAttributes, "itemtype")
     return e
@@ -470,6 +596,13 @@ func (e *MarkHTMLElement) LANG(v string) *MarkHTMLElement {
     }
     e.StringAttributes["lang"] = v
     return e
+}
+
+func (e *MarkHTMLElement) IfLANG(cond bool, v string) *MarkHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.LANG(v)
 }
 
 func (e *MarkHTMLElement) RemoveLANG(v string) *MarkHTMLElement {
@@ -486,6 +619,13 @@ func (e *MarkHTMLElement) NONCE(v string) *MarkHTMLElement {
     }
     e.StringAttributes["nonce"] = v
     return e
+}
+
+func (e *MarkHTMLElement) IfNONCE(cond bool, v string) *MarkHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.NONCE(v)
 }
 
 func (e *MarkHTMLElement) RemoveNONCE(v string) *MarkHTMLElement {
@@ -507,6 +647,13 @@ func (e *MarkHTMLElement) POPOVER(v string) *MarkHTMLElement {
     return e
 }
 
+func (e *MarkHTMLElement) IfPOPOVER(cond bool, v string) *MarkHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.POPOVER(v)
+}
+
 func (e *MarkHTMLElement) RemovePOPOVER(v string) *MarkHTMLElement {
     delete(e.StringAttributes, "popover")
     return e
@@ -521,6 +668,13 @@ func (e *MarkHTMLElement) SLOT(v string) *MarkHTMLElement {
     }
     e.StringAttributes["slot"] = v
     return e
+}
+
+func (e *MarkHTMLElement) IfSLOT(cond bool, v string) *MarkHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SLOT(v)
 }
 
 func (e *MarkHTMLElement) RemoveSLOT(v string) *MarkHTMLElement {
@@ -538,6 +692,13 @@ func (e *MarkHTMLElement) SPELLCHECK(v string) *MarkHTMLElement {
     }
     e.StringAttributes["spellcheck"] = v
     return e
+}
+
+func (e *MarkHTMLElement) IfSPELLCHECK(cond bool, v string) *MarkHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SPELLCHECK(v)
 }
 
 func (e *MarkHTMLElement) RemoveSPELLCHECK(v string) *MarkHTMLElement {
@@ -558,6 +719,13 @@ func (e *MarkHTMLElement) STYLE(k,v string) *MarkHTMLElement {
     }
     kv.Add(k,v)
     return e
+}
+
+func (e *MarkHTMLElement) IfSTYLE(cond bool, k string) *MarkHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.STYLE(k, "")
 }
 
 func (e *MarkHTMLElement) RemoveSTYLE(k string) *MarkHTMLElement {
@@ -581,6 +749,13 @@ func (e *MarkHTMLElement) TABINDEX(v string) *MarkHTMLElement {
     return e
 }
 
+func (e *MarkHTMLElement) IfTABINDEX(cond bool, v string) *MarkHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TABINDEX(v)
+}
+
 func (e *MarkHTMLElement) RemoveTABINDEX(v string) *MarkHTMLElement {
     delete(e.StringAttributes, "tabindex")
     return e
@@ -595,6 +770,13 @@ func (e *MarkHTMLElement) TITLE(v string) *MarkHTMLElement {
     }
     e.StringAttributes["title"] = v
     return e
+}
+
+func (e *MarkHTMLElement) IfTITLE(cond bool, v string) *MarkHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TITLE(v)
 }
 
 func (e *MarkHTMLElement) RemoveTITLE(v string) *MarkHTMLElement {
@@ -612,6 +794,13 @@ func (e *MarkHTMLElement) TRANSLATE(v string) *MarkHTMLElement {
     }
     e.StringAttributes["translate"] = v
     return e
+}
+
+func (e *MarkHTMLElement) IfTRANSLATE(cond bool, v string) *MarkHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TRANSLATE(v)
 }
 
 func (e *MarkHTMLElement) RemoveTRANSLATE(v string) *MarkHTMLElement {

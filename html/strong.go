@@ -48,13 +48,13 @@ func (e *StrongHTMLElement) TextF(format string, args ...any) *StrongHTMLElement
     return e.Text(fmt.Sprintf(format, args...))
 }
 
-func (e *StrongHTMLElement) Raw(text string) *StrongHTMLElement {
-    e.Descendants = append(e.Descendants, Raw(text))
+func (e *StrongHTMLElement) Escaped(text string) *StrongHTMLElement {
+    e.Descendants = append(e.Descendants, Escaped(text))
     return e
 }
 
-func (e *StrongHTMLElement) RawF(format string, args ...any) *StrongHTMLElement {
-    return e.Raw(fmt.Sprintf(format, args...))
+func (e *StrongHTMLElement) EscapedF(format string, args ...any) *StrongHTMLElement {
+    return e.Escaped(fmt.Sprintf(format, args...))
 }
 
 func (e *StrongHTMLElement) CustomData(key, value string) *StrongHTMLElement {
@@ -87,6 +87,13 @@ func (e *StrongHTMLElement) ACCESSKEY(v string) *StrongHTMLElement {
     return e
 }
 
+func (e *StrongHTMLElement) IfACCESSKEY(cond bool, v string) *StrongHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ACCESSKEY(v)
+}
+
 func (e *StrongHTMLElement) RemoveACCESSKEY(v string) *StrongHTMLElement {
     delete(e.StringAttributes, "accesskey")
     return e
@@ -114,6 +121,13 @@ func (e *StrongHTMLElement) AUTOCAPITALIZE(v string) *StrongHTMLElement {
     return e
 }
 
+func (e *StrongHTMLElement) IfAUTOCAPITALIZE(cond bool, v string) *StrongHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.AUTOCAPITALIZE(v)
+}
+
 func (e *StrongHTMLElement) RemoveAUTOCAPITALIZE(v string) *StrongHTMLElement {
     delete(e.StringAttributes, "autocapitalize")
     return e
@@ -128,6 +142,13 @@ func (e *StrongHTMLElement) AUTOFOCUS() *StrongHTMLElement {
     }
     e.BoolAttributes["autofocus"] = struct{}{}
     return e
+}
+
+func (e *StrongHTMLElement) IfAUTOFOCUS(cond bool) *StrongHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.AUTOFOCUS()
 }
 
 func (e *StrongHTMLElement) RemoveAUTOFOCUS() *StrongHTMLElement {
@@ -161,6 +182,13 @@ func(e *StrongHTMLElement) CLASS(v string) *StrongHTMLElement {
     return e
 }
 
+func (e *StrongHTMLElement) IfCLASS(cond bool, v string) *StrongHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.CLASS(v)
+}
+
 func (e *StrongHTMLElement) SetCLASS(v string) *StrongHTMLElement {
     kv := NewSpaceDelimitedString()
     e.DelimitedStringAttributes["class"] = kv
@@ -190,6 +218,13 @@ func (e *StrongHTMLElement) CONTENTEDITABLE(v string) *StrongHTMLElement {
     return e
 }
 
+func (e *StrongHTMLElement) IfCONTENTEDITABLE(cond bool, v string) *StrongHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.CONTENTEDITABLE(v)
+}
+
 func (e *StrongHTMLElement) RemoveCONTENTEDITABLE(v string) *StrongHTMLElement {
     delete(e.StringAttributes, "contenteditable")
     return e
@@ -209,6 +244,13 @@ func (e *StrongHTMLElement) DIR(v string) *StrongHTMLElement {
     return e
 }
 
+func (e *StrongHTMLElement) IfDIR(cond bool, v string) *StrongHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.DIR(v)
+}
+
 func (e *StrongHTMLElement) RemoveDIR(v string) *StrongHTMLElement {
     delete(e.StringAttributes, "dir")
     return e
@@ -224,6 +266,13 @@ func (e *StrongHTMLElement) DRAGGABLE(v string) *StrongHTMLElement {
     }
     e.StringAttributes["draggable"] = v
     return e
+}
+
+func (e *StrongHTMLElement) IfDRAGGABLE(cond bool, v string) *StrongHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.DRAGGABLE(v)
 }
 
 func (e *StrongHTMLElement) RemoveDRAGGABLE(v string) *StrongHTMLElement {
@@ -255,6 +304,13 @@ func (e *StrongHTMLElement) ENTERKEYHINT(v string) *StrongHTMLElement {
     return e
 }
 
+func (e *StrongHTMLElement) IfENTERKEYHINT(cond bool, v string) *StrongHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ENTERKEYHINT(v)
+}
+
 func (e *StrongHTMLElement) RemoveENTERKEYHINT(v string) *StrongHTMLElement {
     delete(e.StringAttributes, "enterkeyhint")
     return e
@@ -274,6 +330,13 @@ func (e *StrongHTMLElement) HIDDEN(v string) *StrongHTMLElement {
     return e
 }
 
+func (e *StrongHTMLElement) IfHIDDEN(cond bool, v string) *StrongHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.HIDDEN(v)
+}
+
 func (e *StrongHTMLElement) RemoveHIDDEN(v string) *StrongHTMLElement {
     delete(e.StringAttributes, "hidden")
     return e
@@ -290,6 +353,13 @@ func (e *StrongHTMLElement) ID(v string) *StrongHTMLElement {
     return e
 }
 
+func (e *StrongHTMLElement) IfID(cond bool, v string) *StrongHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ID(v)
+}
+
 func (e *StrongHTMLElement) RemoveID(v string) *StrongHTMLElement {
     delete(e.StringAttributes, "id")
     return e
@@ -304,6 +374,13 @@ func (e *StrongHTMLElement) INERT() *StrongHTMLElement {
     }
     e.BoolAttributes["inert"] = struct{}{}
     return e
+}
+
+func (e *StrongHTMLElement) IfINERT(cond bool) *StrongHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.INERT()
 }
 
 func (e *StrongHTMLElement) RemoveINERT() *StrongHTMLElement {
@@ -347,6 +424,13 @@ func (e *StrongHTMLElement) INPUTMODE(v string) *StrongHTMLElement {
     return e
 }
 
+func (e *StrongHTMLElement) IfINPUTMODE(cond bool, v string) *StrongHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.INPUTMODE(v)
+}
+
 func (e *StrongHTMLElement) RemoveINPUTMODE(v string) *StrongHTMLElement {
     delete(e.StringAttributes, "inputmode")
     return e
@@ -364,6 +448,13 @@ func (e *StrongHTMLElement) IS(v string) *StrongHTMLElement {
     return e
 }
 
+func (e *StrongHTMLElement) IfIS(cond bool, v string) *StrongHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.IS(v)
+}
+
 func (e *StrongHTMLElement) RemoveIS(v string) *StrongHTMLElement {
     delete(e.StringAttributes, "is")
     return e
@@ -378,6 +469,13 @@ func (e *StrongHTMLElement) ITEMID(v string) *StrongHTMLElement {
     }
     e.StringAttributes["itemid"] = v
     return e
+}
+
+func (e *StrongHTMLElement) IfITEMID(cond bool, v string) *StrongHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMID(v)
 }
 
 func (e *StrongHTMLElement) RemoveITEMID(v string) *StrongHTMLElement {
@@ -398,6 +496,13 @@ func (e *StrongHTMLElement) ITEMPROP(v string) *StrongHTMLElement {
     return e
 }
 
+func (e *StrongHTMLElement) IfITEMPROP(cond bool, v string) *StrongHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMPROP(v)
+}
+
 func (e *StrongHTMLElement) RemoveITEMPROP(v string) *StrongHTMLElement {
     delete(e.StringAttributes, "itemprop")
     return e
@@ -414,6 +519,13 @@ func (e *StrongHTMLElement) ITEMREF(v string) *StrongHTMLElement {
     return e
 }
 
+func (e *StrongHTMLElement) IfITEMREF(cond bool, v string) *StrongHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMREF(v)
+}
+
 func (e *StrongHTMLElement) RemoveITEMREF(v string) *StrongHTMLElement {
     delete(e.StringAttributes, "itemref")
     return e
@@ -428,6 +540,13 @@ func (e *StrongHTMLElement) ITEMSCOPE() *StrongHTMLElement {
     }
     e.BoolAttributes["itemscope"] = struct{}{}
     return e
+}
+
+func (e *StrongHTMLElement) IfITEMSCOPE(cond bool) *StrongHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMSCOPE()
 }
 
 func (e *StrongHTMLElement) RemoveITEMSCOPE() *StrongHTMLElement {
@@ -457,6 +576,13 @@ func (e *StrongHTMLElement) ITEMTYPE(v string) *StrongHTMLElement {
     return e
 }
 
+func (e *StrongHTMLElement) IfITEMTYPE(cond bool, v string) *StrongHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMTYPE(v)
+}
+
 func (e *StrongHTMLElement) RemoveITEMTYPE(v string) *StrongHTMLElement {
     delete(e.StringAttributes, "itemtype")
     return e
@@ -470,6 +596,13 @@ func (e *StrongHTMLElement) LANG(v string) *StrongHTMLElement {
     }
     e.StringAttributes["lang"] = v
     return e
+}
+
+func (e *StrongHTMLElement) IfLANG(cond bool, v string) *StrongHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.LANG(v)
 }
 
 func (e *StrongHTMLElement) RemoveLANG(v string) *StrongHTMLElement {
@@ -486,6 +619,13 @@ func (e *StrongHTMLElement) NONCE(v string) *StrongHTMLElement {
     }
     e.StringAttributes["nonce"] = v
     return e
+}
+
+func (e *StrongHTMLElement) IfNONCE(cond bool, v string) *StrongHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.NONCE(v)
 }
 
 func (e *StrongHTMLElement) RemoveNONCE(v string) *StrongHTMLElement {
@@ -507,6 +647,13 @@ func (e *StrongHTMLElement) POPOVER(v string) *StrongHTMLElement {
     return e
 }
 
+func (e *StrongHTMLElement) IfPOPOVER(cond bool, v string) *StrongHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.POPOVER(v)
+}
+
 func (e *StrongHTMLElement) RemovePOPOVER(v string) *StrongHTMLElement {
     delete(e.StringAttributes, "popover")
     return e
@@ -521,6 +668,13 @@ func (e *StrongHTMLElement) SLOT(v string) *StrongHTMLElement {
     }
     e.StringAttributes["slot"] = v
     return e
+}
+
+func (e *StrongHTMLElement) IfSLOT(cond bool, v string) *StrongHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SLOT(v)
 }
 
 func (e *StrongHTMLElement) RemoveSLOT(v string) *StrongHTMLElement {
@@ -538,6 +692,13 @@ func (e *StrongHTMLElement) SPELLCHECK(v string) *StrongHTMLElement {
     }
     e.StringAttributes["spellcheck"] = v
     return e
+}
+
+func (e *StrongHTMLElement) IfSPELLCHECK(cond bool, v string) *StrongHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SPELLCHECK(v)
 }
 
 func (e *StrongHTMLElement) RemoveSPELLCHECK(v string) *StrongHTMLElement {
@@ -558,6 +719,13 @@ func (e *StrongHTMLElement) STYLE(k,v string) *StrongHTMLElement {
     }
     kv.Add(k,v)
     return e
+}
+
+func (e *StrongHTMLElement) IfSTYLE(cond bool, k string) *StrongHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.STYLE(k, "")
 }
 
 func (e *StrongHTMLElement) RemoveSTYLE(k string) *StrongHTMLElement {
@@ -581,6 +749,13 @@ func (e *StrongHTMLElement) TABINDEX(v string) *StrongHTMLElement {
     return e
 }
 
+func (e *StrongHTMLElement) IfTABINDEX(cond bool, v string) *StrongHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TABINDEX(v)
+}
+
 func (e *StrongHTMLElement) RemoveTABINDEX(v string) *StrongHTMLElement {
     delete(e.StringAttributes, "tabindex")
     return e
@@ -595,6 +770,13 @@ func (e *StrongHTMLElement) TITLE(v string) *StrongHTMLElement {
     }
     e.StringAttributes["title"] = v
     return e
+}
+
+func (e *StrongHTMLElement) IfTITLE(cond bool, v string) *StrongHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TITLE(v)
 }
 
 func (e *StrongHTMLElement) RemoveTITLE(v string) *StrongHTMLElement {
@@ -612,6 +794,13 @@ func (e *StrongHTMLElement) TRANSLATE(v string) *StrongHTMLElement {
     }
     e.StringAttributes["translate"] = v
     return e
+}
+
+func (e *StrongHTMLElement) IfTRANSLATE(cond bool, v string) *StrongHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TRANSLATE(v)
 }
 
 func (e *StrongHTMLElement) RemoveTRANSLATE(v string) *StrongHTMLElement {

@@ -48,13 +48,13 @@ func (e *LiHTMLElement) TextF(format string, args ...any) *LiHTMLElement {
     return e.Text(fmt.Sprintf(format, args...))
 }
 
-func (e *LiHTMLElement) Raw(text string) *LiHTMLElement {
-    e.Descendants = append(e.Descendants, Raw(text))
+func (e *LiHTMLElement) Escaped(text string) *LiHTMLElement {
+    e.Descendants = append(e.Descendants, Escaped(text))
     return e
 }
 
-func (e *LiHTMLElement) RawF(format string, args ...any) *LiHTMLElement {
-    return e.Raw(fmt.Sprintf(format, args...))
+func (e *LiHTMLElement) EscapedF(format string, args ...any) *LiHTMLElement {
+    return e.Escaped(fmt.Sprintf(format, args...))
 }
 
 func (e *LiHTMLElement) CustomData(key, value string) *LiHTMLElement {
@@ -87,6 +87,13 @@ func (e *LiHTMLElement) ACCESSKEY(v string) *LiHTMLElement {
     return e
 }
 
+func (e *LiHTMLElement) IfACCESSKEY(cond bool, v string) *LiHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ACCESSKEY(v)
+}
+
 func (e *LiHTMLElement) RemoveACCESSKEY(v string) *LiHTMLElement {
     delete(e.StringAttributes, "accesskey")
     return e
@@ -114,6 +121,13 @@ func (e *LiHTMLElement) AUTOCAPITALIZE(v string) *LiHTMLElement {
     return e
 }
 
+func (e *LiHTMLElement) IfAUTOCAPITALIZE(cond bool, v string) *LiHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.AUTOCAPITALIZE(v)
+}
+
 func (e *LiHTMLElement) RemoveAUTOCAPITALIZE(v string) *LiHTMLElement {
     delete(e.StringAttributes, "autocapitalize")
     return e
@@ -128,6 +142,13 @@ func (e *LiHTMLElement) AUTOFOCUS() *LiHTMLElement {
     }
     e.BoolAttributes["autofocus"] = struct{}{}
     return e
+}
+
+func (e *LiHTMLElement) IfAUTOFOCUS(cond bool) *LiHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.AUTOFOCUS()
 }
 
 func (e *LiHTMLElement) RemoveAUTOFOCUS() *LiHTMLElement {
@@ -161,6 +182,13 @@ func(e *LiHTMLElement) CLASS(v string) *LiHTMLElement {
     return e
 }
 
+func (e *LiHTMLElement) IfCLASS(cond bool, v string) *LiHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.CLASS(v)
+}
+
 func (e *LiHTMLElement) SetCLASS(v string) *LiHTMLElement {
     kv := NewSpaceDelimitedString()
     e.DelimitedStringAttributes["class"] = kv
@@ -190,6 +218,13 @@ func (e *LiHTMLElement) CONTENTEDITABLE(v string) *LiHTMLElement {
     return e
 }
 
+func (e *LiHTMLElement) IfCONTENTEDITABLE(cond bool, v string) *LiHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.CONTENTEDITABLE(v)
+}
+
 func (e *LiHTMLElement) RemoveCONTENTEDITABLE(v string) *LiHTMLElement {
     delete(e.StringAttributes, "contenteditable")
     return e
@@ -209,6 +244,13 @@ func (e *LiHTMLElement) DIR(v string) *LiHTMLElement {
     return e
 }
 
+func (e *LiHTMLElement) IfDIR(cond bool, v string) *LiHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.DIR(v)
+}
+
 func (e *LiHTMLElement) RemoveDIR(v string) *LiHTMLElement {
     delete(e.StringAttributes, "dir")
     return e
@@ -224,6 +266,13 @@ func (e *LiHTMLElement) DRAGGABLE(v string) *LiHTMLElement {
     }
     e.StringAttributes["draggable"] = v
     return e
+}
+
+func (e *LiHTMLElement) IfDRAGGABLE(cond bool, v string) *LiHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.DRAGGABLE(v)
 }
 
 func (e *LiHTMLElement) RemoveDRAGGABLE(v string) *LiHTMLElement {
@@ -255,6 +304,13 @@ func (e *LiHTMLElement) ENTERKEYHINT(v string) *LiHTMLElement {
     return e
 }
 
+func (e *LiHTMLElement) IfENTERKEYHINT(cond bool, v string) *LiHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ENTERKEYHINT(v)
+}
+
 func (e *LiHTMLElement) RemoveENTERKEYHINT(v string) *LiHTMLElement {
     delete(e.StringAttributes, "enterkeyhint")
     return e
@@ -274,6 +330,13 @@ func (e *LiHTMLElement) HIDDEN(v string) *LiHTMLElement {
     return e
 }
 
+func (e *LiHTMLElement) IfHIDDEN(cond bool, v string) *LiHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.HIDDEN(v)
+}
+
 func (e *LiHTMLElement) RemoveHIDDEN(v string) *LiHTMLElement {
     delete(e.StringAttributes, "hidden")
     return e
@@ -290,6 +353,13 @@ func (e *LiHTMLElement) ID(v string) *LiHTMLElement {
     return e
 }
 
+func (e *LiHTMLElement) IfID(cond bool, v string) *LiHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ID(v)
+}
+
 func (e *LiHTMLElement) RemoveID(v string) *LiHTMLElement {
     delete(e.StringAttributes, "id")
     return e
@@ -304,6 +374,13 @@ func (e *LiHTMLElement) INERT() *LiHTMLElement {
     }
     e.BoolAttributes["inert"] = struct{}{}
     return e
+}
+
+func (e *LiHTMLElement) IfINERT(cond bool) *LiHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.INERT()
 }
 
 func (e *LiHTMLElement) RemoveINERT() *LiHTMLElement {
@@ -347,6 +424,13 @@ func (e *LiHTMLElement) INPUTMODE(v string) *LiHTMLElement {
     return e
 }
 
+func (e *LiHTMLElement) IfINPUTMODE(cond bool, v string) *LiHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.INPUTMODE(v)
+}
+
 func (e *LiHTMLElement) RemoveINPUTMODE(v string) *LiHTMLElement {
     delete(e.StringAttributes, "inputmode")
     return e
@@ -364,6 +448,13 @@ func (e *LiHTMLElement) IS(v string) *LiHTMLElement {
     return e
 }
 
+func (e *LiHTMLElement) IfIS(cond bool, v string) *LiHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.IS(v)
+}
+
 func (e *LiHTMLElement) RemoveIS(v string) *LiHTMLElement {
     delete(e.StringAttributes, "is")
     return e
@@ -378,6 +469,13 @@ func (e *LiHTMLElement) ITEMID(v string) *LiHTMLElement {
     }
     e.StringAttributes["itemid"] = v
     return e
+}
+
+func (e *LiHTMLElement) IfITEMID(cond bool, v string) *LiHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMID(v)
 }
 
 func (e *LiHTMLElement) RemoveITEMID(v string) *LiHTMLElement {
@@ -398,6 +496,13 @@ func (e *LiHTMLElement) ITEMPROP(v string) *LiHTMLElement {
     return e
 }
 
+func (e *LiHTMLElement) IfITEMPROP(cond bool, v string) *LiHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMPROP(v)
+}
+
 func (e *LiHTMLElement) RemoveITEMPROP(v string) *LiHTMLElement {
     delete(e.StringAttributes, "itemprop")
     return e
@@ -414,6 +519,13 @@ func (e *LiHTMLElement) ITEMREF(v string) *LiHTMLElement {
     return e
 }
 
+func (e *LiHTMLElement) IfITEMREF(cond bool, v string) *LiHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMREF(v)
+}
+
 func (e *LiHTMLElement) RemoveITEMREF(v string) *LiHTMLElement {
     delete(e.StringAttributes, "itemref")
     return e
@@ -428,6 +540,13 @@ func (e *LiHTMLElement) ITEMSCOPE() *LiHTMLElement {
     }
     e.BoolAttributes["itemscope"] = struct{}{}
     return e
+}
+
+func (e *LiHTMLElement) IfITEMSCOPE(cond bool) *LiHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMSCOPE()
 }
 
 func (e *LiHTMLElement) RemoveITEMSCOPE() *LiHTMLElement {
@@ -457,6 +576,13 @@ func (e *LiHTMLElement) ITEMTYPE(v string) *LiHTMLElement {
     return e
 }
 
+func (e *LiHTMLElement) IfITEMTYPE(cond bool, v string) *LiHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMTYPE(v)
+}
+
 func (e *LiHTMLElement) RemoveITEMTYPE(v string) *LiHTMLElement {
     delete(e.StringAttributes, "itemtype")
     return e
@@ -470,6 +596,13 @@ func (e *LiHTMLElement) LANG(v string) *LiHTMLElement {
     }
     e.StringAttributes["lang"] = v
     return e
+}
+
+func (e *LiHTMLElement) IfLANG(cond bool, v string) *LiHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.LANG(v)
 }
 
 func (e *LiHTMLElement) RemoveLANG(v string) *LiHTMLElement {
@@ -486,6 +619,13 @@ func (e *LiHTMLElement) NONCE(v string) *LiHTMLElement {
     }
     e.StringAttributes["nonce"] = v
     return e
+}
+
+func (e *LiHTMLElement) IfNONCE(cond bool, v string) *LiHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.NONCE(v)
 }
 
 func (e *LiHTMLElement) RemoveNONCE(v string) *LiHTMLElement {
@@ -507,6 +647,13 @@ func (e *LiHTMLElement) POPOVER(v string) *LiHTMLElement {
     return e
 }
 
+func (e *LiHTMLElement) IfPOPOVER(cond bool, v string) *LiHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.POPOVER(v)
+}
+
 func (e *LiHTMLElement) RemovePOPOVER(v string) *LiHTMLElement {
     delete(e.StringAttributes, "popover")
     return e
@@ -521,6 +668,13 @@ func (e *LiHTMLElement) SLOT(v string) *LiHTMLElement {
     }
     e.StringAttributes["slot"] = v
     return e
+}
+
+func (e *LiHTMLElement) IfSLOT(cond bool, v string) *LiHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SLOT(v)
 }
 
 func (e *LiHTMLElement) RemoveSLOT(v string) *LiHTMLElement {
@@ -538,6 +692,13 @@ func (e *LiHTMLElement) SPELLCHECK(v string) *LiHTMLElement {
     }
     e.StringAttributes["spellcheck"] = v
     return e
+}
+
+func (e *LiHTMLElement) IfSPELLCHECK(cond bool, v string) *LiHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SPELLCHECK(v)
 }
 
 func (e *LiHTMLElement) RemoveSPELLCHECK(v string) *LiHTMLElement {
@@ -558,6 +719,13 @@ func (e *LiHTMLElement) STYLE(k,v string) *LiHTMLElement {
     }
     kv.Add(k,v)
     return e
+}
+
+func (e *LiHTMLElement) IfSTYLE(cond bool, k string) *LiHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.STYLE(k, "")
 }
 
 func (e *LiHTMLElement) RemoveSTYLE(k string) *LiHTMLElement {
@@ -581,6 +749,13 @@ func (e *LiHTMLElement) TABINDEX(v string) *LiHTMLElement {
     return e
 }
 
+func (e *LiHTMLElement) IfTABINDEX(cond bool, v string) *LiHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TABINDEX(v)
+}
+
 func (e *LiHTMLElement) RemoveTABINDEX(v string) *LiHTMLElement {
     delete(e.StringAttributes, "tabindex")
     return e
@@ -595,6 +770,13 @@ func (e *LiHTMLElement) TITLE(v string) *LiHTMLElement {
     }
     e.StringAttributes["title"] = v
     return e
+}
+
+func (e *LiHTMLElement) IfTITLE(cond bool, v string) *LiHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TITLE(v)
 }
 
 func (e *LiHTMLElement) RemoveTITLE(v string) *LiHTMLElement {
@@ -614,6 +796,13 @@ func (e *LiHTMLElement) TRANSLATE(v string) *LiHTMLElement {
     return e
 }
 
+func (e *LiHTMLElement) IfTRANSLATE(cond bool, v string) *LiHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TRANSLATE(v)
+}
+
 func (e *LiHTMLElement) RemoveTRANSLATE(v string) *LiHTMLElement {
     delete(e.StringAttributes, "translate")
     return e
@@ -628,6 +817,13 @@ func (e *LiHTMLElement) VALUE(v string) *LiHTMLElement {
     }
     e.StringAttributes["value"] = v
     return e
+}
+
+func (e *LiHTMLElement) IfVALUE(cond bool, v string) *LiHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.VALUE(v)
 }
 
 func (e *LiHTMLElement) RemoveVALUE(v string) *LiHTMLElement {

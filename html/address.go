@@ -48,13 +48,13 @@ func (e *AddressHTMLElement) TextF(format string, args ...any) *AddressHTMLEleme
     return e.Text(fmt.Sprintf(format, args...))
 }
 
-func (e *AddressHTMLElement) Raw(text string) *AddressHTMLElement {
-    e.Descendants = append(e.Descendants, Raw(text))
+func (e *AddressHTMLElement) Escaped(text string) *AddressHTMLElement {
+    e.Descendants = append(e.Descendants, Escaped(text))
     return e
 }
 
-func (e *AddressHTMLElement) RawF(format string, args ...any) *AddressHTMLElement {
-    return e.Raw(fmt.Sprintf(format, args...))
+func (e *AddressHTMLElement) EscapedF(format string, args ...any) *AddressHTMLElement {
+    return e.Escaped(fmt.Sprintf(format, args...))
 }
 
 func (e *AddressHTMLElement) CustomData(key, value string) *AddressHTMLElement {
@@ -87,6 +87,13 @@ func (e *AddressHTMLElement) ACCESSKEY(v string) *AddressHTMLElement {
     return e
 }
 
+func (e *AddressHTMLElement) IfACCESSKEY(cond bool, v string) *AddressHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ACCESSKEY(v)
+}
+
 func (e *AddressHTMLElement) RemoveACCESSKEY(v string) *AddressHTMLElement {
     delete(e.StringAttributes, "accesskey")
     return e
@@ -114,6 +121,13 @@ func (e *AddressHTMLElement) AUTOCAPITALIZE(v string) *AddressHTMLElement {
     return e
 }
 
+func (e *AddressHTMLElement) IfAUTOCAPITALIZE(cond bool, v string) *AddressHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.AUTOCAPITALIZE(v)
+}
+
 func (e *AddressHTMLElement) RemoveAUTOCAPITALIZE(v string) *AddressHTMLElement {
     delete(e.StringAttributes, "autocapitalize")
     return e
@@ -128,6 +142,13 @@ func (e *AddressHTMLElement) AUTOFOCUS() *AddressHTMLElement {
     }
     e.BoolAttributes["autofocus"] = struct{}{}
     return e
+}
+
+func (e *AddressHTMLElement) IfAUTOFOCUS(cond bool) *AddressHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.AUTOFOCUS()
 }
 
 func (e *AddressHTMLElement) RemoveAUTOFOCUS() *AddressHTMLElement {
@@ -161,6 +182,13 @@ func(e *AddressHTMLElement) CLASS(v string) *AddressHTMLElement {
     return e
 }
 
+func (e *AddressHTMLElement) IfCLASS(cond bool, v string) *AddressHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.CLASS(v)
+}
+
 func (e *AddressHTMLElement) SetCLASS(v string) *AddressHTMLElement {
     kv := NewSpaceDelimitedString()
     e.DelimitedStringAttributes["class"] = kv
@@ -190,6 +218,13 @@ func (e *AddressHTMLElement) CONTENTEDITABLE(v string) *AddressHTMLElement {
     return e
 }
 
+func (e *AddressHTMLElement) IfCONTENTEDITABLE(cond bool, v string) *AddressHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.CONTENTEDITABLE(v)
+}
+
 func (e *AddressHTMLElement) RemoveCONTENTEDITABLE(v string) *AddressHTMLElement {
     delete(e.StringAttributes, "contenteditable")
     return e
@@ -209,6 +244,13 @@ func (e *AddressHTMLElement) DIR(v string) *AddressHTMLElement {
     return e
 }
 
+func (e *AddressHTMLElement) IfDIR(cond bool, v string) *AddressHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.DIR(v)
+}
+
 func (e *AddressHTMLElement) RemoveDIR(v string) *AddressHTMLElement {
     delete(e.StringAttributes, "dir")
     return e
@@ -224,6 +266,13 @@ func (e *AddressHTMLElement) DRAGGABLE(v string) *AddressHTMLElement {
     }
     e.StringAttributes["draggable"] = v
     return e
+}
+
+func (e *AddressHTMLElement) IfDRAGGABLE(cond bool, v string) *AddressHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.DRAGGABLE(v)
 }
 
 func (e *AddressHTMLElement) RemoveDRAGGABLE(v string) *AddressHTMLElement {
@@ -255,6 +304,13 @@ func (e *AddressHTMLElement) ENTERKEYHINT(v string) *AddressHTMLElement {
     return e
 }
 
+func (e *AddressHTMLElement) IfENTERKEYHINT(cond bool, v string) *AddressHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ENTERKEYHINT(v)
+}
+
 func (e *AddressHTMLElement) RemoveENTERKEYHINT(v string) *AddressHTMLElement {
     delete(e.StringAttributes, "enterkeyhint")
     return e
@@ -274,6 +330,13 @@ func (e *AddressHTMLElement) HIDDEN(v string) *AddressHTMLElement {
     return e
 }
 
+func (e *AddressHTMLElement) IfHIDDEN(cond bool, v string) *AddressHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.HIDDEN(v)
+}
+
 func (e *AddressHTMLElement) RemoveHIDDEN(v string) *AddressHTMLElement {
     delete(e.StringAttributes, "hidden")
     return e
@@ -290,6 +353,13 @@ func (e *AddressHTMLElement) ID(v string) *AddressHTMLElement {
     return e
 }
 
+func (e *AddressHTMLElement) IfID(cond bool, v string) *AddressHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ID(v)
+}
+
 func (e *AddressHTMLElement) RemoveID(v string) *AddressHTMLElement {
     delete(e.StringAttributes, "id")
     return e
@@ -304,6 +374,13 @@ func (e *AddressHTMLElement) INERT() *AddressHTMLElement {
     }
     e.BoolAttributes["inert"] = struct{}{}
     return e
+}
+
+func (e *AddressHTMLElement) IfINERT(cond bool) *AddressHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.INERT()
 }
 
 func (e *AddressHTMLElement) RemoveINERT() *AddressHTMLElement {
@@ -347,6 +424,13 @@ func (e *AddressHTMLElement) INPUTMODE(v string) *AddressHTMLElement {
     return e
 }
 
+func (e *AddressHTMLElement) IfINPUTMODE(cond bool, v string) *AddressHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.INPUTMODE(v)
+}
+
 func (e *AddressHTMLElement) RemoveINPUTMODE(v string) *AddressHTMLElement {
     delete(e.StringAttributes, "inputmode")
     return e
@@ -364,6 +448,13 @@ func (e *AddressHTMLElement) IS(v string) *AddressHTMLElement {
     return e
 }
 
+func (e *AddressHTMLElement) IfIS(cond bool, v string) *AddressHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.IS(v)
+}
+
 func (e *AddressHTMLElement) RemoveIS(v string) *AddressHTMLElement {
     delete(e.StringAttributes, "is")
     return e
@@ -378,6 +469,13 @@ func (e *AddressHTMLElement) ITEMID(v string) *AddressHTMLElement {
     }
     e.StringAttributes["itemid"] = v
     return e
+}
+
+func (e *AddressHTMLElement) IfITEMID(cond bool, v string) *AddressHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMID(v)
 }
 
 func (e *AddressHTMLElement) RemoveITEMID(v string) *AddressHTMLElement {
@@ -398,6 +496,13 @@ func (e *AddressHTMLElement) ITEMPROP(v string) *AddressHTMLElement {
     return e
 }
 
+func (e *AddressHTMLElement) IfITEMPROP(cond bool, v string) *AddressHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMPROP(v)
+}
+
 func (e *AddressHTMLElement) RemoveITEMPROP(v string) *AddressHTMLElement {
     delete(e.StringAttributes, "itemprop")
     return e
@@ -414,6 +519,13 @@ func (e *AddressHTMLElement) ITEMREF(v string) *AddressHTMLElement {
     return e
 }
 
+func (e *AddressHTMLElement) IfITEMREF(cond bool, v string) *AddressHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMREF(v)
+}
+
 func (e *AddressHTMLElement) RemoveITEMREF(v string) *AddressHTMLElement {
     delete(e.StringAttributes, "itemref")
     return e
@@ -428,6 +540,13 @@ func (e *AddressHTMLElement) ITEMSCOPE() *AddressHTMLElement {
     }
     e.BoolAttributes["itemscope"] = struct{}{}
     return e
+}
+
+func (e *AddressHTMLElement) IfITEMSCOPE(cond bool) *AddressHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMSCOPE()
 }
 
 func (e *AddressHTMLElement) RemoveITEMSCOPE() *AddressHTMLElement {
@@ -457,6 +576,13 @@ func (e *AddressHTMLElement) ITEMTYPE(v string) *AddressHTMLElement {
     return e
 }
 
+func (e *AddressHTMLElement) IfITEMTYPE(cond bool, v string) *AddressHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMTYPE(v)
+}
+
 func (e *AddressHTMLElement) RemoveITEMTYPE(v string) *AddressHTMLElement {
     delete(e.StringAttributes, "itemtype")
     return e
@@ -470,6 +596,13 @@ func (e *AddressHTMLElement) LANG(v string) *AddressHTMLElement {
     }
     e.StringAttributes["lang"] = v
     return e
+}
+
+func (e *AddressHTMLElement) IfLANG(cond bool, v string) *AddressHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.LANG(v)
 }
 
 func (e *AddressHTMLElement) RemoveLANG(v string) *AddressHTMLElement {
@@ -486,6 +619,13 @@ func (e *AddressHTMLElement) NONCE(v string) *AddressHTMLElement {
     }
     e.StringAttributes["nonce"] = v
     return e
+}
+
+func (e *AddressHTMLElement) IfNONCE(cond bool, v string) *AddressHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.NONCE(v)
 }
 
 func (e *AddressHTMLElement) RemoveNONCE(v string) *AddressHTMLElement {
@@ -507,6 +647,13 @@ func (e *AddressHTMLElement) POPOVER(v string) *AddressHTMLElement {
     return e
 }
 
+func (e *AddressHTMLElement) IfPOPOVER(cond bool, v string) *AddressHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.POPOVER(v)
+}
+
 func (e *AddressHTMLElement) RemovePOPOVER(v string) *AddressHTMLElement {
     delete(e.StringAttributes, "popover")
     return e
@@ -521,6 +668,13 @@ func (e *AddressHTMLElement) SLOT(v string) *AddressHTMLElement {
     }
     e.StringAttributes["slot"] = v
     return e
+}
+
+func (e *AddressHTMLElement) IfSLOT(cond bool, v string) *AddressHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SLOT(v)
 }
 
 func (e *AddressHTMLElement) RemoveSLOT(v string) *AddressHTMLElement {
@@ -538,6 +692,13 @@ func (e *AddressHTMLElement) SPELLCHECK(v string) *AddressHTMLElement {
     }
     e.StringAttributes["spellcheck"] = v
     return e
+}
+
+func (e *AddressHTMLElement) IfSPELLCHECK(cond bool, v string) *AddressHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SPELLCHECK(v)
 }
 
 func (e *AddressHTMLElement) RemoveSPELLCHECK(v string) *AddressHTMLElement {
@@ -558,6 +719,13 @@ func (e *AddressHTMLElement) STYLE(k,v string) *AddressHTMLElement {
     }
     kv.Add(k,v)
     return e
+}
+
+func (e *AddressHTMLElement) IfSTYLE(cond bool, k string) *AddressHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.STYLE(k, "")
 }
 
 func (e *AddressHTMLElement) RemoveSTYLE(k string) *AddressHTMLElement {
@@ -581,6 +749,13 @@ func (e *AddressHTMLElement) TABINDEX(v string) *AddressHTMLElement {
     return e
 }
 
+func (e *AddressHTMLElement) IfTABINDEX(cond bool, v string) *AddressHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TABINDEX(v)
+}
+
 func (e *AddressHTMLElement) RemoveTABINDEX(v string) *AddressHTMLElement {
     delete(e.StringAttributes, "tabindex")
     return e
@@ -595,6 +770,13 @@ func (e *AddressHTMLElement) TITLE(v string) *AddressHTMLElement {
     }
     e.StringAttributes["title"] = v
     return e
+}
+
+func (e *AddressHTMLElement) IfTITLE(cond bool, v string) *AddressHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TITLE(v)
 }
 
 func (e *AddressHTMLElement) RemoveTITLE(v string) *AddressHTMLElement {
@@ -612,6 +794,13 @@ func (e *AddressHTMLElement) TRANSLATE(v string) *AddressHTMLElement {
     }
     e.StringAttributes["translate"] = v
     return e
+}
+
+func (e *AddressHTMLElement) IfTRANSLATE(cond bool, v string) *AddressHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TRANSLATE(v)
 }
 
 func (e *AddressHTMLElement) RemoveTRANSLATE(v string) *AddressHTMLElement {

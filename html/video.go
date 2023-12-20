@@ -48,13 +48,13 @@ func (e *VideoHTMLElement) TextF(format string, args ...any) *VideoHTMLElement {
     return e.Text(fmt.Sprintf(format, args...))
 }
 
-func (e *VideoHTMLElement) Raw(text string) *VideoHTMLElement {
-    e.Descendants = append(e.Descendants, Raw(text))
+func (e *VideoHTMLElement) Escaped(text string) *VideoHTMLElement {
+    e.Descendants = append(e.Descendants, Escaped(text))
     return e
 }
 
-func (e *VideoHTMLElement) RawF(format string, args ...any) *VideoHTMLElement {
-    return e.Raw(fmt.Sprintf(format, args...))
+func (e *VideoHTMLElement) EscapedF(format string, args ...any) *VideoHTMLElement {
+    return e.Escaped(fmt.Sprintf(format, args...))
 }
 
 func (e *VideoHTMLElement) CustomData(key, value string) *VideoHTMLElement {
@@ -87,6 +87,13 @@ func (e *VideoHTMLElement) ACCESSKEY(v string) *VideoHTMLElement {
     return e
 }
 
+func (e *VideoHTMLElement) IfACCESSKEY(cond bool, v string) *VideoHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ACCESSKEY(v)
+}
+
 func (e *VideoHTMLElement) RemoveACCESSKEY(v string) *VideoHTMLElement {
     delete(e.StringAttributes, "accesskey")
     return e
@@ -114,6 +121,13 @@ func (e *VideoHTMLElement) AUTOCAPITALIZE(v string) *VideoHTMLElement {
     return e
 }
 
+func (e *VideoHTMLElement) IfAUTOCAPITALIZE(cond bool, v string) *VideoHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.AUTOCAPITALIZE(v)
+}
+
 func (e *VideoHTMLElement) RemoveAUTOCAPITALIZE(v string) *VideoHTMLElement {
     delete(e.StringAttributes, "autocapitalize")
     return e
@@ -128,6 +142,13 @@ func (e *VideoHTMLElement) AUTOFOCUS() *VideoHTMLElement {
     }
     e.BoolAttributes["autofocus"] = struct{}{}
     return e
+}
+
+func (e *VideoHTMLElement) IfAUTOFOCUS(cond bool) *VideoHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.AUTOFOCUS()
 }
 
 func (e *VideoHTMLElement) RemoveAUTOFOCUS() *VideoHTMLElement {
@@ -154,6 +175,13 @@ func (e *VideoHTMLElement) AUTOPLAY() *VideoHTMLElement {
     }
     e.BoolAttributes["autoplay"] = struct{}{}
     return e
+}
+
+func (e *VideoHTMLElement) IfAUTOPLAY(cond bool) *VideoHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.AUTOPLAY()
 }
 
 func (e *VideoHTMLElement) RemoveAUTOPLAY() *VideoHTMLElement {
@@ -187,6 +215,13 @@ func(e *VideoHTMLElement) CLASS(v string) *VideoHTMLElement {
     return e
 }
 
+func (e *VideoHTMLElement) IfCLASS(cond bool, v string) *VideoHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.CLASS(v)
+}
+
 func (e *VideoHTMLElement) SetCLASS(v string) *VideoHTMLElement {
     kv := NewSpaceDelimitedString()
     e.DelimitedStringAttributes["class"] = kv
@@ -216,6 +251,13 @@ func (e *VideoHTMLElement) CONTENTEDITABLE(v string) *VideoHTMLElement {
     return e
 }
 
+func (e *VideoHTMLElement) IfCONTENTEDITABLE(cond bool, v string) *VideoHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.CONTENTEDITABLE(v)
+}
+
 func (e *VideoHTMLElement) RemoveCONTENTEDITABLE(v string) *VideoHTMLElement {
     delete(e.StringAttributes, "contenteditable")
     return e
@@ -230,6 +272,13 @@ func (e *VideoHTMLElement) CONTROLS() *VideoHTMLElement {
     }
     e.BoolAttributes["controls"] = struct{}{}
     return e
+}
+
+func (e *VideoHTMLElement) IfCONTROLS(cond bool) *VideoHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.CONTROLS()
 }
 
 func (e *VideoHTMLElement) RemoveCONTROLS() *VideoHTMLElement {
@@ -261,6 +310,13 @@ func (e *VideoHTMLElement) CROSSORIGIN(v string) *VideoHTMLElement {
     return e
 }
 
+func (e *VideoHTMLElement) IfCROSSORIGIN(cond bool, v string) *VideoHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.CROSSORIGIN(v)
+}
+
 func (e *VideoHTMLElement) RemoveCROSSORIGIN(v string) *VideoHTMLElement {
     delete(e.StringAttributes, "crossorigin")
     return e
@@ -280,6 +336,13 @@ func (e *VideoHTMLElement) DIR(v string) *VideoHTMLElement {
     return e
 }
 
+func (e *VideoHTMLElement) IfDIR(cond bool, v string) *VideoHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.DIR(v)
+}
+
 func (e *VideoHTMLElement) RemoveDIR(v string) *VideoHTMLElement {
     delete(e.StringAttributes, "dir")
     return e
@@ -295,6 +358,13 @@ func (e *VideoHTMLElement) DRAGGABLE(v string) *VideoHTMLElement {
     }
     e.StringAttributes["draggable"] = v
     return e
+}
+
+func (e *VideoHTMLElement) IfDRAGGABLE(cond bool, v string) *VideoHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.DRAGGABLE(v)
 }
 
 func (e *VideoHTMLElement) RemoveDRAGGABLE(v string) *VideoHTMLElement {
@@ -326,6 +396,13 @@ func (e *VideoHTMLElement) ENTERKEYHINT(v string) *VideoHTMLElement {
     return e
 }
 
+func (e *VideoHTMLElement) IfENTERKEYHINT(cond bool, v string) *VideoHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ENTERKEYHINT(v)
+}
+
 func (e *VideoHTMLElement) RemoveENTERKEYHINT(v string) *VideoHTMLElement {
     delete(e.StringAttributes, "enterkeyhint")
     return e
@@ -340,6 +417,13 @@ func (e *VideoHTMLElement) HEIGHT(v string) *VideoHTMLElement {
     }
     e.StringAttributes["height"] = v
     return e
+}
+
+func (e *VideoHTMLElement) IfHEIGHT(cond bool, v string) *VideoHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.HEIGHT(v)
 }
 
 func (e *VideoHTMLElement) RemoveHEIGHT(v string) *VideoHTMLElement {
@@ -361,6 +445,13 @@ func (e *VideoHTMLElement) HIDDEN(v string) *VideoHTMLElement {
     return e
 }
 
+func (e *VideoHTMLElement) IfHIDDEN(cond bool, v string) *VideoHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.HIDDEN(v)
+}
+
 func (e *VideoHTMLElement) RemoveHIDDEN(v string) *VideoHTMLElement {
     delete(e.StringAttributes, "hidden")
     return e
@@ -377,6 +468,13 @@ func (e *VideoHTMLElement) ID(v string) *VideoHTMLElement {
     return e
 }
 
+func (e *VideoHTMLElement) IfID(cond bool, v string) *VideoHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ID(v)
+}
+
 func (e *VideoHTMLElement) RemoveID(v string) *VideoHTMLElement {
     delete(e.StringAttributes, "id")
     return e
@@ -391,6 +489,13 @@ func (e *VideoHTMLElement) INERT() *VideoHTMLElement {
     }
     e.BoolAttributes["inert"] = struct{}{}
     return e
+}
+
+func (e *VideoHTMLElement) IfINERT(cond bool) *VideoHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.INERT()
 }
 
 func (e *VideoHTMLElement) RemoveINERT() *VideoHTMLElement {
@@ -434,6 +539,13 @@ func (e *VideoHTMLElement) INPUTMODE(v string) *VideoHTMLElement {
     return e
 }
 
+func (e *VideoHTMLElement) IfINPUTMODE(cond bool, v string) *VideoHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.INPUTMODE(v)
+}
+
 func (e *VideoHTMLElement) RemoveINPUTMODE(v string) *VideoHTMLElement {
     delete(e.StringAttributes, "inputmode")
     return e
@@ -451,6 +563,13 @@ func (e *VideoHTMLElement) IS(v string) *VideoHTMLElement {
     return e
 }
 
+func (e *VideoHTMLElement) IfIS(cond bool, v string) *VideoHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.IS(v)
+}
+
 func (e *VideoHTMLElement) RemoveIS(v string) *VideoHTMLElement {
     delete(e.StringAttributes, "is")
     return e
@@ -465,6 +584,13 @@ func (e *VideoHTMLElement) ITEMID(v string) *VideoHTMLElement {
     }
     e.StringAttributes["itemid"] = v
     return e
+}
+
+func (e *VideoHTMLElement) IfITEMID(cond bool, v string) *VideoHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMID(v)
 }
 
 func (e *VideoHTMLElement) RemoveITEMID(v string) *VideoHTMLElement {
@@ -485,6 +611,13 @@ func (e *VideoHTMLElement) ITEMPROP(v string) *VideoHTMLElement {
     return e
 }
 
+func (e *VideoHTMLElement) IfITEMPROP(cond bool, v string) *VideoHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMPROP(v)
+}
+
 func (e *VideoHTMLElement) RemoveITEMPROP(v string) *VideoHTMLElement {
     delete(e.StringAttributes, "itemprop")
     return e
@@ -501,6 +634,13 @@ func (e *VideoHTMLElement) ITEMREF(v string) *VideoHTMLElement {
     return e
 }
 
+func (e *VideoHTMLElement) IfITEMREF(cond bool, v string) *VideoHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMREF(v)
+}
+
 func (e *VideoHTMLElement) RemoveITEMREF(v string) *VideoHTMLElement {
     delete(e.StringAttributes, "itemref")
     return e
@@ -515,6 +655,13 @@ func (e *VideoHTMLElement) ITEMSCOPE() *VideoHTMLElement {
     }
     e.BoolAttributes["itemscope"] = struct{}{}
     return e
+}
+
+func (e *VideoHTMLElement) IfITEMSCOPE(cond bool) *VideoHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMSCOPE()
 }
 
 func (e *VideoHTMLElement) RemoveITEMSCOPE() *VideoHTMLElement {
@@ -544,6 +691,13 @@ func (e *VideoHTMLElement) ITEMTYPE(v string) *VideoHTMLElement {
     return e
 }
 
+func (e *VideoHTMLElement) IfITEMTYPE(cond bool, v string) *VideoHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMTYPE(v)
+}
+
 func (e *VideoHTMLElement) RemoveITEMTYPE(v string) *VideoHTMLElement {
     delete(e.StringAttributes, "itemtype")
     return e
@@ -557,6 +711,13 @@ func (e *VideoHTMLElement) LANG(v string) *VideoHTMLElement {
     }
     e.StringAttributes["lang"] = v
     return e
+}
+
+func (e *VideoHTMLElement) IfLANG(cond bool, v string) *VideoHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.LANG(v)
 }
 
 func (e *VideoHTMLElement) RemoveLANG(v string) *VideoHTMLElement {
@@ -573,6 +734,13 @@ func (e *VideoHTMLElement) LOOP() *VideoHTMLElement {
     }
     e.BoolAttributes["loop"] = struct{}{}
     return e
+}
+
+func (e *VideoHTMLElement) IfLOOP(cond bool) *VideoHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.LOOP()
 }
 
 func (e *VideoHTMLElement) RemoveLOOP() *VideoHTMLElement {
@@ -601,6 +769,13 @@ func (e *VideoHTMLElement) MUTED() *VideoHTMLElement {
     return e
 }
 
+func (e *VideoHTMLElement) IfMUTED(cond bool) *VideoHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.MUTED()
+}
+
 func (e *VideoHTMLElement) RemoveMUTED() *VideoHTMLElement {
     if e.BoolAttributes == nil {
         return e
@@ -627,6 +802,13 @@ func (e *VideoHTMLElement) NONCE(v string) *VideoHTMLElement {
     return e
 }
 
+func (e *VideoHTMLElement) IfNONCE(cond bool, v string) *VideoHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.NONCE(v)
+}
+
 func (e *VideoHTMLElement) RemoveNONCE(v string) *VideoHTMLElement {
     delete(e.StringAttributes, "nonce")
     return e
@@ -641,6 +823,13 @@ func (e *VideoHTMLElement) PLAYSINLINE() *VideoHTMLElement {
     }
     e.BoolAttributes["playsinline"] = struct{}{}
     return e
+}
+
+func (e *VideoHTMLElement) IfPLAYSINLINE(cond bool) *VideoHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.PLAYSINLINE()
 }
 
 func (e *VideoHTMLElement) RemovePLAYSINLINE() *VideoHTMLElement {
@@ -672,6 +861,13 @@ func (e *VideoHTMLElement) POPOVER(v string) *VideoHTMLElement {
     return e
 }
 
+func (e *VideoHTMLElement) IfPOPOVER(cond bool, v string) *VideoHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.POPOVER(v)
+}
+
 func (e *VideoHTMLElement) RemovePOPOVER(v string) *VideoHTMLElement {
     delete(e.StringAttributes, "popover")
     return e
@@ -686,6 +882,13 @@ func (e *VideoHTMLElement) POSTER(v string) *VideoHTMLElement {
     }
     e.StringAttributes["poster"] = v
     return e
+}
+
+func (e *VideoHTMLElement) IfPOSTER(cond bool, v string) *VideoHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.POSTER(v)
 }
 
 func (e *VideoHTMLElement) RemovePOSTER(v string) *VideoHTMLElement {
@@ -709,6 +912,13 @@ func (e *VideoHTMLElement) PRELOAD(v string) *VideoHTMLElement {
     return e
 }
 
+func (e *VideoHTMLElement) IfPRELOAD(cond bool, v string) *VideoHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.PRELOAD(v)
+}
+
 func (e *VideoHTMLElement) RemovePRELOAD(v string) *VideoHTMLElement {
     delete(e.StringAttributes, "preload")
     return e
@@ -723,6 +933,13 @@ func (e *VideoHTMLElement) SLOT(v string) *VideoHTMLElement {
     }
     e.StringAttributes["slot"] = v
     return e
+}
+
+func (e *VideoHTMLElement) IfSLOT(cond bool, v string) *VideoHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SLOT(v)
 }
 
 func (e *VideoHTMLElement) RemoveSLOT(v string) *VideoHTMLElement {
@@ -742,6 +959,13 @@ func (e *VideoHTMLElement) SPELLCHECK(v string) *VideoHTMLElement {
     return e
 }
 
+func (e *VideoHTMLElement) IfSPELLCHECK(cond bool, v string) *VideoHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SPELLCHECK(v)
+}
+
 func (e *VideoHTMLElement) RemoveSPELLCHECK(v string) *VideoHTMLElement {
     delete(e.StringAttributes, "spellcheck")
     return e
@@ -756,6 +980,13 @@ func (e *VideoHTMLElement) SRC(v string) *VideoHTMLElement {
     }
     e.StringAttributes["src"] = v
     return e
+}
+
+func (e *VideoHTMLElement) IfSRC(cond bool, v string) *VideoHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SRC(v)
 }
 
 func (e *VideoHTMLElement) RemoveSRC(v string) *VideoHTMLElement {
@@ -776,6 +1007,13 @@ func (e *VideoHTMLElement) STYLE(k,v string) *VideoHTMLElement {
     }
     kv.Add(k,v)
     return e
+}
+
+func (e *VideoHTMLElement) IfSTYLE(cond bool, k string) *VideoHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.STYLE(k, "")
 }
 
 func (e *VideoHTMLElement) RemoveSTYLE(k string) *VideoHTMLElement {
@@ -799,6 +1037,13 @@ func (e *VideoHTMLElement) TABINDEX(v string) *VideoHTMLElement {
     return e
 }
 
+func (e *VideoHTMLElement) IfTABINDEX(cond bool, v string) *VideoHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TABINDEX(v)
+}
+
 func (e *VideoHTMLElement) RemoveTABINDEX(v string) *VideoHTMLElement {
     delete(e.StringAttributes, "tabindex")
     return e
@@ -813,6 +1058,13 @@ func (e *VideoHTMLElement) TITLE(v string) *VideoHTMLElement {
     }
     e.StringAttributes["title"] = v
     return e
+}
+
+func (e *VideoHTMLElement) IfTITLE(cond bool, v string) *VideoHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TITLE(v)
 }
 
 func (e *VideoHTMLElement) RemoveTITLE(v string) *VideoHTMLElement {
@@ -832,6 +1084,13 @@ func (e *VideoHTMLElement) TRANSLATE(v string) *VideoHTMLElement {
     return e
 }
 
+func (e *VideoHTMLElement) IfTRANSLATE(cond bool, v string) *VideoHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TRANSLATE(v)
+}
+
 func (e *VideoHTMLElement) RemoveTRANSLATE(v string) *VideoHTMLElement {
     delete(e.StringAttributes, "translate")
     return e
@@ -846,6 +1105,13 @@ func (e *VideoHTMLElement) WIDTH(v string) *VideoHTMLElement {
     }
     e.StringAttributes["width"] = v
     return e
+}
+
+func (e *VideoHTMLElement) IfWIDTH(cond bool, v string) *VideoHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.WIDTH(v)
 }
 
 func (e *VideoHTMLElement) RemoveWIDTH(v string) *VideoHTMLElement {

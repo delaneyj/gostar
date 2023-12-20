@@ -48,13 +48,13 @@ func (e *FieldsetHTMLElement) TextF(format string, args ...any) *FieldsetHTMLEle
     return e.Text(fmt.Sprintf(format, args...))
 }
 
-func (e *FieldsetHTMLElement) Raw(text string) *FieldsetHTMLElement {
-    e.Descendants = append(e.Descendants, Raw(text))
+func (e *FieldsetHTMLElement) Escaped(text string) *FieldsetHTMLElement {
+    e.Descendants = append(e.Descendants, Escaped(text))
     return e
 }
 
-func (e *FieldsetHTMLElement) RawF(format string, args ...any) *FieldsetHTMLElement {
-    return e.Raw(fmt.Sprintf(format, args...))
+func (e *FieldsetHTMLElement) EscapedF(format string, args ...any) *FieldsetHTMLElement {
+    return e.Escaped(fmt.Sprintf(format, args...))
 }
 
 func (e *FieldsetHTMLElement) CustomData(key, value string) *FieldsetHTMLElement {
@@ -87,6 +87,13 @@ func (e *FieldsetHTMLElement) ACCESSKEY(v string) *FieldsetHTMLElement {
     return e
 }
 
+func (e *FieldsetHTMLElement) IfACCESSKEY(cond bool, v string) *FieldsetHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ACCESSKEY(v)
+}
+
 func (e *FieldsetHTMLElement) RemoveACCESSKEY(v string) *FieldsetHTMLElement {
     delete(e.StringAttributes, "accesskey")
     return e
@@ -114,6 +121,13 @@ func (e *FieldsetHTMLElement) AUTOCAPITALIZE(v string) *FieldsetHTMLElement {
     return e
 }
 
+func (e *FieldsetHTMLElement) IfAUTOCAPITALIZE(cond bool, v string) *FieldsetHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.AUTOCAPITALIZE(v)
+}
+
 func (e *FieldsetHTMLElement) RemoveAUTOCAPITALIZE(v string) *FieldsetHTMLElement {
     delete(e.StringAttributes, "autocapitalize")
     return e
@@ -128,6 +142,13 @@ func (e *FieldsetHTMLElement) AUTOFOCUS() *FieldsetHTMLElement {
     }
     e.BoolAttributes["autofocus"] = struct{}{}
     return e
+}
+
+func (e *FieldsetHTMLElement) IfAUTOFOCUS(cond bool) *FieldsetHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.AUTOFOCUS()
 }
 
 func (e *FieldsetHTMLElement) RemoveAUTOFOCUS() *FieldsetHTMLElement {
@@ -161,6 +182,13 @@ func(e *FieldsetHTMLElement) CLASS(v string) *FieldsetHTMLElement {
     return e
 }
 
+func (e *FieldsetHTMLElement) IfCLASS(cond bool, v string) *FieldsetHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.CLASS(v)
+}
+
 func (e *FieldsetHTMLElement) SetCLASS(v string) *FieldsetHTMLElement {
     kv := NewSpaceDelimitedString()
     e.DelimitedStringAttributes["class"] = kv
@@ -190,6 +218,13 @@ func (e *FieldsetHTMLElement) CONTENTEDITABLE(v string) *FieldsetHTMLElement {
     return e
 }
 
+func (e *FieldsetHTMLElement) IfCONTENTEDITABLE(cond bool, v string) *FieldsetHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.CONTENTEDITABLE(v)
+}
+
 func (e *FieldsetHTMLElement) RemoveCONTENTEDITABLE(v string) *FieldsetHTMLElement {
     delete(e.StringAttributes, "contenteditable")
     return e
@@ -209,6 +244,13 @@ func (e *FieldsetHTMLElement) DIR(v string) *FieldsetHTMLElement {
     return e
 }
 
+func (e *FieldsetHTMLElement) IfDIR(cond bool, v string) *FieldsetHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.DIR(v)
+}
+
 func (e *FieldsetHTMLElement) RemoveDIR(v string) *FieldsetHTMLElement {
     delete(e.StringAttributes, "dir")
     return e
@@ -223,6 +265,13 @@ func (e *FieldsetHTMLElement) DISABLED() *FieldsetHTMLElement {
     }
     e.BoolAttributes["disabled"] = struct{}{}
     return e
+}
+
+func (e *FieldsetHTMLElement) IfDISABLED(cond bool) *FieldsetHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.DISABLED()
 }
 
 func (e *FieldsetHTMLElement) RemoveDISABLED() *FieldsetHTMLElement {
@@ -250,6 +299,13 @@ func (e *FieldsetHTMLElement) DRAGGABLE(v string) *FieldsetHTMLElement {
     }
     e.StringAttributes["draggable"] = v
     return e
+}
+
+func (e *FieldsetHTMLElement) IfDRAGGABLE(cond bool, v string) *FieldsetHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.DRAGGABLE(v)
 }
 
 func (e *FieldsetHTMLElement) RemoveDRAGGABLE(v string) *FieldsetHTMLElement {
@@ -281,6 +337,13 @@ func (e *FieldsetHTMLElement) ENTERKEYHINT(v string) *FieldsetHTMLElement {
     return e
 }
 
+func (e *FieldsetHTMLElement) IfENTERKEYHINT(cond bool, v string) *FieldsetHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ENTERKEYHINT(v)
+}
+
 func (e *FieldsetHTMLElement) RemoveENTERKEYHINT(v string) *FieldsetHTMLElement {
     delete(e.StringAttributes, "enterkeyhint")
     return e
@@ -295,6 +358,13 @@ func (e *FieldsetHTMLElement) FORM(v string) *FieldsetHTMLElement {
     }
     e.StringAttributes["form"] = v
     return e
+}
+
+func (e *FieldsetHTMLElement) IfFORM(cond bool, v string) *FieldsetHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.FORM(v)
 }
 
 func (e *FieldsetHTMLElement) RemoveFORM(v string) *FieldsetHTMLElement {
@@ -316,6 +386,13 @@ func (e *FieldsetHTMLElement) HIDDEN(v string) *FieldsetHTMLElement {
     return e
 }
 
+func (e *FieldsetHTMLElement) IfHIDDEN(cond bool, v string) *FieldsetHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.HIDDEN(v)
+}
+
 func (e *FieldsetHTMLElement) RemoveHIDDEN(v string) *FieldsetHTMLElement {
     delete(e.StringAttributes, "hidden")
     return e
@@ -332,6 +409,13 @@ func (e *FieldsetHTMLElement) ID(v string) *FieldsetHTMLElement {
     return e
 }
 
+func (e *FieldsetHTMLElement) IfID(cond bool, v string) *FieldsetHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ID(v)
+}
+
 func (e *FieldsetHTMLElement) RemoveID(v string) *FieldsetHTMLElement {
     delete(e.StringAttributes, "id")
     return e
@@ -346,6 +430,13 @@ func (e *FieldsetHTMLElement) INERT() *FieldsetHTMLElement {
     }
     e.BoolAttributes["inert"] = struct{}{}
     return e
+}
+
+func (e *FieldsetHTMLElement) IfINERT(cond bool) *FieldsetHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.INERT()
 }
 
 func (e *FieldsetHTMLElement) RemoveINERT() *FieldsetHTMLElement {
@@ -389,6 +480,13 @@ func (e *FieldsetHTMLElement) INPUTMODE(v string) *FieldsetHTMLElement {
     return e
 }
 
+func (e *FieldsetHTMLElement) IfINPUTMODE(cond bool, v string) *FieldsetHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.INPUTMODE(v)
+}
+
 func (e *FieldsetHTMLElement) RemoveINPUTMODE(v string) *FieldsetHTMLElement {
     delete(e.StringAttributes, "inputmode")
     return e
@@ -406,6 +504,13 @@ func (e *FieldsetHTMLElement) IS(v string) *FieldsetHTMLElement {
     return e
 }
 
+func (e *FieldsetHTMLElement) IfIS(cond bool, v string) *FieldsetHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.IS(v)
+}
+
 func (e *FieldsetHTMLElement) RemoveIS(v string) *FieldsetHTMLElement {
     delete(e.StringAttributes, "is")
     return e
@@ -420,6 +525,13 @@ func (e *FieldsetHTMLElement) ITEMID(v string) *FieldsetHTMLElement {
     }
     e.StringAttributes["itemid"] = v
     return e
+}
+
+func (e *FieldsetHTMLElement) IfITEMID(cond bool, v string) *FieldsetHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMID(v)
 }
 
 func (e *FieldsetHTMLElement) RemoveITEMID(v string) *FieldsetHTMLElement {
@@ -440,6 +552,13 @@ func (e *FieldsetHTMLElement) ITEMPROP(v string) *FieldsetHTMLElement {
     return e
 }
 
+func (e *FieldsetHTMLElement) IfITEMPROP(cond bool, v string) *FieldsetHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMPROP(v)
+}
+
 func (e *FieldsetHTMLElement) RemoveITEMPROP(v string) *FieldsetHTMLElement {
     delete(e.StringAttributes, "itemprop")
     return e
@@ -456,6 +575,13 @@ func (e *FieldsetHTMLElement) ITEMREF(v string) *FieldsetHTMLElement {
     return e
 }
 
+func (e *FieldsetHTMLElement) IfITEMREF(cond bool, v string) *FieldsetHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMREF(v)
+}
+
 func (e *FieldsetHTMLElement) RemoveITEMREF(v string) *FieldsetHTMLElement {
     delete(e.StringAttributes, "itemref")
     return e
@@ -470,6 +596,13 @@ func (e *FieldsetHTMLElement) ITEMSCOPE() *FieldsetHTMLElement {
     }
     e.BoolAttributes["itemscope"] = struct{}{}
     return e
+}
+
+func (e *FieldsetHTMLElement) IfITEMSCOPE(cond bool) *FieldsetHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMSCOPE()
 }
 
 func (e *FieldsetHTMLElement) RemoveITEMSCOPE() *FieldsetHTMLElement {
@@ -499,6 +632,13 @@ func (e *FieldsetHTMLElement) ITEMTYPE(v string) *FieldsetHTMLElement {
     return e
 }
 
+func (e *FieldsetHTMLElement) IfITEMTYPE(cond bool, v string) *FieldsetHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMTYPE(v)
+}
+
 func (e *FieldsetHTMLElement) RemoveITEMTYPE(v string) *FieldsetHTMLElement {
     delete(e.StringAttributes, "itemtype")
     return e
@@ -512,6 +652,13 @@ func (e *FieldsetHTMLElement) LANG(v string) *FieldsetHTMLElement {
     }
     e.StringAttributes["lang"] = v
     return e
+}
+
+func (e *FieldsetHTMLElement) IfLANG(cond bool, v string) *FieldsetHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.LANG(v)
 }
 
 func (e *FieldsetHTMLElement) RemoveLANG(v string) *FieldsetHTMLElement {
@@ -530,6 +677,13 @@ func (e *FieldsetHTMLElement) NAME(v string) *FieldsetHTMLElement {
     return e
 }
 
+func (e *FieldsetHTMLElement) IfNAME(cond bool, v string) *FieldsetHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.NAME(v)
+}
+
 func (e *FieldsetHTMLElement) RemoveNAME(v string) *FieldsetHTMLElement {
     delete(e.StringAttributes, "name")
     return e
@@ -544,6 +698,13 @@ func (e *FieldsetHTMLElement) NONCE(v string) *FieldsetHTMLElement {
     }
     e.StringAttributes["nonce"] = v
     return e
+}
+
+func (e *FieldsetHTMLElement) IfNONCE(cond bool, v string) *FieldsetHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.NONCE(v)
 }
 
 func (e *FieldsetHTMLElement) RemoveNONCE(v string) *FieldsetHTMLElement {
@@ -565,6 +726,13 @@ func (e *FieldsetHTMLElement) POPOVER(v string) *FieldsetHTMLElement {
     return e
 }
 
+func (e *FieldsetHTMLElement) IfPOPOVER(cond bool, v string) *FieldsetHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.POPOVER(v)
+}
+
 func (e *FieldsetHTMLElement) RemovePOPOVER(v string) *FieldsetHTMLElement {
     delete(e.StringAttributes, "popover")
     return e
@@ -579,6 +747,13 @@ func (e *FieldsetHTMLElement) SLOT(v string) *FieldsetHTMLElement {
     }
     e.StringAttributes["slot"] = v
     return e
+}
+
+func (e *FieldsetHTMLElement) IfSLOT(cond bool, v string) *FieldsetHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SLOT(v)
 }
 
 func (e *FieldsetHTMLElement) RemoveSLOT(v string) *FieldsetHTMLElement {
@@ -596,6 +771,13 @@ func (e *FieldsetHTMLElement) SPELLCHECK(v string) *FieldsetHTMLElement {
     }
     e.StringAttributes["spellcheck"] = v
     return e
+}
+
+func (e *FieldsetHTMLElement) IfSPELLCHECK(cond bool, v string) *FieldsetHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SPELLCHECK(v)
 }
 
 func (e *FieldsetHTMLElement) RemoveSPELLCHECK(v string) *FieldsetHTMLElement {
@@ -616,6 +798,13 @@ func (e *FieldsetHTMLElement) STYLE(k,v string) *FieldsetHTMLElement {
     }
     kv.Add(k,v)
     return e
+}
+
+func (e *FieldsetHTMLElement) IfSTYLE(cond bool, k string) *FieldsetHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.STYLE(k, "")
 }
 
 func (e *FieldsetHTMLElement) RemoveSTYLE(k string) *FieldsetHTMLElement {
@@ -639,6 +828,13 @@ func (e *FieldsetHTMLElement) TABINDEX(v string) *FieldsetHTMLElement {
     return e
 }
 
+func (e *FieldsetHTMLElement) IfTABINDEX(cond bool, v string) *FieldsetHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TABINDEX(v)
+}
+
 func (e *FieldsetHTMLElement) RemoveTABINDEX(v string) *FieldsetHTMLElement {
     delete(e.StringAttributes, "tabindex")
     return e
@@ -653,6 +849,13 @@ func (e *FieldsetHTMLElement) TITLE(v string) *FieldsetHTMLElement {
     }
     e.StringAttributes["title"] = v
     return e
+}
+
+func (e *FieldsetHTMLElement) IfTITLE(cond bool, v string) *FieldsetHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TITLE(v)
 }
 
 func (e *FieldsetHTMLElement) RemoveTITLE(v string) *FieldsetHTMLElement {
@@ -670,6 +873,13 @@ func (e *FieldsetHTMLElement) TRANSLATE(v string) *FieldsetHTMLElement {
     }
     e.StringAttributes["translate"] = v
     return e
+}
+
+func (e *FieldsetHTMLElement) IfTRANSLATE(cond bool, v string) *FieldsetHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TRANSLATE(v)
 }
 
 func (e *FieldsetHTMLElement) RemoveTRANSLATE(v string) *FieldsetHTMLElement {

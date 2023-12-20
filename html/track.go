@@ -48,13 +48,13 @@ func (e *TrackHTMLElement) TextF(format string, args ...any) *TrackHTMLElement {
     return e.Text(fmt.Sprintf(format, args...))
 }
 
-func (e *TrackHTMLElement) Raw(text string) *TrackHTMLElement {
-    e.Descendants = append(e.Descendants, Raw(text))
+func (e *TrackHTMLElement) Escaped(text string) *TrackHTMLElement {
+    e.Descendants = append(e.Descendants, Escaped(text))
     return e
 }
 
-func (e *TrackHTMLElement) RawF(format string, args ...any) *TrackHTMLElement {
-    return e.Raw(fmt.Sprintf(format, args...))
+func (e *TrackHTMLElement) EscapedF(format string, args ...any) *TrackHTMLElement {
+    return e.Escaped(fmt.Sprintf(format, args...))
 }
 
 func (e *TrackHTMLElement) CustomData(key, value string) *TrackHTMLElement {
@@ -87,6 +87,13 @@ func (e *TrackHTMLElement) ACCESSKEY(v string) *TrackHTMLElement {
     return e
 }
 
+func (e *TrackHTMLElement) IfACCESSKEY(cond bool, v string) *TrackHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ACCESSKEY(v)
+}
+
 func (e *TrackHTMLElement) RemoveACCESSKEY(v string) *TrackHTMLElement {
     delete(e.StringAttributes, "accesskey")
     return e
@@ -114,6 +121,13 @@ func (e *TrackHTMLElement) AUTOCAPITALIZE(v string) *TrackHTMLElement {
     return e
 }
 
+func (e *TrackHTMLElement) IfAUTOCAPITALIZE(cond bool, v string) *TrackHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.AUTOCAPITALIZE(v)
+}
+
 func (e *TrackHTMLElement) RemoveAUTOCAPITALIZE(v string) *TrackHTMLElement {
     delete(e.StringAttributes, "autocapitalize")
     return e
@@ -128,6 +142,13 @@ func (e *TrackHTMLElement) AUTOFOCUS() *TrackHTMLElement {
     }
     e.BoolAttributes["autofocus"] = struct{}{}
     return e
+}
+
+func (e *TrackHTMLElement) IfAUTOFOCUS(cond bool) *TrackHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.AUTOFOCUS()
 }
 
 func (e *TrackHTMLElement) RemoveAUTOFOCUS() *TrackHTMLElement {
@@ -161,6 +182,13 @@ func(e *TrackHTMLElement) CLASS(v string) *TrackHTMLElement {
     return e
 }
 
+func (e *TrackHTMLElement) IfCLASS(cond bool, v string) *TrackHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.CLASS(v)
+}
+
 func (e *TrackHTMLElement) SetCLASS(v string) *TrackHTMLElement {
     kv := NewSpaceDelimitedString()
     e.DelimitedStringAttributes["class"] = kv
@@ -190,6 +218,13 @@ func (e *TrackHTMLElement) CONTENTEDITABLE(v string) *TrackHTMLElement {
     return e
 }
 
+func (e *TrackHTMLElement) IfCONTENTEDITABLE(cond bool, v string) *TrackHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.CONTENTEDITABLE(v)
+}
+
 func (e *TrackHTMLElement) RemoveCONTENTEDITABLE(v string) *TrackHTMLElement {
     delete(e.StringAttributes, "contenteditable")
     return e
@@ -204,6 +239,13 @@ func (e *TrackHTMLElement) DEFAULT() *TrackHTMLElement {
     }
     e.BoolAttributes["default"] = struct{}{}
     return e
+}
+
+func (e *TrackHTMLElement) IfDEFAULT(cond bool) *TrackHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.DEFAULT()
 }
 
 func (e *TrackHTMLElement) RemoveDEFAULT() *TrackHTMLElement {
@@ -235,6 +277,13 @@ func (e *TrackHTMLElement) DIR(v string) *TrackHTMLElement {
     return e
 }
 
+func (e *TrackHTMLElement) IfDIR(cond bool, v string) *TrackHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.DIR(v)
+}
+
 func (e *TrackHTMLElement) RemoveDIR(v string) *TrackHTMLElement {
     delete(e.StringAttributes, "dir")
     return e
@@ -250,6 +299,13 @@ func (e *TrackHTMLElement) DRAGGABLE(v string) *TrackHTMLElement {
     }
     e.StringAttributes["draggable"] = v
     return e
+}
+
+func (e *TrackHTMLElement) IfDRAGGABLE(cond bool, v string) *TrackHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.DRAGGABLE(v)
 }
 
 func (e *TrackHTMLElement) RemoveDRAGGABLE(v string) *TrackHTMLElement {
@@ -281,6 +337,13 @@ func (e *TrackHTMLElement) ENTERKEYHINT(v string) *TrackHTMLElement {
     return e
 }
 
+func (e *TrackHTMLElement) IfENTERKEYHINT(cond bool, v string) *TrackHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ENTERKEYHINT(v)
+}
+
 func (e *TrackHTMLElement) RemoveENTERKEYHINT(v string) *TrackHTMLElement {
     delete(e.StringAttributes, "enterkeyhint")
     return e
@@ -300,6 +363,13 @@ func (e *TrackHTMLElement) HIDDEN(v string) *TrackHTMLElement {
     return e
 }
 
+func (e *TrackHTMLElement) IfHIDDEN(cond bool, v string) *TrackHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.HIDDEN(v)
+}
+
 func (e *TrackHTMLElement) RemoveHIDDEN(v string) *TrackHTMLElement {
     delete(e.StringAttributes, "hidden")
     return e
@@ -316,6 +386,13 @@ func (e *TrackHTMLElement) ID(v string) *TrackHTMLElement {
     return e
 }
 
+func (e *TrackHTMLElement) IfID(cond bool, v string) *TrackHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ID(v)
+}
+
 func (e *TrackHTMLElement) RemoveID(v string) *TrackHTMLElement {
     delete(e.StringAttributes, "id")
     return e
@@ -330,6 +407,13 @@ func (e *TrackHTMLElement) INERT() *TrackHTMLElement {
     }
     e.BoolAttributes["inert"] = struct{}{}
     return e
+}
+
+func (e *TrackHTMLElement) IfINERT(cond bool) *TrackHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.INERT()
 }
 
 func (e *TrackHTMLElement) RemoveINERT() *TrackHTMLElement {
@@ -373,6 +457,13 @@ func (e *TrackHTMLElement) INPUTMODE(v string) *TrackHTMLElement {
     return e
 }
 
+func (e *TrackHTMLElement) IfINPUTMODE(cond bool, v string) *TrackHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.INPUTMODE(v)
+}
+
 func (e *TrackHTMLElement) RemoveINPUTMODE(v string) *TrackHTMLElement {
     delete(e.StringAttributes, "inputmode")
     return e
@@ -390,6 +481,13 @@ func (e *TrackHTMLElement) IS(v string) *TrackHTMLElement {
     return e
 }
 
+func (e *TrackHTMLElement) IfIS(cond bool, v string) *TrackHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.IS(v)
+}
+
 func (e *TrackHTMLElement) RemoveIS(v string) *TrackHTMLElement {
     delete(e.StringAttributes, "is")
     return e
@@ -404,6 +502,13 @@ func (e *TrackHTMLElement) ITEMID(v string) *TrackHTMLElement {
     }
     e.StringAttributes["itemid"] = v
     return e
+}
+
+func (e *TrackHTMLElement) IfITEMID(cond bool, v string) *TrackHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMID(v)
 }
 
 func (e *TrackHTMLElement) RemoveITEMID(v string) *TrackHTMLElement {
@@ -424,6 +529,13 @@ func (e *TrackHTMLElement) ITEMPROP(v string) *TrackHTMLElement {
     return e
 }
 
+func (e *TrackHTMLElement) IfITEMPROP(cond bool, v string) *TrackHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMPROP(v)
+}
+
 func (e *TrackHTMLElement) RemoveITEMPROP(v string) *TrackHTMLElement {
     delete(e.StringAttributes, "itemprop")
     return e
@@ -440,6 +552,13 @@ func (e *TrackHTMLElement) ITEMREF(v string) *TrackHTMLElement {
     return e
 }
 
+func (e *TrackHTMLElement) IfITEMREF(cond bool, v string) *TrackHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMREF(v)
+}
+
 func (e *TrackHTMLElement) RemoveITEMREF(v string) *TrackHTMLElement {
     delete(e.StringAttributes, "itemref")
     return e
@@ -454,6 +573,13 @@ func (e *TrackHTMLElement) ITEMSCOPE() *TrackHTMLElement {
     }
     e.BoolAttributes["itemscope"] = struct{}{}
     return e
+}
+
+func (e *TrackHTMLElement) IfITEMSCOPE(cond bool) *TrackHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMSCOPE()
 }
 
 func (e *TrackHTMLElement) RemoveITEMSCOPE() *TrackHTMLElement {
@@ -483,6 +609,13 @@ func (e *TrackHTMLElement) ITEMTYPE(v string) *TrackHTMLElement {
     return e
 }
 
+func (e *TrackHTMLElement) IfITEMTYPE(cond bool, v string) *TrackHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMTYPE(v)
+}
+
 func (e *TrackHTMLElement) RemoveITEMTYPE(v string) *TrackHTMLElement {
     delete(e.StringAttributes, "itemtype")
     return e
@@ -508,6 +641,13 @@ func (e *TrackHTMLElement) KIND(v string) *TrackHTMLElement {
     return e
 }
 
+func (e *TrackHTMLElement) IfKIND(cond bool, v string) *TrackHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.KIND(v)
+}
+
 func (e *TrackHTMLElement) RemoveKIND(v string) *TrackHTMLElement {
     delete(e.StringAttributes, "kind")
     return e
@@ -522,6 +662,13 @@ func (e *TrackHTMLElement) LABEL(v string) *TrackHTMLElement {
     }
     e.StringAttributes["label"] = v
     return e
+}
+
+func (e *TrackHTMLElement) IfLABEL(cond bool, v string) *TrackHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.LABEL(v)
 }
 
 func (e *TrackHTMLElement) RemoveLABEL(v string) *TrackHTMLElement {
@@ -539,6 +686,13 @@ func (e *TrackHTMLElement) LANG(v string) *TrackHTMLElement {
     return e
 }
 
+func (e *TrackHTMLElement) IfLANG(cond bool, v string) *TrackHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.LANG(v)
+}
+
 func (e *TrackHTMLElement) RemoveLANG(v string) *TrackHTMLElement {
     delete(e.StringAttributes, "lang")
     return e
@@ -553,6 +707,13 @@ func (e *TrackHTMLElement) NONCE(v string) *TrackHTMLElement {
     }
     e.StringAttributes["nonce"] = v
     return e
+}
+
+func (e *TrackHTMLElement) IfNONCE(cond bool, v string) *TrackHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.NONCE(v)
 }
 
 func (e *TrackHTMLElement) RemoveNONCE(v string) *TrackHTMLElement {
@@ -574,6 +735,13 @@ func (e *TrackHTMLElement) POPOVER(v string) *TrackHTMLElement {
     return e
 }
 
+func (e *TrackHTMLElement) IfPOPOVER(cond bool, v string) *TrackHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.POPOVER(v)
+}
+
 func (e *TrackHTMLElement) RemovePOPOVER(v string) *TrackHTMLElement {
     delete(e.StringAttributes, "popover")
     return e
@@ -588,6 +756,13 @@ func (e *TrackHTMLElement) SLOT(v string) *TrackHTMLElement {
     }
     e.StringAttributes["slot"] = v
     return e
+}
+
+func (e *TrackHTMLElement) IfSLOT(cond bool, v string) *TrackHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SLOT(v)
 }
 
 func (e *TrackHTMLElement) RemoveSLOT(v string) *TrackHTMLElement {
@@ -607,6 +782,13 @@ func (e *TrackHTMLElement) SPELLCHECK(v string) *TrackHTMLElement {
     return e
 }
 
+func (e *TrackHTMLElement) IfSPELLCHECK(cond bool, v string) *TrackHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SPELLCHECK(v)
+}
+
 func (e *TrackHTMLElement) RemoveSPELLCHECK(v string) *TrackHTMLElement {
     delete(e.StringAttributes, "spellcheck")
     return e
@@ -623,6 +805,13 @@ func (e *TrackHTMLElement) SRC(v string) *TrackHTMLElement {
     return e
 }
 
+func (e *TrackHTMLElement) IfSRC(cond bool, v string) *TrackHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SRC(v)
+}
+
 func (e *TrackHTMLElement) RemoveSRC(v string) *TrackHTMLElement {
     delete(e.StringAttributes, "src")
     return e
@@ -636,6 +825,13 @@ func (e *TrackHTMLElement) SRCLANG(v string) *TrackHTMLElement {
     }
     e.StringAttributes["srclang"] = v
     return e
+}
+
+func (e *TrackHTMLElement) IfSRCLANG(cond bool, v string) *TrackHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SRCLANG(v)
 }
 
 func (e *TrackHTMLElement) RemoveSRCLANG(v string) *TrackHTMLElement {
@@ -656,6 +852,13 @@ func (e *TrackHTMLElement) STYLE(k,v string) *TrackHTMLElement {
     }
     kv.Add(k,v)
     return e
+}
+
+func (e *TrackHTMLElement) IfSTYLE(cond bool, k string) *TrackHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.STYLE(k, "")
 }
 
 func (e *TrackHTMLElement) RemoveSTYLE(k string) *TrackHTMLElement {
@@ -679,6 +882,13 @@ func (e *TrackHTMLElement) TABINDEX(v string) *TrackHTMLElement {
     return e
 }
 
+func (e *TrackHTMLElement) IfTABINDEX(cond bool, v string) *TrackHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TABINDEX(v)
+}
+
 func (e *TrackHTMLElement) RemoveTABINDEX(v string) *TrackHTMLElement {
     delete(e.StringAttributes, "tabindex")
     return e
@@ -693,6 +903,13 @@ func (e *TrackHTMLElement) TITLE(v string) *TrackHTMLElement {
     }
     e.StringAttributes["title"] = v
     return e
+}
+
+func (e *TrackHTMLElement) IfTITLE(cond bool, v string) *TrackHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TITLE(v)
 }
 
 func (e *TrackHTMLElement) RemoveTITLE(v string) *TrackHTMLElement {
@@ -710,6 +927,13 @@ func (e *TrackHTMLElement) TRANSLATE(v string) *TrackHTMLElement {
     }
     e.StringAttributes["translate"] = v
     return e
+}
+
+func (e *TrackHTMLElement) IfTRANSLATE(cond bool, v string) *TrackHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TRANSLATE(v)
 }
 
 func (e *TrackHTMLElement) RemoveTRANSLATE(v string) *TrackHTMLElement {

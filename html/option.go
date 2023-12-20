@@ -48,13 +48,13 @@ func (e *OptionHTMLElement) TextF(format string, args ...any) *OptionHTMLElement
     return e.Text(fmt.Sprintf(format, args...))
 }
 
-func (e *OptionHTMLElement) Raw(text string) *OptionHTMLElement {
-    e.Descendants = append(e.Descendants, Raw(text))
+func (e *OptionHTMLElement) Escaped(text string) *OptionHTMLElement {
+    e.Descendants = append(e.Descendants, Escaped(text))
     return e
 }
 
-func (e *OptionHTMLElement) RawF(format string, args ...any) *OptionHTMLElement {
-    return e.Raw(fmt.Sprintf(format, args...))
+func (e *OptionHTMLElement) EscapedF(format string, args ...any) *OptionHTMLElement {
+    return e.Escaped(fmt.Sprintf(format, args...))
 }
 
 func (e *OptionHTMLElement) CustomData(key, value string) *OptionHTMLElement {
@@ -87,6 +87,13 @@ func (e *OptionHTMLElement) ACCESSKEY(v string) *OptionHTMLElement {
     return e
 }
 
+func (e *OptionHTMLElement) IfACCESSKEY(cond bool, v string) *OptionHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ACCESSKEY(v)
+}
+
 func (e *OptionHTMLElement) RemoveACCESSKEY(v string) *OptionHTMLElement {
     delete(e.StringAttributes, "accesskey")
     return e
@@ -114,6 +121,13 @@ func (e *OptionHTMLElement) AUTOCAPITALIZE(v string) *OptionHTMLElement {
     return e
 }
 
+func (e *OptionHTMLElement) IfAUTOCAPITALIZE(cond bool, v string) *OptionHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.AUTOCAPITALIZE(v)
+}
+
 func (e *OptionHTMLElement) RemoveAUTOCAPITALIZE(v string) *OptionHTMLElement {
     delete(e.StringAttributes, "autocapitalize")
     return e
@@ -128,6 +142,13 @@ func (e *OptionHTMLElement) AUTOFOCUS() *OptionHTMLElement {
     }
     e.BoolAttributes["autofocus"] = struct{}{}
     return e
+}
+
+func (e *OptionHTMLElement) IfAUTOFOCUS(cond bool) *OptionHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.AUTOFOCUS()
 }
 
 func (e *OptionHTMLElement) RemoveAUTOFOCUS() *OptionHTMLElement {
@@ -161,6 +182,13 @@ func(e *OptionHTMLElement) CLASS(v string) *OptionHTMLElement {
     return e
 }
 
+func (e *OptionHTMLElement) IfCLASS(cond bool, v string) *OptionHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.CLASS(v)
+}
+
 func (e *OptionHTMLElement) SetCLASS(v string) *OptionHTMLElement {
     kv := NewSpaceDelimitedString()
     e.DelimitedStringAttributes["class"] = kv
@@ -190,6 +218,13 @@ func (e *OptionHTMLElement) CONTENTEDITABLE(v string) *OptionHTMLElement {
     return e
 }
 
+func (e *OptionHTMLElement) IfCONTENTEDITABLE(cond bool, v string) *OptionHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.CONTENTEDITABLE(v)
+}
+
 func (e *OptionHTMLElement) RemoveCONTENTEDITABLE(v string) *OptionHTMLElement {
     delete(e.StringAttributes, "contenteditable")
     return e
@@ -209,6 +244,13 @@ func (e *OptionHTMLElement) DIR(v string) *OptionHTMLElement {
     return e
 }
 
+func (e *OptionHTMLElement) IfDIR(cond bool, v string) *OptionHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.DIR(v)
+}
+
 func (e *OptionHTMLElement) RemoveDIR(v string) *OptionHTMLElement {
     delete(e.StringAttributes, "dir")
     return e
@@ -223,6 +265,13 @@ func (e *OptionHTMLElement) DISABLED() *OptionHTMLElement {
     }
     e.BoolAttributes["disabled"] = struct{}{}
     return e
+}
+
+func (e *OptionHTMLElement) IfDISABLED(cond bool) *OptionHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.DISABLED()
 }
 
 func (e *OptionHTMLElement) RemoveDISABLED() *OptionHTMLElement {
@@ -250,6 +299,13 @@ func (e *OptionHTMLElement) DRAGGABLE(v string) *OptionHTMLElement {
     }
     e.StringAttributes["draggable"] = v
     return e
+}
+
+func (e *OptionHTMLElement) IfDRAGGABLE(cond bool, v string) *OptionHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.DRAGGABLE(v)
 }
 
 func (e *OptionHTMLElement) RemoveDRAGGABLE(v string) *OptionHTMLElement {
@@ -281,6 +337,13 @@ func (e *OptionHTMLElement) ENTERKEYHINT(v string) *OptionHTMLElement {
     return e
 }
 
+func (e *OptionHTMLElement) IfENTERKEYHINT(cond bool, v string) *OptionHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ENTERKEYHINT(v)
+}
+
 func (e *OptionHTMLElement) RemoveENTERKEYHINT(v string) *OptionHTMLElement {
     delete(e.StringAttributes, "enterkeyhint")
     return e
@@ -300,6 +363,13 @@ func (e *OptionHTMLElement) HIDDEN(v string) *OptionHTMLElement {
     return e
 }
 
+func (e *OptionHTMLElement) IfHIDDEN(cond bool, v string) *OptionHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.HIDDEN(v)
+}
+
 func (e *OptionHTMLElement) RemoveHIDDEN(v string) *OptionHTMLElement {
     delete(e.StringAttributes, "hidden")
     return e
@@ -316,6 +386,13 @@ func (e *OptionHTMLElement) ID(v string) *OptionHTMLElement {
     return e
 }
 
+func (e *OptionHTMLElement) IfID(cond bool, v string) *OptionHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ID(v)
+}
+
 func (e *OptionHTMLElement) RemoveID(v string) *OptionHTMLElement {
     delete(e.StringAttributes, "id")
     return e
@@ -330,6 +407,13 @@ func (e *OptionHTMLElement) INERT() *OptionHTMLElement {
     }
     e.BoolAttributes["inert"] = struct{}{}
     return e
+}
+
+func (e *OptionHTMLElement) IfINERT(cond bool) *OptionHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.INERT()
 }
 
 func (e *OptionHTMLElement) RemoveINERT() *OptionHTMLElement {
@@ -373,6 +457,13 @@ func (e *OptionHTMLElement) INPUTMODE(v string) *OptionHTMLElement {
     return e
 }
 
+func (e *OptionHTMLElement) IfINPUTMODE(cond bool, v string) *OptionHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.INPUTMODE(v)
+}
+
 func (e *OptionHTMLElement) RemoveINPUTMODE(v string) *OptionHTMLElement {
     delete(e.StringAttributes, "inputmode")
     return e
@@ -390,6 +481,13 @@ func (e *OptionHTMLElement) IS(v string) *OptionHTMLElement {
     return e
 }
 
+func (e *OptionHTMLElement) IfIS(cond bool, v string) *OptionHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.IS(v)
+}
+
 func (e *OptionHTMLElement) RemoveIS(v string) *OptionHTMLElement {
     delete(e.StringAttributes, "is")
     return e
@@ -404,6 +502,13 @@ func (e *OptionHTMLElement) ITEMID(v string) *OptionHTMLElement {
     }
     e.StringAttributes["itemid"] = v
     return e
+}
+
+func (e *OptionHTMLElement) IfITEMID(cond bool, v string) *OptionHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMID(v)
 }
 
 func (e *OptionHTMLElement) RemoveITEMID(v string) *OptionHTMLElement {
@@ -424,6 +529,13 @@ func (e *OptionHTMLElement) ITEMPROP(v string) *OptionHTMLElement {
     return e
 }
 
+func (e *OptionHTMLElement) IfITEMPROP(cond bool, v string) *OptionHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMPROP(v)
+}
+
 func (e *OptionHTMLElement) RemoveITEMPROP(v string) *OptionHTMLElement {
     delete(e.StringAttributes, "itemprop")
     return e
@@ -440,6 +552,13 @@ func (e *OptionHTMLElement) ITEMREF(v string) *OptionHTMLElement {
     return e
 }
 
+func (e *OptionHTMLElement) IfITEMREF(cond bool, v string) *OptionHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMREF(v)
+}
+
 func (e *OptionHTMLElement) RemoveITEMREF(v string) *OptionHTMLElement {
     delete(e.StringAttributes, "itemref")
     return e
@@ -454,6 +573,13 @@ func (e *OptionHTMLElement) ITEMSCOPE() *OptionHTMLElement {
     }
     e.BoolAttributes["itemscope"] = struct{}{}
     return e
+}
+
+func (e *OptionHTMLElement) IfITEMSCOPE(cond bool) *OptionHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMSCOPE()
 }
 
 func (e *OptionHTMLElement) RemoveITEMSCOPE() *OptionHTMLElement {
@@ -483,6 +609,13 @@ func (e *OptionHTMLElement) ITEMTYPE(v string) *OptionHTMLElement {
     return e
 }
 
+func (e *OptionHTMLElement) IfITEMTYPE(cond bool, v string) *OptionHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMTYPE(v)
+}
+
 func (e *OptionHTMLElement) RemoveITEMTYPE(v string) *OptionHTMLElement {
     delete(e.StringAttributes, "itemtype")
     return e
@@ -497,6 +630,13 @@ func (e *OptionHTMLElement) LABEL(v string) *OptionHTMLElement {
     }
     e.StringAttributes["label"] = v
     return e
+}
+
+func (e *OptionHTMLElement) IfLABEL(cond bool, v string) *OptionHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.LABEL(v)
 }
 
 func (e *OptionHTMLElement) RemoveLABEL(v string) *OptionHTMLElement {
@@ -514,6 +654,13 @@ func (e *OptionHTMLElement) LANG(v string) *OptionHTMLElement {
     return e
 }
 
+func (e *OptionHTMLElement) IfLANG(cond bool, v string) *OptionHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.LANG(v)
+}
+
 func (e *OptionHTMLElement) RemoveLANG(v string) *OptionHTMLElement {
     delete(e.StringAttributes, "lang")
     return e
@@ -528,6 +675,13 @@ func (e *OptionHTMLElement) NONCE(v string) *OptionHTMLElement {
     }
     e.StringAttributes["nonce"] = v
     return e
+}
+
+func (e *OptionHTMLElement) IfNONCE(cond bool, v string) *OptionHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.NONCE(v)
 }
 
 func (e *OptionHTMLElement) RemoveNONCE(v string) *OptionHTMLElement {
@@ -549,6 +703,13 @@ func (e *OptionHTMLElement) POPOVER(v string) *OptionHTMLElement {
     return e
 }
 
+func (e *OptionHTMLElement) IfPOPOVER(cond bool, v string) *OptionHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.POPOVER(v)
+}
+
 func (e *OptionHTMLElement) RemovePOPOVER(v string) *OptionHTMLElement {
     delete(e.StringAttributes, "popover")
     return e
@@ -563,6 +724,13 @@ func (e *OptionHTMLElement) SELECTED() *OptionHTMLElement {
     }
     e.BoolAttributes["selected"] = struct{}{}
     return e
+}
+
+func (e *OptionHTMLElement) IfSELECTED(cond bool) *OptionHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SELECTED()
 }
 
 func (e *OptionHTMLElement) RemoveSELECTED() *OptionHTMLElement {
@@ -591,6 +759,13 @@ func (e *OptionHTMLElement) SLOT(v string) *OptionHTMLElement {
     return e
 }
 
+func (e *OptionHTMLElement) IfSLOT(cond bool, v string) *OptionHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SLOT(v)
+}
+
 func (e *OptionHTMLElement) RemoveSLOT(v string) *OptionHTMLElement {
     delete(e.StringAttributes, "slot")
     return e
@@ -606,6 +781,13 @@ func (e *OptionHTMLElement) SPELLCHECK(v string) *OptionHTMLElement {
     }
     e.StringAttributes["spellcheck"] = v
     return e
+}
+
+func (e *OptionHTMLElement) IfSPELLCHECK(cond bool, v string) *OptionHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SPELLCHECK(v)
 }
 
 func (e *OptionHTMLElement) RemoveSPELLCHECK(v string) *OptionHTMLElement {
@@ -626,6 +808,13 @@ func (e *OptionHTMLElement) STYLE(k,v string) *OptionHTMLElement {
     }
     kv.Add(k,v)
     return e
+}
+
+func (e *OptionHTMLElement) IfSTYLE(cond bool, k string) *OptionHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.STYLE(k, "")
 }
 
 func (e *OptionHTMLElement) RemoveSTYLE(k string) *OptionHTMLElement {
@@ -649,6 +838,13 @@ func (e *OptionHTMLElement) TABINDEX(v string) *OptionHTMLElement {
     return e
 }
 
+func (e *OptionHTMLElement) IfTABINDEX(cond bool, v string) *OptionHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TABINDEX(v)
+}
+
 func (e *OptionHTMLElement) RemoveTABINDEX(v string) *OptionHTMLElement {
     delete(e.StringAttributes, "tabindex")
     return e
@@ -663,6 +859,13 @@ func (e *OptionHTMLElement) TITLE(v string) *OptionHTMLElement {
     }
     e.StringAttributes["title"] = v
     return e
+}
+
+func (e *OptionHTMLElement) IfTITLE(cond bool, v string) *OptionHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TITLE(v)
 }
 
 func (e *OptionHTMLElement) RemoveTITLE(v string) *OptionHTMLElement {
@@ -682,6 +885,13 @@ func (e *OptionHTMLElement) TRANSLATE(v string) *OptionHTMLElement {
     return e
 }
 
+func (e *OptionHTMLElement) IfTRANSLATE(cond bool, v string) *OptionHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TRANSLATE(v)
+}
+
 func (e *OptionHTMLElement) RemoveTRANSLATE(v string) *OptionHTMLElement {
     delete(e.StringAttributes, "translate")
     return e
@@ -696,6 +906,13 @@ func (e *OptionHTMLElement) VALUE(v string) *OptionHTMLElement {
     }
     e.StringAttributes["value"] = v
     return e
+}
+
+func (e *OptionHTMLElement) IfVALUE(cond bool, v string) *OptionHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.VALUE(v)
 }
 
 func (e *OptionHTMLElement) RemoveVALUE(v string) *OptionHTMLElement {

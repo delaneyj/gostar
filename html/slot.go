@@ -48,13 +48,13 @@ func (e *SlotHTMLElement) TextF(format string, args ...any) *SlotHTMLElement {
     return e.Text(fmt.Sprintf(format, args...))
 }
 
-func (e *SlotHTMLElement) Raw(text string) *SlotHTMLElement {
-    e.Descendants = append(e.Descendants, Raw(text))
+func (e *SlotHTMLElement) Escaped(text string) *SlotHTMLElement {
+    e.Descendants = append(e.Descendants, Escaped(text))
     return e
 }
 
-func (e *SlotHTMLElement) RawF(format string, args ...any) *SlotHTMLElement {
-    return e.Raw(fmt.Sprintf(format, args...))
+func (e *SlotHTMLElement) EscapedF(format string, args ...any) *SlotHTMLElement {
+    return e.Escaped(fmt.Sprintf(format, args...))
 }
 
 func (e *SlotHTMLElement) CustomData(key, value string) *SlotHTMLElement {
@@ -87,6 +87,13 @@ func (e *SlotHTMLElement) ACCESSKEY(v string) *SlotHTMLElement {
     return e
 }
 
+func (e *SlotHTMLElement) IfACCESSKEY(cond bool, v string) *SlotHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ACCESSKEY(v)
+}
+
 func (e *SlotHTMLElement) RemoveACCESSKEY(v string) *SlotHTMLElement {
     delete(e.StringAttributes, "accesskey")
     return e
@@ -114,6 +121,13 @@ func (e *SlotHTMLElement) AUTOCAPITALIZE(v string) *SlotHTMLElement {
     return e
 }
 
+func (e *SlotHTMLElement) IfAUTOCAPITALIZE(cond bool, v string) *SlotHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.AUTOCAPITALIZE(v)
+}
+
 func (e *SlotHTMLElement) RemoveAUTOCAPITALIZE(v string) *SlotHTMLElement {
     delete(e.StringAttributes, "autocapitalize")
     return e
@@ -128,6 +142,13 @@ func (e *SlotHTMLElement) AUTOFOCUS() *SlotHTMLElement {
     }
     e.BoolAttributes["autofocus"] = struct{}{}
     return e
+}
+
+func (e *SlotHTMLElement) IfAUTOFOCUS(cond bool) *SlotHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.AUTOFOCUS()
 }
 
 func (e *SlotHTMLElement) RemoveAUTOFOCUS() *SlotHTMLElement {
@@ -161,6 +182,13 @@ func(e *SlotHTMLElement) CLASS(v string) *SlotHTMLElement {
     return e
 }
 
+func (e *SlotHTMLElement) IfCLASS(cond bool, v string) *SlotHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.CLASS(v)
+}
+
 func (e *SlotHTMLElement) SetCLASS(v string) *SlotHTMLElement {
     kv := NewSpaceDelimitedString()
     e.DelimitedStringAttributes["class"] = kv
@@ -190,6 +218,13 @@ func (e *SlotHTMLElement) CONTENTEDITABLE(v string) *SlotHTMLElement {
     return e
 }
 
+func (e *SlotHTMLElement) IfCONTENTEDITABLE(cond bool, v string) *SlotHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.CONTENTEDITABLE(v)
+}
+
 func (e *SlotHTMLElement) RemoveCONTENTEDITABLE(v string) *SlotHTMLElement {
     delete(e.StringAttributes, "contenteditable")
     return e
@@ -209,6 +244,13 @@ func (e *SlotHTMLElement) DIR(v string) *SlotHTMLElement {
     return e
 }
 
+func (e *SlotHTMLElement) IfDIR(cond bool, v string) *SlotHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.DIR(v)
+}
+
 func (e *SlotHTMLElement) RemoveDIR(v string) *SlotHTMLElement {
     delete(e.StringAttributes, "dir")
     return e
@@ -224,6 +266,13 @@ func (e *SlotHTMLElement) DRAGGABLE(v string) *SlotHTMLElement {
     }
     e.StringAttributes["draggable"] = v
     return e
+}
+
+func (e *SlotHTMLElement) IfDRAGGABLE(cond bool, v string) *SlotHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.DRAGGABLE(v)
 }
 
 func (e *SlotHTMLElement) RemoveDRAGGABLE(v string) *SlotHTMLElement {
@@ -255,6 +304,13 @@ func (e *SlotHTMLElement) ENTERKEYHINT(v string) *SlotHTMLElement {
     return e
 }
 
+func (e *SlotHTMLElement) IfENTERKEYHINT(cond bool, v string) *SlotHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ENTERKEYHINT(v)
+}
+
 func (e *SlotHTMLElement) RemoveENTERKEYHINT(v string) *SlotHTMLElement {
     delete(e.StringAttributes, "enterkeyhint")
     return e
@@ -274,6 +330,13 @@ func (e *SlotHTMLElement) HIDDEN(v string) *SlotHTMLElement {
     return e
 }
 
+func (e *SlotHTMLElement) IfHIDDEN(cond bool, v string) *SlotHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.HIDDEN(v)
+}
+
 func (e *SlotHTMLElement) RemoveHIDDEN(v string) *SlotHTMLElement {
     delete(e.StringAttributes, "hidden")
     return e
@@ -290,6 +353,13 @@ func (e *SlotHTMLElement) ID(v string) *SlotHTMLElement {
     return e
 }
 
+func (e *SlotHTMLElement) IfID(cond bool, v string) *SlotHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ID(v)
+}
+
 func (e *SlotHTMLElement) RemoveID(v string) *SlotHTMLElement {
     delete(e.StringAttributes, "id")
     return e
@@ -304,6 +374,13 @@ func (e *SlotHTMLElement) INERT() *SlotHTMLElement {
     }
     e.BoolAttributes["inert"] = struct{}{}
     return e
+}
+
+func (e *SlotHTMLElement) IfINERT(cond bool) *SlotHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.INERT()
 }
 
 func (e *SlotHTMLElement) RemoveINERT() *SlotHTMLElement {
@@ -347,6 +424,13 @@ func (e *SlotHTMLElement) INPUTMODE(v string) *SlotHTMLElement {
     return e
 }
 
+func (e *SlotHTMLElement) IfINPUTMODE(cond bool, v string) *SlotHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.INPUTMODE(v)
+}
+
 func (e *SlotHTMLElement) RemoveINPUTMODE(v string) *SlotHTMLElement {
     delete(e.StringAttributes, "inputmode")
     return e
@@ -364,6 +448,13 @@ func (e *SlotHTMLElement) IS(v string) *SlotHTMLElement {
     return e
 }
 
+func (e *SlotHTMLElement) IfIS(cond bool, v string) *SlotHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.IS(v)
+}
+
 func (e *SlotHTMLElement) RemoveIS(v string) *SlotHTMLElement {
     delete(e.StringAttributes, "is")
     return e
@@ -378,6 +469,13 @@ func (e *SlotHTMLElement) ITEMID(v string) *SlotHTMLElement {
     }
     e.StringAttributes["itemid"] = v
     return e
+}
+
+func (e *SlotHTMLElement) IfITEMID(cond bool, v string) *SlotHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMID(v)
 }
 
 func (e *SlotHTMLElement) RemoveITEMID(v string) *SlotHTMLElement {
@@ -398,6 +496,13 @@ func (e *SlotHTMLElement) ITEMPROP(v string) *SlotHTMLElement {
     return e
 }
 
+func (e *SlotHTMLElement) IfITEMPROP(cond bool, v string) *SlotHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMPROP(v)
+}
+
 func (e *SlotHTMLElement) RemoveITEMPROP(v string) *SlotHTMLElement {
     delete(e.StringAttributes, "itemprop")
     return e
@@ -414,6 +519,13 @@ func (e *SlotHTMLElement) ITEMREF(v string) *SlotHTMLElement {
     return e
 }
 
+func (e *SlotHTMLElement) IfITEMREF(cond bool, v string) *SlotHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMREF(v)
+}
+
 func (e *SlotHTMLElement) RemoveITEMREF(v string) *SlotHTMLElement {
     delete(e.StringAttributes, "itemref")
     return e
@@ -428,6 +540,13 @@ func (e *SlotHTMLElement) ITEMSCOPE() *SlotHTMLElement {
     }
     e.BoolAttributes["itemscope"] = struct{}{}
     return e
+}
+
+func (e *SlotHTMLElement) IfITEMSCOPE(cond bool) *SlotHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMSCOPE()
 }
 
 func (e *SlotHTMLElement) RemoveITEMSCOPE() *SlotHTMLElement {
@@ -457,6 +576,13 @@ func (e *SlotHTMLElement) ITEMTYPE(v string) *SlotHTMLElement {
     return e
 }
 
+func (e *SlotHTMLElement) IfITEMTYPE(cond bool, v string) *SlotHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMTYPE(v)
+}
+
 func (e *SlotHTMLElement) RemoveITEMTYPE(v string) *SlotHTMLElement {
     delete(e.StringAttributes, "itemtype")
     return e
@@ -470,6 +596,13 @@ func (e *SlotHTMLElement) LANG(v string) *SlotHTMLElement {
     }
     e.StringAttributes["lang"] = v
     return e
+}
+
+func (e *SlotHTMLElement) IfLANG(cond bool, v string) *SlotHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.LANG(v)
 }
 
 func (e *SlotHTMLElement) RemoveLANG(v string) *SlotHTMLElement {
@@ -488,6 +621,13 @@ func (e *SlotHTMLElement) NAME(v string) *SlotHTMLElement {
     return e
 }
 
+func (e *SlotHTMLElement) IfNAME(cond bool, v string) *SlotHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.NAME(v)
+}
+
 func (e *SlotHTMLElement) RemoveNAME(v string) *SlotHTMLElement {
     delete(e.StringAttributes, "name")
     return e
@@ -502,6 +642,13 @@ func (e *SlotHTMLElement) NONCE(v string) *SlotHTMLElement {
     }
     e.StringAttributes["nonce"] = v
     return e
+}
+
+func (e *SlotHTMLElement) IfNONCE(cond bool, v string) *SlotHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.NONCE(v)
 }
 
 func (e *SlotHTMLElement) RemoveNONCE(v string) *SlotHTMLElement {
@@ -523,6 +670,13 @@ func (e *SlotHTMLElement) POPOVER(v string) *SlotHTMLElement {
     return e
 }
 
+func (e *SlotHTMLElement) IfPOPOVER(cond bool, v string) *SlotHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.POPOVER(v)
+}
+
 func (e *SlotHTMLElement) RemovePOPOVER(v string) *SlotHTMLElement {
     delete(e.StringAttributes, "popover")
     return e
@@ -537,6 +691,13 @@ func (e *SlotHTMLElement) SLOT(v string) *SlotHTMLElement {
     }
     e.StringAttributes["slot"] = v
     return e
+}
+
+func (e *SlotHTMLElement) IfSLOT(cond bool, v string) *SlotHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SLOT(v)
 }
 
 func (e *SlotHTMLElement) RemoveSLOT(v string) *SlotHTMLElement {
@@ -554,6 +715,13 @@ func (e *SlotHTMLElement) SPELLCHECK(v string) *SlotHTMLElement {
     }
     e.StringAttributes["spellcheck"] = v
     return e
+}
+
+func (e *SlotHTMLElement) IfSPELLCHECK(cond bool, v string) *SlotHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SPELLCHECK(v)
 }
 
 func (e *SlotHTMLElement) RemoveSPELLCHECK(v string) *SlotHTMLElement {
@@ -574,6 +742,13 @@ func (e *SlotHTMLElement) STYLE(k,v string) *SlotHTMLElement {
     }
     kv.Add(k,v)
     return e
+}
+
+func (e *SlotHTMLElement) IfSTYLE(cond bool, k string) *SlotHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.STYLE(k, "")
 }
 
 func (e *SlotHTMLElement) RemoveSTYLE(k string) *SlotHTMLElement {
@@ -597,6 +772,13 @@ func (e *SlotHTMLElement) TABINDEX(v string) *SlotHTMLElement {
     return e
 }
 
+func (e *SlotHTMLElement) IfTABINDEX(cond bool, v string) *SlotHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TABINDEX(v)
+}
+
 func (e *SlotHTMLElement) RemoveTABINDEX(v string) *SlotHTMLElement {
     delete(e.StringAttributes, "tabindex")
     return e
@@ -611,6 +793,13 @@ func (e *SlotHTMLElement) TITLE(v string) *SlotHTMLElement {
     }
     e.StringAttributes["title"] = v
     return e
+}
+
+func (e *SlotHTMLElement) IfTITLE(cond bool, v string) *SlotHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TITLE(v)
 }
 
 func (e *SlotHTMLElement) RemoveTITLE(v string) *SlotHTMLElement {
@@ -628,6 +817,13 @@ func (e *SlotHTMLElement) TRANSLATE(v string) *SlotHTMLElement {
     }
     e.StringAttributes["translate"] = v
     return e
+}
+
+func (e *SlotHTMLElement) IfTRANSLATE(cond bool, v string) *SlotHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TRANSLATE(v)
 }
 
 func (e *SlotHTMLElement) RemoveTRANSLATE(v string) *SlotHTMLElement {

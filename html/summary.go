@@ -48,13 +48,13 @@ func (e *SummaryHTMLElement) TextF(format string, args ...any) *SummaryHTMLEleme
     return e.Text(fmt.Sprintf(format, args...))
 }
 
-func (e *SummaryHTMLElement) Raw(text string) *SummaryHTMLElement {
-    e.Descendants = append(e.Descendants, Raw(text))
+func (e *SummaryHTMLElement) Escaped(text string) *SummaryHTMLElement {
+    e.Descendants = append(e.Descendants, Escaped(text))
     return e
 }
 
-func (e *SummaryHTMLElement) RawF(format string, args ...any) *SummaryHTMLElement {
-    return e.Raw(fmt.Sprintf(format, args...))
+func (e *SummaryHTMLElement) EscapedF(format string, args ...any) *SummaryHTMLElement {
+    return e.Escaped(fmt.Sprintf(format, args...))
 }
 
 func (e *SummaryHTMLElement) CustomData(key, value string) *SummaryHTMLElement {
@@ -87,6 +87,13 @@ func (e *SummaryHTMLElement) ACCESSKEY(v string) *SummaryHTMLElement {
     return e
 }
 
+func (e *SummaryHTMLElement) IfACCESSKEY(cond bool, v string) *SummaryHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ACCESSKEY(v)
+}
+
 func (e *SummaryHTMLElement) RemoveACCESSKEY(v string) *SummaryHTMLElement {
     delete(e.StringAttributes, "accesskey")
     return e
@@ -114,6 +121,13 @@ func (e *SummaryHTMLElement) AUTOCAPITALIZE(v string) *SummaryHTMLElement {
     return e
 }
 
+func (e *SummaryHTMLElement) IfAUTOCAPITALIZE(cond bool, v string) *SummaryHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.AUTOCAPITALIZE(v)
+}
+
 func (e *SummaryHTMLElement) RemoveAUTOCAPITALIZE(v string) *SummaryHTMLElement {
     delete(e.StringAttributes, "autocapitalize")
     return e
@@ -128,6 +142,13 @@ func (e *SummaryHTMLElement) AUTOFOCUS() *SummaryHTMLElement {
     }
     e.BoolAttributes["autofocus"] = struct{}{}
     return e
+}
+
+func (e *SummaryHTMLElement) IfAUTOFOCUS(cond bool) *SummaryHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.AUTOFOCUS()
 }
 
 func (e *SummaryHTMLElement) RemoveAUTOFOCUS() *SummaryHTMLElement {
@@ -161,6 +182,13 @@ func(e *SummaryHTMLElement) CLASS(v string) *SummaryHTMLElement {
     return e
 }
 
+func (e *SummaryHTMLElement) IfCLASS(cond bool, v string) *SummaryHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.CLASS(v)
+}
+
 func (e *SummaryHTMLElement) SetCLASS(v string) *SummaryHTMLElement {
     kv := NewSpaceDelimitedString()
     e.DelimitedStringAttributes["class"] = kv
@@ -190,6 +218,13 @@ func (e *SummaryHTMLElement) CONTENTEDITABLE(v string) *SummaryHTMLElement {
     return e
 }
 
+func (e *SummaryHTMLElement) IfCONTENTEDITABLE(cond bool, v string) *SummaryHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.CONTENTEDITABLE(v)
+}
+
 func (e *SummaryHTMLElement) RemoveCONTENTEDITABLE(v string) *SummaryHTMLElement {
     delete(e.StringAttributes, "contenteditable")
     return e
@@ -209,6 +244,13 @@ func (e *SummaryHTMLElement) DIR(v string) *SummaryHTMLElement {
     return e
 }
 
+func (e *SummaryHTMLElement) IfDIR(cond bool, v string) *SummaryHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.DIR(v)
+}
+
 func (e *SummaryHTMLElement) RemoveDIR(v string) *SummaryHTMLElement {
     delete(e.StringAttributes, "dir")
     return e
@@ -224,6 +266,13 @@ func (e *SummaryHTMLElement) DRAGGABLE(v string) *SummaryHTMLElement {
     }
     e.StringAttributes["draggable"] = v
     return e
+}
+
+func (e *SummaryHTMLElement) IfDRAGGABLE(cond bool, v string) *SummaryHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.DRAGGABLE(v)
 }
 
 func (e *SummaryHTMLElement) RemoveDRAGGABLE(v string) *SummaryHTMLElement {
@@ -255,6 +304,13 @@ func (e *SummaryHTMLElement) ENTERKEYHINT(v string) *SummaryHTMLElement {
     return e
 }
 
+func (e *SummaryHTMLElement) IfENTERKEYHINT(cond bool, v string) *SummaryHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ENTERKEYHINT(v)
+}
+
 func (e *SummaryHTMLElement) RemoveENTERKEYHINT(v string) *SummaryHTMLElement {
     delete(e.StringAttributes, "enterkeyhint")
     return e
@@ -274,6 +330,13 @@ func (e *SummaryHTMLElement) HIDDEN(v string) *SummaryHTMLElement {
     return e
 }
 
+func (e *SummaryHTMLElement) IfHIDDEN(cond bool, v string) *SummaryHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.HIDDEN(v)
+}
+
 func (e *SummaryHTMLElement) RemoveHIDDEN(v string) *SummaryHTMLElement {
     delete(e.StringAttributes, "hidden")
     return e
@@ -290,6 +353,13 @@ func (e *SummaryHTMLElement) ID(v string) *SummaryHTMLElement {
     return e
 }
 
+func (e *SummaryHTMLElement) IfID(cond bool, v string) *SummaryHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ID(v)
+}
+
 func (e *SummaryHTMLElement) RemoveID(v string) *SummaryHTMLElement {
     delete(e.StringAttributes, "id")
     return e
@@ -304,6 +374,13 @@ func (e *SummaryHTMLElement) INERT() *SummaryHTMLElement {
     }
     e.BoolAttributes["inert"] = struct{}{}
     return e
+}
+
+func (e *SummaryHTMLElement) IfINERT(cond bool) *SummaryHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.INERT()
 }
 
 func (e *SummaryHTMLElement) RemoveINERT() *SummaryHTMLElement {
@@ -347,6 +424,13 @@ func (e *SummaryHTMLElement) INPUTMODE(v string) *SummaryHTMLElement {
     return e
 }
 
+func (e *SummaryHTMLElement) IfINPUTMODE(cond bool, v string) *SummaryHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.INPUTMODE(v)
+}
+
 func (e *SummaryHTMLElement) RemoveINPUTMODE(v string) *SummaryHTMLElement {
     delete(e.StringAttributes, "inputmode")
     return e
@@ -364,6 +448,13 @@ func (e *SummaryHTMLElement) IS(v string) *SummaryHTMLElement {
     return e
 }
 
+func (e *SummaryHTMLElement) IfIS(cond bool, v string) *SummaryHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.IS(v)
+}
+
 func (e *SummaryHTMLElement) RemoveIS(v string) *SummaryHTMLElement {
     delete(e.StringAttributes, "is")
     return e
@@ -378,6 +469,13 @@ func (e *SummaryHTMLElement) ITEMID(v string) *SummaryHTMLElement {
     }
     e.StringAttributes["itemid"] = v
     return e
+}
+
+func (e *SummaryHTMLElement) IfITEMID(cond bool, v string) *SummaryHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMID(v)
 }
 
 func (e *SummaryHTMLElement) RemoveITEMID(v string) *SummaryHTMLElement {
@@ -398,6 +496,13 @@ func (e *SummaryHTMLElement) ITEMPROP(v string) *SummaryHTMLElement {
     return e
 }
 
+func (e *SummaryHTMLElement) IfITEMPROP(cond bool, v string) *SummaryHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMPROP(v)
+}
+
 func (e *SummaryHTMLElement) RemoveITEMPROP(v string) *SummaryHTMLElement {
     delete(e.StringAttributes, "itemprop")
     return e
@@ -414,6 +519,13 @@ func (e *SummaryHTMLElement) ITEMREF(v string) *SummaryHTMLElement {
     return e
 }
 
+func (e *SummaryHTMLElement) IfITEMREF(cond bool, v string) *SummaryHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMREF(v)
+}
+
 func (e *SummaryHTMLElement) RemoveITEMREF(v string) *SummaryHTMLElement {
     delete(e.StringAttributes, "itemref")
     return e
@@ -428,6 +540,13 @@ func (e *SummaryHTMLElement) ITEMSCOPE() *SummaryHTMLElement {
     }
     e.BoolAttributes["itemscope"] = struct{}{}
     return e
+}
+
+func (e *SummaryHTMLElement) IfITEMSCOPE(cond bool) *SummaryHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMSCOPE()
 }
 
 func (e *SummaryHTMLElement) RemoveITEMSCOPE() *SummaryHTMLElement {
@@ -457,6 +576,13 @@ func (e *SummaryHTMLElement) ITEMTYPE(v string) *SummaryHTMLElement {
     return e
 }
 
+func (e *SummaryHTMLElement) IfITEMTYPE(cond bool, v string) *SummaryHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMTYPE(v)
+}
+
 func (e *SummaryHTMLElement) RemoveITEMTYPE(v string) *SummaryHTMLElement {
     delete(e.StringAttributes, "itemtype")
     return e
@@ -470,6 +596,13 @@ func (e *SummaryHTMLElement) LANG(v string) *SummaryHTMLElement {
     }
     e.StringAttributes["lang"] = v
     return e
+}
+
+func (e *SummaryHTMLElement) IfLANG(cond bool, v string) *SummaryHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.LANG(v)
 }
 
 func (e *SummaryHTMLElement) RemoveLANG(v string) *SummaryHTMLElement {
@@ -486,6 +619,13 @@ func (e *SummaryHTMLElement) NONCE(v string) *SummaryHTMLElement {
     }
     e.StringAttributes["nonce"] = v
     return e
+}
+
+func (e *SummaryHTMLElement) IfNONCE(cond bool, v string) *SummaryHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.NONCE(v)
 }
 
 func (e *SummaryHTMLElement) RemoveNONCE(v string) *SummaryHTMLElement {
@@ -507,6 +647,13 @@ func (e *SummaryHTMLElement) POPOVER(v string) *SummaryHTMLElement {
     return e
 }
 
+func (e *SummaryHTMLElement) IfPOPOVER(cond bool, v string) *SummaryHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.POPOVER(v)
+}
+
 func (e *SummaryHTMLElement) RemovePOPOVER(v string) *SummaryHTMLElement {
     delete(e.StringAttributes, "popover")
     return e
@@ -521,6 +668,13 @@ func (e *SummaryHTMLElement) SLOT(v string) *SummaryHTMLElement {
     }
     e.StringAttributes["slot"] = v
     return e
+}
+
+func (e *SummaryHTMLElement) IfSLOT(cond bool, v string) *SummaryHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SLOT(v)
 }
 
 func (e *SummaryHTMLElement) RemoveSLOT(v string) *SummaryHTMLElement {
@@ -538,6 +692,13 @@ func (e *SummaryHTMLElement) SPELLCHECK(v string) *SummaryHTMLElement {
     }
     e.StringAttributes["spellcheck"] = v
     return e
+}
+
+func (e *SummaryHTMLElement) IfSPELLCHECK(cond bool, v string) *SummaryHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SPELLCHECK(v)
 }
 
 func (e *SummaryHTMLElement) RemoveSPELLCHECK(v string) *SummaryHTMLElement {
@@ -558,6 +719,13 @@ func (e *SummaryHTMLElement) STYLE(k,v string) *SummaryHTMLElement {
     }
     kv.Add(k,v)
     return e
+}
+
+func (e *SummaryHTMLElement) IfSTYLE(cond bool, k string) *SummaryHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.STYLE(k, "")
 }
 
 func (e *SummaryHTMLElement) RemoveSTYLE(k string) *SummaryHTMLElement {
@@ -581,6 +749,13 @@ func (e *SummaryHTMLElement) TABINDEX(v string) *SummaryHTMLElement {
     return e
 }
 
+func (e *SummaryHTMLElement) IfTABINDEX(cond bool, v string) *SummaryHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TABINDEX(v)
+}
+
 func (e *SummaryHTMLElement) RemoveTABINDEX(v string) *SummaryHTMLElement {
     delete(e.StringAttributes, "tabindex")
     return e
@@ -595,6 +770,13 @@ func (e *SummaryHTMLElement) TITLE(v string) *SummaryHTMLElement {
     }
     e.StringAttributes["title"] = v
     return e
+}
+
+func (e *SummaryHTMLElement) IfTITLE(cond bool, v string) *SummaryHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TITLE(v)
 }
 
 func (e *SummaryHTMLElement) RemoveTITLE(v string) *SummaryHTMLElement {
@@ -612,6 +794,13 @@ func (e *SummaryHTMLElement) TRANSLATE(v string) *SummaryHTMLElement {
     }
     e.StringAttributes["translate"] = v
     return e
+}
+
+func (e *SummaryHTMLElement) IfTRANSLATE(cond bool, v string) *SummaryHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TRANSLATE(v)
 }
 
 func (e *SummaryHTMLElement) RemoveTRANSLATE(v string) *SummaryHTMLElement {

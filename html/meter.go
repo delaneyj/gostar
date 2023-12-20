@@ -48,13 +48,13 @@ func (e *MeterHTMLElement) TextF(format string, args ...any) *MeterHTMLElement {
     return e.Text(fmt.Sprintf(format, args...))
 }
 
-func (e *MeterHTMLElement) Raw(text string) *MeterHTMLElement {
-    e.Descendants = append(e.Descendants, Raw(text))
+func (e *MeterHTMLElement) Escaped(text string) *MeterHTMLElement {
+    e.Descendants = append(e.Descendants, Escaped(text))
     return e
 }
 
-func (e *MeterHTMLElement) RawF(format string, args ...any) *MeterHTMLElement {
-    return e.Raw(fmt.Sprintf(format, args...))
+func (e *MeterHTMLElement) EscapedF(format string, args ...any) *MeterHTMLElement {
+    return e.Escaped(fmt.Sprintf(format, args...))
 }
 
 func (e *MeterHTMLElement) CustomData(key, value string) *MeterHTMLElement {
@@ -87,6 +87,13 @@ func (e *MeterHTMLElement) ACCESSKEY(v string) *MeterHTMLElement {
     return e
 }
 
+func (e *MeterHTMLElement) IfACCESSKEY(cond bool, v string) *MeterHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ACCESSKEY(v)
+}
+
 func (e *MeterHTMLElement) RemoveACCESSKEY(v string) *MeterHTMLElement {
     delete(e.StringAttributes, "accesskey")
     return e
@@ -114,6 +121,13 @@ func (e *MeterHTMLElement) AUTOCAPITALIZE(v string) *MeterHTMLElement {
     return e
 }
 
+func (e *MeterHTMLElement) IfAUTOCAPITALIZE(cond bool, v string) *MeterHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.AUTOCAPITALIZE(v)
+}
+
 func (e *MeterHTMLElement) RemoveAUTOCAPITALIZE(v string) *MeterHTMLElement {
     delete(e.StringAttributes, "autocapitalize")
     return e
@@ -128,6 +142,13 @@ func (e *MeterHTMLElement) AUTOFOCUS() *MeterHTMLElement {
     }
     e.BoolAttributes["autofocus"] = struct{}{}
     return e
+}
+
+func (e *MeterHTMLElement) IfAUTOFOCUS(cond bool) *MeterHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.AUTOFOCUS()
 }
 
 func (e *MeterHTMLElement) RemoveAUTOFOCUS() *MeterHTMLElement {
@@ -161,6 +182,13 @@ func(e *MeterHTMLElement) CLASS(v string) *MeterHTMLElement {
     return e
 }
 
+func (e *MeterHTMLElement) IfCLASS(cond bool, v string) *MeterHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.CLASS(v)
+}
+
 func (e *MeterHTMLElement) SetCLASS(v string) *MeterHTMLElement {
     kv := NewSpaceDelimitedString()
     e.DelimitedStringAttributes["class"] = kv
@@ -190,6 +218,13 @@ func (e *MeterHTMLElement) CONTENTEDITABLE(v string) *MeterHTMLElement {
     return e
 }
 
+func (e *MeterHTMLElement) IfCONTENTEDITABLE(cond bool, v string) *MeterHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.CONTENTEDITABLE(v)
+}
+
 func (e *MeterHTMLElement) RemoveCONTENTEDITABLE(v string) *MeterHTMLElement {
     delete(e.StringAttributes, "contenteditable")
     return e
@@ -209,6 +244,13 @@ func (e *MeterHTMLElement) DIR(v string) *MeterHTMLElement {
     return e
 }
 
+func (e *MeterHTMLElement) IfDIR(cond bool, v string) *MeterHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.DIR(v)
+}
+
 func (e *MeterHTMLElement) RemoveDIR(v string) *MeterHTMLElement {
     delete(e.StringAttributes, "dir")
     return e
@@ -224,6 +266,13 @@ func (e *MeterHTMLElement) DRAGGABLE(v string) *MeterHTMLElement {
     }
     e.StringAttributes["draggable"] = v
     return e
+}
+
+func (e *MeterHTMLElement) IfDRAGGABLE(cond bool, v string) *MeterHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.DRAGGABLE(v)
 }
 
 func (e *MeterHTMLElement) RemoveDRAGGABLE(v string) *MeterHTMLElement {
@@ -255,6 +304,13 @@ func (e *MeterHTMLElement) ENTERKEYHINT(v string) *MeterHTMLElement {
     return e
 }
 
+func (e *MeterHTMLElement) IfENTERKEYHINT(cond bool, v string) *MeterHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ENTERKEYHINT(v)
+}
+
 func (e *MeterHTMLElement) RemoveENTERKEYHINT(v string) *MeterHTMLElement {
     delete(e.StringAttributes, "enterkeyhint")
     return e
@@ -274,6 +330,13 @@ func (e *MeterHTMLElement) HIDDEN(v string) *MeterHTMLElement {
     return e
 }
 
+func (e *MeterHTMLElement) IfHIDDEN(cond bool, v string) *MeterHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.HIDDEN(v)
+}
+
 func (e *MeterHTMLElement) RemoveHIDDEN(v string) *MeterHTMLElement {
     delete(e.StringAttributes, "hidden")
     return e
@@ -288,6 +351,13 @@ func (e *MeterHTMLElement) HIGH(v string) *MeterHTMLElement {
     }
     e.StringAttributes["high"] = v
     return e
+}
+
+func (e *MeterHTMLElement) IfHIGH(cond bool, v string) *MeterHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.HIGH(v)
 }
 
 func (e *MeterHTMLElement) RemoveHIGH(v string) *MeterHTMLElement {
@@ -306,6 +376,13 @@ func (e *MeterHTMLElement) ID(v string) *MeterHTMLElement {
     return e
 }
 
+func (e *MeterHTMLElement) IfID(cond bool, v string) *MeterHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ID(v)
+}
+
 func (e *MeterHTMLElement) RemoveID(v string) *MeterHTMLElement {
     delete(e.StringAttributes, "id")
     return e
@@ -320,6 +397,13 @@ func (e *MeterHTMLElement) INERT() *MeterHTMLElement {
     }
     e.BoolAttributes["inert"] = struct{}{}
     return e
+}
+
+func (e *MeterHTMLElement) IfINERT(cond bool) *MeterHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.INERT()
 }
 
 func (e *MeterHTMLElement) RemoveINERT() *MeterHTMLElement {
@@ -363,6 +447,13 @@ func (e *MeterHTMLElement) INPUTMODE(v string) *MeterHTMLElement {
     return e
 }
 
+func (e *MeterHTMLElement) IfINPUTMODE(cond bool, v string) *MeterHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.INPUTMODE(v)
+}
+
 func (e *MeterHTMLElement) RemoveINPUTMODE(v string) *MeterHTMLElement {
     delete(e.StringAttributes, "inputmode")
     return e
@@ -380,6 +471,13 @@ func (e *MeterHTMLElement) IS(v string) *MeterHTMLElement {
     return e
 }
 
+func (e *MeterHTMLElement) IfIS(cond bool, v string) *MeterHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.IS(v)
+}
+
 func (e *MeterHTMLElement) RemoveIS(v string) *MeterHTMLElement {
     delete(e.StringAttributes, "is")
     return e
@@ -394,6 +492,13 @@ func (e *MeterHTMLElement) ITEMID(v string) *MeterHTMLElement {
     }
     e.StringAttributes["itemid"] = v
     return e
+}
+
+func (e *MeterHTMLElement) IfITEMID(cond bool, v string) *MeterHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMID(v)
 }
 
 func (e *MeterHTMLElement) RemoveITEMID(v string) *MeterHTMLElement {
@@ -414,6 +519,13 @@ func (e *MeterHTMLElement) ITEMPROP(v string) *MeterHTMLElement {
     return e
 }
 
+func (e *MeterHTMLElement) IfITEMPROP(cond bool, v string) *MeterHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMPROP(v)
+}
+
 func (e *MeterHTMLElement) RemoveITEMPROP(v string) *MeterHTMLElement {
     delete(e.StringAttributes, "itemprop")
     return e
@@ -430,6 +542,13 @@ func (e *MeterHTMLElement) ITEMREF(v string) *MeterHTMLElement {
     return e
 }
 
+func (e *MeterHTMLElement) IfITEMREF(cond bool, v string) *MeterHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMREF(v)
+}
+
 func (e *MeterHTMLElement) RemoveITEMREF(v string) *MeterHTMLElement {
     delete(e.StringAttributes, "itemref")
     return e
@@ -444,6 +563,13 @@ func (e *MeterHTMLElement) ITEMSCOPE() *MeterHTMLElement {
     }
     e.BoolAttributes["itemscope"] = struct{}{}
     return e
+}
+
+func (e *MeterHTMLElement) IfITEMSCOPE(cond bool) *MeterHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMSCOPE()
 }
 
 func (e *MeterHTMLElement) RemoveITEMSCOPE() *MeterHTMLElement {
@@ -473,6 +599,13 @@ func (e *MeterHTMLElement) ITEMTYPE(v string) *MeterHTMLElement {
     return e
 }
 
+func (e *MeterHTMLElement) IfITEMTYPE(cond bool, v string) *MeterHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMTYPE(v)
+}
+
 func (e *MeterHTMLElement) RemoveITEMTYPE(v string) *MeterHTMLElement {
     delete(e.StringAttributes, "itemtype")
     return e
@@ -486,6 +619,13 @@ func (e *MeterHTMLElement) LANG(v string) *MeterHTMLElement {
     }
     e.StringAttributes["lang"] = v
     return e
+}
+
+func (e *MeterHTMLElement) IfLANG(cond bool, v string) *MeterHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.LANG(v)
 }
 
 func (e *MeterHTMLElement) RemoveLANG(v string) *MeterHTMLElement {
@@ -504,6 +644,13 @@ func (e *MeterHTMLElement) LOW(v string) *MeterHTMLElement {
     return e
 }
 
+func (e *MeterHTMLElement) IfLOW(cond bool, v string) *MeterHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.LOW(v)
+}
+
 func (e *MeterHTMLElement) RemoveLOW(v string) *MeterHTMLElement {
     delete(e.StringAttributes, "low")
     return e
@@ -518,6 +665,13 @@ func (e *MeterHTMLElement) MAX(v string) *MeterHTMLElement {
     }
     e.StringAttributes["max"] = v
     return e
+}
+
+func (e *MeterHTMLElement) IfMAX(cond bool, v string) *MeterHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.MAX(v)
 }
 
 func (e *MeterHTMLElement) RemoveMAX(v string) *MeterHTMLElement {
@@ -536,6 +690,13 @@ func (e *MeterHTMLElement) MIN(v string) *MeterHTMLElement {
     return e
 }
 
+func (e *MeterHTMLElement) IfMIN(cond bool, v string) *MeterHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.MIN(v)
+}
+
 func (e *MeterHTMLElement) RemoveMIN(v string) *MeterHTMLElement {
     delete(e.StringAttributes, "min")
     return e
@@ -552,6 +713,13 @@ func (e *MeterHTMLElement) NONCE(v string) *MeterHTMLElement {
     return e
 }
 
+func (e *MeterHTMLElement) IfNONCE(cond bool, v string) *MeterHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.NONCE(v)
+}
+
 func (e *MeterHTMLElement) RemoveNONCE(v string) *MeterHTMLElement {
     delete(e.StringAttributes, "nonce")
     return e
@@ -566,6 +734,13 @@ func (e *MeterHTMLElement) OPTIMUM(v string) *MeterHTMLElement {
     }
     e.StringAttributes["optimum"] = v
     return e
+}
+
+func (e *MeterHTMLElement) IfOPTIMUM(cond bool, v string) *MeterHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.OPTIMUM(v)
 }
 
 func (e *MeterHTMLElement) RemoveOPTIMUM(v string) *MeterHTMLElement {
@@ -587,6 +762,13 @@ func (e *MeterHTMLElement) POPOVER(v string) *MeterHTMLElement {
     return e
 }
 
+func (e *MeterHTMLElement) IfPOPOVER(cond bool, v string) *MeterHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.POPOVER(v)
+}
+
 func (e *MeterHTMLElement) RemovePOPOVER(v string) *MeterHTMLElement {
     delete(e.StringAttributes, "popover")
     return e
@@ -601,6 +783,13 @@ func (e *MeterHTMLElement) SLOT(v string) *MeterHTMLElement {
     }
     e.StringAttributes["slot"] = v
     return e
+}
+
+func (e *MeterHTMLElement) IfSLOT(cond bool, v string) *MeterHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SLOT(v)
 }
 
 func (e *MeterHTMLElement) RemoveSLOT(v string) *MeterHTMLElement {
@@ -618,6 +807,13 @@ func (e *MeterHTMLElement) SPELLCHECK(v string) *MeterHTMLElement {
     }
     e.StringAttributes["spellcheck"] = v
     return e
+}
+
+func (e *MeterHTMLElement) IfSPELLCHECK(cond bool, v string) *MeterHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SPELLCHECK(v)
 }
 
 func (e *MeterHTMLElement) RemoveSPELLCHECK(v string) *MeterHTMLElement {
@@ -638,6 +834,13 @@ func (e *MeterHTMLElement) STYLE(k,v string) *MeterHTMLElement {
     }
     kv.Add(k,v)
     return e
+}
+
+func (e *MeterHTMLElement) IfSTYLE(cond bool, k string) *MeterHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.STYLE(k, "")
 }
 
 func (e *MeterHTMLElement) RemoveSTYLE(k string) *MeterHTMLElement {
@@ -661,6 +864,13 @@ func (e *MeterHTMLElement) TABINDEX(v string) *MeterHTMLElement {
     return e
 }
 
+func (e *MeterHTMLElement) IfTABINDEX(cond bool, v string) *MeterHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TABINDEX(v)
+}
+
 func (e *MeterHTMLElement) RemoveTABINDEX(v string) *MeterHTMLElement {
     delete(e.StringAttributes, "tabindex")
     return e
@@ -675,6 +885,13 @@ func (e *MeterHTMLElement) TITLE(v string) *MeterHTMLElement {
     }
     e.StringAttributes["title"] = v
     return e
+}
+
+func (e *MeterHTMLElement) IfTITLE(cond bool, v string) *MeterHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TITLE(v)
 }
 
 func (e *MeterHTMLElement) RemoveTITLE(v string) *MeterHTMLElement {
@@ -694,6 +911,13 @@ func (e *MeterHTMLElement) TRANSLATE(v string) *MeterHTMLElement {
     return e
 }
 
+func (e *MeterHTMLElement) IfTRANSLATE(cond bool, v string) *MeterHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TRANSLATE(v)
+}
+
 func (e *MeterHTMLElement) RemoveTRANSLATE(v string) *MeterHTMLElement {
     delete(e.StringAttributes, "translate")
     return e
@@ -708,6 +932,13 @@ func (e *MeterHTMLElement) VALUE(v string) *MeterHTMLElement {
     }
     e.StringAttributes["value"] = v
     return e
+}
+
+func (e *MeterHTMLElement) IfVALUE(cond bool, v string) *MeterHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.VALUE(v)
 }
 
 func (e *MeterHTMLElement) RemoveVALUE(v string) *MeterHTMLElement {

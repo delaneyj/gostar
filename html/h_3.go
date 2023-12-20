@@ -48,13 +48,13 @@ func (e *H3HTMLElement) TextF(format string, args ...any) *H3HTMLElement {
     return e.Text(fmt.Sprintf(format, args...))
 }
 
-func (e *H3HTMLElement) Raw(text string) *H3HTMLElement {
-    e.Descendants = append(e.Descendants, Raw(text))
+func (e *H3HTMLElement) Escaped(text string) *H3HTMLElement {
+    e.Descendants = append(e.Descendants, Escaped(text))
     return e
 }
 
-func (e *H3HTMLElement) RawF(format string, args ...any) *H3HTMLElement {
-    return e.Raw(fmt.Sprintf(format, args...))
+func (e *H3HTMLElement) EscapedF(format string, args ...any) *H3HTMLElement {
+    return e.Escaped(fmt.Sprintf(format, args...))
 }
 
 func (e *H3HTMLElement) CustomData(key, value string) *H3HTMLElement {
@@ -87,6 +87,13 @@ func (e *H3HTMLElement) ACCESSKEY(v string) *H3HTMLElement {
     return e
 }
 
+func (e *H3HTMLElement) IfACCESSKEY(cond bool, v string) *H3HTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ACCESSKEY(v)
+}
+
 func (e *H3HTMLElement) RemoveACCESSKEY(v string) *H3HTMLElement {
     delete(e.StringAttributes, "accesskey")
     return e
@@ -114,6 +121,13 @@ func (e *H3HTMLElement) AUTOCAPITALIZE(v string) *H3HTMLElement {
     return e
 }
 
+func (e *H3HTMLElement) IfAUTOCAPITALIZE(cond bool, v string) *H3HTMLElement {
+    if !cond {
+        return e
+    }
+    return e.AUTOCAPITALIZE(v)
+}
+
 func (e *H3HTMLElement) RemoveAUTOCAPITALIZE(v string) *H3HTMLElement {
     delete(e.StringAttributes, "autocapitalize")
     return e
@@ -128,6 +142,13 @@ func (e *H3HTMLElement) AUTOFOCUS() *H3HTMLElement {
     }
     e.BoolAttributes["autofocus"] = struct{}{}
     return e
+}
+
+func (e *H3HTMLElement) IfAUTOFOCUS(cond bool) *H3HTMLElement {
+    if !cond {
+        return e
+    }
+    return e.AUTOFOCUS()
 }
 
 func (e *H3HTMLElement) RemoveAUTOFOCUS() *H3HTMLElement {
@@ -161,6 +182,13 @@ func(e *H3HTMLElement) CLASS(v string) *H3HTMLElement {
     return e
 }
 
+func (e *H3HTMLElement) IfCLASS(cond bool, v string) *H3HTMLElement {
+    if !cond {
+        return e
+    }
+    return e.CLASS(v)
+}
+
 func (e *H3HTMLElement) SetCLASS(v string) *H3HTMLElement {
     kv := NewSpaceDelimitedString()
     e.DelimitedStringAttributes["class"] = kv
@@ -190,6 +218,13 @@ func (e *H3HTMLElement) CONTENTEDITABLE(v string) *H3HTMLElement {
     return e
 }
 
+func (e *H3HTMLElement) IfCONTENTEDITABLE(cond bool, v string) *H3HTMLElement {
+    if !cond {
+        return e
+    }
+    return e.CONTENTEDITABLE(v)
+}
+
 func (e *H3HTMLElement) RemoveCONTENTEDITABLE(v string) *H3HTMLElement {
     delete(e.StringAttributes, "contenteditable")
     return e
@@ -209,6 +244,13 @@ func (e *H3HTMLElement) DIR(v string) *H3HTMLElement {
     return e
 }
 
+func (e *H3HTMLElement) IfDIR(cond bool, v string) *H3HTMLElement {
+    if !cond {
+        return e
+    }
+    return e.DIR(v)
+}
+
 func (e *H3HTMLElement) RemoveDIR(v string) *H3HTMLElement {
     delete(e.StringAttributes, "dir")
     return e
@@ -224,6 +266,13 @@ func (e *H3HTMLElement) DRAGGABLE(v string) *H3HTMLElement {
     }
     e.StringAttributes["draggable"] = v
     return e
+}
+
+func (e *H3HTMLElement) IfDRAGGABLE(cond bool, v string) *H3HTMLElement {
+    if !cond {
+        return e
+    }
+    return e.DRAGGABLE(v)
 }
 
 func (e *H3HTMLElement) RemoveDRAGGABLE(v string) *H3HTMLElement {
@@ -255,6 +304,13 @@ func (e *H3HTMLElement) ENTERKEYHINT(v string) *H3HTMLElement {
     return e
 }
 
+func (e *H3HTMLElement) IfENTERKEYHINT(cond bool, v string) *H3HTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ENTERKEYHINT(v)
+}
+
 func (e *H3HTMLElement) RemoveENTERKEYHINT(v string) *H3HTMLElement {
     delete(e.StringAttributes, "enterkeyhint")
     return e
@@ -274,6 +330,13 @@ func (e *H3HTMLElement) HIDDEN(v string) *H3HTMLElement {
     return e
 }
 
+func (e *H3HTMLElement) IfHIDDEN(cond bool, v string) *H3HTMLElement {
+    if !cond {
+        return e
+    }
+    return e.HIDDEN(v)
+}
+
 func (e *H3HTMLElement) RemoveHIDDEN(v string) *H3HTMLElement {
     delete(e.StringAttributes, "hidden")
     return e
@@ -290,6 +353,13 @@ func (e *H3HTMLElement) ID(v string) *H3HTMLElement {
     return e
 }
 
+func (e *H3HTMLElement) IfID(cond bool, v string) *H3HTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ID(v)
+}
+
 func (e *H3HTMLElement) RemoveID(v string) *H3HTMLElement {
     delete(e.StringAttributes, "id")
     return e
@@ -304,6 +374,13 @@ func (e *H3HTMLElement) INERT() *H3HTMLElement {
     }
     e.BoolAttributes["inert"] = struct{}{}
     return e
+}
+
+func (e *H3HTMLElement) IfINERT(cond bool) *H3HTMLElement {
+    if !cond {
+        return e
+    }
+    return e.INERT()
 }
 
 func (e *H3HTMLElement) RemoveINERT() *H3HTMLElement {
@@ -347,6 +424,13 @@ func (e *H3HTMLElement) INPUTMODE(v string) *H3HTMLElement {
     return e
 }
 
+func (e *H3HTMLElement) IfINPUTMODE(cond bool, v string) *H3HTMLElement {
+    if !cond {
+        return e
+    }
+    return e.INPUTMODE(v)
+}
+
 func (e *H3HTMLElement) RemoveINPUTMODE(v string) *H3HTMLElement {
     delete(e.StringAttributes, "inputmode")
     return e
@@ -364,6 +448,13 @@ func (e *H3HTMLElement) IS(v string) *H3HTMLElement {
     return e
 }
 
+func (e *H3HTMLElement) IfIS(cond bool, v string) *H3HTMLElement {
+    if !cond {
+        return e
+    }
+    return e.IS(v)
+}
+
 func (e *H3HTMLElement) RemoveIS(v string) *H3HTMLElement {
     delete(e.StringAttributes, "is")
     return e
@@ -378,6 +469,13 @@ func (e *H3HTMLElement) ITEMID(v string) *H3HTMLElement {
     }
     e.StringAttributes["itemid"] = v
     return e
+}
+
+func (e *H3HTMLElement) IfITEMID(cond bool, v string) *H3HTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMID(v)
 }
 
 func (e *H3HTMLElement) RemoveITEMID(v string) *H3HTMLElement {
@@ -398,6 +496,13 @@ func (e *H3HTMLElement) ITEMPROP(v string) *H3HTMLElement {
     return e
 }
 
+func (e *H3HTMLElement) IfITEMPROP(cond bool, v string) *H3HTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMPROP(v)
+}
+
 func (e *H3HTMLElement) RemoveITEMPROP(v string) *H3HTMLElement {
     delete(e.StringAttributes, "itemprop")
     return e
@@ -414,6 +519,13 @@ func (e *H3HTMLElement) ITEMREF(v string) *H3HTMLElement {
     return e
 }
 
+func (e *H3HTMLElement) IfITEMREF(cond bool, v string) *H3HTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMREF(v)
+}
+
 func (e *H3HTMLElement) RemoveITEMREF(v string) *H3HTMLElement {
     delete(e.StringAttributes, "itemref")
     return e
@@ -428,6 +540,13 @@ func (e *H3HTMLElement) ITEMSCOPE() *H3HTMLElement {
     }
     e.BoolAttributes["itemscope"] = struct{}{}
     return e
+}
+
+func (e *H3HTMLElement) IfITEMSCOPE(cond bool) *H3HTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMSCOPE()
 }
 
 func (e *H3HTMLElement) RemoveITEMSCOPE() *H3HTMLElement {
@@ -457,6 +576,13 @@ func (e *H3HTMLElement) ITEMTYPE(v string) *H3HTMLElement {
     return e
 }
 
+func (e *H3HTMLElement) IfITEMTYPE(cond bool, v string) *H3HTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMTYPE(v)
+}
+
 func (e *H3HTMLElement) RemoveITEMTYPE(v string) *H3HTMLElement {
     delete(e.StringAttributes, "itemtype")
     return e
@@ -470,6 +596,13 @@ func (e *H3HTMLElement) LANG(v string) *H3HTMLElement {
     }
     e.StringAttributes["lang"] = v
     return e
+}
+
+func (e *H3HTMLElement) IfLANG(cond bool, v string) *H3HTMLElement {
+    if !cond {
+        return e
+    }
+    return e.LANG(v)
 }
 
 func (e *H3HTMLElement) RemoveLANG(v string) *H3HTMLElement {
@@ -486,6 +619,13 @@ func (e *H3HTMLElement) NONCE(v string) *H3HTMLElement {
     }
     e.StringAttributes["nonce"] = v
     return e
+}
+
+func (e *H3HTMLElement) IfNONCE(cond bool, v string) *H3HTMLElement {
+    if !cond {
+        return e
+    }
+    return e.NONCE(v)
 }
 
 func (e *H3HTMLElement) RemoveNONCE(v string) *H3HTMLElement {
@@ -507,6 +647,13 @@ func (e *H3HTMLElement) POPOVER(v string) *H3HTMLElement {
     return e
 }
 
+func (e *H3HTMLElement) IfPOPOVER(cond bool, v string) *H3HTMLElement {
+    if !cond {
+        return e
+    }
+    return e.POPOVER(v)
+}
+
 func (e *H3HTMLElement) RemovePOPOVER(v string) *H3HTMLElement {
     delete(e.StringAttributes, "popover")
     return e
@@ -521,6 +668,13 @@ func (e *H3HTMLElement) SLOT(v string) *H3HTMLElement {
     }
     e.StringAttributes["slot"] = v
     return e
+}
+
+func (e *H3HTMLElement) IfSLOT(cond bool, v string) *H3HTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SLOT(v)
 }
 
 func (e *H3HTMLElement) RemoveSLOT(v string) *H3HTMLElement {
@@ -538,6 +692,13 @@ func (e *H3HTMLElement) SPELLCHECK(v string) *H3HTMLElement {
     }
     e.StringAttributes["spellcheck"] = v
     return e
+}
+
+func (e *H3HTMLElement) IfSPELLCHECK(cond bool, v string) *H3HTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SPELLCHECK(v)
 }
 
 func (e *H3HTMLElement) RemoveSPELLCHECK(v string) *H3HTMLElement {
@@ -558,6 +719,13 @@ func (e *H3HTMLElement) STYLE(k,v string) *H3HTMLElement {
     }
     kv.Add(k,v)
     return e
+}
+
+func (e *H3HTMLElement) IfSTYLE(cond bool, k string) *H3HTMLElement {
+    if !cond {
+        return e
+    }
+    return e.STYLE(k, "")
 }
 
 func (e *H3HTMLElement) RemoveSTYLE(k string) *H3HTMLElement {
@@ -581,6 +749,13 @@ func (e *H3HTMLElement) TABINDEX(v string) *H3HTMLElement {
     return e
 }
 
+func (e *H3HTMLElement) IfTABINDEX(cond bool, v string) *H3HTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TABINDEX(v)
+}
+
 func (e *H3HTMLElement) RemoveTABINDEX(v string) *H3HTMLElement {
     delete(e.StringAttributes, "tabindex")
     return e
@@ -595,6 +770,13 @@ func (e *H3HTMLElement) TITLE(v string) *H3HTMLElement {
     }
     e.StringAttributes["title"] = v
     return e
+}
+
+func (e *H3HTMLElement) IfTITLE(cond bool, v string) *H3HTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TITLE(v)
 }
 
 func (e *H3HTMLElement) RemoveTITLE(v string) *H3HTMLElement {
@@ -612,6 +794,13 @@ func (e *H3HTMLElement) TRANSLATE(v string) *H3HTMLElement {
     }
     e.StringAttributes["translate"] = v
     return e
+}
+
+func (e *H3HTMLElement) IfTRANSLATE(cond bool, v string) *H3HTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TRANSLATE(v)
 }
 
 func (e *H3HTMLElement) RemoveTRANSLATE(v string) *H3HTMLElement {

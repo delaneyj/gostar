@@ -48,13 +48,13 @@ func (e *BlockquoteHTMLElement) TextF(format string, args ...any) *BlockquoteHTM
     return e.Text(fmt.Sprintf(format, args...))
 }
 
-func (e *BlockquoteHTMLElement) Raw(text string) *BlockquoteHTMLElement {
-    e.Descendants = append(e.Descendants, Raw(text))
+func (e *BlockquoteHTMLElement) Escaped(text string) *BlockquoteHTMLElement {
+    e.Descendants = append(e.Descendants, Escaped(text))
     return e
 }
 
-func (e *BlockquoteHTMLElement) RawF(format string, args ...any) *BlockquoteHTMLElement {
-    return e.Raw(fmt.Sprintf(format, args...))
+func (e *BlockquoteHTMLElement) EscapedF(format string, args ...any) *BlockquoteHTMLElement {
+    return e.Escaped(fmt.Sprintf(format, args...))
 }
 
 func (e *BlockquoteHTMLElement) CustomData(key, value string) *BlockquoteHTMLElement {
@@ -87,6 +87,13 @@ func (e *BlockquoteHTMLElement) ACCESSKEY(v string) *BlockquoteHTMLElement {
     return e
 }
 
+func (e *BlockquoteHTMLElement) IfACCESSKEY(cond bool, v string) *BlockquoteHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ACCESSKEY(v)
+}
+
 func (e *BlockquoteHTMLElement) RemoveACCESSKEY(v string) *BlockquoteHTMLElement {
     delete(e.StringAttributes, "accesskey")
     return e
@@ -114,6 +121,13 @@ func (e *BlockquoteHTMLElement) AUTOCAPITALIZE(v string) *BlockquoteHTMLElement 
     return e
 }
 
+func (e *BlockquoteHTMLElement) IfAUTOCAPITALIZE(cond bool, v string) *BlockquoteHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.AUTOCAPITALIZE(v)
+}
+
 func (e *BlockquoteHTMLElement) RemoveAUTOCAPITALIZE(v string) *BlockquoteHTMLElement {
     delete(e.StringAttributes, "autocapitalize")
     return e
@@ -128,6 +142,13 @@ func (e *BlockquoteHTMLElement) AUTOFOCUS() *BlockquoteHTMLElement {
     }
     e.BoolAttributes["autofocus"] = struct{}{}
     return e
+}
+
+func (e *BlockquoteHTMLElement) IfAUTOFOCUS(cond bool) *BlockquoteHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.AUTOFOCUS()
 }
 
 func (e *BlockquoteHTMLElement) RemoveAUTOFOCUS() *BlockquoteHTMLElement {
@@ -156,6 +177,13 @@ func (e *BlockquoteHTMLElement) CITE(v string) *BlockquoteHTMLElement {
     return e
 }
 
+func (e *BlockquoteHTMLElement) IfCITE(cond bool, v string) *BlockquoteHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.CITE(v)
+}
+
 func (e *BlockquoteHTMLElement) RemoveCITE(v string) *BlockquoteHTMLElement {
     delete(e.StringAttributes, "cite")
     return e
@@ -175,6 +203,13 @@ func(e *BlockquoteHTMLElement) CLASS(v string) *BlockquoteHTMLElement {
     }
     kv.Add(v)
     return e
+}
+
+func (e *BlockquoteHTMLElement) IfCLASS(cond bool, v string) *BlockquoteHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.CLASS(v)
 }
 
 func (e *BlockquoteHTMLElement) SetCLASS(v string) *BlockquoteHTMLElement {
@@ -206,6 +241,13 @@ func (e *BlockquoteHTMLElement) CONTENTEDITABLE(v string) *BlockquoteHTMLElement
     return e
 }
 
+func (e *BlockquoteHTMLElement) IfCONTENTEDITABLE(cond bool, v string) *BlockquoteHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.CONTENTEDITABLE(v)
+}
+
 func (e *BlockquoteHTMLElement) RemoveCONTENTEDITABLE(v string) *BlockquoteHTMLElement {
     delete(e.StringAttributes, "contenteditable")
     return e
@@ -225,6 +267,13 @@ func (e *BlockquoteHTMLElement) DIR(v string) *BlockquoteHTMLElement {
     return e
 }
 
+func (e *BlockquoteHTMLElement) IfDIR(cond bool, v string) *BlockquoteHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.DIR(v)
+}
+
 func (e *BlockquoteHTMLElement) RemoveDIR(v string) *BlockquoteHTMLElement {
     delete(e.StringAttributes, "dir")
     return e
@@ -240,6 +289,13 @@ func (e *BlockquoteHTMLElement) DRAGGABLE(v string) *BlockquoteHTMLElement {
     }
     e.StringAttributes["draggable"] = v
     return e
+}
+
+func (e *BlockquoteHTMLElement) IfDRAGGABLE(cond bool, v string) *BlockquoteHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.DRAGGABLE(v)
 }
 
 func (e *BlockquoteHTMLElement) RemoveDRAGGABLE(v string) *BlockquoteHTMLElement {
@@ -271,6 +327,13 @@ func (e *BlockquoteHTMLElement) ENTERKEYHINT(v string) *BlockquoteHTMLElement {
     return e
 }
 
+func (e *BlockquoteHTMLElement) IfENTERKEYHINT(cond bool, v string) *BlockquoteHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ENTERKEYHINT(v)
+}
+
 func (e *BlockquoteHTMLElement) RemoveENTERKEYHINT(v string) *BlockquoteHTMLElement {
     delete(e.StringAttributes, "enterkeyhint")
     return e
@@ -290,6 +353,13 @@ func (e *BlockquoteHTMLElement) HIDDEN(v string) *BlockquoteHTMLElement {
     return e
 }
 
+func (e *BlockquoteHTMLElement) IfHIDDEN(cond bool, v string) *BlockquoteHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.HIDDEN(v)
+}
+
 func (e *BlockquoteHTMLElement) RemoveHIDDEN(v string) *BlockquoteHTMLElement {
     delete(e.StringAttributes, "hidden")
     return e
@@ -306,6 +376,13 @@ func (e *BlockquoteHTMLElement) ID(v string) *BlockquoteHTMLElement {
     return e
 }
 
+func (e *BlockquoteHTMLElement) IfID(cond bool, v string) *BlockquoteHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ID(v)
+}
+
 func (e *BlockquoteHTMLElement) RemoveID(v string) *BlockquoteHTMLElement {
     delete(e.StringAttributes, "id")
     return e
@@ -320,6 +397,13 @@ func (e *BlockquoteHTMLElement) INERT() *BlockquoteHTMLElement {
     }
     e.BoolAttributes["inert"] = struct{}{}
     return e
+}
+
+func (e *BlockquoteHTMLElement) IfINERT(cond bool) *BlockquoteHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.INERT()
 }
 
 func (e *BlockquoteHTMLElement) RemoveINERT() *BlockquoteHTMLElement {
@@ -363,6 +447,13 @@ func (e *BlockquoteHTMLElement) INPUTMODE(v string) *BlockquoteHTMLElement {
     return e
 }
 
+func (e *BlockquoteHTMLElement) IfINPUTMODE(cond bool, v string) *BlockquoteHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.INPUTMODE(v)
+}
+
 func (e *BlockquoteHTMLElement) RemoveINPUTMODE(v string) *BlockquoteHTMLElement {
     delete(e.StringAttributes, "inputmode")
     return e
@@ -380,6 +471,13 @@ func (e *BlockquoteHTMLElement) IS(v string) *BlockquoteHTMLElement {
     return e
 }
 
+func (e *BlockquoteHTMLElement) IfIS(cond bool, v string) *BlockquoteHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.IS(v)
+}
+
 func (e *BlockquoteHTMLElement) RemoveIS(v string) *BlockquoteHTMLElement {
     delete(e.StringAttributes, "is")
     return e
@@ -394,6 +492,13 @@ func (e *BlockquoteHTMLElement) ITEMID(v string) *BlockquoteHTMLElement {
     }
     e.StringAttributes["itemid"] = v
     return e
+}
+
+func (e *BlockquoteHTMLElement) IfITEMID(cond bool, v string) *BlockquoteHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMID(v)
 }
 
 func (e *BlockquoteHTMLElement) RemoveITEMID(v string) *BlockquoteHTMLElement {
@@ -414,6 +519,13 @@ func (e *BlockquoteHTMLElement) ITEMPROP(v string) *BlockquoteHTMLElement {
     return e
 }
 
+func (e *BlockquoteHTMLElement) IfITEMPROP(cond bool, v string) *BlockquoteHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMPROP(v)
+}
+
 func (e *BlockquoteHTMLElement) RemoveITEMPROP(v string) *BlockquoteHTMLElement {
     delete(e.StringAttributes, "itemprop")
     return e
@@ -430,6 +542,13 @@ func (e *BlockquoteHTMLElement) ITEMREF(v string) *BlockquoteHTMLElement {
     return e
 }
 
+func (e *BlockquoteHTMLElement) IfITEMREF(cond bool, v string) *BlockquoteHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMREF(v)
+}
+
 func (e *BlockquoteHTMLElement) RemoveITEMREF(v string) *BlockquoteHTMLElement {
     delete(e.StringAttributes, "itemref")
     return e
@@ -444,6 +563,13 @@ func (e *BlockquoteHTMLElement) ITEMSCOPE() *BlockquoteHTMLElement {
     }
     e.BoolAttributes["itemscope"] = struct{}{}
     return e
+}
+
+func (e *BlockquoteHTMLElement) IfITEMSCOPE(cond bool) *BlockquoteHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMSCOPE()
 }
 
 func (e *BlockquoteHTMLElement) RemoveITEMSCOPE() *BlockquoteHTMLElement {
@@ -473,6 +599,13 @@ func (e *BlockquoteHTMLElement) ITEMTYPE(v string) *BlockquoteHTMLElement {
     return e
 }
 
+func (e *BlockquoteHTMLElement) IfITEMTYPE(cond bool, v string) *BlockquoteHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMTYPE(v)
+}
+
 func (e *BlockquoteHTMLElement) RemoveITEMTYPE(v string) *BlockquoteHTMLElement {
     delete(e.StringAttributes, "itemtype")
     return e
@@ -486,6 +619,13 @@ func (e *BlockquoteHTMLElement) LANG(v string) *BlockquoteHTMLElement {
     }
     e.StringAttributes["lang"] = v
     return e
+}
+
+func (e *BlockquoteHTMLElement) IfLANG(cond bool, v string) *BlockquoteHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.LANG(v)
 }
 
 func (e *BlockquoteHTMLElement) RemoveLANG(v string) *BlockquoteHTMLElement {
@@ -502,6 +642,13 @@ func (e *BlockquoteHTMLElement) NONCE(v string) *BlockquoteHTMLElement {
     }
     e.StringAttributes["nonce"] = v
     return e
+}
+
+func (e *BlockquoteHTMLElement) IfNONCE(cond bool, v string) *BlockquoteHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.NONCE(v)
 }
 
 func (e *BlockquoteHTMLElement) RemoveNONCE(v string) *BlockquoteHTMLElement {
@@ -523,6 +670,13 @@ func (e *BlockquoteHTMLElement) POPOVER(v string) *BlockquoteHTMLElement {
     return e
 }
 
+func (e *BlockquoteHTMLElement) IfPOPOVER(cond bool, v string) *BlockquoteHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.POPOVER(v)
+}
+
 func (e *BlockquoteHTMLElement) RemovePOPOVER(v string) *BlockquoteHTMLElement {
     delete(e.StringAttributes, "popover")
     return e
@@ -537,6 +691,13 @@ func (e *BlockquoteHTMLElement) SLOT(v string) *BlockquoteHTMLElement {
     }
     e.StringAttributes["slot"] = v
     return e
+}
+
+func (e *BlockquoteHTMLElement) IfSLOT(cond bool, v string) *BlockquoteHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SLOT(v)
 }
 
 func (e *BlockquoteHTMLElement) RemoveSLOT(v string) *BlockquoteHTMLElement {
@@ -554,6 +715,13 @@ func (e *BlockquoteHTMLElement) SPELLCHECK(v string) *BlockquoteHTMLElement {
     }
     e.StringAttributes["spellcheck"] = v
     return e
+}
+
+func (e *BlockquoteHTMLElement) IfSPELLCHECK(cond bool, v string) *BlockquoteHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SPELLCHECK(v)
 }
 
 func (e *BlockquoteHTMLElement) RemoveSPELLCHECK(v string) *BlockquoteHTMLElement {
@@ -574,6 +742,13 @@ func (e *BlockquoteHTMLElement) STYLE(k,v string) *BlockquoteHTMLElement {
     }
     kv.Add(k,v)
     return e
+}
+
+func (e *BlockquoteHTMLElement) IfSTYLE(cond bool, k string) *BlockquoteHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.STYLE(k, "")
 }
 
 func (e *BlockquoteHTMLElement) RemoveSTYLE(k string) *BlockquoteHTMLElement {
@@ -597,6 +772,13 @@ func (e *BlockquoteHTMLElement) TABINDEX(v string) *BlockquoteHTMLElement {
     return e
 }
 
+func (e *BlockquoteHTMLElement) IfTABINDEX(cond bool, v string) *BlockquoteHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TABINDEX(v)
+}
+
 func (e *BlockquoteHTMLElement) RemoveTABINDEX(v string) *BlockquoteHTMLElement {
     delete(e.StringAttributes, "tabindex")
     return e
@@ -611,6 +793,13 @@ func (e *BlockquoteHTMLElement) TITLE(v string) *BlockquoteHTMLElement {
     }
     e.StringAttributes["title"] = v
     return e
+}
+
+func (e *BlockquoteHTMLElement) IfTITLE(cond bool, v string) *BlockquoteHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TITLE(v)
 }
 
 func (e *BlockquoteHTMLElement) RemoveTITLE(v string) *BlockquoteHTMLElement {
@@ -628,6 +817,13 @@ func (e *BlockquoteHTMLElement) TRANSLATE(v string) *BlockquoteHTMLElement {
     }
     e.StringAttributes["translate"] = v
     return e
+}
+
+func (e *BlockquoteHTMLElement) IfTRANSLATE(cond bool, v string) *BlockquoteHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TRANSLATE(v)
 }
 
 func (e *BlockquoteHTMLElement) RemoveTRANSLATE(v string) *BlockquoteHTMLElement {

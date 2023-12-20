@@ -48,13 +48,13 @@ func (e *TimeHTMLElement) TextF(format string, args ...any) *TimeHTMLElement {
     return e.Text(fmt.Sprintf(format, args...))
 }
 
-func (e *TimeHTMLElement) Raw(text string) *TimeHTMLElement {
-    e.Descendants = append(e.Descendants, Raw(text))
+func (e *TimeHTMLElement) Escaped(text string) *TimeHTMLElement {
+    e.Descendants = append(e.Descendants, Escaped(text))
     return e
 }
 
-func (e *TimeHTMLElement) RawF(format string, args ...any) *TimeHTMLElement {
-    return e.Raw(fmt.Sprintf(format, args...))
+func (e *TimeHTMLElement) EscapedF(format string, args ...any) *TimeHTMLElement {
+    return e.Escaped(fmt.Sprintf(format, args...))
 }
 
 func (e *TimeHTMLElement) CustomData(key, value string) *TimeHTMLElement {
@@ -87,6 +87,13 @@ func (e *TimeHTMLElement) ACCESSKEY(v string) *TimeHTMLElement {
     return e
 }
 
+func (e *TimeHTMLElement) IfACCESSKEY(cond bool, v string) *TimeHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ACCESSKEY(v)
+}
+
 func (e *TimeHTMLElement) RemoveACCESSKEY(v string) *TimeHTMLElement {
     delete(e.StringAttributes, "accesskey")
     return e
@@ -114,6 +121,13 @@ func (e *TimeHTMLElement) AUTOCAPITALIZE(v string) *TimeHTMLElement {
     return e
 }
 
+func (e *TimeHTMLElement) IfAUTOCAPITALIZE(cond bool, v string) *TimeHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.AUTOCAPITALIZE(v)
+}
+
 func (e *TimeHTMLElement) RemoveAUTOCAPITALIZE(v string) *TimeHTMLElement {
     delete(e.StringAttributes, "autocapitalize")
     return e
@@ -128,6 +142,13 @@ func (e *TimeHTMLElement) AUTOFOCUS() *TimeHTMLElement {
     }
     e.BoolAttributes["autofocus"] = struct{}{}
     return e
+}
+
+func (e *TimeHTMLElement) IfAUTOFOCUS(cond bool) *TimeHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.AUTOFOCUS()
 }
 
 func (e *TimeHTMLElement) RemoveAUTOFOCUS() *TimeHTMLElement {
@@ -161,6 +182,13 @@ func(e *TimeHTMLElement) CLASS(v string) *TimeHTMLElement {
     return e
 }
 
+func (e *TimeHTMLElement) IfCLASS(cond bool, v string) *TimeHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.CLASS(v)
+}
+
 func (e *TimeHTMLElement) SetCLASS(v string) *TimeHTMLElement {
     kv := NewSpaceDelimitedString()
     e.DelimitedStringAttributes["class"] = kv
@@ -190,6 +218,13 @@ func (e *TimeHTMLElement) CONTENTEDITABLE(v string) *TimeHTMLElement {
     return e
 }
 
+func (e *TimeHTMLElement) IfCONTENTEDITABLE(cond bool, v string) *TimeHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.CONTENTEDITABLE(v)
+}
+
 func (e *TimeHTMLElement) RemoveCONTENTEDITABLE(v string) *TimeHTMLElement {
     delete(e.StringAttributes, "contenteditable")
     return e
@@ -215,6 +250,13 @@ func (e *TimeHTMLElement) DATETIME(v string) *TimeHTMLElement {
     return e
 }
 
+func (e *TimeHTMLElement) IfDATETIME(cond bool, v string) *TimeHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.DATETIME(v)
+}
+
 func (e *TimeHTMLElement) RemoveDATETIME(v string) *TimeHTMLElement {
     delete(e.StringAttributes, "datetime")
     return e
@@ -234,6 +276,13 @@ func (e *TimeHTMLElement) DIR(v string) *TimeHTMLElement {
     return e
 }
 
+func (e *TimeHTMLElement) IfDIR(cond bool, v string) *TimeHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.DIR(v)
+}
+
 func (e *TimeHTMLElement) RemoveDIR(v string) *TimeHTMLElement {
     delete(e.StringAttributes, "dir")
     return e
@@ -249,6 +298,13 @@ func (e *TimeHTMLElement) DRAGGABLE(v string) *TimeHTMLElement {
     }
     e.StringAttributes["draggable"] = v
     return e
+}
+
+func (e *TimeHTMLElement) IfDRAGGABLE(cond bool, v string) *TimeHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.DRAGGABLE(v)
 }
 
 func (e *TimeHTMLElement) RemoveDRAGGABLE(v string) *TimeHTMLElement {
@@ -280,6 +336,13 @@ func (e *TimeHTMLElement) ENTERKEYHINT(v string) *TimeHTMLElement {
     return e
 }
 
+func (e *TimeHTMLElement) IfENTERKEYHINT(cond bool, v string) *TimeHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ENTERKEYHINT(v)
+}
+
 func (e *TimeHTMLElement) RemoveENTERKEYHINT(v string) *TimeHTMLElement {
     delete(e.StringAttributes, "enterkeyhint")
     return e
@@ -299,6 +362,13 @@ func (e *TimeHTMLElement) HIDDEN(v string) *TimeHTMLElement {
     return e
 }
 
+func (e *TimeHTMLElement) IfHIDDEN(cond bool, v string) *TimeHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.HIDDEN(v)
+}
+
 func (e *TimeHTMLElement) RemoveHIDDEN(v string) *TimeHTMLElement {
     delete(e.StringAttributes, "hidden")
     return e
@@ -315,6 +385,13 @@ func (e *TimeHTMLElement) ID(v string) *TimeHTMLElement {
     return e
 }
 
+func (e *TimeHTMLElement) IfID(cond bool, v string) *TimeHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ID(v)
+}
+
 func (e *TimeHTMLElement) RemoveID(v string) *TimeHTMLElement {
     delete(e.StringAttributes, "id")
     return e
@@ -329,6 +406,13 @@ func (e *TimeHTMLElement) INERT() *TimeHTMLElement {
     }
     e.BoolAttributes["inert"] = struct{}{}
     return e
+}
+
+func (e *TimeHTMLElement) IfINERT(cond bool) *TimeHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.INERT()
 }
 
 func (e *TimeHTMLElement) RemoveINERT() *TimeHTMLElement {
@@ -372,6 +456,13 @@ func (e *TimeHTMLElement) INPUTMODE(v string) *TimeHTMLElement {
     return e
 }
 
+func (e *TimeHTMLElement) IfINPUTMODE(cond bool, v string) *TimeHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.INPUTMODE(v)
+}
+
 func (e *TimeHTMLElement) RemoveINPUTMODE(v string) *TimeHTMLElement {
     delete(e.StringAttributes, "inputmode")
     return e
@@ -389,6 +480,13 @@ func (e *TimeHTMLElement) IS(v string) *TimeHTMLElement {
     return e
 }
 
+func (e *TimeHTMLElement) IfIS(cond bool, v string) *TimeHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.IS(v)
+}
+
 func (e *TimeHTMLElement) RemoveIS(v string) *TimeHTMLElement {
     delete(e.StringAttributes, "is")
     return e
@@ -403,6 +501,13 @@ func (e *TimeHTMLElement) ITEMID(v string) *TimeHTMLElement {
     }
     e.StringAttributes["itemid"] = v
     return e
+}
+
+func (e *TimeHTMLElement) IfITEMID(cond bool, v string) *TimeHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMID(v)
 }
 
 func (e *TimeHTMLElement) RemoveITEMID(v string) *TimeHTMLElement {
@@ -423,6 +528,13 @@ func (e *TimeHTMLElement) ITEMPROP(v string) *TimeHTMLElement {
     return e
 }
 
+func (e *TimeHTMLElement) IfITEMPROP(cond bool, v string) *TimeHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMPROP(v)
+}
+
 func (e *TimeHTMLElement) RemoveITEMPROP(v string) *TimeHTMLElement {
     delete(e.StringAttributes, "itemprop")
     return e
@@ -439,6 +551,13 @@ func (e *TimeHTMLElement) ITEMREF(v string) *TimeHTMLElement {
     return e
 }
 
+func (e *TimeHTMLElement) IfITEMREF(cond bool, v string) *TimeHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMREF(v)
+}
+
 func (e *TimeHTMLElement) RemoveITEMREF(v string) *TimeHTMLElement {
     delete(e.StringAttributes, "itemref")
     return e
@@ -453,6 +572,13 @@ func (e *TimeHTMLElement) ITEMSCOPE() *TimeHTMLElement {
     }
     e.BoolAttributes["itemscope"] = struct{}{}
     return e
+}
+
+func (e *TimeHTMLElement) IfITEMSCOPE(cond bool) *TimeHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMSCOPE()
 }
 
 func (e *TimeHTMLElement) RemoveITEMSCOPE() *TimeHTMLElement {
@@ -482,6 +608,13 @@ func (e *TimeHTMLElement) ITEMTYPE(v string) *TimeHTMLElement {
     return e
 }
 
+func (e *TimeHTMLElement) IfITEMTYPE(cond bool, v string) *TimeHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMTYPE(v)
+}
+
 func (e *TimeHTMLElement) RemoveITEMTYPE(v string) *TimeHTMLElement {
     delete(e.StringAttributes, "itemtype")
     return e
@@ -495,6 +628,13 @@ func (e *TimeHTMLElement) LANG(v string) *TimeHTMLElement {
     }
     e.StringAttributes["lang"] = v
     return e
+}
+
+func (e *TimeHTMLElement) IfLANG(cond bool, v string) *TimeHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.LANG(v)
 }
 
 func (e *TimeHTMLElement) RemoveLANG(v string) *TimeHTMLElement {
@@ -511,6 +651,13 @@ func (e *TimeHTMLElement) NONCE(v string) *TimeHTMLElement {
     }
     e.StringAttributes["nonce"] = v
     return e
+}
+
+func (e *TimeHTMLElement) IfNONCE(cond bool, v string) *TimeHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.NONCE(v)
 }
 
 func (e *TimeHTMLElement) RemoveNONCE(v string) *TimeHTMLElement {
@@ -532,6 +679,13 @@ func (e *TimeHTMLElement) POPOVER(v string) *TimeHTMLElement {
     return e
 }
 
+func (e *TimeHTMLElement) IfPOPOVER(cond bool, v string) *TimeHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.POPOVER(v)
+}
+
 func (e *TimeHTMLElement) RemovePOPOVER(v string) *TimeHTMLElement {
     delete(e.StringAttributes, "popover")
     return e
@@ -546,6 +700,13 @@ func (e *TimeHTMLElement) SLOT(v string) *TimeHTMLElement {
     }
     e.StringAttributes["slot"] = v
     return e
+}
+
+func (e *TimeHTMLElement) IfSLOT(cond bool, v string) *TimeHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SLOT(v)
 }
 
 func (e *TimeHTMLElement) RemoveSLOT(v string) *TimeHTMLElement {
@@ -563,6 +724,13 @@ func (e *TimeHTMLElement) SPELLCHECK(v string) *TimeHTMLElement {
     }
     e.StringAttributes["spellcheck"] = v
     return e
+}
+
+func (e *TimeHTMLElement) IfSPELLCHECK(cond bool, v string) *TimeHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SPELLCHECK(v)
 }
 
 func (e *TimeHTMLElement) RemoveSPELLCHECK(v string) *TimeHTMLElement {
@@ -583,6 +751,13 @@ func (e *TimeHTMLElement) STYLE(k,v string) *TimeHTMLElement {
     }
     kv.Add(k,v)
     return e
+}
+
+func (e *TimeHTMLElement) IfSTYLE(cond bool, k string) *TimeHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.STYLE(k, "")
 }
 
 func (e *TimeHTMLElement) RemoveSTYLE(k string) *TimeHTMLElement {
@@ -606,6 +781,13 @@ func (e *TimeHTMLElement) TABINDEX(v string) *TimeHTMLElement {
     return e
 }
 
+func (e *TimeHTMLElement) IfTABINDEX(cond bool, v string) *TimeHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TABINDEX(v)
+}
+
 func (e *TimeHTMLElement) RemoveTABINDEX(v string) *TimeHTMLElement {
     delete(e.StringAttributes, "tabindex")
     return e
@@ -620,6 +802,13 @@ func (e *TimeHTMLElement) TITLE(v string) *TimeHTMLElement {
     }
     e.StringAttributes["title"] = v
     return e
+}
+
+func (e *TimeHTMLElement) IfTITLE(cond bool, v string) *TimeHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TITLE(v)
 }
 
 func (e *TimeHTMLElement) RemoveTITLE(v string) *TimeHTMLElement {
@@ -637,6 +826,13 @@ func (e *TimeHTMLElement) TRANSLATE(v string) *TimeHTMLElement {
     }
     e.StringAttributes["translate"] = v
     return e
+}
+
+func (e *TimeHTMLElement) IfTRANSLATE(cond bool, v string) *TimeHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TRANSLATE(v)
 }
 
 func (e *TimeHTMLElement) RemoveTRANSLATE(v string) *TimeHTMLElement {

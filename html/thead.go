@@ -48,13 +48,13 @@ func (e *TheadHTMLElement) TextF(format string, args ...any) *TheadHTMLElement {
     return e.Text(fmt.Sprintf(format, args...))
 }
 
-func (e *TheadHTMLElement) Raw(text string) *TheadHTMLElement {
-    e.Descendants = append(e.Descendants, Raw(text))
+func (e *TheadHTMLElement) Escaped(text string) *TheadHTMLElement {
+    e.Descendants = append(e.Descendants, Escaped(text))
     return e
 }
 
-func (e *TheadHTMLElement) RawF(format string, args ...any) *TheadHTMLElement {
-    return e.Raw(fmt.Sprintf(format, args...))
+func (e *TheadHTMLElement) EscapedF(format string, args ...any) *TheadHTMLElement {
+    return e.Escaped(fmt.Sprintf(format, args...))
 }
 
 func (e *TheadHTMLElement) CustomData(key, value string) *TheadHTMLElement {
@@ -87,6 +87,13 @@ func (e *TheadHTMLElement) ACCESSKEY(v string) *TheadHTMLElement {
     return e
 }
 
+func (e *TheadHTMLElement) IfACCESSKEY(cond bool, v string) *TheadHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ACCESSKEY(v)
+}
+
 func (e *TheadHTMLElement) RemoveACCESSKEY(v string) *TheadHTMLElement {
     delete(e.StringAttributes, "accesskey")
     return e
@@ -114,6 +121,13 @@ func (e *TheadHTMLElement) AUTOCAPITALIZE(v string) *TheadHTMLElement {
     return e
 }
 
+func (e *TheadHTMLElement) IfAUTOCAPITALIZE(cond bool, v string) *TheadHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.AUTOCAPITALIZE(v)
+}
+
 func (e *TheadHTMLElement) RemoveAUTOCAPITALIZE(v string) *TheadHTMLElement {
     delete(e.StringAttributes, "autocapitalize")
     return e
@@ -128,6 +142,13 @@ func (e *TheadHTMLElement) AUTOFOCUS() *TheadHTMLElement {
     }
     e.BoolAttributes["autofocus"] = struct{}{}
     return e
+}
+
+func (e *TheadHTMLElement) IfAUTOFOCUS(cond bool) *TheadHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.AUTOFOCUS()
 }
 
 func (e *TheadHTMLElement) RemoveAUTOFOCUS() *TheadHTMLElement {
@@ -161,6 +182,13 @@ func(e *TheadHTMLElement) CLASS(v string) *TheadHTMLElement {
     return e
 }
 
+func (e *TheadHTMLElement) IfCLASS(cond bool, v string) *TheadHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.CLASS(v)
+}
+
 func (e *TheadHTMLElement) SetCLASS(v string) *TheadHTMLElement {
     kv := NewSpaceDelimitedString()
     e.DelimitedStringAttributes["class"] = kv
@@ -190,6 +218,13 @@ func (e *TheadHTMLElement) CONTENTEDITABLE(v string) *TheadHTMLElement {
     return e
 }
 
+func (e *TheadHTMLElement) IfCONTENTEDITABLE(cond bool, v string) *TheadHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.CONTENTEDITABLE(v)
+}
+
 func (e *TheadHTMLElement) RemoveCONTENTEDITABLE(v string) *TheadHTMLElement {
     delete(e.StringAttributes, "contenteditable")
     return e
@@ -209,6 +244,13 @@ func (e *TheadHTMLElement) DIR(v string) *TheadHTMLElement {
     return e
 }
 
+func (e *TheadHTMLElement) IfDIR(cond bool, v string) *TheadHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.DIR(v)
+}
+
 func (e *TheadHTMLElement) RemoveDIR(v string) *TheadHTMLElement {
     delete(e.StringAttributes, "dir")
     return e
@@ -224,6 +266,13 @@ func (e *TheadHTMLElement) DRAGGABLE(v string) *TheadHTMLElement {
     }
     e.StringAttributes["draggable"] = v
     return e
+}
+
+func (e *TheadHTMLElement) IfDRAGGABLE(cond bool, v string) *TheadHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.DRAGGABLE(v)
 }
 
 func (e *TheadHTMLElement) RemoveDRAGGABLE(v string) *TheadHTMLElement {
@@ -255,6 +304,13 @@ func (e *TheadHTMLElement) ENTERKEYHINT(v string) *TheadHTMLElement {
     return e
 }
 
+func (e *TheadHTMLElement) IfENTERKEYHINT(cond bool, v string) *TheadHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ENTERKEYHINT(v)
+}
+
 func (e *TheadHTMLElement) RemoveENTERKEYHINT(v string) *TheadHTMLElement {
     delete(e.StringAttributes, "enterkeyhint")
     return e
@@ -274,6 +330,13 @@ func (e *TheadHTMLElement) HIDDEN(v string) *TheadHTMLElement {
     return e
 }
 
+func (e *TheadHTMLElement) IfHIDDEN(cond bool, v string) *TheadHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.HIDDEN(v)
+}
+
 func (e *TheadHTMLElement) RemoveHIDDEN(v string) *TheadHTMLElement {
     delete(e.StringAttributes, "hidden")
     return e
@@ -290,6 +353,13 @@ func (e *TheadHTMLElement) ID(v string) *TheadHTMLElement {
     return e
 }
 
+func (e *TheadHTMLElement) IfID(cond bool, v string) *TheadHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ID(v)
+}
+
 func (e *TheadHTMLElement) RemoveID(v string) *TheadHTMLElement {
     delete(e.StringAttributes, "id")
     return e
@@ -304,6 +374,13 @@ func (e *TheadHTMLElement) INERT() *TheadHTMLElement {
     }
     e.BoolAttributes["inert"] = struct{}{}
     return e
+}
+
+func (e *TheadHTMLElement) IfINERT(cond bool) *TheadHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.INERT()
 }
 
 func (e *TheadHTMLElement) RemoveINERT() *TheadHTMLElement {
@@ -347,6 +424,13 @@ func (e *TheadHTMLElement) INPUTMODE(v string) *TheadHTMLElement {
     return e
 }
 
+func (e *TheadHTMLElement) IfINPUTMODE(cond bool, v string) *TheadHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.INPUTMODE(v)
+}
+
 func (e *TheadHTMLElement) RemoveINPUTMODE(v string) *TheadHTMLElement {
     delete(e.StringAttributes, "inputmode")
     return e
@@ -364,6 +448,13 @@ func (e *TheadHTMLElement) IS(v string) *TheadHTMLElement {
     return e
 }
 
+func (e *TheadHTMLElement) IfIS(cond bool, v string) *TheadHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.IS(v)
+}
+
 func (e *TheadHTMLElement) RemoveIS(v string) *TheadHTMLElement {
     delete(e.StringAttributes, "is")
     return e
@@ -378,6 +469,13 @@ func (e *TheadHTMLElement) ITEMID(v string) *TheadHTMLElement {
     }
     e.StringAttributes["itemid"] = v
     return e
+}
+
+func (e *TheadHTMLElement) IfITEMID(cond bool, v string) *TheadHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMID(v)
 }
 
 func (e *TheadHTMLElement) RemoveITEMID(v string) *TheadHTMLElement {
@@ -398,6 +496,13 @@ func (e *TheadHTMLElement) ITEMPROP(v string) *TheadHTMLElement {
     return e
 }
 
+func (e *TheadHTMLElement) IfITEMPROP(cond bool, v string) *TheadHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMPROP(v)
+}
+
 func (e *TheadHTMLElement) RemoveITEMPROP(v string) *TheadHTMLElement {
     delete(e.StringAttributes, "itemprop")
     return e
@@ -414,6 +519,13 @@ func (e *TheadHTMLElement) ITEMREF(v string) *TheadHTMLElement {
     return e
 }
 
+func (e *TheadHTMLElement) IfITEMREF(cond bool, v string) *TheadHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMREF(v)
+}
+
 func (e *TheadHTMLElement) RemoveITEMREF(v string) *TheadHTMLElement {
     delete(e.StringAttributes, "itemref")
     return e
@@ -428,6 +540,13 @@ func (e *TheadHTMLElement) ITEMSCOPE() *TheadHTMLElement {
     }
     e.BoolAttributes["itemscope"] = struct{}{}
     return e
+}
+
+func (e *TheadHTMLElement) IfITEMSCOPE(cond bool) *TheadHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMSCOPE()
 }
 
 func (e *TheadHTMLElement) RemoveITEMSCOPE() *TheadHTMLElement {
@@ -457,6 +576,13 @@ func (e *TheadHTMLElement) ITEMTYPE(v string) *TheadHTMLElement {
     return e
 }
 
+func (e *TheadHTMLElement) IfITEMTYPE(cond bool, v string) *TheadHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMTYPE(v)
+}
+
 func (e *TheadHTMLElement) RemoveITEMTYPE(v string) *TheadHTMLElement {
     delete(e.StringAttributes, "itemtype")
     return e
@@ -470,6 +596,13 @@ func (e *TheadHTMLElement) LANG(v string) *TheadHTMLElement {
     }
     e.StringAttributes["lang"] = v
     return e
+}
+
+func (e *TheadHTMLElement) IfLANG(cond bool, v string) *TheadHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.LANG(v)
 }
 
 func (e *TheadHTMLElement) RemoveLANG(v string) *TheadHTMLElement {
@@ -486,6 +619,13 @@ func (e *TheadHTMLElement) NONCE(v string) *TheadHTMLElement {
     }
     e.StringAttributes["nonce"] = v
     return e
+}
+
+func (e *TheadHTMLElement) IfNONCE(cond bool, v string) *TheadHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.NONCE(v)
 }
 
 func (e *TheadHTMLElement) RemoveNONCE(v string) *TheadHTMLElement {
@@ -507,6 +647,13 @@ func (e *TheadHTMLElement) POPOVER(v string) *TheadHTMLElement {
     return e
 }
 
+func (e *TheadHTMLElement) IfPOPOVER(cond bool, v string) *TheadHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.POPOVER(v)
+}
+
 func (e *TheadHTMLElement) RemovePOPOVER(v string) *TheadHTMLElement {
     delete(e.StringAttributes, "popover")
     return e
@@ -521,6 +668,13 @@ func (e *TheadHTMLElement) SLOT(v string) *TheadHTMLElement {
     }
     e.StringAttributes["slot"] = v
     return e
+}
+
+func (e *TheadHTMLElement) IfSLOT(cond bool, v string) *TheadHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SLOT(v)
 }
 
 func (e *TheadHTMLElement) RemoveSLOT(v string) *TheadHTMLElement {
@@ -538,6 +692,13 @@ func (e *TheadHTMLElement) SPELLCHECK(v string) *TheadHTMLElement {
     }
     e.StringAttributes["spellcheck"] = v
     return e
+}
+
+func (e *TheadHTMLElement) IfSPELLCHECK(cond bool, v string) *TheadHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SPELLCHECK(v)
 }
 
 func (e *TheadHTMLElement) RemoveSPELLCHECK(v string) *TheadHTMLElement {
@@ -558,6 +719,13 @@ func (e *TheadHTMLElement) STYLE(k,v string) *TheadHTMLElement {
     }
     kv.Add(k,v)
     return e
+}
+
+func (e *TheadHTMLElement) IfSTYLE(cond bool, k string) *TheadHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.STYLE(k, "")
 }
 
 func (e *TheadHTMLElement) RemoveSTYLE(k string) *TheadHTMLElement {
@@ -581,6 +749,13 @@ func (e *TheadHTMLElement) TABINDEX(v string) *TheadHTMLElement {
     return e
 }
 
+func (e *TheadHTMLElement) IfTABINDEX(cond bool, v string) *TheadHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TABINDEX(v)
+}
+
 func (e *TheadHTMLElement) RemoveTABINDEX(v string) *TheadHTMLElement {
     delete(e.StringAttributes, "tabindex")
     return e
@@ -595,6 +770,13 @@ func (e *TheadHTMLElement) TITLE(v string) *TheadHTMLElement {
     }
     e.StringAttributes["title"] = v
     return e
+}
+
+func (e *TheadHTMLElement) IfTITLE(cond bool, v string) *TheadHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TITLE(v)
 }
 
 func (e *TheadHTMLElement) RemoveTITLE(v string) *TheadHTMLElement {
@@ -612,6 +794,13 @@ func (e *TheadHTMLElement) TRANSLATE(v string) *TheadHTMLElement {
     }
     e.StringAttributes["translate"] = v
     return e
+}
+
+func (e *TheadHTMLElement) IfTRANSLATE(cond bool, v string) *TheadHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TRANSLATE(v)
 }
 
 func (e *TheadHTMLElement) RemoveTRANSLATE(v string) *TheadHTMLElement {

@@ -48,13 +48,13 @@ func (e *ImgHTMLElement) TextF(format string, args ...any) *ImgHTMLElement {
     return e.Text(fmt.Sprintf(format, args...))
 }
 
-func (e *ImgHTMLElement) Raw(text string) *ImgHTMLElement {
-    e.Descendants = append(e.Descendants, Raw(text))
+func (e *ImgHTMLElement) Escaped(text string) *ImgHTMLElement {
+    e.Descendants = append(e.Descendants, Escaped(text))
     return e
 }
 
-func (e *ImgHTMLElement) RawF(format string, args ...any) *ImgHTMLElement {
-    return e.Raw(fmt.Sprintf(format, args...))
+func (e *ImgHTMLElement) EscapedF(format string, args ...any) *ImgHTMLElement {
+    return e.Escaped(fmt.Sprintf(format, args...))
 }
 
 func (e *ImgHTMLElement) CustomData(key, value string) *ImgHTMLElement {
@@ -87,6 +87,13 @@ func (e *ImgHTMLElement) ACCESSKEY(v string) *ImgHTMLElement {
     return e
 }
 
+func (e *ImgHTMLElement) IfACCESSKEY(cond bool, v string) *ImgHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ACCESSKEY(v)
+}
+
 func (e *ImgHTMLElement) RemoveACCESSKEY(v string) *ImgHTMLElement {
     delete(e.StringAttributes, "accesskey")
     return e
@@ -101,6 +108,13 @@ func (e *ImgHTMLElement) ALT(v string) *ImgHTMLElement {
     }
     e.StringAttributes["alt"] = v
     return e
+}
+
+func (e *ImgHTMLElement) IfALT(cond bool, v string) *ImgHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ALT(v)
 }
 
 func (e *ImgHTMLElement) RemoveALT(v string) *ImgHTMLElement {
@@ -130,6 +144,13 @@ func (e *ImgHTMLElement) AUTOCAPITALIZE(v string) *ImgHTMLElement {
     return e
 }
 
+func (e *ImgHTMLElement) IfAUTOCAPITALIZE(cond bool, v string) *ImgHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.AUTOCAPITALIZE(v)
+}
+
 func (e *ImgHTMLElement) RemoveAUTOCAPITALIZE(v string) *ImgHTMLElement {
     delete(e.StringAttributes, "autocapitalize")
     return e
@@ -144,6 +165,13 @@ func (e *ImgHTMLElement) AUTOFOCUS() *ImgHTMLElement {
     }
     e.BoolAttributes["autofocus"] = struct{}{}
     return e
+}
+
+func (e *ImgHTMLElement) IfAUTOFOCUS(cond bool) *ImgHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.AUTOFOCUS()
 }
 
 func (e *ImgHTMLElement) RemoveAUTOFOCUS() *ImgHTMLElement {
@@ -177,6 +205,13 @@ func(e *ImgHTMLElement) CLASS(v string) *ImgHTMLElement {
     return e
 }
 
+func (e *ImgHTMLElement) IfCLASS(cond bool, v string) *ImgHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.CLASS(v)
+}
+
 func (e *ImgHTMLElement) SetCLASS(v string) *ImgHTMLElement {
     kv := NewSpaceDelimitedString()
     e.DelimitedStringAttributes["class"] = kv
@@ -206,6 +241,13 @@ func (e *ImgHTMLElement) CONTENTEDITABLE(v string) *ImgHTMLElement {
     return e
 }
 
+func (e *ImgHTMLElement) IfCONTENTEDITABLE(cond bool, v string) *ImgHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.CONTENTEDITABLE(v)
+}
+
 func (e *ImgHTMLElement) RemoveCONTENTEDITABLE(v string) *ImgHTMLElement {
     delete(e.StringAttributes, "contenteditable")
     return e
@@ -223,6 +265,13 @@ func (e *ImgHTMLElement) CROSSORIGIN(v string) *ImgHTMLElement {
     }
     e.StringAttributes["crossorigin"] = v
     return e
+}
+
+func (e *ImgHTMLElement) IfCROSSORIGIN(cond bool, v string) *ImgHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.CROSSORIGIN(v)
 }
 
 func (e *ImgHTMLElement) RemoveCROSSORIGIN(v string) *ImgHTMLElement {
@@ -246,6 +295,13 @@ func (e *ImgHTMLElement) DECODING(v string) *ImgHTMLElement {
     return e
 }
 
+func (e *ImgHTMLElement) IfDECODING(cond bool, v string) *ImgHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.DECODING(v)
+}
+
 func (e *ImgHTMLElement) RemoveDECODING(v string) *ImgHTMLElement {
     delete(e.StringAttributes, "decoding")
     return e
@@ -265,6 +321,13 @@ func (e *ImgHTMLElement) DIR(v string) *ImgHTMLElement {
     return e
 }
 
+func (e *ImgHTMLElement) IfDIR(cond bool, v string) *ImgHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.DIR(v)
+}
+
 func (e *ImgHTMLElement) RemoveDIR(v string) *ImgHTMLElement {
     delete(e.StringAttributes, "dir")
     return e
@@ -280,6 +343,13 @@ func (e *ImgHTMLElement) DRAGGABLE(v string) *ImgHTMLElement {
     }
     e.StringAttributes["draggable"] = v
     return e
+}
+
+func (e *ImgHTMLElement) IfDRAGGABLE(cond bool, v string) *ImgHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.DRAGGABLE(v)
 }
 
 func (e *ImgHTMLElement) RemoveDRAGGABLE(v string) *ImgHTMLElement {
@@ -311,6 +381,13 @@ func (e *ImgHTMLElement) ENTERKEYHINT(v string) *ImgHTMLElement {
     return e
 }
 
+func (e *ImgHTMLElement) IfENTERKEYHINT(cond bool, v string) *ImgHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ENTERKEYHINT(v)
+}
+
 func (e *ImgHTMLElement) RemoveENTERKEYHINT(v string) *ImgHTMLElement {
     delete(e.StringAttributes, "enterkeyhint")
     return e
@@ -332,6 +409,13 @@ func (e *ImgHTMLElement) FETCHPRIORITY(v string) *ImgHTMLElement {
     return e
 }
 
+func (e *ImgHTMLElement) IfFETCHPRIORITY(cond bool, v string) *ImgHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.FETCHPRIORITY(v)
+}
+
 func (e *ImgHTMLElement) RemoveFETCHPRIORITY(v string) *ImgHTMLElement {
     delete(e.StringAttributes, "fetchpriority")
     return e
@@ -346,6 +430,13 @@ func (e *ImgHTMLElement) HEIGHT(v string) *ImgHTMLElement {
     }
     e.StringAttributes["height"] = v
     return e
+}
+
+func (e *ImgHTMLElement) IfHEIGHT(cond bool, v string) *ImgHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.HEIGHT(v)
 }
 
 func (e *ImgHTMLElement) RemoveHEIGHT(v string) *ImgHTMLElement {
@@ -367,6 +458,13 @@ func (e *ImgHTMLElement) HIDDEN(v string) *ImgHTMLElement {
     return e
 }
 
+func (e *ImgHTMLElement) IfHIDDEN(cond bool, v string) *ImgHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.HIDDEN(v)
+}
+
 func (e *ImgHTMLElement) RemoveHIDDEN(v string) *ImgHTMLElement {
     delete(e.StringAttributes, "hidden")
     return e
@@ -383,6 +481,13 @@ func (e *ImgHTMLElement) ID(v string) *ImgHTMLElement {
     return e
 }
 
+func (e *ImgHTMLElement) IfID(cond bool, v string) *ImgHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ID(v)
+}
+
 func (e *ImgHTMLElement) RemoveID(v string) *ImgHTMLElement {
     delete(e.StringAttributes, "id")
     return e
@@ -397,6 +502,13 @@ func (e *ImgHTMLElement) INERT() *ImgHTMLElement {
     }
     e.BoolAttributes["inert"] = struct{}{}
     return e
+}
+
+func (e *ImgHTMLElement) IfINERT(cond bool) *ImgHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.INERT()
 }
 
 func (e *ImgHTMLElement) RemoveINERT() *ImgHTMLElement {
@@ -440,6 +552,13 @@ func (e *ImgHTMLElement) INPUTMODE(v string) *ImgHTMLElement {
     return e
 }
 
+func (e *ImgHTMLElement) IfINPUTMODE(cond bool, v string) *ImgHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.INPUTMODE(v)
+}
+
 func (e *ImgHTMLElement) RemoveINPUTMODE(v string) *ImgHTMLElement {
     delete(e.StringAttributes, "inputmode")
     return e
@@ -457,6 +576,13 @@ func (e *ImgHTMLElement) IS(v string) *ImgHTMLElement {
     return e
 }
 
+func (e *ImgHTMLElement) IfIS(cond bool, v string) *ImgHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.IS(v)
+}
+
 func (e *ImgHTMLElement) RemoveIS(v string) *ImgHTMLElement {
     delete(e.StringAttributes, "is")
     return e
@@ -471,6 +597,13 @@ func (e *ImgHTMLElement) ISMAP() *ImgHTMLElement {
     }
     e.BoolAttributes["ismap"] = struct{}{}
     return e
+}
+
+func (e *ImgHTMLElement) IfISMAP(cond bool) *ImgHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ISMAP()
 }
 
 func (e *ImgHTMLElement) RemoveISMAP() *ImgHTMLElement {
@@ -499,6 +632,13 @@ func (e *ImgHTMLElement) ITEMID(v string) *ImgHTMLElement {
     return e
 }
 
+func (e *ImgHTMLElement) IfITEMID(cond bool, v string) *ImgHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMID(v)
+}
+
 func (e *ImgHTMLElement) RemoveITEMID(v string) *ImgHTMLElement {
     delete(e.StringAttributes, "itemid")
     return e
@@ -517,6 +657,13 @@ func (e *ImgHTMLElement) ITEMPROP(v string) *ImgHTMLElement {
     return e
 }
 
+func (e *ImgHTMLElement) IfITEMPROP(cond bool, v string) *ImgHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMPROP(v)
+}
+
 func (e *ImgHTMLElement) RemoveITEMPROP(v string) *ImgHTMLElement {
     delete(e.StringAttributes, "itemprop")
     return e
@@ -533,6 +680,13 @@ func (e *ImgHTMLElement) ITEMREF(v string) *ImgHTMLElement {
     return e
 }
 
+func (e *ImgHTMLElement) IfITEMREF(cond bool, v string) *ImgHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMREF(v)
+}
+
 func (e *ImgHTMLElement) RemoveITEMREF(v string) *ImgHTMLElement {
     delete(e.StringAttributes, "itemref")
     return e
@@ -547,6 +701,13 @@ func (e *ImgHTMLElement) ITEMSCOPE() *ImgHTMLElement {
     }
     e.BoolAttributes["itemscope"] = struct{}{}
     return e
+}
+
+func (e *ImgHTMLElement) IfITEMSCOPE(cond bool) *ImgHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMSCOPE()
 }
 
 func (e *ImgHTMLElement) RemoveITEMSCOPE() *ImgHTMLElement {
@@ -576,6 +737,13 @@ func (e *ImgHTMLElement) ITEMTYPE(v string) *ImgHTMLElement {
     return e
 }
 
+func (e *ImgHTMLElement) IfITEMTYPE(cond bool, v string) *ImgHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMTYPE(v)
+}
+
 func (e *ImgHTMLElement) RemoveITEMTYPE(v string) *ImgHTMLElement {
     delete(e.StringAttributes, "itemtype")
     return e
@@ -589,6 +757,13 @@ func (e *ImgHTMLElement) LANG(v string) *ImgHTMLElement {
     }
     e.StringAttributes["lang"] = v
     return e
+}
+
+func (e *ImgHTMLElement) IfLANG(cond bool, v string) *ImgHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.LANG(v)
 }
 
 func (e *ImgHTMLElement) RemoveLANG(v string) *ImgHTMLElement {
@@ -610,6 +785,13 @@ func (e *ImgHTMLElement) LOADING(v string) *ImgHTMLElement {
     return e
 }
 
+func (e *ImgHTMLElement) IfLOADING(cond bool, v string) *ImgHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.LOADING(v)
+}
+
 func (e *ImgHTMLElement) RemoveLOADING(v string) *ImgHTMLElement {
     delete(e.StringAttributes, "loading")
     return e
@@ -624,6 +806,13 @@ func (e *ImgHTMLElement) NONCE(v string) *ImgHTMLElement {
     }
     e.StringAttributes["nonce"] = v
     return e
+}
+
+func (e *ImgHTMLElement) IfNONCE(cond bool, v string) *ImgHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.NONCE(v)
 }
 
 func (e *ImgHTMLElement) RemoveNONCE(v string) *ImgHTMLElement {
@@ -645,6 +834,13 @@ func (e *ImgHTMLElement) POPOVER(v string) *ImgHTMLElement {
     return e
 }
 
+func (e *ImgHTMLElement) IfPOPOVER(cond bool, v string) *ImgHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.POPOVER(v)
+}
+
 func (e *ImgHTMLElement) RemovePOPOVER(v string) *ImgHTMLElement {
     delete(e.StringAttributes, "popover")
     return e
@@ -659,6 +855,13 @@ func (e *ImgHTMLElement) REFERRERPOLICY(v string) *ImgHTMLElement {
     }
     e.StringAttributes["referrerpolicy"] = v
     return e
+}
+
+func (e *ImgHTMLElement) IfREFERRERPOLICY(cond bool, v string) *ImgHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.REFERRERPOLICY(v)
 }
 
 func (e *ImgHTMLElement) RemoveREFERRERPOLICY(v string) *ImgHTMLElement {
@@ -677,6 +880,13 @@ func (e *ImgHTMLElement) SIZES(v string) *ImgHTMLElement {
     return e
 }
 
+func (e *ImgHTMLElement) IfSIZES(cond bool, v string) *ImgHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SIZES(v)
+}
+
 func (e *ImgHTMLElement) RemoveSIZES(v string) *ImgHTMLElement {
     delete(e.StringAttributes, "sizes")
     return e
@@ -691,6 +901,13 @@ func (e *ImgHTMLElement) SLOT(v string) *ImgHTMLElement {
     }
     e.StringAttributes["slot"] = v
     return e
+}
+
+func (e *ImgHTMLElement) IfSLOT(cond bool, v string) *ImgHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SLOT(v)
 }
 
 func (e *ImgHTMLElement) RemoveSLOT(v string) *ImgHTMLElement {
@@ -710,6 +927,13 @@ func (e *ImgHTMLElement) SPELLCHECK(v string) *ImgHTMLElement {
     return e
 }
 
+func (e *ImgHTMLElement) IfSPELLCHECK(cond bool, v string) *ImgHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SPELLCHECK(v)
+}
+
 func (e *ImgHTMLElement) RemoveSPELLCHECK(v string) *ImgHTMLElement {
     delete(e.StringAttributes, "spellcheck")
     return e
@@ -726,6 +950,13 @@ func (e *ImgHTMLElement) SRC(v string) *ImgHTMLElement {
     return e
 }
 
+func (e *ImgHTMLElement) IfSRC(cond bool, v string) *ImgHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SRC(v)
+}
+
 func (e *ImgHTMLElement) RemoveSRC(v string) *ImgHTMLElement {
     delete(e.StringAttributes, "src")
     return e
@@ -740,6 +971,13 @@ func (e *ImgHTMLElement) SRCSET(v string) *ImgHTMLElement {
     }
     e.StringAttributes["srcset"] = v
     return e
+}
+
+func (e *ImgHTMLElement) IfSRCSET(cond bool, v string) *ImgHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SRCSET(v)
 }
 
 func (e *ImgHTMLElement) RemoveSRCSET(v string) *ImgHTMLElement {
@@ -760,6 +998,13 @@ func (e *ImgHTMLElement) STYLE(k,v string) *ImgHTMLElement {
     }
     kv.Add(k,v)
     return e
+}
+
+func (e *ImgHTMLElement) IfSTYLE(cond bool, k string) *ImgHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.STYLE(k, "")
 }
 
 func (e *ImgHTMLElement) RemoveSTYLE(k string) *ImgHTMLElement {
@@ -783,6 +1028,13 @@ func (e *ImgHTMLElement) TABINDEX(v string) *ImgHTMLElement {
     return e
 }
 
+func (e *ImgHTMLElement) IfTABINDEX(cond bool, v string) *ImgHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TABINDEX(v)
+}
+
 func (e *ImgHTMLElement) RemoveTABINDEX(v string) *ImgHTMLElement {
     delete(e.StringAttributes, "tabindex")
     return e
@@ -797,6 +1049,13 @@ func (e *ImgHTMLElement) TITLE(v string) *ImgHTMLElement {
     }
     e.StringAttributes["title"] = v
     return e
+}
+
+func (e *ImgHTMLElement) IfTITLE(cond bool, v string) *ImgHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TITLE(v)
 }
 
 func (e *ImgHTMLElement) RemoveTITLE(v string) *ImgHTMLElement {
@@ -816,6 +1075,13 @@ func (e *ImgHTMLElement) TRANSLATE(v string) *ImgHTMLElement {
     return e
 }
 
+func (e *ImgHTMLElement) IfTRANSLATE(cond bool, v string) *ImgHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TRANSLATE(v)
+}
+
 func (e *ImgHTMLElement) RemoveTRANSLATE(v string) *ImgHTMLElement {
     delete(e.StringAttributes, "translate")
     return e
@@ -832,6 +1098,13 @@ func (e *ImgHTMLElement) USEMAP(v string) *ImgHTMLElement {
     return e
 }
 
+func (e *ImgHTMLElement) IfUSEMAP(cond bool, v string) *ImgHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.USEMAP(v)
+}
+
 func (e *ImgHTMLElement) RemoveUSEMAP(v string) *ImgHTMLElement {
     delete(e.StringAttributes, "usemap")
     return e
@@ -846,6 +1119,13 @@ func (e *ImgHTMLElement) WIDTH(v string) *ImgHTMLElement {
     }
     e.StringAttributes["width"] = v
     return e
+}
+
+func (e *ImgHTMLElement) IfWIDTH(cond bool, v string) *ImgHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.WIDTH(v)
 }
 
 func (e *ImgHTMLElement) RemoveWIDTH(v string) *ImgHTMLElement {

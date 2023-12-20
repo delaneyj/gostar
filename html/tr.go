@@ -48,13 +48,13 @@ func (e *TrHTMLElement) TextF(format string, args ...any) *TrHTMLElement {
     return e.Text(fmt.Sprintf(format, args...))
 }
 
-func (e *TrHTMLElement) Raw(text string) *TrHTMLElement {
-    e.Descendants = append(e.Descendants, Raw(text))
+func (e *TrHTMLElement) Escaped(text string) *TrHTMLElement {
+    e.Descendants = append(e.Descendants, Escaped(text))
     return e
 }
 
-func (e *TrHTMLElement) RawF(format string, args ...any) *TrHTMLElement {
-    return e.Raw(fmt.Sprintf(format, args...))
+func (e *TrHTMLElement) EscapedF(format string, args ...any) *TrHTMLElement {
+    return e.Escaped(fmt.Sprintf(format, args...))
 }
 
 func (e *TrHTMLElement) CustomData(key, value string) *TrHTMLElement {
@@ -87,6 +87,13 @@ func (e *TrHTMLElement) ACCESSKEY(v string) *TrHTMLElement {
     return e
 }
 
+func (e *TrHTMLElement) IfACCESSKEY(cond bool, v string) *TrHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ACCESSKEY(v)
+}
+
 func (e *TrHTMLElement) RemoveACCESSKEY(v string) *TrHTMLElement {
     delete(e.StringAttributes, "accesskey")
     return e
@@ -114,6 +121,13 @@ func (e *TrHTMLElement) AUTOCAPITALIZE(v string) *TrHTMLElement {
     return e
 }
 
+func (e *TrHTMLElement) IfAUTOCAPITALIZE(cond bool, v string) *TrHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.AUTOCAPITALIZE(v)
+}
+
 func (e *TrHTMLElement) RemoveAUTOCAPITALIZE(v string) *TrHTMLElement {
     delete(e.StringAttributes, "autocapitalize")
     return e
@@ -128,6 +142,13 @@ func (e *TrHTMLElement) AUTOFOCUS() *TrHTMLElement {
     }
     e.BoolAttributes["autofocus"] = struct{}{}
     return e
+}
+
+func (e *TrHTMLElement) IfAUTOFOCUS(cond bool) *TrHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.AUTOFOCUS()
 }
 
 func (e *TrHTMLElement) RemoveAUTOFOCUS() *TrHTMLElement {
@@ -161,6 +182,13 @@ func(e *TrHTMLElement) CLASS(v string) *TrHTMLElement {
     return e
 }
 
+func (e *TrHTMLElement) IfCLASS(cond bool, v string) *TrHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.CLASS(v)
+}
+
 func (e *TrHTMLElement) SetCLASS(v string) *TrHTMLElement {
     kv := NewSpaceDelimitedString()
     e.DelimitedStringAttributes["class"] = kv
@@ -190,6 +218,13 @@ func (e *TrHTMLElement) CONTENTEDITABLE(v string) *TrHTMLElement {
     return e
 }
 
+func (e *TrHTMLElement) IfCONTENTEDITABLE(cond bool, v string) *TrHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.CONTENTEDITABLE(v)
+}
+
 func (e *TrHTMLElement) RemoveCONTENTEDITABLE(v string) *TrHTMLElement {
     delete(e.StringAttributes, "contenteditable")
     return e
@@ -209,6 +244,13 @@ func (e *TrHTMLElement) DIR(v string) *TrHTMLElement {
     return e
 }
 
+func (e *TrHTMLElement) IfDIR(cond bool, v string) *TrHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.DIR(v)
+}
+
 func (e *TrHTMLElement) RemoveDIR(v string) *TrHTMLElement {
     delete(e.StringAttributes, "dir")
     return e
@@ -224,6 +266,13 @@ func (e *TrHTMLElement) DRAGGABLE(v string) *TrHTMLElement {
     }
     e.StringAttributes["draggable"] = v
     return e
+}
+
+func (e *TrHTMLElement) IfDRAGGABLE(cond bool, v string) *TrHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.DRAGGABLE(v)
 }
 
 func (e *TrHTMLElement) RemoveDRAGGABLE(v string) *TrHTMLElement {
@@ -255,6 +304,13 @@ func (e *TrHTMLElement) ENTERKEYHINT(v string) *TrHTMLElement {
     return e
 }
 
+func (e *TrHTMLElement) IfENTERKEYHINT(cond bool, v string) *TrHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ENTERKEYHINT(v)
+}
+
 func (e *TrHTMLElement) RemoveENTERKEYHINT(v string) *TrHTMLElement {
     delete(e.StringAttributes, "enterkeyhint")
     return e
@@ -274,6 +330,13 @@ func (e *TrHTMLElement) HIDDEN(v string) *TrHTMLElement {
     return e
 }
 
+func (e *TrHTMLElement) IfHIDDEN(cond bool, v string) *TrHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.HIDDEN(v)
+}
+
 func (e *TrHTMLElement) RemoveHIDDEN(v string) *TrHTMLElement {
     delete(e.StringAttributes, "hidden")
     return e
@@ -290,6 +353,13 @@ func (e *TrHTMLElement) ID(v string) *TrHTMLElement {
     return e
 }
 
+func (e *TrHTMLElement) IfID(cond bool, v string) *TrHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ID(v)
+}
+
 func (e *TrHTMLElement) RemoveID(v string) *TrHTMLElement {
     delete(e.StringAttributes, "id")
     return e
@@ -304,6 +374,13 @@ func (e *TrHTMLElement) INERT() *TrHTMLElement {
     }
     e.BoolAttributes["inert"] = struct{}{}
     return e
+}
+
+func (e *TrHTMLElement) IfINERT(cond bool) *TrHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.INERT()
 }
 
 func (e *TrHTMLElement) RemoveINERT() *TrHTMLElement {
@@ -347,6 +424,13 @@ func (e *TrHTMLElement) INPUTMODE(v string) *TrHTMLElement {
     return e
 }
 
+func (e *TrHTMLElement) IfINPUTMODE(cond bool, v string) *TrHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.INPUTMODE(v)
+}
+
 func (e *TrHTMLElement) RemoveINPUTMODE(v string) *TrHTMLElement {
     delete(e.StringAttributes, "inputmode")
     return e
@@ -364,6 +448,13 @@ func (e *TrHTMLElement) IS(v string) *TrHTMLElement {
     return e
 }
 
+func (e *TrHTMLElement) IfIS(cond bool, v string) *TrHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.IS(v)
+}
+
 func (e *TrHTMLElement) RemoveIS(v string) *TrHTMLElement {
     delete(e.StringAttributes, "is")
     return e
@@ -378,6 +469,13 @@ func (e *TrHTMLElement) ITEMID(v string) *TrHTMLElement {
     }
     e.StringAttributes["itemid"] = v
     return e
+}
+
+func (e *TrHTMLElement) IfITEMID(cond bool, v string) *TrHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMID(v)
 }
 
 func (e *TrHTMLElement) RemoveITEMID(v string) *TrHTMLElement {
@@ -398,6 +496,13 @@ func (e *TrHTMLElement) ITEMPROP(v string) *TrHTMLElement {
     return e
 }
 
+func (e *TrHTMLElement) IfITEMPROP(cond bool, v string) *TrHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMPROP(v)
+}
+
 func (e *TrHTMLElement) RemoveITEMPROP(v string) *TrHTMLElement {
     delete(e.StringAttributes, "itemprop")
     return e
@@ -414,6 +519,13 @@ func (e *TrHTMLElement) ITEMREF(v string) *TrHTMLElement {
     return e
 }
 
+func (e *TrHTMLElement) IfITEMREF(cond bool, v string) *TrHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMREF(v)
+}
+
 func (e *TrHTMLElement) RemoveITEMREF(v string) *TrHTMLElement {
     delete(e.StringAttributes, "itemref")
     return e
@@ -428,6 +540,13 @@ func (e *TrHTMLElement) ITEMSCOPE() *TrHTMLElement {
     }
     e.BoolAttributes["itemscope"] = struct{}{}
     return e
+}
+
+func (e *TrHTMLElement) IfITEMSCOPE(cond bool) *TrHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMSCOPE()
 }
 
 func (e *TrHTMLElement) RemoveITEMSCOPE() *TrHTMLElement {
@@ -457,6 +576,13 @@ func (e *TrHTMLElement) ITEMTYPE(v string) *TrHTMLElement {
     return e
 }
 
+func (e *TrHTMLElement) IfITEMTYPE(cond bool, v string) *TrHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMTYPE(v)
+}
+
 func (e *TrHTMLElement) RemoveITEMTYPE(v string) *TrHTMLElement {
     delete(e.StringAttributes, "itemtype")
     return e
@@ -470,6 +596,13 @@ func (e *TrHTMLElement) LANG(v string) *TrHTMLElement {
     }
     e.StringAttributes["lang"] = v
     return e
+}
+
+func (e *TrHTMLElement) IfLANG(cond bool, v string) *TrHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.LANG(v)
 }
 
 func (e *TrHTMLElement) RemoveLANG(v string) *TrHTMLElement {
@@ -486,6 +619,13 @@ func (e *TrHTMLElement) NONCE(v string) *TrHTMLElement {
     }
     e.StringAttributes["nonce"] = v
     return e
+}
+
+func (e *TrHTMLElement) IfNONCE(cond bool, v string) *TrHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.NONCE(v)
 }
 
 func (e *TrHTMLElement) RemoveNONCE(v string) *TrHTMLElement {
@@ -507,6 +647,13 @@ func (e *TrHTMLElement) POPOVER(v string) *TrHTMLElement {
     return e
 }
 
+func (e *TrHTMLElement) IfPOPOVER(cond bool, v string) *TrHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.POPOVER(v)
+}
+
 func (e *TrHTMLElement) RemovePOPOVER(v string) *TrHTMLElement {
     delete(e.StringAttributes, "popover")
     return e
@@ -521,6 +668,13 @@ func (e *TrHTMLElement) SLOT(v string) *TrHTMLElement {
     }
     e.StringAttributes["slot"] = v
     return e
+}
+
+func (e *TrHTMLElement) IfSLOT(cond bool, v string) *TrHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SLOT(v)
 }
 
 func (e *TrHTMLElement) RemoveSLOT(v string) *TrHTMLElement {
@@ -538,6 +692,13 @@ func (e *TrHTMLElement) SPELLCHECK(v string) *TrHTMLElement {
     }
     e.StringAttributes["spellcheck"] = v
     return e
+}
+
+func (e *TrHTMLElement) IfSPELLCHECK(cond bool, v string) *TrHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SPELLCHECK(v)
 }
 
 func (e *TrHTMLElement) RemoveSPELLCHECK(v string) *TrHTMLElement {
@@ -558,6 +719,13 @@ func (e *TrHTMLElement) STYLE(k,v string) *TrHTMLElement {
     }
     kv.Add(k,v)
     return e
+}
+
+func (e *TrHTMLElement) IfSTYLE(cond bool, k string) *TrHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.STYLE(k, "")
 }
 
 func (e *TrHTMLElement) RemoveSTYLE(k string) *TrHTMLElement {
@@ -581,6 +749,13 @@ func (e *TrHTMLElement) TABINDEX(v string) *TrHTMLElement {
     return e
 }
 
+func (e *TrHTMLElement) IfTABINDEX(cond bool, v string) *TrHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TABINDEX(v)
+}
+
 func (e *TrHTMLElement) RemoveTABINDEX(v string) *TrHTMLElement {
     delete(e.StringAttributes, "tabindex")
     return e
@@ -595,6 +770,13 @@ func (e *TrHTMLElement) TITLE(v string) *TrHTMLElement {
     }
     e.StringAttributes["title"] = v
     return e
+}
+
+func (e *TrHTMLElement) IfTITLE(cond bool, v string) *TrHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TITLE(v)
 }
 
 func (e *TrHTMLElement) RemoveTITLE(v string) *TrHTMLElement {
@@ -612,6 +794,13 @@ func (e *TrHTMLElement) TRANSLATE(v string) *TrHTMLElement {
     }
     e.StringAttributes["translate"] = v
     return e
+}
+
+func (e *TrHTMLElement) IfTRANSLATE(cond bool, v string) *TrHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TRANSLATE(v)
 }
 
 func (e *TrHTMLElement) RemoveTRANSLATE(v string) *TrHTMLElement {

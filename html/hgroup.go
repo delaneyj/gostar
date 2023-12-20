@@ -48,13 +48,13 @@ func (e *HgroupHTMLElement) TextF(format string, args ...any) *HgroupHTMLElement
     return e.Text(fmt.Sprintf(format, args...))
 }
 
-func (e *HgroupHTMLElement) Raw(text string) *HgroupHTMLElement {
-    e.Descendants = append(e.Descendants, Raw(text))
+func (e *HgroupHTMLElement) Escaped(text string) *HgroupHTMLElement {
+    e.Descendants = append(e.Descendants, Escaped(text))
     return e
 }
 
-func (e *HgroupHTMLElement) RawF(format string, args ...any) *HgroupHTMLElement {
-    return e.Raw(fmt.Sprintf(format, args...))
+func (e *HgroupHTMLElement) EscapedF(format string, args ...any) *HgroupHTMLElement {
+    return e.Escaped(fmt.Sprintf(format, args...))
 }
 
 func (e *HgroupHTMLElement) CustomData(key, value string) *HgroupHTMLElement {
@@ -87,6 +87,13 @@ func (e *HgroupHTMLElement) ACCESSKEY(v string) *HgroupHTMLElement {
     return e
 }
 
+func (e *HgroupHTMLElement) IfACCESSKEY(cond bool, v string) *HgroupHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ACCESSKEY(v)
+}
+
 func (e *HgroupHTMLElement) RemoveACCESSKEY(v string) *HgroupHTMLElement {
     delete(e.StringAttributes, "accesskey")
     return e
@@ -114,6 +121,13 @@ func (e *HgroupHTMLElement) AUTOCAPITALIZE(v string) *HgroupHTMLElement {
     return e
 }
 
+func (e *HgroupHTMLElement) IfAUTOCAPITALIZE(cond bool, v string) *HgroupHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.AUTOCAPITALIZE(v)
+}
+
 func (e *HgroupHTMLElement) RemoveAUTOCAPITALIZE(v string) *HgroupHTMLElement {
     delete(e.StringAttributes, "autocapitalize")
     return e
@@ -128,6 +142,13 @@ func (e *HgroupHTMLElement) AUTOFOCUS() *HgroupHTMLElement {
     }
     e.BoolAttributes["autofocus"] = struct{}{}
     return e
+}
+
+func (e *HgroupHTMLElement) IfAUTOFOCUS(cond bool) *HgroupHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.AUTOFOCUS()
 }
 
 func (e *HgroupHTMLElement) RemoveAUTOFOCUS() *HgroupHTMLElement {
@@ -161,6 +182,13 @@ func(e *HgroupHTMLElement) CLASS(v string) *HgroupHTMLElement {
     return e
 }
 
+func (e *HgroupHTMLElement) IfCLASS(cond bool, v string) *HgroupHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.CLASS(v)
+}
+
 func (e *HgroupHTMLElement) SetCLASS(v string) *HgroupHTMLElement {
     kv := NewSpaceDelimitedString()
     e.DelimitedStringAttributes["class"] = kv
@@ -190,6 +218,13 @@ func (e *HgroupHTMLElement) CONTENTEDITABLE(v string) *HgroupHTMLElement {
     return e
 }
 
+func (e *HgroupHTMLElement) IfCONTENTEDITABLE(cond bool, v string) *HgroupHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.CONTENTEDITABLE(v)
+}
+
 func (e *HgroupHTMLElement) RemoveCONTENTEDITABLE(v string) *HgroupHTMLElement {
     delete(e.StringAttributes, "contenteditable")
     return e
@@ -209,6 +244,13 @@ func (e *HgroupHTMLElement) DIR(v string) *HgroupHTMLElement {
     return e
 }
 
+func (e *HgroupHTMLElement) IfDIR(cond bool, v string) *HgroupHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.DIR(v)
+}
+
 func (e *HgroupHTMLElement) RemoveDIR(v string) *HgroupHTMLElement {
     delete(e.StringAttributes, "dir")
     return e
@@ -224,6 +266,13 @@ func (e *HgroupHTMLElement) DRAGGABLE(v string) *HgroupHTMLElement {
     }
     e.StringAttributes["draggable"] = v
     return e
+}
+
+func (e *HgroupHTMLElement) IfDRAGGABLE(cond bool, v string) *HgroupHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.DRAGGABLE(v)
 }
 
 func (e *HgroupHTMLElement) RemoveDRAGGABLE(v string) *HgroupHTMLElement {
@@ -255,6 +304,13 @@ func (e *HgroupHTMLElement) ENTERKEYHINT(v string) *HgroupHTMLElement {
     return e
 }
 
+func (e *HgroupHTMLElement) IfENTERKEYHINT(cond bool, v string) *HgroupHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ENTERKEYHINT(v)
+}
+
 func (e *HgroupHTMLElement) RemoveENTERKEYHINT(v string) *HgroupHTMLElement {
     delete(e.StringAttributes, "enterkeyhint")
     return e
@@ -274,6 +330,13 @@ func (e *HgroupHTMLElement) HIDDEN(v string) *HgroupHTMLElement {
     return e
 }
 
+func (e *HgroupHTMLElement) IfHIDDEN(cond bool, v string) *HgroupHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.HIDDEN(v)
+}
+
 func (e *HgroupHTMLElement) RemoveHIDDEN(v string) *HgroupHTMLElement {
     delete(e.StringAttributes, "hidden")
     return e
@@ -290,6 +353,13 @@ func (e *HgroupHTMLElement) ID(v string) *HgroupHTMLElement {
     return e
 }
 
+func (e *HgroupHTMLElement) IfID(cond bool, v string) *HgroupHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ID(v)
+}
+
 func (e *HgroupHTMLElement) RemoveID(v string) *HgroupHTMLElement {
     delete(e.StringAttributes, "id")
     return e
@@ -304,6 +374,13 @@ func (e *HgroupHTMLElement) INERT() *HgroupHTMLElement {
     }
     e.BoolAttributes["inert"] = struct{}{}
     return e
+}
+
+func (e *HgroupHTMLElement) IfINERT(cond bool) *HgroupHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.INERT()
 }
 
 func (e *HgroupHTMLElement) RemoveINERT() *HgroupHTMLElement {
@@ -347,6 +424,13 @@ func (e *HgroupHTMLElement) INPUTMODE(v string) *HgroupHTMLElement {
     return e
 }
 
+func (e *HgroupHTMLElement) IfINPUTMODE(cond bool, v string) *HgroupHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.INPUTMODE(v)
+}
+
 func (e *HgroupHTMLElement) RemoveINPUTMODE(v string) *HgroupHTMLElement {
     delete(e.StringAttributes, "inputmode")
     return e
@@ -364,6 +448,13 @@ func (e *HgroupHTMLElement) IS(v string) *HgroupHTMLElement {
     return e
 }
 
+func (e *HgroupHTMLElement) IfIS(cond bool, v string) *HgroupHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.IS(v)
+}
+
 func (e *HgroupHTMLElement) RemoveIS(v string) *HgroupHTMLElement {
     delete(e.StringAttributes, "is")
     return e
@@ -378,6 +469,13 @@ func (e *HgroupHTMLElement) ITEMID(v string) *HgroupHTMLElement {
     }
     e.StringAttributes["itemid"] = v
     return e
+}
+
+func (e *HgroupHTMLElement) IfITEMID(cond bool, v string) *HgroupHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMID(v)
 }
 
 func (e *HgroupHTMLElement) RemoveITEMID(v string) *HgroupHTMLElement {
@@ -398,6 +496,13 @@ func (e *HgroupHTMLElement) ITEMPROP(v string) *HgroupHTMLElement {
     return e
 }
 
+func (e *HgroupHTMLElement) IfITEMPROP(cond bool, v string) *HgroupHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMPROP(v)
+}
+
 func (e *HgroupHTMLElement) RemoveITEMPROP(v string) *HgroupHTMLElement {
     delete(e.StringAttributes, "itemprop")
     return e
@@ -414,6 +519,13 @@ func (e *HgroupHTMLElement) ITEMREF(v string) *HgroupHTMLElement {
     return e
 }
 
+func (e *HgroupHTMLElement) IfITEMREF(cond bool, v string) *HgroupHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMREF(v)
+}
+
 func (e *HgroupHTMLElement) RemoveITEMREF(v string) *HgroupHTMLElement {
     delete(e.StringAttributes, "itemref")
     return e
@@ -428,6 +540,13 @@ func (e *HgroupHTMLElement) ITEMSCOPE() *HgroupHTMLElement {
     }
     e.BoolAttributes["itemscope"] = struct{}{}
     return e
+}
+
+func (e *HgroupHTMLElement) IfITEMSCOPE(cond bool) *HgroupHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMSCOPE()
 }
 
 func (e *HgroupHTMLElement) RemoveITEMSCOPE() *HgroupHTMLElement {
@@ -457,6 +576,13 @@ func (e *HgroupHTMLElement) ITEMTYPE(v string) *HgroupHTMLElement {
     return e
 }
 
+func (e *HgroupHTMLElement) IfITEMTYPE(cond bool, v string) *HgroupHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMTYPE(v)
+}
+
 func (e *HgroupHTMLElement) RemoveITEMTYPE(v string) *HgroupHTMLElement {
     delete(e.StringAttributes, "itemtype")
     return e
@@ -470,6 +596,13 @@ func (e *HgroupHTMLElement) LANG(v string) *HgroupHTMLElement {
     }
     e.StringAttributes["lang"] = v
     return e
+}
+
+func (e *HgroupHTMLElement) IfLANG(cond bool, v string) *HgroupHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.LANG(v)
 }
 
 func (e *HgroupHTMLElement) RemoveLANG(v string) *HgroupHTMLElement {
@@ -486,6 +619,13 @@ func (e *HgroupHTMLElement) NONCE(v string) *HgroupHTMLElement {
     }
     e.StringAttributes["nonce"] = v
     return e
+}
+
+func (e *HgroupHTMLElement) IfNONCE(cond bool, v string) *HgroupHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.NONCE(v)
 }
 
 func (e *HgroupHTMLElement) RemoveNONCE(v string) *HgroupHTMLElement {
@@ -507,6 +647,13 @@ func (e *HgroupHTMLElement) POPOVER(v string) *HgroupHTMLElement {
     return e
 }
 
+func (e *HgroupHTMLElement) IfPOPOVER(cond bool, v string) *HgroupHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.POPOVER(v)
+}
+
 func (e *HgroupHTMLElement) RemovePOPOVER(v string) *HgroupHTMLElement {
     delete(e.StringAttributes, "popover")
     return e
@@ -521,6 +668,13 @@ func (e *HgroupHTMLElement) SLOT(v string) *HgroupHTMLElement {
     }
     e.StringAttributes["slot"] = v
     return e
+}
+
+func (e *HgroupHTMLElement) IfSLOT(cond bool, v string) *HgroupHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SLOT(v)
 }
 
 func (e *HgroupHTMLElement) RemoveSLOT(v string) *HgroupHTMLElement {
@@ -538,6 +692,13 @@ func (e *HgroupHTMLElement) SPELLCHECK(v string) *HgroupHTMLElement {
     }
     e.StringAttributes["spellcheck"] = v
     return e
+}
+
+func (e *HgroupHTMLElement) IfSPELLCHECK(cond bool, v string) *HgroupHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SPELLCHECK(v)
 }
 
 func (e *HgroupHTMLElement) RemoveSPELLCHECK(v string) *HgroupHTMLElement {
@@ -558,6 +719,13 @@ func (e *HgroupHTMLElement) STYLE(k,v string) *HgroupHTMLElement {
     }
     kv.Add(k,v)
     return e
+}
+
+func (e *HgroupHTMLElement) IfSTYLE(cond bool, k string) *HgroupHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.STYLE(k, "")
 }
 
 func (e *HgroupHTMLElement) RemoveSTYLE(k string) *HgroupHTMLElement {
@@ -581,6 +749,13 @@ func (e *HgroupHTMLElement) TABINDEX(v string) *HgroupHTMLElement {
     return e
 }
 
+func (e *HgroupHTMLElement) IfTABINDEX(cond bool, v string) *HgroupHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TABINDEX(v)
+}
+
 func (e *HgroupHTMLElement) RemoveTABINDEX(v string) *HgroupHTMLElement {
     delete(e.StringAttributes, "tabindex")
     return e
@@ -595,6 +770,13 @@ func (e *HgroupHTMLElement) TITLE(v string) *HgroupHTMLElement {
     }
     e.StringAttributes["title"] = v
     return e
+}
+
+func (e *HgroupHTMLElement) IfTITLE(cond bool, v string) *HgroupHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TITLE(v)
 }
 
 func (e *HgroupHTMLElement) RemoveTITLE(v string) *HgroupHTMLElement {
@@ -612,6 +794,13 @@ func (e *HgroupHTMLElement) TRANSLATE(v string) *HgroupHTMLElement {
     }
     e.StringAttributes["translate"] = v
     return e
+}
+
+func (e *HgroupHTMLElement) IfTRANSLATE(cond bool, v string) *HgroupHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TRANSLATE(v)
 }
 
 func (e *HgroupHTMLElement) RemoveTRANSLATE(v string) *HgroupHTMLElement {

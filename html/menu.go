@@ -48,13 +48,13 @@ func (e *MenuHTMLElement) TextF(format string, args ...any) *MenuHTMLElement {
     return e.Text(fmt.Sprintf(format, args...))
 }
 
-func (e *MenuHTMLElement) Raw(text string) *MenuHTMLElement {
-    e.Descendants = append(e.Descendants, Raw(text))
+func (e *MenuHTMLElement) Escaped(text string) *MenuHTMLElement {
+    e.Descendants = append(e.Descendants, Escaped(text))
     return e
 }
 
-func (e *MenuHTMLElement) RawF(format string, args ...any) *MenuHTMLElement {
-    return e.Raw(fmt.Sprintf(format, args...))
+func (e *MenuHTMLElement) EscapedF(format string, args ...any) *MenuHTMLElement {
+    return e.Escaped(fmt.Sprintf(format, args...))
 }
 
 func (e *MenuHTMLElement) CustomData(key, value string) *MenuHTMLElement {
@@ -87,6 +87,13 @@ func (e *MenuHTMLElement) ACCESSKEY(v string) *MenuHTMLElement {
     return e
 }
 
+func (e *MenuHTMLElement) IfACCESSKEY(cond bool, v string) *MenuHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ACCESSKEY(v)
+}
+
 func (e *MenuHTMLElement) RemoveACCESSKEY(v string) *MenuHTMLElement {
     delete(e.StringAttributes, "accesskey")
     return e
@@ -114,6 +121,13 @@ func (e *MenuHTMLElement) AUTOCAPITALIZE(v string) *MenuHTMLElement {
     return e
 }
 
+func (e *MenuHTMLElement) IfAUTOCAPITALIZE(cond bool, v string) *MenuHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.AUTOCAPITALIZE(v)
+}
+
 func (e *MenuHTMLElement) RemoveAUTOCAPITALIZE(v string) *MenuHTMLElement {
     delete(e.StringAttributes, "autocapitalize")
     return e
@@ -128,6 +142,13 @@ func (e *MenuHTMLElement) AUTOFOCUS() *MenuHTMLElement {
     }
     e.BoolAttributes["autofocus"] = struct{}{}
     return e
+}
+
+func (e *MenuHTMLElement) IfAUTOFOCUS(cond bool) *MenuHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.AUTOFOCUS()
 }
 
 func (e *MenuHTMLElement) RemoveAUTOFOCUS() *MenuHTMLElement {
@@ -161,6 +182,13 @@ func(e *MenuHTMLElement) CLASS(v string) *MenuHTMLElement {
     return e
 }
 
+func (e *MenuHTMLElement) IfCLASS(cond bool, v string) *MenuHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.CLASS(v)
+}
+
 func (e *MenuHTMLElement) SetCLASS(v string) *MenuHTMLElement {
     kv := NewSpaceDelimitedString()
     e.DelimitedStringAttributes["class"] = kv
@@ -190,6 +218,13 @@ func (e *MenuHTMLElement) CONTENTEDITABLE(v string) *MenuHTMLElement {
     return e
 }
 
+func (e *MenuHTMLElement) IfCONTENTEDITABLE(cond bool, v string) *MenuHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.CONTENTEDITABLE(v)
+}
+
 func (e *MenuHTMLElement) RemoveCONTENTEDITABLE(v string) *MenuHTMLElement {
     delete(e.StringAttributes, "contenteditable")
     return e
@@ -209,6 +244,13 @@ func (e *MenuHTMLElement) DIR(v string) *MenuHTMLElement {
     return e
 }
 
+func (e *MenuHTMLElement) IfDIR(cond bool, v string) *MenuHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.DIR(v)
+}
+
 func (e *MenuHTMLElement) RemoveDIR(v string) *MenuHTMLElement {
     delete(e.StringAttributes, "dir")
     return e
@@ -224,6 +266,13 @@ func (e *MenuHTMLElement) DRAGGABLE(v string) *MenuHTMLElement {
     }
     e.StringAttributes["draggable"] = v
     return e
+}
+
+func (e *MenuHTMLElement) IfDRAGGABLE(cond bool, v string) *MenuHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.DRAGGABLE(v)
 }
 
 func (e *MenuHTMLElement) RemoveDRAGGABLE(v string) *MenuHTMLElement {
@@ -255,6 +304,13 @@ func (e *MenuHTMLElement) ENTERKEYHINT(v string) *MenuHTMLElement {
     return e
 }
 
+func (e *MenuHTMLElement) IfENTERKEYHINT(cond bool, v string) *MenuHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ENTERKEYHINT(v)
+}
+
 func (e *MenuHTMLElement) RemoveENTERKEYHINT(v string) *MenuHTMLElement {
     delete(e.StringAttributes, "enterkeyhint")
     return e
@@ -274,6 +330,13 @@ func (e *MenuHTMLElement) HIDDEN(v string) *MenuHTMLElement {
     return e
 }
 
+func (e *MenuHTMLElement) IfHIDDEN(cond bool, v string) *MenuHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.HIDDEN(v)
+}
+
 func (e *MenuHTMLElement) RemoveHIDDEN(v string) *MenuHTMLElement {
     delete(e.StringAttributes, "hidden")
     return e
@@ -290,6 +353,13 @@ func (e *MenuHTMLElement) ID(v string) *MenuHTMLElement {
     return e
 }
 
+func (e *MenuHTMLElement) IfID(cond bool, v string) *MenuHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ID(v)
+}
+
 func (e *MenuHTMLElement) RemoveID(v string) *MenuHTMLElement {
     delete(e.StringAttributes, "id")
     return e
@@ -304,6 +374,13 @@ func (e *MenuHTMLElement) INERT() *MenuHTMLElement {
     }
     e.BoolAttributes["inert"] = struct{}{}
     return e
+}
+
+func (e *MenuHTMLElement) IfINERT(cond bool) *MenuHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.INERT()
 }
 
 func (e *MenuHTMLElement) RemoveINERT() *MenuHTMLElement {
@@ -347,6 +424,13 @@ func (e *MenuHTMLElement) INPUTMODE(v string) *MenuHTMLElement {
     return e
 }
 
+func (e *MenuHTMLElement) IfINPUTMODE(cond bool, v string) *MenuHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.INPUTMODE(v)
+}
+
 func (e *MenuHTMLElement) RemoveINPUTMODE(v string) *MenuHTMLElement {
     delete(e.StringAttributes, "inputmode")
     return e
@@ -364,6 +448,13 @@ func (e *MenuHTMLElement) IS(v string) *MenuHTMLElement {
     return e
 }
 
+func (e *MenuHTMLElement) IfIS(cond bool, v string) *MenuHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.IS(v)
+}
+
 func (e *MenuHTMLElement) RemoveIS(v string) *MenuHTMLElement {
     delete(e.StringAttributes, "is")
     return e
@@ -378,6 +469,13 @@ func (e *MenuHTMLElement) ITEMID(v string) *MenuHTMLElement {
     }
     e.StringAttributes["itemid"] = v
     return e
+}
+
+func (e *MenuHTMLElement) IfITEMID(cond bool, v string) *MenuHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMID(v)
 }
 
 func (e *MenuHTMLElement) RemoveITEMID(v string) *MenuHTMLElement {
@@ -398,6 +496,13 @@ func (e *MenuHTMLElement) ITEMPROP(v string) *MenuHTMLElement {
     return e
 }
 
+func (e *MenuHTMLElement) IfITEMPROP(cond bool, v string) *MenuHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMPROP(v)
+}
+
 func (e *MenuHTMLElement) RemoveITEMPROP(v string) *MenuHTMLElement {
     delete(e.StringAttributes, "itemprop")
     return e
@@ -414,6 +519,13 @@ func (e *MenuHTMLElement) ITEMREF(v string) *MenuHTMLElement {
     return e
 }
 
+func (e *MenuHTMLElement) IfITEMREF(cond bool, v string) *MenuHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMREF(v)
+}
+
 func (e *MenuHTMLElement) RemoveITEMREF(v string) *MenuHTMLElement {
     delete(e.StringAttributes, "itemref")
     return e
@@ -428,6 +540,13 @@ func (e *MenuHTMLElement) ITEMSCOPE() *MenuHTMLElement {
     }
     e.BoolAttributes["itemscope"] = struct{}{}
     return e
+}
+
+func (e *MenuHTMLElement) IfITEMSCOPE(cond bool) *MenuHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMSCOPE()
 }
 
 func (e *MenuHTMLElement) RemoveITEMSCOPE() *MenuHTMLElement {
@@ -457,6 +576,13 @@ func (e *MenuHTMLElement) ITEMTYPE(v string) *MenuHTMLElement {
     return e
 }
 
+func (e *MenuHTMLElement) IfITEMTYPE(cond bool, v string) *MenuHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMTYPE(v)
+}
+
 func (e *MenuHTMLElement) RemoveITEMTYPE(v string) *MenuHTMLElement {
     delete(e.StringAttributes, "itemtype")
     return e
@@ -470,6 +596,13 @@ func (e *MenuHTMLElement) LANG(v string) *MenuHTMLElement {
     }
     e.StringAttributes["lang"] = v
     return e
+}
+
+func (e *MenuHTMLElement) IfLANG(cond bool, v string) *MenuHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.LANG(v)
 }
 
 func (e *MenuHTMLElement) RemoveLANG(v string) *MenuHTMLElement {
@@ -486,6 +619,13 @@ func (e *MenuHTMLElement) NONCE(v string) *MenuHTMLElement {
     }
     e.StringAttributes["nonce"] = v
     return e
+}
+
+func (e *MenuHTMLElement) IfNONCE(cond bool, v string) *MenuHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.NONCE(v)
 }
 
 func (e *MenuHTMLElement) RemoveNONCE(v string) *MenuHTMLElement {
@@ -507,6 +647,13 @@ func (e *MenuHTMLElement) POPOVER(v string) *MenuHTMLElement {
     return e
 }
 
+func (e *MenuHTMLElement) IfPOPOVER(cond bool, v string) *MenuHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.POPOVER(v)
+}
+
 func (e *MenuHTMLElement) RemovePOPOVER(v string) *MenuHTMLElement {
     delete(e.StringAttributes, "popover")
     return e
@@ -521,6 +668,13 @@ func (e *MenuHTMLElement) SLOT(v string) *MenuHTMLElement {
     }
     e.StringAttributes["slot"] = v
     return e
+}
+
+func (e *MenuHTMLElement) IfSLOT(cond bool, v string) *MenuHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SLOT(v)
 }
 
 func (e *MenuHTMLElement) RemoveSLOT(v string) *MenuHTMLElement {
@@ -538,6 +692,13 @@ func (e *MenuHTMLElement) SPELLCHECK(v string) *MenuHTMLElement {
     }
     e.StringAttributes["spellcheck"] = v
     return e
+}
+
+func (e *MenuHTMLElement) IfSPELLCHECK(cond bool, v string) *MenuHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SPELLCHECK(v)
 }
 
 func (e *MenuHTMLElement) RemoveSPELLCHECK(v string) *MenuHTMLElement {
@@ -558,6 +719,13 @@ func (e *MenuHTMLElement) STYLE(k,v string) *MenuHTMLElement {
     }
     kv.Add(k,v)
     return e
+}
+
+func (e *MenuHTMLElement) IfSTYLE(cond bool, k string) *MenuHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.STYLE(k, "")
 }
 
 func (e *MenuHTMLElement) RemoveSTYLE(k string) *MenuHTMLElement {
@@ -581,6 +749,13 @@ func (e *MenuHTMLElement) TABINDEX(v string) *MenuHTMLElement {
     return e
 }
 
+func (e *MenuHTMLElement) IfTABINDEX(cond bool, v string) *MenuHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TABINDEX(v)
+}
+
 func (e *MenuHTMLElement) RemoveTABINDEX(v string) *MenuHTMLElement {
     delete(e.StringAttributes, "tabindex")
     return e
@@ -595,6 +770,13 @@ func (e *MenuHTMLElement) TITLE(v string) *MenuHTMLElement {
     }
     e.StringAttributes["title"] = v
     return e
+}
+
+func (e *MenuHTMLElement) IfTITLE(cond bool, v string) *MenuHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TITLE(v)
 }
 
 func (e *MenuHTMLElement) RemoveTITLE(v string) *MenuHTMLElement {
@@ -612,6 +794,13 @@ func (e *MenuHTMLElement) TRANSLATE(v string) *MenuHTMLElement {
     }
     e.StringAttributes["translate"] = v
     return e
+}
+
+func (e *MenuHTMLElement) IfTRANSLATE(cond bool, v string) *MenuHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TRANSLATE(v)
 }
 
 func (e *MenuHTMLElement) RemoveTRANSLATE(v string) *MenuHTMLElement {

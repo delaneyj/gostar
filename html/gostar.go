@@ -187,34 +187,26 @@ func NewEqualSemicolonDelimitedKVString() *DelimitedKVString {
 	return NewDelimitedKVString("=", ";")
 }
 
-type TextContent struct {
-	text string
-}
+type TextContent string
 
 func (tc *TextContent) Build(sb *strings.Builder) error {
-	sb.WriteString(tc.text)
-	return nil
+	_, err := sb.WriteString(string(*tc))
+	return err
 }
 
 func Text(text string) *TextContent {
-	return &TextContent{
-		text: html.EscapeString(text),
-	}
+	return (*TextContent)(&text)
 }
 
-type RawContent struct {
-	raw string
+type EscapedContent string
+
+func (ec *EscapedContent) Build(sb *strings.Builder) error {
+	_, err := sb.WriteString(html.EscapeString(string(*ec)))
+	return err
 }
 
-func (rc *RawContent) Build(sb *strings.Builder) error {
-	sb.WriteString(rc.raw)
-	return nil
-}
-
-func Raw(raw string) *RawContent {
-	return &RawContent{
-		raw: raw,
-	}
+func Escaped(text string) *EscapedContent {
+	return (*EscapedContent)(&text)
 }
 
 type Grouper struct {

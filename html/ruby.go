@@ -48,13 +48,13 @@ func (e *RubyHTMLElement) TextF(format string, args ...any) *RubyHTMLElement {
     return e.Text(fmt.Sprintf(format, args...))
 }
 
-func (e *RubyHTMLElement) Raw(text string) *RubyHTMLElement {
-    e.Descendants = append(e.Descendants, Raw(text))
+func (e *RubyHTMLElement) Escaped(text string) *RubyHTMLElement {
+    e.Descendants = append(e.Descendants, Escaped(text))
     return e
 }
 
-func (e *RubyHTMLElement) RawF(format string, args ...any) *RubyHTMLElement {
-    return e.Raw(fmt.Sprintf(format, args...))
+func (e *RubyHTMLElement) EscapedF(format string, args ...any) *RubyHTMLElement {
+    return e.Escaped(fmt.Sprintf(format, args...))
 }
 
 func (e *RubyHTMLElement) CustomData(key, value string) *RubyHTMLElement {
@@ -87,6 +87,13 @@ func (e *RubyHTMLElement) ACCESSKEY(v string) *RubyHTMLElement {
     return e
 }
 
+func (e *RubyHTMLElement) IfACCESSKEY(cond bool, v string) *RubyHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ACCESSKEY(v)
+}
+
 func (e *RubyHTMLElement) RemoveACCESSKEY(v string) *RubyHTMLElement {
     delete(e.StringAttributes, "accesskey")
     return e
@@ -114,6 +121,13 @@ func (e *RubyHTMLElement) AUTOCAPITALIZE(v string) *RubyHTMLElement {
     return e
 }
 
+func (e *RubyHTMLElement) IfAUTOCAPITALIZE(cond bool, v string) *RubyHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.AUTOCAPITALIZE(v)
+}
+
 func (e *RubyHTMLElement) RemoveAUTOCAPITALIZE(v string) *RubyHTMLElement {
     delete(e.StringAttributes, "autocapitalize")
     return e
@@ -128,6 +142,13 @@ func (e *RubyHTMLElement) AUTOFOCUS() *RubyHTMLElement {
     }
     e.BoolAttributes["autofocus"] = struct{}{}
     return e
+}
+
+func (e *RubyHTMLElement) IfAUTOFOCUS(cond bool) *RubyHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.AUTOFOCUS()
 }
 
 func (e *RubyHTMLElement) RemoveAUTOFOCUS() *RubyHTMLElement {
@@ -161,6 +182,13 @@ func(e *RubyHTMLElement) CLASS(v string) *RubyHTMLElement {
     return e
 }
 
+func (e *RubyHTMLElement) IfCLASS(cond bool, v string) *RubyHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.CLASS(v)
+}
+
 func (e *RubyHTMLElement) SetCLASS(v string) *RubyHTMLElement {
     kv := NewSpaceDelimitedString()
     e.DelimitedStringAttributes["class"] = kv
@@ -190,6 +218,13 @@ func (e *RubyHTMLElement) CONTENTEDITABLE(v string) *RubyHTMLElement {
     return e
 }
 
+func (e *RubyHTMLElement) IfCONTENTEDITABLE(cond bool, v string) *RubyHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.CONTENTEDITABLE(v)
+}
+
 func (e *RubyHTMLElement) RemoveCONTENTEDITABLE(v string) *RubyHTMLElement {
     delete(e.StringAttributes, "contenteditable")
     return e
@@ -209,6 +244,13 @@ func (e *RubyHTMLElement) DIR(v string) *RubyHTMLElement {
     return e
 }
 
+func (e *RubyHTMLElement) IfDIR(cond bool, v string) *RubyHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.DIR(v)
+}
+
 func (e *RubyHTMLElement) RemoveDIR(v string) *RubyHTMLElement {
     delete(e.StringAttributes, "dir")
     return e
@@ -224,6 +266,13 @@ func (e *RubyHTMLElement) DRAGGABLE(v string) *RubyHTMLElement {
     }
     e.StringAttributes["draggable"] = v
     return e
+}
+
+func (e *RubyHTMLElement) IfDRAGGABLE(cond bool, v string) *RubyHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.DRAGGABLE(v)
 }
 
 func (e *RubyHTMLElement) RemoveDRAGGABLE(v string) *RubyHTMLElement {
@@ -255,6 +304,13 @@ func (e *RubyHTMLElement) ENTERKEYHINT(v string) *RubyHTMLElement {
     return e
 }
 
+func (e *RubyHTMLElement) IfENTERKEYHINT(cond bool, v string) *RubyHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ENTERKEYHINT(v)
+}
+
 func (e *RubyHTMLElement) RemoveENTERKEYHINT(v string) *RubyHTMLElement {
     delete(e.StringAttributes, "enterkeyhint")
     return e
@@ -274,6 +330,13 @@ func (e *RubyHTMLElement) HIDDEN(v string) *RubyHTMLElement {
     return e
 }
 
+func (e *RubyHTMLElement) IfHIDDEN(cond bool, v string) *RubyHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.HIDDEN(v)
+}
+
 func (e *RubyHTMLElement) RemoveHIDDEN(v string) *RubyHTMLElement {
     delete(e.StringAttributes, "hidden")
     return e
@@ -290,6 +353,13 @@ func (e *RubyHTMLElement) ID(v string) *RubyHTMLElement {
     return e
 }
 
+func (e *RubyHTMLElement) IfID(cond bool, v string) *RubyHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ID(v)
+}
+
 func (e *RubyHTMLElement) RemoveID(v string) *RubyHTMLElement {
     delete(e.StringAttributes, "id")
     return e
@@ -304,6 +374,13 @@ func (e *RubyHTMLElement) INERT() *RubyHTMLElement {
     }
     e.BoolAttributes["inert"] = struct{}{}
     return e
+}
+
+func (e *RubyHTMLElement) IfINERT(cond bool) *RubyHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.INERT()
 }
 
 func (e *RubyHTMLElement) RemoveINERT() *RubyHTMLElement {
@@ -347,6 +424,13 @@ func (e *RubyHTMLElement) INPUTMODE(v string) *RubyHTMLElement {
     return e
 }
 
+func (e *RubyHTMLElement) IfINPUTMODE(cond bool, v string) *RubyHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.INPUTMODE(v)
+}
+
 func (e *RubyHTMLElement) RemoveINPUTMODE(v string) *RubyHTMLElement {
     delete(e.StringAttributes, "inputmode")
     return e
@@ -364,6 +448,13 @@ func (e *RubyHTMLElement) IS(v string) *RubyHTMLElement {
     return e
 }
 
+func (e *RubyHTMLElement) IfIS(cond bool, v string) *RubyHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.IS(v)
+}
+
 func (e *RubyHTMLElement) RemoveIS(v string) *RubyHTMLElement {
     delete(e.StringAttributes, "is")
     return e
@@ -378,6 +469,13 @@ func (e *RubyHTMLElement) ITEMID(v string) *RubyHTMLElement {
     }
     e.StringAttributes["itemid"] = v
     return e
+}
+
+func (e *RubyHTMLElement) IfITEMID(cond bool, v string) *RubyHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMID(v)
 }
 
 func (e *RubyHTMLElement) RemoveITEMID(v string) *RubyHTMLElement {
@@ -398,6 +496,13 @@ func (e *RubyHTMLElement) ITEMPROP(v string) *RubyHTMLElement {
     return e
 }
 
+func (e *RubyHTMLElement) IfITEMPROP(cond bool, v string) *RubyHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMPROP(v)
+}
+
 func (e *RubyHTMLElement) RemoveITEMPROP(v string) *RubyHTMLElement {
     delete(e.StringAttributes, "itemprop")
     return e
@@ -414,6 +519,13 @@ func (e *RubyHTMLElement) ITEMREF(v string) *RubyHTMLElement {
     return e
 }
 
+func (e *RubyHTMLElement) IfITEMREF(cond bool, v string) *RubyHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMREF(v)
+}
+
 func (e *RubyHTMLElement) RemoveITEMREF(v string) *RubyHTMLElement {
     delete(e.StringAttributes, "itemref")
     return e
@@ -428,6 +540,13 @@ func (e *RubyHTMLElement) ITEMSCOPE() *RubyHTMLElement {
     }
     e.BoolAttributes["itemscope"] = struct{}{}
     return e
+}
+
+func (e *RubyHTMLElement) IfITEMSCOPE(cond bool) *RubyHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMSCOPE()
 }
 
 func (e *RubyHTMLElement) RemoveITEMSCOPE() *RubyHTMLElement {
@@ -457,6 +576,13 @@ func (e *RubyHTMLElement) ITEMTYPE(v string) *RubyHTMLElement {
     return e
 }
 
+func (e *RubyHTMLElement) IfITEMTYPE(cond bool, v string) *RubyHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMTYPE(v)
+}
+
 func (e *RubyHTMLElement) RemoveITEMTYPE(v string) *RubyHTMLElement {
     delete(e.StringAttributes, "itemtype")
     return e
@@ -470,6 +596,13 @@ func (e *RubyHTMLElement) LANG(v string) *RubyHTMLElement {
     }
     e.StringAttributes["lang"] = v
     return e
+}
+
+func (e *RubyHTMLElement) IfLANG(cond bool, v string) *RubyHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.LANG(v)
 }
 
 func (e *RubyHTMLElement) RemoveLANG(v string) *RubyHTMLElement {
@@ -486,6 +619,13 @@ func (e *RubyHTMLElement) NONCE(v string) *RubyHTMLElement {
     }
     e.StringAttributes["nonce"] = v
     return e
+}
+
+func (e *RubyHTMLElement) IfNONCE(cond bool, v string) *RubyHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.NONCE(v)
 }
 
 func (e *RubyHTMLElement) RemoveNONCE(v string) *RubyHTMLElement {
@@ -507,6 +647,13 @@ func (e *RubyHTMLElement) POPOVER(v string) *RubyHTMLElement {
     return e
 }
 
+func (e *RubyHTMLElement) IfPOPOVER(cond bool, v string) *RubyHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.POPOVER(v)
+}
+
 func (e *RubyHTMLElement) RemovePOPOVER(v string) *RubyHTMLElement {
     delete(e.StringAttributes, "popover")
     return e
@@ -521,6 +668,13 @@ func (e *RubyHTMLElement) SLOT(v string) *RubyHTMLElement {
     }
     e.StringAttributes["slot"] = v
     return e
+}
+
+func (e *RubyHTMLElement) IfSLOT(cond bool, v string) *RubyHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SLOT(v)
 }
 
 func (e *RubyHTMLElement) RemoveSLOT(v string) *RubyHTMLElement {
@@ -538,6 +692,13 @@ func (e *RubyHTMLElement) SPELLCHECK(v string) *RubyHTMLElement {
     }
     e.StringAttributes["spellcheck"] = v
     return e
+}
+
+func (e *RubyHTMLElement) IfSPELLCHECK(cond bool, v string) *RubyHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SPELLCHECK(v)
 }
 
 func (e *RubyHTMLElement) RemoveSPELLCHECK(v string) *RubyHTMLElement {
@@ -558,6 +719,13 @@ func (e *RubyHTMLElement) STYLE(k,v string) *RubyHTMLElement {
     }
     kv.Add(k,v)
     return e
+}
+
+func (e *RubyHTMLElement) IfSTYLE(cond bool, k string) *RubyHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.STYLE(k, "")
 }
 
 func (e *RubyHTMLElement) RemoveSTYLE(k string) *RubyHTMLElement {
@@ -581,6 +749,13 @@ func (e *RubyHTMLElement) TABINDEX(v string) *RubyHTMLElement {
     return e
 }
 
+func (e *RubyHTMLElement) IfTABINDEX(cond bool, v string) *RubyHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TABINDEX(v)
+}
+
 func (e *RubyHTMLElement) RemoveTABINDEX(v string) *RubyHTMLElement {
     delete(e.StringAttributes, "tabindex")
     return e
@@ -595,6 +770,13 @@ func (e *RubyHTMLElement) TITLE(v string) *RubyHTMLElement {
     }
     e.StringAttributes["title"] = v
     return e
+}
+
+func (e *RubyHTMLElement) IfTITLE(cond bool, v string) *RubyHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TITLE(v)
 }
 
 func (e *RubyHTMLElement) RemoveTITLE(v string) *RubyHTMLElement {
@@ -612,6 +794,13 @@ func (e *RubyHTMLElement) TRANSLATE(v string) *RubyHTMLElement {
     }
     e.StringAttributes["translate"] = v
     return e
+}
+
+func (e *RubyHTMLElement) IfTRANSLATE(cond bool, v string) *RubyHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TRANSLATE(v)
 }
 
 func (e *RubyHTMLElement) RemoveTRANSLATE(v string) *RubyHTMLElement {

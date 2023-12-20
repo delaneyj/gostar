@@ -48,13 +48,13 @@ func (e *NavHTMLElement) TextF(format string, args ...any) *NavHTMLElement {
     return e.Text(fmt.Sprintf(format, args...))
 }
 
-func (e *NavHTMLElement) Raw(text string) *NavHTMLElement {
-    e.Descendants = append(e.Descendants, Raw(text))
+func (e *NavHTMLElement) Escaped(text string) *NavHTMLElement {
+    e.Descendants = append(e.Descendants, Escaped(text))
     return e
 }
 
-func (e *NavHTMLElement) RawF(format string, args ...any) *NavHTMLElement {
-    return e.Raw(fmt.Sprintf(format, args...))
+func (e *NavHTMLElement) EscapedF(format string, args ...any) *NavHTMLElement {
+    return e.Escaped(fmt.Sprintf(format, args...))
 }
 
 func (e *NavHTMLElement) CustomData(key, value string) *NavHTMLElement {
@@ -87,6 +87,13 @@ func (e *NavHTMLElement) ACCESSKEY(v string) *NavHTMLElement {
     return e
 }
 
+func (e *NavHTMLElement) IfACCESSKEY(cond bool, v string) *NavHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ACCESSKEY(v)
+}
+
 func (e *NavHTMLElement) RemoveACCESSKEY(v string) *NavHTMLElement {
     delete(e.StringAttributes, "accesskey")
     return e
@@ -114,6 +121,13 @@ func (e *NavHTMLElement) AUTOCAPITALIZE(v string) *NavHTMLElement {
     return e
 }
 
+func (e *NavHTMLElement) IfAUTOCAPITALIZE(cond bool, v string) *NavHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.AUTOCAPITALIZE(v)
+}
+
 func (e *NavHTMLElement) RemoveAUTOCAPITALIZE(v string) *NavHTMLElement {
     delete(e.StringAttributes, "autocapitalize")
     return e
@@ -128,6 +142,13 @@ func (e *NavHTMLElement) AUTOFOCUS() *NavHTMLElement {
     }
     e.BoolAttributes["autofocus"] = struct{}{}
     return e
+}
+
+func (e *NavHTMLElement) IfAUTOFOCUS(cond bool) *NavHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.AUTOFOCUS()
 }
 
 func (e *NavHTMLElement) RemoveAUTOFOCUS() *NavHTMLElement {
@@ -161,6 +182,13 @@ func(e *NavHTMLElement) CLASS(v string) *NavHTMLElement {
     return e
 }
 
+func (e *NavHTMLElement) IfCLASS(cond bool, v string) *NavHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.CLASS(v)
+}
+
 func (e *NavHTMLElement) SetCLASS(v string) *NavHTMLElement {
     kv := NewSpaceDelimitedString()
     e.DelimitedStringAttributes["class"] = kv
@@ -190,6 +218,13 @@ func (e *NavHTMLElement) CONTENTEDITABLE(v string) *NavHTMLElement {
     return e
 }
 
+func (e *NavHTMLElement) IfCONTENTEDITABLE(cond bool, v string) *NavHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.CONTENTEDITABLE(v)
+}
+
 func (e *NavHTMLElement) RemoveCONTENTEDITABLE(v string) *NavHTMLElement {
     delete(e.StringAttributes, "contenteditable")
     return e
@@ -209,6 +244,13 @@ func (e *NavHTMLElement) DIR(v string) *NavHTMLElement {
     return e
 }
 
+func (e *NavHTMLElement) IfDIR(cond bool, v string) *NavHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.DIR(v)
+}
+
 func (e *NavHTMLElement) RemoveDIR(v string) *NavHTMLElement {
     delete(e.StringAttributes, "dir")
     return e
@@ -224,6 +266,13 @@ func (e *NavHTMLElement) DRAGGABLE(v string) *NavHTMLElement {
     }
     e.StringAttributes["draggable"] = v
     return e
+}
+
+func (e *NavHTMLElement) IfDRAGGABLE(cond bool, v string) *NavHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.DRAGGABLE(v)
 }
 
 func (e *NavHTMLElement) RemoveDRAGGABLE(v string) *NavHTMLElement {
@@ -255,6 +304,13 @@ func (e *NavHTMLElement) ENTERKEYHINT(v string) *NavHTMLElement {
     return e
 }
 
+func (e *NavHTMLElement) IfENTERKEYHINT(cond bool, v string) *NavHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ENTERKEYHINT(v)
+}
+
 func (e *NavHTMLElement) RemoveENTERKEYHINT(v string) *NavHTMLElement {
     delete(e.StringAttributes, "enterkeyhint")
     return e
@@ -274,6 +330,13 @@ func (e *NavHTMLElement) HIDDEN(v string) *NavHTMLElement {
     return e
 }
 
+func (e *NavHTMLElement) IfHIDDEN(cond bool, v string) *NavHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.HIDDEN(v)
+}
+
 func (e *NavHTMLElement) RemoveHIDDEN(v string) *NavHTMLElement {
     delete(e.StringAttributes, "hidden")
     return e
@@ -290,6 +353,13 @@ func (e *NavHTMLElement) ID(v string) *NavHTMLElement {
     return e
 }
 
+func (e *NavHTMLElement) IfID(cond bool, v string) *NavHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ID(v)
+}
+
 func (e *NavHTMLElement) RemoveID(v string) *NavHTMLElement {
     delete(e.StringAttributes, "id")
     return e
@@ -304,6 +374,13 @@ func (e *NavHTMLElement) INERT() *NavHTMLElement {
     }
     e.BoolAttributes["inert"] = struct{}{}
     return e
+}
+
+func (e *NavHTMLElement) IfINERT(cond bool) *NavHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.INERT()
 }
 
 func (e *NavHTMLElement) RemoveINERT() *NavHTMLElement {
@@ -347,6 +424,13 @@ func (e *NavHTMLElement) INPUTMODE(v string) *NavHTMLElement {
     return e
 }
 
+func (e *NavHTMLElement) IfINPUTMODE(cond bool, v string) *NavHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.INPUTMODE(v)
+}
+
 func (e *NavHTMLElement) RemoveINPUTMODE(v string) *NavHTMLElement {
     delete(e.StringAttributes, "inputmode")
     return e
@@ -364,6 +448,13 @@ func (e *NavHTMLElement) IS(v string) *NavHTMLElement {
     return e
 }
 
+func (e *NavHTMLElement) IfIS(cond bool, v string) *NavHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.IS(v)
+}
+
 func (e *NavHTMLElement) RemoveIS(v string) *NavHTMLElement {
     delete(e.StringAttributes, "is")
     return e
@@ -378,6 +469,13 @@ func (e *NavHTMLElement) ITEMID(v string) *NavHTMLElement {
     }
     e.StringAttributes["itemid"] = v
     return e
+}
+
+func (e *NavHTMLElement) IfITEMID(cond bool, v string) *NavHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMID(v)
 }
 
 func (e *NavHTMLElement) RemoveITEMID(v string) *NavHTMLElement {
@@ -398,6 +496,13 @@ func (e *NavHTMLElement) ITEMPROP(v string) *NavHTMLElement {
     return e
 }
 
+func (e *NavHTMLElement) IfITEMPROP(cond bool, v string) *NavHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMPROP(v)
+}
+
 func (e *NavHTMLElement) RemoveITEMPROP(v string) *NavHTMLElement {
     delete(e.StringAttributes, "itemprop")
     return e
@@ -414,6 +519,13 @@ func (e *NavHTMLElement) ITEMREF(v string) *NavHTMLElement {
     return e
 }
 
+func (e *NavHTMLElement) IfITEMREF(cond bool, v string) *NavHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMREF(v)
+}
+
 func (e *NavHTMLElement) RemoveITEMREF(v string) *NavHTMLElement {
     delete(e.StringAttributes, "itemref")
     return e
@@ -428,6 +540,13 @@ func (e *NavHTMLElement) ITEMSCOPE() *NavHTMLElement {
     }
     e.BoolAttributes["itemscope"] = struct{}{}
     return e
+}
+
+func (e *NavHTMLElement) IfITEMSCOPE(cond bool) *NavHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMSCOPE()
 }
 
 func (e *NavHTMLElement) RemoveITEMSCOPE() *NavHTMLElement {
@@ -457,6 +576,13 @@ func (e *NavHTMLElement) ITEMTYPE(v string) *NavHTMLElement {
     return e
 }
 
+func (e *NavHTMLElement) IfITEMTYPE(cond bool, v string) *NavHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.ITEMTYPE(v)
+}
+
 func (e *NavHTMLElement) RemoveITEMTYPE(v string) *NavHTMLElement {
     delete(e.StringAttributes, "itemtype")
     return e
@@ -470,6 +596,13 @@ func (e *NavHTMLElement) LANG(v string) *NavHTMLElement {
     }
     e.StringAttributes["lang"] = v
     return e
+}
+
+func (e *NavHTMLElement) IfLANG(cond bool, v string) *NavHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.LANG(v)
 }
 
 func (e *NavHTMLElement) RemoveLANG(v string) *NavHTMLElement {
@@ -486,6 +619,13 @@ func (e *NavHTMLElement) NONCE(v string) *NavHTMLElement {
     }
     e.StringAttributes["nonce"] = v
     return e
+}
+
+func (e *NavHTMLElement) IfNONCE(cond bool, v string) *NavHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.NONCE(v)
 }
 
 func (e *NavHTMLElement) RemoveNONCE(v string) *NavHTMLElement {
@@ -507,6 +647,13 @@ func (e *NavHTMLElement) POPOVER(v string) *NavHTMLElement {
     return e
 }
 
+func (e *NavHTMLElement) IfPOPOVER(cond bool, v string) *NavHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.POPOVER(v)
+}
+
 func (e *NavHTMLElement) RemovePOPOVER(v string) *NavHTMLElement {
     delete(e.StringAttributes, "popover")
     return e
@@ -521,6 +668,13 @@ func (e *NavHTMLElement) SLOT(v string) *NavHTMLElement {
     }
     e.StringAttributes["slot"] = v
     return e
+}
+
+func (e *NavHTMLElement) IfSLOT(cond bool, v string) *NavHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SLOT(v)
 }
 
 func (e *NavHTMLElement) RemoveSLOT(v string) *NavHTMLElement {
@@ -538,6 +692,13 @@ func (e *NavHTMLElement) SPELLCHECK(v string) *NavHTMLElement {
     }
     e.StringAttributes["spellcheck"] = v
     return e
+}
+
+func (e *NavHTMLElement) IfSPELLCHECK(cond bool, v string) *NavHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.SPELLCHECK(v)
 }
 
 func (e *NavHTMLElement) RemoveSPELLCHECK(v string) *NavHTMLElement {
@@ -558,6 +719,13 @@ func (e *NavHTMLElement) STYLE(k,v string) *NavHTMLElement {
     }
     kv.Add(k,v)
     return e
+}
+
+func (e *NavHTMLElement) IfSTYLE(cond bool, k string) *NavHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.STYLE(k, "")
 }
 
 func (e *NavHTMLElement) RemoveSTYLE(k string) *NavHTMLElement {
@@ -581,6 +749,13 @@ func (e *NavHTMLElement) TABINDEX(v string) *NavHTMLElement {
     return e
 }
 
+func (e *NavHTMLElement) IfTABINDEX(cond bool, v string) *NavHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TABINDEX(v)
+}
+
 func (e *NavHTMLElement) RemoveTABINDEX(v string) *NavHTMLElement {
     delete(e.StringAttributes, "tabindex")
     return e
@@ -595,6 +770,13 @@ func (e *NavHTMLElement) TITLE(v string) *NavHTMLElement {
     }
     e.StringAttributes["title"] = v
     return e
+}
+
+func (e *NavHTMLElement) IfTITLE(cond bool, v string) *NavHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TITLE(v)
 }
 
 func (e *NavHTMLElement) RemoveTITLE(v string) *NavHTMLElement {
@@ -612,6 +794,13 @@ func (e *NavHTMLElement) TRANSLATE(v string) *NavHTMLElement {
     }
     e.StringAttributes["translate"] = v
     return e
+}
+
+func (e *NavHTMLElement) IfTRANSLATE(cond bool, v string) *NavHTMLElement {
+    if !cond {
+        return e
+    }
+    return e.TRANSLATE(v)
 }
 
 func (e *NavHTMLElement) RemoveTRANSLATE(v string) *NavHTMLElement {
