@@ -5,47 +5,52 @@ import (
 	"html"
 	"slices"
 	"strings"
+	"io"
 
-	"github.com/delaneyj/toolbelt"
 	"github.com/samber/lo"
 )
 
+var (
+	openBracket  = []byte("<")
+	closeBracket = []byte(">")
+	spaceCloseBracket = []byte(" >")
+	openSlash    = []byte("</")
+	dataDash     = []byte(" data-")
+	equalDblQuote	 = []byte("=\"")
+	dblQuote 	 = []byte("\"")
+	space 	  = []byte(" ")
+)
+
 type ElementBuilder interface{
-	Build(sb *strings.Builder) error
+	Build(w io.Writer) error
 }
 
 type Element struct {
-	Tag                       string
+	Tag                       []byte
 	IsSelfClosing             bool
 	BoolAttributes            map[string]struct{}
 	StringAttributes          map[string]string
+	IntAttributes             map[string]int
 	DelimitedStringAttributes map[string]*DelimitedString
 	DelimitedKVAttributes     map[string]*DelimitedKVString
 	CustomDataAttributes      map[string]string
 	Descendants               []ElementBuilder
 }
 
-func(e *Element) String() string {
-	sb := &strings.Builder{}
-	e.Build(sb)
-	return sb.String()
-}
-
-func (e *Element) Build(sb *strings.Builder) error {
-
-	sb.WriteRune('<')
-	sb.WriteString(e.Tag)
+func (e *Element) Build(w io.Writer) error {
+	w.Write(openBracket)
+	w.Write(e.Tag)
 
 	dataValues := lo.Entries(e.CustomDataAttributes)
 	slices.SortFunc(dataValues, func(a, b lo.Entry[string, string]) int {
 		return strings.Compare(a.Key, b.Key)
 	})
 	for _, entry := range dataValues {
-		sb.WriteString(" data-")
-		sb.WriteString(toolbelt.Kebab(entry.Key))
-		sb.WriteString("=\"")
-		sb.WriteString(entry.Value)
-		sb.WriteRune('"')
+		w.Write(dataDash)
+		w.Write([]byte(entry.Key))
+		w.Write(equalDblQuote)
+		w.Write([]byte(entry.Value))
+		w.Write(dblQuote)
 	}
 
 	stringValues := lo.Entries(e.StringAttributes)
@@ -53,12 +58,11 @@ func (e *Element) Build(sb *strings.Builder) error {
 		return strings.Compare(a.Key, b.Key)
 	})
 	for _, entry := range stringValues {
-		sb.WriteRune(' ')
-		sb.WriteString(entry.Key)
-		sb.WriteRune('=')
-		sb.WriteRune('"')
-		sb.WriteString(entry.Value)
-		sb.WriteRune('"')
+		w.Write(space)
+		w.Write([]byte(entry.Key))
+		w.Write(equalDblQuote)
+		w.Write([]byte(entry.Value))
+		w.Write(dblQuote)
 	}
 
 	values := lo.Entries(e.DelimitedStringAttributes)
@@ -66,14 +70,13 @@ func (e *Element) Build(sb *strings.Builder) error {
 		return strings.Compare(a.Key, b.Key)
 	})
 	for _, entry := range values {
-		sb.WriteRune(' ')
-		sb.WriteString(entry.Key)
-		sb.WriteRune('=')
-		sb.WriteRune('"')
-		if err := entry.Value.Build(sb); err != nil {
+		w.Write(space)
+		w.Write([]byte(entry.Key))
+		w.Write(equalDblQuote)
+		if err := entry.Value.Build(w); err != nil {
 			return fmt.Errorf("failed to build element: %w", err)
 		}
-		sb.WriteRune('"')
+		w.Write(dblQuote)
 	}
 
 	kvValues := lo.Entries(e.DelimitedKVAttributes)
@@ -81,37 +84,37 @@ func (e *Element) Build(sb *strings.Builder) error {
 		return strings.Compare(a.Key, b.Key)
 	})
 	for _, entry := range kvValues {
-		sb.WriteRune(' ')
-		sb.WriteString(entry.Key)
-		sb.WriteRune('=')
-		sb.WriteRune('"')
-		if err := entry.Value.Build(sb); err != nil {
+		w.Write(space)
+		w.Write([]byte(entry.Key))
+		w.Write(equalDblQuote)
+		if err := entry.Value.Build(w); err != nil {
 			return fmt.Errorf("failed to build element: %w", err)
 		}
-		sb.WriteRune('"')
+		w.Write(dblQuote)
 	}
 
 	boolStrings := lo.Keys(e.BoolAttributes)
 	slices.Sort(boolStrings)
 	for _, name := range boolStrings {
-		sb.WriteRune(' ')
-		sb.WriteString(name)
+		w.Write(space)
+		w.Write([]byte(name))
 	}
 
 	if e.IsSelfClosing {
-		sb.WriteString(" />")
+		w.Write(spaceCloseBracket)
 		return nil
 	}
 
-	sb.WriteRune('>')
+	w.Write(closeBracket)
 	for _, child := range e.Descendants {
-		if err := child.Build(sb); err != nil {
+		if err := child.Build(w); err != nil {
 			return fmt.Errorf("failed to build element: %w", err)
 		}
 	}
-	sb.WriteString("</")
-	sb.WriteString(e.Tag)
-	sb.WriteRune('>')
+
+	w.Write(openSlash)
+	w.Write(e.Tag)
+	w.Write(closeBracket)
 
 	return nil
 }
@@ -133,10 +136,10 @@ func (ds *DelimitedString) Remove(values ...string) {
 	}
 }
 
-func (ds *DelimitedString) Build(sb *strings.Builder) error {
+func (ds *DelimitedString) Build(w io.Writer) error {
 	values := lo.Keys(ds.values)
 	slices.Sort(values)
-	_, err := sb.WriteString(strings.Join(values, ds.delimiter))
+	_, err := w.Write([]byte(strings.Join(values, ds.delimiter)))
 	return err
 }
 
@@ -165,13 +168,13 @@ func (ds *DelimitedKVString) Remove(key string) {
 	delete(ds.values, key)
 }
 
-func (ds *DelimitedKVString) Build(sb *strings.Builder) error {
+func (ds *DelimitedKVString) Build(w io.Writer) error {
 	values := make([]string, 0, len(ds.values))
 	for k, v := range ds.values {
 		values = append(values, k+ds.associationDelimiter+v)
 	}
 	slices.Sort(values)
-	sb.WriteString(strings.Join(values, ds.delimiter))
+	w.Write([]byte(strings.Join(values, ds.delimiter)))
 	return nil
 }
 
@@ -189,8 +192,8 @@ func NewEqualSemicolonDelimitedKVString() *DelimitedKVString {
 
 type TextContent string
 
-func (tc *TextContent) Build(sb *strings.Builder) error {
-	_, err := sb.WriteString(string(*tc))
+func (tc *TextContent) Build(w io.Writer) error {
+	_, err := w.Write([]byte(*tc))
 	return err
 }
 
@@ -200,8 +203,8 @@ func Text(text string) *TextContent {
 
 type EscapedContent string
 
-func (ec *EscapedContent) Build(sb *strings.Builder) error {
-	_, err := sb.WriteString(html.EscapeString(string(*ec)))
+func (ec *EscapedContent) Build(w io.Writer) error {
+	_, err := w.Write([]byte(html.EscapeString(string(*ec))))
 	return err
 }
 
@@ -213,9 +216,9 @@ type Grouper struct {
 	Children []ElementBuilder
 }
 
-func (g *Grouper) Build(sb *strings.Builder) error {
+func (g *Grouper) Build(w io.Writer) error {
 	for _, child := range g.Children {
-		if err := child.Build(sb); err != nil {
+		if err := child.Build(w); err != nil {
 			return fmt.Errorf("failed to build element: %w", err)
 		}
 	}
@@ -253,7 +256,7 @@ func Range[T any](values []T, cb func(T) ElementBuilder) ElementBuilder {
 
 func NewElement(tag string, children ...ElementBuilder) *Element {
 	return &Element{
-		Tag:      tag,
+		Tag:      []byte(tag),
 		Descendants: children,
 	}
 }

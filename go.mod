@@ -9,6 +9,7 @@ require (
 	github.com/iancoleman/strcase v0.3.0
 	github.com/samber/lo v1.38.1
 	github.com/stretchr/testify v1.8.4
+	github.com/valyala/bytebufferpool v1.0.0
 	k8s.io/apimachinery v0.28.4
 )
 

@@ -1,18 +1,18 @@
 package examples
 
 import (
-	"fmt"
 	"testing"
 
-	"github.com/stretchr/testify/assert"
-
+	"github.com/delaneyj/gostar/html"
 	. "github.com/delaneyj/gostar/html"
+	"github.com/stretchr/testify/assert"
+	"github.com/valyala/bytebufferpool"
 )
 
 func TestExample1(t *testing.T) {
 	type ExpectedResult struct {
 		Expected string
-		Actual   fmt.Stringer
+		Actual   html.ElementBuilder
 	}
 
 	expectedResults := []ExpectedResult{
@@ -66,8 +66,13 @@ func TestExample1(t *testing.T) {
 	}
 
 	for _, expectedResult := range expectedResults {
+		buf := bytebufferpool.Get()
+		defer bytebufferpool.Put(buf)
+
 		e := expectedResult.Expected
-		a := expectedResult.Actual.String()
+		err := expectedResult.Actual.Build(buf)
+		assert.NoError(t, err)
+		a := buf.String()
 		assert.Equal(t, e, a)
 	}
 }

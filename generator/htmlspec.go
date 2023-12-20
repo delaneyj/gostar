@@ -3,7 +3,6 @@ package generator
 import (
 	"context"
 	"embed"
-	"errors"
 	"fmt"
 	"log"
 	"net/http"
@@ -12,7 +11,6 @@ import (
 	"regexp"
 	"slices"
 	"strings"
-	"sync"
 	"text/template"
 
 	"github.com/PuerkitoBio/goquery"
@@ -30,6 +28,7 @@ type AttributeMode string
 
 const (
 	AttributeModeString         AttributeMode = "string"
+	AttributeModeInt            AttributeMode = "int"
 	AttributeModeKV             AttributeMode = "kv"
 	AttributeModeBool           AttributeMode = "bool"
 	AttributeModeSpaceDelimited AttributeMode = "space-delimited"
@@ -179,9 +178,24 @@ func GenerateAllElements(ctx context.Context, args *GenerateElementArgs) (err er
 
 	packageName := toolbelt.ToCasedString(lastOutputPathPart)
 
+	goStarFileName := "gostar_elements.go"
+	goStarFile, err := os.Create(filepath.Join(args.OutputPath, goStarFileName))
+	if err != nil {
+		return fmt.Errorf("could not create file %s: %v", goStarFileName, err)
+	}
+	defer goStarFile.Close()
+	if err := tmpls.ExecuteTemplate(goStarFile, "gostar.tmpl", struct {
+		PackageName string
+	}{
+		PackageName: packageName.Snake,
+	}); err != nil {
+		return fmt.Errorf("could not execute template: %v", err)
+	}
+
 	type AttributeCtx struct {
 		Name            string
 		Key             string
+		KeyConst        string
 		ValidValueTypes []string
 		Mode            AttributeMode
 		Description     []string
@@ -196,74 +210,82 @@ func GenerateAllElements(ctx context.Context, args *GenerateElementArgs) (err er
 		Attributes    []AttributeCtx
 	}
 
-	wg := &sync.WaitGroup{}
-	wg.Add(len(elements) + 1)
-	errs := make(chan error, len(elements)+1)
+	elementCtxs := []*ElementCtx{}
+	for _, element := range elements {
+		elName := toolbelt.ToCasedString(element.Tag)
+		elCtx := ElementCtx{
+			PackageName:   packageName.Snake,
+			ElementName:   fmt.Sprintf("%sHTMLElement", elName.Pascal),
+			NewElement:    elName.Upper,
+			Tag:           element.Tag,
+			IsSelfClosing: element.IsVoidElement,
+		}
 
-	go func() {
-		defer wg.Done()
+		for _, attribute := range element.Attributes {
+			attrCtx := AttributeCtx{
+				Name:            attribute.Name,
+				Key:             attribute.Key,
+				KeyConst:        fmt.Sprintf("attribute%sKey", attribute.Name),
+				ValidValueTypes: attribute.ValidValueTypes,
+				Mode:            attribute.Mode,
+				Description:     strings.Split(attribute.Description, "\n"),
+			}
+			elCtx.Attributes = append(elCtx.Attributes, attrCtx)
+		}
 
-		fName := "gostar.go"
+		elementCtxs = append(elementCtxs, &elCtx)
+	}
+	slices.SortFunc(elementCtxs, func(a, b *ElementCtx) int {
+		return strings.Compare(a.Tag, b.Tag)
+	})
+
+	constFileName := "gostar_consts.go"
+	constFile, err := os.Create(filepath.Join(args.OutputPath, constFileName))
+	if err != nil {
+		return fmt.Errorf("could not create file %s: %v", constFileName, err)
+	}
+	defer constFile.Close()
+
+	attributeKeys := map[string]string{}
+	for _, element := range elementCtxs {
+		for _, attribute := range element.Attributes {
+			k := fmt.Sprintf("attribute%sKey", attribute.Name)
+			v := attribute.Key
+			attributeKeys[k] = v
+		}
+	}
+	attributeEntries := lo.Entries(attributeKeys)
+	slices.SortFunc(attributeEntries, func(a, b lo.Entry[string, string]) int {
+		return strings.Compare(a.Key, b.Key)
+	})
+
+	if err := tmpls.ExecuteTemplate(constFile, "consts.tmpl", struct {
+		PackageName          string
+		ByteSliceConversions []lo.Entry[string, string]
+		AttributeKeys        []lo.Entry[string, string]
+	}{
+		PackageName: packageName.Snake,
+		ByteSliceConversions: lo.Map(elementCtxs, func(el *ElementCtx, i int) lo.Entry[string, string] {
+			return lo.Entry[string, string]{
+				Key:   "elementTag" + el.NewElement,
+				Value: el.Tag,
+			}
+		}),
+		AttributeKeys: attributeEntries,
+	}); err != nil {
+		return fmt.Errorf("could not execute template: %v", err)
+	}
+
+	for _, elCtx := range elementCtxs {
+		fName := fmt.Sprintf("%s.go", toolbelt.Lower(toolbelt.Snake(elCtx.NewElement)))
 		f, err := os.Create(filepath.Join(args.OutputPath, fName))
 		if err != nil {
-			errs <- fmt.Errorf("could not create file %s: %v", fName, err)
-			return
+			return fmt.Errorf("could not create file %s: %v", fName, err)
 		}
 
-		if err := tmpls.ExecuteTemplate(f, "gostar.tmpl", struct {
-			PackageName string
-		}{
-			PackageName: packageName.Snake,
-		}); err != nil {
-			errs <- fmt.Errorf("could not execute template: %v", err)
-			return
+		if err := tmpls.ExecuteTemplate(f, "element.tmpl", elCtx); err != nil {
+			return fmt.Errorf("could not execute template: %v", err)
 		}
-	}()
-
-	for _, element := range elements {
-		go func(element *Element) {
-			defer wg.Done()
-			elName := toolbelt.ToCasedString(element.Tag)
-			elCtx := ElementCtx{
-				PackageName:   packageName.Snake,
-				ElementName:   fmt.Sprintf("%sHTMLElement", elName.Pascal),
-				NewElement:    elName.Upper,
-				Tag:           element.Tag,
-				IsSelfClosing: element.IsVoidElement,
-			}
-
-			for _, attribute := range element.Attributes {
-				attrCtx := AttributeCtx{
-					Name:            attribute.Name,
-					Key:             attribute.Key,
-					ValidValueTypes: attribute.ValidValueTypes,
-					Mode:            attribute.Mode,
-					Description:     strings.Split(attribute.Description, "\n"),
-				}
-				elCtx.Attributes = append(elCtx.Attributes, attrCtx)
-			}
-
-			fName := fmt.Sprintf("%s.go", elName.Snake)
-			f, err := os.Create(filepath.Join(args.OutputPath, fName))
-			if err != nil {
-				errs <- fmt.Errorf("could not create file %s: %v", fName, err)
-				return
-			}
-
-			if err := tmpls.ExecuteTemplate(f, "element.tmpl", elCtx); err != nil {
-				errs <- fmt.Errorf("could not execute template: %v", err)
-				return
-			}
-		}(element)
-	}
-	wg.Wait()
-	close(errs)
-	allErrs := []error{}
-	for err := range errs {
-		allErrs = append(allErrs, err)
-	}
-	if len(allErrs) > 0 {
-		return errors.Join(allErrs...)
 	}
 
 	return nil
@@ -458,6 +480,8 @@ func applyAttributes(htmlSpecDoc *goquery.Document, elements map[string]*Element
 			attr.Mode = AttributeModeSpaceDelimited
 		} else if len(attr.ValidValueTypes) == 1 && attr.ValidValueTypes[0] == "boolean_attribute" {
 			attr.Mode = AttributeModeBool
+		} else if len(attr.ValidValueTypes) == 1 && attr.ValidValueTypes[0] == "valid_non_negative_integer" {
+			attr.Mode = AttributeModeInt
 		}
 
 		attributes[attr.Name] = attr

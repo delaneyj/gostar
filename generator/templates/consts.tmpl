@@ -1,0 +1,22 @@
+package {{.PackageName}}
+
+// Element byte slices
+var (
+    {{- range .ByteSliceConversions }}
+    {{.Key}} = []byte("{{.Value}}")
+    {{- end }}
+)
+
+// Attribute strings
+const (
+    {{- range .AttributeKeys }}
+    {{.Key}} = "{{.Value}}"
+    {{- end }}
+)
+
+// Attribute byte slices
+var (
+    {{- range .AttributeKeys }}
+    {{.Key}}Bytes = []byte("{{.Value}}")
+    {{- end }}
+)

@@ -11,7 +11,7 @@ type {{.ElementName }} struct {
 func {{.NewElement }}(children ...ElementBuilder) *{{.ElementName }} {
     return &{{.ElementName }}{
         Element: &Element{
-            Tag: "{{.Tag}}",
+            Tag: elementTag{{.NewElement}},
             IsSelfClosing: {{.IsSelfClosing}},
             Descendants: children,
         },
@@ -87,7 +87,7 @@ func (e *{{$.ElementName}}) {{.Name}}() *{{$.ElementName}} {
     if e.BoolAttributes == nil {
         e.BoolAttributes = map[string]struct{}{}
     }
-    e.BoolAttributes["{{.Key}}"] = struct{}{}
+    e.BoolAttributes[{{.KeyConst}}] = struct{}{}
     return e
 }
 
@@ -102,7 +102,7 @@ func (e *{{$.ElementName}}) Remove{{.Name}}() *{{$.ElementName}} {
     if e.BoolAttributes == nil {
         return e
     }
-    delete(e.BoolAttributes, "{{.Key}}")
+    delete(e.BoolAttributes, {{.KeyConst}})
     return e
 }
 
@@ -117,10 +117,10 @@ func (e *{{$.ElementName}}) {{.Name}}(k,v string) *{{$.ElementName}} {
     if e.DelimitedKVAttributes == nil {
         e.DelimitedKVAttributes = map[string]*DelimitedKVString{}
     }
-    kv, ok := e.DelimitedKVAttributes["{{.Key}}"]
+    kv, ok := e.DelimitedKVAttributes[{{.KeyConst}}]
     if !ok {
         kv = NewEqualSemicolonDelimitedKVString()
-        e.DelimitedKVAttributes["{{.Key}}"] = kv
+        e.DelimitedKVAttributes[{{.KeyConst}}] = kv
     }
     kv.Add(k,v)
     return e
@@ -134,7 +134,7 @@ func (e *{{$.ElementName}}) If{{.Name}}(cond bool, k string) *{{$.ElementName}} 
 }
 
 func (e *{{$.ElementName}}) Remove{{.Name}}(k string) *{{$.ElementName}} {
-    kv, ok := e.DelimitedKVAttributes["{{.Key}}"]
+    kv, ok := e.DelimitedKVAttributes[{{.KeyConst}}]
     if !ok {
         return e
     }
@@ -146,10 +146,10 @@ func(e *{{$.ElementName}}) {{.Name}}(v string) *{{$.ElementName}} {
     if e.DelimitedStringAttributes == nil {
         e.DelimitedStringAttributes = map[string]*DelimitedString{}
     }
-    kv, ok := e.DelimitedStringAttributes["{{.Key}}"]
+    kv, ok := e.DelimitedStringAttributes[{{.KeyConst}}]
     if !ok {
         kv = NewSpaceDelimitedString()
-        e.DelimitedStringAttributes["{{.Key}}"] = kv
+        e.DelimitedStringAttributes[{{.KeyConst}}] = kv
     }
     kv.Add(v)
     return e
@@ -164,13 +164,13 @@ func (e *{{$.ElementName}}) If{{.Name}}(cond bool, v string) *{{$.ElementName}} 
 
 func (e *{{$.ElementName}}) Set{{.Name}}(v string) *{{$.ElementName}} {
     kv := NewSpaceDelimitedString()
-    e.DelimitedStringAttributes["{{.Key}}"] = kv
+    e.DelimitedStringAttributes[{{.KeyConst}}] = kv
     kv.Add(v)
     return e
 }
 
 func (e *{{$.ElementName}}) Remove{{.Name}}(v string) *{{$.ElementName}} {
-    kv, ok := e.DelimitedStringAttributes["{{.Key}}"]
+    kv, ok := e.DelimitedStringAttributes[{{.KeyConst}}]
     if !ok {
         return e
     }
@@ -183,7 +183,7 @@ func (e *{{$.ElementName}}) {{.Name}}(v string) *{{$.ElementName}} {
     if e.StringAttributes == nil {
         e.StringAttributes = map[string]string{}
     }
-    e.StringAttributes["{{.Key}}"] = v
+    e.StringAttributes[{{.KeyConst}}] = v
     return e
 }
 
@@ -195,7 +195,28 @@ func (e *{{$.ElementName}}) If{{.Name}}(cond bool, v string) *{{$.ElementName}} 
 }
 
 func (e *{{$.ElementName}}) Remove{{.Name}}(v string) *{{$.ElementName}} {
-    delete(e.StringAttributes, "{{.Key}}")
+    delete(e.StringAttributes, {{.KeyConst}})
+    return e
+}
+
+{{- else if (eq .Mode "int") }}
+func (e *{{$.ElementName}}) {{.Name}}(v int) *{{$.ElementName}} {
+    if e.IntAttributes == nil {
+        e.IntAttributes = map[string]int{}
+    }
+    e.IntAttributes[{{.KeyConst}}] = v
+    return e
+}
+
+func (e *{{$.ElementName}}) If{{.Name}}(cond bool, v int) *{{$.ElementName}} {
+    if !cond {
+        return e
+    }
+    return e.{{.Name}}(v)
+}
+
+func (e *{{$.ElementName}}) Remove{{.Name}}(v int) *{{$.ElementName}} {
+    delete(e.IntAttributes, {{.KeyConst}})
     return e
 }
 

@@ -3,29 +3,25 @@
 version: "3"
 
 vars:
-  VERSION: 0.2.0
+  VERSION: 0.3.0
 
-interval: 300ms
+interval: 1000ms
 
 tasks:
-  tools:
-    cmds:
-      - go install github.com/valyala/quicktemplate/qtc@latest
-    sources:
-      - echo `which qtc`
-
   gen:
     sources:
-      - "**/*.go"
-      - "**/*.*tmpl"
+      - "generator/**/*"
+      - "examples/**/*"
+      - "cmd/**/*"
+    generates:
+      - "html/**/*.go"
     cmds:
       - go run cmd/gen/*.go
+      - go fmt ./...
 
   test:
     deps:
       - gen
-    sources:
-      - "**/*.go"
     cmds:
       - go test ./...
 
