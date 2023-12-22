@@ -7,7 +7,7 @@ import (
 	"github.com/samber/lo"
 	"github.com/stretchr/testify/assert"
 
-	. "github.com/delaneyj/gostar/html"
+	. "github.com/delaneyj/gostar/elements/html"
 )
 
 func TestSlinso(t *testing.T) {
@@ -43,17 +43,17 @@ func TestSlinso(t *testing.T) {
 
 	expectedtComplexResultMinified := `<!DOCTYPE html><html><body><header><title>Bob's Home Page</title><div class="header">Page Header</div></header><nav><ul class="navigation"><li><a href="http://www.mytest.com/">Link 1</a></li><li><a href="http://www.mytest.com/">Link 2</a></li><li><a href="http://www.mytest.com/">Link 3</a></li></ul></nav><section><div class="content"><div class="welcome"><h4>Hello Bob</h4><div class="raw"><div><p>Raw Content to be displayed</p></div></div><div class="enc">&lt;div&gt;&lt;div&gt;&lt;div&gt;Escaped&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</div></div><p>Bob has 1 message</p><p>Bob has 2 messages</p><p>Bob has 3 messages</p><p>Bob has 4 messages</p><p>Bob has 5 messages</p></div></section><footer><div class="footer">copyright 2016</div></footer></body></html>`
 
-	header := func(title string) ElementBuilder {
+	header := func(title string) ElementRenderer {
 		return HEADER(
 			TITLE().TextF("%s's Home Page", title),
 			DIV().CLASS("header").Text("Page Header"),
 		)
 	}
 
-	navigation := func(nav []*Navigation) ElementBuilder {
+	navigation := func(nav []*Navigation) ElementRenderer {
 		return NAV(
 			UL(
-				Range(nav, func(n *Navigation) ElementBuilder {
+				Range(nav, func(n *Navigation) ElementRenderer {
 					return LI(
 						A().HREF(n.Link).Text(n.Item),
 					)
@@ -62,11 +62,11 @@ func TestSlinso(t *testing.T) {
 		)
 	}
 
-	footer := func() ElementBuilder {
+	footer := func() ElementRenderer {
 		return FOOTER(DIV().CLASS("footer").Text("copyright 2016"))
 	}
 
-	index := func(u *User, nav []*Navigation, title string) ElementBuilder {
+	index := func(u *User, nav []*Navigation, title string) ElementRenderer {
 		return Group(
 			Text("<!DOCTYPE html>"),
 			HTML(
@@ -80,7 +80,7 @@ func TestSlinso(t *testing.T) {
 								DIV().CLASS("raw").Text(u.RawContent),
 								DIV().CLASS("enc").Escaped(u.EscapedContent),
 							).CLASS("welcome"),
-							Range(lo.Range(5), func(i int) ElementBuilder {
+							Range(lo.Range(5), func(i int) ElementRenderer {
 								count := i + 1
 								return Tern(
 									count == 1,
@@ -98,7 +98,7 @@ func TestSlinso(t *testing.T) {
 
 	sb := &strings.Builder{}
 	builder := index(testComplexUser, testComplexNav, testComplexTitle)
-	if err := builder.Build(sb); err != nil {
+	if err := builder.Render(sb); err != nil {
 		t.Error(err)
 	}
 

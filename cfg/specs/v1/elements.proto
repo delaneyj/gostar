@@ -1,0 +1,50 @@
+syntax = "proto3";
+
+package specs.v1;
+
+option go_package = "specs/v1;pb";
+
+message Attribute {
+  message KV {
+    string key_value_delimiter = 1;
+    string pair_delimiter = 2;
+  }
+
+  message Choice {
+    string name = 1;
+    string description = 2;
+  }
+  message Choices { repeated Choice choices = 1; }
+
+  message Type {
+    oneof type {
+      bool string = 1;
+      string delimited = 2;
+      KV kv = 3;
+      bool bool = 4;
+      bool integer = 5;
+      bool number = 6;
+      Choices choices = 7;
+      bool rune = 8;
+    }
+  }
+  string key = 1;
+  string name = 2;
+  string description = 3;
+  Type type = 4;
+}
+
+message Element {
+  string tag = 1;
+  string name = 2;
+  string description = 3;
+  bool no_children = 4;
+  repeated Attribute attributes = 5;
+}
+
+message Namespace {
+  string name = 1;
+  string description = 2;
+  repeated Attribute global_attributes = 3;
+  repeated Element elements = 4;
+}

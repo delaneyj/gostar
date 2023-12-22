@@ -2,9 +2,12 @@ package main
 
 import (
 	"context"
+	"fmt"
 	"log"
 	"time"
 
+	"github.com/delaneyj/gostar/cfg"
+	pb "github.com/delaneyj/gostar/cfg/gen/specs/v1"
 	"github.com/delaneyj/gostar/generator"
 )
 
@@ -21,12 +24,29 @@ func main() {
 }
 
 func run(ctx context.Context) error {
-
-	if err := generator.GenerateAllElements(ctx, &generator.GenerateElementArgs{
-		OutputPath: "./html",
-		TempDir:    "./tmp",
-	}); err != nil {
-		return err
+	namespaces := []*pb.Namespace{
+		cfg.HTML,
+		cfg.SVG,
+		cfg.MathML,
 	}
+
+	if err := generator.GenerateAll(ctx, "./elements", namespaces); err != nil {
+		return fmt.Errorf("failed to generate all: %w", err)
+	}
+
+	// pkgs, err := mdn.ScrapePackages(ctx, "./tmp")
+	// if err != nil {
+	// 	return fmt.Errorf("failed to scrape packages: %w", err)
+	// }
+
+	// pkgs, err := idls.GetWebCoreIDLs(ctx, "./tmp")
+	// if err != nil {
+	// 	return fmt.Errorf("failed to get WebCore IDLs: %w", err)
+	// }
+
+	// if err := generator.GenerateAll(ctx, "./elements", pkgs); err != nil {
+	// 	return fmt.Errorf("failed to generate all: %w", err)
+	// }
+
 	return nil
 }

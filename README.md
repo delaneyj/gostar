@@ -7,11 +7,20 @@ A fluent HTML builder for Go built directly from the [HTML Living Standard](http
 
 ![mascot](docs/mascot.png)
 
-# What does it do?
+## What does it do?
 
 Instead of creating HTML using string concatenation or templates, Gostar allows you to create HTML using a fluent API. This allows you to create HTML in a more natural way, and makes it easier to create HTML programmatically.  It does that by building directly from the [HTML Living Standard](https://html.spec.whatwg.org/) and introspecting to creating automated conversions for all HTML elements and attributes.
 
+
+
+Just import the package.  I prefer dot imports so I don't have to type the package name over and over.  All HTML tags and attributes are uppercase to avoid collisions with Go keywords and make explicit what is a DSL.
+
+
+```go
+. "github.com/delaneyj/gostar/elements/html"
+```
 Since everything is `just` fluent functions you can compose them together to create more complex HTML structures.  You can also create your own fluent functions to create reusable HTML components.
+
 ```go
 header := func(title string) ElementBuilder {
     return HEADER(
@@ -67,9 +76,6 @@ index := func(u *User, nav []*Navigation, title string) ElementBuilder {
 }
 ```
 
-# Performance
+## Performance
 
 Testing shows it's faster than Go builtin template/html package but this is including creating and writing to a buffer.  It's still sub-microsecond for most pages and the convenience of the fluent API is worth it.  Avoiding the parse, setup template context, then execute loop mean way less work for the developer.
-
-
-

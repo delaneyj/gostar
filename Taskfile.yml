@@ -3,25 +3,44 @@
 version: "3"
 
 vars:
-  VERSION: 0.3.1
+  VERSION: 0.4.0
 
 interval: 1000ms
 
 tasks:
-  gen:
+  pb:
+    dir: cfg
     sources:
-      - "generator/**/*"
-      - "examples/**/*"
-      - "cmd/**/*"
+      - "**/*.proto"
+      - "**/*.yaml"
     generates:
-      - "html/**/*.go"
+      - "gen/**/*"
     cmds:
+      - go install github.com/bufbuild/buf/cmd/buf@latest
+      - rm -rf gen
+      - buf mod update
+      - buf generate
+
+  gen:
+    deps:
+      - pb
+    sources:
+      - "*.go"
+      - "generators/**/*.go"
+      - "cfg/**/*.go"
+      - "**/*.tmpl"
+    generates:
+      - "elements/**/*.go"
+    cmds:
+      - go install golang.org/x/tools/cmd/goimports@latest
       - go run cmd/gen/*.go
-      - go fmt ./...
+      - goimports -w elements
 
   test:
     deps:
       - gen
+    sources:
+      - "**/*.go"
     cmds:
       - go test ./...
 
