@@ -16,6 +16,11 @@ message Attribute {
   }
   message Choices { repeated Choice choices = 1; }
 
+  message Custom {
+    string name = 1;
+    Type type = 2;
+  }
+
   message Type {
     oneof type {
       bool string = 1;
@@ -26,6 +31,8 @@ message Attribute {
       bool number = 6;
       Choices choices = 7;
       bool rune = 8;
+      Custom custom = 9;
+      bool json = 10;
     }
   }
   string key = 1;
@@ -45,6 +52,12 @@ message Element {
 message Namespace {
   string name = 1;
   string description = 2;
-  repeated Attribute global_attributes = 3;
-  repeated Element elements = 4;
+  string prefix = 3;
+  repeated Attribute global_attributes = 4;
+  repeated Element elements = 5;
+}
+
+message Namespaces {
+  repeated Namespace namespaces = 1;
+  repeated Attribute attributes_extensions = 2;
 }

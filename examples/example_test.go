@@ -4,8 +4,7 @@ import (
 	"strings"
 	"testing"
 
-	. "github.com/delaneyj/gostar/elements/html"
-	"github.com/delaneyj/gostar/elements/svg"
+	. "github.com/delaneyj/gostar/elements"
 	"github.com/stretchr/testify/assert"
 	"github.com/valyala/bytebufferpool"
 )
@@ -51,15 +50,15 @@ func TestExample1(t *testing.T) {
 		},
 		{
 			Expected: `<clipPath id="clip-path"><rect class="cls-1" height="300" id="Rectangle_73" width="300"></rect></clipPath>`,
-			Actual: svg.CLIPPATH(
-				svg.RECT().CLASS("cls-1").ID("Rectangle_73").WIDTH(300).HEIGHT(300),
+			Actual: SVG_CLIPPATH(
+				SVG_RECT().CLASS("cls-1").ID("Rectangle_73").WIDTH(300).HEIGHT(300),
 			).ID("clip-path"),
 		},
 		{
 			Expected: `<linearGradient gradientUnits="objectBoundingBox" id="linear-gradient" x1="0.048" x2="0.963" y1="0.5" y2="0.5"><stop offset="0" stop-color="#000000"></stop><stop offset="1" stop-color="#0E67B4"></stop></linearGradient>`,
-			Actual: svg.LINEARGRADIENT(
-				svg.STOP().OFFSET(0).STOP_COLOR("#000000"),
-				svg.STOP().OFFSET(1).STOP_COLOR("#0E67B4"),
+			Actual: SVG_LINEARGRADIENT(
+				SVG_STOP().OFFSET(0).STOP_COLOR("#000000"),
+				SVG_STOP().OFFSET(1).STOP_COLOR("#0E67B4"),
 			).
 				ID("linear-gradient").
 				GRADIENTUNITS("objectBoundingBox").

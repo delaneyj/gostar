@@ -7,6 +7,7 @@ import (
 var MathML = &pb.Namespace{
 	Name:        "mathml",
 	Description: `This MathML Core specification intends to address these issues by being as accurate as possible on the visual rendering of mathematical formulas using additional rules from the TeXBook’s Appendix G [TEXBOOK] and from the Open Font Format [OPEN-FONT-FORMAT], [OPEN-TYPE-MATH-ILLUMINATED]. It also relies on modern browser implementations and web technologies [HTML] [SVG] [CSS2] [DOM], clarifying interactions with them when needed or introducing new low-level primitives to improve the web platform layering.`,
+	Prefix:      "MathML",
 	GlobalAttributes: []*pb.Attribute{
 		{
 			Key:         "class",

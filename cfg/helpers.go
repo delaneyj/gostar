@@ -70,3 +70,18 @@ func AttributeTypeRune() *pb.Attribute_Type {
 		Rune: true,
 	}}
 }
+
+func AttributeTypeCustom(name string, at *pb.Attribute_Type) *pb.Attribute_Type {
+	return &pb.Attribute_Type{Type: &pb.Attribute_Type_Custom{
+		Custom: &pb.Attribute_Custom{
+			Name: name,
+			Type: at,
+		},
+	}}
+}
+
+func AttributeTypeJSON() *pb.Attribute_Type {
+	return &pb.Attribute_Type{Type: &pb.Attribute_Type_Json{
+		Json: true,
+	}}
+}

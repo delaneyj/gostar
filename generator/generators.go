@@ -101,40 +101,21 @@ func GenerateAll(ctx context.Context, outPath string, pkgs []*pb.Namespace) (err
 		return fmt.Errorf("failed to parse templates: %w", err)
 	}
 
-	for _, pkg := range pkgs {
-		if err := generatePackage(ctx, outPath, pkg); err != nil {
-			return fmt.Errorf("failed to generate package %s: %w", pkg.Name, err)
-		}
-	}
-
-	return nil
-}
-
-func generatePackage(ctx context.Context, outPath string, pkg *pb.Namespace) error {
-	pkgPath := filepath.Join(outPath, pkg.Name)
-
-	if err := os.RemoveAll(pkgPath); err != nil {
-		return fmt.Errorf("failed to remove package %s: %w", pkg.Name, err)
-	}
-	if err := os.MkdirAll(pkgPath, 0755); err != nil {
-		return fmt.Errorf("failed to create package %s: %w", pkg.Name, err)
-	}
-
-	builderFile, err := os.Create(filepath.Join(pkgPath, "gostar_builder.go"))
+	builderFile, err := os.Create(filepath.Join(outPath, "gostar_builder.go"))
 	if err != nil {
 		return fmt.Errorf("failed to create builder file: %w", err)
 	}
 	defer builderFile.Close()
 
-	if err := templs.ExecuteTemplate(builderFile, "builder.tmpl", map[string]any{
-		"Package": pkg,
-	}); err != nil {
+	if err := templs.ExecuteTemplate(builderFile, "builder.tmpl", nil); err != nil {
 		return fmt.Errorf("failed to execute template: %w", err)
 	}
 
-	for _, element := range pkg.Elements {
-		if err := generateElement(ctx, pkgPath, pkg, element); err != nil {
-			return fmt.Errorf("failed to generate element %s: %w", element.Tag, err)
+	for _, pkg := range pkgs {
+		for _, element := range pkg.Elements {
+			if err := generateElement(ctx, outPath, pkg, element); err != nil {
+				return fmt.Errorf("failed to generate element %s: %w", element.Tag, err)
+			}
 		}
 	}
 
@@ -160,7 +141,7 @@ func generateElement(ctx context.Context, pkgPath string, pkg *pb.Namespace, ele
 		}
 	}
 
-	filename := fmt.Sprintf("%s.go", toolbelt.Snake(element.Tag))
+	filename := fmt.Sprintf("%s_%s.go", toolbelt.Snake(pkg.Name), toolbelt.Snake(element.Tag))
 	elementFilepath := filepath.Join(pkgPath, filename)
 
 	f, err := os.Create(elementFilepath)

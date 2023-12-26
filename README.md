@@ -17,7 +17,7 @@ Just import the package.  I prefer dot imports so I don't have to type the packa
 
 
 ```go
-. "github.com/delaneyj/gostar/elements/html"
+import . "github.com/delaneyj/gostar/elements/html"
 ```
 Since everything is `just` fluent functions you can compose them together to create more complex HTML structures.  You can also create your own fluent functions to create reusable HTML components.
 
