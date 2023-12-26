@@ -7,7 +7,7 @@ import (
 	"github.com/samber/lo"
 	"github.com/stretchr/testify/assert"
 
-	. "github.com/delaneyj/gostar/elements/html"
+	. "github.com/delaneyj/gostar/elements"
 )
 
 func TestSlinso(t *testing.T) {
