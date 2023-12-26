@@ -74,6 +74,10 @@ func (e *HGROUPElement) CustomData(key, value string) *HGROUPElement {
 	return e
 }
 
+func (e *HGROUPElement) CustomDataF(key, format string, args ...any) *HGROUPElement {
+	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
 func (e *HGROUPElement) CustomDataRemove(key string) *HGROUPElement {
 	if e.CustomDataAttributes == nil {
 		return e
@@ -943,6 +947,10 @@ func (e *HGROUPElement) SPELLCHECKRemove(c HgroupSpellcheckChoice) *HGROUPElemen
 // The style global attribute is used to add styles to an element, such as color,
 // font, size, and more
 // Styles are written in CSS.
+func (e *HGROUPElement) STYLEF(k string, format string, args ...any) *HGROUPElement {
+	return e.STYLE(k, fmt.Sprintf(format, args...))
+}
+
 func (e *HGROUPElement) STYLE(k string, v string) *HGROUPElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()

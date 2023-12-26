@@ -74,6 +74,10 @@ func (e *STRONGElement) CustomData(key, value string) *STRONGElement {
 	return e
 }
 
+func (e *STRONGElement) CustomDataF(key, format string, args ...any) *STRONGElement {
+	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
 func (e *STRONGElement) CustomDataRemove(key string) *STRONGElement {
 	if e.CustomDataAttributes == nil {
 		return e
@@ -943,6 +947,10 @@ func (e *STRONGElement) SPELLCHECKRemove(c StrongSpellcheckChoice) *STRONGElemen
 // The style global attribute is used to add styles to an element, such as color,
 // font, size, and more
 // Styles are written in CSS.
+func (e *STRONGElement) STYLEF(k string, format string, args ...any) *STRONGElement {
+	return e.STYLE(k, fmt.Sprintf(format, args...))
+}
+
 func (e *STRONGElement) STYLE(k string, v string) *STRONGElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()

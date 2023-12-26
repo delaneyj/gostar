@@ -73,6 +73,10 @@ func (e *MAPElement) CustomData(key, value string) *MAPElement {
 	return e
 }
 
+func (e *MAPElement) CustomDataF(key, format string, args ...any) *MAPElement {
+	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
 func (e *MAPElement) CustomDataRemove(key string) *MAPElement {
 	if e.CustomDataAttributes == nil {
 		return e
@@ -960,6 +964,10 @@ func (e *MAPElement) SPELLCHECKRemove(c MapSpellcheckChoice) *MAPElement {
 // The style global attribute is used to add styles to an element, such as color,
 // font, size, and more
 // Styles are written in CSS.
+func (e *MAPElement) STYLEF(k string, format string, args ...any) *MAPElement {
+	return e.STYLE(k, fmt.Sprintf(format, args...))
+}
+
 func (e *MAPElement) STYLE(k string, v string) *MAPElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()

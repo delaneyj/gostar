@@ -74,6 +74,10 @@ func (e *SLOTElement) CustomData(key, value string) *SLOTElement {
 	return e
 }
 
+func (e *SLOTElement) CustomDataF(key, format string, args ...any) *SLOTElement {
+	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
 func (e *SLOTElement) CustomDataRemove(key string) *SLOTElement {
 	if e.CustomDataAttributes == nil {
 		return e
@@ -961,6 +965,10 @@ func (e *SLOTElement) SPELLCHECKRemove(c SlotSpellcheckChoice) *SLOTElement {
 // The style global attribute is used to add styles to an element, such as color,
 // font, size, and more
 // Styles are written in CSS.
+func (e *SLOTElement) STYLEF(k string, format string, args ...any) *SLOTElement {
+	return e.STYLE(k, fmt.Sprintf(format, args...))
+}
+
 func (e *SLOTElement) STYLE(k string, v string) *SLOTElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()

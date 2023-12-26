@@ -73,6 +73,10 @@ func (e *H3Element) CustomData(key, value string) *H3Element {
 	return e
 }
 
+func (e *H3Element) CustomDataF(key, format string, args ...any) *H3Element {
+	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
 func (e *H3Element) CustomDataRemove(key string) *H3Element {
 	if e.CustomDataAttributes == nil {
 		return e
@@ -942,6 +946,10 @@ func (e *H3Element) SPELLCHECKRemove(c H3SpellcheckChoice) *H3Element {
 // The style global attribute is used to add styles to an element, such as color,
 // font, size, and more
 // Styles are written in CSS.
+func (e *H3Element) STYLEF(k string, format string, args ...any) *H3Element {
+	return e.STYLE(k, fmt.Sprintf(format, args...))
+}
+
 func (e *H3Element) STYLE(k string, v string) *H3Element {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()

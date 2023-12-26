@@ -74,6 +74,10 @@ func (e *TIMEElement) CustomData(key, value string) *TIMEElement {
 	return e
 }
 
+func (e *TIMEElement) CustomDataF(key, format string, args ...any) *TIMEElement {
+	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
 func (e *TIMEElement) CustomDataRemove(key string) *TIMEElement {
 	if e.CustomDataAttributes == nil {
 		return e
@@ -961,6 +965,10 @@ func (e *TIMEElement) SPELLCHECKRemove(c TimeSpellcheckChoice) *TIMEElement {
 // The style global attribute is used to add styles to an element, such as color,
 // font, size, and more
 // Styles are written in CSS.
+func (e *TIMEElement) STYLEF(k string, format string, args ...any) *TIMEElement {
+	return e.STYLE(k, fmt.Sprintf(format, args...))
+}
+
 func (e *TIMEElement) STYLE(k string, v string) *TIMEElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()

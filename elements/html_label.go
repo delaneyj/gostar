@@ -72,6 +72,10 @@ func (e *LABELElement) CustomData(key, value string) *LABELElement {
 	return e
 }
 
+func (e *LABELElement) CustomDataF(key, format string, args ...any) *LABELElement {
+	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
 func (e *LABELElement) CustomDataRemove(key string) *LABELElement {
 	if e.CustomDataAttributes == nil {
 		return e
@@ -977,6 +981,10 @@ func (e *LABELElement) SPELLCHECKRemove(c LabelSpellcheckChoice) *LABELElement {
 // The style global attribute is used to add styles to an element, such as color,
 // font, size, and more
 // Styles are written in CSS.
+func (e *LABELElement) STYLEF(k string, format string, args ...any) *LABELElement {
+	return e.STYLE(k, fmt.Sprintf(format, args...))
+}
+
 func (e *LABELElement) STYLE(k string, v string) *LABELElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()

@@ -75,6 +75,10 @@ func (e *SVGFEDIFFUSELIGHTINGElement) CustomData(key, value string) *SVGFEDIFFUS
 	return e
 }
 
+func (e *SVGFEDIFFUSELIGHTINGElement) CustomDataF(key, format string, args ...any) *SVGFEDIFFUSELIGHTINGElement {
+	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
 func (e *SVGFEDIFFUSELIGHTINGElement) CustomDataRemove(key string) *SVGFEDIFFUSELIGHTINGElement {
 	if e.CustomDataAttributes == nil {
 		return e
@@ -188,6 +192,10 @@ func (e *SVGFEDIFFUSELIGHTINGElement) IDRemove(s string) *SVGFEDIFFUSELIGHTINGEl
 }
 
 // Specifies an inline CSS style for an element
+func (e *SVGFEDIFFUSELIGHTINGElement) STYLEF(k string, format string, args ...any) *SVGFEDIFFUSELIGHTINGElement {
+	return e.STYLE(k, fmt.Sprintf(format, args...))
+}
+
 func (e *SVGFEDIFFUSELIGHTINGElement) STYLE(k string, v string) *SVGFEDIFFUSELIGHTINGElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()

@@ -74,6 +74,10 @@ func (e *TRElement) CustomData(key, value string) *TRElement {
 	return e
 }
 
+func (e *TRElement) CustomDataF(key, format string, args ...any) *TRElement {
+	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
 func (e *TRElement) CustomDataRemove(key string) *TRElement {
 	if e.CustomDataAttributes == nil {
 		return e
@@ -943,6 +947,10 @@ func (e *TRElement) SPELLCHECKRemove(c TrSpellcheckChoice) *TRElement {
 // The style global attribute is used to add styles to an element, such as color,
 // font, size, and more
 // Styles are written in CSS.
+func (e *TRElement) STYLEF(k string, format string, args ...any) *TRElement {
+	return e.STYLE(k, fmt.Sprintf(format, args...))
+}
+
 func (e *TRElement) STYLE(k string, v string) *TRElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()

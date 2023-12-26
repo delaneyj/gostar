@@ -75,6 +75,10 @@ func (e *MathMLANNOTATIONElement) CustomData(key, value string) *MathMLANNOTATIO
 	return e
 }
 
+func (e *MathMLANNOTATIONElement) CustomDataF(key, format string, args ...any) *MathMLANNOTATIONElement {
+	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
 func (e *MathMLANNOTATIONElement) CustomDataRemove(key string) *MathMLANNOTATIONElement {
 	if e.CustomDataAttributes == nil {
 		return e
@@ -320,6 +324,10 @@ func (e *MathMLANNOTATIONElement) SCRIPTLEVELRemove(i int) *MathMLANNOTATIONElem
 
 // This attribute offers advisory information about the element for which it is
 // set.
+func (e *MathMLANNOTATIONElement) STYLEF(k string, format string, args ...any) *MathMLANNOTATIONElement {
+	return e.STYLE(k, fmt.Sprintf(format, args...))
+}
+
 func (e *MathMLANNOTATIONElement) STYLE(k string, v string) *MathMLANNOTATIONElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()

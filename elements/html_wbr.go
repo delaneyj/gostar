@@ -73,6 +73,10 @@ func (e *WBRElement) CustomData(key, value string) *WBRElement {
 	return e
 }
 
+func (e *WBRElement) CustomDataF(key, format string, args ...any) *WBRElement {
+	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
 func (e *WBRElement) CustomDataRemove(key string) *WBRElement {
 	if e.CustomDataAttributes == nil {
 		return e
@@ -942,6 +946,10 @@ func (e *WBRElement) SPELLCHECKRemove(c WbrSpellcheckChoice) *WBRElement {
 // The style global attribute is used to add styles to an element, such as color,
 // font, size, and more
 // Styles are written in CSS.
+func (e *WBRElement) STYLEF(k string, format string, args ...any) *WBRElement {
+	return e.STYLE(k, fmt.Sprintf(format, args...))
+}
+
 func (e *WBRElement) STYLE(k string, v string) *WBRElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()

@@ -75,6 +75,10 @@ func (e *PREElement) CustomData(key, value string) *PREElement {
 	return e
 }
 
+func (e *PREElement) CustomDataF(key, format string, args ...any) *PREElement {
+	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
 func (e *PREElement) CustomDataRemove(key string) *PREElement {
 	if e.CustomDataAttributes == nil {
 		return e
@@ -944,6 +948,10 @@ func (e *PREElement) SPELLCHECKRemove(c PreSpellcheckChoice) *PREElement {
 // The style global attribute is used to add styles to an element, such as color,
 // font, size, and more
 // Styles are written in CSS.
+func (e *PREElement) STYLEF(k string, format string, args ...any) *PREElement {
+	return e.STYLE(k, fmt.Sprintf(format, args...))
+}
+
 func (e *PREElement) STYLE(k string, v string) *PREElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()

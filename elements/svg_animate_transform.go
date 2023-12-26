@@ -74,6 +74,10 @@ func (e *SVGANIMATETRANSFORMElement) CustomData(key, value string) *SVGANIMATETR
 	return e
 }
 
+func (e *SVGANIMATETRANSFORMElement) CustomDataF(key, format string, args ...any) *SVGANIMATETRANSFORMElement {
+	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
 func (e *SVGANIMATETRANSFORMElement) CustomDataRemove(key string) *SVGANIMATETRANSFORMElement {
 	if e.CustomDataAttributes == nil {
 		return e
@@ -598,6 +602,10 @@ func (e *SVGANIMATETRANSFORMElement) IDRemove(s string) *SVGANIMATETRANSFORMElem
 }
 
 // Specifies an inline CSS style for an element
+func (e *SVGANIMATETRANSFORMElement) STYLEF(k string, format string, args ...any) *SVGANIMATETRANSFORMElement {
+	return e.STYLE(k, fmt.Sprintf(format, args...))
+}
+
 func (e *SVGANIMATETRANSFORMElement) STYLE(k string, v string) *SVGANIMATETRANSFORMElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()

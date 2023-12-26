@@ -75,6 +75,10 @@ func (e *HEADERElement) CustomData(key, value string) *HEADERElement {
 	return e
 }
 
+func (e *HEADERElement) CustomDataF(key, format string, args ...any) *HEADERElement {
+	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
 func (e *HEADERElement) CustomDataRemove(key string) *HEADERElement {
 	if e.CustomDataAttributes == nil {
 		return e
@@ -944,6 +948,10 @@ func (e *HEADERElement) SPELLCHECKRemove(c HeaderSpellcheckChoice) *HEADERElemen
 // The style global attribute is used to add styles to an element, such as color,
 // font, size, and more
 // Styles are written in CSS.
+func (e *HEADERElement) STYLEF(k string, format string, args ...any) *HEADERElement {
+	return e.STYLE(k, fmt.Sprintf(format, args...))
+}
+
 func (e *HEADERElement) STYLE(k string, v string) *HEADERElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()

@@ -74,6 +74,10 @@ func (e *ARTICLEElement) CustomData(key, value string) *ARTICLEElement {
 	return e
 }
 
+func (e *ARTICLEElement) CustomDataF(key, format string, args ...any) *ARTICLEElement {
+	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
 func (e *ARTICLEElement) CustomDataRemove(key string) *ARTICLEElement {
 	if e.CustomDataAttributes == nil {
 		return e
@@ -943,6 +947,10 @@ func (e *ARTICLEElement) SPELLCHECKRemove(c ArticleSpellcheckChoice) *ARTICLEEle
 // The style global attribute is used to add styles to an element, such as color,
 // font, size, and more
 // Styles are written in CSS.
+func (e *ARTICLEElement) STYLEF(k string, format string, args ...any) *ARTICLEElement {
+	return e.STYLE(k, fmt.Sprintf(format, args...))
+}
+
 func (e *ARTICLEElement) STYLE(k string, v string) *ARTICLEElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()

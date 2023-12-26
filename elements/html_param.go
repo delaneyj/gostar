@@ -71,6 +71,10 @@ func (e *PARAMElement) CustomData(key, value string) *PARAMElement {
 	return e
 }
 
+func (e *PARAMElement) CustomDataF(key, format string, args ...any) *PARAMElement {
+	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
 func (e *PARAMElement) CustomDataRemove(key string) *PARAMElement {
 	if e.CustomDataAttributes == nil {
 		return e
@@ -976,6 +980,10 @@ func (e *PARAMElement) SPELLCHECKRemove(c ParamSpellcheckChoice) *PARAMElement {
 // The style global attribute is used to add styles to an element, such as color,
 // font, size, and more
 // Styles are written in CSS.
+func (e *PARAMElement) STYLEF(k string, format string, args ...any) *PARAMElement {
+	return e.STYLE(k, fmt.Sprintf(format, args...))
+}
+
 func (e *PARAMElement) STYLE(k string, v string) *PARAMElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()

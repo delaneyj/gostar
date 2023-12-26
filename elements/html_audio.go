@@ -75,6 +75,10 @@ func (e *AUDIOElement) CustomData(key, value string) *AUDIOElement {
 	return e
 }
 
+func (e *AUDIOElement) CustomDataF(key, format string, args ...any) *AUDIOElement {
+	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
 func (e *AUDIOElement) CustomDataRemove(key string) *AUDIOElement {
 	if e.CustomDataAttributes == nil {
 		return e
@@ -1101,6 +1105,10 @@ func (e *AUDIOElement) SPELLCHECKRemove(c AudioSpellcheckChoice) *AUDIOElement {
 // The style global attribute is used to add styles to an element, such as color,
 // font, size, and more
 // Styles are written in CSS.
+func (e *AUDIOElement) STYLEF(k string, format string, args ...any) *AUDIOElement {
+	return e.STYLE(k, fmt.Sprintf(format, args...))
+}
+
 func (e *AUDIOElement) STYLE(k string, v string) *AUDIOElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()

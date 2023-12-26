@@ -74,6 +74,10 @@ func (e *HTMLElement) CustomData(key, value string) *HTMLElement {
 	return e
 }
 
+func (e *HTMLElement) CustomDataF(key, format string, args ...any) *HTMLElement {
+	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
 func (e *HTMLElement) CustomDataRemove(key string) *HTMLElement {
 	if e.CustomDataAttributes == nil {
 		return e
@@ -943,6 +947,10 @@ func (e *HTMLElement) SPELLCHECKRemove(c HtmlSpellcheckChoice) *HTMLElement {
 // The style global attribute is used to add styles to an element, such as color,
 // font, size, and more
 // Styles are written in CSS.
+func (e *HTMLElement) STYLEF(k string, format string, args ...any) *HTMLElement {
+	return e.STYLE(k, fmt.Sprintf(format, args...))
+}
+
 func (e *HTMLElement) STYLE(k string, v string) *HTMLElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()

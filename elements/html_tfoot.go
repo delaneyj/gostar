@@ -73,6 +73,10 @@ func (e *TFOOTElement) CustomData(key, value string) *TFOOTElement {
 	return e
 }
 
+func (e *TFOOTElement) CustomDataF(key, format string, args ...any) *TFOOTElement {
+	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
 func (e *TFOOTElement) CustomDataRemove(key string) *TFOOTElement {
 	if e.CustomDataAttributes == nil {
 		return e
@@ -942,6 +946,10 @@ func (e *TFOOTElement) SPELLCHECKRemove(c TfootSpellcheckChoice) *TFOOTElement {
 // The style global attribute is used to add styles to an element, such as color,
 // font, size, and more
 // Styles are written in CSS.
+func (e *TFOOTElement) STYLEF(k string, format string, args ...any) *TFOOTElement {
+	return e.STYLE(k, fmt.Sprintf(format, args...))
+}
+
 func (e *TFOOTElement) STYLE(k string, v string) *TFOOTElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()

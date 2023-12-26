@@ -74,6 +74,10 @@ func (e *DATALISTElement) CustomData(key, value string) *DATALISTElement {
 	return e
 }
 
+func (e *DATALISTElement) CustomDataF(key, format string, args ...any) *DATALISTElement {
+	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
 func (e *DATALISTElement) CustomDataRemove(key string) *DATALISTElement {
 	if e.CustomDataAttributes == nil {
 		return e
@@ -943,6 +947,10 @@ func (e *DATALISTElement) SPELLCHECKRemove(c DatalistSpellcheckChoice) *DATALIST
 // The style global attribute is used to add styles to an element, such as color,
 // font, size, and more
 // Styles are written in CSS.
+func (e *DATALISTElement) STYLEF(k string, format string, args ...any) *DATALISTElement {
+	return e.STYLE(k, fmt.Sprintf(format, args...))
+}
+
 func (e *DATALISTElement) STYLE(k string, v string) *DATALISTElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()

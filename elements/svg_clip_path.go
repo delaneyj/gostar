@@ -73,6 +73,10 @@ func (e *SVGCLIPPATHElement) CustomData(key, value string) *SVGCLIPPATHElement {
 	return e
 }
 
+func (e *SVGCLIPPATHElement) CustomDataF(key, format string, args ...any) *SVGCLIPPATHElement {
+	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
 func (e *SVGCLIPPATHElement) CustomDataRemove(key string) *SVGCLIPPATHElement {
 	if e.CustomDataAttributes == nil {
 		return e
@@ -160,6 +164,10 @@ func (e *SVGCLIPPATHElement) IDRemove(s string) *SVGCLIPPATHElement {
 }
 
 // Specifies an inline CSS style for an element
+func (e *SVGCLIPPATHElement) STYLEF(k string, format string, args ...any) *SVGCLIPPATHElement {
+	return e.STYLE(k, fmt.Sprintf(format, args...))
+}
+
 func (e *SVGCLIPPATHElement) STYLE(k string, v string) *SVGCLIPPATHElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()

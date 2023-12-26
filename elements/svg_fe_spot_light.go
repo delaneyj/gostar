@@ -73,6 +73,10 @@ func (e *SVGFESPOTLIGHTElement) CustomData(key, value string) *SVGFESPOTLIGHTEle
 	return e
 }
 
+func (e *SVGFESPOTLIGHTElement) CustomDataF(key, format string, args ...any) *SVGFESPOTLIGHTElement {
+	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
 func (e *SVGFESPOTLIGHTElement) CustomDataRemove(key string) *SVGFESPOTLIGHTElement {
 	if e.CustomDataAttributes == nil {
 		return e
@@ -210,6 +214,10 @@ func (e *SVGFESPOTLIGHTElement) IDRemove(s string) *SVGFESPOTLIGHTElement {
 }
 
 // Specifies an inline CSS style for an element
+func (e *SVGFESPOTLIGHTElement) STYLEF(k string, format string, args ...any) *SVGFESPOTLIGHTElement {
+	return e.STYLE(k, fmt.Sprintf(format, args...))
+}
+
 func (e *SVGFESPOTLIGHTElement) STYLE(k string, v string) *SVGFESPOTLIGHTElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()

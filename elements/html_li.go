@@ -72,6 +72,10 @@ func (e *LIElement) CustomData(key, value string) *LIElement {
 	return e
 }
 
+func (e *LIElement) CustomDataF(key, format string, args ...any) *LIElement {
+	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
 func (e *LIElement) CustomDataRemove(key string) *LIElement {
 	if e.CustomDataAttributes == nil {
 		return e
@@ -959,6 +963,10 @@ func (e *LIElement) SPELLCHECKRemove(c LiSpellcheckChoice) *LIElement {
 // The style global attribute is used to add styles to an element, such as color,
 // font, size, and more
 // Styles are written in CSS.
+func (e *LIElement) STYLEF(k string, format string, args ...any) *LIElement {
+	return e.STYLE(k, fmt.Sprintf(format, args...))
+}
+
 func (e *LIElement) STYLE(k string, v string) *LIElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()

@@ -73,6 +73,10 @@ func (e *HRElement) CustomData(key, value string) *HRElement {
 	return e
 }
 
+func (e *HRElement) CustomDataF(key, format string, args ...any) *HRElement {
+	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
 func (e *HRElement) CustomDataRemove(key string) *HRElement {
 	if e.CustomDataAttributes == nil {
 		return e
@@ -942,6 +946,10 @@ func (e *HRElement) SPELLCHECKRemove(c HrSpellcheckChoice) *HRElement {
 // The style global attribute is used to add styles to an element, such as color,
 // font, size, and more
 // Styles are written in CSS.
+func (e *HRElement) STYLEF(k string, format string, args ...any) *HRElement {
+	return e.STYLE(k, fmt.Sprintf(format, args...))
+}
+
 func (e *HRElement) STYLE(k string, v string) *HRElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()

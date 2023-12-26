@@ -75,6 +75,10 @@ func (e *SECTIONElement) CustomData(key, value string) *SECTIONElement {
 	return e
 }
 
+func (e *SECTIONElement) CustomDataF(key, format string, args ...any) *SECTIONElement {
+	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
 func (e *SECTIONElement) CustomDataRemove(key string) *SECTIONElement {
 	if e.CustomDataAttributes == nil {
 		return e
@@ -944,6 +948,10 @@ func (e *SECTIONElement) SPELLCHECKRemove(c SectionSpellcheckChoice) *SECTIONEle
 // The style global attribute is used to add styles to an element, such as color,
 // font, size, and more
 // Styles are written in CSS.
+func (e *SECTIONElement) STYLEF(k string, format string, args ...any) *SECTIONElement {
+	return e.STYLE(k, fmt.Sprintf(format, args...))
+}
+
 func (e *SECTIONElement) STYLE(k string, v string) *SECTIONElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()

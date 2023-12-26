@@ -78,6 +78,10 @@ func (e *SVGFESPECULARLIGHTINGElement) CustomData(key, value string) *SVGFESPECU
 	return e
 }
 
+func (e *SVGFESPECULARLIGHTINGElement) CustomDataF(key, format string, args ...any) *SVGFESPECULARLIGHTINGElement {
+	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
 func (e *SVGFESPECULARLIGHTINGElement) CustomDataRemove(key string) *SVGFESPECULARLIGHTINGElement {
 	if e.CustomDataAttributes == nil {
 		return e
@@ -199,6 +203,10 @@ func (e *SVGFESPECULARLIGHTINGElement) IDRemove(s string) *SVGFESPECULARLIGHTING
 }
 
 // Specifies an inline CSS style for an element
+func (e *SVGFESPECULARLIGHTINGElement) STYLEF(k string, format string, args ...any) *SVGFESPECULARLIGHTINGElement {
+	return e.STYLE(k, fmt.Sprintf(format, args...))
+}
+
 func (e *SVGFESPECULARLIGHTINGElement) STYLE(k string, v string) *SVGFESPECULARLIGHTINGElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()

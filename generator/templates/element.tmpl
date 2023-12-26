@@ -73,6 +73,10 @@ func (e *{{$elStructName}}) CustomData(key, value string) *{{$elStructName}} {
 	return e
 }
 
+func (e *{{$elStructName}}) CustomDataF(key, format string, args ...any) *{{$elStructName}} {
+    return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
 func (e *{{$elStructName}}) CustomDataRemove(key string) *{{$elStructName}} {
 	if e.CustomDataAttributes == nil {
 		return e
@@ -129,6 +133,10 @@ func(e *{{$elStructName}}) {{$attrUpper}}Remove(s ...string) *{{$elStructName}}{
 }
 
 {{ else if . | attrIsKV -}}
+func (e *{{$elStructName}}) {{$attrUpper}}F(k string, format string, args ...any) *{{$elStructName}} {
+    return e.{{$attrUpper}}(k, fmt.Sprintf(format, args...))
+}
+
 func (e *{{$elStructName}}) {{$attrUpper}}(k string, v string) *{{$elStructName}} {
     if e.KVStrings == nil {
         e.KVStrings = treemap.New[string,*KVBuilder]()

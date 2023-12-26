@@ -73,6 +73,10 @@ func (e *BRElement) CustomData(key, value string) *BRElement {
 	return e
 }
 
+func (e *BRElement) CustomDataF(key, format string, args ...any) *BRElement {
+	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
 func (e *BRElement) CustomDataRemove(key string) *BRElement {
 	if e.CustomDataAttributes == nil {
 		return e
@@ -942,6 +946,10 @@ func (e *BRElement) SPELLCHECKRemove(c BrSpellcheckChoice) *BRElement {
 // The style global attribute is used to add styles to an element, such as color,
 // font, size, and more
 // Styles are written in CSS.
+func (e *BRElement) STYLEF(k string, format string, args ...any) *BRElement {
+	return e.STYLE(k, fmt.Sprintf(format, args...))
+}
+
 func (e *BRElement) STYLE(k string, v string) *BRElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()

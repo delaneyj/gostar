@@ -76,6 +76,10 @@ func (e *DIVElement) CustomData(key, value string) *DIVElement {
 	return e
 }
 
+func (e *DIVElement) CustomDataF(key, format string, args ...any) *DIVElement {
+	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
 func (e *DIVElement) CustomDataRemove(key string) *DIVElement {
 	if e.CustomDataAttributes == nil {
 		return e
@@ -945,6 +949,10 @@ func (e *DIVElement) SPELLCHECKRemove(c DivSpellcheckChoice) *DIVElement {
 // The style global attribute is used to add styles to an element, such as color,
 // font, size, and more
 // Styles are written in CSS.
+func (e *DIVElement) STYLEF(k string, format string, args ...any) *DIVElement {
+	return e.STYLE(k, fmt.Sprintf(format, args...))
+}
+
 func (e *DIVElement) STYLE(k string, v string) *DIVElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()

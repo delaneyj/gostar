@@ -76,6 +76,10 @@ func (e *SVGFILTERElement) CustomData(key, value string) *SVGFILTERElement {
 	return e
 }
 
+func (e *SVGFILTERElement) CustomDataF(key, format string, args ...any) *SVGFILTERElement {
+	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
 func (e *SVGFILTERElement) CustomDataRemove(key string) *SVGFILTERElement {
 	if e.CustomDataAttributes == nil {
 		return e
@@ -257,6 +261,10 @@ func (e *SVGFILTERElement) IDRemove(s string) *SVGFILTERElement {
 }
 
 // Specifies an inline CSS style for an element
+func (e *SVGFILTERElement) STYLEF(k string, format string, args ...any) *SVGFILTERElement {
+	return e.STYLE(k, fmt.Sprintf(format, args...))
+}
+
 func (e *SVGFILTERElement) STYLE(k string, v string) *SVGFILTERElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()

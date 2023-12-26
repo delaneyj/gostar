@@ -73,6 +73,10 @@ func (e *IFRAMEElement) CustomData(key, value string) *IFRAMEElement {
 	return e
 }
 
+func (e *IFRAMEElement) CustomDataF(key, format string, args ...any) *IFRAMEElement {
+	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
 func (e *IFRAMEElement) CustomDataRemove(key string) *IFRAMEElement {
 	if e.CustomDataAttributes == nil {
 		return e
@@ -1200,6 +1204,10 @@ func (e *IFRAMEElement) SPELLCHECKRemove(c IframeSpellcheckChoice) *IFRAMEElemen
 // The style global attribute is used to add styles to an element, such as color,
 // font, size, and more
 // Styles are written in CSS.
+func (e *IFRAMEElement) STYLEF(k string, format string, args ...any) *IFRAMEElement {
+	return e.STYLE(k, fmt.Sprintf(format, args...))
+}
+
 func (e *IFRAMEElement) STYLE(k string, v string) *IFRAMEElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()

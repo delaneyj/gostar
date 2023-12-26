@@ -73,6 +73,10 @@ func (e *PROGRESSElement) CustomData(key, value string) *PROGRESSElement {
 	return e
 }
 
+func (e *PROGRESSElement) CustomDataF(key, format string, args ...any) *PROGRESSElement {
+	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
 func (e *PROGRESSElement) CustomDataRemove(key string) *PROGRESSElement {
 	if e.CustomDataAttributes == nil {
 		return e
@@ -960,6 +964,10 @@ func (e *PROGRESSElement) SPELLCHECKRemove(c ProgressSpellcheckChoice) *PROGRESS
 // The style global attribute is used to add styles to an element, such as color,
 // font, size, and more
 // Styles are written in CSS.
+func (e *PROGRESSElement) STYLEF(k string, format string, args ...any) *PROGRESSElement {
+	return e.STYLE(k, fmt.Sprintf(format, args...))
+}
+
 func (e *PROGRESSElement) STYLE(k string, v string) *PROGRESSElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()

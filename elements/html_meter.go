@@ -73,6 +73,10 @@ func (e *METERElement) CustomData(key, value string) *METERElement {
 	return e
 }
 
+func (e *METERElement) CustomDataF(key, format string, args ...any) *METERElement {
+	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
 func (e *METERElement) CustomDataRemove(key string) *METERElement {
 	if e.CustomDataAttributes == nil {
 		return e
@@ -996,6 +1000,10 @@ func (e *METERElement) SPELLCHECKRemove(c MeterSpellcheckChoice) *METERElement {
 // The style global attribute is used to add styles to an element, such as color,
 // font, size, and more
 // Styles are written in CSS.
+func (e *METERElement) STYLEF(k string, format string, args ...any) *METERElement {
+	return e.STYLE(k, fmt.Sprintf(format, args...))
+}
+
 func (e *METERElement) STYLE(k string, v string) *METERElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()

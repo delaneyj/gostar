@@ -73,6 +73,10 @@ func (e *FORMElement) CustomData(key, value string) *FORMElement {
 	return e
 }
 
+func (e *FORMElement) CustomDataF(key, format string, args ...any) *FORMElement {
+	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
 func (e *FORMElement) CustomDataRemove(key string) *FORMElement {
 	if e.CustomDataAttributes == nil {
 		return e
@@ -1149,6 +1153,10 @@ func (e *FORMElement) SPELLCHECKRemove(c FormSpellcheckChoice) *FORMElement {
 // The style global attribute is used to add styles to an element, such as color,
 // font, size, and more
 // Styles are written in CSS.
+func (e *FORMElement) STYLEF(k string, format string, args ...any) *FORMElement {
+	return e.STYLE(k, fmt.Sprintf(format, args...))
+}
+
 func (e *FORMElement) STYLE(k string, v string) *FORMElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()

@@ -76,6 +76,10 @@ func (e *MENUElement) CustomData(key, value string) *MENUElement {
 	return e
 }
 
+func (e *MENUElement) CustomDataF(key, format string, args ...any) *MENUElement {
+	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
 func (e *MENUElement) CustomDataRemove(key string) *MENUElement {
 	if e.CustomDataAttributes == nil {
 		return e
@@ -974,6 +978,10 @@ func (e *MENUElement) SPELLCHECKRemove(c MenuSpellcheckChoice) *MENUElement {
 // The style global attribute is used to add styles to an element, such as color,
 // font, size, and more
 // Styles are written in CSS.
+func (e *MENUElement) STYLEF(k string, format string, args ...any) *MENUElement {
+	return e.STYLE(k, fmt.Sprintf(format, args...))
+}
+
 func (e *MENUElement) STYLE(k string, v string) *MENUElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()

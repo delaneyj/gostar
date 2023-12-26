@@ -74,6 +74,10 @@ func (e *DATAElement) CustomData(key, value string) *DATAElement {
 	return e
 }
 
+func (e *DATAElement) CustomDataF(key, format string, args ...any) *DATAElement {
+	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
 func (e *DATAElement) CustomDataRemove(key string) *DATAElement {
 	if e.CustomDataAttributes == nil {
 		return e
@@ -961,6 +965,10 @@ func (e *DATAElement) SPELLCHECKRemove(c DataSpellcheckChoice) *DATAElement {
 // The style global attribute is used to add styles to an element, such as color,
 // font, size, and more
 // Styles are written in CSS.
+func (e *DATAElement) STYLEF(k string, format string, args ...any) *DATAElement {
+	return e.STYLE(k, fmt.Sprintf(format, args...))
+}
+
 func (e *DATAElement) STYLE(k string, v string) *DATAElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()

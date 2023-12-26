@@ -73,6 +73,10 @@ func (e *SAMPElement) CustomData(key, value string) *SAMPElement {
 	return e
 }
 
+func (e *SAMPElement) CustomDataF(key, format string, args ...any) *SAMPElement {
+	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
 func (e *SAMPElement) CustomDataRemove(key string) *SAMPElement {
 	if e.CustomDataAttributes == nil {
 		return e
@@ -942,6 +946,10 @@ func (e *SAMPElement) SPELLCHECKRemove(c SampSpellcheckChoice) *SAMPElement {
 // The style global attribute is used to add styles to an element, such as color,
 // font, size, and more
 // Styles are written in CSS.
+func (e *SAMPElement) STYLEF(k string, format string, args ...any) *SAMPElement {
+	return e.STYLE(k, fmt.Sprintf(format, args...))
+}
+
 func (e *SAMPElement) STYLE(k string, v string) *SAMPElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()

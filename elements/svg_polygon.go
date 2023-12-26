@@ -73,6 +73,10 @@ func (e *SVGPOLYGONElement) CustomData(key, value string) *SVGPOLYGONElement {
 	return e
 }
 
+func (e *SVGPOLYGONElement) CustomDataF(key, format string, args ...any) *SVGPOLYGONElement {
+	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
 func (e *SVGPOLYGONElement) CustomDataRemove(key string) *SVGPOLYGONElement {
 	if e.CustomDataAttributes == nil {
 		return e
@@ -146,6 +150,10 @@ func (e *SVGPOLYGONElement) IDRemove(s string) *SVGPOLYGONElement {
 }
 
 // Specifies an inline CSS style for an element
+func (e *SVGPOLYGONElement) STYLEF(k string, format string, args ...any) *SVGPOLYGONElement {
+	return e.STYLE(k, fmt.Sprintf(format, args...))
+}
+
 func (e *SVGPOLYGONElement) STYLE(k string, v string) *SVGPOLYGONElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()

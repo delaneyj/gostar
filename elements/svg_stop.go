@@ -74,6 +74,10 @@ func (e *SVGSTOPElement) CustomData(key, value string) *SVGSTOPElement {
 	return e
 }
 
+func (e *SVGSTOPElement) CustomDataF(key, format string, args ...any) *SVGSTOPElement {
+	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
 func (e *SVGSTOPElement) CustomDataRemove(key string) *SVGSTOPElement {
 	if e.CustomDataAttributes == nil {
 		return e
@@ -156,6 +160,10 @@ func (e *SVGSTOPElement) IDRemove(s string) *SVGSTOPElement {
 }
 
 // Specifies an inline CSS style for an element
+func (e *SVGSTOPElement) STYLEF(k string, format string, args ...any) *SVGSTOPElement {
+	return e.STYLE(k, fmt.Sprintf(format, args...))
+}
+
 func (e *SVGSTOPElement) STYLE(k string, v string) *SVGSTOPElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()

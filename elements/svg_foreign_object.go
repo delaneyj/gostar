@@ -75,6 +75,10 @@ func (e *SVGFOREIGNOBJECTElement) CustomData(key, value string) *SVGFOREIGNOBJEC
 	return e
 }
 
+func (e *SVGFOREIGNOBJECTElement) CustomDataF(key, format string, args ...any) *SVGFOREIGNOBJECTElement {
+	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
 func (e *SVGFOREIGNOBJECTElement) CustomDataRemove(key string) *SVGFOREIGNOBJECTElement {
 	if e.CustomDataAttributes == nil {
 		return e
@@ -263,6 +267,10 @@ func (e *SVGFOREIGNOBJECTElement) IDRemove(s string) *SVGFOREIGNOBJECTElement {
 }
 
 // Specifies an inline CSS style for an element
+func (e *SVGFOREIGNOBJECTElement) STYLEF(k string, format string, args ...any) *SVGFOREIGNOBJECTElement {
+	return e.STYLE(k, fmt.Sprintf(format, args...))
+}
+
 func (e *SVGFOREIGNOBJECTElement) STYLE(k string, v string) *SVGFOREIGNOBJECTElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()

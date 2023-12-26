@@ -73,6 +73,10 @@ func (e *SVGFECONVOLVEMATRIXElement) CustomData(key, value string) *SVGFECONVOLV
 	return e
 }
 
+func (e *SVGFECONVOLVEMATRIXElement) CustomDataF(key, format string, args ...any) *SVGFECONVOLVEMATRIXElement {
+	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
 func (e *SVGFECONVOLVEMATRIXElement) CustomDataRemove(key string) *SVGFECONVOLVEMATRIXElement {
 	if e.CustomDataAttributes == nil {
 		return e
@@ -301,6 +305,10 @@ func (e *SVGFECONVOLVEMATRIXElement) IDRemove(s string) *SVGFECONVOLVEMATRIXElem
 }
 
 // Specifies an inline CSS style for an element
+func (e *SVGFECONVOLVEMATRIXElement) STYLEF(k string, format string, args ...any) *SVGFECONVOLVEMATRIXElement {
+	return e.STYLE(k, fmt.Sprintf(format, args...))
+}
+
 func (e *SVGFECONVOLVEMATRIXElement) STYLE(k string, v string) *SVGFECONVOLVEMATRIXElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()

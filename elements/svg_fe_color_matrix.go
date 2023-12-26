@@ -75,6 +75,10 @@ func (e *SVGFECOLORMATRIXElement) CustomData(key, value string) *SVGFECOLORMATRI
 	return e
 }
 
+func (e *SVGFECOLORMATRIXElement) CustomDataF(key, format string, args ...any) *SVGFECOLORMATRIXElement {
+	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
 func (e *SVGFECOLORMATRIXElement) CustomDataRemove(key string) *SVGFECOLORMATRIXElement {
 	if e.CustomDataAttributes == nil {
 		return e
@@ -197,6 +201,10 @@ func (e *SVGFECOLORMATRIXElement) IDRemove(s string) *SVGFECOLORMATRIXElement {
 }
 
 // Specifies an inline CSS style for an element
+func (e *SVGFECOLORMATRIXElement) STYLEF(k string, format string, args ...any) *SVGFECOLORMATRIXElement {
+	return e.STYLE(k, fmt.Sprintf(format, args...))
+}
+
 func (e *SVGFECOLORMATRIXElement) STYLE(k string, v string) *SVGFECOLORMATRIXElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()

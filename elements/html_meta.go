@@ -72,6 +72,10 @@ func (e *METAElement) CustomData(key, value string) *METAElement {
 	return e
 }
 
+func (e *METAElement) CustomDataF(key, format string, args ...any) *METAElement {
+	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
 func (e *METAElement) CustomDataRemove(key string) *METAElement {
 	if e.CustomDataAttributes == nil {
 		return e
@@ -1013,6 +1017,10 @@ func (e *METAElement) SPELLCHECKRemove(c MetaSpellcheckChoice) *METAElement {
 // The style global attribute is used to add styles to an element, such as color,
 // font, size, and more
 // Styles are written in CSS.
+func (e *METAElement) STYLEF(k string, format string, args ...any) *METAElement {
+	return e.STYLE(k, fmt.Sprintf(format, args...))
+}
+
 func (e *METAElement) STYLE(k string, v string) *METAElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()

@@ -72,6 +72,10 @@ func (e *MathMLSEMANTICSElement) CustomData(key, value string) *MathMLSEMANTICSE
 	return e
 }
 
+func (e *MathMLSEMANTICSElement) CustomDataF(key, format string, args ...any) *MathMLSEMANTICSElement {
+	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
 func (e *MathMLSEMANTICSElement) CustomDataRemove(key string) *MathMLSEMANTICSElement {
 	if e.CustomDataAttributes == nil {
 		return e
@@ -289,6 +293,10 @@ func (e *MathMLSEMANTICSElement) SCRIPTLEVELRemove(i int) *MathMLSEMANTICSElemen
 
 // This attribute offers advisory information about the element for which it is
 // set.
+func (e *MathMLSEMANTICSElement) STYLEF(k string, format string, args ...any) *MathMLSEMANTICSElement {
+	return e.STYLE(k, fmt.Sprintf(format, args...))
+}
+
 func (e *MathMLSEMANTICSElement) STYLE(k string, v string) *MathMLSEMANTICSElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()

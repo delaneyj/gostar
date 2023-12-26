@@ -73,6 +73,10 @@ func (e *BUTTONElement) CustomData(key, value string) *BUTTONElement {
 	return e
 }
 
+func (e *BUTTONElement) CustomDataF(key, format string, args ...any) *BUTTONElement {
+	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
 func (e *BUTTONElement) CustomDataRemove(key string) *BUTTONElement {
 	if e.CustomDataAttributes == nil {
 		return e
@@ -1242,6 +1246,10 @@ func (e *BUTTONElement) SPELLCHECKRemove(c ButtonSpellcheckChoice) *BUTTONElemen
 // The style global attribute is used to add styles to an element, such as color,
 // font, size, and more
 // Styles are written in CSS.
+func (e *BUTTONElement) STYLEF(k string, format string, args ...any) *BUTTONElement {
+	return e.STYLE(k, fmt.Sprintf(format, args...))
+}
+
 func (e *BUTTONElement) STYLE(k string, v string) *BUTTONElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()

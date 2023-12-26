@@ -74,6 +74,10 @@ func (e *SVGFEMORPHOLOGYElement) CustomData(key, value string) *SVGFEMORPHOLOGYE
 	return e
 }
 
+func (e *SVGFEMORPHOLOGYElement) CustomDataF(key, format string, args ...any) *SVGFEMORPHOLOGYElement {
+	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
 func (e *SVGFEMORPHOLOGYElement) CustomDataRemove(key string) *SVGFEMORPHOLOGYElement {
 	if e.CustomDataAttributes == nil {
 		return e
@@ -183,6 +187,10 @@ func (e *SVGFEMORPHOLOGYElement) IDRemove(s string) *SVGFEMORPHOLOGYElement {
 }
 
 // Specifies an inline CSS style for an element
+func (e *SVGFEMORPHOLOGYElement) STYLEF(k string, format string, args ...any) *SVGFEMORPHOLOGYElement {
+	return e.STYLE(k, fmt.Sprintf(format, args...))
+}
+
 func (e *SVGFEMORPHOLOGYElement) STYLE(k string, v string) *SVGFEMORPHOLOGYElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()

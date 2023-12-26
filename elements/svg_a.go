@@ -76,6 +76,10 @@ func (e *SVGAElement) CustomData(key, value string) *SVGAElement {
 	return e
 }
 
+func (e *SVGAElement) CustomDataF(key, format string, args ...any) *SVGAElement {
+	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
 func (e *SVGAElement) CustomDataRemove(key string) *SVGAElement {
 	if e.CustomDataAttributes == nil {
 		return e
@@ -397,6 +401,10 @@ func (e *SVGAElement) CLASSRemove(s ...string) *SVGAElement {
 }
 
 // Specifies an inline CSS style for an element
+func (e *SVGAElement) STYLEF(k string, format string, args ...any) *SVGAElement {
+	return e.STYLE(k, fmt.Sprintf(format, args...))
+}
+
 func (e *SVGAElement) STYLE(k string, v string) *SVGAElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()

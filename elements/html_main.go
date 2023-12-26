@@ -76,6 +76,10 @@ func (e *MAINElement) CustomData(key, value string) *MAINElement {
 	return e
 }
 
+func (e *MAINElement) CustomDataF(key, format string, args ...any) *MAINElement {
+	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
 func (e *MAINElement) CustomDataRemove(key string) *MAINElement {
 	if e.CustomDataAttributes == nil {
 		return e
@@ -945,6 +949,10 @@ func (e *MAINElement) SPELLCHECKRemove(c MainSpellcheckChoice) *MAINElement {
 // The style global attribute is used to add styles to an element, such as color,
 // font, size, and more
 // Styles are written in CSS.
+func (e *MAINElement) STYLEF(k string, format string, args ...any) *MAINElement {
+	return e.STYLE(k, fmt.Sprintf(format, args...))
+}
+
 func (e *MAINElement) STYLE(k string, v string) *MAINElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()

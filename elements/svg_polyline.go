@@ -76,6 +76,10 @@ func (e *SVGPOLYLINEElement) CustomData(key, value string) *SVGPOLYLINEElement {
 	return e
 }
 
+func (e *SVGPOLYLINEElement) CustomDataF(key, format string, args ...any) *SVGPOLYLINEElement {
+	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
 func (e *SVGPOLYLINEElement) CustomDataRemove(key string) *SVGPOLYLINEElement {
 	if e.CustomDataAttributes == nil {
 		return e
@@ -149,6 +153,10 @@ func (e *SVGPOLYLINEElement) IDRemove(s string) *SVGPOLYLINEElement {
 }
 
 // Specifies an inline CSS style for an element
+func (e *SVGPOLYLINEElement) STYLEF(k string, format string, args ...any) *SVGPOLYLINEElement {
+	return e.STYLE(k, fmt.Sprintf(format, args...))
+}
+
 func (e *SVGPOLYLINEElement) STYLE(k string, v string) *SVGPOLYLINEElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()

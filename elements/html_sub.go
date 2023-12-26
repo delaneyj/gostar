@@ -73,6 +73,10 @@ func (e *SUBElement) CustomData(key, value string) *SUBElement {
 	return e
 }
 
+func (e *SUBElement) CustomDataF(key, format string, args ...any) *SUBElement {
+	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
 func (e *SUBElement) CustomDataRemove(key string) *SUBElement {
 	if e.CustomDataAttributes == nil {
 		return e
@@ -942,6 +946,10 @@ func (e *SUBElement) SPELLCHECKRemove(c SubSpellcheckChoice) *SUBElement {
 // The style global attribute is used to add styles to an element, such as color,
 // font, size, and more
 // Styles are written in CSS.
+func (e *SUBElement) STYLEF(k string, format string, args ...any) *SUBElement {
+	return e.STYLE(k, fmt.Sprintf(format, args...))
+}
+
 func (e *SUBElement) STYLE(k string, v string) *SUBElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()

@@ -74,6 +74,10 @@ func (e *MARKElement) CustomData(key, value string) *MARKElement {
 	return e
 }
 
+func (e *MARKElement) CustomDataF(key, format string, args ...any) *MARKElement {
+	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
 func (e *MARKElement) CustomDataRemove(key string) *MARKElement {
 	if e.CustomDataAttributes == nil {
 		return e
@@ -943,6 +947,10 @@ func (e *MARKElement) SPELLCHECKRemove(c MarkSpellcheckChoice) *MARKElement {
 // The style global attribute is used to add styles to an element, such as color,
 // font, size, and more
 // Styles are written in CSS.
+func (e *MARKElement) STYLEF(k string, format string, args ...any) *MARKElement {
+	return e.STYLE(k, fmt.Sprintf(format, args...))
+}
+
 func (e *MARKElement) STYLE(k string, v string) *MARKElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()

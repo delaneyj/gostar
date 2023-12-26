@@ -72,6 +72,10 @@ func (e *COLGROUPElement) CustomData(key, value string) *COLGROUPElement {
 	return e
 }
 
+func (e *COLGROUPElement) CustomDataF(key, format string, args ...any) *COLGROUPElement {
+	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
 func (e *COLGROUPElement) CustomDataRemove(key string) *COLGROUPElement {
 	if e.CustomDataAttributes == nil {
 		return e
@@ -959,6 +963,10 @@ func (e *COLGROUPElement) SPELLCHECKRemove(c ColgroupSpellcheckChoice) *COLGROUP
 // The style global attribute is used to add styles to an element, such as color,
 // font, size, and more
 // Styles are written in CSS.
+func (e *COLGROUPElement) STYLEF(k string, format string, args ...any) *COLGROUPElement {
+	return e.STYLE(k, fmt.Sprintf(format, args...))
+}
+
 func (e *COLGROUPElement) STYLE(k string, v string) *COLGROUPElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()

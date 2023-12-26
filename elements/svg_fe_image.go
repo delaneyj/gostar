@@ -74,6 +74,10 @@ func (e *SVGFEIMAGEElement) CustomData(key, value string) *SVGFEIMAGEElement {
 	return e
 }
 
+func (e *SVGFEIMAGEElement) CustomDataF(key, format string, args ...any) *SVGFEIMAGEElement {
+	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
 func (e *SVGFEIMAGEElement) CustomDataRemove(key string) *SVGFEIMAGEElement {
 	if e.CustomDataAttributes == nil {
 		return e
@@ -220,6 +224,10 @@ func (e *SVGFEIMAGEElement) IDRemove(s string) *SVGFEIMAGEElement {
 }
 
 // Specifies an inline CSS style for an element
+func (e *SVGFEIMAGEElement) STYLEF(k string, format string, args ...any) *SVGFEIMAGEElement {
+	return e.STYLE(k, fmt.Sprintf(format, args...))
+}
+
 func (e *SVGFEIMAGEElement) STYLE(k string, v string) *SVGFEIMAGEElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()

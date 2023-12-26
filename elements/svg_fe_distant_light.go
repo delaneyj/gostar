@@ -74,6 +74,10 @@ func (e *SVGFEDISTANTLIGHTElement) CustomData(key, value string) *SVGFEDISTANTLI
 	return e
 }
 
+func (e *SVGFEDISTANTLIGHTElement) CustomDataF(key, format string, args ...any) *SVGFEDISTANTLIGHTElement {
+	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
 func (e *SVGFEDISTANTLIGHTElement) CustomDataRemove(key string) *SVGFEDISTANTLIGHTElement {
 	if e.CustomDataAttributes == nil {
 		return e
@@ -150,6 +154,10 @@ func (e *SVGFEDISTANTLIGHTElement) IDRemove(s string) *SVGFEDISTANTLIGHTElement 
 }
 
 // Specifies an inline CSS style for an element
+func (e *SVGFEDISTANTLIGHTElement) STYLEF(k string, format string, args ...any) *SVGFEDISTANTLIGHTElement {
+	return e.STYLE(k, fmt.Sprintf(format, args...))
+}
+
 func (e *SVGFEDISTANTLIGHTElement) STYLE(k string, v string) *SVGFEDISTANTLIGHTElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()

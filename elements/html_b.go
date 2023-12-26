@@ -79,6 +79,10 @@ func (e *BElement) CustomData(key, value string) *BElement {
 	return e
 }
 
+func (e *BElement) CustomDataF(key, format string, args ...any) *BElement {
+	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
 func (e *BElement) CustomDataRemove(key string) *BElement {
 	if e.CustomDataAttributes == nil {
 		return e
@@ -948,6 +952,10 @@ func (e *BElement) SPELLCHECKRemove(c BSpellcheckChoice) *BElement {
 // The style global attribute is used to add styles to an element, such as color,
 // font, size, and more
 // Styles are written in CSS.
+func (e *BElement) STYLEF(k string, format string, args ...any) *BElement {
+	return e.STYLE(k, fmt.Sprintf(format, args...))
+}
+
 func (e *BElement) STYLE(k string, v string) *BElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()

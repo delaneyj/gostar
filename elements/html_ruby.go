@@ -73,6 +73,10 @@ func (e *RUBYElement) CustomData(key, value string) *RUBYElement {
 	return e
 }
 
+func (e *RUBYElement) CustomDataF(key, format string, args ...any) *RUBYElement {
+	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
 func (e *RUBYElement) CustomDataRemove(key string) *RUBYElement {
 	if e.CustomDataAttributes == nil {
 		return e
@@ -942,6 +946,10 @@ func (e *RUBYElement) SPELLCHECKRemove(c RubySpellcheckChoice) *RUBYElement {
 // The style global attribute is used to add styles to an element, such as color,
 // font, size, and more
 // Styles are written in CSS.
+func (e *RUBYElement) STYLEF(k string, format string, args ...any) *RUBYElement {
+	return e.STYLE(k, fmt.Sprintf(format, args...))
+}
+
 func (e *RUBYElement) STYLE(k string, v string) *RUBYElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()

@@ -73,6 +73,10 @@ func (e *OUTPUTElement) CustomData(key, value string) *OUTPUTElement {
 	return e
 }
 
+func (e *OUTPUTElement) CustomDataF(key, format string, args ...any) *OUTPUTElement {
+	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
 func (e *OUTPUTElement) CustomDataRemove(key string) *OUTPUTElement {
 	if e.CustomDataAttributes == nil {
 		return e
@@ -996,6 +1000,10 @@ func (e *OUTPUTElement) SPELLCHECKRemove(c OutputSpellcheckChoice) *OUTPUTElemen
 // The style global attribute is used to add styles to an element, such as color,
 // font, size, and more
 // Styles are written in CSS.
+func (e *OUTPUTElement) STYLEF(k string, format string, args ...any) *OUTPUTElement {
+	return e.STYLE(k, fmt.Sprintf(format, args...))
+}
+
 func (e *OUTPUTElement) STYLE(k string, v string) *OUTPUTElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()

@@ -74,6 +74,10 @@ func (e *SVGFEDROPSHADOWElement) CustomData(key, value string) *SVGFEDROPSHADOWE
 	return e
 }
 
+func (e *SVGFEDROPSHADOWElement) CustomDataF(key, format string, args ...any) *SVGFEDROPSHADOWElement {
+	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
 func (e *SVGFEDROPSHADOWElement) CustomDataRemove(key string) *SVGFEDROPSHADOWElement {
 	if e.CustomDataAttributes == nil {
 		return e
@@ -197,6 +201,10 @@ func (e *SVGFEDROPSHADOWElement) IDRemove(s string) *SVGFEDROPSHADOWElement {
 }
 
 // Specifies an inline CSS style for an element
+func (e *SVGFEDROPSHADOWElement) STYLEF(k string, format string, args ...any) *SVGFEDROPSHADOWElement {
+	return e.STYLE(k, fmt.Sprintf(format, args...))
+}
+
 func (e *SVGFEDROPSHADOWElement) STYLE(k string, v string) *SVGFEDROPSHADOWElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()

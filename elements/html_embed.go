@@ -74,6 +74,10 @@ func (e *EMBEDElement) CustomData(key, value string) *EMBEDElement {
 	return e
 }
 
+func (e *EMBEDElement) CustomDataF(key, format string, args ...any) *EMBEDElement {
+	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
 func (e *EMBEDElement) CustomDataRemove(key string) *EMBEDElement {
 	if e.CustomDataAttributes == nil {
 		return e
@@ -1015,6 +1019,10 @@ func (e *EMBEDElement) SPELLCHECKRemove(c EmbedSpellcheckChoice) *EMBEDElement {
 // The style global attribute is used to add styles to an element, such as color,
 // font, size, and more
 // Styles are written in CSS.
+func (e *EMBEDElement) STYLEF(k string, format string, args ...any) *EMBEDElement {
+	return e.STYLE(k, fmt.Sprintf(format, args...))
+}
+
 func (e *EMBEDElement) STYLE(k string, v string) *EMBEDElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()

@@ -78,6 +78,10 @@ func (e *BLOCKQUOTEElement) CustomData(key, value string) *BLOCKQUOTEElement {
 	return e
 }
 
+func (e *BLOCKQUOTEElement) CustomDataF(key, format string, args ...any) *BLOCKQUOTEElement {
+	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
 func (e *BLOCKQUOTEElement) CustomDataRemove(key string) *BLOCKQUOTEElement {
 	if e.CustomDataAttributes == nil {
 		return e
@@ -965,6 +969,10 @@ func (e *BLOCKQUOTEElement) SPELLCHECKRemove(c BlockquoteSpellcheckChoice) *BLOC
 // The style global attribute is used to add styles to an element, such as color,
 // font, size, and more
 // Styles are written in CSS.
+func (e *BLOCKQUOTEElement) STYLEF(k string, format string, args ...any) *BLOCKQUOTEElement {
+	return e.STYLE(k, fmt.Sprintf(format, args...))
+}
+
 func (e *BLOCKQUOTEElement) STYLE(k string, v string) *BLOCKQUOTEElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()

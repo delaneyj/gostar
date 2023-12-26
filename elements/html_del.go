@@ -77,6 +77,10 @@ func (e *DELElement) CustomData(key, value string) *DELElement {
 	return e
 }
 
+func (e *DELElement) CustomDataF(key, format string, args ...any) *DELElement {
+	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
 func (e *DELElement) CustomDataRemove(key string) *DELElement {
 	if e.CustomDataAttributes == nil {
 		return e
@@ -982,6 +986,10 @@ func (e *DELElement) SPELLCHECKRemove(c DelSpellcheckChoice) *DELElement {
 // The style global attribute is used to add styles to an element, such as color,
 // font, size, and more
 // Styles are written in CSS.
+func (e *DELElement) STYLEF(k string, format string, args ...any) *DELElement {
+	return e.STYLE(k, fmt.Sprintf(format, args...))
+}
+
 func (e *DELElement) STYLE(k string, v string) *DELElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()

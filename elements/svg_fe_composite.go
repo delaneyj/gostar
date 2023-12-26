@@ -74,6 +74,10 @@ func (e *SVGFECOMPOSITEElement) CustomData(key, value string) *SVGFECOMPOSITEEle
 	return e
 }
 
+func (e *SVGFECOMPOSITEElement) CustomDataF(key, format string, args ...any) *SVGFECOMPOSITEElement {
+	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
 func (e *SVGFECOMPOSITEElement) CustomDataRemove(key string) *SVGFECOMPOSITEElement {
 	if e.CustomDataAttributes == nil {
 		return e
@@ -240,6 +244,10 @@ func (e *SVGFECOMPOSITEElement) IDRemove(s string) *SVGFECOMPOSITEElement {
 }
 
 // Specifies an inline CSS style for an element
+func (e *SVGFECOMPOSITEElement) STYLEF(k string, format string, args ...any) *SVGFECOMPOSITEElement {
+	return e.STYLE(k, fmt.Sprintf(format, args...))
+}
+
 func (e *SVGFECOMPOSITEElement) STYLE(k string, v string) *SVGFECOMPOSITEElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()

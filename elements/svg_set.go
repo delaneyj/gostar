@@ -78,6 +78,10 @@ func (e *SVGSETElement) CustomData(key, value string) *SVGSETElement {
 	return e
 }
 
+func (e *SVGSETElement) CustomDataF(key, format string, args ...any) *SVGSETElement {
+	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
 func (e *SVGSETElement) CustomDataRemove(key string) *SVGSETElement {
 	if e.CustomDataAttributes == nil {
 		return e
@@ -390,6 +394,10 @@ func (e *SVGSETElement) IDRemove(s string) *SVGSETElement {
 }
 
 // Specifies an inline CSS style for an element
+func (e *SVGSETElement) STYLEF(k string, format string, args ...any) *SVGSETElement {
+	return e.STYLE(k, fmt.Sprintf(format, args...))
+}
+
 func (e *SVGSETElement) STYLE(k string, v string) *SVGSETElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()

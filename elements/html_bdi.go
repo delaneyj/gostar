@@ -74,6 +74,10 @@ func (e *BDIElement) CustomData(key, value string) *BDIElement {
 	return e
 }
 
+func (e *BDIElement) CustomDataF(key, format string, args ...any) *BDIElement {
+	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
 func (e *BDIElement) CustomDataRemove(key string) *BDIElement {
 	if e.CustomDataAttributes == nil {
 		return e
@@ -943,6 +947,10 @@ func (e *BDIElement) SPELLCHECKRemove(c BdiSpellcheckChoice) *BDIElement {
 // The style global attribute is used to add styles to an element, such as color,
 // font, size, and more
 // Styles are written in CSS.
+func (e *BDIElement) STYLEF(k string, format string, args ...any) *BDIElement {
+	return e.STYLE(k, fmt.Sprintf(format, args...))
+}
+
 func (e *BDIElement) STYLE(k string, v string) *BDIElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()

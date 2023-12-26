@@ -73,6 +73,10 @@ func (e *SCRIPTElement) CustomData(key, value string) *SCRIPTElement {
 	return e
 }
 
+func (e *SCRIPTElement) CustomDataF(key, format string, args ...any) *SCRIPTElement {
+	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
 func (e *SCRIPTElement) CustomDataRemove(key string) *SCRIPTElement {
 	if e.CustomDataAttributes == nil {
 		return e
@@ -1159,6 +1163,10 @@ func (e *SCRIPTElement) SPELLCHECKRemove(c ScriptSpellcheckChoice) *SCRIPTElemen
 // The style global attribute is used to add styles to an element, such as color,
 // font, size, and more
 // Styles are written in CSS.
+func (e *SCRIPTElement) STYLEF(k string, format string, args ...any) *SCRIPTElement {
+	return e.STYLE(k, fmt.Sprintf(format, args...))
+}
+
 func (e *SCRIPTElement) STYLE(k string, v string) *SCRIPTElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()

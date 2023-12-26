@@ -74,6 +74,10 @@ func (e *KBDElement) CustomData(key, value string) *KBDElement {
 	return e
 }
 
+func (e *KBDElement) CustomDataF(key, format string, args ...any) *KBDElement {
+	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
 func (e *KBDElement) CustomDataRemove(key string) *KBDElement {
 	if e.CustomDataAttributes == nil {
 		return e
@@ -943,6 +947,10 @@ func (e *KBDElement) SPELLCHECKRemove(c KbdSpellcheckChoice) *KBDElement {
 // The style global attribute is used to add styles to an element, such as color,
 // font, size, and more
 // Styles are written in CSS.
+func (e *KBDElement) STYLEF(k string, format string, args ...any) *KBDElement {
+	return e.STYLE(k, fmt.Sprintf(format, args...))
+}
+
 func (e *KBDElement) STYLE(k string, v string) *KBDElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()

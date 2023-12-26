@@ -73,6 +73,10 @@ func (e *H5Element) CustomData(key, value string) *H5Element {
 	return e
 }
 
+func (e *H5Element) CustomDataF(key, format string, args ...any) *H5Element {
+	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
 func (e *H5Element) CustomDataRemove(key string) *H5Element {
 	if e.CustomDataAttributes == nil {
 		return e
@@ -942,6 +946,10 @@ func (e *H5Element) SPELLCHECKRemove(c H5SpellcheckChoice) *H5Element {
 // The style global attribute is used to add styles to an element, such as color,
 // font, size, and more
 // Styles are written in CSS.
+func (e *H5Element) STYLEF(k string, format string, args ...any) *H5Element {
+	return e.STYLE(k, fmt.Sprintf(format, args...))
+}
+
 func (e *H5Element) STYLE(k string, v string) *H5Element {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()

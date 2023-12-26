@@ -75,6 +75,10 @@ func (e *MathMLANNOTATION_XMLElement) CustomData(key, value string) *MathMLANNOT
 	return e
 }
 
+func (e *MathMLANNOTATION_XMLElement) CustomDataF(key, format string, args ...any) *MathMLANNOTATION_XMLElement {
+	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
 func (e *MathMLANNOTATION_XMLElement) CustomDataRemove(key string) *MathMLANNOTATION_XMLElement {
 	if e.CustomDataAttributes == nil {
 		return e
@@ -339,6 +343,10 @@ func (e *MathMLANNOTATION_XMLElement) SCRIPTLEVELRemove(i int) *MathMLANNOTATION
 
 // This attribute offers advisory information about the element for which it is
 // set.
+func (e *MathMLANNOTATION_XMLElement) STYLEF(k string, format string, args ...any) *MathMLANNOTATION_XMLElement {
+	return e.STYLE(k, fmt.Sprintf(format, args...))
+}
+
 func (e *MathMLANNOTATION_XMLElement) STYLE(k string, v string) *MathMLANNOTATION_XMLElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()

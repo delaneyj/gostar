@@ -73,6 +73,10 @@ func (e *SVGCIRCLEElement) CustomData(key, value string) *SVGCIRCLEElement {
 	return e
 }
 
+func (e *SVGCIRCLEElement) CustomDataF(key, format string, args ...any) *SVGCIRCLEElement {
+	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
 func (e *SVGCIRCLEElement) CustomDataRemove(key string) *SVGCIRCLEElement {
 	if e.CustomDataAttributes == nil {
 		return e
@@ -155,6 +159,10 @@ func (e *SVGCIRCLEElement) IDRemove(s string) *SVGCIRCLEElement {
 }
 
 // Specifies an inline CSS style for an element
+func (e *SVGCIRCLEElement) STYLEF(k string, format string, args ...any) *SVGCIRCLEElement {
+	return e.STYLE(k, fmt.Sprintf(format, args...))
+}
+
 func (e *SVGCIRCLEElement) STYLE(k string, v string) *SVGCIRCLEElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()

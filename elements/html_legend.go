@@ -73,6 +73,10 @@ func (e *LEGENDElement) CustomData(key, value string) *LEGENDElement {
 	return e
 }
 
+func (e *LEGENDElement) CustomDataF(key, format string, args ...any) *LEGENDElement {
+	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
 func (e *LEGENDElement) CustomDataRemove(key string) *LEGENDElement {
 	if e.CustomDataAttributes == nil {
 		return e
@@ -942,6 +946,10 @@ func (e *LEGENDElement) SPELLCHECKRemove(c LegendSpellcheckChoice) *LEGENDElemen
 // The style global attribute is used to add styles to an element, such as color,
 // font, size, and more
 // Styles are written in CSS.
+func (e *LEGENDElement) STYLEF(k string, format string, args ...any) *LEGENDElement {
+	return e.STYLE(k, fmt.Sprintf(format, args...))
+}
+
 func (e *LEGENDElement) STYLE(k string, v string) *LEGENDElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()

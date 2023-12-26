@@ -75,6 +75,10 @@ func (e *CANVASElement) CustomData(key, value string) *CANVASElement {
 	return e
 }
 
+func (e *CANVASElement) CustomDataF(key, format string, args ...any) *CANVASElement {
+	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
 func (e *CANVASElement) CustomDataRemove(key string) *CANVASElement {
 	if e.CustomDataAttributes == nil {
 		return e
@@ -980,6 +984,10 @@ func (e *CANVASElement) SPELLCHECKRemove(c CanvasSpellcheckChoice) *CANVASElemen
 // The style global attribute is used to add styles to an element, such as color,
 // font, size, and more
 // Styles are written in CSS.
+func (e *CANVASElement) STYLEF(k string, format string, args ...any) *CANVASElement {
+	return e.STYLE(k, fmt.Sprintf(format, args...))
+}
+
 func (e *CANVASElement) STYLE(k string, v string) *CANVASElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()

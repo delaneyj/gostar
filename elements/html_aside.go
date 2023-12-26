@@ -73,6 +73,10 @@ func (e *ASIDEElement) CustomData(key, value string) *ASIDEElement {
 	return e
 }
 
+func (e *ASIDEElement) CustomDataF(key, format string, args ...any) *ASIDEElement {
+	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
 func (e *ASIDEElement) CustomDataRemove(key string) *ASIDEElement {
 	if e.CustomDataAttributes == nil {
 		return e
@@ -942,6 +946,10 @@ func (e *ASIDEElement) SPELLCHECKRemove(c AsideSpellcheckChoice) *ASIDEElement {
 // The style global attribute is used to add styles to an element, such as color,
 // font, size, and more
 // Styles are written in CSS.
+func (e *ASIDEElement) STYLEF(k string, format string, args ...any) *ASIDEElement {
+	return e.STYLE(k, fmt.Sprintf(format, args...))
+}
+
 func (e *ASIDEElement) STYLE(k string, v string) *ASIDEElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()

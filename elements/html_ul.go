@@ -73,6 +73,10 @@ func (e *ULElement) CustomData(key, value string) *ULElement {
 	return e
 }
 
+func (e *ULElement) CustomDataF(key, format string, args ...any) *ULElement {
+	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
 func (e *ULElement) CustomDataRemove(key string) *ULElement {
 	if e.CustomDataAttributes == nil {
 		return e
@@ -971,6 +975,10 @@ func (e *ULElement) SPELLCHECKRemove(c UlSpellcheckChoice) *ULElement {
 // The style global attribute is used to add styles to an element, such as color,
 // font, size, and more
 // Styles are written in CSS.
+func (e *ULElement) STYLEF(k string, format string, args ...any) *ULElement {
+	return e.STYLE(k, fmt.Sprintf(format, args...))
+}
+
 func (e *ULElement) STYLE(k string, v string) *ULElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()

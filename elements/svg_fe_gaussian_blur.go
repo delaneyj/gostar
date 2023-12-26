@@ -73,6 +73,10 @@ func (e *SVGFEGAUSSIANBLURElement) CustomData(key, value string) *SVGFEGAUSSIANB
 	return e
 }
 
+func (e *SVGFEGAUSSIANBLURElement) CustomDataF(key, format string, args ...any) *SVGFEGAUSSIANBLURElement {
+	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
 func (e *SVGFEGAUSSIANBLURElement) CustomDataRemove(key string) *SVGFEGAUSSIANBLURElement {
 	if e.CustomDataAttributes == nil {
 		return e
@@ -163,6 +167,10 @@ func (e *SVGFEGAUSSIANBLURElement) IDRemove(s string) *SVGFEGAUSSIANBLURElement 
 }
 
 // Specifies an inline CSS style for an element
+func (e *SVGFEGAUSSIANBLURElement) STYLEF(k string, format string, args ...any) *SVGFEGAUSSIANBLURElement {
+	return e.STYLE(k, fmt.Sprintf(format, args...))
+}
+
 func (e *SVGFEGAUSSIANBLURElement) STYLE(k string, v string) *SVGFEGAUSSIANBLURElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()

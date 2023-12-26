@@ -73,6 +73,10 @@ func (e *FIELDSETElement) CustomData(key, value string) *FIELDSETElement {
 	return e
 }
 
+func (e *FIELDSETElement) CustomDataF(key, format string, args ...any) *FIELDSETElement {
+	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
 func (e *FIELDSETElement) CustomDataRemove(key string) *FIELDSETElement {
 	if e.CustomDataAttributes == nil {
 		return e
@@ -942,6 +946,10 @@ func (e *FIELDSETElement) SPELLCHECKRemove(c FieldsetSpellcheckChoice) *FIELDSET
 // The style global attribute is used to add styles to an element, such as color,
 // font, size, and more
 // Styles are written in CSS.
+func (e *FIELDSETElement) STYLEF(k string, format string, args ...any) *FIELDSETElement {
+	return e.STYLE(k, fmt.Sprintf(format, args...))
+}
+
 func (e *FIELDSETElement) STYLE(k string, v string) *FIELDSETElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()

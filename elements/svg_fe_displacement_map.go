@@ -73,6 +73,10 @@ func (e *SVGFEDISPLACEMENTMAPElement) CustomData(key, value string) *SVGFEDISPLA
 	return e
 }
 
+func (e *SVGFEDISPLACEMENTMAPElement) CustomDataF(key, format string, args ...any) *SVGFEDISPLACEMENTMAPElement {
+	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
 func (e *SVGFEDISPLACEMENTMAPElement) CustomDataRemove(key string) *SVGFEDISPLACEMENTMAPElement {
 	if e.CustomDataAttributes == nil {
 		return e
@@ -239,6 +243,10 @@ func (e *SVGFEDISPLACEMENTMAPElement) IDRemove(s string) *SVGFEDISPLACEMENTMAPEl
 }
 
 // Specifies an inline CSS style for an element
+func (e *SVGFEDISPLACEMENTMAPElement) STYLEF(k string, format string, args ...any) *SVGFEDISPLACEMENTMAPElement {
+	return e.STYLE(k, fmt.Sprintf(format, args...))
+}
+
 func (e *SVGFEDISPLACEMENTMAPElement) STYLE(k string, v string) *SVGFEDISPLACEMENTMAPElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()

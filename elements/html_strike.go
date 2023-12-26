@@ -73,6 +73,10 @@ func (e *STRIKEElement) CustomData(key, value string) *STRIKEElement {
 	return e
 }
 
+func (e *STRIKEElement) CustomDataF(key, format string, args ...any) *STRIKEElement {
+	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
 func (e *STRIKEElement) CustomDataRemove(key string) *STRIKEElement {
 	if e.CustomDataAttributes == nil {
 		return e
@@ -942,6 +946,10 @@ func (e *STRIKEElement) SPELLCHECKRemove(c StrikeSpellcheckChoice) *STRIKEElemen
 // The style global attribute is used to add styles to an element, such as color,
 // font, size, and more
 // Styles are written in CSS.
+func (e *STRIKEElement) STYLEF(k string, format string, args ...any) *STRIKEElement {
+	return e.STYLE(k, fmt.Sprintf(format, args...))
+}
+
 func (e *STRIKEElement) STYLE(k string, v string) *STRIKEElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()

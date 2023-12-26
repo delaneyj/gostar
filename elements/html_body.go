@@ -73,6 +73,10 @@ func (e *BODYElement) CustomData(key, value string) *BODYElement {
 	return e
 }
 
+func (e *BODYElement) CustomDataF(key, format string, args ...any) *BODYElement {
+	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
 func (e *BODYElement) CustomDataRemove(key string) *BODYElement {
 	if e.CustomDataAttributes == nil {
 		return e
@@ -942,6 +946,10 @@ func (e *BODYElement) SPELLCHECKRemove(c BodySpellcheckChoice) *BODYElement {
 // The style global attribute is used to add styles to an element, such as color,
 // font, size, and more
 // Styles are written in CSS.
+func (e *BODYElement) STYLEF(k string, format string, args ...any) *BODYElement {
+	return e.STYLE(k, fmt.Sprintf(format, args...))
+}
+
 func (e *BODYElement) STYLE(k string, v string) *BODYElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()

@@ -73,6 +73,10 @@ func (e *SVGTSPANElement) CustomData(key, value string) *SVGTSPANElement {
 	return e
 }
 
+func (e *SVGTSPANElement) CustomDataF(key, format string, args ...any) *SVGTSPANElement {
+	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
 func (e *SVGTSPANElement) CustomDataRemove(key string) *SVGTSPANElement {
 	if e.CustomDataAttributes == nil {
 		return e
@@ -173,6 +177,10 @@ func (e *SVGTSPANElement) IDRemove(s string) *SVGTSPANElement {
 }
 
 // Specifies an inline CSS style for an element
+func (e *SVGTSPANElement) STYLEF(k string, format string, args ...any) *SVGTSPANElement {
+	return e.STYLE(k, fmt.Sprintf(format, args...))
+}
+
 func (e *SVGTSPANElement) STYLE(k string, v string) *SVGTSPANElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()

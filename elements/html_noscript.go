@@ -74,6 +74,10 @@ func (e *NOSCRIPTElement) CustomData(key, value string) *NOSCRIPTElement {
 	return e
 }
 
+func (e *NOSCRIPTElement) CustomDataF(key, format string, args ...any) *NOSCRIPTElement {
+	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
 func (e *NOSCRIPTElement) CustomDataRemove(key string) *NOSCRIPTElement {
 	if e.CustomDataAttributes == nil {
 		return e
@@ -943,6 +947,10 @@ func (e *NOSCRIPTElement) SPELLCHECKRemove(c NoscriptSpellcheckChoice) *NOSCRIPT
 // The style global attribute is used to add styles to an element, such as color,
 // font, size, and more
 // Styles are written in CSS.
+func (e *NOSCRIPTElement) STYLEF(k string, format string, args ...any) *NOSCRIPTElement {
+	return e.STYLE(k, fmt.Sprintf(format, args...))
+}
+
 func (e *NOSCRIPTElement) STYLE(k string, v string) *NOSCRIPTElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()

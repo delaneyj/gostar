@@ -74,6 +74,10 @@ func (e *SVGFETURBULENCEElement) CustomData(key, value string) *SVGFETURBULENCEE
 	return e
 }
 
+func (e *SVGFETURBULENCEElement) CustomDataF(key, format string, args ...any) *SVGFETURBULENCEElement {
+	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
 func (e *SVGFETURBULENCEElement) CustomDataRemove(key string) *SVGFETURBULENCEElement {
 	if e.CustomDataAttributes == nil {
 		return e
@@ -228,6 +232,10 @@ func (e *SVGFETURBULENCEElement) IDRemove(s string) *SVGFETURBULENCEElement {
 }
 
 // Specifies an inline CSS style for an element
+func (e *SVGFETURBULENCEElement) STYLEF(k string, format string, args ...any) *SVGFETURBULENCEElement {
+	return e.STYLE(k, fmt.Sprintf(format, args...))
+}
+
 func (e *SVGFETURBULENCEElement) STYLE(k string, v string) *SVGFETURBULENCEElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()

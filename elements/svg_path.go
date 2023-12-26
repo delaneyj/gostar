@@ -73,6 +73,10 @@ func (e *SVGPATHElement) CustomData(key, value string) *SVGPATHElement {
 	return e
 }
 
+func (e *SVGPATHElement) CustomDataF(key, format string, args ...any) *SVGPATHElement {
+	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
 func (e *SVGPATHElement) CustomDataRemove(key string) *SVGPATHElement {
 	if e.CustomDataAttributes == nil {
 		return e
@@ -155,6 +159,10 @@ func (e *SVGPATHElement) IDRemove(s string) *SVGPATHElement {
 }
 
 // Specifies an inline CSS style for an element
+func (e *SVGPATHElement) STYLEF(k string, format string, args ...any) *SVGPATHElement {
+	return e.STYLE(k, fmt.Sprintf(format, args...))
+}
+
 func (e *SVGPATHElement) STYLE(k string, v string) *SVGPATHElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()

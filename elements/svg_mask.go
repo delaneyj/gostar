@@ -72,6 +72,10 @@ func (e *SVGMASKElement) CustomData(key, value string) *SVGMASKElement {
 	return e
 }
 
+func (e *SVGMASKElement) CustomDataF(key, format string, args ...any) *SVGMASKElement {
+	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
 func (e *SVGMASKElement) CustomDataRemove(key string) *SVGMASKElement {
 	if e.CustomDataAttributes == nil {
 		return e
@@ -255,6 +259,10 @@ func (e *SVGMASKElement) IDRemove(s string) *SVGMASKElement {
 }
 
 // Specifies an inline CSS style for an element
+func (e *SVGMASKElement) STYLEF(k string, format string, args ...any) *SVGMASKElement {
+	return e.STYLE(k, fmt.Sprintf(format, args...))
+}
+
 func (e *SVGMASKElement) STYLE(k string, v string) *SVGMASKElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()

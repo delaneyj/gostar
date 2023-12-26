@@ -73,6 +73,10 @@ func (e *SVGFEOFFSETElement) CustomData(key, value string) *SVGFEOFFSETElement {
 	return e
 }
 
+func (e *SVGFEOFFSETElement) CustomDataF(key, format string, args ...any) *SVGFEOFFSETElement {
+	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
 func (e *SVGFEOFFSETElement) CustomDataRemove(key string) *SVGFEOFFSETElement {
 	if e.CustomDataAttributes == nil {
 		return e
@@ -146,6 +150,10 @@ func (e *SVGFEOFFSETElement) IDRemove(s string) *SVGFEOFFSETElement {
 }
 
 // Specifies an inline CSS style for an element
+func (e *SVGFEOFFSETElement) STYLEF(k string, format string, args ...any) *SVGFEOFFSETElement {
+	return e.STYLE(k, fmt.Sprintf(format, args...))
+}
+
 func (e *SVGFEOFFSETElement) STYLE(k string, v string) *SVGFEOFFSETElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()

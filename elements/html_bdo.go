@@ -74,6 +74,10 @@ func (e *BDOElement) CustomData(key, value string) *BDOElement {
 	return e
 }
 
+func (e *BDOElement) CustomDataF(key, format string, args ...any) *BDOElement {
+	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
 func (e *BDOElement) CustomDataRemove(key string) *BDOElement {
 	if e.CustomDataAttributes == nil {
 		return e
@@ -943,6 +947,10 @@ func (e *BDOElement) SPELLCHECKRemove(c BdoSpellcheckChoice) *BDOElement {
 // The style global attribute is used to add styles to an element, such as color,
 // font, size, and more
 // Styles are written in CSS.
+func (e *BDOElement) STYLEF(k string, format string, args ...any) *BDOElement {
+	return e.STYLE(k, fmt.Sprintf(format, args...))
+}
+
 func (e *BDOElement) STYLE(k string, v string) *BDOElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()

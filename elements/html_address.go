@@ -73,6 +73,10 @@ func (e *ADDRESSElement) CustomData(key, value string) *ADDRESSElement {
 	return e
 }
 
+func (e *ADDRESSElement) CustomDataF(key, format string, args ...any) *ADDRESSElement {
+	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
 func (e *ADDRESSElement) CustomDataRemove(key string) *ADDRESSElement {
 	if e.CustomDataAttributes == nil {
 		return e
@@ -942,6 +946,10 @@ func (e *ADDRESSElement) SPELLCHECKRemove(c AddressSpellcheckChoice) *ADDRESSEle
 // The style global attribute is used to add styles to an element, such as color,
 // font, size, and more
 // Styles are written in CSS.
+func (e *ADDRESSElement) STYLEF(k string, format string, args ...any) *ADDRESSElement {
+	return e.STYLE(k, fmt.Sprintf(format, args...))
+}
+
 func (e *ADDRESSElement) STYLE(k string, v string) *ADDRESSElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()

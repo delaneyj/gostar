@@ -73,6 +73,10 @@ func (e *MathMLMPRESCRIPTSElement) CustomData(key, value string) *MathMLMPRESCRI
 	return e
 }
 
+func (e *MathMLMPRESCRIPTSElement) CustomDataF(key, format string, args ...any) *MathMLMPRESCRIPTSElement {
+	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
 func (e *MathMLMPRESCRIPTSElement) CustomDataRemove(key string) *MathMLMPRESCRIPTSElement {
 	if e.CustomDataAttributes == nil {
 		return e
@@ -290,6 +294,10 @@ func (e *MathMLMPRESCRIPTSElement) SCRIPTLEVELRemove(i int) *MathMLMPRESCRIPTSEl
 
 // This attribute offers advisory information about the element for which it is
 // set.
+func (e *MathMLMPRESCRIPTSElement) STYLEF(k string, format string, args ...any) *MathMLMPRESCRIPTSElement {
+	return e.STYLE(k, fmt.Sprintf(format, args...))
+}
+
 func (e *MathMLMPRESCRIPTSElement) STYLE(k string, v string) *MathMLMPRESCRIPTSElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()

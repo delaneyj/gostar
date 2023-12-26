@@ -77,6 +77,10 @@ func (e *RBElement) CustomData(key, value string) *RBElement {
 	return e
 }
 
+func (e *RBElement) CustomDataF(key, format string, args ...any) *RBElement {
+	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
 func (e *RBElement) CustomDataRemove(key string) *RBElement {
 	if e.CustomDataAttributes == nil {
 		return e
@@ -946,6 +950,10 @@ func (e *RBElement) SPELLCHECKRemove(c RbSpellcheckChoice) *RBElement {
 // The style global attribute is used to add styles to an element, such as color,
 // font, size, and more
 // Styles are written in CSS.
+func (e *RBElement) STYLEF(k string, format string, args ...any) *RBElement {
+	return e.STYLE(k, fmt.Sprintf(format, args...))
+}
+
 func (e *RBElement) STYLE(k string, v string) *RBElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()

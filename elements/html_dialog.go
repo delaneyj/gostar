@@ -75,6 +75,10 @@ func (e *DIALOGElement) CustomData(key, value string) *DIALOGElement {
 	return e
 }
 
+func (e *DIALOGElement) CustomDataF(key, format string, args ...any) *DIALOGElement {
+	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
 func (e *DIALOGElement) CustomDataRemove(key string) *DIALOGElement {
 	if e.CustomDataAttributes == nil {
 		return e
@@ -968,6 +972,10 @@ func (e *DIALOGElement) SPELLCHECKRemove(c DialogSpellcheckChoice) *DIALOGElemen
 // The style global attribute is used to add styles to an element, such as color,
 // font, size, and more
 // Styles are written in CSS.
+func (e *DIALOGElement) STYLEF(k string, format string, args ...any) *DIALOGElement {
+	return e.STYLE(k, fmt.Sprintf(format, args...))
+}
+
 func (e *DIALOGElement) STYLE(k string, v string) *DIALOGElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()

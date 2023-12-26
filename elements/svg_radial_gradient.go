@@ -73,6 +73,10 @@ func (e *SVGRADIALGRADIENTElement) CustomData(key, value string) *SVGRADIALGRADI
 	return e
 }
 
+func (e *SVGRADIALGRADIENTElement) CustomDataF(key, format string, args ...any) *SVGRADIALGRADIENTElement {
+	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
 func (e *SVGRADIALGRADIENTElement) CustomDataRemove(key string) *SVGRADIALGRADIENTElement {
 	if e.CustomDataAttributes == nil {
 		return e
@@ -223,6 +227,10 @@ func (e *SVGRADIALGRADIENTElement) IDRemove(s string) *SVGRADIALGRADIENTElement 
 }
 
 // Specifies an inline CSS style for an element
+func (e *SVGRADIALGRADIENTElement) STYLEF(k string, format string, args ...any) *SVGRADIALGRADIENTElement {
+	return e.STYLE(k, fmt.Sprintf(format, args...))
+}
+
 func (e *SVGRADIALGRADIENTElement) STYLE(k string, v string) *SVGRADIALGRADIENTElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()

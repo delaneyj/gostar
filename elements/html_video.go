@@ -72,6 +72,10 @@ func (e *VIDEOElement) CustomData(key, value string) *VIDEOElement {
 	return e
 }
 
+func (e *VIDEOElement) CustomDataF(key, format string, args ...any) *VIDEOElement {
+	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
 func (e *VIDEOElement) CustomDataRemove(key string) *VIDEOElement {
 	if e.CustomDataAttributes == nil {
 		return e
@@ -1194,6 +1198,10 @@ func (e *VIDEOElement) SPELLCHECKRemove(c VideoSpellcheckChoice) *VIDEOElement {
 // The style global attribute is used to add styles to an element, such as color,
 // font, size, and more
 // Styles are written in CSS.
+func (e *VIDEOElement) STYLEF(k string, format string, args ...any) *VIDEOElement {
+	return e.STYLE(k, fmt.Sprintf(format, args...))
+}
+
 func (e *VIDEOElement) STYLE(k string, v string) *VIDEOElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()

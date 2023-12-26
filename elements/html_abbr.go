@@ -74,6 +74,10 @@ func (e *ABBRElement) CustomData(key, value string) *ABBRElement {
 	return e
 }
 
+func (e *ABBRElement) CustomDataF(key, format string, args ...any) *ABBRElement {
+	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
 func (e *ABBRElement) CustomDataRemove(key string) *ABBRElement {
 	if e.CustomDataAttributes == nil {
 		return e
@@ -962,6 +966,10 @@ func (e *ABBRElement) SPELLCHECKRemove(c AbbrSpellcheckChoice) *ABBRElement {
 // The style global attribute is used to add styles to an element, such as color,
 // font, size, and more
 // Styles are written in CSS.
+func (e *ABBRElement) STYLEF(k string, format string, args ...any) *ABBRElement {
+	return e.STYLE(k, fmt.Sprintf(format, args...))
+}
+
 func (e *ABBRElement) STYLE(k string, v string) *ABBRElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()

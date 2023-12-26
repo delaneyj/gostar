@@ -74,6 +74,10 @@ func (e *TABLEElement) CustomData(key, value string) *TABLEElement {
 	return e
 }
 
+func (e *TABLEElement) CustomDataF(key, format string, args ...any) *TABLEElement {
+	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
 func (e *TABLEElement) CustomDataRemove(key string) *TABLEElement {
 	if e.CustomDataAttributes == nil {
 		return e
@@ -961,6 +965,10 @@ func (e *TABLEElement) SPELLCHECKRemove(c TableSpellcheckChoice) *TABLEElement {
 // The style global attribute is used to add styles to an element, such as color,
 // font, size, and more
 // Styles are written in CSS.
+func (e *TABLEElement) STYLEF(k string, format string, args ...any) *TABLEElement {
+	return e.STYLE(k, fmt.Sprintf(format, args...))
+}
+
 func (e *TABLEElement) STYLE(k string, v string) *TABLEElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()

@@ -75,6 +75,10 @@ func (e *LINKElement) CustomData(key, value string) *LINKElement {
 	return e
 }
 
+func (e *LINKElement) CustomDataF(key, format string, args ...any) *LINKElement {
+	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
 func (e *LINKElement) CustomDataRemove(key string) *LINKElement {
 	if e.CustomDataAttributes == nil {
 		return e
@@ -1203,6 +1207,10 @@ func (e *LINKElement) SPELLCHECKRemove(c LinkSpellcheckChoice) *LINKElement {
 // The style global attribute is used to add styles to an element, such as color,
 // font, size, and more
 // Styles are written in CSS.
+func (e *LINKElement) STYLEF(k string, format string, args ...any) *LINKElement {
+	return e.STYLE(k, fmt.Sprintf(format, args...))
+}
+
 func (e *LINKElement) STYLE(k string, v string) *LINKElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()

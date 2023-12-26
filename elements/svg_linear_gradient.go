@@ -73,6 +73,10 @@ func (e *SVGLINEARGRADIENTElement) CustomData(key, value string) *SVGLINEARGRADI
 	return e
 }
 
+func (e *SVGLINEARGRADIENTElement) CustomDataF(key, format string, args ...any) *SVGLINEARGRADIENTElement {
+	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
 func (e *SVGLINEARGRADIENTElement) CustomDataRemove(key string) *SVGLINEARGRADIENTElement {
 	if e.CustomDataAttributes == nil {
 		return e
@@ -239,6 +243,10 @@ func (e *SVGLINEARGRADIENTElement) IDRemove(s string) *SVGLINEARGRADIENTElement 
 }
 
 // Specifies an inline CSS style for an element
+func (e *SVGLINEARGRADIENTElement) STYLEF(k string, format string, args ...any) *SVGLINEARGRADIENTElement {
+	return e.STYLE(k, fmt.Sprintf(format, args...))
+}
+
 func (e *SVGLINEARGRADIENTElement) STYLE(k string, v string) *SVGLINEARGRADIENTElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()

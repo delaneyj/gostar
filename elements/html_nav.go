@@ -76,6 +76,10 @@ func (e *NAVElement) CustomData(key, value string) *NAVElement {
 	return e
 }
 
+func (e *NAVElement) CustomDataF(key, format string, args ...any) *NAVElement {
+	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
 func (e *NAVElement) CustomDataRemove(key string) *NAVElement {
 	if e.CustomDataAttributes == nil {
 		return e
@@ -945,6 +949,10 @@ func (e *NAVElement) SPELLCHECKRemove(c NavSpellcheckChoice) *NAVElement {
 // The style global attribute is used to add styles to an element, such as color,
 // font, size, and more
 // Styles are written in CSS.
+func (e *NAVElement) STYLEF(k string, format string, args ...any) *NAVElement {
+	return e.STYLE(k, fmt.Sprintf(format, args...))
+}
+
 func (e *NAVElement) STYLE(k string, v string) *NAVElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()

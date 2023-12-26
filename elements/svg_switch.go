@@ -78,6 +78,10 @@ func (e *SVGSWITCHElement) CustomData(key, value string) *SVGSWITCHElement {
 	return e
 }
 
+func (e *SVGSWITCHElement) CustomDataF(key, format string, args ...any) *SVGSWITCHElement {
+	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
 func (e *SVGSWITCHElement) CustomDataRemove(key string) *SVGSWITCHElement {
 	if e.CustomDataAttributes == nil {
 		return e
@@ -192,6 +196,10 @@ func (e *SVGSWITCHElement) IDRemove(s string) *SVGSWITCHElement {
 }
 
 // Specifies an inline CSS style for an element
+func (e *SVGSWITCHElement) STYLEF(k string, format string, args ...any) *SVGSWITCHElement {
+	return e.STYLE(k, fmt.Sprintf(format, args...))
+}
+
 func (e *SVGSWITCHElement) STYLE(k string, v string) *SVGSWITCHElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()

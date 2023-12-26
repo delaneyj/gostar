@@ -72,6 +72,10 @@ func (e *MathMLMSElement) CustomData(key, value string) *MathMLMSElement {
 	return e
 }
 
+func (e *MathMLMSElement) CustomDataF(key, format string, args ...any) *MathMLMSElement {
+	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
 func (e *MathMLMSElement) CustomDataRemove(key string) *MathMLMSElement {
 	if e.CustomDataAttributes == nil {
 		return e
@@ -289,6 +293,10 @@ func (e *MathMLMSElement) SCRIPTLEVELRemove(i int) *MathMLMSElement {
 
 // This attribute offers advisory information about the element for which it is
 // set.
+func (e *MathMLMSElement) STYLEF(k string, format string, args ...any) *MathMLMSElement {
+	return e.STYLE(k, fmt.Sprintf(format, args...))
+}
+
 func (e *MathMLMSElement) STYLE(k string, v string) *MathMLMSElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()

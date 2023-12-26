@@ -74,6 +74,10 @@ func (e *SVGANIMATEMOTIONElement) CustomData(key, value string) *SVGANIMATEMOTIO
 	return e
 }
 
+func (e *SVGANIMATEMOTIONElement) CustomDataF(key, format string, args ...any) *SVGANIMATEMOTIONElement {
+	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
 func (e *SVGANIMATEMOTIONElement) CustomDataRemove(key string) *SVGANIMATEMOTIONElement {
 	if e.CustomDataAttributes == nil {
 		return e
@@ -513,6 +517,10 @@ func (e *SVGANIMATEMOTIONElement) IDRemove(s string) *SVGANIMATEMOTIONElement {
 }
 
 // Specifies an inline CSS style for an element
+func (e *SVGANIMATEMOTIONElement) STYLEF(k string, format string, args ...any) *SVGANIMATEMOTIONElement {
+	return e.STYLE(k, fmt.Sprintf(format, args...))
+}
+
 func (e *SVGANIMATEMOTIONElement) STYLE(k string, v string) *SVGANIMATEMOTIONElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()

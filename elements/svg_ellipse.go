@@ -73,6 +73,10 @@ func (e *SVGELLIPSEElement) CustomData(key, value string) *SVGELLIPSEElement {
 	return e
 }
 
+func (e *SVGELLIPSEElement) CustomDataF(key, format string, args ...any) *SVGELLIPSEElement {
+	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
 func (e *SVGELLIPSEElement) CustomDataRemove(key string) *SVGELLIPSEElement {
 	if e.CustomDataAttributes == nil {
 		return e
@@ -164,6 +168,10 @@ func (e *SVGELLIPSEElement) IDRemove(s string) *SVGELLIPSEElement {
 }
 
 // Specifies an inline CSS style for an element
+func (e *SVGELLIPSEElement) STYLEF(k string, format string, args ...any) *SVGELLIPSEElement {
+	return e.STYLE(k, fmt.Sprintf(format, args...))
+}
+
 func (e *SVGELLIPSEElement) STYLE(k string, v string) *SVGELLIPSEElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()

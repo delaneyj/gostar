@@ -75,6 +75,10 @@ func (e *QElement) CustomData(key, value string) *QElement {
 	return e
 }
 
+func (e *QElement) CustomDataF(key, format string, args ...any) *QElement {
+	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
 func (e *QElement) CustomDataRemove(key string) *QElement {
 	if e.CustomDataAttributes == nil {
 		return e
@@ -962,6 +966,10 @@ func (e *QElement) SPELLCHECKRemove(c QSpellcheckChoice) *QElement {
 // The style global attribute is used to add styles to an element, such as color,
 // font, size, and more
 // Styles are written in CSS.
+func (e *QElement) STYLEF(k string, format string, args ...any) *QElement {
+	return e.STYLE(k, fmt.Sprintf(format, args...))
+}
+
 func (e *QElement) STYLE(k string, v string) *QElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()

@@ -73,6 +73,10 @@ func (e *MathMLMUNDEROVERElement) CustomData(key, value string) *MathMLMUNDEROVE
 	return e
 }
 
+func (e *MathMLMUNDEROVERElement) CustomDataF(key, format string, args ...any) *MathMLMUNDEROVERElement {
+	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
 func (e *MathMLMUNDEROVERElement) CustomDataRemove(key string) *MathMLMUNDEROVERElement {
 	if e.CustomDataAttributes == nil {
 		return e
@@ -290,6 +294,10 @@ func (e *MathMLMUNDEROVERElement) SCRIPTLEVELRemove(i int) *MathMLMUNDEROVERElem
 
 // This attribute offers advisory information about the element for which it is
 // set.
+func (e *MathMLMUNDEROVERElement) STYLEF(k string, format string, args ...any) *MathMLMUNDEROVERElement {
+	return e.STYLE(k, fmt.Sprintf(format, args...))
+}
+
 func (e *MathMLMUNDEROVERElement) STYLE(k string, v string) *MathMLMUNDEROVERElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()

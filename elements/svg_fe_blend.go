@@ -76,6 +76,10 @@ func (e *SVGFEBLENDElement) CustomData(key, value string) *SVGFEBLENDElement {
 	return e
 }
 
+func (e *SVGFEBLENDElement) CustomDataF(key, format string, args ...any) *SVGFEBLENDElement {
+	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
 func (e *SVGFEBLENDElement) CustomDataRemove(key string) *SVGFEBLENDElement {
 	if e.CustomDataAttributes == nil {
 		return e
@@ -202,6 +206,10 @@ func (e *SVGFEBLENDElement) IDRemove(s string) *SVGFEBLENDElement {
 }
 
 // Specifies an inline CSS style for an element
+func (e *SVGFEBLENDElement) STYLEF(k string, format string, args ...any) *SVGFEBLENDElement {
+	return e.STYLE(k, fmt.Sprintf(format, args...))
+}
+
 func (e *SVGFEBLENDElement) STYLE(k string, v string) *SVGFEBLENDElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()

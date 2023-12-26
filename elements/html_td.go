@@ -73,6 +73,10 @@ func (e *TDElement) CustomData(key, value string) *TDElement {
 	return e
 }
 
+func (e *TDElement) CustomDataF(key, format string, args ...any) *TDElement {
+	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
 func (e *TDElement) CustomDataRemove(key string) *TDElement {
 	if e.CustomDataAttributes == nil {
 		return e
@@ -996,6 +1000,10 @@ func (e *TDElement) SPELLCHECKRemove(c TdSpellcheckChoice) *TDElement {
 // The style global attribute is used to add styles to an element, such as color,
 // font, size, and more
 // Styles are written in CSS.
+func (e *TDElement) STYLEF(k string, format string, args ...any) *TDElement {
+	return e.STYLE(k, fmt.Sprintf(format, args...))
+}
+
 func (e *TDElement) STYLE(k string, v string) *TDElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()

@@ -73,6 +73,10 @@ func (e *FIGCAPTIONElement) CustomData(key, value string) *FIGCAPTIONElement {
 	return e
 }
 
+func (e *FIGCAPTIONElement) CustomDataF(key, format string, args ...any) *FIGCAPTIONElement {
+	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
 func (e *FIGCAPTIONElement) CustomDataRemove(key string) *FIGCAPTIONElement {
 	if e.CustomDataAttributes == nil {
 		return e
@@ -942,6 +946,10 @@ func (e *FIGCAPTIONElement) SPELLCHECKRemove(c FigcaptionSpellcheckChoice) *FIGC
 // The style global attribute is used to add styles to an element, such as color,
 // font, size, and more
 // Styles are written in CSS.
+func (e *FIGCAPTIONElement) STYLEF(k string, format string, args ...any) *FIGCAPTIONElement {
+	return e.STYLE(k, fmt.Sprintf(format, args...))
+}
+
 func (e *FIGCAPTIONElement) STYLE(k string, v string) *FIGCAPTIONElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()

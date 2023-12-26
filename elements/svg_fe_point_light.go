@@ -73,6 +73,10 @@ func (e *SVGFEPOINTLIGHTElement) CustomData(key, value string) *SVGFEPOINTLIGHTE
 	return e
 }
 
+func (e *SVGFEPOINTLIGHTElement) CustomDataF(key, format string, args ...any) *SVGFEPOINTLIGHTElement {
+	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
 func (e *SVGFEPOINTLIGHTElement) CustomDataRemove(key string) *SVGFEPOINTLIGHTElement {
 	if e.CustomDataAttributes == nil {
 		return e
@@ -158,6 +162,10 @@ func (e *SVGFEPOINTLIGHTElement) IDRemove(s string) *SVGFEPOINTLIGHTElement {
 }
 
 // Specifies an inline CSS style for an element
+func (e *SVGFEPOINTLIGHTElement) STYLEF(k string, format string, args ...any) *SVGFEPOINTLIGHTElement {
+	return e.STYLE(k, fmt.Sprintf(format, args...))
+}
+
 func (e *SVGFEPOINTLIGHTElement) STYLE(k string, v string) *SVGFEPOINTLIGHTElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
