@@ -57,13 +57,41 @@ func (e *SVGFETURBULENCEElement) TextF(format string, args ...any) *SVGFETURBULE
 	return e.Text(fmt.Sprintf(format, args...))
 }
 
+func (e *SVGFETURBULENCEElement) IfText(condition bool, text string) *SVGFETURBULENCEElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
+}
+
+func (e *SVGFETURBULENCEElement) IfTextF(condition bool, format string, args ...any) *SVGFETURBULENCEElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
+}
+
 func (e *SVGFETURBULENCEElement) Escaped(text string) *SVGFETURBULENCEElement {
 	e.Descendants = append(e.Descendants, Escaped(text))
 	return e
 }
 
+func (e *SVGFETURBULENCEElement) IfEscaped(condition bool, text string) *SVGFETURBULENCEElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
+}
+
 func (e *SVGFETURBULENCEElement) EscapedF(format string, args ...any) *SVGFETURBULENCEElement {
 	return e.Escaped(fmt.Sprintf(format, args...))
+}
+
+func (e *SVGFETURBULENCEElement) IfEscapedF(condition bool, format string, args ...any) *SVGFETURBULENCEElement {
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *SVGFETURBULENCEElement) CustomData(key, value string) *SVGFETURBULENCEElement {
@@ -74,8 +102,22 @@ func (e *SVGFETURBULENCEElement) CustomData(key, value string) *SVGFETURBULENCEE
 	return e
 }
 
+func (e *SVGFETURBULENCEElement) IfCustomData(condition bool, key, value string) *SVGFETURBULENCEElement {
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
+}
+
 func (e *SVGFETURBULENCEElement) CustomDataF(key, format string, args ...any) *SVGFETURBULENCEElement {
 	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
+func (e *SVGFETURBULENCEElement) IfCustomDataF(condition bool, key, format string, args ...any) *SVGFETURBULENCEElement {
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *SVGFETURBULENCEElement) CustomDataRemove(key string) *SVGFETURBULENCEElement {
@@ -93,6 +135,13 @@ func (e *SVGFETURBULENCEElement) BASEFREQUENCY(s string) *SVGFETURBULENCEElement
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("baseFrequency", s)
+	return e
+}
+
+func (e *SVGFETURBULENCEElement) IfBASEFREQUENCY(condition bool, s string) *SVGFETURBULENCEElement {
+	if condition {
+		e.BASEFREQUENCY(s)
+	}
 	return e
 }
 
@@ -115,6 +164,13 @@ func (e *SVGFETURBULENCEElement) NUMOCTAVES(f float64) *SVGFETURBULENCEElement {
 	return e
 }
 
+func (e *SVGFETURBULENCEElement) IfNUMOCTAVES(condition bool, f float64) *SVGFETURBULENCEElement {
+	if condition {
+		e.NUMOCTAVES(f)
+	}
+	return e
+}
+
 // The seed attribute indicates which number to use to seed the random number
 // generator.
 func (e *SVGFETURBULENCEElement) SEED(f float64) *SVGFETURBULENCEElement {
@@ -122,6 +178,13 @@ func (e *SVGFETURBULENCEElement) SEED(f float64) *SVGFETURBULENCEElement {
 		e.FloatAttributes = treemap.New[string, float64]()
 	}
 	e.FloatAttributes.Set("seed", f)
+	return e
+}
+
+func (e *SVGFETURBULENCEElement) IfSEED(condition bool, f float64) *SVGFETURBULENCEElement {
+	if condition {
+		e.SEED(f)
+	}
 	return e
 }
 
@@ -200,6 +263,13 @@ func (e *SVGFETURBULENCEElement) CLASS(s ...string) *SVGFETURBULENCEElement {
 	return e
 }
 
+func (e *SVGFETURBULENCEElement) IfCLASS(condition bool, s ...string) *SVGFETURBULENCEElement {
+	if condition {
+		e.CLASS(s...)
+	}
+	return e
+}
+
 // Remove the attribute class from the element.
 func (e *SVGFETURBULENCEElement) CLASSRemove(s ...string) *SVGFETURBULENCEElement {
 	if e.DelimitedStrings == nil {
@@ -222,6 +292,13 @@ func (e *SVGFETURBULENCEElement) ID(s string) *SVGFETURBULENCEElement {
 	return e
 }
 
+func (e *SVGFETURBULENCEElement) IfID(condition bool, s string) *SVGFETURBULENCEElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
 // Remove the attribute id from the element.
 func (e *SVGFETURBULENCEElement) IDRemove(s string) *SVGFETURBULENCEElement {
 	if e.StringAttributes == nil {
@@ -236,6 +313,13 @@ func (e *SVGFETURBULENCEElement) STYLEF(k string, format string, args ...any) *S
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+func (e *SVGFETURBULENCEElement) IfSTYLE(condition bool, k string, v string) *SVGFETURBULENCEElement {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
 func (e *SVGFETURBULENCEElement) STYLE(k string, v string) *SVGFETURBULENCEElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -246,6 +330,13 @@ func (e *SVGFETURBULENCEElement) STYLE(k string, v string) *SVGFETURBULENCEEleme
 		e.KVStrings.Set("style", kv)
 	}
 	kv.Add(k, v)
+	return e
+}
+
+func (e *SVGFETURBULENCEElement) IfSTYLEF(condition bool, k string, format string, args ...any) *SVGFETURBULENCEElement {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
 	return e
 }
 
@@ -283,6 +374,13 @@ func (e *SVGFETURBULENCEElement) STYLEPairs(pairs ...string) *SVGFETURBULENCEEle
 		kv.Add(pairs[i], pairs[i+1])
 	}
 
+	return e
+}
+
+func (e *SVGFETURBULENCEElement) IfSTYLEPairs(condition bool, pairs ...string) *SVGFETURBULENCEElement {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
 	return e
 }
 

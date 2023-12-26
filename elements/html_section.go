@@ -58,13 +58,41 @@ func (e *SECTIONElement) TextF(format string, args ...any) *SECTIONElement {
 	return e.Text(fmt.Sprintf(format, args...))
 }
 
+func (e *SECTIONElement) IfText(condition bool, text string) *SECTIONElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
+}
+
+func (e *SECTIONElement) IfTextF(condition bool, format string, args ...any) *SECTIONElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
+}
+
 func (e *SECTIONElement) Escaped(text string) *SECTIONElement {
 	e.Descendants = append(e.Descendants, Escaped(text))
 	return e
 }
 
+func (e *SECTIONElement) IfEscaped(condition bool, text string) *SECTIONElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
+}
+
 func (e *SECTIONElement) EscapedF(format string, args ...any) *SECTIONElement {
 	return e.Escaped(fmt.Sprintf(format, args...))
+}
+
+func (e *SECTIONElement) IfEscapedF(condition bool, format string, args ...any) *SECTIONElement {
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *SECTIONElement) CustomData(key, value string) *SECTIONElement {
@@ -75,8 +103,22 @@ func (e *SECTIONElement) CustomData(key, value string) *SECTIONElement {
 	return e
 }
 
+func (e *SECTIONElement) IfCustomData(condition bool, key, value string) *SECTIONElement {
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
+}
+
 func (e *SECTIONElement) CustomDataF(key, format string, args ...any) *SECTIONElement {
 	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
+func (e *SECTIONElement) IfCustomDataF(condition bool, key, format string, args ...any) *SECTIONElement {
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *SECTIONElement) CustomDataRemove(key string) *SECTIONElement {
@@ -96,6 +138,13 @@ func (e *SECTIONElement) ACCESSKEY(r rune) *SECTIONElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("accesskey", string(r))
+	return e
+}
+
+func (e *SECTIONElement) IfACCESSKEY(condition bool, r rune) *SECTIONElement {
+	if condition {
+		e.ACCESSKEY(r)
+	}
 	return e
 }
 
@@ -181,12 +230,26 @@ func (e *SECTIONElement) AUTOFOCUS() *SECTIONElement {
 	return e
 }
 
+func (e *SECTIONElement) IfAUTOFOCUS(condition bool) *SECTIONElement {
+	if condition {
+		e.AUTOFOCUSSet(true)
+	}
+	return e
+}
+
 // Set the attribute autofocus to the value b explicitly.
 func (e *SECTIONElement) AUTOFOCUSSet(b bool) *SECTIONElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("autofocus", b)
+	return e
+}
+
+func (e *SECTIONElement) IfSetAUTOFOCUS(condition bool, b bool) *SECTIONElement {
+	if condition {
+		e.AUTOFOCUSSet(b)
+	}
 	return e
 }
 
@@ -214,6 +277,13 @@ func (e *SECTIONElement) CLASS(s ...string) *SECTIONElement {
 		e.DelimitedStrings.Set("class", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *SECTIONElement) IfCLASS(condition bool, s ...string) *SECTIONElement {
+	if condition {
+		e.CLASS(s...)
+	}
 	return e
 }
 
@@ -422,6 +492,13 @@ func (e *SECTIONElement) EXPORTPARTS(s ...string) *SECTIONElement {
 	return e
 }
 
+func (e *SECTIONElement) IfEXPORTPARTS(condition bool, s ...string) *SECTIONElement {
+	if condition {
+		e.EXPORTPARTS(s...)
+	}
+	return e
+}
+
 // Remove the attribute exportparts from the element.
 func (e *SECTIONElement) EXPORTPARTSRemove(s ...string) *SECTIONElement {
 	if e.DelimitedStrings == nil {
@@ -497,6 +574,13 @@ func (e *SECTIONElement) ID(s string) *SECTIONElement {
 	return e
 }
 
+func (e *SECTIONElement) IfID(condition bool, s string) *SECTIONElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
 // Remove the attribute id from the element.
 func (e *SECTIONElement) IDRemove(s string) *SECTIONElement {
 	if e.StringAttributes == nil {
@@ -523,12 +607,26 @@ func (e *SECTIONElement) INERT() *SECTIONElement {
 	return e
 }
 
+func (e *SECTIONElement) IfINERT(condition bool) *SECTIONElement {
+	if condition {
+		e.INERTSet(true)
+	}
+	return e
+}
+
 // Set the attribute inert to the value b explicitly.
 func (e *SECTIONElement) INERTSet(b bool) *SECTIONElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("inert", b)
+	return e
+}
+
+func (e *SECTIONElement) IfSetINERT(condition bool, b bool) *SECTIONElement {
+	if condition {
+		e.INERTSet(b)
+	}
 	return e
 }
 
@@ -624,6 +722,13 @@ func (e *SECTIONElement) IS(s string) *SECTIONElement {
 	return e
 }
 
+func (e *SECTIONElement) IfIS(condition bool, s string) *SECTIONElement {
+	if condition {
+		e.IS(s)
+	}
+	return e
+}
+
 // Remove the attribute is from the element.
 func (e *SECTIONElement) ISRemove(s string) *SECTIONElement {
 	if e.StringAttributes == nil {
@@ -654,6 +759,13 @@ func (e *SECTIONElement) ITEMID(s string) *SECTIONElement {
 	return e
 }
 
+func (e *SECTIONElement) IfITEMID(condition bool, s string) *SECTIONElement {
+	if condition {
+		e.ITEMID(s)
+	}
+	return e
+}
+
 // Remove the attribute itemid from the element.
 func (e *SECTIONElement) ITEMIDRemove(s string) *SECTIONElement {
 	if e.StringAttributes == nil {
@@ -679,6 +791,13 @@ func (e *SECTIONElement) ITEMPROP(s string) *SECTIONElement {
 	return e
 }
 
+func (e *SECTIONElement) IfITEMPROP(condition bool, s string) *SECTIONElement {
+	if condition {
+		e.ITEMPROP(s)
+	}
+	return e
+}
+
 // Remove the attribute itemprop from the element.
 func (e *SECTIONElement) ITEMPROPRemove(s string) *SECTIONElement {
 	if e.StringAttributes == nil {
@@ -698,6 +817,13 @@ func (e *SECTIONElement) ITEMREF(s string) *SECTIONElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("itemref", s)
+	return e
+}
+
+func (e *SECTIONElement) IfITEMREF(condition bool, s string) *SECTIONElement {
+	if condition {
+		e.ITEMREF(s)
+	}
 	return e
 }
 
@@ -723,12 +849,26 @@ func (e *SECTIONElement) ITEMSCOPE() *SECTIONElement {
 	return e
 }
 
+func (e *SECTIONElement) IfITEMSCOPE(condition bool) *SECTIONElement {
+	if condition {
+		e.ITEMSCOPESet(true)
+	}
+	return e
+}
+
 // Set the attribute itemscope to the value b explicitly.
 func (e *SECTIONElement) ITEMSCOPESet(b bool) *SECTIONElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("itemscope", b)
+	return e
+}
+
+func (e *SECTIONElement) IfSetITEMSCOPE(condition bool, b bool) *SECTIONElement {
+	if condition {
+		e.ITEMSCOPESet(b)
+	}
 	return e
 }
 
@@ -757,6 +897,13 @@ func (e *SECTIONElement) ITEMTYPE(s string) *SECTIONElement {
 	return e
 }
 
+func (e *SECTIONElement) IfITEMTYPE(condition bool, s string) *SECTIONElement {
+	if condition {
+		e.ITEMTYPE(s)
+	}
+	return e
+}
+
 // Remove the attribute itemtype from the element.
 func (e *SECTIONElement) ITEMTYPERemove(s string) *SECTIONElement {
 	if e.StringAttributes == nil {
@@ -780,6 +927,13 @@ func (e *SECTIONElement) LANG(s string) *SECTIONElement {
 	return e
 }
 
+func (e *SECTIONElement) IfLANG(condition bool, s string) *SECTIONElement {
+	if condition {
+		e.LANG(s)
+	}
+	return e
+}
+
 // Remove the attribute lang from the element.
 func (e *SECTIONElement) LANGRemove(s string) *SECTIONElement {
 	if e.StringAttributes == nil {
@@ -798,6 +952,13 @@ func (e *SECTIONElement) NONCE(s string) *SECTIONElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("nonce", s)
+	return e
+}
+
+func (e *SECTIONElement) IfNONCE(condition bool, s string) *SECTIONElement {
+	if condition {
+		e.NONCE(s)
+	}
 	return e
 }
 
@@ -824,6 +985,13 @@ func (e *SECTIONElement) PART(s ...string) *SECTIONElement {
 		e.DelimitedStrings.Set("part", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *SECTIONElement) IfPART(condition bool, s ...string) *SECTIONElement {
+	if condition {
+		e.PART(s...)
+	}
 	return e
 }
 
@@ -894,6 +1062,13 @@ func (e *SECTIONElement) SLOT(s string) *SECTIONElement {
 	return e
 }
 
+func (e *SECTIONElement) IfSLOT(condition bool, s string) *SECTIONElement {
+	if condition {
+		e.SLOT(s)
+	}
+	return e
+}
+
 // Remove the attribute slot from the element.
 func (e *SECTIONElement) SLOTRemove(s string) *SECTIONElement {
 	if e.StringAttributes == nil {
@@ -952,6 +1127,13 @@ func (e *SECTIONElement) STYLEF(k string, format string, args ...any) *SECTIONEl
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+func (e *SECTIONElement) IfSTYLE(condition bool, k string, v string) *SECTIONElement {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
 func (e *SECTIONElement) STYLE(k string, v string) *SECTIONElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -962,6 +1144,13 @@ func (e *SECTIONElement) STYLE(k string, v string) *SECTIONElement {
 		e.KVStrings.Set("style", kv)
 	}
 	kv.Add(k, v)
+	return e
+}
+
+func (e *SECTIONElement) IfSTYLEF(condition bool, k string, format string, args ...any) *SECTIONElement {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
 	return e
 }
 
@@ -1002,6 +1191,13 @@ func (e *SECTIONElement) STYLEPairs(pairs ...string) *SECTIONElement {
 	return e
 }
 
+func (e *SECTIONElement) IfSTYLEPairs(condition bool, pairs ...string) *SECTIONElement {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
+	return e
+}
+
 // Remove the attribute style from the element.
 func (e *SECTIONElement) STYLERemove(keys ...string) *SECTIONElement {
 	if e.KVStrings == nil {
@@ -1036,6 +1232,13 @@ func (e *SECTIONElement) TABINDEX(i int) *SECTIONElement {
 		e.IntAttributes = treemap.New[string, int]()
 	}
 	e.IntAttributes.Set("tabindex", i)
+	return e
+}
+
+func (e *SECTIONElement) IfTABINDEX(condition bool, i int) *SECTIONElement {
+	if condition {
+		e.TABINDEX(i)
+	}
 	return e
 }
 
@@ -1074,6 +1277,13 @@ func (e *SECTIONElement) TITLE(s string) *SECTIONElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("title", s)
+	return e
+}
+
+func (e *SECTIONElement) IfTITLE(condition bool, s string) *SECTIONElement {
+	if condition {
+		e.TITLE(s)
+	}
 	return e
 }
 

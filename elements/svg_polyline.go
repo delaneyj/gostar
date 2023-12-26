@@ -59,13 +59,41 @@ func (e *SVGPOLYLINEElement) TextF(format string, args ...any) *SVGPOLYLINEEleme
 	return e.Text(fmt.Sprintf(format, args...))
 }
 
+func (e *SVGPOLYLINEElement) IfText(condition bool, text string) *SVGPOLYLINEElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
+}
+
+func (e *SVGPOLYLINEElement) IfTextF(condition bool, format string, args ...any) *SVGPOLYLINEElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
+}
+
 func (e *SVGPOLYLINEElement) Escaped(text string) *SVGPOLYLINEElement {
 	e.Descendants = append(e.Descendants, Escaped(text))
 	return e
 }
 
+func (e *SVGPOLYLINEElement) IfEscaped(condition bool, text string) *SVGPOLYLINEElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
+}
+
 func (e *SVGPOLYLINEElement) EscapedF(format string, args ...any) *SVGPOLYLINEElement {
 	return e.Escaped(fmt.Sprintf(format, args...))
+}
+
+func (e *SVGPOLYLINEElement) IfEscapedF(condition bool, format string, args ...any) *SVGPOLYLINEElement {
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *SVGPOLYLINEElement) CustomData(key, value string) *SVGPOLYLINEElement {
@@ -76,8 +104,22 @@ func (e *SVGPOLYLINEElement) CustomData(key, value string) *SVGPOLYLINEElement {
 	return e
 }
 
+func (e *SVGPOLYLINEElement) IfCustomData(condition bool, key, value string) *SVGPOLYLINEElement {
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
+}
+
 func (e *SVGPOLYLINEElement) CustomDataF(key, format string, args ...any) *SVGPOLYLINEElement {
 	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
+func (e *SVGPOLYLINEElement) IfCustomDataF(condition bool, key, format string, args ...any) *SVGPOLYLINEElement {
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *SVGPOLYLINEElement) CustomDataRemove(key string) *SVGPOLYLINEElement {
@@ -94,6 +136,13 @@ func (e *SVGPOLYLINEElement) POINTS(s string) *SVGPOLYLINEElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("points", s)
+	return e
+}
+
+func (e *SVGPOLYLINEElement) IfPOINTS(condition bool, s string) *SVGPOLYLINEElement {
+	if condition {
+		e.POINTS(s)
+	}
 	return e
 }
 
@@ -121,6 +170,13 @@ func (e *SVGPOLYLINEElement) CLASS(s ...string) *SVGPOLYLINEElement {
 	return e
 }
 
+func (e *SVGPOLYLINEElement) IfCLASS(condition bool, s ...string) *SVGPOLYLINEElement {
+	if condition {
+		e.CLASS(s...)
+	}
+	return e
+}
+
 // Remove the attribute class from the element.
 func (e *SVGPOLYLINEElement) CLASSRemove(s ...string) *SVGPOLYLINEElement {
 	if e.DelimitedStrings == nil {
@@ -143,6 +199,13 @@ func (e *SVGPOLYLINEElement) ID(s string) *SVGPOLYLINEElement {
 	return e
 }
 
+func (e *SVGPOLYLINEElement) IfID(condition bool, s string) *SVGPOLYLINEElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
 // Remove the attribute id from the element.
 func (e *SVGPOLYLINEElement) IDRemove(s string) *SVGPOLYLINEElement {
 	if e.StringAttributes == nil {
@@ -157,6 +220,13 @@ func (e *SVGPOLYLINEElement) STYLEF(k string, format string, args ...any) *SVGPO
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+func (e *SVGPOLYLINEElement) IfSTYLE(condition bool, k string, v string) *SVGPOLYLINEElement {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
 func (e *SVGPOLYLINEElement) STYLE(k string, v string) *SVGPOLYLINEElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -167,6 +237,13 @@ func (e *SVGPOLYLINEElement) STYLE(k string, v string) *SVGPOLYLINEElement {
 		e.KVStrings.Set("style", kv)
 	}
 	kv.Add(k, v)
+	return e
+}
+
+func (e *SVGPOLYLINEElement) IfSTYLEF(condition bool, k string, format string, args ...any) *SVGPOLYLINEElement {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
 	return e
 }
 
@@ -204,6 +281,13 @@ func (e *SVGPOLYLINEElement) STYLEPairs(pairs ...string) *SVGPOLYLINEElement {
 		kv.Add(pairs[i], pairs[i+1])
 	}
 
+	return e
+}
+
+func (e *SVGPOLYLINEElement) IfSTYLEPairs(condition bool, pairs ...string) *SVGPOLYLINEElement {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
 	return e
 }
 

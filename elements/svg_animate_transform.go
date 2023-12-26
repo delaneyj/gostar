@@ -57,13 +57,41 @@ func (e *SVGANIMATETRANSFORMElement) TextF(format string, args ...any) *SVGANIMA
 	return e.Text(fmt.Sprintf(format, args...))
 }
 
+func (e *SVGANIMATETRANSFORMElement) IfText(condition bool, text string) *SVGANIMATETRANSFORMElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
+}
+
+func (e *SVGANIMATETRANSFORMElement) IfTextF(condition bool, format string, args ...any) *SVGANIMATETRANSFORMElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
+}
+
 func (e *SVGANIMATETRANSFORMElement) Escaped(text string) *SVGANIMATETRANSFORMElement {
 	e.Descendants = append(e.Descendants, Escaped(text))
 	return e
 }
 
+func (e *SVGANIMATETRANSFORMElement) IfEscaped(condition bool, text string) *SVGANIMATETRANSFORMElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
+}
+
 func (e *SVGANIMATETRANSFORMElement) EscapedF(format string, args ...any) *SVGANIMATETRANSFORMElement {
 	return e.Escaped(fmt.Sprintf(format, args...))
+}
+
+func (e *SVGANIMATETRANSFORMElement) IfEscapedF(condition bool, format string, args ...any) *SVGANIMATETRANSFORMElement {
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *SVGANIMATETRANSFORMElement) CustomData(key, value string) *SVGANIMATETRANSFORMElement {
@@ -74,8 +102,22 @@ func (e *SVGANIMATETRANSFORMElement) CustomData(key, value string) *SVGANIMATETR
 	return e
 }
 
+func (e *SVGANIMATETRANSFORMElement) IfCustomData(condition bool, key, value string) *SVGANIMATETRANSFORMElement {
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
+}
+
 func (e *SVGANIMATETRANSFORMElement) CustomDataF(key, format string, args ...any) *SVGANIMATETRANSFORMElement {
 	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
+func (e *SVGANIMATETRANSFORMElement) IfCustomDataF(condition bool, key, format string, args ...any) *SVGANIMATETRANSFORMElement {
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *SVGANIMATETRANSFORMElement) CustomDataRemove(key string) *SVGANIMATETRANSFORMElement {
@@ -92,6 +134,13 @@ func (e *SVGANIMATETRANSFORMElement) KEYTIMES(s string) *SVGANIMATETRANSFORMElem
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("keyTimes", s)
+	return e
+}
+
+func (e *SVGANIMATETRANSFORMElement) IfKEYTIMES(condition bool, s string) *SVGANIMATETRANSFORMElement {
+	if condition {
+		e.KEYTIMES(s)
+	}
 	return e
 }
 
@@ -113,6 +162,13 @@ func (e *SVGANIMATETRANSFORMElement) REPEATDUR(s string) *SVGANIMATETRANSFORMEle
 	return e
 }
 
+func (e *SVGANIMATETRANSFORMElement) IfREPEATDUR(condition bool, s string) *SVGANIMATETRANSFORMElement {
+	if condition {
+		e.REPEATDUR(s)
+	}
+	return e
+}
+
 // Remove the attribute repeatDur from the element.
 func (e *SVGANIMATETRANSFORMElement) REPEATDURRemove(s string) *SVGANIMATETRANSFORMElement {
 	if e.StringAttributes == nil {
@@ -128,6 +184,13 @@ func (e *SVGANIMATETRANSFORMElement) ATTRIBUTENAME(s string) *SVGANIMATETRANSFOR
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("attributeName", s)
+	return e
+}
+
+func (e *SVGANIMATETRANSFORMElement) IfATTRIBUTENAME(condition bool, s string) *SVGANIMATETRANSFORMElement {
+	if condition {
+		e.ATTRIBUTENAME(s)
+	}
 	return e
 }
 
@@ -187,6 +250,13 @@ func (e *SVGANIMATETRANSFORMElement) BEGIN(s string) *SVGANIMATETRANSFORMElement
 	return e
 }
 
+func (e *SVGANIMATETRANSFORMElement) IfBEGIN(condition bool, s string) *SVGANIMATETRANSFORMElement {
+	if condition {
+		e.BEGIN(s)
+	}
+	return e
+}
+
 // Remove the attribute begin from the element.
 func (e *SVGANIMATETRANSFORMElement) BEGINRemove(s string) *SVGANIMATETRANSFORMElement {
 	if e.StringAttributes == nil {
@@ -202,6 +272,13 @@ func (e *SVGANIMATETRANSFORMElement) BY(s string) *SVGANIMATETRANSFORMElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("by", s)
+	return e
+}
+
+func (e *SVGANIMATETRANSFORMElement) IfBY(condition bool, s string) *SVGANIMATETRANSFORMElement {
+	if condition {
+		e.BY(s)
+	}
 	return e
 }
 
@@ -257,6 +334,13 @@ func (e *SVGANIMATETRANSFORMElement) DUR(s string) *SVGANIMATETRANSFORMElement {
 	return e
 }
 
+func (e *SVGANIMATETRANSFORMElement) IfDUR(condition bool, s string) *SVGANIMATETRANSFORMElement {
+	if condition {
+		e.DUR(s)
+	}
+	return e
+}
+
 // Remove the attribute dur from the element.
 func (e *SVGANIMATETRANSFORMElement) DURRemove(s string) *SVGANIMATETRANSFORMElement {
 	if e.StringAttributes == nil {
@@ -272,6 +356,13 @@ func (e *SVGANIMATETRANSFORMElement) END(s string) *SVGANIMATETRANSFORMElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("end", s)
+	return e
+}
+
+func (e *SVGANIMATETRANSFORMElement) IfEND(condition bool, s string) *SVGANIMATETRANSFORMElement {
+	if condition {
+		e.END(s)
+	}
 	return e
 }
 
@@ -320,6 +411,13 @@ func (e *SVGANIMATETRANSFORMElement) FROM(s string) *SVGANIMATETRANSFORMElement 
 	return e
 }
 
+func (e *SVGANIMATETRANSFORMElement) IfFROM(condition bool, s string) *SVGANIMATETRANSFORMElement {
+	if condition {
+		e.FROM(s)
+	}
+	return e
+}
+
 // Remove the attribute from from the element.
 func (e *SVGANIMATETRANSFORMElement) FROMRemove(s string) *SVGANIMATETRANSFORMElement {
 	if e.StringAttributes == nil {
@@ -335,6 +433,13 @@ func (e *SVGANIMATETRANSFORMElement) KEYSPLINES(s string) *SVGANIMATETRANSFORMEl
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("keySplines", s)
+	return e
+}
+
+func (e *SVGANIMATETRANSFORMElement) IfKEYSPLINES(condition bool, s string) *SVGANIMATETRANSFORMElement {
+	if condition {
+		e.KEYSPLINES(s)
+	}
 	return e
 }
 
@@ -356,6 +461,13 @@ func (e *SVGANIMATETRANSFORMElement) MIN(s string) *SVGANIMATETRANSFORMElement {
 	return e
 }
 
+func (e *SVGANIMATETRANSFORMElement) IfMIN(condition bool, s string) *SVGANIMATETRANSFORMElement {
+	if condition {
+		e.MIN(s)
+	}
+	return e
+}
+
 // Remove the attribute min from the element.
 func (e *SVGANIMATETRANSFORMElement) MINRemove(s string) *SVGANIMATETRANSFORMElement {
 	if e.StringAttributes == nil {
@@ -371,6 +483,13 @@ func (e *SVGANIMATETRANSFORMElement) MAX(s string) *SVGANIMATETRANSFORMElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("max", s)
+	return e
+}
+
+func (e *SVGANIMATETRANSFORMElement) IfMAX(condition bool, s string) *SVGANIMATETRANSFORMElement {
+	if condition {
+		e.MAX(s)
+	}
 	return e
 }
 
@@ -419,6 +538,13 @@ func (e *SVGANIMATETRANSFORMElement) REPEATCOUNT(s string) *SVGANIMATETRANSFORME
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("repeatCount", s)
+	return e
+}
+
+func (e *SVGANIMATETRANSFORMElement) IfREPEATCOUNT(condition bool, s string) *SVGANIMATETRANSFORMElement {
+	if condition {
+		e.REPEATCOUNT(s)
+	}
 	return e
 }
 
@@ -499,6 +625,13 @@ func (e *SVGANIMATETRANSFORMElement) TO(s string) *SVGANIMATETRANSFORMElement {
 	return e
 }
 
+func (e *SVGANIMATETRANSFORMElement) IfTO(condition bool, s string) *SVGANIMATETRANSFORMElement {
+	if condition {
+		e.TO(s)
+	}
+	return e
+}
+
 // Remove the attribute to from the element.
 func (e *SVGANIMATETRANSFORMElement) TORemove(s string) *SVGANIMATETRANSFORMElement {
 	if e.StringAttributes == nil {
@@ -546,6 +679,13 @@ func (e *SVGANIMATETRANSFORMElement) VALUES(s string) *SVGANIMATETRANSFORMElemen
 	return e
 }
 
+func (e *SVGANIMATETRANSFORMElement) IfVALUES(condition bool, s string) *SVGANIMATETRANSFORMElement {
+	if condition {
+		e.VALUES(s)
+	}
+	return e
+}
+
 // Remove the attribute values from the element.
 func (e *SVGANIMATETRANSFORMElement) VALUESRemove(s string) *SVGANIMATETRANSFORMElement {
 	if e.StringAttributes == nil {
@@ -567,6 +707,13 @@ func (e *SVGANIMATETRANSFORMElement) CLASS(s ...string) *SVGANIMATETRANSFORMElem
 		e.DelimitedStrings.Set("class", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *SVGANIMATETRANSFORMElement) IfCLASS(condition bool, s ...string) *SVGANIMATETRANSFORMElement {
+	if condition {
+		e.CLASS(s...)
+	}
 	return e
 }
 
@@ -592,6 +739,13 @@ func (e *SVGANIMATETRANSFORMElement) ID(s string) *SVGANIMATETRANSFORMElement {
 	return e
 }
 
+func (e *SVGANIMATETRANSFORMElement) IfID(condition bool, s string) *SVGANIMATETRANSFORMElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
 // Remove the attribute id from the element.
 func (e *SVGANIMATETRANSFORMElement) IDRemove(s string) *SVGANIMATETRANSFORMElement {
 	if e.StringAttributes == nil {
@@ -606,6 +760,13 @@ func (e *SVGANIMATETRANSFORMElement) STYLEF(k string, format string, args ...any
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+func (e *SVGANIMATETRANSFORMElement) IfSTYLE(condition bool, k string, v string) *SVGANIMATETRANSFORMElement {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
 func (e *SVGANIMATETRANSFORMElement) STYLE(k string, v string) *SVGANIMATETRANSFORMElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -616,6 +777,13 @@ func (e *SVGANIMATETRANSFORMElement) STYLE(k string, v string) *SVGANIMATETRANSF
 		e.KVStrings.Set("style", kv)
 	}
 	kv.Add(k, v)
+	return e
+}
+
+func (e *SVGANIMATETRANSFORMElement) IfSTYLEF(condition bool, k string, format string, args ...any) *SVGANIMATETRANSFORMElement {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
 	return e
 }
 
@@ -653,6 +821,13 @@ func (e *SVGANIMATETRANSFORMElement) STYLEPairs(pairs ...string) *SVGANIMATETRAN
 		kv.Add(pairs[i], pairs[i+1])
 	}
 
+	return e
+}
+
+func (e *SVGANIMATETRANSFORMElement) IfSTYLEPairs(condition bool, pairs ...string) *SVGANIMATETRANSFORMElement {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
 	return e
 }
 

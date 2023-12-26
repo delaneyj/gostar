@@ -58,13 +58,41 @@ func (e *MathMLANNOTATION_XMLElement) TextF(format string, args ...any) *MathMLA
 	return e.Text(fmt.Sprintf(format, args...))
 }
 
+func (e *MathMLANNOTATION_XMLElement) IfText(condition bool, text string) *MathMLANNOTATION_XMLElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
+}
+
+func (e *MathMLANNOTATION_XMLElement) IfTextF(condition bool, format string, args ...any) *MathMLANNOTATION_XMLElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
+}
+
 func (e *MathMLANNOTATION_XMLElement) Escaped(text string) *MathMLANNOTATION_XMLElement {
 	e.Descendants = append(e.Descendants, Escaped(text))
 	return e
 }
 
+func (e *MathMLANNOTATION_XMLElement) IfEscaped(condition bool, text string) *MathMLANNOTATION_XMLElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
+}
+
 func (e *MathMLANNOTATION_XMLElement) EscapedF(format string, args ...any) *MathMLANNOTATION_XMLElement {
 	return e.Escaped(fmt.Sprintf(format, args...))
+}
+
+func (e *MathMLANNOTATION_XMLElement) IfEscapedF(condition bool, format string, args ...any) *MathMLANNOTATION_XMLElement {
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *MathMLANNOTATION_XMLElement) CustomData(key, value string) *MathMLANNOTATION_XMLElement {
@@ -75,8 +103,22 @@ func (e *MathMLANNOTATION_XMLElement) CustomData(key, value string) *MathMLANNOT
 	return e
 }
 
+func (e *MathMLANNOTATION_XMLElement) IfCustomData(condition bool, key, value string) *MathMLANNOTATION_XMLElement {
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
+}
+
 func (e *MathMLANNOTATION_XMLElement) CustomDataF(key, format string, args ...any) *MathMLANNOTATION_XMLElement {
 	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
+func (e *MathMLANNOTATION_XMLElement) IfCustomDataF(condition bool, key, format string, args ...any) *MathMLANNOTATION_XMLElement {
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *MathMLANNOTATION_XMLElement) CustomDataRemove(key string) *MathMLANNOTATION_XMLElement {
@@ -125,6 +167,13 @@ func (e *MathMLANNOTATION_XMLElement) NAME(s string) *MathMLANNOTATION_XMLElemen
 	return e
 }
 
+func (e *MathMLANNOTATION_XMLElement) IfNAME(condition bool, s string) *MathMLANNOTATION_XMLElement {
+	if condition {
+		e.NAME(s)
+	}
+	return e
+}
+
 // Remove the attribute name from the element.
 func (e *MathMLANNOTATION_XMLElement) NAMERemove(s string) *MathMLANNOTATION_XMLElement {
 	if e.StringAttributes == nil {
@@ -148,6 +197,13 @@ func (e *MathMLANNOTATION_XMLElement) CLASS(s ...string) *MathMLANNOTATION_XMLEl
 		e.DelimitedStrings.Set("class", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *MathMLANNOTATION_XMLElement) IfCLASS(condition bool, s ...string) *MathMLANNOTATION_XMLElement {
+	if condition {
+		e.CLASS(s...)
+	}
 	return e
 }
 
@@ -233,6 +289,13 @@ func (e *MathMLANNOTATION_XMLElement) ID(s string) *MathMLANNOTATION_XMLElement 
 	return e
 }
 
+func (e *MathMLANNOTATION_XMLElement) IfID(condition bool, s string) *MathMLANNOTATION_XMLElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
 // Remove the attribute id from the element.
 func (e *MathMLANNOTATION_XMLElement) IDRemove(s string) *MathMLANNOTATION_XMLElement {
 	if e.StringAttributes == nil {
@@ -250,6 +313,13 @@ func (e *MathMLANNOTATION_XMLElement) MATHBACKGROUND(s string) *MathMLANNOTATION
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("mathbackground", s)
+	return e
+}
+
+func (e *MathMLANNOTATION_XMLElement) IfMATHBACKGROUND(condition bool, s string) *MathMLANNOTATION_XMLElement {
+	if condition {
+		e.MATHBACKGROUND(s)
+	}
 	return e
 }
 
@@ -273,6 +343,13 @@ func (e *MathMLANNOTATION_XMLElement) MATHCOLOR(s string) *MathMLANNOTATION_XMLE
 	return e
 }
 
+func (e *MathMLANNOTATION_XMLElement) IfMATHCOLOR(condition bool, s string) *MathMLANNOTATION_XMLElement {
+	if condition {
+		e.MATHCOLOR(s)
+	}
+	return e
+}
+
 // Remove the attribute mathcolor from the element.
 func (e *MathMLANNOTATION_XMLElement) MATHCOLORRemove(s string) *MathMLANNOTATION_XMLElement {
 	if e.StringAttributes == nil {
@@ -289,6 +366,13 @@ func (e *MathMLANNOTATION_XMLElement) MATHSIZESTR(s string) *MathMLANNOTATION_XM
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("mathsize", s)
+	return e
+}
+
+func (e *MathMLANNOTATION_XMLElement) IfMATHSIZESTR(condition bool, s string) *MathMLANNOTATION_XMLElement {
+	if condition {
+		e.MATHSIZESTR(s)
+	}
 	return e
 }
 
@@ -313,6 +397,13 @@ func (e *MathMLANNOTATION_XMLElement) NONCE(s string) *MathMLANNOTATION_XMLEleme
 	return e
 }
 
+func (e *MathMLANNOTATION_XMLElement) IfNONCE(condition bool, s string) *MathMLANNOTATION_XMLElement {
+	if condition {
+		e.NONCE(s)
+	}
+	return e
+}
+
 // Remove the attribute nonce from the element.
 func (e *MathMLANNOTATION_XMLElement) NONCERemove(s string) *MathMLANNOTATION_XMLElement {
 	if e.StringAttributes == nil {
@@ -332,6 +423,13 @@ func (e *MathMLANNOTATION_XMLElement) SCRIPTLEVEL(i int) *MathMLANNOTATION_XMLEl
 	return e
 }
 
+func (e *MathMLANNOTATION_XMLElement) IfSCRIPTLEVEL(condition bool, i int) *MathMLANNOTATION_XMLElement {
+	if condition {
+		e.SCRIPTLEVEL(i)
+	}
+	return e
+}
+
 // Remove the attribute scriptlevel from the element.
 func (e *MathMLANNOTATION_XMLElement) SCRIPTLEVELRemove(i int) *MathMLANNOTATION_XMLElement {
 	if e.IntAttributes == nil {
@@ -347,6 +445,13 @@ func (e *MathMLANNOTATION_XMLElement) STYLEF(k string, format string, args ...an
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+func (e *MathMLANNOTATION_XMLElement) IfSTYLE(condition bool, k string, v string) *MathMLANNOTATION_XMLElement {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
 func (e *MathMLANNOTATION_XMLElement) STYLE(k string, v string) *MathMLANNOTATION_XMLElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -357,6 +462,13 @@ func (e *MathMLANNOTATION_XMLElement) STYLE(k string, v string) *MathMLANNOTATIO
 		e.KVStrings.Set("style", kv)
 	}
 	kv.Add(k, v)
+	return e
+}
+
+func (e *MathMLANNOTATION_XMLElement) IfSTYLEF(condition bool, k string, format string, args ...any) *MathMLANNOTATION_XMLElement {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
 	return e
 }
 
@@ -397,6 +509,13 @@ func (e *MathMLANNOTATION_XMLElement) STYLEPairs(pairs ...string) *MathMLANNOTAT
 	return e
 }
 
+func (e *MathMLANNOTATION_XMLElement) IfSTYLEPairs(condition bool, pairs ...string) *MathMLANNOTATION_XMLElement {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
+	return e
+}
+
 // Remove the attribute style from the element.
 func (e *MathMLANNOTATION_XMLElement) STYLERemove(keys ...string) *MathMLANNOTATION_XMLElement {
 	if e.KVStrings == nil {
@@ -421,6 +540,13 @@ func (e *MathMLANNOTATION_XMLElement) TABINDEX(i int) *MathMLANNOTATION_XMLEleme
 		e.IntAttributes = treemap.New[string, int]()
 	}
 	e.IntAttributes.Set("tabindex", i)
+	return e
+}
+
+func (e *MathMLANNOTATION_XMLElement) IfTABINDEX(condition bool, i int) *MathMLANNOTATION_XMLElement {
+	if condition {
+		e.TABINDEX(i)
+	}
 	return e
 }
 

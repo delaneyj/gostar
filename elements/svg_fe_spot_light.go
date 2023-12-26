@@ -56,13 +56,41 @@ func (e *SVGFESPOTLIGHTElement) TextF(format string, args ...any) *SVGFESPOTLIGH
 	return e.Text(fmt.Sprintf(format, args...))
 }
 
+func (e *SVGFESPOTLIGHTElement) IfText(condition bool, text string) *SVGFESPOTLIGHTElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
+}
+
+func (e *SVGFESPOTLIGHTElement) IfTextF(condition bool, format string, args ...any) *SVGFESPOTLIGHTElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
+}
+
 func (e *SVGFESPOTLIGHTElement) Escaped(text string) *SVGFESPOTLIGHTElement {
 	e.Descendants = append(e.Descendants, Escaped(text))
 	return e
 }
 
+func (e *SVGFESPOTLIGHTElement) IfEscaped(condition bool, text string) *SVGFESPOTLIGHTElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
+}
+
 func (e *SVGFESPOTLIGHTElement) EscapedF(format string, args ...any) *SVGFESPOTLIGHTElement {
 	return e.Escaped(fmt.Sprintf(format, args...))
+}
+
+func (e *SVGFESPOTLIGHTElement) IfEscapedF(condition bool, format string, args ...any) *SVGFESPOTLIGHTElement {
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *SVGFESPOTLIGHTElement) CustomData(key, value string) *SVGFESPOTLIGHTElement {
@@ -73,8 +101,22 @@ func (e *SVGFESPOTLIGHTElement) CustomData(key, value string) *SVGFESPOTLIGHTEle
 	return e
 }
 
+func (e *SVGFESPOTLIGHTElement) IfCustomData(condition bool, key, value string) *SVGFESPOTLIGHTElement {
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
+}
+
 func (e *SVGFESPOTLIGHTElement) CustomDataF(key, format string, args ...any) *SVGFESPOTLIGHTElement {
 	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
+func (e *SVGFESPOTLIGHTElement) IfCustomDataF(condition bool, key, format string, args ...any) *SVGFESPOTLIGHTElement {
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *SVGFESPOTLIGHTElement) CustomDataRemove(key string) *SVGFESPOTLIGHTElement {
@@ -95,6 +137,13 @@ func (e *SVGFESPOTLIGHTElement) X(f float64) *SVGFESPOTLIGHTElement {
 	return e
 }
 
+func (e *SVGFESPOTLIGHTElement) IfX(condition bool, f float64) *SVGFESPOTLIGHTElement {
+	if condition {
+		e.X(f)
+	}
+	return e
+}
+
 // The y attribute indicates the y location of the light source in the coordinate
 // system established by attribute 'primitiveUnits' on the <filter> element.
 func (e *SVGFESPOTLIGHTElement) Y(f float64) *SVGFESPOTLIGHTElement {
@@ -105,6 +154,13 @@ func (e *SVGFESPOTLIGHTElement) Y(f float64) *SVGFESPOTLIGHTElement {
 	return e
 }
 
+func (e *SVGFESPOTLIGHTElement) IfY(condition bool, f float64) *SVGFESPOTLIGHTElement {
+	if condition {
+		e.Y(f)
+	}
+	return e
+}
+
 // The z attribute indicates the z location of the light source in the coordinate
 // system established by attribute 'primitiveUnits' on the <filter> element.
 func (e *SVGFESPOTLIGHTElement) Z(f float64) *SVGFESPOTLIGHTElement {
@@ -112,6 +168,13 @@ func (e *SVGFESPOTLIGHTElement) Z(f float64) *SVGFESPOTLIGHTElement {
 		e.FloatAttributes = treemap.New[string, float64]()
 	}
 	e.FloatAttributes.Set("z", f)
+	return e
+}
+
+func (e *SVGFESPOTLIGHTElement) IfZ(condition bool, f float64) *SVGFESPOTLIGHTElement {
+	if condition {
+		e.Z(f)
+	}
 	return e
 }
 
@@ -126,6 +189,13 @@ func (e *SVGFESPOTLIGHTElement) POINTSATX(f float64) *SVGFESPOTLIGHTElement {
 	return e
 }
 
+func (e *SVGFESPOTLIGHTElement) IfPOINTSATX(condition bool, f float64) *SVGFESPOTLIGHTElement {
+	if condition {
+		e.POINTSATX(f)
+	}
+	return e
+}
+
 // The pointsAtY attribute indicates the y location in the coordinate system
 // established by attribute 'primitiveUnits' on the <filter> element of the point
 // at which the light source is pointing.
@@ -134,6 +204,13 @@ func (e *SVGFESPOTLIGHTElement) POINTSATY(f float64) *SVGFESPOTLIGHTElement {
 		e.FloatAttributes = treemap.New[string, float64]()
 	}
 	e.FloatAttributes.Set("pointsAtY", f)
+	return e
+}
+
+func (e *SVGFESPOTLIGHTElement) IfPOINTSATY(condition bool, f float64) *SVGFESPOTLIGHTElement {
+	if condition {
+		e.POINTSATY(f)
+	}
 	return e
 }
 
@@ -148,12 +225,26 @@ func (e *SVGFESPOTLIGHTElement) POINTSATZ(f float64) *SVGFESPOTLIGHTElement {
 	return e
 }
 
+func (e *SVGFESPOTLIGHTElement) IfPOINTSATZ(condition bool, f float64) *SVGFESPOTLIGHTElement {
+	if condition {
+		e.POINTSATZ(f)
+	}
+	return e
+}
+
 // The specularExponent attribute represents the specular reflection constant.
 func (e *SVGFESPOTLIGHTElement) SPECULAREXPONENT(f float64) *SVGFESPOTLIGHTElement {
 	if e.FloatAttributes == nil {
 		e.FloatAttributes = treemap.New[string, float64]()
 	}
 	e.FloatAttributes.Set("specularExponent", f)
+	return e
+}
+
+func (e *SVGFESPOTLIGHTElement) IfSPECULAREXPONENT(condition bool, f float64) *SVGFESPOTLIGHTElement {
+	if condition {
+		e.SPECULAREXPONENT(f)
+	}
 	return e
 }
 
@@ -164,6 +255,13 @@ func (e *SVGFESPOTLIGHTElement) LIMITINGCONEANGLE(f float64) *SVGFESPOTLIGHTElem
 		e.FloatAttributes = treemap.New[string, float64]()
 	}
 	e.FloatAttributes.Set("limitingConeAngle", f)
+	return e
+}
+
+func (e *SVGFESPOTLIGHTElement) IfLIMITINGCONEANGLE(condition bool, f float64) *SVGFESPOTLIGHTElement {
+	if condition {
+		e.LIMITINGCONEANGLE(f)
+	}
 	return e
 }
 
@@ -179,6 +277,13 @@ func (e *SVGFESPOTLIGHTElement) CLASS(s ...string) *SVGFESPOTLIGHTElement {
 		e.DelimitedStrings.Set("class", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *SVGFESPOTLIGHTElement) IfCLASS(condition bool, s ...string) *SVGFESPOTLIGHTElement {
+	if condition {
+		e.CLASS(s...)
+	}
 	return e
 }
 
@@ -204,6 +309,13 @@ func (e *SVGFESPOTLIGHTElement) ID(s string) *SVGFESPOTLIGHTElement {
 	return e
 }
 
+func (e *SVGFESPOTLIGHTElement) IfID(condition bool, s string) *SVGFESPOTLIGHTElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
 // Remove the attribute id from the element.
 func (e *SVGFESPOTLIGHTElement) IDRemove(s string) *SVGFESPOTLIGHTElement {
 	if e.StringAttributes == nil {
@@ -218,6 +330,13 @@ func (e *SVGFESPOTLIGHTElement) STYLEF(k string, format string, args ...any) *SV
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+func (e *SVGFESPOTLIGHTElement) IfSTYLE(condition bool, k string, v string) *SVGFESPOTLIGHTElement {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
 func (e *SVGFESPOTLIGHTElement) STYLE(k string, v string) *SVGFESPOTLIGHTElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -228,6 +347,13 @@ func (e *SVGFESPOTLIGHTElement) STYLE(k string, v string) *SVGFESPOTLIGHTElement
 		e.KVStrings.Set("style", kv)
 	}
 	kv.Add(k, v)
+	return e
+}
+
+func (e *SVGFESPOTLIGHTElement) IfSTYLEF(condition bool, k string, format string, args ...any) *SVGFESPOTLIGHTElement {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
 	return e
 }
 
@@ -265,6 +391,13 @@ func (e *SVGFESPOTLIGHTElement) STYLEPairs(pairs ...string) *SVGFESPOTLIGHTEleme
 		kv.Add(pairs[i], pairs[i+1])
 	}
 
+	return e
+}
+
+func (e *SVGFESPOTLIGHTElement) IfSTYLEPairs(condition bool, pairs ...string) *SVGFESPOTLIGHTElement {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
 	return e
 }
 

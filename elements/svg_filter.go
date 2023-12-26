@@ -59,13 +59,41 @@ func (e *SVGFILTERElement) TextF(format string, args ...any) *SVGFILTERElement {
 	return e.Text(fmt.Sprintf(format, args...))
 }
 
+func (e *SVGFILTERElement) IfText(condition bool, text string) *SVGFILTERElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
+}
+
+func (e *SVGFILTERElement) IfTextF(condition bool, format string, args ...any) *SVGFILTERElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
+}
+
 func (e *SVGFILTERElement) Escaped(text string) *SVGFILTERElement {
 	e.Descendants = append(e.Descendants, Escaped(text))
 	return e
 }
 
+func (e *SVGFILTERElement) IfEscaped(condition bool, text string) *SVGFILTERElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
+}
+
 func (e *SVGFILTERElement) EscapedF(format string, args ...any) *SVGFILTERElement {
 	return e.Escaped(fmt.Sprintf(format, args...))
+}
+
+func (e *SVGFILTERElement) IfEscapedF(condition bool, format string, args ...any) *SVGFILTERElement {
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *SVGFILTERElement) CustomData(key, value string) *SVGFILTERElement {
@@ -76,8 +104,22 @@ func (e *SVGFILTERElement) CustomData(key, value string) *SVGFILTERElement {
 	return e
 }
 
+func (e *SVGFILTERElement) IfCustomData(condition bool, key, value string) *SVGFILTERElement {
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
+}
+
 func (e *SVGFILTERElement) CustomDataF(key, format string, args ...any) *SVGFILTERElement {
 	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
+func (e *SVGFILTERElement) IfCustomDataF(condition bool, key, format string, args ...any) *SVGFILTERElement {
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *SVGFILTERElement) CustomDataRemove(key string) *SVGFILTERElement {
@@ -151,6 +193,13 @@ func (e *SVGFILTERElement) X(s string) *SVGFILTERElement {
 	return e
 }
 
+func (e *SVGFILTERElement) IfX(condition bool, s string) *SVGFILTERElement {
+	if condition {
+		e.X(s)
+	}
+	return e
+}
+
 // Remove the attribute x from the element.
 func (e *SVGFILTERElement) XRemove(s string) *SVGFILTERElement {
 	if e.StringAttributes == nil {
@@ -166,6 +215,13 @@ func (e *SVGFILTERElement) Y(s string) *SVGFILTERElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("y", s)
+	return e
+}
+
+func (e *SVGFILTERElement) IfY(condition bool, s string) *SVGFILTERElement {
+	if condition {
+		e.Y(s)
+	}
 	return e
 }
 
@@ -187,6 +243,13 @@ func (e *SVGFILTERElement) WIDTH(s string) *SVGFILTERElement {
 	return e
 }
 
+func (e *SVGFILTERElement) IfWIDTH(condition bool, s string) *SVGFILTERElement {
+	if condition {
+		e.WIDTH(s)
+	}
+	return e
+}
+
 // Remove the attribute width from the element.
 func (e *SVGFILTERElement) WIDTHRemove(s string) *SVGFILTERElement {
 	if e.StringAttributes == nil {
@@ -202,6 +265,13 @@ func (e *SVGFILTERElement) HEIGHT(s string) *SVGFILTERElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("height", s)
+	return e
+}
+
+func (e *SVGFILTERElement) IfHEIGHT(condition bool, s string) *SVGFILTERElement {
+	if condition {
+		e.HEIGHT(s)
+	}
 	return e
 }
 
@@ -229,6 +299,13 @@ func (e *SVGFILTERElement) CLASS(s ...string) *SVGFILTERElement {
 	return e
 }
 
+func (e *SVGFILTERElement) IfCLASS(condition bool, s ...string) *SVGFILTERElement {
+	if condition {
+		e.CLASS(s...)
+	}
+	return e
+}
+
 // Remove the attribute class from the element.
 func (e *SVGFILTERElement) CLASSRemove(s ...string) *SVGFILTERElement {
 	if e.DelimitedStrings == nil {
@@ -251,6 +328,13 @@ func (e *SVGFILTERElement) ID(s string) *SVGFILTERElement {
 	return e
 }
 
+func (e *SVGFILTERElement) IfID(condition bool, s string) *SVGFILTERElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
 // Remove the attribute id from the element.
 func (e *SVGFILTERElement) IDRemove(s string) *SVGFILTERElement {
 	if e.StringAttributes == nil {
@@ -265,6 +349,13 @@ func (e *SVGFILTERElement) STYLEF(k string, format string, args ...any) *SVGFILT
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+func (e *SVGFILTERElement) IfSTYLE(condition bool, k string, v string) *SVGFILTERElement {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
 func (e *SVGFILTERElement) STYLE(k string, v string) *SVGFILTERElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -275,6 +366,13 @@ func (e *SVGFILTERElement) STYLE(k string, v string) *SVGFILTERElement {
 		e.KVStrings.Set("style", kv)
 	}
 	kv.Add(k, v)
+	return e
+}
+
+func (e *SVGFILTERElement) IfSTYLEF(condition bool, k string, format string, args ...any) *SVGFILTERElement {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
 	return e
 }
 
@@ -312,6 +410,13 @@ func (e *SVGFILTERElement) STYLEPairs(pairs ...string) *SVGFILTERElement {
 		kv.Add(pairs[i], pairs[i+1])
 	}
 
+	return e
+}
+
+func (e *SVGFILTERElement) IfSTYLEPairs(condition bool, pairs ...string) *SVGFILTERElement {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
 	return e
 }
 

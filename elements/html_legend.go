@@ -56,13 +56,41 @@ func (e *LEGENDElement) TextF(format string, args ...any) *LEGENDElement {
 	return e.Text(fmt.Sprintf(format, args...))
 }
 
+func (e *LEGENDElement) IfText(condition bool, text string) *LEGENDElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
+}
+
+func (e *LEGENDElement) IfTextF(condition bool, format string, args ...any) *LEGENDElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
+}
+
 func (e *LEGENDElement) Escaped(text string) *LEGENDElement {
 	e.Descendants = append(e.Descendants, Escaped(text))
 	return e
 }
 
+func (e *LEGENDElement) IfEscaped(condition bool, text string) *LEGENDElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
+}
+
 func (e *LEGENDElement) EscapedF(format string, args ...any) *LEGENDElement {
 	return e.Escaped(fmt.Sprintf(format, args...))
+}
+
+func (e *LEGENDElement) IfEscapedF(condition bool, format string, args ...any) *LEGENDElement {
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *LEGENDElement) CustomData(key, value string) *LEGENDElement {
@@ -73,8 +101,22 @@ func (e *LEGENDElement) CustomData(key, value string) *LEGENDElement {
 	return e
 }
 
+func (e *LEGENDElement) IfCustomData(condition bool, key, value string) *LEGENDElement {
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
+}
+
 func (e *LEGENDElement) CustomDataF(key, format string, args ...any) *LEGENDElement {
 	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
+func (e *LEGENDElement) IfCustomDataF(condition bool, key, format string, args ...any) *LEGENDElement {
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *LEGENDElement) CustomDataRemove(key string) *LEGENDElement {
@@ -94,6 +136,13 @@ func (e *LEGENDElement) ACCESSKEY(r rune) *LEGENDElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("accesskey", string(r))
+	return e
+}
+
+func (e *LEGENDElement) IfACCESSKEY(condition bool, r rune) *LEGENDElement {
+	if condition {
+		e.ACCESSKEY(r)
+	}
 	return e
 }
 
@@ -179,12 +228,26 @@ func (e *LEGENDElement) AUTOFOCUS() *LEGENDElement {
 	return e
 }
 
+func (e *LEGENDElement) IfAUTOFOCUS(condition bool) *LEGENDElement {
+	if condition {
+		e.AUTOFOCUSSet(true)
+	}
+	return e
+}
+
 // Set the attribute autofocus to the value b explicitly.
 func (e *LEGENDElement) AUTOFOCUSSet(b bool) *LEGENDElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("autofocus", b)
+	return e
+}
+
+func (e *LEGENDElement) IfSetAUTOFOCUS(condition bool, b bool) *LEGENDElement {
+	if condition {
+		e.AUTOFOCUSSet(b)
+	}
 	return e
 }
 
@@ -212,6 +275,13 @@ func (e *LEGENDElement) CLASS(s ...string) *LEGENDElement {
 		e.DelimitedStrings.Set("class", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *LEGENDElement) IfCLASS(condition bool, s ...string) *LEGENDElement {
+	if condition {
+		e.CLASS(s...)
+	}
 	return e
 }
 
@@ -420,6 +490,13 @@ func (e *LEGENDElement) EXPORTPARTS(s ...string) *LEGENDElement {
 	return e
 }
 
+func (e *LEGENDElement) IfEXPORTPARTS(condition bool, s ...string) *LEGENDElement {
+	if condition {
+		e.EXPORTPARTS(s...)
+	}
+	return e
+}
+
 // Remove the attribute exportparts from the element.
 func (e *LEGENDElement) EXPORTPARTSRemove(s ...string) *LEGENDElement {
 	if e.DelimitedStrings == nil {
@@ -495,6 +572,13 @@ func (e *LEGENDElement) ID(s string) *LEGENDElement {
 	return e
 }
 
+func (e *LEGENDElement) IfID(condition bool, s string) *LEGENDElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
 // Remove the attribute id from the element.
 func (e *LEGENDElement) IDRemove(s string) *LEGENDElement {
 	if e.StringAttributes == nil {
@@ -521,12 +605,26 @@ func (e *LEGENDElement) INERT() *LEGENDElement {
 	return e
 }
 
+func (e *LEGENDElement) IfINERT(condition bool) *LEGENDElement {
+	if condition {
+		e.INERTSet(true)
+	}
+	return e
+}
+
 // Set the attribute inert to the value b explicitly.
 func (e *LEGENDElement) INERTSet(b bool) *LEGENDElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("inert", b)
+	return e
+}
+
+func (e *LEGENDElement) IfSetINERT(condition bool, b bool) *LEGENDElement {
+	if condition {
+		e.INERTSet(b)
+	}
 	return e
 }
 
@@ -622,6 +720,13 @@ func (e *LEGENDElement) IS(s string) *LEGENDElement {
 	return e
 }
 
+func (e *LEGENDElement) IfIS(condition bool, s string) *LEGENDElement {
+	if condition {
+		e.IS(s)
+	}
+	return e
+}
+
 // Remove the attribute is from the element.
 func (e *LEGENDElement) ISRemove(s string) *LEGENDElement {
 	if e.StringAttributes == nil {
@@ -652,6 +757,13 @@ func (e *LEGENDElement) ITEMID(s string) *LEGENDElement {
 	return e
 }
 
+func (e *LEGENDElement) IfITEMID(condition bool, s string) *LEGENDElement {
+	if condition {
+		e.ITEMID(s)
+	}
+	return e
+}
+
 // Remove the attribute itemid from the element.
 func (e *LEGENDElement) ITEMIDRemove(s string) *LEGENDElement {
 	if e.StringAttributes == nil {
@@ -677,6 +789,13 @@ func (e *LEGENDElement) ITEMPROP(s string) *LEGENDElement {
 	return e
 }
 
+func (e *LEGENDElement) IfITEMPROP(condition bool, s string) *LEGENDElement {
+	if condition {
+		e.ITEMPROP(s)
+	}
+	return e
+}
+
 // Remove the attribute itemprop from the element.
 func (e *LEGENDElement) ITEMPROPRemove(s string) *LEGENDElement {
 	if e.StringAttributes == nil {
@@ -696,6 +815,13 @@ func (e *LEGENDElement) ITEMREF(s string) *LEGENDElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("itemref", s)
+	return e
+}
+
+func (e *LEGENDElement) IfITEMREF(condition bool, s string) *LEGENDElement {
+	if condition {
+		e.ITEMREF(s)
+	}
 	return e
 }
 
@@ -721,12 +847,26 @@ func (e *LEGENDElement) ITEMSCOPE() *LEGENDElement {
 	return e
 }
 
+func (e *LEGENDElement) IfITEMSCOPE(condition bool) *LEGENDElement {
+	if condition {
+		e.ITEMSCOPESet(true)
+	}
+	return e
+}
+
 // Set the attribute itemscope to the value b explicitly.
 func (e *LEGENDElement) ITEMSCOPESet(b bool) *LEGENDElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("itemscope", b)
+	return e
+}
+
+func (e *LEGENDElement) IfSetITEMSCOPE(condition bool, b bool) *LEGENDElement {
+	if condition {
+		e.ITEMSCOPESet(b)
+	}
 	return e
 }
 
@@ -755,6 +895,13 @@ func (e *LEGENDElement) ITEMTYPE(s string) *LEGENDElement {
 	return e
 }
 
+func (e *LEGENDElement) IfITEMTYPE(condition bool, s string) *LEGENDElement {
+	if condition {
+		e.ITEMTYPE(s)
+	}
+	return e
+}
+
 // Remove the attribute itemtype from the element.
 func (e *LEGENDElement) ITEMTYPERemove(s string) *LEGENDElement {
 	if e.StringAttributes == nil {
@@ -778,6 +925,13 @@ func (e *LEGENDElement) LANG(s string) *LEGENDElement {
 	return e
 }
 
+func (e *LEGENDElement) IfLANG(condition bool, s string) *LEGENDElement {
+	if condition {
+		e.LANG(s)
+	}
+	return e
+}
+
 // Remove the attribute lang from the element.
 func (e *LEGENDElement) LANGRemove(s string) *LEGENDElement {
 	if e.StringAttributes == nil {
@@ -796,6 +950,13 @@ func (e *LEGENDElement) NONCE(s string) *LEGENDElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("nonce", s)
+	return e
+}
+
+func (e *LEGENDElement) IfNONCE(condition bool, s string) *LEGENDElement {
+	if condition {
+		e.NONCE(s)
+	}
 	return e
 }
 
@@ -822,6 +983,13 @@ func (e *LEGENDElement) PART(s ...string) *LEGENDElement {
 		e.DelimitedStrings.Set("part", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *LEGENDElement) IfPART(condition bool, s ...string) *LEGENDElement {
+	if condition {
+		e.PART(s...)
+	}
 	return e
 }
 
@@ -892,6 +1060,13 @@ func (e *LEGENDElement) SLOT(s string) *LEGENDElement {
 	return e
 }
 
+func (e *LEGENDElement) IfSLOT(condition bool, s string) *LEGENDElement {
+	if condition {
+		e.SLOT(s)
+	}
+	return e
+}
+
 // Remove the attribute slot from the element.
 func (e *LEGENDElement) SLOTRemove(s string) *LEGENDElement {
 	if e.StringAttributes == nil {
@@ -950,6 +1125,13 @@ func (e *LEGENDElement) STYLEF(k string, format string, args ...any) *LEGENDElem
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+func (e *LEGENDElement) IfSTYLE(condition bool, k string, v string) *LEGENDElement {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
 func (e *LEGENDElement) STYLE(k string, v string) *LEGENDElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -960,6 +1142,13 @@ func (e *LEGENDElement) STYLE(k string, v string) *LEGENDElement {
 		e.KVStrings.Set("style", kv)
 	}
 	kv.Add(k, v)
+	return e
+}
+
+func (e *LEGENDElement) IfSTYLEF(condition bool, k string, format string, args ...any) *LEGENDElement {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
 	return e
 }
 
@@ -1000,6 +1189,13 @@ func (e *LEGENDElement) STYLEPairs(pairs ...string) *LEGENDElement {
 	return e
 }
 
+func (e *LEGENDElement) IfSTYLEPairs(condition bool, pairs ...string) *LEGENDElement {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
+	return e
+}
+
 // Remove the attribute style from the element.
 func (e *LEGENDElement) STYLERemove(keys ...string) *LEGENDElement {
 	if e.KVStrings == nil {
@@ -1034,6 +1230,13 @@ func (e *LEGENDElement) TABINDEX(i int) *LEGENDElement {
 		e.IntAttributes = treemap.New[string, int]()
 	}
 	e.IntAttributes.Set("tabindex", i)
+	return e
+}
+
+func (e *LEGENDElement) IfTABINDEX(condition bool, i int) *LEGENDElement {
+	if condition {
+		e.TABINDEX(i)
+	}
 	return e
 }
 
@@ -1072,6 +1275,13 @@ func (e *LEGENDElement) TITLE(s string) *LEGENDElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("title", s)
+	return e
+}
+
+func (e *LEGENDElement) IfTITLE(condition bool, s string) *LEGENDElement {
+	if condition {
+		e.TITLE(s)
+	}
 	return e
 }
 

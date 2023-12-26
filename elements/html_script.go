@@ -56,13 +56,41 @@ func (e *SCRIPTElement) TextF(format string, args ...any) *SCRIPTElement {
 	return e.Text(fmt.Sprintf(format, args...))
 }
 
+func (e *SCRIPTElement) IfText(condition bool, text string) *SCRIPTElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
+}
+
+func (e *SCRIPTElement) IfTextF(condition bool, format string, args ...any) *SCRIPTElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
+}
+
 func (e *SCRIPTElement) Escaped(text string) *SCRIPTElement {
 	e.Descendants = append(e.Descendants, Escaped(text))
 	return e
 }
 
+func (e *SCRIPTElement) IfEscaped(condition bool, text string) *SCRIPTElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
+}
+
 func (e *SCRIPTElement) EscapedF(format string, args ...any) *SCRIPTElement {
 	return e.Escaped(fmt.Sprintf(format, args...))
+}
+
+func (e *SCRIPTElement) IfEscapedF(condition bool, format string, args ...any) *SCRIPTElement {
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *SCRIPTElement) CustomData(key, value string) *SCRIPTElement {
@@ -73,8 +101,22 @@ func (e *SCRIPTElement) CustomData(key, value string) *SCRIPTElement {
 	return e
 }
 
+func (e *SCRIPTElement) IfCustomData(condition bool, key, value string) *SCRIPTElement {
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
+}
+
 func (e *SCRIPTElement) CustomDataF(key, format string, args ...any) *SCRIPTElement {
 	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
+func (e *SCRIPTElement) IfCustomDataF(condition bool, key, format string, args ...any) *SCRIPTElement {
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *SCRIPTElement) CustomDataRemove(key string) *SCRIPTElement {
@@ -91,12 +133,26 @@ func (e *SCRIPTElement) ASYNC() *SCRIPTElement {
 	return e
 }
 
+func (e *SCRIPTElement) IfASYNC(condition bool) *SCRIPTElement {
+	if condition {
+		e.ASYNCSet(true)
+	}
+	return e
+}
+
 // Set the attribute async to the value b explicitly.
 func (e *SCRIPTElement) ASYNCSet(b bool) *SCRIPTElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("async", b)
+	return e
+}
+
+func (e *SCRIPTElement) IfSetASYNC(condition bool, b bool) *SCRIPTElement {
+	if condition {
+		e.ASYNCSet(b)
+	}
 	return e
 }
 
@@ -146,12 +202,26 @@ func (e *SCRIPTElement) DEFER() *SCRIPTElement {
 	return e
 }
 
+func (e *SCRIPTElement) IfDEFER(condition bool) *SCRIPTElement {
+	if condition {
+		e.DEFERSet(true)
+	}
+	return e
+}
+
 // Set the attribute defer to the value b explicitly.
 func (e *SCRIPTElement) DEFERSet(b bool) *SCRIPTElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("defer", b)
+	return e
+}
+
+func (e *SCRIPTElement) IfSetDEFER(condition bool, b bool) *SCRIPTElement {
+	if condition {
+		e.DEFERSet(b)
+	}
 	return e
 }
 
@@ -173,6 +243,13 @@ func (e *SCRIPTElement) INTEGRITY(s string) *SCRIPTElement {
 	return e
 }
 
+func (e *SCRIPTElement) IfINTEGRITY(condition bool, s string) *SCRIPTElement {
+	if condition {
+		e.INTEGRITY(s)
+	}
+	return e
+}
+
 // Remove the attribute integrity from the element.
 func (e *SCRIPTElement) INTEGRITYRemove(s string) *SCRIPTElement {
 	if e.StringAttributes == nil {
@@ -191,6 +268,13 @@ func (e *SCRIPTElement) LANGUAGE(s string) *SCRIPTElement {
 	return e
 }
 
+func (e *SCRIPTElement) IfLANGUAGE(condition bool, s string) *SCRIPTElement {
+	if condition {
+		e.LANGUAGE(s)
+	}
+	return e
+}
+
 // Remove the attribute language from the element.
 func (e *SCRIPTElement) LANGUAGERemove(s string) *SCRIPTElement {
 	if e.StringAttributes == nil {
@@ -206,12 +290,26 @@ func (e *SCRIPTElement) NOMODULE() *SCRIPTElement {
 	return e
 }
 
+func (e *SCRIPTElement) IfNOMODULE(condition bool) *SCRIPTElement {
+	if condition {
+		e.NOMODULESet(true)
+	}
+	return e
+}
+
 // Set the attribute nomodule to the value b explicitly.
 func (e *SCRIPTElement) NOMODULESet(b bool) *SCRIPTElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("nomodule", b)
+	return e
+}
+
+func (e *SCRIPTElement) IfSetNOMODULE(condition bool, b bool) *SCRIPTElement {
+	if condition {
+		e.NOMODULESet(b)
+	}
 	return e
 }
 
@@ -230,6 +328,13 @@ func (e *SCRIPTElement) NONCE(s string) *SCRIPTElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("nonce", s)
+	return e
+}
+
+func (e *SCRIPTElement) IfNONCE(condition bool, s string) *SCRIPTElement {
+	if condition {
+		e.NONCE(s)
+	}
 	return e
 }
 
@@ -296,6 +401,13 @@ func (e *SCRIPTElement) SRC(s string) *SCRIPTElement {
 	return e
 }
 
+func (e *SCRIPTElement) IfSRC(condition bool, s string) *SCRIPTElement {
+	if condition {
+		e.SRC(s)
+	}
+	return e
+}
+
 // Remove the attribute src from the element.
 func (e *SCRIPTElement) SRCRemove(s string) *SCRIPTElement {
 	if e.StringAttributes == nil {
@@ -311,6 +423,13 @@ func (e *SCRIPTElement) TYPE(s string) *SCRIPTElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("type", s)
+	return e
+}
+
+func (e *SCRIPTElement) IfTYPE(condition bool, s string) *SCRIPTElement {
+	if condition {
+		e.TYPE(s)
+	}
 	return e
 }
 
@@ -332,6 +451,13 @@ func (e *SCRIPTElement) ACCESSKEY(r rune) *SCRIPTElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("accesskey", string(r))
+	return e
+}
+
+func (e *SCRIPTElement) IfACCESSKEY(condition bool, r rune) *SCRIPTElement {
+	if condition {
+		e.ACCESSKEY(r)
+	}
 	return e
 }
 
@@ -417,12 +543,26 @@ func (e *SCRIPTElement) AUTOFOCUS() *SCRIPTElement {
 	return e
 }
 
+func (e *SCRIPTElement) IfAUTOFOCUS(condition bool) *SCRIPTElement {
+	if condition {
+		e.AUTOFOCUSSet(true)
+	}
+	return e
+}
+
 // Set the attribute autofocus to the value b explicitly.
 func (e *SCRIPTElement) AUTOFOCUSSet(b bool) *SCRIPTElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("autofocus", b)
+	return e
+}
+
+func (e *SCRIPTElement) IfSetAUTOFOCUS(condition bool, b bool) *SCRIPTElement {
+	if condition {
+		e.AUTOFOCUSSet(b)
+	}
 	return e
 }
 
@@ -450,6 +590,13 @@ func (e *SCRIPTElement) CLASS(s ...string) *SCRIPTElement {
 		e.DelimitedStrings.Set("class", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *SCRIPTElement) IfCLASS(condition bool, s ...string) *SCRIPTElement {
+	if condition {
+		e.CLASS(s...)
+	}
 	return e
 }
 
@@ -658,6 +805,13 @@ func (e *SCRIPTElement) EXPORTPARTS(s ...string) *SCRIPTElement {
 	return e
 }
 
+func (e *SCRIPTElement) IfEXPORTPARTS(condition bool, s ...string) *SCRIPTElement {
+	if condition {
+		e.EXPORTPARTS(s...)
+	}
+	return e
+}
+
 // Remove the attribute exportparts from the element.
 func (e *SCRIPTElement) EXPORTPARTSRemove(s ...string) *SCRIPTElement {
 	if e.DelimitedStrings == nil {
@@ -733,6 +887,13 @@ func (e *SCRIPTElement) ID(s string) *SCRIPTElement {
 	return e
 }
 
+func (e *SCRIPTElement) IfID(condition bool, s string) *SCRIPTElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
 // Remove the attribute id from the element.
 func (e *SCRIPTElement) IDRemove(s string) *SCRIPTElement {
 	if e.StringAttributes == nil {
@@ -759,12 +920,26 @@ func (e *SCRIPTElement) INERT() *SCRIPTElement {
 	return e
 }
 
+func (e *SCRIPTElement) IfINERT(condition bool) *SCRIPTElement {
+	if condition {
+		e.INERTSet(true)
+	}
+	return e
+}
+
 // Set the attribute inert to the value b explicitly.
 func (e *SCRIPTElement) INERTSet(b bool) *SCRIPTElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("inert", b)
+	return e
+}
+
+func (e *SCRIPTElement) IfSetINERT(condition bool, b bool) *SCRIPTElement {
+	if condition {
+		e.INERTSet(b)
+	}
 	return e
 }
 
@@ -860,6 +1035,13 @@ func (e *SCRIPTElement) IS(s string) *SCRIPTElement {
 	return e
 }
 
+func (e *SCRIPTElement) IfIS(condition bool, s string) *SCRIPTElement {
+	if condition {
+		e.IS(s)
+	}
+	return e
+}
+
 // Remove the attribute is from the element.
 func (e *SCRIPTElement) ISRemove(s string) *SCRIPTElement {
 	if e.StringAttributes == nil {
@@ -890,6 +1072,13 @@ func (e *SCRIPTElement) ITEMID(s string) *SCRIPTElement {
 	return e
 }
 
+func (e *SCRIPTElement) IfITEMID(condition bool, s string) *SCRIPTElement {
+	if condition {
+		e.ITEMID(s)
+	}
+	return e
+}
+
 // Remove the attribute itemid from the element.
 func (e *SCRIPTElement) ITEMIDRemove(s string) *SCRIPTElement {
 	if e.StringAttributes == nil {
@@ -915,6 +1104,13 @@ func (e *SCRIPTElement) ITEMPROP(s string) *SCRIPTElement {
 	return e
 }
 
+func (e *SCRIPTElement) IfITEMPROP(condition bool, s string) *SCRIPTElement {
+	if condition {
+		e.ITEMPROP(s)
+	}
+	return e
+}
+
 // Remove the attribute itemprop from the element.
 func (e *SCRIPTElement) ITEMPROPRemove(s string) *SCRIPTElement {
 	if e.StringAttributes == nil {
@@ -934,6 +1130,13 @@ func (e *SCRIPTElement) ITEMREF(s string) *SCRIPTElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("itemref", s)
+	return e
+}
+
+func (e *SCRIPTElement) IfITEMREF(condition bool, s string) *SCRIPTElement {
+	if condition {
+		e.ITEMREF(s)
+	}
 	return e
 }
 
@@ -959,12 +1162,26 @@ func (e *SCRIPTElement) ITEMSCOPE() *SCRIPTElement {
 	return e
 }
 
+func (e *SCRIPTElement) IfITEMSCOPE(condition bool) *SCRIPTElement {
+	if condition {
+		e.ITEMSCOPESet(true)
+	}
+	return e
+}
+
 // Set the attribute itemscope to the value b explicitly.
 func (e *SCRIPTElement) ITEMSCOPESet(b bool) *SCRIPTElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("itemscope", b)
+	return e
+}
+
+func (e *SCRIPTElement) IfSetITEMSCOPE(condition bool, b bool) *SCRIPTElement {
+	if condition {
+		e.ITEMSCOPESet(b)
+	}
 	return e
 }
 
@@ -993,6 +1210,13 @@ func (e *SCRIPTElement) ITEMTYPE(s string) *SCRIPTElement {
 	return e
 }
 
+func (e *SCRIPTElement) IfITEMTYPE(condition bool, s string) *SCRIPTElement {
+	if condition {
+		e.ITEMTYPE(s)
+	}
+	return e
+}
+
 // Remove the attribute itemtype from the element.
 func (e *SCRIPTElement) ITEMTYPERemove(s string) *SCRIPTElement {
 	if e.StringAttributes == nil {
@@ -1013,6 +1237,13 @@ func (e *SCRIPTElement) LANG(s string) *SCRIPTElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("lang", s)
+	return e
+}
+
+func (e *SCRIPTElement) IfLANG(condition bool, s string) *SCRIPTElement {
+	if condition {
+		e.LANG(s)
+	}
 	return e
 }
 
@@ -1039,6 +1270,13 @@ func (e *SCRIPTElement) PART(s ...string) *SCRIPTElement {
 		e.DelimitedStrings.Set("part", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *SCRIPTElement) IfPART(condition bool, s ...string) *SCRIPTElement {
+	if condition {
+		e.PART(s...)
+	}
 	return e
 }
 
@@ -1109,6 +1347,13 @@ func (e *SCRIPTElement) SLOT(s string) *SCRIPTElement {
 	return e
 }
 
+func (e *SCRIPTElement) IfSLOT(condition bool, s string) *SCRIPTElement {
+	if condition {
+		e.SLOT(s)
+	}
+	return e
+}
+
 // Remove the attribute slot from the element.
 func (e *SCRIPTElement) SLOTRemove(s string) *SCRIPTElement {
 	if e.StringAttributes == nil {
@@ -1167,6 +1412,13 @@ func (e *SCRIPTElement) STYLEF(k string, format string, args ...any) *SCRIPTElem
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+func (e *SCRIPTElement) IfSTYLE(condition bool, k string, v string) *SCRIPTElement {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
 func (e *SCRIPTElement) STYLE(k string, v string) *SCRIPTElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -1177,6 +1429,13 @@ func (e *SCRIPTElement) STYLE(k string, v string) *SCRIPTElement {
 		e.KVStrings.Set("style", kv)
 	}
 	kv.Add(k, v)
+	return e
+}
+
+func (e *SCRIPTElement) IfSTYLEF(condition bool, k string, format string, args ...any) *SCRIPTElement {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
 	return e
 }
 
@@ -1217,6 +1476,13 @@ func (e *SCRIPTElement) STYLEPairs(pairs ...string) *SCRIPTElement {
 	return e
 }
 
+func (e *SCRIPTElement) IfSTYLEPairs(condition bool, pairs ...string) *SCRIPTElement {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
+	return e
+}
+
 // Remove the attribute style from the element.
 func (e *SCRIPTElement) STYLERemove(keys ...string) *SCRIPTElement {
 	if e.KVStrings == nil {
@@ -1251,6 +1517,13 @@ func (e *SCRIPTElement) TABINDEX(i int) *SCRIPTElement {
 		e.IntAttributes = treemap.New[string, int]()
 	}
 	e.IntAttributes.Set("tabindex", i)
+	return e
+}
+
+func (e *SCRIPTElement) IfTABINDEX(condition bool, i int) *SCRIPTElement {
+	if condition {
+		e.TABINDEX(i)
+	}
 	return e
 }
 
@@ -1289,6 +1562,13 @@ func (e *SCRIPTElement) TITLE(s string) *SCRIPTElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("title", s)
+	return e
+}
+
+func (e *SCRIPTElement) IfTITLE(condition bool, s string) *SCRIPTElement {
+	if condition {
+		e.TITLE(s)
+	}
 	return e
 }
 

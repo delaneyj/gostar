@@ -56,13 +56,41 @@ func (e *HRElement) TextF(format string, args ...any) *HRElement {
 	return e.Text(fmt.Sprintf(format, args...))
 }
 
+func (e *HRElement) IfText(condition bool, text string) *HRElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
+}
+
+func (e *HRElement) IfTextF(condition bool, format string, args ...any) *HRElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
+}
+
 func (e *HRElement) Escaped(text string) *HRElement {
 	e.Descendants = append(e.Descendants, Escaped(text))
 	return e
 }
 
+func (e *HRElement) IfEscaped(condition bool, text string) *HRElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
+}
+
 func (e *HRElement) EscapedF(format string, args ...any) *HRElement {
 	return e.Escaped(fmt.Sprintf(format, args...))
+}
+
+func (e *HRElement) IfEscapedF(condition bool, format string, args ...any) *HRElement {
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *HRElement) CustomData(key, value string) *HRElement {
@@ -73,8 +101,22 @@ func (e *HRElement) CustomData(key, value string) *HRElement {
 	return e
 }
 
+func (e *HRElement) IfCustomData(condition bool, key, value string) *HRElement {
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
+}
+
 func (e *HRElement) CustomDataF(key, format string, args ...any) *HRElement {
 	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
+func (e *HRElement) IfCustomDataF(condition bool, key, format string, args ...any) *HRElement {
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *HRElement) CustomDataRemove(key string) *HRElement {
@@ -94,6 +136,13 @@ func (e *HRElement) ACCESSKEY(r rune) *HRElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("accesskey", string(r))
+	return e
+}
+
+func (e *HRElement) IfACCESSKEY(condition bool, r rune) *HRElement {
+	if condition {
+		e.ACCESSKEY(r)
+	}
 	return e
 }
 
@@ -179,12 +228,26 @@ func (e *HRElement) AUTOFOCUS() *HRElement {
 	return e
 }
 
+func (e *HRElement) IfAUTOFOCUS(condition bool) *HRElement {
+	if condition {
+		e.AUTOFOCUSSet(true)
+	}
+	return e
+}
+
 // Set the attribute autofocus to the value b explicitly.
 func (e *HRElement) AUTOFOCUSSet(b bool) *HRElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("autofocus", b)
+	return e
+}
+
+func (e *HRElement) IfSetAUTOFOCUS(condition bool, b bool) *HRElement {
+	if condition {
+		e.AUTOFOCUSSet(b)
+	}
 	return e
 }
 
@@ -212,6 +275,13 @@ func (e *HRElement) CLASS(s ...string) *HRElement {
 		e.DelimitedStrings.Set("class", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *HRElement) IfCLASS(condition bool, s ...string) *HRElement {
+	if condition {
+		e.CLASS(s...)
+	}
 	return e
 }
 
@@ -420,6 +490,13 @@ func (e *HRElement) EXPORTPARTS(s ...string) *HRElement {
 	return e
 }
 
+func (e *HRElement) IfEXPORTPARTS(condition bool, s ...string) *HRElement {
+	if condition {
+		e.EXPORTPARTS(s...)
+	}
+	return e
+}
+
 // Remove the attribute exportparts from the element.
 func (e *HRElement) EXPORTPARTSRemove(s ...string) *HRElement {
 	if e.DelimitedStrings == nil {
@@ -495,6 +572,13 @@ func (e *HRElement) ID(s string) *HRElement {
 	return e
 }
 
+func (e *HRElement) IfID(condition bool, s string) *HRElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
 // Remove the attribute id from the element.
 func (e *HRElement) IDRemove(s string) *HRElement {
 	if e.StringAttributes == nil {
@@ -521,12 +605,26 @@ func (e *HRElement) INERT() *HRElement {
 	return e
 }
 
+func (e *HRElement) IfINERT(condition bool) *HRElement {
+	if condition {
+		e.INERTSet(true)
+	}
+	return e
+}
+
 // Set the attribute inert to the value b explicitly.
 func (e *HRElement) INERTSet(b bool) *HRElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("inert", b)
+	return e
+}
+
+func (e *HRElement) IfSetINERT(condition bool, b bool) *HRElement {
+	if condition {
+		e.INERTSet(b)
+	}
 	return e
 }
 
@@ -622,6 +720,13 @@ func (e *HRElement) IS(s string) *HRElement {
 	return e
 }
 
+func (e *HRElement) IfIS(condition bool, s string) *HRElement {
+	if condition {
+		e.IS(s)
+	}
+	return e
+}
+
 // Remove the attribute is from the element.
 func (e *HRElement) ISRemove(s string) *HRElement {
 	if e.StringAttributes == nil {
@@ -652,6 +757,13 @@ func (e *HRElement) ITEMID(s string) *HRElement {
 	return e
 }
 
+func (e *HRElement) IfITEMID(condition bool, s string) *HRElement {
+	if condition {
+		e.ITEMID(s)
+	}
+	return e
+}
+
 // Remove the attribute itemid from the element.
 func (e *HRElement) ITEMIDRemove(s string) *HRElement {
 	if e.StringAttributes == nil {
@@ -677,6 +789,13 @@ func (e *HRElement) ITEMPROP(s string) *HRElement {
 	return e
 }
 
+func (e *HRElement) IfITEMPROP(condition bool, s string) *HRElement {
+	if condition {
+		e.ITEMPROP(s)
+	}
+	return e
+}
+
 // Remove the attribute itemprop from the element.
 func (e *HRElement) ITEMPROPRemove(s string) *HRElement {
 	if e.StringAttributes == nil {
@@ -696,6 +815,13 @@ func (e *HRElement) ITEMREF(s string) *HRElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("itemref", s)
+	return e
+}
+
+func (e *HRElement) IfITEMREF(condition bool, s string) *HRElement {
+	if condition {
+		e.ITEMREF(s)
+	}
 	return e
 }
 
@@ -721,12 +847,26 @@ func (e *HRElement) ITEMSCOPE() *HRElement {
 	return e
 }
 
+func (e *HRElement) IfITEMSCOPE(condition bool) *HRElement {
+	if condition {
+		e.ITEMSCOPESet(true)
+	}
+	return e
+}
+
 // Set the attribute itemscope to the value b explicitly.
 func (e *HRElement) ITEMSCOPESet(b bool) *HRElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("itemscope", b)
+	return e
+}
+
+func (e *HRElement) IfSetITEMSCOPE(condition bool, b bool) *HRElement {
+	if condition {
+		e.ITEMSCOPESet(b)
+	}
 	return e
 }
 
@@ -755,6 +895,13 @@ func (e *HRElement) ITEMTYPE(s string) *HRElement {
 	return e
 }
 
+func (e *HRElement) IfITEMTYPE(condition bool, s string) *HRElement {
+	if condition {
+		e.ITEMTYPE(s)
+	}
+	return e
+}
+
 // Remove the attribute itemtype from the element.
 func (e *HRElement) ITEMTYPERemove(s string) *HRElement {
 	if e.StringAttributes == nil {
@@ -778,6 +925,13 @@ func (e *HRElement) LANG(s string) *HRElement {
 	return e
 }
 
+func (e *HRElement) IfLANG(condition bool, s string) *HRElement {
+	if condition {
+		e.LANG(s)
+	}
+	return e
+}
+
 // Remove the attribute lang from the element.
 func (e *HRElement) LANGRemove(s string) *HRElement {
 	if e.StringAttributes == nil {
@@ -796,6 +950,13 @@ func (e *HRElement) NONCE(s string) *HRElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("nonce", s)
+	return e
+}
+
+func (e *HRElement) IfNONCE(condition bool, s string) *HRElement {
+	if condition {
+		e.NONCE(s)
+	}
 	return e
 }
 
@@ -822,6 +983,13 @@ func (e *HRElement) PART(s ...string) *HRElement {
 		e.DelimitedStrings.Set("part", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *HRElement) IfPART(condition bool, s ...string) *HRElement {
+	if condition {
+		e.PART(s...)
+	}
 	return e
 }
 
@@ -892,6 +1060,13 @@ func (e *HRElement) SLOT(s string) *HRElement {
 	return e
 }
 
+func (e *HRElement) IfSLOT(condition bool, s string) *HRElement {
+	if condition {
+		e.SLOT(s)
+	}
+	return e
+}
+
 // Remove the attribute slot from the element.
 func (e *HRElement) SLOTRemove(s string) *HRElement {
 	if e.StringAttributes == nil {
@@ -950,6 +1125,13 @@ func (e *HRElement) STYLEF(k string, format string, args ...any) *HRElement {
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+func (e *HRElement) IfSTYLE(condition bool, k string, v string) *HRElement {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
 func (e *HRElement) STYLE(k string, v string) *HRElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -960,6 +1142,13 @@ func (e *HRElement) STYLE(k string, v string) *HRElement {
 		e.KVStrings.Set("style", kv)
 	}
 	kv.Add(k, v)
+	return e
+}
+
+func (e *HRElement) IfSTYLEF(condition bool, k string, format string, args ...any) *HRElement {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
 	return e
 }
 
@@ -1000,6 +1189,13 @@ func (e *HRElement) STYLEPairs(pairs ...string) *HRElement {
 	return e
 }
 
+func (e *HRElement) IfSTYLEPairs(condition bool, pairs ...string) *HRElement {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
+	return e
+}
+
 // Remove the attribute style from the element.
 func (e *HRElement) STYLERemove(keys ...string) *HRElement {
 	if e.KVStrings == nil {
@@ -1034,6 +1230,13 @@ func (e *HRElement) TABINDEX(i int) *HRElement {
 		e.IntAttributes = treemap.New[string, int]()
 	}
 	e.IntAttributes.Set("tabindex", i)
+	return e
+}
+
+func (e *HRElement) IfTABINDEX(condition bool, i int) *HRElement {
+	if condition {
+		e.TABINDEX(i)
+	}
 	return e
 }
 
@@ -1072,6 +1275,13 @@ func (e *HRElement) TITLE(s string) *HRElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("title", s)
+	return e
+}
+
+func (e *HRElement) IfTITLE(condition bool, s string) *HRElement {
+	if condition {
+		e.TITLE(s)
+	}
 	return e
 }
 

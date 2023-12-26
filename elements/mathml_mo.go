@@ -55,13 +55,41 @@ func (e *MathMLMOElement) TextF(format string, args ...any) *MathMLMOElement {
 	return e.Text(fmt.Sprintf(format, args...))
 }
 
+func (e *MathMLMOElement) IfText(condition bool, text string) *MathMLMOElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
+}
+
+func (e *MathMLMOElement) IfTextF(condition bool, format string, args ...any) *MathMLMOElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
+}
+
 func (e *MathMLMOElement) Escaped(text string) *MathMLMOElement {
 	e.Descendants = append(e.Descendants, Escaped(text))
 	return e
 }
 
+func (e *MathMLMOElement) IfEscaped(condition bool, text string) *MathMLMOElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
+}
+
 func (e *MathMLMOElement) EscapedF(format string, args ...any) *MathMLMOElement {
 	return e.Escaped(fmt.Sprintf(format, args...))
+}
+
+func (e *MathMLMOElement) IfEscapedF(condition bool, format string, args ...any) *MathMLMOElement {
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *MathMLMOElement) CustomData(key, value string) *MathMLMOElement {
@@ -72,8 +100,22 @@ func (e *MathMLMOElement) CustomData(key, value string) *MathMLMOElement {
 	return e
 }
 
+func (e *MathMLMOElement) IfCustomData(condition bool, key, value string) *MathMLMOElement {
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
+}
+
 func (e *MathMLMOElement) CustomDataF(key, format string, args ...any) *MathMLMOElement {
 	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
+func (e *MathMLMOElement) IfCustomDataF(condition bool, key, format string, args ...any) *MathMLMOElement {
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *MathMLMOElement) CustomDataRemove(key string) *MathMLMOElement {
@@ -122,6 +164,13 @@ func (e *MathMLMOElement) LSPACE(s string) *MathMLMOElement {
 	return e
 }
 
+func (e *MathMLMOElement) IfLSPACE(condition bool, s string) *MathMLMOElement {
+	if condition {
+		e.LSPACE(s)
+	}
+	return e
+}
+
 // Remove the attribute lspace from the element.
 func (e *MathMLMOElement) LSPACERemove(s string) *MathMLMOElement {
 	if e.StringAttributes == nil {
@@ -139,6 +188,13 @@ func (e *MathMLMOElement) RSPACE(s string) *MathMLMOElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("rspace", s)
+	return e
+}
+
+func (e *MathMLMOElement) IfRSPACE(condition bool, s string) *MathMLMOElement {
+	if condition {
+		e.RSPACE(s)
+	}
 	return e
 }
 
@@ -165,6 +221,13 @@ func (e *MathMLMOElement) CLASS(s ...string) *MathMLMOElement {
 		e.DelimitedStrings.Set("class", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *MathMLMOElement) IfCLASS(condition bool, s ...string) *MathMLMOElement {
+	if condition {
+		e.CLASS(s...)
+	}
 	return e
 }
 
@@ -250,6 +313,13 @@ func (e *MathMLMOElement) ID(s string) *MathMLMOElement {
 	return e
 }
 
+func (e *MathMLMOElement) IfID(condition bool, s string) *MathMLMOElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
 // Remove the attribute id from the element.
 func (e *MathMLMOElement) IDRemove(s string) *MathMLMOElement {
 	if e.StringAttributes == nil {
@@ -267,6 +337,13 @@ func (e *MathMLMOElement) MATHBACKGROUND(s string) *MathMLMOElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("mathbackground", s)
+	return e
+}
+
+func (e *MathMLMOElement) IfMATHBACKGROUND(condition bool, s string) *MathMLMOElement {
+	if condition {
+		e.MATHBACKGROUND(s)
+	}
 	return e
 }
 
@@ -290,6 +367,13 @@ func (e *MathMLMOElement) MATHCOLOR(s string) *MathMLMOElement {
 	return e
 }
 
+func (e *MathMLMOElement) IfMATHCOLOR(condition bool, s string) *MathMLMOElement {
+	if condition {
+		e.MATHCOLOR(s)
+	}
+	return e
+}
+
 // Remove the attribute mathcolor from the element.
 func (e *MathMLMOElement) MATHCOLORRemove(s string) *MathMLMOElement {
 	if e.StringAttributes == nil {
@@ -306,6 +390,13 @@ func (e *MathMLMOElement) MATHSIZESTR(s string) *MathMLMOElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("mathsize", s)
+	return e
+}
+
+func (e *MathMLMOElement) IfMATHSIZESTR(condition bool, s string) *MathMLMOElement {
+	if condition {
+		e.MATHSIZESTR(s)
+	}
 	return e
 }
 
@@ -330,6 +421,13 @@ func (e *MathMLMOElement) NONCE(s string) *MathMLMOElement {
 	return e
 }
 
+func (e *MathMLMOElement) IfNONCE(condition bool, s string) *MathMLMOElement {
+	if condition {
+		e.NONCE(s)
+	}
+	return e
+}
+
 // Remove the attribute nonce from the element.
 func (e *MathMLMOElement) NONCERemove(s string) *MathMLMOElement {
 	if e.StringAttributes == nil {
@@ -349,6 +447,13 @@ func (e *MathMLMOElement) SCRIPTLEVEL(i int) *MathMLMOElement {
 	return e
 }
 
+func (e *MathMLMOElement) IfSCRIPTLEVEL(condition bool, i int) *MathMLMOElement {
+	if condition {
+		e.SCRIPTLEVEL(i)
+	}
+	return e
+}
+
 // Remove the attribute scriptlevel from the element.
 func (e *MathMLMOElement) SCRIPTLEVELRemove(i int) *MathMLMOElement {
 	if e.IntAttributes == nil {
@@ -364,6 +469,13 @@ func (e *MathMLMOElement) STYLEF(k string, format string, args ...any) *MathMLMO
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+func (e *MathMLMOElement) IfSTYLE(condition bool, k string, v string) *MathMLMOElement {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
 func (e *MathMLMOElement) STYLE(k string, v string) *MathMLMOElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -374,6 +486,13 @@ func (e *MathMLMOElement) STYLE(k string, v string) *MathMLMOElement {
 		e.KVStrings.Set("style", kv)
 	}
 	kv.Add(k, v)
+	return e
+}
+
+func (e *MathMLMOElement) IfSTYLEF(condition bool, k string, format string, args ...any) *MathMLMOElement {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
 	return e
 }
 
@@ -414,6 +533,13 @@ func (e *MathMLMOElement) STYLEPairs(pairs ...string) *MathMLMOElement {
 	return e
 }
 
+func (e *MathMLMOElement) IfSTYLEPairs(condition bool, pairs ...string) *MathMLMOElement {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
+	return e
+}
+
 // Remove the attribute style from the element.
 func (e *MathMLMOElement) STYLERemove(keys ...string) *MathMLMOElement {
 	if e.KVStrings == nil {
@@ -438,6 +564,13 @@ func (e *MathMLMOElement) TABINDEX(i int) *MathMLMOElement {
 		e.IntAttributes = treemap.New[string, int]()
 	}
 	e.IntAttributes.Set("tabindex", i)
+	return e
+}
+
+func (e *MathMLMOElement) IfTABINDEX(condition bool, i int) *MathMLMOElement {
+	if condition {
+		e.TABINDEX(i)
+	}
 	return e
 }
 

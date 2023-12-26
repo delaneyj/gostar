@@ -61,13 +61,41 @@ func (e *SVGSETElement) TextF(format string, args ...any) *SVGSETElement {
 	return e.Text(fmt.Sprintf(format, args...))
 }
 
+func (e *SVGSETElement) IfText(condition bool, text string) *SVGSETElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
+}
+
+func (e *SVGSETElement) IfTextF(condition bool, format string, args ...any) *SVGSETElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
+}
+
 func (e *SVGSETElement) Escaped(text string) *SVGSETElement {
 	e.Descendants = append(e.Descendants, Escaped(text))
 	return e
 }
 
+func (e *SVGSETElement) IfEscaped(condition bool, text string) *SVGSETElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
+}
+
 func (e *SVGSETElement) EscapedF(format string, args ...any) *SVGSETElement {
 	return e.Escaped(fmt.Sprintf(format, args...))
+}
+
+func (e *SVGSETElement) IfEscapedF(condition bool, format string, args ...any) *SVGSETElement {
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *SVGSETElement) CustomData(key, value string) *SVGSETElement {
@@ -78,8 +106,22 @@ func (e *SVGSETElement) CustomData(key, value string) *SVGSETElement {
 	return e
 }
 
+func (e *SVGSETElement) IfCustomData(condition bool, key, value string) *SVGSETElement {
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
+}
+
 func (e *SVGSETElement) CustomDataF(key, format string, args ...any) *SVGSETElement {
 	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
+func (e *SVGSETElement) IfCustomDataF(condition bool, key, format string, args ...any) *SVGSETElement {
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *SVGSETElement) CustomDataRemove(key string) *SVGSETElement {
@@ -96,6 +138,13 @@ func (e *SVGSETElement) MIN(s string) *SVGSETElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("min", s)
+	return e
+}
+
+func (e *SVGSETElement) IfMIN(condition bool, s string) *SVGSETElement {
+	if condition {
+		e.MIN(s)
+	}
 	return e
 }
 
@@ -185,6 +234,13 @@ func (e *SVGSETElement) BEGIN(s string) *SVGSETElement {
 	return e
 }
 
+func (e *SVGSETElement) IfBEGIN(condition bool, s string) *SVGSETElement {
+	if condition {
+		e.BEGIN(s)
+	}
+	return e
+}
+
 // Remove the attribute begin from the element.
 func (e *SVGSETElement) BEGINRemove(s string) *SVGSETElement {
 	if e.StringAttributes == nil {
@@ -200,6 +256,13 @@ func (e *SVGSETElement) DUR(s string) *SVGSETElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("dur", s)
+	return e
+}
+
+func (e *SVGSETElement) IfDUR(condition bool, s string) *SVGSETElement {
+	if condition {
+		e.DUR(s)
+	}
 	return e
 }
 
@@ -221,6 +284,13 @@ func (e *SVGSETElement) END(s string) *SVGSETElement {
 	return e
 }
 
+func (e *SVGSETElement) IfEND(condition bool, s string) *SVGSETElement {
+	if condition {
+		e.END(s)
+	}
+	return e
+}
+
 // Remove the attribute end from the element.
 func (e *SVGSETElement) ENDRemove(s string) *SVGSETElement {
 	if e.StringAttributes == nil {
@@ -236,6 +306,13 @@ func (e *SVGSETElement) ATTRIBUTENAME(s string) *SVGSETElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("attributeName", s)
+	return e
+}
+
+func (e *SVGSETElement) IfATTRIBUTENAME(condition bool, s string) *SVGSETElement {
+	if condition {
+		e.ATTRIBUTENAME(s)
+	}
 	return e
 }
 
@@ -257,6 +334,13 @@ func (e *SVGSETElement) MAX(s string) *SVGSETElement {
 	return e
 }
 
+func (e *SVGSETElement) IfMAX(condition bool, s string) *SVGSETElement {
+	if condition {
+		e.MAX(s)
+	}
+	return e
+}
+
 // Remove the attribute max from the element.
 func (e *SVGSETElement) MAXRemove(s string) *SVGSETElement {
 	if e.StringAttributes == nil {
@@ -272,6 +356,13 @@ func (e *SVGSETElement) TO(s string) *SVGSETElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("to", s)
+	return e
+}
+
+func (e *SVGSETElement) IfTO(condition bool, s string) *SVGSETElement {
+	if condition {
+		e.TO(s)
+	}
 	return e
 }
 
@@ -293,6 +384,13 @@ func (e *SVGSETElement) REPEATCOUNT(s string) *SVGSETElement {
 	return e
 }
 
+func (e *SVGSETElement) IfREPEATCOUNT(condition bool, s string) *SVGSETElement {
+	if condition {
+		e.REPEATCOUNT(s)
+	}
+	return e
+}
+
 // Remove the attribute repeatCount from the element.
 func (e *SVGSETElement) REPEATCOUNTRemove(s string) *SVGSETElement {
 	if e.StringAttributes == nil {
@@ -308,6 +406,13 @@ func (e *SVGSETElement) REPEATDUR(s string) *SVGSETElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("repeatDur", s)
+	return e
+}
+
+func (e *SVGSETElement) IfREPEATDUR(condition bool, s string) *SVGSETElement {
+	if condition {
+		e.REPEATDUR(s)
+	}
 	return e
 }
 
@@ -362,6 +467,13 @@ func (e *SVGSETElement) CLASS(s ...string) *SVGSETElement {
 	return e
 }
 
+func (e *SVGSETElement) IfCLASS(condition bool, s ...string) *SVGSETElement {
+	if condition {
+		e.CLASS(s...)
+	}
+	return e
+}
+
 // Remove the attribute class from the element.
 func (e *SVGSETElement) CLASSRemove(s ...string) *SVGSETElement {
 	if e.DelimitedStrings == nil {
@@ -384,6 +496,13 @@ func (e *SVGSETElement) ID(s string) *SVGSETElement {
 	return e
 }
 
+func (e *SVGSETElement) IfID(condition bool, s string) *SVGSETElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
 // Remove the attribute id from the element.
 func (e *SVGSETElement) IDRemove(s string) *SVGSETElement {
 	if e.StringAttributes == nil {
@@ -398,6 +517,13 @@ func (e *SVGSETElement) STYLEF(k string, format string, args ...any) *SVGSETElem
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+func (e *SVGSETElement) IfSTYLE(condition bool, k string, v string) *SVGSETElement {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
 func (e *SVGSETElement) STYLE(k string, v string) *SVGSETElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -408,6 +534,13 @@ func (e *SVGSETElement) STYLE(k string, v string) *SVGSETElement {
 		e.KVStrings.Set("style", kv)
 	}
 	kv.Add(k, v)
+	return e
+}
+
+func (e *SVGSETElement) IfSTYLEF(condition bool, k string, format string, args ...any) *SVGSETElement {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
 	return e
 }
 
@@ -445,6 +578,13 @@ func (e *SVGSETElement) STYLEPairs(pairs ...string) *SVGSETElement {
 		kv.Add(pairs[i], pairs[i+1])
 	}
 
+	return e
+}
+
+func (e *SVGSETElement) IfSTYLEPairs(condition bool, pairs ...string) *SVGSETElement {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
 	return e
 }
 

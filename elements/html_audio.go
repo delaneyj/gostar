@@ -58,13 +58,41 @@ func (e *AUDIOElement) TextF(format string, args ...any) *AUDIOElement {
 	return e.Text(fmt.Sprintf(format, args...))
 }
 
+func (e *AUDIOElement) IfText(condition bool, text string) *AUDIOElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
+}
+
+func (e *AUDIOElement) IfTextF(condition bool, format string, args ...any) *AUDIOElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
+}
+
 func (e *AUDIOElement) Escaped(text string) *AUDIOElement {
 	e.Descendants = append(e.Descendants, Escaped(text))
 	return e
 }
 
+func (e *AUDIOElement) IfEscaped(condition bool, text string) *AUDIOElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
+}
+
 func (e *AUDIOElement) EscapedF(format string, args ...any) *AUDIOElement {
 	return e.Escaped(fmt.Sprintf(format, args...))
+}
+
+func (e *AUDIOElement) IfEscapedF(condition bool, format string, args ...any) *AUDIOElement {
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *AUDIOElement) CustomData(key, value string) *AUDIOElement {
@@ -75,8 +103,22 @@ func (e *AUDIOElement) CustomData(key, value string) *AUDIOElement {
 	return e
 }
 
+func (e *AUDIOElement) IfCustomData(condition bool, key, value string) *AUDIOElement {
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
+}
+
 func (e *AUDIOElement) CustomDataF(key, format string, args ...any) *AUDIOElement {
 	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
+func (e *AUDIOElement) IfCustomDataF(condition bool, key, format string, args ...any) *AUDIOElement {
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *AUDIOElement) CustomDataRemove(key string) *AUDIOElement {
@@ -95,12 +137,26 @@ func (e *AUDIOElement) AUTOPLAY() *AUDIOElement {
 	return e
 }
 
+func (e *AUDIOElement) IfAUTOPLAY(condition bool) *AUDIOElement {
+	if condition {
+		e.AUTOPLAYSet(true)
+	}
+	return e
+}
+
 // Set the attribute autoplay to the value b explicitly.
 func (e *AUDIOElement) AUTOPLAYSet(b bool) *AUDIOElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("autoplay", b)
+	return e
+}
+
+func (e *AUDIOElement) IfSetAUTOPLAY(condition bool, b bool) *AUDIOElement {
+	if condition {
+		e.AUTOPLAYSet(b)
+	}
 	return e
 }
 
@@ -121,12 +177,26 @@ func (e *AUDIOElement) CONTROLS() *AUDIOElement {
 	return e
 }
 
+func (e *AUDIOElement) IfCONTROLS(condition bool) *AUDIOElement {
+	if condition {
+		e.CONTROLSSet(true)
+	}
+	return e
+}
+
 // Set the attribute controls to the value b explicitly.
 func (e *AUDIOElement) CONTROLSSet(b bool) *AUDIOElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("controls", b)
+	return e
+}
+
+func (e *AUDIOElement) IfSetCONTROLS(condition bool, b bool) *AUDIOElement {
+	if condition {
+		e.CONTROLSSet(b)
+	}
 	return e
 }
 
@@ -146,12 +216,26 @@ func (e *AUDIOElement) LOOP() *AUDIOElement {
 	return e
 }
 
+func (e *AUDIOElement) IfLOOP(condition bool) *AUDIOElement {
+	if condition {
+		e.LOOPSet(true)
+	}
+	return e
+}
+
 // Set the attribute loop to the value b explicitly.
 func (e *AUDIOElement) LOOPSet(b bool) *AUDIOElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("loop", b)
+	return e
+}
+
+func (e *AUDIOElement) IfSetLOOP(condition bool, b bool) *AUDIOElement {
+	if condition {
+		e.LOOPSet(b)
+	}
 	return e
 }
 
@@ -173,12 +257,26 @@ func (e *AUDIOElement) MUTED() *AUDIOElement {
 	return e
 }
 
+func (e *AUDIOElement) IfMUTED(condition bool) *AUDIOElement {
+	if condition {
+		e.MUTEDSet(true)
+	}
+	return e
+}
+
 // Set the attribute muted to the value b explicitly.
 func (e *AUDIOElement) MUTEDSet(b bool) *AUDIOElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("muted", b)
+	return e
+}
+
+func (e *AUDIOElement) IfSetMUTED(condition bool, b bool) *AUDIOElement {
+	if condition {
+		e.MUTEDSet(b)
+	}
 	return e
 }
 
@@ -235,6 +333,13 @@ func (e *AUDIOElement) SRC(s string) *AUDIOElement {
 	return e
 }
 
+func (e *AUDIOElement) IfSRC(condition bool, s string) *AUDIOElement {
+	if condition {
+		e.SRC(s)
+	}
+	return e
+}
+
 // Remove the attribute src from the element.
 func (e *AUDIOElement) SRCRemove(s string) *AUDIOElement {
 	if e.StringAttributes == nil {
@@ -253,6 +358,13 @@ func (e *AUDIOElement) ACCESSKEY(r rune) *AUDIOElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("accesskey", string(r))
+	return e
+}
+
+func (e *AUDIOElement) IfACCESSKEY(condition bool, r rune) *AUDIOElement {
+	if condition {
+		e.ACCESSKEY(r)
+	}
 	return e
 }
 
@@ -338,12 +450,26 @@ func (e *AUDIOElement) AUTOFOCUS() *AUDIOElement {
 	return e
 }
 
+func (e *AUDIOElement) IfAUTOFOCUS(condition bool) *AUDIOElement {
+	if condition {
+		e.AUTOFOCUSSet(true)
+	}
+	return e
+}
+
 // Set the attribute autofocus to the value b explicitly.
 func (e *AUDIOElement) AUTOFOCUSSet(b bool) *AUDIOElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("autofocus", b)
+	return e
+}
+
+func (e *AUDIOElement) IfSetAUTOFOCUS(condition bool, b bool) *AUDIOElement {
+	if condition {
+		e.AUTOFOCUSSet(b)
+	}
 	return e
 }
 
@@ -371,6 +497,13 @@ func (e *AUDIOElement) CLASS(s ...string) *AUDIOElement {
 		e.DelimitedStrings.Set("class", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *AUDIOElement) IfCLASS(condition bool, s ...string) *AUDIOElement {
+	if condition {
+		e.CLASS(s...)
+	}
 	return e
 }
 
@@ -579,6 +712,13 @@ func (e *AUDIOElement) EXPORTPARTS(s ...string) *AUDIOElement {
 	return e
 }
 
+func (e *AUDIOElement) IfEXPORTPARTS(condition bool, s ...string) *AUDIOElement {
+	if condition {
+		e.EXPORTPARTS(s...)
+	}
+	return e
+}
+
 // Remove the attribute exportparts from the element.
 func (e *AUDIOElement) EXPORTPARTSRemove(s ...string) *AUDIOElement {
 	if e.DelimitedStrings == nil {
@@ -654,6 +794,13 @@ func (e *AUDIOElement) ID(s string) *AUDIOElement {
 	return e
 }
 
+func (e *AUDIOElement) IfID(condition bool, s string) *AUDIOElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
 // Remove the attribute id from the element.
 func (e *AUDIOElement) IDRemove(s string) *AUDIOElement {
 	if e.StringAttributes == nil {
@@ -680,12 +827,26 @@ func (e *AUDIOElement) INERT() *AUDIOElement {
 	return e
 }
 
+func (e *AUDIOElement) IfINERT(condition bool) *AUDIOElement {
+	if condition {
+		e.INERTSet(true)
+	}
+	return e
+}
+
 // Set the attribute inert to the value b explicitly.
 func (e *AUDIOElement) INERTSet(b bool) *AUDIOElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("inert", b)
+	return e
+}
+
+func (e *AUDIOElement) IfSetINERT(condition bool, b bool) *AUDIOElement {
+	if condition {
+		e.INERTSet(b)
+	}
 	return e
 }
 
@@ -781,6 +942,13 @@ func (e *AUDIOElement) IS(s string) *AUDIOElement {
 	return e
 }
 
+func (e *AUDIOElement) IfIS(condition bool, s string) *AUDIOElement {
+	if condition {
+		e.IS(s)
+	}
+	return e
+}
+
 // Remove the attribute is from the element.
 func (e *AUDIOElement) ISRemove(s string) *AUDIOElement {
 	if e.StringAttributes == nil {
@@ -811,6 +979,13 @@ func (e *AUDIOElement) ITEMID(s string) *AUDIOElement {
 	return e
 }
 
+func (e *AUDIOElement) IfITEMID(condition bool, s string) *AUDIOElement {
+	if condition {
+		e.ITEMID(s)
+	}
+	return e
+}
+
 // Remove the attribute itemid from the element.
 func (e *AUDIOElement) ITEMIDRemove(s string) *AUDIOElement {
 	if e.StringAttributes == nil {
@@ -836,6 +1011,13 @@ func (e *AUDIOElement) ITEMPROP(s string) *AUDIOElement {
 	return e
 }
 
+func (e *AUDIOElement) IfITEMPROP(condition bool, s string) *AUDIOElement {
+	if condition {
+		e.ITEMPROP(s)
+	}
+	return e
+}
+
 // Remove the attribute itemprop from the element.
 func (e *AUDIOElement) ITEMPROPRemove(s string) *AUDIOElement {
 	if e.StringAttributes == nil {
@@ -855,6 +1037,13 @@ func (e *AUDIOElement) ITEMREF(s string) *AUDIOElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("itemref", s)
+	return e
+}
+
+func (e *AUDIOElement) IfITEMREF(condition bool, s string) *AUDIOElement {
+	if condition {
+		e.ITEMREF(s)
+	}
 	return e
 }
 
@@ -880,12 +1069,26 @@ func (e *AUDIOElement) ITEMSCOPE() *AUDIOElement {
 	return e
 }
 
+func (e *AUDIOElement) IfITEMSCOPE(condition bool) *AUDIOElement {
+	if condition {
+		e.ITEMSCOPESet(true)
+	}
+	return e
+}
+
 // Set the attribute itemscope to the value b explicitly.
 func (e *AUDIOElement) ITEMSCOPESet(b bool) *AUDIOElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("itemscope", b)
+	return e
+}
+
+func (e *AUDIOElement) IfSetITEMSCOPE(condition bool, b bool) *AUDIOElement {
+	if condition {
+		e.ITEMSCOPESet(b)
+	}
 	return e
 }
 
@@ -914,6 +1117,13 @@ func (e *AUDIOElement) ITEMTYPE(s string) *AUDIOElement {
 	return e
 }
 
+func (e *AUDIOElement) IfITEMTYPE(condition bool, s string) *AUDIOElement {
+	if condition {
+		e.ITEMTYPE(s)
+	}
+	return e
+}
+
 // Remove the attribute itemtype from the element.
 func (e *AUDIOElement) ITEMTYPERemove(s string) *AUDIOElement {
 	if e.StringAttributes == nil {
@@ -937,6 +1147,13 @@ func (e *AUDIOElement) LANG(s string) *AUDIOElement {
 	return e
 }
 
+func (e *AUDIOElement) IfLANG(condition bool, s string) *AUDIOElement {
+	if condition {
+		e.LANG(s)
+	}
+	return e
+}
+
 // Remove the attribute lang from the element.
 func (e *AUDIOElement) LANGRemove(s string) *AUDIOElement {
 	if e.StringAttributes == nil {
@@ -955,6 +1172,13 @@ func (e *AUDIOElement) NONCE(s string) *AUDIOElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("nonce", s)
+	return e
+}
+
+func (e *AUDIOElement) IfNONCE(condition bool, s string) *AUDIOElement {
+	if condition {
+		e.NONCE(s)
+	}
 	return e
 }
 
@@ -981,6 +1205,13 @@ func (e *AUDIOElement) PART(s ...string) *AUDIOElement {
 		e.DelimitedStrings.Set("part", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *AUDIOElement) IfPART(condition bool, s ...string) *AUDIOElement {
+	if condition {
+		e.PART(s...)
+	}
 	return e
 }
 
@@ -1051,6 +1282,13 @@ func (e *AUDIOElement) SLOT(s string) *AUDIOElement {
 	return e
 }
 
+func (e *AUDIOElement) IfSLOT(condition bool, s string) *AUDIOElement {
+	if condition {
+		e.SLOT(s)
+	}
+	return e
+}
+
 // Remove the attribute slot from the element.
 func (e *AUDIOElement) SLOTRemove(s string) *AUDIOElement {
 	if e.StringAttributes == nil {
@@ -1109,6 +1347,13 @@ func (e *AUDIOElement) STYLEF(k string, format string, args ...any) *AUDIOElemen
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+func (e *AUDIOElement) IfSTYLE(condition bool, k string, v string) *AUDIOElement {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
 func (e *AUDIOElement) STYLE(k string, v string) *AUDIOElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -1119,6 +1364,13 @@ func (e *AUDIOElement) STYLE(k string, v string) *AUDIOElement {
 		e.KVStrings.Set("style", kv)
 	}
 	kv.Add(k, v)
+	return e
+}
+
+func (e *AUDIOElement) IfSTYLEF(condition bool, k string, format string, args ...any) *AUDIOElement {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
 	return e
 }
 
@@ -1159,6 +1411,13 @@ func (e *AUDIOElement) STYLEPairs(pairs ...string) *AUDIOElement {
 	return e
 }
 
+func (e *AUDIOElement) IfSTYLEPairs(condition bool, pairs ...string) *AUDIOElement {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
+	return e
+}
+
 // Remove the attribute style from the element.
 func (e *AUDIOElement) STYLERemove(keys ...string) *AUDIOElement {
 	if e.KVStrings == nil {
@@ -1193,6 +1452,13 @@ func (e *AUDIOElement) TABINDEX(i int) *AUDIOElement {
 		e.IntAttributes = treemap.New[string, int]()
 	}
 	e.IntAttributes.Set("tabindex", i)
+	return e
+}
+
+func (e *AUDIOElement) IfTABINDEX(condition bool, i int) *AUDIOElement {
+	if condition {
+		e.TABINDEX(i)
+	}
 	return e
 }
 
@@ -1231,6 +1497,13 @@ func (e *AUDIOElement) TITLE(s string) *AUDIOElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("title", s)
+	return e
+}
+
+func (e *AUDIOElement) IfTITLE(condition bool, s string) *AUDIOElement {
+	if condition {
+		e.TITLE(s)
+	}
 	return e
 }
 

@@ -56,13 +56,41 @@ func (e *H2Element) TextF(format string, args ...any) *H2Element {
 	return e.Text(fmt.Sprintf(format, args...))
 }
 
+func (e *H2Element) IfText(condition bool, text string) *H2Element {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
+}
+
+func (e *H2Element) IfTextF(condition bool, format string, args ...any) *H2Element {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
+}
+
 func (e *H2Element) Escaped(text string) *H2Element {
 	e.Descendants = append(e.Descendants, Escaped(text))
 	return e
 }
 
+func (e *H2Element) IfEscaped(condition bool, text string) *H2Element {
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
+}
+
 func (e *H2Element) EscapedF(format string, args ...any) *H2Element {
 	return e.Escaped(fmt.Sprintf(format, args...))
+}
+
+func (e *H2Element) IfEscapedF(condition bool, format string, args ...any) *H2Element {
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *H2Element) CustomData(key, value string) *H2Element {
@@ -73,8 +101,22 @@ func (e *H2Element) CustomData(key, value string) *H2Element {
 	return e
 }
 
+func (e *H2Element) IfCustomData(condition bool, key, value string) *H2Element {
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
+}
+
 func (e *H2Element) CustomDataF(key, format string, args ...any) *H2Element {
 	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
+func (e *H2Element) IfCustomDataF(condition bool, key, format string, args ...any) *H2Element {
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *H2Element) CustomDataRemove(key string) *H2Element {
@@ -94,6 +136,13 @@ func (e *H2Element) ACCESSKEY(r rune) *H2Element {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("accesskey", string(r))
+	return e
+}
+
+func (e *H2Element) IfACCESSKEY(condition bool, r rune) *H2Element {
+	if condition {
+		e.ACCESSKEY(r)
+	}
 	return e
 }
 
@@ -179,12 +228,26 @@ func (e *H2Element) AUTOFOCUS() *H2Element {
 	return e
 }
 
+func (e *H2Element) IfAUTOFOCUS(condition bool) *H2Element {
+	if condition {
+		e.AUTOFOCUSSet(true)
+	}
+	return e
+}
+
 // Set the attribute autofocus to the value b explicitly.
 func (e *H2Element) AUTOFOCUSSet(b bool) *H2Element {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("autofocus", b)
+	return e
+}
+
+func (e *H2Element) IfSetAUTOFOCUS(condition bool, b bool) *H2Element {
+	if condition {
+		e.AUTOFOCUSSet(b)
+	}
 	return e
 }
 
@@ -212,6 +275,13 @@ func (e *H2Element) CLASS(s ...string) *H2Element {
 		e.DelimitedStrings.Set("class", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *H2Element) IfCLASS(condition bool, s ...string) *H2Element {
+	if condition {
+		e.CLASS(s...)
+	}
 	return e
 }
 
@@ -420,6 +490,13 @@ func (e *H2Element) EXPORTPARTS(s ...string) *H2Element {
 	return e
 }
 
+func (e *H2Element) IfEXPORTPARTS(condition bool, s ...string) *H2Element {
+	if condition {
+		e.EXPORTPARTS(s...)
+	}
+	return e
+}
+
 // Remove the attribute exportparts from the element.
 func (e *H2Element) EXPORTPARTSRemove(s ...string) *H2Element {
 	if e.DelimitedStrings == nil {
@@ -495,6 +572,13 @@ func (e *H2Element) ID(s string) *H2Element {
 	return e
 }
 
+func (e *H2Element) IfID(condition bool, s string) *H2Element {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
 // Remove the attribute id from the element.
 func (e *H2Element) IDRemove(s string) *H2Element {
 	if e.StringAttributes == nil {
@@ -521,12 +605,26 @@ func (e *H2Element) INERT() *H2Element {
 	return e
 }
 
+func (e *H2Element) IfINERT(condition bool) *H2Element {
+	if condition {
+		e.INERTSet(true)
+	}
+	return e
+}
+
 // Set the attribute inert to the value b explicitly.
 func (e *H2Element) INERTSet(b bool) *H2Element {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("inert", b)
+	return e
+}
+
+func (e *H2Element) IfSetINERT(condition bool, b bool) *H2Element {
+	if condition {
+		e.INERTSet(b)
+	}
 	return e
 }
 
@@ -622,6 +720,13 @@ func (e *H2Element) IS(s string) *H2Element {
 	return e
 }
 
+func (e *H2Element) IfIS(condition bool, s string) *H2Element {
+	if condition {
+		e.IS(s)
+	}
+	return e
+}
+
 // Remove the attribute is from the element.
 func (e *H2Element) ISRemove(s string) *H2Element {
 	if e.StringAttributes == nil {
@@ -652,6 +757,13 @@ func (e *H2Element) ITEMID(s string) *H2Element {
 	return e
 }
 
+func (e *H2Element) IfITEMID(condition bool, s string) *H2Element {
+	if condition {
+		e.ITEMID(s)
+	}
+	return e
+}
+
 // Remove the attribute itemid from the element.
 func (e *H2Element) ITEMIDRemove(s string) *H2Element {
 	if e.StringAttributes == nil {
@@ -677,6 +789,13 @@ func (e *H2Element) ITEMPROP(s string) *H2Element {
 	return e
 }
 
+func (e *H2Element) IfITEMPROP(condition bool, s string) *H2Element {
+	if condition {
+		e.ITEMPROP(s)
+	}
+	return e
+}
+
 // Remove the attribute itemprop from the element.
 func (e *H2Element) ITEMPROPRemove(s string) *H2Element {
 	if e.StringAttributes == nil {
@@ -696,6 +815,13 @@ func (e *H2Element) ITEMREF(s string) *H2Element {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("itemref", s)
+	return e
+}
+
+func (e *H2Element) IfITEMREF(condition bool, s string) *H2Element {
+	if condition {
+		e.ITEMREF(s)
+	}
 	return e
 }
 
@@ -721,12 +847,26 @@ func (e *H2Element) ITEMSCOPE() *H2Element {
 	return e
 }
 
+func (e *H2Element) IfITEMSCOPE(condition bool) *H2Element {
+	if condition {
+		e.ITEMSCOPESet(true)
+	}
+	return e
+}
+
 // Set the attribute itemscope to the value b explicitly.
 func (e *H2Element) ITEMSCOPESet(b bool) *H2Element {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("itemscope", b)
+	return e
+}
+
+func (e *H2Element) IfSetITEMSCOPE(condition bool, b bool) *H2Element {
+	if condition {
+		e.ITEMSCOPESet(b)
+	}
 	return e
 }
 
@@ -755,6 +895,13 @@ func (e *H2Element) ITEMTYPE(s string) *H2Element {
 	return e
 }
 
+func (e *H2Element) IfITEMTYPE(condition bool, s string) *H2Element {
+	if condition {
+		e.ITEMTYPE(s)
+	}
+	return e
+}
+
 // Remove the attribute itemtype from the element.
 func (e *H2Element) ITEMTYPERemove(s string) *H2Element {
 	if e.StringAttributes == nil {
@@ -778,6 +925,13 @@ func (e *H2Element) LANG(s string) *H2Element {
 	return e
 }
 
+func (e *H2Element) IfLANG(condition bool, s string) *H2Element {
+	if condition {
+		e.LANG(s)
+	}
+	return e
+}
+
 // Remove the attribute lang from the element.
 func (e *H2Element) LANGRemove(s string) *H2Element {
 	if e.StringAttributes == nil {
@@ -796,6 +950,13 @@ func (e *H2Element) NONCE(s string) *H2Element {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("nonce", s)
+	return e
+}
+
+func (e *H2Element) IfNONCE(condition bool, s string) *H2Element {
+	if condition {
+		e.NONCE(s)
+	}
 	return e
 }
 
@@ -822,6 +983,13 @@ func (e *H2Element) PART(s ...string) *H2Element {
 		e.DelimitedStrings.Set("part", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *H2Element) IfPART(condition bool, s ...string) *H2Element {
+	if condition {
+		e.PART(s...)
+	}
 	return e
 }
 
@@ -892,6 +1060,13 @@ func (e *H2Element) SLOT(s string) *H2Element {
 	return e
 }
 
+func (e *H2Element) IfSLOT(condition bool, s string) *H2Element {
+	if condition {
+		e.SLOT(s)
+	}
+	return e
+}
+
 // Remove the attribute slot from the element.
 func (e *H2Element) SLOTRemove(s string) *H2Element {
 	if e.StringAttributes == nil {
@@ -950,6 +1125,13 @@ func (e *H2Element) STYLEF(k string, format string, args ...any) *H2Element {
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+func (e *H2Element) IfSTYLE(condition bool, k string, v string) *H2Element {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
 func (e *H2Element) STYLE(k string, v string) *H2Element {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -960,6 +1142,13 @@ func (e *H2Element) STYLE(k string, v string) *H2Element {
 		e.KVStrings.Set("style", kv)
 	}
 	kv.Add(k, v)
+	return e
+}
+
+func (e *H2Element) IfSTYLEF(condition bool, k string, format string, args ...any) *H2Element {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
 	return e
 }
 
@@ -1000,6 +1189,13 @@ func (e *H2Element) STYLEPairs(pairs ...string) *H2Element {
 	return e
 }
 
+func (e *H2Element) IfSTYLEPairs(condition bool, pairs ...string) *H2Element {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
+	return e
+}
+
 // Remove the attribute style from the element.
 func (e *H2Element) STYLERemove(keys ...string) *H2Element {
 	if e.KVStrings == nil {
@@ -1034,6 +1230,13 @@ func (e *H2Element) TABINDEX(i int) *H2Element {
 		e.IntAttributes = treemap.New[string, int]()
 	}
 	e.IntAttributes.Set("tabindex", i)
+	return e
+}
+
+func (e *H2Element) IfTABINDEX(condition bool, i int) *H2Element {
+	if condition {
+		e.TABINDEX(i)
+	}
 	return e
 }
 
@@ -1072,6 +1275,13 @@ func (e *H2Element) TITLE(s string) *H2Element {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("title", s)
+	return e
+}
+
+func (e *H2Element) IfTITLE(condition bool, s string) *H2Element {
+	if condition {
+		e.TITLE(s)
+	}
 	return e
 }
 

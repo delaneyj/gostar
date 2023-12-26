@@ -55,13 +55,41 @@ func (e *LIElement) TextF(format string, args ...any) *LIElement {
 	return e.Text(fmt.Sprintf(format, args...))
 }
 
+func (e *LIElement) IfText(condition bool, text string) *LIElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
+}
+
+func (e *LIElement) IfTextF(condition bool, format string, args ...any) *LIElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
+}
+
 func (e *LIElement) Escaped(text string) *LIElement {
 	e.Descendants = append(e.Descendants, Escaped(text))
 	return e
 }
 
+func (e *LIElement) IfEscaped(condition bool, text string) *LIElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
+}
+
 func (e *LIElement) EscapedF(format string, args ...any) *LIElement {
 	return e.Escaped(fmt.Sprintf(format, args...))
+}
+
+func (e *LIElement) IfEscapedF(condition bool, format string, args ...any) *LIElement {
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *LIElement) CustomData(key, value string) *LIElement {
@@ -72,8 +100,22 @@ func (e *LIElement) CustomData(key, value string) *LIElement {
 	return e
 }
 
+func (e *LIElement) IfCustomData(condition bool, key, value string) *LIElement {
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
+}
+
 func (e *LIElement) CustomDataF(key, format string, args ...any) *LIElement {
 	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
+func (e *LIElement) IfCustomDataF(condition bool, key, format string, args ...any) *LIElement {
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *LIElement) CustomDataRemove(key string) *LIElement {
@@ -90,6 +132,13 @@ func (e *LIElement) VALUE(i int) *LIElement {
 		e.IntAttributes = treemap.New[string, int]()
 	}
 	e.IntAttributes.Set("value", i)
+	return e
+}
+
+func (e *LIElement) IfVALUE(condition bool, i int) *LIElement {
+	if condition {
+		e.VALUE(i)
+	}
 	return e
 }
 
@@ -111,6 +160,13 @@ func (e *LIElement) ACCESSKEY(r rune) *LIElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("accesskey", string(r))
+	return e
+}
+
+func (e *LIElement) IfACCESSKEY(condition bool, r rune) *LIElement {
+	if condition {
+		e.ACCESSKEY(r)
+	}
 	return e
 }
 
@@ -196,12 +252,26 @@ func (e *LIElement) AUTOFOCUS() *LIElement {
 	return e
 }
 
+func (e *LIElement) IfAUTOFOCUS(condition bool) *LIElement {
+	if condition {
+		e.AUTOFOCUSSet(true)
+	}
+	return e
+}
+
 // Set the attribute autofocus to the value b explicitly.
 func (e *LIElement) AUTOFOCUSSet(b bool) *LIElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("autofocus", b)
+	return e
+}
+
+func (e *LIElement) IfSetAUTOFOCUS(condition bool, b bool) *LIElement {
+	if condition {
+		e.AUTOFOCUSSet(b)
+	}
 	return e
 }
 
@@ -229,6 +299,13 @@ func (e *LIElement) CLASS(s ...string) *LIElement {
 		e.DelimitedStrings.Set("class", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *LIElement) IfCLASS(condition bool, s ...string) *LIElement {
+	if condition {
+		e.CLASS(s...)
+	}
 	return e
 }
 
@@ -437,6 +514,13 @@ func (e *LIElement) EXPORTPARTS(s ...string) *LIElement {
 	return e
 }
 
+func (e *LIElement) IfEXPORTPARTS(condition bool, s ...string) *LIElement {
+	if condition {
+		e.EXPORTPARTS(s...)
+	}
+	return e
+}
+
 // Remove the attribute exportparts from the element.
 func (e *LIElement) EXPORTPARTSRemove(s ...string) *LIElement {
 	if e.DelimitedStrings == nil {
@@ -512,6 +596,13 @@ func (e *LIElement) ID(s string) *LIElement {
 	return e
 }
 
+func (e *LIElement) IfID(condition bool, s string) *LIElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
 // Remove the attribute id from the element.
 func (e *LIElement) IDRemove(s string) *LIElement {
 	if e.StringAttributes == nil {
@@ -538,12 +629,26 @@ func (e *LIElement) INERT() *LIElement {
 	return e
 }
 
+func (e *LIElement) IfINERT(condition bool) *LIElement {
+	if condition {
+		e.INERTSet(true)
+	}
+	return e
+}
+
 // Set the attribute inert to the value b explicitly.
 func (e *LIElement) INERTSet(b bool) *LIElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("inert", b)
+	return e
+}
+
+func (e *LIElement) IfSetINERT(condition bool, b bool) *LIElement {
+	if condition {
+		e.INERTSet(b)
+	}
 	return e
 }
 
@@ -639,6 +744,13 @@ func (e *LIElement) IS(s string) *LIElement {
 	return e
 }
 
+func (e *LIElement) IfIS(condition bool, s string) *LIElement {
+	if condition {
+		e.IS(s)
+	}
+	return e
+}
+
 // Remove the attribute is from the element.
 func (e *LIElement) ISRemove(s string) *LIElement {
 	if e.StringAttributes == nil {
@@ -669,6 +781,13 @@ func (e *LIElement) ITEMID(s string) *LIElement {
 	return e
 }
 
+func (e *LIElement) IfITEMID(condition bool, s string) *LIElement {
+	if condition {
+		e.ITEMID(s)
+	}
+	return e
+}
+
 // Remove the attribute itemid from the element.
 func (e *LIElement) ITEMIDRemove(s string) *LIElement {
 	if e.StringAttributes == nil {
@@ -694,6 +813,13 @@ func (e *LIElement) ITEMPROP(s string) *LIElement {
 	return e
 }
 
+func (e *LIElement) IfITEMPROP(condition bool, s string) *LIElement {
+	if condition {
+		e.ITEMPROP(s)
+	}
+	return e
+}
+
 // Remove the attribute itemprop from the element.
 func (e *LIElement) ITEMPROPRemove(s string) *LIElement {
 	if e.StringAttributes == nil {
@@ -713,6 +839,13 @@ func (e *LIElement) ITEMREF(s string) *LIElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("itemref", s)
+	return e
+}
+
+func (e *LIElement) IfITEMREF(condition bool, s string) *LIElement {
+	if condition {
+		e.ITEMREF(s)
+	}
 	return e
 }
 
@@ -738,12 +871,26 @@ func (e *LIElement) ITEMSCOPE() *LIElement {
 	return e
 }
 
+func (e *LIElement) IfITEMSCOPE(condition bool) *LIElement {
+	if condition {
+		e.ITEMSCOPESet(true)
+	}
+	return e
+}
+
 // Set the attribute itemscope to the value b explicitly.
 func (e *LIElement) ITEMSCOPESet(b bool) *LIElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("itemscope", b)
+	return e
+}
+
+func (e *LIElement) IfSetITEMSCOPE(condition bool, b bool) *LIElement {
+	if condition {
+		e.ITEMSCOPESet(b)
+	}
 	return e
 }
 
@@ -772,6 +919,13 @@ func (e *LIElement) ITEMTYPE(s string) *LIElement {
 	return e
 }
 
+func (e *LIElement) IfITEMTYPE(condition bool, s string) *LIElement {
+	if condition {
+		e.ITEMTYPE(s)
+	}
+	return e
+}
+
 // Remove the attribute itemtype from the element.
 func (e *LIElement) ITEMTYPERemove(s string) *LIElement {
 	if e.StringAttributes == nil {
@@ -795,6 +949,13 @@ func (e *LIElement) LANG(s string) *LIElement {
 	return e
 }
 
+func (e *LIElement) IfLANG(condition bool, s string) *LIElement {
+	if condition {
+		e.LANG(s)
+	}
+	return e
+}
+
 // Remove the attribute lang from the element.
 func (e *LIElement) LANGRemove(s string) *LIElement {
 	if e.StringAttributes == nil {
@@ -813,6 +974,13 @@ func (e *LIElement) NONCE(s string) *LIElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("nonce", s)
+	return e
+}
+
+func (e *LIElement) IfNONCE(condition bool, s string) *LIElement {
+	if condition {
+		e.NONCE(s)
+	}
 	return e
 }
 
@@ -839,6 +1007,13 @@ func (e *LIElement) PART(s ...string) *LIElement {
 		e.DelimitedStrings.Set("part", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *LIElement) IfPART(condition bool, s ...string) *LIElement {
+	if condition {
+		e.PART(s...)
+	}
 	return e
 }
 
@@ -909,6 +1084,13 @@ func (e *LIElement) SLOT(s string) *LIElement {
 	return e
 }
 
+func (e *LIElement) IfSLOT(condition bool, s string) *LIElement {
+	if condition {
+		e.SLOT(s)
+	}
+	return e
+}
+
 // Remove the attribute slot from the element.
 func (e *LIElement) SLOTRemove(s string) *LIElement {
 	if e.StringAttributes == nil {
@@ -967,6 +1149,13 @@ func (e *LIElement) STYLEF(k string, format string, args ...any) *LIElement {
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+func (e *LIElement) IfSTYLE(condition bool, k string, v string) *LIElement {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
 func (e *LIElement) STYLE(k string, v string) *LIElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -977,6 +1166,13 @@ func (e *LIElement) STYLE(k string, v string) *LIElement {
 		e.KVStrings.Set("style", kv)
 	}
 	kv.Add(k, v)
+	return e
+}
+
+func (e *LIElement) IfSTYLEF(condition bool, k string, format string, args ...any) *LIElement {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
 	return e
 }
 
@@ -1017,6 +1213,13 @@ func (e *LIElement) STYLEPairs(pairs ...string) *LIElement {
 	return e
 }
 
+func (e *LIElement) IfSTYLEPairs(condition bool, pairs ...string) *LIElement {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
+	return e
+}
+
 // Remove the attribute style from the element.
 func (e *LIElement) STYLERemove(keys ...string) *LIElement {
 	if e.KVStrings == nil {
@@ -1051,6 +1254,13 @@ func (e *LIElement) TABINDEX(i int) *LIElement {
 		e.IntAttributes = treemap.New[string, int]()
 	}
 	e.IntAttributes.Set("tabindex", i)
+	return e
+}
+
+func (e *LIElement) IfTABINDEX(condition bool, i int) *LIElement {
+	if condition {
+		e.TABINDEX(i)
+	}
 	return e
 }
 
@@ -1089,6 +1299,13 @@ func (e *LIElement) TITLE(s string) *LIElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("title", s)
+	return e
+}
+
+func (e *LIElement) IfTITLE(condition bool, s string) *LIElement {
+	if condition {
+		e.TITLE(s)
+	}
 	return e
 }
 

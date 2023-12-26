@@ -55,13 +55,41 @@ func (e *SELECTElement) TextF(format string, args ...any) *SELECTElement {
 	return e.Text(fmt.Sprintf(format, args...))
 }
 
+func (e *SELECTElement) IfText(condition bool, text string) *SELECTElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
+}
+
+func (e *SELECTElement) IfTextF(condition bool, format string, args ...any) *SELECTElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
+}
+
 func (e *SELECTElement) Escaped(text string) *SELECTElement {
 	e.Descendants = append(e.Descendants, Escaped(text))
 	return e
 }
 
+func (e *SELECTElement) IfEscaped(condition bool, text string) *SELECTElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
+}
+
 func (e *SELECTElement) EscapedF(format string, args ...any) *SELECTElement {
 	return e.Escaped(fmt.Sprintf(format, args...))
+}
+
+func (e *SELECTElement) IfEscapedF(condition bool, format string, args ...any) *SELECTElement {
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *SELECTElement) CustomData(key, value string) *SELECTElement {
@@ -72,8 +100,22 @@ func (e *SELECTElement) CustomData(key, value string) *SELECTElement {
 	return e
 }
 
+func (e *SELECTElement) IfCustomData(condition bool, key, value string) *SELECTElement {
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
+}
+
 func (e *SELECTElement) CustomDataF(key, format string, args ...any) *SELECTElement {
 	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
+func (e *SELECTElement) IfCustomDataF(condition bool, key, format string, args ...any) *SELECTElement {
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *SELECTElement) CustomDataRemove(key string) *SELECTElement {
@@ -118,12 +160,26 @@ func (e *SELECTElement) DISABLED() *SELECTElement {
 	return e
 }
 
+func (e *SELECTElement) IfDISABLED(condition bool) *SELECTElement {
+	if condition {
+		e.DISABLEDSet(true)
+	}
+	return e
+}
+
 // Set the attribute disabled to the value b explicitly.
 func (e *SELECTElement) DISABLEDSet(b bool) *SELECTElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("disabled", b)
+	return e
+}
+
+func (e *SELECTElement) IfSetDISABLED(condition bool, b bool) *SELECTElement {
+	if condition {
+		e.DISABLEDSet(b)
+	}
 	return e
 }
 
@@ -145,6 +201,13 @@ func (e *SELECTElement) FORM(s string) *SELECTElement {
 	return e
 }
 
+func (e *SELECTElement) IfFORM(condition bool, s string) *SELECTElement {
+	if condition {
+		e.FORM(s)
+	}
+	return e
+}
+
 // Remove the attribute form from the element.
 func (e *SELECTElement) FORMRemove(s string) *SELECTElement {
 	if e.StringAttributes == nil {
@@ -160,12 +223,26 @@ func (e *SELECTElement) MULTIPLE() *SELECTElement {
 	return e
 }
 
+func (e *SELECTElement) IfMULTIPLE(condition bool) *SELECTElement {
+	if condition {
+		e.MULTIPLESet(true)
+	}
+	return e
+}
+
 // Set the attribute multiple to the value b explicitly.
 func (e *SELECTElement) MULTIPLESet(b bool) *SELECTElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("multiple", b)
+	return e
+}
+
+func (e *SELECTElement) IfSetMULTIPLE(condition bool, b bool) *SELECTElement {
+	if condition {
+		e.MULTIPLESet(b)
+	}
 	return e
 }
 
@@ -187,6 +264,13 @@ func (e *SELECTElement) NAME(s string) *SELECTElement {
 	return e
 }
 
+func (e *SELECTElement) IfNAME(condition bool, s string) *SELECTElement {
+	if condition {
+		e.NAME(s)
+	}
+	return e
+}
+
 // Remove the attribute name from the element.
 func (e *SELECTElement) NAMERemove(s string) *SELECTElement {
 	if e.StringAttributes == nil {
@@ -202,12 +286,26 @@ func (e *SELECTElement) REQUIRED() *SELECTElement {
 	return e
 }
 
+func (e *SELECTElement) IfREQUIRED(condition bool) *SELECTElement {
+	if condition {
+		e.REQUIREDSet(true)
+	}
+	return e
+}
+
 // Set the attribute required to the value b explicitly.
 func (e *SELECTElement) REQUIREDSet(b bool) *SELECTElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("required", b)
+	return e
+}
+
+func (e *SELECTElement) IfSetREQUIRED(condition bool, b bool) *SELECTElement {
+	if condition {
+		e.REQUIREDSet(b)
+	}
 	return e
 }
 
@@ -229,6 +327,13 @@ func (e *SELECTElement) SIZE(i int) *SELECTElement {
 	return e
 }
 
+func (e *SELECTElement) IfSIZE(condition bool, i int) *SELECTElement {
+	if condition {
+		e.SIZE(i)
+	}
+	return e
+}
+
 // Remove the attribute size from the element.
 func (e *SELECTElement) SIZERemove(i int) *SELECTElement {
 	if e.IntAttributes == nil {
@@ -247,6 +352,13 @@ func (e *SELECTElement) ACCESSKEY(r rune) *SELECTElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("accesskey", string(r))
+	return e
+}
+
+func (e *SELECTElement) IfACCESSKEY(condition bool, r rune) *SELECTElement {
+	if condition {
+		e.ACCESSKEY(r)
+	}
 	return e
 }
 
@@ -332,12 +444,26 @@ func (e *SELECTElement) AUTOFOCUS() *SELECTElement {
 	return e
 }
 
+func (e *SELECTElement) IfAUTOFOCUS(condition bool) *SELECTElement {
+	if condition {
+		e.AUTOFOCUSSet(true)
+	}
+	return e
+}
+
 // Set the attribute autofocus to the value b explicitly.
 func (e *SELECTElement) AUTOFOCUSSet(b bool) *SELECTElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("autofocus", b)
+	return e
+}
+
+func (e *SELECTElement) IfSetAUTOFOCUS(condition bool, b bool) *SELECTElement {
+	if condition {
+		e.AUTOFOCUSSet(b)
+	}
 	return e
 }
 
@@ -365,6 +491,13 @@ func (e *SELECTElement) CLASS(s ...string) *SELECTElement {
 		e.DelimitedStrings.Set("class", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *SELECTElement) IfCLASS(condition bool, s ...string) *SELECTElement {
+	if condition {
+		e.CLASS(s...)
+	}
 	return e
 }
 
@@ -573,6 +706,13 @@ func (e *SELECTElement) EXPORTPARTS(s ...string) *SELECTElement {
 	return e
 }
 
+func (e *SELECTElement) IfEXPORTPARTS(condition bool, s ...string) *SELECTElement {
+	if condition {
+		e.EXPORTPARTS(s...)
+	}
+	return e
+}
+
 // Remove the attribute exportparts from the element.
 func (e *SELECTElement) EXPORTPARTSRemove(s ...string) *SELECTElement {
 	if e.DelimitedStrings == nil {
@@ -648,6 +788,13 @@ func (e *SELECTElement) ID(s string) *SELECTElement {
 	return e
 }
 
+func (e *SELECTElement) IfID(condition bool, s string) *SELECTElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
 // Remove the attribute id from the element.
 func (e *SELECTElement) IDRemove(s string) *SELECTElement {
 	if e.StringAttributes == nil {
@@ -674,12 +821,26 @@ func (e *SELECTElement) INERT() *SELECTElement {
 	return e
 }
 
+func (e *SELECTElement) IfINERT(condition bool) *SELECTElement {
+	if condition {
+		e.INERTSet(true)
+	}
+	return e
+}
+
 // Set the attribute inert to the value b explicitly.
 func (e *SELECTElement) INERTSet(b bool) *SELECTElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("inert", b)
+	return e
+}
+
+func (e *SELECTElement) IfSetINERT(condition bool, b bool) *SELECTElement {
+	if condition {
+		e.INERTSet(b)
+	}
 	return e
 }
 
@@ -775,6 +936,13 @@ func (e *SELECTElement) IS(s string) *SELECTElement {
 	return e
 }
 
+func (e *SELECTElement) IfIS(condition bool, s string) *SELECTElement {
+	if condition {
+		e.IS(s)
+	}
+	return e
+}
+
 // Remove the attribute is from the element.
 func (e *SELECTElement) ISRemove(s string) *SELECTElement {
 	if e.StringAttributes == nil {
@@ -805,6 +973,13 @@ func (e *SELECTElement) ITEMID(s string) *SELECTElement {
 	return e
 }
 
+func (e *SELECTElement) IfITEMID(condition bool, s string) *SELECTElement {
+	if condition {
+		e.ITEMID(s)
+	}
+	return e
+}
+
 // Remove the attribute itemid from the element.
 func (e *SELECTElement) ITEMIDRemove(s string) *SELECTElement {
 	if e.StringAttributes == nil {
@@ -830,6 +1005,13 @@ func (e *SELECTElement) ITEMPROP(s string) *SELECTElement {
 	return e
 }
 
+func (e *SELECTElement) IfITEMPROP(condition bool, s string) *SELECTElement {
+	if condition {
+		e.ITEMPROP(s)
+	}
+	return e
+}
+
 // Remove the attribute itemprop from the element.
 func (e *SELECTElement) ITEMPROPRemove(s string) *SELECTElement {
 	if e.StringAttributes == nil {
@@ -849,6 +1031,13 @@ func (e *SELECTElement) ITEMREF(s string) *SELECTElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("itemref", s)
+	return e
+}
+
+func (e *SELECTElement) IfITEMREF(condition bool, s string) *SELECTElement {
+	if condition {
+		e.ITEMREF(s)
+	}
 	return e
 }
 
@@ -874,12 +1063,26 @@ func (e *SELECTElement) ITEMSCOPE() *SELECTElement {
 	return e
 }
 
+func (e *SELECTElement) IfITEMSCOPE(condition bool) *SELECTElement {
+	if condition {
+		e.ITEMSCOPESet(true)
+	}
+	return e
+}
+
 // Set the attribute itemscope to the value b explicitly.
 func (e *SELECTElement) ITEMSCOPESet(b bool) *SELECTElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("itemscope", b)
+	return e
+}
+
+func (e *SELECTElement) IfSetITEMSCOPE(condition bool, b bool) *SELECTElement {
+	if condition {
+		e.ITEMSCOPESet(b)
+	}
 	return e
 }
 
@@ -908,6 +1111,13 @@ func (e *SELECTElement) ITEMTYPE(s string) *SELECTElement {
 	return e
 }
 
+func (e *SELECTElement) IfITEMTYPE(condition bool, s string) *SELECTElement {
+	if condition {
+		e.ITEMTYPE(s)
+	}
+	return e
+}
+
 // Remove the attribute itemtype from the element.
 func (e *SELECTElement) ITEMTYPERemove(s string) *SELECTElement {
 	if e.StringAttributes == nil {
@@ -931,6 +1141,13 @@ func (e *SELECTElement) LANG(s string) *SELECTElement {
 	return e
 }
 
+func (e *SELECTElement) IfLANG(condition bool, s string) *SELECTElement {
+	if condition {
+		e.LANG(s)
+	}
+	return e
+}
+
 // Remove the attribute lang from the element.
 func (e *SELECTElement) LANGRemove(s string) *SELECTElement {
 	if e.StringAttributes == nil {
@@ -949,6 +1166,13 @@ func (e *SELECTElement) NONCE(s string) *SELECTElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("nonce", s)
+	return e
+}
+
+func (e *SELECTElement) IfNONCE(condition bool, s string) *SELECTElement {
+	if condition {
+		e.NONCE(s)
+	}
 	return e
 }
 
@@ -975,6 +1199,13 @@ func (e *SELECTElement) PART(s ...string) *SELECTElement {
 		e.DelimitedStrings.Set("part", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *SELECTElement) IfPART(condition bool, s ...string) *SELECTElement {
+	if condition {
+		e.PART(s...)
+	}
 	return e
 }
 
@@ -1045,6 +1276,13 @@ func (e *SELECTElement) SLOT(s string) *SELECTElement {
 	return e
 }
 
+func (e *SELECTElement) IfSLOT(condition bool, s string) *SELECTElement {
+	if condition {
+		e.SLOT(s)
+	}
+	return e
+}
+
 // Remove the attribute slot from the element.
 func (e *SELECTElement) SLOTRemove(s string) *SELECTElement {
 	if e.StringAttributes == nil {
@@ -1103,6 +1341,13 @@ func (e *SELECTElement) STYLEF(k string, format string, args ...any) *SELECTElem
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+func (e *SELECTElement) IfSTYLE(condition bool, k string, v string) *SELECTElement {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
 func (e *SELECTElement) STYLE(k string, v string) *SELECTElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -1113,6 +1358,13 @@ func (e *SELECTElement) STYLE(k string, v string) *SELECTElement {
 		e.KVStrings.Set("style", kv)
 	}
 	kv.Add(k, v)
+	return e
+}
+
+func (e *SELECTElement) IfSTYLEF(condition bool, k string, format string, args ...any) *SELECTElement {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
 	return e
 }
 
@@ -1153,6 +1405,13 @@ func (e *SELECTElement) STYLEPairs(pairs ...string) *SELECTElement {
 	return e
 }
 
+func (e *SELECTElement) IfSTYLEPairs(condition bool, pairs ...string) *SELECTElement {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
+	return e
+}
+
 // Remove the attribute style from the element.
 func (e *SELECTElement) STYLERemove(keys ...string) *SELECTElement {
 	if e.KVStrings == nil {
@@ -1187,6 +1446,13 @@ func (e *SELECTElement) TABINDEX(i int) *SELECTElement {
 		e.IntAttributes = treemap.New[string, int]()
 	}
 	e.IntAttributes.Set("tabindex", i)
+	return e
+}
+
+func (e *SELECTElement) IfTABINDEX(condition bool, i int) *SELECTElement {
+	if condition {
+		e.TABINDEX(i)
+	}
 	return e
 }
 
@@ -1225,6 +1491,13 @@ func (e *SELECTElement) TITLE(s string) *SELECTElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("title", s)
+	return e
+}
+
+func (e *SELECTElement) IfTITLE(condition bool, s string) *SELECTElement {
+	if condition {
+		e.TITLE(s)
+	}
 	return e
 }
 

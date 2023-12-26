@@ -56,13 +56,41 @@ func (e *ULElement) TextF(format string, args ...any) *ULElement {
 	return e.Text(fmt.Sprintf(format, args...))
 }
 
+func (e *ULElement) IfText(condition bool, text string) *ULElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
+}
+
+func (e *ULElement) IfTextF(condition bool, format string, args ...any) *ULElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
+}
+
 func (e *ULElement) Escaped(text string) *ULElement {
 	e.Descendants = append(e.Descendants, Escaped(text))
 	return e
 }
 
+func (e *ULElement) IfEscaped(condition bool, text string) *ULElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
+}
+
 func (e *ULElement) EscapedF(format string, args ...any) *ULElement {
 	return e.Escaped(fmt.Sprintf(format, args...))
+}
+
+func (e *ULElement) IfEscapedF(condition bool, format string, args ...any) *ULElement {
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *ULElement) CustomData(key, value string) *ULElement {
@@ -73,8 +101,22 @@ func (e *ULElement) CustomData(key, value string) *ULElement {
 	return e
 }
 
+func (e *ULElement) IfCustomData(condition bool, key, value string) *ULElement {
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
+}
+
 func (e *ULElement) CustomDataF(key, format string, args ...any) *ULElement {
 	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
+func (e *ULElement) IfCustomDataF(condition bool, key, format string, args ...any) *ULElement {
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *ULElement) CustomDataRemove(key string) *ULElement {
@@ -123,6 +165,13 @@ func (e *ULElement) ACCESSKEY(r rune) *ULElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("accesskey", string(r))
+	return e
+}
+
+func (e *ULElement) IfACCESSKEY(condition bool, r rune) *ULElement {
+	if condition {
+		e.ACCESSKEY(r)
+	}
 	return e
 }
 
@@ -208,12 +257,26 @@ func (e *ULElement) AUTOFOCUS() *ULElement {
 	return e
 }
 
+func (e *ULElement) IfAUTOFOCUS(condition bool) *ULElement {
+	if condition {
+		e.AUTOFOCUSSet(true)
+	}
+	return e
+}
+
 // Set the attribute autofocus to the value b explicitly.
 func (e *ULElement) AUTOFOCUSSet(b bool) *ULElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("autofocus", b)
+	return e
+}
+
+func (e *ULElement) IfSetAUTOFOCUS(condition bool, b bool) *ULElement {
+	if condition {
+		e.AUTOFOCUSSet(b)
+	}
 	return e
 }
 
@@ -241,6 +304,13 @@ func (e *ULElement) CLASS(s ...string) *ULElement {
 		e.DelimitedStrings.Set("class", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *ULElement) IfCLASS(condition bool, s ...string) *ULElement {
+	if condition {
+		e.CLASS(s...)
+	}
 	return e
 }
 
@@ -449,6 +519,13 @@ func (e *ULElement) EXPORTPARTS(s ...string) *ULElement {
 	return e
 }
 
+func (e *ULElement) IfEXPORTPARTS(condition bool, s ...string) *ULElement {
+	if condition {
+		e.EXPORTPARTS(s...)
+	}
+	return e
+}
+
 // Remove the attribute exportparts from the element.
 func (e *ULElement) EXPORTPARTSRemove(s ...string) *ULElement {
 	if e.DelimitedStrings == nil {
@@ -524,6 +601,13 @@ func (e *ULElement) ID(s string) *ULElement {
 	return e
 }
 
+func (e *ULElement) IfID(condition bool, s string) *ULElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
 // Remove the attribute id from the element.
 func (e *ULElement) IDRemove(s string) *ULElement {
 	if e.StringAttributes == nil {
@@ -550,12 +634,26 @@ func (e *ULElement) INERT() *ULElement {
 	return e
 }
 
+func (e *ULElement) IfINERT(condition bool) *ULElement {
+	if condition {
+		e.INERTSet(true)
+	}
+	return e
+}
+
 // Set the attribute inert to the value b explicitly.
 func (e *ULElement) INERTSet(b bool) *ULElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("inert", b)
+	return e
+}
+
+func (e *ULElement) IfSetINERT(condition bool, b bool) *ULElement {
+	if condition {
+		e.INERTSet(b)
+	}
 	return e
 }
 
@@ -651,6 +749,13 @@ func (e *ULElement) IS(s string) *ULElement {
 	return e
 }
 
+func (e *ULElement) IfIS(condition bool, s string) *ULElement {
+	if condition {
+		e.IS(s)
+	}
+	return e
+}
+
 // Remove the attribute is from the element.
 func (e *ULElement) ISRemove(s string) *ULElement {
 	if e.StringAttributes == nil {
@@ -681,6 +786,13 @@ func (e *ULElement) ITEMID(s string) *ULElement {
 	return e
 }
 
+func (e *ULElement) IfITEMID(condition bool, s string) *ULElement {
+	if condition {
+		e.ITEMID(s)
+	}
+	return e
+}
+
 // Remove the attribute itemid from the element.
 func (e *ULElement) ITEMIDRemove(s string) *ULElement {
 	if e.StringAttributes == nil {
@@ -706,6 +818,13 @@ func (e *ULElement) ITEMPROP(s string) *ULElement {
 	return e
 }
 
+func (e *ULElement) IfITEMPROP(condition bool, s string) *ULElement {
+	if condition {
+		e.ITEMPROP(s)
+	}
+	return e
+}
+
 // Remove the attribute itemprop from the element.
 func (e *ULElement) ITEMPROPRemove(s string) *ULElement {
 	if e.StringAttributes == nil {
@@ -725,6 +844,13 @@ func (e *ULElement) ITEMREF(s string) *ULElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("itemref", s)
+	return e
+}
+
+func (e *ULElement) IfITEMREF(condition bool, s string) *ULElement {
+	if condition {
+		e.ITEMREF(s)
+	}
 	return e
 }
 
@@ -750,12 +876,26 @@ func (e *ULElement) ITEMSCOPE() *ULElement {
 	return e
 }
 
+func (e *ULElement) IfITEMSCOPE(condition bool) *ULElement {
+	if condition {
+		e.ITEMSCOPESet(true)
+	}
+	return e
+}
+
 // Set the attribute itemscope to the value b explicitly.
 func (e *ULElement) ITEMSCOPESet(b bool) *ULElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("itemscope", b)
+	return e
+}
+
+func (e *ULElement) IfSetITEMSCOPE(condition bool, b bool) *ULElement {
+	if condition {
+		e.ITEMSCOPESet(b)
+	}
 	return e
 }
 
@@ -784,6 +924,13 @@ func (e *ULElement) ITEMTYPE(s string) *ULElement {
 	return e
 }
 
+func (e *ULElement) IfITEMTYPE(condition bool, s string) *ULElement {
+	if condition {
+		e.ITEMTYPE(s)
+	}
+	return e
+}
+
 // Remove the attribute itemtype from the element.
 func (e *ULElement) ITEMTYPERemove(s string) *ULElement {
 	if e.StringAttributes == nil {
@@ -807,6 +954,13 @@ func (e *ULElement) LANG(s string) *ULElement {
 	return e
 }
 
+func (e *ULElement) IfLANG(condition bool, s string) *ULElement {
+	if condition {
+		e.LANG(s)
+	}
+	return e
+}
+
 // Remove the attribute lang from the element.
 func (e *ULElement) LANGRemove(s string) *ULElement {
 	if e.StringAttributes == nil {
@@ -825,6 +979,13 @@ func (e *ULElement) NONCE(s string) *ULElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("nonce", s)
+	return e
+}
+
+func (e *ULElement) IfNONCE(condition bool, s string) *ULElement {
+	if condition {
+		e.NONCE(s)
+	}
 	return e
 }
 
@@ -851,6 +1012,13 @@ func (e *ULElement) PART(s ...string) *ULElement {
 		e.DelimitedStrings.Set("part", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *ULElement) IfPART(condition bool, s ...string) *ULElement {
+	if condition {
+		e.PART(s...)
+	}
 	return e
 }
 
@@ -921,6 +1089,13 @@ func (e *ULElement) SLOT(s string) *ULElement {
 	return e
 }
 
+func (e *ULElement) IfSLOT(condition bool, s string) *ULElement {
+	if condition {
+		e.SLOT(s)
+	}
+	return e
+}
+
 // Remove the attribute slot from the element.
 func (e *ULElement) SLOTRemove(s string) *ULElement {
 	if e.StringAttributes == nil {
@@ -979,6 +1154,13 @@ func (e *ULElement) STYLEF(k string, format string, args ...any) *ULElement {
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+func (e *ULElement) IfSTYLE(condition bool, k string, v string) *ULElement {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
 func (e *ULElement) STYLE(k string, v string) *ULElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -989,6 +1171,13 @@ func (e *ULElement) STYLE(k string, v string) *ULElement {
 		e.KVStrings.Set("style", kv)
 	}
 	kv.Add(k, v)
+	return e
+}
+
+func (e *ULElement) IfSTYLEF(condition bool, k string, format string, args ...any) *ULElement {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
 	return e
 }
 
@@ -1029,6 +1218,13 @@ func (e *ULElement) STYLEPairs(pairs ...string) *ULElement {
 	return e
 }
 
+func (e *ULElement) IfSTYLEPairs(condition bool, pairs ...string) *ULElement {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
+	return e
+}
+
 // Remove the attribute style from the element.
 func (e *ULElement) STYLERemove(keys ...string) *ULElement {
 	if e.KVStrings == nil {
@@ -1063,6 +1259,13 @@ func (e *ULElement) TABINDEX(i int) *ULElement {
 		e.IntAttributes = treemap.New[string, int]()
 	}
 	e.IntAttributes.Set("tabindex", i)
+	return e
+}
+
+func (e *ULElement) IfTABINDEX(condition bool, i int) *ULElement {
+	if condition {
+		e.TABINDEX(i)
+	}
 	return e
 }
 
@@ -1101,6 +1304,13 @@ func (e *ULElement) TITLE(s string) *ULElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("title", s)
+	return e
+}
+
+func (e *ULElement) IfTITLE(condition bool, s string) *ULElement {
+	if condition {
+		e.TITLE(s)
+	}
 	return e
 }
 

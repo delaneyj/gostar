@@ -56,13 +56,41 @@ func (e *METERElement) TextF(format string, args ...any) *METERElement {
 	return e.Text(fmt.Sprintf(format, args...))
 }
 
+func (e *METERElement) IfText(condition bool, text string) *METERElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
+}
+
+func (e *METERElement) IfTextF(condition bool, format string, args ...any) *METERElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
+}
+
 func (e *METERElement) Escaped(text string) *METERElement {
 	e.Descendants = append(e.Descendants, Escaped(text))
 	return e
 }
 
+func (e *METERElement) IfEscaped(condition bool, text string) *METERElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
+}
+
 func (e *METERElement) EscapedF(format string, args ...any) *METERElement {
 	return e.Escaped(fmt.Sprintf(format, args...))
+}
+
+func (e *METERElement) IfEscapedF(condition bool, format string, args ...any) *METERElement {
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *METERElement) CustomData(key, value string) *METERElement {
@@ -73,8 +101,22 @@ func (e *METERElement) CustomData(key, value string) *METERElement {
 	return e
 }
 
+func (e *METERElement) IfCustomData(condition bool, key, value string) *METERElement {
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
+}
+
 func (e *METERElement) CustomDataF(key, format string, args ...any) *METERElement {
 	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
+func (e *METERElement) IfCustomDataF(condition bool, key, format string, args ...any) *METERElement {
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *METERElement) CustomDataRemove(key string) *METERElement {
@@ -94,12 +136,26 @@ func (e *METERElement) HIGH(f float64) *METERElement {
 	return e
 }
 
+func (e *METERElement) IfHIGH(condition bool, f float64) *METERElement {
+	if condition {
+		e.HIGH(f)
+	}
+	return e
+}
+
 // Indicates the range's lower bound.
 func (e *METERElement) LOW(f float64) *METERElement {
 	if e.FloatAttributes == nil {
 		e.FloatAttributes = treemap.New[string, float64]()
 	}
 	e.FloatAttributes.Set("low", f)
+	return e
+}
+
+func (e *METERElement) IfLOW(condition bool, f float64) *METERElement {
+	if condition {
+		e.LOW(f)
+	}
 	return e
 }
 
@@ -112,12 +168,26 @@ func (e *METERElement) MAX(f float64) *METERElement {
 	return e
 }
 
+func (e *METERElement) IfMAX(condition bool, f float64) *METERElement {
+	if condition {
+		e.MAX(f)
+	}
+	return e
+}
+
 // Indicates the minimum value allowed.
 func (e *METERElement) MIN(f float64) *METERElement {
 	if e.FloatAttributes == nil {
 		e.FloatAttributes = treemap.New[string, float64]()
 	}
 	e.FloatAttributes.Set("min", f)
+	return e
+}
+
+func (e *METERElement) IfMIN(condition bool, f float64) *METERElement {
+	if condition {
+		e.MIN(f)
+	}
 	return e
 }
 
@@ -130,12 +200,26 @@ func (e *METERElement) OPTIMUM(f float64) *METERElement {
 	return e
 }
 
+func (e *METERElement) IfOPTIMUM(condition bool, f float64) *METERElement {
+	if condition {
+		e.OPTIMUM(f)
+	}
+	return e
+}
+
 // Current numeric value.
 func (e *METERElement) VALUE(f float64) *METERElement {
 	if e.FloatAttributes == nil {
 		e.FloatAttributes = treemap.New[string, float64]()
 	}
 	e.FloatAttributes.Set("value", f)
+	return e
+}
+
+func (e *METERElement) IfVALUE(condition bool, f float64) *METERElement {
+	if condition {
+		e.VALUE(f)
+	}
 	return e
 }
 
@@ -148,6 +232,13 @@ func (e *METERElement) ACCESSKEY(r rune) *METERElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("accesskey", string(r))
+	return e
+}
+
+func (e *METERElement) IfACCESSKEY(condition bool, r rune) *METERElement {
+	if condition {
+		e.ACCESSKEY(r)
+	}
 	return e
 }
 
@@ -233,12 +324,26 @@ func (e *METERElement) AUTOFOCUS() *METERElement {
 	return e
 }
 
+func (e *METERElement) IfAUTOFOCUS(condition bool) *METERElement {
+	if condition {
+		e.AUTOFOCUSSet(true)
+	}
+	return e
+}
+
 // Set the attribute autofocus to the value b explicitly.
 func (e *METERElement) AUTOFOCUSSet(b bool) *METERElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("autofocus", b)
+	return e
+}
+
+func (e *METERElement) IfSetAUTOFOCUS(condition bool, b bool) *METERElement {
+	if condition {
+		e.AUTOFOCUSSet(b)
+	}
 	return e
 }
 
@@ -266,6 +371,13 @@ func (e *METERElement) CLASS(s ...string) *METERElement {
 		e.DelimitedStrings.Set("class", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *METERElement) IfCLASS(condition bool, s ...string) *METERElement {
+	if condition {
+		e.CLASS(s...)
+	}
 	return e
 }
 
@@ -474,6 +586,13 @@ func (e *METERElement) EXPORTPARTS(s ...string) *METERElement {
 	return e
 }
 
+func (e *METERElement) IfEXPORTPARTS(condition bool, s ...string) *METERElement {
+	if condition {
+		e.EXPORTPARTS(s...)
+	}
+	return e
+}
+
 // Remove the attribute exportparts from the element.
 func (e *METERElement) EXPORTPARTSRemove(s ...string) *METERElement {
 	if e.DelimitedStrings == nil {
@@ -549,6 +668,13 @@ func (e *METERElement) ID(s string) *METERElement {
 	return e
 }
 
+func (e *METERElement) IfID(condition bool, s string) *METERElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
 // Remove the attribute id from the element.
 func (e *METERElement) IDRemove(s string) *METERElement {
 	if e.StringAttributes == nil {
@@ -575,12 +701,26 @@ func (e *METERElement) INERT() *METERElement {
 	return e
 }
 
+func (e *METERElement) IfINERT(condition bool) *METERElement {
+	if condition {
+		e.INERTSet(true)
+	}
+	return e
+}
+
 // Set the attribute inert to the value b explicitly.
 func (e *METERElement) INERTSet(b bool) *METERElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("inert", b)
+	return e
+}
+
+func (e *METERElement) IfSetINERT(condition bool, b bool) *METERElement {
+	if condition {
+		e.INERTSet(b)
+	}
 	return e
 }
 
@@ -676,6 +816,13 @@ func (e *METERElement) IS(s string) *METERElement {
 	return e
 }
 
+func (e *METERElement) IfIS(condition bool, s string) *METERElement {
+	if condition {
+		e.IS(s)
+	}
+	return e
+}
+
 // Remove the attribute is from the element.
 func (e *METERElement) ISRemove(s string) *METERElement {
 	if e.StringAttributes == nil {
@@ -706,6 +853,13 @@ func (e *METERElement) ITEMID(s string) *METERElement {
 	return e
 }
 
+func (e *METERElement) IfITEMID(condition bool, s string) *METERElement {
+	if condition {
+		e.ITEMID(s)
+	}
+	return e
+}
+
 // Remove the attribute itemid from the element.
 func (e *METERElement) ITEMIDRemove(s string) *METERElement {
 	if e.StringAttributes == nil {
@@ -731,6 +885,13 @@ func (e *METERElement) ITEMPROP(s string) *METERElement {
 	return e
 }
 
+func (e *METERElement) IfITEMPROP(condition bool, s string) *METERElement {
+	if condition {
+		e.ITEMPROP(s)
+	}
+	return e
+}
+
 // Remove the attribute itemprop from the element.
 func (e *METERElement) ITEMPROPRemove(s string) *METERElement {
 	if e.StringAttributes == nil {
@@ -750,6 +911,13 @@ func (e *METERElement) ITEMREF(s string) *METERElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("itemref", s)
+	return e
+}
+
+func (e *METERElement) IfITEMREF(condition bool, s string) *METERElement {
+	if condition {
+		e.ITEMREF(s)
+	}
 	return e
 }
 
@@ -775,12 +943,26 @@ func (e *METERElement) ITEMSCOPE() *METERElement {
 	return e
 }
 
+func (e *METERElement) IfITEMSCOPE(condition bool) *METERElement {
+	if condition {
+		e.ITEMSCOPESet(true)
+	}
+	return e
+}
+
 // Set the attribute itemscope to the value b explicitly.
 func (e *METERElement) ITEMSCOPESet(b bool) *METERElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("itemscope", b)
+	return e
+}
+
+func (e *METERElement) IfSetITEMSCOPE(condition bool, b bool) *METERElement {
+	if condition {
+		e.ITEMSCOPESet(b)
+	}
 	return e
 }
 
@@ -809,6 +991,13 @@ func (e *METERElement) ITEMTYPE(s string) *METERElement {
 	return e
 }
 
+func (e *METERElement) IfITEMTYPE(condition bool, s string) *METERElement {
+	if condition {
+		e.ITEMTYPE(s)
+	}
+	return e
+}
+
 // Remove the attribute itemtype from the element.
 func (e *METERElement) ITEMTYPERemove(s string) *METERElement {
 	if e.StringAttributes == nil {
@@ -832,6 +1021,13 @@ func (e *METERElement) LANG(s string) *METERElement {
 	return e
 }
 
+func (e *METERElement) IfLANG(condition bool, s string) *METERElement {
+	if condition {
+		e.LANG(s)
+	}
+	return e
+}
+
 // Remove the attribute lang from the element.
 func (e *METERElement) LANGRemove(s string) *METERElement {
 	if e.StringAttributes == nil {
@@ -850,6 +1046,13 @@ func (e *METERElement) NONCE(s string) *METERElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("nonce", s)
+	return e
+}
+
+func (e *METERElement) IfNONCE(condition bool, s string) *METERElement {
+	if condition {
+		e.NONCE(s)
+	}
 	return e
 }
 
@@ -876,6 +1079,13 @@ func (e *METERElement) PART(s ...string) *METERElement {
 		e.DelimitedStrings.Set("part", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *METERElement) IfPART(condition bool, s ...string) *METERElement {
+	if condition {
+		e.PART(s...)
+	}
 	return e
 }
 
@@ -946,6 +1156,13 @@ func (e *METERElement) SLOT(s string) *METERElement {
 	return e
 }
 
+func (e *METERElement) IfSLOT(condition bool, s string) *METERElement {
+	if condition {
+		e.SLOT(s)
+	}
+	return e
+}
+
 // Remove the attribute slot from the element.
 func (e *METERElement) SLOTRemove(s string) *METERElement {
 	if e.StringAttributes == nil {
@@ -1004,6 +1221,13 @@ func (e *METERElement) STYLEF(k string, format string, args ...any) *METERElemen
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+func (e *METERElement) IfSTYLE(condition bool, k string, v string) *METERElement {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
 func (e *METERElement) STYLE(k string, v string) *METERElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -1014,6 +1238,13 @@ func (e *METERElement) STYLE(k string, v string) *METERElement {
 		e.KVStrings.Set("style", kv)
 	}
 	kv.Add(k, v)
+	return e
+}
+
+func (e *METERElement) IfSTYLEF(condition bool, k string, format string, args ...any) *METERElement {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
 	return e
 }
 
@@ -1054,6 +1285,13 @@ func (e *METERElement) STYLEPairs(pairs ...string) *METERElement {
 	return e
 }
 
+func (e *METERElement) IfSTYLEPairs(condition bool, pairs ...string) *METERElement {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
+	return e
+}
+
 // Remove the attribute style from the element.
 func (e *METERElement) STYLERemove(keys ...string) *METERElement {
 	if e.KVStrings == nil {
@@ -1088,6 +1326,13 @@ func (e *METERElement) TABINDEX(i int) *METERElement {
 		e.IntAttributes = treemap.New[string, int]()
 	}
 	e.IntAttributes.Set("tabindex", i)
+	return e
+}
+
+func (e *METERElement) IfTABINDEX(condition bool, i int) *METERElement {
+	if condition {
+		e.TABINDEX(i)
+	}
 	return e
 }
 
@@ -1126,6 +1371,13 @@ func (e *METERElement) TITLE(s string) *METERElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("title", s)
+	return e
+}
+
+func (e *METERElement) IfTITLE(condition bool, s string) *METERElement {
+	if condition {
+		e.TITLE(s)
+	}
 	return e
 }
 

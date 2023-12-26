@@ -56,13 +56,41 @@ func (e *SVGELLIPSEElement) TextF(format string, args ...any) *SVGELLIPSEElement
 	return e.Text(fmt.Sprintf(format, args...))
 }
 
+func (e *SVGELLIPSEElement) IfText(condition bool, text string) *SVGELLIPSEElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
+}
+
+func (e *SVGELLIPSEElement) IfTextF(condition bool, format string, args ...any) *SVGELLIPSEElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
+}
+
 func (e *SVGELLIPSEElement) Escaped(text string) *SVGELLIPSEElement {
 	e.Descendants = append(e.Descendants, Escaped(text))
 	return e
 }
 
+func (e *SVGELLIPSEElement) IfEscaped(condition bool, text string) *SVGELLIPSEElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
+}
+
 func (e *SVGELLIPSEElement) EscapedF(format string, args ...any) *SVGELLIPSEElement {
 	return e.Escaped(fmt.Sprintf(format, args...))
+}
+
+func (e *SVGELLIPSEElement) IfEscapedF(condition bool, format string, args ...any) *SVGELLIPSEElement {
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *SVGELLIPSEElement) CustomData(key, value string) *SVGELLIPSEElement {
@@ -73,8 +101,22 @@ func (e *SVGELLIPSEElement) CustomData(key, value string) *SVGELLIPSEElement {
 	return e
 }
 
+func (e *SVGELLIPSEElement) IfCustomData(condition bool, key, value string) *SVGELLIPSEElement {
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
+}
+
 func (e *SVGELLIPSEElement) CustomDataF(key, format string, args ...any) *SVGELLIPSEElement {
 	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
+func (e *SVGELLIPSEElement) IfCustomDataF(condition bool, key, format string, args ...any) *SVGELLIPSEElement {
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *SVGELLIPSEElement) CustomDataRemove(key string) *SVGELLIPSEElement {
@@ -94,12 +136,26 @@ func (e *SVGELLIPSEElement) CX(f float64) *SVGELLIPSEElement {
 	return e
 }
 
+func (e *SVGELLIPSEElement) IfCX(condition bool, f float64) *SVGELLIPSEElement {
+	if condition {
+		e.CX(f)
+	}
+	return e
+}
+
 // The y-axis coordinate of the center of the ellipse.
 func (e *SVGELLIPSEElement) CY(f float64) *SVGELLIPSEElement {
 	if e.FloatAttributes == nil {
 		e.FloatAttributes = treemap.New[string, float64]()
 	}
 	e.FloatAttributes.Set("cy", f)
+	return e
+}
+
+func (e *SVGELLIPSEElement) IfCY(condition bool, f float64) *SVGELLIPSEElement {
+	if condition {
+		e.CY(f)
+	}
 	return e
 }
 
@@ -112,12 +168,26 @@ func (e *SVGELLIPSEElement) RX(f float64) *SVGELLIPSEElement {
 	return e
 }
 
+func (e *SVGELLIPSEElement) IfRX(condition bool, f float64) *SVGELLIPSEElement {
+	if condition {
+		e.RX(f)
+	}
+	return e
+}
+
 // The y-axis radius of the ellipse.
 func (e *SVGELLIPSEElement) RY(f float64) *SVGELLIPSEElement {
 	if e.FloatAttributes == nil {
 		e.FloatAttributes = treemap.New[string, float64]()
 	}
 	e.FloatAttributes.Set("ry", f)
+	return e
+}
+
+func (e *SVGELLIPSEElement) IfRY(condition bool, f float64) *SVGELLIPSEElement {
+	if condition {
+		e.RY(f)
+	}
 	return e
 }
 
@@ -133,6 +203,13 @@ func (e *SVGELLIPSEElement) CLASS(s ...string) *SVGELLIPSEElement {
 		e.DelimitedStrings.Set("class", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *SVGELLIPSEElement) IfCLASS(condition bool, s ...string) *SVGELLIPSEElement {
+	if condition {
+		e.CLASS(s...)
+	}
 	return e
 }
 
@@ -158,6 +235,13 @@ func (e *SVGELLIPSEElement) ID(s string) *SVGELLIPSEElement {
 	return e
 }
 
+func (e *SVGELLIPSEElement) IfID(condition bool, s string) *SVGELLIPSEElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
 // Remove the attribute id from the element.
 func (e *SVGELLIPSEElement) IDRemove(s string) *SVGELLIPSEElement {
 	if e.StringAttributes == nil {
@@ -172,6 +256,13 @@ func (e *SVGELLIPSEElement) STYLEF(k string, format string, args ...any) *SVGELL
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+func (e *SVGELLIPSEElement) IfSTYLE(condition bool, k string, v string) *SVGELLIPSEElement {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
 func (e *SVGELLIPSEElement) STYLE(k string, v string) *SVGELLIPSEElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -182,6 +273,13 @@ func (e *SVGELLIPSEElement) STYLE(k string, v string) *SVGELLIPSEElement {
 		e.KVStrings.Set("style", kv)
 	}
 	kv.Add(k, v)
+	return e
+}
+
+func (e *SVGELLIPSEElement) IfSTYLEF(condition bool, k string, format string, args ...any) *SVGELLIPSEElement {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
 	return e
 }
 
@@ -219,6 +317,13 @@ func (e *SVGELLIPSEElement) STYLEPairs(pairs ...string) *SVGELLIPSEElement {
 		kv.Add(pairs[i], pairs[i+1])
 	}
 
+	return e
+}
+
+func (e *SVGELLIPSEElement) IfSTYLEPairs(condition bool, pairs ...string) *SVGELLIPSEElement {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
 	return e
 }
 

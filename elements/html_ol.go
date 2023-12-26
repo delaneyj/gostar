@@ -56,13 +56,41 @@ func (e *OLElement) TextF(format string, args ...any) *OLElement {
 	return e.Text(fmt.Sprintf(format, args...))
 }
 
+func (e *OLElement) IfText(condition bool, text string) *OLElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
+}
+
+func (e *OLElement) IfTextF(condition bool, format string, args ...any) *OLElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
+}
+
 func (e *OLElement) Escaped(text string) *OLElement {
 	e.Descendants = append(e.Descendants, Escaped(text))
 	return e
 }
 
+func (e *OLElement) IfEscaped(condition bool, text string) *OLElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
+}
+
 func (e *OLElement) EscapedF(format string, args ...any) *OLElement {
 	return e.Escaped(fmt.Sprintf(format, args...))
+}
+
+func (e *OLElement) IfEscapedF(condition bool, format string, args ...any) *OLElement {
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *OLElement) CustomData(key, value string) *OLElement {
@@ -73,8 +101,22 @@ func (e *OLElement) CustomData(key, value string) *OLElement {
 	return e
 }
 
+func (e *OLElement) IfCustomData(condition bool, key, value string) *OLElement {
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
+}
+
 func (e *OLElement) CustomDataF(key, format string, args ...any) *OLElement {
 	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
+func (e *OLElement) IfCustomDataF(condition bool, key, format string, args ...any) *OLElement {
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *OLElement) CustomDataRemove(key string) *OLElement {
@@ -91,12 +133,26 @@ func (e *OLElement) REVERSED() *OLElement {
 	return e
 }
 
+func (e *OLElement) IfREVERSED(condition bool) *OLElement {
+	if condition {
+		e.REVERSEDSet(true)
+	}
+	return e
+}
+
 // Set the attribute reversed to the value b explicitly.
 func (e *OLElement) REVERSEDSet(b bool) *OLElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("reversed", b)
+	return e
+}
+
+func (e *OLElement) IfSetREVERSED(condition bool, b bool) *OLElement {
+	if condition {
+		e.REVERSEDSet(b)
+	}
 	return e
 }
 
@@ -115,6 +171,13 @@ func (e *OLElement) START(i int) *OLElement {
 		e.IntAttributes = treemap.New[string, int]()
 	}
 	e.IntAttributes.Set("start", i)
+	return e
+}
+
+func (e *OLElement) IfSTART(condition bool, i int) *OLElement {
+	if condition {
+		e.START(i)
+	}
 	return e
 }
 
@@ -169,6 +232,13 @@ func (e *OLElement) ACCESSKEY(r rune) *OLElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("accesskey", string(r))
+	return e
+}
+
+func (e *OLElement) IfACCESSKEY(condition bool, r rune) *OLElement {
+	if condition {
+		e.ACCESSKEY(r)
+	}
 	return e
 }
 
@@ -254,12 +324,26 @@ func (e *OLElement) AUTOFOCUS() *OLElement {
 	return e
 }
 
+func (e *OLElement) IfAUTOFOCUS(condition bool) *OLElement {
+	if condition {
+		e.AUTOFOCUSSet(true)
+	}
+	return e
+}
+
 // Set the attribute autofocus to the value b explicitly.
 func (e *OLElement) AUTOFOCUSSet(b bool) *OLElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("autofocus", b)
+	return e
+}
+
+func (e *OLElement) IfSetAUTOFOCUS(condition bool, b bool) *OLElement {
+	if condition {
+		e.AUTOFOCUSSet(b)
+	}
 	return e
 }
 
@@ -287,6 +371,13 @@ func (e *OLElement) CLASS(s ...string) *OLElement {
 		e.DelimitedStrings.Set("class", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *OLElement) IfCLASS(condition bool, s ...string) *OLElement {
+	if condition {
+		e.CLASS(s...)
+	}
 	return e
 }
 
@@ -495,6 +586,13 @@ func (e *OLElement) EXPORTPARTS(s ...string) *OLElement {
 	return e
 }
 
+func (e *OLElement) IfEXPORTPARTS(condition bool, s ...string) *OLElement {
+	if condition {
+		e.EXPORTPARTS(s...)
+	}
+	return e
+}
+
 // Remove the attribute exportparts from the element.
 func (e *OLElement) EXPORTPARTSRemove(s ...string) *OLElement {
 	if e.DelimitedStrings == nil {
@@ -570,6 +668,13 @@ func (e *OLElement) ID(s string) *OLElement {
 	return e
 }
 
+func (e *OLElement) IfID(condition bool, s string) *OLElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
 // Remove the attribute id from the element.
 func (e *OLElement) IDRemove(s string) *OLElement {
 	if e.StringAttributes == nil {
@@ -596,12 +701,26 @@ func (e *OLElement) INERT() *OLElement {
 	return e
 }
 
+func (e *OLElement) IfINERT(condition bool) *OLElement {
+	if condition {
+		e.INERTSet(true)
+	}
+	return e
+}
+
 // Set the attribute inert to the value b explicitly.
 func (e *OLElement) INERTSet(b bool) *OLElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("inert", b)
+	return e
+}
+
+func (e *OLElement) IfSetINERT(condition bool, b bool) *OLElement {
+	if condition {
+		e.INERTSet(b)
+	}
 	return e
 }
 
@@ -697,6 +816,13 @@ func (e *OLElement) IS(s string) *OLElement {
 	return e
 }
 
+func (e *OLElement) IfIS(condition bool, s string) *OLElement {
+	if condition {
+		e.IS(s)
+	}
+	return e
+}
+
 // Remove the attribute is from the element.
 func (e *OLElement) ISRemove(s string) *OLElement {
 	if e.StringAttributes == nil {
@@ -727,6 +853,13 @@ func (e *OLElement) ITEMID(s string) *OLElement {
 	return e
 }
 
+func (e *OLElement) IfITEMID(condition bool, s string) *OLElement {
+	if condition {
+		e.ITEMID(s)
+	}
+	return e
+}
+
 // Remove the attribute itemid from the element.
 func (e *OLElement) ITEMIDRemove(s string) *OLElement {
 	if e.StringAttributes == nil {
@@ -752,6 +885,13 @@ func (e *OLElement) ITEMPROP(s string) *OLElement {
 	return e
 }
 
+func (e *OLElement) IfITEMPROP(condition bool, s string) *OLElement {
+	if condition {
+		e.ITEMPROP(s)
+	}
+	return e
+}
+
 // Remove the attribute itemprop from the element.
 func (e *OLElement) ITEMPROPRemove(s string) *OLElement {
 	if e.StringAttributes == nil {
@@ -771,6 +911,13 @@ func (e *OLElement) ITEMREF(s string) *OLElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("itemref", s)
+	return e
+}
+
+func (e *OLElement) IfITEMREF(condition bool, s string) *OLElement {
+	if condition {
+		e.ITEMREF(s)
+	}
 	return e
 }
 
@@ -796,12 +943,26 @@ func (e *OLElement) ITEMSCOPE() *OLElement {
 	return e
 }
 
+func (e *OLElement) IfITEMSCOPE(condition bool) *OLElement {
+	if condition {
+		e.ITEMSCOPESet(true)
+	}
+	return e
+}
+
 // Set the attribute itemscope to the value b explicitly.
 func (e *OLElement) ITEMSCOPESet(b bool) *OLElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("itemscope", b)
+	return e
+}
+
+func (e *OLElement) IfSetITEMSCOPE(condition bool, b bool) *OLElement {
+	if condition {
+		e.ITEMSCOPESet(b)
+	}
 	return e
 }
 
@@ -830,6 +991,13 @@ func (e *OLElement) ITEMTYPE(s string) *OLElement {
 	return e
 }
 
+func (e *OLElement) IfITEMTYPE(condition bool, s string) *OLElement {
+	if condition {
+		e.ITEMTYPE(s)
+	}
+	return e
+}
+
 // Remove the attribute itemtype from the element.
 func (e *OLElement) ITEMTYPERemove(s string) *OLElement {
 	if e.StringAttributes == nil {
@@ -853,6 +1021,13 @@ func (e *OLElement) LANG(s string) *OLElement {
 	return e
 }
 
+func (e *OLElement) IfLANG(condition bool, s string) *OLElement {
+	if condition {
+		e.LANG(s)
+	}
+	return e
+}
+
 // Remove the attribute lang from the element.
 func (e *OLElement) LANGRemove(s string) *OLElement {
 	if e.StringAttributes == nil {
@@ -871,6 +1046,13 @@ func (e *OLElement) NONCE(s string) *OLElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("nonce", s)
+	return e
+}
+
+func (e *OLElement) IfNONCE(condition bool, s string) *OLElement {
+	if condition {
+		e.NONCE(s)
+	}
 	return e
 }
 
@@ -897,6 +1079,13 @@ func (e *OLElement) PART(s ...string) *OLElement {
 		e.DelimitedStrings.Set("part", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *OLElement) IfPART(condition bool, s ...string) *OLElement {
+	if condition {
+		e.PART(s...)
+	}
 	return e
 }
 
@@ -967,6 +1156,13 @@ func (e *OLElement) SLOT(s string) *OLElement {
 	return e
 }
 
+func (e *OLElement) IfSLOT(condition bool, s string) *OLElement {
+	if condition {
+		e.SLOT(s)
+	}
+	return e
+}
+
 // Remove the attribute slot from the element.
 func (e *OLElement) SLOTRemove(s string) *OLElement {
 	if e.StringAttributes == nil {
@@ -1025,6 +1221,13 @@ func (e *OLElement) STYLEF(k string, format string, args ...any) *OLElement {
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+func (e *OLElement) IfSTYLE(condition bool, k string, v string) *OLElement {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
 func (e *OLElement) STYLE(k string, v string) *OLElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -1035,6 +1238,13 @@ func (e *OLElement) STYLE(k string, v string) *OLElement {
 		e.KVStrings.Set("style", kv)
 	}
 	kv.Add(k, v)
+	return e
+}
+
+func (e *OLElement) IfSTYLEF(condition bool, k string, format string, args ...any) *OLElement {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
 	return e
 }
 
@@ -1075,6 +1285,13 @@ func (e *OLElement) STYLEPairs(pairs ...string) *OLElement {
 	return e
 }
 
+func (e *OLElement) IfSTYLEPairs(condition bool, pairs ...string) *OLElement {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
+	return e
+}
+
 // Remove the attribute style from the element.
 func (e *OLElement) STYLERemove(keys ...string) *OLElement {
 	if e.KVStrings == nil {
@@ -1109,6 +1326,13 @@ func (e *OLElement) TABINDEX(i int) *OLElement {
 		e.IntAttributes = treemap.New[string, int]()
 	}
 	e.IntAttributes.Set("tabindex", i)
+	return e
+}
+
+func (e *OLElement) IfTABINDEX(condition bool, i int) *OLElement {
+	if condition {
+		e.TABINDEX(i)
+	}
 	return e
 }
 
@@ -1147,6 +1371,13 @@ func (e *OLElement) TITLE(s string) *OLElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("title", s)
+	return e
+}
+
+func (e *OLElement) IfTITLE(condition bool, s string) *OLElement {
+	if condition {
+		e.TITLE(s)
+	}
 	return e
 }
 

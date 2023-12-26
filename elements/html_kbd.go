@@ -57,13 +57,41 @@ func (e *KBDElement) TextF(format string, args ...any) *KBDElement {
 	return e.Text(fmt.Sprintf(format, args...))
 }
 
+func (e *KBDElement) IfText(condition bool, text string) *KBDElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
+}
+
+func (e *KBDElement) IfTextF(condition bool, format string, args ...any) *KBDElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
+}
+
 func (e *KBDElement) Escaped(text string) *KBDElement {
 	e.Descendants = append(e.Descendants, Escaped(text))
 	return e
 }
 
+func (e *KBDElement) IfEscaped(condition bool, text string) *KBDElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
+}
+
 func (e *KBDElement) EscapedF(format string, args ...any) *KBDElement {
 	return e.Escaped(fmt.Sprintf(format, args...))
+}
+
+func (e *KBDElement) IfEscapedF(condition bool, format string, args ...any) *KBDElement {
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *KBDElement) CustomData(key, value string) *KBDElement {
@@ -74,8 +102,22 @@ func (e *KBDElement) CustomData(key, value string) *KBDElement {
 	return e
 }
 
+func (e *KBDElement) IfCustomData(condition bool, key, value string) *KBDElement {
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
+}
+
 func (e *KBDElement) CustomDataF(key, format string, args ...any) *KBDElement {
 	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
+func (e *KBDElement) IfCustomDataF(condition bool, key, format string, args ...any) *KBDElement {
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *KBDElement) CustomDataRemove(key string) *KBDElement {
@@ -95,6 +137,13 @@ func (e *KBDElement) ACCESSKEY(r rune) *KBDElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("accesskey", string(r))
+	return e
+}
+
+func (e *KBDElement) IfACCESSKEY(condition bool, r rune) *KBDElement {
+	if condition {
+		e.ACCESSKEY(r)
+	}
 	return e
 }
 
@@ -180,12 +229,26 @@ func (e *KBDElement) AUTOFOCUS() *KBDElement {
 	return e
 }
 
+func (e *KBDElement) IfAUTOFOCUS(condition bool) *KBDElement {
+	if condition {
+		e.AUTOFOCUSSet(true)
+	}
+	return e
+}
+
 // Set the attribute autofocus to the value b explicitly.
 func (e *KBDElement) AUTOFOCUSSet(b bool) *KBDElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("autofocus", b)
+	return e
+}
+
+func (e *KBDElement) IfSetAUTOFOCUS(condition bool, b bool) *KBDElement {
+	if condition {
+		e.AUTOFOCUSSet(b)
+	}
 	return e
 }
 
@@ -213,6 +276,13 @@ func (e *KBDElement) CLASS(s ...string) *KBDElement {
 		e.DelimitedStrings.Set("class", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *KBDElement) IfCLASS(condition bool, s ...string) *KBDElement {
+	if condition {
+		e.CLASS(s...)
+	}
 	return e
 }
 
@@ -421,6 +491,13 @@ func (e *KBDElement) EXPORTPARTS(s ...string) *KBDElement {
 	return e
 }
 
+func (e *KBDElement) IfEXPORTPARTS(condition bool, s ...string) *KBDElement {
+	if condition {
+		e.EXPORTPARTS(s...)
+	}
+	return e
+}
+
 // Remove the attribute exportparts from the element.
 func (e *KBDElement) EXPORTPARTSRemove(s ...string) *KBDElement {
 	if e.DelimitedStrings == nil {
@@ -496,6 +573,13 @@ func (e *KBDElement) ID(s string) *KBDElement {
 	return e
 }
 
+func (e *KBDElement) IfID(condition bool, s string) *KBDElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
 // Remove the attribute id from the element.
 func (e *KBDElement) IDRemove(s string) *KBDElement {
 	if e.StringAttributes == nil {
@@ -522,12 +606,26 @@ func (e *KBDElement) INERT() *KBDElement {
 	return e
 }
 
+func (e *KBDElement) IfINERT(condition bool) *KBDElement {
+	if condition {
+		e.INERTSet(true)
+	}
+	return e
+}
+
 // Set the attribute inert to the value b explicitly.
 func (e *KBDElement) INERTSet(b bool) *KBDElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("inert", b)
+	return e
+}
+
+func (e *KBDElement) IfSetINERT(condition bool, b bool) *KBDElement {
+	if condition {
+		e.INERTSet(b)
+	}
 	return e
 }
 
@@ -623,6 +721,13 @@ func (e *KBDElement) IS(s string) *KBDElement {
 	return e
 }
 
+func (e *KBDElement) IfIS(condition bool, s string) *KBDElement {
+	if condition {
+		e.IS(s)
+	}
+	return e
+}
+
 // Remove the attribute is from the element.
 func (e *KBDElement) ISRemove(s string) *KBDElement {
 	if e.StringAttributes == nil {
@@ -653,6 +758,13 @@ func (e *KBDElement) ITEMID(s string) *KBDElement {
 	return e
 }
 
+func (e *KBDElement) IfITEMID(condition bool, s string) *KBDElement {
+	if condition {
+		e.ITEMID(s)
+	}
+	return e
+}
+
 // Remove the attribute itemid from the element.
 func (e *KBDElement) ITEMIDRemove(s string) *KBDElement {
 	if e.StringAttributes == nil {
@@ -678,6 +790,13 @@ func (e *KBDElement) ITEMPROP(s string) *KBDElement {
 	return e
 }
 
+func (e *KBDElement) IfITEMPROP(condition bool, s string) *KBDElement {
+	if condition {
+		e.ITEMPROP(s)
+	}
+	return e
+}
+
 // Remove the attribute itemprop from the element.
 func (e *KBDElement) ITEMPROPRemove(s string) *KBDElement {
 	if e.StringAttributes == nil {
@@ -697,6 +816,13 @@ func (e *KBDElement) ITEMREF(s string) *KBDElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("itemref", s)
+	return e
+}
+
+func (e *KBDElement) IfITEMREF(condition bool, s string) *KBDElement {
+	if condition {
+		e.ITEMREF(s)
+	}
 	return e
 }
 
@@ -722,12 +848,26 @@ func (e *KBDElement) ITEMSCOPE() *KBDElement {
 	return e
 }
 
+func (e *KBDElement) IfITEMSCOPE(condition bool) *KBDElement {
+	if condition {
+		e.ITEMSCOPESet(true)
+	}
+	return e
+}
+
 // Set the attribute itemscope to the value b explicitly.
 func (e *KBDElement) ITEMSCOPESet(b bool) *KBDElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("itemscope", b)
+	return e
+}
+
+func (e *KBDElement) IfSetITEMSCOPE(condition bool, b bool) *KBDElement {
+	if condition {
+		e.ITEMSCOPESet(b)
+	}
 	return e
 }
 
@@ -756,6 +896,13 @@ func (e *KBDElement) ITEMTYPE(s string) *KBDElement {
 	return e
 }
 
+func (e *KBDElement) IfITEMTYPE(condition bool, s string) *KBDElement {
+	if condition {
+		e.ITEMTYPE(s)
+	}
+	return e
+}
+
 // Remove the attribute itemtype from the element.
 func (e *KBDElement) ITEMTYPERemove(s string) *KBDElement {
 	if e.StringAttributes == nil {
@@ -779,6 +926,13 @@ func (e *KBDElement) LANG(s string) *KBDElement {
 	return e
 }
 
+func (e *KBDElement) IfLANG(condition bool, s string) *KBDElement {
+	if condition {
+		e.LANG(s)
+	}
+	return e
+}
+
 // Remove the attribute lang from the element.
 func (e *KBDElement) LANGRemove(s string) *KBDElement {
 	if e.StringAttributes == nil {
@@ -797,6 +951,13 @@ func (e *KBDElement) NONCE(s string) *KBDElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("nonce", s)
+	return e
+}
+
+func (e *KBDElement) IfNONCE(condition bool, s string) *KBDElement {
+	if condition {
+		e.NONCE(s)
+	}
 	return e
 }
 
@@ -823,6 +984,13 @@ func (e *KBDElement) PART(s ...string) *KBDElement {
 		e.DelimitedStrings.Set("part", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *KBDElement) IfPART(condition bool, s ...string) *KBDElement {
+	if condition {
+		e.PART(s...)
+	}
 	return e
 }
 
@@ -893,6 +1061,13 @@ func (e *KBDElement) SLOT(s string) *KBDElement {
 	return e
 }
 
+func (e *KBDElement) IfSLOT(condition bool, s string) *KBDElement {
+	if condition {
+		e.SLOT(s)
+	}
+	return e
+}
+
 // Remove the attribute slot from the element.
 func (e *KBDElement) SLOTRemove(s string) *KBDElement {
 	if e.StringAttributes == nil {
@@ -951,6 +1126,13 @@ func (e *KBDElement) STYLEF(k string, format string, args ...any) *KBDElement {
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+func (e *KBDElement) IfSTYLE(condition bool, k string, v string) *KBDElement {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
 func (e *KBDElement) STYLE(k string, v string) *KBDElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -961,6 +1143,13 @@ func (e *KBDElement) STYLE(k string, v string) *KBDElement {
 		e.KVStrings.Set("style", kv)
 	}
 	kv.Add(k, v)
+	return e
+}
+
+func (e *KBDElement) IfSTYLEF(condition bool, k string, format string, args ...any) *KBDElement {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
 	return e
 }
 
@@ -1001,6 +1190,13 @@ func (e *KBDElement) STYLEPairs(pairs ...string) *KBDElement {
 	return e
 }
 
+func (e *KBDElement) IfSTYLEPairs(condition bool, pairs ...string) *KBDElement {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
+	return e
+}
+
 // Remove the attribute style from the element.
 func (e *KBDElement) STYLERemove(keys ...string) *KBDElement {
 	if e.KVStrings == nil {
@@ -1035,6 +1231,13 @@ func (e *KBDElement) TABINDEX(i int) *KBDElement {
 		e.IntAttributes = treemap.New[string, int]()
 	}
 	e.IntAttributes.Set("tabindex", i)
+	return e
+}
+
+func (e *KBDElement) IfTABINDEX(condition bool, i int) *KBDElement {
+	if condition {
+		e.TABINDEX(i)
+	}
 	return e
 }
 
@@ -1073,6 +1276,13 @@ func (e *KBDElement) TITLE(s string) *KBDElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("title", s)
+	return e
+}
+
+func (e *KBDElement) IfTITLE(condition bool, s string) *KBDElement {
+	if condition {
+		e.TITLE(s)
+	}
 	return e
 }
 

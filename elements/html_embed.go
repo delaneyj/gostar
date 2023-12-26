@@ -57,13 +57,41 @@ func (e *EMBEDElement) TextF(format string, args ...any) *EMBEDElement {
 	return e.Text(fmt.Sprintf(format, args...))
 }
 
+func (e *EMBEDElement) IfText(condition bool, text string) *EMBEDElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
+}
+
+func (e *EMBEDElement) IfTextF(condition bool, format string, args ...any) *EMBEDElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
+}
+
 func (e *EMBEDElement) Escaped(text string) *EMBEDElement {
 	e.Descendants = append(e.Descendants, Escaped(text))
 	return e
 }
 
+func (e *EMBEDElement) IfEscaped(condition bool, text string) *EMBEDElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
+}
+
 func (e *EMBEDElement) EscapedF(format string, args ...any) *EMBEDElement {
 	return e.Escaped(fmt.Sprintf(format, args...))
+}
+
+func (e *EMBEDElement) IfEscapedF(condition bool, format string, args ...any) *EMBEDElement {
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *EMBEDElement) CustomData(key, value string) *EMBEDElement {
@@ -74,8 +102,22 @@ func (e *EMBEDElement) CustomData(key, value string) *EMBEDElement {
 	return e
 }
 
+func (e *EMBEDElement) IfCustomData(condition bool, key, value string) *EMBEDElement {
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
+}
+
 func (e *EMBEDElement) CustomDataF(key, format string, args ...any) *EMBEDElement {
 	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
+func (e *EMBEDElement) IfCustomDataF(condition bool, key, format string, args ...any) *EMBEDElement {
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *EMBEDElement) CustomDataRemove(key string) *EMBEDElement {
@@ -92,6 +134,13 @@ func (e *EMBEDElement) HEIGHT(i int) *EMBEDElement {
 		e.IntAttributes = treemap.New[string, int]()
 	}
 	e.IntAttributes.Set("height", i)
+	return e
+}
+
+func (e *EMBEDElement) IfHEIGHT(condition bool, i int) *EMBEDElement {
+	if condition {
+		e.HEIGHT(i)
+	}
 	return e
 }
 
@@ -113,6 +162,13 @@ func (e *EMBEDElement) SRC(s string) *EMBEDElement {
 	return e
 }
 
+func (e *EMBEDElement) IfSRC(condition bool, s string) *EMBEDElement {
+	if condition {
+		e.SRC(s)
+	}
+	return e
+}
+
 // Remove the attribute src from the element.
 func (e *EMBEDElement) SRCRemove(s string) *EMBEDElement {
 	if e.StringAttributes == nil {
@@ -128,6 +184,13 @@ func (e *EMBEDElement) TYPE(s string) *EMBEDElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("type", s)
+	return e
+}
+
+func (e *EMBEDElement) IfTYPE(condition bool, s string) *EMBEDElement {
+	if condition {
+		e.TYPE(s)
+	}
 	return e
 }
 
@@ -149,6 +212,13 @@ func (e *EMBEDElement) WIDTH(i int) *EMBEDElement {
 	return e
 }
 
+func (e *EMBEDElement) IfWIDTH(condition bool, i int) *EMBEDElement {
+	if condition {
+		e.WIDTH(i)
+	}
+	return e
+}
+
 // Remove the attribute width from the element.
 func (e *EMBEDElement) WIDTHRemove(i int) *EMBEDElement {
 	if e.IntAttributes == nil {
@@ -167,6 +237,13 @@ func (e *EMBEDElement) ACCESSKEY(r rune) *EMBEDElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("accesskey", string(r))
+	return e
+}
+
+func (e *EMBEDElement) IfACCESSKEY(condition bool, r rune) *EMBEDElement {
+	if condition {
+		e.ACCESSKEY(r)
+	}
 	return e
 }
 
@@ -252,12 +329,26 @@ func (e *EMBEDElement) AUTOFOCUS() *EMBEDElement {
 	return e
 }
 
+func (e *EMBEDElement) IfAUTOFOCUS(condition bool) *EMBEDElement {
+	if condition {
+		e.AUTOFOCUSSet(true)
+	}
+	return e
+}
+
 // Set the attribute autofocus to the value b explicitly.
 func (e *EMBEDElement) AUTOFOCUSSet(b bool) *EMBEDElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("autofocus", b)
+	return e
+}
+
+func (e *EMBEDElement) IfSetAUTOFOCUS(condition bool, b bool) *EMBEDElement {
+	if condition {
+		e.AUTOFOCUSSet(b)
+	}
 	return e
 }
 
@@ -285,6 +376,13 @@ func (e *EMBEDElement) CLASS(s ...string) *EMBEDElement {
 		e.DelimitedStrings.Set("class", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *EMBEDElement) IfCLASS(condition bool, s ...string) *EMBEDElement {
+	if condition {
+		e.CLASS(s...)
+	}
 	return e
 }
 
@@ -493,6 +591,13 @@ func (e *EMBEDElement) EXPORTPARTS(s ...string) *EMBEDElement {
 	return e
 }
 
+func (e *EMBEDElement) IfEXPORTPARTS(condition bool, s ...string) *EMBEDElement {
+	if condition {
+		e.EXPORTPARTS(s...)
+	}
+	return e
+}
+
 // Remove the attribute exportparts from the element.
 func (e *EMBEDElement) EXPORTPARTSRemove(s ...string) *EMBEDElement {
 	if e.DelimitedStrings == nil {
@@ -568,6 +673,13 @@ func (e *EMBEDElement) ID(s string) *EMBEDElement {
 	return e
 }
 
+func (e *EMBEDElement) IfID(condition bool, s string) *EMBEDElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
 // Remove the attribute id from the element.
 func (e *EMBEDElement) IDRemove(s string) *EMBEDElement {
 	if e.StringAttributes == nil {
@@ -594,12 +706,26 @@ func (e *EMBEDElement) INERT() *EMBEDElement {
 	return e
 }
 
+func (e *EMBEDElement) IfINERT(condition bool) *EMBEDElement {
+	if condition {
+		e.INERTSet(true)
+	}
+	return e
+}
+
 // Set the attribute inert to the value b explicitly.
 func (e *EMBEDElement) INERTSet(b bool) *EMBEDElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("inert", b)
+	return e
+}
+
+func (e *EMBEDElement) IfSetINERT(condition bool, b bool) *EMBEDElement {
+	if condition {
+		e.INERTSet(b)
+	}
 	return e
 }
 
@@ -695,6 +821,13 @@ func (e *EMBEDElement) IS(s string) *EMBEDElement {
 	return e
 }
 
+func (e *EMBEDElement) IfIS(condition bool, s string) *EMBEDElement {
+	if condition {
+		e.IS(s)
+	}
+	return e
+}
+
 // Remove the attribute is from the element.
 func (e *EMBEDElement) ISRemove(s string) *EMBEDElement {
 	if e.StringAttributes == nil {
@@ -725,6 +858,13 @@ func (e *EMBEDElement) ITEMID(s string) *EMBEDElement {
 	return e
 }
 
+func (e *EMBEDElement) IfITEMID(condition bool, s string) *EMBEDElement {
+	if condition {
+		e.ITEMID(s)
+	}
+	return e
+}
+
 // Remove the attribute itemid from the element.
 func (e *EMBEDElement) ITEMIDRemove(s string) *EMBEDElement {
 	if e.StringAttributes == nil {
@@ -750,6 +890,13 @@ func (e *EMBEDElement) ITEMPROP(s string) *EMBEDElement {
 	return e
 }
 
+func (e *EMBEDElement) IfITEMPROP(condition bool, s string) *EMBEDElement {
+	if condition {
+		e.ITEMPROP(s)
+	}
+	return e
+}
+
 // Remove the attribute itemprop from the element.
 func (e *EMBEDElement) ITEMPROPRemove(s string) *EMBEDElement {
 	if e.StringAttributes == nil {
@@ -769,6 +916,13 @@ func (e *EMBEDElement) ITEMREF(s string) *EMBEDElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("itemref", s)
+	return e
+}
+
+func (e *EMBEDElement) IfITEMREF(condition bool, s string) *EMBEDElement {
+	if condition {
+		e.ITEMREF(s)
+	}
 	return e
 }
 
@@ -794,12 +948,26 @@ func (e *EMBEDElement) ITEMSCOPE() *EMBEDElement {
 	return e
 }
 
+func (e *EMBEDElement) IfITEMSCOPE(condition bool) *EMBEDElement {
+	if condition {
+		e.ITEMSCOPESet(true)
+	}
+	return e
+}
+
 // Set the attribute itemscope to the value b explicitly.
 func (e *EMBEDElement) ITEMSCOPESet(b bool) *EMBEDElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("itemscope", b)
+	return e
+}
+
+func (e *EMBEDElement) IfSetITEMSCOPE(condition bool, b bool) *EMBEDElement {
+	if condition {
+		e.ITEMSCOPESet(b)
+	}
 	return e
 }
 
@@ -828,6 +996,13 @@ func (e *EMBEDElement) ITEMTYPE(s string) *EMBEDElement {
 	return e
 }
 
+func (e *EMBEDElement) IfITEMTYPE(condition bool, s string) *EMBEDElement {
+	if condition {
+		e.ITEMTYPE(s)
+	}
+	return e
+}
+
 // Remove the attribute itemtype from the element.
 func (e *EMBEDElement) ITEMTYPERemove(s string) *EMBEDElement {
 	if e.StringAttributes == nil {
@@ -851,6 +1026,13 @@ func (e *EMBEDElement) LANG(s string) *EMBEDElement {
 	return e
 }
 
+func (e *EMBEDElement) IfLANG(condition bool, s string) *EMBEDElement {
+	if condition {
+		e.LANG(s)
+	}
+	return e
+}
+
 // Remove the attribute lang from the element.
 func (e *EMBEDElement) LANGRemove(s string) *EMBEDElement {
 	if e.StringAttributes == nil {
@@ -869,6 +1051,13 @@ func (e *EMBEDElement) NONCE(s string) *EMBEDElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("nonce", s)
+	return e
+}
+
+func (e *EMBEDElement) IfNONCE(condition bool, s string) *EMBEDElement {
+	if condition {
+		e.NONCE(s)
+	}
 	return e
 }
 
@@ -895,6 +1084,13 @@ func (e *EMBEDElement) PART(s ...string) *EMBEDElement {
 		e.DelimitedStrings.Set("part", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *EMBEDElement) IfPART(condition bool, s ...string) *EMBEDElement {
+	if condition {
+		e.PART(s...)
+	}
 	return e
 }
 
@@ -965,6 +1161,13 @@ func (e *EMBEDElement) SLOT(s string) *EMBEDElement {
 	return e
 }
 
+func (e *EMBEDElement) IfSLOT(condition bool, s string) *EMBEDElement {
+	if condition {
+		e.SLOT(s)
+	}
+	return e
+}
+
 // Remove the attribute slot from the element.
 func (e *EMBEDElement) SLOTRemove(s string) *EMBEDElement {
 	if e.StringAttributes == nil {
@@ -1023,6 +1226,13 @@ func (e *EMBEDElement) STYLEF(k string, format string, args ...any) *EMBEDElemen
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+func (e *EMBEDElement) IfSTYLE(condition bool, k string, v string) *EMBEDElement {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
 func (e *EMBEDElement) STYLE(k string, v string) *EMBEDElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -1033,6 +1243,13 @@ func (e *EMBEDElement) STYLE(k string, v string) *EMBEDElement {
 		e.KVStrings.Set("style", kv)
 	}
 	kv.Add(k, v)
+	return e
+}
+
+func (e *EMBEDElement) IfSTYLEF(condition bool, k string, format string, args ...any) *EMBEDElement {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
 	return e
 }
 
@@ -1073,6 +1290,13 @@ func (e *EMBEDElement) STYLEPairs(pairs ...string) *EMBEDElement {
 	return e
 }
 
+func (e *EMBEDElement) IfSTYLEPairs(condition bool, pairs ...string) *EMBEDElement {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
+	return e
+}
+
 // Remove the attribute style from the element.
 func (e *EMBEDElement) STYLERemove(keys ...string) *EMBEDElement {
 	if e.KVStrings == nil {
@@ -1107,6 +1331,13 @@ func (e *EMBEDElement) TABINDEX(i int) *EMBEDElement {
 		e.IntAttributes = treemap.New[string, int]()
 	}
 	e.IntAttributes.Set("tabindex", i)
+	return e
+}
+
+func (e *EMBEDElement) IfTABINDEX(condition bool, i int) *EMBEDElement {
+	if condition {
+		e.TABINDEX(i)
+	}
 	return e
 }
 
@@ -1145,6 +1376,13 @@ func (e *EMBEDElement) TITLE(s string) *EMBEDElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("title", s)
+	return e
+}
+
+func (e *EMBEDElement) IfTITLE(condition bool, s string) *EMBEDElement {
+	if condition {
+		e.TITLE(s)
+	}
 	return e
 }
 

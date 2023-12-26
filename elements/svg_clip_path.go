@@ -56,13 +56,41 @@ func (e *SVGCLIPPATHElement) TextF(format string, args ...any) *SVGCLIPPATHEleme
 	return e.Text(fmt.Sprintf(format, args...))
 }
 
+func (e *SVGCLIPPATHElement) IfText(condition bool, text string) *SVGCLIPPATHElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
+}
+
+func (e *SVGCLIPPATHElement) IfTextF(condition bool, format string, args ...any) *SVGCLIPPATHElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
+}
+
 func (e *SVGCLIPPATHElement) Escaped(text string) *SVGCLIPPATHElement {
 	e.Descendants = append(e.Descendants, Escaped(text))
 	return e
 }
 
+func (e *SVGCLIPPATHElement) IfEscaped(condition bool, text string) *SVGCLIPPATHElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
+}
+
 func (e *SVGCLIPPATHElement) EscapedF(format string, args ...any) *SVGCLIPPATHElement {
 	return e.Escaped(fmt.Sprintf(format, args...))
+}
+
+func (e *SVGCLIPPATHElement) IfEscapedF(condition bool, format string, args ...any) *SVGCLIPPATHElement {
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *SVGCLIPPATHElement) CustomData(key, value string) *SVGCLIPPATHElement {
@@ -73,8 +101,22 @@ func (e *SVGCLIPPATHElement) CustomData(key, value string) *SVGCLIPPATHElement {
 	return e
 }
 
+func (e *SVGCLIPPATHElement) IfCustomData(condition bool, key, value string) *SVGCLIPPATHElement {
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
+}
+
 func (e *SVGCLIPPATHElement) CustomDataF(key, format string, args ...any) *SVGCLIPPATHElement {
 	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
+func (e *SVGCLIPPATHElement) IfCustomDataF(condition bool, key, format string, args ...any) *SVGCLIPPATHElement {
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *SVGCLIPPATHElement) CustomDataRemove(key string) *SVGCLIPPATHElement {
@@ -132,6 +174,13 @@ func (e *SVGCLIPPATHElement) CLASS(s ...string) *SVGCLIPPATHElement {
 	return e
 }
 
+func (e *SVGCLIPPATHElement) IfCLASS(condition bool, s ...string) *SVGCLIPPATHElement {
+	if condition {
+		e.CLASS(s...)
+	}
+	return e
+}
+
 // Remove the attribute class from the element.
 func (e *SVGCLIPPATHElement) CLASSRemove(s ...string) *SVGCLIPPATHElement {
 	if e.DelimitedStrings == nil {
@@ -154,6 +203,13 @@ func (e *SVGCLIPPATHElement) ID(s string) *SVGCLIPPATHElement {
 	return e
 }
 
+func (e *SVGCLIPPATHElement) IfID(condition bool, s string) *SVGCLIPPATHElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
 // Remove the attribute id from the element.
 func (e *SVGCLIPPATHElement) IDRemove(s string) *SVGCLIPPATHElement {
 	if e.StringAttributes == nil {
@@ -168,6 +224,13 @@ func (e *SVGCLIPPATHElement) STYLEF(k string, format string, args ...any) *SVGCL
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+func (e *SVGCLIPPATHElement) IfSTYLE(condition bool, k string, v string) *SVGCLIPPATHElement {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
 func (e *SVGCLIPPATHElement) STYLE(k string, v string) *SVGCLIPPATHElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -178,6 +241,13 @@ func (e *SVGCLIPPATHElement) STYLE(k string, v string) *SVGCLIPPATHElement {
 		e.KVStrings.Set("style", kv)
 	}
 	kv.Add(k, v)
+	return e
+}
+
+func (e *SVGCLIPPATHElement) IfSTYLEF(condition bool, k string, format string, args ...any) *SVGCLIPPATHElement {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
 	return e
 }
 
@@ -215,6 +285,13 @@ func (e *SVGCLIPPATHElement) STYLEPairs(pairs ...string) *SVGCLIPPATHElement {
 		kv.Add(pairs[i], pairs[i+1])
 	}
 
+	return e
+}
+
+func (e *SVGCLIPPATHElement) IfSTYLEPairs(condition bool, pairs ...string) *SVGCLIPPATHElement {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
 	return e
 }
 

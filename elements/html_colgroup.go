@@ -55,13 +55,41 @@ func (e *COLGROUPElement) TextF(format string, args ...any) *COLGROUPElement {
 	return e.Text(fmt.Sprintf(format, args...))
 }
 
+func (e *COLGROUPElement) IfText(condition bool, text string) *COLGROUPElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
+}
+
+func (e *COLGROUPElement) IfTextF(condition bool, format string, args ...any) *COLGROUPElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
+}
+
 func (e *COLGROUPElement) Escaped(text string) *COLGROUPElement {
 	e.Descendants = append(e.Descendants, Escaped(text))
 	return e
 }
 
+func (e *COLGROUPElement) IfEscaped(condition bool, text string) *COLGROUPElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
+}
+
 func (e *COLGROUPElement) EscapedF(format string, args ...any) *COLGROUPElement {
 	return e.Escaped(fmt.Sprintf(format, args...))
+}
+
+func (e *COLGROUPElement) IfEscapedF(condition bool, format string, args ...any) *COLGROUPElement {
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *COLGROUPElement) CustomData(key, value string) *COLGROUPElement {
@@ -72,8 +100,22 @@ func (e *COLGROUPElement) CustomData(key, value string) *COLGROUPElement {
 	return e
 }
 
+func (e *COLGROUPElement) IfCustomData(condition bool, key, value string) *COLGROUPElement {
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
+}
+
 func (e *COLGROUPElement) CustomDataF(key, format string, args ...any) *COLGROUPElement {
 	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
+func (e *COLGROUPElement) IfCustomDataF(condition bool, key, format string, args ...any) *COLGROUPElement {
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *COLGROUPElement) CustomDataRemove(key string) *COLGROUPElement {
@@ -90,6 +132,13 @@ func (e *COLGROUPElement) SPAN(i int) *COLGROUPElement {
 		e.IntAttributes = treemap.New[string, int]()
 	}
 	e.IntAttributes.Set("span", i)
+	return e
+}
+
+func (e *COLGROUPElement) IfSPAN(condition bool, i int) *COLGROUPElement {
+	if condition {
+		e.SPAN(i)
+	}
 	return e
 }
 
@@ -111,6 +160,13 @@ func (e *COLGROUPElement) ACCESSKEY(r rune) *COLGROUPElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("accesskey", string(r))
+	return e
+}
+
+func (e *COLGROUPElement) IfACCESSKEY(condition bool, r rune) *COLGROUPElement {
+	if condition {
+		e.ACCESSKEY(r)
+	}
 	return e
 }
 
@@ -196,12 +252,26 @@ func (e *COLGROUPElement) AUTOFOCUS() *COLGROUPElement {
 	return e
 }
 
+func (e *COLGROUPElement) IfAUTOFOCUS(condition bool) *COLGROUPElement {
+	if condition {
+		e.AUTOFOCUSSet(true)
+	}
+	return e
+}
+
 // Set the attribute autofocus to the value b explicitly.
 func (e *COLGROUPElement) AUTOFOCUSSet(b bool) *COLGROUPElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("autofocus", b)
+	return e
+}
+
+func (e *COLGROUPElement) IfSetAUTOFOCUS(condition bool, b bool) *COLGROUPElement {
+	if condition {
+		e.AUTOFOCUSSet(b)
+	}
 	return e
 }
 
@@ -229,6 +299,13 @@ func (e *COLGROUPElement) CLASS(s ...string) *COLGROUPElement {
 		e.DelimitedStrings.Set("class", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *COLGROUPElement) IfCLASS(condition bool, s ...string) *COLGROUPElement {
+	if condition {
+		e.CLASS(s...)
+	}
 	return e
 }
 
@@ -437,6 +514,13 @@ func (e *COLGROUPElement) EXPORTPARTS(s ...string) *COLGROUPElement {
 	return e
 }
 
+func (e *COLGROUPElement) IfEXPORTPARTS(condition bool, s ...string) *COLGROUPElement {
+	if condition {
+		e.EXPORTPARTS(s...)
+	}
+	return e
+}
+
 // Remove the attribute exportparts from the element.
 func (e *COLGROUPElement) EXPORTPARTSRemove(s ...string) *COLGROUPElement {
 	if e.DelimitedStrings == nil {
@@ -512,6 +596,13 @@ func (e *COLGROUPElement) ID(s string) *COLGROUPElement {
 	return e
 }
 
+func (e *COLGROUPElement) IfID(condition bool, s string) *COLGROUPElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
 // Remove the attribute id from the element.
 func (e *COLGROUPElement) IDRemove(s string) *COLGROUPElement {
 	if e.StringAttributes == nil {
@@ -538,12 +629,26 @@ func (e *COLGROUPElement) INERT() *COLGROUPElement {
 	return e
 }
 
+func (e *COLGROUPElement) IfINERT(condition bool) *COLGROUPElement {
+	if condition {
+		e.INERTSet(true)
+	}
+	return e
+}
+
 // Set the attribute inert to the value b explicitly.
 func (e *COLGROUPElement) INERTSet(b bool) *COLGROUPElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("inert", b)
+	return e
+}
+
+func (e *COLGROUPElement) IfSetINERT(condition bool, b bool) *COLGROUPElement {
+	if condition {
+		e.INERTSet(b)
+	}
 	return e
 }
 
@@ -639,6 +744,13 @@ func (e *COLGROUPElement) IS(s string) *COLGROUPElement {
 	return e
 }
 
+func (e *COLGROUPElement) IfIS(condition bool, s string) *COLGROUPElement {
+	if condition {
+		e.IS(s)
+	}
+	return e
+}
+
 // Remove the attribute is from the element.
 func (e *COLGROUPElement) ISRemove(s string) *COLGROUPElement {
 	if e.StringAttributes == nil {
@@ -669,6 +781,13 @@ func (e *COLGROUPElement) ITEMID(s string) *COLGROUPElement {
 	return e
 }
 
+func (e *COLGROUPElement) IfITEMID(condition bool, s string) *COLGROUPElement {
+	if condition {
+		e.ITEMID(s)
+	}
+	return e
+}
+
 // Remove the attribute itemid from the element.
 func (e *COLGROUPElement) ITEMIDRemove(s string) *COLGROUPElement {
 	if e.StringAttributes == nil {
@@ -694,6 +813,13 @@ func (e *COLGROUPElement) ITEMPROP(s string) *COLGROUPElement {
 	return e
 }
 
+func (e *COLGROUPElement) IfITEMPROP(condition bool, s string) *COLGROUPElement {
+	if condition {
+		e.ITEMPROP(s)
+	}
+	return e
+}
+
 // Remove the attribute itemprop from the element.
 func (e *COLGROUPElement) ITEMPROPRemove(s string) *COLGROUPElement {
 	if e.StringAttributes == nil {
@@ -713,6 +839,13 @@ func (e *COLGROUPElement) ITEMREF(s string) *COLGROUPElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("itemref", s)
+	return e
+}
+
+func (e *COLGROUPElement) IfITEMREF(condition bool, s string) *COLGROUPElement {
+	if condition {
+		e.ITEMREF(s)
+	}
 	return e
 }
 
@@ -738,12 +871,26 @@ func (e *COLGROUPElement) ITEMSCOPE() *COLGROUPElement {
 	return e
 }
 
+func (e *COLGROUPElement) IfITEMSCOPE(condition bool) *COLGROUPElement {
+	if condition {
+		e.ITEMSCOPESet(true)
+	}
+	return e
+}
+
 // Set the attribute itemscope to the value b explicitly.
 func (e *COLGROUPElement) ITEMSCOPESet(b bool) *COLGROUPElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("itemscope", b)
+	return e
+}
+
+func (e *COLGROUPElement) IfSetITEMSCOPE(condition bool, b bool) *COLGROUPElement {
+	if condition {
+		e.ITEMSCOPESet(b)
+	}
 	return e
 }
 
@@ -772,6 +919,13 @@ func (e *COLGROUPElement) ITEMTYPE(s string) *COLGROUPElement {
 	return e
 }
 
+func (e *COLGROUPElement) IfITEMTYPE(condition bool, s string) *COLGROUPElement {
+	if condition {
+		e.ITEMTYPE(s)
+	}
+	return e
+}
+
 // Remove the attribute itemtype from the element.
 func (e *COLGROUPElement) ITEMTYPERemove(s string) *COLGROUPElement {
 	if e.StringAttributes == nil {
@@ -795,6 +949,13 @@ func (e *COLGROUPElement) LANG(s string) *COLGROUPElement {
 	return e
 }
 
+func (e *COLGROUPElement) IfLANG(condition bool, s string) *COLGROUPElement {
+	if condition {
+		e.LANG(s)
+	}
+	return e
+}
+
 // Remove the attribute lang from the element.
 func (e *COLGROUPElement) LANGRemove(s string) *COLGROUPElement {
 	if e.StringAttributes == nil {
@@ -813,6 +974,13 @@ func (e *COLGROUPElement) NONCE(s string) *COLGROUPElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("nonce", s)
+	return e
+}
+
+func (e *COLGROUPElement) IfNONCE(condition bool, s string) *COLGROUPElement {
+	if condition {
+		e.NONCE(s)
+	}
 	return e
 }
 
@@ -839,6 +1007,13 @@ func (e *COLGROUPElement) PART(s ...string) *COLGROUPElement {
 		e.DelimitedStrings.Set("part", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *COLGROUPElement) IfPART(condition bool, s ...string) *COLGROUPElement {
+	if condition {
+		e.PART(s...)
+	}
 	return e
 }
 
@@ -909,6 +1084,13 @@ func (e *COLGROUPElement) SLOT(s string) *COLGROUPElement {
 	return e
 }
 
+func (e *COLGROUPElement) IfSLOT(condition bool, s string) *COLGROUPElement {
+	if condition {
+		e.SLOT(s)
+	}
+	return e
+}
+
 // Remove the attribute slot from the element.
 func (e *COLGROUPElement) SLOTRemove(s string) *COLGROUPElement {
 	if e.StringAttributes == nil {
@@ -967,6 +1149,13 @@ func (e *COLGROUPElement) STYLEF(k string, format string, args ...any) *COLGROUP
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+func (e *COLGROUPElement) IfSTYLE(condition bool, k string, v string) *COLGROUPElement {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
 func (e *COLGROUPElement) STYLE(k string, v string) *COLGROUPElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -977,6 +1166,13 @@ func (e *COLGROUPElement) STYLE(k string, v string) *COLGROUPElement {
 		e.KVStrings.Set("style", kv)
 	}
 	kv.Add(k, v)
+	return e
+}
+
+func (e *COLGROUPElement) IfSTYLEF(condition bool, k string, format string, args ...any) *COLGROUPElement {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
 	return e
 }
 
@@ -1017,6 +1213,13 @@ func (e *COLGROUPElement) STYLEPairs(pairs ...string) *COLGROUPElement {
 	return e
 }
 
+func (e *COLGROUPElement) IfSTYLEPairs(condition bool, pairs ...string) *COLGROUPElement {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
+	return e
+}
+
 // Remove the attribute style from the element.
 func (e *COLGROUPElement) STYLERemove(keys ...string) *COLGROUPElement {
 	if e.KVStrings == nil {
@@ -1051,6 +1254,13 @@ func (e *COLGROUPElement) TABINDEX(i int) *COLGROUPElement {
 		e.IntAttributes = treemap.New[string, int]()
 	}
 	e.IntAttributes.Set("tabindex", i)
+	return e
+}
+
+func (e *COLGROUPElement) IfTABINDEX(condition bool, i int) *COLGROUPElement {
+	if condition {
+		e.TABINDEX(i)
+	}
 	return e
 }
 
@@ -1089,6 +1299,13 @@ func (e *COLGROUPElement) TITLE(s string) *COLGROUPElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("title", s)
+	return e
+}
+
+func (e *COLGROUPElement) IfTITLE(condition bool, s string) *COLGROUPElement {
+	if condition {
+		e.TITLE(s)
+	}
 	return e
 }
 

@@ -56,13 +56,41 @@ func (e *SVGFEFUNCAElement) TextF(format string, args ...any) *SVGFEFUNCAElement
 	return e.Text(fmt.Sprintf(format, args...))
 }
 
+func (e *SVGFEFUNCAElement) IfText(condition bool, text string) *SVGFEFUNCAElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
+}
+
+func (e *SVGFEFUNCAElement) IfTextF(condition bool, format string, args ...any) *SVGFEFUNCAElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
+}
+
 func (e *SVGFEFUNCAElement) Escaped(text string) *SVGFEFUNCAElement {
 	e.Descendants = append(e.Descendants, Escaped(text))
 	return e
 }
 
+func (e *SVGFEFUNCAElement) IfEscaped(condition bool, text string) *SVGFEFUNCAElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
+}
+
 func (e *SVGFEFUNCAElement) EscapedF(format string, args ...any) *SVGFEFUNCAElement {
 	return e.Escaped(fmt.Sprintf(format, args...))
+}
+
+func (e *SVGFEFUNCAElement) IfEscapedF(condition bool, format string, args ...any) *SVGFEFUNCAElement {
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *SVGFEFUNCAElement) CustomData(key, value string) *SVGFEFUNCAElement {
@@ -73,8 +101,22 @@ func (e *SVGFEFUNCAElement) CustomData(key, value string) *SVGFEFUNCAElement {
 	return e
 }
 
+func (e *SVGFEFUNCAElement) IfCustomData(condition bool, key, value string) *SVGFEFUNCAElement {
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
+}
+
 func (e *SVGFEFUNCAElement) CustomDataF(key, format string, args ...any) *SVGFEFUNCAElement {
 	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
+func (e *SVGFEFUNCAElement) IfCustomDataF(condition bool, key, format string, args ...any) *SVGFEFUNCAElement {
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *SVGFEFUNCAElement) CustomDataRemove(key string) *SVGFEFUNCAElement {
@@ -129,6 +171,13 @@ func (e *SVGFEFUNCAElement) TABLEVALUES(s string) *SVGFEFUNCAElement {
 	return e
 }
 
+func (e *SVGFEFUNCAElement) IfTABLEVALUES(condition bool, s string) *SVGFEFUNCAElement {
+	if condition {
+		e.TABLEVALUES(s)
+	}
+	return e
+}
+
 // Remove the attribute tableValues from the element.
 func (e *SVGFEFUNCAElement) TABLEVALUESRemove(s string) *SVGFEFUNCAElement {
 	if e.StringAttributes == nil {
@@ -147,12 +196,26 @@ func (e *SVGFEFUNCAElement) SLOPE(f float64) *SVGFEFUNCAElement {
 	return e
 }
 
+func (e *SVGFEFUNCAElement) IfSLOPE(condition bool, f float64) *SVGFEFUNCAElement {
+	if condition {
+		e.SLOPE(f)
+	}
+	return e
+}
+
 // The intercept attribute indicates the intercept of the linear function.
 func (e *SVGFEFUNCAElement) INTERCEPT(f float64) *SVGFEFUNCAElement {
 	if e.FloatAttributes == nil {
 		e.FloatAttributes = treemap.New[string, float64]()
 	}
 	e.FloatAttributes.Set("intercept", f)
+	return e
+}
+
+func (e *SVGFEFUNCAElement) IfINTERCEPT(condition bool, f float64) *SVGFEFUNCAElement {
+	if condition {
+		e.INTERCEPT(f)
+	}
 	return e
 }
 
@@ -165,6 +228,13 @@ func (e *SVGFEFUNCAElement) AMPLITUDE(f float64) *SVGFEFUNCAElement {
 	return e
 }
 
+func (e *SVGFEFUNCAElement) IfAMPLITUDE(condition bool, f float64) *SVGFEFUNCAElement {
+	if condition {
+		e.AMPLITUDE(f)
+	}
+	return e
+}
+
 // The exponent attribute indicates the exponent of the exponential function.
 func (e *SVGFEFUNCAElement) EXPONENT(f float64) *SVGFEFUNCAElement {
 	if e.FloatAttributes == nil {
@@ -174,12 +244,26 @@ func (e *SVGFEFUNCAElement) EXPONENT(f float64) *SVGFEFUNCAElement {
 	return e
 }
 
+func (e *SVGFEFUNCAElement) IfEXPONENT(condition bool, f float64) *SVGFEFUNCAElement {
+	if condition {
+		e.EXPONENT(f)
+	}
+	return e
+}
+
 // The offset attribute indicates the offset of the function.
 func (e *SVGFEFUNCAElement) OFFSET(f float64) *SVGFEFUNCAElement {
 	if e.FloatAttributes == nil {
 		e.FloatAttributes = treemap.New[string, float64]()
 	}
 	e.FloatAttributes.Set("offset", f)
+	return e
+}
+
+func (e *SVGFEFUNCAElement) IfOFFSET(condition bool, f float64) *SVGFEFUNCAElement {
+	if condition {
+		e.OFFSET(f)
+	}
 	return e
 }
 
@@ -195,6 +279,13 @@ func (e *SVGFEFUNCAElement) CLASS(s ...string) *SVGFEFUNCAElement {
 		e.DelimitedStrings.Set("class", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *SVGFEFUNCAElement) IfCLASS(condition bool, s ...string) *SVGFEFUNCAElement {
+	if condition {
+		e.CLASS(s...)
+	}
 	return e
 }
 
@@ -220,6 +311,13 @@ func (e *SVGFEFUNCAElement) ID(s string) *SVGFEFUNCAElement {
 	return e
 }
 
+func (e *SVGFEFUNCAElement) IfID(condition bool, s string) *SVGFEFUNCAElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
 // Remove the attribute id from the element.
 func (e *SVGFEFUNCAElement) IDRemove(s string) *SVGFEFUNCAElement {
 	if e.StringAttributes == nil {
@@ -234,6 +332,13 @@ func (e *SVGFEFUNCAElement) STYLEF(k string, format string, args ...any) *SVGFEF
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+func (e *SVGFEFUNCAElement) IfSTYLE(condition bool, k string, v string) *SVGFEFUNCAElement {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
 func (e *SVGFEFUNCAElement) STYLE(k string, v string) *SVGFEFUNCAElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -244,6 +349,13 @@ func (e *SVGFEFUNCAElement) STYLE(k string, v string) *SVGFEFUNCAElement {
 		e.KVStrings.Set("style", kv)
 	}
 	kv.Add(k, v)
+	return e
+}
+
+func (e *SVGFEFUNCAElement) IfSTYLEF(condition bool, k string, format string, args ...any) *SVGFEFUNCAElement {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
 	return e
 }
 
@@ -281,6 +393,13 @@ func (e *SVGFEFUNCAElement) STYLEPairs(pairs ...string) *SVGFEFUNCAElement {
 		kv.Add(pairs[i], pairs[i+1])
 	}
 
+	return e
+}
+
+func (e *SVGFEFUNCAElement) IfSTYLEPairs(condition bool, pairs ...string) *SVGFEFUNCAElement {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
 	return e
 }
 

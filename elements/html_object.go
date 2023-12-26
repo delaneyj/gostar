@@ -57,13 +57,41 @@ func (e *OBJECTElement) TextF(format string, args ...any) *OBJECTElement {
 	return e.Text(fmt.Sprintf(format, args...))
 }
 
+func (e *OBJECTElement) IfText(condition bool, text string) *OBJECTElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
+}
+
+func (e *OBJECTElement) IfTextF(condition bool, format string, args ...any) *OBJECTElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
+}
+
 func (e *OBJECTElement) Escaped(text string) *OBJECTElement {
 	e.Descendants = append(e.Descendants, Escaped(text))
 	return e
 }
 
+func (e *OBJECTElement) IfEscaped(condition bool, text string) *OBJECTElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
+}
+
 func (e *OBJECTElement) EscapedF(format string, args ...any) *OBJECTElement {
 	return e.Escaped(fmt.Sprintf(format, args...))
+}
+
+func (e *OBJECTElement) IfEscapedF(condition bool, format string, args ...any) *OBJECTElement {
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *OBJECTElement) CustomData(key, value string) *OBJECTElement {
@@ -74,8 +102,22 @@ func (e *OBJECTElement) CustomData(key, value string) *OBJECTElement {
 	return e
 }
 
+func (e *OBJECTElement) IfCustomData(condition bool, key, value string) *OBJECTElement {
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
+}
+
 func (e *OBJECTElement) CustomDataF(key, format string, args ...any) *OBJECTElement {
 	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
+func (e *OBJECTElement) IfCustomDataF(condition bool, key, format string, args ...any) *OBJECTElement {
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *OBJECTElement) CustomDataRemove(key string) *OBJECTElement {
@@ -92,6 +134,13 @@ func (e *OBJECTElement) DATA(s string) *OBJECTElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("data", s)
+	return e
+}
+
+func (e *OBJECTElement) IfDATA(condition bool, s string) *OBJECTElement {
+	if condition {
+		e.DATA(s)
+	}
 	return e
 }
 
@@ -113,6 +162,13 @@ func (e *OBJECTElement) FORM(s string) *OBJECTElement {
 	return e
 }
 
+func (e *OBJECTElement) IfFORM(condition bool, s string) *OBJECTElement {
+	if condition {
+		e.FORM(s)
+	}
+	return e
+}
+
 // Remove the attribute form from the element.
 func (e *OBJECTElement) FORMRemove(s string) *OBJECTElement {
 	if e.StringAttributes == nil {
@@ -128,6 +184,13 @@ func (e *OBJECTElement) HEIGHT(i int) *OBJECTElement {
 		e.IntAttributes = treemap.New[string, int]()
 	}
 	e.IntAttributes.Set("height", i)
+	return e
+}
+
+func (e *OBJECTElement) IfHEIGHT(condition bool, i int) *OBJECTElement {
+	if condition {
+		e.HEIGHT(i)
+	}
 	return e
 }
 
@@ -149,6 +212,13 @@ func (e *OBJECTElement) NAME(s string) *OBJECTElement {
 	return e
 }
 
+func (e *OBJECTElement) IfNAME(condition bool, s string) *OBJECTElement {
+	if condition {
+		e.NAME(s)
+	}
+	return e
+}
+
 // Remove the attribute name from the element.
 func (e *OBJECTElement) NAMERemove(s string) *OBJECTElement {
 	if e.StringAttributes == nil {
@@ -164,6 +234,13 @@ func (e *OBJECTElement) TYPE(s string) *OBJECTElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("type", s)
+	return e
+}
+
+func (e *OBJECTElement) IfTYPE(condition bool, s string) *OBJECTElement {
+	if condition {
+		e.TYPE(s)
+	}
 	return e
 }
 
@@ -183,12 +260,26 @@ func (e *OBJECTElement) TYPEMUSTMATCH() *OBJECTElement {
 	return e
 }
 
+func (e *OBJECTElement) IfTYPEMUSTMATCH(condition bool) *OBJECTElement {
+	if condition {
+		e.TYPEMUSTMATCHSet(true)
+	}
+	return e
+}
+
 // Set the attribute typemustmatch to the value b explicitly.
 func (e *OBJECTElement) TYPEMUSTMATCHSet(b bool) *OBJECTElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("typemustmatch", b)
+	return e
+}
+
+func (e *OBJECTElement) IfSetTYPEMUSTMATCH(condition bool, b bool) *OBJECTElement {
+	if condition {
+		e.TYPEMUSTMATCHSet(b)
+	}
 	return e
 }
 
@@ -210,6 +301,13 @@ func (e *OBJECTElement) USEMAP(s string) *OBJECTElement {
 	return e
 }
 
+func (e *OBJECTElement) IfUSEMAP(condition bool, s string) *OBJECTElement {
+	if condition {
+		e.USEMAP(s)
+	}
+	return e
+}
+
 // Remove the attribute usemap from the element.
 func (e *OBJECTElement) USEMAPRemove(s string) *OBJECTElement {
 	if e.StringAttributes == nil {
@@ -225,6 +323,13 @@ func (e *OBJECTElement) WIDTH(i int) *OBJECTElement {
 		e.IntAttributes = treemap.New[string, int]()
 	}
 	e.IntAttributes.Set("width", i)
+	return e
+}
+
+func (e *OBJECTElement) IfWIDTH(condition bool, i int) *OBJECTElement {
+	if condition {
+		e.WIDTH(i)
+	}
 	return e
 }
 
@@ -246,6 +351,13 @@ func (e *OBJECTElement) ACCESSKEY(r rune) *OBJECTElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("accesskey", string(r))
+	return e
+}
+
+func (e *OBJECTElement) IfACCESSKEY(condition bool, r rune) *OBJECTElement {
+	if condition {
+		e.ACCESSKEY(r)
+	}
 	return e
 }
 
@@ -331,12 +443,26 @@ func (e *OBJECTElement) AUTOFOCUS() *OBJECTElement {
 	return e
 }
 
+func (e *OBJECTElement) IfAUTOFOCUS(condition bool) *OBJECTElement {
+	if condition {
+		e.AUTOFOCUSSet(true)
+	}
+	return e
+}
+
 // Set the attribute autofocus to the value b explicitly.
 func (e *OBJECTElement) AUTOFOCUSSet(b bool) *OBJECTElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("autofocus", b)
+	return e
+}
+
+func (e *OBJECTElement) IfSetAUTOFOCUS(condition bool, b bool) *OBJECTElement {
+	if condition {
+		e.AUTOFOCUSSet(b)
+	}
 	return e
 }
 
@@ -364,6 +490,13 @@ func (e *OBJECTElement) CLASS(s ...string) *OBJECTElement {
 		e.DelimitedStrings.Set("class", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *OBJECTElement) IfCLASS(condition bool, s ...string) *OBJECTElement {
+	if condition {
+		e.CLASS(s...)
+	}
 	return e
 }
 
@@ -572,6 +705,13 @@ func (e *OBJECTElement) EXPORTPARTS(s ...string) *OBJECTElement {
 	return e
 }
 
+func (e *OBJECTElement) IfEXPORTPARTS(condition bool, s ...string) *OBJECTElement {
+	if condition {
+		e.EXPORTPARTS(s...)
+	}
+	return e
+}
+
 // Remove the attribute exportparts from the element.
 func (e *OBJECTElement) EXPORTPARTSRemove(s ...string) *OBJECTElement {
 	if e.DelimitedStrings == nil {
@@ -647,6 +787,13 @@ func (e *OBJECTElement) ID(s string) *OBJECTElement {
 	return e
 }
 
+func (e *OBJECTElement) IfID(condition bool, s string) *OBJECTElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
 // Remove the attribute id from the element.
 func (e *OBJECTElement) IDRemove(s string) *OBJECTElement {
 	if e.StringAttributes == nil {
@@ -673,12 +820,26 @@ func (e *OBJECTElement) INERT() *OBJECTElement {
 	return e
 }
 
+func (e *OBJECTElement) IfINERT(condition bool) *OBJECTElement {
+	if condition {
+		e.INERTSet(true)
+	}
+	return e
+}
+
 // Set the attribute inert to the value b explicitly.
 func (e *OBJECTElement) INERTSet(b bool) *OBJECTElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("inert", b)
+	return e
+}
+
+func (e *OBJECTElement) IfSetINERT(condition bool, b bool) *OBJECTElement {
+	if condition {
+		e.INERTSet(b)
+	}
 	return e
 }
 
@@ -774,6 +935,13 @@ func (e *OBJECTElement) IS(s string) *OBJECTElement {
 	return e
 }
 
+func (e *OBJECTElement) IfIS(condition bool, s string) *OBJECTElement {
+	if condition {
+		e.IS(s)
+	}
+	return e
+}
+
 // Remove the attribute is from the element.
 func (e *OBJECTElement) ISRemove(s string) *OBJECTElement {
 	if e.StringAttributes == nil {
@@ -804,6 +972,13 @@ func (e *OBJECTElement) ITEMID(s string) *OBJECTElement {
 	return e
 }
 
+func (e *OBJECTElement) IfITEMID(condition bool, s string) *OBJECTElement {
+	if condition {
+		e.ITEMID(s)
+	}
+	return e
+}
+
 // Remove the attribute itemid from the element.
 func (e *OBJECTElement) ITEMIDRemove(s string) *OBJECTElement {
 	if e.StringAttributes == nil {
@@ -829,6 +1004,13 @@ func (e *OBJECTElement) ITEMPROP(s string) *OBJECTElement {
 	return e
 }
 
+func (e *OBJECTElement) IfITEMPROP(condition bool, s string) *OBJECTElement {
+	if condition {
+		e.ITEMPROP(s)
+	}
+	return e
+}
+
 // Remove the attribute itemprop from the element.
 func (e *OBJECTElement) ITEMPROPRemove(s string) *OBJECTElement {
 	if e.StringAttributes == nil {
@@ -848,6 +1030,13 @@ func (e *OBJECTElement) ITEMREF(s string) *OBJECTElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("itemref", s)
+	return e
+}
+
+func (e *OBJECTElement) IfITEMREF(condition bool, s string) *OBJECTElement {
+	if condition {
+		e.ITEMREF(s)
+	}
 	return e
 }
 
@@ -873,12 +1062,26 @@ func (e *OBJECTElement) ITEMSCOPE() *OBJECTElement {
 	return e
 }
 
+func (e *OBJECTElement) IfITEMSCOPE(condition bool) *OBJECTElement {
+	if condition {
+		e.ITEMSCOPESet(true)
+	}
+	return e
+}
+
 // Set the attribute itemscope to the value b explicitly.
 func (e *OBJECTElement) ITEMSCOPESet(b bool) *OBJECTElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("itemscope", b)
+	return e
+}
+
+func (e *OBJECTElement) IfSetITEMSCOPE(condition bool, b bool) *OBJECTElement {
+	if condition {
+		e.ITEMSCOPESet(b)
+	}
 	return e
 }
 
@@ -907,6 +1110,13 @@ func (e *OBJECTElement) ITEMTYPE(s string) *OBJECTElement {
 	return e
 }
 
+func (e *OBJECTElement) IfITEMTYPE(condition bool, s string) *OBJECTElement {
+	if condition {
+		e.ITEMTYPE(s)
+	}
+	return e
+}
+
 // Remove the attribute itemtype from the element.
 func (e *OBJECTElement) ITEMTYPERemove(s string) *OBJECTElement {
 	if e.StringAttributes == nil {
@@ -930,6 +1140,13 @@ func (e *OBJECTElement) LANG(s string) *OBJECTElement {
 	return e
 }
 
+func (e *OBJECTElement) IfLANG(condition bool, s string) *OBJECTElement {
+	if condition {
+		e.LANG(s)
+	}
+	return e
+}
+
 // Remove the attribute lang from the element.
 func (e *OBJECTElement) LANGRemove(s string) *OBJECTElement {
 	if e.StringAttributes == nil {
@@ -948,6 +1165,13 @@ func (e *OBJECTElement) NONCE(s string) *OBJECTElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("nonce", s)
+	return e
+}
+
+func (e *OBJECTElement) IfNONCE(condition bool, s string) *OBJECTElement {
+	if condition {
+		e.NONCE(s)
+	}
 	return e
 }
 
@@ -974,6 +1198,13 @@ func (e *OBJECTElement) PART(s ...string) *OBJECTElement {
 		e.DelimitedStrings.Set("part", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *OBJECTElement) IfPART(condition bool, s ...string) *OBJECTElement {
+	if condition {
+		e.PART(s...)
+	}
 	return e
 }
 
@@ -1044,6 +1275,13 @@ func (e *OBJECTElement) SLOT(s string) *OBJECTElement {
 	return e
 }
 
+func (e *OBJECTElement) IfSLOT(condition bool, s string) *OBJECTElement {
+	if condition {
+		e.SLOT(s)
+	}
+	return e
+}
+
 // Remove the attribute slot from the element.
 func (e *OBJECTElement) SLOTRemove(s string) *OBJECTElement {
 	if e.StringAttributes == nil {
@@ -1102,6 +1340,13 @@ func (e *OBJECTElement) STYLEF(k string, format string, args ...any) *OBJECTElem
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+func (e *OBJECTElement) IfSTYLE(condition bool, k string, v string) *OBJECTElement {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
 func (e *OBJECTElement) STYLE(k string, v string) *OBJECTElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -1112,6 +1357,13 @@ func (e *OBJECTElement) STYLE(k string, v string) *OBJECTElement {
 		e.KVStrings.Set("style", kv)
 	}
 	kv.Add(k, v)
+	return e
+}
+
+func (e *OBJECTElement) IfSTYLEF(condition bool, k string, format string, args ...any) *OBJECTElement {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
 	return e
 }
 
@@ -1152,6 +1404,13 @@ func (e *OBJECTElement) STYLEPairs(pairs ...string) *OBJECTElement {
 	return e
 }
 
+func (e *OBJECTElement) IfSTYLEPairs(condition bool, pairs ...string) *OBJECTElement {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
+	return e
+}
+
 // Remove the attribute style from the element.
 func (e *OBJECTElement) STYLERemove(keys ...string) *OBJECTElement {
 	if e.KVStrings == nil {
@@ -1186,6 +1445,13 @@ func (e *OBJECTElement) TABINDEX(i int) *OBJECTElement {
 		e.IntAttributes = treemap.New[string, int]()
 	}
 	e.IntAttributes.Set("tabindex", i)
+	return e
+}
+
+func (e *OBJECTElement) IfTABINDEX(condition bool, i int) *OBJECTElement {
+	if condition {
+		e.TABINDEX(i)
+	}
 	return e
 }
 
@@ -1224,6 +1490,13 @@ func (e *OBJECTElement) TITLE(s string) *OBJECTElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("title", s)
+	return e
+}
+
+func (e *OBJECTElement) IfTITLE(condition bool, s string) *OBJECTElement {
+	if condition {
+		e.TITLE(s)
+	}
 	return e
 }
 

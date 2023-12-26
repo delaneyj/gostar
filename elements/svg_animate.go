@@ -56,13 +56,41 @@ func (e *SVGANIMATEElement) TextF(format string, args ...any) *SVGANIMATEElement
 	return e.Text(fmt.Sprintf(format, args...))
 }
 
+func (e *SVGANIMATEElement) IfText(condition bool, text string) *SVGANIMATEElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
+}
+
+func (e *SVGANIMATEElement) IfTextF(condition bool, format string, args ...any) *SVGANIMATEElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
+}
+
 func (e *SVGANIMATEElement) Escaped(text string) *SVGANIMATEElement {
 	e.Descendants = append(e.Descendants, Escaped(text))
 	return e
 }
 
+func (e *SVGANIMATEElement) IfEscaped(condition bool, text string) *SVGANIMATEElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
+}
+
 func (e *SVGANIMATEElement) EscapedF(format string, args ...any) *SVGANIMATEElement {
 	return e.Escaped(fmt.Sprintf(format, args...))
+}
+
+func (e *SVGANIMATEElement) IfEscapedF(condition bool, format string, args ...any) *SVGANIMATEElement {
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *SVGANIMATEElement) CustomData(key, value string) *SVGANIMATEElement {
@@ -73,8 +101,22 @@ func (e *SVGANIMATEElement) CustomData(key, value string) *SVGANIMATEElement {
 	return e
 }
 
+func (e *SVGANIMATEElement) IfCustomData(condition bool, key, value string) *SVGANIMATEElement {
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
+}
+
 func (e *SVGANIMATEElement) CustomDataF(key, format string, args ...any) *SVGANIMATEElement {
 	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
+func (e *SVGANIMATEElement) IfCustomDataF(condition bool, key, format string, args ...any) *SVGANIMATEElement {
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *SVGANIMATEElement) CustomDataRemove(key string) *SVGANIMATEElement {
@@ -94,6 +136,13 @@ func (e *SVGANIMATEElement) FROM(s string) *SVGANIMATEElement {
 	return e
 }
 
+func (e *SVGANIMATEElement) IfFROM(condition bool, s string) *SVGANIMATEElement {
+	if condition {
+		e.FROM(s)
+	}
+	return e
+}
+
 // Remove the attribute from from the element.
 func (e *SVGANIMATEElement) FROMRemove(s string) *SVGANIMATEElement {
 	if e.StringAttributes == nil {
@@ -109,6 +158,13 @@ func (e *SVGANIMATEElement) REPEATDUR(s string) *SVGANIMATEElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("repeatDur", s)
+	return e
+}
+
+func (e *SVGANIMATEElement) IfREPEATDUR(condition bool, s string) *SVGANIMATEElement {
+	if condition {
+		e.REPEATDUR(s)
+	}
 	return e
 }
 
@@ -198,6 +254,13 @@ func (e *SVGANIMATEElement) BEGIN(s string) *SVGANIMATEElement {
 	return e
 }
 
+func (e *SVGANIMATEElement) IfBEGIN(condition bool, s string) *SVGANIMATEElement {
+	if condition {
+		e.BEGIN(s)
+	}
+	return e
+}
+
 // Remove the attribute begin from the element.
 func (e *SVGANIMATEElement) BEGINRemove(s string) *SVGANIMATEElement {
 	if e.StringAttributes == nil {
@@ -213,6 +276,13 @@ func (e *SVGANIMATEElement) BY(s string) *SVGANIMATEElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("by", s)
+	return e
+}
+
+func (e *SVGANIMATEElement) IfBY(condition bool, s string) *SVGANIMATEElement {
+	if condition {
+		e.BY(s)
+	}
 	return e
 }
 
@@ -268,6 +338,13 @@ func (e *SVGANIMATEElement) DUR(s string) *SVGANIMATEElement {
 	return e
 }
 
+func (e *SVGANIMATEElement) IfDUR(condition bool, s string) *SVGANIMATEElement {
+	if condition {
+		e.DUR(s)
+	}
+	return e
+}
+
 // Remove the attribute dur from the element.
 func (e *SVGANIMATEElement) DURRemove(s string) *SVGANIMATEElement {
 	if e.StringAttributes == nil {
@@ -283,6 +360,13 @@ func (e *SVGANIMATEElement) END(s string) *SVGANIMATEElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("end", s)
+	return e
+}
+
+func (e *SVGANIMATEElement) IfEND(condition bool, s string) *SVGANIMATEElement {
+	if condition {
+		e.END(s)
+	}
 	return e
 }
 
@@ -304,6 +388,13 @@ func (e *SVGANIMATEElement) KEYTIMES(s string) *SVGANIMATEElement {
 	return e
 }
 
+func (e *SVGANIMATEElement) IfKEYTIMES(condition bool, s string) *SVGANIMATEElement {
+	if condition {
+		e.KEYTIMES(s)
+	}
+	return e
+}
+
 // Remove the attribute keyTimes from the element.
 func (e *SVGANIMATEElement) KEYTIMESRemove(s string) *SVGANIMATEElement {
 	if e.StringAttributes == nil {
@@ -322,6 +413,13 @@ func (e *SVGANIMATEElement) ATTRIBUTENAME(s string) *SVGANIMATEElement {
 	return e
 }
 
+func (e *SVGANIMATEElement) IfATTRIBUTENAME(condition bool, s string) *SVGANIMATEElement {
+	if condition {
+		e.ATTRIBUTENAME(s)
+	}
+	return e
+}
+
 // Remove the attribute attributeName from the element.
 func (e *SVGANIMATEElement) ATTRIBUTENAMERemove(s string) *SVGANIMATEElement {
 	if e.StringAttributes == nil {
@@ -337,6 +435,13 @@ func (e *SVGANIMATEElement) KEYSPLINES(s string) *SVGANIMATEElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("keySplines", s)
+	return e
+}
+
+func (e *SVGANIMATEElement) IfKEYSPLINES(condition bool, s string) *SVGANIMATEElement {
+	if condition {
+		e.KEYSPLINES(s)
+	}
 	return e
 }
 
@@ -385,6 +490,13 @@ func (e *SVGANIMATEElement) MAX(s string) *SVGANIMATEElement {
 	return e
 }
 
+func (e *SVGANIMATEElement) IfMAX(condition bool, s string) *SVGANIMATEElement {
+	if condition {
+		e.MAX(s)
+	}
+	return e
+}
+
 // Remove the attribute max from the element.
 func (e *SVGANIMATEElement) MAXRemove(s string) *SVGANIMATEElement {
 	if e.StringAttributes == nil {
@@ -403,6 +515,13 @@ func (e *SVGANIMATEElement) MIN(s string) *SVGANIMATEElement {
 	return e
 }
 
+func (e *SVGANIMATEElement) IfMIN(condition bool, s string) *SVGANIMATEElement {
+	if condition {
+		e.MIN(s)
+	}
+	return e
+}
+
 // Remove the attribute min from the element.
 func (e *SVGANIMATEElement) MINRemove(s string) *SVGANIMATEElement {
 	if e.StringAttributes == nil {
@@ -418,6 +537,13 @@ func (e *SVGANIMATEElement) REPEATCOUNT(s string) *SVGANIMATEElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("repeatCount", s)
+	return e
+}
+
+func (e *SVGANIMATEElement) IfREPEATCOUNT(condition bool, s string) *SVGANIMATEElement {
+	if condition {
+		e.REPEATCOUNT(s)
+	}
 	return e
 }
 
@@ -498,6 +624,13 @@ func (e *SVGANIMATEElement) TO(s string) *SVGANIMATEElement {
 	return e
 }
 
+func (e *SVGANIMATEElement) IfTO(condition bool, s string) *SVGANIMATEElement {
+	if condition {
+		e.TO(s)
+	}
+	return e
+}
+
 // Remove the attribute to from the element.
 func (e *SVGANIMATEElement) TORemove(s string) *SVGANIMATEElement {
 	if e.StringAttributes == nil {
@@ -513,6 +646,13 @@ func (e *SVGANIMATEElement) VALUES(s string) *SVGANIMATEElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("values", s)
+	return e
+}
+
+func (e *SVGANIMATEElement) IfVALUES(condition bool, s string) *SVGANIMATEElement {
+	if condition {
+		e.VALUES(s)
+	}
 	return e
 }
 
@@ -540,6 +680,13 @@ func (e *SVGANIMATEElement) CLASS(s ...string) *SVGANIMATEElement {
 	return e
 }
 
+func (e *SVGANIMATEElement) IfCLASS(condition bool, s ...string) *SVGANIMATEElement {
+	if condition {
+		e.CLASS(s...)
+	}
+	return e
+}
+
 // Remove the attribute class from the element.
 func (e *SVGANIMATEElement) CLASSRemove(s ...string) *SVGANIMATEElement {
 	if e.DelimitedStrings == nil {
@@ -562,6 +709,13 @@ func (e *SVGANIMATEElement) ID(s string) *SVGANIMATEElement {
 	return e
 }
 
+func (e *SVGANIMATEElement) IfID(condition bool, s string) *SVGANIMATEElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
 // Remove the attribute id from the element.
 func (e *SVGANIMATEElement) IDRemove(s string) *SVGANIMATEElement {
 	if e.StringAttributes == nil {
@@ -576,6 +730,13 @@ func (e *SVGANIMATEElement) STYLEF(k string, format string, args ...any) *SVGANI
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+func (e *SVGANIMATEElement) IfSTYLE(condition bool, k string, v string) *SVGANIMATEElement {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
 func (e *SVGANIMATEElement) STYLE(k string, v string) *SVGANIMATEElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -586,6 +747,13 @@ func (e *SVGANIMATEElement) STYLE(k string, v string) *SVGANIMATEElement {
 		e.KVStrings.Set("style", kv)
 	}
 	kv.Add(k, v)
+	return e
+}
+
+func (e *SVGANIMATEElement) IfSTYLEF(condition bool, k string, format string, args ...any) *SVGANIMATEElement {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
 	return e
 }
 
@@ -623,6 +791,13 @@ func (e *SVGANIMATEElement) STYLEPairs(pairs ...string) *SVGANIMATEElement {
 		kv.Add(pairs[i], pairs[i+1])
 	}
 
+	return e
+}
+
+func (e *SVGANIMATEElement) IfSTYLEPairs(condition bool, pairs ...string) *SVGANIMATEElement {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
 	return e
 }
 

@@ -57,13 +57,41 @@ func (e *SLOTElement) TextF(format string, args ...any) *SLOTElement {
 	return e.Text(fmt.Sprintf(format, args...))
 }
 
+func (e *SLOTElement) IfText(condition bool, text string) *SLOTElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
+}
+
+func (e *SLOTElement) IfTextF(condition bool, format string, args ...any) *SLOTElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
+}
+
 func (e *SLOTElement) Escaped(text string) *SLOTElement {
 	e.Descendants = append(e.Descendants, Escaped(text))
 	return e
 }
 
+func (e *SLOTElement) IfEscaped(condition bool, text string) *SLOTElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
+}
+
 func (e *SLOTElement) EscapedF(format string, args ...any) *SLOTElement {
 	return e.Escaped(fmt.Sprintf(format, args...))
+}
+
+func (e *SLOTElement) IfEscapedF(condition bool, format string, args ...any) *SLOTElement {
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *SLOTElement) CustomData(key, value string) *SLOTElement {
@@ -74,8 +102,22 @@ func (e *SLOTElement) CustomData(key, value string) *SLOTElement {
 	return e
 }
 
+func (e *SLOTElement) IfCustomData(condition bool, key, value string) *SLOTElement {
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
+}
+
 func (e *SLOTElement) CustomDataF(key, format string, args ...any) *SLOTElement {
 	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
+func (e *SLOTElement) IfCustomDataF(condition bool, key, format string, args ...any) *SLOTElement {
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *SLOTElement) CustomDataRemove(key string) *SLOTElement {
@@ -92,6 +134,13 @@ func (e *SLOTElement) NAME(s string) *SLOTElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("name", s)
+	return e
+}
+
+func (e *SLOTElement) IfNAME(condition bool, s string) *SLOTElement {
+	if condition {
+		e.NAME(s)
+	}
 	return e
 }
 
@@ -113,6 +162,13 @@ func (e *SLOTElement) ACCESSKEY(r rune) *SLOTElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("accesskey", string(r))
+	return e
+}
+
+func (e *SLOTElement) IfACCESSKEY(condition bool, r rune) *SLOTElement {
+	if condition {
+		e.ACCESSKEY(r)
+	}
 	return e
 }
 
@@ -198,12 +254,26 @@ func (e *SLOTElement) AUTOFOCUS() *SLOTElement {
 	return e
 }
 
+func (e *SLOTElement) IfAUTOFOCUS(condition bool) *SLOTElement {
+	if condition {
+		e.AUTOFOCUSSet(true)
+	}
+	return e
+}
+
 // Set the attribute autofocus to the value b explicitly.
 func (e *SLOTElement) AUTOFOCUSSet(b bool) *SLOTElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("autofocus", b)
+	return e
+}
+
+func (e *SLOTElement) IfSetAUTOFOCUS(condition bool, b bool) *SLOTElement {
+	if condition {
+		e.AUTOFOCUSSet(b)
+	}
 	return e
 }
 
@@ -231,6 +301,13 @@ func (e *SLOTElement) CLASS(s ...string) *SLOTElement {
 		e.DelimitedStrings.Set("class", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *SLOTElement) IfCLASS(condition bool, s ...string) *SLOTElement {
+	if condition {
+		e.CLASS(s...)
+	}
 	return e
 }
 
@@ -439,6 +516,13 @@ func (e *SLOTElement) EXPORTPARTS(s ...string) *SLOTElement {
 	return e
 }
 
+func (e *SLOTElement) IfEXPORTPARTS(condition bool, s ...string) *SLOTElement {
+	if condition {
+		e.EXPORTPARTS(s...)
+	}
+	return e
+}
+
 // Remove the attribute exportparts from the element.
 func (e *SLOTElement) EXPORTPARTSRemove(s ...string) *SLOTElement {
 	if e.DelimitedStrings == nil {
@@ -514,6 +598,13 @@ func (e *SLOTElement) ID(s string) *SLOTElement {
 	return e
 }
 
+func (e *SLOTElement) IfID(condition bool, s string) *SLOTElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
 // Remove the attribute id from the element.
 func (e *SLOTElement) IDRemove(s string) *SLOTElement {
 	if e.StringAttributes == nil {
@@ -540,12 +631,26 @@ func (e *SLOTElement) INERT() *SLOTElement {
 	return e
 }
 
+func (e *SLOTElement) IfINERT(condition bool) *SLOTElement {
+	if condition {
+		e.INERTSet(true)
+	}
+	return e
+}
+
 // Set the attribute inert to the value b explicitly.
 func (e *SLOTElement) INERTSet(b bool) *SLOTElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("inert", b)
+	return e
+}
+
+func (e *SLOTElement) IfSetINERT(condition bool, b bool) *SLOTElement {
+	if condition {
+		e.INERTSet(b)
+	}
 	return e
 }
 
@@ -641,6 +746,13 @@ func (e *SLOTElement) IS(s string) *SLOTElement {
 	return e
 }
 
+func (e *SLOTElement) IfIS(condition bool, s string) *SLOTElement {
+	if condition {
+		e.IS(s)
+	}
+	return e
+}
+
 // Remove the attribute is from the element.
 func (e *SLOTElement) ISRemove(s string) *SLOTElement {
 	if e.StringAttributes == nil {
@@ -671,6 +783,13 @@ func (e *SLOTElement) ITEMID(s string) *SLOTElement {
 	return e
 }
 
+func (e *SLOTElement) IfITEMID(condition bool, s string) *SLOTElement {
+	if condition {
+		e.ITEMID(s)
+	}
+	return e
+}
+
 // Remove the attribute itemid from the element.
 func (e *SLOTElement) ITEMIDRemove(s string) *SLOTElement {
 	if e.StringAttributes == nil {
@@ -696,6 +815,13 @@ func (e *SLOTElement) ITEMPROP(s string) *SLOTElement {
 	return e
 }
 
+func (e *SLOTElement) IfITEMPROP(condition bool, s string) *SLOTElement {
+	if condition {
+		e.ITEMPROP(s)
+	}
+	return e
+}
+
 // Remove the attribute itemprop from the element.
 func (e *SLOTElement) ITEMPROPRemove(s string) *SLOTElement {
 	if e.StringAttributes == nil {
@@ -715,6 +841,13 @@ func (e *SLOTElement) ITEMREF(s string) *SLOTElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("itemref", s)
+	return e
+}
+
+func (e *SLOTElement) IfITEMREF(condition bool, s string) *SLOTElement {
+	if condition {
+		e.ITEMREF(s)
+	}
 	return e
 }
 
@@ -740,12 +873,26 @@ func (e *SLOTElement) ITEMSCOPE() *SLOTElement {
 	return e
 }
 
+func (e *SLOTElement) IfITEMSCOPE(condition bool) *SLOTElement {
+	if condition {
+		e.ITEMSCOPESet(true)
+	}
+	return e
+}
+
 // Set the attribute itemscope to the value b explicitly.
 func (e *SLOTElement) ITEMSCOPESet(b bool) *SLOTElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("itemscope", b)
+	return e
+}
+
+func (e *SLOTElement) IfSetITEMSCOPE(condition bool, b bool) *SLOTElement {
+	if condition {
+		e.ITEMSCOPESet(b)
+	}
 	return e
 }
 
@@ -774,6 +921,13 @@ func (e *SLOTElement) ITEMTYPE(s string) *SLOTElement {
 	return e
 }
 
+func (e *SLOTElement) IfITEMTYPE(condition bool, s string) *SLOTElement {
+	if condition {
+		e.ITEMTYPE(s)
+	}
+	return e
+}
+
 // Remove the attribute itemtype from the element.
 func (e *SLOTElement) ITEMTYPERemove(s string) *SLOTElement {
 	if e.StringAttributes == nil {
@@ -797,6 +951,13 @@ func (e *SLOTElement) LANG(s string) *SLOTElement {
 	return e
 }
 
+func (e *SLOTElement) IfLANG(condition bool, s string) *SLOTElement {
+	if condition {
+		e.LANG(s)
+	}
+	return e
+}
+
 // Remove the attribute lang from the element.
 func (e *SLOTElement) LANGRemove(s string) *SLOTElement {
 	if e.StringAttributes == nil {
@@ -815,6 +976,13 @@ func (e *SLOTElement) NONCE(s string) *SLOTElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("nonce", s)
+	return e
+}
+
+func (e *SLOTElement) IfNONCE(condition bool, s string) *SLOTElement {
+	if condition {
+		e.NONCE(s)
+	}
 	return e
 }
 
@@ -841,6 +1009,13 @@ func (e *SLOTElement) PART(s ...string) *SLOTElement {
 		e.DelimitedStrings.Set("part", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *SLOTElement) IfPART(condition bool, s ...string) *SLOTElement {
+	if condition {
+		e.PART(s...)
+	}
 	return e
 }
 
@@ -911,6 +1086,13 @@ func (e *SLOTElement) SLOT(s string) *SLOTElement {
 	return e
 }
 
+func (e *SLOTElement) IfSLOT(condition bool, s string) *SLOTElement {
+	if condition {
+		e.SLOT(s)
+	}
+	return e
+}
+
 // Remove the attribute slot from the element.
 func (e *SLOTElement) SLOTRemove(s string) *SLOTElement {
 	if e.StringAttributes == nil {
@@ -969,6 +1151,13 @@ func (e *SLOTElement) STYLEF(k string, format string, args ...any) *SLOTElement 
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+func (e *SLOTElement) IfSTYLE(condition bool, k string, v string) *SLOTElement {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
 func (e *SLOTElement) STYLE(k string, v string) *SLOTElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -979,6 +1168,13 @@ func (e *SLOTElement) STYLE(k string, v string) *SLOTElement {
 		e.KVStrings.Set("style", kv)
 	}
 	kv.Add(k, v)
+	return e
+}
+
+func (e *SLOTElement) IfSTYLEF(condition bool, k string, format string, args ...any) *SLOTElement {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
 	return e
 }
 
@@ -1019,6 +1215,13 @@ func (e *SLOTElement) STYLEPairs(pairs ...string) *SLOTElement {
 	return e
 }
 
+func (e *SLOTElement) IfSTYLEPairs(condition bool, pairs ...string) *SLOTElement {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
+	return e
+}
+
 // Remove the attribute style from the element.
 func (e *SLOTElement) STYLERemove(keys ...string) *SLOTElement {
 	if e.KVStrings == nil {
@@ -1053,6 +1256,13 @@ func (e *SLOTElement) TABINDEX(i int) *SLOTElement {
 		e.IntAttributes = treemap.New[string, int]()
 	}
 	e.IntAttributes.Set("tabindex", i)
+	return e
+}
+
+func (e *SLOTElement) IfTABINDEX(condition bool, i int) *SLOTElement {
+	if condition {
+		e.TABINDEX(i)
+	}
 	return e
 }
 
@@ -1091,6 +1301,13 @@ func (e *SLOTElement) TITLE(s string) *SLOTElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("title", s)
+	return e
+}
+
+func (e *SLOTElement) IfTITLE(condition bool, s string) *SLOTElement {
+	if condition {
+		e.TITLE(s)
+	}
 	return e
 }
 

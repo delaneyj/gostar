@@ -55,13 +55,41 @@ func (e *MathMLMSPACEElement) TextF(format string, args ...any) *MathMLMSPACEEle
 	return e.Text(fmt.Sprintf(format, args...))
 }
 
+func (e *MathMLMSPACEElement) IfText(condition bool, text string) *MathMLMSPACEElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
+}
+
+func (e *MathMLMSPACEElement) IfTextF(condition bool, format string, args ...any) *MathMLMSPACEElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
+}
+
 func (e *MathMLMSPACEElement) Escaped(text string) *MathMLMSPACEElement {
 	e.Descendants = append(e.Descendants, Escaped(text))
 	return e
 }
 
+func (e *MathMLMSPACEElement) IfEscaped(condition bool, text string) *MathMLMSPACEElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
+}
+
 func (e *MathMLMSPACEElement) EscapedF(format string, args ...any) *MathMLMSPACEElement {
 	return e.Escaped(fmt.Sprintf(format, args...))
+}
+
+func (e *MathMLMSPACEElement) IfEscapedF(condition bool, format string, args ...any) *MathMLMSPACEElement {
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *MathMLMSPACEElement) CustomData(key, value string) *MathMLMSPACEElement {
@@ -72,8 +100,22 @@ func (e *MathMLMSPACEElement) CustomData(key, value string) *MathMLMSPACEElement
 	return e
 }
 
+func (e *MathMLMSPACEElement) IfCustomData(condition bool, key, value string) *MathMLMSPACEElement {
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
+}
+
 func (e *MathMLMSPACEElement) CustomDataF(key, format string, args ...any) *MathMLMSPACEElement {
 	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
+func (e *MathMLMSPACEElement) IfCustomDataF(condition bool, key, format string, args ...any) *MathMLMSPACEElement {
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *MathMLMSPACEElement) CustomDataRemove(key string) *MathMLMSPACEElement {
@@ -98,6 +140,13 @@ func (e *MathMLMSPACEElement) CLASS(s ...string) *MathMLMSPACEElement {
 		e.DelimitedStrings.Set("class", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *MathMLMSPACEElement) IfCLASS(condition bool, s ...string) *MathMLMSPACEElement {
+	if condition {
+		e.CLASS(s...)
+	}
 	return e
 }
 
@@ -183,6 +232,13 @@ func (e *MathMLMSPACEElement) ID(s string) *MathMLMSPACEElement {
 	return e
 }
 
+func (e *MathMLMSPACEElement) IfID(condition bool, s string) *MathMLMSPACEElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
 // Remove the attribute id from the element.
 func (e *MathMLMSPACEElement) IDRemove(s string) *MathMLMSPACEElement {
 	if e.StringAttributes == nil {
@@ -200,6 +256,13 @@ func (e *MathMLMSPACEElement) MATHBACKGROUND(s string) *MathMLMSPACEElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("mathbackground", s)
+	return e
+}
+
+func (e *MathMLMSPACEElement) IfMATHBACKGROUND(condition bool, s string) *MathMLMSPACEElement {
+	if condition {
+		e.MATHBACKGROUND(s)
+	}
 	return e
 }
 
@@ -223,6 +286,13 @@ func (e *MathMLMSPACEElement) MATHCOLOR(s string) *MathMLMSPACEElement {
 	return e
 }
 
+func (e *MathMLMSPACEElement) IfMATHCOLOR(condition bool, s string) *MathMLMSPACEElement {
+	if condition {
+		e.MATHCOLOR(s)
+	}
+	return e
+}
+
 // Remove the attribute mathcolor from the element.
 func (e *MathMLMSPACEElement) MATHCOLORRemove(s string) *MathMLMSPACEElement {
 	if e.StringAttributes == nil {
@@ -239,6 +309,13 @@ func (e *MathMLMSPACEElement) MATHSIZESTR(s string) *MathMLMSPACEElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("mathsize", s)
+	return e
+}
+
+func (e *MathMLMSPACEElement) IfMATHSIZESTR(condition bool, s string) *MathMLMSPACEElement {
+	if condition {
+		e.MATHSIZESTR(s)
+	}
 	return e
 }
 
@@ -263,6 +340,13 @@ func (e *MathMLMSPACEElement) NONCE(s string) *MathMLMSPACEElement {
 	return e
 }
 
+func (e *MathMLMSPACEElement) IfNONCE(condition bool, s string) *MathMLMSPACEElement {
+	if condition {
+		e.NONCE(s)
+	}
+	return e
+}
+
 // Remove the attribute nonce from the element.
 func (e *MathMLMSPACEElement) NONCERemove(s string) *MathMLMSPACEElement {
 	if e.StringAttributes == nil {
@@ -282,6 +366,13 @@ func (e *MathMLMSPACEElement) SCRIPTLEVEL(i int) *MathMLMSPACEElement {
 	return e
 }
 
+func (e *MathMLMSPACEElement) IfSCRIPTLEVEL(condition bool, i int) *MathMLMSPACEElement {
+	if condition {
+		e.SCRIPTLEVEL(i)
+	}
+	return e
+}
+
 // Remove the attribute scriptlevel from the element.
 func (e *MathMLMSPACEElement) SCRIPTLEVELRemove(i int) *MathMLMSPACEElement {
 	if e.IntAttributes == nil {
@@ -297,6 +388,13 @@ func (e *MathMLMSPACEElement) STYLEF(k string, format string, args ...any) *Math
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+func (e *MathMLMSPACEElement) IfSTYLE(condition bool, k string, v string) *MathMLMSPACEElement {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
 func (e *MathMLMSPACEElement) STYLE(k string, v string) *MathMLMSPACEElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -307,6 +405,13 @@ func (e *MathMLMSPACEElement) STYLE(k string, v string) *MathMLMSPACEElement {
 		e.KVStrings.Set("style", kv)
 	}
 	kv.Add(k, v)
+	return e
+}
+
+func (e *MathMLMSPACEElement) IfSTYLEF(condition bool, k string, format string, args ...any) *MathMLMSPACEElement {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
 	return e
 }
 
@@ -347,6 +452,13 @@ func (e *MathMLMSPACEElement) STYLEPairs(pairs ...string) *MathMLMSPACEElement {
 	return e
 }
 
+func (e *MathMLMSPACEElement) IfSTYLEPairs(condition bool, pairs ...string) *MathMLMSPACEElement {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
+	return e
+}
+
 // Remove the attribute style from the element.
 func (e *MathMLMSPACEElement) STYLERemove(keys ...string) *MathMLMSPACEElement {
 	if e.KVStrings == nil {
@@ -371,6 +483,13 @@ func (e *MathMLMSPACEElement) TABINDEX(i int) *MathMLMSPACEElement {
 		e.IntAttributes = treemap.New[string, int]()
 	}
 	e.IntAttributes.Set("tabindex", i)
+	return e
+}
+
+func (e *MathMLMSPACEElement) IfTABINDEX(condition bool, i int) *MathMLMSPACEElement {
+	if condition {
+		e.TABINDEX(i)
+	}
 	return e
 }
 

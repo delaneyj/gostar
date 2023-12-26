@@ -55,13 +55,41 @@ func (e *MathMLMTABLEElement) TextF(format string, args ...any) *MathMLMTABLEEle
 	return e.Text(fmt.Sprintf(format, args...))
 }
 
+func (e *MathMLMTABLEElement) IfText(condition bool, text string) *MathMLMTABLEElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
+}
+
+func (e *MathMLMTABLEElement) IfTextF(condition bool, format string, args ...any) *MathMLMTABLEElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
+}
+
 func (e *MathMLMTABLEElement) Escaped(text string) *MathMLMTABLEElement {
 	e.Descendants = append(e.Descendants, Escaped(text))
 	return e
 }
 
+func (e *MathMLMTABLEElement) IfEscaped(condition bool, text string) *MathMLMTABLEElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
+}
+
 func (e *MathMLMTABLEElement) EscapedF(format string, args ...any) *MathMLMTABLEElement {
 	return e.Escaped(fmt.Sprintf(format, args...))
+}
+
+func (e *MathMLMTABLEElement) IfEscapedF(condition bool, format string, args ...any) *MathMLMTABLEElement {
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *MathMLMTABLEElement) CustomData(key, value string) *MathMLMTABLEElement {
@@ -72,8 +100,22 @@ func (e *MathMLMTABLEElement) CustomData(key, value string) *MathMLMTABLEElement
 	return e
 }
 
+func (e *MathMLMTABLEElement) IfCustomData(condition bool, key, value string) *MathMLMTABLEElement {
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
+}
+
 func (e *MathMLMTABLEElement) CustomDataF(key, format string, args ...any) *MathMLMTABLEElement {
 	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
+func (e *MathMLMTABLEElement) IfCustomDataF(condition bool, key, format string, args ...any) *MathMLMTABLEElement {
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *MathMLMTABLEElement) CustomDataRemove(key string) *MathMLMTABLEElement {
@@ -98,6 +140,13 @@ func (e *MathMLMTABLEElement) CLASS(s ...string) *MathMLMTABLEElement {
 		e.DelimitedStrings.Set("class", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *MathMLMTABLEElement) IfCLASS(condition bool, s ...string) *MathMLMTABLEElement {
+	if condition {
+		e.CLASS(s...)
+	}
 	return e
 }
 
@@ -183,6 +232,13 @@ func (e *MathMLMTABLEElement) ID(s string) *MathMLMTABLEElement {
 	return e
 }
 
+func (e *MathMLMTABLEElement) IfID(condition bool, s string) *MathMLMTABLEElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
 // Remove the attribute id from the element.
 func (e *MathMLMTABLEElement) IDRemove(s string) *MathMLMTABLEElement {
 	if e.StringAttributes == nil {
@@ -200,6 +256,13 @@ func (e *MathMLMTABLEElement) MATHBACKGROUND(s string) *MathMLMTABLEElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("mathbackground", s)
+	return e
+}
+
+func (e *MathMLMTABLEElement) IfMATHBACKGROUND(condition bool, s string) *MathMLMTABLEElement {
+	if condition {
+		e.MATHBACKGROUND(s)
+	}
 	return e
 }
 
@@ -223,6 +286,13 @@ func (e *MathMLMTABLEElement) MATHCOLOR(s string) *MathMLMTABLEElement {
 	return e
 }
 
+func (e *MathMLMTABLEElement) IfMATHCOLOR(condition bool, s string) *MathMLMTABLEElement {
+	if condition {
+		e.MATHCOLOR(s)
+	}
+	return e
+}
+
 // Remove the attribute mathcolor from the element.
 func (e *MathMLMTABLEElement) MATHCOLORRemove(s string) *MathMLMTABLEElement {
 	if e.StringAttributes == nil {
@@ -239,6 +309,13 @@ func (e *MathMLMTABLEElement) MATHSIZESTR(s string) *MathMLMTABLEElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("mathsize", s)
+	return e
+}
+
+func (e *MathMLMTABLEElement) IfMATHSIZESTR(condition bool, s string) *MathMLMTABLEElement {
+	if condition {
+		e.MATHSIZESTR(s)
+	}
 	return e
 }
 
@@ -263,6 +340,13 @@ func (e *MathMLMTABLEElement) NONCE(s string) *MathMLMTABLEElement {
 	return e
 }
 
+func (e *MathMLMTABLEElement) IfNONCE(condition bool, s string) *MathMLMTABLEElement {
+	if condition {
+		e.NONCE(s)
+	}
+	return e
+}
+
 // Remove the attribute nonce from the element.
 func (e *MathMLMTABLEElement) NONCERemove(s string) *MathMLMTABLEElement {
 	if e.StringAttributes == nil {
@@ -282,6 +366,13 @@ func (e *MathMLMTABLEElement) SCRIPTLEVEL(i int) *MathMLMTABLEElement {
 	return e
 }
 
+func (e *MathMLMTABLEElement) IfSCRIPTLEVEL(condition bool, i int) *MathMLMTABLEElement {
+	if condition {
+		e.SCRIPTLEVEL(i)
+	}
+	return e
+}
+
 // Remove the attribute scriptlevel from the element.
 func (e *MathMLMTABLEElement) SCRIPTLEVELRemove(i int) *MathMLMTABLEElement {
 	if e.IntAttributes == nil {
@@ -297,6 +388,13 @@ func (e *MathMLMTABLEElement) STYLEF(k string, format string, args ...any) *Math
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+func (e *MathMLMTABLEElement) IfSTYLE(condition bool, k string, v string) *MathMLMTABLEElement {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
 func (e *MathMLMTABLEElement) STYLE(k string, v string) *MathMLMTABLEElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -307,6 +405,13 @@ func (e *MathMLMTABLEElement) STYLE(k string, v string) *MathMLMTABLEElement {
 		e.KVStrings.Set("style", kv)
 	}
 	kv.Add(k, v)
+	return e
+}
+
+func (e *MathMLMTABLEElement) IfSTYLEF(condition bool, k string, format string, args ...any) *MathMLMTABLEElement {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
 	return e
 }
 
@@ -347,6 +452,13 @@ func (e *MathMLMTABLEElement) STYLEPairs(pairs ...string) *MathMLMTABLEElement {
 	return e
 }
 
+func (e *MathMLMTABLEElement) IfSTYLEPairs(condition bool, pairs ...string) *MathMLMTABLEElement {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
+	return e
+}
+
 // Remove the attribute style from the element.
 func (e *MathMLMTABLEElement) STYLERemove(keys ...string) *MathMLMTABLEElement {
 	if e.KVStrings == nil {
@@ -371,6 +483,13 @@ func (e *MathMLMTABLEElement) TABINDEX(i int) *MathMLMTABLEElement {
 		e.IntAttributes = treemap.New[string, int]()
 	}
 	e.IntAttributes.Set("tabindex", i)
+	return e
+}
+
+func (e *MathMLMTABLEElement) IfTABINDEX(condition bool, i int) *MathMLMTABLEElement {
+	if condition {
+		e.TABINDEX(i)
+	}
 	return e
 }
 

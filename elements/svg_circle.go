@@ -56,13 +56,41 @@ func (e *SVGCIRCLEElement) TextF(format string, args ...any) *SVGCIRCLEElement {
 	return e.Text(fmt.Sprintf(format, args...))
 }
 
+func (e *SVGCIRCLEElement) IfText(condition bool, text string) *SVGCIRCLEElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
+}
+
+func (e *SVGCIRCLEElement) IfTextF(condition bool, format string, args ...any) *SVGCIRCLEElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
+}
+
 func (e *SVGCIRCLEElement) Escaped(text string) *SVGCIRCLEElement {
 	e.Descendants = append(e.Descendants, Escaped(text))
 	return e
 }
 
+func (e *SVGCIRCLEElement) IfEscaped(condition bool, text string) *SVGCIRCLEElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
+}
+
 func (e *SVGCIRCLEElement) EscapedF(format string, args ...any) *SVGCIRCLEElement {
 	return e.Escaped(fmt.Sprintf(format, args...))
+}
+
+func (e *SVGCIRCLEElement) IfEscapedF(condition bool, format string, args ...any) *SVGCIRCLEElement {
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *SVGCIRCLEElement) CustomData(key, value string) *SVGCIRCLEElement {
@@ -73,8 +101,22 @@ func (e *SVGCIRCLEElement) CustomData(key, value string) *SVGCIRCLEElement {
 	return e
 }
 
+func (e *SVGCIRCLEElement) IfCustomData(condition bool, key, value string) *SVGCIRCLEElement {
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
+}
+
 func (e *SVGCIRCLEElement) CustomDataF(key, format string, args ...any) *SVGCIRCLEElement {
 	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
+func (e *SVGCIRCLEElement) IfCustomDataF(condition bool, key, format string, args ...any) *SVGCIRCLEElement {
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *SVGCIRCLEElement) CustomDataRemove(key string) *SVGCIRCLEElement {
@@ -94,6 +136,13 @@ func (e *SVGCIRCLEElement) CX(f float64) *SVGCIRCLEElement {
 	return e
 }
 
+func (e *SVGCIRCLEElement) IfCX(condition bool, f float64) *SVGCIRCLEElement {
+	if condition {
+		e.CX(f)
+	}
+	return e
+}
+
 // The y-axis coordinate of the center of the circle.
 func (e *SVGCIRCLEElement) CY(f float64) *SVGCIRCLEElement {
 	if e.FloatAttributes == nil {
@@ -103,12 +152,26 @@ func (e *SVGCIRCLEElement) CY(f float64) *SVGCIRCLEElement {
 	return e
 }
 
+func (e *SVGCIRCLEElement) IfCY(condition bool, f float64) *SVGCIRCLEElement {
+	if condition {
+		e.CY(f)
+	}
+	return e
+}
+
 // The radius of the circle.
 func (e *SVGCIRCLEElement) R(f float64) *SVGCIRCLEElement {
 	if e.FloatAttributes == nil {
 		e.FloatAttributes = treemap.New[string, float64]()
 	}
 	e.FloatAttributes.Set("r", f)
+	return e
+}
+
+func (e *SVGCIRCLEElement) IfR(condition bool, f float64) *SVGCIRCLEElement {
+	if condition {
+		e.R(f)
+	}
 	return e
 }
 
@@ -124,6 +187,13 @@ func (e *SVGCIRCLEElement) CLASS(s ...string) *SVGCIRCLEElement {
 		e.DelimitedStrings.Set("class", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *SVGCIRCLEElement) IfCLASS(condition bool, s ...string) *SVGCIRCLEElement {
+	if condition {
+		e.CLASS(s...)
+	}
 	return e
 }
 
@@ -149,6 +219,13 @@ func (e *SVGCIRCLEElement) ID(s string) *SVGCIRCLEElement {
 	return e
 }
 
+func (e *SVGCIRCLEElement) IfID(condition bool, s string) *SVGCIRCLEElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
 // Remove the attribute id from the element.
 func (e *SVGCIRCLEElement) IDRemove(s string) *SVGCIRCLEElement {
 	if e.StringAttributes == nil {
@@ -163,6 +240,13 @@ func (e *SVGCIRCLEElement) STYLEF(k string, format string, args ...any) *SVGCIRC
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+func (e *SVGCIRCLEElement) IfSTYLE(condition bool, k string, v string) *SVGCIRCLEElement {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
 func (e *SVGCIRCLEElement) STYLE(k string, v string) *SVGCIRCLEElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -173,6 +257,13 @@ func (e *SVGCIRCLEElement) STYLE(k string, v string) *SVGCIRCLEElement {
 		e.KVStrings.Set("style", kv)
 	}
 	kv.Add(k, v)
+	return e
+}
+
+func (e *SVGCIRCLEElement) IfSTYLEF(condition bool, k string, format string, args ...any) *SVGCIRCLEElement {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
 	return e
 }
 
@@ -210,6 +301,13 @@ func (e *SVGCIRCLEElement) STYLEPairs(pairs ...string) *SVGCIRCLEElement {
 		kv.Add(pairs[i], pairs[i+1])
 	}
 
+	return e
+}
+
+func (e *SVGCIRCLEElement) IfSTYLEPairs(condition bool, pairs ...string) *SVGCIRCLEElement {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
 	return e
 }
 

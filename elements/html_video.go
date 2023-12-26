@@ -55,13 +55,41 @@ func (e *VIDEOElement) TextF(format string, args ...any) *VIDEOElement {
 	return e.Text(fmt.Sprintf(format, args...))
 }
 
+func (e *VIDEOElement) IfText(condition bool, text string) *VIDEOElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
+}
+
+func (e *VIDEOElement) IfTextF(condition bool, format string, args ...any) *VIDEOElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
+}
+
 func (e *VIDEOElement) Escaped(text string) *VIDEOElement {
 	e.Descendants = append(e.Descendants, Escaped(text))
 	return e
 }
 
+func (e *VIDEOElement) IfEscaped(condition bool, text string) *VIDEOElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
+}
+
 func (e *VIDEOElement) EscapedF(format string, args ...any) *VIDEOElement {
 	return e.Escaped(fmt.Sprintf(format, args...))
+}
+
+func (e *VIDEOElement) IfEscapedF(condition bool, format string, args ...any) *VIDEOElement {
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *VIDEOElement) CustomData(key, value string) *VIDEOElement {
@@ -72,8 +100,22 @@ func (e *VIDEOElement) CustomData(key, value string) *VIDEOElement {
 	return e
 }
 
+func (e *VIDEOElement) IfCustomData(condition bool, key, value string) *VIDEOElement {
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
+}
+
 func (e *VIDEOElement) CustomDataF(key, format string, args ...any) *VIDEOElement {
 	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
+func (e *VIDEOElement) IfCustomDataF(condition bool, key, format string, args ...any) *VIDEOElement {
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *VIDEOElement) CustomDataRemove(key string) *VIDEOElement {
@@ -90,12 +132,26 @@ func (e *VIDEOElement) AUTOPLAY() *VIDEOElement {
 	return e
 }
 
+func (e *VIDEOElement) IfAUTOPLAY(condition bool) *VIDEOElement {
+	if condition {
+		e.AUTOPLAYSet(true)
+	}
+	return e
+}
+
 // Set the attribute autoplay to the value b explicitly.
 func (e *VIDEOElement) AUTOPLAYSet(b bool) *VIDEOElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("autoplay", b)
+	return e
+}
+
+func (e *VIDEOElement) IfSetAUTOPLAY(condition bool, b bool) *VIDEOElement {
+	if condition {
+		e.AUTOPLAYSet(b)
+	}
 	return e
 }
 
@@ -114,12 +170,26 @@ func (e *VIDEOElement) CONTROLS() *VIDEOElement {
 	return e
 }
 
+func (e *VIDEOElement) IfCONTROLS(condition bool) *VIDEOElement {
+	if condition {
+		e.CONTROLSSet(true)
+	}
+	return e
+}
+
 // Set the attribute controls to the value b explicitly.
 func (e *VIDEOElement) CONTROLSSet(b bool) *VIDEOElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("controls", b)
+	return e
+}
+
+func (e *VIDEOElement) IfSetCONTROLS(condition bool, b bool) *VIDEOElement {
+	if condition {
+		e.CONTROLSSet(b)
+	}
 	return e
 }
 
@@ -172,6 +242,13 @@ func (e *VIDEOElement) HEIGHT(i int) *VIDEOElement {
 	return e
 }
 
+func (e *VIDEOElement) IfHEIGHT(condition bool, i int) *VIDEOElement {
+	if condition {
+		e.HEIGHT(i)
+	}
+	return e
+}
+
 // Remove the attribute height from the element.
 func (e *VIDEOElement) HEIGHTRemove(i int) *VIDEOElement {
 	if e.IntAttributes == nil {
@@ -187,12 +264,26 @@ func (e *VIDEOElement) LOOP() *VIDEOElement {
 	return e
 }
 
+func (e *VIDEOElement) IfLOOP(condition bool) *VIDEOElement {
+	if condition {
+		e.LOOPSet(true)
+	}
+	return e
+}
+
 // Set the attribute loop to the value b explicitly.
 func (e *VIDEOElement) LOOPSet(b bool) *VIDEOElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("loop", b)
+	return e
+}
+
+func (e *VIDEOElement) IfSetLOOP(condition bool, b bool) *VIDEOElement {
+	if condition {
+		e.LOOPSet(b)
+	}
 	return e
 }
 
@@ -211,12 +302,26 @@ func (e *VIDEOElement) MUTED() *VIDEOElement {
 	return e
 }
 
+func (e *VIDEOElement) IfMUTED(condition bool) *VIDEOElement {
+	if condition {
+		e.MUTEDSet(true)
+	}
+	return e
+}
+
 // Set the attribute muted to the value b explicitly.
 func (e *VIDEOElement) MUTEDSet(b bool) *VIDEOElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("muted", b)
+	return e
+}
+
+func (e *VIDEOElement) IfSetMUTED(condition bool, b bool) *VIDEOElement {
+	if condition {
+		e.MUTEDSet(b)
+	}
 	return e
 }
 
@@ -236,12 +341,26 @@ func (e *VIDEOElement) PLAYSINLINE() *VIDEOElement {
 	return e
 }
 
+func (e *VIDEOElement) IfPLAYSINLINE(condition bool) *VIDEOElement {
+	if condition {
+		e.PLAYSINLINESet(true)
+	}
+	return e
+}
+
 // Set the attribute playsinline to the value b explicitly.
 func (e *VIDEOElement) PLAYSINLINESet(b bool) *VIDEOElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("playsinline", b)
+	return e
+}
+
+func (e *VIDEOElement) IfSetPLAYSINLINE(condition bool, b bool) *VIDEOElement {
+	if condition {
+		e.PLAYSINLINESet(b)
+	}
 	return e
 }
 
@@ -260,6 +379,13 @@ func (e *VIDEOElement) POSTER(s string) *VIDEOElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("poster", s)
+	return e
+}
+
+func (e *VIDEOElement) IfPOSTER(condition bool, s string) *VIDEOElement {
+	if condition {
+		e.POSTER(s)
+	}
 	return e
 }
 
@@ -310,6 +436,13 @@ func (e *VIDEOElement) SRC(s string) *VIDEOElement {
 	return e
 }
 
+func (e *VIDEOElement) IfSRC(condition bool, s string) *VIDEOElement {
+	if condition {
+		e.SRC(s)
+	}
+	return e
+}
+
 // Remove the attribute src from the element.
 func (e *VIDEOElement) SRCRemove(s string) *VIDEOElement {
 	if e.StringAttributes == nil {
@@ -325,6 +458,13 @@ func (e *VIDEOElement) WIDTH(i int) *VIDEOElement {
 		e.IntAttributes = treemap.New[string, int]()
 	}
 	e.IntAttributes.Set("width", i)
+	return e
+}
+
+func (e *VIDEOElement) IfWIDTH(condition bool, i int) *VIDEOElement {
+	if condition {
+		e.WIDTH(i)
+	}
 	return e
 }
 
@@ -346,6 +486,13 @@ func (e *VIDEOElement) ACCESSKEY(r rune) *VIDEOElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("accesskey", string(r))
+	return e
+}
+
+func (e *VIDEOElement) IfACCESSKEY(condition bool, r rune) *VIDEOElement {
+	if condition {
+		e.ACCESSKEY(r)
+	}
 	return e
 }
 
@@ -431,12 +578,26 @@ func (e *VIDEOElement) AUTOFOCUS() *VIDEOElement {
 	return e
 }
 
+func (e *VIDEOElement) IfAUTOFOCUS(condition bool) *VIDEOElement {
+	if condition {
+		e.AUTOFOCUSSet(true)
+	}
+	return e
+}
+
 // Set the attribute autofocus to the value b explicitly.
 func (e *VIDEOElement) AUTOFOCUSSet(b bool) *VIDEOElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("autofocus", b)
+	return e
+}
+
+func (e *VIDEOElement) IfSetAUTOFOCUS(condition bool, b bool) *VIDEOElement {
+	if condition {
+		e.AUTOFOCUSSet(b)
+	}
 	return e
 }
 
@@ -464,6 +625,13 @@ func (e *VIDEOElement) CLASS(s ...string) *VIDEOElement {
 		e.DelimitedStrings.Set("class", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *VIDEOElement) IfCLASS(condition bool, s ...string) *VIDEOElement {
+	if condition {
+		e.CLASS(s...)
+	}
 	return e
 }
 
@@ -672,6 +840,13 @@ func (e *VIDEOElement) EXPORTPARTS(s ...string) *VIDEOElement {
 	return e
 }
 
+func (e *VIDEOElement) IfEXPORTPARTS(condition bool, s ...string) *VIDEOElement {
+	if condition {
+		e.EXPORTPARTS(s...)
+	}
+	return e
+}
+
 // Remove the attribute exportparts from the element.
 func (e *VIDEOElement) EXPORTPARTSRemove(s ...string) *VIDEOElement {
 	if e.DelimitedStrings == nil {
@@ -747,6 +922,13 @@ func (e *VIDEOElement) ID(s string) *VIDEOElement {
 	return e
 }
 
+func (e *VIDEOElement) IfID(condition bool, s string) *VIDEOElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
 // Remove the attribute id from the element.
 func (e *VIDEOElement) IDRemove(s string) *VIDEOElement {
 	if e.StringAttributes == nil {
@@ -773,12 +955,26 @@ func (e *VIDEOElement) INERT() *VIDEOElement {
 	return e
 }
 
+func (e *VIDEOElement) IfINERT(condition bool) *VIDEOElement {
+	if condition {
+		e.INERTSet(true)
+	}
+	return e
+}
+
 // Set the attribute inert to the value b explicitly.
 func (e *VIDEOElement) INERTSet(b bool) *VIDEOElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("inert", b)
+	return e
+}
+
+func (e *VIDEOElement) IfSetINERT(condition bool, b bool) *VIDEOElement {
+	if condition {
+		e.INERTSet(b)
+	}
 	return e
 }
 
@@ -874,6 +1070,13 @@ func (e *VIDEOElement) IS(s string) *VIDEOElement {
 	return e
 }
 
+func (e *VIDEOElement) IfIS(condition bool, s string) *VIDEOElement {
+	if condition {
+		e.IS(s)
+	}
+	return e
+}
+
 // Remove the attribute is from the element.
 func (e *VIDEOElement) ISRemove(s string) *VIDEOElement {
 	if e.StringAttributes == nil {
@@ -904,6 +1107,13 @@ func (e *VIDEOElement) ITEMID(s string) *VIDEOElement {
 	return e
 }
 
+func (e *VIDEOElement) IfITEMID(condition bool, s string) *VIDEOElement {
+	if condition {
+		e.ITEMID(s)
+	}
+	return e
+}
+
 // Remove the attribute itemid from the element.
 func (e *VIDEOElement) ITEMIDRemove(s string) *VIDEOElement {
 	if e.StringAttributes == nil {
@@ -929,6 +1139,13 @@ func (e *VIDEOElement) ITEMPROP(s string) *VIDEOElement {
 	return e
 }
 
+func (e *VIDEOElement) IfITEMPROP(condition bool, s string) *VIDEOElement {
+	if condition {
+		e.ITEMPROP(s)
+	}
+	return e
+}
+
 // Remove the attribute itemprop from the element.
 func (e *VIDEOElement) ITEMPROPRemove(s string) *VIDEOElement {
 	if e.StringAttributes == nil {
@@ -948,6 +1165,13 @@ func (e *VIDEOElement) ITEMREF(s string) *VIDEOElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("itemref", s)
+	return e
+}
+
+func (e *VIDEOElement) IfITEMREF(condition bool, s string) *VIDEOElement {
+	if condition {
+		e.ITEMREF(s)
+	}
 	return e
 }
 
@@ -973,12 +1197,26 @@ func (e *VIDEOElement) ITEMSCOPE() *VIDEOElement {
 	return e
 }
 
+func (e *VIDEOElement) IfITEMSCOPE(condition bool) *VIDEOElement {
+	if condition {
+		e.ITEMSCOPESet(true)
+	}
+	return e
+}
+
 // Set the attribute itemscope to the value b explicitly.
 func (e *VIDEOElement) ITEMSCOPESet(b bool) *VIDEOElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("itemscope", b)
+	return e
+}
+
+func (e *VIDEOElement) IfSetITEMSCOPE(condition bool, b bool) *VIDEOElement {
+	if condition {
+		e.ITEMSCOPESet(b)
+	}
 	return e
 }
 
@@ -1007,6 +1245,13 @@ func (e *VIDEOElement) ITEMTYPE(s string) *VIDEOElement {
 	return e
 }
 
+func (e *VIDEOElement) IfITEMTYPE(condition bool, s string) *VIDEOElement {
+	if condition {
+		e.ITEMTYPE(s)
+	}
+	return e
+}
+
 // Remove the attribute itemtype from the element.
 func (e *VIDEOElement) ITEMTYPERemove(s string) *VIDEOElement {
 	if e.StringAttributes == nil {
@@ -1030,6 +1275,13 @@ func (e *VIDEOElement) LANG(s string) *VIDEOElement {
 	return e
 }
 
+func (e *VIDEOElement) IfLANG(condition bool, s string) *VIDEOElement {
+	if condition {
+		e.LANG(s)
+	}
+	return e
+}
+
 // Remove the attribute lang from the element.
 func (e *VIDEOElement) LANGRemove(s string) *VIDEOElement {
 	if e.StringAttributes == nil {
@@ -1048,6 +1300,13 @@ func (e *VIDEOElement) NONCE(s string) *VIDEOElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("nonce", s)
+	return e
+}
+
+func (e *VIDEOElement) IfNONCE(condition bool, s string) *VIDEOElement {
+	if condition {
+		e.NONCE(s)
+	}
 	return e
 }
 
@@ -1074,6 +1333,13 @@ func (e *VIDEOElement) PART(s ...string) *VIDEOElement {
 		e.DelimitedStrings.Set("part", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *VIDEOElement) IfPART(condition bool, s ...string) *VIDEOElement {
+	if condition {
+		e.PART(s...)
+	}
 	return e
 }
 
@@ -1144,6 +1410,13 @@ func (e *VIDEOElement) SLOT(s string) *VIDEOElement {
 	return e
 }
 
+func (e *VIDEOElement) IfSLOT(condition bool, s string) *VIDEOElement {
+	if condition {
+		e.SLOT(s)
+	}
+	return e
+}
+
 // Remove the attribute slot from the element.
 func (e *VIDEOElement) SLOTRemove(s string) *VIDEOElement {
 	if e.StringAttributes == nil {
@@ -1202,6 +1475,13 @@ func (e *VIDEOElement) STYLEF(k string, format string, args ...any) *VIDEOElemen
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+func (e *VIDEOElement) IfSTYLE(condition bool, k string, v string) *VIDEOElement {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
 func (e *VIDEOElement) STYLE(k string, v string) *VIDEOElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -1212,6 +1492,13 @@ func (e *VIDEOElement) STYLE(k string, v string) *VIDEOElement {
 		e.KVStrings.Set("style", kv)
 	}
 	kv.Add(k, v)
+	return e
+}
+
+func (e *VIDEOElement) IfSTYLEF(condition bool, k string, format string, args ...any) *VIDEOElement {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
 	return e
 }
 
@@ -1252,6 +1539,13 @@ func (e *VIDEOElement) STYLEPairs(pairs ...string) *VIDEOElement {
 	return e
 }
 
+func (e *VIDEOElement) IfSTYLEPairs(condition bool, pairs ...string) *VIDEOElement {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
+	return e
+}
+
 // Remove the attribute style from the element.
 func (e *VIDEOElement) STYLERemove(keys ...string) *VIDEOElement {
 	if e.KVStrings == nil {
@@ -1286,6 +1580,13 @@ func (e *VIDEOElement) TABINDEX(i int) *VIDEOElement {
 		e.IntAttributes = treemap.New[string, int]()
 	}
 	e.IntAttributes.Set("tabindex", i)
+	return e
+}
+
+func (e *VIDEOElement) IfTABINDEX(condition bool, i int) *VIDEOElement {
+	if condition {
+		e.TABINDEX(i)
+	}
 	return e
 }
 
@@ -1324,6 +1625,13 @@ func (e *VIDEOElement) TITLE(s string) *VIDEOElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("title", s)
+	return e
+}
+
+func (e *VIDEOElement) IfTITLE(condition bool, s string) *VIDEOElement {
+	if condition {
+		e.TITLE(s)
+	}
 	return e
 }
 

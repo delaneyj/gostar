@@ -58,13 +58,41 @@ func (e *MathMLMACTIONElement) TextF(format string, args ...any) *MathMLMACTIONE
 	return e.Text(fmt.Sprintf(format, args...))
 }
 
+func (e *MathMLMACTIONElement) IfText(condition bool, text string) *MathMLMACTIONElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
+}
+
+func (e *MathMLMACTIONElement) IfTextF(condition bool, format string, args ...any) *MathMLMACTIONElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
+}
+
 func (e *MathMLMACTIONElement) Escaped(text string) *MathMLMACTIONElement {
 	e.Descendants = append(e.Descendants, Escaped(text))
 	return e
 }
 
+func (e *MathMLMACTIONElement) IfEscaped(condition bool, text string) *MathMLMACTIONElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
+}
+
 func (e *MathMLMACTIONElement) EscapedF(format string, args ...any) *MathMLMACTIONElement {
 	return e.Escaped(fmt.Sprintf(format, args...))
+}
+
+func (e *MathMLMACTIONElement) IfEscapedF(condition bool, format string, args ...any) *MathMLMACTIONElement {
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *MathMLMACTIONElement) CustomData(key, value string) *MathMLMACTIONElement {
@@ -75,8 +103,22 @@ func (e *MathMLMACTIONElement) CustomData(key, value string) *MathMLMACTIONEleme
 	return e
 }
 
+func (e *MathMLMACTIONElement) IfCustomData(condition bool, key, value string) *MathMLMACTIONElement {
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
+}
+
 func (e *MathMLMACTIONElement) CustomDataF(key, format string, args ...any) *MathMLMACTIONElement {
 	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
+func (e *MathMLMACTIONElement) IfCustomDataF(condition bool, key, format string, args ...any) *MathMLMACTIONElement {
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *MathMLMACTIONElement) CustomDataRemove(key string) *MathMLMACTIONElement {
@@ -166,6 +208,13 @@ func (e *MathMLMACTIONElement) CLASS(s ...string) *MathMLMACTIONElement {
 	return e
 }
 
+func (e *MathMLMACTIONElement) IfCLASS(condition bool, s ...string) *MathMLMACTIONElement {
+	if condition {
+		e.CLASS(s...)
+	}
+	return e
+}
+
 // Remove the attribute class from the element.
 func (e *MathMLMACTIONElement) CLASSRemove(s ...string) *MathMLMACTIONElement {
 	if e.DelimitedStrings == nil {
@@ -248,6 +297,13 @@ func (e *MathMLMACTIONElement) ID(s string) *MathMLMACTIONElement {
 	return e
 }
 
+func (e *MathMLMACTIONElement) IfID(condition bool, s string) *MathMLMACTIONElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
 // Remove the attribute id from the element.
 func (e *MathMLMACTIONElement) IDRemove(s string) *MathMLMACTIONElement {
 	if e.StringAttributes == nil {
@@ -265,6 +321,13 @@ func (e *MathMLMACTIONElement) MATHBACKGROUND(s string) *MathMLMACTIONElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("mathbackground", s)
+	return e
+}
+
+func (e *MathMLMACTIONElement) IfMATHBACKGROUND(condition bool, s string) *MathMLMACTIONElement {
+	if condition {
+		e.MATHBACKGROUND(s)
+	}
 	return e
 }
 
@@ -288,6 +351,13 @@ func (e *MathMLMACTIONElement) MATHCOLOR(s string) *MathMLMACTIONElement {
 	return e
 }
 
+func (e *MathMLMACTIONElement) IfMATHCOLOR(condition bool, s string) *MathMLMACTIONElement {
+	if condition {
+		e.MATHCOLOR(s)
+	}
+	return e
+}
+
 // Remove the attribute mathcolor from the element.
 func (e *MathMLMACTIONElement) MATHCOLORRemove(s string) *MathMLMACTIONElement {
 	if e.StringAttributes == nil {
@@ -304,6 +374,13 @@ func (e *MathMLMACTIONElement) MATHSIZESTR(s string) *MathMLMACTIONElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("mathsize", s)
+	return e
+}
+
+func (e *MathMLMACTIONElement) IfMATHSIZESTR(condition bool, s string) *MathMLMACTIONElement {
+	if condition {
+		e.MATHSIZESTR(s)
+	}
 	return e
 }
 
@@ -328,6 +405,13 @@ func (e *MathMLMACTIONElement) NONCE(s string) *MathMLMACTIONElement {
 	return e
 }
 
+func (e *MathMLMACTIONElement) IfNONCE(condition bool, s string) *MathMLMACTIONElement {
+	if condition {
+		e.NONCE(s)
+	}
+	return e
+}
+
 // Remove the attribute nonce from the element.
 func (e *MathMLMACTIONElement) NONCERemove(s string) *MathMLMACTIONElement {
 	if e.StringAttributes == nil {
@@ -347,6 +431,13 @@ func (e *MathMLMACTIONElement) SCRIPTLEVEL(i int) *MathMLMACTIONElement {
 	return e
 }
 
+func (e *MathMLMACTIONElement) IfSCRIPTLEVEL(condition bool, i int) *MathMLMACTIONElement {
+	if condition {
+		e.SCRIPTLEVEL(i)
+	}
+	return e
+}
+
 // Remove the attribute scriptlevel from the element.
 func (e *MathMLMACTIONElement) SCRIPTLEVELRemove(i int) *MathMLMACTIONElement {
 	if e.IntAttributes == nil {
@@ -362,6 +453,13 @@ func (e *MathMLMACTIONElement) STYLEF(k string, format string, args ...any) *Mat
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+func (e *MathMLMACTIONElement) IfSTYLE(condition bool, k string, v string) *MathMLMACTIONElement {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
 func (e *MathMLMACTIONElement) STYLE(k string, v string) *MathMLMACTIONElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -372,6 +470,13 @@ func (e *MathMLMACTIONElement) STYLE(k string, v string) *MathMLMACTIONElement {
 		e.KVStrings.Set("style", kv)
 	}
 	kv.Add(k, v)
+	return e
+}
+
+func (e *MathMLMACTIONElement) IfSTYLEF(condition bool, k string, format string, args ...any) *MathMLMACTIONElement {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
 	return e
 }
 
@@ -412,6 +517,13 @@ func (e *MathMLMACTIONElement) STYLEPairs(pairs ...string) *MathMLMACTIONElement
 	return e
 }
 
+func (e *MathMLMACTIONElement) IfSTYLEPairs(condition bool, pairs ...string) *MathMLMACTIONElement {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
+	return e
+}
+
 // Remove the attribute style from the element.
 func (e *MathMLMACTIONElement) STYLERemove(keys ...string) *MathMLMACTIONElement {
 	if e.KVStrings == nil {
@@ -436,6 +548,13 @@ func (e *MathMLMACTIONElement) TABINDEX(i int) *MathMLMACTIONElement {
 		e.IntAttributes = treemap.New[string, int]()
 	}
 	e.IntAttributes.Set("tabindex", i)
+	return e
+}
+
+func (e *MathMLMACTIONElement) IfTABINDEX(condition bool, i int) *MathMLMACTIONElement {
+	if condition {
+		e.TABINDEX(i)
+	}
 	return e
 }
 

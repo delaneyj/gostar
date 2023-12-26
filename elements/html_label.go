@@ -55,13 +55,41 @@ func (e *LABELElement) TextF(format string, args ...any) *LABELElement {
 	return e.Text(fmt.Sprintf(format, args...))
 }
 
+func (e *LABELElement) IfText(condition bool, text string) *LABELElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
+}
+
+func (e *LABELElement) IfTextF(condition bool, format string, args ...any) *LABELElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
+}
+
 func (e *LABELElement) Escaped(text string) *LABELElement {
 	e.Descendants = append(e.Descendants, Escaped(text))
 	return e
 }
 
+func (e *LABELElement) IfEscaped(condition bool, text string) *LABELElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
+}
+
 func (e *LABELElement) EscapedF(format string, args ...any) *LABELElement {
 	return e.Escaped(fmt.Sprintf(format, args...))
+}
+
+func (e *LABELElement) IfEscapedF(condition bool, format string, args ...any) *LABELElement {
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *LABELElement) CustomData(key, value string) *LABELElement {
@@ -72,8 +100,22 @@ func (e *LABELElement) CustomData(key, value string) *LABELElement {
 	return e
 }
 
+func (e *LABELElement) IfCustomData(condition bool, key, value string) *LABELElement {
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
+}
+
 func (e *LABELElement) CustomDataF(key, format string, args ...any) *LABELElement {
 	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
+func (e *LABELElement) IfCustomDataF(condition bool, key, format string, args ...any) *LABELElement {
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *LABELElement) CustomDataRemove(key string) *LABELElement {
@@ -90,6 +132,13 @@ func (e *LABELElement) FOR(s string) *LABELElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("for", s)
+	return e
+}
+
+func (e *LABELElement) IfFOR(condition bool, s string) *LABELElement {
+	if condition {
+		e.FOR(s)
+	}
 	return e
 }
 
@@ -111,6 +160,13 @@ func (e *LABELElement) FORM(s string) *LABELElement {
 	return e
 }
 
+func (e *LABELElement) IfFORM(condition bool, s string) *LABELElement {
+	if condition {
+		e.FORM(s)
+	}
+	return e
+}
+
 // Remove the attribute form from the element.
 func (e *LABELElement) FORMRemove(s string) *LABELElement {
 	if e.StringAttributes == nil {
@@ -129,6 +185,13 @@ func (e *LABELElement) ACCESSKEY(r rune) *LABELElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("accesskey", string(r))
+	return e
+}
+
+func (e *LABELElement) IfACCESSKEY(condition bool, r rune) *LABELElement {
+	if condition {
+		e.ACCESSKEY(r)
+	}
 	return e
 }
 
@@ -214,12 +277,26 @@ func (e *LABELElement) AUTOFOCUS() *LABELElement {
 	return e
 }
 
+func (e *LABELElement) IfAUTOFOCUS(condition bool) *LABELElement {
+	if condition {
+		e.AUTOFOCUSSet(true)
+	}
+	return e
+}
+
 // Set the attribute autofocus to the value b explicitly.
 func (e *LABELElement) AUTOFOCUSSet(b bool) *LABELElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("autofocus", b)
+	return e
+}
+
+func (e *LABELElement) IfSetAUTOFOCUS(condition bool, b bool) *LABELElement {
+	if condition {
+		e.AUTOFOCUSSet(b)
+	}
 	return e
 }
 
@@ -247,6 +324,13 @@ func (e *LABELElement) CLASS(s ...string) *LABELElement {
 		e.DelimitedStrings.Set("class", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *LABELElement) IfCLASS(condition bool, s ...string) *LABELElement {
+	if condition {
+		e.CLASS(s...)
+	}
 	return e
 }
 
@@ -455,6 +539,13 @@ func (e *LABELElement) EXPORTPARTS(s ...string) *LABELElement {
 	return e
 }
 
+func (e *LABELElement) IfEXPORTPARTS(condition bool, s ...string) *LABELElement {
+	if condition {
+		e.EXPORTPARTS(s...)
+	}
+	return e
+}
+
 // Remove the attribute exportparts from the element.
 func (e *LABELElement) EXPORTPARTSRemove(s ...string) *LABELElement {
 	if e.DelimitedStrings == nil {
@@ -530,6 +621,13 @@ func (e *LABELElement) ID(s string) *LABELElement {
 	return e
 }
 
+func (e *LABELElement) IfID(condition bool, s string) *LABELElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
 // Remove the attribute id from the element.
 func (e *LABELElement) IDRemove(s string) *LABELElement {
 	if e.StringAttributes == nil {
@@ -556,12 +654,26 @@ func (e *LABELElement) INERT() *LABELElement {
 	return e
 }
 
+func (e *LABELElement) IfINERT(condition bool) *LABELElement {
+	if condition {
+		e.INERTSet(true)
+	}
+	return e
+}
+
 // Set the attribute inert to the value b explicitly.
 func (e *LABELElement) INERTSet(b bool) *LABELElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("inert", b)
+	return e
+}
+
+func (e *LABELElement) IfSetINERT(condition bool, b bool) *LABELElement {
+	if condition {
+		e.INERTSet(b)
+	}
 	return e
 }
 
@@ -657,6 +769,13 @@ func (e *LABELElement) IS(s string) *LABELElement {
 	return e
 }
 
+func (e *LABELElement) IfIS(condition bool, s string) *LABELElement {
+	if condition {
+		e.IS(s)
+	}
+	return e
+}
+
 // Remove the attribute is from the element.
 func (e *LABELElement) ISRemove(s string) *LABELElement {
 	if e.StringAttributes == nil {
@@ -687,6 +806,13 @@ func (e *LABELElement) ITEMID(s string) *LABELElement {
 	return e
 }
 
+func (e *LABELElement) IfITEMID(condition bool, s string) *LABELElement {
+	if condition {
+		e.ITEMID(s)
+	}
+	return e
+}
+
 // Remove the attribute itemid from the element.
 func (e *LABELElement) ITEMIDRemove(s string) *LABELElement {
 	if e.StringAttributes == nil {
@@ -712,6 +838,13 @@ func (e *LABELElement) ITEMPROP(s string) *LABELElement {
 	return e
 }
 
+func (e *LABELElement) IfITEMPROP(condition bool, s string) *LABELElement {
+	if condition {
+		e.ITEMPROP(s)
+	}
+	return e
+}
+
 // Remove the attribute itemprop from the element.
 func (e *LABELElement) ITEMPROPRemove(s string) *LABELElement {
 	if e.StringAttributes == nil {
@@ -731,6 +864,13 @@ func (e *LABELElement) ITEMREF(s string) *LABELElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("itemref", s)
+	return e
+}
+
+func (e *LABELElement) IfITEMREF(condition bool, s string) *LABELElement {
+	if condition {
+		e.ITEMREF(s)
+	}
 	return e
 }
 
@@ -756,12 +896,26 @@ func (e *LABELElement) ITEMSCOPE() *LABELElement {
 	return e
 }
 
+func (e *LABELElement) IfITEMSCOPE(condition bool) *LABELElement {
+	if condition {
+		e.ITEMSCOPESet(true)
+	}
+	return e
+}
+
 // Set the attribute itemscope to the value b explicitly.
 func (e *LABELElement) ITEMSCOPESet(b bool) *LABELElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("itemscope", b)
+	return e
+}
+
+func (e *LABELElement) IfSetITEMSCOPE(condition bool, b bool) *LABELElement {
+	if condition {
+		e.ITEMSCOPESet(b)
+	}
 	return e
 }
 
@@ -790,6 +944,13 @@ func (e *LABELElement) ITEMTYPE(s string) *LABELElement {
 	return e
 }
 
+func (e *LABELElement) IfITEMTYPE(condition bool, s string) *LABELElement {
+	if condition {
+		e.ITEMTYPE(s)
+	}
+	return e
+}
+
 // Remove the attribute itemtype from the element.
 func (e *LABELElement) ITEMTYPERemove(s string) *LABELElement {
 	if e.StringAttributes == nil {
@@ -813,6 +974,13 @@ func (e *LABELElement) LANG(s string) *LABELElement {
 	return e
 }
 
+func (e *LABELElement) IfLANG(condition bool, s string) *LABELElement {
+	if condition {
+		e.LANG(s)
+	}
+	return e
+}
+
 // Remove the attribute lang from the element.
 func (e *LABELElement) LANGRemove(s string) *LABELElement {
 	if e.StringAttributes == nil {
@@ -831,6 +999,13 @@ func (e *LABELElement) NONCE(s string) *LABELElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("nonce", s)
+	return e
+}
+
+func (e *LABELElement) IfNONCE(condition bool, s string) *LABELElement {
+	if condition {
+		e.NONCE(s)
+	}
 	return e
 }
 
@@ -857,6 +1032,13 @@ func (e *LABELElement) PART(s ...string) *LABELElement {
 		e.DelimitedStrings.Set("part", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *LABELElement) IfPART(condition bool, s ...string) *LABELElement {
+	if condition {
+		e.PART(s...)
+	}
 	return e
 }
 
@@ -927,6 +1109,13 @@ func (e *LABELElement) SLOT(s string) *LABELElement {
 	return e
 }
 
+func (e *LABELElement) IfSLOT(condition bool, s string) *LABELElement {
+	if condition {
+		e.SLOT(s)
+	}
+	return e
+}
+
 // Remove the attribute slot from the element.
 func (e *LABELElement) SLOTRemove(s string) *LABELElement {
 	if e.StringAttributes == nil {
@@ -985,6 +1174,13 @@ func (e *LABELElement) STYLEF(k string, format string, args ...any) *LABELElemen
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+func (e *LABELElement) IfSTYLE(condition bool, k string, v string) *LABELElement {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
 func (e *LABELElement) STYLE(k string, v string) *LABELElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -995,6 +1191,13 @@ func (e *LABELElement) STYLE(k string, v string) *LABELElement {
 		e.KVStrings.Set("style", kv)
 	}
 	kv.Add(k, v)
+	return e
+}
+
+func (e *LABELElement) IfSTYLEF(condition bool, k string, format string, args ...any) *LABELElement {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
 	return e
 }
 
@@ -1035,6 +1238,13 @@ func (e *LABELElement) STYLEPairs(pairs ...string) *LABELElement {
 	return e
 }
 
+func (e *LABELElement) IfSTYLEPairs(condition bool, pairs ...string) *LABELElement {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
+	return e
+}
+
 // Remove the attribute style from the element.
 func (e *LABELElement) STYLERemove(keys ...string) *LABELElement {
 	if e.KVStrings == nil {
@@ -1069,6 +1279,13 @@ func (e *LABELElement) TABINDEX(i int) *LABELElement {
 		e.IntAttributes = treemap.New[string, int]()
 	}
 	e.IntAttributes.Set("tabindex", i)
+	return e
+}
+
+func (e *LABELElement) IfTABINDEX(condition bool, i int) *LABELElement {
+	if condition {
+		e.TABINDEX(i)
+	}
 	return e
 }
 
@@ -1107,6 +1324,13 @@ func (e *LABELElement) TITLE(s string) *LABELElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("title", s)
+	return e
+}
+
+func (e *LABELElement) IfTITLE(condition bool, s string) *LABELElement {
+	if condition {
+		e.TITLE(s)
+	}
 	return e
 }
 

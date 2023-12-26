@@ -56,13 +56,41 @@ func (e *SVGFEPOINTLIGHTElement) TextF(format string, args ...any) *SVGFEPOINTLI
 	return e.Text(fmt.Sprintf(format, args...))
 }
 
+func (e *SVGFEPOINTLIGHTElement) IfText(condition bool, text string) *SVGFEPOINTLIGHTElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
+}
+
+func (e *SVGFEPOINTLIGHTElement) IfTextF(condition bool, format string, args ...any) *SVGFEPOINTLIGHTElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
+}
+
 func (e *SVGFEPOINTLIGHTElement) Escaped(text string) *SVGFEPOINTLIGHTElement {
 	e.Descendants = append(e.Descendants, Escaped(text))
 	return e
 }
 
+func (e *SVGFEPOINTLIGHTElement) IfEscaped(condition bool, text string) *SVGFEPOINTLIGHTElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
+}
+
 func (e *SVGFEPOINTLIGHTElement) EscapedF(format string, args ...any) *SVGFEPOINTLIGHTElement {
 	return e.Escaped(fmt.Sprintf(format, args...))
+}
+
+func (e *SVGFEPOINTLIGHTElement) IfEscapedF(condition bool, format string, args ...any) *SVGFEPOINTLIGHTElement {
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *SVGFEPOINTLIGHTElement) CustomData(key, value string) *SVGFEPOINTLIGHTElement {
@@ -73,8 +101,22 @@ func (e *SVGFEPOINTLIGHTElement) CustomData(key, value string) *SVGFEPOINTLIGHTE
 	return e
 }
 
+func (e *SVGFEPOINTLIGHTElement) IfCustomData(condition bool, key, value string) *SVGFEPOINTLIGHTElement {
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
+}
+
 func (e *SVGFEPOINTLIGHTElement) CustomDataF(key, format string, args ...any) *SVGFEPOINTLIGHTElement {
 	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
+func (e *SVGFEPOINTLIGHTElement) IfCustomDataF(condition bool, key, format string, args ...any) *SVGFEPOINTLIGHTElement {
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *SVGFEPOINTLIGHTElement) CustomDataRemove(key string) *SVGFEPOINTLIGHTElement {
@@ -95,6 +137,13 @@ func (e *SVGFEPOINTLIGHTElement) X(f float64) *SVGFEPOINTLIGHTElement {
 	return e
 }
 
+func (e *SVGFEPOINTLIGHTElement) IfX(condition bool, f float64) *SVGFEPOINTLIGHTElement {
+	if condition {
+		e.X(f)
+	}
+	return e
+}
+
 // The y attribute indicates the y location of the light source in the coordinate
 // system established by attribute 'primitiveUnits' on the <filter> element.
 func (e *SVGFEPOINTLIGHTElement) Y(f float64) *SVGFEPOINTLIGHTElement {
@@ -105,6 +154,13 @@ func (e *SVGFEPOINTLIGHTElement) Y(f float64) *SVGFEPOINTLIGHTElement {
 	return e
 }
 
+func (e *SVGFEPOINTLIGHTElement) IfY(condition bool, f float64) *SVGFEPOINTLIGHTElement {
+	if condition {
+		e.Y(f)
+	}
+	return e
+}
+
 // The z attribute indicates the z location of the light source in the coordinate
 // system established by attribute 'primitiveUnits' on the <filter> element.
 func (e *SVGFEPOINTLIGHTElement) Z(f float64) *SVGFEPOINTLIGHTElement {
@@ -112,6 +168,13 @@ func (e *SVGFEPOINTLIGHTElement) Z(f float64) *SVGFEPOINTLIGHTElement {
 		e.FloatAttributes = treemap.New[string, float64]()
 	}
 	e.FloatAttributes.Set("z", f)
+	return e
+}
+
+func (e *SVGFEPOINTLIGHTElement) IfZ(condition bool, f float64) *SVGFEPOINTLIGHTElement {
+	if condition {
+		e.Z(f)
+	}
 	return e
 }
 
@@ -127,6 +190,13 @@ func (e *SVGFEPOINTLIGHTElement) CLASS(s ...string) *SVGFEPOINTLIGHTElement {
 		e.DelimitedStrings.Set("class", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *SVGFEPOINTLIGHTElement) IfCLASS(condition bool, s ...string) *SVGFEPOINTLIGHTElement {
+	if condition {
+		e.CLASS(s...)
+	}
 	return e
 }
 
@@ -152,6 +222,13 @@ func (e *SVGFEPOINTLIGHTElement) ID(s string) *SVGFEPOINTLIGHTElement {
 	return e
 }
 
+func (e *SVGFEPOINTLIGHTElement) IfID(condition bool, s string) *SVGFEPOINTLIGHTElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
 // Remove the attribute id from the element.
 func (e *SVGFEPOINTLIGHTElement) IDRemove(s string) *SVGFEPOINTLIGHTElement {
 	if e.StringAttributes == nil {
@@ -166,6 +243,13 @@ func (e *SVGFEPOINTLIGHTElement) STYLEF(k string, format string, args ...any) *S
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+func (e *SVGFEPOINTLIGHTElement) IfSTYLE(condition bool, k string, v string) *SVGFEPOINTLIGHTElement {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
 func (e *SVGFEPOINTLIGHTElement) STYLE(k string, v string) *SVGFEPOINTLIGHTElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -176,6 +260,13 @@ func (e *SVGFEPOINTLIGHTElement) STYLE(k string, v string) *SVGFEPOINTLIGHTEleme
 		e.KVStrings.Set("style", kv)
 	}
 	kv.Add(k, v)
+	return e
+}
+
+func (e *SVGFEPOINTLIGHTElement) IfSTYLEF(condition bool, k string, format string, args ...any) *SVGFEPOINTLIGHTElement {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
 	return e
 }
 
@@ -213,6 +304,13 @@ func (e *SVGFEPOINTLIGHTElement) STYLEPairs(pairs ...string) *SVGFEPOINTLIGHTEle
 		kv.Add(pairs[i], pairs[i+1])
 	}
 
+	return e
+}
+
+func (e *SVGFEPOINTLIGHTElement) IfSTYLEPairs(condition bool, pairs ...string) *SVGFEPOINTLIGHTElement {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
 	return e
 }
 

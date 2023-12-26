@@ -59,13 +59,41 @@ func (e *SVGFEBLENDElement) TextF(format string, args ...any) *SVGFEBLENDElement
 	return e.Text(fmt.Sprintf(format, args...))
 }
 
+func (e *SVGFEBLENDElement) IfText(condition bool, text string) *SVGFEBLENDElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
+}
+
+func (e *SVGFEBLENDElement) IfTextF(condition bool, format string, args ...any) *SVGFEBLENDElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
+}
+
 func (e *SVGFEBLENDElement) Escaped(text string) *SVGFEBLENDElement {
 	e.Descendants = append(e.Descendants, Escaped(text))
 	return e
 }
 
+func (e *SVGFEBLENDElement) IfEscaped(condition bool, text string) *SVGFEBLENDElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
+}
+
 func (e *SVGFEBLENDElement) EscapedF(format string, args ...any) *SVGFEBLENDElement {
 	return e.Escaped(fmt.Sprintf(format, args...))
+}
+
+func (e *SVGFEBLENDElement) IfEscapedF(condition bool, format string, args ...any) *SVGFEBLENDElement {
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *SVGFEBLENDElement) CustomData(key, value string) *SVGFEBLENDElement {
@@ -76,8 +104,22 @@ func (e *SVGFEBLENDElement) CustomData(key, value string) *SVGFEBLENDElement {
 	return e
 }
 
+func (e *SVGFEBLENDElement) IfCustomData(condition bool, key, value string) *SVGFEBLENDElement {
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
+}
+
 func (e *SVGFEBLENDElement) CustomDataF(key, format string, args ...any) *SVGFEBLENDElement {
 	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
+func (e *SVGFEBLENDElement) IfCustomDataF(condition bool, key, format string, args ...any) *SVGFEBLENDElement {
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *SVGFEBLENDElement) CustomDataRemove(key string) *SVGFEBLENDElement {
@@ -97,6 +139,13 @@ func (e *SVGFEBLENDElement) IN(s string) *SVGFEBLENDElement {
 	return e
 }
 
+func (e *SVGFEBLENDElement) IfIN(condition bool, s string) *SVGFEBLENDElement {
+	if condition {
+		e.IN(s)
+	}
+	return e
+}
+
 // Remove the attribute in from the element.
 func (e *SVGFEBLENDElement) INRemove(s string) *SVGFEBLENDElement {
 	if e.StringAttributes == nil {
@@ -112,6 +161,13 @@ func (e *SVGFEBLENDElement) IN2(s string) *SVGFEBLENDElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("in2", s)
+	return e
+}
+
+func (e *SVGFEBLENDElement) IfIN2(condition bool, s string) *SVGFEBLENDElement {
+	if condition {
+		e.IN2(s)
+	}
 	return e
 }
 
@@ -174,6 +230,13 @@ func (e *SVGFEBLENDElement) CLASS(s ...string) *SVGFEBLENDElement {
 	return e
 }
 
+func (e *SVGFEBLENDElement) IfCLASS(condition bool, s ...string) *SVGFEBLENDElement {
+	if condition {
+		e.CLASS(s...)
+	}
+	return e
+}
+
 // Remove the attribute class from the element.
 func (e *SVGFEBLENDElement) CLASSRemove(s ...string) *SVGFEBLENDElement {
 	if e.DelimitedStrings == nil {
@@ -196,6 +259,13 @@ func (e *SVGFEBLENDElement) ID(s string) *SVGFEBLENDElement {
 	return e
 }
 
+func (e *SVGFEBLENDElement) IfID(condition bool, s string) *SVGFEBLENDElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
 // Remove the attribute id from the element.
 func (e *SVGFEBLENDElement) IDRemove(s string) *SVGFEBLENDElement {
 	if e.StringAttributes == nil {
@@ -210,6 +280,13 @@ func (e *SVGFEBLENDElement) STYLEF(k string, format string, args ...any) *SVGFEB
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+func (e *SVGFEBLENDElement) IfSTYLE(condition bool, k string, v string) *SVGFEBLENDElement {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
 func (e *SVGFEBLENDElement) STYLE(k string, v string) *SVGFEBLENDElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -220,6 +297,13 @@ func (e *SVGFEBLENDElement) STYLE(k string, v string) *SVGFEBLENDElement {
 		e.KVStrings.Set("style", kv)
 	}
 	kv.Add(k, v)
+	return e
+}
+
+func (e *SVGFEBLENDElement) IfSTYLEF(condition bool, k string, format string, args ...any) *SVGFEBLENDElement {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
 	return e
 }
 
@@ -257,6 +341,13 @@ func (e *SVGFEBLENDElement) STYLEPairs(pairs ...string) *SVGFEBLENDElement {
 		kv.Add(pairs[i], pairs[i+1])
 	}
 
+	return e
+}
+
+func (e *SVGFEBLENDElement) IfSTYLEPairs(condition bool, pairs ...string) *SVGFEBLENDElement {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
 	return e
 }
 

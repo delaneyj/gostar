@@ -56,13 +56,41 @@ func (e *SVGLINEElement) TextF(format string, args ...any) *SVGLINEElement {
 	return e.Text(fmt.Sprintf(format, args...))
 }
 
+func (e *SVGLINEElement) IfText(condition bool, text string) *SVGLINEElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
+}
+
+func (e *SVGLINEElement) IfTextF(condition bool, format string, args ...any) *SVGLINEElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
+}
+
 func (e *SVGLINEElement) Escaped(text string) *SVGLINEElement {
 	e.Descendants = append(e.Descendants, Escaped(text))
 	return e
 }
 
+func (e *SVGLINEElement) IfEscaped(condition bool, text string) *SVGLINEElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
+}
+
 func (e *SVGLINEElement) EscapedF(format string, args ...any) *SVGLINEElement {
 	return e.Escaped(fmt.Sprintf(format, args...))
+}
+
+func (e *SVGLINEElement) IfEscapedF(condition bool, format string, args ...any) *SVGLINEElement {
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *SVGLINEElement) CustomData(key, value string) *SVGLINEElement {
@@ -73,8 +101,22 @@ func (e *SVGLINEElement) CustomData(key, value string) *SVGLINEElement {
 	return e
 }
 
+func (e *SVGLINEElement) IfCustomData(condition bool, key, value string) *SVGLINEElement {
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
+}
+
 func (e *SVGLINEElement) CustomDataF(key, format string, args ...any) *SVGLINEElement {
 	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
+func (e *SVGLINEElement) IfCustomDataF(condition bool, key, format string, args ...any) *SVGLINEElement {
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *SVGLINEElement) CustomDataRemove(key string) *SVGLINEElement {
@@ -94,12 +136,26 @@ func (e *SVGLINEElement) X1(f float64) *SVGLINEElement {
 	return e
 }
 
+func (e *SVGLINEElement) IfX1(condition bool, f float64) *SVGLINEElement {
+	if condition {
+		e.X1(f)
+	}
+	return e
+}
+
 // The y-axis coordinate of the starting point of the line.
 func (e *SVGLINEElement) Y1(f float64) *SVGLINEElement {
 	if e.FloatAttributes == nil {
 		e.FloatAttributes = treemap.New[string, float64]()
 	}
 	e.FloatAttributes.Set("y1", f)
+	return e
+}
+
+func (e *SVGLINEElement) IfY1(condition bool, f float64) *SVGLINEElement {
+	if condition {
+		e.Y1(f)
+	}
 	return e
 }
 
@@ -112,12 +168,26 @@ func (e *SVGLINEElement) X2(f float64) *SVGLINEElement {
 	return e
 }
 
+func (e *SVGLINEElement) IfX2(condition bool, f float64) *SVGLINEElement {
+	if condition {
+		e.X2(f)
+	}
+	return e
+}
+
 // The y-axis coordinate of the ending point of the line.
 func (e *SVGLINEElement) Y2(f float64) *SVGLINEElement {
 	if e.FloatAttributes == nil {
 		e.FloatAttributes = treemap.New[string, float64]()
 	}
 	e.FloatAttributes.Set("y2", f)
+	return e
+}
+
+func (e *SVGLINEElement) IfY2(condition bool, f float64) *SVGLINEElement {
+	if condition {
+		e.Y2(f)
+	}
 	return e
 }
 
@@ -133,6 +203,13 @@ func (e *SVGLINEElement) CLASS(s ...string) *SVGLINEElement {
 		e.DelimitedStrings.Set("class", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *SVGLINEElement) IfCLASS(condition bool, s ...string) *SVGLINEElement {
+	if condition {
+		e.CLASS(s...)
+	}
 	return e
 }
 
@@ -158,6 +235,13 @@ func (e *SVGLINEElement) ID(s string) *SVGLINEElement {
 	return e
 }
 
+func (e *SVGLINEElement) IfID(condition bool, s string) *SVGLINEElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
 // Remove the attribute id from the element.
 func (e *SVGLINEElement) IDRemove(s string) *SVGLINEElement {
 	if e.StringAttributes == nil {
@@ -172,6 +256,13 @@ func (e *SVGLINEElement) STYLEF(k string, format string, args ...any) *SVGLINEEl
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+func (e *SVGLINEElement) IfSTYLE(condition bool, k string, v string) *SVGLINEElement {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
 func (e *SVGLINEElement) STYLE(k string, v string) *SVGLINEElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -182,6 +273,13 @@ func (e *SVGLINEElement) STYLE(k string, v string) *SVGLINEElement {
 		e.KVStrings.Set("style", kv)
 	}
 	kv.Add(k, v)
+	return e
+}
+
+func (e *SVGLINEElement) IfSTYLEF(condition bool, k string, format string, args ...any) *SVGLINEElement {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
 	return e
 }
 
@@ -219,6 +317,13 @@ func (e *SVGLINEElement) STYLEPairs(pairs ...string) *SVGLINEElement {
 		kv.Add(pairs[i], pairs[i+1])
 	}
 
+	return e
+}
+
+func (e *SVGLINEElement) IfSTYLEPairs(condition bool, pairs ...string) *SVGLINEElement {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
 	return e
 }
 

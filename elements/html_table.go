@@ -57,13 +57,41 @@ func (e *TABLEElement) TextF(format string, args ...any) *TABLEElement {
 	return e.Text(fmt.Sprintf(format, args...))
 }
 
+func (e *TABLEElement) IfText(condition bool, text string) *TABLEElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
+}
+
+func (e *TABLEElement) IfTextF(condition bool, format string, args ...any) *TABLEElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
+}
+
 func (e *TABLEElement) Escaped(text string) *TABLEElement {
 	e.Descendants = append(e.Descendants, Escaped(text))
 	return e
 }
 
+func (e *TABLEElement) IfEscaped(condition bool, text string) *TABLEElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
+}
+
 func (e *TABLEElement) EscapedF(format string, args ...any) *TABLEElement {
 	return e.Escaped(fmt.Sprintf(format, args...))
+}
+
+func (e *TABLEElement) IfEscapedF(condition bool, format string, args ...any) *TABLEElement {
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *TABLEElement) CustomData(key, value string) *TABLEElement {
@@ -74,8 +102,22 @@ func (e *TABLEElement) CustomData(key, value string) *TABLEElement {
 	return e
 }
 
+func (e *TABLEElement) IfCustomData(condition bool, key, value string) *TABLEElement {
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
+}
+
 func (e *TABLEElement) CustomDataF(key, format string, args ...any) *TABLEElement {
 	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
+func (e *TABLEElement) IfCustomDataF(condition bool, key, format string, args ...any) *TABLEElement {
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *TABLEElement) CustomDataRemove(key string) *TABLEElement {
@@ -92,6 +134,13 @@ func (e *TABLEElement) BORDER(i int) *TABLEElement {
 		e.IntAttributes = treemap.New[string, int]()
 	}
 	e.IntAttributes.Set("border", i)
+	return e
+}
+
+func (e *TABLEElement) IfBORDER(condition bool, i int) *TABLEElement {
+	if condition {
+		e.BORDER(i)
+	}
 	return e
 }
 
@@ -113,6 +162,13 @@ func (e *TABLEElement) ACCESSKEY(r rune) *TABLEElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("accesskey", string(r))
+	return e
+}
+
+func (e *TABLEElement) IfACCESSKEY(condition bool, r rune) *TABLEElement {
+	if condition {
+		e.ACCESSKEY(r)
+	}
 	return e
 }
 
@@ -198,12 +254,26 @@ func (e *TABLEElement) AUTOFOCUS() *TABLEElement {
 	return e
 }
 
+func (e *TABLEElement) IfAUTOFOCUS(condition bool) *TABLEElement {
+	if condition {
+		e.AUTOFOCUSSet(true)
+	}
+	return e
+}
+
 // Set the attribute autofocus to the value b explicitly.
 func (e *TABLEElement) AUTOFOCUSSet(b bool) *TABLEElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("autofocus", b)
+	return e
+}
+
+func (e *TABLEElement) IfSetAUTOFOCUS(condition bool, b bool) *TABLEElement {
+	if condition {
+		e.AUTOFOCUSSet(b)
+	}
 	return e
 }
 
@@ -231,6 +301,13 @@ func (e *TABLEElement) CLASS(s ...string) *TABLEElement {
 		e.DelimitedStrings.Set("class", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *TABLEElement) IfCLASS(condition bool, s ...string) *TABLEElement {
+	if condition {
+		e.CLASS(s...)
+	}
 	return e
 }
 
@@ -439,6 +516,13 @@ func (e *TABLEElement) EXPORTPARTS(s ...string) *TABLEElement {
 	return e
 }
 
+func (e *TABLEElement) IfEXPORTPARTS(condition bool, s ...string) *TABLEElement {
+	if condition {
+		e.EXPORTPARTS(s...)
+	}
+	return e
+}
+
 // Remove the attribute exportparts from the element.
 func (e *TABLEElement) EXPORTPARTSRemove(s ...string) *TABLEElement {
 	if e.DelimitedStrings == nil {
@@ -514,6 +598,13 @@ func (e *TABLEElement) ID(s string) *TABLEElement {
 	return e
 }
 
+func (e *TABLEElement) IfID(condition bool, s string) *TABLEElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
 // Remove the attribute id from the element.
 func (e *TABLEElement) IDRemove(s string) *TABLEElement {
 	if e.StringAttributes == nil {
@@ -540,12 +631,26 @@ func (e *TABLEElement) INERT() *TABLEElement {
 	return e
 }
 
+func (e *TABLEElement) IfINERT(condition bool) *TABLEElement {
+	if condition {
+		e.INERTSet(true)
+	}
+	return e
+}
+
 // Set the attribute inert to the value b explicitly.
 func (e *TABLEElement) INERTSet(b bool) *TABLEElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("inert", b)
+	return e
+}
+
+func (e *TABLEElement) IfSetINERT(condition bool, b bool) *TABLEElement {
+	if condition {
+		e.INERTSet(b)
+	}
 	return e
 }
 
@@ -641,6 +746,13 @@ func (e *TABLEElement) IS(s string) *TABLEElement {
 	return e
 }
 
+func (e *TABLEElement) IfIS(condition bool, s string) *TABLEElement {
+	if condition {
+		e.IS(s)
+	}
+	return e
+}
+
 // Remove the attribute is from the element.
 func (e *TABLEElement) ISRemove(s string) *TABLEElement {
 	if e.StringAttributes == nil {
@@ -671,6 +783,13 @@ func (e *TABLEElement) ITEMID(s string) *TABLEElement {
 	return e
 }
 
+func (e *TABLEElement) IfITEMID(condition bool, s string) *TABLEElement {
+	if condition {
+		e.ITEMID(s)
+	}
+	return e
+}
+
 // Remove the attribute itemid from the element.
 func (e *TABLEElement) ITEMIDRemove(s string) *TABLEElement {
 	if e.StringAttributes == nil {
@@ -696,6 +815,13 @@ func (e *TABLEElement) ITEMPROP(s string) *TABLEElement {
 	return e
 }
 
+func (e *TABLEElement) IfITEMPROP(condition bool, s string) *TABLEElement {
+	if condition {
+		e.ITEMPROP(s)
+	}
+	return e
+}
+
 // Remove the attribute itemprop from the element.
 func (e *TABLEElement) ITEMPROPRemove(s string) *TABLEElement {
 	if e.StringAttributes == nil {
@@ -715,6 +841,13 @@ func (e *TABLEElement) ITEMREF(s string) *TABLEElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("itemref", s)
+	return e
+}
+
+func (e *TABLEElement) IfITEMREF(condition bool, s string) *TABLEElement {
+	if condition {
+		e.ITEMREF(s)
+	}
 	return e
 }
 
@@ -740,12 +873,26 @@ func (e *TABLEElement) ITEMSCOPE() *TABLEElement {
 	return e
 }
 
+func (e *TABLEElement) IfITEMSCOPE(condition bool) *TABLEElement {
+	if condition {
+		e.ITEMSCOPESet(true)
+	}
+	return e
+}
+
 // Set the attribute itemscope to the value b explicitly.
 func (e *TABLEElement) ITEMSCOPESet(b bool) *TABLEElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("itemscope", b)
+	return e
+}
+
+func (e *TABLEElement) IfSetITEMSCOPE(condition bool, b bool) *TABLEElement {
+	if condition {
+		e.ITEMSCOPESet(b)
+	}
 	return e
 }
 
@@ -774,6 +921,13 @@ func (e *TABLEElement) ITEMTYPE(s string) *TABLEElement {
 	return e
 }
 
+func (e *TABLEElement) IfITEMTYPE(condition bool, s string) *TABLEElement {
+	if condition {
+		e.ITEMTYPE(s)
+	}
+	return e
+}
+
 // Remove the attribute itemtype from the element.
 func (e *TABLEElement) ITEMTYPERemove(s string) *TABLEElement {
 	if e.StringAttributes == nil {
@@ -797,6 +951,13 @@ func (e *TABLEElement) LANG(s string) *TABLEElement {
 	return e
 }
 
+func (e *TABLEElement) IfLANG(condition bool, s string) *TABLEElement {
+	if condition {
+		e.LANG(s)
+	}
+	return e
+}
+
 // Remove the attribute lang from the element.
 func (e *TABLEElement) LANGRemove(s string) *TABLEElement {
 	if e.StringAttributes == nil {
@@ -815,6 +976,13 @@ func (e *TABLEElement) NONCE(s string) *TABLEElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("nonce", s)
+	return e
+}
+
+func (e *TABLEElement) IfNONCE(condition bool, s string) *TABLEElement {
+	if condition {
+		e.NONCE(s)
+	}
 	return e
 }
 
@@ -841,6 +1009,13 @@ func (e *TABLEElement) PART(s ...string) *TABLEElement {
 		e.DelimitedStrings.Set("part", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *TABLEElement) IfPART(condition bool, s ...string) *TABLEElement {
+	if condition {
+		e.PART(s...)
+	}
 	return e
 }
 
@@ -911,6 +1086,13 @@ func (e *TABLEElement) SLOT(s string) *TABLEElement {
 	return e
 }
 
+func (e *TABLEElement) IfSLOT(condition bool, s string) *TABLEElement {
+	if condition {
+		e.SLOT(s)
+	}
+	return e
+}
+
 // Remove the attribute slot from the element.
 func (e *TABLEElement) SLOTRemove(s string) *TABLEElement {
 	if e.StringAttributes == nil {
@@ -969,6 +1151,13 @@ func (e *TABLEElement) STYLEF(k string, format string, args ...any) *TABLEElemen
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+func (e *TABLEElement) IfSTYLE(condition bool, k string, v string) *TABLEElement {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
 func (e *TABLEElement) STYLE(k string, v string) *TABLEElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -979,6 +1168,13 @@ func (e *TABLEElement) STYLE(k string, v string) *TABLEElement {
 		e.KVStrings.Set("style", kv)
 	}
 	kv.Add(k, v)
+	return e
+}
+
+func (e *TABLEElement) IfSTYLEF(condition bool, k string, format string, args ...any) *TABLEElement {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
 	return e
 }
 
@@ -1019,6 +1215,13 @@ func (e *TABLEElement) STYLEPairs(pairs ...string) *TABLEElement {
 	return e
 }
 
+func (e *TABLEElement) IfSTYLEPairs(condition bool, pairs ...string) *TABLEElement {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
+	return e
+}
+
 // Remove the attribute style from the element.
 func (e *TABLEElement) STYLERemove(keys ...string) *TABLEElement {
 	if e.KVStrings == nil {
@@ -1053,6 +1256,13 @@ func (e *TABLEElement) TABINDEX(i int) *TABLEElement {
 		e.IntAttributes = treemap.New[string, int]()
 	}
 	e.IntAttributes.Set("tabindex", i)
+	return e
+}
+
+func (e *TABLEElement) IfTABINDEX(condition bool, i int) *TABLEElement {
+	if condition {
+		e.TABINDEX(i)
+	}
 	return e
 }
 
@@ -1091,6 +1301,13 @@ func (e *TABLEElement) TITLE(s string) *TABLEElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("title", s)
+	return e
+}
+
+func (e *TABLEElement) IfTITLE(condition bool, s string) *TABLEElement {
+	if condition {
+		e.TITLE(s)
+	}
 	return e
 }
 

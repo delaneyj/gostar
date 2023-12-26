@@ -57,13 +57,41 @@ func (e *BDOElement) TextF(format string, args ...any) *BDOElement {
 	return e.Text(fmt.Sprintf(format, args...))
 }
 
+func (e *BDOElement) IfText(condition bool, text string) *BDOElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
+}
+
+func (e *BDOElement) IfTextF(condition bool, format string, args ...any) *BDOElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
+}
+
 func (e *BDOElement) Escaped(text string) *BDOElement {
 	e.Descendants = append(e.Descendants, Escaped(text))
 	return e
 }
 
+func (e *BDOElement) IfEscaped(condition bool, text string) *BDOElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
+}
+
 func (e *BDOElement) EscapedF(format string, args ...any) *BDOElement {
 	return e.Escaped(fmt.Sprintf(format, args...))
+}
+
+func (e *BDOElement) IfEscapedF(condition bool, format string, args ...any) *BDOElement {
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *BDOElement) CustomData(key, value string) *BDOElement {
@@ -74,8 +102,22 @@ func (e *BDOElement) CustomData(key, value string) *BDOElement {
 	return e
 }
 
+func (e *BDOElement) IfCustomData(condition bool, key, value string) *BDOElement {
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
+}
+
 func (e *BDOElement) CustomDataF(key, format string, args ...any) *BDOElement {
 	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
+func (e *BDOElement) IfCustomDataF(condition bool, key, format string, args ...any) *BDOElement {
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *BDOElement) CustomDataRemove(key string) *BDOElement {
@@ -95,6 +137,13 @@ func (e *BDOElement) ACCESSKEY(r rune) *BDOElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("accesskey", string(r))
+	return e
+}
+
+func (e *BDOElement) IfACCESSKEY(condition bool, r rune) *BDOElement {
+	if condition {
+		e.ACCESSKEY(r)
+	}
 	return e
 }
 
@@ -180,12 +229,26 @@ func (e *BDOElement) AUTOFOCUS() *BDOElement {
 	return e
 }
 
+func (e *BDOElement) IfAUTOFOCUS(condition bool) *BDOElement {
+	if condition {
+		e.AUTOFOCUSSet(true)
+	}
+	return e
+}
+
 // Set the attribute autofocus to the value b explicitly.
 func (e *BDOElement) AUTOFOCUSSet(b bool) *BDOElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("autofocus", b)
+	return e
+}
+
+func (e *BDOElement) IfSetAUTOFOCUS(condition bool, b bool) *BDOElement {
+	if condition {
+		e.AUTOFOCUSSet(b)
+	}
 	return e
 }
 
@@ -213,6 +276,13 @@ func (e *BDOElement) CLASS(s ...string) *BDOElement {
 		e.DelimitedStrings.Set("class", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *BDOElement) IfCLASS(condition bool, s ...string) *BDOElement {
+	if condition {
+		e.CLASS(s...)
+	}
 	return e
 }
 
@@ -421,6 +491,13 @@ func (e *BDOElement) EXPORTPARTS(s ...string) *BDOElement {
 	return e
 }
 
+func (e *BDOElement) IfEXPORTPARTS(condition bool, s ...string) *BDOElement {
+	if condition {
+		e.EXPORTPARTS(s...)
+	}
+	return e
+}
+
 // Remove the attribute exportparts from the element.
 func (e *BDOElement) EXPORTPARTSRemove(s ...string) *BDOElement {
 	if e.DelimitedStrings == nil {
@@ -496,6 +573,13 @@ func (e *BDOElement) ID(s string) *BDOElement {
 	return e
 }
 
+func (e *BDOElement) IfID(condition bool, s string) *BDOElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
 // Remove the attribute id from the element.
 func (e *BDOElement) IDRemove(s string) *BDOElement {
 	if e.StringAttributes == nil {
@@ -522,12 +606,26 @@ func (e *BDOElement) INERT() *BDOElement {
 	return e
 }
 
+func (e *BDOElement) IfINERT(condition bool) *BDOElement {
+	if condition {
+		e.INERTSet(true)
+	}
+	return e
+}
+
 // Set the attribute inert to the value b explicitly.
 func (e *BDOElement) INERTSet(b bool) *BDOElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("inert", b)
+	return e
+}
+
+func (e *BDOElement) IfSetINERT(condition bool, b bool) *BDOElement {
+	if condition {
+		e.INERTSet(b)
+	}
 	return e
 }
 
@@ -623,6 +721,13 @@ func (e *BDOElement) IS(s string) *BDOElement {
 	return e
 }
 
+func (e *BDOElement) IfIS(condition bool, s string) *BDOElement {
+	if condition {
+		e.IS(s)
+	}
+	return e
+}
+
 // Remove the attribute is from the element.
 func (e *BDOElement) ISRemove(s string) *BDOElement {
 	if e.StringAttributes == nil {
@@ -653,6 +758,13 @@ func (e *BDOElement) ITEMID(s string) *BDOElement {
 	return e
 }
 
+func (e *BDOElement) IfITEMID(condition bool, s string) *BDOElement {
+	if condition {
+		e.ITEMID(s)
+	}
+	return e
+}
+
 // Remove the attribute itemid from the element.
 func (e *BDOElement) ITEMIDRemove(s string) *BDOElement {
 	if e.StringAttributes == nil {
@@ -678,6 +790,13 @@ func (e *BDOElement) ITEMPROP(s string) *BDOElement {
 	return e
 }
 
+func (e *BDOElement) IfITEMPROP(condition bool, s string) *BDOElement {
+	if condition {
+		e.ITEMPROP(s)
+	}
+	return e
+}
+
 // Remove the attribute itemprop from the element.
 func (e *BDOElement) ITEMPROPRemove(s string) *BDOElement {
 	if e.StringAttributes == nil {
@@ -697,6 +816,13 @@ func (e *BDOElement) ITEMREF(s string) *BDOElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("itemref", s)
+	return e
+}
+
+func (e *BDOElement) IfITEMREF(condition bool, s string) *BDOElement {
+	if condition {
+		e.ITEMREF(s)
+	}
 	return e
 }
 
@@ -722,12 +848,26 @@ func (e *BDOElement) ITEMSCOPE() *BDOElement {
 	return e
 }
 
+func (e *BDOElement) IfITEMSCOPE(condition bool) *BDOElement {
+	if condition {
+		e.ITEMSCOPESet(true)
+	}
+	return e
+}
+
 // Set the attribute itemscope to the value b explicitly.
 func (e *BDOElement) ITEMSCOPESet(b bool) *BDOElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("itemscope", b)
+	return e
+}
+
+func (e *BDOElement) IfSetITEMSCOPE(condition bool, b bool) *BDOElement {
+	if condition {
+		e.ITEMSCOPESet(b)
+	}
 	return e
 }
 
@@ -756,6 +896,13 @@ func (e *BDOElement) ITEMTYPE(s string) *BDOElement {
 	return e
 }
 
+func (e *BDOElement) IfITEMTYPE(condition bool, s string) *BDOElement {
+	if condition {
+		e.ITEMTYPE(s)
+	}
+	return e
+}
+
 // Remove the attribute itemtype from the element.
 func (e *BDOElement) ITEMTYPERemove(s string) *BDOElement {
 	if e.StringAttributes == nil {
@@ -779,6 +926,13 @@ func (e *BDOElement) LANG(s string) *BDOElement {
 	return e
 }
 
+func (e *BDOElement) IfLANG(condition bool, s string) *BDOElement {
+	if condition {
+		e.LANG(s)
+	}
+	return e
+}
+
 // Remove the attribute lang from the element.
 func (e *BDOElement) LANGRemove(s string) *BDOElement {
 	if e.StringAttributes == nil {
@@ -797,6 +951,13 @@ func (e *BDOElement) NONCE(s string) *BDOElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("nonce", s)
+	return e
+}
+
+func (e *BDOElement) IfNONCE(condition bool, s string) *BDOElement {
+	if condition {
+		e.NONCE(s)
+	}
 	return e
 }
 
@@ -823,6 +984,13 @@ func (e *BDOElement) PART(s ...string) *BDOElement {
 		e.DelimitedStrings.Set("part", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *BDOElement) IfPART(condition bool, s ...string) *BDOElement {
+	if condition {
+		e.PART(s...)
+	}
 	return e
 }
 
@@ -893,6 +1061,13 @@ func (e *BDOElement) SLOT(s string) *BDOElement {
 	return e
 }
 
+func (e *BDOElement) IfSLOT(condition bool, s string) *BDOElement {
+	if condition {
+		e.SLOT(s)
+	}
+	return e
+}
+
 // Remove the attribute slot from the element.
 func (e *BDOElement) SLOTRemove(s string) *BDOElement {
 	if e.StringAttributes == nil {
@@ -951,6 +1126,13 @@ func (e *BDOElement) STYLEF(k string, format string, args ...any) *BDOElement {
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+func (e *BDOElement) IfSTYLE(condition bool, k string, v string) *BDOElement {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
 func (e *BDOElement) STYLE(k string, v string) *BDOElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -961,6 +1143,13 @@ func (e *BDOElement) STYLE(k string, v string) *BDOElement {
 		e.KVStrings.Set("style", kv)
 	}
 	kv.Add(k, v)
+	return e
+}
+
+func (e *BDOElement) IfSTYLEF(condition bool, k string, format string, args ...any) *BDOElement {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
 	return e
 }
 
@@ -1001,6 +1190,13 @@ func (e *BDOElement) STYLEPairs(pairs ...string) *BDOElement {
 	return e
 }
 
+func (e *BDOElement) IfSTYLEPairs(condition bool, pairs ...string) *BDOElement {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
+	return e
+}
+
 // Remove the attribute style from the element.
 func (e *BDOElement) STYLERemove(keys ...string) *BDOElement {
 	if e.KVStrings == nil {
@@ -1035,6 +1231,13 @@ func (e *BDOElement) TABINDEX(i int) *BDOElement {
 		e.IntAttributes = treemap.New[string, int]()
 	}
 	e.IntAttributes.Set("tabindex", i)
+	return e
+}
+
+func (e *BDOElement) IfTABINDEX(condition bool, i int) *BDOElement {
+	if condition {
+		e.TABINDEX(i)
+	}
 	return e
 }
 
@@ -1073,6 +1276,13 @@ func (e *BDOElement) TITLE(s string) *BDOElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("title", s)
+	return e
+}
+
+func (e *BDOElement) IfTITLE(condition bool, s string) *BDOElement {
+	if condition {
+		e.TITLE(s)
+	}
 	return e
 }
 

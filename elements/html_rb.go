@@ -60,13 +60,41 @@ func (e *RBElement) TextF(format string, args ...any) *RBElement {
 	return e.Text(fmt.Sprintf(format, args...))
 }
 
+func (e *RBElement) IfText(condition bool, text string) *RBElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
+}
+
+func (e *RBElement) IfTextF(condition bool, format string, args ...any) *RBElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
+}
+
 func (e *RBElement) Escaped(text string) *RBElement {
 	e.Descendants = append(e.Descendants, Escaped(text))
 	return e
 }
 
+func (e *RBElement) IfEscaped(condition bool, text string) *RBElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
+}
+
 func (e *RBElement) EscapedF(format string, args ...any) *RBElement {
 	return e.Escaped(fmt.Sprintf(format, args...))
+}
+
+func (e *RBElement) IfEscapedF(condition bool, format string, args ...any) *RBElement {
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *RBElement) CustomData(key, value string) *RBElement {
@@ -77,8 +105,22 @@ func (e *RBElement) CustomData(key, value string) *RBElement {
 	return e
 }
 
+func (e *RBElement) IfCustomData(condition bool, key, value string) *RBElement {
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
+}
+
 func (e *RBElement) CustomDataF(key, format string, args ...any) *RBElement {
 	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
+func (e *RBElement) IfCustomDataF(condition bool, key, format string, args ...any) *RBElement {
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *RBElement) CustomDataRemove(key string) *RBElement {
@@ -98,6 +140,13 @@ func (e *RBElement) ACCESSKEY(r rune) *RBElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("accesskey", string(r))
+	return e
+}
+
+func (e *RBElement) IfACCESSKEY(condition bool, r rune) *RBElement {
+	if condition {
+		e.ACCESSKEY(r)
+	}
 	return e
 }
 
@@ -183,12 +232,26 @@ func (e *RBElement) AUTOFOCUS() *RBElement {
 	return e
 }
 
+func (e *RBElement) IfAUTOFOCUS(condition bool) *RBElement {
+	if condition {
+		e.AUTOFOCUSSet(true)
+	}
+	return e
+}
+
 // Set the attribute autofocus to the value b explicitly.
 func (e *RBElement) AUTOFOCUSSet(b bool) *RBElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("autofocus", b)
+	return e
+}
+
+func (e *RBElement) IfSetAUTOFOCUS(condition bool, b bool) *RBElement {
+	if condition {
+		e.AUTOFOCUSSet(b)
+	}
 	return e
 }
 
@@ -216,6 +279,13 @@ func (e *RBElement) CLASS(s ...string) *RBElement {
 		e.DelimitedStrings.Set("class", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *RBElement) IfCLASS(condition bool, s ...string) *RBElement {
+	if condition {
+		e.CLASS(s...)
+	}
 	return e
 }
 
@@ -424,6 +494,13 @@ func (e *RBElement) EXPORTPARTS(s ...string) *RBElement {
 	return e
 }
 
+func (e *RBElement) IfEXPORTPARTS(condition bool, s ...string) *RBElement {
+	if condition {
+		e.EXPORTPARTS(s...)
+	}
+	return e
+}
+
 // Remove the attribute exportparts from the element.
 func (e *RBElement) EXPORTPARTSRemove(s ...string) *RBElement {
 	if e.DelimitedStrings == nil {
@@ -499,6 +576,13 @@ func (e *RBElement) ID(s string) *RBElement {
 	return e
 }
 
+func (e *RBElement) IfID(condition bool, s string) *RBElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
 // Remove the attribute id from the element.
 func (e *RBElement) IDRemove(s string) *RBElement {
 	if e.StringAttributes == nil {
@@ -525,12 +609,26 @@ func (e *RBElement) INERT() *RBElement {
 	return e
 }
 
+func (e *RBElement) IfINERT(condition bool) *RBElement {
+	if condition {
+		e.INERTSet(true)
+	}
+	return e
+}
+
 // Set the attribute inert to the value b explicitly.
 func (e *RBElement) INERTSet(b bool) *RBElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("inert", b)
+	return e
+}
+
+func (e *RBElement) IfSetINERT(condition bool, b bool) *RBElement {
+	if condition {
+		e.INERTSet(b)
+	}
 	return e
 }
 
@@ -626,6 +724,13 @@ func (e *RBElement) IS(s string) *RBElement {
 	return e
 }
 
+func (e *RBElement) IfIS(condition bool, s string) *RBElement {
+	if condition {
+		e.IS(s)
+	}
+	return e
+}
+
 // Remove the attribute is from the element.
 func (e *RBElement) ISRemove(s string) *RBElement {
 	if e.StringAttributes == nil {
@@ -656,6 +761,13 @@ func (e *RBElement) ITEMID(s string) *RBElement {
 	return e
 }
 
+func (e *RBElement) IfITEMID(condition bool, s string) *RBElement {
+	if condition {
+		e.ITEMID(s)
+	}
+	return e
+}
+
 // Remove the attribute itemid from the element.
 func (e *RBElement) ITEMIDRemove(s string) *RBElement {
 	if e.StringAttributes == nil {
@@ -681,6 +793,13 @@ func (e *RBElement) ITEMPROP(s string) *RBElement {
 	return e
 }
 
+func (e *RBElement) IfITEMPROP(condition bool, s string) *RBElement {
+	if condition {
+		e.ITEMPROP(s)
+	}
+	return e
+}
+
 // Remove the attribute itemprop from the element.
 func (e *RBElement) ITEMPROPRemove(s string) *RBElement {
 	if e.StringAttributes == nil {
@@ -700,6 +819,13 @@ func (e *RBElement) ITEMREF(s string) *RBElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("itemref", s)
+	return e
+}
+
+func (e *RBElement) IfITEMREF(condition bool, s string) *RBElement {
+	if condition {
+		e.ITEMREF(s)
+	}
 	return e
 }
 
@@ -725,12 +851,26 @@ func (e *RBElement) ITEMSCOPE() *RBElement {
 	return e
 }
 
+func (e *RBElement) IfITEMSCOPE(condition bool) *RBElement {
+	if condition {
+		e.ITEMSCOPESet(true)
+	}
+	return e
+}
+
 // Set the attribute itemscope to the value b explicitly.
 func (e *RBElement) ITEMSCOPESet(b bool) *RBElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("itemscope", b)
+	return e
+}
+
+func (e *RBElement) IfSetITEMSCOPE(condition bool, b bool) *RBElement {
+	if condition {
+		e.ITEMSCOPESet(b)
+	}
 	return e
 }
 
@@ -759,6 +899,13 @@ func (e *RBElement) ITEMTYPE(s string) *RBElement {
 	return e
 }
 
+func (e *RBElement) IfITEMTYPE(condition bool, s string) *RBElement {
+	if condition {
+		e.ITEMTYPE(s)
+	}
+	return e
+}
+
 // Remove the attribute itemtype from the element.
 func (e *RBElement) ITEMTYPERemove(s string) *RBElement {
 	if e.StringAttributes == nil {
@@ -782,6 +929,13 @@ func (e *RBElement) LANG(s string) *RBElement {
 	return e
 }
 
+func (e *RBElement) IfLANG(condition bool, s string) *RBElement {
+	if condition {
+		e.LANG(s)
+	}
+	return e
+}
+
 // Remove the attribute lang from the element.
 func (e *RBElement) LANGRemove(s string) *RBElement {
 	if e.StringAttributes == nil {
@@ -800,6 +954,13 @@ func (e *RBElement) NONCE(s string) *RBElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("nonce", s)
+	return e
+}
+
+func (e *RBElement) IfNONCE(condition bool, s string) *RBElement {
+	if condition {
+		e.NONCE(s)
+	}
 	return e
 }
 
@@ -826,6 +987,13 @@ func (e *RBElement) PART(s ...string) *RBElement {
 		e.DelimitedStrings.Set("part", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *RBElement) IfPART(condition bool, s ...string) *RBElement {
+	if condition {
+		e.PART(s...)
+	}
 	return e
 }
 
@@ -896,6 +1064,13 @@ func (e *RBElement) SLOT(s string) *RBElement {
 	return e
 }
 
+func (e *RBElement) IfSLOT(condition bool, s string) *RBElement {
+	if condition {
+		e.SLOT(s)
+	}
+	return e
+}
+
 // Remove the attribute slot from the element.
 func (e *RBElement) SLOTRemove(s string) *RBElement {
 	if e.StringAttributes == nil {
@@ -954,6 +1129,13 @@ func (e *RBElement) STYLEF(k string, format string, args ...any) *RBElement {
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+func (e *RBElement) IfSTYLE(condition bool, k string, v string) *RBElement {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
 func (e *RBElement) STYLE(k string, v string) *RBElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -964,6 +1146,13 @@ func (e *RBElement) STYLE(k string, v string) *RBElement {
 		e.KVStrings.Set("style", kv)
 	}
 	kv.Add(k, v)
+	return e
+}
+
+func (e *RBElement) IfSTYLEF(condition bool, k string, format string, args ...any) *RBElement {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
 	return e
 }
 
@@ -1004,6 +1193,13 @@ func (e *RBElement) STYLEPairs(pairs ...string) *RBElement {
 	return e
 }
 
+func (e *RBElement) IfSTYLEPairs(condition bool, pairs ...string) *RBElement {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
+	return e
+}
+
 // Remove the attribute style from the element.
 func (e *RBElement) STYLERemove(keys ...string) *RBElement {
 	if e.KVStrings == nil {
@@ -1038,6 +1234,13 @@ func (e *RBElement) TABINDEX(i int) *RBElement {
 		e.IntAttributes = treemap.New[string, int]()
 	}
 	e.IntAttributes.Set("tabindex", i)
+	return e
+}
+
+func (e *RBElement) IfTABINDEX(condition bool, i int) *RBElement {
+	if condition {
+		e.TABINDEX(i)
+	}
 	return e
 }
 
@@ -1076,6 +1279,13 @@ func (e *RBElement) TITLE(s string) *RBElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("title", s)
+	return e
+}
+
+func (e *RBElement) IfTITLE(condition bool, s string) *RBElement {
+	if condition {
+		e.TITLE(s)
+	}
 	return e
 }
 

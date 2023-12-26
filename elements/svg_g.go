@@ -55,13 +55,41 @@ func (e *SVGGElement) TextF(format string, args ...any) *SVGGElement {
 	return e.Text(fmt.Sprintf(format, args...))
 }
 
+func (e *SVGGElement) IfText(condition bool, text string) *SVGGElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
+}
+
+func (e *SVGGElement) IfTextF(condition bool, format string, args ...any) *SVGGElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
+}
+
 func (e *SVGGElement) Escaped(text string) *SVGGElement {
 	e.Descendants = append(e.Descendants, Escaped(text))
 	return e
 }
 
+func (e *SVGGElement) IfEscaped(condition bool, text string) *SVGGElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
+}
+
 func (e *SVGGElement) EscapedF(format string, args ...any) *SVGGElement {
 	return e.Escaped(fmt.Sprintf(format, args...))
+}
+
+func (e *SVGGElement) IfEscapedF(condition bool, format string, args ...any) *SVGGElement {
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *SVGGElement) CustomData(key, value string) *SVGGElement {
@@ -72,8 +100,22 @@ func (e *SVGGElement) CustomData(key, value string) *SVGGElement {
 	return e
 }
 
+func (e *SVGGElement) IfCustomData(condition bool, key, value string) *SVGGElement {
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
+}
+
 func (e *SVGGElement) CustomDataF(key, format string, args ...any) *SVGGElement {
 	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
+func (e *SVGGElement) IfCustomDataF(condition bool, key, format string, args ...any) *SVGGElement {
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *SVGGElement) CustomDataRemove(key string) *SVGGElement {
@@ -91,6 +133,13 @@ func (e *SVGGElement) REQUIREDEXTENSIONS(s string) *SVGGElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("requiredExtensions", s)
+	return e
+}
+
+func (e *SVGGElement) IfREQUIREDEXTENSIONS(condition bool, s string) *SVGGElement {
+	if condition {
+		e.REQUIREDEXTENSIONS(s)
+	}
 	return e
 }
 
@@ -114,6 +163,13 @@ func (e *SVGGElement) REQUIREDFEATURES(s string) *SVGGElement {
 	return e
 }
 
+func (e *SVGGElement) IfREQUIREDFEATURES(condition bool, s string) *SVGGElement {
+	if condition {
+		e.REQUIREDFEATURES(s)
+	}
+	return e
+}
+
 // Remove the attribute requiredFeatures from the element.
 func (e *SVGGElement) REQUIREDFEATURESRemove(s string) *SVGGElement {
 	if e.StringAttributes == nil {
@@ -131,6 +187,13 @@ func (e *SVGGElement) SYSTEMLANGUAGE(s string) *SVGGElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("systemLanguage", s)
+	return e
+}
+
+func (e *SVGGElement) IfSYSTEMLANGUAGE(condition bool, s string) *SVGGElement {
+	if condition {
+		e.SYSTEMLANGUAGE(s)
+	}
 	return e
 }
 
@@ -158,6 +221,13 @@ func (e *SVGGElement) CLASS(s ...string) *SVGGElement {
 	return e
 }
 
+func (e *SVGGElement) IfCLASS(condition bool, s ...string) *SVGGElement {
+	if condition {
+		e.CLASS(s...)
+	}
+	return e
+}
+
 // Remove the attribute class from the element.
 func (e *SVGGElement) CLASSRemove(s ...string) *SVGGElement {
 	if e.DelimitedStrings == nil {
@@ -180,6 +250,13 @@ func (e *SVGGElement) ID(s string) *SVGGElement {
 	return e
 }
 
+func (e *SVGGElement) IfID(condition bool, s string) *SVGGElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
 // Remove the attribute id from the element.
 func (e *SVGGElement) IDRemove(s string) *SVGGElement {
 	if e.StringAttributes == nil {
@@ -194,6 +271,13 @@ func (e *SVGGElement) STYLEF(k string, format string, args ...any) *SVGGElement 
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+func (e *SVGGElement) IfSTYLE(condition bool, k string, v string) *SVGGElement {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
 func (e *SVGGElement) STYLE(k string, v string) *SVGGElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -204,6 +288,13 @@ func (e *SVGGElement) STYLE(k string, v string) *SVGGElement {
 		e.KVStrings.Set("style", kv)
 	}
 	kv.Add(k, v)
+	return e
+}
+
+func (e *SVGGElement) IfSTYLEF(condition bool, k string, format string, args ...any) *SVGGElement {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
 	return e
 }
 
@@ -241,6 +332,13 @@ func (e *SVGGElement) STYLEPairs(pairs ...string) *SVGGElement {
 		kv.Add(pairs[i], pairs[i+1])
 	}
 
+	return e
+}
+
+func (e *SVGGElement) IfSTYLEPairs(condition bool, pairs ...string) *SVGGElement {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
 	return e
 }
 

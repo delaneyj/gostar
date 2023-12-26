@@ -55,13 +55,41 @@ func (e *MathMLMPADDEDElement) TextF(format string, args ...any) *MathMLMPADDEDE
 	return e.Text(fmt.Sprintf(format, args...))
 }
 
+func (e *MathMLMPADDEDElement) IfText(condition bool, text string) *MathMLMPADDEDElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
+}
+
+func (e *MathMLMPADDEDElement) IfTextF(condition bool, format string, args ...any) *MathMLMPADDEDElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
+}
+
 func (e *MathMLMPADDEDElement) Escaped(text string) *MathMLMPADDEDElement {
 	e.Descendants = append(e.Descendants, Escaped(text))
 	return e
 }
 
+func (e *MathMLMPADDEDElement) IfEscaped(condition bool, text string) *MathMLMPADDEDElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
+}
+
 func (e *MathMLMPADDEDElement) EscapedF(format string, args ...any) *MathMLMPADDEDElement {
 	return e.Escaped(fmt.Sprintf(format, args...))
+}
+
+func (e *MathMLMPADDEDElement) IfEscapedF(condition bool, format string, args ...any) *MathMLMPADDEDElement {
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *MathMLMPADDEDElement) CustomData(key, value string) *MathMLMPADDEDElement {
@@ -72,8 +100,22 @@ func (e *MathMLMPADDEDElement) CustomData(key, value string) *MathMLMPADDEDEleme
 	return e
 }
 
+func (e *MathMLMPADDEDElement) IfCustomData(condition bool, key, value string) *MathMLMPADDEDElement {
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
+}
+
 func (e *MathMLMPADDEDElement) CustomDataF(key, format string, args ...any) *MathMLMPADDEDElement {
 	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
+func (e *MathMLMPADDEDElement) IfCustomDataF(condition bool, key, format string, args ...any) *MathMLMPADDEDElement {
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *MathMLMPADDEDElement) CustomDataRemove(key string) *MathMLMPADDEDElement {
@@ -98,6 +140,13 @@ func (e *MathMLMPADDEDElement) CLASS(s ...string) *MathMLMPADDEDElement {
 		e.DelimitedStrings.Set("class", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *MathMLMPADDEDElement) IfCLASS(condition bool, s ...string) *MathMLMPADDEDElement {
+	if condition {
+		e.CLASS(s...)
+	}
 	return e
 }
 
@@ -183,6 +232,13 @@ func (e *MathMLMPADDEDElement) ID(s string) *MathMLMPADDEDElement {
 	return e
 }
 
+func (e *MathMLMPADDEDElement) IfID(condition bool, s string) *MathMLMPADDEDElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
 // Remove the attribute id from the element.
 func (e *MathMLMPADDEDElement) IDRemove(s string) *MathMLMPADDEDElement {
 	if e.StringAttributes == nil {
@@ -200,6 +256,13 @@ func (e *MathMLMPADDEDElement) MATHBACKGROUND(s string) *MathMLMPADDEDElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("mathbackground", s)
+	return e
+}
+
+func (e *MathMLMPADDEDElement) IfMATHBACKGROUND(condition bool, s string) *MathMLMPADDEDElement {
+	if condition {
+		e.MATHBACKGROUND(s)
+	}
 	return e
 }
 
@@ -223,6 +286,13 @@ func (e *MathMLMPADDEDElement) MATHCOLOR(s string) *MathMLMPADDEDElement {
 	return e
 }
 
+func (e *MathMLMPADDEDElement) IfMATHCOLOR(condition bool, s string) *MathMLMPADDEDElement {
+	if condition {
+		e.MATHCOLOR(s)
+	}
+	return e
+}
+
 // Remove the attribute mathcolor from the element.
 func (e *MathMLMPADDEDElement) MATHCOLORRemove(s string) *MathMLMPADDEDElement {
 	if e.StringAttributes == nil {
@@ -239,6 +309,13 @@ func (e *MathMLMPADDEDElement) MATHSIZESTR(s string) *MathMLMPADDEDElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("mathsize", s)
+	return e
+}
+
+func (e *MathMLMPADDEDElement) IfMATHSIZESTR(condition bool, s string) *MathMLMPADDEDElement {
+	if condition {
+		e.MATHSIZESTR(s)
+	}
 	return e
 }
 
@@ -263,6 +340,13 @@ func (e *MathMLMPADDEDElement) NONCE(s string) *MathMLMPADDEDElement {
 	return e
 }
 
+func (e *MathMLMPADDEDElement) IfNONCE(condition bool, s string) *MathMLMPADDEDElement {
+	if condition {
+		e.NONCE(s)
+	}
+	return e
+}
+
 // Remove the attribute nonce from the element.
 func (e *MathMLMPADDEDElement) NONCERemove(s string) *MathMLMPADDEDElement {
 	if e.StringAttributes == nil {
@@ -282,6 +366,13 @@ func (e *MathMLMPADDEDElement) SCRIPTLEVEL(i int) *MathMLMPADDEDElement {
 	return e
 }
 
+func (e *MathMLMPADDEDElement) IfSCRIPTLEVEL(condition bool, i int) *MathMLMPADDEDElement {
+	if condition {
+		e.SCRIPTLEVEL(i)
+	}
+	return e
+}
+
 // Remove the attribute scriptlevel from the element.
 func (e *MathMLMPADDEDElement) SCRIPTLEVELRemove(i int) *MathMLMPADDEDElement {
 	if e.IntAttributes == nil {
@@ -297,6 +388,13 @@ func (e *MathMLMPADDEDElement) STYLEF(k string, format string, args ...any) *Mat
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+func (e *MathMLMPADDEDElement) IfSTYLE(condition bool, k string, v string) *MathMLMPADDEDElement {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
 func (e *MathMLMPADDEDElement) STYLE(k string, v string) *MathMLMPADDEDElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -307,6 +405,13 @@ func (e *MathMLMPADDEDElement) STYLE(k string, v string) *MathMLMPADDEDElement {
 		e.KVStrings.Set("style", kv)
 	}
 	kv.Add(k, v)
+	return e
+}
+
+func (e *MathMLMPADDEDElement) IfSTYLEF(condition bool, k string, format string, args ...any) *MathMLMPADDEDElement {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
 	return e
 }
 
@@ -347,6 +452,13 @@ func (e *MathMLMPADDEDElement) STYLEPairs(pairs ...string) *MathMLMPADDEDElement
 	return e
 }
 
+func (e *MathMLMPADDEDElement) IfSTYLEPairs(condition bool, pairs ...string) *MathMLMPADDEDElement {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
+	return e
+}
+
 // Remove the attribute style from the element.
 func (e *MathMLMPADDEDElement) STYLERemove(keys ...string) *MathMLMPADDEDElement {
 	if e.KVStrings == nil {
@@ -371,6 +483,13 @@ func (e *MathMLMPADDEDElement) TABINDEX(i int) *MathMLMPADDEDElement {
 		e.IntAttributes = treemap.New[string, int]()
 	}
 	e.IntAttributes.Set("tabindex", i)
+	return e
+}
+
+func (e *MathMLMPADDEDElement) IfTABINDEX(condition bool, i int) *MathMLMPADDEDElement {
+	if condition {
+		e.TABINDEX(i)
+	}
 	return e
 }
 

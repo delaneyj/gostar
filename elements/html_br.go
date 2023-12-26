@@ -56,13 +56,41 @@ func (e *BRElement) TextF(format string, args ...any) *BRElement {
 	return e.Text(fmt.Sprintf(format, args...))
 }
 
+func (e *BRElement) IfText(condition bool, text string) *BRElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
+}
+
+func (e *BRElement) IfTextF(condition bool, format string, args ...any) *BRElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
+}
+
 func (e *BRElement) Escaped(text string) *BRElement {
 	e.Descendants = append(e.Descendants, Escaped(text))
 	return e
 }
 
+func (e *BRElement) IfEscaped(condition bool, text string) *BRElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
+}
+
 func (e *BRElement) EscapedF(format string, args ...any) *BRElement {
 	return e.Escaped(fmt.Sprintf(format, args...))
+}
+
+func (e *BRElement) IfEscapedF(condition bool, format string, args ...any) *BRElement {
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *BRElement) CustomData(key, value string) *BRElement {
@@ -73,8 +101,22 @@ func (e *BRElement) CustomData(key, value string) *BRElement {
 	return e
 }
 
+func (e *BRElement) IfCustomData(condition bool, key, value string) *BRElement {
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
+}
+
 func (e *BRElement) CustomDataF(key, format string, args ...any) *BRElement {
 	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
+func (e *BRElement) IfCustomDataF(condition bool, key, format string, args ...any) *BRElement {
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *BRElement) CustomDataRemove(key string) *BRElement {
@@ -94,6 +136,13 @@ func (e *BRElement) ACCESSKEY(r rune) *BRElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("accesskey", string(r))
+	return e
+}
+
+func (e *BRElement) IfACCESSKEY(condition bool, r rune) *BRElement {
+	if condition {
+		e.ACCESSKEY(r)
+	}
 	return e
 }
 
@@ -179,12 +228,26 @@ func (e *BRElement) AUTOFOCUS() *BRElement {
 	return e
 }
 
+func (e *BRElement) IfAUTOFOCUS(condition bool) *BRElement {
+	if condition {
+		e.AUTOFOCUSSet(true)
+	}
+	return e
+}
+
 // Set the attribute autofocus to the value b explicitly.
 func (e *BRElement) AUTOFOCUSSet(b bool) *BRElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("autofocus", b)
+	return e
+}
+
+func (e *BRElement) IfSetAUTOFOCUS(condition bool, b bool) *BRElement {
+	if condition {
+		e.AUTOFOCUSSet(b)
+	}
 	return e
 }
 
@@ -212,6 +275,13 @@ func (e *BRElement) CLASS(s ...string) *BRElement {
 		e.DelimitedStrings.Set("class", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *BRElement) IfCLASS(condition bool, s ...string) *BRElement {
+	if condition {
+		e.CLASS(s...)
+	}
 	return e
 }
 
@@ -420,6 +490,13 @@ func (e *BRElement) EXPORTPARTS(s ...string) *BRElement {
 	return e
 }
 
+func (e *BRElement) IfEXPORTPARTS(condition bool, s ...string) *BRElement {
+	if condition {
+		e.EXPORTPARTS(s...)
+	}
+	return e
+}
+
 // Remove the attribute exportparts from the element.
 func (e *BRElement) EXPORTPARTSRemove(s ...string) *BRElement {
 	if e.DelimitedStrings == nil {
@@ -495,6 +572,13 @@ func (e *BRElement) ID(s string) *BRElement {
 	return e
 }
 
+func (e *BRElement) IfID(condition bool, s string) *BRElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
 // Remove the attribute id from the element.
 func (e *BRElement) IDRemove(s string) *BRElement {
 	if e.StringAttributes == nil {
@@ -521,12 +605,26 @@ func (e *BRElement) INERT() *BRElement {
 	return e
 }
 
+func (e *BRElement) IfINERT(condition bool) *BRElement {
+	if condition {
+		e.INERTSet(true)
+	}
+	return e
+}
+
 // Set the attribute inert to the value b explicitly.
 func (e *BRElement) INERTSet(b bool) *BRElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("inert", b)
+	return e
+}
+
+func (e *BRElement) IfSetINERT(condition bool, b bool) *BRElement {
+	if condition {
+		e.INERTSet(b)
+	}
 	return e
 }
 
@@ -622,6 +720,13 @@ func (e *BRElement) IS(s string) *BRElement {
 	return e
 }
 
+func (e *BRElement) IfIS(condition bool, s string) *BRElement {
+	if condition {
+		e.IS(s)
+	}
+	return e
+}
+
 // Remove the attribute is from the element.
 func (e *BRElement) ISRemove(s string) *BRElement {
 	if e.StringAttributes == nil {
@@ -652,6 +757,13 @@ func (e *BRElement) ITEMID(s string) *BRElement {
 	return e
 }
 
+func (e *BRElement) IfITEMID(condition bool, s string) *BRElement {
+	if condition {
+		e.ITEMID(s)
+	}
+	return e
+}
+
 // Remove the attribute itemid from the element.
 func (e *BRElement) ITEMIDRemove(s string) *BRElement {
 	if e.StringAttributes == nil {
@@ -677,6 +789,13 @@ func (e *BRElement) ITEMPROP(s string) *BRElement {
 	return e
 }
 
+func (e *BRElement) IfITEMPROP(condition bool, s string) *BRElement {
+	if condition {
+		e.ITEMPROP(s)
+	}
+	return e
+}
+
 // Remove the attribute itemprop from the element.
 func (e *BRElement) ITEMPROPRemove(s string) *BRElement {
 	if e.StringAttributes == nil {
@@ -696,6 +815,13 @@ func (e *BRElement) ITEMREF(s string) *BRElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("itemref", s)
+	return e
+}
+
+func (e *BRElement) IfITEMREF(condition bool, s string) *BRElement {
+	if condition {
+		e.ITEMREF(s)
+	}
 	return e
 }
 
@@ -721,12 +847,26 @@ func (e *BRElement) ITEMSCOPE() *BRElement {
 	return e
 }
 
+func (e *BRElement) IfITEMSCOPE(condition bool) *BRElement {
+	if condition {
+		e.ITEMSCOPESet(true)
+	}
+	return e
+}
+
 // Set the attribute itemscope to the value b explicitly.
 func (e *BRElement) ITEMSCOPESet(b bool) *BRElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("itemscope", b)
+	return e
+}
+
+func (e *BRElement) IfSetITEMSCOPE(condition bool, b bool) *BRElement {
+	if condition {
+		e.ITEMSCOPESet(b)
+	}
 	return e
 }
 
@@ -755,6 +895,13 @@ func (e *BRElement) ITEMTYPE(s string) *BRElement {
 	return e
 }
 
+func (e *BRElement) IfITEMTYPE(condition bool, s string) *BRElement {
+	if condition {
+		e.ITEMTYPE(s)
+	}
+	return e
+}
+
 // Remove the attribute itemtype from the element.
 func (e *BRElement) ITEMTYPERemove(s string) *BRElement {
 	if e.StringAttributes == nil {
@@ -778,6 +925,13 @@ func (e *BRElement) LANG(s string) *BRElement {
 	return e
 }
 
+func (e *BRElement) IfLANG(condition bool, s string) *BRElement {
+	if condition {
+		e.LANG(s)
+	}
+	return e
+}
+
 // Remove the attribute lang from the element.
 func (e *BRElement) LANGRemove(s string) *BRElement {
 	if e.StringAttributes == nil {
@@ -796,6 +950,13 @@ func (e *BRElement) NONCE(s string) *BRElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("nonce", s)
+	return e
+}
+
+func (e *BRElement) IfNONCE(condition bool, s string) *BRElement {
+	if condition {
+		e.NONCE(s)
+	}
 	return e
 }
 
@@ -822,6 +983,13 @@ func (e *BRElement) PART(s ...string) *BRElement {
 		e.DelimitedStrings.Set("part", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *BRElement) IfPART(condition bool, s ...string) *BRElement {
+	if condition {
+		e.PART(s...)
+	}
 	return e
 }
 
@@ -892,6 +1060,13 @@ func (e *BRElement) SLOT(s string) *BRElement {
 	return e
 }
 
+func (e *BRElement) IfSLOT(condition bool, s string) *BRElement {
+	if condition {
+		e.SLOT(s)
+	}
+	return e
+}
+
 // Remove the attribute slot from the element.
 func (e *BRElement) SLOTRemove(s string) *BRElement {
 	if e.StringAttributes == nil {
@@ -950,6 +1125,13 @@ func (e *BRElement) STYLEF(k string, format string, args ...any) *BRElement {
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+func (e *BRElement) IfSTYLE(condition bool, k string, v string) *BRElement {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
 func (e *BRElement) STYLE(k string, v string) *BRElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -960,6 +1142,13 @@ func (e *BRElement) STYLE(k string, v string) *BRElement {
 		e.KVStrings.Set("style", kv)
 	}
 	kv.Add(k, v)
+	return e
+}
+
+func (e *BRElement) IfSTYLEF(condition bool, k string, format string, args ...any) *BRElement {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
 	return e
 }
 
@@ -1000,6 +1189,13 @@ func (e *BRElement) STYLEPairs(pairs ...string) *BRElement {
 	return e
 }
 
+func (e *BRElement) IfSTYLEPairs(condition bool, pairs ...string) *BRElement {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
+	return e
+}
+
 // Remove the attribute style from the element.
 func (e *BRElement) STYLERemove(keys ...string) *BRElement {
 	if e.KVStrings == nil {
@@ -1034,6 +1230,13 @@ func (e *BRElement) TABINDEX(i int) *BRElement {
 		e.IntAttributes = treemap.New[string, int]()
 	}
 	e.IntAttributes.Set("tabindex", i)
+	return e
+}
+
+func (e *BRElement) IfTABINDEX(condition bool, i int) *BRElement {
+	if condition {
+		e.TABINDEX(i)
+	}
 	return e
 }
 
@@ -1072,6 +1275,13 @@ func (e *BRElement) TITLE(s string) *BRElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("title", s)
+	return e
+}
+
+func (e *BRElement) IfTITLE(condition bool, s string) *BRElement {
+	if condition {
+		e.TITLE(s)
+	}
 	return e
 }
 

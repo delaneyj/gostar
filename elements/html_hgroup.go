@@ -57,13 +57,41 @@ func (e *HGROUPElement) TextF(format string, args ...any) *HGROUPElement {
 	return e.Text(fmt.Sprintf(format, args...))
 }
 
+func (e *HGROUPElement) IfText(condition bool, text string) *HGROUPElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
+}
+
+func (e *HGROUPElement) IfTextF(condition bool, format string, args ...any) *HGROUPElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
+}
+
 func (e *HGROUPElement) Escaped(text string) *HGROUPElement {
 	e.Descendants = append(e.Descendants, Escaped(text))
 	return e
 }
 
+func (e *HGROUPElement) IfEscaped(condition bool, text string) *HGROUPElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
+}
+
 func (e *HGROUPElement) EscapedF(format string, args ...any) *HGROUPElement {
 	return e.Escaped(fmt.Sprintf(format, args...))
+}
+
+func (e *HGROUPElement) IfEscapedF(condition bool, format string, args ...any) *HGROUPElement {
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *HGROUPElement) CustomData(key, value string) *HGROUPElement {
@@ -74,8 +102,22 @@ func (e *HGROUPElement) CustomData(key, value string) *HGROUPElement {
 	return e
 }
 
+func (e *HGROUPElement) IfCustomData(condition bool, key, value string) *HGROUPElement {
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
+}
+
 func (e *HGROUPElement) CustomDataF(key, format string, args ...any) *HGROUPElement {
 	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
+func (e *HGROUPElement) IfCustomDataF(condition bool, key, format string, args ...any) *HGROUPElement {
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *HGROUPElement) CustomDataRemove(key string) *HGROUPElement {
@@ -95,6 +137,13 @@ func (e *HGROUPElement) ACCESSKEY(r rune) *HGROUPElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("accesskey", string(r))
+	return e
+}
+
+func (e *HGROUPElement) IfACCESSKEY(condition bool, r rune) *HGROUPElement {
+	if condition {
+		e.ACCESSKEY(r)
+	}
 	return e
 }
 
@@ -180,12 +229,26 @@ func (e *HGROUPElement) AUTOFOCUS() *HGROUPElement {
 	return e
 }
 
+func (e *HGROUPElement) IfAUTOFOCUS(condition bool) *HGROUPElement {
+	if condition {
+		e.AUTOFOCUSSet(true)
+	}
+	return e
+}
+
 // Set the attribute autofocus to the value b explicitly.
 func (e *HGROUPElement) AUTOFOCUSSet(b bool) *HGROUPElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("autofocus", b)
+	return e
+}
+
+func (e *HGROUPElement) IfSetAUTOFOCUS(condition bool, b bool) *HGROUPElement {
+	if condition {
+		e.AUTOFOCUSSet(b)
+	}
 	return e
 }
 
@@ -213,6 +276,13 @@ func (e *HGROUPElement) CLASS(s ...string) *HGROUPElement {
 		e.DelimitedStrings.Set("class", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *HGROUPElement) IfCLASS(condition bool, s ...string) *HGROUPElement {
+	if condition {
+		e.CLASS(s...)
+	}
 	return e
 }
 
@@ -421,6 +491,13 @@ func (e *HGROUPElement) EXPORTPARTS(s ...string) *HGROUPElement {
 	return e
 }
 
+func (e *HGROUPElement) IfEXPORTPARTS(condition bool, s ...string) *HGROUPElement {
+	if condition {
+		e.EXPORTPARTS(s...)
+	}
+	return e
+}
+
 // Remove the attribute exportparts from the element.
 func (e *HGROUPElement) EXPORTPARTSRemove(s ...string) *HGROUPElement {
 	if e.DelimitedStrings == nil {
@@ -496,6 +573,13 @@ func (e *HGROUPElement) ID(s string) *HGROUPElement {
 	return e
 }
 
+func (e *HGROUPElement) IfID(condition bool, s string) *HGROUPElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
 // Remove the attribute id from the element.
 func (e *HGROUPElement) IDRemove(s string) *HGROUPElement {
 	if e.StringAttributes == nil {
@@ -522,12 +606,26 @@ func (e *HGROUPElement) INERT() *HGROUPElement {
 	return e
 }
 
+func (e *HGROUPElement) IfINERT(condition bool) *HGROUPElement {
+	if condition {
+		e.INERTSet(true)
+	}
+	return e
+}
+
 // Set the attribute inert to the value b explicitly.
 func (e *HGROUPElement) INERTSet(b bool) *HGROUPElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("inert", b)
+	return e
+}
+
+func (e *HGROUPElement) IfSetINERT(condition bool, b bool) *HGROUPElement {
+	if condition {
+		e.INERTSet(b)
+	}
 	return e
 }
 
@@ -623,6 +721,13 @@ func (e *HGROUPElement) IS(s string) *HGROUPElement {
 	return e
 }
 
+func (e *HGROUPElement) IfIS(condition bool, s string) *HGROUPElement {
+	if condition {
+		e.IS(s)
+	}
+	return e
+}
+
 // Remove the attribute is from the element.
 func (e *HGROUPElement) ISRemove(s string) *HGROUPElement {
 	if e.StringAttributes == nil {
@@ -653,6 +758,13 @@ func (e *HGROUPElement) ITEMID(s string) *HGROUPElement {
 	return e
 }
 
+func (e *HGROUPElement) IfITEMID(condition bool, s string) *HGROUPElement {
+	if condition {
+		e.ITEMID(s)
+	}
+	return e
+}
+
 // Remove the attribute itemid from the element.
 func (e *HGROUPElement) ITEMIDRemove(s string) *HGROUPElement {
 	if e.StringAttributes == nil {
@@ -678,6 +790,13 @@ func (e *HGROUPElement) ITEMPROP(s string) *HGROUPElement {
 	return e
 }
 
+func (e *HGROUPElement) IfITEMPROP(condition bool, s string) *HGROUPElement {
+	if condition {
+		e.ITEMPROP(s)
+	}
+	return e
+}
+
 // Remove the attribute itemprop from the element.
 func (e *HGROUPElement) ITEMPROPRemove(s string) *HGROUPElement {
 	if e.StringAttributes == nil {
@@ -697,6 +816,13 @@ func (e *HGROUPElement) ITEMREF(s string) *HGROUPElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("itemref", s)
+	return e
+}
+
+func (e *HGROUPElement) IfITEMREF(condition bool, s string) *HGROUPElement {
+	if condition {
+		e.ITEMREF(s)
+	}
 	return e
 }
 
@@ -722,12 +848,26 @@ func (e *HGROUPElement) ITEMSCOPE() *HGROUPElement {
 	return e
 }
 
+func (e *HGROUPElement) IfITEMSCOPE(condition bool) *HGROUPElement {
+	if condition {
+		e.ITEMSCOPESet(true)
+	}
+	return e
+}
+
 // Set the attribute itemscope to the value b explicitly.
 func (e *HGROUPElement) ITEMSCOPESet(b bool) *HGROUPElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("itemscope", b)
+	return e
+}
+
+func (e *HGROUPElement) IfSetITEMSCOPE(condition bool, b bool) *HGROUPElement {
+	if condition {
+		e.ITEMSCOPESet(b)
+	}
 	return e
 }
 
@@ -756,6 +896,13 @@ func (e *HGROUPElement) ITEMTYPE(s string) *HGROUPElement {
 	return e
 }
 
+func (e *HGROUPElement) IfITEMTYPE(condition bool, s string) *HGROUPElement {
+	if condition {
+		e.ITEMTYPE(s)
+	}
+	return e
+}
+
 // Remove the attribute itemtype from the element.
 func (e *HGROUPElement) ITEMTYPERemove(s string) *HGROUPElement {
 	if e.StringAttributes == nil {
@@ -779,6 +926,13 @@ func (e *HGROUPElement) LANG(s string) *HGROUPElement {
 	return e
 }
 
+func (e *HGROUPElement) IfLANG(condition bool, s string) *HGROUPElement {
+	if condition {
+		e.LANG(s)
+	}
+	return e
+}
+
 // Remove the attribute lang from the element.
 func (e *HGROUPElement) LANGRemove(s string) *HGROUPElement {
 	if e.StringAttributes == nil {
@@ -797,6 +951,13 @@ func (e *HGROUPElement) NONCE(s string) *HGROUPElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("nonce", s)
+	return e
+}
+
+func (e *HGROUPElement) IfNONCE(condition bool, s string) *HGROUPElement {
+	if condition {
+		e.NONCE(s)
+	}
 	return e
 }
 
@@ -823,6 +984,13 @@ func (e *HGROUPElement) PART(s ...string) *HGROUPElement {
 		e.DelimitedStrings.Set("part", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *HGROUPElement) IfPART(condition bool, s ...string) *HGROUPElement {
+	if condition {
+		e.PART(s...)
+	}
 	return e
 }
 
@@ -893,6 +1061,13 @@ func (e *HGROUPElement) SLOT(s string) *HGROUPElement {
 	return e
 }
 
+func (e *HGROUPElement) IfSLOT(condition bool, s string) *HGROUPElement {
+	if condition {
+		e.SLOT(s)
+	}
+	return e
+}
+
 // Remove the attribute slot from the element.
 func (e *HGROUPElement) SLOTRemove(s string) *HGROUPElement {
 	if e.StringAttributes == nil {
@@ -951,6 +1126,13 @@ func (e *HGROUPElement) STYLEF(k string, format string, args ...any) *HGROUPElem
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+func (e *HGROUPElement) IfSTYLE(condition bool, k string, v string) *HGROUPElement {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
 func (e *HGROUPElement) STYLE(k string, v string) *HGROUPElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -961,6 +1143,13 @@ func (e *HGROUPElement) STYLE(k string, v string) *HGROUPElement {
 		e.KVStrings.Set("style", kv)
 	}
 	kv.Add(k, v)
+	return e
+}
+
+func (e *HGROUPElement) IfSTYLEF(condition bool, k string, format string, args ...any) *HGROUPElement {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
 	return e
 }
 
@@ -1001,6 +1190,13 @@ func (e *HGROUPElement) STYLEPairs(pairs ...string) *HGROUPElement {
 	return e
 }
 
+func (e *HGROUPElement) IfSTYLEPairs(condition bool, pairs ...string) *HGROUPElement {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
+	return e
+}
+
 // Remove the attribute style from the element.
 func (e *HGROUPElement) STYLERemove(keys ...string) *HGROUPElement {
 	if e.KVStrings == nil {
@@ -1035,6 +1231,13 @@ func (e *HGROUPElement) TABINDEX(i int) *HGROUPElement {
 		e.IntAttributes = treemap.New[string, int]()
 	}
 	e.IntAttributes.Set("tabindex", i)
+	return e
+}
+
+func (e *HGROUPElement) IfTABINDEX(condition bool, i int) *HGROUPElement {
+	if condition {
+		e.TABINDEX(i)
+	}
 	return e
 }
 
@@ -1073,6 +1276,13 @@ func (e *HGROUPElement) TITLE(s string) *HGROUPElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("title", s)
+	return e
+}
+
+func (e *HGROUPElement) IfTITLE(condition bool, s string) *HGROUPElement {
+	if condition {
+		e.TITLE(s)
+	}
 	return e
 }
 

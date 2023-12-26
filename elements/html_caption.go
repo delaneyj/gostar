@@ -56,13 +56,41 @@ func (e *CAPTIONElement) TextF(format string, args ...any) *CAPTIONElement {
 	return e.Text(fmt.Sprintf(format, args...))
 }
 
+func (e *CAPTIONElement) IfText(condition bool, text string) *CAPTIONElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
+}
+
+func (e *CAPTIONElement) IfTextF(condition bool, format string, args ...any) *CAPTIONElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
+}
+
 func (e *CAPTIONElement) Escaped(text string) *CAPTIONElement {
 	e.Descendants = append(e.Descendants, Escaped(text))
 	return e
 }
 
+func (e *CAPTIONElement) IfEscaped(condition bool, text string) *CAPTIONElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
+}
+
 func (e *CAPTIONElement) EscapedF(format string, args ...any) *CAPTIONElement {
 	return e.Escaped(fmt.Sprintf(format, args...))
+}
+
+func (e *CAPTIONElement) IfEscapedF(condition bool, format string, args ...any) *CAPTIONElement {
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *CAPTIONElement) CustomData(key, value string) *CAPTIONElement {
@@ -73,8 +101,22 @@ func (e *CAPTIONElement) CustomData(key, value string) *CAPTIONElement {
 	return e
 }
 
+func (e *CAPTIONElement) IfCustomData(condition bool, key, value string) *CAPTIONElement {
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
+}
+
 func (e *CAPTIONElement) CustomDataF(key, format string, args ...any) *CAPTIONElement {
 	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
+func (e *CAPTIONElement) IfCustomDataF(condition bool, key, format string, args ...any) *CAPTIONElement {
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *CAPTIONElement) CustomDataRemove(key string) *CAPTIONElement {
@@ -94,6 +136,13 @@ func (e *CAPTIONElement) ACCESSKEY(r rune) *CAPTIONElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("accesskey", string(r))
+	return e
+}
+
+func (e *CAPTIONElement) IfACCESSKEY(condition bool, r rune) *CAPTIONElement {
+	if condition {
+		e.ACCESSKEY(r)
+	}
 	return e
 }
 
@@ -179,12 +228,26 @@ func (e *CAPTIONElement) AUTOFOCUS() *CAPTIONElement {
 	return e
 }
 
+func (e *CAPTIONElement) IfAUTOFOCUS(condition bool) *CAPTIONElement {
+	if condition {
+		e.AUTOFOCUSSet(true)
+	}
+	return e
+}
+
 // Set the attribute autofocus to the value b explicitly.
 func (e *CAPTIONElement) AUTOFOCUSSet(b bool) *CAPTIONElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("autofocus", b)
+	return e
+}
+
+func (e *CAPTIONElement) IfSetAUTOFOCUS(condition bool, b bool) *CAPTIONElement {
+	if condition {
+		e.AUTOFOCUSSet(b)
+	}
 	return e
 }
 
@@ -212,6 +275,13 @@ func (e *CAPTIONElement) CLASS(s ...string) *CAPTIONElement {
 		e.DelimitedStrings.Set("class", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *CAPTIONElement) IfCLASS(condition bool, s ...string) *CAPTIONElement {
+	if condition {
+		e.CLASS(s...)
+	}
 	return e
 }
 
@@ -420,6 +490,13 @@ func (e *CAPTIONElement) EXPORTPARTS(s ...string) *CAPTIONElement {
 	return e
 }
 
+func (e *CAPTIONElement) IfEXPORTPARTS(condition bool, s ...string) *CAPTIONElement {
+	if condition {
+		e.EXPORTPARTS(s...)
+	}
+	return e
+}
+
 // Remove the attribute exportparts from the element.
 func (e *CAPTIONElement) EXPORTPARTSRemove(s ...string) *CAPTIONElement {
 	if e.DelimitedStrings == nil {
@@ -495,6 +572,13 @@ func (e *CAPTIONElement) ID(s string) *CAPTIONElement {
 	return e
 }
 
+func (e *CAPTIONElement) IfID(condition bool, s string) *CAPTIONElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
 // Remove the attribute id from the element.
 func (e *CAPTIONElement) IDRemove(s string) *CAPTIONElement {
 	if e.StringAttributes == nil {
@@ -521,12 +605,26 @@ func (e *CAPTIONElement) INERT() *CAPTIONElement {
 	return e
 }
 
+func (e *CAPTIONElement) IfINERT(condition bool) *CAPTIONElement {
+	if condition {
+		e.INERTSet(true)
+	}
+	return e
+}
+
 // Set the attribute inert to the value b explicitly.
 func (e *CAPTIONElement) INERTSet(b bool) *CAPTIONElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("inert", b)
+	return e
+}
+
+func (e *CAPTIONElement) IfSetINERT(condition bool, b bool) *CAPTIONElement {
+	if condition {
+		e.INERTSet(b)
+	}
 	return e
 }
 
@@ -622,6 +720,13 @@ func (e *CAPTIONElement) IS(s string) *CAPTIONElement {
 	return e
 }
 
+func (e *CAPTIONElement) IfIS(condition bool, s string) *CAPTIONElement {
+	if condition {
+		e.IS(s)
+	}
+	return e
+}
+
 // Remove the attribute is from the element.
 func (e *CAPTIONElement) ISRemove(s string) *CAPTIONElement {
 	if e.StringAttributes == nil {
@@ -652,6 +757,13 @@ func (e *CAPTIONElement) ITEMID(s string) *CAPTIONElement {
 	return e
 }
 
+func (e *CAPTIONElement) IfITEMID(condition bool, s string) *CAPTIONElement {
+	if condition {
+		e.ITEMID(s)
+	}
+	return e
+}
+
 // Remove the attribute itemid from the element.
 func (e *CAPTIONElement) ITEMIDRemove(s string) *CAPTIONElement {
 	if e.StringAttributes == nil {
@@ -677,6 +789,13 @@ func (e *CAPTIONElement) ITEMPROP(s string) *CAPTIONElement {
 	return e
 }
 
+func (e *CAPTIONElement) IfITEMPROP(condition bool, s string) *CAPTIONElement {
+	if condition {
+		e.ITEMPROP(s)
+	}
+	return e
+}
+
 // Remove the attribute itemprop from the element.
 func (e *CAPTIONElement) ITEMPROPRemove(s string) *CAPTIONElement {
 	if e.StringAttributes == nil {
@@ -696,6 +815,13 @@ func (e *CAPTIONElement) ITEMREF(s string) *CAPTIONElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("itemref", s)
+	return e
+}
+
+func (e *CAPTIONElement) IfITEMREF(condition bool, s string) *CAPTIONElement {
+	if condition {
+		e.ITEMREF(s)
+	}
 	return e
 }
 
@@ -721,12 +847,26 @@ func (e *CAPTIONElement) ITEMSCOPE() *CAPTIONElement {
 	return e
 }
 
+func (e *CAPTIONElement) IfITEMSCOPE(condition bool) *CAPTIONElement {
+	if condition {
+		e.ITEMSCOPESet(true)
+	}
+	return e
+}
+
 // Set the attribute itemscope to the value b explicitly.
 func (e *CAPTIONElement) ITEMSCOPESet(b bool) *CAPTIONElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("itemscope", b)
+	return e
+}
+
+func (e *CAPTIONElement) IfSetITEMSCOPE(condition bool, b bool) *CAPTIONElement {
+	if condition {
+		e.ITEMSCOPESet(b)
+	}
 	return e
 }
 
@@ -755,6 +895,13 @@ func (e *CAPTIONElement) ITEMTYPE(s string) *CAPTIONElement {
 	return e
 }
 
+func (e *CAPTIONElement) IfITEMTYPE(condition bool, s string) *CAPTIONElement {
+	if condition {
+		e.ITEMTYPE(s)
+	}
+	return e
+}
+
 // Remove the attribute itemtype from the element.
 func (e *CAPTIONElement) ITEMTYPERemove(s string) *CAPTIONElement {
 	if e.StringAttributes == nil {
@@ -778,6 +925,13 @@ func (e *CAPTIONElement) LANG(s string) *CAPTIONElement {
 	return e
 }
 
+func (e *CAPTIONElement) IfLANG(condition bool, s string) *CAPTIONElement {
+	if condition {
+		e.LANG(s)
+	}
+	return e
+}
+
 // Remove the attribute lang from the element.
 func (e *CAPTIONElement) LANGRemove(s string) *CAPTIONElement {
 	if e.StringAttributes == nil {
@@ -796,6 +950,13 @@ func (e *CAPTIONElement) NONCE(s string) *CAPTIONElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("nonce", s)
+	return e
+}
+
+func (e *CAPTIONElement) IfNONCE(condition bool, s string) *CAPTIONElement {
+	if condition {
+		e.NONCE(s)
+	}
 	return e
 }
 
@@ -822,6 +983,13 @@ func (e *CAPTIONElement) PART(s ...string) *CAPTIONElement {
 		e.DelimitedStrings.Set("part", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *CAPTIONElement) IfPART(condition bool, s ...string) *CAPTIONElement {
+	if condition {
+		e.PART(s...)
+	}
 	return e
 }
 
@@ -892,6 +1060,13 @@ func (e *CAPTIONElement) SLOT(s string) *CAPTIONElement {
 	return e
 }
 
+func (e *CAPTIONElement) IfSLOT(condition bool, s string) *CAPTIONElement {
+	if condition {
+		e.SLOT(s)
+	}
+	return e
+}
+
 // Remove the attribute slot from the element.
 func (e *CAPTIONElement) SLOTRemove(s string) *CAPTIONElement {
 	if e.StringAttributes == nil {
@@ -950,6 +1125,13 @@ func (e *CAPTIONElement) STYLEF(k string, format string, args ...any) *CAPTIONEl
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+func (e *CAPTIONElement) IfSTYLE(condition bool, k string, v string) *CAPTIONElement {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
 func (e *CAPTIONElement) STYLE(k string, v string) *CAPTIONElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -960,6 +1142,13 @@ func (e *CAPTIONElement) STYLE(k string, v string) *CAPTIONElement {
 		e.KVStrings.Set("style", kv)
 	}
 	kv.Add(k, v)
+	return e
+}
+
+func (e *CAPTIONElement) IfSTYLEF(condition bool, k string, format string, args ...any) *CAPTIONElement {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
 	return e
 }
 
@@ -1000,6 +1189,13 @@ func (e *CAPTIONElement) STYLEPairs(pairs ...string) *CAPTIONElement {
 	return e
 }
 
+func (e *CAPTIONElement) IfSTYLEPairs(condition bool, pairs ...string) *CAPTIONElement {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
+	return e
+}
+
 // Remove the attribute style from the element.
 func (e *CAPTIONElement) STYLERemove(keys ...string) *CAPTIONElement {
 	if e.KVStrings == nil {
@@ -1034,6 +1230,13 @@ func (e *CAPTIONElement) TABINDEX(i int) *CAPTIONElement {
 		e.IntAttributes = treemap.New[string, int]()
 	}
 	e.IntAttributes.Set("tabindex", i)
+	return e
+}
+
+func (e *CAPTIONElement) IfTABINDEX(condition bool, i int) *CAPTIONElement {
+	if condition {
+		e.TABINDEX(i)
+	}
 	return e
 }
 
@@ -1072,6 +1275,13 @@ func (e *CAPTIONElement) TITLE(s string) *CAPTIONElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("title", s)
+	return e
+}
+
+func (e *CAPTIONElement) IfTITLE(condition bool, s string) *CAPTIONElement {
+	if condition {
+		e.TITLE(s)
+	}
 	return e
 }
 

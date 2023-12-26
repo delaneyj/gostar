@@ -56,13 +56,41 @@ func (e *IFRAMEElement) TextF(format string, args ...any) *IFRAMEElement {
 	return e.Text(fmt.Sprintf(format, args...))
 }
 
+func (e *IFRAMEElement) IfText(condition bool, text string) *IFRAMEElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
+}
+
+func (e *IFRAMEElement) IfTextF(condition bool, format string, args ...any) *IFRAMEElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
+}
+
 func (e *IFRAMEElement) Escaped(text string) *IFRAMEElement {
 	e.Descendants = append(e.Descendants, Escaped(text))
 	return e
 }
 
+func (e *IFRAMEElement) IfEscaped(condition bool, text string) *IFRAMEElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
+}
+
 func (e *IFRAMEElement) EscapedF(format string, args ...any) *IFRAMEElement {
 	return e.Escaped(fmt.Sprintf(format, args...))
+}
+
+func (e *IFRAMEElement) IfEscapedF(condition bool, format string, args ...any) *IFRAMEElement {
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *IFRAMEElement) CustomData(key, value string) *IFRAMEElement {
@@ -73,8 +101,22 @@ func (e *IFRAMEElement) CustomData(key, value string) *IFRAMEElement {
 	return e
 }
 
+func (e *IFRAMEElement) IfCustomData(condition bool, key, value string) *IFRAMEElement {
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
+}
+
 func (e *IFRAMEElement) CustomDataF(key, format string, args ...any) *IFRAMEElement {
 	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
+func (e *IFRAMEElement) IfCustomDataF(condition bool, key, format string, args ...any) *IFRAMEElement {
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *IFRAMEElement) CustomDataRemove(key string) *IFRAMEElement {
@@ -99,6 +141,13 @@ func (e *IFRAMEElement) ALLOW(s ...string) *IFRAMEElement {
 	return e
 }
 
+func (e *IFRAMEElement) IfALLOW(condition bool, s ...string) *IFRAMEElement {
+	if condition {
+		e.ALLOW(s...)
+	}
+	return e
+}
+
 // Remove the attribute allow from the element.
 func (e *IFRAMEElement) ALLOWRemove(s ...string) *IFRAMEElement {
 	if e.DelimitedStrings == nil {
@@ -119,12 +168,26 @@ func (e *IFRAMEElement) ALLOWFULLSCREEN() *IFRAMEElement {
 	return e
 }
 
+func (e *IFRAMEElement) IfALLOWFULLSCREEN(condition bool) *IFRAMEElement {
+	if condition {
+		e.ALLOWFULLSCREENSet(true)
+	}
+	return e
+}
+
 // Set the attribute allowfullscreen to the value b explicitly.
 func (e *IFRAMEElement) ALLOWFULLSCREENSet(b bool) *IFRAMEElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("allowfullscreen", b)
+	return e
+}
+
+func (e *IFRAMEElement) IfSetALLOWFULLSCREEN(condition bool, b bool) *IFRAMEElement {
+	if condition {
+		e.ALLOWFULLSCREENSet(b)
+	}
 	return e
 }
 
@@ -144,12 +207,26 @@ func (e *IFRAMEElement) ALLOWPAYMENTREQUEST() *IFRAMEElement {
 	return e
 }
 
+func (e *IFRAMEElement) IfALLOWPAYMENTREQUEST(condition bool) *IFRAMEElement {
+	if condition {
+		e.ALLOWPAYMENTREQUESTSet(true)
+	}
+	return e
+}
+
 // Set the attribute allowpaymentrequest to the value b explicitly.
 func (e *IFRAMEElement) ALLOWPAYMENTREQUESTSet(b bool) *IFRAMEElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("allowpaymentrequest", b)
+	return e
+}
+
+func (e *IFRAMEElement) IfSetALLOWPAYMENTREQUEST(condition bool, b bool) *IFRAMEElement {
+	if condition {
+		e.ALLOWPAYMENTREQUESTSet(b)
+	}
 	return e
 }
 
@@ -171,6 +248,13 @@ func (e *IFRAMEElement) HEIGHT(i int) *IFRAMEElement {
 	return e
 }
 
+func (e *IFRAMEElement) IfHEIGHT(condition bool, i int) *IFRAMEElement {
+	if condition {
+		e.HEIGHT(i)
+	}
+	return e
+}
+
 // Remove the attribute height from the element.
 func (e *IFRAMEElement) HEIGHTRemove(i int) *IFRAMEElement {
 	if e.IntAttributes == nil {
@@ -186,6 +270,13 @@ func (e *IFRAMEElement) NAME(s string) *IFRAMEElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("name", s)
+	return e
+}
+
+func (e *IFRAMEElement) IfNAME(condition bool, s string) *IFRAMEElement {
+	if condition {
+		e.NAME(s)
+	}
 	return e
 }
 
@@ -298,6 +389,13 @@ func (e *IFRAMEElement) SRC(s string) *IFRAMEElement {
 	return e
 }
 
+func (e *IFRAMEElement) IfSRC(condition bool, s string) *IFRAMEElement {
+	if condition {
+		e.SRC(s)
+	}
+	return e
+}
+
 // Remove the attribute src from the element.
 func (e *IFRAMEElement) SRCRemove(s string) *IFRAMEElement {
 	if e.StringAttributes == nil {
@@ -313,6 +411,13 @@ func (e *IFRAMEElement) SRCDOC(s string) *IFRAMEElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("srcdoc", s)
+	return e
+}
+
+func (e *IFRAMEElement) IfSRCDOC(condition bool, s string) *IFRAMEElement {
+	if condition {
+		e.SRCDOC(s)
+	}
 	return e
 }
 
@@ -334,6 +439,13 @@ func (e *IFRAMEElement) WIDTH(i int) *IFRAMEElement {
 	return e
 }
 
+func (e *IFRAMEElement) IfWIDTH(condition bool, i int) *IFRAMEElement {
+	if condition {
+		e.WIDTH(i)
+	}
+	return e
+}
+
 // Remove the attribute width from the element.
 func (e *IFRAMEElement) WIDTHRemove(i int) *IFRAMEElement {
 	if e.IntAttributes == nil {
@@ -352,6 +464,13 @@ func (e *IFRAMEElement) ACCESSKEY(r rune) *IFRAMEElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("accesskey", string(r))
+	return e
+}
+
+func (e *IFRAMEElement) IfACCESSKEY(condition bool, r rune) *IFRAMEElement {
+	if condition {
+		e.ACCESSKEY(r)
+	}
 	return e
 }
 
@@ -437,12 +556,26 @@ func (e *IFRAMEElement) AUTOFOCUS() *IFRAMEElement {
 	return e
 }
 
+func (e *IFRAMEElement) IfAUTOFOCUS(condition bool) *IFRAMEElement {
+	if condition {
+		e.AUTOFOCUSSet(true)
+	}
+	return e
+}
+
 // Set the attribute autofocus to the value b explicitly.
 func (e *IFRAMEElement) AUTOFOCUSSet(b bool) *IFRAMEElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("autofocus", b)
+	return e
+}
+
+func (e *IFRAMEElement) IfSetAUTOFOCUS(condition bool, b bool) *IFRAMEElement {
+	if condition {
+		e.AUTOFOCUSSet(b)
+	}
 	return e
 }
 
@@ -470,6 +603,13 @@ func (e *IFRAMEElement) CLASS(s ...string) *IFRAMEElement {
 		e.DelimitedStrings.Set("class", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *IFRAMEElement) IfCLASS(condition bool, s ...string) *IFRAMEElement {
+	if condition {
+		e.CLASS(s...)
+	}
 	return e
 }
 
@@ -678,6 +818,13 @@ func (e *IFRAMEElement) EXPORTPARTS(s ...string) *IFRAMEElement {
 	return e
 }
 
+func (e *IFRAMEElement) IfEXPORTPARTS(condition bool, s ...string) *IFRAMEElement {
+	if condition {
+		e.EXPORTPARTS(s...)
+	}
+	return e
+}
+
 // Remove the attribute exportparts from the element.
 func (e *IFRAMEElement) EXPORTPARTSRemove(s ...string) *IFRAMEElement {
 	if e.DelimitedStrings == nil {
@@ -753,6 +900,13 @@ func (e *IFRAMEElement) ID(s string) *IFRAMEElement {
 	return e
 }
 
+func (e *IFRAMEElement) IfID(condition bool, s string) *IFRAMEElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
 // Remove the attribute id from the element.
 func (e *IFRAMEElement) IDRemove(s string) *IFRAMEElement {
 	if e.StringAttributes == nil {
@@ -779,12 +933,26 @@ func (e *IFRAMEElement) INERT() *IFRAMEElement {
 	return e
 }
 
+func (e *IFRAMEElement) IfINERT(condition bool) *IFRAMEElement {
+	if condition {
+		e.INERTSet(true)
+	}
+	return e
+}
+
 // Set the attribute inert to the value b explicitly.
 func (e *IFRAMEElement) INERTSet(b bool) *IFRAMEElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("inert", b)
+	return e
+}
+
+func (e *IFRAMEElement) IfSetINERT(condition bool, b bool) *IFRAMEElement {
+	if condition {
+		e.INERTSet(b)
+	}
 	return e
 }
 
@@ -880,6 +1048,13 @@ func (e *IFRAMEElement) IS(s string) *IFRAMEElement {
 	return e
 }
 
+func (e *IFRAMEElement) IfIS(condition bool, s string) *IFRAMEElement {
+	if condition {
+		e.IS(s)
+	}
+	return e
+}
+
 // Remove the attribute is from the element.
 func (e *IFRAMEElement) ISRemove(s string) *IFRAMEElement {
 	if e.StringAttributes == nil {
@@ -910,6 +1085,13 @@ func (e *IFRAMEElement) ITEMID(s string) *IFRAMEElement {
 	return e
 }
 
+func (e *IFRAMEElement) IfITEMID(condition bool, s string) *IFRAMEElement {
+	if condition {
+		e.ITEMID(s)
+	}
+	return e
+}
+
 // Remove the attribute itemid from the element.
 func (e *IFRAMEElement) ITEMIDRemove(s string) *IFRAMEElement {
 	if e.StringAttributes == nil {
@@ -935,6 +1117,13 @@ func (e *IFRAMEElement) ITEMPROP(s string) *IFRAMEElement {
 	return e
 }
 
+func (e *IFRAMEElement) IfITEMPROP(condition bool, s string) *IFRAMEElement {
+	if condition {
+		e.ITEMPROP(s)
+	}
+	return e
+}
+
 // Remove the attribute itemprop from the element.
 func (e *IFRAMEElement) ITEMPROPRemove(s string) *IFRAMEElement {
 	if e.StringAttributes == nil {
@@ -954,6 +1143,13 @@ func (e *IFRAMEElement) ITEMREF(s string) *IFRAMEElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("itemref", s)
+	return e
+}
+
+func (e *IFRAMEElement) IfITEMREF(condition bool, s string) *IFRAMEElement {
+	if condition {
+		e.ITEMREF(s)
+	}
 	return e
 }
 
@@ -979,12 +1175,26 @@ func (e *IFRAMEElement) ITEMSCOPE() *IFRAMEElement {
 	return e
 }
 
+func (e *IFRAMEElement) IfITEMSCOPE(condition bool) *IFRAMEElement {
+	if condition {
+		e.ITEMSCOPESet(true)
+	}
+	return e
+}
+
 // Set the attribute itemscope to the value b explicitly.
 func (e *IFRAMEElement) ITEMSCOPESet(b bool) *IFRAMEElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("itemscope", b)
+	return e
+}
+
+func (e *IFRAMEElement) IfSetITEMSCOPE(condition bool, b bool) *IFRAMEElement {
+	if condition {
+		e.ITEMSCOPESet(b)
+	}
 	return e
 }
 
@@ -1013,6 +1223,13 @@ func (e *IFRAMEElement) ITEMTYPE(s string) *IFRAMEElement {
 	return e
 }
 
+func (e *IFRAMEElement) IfITEMTYPE(condition bool, s string) *IFRAMEElement {
+	if condition {
+		e.ITEMTYPE(s)
+	}
+	return e
+}
+
 // Remove the attribute itemtype from the element.
 func (e *IFRAMEElement) ITEMTYPERemove(s string) *IFRAMEElement {
 	if e.StringAttributes == nil {
@@ -1036,6 +1253,13 @@ func (e *IFRAMEElement) LANG(s string) *IFRAMEElement {
 	return e
 }
 
+func (e *IFRAMEElement) IfLANG(condition bool, s string) *IFRAMEElement {
+	if condition {
+		e.LANG(s)
+	}
+	return e
+}
+
 // Remove the attribute lang from the element.
 func (e *IFRAMEElement) LANGRemove(s string) *IFRAMEElement {
 	if e.StringAttributes == nil {
@@ -1054,6 +1278,13 @@ func (e *IFRAMEElement) NONCE(s string) *IFRAMEElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("nonce", s)
+	return e
+}
+
+func (e *IFRAMEElement) IfNONCE(condition bool, s string) *IFRAMEElement {
+	if condition {
+		e.NONCE(s)
+	}
 	return e
 }
 
@@ -1080,6 +1311,13 @@ func (e *IFRAMEElement) PART(s ...string) *IFRAMEElement {
 		e.DelimitedStrings.Set("part", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *IFRAMEElement) IfPART(condition bool, s ...string) *IFRAMEElement {
+	if condition {
+		e.PART(s...)
+	}
 	return e
 }
 
@@ -1150,6 +1388,13 @@ func (e *IFRAMEElement) SLOT(s string) *IFRAMEElement {
 	return e
 }
 
+func (e *IFRAMEElement) IfSLOT(condition bool, s string) *IFRAMEElement {
+	if condition {
+		e.SLOT(s)
+	}
+	return e
+}
+
 // Remove the attribute slot from the element.
 func (e *IFRAMEElement) SLOTRemove(s string) *IFRAMEElement {
 	if e.StringAttributes == nil {
@@ -1208,6 +1453,13 @@ func (e *IFRAMEElement) STYLEF(k string, format string, args ...any) *IFRAMEElem
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+func (e *IFRAMEElement) IfSTYLE(condition bool, k string, v string) *IFRAMEElement {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
 func (e *IFRAMEElement) STYLE(k string, v string) *IFRAMEElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -1218,6 +1470,13 @@ func (e *IFRAMEElement) STYLE(k string, v string) *IFRAMEElement {
 		e.KVStrings.Set("style", kv)
 	}
 	kv.Add(k, v)
+	return e
+}
+
+func (e *IFRAMEElement) IfSTYLEF(condition bool, k string, format string, args ...any) *IFRAMEElement {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
 	return e
 }
 
@@ -1258,6 +1517,13 @@ func (e *IFRAMEElement) STYLEPairs(pairs ...string) *IFRAMEElement {
 	return e
 }
 
+func (e *IFRAMEElement) IfSTYLEPairs(condition bool, pairs ...string) *IFRAMEElement {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
+	return e
+}
+
 // Remove the attribute style from the element.
 func (e *IFRAMEElement) STYLERemove(keys ...string) *IFRAMEElement {
 	if e.KVStrings == nil {
@@ -1292,6 +1558,13 @@ func (e *IFRAMEElement) TABINDEX(i int) *IFRAMEElement {
 		e.IntAttributes = treemap.New[string, int]()
 	}
 	e.IntAttributes.Set("tabindex", i)
+	return e
+}
+
+func (e *IFRAMEElement) IfTABINDEX(condition bool, i int) *IFRAMEElement {
+	if condition {
+		e.TABINDEX(i)
+	}
 	return e
 }
 
@@ -1330,6 +1603,13 @@ func (e *IFRAMEElement) TITLE(s string) *IFRAMEElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("title", s)
+	return e
+}
+
+func (e *IFRAMEElement) IfTITLE(condition bool, s string) *IFRAMEElement {
+	if condition {
+		e.TITLE(s)
+	}
 	return e
 }
 

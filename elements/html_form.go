@@ -56,13 +56,41 @@ func (e *FORMElement) TextF(format string, args ...any) *FORMElement {
 	return e.Text(fmt.Sprintf(format, args...))
 }
 
+func (e *FORMElement) IfText(condition bool, text string) *FORMElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
+}
+
+func (e *FORMElement) IfTextF(condition bool, format string, args ...any) *FORMElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
+}
+
 func (e *FORMElement) Escaped(text string) *FORMElement {
 	e.Descendants = append(e.Descendants, Escaped(text))
 	return e
 }
 
+func (e *FORMElement) IfEscaped(condition bool, text string) *FORMElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
+}
+
 func (e *FORMElement) EscapedF(format string, args ...any) *FORMElement {
 	return e.Escaped(fmt.Sprintf(format, args...))
+}
+
+func (e *FORMElement) IfEscapedF(condition bool, format string, args ...any) *FORMElement {
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *FORMElement) CustomData(key, value string) *FORMElement {
@@ -73,8 +101,22 @@ func (e *FORMElement) CustomData(key, value string) *FORMElement {
 	return e
 }
 
+func (e *FORMElement) IfCustomData(condition bool, key, value string) *FORMElement {
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
+}
+
 func (e *FORMElement) CustomDataF(key, format string, args ...any) *FORMElement {
 	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
+func (e *FORMElement) IfCustomDataF(condition bool, key, format string, args ...any) *FORMElement {
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *FORMElement) CustomDataRemove(key string) *FORMElement {
@@ -94,6 +136,13 @@ func (e *FORMElement) ACCEPT_CHARSET(s string) *FORMElement {
 	return e
 }
 
+func (e *FORMElement) IfACCEPT_CHARSET(condition bool, s string) *FORMElement {
+	if condition {
+		e.ACCEPT_CHARSET(s)
+	}
+	return e
+}
+
 // Remove the attribute accept-charset from the element.
 func (e *FORMElement) ACCEPT_CHARSETRemove(s string) *FORMElement {
 	if e.StringAttributes == nil {
@@ -110,6 +159,13 @@ func (e *FORMElement) ACTION(s string) *FORMElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("action", s)
+	return e
+}
+
+func (e *FORMElement) IfACTION(condition bool, s string) *FORMElement {
+	if condition {
+		e.ACTION(s)
+	}
 	return e
 }
 
@@ -220,6 +276,13 @@ func (e *FORMElement) NAME(s string) *FORMElement {
 	return e
 }
 
+func (e *FORMElement) IfNAME(condition bool, s string) *FORMElement {
+	if condition {
+		e.NAME(s)
+	}
+	return e
+}
+
 // Remove the attribute name from the element.
 func (e *FORMElement) NAMERemove(s string) *FORMElement {
 	if e.StringAttributes == nil {
@@ -239,12 +302,26 @@ func (e *FORMElement) NOVALIDATE() *FORMElement {
 	return e
 }
 
+func (e *FORMElement) IfNOVALIDATE(condition bool) *FORMElement {
+	if condition {
+		e.NOVALIDATESet(true)
+	}
+	return e
+}
+
 // Set the attribute novalidate to the value b explicitly.
 func (e *FORMElement) NOVALIDATESet(b bool) *FORMElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("novalidate", b)
+	return e
+}
+
+func (e *FORMElement) IfSetNOVALIDATE(condition bool, b bool) *FORMElement {
+	if condition {
+		e.NOVALIDATESet(b)
+	}
 	return e
 }
 
@@ -301,6 +378,13 @@ func (e *FORMElement) ACCESSKEY(r rune) *FORMElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("accesskey", string(r))
+	return e
+}
+
+func (e *FORMElement) IfACCESSKEY(condition bool, r rune) *FORMElement {
+	if condition {
+		e.ACCESSKEY(r)
+	}
 	return e
 }
 
@@ -386,12 +470,26 @@ func (e *FORMElement) AUTOFOCUS() *FORMElement {
 	return e
 }
 
+func (e *FORMElement) IfAUTOFOCUS(condition bool) *FORMElement {
+	if condition {
+		e.AUTOFOCUSSet(true)
+	}
+	return e
+}
+
 // Set the attribute autofocus to the value b explicitly.
 func (e *FORMElement) AUTOFOCUSSet(b bool) *FORMElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("autofocus", b)
+	return e
+}
+
+func (e *FORMElement) IfSetAUTOFOCUS(condition bool, b bool) *FORMElement {
+	if condition {
+		e.AUTOFOCUSSet(b)
+	}
 	return e
 }
 
@@ -419,6 +517,13 @@ func (e *FORMElement) CLASS(s ...string) *FORMElement {
 		e.DelimitedStrings.Set("class", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *FORMElement) IfCLASS(condition bool, s ...string) *FORMElement {
+	if condition {
+		e.CLASS(s...)
+	}
 	return e
 }
 
@@ -627,6 +732,13 @@ func (e *FORMElement) EXPORTPARTS(s ...string) *FORMElement {
 	return e
 }
 
+func (e *FORMElement) IfEXPORTPARTS(condition bool, s ...string) *FORMElement {
+	if condition {
+		e.EXPORTPARTS(s...)
+	}
+	return e
+}
+
 // Remove the attribute exportparts from the element.
 func (e *FORMElement) EXPORTPARTSRemove(s ...string) *FORMElement {
 	if e.DelimitedStrings == nil {
@@ -702,6 +814,13 @@ func (e *FORMElement) ID(s string) *FORMElement {
 	return e
 }
 
+func (e *FORMElement) IfID(condition bool, s string) *FORMElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
 // Remove the attribute id from the element.
 func (e *FORMElement) IDRemove(s string) *FORMElement {
 	if e.StringAttributes == nil {
@@ -728,12 +847,26 @@ func (e *FORMElement) INERT() *FORMElement {
 	return e
 }
 
+func (e *FORMElement) IfINERT(condition bool) *FORMElement {
+	if condition {
+		e.INERTSet(true)
+	}
+	return e
+}
+
 // Set the attribute inert to the value b explicitly.
 func (e *FORMElement) INERTSet(b bool) *FORMElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("inert", b)
+	return e
+}
+
+func (e *FORMElement) IfSetINERT(condition bool, b bool) *FORMElement {
+	if condition {
+		e.INERTSet(b)
+	}
 	return e
 }
 
@@ -829,6 +962,13 @@ func (e *FORMElement) IS(s string) *FORMElement {
 	return e
 }
 
+func (e *FORMElement) IfIS(condition bool, s string) *FORMElement {
+	if condition {
+		e.IS(s)
+	}
+	return e
+}
+
 // Remove the attribute is from the element.
 func (e *FORMElement) ISRemove(s string) *FORMElement {
 	if e.StringAttributes == nil {
@@ -859,6 +999,13 @@ func (e *FORMElement) ITEMID(s string) *FORMElement {
 	return e
 }
 
+func (e *FORMElement) IfITEMID(condition bool, s string) *FORMElement {
+	if condition {
+		e.ITEMID(s)
+	}
+	return e
+}
+
 // Remove the attribute itemid from the element.
 func (e *FORMElement) ITEMIDRemove(s string) *FORMElement {
 	if e.StringAttributes == nil {
@@ -884,6 +1031,13 @@ func (e *FORMElement) ITEMPROP(s string) *FORMElement {
 	return e
 }
 
+func (e *FORMElement) IfITEMPROP(condition bool, s string) *FORMElement {
+	if condition {
+		e.ITEMPROP(s)
+	}
+	return e
+}
+
 // Remove the attribute itemprop from the element.
 func (e *FORMElement) ITEMPROPRemove(s string) *FORMElement {
 	if e.StringAttributes == nil {
@@ -903,6 +1057,13 @@ func (e *FORMElement) ITEMREF(s string) *FORMElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("itemref", s)
+	return e
+}
+
+func (e *FORMElement) IfITEMREF(condition bool, s string) *FORMElement {
+	if condition {
+		e.ITEMREF(s)
+	}
 	return e
 }
 
@@ -928,12 +1089,26 @@ func (e *FORMElement) ITEMSCOPE() *FORMElement {
 	return e
 }
 
+func (e *FORMElement) IfITEMSCOPE(condition bool) *FORMElement {
+	if condition {
+		e.ITEMSCOPESet(true)
+	}
+	return e
+}
+
 // Set the attribute itemscope to the value b explicitly.
 func (e *FORMElement) ITEMSCOPESet(b bool) *FORMElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("itemscope", b)
+	return e
+}
+
+func (e *FORMElement) IfSetITEMSCOPE(condition bool, b bool) *FORMElement {
+	if condition {
+		e.ITEMSCOPESet(b)
+	}
 	return e
 }
 
@@ -962,6 +1137,13 @@ func (e *FORMElement) ITEMTYPE(s string) *FORMElement {
 	return e
 }
 
+func (e *FORMElement) IfITEMTYPE(condition bool, s string) *FORMElement {
+	if condition {
+		e.ITEMTYPE(s)
+	}
+	return e
+}
+
 // Remove the attribute itemtype from the element.
 func (e *FORMElement) ITEMTYPERemove(s string) *FORMElement {
 	if e.StringAttributes == nil {
@@ -985,6 +1167,13 @@ func (e *FORMElement) LANG(s string) *FORMElement {
 	return e
 }
 
+func (e *FORMElement) IfLANG(condition bool, s string) *FORMElement {
+	if condition {
+		e.LANG(s)
+	}
+	return e
+}
+
 // Remove the attribute lang from the element.
 func (e *FORMElement) LANGRemove(s string) *FORMElement {
 	if e.StringAttributes == nil {
@@ -1003,6 +1192,13 @@ func (e *FORMElement) NONCE(s string) *FORMElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("nonce", s)
+	return e
+}
+
+func (e *FORMElement) IfNONCE(condition bool, s string) *FORMElement {
+	if condition {
+		e.NONCE(s)
+	}
 	return e
 }
 
@@ -1029,6 +1225,13 @@ func (e *FORMElement) PART(s ...string) *FORMElement {
 		e.DelimitedStrings.Set("part", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *FORMElement) IfPART(condition bool, s ...string) *FORMElement {
+	if condition {
+		e.PART(s...)
+	}
 	return e
 }
 
@@ -1099,6 +1302,13 @@ func (e *FORMElement) SLOT(s string) *FORMElement {
 	return e
 }
 
+func (e *FORMElement) IfSLOT(condition bool, s string) *FORMElement {
+	if condition {
+		e.SLOT(s)
+	}
+	return e
+}
+
 // Remove the attribute slot from the element.
 func (e *FORMElement) SLOTRemove(s string) *FORMElement {
 	if e.StringAttributes == nil {
@@ -1157,6 +1367,13 @@ func (e *FORMElement) STYLEF(k string, format string, args ...any) *FORMElement 
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+func (e *FORMElement) IfSTYLE(condition bool, k string, v string) *FORMElement {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
 func (e *FORMElement) STYLE(k string, v string) *FORMElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -1167,6 +1384,13 @@ func (e *FORMElement) STYLE(k string, v string) *FORMElement {
 		e.KVStrings.Set("style", kv)
 	}
 	kv.Add(k, v)
+	return e
+}
+
+func (e *FORMElement) IfSTYLEF(condition bool, k string, format string, args ...any) *FORMElement {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
 	return e
 }
 
@@ -1207,6 +1431,13 @@ func (e *FORMElement) STYLEPairs(pairs ...string) *FORMElement {
 	return e
 }
 
+func (e *FORMElement) IfSTYLEPairs(condition bool, pairs ...string) *FORMElement {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
+	return e
+}
+
 // Remove the attribute style from the element.
 func (e *FORMElement) STYLERemove(keys ...string) *FORMElement {
 	if e.KVStrings == nil {
@@ -1241,6 +1472,13 @@ func (e *FORMElement) TABINDEX(i int) *FORMElement {
 		e.IntAttributes = treemap.New[string, int]()
 	}
 	e.IntAttributes.Set("tabindex", i)
+	return e
+}
+
+func (e *FORMElement) IfTABINDEX(condition bool, i int) *FORMElement {
+	if condition {
+		e.TABINDEX(i)
+	}
 	return e
 }
 
@@ -1279,6 +1517,13 @@ func (e *FORMElement) TITLE(s string) *FORMElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("title", s)
+	return e
+}
+
+func (e *FORMElement) IfTITLE(condition bool, s string) *FORMElement {
+	if condition {
+		e.TITLE(s)
+	}
 	return e
 }
 

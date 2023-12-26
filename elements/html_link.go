@@ -58,13 +58,41 @@ func (e *LINKElement) TextF(format string, args ...any) *LINKElement {
 	return e.Text(fmt.Sprintf(format, args...))
 }
 
+func (e *LINKElement) IfText(condition bool, text string) *LINKElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
+}
+
+func (e *LINKElement) IfTextF(condition bool, format string, args ...any) *LINKElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
+}
+
 func (e *LINKElement) Escaped(text string) *LINKElement {
 	e.Descendants = append(e.Descendants, Escaped(text))
 	return e
 }
 
+func (e *LINKElement) IfEscaped(condition bool, text string) *LINKElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
+}
+
 func (e *LINKElement) EscapedF(format string, args ...any) *LINKElement {
 	return e.Escaped(fmt.Sprintf(format, args...))
+}
+
+func (e *LINKElement) IfEscapedF(condition bool, format string, args ...any) *LINKElement {
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *LINKElement) CustomData(key, value string) *LINKElement {
@@ -75,8 +103,22 @@ func (e *LINKElement) CustomData(key, value string) *LINKElement {
 	return e
 }
 
+func (e *LINKElement) IfCustomData(condition bool, key, value string) *LINKElement {
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
+}
+
 func (e *LINKElement) CustomDataF(key, format string, args ...any) *LINKElement {
 	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
+func (e *LINKElement) IfCustomDataF(condition bool, key, format string, args ...any) *LINKElement {
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *LINKElement) CustomDataRemove(key string) *LINKElement {
@@ -184,6 +226,13 @@ func (e *LINKElement) HREF(s string) *LINKElement {
 	return e
 }
 
+func (e *LINKElement) IfHREF(condition bool, s string) *LINKElement {
+	if condition {
+		e.HREF(s)
+	}
+	return e
+}
+
 // Remove the attribute href from the element.
 func (e *LINKElement) HREFRemove(s string) *LINKElement {
 	if e.StringAttributes == nil {
@@ -199,6 +248,13 @@ func (e *LINKElement) HREFLANG(s string) *LINKElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("hreflang", s)
+	return e
+}
+
+func (e *LINKElement) IfHREFLANG(condition bool, s string) *LINKElement {
+	if condition {
+		e.HREFLANG(s)
+	}
 	return e
 }
 
@@ -220,6 +276,13 @@ func (e *LINKElement) INTEGRITY(s string) *LINKElement {
 	return e
 }
 
+func (e *LINKElement) IfINTEGRITY(condition bool, s string) *LINKElement {
+	if condition {
+		e.INTEGRITY(s)
+	}
+	return e
+}
+
 // Remove the attribute integrity from the element.
 func (e *LINKElement) INTEGRITYRemove(s string) *LINKElement {
 	if e.StringAttributes == nil {
@@ -235,6 +298,13 @@ func (e *LINKElement) MEDIA(s string) *LINKElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("media", s)
+	return e
+}
+
+func (e *LINKElement) IfMEDIA(condition bool, s string) *LINKElement {
+	if condition {
+		e.MEDIA(s)
+	}
 	return e
 }
 
@@ -301,6 +371,13 @@ func (e *LINKElement) REL(s string) *LINKElement {
 	return e
 }
 
+func (e *LINKElement) IfREL(condition bool, s string) *LINKElement {
+	if condition {
+		e.REL(s)
+	}
+	return e
+}
+
 // Remove the attribute rel from the element.
 func (e *LINKElement) RELRemove(s string) *LINKElement {
 	if e.StringAttributes == nil {
@@ -316,6 +393,13 @@ func (e *LINKElement) SIZES(s string) *LINKElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("sizes", s)
+	return e
+}
+
+func (e *LINKElement) IfSIZES(condition bool, s string) *LINKElement {
+	if condition {
+		e.SIZES(s)
+	}
 	return e
 }
 
@@ -337,6 +421,13 @@ func (e *LINKElement) TYPE(s string) *LINKElement {
 	return e
 }
 
+func (e *LINKElement) IfTYPE(condition bool, s string) *LINKElement {
+	if condition {
+		e.TYPE(s)
+	}
+	return e
+}
+
 // Remove the attribute type from the element.
 func (e *LINKElement) TYPERemove(s string) *LINKElement {
 	if e.StringAttributes == nil {
@@ -355,6 +446,13 @@ func (e *LINKElement) ACCESSKEY(r rune) *LINKElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("accesskey", string(r))
+	return e
+}
+
+func (e *LINKElement) IfACCESSKEY(condition bool, r rune) *LINKElement {
+	if condition {
+		e.ACCESSKEY(r)
+	}
 	return e
 }
 
@@ -440,12 +538,26 @@ func (e *LINKElement) AUTOFOCUS() *LINKElement {
 	return e
 }
 
+func (e *LINKElement) IfAUTOFOCUS(condition bool) *LINKElement {
+	if condition {
+		e.AUTOFOCUSSet(true)
+	}
+	return e
+}
+
 // Set the attribute autofocus to the value b explicitly.
 func (e *LINKElement) AUTOFOCUSSet(b bool) *LINKElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("autofocus", b)
+	return e
+}
+
+func (e *LINKElement) IfSetAUTOFOCUS(condition bool, b bool) *LINKElement {
+	if condition {
+		e.AUTOFOCUSSet(b)
+	}
 	return e
 }
 
@@ -473,6 +585,13 @@ func (e *LINKElement) CLASS(s ...string) *LINKElement {
 		e.DelimitedStrings.Set("class", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *LINKElement) IfCLASS(condition bool, s ...string) *LINKElement {
+	if condition {
+		e.CLASS(s...)
+	}
 	return e
 }
 
@@ -681,6 +800,13 @@ func (e *LINKElement) EXPORTPARTS(s ...string) *LINKElement {
 	return e
 }
 
+func (e *LINKElement) IfEXPORTPARTS(condition bool, s ...string) *LINKElement {
+	if condition {
+		e.EXPORTPARTS(s...)
+	}
+	return e
+}
+
 // Remove the attribute exportparts from the element.
 func (e *LINKElement) EXPORTPARTSRemove(s ...string) *LINKElement {
 	if e.DelimitedStrings == nil {
@@ -756,6 +882,13 @@ func (e *LINKElement) ID(s string) *LINKElement {
 	return e
 }
 
+func (e *LINKElement) IfID(condition bool, s string) *LINKElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
 // Remove the attribute id from the element.
 func (e *LINKElement) IDRemove(s string) *LINKElement {
 	if e.StringAttributes == nil {
@@ -782,12 +915,26 @@ func (e *LINKElement) INERT() *LINKElement {
 	return e
 }
 
+func (e *LINKElement) IfINERT(condition bool) *LINKElement {
+	if condition {
+		e.INERTSet(true)
+	}
+	return e
+}
+
 // Set the attribute inert to the value b explicitly.
 func (e *LINKElement) INERTSet(b bool) *LINKElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("inert", b)
+	return e
+}
+
+func (e *LINKElement) IfSetINERT(condition bool, b bool) *LINKElement {
+	if condition {
+		e.INERTSet(b)
+	}
 	return e
 }
 
@@ -883,6 +1030,13 @@ func (e *LINKElement) IS(s string) *LINKElement {
 	return e
 }
 
+func (e *LINKElement) IfIS(condition bool, s string) *LINKElement {
+	if condition {
+		e.IS(s)
+	}
+	return e
+}
+
 // Remove the attribute is from the element.
 func (e *LINKElement) ISRemove(s string) *LINKElement {
 	if e.StringAttributes == nil {
@@ -913,6 +1067,13 @@ func (e *LINKElement) ITEMID(s string) *LINKElement {
 	return e
 }
 
+func (e *LINKElement) IfITEMID(condition bool, s string) *LINKElement {
+	if condition {
+		e.ITEMID(s)
+	}
+	return e
+}
+
 // Remove the attribute itemid from the element.
 func (e *LINKElement) ITEMIDRemove(s string) *LINKElement {
 	if e.StringAttributes == nil {
@@ -938,6 +1099,13 @@ func (e *LINKElement) ITEMPROP(s string) *LINKElement {
 	return e
 }
 
+func (e *LINKElement) IfITEMPROP(condition bool, s string) *LINKElement {
+	if condition {
+		e.ITEMPROP(s)
+	}
+	return e
+}
+
 // Remove the attribute itemprop from the element.
 func (e *LINKElement) ITEMPROPRemove(s string) *LINKElement {
 	if e.StringAttributes == nil {
@@ -957,6 +1125,13 @@ func (e *LINKElement) ITEMREF(s string) *LINKElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("itemref", s)
+	return e
+}
+
+func (e *LINKElement) IfITEMREF(condition bool, s string) *LINKElement {
+	if condition {
+		e.ITEMREF(s)
+	}
 	return e
 }
 
@@ -982,12 +1157,26 @@ func (e *LINKElement) ITEMSCOPE() *LINKElement {
 	return e
 }
 
+func (e *LINKElement) IfITEMSCOPE(condition bool) *LINKElement {
+	if condition {
+		e.ITEMSCOPESet(true)
+	}
+	return e
+}
+
 // Set the attribute itemscope to the value b explicitly.
 func (e *LINKElement) ITEMSCOPESet(b bool) *LINKElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("itemscope", b)
+	return e
+}
+
+func (e *LINKElement) IfSetITEMSCOPE(condition bool, b bool) *LINKElement {
+	if condition {
+		e.ITEMSCOPESet(b)
+	}
 	return e
 }
 
@@ -1016,6 +1205,13 @@ func (e *LINKElement) ITEMTYPE(s string) *LINKElement {
 	return e
 }
 
+func (e *LINKElement) IfITEMTYPE(condition bool, s string) *LINKElement {
+	if condition {
+		e.ITEMTYPE(s)
+	}
+	return e
+}
+
 // Remove the attribute itemtype from the element.
 func (e *LINKElement) ITEMTYPERemove(s string) *LINKElement {
 	if e.StringAttributes == nil {
@@ -1039,6 +1235,13 @@ func (e *LINKElement) LANG(s string) *LINKElement {
 	return e
 }
 
+func (e *LINKElement) IfLANG(condition bool, s string) *LINKElement {
+	if condition {
+		e.LANG(s)
+	}
+	return e
+}
+
 // Remove the attribute lang from the element.
 func (e *LINKElement) LANGRemove(s string) *LINKElement {
 	if e.StringAttributes == nil {
@@ -1057,6 +1260,13 @@ func (e *LINKElement) NONCE(s string) *LINKElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("nonce", s)
+	return e
+}
+
+func (e *LINKElement) IfNONCE(condition bool, s string) *LINKElement {
+	if condition {
+		e.NONCE(s)
+	}
 	return e
 }
 
@@ -1083,6 +1293,13 @@ func (e *LINKElement) PART(s ...string) *LINKElement {
 		e.DelimitedStrings.Set("part", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *LINKElement) IfPART(condition bool, s ...string) *LINKElement {
+	if condition {
+		e.PART(s...)
+	}
 	return e
 }
 
@@ -1153,6 +1370,13 @@ func (e *LINKElement) SLOT(s string) *LINKElement {
 	return e
 }
 
+func (e *LINKElement) IfSLOT(condition bool, s string) *LINKElement {
+	if condition {
+		e.SLOT(s)
+	}
+	return e
+}
+
 // Remove the attribute slot from the element.
 func (e *LINKElement) SLOTRemove(s string) *LINKElement {
 	if e.StringAttributes == nil {
@@ -1211,6 +1435,13 @@ func (e *LINKElement) STYLEF(k string, format string, args ...any) *LINKElement 
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+func (e *LINKElement) IfSTYLE(condition bool, k string, v string) *LINKElement {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
 func (e *LINKElement) STYLE(k string, v string) *LINKElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -1221,6 +1452,13 @@ func (e *LINKElement) STYLE(k string, v string) *LINKElement {
 		e.KVStrings.Set("style", kv)
 	}
 	kv.Add(k, v)
+	return e
+}
+
+func (e *LINKElement) IfSTYLEF(condition bool, k string, format string, args ...any) *LINKElement {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
 	return e
 }
 
@@ -1261,6 +1499,13 @@ func (e *LINKElement) STYLEPairs(pairs ...string) *LINKElement {
 	return e
 }
 
+func (e *LINKElement) IfSTYLEPairs(condition bool, pairs ...string) *LINKElement {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
+	return e
+}
+
 // Remove the attribute style from the element.
 func (e *LINKElement) STYLERemove(keys ...string) *LINKElement {
 	if e.KVStrings == nil {
@@ -1295,6 +1540,13 @@ func (e *LINKElement) TABINDEX(i int) *LINKElement {
 		e.IntAttributes = treemap.New[string, int]()
 	}
 	e.IntAttributes.Set("tabindex", i)
+	return e
+}
+
+func (e *LINKElement) IfTABINDEX(condition bool, i int) *LINKElement {
+	if condition {
+		e.TABINDEX(i)
+	}
 	return e
 }
 
@@ -1333,6 +1585,13 @@ func (e *LINKElement) TITLE(s string) *LINKElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("title", s)
+	return e
+}
+
+func (e *LINKElement) IfTITLE(condition bool, s string) *LINKElement {
+	if condition {
+		e.TITLE(s)
+	}
 	return e
 }
 

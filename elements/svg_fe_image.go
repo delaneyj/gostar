@@ -57,13 +57,41 @@ func (e *SVGFEIMAGEElement) TextF(format string, args ...any) *SVGFEIMAGEElement
 	return e.Text(fmt.Sprintf(format, args...))
 }
 
+func (e *SVGFEIMAGEElement) IfText(condition bool, text string) *SVGFEIMAGEElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
+}
+
+func (e *SVGFEIMAGEElement) IfTextF(condition bool, format string, args ...any) *SVGFEIMAGEElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
+}
+
 func (e *SVGFEIMAGEElement) Escaped(text string) *SVGFEIMAGEElement {
 	e.Descendants = append(e.Descendants, Escaped(text))
 	return e
 }
 
+func (e *SVGFEIMAGEElement) IfEscaped(condition bool, text string) *SVGFEIMAGEElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
+}
+
 func (e *SVGFEIMAGEElement) EscapedF(format string, args ...any) *SVGFEIMAGEElement {
 	return e.Escaped(fmt.Sprintf(format, args...))
+}
+
+func (e *SVGFEIMAGEElement) IfEscapedF(condition bool, format string, args ...any) *SVGFEIMAGEElement {
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *SVGFEIMAGEElement) CustomData(key, value string) *SVGFEIMAGEElement {
@@ -74,8 +102,22 @@ func (e *SVGFEIMAGEElement) CustomData(key, value string) *SVGFEIMAGEElement {
 	return e
 }
 
+func (e *SVGFEIMAGEElement) IfCustomData(condition bool, key, value string) *SVGFEIMAGEElement {
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
+}
+
 func (e *SVGFEIMAGEElement) CustomDataF(key, format string, args ...any) *SVGFEIMAGEElement {
 	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
+func (e *SVGFEIMAGEElement) IfCustomDataF(condition bool, key, format string, args ...any) *SVGFEIMAGEElement {
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *SVGFEIMAGEElement) CustomDataRemove(key string) *SVGFEIMAGEElement {
@@ -92,12 +134,26 @@ func (e *SVGFEIMAGEElement) EXTERNALRESOURCESREQUIRED() *SVGFEIMAGEElement {
 	return e
 }
 
+func (e *SVGFEIMAGEElement) IfEXTERNALRESOURCESREQUIRED(condition bool) *SVGFEIMAGEElement {
+	if condition {
+		e.EXTERNALRESOURCESREQUIREDSet(true)
+	}
+	return e
+}
+
 // Set the attribute externalResourcesRequired to the value b explicitly.
 func (e *SVGFEIMAGEElement) EXTERNALRESOURCESREQUIREDSet(b bool) *SVGFEIMAGEElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("externalResourcesRequired", b)
+	return e
+}
+
+func (e *SVGFEIMAGEElement) IfSetEXTERNALRESOURCESREQUIRED(condition bool, b bool) *SVGFEIMAGEElement {
+	if condition {
+		e.EXTERNALRESOURCESREQUIREDSet(b)
+	}
 	return e
 }
 
@@ -168,6 +224,13 @@ func (e *SVGFEIMAGEElement) HREF(s string) *SVGFEIMAGEElement {
 	return e
 }
 
+func (e *SVGFEIMAGEElement) IfHREF(condition bool, s string) *SVGFEIMAGEElement {
+	if condition {
+		e.HREF(s)
+	}
+	return e
+}
+
 // Remove the attribute href from the element.
 func (e *SVGFEIMAGEElement) HREFRemove(s string) *SVGFEIMAGEElement {
 	if e.StringAttributes == nil {
@@ -189,6 +252,13 @@ func (e *SVGFEIMAGEElement) CLASS(s ...string) *SVGFEIMAGEElement {
 		e.DelimitedStrings.Set("class", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *SVGFEIMAGEElement) IfCLASS(condition bool, s ...string) *SVGFEIMAGEElement {
+	if condition {
+		e.CLASS(s...)
+	}
 	return e
 }
 
@@ -214,6 +284,13 @@ func (e *SVGFEIMAGEElement) ID(s string) *SVGFEIMAGEElement {
 	return e
 }
 
+func (e *SVGFEIMAGEElement) IfID(condition bool, s string) *SVGFEIMAGEElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
 // Remove the attribute id from the element.
 func (e *SVGFEIMAGEElement) IDRemove(s string) *SVGFEIMAGEElement {
 	if e.StringAttributes == nil {
@@ -228,6 +305,13 @@ func (e *SVGFEIMAGEElement) STYLEF(k string, format string, args ...any) *SVGFEI
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+func (e *SVGFEIMAGEElement) IfSTYLE(condition bool, k string, v string) *SVGFEIMAGEElement {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
 func (e *SVGFEIMAGEElement) STYLE(k string, v string) *SVGFEIMAGEElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -238,6 +322,13 @@ func (e *SVGFEIMAGEElement) STYLE(k string, v string) *SVGFEIMAGEElement {
 		e.KVStrings.Set("style", kv)
 	}
 	kv.Add(k, v)
+	return e
+}
+
+func (e *SVGFEIMAGEElement) IfSTYLEF(condition bool, k string, format string, args ...any) *SVGFEIMAGEElement {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
 	return e
 }
 
@@ -275,6 +366,13 @@ func (e *SVGFEIMAGEElement) STYLEPairs(pairs ...string) *SVGFEIMAGEElement {
 		kv.Add(pairs[i], pairs[i+1])
 	}
 
+	return e
+}
+
+func (e *SVGFEIMAGEElement) IfSTYLEPairs(condition bool, pairs ...string) *SVGFEIMAGEElement {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
 	return e
 }
 

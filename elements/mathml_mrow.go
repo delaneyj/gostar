@@ -55,13 +55,41 @@ func (e *MathMLMROWElement) TextF(format string, args ...any) *MathMLMROWElement
 	return e.Text(fmt.Sprintf(format, args...))
 }
 
+func (e *MathMLMROWElement) IfText(condition bool, text string) *MathMLMROWElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
+}
+
+func (e *MathMLMROWElement) IfTextF(condition bool, format string, args ...any) *MathMLMROWElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
+}
+
 func (e *MathMLMROWElement) Escaped(text string) *MathMLMROWElement {
 	e.Descendants = append(e.Descendants, Escaped(text))
 	return e
 }
 
+func (e *MathMLMROWElement) IfEscaped(condition bool, text string) *MathMLMROWElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
+}
+
 func (e *MathMLMROWElement) EscapedF(format string, args ...any) *MathMLMROWElement {
 	return e.Escaped(fmt.Sprintf(format, args...))
+}
+
+func (e *MathMLMROWElement) IfEscapedF(condition bool, format string, args ...any) *MathMLMROWElement {
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *MathMLMROWElement) CustomData(key, value string) *MathMLMROWElement {
@@ -72,8 +100,22 @@ func (e *MathMLMROWElement) CustomData(key, value string) *MathMLMROWElement {
 	return e
 }
 
+func (e *MathMLMROWElement) IfCustomData(condition bool, key, value string) *MathMLMROWElement {
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
+}
+
 func (e *MathMLMROWElement) CustomDataF(key, format string, args ...any) *MathMLMROWElement {
 	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
+func (e *MathMLMROWElement) IfCustomDataF(condition bool, key, format string, args ...any) *MathMLMROWElement {
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *MathMLMROWElement) CustomDataRemove(key string) *MathMLMROWElement {
@@ -98,6 +140,13 @@ func (e *MathMLMROWElement) CLASS(s ...string) *MathMLMROWElement {
 		e.DelimitedStrings.Set("class", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *MathMLMROWElement) IfCLASS(condition bool, s ...string) *MathMLMROWElement {
+	if condition {
+		e.CLASS(s...)
+	}
 	return e
 }
 
@@ -183,6 +232,13 @@ func (e *MathMLMROWElement) ID(s string) *MathMLMROWElement {
 	return e
 }
 
+func (e *MathMLMROWElement) IfID(condition bool, s string) *MathMLMROWElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
 // Remove the attribute id from the element.
 func (e *MathMLMROWElement) IDRemove(s string) *MathMLMROWElement {
 	if e.StringAttributes == nil {
@@ -200,6 +256,13 @@ func (e *MathMLMROWElement) MATHBACKGROUND(s string) *MathMLMROWElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("mathbackground", s)
+	return e
+}
+
+func (e *MathMLMROWElement) IfMATHBACKGROUND(condition bool, s string) *MathMLMROWElement {
+	if condition {
+		e.MATHBACKGROUND(s)
+	}
 	return e
 }
 
@@ -223,6 +286,13 @@ func (e *MathMLMROWElement) MATHCOLOR(s string) *MathMLMROWElement {
 	return e
 }
 
+func (e *MathMLMROWElement) IfMATHCOLOR(condition bool, s string) *MathMLMROWElement {
+	if condition {
+		e.MATHCOLOR(s)
+	}
+	return e
+}
+
 // Remove the attribute mathcolor from the element.
 func (e *MathMLMROWElement) MATHCOLORRemove(s string) *MathMLMROWElement {
 	if e.StringAttributes == nil {
@@ -239,6 +309,13 @@ func (e *MathMLMROWElement) MATHSIZESTR(s string) *MathMLMROWElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("mathsize", s)
+	return e
+}
+
+func (e *MathMLMROWElement) IfMATHSIZESTR(condition bool, s string) *MathMLMROWElement {
+	if condition {
+		e.MATHSIZESTR(s)
+	}
 	return e
 }
 
@@ -263,6 +340,13 @@ func (e *MathMLMROWElement) NONCE(s string) *MathMLMROWElement {
 	return e
 }
 
+func (e *MathMLMROWElement) IfNONCE(condition bool, s string) *MathMLMROWElement {
+	if condition {
+		e.NONCE(s)
+	}
+	return e
+}
+
 // Remove the attribute nonce from the element.
 func (e *MathMLMROWElement) NONCERemove(s string) *MathMLMROWElement {
 	if e.StringAttributes == nil {
@@ -282,6 +366,13 @@ func (e *MathMLMROWElement) SCRIPTLEVEL(i int) *MathMLMROWElement {
 	return e
 }
 
+func (e *MathMLMROWElement) IfSCRIPTLEVEL(condition bool, i int) *MathMLMROWElement {
+	if condition {
+		e.SCRIPTLEVEL(i)
+	}
+	return e
+}
+
 // Remove the attribute scriptlevel from the element.
 func (e *MathMLMROWElement) SCRIPTLEVELRemove(i int) *MathMLMROWElement {
 	if e.IntAttributes == nil {
@@ -297,6 +388,13 @@ func (e *MathMLMROWElement) STYLEF(k string, format string, args ...any) *MathML
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+func (e *MathMLMROWElement) IfSTYLE(condition bool, k string, v string) *MathMLMROWElement {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
 func (e *MathMLMROWElement) STYLE(k string, v string) *MathMLMROWElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -307,6 +405,13 @@ func (e *MathMLMROWElement) STYLE(k string, v string) *MathMLMROWElement {
 		e.KVStrings.Set("style", kv)
 	}
 	kv.Add(k, v)
+	return e
+}
+
+func (e *MathMLMROWElement) IfSTYLEF(condition bool, k string, format string, args ...any) *MathMLMROWElement {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
 	return e
 }
 
@@ -347,6 +452,13 @@ func (e *MathMLMROWElement) STYLEPairs(pairs ...string) *MathMLMROWElement {
 	return e
 }
 
+func (e *MathMLMROWElement) IfSTYLEPairs(condition bool, pairs ...string) *MathMLMROWElement {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
+	return e
+}
+
 // Remove the attribute style from the element.
 func (e *MathMLMROWElement) STYLERemove(keys ...string) *MathMLMROWElement {
 	if e.KVStrings == nil {
@@ -371,6 +483,13 @@ func (e *MathMLMROWElement) TABINDEX(i int) *MathMLMROWElement {
 		e.IntAttributes = treemap.New[string, int]()
 	}
 	e.IntAttributes.Set("tabindex", i)
+	return e
+}
+
+func (e *MathMLMROWElement) IfTABINDEX(condition bool, i int) *MathMLMROWElement {
+	if condition {
+		e.TABINDEX(i)
+	}
 	return e
 }
 

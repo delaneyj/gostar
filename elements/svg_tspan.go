@@ -56,13 +56,41 @@ func (e *SVGTSPANElement) TextF(format string, args ...any) *SVGTSPANElement {
 	return e.Text(fmt.Sprintf(format, args...))
 }
 
+func (e *SVGTSPANElement) IfText(condition bool, text string) *SVGTSPANElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
+}
+
+func (e *SVGTSPANElement) IfTextF(condition bool, format string, args ...any) *SVGTSPANElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
+}
+
 func (e *SVGTSPANElement) Escaped(text string) *SVGTSPANElement {
 	e.Descendants = append(e.Descendants, Escaped(text))
 	return e
 }
 
+func (e *SVGTSPANElement) IfEscaped(condition bool, text string) *SVGTSPANElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
+}
+
 func (e *SVGTSPANElement) EscapedF(format string, args ...any) *SVGTSPANElement {
 	return e.Escaped(fmt.Sprintf(format, args...))
+}
+
+func (e *SVGTSPANElement) IfEscapedF(condition bool, format string, args ...any) *SVGTSPANElement {
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *SVGTSPANElement) CustomData(key, value string) *SVGTSPANElement {
@@ -73,8 +101,22 @@ func (e *SVGTSPANElement) CustomData(key, value string) *SVGTSPANElement {
 	return e
 }
 
+func (e *SVGTSPANElement) IfCustomData(condition bool, key, value string) *SVGTSPANElement {
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
+}
+
 func (e *SVGTSPANElement) CustomDataF(key, format string, args ...any) *SVGTSPANElement {
 	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
+func (e *SVGTSPANElement) IfCustomDataF(condition bool, key, format string, args ...any) *SVGTSPANElement {
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *SVGTSPANElement) CustomDataRemove(key string) *SVGTSPANElement {
@@ -94,12 +136,26 @@ func (e *SVGTSPANElement) X(f float64) *SVGTSPANElement {
 	return e
 }
 
+func (e *SVGTSPANElement) IfX(condition bool, f float64) *SVGTSPANElement {
+	if condition {
+		e.X(f)
+	}
+	return e
+}
+
 // The y-axis coordinate of the current text position.
 func (e *SVGTSPANElement) Y(f float64) *SVGTSPANElement {
 	if e.FloatAttributes == nil {
 		e.FloatAttributes = treemap.New[string, float64]()
 	}
 	e.FloatAttributes.Set("y", f)
+	return e
+}
+
+func (e *SVGTSPANElement) IfY(condition bool, f float64) *SVGTSPANElement {
+	if condition {
+		e.Y(f)
+	}
 	return e
 }
 
@@ -112,6 +168,13 @@ func (e *SVGTSPANElement) DX(f float64) *SVGTSPANElement {
 	return e
 }
 
+func (e *SVGTSPANElement) IfDX(condition bool, f float64) *SVGTSPANElement {
+	if condition {
+		e.DX(f)
+	}
+	return e
+}
+
 // The y-axis coordinate of the current text position.
 func (e *SVGTSPANElement) DY(f float64) *SVGTSPANElement {
 	if e.FloatAttributes == nil {
@@ -121,12 +184,26 @@ func (e *SVGTSPANElement) DY(f float64) *SVGTSPANElement {
 	return e
 }
 
+func (e *SVGTSPANElement) IfDY(condition bool, f float64) *SVGTSPANElement {
+	if condition {
+		e.DY(f)
+	}
+	return e
+}
+
 // The rotation angle about the current text position.
 func (e *SVGTSPANElement) ROTATE(f float64) *SVGTSPANElement {
 	if e.FloatAttributes == nil {
 		e.FloatAttributes = treemap.New[string, float64]()
 	}
 	e.FloatAttributes.Set("rotate", f)
+	return e
+}
+
+func (e *SVGTSPANElement) IfROTATE(condition bool, f float64) *SVGTSPANElement {
+	if condition {
+		e.ROTATE(f)
+	}
 	return e
 }
 
@@ -142,6 +219,13 @@ func (e *SVGTSPANElement) CLASS(s ...string) *SVGTSPANElement {
 		e.DelimitedStrings.Set("class", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *SVGTSPANElement) IfCLASS(condition bool, s ...string) *SVGTSPANElement {
+	if condition {
+		e.CLASS(s...)
+	}
 	return e
 }
 
@@ -167,6 +251,13 @@ func (e *SVGTSPANElement) ID(s string) *SVGTSPANElement {
 	return e
 }
 
+func (e *SVGTSPANElement) IfID(condition bool, s string) *SVGTSPANElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
 // Remove the attribute id from the element.
 func (e *SVGTSPANElement) IDRemove(s string) *SVGTSPANElement {
 	if e.StringAttributes == nil {
@@ -181,6 +272,13 @@ func (e *SVGTSPANElement) STYLEF(k string, format string, args ...any) *SVGTSPAN
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+func (e *SVGTSPANElement) IfSTYLE(condition bool, k string, v string) *SVGTSPANElement {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
 func (e *SVGTSPANElement) STYLE(k string, v string) *SVGTSPANElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -191,6 +289,13 @@ func (e *SVGTSPANElement) STYLE(k string, v string) *SVGTSPANElement {
 		e.KVStrings.Set("style", kv)
 	}
 	kv.Add(k, v)
+	return e
+}
+
+func (e *SVGTSPANElement) IfSTYLEF(condition bool, k string, format string, args ...any) *SVGTSPANElement {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
 	return e
 }
 
@@ -228,6 +333,13 @@ func (e *SVGTSPANElement) STYLEPairs(pairs ...string) *SVGTSPANElement {
 		kv.Add(pairs[i], pairs[i+1])
 	}
 
+	return e
+}
+
+func (e *SVGTSPANElement) IfSTYLEPairs(condition bool, pairs ...string) *SVGTSPANElement {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
 	return e
 }
 

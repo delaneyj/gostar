@@ -56,13 +56,41 @@ func (e *SVGFEFLOODElement) TextF(format string, args ...any) *SVGFEFLOODElement
 	return e.Text(fmt.Sprintf(format, args...))
 }
 
+func (e *SVGFEFLOODElement) IfText(condition bool, text string) *SVGFEFLOODElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
+}
+
+func (e *SVGFEFLOODElement) IfTextF(condition bool, format string, args ...any) *SVGFEFLOODElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
+}
+
 func (e *SVGFEFLOODElement) Escaped(text string) *SVGFEFLOODElement {
 	e.Descendants = append(e.Descendants, Escaped(text))
 	return e
 }
 
+func (e *SVGFEFLOODElement) IfEscaped(condition bool, text string) *SVGFEFLOODElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
+}
+
 func (e *SVGFEFLOODElement) EscapedF(format string, args ...any) *SVGFEFLOODElement {
 	return e.Escaped(fmt.Sprintf(format, args...))
+}
+
+func (e *SVGFEFLOODElement) IfEscapedF(condition bool, format string, args ...any) *SVGFEFLOODElement {
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *SVGFEFLOODElement) CustomData(key, value string) *SVGFEFLOODElement {
@@ -73,8 +101,22 @@ func (e *SVGFEFLOODElement) CustomData(key, value string) *SVGFEFLOODElement {
 	return e
 }
 
+func (e *SVGFEFLOODElement) IfCustomData(condition bool, key, value string) *SVGFEFLOODElement {
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
+}
+
 func (e *SVGFEFLOODElement) CustomDataF(key, format string, args ...any) *SVGFEFLOODElement {
 	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
+func (e *SVGFEFLOODElement) IfCustomDataF(condition bool, key, format string, args ...any) *SVGFEFLOODElement {
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *SVGFEFLOODElement) CustomDataRemove(key string) *SVGFEFLOODElement {
@@ -97,6 +139,13 @@ func (e *SVGFEFLOODElement) FLOOD_COLOR(s string) *SVGFEFLOODElement {
 	return e
 }
 
+func (e *SVGFEFLOODElement) IfFLOOD_COLOR(condition bool, s string) *SVGFEFLOODElement {
+	if condition {
+		e.FLOOD_COLOR(s)
+	}
+	return e
+}
+
 // Remove the attribute flood-color from the element.
 func (e *SVGFEFLOODElement) FLOOD_COLORRemove(s string) *SVGFEFLOODElement {
 	if e.StringAttributes == nil {
@@ -116,6 +165,13 @@ func (e *SVGFEFLOODElement) FLOOD_OPACITY(f float64) *SVGFEFLOODElement {
 	return e
 }
 
+func (e *SVGFEFLOODElement) IfFLOOD_OPACITY(condition bool, f float64) *SVGFEFLOODElement {
+	if condition {
+		e.FLOOD_OPACITY(f)
+	}
+	return e
+}
+
 // Specifies one or more classnames for an element (refers to a class in a style
 // sheet)
 func (e *SVGFEFLOODElement) CLASS(s ...string) *SVGFEFLOODElement {
@@ -128,6 +184,13 @@ func (e *SVGFEFLOODElement) CLASS(s ...string) *SVGFEFLOODElement {
 		e.DelimitedStrings.Set("class", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *SVGFEFLOODElement) IfCLASS(condition bool, s ...string) *SVGFEFLOODElement {
+	if condition {
+		e.CLASS(s...)
+	}
 	return e
 }
 
@@ -153,6 +216,13 @@ func (e *SVGFEFLOODElement) ID(s string) *SVGFEFLOODElement {
 	return e
 }
 
+func (e *SVGFEFLOODElement) IfID(condition bool, s string) *SVGFEFLOODElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
 // Remove the attribute id from the element.
 func (e *SVGFEFLOODElement) IDRemove(s string) *SVGFEFLOODElement {
 	if e.StringAttributes == nil {
@@ -167,6 +237,13 @@ func (e *SVGFEFLOODElement) STYLEF(k string, format string, args ...any) *SVGFEF
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+func (e *SVGFEFLOODElement) IfSTYLE(condition bool, k string, v string) *SVGFEFLOODElement {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
 func (e *SVGFEFLOODElement) STYLE(k string, v string) *SVGFEFLOODElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -177,6 +254,13 @@ func (e *SVGFEFLOODElement) STYLE(k string, v string) *SVGFEFLOODElement {
 		e.KVStrings.Set("style", kv)
 	}
 	kv.Add(k, v)
+	return e
+}
+
+func (e *SVGFEFLOODElement) IfSTYLEF(condition bool, k string, format string, args ...any) *SVGFEFLOODElement {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
 	return e
 }
 
@@ -214,6 +298,13 @@ func (e *SVGFEFLOODElement) STYLEPairs(pairs ...string) *SVGFEFLOODElement {
 		kv.Add(pairs[i], pairs[i+1])
 	}
 
+	return e
+}
+
+func (e *SVGFEFLOODElement) IfSTYLEPairs(condition bool, pairs ...string) *SVGFEFLOODElement {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
 	return e
 }
 

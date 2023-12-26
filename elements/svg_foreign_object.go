@@ -58,13 +58,41 @@ func (e *SVGFOREIGNOBJECTElement) TextF(format string, args ...any) *SVGFOREIGNO
 	return e.Text(fmt.Sprintf(format, args...))
 }
 
+func (e *SVGFOREIGNOBJECTElement) IfText(condition bool, text string) *SVGFOREIGNOBJECTElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
+}
+
+func (e *SVGFOREIGNOBJECTElement) IfTextF(condition bool, format string, args ...any) *SVGFOREIGNOBJECTElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
+}
+
 func (e *SVGFOREIGNOBJECTElement) Escaped(text string) *SVGFOREIGNOBJECTElement {
 	e.Descendants = append(e.Descendants, Escaped(text))
 	return e
 }
 
+func (e *SVGFOREIGNOBJECTElement) IfEscaped(condition bool, text string) *SVGFOREIGNOBJECTElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
+}
+
 func (e *SVGFOREIGNOBJECTElement) EscapedF(format string, args ...any) *SVGFOREIGNOBJECTElement {
 	return e.Escaped(fmt.Sprintf(format, args...))
+}
+
+func (e *SVGFOREIGNOBJECTElement) IfEscapedF(condition bool, format string, args ...any) *SVGFOREIGNOBJECTElement {
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *SVGFOREIGNOBJECTElement) CustomData(key, value string) *SVGFOREIGNOBJECTElement {
@@ -75,8 +103,22 @@ func (e *SVGFOREIGNOBJECTElement) CustomData(key, value string) *SVGFOREIGNOBJEC
 	return e
 }
 
+func (e *SVGFOREIGNOBJECTElement) IfCustomData(condition bool, key, value string) *SVGFOREIGNOBJECTElement {
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
+}
+
 func (e *SVGFOREIGNOBJECTElement) CustomDataF(key, format string, args ...any) *SVGFOREIGNOBJECTElement {
 	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
+func (e *SVGFOREIGNOBJECTElement) IfCustomDataF(condition bool, key, format string, args ...any) *SVGFOREIGNOBJECTElement {
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *SVGFOREIGNOBJECTElement) CustomDataRemove(key string) *SVGFOREIGNOBJECTElement {
@@ -94,6 +136,13 @@ func (e *SVGFOREIGNOBJECTElement) X(s string) *SVGFOREIGNOBJECTElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("x", s)
+	return e
+}
+
+func (e *SVGFOREIGNOBJECTElement) IfX(condition bool, s string) *SVGFOREIGNOBJECTElement {
+	if condition {
+		e.X(s)
+	}
 	return e
 }
 
@@ -116,6 +165,13 @@ func (e *SVGFOREIGNOBJECTElement) Y(s string) *SVGFOREIGNOBJECTElement {
 	return e
 }
 
+func (e *SVGFOREIGNOBJECTElement) IfY(condition bool, s string) *SVGFOREIGNOBJECTElement {
+	if condition {
+		e.Y(s)
+	}
+	return e
+}
+
 // Remove the attribute y from the element.
 func (e *SVGFOREIGNOBJECTElement) YRemove(s string) *SVGFOREIGNOBJECTElement {
 	if e.StringAttributes == nil {
@@ -131,6 +187,13 @@ func (e *SVGFOREIGNOBJECTElement) WIDTH(s string) *SVGFOREIGNOBJECTElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("width", s)
+	return e
+}
+
+func (e *SVGFOREIGNOBJECTElement) IfWIDTH(condition bool, s string) *SVGFOREIGNOBJECTElement {
+	if condition {
+		e.WIDTH(s)
+	}
 	return e
 }
 
@@ -152,6 +215,13 @@ func (e *SVGFOREIGNOBJECTElement) HEIGHT(s string) *SVGFOREIGNOBJECTElement {
 	return e
 }
 
+func (e *SVGFOREIGNOBJECTElement) IfHEIGHT(condition bool, s string) *SVGFOREIGNOBJECTElement {
+	if condition {
+		e.HEIGHT(s)
+	}
+	return e
+}
+
 // Remove the attribute height from the element.
 func (e *SVGFOREIGNOBJECTElement) HEIGHTRemove(s string) *SVGFOREIGNOBJECTElement {
 	if e.StringAttributes == nil {
@@ -168,6 +238,13 @@ func (e *SVGFOREIGNOBJECTElement) REQUIREDEXTENSIONS(s string) *SVGFOREIGNOBJECT
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("requiredExtensions", s)
+	return e
+}
+
+func (e *SVGFOREIGNOBJECTElement) IfREQUIREDEXTENSIONS(condition bool, s string) *SVGFOREIGNOBJECTElement {
+	if condition {
+		e.REQUIREDEXTENSIONS(s)
+	}
 	return e
 }
 
@@ -191,6 +268,13 @@ func (e *SVGFOREIGNOBJECTElement) REQUIREDFEATURES(s string) *SVGFOREIGNOBJECTEl
 	return e
 }
 
+func (e *SVGFOREIGNOBJECTElement) IfREQUIREDFEATURES(condition bool, s string) *SVGFOREIGNOBJECTElement {
+	if condition {
+		e.REQUIREDFEATURES(s)
+	}
+	return e
+}
+
 // Remove the attribute requiredFeatures from the element.
 func (e *SVGFOREIGNOBJECTElement) REQUIREDFEATURESRemove(s string) *SVGFOREIGNOBJECTElement {
 	if e.StringAttributes == nil {
@@ -208,6 +292,13 @@ func (e *SVGFOREIGNOBJECTElement) SYSTEMLANGUAGE(s string) *SVGFOREIGNOBJECTElem
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("systemLanguage", s)
+	return e
+}
+
+func (e *SVGFOREIGNOBJECTElement) IfSYSTEMLANGUAGE(condition bool, s string) *SVGFOREIGNOBJECTElement {
+	if condition {
+		e.SYSTEMLANGUAGE(s)
+	}
 	return e
 }
 
@@ -235,6 +326,13 @@ func (e *SVGFOREIGNOBJECTElement) CLASS(s ...string) *SVGFOREIGNOBJECTElement {
 	return e
 }
 
+func (e *SVGFOREIGNOBJECTElement) IfCLASS(condition bool, s ...string) *SVGFOREIGNOBJECTElement {
+	if condition {
+		e.CLASS(s...)
+	}
+	return e
+}
+
 // Remove the attribute class from the element.
 func (e *SVGFOREIGNOBJECTElement) CLASSRemove(s ...string) *SVGFOREIGNOBJECTElement {
 	if e.DelimitedStrings == nil {
@@ -257,6 +355,13 @@ func (e *SVGFOREIGNOBJECTElement) ID(s string) *SVGFOREIGNOBJECTElement {
 	return e
 }
 
+func (e *SVGFOREIGNOBJECTElement) IfID(condition bool, s string) *SVGFOREIGNOBJECTElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
 // Remove the attribute id from the element.
 func (e *SVGFOREIGNOBJECTElement) IDRemove(s string) *SVGFOREIGNOBJECTElement {
 	if e.StringAttributes == nil {
@@ -271,6 +376,13 @@ func (e *SVGFOREIGNOBJECTElement) STYLEF(k string, format string, args ...any) *
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+func (e *SVGFOREIGNOBJECTElement) IfSTYLE(condition bool, k string, v string) *SVGFOREIGNOBJECTElement {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
 func (e *SVGFOREIGNOBJECTElement) STYLE(k string, v string) *SVGFOREIGNOBJECTElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -281,6 +393,13 @@ func (e *SVGFOREIGNOBJECTElement) STYLE(k string, v string) *SVGFOREIGNOBJECTEle
 		e.KVStrings.Set("style", kv)
 	}
 	kv.Add(k, v)
+	return e
+}
+
+func (e *SVGFOREIGNOBJECTElement) IfSTYLEF(condition bool, k string, format string, args ...any) *SVGFOREIGNOBJECTElement {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
 	return e
 }
 
@@ -318,6 +437,13 @@ func (e *SVGFOREIGNOBJECTElement) STYLEPairs(pairs ...string) *SVGFOREIGNOBJECTE
 		kv.Add(pairs[i], pairs[i+1])
 	}
 
+	return e
+}
+
+func (e *SVGFOREIGNOBJECTElement) IfSTYLEPairs(condition bool, pairs ...string) *SVGFOREIGNOBJECTElement {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
 	return e
 }
 

@@ -56,13 +56,41 @@ func (e *H5Element) TextF(format string, args ...any) *H5Element {
 	return e.Text(fmt.Sprintf(format, args...))
 }
 
+func (e *H5Element) IfText(condition bool, text string) *H5Element {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
+}
+
+func (e *H5Element) IfTextF(condition bool, format string, args ...any) *H5Element {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
+}
+
 func (e *H5Element) Escaped(text string) *H5Element {
 	e.Descendants = append(e.Descendants, Escaped(text))
 	return e
 }
 
+func (e *H5Element) IfEscaped(condition bool, text string) *H5Element {
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
+}
+
 func (e *H5Element) EscapedF(format string, args ...any) *H5Element {
 	return e.Escaped(fmt.Sprintf(format, args...))
+}
+
+func (e *H5Element) IfEscapedF(condition bool, format string, args ...any) *H5Element {
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *H5Element) CustomData(key, value string) *H5Element {
@@ -73,8 +101,22 @@ func (e *H5Element) CustomData(key, value string) *H5Element {
 	return e
 }
 
+func (e *H5Element) IfCustomData(condition bool, key, value string) *H5Element {
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
+}
+
 func (e *H5Element) CustomDataF(key, format string, args ...any) *H5Element {
 	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
+func (e *H5Element) IfCustomDataF(condition bool, key, format string, args ...any) *H5Element {
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *H5Element) CustomDataRemove(key string) *H5Element {
@@ -94,6 +136,13 @@ func (e *H5Element) ACCESSKEY(r rune) *H5Element {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("accesskey", string(r))
+	return e
+}
+
+func (e *H5Element) IfACCESSKEY(condition bool, r rune) *H5Element {
+	if condition {
+		e.ACCESSKEY(r)
+	}
 	return e
 }
 
@@ -179,12 +228,26 @@ func (e *H5Element) AUTOFOCUS() *H5Element {
 	return e
 }
 
+func (e *H5Element) IfAUTOFOCUS(condition bool) *H5Element {
+	if condition {
+		e.AUTOFOCUSSet(true)
+	}
+	return e
+}
+
 // Set the attribute autofocus to the value b explicitly.
 func (e *H5Element) AUTOFOCUSSet(b bool) *H5Element {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("autofocus", b)
+	return e
+}
+
+func (e *H5Element) IfSetAUTOFOCUS(condition bool, b bool) *H5Element {
+	if condition {
+		e.AUTOFOCUSSet(b)
+	}
 	return e
 }
 
@@ -212,6 +275,13 @@ func (e *H5Element) CLASS(s ...string) *H5Element {
 		e.DelimitedStrings.Set("class", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *H5Element) IfCLASS(condition bool, s ...string) *H5Element {
+	if condition {
+		e.CLASS(s...)
+	}
 	return e
 }
 
@@ -420,6 +490,13 @@ func (e *H5Element) EXPORTPARTS(s ...string) *H5Element {
 	return e
 }
 
+func (e *H5Element) IfEXPORTPARTS(condition bool, s ...string) *H5Element {
+	if condition {
+		e.EXPORTPARTS(s...)
+	}
+	return e
+}
+
 // Remove the attribute exportparts from the element.
 func (e *H5Element) EXPORTPARTSRemove(s ...string) *H5Element {
 	if e.DelimitedStrings == nil {
@@ -495,6 +572,13 @@ func (e *H5Element) ID(s string) *H5Element {
 	return e
 }
 
+func (e *H5Element) IfID(condition bool, s string) *H5Element {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
 // Remove the attribute id from the element.
 func (e *H5Element) IDRemove(s string) *H5Element {
 	if e.StringAttributes == nil {
@@ -521,12 +605,26 @@ func (e *H5Element) INERT() *H5Element {
 	return e
 }
 
+func (e *H5Element) IfINERT(condition bool) *H5Element {
+	if condition {
+		e.INERTSet(true)
+	}
+	return e
+}
+
 // Set the attribute inert to the value b explicitly.
 func (e *H5Element) INERTSet(b bool) *H5Element {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("inert", b)
+	return e
+}
+
+func (e *H5Element) IfSetINERT(condition bool, b bool) *H5Element {
+	if condition {
+		e.INERTSet(b)
+	}
 	return e
 }
 
@@ -622,6 +720,13 @@ func (e *H5Element) IS(s string) *H5Element {
 	return e
 }
 
+func (e *H5Element) IfIS(condition bool, s string) *H5Element {
+	if condition {
+		e.IS(s)
+	}
+	return e
+}
+
 // Remove the attribute is from the element.
 func (e *H5Element) ISRemove(s string) *H5Element {
 	if e.StringAttributes == nil {
@@ -652,6 +757,13 @@ func (e *H5Element) ITEMID(s string) *H5Element {
 	return e
 }
 
+func (e *H5Element) IfITEMID(condition bool, s string) *H5Element {
+	if condition {
+		e.ITEMID(s)
+	}
+	return e
+}
+
 // Remove the attribute itemid from the element.
 func (e *H5Element) ITEMIDRemove(s string) *H5Element {
 	if e.StringAttributes == nil {
@@ -677,6 +789,13 @@ func (e *H5Element) ITEMPROP(s string) *H5Element {
 	return e
 }
 
+func (e *H5Element) IfITEMPROP(condition bool, s string) *H5Element {
+	if condition {
+		e.ITEMPROP(s)
+	}
+	return e
+}
+
 // Remove the attribute itemprop from the element.
 func (e *H5Element) ITEMPROPRemove(s string) *H5Element {
 	if e.StringAttributes == nil {
@@ -696,6 +815,13 @@ func (e *H5Element) ITEMREF(s string) *H5Element {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("itemref", s)
+	return e
+}
+
+func (e *H5Element) IfITEMREF(condition bool, s string) *H5Element {
+	if condition {
+		e.ITEMREF(s)
+	}
 	return e
 }
 
@@ -721,12 +847,26 @@ func (e *H5Element) ITEMSCOPE() *H5Element {
 	return e
 }
 
+func (e *H5Element) IfITEMSCOPE(condition bool) *H5Element {
+	if condition {
+		e.ITEMSCOPESet(true)
+	}
+	return e
+}
+
 // Set the attribute itemscope to the value b explicitly.
 func (e *H5Element) ITEMSCOPESet(b bool) *H5Element {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("itemscope", b)
+	return e
+}
+
+func (e *H5Element) IfSetITEMSCOPE(condition bool, b bool) *H5Element {
+	if condition {
+		e.ITEMSCOPESet(b)
+	}
 	return e
 }
 
@@ -755,6 +895,13 @@ func (e *H5Element) ITEMTYPE(s string) *H5Element {
 	return e
 }
 
+func (e *H5Element) IfITEMTYPE(condition bool, s string) *H5Element {
+	if condition {
+		e.ITEMTYPE(s)
+	}
+	return e
+}
+
 // Remove the attribute itemtype from the element.
 func (e *H5Element) ITEMTYPERemove(s string) *H5Element {
 	if e.StringAttributes == nil {
@@ -778,6 +925,13 @@ func (e *H5Element) LANG(s string) *H5Element {
 	return e
 }
 
+func (e *H5Element) IfLANG(condition bool, s string) *H5Element {
+	if condition {
+		e.LANG(s)
+	}
+	return e
+}
+
 // Remove the attribute lang from the element.
 func (e *H5Element) LANGRemove(s string) *H5Element {
 	if e.StringAttributes == nil {
@@ -796,6 +950,13 @@ func (e *H5Element) NONCE(s string) *H5Element {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("nonce", s)
+	return e
+}
+
+func (e *H5Element) IfNONCE(condition bool, s string) *H5Element {
+	if condition {
+		e.NONCE(s)
+	}
 	return e
 }
 
@@ -822,6 +983,13 @@ func (e *H5Element) PART(s ...string) *H5Element {
 		e.DelimitedStrings.Set("part", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *H5Element) IfPART(condition bool, s ...string) *H5Element {
+	if condition {
+		e.PART(s...)
+	}
 	return e
 }
 
@@ -892,6 +1060,13 @@ func (e *H5Element) SLOT(s string) *H5Element {
 	return e
 }
 
+func (e *H5Element) IfSLOT(condition bool, s string) *H5Element {
+	if condition {
+		e.SLOT(s)
+	}
+	return e
+}
+
 // Remove the attribute slot from the element.
 func (e *H5Element) SLOTRemove(s string) *H5Element {
 	if e.StringAttributes == nil {
@@ -950,6 +1125,13 @@ func (e *H5Element) STYLEF(k string, format string, args ...any) *H5Element {
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+func (e *H5Element) IfSTYLE(condition bool, k string, v string) *H5Element {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
 func (e *H5Element) STYLE(k string, v string) *H5Element {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -960,6 +1142,13 @@ func (e *H5Element) STYLE(k string, v string) *H5Element {
 		e.KVStrings.Set("style", kv)
 	}
 	kv.Add(k, v)
+	return e
+}
+
+func (e *H5Element) IfSTYLEF(condition bool, k string, format string, args ...any) *H5Element {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
 	return e
 }
 
@@ -1000,6 +1189,13 @@ func (e *H5Element) STYLEPairs(pairs ...string) *H5Element {
 	return e
 }
 
+func (e *H5Element) IfSTYLEPairs(condition bool, pairs ...string) *H5Element {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
+	return e
+}
+
 // Remove the attribute style from the element.
 func (e *H5Element) STYLERemove(keys ...string) *H5Element {
 	if e.KVStrings == nil {
@@ -1034,6 +1230,13 @@ func (e *H5Element) TABINDEX(i int) *H5Element {
 		e.IntAttributes = treemap.New[string, int]()
 	}
 	e.IntAttributes.Set("tabindex", i)
+	return e
+}
+
+func (e *H5Element) IfTABINDEX(condition bool, i int) *H5Element {
+	if condition {
+		e.TABINDEX(i)
+	}
 	return e
 }
 
@@ -1072,6 +1275,13 @@ func (e *H5Element) TITLE(s string) *H5Element {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("title", s)
+	return e
+}
+
+func (e *H5Element) IfTITLE(condition bool, s string) *H5Element {
+	if condition {
+		e.TITLE(s)
+	}
 	return e
 }
 

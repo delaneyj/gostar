@@ -57,13 +57,41 @@ func (e *SVGTEXTElement) TextF(format string, args ...any) *SVGTEXTElement {
 	return e.Text(fmt.Sprintf(format, args...))
 }
 
+func (e *SVGTEXTElement) IfText(condition bool, text string) *SVGTEXTElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
+}
+
+func (e *SVGTEXTElement) IfTextF(condition bool, format string, args ...any) *SVGTEXTElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
+}
+
 func (e *SVGTEXTElement) Escaped(text string) *SVGTEXTElement {
 	e.Descendants = append(e.Descendants, Escaped(text))
 	return e
 }
 
+func (e *SVGTEXTElement) IfEscaped(condition bool, text string) *SVGTEXTElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
+}
+
 func (e *SVGTEXTElement) EscapedF(format string, args ...any) *SVGTEXTElement {
 	return e.Escaped(fmt.Sprintf(format, args...))
+}
+
+func (e *SVGTEXTElement) IfEscapedF(condition bool, format string, args ...any) *SVGTEXTElement {
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *SVGTEXTElement) CustomData(key, value string) *SVGTEXTElement {
@@ -74,8 +102,22 @@ func (e *SVGTEXTElement) CustomData(key, value string) *SVGTEXTElement {
 	return e
 }
 
+func (e *SVGTEXTElement) IfCustomData(condition bool, key, value string) *SVGTEXTElement {
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
+}
+
 func (e *SVGTEXTElement) CustomDataF(key, format string, args ...any) *SVGTEXTElement {
 	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
+func (e *SVGTEXTElement) IfCustomDataF(condition bool, key, format string, args ...any) *SVGTEXTElement {
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *SVGTEXTElement) CustomDataRemove(key string) *SVGTEXTElement {
@@ -95,12 +137,26 @@ func (e *SVGTEXTElement) X(f float64) *SVGTEXTElement {
 	return e
 }
 
+func (e *SVGTEXTElement) IfX(condition bool, f float64) *SVGTEXTElement {
+	if condition {
+		e.X(f)
+	}
+	return e
+}
+
 // The y-axis coordinate of the initial current text position.
 func (e *SVGTEXTElement) Y(f float64) *SVGTEXTElement {
 	if e.FloatAttributes == nil {
 		e.FloatAttributes = treemap.New[string, float64]()
 	}
 	e.FloatAttributes.Set("y", f)
+	return e
+}
+
+func (e *SVGTEXTElement) IfY(condition bool, f float64) *SVGTEXTElement {
+	if condition {
+		e.Y(f)
+	}
 	return e
 }
 
@@ -113,6 +169,13 @@ func (e *SVGTEXTElement) DX(f float64) *SVGTEXTElement {
 	return e
 }
 
+func (e *SVGTEXTElement) IfDX(condition bool, f float64) *SVGTEXTElement {
+	if condition {
+		e.DX(f)
+	}
+	return e
+}
+
 // The y-axis coordinate of the current text position.
 func (e *SVGTEXTElement) DY(f float64) *SVGTEXTElement {
 	if e.FloatAttributes == nil {
@@ -122,12 +185,26 @@ func (e *SVGTEXTElement) DY(f float64) *SVGTEXTElement {
 	return e
 }
 
+func (e *SVGTEXTElement) IfDY(condition bool, f float64) *SVGTEXTElement {
+	if condition {
+		e.DY(f)
+	}
+	return e
+}
+
 // The rotation angle about the current text position.
 func (e *SVGTEXTElement) ROTATE(f float64) *SVGTEXTElement {
 	if e.FloatAttributes == nil {
 		e.FloatAttributes = treemap.New[string, float64]()
 	}
 	e.FloatAttributes.Set("rotate", f)
+	return e
+}
+
+func (e *SVGTEXTElement) IfROTATE(condition bool, f float64) *SVGTEXTElement {
+	if condition {
+		e.ROTATE(f)
+	}
 	return e
 }
 
@@ -141,6 +218,13 @@ func (e *SVGTEXTElement) TEXTLENGTH(f float64) *SVGTEXTElement {
 		e.FloatAttributes = treemap.New[string, float64]()
 	}
 	e.FloatAttributes.Set("textLength", f)
+	return e
+}
+
+func (e *SVGTEXTElement) IfTEXTLENGTH(condition bool, f float64) *SVGTEXTElement {
+	if condition {
+		e.TEXTLENGTH(f)
+	}
 	return e
 }
 
@@ -186,6 +270,13 @@ func (e *SVGTEXTElement) CLASS(s ...string) *SVGTEXTElement {
 	return e
 }
 
+func (e *SVGTEXTElement) IfCLASS(condition bool, s ...string) *SVGTEXTElement {
+	if condition {
+		e.CLASS(s...)
+	}
+	return e
+}
+
 // Remove the attribute class from the element.
 func (e *SVGTEXTElement) CLASSRemove(s ...string) *SVGTEXTElement {
 	if e.DelimitedStrings == nil {
@@ -208,6 +299,13 @@ func (e *SVGTEXTElement) ID(s string) *SVGTEXTElement {
 	return e
 }
 
+func (e *SVGTEXTElement) IfID(condition bool, s string) *SVGTEXTElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
 // Remove the attribute id from the element.
 func (e *SVGTEXTElement) IDRemove(s string) *SVGTEXTElement {
 	if e.StringAttributes == nil {
@@ -222,6 +320,13 @@ func (e *SVGTEXTElement) STYLEF(k string, format string, args ...any) *SVGTEXTEl
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+func (e *SVGTEXTElement) IfSTYLE(condition bool, k string, v string) *SVGTEXTElement {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
 func (e *SVGTEXTElement) STYLE(k string, v string) *SVGTEXTElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -232,6 +337,13 @@ func (e *SVGTEXTElement) STYLE(k string, v string) *SVGTEXTElement {
 		e.KVStrings.Set("style", kv)
 	}
 	kv.Add(k, v)
+	return e
+}
+
+func (e *SVGTEXTElement) IfSTYLEF(condition bool, k string, format string, args ...any) *SVGTEXTElement {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
 	return e
 }
 
@@ -269,6 +381,13 @@ func (e *SVGTEXTElement) STYLEPairs(pairs ...string) *SVGTEXTElement {
 		kv.Add(pairs[i], pairs[i+1])
 	}
 
+	return e
+}
+
+func (e *SVGTEXTElement) IfSTYLEPairs(condition bool, pairs ...string) *SVGTEXTElement {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
 	return e
 }
 

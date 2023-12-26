@@ -56,13 +56,41 @@ func (e *{{$elStructName }}) TextF(format string, args ...any) *{{$elStructName}
     return e.Text(fmt.Sprintf(format, args...))
 }
 
+func (e *{{$elStructName }}) IfText(condition bool, text string) *{{$elStructName}} {
+    if condition {
+        e.Descendants = append(e.Descendants, Text(text))
+    }
+    return e
+}
+
+func (e *{{$elStructName }}) IfTextF(condition bool, format string, args ...any) *{{$elStructName}} {
+    if condition {
+        e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+    }
+    return e
+}
+
 func (e *{{$elStructName }}) Escaped(text string) *{{$elStructName}} {
     e.Descendants = append(e.Descendants, Escaped(text))
     return e
 }
 
+func (e *{{$elStructName }}) IfEscaped(condition bool, text string) *{{$elStructName}} {
+    if condition {
+        e.Descendants = append(e.Descendants, Escaped(text))
+    }
+    return e
+}
+
 func (e *{{$elStructName }}) EscapedF(format string, args ...any) *{{$elStructName}} {
     return e.Escaped(fmt.Sprintf(format, args...))
+}
+
+func (e *{{$elStructName }}) IfEscapedF(condition bool, format string, args ...any) *{{$elStructName}} {
+    if condition {
+        e.Descendants = append(e.Descendants, EscapedF(format, args...))
+    }
+    return e
 }
 
 func (e *{{$elStructName}}) CustomData(key, value string) *{{$elStructName}} {
@@ -73,8 +101,22 @@ func (e *{{$elStructName}}) CustomData(key, value string) *{{$elStructName}} {
 	return e
 }
 
+func (e *{{$elStructName}}) IfCustomData(condition bool, key, value string) *{{$elStructName}} {
+    if condition {
+        e.CustomData(key, value)
+    }
+    return e
+}
+
 func (e *{{$elStructName}}) CustomDataF(key, format string, args ...any) *{{$elStructName}} {
     return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
+func (e *{{$elStructName}}) IfCustomDataF(condition bool, key, format string, args ...any) *{{$elStructName}} {
+    if condition {
+        e.CustomData(key, fmt.Sprintf(format, args...))
+    }
+    return e
 }
 
 func (e *{{$elStructName}}) CustomDataRemove(key string) *{{$elStructName}} {
@@ -94,6 +136,13 @@ func(e *{{$elStructName}}) {{$attrUpper}}(s string) *{{$elStructName}}{
         e.StringAttributes = treemap.New[string,string]()
     }
     e.StringAttributes.Set("{{.Key}}", s)
+    return e
+}
+
+func(e *{{$elStructName}}) If{{$attrUpper}}(condition bool, s string) *{{$elStructName}}{
+    if condition {
+        e.{{$attrUpper}}(s)
+    }
     return e
 }
 
@@ -119,6 +168,13 @@ func(e *{{$elStructName}}) {{$attrUpper}}(s ...string) *{{$elStructName}}{
     return e
 }
 
+func(e *{{$elStructName}}) If{{$attrUpper}}(condition bool, s ...string) *{{$elStructName}}{
+    if condition {
+        e.{{$attrUpper}}(s...)
+    }
+    return e
+}
+
 // Remove the attribute {{.Name}} from the element.
 func(e *{{$elStructName}}) {{$attrUpper}}Remove(s ...string) *{{$elStructName}}{
     if e.DelimitedStrings == nil {
@@ -137,6 +193,13 @@ func (e *{{$elStructName}}) {{$attrUpper}}F(k string, format string, args ...any
     return e.{{$attrUpper}}(k, fmt.Sprintf(format, args...))
 }
 
+func (e *{{$elStructName}}) If{{$attrUpper}}(condition bool, k string, v string) *{{$elStructName}} {
+    if condition {
+        e.{{$attrUpper}}(k, v)
+    }
+    return e
+}
+
 func (e *{{$elStructName}}) {{$attrUpper}}(k string, v string) *{{$elStructName}} {
     if e.KVStrings == nil {
         e.KVStrings = treemap.New[string,*KVBuilder]()
@@ -147,6 +210,13 @@ func (e *{{$elStructName}}) {{$attrUpper}}(k string, v string) *{{$elStructName}
         e.KVStrings.Set("{{.Key}}", kv)
     }
     kv.Add(k, v)
+    return e
+}
+
+func (e *{{$elStructName}}) If{{$attrUpper}}F(condition bool, k string, format string, args ...any) *{{$elStructName}} {
+    if condition {
+        e.{{$attrUpper}}(k, fmt.Sprintf(format, args...))
+    }
     return e
 }
 
@@ -187,6 +257,12 @@ func (e *{{$elStructName}}) {{$attrUpper}}Pairs(pairs ...string) *{{$elStructNam
     return e
 }
 
+func (e *{{$elStructName}}) If{{$attrUpper}}Pairs(condition bool, pairs ...string) *{{$elStructName}} {
+    if condition {
+        e.{{$attrUpper}}Pairs(pairs...)
+    }
+    return e
+}
 
 // Remove the attribute {{.Name}} from the element.
 func (e *{{$elStructName}}) {{$attrUpper}}Remove(keys ...string) *{{$elStructName}} {
@@ -239,6 +315,13 @@ func(e *{{$elStructName}}) {{$attrUpper}}(i int) *{{$elStructName}}{
     return e
 }
 
+func (e *{{$elStructName}}) If{{$attrUpper}}(condition bool, i int) *{{$elStructName}} {
+    if condition {
+        e.{{$attrUpper}}(i)
+    }
+    return e
+}
+
 // Remove the attribute {{.Name}} from the element.
 func(e *{{$elStructName}}) {{$attrUpper}}Remove(i int) *{{$elStructName}}{
     if e.IntAttributes == nil {
@@ -248,12 +331,18 @@ func(e *{{$elStructName}}) {{$attrUpper}}Remove(i int) *{{$elStructName}}{
     return e
 }
 {{ else if . | attrIsNumber -}}
-
 func(e *{{$elStructName}}) {{$attrUpper}}(f float64) *{{$elStructName}}{
     if e.FloatAttributes == nil {
         e.FloatAttributes = treemap.New[string,float64]()
     }
     e.FloatAttributes.Set("{{.Key}}", f)
+    return e
+}
+
+func (e *{{$elStructName}}) If{{$attrUpper}}(condition bool, f float64) *{{$elStructName}} {
+    if condition {
+        e.{{$attrUpper}}(f)
+    }
     return e
 }
 
@@ -263,12 +352,26 @@ func(e *{{$elStructName}}) {{$attrUpper}}() *{{$elStructName}}{
     return e
 }
 
+func(e *{{$elStructName}}) If{{$attrUpper}}(condition bool) *{{$elStructName}} {
+    if condition {
+        e.{{$attrUpper}}Set(true)
+    }
+    return e
+}
+
 // Set the attribute {{.Name}} to the value b explicitly.
 func(e *{{$elStructName}}) {{$attrUpper}}Set(b bool) *{{$elStructName}}{
     if e.BoolAttributes == nil {
         e.BoolAttributes = treemap.New[string,bool]()
     }
     e.BoolAttributes.Set("{{.Key}}", b)
+    return e
+}
+
+func (e *{{$elStructName}}) IfSet{{$attrUpper}}(condition bool, b bool) *{{$elStructName}} {
+    if condition {
+        e.{{$attrUpper}}Set(b)
+    }
     return e
 }
 
@@ -287,6 +390,13 @@ func(e *{{$elStructName}}) {{$attrUpper}}(r rune) *{{$elStructName}}{
         e.StringAttributes = treemap.New[string,string]()
     }
     e.StringAttributes.Set("{{.Key}}", string(r))
+    return e
+}
+
+func(e *{{$elStructName}}) If{{$attrUpper}}(condition bool, r rune) *{{$elStructName}}{
+    if condition {
+        e.{{$attrUpper}}(r)
+    }
     return e
 }
 

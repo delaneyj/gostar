@@ -56,13 +56,41 @@ func (e *SVGPATTERNElement) TextF(format string, args ...any) *SVGPATTERNElement
 	return e.Text(fmt.Sprintf(format, args...))
 }
 
+func (e *SVGPATTERNElement) IfText(condition bool, text string) *SVGPATTERNElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
+}
+
+func (e *SVGPATTERNElement) IfTextF(condition bool, format string, args ...any) *SVGPATTERNElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
+}
+
 func (e *SVGPATTERNElement) Escaped(text string) *SVGPATTERNElement {
 	e.Descendants = append(e.Descendants, Escaped(text))
 	return e
 }
 
+func (e *SVGPATTERNElement) IfEscaped(condition bool, text string) *SVGPATTERNElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
+}
+
 func (e *SVGPATTERNElement) EscapedF(format string, args ...any) *SVGPATTERNElement {
 	return e.Escaped(fmt.Sprintf(format, args...))
+}
+
+func (e *SVGPATTERNElement) IfEscapedF(condition bool, format string, args ...any) *SVGPATTERNElement {
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *SVGPATTERNElement) CustomData(key, value string) *SVGPATTERNElement {
@@ -73,8 +101,22 @@ func (e *SVGPATTERNElement) CustomData(key, value string) *SVGPATTERNElement {
 	return e
 }
 
+func (e *SVGPATTERNElement) IfCustomData(condition bool, key, value string) *SVGPATTERNElement {
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
+}
+
 func (e *SVGPATTERNElement) CustomDataF(key, format string, args ...any) *SVGPATTERNElement {
 	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
+func (e *SVGPATTERNElement) IfCustomDataF(condition bool, key, format string, args ...any) *SVGPATTERNElement {
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *SVGPATTERNElement) CustomDataRemove(key string) *SVGPATTERNElement {
@@ -149,6 +191,13 @@ func (e *SVGPATTERNElement) PATTERNTRANSFORM(s string) *SVGPATTERNElement {
 	return e
 }
 
+func (e *SVGPATTERNElement) IfPATTERNTRANSFORM(condition bool, s string) *SVGPATTERNElement {
+	if condition {
+		e.PATTERNTRANSFORM(s)
+	}
+	return e
+}
+
 // Remove the attribute patternTransform from the element.
 func (e *SVGPATTERNElement) PATTERNTRANSFORMRemove(s string) *SVGPATTERNElement {
 	if e.StringAttributes == nil {
@@ -168,6 +217,13 @@ func (e *SVGPATTERNElement) X(f float64) *SVGPATTERNElement {
 	return e
 }
 
+func (e *SVGPATTERNElement) IfX(condition bool, f float64) *SVGPATTERNElement {
+	if condition {
+		e.X(f)
+	}
+	return e
+}
+
 // The y-axis coordinate of the side of the rectangular region which is closest to
 // the user.
 func (e *SVGPATTERNElement) Y(f float64) *SVGPATTERNElement {
@@ -175,6 +231,13 @@ func (e *SVGPATTERNElement) Y(f float64) *SVGPATTERNElement {
 		e.FloatAttributes = treemap.New[string, float64]()
 	}
 	e.FloatAttributes.Set("y", f)
+	return e
+}
+
+func (e *SVGPATTERNElement) IfY(condition bool, f float64) *SVGPATTERNElement {
+	if condition {
+		e.Y(f)
+	}
 	return e
 }
 
@@ -187,6 +250,13 @@ func (e *SVGPATTERNElement) WIDTH(f float64) *SVGPATTERNElement {
 	return e
 }
 
+func (e *SVGPATTERNElement) IfWIDTH(condition bool, f float64) *SVGPATTERNElement {
+	if condition {
+		e.WIDTH(f)
+	}
+	return e
+}
+
 // The height of the rectangular region.
 func (e *SVGPATTERNElement) HEIGHT(f float64) *SVGPATTERNElement {
 	if e.FloatAttributes == nil {
@@ -196,12 +266,26 @@ func (e *SVGPATTERNElement) HEIGHT(f float64) *SVGPATTERNElement {
 	return e
 }
 
+func (e *SVGPATTERNElement) IfHEIGHT(condition bool, f float64) *SVGPATTERNElement {
+	if condition {
+		e.HEIGHT(f)
+	}
+	return e
+}
+
 // A URI reference to the image to paint.
 func (e *SVGPATTERNElement) HREF(s string) *SVGPATTERNElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("href", s)
+	return e
+}
+
+func (e *SVGPATTERNElement) IfHREF(condition bool, s string) *SVGPATTERNElement {
+	if condition {
+		e.HREF(s)
+	}
 	return e
 }
 
@@ -229,6 +313,13 @@ func (e *SVGPATTERNElement) CLASS(s ...string) *SVGPATTERNElement {
 	return e
 }
 
+func (e *SVGPATTERNElement) IfCLASS(condition bool, s ...string) *SVGPATTERNElement {
+	if condition {
+		e.CLASS(s...)
+	}
+	return e
+}
+
 // Remove the attribute class from the element.
 func (e *SVGPATTERNElement) CLASSRemove(s ...string) *SVGPATTERNElement {
 	if e.DelimitedStrings == nil {
@@ -251,6 +342,13 @@ func (e *SVGPATTERNElement) ID(s string) *SVGPATTERNElement {
 	return e
 }
 
+func (e *SVGPATTERNElement) IfID(condition bool, s string) *SVGPATTERNElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
 // Remove the attribute id from the element.
 func (e *SVGPATTERNElement) IDRemove(s string) *SVGPATTERNElement {
 	if e.StringAttributes == nil {
@@ -265,6 +363,13 @@ func (e *SVGPATTERNElement) STYLEF(k string, format string, args ...any) *SVGPAT
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+func (e *SVGPATTERNElement) IfSTYLE(condition bool, k string, v string) *SVGPATTERNElement {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
 func (e *SVGPATTERNElement) STYLE(k string, v string) *SVGPATTERNElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -275,6 +380,13 @@ func (e *SVGPATTERNElement) STYLE(k string, v string) *SVGPATTERNElement {
 		e.KVStrings.Set("style", kv)
 	}
 	kv.Add(k, v)
+	return e
+}
+
+func (e *SVGPATTERNElement) IfSTYLEF(condition bool, k string, format string, args ...any) *SVGPATTERNElement {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
 	return e
 }
 
@@ -312,6 +424,13 @@ func (e *SVGPATTERNElement) STYLEPairs(pairs ...string) *SVGPATTERNElement {
 		kv.Add(pairs[i], pairs[i+1])
 	}
 
+	return e
+}
+
+func (e *SVGPATTERNElement) IfSTYLEPairs(condition bool, pairs ...string) *SVGPATTERNElement {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
 	return e
 }
 

@@ -55,13 +55,41 @@ func (e *SVGDESCElement) TextF(format string, args ...any) *SVGDESCElement {
 	return e.Text(fmt.Sprintf(format, args...))
 }
 
+func (e *SVGDESCElement) IfText(condition bool, text string) *SVGDESCElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
+}
+
+func (e *SVGDESCElement) IfTextF(condition bool, format string, args ...any) *SVGDESCElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
+}
+
 func (e *SVGDESCElement) Escaped(text string) *SVGDESCElement {
 	e.Descendants = append(e.Descendants, Escaped(text))
 	return e
 }
 
+func (e *SVGDESCElement) IfEscaped(condition bool, text string) *SVGDESCElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
+}
+
 func (e *SVGDESCElement) EscapedF(format string, args ...any) *SVGDESCElement {
 	return e.Escaped(fmt.Sprintf(format, args...))
+}
+
+func (e *SVGDESCElement) IfEscapedF(condition bool, format string, args ...any) *SVGDESCElement {
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *SVGDESCElement) CustomData(key, value string) *SVGDESCElement {
@@ -72,8 +100,22 @@ func (e *SVGDESCElement) CustomData(key, value string) *SVGDESCElement {
 	return e
 }
 
+func (e *SVGDESCElement) IfCustomData(condition bool, key, value string) *SVGDESCElement {
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
+}
+
 func (e *SVGDESCElement) CustomDataF(key, format string, args ...any) *SVGDESCElement {
 	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
+func (e *SVGDESCElement) IfCustomDataF(condition bool, key, format string, args ...any) *SVGDESCElement {
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *SVGDESCElement) CustomDataRemove(key string) *SVGDESCElement {
@@ -99,6 +141,13 @@ func (e *SVGDESCElement) CLASS(s ...string) *SVGDESCElement {
 	return e
 }
 
+func (e *SVGDESCElement) IfCLASS(condition bool, s ...string) *SVGDESCElement {
+	if condition {
+		e.CLASS(s...)
+	}
+	return e
+}
+
 // Remove the attribute class from the element.
 func (e *SVGDESCElement) CLASSRemove(s ...string) *SVGDESCElement {
 	if e.DelimitedStrings == nil {
@@ -121,6 +170,13 @@ func (e *SVGDESCElement) ID(s string) *SVGDESCElement {
 	return e
 }
 
+func (e *SVGDESCElement) IfID(condition bool, s string) *SVGDESCElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
 // Remove the attribute id from the element.
 func (e *SVGDESCElement) IDRemove(s string) *SVGDESCElement {
 	if e.StringAttributes == nil {
@@ -135,6 +191,13 @@ func (e *SVGDESCElement) STYLEF(k string, format string, args ...any) *SVGDESCEl
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+func (e *SVGDESCElement) IfSTYLE(condition bool, k string, v string) *SVGDESCElement {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
 func (e *SVGDESCElement) STYLE(k string, v string) *SVGDESCElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -145,6 +208,13 @@ func (e *SVGDESCElement) STYLE(k string, v string) *SVGDESCElement {
 		e.KVStrings.Set("style", kv)
 	}
 	kv.Add(k, v)
+	return e
+}
+
+func (e *SVGDESCElement) IfSTYLEF(condition bool, k string, format string, args ...any) *SVGDESCElement {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
 	return e
 }
 
@@ -182,6 +252,13 @@ func (e *SVGDESCElement) STYLEPairs(pairs ...string) *SVGDESCElement {
 		kv.Add(pairs[i], pairs[i+1])
 	}
 
+	return e
+}
+
+func (e *SVGDESCElement) IfSTYLEPairs(condition bool, pairs ...string) *SVGDESCElement {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
 	return e
 }
 

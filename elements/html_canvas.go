@@ -58,13 +58,41 @@ func (e *CANVASElement) TextF(format string, args ...any) *CANVASElement {
 	return e.Text(fmt.Sprintf(format, args...))
 }
 
+func (e *CANVASElement) IfText(condition bool, text string) *CANVASElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
+}
+
+func (e *CANVASElement) IfTextF(condition bool, format string, args ...any) *CANVASElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
+}
+
 func (e *CANVASElement) Escaped(text string) *CANVASElement {
 	e.Descendants = append(e.Descendants, Escaped(text))
 	return e
 }
 
+func (e *CANVASElement) IfEscaped(condition bool, text string) *CANVASElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
+}
+
 func (e *CANVASElement) EscapedF(format string, args ...any) *CANVASElement {
 	return e.Escaped(fmt.Sprintf(format, args...))
+}
+
+func (e *CANVASElement) IfEscapedF(condition bool, format string, args ...any) *CANVASElement {
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *CANVASElement) CustomData(key, value string) *CANVASElement {
@@ -75,8 +103,22 @@ func (e *CANVASElement) CustomData(key, value string) *CANVASElement {
 	return e
 }
 
+func (e *CANVASElement) IfCustomData(condition bool, key, value string) *CANVASElement {
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
+}
+
 func (e *CANVASElement) CustomDataF(key, format string, args ...any) *CANVASElement {
 	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
+func (e *CANVASElement) IfCustomDataF(condition bool, key, format string, args ...any) *CANVASElement {
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *CANVASElement) CustomDataRemove(key string) *CANVASElement {
@@ -93,6 +135,13 @@ func (e *CANVASElement) HEIGHT(i int) *CANVASElement {
 		e.IntAttributes = treemap.New[string, int]()
 	}
 	e.IntAttributes.Set("height", i)
+	return e
+}
+
+func (e *CANVASElement) IfHEIGHT(condition bool, i int) *CANVASElement {
+	if condition {
+		e.HEIGHT(i)
+	}
 	return e
 }
 
@@ -114,6 +163,13 @@ func (e *CANVASElement) WIDTH(i int) *CANVASElement {
 	return e
 }
 
+func (e *CANVASElement) IfWIDTH(condition bool, i int) *CANVASElement {
+	if condition {
+		e.WIDTH(i)
+	}
+	return e
+}
+
 // Remove the attribute width from the element.
 func (e *CANVASElement) WIDTHRemove(i int) *CANVASElement {
 	if e.IntAttributes == nil {
@@ -132,6 +188,13 @@ func (e *CANVASElement) ACCESSKEY(r rune) *CANVASElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("accesskey", string(r))
+	return e
+}
+
+func (e *CANVASElement) IfACCESSKEY(condition bool, r rune) *CANVASElement {
+	if condition {
+		e.ACCESSKEY(r)
+	}
 	return e
 }
 
@@ -217,12 +280,26 @@ func (e *CANVASElement) AUTOFOCUS() *CANVASElement {
 	return e
 }
 
+func (e *CANVASElement) IfAUTOFOCUS(condition bool) *CANVASElement {
+	if condition {
+		e.AUTOFOCUSSet(true)
+	}
+	return e
+}
+
 // Set the attribute autofocus to the value b explicitly.
 func (e *CANVASElement) AUTOFOCUSSet(b bool) *CANVASElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("autofocus", b)
+	return e
+}
+
+func (e *CANVASElement) IfSetAUTOFOCUS(condition bool, b bool) *CANVASElement {
+	if condition {
+		e.AUTOFOCUSSet(b)
+	}
 	return e
 }
 
@@ -250,6 +327,13 @@ func (e *CANVASElement) CLASS(s ...string) *CANVASElement {
 		e.DelimitedStrings.Set("class", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *CANVASElement) IfCLASS(condition bool, s ...string) *CANVASElement {
+	if condition {
+		e.CLASS(s...)
+	}
 	return e
 }
 
@@ -458,6 +542,13 @@ func (e *CANVASElement) EXPORTPARTS(s ...string) *CANVASElement {
 	return e
 }
 
+func (e *CANVASElement) IfEXPORTPARTS(condition bool, s ...string) *CANVASElement {
+	if condition {
+		e.EXPORTPARTS(s...)
+	}
+	return e
+}
+
 // Remove the attribute exportparts from the element.
 func (e *CANVASElement) EXPORTPARTSRemove(s ...string) *CANVASElement {
 	if e.DelimitedStrings == nil {
@@ -533,6 +624,13 @@ func (e *CANVASElement) ID(s string) *CANVASElement {
 	return e
 }
 
+func (e *CANVASElement) IfID(condition bool, s string) *CANVASElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
 // Remove the attribute id from the element.
 func (e *CANVASElement) IDRemove(s string) *CANVASElement {
 	if e.StringAttributes == nil {
@@ -559,12 +657,26 @@ func (e *CANVASElement) INERT() *CANVASElement {
 	return e
 }
 
+func (e *CANVASElement) IfINERT(condition bool) *CANVASElement {
+	if condition {
+		e.INERTSet(true)
+	}
+	return e
+}
+
 // Set the attribute inert to the value b explicitly.
 func (e *CANVASElement) INERTSet(b bool) *CANVASElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("inert", b)
+	return e
+}
+
+func (e *CANVASElement) IfSetINERT(condition bool, b bool) *CANVASElement {
+	if condition {
+		e.INERTSet(b)
+	}
 	return e
 }
 
@@ -660,6 +772,13 @@ func (e *CANVASElement) IS(s string) *CANVASElement {
 	return e
 }
 
+func (e *CANVASElement) IfIS(condition bool, s string) *CANVASElement {
+	if condition {
+		e.IS(s)
+	}
+	return e
+}
+
 // Remove the attribute is from the element.
 func (e *CANVASElement) ISRemove(s string) *CANVASElement {
 	if e.StringAttributes == nil {
@@ -690,6 +809,13 @@ func (e *CANVASElement) ITEMID(s string) *CANVASElement {
 	return e
 }
 
+func (e *CANVASElement) IfITEMID(condition bool, s string) *CANVASElement {
+	if condition {
+		e.ITEMID(s)
+	}
+	return e
+}
+
 // Remove the attribute itemid from the element.
 func (e *CANVASElement) ITEMIDRemove(s string) *CANVASElement {
 	if e.StringAttributes == nil {
@@ -715,6 +841,13 @@ func (e *CANVASElement) ITEMPROP(s string) *CANVASElement {
 	return e
 }
 
+func (e *CANVASElement) IfITEMPROP(condition bool, s string) *CANVASElement {
+	if condition {
+		e.ITEMPROP(s)
+	}
+	return e
+}
+
 // Remove the attribute itemprop from the element.
 func (e *CANVASElement) ITEMPROPRemove(s string) *CANVASElement {
 	if e.StringAttributes == nil {
@@ -734,6 +867,13 @@ func (e *CANVASElement) ITEMREF(s string) *CANVASElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("itemref", s)
+	return e
+}
+
+func (e *CANVASElement) IfITEMREF(condition bool, s string) *CANVASElement {
+	if condition {
+		e.ITEMREF(s)
+	}
 	return e
 }
 
@@ -759,12 +899,26 @@ func (e *CANVASElement) ITEMSCOPE() *CANVASElement {
 	return e
 }
 
+func (e *CANVASElement) IfITEMSCOPE(condition bool) *CANVASElement {
+	if condition {
+		e.ITEMSCOPESet(true)
+	}
+	return e
+}
+
 // Set the attribute itemscope to the value b explicitly.
 func (e *CANVASElement) ITEMSCOPESet(b bool) *CANVASElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("itemscope", b)
+	return e
+}
+
+func (e *CANVASElement) IfSetITEMSCOPE(condition bool, b bool) *CANVASElement {
+	if condition {
+		e.ITEMSCOPESet(b)
+	}
 	return e
 }
 
@@ -793,6 +947,13 @@ func (e *CANVASElement) ITEMTYPE(s string) *CANVASElement {
 	return e
 }
 
+func (e *CANVASElement) IfITEMTYPE(condition bool, s string) *CANVASElement {
+	if condition {
+		e.ITEMTYPE(s)
+	}
+	return e
+}
+
 // Remove the attribute itemtype from the element.
 func (e *CANVASElement) ITEMTYPERemove(s string) *CANVASElement {
 	if e.StringAttributes == nil {
@@ -816,6 +977,13 @@ func (e *CANVASElement) LANG(s string) *CANVASElement {
 	return e
 }
 
+func (e *CANVASElement) IfLANG(condition bool, s string) *CANVASElement {
+	if condition {
+		e.LANG(s)
+	}
+	return e
+}
+
 // Remove the attribute lang from the element.
 func (e *CANVASElement) LANGRemove(s string) *CANVASElement {
 	if e.StringAttributes == nil {
@@ -834,6 +1002,13 @@ func (e *CANVASElement) NONCE(s string) *CANVASElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("nonce", s)
+	return e
+}
+
+func (e *CANVASElement) IfNONCE(condition bool, s string) *CANVASElement {
+	if condition {
+		e.NONCE(s)
+	}
 	return e
 }
 
@@ -860,6 +1035,13 @@ func (e *CANVASElement) PART(s ...string) *CANVASElement {
 		e.DelimitedStrings.Set("part", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *CANVASElement) IfPART(condition bool, s ...string) *CANVASElement {
+	if condition {
+		e.PART(s...)
+	}
 	return e
 }
 
@@ -930,6 +1112,13 @@ func (e *CANVASElement) SLOT(s string) *CANVASElement {
 	return e
 }
 
+func (e *CANVASElement) IfSLOT(condition bool, s string) *CANVASElement {
+	if condition {
+		e.SLOT(s)
+	}
+	return e
+}
+
 // Remove the attribute slot from the element.
 func (e *CANVASElement) SLOTRemove(s string) *CANVASElement {
 	if e.StringAttributes == nil {
@@ -988,6 +1177,13 @@ func (e *CANVASElement) STYLEF(k string, format string, args ...any) *CANVASElem
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+func (e *CANVASElement) IfSTYLE(condition bool, k string, v string) *CANVASElement {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
 func (e *CANVASElement) STYLE(k string, v string) *CANVASElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -998,6 +1194,13 @@ func (e *CANVASElement) STYLE(k string, v string) *CANVASElement {
 		e.KVStrings.Set("style", kv)
 	}
 	kv.Add(k, v)
+	return e
+}
+
+func (e *CANVASElement) IfSTYLEF(condition bool, k string, format string, args ...any) *CANVASElement {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
 	return e
 }
 
@@ -1038,6 +1241,13 @@ func (e *CANVASElement) STYLEPairs(pairs ...string) *CANVASElement {
 	return e
 }
 
+func (e *CANVASElement) IfSTYLEPairs(condition bool, pairs ...string) *CANVASElement {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
+	return e
+}
+
 // Remove the attribute style from the element.
 func (e *CANVASElement) STYLERemove(keys ...string) *CANVASElement {
 	if e.KVStrings == nil {
@@ -1072,6 +1282,13 @@ func (e *CANVASElement) TABINDEX(i int) *CANVASElement {
 		e.IntAttributes = treemap.New[string, int]()
 	}
 	e.IntAttributes.Set("tabindex", i)
+	return e
+}
+
+func (e *CANVASElement) IfTABINDEX(condition bool, i int) *CANVASElement {
+	if condition {
+		e.TABINDEX(i)
+	}
 	return e
 }
 
@@ -1110,6 +1327,13 @@ func (e *CANVASElement) TITLE(s string) *CANVASElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("title", s)
+	return e
+}
+
+func (e *CANVASElement) IfTITLE(condition bool, s string) *CANVASElement {
+	if condition {
+		e.TITLE(s)
+	}
 	return e
 }
 

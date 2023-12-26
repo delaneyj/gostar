@@ -57,13 +57,41 @@ func (e *SVGFECOMPOSITEElement) TextF(format string, args ...any) *SVGFECOMPOSIT
 	return e.Text(fmt.Sprintf(format, args...))
 }
 
+func (e *SVGFECOMPOSITEElement) IfText(condition bool, text string) *SVGFECOMPOSITEElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
+}
+
+func (e *SVGFECOMPOSITEElement) IfTextF(condition bool, format string, args ...any) *SVGFECOMPOSITEElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
+}
+
 func (e *SVGFECOMPOSITEElement) Escaped(text string) *SVGFECOMPOSITEElement {
 	e.Descendants = append(e.Descendants, Escaped(text))
 	return e
 }
 
+func (e *SVGFECOMPOSITEElement) IfEscaped(condition bool, text string) *SVGFECOMPOSITEElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
+}
+
 func (e *SVGFECOMPOSITEElement) EscapedF(format string, args ...any) *SVGFECOMPOSITEElement {
 	return e.Escaped(fmt.Sprintf(format, args...))
+}
+
+func (e *SVGFECOMPOSITEElement) IfEscapedF(condition bool, format string, args ...any) *SVGFECOMPOSITEElement {
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *SVGFECOMPOSITEElement) CustomData(key, value string) *SVGFECOMPOSITEElement {
@@ -74,8 +102,22 @@ func (e *SVGFECOMPOSITEElement) CustomData(key, value string) *SVGFECOMPOSITEEle
 	return e
 }
 
+func (e *SVGFECOMPOSITEElement) IfCustomData(condition bool, key, value string) *SVGFECOMPOSITEElement {
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
+}
+
 func (e *SVGFECOMPOSITEElement) CustomDataF(key, format string, args ...any) *SVGFECOMPOSITEElement {
 	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
+func (e *SVGFECOMPOSITEElement) IfCustomDataF(condition bool, key, format string, args ...any) *SVGFECOMPOSITEElement {
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *SVGFECOMPOSITEElement) CustomDataRemove(key string) *SVGFECOMPOSITEElement {
@@ -95,6 +137,13 @@ func (e *SVGFECOMPOSITEElement) IN(s string) *SVGFECOMPOSITEElement {
 	return e
 }
 
+func (e *SVGFECOMPOSITEElement) IfIN(condition bool, s string) *SVGFECOMPOSITEElement {
+	if condition {
+		e.IN(s)
+	}
+	return e
+}
+
 // Remove the attribute in from the element.
 func (e *SVGFECOMPOSITEElement) INRemove(s string) *SVGFECOMPOSITEElement {
 	if e.StringAttributes == nil {
@@ -110,6 +159,13 @@ func (e *SVGFECOMPOSITEElement) IN2(s string) *SVGFECOMPOSITEElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("in2", s)
+	return e
+}
+
+func (e *SVGFECOMPOSITEElement) IfIN2(condition bool, s string) *SVGFECOMPOSITEElement {
+	if condition {
+		e.IN2(s)
+	}
 	return e
 }
 
@@ -170,12 +226,26 @@ func (e *SVGFECOMPOSITEElement) K1(f float64) *SVGFECOMPOSITEElement {
 	return e
 }
 
+func (e *SVGFECOMPOSITEElement) IfK1(condition bool, f float64) *SVGFECOMPOSITEElement {
+	if condition {
+		e.K1(f)
+	}
+	return e
+}
+
 // Second value to use in the arithmetic operation.
 func (e *SVGFECOMPOSITEElement) K2(f float64) *SVGFECOMPOSITEElement {
 	if e.FloatAttributes == nil {
 		e.FloatAttributes = treemap.New[string, float64]()
 	}
 	e.FloatAttributes.Set("k2", f)
+	return e
+}
+
+func (e *SVGFECOMPOSITEElement) IfK2(condition bool, f float64) *SVGFECOMPOSITEElement {
+	if condition {
+		e.K2(f)
+	}
 	return e
 }
 
@@ -188,12 +258,26 @@ func (e *SVGFECOMPOSITEElement) K3(f float64) *SVGFECOMPOSITEElement {
 	return e
 }
 
+func (e *SVGFECOMPOSITEElement) IfK3(condition bool, f float64) *SVGFECOMPOSITEElement {
+	if condition {
+		e.K3(f)
+	}
+	return e
+}
+
 // Fourth value to use in the arithmetic operation.
 func (e *SVGFECOMPOSITEElement) K4(f float64) *SVGFECOMPOSITEElement {
 	if e.FloatAttributes == nil {
 		e.FloatAttributes = treemap.New[string, float64]()
 	}
 	e.FloatAttributes.Set("k4", f)
+	return e
+}
+
+func (e *SVGFECOMPOSITEElement) IfK4(condition bool, f float64) *SVGFECOMPOSITEElement {
+	if condition {
+		e.K4(f)
+	}
 	return e
 }
 
@@ -209,6 +293,13 @@ func (e *SVGFECOMPOSITEElement) CLASS(s ...string) *SVGFECOMPOSITEElement {
 		e.DelimitedStrings.Set("class", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *SVGFECOMPOSITEElement) IfCLASS(condition bool, s ...string) *SVGFECOMPOSITEElement {
+	if condition {
+		e.CLASS(s...)
+	}
 	return e
 }
 
@@ -234,6 +325,13 @@ func (e *SVGFECOMPOSITEElement) ID(s string) *SVGFECOMPOSITEElement {
 	return e
 }
 
+func (e *SVGFECOMPOSITEElement) IfID(condition bool, s string) *SVGFECOMPOSITEElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
 // Remove the attribute id from the element.
 func (e *SVGFECOMPOSITEElement) IDRemove(s string) *SVGFECOMPOSITEElement {
 	if e.StringAttributes == nil {
@@ -248,6 +346,13 @@ func (e *SVGFECOMPOSITEElement) STYLEF(k string, format string, args ...any) *SV
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+func (e *SVGFECOMPOSITEElement) IfSTYLE(condition bool, k string, v string) *SVGFECOMPOSITEElement {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
 func (e *SVGFECOMPOSITEElement) STYLE(k string, v string) *SVGFECOMPOSITEElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -258,6 +363,13 @@ func (e *SVGFECOMPOSITEElement) STYLE(k string, v string) *SVGFECOMPOSITEElement
 		e.KVStrings.Set("style", kv)
 	}
 	kv.Add(k, v)
+	return e
+}
+
+func (e *SVGFECOMPOSITEElement) IfSTYLEF(condition bool, k string, format string, args ...any) *SVGFECOMPOSITEElement {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
 	return e
 }
 
@@ -295,6 +407,13 @@ func (e *SVGFECOMPOSITEElement) STYLEPairs(pairs ...string) *SVGFECOMPOSITEEleme
 		kv.Add(pairs[i], pairs[i+1])
 	}
 
+	return e
+}
+
+func (e *SVGFECOMPOSITEElement) IfSTYLEPairs(condition bool, pairs ...string) *SVGFECOMPOSITEElement {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
 	return e
 }
 

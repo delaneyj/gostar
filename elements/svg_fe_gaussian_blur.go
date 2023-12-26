@@ -56,13 +56,41 @@ func (e *SVGFEGAUSSIANBLURElement) TextF(format string, args ...any) *SVGFEGAUSS
 	return e.Text(fmt.Sprintf(format, args...))
 }
 
+func (e *SVGFEGAUSSIANBLURElement) IfText(condition bool, text string) *SVGFEGAUSSIANBLURElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
+}
+
+func (e *SVGFEGAUSSIANBLURElement) IfTextF(condition bool, format string, args ...any) *SVGFEGAUSSIANBLURElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
+}
+
 func (e *SVGFEGAUSSIANBLURElement) Escaped(text string) *SVGFEGAUSSIANBLURElement {
 	e.Descendants = append(e.Descendants, Escaped(text))
 	return e
 }
 
+func (e *SVGFEGAUSSIANBLURElement) IfEscaped(condition bool, text string) *SVGFEGAUSSIANBLURElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
+}
+
 func (e *SVGFEGAUSSIANBLURElement) EscapedF(format string, args ...any) *SVGFEGAUSSIANBLURElement {
 	return e.Escaped(fmt.Sprintf(format, args...))
+}
+
+func (e *SVGFEGAUSSIANBLURElement) IfEscapedF(condition bool, format string, args ...any) *SVGFEGAUSSIANBLURElement {
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *SVGFEGAUSSIANBLURElement) CustomData(key, value string) *SVGFEGAUSSIANBLURElement {
@@ -73,8 +101,22 @@ func (e *SVGFEGAUSSIANBLURElement) CustomData(key, value string) *SVGFEGAUSSIANB
 	return e
 }
 
+func (e *SVGFEGAUSSIANBLURElement) IfCustomData(condition bool, key, value string) *SVGFEGAUSSIANBLURElement {
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
+}
+
 func (e *SVGFEGAUSSIANBLURElement) CustomDataF(key, format string, args ...any) *SVGFEGAUSSIANBLURElement {
 	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
+func (e *SVGFEGAUSSIANBLURElement) IfCustomDataF(condition bool, key, format string, args ...any) *SVGFEGAUSSIANBLURElement {
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *SVGFEGAUSSIANBLURElement) CustomDataRemove(key string) *SVGFEGAUSSIANBLURElement {
@@ -91,6 +133,13 @@ func (e *SVGFEGAUSSIANBLURElement) IN(s string) *SVGFEGAUSSIANBLURElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("in", s)
+	return e
+}
+
+func (e *SVGFEGAUSSIANBLURElement) IfIN(condition bool, s string) *SVGFEGAUSSIANBLURElement {
+	if condition {
+		e.IN(s)
+	}
 	return e
 }
 
@@ -120,6 +169,13 @@ func (e *SVGFEGAUSSIANBLURElement) STDDEVIATION(f float64) *SVGFEGAUSSIANBLUREle
 	return e
 }
 
+func (e *SVGFEGAUSSIANBLURElement) IfSTDDEVIATION(condition bool, f float64) *SVGFEGAUSSIANBLURElement {
+	if condition {
+		e.STDDEVIATION(f)
+	}
+	return e
+}
+
 // Specifies one or more classnames for an element (refers to a class in a style
 // sheet)
 func (e *SVGFEGAUSSIANBLURElement) CLASS(s ...string) *SVGFEGAUSSIANBLURElement {
@@ -132,6 +188,13 @@ func (e *SVGFEGAUSSIANBLURElement) CLASS(s ...string) *SVGFEGAUSSIANBLURElement 
 		e.DelimitedStrings.Set("class", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *SVGFEGAUSSIANBLURElement) IfCLASS(condition bool, s ...string) *SVGFEGAUSSIANBLURElement {
+	if condition {
+		e.CLASS(s...)
+	}
 	return e
 }
 
@@ -157,6 +220,13 @@ func (e *SVGFEGAUSSIANBLURElement) ID(s string) *SVGFEGAUSSIANBLURElement {
 	return e
 }
 
+func (e *SVGFEGAUSSIANBLURElement) IfID(condition bool, s string) *SVGFEGAUSSIANBLURElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
 // Remove the attribute id from the element.
 func (e *SVGFEGAUSSIANBLURElement) IDRemove(s string) *SVGFEGAUSSIANBLURElement {
 	if e.StringAttributes == nil {
@@ -171,6 +241,13 @@ func (e *SVGFEGAUSSIANBLURElement) STYLEF(k string, format string, args ...any) 
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+func (e *SVGFEGAUSSIANBLURElement) IfSTYLE(condition bool, k string, v string) *SVGFEGAUSSIANBLURElement {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
 func (e *SVGFEGAUSSIANBLURElement) STYLE(k string, v string) *SVGFEGAUSSIANBLURElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -181,6 +258,13 @@ func (e *SVGFEGAUSSIANBLURElement) STYLE(k string, v string) *SVGFEGAUSSIANBLURE
 		e.KVStrings.Set("style", kv)
 	}
 	kv.Add(k, v)
+	return e
+}
+
+func (e *SVGFEGAUSSIANBLURElement) IfSTYLEF(condition bool, k string, format string, args ...any) *SVGFEGAUSSIANBLURElement {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
 	return e
 }
 
@@ -218,6 +302,13 @@ func (e *SVGFEGAUSSIANBLURElement) STYLEPairs(pairs ...string) *SVGFEGAUSSIANBLU
 		kv.Add(pairs[i], pairs[i+1])
 	}
 
+	return e
+}
+
+func (e *SVGFEGAUSSIANBLURElement) IfSTYLEPairs(condition bool, pairs ...string) *SVGFEGAUSSIANBLURElement {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
 	return e
 }
 

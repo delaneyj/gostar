@@ -55,13 +55,41 @@ func (e *SVGIMAGEElement) TextF(format string, args ...any) *SVGIMAGEElement {
 	return e.Text(fmt.Sprintf(format, args...))
 }
 
+func (e *SVGIMAGEElement) IfText(condition bool, text string) *SVGIMAGEElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
+}
+
+func (e *SVGIMAGEElement) IfTextF(condition bool, format string, args ...any) *SVGIMAGEElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
+}
+
 func (e *SVGIMAGEElement) Escaped(text string) *SVGIMAGEElement {
 	e.Descendants = append(e.Descendants, Escaped(text))
 	return e
 }
 
+func (e *SVGIMAGEElement) IfEscaped(condition bool, text string) *SVGIMAGEElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
+}
+
 func (e *SVGIMAGEElement) EscapedF(format string, args ...any) *SVGIMAGEElement {
 	return e.Escaped(fmt.Sprintf(format, args...))
+}
+
+func (e *SVGIMAGEElement) IfEscapedF(condition bool, format string, args ...any) *SVGIMAGEElement {
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *SVGIMAGEElement) CustomData(key, value string) *SVGIMAGEElement {
@@ -72,8 +100,22 @@ func (e *SVGIMAGEElement) CustomData(key, value string) *SVGIMAGEElement {
 	return e
 }
 
+func (e *SVGIMAGEElement) IfCustomData(condition bool, key, value string) *SVGIMAGEElement {
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
+}
+
 func (e *SVGIMAGEElement) CustomDataF(key, format string, args ...any) *SVGIMAGEElement {
 	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
+func (e *SVGIMAGEElement) IfCustomDataF(condition bool, key, format string, args ...any) *SVGIMAGEElement {
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *SVGIMAGEElement) CustomDataRemove(key string) *SVGIMAGEElement {
@@ -143,6 +185,13 @@ func (e *SVGIMAGEElement) X(f float64) *SVGIMAGEElement {
 	return e
 }
 
+func (e *SVGIMAGEElement) IfX(condition bool, f float64) *SVGIMAGEElement {
+	if condition {
+		e.X(f)
+	}
+	return e
+}
+
 // The y-axis coordinate of the side of the rectangular region which is closest to
 // the user.
 func (e *SVGIMAGEElement) Y(f float64) *SVGIMAGEElement {
@@ -150,6 +199,13 @@ func (e *SVGIMAGEElement) Y(f float64) *SVGIMAGEElement {
 		e.FloatAttributes = treemap.New[string, float64]()
 	}
 	e.FloatAttributes.Set("y", f)
+	return e
+}
+
+func (e *SVGIMAGEElement) IfY(condition bool, f float64) *SVGIMAGEElement {
+	if condition {
+		e.Y(f)
+	}
 	return e
 }
 
@@ -162,6 +218,13 @@ func (e *SVGIMAGEElement) WIDTH(f float64) *SVGIMAGEElement {
 	return e
 }
 
+func (e *SVGIMAGEElement) IfWIDTH(condition bool, f float64) *SVGIMAGEElement {
+	if condition {
+		e.WIDTH(f)
+	}
+	return e
+}
+
 // The height of the rectangular region.
 func (e *SVGIMAGEElement) HEIGHT(f float64) *SVGIMAGEElement {
 	if e.FloatAttributes == nil {
@@ -171,12 +234,26 @@ func (e *SVGIMAGEElement) HEIGHT(f float64) *SVGIMAGEElement {
 	return e
 }
 
+func (e *SVGIMAGEElement) IfHEIGHT(condition bool, f float64) *SVGIMAGEElement {
+	if condition {
+		e.HEIGHT(f)
+	}
+	return e
+}
+
 // A URI reference to the image to embed.
 func (e *SVGIMAGEElement) HREF(s string) *SVGIMAGEElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("href", s)
+	return e
+}
+
+func (e *SVGIMAGEElement) IfHREF(condition bool, s string) *SVGIMAGEElement {
+	if condition {
+		e.HREF(s)
+	}
 	return e
 }
 
@@ -204,6 +281,13 @@ func (e *SVGIMAGEElement) CLASS(s ...string) *SVGIMAGEElement {
 	return e
 }
 
+func (e *SVGIMAGEElement) IfCLASS(condition bool, s ...string) *SVGIMAGEElement {
+	if condition {
+		e.CLASS(s...)
+	}
+	return e
+}
+
 // Remove the attribute class from the element.
 func (e *SVGIMAGEElement) CLASSRemove(s ...string) *SVGIMAGEElement {
 	if e.DelimitedStrings == nil {
@@ -226,6 +310,13 @@ func (e *SVGIMAGEElement) ID(s string) *SVGIMAGEElement {
 	return e
 }
 
+func (e *SVGIMAGEElement) IfID(condition bool, s string) *SVGIMAGEElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
 // Remove the attribute id from the element.
 func (e *SVGIMAGEElement) IDRemove(s string) *SVGIMAGEElement {
 	if e.StringAttributes == nil {
@@ -240,6 +331,13 @@ func (e *SVGIMAGEElement) STYLEF(k string, format string, args ...any) *SVGIMAGE
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+func (e *SVGIMAGEElement) IfSTYLE(condition bool, k string, v string) *SVGIMAGEElement {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
 func (e *SVGIMAGEElement) STYLE(k string, v string) *SVGIMAGEElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -250,6 +348,13 @@ func (e *SVGIMAGEElement) STYLE(k string, v string) *SVGIMAGEElement {
 		e.KVStrings.Set("style", kv)
 	}
 	kv.Add(k, v)
+	return e
+}
+
+func (e *SVGIMAGEElement) IfSTYLEF(condition bool, k string, format string, args ...any) *SVGIMAGEElement {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
 	return e
 }
 
@@ -287,6 +392,13 @@ func (e *SVGIMAGEElement) STYLEPairs(pairs ...string) *SVGIMAGEElement {
 		kv.Add(pairs[i], pairs[i+1])
 	}
 
+	return e
+}
+
+func (e *SVGIMAGEElement) IfSTYLEPairs(condition bool, pairs ...string) *SVGIMAGEElement {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
 	return e
 }
 

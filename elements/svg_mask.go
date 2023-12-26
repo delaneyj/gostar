@@ -55,13 +55,41 @@ func (e *SVGMASKElement) TextF(format string, args ...any) *SVGMASKElement {
 	return e.Text(fmt.Sprintf(format, args...))
 }
 
+func (e *SVGMASKElement) IfText(condition bool, text string) *SVGMASKElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
+}
+
+func (e *SVGMASKElement) IfTextF(condition bool, format string, args ...any) *SVGMASKElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
+}
+
 func (e *SVGMASKElement) Escaped(text string) *SVGMASKElement {
 	e.Descendants = append(e.Descendants, Escaped(text))
 	return e
 }
 
+func (e *SVGMASKElement) IfEscaped(condition bool, text string) *SVGMASKElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
+}
+
 func (e *SVGMASKElement) EscapedF(format string, args ...any) *SVGMASKElement {
 	return e.Escaped(fmt.Sprintf(format, args...))
+}
+
+func (e *SVGMASKElement) IfEscapedF(condition bool, format string, args ...any) *SVGMASKElement {
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *SVGMASKElement) CustomData(key, value string) *SVGMASKElement {
@@ -72,8 +100,22 @@ func (e *SVGMASKElement) CustomData(key, value string) *SVGMASKElement {
 	return e
 }
 
+func (e *SVGMASKElement) IfCustomData(condition bool, key, value string) *SVGMASKElement {
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
+}
+
 func (e *SVGMASKElement) CustomDataF(key, format string, args ...any) *SVGMASKElement {
 	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
+func (e *SVGMASKElement) IfCustomDataF(condition bool, key, format string, args ...any) *SVGMASKElement {
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *SVGMASKElement) CustomDataRemove(key string) *SVGMASKElement {
@@ -148,6 +190,13 @@ func (e *SVGMASKElement) X(s string) *SVGMASKElement {
 	return e
 }
 
+func (e *SVGMASKElement) IfX(condition bool, s string) *SVGMASKElement {
+	if condition {
+		e.X(s)
+	}
+	return e
+}
+
 // Remove the attribute x from the element.
 func (e *SVGMASKElement) XRemove(s string) *SVGMASKElement {
 	if e.StringAttributes == nil {
@@ -164,6 +213,13 @@ func (e *SVGMASKElement) Y(s string) *SVGMASKElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("y", s)
+	return e
+}
+
+func (e *SVGMASKElement) IfY(condition bool, s string) *SVGMASKElement {
+	if condition {
+		e.Y(s)
+	}
 	return e
 }
 
@@ -185,6 +241,13 @@ func (e *SVGMASKElement) WIDTH(s string) *SVGMASKElement {
 	return e
 }
 
+func (e *SVGMASKElement) IfWIDTH(condition bool, s string) *SVGMASKElement {
+	if condition {
+		e.WIDTH(s)
+	}
+	return e
+}
+
 // Remove the attribute width from the element.
 func (e *SVGMASKElement) WIDTHRemove(s string) *SVGMASKElement {
 	if e.StringAttributes == nil {
@@ -200,6 +263,13 @@ func (e *SVGMASKElement) HEIGHT(s string) *SVGMASKElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("height", s)
+	return e
+}
+
+func (e *SVGMASKElement) IfHEIGHT(condition bool, s string) *SVGMASKElement {
+	if condition {
+		e.HEIGHT(s)
+	}
 	return e
 }
 
@@ -227,6 +297,13 @@ func (e *SVGMASKElement) CLASS(s ...string) *SVGMASKElement {
 	return e
 }
 
+func (e *SVGMASKElement) IfCLASS(condition bool, s ...string) *SVGMASKElement {
+	if condition {
+		e.CLASS(s...)
+	}
+	return e
+}
+
 // Remove the attribute class from the element.
 func (e *SVGMASKElement) CLASSRemove(s ...string) *SVGMASKElement {
 	if e.DelimitedStrings == nil {
@@ -249,6 +326,13 @@ func (e *SVGMASKElement) ID(s string) *SVGMASKElement {
 	return e
 }
 
+func (e *SVGMASKElement) IfID(condition bool, s string) *SVGMASKElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
 // Remove the attribute id from the element.
 func (e *SVGMASKElement) IDRemove(s string) *SVGMASKElement {
 	if e.StringAttributes == nil {
@@ -263,6 +347,13 @@ func (e *SVGMASKElement) STYLEF(k string, format string, args ...any) *SVGMASKEl
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+func (e *SVGMASKElement) IfSTYLE(condition bool, k string, v string) *SVGMASKElement {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
 func (e *SVGMASKElement) STYLE(k string, v string) *SVGMASKElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -273,6 +364,13 @@ func (e *SVGMASKElement) STYLE(k string, v string) *SVGMASKElement {
 		e.KVStrings.Set("style", kv)
 	}
 	kv.Add(k, v)
+	return e
+}
+
+func (e *SVGMASKElement) IfSTYLEF(condition bool, k string, format string, args ...any) *SVGMASKElement {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
 	return e
 }
 
@@ -310,6 +408,13 @@ func (e *SVGMASKElement) STYLEPairs(pairs ...string) *SVGMASKElement {
 		kv.Add(pairs[i], pairs[i+1])
 	}
 
+	return e
+}
+
+func (e *SVGMASKElement) IfSTYLEPairs(condition bool, pairs ...string) *SVGMASKElement {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
 	return e
 }
 

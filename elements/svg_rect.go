@@ -58,13 +58,41 @@ func (e *SVGRECTElement) TextF(format string, args ...any) *SVGRECTElement {
 	return e.Text(fmt.Sprintf(format, args...))
 }
 
+func (e *SVGRECTElement) IfText(condition bool, text string) *SVGRECTElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
+}
+
+func (e *SVGRECTElement) IfTextF(condition bool, format string, args ...any) *SVGRECTElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
+}
+
 func (e *SVGRECTElement) Escaped(text string) *SVGRECTElement {
 	e.Descendants = append(e.Descendants, Escaped(text))
 	return e
 }
 
+func (e *SVGRECTElement) IfEscaped(condition bool, text string) *SVGRECTElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
+}
+
 func (e *SVGRECTElement) EscapedF(format string, args ...any) *SVGRECTElement {
 	return e.Escaped(fmt.Sprintf(format, args...))
+}
+
+func (e *SVGRECTElement) IfEscapedF(condition bool, format string, args ...any) *SVGRECTElement {
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *SVGRECTElement) CustomData(key, value string) *SVGRECTElement {
@@ -75,8 +103,22 @@ func (e *SVGRECTElement) CustomData(key, value string) *SVGRECTElement {
 	return e
 }
 
+func (e *SVGRECTElement) IfCustomData(condition bool, key, value string) *SVGRECTElement {
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
+}
+
 func (e *SVGRECTElement) CustomDataF(key, format string, args ...any) *SVGRECTElement {
 	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
+func (e *SVGRECTElement) IfCustomDataF(condition bool, key, format string, args ...any) *SVGRECTElement {
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *SVGRECTElement) CustomDataRemove(key string) *SVGRECTElement {
@@ -97,6 +139,13 @@ func (e *SVGRECTElement) X(f float64) *SVGRECTElement {
 	return e
 }
 
+func (e *SVGRECTElement) IfX(condition bool, f float64) *SVGRECTElement {
+	if condition {
+		e.X(f)
+	}
+	return e
+}
+
 // The y-axis coordinate of the side of the rectangle which has the smaller y-axis
 // value.
 func (e *SVGRECTElement) Y(f float64) *SVGRECTElement {
@@ -104,6 +153,13 @@ func (e *SVGRECTElement) Y(f float64) *SVGRECTElement {
 		e.FloatAttributes = treemap.New[string, float64]()
 	}
 	e.FloatAttributes.Set("y", f)
+	return e
+}
+
+func (e *SVGRECTElement) IfY(condition bool, f float64) *SVGRECTElement {
+	if condition {
+		e.Y(f)
+	}
 	return e
 }
 
@@ -116,12 +172,26 @@ func (e *SVGRECTElement) WIDTH(f float64) *SVGRECTElement {
 	return e
 }
 
+func (e *SVGRECTElement) IfWIDTH(condition bool, f float64) *SVGRECTElement {
+	if condition {
+		e.WIDTH(f)
+	}
+	return e
+}
+
 // The height of the rectangle.
 func (e *SVGRECTElement) HEIGHT(f float64) *SVGRECTElement {
 	if e.FloatAttributes == nil {
 		e.FloatAttributes = treemap.New[string, float64]()
 	}
 	e.FloatAttributes.Set("height", f)
+	return e
+}
+
+func (e *SVGRECTElement) IfHEIGHT(condition bool, f float64) *SVGRECTElement {
+	if condition {
+		e.HEIGHT(f)
+	}
 	return e
 }
 
@@ -135,6 +205,13 @@ func (e *SVGRECTElement) RX(f float64) *SVGRECTElement {
 	return e
 }
 
+func (e *SVGRECTElement) IfRX(condition bool, f float64) *SVGRECTElement {
+	if condition {
+		e.RX(f)
+	}
+	return e
+}
+
 // The y-axis radius of the ellipse used to round off the corners of the
 // rectangle.
 func (e *SVGRECTElement) RY(f float64) *SVGRECTElement {
@@ -142,6 +219,13 @@ func (e *SVGRECTElement) RY(f float64) *SVGRECTElement {
 		e.FloatAttributes = treemap.New[string, float64]()
 	}
 	e.FloatAttributes.Set("ry", f)
+	return e
+}
+
+func (e *SVGRECTElement) IfRY(condition bool, f float64) *SVGRECTElement {
+	if condition {
+		e.RY(f)
+	}
 	return e
 }
 
@@ -157,6 +241,13 @@ func (e *SVGRECTElement) CLASS(s ...string) *SVGRECTElement {
 		e.DelimitedStrings.Set("class", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *SVGRECTElement) IfCLASS(condition bool, s ...string) *SVGRECTElement {
+	if condition {
+		e.CLASS(s...)
+	}
 	return e
 }
 
@@ -182,6 +273,13 @@ func (e *SVGRECTElement) ID(s string) *SVGRECTElement {
 	return e
 }
 
+func (e *SVGRECTElement) IfID(condition bool, s string) *SVGRECTElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
 // Remove the attribute id from the element.
 func (e *SVGRECTElement) IDRemove(s string) *SVGRECTElement {
 	if e.StringAttributes == nil {
@@ -196,6 +294,13 @@ func (e *SVGRECTElement) STYLEF(k string, format string, args ...any) *SVGRECTEl
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+func (e *SVGRECTElement) IfSTYLE(condition bool, k string, v string) *SVGRECTElement {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
 func (e *SVGRECTElement) STYLE(k string, v string) *SVGRECTElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -206,6 +311,13 @@ func (e *SVGRECTElement) STYLE(k string, v string) *SVGRECTElement {
 		e.KVStrings.Set("style", kv)
 	}
 	kv.Add(k, v)
+	return e
+}
+
+func (e *SVGRECTElement) IfSTYLEF(condition bool, k string, format string, args ...any) *SVGRECTElement {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
 	return e
 }
 
@@ -243,6 +355,13 @@ func (e *SVGRECTElement) STYLEPairs(pairs ...string) *SVGRECTElement {
 		kv.Add(pairs[i], pairs[i+1])
 	}
 
+	return e
+}
+
+func (e *SVGRECTElement) IfSTYLEPairs(condition bool, pairs ...string) *SVGRECTElement {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
 	return e
 }
 

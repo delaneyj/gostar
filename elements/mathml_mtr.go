@@ -55,13 +55,41 @@ func (e *MathMLMTRElement) TextF(format string, args ...any) *MathMLMTRElement {
 	return e.Text(fmt.Sprintf(format, args...))
 }
 
+func (e *MathMLMTRElement) IfText(condition bool, text string) *MathMLMTRElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
+}
+
+func (e *MathMLMTRElement) IfTextF(condition bool, format string, args ...any) *MathMLMTRElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
+}
+
 func (e *MathMLMTRElement) Escaped(text string) *MathMLMTRElement {
 	e.Descendants = append(e.Descendants, Escaped(text))
 	return e
 }
 
+func (e *MathMLMTRElement) IfEscaped(condition bool, text string) *MathMLMTRElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
+}
+
 func (e *MathMLMTRElement) EscapedF(format string, args ...any) *MathMLMTRElement {
 	return e.Escaped(fmt.Sprintf(format, args...))
+}
+
+func (e *MathMLMTRElement) IfEscapedF(condition bool, format string, args ...any) *MathMLMTRElement {
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *MathMLMTRElement) CustomData(key, value string) *MathMLMTRElement {
@@ -72,8 +100,22 @@ func (e *MathMLMTRElement) CustomData(key, value string) *MathMLMTRElement {
 	return e
 }
 
+func (e *MathMLMTRElement) IfCustomData(condition bool, key, value string) *MathMLMTRElement {
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
+}
+
 func (e *MathMLMTRElement) CustomDataF(key, format string, args ...any) *MathMLMTRElement {
 	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
+func (e *MathMLMTRElement) IfCustomDataF(condition bool, key, format string, args ...any) *MathMLMTRElement {
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *MathMLMTRElement) CustomDataRemove(key string) *MathMLMTRElement {
@@ -98,6 +140,13 @@ func (e *MathMLMTRElement) CLASS(s ...string) *MathMLMTRElement {
 		e.DelimitedStrings.Set("class", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *MathMLMTRElement) IfCLASS(condition bool, s ...string) *MathMLMTRElement {
+	if condition {
+		e.CLASS(s...)
+	}
 	return e
 }
 
@@ -183,6 +232,13 @@ func (e *MathMLMTRElement) ID(s string) *MathMLMTRElement {
 	return e
 }
 
+func (e *MathMLMTRElement) IfID(condition bool, s string) *MathMLMTRElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
 // Remove the attribute id from the element.
 func (e *MathMLMTRElement) IDRemove(s string) *MathMLMTRElement {
 	if e.StringAttributes == nil {
@@ -200,6 +256,13 @@ func (e *MathMLMTRElement) MATHBACKGROUND(s string) *MathMLMTRElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("mathbackground", s)
+	return e
+}
+
+func (e *MathMLMTRElement) IfMATHBACKGROUND(condition bool, s string) *MathMLMTRElement {
+	if condition {
+		e.MATHBACKGROUND(s)
+	}
 	return e
 }
 
@@ -223,6 +286,13 @@ func (e *MathMLMTRElement) MATHCOLOR(s string) *MathMLMTRElement {
 	return e
 }
 
+func (e *MathMLMTRElement) IfMATHCOLOR(condition bool, s string) *MathMLMTRElement {
+	if condition {
+		e.MATHCOLOR(s)
+	}
+	return e
+}
+
 // Remove the attribute mathcolor from the element.
 func (e *MathMLMTRElement) MATHCOLORRemove(s string) *MathMLMTRElement {
 	if e.StringAttributes == nil {
@@ -239,6 +309,13 @@ func (e *MathMLMTRElement) MATHSIZESTR(s string) *MathMLMTRElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("mathsize", s)
+	return e
+}
+
+func (e *MathMLMTRElement) IfMATHSIZESTR(condition bool, s string) *MathMLMTRElement {
+	if condition {
+		e.MATHSIZESTR(s)
+	}
 	return e
 }
 
@@ -263,6 +340,13 @@ func (e *MathMLMTRElement) NONCE(s string) *MathMLMTRElement {
 	return e
 }
 
+func (e *MathMLMTRElement) IfNONCE(condition bool, s string) *MathMLMTRElement {
+	if condition {
+		e.NONCE(s)
+	}
+	return e
+}
+
 // Remove the attribute nonce from the element.
 func (e *MathMLMTRElement) NONCERemove(s string) *MathMLMTRElement {
 	if e.StringAttributes == nil {
@@ -282,6 +366,13 @@ func (e *MathMLMTRElement) SCRIPTLEVEL(i int) *MathMLMTRElement {
 	return e
 }
 
+func (e *MathMLMTRElement) IfSCRIPTLEVEL(condition bool, i int) *MathMLMTRElement {
+	if condition {
+		e.SCRIPTLEVEL(i)
+	}
+	return e
+}
+
 // Remove the attribute scriptlevel from the element.
 func (e *MathMLMTRElement) SCRIPTLEVELRemove(i int) *MathMLMTRElement {
 	if e.IntAttributes == nil {
@@ -297,6 +388,13 @@ func (e *MathMLMTRElement) STYLEF(k string, format string, args ...any) *MathMLM
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+func (e *MathMLMTRElement) IfSTYLE(condition bool, k string, v string) *MathMLMTRElement {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
 func (e *MathMLMTRElement) STYLE(k string, v string) *MathMLMTRElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -307,6 +405,13 @@ func (e *MathMLMTRElement) STYLE(k string, v string) *MathMLMTRElement {
 		e.KVStrings.Set("style", kv)
 	}
 	kv.Add(k, v)
+	return e
+}
+
+func (e *MathMLMTRElement) IfSTYLEF(condition bool, k string, format string, args ...any) *MathMLMTRElement {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
 	return e
 }
 
@@ -347,6 +452,13 @@ func (e *MathMLMTRElement) STYLEPairs(pairs ...string) *MathMLMTRElement {
 	return e
 }
 
+func (e *MathMLMTRElement) IfSTYLEPairs(condition bool, pairs ...string) *MathMLMTRElement {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
+	return e
+}
+
 // Remove the attribute style from the element.
 func (e *MathMLMTRElement) STYLERemove(keys ...string) *MathMLMTRElement {
 	if e.KVStrings == nil {
@@ -371,6 +483,13 @@ func (e *MathMLMTRElement) TABINDEX(i int) *MathMLMTRElement {
 		e.IntAttributes = treemap.New[string, int]()
 	}
 	e.IntAttributes.Set("tabindex", i)
+	return e
+}
+
+func (e *MathMLMTRElement) IfTABINDEX(condition bool, i int) *MathMLMTRElement {
+	if condition {
+		e.TABINDEX(i)
+	}
 	return e
 }
 

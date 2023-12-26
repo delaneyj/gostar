@@ -56,13 +56,41 @@ func (e *SVGFEDISPLACEMENTMAPElement) TextF(format string, args ...any) *SVGFEDI
 	return e.Text(fmt.Sprintf(format, args...))
 }
 
+func (e *SVGFEDISPLACEMENTMAPElement) IfText(condition bool, text string) *SVGFEDISPLACEMENTMAPElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
+}
+
+func (e *SVGFEDISPLACEMENTMAPElement) IfTextF(condition bool, format string, args ...any) *SVGFEDISPLACEMENTMAPElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
+}
+
 func (e *SVGFEDISPLACEMENTMAPElement) Escaped(text string) *SVGFEDISPLACEMENTMAPElement {
 	e.Descendants = append(e.Descendants, Escaped(text))
 	return e
 }
 
+func (e *SVGFEDISPLACEMENTMAPElement) IfEscaped(condition bool, text string) *SVGFEDISPLACEMENTMAPElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
+}
+
 func (e *SVGFEDISPLACEMENTMAPElement) EscapedF(format string, args ...any) *SVGFEDISPLACEMENTMAPElement {
 	return e.Escaped(fmt.Sprintf(format, args...))
+}
+
+func (e *SVGFEDISPLACEMENTMAPElement) IfEscapedF(condition bool, format string, args ...any) *SVGFEDISPLACEMENTMAPElement {
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *SVGFEDISPLACEMENTMAPElement) CustomData(key, value string) *SVGFEDISPLACEMENTMAPElement {
@@ -73,8 +101,22 @@ func (e *SVGFEDISPLACEMENTMAPElement) CustomData(key, value string) *SVGFEDISPLA
 	return e
 }
 
+func (e *SVGFEDISPLACEMENTMAPElement) IfCustomData(condition bool, key, value string) *SVGFEDISPLACEMENTMAPElement {
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
+}
+
 func (e *SVGFEDISPLACEMENTMAPElement) CustomDataF(key, format string, args ...any) *SVGFEDISPLACEMENTMAPElement {
 	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
+func (e *SVGFEDISPLACEMENTMAPElement) IfCustomDataF(condition bool, key, format string, args ...any) *SVGFEDISPLACEMENTMAPElement {
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *SVGFEDISPLACEMENTMAPElement) CustomDataRemove(key string) *SVGFEDISPLACEMENTMAPElement {
@@ -91,6 +133,13 @@ func (e *SVGFEDISPLACEMENTMAPElement) IN(s string) *SVGFEDISPLACEMENTMAPElement 
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("in", s)
+	return e
+}
+
+func (e *SVGFEDISPLACEMENTMAPElement) IfIN(condition bool, s string) *SVGFEDISPLACEMENTMAPElement {
+	if condition {
+		e.IN(s)
+	}
 	return e
 }
 
@@ -113,6 +162,13 @@ func (e *SVGFEDISPLACEMENTMAPElement) IN2(s string) *SVGFEDISPLACEMENTMAPElement
 	return e
 }
 
+func (e *SVGFEDISPLACEMENTMAPElement) IfIN2(condition bool, s string) *SVGFEDISPLACEMENTMAPElement {
+	if condition {
+		e.IN2(s)
+	}
+	return e
+}
+
 // Remove the attribute in2 from the element.
 func (e *SVGFEDISPLACEMENTMAPElement) IN2Remove(s string) *SVGFEDISPLACEMENTMAPElement {
 	if e.StringAttributes == nil {
@@ -129,6 +185,13 @@ func (e *SVGFEDISPLACEMENTMAPElement) SCALE(f float64) *SVGFEDISPLACEMENTMAPElem
 		e.FloatAttributes = treemap.New[string, float64]()
 	}
 	e.FloatAttributes.Set("scale", f)
+	return e
+}
+
+func (e *SVGFEDISPLACEMENTMAPElement) IfSCALE(condition bool, f float64) *SVGFEDISPLACEMENTMAPElement {
+	if condition {
+		e.SCALE(f)
+	}
 	return e
 }
 
@@ -211,6 +274,13 @@ func (e *SVGFEDISPLACEMENTMAPElement) CLASS(s ...string) *SVGFEDISPLACEMENTMAPEl
 	return e
 }
 
+func (e *SVGFEDISPLACEMENTMAPElement) IfCLASS(condition bool, s ...string) *SVGFEDISPLACEMENTMAPElement {
+	if condition {
+		e.CLASS(s...)
+	}
+	return e
+}
+
 // Remove the attribute class from the element.
 func (e *SVGFEDISPLACEMENTMAPElement) CLASSRemove(s ...string) *SVGFEDISPLACEMENTMAPElement {
 	if e.DelimitedStrings == nil {
@@ -233,6 +303,13 @@ func (e *SVGFEDISPLACEMENTMAPElement) ID(s string) *SVGFEDISPLACEMENTMAPElement 
 	return e
 }
 
+func (e *SVGFEDISPLACEMENTMAPElement) IfID(condition bool, s string) *SVGFEDISPLACEMENTMAPElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
 // Remove the attribute id from the element.
 func (e *SVGFEDISPLACEMENTMAPElement) IDRemove(s string) *SVGFEDISPLACEMENTMAPElement {
 	if e.StringAttributes == nil {
@@ -247,6 +324,13 @@ func (e *SVGFEDISPLACEMENTMAPElement) STYLEF(k string, format string, args ...an
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+func (e *SVGFEDISPLACEMENTMAPElement) IfSTYLE(condition bool, k string, v string) *SVGFEDISPLACEMENTMAPElement {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
 func (e *SVGFEDISPLACEMENTMAPElement) STYLE(k string, v string) *SVGFEDISPLACEMENTMAPElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -257,6 +341,13 @@ func (e *SVGFEDISPLACEMENTMAPElement) STYLE(k string, v string) *SVGFEDISPLACEME
 		e.KVStrings.Set("style", kv)
 	}
 	kv.Add(k, v)
+	return e
+}
+
+func (e *SVGFEDISPLACEMENTMAPElement) IfSTYLEF(condition bool, k string, format string, args ...any) *SVGFEDISPLACEMENTMAPElement {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
 	return e
 }
 
@@ -294,6 +385,13 @@ func (e *SVGFEDISPLACEMENTMAPElement) STYLEPairs(pairs ...string) *SVGFEDISPLACE
 		kv.Add(pairs[i], pairs[i+1])
 	}
 
+	return e
+}
+
+func (e *SVGFEDISPLACEMENTMAPElement) IfSTYLEPairs(condition bool, pairs ...string) *SVGFEDISPLACEMENTMAPElement {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
 	return e
 }
 

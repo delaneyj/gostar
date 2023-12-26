@@ -56,13 +56,41 @@ func (e *SVGFEMERGEElement) TextF(format string, args ...any) *SVGFEMERGEElement
 	return e.Text(fmt.Sprintf(format, args...))
 }
 
+func (e *SVGFEMERGEElement) IfText(condition bool, text string) *SVGFEMERGEElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
+}
+
+func (e *SVGFEMERGEElement) IfTextF(condition bool, format string, args ...any) *SVGFEMERGEElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
+}
+
 func (e *SVGFEMERGEElement) Escaped(text string) *SVGFEMERGEElement {
 	e.Descendants = append(e.Descendants, Escaped(text))
 	return e
 }
 
+func (e *SVGFEMERGEElement) IfEscaped(condition bool, text string) *SVGFEMERGEElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
+}
+
 func (e *SVGFEMERGEElement) EscapedF(format string, args ...any) *SVGFEMERGEElement {
 	return e.Escaped(fmt.Sprintf(format, args...))
+}
+
+func (e *SVGFEMERGEElement) IfEscapedF(condition bool, format string, args ...any) *SVGFEMERGEElement {
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *SVGFEMERGEElement) CustomData(key, value string) *SVGFEMERGEElement {
@@ -73,8 +101,22 @@ func (e *SVGFEMERGEElement) CustomData(key, value string) *SVGFEMERGEElement {
 	return e
 }
 
+func (e *SVGFEMERGEElement) IfCustomData(condition bool, key, value string) *SVGFEMERGEElement {
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
+}
+
 func (e *SVGFEMERGEElement) CustomDataF(key, format string, args ...any) *SVGFEMERGEElement {
 	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
+func (e *SVGFEMERGEElement) IfCustomDataF(condition bool, key, format string, args ...any) *SVGFEMERGEElement {
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *SVGFEMERGEElement) CustomDataRemove(key string) *SVGFEMERGEElement {
@@ -100,6 +142,13 @@ func (e *SVGFEMERGEElement) CLASS(s ...string) *SVGFEMERGEElement {
 	return e
 }
 
+func (e *SVGFEMERGEElement) IfCLASS(condition bool, s ...string) *SVGFEMERGEElement {
+	if condition {
+		e.CLASS(s...)
+	}
+	return e
+}
+
 // Remove the attribute class from the element.
 func (e *SVGFEMERGEElement) CLASSRemove(s ...string) *SVGFEMERGEElement {
 	if e.DelimitedStrings == nil {
@@ -122,6 +171,13 @@ func (e *SVGFEMERGEElement) ID(s string) *SVGFEMERGEElement {
 	return e
 }
 
+func (e *SVGFEMERGEElement) IfID(condition bool, s string) *SVGFEMERGEElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
 // Remove the attribute id from the element.
 func (e *SVGFEMERGEElement) IDRemove(s string) *SVGFEMERGEElement {
 	if e.StringAttributes == nil {
@@ -136,6 +192,13 @@ func (e *SVGFEMERGEElement) STYLEF(k string, format string, args ...any) *SVGFEM
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+func (e *SVGFEMERGEElement) IfSTYLE(condition bool, k string, v string) *SVGFEMERGEElement {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
 func (e *SVGFEMERGEElement) STYLE(k string, v string) *SVGFEMERGEElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -146,6 +209,13 @@ func (e *SVGFEMERGEElement) STYLE(k string, v string) *SVGFEMERGEElement {
 		e.KVStrings.Set("style", kv)
 	}
 	kv.Add(k, v)
+	return e
+}
+
+func (e *SVGFEMERGEElement) IfSTYLEF(condition bool, k string, format string, args ...any) *SVGFEMERGEElement {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
 	return e
 }
 
@@ -183,6 +253,13 @@ func (e *SVGFEMERGEElement) STYLEPairs(pairs ...string) *SVGFEMERGEElement {
 		kv.Add(pairs[i], pairs[i+1])
 	}
 
+	return e
+}
+
+func (e *SVGFEMERGEElement) IfSTYLEPairs(condition bool, pairs ...string) *SVGFEMERGEElement {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
 	return e
 }
 

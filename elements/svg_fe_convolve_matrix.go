@@ -56,13 +56,41 @@ func (e *SVGFECONVOLVEMATRIXElement) TextF(format string, args ...any) *SVGFECON
 	return e.Text(fmt.Sprintf(format, args...))
 }
 
+func (e *SVGFECONVOLVEMATRIXElement) IfText(condition bool, text string) *SVGFECONVOLVEMATRIXElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
+}
+
+func (e *SVGFECONVOLVEMATRIXElement) IfTextF(condition bool, format string, args ...any) *SVGFECONVOLVEMATRIXElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
+}
+
 func (e *SVGFECONVOLVEMATRIXElement) Escaped(text string) *SVGFECONVOLVEMATRIXElement {
 	e.Descendants = append(e.Descendants, Escaped(text))
 	return e
 }
 
+func (e *SVGFECONVOLVEMATRIXElement) IfEscaped(condition bool, text string) *SVGFECONVOLVEMATRIXElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
+}
+
 func (e *SVGFECONVOLVEMATRIXElement) EscapedF(format string, args ...any) *SVGFECONVOLVEMATRIXElement {
 	return e.Escaped(fmt.Sprintf(format, args...))
+}
+
+func (e *SVGFECONVOLVEMATRIXElement) IfEscapedF(condition bool, format string, args ...any) *SVGFECONVOLVEMATRIXElement {
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *SVGFECONVOLVEMATRIXElement) CustomData(key, value string) *SVGFECONVOLVEMATRIXElement {
@@ -73,8 +101,22 @@ func (e *SVGFECONVOLVEMATRIXElement) CustomData(key, value string) *SVGFECONVOLV
 	return e
 }
 
+func (e *SVGFECONVOLVEMATRIXElement) IfCustomData(condition bool, key, value string) *SVGFECONVOLVEMATRIXElement {
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
+}
+
 func (e *SVGFECONVOLVEMATRIXElement) CustomDataF(key, format string, args ...any) *SVGFECONVOLVEMATRIXElement {
 	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
+func (e *SVGFECONVOLVEMATRIXElement) IfCustomDataF(condition bool, key, format string, args ...any) *SVGFECONVOLVEMATRIXElement {
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *SVGFECONVOLVEMATRIXElement) CustomDataRemove(key string) *SVGFECONVOLVEMATRIXElement {
@@ -95,12 +137,26 @@ func (e *SVGFECONVOLVEMATRIXElement) TARGETY(f float64) *SVGFECONVOLVEMATRIXElem
 	return e
 }
 
+func (e *SVGFECONVOLVEMATRIXElement) IfTARGETY(condition bool, f float64) *SVGFECONVOLVEMATRIXElement {
+	if condition {
+		e.TARGETY(f)
+	}
+	return e
+}
+
 // The number of cells in each dimension for 'kernelMatrix'
 func (e *SVGFECONVOLVEMATRIXElement) ORDER(s string) *SVGFECONVOLVEMATRIXElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("order", s)
+	return e
+}
+
+func (e *SVGFECONVOLVEMATRIXElement) IfORDER(condition bool, s string) *SVGFECONVOLVEMATRIXElement {
+	if condition {
+		e.ORDER(s)
+	}
 	return e
 }
 
@@ -119,6 +175,13 @@ func (e *SVGFECONVOLVEMATRIXElement) KERNELMATRIX(s string) *SVGFECONVOLVEMATRIX
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("kernelMatrix", s)
+	return e
+}
+
+func (e *SVGFECONVOLVEMATRIXElement) IfKERNELMATRIX(condition bool, s string) *SVGFECONVOLVEMATRIXElement {
+	if condition {
+		e.KERNELMATRIX(s)
+	}
 	return e
 }
 
@@ -141,6 +204,13 @@ func (e *SVGFECONVOLVEMATRIXElement) DIVISOR(f float64) *SVGFECONVOLVEMATRIXElem
 	return e
 }
 
+func (e *SVGFECONVOLVEMATRIXElement) IfDIVISOR(condition bool, f float64) *SVGFECONVOLVEMATRIXElement {
+	if condition {
+		e.DIVISOR(f)
+	}
+	return e
+}
+
 // The bias attribute shifts the range of the filter
 // After applying the matrix operation, this bias value is added to each
 // component.
@@ -149,6 +219,13 @@ func (e *SVGFECONVOLVEMATRIXElement) BIAS(f float64) *SVGFECONVOLVEMATRIXElement
 		e.FloatAttributes = treemap.New[string, float64]()
 	}
 	e.FloatAttributes.Set("bias", f)
+	return e
+}
+
+func (e *SVGFECONVOLVEMATRIXElement) IfBIAS(condition bool, f float64) *SVGFECONVOLVEMATRIXElement {
+	if condition {
+		e.BIAS(f)
+	}
 	return e
 }
 
@@ -162,12 +239,26 @@ func (e *SVGFECONVOLVEMATRIXElement) TARGETX(f float64) *SVGFECONVOLVEMATRIXElem
 	return e
 }
 
+func (e *SVGFECONVOLVEMATRIXElement) IfTARGETX(condition bool, f float64) *SVGFECONVOLVEMATRIXElement {
+	if condition {
+		e.TARGETX(f)
+	}
+	return e
+}
+
 // The input for this filter.
 func (e *SVGFECONVOLVEMATRIXElement) IN(s string) *SVGFECONVOLVEMATRIXElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("in", s)
+	return e
+}
+
+func (e *SVGFECONVOLVEMATRIXElement) IfIN(condition bool, s string) *SVGFECONVOLVEMATRIXElement {
+	if condition {
+		e.IN(s)
+	}
 	return e
 }
 
@@ -224,6 +315,13 @@ func (e *SVGFECONVOLVEMATRIXElement) KERNELUNITLENGTH(s string) *SVGFECONVOLVEMA
 	return e
 }
 
+func (e *SVGFECONVOLVEMATRIXElement) IfKERNELUNITLENGTH(condition bool, s string) *SVGFECONVOLVEMATRIXElement {
+	if condition {
+		e.KERNELUNITLENGTH(s)
+	}
+	return e
+}
+
 // Remove the attribute kernelUnitLength from the element.
 func (e *SVGFECONVOLVEMATRIXElement) KERNELUNITLENGTHRemove(s string) *SVGFECONVOLVEMATRIXElement {
 	if e.StringAttributes == nil {
@@ -240,12 +338,26 @@ func (e *SVGFECONVOLVEMATRIXElement) PRESERVEALPHA() *SVGFECONVOLVEMATRIXElement
 	return e
 }
 
+func (e *SVGFECONVOLVEMATRIXElement) IfPRESERVEALPHA(condition bool) *SVGFECONVOLVEMATRIXElement {
+	if condition {
+		e.PRESERVEALPHASet(true)
+	}
+	return e
+}
+
 // Set the attribute preserveAlpha to the value b explicitly.
 func (e *SVGFECONVOLVEMATRIXElement) PRESERVEALPHASet(b bool) *SVGFECONVOLVEMATRIXElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("preserveAlpha", b)
+	return e
+}
+
+func (e *SVGFECONVOLVEMATRIXElement) IfSetPRESERVEALPHA(condition bool, b bool) *SVGFECONVOLVEMATRIXElement {
+	if condition {
+		e.PRESERVEALPHASet(b)
+	}
 	return e
 }
 
@@ -273,6 +385,13 @@ func (e *SVGFECONVOLVEMATRIXElement) CLASS(s ...string) *SVGFECONVOLVEMATRIXElem
 	return e
 }
 
+func (e *SVGFECONVOLVEMATRIXElement) IfCLASS(condition bool, s ...string) *SVGFECONVOLVEMATRIXElement {
+	if condition {
+		e.CLASS(s...)
+	}
+	return e
+}
+
 // Remove the attribute class from the element.
 func (e *SVGFECONVOLVEMATRIXElement) CLASSRemove(s ...string) *SVGFECONVOLVEMATRIXElement {
 	if e.DelimitedStrings == nil {
@@ -295,6 +414,13 @@ func (e *SVGFECONVOLVEMATRIXElement) ID(s string) *SVGFECONVOLVEMATRIXElement {
 	return e
 }
 
+func (e *SVGFECONVOLVEMATRIXElement) IfID(condition bool, s string) *SVGFECONVOLVEMATRIXElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
 // Remove the attribute id from the element.
 func (e *SVGFECONVOLVEMATRIXElement) IDRemove(s string) *SVGFECONVOLVEMATRIXElement {
 	if e.StringAttributes == nil {
@@ -309,6 +435,13 @@ func (e *SVGFECONVOLVEMATRIXElement) STYLEF(k string, format string, args ...any
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+func (e *SVGFECONVOLVEMATRIXElement) IfSTYLE(condition bool, k string, v string) *SVGFECONVOLVEMATRIXElement {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
 func (e *SVGFECONVOLVEMATRIXElement) STYLE(k string, v string) *SVGFECONVOLVEMATRIXElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -319,6 +452,13 @@ func (e *SVGFECONVOLVEMATRIXElement) STYLE(k string, v string) *SVGFECONVOLVEMAT
 		e.KVStrings.Set("style", kv)
 	}
 	kv.Add(k, v)
+	return e
+}
+
+func (e *SVGFECONVOLVEMATRIXElement) IfSTYLEF(condition bool, k string, format string, args ...any) *SVGFECONVOLVEMATRIXElement {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
 	return e
 }
 
@@ -356,6 +496,13 @@ func (e *SVGFECONVOLVEMATRIXElement) STYLEPairs(pairs ...string) *SVGFECONVOLVEM
 		kv.Add(pairs[i], pairs[i+1])
 	}
 
+	return e
+}
+
+func (e *SVGFECONVOLVEMATRIXElement) IfSTYLEPairs(condition bool, pairs ...string) *SVGFECONVOLVEMATRIXElement {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
 	return e
 }
 

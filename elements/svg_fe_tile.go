@@ -58,13 +58,41 @@ func (e *SVGFETILEElement) TextF(format string, args ...any) *SVGFETILEElement {
 	return e.Text(fmt.Sprintf(format, args...))
 }
 
+func (e *SVGFETILEElement) IfText(condition bool, text string) *SVGFETILEElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
+}
+
+func (e *SVGFETILEElement) IfTextF(condition bool, format string, args ...any) *SVGFETILEElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
+}
+
 func (e *SVGFETILEElement) Escaped(text string) *SVGFETILEElement {
 	e.Descendants = append(e.Descendants, Escaped(text))
 	return e
 }
 
+func (e *SVGFETILEElement) IfEscaped(condition bool, text string) *SVGFETILEElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
+}
+
 func (e *SVGFETILEElement) EscapedF(format string, args ...any) *SVGFETILEElement {
 	return e.Escaped(fmt.Sprintf(format, args...))
+}
+
+func (e *SVGFETILEElement) IfEscapedF(condition bool, format string, args ...any) *SVGFETILEElement {
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *SVGFETILEElement) CustomData(key, value string) *SVGFETILEElement {
@@ -75,8 +103,22 @@ func (e *SVGFETILEElement) CustomData(key, value string) *SVGFETILEElement {
 	return e
 }
 
+func (e *SVGFETILEElement) IfCustomData(condition bool, key, value string) *SVGFETILEElement {
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
+}
+
 func (e *SVGFETILEElement) CustomDataF(key, format string, args ...any) *SVGFETILEElement {
 	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
+func (e *SVGFETILEElement) IfCustomDataF(condition bool, key, format string, args ...any) *SVGFETILEElement {
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *SVGFETILEElement) CustomDataRemove(key string) *SVGFETILEElement {
@@ -93,6 +135,13 @@ func (e *SVGFETILEElement) IN(s string) *SVGFETILEElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("in", s)
+	return e
+}
+
+func (e *SVGFETILEElement) IfIN(condition bool, s string) *SVGFETILEElement {
+	if condition {
+		e.IN(s)
+	}
 	return e
 }
 
@@ -120,6 +169,13 @@ func (e *SVGFETILEElement) CLASS(s ...string) *SVGFETILEElement {
 	return e
 }
 
+func (e *SVGFETILEElement) IfCLASS(condition bool, s ...string) *SVGFETILEElement {
+	if condition {
+		e.CLASS(s...)
+	}
+	return e
+}
+
 // Remove the attribute class from the element.
 func (e *SVGFETILEElement) CLASSRemove(s ...string) *SVGFETILEElement {
 	if e.DelimitedStrings == nil {
@@ -142,6 +198,13 @@ func (e *SVGFETILEElement) ID(s string) *SVGFETILEElement {
 	return e
 }
 
+func (e *SVGFETILEElement) IfID(condition bool, s string) *SVGFETILEElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
 // Remove the attribute id from the element.
 func (e *SVGFETILEElement) IDRemove(s string) *SVGFETILEElement {
 	if e.StringAttributes == nil {
@@ -156,6 +219,13 @@ func (e *SVGFETILEElement) STYLEF(k string, format string, args ...any) *SVGFETI
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+func (e *SVGFETILEElement) IfSTYLE(condition bool, k string, v string) *SVGFETILEElement {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
 func (e *SVGFETILEElement) STYLE(k string, v string) *SVGFETILEElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -166,6 +236,13 @@ func (e *SVGFETILEElement) STYLE(k string, v string) *SVGFETILEElement {
 		e.KVStrings.Set("style", kv)
 	}
 	kv.Add(k, v)
+	return e
+}
+
+func (e *SVGFETILEElement) IfSTYLEF(condition bool, k string, format string, args ...any) *SVGFETILEElement {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
 	return e
 }
 
@@ -203,6 +280,13 @@ func (e *SVGFETILEElement) STYLEPairs(pairs ...string) *SVGFETILEElement {
 		kv.Add(pairs[i], pairs[i+1])
 	}
 
+	return e
+}
+
+func (e *SVGFETILEElement) IfSTYLEPairs(condition bool, pairs ...string) *SVGFETILEElement {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
 	return e
 }
 

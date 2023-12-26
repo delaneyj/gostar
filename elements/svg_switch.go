@@ -61,13 +61,41 @@ func (e *SVGSWITCHElement) TextF(format string, args ...any) *SVGSWITCHElement {
 	return e.Text(fmt.Sprintf(format, args...))
 }
 
+func (e *SVGSWITCHElement) IfText(condition bool, text string) *SVGSWITCHElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
+}
+
+func (e *SVGSWITCHElement) IfTextF(condition bool, format string, args ...any) *SVGSWITCHElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
+}
+
 func (e *SVGSWITCHElement) Escaped(text string) *SVGSWITCHElement {
 	e.Descendants = append(e.Descendants, Escaped(text))
 	return e
 }
 
+func (e *SVGSWITCHElement) IfEscaped(condition bool, text string) *SVGSWITCHElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
+}
+
 func (e *SVGSWITCHElement) EscapedF(format string, args ...any) *SVGSWITCHElement {
 	return e.Escaped(fmt.Sprintf(format, args...))
+}
+
+func (e *SVGSWITCHElement) IfEscapedF(condition bool, format string, args ...any) *SVGSWITCHElement {
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *SVGSWITCHElement) CustomData(key, value string) *SVGSWITCHElement {
@@ -78,8 +106,22 @@ func (e *SVGSWITCHElement) CustomData(key, value string) *SVGSWITCHElement {
 	return e
 }
 
+func (e *SVGSWITCHElement) IfCustomData(condition bool, key, value string) *SVGSWITCHElement {
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
+}
+
 func (e *SVGSWITCHElement) CustomDataF(key, format string, args ...any) *SVGSWITCHElement {
 	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
+func (e *SVGSWITCHElement) IfCustomDataF(condition bool, key, format string, args ...any) *SVGSWITCHElement {
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *SVGSWITCHElement) CustomDataRemove(key string) *SVGSWITCHElement {
@@ -98,6 +140,13 @@ func (e *SVGSWITCHElement) REQUIREDFEATURES(s string) *SVGSWITCHElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("requiredFeatures", s)
+	return e
+}
+
+func (e *SVGSWITCHElement) IfREQUIREDFEATURES(condition bool, s string) *SVGSWITCHElement {
+	if condition {
+		e.REQUIREDFEATURES(s)
+	}
 	return e
 }
 
@@ -120,6 +169,13 @@ func (e *SVGSWITCHElement) REQUIREDEXTENSIONS(s string) *SVGSWITCHElement {
 	return e
 }
 
+func (e *SVGSWITCHElement) IfREQUIREDEXTENSIONS(condition bool, s string) *SVGSWITCHElement {
+	if condition {
+		e.REQUIREDEXTENSIONS(s)
+	}
+	return e
+}
+
 // Remove the attribute requiredExtensions from the element.
 func (e *SVGSWITCHElement) REQUIREDEXTENSIONSRemove(s string) *SVGSWITCHElement {
 	if e.StringAttributes == nil {
@@ -137,6 +193,13 @@ func (e *SVGSWITCHElement) SYSTEMLANGUAGE(s string) *SVGSWITCHElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("systemLanguage", s)
+	return e
+}
+
+func (e *SVGSWITCHElement) IfSYSTEMLANGUAGE(condition bool, s string) *SVGSWITCHElement {
+	if condition {
+		e.SYSTEMLANGUAGE(s)
+	}
 	return e
 }
 
@@ -164,6 +227,13 @@ func (e *SVGSWITCHElement) CLASS(s ...string) *SVGSWITCHElement {
 	return e
 }
 
+func (e *SVGSWITCHElement) IfCLASS(condition bool, s ...string) *SVGSWITCHElement {
+	if condition {
+		e.CLASS(s...)
+	}
+	return e
+}
+
 // Remove the attribute class from the element.
 func (e *SVGSWITCHElement) CLASSRemove(s ...string) *SVGSWITCHElement {
 	if e.DelimitedStrings == nil {
@@ -186,6 +256,13 @@ func (e *SVGSWITCHElement) ID(s string) *SVGSWITCHElement {
 	return e
 }
 
+func (e *SVGSWITCHElement) IfID(condition bool, s string) *SVGSWITCHElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
 // Remove the attribute id from the element.
 func (e *SVGSWITCHElement) IDRemove(s string) *SVGSWITCHElement {
 	if e.StringAttributes == nil {
@@ -200,6 +277,13 @@ func (e *SVGSWITCHElement) STYLEF(k string, format string, args ...any) *SVGSWIT
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+func (e *SVGSWITCHElement) IfSTYLE(condition bool, k string, v string) *SVGSWITCHElement {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
 func (e *SVGSWITCHElement) STYLE(k string, v string) *SVGSWITCHElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -210,6 +294,13 @@ func (e *SVGSWITCHElement) STYLE(k string, v string) *SVGSWITCHElement {
 		e.KVStrings.Set("style", kv)
 	}
 	kv.Add(k, v)
+	return e
+}
+
+func (e *SVGSWITCHElement) IfSTYLEF(condition bool, k string, format string, args ...any) *SVGSWITCHElement {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
 	return e
 }
 
@@ -247,6 +338,13 @@ func (e *SVGSWITCHElement) STYLEPairs(pairs ...string) *SVGSWITCHElement {
 		kv.Add(pairs[i], pairs[i+1])
 	}
 
+	return e
+}
+
+func (e *SVGSWITCHElement) IfSTYLEPairs(condition bool, pairs ...string) *SVGSWITCHElement {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
 	return e
 }
 

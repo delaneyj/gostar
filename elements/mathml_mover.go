@@ -55,13 +55,41 @@ func (e *MathMLMOVERElement) TextF(format string, args ...any) *MathMLMOVEREleme
 	return e.Text(fmt.Sprintf(format, args...))
 }
 
+func (e *MathMLMOVERElement) IfText(condition bool, text string) *MathMLMOVERElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
+}
+
+func (e *MathMLMOVERElement) IfTextF(condition bool, format string, args ...any) *MathMLMOVERElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
+}
+
 func (e *MathMLMOVERElement) Escaped(text string) *MathMLMOVERElement {
 	e.Descendants = append(e.Descendants, Escaped(text))
 	return e
 }
 
+func (e *MathMLMOVERElement) IfEscaped(condition bool, text string) *MathMLMOVERElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
+}
+
 func (e *MathMLMOVERElement) EscapedF(format string, args ...any) *MathMLMOVERElement {
 	return e.Escaped(fmt.Sprintf(format, args...))
+}
+
+func (e *MathMLMOVERElement) IfEscapedF(condition bool, format string, args ...any) *MathMLMOVERElement {
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *MathMLMOVERElement) CustomData(key, value string) *MathMLMOVERElement {
@@ -72,8 +100,22 @@ func (e *MathMLMOVERElement) CustomData(key, value string) *MathMLMOVERElement {
 	return e
 }
 
+func (e *MathMLMOVERElement) IfCustomData(condition bool, key, value string) *MathMLMOVERElement {
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
+}
+
 func (e *MathMLMOVERElement) CustomDataF(key, format string, args ...any) *MathMLMOVERElement {
 	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
+func (e *MathMLMOVERElement) IfCustomDataF(condition bool, key, format string, args ...any) *MathMLMOVERElement {
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *MathMLMOVERElement) CustomDataRemove(key string) *MathMLMOVERElement {
@@ -98,6 +140,13 @@ func (e *MathMLMOVERElement) CLASS(s ...string) *MathMLMOVERElement {
 		e.DelimitedStrings.Set("class", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *MathMLMOVERElement) IfCLASS(condition bool, s ...string) *MathMLMOVERElement {
+	if condition {
+		e.CLASS(s...)
+	}
 	return e
 }
 
@@ -183,6 +232,13 @@ func (e *MathMLMOVERElement) ID(s string) *MathMLMOVERElement {
 	return e
 }
 
+func (e *MathMLMOVERElement) IfID(condition bool, s string) *MathMLMOVERElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
 // Remove the attribute id from the element.
 func (e *MathMLMOVERElement) IDRemove(s string) *MathMLMOVERElement {
 	if e.StringAttributes == nil {
@@ -200,6 +256,13 @@ func (e *MathMLMOVERElement) MATHBACKGROUND(s string) *MathMLMOVERElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("mathbackground", s)
+	return e
+}
+
+func (e *MathMLMOVERElement) IfMATHBACKGROUND(condition bool, s string) *MathMLMOVERElement {
+	if condition {
+		e.MATHBACKGROUND(s)
+	}
 	return e
 }
 
@@ -223,6 +286,13 @@ func (e *MathMLMOVERElement) MATHCOLOR(s string) *MathMLMOVERElement {
 	return e
 }
 
+func (e *MathMLMOVERElement) IfMATHCOLOR(condition bool, s string) *MathMLMOVERElement {
+	if condition {
+		e.MATHCOLOR(s)
+	}
+	return e
+}
+
 // Remove the attribute mathcolor from the element.
 func (e *MathMLMOVERElement) MATHCOLORRemove(s string) *MathMLMOVERElement {
 	if e.StringAttributes == nil {
@@ -239,6 +309,13 @@ func (e *MathMLMOVERElement) MATHSIZESTR(s string) *MathMLMOVERElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("mathsize", s)
+	return e
+}
+
+func (e *MathMLMOVERElement) IfMATHSIZESTR(condition bool, s string) *MathMLMOVERElement {
+	if condition {
+		e.MATHSIZESTR(s)
+	}
 	return e
 }
 
@@ -263,6 +340,13 @@ func (e *MathMLMOVERElement) NONCE(s string) *MathMLMOVERElement {
 	return e
 }
 
+func (e *MathMLMOVERElement) IfNONCE(condition bool, s string) *MathMLMOVERElement {
+	if condition {
+		e.NONCE(s)
+	}
+	return e
+}
+
 // Remove the attribute nonce from the element.
 func (e *MathMLMOVERElement) NONCERemove(s string) *MathMLMOVERElement {
 	if e.StringAttributes == nil {
@@ -282,6 +366,13 @@ func (e *MathMLMOVERElement) SCRIPTLEVEL(i int) *MathMLMOVERElement {
 	return e
 }
 
+func (e *MathMLMOVERElement) IfSCRIPTLEVEL(condition bool, i int) *MathMLMOVERElement {
+	if condition {
+		e.SCRIPTLEVEL(i)
+	}
+	return e
+}
+
 // Remove the attribute scriptlevel from the element.
 func (e *MathMLMOVERElement) SCRIPTLEVELRemove(i int) *MathMLMOVERElement {
 	if e.IntAttributes == nil {
@@ -297,6 +388,13 @@ func (e *MathMLMOVERElement) STYLEF(k string, format string, args ...any) *MathM
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+func (e *MathMLMOVERElement) IfSTYLE(condition bool, k string, v string) *MathMLMOVERElement {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
 func (e *MathMLMOVERElement) STYLE(k string, v string) *MathMLMOVERElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -307,6 +405,13 @@ func (e *MathMLMOVERElement) STYLE(k string, v string) *MathMLMOVERElement {
 		e.KVStrings.Set("style", kv)
 	}
 	kv.Add(k, v)
+	return e
+}
+
+func (e *MathMLMOVERElement) IfSTYLEF(condition bool, k string, format string, args ...any) *MathMLMOVERElement {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
 	return e
 }
 
@@ -347,6 +452,13 @@ func (e *MathMLMOVERElement) STYLEPairs(pairs ...string) *MathMLMOVERElement {
 	return e
 }
 
+func (e *MathMLMOVERElement) IfSTYLEPairs(condition bool, pairs ...string) *MathMLMOVERElement {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
+	return e
+}
+
 // Remove the attribute style from the element.
 func (e *MathMLMOVERElement) STYLERemove(keys ...string) *MathMLMOVERElement {
 	if e.KVStrings == nil {
@@ -371,6 +483,13 @@ func (e *MathMLMOVERElement) TABINDEX(i int) *MathMLMOVERElement {
 		e.IntAttributes = treemap.New[string, int]()
 	}
 	e.IntAttributes.Set("tabindex", i)
+	return e
+}
+
+func (e *MathMLMOVERElement) IfTABINDEX(condition bool, i int) *MathMLMOVERElement {
+	if condition {
+		e.TABINDEX(i)
+	}
 	return e
 }
 

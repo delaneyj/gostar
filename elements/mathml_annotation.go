@@ -58,13 +58,41 @@ func (e *MathMLANNOTATIONElement) TextF(format string, args ...any) *MathMLANNOT
 	return e.Text(fmt.Sprintf(format, args...))
 }
 
+func (e *MathMLANNOTATIONElement) IfText(condition bool, text string) *MathMLANNOTATIONElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
+}
+
+func (e *MathMLANNOTATIONElement) IfTextF(condition bool, format string, args ...any) *MathMLANNOTATIONElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
+}
+
 func (e *MathMLANNOTATIONElement) Escaped(text string) *MathMLANNOTATIONElement {
 	e.Descendants = append(e.Descendants, Escaped(text))
 	return e
 }
 
+func (e *MathMLANNOTATIONElement) IfEscaped(condition bool, text string) *MathMLANNOTATIONElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
+}
+
 func (e *MathMLANNOTATIONElement) EscapedF(format string, args ...any) *MathMLANNOTATIONElement {
 	return e.Escaped(fmt.Sprintf(format, args...))
+}
+
+func (e *MathMLANNOTATIONElement) IfEscapedF(condition bool, format string, args ...any) *MathMLANNOTATIONElement {
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *MathMLANNOTATIONElement) CustomData(key, value string) *MathMLANNOTATIONElement {
@@ -75,8 +103,22 @@ func (e *MathMLANNOTATIONElement) CustomData(key, value string) *MathMLANNOTATIO
 	return e
 }
 
+func (e *MathMLANNOTATIONElement) IfCustomData(condition bool, key, value string) *MathMLANNOTATIONElement {
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
+}
+
 func (e *MathMLANNOTATIONElement) CustomDataF(key, format string, args ...any) *MathMLANNOTATIONElement {
 	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
+func (e *MathMLANNOTATIONElement) IfCustomDataF(condition bool, key, format string, args ...any) *MathMLANNOTATIONElement {
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *MathMLANNOTATIONElement) CustomDataRemove(key string) *MathMLANNOTATIONElement {
@@ -98,6 +140,13 @@ func (e *MathMLANNOTATIONElement) MATHBACKGROUND(s string) *MathMLANNOTATIONElem
 	return e
 }
 
+func (e *MathMLANNOTATIONElement) IfMATHBACKGROUND(condition bool, s string) *MathMLANNOTATIONElement {
+	if condition {
+		e.MATHBACKGROUND(s)
+	}
+	return e
+}
+
 // Remove the attribute mathbackground from the element.
 func (e *MathMLANNOTATIONElement) MATHBACKGROUNDRemove(s string) *MathMLANNOTATIONElement {
 	if e.StringAttributes == nil {
@@ -113,6 +162,13 @@ func (e *MathMLANNOTATIONElement) NAME(s string) *MathMLANNOTATIONElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("name", s)
+	return e
+}
+
+func (e *MathMLANNOTATIONElement) IfNAME(condition bool, s string) *MathMLANNOTATIONElement {
+	if condition {
+		e.NAME(s)
+	}
 	return e
 }
 
@@ -139,6 +195,13 @@ func (e *MathMLANNOTATIONElement) CLASS(s ...string) *MathMLANNOTATIONElement {
 		e.DelimitedStrings.Set("class", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *MathMLANNOTATIONElement) IfCLASS(condition bool, s ...string) *MathMLANNOTATIONElement {
+	if condition {
+		e.CLASS(s...)
+	}
 	return e
 }
 
@@ -224,6 +287,13 @@ func (e *MathMLANNOTATIONElement) ID(s string) *MathMLANNOTATIONElement {
 	return e
 }
 
+func (e *MathMLANNOTATIONElement) IfID(condition bool, s string) *MathMLANNOTATIONElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
 // Remove the attribute id from the element.
 func (e *MathMLANNOTATIONElement) IDRemove(s string) *MathMLANNOTATIONElement {
 	if e.StringAttributes == nil {
@@ -273,6 +343,13 @@ func (e *MathMLANNOTATIONElement) MATHCOLOR(s string) *MathMLANNOTATIONElement {
 	return e
 }
 
+func (e *MathMLANNOTATIONElement) IfMATHCOLOR(condition bool, s string) *MathMLANNOTATIONElement {
+	if condition {
+		e.MATHCOLOR(s)
+	}
+	return e
+}
+
 // Remove the attribute mathcolor from the element.
 func (e *MathMLANNOTATIONElement) MATHCOLORRemove(s string) *MathMLANNOTATIONElement {
 	if e.StringAttributes == nil {
@@ -291,6 +368,13 @@ func (e *MathMLANNOTATIONElement) NONCE(s string) *MathMLANNOTATIONElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("nonce", s)
+	return e
+}
+
+func (e *MathMLANNOTATIONElement) IfNONCE(condition bool, s string) *MathMLANNOTATIONElement {
+	if condition {
+		e.NONCE(s)
+	}
 	return e
 }
 
@@ -313,6 +397,13 @@ func (e *MathMLANNOTATIONElement) SCRIPTLEVEL(i int) *MathMLANNOTATIONElement {
 	return e
 }
 
+func (e *MathMLANNOTATIONElement) IfSCRIPTLEVEL(condition bool, i int) *MathMLANNOTATIONElement {
+	if condition {
+		e.SCRIPTLEVEL(i)
+	}
+	return e
+}
+
 // Remove the attribute scriptlevel from the element.
 func (e *MathMLANNOTATIONElement) SCRIPTLEVELRemove(i int) *MathMLANNOTATIONElement {
 	if e.IntAttributes == nil {
@@ -328,6 +419,13 @@ func (e *MathMLANNOTATIONElement) STYLEF(k string, format string, args ...any) *
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+func (e *MathMLANNOTATIONElement) IfSTYLE(condition bool, k string, v string) *MathMLANNOTATIONElement {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
 func (e *MathMLANNOTATIONElement) STYLE(k string, v string) *MathMLANNOTATIONElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -338,6 +436,13 @@ func (e *MathMLANNOTATIONElement) STYLE(k string, v string) *MathMLANNOTATIONEle
 		e.KVStrings.Set("style", kv)
 	}
 	kv.Add(k, v)
+	return e
+}
+
+func (e *MathMLANNOTATIONElement) IfSTYLEF(condition bool, k string, format string, args ...any) *MathMLANNOTATIONElement {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
 	return e
 }
 
@@ -378,6 +483,13 @@ func (e *MathMLANNOTATIONElement) STYLEPairs(pairs ...string) *MathMLANNOTATIONE
 	return e
 }
 
+func (e *MathMLANNOTATIONElement) IfSTYLEPairs(condition bool, pairs ...string) *MathMLANNOTATIONElement {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
+	return e
+}
+
 // Remove the attribute style from the element.
 func (e *MathMLANNOTATIONElement) STYLERemove(keys ...string) *MathMLANNOTATIONElement {
 	if e.KVStrings == nil {
@@ -405,6 +517,13 @@ func (e *MathMLANNOTATIONElement) TABINDEX(i int) *MathMLANNOTATIONElement {
 	return e
 }
 
+func (e *MathMLANNOTATIONElement) IfTABINDEX(condition bool, i int) *MathMLANNOTATIONElement {
+	if condition {
+		e.TABINDEX(i)
+	}
+	return e
+}
+
 // Remove the attribute tabindex from the element.
 func (e *MathMLANNOTATIONElement) TABINDEXRemove(i int) *MathMLANNOTATIONElement {
 	if e.IntAttributes == nil {
@@ -421,6 +540,13 @@ func (e *MathMLANNOTATIONElement) MATHSIZESTR(s string) *MathMLANNOTATIONElement
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("mathsize", s)
+	return e
+}
+
+func (e *MathMLANNOTATIONElement) IfMATHSIZESTR(condition bool, s string) *MathMLANNOTATIONElement {
+	if condition {
+		e.MATHSIZESTR(s)
+	}
 	return e
 }
 

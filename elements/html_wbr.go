@@ -56,13 +56,41 @@ func (e *WBRElement) TextF(format string, args ...any) *WBRElement {
 	return e.Text(fmt.Sprintf(format, args...))
 }
 
+func (e *WBRElement) IfText(condition bool, text string) *WBRElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
+}
+
+func (e *WBRElement) IfTextF(condition bool, format string, args ...any) *WBRElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
+}
+
 func (e *WBRElement) Escaped(text string) *WBRElement {
 	e.Descendants = append(e.Descendants, Escaped(text))
 	return e
 }
 
+func (e *WBRElement) IfEscaped(condition bool, text string) *WBRElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
+}
+
 func (e *WBRElement) EscapedF(format string, args ...any) *WBRElement {
 	return e.Escaped(fmt.Sprintf(format, args...))
+}
+
+func (e *WBRElement) IfEscapedF(condition bool, format string, args ...any) *WBRElement {
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *WBRElement) CustomData(key, value string) *WBRElement {
@@ -73,8 +101,22 @@ func (e *WBRElement) CustomData(key, value string) *WBRElement {
 	return e
 }
 
+func (e *WBRElement) IfCustomData(condition bool, key, value string) *WBRElement {
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
+}
+
 func (e *WBRElement) CustomDataF(key, format string, args ...any) *WBRElement {
 	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
+func (e *WBRElement) IfCustomDataF(condition bool, key, format string, args ...any) *WBRElement {
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *WBRElement) CustomDataRemove(key string) *WBRElement {
@@ -94,6 +136,13 @@ func (e *WBRElement) ACCESSKEY(r rune) *WBRElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("accesskey", string(r))
+	return e
+}
+
+func (e *WBRElement) IfACCESSKEY(condition bool, r rune) *WBRElement {
+	if condition {
+		e.ACCESSKEY(r)
+	}
 	return e
 }
 
@@ -179,12 +228,26 @@ func (e *WBRElement) AUTOFOCUS() *WBRElement {
 	return e
 }
 
+func (e *WBRElement) IfAUTOFOCUS(condition bool) *WBRElement {
+	if condition {
+		e.AUTOFOCUSSet(true)
+	}
+	return e
+}
+
 // Set the attribute autofocus to the value b explicitly.
 func (e *WBRElement) AUTOFOCUSSet(b bool) *WBRElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("autofocus", b)
+	return e
+}
+
+func (e *WBRElement) IfSetAUTOFOCUS(condition bool, b bool) *WBRElement {
+	if condition {
+		e.AUTOFOCUSSet(b)
+	}
 	return e
 }
 
@@ -212,6 +275,13 @@ func (e *WBRElement) CLASS(s ...string) *WBRElement {
 		e.DelimitedStrings.Set("class", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *WBRElement) IfCLASS(condition bool, s ...string) *WBRElement {
+	if condition {
+		e.CLASS(s...)
+	}
 	return e
 }
 
@@ -420,6 +490,13 @@ func (e *WBRElement) EXPORTPARTS(s ...string) *WBRElement {
 	return e
 }
 
+func (e *WBRElement) IfEXPORTPARTS(condition bool, s ...string) *WBRElement {
+	if condition {
+		e.EXPORTPARTS(s...)
+	}
+	return e
+}
+
 // Remove the attribute exportparts from the element.
 func (e *WBRElement) EXPORTPARTSRemove(s ...string) *WBRElement {
 	if e.DelimitedStrings == nil {
@@ -495,6 +572,13 @@ func (e *WBRElement) ID(s string) *WBRElement {
 	return e
 }
 
+func (e *WBRElement) IfID(condition bool, s string) *WBRElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
 // Remove the attribute id from the element.
 func (e *WBRElement) IDRemove(s string) *WBRElement {
 	if e.StringAttributes == nil {
@@ -521,12 +605,26 @@ func (e *WBRElement) INERT() *WBRElement {
 	return e
 }
 
+func (e *WBRElement) IfINERT(condition bool) *WBRElement {
+	if condition {
+		e.INERTSet(true)
+	}
+	return e
+}
+
 // Set the attribute inert to the value b explicitly.
 func (e *WBRElement) INERTSet(b bool) *WBRElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("inert", b)
+	return e
+}
+
+func (e *WBRElement) IfSetINERT(condition bool, b bool) *WBRElement {
+	if condition {
+		e.INERTSet(b)
+	}
 	return e
 }
 
@@ -622,6 +720,13 @@ func (e *WBRElement) IS(s string) *WBRElement {
 	return e
 }
 
+func (e *WBRElement) IfIS(condition bool, s string) *WBRElement {
+	if condition {
+		e.IS(s)
+	}
+	return e
+}
+
 // Remove the attribute is from the element.
 func (e *WBRElement) ISRemove(s string) *WBRElement {
 	if e.StringAttributes == nil {
@@ -652,6 +757,13 @@ func (e *WBRElement) ITEMID(s string) *WBRElement {
 	return e
 }
 
+func (e *WBRElement) IfITEMID(condition bool, s string) *WBRElement {
+	if condition {
+		e.ITEMID(s)
+	}
+	return e
+}
+
 // Remove the attribute itemid from the element.
 func (e *WBRElement) ITEMIDRemove(s string) *WBRElement {
 	if e.StringAttributes == nil {
@@ -677,6 +789,13 @@ func (e *WBRElement) ITEMPROP(s string) *WBRElement {
 	return e
 }
 
+func (e *WBRElement) IfITEMPROP(condition bool, s string) *WBRElement {
+	if condition {
+		e.ITEMPROP(s)
+	}
+	return e
+}
+
 // Remove the attribute itemprop from the element.
 func (e *WBRElement) ITEMPROPRemove(s string) *WBRElement {
 	if e.StringAttributes == nil {
@@ -696,6 +815,13 @@ func (e *WBRElement) ITEMREF(s string) *WBRElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("itemref", s)
+	return e
+}
+
+func (e *WBRElement) IfITEMREF(condition bool, s string) *WBRElement {
+	if condition {
+		e.ITEMREF(s)
+	}
 	return e
 }
 
@@ -721,12 +847,26 @@ func (e *WBRElement) ITEMSCOPE() *WBRElement {
 	return e
 }
 
+func (e *WBRElement) IfITEMSCOPE(condition bool) *WBRElement {
+	if condition {
+		e.ITEMSCOPESet(true)
+	}
+	return e
+}
+
 // Set the attribute itemscope to the value b explicitly.
 func (e *WBRElement) ITEMSCOPESet(b bool) *WBRElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("itemscope", b)
+	return e
+}
+
+func (e *WBRElement) IfSetITEMSCOPE(condition bool, b bool) *WBRElement {
+	if condition {
+		e.ITEMSCOPESet(b)
+	}
 	return e
 }
 
@@ -755,6 +895,13 @@ func (e *WBRElement) ITEMTYPE(s string) *WBRElement {
 	return e
 }
 
+func (e *WBRElement) IfITEMTYPE(condition bool, s string) *WBRElement {
+	if condition {
+		e.ITEMTYPE(s)
+	}
+	return e
+}
+
 // Remove the attribute itemtype from the element.
 func (e *WBRElement) ITEMTYPERemove(s string) *WBRElement {
 	if e.StringAttributes == nil {
@@ -778,6 +925,13 @@ func (e *WBRElement) LANG(s string) *WBRElement {
 	return e
 }
 
+func (e *WBRElement) IfLANG(condition bool, s string) *WBRElement {
+	if condition {
+		e.LANG(s)
+	}
+	return e
+}
+
 // Remove the attribute lang from the element.
 func (e *WBRElement) LANGRemove(s string) *WBRElement {
 	if e.StringAttributes == nil {
@@ -796,6 +950,13 @@ func (e *WBRElement) NONCE(s string) *WBRElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("nonce", s)
+	return e
+}
+
+func (e *WBRElement) IfNONCE(condition bool, s string) *WBRElement {
+	if condition {
+		e.NONCE(s)
+	}
 	return e
 }
 
@@ -822,6 +983,13 @@ func (e *WBRElement) PART(s ...string) *WBRElement {
 		e.DelimitedStrings.Set("part", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *WBRElement) IfPART(condition bool, s ...string) *WBRElement {
+	if condition {
+		e.PART(s...)
+	}
 	return e
 }
 
@@ -892,6 +1060,13 @@ func (e *WBRElement) SLOT(s string) *WBRElement {
 	return e
 }
 
+func (e *WBRElement) IfSLOT(condition bool, s string) *WBRElement {
+	if condition {
+		e.SLOT(s)
+	}
+	return e
+}
+
 // Remove the attribute slot from the element.
 func (e *WBRElement) SLOTRemove(s string) *WBRElement {
 	if e.StringAttributes == nil {
@@ -950,6 +1125,13 @@ func (e *WBRElement) STYLEF(k string, format string, args ...any) *WBRElement {
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+func (e *WBRElement) IfSTYLE(condition bool, k string, v string) *WBRElement {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
 func (e *WBRElement) STYLE(k string, v string) *WBRElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -960,6 +1142,13 @@ func (e *WBRElement) STYLE(k string, v string) *WBRElement {
 		e.KVStrings.Set("style", kv)
 	}
 	kv.Add(k, v)
+	return e
+}
+
+func (e *WBRElement) IfSTYLEF(condition bool, k string, format string, args ...any) *WBRElement {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
 	return e
 }
 
@@ -1000,6 +1189,13 @@ func (e *WBRElement) STYLEPairs(pairs ...string) *WBRElement {
 	return e
 }
 
+func (e *WBRElement) IfSTYLEPairs(condition bool, pairs ...string) *WBRElement {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
+	return e
+}
+
 // Remove the attribute style from the element.
 func (e *WBRElement) STYLERemove(keys ...string) *WBRElement {
 	if e.KVStrings == nil {
@@ -1034,6 +1230,13 @@ func (e *WBRElement) TABINDEX(i int) *WBRElement {
 		e.IntAttributes = treemap.New[string, int]()
 	}
 	e.IntAttributes.Set("tabindex", i)
+	return e
+}
+
+func (e *WBRElement) IfTABINDEX(condition bool, i int) *WBRElement {
+	if condition {
+		e.TABINDEX(i)
+	}
 	return e
 }
 
@@ -1072,6 +1275,13 @@ func (e *WBRElement) TITLE(s string) *WBRElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("title", s)
+	return e
+}
+
+func (e *WBRElement) IfTITLE(condition bool, s string) *WBRElement {
+	if condition {
+		e.TITLE(s)
+	}
 	return e
 }
 

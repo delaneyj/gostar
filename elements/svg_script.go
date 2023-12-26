@@ -56,13 +56,41 @@ func (e *SVGSCRIPTElement) TextF(format string, args ...any) *SVGSCRIPTElement {
 	return e.Text(fmt.Sprintf(format, args...))
 }
 
+func (e *SVGSCRIPTElement) IfText(condition bool, text string) *SVGSCRIPTElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
+}
+
+func (e *SVGSCRIPTElement) IfTextF(condition bool, format string, args ...any) *SVGSCRIPTElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
+}
+
 func (e *SVGSCRIPTElement) Escaped(text string) *SVGSCRIPTElement {
 	e.Descendants = append(e.Descendants, Escaped(text))
 	return e
 }
 
+func (e *SVGSCRIPTElement) IfEscaped(condition bool, text string) *SVGSCRIPTElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
+}
+
 func (e *SVGSCRIPTElement) EscapedF(format string, args ...any) *SVGSCRIPTElement {
 	return e.Escaped(fmt.Sprintf(format, args...))
+}
+
+func (e *SVGSCRIPTElement) IfEscapedF(condition bool, format string, args ...any) *SVGSCRIPTElement {
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *SVGSCRIPTElement) CustomData(key, value string) *SVGSCRIPTElement {
@@ -73,8 +101,22 @@ func (e *SVGSCRIPTElement) CustomData(key, value string) *SVGSCRIPTElement {
 	return e
 }
 
+func (e *SVGSCRIPTElement) IfCustomData(condition bool, key, value string) *SVGSCRIPTElement {
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
+}
+
 func (e *SVGSCRIPTElement) CustomDataF(key, format string, args ...any) *SVGSCRIPTElement {
 	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
+func (e *SVGSCRIPTElement) IfCustomDataF(condition bool, key, format string, args ...any) *SVGSCRIPTElement {
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *SVGSCRIPTElement) CustomDataRemove(key string) *SVGSCRIPTElement {
@@ -94,6 +136,13 @@ func (e *SVGSCRIPTElement) TYPE(s string) *SVGSCRIPTElement {
 	return e
 }
 
+func (e *SVGSCRIPTElement) IfTYPE(condition bool, s string) *SVGSCRIPTElement {
+	if condition {
+		e.TYPE(s)
+	}
+	return e
+}
+
 // Remove the attribute type from the element.
 func (e *SVGSCRIPTElement) TYPERemove(s string) *SVGSCRIPTElement {
 	if e.StringAttributes == nil {
@@ -110,6 +159,13 @@ func (e *SVGSCRIPTElement) HREF(s string) *SVGSCRIPTElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("href", s)
+	return e
+}
+
+func (e *SVGSCRIPTElement) IfHREF(condition bool, s string) *SVGSCRIPTElement {
+	if condition {
+		e.HREF(s)
+	}
 	return e
 }
 
@@ -164,6 +220,13 @@ func (e *SVGSCRIPTElement) CLASS(s ...string) *SVGSCRIPTElement {
 	return e
 }
 
+func (e *SVGSCRIPTElement) IfCLASS(condition bool, s ...string) *SVGSCRIPTElement {
+	if condition {
+		e.CLASS(s...)
+	}
+	return e
+}
+
 // Remove the attribute class from the element.
 func (e *SVGSCRIPTElement) CLASSRemove(s ...string) *SVGSCRIPTElement {
 	if e.DelimitedStrings == nil {
@@ -186,6 +249,13 @@ func (e *SVGSCRIPTElement) ID(s string) *SVGSCRIPTElement {
 	return e
 }
 
+func (e *SVGSCRIPTElement) IfID(condition bool, s string) *SVGSCRIPTElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
 // Remove the attribute id from the element.
 func (e *SVGSCRIPTElement) IDRemove(s string) *SVGSCRIPTElement {
 	if e.StringAttributes == nil {
@@ -200,6 +270,13 @@ func (e *SVGSCRIPTElement) STYLEF(k string, format string, args ...any) *SVGSCRI
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+func (e *SVGSCRIPTElement) IfSTYLE(condition bool, k string, v string) *SVGSCRIPTElement {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
 func (e *SVGSCRIPTElement) STYLE(k string, v string) *SVGSCRIPTElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -210,6 +287,13 @@ func (e *SVGSCRIPTElement) STYLE(k string, v string) *SVGSCRIPTElement {
 		e.KVStrings.Set("style", kv)
 	}
 	kv.Add(k, v)
+	return e
+}
+
+func (e *SVGSCRIPTElement) IfSTYLEF(condition bool, k string, format string, args ...any) *SVGSCRIPTElement {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
 	return e
 }
 
@@ -247,6 +331,13 @@ func (e *SVGSCRIPTElement) STYLEPairs(pairs ...string) *SVGSCRIPTElement {
 		kv.Add(pairs[i], pairs[i+1])
 	}
 
+	return e
+}
+
+func (e *SVGSCRIPTElement) IfSTYLEPairs(condition bool, pairs ...string) *SVGSCRIPTElement {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
 	return e
 }
 

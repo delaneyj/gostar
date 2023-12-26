@@ -55,13 +55,41 @@ func (e *MathMLMPHANTOMElement) TextF(format string, args ...any) *MathMLMPHANTO
 	return e.Text(fmt.Sprintf(format, args...))
 }
 
+func (e *MathMLMPHANTOMElement) IfText(condition bool, text string) *MathMLMPHANTOMElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
+}
+
+func (e *MathMLMPHANTOMElement) IfTextF(condition bool, format string, args ...any) *MathMLMPHANTOMElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
+}
+
 func (e *MathMLMPHANTOMElement) Escaped(text string) *MathMLMPHANTOMElement {
 	e.Descendants = append(e.Descendants, Escaped(text))
 	return e
 }
 
+func (e *MathMLMPHANTOMElement) IfEscaped(condition bool, text string) *MathMLMPHANTOMElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
+}
+
 func (e *MathMLMPHANTOMElement) EscapedF(format string, args ...any) *MathMLMPHANTOMElement {
 	return e.Escaped(fmt.Sprintf(format, args...))
+}
+
+func (e *MathMLMPHANTOMElement) IfEscapedF(condition bool, format string, args ...any) *MathMLMPHANTOMElement {
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *MathMLMPHANTOMElement) CustomData(key, value string) *MathMLMPHANTOMElement {
@@ -72,8 +100,22 @@ func (e *MathMLMPHANTOMElement) CustomData(key, value string) *MathMLMPHANTOMEle
 	return e
 }
 
+func (e *MathMLMPHANTOMElement) IfCustomData(condition bool, key, value string) *MathMLMPHANTOMElement {
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
+}
+
 func (e *MathMLMPHANTOMElement) CustomDataF(key, format string, args ...any) *MathMLMPHANTOMElement {
 	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
+func (e *MathMLMPHANTOMElement) IfCustomDataF(condition bool, key, format string, args ...any) *MathMLMPHANTOMElement {
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *MathMLMPHANTOMElement) CustomDataRemove(key string) *MathMLMPHANTOMElement {
@@ -98,6 +140,13 @@ func (e *MathMLMPHANTOMElement) CLASS(s ...string) *MathMLMPHANTOMElement {
 		e.DelimitedStrings.Set("class", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *MathMLMPHANTOMElement) IfCLASS(condition bool, s ...string) *MathMLMPHANTOMElement {
+	if condition {
+		e.CLASS(s...)
+	}
 	return e
 }
 
@@ -183,6 +232,13 @@ func (e *MathMLMPHANTOMElement) ID(s string) *MathMLMPHANTOMElement {
 	return e
 }
 
+func (e *MathMLMPHANTOMElement) IfID(condition bool, s string) *MathMLMPHANTOMElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
 // Remove the attribute id from the element.
 func (e *MathMLMPHANTOMElement) IDRemove(s string) *MathMLMPHANTOMElement {
 	if e.StringAttributes == nil {
@@ -200,6 +256,13 @@ func (e *MathMLMPHANTOMElement) MATHBACKGROUND(s string) *MathMLMPHANTOMElement 
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("mathbackground", s)
+	return e
+}
+
+func (e *MathMLMPHANTOMElement) IfMATHBACKGROUND(condition bool, s string) *MathMLMPHANTOMElement {
+	if condition {
+		e.MATHBACKGROUND(s)
+	}
 	return e
 }
 
@@ -223,6 +286,13 @@ func (e *MathMLMPHANTOMElement) MATHCOLOR(s string) *MathMLMPHANTOMElement {
 	return e
 }
 
+func (e *MathMLMPHANTOMElement) IfMATHCOLOR(condition bool, s string) *MathMLMPHANTOMElement {
+	if condition {
+		e.MATHCOLOR(s)
+	}
+	return e
+}
+
 // Remove the attribute mathcolor from the element.
 func (e *MathMLMPHANTOMElement) MATHCOLORRemove(s string) *MathMLMPHANTOMElement {
 	if e.StringAttributes == nil {
@@ -239,6 +309,13 @@ func (e *MathMLMPHANTOMElement) MATHSIZESTR(s string) *MathMLMPHANTOMElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("mathsize", s)
+	return e
+}
+
+func (e *MathMLMPHANTOMElement) IfMATHSIZESTR(condition bool, s string) *MathMLMPHANTOMElement {
+	if condition {
+		e.MATHSIZESTR(s)
+	}
 	return e
 }
 
@@ -263,6 +340,13 @@ func (e *MathMLMPHANTOMElement) NONCE(s string) *MathMLMPHANTOMElement {
 	return e
 }
 
+func (e *MathMLMPHANTOMElement) IfNONCE(condition bool, s string) *MathMLMPHANTOMElement {
+	if condition {
+		e.NONCE(s)
+	}
+	return e
+}
+
 // Remove the attribute nonce from the element.
 func (e *MathMLMPHANTOMElement) NONCERemove(s string) *MathMLMPHANTOMElement {
 	if e.StringAttributes == nil {
@@ -282,6 +366,13 @@ func (e *MathMLMPHANTOMElement) SCRIPTLEVEL(i int) *MathMLMPHANTOMElement {
 	return e
 }
 
+func (e *MathMLMPHANTOMElement) IfSCRIPTLEVEL(condition bool, i int) *MathMLMPHANTOMElement {
+	if condition {
+		e.SCRIPTLEVEL(i)
+	}
+	return e
+}
+
 // Remove the attribute scriptlevel from the element.
 func (e *MathMLMPHANTOMElement) SCRIPTLEVELRemove(i int) *MathMLMPHANTOMElement {
 	if e.IntAttributes == nil {
@@ -297,6 +388,13 @@ func (e *MathMLMPHANTOMElement) STYLEF(k string, format string, args ...any) *Ma
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+func (e *MathMLMPHANTOMElement) IfSTYLE(condition bool, k string, v string) *MathMLMPHANTOMElement {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
 func (e *MathMLMPHANTOMElement) STYLE(k string, v string) *MathMLMPHANTOMElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -307,6 +405,13 @@ func (e *MathMLMPHANTOMElement) STYLE(k string, v string) *MathMLMPHANTOMElement
 		e.KVStrings.Set("style", kv)
 	}
 	kv.Add(k, v)
+	return e
+}
+
+func (e *MathMLMPHANTOMElement) IfSTYLEF(condition bool, k string, format string, args ...any) *MathMLMPHANTOMElement {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
 	return e
 }
 
@@ -347,6 +452,13 @@ func (e *MathMLMPHANTOMElement) STYLEPairs(pairs ...string) *MathMLMPHANTOMEleme
 	return e
 }
 
+func (e *MathMLMPHANTOMElement) IfSTYLEPairs(condition bool, pairs ...string) *MathMLMPHANTOMElement {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
+	return e
+}
+
 // Remove the attribute style from the element.
 func (e *MathMLMPHANTOMElement) STYLERemove(keys ...string) *MathMLMPHANTOMElement {
 	if e.KVStrings == nil {
@@ -371,6 +483,13 @@ func (e *MathMLMPHANTOMElement) TABINDEX(i int) *MathMLMPHANTOMElement {
 		e.IntAttributes = treemap.New[string, int]()
 	}
 	e.IntAttributes.Set("tabindex", i)
+	return e
+}
+
+func (e *MathMLMPHANTOMElement) IfTABINDEX(condition bool, i int) *MathMLMPHANTOMElement {
+	if condition {
+		e.TABINDEX(i)
+	}
 	return e
 }
 

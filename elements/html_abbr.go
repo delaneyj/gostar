@@ -57,13 +57,41 @@ func (e *ABBRElement) TextF(format string, args ...any) *ABBRElement {
 	return e.Text(fmt.Sprintf(format, args...))
 }
 
+func (e *ABBRElement) IfText(condition bool, text string) *ABBRElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
+}
+
+func (e *ABBRElement) IfTextF(condition bool, format string, args ...any) *ABBRElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
+}
+
 func (e *ABBRElement) Escaped(text string) *ABBRElement {
 	e.Descendants = append(e.Descendants, Escaped(text))
 	return e
 }
 
+func (e *ABBRElement) IfEscaped(condition bool, text string) *ABBRElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
+}
+
 func (e *ABBRElement) EscapedF(format string, args ...any) *ABBRElement {
 	return e.Escaped(fmt.Sprintf(format, args...))
+}
+
+func (e *ABBRElement) IfEscapedF(condition bool, format string, args ...any) *ABBRElement {
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *ABBRElement) CustomData(key, value string) *ABBRElement {
@@ -74,8 +102,22 @@ func (e *ABBRElement) CustomData(key, value string) *ABBRElement {
 	return e
 }
 
+func (e *ABBRElement) IfCustomData(condition bool, key, value string) *ABBRElement {
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
+}
+
 func (e *ABBRElement) CustomDataF(key, format string, args ...any) *ABBRElement {
 	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
+func (e *ABBRElement) IfCustomDataF(condition bool, key, format string, args ...any) *ABBRElement {
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *ABBRElement) CustomDataRemove(key string) *ABBRElement {
@@ -93,6 +135,13 @@ func (e *ABBRElement) TITLE(s string) *ABBRElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("title", s)
+	return e
+}
+
+func (e *ABBRElement) IfTITLE(condition bool, s string) *ABBRElement {
+	if condition {
+		e.TITLE(s)
+	}
 	return e
 }
 
@@ -114,6 +163,13 @@ func (e *ABBRElement) ACCESSKEY(r rune) *ABBRElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("accesskey", string(r))
+	return e
+}
+
+func (e *ABBRElement) IfACCESSKEY(condition bool, r rune) *ABBRElement {
+	if condition {
+		e.ACCESSKEY(r)
+	}
 	return e
 }
 
@@ -199,12 +255,26 @@ func (e *ABBRElement) AUTOFOCUS() *ABBRElement {
 	return e
 }
 
+func (e *ABBRElement) IfAUTOFOCUS(condition bool) *ABBRElement {
+	if condition {
+		e.AUTOFOCUSSet(true)
+	}
+	return e
+}
+
 // Set the attribute autofocus to the value b explicitly.
 func (e *ABBRElement) AUTOFOCUSSet(b bool) *ABBRElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("autofocus", b)
+	return e
+}
+
+func (e *ABBRElement) IfSetAUTOFOCUS(condition bool, b bool) *ABBRElement {
+	if condition {
+		e.AUTOFOCUSSet(b)
+	}
 	return e
 }
 
@@ -232,6 +302,13 @@ func (e *ABBRElement) CLASS(s ...string) *ABBRElement {
 		e.DelimitedStrings.Set("class", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *ABBRElement) IfCLASS(condition bool, s ...string) *ABBRElement {
+	if condition {
+		e.CLASS(s...)
+	}
 	return e
 }
 
@@ -440,6 +517,13 @@ func (e *ABBRElement) EXPORTPARTS(s ...string) *ABBRElement {
 	return e
 }
 
+func (e *ABBRElement) IfEXPORTPARTS(condition bool, s ...string) *ABBRElement {
+	if condition {
+		e.EXPORTPARTS(s...)
+	}
+	return e
+}
+
 // Remove the attribute exportparts from the element.
 func (e *ABBRElement) EXPORTPARTSRemove(s ...string) *ABBRElement {
 	if e.DelimitedStrings == nil {
@@ -515,6 +599,13 @@ func (e *ABBRElement) ID(s string) *ABBRElement {
 	return e
 }
 
+func (e *ABBRElement) IfID(condition bool, s string) *ABBRElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
 // Remove the attribute id from the element.
 func (e *ABBRElement) IDRemove(s string) *ABBRElement {
 	if e.StringAttributes == nil {
@@ -541,12 +632,26 @@ func (e *ABBRElement) INERT() *ABBRElement {
 	return e
 }
 
+func (e *ABBRElement) IfINERT(condition bool) *ABBRElement {
+	if condition {
+		e.INERTSet(true)
+	}
+	return e
+}
+
 // Set the attribute inert to the value b explicitly.
 func (e *ABBRElement) INERTSet(b bool) *ABBRElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("inert", b)
+	return e
+}
+
+func (e *ABBRElement) IfSetINERT(condition bool, b bool) *ABBRElement {
+	if condition {
+		e.INERTSet(b)
+	}
 	return e
 }
 
@@ -642,6 +747,13 @@ func (e *ABBRElement) IS(s string) *ABBRElement {
 	return e
 }
 
+func (e *ABBRElement) IfIS(condition bool, s string) *ABBRElement {
+	if condition {
+		e.IS(s)
+	}
+	return e
+}
+
 // Remove the attribute is from the element.
 func (e *ABBRElement) ISRemove(s string) *ABBRElement {
 	if e.StringAttributes == nil {
@@ -672,6 +784,13 @@ func (e *ABBRElement) ITEMID(s string) *ABBRElement {
 	return e
 }
 
+func (e *ABBRElement) IfITEMID(condition bool, s string) *ABBRElement {
+	if condition {
+		e.ITEMID(s)
+	}
+	return e
+}
+
 // Remove the attribute itemid from the element.
 func (e *ABBRElement) ITEMIDRemove(s string) *ABBRElement {
 	if e.StringAttributes == nil {
@@ -697,6 +816,13 @@ func (e *ABBRElement) ITEMPROP(s string) *ABBRElement {
 	return e
 }
 
+func (e *ABBRElement) IfITEMPROP(condition bool, s string) *ABBRElement {
+	if condition {
+		e.ITEMPROP(s)
+	}
+	return e
+}
+
 // Remove the attribute itemprop from the element.
 func (e *ABBRElement) ITEMPROPRemove(s string) *ABBRElement {
 	if e.StringAttributes == nil {
@@ -716,6 +842,13 @@ func (e *ABBRElement) ITEMREF(s string) *ABBRElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("itemref", s)
+	return e
+}
+
+func (e *ABBRElement) IfITEMREF(condition bool, s string) *ABBRElement {
+	if condition {
+		e.ITEMREF(s)
+	}
 	return e
 }
 
@@ -741,12 +874,26 @@ func (e *ABBRElement) ITEMSCOPE() *ABBRElement {
 	return e
 }
 
+func (e *ABBRElement) IfITEMSCOPE(condition bool) *ABBRElement {
+	if condition {
+		e.ITEMSCOPESet(true)
+	}
+	return e
+}
+
 // Set the attribute itemscope to the value b explicitly.
 func (e *ABBRElement) ITEMSCOPESet(b bool) *ABBRElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("itemscope", b)
+	return e
+}
+
+func (e *ABBRElement) IfSetITEMSCOPE(condition bool, b bool) *ABBRElement {
+	if condition {
+		e.ITEMSCOPESet(b)
+	}
 	return e
 }
 
@@ -775,6 +922,13 @@ func (e *ABBRElement) ITEMTYPE(s string) *ABBRElement {
 	return e
 }
 
+func (e *ABBRElement) IfITEMTYPE(condition bool, s string) *ABBRElement {
+	if condition {
+		e.ITEMTYPE(s)
+	}
+	return e
+}
+
 // Remove the attribute itemtype from the element.
 func (e *ABBRElement) ITEMTYPERemove(s string) *ABBRElement {
 	if e.StringAttributes == nil {
@@ -798,6 +952,13 @@ func (e *ABBRElement) LANG(s string) *ABBRElement {
 	return e
 }
 
+func (e *ABBRElement) IfLANG(condition bool, s string) *ABBRElement {
+	if condition {
+		e.LANG(s)
+	}
+	return e
+}
+
 // Remove the attribute lang from the element.
 func (e *ABBRElement) LANGRemove(s string) *ABBRElement {
 	if e.StringAttributes == nil {
@@ -816,6 +977,13 @@ func (e *ABBRElement) NONCE(s string) *ABBRElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("nonce", s)
+	return e
+}
+
+func (e *ABBRElement) IfNONCE(condition bool, s string) *ABBRElement {
+	if condition {
+		e.NONCE(s)
+	}
 	return e
 }
 
@@ -842,6 +1010,13 @@ func (e *ABBRElement) PART(s ...string) *ABBRElement {
 		e.DelimitedStrings.Set("part", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *ABBRElement) IfPART(condition bool, s ...string) *ABBRElement {
+	if condition {
+		e.PART(s...)
+	}
 	return e
 }
 
@@ -912,6 +1087,13 @@ func (e *ABBRElement) SLOT(s string) *ABBRElement {
 	return e
 }
 
+func (e *ABBRElement) IfSLOT(condition bool, s string) *ABBRElement {
+	if condition {
+		e.SLOT(s)
+	}
+	return e
+}
+
 // Remove the attribute slot from the element.
 func (e *ABBRElement) SLOTRemove(s string) *ABBRElement {
 	if e.StringAttributes == nil {
@@ -970,6 +1152,13 @@ func (e *ABBRElement) STYLEF(k string, format string, args ...any) *ABBRElement 
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+func (e *ABBRElement) IfSTYLE(condition bool, k string, v string) *ABBRElement {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
 func (e *ABBRElement) STYLE(k string, v string) *ABBRElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -980,6 +1169,13 @@ func (e *ABBRElement) STYLE(k string, v string) *ABBRElement {
 		e.KVStrings.Set("style", kv)
 	}
 	kv.Add(k, v)
+	return e
+}
+
+func (e *ABBRElement) IfSTYLEF(condition bool, k string, format string, args ...any) *ABBRElement {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
 	return e
 }
 
@@ -1020,6 +1216,13 @@ func (e *ABBRElement) STYLEPairs(pairs ...string) *ABBRElement {
 	return e
 }
 
+func (e *ABBRElement) IfSTYLEPairs(condition bool, pairs ...string) *ABBRElement {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
+	return e
+}
+
 // Remove the attribute style from the element.
 func (e *ABBRElement) STYLERemove(keys ...string) *ABBRElement {
 	if e.KVStrings == nil {
@@ -1054,6 +1257,13 @@ func (e *ABBRElement) TABINDEX(i int) *ABBRElement {
 		e.IntAttributes = treemap.New[string, int]()
 	}
 	e.IntAttributes.Set("tabindex", i)
+	return e
+}
+
+func (e *ABBRElement) IfTABINDEX(condition bool, i int) *ABBRElement {
+	if condition {
+		e.TABINDEX(i)
+	}
 	return e
 }
 

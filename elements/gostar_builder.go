@@ -284,6 +284,10 @@ func Escaped(text string) *EscapedContent {
 	return (*EscapedContent)(&text)
 }
 
+func EscapedF(format string, args ...interface{}) *EscapedContent {
+	return Escaped(fmt.Sprintf(format, args...))
+}
+
 type Grouper struct {
 	Children []ElementRenderer
 }

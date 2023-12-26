@@ -58,13 +58,41 @@ func (e *RTCElement) TextF(format string, args ...any) *RTCElement {
 	return e.Text(fmt.Sprintf(format, args...))
 }
 
+func (e *RTCElement) IfText(condition bool, text string) *RTCElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
+}
+
+func (e *RTCElement) IfTextF(condition bool, format string, args ...any) *RTCElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
+}
+
 func (e *RTCElement) Escaped(text string) *RTCElement {
 	e.Descendants = append(e.Descendants, Escaped(text))
 	return e
 }
 
+func (e *RTCElement) IfEscaped(condition bool, text string) *RTCElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
+}
+
 func (e *RTCElement) EscapedF(format string, args ...any) *RTCElement {
 	return e.Escaped(fmt.Sprintf(format, args...))
+}
+
+func (e *RTCElement) IfEscapedF(condition bool, format string, args ...any) *RTCElement {
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *RTCElement) CustomData(key, value string) *RTCElement {
@@ -75,8 +103,22 @@ func (e *RTCElement) CustomData(key, value string) *RTCElement {
 	return e
 }
 
+func (e *RTCElement) IfCustomData(condition bool, key, value string) *RTCElement {
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
+}
+
 func (e *RTCElement) CustomDataF(key, format string, args ...any) *RTCElement {
 	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
+func (e *RTCElement) IfCustomDataF(condition bool, key, format string, args ...any) *RTCElement {
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *RTCElement) CustomDataRemove(key string) *RTCElement {
@@ -96,6 +138,13 @@ func (e *RTCElement) ACCESSKEY(r rune) *RTCElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("accesskey", string(r))
+	return e
+}
+
+func (e *RTCElement) IfACCESSKEY(condition bool, r rune) *RTCElement {
+	if condition {
+		e.ACCESSKEY(r)
+	}
 	return e
 }
 
@@ -181,12 +230,26 @@ func (e *RTCElement) AUTOFOCUS() *RTCElement {
 	return e
 }
 
+func (e *RTCElement) IfAUTOFOCUS(condition bool) *RTCElement {
+	if condition {
+		e.AUTOFOCUSSet(true)
+	}
+	return e
+}
+
 // Set the attribute autofocus to the value b explicitly.
 func (e *RTCElement) AUTOFOCUSSet(b bool) *RTCElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("autofocus", b)
+	return e
+}
+
+func (e *RTCElement) IfSetAUTOFOCUS(condition bool, b bool) *RTCElement {
+	if condition {
+		e.AUTOFOCUSSet(b)
+	}
 	return e
 }
 
@@ -214,6 +277,13 @@ func (e *RTCElement) CLASS(s ...string) *RTCElement {
 		e.DelimitedStrings.Set("class", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *RTCElement) IfCLASS(condition bool, s ...string) *RTCElement {
+	if condition {
+		e.CLASS(s...)
+	}
 	return e
 }
 
@@ -422,6 +492,13 @@ func (e *RTCElement) EXPORTPARTS(s ...string) *RTCElement {
 	return e
 }
 
+func (e *RTCElement) IfEXPORTPARTS(condition bool, s ...string) *RTCElement {
+	if condition {
+		e.EXPORTPARTS(s...)
+	}
+	return e
+}
+
 // Remove the attribute exportparts from the element.
 func (e *RTCElement) EXPORTPARTSRemove(s ...string) *RTCElement {
 	if e.DelimitedStrings == nil {
@@ -497,6 +574,13 @@ func (e *RTCElement) ID(s string) *RTCElement {
 	return e
 }
 
+func (e *RTCElement) IfID(condition bool, s string) *RTCElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
 // Remove the attribute id from the element.
 func (e *RTCElement) IDRemove(s string) *RTCElement {
 	if e.StringAttributes == nil {
@@ -523,12 +607,26 @@ func (e *RTCElement) INERT() *RTCElement {
 	return e
 }
 
+func (e *RTCElement) IfINERT(condition bool) *RTCElement {
+	if condition {
+		e.INERTSet(true)
+	}
+	return e
+}
+
 // Set the attribute inert to the value b explicitly.
 func (e *RTCElement) INERTSet(b bool) *RTCElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("inert", b)
+	return e
+}
+
+func (e *RTCElement) IfSetINERT(condition bool, b bool) *RTCElement {
+	if condition {
+		e.INERTSet(b)
+	}
 	return e
 }
 
@@ -624,6 +722,13 @@ func (e *RTCElement) IS(s string) *RTCElement {
 	return e
 }
 
+func (e *RTCElement) IfIS(condition bool, s string) *RTCElement {
+	if condition {
+		e.IS(s)
+	}
+	return e
+}
+
 // Remove the attribute is from the element.
 func (e *RTCElement) ISRemove(s string) *RTCElement {
 	if e.StringAttributes == nil {
@@ -654,6 +759,13 @@ func (e *RTCElement) ITEMID(s string) *RTCElement {
 	return e
 }
 
+func (e *RTCElement) IfITEMID(condition bool, s string) *RTCElement {
+	if condition {
+		e.ITEMID(s)
+	}
+	return e
+}
+
 // Remove the attribute itemid from the element.
 func (e *RTCElement) ITEMIDRemove(s string) *RTCElement {
 	if e.StringAttributes == nil {
@@ -679,6 +791,13 @@ func (e *RTCElement) ITEMPROP(s string) *RTCElement {
 	return e
 }
 
+func (e *RTCElement) IfITEMPROP(condition bool, s string) *RTCElement {
+	if condition {
+		e.ITEMPROP(s)
+	}
+	return e
+}
+
 // Remove the attribute itemprop from the element.
 func (e *RTCElement) ITEMPROPRemove(s string) *RTCElement {
 	if e.StringAttributes == nil {
@@ -698,6 +817,13 @@ func (e *RTCElement) ITEMREF(s string) *RTCElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("itemref", s)
+	return e
+}
+
+func (e *RTCElement) IfITEMREF(condition bool, s string) *RTCElement {
+	if condition {
+		e.ITEMREF(s)
+	}
 	return e
 }
 
@@ -723,12 +849,26 @@ func (e *RTCElement) ITEMSCOPE() *RTCElement {
 	return e
 }
 
+func (e *RTCElement) IfITEMSCOPE(condition bool) *RTCElement {
+	if condition {
+		e.ITEMSCOPESet(true)
+	}
+	return e
+}
+
 // Set the attribute itemscope to the value b explicitly.
 func (e *RTCElement) ITEMSCOPESet(b bool) *RTCElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("itemscope", b)
+	return e
+}
+
+func (e *RTCElement) IfSetITEMSCOPE(condition bool, b bool) *RTCElement {
+	if condition {
+		e.ITEMSCOPESet(b)
+	}
 	return e
 }
 
@@ -757,6 +897,13 @@ func (e *RTCElement) ITEMTYPE(s string) *RTCElement {
 	return e
 }
 
+func (e *RTCElement) IfITEMTYPE(condition bool, s string) *RTCElement {
+	if condition {
+		e.ITEMTYPE(s)
+	}
+	return e
+}
+
 // Remove the attribute itemtype from the element.
 func (e *RTCElement) ITEMTYPERemove(s string) *RTCElement {
 	if e.StringAttributes == nil {
@@ -780,6 +927,13 @@ func (e *RTCElement) LANG(s string) *RTCElement {
 	return e
 }
 
+func (e *RTCElement) IfLANG(condition bool, s string) *RTCElement {
+	if condition {
+		e.LANG(s)
+	}
+	return e
+}
+
 // Remove the attribute lang from the element.
 func (e *RTCElement) LANGRemove(s string) *RTCElement {
 	if e.StringAttributes == nil {
@@ -798,6 +952,13 @@ func (e *RTCElement) NONCE(s string) *RTCElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("nonce", s)
+	return e
+}
+
+func (e *RTCElement) IfNONCE(condition bool, s string) *RTCElement {
+	if condition {
+		e.NONCE(s)
+	}
 	return e
 }
 
@@ -824,6 +985,13 @@ func (e *RTCElement) PART(s ...string) *RTCElement {
 		e.DelimitedStrings.Set("part", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *RTCElement) IfPART(condition bool, s ...string) *RTCElement {
+	if condition {
+		e.PART(s...)
+	}
 	return e
 }
 
@@ -894,6 +1062,13 @@ func (e *RTCElement) SLOT(s string) *RTCElement {
 	return e
 }
 
+func (e *RTCElement) IfSLOT(condition bool, s string) *RTCElement {
+	if condition {
+		e.SLOT(s)
+	}
+	return e
+}
+
 // Remove the attribute slot from the element.
 func (e *RTCElement) SLOTRemove(s string) *RTCElement {
 	if e.StringAttributes == nil {
@@ -952,6 +1127,13 @@ func (e *RTCElement) STYLEF(k string, format string, args ...any) *RTCElement {
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+func (e *RTCElement) IfSTYLE(condition bool, k string, v string) *RTCElement {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
 func (e *RTCElement) STYLE(k string, v string) *RTCElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -962,6 +1144,13 @@ func (e *RTCElement) STYLE(k string, v string) *RTCElement {
 		e.KVStrings.Set("style", kv)
 	}
 	kv.Add(k, v)
+	return e
+}
+
+func (e *RTCElement) IfSTYLEF(condition bool, k string, format string, args ...any) *RTCElement {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
 	return e
 }
 
@@ -1002,6 +1191,13 @@ func (e *RTCElement) STYLEPairs(pairs ...string) *RTCElement {
 	return e
 }
 
+func (e *RTCElement) IfSTYLEPairs(condition bool, pairs ...string) *RTCElement {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
+	return e
+}
+
 // Remove the attribute style from the element.
 func (e *RTCElement) STYLERemove(keys ...string) *RTCElement {
 	if e.KVStrings == nil {
@@ -1036,6 +1232,13 @@ func (e *RTCElement) TABINDEX(i int) *RTCElement {
 		e.IntAttributes = treemap.New[string, int]()
 	}
 	e.IntAttributes.Set("tabindex", i)
+	return e
+}
+
+func (e *RTCElement) IfTABINDEX(condition bool, i int) *RTCElement {
+	if condition {
+		e.TABINDEX(i)
+	}
 	return e
 }
 
@@ -1074,6 +1277,13 @@ func (e *RTCElement) TITLE(s string) *RTCElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("title", s)
+	return e
+}
+
+func (e *RTCElement) IfTITLE(condition bool, s string) *RTCElement {
+	if condition {
+		e.TITLE(s)
+	}
 	return e
 }
 

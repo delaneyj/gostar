@@ -57,13 +57,41 @@ func (e *STRONGElement) TextF(format string, args ...any) *STRONGElement {
 	return e.Text(fmt.Sprintf(format, args...))
 }
 
+func (e *STRONGElement) IfText(condition bool, text string) *STRONGElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
+}
+
+func (e *STRONGElement) IfTextF(condition bool, format string, args ...any) *STRONGElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
+}
+
 func (e *STRONGElement) Escaped(text string) *STRONGElement {
 	e.Descendants = append(e.Descendants, Escaped(text))
 	return e
 }
 
+func (e *STRONGElement) IfEscaped(condition bool, text string) *STRONGElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
+}
+
 func (e *STRONGElement) EscapedF(format string, args ...any) *STRONGElement {
 	return e.Escaped(fmt.Sprintf(format, args...))
+}
+
+func (e *STRONGElement) IfEscapedF(condition bool, format string, args ...any) *STRONGElement {
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *STRONGElement) CustomData(key, value string) *STRONGElement {
@@ -74,8 +102,22 @@ func (e *STRONGElement) CustomData(key, value string) *STRONGElement {
 	return e
 }
 
+func (e *STRONGElement) IfCustomData(condition bool, key, value string) *STRONGElement {
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
+}
+
 func (e *STRONGElement) CustomDataF(key, format string, args ...any) *STRONGElement {
 	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
+func (e *STRONGElement) IfCustomDataF(condition bool, key, format string, args ...any) *STRONGElement {
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *STRONGElement) CustomDataRemove(key string) *STRONGElement {
@@ -95,6 +137,13 @@ func (e *STRONGElement) ACCESSKEY(r rune) *STRONGElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("accesskey", string(r))
+	return e
+}
+
+func (e *STRONGElement) IfACCESSKEY(condition bool, r rune) *STRONGElement {
+	if condition {
+		e.ACCESSKEY(r)
+	}
 	return e
 }
 
@@ -180,12 +229,26 @@ func (e *STRONGElement) AUTOFOCUS() *STRONGElement {
 	return e
 }
 
+func (e *STRONGElement) IfAUTOFOCUS(condition bool) *STRONGElement {
+	if condition {
+		e.AUTOFOCUSSet(true)
+	}
+	return e
+}
+
 // Set the attribute autofocus to the value b explicitly.
 func (e *STRONGElement) AUTOFOCUSSet(b bool) *STRONGElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("autofocus", b)
+	return e
+}
+
+func (e *STRONGElement) IfSetAUTOFOCUS(condition bool, b bool) *STRONGElement {
+	if condition {
+		e.AUTOFOCUSSet(b)
+	}
 	return e
 }
 
@@ -213,6 +276,13 @@ func (e *STRONGElement) CLASS(s ...string) *STRONGElement {
 		e.DelimitedStrings.Set("class", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *STRONGElement) IfCLASS(condition bool, s ...string) *STRONGElement {
+	if condition {
+		e.CLASS(s...)
+	}
 	return e
 }
 
@@ -421,6 +491,13 @@ func (e *STRONGElement) EXPORTPARTS(s ...string) *STRONGElement {
 	return e
 }
 
+func (e *STRONGElement) IfEXPORTPARTS(condition bool, s ...string) *STRONGElement {
+	if condition {
+		e.EXPORTPARTS(s...)
+	}
+	return e
+}
+
 // Remove the attribute exportparts from the element.
 func (e *STRONGElement) EXPORTPARTSRemove(s ...string) *STRONGElement {
 	if e.DelimitedStrings == nil {
@@ -496,6 +573,13 @@ func (e *STRONGElement) ID(s string) *STRONGElement {
 	return e
 }
 
+func (e *STRONGElement) IfID(condition bool, s string) *STRONGElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
 // Remove the attribute id from the element.
 func (e *STRONGElement) IDRemove(s string) *STRONGElement {
 	if e.StringAttributes == nil {
@@ -522,12 +606,26 @@ func (e *STRONGElement) INERT() *STRONGElement {
 	return e
 }
 
+func (e *STRONGElement) IfINERT(condition bool) *STRONGElement {
+	if condition {
+		e.INERTSet(true)
+	}
+	return e
+}
+
 // Set the attribute inert to the value b explicitly.
 func (e *STRONGElement) INERTSet(b bool) *STRONGElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("inert", b)
+	return e
+}
+
+func (e *STRONGElement) IfSetINERT(condition bool, b bool) *STRONGElement {
+	if condition {
+		e.INERTSet(b)
+	}
 	return e
 }
 
@@ -623,6 +721,13 @@ func (e *STRONGElement) IS(s string) *STRONGElement {
 	return e
 }
 
+func (e *STRONGElement) IfIS(condition bool, s string) *STRONGElement {
+	if condition {
+		e.IS(s)
+	}
+	return e
+}
+
 // Remove the attribute is from the element.
 func (e *STRONGElement) ISRemove(s string) *STRONGElement {
 	if e.StringAttributes == nil {
@@ -653,6 +758,13 @@ func (e *STRONGElement) ITEMID(s string) *STRONGElement {
 	return e
 }
 
+func (e *STRONGElement) IfITEMID(condition bool, s string) *STRONGElement {
+	if condition {
+		e.ITEMID(s)
+	}
+	return e
+}
+
 // Remove the attribute itemid from the element.
 func (e *STRONGElement) ITEMIDRemove(s string) *STRONGElement {
 	if e.StringAttributes == nil {
@@ -678,6 +790,13 @@ func (e *STRONGElement) ITEMPROP(s string) *STRONGElement {
 	return e
 }
 
+func (e *STRONGElement) IfITEMPROP(condition bool, s string) *STRONGElement {
+	if condition {
+		e.ITEMPROP(s)
+	}
+	return e
+}
+
 // Remove the attribute itemprop from the element.
 func (e *STRONGElement) ITEMPROPRemove(s string) *STRONGElement {
 	if e.StringAttributes == nil {
@@ -697,6 +816,13 @@ func (e *STRONGElement) ITEMREF(s string) *STRONGElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("itemref", s)
+	return e
+}
+
+func (e *STRONGElement) IfITEMREF(condition bool, s string) *STRONGElement {
+	if condition {
+		e.ITEMREF(s)
+	}
 	return e
 }
 
@@ -722,12 +848,26 @@ func (e *STRONGElement) ITEMSCOPE() *STRONGElement {
 	return e
 }
 
+func (e *STRONGElement) IfITEMSCOPE(condition bool) *STRONGElement {
+	if condition {
+		e.ITEMSCOPESet(true)
+	}
+	return e
+}
+
 // Set the attribute itemscope to the value b explicitly.
 func (e *STRONGElement) ITEMSCOPESet(b bool) *STRONGElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("itemscope", b)
+	return e
+}
+
+func (e *STRONGElement) IfSetITEMSCOPE(condition bool, b bool) *STRONGElement {
+	if condition {
+		e.ITEMSCOPESet(b)
+	}
 	return e
 }
 
@@ -756,6 +896,13 @@ func (e *STRONGElement) ITEMTYPE(s string) *STRONGElement {
 	return e
 }
 
+func (e *STRONGElement) IfITEMTYPE(condition bool, s string) *STRONGElement {
+	if condition {
+		e.ITEMTYPE(s)
+	}
+	return e
+}
+
 // Remove the attribute itemtype from the element.
 func (e *STRONGElement) ITEMTYPERemove(s string) *STRONGElement {
 	if e.StringAttributes == nil {
@@ -779,6 +926,13 @@ func (e *STRONGElement) LANG(s string) *STRONGElement {
 	return e
 }
 
+func (e *STRONGElement) IfLANG(condition bool, s string) *STRONGElement {
+	if condition {
+		e.LANG(s)
+	}
+	return e
+}
+
 // Remove the attribute lang from the element.
 func (e *STRONGElement) LANGRemove(s string) *STRONGElement {
 	if e.StringAttributes == nil {
@@ -797,6 +951,13 @@ func (e *STRONGElement) NONCE(s string) *STRONGElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("nonce", s)
+	return e
+}
+
+func (e *STRONGElement) IfNONCE(condition bool, s string) *STRONGElement {
+	if condition {
+		e.NONCE(s)
+	}
 	return e
 }
 
@@ -823,6 +984,13 @@ func (e *STRONGElement) PART(s ...string) *STRONGElement {
 		e.DelimitedStrings.Set("part", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *STRONGElement) IfPART(condition bool, s ...string) *STRONGElement {
+	if condition {
+		e.PART(s...)
+	}
 	return e
 }
 
@@ -893,6 +1061,13 @@ func (e *STRONGElement) SLOT(s string) *STRONGElement {
 	return e
 }
 
+func (e *STRONGElement) IfSLOT(condition bool, s string) *STRONGElement {
+	if condition {
+		e.SLOT(s)
+	}
+	return e
+}
+
 // Remove the attribute slot from the element.
 func (e *STRONGElement) SLOTRemove(s string) *STRONGElement {
 	if e.StringAttributes == nil {
@@ -951,6 +1126,13 @@ func (e *STRONGElement) STYLEF(k string, format string, args ...any) *STRONGElem
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+func (e *STRONGElement) IfSTYLE(condition bool, k string, v string) *STRONGElement {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
 func (e *STRONGElement) STYLE(k string, v string) *STRONGElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -961,6 +1143,13 @@ func (e *STRONGElement) STYLE(k string, v string) *STRONGElement {
 		e.KVStrings.Set("style", kv)
 	}
 	kv.Add(k, v)
+	return e
+}
+
+func (e *STRONGElement) IfSTYLEF(condition bool, k string, format string, args ...any) *STRONGElement {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
 	return e
 }
 
@@ -1001,6 +1190,13 @@ func (e *STRONGElement) STYLEPairs(pairs ...string) *STRONGElement {
 	return e
 }
 
+func (e *STRONGElement) IfSTYLEPairs(condition bool, pairs ...string) *STRONGElement {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
+	return e
+}
+
 // Remove the attribute style from the element.
 func (e *STRONGElement) STYLERemove(keys ...string) *STRONGElement {
 	if e.KVStrings == nil {
@@ -1035,6 +1231,13 @@ func (e *STRONGElement) TABINDEX(i int) *STRONGElement {
 		e.IntAttributes = treemap.New[string, int]()
 	}
 	e.IntAttributes.Set("tabindex", i)
+	return e
+}
+
+func (e *STRONGElement) IfTABINDEX(condition bool, i int) *STRONGElement {
+	if condition {
+		e.TABINDEX(i)
+	}
 	return e
 }
 
@@ -1073,6 +1276,13 @@ func (e *STRONGElement) TITLE(s string) *STRONGElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("title", s)
+	return e
+}
+
+func (e *STRONGElement) IfTITLE(condition bool, s string) *STRONGElement {
+	if condition {
+		e.TITLE(s)
+	}
 	return e
 }
 

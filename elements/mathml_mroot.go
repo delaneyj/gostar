@@ -55,13 +55,41 @@ func (e *MathMLMROOTElement) TextF(format string, args ...any) *MathMLMROOTEleme
 	return e.Text(fmt.Sprintf(format, args...))
 }
 
+func (e *MathMLMROOTElement) IfText(condition bool, text string) *MathMLMROOTElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
+}
+
+func (e *MathMLMROOTElement) IfTextF(condition bool, format string, args ...any) *MathMLMROOTElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
+}
+
 func (e *MathMLMROOTElement) Escaped(text string) *MathMLMROOTElement {
 	e.Descendants = append(e.Descendants, Escaped(text))
 	return e
 }
 
+func (e *MathMLMROOTElement) IfEscaped(condition bool, text string) *MathMLMROOTElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
+}
+
 func (e *MathMLMROOTElement) EscapedF(format string, args ...any) *MathMLMROOTElement {
 	return e.Escaped(fmt.Sprintf(format, args...))
+}
+
+func (e *MathMLMROOTElement) IfEscapedF(condition bool, format string, args ...any) *MathMLMROOTElement {
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *MathMLMROOTElement) CustomData(key, value string) *MathMLMROOTElement {
@@ -72,8 +100,22 @@ func (e *MathMLMROOTElement) CustomData(key, value string) *MathMLMROOTElement {
 	return e
 }
 
+func (e *MathMLMROOTElement) IfCustomData(condition bool, key, value string) *MathMLMROOTElement {
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
+}
+
 func (e *MathMLMROOTElement) CustomDataF(key, format string, args ...any) *MathMLMROOTElement {
 	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
+func (e *MathMLMROOTElement) IfCustomDataF(condition bool, key, format string, args ...any) *MathMLMROOTElement {
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *MathMLMROOTElement) CustomDataRemove(key string) *MathMLMROOTElement {
@@ -98,6 +140,13 @@ func (e *MathMLMROOTElement) CLASS(s ...string) *MathMLMROOTElement {
 		e.DelimitedStrings.Set("class", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *MathMLMROOTElement) IfCLASS(condition bool, s ...string) *MathMLMROOTElement {
+	if condition {
+		e.CLASS(s...)
+	}
 	return e
 }
 
@@ -183,6 +232,13 @@ func (e *MathMLMROOTElement) ID(s string) *MathMLMROOTElement {
 	return e
 }
 
+func (e *MathMLMROOTElement) IfID(condition bool, s string) *MathMLMROOTElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
 // Remove the attribute id from the element.
 func (e *MathMLMROOTElement) IDRemove(s string) *MathMLMROOTElement {
 	if e.StringAttributes == nil {
@@ -200,6 +256,13 @@ func (e *MathMLMROOTElement) MATHBACKGROUND(s string) *MathMLMROOTElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("mathbackground", s)
+	return e
+}
+
+func (e *MathMLMROOTElement) IfMATHBACKGROUND(condition bool, s string) *MathMLMROOTElement {
+	if condition {
+		e.MATHBACKGROUND(s)
+	}
 	return e
 }
 
@@ -223,6 +286,13 @@ func (e *MathMLMROOTElement) MATHCOLOR(s string) *MathMLMROOTElement {
 	return e
 }
 
+func (e *MathMLMROOTElement) IfMATHCOLOR(condition bool, s string) *MathMLMROOTElement {
+	if condition {
+		e.MATHCOLOR(s)
+	}
+	return e
+}
+
 // Remove the attribute mathcolor from the element.
 func (e *MathMLMROOTElement) MATHCOLORRemove(s string) *MathMLMROOTElement {
 	if e.StringAttributes == nil {
@@ -239,6 +309,13 @@ func (e *MathMLMROOTElement) MATHSIZESTR(s string) *MathMLMROOTElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("mathsize", s)
+	return e
+}
+
+func (e *MathMLMROOTElement) IfMATHSIZESTR(condition bool, s string) *MathMLMROOTElement {
+	if condition {
+		e.MATHSIZESTR(s)
+	}
 	return e
 }
 
@@ -263,6 +340,13 @@ func (e *MathMLMROOTElement) NONCE(s string) *MathMLMROOTElement {
 	return e
 }
 
+func (e *MathMLMROOTElement) IfNONCE(condition bool, s string) *MathMLMROOTElement {
+	if condition {
+		e.NONCE(s)
+	}
+	return e
+}
+
 // Remove the attribute nonce from the element.
 func (e *MathMLMROOTElement) NONCERemove(s string) *MathMLMROOTElement {
 	if e.StringAttributes == nil {
@@ -282,6 +366,13 @@ func (e *MathMLMROOTElement) SCRIPTLEVEL(i int) *MathMLMROOTElement {
 	return e
 }
 
+func (e *MathMLMROOTElement) IfSCRIPTLEVEL(condition bool, i int) *MathMLMROOTElement {
+	if condition {
+		e.SCRIPTLEVEL(i)
+	}
+	return e
+}
+
 // Remove the attribute scriptlevel from the element.
 func (e *MathMLMROOTElement) SCRIPTLEVELRemove(i int) *MathMLMROOTElement {
 	if e.IntAttributes == nil {
@@ -297,6 +388,13 @@ func (e *MathMLMROOTElement) STYLEF(k string, format string, args ...any) *MathM
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+func (e *MathMLMROOTElement) IfSTYLE(condition bool, k string, v string) *MathMLMROOTElement {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
 func (e *MathMLMROOTElement) STYLE(k string, v string) *MathMLMROOTElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -307,6 +405,13 @@ func (e *MathMLMROOTElement) STYLE(k string, v string) *MathMLMROOTElement {
 		e.KVStrings.Set("style", kv)
 	}
 	kv.Add(k, v)
+	return e
+}
+
+func (e *MathMLMROOTElement) IfSTYLEF(condition bool, k string, format string, args ...any) *MathMLMROOTElement {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
 	return e
 }
 
@@ -347,6 +452,13 @@ func (e *MathMLMROOTElement) STYLEPairs(pairs ...string) *MathMLMROOTElement {
 	return e
 }
 
+func (e *MathMLMROOTElement) IfSTYLEPairs(condition bool, pairs ...string) *MathMLMROOTElement {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
+	return e
+}
+
 // Remove the attribute style from the element.
 func (e *MathMLMROOTElement) STYLERemove(keys ...string) *MathMLMROOTElement {
 	if e.KVStrings == nil {
@@ -371,6 +483,13 @@ func (e *MathMLMROOTElement) TABINDEX(i int) *MathMLMROOTElement {
 		e.IntAttributes = treemap.New[string, int]()
 	}
 	e.IntAttributes.Set("tabindex", i)
+	return e
+}
+
+func (e *MathMLMROOTElement) IfTABINDEX(condition bool, i int) *MathMLMROOTElement {
+	if condition {
+		e.TABINDEX(i)
+	}
 	return e
 }
 

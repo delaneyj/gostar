@@ -55,13 +55,41 @@ func (e *MathMLMTEXTElement) TextF(format string, args ...any) *MathMLMTEXTEleme
 	return e.Text(fmt.Sprintf(format, args...))
 }
 
+func (e *MathMLMTEXTElement) IfText(condition bool, text string) *MathMLMTEXTElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
+}
+
+func (e *MathMLMTEXTElement) IfTextF(condition bool, format string, args ...any) *MathMLMTEXTElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
+}
+
 func (e *MathMLMTEXTElement) Escaped(text string) *MathMLMTEXTElement {
 	e.Descendants = append(e.Descendants, Escaped(text))
 	return e
 }
 
+func (e *MathMLMTEXTElement) IfEscaped(condition bool, text string) *MathMLMTEXTElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
+}
+
 func (e *MathMLMTEXTElement) EscapedF(format string, args ...any) *MathMLMTEXTElement {
 	return e.Escaped(fmt.Sprintf(format, args...))
+}
+
+func (e *MathMLMTEXTElement) IfEscapedF(condition bool, format string, args ...any) *MathMLMTEXTElement {
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *MathMLMTEXTElement) CustomData(key, value string) *MathMLMTEXTElement {
@@ -72,8 +100,22 @@ func (e *MathMLMTEXTElement) CustomData(key, value string) *MathMLMTEXTElement {
 	return e
 }
 
+func (e *MathMLMTEXTElement) IfCustomData(condition bool, key, value string) *MathMLMTEXTElement {
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
+}
+
 func (e *MathMLMTEXTElement) CustomDataF(key, format string, args ...any) *MathMLMTEXTElement {
 	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
+func (e *MathMLMTEXTElement) IfCustomDataF(condition bool, key, format string, args ...any) *MathMLMTEXTElement {
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *MathMLMTEXTElement) CustomDataRemove(key string) *MathMLMTEXTElement {
@@ -98,6 +140,13 @@ func (e *MathMLMTEXTElement) CLASS(s ...string) *MathMLMTEXTElement {
 		e.DelimitedStrings.Set("class", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *MathMLMTEXTElement) IfCLASS(condition bool, s ...string) *MathMLMTEXTElement {
+	if condition {
+		e.CLASS(s...)
+	}
 	return e
 }
 
@@ -183,6 +232,13 @@ func (e *MathMLMTEXTElement) ID(s string) *MathMLMTEXTElement {
 	return e
 }
 
+func (e *MathMLMTEXTElement) IfID(condition bool, s string) *MathMLMTEXTElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
 // Remove the attribute id from the element.
 func (e *MathMLMTEXTElement) IDRemove(s string) *MathMLMTEXTElement {
 	if e.StringAttributes == nil {
@@ -200,6 +256,13 @@ func (e *MathMLMTEXTElement) MATHBACKGROUND(s string) *MathMLMTEXTElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("mathbackground", s)
+	return e
+}
+
+func (e *MathMLMTEXTElement) IfMATHBACKGROUND(condition bool, s string) *MathMLMTEXTElement {
+	if condition {
+		e.MATHBACKGROUND(s)
+	}
 	return e
 }
 
@@ -223,6 +286,13 @@ func (e *MathMLMTEXTElement) MATHCOLOR(s string) *MathMLMTEXTElement {
 	return e
 }
 
+func (e *MathMLMTEXTElement) IfMATHCOLOR(condition bool, s string) *MathMLMTEXTElement {
+	if condition {
+		e.MATHCOLOR(s)
+	}
+	return e
+}
+
 // Remove the attribute mathcolor from the element.
 func (e *MathMLMTEXTElement) MATHCOLORRemove(s string) *MathMLMTEXTElement {
 	if e.StringAttributes == nil {
@@ -239,6 +309,13 @@ func (e *MathMLMTEXTElement) MATHSIZESTR(s string) *MathMLMTEXTElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("mathsize", s)
+	return e
+}
+
+func (e *MathMLMTEXTElement) IfMATHSIZESTR(condition bool, s string) *MathMLMTEXTElement {
+	if condition {
+		e.MATHSIZESTR(s)
+	}
 	return e
 }
 
@@ -263,6 +340,13 @@ func (e *MathMLMTEXTElement) NONCE(s string) *MathMLMTEXTElement {
 	return e
 }
 
+func (e *MathMLMTEXTElement) IfNONCE(condition bool, s string) *MathMLMTEXTElement {
+	if condition {
+		e.NONCE(s)
+	}
+	return e
+}
+
 // Remove the attribute nonce from the element.
 func (e *MathMLMTEXTElement) NONCERemove(s string) *MathMLMTEXTElement {
 	if e.StringAttributes == nil {
@@ -282,6 +366,13 @@ func (e *MathMLMTEXTElement) SCRIPTLEVEL(i int) *MathMLMTEXTElement {
 	return e
 }
 
+func (e *MathMLMTEXTElement) IfSCRIPTLEVEL(condition bool, i int) *MathMLMTEXTElement {
+	if condition {
+		e.SCRIPTLEVEL(i)
+	}
+	return e
+}
+
 // Remove the attribute scriptlevel from the element.
 func (e *MathMLMTEXTElement) SCRIPTLEVELRemove(i int) *MathMLMTEXTElement {
 	if e.IntAttributes == nil {
@@ -297,6 +388,13 @@ func (e *MathMLMTEXTElement) STYLEF(k string, format string, args ...any) *MathM
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+func (e *MathMLMTEXTElement) IfSTYLE(condition bool, k string, v string) *MathMLMTEXTElement {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
 func (e *MathMLMTEXTElement) STYLE(k string, v string) *MathMLMTEXTElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -307,6 +405,13 @@ func (e *MathMLMTEXTElement) STYLE(k string, v string) *MathMLMTEXTElement {
 		e.KVStrings.Set("style", kv)
 	}
 	kv.Add(k, v)
+	return e
+}
+
+func (e *MathMLMTEXTElement) IfSTYLEF(condition bool, k string, format string, args ...any) *MathMLMTEXTElement {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
 	return e
 }
 
@@ -347,6 +452,13 @@ func (e *MathMLMTEXTElement) STYLEPairs(pairs ...string) *MathMLMTEXTElement {
 	return e
 }
 
+func (e *MathMLMTEXTElement) IfSTYLEPairs(condition bool, pairs ...string) *MathMLMTEXTElement {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
+	return e
+}
+
 // Remove the attribute style from the element.
 func (e *MathMLMTEXTElement) STYLERemove(keys ...string) *MathMLMTEXTElement {
 	if e.KVStrings == nil {
@@ -371,6 +483,13 @@ func (e *MathMLMTEXTElement) TABINDEX(i int) *MathMLMTEXTElement {
 		e.IntAttributes = treemap.New[string, int]()
 	}
 	e.IntAttributes.Set("tabindex", i)
+	return e
+}
+
+func (e *MathMLMTEXTElement) IfTABINDEX(condition bool, i int) *MathMLMTEXTElement {
+	if condition {
+		e.TABINDEX(i)
+	}
 	return e
 }
 

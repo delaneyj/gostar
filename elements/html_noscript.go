@@ -57,13 +57,41 @@ func (e *NOSCRIPTElement) TextF(format string, args ...any) *NOSCRIPTElement {
 	return e.Text(fmt.Sprintf(format, args...))
 }
 
+func (e *NOSCRIPTElement) IfText(condition bool, text string) *NOSCRIPTElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
+}
+
+func (e *NOSCRIPTElement) IfTextF(condition bool, format string, args ...any) *NOSCRIPTElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
+}
+
 func (e *NOSCRIPTElement) Escaped(text string) *NOSCRIPTElement {
 	e.Descendants = append(e.Descendants, Escaped(text))
 	return e
 }
 
+func (e *NOSCRIPTElement) IfEscaped(condition bool, text string) *NOSCRIPTElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
+}
+
 func (e *NOSCRIPTElement) EscapedF(format string, args ...any) *NOSCRIPTElement {
 	return e.Escaped(fmt.Sprintf(format, args...))
+}
+
+func (e *NOSCRIPTElement) IfEscapedF(condition bool, format string, args ...any) *NOSCRIPTElement {
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *NOSCRIPTElement) CustomData(key, value string) *NOSCRIPTElement {
@@ -74,8 +102,22 @@ func (e *NOSCRIPTElement) CustomData(key, value string) *NOSCRIPTElement {
 	return e
 }
 
+func (e *NOSCRIPTElement) IfCustomData(condition bool, key, value string) *NOSCRIPTElement {
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
+}
+
 func (e *NOSCRIPTElement) CustomDataF(key, format string, args ...any) *NOSCRIPTElement {
 	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
+func (e *NOSCRIPTElement) IfCustomDataF(condition bool, key, format string, args ...any) *NOSCRIPTElement {
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *NOSCRIPTElement) CustomDataRemove(key string) *NOSCRIPTElement {
@@ -95,6 +137,13 @@ func (e *NOSCRIPTElement) ACCESSKEY(r rune) *NOSCRIPTElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("accesskey", string(r))
+	return e
+}
+
+func (e *NOSCRIPTElement) IfACCESSKEY(condition bool, r rune) *NOSCRIPTElement {
+	if condition {
+		e.ACCESSKEY(r)
+	}
 	return e
 }
 
@@ -180,12 +229,26 @@ func (e *NOSCRIPTElement) AUTOFOCUS() *NOSCRIPTElement {
 	return e
 }
 
+func (e *NOSCRIPTElement) IfAUTOFOCUS(condition bool) *NOSCRIPTElement {
+	if condition {
+		e.AUTOFOCUSSet(true)
+	}
+	return e
+}
+
 // Set the attribute autofocus to the value b explicitly.
 func (e *NOSCRIPTElement) AUTOFOCUSSet(b bool) *NOSCRIPTElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("autofocus", b)
+	return e
+}
+
+func (e *NOSCRIPTElement) IfSetAUTOFOCUS(condition bool, b bool) *NOSCRIPTElement {
+	if condition {
+		e.AUTOFOCUSSet(b)
+	}
 	return e
 }
 
@@ -213,6 +276,13 @@ func (e *NOSCRIPTElement) CLASS(s ...string) *NOSCRIPTElement {
 		e.DelimitedStrings.Set("class", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *NOSCRIPTElement) IfCLASS(condition bool, s ...string) *NOSCRIPTElement {
+	if condition {
+		e.CLASS(s...)
+	}
 	return e
 }
 
@@ -421,6 +491,13 @@ func (e *NOSCRIPTElement) EXPORTPARTS(s ...string) *NOSCRIPTElement {
 	return e
 }
 
+func (e *NOSCRIPTElement) IfEXPORTPARTS(condition bool, s ...string) *NOSCRIPTElement {
+	if condition {
+		e.EXPORTPARTS(s...)
+	}
+	return e
+}
+
 // Remove the attribute exportparts from the element.
 func (e *NOSCRIPTElement) EXPORTPARTSRemove(s ...string) *NOSCRIPTElement {
 	if e.DelimitedStrings == nil {
@@ -496,6 +573,13 @@ func (e *NOSCRIPTElement) ID(s string) *NOSCRIPTElement {
 	return e
 }
 
+func (e *NOSCRIPTElement) IfID(condition bool, s string) *NOSCRIPTElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
 // Remove the attribute id from the element.
 func (e *NOSCRIPTElement) IDRemove(s string) *NOSCRIPTElement {
 	if e.StringAttributes == nil {
@@ -522,12 +606,26 @@ func (e *NOSCRIPTElement) INERT() *NOSCRIPTElement {
 	return e
 }
 
+func (e *NOSCRIPTElement) IfINERT(condition bool) *NOSCRIPTElement {
+	if condition {
+		e.INERTSet(true)
+	}
+	return e
+}
+
 // Set the attribute inert to the value b explicitly.
 func (e *NOSCRIPTElement) INERTSet(b bool) *NOSCRIPTElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("inert", b)
+	return e
+}
+
+func (e *NOSCRIPTElement) IfSetINERT(condition bool, b bool) *NOSCRIPTElement {
+	if condition {
+		e.INERTSet(b)
+	}
 	return e
 }
 
@@ -623,6 +721,13 @@ func (e *NOSCRIPTElement) IS(s string) *NOSCRIPTElement {
 	return e
 }
 
+func (e *NOSCRIPTElement) IfIS(condition bool, s string) *NOSCRIPTElement {
+	if condition {
+		e.IS(s)
+	}
+	return e
+}
+
 // Remove the attribute is from the element.
 func (e *NOSCRIPTElement) ISRemove(s string) *NOSCRIPTElement {
 	if e.StringAttributes == nil {
@@ -653,6 +758,13 @@ func (e *NOSCRIPTElement) ITEMID(s string) *NOSCRIPTElement {
 	return e
 }
 
+func (e *NOSCRIPTElement) IfITEMID(condition bool, s string) *NOSCRIPTElement {
+	if condition {
+		e.ITEMID(s)
+	}
+	return e
+}
+
 // Remove the attribute itemid from the element.
 func (e *NOSCRIPTElement) ITEMIDRemove(s string) *NOSCRIPTElement {
 	if e.StringAttributes == nil {
@@ -678,6 +790,13 @@ func (e *NOSCRIPTElement) ITEMPROP(s string) *NOSCRIPTElement {
 	return e
 }
 
+func (e *NOSCRIPTElement) IfITEMPROP(condition bool, s string) *NOSCRIPTElement {
+	if condition {
+		e.ITEMPROP(s)
+	}
+	return e
+}
+
 // Remove the attribute itemprop from the element.
 func (e *NOSCRIPTElement) ITEMPROPRemove(s string) *NOSCRIPTElement {
 	if e.StringAttributes == nil {
@@ -697,6 +816,13 @@ func (e *NOSCRIPTElement) ITEMREF(s string) *NOSCRIPTElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("itemref", s)
+	return e
+}
+
+func (e *NOSCRIPTElement) IfITEMREF(condition bool, s string) *NOSCRIPTElement {
+	if condition {
+		e.ITEMREF(s)
+	}
 	return e
 }
 
@@ -722,12 +848,26 @@ func (e *NOSCRIPTElement) ITEMSCOPE() *NOSCRIPTElement {
 	return e
 }
 
+func (e *NOSCRIPTElement) IfITEMSCOPE(condition bool) *NOSCRIPTElement {
+	if condition {
+		e.ITEMSCOPESet(true)
+	}
+	return e
+}
+
 // Set the attribute itemscope to the value b explicitly.
 func (e *NOSCRIPTElement) ITEMSCOPESet(b bool) *NOSCRIPTElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("itemscope", b)
+	return e
+}
+
+func (e *NOSCRIPTElement) IfSetITEMSCOPE(condition bool, b bool) *NOSCRIPTElement {
+	if condition {
+		e.ITEMSCOPESet(b)
+	}
 	return e
 }
 
@@ -756,6 +896,13 @@ func (e *NOSCRIPTElement) ITEMTYPE(s string) *NOSCRIPTElement {
 	return e
 }
 
+func (e *NOSCRIPTElement) IfITEMTYPE(condition bool, s string) *NOSCRIPTElement {
+	if condition {
+		e.ITEMTYPE(s)
+	}
+	return e
+}
+
 // Remove the attribute itemtype from the element.
 func (e *NOSCRIPTElement) ITEMTYPERemove(s string) *NOSCRIPTElement {
 	if e.StringAttributes == nil {
@@ -779,6 +926,13 @@ func (e *NOSCRIPTElement) LANG(s string) *NOSCRIPTElement {
 	return e
 }
 
+func (e *NOSCRIPTElement) IfLANG(condition bool, s string) *NOSCRIPTElement {
+	if condition {
+		e.LANG(s)
+	}
+	return e
+}
+
 // Remove the attribute lang from the element.
 func (e *NOSCRIPTElement) LANGRemove(s string) *NOSCRIPTElement {
 	if e.StringAttributes == nil {
@@ -797,6 +951,13 @@ func (e *NOSCRIPTElement) NONCE(s string) *NOSCRIPTElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("nonce", s)
+	return e
+}
+
+func (e *NOSCRIPTElement) IfNONCE(condition bool, s string) *NOSCRIPTElement {
+	if condition {
+		e.NONCE(s)
+	}
 	return e
 }
 
@@ -823,6 +984,13 @@ func (e *NOSCRIPTElement) PART(s ...string) *NOSCRIPTElement {
 		e.DelimitedStrings.Set("part", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *NOSCRIPTElement) IfPART(condition bool, s ...string) *NOSCRIPTElement {
+	if condition {
+		e.PART(s...)
+	}
 	return e
 }
 
@@ -893,6 +1061,13 @@ func (e *NOSCRIPTElement) SLOT(s string) *NOSCRIPTElement {
 	return e
 }
 
+func (e *NOSCRIPTElement) IfSLOT(condition bool, s string) *NOSCRIPTElement {
+	if condition {
+		e.SLOT(s)
+	}
+	return e
+}
+
 // Remove the attribute slot from the element.
 func (e *NOSCRIPTElement) SLOTRemove(s string) *NOSCRIPTElement {
 	if e.StringAttributes == nil {
@@ -951,6 +1126,13 @@ func (e *NOSCRIPTElement) STYLEF(k string, format string, args ...any) *NOSCRIPT
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+func (e *NOSCRIPTElement) IfSTYLE(condition bool, k string, v string) *NOSCRIPTElement {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
 func (e *NOSCRIPTElement) STYLE(k string, v string) *NOSCRIPTElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -961,6 +1143,13 @@ func (e *NOSCRIPTElement) STYLE(k string, v string) *NOSCRIPTElement {
 		e.KVStrings.Set("style", kv)
 	}
 	kv.Add(k, v)
+	return e
+}
+
+func (e *NOSCRIPTElement) IfSTYLEF(condition bool, k string, format string, args ...any) *NOSCRIPTElement {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
 	return e
 }
 
@@ -1001,6 +1190,13 @@ func (e *NOSCRIPTElement) STYLEPairs(pairs ...string) *NOSCRIPTElement {
 	return e
 }
 
+func (e *NOSCRIPTElement) IfSTYLEPairs(condition bool, pairs ...string) *NOSCRIPTElement {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
+	return e
+}
+
 // Remove the attribute style from the element.
 func (e *NOSCRIPTElement) STYLERemove(keys ...string) *NOSCRIPTElement {
 	if e.KVStrings == nil {
@@ -1035,6 +1231,13 @@ func (e *NOSCRIPTElement) TABINDEX(i int) *NOSCRIPTElement {
 		e.IntAttributes = treemap.New[string, int]()
 	}
 	e.IntAttributes.Set("tabindex", i)
+	return e
+}
+
+func (e *NOSCRIPTElement) IfTABINDEX(condition bool, i int) *NOSCRIPTElement {
+	if condition {
+		e.TABINDEX(i)
+	}
 	return e
 }
 
@@ -1073,6 +1276,13 @@ func (e *NOSCRIPTElement) TITLE(s string) *NOSCRIPTElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("title", s)
+	return e
+}
+
+func (e *NOSCRIPTElement) IfTITLE(condition bool, s string) *NOSCRIPTElement {
+	if condition {
+		e.TITLE(s)
+	}
 	return e
 }
 

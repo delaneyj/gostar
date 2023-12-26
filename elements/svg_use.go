@@ -58,13 +58,41 @@ func (e *SVGUSEElement) TextF(format string, args ...any) *SVGUSEElement {
 	return e.Text(fmt.Sprintf(format, args...))
 }
 
+func (e *SVGUSEElement) IfText(condition bool, text string) *SVGUSEElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
+}
+
+func (e *SVGUSEElement) IfTextF(condition bool, format string, args ...any) *SVGUSEElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
+}
+
 func (e *SVGUSEElement) Escaped(text string) *SVGUSEElement {
 	e.Descendants = append(e.Descendants, Escaped(text))
 	return e
 }
 
+func (e *SVGUSEElement) IfEscaped(condition bool, text string) *SVGUSEElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
+}
+
 func (e *SVGUSEElement) EscapedF(format string, args ...any) *SVGUSEElement {
 	return e.Escaped(fmt.Sprintf(format, args...))
+}
+
+func (e *SVGUSEElement) IfEscapedF(condition bool, format string, args ...any) *SVGUSEElement {
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *SVGUSEElement) CustomData(key, value string) *SVGUSEElement {
@@ -75,8 +103,22 @@ func (e *SVGUSEElement) CustomData(key, value string) *SVGUSEElement {
 	return e
 }
 
+func (e *SVGUSEElement) IfCustomData(condition bool, key, value string) *SVGUSEElement {
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
+}
+
 func (e *SVGUSEElement) CustomDataF(key, format string, args ...any) *SVGUSEElement {
 	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
+func (e *SVGUSEElement) IfCustomDataF(condition bool, key, format string, args ...any) *SVGUSEElement {
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *SVGUSEElement) CustomDataRemove(key string) *SVGUSEElement {
@@ -93,6 +135,13 @@ func (e *SVGUSEElement) HREF(s string) *SVGUSEElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("href", s)
+	return e
+}
+
+func (e *SVGUSEElement) IfHREF(condition bool, s string) *SVGUSEElement {
+	if condition {
+		e.HREF(s)
+	}
 	return e
 }
 
@@ -115,6 +164,13 @@ func (e *SVGUSEElement) X(f float64) *SVGUSEElement {
 	return e
 }
 
+func (e *SVGUSEElement) IfX(condition bool, f float64) *SVGUSEElement {
+	if condition {
+		e.X(f)
+	}
+	return e
+}
+
 // The y-axis coordinate of the side of the rectangular region which is closest to
 // the user.
 func (e *SVGUSEElement) Y(f float64) *SVGUSEElement {
@@ -122,6 +178,13 @@ func (e *SVGUSEElement) Y(f float64) *SVGUSEElement {
 		e.FloatAttributes = treemap.New[string, float64]()
 	}
 	e.FloatAttributes.Set("y", f)
+	return e
+}
+
+func (e *SVGUSEElement) IfY(condition bool, f float64) *SVGUSEElement {
+	if condition {
+		e.Y(f)
+	}
 	return e
 }
 
@@ -134,12 +197,26 @@ func (e *SVGUSEElement) WIDTH(f float64) *SVGUSEElement {
 	return e
 }
 
+func (e *SVGUSEElement) IfWIDTH(condition bool, f float64) *SVGUSEElement {
+	if condition {
+		e.WIDTH(f)
+	}
+	return e
+}
+
 // The height of the rectangular region.
 func (e *SVGUSEElement) HEIGHT(f float64) *SVGUSEElement {
 	if e.FloatAttributes == nil {
 		e.FloatAttributes = treemap.New[string, float64]()
 	}
 	e.FloatAttributes.Set("height", f)
+	return e
+}
+
+func (e *SVGUSEElement) IfHEIGHT(condition bool, f float64) *SVGUSEElement {
+	if condition {
+		e.HEIGHT(f)
+	}
 	return e
 }
 
@@ -155,6 +232,13 @@ func (e *SVGUSEElement) CLASS(s ...string) *SVGUSEElement {
 		e.DelimitedStrings.Set("class", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *SVGUSEElement) IfCLASS(condition bool, s ...string) *SVGUSEElement {
+	if condition {
+		e.CLASS(s...)
+	}
 	return e
 }
 
@@ -180,6 +264,13 @@ func (e *SVGUSEElement) ID(s string) *SVGUSEElement {
 	return e
 }
 
+func (e *SVGUSEElement) IfID(condition bool, s string) *SVGUSEElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
 // Remove the attribute id from the element.
 func (e *SVGUSEElement) IDRemove(s string) *SVGUSEElement {
 	if e.StringAttributes == nil {
@@ -194,6 +285,13 @@ func (e *SVGUSEElement) STYLEF(k string, format string, args ...any) *SVGUSEElem
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+func (e *SVGUSEElement) IfSTYLE(condition bool, k string, v string) *SVGUSEElement {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
 func (e *SVGUSEElement) STYLE(k string, v string) *SVGUSEElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -204,6 +302,13 @@ func (e *SVGUSEElement) STYLE(k string, v string) *SVGUSEElement {
 		e.KVStrings.Set("style", kv)
 	}
 	kv.Add(k, v)
+	return e
+}
+
+func (e *SVGUSEElement) IfSTYLEF(condition bool, k string, format string, args ...any) *SVGUSEElement {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
 	return e
 }
 
@@ -241,6 +346,13 @@ func (e *SVGUSEElement) STYLEPairs(pairs ...string) *SVGUSEElement {
 		kv.Add(pairs[i], pairs[i+1])
 	}
 
+	return e
+}
+
+func (e *SVGUSEElement) IfSTYLEPairs(condition bool, pairs ...string) *SVGUSEElement {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
 	return e
 }
 

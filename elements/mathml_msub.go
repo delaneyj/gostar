@@ -55,13 +55,41 @@ func (e *MathMLMSUBElement) TextF(format string, args ...any) *MathMLMSUBElement
 	return e.Text(fmt.Sprintf(format, args...))
 }
 
+func (e *MathMLMSUBElement) IfText(condition bool, text string) *MathMLMSUBElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
+}
+
+func (e *MathMLMSUBElement) IfTextF(condition bool, format string, args ...any) *MathMLMSUBElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
+}
+
 func (e *MathMLMSUBElement) Escaped(text string) *MathMLMSUBElement {
 	e.Descendants = append(e.Descendants, Escaped(text))
 	return e
 }
 
+func (e *MathMLMSUBElement) IfEscaped(condition bool, text string) *MathMLMSUBElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
+}
+
 func (e *MathMLMSUBElement) EscapedF(format string, args ...any) *MathMLMSUBElement {
 	return e.Escaped(fmt.Sprintf(format, args...))
+}
+
+func (e *MathMLMSUBElement) IfEscapedF(condition bool, format string, args ...any) *MathMLMSUBElement {
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *MathMLMSUBElement) CustomData(key, value string) *MathMLMSUBElement {
@@ -72,8 +100,22 @@ func (e *MathMLMSUBElement) CustomData(key, value string) *MathMLMSUBElement {
 	return e
 }
 
+func (e *MathMLMSUBElement) IfCustomData(condition bool, key, value string) *MathMLMSUBElement {
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
+}
+
 func (e *MathMLMSUBElement) CustomDataF(key, format string, args ...any) *MathMLMSUBElement {
 	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
+func (e *MathMLMSUBElement) IfCustomDataF(condition bool, key, format string, args ...any) *MathMLMSUBElement {
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *MathMLMSUBElement) CustomDataRemove(key string) *MathMLMSUBElement {
@@ -98,6 +140,13 @@ func (e *MathMLMSUBElement) CLASS(s ...string) *MathMLMSUBElement {
 		e.DelimitedStrings.Set("class", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *MathMLMSUBElement) IfCLASS(condition bool, s ...string) *MathMLMSUBElement {
+	if condition {
+		e.CLASS(s...)
+	}
 	return e
 }
 
@@ -183,6 +232,13 @@ func (e *MathMLMSUBElement) ID(s string) *MathMLMSUBElement {
 	return e
 }
 
+func (e *MathMLMSUBElement) IfID(condition bool, s string) *MathMLMSUBElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
 // Remove the attribute id from the element.
 func (e *MathMLMSUBElement) IDRemove(s string) *MathMLMSUBElement {
 	if e.StringAttributes == nil {
@@ -200,6 +256,13 @@ func (e *MathMLMSUBElement) MATHBACKGROUND(s string) *MathMLMSUBElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("mathbackground", s)
+	return e
+}
+
+func (e *MathMLMSUBElement) IfMATHBACKGROUND(condition bool, s string) *MathMLMSUBElement {
+	if condition {
+		e.MATHBACKGROUND(s)
+	}
 	return e
 }
 
@@ -223,6 +286,13 @@ func (e *MathMLMSUBElement) MATHCOLOR(s string) *MathMLMSUBElement {
 	return e
 }
 
+func (e *MathMLMSUBElement) IfMATHCOLOR(condition bool, s string) *MathMLMSUBElement {
+	if condition {
+		e.MATHCOLOR(s)
+	}
+	return e
+}
+
 // Remove the attribute mathcolor from the element.
 func (e *MathMLMSUBElement) MATHCOLORRemove(s string) *MathMLMSUBElement {
 	if e.StringAttributes == nil {
@@ -239,6 +309,13 @@ func (e *MathMLMSUBElement) MATHSIZESTR(s string) *MathMLMSUBElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("mathsize", s)
+	return e
+}
+
+func (e *MathMLMSUBElement) IfMATHSIZESTR(condition bool, s string) *MathMLMSUBElement {
+	if condition {
+		e.MATHSIZESTR(s)
+	}
 	return e
 }
 
@@ -263,6 +340,13 @@ func (e *MathMLMSUBElement) NONCE(s string) *MathMLMSUBElement {
 	return e
 }
 
+func (e *MathMLMSUBElement) IfNONCE(condition bool, s string) *MathMLMSUBElement {
+	if condition {
+		e.NONCE(s)
+	}
+	return e
+}
+
 // Remove the attribute nonce from the element.
 func (e *MathMLMSUBElement) NONCERemove(s string) *MathMLMSUBElement {
 	if e.StringAttributes == nil {
@@ -282,6 +366,13 @@ func (e *MathMLMSUBElement) SCRIPTLEVEL(i int) *MathMLMSUBElement {
 	return e
 }
 
+func (e *MathMLMSUBElement) IfSCRIPTLEVEL(condition bool, i int) *MathMLMSUBElement {
+	if condition {
+		e.SCRIPTLEVEL(i)
+	}
+	return e
+}
+
 // Remove the attribute scriptlevel from the element.
 func (e *MathMLMSUBElement) SCRIPTLEVELRemove(i int) *MathMLMSUBElement {
 	if e.IntAttributes == nil {
@@ -297,6 +388,13 @@ func (e *MathMLMSUBElement) STYLEF(k string, format string, args ...any) *MathML
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+func (e *MathMLMSUBElement) IfSTYLE(condition bool, k string, v string) *MathMLMSUBElement {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
 func (e *MathMLMSUBElement) STYLE(k string, v string) *MathMLMSUBElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -307,6 +405,13 @@ func (e *MathMLMSUBElement) STYLE(k string, v string) *MathMLMSUBElement {
 		e.KVStrings.Set("style", kv)
 	}
 	kv.Add(k, v)
+	return e
+}
+
+func (e *MathMLMSUBElement) IfSTYLEF(condition bool, k string, format string, args ...any) *MathMLMSUBElement {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
 	return e
 }
 
@@ -347,6 +452,13 @@ func (e *MathMLMSUBElement) STYLEPairs(pairs ...string) *MathMLMSUBElement {
 	return e
 }
 
+func (e *MathMLMSUBElement) IfSTYLEPairs(condition bool, pairs ...string) *MathMLMSUBElement {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
+	return e
+}
+
 // Remove the attribute style from the element.
 func (e *MathMLMSUBElement) STYLERemove(keys ...string) *MathMLMSUBElement {
 	if e.KVStrings == nil {
@@ -371,6 +483,13 @@ func (e *MathMLMSUBElement) TABINDEX(i int) *MathMLMSUBElement {
 		e.IntAttributes = treemap.New[string, int]()
 	}
 	e.IntAttributes.Set("tabindex", i)
+	return e
+}
+
+func (e *MathMLMSUBElement) IfTABINDEX(condition bool, i int) *MathMLMSUBElement {
+	if condition {
+		e.TABINDEX(i)
+	}
 	return e
 }
 

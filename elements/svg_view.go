@@ -56,13 +56,41 @@ func (e *SVGVIEWElement) TextF(format string, args ...any) *SVGVIEWElement {
 	return e.Text(fmt.Sprintf(format, args...))
 }
 
+func (e *SVGVIEWElement) IfText(condition bool, text string) *SVGVIEWElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
+}
+
+func (e *SVGVIEWElement) IfTextF(condition bool, format string, args ...any) *SVGVIEWElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
+}
+
 func (e *SVGVIEWElement) Escaped(text string) *SVGVIEWElement {
 	e.Descendants = append(e.Descendants, Escaped(text))
 	return e
 }
 
+func (e *SVGVIEWElement) IfEscaped(condition bool, text string) *SVGVIEWElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
+}
+
 func (e *SVGVIEWElement) EscapedF(format string, args ...any) *SVGVIEWElement {
 	return e.Escaped(fmt.Sprintf(format, args...))
+}
+
+func (e *SVGVIEWElement) IfEscapedF(condition bool, format string, args ...any) *SVGVIEWElement {
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *SVGVIEWElement) CustomData(key, value string) *SVGVIEWElement {
@@ -73,8 +101,22 @@ func (e *SVGVIEWElement) CustomData(key, value string) *SVGVIEWElement {
 	return e
 }
 
+func (e *SVGVIEWElement) IfCustomData(condition bool, key, value string) *SVGVIEWElement {
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
+}
+
 func (e *SVGVIEWElement) CustomDataF(key, format string, args ...any) *SVGVIEWElement {
 	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
+func (e *SVGVIEWElement) IfCustomDataF(condition bool, key, format string, args ...any) *SVGVIEWElement {
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *SVGVIEWElement) CustomDataRemove(key string) *SVGVIEWElement {
@@ -92,6 +134,13 @@ func (e *SVGVIEWElement) VIEWBOX(s string) *SVGVIEWElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("viewBox", s)
+	return e
+}
+
+func (e *SVGVIEWElement) IfVIEWBOX(condition bool, s string) *SVGVIEWElement {
+	if condition {
+		e.VIEWBOX(s)
+	}
 	return e
 }
 
@@ -119,6 +168,13 @@ func (e *SVGVIEWElement) CLASS(s ...string) *SVGVIEWElement {
 	return e
 }
 
+func (e *SVGVIEWElement) IfCLASS(condition bool, s ...string) *SVGVIEWElement {
+	if condition {
+		e.CLASS(s...)
+	}
+	return e
+}
+
 // Remove the attribute class from the element.
 func (e *SVGVIEWElement) CLASSRemove(s ...string) *SVGVIEWElement {
 	if e.DelimitedStrings == nil {
@@ -141,6 +197,13 @@ func (e *SVGVIEWElement) ID(s string) *SVGVIEWElement {
 	return e
 }
 
+func (e *SVGVIEWElement) IfID(condition bool, s string) *SVGVIEWElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
 // Remove the attribute id from the element.
 func (e *SVGVIEWElement) IDRemove(s string) *SVGVIEWElement {
 	if e.StringAttributes == nil {
@@ -155,6 +218,13 @@ func (e *SVGVIEWElement) STYLEF(k string, format string, args ...any) *SVGVIEWEl
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+func (e *SVGVIEWElement) IfSTYLE(condition bool, k string, v string) *SVGVIEWElement {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
 func (e *SVGVIEWElement) STYLE(k string, v string) *SVGVIEWElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -165,6 +235,13 @@ func (e *SVGVIEWElement) STYLE(k string, v string) *SVGVIEWElement {
 		e.KVStrings.Set("style", kv)
 	}
 	kv.Add(k, v)
+	return e
+}
+
+func (e *SVGVIEWElement) IfSTYLEF(condition bool, k string, format string, args ...any) *SVGVIEWElement {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
 	return e
 }
 
@@ -202,6 +279,13 @@ func (e *SVGVIEWElement) STYLEPairs(pairs ...string) *SVGVIEWElement {
 		kv.Add(pairs[i], pairs[i+1])
 	}
 
+	return e
+}
+
+func (e *SVGVIEWElement) IfSTYLEPairs(condition bool, pairs ...string) *SVGVIEWElement {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
 	return e
 }
 

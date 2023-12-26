@@ -58,13 +58,41 @@ func (e *SUMMARYElement) TextF(format string, args ...any) *SUMMARYElement {
 	return e.Text(fmt.Sprintf(format, args...))
 }
 
+func (e *SUMMARYElement) IfText(condition bool, text string) *SUMMARYElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
+}
+
+func (e *SUMMARYElement) IfTextF(condition bool, format string, args ...any) *SUMMARYElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
+}
+
 func (e *SUMMARYElement) Escaped(text string) *SUMMARYElement {
 	e.Descendants = append(e.Descendants, Escaped(text))
 	return e
 }
 
+func (e *SUMMARYElement) IfEscaped(condition bool, text string) *SUMMARYElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
+}
+
 func (e *SUMMARYElement) EscapedF(format string, args ...any) *SUMMARYElement {
 	return e.Escaped(fmt.Sprintf(format, args...))
+}
+
+func (e *SUMMARYElement) IfEscapedF(condition bool, format string, args ...any) *SUMMARYElement {
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *SUMMARYElement) CustomData(key, value string) *SUMMARYElement {
@@ -75,8 +103,22 @@ func (e *SUMMARYElement) CustomData(key, value string) *SUMMARYElement {
 	return e
 }
 
+func (e *SUMMARYElement) IfCustomData(condition bool, key, value string) *SUMMARYElement {
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
+}
+
 func (e *SUMMARYElement) CustomDataF(key, format string, args ...any) *SUMMARYElement {
 	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
+func (e *SUMMARYElement) IfCustomDataF(condition bool, key, format string, args ...any) *SUMMARYElement {
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *SUMMARYElement) CustomDataRemove(key string) *SUMMARYElement {
@@ -96,6 +138,13 @@ func (e *SUMMARYElement) ACCESSKEY(r rune) *SUMMARYElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("accesskey", string(r))
+	return e
+}
+
+func (e *SUMMARYElement) IfACCESSKEY(condition bool, r rune) *SUMMARYElement {
+	if condition {
+		e.ACCESSKEY(r)
+	}
 	return e
 }
 
@@ -181,12 +230,26 @@ func (e *SUMMARYElement) AUTOFOCUS() *SUMMARYElement {
 	return e
 }
 
+func (e *SUMMARYElement) IfAUTOFOCUS(condition bool) *SUMMARYElement {
+	if condition {
+		e.AUTOFOCUSSet(true)
+	}
+	return e
+}
+
 // Set the attribute autofocus to the value b explicitly.
 func (e *SUMMARYElement) AUTOFOCUSSet(b bool) *SUMMARYElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("autofocus", b)
+	return e
+}
+
+func (e *SUMMARYElement) IfSetAUTOFOCUS(condition bool, b bool) *SUMMARYElement {
+	if condition {
+		e.AUTOFOCUSSet(b)
+	}
 	return e
 }
 
@@ -214,6 +277,13 @@ func (e *SUMMARYElement) CLASS(s ...string) *SUMMARYElement {
 		e.DelimitedStrings.Set("class", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *SUMMARYElement) IfCLASS(condition bool, s ...string) *SUMMARYElement {
+	if condition {
+		e.CLASS(s...)
+	}
 	return e
 }
 
@@ -422,6 +492,13 @@ func (e *SUMMARYElement) EXPORTPARTS(s ...string) *SUMMARYElement {
 	return e
 }
 
+func (e *SUMMARYElement) IfEXPORTPARTS(condition bool, s ...string) *SUMMARYElement {
+	if condition {
+		e.EXPORTPARTS(s...)
+	}
+	return e
+}
+
 // Remove the attribute exportparts from the element.
 func (e *SUMMARYElement) EXPORTPARTSRemove(s ...string) *SUMMARYElement {
 	if e.DelimitedStrings == nil {
@@ -497,6 +574,13 @@ func (e *SUMMARYElement) ID(s string) *SUMMARYElement {
 	return e
 }
 
+func (e *SUMMARYElement) IfID(condition bool, s string) *SUMMARYElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
 // Remove the attribute id from the element.
 func (e *SUMMARYElement) IDRemove(s string) *SUMMARYElement {
 	if e.StringAttributes == nil {
@@ -523,12 +607,26 @@ func (e *SUMMARYElement) INERT() *SUMMARYElement {
 	return e
 }
 
+func (e *SUMMARYElement) IfINERT(condition bool) *SUMMARYElement {
+	if condition {
+		e.INERTSet(true)
+	}
+	return e
+}
+
 // Set the attribute inert to the value b explicitly.
 func (e *SUMMARYElement) INERTSet(b bool) *SUMMARYElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("inert", b)
+	return e
+}
+
+func (e *SUMMARYElement) IfSetINERT(condition bool, b bool) *SUMMARYElement {
+	if condition {
+		e.INERTSet(b)
+	}
 	return e
 }
 
@@ -624,6 +722,13 @@ func (e *SUMMARYElement) IS(s string) *SUMMARYElement {
 	return e
 }
 
+func (e *SUMMARYElement) IfIS(condition bool, s string) *SUMMARYElement {
+	if condition {
+		e.IS(s)
+	}
+	return e
+}
+
 // Remove the attribute is from the element.
 func (e *SUMMARYElement) ISRemove(s string) *SUMMARYElement {
 	if e.StringAttributes == nil {
@@ -654,6 +759,13 @@ func (e *SUMMARYElement) ITEMID(s string) *SUMMARYElement {
 	return e
 }
 
+func (e *SUMMARYElement) IfITEMID(condition bool, s string) *SUMMARYElement {
+	if condition {
+		e.ITEMID(s)
+	}
+	return e
+}
+
 // Remove the attribute itemid from the element.
 func (e *SUMMARYElement) ITEMIDRemove(s string) *SUMMARYElement {
 	if e.StringAttributes == nil {
@@ -679,6 +791,13 @@ func (e *SUMMARYElement) ITEMPROP(s string) *SUMMARYElement {
 	return e
 }
 
+func (e *SUMMARYElement) IfITEMPROP(condition bool, s string) *SUMMARYElement {
+	if condition {
+		e.ITEMPROP(s)
+	}
+	return e
+}
+
 // Remove the attribute itemprop from the element.
 func (e *SUMMARYElement) ITEMPROPRemove(s string) *SUMMARYElement {
 	if e.StringAttributes == nil {
@@ -698,6 +817,13 @@ func (e *SUMMARYElement) ITEMREF(s string) *SUMMARYElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("itemref", s)
+	return e
+}
+
+func (e *SUMMARYElement) IfITEMREF(condition bool, s string) *SUMMARYElement {
+	if condition {
+		e.ITEMREF(s)
+	}
 	return e
 }
 
@@ -723,12 +849,26 @@ func (e *SUMMARYElement) ITEMSCOPE() *SUMMARYElement {
 	return e
 }
 
+func (e *SUMMARYElement) IfITEMSCOPE(condition bool) *SUMMARYElement {
+	if condition {
+		e.ITEMSCOPESet(true)
+	}
+	return e
+}
+
 // Set the attribute itemscope to the value b explicitly.
 func (e *SUMMARYElement) ITEMSCOPESet(b bool) *SUMMARYElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("itemscope", b)
+	return e
+}
+
+func (e *SUMMARYElement) IfSetITEMSCOPE(condition bool, b bool) *SUMMARYElement {
+	if condition {
+		e.ITEMSCOPESet(b)
+	}
 	return e
 }
 
@@ -757,6 +897,13 @@ func (e *SUMMARYElement) ITEMTYPE(s string) *SUMMARYElement {
 	return e
 }
 
+func (e *SUMMARYElement) IfITEMTYPE(condition bool, s string) *SUMMARYElement {
+	if condition {
+		e.ITEMTYPE(s)
+	}
+	return e
+}
+
 // Remove the attribute itemtype from the element.
 func (e *SUMMARYElement) ITEMTYPERemove(s string) *SUMMARYElement {
 	if e.StringAttributes == nil {
@@ -780,6 +927,13 @@ func (e *SUMMARYElement) LANG(s string) *SUMMARYElement {
 	return e
 }
 
+func (e *SUMMARYElement) IfLANG(condition bool, s string) *SUMMARYElement {
+	if condition {
+		e.LANG(s)
+	}
+	return e
+}
+
 // Remove the attribute lang from the element.
 func (e *SUMMARYElement) LANGRemove(s string) *SUMMARYElement {
 	if e.StringAttributes == nil {
@@ -798,6 +952,13 @@ func (e *SUMMARYElement) NONCE(s string) *SUMMARYElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("nonce", s)
+	return e
+}
+
+func (e *SUMMARYElement) IfNONCE(condition bool, s string) *SUMMARYElement {
+	if condition {
+		e.NONCE(s)
+	}
 	return e
 }
 
@@ -824,6 +985,13 @@ func (e *SUMMARYElement) PART(s ...string) *SUMMARYElement {
 		e.DelimitedStrings.Set("part", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *SUMMARYElement) IfPART(condition bool, s ...string) *SUMMARYElement {
+	if condition {
+		e.PART(s...)
+	}
 	return e
 }
 
@@ -894,6 +1062,13 @@ func (e *SUMMARYElement) SLOT(s string) *SUMMARYElement {
 	return e
 }
 
+func (e *SUMMARYElement) IfSLOT(condition bool, s string) *SUMMARYElement {
+	if condition {
+		e.SLOT(s)
+	}
+	return e
+}
+
 // Remove the attribute slot from the element.
 func (e *SUMMARYElement) SLOTRemove(s string) *SUMMARYElement {
 	if e.StringAttributes == nil {
@@ -952,6 +1127,13 @@ func (e *SUMMARYElement) STYLEF(k string, format string, args ...any) *SUMMARYEl
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+func (e *SUMMARYElement) IfSTYLE(condition bool, k string, v string) *SUMMARYElement {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
 func (e *SUMMARYElement) STYLE(k string, v string) *SUMMARYElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -962,6 +1144,13 @@ func (e *SUMMARYElement) STYLE(k string, v string) *SUMMARYElement {
 		e.KVStrings.Set("style", kv)
 	}
 	kv.Add(k, v)
+	return e
+}
+
+func (e *SUMMARYElement) IfSTYLEF(condition bool, k string, format string, args ...any) *SUMMARYElement {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
 	return e
 }
 
@@ -1002,6 +1191,13 @@ func (e *SUMMARYElement) STYLEPairs(pairs ...string) *SUMMARYElement {
 	return e
 }
 
+func (e *SUMMARYElement) IfSTYLEPairs(condition bool, pairs ...string) *SUMMARYElement {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
+	return e
+}
+
 // Remove the attribute style from the element.
 func (e *SUMMARYElement) STYLERemove(keys ...string) *SUMMARYElement {
 	if e.KVStrings == nil {
@@ -1036,6 +1232,13 @@ func (e *SUMMARYElement) TABINDEX(i int) *SUMMARYElement {
 		e.IntAttributes = treemap.New[string, int]()
 	}
 	e.IntAttributes.Set("tabindex", i)
+	return e
+}
+
+func (e *SUMMARYElement) IfTABINDEX(condition bool, i int) *SUMMARYElement {
+	if condition {
+		e.TABINDEX(i)
+	}
 	return e
 }
 
@@ -1074,6 +1277,13 @@ func (e *SUMMARYElement) TITLE(s string) *SUMMARYElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("title", s)
+	return e
+}
+
+func (e *SUMMARYElement) IfTITLE(condition bool, s string) *SUMMARYElement {
+	if condition {
+		e.TITLE(s)
+	}
 	return e
 }
 

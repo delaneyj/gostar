@@ -58,13 +58,41 @@ func (e *SVGFEDIFFUSELIGHTINGElement) TextF(format string, args ...any) *SVGFEDI
 	return e.Text(fmt.Sprintf(format, args...))
 }
 
+func (e *SVGFEDIFFUSELIGHTINGElement) IfText(condition bool, text string) *SVGFEDIFFUSELIGHTINGElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
+}
+
+func (e *SVGFEDIFFUSELIGHTINGElement) IfTextF(condition bool, format string, args ...any) *SVGFEDIFFUSELIGHTINGElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
+}
+
 func (e *SVGFEDIFFUSELIGHTINGElement) Escaped(text string) *SVGFEDIFFUSELIGHTINGElement {
 	e.Descendants = append(e.Descendants, Escaped(text))
 	return e
 }
 
+func (e *SVGFEDIFFUSELIGHTINGElement) IfEscaped(condition bool, text string) *SVGFEDIFFUSELIGHTINGElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
+}
+
 func (e *SVGFEDIFFUSELIGHTINGElement) EscapedF(format string, args ...any) *SVGFEDIFFUSELIGHTINGElement {
 	return e.Escaped(fmt.Sprintf(format, args...))
+}
+
+func (e *SVGFEDIFFUSELIGHTINGElement) IfEscapedF(condition bool, format string, args ...any) *SVGFEDIFFUSELIGHTINGElement {
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *SVGFEDIFFUSELIGHTINGElement) CustomData(key, value string) *SVGFEDIFFUSELIGHTINGElement {
@@ -75,8 +103,22 @@ func (e *SVGFEDIFFUSELIGHTINGElement) CustomData(key, value string) *SVGFEDIFFUS
 	return e
 }
 
+func (e *SVGFEDIFFUSELIGHTINGElement) IfCustomData(condition bool, key, value string) *SVGFEDIFFUSELIGHTINGElement {
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
+}
+
 func (e *SVGFEDIFFUSELIGHTINGElement) CustomDataF(key, format string, args ...any) *SVGFEDIFFUSELIGHTINGElement {
 	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
+func (e *SVGFEDIFFUSELIGHTINGElement) IfCustomDataF(condition bool, key, format string, args ...any) *SVGFEDIFFUSELIGHTINGElement {
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *SVGFEDIFFUSELIGHTINGElement) CustomDataRemove(key string) *SVGFEDIFFUSELIGHTINGElement {
@@ -93,6 +135,13 @@ func (e *SVGFEDIFFUSELIGHTINGElement) IN(s string) *SVGFEDIFFUSELIGHTINGElement 
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("in", s)
+	return e
+}
+
+func (e *SVGFEDIFFUSELIGHTINGElement) IfIN(condition bool, s string) *SVGFEDIFFUSELIGHTINGElement {
+	if condition {
+		e.IN(s)
+	}
 	return e
 }
 
@@ -115,6 +164,13 @@ func (e *SVGFEDIFFUSELIGHTINGElement) SURFACESCALE(f float64) *SVGFEDIFFUSELIGHT
 	return e
 }
 
+func (e *SVGFEDIFFUSELIGHTINGElement) IfSURFACESCALE(condition bool, f float64) *SVGFEDIFFUSELIGHTINGElement {
+	if condition {
+		e.SURFACESCALE(f)
+	}
+	return e
+}
+
 // The diffuseConstant attribute represents the proportion of the light that is
 // reflected by the surface.
 func (e *SVGFEDIFFUSELIGHTINGElement) DIFFUSECONSTANT(f float64) *SVGFEDIFFUSELIGHTINGElement {
@@ -122,6 +178,13 @@ func (e *SVGFEDIFFUSELIGHTINGElement) DIFFUSECONSTANT(f float64) *SVGFEDIFFUSELI
 		e.FloatAttributes = treemap.New[string, float64]()
 	}
 	e.FloatAttributes.Set("diffuseConstant", f)
+	return e
+}
+
+func (e *SVGFEDIFFUSELIGHTINGElement) IfDIFFUSECONSTANT(condition bool, f float64) *SVGFEDIFFUSELIGHTINGElement {
+	if condition {
+		e.DIFFUSECONSTANT(f)
+	}
 	return e
 }
 
@@ -133,6 +196,13 @@ func (e *SVGFEDIFFUSELIGHTINGElement) KERNELUNITLENGTH(s string) *SVGFEDIFFUSELI
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("kernelUnitLength", s)
+	return e
+}
+
+func (e *SVGFEDIFFUSELIGHTINGElement) IfKERNELUNITLENGTH(condition bool, s string) *SVGFEDIFFUSELIGHTINGElement {
+	if condition {
+		e.KERNELUNITLENGTH(s)
+	}
 	return e
 }
 
@@ -160,6 +230,13 @@ func (e *SVGFEDIFFUSELIGHTINGElement) CLASS(s ...string) *SVGFEDIFFUSELIGHTINGEl
 	return e
 }
 
+func (e *SVGFEDIFFUSELIGHTINGElement) IfCLASS(condition bool, s ...string) *SVGFEDIFFUSELIGHTINGElement {
+	if condition {
+		e.CLASS(s...)
+	}
+	return e
+}
+
 // Remove the attribute class from the element.
 func (e *SVGFEDIFFUSELIGHTINGElement) CLASSRemove(s ...string) *SVGFEDIFFUSELIGHTINGElement {
 	if e.DelimitedStrings == nil {
@@ -182,6 +259,13 @@ func (e *SVGFEDIFFUSELIGHTINGElement) ID(s string) *SVGFEDIFFUSELIGHTINGElement 
 	return e
 }
 
+func (e *SVGFEDIFFUSELIGHTINGElement) IfID(condition bool, s string) *SVGFEDIFFUSELIGHTINGElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
 // Remove the attribute id from the element.
 func (e *SVGFEDIFFUSELIGHTINGElement) IDRemove(s string) *SVGFEDIFFUSELIGHTINGElement {
 	if e.StringAttributes == nil {
@@ -196,6 +280,13 @@ func (e *SVGFEDIFFUSELIGHTINGElement) STYLEF(k string, format string, args ...an
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+func (e *SVGFEDIFFUSELIGHTINGElement) IfSTYLE(condition bool, k string, v string) *SVGFEDIFFUSELIGHTINGElement {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
 func (e *SVGFEDIFFUSELIGHTINGElement) STYLE(k string, v string) *SVGFEDIFFUSELIGHTINGElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -206,6 +297,13 @@ func (e *SVGFEDIFFUSELIGHTINGElement) STYLE(k string, v string) *SVGFEDIFFUSELIG
 		e.KVStrings.Set("style", kv)
 	}
 	kv.Add(k, v)
+	return e
+}
+
+func (e *SVGFEDIFFUSELIGHTINGElement) IfSTYLEF(condition bool, k string, format string, args ...any) *SVGFEDIFFUSELIGHTINGElement {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
 	return e
 }
 
@@ -243,6 +341,13 @@ func (e *SVGFEDIFFUSELIGHTINGElement) STYLEPairs(pairs ...string) *SVGFEDIFFUSEL
 		kv.Add(pairs[i], pairs[i+1])
 	}
 
+	return e
+}
+
+func (e *SVGFEDIFFUSELIGHTINGElement) IfSTYLEPairs(condition bool, pairs ...string) *SVGFEDIFFUSELIGHTINGElement {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
 	return e
 }
 

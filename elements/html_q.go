@@ -58,13 +58,41 @@ func (e *QElement) TextF(format string, args ...any) *QElement {
 	return e.Text(fmt.Sprintf(format, args...))
 }
 
+func (e *QElement) IfText(condition bool, text string) *QElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
+}
+
+func (e *QElement) IfTextF(condition bool, format string, args ...any) *QElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
+}
+
 func (e *QElement) Escaped(text string) *QElement {
 	e.Descendants = append(e.Descendants, Escaped(text))
 	return e
 }
 
+func (e *QElement) IfEscaped(condition bool, text string) *QElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
+}
+
 func (e *QElement) EscapedF(format string, args ...any) *QElement {
 	return e.Escaped(fmt.Sprintf(format, args...))
+}
+
+func (e *QElement) IfEscapedF(condition bool, format string, args ...any) *QElement {
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *QElement) CustomData(key, value string) *QElement {
@@ -75,8 +103,22 @@ func (e *QElement) CustomData(key, value string) *QElement {
 	return e
 }
 
+func (e *QElement) IfCustomData(condition bool, key, value string) *QElement {
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
+}
+
 func (e *QElement) CustomDataF(key, format string, args ...any) *QElement {
 	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
+func (e *QElement) IfCustomDataF(condition bool, key, format string, args ...any) *QElement {
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *QElement) CustomDataRemove(key string) *QElement {
@@ -93,6 +135,13 @@ func (e *QElement) CITE(s string) *QElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("cite", s)
+	return e
+}
+
+func (e *QElement) IfCITE(condition bool, s string) *QElement {
+	if condition {
+		e.CITE(s)
+	}
 	return e
 }
 
@@ -114,6 +163,13 @@ func (e *QElement) ACCESSKEY(r rune) *QElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("accesskey", string(r))
+	return e
+}
+
+func (e *QElement) IfACCESSKEY(condition bool, r rune) *QElement {
+	if condition {
+		e.ACCESSKEY(r)
+	}
 	return e
 }
 
@@ -199,12 +255,26 @@ func (e *QElement) AUTOFOCUS() *QElement {
 	return e
 }
 
+func (e *QElement) IfAUTOFOCUS(condition bool) *QElement {
+	if condition {
+		e.AUTOFOCUSSet(true)
+	}
+	return e
+}
+
 // Set the attribute autofocus to the value b explicitly.
 func (e *QElement) AUTOFOCUSSet(b bool) *QElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("autofocus", b)
+	return e
+}
+
+func (e *QElement) IfSetAUTOFOCUS(condition bool, b bool) *QElement {
+	if condition {
+		e.AUTOFOCUSSet(b)
+	}
 	return e
 }
 
@@ -232,6 +302,13 @@ func (e *QElement) CLASS(s ...string) *QElement {
 		e.DelimitedStrings.Set("class", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *QElement) IfCLASS(condition bool, s ...string) *QElement {
+	if condition {
+		e.CLASS(s...)
+	}
 	return e
 }
 
@@ -440,6 +517,13 @@ func (e *QElement) EXPORTPARTS(s ...string) *QElement {
 	return e
 }
 
+func (e *QElement) IfEXPORTPARTS(condition bool, s ...string) *QElement {
+	if condition {
+		e.EXPORTPARTS(s...)
+	}
+	return e
+}
+
 // Remove the attribute exportparts from the element.
 func (e *QElement) EXPORTPARTSRemove(s ...string) *QElement {
 	if e.DelimitedStrings == nil {
@@ -515,6 +599,13 @@ func (e *QElement) ID(s string) *QElement {
 	return e
 }
 
+func (e *QElement) IfID(condition bool, s string) *QElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
 // Remove the attribute id from the element.
 func (e *QElement) IDRemove(s string) *QElement {
 	if e.StringAttributes == nil {
@@ -541,12 +632,26 @@ func (e *QElement) INERT() *QElement {
 	return e
 }
 
+func (e *QElement) IfINERT(condition bool) *QElement {
+	if condition {
+		e.INERTSet(true)
+	}
+	return e
+}
+
 // Set the attribute inert to the value b explicitly.
 func (e *QElement) INERTSet(b bool) *QElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("inert", b)
+	return e
+}
+
+func (e *QElement) IfSetINERT(condition bool, b bool) *QElement {
+	if condition {
+		e.INERTSet(b)
+	}
 	return e
 }
 
@@ -642,6 +747,13 @@ func (e *QElement) IS(s string) *QElement {
 	return e
 }
 
+func (e *QElement) IfIS(condition bool, s string) *QElement {
+	if condition {
+		e.IS(s)
+	}
+	return e
+}
+
 // Remove the attribute is from the element.
 func (e *QElement) ISRemove(s string) *QElement {
 	if e.StringAttributes == nil {
@@ -672,6 +784,13 @@ func (e *QElement) ITEMID(s string) *QElement {
 	return e
 }
 
+func (e *QElement) IfITEMID(condition bool, s string) *QElement {
+	if condition {
+		e.ITEMID(s)
+	}
+	return e
+}
+
 // Remove the attribute itemid from the element.
 func (e *QElement) ITEMIDRemove(s string) *QElement {
 	if e.StringAttributes == nil {
@@ -697,6 +816,13 @@ func (e *QElement) ITEMPROP(s string) *QElement {
 	return e
 }
 
+func (e *QElement) IfITEMPROP(condition bool, s string) *QElement {
+	if condition {
+		e.ITEMPROP(s)
+	}
+	return e
+}
+
 // Remove the attribute itemprop from the element.
 func (e *QElement) ITEMPROPRemove(s string) *QElement {
 	if e.StringAttributes == nil {
@@ -716,6 +842,13 @@ func (e *QElement) ITEMREF(s string) *QElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("itemref", s)
+	return e
+}
+
+func (e *QElement) IfITEMREF(condition bool, s string) *QElement {
+	if condition {
+		e.ITEMREF(s)
+	}
 	return e
 }
 
@@ -741,12 +874,26 @@ func (e *QElement) ITEMSCOPE() *QElement {
 	return e
 }
 
+func (e *QElement) IfITEMSCOPE(condition bool) *QElement {
+	if condition {
+		e.ITEMSCOPESet(true)
+	}
+	return e
+}
+
 // Set the attribute itemscope to the value b explicitly.
 func (e *QElement) ITEMSCOPESet(b bool) *QElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("itemscope", b)
+	return e
+}
+
+func (e *QElement) IfSetITEMSCOPE(condition bool, b bool) *QElement {
+	if condition {
+		e.ITEMSCOPESet(b)
+	}
 	return e
 }
 
@@ -775,6 +922,13 @@ func (e *QElement) ITEMTYPE(s string) *QElement {
 	return e
 }
 
+func (e *QElement) IfITEMTYPE(condition bool, s string) *QElement {
+	if condition {
+		e.ITEMTYPE(s)
+	}
+	return e
+}
+
 // Remove the attribute itemtype from the element.
 func (e *QElement) ITEMTYPERemove(s string) *QElement {
 	if e.StringAttributes == nil {
@@ -798,6 +952,13 @@ func (e *QElement) LANG(s string) *QElement {
 	return e
 }
 
+func (e *QElement) IfLANG(condition bool, s string) *QElement {
+	if condition {
+		e.LANG(s)
+	}
+	return e
+}
+
 // Remove the attribute lang from the element.
 func (e *QElement) LANGRemove(s string) *QElement {
 	if e.StringAttributes == nil {
@@ -816,6 +977,13 @@ func (e *QElement) NONCE(s string) *QElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("nonce", s)
+	return e
+}
+
+func (e *QElement) IfNONCE(condition bool, s string) *QElement {
+	if condition {
+		e.NONCE(s)
+	}
 	return e
 }
 
@@ -842,6 +1010,13 @@ func (e *QElement) PART(s ...string) *QElement {
 		e.DelimitedStrings.Set("part", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *QElement) IfPART(condition bool, s ...string) *QElement {
+	if condition {
+		e.PART(s...)
+	}
 	return e
 }
 
@@ -912,6 +1087,13 @@ func (e *QElement) SLOT(s string) *QElement {
 	return e
 }
 
+func (e *QElement) IfSLOT(condition bool, s string) *QElement {
+	if condition {
+		e.SLOT(s)
+	}
+	return e
+}
+
 // Remove the attribute slot from the element.
 func (e *QElement) SLOTRemove(s string) *QElement {
 	if e.StringAttributes == nil {
@@ -970,6 +1152,13 @@ func (e *QElement) STYLEF(k string, format string, args ...any) *QElement {
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+func (e *QElement) IfSTYLE(condition bool, k string, v string) *QElement {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
 func (e *QElement) STYLE(k string, v string) *QElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -980,6 +1169,13 @@ func (e *QElement) STYLE(k string, v string) *QElement {
 		e.KVStrings.Set("style", kv)
 	}
 	kv.Add(k, v)
+	return e
+}
+
+func (e *QElement) IfSTYLEF(condition bool, k string, format string, args ...any) *QElement {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
 	return e
 }
 
@@ -1020,6 +1216,13 @@ func (e *QElement) STYLEPairs(pairs ...string) *QElement {
 	return e
 }
 
+func (e *QElement) IfSTYLEPairs(condition bool, pairs ...string) *QElement {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
+	return e
+}
+
 // Remove the attribute style from the element.
 func (e *QElement) STYLERemove(keys ...string) *QElement {
 	if e.KVStrings == nil {
@@ -1054,6 +1257,13 @@ func (e *QElement) TABINDEX(i int) *QElement {
 		e.IntAttributes = treemap.New[string, int]()
 	}
 	e.IntAttributes.Set("tabindex", i)
+	return e
+}
+
+func (e *QElement) IfTABINDEX(condition bool, i int) *QElement {
+	if condition {
+		e.TABINDEX(i)
+	}
 	return e
 }
 
@@ -1092,6 +1302,13 @@ func (e *QElement) TITLE(s string) *QElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("title", s)
+	return e
+}
+
+func (e *QElement) IfTITLE(condition bool, s string) *QElement {
+	if condition {
+		e.TITLE(s)
+	}
 	return e
 }
 

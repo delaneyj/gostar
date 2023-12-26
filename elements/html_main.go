@@ -59,13 +59,41 @@ func (e *MAINElement) TextF(format string, args ...any) *MAINElement {
 	return e.Text(fmt.Sprintf(format, args...))
 }
 
+func (e *MAINElement) IfText(condition bool, text string) *MAINElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
+}
+
+func (e *MAINElement) IfTextF(condition bool, format string, args ...any) *MAINElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
+}
+
 func (e *MAINElement) Escaped(text string) *MAINElement {
 	e.Descendants = append(e.Descendants, Escaped(text))
 	return e
 }
 
+func (e *MAINElement) IfEscaped(condition bool, text string) *MAINElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
+}
+
 func (e *MAINElement) EscapedF(format string, args ...any) *MAINElement {
 	return e.Escaped(fmt.Sprintf(format, args...))
+}
+
+func (e *MAINElement) IfEscapedF(condition bool, format string, args ...any) *MAINElement {
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *MAINElement) CustomData(key, value string) *MAINElement {
@@ -76,8 +104,22 @@ func (e *MAINElement) CustomData(key, value string) *MAINElement {
 	return e
 }
 
+func (e *MAINElement) IfCustomData(condition bool, key, value string) *MAINElement {
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
+}
+
 func (e *MAINElement) CustomDataF(key, format string, args ...any) *MAINElement {
 	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
+func (e *MAINElement) IfCustomDataF(condition bool, key, format string, args ...any) *MAINElement {
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *MAINElement) CustomDataRemove(key string) *MAINElement {
@@ -97,6 +139,13 @@ func (e *MAINElement) ACCESSKEY(r rune) *MAINElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("accesskey", string(r))
+	return e
+}
+
+func (e *MAINElement) IfACCESSKEY(condition bool, r rune) *MAINElement {
+	if condition {
+		e.ACCESSKEY(r)
+	}
 	return e
 }
 
@@ -182,12 +231,26 @@ func (e *MAINElement) AUTOFOCUS() *MAINElement {
 	return e
 }
 
+func (e *MAINElement) IfAUTOFOCUS(condition bool) *MAINElement {
+	if condition {
+		e.AUTOFOCUSSet(true)
+	}
+	return e
+}
+
 // Set the attribute autofocus to the value b explicitly.
 func (e *MAINElement) AUTOFOCUSSet(b bool) *MAINElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("autofocus", b)
+	return e
+}
+
+func (e *MAINElement) IfSetAUTOFOCUS(condition bool, b bool) *MAINElement {
+	if condition {
+		e.AUTOFOCUSSet(b)
+	}
 	return e
 }
 
@@ -215,6 +278,13 @@ func (e *MAINElement) CLASS(s ...string) *MAINElement {
 		e.DelimitedStrings.Set("class", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *MAINElement) IfCLASS(condition bool, s ...string) *MAINElement {
+	if condition {
+		e.CLASS(s...)
+	}
 	return e
 }
 
@@ -423,6 +493,13 @@ func (e *MAINElement) EXPORTPARTS(s ...string) *MAINElement {
 	return e
 }
 
+func (e *MAINElement) IfEXPORTPARTS(condition bool, s ...string) *MAINElement {
+	if condition {
+		e.EXPORTPARTS(s...)
+	}
+	return e
+}
+
 // Remove the attribute exportparts from the element.
 func (e *MAINElement) EXPORTPARTSRemove(s ...string) *MAINElement {
 	if e.DelimitedStrings == nil {
@@ -498,6 +575,13 @@ func (e *MAINElement) ID(s string) *MAINElement {
 	return e
 }
 
+func (e *MAINElement) IfID(condition bool, s string) *MAINElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
 // Remove the attribute id from the element.
 func (e *MAINElement) IDRemove(s string) *MAINElement {
 	if e.StringAttributes == nil {
@@ -524,12 +608,26 @@ func (e *MAINElement) INERT() *MAINElement {
 	return e
 }
 
+func (e *MAINElement) IfINERT(condition bool) *MAINElement {
+	if condition {
+		e.INERTSet(true)
+	}
+	return e
+}
+
 // Set the attribute inert to the value b explicitly.
 func (e *MAINElement) INERTSet(b bool) *MAINElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("inert", b)
+	return e
+}
+
+func (e *MAINElement) IfSetINERT(condition bool, b bool) *MAINElement {
+	if condition {
+		e.INERTSet(b)
+	}
 	return e
 }
 
@@ -625,6 +723,13 @@ func (e *MAINElement) IS(s string) *MAINElement {
 	return e
 }
 
+func (e *MAINElement) IfIS(condition bool, s string) *MAINElement {
+	if condition {
+		e.IS(s)
+	}
+	return e
+}
+
 // Remove the attribute is from the element.
 func (e *MAINElement) ISRemove(s string) *MAINElement {
 	if e.StringAttributes == nil {
@@ -655,6 +760,13 @@ func (e *MAINElement) ITEMID(s string) *MAINElement {
 	return e
 }
 
+func (e *MAINElement) IfITEMID(condition bool, s string) *MAINElement {
+	if condition {
+		e.ITEMID(s)
+	}
+	return e
+}
+
 // Remove the attribute itemid from the element.
 func (e *MAINElement) ITEMIDRemove(s string) *MAINElement {
 	if e.StringAttributes == nil {
@@ -680,6 +792,13 @@ func (e *MAINElement) ITEMPROP(s string) *MAINElement {
 	return e
 }
 
+func (e *MAINElement) IfITEMPROP(condition bool, s string) *MAINElement {
+	if condition {
+		e.ITEMPROP(s)
+	}
+	return e
+}
+
 // Remove the attribute itemprop from the element.
 func (e *MAINElement) ITEMPROPRemove(s string) *MAINElement {
 	if e.StringAttributes == nil {
@@ -699,6 +818,13 @@ func (e *MAINElement) ITEMREF(s string) *MAINElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("itemref", s)
+	return e
+}
+
+func (e *MAINElement) IfITEMREF(condition bool, s string) *MAINElement {
+	if condition {
+		e.ITEMREF(s)
+	}
 	return e
 }
 
@@ -724,12 +850,26 @@ func (e *MAINElement) ITEMSCOPE() *MAINElement {
 	return e
 }
 
+func (e *MAINElement) IfITEMSCOPE(condition bool) *MAINElement {
+	if condition {
+		e.ITEMSCOPESet(true)
+	}
+	return e
+}
+
 // Set the attribute itemscope to the value b explicitly.
 func (e *MAINElement) ITEMSCOPESet(b bool) *MAINElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("itemscope", b)
+	return e
+}
+
+func (e *MAINElement) IfSetITEMSCOPE(condition bool, b bool) *MAINElement {
+	if condition {
+		e.ITEMSCOPESet(b)
+	}
 	return e
 }
 
@@ -758,6 +898,13 @@ func (e *MAINElement) ITEMTYPE(s string) *MAINElement {
 	return e
 }
 
+func (e *MAINElement) IfITEMTYPE(condition bool, s string) *MAINElement {
+	if condition {
+		e.ITEMTYPE(s)
+	}
+	return e
+}
+
 // Remove the attribute itemtype from the element.
 func (e *MAINElement) ITEMTYPERemove(s string) *MAINElement {
 	if e.StringAttributes == nil {
@@ -781,6 +928,13 @@ func (e *MAINElement) LANG(s string) *MAINElement {
 	return e
 }
 
+func (e *MAINElement) IfLANG(condition bool, s string) *MAINElement {
+	if condition {
+		e.LANG(s)
+	}
+	return e
+}
+
 // Remove the attribute lang from the element.
 func (e *MAINElement) LANGRemove(s string) *MAINElement {
 	if e.StringAttributes == nil {
@@ -799,6 +953,13 @@ func (e *MAINElement) NONCE(s string) *MAINElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("nonce", s)
+	return e
+}
+
+func (e *MAINElement) IfNONCE(condition bool, s string) *MAINElement {
+	if condition {
+		e.NONCE(s)
+	}
 	return e
 }
 
@@ -825,6 +986,13 @@ func (e *MAINElement) PART(s ...string) *MAINElement {
 		e.DelimitedStrings.Set("part", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *MAINElement) IfPART(condition bool, s ...string) *MAINElement {
+	if condition {
+		e.PART(s...)
+	}
 	return e
 }
 
@@ -895,6 +1063,13 @@ func (e *MAINElement) SLOT(s string) *MAINElement {
 	return e
 }
 
+func (e *MAINElement) IfSLOT(condition bool, s string) *MAINElement {
+	if condition {
+		e.SLOT(s)
+	}
+	return e
+}
+
 // Remove the attribute slot from the element.
 func (e *MAINElement) SLOTRemove(s string) *MAINElement {
 	if e.StringAttributes == nil {
@@ -953,6 +1128,13 @@ func (e *MAINElement) STYLEF(k string, format string, args ...any) *MAINElement 
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+func (e *MAINElement) IfSTYLE(condition bool, k string, v string) *MAINElement {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
 func (e *MAINElement) STYLE(k string, v string) *MAINElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -963,6 +1145,13 @@ func (e *MAINElement) STYLE(k string, v string) *MAINElement {
 		e.KVStrings.Set("style", kv)
 	}
 	kv.Add(k, v)
+	return e
+}
+
+func (e *MAINElement) IfSTYLEF(condition bool, k string, format string, args ...any) *MAINElement {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
 	return e
 }
 
@@ -1003,6 +1192,13 @@ func (e *MAINElement) STYLEPairs(pairs ...string) *MAINElement {
 	return e
 }
 
+func (e *MAINElement) IfSTYLEPairs(condition bool, pairs ...string) *MAINElement {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
+	return e
+}
+
 // Remove the attribute style from the element.
 func (e *MAINElement) STYLERemove(keys ...string) *MAINElement {
 	if e.KVStrings == nil {
@@ -1037,6 +1233,13 @@ func (e *MAINElement) TABINDEX(i int) *MAINElement {
 		e.IntAttributes = treemap.New[string, int]()
 	}
 	e.IntAttributes.Set("tabindex", i)
+	return e
+}
+
+func (e *MAINElement) IfTABINDEX(condition bool, i int) *MAINElement {
+	if condition {
+		e.TABINDEX(i)
+	}
 	return e
 }
 
@@ -1075,6 +1278,13 @@ func (e *MAINElement) TITLE(s string) *MAINElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("title", s)
+	return e
+}
+
+func (e *MAINElement) IfTITLE(condition bool, s string) *MAINElement {
+	if condition {
+		e.TITLE(s)
+	}
 	return e
 }
 

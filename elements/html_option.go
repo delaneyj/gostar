@@ -58,13 +58,41 @@ func (e *OPTIONElement) TextF(format string, args ...any) *OPTIONElement {
 	return e.Text(fmt.Sprintf(format, args...))
 }
 
+func (e *OPTIONElement) IfText(condition bool, text string) *OPTIONElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
+}
+
+func (e *OPTIONElement) IfTextF(condition bool, format string, args ...any) *OPTIONElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
+}
+
 func (e *OPTIONElement) Escaped(text string) *OPTIONElement {
 	e.Descendants = append(e.Descendants, Escaped(text))
 	return e
 }
 
+func (e *OPTIONElement) IfEscaped(condition bool, text string) *OPTIONElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
+}
+
 func (e *OPTIONElement) EscapedF(format string, args ...any) *OPTIONElement {
 	return e.Escaped(fmt.Sprintf(format, args...))
+}
+
+func (e *OPTIONElement) IfEscapedF(condition bool, format string, args ...any) *OPTIONElement {
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *OPTIONElement) CustomData(key, value string) *OPTIONElement {
@@ -75,8 +103,22 @@ func (e *OPTIONElement) CustomData(key, value string) *OPTIONElement {
 	return e
 }
 
+func (e *OPTIONElement) IfCustomData(condition bool, key, value string) *OPTIONElement {
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
+}
+
 func (e *OPTIONElement) CustomDataF(key, format string, args ...any) *OPTIONElement {
 	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
+func (e *OPTIONElement) IfCustomDataF(condition bool, key, format string, args ...any) *OPTIONElement {
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *OPTIONElement) CustomDataRemove(key string) *OPTIONElement {
@@ -93,12 +135,26 @@ func (e *OPTIONElement) DISABLED() *OPTIONElement {
 	return e
 }
 
+func (e *OPTIONElement) IfDISABLED(condition bool) *OPTIONElement {
+	if condition {
+		e.DISABLEDSet(true)
+	}
+	return e
+}
+
 // Set the attribute disabled to the value b explicitly.
 func (e *OPTIONElement) DISABLEDSet(b bool) *OPTIONElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("disabled", b)
+	return e
+}
+
+func (e *OPTIONElement) IfSetDISABLED(condition bool, b bool) *OPTIONElement {
+	if condition {
+		e.DISABLEDSet(b)
+	}
 	return e
 }
 
@@ -120,6 +176,13 @@ func (e *OPTIONElement) LABEL(s string) *OPTIONElement {
 	return e
 }
 
+func (e *OPTIONElement) IfLABEL(condition bool, s string) *OPTIONElement {
+	if condition {
+		e.LABEL(s)
+	}
+	return e
+}
+
 // Remove the attribute label from the element.
 func (e *OPTIONElement) LABELRemove(s string) *OPTIONElement {
 	if e.StringAttributes == nil {
@@ -135,12 +198,26 @@ func (e *OPTIONElement) SELECTED() *OPTIONElement {
 	return e
 }
 
+func (e *OPTIONElement) IfSELECTED(condition bool) *OPTIONElement {
+	if condition {
+		e.SELECTEDSet(true)
+	}
+	return e
+}
+
 // Set the attribute selected to the value b explicitly.
 func (e *OPTIONElement) SELECTEDSet(b bool) *OPTIONElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("selected", b)
+	return e
+}
+
+func (e *OPTIONElement) IfSetSELECTED(condition bool, b bool) *OPTIONElement {
+	if condition {
+		e.SELECTEDSet(b)
+	}
 	return e
 }
 
@@ -162,6 +239,13 @@ func (e *OPTIONElement) VALUE(s string) *OPTIONElement {
 	return e
 }
 
+func (e *OPTIONElement) IfVALUE(condition bool, s string) *OPTIONElement {
+	if condition {
+		e.VALUE(s)
+	}
+	return e
+}
+
 // Remove the attribute value from the element.
 func (e *OPTIONElement) VALUERemove(s string) *OPTIONElement {
 	if e.StringAttributes == nil {
@@ -180,6 +264,13 @@ func (e *OPTIONElement) ACCESSKEY(r rune) *OPTIONElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("accesskey", string(r))
+	return e
+}
+
+func (e *OPTIONElement) IfACCESSKEY(condition bool, r rune) *OPTIONElement {
+	if condition {
+		e.ACCESSKEY(r)
+	}
 	return e
 }
 
@@ -265,12 +356,26 @@ func (e *OPTIONElement) AUTOFOCUS() *OPTIONElement {
 	return e
 }
 
+func (e *OPTIONElement) IfAUTOFOCUS(condition bool) *OPTIONElement {
+	if condition {
+		e.AUTOFOCUSSet(true)
+	}
+	return e
+}
+
 // Set the attribute autofocus to the value b explicitly.
 func (e *OPTIONElement) AUTOFOCUSSet(b bool) *OPTIONElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("autofocus", b)
+	return e
+}
+
+func (e *OPTIONElement) IfSetAUTOFOCUS(condition bool, b bool) *OPTIONElement {
+	if condition {
+		e.AUTOFOCUSSet(b)
+	}
 	return e
 }
 
@@ -298,6 +403,13 @@ func (e *OPTIONElement) CLASS(s ...string) *OPTIONElement {
 		e.DelimitedStrings.Set("class", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *OPTIONElement) IfCLASS(condition bool, s ...string) *OPTIONElement {
+	if condition {
+		e.CLASS(s...)
+	}
 	return e
 }
 
@@ -506,6 +618,13 @@ func (e *OPTIONElement) EXPORTPARTS(s ...string) *OPTIONElement {
 	return e
 }
 
+func (e *OPTIONElement) IfEXPORTPARTS(condition bool, s ...string) *OPTIONElement {
+	if condition {
+		e.EXPORTPARTS(s...)
+	}
+	return e
+}
+
 // Remove the attribute exportparts from the element.
 func (e *OPTIONElement) EXPORTPARTSRemove(s ...string) *OPTIONElement {
 	if e.DelimitedStrings == nil {
@@ -581,6 +700,13 @@ func (e *OPTIONElement) ID(s string) *OPTIONElement {
 	return e
 }
 
+func (e *OPTIONElement) IfID(condition bool, s string) *OPTIONElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
 // Remove the attribute id from the element.
 func (e *OPTIONElement) IDRemove(s string) *OPTIONElement {
 	if e.StringAttributes == nil {
@@ -607,12 +733,26 @@ func (e *OPTIONElement) INERT() *OPTIONElement {
 	return e
 }
 
+func (e *OPTIONElement) IfINERT(condition bool) *OPTIONElement {
+	if condition {
+		e.INERTSet(true)
+	}
+	return e
+}
+
 // Set the attribute inert to the value b explicitly.
 func (e *OPTIONElement) INERTSet(b bool) *OPTIONElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("inert", b)
+	return e
+}
+
+func (e *OPTIONElement) IfSetINERT(condition bool, b bool) *OPTIONElement {
+	if condition {
+		e.INERTSet(b)
+	}
 	return e
 }
 
@@ -708,6 +848,13 @@ func (e *OPTIONElement) IS(s string) *OPTIONElement {
 	return e
 }
 
+func (e *OPTIONElement) IfIS(condition bool, s string) *OPTIONElement {
+	if condition {
+		e.IS(s)
+	}
+	return e
+}
+
 // Remove the attribute is from the element.
 func (e *OPTIONElement) ISRemove(s string) *OPTIONElement {
 	if e.StringAttributes == nil {
@@ -738,6 +885,13 @@ func (e *OPTIONElement) ITEMID(s string) *OPTIONElement {
 	return e
 }
 
+func (e *OPTIONElement) IfITEMID(condition bool, s string) *OPTIONElement {
+	if condition {
+		e.ITEMID(s)
+	}
+	return e
+}
+
 // Remove the attribute itemid from the element.
 func (e *OPTIONElement) ITEMIDRemove(s string) *OPTIONElement {
 	if e.StringAttributes == nil {
@@ -763,6 +917,13 @@ func (e *OPTIONElement) ITEMPROP(s string) *OPTIONElement {
 	return e
 }
 
+func (e *OPTIONElement) IfITEMPROP(condition bool, s string) *OPTIONElement {
+	if condition {
+		e.ITEMPROP(s)
+	}
+	return e
+}
+
 // Remove the attribute itemprop from the element.
 func (e *OPTIONElement) ITEMPROPRemove(s string) *OPTIONElement {
 	if e.StringAttributes == nil {
@@ -782,6 +943,13 @@ func (e *OPTIONElement) ITEMREF(s string) *OPTIONElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("itemref", s)
+	return e
+}
+
+func (e *OPTIONElement) IfITEMREF(condition bool, s string) *OPTIONElement {
+	if condition {
+		e.ITEMREF(s)
+	}
 	return e
 }
 
@@ -807,12 +975,26 @@ func (e *OPTIONElement) ITEMSCOPE() *OPTIONElement {
 	return e
 }
 
+func (e *OPTIONElement) IfITEMSCOPE(condition bool) *OPTIONElement {
+	if condition {
+		e.ITEMSCOPESet(true)
+	}
+	return e
+}
+
 // Set the attribute itemscope to the value b explicitly.
 func (e *OPTIONElement) ITEMSCOPESet(b bool) *OPTIONElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("itemscope", b)
+	return e
+}
+
+func (e *OPTIONElement) IfSetITEMSCOPE(condition bool, b bool) *OPTIONElement {
+	if condition {
+		e.ITEMSCOPESet(b)
+	}
 	return e
 }
 
@@ -841,6 +1023,13 @@ func (e *OPTIONElement) ITEMTYPE(s string) *OPTIONElement {
 	return e
 }
 
+func (e *OPTIONElement) IfITEMTYPE(condition bool, s string) *OPTIONElement {
+	if condition {
+		e.ITEMTYPE(s)
+	}
+	return e
+}
+
 // Remove the attribute itemtype from the element.
 func (e *OPTIONElement) ITEMTYPERemove(s string) *OPTIONElement {
 	if e.StringAttributes == nil {
@@ -864,6 +1053,13 @@ func (e *OPTIONElement) LANG(s string) *OPTIONElement {
 	return e
 }
 
+func (e *OPTIONElement) IfLANG(condition bool, s string) *OPTIONElement {
+	if condition {
+		e.LANG(s)
+	}
+	return e
+}
+
 // Remove the attribute lang from the element.
 func (e *OPTIONElement) LANGRemove(s string) *OPTIONElement {
 	if e.StringAttributes == nil {
@@ -882,6 +1078,13 @@ func (e *OPTIONElement) NONCE(s string) *OPTIONElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("nonce", s)
+	return e
+}
+
+func (e *OPTIONElement) IfNONCE(condition bool, s string) *OPTIONElement {
+	if condition {
+		e.NONCE(s)
+	}
 	return e
 }
 
@@ -908,6 +1111,13 @@ func (e *OPTIONElement) PART(s ...string) *OPTIONElement {
 		e.DelimitedStrings.Set("part", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *OPTIONElement) IfPART(condition bool, s ...string) *OPTIONElement {
+	if condition {
+		e.PART(s...)
+	}
 	return e
 }
 
@@ -978,6 +1188,13 @@ func (e *OPTIONElement) SLOT(s string) *OPTIONElement {
 	return e
 }
 
+func (e *OPTIONElement) IfSLOT(condition bool, s string) *OPTIONElement {
+	if condition {
+		e.SLOT(s)
+	}
+	return e
+}
+
 // Remove the attribute slot from the element.
 func (e *OPTIONElement) SLOTRemove(s string) *OPTIONElement {
 	if e.StringAttributes == nil {
@@ -1036,6 +1253,13 @@ func (e *OPTIONElement) STYLEF(k string, format string, args ...any) *OPTIONElem
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+func (e *OPTIONElement) IfSTYLE(condition bool, k string, v string) *OPTIONElement {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
 func (e *OPTIONElement) STYLE(k string, v string) *OPTIONElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -1046,6 +1270,13 @@ func (e *OPTIONElement) STYLE(k string, v string) *OPTIONElement {
 		e.KVStrings.Set("style", kv)
 	}
 	kv.Add(k, v)
+	return e
+}
+
+func (e *OPTIONElement) IfSTYLEF(condition bool, k string, format string, args ...any) *OPTIONElement {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
 	return e
 }
 
@@ -1086,6 +1317,13 @@ func (e *OPTIONElement) STYLEPairs(pairs ...string) *OPTIONElement {
 	return e
 }
 
+func (e *OPTIONElement) IfSTYLEPairs(condition bool, pairs ...string) *OPTIONElement {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
+	return e
+}
+
 // Remove the attribute style from the element.
 func (e *OPTIONElement) STYLERemove(keys ...string) *OPTIONElement {
 	if e.KVStrings == nil {
@@ -1120,6 +1358,13 @@ func (e *OPTIONElement) TABINDEX(i int) *OPTIONElement {
 		e.IntAttributes = treemap.New[string, int]()
 	}
 	e.IntAttributes.Set("tabindex", i)
+	return e
+}
+
+func (e *OPTIONElement) IfTABINDEX(condition bool, i int) *OPTIONElement {
+	if condition {
+		e.TABINDEX(i)
+	}
 	return e
 }
 
@@ -1158,6 +1403,13 @@ func (e *OPTIONElement) TITLE(s string) *OPTIONElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("title", s)
+	return e
+}
+
+func (e *OPTIONElement) IfTITLE(condition bool, s string) *OPTIONElement {
+	if condition {
+		e.TITLE(s)
+	}
 	return e
 }
 

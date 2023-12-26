@@ -58,13 +58,41 @@ func (e *DIALOGElement) TextF(format string, args ...any) *DIALOGElement {
 	return e.Text(fmt.Sprintf(format, args...))
 }
 
+func (e *DIALOGElement) IfText(condition bool, text string) *DIALOGElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
+}
+
+func (e *DIALOGElement) IfTextF(condition bool, format string, args ...any) *DIALOGElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
+}
+
 func (e *DIALOGElement) Escaped(text string) *DIALOGElement {
 	e.Descendants = append(e.Descendants, Escaped(text))
 	return e
 }
 
+func (e *DIALOGElement) IfEscaped(condition bool, text string) *DIALOGElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
+}
+
 func (e *DIALOGElement) EscapedF(format string, args ...any) *DIALOGElement {
 	return e.Escaped(fmt.Sprintf(format, args...))
+}
+
+func (e *DIALOGElement) IfEscapedF(condition bool, format string, args ...any) *DIALOGElement {
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *DIALOGElement) CustomData(key, value string) *DIALOGElement {
@@ -75,8 +103,22 @@ func (e *DIALOGElement) CustomData(key, value string) *DIALOGElement {
 	return e
 }
 
+func (e *DIALOGElement) IfCustomData(condition bool, key, value string) *DIALOGElement {
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
+}
+
 func (e *DIALOGElement) CustomDataF(key, format string, args ...any) *DIALOGElement {
 	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
+func (e *DIALOGElement) IfCustomDataF(condition bool, key, format string, args ...any) *DIALOGElement {
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *DIALOGElement) CustomDataRemove(key string) *DIALOGElement {
@@ -93,12 +135,26 @@ func (e *DIALOGElement) OPEN() *DIALOGElement {
 	return e
 }
 
+func (e *DIALOGElement) IfOPEN(condition bool) *DIALOGElement {
+	if condition {
+		e.OPENSet(true)
+	}
+	return e
+}
+
 // Set the attribute open to the value b explicitly.
 func (e *DIALOGElement) OPENSet(b bool) *DIALOGElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("open", b)
+	return e
+}
+
+func (e *DIALOGElement) IfSetOPEN(condition bool, b bool) *DIALOGElement {
+	if condition {
+		e.OPENSet(b)
+	}
 	return e
 }
 
@@ -120,6 +176,13 @@ func (e *DIALOGElement) ACCESSKEY(r rune) *DIALOGElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("accesskey", string(r))
+	return e
+}
+
+func (e *DIALOGElement) IfACCESSKEY(condition bool, r rune) *DIALOGElement {
+	if condition {
+		e.ACCESSKEY(r)
+	}
 	return e
 }
 
@@ -205,12 +268,26 @@ func (e *DIALOGElement) AUTOFOCUS() *DIALOGElement {
 	return e
 }
 
+func (e *DIALOGElement) IfAUTOFOCUS(condition bool) *DIALOGElement {
+	if condition {
+		e.AUTOFOCUSSet(true)
+	}
+	return e
+}
+
 // Set the attribute autofocus to the value b explicitly.
 func (e *DIALOGElement) AUTOFOCUSSet(b bool) *DIALOGElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("autofocus", b)
+	return e
+}
+
+func (e *DIALOGElement) IfSetAUTOFOCUS(condition bool, b bool) *DIALOGElement {
+	if condition {
+		e.AUTOFOCUSSet(b)
+	}
 	return e
 }
 
@@ -238,6 +315,13 @@ func (e *DIALOGElement) CLASS(s ...string) *DIALOGElement {
 		e.DelimitedStrings.Set("class", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *DIALOGElement) IfCLASS(condition bool, s ...string) *DIALOGElement {
+	if condition {
+		e.CLASS(s...)
+	}
 	return e
 }
 
@@ -446,6 +530,13 @@ func (e *DIALOGElement) EXPORTPARTS(s ...string) *DIALOGElement {
 	return e
 }
 
+func (e *DIALOGElement) IfEXPORTPARTS(condition bool, s ...string) *DIALOGElement {
+	if condition {
+		e.EXPORTPARTS(s...)
+	}
+	return e
+}
+
 // Remove the attribute exportparts from the element.
 func (e *DIALOGElement) EXPORTPARTSRemove(s ...string) *DIALOGElement {
 	if e.DelimitedStrings == nil {
@@ -521,6 +612,13 @@ func (e *DIALOGElement) ID(s string) *DIALOGElement {
 	return e
 }
 
+func (e *DIALOGElement) IfID(condition bool, s string) *DIALOGElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
 // Remove the attribute id from the element.
 func (e *DIALOGElement) IDRemove(s string) *DIALOGElement {
 	if e.StringAttributes == nil {
@@ -547,12 +645,26 @@ func (e *DIALOGElement) INERT() *DIALOGElement {
 	return e
 }
 
+func (e *DIALOGElement) IfINERT(condition bool) *DIALOGElement {
+	if condition {
+		e.INERTSet(true)
+	}
+	return e
+}
+
 // Set the attribute inert to the value b explicitly.
 func (e *DIALOGElement) INERTSet(b bool) *DIALOGElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("inert", b)
+	return e
+}
+
+func (e *DIALOGElement) IfSetINERT(condition bool, b bool) *DIALOGElement {
+	if condition {
+		e.INERTSet(b)
+	}
 	return e
 }
 
@@ -648,6 +760,13 @@ func (e *DIALOGElement) IS(s string) *DIALOGElement {
 	return e
 }
 
+func (e *DIALOGElement) IfIS(condition bool, s string) *DIALOGElement {
+	if condition {
+		e.IS(s)
+	}
+	return e
+}
+
 // Remove the attribute is from the element.
 func (e *DIALOGElement) ISRemove(s string) *DIALOGElement {
 	if e.StringAttributes == nil {
@@ -678,6 +797,13 @@ func (e *DIALOGElement) ITEMID(s string) *DIALOGElement {
 	return e
 }
 
+func (e *DIALOGElement) IfITEMID(condition bool, s string) *DIALOGElement {
+	if condition {
+		e.ITEMID(s)
+	}
+	return e
+}
+
 // Remove the attribute itemid from the element.
 func (e *DIALOGElement) ITEMIDRemove(s string) *DIALOGElement {
 	if e.StringAttributes == nil {
@@ -703,6 +829,13 @@ func (e *DIALOGElement) ITEMPROP(s string) *DIALOGElement {
 	return e
 }
 
+func (e *DIALOGElement) IfITEMPROP(condition bool, s string) *DIALOGElement {
+	if condition {
+		e.ITEMPROP(s)
+	}
+	return e
+}
+
 // Remove the attribute itemprop from the element.
 func (e *DIALOGElement) ITEMPROPRemove(s string) *DIALOGElement {
 	if e.StringAttributes == nil {
@@ -722,6 +855,13 @@ func (e *DIALOGElement) ITEMREF(s string) *DIALOGElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("itemref", s)
+	return e
+}
+
+func (e *DIALOGElement) IfITEMREF(condition bool, s string) *DIALOGElement {
+	if condition {
+		e.ITEMREF(s)
+	}
 	return e
 }
 
@@ -747,12 +887,26 @@ func (e *DIALOGElement) ITEMSCOPE() *DIALOGElement {
 	return e
 }
 
+func (e *DIALOGElement) IfITEMSCOPE(condition bool) *DIALOGElement {
+	if condition {
+		e.ITEMSCOPESet(true)
+	}
+	return e
+}
+
 // Set the attribute itemscope to the value b explicitly.
 func (e *DIALOGElement) ITEMSCOPESet(b bool) *DIALOGElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("itemscope", b)
+	return e
+}
+
+func (e *DIALOGElement) IfSetITEMSCOPE(condition bool, b bool) *DIALOGElement {
+	if condition {
+		e.ITEMSCOPESet(b)
+	}
 	return e
 }
 
@@ -781,6 +935,13 @@ func (e *DIALOGElement) ITEMTYPE(s string) *DIALOGElement {
 	return e
 }
 
+func (e *DIALOGElement) IfITEMTYPE(condition bool, s string) *DIALOGElement {
+	if condition {
+		e.ITEMTYPE(s)
+	}
+	return e
+}
+
 // Remove the attribute itemtype from the element.
 func (e *DIALOGElement) ITEMTYPERemove(s string) *DIALOGElement {
 	if e.StringAttributes == nil {
@@ -804,6 +965,13 @@ func (e *DIALOGElement) LANG(s string) *DIALOGElement {
 	return e
 }
 
+func (e *DIALOGElement) IfLANG(condition bool, s string) *DIALOGElement {
+	if condition {
+		e.LANG(s)
+	}
+	return e
+}
+
 // Remove the attribute lang from the element.
 func (e *DIALOGElement) LANGRemove(s string) *DIALOGElement {
 	if e.StringAttributes == nil {
@@ -822,6 +990,13 @@ func (e *DIALOGElement) NONCE(s string) *DIALOGElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("nonce", s)
+	return e
+}
+
+func (e *DIALOGElement) IfNONCE(condition bool, s string) *DIALOGElement {
+	if condition {
+		e.NONCE(s)
+	}
 	return e
 }
 
@@ -848,6 +1023,13 @@ func (e *DIALOGElement) PART(s ...string) *DIALOGElement {
 		e.DelimitedStrings.Set("part", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *DIALOGElement) IfPART(condition bool, s ...string) *DIALOGElement {
+	if condition {
+		e.PART(s...)
+	}
 	return e
 }
 
@@ -918,6 +1100,13 @@ func (e *DIALOGElement) SLOT(s string) *DIALOGElement {
 	return e
 }
 
+func (e *DIALOGElement) IfSLOT(condition bool, s string) *DIALOGElement {
+	if condition {
+		e.SLOT(s)
+	}
+	return e
+}
+
 // Remove the attribute slot from the element.
 func (e *DIALOGElement) SLOTRemove(s string) *DIALOGElement {
 	if e.StringAttributes == nil {
@@ -976,6 +1165,13 @@ func (e *DIALOGElement) STYLEF(k string, format string, args ...any) *DIALOGElem
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+func (e *DIALOGElement) IfSTYLE(condition bool, k string, v string) *DIALOGElement {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
 func (e *DIALOGElement) STYLE(k string, v string) *DIALOGElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -986,6 +1182,13 @@ func (e *DIALOGElement) STYLE(k string, v string) *DIALOGElement {
 		e.KVStrings.Set("style", kv)
 	}
 	kv.Add(k, v)
+	return e
+}
+
+func (e *DIALOGElement) IfSTYLEF(condition bool, k string, format string, args ...any) *DIALOGElement {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
 	return e
 }
 
@@ -1026,6 +1229,13 @@ func (e *DIALOGElement) STYLEPairs(pairs ...string) *DIALOGElement {
 	return e
 }
 
+func (e *DIALOGElement) IfSTYLEPairs(condition bool, pairs ...string) *DIALOGElement {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
+	return e
+}
+
 // Remove the attribute style from the element.
 func (e *DIALOGElement) STYLERemove(keys ...string) *DIALOGElement {
 	if e.KVStrings == nil {
@@ -1060,6 +1270,13 @@ func (e *DIALOGElement) TABINDEX(i int) *DIALOGElement {
 		e.IntAttributes = treemap.New[string, int]()
 	}
 	e.IntAttributes.Set("tabindex", i)
+	return e
+}
+
+func (e *DIALOGElement) IfTABINDEX(condition bool, i int) *DIALOGElement {
+	if condition {
+		e.TABINDEX(i)
+	}
 	return e
 }
 
@@ -1098,6 +1315,13 @@ func (e *DIALOGElement) TITLE(s string) *DIALOGElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("title", s)
+	return e
+}
+
+func (e *DIALOGElement) IfTITLE(condition bool, s string) *DIALOGElement {
+	if condition {
+		e.TITLE(s)
+	}
 	return e
 }
 

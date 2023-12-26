@@ -56,13 +56,41 @@ func (e *OPTGROUPElement) TextF(format string, args ...any) *OPTGROUPElement {
 	return e.Text(fmt.Sprintf(format, args...))
 }
 
+func (e *OPTGROUPElement) IfText(condition bool, text string) *OPTGROUPElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
+}
+
+func (e *OPTGROUPElement) IfTextF(condition bool, format string, args ...any) *OPTGROUPElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
+}
+
 func (e *OPTGROUPElement) Escaped(text string) *OPTGROUPElement {
 	e.Descendants = append(e.Descendants, Escaped(text))
 	return e
 }
 
+func (e *OPTGROUPElement) IfEscaped(condition bool, text string) *OPTGROUPElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
+}
+
 func (e *OPTGROUPElement) EscapedF(format string, args ...any) *OPTGROUPElement {
 	return e.Escaped(fmt.Sprintf(format, args...))
+}
+
+func (e *OPTGROUPElement) IfEscapedF(condition bool, format string, args ...any) *OPTGROUPElement {
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *OPTGROUPElement) CustomData(key, value string) *OPTGROUPElement {
@@ -73,8 +101,22 @@ func (e *OPTGROUPElement) CustomData(key, value string) *OPTGROUPElement {
 	return e
 }
 
+func (e *OPTGROUPElement) IfCustomData(condition bool, key, value string) *OPTGROUPElement {
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
+}
+
 func (e *OPTGROUPElement) CustomDataF(key, format string, args ...any) *OPTGROUPElement {
 	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
+func (e *OPTGROUPElement) IfCustomDataF(condition bool, key, format string, args ...any) *OPTGROUPElement {
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *OPTGROUPElement) CustomDataRemove(key string) *OPTGROUPElement {
@@ -91,12 +133,26 @@ func (e *OPTGROUPElement) DISABLED() *OPTGROUPElement {
 	return e
 }
 
+func (e *OPTGROUPElement) IfDISABLED(condition bool) *OPTGROUPElement {
+	if condition {
+		e.DISABLEDSet(true)
+	}
+	return e
+}
+
 // Set the attribute disabled to the value b explicitly.
 func (e *OPTGROUPElement) DISABLEDSet(b bool) *OPTGROUPElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("disabled", b)
+	return e
+}
+
+func (e *OPTGROUPElement) IfSetDISABLED(condition bool, b bool) *OPTGROUPElement {
+	if condition {
+		e.DISABLEDSet(b)
+	}
 	return e
 }
 
@@ -118,6 +174,13 @@ func (e *OPTGROUPElement) LABEL(s string) *OPTGROUPElement {
 	return e
 }
 
+func (e *OPTGROUPElement) IfLABEL(condition bool, s string) *OPTGROUPElement {
+	if condition {
+		e.LABEL(s)
+	}
+	return e
+}
+
 // Remove the attribute label from the element.
 func (e *OPTGROUPElement) LABELRemove(s string) *OPTGROUPElement {
 	if e.StringAttributes == nil {
@@ -136,6 +199,13 @@ func (e *OPTGROUPElement) ACCESSKEY(r rune) *OPTGROUPElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("accesskey", string(r))
+	return e
+}
+
+func (e *OPTGROUPElement) IfACCESSKEY(condition bool, r rune) *OPTGROUPElement {
+	if condition {
+		e.ACCESSKEY(r)
+	}
 	return e
 }
 
@@ -221,12 +291,26 @@ func (e *OPTGROUPElement) AUTOFOCUS() *OPTGROUPElement {
 	return e
 }
 
+func (e *OPTGROUPElement) IfAUTOFOCUS(condition bool) *OPTGROUPElement {
+	if condition {
+		e.AUTOFOCUSSet(true)
+	}
+	return e
+}
+
 // Set the attribute autofocus to the value b explicitly.
 func (e *OPTGROUPElement) AUTOFOCUSSet(b bool) *OPTGROUPElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("autofocus", b)
+	return e
+}
+
+func (e *OPTGROUPElement) IfSetAUTOFOCUS(condition bool, b bool) *OPTGROUPElement {
+	if condition {
+		e.AUTOFOCUSSet(b)
+	}
 	return e
 }
 
@@ -254,6 +338,13 @@ func (e *OPTGROUPElement) CLASS(s ...string) *OPTGROUPElement {
 		e.DelimitedStrings.Set("class", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *OPTGROUPElement) IfCLASS(condition bool, s ...string) *OPTGROUPElement {
+	if condition {
+		e.CLASS(s...)
+	}
 	return e
 }
 
@@ -462,6 +553,13 @@ func (e *OPTGROUPElement) EXPORTPARTS(s ...string) *OPTGROUPElement {
 	return e
 }
 
+func (e *OPTGROUPElement) IfEXPORTPARTS(condition bool, s ...string) *OPTGROUPElement {
+	if condition {
+		e.EXPORTPARTS(s...)
+	}
+	return e
+}
+
 // Remove the attribute exportparts from the element.
 func (e *OPTGROUPElement) EXPORTPARTSRemove(s ...string) *OPTGROUPElement {
 	if e.DelimitedStrings == nil {
@@ -537,6 +635,13 @@ func (e *OPTGROUPElement) ID(s string) *OPTGROUPElement {
 	return e
 }
 
+func (e *OPTGROUPElement) IfID(condition bool, s string) *OPTGROUPElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
 // Remove the attribute id from the element.
 func (e *OPTGROUPElement) IDRemove(s string) *OPTGROUPElement {
 	if e.StringAttributes == nil {
@@ -563,12 +668,26 @@ func (e *OPTGROUPElement) INERT() *OPTGROUPElement {
 	return e
 }
 
+func (e *OPTGROUPElement) IfINERT(condition bool) *OPTGROUPElement {
+	if condition {
+		e.INERTSet(true)
+	}
+	return e
+}
+
 // Set the attribute inert to the value b explicitly.
 func (e *OPTGROUPElement) INERTSet(b bool) *OPTGROUPElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("inert", b)
+	return e
+}
+
+func (e *OPTGROUPElement) IfSetINERT(condition bool, b bool) *OPTGROUPElement {
+	if condition {
+		e.INERTSet(b)
+	}
 	return e
 }
 
@@ -664,6 +783,13 @@ func (e *OPTGROUPElement) IS(s string) *OPTGROUPElement {
 	return e
 }
 
+func (e *OPTGROUPElement) IfIS(condition bool, s string) *OPTGROUPElement {
+	if condition {
+		e.IS(s)
+	}
+	return e
+}
+
 // Remove the attribute is from the element.
 func (e *OPTGROUPElement) ISRemove(s string) *OPTGROUPElement {
 	if e.StringAttributes == nil {
@@ -694,6 +820,13 @@ func (e *OPTGROUPElement) ITEMID(s string) *OPTGROUPElement {
 	return e
 }
 
+func (e *OPTGROUPElement) IfITEMID(condition bool, s string) *OPTGROUPElement {
+	if condition {
+		e.ITEMID(s)
+	}
+	return e
+}
+
 // Remove the attribute itemid from the element.
 func (e *OPTGROUPElement) ITEMIDRemove(s string) *OPTGROUPElement {
 	if e.StringAttributes == nil {
@@ -719,6 +852,13 @@ func (e *OPTGROUPElement) ITEMPROP(s string) *OPTGROUPElement {
 	return e
 }
 
+func (e *OPTGROUPElement) IfITEMPROP(condition bool, s string) *OPTGROUPElement {
+	if condition {
+		e.ITEMPROP(s)
+	}
+	return e
+}
+
 // Remove the attribute itemprop from the element.
 func (e *OPTGROUPElement) ITEMPROPRemove(s string) *OPTGROUPElement {
 	if e.StringAttributes == nil {
@@ -738,6 +878,13 @@ func (e *OPTGROUPElement) ITEMREF(s string) *OPTGROUPElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("itemref", s)
+	return e
+}
+
+func (e *OPTGROUPElement) IfITEMREF(condition bool, s string) *OPTGROUPElement {
+	if condition {
+		e.ITEMREF(s)
+	}
 	return e
 }
 
@@ -763,12 +910,26 @@ func (e *OPTGROUPElement) ITEMSCOPE() *OPTGROUPElement {
 	return e
 }
 
+func (e *OPTGROUPElement) IfITEMSCOPE(condition bool) *OPTGROUPElement {
+	if condition {
+		e.ITEMSCOPESet(true)
+	}
+	return e
+}
+
 // Set the attribute itemscope to the value b explicitly.
 func (e *OPTGROUPElement) ITEMSCOPESet(b bool) *OPTGROUPElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("itemscope", b)
+	return e
+}
+
+func (e *OPTGROUPElement) IfSetITEMSCOPE(condition bool, b bool) *OPTGROUPElement {
+	if condition {
+		e.ITEMSCOPESet(b)
+	}
 	return e
 }
 
@@ -797,6 +958,13 @@ func (e *OPTGROUPElement) ITEMTYPE(s string) *OPTGROUPElement {
 	return e
 }
 
+func (e *OPTGROUPElement) IfITEMTYPE(condition bool, s string) *OPTGROUPElement {
+	if condition {
+		e.ITEMTYPE(s)
+	}
+	return e
+}
+
 // Remove the attribute itemtype from the element.
 func (e *OPTGROUPElement) ITEMTYPERemove(s string) *OPTGROUPElement {
 	if e.StringAttributes == nil {
@@ -820,6 +988,13 @@ func (e *OPTGROUPElement) LANG(s string) *OPTGROUPElement {
 	return e
 }
 
+func (e *OPTGROUPElement) IfLANG(condition bool, s string) *OPTGROUPElement {
+	if condition {
+		e.LANG(s)
+	}
+	return e
+}
+
 // Remove the attribute lang from the element.
 func (e *OPTGROUPElement) LANGRemove(s string) *OPTGROUPElement {
 	if e.StringAttributes == nil {
@@ -838,6 +1013,13 @@ func (e *OPTGROUPElement) NONCE(s string) *OPTGROUPElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("nonce", s)
+	return e
+}
+
+func (e *OPTGROUPElement) IfNONCE(condition bool, s string) *OPTGROUPElement {
+	if condition {
+		e.NONCE(s)
+	}
 	return e
 }
 
@@ -864,6 +1046,13 @@ func (e *OPTGROUPElement) PART(s ...string) *OPTGROUPElement {
 		e.DelimitedStrings.Set("part", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *OPTGROUPElement) IfPART(condition bool, s ...string) *OPTGROUPElement {
+	if condition {
+		e.PART(s...)
+	}
 	return e
 }
 
@@ -934,6 +1123,13 @@ func (e *OPTGROUPElement) SLOT(s string) *OPTGROUPElement {
 	return e
 }
 
+func (e *OPTGROUPElement) IfSLOT(condition bool, s string) *OPTGROUPElement {
+	if condition {
+		e.SLOT(s)
+	}
+	return e
+}
+
 // Remove the attribute slot from the element.
 func (e *OPTGROUPElement) SLOTRemove(s string) *OPTGROUPElement {
 	if e.StringAttributes == nil {
@@ -992,6 +1188,13 @@ func (e *OPTGROUPElement) STYLEF(k string, format string, args ...any) *OPTGROUP
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+func (e *OPTGROUPElement) IfSTYLE(condition bool, k string, v string) *OPTGROUPElement {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
 func (e *OPTGROUPElement) STYLE(k string, v string) *OPTGROUPElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -1002,6 +1205,13 @@ func (e *OPTGROUPElement) STYLE(k string, v string) *OPTGROUPElement {
 		e.KVStrings.Set("style", kv)
 	}
 	kv.Add(k, v)
+	return e
+}
+
+func (e *OPTGROUPElement) IfSTYLEF(condition bool, k string, format string, args ...any) *OPTGROUPElement {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
 	return e
 }
 
@@ -1042,6 +1252,13 @@ func (e *OPTGROUPElement) STYLEPairs(pairs ...string) *OPTGROUPElement {
 	return e
 }
 
+func (e *OPTGROUPElement) IfSTYLEPairs(condition bool, pairs ...string) *OPTGROUPElement {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
+	return e
+}
+
 // Remove the attribute style from the element.
 func (e *OPTGROUPElement) STYLERemove(keys ...string) *OPTGROUPElement {
 	if e.KVStrings == nil {
@@ -1076,6 +1293,13 @@ func (e *OPTGROUPElement) TABINDEX(i int) *OPTGROUPElement {
 		e.IntAttributes = treemap.New[string, int]()
 	}
 	e.IntAttributes.Set("tabindex", i)
+	return e
+}
+
+func (e *OPTGROUPElement) IfTABINDEX(condition bool, i int) *OPTGROUPElement {
+	if condition {
+		e.TABINDEX(i)
+	}
 	return e
 }
 
@@ -1114,6 +1338,13 @@ func (e *OPTGROUPElement) TITLE(s string) *OPTGROUPElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("title", s)
+	return e
+}
+
+func (e *OPTGROUPElement) IfTITLE(condition bool, s string) *OPTGROUPElement {
+	if condition {
+		e.TITLE(s)
+	}
 	return e
 }
 

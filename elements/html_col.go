@@ -56,13 +56,41 @@ func (e *COLElement) TextF(format string, args ...any) *COLElement {
 	return e.Text(fmt.Sprintf(format, args...))
 }
 
+func (e *COLElement) IfText(condition bool, text string) *COLElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
+}
+
+func (e *COLElement) IfTextF(condition bool, format string, args ...any) *COLElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
+}
+
 func (e *COLElement) Escaped(text string) *COLElement {
 	e.Descendants = append(e.Descendants, Escaped(text))
 	return e
 }
 
+func (e *COLElement) IfEscaped(condition bool, text string) *COLElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
+}
+
 func (e *COLElement) EscapedF(format string, args ...any) *COLElement {
 	return e.Escaped(fmt.Sprintf(format, args...))
+}
+
+func (e *COLElement) IfEscapedF(condition bool, format string, args ...any) *COLElement {
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *COLElement) CustomData(key, value string) *COLElement {
@@ -73,8 +101,22 @@ func (e *COLElement) CustomData(key, value string) *COLElement {
 	return e
 }
 
+func (e *COLElement) IfCustomData(condition bool, key, value string) *COLElement {
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
+}
+
 func (e *COLElement) CustomDataF(key, format string, args ...any) *COLElement {
 	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
+func (e *COLElement) IfCustomDataF(condition bool, key, format string, args ...any) *COLElement {
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *COLElement) CustomDataRemove(key string) *COLElement {
@@ -91,6 +133,13 @@ func (e *COLElement) SPAN(i int) *COLElement {
 		e.IntAttributes = treemap.New[string, int]()
 	}
 	e.IntAttributes.Set("span", i)
+	return e
+}
+
+func (e *COLElement) IfSPAN(condition bool, i int) *COLElement {
+	if condition {
+		e.SPAN(i)
+	}
 	return e
 }
 
@@ -112,6 +161,13 @@ func (e *COLElement) ACCESSKEY(r rune) *COLElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("accesskey", string(r))
+	return e
+}
+
+func (e *COLElement) IfACCESSKEY(condition bool, r rune) *COLElement {
+	if condition {
+		e.ACCESSKEY(r)
+	}
 	return e
 }
 
@@ -197,12 +253,26 @@ func (e *COLElement) AUTOFOCUS() *COLElement {
 	return e
 }
 
+func (e *COLElement) IfAUTOFOCUS(condition bool) *COLElement {
+	if condition {
+		e.AUTOFOCUSSet(true)
+	}
+	return e
+}
+
 // Set the attribute autofocus to the value b explicitly.
 func (e *COLElement) AUTOFOCUSSet(b bool) *COLElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("autofocus", b)
+	return e
+}
+
+func (e *COLElement) IfSetAUTOFOCUS(condition bool, b bool) *COLElement {
+	if condition {
+		e.AUTOFOCUSSet(b)
+	}
 	return e
 }
 
@@ -230,6 +300,13 @@ func (e *COLElement) CLASS(s ...string) *COLElement {
 		e.DelimitedStrings.Set("class", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *COLElement) IfCLASS(condition bool, s ...string) *COLElement {
+	if condition {
+		e.CLASS(s...)
+	}
 	return e
 }
 
@@ -438,6 +515,13 @@ func (e *COLElement) EXPORTPARTS(s ...string) *COLElement {
 	return e
 }
 
+func (e *COLElement) IfEXPORTPARTS(condition bool, s ...string) *COLElement {
+	if condition {
+		e.EXPORTPARTS(s...)
+	}
+	return e
+}
+
 // Remove the attribute exportparts from the element.
 func (e *COLElement) EXPORTPARTSRemove(s ...string) *COLElement {
 	if e.DelimitedStrings == nil {
@@ -513,6 +597,13 @@ func (e *COLElement) ID(s string) *COLElement {
 	return e
 }
 
+func (e *COLElement) IfID(condition bool, s string) *COLElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
 // Remove the attribute id from the element.
 func (e *COLElement) IDRemove(s string) *COLElement {
 	if e.StringAttributes == nil {
@@ -539,12 +630,26 @@ func (e *COLElement) INERT() *COLElement {
 	return e
 }
 
+func (e *COLElement) IfINERT(condition bool) *COLElement {
+	if condition {
+		e.INERTSet(true)
+	}
+	return e
+}
+
 // Set the attribute inert to the value b explicitly.
 func (e *COLElement) INERTSet(b bool) *COLElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("inert", b)
+	return e
+}
+
+func (e *COLElement) IfSetINERT(condition bool, b bool) *COLElement {
+	if condition {
+		e.INERTSet(b)
+	}
 	return e
 }
 
@@ -640,6 +745,13 @@ func (e *COLElement) IS(s string) *COLElement {
 	return e
 }
 
+func (e *COLElement) IfIS(condition bool, s string) *COLElement {
+	if condition {
+		e.IS(s)
+	}
+	return e
+}
+
 // Remove the attribute is from the element.
 func (e *COLElement) ISRemove(s string) *COLElement {
 	if e.StringAttributes == nil {
@@ -670,6 +782,13 @@ func (e *COLElement) ITEMID(s string) *COLElement {
 	return e
 }
 
+func (e *COLElement) IfITEMID(condition bool, s string) *COLElement {
+	if condition {
+		e.ITEMID(s)
+	}
+	return e
+}
+
 // Remove the attribute itemid from the element.
 func (e *COLElement) ITEMIDRemove(s string) *COLElement {
 	if e.StringAttributes == nil {
@@ -695,6 +814,13 @@ func (e *COLElement) ITEMPROP(s string) *COLElement {
 	return e
 }
 
+func (e *COLElement) IfITEMPROP(condition bool, s string) *COLElement {
+	if condition {
+		e.ITEMPROP(s)
+	}
+	return e
+}
+
 // Remove the attribute itemprop from the element.
 func (e *COLElement) ITEMPROPRemove(s string) *COLElement {
 	if e.StringAttributes == nil {
@@ -714,6 +840,13 @@ func (e *COLElement) ITEMREF(s string) *COLElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("itemref", s)
+	return e
+}
+
+func (e *COLElement) IfITEMREF(condition bool, s string) *COLElement {
+	if condition {
+		e.ITEMREF(s)
+	}
 	return e
 }
 
@@ -739,12 +872,26 @@ func (e *COLElement) ITEMSCOPE() *COLElement {
 	return e
 }
 
+func (e *COLElement) IfITEMSCOPE(condition bool) *COLElement {
+	if condition {
+		e.ITEMSCOPESet(true)
+	}
+	return e
+}
+
 // Set the attribute itemscope to the value b explicitly.
 func (e *COLElement) ITEMSCOPESet(b bool) *COLElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("itemscope", b)
+	return e
+}
+
+func (e *COLElement) IfSetITEMSCOPE(condition bool, b bool) *COLElement {
+	if condition {
+		e.ITEMSCOPESet(b)
+	}
 	return e
 }
 
@@ -773,6 +920,13 @@ func (e *COLElement) ITEMTYPE(s string) *COLElement {
 	return e
 }
 
+func (e *COLElement) IfITEMTYPE(condition bool, s string) *COLElement {
+	if condition {
+		e.ITEMTYPE(s)
+	}
+	return e
+}
+
 // Remove the attribute itemtype from the element.
 func (e *COLElement) ITEMTYPERemove(s string) *COLElement {
 	if e.StringAttributes == nil {
@@ -796,6 +950,13 @@ func (e *COLElement) LANG(s string) *COLElement {
 	return e
 }
 
+func (e *COLElement) IfLANG(condition bool, s string) *COLElement {
+	if condition {
+		e.LANG(s)
+	}
+	return e
+}
+
 // Remove the attribute lang from the element.
 func (e *COLElement) LANGRemove(s string) *COLElement {
 	if e.StringAttributes == nil {
@@ -814,6 +975,13 @@ func (e *COLElement) NONCE(s string) *COLElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("nonce", s)
+	return e
+}
+
+func (e *COLElement) IfNONCE(condition bool, s string) *COLElement {
+	if condition {
+		e.NONCE(s)
+	}
 	return e
 }
 
@@ -840,6 +1008,13 @@ func (e *COLElement) PART(s ...string) *COLElement {
 		e.DelimitedStrings.Set("part", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *COLElement) IfPART(condition bool, s ...string) *COLElement {
+	if condition {
+		e.PART(s...)
+	}
 	return e
 }
 
@@ -910,6 +1085,13 @@ func (e *COLElement) SLOT(s string) *COLElement {
 	return e
 }
 
+func (e *COLElement) IfSLOT(condition bool, s string) *COLElement {
+	if condition {
+		e.SLOT(s)
+	}
+	return e
+}
+
 // Remove the attribute slot from the element.
 func (e *COLElement) SLOTRemove(s string) *COLElement {
 	if e.StringAttributes == nil {
@@ -968,6 +1150,13 @@ func (e *COLElement) STYLEF(k string, format string, args ...any) *COLElement {
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+func (e *COLElement) IfSTYLE(condition bool, k string, v string) *COLElement {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
 func (e *COLElement) STYLE(k string, v string) *COLElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -978,6 +1167,13 @@ func (e *COLElement) STYLE(k string, v string) *COLElement {
 		e.KVStrings.Set("style", kv)
 	}
 	kv.Add(k, v)
+	return e
+}
+
+func (e *COLElement) IfSTYLEF(condition bool, k string, format string, args ...any) *COLElement {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
 	return e
 }
 
@@ -1018,6 +1214,13 @@ func (e *COLElement) STYLEPairs(pairs ...string) *COLElement {
 	return e
 }
 
+func (e *COLElement) IfSTYLEPairs(condition bool, pairs ...string) *COLElement {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
+	return e
+}
+
 // Remove the attribute style from the element.
 func (e *COLElement) STYLERemove(keys ...string) *COLElement {
 	if e.KVStrings == nil {
@@ -1052,6 +1255,13 @@ func (e *COLElement) TABINDEX(i int) *COLElement {
 		e.IntAttributes = treemap.New[string, int]()
 	}
 	e.IntAttributes.Set("tabindex", i)
+	return e
+}
+
+func (e *COLElement) IfTABINDEX(condition bool, i int) *COLElement {
+	if condition {
+		e.TABINDEX(i)
+	}
 	return e
 }
 
@@ -1090,6 +1300,13 @@ func (e *COLElement) TITLE(s string) *COLElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("title", s)
+	return e
+}
+
+func (e *COLElement) IfTITLE(condition bool, s string) *COLElement {
+	if condition {
+		e.TITLE(s)
+	}
 	return e
 }
 

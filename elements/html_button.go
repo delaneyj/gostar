@@ -56,13 +56,41 @@ func (e *BUTTONElement) TextF(format string, args ...any) *BUTTONElement {
 	return e.Text(fmt.Sprintf(format, args...))
 }
 
+func (e *BUTTONElement) IfText(condition bool, text string) *BUTTONElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
+}
+
+func (e *BUTTONElement) IfTextF(condition bool, format string, args ...any) *BUTTONElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
+}
+
 func (e *BUTTONElement) Escaped(text string) *BUTTONElement {
 	e.Descendants = append(e.Descendants, Escaped(text))
 	return e
 }
 
+func (e *BUTTONElement) IfEscaped(condition bool, text string) *BUTTONElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
+}
+
 func (e *BUTTONElement) EscapedF(format string, args ...any) *BUTTONElement {
 	return e.Escaped(fmt.Sprintf(format, args...))
+}
+
+func (e *BUTTONElement) IfEscapedF(condition bool, format string, args ...any) *BUTTONElement {
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *BUTTONElement) CustomData(key, value string) *BUTTONElement {
@@ -73,8 +101,22 @@ func (e *BUTTONElement) CustomData(key, value string) *BUTTONElement {
 	return e
 }
 
+func (e *BUTTONElement) IfCustomData(condition bool, key, value string) *BUTTONElement {
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
+}
+
 func (e *BUTTONElement) CustomDataF(key, format string, args ...any) *BUTTONElement {
 	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
+func (e *BUTTONElement) IfCustomDataF(condition bool, key, format string, args ...any) *BUTTONElement {
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *BUTTONElement) CustomDataRemove(key string) *BUTTONElement {
@@ -92,12 +134,26 @@ func (e *BUTTONElement) AUTOFOCUS() *BUTTONElement {
 	return e
 }
 
+func (e *BUTTONElement) IfAUTOFOCUS(condition bool) *BUTTONElement {
+	if condition {
+		e.AUTOFOCUSSet(true)
+	}
+	return e
+}
+
 // Set the attribute autofocus to the value b explicitly.
 func (e *BUTTONElement) AUTOFOCUSSet(b bool) *BUTTONElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("autofocus", b)
+	return e
+}
+
+func (e *BUTTONElement) IfSetAUTOFOCUS(condition bool, b bool) *BUTTONElement {
+	if condition {
+		e.AUTOFOCUSSet(b)
+	}
 	return e
 }
 
@@ -116,12 +172,26 @@ func (e *BUTTONElement) DISABLED() *BUTTONElement {
 	return e
 }
 
+func (e *BUTTONElement) IfDISABLED(condition bool) *BUTTONElement {
+	if condition {
+		e.DISABLEDSet(true)
+	}
+	return e
+}
+
 // Set the attribute disabled to the value b explicitly.
 func (e *BUTTONElement) DISABLEDSet(b bool) *BUTTONElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("disabled", b)
+	return e
+}
+
+func (e *BUTTONElement) IfSetDISABLED(condition bool, b bool) *BUTTONElement {
+	if condition {
+		e.DISABLEDSet(b)
+	}
 	return e
 }
 
@@ -143,6 +213,13 @@ func (e *BUTTONElement) FORM(s string) *BUTTONElement {
 	return e
 }
 
+func (e *BUTTONElement) IfFORM(condition bool, s string) *BUTTONElement {
+	if condition {
+		e.FORM(s)
+	}
+	return e
+}
+
 // Remove the attribute form from the element.
 func (e *BUTTONElement) FORMRemove(s string) *BUTTONElement {
 	if e.StringAttributes == nil {
@@ -159,6 +236,13 @@ func (e *BUTTONElement) FORMACTION(s string) *BUTTONElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("formaction", s)
+	return e
+}
+
+func (e *BUTTONElement) IfFORMACTION(condition bool, s string) *BUTTONElement {
+	if condition {
+		e.FORMACTION(s)
+	}
 	return e
 }
 
@@ -246,12 +330,26 @@ func (e *BUTTONElement) FORMNOVALIDATE() *BUTTONElement {
 	return e
 }
 
+func (e *BUTTONElement) IfFORMNOVALIDATE(condition bool) *BUTTONElement {
+	if condition {
+		e.FORMNOVALIDATESet(true)
+	}
+	return e
+}
+
 // Set the attribute formnovalidate to the value b explicitly.
 func (e *BUTTONElement) FORMNOVALIDATESet(b bool) *BUTTONElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("formnovalidate", b)
+	return e
+}
+
+func (e *BUTTONElement) IfSetFORMNOVALIDATE(condition bool, b bool) *BUTTONElement {
+	if condition {
+		e.FORMNOVALIDATESet(b)
+	}
 	return e
 }
 
@@ -315,6 +413,13 @@ func (e *BUTTONElement) NAME(s string) *BUTTONElement {
 	return e
 }
 
+func (e *BUTTONElement) IfNAME(condition bool, s string) *BUTTONElement {
+	if condition {
+		e.NAME(s)
+	}
+	return e
+}
+
 // Remove the attribute name from the element.
 func (e *BUTTONElement) NAMERemove(s string) *BUTTONElement {
 	if e.StringAttributes == nil {
@@ -332,6 +437,13 @@ func (e *BUTTONElement) POPOVERTARGET(s string) *BUTTONElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("popovertarget", s)
+	return e
+}
+
+func (e *BUTTONElement) IfPOPOVERTARGET(condition bool, s string) *BUTTONElement {
+	if condition {
+		e.POPOVERTARGET(s)
+	}
 	return e
 }
 
@@ -419,6 +531,13 @@ func (e *BUTTONElement) VALUE(s string) *BUTTONElement {
 	return e
 }
 
+func (e *BUTTONElement) IfVALUE(condition bool, s string) *BUTTONElement {
+	if condition {
+		e.VALUE(s)
+	}
+	return e
+}
+
 // Remove the attribute value from the element.
 func (e *BUTTONElement) VALUERemove(s string) *BUTTONElement {
 	if e.StringAttributes == nil {
@@ -437,6 +556,13 @@ func (e *BUTTONElement) ACCESSKEY(r rune) *BUTTONElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("accesskey", string(r))
+	return e
+}
+
+func (e *BUTTONElement) IfACCESSKEY(condition bool, r rune) *BUTTONElement {
+	if condition {
+		e.ACCESSKEY(r)
+	}
 	return e
 }
 
@@ -512,6 +638,13 @@ func (e *BUTTONElement) CLASS(s ...string) *BUTTONElement {
 		e.DelimitedStrings.Set("class", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *BUTTONElement) IfCLASS(condition bool, s ...string) *BUTTONElement {
+	if condition {
+		e.CLASS(s...)
+	}
 	return e
 }
 
@@ -720,6 +853,13 @@ func (e *BUTTONElement) EXPORTPARTS(s ...string) *BUTTONElement {
 	return e
 }
 
+func (e *BUTTONElement) IfEXPORTPARTS(condition bool, s ...string) *BUTTONElement {
+	if condition {
+		e.EXPORTPARTS(s...)
+	}
+	return e
+}
+
 // Remove the attribute exportparts from the element.
 func (e *BUTTONElement) EXPORTPARTSRemove(s ...string) *BUTTONElement {
 	if e.DelimitedStrings == nil {
@@ -795,6 +935,13 @@ func (e *BUTTONElement) ID(s string) *BUTTONElement {
 	return e
 }
 
+func (e *BUTTONElement) IfID(condition bool, s string) *BUTTONElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
 // Remove the attribute id from the element.
 func (e *BUTTONElement) IDRemove(s string) *BUTTONElement {
 	if e.StringAttributes == nil {
@@ -821,12 +968,26 @@ func (e *BUTTONElement) INERT() *BUTTONElement {
 	return e
 }
 
+func (e *BUTTONElement) IfINERT(condition bool) *BUTTONElement {
+	if condition {
+		e.INERTSet(true)
+	}
+	return e
+}
+
 // Set the attribute inert to the value b explicitly.
 func (e *BUTTONElement) INERTSet(b bool) *BUTTONElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("inert", b)
+	return e
+}
+
+func (e *BUTTONElement) IfSetINERT(condition bool, b bool) *BUTTONElement {
+	if condition {
+		e.INERTSet(b)
+	}
 	return e
 }
 
@@ -922,6 +1083,13 @@ func (e *BUTTONElement) IS(s string) *BUTTONElement {
 	return e
 }
 
+func (e *BUTTONElement) IfIS(condition bool, s string) *BUTTONElement {
+	if condition {
+		e.IS(s)
+	}
+	return e
+}
+
 // Remove the attribute is from the element.
 func (e *BUTTONElement) ISRemove(s string) *BUTTONElement {
 	if e.StringAttributes == nil {
@@ -952,6 +1120,13 @@ func (e *BUTTONElement) ITEMID(s string) *BUTTONElement {
 	return e
 }
 
+func (e *BUTTONElement) IfITEMID(condition bool, s string) *BUTTONElement {
+	if condition {
+		e.ITEMID(s)
+	}
+	return e
+}
+
 // Remove the attribute itemid from the element.
 func (e *BUTTONElement) ITEMIDRemove(s string) *BUTTONElement {
 	if e.StringAttributes == nil {
@@ -977,6 +1152,13 @@ func (e *BUTTONElement) ITEMPROP(s string) *BUTTONElement {
 	return e
 }
 
+func (e *BUTTONElement) IfITEMPROP(condition bool, s string) *BUTTONElement {
+	if condition {
+		e.ITEMPROP(s)
+	}
+	return e
+}
+
 // Remove the attribute itemprop from the element.
 func (e *BUTTONElement) ITEMPROPRemove(s string) *BUTTONElement {
 	if e.StringAttributes == nil {
@@ -996,6 +1178,13 @@ func (e *BUTTONElement) ITEMREF(s string) *BUTTONElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("itemref", s)
+	return e
+}
+
+func (e *BUTTONElement) IfITEMREF(condition bool, s string) *BUTTONElement {
+	if condition {
+		e.ITEMREF(s)
+	}
 	return e
 }
 
@@ -1021,12 +1210,26 @@ func (e *BUTTONElement) ITEMSCOPE() *BUTTONElement {
 	return e
 }
 
+func (e *BUTTONElement) IfITEMSCOPE(condition bool) *BUTTONElement {
+	if condition {
+		e.ITEMSCOPESet(true)
+	}
+	return e
+}
+
 // Set the attribute itemscope to the value b explicitly.
 func (e *BUTTONElement) ITEMSCOPESet(b bool) *BUTTONElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("itemscope", b)
+	return e
+}
+
+func (e *BUTTONElement) IfSetITEMSCOPE(condition bool, b bool) *BUTTONElement {
+	if condition {
+		e.ITEMSCOPESet(b)
+	}
 	return e
 }
 
@@ -1055,6 +1258,13 @@ func (e *BUTTONElement) ITEMTYPE(s string) *BUTTONElement {
 	return e
 }
 
+func (e *BUTTONElement) IfITEMTYPE(condition bool, s string) *BUTTONElement {
+	if condition {
+		e.ITEMTYPE(s)
+	}
+	return e
+}
+
 // Remove the attribute itemtype from the element.
 func (e *BUTTONElement) ITEMTYPERemove(s string) *BUTTONElement {
 	if e.StringAttributes == nil {
@@ -1078,6 +1288,13 @@ func (e *BUTTONElement) LANG(s string) *BUTTONElement {
 	return e
 }
 
+func (e *BUTTONElement) IfLANG(condition bool, s string) *BUTTONElement {
+	if condition {
+		e.LANG(s)
+	}
+	return e
+}
+
 // Remove the attribute lang from the element.
 func (e *BUTTONElement) LANGRemove(s string) *BUTTONElement {
 	if e.StringAttributes == nil {
@@ -1096,6 +1313,13 @@ func (e *BUTTONElement) NONCE(s string) *BUTTONElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("nonce", s)
+	return e
+}
+
+func (e *BUTTONElement) IfNONCE(condition bool, s string) *BUTTONElement {
+	if condition {
+		e.NONCE(s)
+	}
 	return e
 }
 
@@ -1122,6 +1346,13 @@ func (e *BUTTONElement) PART(s ...string) *BUTTONElement {
 		e.DelimitedStrings.Set("part", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *BUTTONElement) IfPART(condition bool, s ...string) *BUTTONElement {
+	if condition {
+		e.PART(s...)
+	}
 	return e
 }
 
@@ -1192,6 +1423,13 @@ func (e *BUTTONElement) SLOT(s string) *BUTTONElement {
 	return e
 }
 
+func (e *BUTTONElement) IfSLOT(condition bool, s string) *BUTTONElement {
+	if condition {
+		e.SLOT(s)
+	}
+	return e
+}
+
 // Remove the attribute slot from the element.
 func (e *BUTTONElement) SLOTRemove(s string) *BUTTONElement {
 	if e.StringAttributes == nil {
@@ -1250,6 +1488,13 @@ func (e *BUTTONElement) STYLEF(k string, format string, args ...any) *BUTTONElem
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+func (e *BUTTONElement) IfSTYLE(condition bool, k string, v string) *BUTTONElement {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
 func (e *BUTTONElement) STYLE(k string, v string) *BUTTONElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -1260,6 +1505,13 @@ func (e *BUTTONElement) STYLE(k string, v string) *BUTTONElement {
 		e.KVStrings.Set("style", kv)
 	}
 	kv.Add(k, v)
+	return e
+}
+
+func (e *BUTTONElement) IfSTYLEF(condition bool, k string, format string, args ...any) *BUTTONElement {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
 	return e
 }
 
@@ -1300,6 +1552,13 @@ func (e *BUTTONElement) STYLEPairs(pairs ...string) *BUTTONElement {
 	return e
 }
 
+func (e *BUTTONElement) IfSTYLEPairs(condition bool, pairs ...string) *BUTTONElement {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
+	return e
+}
+
 // Remove the attribute style from the element.
 func (e *BUTTONElement) STYLERemove(keys ...string) *BUTTONElement {
 	if e.KVStrings == nil {
@@ -1334,6 +1593,13 @@ func (e *BUTTONElement) TABINDEX(i int) *BUTTONElement {
 		e.IntAttributes = treemap.New[string, int]()
 	}
 	e.IntAttributes.Set("tabindex", i)
+	return e
+}
+
+func (e *BUTTONElement) IfTABINDEX(condition bool, i int) *BUTTONElement {
+	if condition {
+		e.TABINDEX(i)
+	}
 	return e
 }
 
@@ -1372,6 +1638,13 @@ func (e *BUTTONElement) TITLE(s string) *BUTTONElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("title", s)
+	return e
+}
+
+func (e *BUTTONElement) IfTITLE(condition bool, s string) *BUTTONElement {
+	if condition {
+		e.TITLE(s)
+	}
 	return e
 }
 

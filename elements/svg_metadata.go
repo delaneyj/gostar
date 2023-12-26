@@ -57,13 +57,41 @@ func (e *SVGMETADATAElement) TextF(format string, args ...any) *SVGMETADATAEleme
 	return e.Text(fmt.Sprintf(format, args...))
 }
 
+func (e *SVGMETADATAElement) IfText(condition bool, text string) *SVGMETADATAElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
+}
+
+func (e *SVGMETADATAElement) IfTextF(condition bool, format string, args ...any) *SVGMETADATAElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
+}
+
 func (e *SVGMETADATAElement) Escaped(text string) *SVGMETADATAElement {
 	e.Descendants = append(e.Descendants, Escaped(text))
 	return e
 }
 
+func (e *SVGMETADATAElement) IfEscaped(condition bool, text string) *SVGMETADATAElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
+}
+
 func (e *SVGMETADATAElement) EscapedF(format string, args ...any) *SVGMETADATAElement {
 	return e.Escaped(fmt.Sprintf(format, args...))
+}
+
+func (e *SVGMETADATAElement) IfEscapedF(condition bool, format string, args ...any) *SVGMETADATAElement {
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *SVGMETADATAElement) CustomData(key, value string) *SVGMETADATAElement {
@@ -74,8 +102,22 @@ func (e *SVGMETADATAElement) CustomData(key, value string) *SVGMETADATAElement {
 	return e
 }
 
+func (e *SVGMETADATAElement) IfCustomData(condition bool, key, value string) *SVGMETADATAElement {
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
+}
+
 func (e *SVGMETADATAElement) CustomDataF(key, format string, args ...any) *SVGMETADATAElement {
 	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
+func (e *SVGMETADATAElement) IfCustomDataF(condition bool, key, format string, args ...any) *SVGMETADATAElement {
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *SVGMETADATAElement) CustomDataRemove(key string) *SVGMETADATAElement {
@@ -93,6 +135,13 @@ func (e *SVGMETADATAElement) REQUIREDEXTENSIONS(s string) *SVGMETADATAElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("requiredExtensions", s)
+	return e
+}
+
+func (e *SVGMETADATAElement) IfREQUIREDEXTENSIONS(condition bool, s string) *SVGMETADATAElement {
+	if condition {
+		e.REQUIREDEXTENSIONS(s)
+	}
 	return e
 }
 
@@ -116,6 +165,13 @@ func (e *SVGMETADATAElement) REQUIREDFEATURES(s string) *SVGMETADATAElement {
 	return e
 }
 
+func (e *SVGMETADATAElement) IfREQUIREDFEATURES(condition bool, s string) *SVGMETADATAElement {
+	if condition {
+		e.REQUIREDFEATURES(s)
+	}
+	return e
+}
+
 // Remove the attribute requiredFeatures from the element.
 func (e *SVGMETADATAElement) REQUIREDFEATURESRemove(s string) *SVGMETADATAElement {
 	if e.StringAttributes == nil {
@@ -133,6 +189,13 @@ func (e *SVGMETADATAElement) SYSTEMLANGUAGE(s string) *SVGMETADATAElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("systemLanguage", s)
+	return e
+}
+
+func (e *SVGMETADATAElement) IfSYSTEMLANGUAGE(condition bool, s string) *SVGMETADATAElement {
+	if condition {
+		e.SYSTEMLANGUAGE(s)
+	}
 	return e
 }
 
@@ -160,6 +223,13 @@ func (e *SVGMETADATAElement) CLASS(s ...string) *SVGMETADATAElement {
 	return e
 }
 
+func (e *SVGMETADATAElement) IfCLASS(condition bool, s ...string) *SVGMETADATAElement {
+	if condition {
+		e.CLASS(s...)
+	}
+	return e
+}
+
 // Remove the attribute class from the element.
 func (e *SVGMETADATAElement) CLASSRemove(s ...string) *SVGMETADATAElement {
 	if e.DelimitedStrings == nil {
@@ -182,6 +252,13 @@ func (e *SVGMETADATAElement) ID(s string) *SVGMETADATAElement {
 	return e
 }
 
+func (e *SVGMETADATAElement) IfID(condition bool, s string) *SVGMETADATAElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
 // Remove the attribute id from the element.
 func (e *SVGMETADATAElement) IDRemove(s string) *SVGMETADATAElement {
 	if e.StringAttributes == nil {
@@ -196,6 +273,13 @@ func (e *SVGMETADATAElement) STYLEF(k string, format string, args ...any) *SVGME
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+func (e *SVGMETADATAElement) IfSTYLE(condition bool, k string, v string) *SVGMETADATAElement {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
 func (e *SVGMETADATAElement) STYLE(k string, v string) *SVGMETADATAElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -206,6 +290,13 @@ func (e *SVGMETADATAElement) STYLE(k string, v string) *SVGMETADATAElement {
 		e.KVStrings.Set("style", kv)
 	}
 	kv.Add(k, v)
+	return e
+}
+
+func (e *SVGMETADATAElement) IfSTYLEF(condition bool, k string, format string, args ...any) *SVGMETADATAElement {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
 	return e
 }
 
@@ -243,6 +334,13 @@ func (e *SVGMETADATAElement) STYLEPairs(pairs ...string) *SVGMETADATAElement {
 		kv.Add(pairs[i], pairs[i+1])
 	}
 
+	return e
+}
+
+func (e *SVGMETADATAElement) IfSTYLEPairs(condition bool, pairs ...string) *SVGMETADATAElement {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
 	return e
 }
 

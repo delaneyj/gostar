@@ -56,13 +56,41 @@ func (e *MathMLMMULTISCRIPTSElement) TextF(format string, args ...any) *MathMLMM
 	return e.Text(fmt.Sprintf(format, args...))
 }
 
+func (e *MathMLMMULTISCRIPTSElement) IfText(condition bool, text string) *MathMLMMULTISCRIPTSElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
+}
+
+func (e *MathMLMMULTISCRIPTSElement) IfTextF(condition bool, format string, args ...any) *MathMLMMULTISCRIPTSElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
+}
+
 func (e *MathMLMMULTISCRIPTSElement) Escaped(text string) *MathMLMMULTISCRIPTSElement {
 	e.Descendants = append(e.Descendants, Escaped(text))
 	return e
 }
 
+func (e *MathMLMMULTISCRIPTSElement) IfEscaped(condition bool, text string) *MathMLMMULTISCRIPTSElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
+}
+
 func (e *MathMLMMULTISCRIPTSElement) EscapedF(format string, args ...any) *MathMLMMULTISCRIPTSElement {
 	return e.Escaped(fmt.Sprintf(format, args...))
+}
+
+func (e *MathMLMMULTISCRIPTSElement) IfEscapedF(condition bool, format string, args ...any) *MathMLMMULTISCRIPTSElement {
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *MathMLMMULTISCRIPTSElement) CustomData(key, value string) *MathMLMMULTISCRIPTSElement {
@@ -73,8 +101,22 @@ func (e *MathMLMMULTISCRIPTSElement) CustomData(key, value string) *MathMLMMULTI
 	return e
 }
 
+func (e *MathMLMMULTISCRIPTSElement) IfCustomData(condition bool, key, value string) *MathMLMMULTISCRIPTSElement {
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
+}
+
 func (e *MathMLMMULTISCRIPTSElement) CustomDataF(key, format string, args ...any) *MathMLMMULTISCRIPTSElement {
 	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
+func (e *MathMLMMULTISCRIPTSElement) IfCustomDataF(condition bool, key, format string, args ...any) *MathMLMMULTISCRIPTSElement {
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *MathMLMMULTISCRIPTSElement) CustomDataRemove(key string) *MathMLMMULTISCRIPTSElement {
@@ -99,6 +141,13 @@ func (e *MathMLMMULTISCRIPTSElement) CLASS(s ...string) *MathMLMMULTISCRIPTSElem
 		e.DelimitedStrings.Set("class", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *MathMLMMULTISCRIPTSElement) IfCLASS(condition bool, s ...string) *MathMLMMULTISCRIPTSElement {
+	if condition {
+		e.CLASS(s...)
+	}
 	return e
 }
 
@@ -184,6 +233,13 @@ func (e *MathMLMMULTISCRIPTSElement) ID(s string) *MathMLMMULTISCRIPTSElement {
 	return e
 }
 
+func (e *MathMLMMULTISCRIPTSElement) IfID(condition bool, s string) *MathMLMMULTISCRIPTSElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
 // Remove the attribute id from the element.
 func (e *MathMLMMULTISCRIPTSElement) IDRemove(s string) *MathMLMMULTISCRIPTSElement {
 	if e.StringAttributes == nil {
@@ -201,6 +257,13 @@ func (e *MathMLMMULTISCRIPTSElement) MATHBACKGROUND(s string) *MathMLMMULTISCRIP
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("mathbackground", s)
+	return e
+}
+
+func (e *MathMLMMULTISCRIPTSElement) IfMATHBACKGROUND(condition bool, s string) *MathMLMMULTISCRIPTSElement {
+	if condition {
+		e.MATHBACKGROUND(s)
+	}
 	return e
 }
 
@@ -224,6 +287,13 @@ func (e *MathMLMMULTISCRIPTSElement) MATHCOLOR(s string) *MathMLMMULTISCRIPTSEle
 	return e
 }
 
+func (e *MathMLMMULTISCRIPTSElement) IfMATHCOLOR(condition bool, s string) *MathMLMMULTISCRIPTSElement {
+	if condition {
+		e.MATHCOLOR(s)
+	}
+	return e
+}
+
 // Remove the attribute mathcolor from the element.
 func (e *MathMLMMULTISCRIPTSElement) MATHCOLORRemove(s string) *MathMLMMULTISCRIPTSElement {
 	if e.StringAttributes == nil {
@@ -240,6 +310,13 @@ func (e *MathMLMMULTISCRIPTSElement) MATHSIZESTR(s string) *MathMLMMULTISCRIPTSE
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("mathsize", s)
+	return e
+}
+
+func (e *MathMLMMULTISCRIPTSElement) IfMATHSIZESTR(condition bool, s string) *MathMLMMULTISCRIPTSElement {
+	if condition {
+		e.MATHSIZESTR(s)
+	}
 	return e
 }
 
@@ -264,6 +341,13 @@ func (e *MathMLMMULTISCRIPTSElement) NONCE(s string) *MathMLMMULTISCRIPTSElement
 	return e
 }
 
+func (e *MathMLMMULTISCRIPTSElement) IfNONCE(condition bool, s string) *MathMLMMULTISCRIPTSElement {
+	if condition {
+		e.NONCE(s)
+	}
+	return e
+}
+
 // Remove the attribute nonce from the element.
 func (e *MathMLMMULTISCRIPTSElement) NONCERemove(s string) *MathMLMMULTISCRIPTSElement {
 	if e.StringAttributes == nil {
@@ -283,6 +367,13 @@ func (e *MathMLMMULTISCRIPTSElement) SCRIPTLEVEL(i int) *MathMLMMULTISCRIPTSElem
 	return e
 }
 
+func (e *MathMLMMULTISCRIPTSElement) IfSCRIPTLEVEL(condition bool, i int) *MathMLMMULTISCRIPTSElement {
+	if condition {
+		e.SCRIPTLEVEL(i)
+	}
+	return e
+}
+
 // Remove the attribute scriptlevel from the element.
 func (e *MathMLMMULTISCRIPTSElement) SCRIPTLEVELRemove(i int) *MathMLMMULTISCRIPTSElement {
 	if e.IntAttributes == nil {
@@ -298,6 +389,13 @@ func (e *MathMLMMULTISCRIPTSElement) STYLEF(k string, format string, args ...any
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+func (e *MathMLMMULTISCRIPTSElement) IfSTYLE(condition bool, k string, v string) *MathMLMMULTISCRIPTSElement {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
 func (e *MathMLMMULTISCRIPTSElement) STYLE(k string, v string) *MathMLMMULTISCRIPTSElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -308,6 +406,13 @@ func (e *MathMLMMULTISCRIPTSElement) STYLE(k string, v string) *MathMLMMULTISCRI
 		e.KVStrings.Set("style", kv)
 	}
 	kv.Add(k, v)
+	return e
+}
+
+func (e *MathMLMMULTISCRIPTSElement) IfSTYLEF(condition bool, k string, format string, args ...any) *MathMLMMULTISCRIPTSElement {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
 	return e
 }
 
@@ -348,6 +453,13 @@ func (e *MathMLMMULTISCRIPTSElement) STYLEPairs(pairs ...string) *MathMLMMULTISC
 	return e
 }
 
+func (e *MathMLMMULTISCRIPTSElement) IfSTYLEPairs(condition bool, pairs ...string) *MathMLMMULTISCRIPTSElement {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
+	return e
+}
+
 // Remove the attribute style from the element.
 func (e *MathMLMMULTISCRIPTSElement) STYLERemove(keys ...string) *MathMLMMULTISCRIPTSElement {
 	if e.KVStrings == nil {
@@ -372,6 +484,13 @@ func (e *MathMLMMULTISCRIPTSElement) TABINDEX(i int) *MathMLMMULTISCRIPTSElement
 		e.IntAttributes = treemap.New[string, int]()
 	}
 	e.IntAttributes.Set("tabindex", i)
+	return e
+}
+
+func (e *MathMLMMULTISCRIPTSElement) IfTABINDEX(condition bool, i int) *MathMLMMULTISCRIPTSElement {
+	if condition {
+		e.TABINDEX(i)
+	}
 	return e
 }
 

@@ -56,13 +56,41 @@ func (e *MAPElement) TextF(format string, args ...any) *MAPElement {
 	return e.Text(fmt.Sprintf(format, args...))
 }
 
+func (e *MAPElement) IfText(condition bool, text string) *MAPElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
+}
+
+func (e *MAPElement) IfTextF(condition bool, format string, args ...any) *MAPElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
+}
+
 func (e *MAPElement) Escaped(text string) *MAPElement {
 	e.Descendants = append(e.Descendants, Escaped(text))
 	return e
 }
 
+func (e *MAPElement) IfEscaped(condition bool, text string) *MAPElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
+}
+
 func (e *MAPElement) EscapedF(format string, args ...any) *MAPElement {
 	return e.Escaped(fmt.Sprintf(format, args...))
+}
+
+func (e *MAPElement) IfEscapedF(condition bool, format string, args ...any) *MAPElement {
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *MAPElement) CustomData(key, value string) *MAPElement {
@@ -73,8 +101,22 @@ func (e *MAPElement) CustomData(key, value string) *MAPElement {
 	return e
 }
 
+func (e *MAPElement) IfCustomData(condition bool, key, value string) *MAPElement {
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
+}
+
 func (e *MAPElement) CustomDataF(key, format string, args ...any) *MAPElement {
 	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
+func (e *MAPElement) IfCustomDataF(condition bool, key, format string, args ...any) *MAPElement {
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *MAPElement) CustomDataRemove(key string) *MAPElement {
@@ -91,6 +133,13 @@ func (e *MAPElement) NAME(s string) *MAPElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("name", s)
+	return e
+}
+
+func (e *MAPElement) IfNAME(condition bool, s string) *MAPElement {
+	if condition {
+		e.NAME(s)
+	}
 	return e
 }
 
@@ -112,6 +161,13 @@ func (e *MAPElement) ACCESSKEY(r rune) *MAPElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("accesskey", string(r))
+	return e
+}
+
+func (e *MAPElement) IfACCESSKEY(condition bool, r rune) *MAPElement {
+	if condition {
+		e.ACCESSKEY(r)
+	}
 	return e
 }
 
@@ -197,12 +253,26 @@ func (e *MAPElement) AUTOFOCUS() *MAPElement {
 	return e
 }
 
+func (e *MAPElement) IfAUTOFOCUS(condition bool) *MAPElement {
+	if condition {
+		e.AUTOFOCUSSet(true)
+	}
+	return e
+}
+
 // Set the attribute autofocus to the value b explicitly.
 func (e *MAPElement) AUTOFOCUSSet(b bool) *MAPElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("autofocus", b)
+	return e
+}
+
+func (e *MAPElement) IfSetAUTOFOCUS(condition bool, b bool) *MAPElement {
+	if condition {
+		e.AUTOFOCUSSet(b)
+	}
 	return e
 }
 
@@ -230,6 +300,13 @@ func (e *MAPElement) CLASS(s ...string) *MAPElement {
 		e.DelimitedStrings.Set("class", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *MAPElement) IfCLASS(condition bool, s ...string) *MAPElement {
+	if condition {
+		e.CLASS(s...)
+	}
 	return e
 }
 
@@ -438,6 +515,13 @@ func (e *MAPElement) EXPORTPARTS(s ...string) *MAPElement {
 	return e
 }
 
+func (e *MAPElement) IfEXPORTPARTS(condition bool, s ...string) *MAPElement {
+	if condition {
+		e.EXPORTPARTS(s...)
+	}
+	return e
+}
+
 // Remove the attribute exportparts from the element.
 func (e *MAPElement) EXPORTPARTSRemove(s ...string) *MAPElement {
 	if e.DelimitedStrings == nil {
@@ -513,6 +597,13 @@ func (e *MAPElement) ID(s string) *MAPElement {
 	return e
 }
 
+func (e *MAPElement) IfID(condition bool, s string) *MAPElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
 // Remove the attribute id from the element.
 func (e *MAPElement) IDRemove(s string) *MAPElement {
 	if e.StringAttributes == nil {
@@ -539,12 +630,26 @@ func (e *MAPElement) INERT() *MAPElement {
 	return e
 }
 
+func (e *MAPElement) IfINERT(condition bool) *MAPElement {
+	if condition {
+		e.INERTSet(true)
+	}
+	return e
+}
+
 // Set the attribute inert to the value b explicitly.
 func (e *MAPElement) INERTSet(b bool) *MAPElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("inert", b)
+	return e
+}
+
+func (e *MAPElement) IfSetINERT(condition bool, b bool) *MAPElement {
+	if condition {
+		e.INERTSet(b)
+	}
 	return e
 }
 
@@ -640,6 +745,13 @@ func (e *MAPElement) IS(s string) *MAPElement {
 	return e
 }
 
+func (e *MAPElement) IfIS(condition bool, s string) *MAPElement {
+	if condition {
+		e.IS(s)
+	}
+	return e
+}
+
 // Remove the attribute is from the element.
 func (e *MAPElement) ISRemove(s string) *MAPElement {
 	if e.StringAttributes == nil {
@@ -670,6 +782,13 @@ func (e *MAPElement) ITEMID(s string) *MAPElement {
 	return e
 }
 
+func (e *MAPElement) IfITEMID(condition bool, s string) *MAPElement {
+	if condition {
+		e.ITEMID(s)
+	}
+	return e
+}
+
 // Remove the attribute itemid from the element.
 func (e *MAPElement) ITEMIDRemove(s string) *MAPElement {
 	if e.StringAttributes == nil {
@@ -695,6 +814,13 @@ func (e *MAPElement) ITEMPROP(s string) *MAPElement {
 	return e
 }
 
+func (e *MAPElement) IfITEMPROP(condition bool, s string) *MAPElement {
+	if condition {
+		e.ITEMPROP(s)
+	}
+	return e
+}
+
 // Remove the attribute itemprop from the element.
 func (e *MAPElement) ITEMPROPRemove(s string) *MAPElement {
 	if e.StringAttributes == nil {
@@ -714,6 +840,13 @@ func (e *MAPElement) ITEMREF(s string) *MAPElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("itemref", s)
+	return e
+}
+
+func (e *MAPElement) IfITEMREF(condition bool, s string) *MAPElement {
+	if condition {
+		e.ITEMREF(s)
+	}
 	return e
 }
 
@@ -739,12 +872,26 @@ func (e *MAPElement) ITEMSCOPE() *MAPElement {
 	return e
 }
 
+func (e *MAPElement) IfITEMSCOPE(condition bool) *MAPElement {
+	if condition {
+		e.ITEMSCOPESet(true)
+	}
+	return e
+}
+
 // Set the attribute itemscope to the value b explicitly.
 func (e *MAPElement) ITEMSCOPESet(b bool) *MAPElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("itemscope", b)
+	return e
+}
+
+func (e *MAPElement) IfSetITEMSCOPE(condition bool, b bool) *MAPElement {
+	if condition {
+		e.ITEMSCOPESet(b)
+	}
 	return e
 }
 
@@ -773,6 +920,13 @@ func (e *MAPElement) ITEMTYPE(s string) *MAPElement {
 	return e
 }
 
+func (e *MAPElement) IfITEMTYPE(condition bool, s string) *MAPElement {
+	if condition {
+		e.ITEMTYPE(s)
+	}
+	return e
+}
+
 // Remove the attribute itemtype from the element.
 func (e *MAPElement) ITEMTYPERemove(s string) *MAPElement {
 	if e.StringAttributes == nil {
@@ -796,6 +950,13 @@ func (e *MAPElement) LANG(s string) *MAPElement {
 	return e
 }
 
+func (e *MAPElement) IfLANG(condition bool, s string) *MAPElement {
+	if condition {
+		e.LANG(s)
+	}
+	return e
+}
+
 // Remove the attribute lang from the element.
 func (e *MAPElement) LANGRemove(s string) *MAPElement {
 	if e.StringAttributes == nil {
@@ -814,6 +975,13 @@ func (e *MAPElement) NONCE(s string) *MAPElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("nonce", s)
+	return e
+}
+
+func (e *MAPElement) IfNONCE(condition bool, s string) *MAPElement {
+	if condition {
+		e.NONCE(s)
+	}
 	return e
 }
 
@@ -840,6 +1008,13 @@ func (e *MAPElement) PART(s ...string) *MAPElement {
 		e.DelimitedStrings.Set("part", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *MAPElement) IfPART(condition bool, s ...string) *MAPElement {
+	if condition {
+		e.PART(s...)
+	}
 	return e
 }
 
@@ -910,6 +1085,13 @@ func (e *MAPElement) SLOT(s string) *MAPElement {
 	return e
 }
 
+func (e *MAPElement) IfSLOT(condition bool, s string) *MAPElement {
+	if condition {
+		e.SLOT(s)
+	}
+	return e
+}
+
 // Remove the attribute slot from the element.
 func (e *MAPElement) SLOTRemove(s string) *MAPElement {
 	if e.StringAttributes == nil {
@@ -968,6 +1150,13 @@ func (e *MAPElement) STYLEF(k string, format string, args ...any) *MAPElement {
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+func (e *MAPElement) IfSTYLE(condition bool, k string, v string) *MAPElement {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
 func (e *MAPElement) STYLE(k string, v string) *MAPElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -978,6 +1167,13 @@ func (e *MAPElement) STYLE(k string, v string) *MAPElement {
 		e.KVStrings.Set("style", kv)
 	}
 	kv.Add(k, v)
+	return e
+}
+
+func (e *MAPElement) IfSTYLEF(condition bool, k string, format string, args ...any) *MAPElement {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
 	return e
 }
 
@@ -1018,6 +1214,13 @@ func (e *MAPElement) STYLEPairs(pairs ...string) *MAPElement {
 	return e
 }
 
+func (e *MAPElement) IfSTYLEPairs(condition bool, pairs ...string) *MAPElement {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
+	return e
+}
+
 // Remove the attribute style from the element.
 func (e *MAPElement) STYLERemove(keys ...string) *MAPElement {
 	if e.KVStrings == nil {
@@ -1052,6 +1255,13 @@ func (e *MAPElement) TABINDEX(i int) *MAPElement {
 		e.IntAttributes = treemap.New[string, int]()
 	}
 	e.IntAttributes.Set("tabindex", i)
+	return e
+}
+
+func (e *MAPElement) IfTABINDEX(condition bool, i int) *MAPElement {
+	if condition {
+		e.TABINDEX(i)
+	}
 	return e
 }
 
@@ -1090,6 +1300,13 @@ func (e *MAPElement) TITLE(s string) *MAPElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("title", s)
+	return e
+}
+
+func (e *MAPElement) IfTITLE(condition bool, s string) *MAPElement {
+	if condition {
+		e.TITLE(s)
+	}
 	return e
 }
 

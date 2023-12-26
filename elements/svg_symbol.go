@@ -65,13 +65,41 @@ func (e *SVGSYMBOLElement) TextF(format string, args ...any) *SVGSYMBOLElement {
 	return e.Text(fmt.Sprintf(format, args...))
 }
 
+func (e *SVGSYMBOLElement) IfText(condition bool, text string) *SVGSYMBOLElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
+}
+
+func (e *SVGSYMBOLElement) IfTextF(condition bool, format string, args ...any) *SVGSYMBOLElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
+}
+
 func (e *SVGSYMBOLElement) Escaped(text string) *SVGSYMBOLElement {
 	e.Descendants = append(e.Descendants, Escaped(text))
 	return e
 }
 
+func (e *SVGSYMBOLElement) IfEscaped(condition bool, text string) *SVGSYMBOLElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
+}
+
 func (e *SVGSYMBOLElement) EscapedF(format string, args ...any) *SVGSYMBOLElement {
 	return e.Escaped(fmt.Sprintf(format, args...))
+}
+
+func (e *SVGSYMBOLElement) IfEscapedF(condition bool, format string, args ...any) *SVGSYMBOLElement {
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *SVGSYMBOLElement) CustomData(key, value string) *SVGSYMBOLElement {
@@ -82,8 +110,22 @@ func (e *SVGSYMBOLElement) CustomData(key, value string) *SVGSYMBOLElement {
 	return e
 }
 
+func (e *SVGSYMBOLElement) IfCustomData(condition bool, key, value string) *SVGSYMBOLElement {
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
+}
+
 func (e *SVGSYMBOLElement) CustomDataF(key, format string, args ...any) *SVGSYMBOLElement {
 	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
+func (e *SVGSYMBOLElement) IfCustomDataF(condition bool, key, format string, args ...any) *SVGSYMBOLElement {
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *SVGSYMBOLElement) CustomDataRemove(key string) *SVGSYMBOLElement {
@@ -158,6 +200,13 @@ func (e *SVGSYMBOLElement) CLASS(s ...string) *SVGSYMBOLElement {
 	return e
 }
 
+func (e *SVGSYMBOLElement) IfCLASS(condition bool, s ...string) *SVGSYMBOLElement {
+	if condition {
+		e.CLASS(s...)
+	}
+	return e
+}
+
 // Remove the attribute class from the element.
 func (e *SVGSYMBOLElement) CLASSRemove(s ...string) *SVGSYMBOLElement {
 	if e.DelimitedStrings == nil {
@@ -180,6 +229,13 @@ func (e *SVGSYMBOLElement) ID(s string) *SVGSYMBOLElement {
 	return e
 }
 
+func (e *SVGSYMBOLElement) IfID(condition bool, s string) *SVGSYMBOLElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
 // Remove the attribute id from the element.
 func (e *SVGSYMBOLElement) IDRemove(s string) *SVGSYMBOLElement {
 	if e.StringAttributes == nil {
@@ -194,6 +250,13 @@ func (e *SVGSYMBOLElement) STYLEF(k string, format string, args ...any) *SVGSYMB
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+func (e *SVGSYMBOLElement) IfSTYLE(condition bool, k string, v string) *SVGSYMBOLElement {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
 func (e *SVGSYMBOLElement) STYLE(k string, v string) *SVGSYMBOLElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -204,6 +267,13 @@ func (e *SVGSYMBOLElement) STYLE(k string, v string) *SVGSYMBOLElement {
 		e.KVStrings.Set("style", kv)
 	}
 	kv.Add(k, v)
+	return e
+}
+
+func (e *SVGSYMBOLElement) IfSTYLEF(condition bool, k string, format string, args ...any) *SVGSYMBOLElement {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
 	return e
 }
 
@@ -241,6 +311,13 @@ func (e *SVGSYMBOLElement) STYLEPairs(pairs ...string) *SVGSYMBOLElement {
 		kv.Add(pairs[i], pairs[i+1])
 	}
 
+	return e
+}
+
+func (e *SVGSYMBOLElement) IfSTYLEPairs(condition bool, pairs ...string) *SVGSYMBOLElement {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
 	return e
 }
 

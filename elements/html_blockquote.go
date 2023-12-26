@@ -61,13 +61,41 @@ func (e *BLOCKQUOTEElement) TextF(format string, args ...any) *BLOCKQUOTEElement
 	return e.Text(fmt.Sprintf(format, args...))
 }
 
+func (e *BLOCKQUOTEElement) IfText(condition bool, text string) *BLOCKQUOTEElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
+}
+
+func (e *BLOCKQUOTEElement) IfTextF(condition bool, format string, args ...any) *BLOCKQUOTEElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
+}
+
 func (e *BLOCKQUOTEElement) Escaped(text string) *BLOCKQUOTEElement {
 	e.Descendants = append(e.Descendants, Escaped(text))
 	return e
 }
 
+func (e *BLOCKQUOTEElement) IfEscaped(condition bool, text string) *BLOCKQUOTEElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
+}
+
 func (e *BLOCKQUOTEElement) EscapedF(format string, args ...any) *BLOCKQUOTEElement {
 	return e.Escaped(fmt.Sprintf(format, args...))
+}
+
+func (e *BLOCKQUOTEElement) IfEscapedF(condition bool, format string, args ...any) *BLOCKQUOTEElement {
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *BLOCKQUOTEElement) CustomData(key, value string) *BLOCKQUOTEElement {
@@ -78,8 +106,22 @@ func (e *BLOCKQUOTEElement) CustomData(key, value string) *BLOCKQUOTEElement {
 	return e
 }
 
+func (e *BLOCKQUOTEElement) IfCustomData(condition bool, key, value string) *BLOCKQUOTEElement {
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
+}
+
 func (e *BLOCKQUOTEElement) CustomDataF(key, format string, args ...any) *BLOCKQUOTEElement {
 	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
+func (e *BLOCKQUOTEElement) IfCustomDataF(condition bool, key, format string, args ...any) *BLOCKQUOTEElement {
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *BLOCKQUOTEElement) CustomDataRemove(key string) *BLOCKQUOTEElement {
@@ -96,6 +138,13 @@ func (e *BLOCKQUOTEElement) CITE(s string) *BLOCKQUOTEElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("cite", s)
+	return e
+}
+
+func (e *BLOCKQUOTEElement) IfCITE(condition bool, s string) *BLOCKQUOTEElement {
+	if condition {
+		e.CITE(s)
+	}
 	return e
 }
 
@@ -117,6 +166,13 @@ func (e *BLOCKQUOTEElement) ACCESSKEY(r rune) *BLOCKQUOTEElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("accesskey", string(r))
+	return e
+}
+
+func (e *BLOCKQUOTEElement) IfACCESSKEY(condition bool, r rune) *BLOCKQUOTEElement {
+	if condition {
+		e.ACCESSKEY(r)
+	}
 	return e
 }
 
@@ -202,12 +258,26 @@ func (e *BLOCKQUOTEElement) AUTOFOCUS() *BLOCKQUOTEElement {
 	return e
 }
 
+func (e *BLOCKQUOTEElement) IfAUTOFOCUS(condition bool) *BLOCKQUOTEElement {
+	if condition {
+		e.AUTOFOCUSSet(true)
+	}
+	return e
+}
+
 // Set the attribute autofocus to the value b explicitly.
 func (e *BLOCKQUOTEElement) AUTOFOCUSSet(b bool) *BLOCKQUOTEElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("autofocus", b)
+	return e
+}
+
+func (e *BLOCKQUOTEElement) IfSetAUTOFOCUS(condition bool, b bool) *BLOCKQUOTEElement {
+	if condition {
+		e.AUTOFOCUSSet(b)
+	}
 	return e
 }
 
@@ -235,6 +305,13 @@ func (e *BLOCKQUOTEElement) CLASS(s ...string) *BLOCKQUOTEElement {
 		e.DelimitedStrings.Set("class", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *BLOCKQUOTEElement) IfCLASS(condition bool, s ...string) *BLOCKQUOTEElement {
+	if condition {
+		e.CLASS(s...)
+	}
 	return e
 }
 
@@ -443,6 +520,13 @@ func (e *BLOCKQUOTEElement) EXPORTPARTS(s ...string) *BLOCKQUOTEElement {
 	return e
 }
 
+func (e *BLOCKQUOTEElement) IfEXPORTPARTS(condition bool, s ...string) *BLOCKQUOTEElement {
+	if condition {
+		e.EXPORTPARTS(s...)
+	}
+	return e
+}
+
 // Remove the attribute exportparts from the element.
 func (e *BLOCKQUOTEElement) EXPORTPARTSRemove(s ...string) *BLOCKQUOTEElement {
 	if e.DelimitedStrings == nil {
@@ -518,6 +602,13 @@ func (e *BLOCKQUOTEElement) ID(s string) *BLOCKQUOTEElement {
 	return e
 }
 
+func (e *BLOCKQUOTEElement) IfID(condition bool, s string) *BLOCKQUOTEElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
 // Remove the attribute id from the element.
 func (e *BLOCKQUOTEElement) IDRemove(s string) *BLOCKQUOTEElement {
 	if e.StringAttributes == nil {
@@ -544,12 +635,26 @@ func (e *BLOCKQUOTEElement) INERT() *BLOCKQUOTEElement {
 	return e
 }
 
+func (e *BLOCKQUOTEElement) IfINERT(condition bool) *BLOCKQUOTEElement {
+	if condition {
+		e.INERTSet(true)
+	}
+	return e
+}
+
 // Set the attribute inert to the value b explicitly.
 func (e *BLOCKQUOTEElement) INERTSet(b bool) *BLOCKQUOTEElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("inert", b)
+	return e
+}
+
+func (e *BLOCKQUOTEElement) IfSetINERT(condition bool, b bool) *BLOCKQUOTEElement {
+	if condition {
+		e.INERTSet(b)
+	}
 	return e
 }
 
@@ -645,6 +750,13 @@ func (e *BLOCKQUOTEElement) IS(s string) *BLOCKQUOTEElement {
 	return e
 }
 
+func (e *BLOCKQUOTEElement) IfIS(condition bool, s string) *BLOCKQUOTEElement {
+	if condition {
+		e.IS(s)
+	}
+	return e
+}
+
 // Remove the attribute is from the element.
 func (e *BLOCKQUOTEElement) ISRemove(s string) *BLOCKQUOTEElement {
 	if e.StringAttributes == nil {
@@ -675,6 +787,13 @@ func (e *BLOCKQUOTEElement) ITEMID(s string) *BLOCKQUOTEElement {
 	return e
 }
 
+func (e *BLOCKQUOTEElement) IfITEMID(condition bool, s string) *BLOCKQUOTEElement {
+	if condition {
+		e.ITEMID(s)
+	}
+	return e
+}
+
 // Remove the attribute itemid from the element.
 func (e *BLOCKQUOTEElement) ITEMIDRemove(s string) *BLOCKQUOTEElement {
 	if e.StringAttributes == nil {
@@ -700,6 +819,13 @@ func (e *BLOCKQUOTEElement) ITEMPROP(s string) *BLOCKQUOTEElement {
 	return e
 }
 
+func (e *BLOCKQUOTEElement) IfITEMPROP(condition bool, s string) *BLOCKQUOTEElement {
+	if condition {
+		e.ITEMPROP(s)
+	}
+	return e
+}
+
 // Remove the attribute itemprop from the element.
 func (e *BLOCKQUOTEElement) ITEMPROPRemove(s string) *BLOCKQUOTEElement {
 	if e.StringAttributes == nil {
@@ -719,6 +845,13 @@ func (e *BLOCKQUOTEElement) ITEMREF(s string) *BLOCKQUOTEElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("itemref", s)
+	return e
+}
+
+func (e *BLOCKQUOTEElement) IfITEMREF(condition bool, s string) *BLOCKQUOTEElement {
+	if condition {
+		e.ITEMREF(s)
+	}
 	return e
 }
 
@@ -744,12 +877,26 @@ func (e *BLOCKQUOTEElement) ITEMSCOPE() *BLOCKQUOTEElement {
 	return e
 }
 
+func (e *BLOCKQUOTEElement) IfITEMSCOPE(condition bool) *BLOCKQUOTEElement {
+	if condition {
+		e.ITEMSCOPESet(true)
+	}
+	return e
+}
+
 // Set the attribute itemscope to the value b explicitly.
 func (e *BLOCKQUOTEElement) ITEMSCOPESet(b bool) *BLOCKQUOTEElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("itemscope", b)
+	return e
+}
+
+func (e *BLOCKQUOTEElement) IfSetITEMSCOPE(condition bool, b bool) *BLOCKQUOTEElement {
+	if condition {
+		e.ITEMSCOPESet(b)
+	}
 	return e
 }
 
@@ -778,6 +925,13 @@ func (e *BLOCKQUOTEElement) ITEMTYPE(s string) *BLOCKQUOTEElement {
 	return e
 }
 
+func (e *BLOCKQUOTEElement) IfITEMTYPE(condition bool, s string) *BLOCKQUOTEElement {
+	if condition {
+		e.ITEMTYPE(s)
+	}
+	return e
+}
+
 // Remove the attribute itemtype from the element.
 func (e *BLOCKQUOTEElement) ITEMTYPERemove(s string) *BLOCKQUOTEElement {
 	if e.StringAttributes == nil {
@@ -801,6 +955,13 @@ func (e *BLOCKQUOTEElement) LANG(s string) *BLOCKQUOTEElement {
 	return e
 }
 
+func (e *BLOCKQUOTEElement) IfLANG(condition bool, s string) *BLOCKQUOTEElement {
+	if condition {
+		e.LANG(s)
+	}
+	return e
+}
+
 // Remove the attribute lang from the element.
 func (e *BLOCKQUOTEElement) LANGRemove(s string) *BLOCKQUOTEElement {
 	if e.StringAttributes == nil {
@@ -819,6 +980,13 @@ func (e *BLOCKQUOTEElement) NONCE(s string) *BLOCKQUOTEElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("nonce", s)
+	return e
+}
+
+func (e *BLOCKQUOTEElement) IfNONCE(condition bool, s string) *BLOCKQUOTEElement {
+	if condition {
+		e.NONCE(s)
+	}
 	return e
 }
 
@@ -845,6 +1013,13 @@ func (e *BLOCKQUOTEElement) PART(s ...string) *BLOCKQUOTEElement {
 		e.DelimitedStrings.Set("part", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *BLOCKQUOTEElement) IfPART(condition bool, s ...string) *BLOCKQUOTEElement {
+	if condition {
+		e.PART(s...)
+	}
 	return e
 }
 
@@ -915,6 +1090,13 @@ func (e *BLOCKQUOTEElement) SLOT(s string) *BLOCKQUOTEElement {
 	return e
 }
 
+func (e *BLOCKQUOTEElement) IfSLOT(condition bool, s string) *BLOCKQUOTEElement {
+	if condition {
+		e.SLOT(s)
+	}
+	return e
+}
+
 // Remove the attribute slot from the element.
 func (e *BLOCKQUOTEElement) SLOTRemove(s string) *BLOCKQUOTEElement {
 	if e.StringAttributes == nil {
@@ -973,6 +1155,13 @@ func (e *BLOCKQUOTEElement) STYLEF(k string, format string, args ...any) *BLOCKQ
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+func (e *BLOCKQUOTEElement) IfSTYLE(condition bool, k string, v string) *BLOCKQUOTEElement {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
 func (e *BLOCKQUOTEElement) STYLE(k string, v string) *BLOCKQUOTEElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -983,6 +1172,13 @@ func (e *BLOCKQUOTEElement) STYLE(k string, v string) *BLOCKQUOTEElement {
 		e.KVStrings.Set("style", kv)
 	}
 	kv.Add(k, v)
+	return e
+}
+
+func (e *BLOCKQUOTEElement) IfSTYLEF(condition bool, k string, format string, args ...any) *BLOCKQUOTEElement {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
 	return e
 }
 
@@ -1023,6 +1219,13 @@ func (e *BLOCKQUOTEElement) STYLEPairs(pairs ...string) *BLOCKQUOTEElement {
 	return e
 }
 
+func (e *BLOCKQUOTEElement) IfSTYLEPairs(condition bool, pairs ...string) *BLOCKQUOTEElement {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
+	return e
+}
+
 // Remove the attribute style from the element.
 func (e *BLOCKQUOTEElement) STYLERemove(keys ...string) *BLOCKQUOTEElement {
 	if e.KVStrings == nil {
@@ -1057,6 +1260,13 @@ func (e *BLOCKQUOTEElement) TABINDEX(i int) *BLOCKQUOTEElement {
 		e.IntAttributes = treemap.New[string, int]()
 	}
 	e.IntAttributes.Set("tabindex", i)
+	return e
+}
+
+func (e *BLOCKQUOTEElement) IfTABINDEX(condition bool, i int) *BLOCKQUOTEElement {
+	if condition {
+		e.TABINDEX(i)
+	}
 	return e
 }
 
@@ -1095,6 +1305,13 @@ func (e *BLOCKQUOTEElement) TITLE(s string) *BLOCKQUOTEElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("title", s)
+	return e
+}
+
+func (e *BLOCKQUOTEElement) IfTITLE(condition bool, s string) *BLOCKQUOTEElement {
+	if condition {
+		e.TITLE(s)
+	}
 	return e
 }
 

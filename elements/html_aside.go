@@ -56,13 +56,41 @@ func (e *ASIDEElement) TextF(format string, args ...any) *ASIDEElement {
 	return e.Text(fmt.Sprintf(format, args...))
 }
 
+func (e *ASIDEElement) IfText(condition bool, text string) *ASIDEElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
+}
+
+func (e *ASIDEElement) IfTextF(condition bool, format string, args ...any) *ASIDEElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
+}
+
 func (e *ASIDEElement) Escaped(text string) *ASIDEElement {
 	e.Descendants = append(e.Descendants, Escaped(text))
 	return e
 }
 
+func (e *ASIDEElement) IfEscaped(condition bool, text string) *ASIDEElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
+}
+
 func (e *ASIDEElement) EscapedF(format string, args ...any) *ASIDEElement {
 	return e.Escaped(fmt.Sprintf(format, args...))
+}
+
+func (e *ASIDEElement) IfEscapedF(condition bool, format string, args ...any) *ASIDEElement {
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *ASIDEElement) CustomData(key, value string) *ASIDEElement {
@@ -73,8 +101,22 @@ func (e *ASIDEElement) CustomData(key, value string) *ASIDEElement {
 	return e
 }
 
+func (e *ASIDEElement) IfCustomData(condition bool, key, value string) *ASIDEElement {
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
+}
+
 func (e *ASIDEElement) CustomDataF(key, format string, args ...any) *ASIDEElement {
 	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
+func (e *ASIDEElement) IfCustomDataF(condition bool, key, format string, args ...any) *ASIDEElement {
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *ASIDEElement) CustomDataRemove(key string) *ASIDEElement {
@@ -94,6 +136,13 @@ func (e *ASIDEElement) ACCESSKEY(r rune) *ASIDEElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("accesskey", string(r))
+	return e
+}
+
+func (e *ASIDEElement) IfACCESSKEY(condition bool, r rune) *ASIDEElement {
+	if condition {
+		e.ACCESSKEY(r)
+	}
 	return e
 }
 
@@ -179,12 +228,26 @@ func (e *ASIDEElement) AUTOFOCUS() *ASIDEElement {
 	return e
 }
 
+func (e *ASIDEElement) IfAUTOFOCUS(condition bool) *ASIDEElement {
+	if condition {
+		e.AUTOFOCUSSet(true)
+	}
+	return e
+}
+
 // Set the attribute autofocus to the value b explicitly.
 func (e *ASIDEElement) AUTOFOCUSSet(b bool) *ASIDEElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("autofocus", b)
+	return e
+}
+
+func (e *ASIDEElement) IfSetAUTOFOCUS(condition bool, b bool) *ASIDEElement {
+	if condition {
+		e.AUTOFOCUSSet(b)
+	}
 	return e
 }
 
@@ -212,6 +275,13 @@ func (e *ASIDEElement) CLASS(s ...string) *ASIDEElement {
 		e.DelimitedStrings.Set("class", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *ASIDEElement) IfCLASS(condition bool, s ...string) *ASIDEElement {
+	if condition {
+		e.CLASS(s...)
+	}
 	return e
 }
 
@@ -420,6 +490,13 @@ func (e *ASIDEElement) EXPORTPARTS(s ...string) *ASIDEElement {
 	return e
 }
 
+func (e *ASIDEElement) IfEXPORTPARTS(condition bool, s ...string) *ASIDEElement {
+	if condition {
+		e.EXPORTPARTS(s...)
+	}
+	return e
+}
+
 // Remove the attribute exportparts from the element.
 func (e *ASIDEElement) EXPORTPARTSRemove(s ...string) *ASIDEElement {
 	if e.DelimitedStrings == nil {
@@ -495,6 +572,13 @@ func (e *ASIDEElement) ID(s string) *ASIDEElement {
 	return e
 }
 
+func (e *ASIDEElement) IfID(condition bool, s string) *ASIDEElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
 // Remove the attribute id from the element.
 func (e *ASIDEElement) IDRemove(s string) *ASIDEElement {
 	if e.StringAttributes == nil {
@@ -521,12 +605,26 @@ func (e *ASIDEElement) INERT() *ASIDEElement {
 	return e
 }
 
+func (e *ASIDEElement) IfINERT(condition bool) *ASIDEElement {
+	if condition {
+		e.INERTSet(true)
+	}
+	return e
+}
+
 // Set the attribute inert to the value b explicitly.
 func (e *ASIDEElement) INERTSet(b bool) *ASIDEElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("inert", b)
+	return e
+}
+
+func (e *ASIDEElement) IfSetINERT(condition bool, b bool) *ASIDEElement {
+	if condition {
+		e.INERTSet(b)
+	}
 	return e
 }
 
@@ -622,6 +720,13 @@ func (e *ASIDEElement) IS(s string) *ASIDEElement {
 	return e
 }
 
+func (e *ASIDEElement) IfIS(condition bool, s string) *ASIDEElement {
+	if condition {
+		e.IS(s)
+	}
+	return e
+}
+
 // Remove the attribute is from the element.
 func (e *ASIDEElement) ISRemove(s string) *ASIDEElement {
 	if e.StringAttributes == nil {
@@ -652,6 +757,13 @@ func (e *ASIDEElement) ITEMID(s string) *ASIDEElement {
 	return e
 }
 
+func (e *ASIDEElement) IfITEMID(condition bool, s string) *ASIDEElement {
+	if condition {
+		e.ITEMID(s)
+	}
+	return e
+}
+
 // Remove the attribute itemid from the element.
 func (e *ASIDEElement) ITEMIDRemove(s string) *ASIDEElement {
 	if e.StringAttributes == nil {
@@ -677,6 +789,13 @@ func (e *ASIDEElement) ITEMPROP(s string) *ASIDEElement {
 	return e
 }
 
+func (e *ASIDEElement) IfITEMPROP(condition bool, s string) *ASIDEElement {
+	if condition {
+		e.ITEMPROP(s)
+	}
+	return e
+}
+
 // Remove the attribute itemprop from the element.
 func (e *ASIDEElement) ITEMPROPRemove(s string) *ASIDEElement {
 	if e.StringAttributes == nil {
@@ -696,6 +815,13 @@ func (e *ASIDEElement) ITEMREF(s string) *ASIDEElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("itemref", s)
+	return e
+}
+
+func (e *ASIDEElement) IfITEMREF(condition bool, s string) *ASIDEElement {
+	if condition {
+		e.ITEMREF(s)
+	}
 	return e
 }
 
@@ -721,12 +847,26 @@ func (e *ASIDEElement) ITEMSCOPE() *ASIDEElement {
 	return e
 }
 
+func (e *ASIDEElement) IfITEMSCOPE(condition bool) *ASIDEElement {
+	if condition {
+		e.ITEMSCOPESet(true)
+	}
+	return e
+}
+
 // Set the attribute itemscope to the value b explicitly.
 func (e *ASIDEElement) ITEMSCOPESet(b bool) *ASIDEElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("itemscope", b)
+	return e
+}
+
+func (e *ASIDEElement) IfSetITEMSCOPE(condition bool, b bool) *ASIDEElement {
+	if condition {
+		e.ITEMSCOPESet(b)
+	}
 	return e
 }
 
@@ -755,6 +895,13 @@ func (e *ASIDEElement) ITEMTYPE(s string) *ASIDEElement {
 	return e
 }
 
+func (e *ASIDEElement) IfITEMTYPE(condition bool, s string) *ASIDEElement {
+	if condition {
+		e.ITEMTYPE(s)
+	}
+	return e
+}
+
 // Remove the attribute itemtype from the element.
 func (e *ASIDEElement) ITEMTYPERemove(s string) *ASIDEElement {
 	if e.StringAttributes == nil {
@@ -778,6 +925,13 @@ func (e *ASIDEElement) LANG(s string) *ASIDEElement {
 	return e
 }
 
+func (e *ASIDEElement) IfLANG(condition bool, s string) *ASIDEElement {
+	if condition {
+		e.LANG(s)
+	}
+	return e
+}
+
 // Remove the attribute lang from the element.
 func (e *ASIDEElement) LANGRemove(s string) *ASIDEElement {
 	if e.StringAttributes == nil {
@@ -796,6 +950,13 @@ func (e *ASIDEElement) NONCE(s string) *ASIDEElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("nonce", s)
+	return e
+}
+
+func (e *ASIDEElement) IfNONCE(condition bool, s string) *ASIDEElement {
+	if condition {
+		e.NONCE(s)
+	}
 	return e
 }
 
@@ -822,6 +983,13 @@ func (e *ASIDEElement) PART(s ...string) *ASIDEElement {
 		e.DelimitedStrings.Set("part", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *ASIDEElement) IfPART(condition bool, s ...string) *ASIDEElement {
+	if condition {
+		e.PART(s...)
+	}
 	return e
 }
 
@@ -892,6 +1060,13 @@ func (e *ASIDEElement) SLOT(s string) *ASIDEElement {
 	return e
 }
 
+func (e *ASIDEElement) IfSLOT(condition bool, s string) *ASIDEElement {
+	if condition {
+		e.SLOT(s)
+	}
+	return e
+}
+
 // Remove the attribute slot from the element.
 func (e *ASIDEElement) SLOTRemove(s string) *ASIDEElement {
 	if e.StringAttributes == nil {
@@ -950,6 +1125,13 @@ func (e *ASIDEElement) STYLEF(k string, format string, args ...any) *ASIDEElemen
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+func (e *ASIDEElement) IfSTYLE(condition bool, k string, v string) *ASIDEElement {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
 func (e *ASIDEElement) STYLE(k string, v string) *ASIDEElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -960,6 +1142,13 @@ func (e *ASIDEElement) STYLE(k string, v string) *ASIDEElement {
 		e.KVStrings.Set("style", kv)
 	}
 	kv.Add(k, v)
+	return e
+}
+
+func (e *ASIDEElement) IfSTYLEF(condition bool, k string, format string, args ...any) *ASIDEElement {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
 	return e
 }
 
@@ -1000,6 +1189,13 @@ func (e *ASIDEElement) STYLEPairs(pairs ...string) *ASIDEElement {
 	return e
 }
 
+func (e *ASIDEElement) IfSTYLEPairs(condition bool, pairs ...string) *ASIDEElement {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
+	return e
+}
+
 // Remove the attribute style from the element.
 func (e *ASIDEElement) STYLERemove(keys ...string) *ASIDEElement {
 	if e.KVStrings == nil {
@@ -1034,6 +1230,13 @@ func (e *ASIDEElement) TABINDEX(i int) *ASIDEElement {
 		e.IntAttributes = treemap.New[string, int]()
 	}
 	e.IntAttributes.Set("tabindex", i)
+	return e
+}
+
+func (e *ASIDEElement) IfTABINDEX(condition bool, i int) *ASIDEElement {
+	if condition {
+		e.TABINDEX(i)
+	}
 	return e
 }
 
@@ -1072,6 +1275,13 @@ func (e *ASIDEElement) TITLE(s string) *ASIDEElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("title", s)
+	return e
+}
+
+func (e *ASIDEElement) IfTITLE(condition bool, s string) *ASIDEElement {
+	if condition {
+		e.TITLE(s)
+	}
 	return e
 }
 

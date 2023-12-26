@@ -57,13 +57,41 @@ func (e *SVGTITLEElement) TextF(format string, args ...any) *SVGTITLEElement {
 	return e.Text(fmt.Sprintf(format, args...))
 }
 
+func (e *SVGTITLEElement) IfText(condition bool, text string) *SVGTITLEElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
+}
+
+func (e *SVGTITLEElement) IfTextF(condition bool, format string, args ...any) *SVGTITLEElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
+}
+
 func (e *SVGTITLEElement) Escaped(text string) *SVGTITLEElement {
 	e.Descendants = append(e.Descendants, Escaped(text))
 	return e
 }
 
+func (e *SVGTITLEElement) IfEscaped(condition bool, text string) *SVGTITLEElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
+}
+
 func (e *SVGTITLEElement) EscapedF(format string, args ...any) *SVGTITLEElement {
 	return e.Escaped(fmt.Sprintf(format, args...))
+}
+
+func (e *SVGTITLEElement) IfEscapedF(condition bool, format string, args ...any) *SVGTITLEElement {
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *SVGTITLEElement) CustomData(key, value string) *SVGTITLEElement {
@@ -74,8 +102,22 @@ func (e *SVGTITLEElement) CustomData(key, value string) *SVGTITLEElement {
 	return e
 }
 
+func (e *SVGTITLEElement) IfCustomData(condition bool, key, value string) *SVGTITLEElement {
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
+}
+
 func (e *SVGTITLEElement) CustomDataF(key, format string, args ...any) *SVGTITLEElement {
 	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
+func (e *SVGTITLEElement) IfCustomDataF(condition bool, key, format string, args ...any) *SVGTITLEElement {
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *SVGTITLEElement) CustomDataRemove(key string) *SVGTITLEElement {
@@ -101,6 +143,13 @@ func (e *SVGTITLEElement) CLASS(s ...string) *SVGTITLEElement {
 	return e
 }
 
+func (e *SVGTITLEElement) IfCLASS(condition bool, s ...string) *SVGTITLEElement {
+	if condition {
+		e.CLASS(s...)
+	}
+	return e
+}
+
 // Remove the attribute class from the element.
 func (e *SVGTITLEElement) CLASSRemove(s ...string) *SVGTITLEElement {
 	if e.DelimitedStrings == nil {
@@ -123,6 +172,13 @@ func (e *SVGTITLEElement) ID(s string) *SVGTITLEElement {
 	return e
 }
 
+func (e *SVGTITLEElement) IfID(condition bool, s string) *SVGTITLEElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
 // Remove the attribute id from the element.
 func (e *SVGTITLEElement) IDRemove(s string) *SVGTITLEElement {
 	if e.StringAttributes == nil {
@@ -137,6 +193,13 @@ func (e *SVGTITLEElement) STYLEF(k string, format string, args ...any) *SVGTITLE
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+func (e *SVGTITLEElement) IfSTYLE(condition bool, k string, v string) *SVGTITLEElement {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
 func (e *SVGTITLEElement) STYLE(k string, v string) *SVGTITLEElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -147,6 +210,13 @@ func (e *SVGTITLEElement) STYLE(k string, v string) *SVGTITLEElement {
 		e.KVStrings.Set("style", kv)
 	}
 	kv.Add(k, v)
+	return e
+}
+
+func (e *SVGTITLEElement) IfSTYLEF(condition bool, k string, format string, args ...any) *SVGTITLEElement {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
 	return e
 }
 
@@ -184,6 +254,13 @@ func (e *SVGTITLEElement) STYLEPairs(pairs ...string) *SVGTITLEElement {
 		kv.Add(pairs[i], pairs[i+1])
 	}
 
+	return e
+}
+
+func (e *SVGTITLEElement) IfSTYLEPairs(condition bool, pairs ...string) *SVGTITLEElement {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
 	return e
 }
 

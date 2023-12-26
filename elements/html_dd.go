@@ -56,13 +56,41 @@ func (e *DDElement) TextF(format string, args ...any) *DDElement {
 	return e.Text(fmt.Sprintf(format, args...))
 }
 
+func (e *DDElement) IfText(condition bool, text string) *DDElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
+}
+
+func (e *DDElement) IfTextF(condition bool, format string, args ...any) *DDElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
+}
+
 func (e *DDElement) Escaped(text string) *DDElement {
 	e.Descendants = append(e.Descendants, Escaped(text))
 	return e
 }
 
+func (e *DDElement) IfEscaped(condition bool, text string) *DDElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
+}
+
 func (e *DDElement) EscapedF(format string, args ...any) *DDElement {
 	return e.Escaped(fmt.Sprintf(format, args...))
+}
+
+func (e *DDElement) IfEscapedF(condition bool, format string, args ...any) *DDElement {
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *DDElement) CustomData(key, value string) *DDElement {
@@ -73,8 +101,22 @@ func (e *DDElement) CustomData(key, value string) *DDElement {
 	return e
 }
 
+func (e *DDElement) IfCustomData(condition bool, key, value string) *DDElement {
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
+}
+
 func (e *DDElement) CustomDataF(key, format string, args ...any) *DDElement {
 	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
+func (e *DDElement) IfCustomDataF(condition bool, key, format string, args ...any) *DDElement {
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *DDElement) CustomDataRemove(key string) *DDElement {
@@ -94,6 +136,13 @@ func (e *DDElement) ACCESSKEY(r rune) *DDElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("accesskey", string(r))
+	return e
+}
+
+func (e *DDElement) IfACCESSKEY(condition bool, r rune) *DDElement {
+	if condition {
+		e.ACCESSKEY(r)
+	}
 	return e
 }
 
@@ -179,12 +228,26 @@ func (e *DDElement) AUTOFOCUS() *DDElement {
 	return e
 }
 
+func (e *DDElement) IfAUTOFOCUS(condition bool) *DDElement {
+	if condition {
+		e.AUTOFOCUSSet(true)
+	}
+	return e
+}
+
 // Set the attribute autofocus to the value b explicitly.
 func (e *DDElement) AUTOFOCUSSet(b bool) *DDElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("autofocus", b)
+	return e
+}
+
+func (e *DDElement) IfSetAUTOFOCUS(condition bool, b bool) *DDElement {
+	if condition {
+		e.AUTOFOCUSSet(b)
+	}
 	return e
 }
 
@@ -212,6 +275,13 @@ func (e *DDElement) CLASS(s ...string) *DDElement {
 		e.DelimitedStrings.Set("class", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *DDElement) IfCLASS(condition bool, s ...string) *DDElement {
+	if condition {
+		e.CLASS(s...)
+	}
 	return e
 }
 
@@ -420,6 +490,13 @@ func (e *DDElement) EXPORTPARTS(s ...string) *DDElement {
 	return e
 }
 
+func (e *DDElement) IfEXPORTPARTS(condition bool, s ...string) *DDElement {
+	if condition {
+		e.EXPORTPARTS(s...)
+	}
+	return e
+}
+
 // Remove the attribute exportparts from the element.
 func (e *DDElement) EXPORTPARTSRemove(s ...string) *DDElement {
 	if e.DelimitedStrings == nil {
@@ -495,6 +572,13 @@ func (e *DDElement) ID(s string) *DDElement {
 	return e
 }
 
+func (e *DDElement) IfID(condition bool, s string) *DDElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
 // Remove the attribute id from the element.
 func (e *DDElement) IDRemove(s string) *DDElement {
 	if e.StringAttributes == nil {
@@ -521,12 +605,26 @@ func (e *DDElement) INERT() *DDElement {
 	return e
 }
 
+func (e *DDElement) IfINERT(condition bool) *DDElement {
+	if condition {
+		e.INERTSet(true)
+	}
+	return e
+}
+
 // Set the attribute inert to the value b explicitly.
 func (e *DDElement) INERTSet(b bool) *DDElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("inert", b)
+	return e
+}
+
+func (e *DDElement) IfSetINERT(condition bool, b bool) *DDElement {
+	if condition {
+		e.INERTSet(b)
+	}
 	return e
 }
 
@@ -622,6 +720,13 @@ func (e *DDElement) IS(s string) *DDElement {
 	return e
 }
 
+func (e *DDElement) IfIS(condition bool, s string) *DDElement {
+	if condition {
+		e.IS(s)
+	}
+	return e
+}
+
 // Remove the attribute is from the element.
 func (e *DDElement) ISRemove(s string) *DDElement {
 	if e.StringAttributes == nil {
@@ -652,6 +757,13 @@ func (e *DDElement) ITEMID(s string) *DDElement {
 	return e
 }
 
+func (e *DDElement) IfITEMID(condition bool, s string) *DDElement {
+	if condition {
+		e.ITEMID(s)
+	}
+	return e
+}
+
 // Remove the attribute itemid from the element.
 func (e *DDElement) ITEMIDRemove(s string) *DDElement {
 	if e.StringAttributes == nil {
@@ -677,6 +789,13 @@ func (e *DDElement) ITEMPROP(s string) *DDElement {
 	return e
 }
 
+func (e *DDElement) IfITEMPROP(condition bool, s string) *DDElement {
+	if condition {
+		e.ITEMPROP(s)
+	}
+	return e
+}
+
 // Remove the attribute itemprop from the element.
 func (e *DDElement) ITEMPROPRemove(s string) *DDElement {
 	if e.StringAttributes == nil {
@@ -696,6 +815,13 @@ func (e *DDElement) ITEMREF(s string) *DDElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("itemref", s)
+	return e
+}
+
+func (e *DDElement) IfITEMREF(condition bool, s string) *DDElement {
+	if condition {
+		e.ITEMREF(s)
+	}
 	return e
 }
 
@@ -721,12 +847,26 @@ func (e *DDElement) ITEMSCOPE() *DDElement {
 	return e
 }
 
+func (e *DDElement) IfITEMSCOPE(condition bool) *DDElement {
+	if condition {
+		e.ITEMSCOPESet(true)
+	}
+	return e
+}
+
 // Set the attribute itemscope to the value b explicitly.
 func (e *DDElement) ITEMSCOPESet(b bool) *DDElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("itemscope", b)
+	return e
+}
+
+func (e *DDElement) IfSetITEMSCOPE(condition bool, b bool) *DDElement {
+	if condition {
+		e.ITEMSCOPESet(b)
+	}
 	return e
 }
 
@@ -755,6 +895,13 @@ func (e *DDElement) ITEMTYPE(s string) *DDElement {
 	return e
 }
 
+func (e *DDElement) IfITEMTYPE(condition bool, s string) *DDElement {
+	if condition {
+		e.ITEMTYPE(s)
+	}
+	return e
+}
+
 // Remove the attribute itemtype from the element.
 func (e *DDElement) ITEMTYPERemove(s string) *DDElement {
 	if e.StringAttributes == nil {
@@ -778,6 +925,13 @@ func (e *DDElement) LANG(s string) *DDElement {
 	return e
 }
 
+func (e *DDElement) IfLANG(condition bool, s string) *DDElement {
+	if condition {
+		e.LANG(s)
+	}
+	return e
+}
+
 // Remove the attribute lang from the element.
 func (e *DDElement) LANGRemove(s string) *DDElement {
 	if e.StringAttributes == nil {
@@ -796,6 +950,13 @@ func (e *DDElement) NONCE(s string) *DDElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("nonce", s)
+	return e
+}
+
+func (e *DDElement) IfNONCE(condition bool, s string) *DDElement {
+	if condition {
+		e.NONCE(s)
+	}
 	return e
 }
 
@@ -822,6 +983,13 @@ func (e *DDElement) PART(s ...string) *DDElement {
 		e.DelimitedStrings.Set("part", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *DDElement) IfPART(condition bool, s ...string) *DDElement {
+	if condition {
+		e.PART(s...)
+	}
 	return e
 }
 
@@ -892,6 +1060,13 @@ func (e *DDElement) SLOT(s string) *DDElement {
 	return e
 }
 
+func (e *DDElement) IfSLOT(condition bool, s string) *DDElement {
+	if condition {
+		e.SLOT(s)
+	}
+	return e
+}
+
 // Remove the attribute slot from the element.
 func (e *DDElement) SLOTRemove(s string) *DDElement {
 	if e.StringAttributes == nil {
@@ -950,6 +1125,13 @@ func (e *DDElement) STYLEF(k string, format string, args ...any) *DDElement {
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+func (e *DDElement) IfSTYLE(condition bool, k string, v string) *DDElement {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
 func (e *DDElement) STYLE(k string, v string) *DDElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -960,6 +1142,13 @@ func (e *DDElement) STYLE(k string, v string) *DDElement {
 		e.KVStrings.Set("style", kv)
 	}
 	kv.Add(k, v)
+	return e
+}
+
+func (e *DDElement) IfSTYLEF(condition bool, k string, format string, args ...any) *DDElement {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
 	return e
 }
 
@@ -1000,6 +1189,13 @@ func (e *DDElement) STYLEPairs(pairs ...string) *DDElement {
 	return e
 }
 
+func (e *DDElement) IfSTYLEPairs(condition bool, pairs ...string) *DDElement {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
+	return e
+}
+
 // Remove the attribute style from the element.
 func (e *DDElement) STYLERemove(keys ...string) *DDElement {
 	if e.KVStrings == nil {
@@ -1034,6 +1230,13 @@ func (e *DDElement) TABINDEX(i int) *DDElement {
 		e.IntAttributes = treemap.New[string, int]()
 	}
 	e.IntAttributes.Set("tabindex", i)
+	return e
+}
+
+func (e *DDElement) IfTABINDEX(condition bool, i int) *DDElement {
+	if condition {
+		e.TABINDEX(i)
+	}
 	return e
 }
 
@@ -1072,6 +1275,13 @@ func (e *DDElement) TITLE(s string) *DDElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("title", s)
+	return e
+}
+
+func (e *DDElement) IfTITLE(condition bool, s string) *DDElement {
+	if condition {
+		e.TITLE(s)
+	}
 	return e
 }
 

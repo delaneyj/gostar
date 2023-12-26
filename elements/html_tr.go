@@ -57,13 +57,41 @@ func (e *TRElement) TextF(format string, args ...any) *TRElement {
 	return e.Text(fmt.Sprintf(format, args...))
 }
 
+func (e *TRElement) IfText(condition bool, text string) *TRElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
+}
+
+func (e *TRElement) IfTextF(condition bool, format string, args ...any) *TRElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
+}
+
 func (e *TRElement) Escaped(text string) *TRElement {
 	e.Descendants = append(e.Descendants, Escaped(text))
 	return e
 }
 
+func (e *TRElement) IfEscaped(condition bool, text string) *TRElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
+}
+
 func (e *TRElement) EscapedF(format string, args ...any) *TRElement {
 	return e.Escaped(fmt.Sprintf(format, args...))
+}
+
+func (e *TRElement) IfEscapedF(condition bool, format string, args ...any) *TRElement {
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *TRElement) CustomData(key, value string) *TRElement {
@@ -74,8 +102,22 @@ func (e *TRElement) CustomData(key, value string) *TRElement {
 	return e
 }
 
+func (e *TRElement) IfCustomData(condition bool, key, value string) *TRElement {
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
+}
+
 func (e *TRElement) CustomDataF(key, format string, args ...any) *TRElement {
 	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
+func (e *TRElement) IfCustomDataF(condition bool, key, format string, args ...any) *TRElement {
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *TRElement) CustomDataRemove(key string) *TRElement {
@@ -95,6 +137,13 @@ func (e *TRElement) ACCESSKEY(r rune) *TRElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("accesskey", string(r))
+	return e
+}
+
+func (e *TRElement) IfACCESSKEY(condition bool, r rune) *TRElement {
+	if condition {
+		e.ACCESSKEY(r)
+	}
 	return e
 }
 
@@ -180,12 +229,26 @@ func (e *TRElement) AUTOFOCUS() *TRElement {
 	return e
 }
 
+func (e *TRElement) IfAUTOFOCUS(condition bool) *TRElement {
+	if condition {
+		e.AUTOFOCUSSet(true)
+	}
+	return e
+}
+
 // Set the attribute autofocus to the value b explicitly.
 func (e *TRElement) AUTOFOCUSSet(b bool) *TRElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("autofocus", b)
+	return e
+}
+
+func (e *TRElement) IfSetAUTOFOCUS(condition bool, b bool) *TRElement {
+	if condition {
+		e.AUTOFOCUSSet(b)
+	}
 	return e
 }
 
@@ -213,6 +276,13 @@ func (e *TRElement) CLASS(s ...string) *TRElement {
 		e.DelimitedStrings.Set("class", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *TRElement) IfCLASS(condition bool, s ...string) *TRElement {
+	if condition {
+		e.CLASS(s...)
+	}
 	return e
 }
 
@@ -421,6 +491,13 @@ func (e *TRElement) EXPORTPARTS(s ...string) *TRElement {
 	return e
 }
 
+func (e *TRElement) IfEXPORTPARTS(condition bool, s ...string) *TRElement {
+	if condition {
+		e.EXPORTPARTS(s...)
+	}
+	return e
+}
+
 // Remove the attribute exportparts from the element.
 func (e *TRElement) EXPORTPARTSRemove(s ...string) *TRElement {
 	if e.DelimitedStrings == nil {
@@ -496,6 +573,13 @@ func (e *TRElement) ID(s string) *TRElement {
 	return e
 }
 
+func (e *TRElement) IfID(condition bool, s string) *TRElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
 // Remove the attribute id from the element.
 func (e *TRElement) IDRemove(s string) *TRElement {
 	if e.StringAttributes == nil {
@@ -522,12 +606,26 @@ func (e *TRElement) INERT() *TRElement {
 	return e
 }
 
+func (e *TRElement) IfINERT(condition bool) *TRElement {
+	if condition {
+		e.INERTSet(true)
+	}
+	return e
+}
+
 // Set the attribute inert to the value b explicitly.
 func (e *TRElement) INERTSet(b bool) *TRElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("inert", b)
+	return e
+}
+
+func (e *TRElement) IfSetINERT(condition bool, b bool) *TRElement {
+	if condition {
+		e.INERTSet(b)
+	}
 	return e
 }
 
@@ -623,6 +721,13 @@ func (e *TRElement) IS(s string) *TRElement {
 	return e
 }
 
+func (e *TRElement) IfIS(condition bool, s string) *TRElement {
+	if condition {
+		e.IS(s)
+	}
+	return e
+}
+
 // Remove the attribute is from the element.
 func (e *TRElement) ISRemove(s string) *TRElement {
 	if e.StringAttributes == nil {
@@ -653,6 +758,13 @@ func (e *TRElement) ITEMID(s string) *TRElement {
 	return e
 }
 
+func (e *TRElement) IfITEMID(condition bool, s string) *TRElement {
+	if condition {
+		e.ITEMID(s)
+	}
+	return e
+}
+
 // Remove the attribute itemid from the element.
 func (e *TRElement) ITEMIDRemove(s string) *TRElement {
 	if e.StringAttributes == nil {
@@ -678,6 +790,13 @@ func (e *TRElement) ITEMPROP(s string) *TRElement {
 	return e
 }
 
+func (e *TRElement) IfITEMPROP(condition bool, s string) *TRElement {
+	if condition {
+		e.ITEMPROP(s)
+	}
+	return e
+}
+
 // Remove the attribute itemprop from the element.
 func (e *TRElement) ITEMPROPRemove(s string) *TRElement {
 	if e.StringAttributes == nil {
@@ -697,6 +816,13 @@ func (e *TRElement) ITEMREF(s string) *TRElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("itemref", s)
+	return e
+}
+
+func (e *TRElement) IfITEMREF(condition bool, s string) *TRElement {
+	if condition {
+		e.ITEMREF(s)
+	}
 	return e
 }
 
@@ -722,12 +848,26 @@ func (e *TRElement) ITEMSCOPE() *TRElement {
 	return e
 }
 
+func (e *TRElement) IfITEMSCOPE(condition bool) *TRElement {
+	if condition {
+		e.ITEMSCOPESet(true)
+	}
+	return e
+}
+
 // Set the attribute itemscope to the value b explicitly.
 func (e *TRElement) ITEMSCOPESet(b bool) *TRElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("itemscope", b)
+	return e
+}
+
+func (e *TRElement) IfSetITEMSCOPE(condition bool, b bool) *TRElement {
+	if condition {
+		e.ITEMSCOPESet(b)
+	}
 	return e
 }
 
@@ -756,6 +896,13 @@ func (e *TRElement) ITEMTYPE(s string) *TRElement {
 	return e
 }
 
+func (e *TRElement) IfITEMTYPE(condition bool, s string) *TRElement {
+	if condition {
+		e.ITEMTYPE(s)
+	}
+	return e
+}
+
 // Remove the attribute itemtype from the element.
 func (e *TRElement) ITEMTYPERemove(s string) *TRElement {
 	if e.StringAttributes == nil {
@@ -779,6 +926,13 @@ func (e *TRElement) LANG(s string) *TRElement {
 	return e
 }
 
+func (e *TRElement) IfLANG(condition bool, s string) *TRElement {
+	if condition {
+		e.LANG(s)
+	}
+	return e
+}
+
 // Remove the attribute lang from the element.
 func (e *TRElement) LANGRemove(s string) *TRElement {
 	if e.StringAttributes == nil {
@@ -797,6 +951,13 @@ func (e *TRElement) NONCE(s string) *TRElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("nonce", s)
+	return e
+}
+
+func (e *TRElement) IfNONCE(condition bool, s string) *TRElement {
+	if condition {
+		e.NONCE(s)
+	}
 	return e
 }
 
@@ -823,6 +984,13 @@ func (e *TRElement) PART(s ...string) *TRElement {
 		e.DelimitedStrings.Set("part", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *TRElement) IfPART(condition bool, s ...string) *TRElement {
+	if condition {
+		e.PART(s...)
+	}
 	return e
 }
 
@@ -893,6 +1061,13 @@ func (e *TRElement) SLOT(s string) *TRElement {
 	return e
 }
 
+func (e *TRElement) IfSLOT(condition bool, s string) *TRElement {
+	if condition {
+		e.SLOT(s)
+	}
+	return e
+}
+
 // Remove the attribute slot from the element.
 func (e *TRElement) SLOTRemove(s string) *TRElement {
 	if e.StringAttributes == nil {
@@ -951,6 +1126,13 @@ func (e *TRElement) STYLEF(k string, format string, args ...any) *TRElement {
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+func (e *TRElement) IfSTYLE(condition bool, k string, v string) *TRElement {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
 func (e *TRElement) STYLE(k string, v string) *TRElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -961,6 +1143,13 @@ func (e *TRElement) STYLE(k string, v string) *TRElement {
 		e.KVStrings.Set("style", kv)
 	}
 	kv.Add(k, v)
+	return e
+}
+
+func (e *TRElement) IfSTYLEF(condition bool, k string, format string, args ...any) *TRElement {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
 	return e
 }
 
@@ -1001,6 +1190,13 @@ func (e *TRElement) STYLEPairs(pairs ...string) *TRElement {
 	return e
 }
 
+func (e *TRElement) IfSTYLEPairs(condition bool, pairs ...string) *TRElement {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
+	return e
+}
+
 // Remove the attribute style from the element.
 func (e *TRElement) STYLERemove(keys ...string) *TRElement {
 	if e.KVStrings == nil {
@@ -1035,6 +1231,13 @@ func (e *TRElement) TABINDEX(i int) *TRElement {
 		e.IntAttributes = treemap.New[string, int]()
 	}
 	e.IntAttributes.Set("tabindex", i)
+	return e
+}
+
+func (e *TRElement) IfTABINDEX(condition bool, i int) *TRElement {
+	if condition {
+		e.TABINDEX(i)
+	}
 	return e
 }
 
@@ -1073,6 +1276,13 @@ func (e *TRElement) TITLE(s string) *TRElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("title", s)
+	return e
+}
+
+func (e *TRElement) IfTITLE(condition bool, s string) *TRElement {
+	if condition {
+		e.TITLE(s)
+	}
 	return e
 }
 

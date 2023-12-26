@@ -57,13 +57,41 @@ func (e *SVGFEMORPHOLOGYElement) TextF(format string, args ...any) *SVGFEMORPHOL
 	return e.Text(fmt.Sprintf(format, args...))
 }
 
+func (e *SVGFEMORPHOLOGYElement) IfText(condition bool, text string) *SVGFEMORPHOLOGYElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
+}
+
+func (e *SVGFEMORPHOLOGYElement) IfTextF(condition bool, format string, args ...any) *SVGFEMORPHOLOGYElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
+}
+
 func (e *SVGFEMORPHOLOGYElement) Escaped(text string) *SVGFEMORPHOLOGYElement {
 	e.Descendants = append(e.Descendants, Escaped(text))
 	return e
 }
 
+func (e *SVGFEMORPHOLOGYElement) IfEscaped(condition bool, text string) *SVGFEMORPHOLOGYElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
+}
+
 func (e *SVGFEMORPHOLOGYElement) EscapedF(format string, args ...any) *SVGFEMORPHOLOGYElement {
 	return e.Escaped(fmt.Sprintf(format, args...))
+}
+
+func (e *SVGFEMORPHOLOGYElement) IfEscapedF(condition bool, format string, args ...any) *SVGFEMORPHOLOGYElement {
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *SVGFEMORPHOLOGYElement) CustomData(key, value string) *SVGFEMORPHOLOGYElement {
@@ -74,8 +102,22 @@ func (e *SVGFEMORPHOLOGYElement) CustomData(key, value string) *SVGFEMORPHOLOGYE
 	return e
 }
 
+func (e *SVGFEMORPHOLOGYElement) IfCustomData(condition bool, key, value string) *SVGFEMORPHOLOGYElement {
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
+}
+
 func (e *SVGFEMORPHOLOGYElement) CustomDataF(key, format string, args ...any) *SVGFEMORPHOLOGYElement {
 	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
+func (e *SVGFEMORPHOLOGYElement) IfCustomDataF(condition bool, key, format string, args ...any) *SVGFEMORPHOLOGYElement {
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *SVGFEMORPHOLOGYElement) CustomDataRemove(key string) *SVGFEMORPHOLOGYElement {
@@ -92,6 +134,13 @@ func (e *SVGFEMORPHOLOGYElement) IN(s string) *SVGFEMORPHOLOGYElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("in", s)
+	return e
+}
+
+func (e *SVGFEMORPHOLOGYElement) IfIN(condition bool, s string) *SVGFEMORPHOLOGYElement {
+	if condition {
+		e.IN(s)
+	}
 	return e
 }
 
@@ -140,6 +189,13 @@ func (e *SVGFEMORPHOLOGYElement) RADIUS(f float64) *SVGFEMORPHOLOGYElement {
 	return e
 }
 
+func (e *SVGFEMORPHOLOGYElement) IfRADIUS(condition bool, f float64) *SVGFEMORPHOLOGYElement {
+	if condition {
+		e.RADIUS(f)
+	}
+	return e
+}
+
 // Specifies one or more classnames for an element (refers to a class in a style
 // sheet)
 func (e *SVGFEMORPHOLOGYElement) CLASS(s ...string) *SVGFEMORPHOLOGYElement {
@@ -152,6 +208,13 @@ func (e *SVGFEMORPHOLOGYElement) CLASS(s ...string) *SVGFEMORPHOLOGYElement {
 		e.DelimitedStrings.Set("class", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *SVGFEMORPHOLOGYElement) IfCLASS(condition bool, s ...string) *SVGFEMORPHOLOGYElement {
+	if condition {
+		e.CLASS(s...)
+	}
 	return e
 }
 
@@ -177,6 +240,13 @@ func (e *SVGFEMORPHOLOGYElement) ID(s string) *SVGFEMORPHOLOGYElement {
 	return e
 }
 
+func (e *SVGFEMORPHOLOGYElement) IfID(condition bool, s string) *SVGFEMORPHOLOGYElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
 // Remove the attribute id from the element.
 func (e *SVGFEMORPHOLOGYElement) IDRemove(s string) *SVGFEMORPHOLOGYElement {
 	if e.StringAttributes == nil {
@@ -191,6 +261,13 @@ func (e *SVGFEMORPHOLOGYElement) STYLEF(k string, format string, args ...any) *S
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+func (e *SVGFEMORPHOLOGYElement) IfSTYLE(condition bool, k string, v string) *SVGFEMORPHOLOGYElement {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
 func (e *SVGFEMORPHOLOGYElement) STYLE(k string, v string) *SVGFEMORPHOLOGYElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -201,6 +278,13 @@ func (e *SVGFEMORPHOLOGYElement) STYLE(k string, v string) *SVGFEMORPHOLOGYEleme
 		e.KVStrings.Set("style", kv)
 	}
 	kv.Add(k, v)
+	return e
+}
+
+func (e *SVGFEMORPHOLOGYElement) IfSTYLEF(condition bool, k string, format string, args ...any) *SVGFEMORPHOLOGYElement {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
 	return e
 }
 
@@ -238,6 +322,13 @@ func (e *SVGFEMORPHOLOGYElement) STYLEPairs(pairs ...string) *SVGFEMORPHOLOGYEle
 		kv.Add(pairs[i], pairs[i+1])
 	}
 
+	return e
+}
+
+func (e *SVGFEMORPHOLOGYElement) IfSTYLEPairs(condition bool, pairs ...string) *SVGFEMORPHOLOGYElement {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
 	return e
 }
 

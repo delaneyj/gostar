@@ -57,13 +57,41 @@ func (e *HTMLElement) TextF(format string, args ...any) *HTMLElement {
 	return e.Text(fmt.Sprintf(format, args...))
 }
 
+func (e *HTMLElement) IfText(condition bool, text string) *HTMLElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
+}
+
+func (e *HTMLElement) IfTextF(condition bool, format string, args ...any) *HTMLElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
+}
+
 func (e *HTMLElement) Escaped(text string) *HTMLElement {
 	e.Descendants = append(e.Descendants, Escaped(text))
 	return e
 }
 
+func (e *HTMLElement) IfEscaped(condition bool, text string) *HTMLElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
+}
+
 func (e *HTMLElement) EscapedF(format string, args ...any) *HTMLElement {
 	return e.Escaped(fmt.Sprintf(format, args...))
+}
+
+func (e *HTMLElement) IfEscapedF(condition bool, format string, args ...any) *HTMLElement {
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *HTMLElement) CustomData(key, value string) *HTMLElement {
@@ -74,8 +102,22 @@ func (e *HTMLElement) CustomData(key, value string) *HTMLElement {
 	return e
 }
 
+func (e *HTMLElement) IfCustomData(condition bool, key, value string) *HTMLElement {
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
+}
+
 func (e *HTMLElement) CustomDataF(key, format string, args ...any) *HTMLElement {
 	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
+func (e *HTMLElement) IfCustomDataF(condition bool, key, format string, args ...any) *HTMLElement {
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *HTMLElement) CustomDataRemove(key string) *HTMLElement {
@@ -95,6 +137,13 @@ func (e *HTMLElement) ACCESSKEY(r rune) *HTMLElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("accesskey", string(r))
+	return e
+}
+
+func (e *HTMLElement) IfACCESSKEY(condition bool, r rune) *HTMLElement {
+	if condition {
+		e.ACCESSKEY(r)
+	}
 	return e
 }
 
@@ -180,12 +229,26 @@ func (e *HTMLElement) AUTOFOCUS() *HTMLElement {
 	return e
 }
 
+func (e *HTMLElement) IfAUTOFOCUS(condition bool) *HTMLElement {
+	if condition {
+		e.AUTOFOCUSSet(true)
+	}
+	return e
+}
+
 // Set the attribute autofocus to the value b explicitly.
 func (e *HTMLElement) AUTOFOCUSSet(b bool) *HTMLElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("autofocus", b)
+	return e
+}
+
+func (e *HTMLElement) IfSetAUTOFOCUS(condition bool, b bool) *HTMLElement {
+	if condition {
+		e.AUTOFOCUSSet(b)
+	}
 	return e
 }
 
@@ -213,6 +276,13 @@ func (e *HTMLElement) CLASS(s ...string) *HTMLElement {
 		e.DelimitedStrings.Set("class", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *HTMLElement) IfCLASS(condition bool, s ...string) *HTMLElement {
+	if condition {
+		e.CLASS(s...)
+	}
 	return e
 }
 
@@ -421,6 +491,13 @@ func (e *HTMLElement) EXPORTPARTS(s ...string) *HTMLElement {
 	return e
 }
 
+func (e *HTMLElement) IfEXPORTPARTS(condition bool, s ...string) *HTMLElement {
+	if condition {
+		e.EXPORTPARTS(s...)
+	}
+	return e
+}
+
 // Remove the attribute exportparts from the element.
 func (e *HTMLElement) EXPORTPARTSRemove(s ...string) *HTMLElement {
 	if e.DelimitedStrings == nil {
@@ -496,6 +573,13 @@ func (e *HTMLElement) ID(s string) *HTMLElement {
 	return e
 }
 
+func (e *HTMLElement) IfID(condition bool, s string) *HTMLElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
 // Remove the attribute id from the element.
 func (e *HTMLElement) IDRemove(s string) *HTMLElement {
 	if e.StringAttributes == nil {
@@ -522,12 +606,26 @@ func (e *HTMLElement) INERT() *HTMLElement {
 	return e
 }
 
+func (e *HTMLElement) IfINERT(condition bool) *HTMLElement {
+	if condition {
+		e.INERTSet(true)
+	}
+	return e
+}
+
 // Set the attribute inert to the value b explicitly.
 func (e *HTMLElement) INERTSet(b bool) *HTMLElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("inert", b)
+	return e
+}
+
+func (e *HTMLElement) IfSetINERT(condition bool, b bool) *HTMLElement {
+	if condition {
+		e.INERTSet(b)
+	}
 	return e
 }
 
@@ -623,6 +721,13 @@ func (e *HTMLElement) IS(s string) *HTMLElement {
 	return e
 }
 
+func (e *HTMLElement) IfIS(condition bool, s string) *HTMLElement {
+	if condition {
+		e.IS(s)
+	}
+	return e
+}
+
 // Remove the attribute is from the element.
 func (e *HTMLElement) ISRemove(s string) *HTMLElement {
 	if e.StringAttributes == nil {
@@ -653,6 +758,13 @@ func (e *HTMLElement) ITEMID(s string) *HTMLElement {
 	return e
 }
 
+func (e *HTMLElement) IfITEMID(condition bool, s string) *HTMLElement {
+	if condition {
+		e.ITEMID(s)
+	}
+	return e
+}
+
 // Remove the attribute itemid from the element.
 func (e *HTMLElement) ITEMIDRemove(s string) *HTMLElement {
 	if e.StringAttributes == nil {
@@ -678,6 +790,13 @@ func (e *HTMLElement) ITEMPROP(s string) *HTMLElement {
 	return e
 }
 
+func (e *HTMLElement) IfITEMPROP(condition bool, s string) *HTMLElement {
+	if condition {
+		e.ITEMPROP(s)
+	}
+	return e
+}
+
 // Remove the attribute itemprop from the element.
 func (e *HTMLElement) ITEMPROPRemove(s string) *HTMLElement {
 	if e.StringAttributes == nil {
@@ -697,6 +816,13 @@ func (e *HTMLElement) ITEMREF(s string) *HTMLElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("itemref", s)
+	return e
+}
+
+func (e *HTMLElement) IfITEMREF(condition bool, s string) *HTMLElement {
+	if condition {
+		e.ITEMREF(s)
+	}
 	return e
 }
 
@@ -722,12 +848,26 @@ func (e *HTMLElement) ITEMSCOPE() *HTMLElement {
 	return e
 }
 
+func (e *HTMLElement) IfITEMSCOPE(condition bool) *HTMLElement {
+	if condition {
+		e.ITEMSCOPESet(true)
+	}
+	return e
+}
+
 // Set the attribute itemscope to the value b explicitly.
 func (e *HTMLElement) ITEMSCOPESet(b bool) *HTMLElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("itemscope", b)
+	return e
+}
+
+func (e *HTMLElement) IfSetITEMSCOPE(condition bool, b bool) *HTMLElement {
+	if condition {
+		e.ITEMSCOPESet(b)
+	}
 	return e
 }
 
@@ -756,6 +896,13 @@ func (e *HTMLElement) ITEMTYPE(s string) *HTMLElement {
 	return e
 }
 
+func (e *HTMLElement) IfITEMTYPE(condition bool, s string) *HTMLElement {
+	if condition {
+		e.ITEMTYPE(s)
+	}
+	return e
+}
+
 // Remove the attribute itemtype from the element.
 func (e *HTMLElement) ITEMTYPERemove(s string) *HTMLElement {
 	if e.StringAttributes == nil {
@@ -779,6 +926,13 @@ func (e *HTMLElement) LANG(s string) *HTMLElement {
 	return e
 }
 
+func (e *HTMLElement) IfLANG(condition bool, s string) *HTMLElement {
+	if condition {
+		e.LANG(s)
+	}
+	return e
+}
+
 // Remove the attribute lang from the element.
 func (e *HTMLElement) LANGRemove(s string) *HTMLElement {
 	if e.StringAttributes == nil {
@@ -797,6 +951,13 @@ func (e *HTMLElement) NONCE(s string) *HTMLElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("nonce", s)
+	return e
+}
+
+func (e *HTMLElement) IfNONCE(condition bool, s string) *HTMLElement {
+	if condition {
+		e.NONCE(s)
+	}
 	return e
 }
 
@@ -823,6 +984,13 @@ func (e *HTMLElement) PART(s ...string) *HTMLElement {
 		e.DelimitedStrings.Set("part", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *HTMLElement) IfPART(condition bool, s ...string) *HTMLElement {
+	if condition {
+		e.PART(s...)
+	}
 	return e
 }
 
@@ -893,6 +1061,13 @@ func (e *HTMLElement) SLOT(s string) *HTMLElement {
 	return e
 }
 
+func (e *HTMLElement) IfSLOT(condition bool, s string) *HTMLElement {
+	if condition {
+		e.SLOT(s)
+	}
+	return e
+}
+
 // Remove the attribute slot from the element.
 func (e *HTMLElement) SLOTRemove(s string) *HTMLElement {
 	if e.StringAttributes == nil {
@@ -951,6 +1126,13 @@ func (e *HTMLElement) STYLEF(k string, format string, args ...any) *HTMLElement 
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+func (e *HTMLElement) IfSTYLE(condition bool, k string, v string) *HTMLElement {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
 func (e *HTMLElement) STYLE(k string, v string) *HTMLElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -961,6 +1143,13 @@ func (e *HTMLElement) STYLE(k string, v string) *HTMLElement {
 		e.KVStrings.Set("style", kv)
 	}
 	kv.Add(k, v)
+	return e
+}
+
+func (e *HTMLElement) IfSTYLEF(condition bool, k string, format string, args ...any) *HTMLElement {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
 	return e
 }
 
@@ -1001,6 +1190,13 @@ func (e *HTMLElement) STYLEPairs(pairs ...string) *HTMLElement {
 	return e
 }
 
+func (e *HTMLElement) IfSTYLEPairs(condition bool, pairs ...string) *HTMLElement {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
+	return e
+}
+
 // Remove the attribute style from the element.
 func (e *HTMLElement) STYLERemove(keys ...string) *HTMLElement {
 	if e.KVStrings == nil {
@@ -1035,6 +1231,13 @@ func (e *HTMLElement) TABINDEX(i int) *HTMLElement {
 		e.IntAttributes = treemap.New[string, int]()
 	}
 	e.IntAttributes.Set("tabindex", i)
+	return e
+}
+
+func (e *HTMLElement) IfTABINDEX(condition bool, i int) *HTMLElement {
+	if condition {
+		e.TABINDEX(i)
+	}
 	return e
 }
 
@@ -1073,6 +1276,13 @@ func (e *HTMLElement) TITLE(s string) *HTMLElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("title", s)
+	return e
+}
+
+func (e *HTMLElement) IfTITLE(condition bool, s string) *HTMLElement {
+	if condition {
+		e.TITLE(s)
+	}
 	return e
 }
 

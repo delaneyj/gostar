@@ -54,13 +54,41 @@ func (e *IMGElement) TextF(format string, args ...any) *IMGElement {
 	return e.Text(fmt.Sprintf(format, args...))
 }
 
+func (e *IMGElement) IfText(condition bool, text string) *IMGElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
+}
+
+func (e *IMGElement) IfTextF(condition bool, format string, args ...any) *IMGElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
+}
+
 func (e *IMGElement) Escaped(text string) *IMGElement {
 	e.Descendants = append(e.Descendants, Escaped(text))
 	return e
 }
 
+func (e *IMGElement) IfEscaped(condition bool, text string) *IMGElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
+}
+
 func (e *IMGElement) EscapedF(format string, args ...any) *IMGElement {
 	return e.Escaped(fmt.Sprintf(format, args...))
+}
+
+func (e *IMGElement) IfEscapedF(condition bool, format string, args ...any) *IMGElement {
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *IMGElement) CustomData(key, value string) *IMGElement {
@@ -71,8 +99,22 @@ func (e *IMGElement) CustomData(key, value string) *IMGElement {
 	return e
 }
 
+func (e *IMGElement) IfCustomData(condition bool, key, value string) *IMGElement {
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
+}
+
 func (e *IMGElement) CustomDataF(key, format string, args ...any) *IMGElement {
 	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
+func (e *IMGElement) IfCustomDataF(condition bool, key, format string, args ...any) *IMGElement {
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *IMGElement) CustomDataRemove(key string) *IMGElement {
@@ -89,6 +131,13 @@ func (e *IMGElement) ALT(s string) *IMGElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("alt", s)
+	return e
+}
+
+func (e *IMGElement) IfALT(condition bool, s string) *IMGElement {
+	if condition {
+		e.ALT(s)
+	}
 	return e
 }
 
@@ -141,6 +190,13 @@ func (e *IMGElement) HEIGHT(i int) *IMGElement {
 	return e
 }
 
+func (e *IMGElement) IfHEIGHT(condition bool, i int) *IMGElement {
+	if condition {
+		e.HEIGHT(i)
+	}
+	return e
+}
+
 // Remove the attribute height from the element.
 func (e *IMGElement) HEIGHTRemove(i int) *IMGElement {
 	if e.IntAttributes == nil {
@@ -156,12 +212,26 @@ func (e *IMGElement) ISMAP() *IMGElement {
 	return e
 }
 
+func (e *IMGElement) IfISMAP(condition bool) *IMGElement {
+	if condition {
+		e.ISMAPSet(true)
+	}
+	return e
+}
+
 // Set the attribute ismap to the value b explicitly.
 func (e *IMGElement) ISMAPSet(b bool) *IMGElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("ismap", b)
+	return e
+}
+
+func (e *IMGElement) IfSetISMAP(condition bool, b bool) *IMGElement {
+	if condition {
+		e.ISMAPSet(b)
+	}
 	return e
 }
 
@@ -210,6 +280,13 @@ func (e *IMGElement) LONGDESC(s string) *IMGElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("longdesc", s)
+	return e
+}
+
+func (e *IMGElement) IfLONGDESC(condition bool, s string) *IMGElement {
+	if condition {
+		e.LONGDESC(s)
+	}
 	return e
 }
 
@@ -276,6 +353,13 @@ func (e *IMGElement) SIZES(s string) *IMGElement {
 	return e
 }
 
+func (e *IMGElement) IfSIZES(condition bool, s string) *IMGElement {
+	if condition {
+		e.SIZES(s)
+	}
+	return e
+}
+
 // Remove the attribute sizes from the element.
 func (e *IMGElement) SIZESRemove(s string) *IMGElement {
 	if e.StringAttributes == nil {
@@ -291,6 +375,13 @@ func (e *IMGElement) SRC(s string) *IMGElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("src", s)
+	return e
+}
+
+func (e *IMGElement) IfSRC(condition bool, s string) *IMGElement {
+	if condition {
+		e.SRC(s)
+	}
 	return e
 }
 
@@ -313,6 +404,13 @@ func (e *IMGElement) SRCSET(s string) *IMGElement {
 	return e
 }
 
+func (e *IMGElement) IfSRCSET(condition bool, s string) *IMGElement {
+	if condition {
+		e.SRCSET(s)
+	}
+	return e
+}
+
 // Remove the attribute srcset from the element.
 func (e *IMGElement) SRCSETRemove(s string) *IMGElement {
 	if e.StringAttributes == nil {
@@ -328,6 +426,13 @@ func (e *IMGElement) USEMAP(s string) *IMGElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("usemap", s)
+	return e
+}
+
+func (e *IMGElement) IfUSEMAP(condition bool, s string) *IMGElement {
+	if condition {
+		e.USEMAP(s)
+	}
 	return e
 }
 
@@ -349,6 +454,13 @@ func (e *IMGElement) WIDTH(i int) *IMGElement {
 	return e
 }
 
+func (e *IMGElement) IfWIDTH(condition bool, i int) *IMGElement {
+	if condition {
+		e.WIDTH(i)
+	}
+	return e
+}
+
 // Remove the attribute width from the element.
 func (e *IMGElement) WIDTHRemove(i int) *IMGElement {
 	if e.IntAttributes == nil {
@@ -367,6 +479,13 @@ func (e *IMGElement) ACCESSKEY(r rune) *IMGElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("accesskey", string(r))
+	return e
+}
+
+func (e *IMGElement) IfACCESSKEY(condition bool, r rune) *IMGElement {
+	if condition {
+		e.ACCESSKEY(r)
+	}
 	return e
 }
 
@@ -452,12 +571,26 @@ func (e *IMGElement) AUTOFOCUS() *IMGElement {
 	return e
 }
 
+func (e *IMGElement) IfAUTOFOCUS(condition bool) *IMGElement {
+	if condition {
+		e.AUTOFOCUSSet(true)
+	}
+	return e
+}
+
 // Set the attribute autofocus to the value b explicitly.
 func (e *IMGElement) AUTOFOCUSSet(b bool) *IMGElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("autofocus", b)
+	return e
+}
+
+func (e *IMGElement) IfSetAUTOFOCUS(condition bool, b bool) *IMGElement {
+	if condition {
+		e.AUTOFOCUSSet(b)
+	}
 	return e
 }
 
@@ -485,6 +618,13 @@ func (e *IMGElement) CLASS(s ...string) *IMGElement {
 		e.DelimitedStrings.Set("class", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *IMGElement) IfCLASS(condition bool, s ...string) *IMGElement {
+	if condition {
+		e.CLASS(s...)
+	}
 	return e
 }
 
@@ -693,6 +833,13 @@ func (e *IMGElement) EXPORTPARTS(s ...string) *IMGElement {
 	return e
 }
 
+func (e *IMGElement) IfEXPORTPARTS(condition bool, s ...string) *IMGElement {
+	if condition {
+		e.EXPORTPARTS(s...)
+	}
+	return e
+}
+
 // Remove the attribute exportparts from the element.
 func (e *IMGElement) EXPORTPARTSRemove(s ...string) *IMGElement {
 	if e.DelimitedStrings == nil {
@@ -768,6 +915,13 @@ func (e *IMGElement) ID(s string) *IMGElement {
 	return e
 }
 
+func (e *IMGElement) IfID(condition bool, s string) *IMGElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
 // Remove the attribute id from the element.
 func (e *IMGElement) IDRemove(s string) *IMGElement {
 	if e.StringAttributes == nil {
@@ -794,12 +948,26 @@ func (e *IMGElement) INERT() *IMGElement {
 	return e
 }
 
+func (e *IMGElement) IfINERT(condition bool) *IMGElement {
+	if condition {
+		e.INERTSet(true)
+	}
+	return e
+}
+
 // Set the attribute inert to the value b explicitly.
 func (e *IMGElement) INERTSet(b bool) *IMGElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("inert", b)
+	return e
+}
+
+func (e *IMGElement) IfSetINERT(condition bool, b bool) *IMGElement {
+	if condition {
+		e.INERTSet(b)
+	}
 	return e
 }
 
@@ -895,6 +1063,13 @@ func (e *IMGElement) IS(s string) *IMGElement {
 	return e
 }
 
+func (e *IMGElement) IfIS(condition bool, s string) *IMGElement {
+	if condition {
+		e.IS(s)
+	}
+	return e
+}
+
 // Remove the attribute is from the element.
 func (e *IMGElement) ISRemove(s string) *IMGElement {
 	if e.StringAttributes == nil {
@@ -925,6 +1100,13 @@ func (e *IMGElement) ITEMID(s string) *IMGElement {
 	return e
 }
 
+func (e *IMGElement) IfITEMID(condition bool, s string) *IMGElement {
+	if condition {
+		e.ITEMID(s)
+	}
+	return e
+}
+
 // Remove the attribute itemid from the element.
 func (e *IMGElement) ITEMIDRemove(s string) *IMGElement {
 	if e.StringAttributes == nil {
@@ -950,6 +1132,13 @@ func (e *IMGElement) ITEMPROP(s string) *IMGElement {
 	return e
 }
 
+func (e *IMGElement) IfITEMPROP(condition bool, s string) *IMGElement {
+	if condition {
+		e.ITEMPROP(s)
+	}
+	return e
+}
+
 // Remove the attribute itemprop from the element.
 func (e *IMGElement) ITEMPROPRemove(s string) *IMGElement {
 	if e.StringAttributes == nil {
@@ -969,6 +1158,13 @@ func (e *IMGElement) ITEMREF(s string) *IMGElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("itemref", s)
+	return e
+}
+
+func (e *IMGElement) IfITEMREF(condition bool, s string) *IMGElement {
+	if condition {
+		e.ITEMREF(s)
+	}
 	return e
 }
 
@@ -994,12 +1190,26 @@ func (e *IMGElement) ITEMSCOPE() *IMGElement {
 	return e
 }
 
+func (e *IMGElement) IfITEMSCOPE(condition bool) *IMGElement {
+	if condition {
+		e.ITEMSCOPESet(true)
+	}
+	return e
+}
+
 // Set the attribute itemscope to the value b explicitly.
 func (e *IMGElement) ITEMSCOPESet(b bool) *IMGElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("itemscope", b)
+	return e
+}
+
+func (e *IMGElement) IfSetITEMSCOPE(condition bool, b bool) *IMGElement {
+	if condition {
+		e.ITEMSCOPESet(b)
+	}
 	return e
 }
 
@@ -1028,6 +1238,13 @@ func (e *IMGElement) ITEMTYPE(s string) *IMGElement {
 	return e
 }
 
+func (e *IMGElement) IfITEMTYPE(condition bool, s string) *IMGElement {
+	if condition {
+		e.ITEMTYPE(s)
+	}
+	return e
+}
+
 // Remove the attribute itemtype from the element.
 func (e *IMGElement) ITEMTYPERemove(s string) *IMGElement {
 	if e.StringAttributes == nil {
@@ -1051,6 +1268,13 @@ func (e *IMGElement) LANG(s string) *IMGElement {
 	return e
 }
 
+func (e *IMGElement) IfLANG(condition bool, s string) *IMGElement {
+	if condition {
+		e.LANG(s)
+	}
+	return e
+}
+
 // Remove the attribute lang from the element.
 func (e *IMGElement) LANGRemove(s string) *IMGElement {
 	if e.StringAttributes == nil {
@@ -1069,6 +1293,13 @@ func (e *IMGElement) NONCE(s string) *IMGElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("nonce", s)
+	return e
+}
+
+func (e *IMGElement) IfNONCE(condition bool, s string) *IMGElement {
+	if condition {
+		e.NONCE(s)
+	}
 	return e
 }
 
@@ -1095,6 +1326,13 @@ func (e *IMGElement) PART(s ...string) *IMGElement {
 		e.DelimitedStrings.Set("part", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *IMGElement) IfPART(condition bool, s ...string) *IMGElement {
+	if condition {
+		e.PART(s...)
+	}
 	return e
 }
 
@@ -1165,6 +1403,13 @@ func (e *IMGElement) SLOT(s string) *IMGElement {
 	return e
 }
 
+func (e *IMGElement) IfSLOT(condition bool, s string) *IMGElement {
+	if condition {
+		e.SLOT(s)
+	}
+	return e
+}
+
 // Remove the attribute slot from the element.
 func (e *IMGElement) SLOTRemove(s string) *IMGElement {
 	if e.StringAttributes == nil {
@@ -1223,6 +1468,13 @@ func (e *IMGElement) STYLEF(k string, format string, args ...any) *IMGElement {
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+func (e *IMGElement) IfSTYLE(condition bool, k string, v string) *IMGElement {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
 func (e *IMGElement) STYLE(k string, v string) *IMGElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -1233,6 +1485,13 @@ func (e *IMGElement) STYLE(k string, v string) *IMGElement {
 		e.KVStrings.Set("style", kv)
 	}
 	kv.Add(k, v)
+	return e
+}
+
+func (e *IMGElement) IfSTYLEF(condition bool, k string, format string, args ...any) *IMGElement {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
 	return e
 }
 
@@ -1273,6 +1532,13 @@ func (e *IMGElement) STYLEPairs(pairs ...string) *IMGElement {
 	return e
 }
 
+func (e *IMGElement) IfSTYLEPairs(condition bool, pairs ...string) *IMGElement {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
+	return e
+}
+
 // Remove the attribute style from the element.
 func (e *IMGElement) STYLERemove(keys ...string) *IMGElement {
 	if e.KVStrings == nil {
@@ -1307,6 +1573,13 @@ func (e *IMGElement) TABINDEX(i int) *IMGElement {
 		e.IntAttributes = treemap.New[string, int]()
 	}
 	e.IntAttributes.Set("tabindex", i)
+	return e
+}
+
+func (e *IMGElement) IfTABINDEX(condition bool, i int) *IMGElement {
+	if condition {
+		e.TABINDEX(i)
+	}
 	return e
 }
 
@@ -1345,6 +1618,13 @@ func (e *IMGElement) TITLE(s string) *IMGElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("title", s)
+	return e
+}
+
+func (e *IMGElement) IfTITLE(condition bool, s string) *IMGElement {
+	if condition {
+		e.TITLE(s)
+	}
 	return e
 }
 

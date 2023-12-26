@@ -57,13 +57,41 @@ func (e *AREAElement) TextF(format string, args ...any) *AREAElement {
 	return e.Text(fmt.Sprintf(format, args...))
 }
 
+func (e *AREAElement) IfText(condition bool, text string) *AREAElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
+}
+
+func (e *AREAElement) IfTextF(condition bool, format string, args ...any) *AREAElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
+}
+
 func (e *AREAElement) Escaped(text string) *AREAElement {
 	e.Descendants = append(e.Descendants, Escaped(text))
 	return e
 }
 
+func (e *AREAElement) IfEscaped(condition bool, text string) *AREAElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
+}
+
 func (e *AREAElement) EscapedF(format string, args ...any) *AREAElement {
 	return e.Escaped(fmt.Sprintf(format, args...))
+}
+
+func (e *AREAElement) IfEscapedF(condition bool, format string, args ...any) *AREAElement {
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *AREAElement) CustomData(key, value string) *AREAElement {
@@ -74,8 +102,22 @@ func (e *AREAElement) CustomData(key, value string) *AREAElement {
 	return e
 }
 
+func (e *AREAElement) IfCustomData(condition bool, key, value string) *AREAElement {
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
+}
+
 func (e *AREAElement) CustomDataF(key, format string, args ...any) *AREAElement {
 	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
+func (e *AREAElement) IfCustomDataF(condition bool, key, format string, args ...any) *AREAElement {
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *AREAElement) CustomDataRemove(key string) *AREAElement {
@@ -92,6 +134,13 @@ func (e *AREAElement) ALT(s string) *AREAElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("alt", s)
+	return e
+}
+
+func (e *AREAElement) IfALT(condition bool, s string) *AREAElement {
+	if condition {
+		e.ALT(s)
+	}
 	return e
 }
 
@@ -118,6 +167,13 @@ func (e *AREAElement) COORDS(s ...string) *AREAElement {
 	return e
 }
 
+func (e *AREAElement) IfCOORDS(condition bool, s ...string) *AREAElement {
+	if condition {
+		e.COORDS(s...)
+	}
+	return e
+}
+
 // Remove the attribute coords from the element.
 func (e *AREAElement) COORDSRemove(s ...string) *AREAElement {
 	if e.DelimitedStrings == nil {
@@ -141,6 +197,13 @@ func (e *AREAElement) DOWNLOAD(s string) *AREAElement {
 	return e
 }
 
+func (e *AREAElement) IfDOWNLOAD(condition bool, s string) *AREAElement {
+	if condition {
+		e.DOWNLOAD(s)
+	}
+	return e
+}
+
 // Remove the attribute download from the element.
 func (e *AREAElement) DOWNLOADRemove(s string) *AREAElement {
 	if e.StringAttributes == nil {
@@ -156,6 +219,13 @@ func (e *AREAElement) HREF(s string) *AREAElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("href", s)
+	return e
+}
+
+func (e *AREAElement) IfHREF(condition bool, s string) *AREAElement {
+	if condition {
+		e.HREF(s)
+	}
 	return e
 }
 
@@ -181,6 +251,13 @@ func (e *AREAElement) PING(s ...string) *AREAElement {
 		e.DelimitedStrings.Set("ping", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *AREAElement) IfPING(condition bool, s ...string) *AREAElement {
+	if condition {
+		e.PING(s...)
+	}
 	return e
 }
 
@@ -258,6 +335,13 @@ func (e *AREAElement) REL(s ...string) *AREAElement {
 		e.DelimitedStrings.Set("rel", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *AREAElement) IfREL(condition bool, s ...string) *AREAElement {
+	if condition {
+		e.REL(s...)
+	}
 	return e
 }
 
@@ -358,6 +442,13 @@ func (e *AREAElement) ACCESSKEY(r rune) *AREAElement {
 	return e
 }
 
+func (e *AREAElement) IfACCESSKEY(condition bool, r rune) *AREAElement {
+	if condition {
+		e.ACCESSKEY(r)
+	}
+	return e
+}
+
 // Remove the attribute accesskey from the element.
 func (e *AREAElement) ACCESSKEYRemove() *AREAElement {
 	if e.StringAttributes == nil {
@@ -440,12 +531,26 @@ func (e *AREAElement) AUTOFOCUS() *AREAElement {
 	return e
 }
 
+func (e *AREAElement) IfAUTOFOCUS(condition bool) *AREAElement {
+	if condition {
+		e.AUTOFOCUSSet(true)
+	}
+	return e
+}
+
 // Set the attribute autofocus to the value b explicitly.
 func (e *AREAElement) AUTOFOCUSSet(b bool) *AREAElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("autofocus", b)
+	return e
+}
+
+func (e *AREAElement) IfSetAUTOFOCUS(condition bool, b bool) *AREAElement {
+	if condition {
+		e.AUTOFOCUSSet(b)
+	}
 	return e
 }
 
@@ -473,6 +578,13 @@ func (e *AREAElement) CLASS(s ...string) *AREAElement {
 		e.DelimitedStrings.Set("class", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *AREAElement) IfCLASS(condition bool, s ...string) *AREAElement {
+	if condition {
+		e.CLASS(s...)
+	}
 	return e
 }
 
@@ -681,6 +793,13 @@ func (e *AREAElement) EXPORTPARTS(s ...string) *AREAElement {
 	return e
 }
 
+func (e *AREAElement) IfEXPORTPARTS(condition bool, s ...string) *AREAElement {
+	if condition {
+		e.EXPORTPARTS(s...)
+	}
+	return e
+}
+
 // Remove the attribute exportparts from the element.
 func (e *AREAElement) EXPORTPARTSRemove(s ...string) *AREAElement {
 	if e.DelimitedStrings == nil {
@@ -756,6 +875,13 @@ func (e *AREAElement) ID(s string) *AREAElement {
 	return e
 }
 
+func (e *AREAElement) IfID(condition bool, s string) *AREAElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
 // Remove the attribute id from the element.
 func (e *AREAElement) IDRemove(s string) *AREAElement {
 	if e.StringAttributes == nil {
@@ -782,12 +908,26 @@ func (e *AREAElement) INERT() *AREAElement {
 	return e
 }
 
+func (e *AREAElement) IfINERT(condition bool) *AREAElement {
+	if condition {
+		e.INERTSet(true)
+	}
+	return e
+}
+
 // Set the attribute inert to the value b explicitly.
 func (e *AREAElement) INERTSet(b bool) *AREAElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("inert", b)
+	return e
+}
+
+func (e *AREAElement) IfSetINERT(condition bool, b bool) *AREAElement {
+	if condition {
+		e.INERTSet(b)
+	}
 	return e
 }
 
@@ -883,6 +1023,13 @@ func (e *AREAElement) IS(s string) *AREAElement {
 	return e
 }
 
+func (e *AREAElement) IfIS(condition bool, s string) *AREAElement {
+	if condition {
+		e.IS(s)
+	}
+	return e
+}
+
 // Remove the attribute is from the element.
 func (e *AREAElement) ISRemove(s string) *AREAElement {
 	if e.StringAttributes == nil {
@@ -913,6 +1060,13 @@ func (e *AREAElement) ITEMID(s string) *AREAElement {
 	return e
 }
 
+func (e *AREAElement) IfITEMID(condition bool, s string) *AREAElement {
+	if condition {
+		e.ITEMID(s)
+	}
+	return e
+}
+
 // Remove the attribute itemid from the element.
 func (e *AREAElement) ITEMIDRemove(s string) *AREAElement {
 	if e.StringAttributes == nil {
@@ -938,6 +1092,13 @@ func (e *AREAElement) ITEMPROP(s string) *AREAElement {
 	return e
 }
 
+func (e *AREAElement) IfITEMPROP(condition bool, s string) *AREAElement {
+	if condition {
+		e.ITEMPROP(s)
+	}
+	return e
+}
+
 // Remove the attribute itemprop from the element.
 func (e *AREAElement) ITEMPROPRemove(s string) *AREAElement {
 	if e.StringAttributes == nil {
@@ -957,6 +1118,13 @@ func (e *AREAElement) ITEMREF(s string) *AREAElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("itemref", s)
+	return e
+}
+
+func (e *AREAElement) IfITEMREF(condition bool, s string) *AREAElement {
+	if condition {
+		e.ITEMREF(s)
+	}
 	return e
 }
 
@@ -982,12 +1150,26 @@ func (e *AREAElement) ITEMSCOPE() *AREAElement {
 	return e
 }
 
+func (e *AREAElement) IfITEMSCOPE(condition bool) *AREAElement {
+	if condition {
+		e.ITEMSCOPESet(true)
+	}
+	return e
+}
+
 // Set the attribute itemscope to the value b explicitly.
 func (e *AREAElement) ITEMSCOPESet(b bool) *AREAElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("itemscope", b)
+	return e
+}
+
+func (e *AREAElement) IfSetITEMSCOPE(condition bool, b bool) *AREAElement {
+	if condition {
+		e.ITEMSCOPESet(b)
+	}
 	return e
 }
 
@@ -1016,6 +1198,13 @@ func (e *AREAElement) ITEMTYPE(s string) *AREAElement {
 	return e
 }
 
+func (e *AREAElement) IfITEMTYPE(condition bool, s string) *AREAElement {
+	if condition {
+		e.ITEMTYPE(s)
+	}
+	return e
+}
+
 // Remove the attribute itemtype from the element.
 func (e *AREAElement) ITEMTYPERemove(s string) *AREAElement {
 	if e.StringAttributes == nil {
@@ -1039,6 +1228,13 @@ func (e *AREAElement) LANG(s string) *AREAElement {
 	return e
 }
 
+func (e *AREAElement) IfLANG(condition bool, s string) *AREAElement {
+	if condition {
+		e.LANG(s)
+	}
+	return e
+}
+
 // Remove the attribute lang from the element.
 func (e *AREAElement) LANGRemove(s string) *AREAElement {
 	if e.StringAttributes == nil {
@@ -1057,6 +1253,13 @@ func (e *AREAElement) NONCE(s string) *AREAElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("nonce", s)
+	return e
+}
+
+func (e *AREAElement) IfNONCE(condition bool, s string) *AREAElement {
+	if condition {
+		e.NONCE(s)
+	}
 	return e
 }
 
@@ -1083,6 +1286,13 @@ func (e *AREAElement) PART(s ...string) *AREAElement {
 		e.DelimitedStrings.Set("part", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *AREAElement) IfPART(condition bool, s ...string) *AREAElement {
+	if condition {
+		e.PART(s...)
+	}
 	return e
 }
 
@@ -1153,6 +1363,13 @@ func (e *AREAElement) SLOT(s string) *AREAElement {
 	return e
 }
 
+func (e *AREAElement) IfSLOT(condition bool, s string) *AREAElement {
+	if condition {
+		e.SLOT(s)
+	}
+	return e
+}
+
 // Remove the attribute slot from the element.
 func (e *AREAElement) SLOTRemove(s string) *AREAElement {
 	if e.StringAttributes == nil {
@@ -1211,6 +1428,13 @@ func (e *AREAElement) STYLEF(k string, format string, args ...any) *AREAElement 
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+func (e *AREAElement) IfSTYLE(condition bool, k string, v string) *AREAElement {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
 func (e *AREAElement) STYLE(k string, v string) *AREAElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -1221,6 +1445,13 @@ func (e *AREAElement) STYLE(k string, v string) *AREAElement {
 		e.KVStrings.Set("style", kv)
 	}
 	kv.Add(k, v)
+	return e
+}
+
+func (e *AREAElement) IfSTYLEF(condition bool, k string, format string, args ...any) *AREAElement {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
 	return e
 }
 
@@ -1261,6 +1492,13 @@ func (e *AREAElement) STYLEPairs(pairs ...string) *AREAElement {
 	return e
 }
 
+func (e *AREAElement) IfSTYLEPairs(condition bool, pairs ...string) *AREAElement {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
+	return e
+}
+
 // Remove the attribute style from the element.
 func (e *AREAElement) STYLERemove(keys ...string) *AREAElement {
 	if e.KVStrings == nil {
@@ -1295,6 +1533,13 @@ func (e *AREAElement) TABINDEX(i int) *AREAElement {
 		e.IntAttributes = treemap.New[string, int]()
 	}
 	e.IntAttributes.Set("tabindex", i)
+	return e
+}
+
+func (e *AREAElement) IfTABINDEX(condition bool, i int) *AREAElement {
+	if condition {
+		e.TABINDEX(i)
+	}
 	return e
 }
 
@@ -1333,6 +1578,13 @@ func (e *AREAElement) TITLE(s string) *AREAElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("title", s)
+	return e
+}
+
+func (e *AREAElement) IfTITLE(condition bool, s string) *AREAElement {
+	if condition {
+		e.TITLE(s)
+	}
 	return e
 }
 

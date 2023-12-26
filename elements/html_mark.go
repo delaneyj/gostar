@@ -57,13 +57,41 @@ func (e *MARKElement) TextF(format string, args ...any) *MARKElement {
 	return e.Text(fmt.Sprintf(format, args...))
 }
 
+func (e *MARKElement) IfText(condition bool, text string) *MARKElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
+}
+
+func (e *MARKElement) IfTextF(condition bool, format string, args ...any) *MARKElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
+}
+
 func (e *MARKElement) Escaped(text string) *MARKElement {
 	e.Descendants = append(e.Descendants, Escaped(text))
 	return e
 }
 
+func (e *MARKElement) IfEscaped(condition bool, text string) *MARKElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
+}
+
 func (e *MARKElement) EscapedF(format string, args ...any) *MARKElement {
 	return e.Escaped(fmt.Sprintf(format, args...))
+}
+
+func (e *MARKElement) IfEscapedF(condition bool, format string, args ...any) *MARKElement {
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *MARKElement) CustomData(key, value string) *MARKElement {
@@ -74,8 +102,22 @@ func (e *MARKElement) CustomData(key, value string) *MARKElement {
 	return e
 }
 
+func (e *MARKElement) IfCustomData(condition bool, key, value string) *MARKElement {
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
+}
+
 func (e *MARKElement) CustomDataF(key, format string, args ...any) *MARKElement {
 	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
+func (e *MARKElement) IfCustomDataF(condition bool, key, format string, args ...any) *MARKElement {
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *MARKElement) CustomDataRemove(key string) *MARKElement {
@@ -95,6 +137,13 @@ func (e *MARKElement) ACCESSKEY(r rune) *MARKElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("accesskey", string(r))
+	return e
+}
+
+func (e *MARKElement) IfACCESSKEY(condition bool, r rune) *MARKElement {
+	if condition {
+		e.ACCESSKEY(r)
+	}
 	return e
 }
 
@@ -180,12 +229,26 @@ func (e *MARKElement) AUTOFOCUS() *MARKElement {
 	return e
 }
 
+func (e *MARKElement) IfAUTOFOCUS(condition bool) *MARKElement {
+	if condition {
+		e.AUTOFOCUSSet(true)
+	}
+	return e
+}
+
 // Set the attribute autofocus to the value b explicitly.
 func (e *MARKElement) AUTOFOCUSSet(b bool) *MARKElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("autofocus", b)
+	return e
+}
+
+func (e *MARKElement) IfSetAUTOFOCUS(condition bool, b bool) *MARKElement {
+	if condition {
+		e.AUTOFOCUSSet(b)
+	}
 	return e
 }
 
@@ -213,6 +276,13 @@ func (e *MARKElement) CLASS(s ...string) *MARKElement {
 		e.DelimitedStrings.Set("class", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *MARKElement) IfCLASS(condition bool, s ...string) *MARKElement {
+	if condition {
+		e.CLASS(s...)
+	}
 	return e
 }
 
@@ -421,6 +491,13 @@ func (e *MARKElement) EXPORTPARTS(s ...string) *MARKElement {
 	return e
 }
 
+func (e *MARKElement) IfEXPORTPARTS(condition bool, s ...string) *MARKElement {
+	if condition {
+		e.EXPORTPARTS(s...)
+	}
+	return e
+}
+
 // Remove the attribute exportparts from the element.
 func (e *MARKElement) EXPORTPARTSRemove(s ...string) *MARKElement {
 	if e.DelimitedStrings == nil {
@@ -496,6 +573,13 @@ func (e *MARKElement) ID(s string) *MARKElement {
 	return e
 }
 
+func (e *MARKElement) IfID(condition bool, s string) *MARKElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
 // Remove the attribute id from the element.
 func (e *MARKElement) IDRemove(s string) *MARKElement {
 	if e.StringAttributes == nil {
@@ -522,12 +606,26 @@ func (e *MARKElement) INERT() *MARKElement {
 	return e
 }
 
+func (e *MARKElement) IfINERT(condition bool) *MARKElement {
+	if condition {
+		e.INERTSet(true)
+	}
+	return e
+}
+
 // Set the attribute inert to the value b explicitly.
 func (e *MARKElement) INERTSet(b bool) *MARKElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("inert", b)
+	return e
+}
+
+func (e *MARKElement) IfSetINERT(condition bool, b bool) *MARKElement {
+	if condition {
+		e.INERTSet(b)
+	}
 	return e
 }
 
@@ -623,6 +721,13 @@ func (e *MARKElement) IS(s string) *MARKElement {
 	return e
 }
 
+func (e *MARKElement) IfIS(condition bool, s string) *MARKElement {
+	if condition {
+		e.IS(s)
+	}
+	return e
+}
+
 // Remove the attribute is from the element.
 func (e *MARKElement) ISRemove(s string) *MARKElement {
 	if e.StringAttributes == nil {
@@ -653,6 +758,13 @@ func (e *MARKElement) ITEMID(s string) *MARKElement {
 	return e
 }
 
+func (e *MARKElement) IfITEMID(condition bool, s string) *MARKElement {
+	if condition {
+		e.ITEMID(s)
+	}
+	return e
+}
+
 // Remove the attribute itemid from the element.
 func (e *MARKElement) ITEMIDRemove(s string) *MARKElement {
 	if e.StringAttributes == nil {
@@ -678,6 +790,13 @@ func (e *MARKElement) ITEMPROP(s string) *MARKElement {
 	return e
 }
 
+func (e *MARKElement) IfITEMPROP(condition bool, s string) *MARKElement {
+	if condition {
+		e.ITEMPROP(s)
+	}
+	return e
+}
+
 // Remove the attribute itemprop from the element.
 func (e *MARKElement) ITEMPROPRemove(s string) *MARKElement {
 	if e.StringAttributes == nil {
@@ -697,6 +816,13 @@ func (e *MARKElement) ITEMREF(s string) *MARKElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("itemref", s)
+	return e
+}
+
+func (e *MARKElement) IfITEMREF(condition bool, s string) *MARKElement {
+	if condition {
+		e.ITEMREF(s)
+	}
 	return e
 }
 
@@ -722,12 +848,26 @@ func (e *MARKElement) ITEMSCOPE() *MARKElement {
 	return e
 }
 
+func (e *MARKElement) IfITEMSCOPE(condition bool) *MARKElement {
+	if condition {
+		e.ITEMSCOPESet(true)
+	}
+	return e
+}
+
 // Set the attribute itemscope to the value b explicitly.
 func (e *MARKElement) ITEMSCOPESet(b bool) *MARKElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("itemscope", b)
+	return e
+}
+
+func (e *MARKElement) IfSetITEMSCOPE(condition bool, b bool) *MARKElement {
+	if condition {
+		e.ITEMSCOPESet(b)
+	}
 	return e
 }
 
@@ -756,6 +896,13 @@ func (e *MARKElement) ITEMTYPE(s string) *MARKElement {
 	return e
 }
 
+func (e *MARKElement) IfITEMTYPE(condition bool, s string) *MARKElement {
+	if condition {
+		e.ITEMTYPE(s)
+	}
+	return e
+}
+
 // Remove the attribute itemtype from the element.
 func (e *MARKElement) ITEMTYPERemove(s string) *MARKElement {
 	if e.StringAttributes == nil {
@@ -779,6 +926,13 @@ func (e *MARKElement) LANG(s string) *MARKElement {
 	return e
 }
 
+func (e *MARKElement) IfLANG(condition bool, s string) *MARKElement {
+	if condition {
+		e.LANG(s)
+	}
+	return e
+}
+
 // Remove the attribute lang from the element.
 func (e *MARKElement) LANGRemove(s string) *MARKElement {
 	if e.StringAttributes == nil {
@@ -797,6 +951,13 @@ func (e *MARKElement) NONCE(s string) *MARKElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("nonce", s)
+	return e
+}
+
+func (e *MARKElement) IfNONCE(condition bool, s string) *MARKElement {
+	if condition {
+		e.NONCE(s)
+	}
 	return e
 }
 
@@ -823,6 +984,13 @@ func (e *MARKElement) PART(s ...string) *MARKElement {
 		e.DelimitedStrings.Set("part", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *MARKElement) IfPART(condition bool, s ...string) *MARKElement {
+	if condition {
+		e.PART(s...)
+	}
 	return e
 }
 
@@ -893,6 +1061,13 @@ func (e *MARKElement) SLOT(s string) *MARKElement {
 	return e
 }
 
+func (e *MARKElement) IfSLOT(condition bool, s string) *MARKElement {
+	if condition {
+		e.SLOT(s)
+	}
+	return e
+}
+
 // Remove the attribute slot from the element.
 func (e *MARKElement) SLOTRemove(s string) *MARKElement {
 	if e.StringAttributes == nil {
@@ -951,6 +1126,13 @@ func (e *MARKElement) STYLEF(k string, format string, args ...any) *MARKElement 
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+func (e *MARKElement) IfSTYLE(condition bool, k string, v string) *MARKElement {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
 func (e *MARKElement) STYLE(k string, v string) *MARKElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -961,6 +1143,13 @@ func (e *MARKElement) STYLE(k string, v string) *MARKElement {
 		e.KVStrings.Set("style", kv)
 	}
 	kv.Add(k, v)
+	return e
+}
+
+func (e *MARKElement) IfSTYLEF(condition bool, k string, format string, args ...any) *MARKElement {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
 	return e
 }
 
@@ -1001,6 +1190,13 @@ func (e *MARKElement) STYLEPairs(pairs ...string) *MARKElement {
 	return e
 }
 
+func (e *MARKElement) IfSTYLEPairs(condition bool, pairs ...string) *MARKElement {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
+	return e
+}
+
 // Remove the attribute style from the element.
 func (e *MARKElement) STYLERemove(keys ...string) *MARKElement {
 	if e.KVStrings == nil {
@@ -1035,6 +1231,13 @@ func (e *MARKElement) TABINDEX(i int) *MARKElement {
 		e.IntAttributes = treemap.New[string, int]()
 	}
 	e.IntAttributes.Set("tabindex", i)
+	return e
+}
+
+func (e *MARKElement) IfTABINDEX(condition bool, i int) *MARKElement {
+	if condition {
+		e.TABINDEX(i)
+	}
 	return e
 }
 
@@ -1073,6 +1276,13 @@ func (e *MARKElement) TITLE(s string) *MARKElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("title", s)
+	return e
+}
+
+func (e *MARKElement) IfTITLE(condition bool, s string) *MARKElement {
+	if condition {
+		e.TITLE(s)
+	}
 	return e
 }
 

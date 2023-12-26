@@ -55,13 +55,41 @@ func (e *PElement) TextF(format string, args ...any) *PElement {
 	return e.Text(fmt.Sprintf(format, args...))
 }
 
+func (e *PElement) IfText(condition bool, text string) *PElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
+}
+
+func (e *PElement) IfTextF(condition bool, format string, args ...any) *PElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
+}
+
 func (e *PElement) Escaped(text string) *PElement {
 	e.Descendants = append(e.Descendants, Escaped(text))
 	return e
 }
 
+func (e *PElement) IfEscaped(condition bool, text string) *PElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
+}
+
 func (e *PElement) EscapedF(format string, args ...any) *PElement {
 	return e.Escaped(fmt.Sprintf(format, args...))
+}
+
+func (e *PElement) IfEscapedF(condition bool, format string, args ...any) *PElement {
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *PElement) CustomData(key, value string) *PElement {
@@ -72,8 +100,22 @@ func (e *PElement) CustomData(key, value string) *PElement {
 	return e
 }
 
+func (e *PElement) IfCustomData(condition bool, key, value string) *PElement {
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
+}
+
 func (e *PElement) CustomDataF(key, format string, args ...any) *PElement {
 	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
+func (e *PElement) IfCustomDataF(condition bool, key, format string, args ...any) *PElement {
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *PElement) CustomDataRemove(key string) *PElement {
@@ -93,6 +135,13 @@ func (e *PElement) ACCESSKEY(r rune) *PElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("accesskey", string(r))
+	return e
+}
+
+func (e *PElement) IfACCESSKEY(condition bool, r rune) *PElement {
+	if condition {
+		e.ACCESSKEY(r)
+	}
 	return e
 }
 
@@ -178,12 +227,26 @@ func (e *PElement) AUTOFOCUS() *PElement {
 	return e
 }
 
+func (e *PElement) IfAUTOFOCUS(condition bool) *PElement {
+	if condition {
+		e.AUTOFOCUSSet(true)
+	}
+	return e
+}
+
 // Set the attribute autofocus to the value b explicitly.
 func (e *PElement) AUTOFOCUSSet(b bool) *PElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("autofocus", b)
+	return e
+}
+
+func (e *PElement) IfSetAUTOFOCUS(condition bool, b bool) *PElement {
+	if condition {
+		e.AUTOFOCUSSet(b)
+	}
 	return e
 }
 
@@ -211,6 +274,13 @@ func (e *PElement) CLASS(s ...string) *PElement {
 		e.DelimitedStrings.Set("class", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *PElement) IfCLASS(condition bool, s ...string) *PElement {
+	if condition {
+		e.CLASS(s...)
+	}
 	return e
 }
 
@@ -419,6 +489,13 @@ func (e *PElement) EXPORTPARTS(s ...string) *PElement {
 	return e
 }
 
+func (e *PElement) IfEXPORTPARTS(condition bool, s ...string) *PElement {
+	if condition {
+		e.EXPORTPARTS(s...)
+	}
+	return e
+}
+
 // Remove the attribute exportparts from the element.
 func (e *PElement) EXPORTPARTSRemove(s ...string) *PElement {
 	if e.DelimitedStrings == nil {
@@ -494,6 +571,13 @@ func (e *PElement) ID(s string) *PElement {
 	return e
 }
 
+func (e *PElement) IfID(condition bool, s string) *PElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
 // Remove the attribute id from the element.
 func (e *PElement) IDRemove(s string) *PElement {
 	if e.StringAttributes == nil {
@@ -520,12 +604,26 @@ func (e *PElement) INERT() *PElement {
 	return e
 }
 
+func (e *PElement) IfINERT(condition bool) *PElement {
+	if condition {
+		e.INERTSet(true)
+	}
+	return e
+}
+
 // Set the attribute inert to the value b explicitly.
 func (e *PElement) INERTSet(b bool) *PElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("inert", b)
+	return e
+}
+
+func (e *PElement) IfSetINERT(condition bool, b bool) *PElement {
+	if condition {
+		e.INERTSet(b)
+	}
 	return e
 }
 
@@ -621,6 +719,13 @@ func (e *PElement) IS(s string) *PElement {
 	return e
 }
 
+func (e *PElement) IfIS(condition bool, s string) *PElement {
+	if condition {
+		e.IS(s)
+	}
+	return e
+}
+
 // Remove the attribute is from the element.
 func (e *PElement) ISRemove(s string) *PElement {
 	if e.StringAttributes == nil {
@@ -651,6 +756,13 @@ func (e *PElement) ITEMID(s string) *PElement {
 	return e
 }
 
+func (e *PElement) IfITEMID(condition bool, s string) *PElement {
+	if condition {
+		e.ITEMID(s)
+	}
+	return e
+}
+
 // Remove the attribute itemid from the element.
 func (e *PElement) ITEMIDRemove(s string) *PElement {
 	if e.StringAttributes == nil {
@@ -676,6 +788,13 @@ func (e *PElement) ITEMPROP(s string) *PElement {
 	return e
 }
 
+func (e *PElement) IfITEMPROP(condition bool, s string) *PElement {
+	if condition {
+		e.ITEMPROP(s)
+	}
+	return e
+}
+
 // Remove the attribute itemprop from the element.
 func (e *PElement) ITEMPROPRemove(s string) *PElement {
 	if e.StringAttributes == nil {
@@ -695,6 +814,13 @@ func (e *PElement) ITEMREF(s string) *PElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("itemref", s)
+	return e
+}
+
+func (e *PElement) IfITEMREF(condition bool, s string) *PElement {
+	if condition {
+		e.ITEMREF(s)
+	}
 	return e
 }
 
@@ -720,12 +846,26 @@ func (e *PElement) ITEMSCOPE() *PElement {
 	return e
 }
 
+func (e *PElement) IfITEMSCOPE(condition bool) *PElement {
+	if condition {
+		e.ITEMSCOPESet(true)
+	}
+	return e
+}
+
 // Set the attribute itemscope to the value b explicitly.
 func (e *PElement) ITEMSCOPESet(b bool) *PElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("itemscope", b)
+	return e
+}
+
+func (e *PElement) IfSetITEMSCOPE(condition bool, b bool) *PElement {
+	if condition {
+		e.ITEMSCOPESet(b)
+	}
 	return e
 }
 
@@ -754,6 +894,13 @@ func (e *PElement) ITEMTYPE(s string) *PElement {
 	return e
 }
 
+func (e *PElement) IfITEMTYPE(condition bool, s string) *PElement {
+	if condition {
+		e.ITEMTYPE(s)
+	}
+	return e
+}
+
 // Remove the attribute itemtype from the element.
 func (e *PElement) ITEMTYPERemove(s string) *PElement {
 	if e.StringAttributes == nil {
@@ -777,6 +924,13 @@ func (e *PElement) LANG(s string) *PElement {
 	return e
 }
 
+func (e *PElement) IfLANG(condition bool, s string) *PElement {
+	if condition {
+		e.LANG(s)
+	}
+	return e
+}
+
 // Remove the attribute lang from the element.
 func (e *PElement) LANGRemove(s string) *PElement {
 	if e.StringAttributes == nil {
@@ -795,6 +949,13 @@ func (e *PElement) NONCE(s string) *PElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("nonce", s)
+	return e
+}
+
+func (e *PElement) IfNONCE(condition bool, s string) *PElement {
+	if condition {
+		e.NONCE(s)
+	}
 	return e
 }
 
@@ -821,6 +982,13 @@ func (e *PElement) PART(s ...string) *PElement {
 		e.DelimitedStrings.Set("part", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *PElement) IfPART(condition bool, s ...string) *PElement {
+	if condition {
+		e.PART(s...)
+	}
 	return e
 }
 
@@ -891,6 +1059,13 @@ func (e *PElement) SLOT(s string) *PElement {
 	return e
 }
 
+func (e *PElement) IfSLOT(condition bool, s string) *PElement {
+	if condition {
+		e.SLOT(s)
+	}
+	return e
+}
+
 // Remove the attribute slot from the element.
 func (e *PElement) SLOTRemove(s string) *PElement {
 	if e.StringAttributes == nil {
@@ -949,6 +1124,13 @@ func (e *PElement) STYLEF(k string, format string, args ...any) *PElement {
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+func (e *PElement) IfSTYLE(condition bool, k string, v string) *PElement {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
 func (e *PElement) STYLE(k string, v string) *PElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -959,6 +1141,13 @@ func (e *PElement) STYLE(k string, v string) *PElement {
 		e.KVStrings.Set("style", kv)
 	}
 	kv.Add(k, v)
+	return e
+}
+
+func (e *PElement) IfSTYLEF(condition bool, k string, format string, args ...any) *PElement {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
 	return e
 }
 
@@ -999,6 +1188,13 @@ func (e *PElement) STYLEPairs(pairs ...string) *PElement {
 	return e
 }
 
+func (e *PElement) IfSTYLEPairs(condition bool, pairs ...string) *PElement {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
+	return e
+}
+
 // Remove the attribute style from the element.
 func (e *PElement) STYLERemove(keys ...string) *PElement {
 	if e.KVStrings == nil {
@@ -1033,6 +1229,13 @@ func (e *PElement) TABINDEX(i int) *PElement {
 		e.IntAttributes = treemap.New[string, int]()
 	}
 	e.IntAttributes.Set("tabindex", i)
+	return e
+}
+
+func (e *PElement) IfTABINDEX(condition bool, i int) *PElement {
+	if condition {
+		e.TABINDEX(i)
+	}
 	return e
 }
 
@@ -1071,6 +1274,13 @@ func (e *PElement) TITLE(s string) *PElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("title", s)
+	return e
+}
+
+func (e *PElement) IfTITLE(condition bool, s string) *PElement {
+	if condition {
+		e.TITLE(s)
+	}
 	return e
 }
 

@@ -56,13 +56,41 @@ func (e *THEADElement) TextF(format string, args ...any) *THEADElement {
 	return e.Text(fmt.Sprintf(format, args...))
 }
 
+func (e *THEADElement) IfText(condition bool, text string) *THEADElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
+}
+
+func (e *THEADElement) IfTextF(condition bool, format string, args ...any) *THEADElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
+}
+
 func (e *THEADElement) Escaped(text string) *THEADElement {
 	e.Descendants = append(e.Descendants, Escaped(text))
 	return e
 }
 
+func (e *THEADElement) IfEscaped(condition bool, text string) *THEADElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
+}
+
 func (e *THEADElement) EscapedF(format string, args ...any) *THEADElement {
 	return e.Escaped(fmt.Sprintf(format, args...))
+}
+
+func (e *THEADElement) IfEscapedF(condition bool, format string, args ...any) *THEADElement {
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *THEADElement) CustomData(key, value string) *THEADElement {
@@ -73,8 +101,22 @@ func (e *THEADElement) CustomData(key, value string) *THEADElement {
 	return e
 }
 
+func (e *THEADElement) IfCustomData(condition bool, key, value string) *THEADElement {
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
+}
+
 func (e *THEADElement) CustomDataF(key, format string, args ...any) *THEADElement {
 	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
+func (e *THEADElement) IfCustomDataF(condition bool, key, format string, args ...any) *THEADElement {
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *THEADElement) CustomDataRemove(key string) *THEADElement {
@@ -94,6 +136,13 @@ func (e *THEADElement) ACCESSKEY(r rune) *THEADElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("accesskey", string(r))
+	return e
+}
+
+func (e *THEADElement) IfACCESSKEY(condition bool, r rune) *THEADElement {
+	if condition {
+		e.ACCESSKEY(r)
+	}
 	return e
 }
 
@@ -179,12 +228,26 @@ func (e *THEADElement) AUTOFOCUS() *THEADElement {
 	return e
 }
 
+func (e *THEADElement) IfAUTOFOCUS(condition bool) *THEADElement {
+	if condition {
+		e.AUTOFOCUSSet(true)
+	}
+	return e
+}
+
 // Set the attribute autofocus to the value b explicitly.
 func (e *THEADElement) AUTOFOCUSSet(b bool) *THEADElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("autofocus", b)
+	return e
+}
+
+func (e *THEADElement) IfSetAUTOFOCUS(condition bool, b bool) *THEADElement {
+	if condition {
+		e.AUTOFOCUSSet(b)
+	}
 	return e
 }
 
@@ -212,6 +275,13 @@ func (e *THEADElement) CLASS(s ...string) *THEADElement {
 		e.DelimitedStrings.Set("class", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *THEADElement) IfCLASS(condition bool, s ...string) *THEADElement {
+	if condition {
+		e.CLASS(s...)
+	}
 	return e
 }
 
@@ -420,6 +490,13 @@ func (e *THEADElement) EXPORTPARTS(s ...string) *THEADElement {
 	return e
 }
 
+func (e *THEADElement) IfEXPORTPARTS(condition bool, s ...string) *THEADElement {
+	if condition {
+		e.EXPORTPARTS(s...)
+	}
+	return e
+}
+
 // Remove the attribute exportparts from the element.
 func (e *THEADElement) EXPORTPARTSRemove(s ...string) *THEADElement {
 	if e.DelimitedStrings == nil {
@@ -495,6 +572,13 @@ func (e *THEADElement) ID(s string) *THEADElement {
 	return e
 }
 
+func (e *THEADElement) IfID(condition bool, s string) *THEADElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
 // Remove the attribute id from the element.
 func (e *THEADElement) IDRemove(s string) *THEADElement {
 	if e.StringAttributes == nil {
@@ -521,12 +605,26 @@ func (e *THEADElement) INERT() *THEADElement {
 	return e
 }
 
+func (e *THEADElement) IfINERT(condition bool) *THEADElement {
+	if condition {
+		e.INERTSet(true)
+	}
+	return e
+}
+
 // Set the attribute inert to the value b explicitly.
 func (e *THEADElement) INERTSet(b bool) *THEADElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("inert", b)
+	return e
+}
+
+func (e *THEADElement) IfSetINERT(condition bool, b bool) *THEADElement {
+	if condition {
+		e.INERTSet(b)
+	}
 	return e
 }
 
@@ -622,6 +720,13 @@ func (e *THEADElement) IS(s string) *THEADElement {
 	return e
 }
 
+func (e *THEADElement) IfIS(condition bool, s string) *THEADElement {
+	if condition {
+		e.IS(s)
+	}
+	return e
+}
+
 // Remove the attribute is from the element.
 func (e *THEADElement) ISRemove(s string) *THEADElement {
 	if e.StringAttributes == nil {
@@ -652,6 +757,13 @@ func (e *THEADElement) ITEMID(s string) *THEADElement {
 	return e
 }
 
+func (e *THEADElement) IfITEMID(condition bool, s string) *THEADElement {
+	if condition {
+		e.ITEMID(s)
+	}
+	return e
+}
+
 // Remove the attribute itemid from the element.
 func (e *THEADElement) ITEMIDRemove(s string) *THEADElement {
 	if e.StringAttributes == nil {
@@ -677,6 +789,13 @@ func (e *THEADElement) ITEMPROP(s string) *THEADElement {
 	return e
 }
 
+func (e *THEADElement) IfITEMPROP(condition bool, s string) *THEADElement {
+	if condition {
+		e.ITEMPROP(s)
+	}
+	return e
+}
+
 // Remove the attribute itemprop from the element.
 func (e *THEADElement) ITEMPROPRemove(s string) *THEADElement {
 	if e.StringAttributes == nil {
@@ -696,6 +815,13 @@ func (e *THEADElement) ITEMREF(s string) *THEADElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("itemref", s)
+	return e
+}
+
+func (e *THEADElement) IfITEMREF(condition bool, s string) *THEADElement {
+	if condition {
+		e.ITEMREF(s)
+	}
 	return e
 }
 
@@ -721,12 +847,26 @@ func (e *THEADElement) ITEMSCOPE() *THEADElement {
 	return e
 }
 
+func (e *THEADElement) IfITEMSCOPE(condition bool) *THEADElement {
+	if condition {
+		e.ITEMSCOPESet(true)
+	}
+	return e
+}
+
 // Set the attribute itemscope to the value b explicitly.
 func (e *THEADElement) ITEMSCOPESet(b bool) *THEADElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("itemscope", b)
+	return e
+}
+
+func (e *THEADElement) IfSetITEMSCOPE(condition bool, b bool) *THEADElement {
+	if condition {
+		e.ITEMSCOPESet(b)
+	}
 	return e
 }
 
@@ -755,6 +895,13 @@ func (e *THEADElement) ITEMTYPE(s string) *THEADElement {
 	return e
 }
 
+func (e *THEADElement) IfITEMTYPE(condition bool, s string) *THEADElement {
+	if condition {
+		e.ITEMTYPE(s)
+	}
+	return e
+}
+
 // Remove the attribute itemtype from the element.
 func (e *THEADElement) ITEMTYPERemove(s string) *THEADElement {
 	if e.StringAttributes == nil {
@@ -778,6 +925,13 @@ func (e *THEADElement) LANG(s string) *THEADElement {
 	return e
 }
 
+func (e *THEADElement) IfLANG(condition bool, s string) *THEADElement {
+	if condition {
+		e.LANG(s)
+	}
+	return e
+}
+
 // Remove the attribute lang from the element.
 func (e *THEADElement) LANGRemove(s string) *THEADElement {
 	if e.StringAttributes == nil {
@@ -796,6 +950,13 @@ func (e *THEADElement) NONCE(s string) *THEADElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("nonce", s)
+	return e
+}
+
+func (e *THEADElement) IfNONCE(condition bool, s string) *THEADElement {
+	if condition {
+		e.NONCE(s)
+	}
 	return e
 }
 
@@ -822,6 +983,13 @@ func (e *THEADElement) PART(s ...string) *THEADElement {
 		e.DelimitedStrings.Set("part", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *THEADElement) IfPART(condition bool, s ...string) *THEADElement {
+	if condition {
+		e.PART(s...)
+	}
 	return e
 }
 
@@ -892,6 +1060,13 @@ func (e *THEADElement) SLOT(s string) *THEADElement {
 	return e
 }
 
+func (e *THEADElement) IfSLOT(condition bool, s string) *THEADElement {
+	if condition {
+		e.SLOT(s)
+	}
+	return e
+}
+
 // Remove the attribute slot from the element.
 func (e *THEADElement) SLOTRemove(s string) *THEADElement {
 	if e.StringAttributes == nil {
@@ -950,6 +1125,13 @@ func (e *THEADElement) STYLEF(k string, format string, args ...any) *THEADElemen
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+func (e *THEADElement) IfSTYLE(condition bool, k string, v string) *THEADElement {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
 func (e *THEADElement) STYLE(k string, v string) *THEADElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -960,6 +1142,13 @@ func (e *THEADElement) STYLE(k string, v string) *THEADElement {
 		e.KVStrings.Set("style", kv)
 	}
 	kv.Add(k, v)
+	return e
+}
+
+func (e *THEADElement) IfSTYLEF(condition bool, k string, format string, args ...any) *THEADElement {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
 	return e
 }
 
@@ -1000,6 +1189,13 @@ func (e *THEADElement) STYLEPairs(pairs ...string) *THEADElement {
 	return e
 }
 
+func (e *THEADElement) IfSTYLEPairs(condition bool, pairs ...string) *THEADElement {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
+	return e
+}
+
 // Remove the attribute style from the element.
 func (e *THEADElement) STYLERemove(keys ...string) *THEADElement {
 	if e.KVStrings == nil {
@@ -1034,6 +1230,13 @@ func (e *THEADElement) TABINDEX(i int) *THEADElement {
 		e.IntAttributes = treemap.New[string, int]()
 	}
 	e.IntAttributes.Set("tabindex", i)
+	return e
+}
+
+func (e *THEADElement) IfTABINDEX(condition bool, i int) *THEADElement {
+	if condition {
+		e.TABINDEX(i)
+	}
 	return e
 }
 
@@ -1072,6 +1275,13 @@ func (e *THEADElement) TITLE(s string) *THEADElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("title", s)
+	return e
+}
+
+func (e *THEADElement) IfTITLE(condition bool, s string) *THEADElement {
+	if condition {
+		e.TITLE(s)
+	}
 	return e
 }
 

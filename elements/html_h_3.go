@@ -56,13 +56,41 @@ func (e *H3Element) TextF(format string, args ...any) *H3Element {
 	return e.Text(fmt.Sprintf(format, args...))
 }
 
+func (e *H3Element) IfText(condition bool, text string) *H3Element {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
+}
+
+func (e *H3Element) IfTextF(condition bool, format string, args ...any) *H3Element {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
+}
+
 func (e *H3Element) Escaped(text string) *H3Element {
 	e.Descendants = append(e.Descendants, Escaped(text))
 	return e
 }
 
+func (e *H3Element) IfEscaped(condition bool, text string) *H3Element {
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
+}
+
 func (e *H3Element) EscapedF(format string, args ...any) *H3Element {
 	return e.Escaped(fmt.Sprintf(format, args...))
+}
+
+func (e *H3Element) IfEscapedF(condition bool, format string, args ...any) *H3Element {
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *H3Element) CustomData(key, value string) *H3Element {
@@ -73,8 +101,22 @@ func (e *H3Element) CustomData(key, value string) *H3Element {
 	return e
 }
 
+func (e *H3Element) IfCustomData(condition bool, key, value string) *H3Element {
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
+}
+
 func (e *H3Element) CustomDataF(key, format string, args ...any) *H3Element {
 	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
+func (e *H3Element) IfCustomDataF(condition bool, key, format string, args ...any) *H3Element {
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *H3Element) CustomDataRemove(key string) *H3Element {
@@ -94,6 +136,13 @@ func (e *H3Element) ACCESSKEY(r rune) *H3Element {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("accesskey", string(r))
+	return e
+}
+
+func (e *H3Element) IfACCESSKEY(condition bool, r rune) *H3Element {
+	if condition {
+		e.ACCESSKEY(r)
+	}
 	return e
 }
 
@@ -179,12 +228,26 @@ func (e *H3Element) AUTOFOCUS() *H3Element {
 	return e
 }
 
+func (e *H3Element) IfAUTOFOCUS(condition bool) *H3Element {
+	if condition {
+		e.AUTOFOCUSSet(true)
+	}
+	return e
+}
+
 // Set the attribute autofocus to the value b explicitly.
 func (e *H3Element) AUTOFOCUSSet(b bool) *H3Element {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("autofocus", b)
+	return e
+}
+
+func (e *H3Element) IfSetAUTOFOCUS(condition bool, b bool) *H3Element {
+	if condition {
+		e.AUTOFOCUSSet(b)
+	}
 	return e
 }
 
@@ -212,6 +275,13 @@ func (e *H3Element) CLASS(s ...string) *H3Element {
 		e.DelimitedStrings.Set("class", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *H3Element) IfCLASS(condition bool, s ...string) *H3Element {
+	if condition {
+		e.CLASS(s...)
+	}
 	return e
 }
 
@@ -420,6 +490,13 @@ func (e *H3Element) EXPORTPARTS(s ...string) *H3Element {
 	return e
 }
 
+func (e *H3Element) IfEXPORTPARTS(condition bool, s ...string) *H3Element {
+	if condition {
+		e.EXPORTPARTS(s...)
+	}
+	return e
+}
+
 // Remove the attribute exportparts from the element.
 func (e *H3Element) EXPORTPARTSRemove(s ...string) *H3Element {
 	if e.DelimitedStrings == nil {
@@ -495,6 +572,13 @@ func (e *H3Element) ID(s string) *H3Element {
 	return e
 }
 
+func (e *H3Element) IfID(condition bool, s string) *H3Element {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
 // Remove the attribute id from the element.
 func (e *H3Element) IDRemove(s string) *H3Element {
 	if e.StringAttributes == nil {
@@ -521,12 +605,26 @@ func (e *H3Element) INERT() *H3Element {
 	return e
 }
 
+func (e *H3Element) IfINERT(condition bool) *H3Element {
+	if condition {
+		e.INERTSet(true)
+	}
+	return e
+}
+
 // Set the attribute inert to the value b explicitly.
 func (e *H3Element) INERTSet(b bool) *H3Element {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("inert", b)
+	return e
+}
+
+func (e *H3Element) IfSetINERT(condition bool, b bool) *H3Element {
+	if condition {
+		e.INERTSet(b)
+	}
 	return e
 }
 
@@ -622,6 +720,13 @@ func (e *H3Element) IS(s string) *H3Element {
 	return e
 }
 
+func (e *H3Element) IfIS(condition bool, s string) *H3Element {
+	if condition {
+		e.IS(s)
+	}
+	return e
+}
+
 // Remove the attribute is from the element.
 func (e *H3Element) ISRemove(s string) *H3Element {
 	if e.StringAttributes == nil {
@@ -652,6 +757,13 @@ func (e *H3Element) ITEMID(s string) *H3Element {
 	return e
 }
 
+func (e *H3Element) IfITEMID(condition bool, s string) *H3Element {
+	if condition {
+		e.ITEMID(s)
+	}
+	return e
+}
+
 // Remove the attribute itemid from the element.
 func (e *H3Element) ITEMIDRemove(s string) *H3Element {
 	if e.StringAttributes == nil {
@@ -677,6 +789,13 @@ func (e *H3Element) ITEMPROP(s string) *H3Element {
 	return e
 }
 
+func (e *H3Element) IfITEMPROP(condition bool, s string) *H3Element {
+	if condition {
+		e.ITEMPROP(s)
+	}
+	return e
+}
+
 // Remove the attribute itemprop from the element.
 func (e *H3Element) ITEMPROPRemove(s string) *H3Element {
 	if e.StringAttributes == nil {
@@ -696,6 +815,13 @@ func (e *H3Element) ITEMREF(s string) *H3Element {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("itemref", s)
+	return e
+}
+
+func (e *H3Element) IfITEMREF(condition bool, s string) *H3Element {
+	if condition {
+		e.ITEMREF(s)
+	}
 	return e
 }
 
@@ -721,12 +847,26 @@ func (e *H3Element) ITEMSCOPE() *H3Element {
 	return e
 }
 
+func (e *H3Element) IfITEMSCOPE(condition bool) *H3Element {
+	if condition {
+		e.ITEMSCOPESet(true)
+	}
+	return e
+}
+
 // Set the attribute itemscope to the value b explicitly.
 func (e *H3Element) ITEMSCOPESet(b bool) *H3Element {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("itemscope", b)
+	return e
+}
+
+func (e *H3Element) IfSetITEMSCOPE(condition bool, b bool) *H3Element {
+	if condition {
+		e.ITEMSCOPESet(b)
+	}
 	return e
 }
 
@@ -755,6 +895,13 @@ func (e *H3Element) ITEMTYPE(s string) *H3Element {
 	return e
 }
 
+func (e *H3Element) IfITEMTYPE(condition bool, s string) *H3Element {
+	if condition {
+		e.ITEMTYPE(s)
+	}
+	return e
+}
+
 // Remove the attribute itemtype from the element.
 func (e *H3Element) ITEMTYPERemove(s string) *H3Element {
 	if e.StringAttributes == nil {
@@ -778,6 +925,13 @@ func (e *H3Element) LANG(s string) *H3Element {
 	return e
 }
 
+func (e *H3Element) IfLANG(condition bool, s string) *H3Element {
+	if condition {
+		e.LANG(s)
+	}
+	return e
+}
+
 // Remove the attribute lang from the element.
 func (e *H3Element) LANGRemove(s string) *H3Element {
 	if e.StringAttributes == nil {
@@ -796,6 +950,13 @@ func (e *H3Element) NONCE(s string) *H3Element {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("nonce", s)
+	return e
+}
+
+func (e *H3Element) IfNONCE(condition bool, s string) *H3Element {
+	if condition {
+		e.NONCE(s)
+	}
 	return e
 }
 
@@ -822,6 +983,13 @@ func (e *H3Element) PART(s ...string) *H3Element {
 		e.DelimitedStrings.Set("part", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *H3Element) IfPART(condition bool, s ...string) *H3Element {
+	if condition {
+		e.PART(s...)
+	}
 	return e
 }
 
@@ -892,6 +1060,13 @@ func (e *H3Element) SLOT(s string) *H3Element {
 	return e
 }
 
+func (e *H3Element) IfSLOT(condition bool, s string) *H3Element {
+	if condition {
+		e.SLOT(s)
+	}
+	return e
+}
+
 // Remove the attribute slot from the element.
 func (e *H3Element) SLOTRemove(s string) *H3Element {
 	if e.StringAttributes == nil {
@@ -950,6 +1125,13 @@ func (e *H3Element) STYLEF(k string, format string, args ...any) *H3Element {
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+func (e *H3Element) IfSTYLE(condition bool, k string, v string) *H3Element {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
 func (e *H3Element) STYLE(k string, v string) *H3Element {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -960,6 +1142,13 @@ func (e *H3Element) STYLE(k string, v string) *H3Element {
 		e.KVStrings.Set("style", kv)
 	}
 	kv.Add(k, v)
+	return e
+}
+
+func (e *H3Element) IfSTYLEF(condition bool, k string, format string, args ...any) *H3Element {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
 	return e
 }
 
@@ -1000,6 +1189,13 @@ func (e *H3Element) STYLEPairs(pairs ...string) *H3Element {
 	return e
 }
 
+func (e *H3Element) IfSTYLEPairs(condition bool, pairs ...string) *H3Element {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
+	return e
+}
+
 // Remove the attribute style from the element.
 func (e *H3Element) STYLERemove(keys ...string) *H3Element {
 	if e.KVStrings == nil {
@@ -1034,6 +1230,13 @@ func (e *H3Element) TABINDEX(i int) *H3Element {
 		e.IntAttributes = treemap.New[string, int]()
 	}
 	e.IntAttributes.Set("tabindex", i)
+	return e
+}
+
+func (e *H3Element) IfTABINDEX(condition bool, i int) *H3Element {
+	if condition {
+		e.TABINDEX(i)
+	}
 	return e
 }
 
@@ -1072,6 +1275,13 @@ func (e *H3Element) TITLE(s string) *H3Element {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("title", s)
+	return e
+}
+
+func (e *H3Element) IfTITLE(condition bool, s string) *H3Element {
+	if condition {
+		e.TITLE(s)
+	}
 	return e
 }
 

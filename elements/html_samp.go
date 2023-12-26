@@ -56,13 +56,41 @@ func (e *SAMPElement) TextF(format string, args ...any) *SAMPElement {
 	return e.Text(fmt.Sprintf(format, args...))
 }
 
+func (e *SAMPElement) IfText(condition bool, text string) *SAMPElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
+}
+
+func (e *SAMPElement) IfTextF(condition bool, format string, args ...any) *SAMPElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
+}
+
 func (e *SAMPElement) Escaped(text string) *SAMPElement {
 	e.Descendants = append(e.Descendants, Escaped(text))
 	return e
 }
 
+func (e *SAMPElement) IfEscaped(condition bool, text string) *SAMPElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
+}
+
 func (e *SAMPElement) EscapedF(format string, args ...any) *SAMPElement {
 	return e.Escaped(fmt.Sprintf(format, args...))
+}
+
+func (e *SAMPElement) IfEscapedF(condition bool, format string, args ...any) *SAMPElement {
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *SAMPElement) CustomData(key, value string) *SAMPElement {
@@ -73,8 +101,22 @@ func (e *SAMPElement) CustomData(key, value string) *SAMPElement {
 	return e
 }
 
+func (e *SAMPElement) IfCustomData(condition bool, key, value string) *SAMPElement {
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
+}
+
 func (e *SAMPElement) CustomDataF(key, format string, args ...any) *SAMPElement {
 	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
+func (e *SAMPElement) IfCustomDataF(condition bool, key, format string, args ...any) *SAMPElement {
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *SAMPElement) CustomDataRemove(key string) *SAMPElement {
@@ -94,6 +136,13 @@ func (e *SAMPElement) ACCESSKEY(r rune) *SAMPElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("accesskey", string(r))
+	return e
+}
+
+func (e *SAMPElement) IfACCESSKEY(condition bool, r rune) *SAMPElement {
+	if condition {
+		e.ACCESSKEY(r)
+	}
 	return e
 }
 
@@ -179,12 +228,26 @@ func (e *SAMPElement) AUTOFOCUS() *SAMPElement {
 	return e
 }
 
+func (e *SAMPElement) IfAUTOFOCUS(condition bool) *SAMPElement {
+	if condition {
+		e.AUTOFOCUSSet(true)
+	}
+	return e
+}
+
 // Set the attribute autofocus to the value b explicitly.
 func (e *SAMPElement) AUTOFOCUSSet(b bool) *SAMPElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("autofocus", b)
+	return e
+}
+
+func (e *SAMPElement) IfSetAUTOFOCUS(condition bool, b bool) *SAMPElement {
+	if condition {
+		e.AUTOFOCUSSet(b)
+	}
 	return e
 }
 
@@ -212,6 +275,13 @@ func (e *SAMPElement) CLASS(s ...string) *SAMPElement {
 		e.DelimitedStrings.Set("class", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *SAMPElement) IfCLASS(condition bool, s ...string) *SAMPElement {
+	if condition {
+		e.CLASS(s...)
+	}
 	return e
 }
 
@@ -420,6 +490,13 @@ func (e *SAMPElement) EXPORTPARTS(s ...string) *SAMPElement {
 	return e
 }
 
+func (e *SAMPElement) IfEXPORTPARTS(condition bool, s ...string) *SAMPElement {
+	if condition {
+		e.EXPORTPARTS(s...)
+	}
+	return e
+}
+
 // Remove the attribute exportparts from the element.
 func (e *SAMPElement) EXPORTPARTSRemove(s ...string) *SAMPElement {
 	if e.DelimitedStrings == nil {
@@ -495,6 +572,13 @@ func (e *SAMPElement) ID(s string) *SAMPElement {
 	return e
 }
 
+func (e *SAMPElement) IfID(condition bool, s string) *SAMPElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
 // Remove the attribute id from the element.
 func (e *SAMPElement) IDRemove(s string) *SAMPElement {
 	if e.StringAttributes == nil {
@@ -521,12 +605,26 @@ func (e *SAMPElement) INERT() *SAMPElement {
 	return e
 }
 
+func (e *SAMPElement) IfINERT(condition bool) *SAMPElement {
+	if condition {
+		e.INERTSet(true)
+	}
+	return e
+}
+
 // Set the attribute inert to the value b explicitly.
 func (e *SAMPElement) INERTSet(b bool) *SAMPElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("inert", b)
+	return e
+}
+
+func (e *SAMPElement) IfSetINERT(condition bool, b bool) *SAMPElement {
+	if condition {
+		e.INERTSet(b)
+	}
 	return e
 }
 
@@ -622,6 +720,13 @@ func (e *SAMPElement) IS(s string) *SAMPElement {
 	return e
 }
 
+func (e *SAMPElement) IfIS(condition bool, s string) *SAMPElement {
+	if condition {
+		e.IS(s)
+	}
+	return e
+}
+
 // Remove the attribute is from the element.
 func (e *SAMPElement) ISRemove(s string) *SAMPElement {
 	if e.StringAttributes == nil {
@@ -652,6 +757,13 @@ func (e *SAMPElement) ITEMID(s string) *SAMPElement {
 	return e
 }
 
+func (e *SAMPElement) IfITEMID(condition bool, s string) *SAMPElement {
+	if condition {
+		e.ITEMID(s)
+	}
+	return e
+}
+
 // Remove the attribute itemid from the element.
 func (e *SAMPElement) ITEMIDRemove(s string) *SAMPElement {
 	if e.StringAttributes == nil {
@@ -677,6 +789,13 @@ func (e *SAMPElement) ITEMPROP(s string) *SAMPElement {
 	return e
 }
 
+func (e *SAMPElement) IfITEMPROP(condition bool, s string) *SAMPElement {
+	if condition {
+		e.ITEMPROP(s)
+	}
+	return e
+}
+
 // Remove the attribute itemprop from the element.
 func (e *SAMPElement) ITEMPROPRemove(s string) *SAMPElement {
 	if e.StringAttributes == nil {
@@ -696,6 +815,13 @@ func (e *SAMPElement) ITEMREF(s string) *SAMPElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("itemref", s)
+	return e
+}
+
+func (e *SAMPElement) IfITEMREF(condition bool, s string) *SAMPElement {
+	if condition {
+		e.ITEMREF(s)
+	}
 	return e
 }
 
@@ -721,12 +847,26 @@ func (e *SAMPElement) ITEMSCOPE() *SAMPElement {
 	return e
 }
 
+func (e *SAMPElement) IfITEMSCOPE(condition bool) *SAMPElement {
+	if condition {
+		e.ITEMSCOPESet(true)
+	}
+	return e
+}
+
 // Set the attribute itemscope to the value b explicitly.
 func (e *SAMPElement) ITEMSCOPESet(b bool) *SAMPElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("itemscope", b)
+	return e
+}
+
+func (e *SAMPElement) IfSetITEMSCOPE(condition bool, b bool) *SAMPElement {
+	if condition {
+		e.ITEMSCOPESet(b)
+	}
 	return e
 }
 
@@ -755,6 +895,13 @@ func (e *SAMPElement) ITEMTYPE(s string) *SAMPElement {
 	return e
 }
 
+func (e *SAMPElement) IfITEMTYPE(condition bool, s string) *SAMPElement {
+	if condition {
+		e.ITEMTYPE(s)
+	}
+	return e
+}
+
 // Remove the attribute itemtype from the element.
 func (e *SAMPElement) ITEMTYPERemove(s string) *SAMPElement {
 	if e.StringAttributes == nil {
@@ -778,6 +925,13 @@ func (e *SAMPElement) LANG(s string) *SAMPElement {
 	return e
 }
 
+func (e *SAMPElement) IfLANG(condition bool, s string) *SAMPElement {
+	if condition {
+		e.LANG(s)
+	}
+	return e
+}
+
 // Remove the attribute lang from the element.
 func (e *SAMPElement) LANGRemove(s string) *SAMPElement {
 	if e.StringAttributes == nil {
@@ -796,6 +950,13 @@ func (e *SAMPElement) NONCE(s string) *SAMPElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("nonce", s)
+	return e
+}
+
+func (e *SAMPElement) IfNONCE(condition bool, s string) *SAMPElement {
+	if condition {
+		e.NONCE(s)
+	}
 	return e
 }
 
@@ -822,6 +983,13 @@ func (e *SAMPElement) PART(s ...string) *SAMPElement {
 		e.DelimitedStrings.Set("part", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *SAMPElement) IfPART(condition bool, s ...string) *SAMPElement {
+	if condition {
+		e.PART(s...)
+	}
 	return e
 }
 
@@ -892,6 +1060,13 @@ func (e *SAMPElement) SLOT(s string) *SAMPElement {
 	return e
 }
 
+func (e *SAMPElement) IfSLOT(condition bool, s string) *SAMPElement {
+	if condition {
+		e.SLOT(s)
+	}
+	return e
+}
+
 // Remove the attribute slot from the element.
 func (e *SAMPElement) SLOTRemove(s string) *SAMPElement {
 	if e.StringAttributes == nil {
@@ -950,6 +1125,13 @@ func (e *SAMPElement) STYLEF(k string, format string, args ...any) *SAMPElement 
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+func (e *SAMPElement) IfSTYLE(condition bool, k string, v string) *SAMPElement {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
 func (e *SAMPElement) STYLE(k string, v string) *SAMPElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -960,6 +1142,13 @@ func (e *SAMPElement) STYLE(k string, v string) *SAMPElement {
 		e.KVStrings.Set("style", kv)
 	}
 	kv.Add(k, v)
+	return e
+}
+
+func (e *SAMPElement) IfSTYLEF(condition bool, k string, format string, args ...any) *SAMPElement {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
 	return e
 }
 
@@ -1000,6 +1189,13 @@ func (e *SAMPElement) STYLEPairs(pairs ...string) *SAMPElement {
 	return e
 }
 
+func (e *SAMPElement) IfSTYLEPairs(condition bool, pairs ...string) *SAMPElement {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
+	return e
+}
+
 // Remove the attribute style from the element.
 func (e *SAMPElement) STYLERemove(keys ...string) *SAMPElement {
 	if e.KVStrings == nil {
@@ -1034,6 +1230,13 @@ func (e *SAMPElement) TABINDEX(i int) *SAMPElement {
 		e.IntAttributes = treemap.New[string, int]()
 	}
 	e.IntAttributes.Set("tabindex", i)
+	return e
+}
+
+func (e *SAMPElement) IfTABINDEX(condition bool, i int) *SAMPElement {
+	if condition {
+		e.TABINDEX(i)
+	}
 	return e
 }
 
@@ -1072,6 +1275,13 @@ func (e *SAMPElement) TITLE(s string) *SAMPElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("title", s)
+	return e
+}
+
+func (e *SAMPElement) IfTITLE(condition bool, s string) *SAMPElement {
+	if condition {
+		e.TITLE(s)
+	}
 	return e
 }
 

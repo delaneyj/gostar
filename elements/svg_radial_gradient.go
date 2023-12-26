@@ -56,13 +56,41 @@ func (e *SVGRADIALGRADIENTElement) TextF(format string, args ...any) *SVGRADIALG
 	return e.Text(fmt.Sprintf(format, args...))
 }
 
+func (e *SVGRADIALGRADIENTElement) IfText(condition bool, text string) *SVGRADIALGRADIENTElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
+}
+
+func (e *SVGRADIALGRADIENTElement) IfTextF(condition bool, format string, args ...any) *SVGRADIALGRADIENTElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
+}
+
 func (e *SVGRADIALGRADIENTElement) Escaped(text string) *SVGRADIALGRADIENTElement {
 	e.Descendants = append(e.Descendants, Escaped(text))
 	return e
 }
 
+func (e *SVGRADIALGRADIENTElement) IfEscaped(condition bool, text string) *SVGRADIALGRADIENTElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
+}
+
 func (e *SVGRADIALGRADIENTElement) EscapedF(format string, args ...any) *SVGRADIALGRADIENTElement {
 	return e.Escaped(fmt.Sprintf(format, args...))
+}
+
+func (e *SVGRADIALGRADIENTElement) IfEscapedF(condition bool, format string, args ...any) *SVGRADIALGRADIENTElement {
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *SVGRADIALGRADIENTElement) CustomData(key, value string) *SVGRADIALGRADIENTElement {
@@ -73,8 +101,22 @@ func (e *SVGRADIALGRADIENTElement) CustomData(key, value string) *SVGRADIALGRADI
 	return e
 }
 
+func (e *SVGRADIALGRADIENTElement) IfCustomData(condition bool, key, value string) *SVGRADIALGRADIENTElement {
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
+}
+
 func (e *SVGRADIALGRADIENTElement) CustomDataF(key, format string, args ...any) *SVGRADIALGRADIENTElement {
 	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
+func (e *SVGRADIALGRADIENTElement) IfCustomDataF(condition bool, key, format string, args ...any) *SVGRADIALGRADIENTElement {
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *SVGRADIALGRADIENTElement) CustomDataRemove(key string) *SVGRADIALGRADIENTElement {
@@ -122,6 +164,13 @@ func (e *SVGRADIALGRADIENTElement) GRADIENTTRANSFORM(s string) *SVGRADIALGRADIEN
 	return e
 }
 
+func (e *SVGRADIALGRADIENTElement) IfGRADIENTTRANSFORM(condition bool, s string) *SVGRADIALGRADIENTElement {
+	if condition {
+		e.GRADIENTTRANSFORM(s)
+	}
+	return e
+}
+
 // Remove the attribute gradientTransform from the element.
 func (e *SVGRADIALGRADIENTElement) GRADIENTTRANSFORMRemove(s string) *SVGRADIALGRADIENTElement {
 	if e.StringAttributes == nil {
@@ -141,6 +190,13 @@ func (e *SVGRADIALGRADIENTElement) CX(f float64) *SVGRADIALGRADIENTElement {
 	return e
 }
 
+func (e *SVGRADIALGRADIENTElement) IfCX(condition bool, f float64) *SVGRADIALGRADIENTElement {
+	if condition {
+		e.CX(f)
+	}
+	return e
+}
+
 // The y-axis coordinate of the largest (i.e., outermost) circle for the radial
 // gradient.
 func (e *SVGRADIALGRADIENTElement) CY(f float64) *SVGRADIALGRADIENTElement {
@@ -151,12 +207,26 @@ func (e *SVGRADIALGRADIENTElement) CY(f float64) *SVGRADIALGRADIENTElement {
 	return e
 }
 
+func (e *SVGRADIALGRADIENTElement) IfCY(condition bool, f float64) *SVGRADIALGRADIENTElement {
+	if condition {
+		e.CY(f)
+	}
+	return e
+}
+
 // The radius of the largest (i.e., outermost) circle for the radial gradient.
 func (e *SVGRADIALGRADIENTElement) R(f float64) *SVGRADIALGRADIENTElement {
 	if e.FloatAttributes == nil {
 		e.FloatAttributes = treemap.New[string, float64]()
 	}
 	e.FloatAttributes.Set("r", f)
+	return e
+}
+
+func (e *SVGRADIALGRADIENTElement) IfR(condition bool, f float64) *SVGRADIALGRADIENTElement {
+	if condition {
+		e.R(f)
+	}
 	return e
 }
 
@@ -170,6 +240,13 @@ func (e *SVGRADIALGRADIENTElement) FX(f float64) *SVGRADIALGRADIENTElement {
 	return e
 }
 
+func (e *SVGRADIALGRADIENTElement) IfFX(condition bool, f float64) *SVGRADIALGRADIENTElement {
+	if condition {
+		e.FX(f)
+	}
+	return e
+}
+
 // The y-axis coordinate of the point at which the focal point of the radial
 // gradient is placed.
 func (e *SVGRADIALGRADIENTElement) FY(f float64) *SVGRADIALGRADIENTElement {
@@ -177,6 +254,13 @@ func (e *SVGRADIALGRADIENTElement) FY(f float64) *SVGRADIALGRADIENTElement {
 		e.FloatAttributes = treemap.New[string, float64]()
 	}
 	e.FloatAttributes.Set("fy", f)
+	return e
+}
+
+func (e *SVGRADIALGRADIENTElement) IfFY(condition bool, f float64) *SVGRADIALGRADIENTElement {
+	if condition {
+		e.FY(f)
+	}
 	return e
 }
 
@@ -192,6 +276,13 @@ func (e *SVGRADIALGRADIENTElement) CLASS(s ...string) *SVGRADIALGRADIENTElement 
 		e.DelimitedStrings.Set("class", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *SVGRADIALGRADIENTElement) IfCLASS(condition bool, s ...string) *SVGRADIALGRADIENTElement {
+	if condition {
+		e.CLASS(s...)
+	}
 	return e
 }
 
@@ -217,6 +308,13 @@ func (e *SVGRADIALGRADIENTElement) ID(s string) *SVGRADIALGRADIENTElement {
 	return e
 }
 
+func (e *SVGRADIALGRADIENTElement) IfID(condition bool, s string) *SVGRADIALGRADIENTElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
 // Remove the attribute id from the element.
 func (e *SVGRADIALGRADIENTElement) IDRemove(s string) *SVGRADIALGRADIENTElement {
 	if e.StringAttributes == nil {
@@ -231,6 +329,13 @@ func (e *SVGRADIALGRADIENTElement) STYLEF(k string, format string, args ...any) 
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+func (e *SVGRADIALGRADIENTElement) IfSTYLE(condition bool, k string, v string) *SVGRADIALGRADIENTElement {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
 func (e *SVGRADIALGRADIENTElement) STYLE(k string, v string) *SVGRADIALGRADIENTElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -241,6 +346,13 @@ func (e *SVGRADIALGRADIENTElement) STYLE(k string, v string) *SVGRADIALGRADIENTE
 		e.KVStrings.Set("style", kv)
 	}
 	kv.Add(k, v)
+	return e
+}
+
+func (e *SVGRADIALGRADIENTElement) IfSTYLEF(condition bool, k string, format string, args ...any) *SVGRADIALGRADIENTElement {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
 	return e
 }
 
@@ -278,6 +390,13 @@ func (e *SVGRADIALGRADIENTElement) STYLEPairs(pairs ...string) *SVGRADIALGRADIEN
 		kv.Add(pairs[i], pairs[i+1])
 	}
 
+	return e
+}
+
+func (e *SVGRADIALGRADIENTElement) IfSTYLEPairs(condition bool, pairs ...string) *SVGRADIALGRADIENTElement {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
 	return e
 }
 

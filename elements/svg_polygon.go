@@ -56,13 +56,41 @@ func (e *SVGPOLYGONElement) TextF(format string, args ...any) *SVGPOLYGONElement
 	return e.Text(fmt.Sprintf(format, args...))
 }
 
+func (e *SVGPOLYGONElement) IfText(condition bool, text string) *SVGPOLYGONElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
+}
+
+func (e *SVGPOLYGONElement) IfTextF(condition bool, format string, args ...any) *SVGPOLYGONElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
+}
+
 func (e *SVGPOLYGONElement) Escaped(text string) *SVGPOLYGONElement {
 	e.Descendants = append(e.Descendants, Escaped(text))
 	return e
 }
 
+func (e *SVGPOLYGONElement) IfEscaped(condition bool, text string) *SVGPOLYGONElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
+}
+
 func (e *SVGPOLYGONElement) EscapedF(format string, args ...any) *SVGPOLYGONElement {
 	return e.Escaped(fmt.Sprintf(format, args...))
+}
+
+func (e *SVGPOLYGONElement) IfEscapedF(condition bool, format string, args ...any) *SVGPOLYGONElement {
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *SVGPOLYGONElement) CustomData(key, value string) *SVGPOLYGONElement {
@@ -73,8 +101,22 @@ func (e *SVGPOLYGONElement) CustomData(key, value string) *SVGPOLYGONElement {
 	return e
 }
 
+func (e *SVGPOLYGONElement) IfCustomData(condition bool, key, value string) *SVGPOLYGONElement {
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
+}
+
 func (e *SVGPOLYGONElement) CustomDataF(key, format string, args ...any) *SVGPOLYGONElement {
 	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
+func (e *SVGPOLYGONElement) IfCustomDataF(condition bool, key, format string, args ...any) *SVGPOLYGONElement {
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *SVGPOLYGONElement) CustomDataRemove(key string) *SVGPOLYGONElement {
@@ -91,6 +133,13 @@ func (e *SVGPOLYGONElement) POINTS(s string) *SVGPOLYGONElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("points", s)
+	return e
+}
+
+func (e *SVGPOLYGONElement) IfPOINTS(condition bool, s string) *SVGPOLYGONElement {
+	if condition {
+		e.POINTS(s)
+	}
 	return e
 }
 
@@ -118,6 +167,13 @@ func (e *SVGPOLYGONElement) CLASS(s ...string) *SVGPOLYGONElement {
 	return e
 }
 
+func (e *SVGPOLYGONElement) IfCLASS(condition bool, s ...string) *SVGPOLYGONElement {
+	if condition {
+		e.CLASS(s...)
+	}
+	return e
+}
+
 // Remove the attribute class from the element.
 func (e *SVGPOLYGONElement) CLASSRemove(s ...string) *SVGPOLYGONElement {
 	if e.DelimitedStrings == nil {
@@ -140,6 +196,13 @@ func (e *SVGPOLYGONElement) ID(s string) *SVGPOLYGONElement {
 	return e
 }
 
+func (e *SVGPOLYGONElement) IfID(condition bool, s string) *SVGPOLYGONElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
 // Remove the attribute id from the element.
 func (e *SVGPOLYGONElement) IDRemove(s string) *SVGPOLYGONElement {
 	if e.StringAttributes == nil {
@@ -154,6 +217,13 @@ func (e *SVGPOLYGONElement) STYLEF(k string, format string, args ...any) *SVGPOL
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+func (e *SVGPOLYGONElement) IfSTYLE(condition bool, k string, v string) *SVGPOLYGONElement {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
 func (e *SVGPOLYGONElement) STYLE(k string, v string) *SVGPOLYGONElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -164,6 +234,13 @@ func (e *SVGPOLYGONElement) STYLE(k string, v string) *SVGPOLYGONElement {
 		e.KVStrings.Set("style", kv)
 	}
 	kv.Add(k, v)
+	return e
+}
+
+func (e *SVGPOLYGONElement) IfSTYLEF(condition bool, k string, format string, args ...any) *SVGPOLYGONElement {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
 	return e
 }
 
@@ -201,6 +278,13 @@ func (e *SVGPOLYGONElement) STYLEPairs(pairs ...string) *SVGPOLYGONElement {
 		kv.Add(pairs[i], pairs[i+1])
 	}
 
+	return e
+}
+
+func (e *SVGPOLYGONElement) IfSTYLEPairs(condition bool, pairs ...string) *SVGPOLYGONElement {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
 	return e
 }
 

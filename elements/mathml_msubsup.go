@@ -56,13 +56,41 @@ func (e *MathMLMSUBSUPElement) TextF(format string, args ...any) *MathMLMSUBSUPE
 	return e.Text(fmt.Sprintf(format, args...))
 }
 
+func (e *MathMLMSUBSUPElement) IfText(condition bool, text string) *MathMLMSUBSUPElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
+}
+
+func (e *MathMLMSUBSUPElement) IfTextF(condition bool, format string, args ...any) *MathMLMSUBSUPElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
+}
+
 func (e *MathMLMSUBSUPElement) Escaped(text string) *MathMLMSUBSUPElement {
 	e.Descendants = append(e.Descendants, Escaped(text))
 	return e
 }
 
+func (e *MathMLMSUBSUPElement) IfEscaped(condition bool, text string) *MathMLMSUBSUPElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
+}
+
 func (e *MathMLMSUBSUPElement) EscapedF(format string, args ...any) *MathMLMSUBSUPElement {
 	return e.Escaped(fmt.Sprintf(format, args...))
+}
+
+func (e *MathMLMSUBSUPElement) IfEscapedF(condition bool, format string, args ...any) *MathMLMSUBSUPElement {
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *MathMLMSUBSUPElement) CustomData(key, value string) *MathMLMSUBSUPElement {
@@ -73,8 +101,22 @@ func (e *MathMLMSUBSUPElement) CustomData(key, value string) *MathMLMSUBSUPEleme
 	return e
 }
 
+func (e *MathMLMSUBSUPElement) IfCustomData(condition bool, key, value string) *MathMLMSUBSUPElement {
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
+}
+
 func (e *MathMLMSUBSUPElement) CustomDataF(key, format string, args ...any) *MathMLMSUBSUPElement {
 	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
+func (e *MathMLMSUBSUPElement) IfCustomDataF(condition bool, key, format string, args ...any) *MathMLMSUBSUPElement {
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *MathMLMSUBSUPElement) CustomDataRemove(key string) *MathMLMSUBSUPElement {
@@ -99,6 +141,13 @@ func (e *MathMLMSUBSUPElement) CLASS(s ...string) *MathMLMSUBSUPElement {
 		e.DelimitedStrings.Set("class", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *MathMLMSUBSUPElement) IfCLASS(condition bool, s ...string) *MathMLMSUBSUPElement {
+	if condition {
+		e.CLASS(s...)
+	}
 	return e
 }
 
@@ -184,6 +233,13 @@ func (e *MathMLMSUBSUPElement) ID(s string) *MathMLMSUBSUPElement {
 	return e
 }
 
+func (e *MathMLMSUBSUPElement) IfID(condition bool, s string) *MathMLMSUBSUPElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
 // Remove the attribute id from the element.
 func (e *MathMLMSUBSUPElement) IDRemove(s string) *MathMLMSUBSUPElement {
 	if e.StringAttributes == nil {
@@ -201,6 +257,13 @@ func (e *MathMLMSUBSUPElement) MATHBACKGROUND(s string) *MathMLMSUBSUPElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("mathbackground", s)
+	return e
+}
+
+func (e *MathMLMSUBSUPElement) IfMATHBACKGROUND(condition bool, s string) *MathMLMSUBSUPElement {
+	if condition {
+		e.MATHBACKGROUND(s)
+	}
 	return e
 }
 
@@ -224,6 +287,13 @@ func (e *MathMLMSUBSUPElement) MATHCOLOR(s string) *MathMLMSUBSUPElement {
 	return e
 }
 
+func (e *MathMLMSUBSUPElement) IfMATHCOLOR(condition bool, s string) *MathMLMSUBSUPElement {
+	if condition {
+		e.MATHCOLOR(s)
+	}
+	return e
+}
+
 // Remove the attribute mathcolor from the element.
 func (e *MathMLMSUBSUPElement) MATHCOLORRemove(s string) *MathMLMSUBSUPElement {
 	if e.StringAttributes == nil {
@@ -240,6 +310,13 @@ func (e *MathMLMSUBSUPElement) MATHSIZESTR(s string) *MathMLMSUBSUPElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("mathsize", s)
+	return e
+}
+
+func (e *MathMLMSUBSUPElement) IfMATHSIZESTR(condition bool, s string) *MathMLMSUBSUPElement {
+	if condition {
+		e.MATHSIZESTR(s)
+	}
 	return e
 }
 
@@ -264,6 +341,13 @@ func (e *MathMLMSUBSUPElement) NONCE(s string) *MathMLMSUBSUPElement {
 	return e
 }
 
+func (e *MathMLMSUBSUPElement) IfNONCE(condition bool, s string) *MathMLMSUBSUPElement {
+	if condition {
+		e.NONCE(s)
+	}
+	return e
+}
+
 // Remove the attribute nonce from the element.
 func (e *MathMLMSUBSUPElement) NONCERemove(s string) *MathMLMSUBSUPElement {
 	if e.StringAttributes == nil {
@@ -283,6 +367,13 @@ func (e *MathMLMSUBSUPElement) SCRIPTLEVEL(i int) *MathMLMSUBSUPElement {
 	return e
 }
 
+func (e *MathMLMSUBSUPElement) IfSCRIPTLEVEL(condition bool, i int) *MathMLMSUBSUPElement {
+	if condition {
+		e.SCRIPTLEVEL(i)
+	}
+	return e
+}
+
 // Remove the attribute scriptlevel from the element.
 func (e *MathMLMSUBSUPElement) SCRIPTLEVELRemove(i int) *MathMLMSUBSUPElement {
 	if e.IntAttributes == nil {
@@ -298,6 +389,13 @@ func (e *MathMLMSUBSUPElement) STYLEF(k string, format string, args ...any) *Mat
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+func (e *MathMLMSUBSUPElement) IfSTYLE(condition bool, k string, v string) *MathMLMSUBSUPElement {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
 func (e *MathMLMSUBSUPElement) STYLE(k string, v string) *MathMLMSUBSUPElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -308,6 +406,13 @@ func (e *MathMLMSUBSUPElement) STYLE(k string, v string) *MathMLMSUBSUPElement {
 		e.KVStrings.Set("style", kv)
 	}
 	kv.Add(k, v)
+	return e
+}
+
+func (e *MathMLMSUBSUPElement) IfSTYLEF(condition bool, k string, format string, args ...any) *MathMLMSUBSUPElement {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
 	return e
 }
 
@@ -348,6 +453,13 @@ func (e *MathMLMSUBSUPElement) STYLEPairs(pairs ...string) *MathMLMSUBSUPElement
 	return e
 }
 
+func (e *MathMLMSUBSUPElement) IfSTYLEPairs(condition bool, pairs ...string) *MathMLMSUBSUPElement {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
+	return e
+}
+
 // Remove the attribute style from the element.
 func (e *MathMLMSUBSUPElement) STYLERemove(keys ...string) *MathMLMSUBSUPElement {
 	if e.KVStrings == nil {
@@ -372,6 +484,13 @@ func (e *MathMLMSUBSUPElement) TABINDEX(i int) *MathMLMSUBSUPElement {
 		e.IntAttributes = treemap.New[string, int]()
 	}
 	e.IntAttributes.Set("tabindex", i)
+	return e
+}
+
+func (e *MathMLMSUBSUPElement) IfTABINDEX(condition bool, i int) *MathMLMSUBSUPElement {
+	if condition {
+		e.TABINDEX(i)
+	}
 	return e
 }
 

@@ -59,13 +59,41 @@ func (e *MENUElement) TextF(format string, args ...any) *MENUElement {
 	return e.Text(fmt.Sprintf(format, args...))
 }
 
+func (e *MENUElement) IfText(condition bool, text string) *MENUElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
+}
+
+func (e *MENUElement) IfTextF(condition bool, format string, args ...any) *MENUElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
+}
+
 func (e *MENUElement) Escaped(text string) *MENUElement {
 	e.Descendants = append(e.Descendants, Escaped(text))
 	return e
 }
 
+func (e *MENUElement) IfEscaped(condition bool, text string) *MENUElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
+}
+
 func (e *MENUElement) EscapedF(format string, args ...any) *MENUElement {
 	return e.Escaped(fmt.Sprintf(format, args...))
+}
+
+func (e *MENUElement) IfEscapedF(condition bool, format string, args ...any) *MENUElement {
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *MENUElement) CustomData(key, value string) *MENUElement {
@@ -76,8 +104,22 @@ func (e *MENUElement) CustomData(key, value string) *MENUElement {
 	return e
 }
 
+func (e *MENUElement) IfCustomData(condition bool, key, value string) *MENUElement {
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
+}
+
 func (e *MENUElement) CustomDataF(key, format string, args ...any) *MENUElement {
 	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
+func (e *MENUElement) IfCustomDataF(condition bool, key, format string, args ...any) *MENUElement {
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *MENUElement) CustomDataRemove(key string) *MENUElement {
@@ -126,6 +168,13 @@ func (e *MENUElement) ACCESSKEY(r rune) *MENUElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("accesskey", string(r))
+	return e
+}
+
+func (e *MENUElement) IfACCESSKEY(condition bool, r rune) *MENUElement {
+	if condition {
+		e.ACCESSKEY(r)
+	}
 	return e
 }
 
@@ -211,12 +260,26 @@ func (e *MENUElement) AUTOFOCUS() *MENUElement {
 	return e
 }
 
+func (e *MENUElement) IfAUTOFOCUS(condition bool) *MENUElement {
+	if condition {
+		e.AUTOFOCUSSet(true)
+	}
+	return e
+}
+
 // Set the attribute autofocus to the value b explicitly.
 func (e *MENUElement) AUTOFOCUSSet(b bool) *MENUElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("autofocus", b)
+	return e
+}
+
+func (e *MENUElement) IfSetAUTOFOCUS(condition bool, b bool) *MENUElement {
+	if condition {
+		e.AUTOFOCUSSet(b)
+	}
 	return e
 }
 
@@ -244,6 +307,13 @@ func (e *MENUElement) CLASS(s ...string) *MENUElement {
 		e.DelimitedStrings.Set("class", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *MENUElement) IfCLASS(condition bool, s ...string) *MENUElement {
+	if condition {
+		e.CLASS(s...)
+	}
 	return e
 }
 
@@ -452,6 +522,13 @@ func (e *MENUElement) EXPORTPARTS(s ...string) *MENUElement {
 	return e
 }
 
+func (e *MENUElement) IfEXPORTPARTS(condition bool, s ...string) *MENUElement {
+	if condition {
+		e.EXPORTPARTS(s...)
+	}
+	return e
+}
+
 // Remove the attribute exportparts from the element.
 func (e *MENUElement) EXPORTPARTSRemove(s ...string) *MENUElement {
 	if e.DelimitedStrings == nil {
@@ -527,6 +604,13 @@ func (e *MENUElement) ID(s string) *MENUElement {
 	return e
 }
 
+func (e *MENUElement) IfID(condition bool, s string) *MENUElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
 // Remove the attribute id from the element.
 func (e *MENUElement) IDRemove(s string) *MENUElement {
 	if e.StringAttributes == nil {
@@ -553,12 +637,26 @@ func (e *MENUElement) INERT() *MENUElement {
 	return e
 }
 
+func (e *MENUElement) IfINERT(condition bool) *MENUElement {
+	if condition {
+		e.INERTSet(true)
+	}
+	return e
+}
+
 // Set the attribute inert to the value b explicitly.
 func (e *MENUElement) INERTSet(b bool) *MENUElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("inert", b)
+	return e
+}
+
+func (e *MENUElement) IfSetINERT(condition bool, b bool) *MENUElement {
+	if condition {
+		e.INERTSet(b)
+	}
 	return e
 }
 
@@ -654,6 +752,13 @@ func (e *MENUElement) IS(s string) *MENUElement {
 	return e
 }
 
+func (e *MENUElement) IfIS(condition bool, s string) *MENUElement {
+	if condition {
+		e.IS(s)
+	}
+	return e
+}
+
 // Remove the attribute is from the element.
 func (e *MENUElement) ISRemove(s string) *MENUElement {
 	if e.StringAttributes == nil {
@@ -684,6 +789,13 @@ func (e *MENUElement) ITEMID(s string) *MENUElement {
 	return e
 }
 
+func (e *MENUElement) IfITEMID(condition bool, s string) *MENUElement {
+	if condition {
+		e.ITEMID(s)
+	}
+	return e
+}
+
 // Remove the attribute itemid from the element.
 func (e *MENUElement) ITEMIDRemove(s string) *MENUElement {
 	if e.StringAttributes == nil {
@@ -709,6 +821,13 @@ func (e *MENUElement) ITEMPROP(s string) *MENUElement {
 	return e
 }
 
+func (e *MENUElement) IfITEMPROP(condition bool, s string) *MENUElement {
+	if condition {
+		e.ITEMPROP(s)
+	}
+	return e
+}
+
 // Remove the attribute itemprop from the element.
 func (e *MENUElement) ITEMPROPRemove(s string) *MENUElement {
 	if e.StringAttributes == nil {
@@ -728,6 +847,13 @@ func (e *MENUElement) ITEMREF(s string) *MENUElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("itemref", s)
+	return e
+}
+
+func (e *MENUElement) IfITEMREF(condition bool, s string) *MENUElement {
+	if condition {
+		e.ITEMREF(s)
+	}
 	return e
 }
 
@@ -753,12 +879,26 @@ func (e *MENUElement) ITEMSCOPE() *MENUElement {
 	return e
 }
 
+func (e *MENUElement) IfITEMSCOPE(condition bool) *MENUElement {
+	if condition {
+		e.ITEMSCOPESet(true)
+	}
+	return e
+}
+
 // Set the attribute itemscope to the value b explicitly.
 func (e *MENUElement) ITEMSCOPESet(b bool) *MENUElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("itemscope", b)
+	return e
+}
+
+func (e *MENUElement) IfSetITEMSCOPE(condition bool, b bool) *MENUElement {
+	if condition {
+		e.ITEMSCOPESet(b)
+	}
 	return e
 }
 
@@ -787,6 +927,13 @@ func (e *MENUElement) ITEMTYPE(s string) *MENUElement {
 	return e
 }
 
+func (e *MENUElement) IfITEMTYPE(condition bool, s string) *MENUElement {
+	if condition {
+		e.ITEMTYPE(s)
+	}
+	return e
+}
+
 // Remove the attribute itemtype from the element.
 func (e *MENUElement) ITEMTYPERemove(s string) *MENUElement {
 	if e.StringAttributes == nil {
@@ -810,6 +957,13 @@ func (e *MENUElement) LANG(s string) *MENUElement {
 	return e
 }
 
+func (e *MENUElement) IfLANG(condition bool, s string) *MENUElement {
+	if condition {
+		e.LANG(s)
+	}
+	return e
+}
+
 // Remove the attribute lang from the element.
 func (e *MENUElement) LANGRemove(s string) *MENUElement {
 	if e.StringAttributes == nil {
@@ -828,6 +982,13 @@ func (e *MENUElement) NONCE(s string) *MENUElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("nonce", s)
+	return e
+}
+
+func (e *MENUElement) IfNONCE(condition bool, s string) *MENUElement {
+	if condition {
+		e.NONCE(s)
+	}
 	return e
 }
 
@@ -854,6 +1015,13 @@ func (e *MENUElement) PART(s ...string) *MENUElement {
 		e.DelimitedStrings.Set("part", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *MENUElement) IfPART(condition bool, s ...string) *MENUElement {
+	if condition {
+		e.PART(s...)
+	}
 	return e
 }
 
@@ -924,6 +1092,13 @@ func (e *MENUElement) SLOT(s string) *MENUElement {
 	return e
 }
 
+func (e *MENUElement) IfSLOT(condition bool, s string) *MENUElement {
+	if condition {
+		e.SLOT(s)
+	}
+	return e
+}
+
 // Remove the attribute slot from the element.
 func (e *MENUElement) SLOTRemove(s string) *MENUElement {
 	if e.StringAttributes == nil {
@@ -982,6 +1157,13 @@ func (e *MENUElement) STYLEF(k string, format string, args ...any) *MENUElement 
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+func (e *MENUElement) IfSTYLE(condition bool, k string, v string) *MENUElement {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
 func (e *MENUElement) STYLE(k string, v string) *MENUElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -992,6 +1174,13 @@ func (e *MENUElement) STYLE(k string, v string) *MENUElement {
 		e.KVStrings.Set("style", kv)
 	}
 	kv.Add(k, v)
+	return e
+}
+
+func (e *MENUElement) IfSTYLEF(condition bool, k string, format string, args ...any) *MENUElement {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
 	return e
 }
 
@@ -1032,6 +1221,13 @@ func (e *MENUElement) STYLEPairs(pairs ...string) *MENUElement {
 	return e
 }
 
+func (e *MENUElement) IfSTYLEPairs(condition bool, pairs ...string) *MENUElement {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
+	return e
+}
+
 // Remove the attribute style from the element.
 func (e *MENUElement) STYLERemove(keys ...string) *MENUElement {
 	if e.KVStrings == nil {
@@ -1066,6 +1262,13 @@ func (e *MENUElement) TABINDEX(i int) *MENUElement {
 		e.IntAttributes = treemap.New[string, int]()
 	}
 	e.IntAttributes.Set("tabindex", i)
+	return e
+}
+
+func (e *MENUElement) IfTABINDEX(condition bool, i int) *MENUElement {
+	if condition {
+		e.TABINDEX(i)
+	}
 	return e
 }
 
@@ -1104,6 +1307,13 @@ func (e *MENUElement) TITLE(s string) *MENUElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("title", s)
+	return e
+}
+
+func (e *MENUElement) IfTITLE(condition bool, s string) *MENUElement {
+	if condition {
+		e.TITLE(s)
+	}
 	return e
 }
 

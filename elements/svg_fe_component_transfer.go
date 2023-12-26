@@ -58,13 +58,41 @@ func (e *SVGFECOMPONENTTRANSFERElement) TextF(format string, args ...any) *SVGFE
 	return e.Text(fmt.Sprintf(format, args...))
 }
 
+func (e *SVGFECOMPONENTTRANSFERElement) IfText(condition bool, text string) *SVGFECOMPONENTTRANSFERElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
+}
+
+func (e *SVGFECOMPONENTTRANSFERElement) IfTextF(condition bool, format string, args ...any) *SVGFECOMPONENTTRANSFERElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
+}
+
 func (e *SVGFECOMPONENTTRANSFERElement) Escaped(text string) *SVGFECOMPONENTTRANSFERElement {
 	e.Descendants = append(e.Descendants, Escaped(text))
 	return e
 }
 
+func (e *SVGFECOMPONENTTRANSFERElement) IfEscaped(condition bool, text string) *SVGFECOMPONENTTRANSFERElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
+}
+
 func (e *SVGFECOMPONENTTRANSFERElement) EscapedF(format string, args ...any) *SVGFECOMPONENTTRANSFERElement {
 	return e.Escaped(fmt.Sprintf(format, args...))
+}
+
+func (e *SVGFECOMPONENTTRANSFERElement) IfEscapedF(condition bool, format string, args ...any) *SVGFECOMPONENTTRANSFERElement {
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *SVGFECOMPONENTTRANSFERElement) CustomData(key, value string) *SVGFECOMPONENTTRANSFERElement {
@@ -75,8 +103,22 @@ func (e *SVGFECOMPONENTTRANSFERElement) CustomData(key, value string) *SVGFECOMP
 	return e
 }
 
+func (e *SVGFECOMPONENTTRANSFERElement) IfCustomData(condition bool, key, value string) *SVGFECOMPONENTTRANSFERElement {
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
+}
+
 func (e *SVGFECOMPONENTTRANSFERElement) CustomDataF(key, format string, args ...any) *SVGFECOMPONENTTRANSFERElement {
 	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
+func (e *SVGFECOMPONENTTRANSFERElement) IfCustomDataF(condition bool, key, format string, args ...any) *SVGFECOMPONENTTRANSFERElement {
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *SVGFECOMPONENTTRANSFERElement) CustomDataRemove(key string) *SVGFECOMPONENTTRANSFERElement {
@@ -93,6 +135,13 @@ func (e *SVGFECOMPONENTTRANSFERElement) IN(s string) *SVGFECOMPONENTTRANSFERElem
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("in", s)
+	return e
+}
+
+func (e *SVGFECOMPONENTTRANSFERElement) IfIN(condition bool, s string) *SVGFECOMPONENTTRANSFERElement {
+	if condition {
+		e.IN(s)
+	}
 	return e
 }
 
@@ -120,6 +169,13 @@ func (e *SVGFECOMPONENTTRANSFERElement) CLASS(s ...string) *SVGFECOMPONENTTRANSF
 	return e
 }
 
+func (e *SVGFECOMPONENTTRANSFERElement) IfCLASS(condition bool, s ...string) *SVGFECOMPONENTTRANSFERElement {
+	if condition {
+		e.CLASS(s...)
+	}
+	return e
+}
+
 // Remove the attribute class from the element.
 func (e *SVGFECOMPONENTTRANSFERElement) CLASSRemove(s ...string) *SVGFECOMPONENTTRANSFERElement {
 	if e.DelimitedStrings == nil {
@@ -142,6 +198,13 @@ func (e *SVGFECOMPONENTTRANSFERElement) ID(s string) *SVGFECOMPONENTTRANSFERElem
 	return e
 }
 
+func (e *SVGFECOMPONENTTRANSFERElement) IfID(condition bool, s string) *SVGFECOMPONENTTRANSFERElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
 // Remove the attribute id from the element.
 func (e *SVGFECOMPONENTTRANSFERElement) IDRemove(s string) *SVGFECOMPONENTTRANSFERElement {
 	if e.StringAttributes == nil {
@@ -156,6 +219,13 @@ func (e *SVGFECOMPONENTTRANSFERElement) STYLEF(k string, format string, args ...
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+func (e *SVGFECOMPONENTTRANSFERElement) IfSTYLE(condition bool, k string, v string) *SVGFECOMPONENTTRANSFERElement {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
 func (e *SVGFECOMPONENTTRANSFERElement) STYLE(k string, v string) *SVGFECOMPONENTTRANSFERElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -166,6 +236,13 @@ func (e *SVGFECOMPONENTTRANSFERElement) STYLE(k string, v string) *SVGFECOMPONEN
 		e.KVStrings.Set("style", kv)
 	}
 	kv.Add(k, v)
+	return e
+}
+
+func (e *SVGFECOMPONENTTRANSFERElement) IfSTYLEF(condition bool, k string, format string, args ...any) *SVGFECOMPONENTTRANSFERElement {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
 	return e
 }
 
@@ -203,6 +280,13 @@ func (e *SVGFECOMPONENTTRANSFERElement) STYLEPairs(pairs ...string) *SVGFECOMPON
 		kv.Add(pairs[i], pairs[i+1])
 	}
 
+	return e
+}
+
+func (e *SVGFECOMPONENTTRANSFERElement) IfSTYLEPairs(condition bool, pairs ...string) *SVGFECOMPONENTTRANSFERElement {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
 	return e
 }
 

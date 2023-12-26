@@ -55,13 +55,41 @@ func (e *MathMLSEMANTICSElement) TextF(format string, args ...any) *MathMLSEMANT
 	return e.Text(fmt.Sprintf(format, args...))
 }
 
+func (e *MathMLSEMANTICSElement) IfText(condition bool, text string) *MathMLSEMANTICSElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
+}
+
+func (e *MathMLSEMANTICSElement) IfTextF(condition bool, format string, args ...any) *MathMLSEMANTICSElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
+}
+
 func (e *MathMLSEMANTICSElement) Escaped(text string) *MathMLSEMANTICSElement {
 	e.Descendants = append(e.Descendants, Escaped(text))
 	return e
 }
 
+func (e *MathMLSEMANTICSElement) IfEscaped(condition bool, text string) *MathMLSEMANTICSElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
+}
+
 func (e *MathMLSEMANTICSElement) EscapedF(format string, args ...any) *MathMLSEMANTICSElement {
 	return e.Escaped(fmt.Sprintf(format, args...))
+}
+
+func (e *MathMLSEMANTICSElement) IfEscapedF(condition bool, format string, args ...any) *MathMLSEMANTICSElement {
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *MathMLSEMANTICSElement) CustomData(key, value string) *MathMLSEMANTICSElement {
@@ -72,8 +100,22 @@ func (e *MathMLSEMANTICSElement) CustomData(key, value string) *MathMLSEMANTICSE
 	return e
 }
 
+func (e *MathMLSEMANTICSElement) IfCustomData(condition bool, key, value string) *MathMLSEMANTICSElement {
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
+}
+
 func (e *MathMLSEMANTICSElement) CustomDataF(key, format string, args ...any) *MathMLSEMANTICSElement {
 	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
+func (e *MathMLSEMANTICSElement) IfCustomDataF(condition bool, key, format string, args ...any) *MathMLSEMANTICSElement {
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *MathMLSEMANTICSElement) CustomDataRemove(key string) *MathMLSEMANTICSElement {
@@ -98,6 +140,13 @@ func (e *MathMLSEMANTICSElement) CLASS(s ...string) *MathMLSEMANTICSElement {
 		e.DelimitedStrings.Set("class", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *MathMLSEMANTICSElement) IfCLASS(condition bool, s ...string) *MathMLSEMANTICSElement {
+	if condition {
+		e.CLASS(s...)
+	}
 	return e
 }
 
@@ -183,6 +232,13 @@ func (e *MathMLSEMANTICSElement) ID(s string) *MathMLSEMANTICSElement {
 	return e
 }
 
+func (e *MathMLSEMANTICSElement) IfID(condition bool, s string) *MathMLSEMANTICSElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
 // Remove the attribute id from the element.
 func (e *MathMLSEMANTICSElement) IDRemove(s string) *MathMLSEMANTICSElement {
 	if e.StringAttributes == nil {
@@ -200,6 +256,13 @@ func (e *MathMLSEMANTICSElement) MATHBACKGROUND(s string) *MathMLSEMANTICSElemen
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("mathbackground", s)
+	return e
+}
+
+func (e *MathMLSEMANTICSElement) IfMATHBACKGROUND(condition bool, s string) *MathMLSEMANTICSElement {
+	if condition {
+		e.MATHBACKGROUND(s)
+	}
 	return e
 }
 
@@ -223,6 +286,13 @@ func (e *MathMLSEMANTICSElement) MATHCOLOR(s string) *MathMLSEMANTICSElement {
 	return e
 }
 
+func (e *MathMLSEMANTICSElement) IfMATHCOLOR(condition bool, s string) *MathMLSEMANTICSElement {
+	if condition {
+		e.MATHCOLOR(s)
+	}
+	return e
+}
+
 // Remove the attribute mathcolor from the element.
 func (e *MathMLSEMANTICSElement) MATHCOLORRemove(s string) *MathMLSEMANTICSElement {
 	if e.StringAttributes == nil {
@@ -239,6 +309,13 @@ func (e *MathMLSEMANTICSElement) MATHSIZESTR(s string) *MathMLSEMANTICSElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("mathsize", s)
+	return e
+}
+
+func (e *MathMLSEMANTICSElement) IfMATHSIZESTR(condition bool, s string) *MathMLSEMANTICSElement {
+	if condition {
+		e.MATHSIZESTR(s)
+	}
 	return e
 }
 
@@ -263,6 +340,13 @@ func (e *MathMLSEMANTICSElement) NONCE(s string) *MathMLSEMANTICSElement {
 	return e
 }
 
+func (e *MathMLSEMANTICSElement) IfNONCE(condition bool, s string) *MathMLSEMANTICSElement {
+	if condition {
+		e.NONCE(s)
+	}
+	return e
+}
+
 // Remove the attribute nonce from the element.
 func (e *MathMLSEMANTICSElement) NONCERemove(s string) *MathMLSEMANTICSElement {
 	if e.StringAttributes == nil {
@@ -282,6 +366,13 @@ func (e *MathMLSEMANTICSElement) SCRIPTLEVEL(i int) *MathMLSEMANTICSElement {
 	return e
 }
 
+func (e *MathMLSEMANTICSElement) IfSCRIPTLEVEL(condition bool, i int) *MathMLSEMANTICSElement {
+	if condition {
+		e.SCRIPTLEVEL(i)
+	}
+	return e
+}
+
 // Remove the attribute scriptlevel from the element.
 func (e *MathMLSEMANTICSElement) SCRIPTLEVELRemove(i int) *MathMLSEMANTICSElement {
 	if e.IntAttributes == nil {
@@ -297,6 +388,13 @@ func (e *MathMLSEMANTICSElement) STYLEF(k string, format string, args ...any) *M
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+func (e *MathMLSEMANTICSElement) IfSTYLE(condition bool, k string, v string) *MathMLSEMANTICSElement {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
 func (e *MathMLSEMANTICSElement) STYLE(k string, v string) *MathMLSEMANTICSElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -307,6 +405,13 @@ func (e *MathMLSEMANTICSElement) STYLE(k string, v string) *MathMLSEMANTICSEleme
 		e.KVStrings.Set("style", kv)
 	}
 	kv.Add(k, v)
+	return e
+}
+
+func (e *MathMLSEMANTICSElement) IfSTYLEF(condition bool, k string, format string, args ...any) *MathMLSEMANTICSElement {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
 	return e
 }
 
@@ -347,6 +452,13 @@ func (e *MathMLSEMANTICSElement) STYLEPairs(pairs ...string) *MathMLSEMANTICSEle
 	return e
 }
 
+func (e *MathMLSEMANTICSElement) IfSTYLEPairs(condition bool, pairs ...string) *MathMLSEMANTICSElement {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
+	return e
+}
+
 // Remove the attribute style from the element.
 func (e *MathMLSEMANTICSElement) STYLERemove(keys ...string) *MathMLSEMANTICSElement {
 	if e.KVStrings == nil {
@@ -371,6 +483,13 @@ func (e *MathMLSEMANTICSElement) TABINDEX(i int) *MathMLSEMANTICSElement {
 		e.IntAttributes = treemap.New[string, int]()
 	}
 	e.IntAttributes.Set("tabindex", i)
+	return e
+}
+
+func (e *MathMLSEMANTICSElement) IfTABINDEX(condition bool, i int) *MathMLSEMANTICSElement {
+	if condition {
+		e.TABINDEX(i)
+	}
 	return e
 }
 

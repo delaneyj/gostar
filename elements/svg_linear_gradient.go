@@ -56,13 +56,41 @@ func (e *SVGLINEARGRADIENTElement) TextF(format string, args ...any) *SVGLINEARG
 	return e.Text(fmt.Sprintf(format, args...))
 }
 
+func (e *SVGLINEARGRADIENTElement) IfText(condition bool, text string) *SVGLINEARGRADIENTElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
+}
+
+func (e *SVGLINEARGRADIENTElement) IfTextF(condition bool, format string, args ...any) *SVGLINEARGRADIENTElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
+}
+
 func (e *SVGLINEARGRADIENTElement) Escaped(text string) *SVGLINEARGRADIENTElement {
 	e.Descendants = append(e.Descendants, Escaped(text))
 	return e
 }
 
+func (e *SVGLINEARGRADIENTElement) IfEscaped(condition bool, text string) *SVGLINEARGRADIENTElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
+}
+
 func (e *SVGLINEARGRADIENTElement) EscapedF(format string, args ...any) *SVGLINEARGRADIENTElement {
 	return e.Escaped(fmt.Sprintf(format, args...))
+}
+
+func (e *SVGLINEARGRADIENTElement) IfEscapedF(condition bool, format string, args ...any) *SVGLINEARGRADIENTElement {
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *SVGLINEARGRADIENTElement) CustomData(key, value string) *SVGLINEARGRADIENTElement {
@@ -73,8 +101,22 @@ func (e *SVGLINEARGRADIENTElement) CustomData(key, value string) *SVGLINEARGRADI
 	return e
 }
 
+func (e *SVGLINEARGRADIENTElement) IfCustomData(condition bool, key, value string) *SVGLINEARGRADIENTElement {
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
+}
+
 func (e *SVGLINEARGRADIENTElement) CustomDataF(key, format string, args ...any) *SVGLINEARGRADIENTElement {
 	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
+func (e *SVGLINEARGRADIENTElement) IfCustomDataF(condition bool, key, format string, args ...any) *SVGLINEARGRADIENTElement {
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *SVGLINEARGRADIENTElement) CustomDataRemove(key string) *SVGLINEARGRADIENTElement {
@@ -119,6 +161,13 @@ func (e *SVGLINEARGRADIENTElement) GRADIENTTRANSFORM(s string) *SVGLINEARGRADIEN
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("gradientTransform", s)
+	return e
+}
+
+func (e *SVGLINEARGRADIENTElement) IfGRADIENTTRANSFORM(condition bool, s string) *SVGLINEARGRADIENTElement {
+	if condition {
+		e.GRADIENTTRANSFORM(s)
+	}
 	return e
 }
 
@@ -169,12 +218,26 @@ func (e *SVGLINEARGRADIENTElement) X1(f float64) *SVGLINEARGRADIENTElement {
 	return e
 }
 
+func (e *SVGLINEARGRADIENTElement) IfX1(condition bool, f float64) *SVGLINEARGRADIENTElement {
+	if condition {
+		e.X1(f)
+	}
+	return e
+}
+
 // The y-axis coordinate of the start of the gradient.
 func (e *SVGLINEARGRADIENTElement) Y1(f float64) *SVGLINEARGRADIENTElement {
 	if e.FloatAttributes == nil {
 		e.FloatAttributes = treemap.New[string, float64]()
 	}
 	e.FloatAttributes.Set("y1", f)
+	return e
+}
+
+func (e *SVGLINEARGRADIENTElement) IfY1(condition bool, f float64) *SVGLINEARGRADIENTElement {
+	if condition {
+		e.Y1(f)
+	}
 	return e
 }
 
@@ -187,12 +250,26 @@ func (e *SVGLINEARGRADIENTElement) X2(f float64) *SVGLINEARGRADIENTElement {
 	return e
 }
 
+func (e *SVGLINEARGRADIENTElement) IfX2(condition bool, f float64) *SVGLINEARGRADIENTElement {
+	if condition {
+		e.X2(f)
+	}
+	return e
+}
+
 // The y-axis coordinate of the end of the gradient.
 func (e *SVGLINEARGRADIENTElement) Y2(f float64) *SVGLINEARGRADIENTElement {
 	if e.FloatAttributes == nil {
 		e.FloatAttributes = treemap.New[string, float64]()
 	}
 	e.FloatAttributes.Set("y2", f)
+	return e
+}
+
+func (e *SVGLINEARGRADIENTElement) IfY2(condition bool, f float64) *SVGLINEARGRADIENTElement {
+	if condition {
+		e.Y2(f)
+	}
 	return e
 }
 
@@ -208,6 +285,13 @@ func (e *SVGLINEARGRADIENTElement) CLASS(s ...string) *SVGLINEARGRADIENTElement 
 		e.DelimitedStrings.Set("class", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *SVGLINEARGRADIENTElement) IfCLASS(condition bool, s ...string) *SVGLINEARGRADIENTElement {
+	if condition {
+		e.CLASS(s...)
+	}
 	return e
 }
 
@@ -233,6 +317,13 @@ func (e *SVGLINEARGRADIENTElement) ID(s string) *SVGLINEARGRADIENTElement {
 	return e
 }
 
+func (e *SVGLINEARGRADIENTElement) IfID(condition bool, s string) *SVGLINEARGRADIENTElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
 // Remove the attribute id from the element.
 func (e *SVGLINEARGRADIENTElement) IDRemove(s string) *SVGLINEARGRADIENTElement {
 	if e.StringAttributes == nil {
@@ -247,6 +338,13 @@ func (e *SVGLINEARGRADIENTElement) STYLEF(k string, format string, args ...any) 
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+func (e *SVGLINEARGRADIENTElement) IfSTYLE(condition bool, k string, v string) *SVGLINEARGRADIENTElement {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
 func (e *SVGLINEARGRADIENTElement) STYLE(k string, v string) *SVGLINEARGRADIENTElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -257,6 +355,13 @@ func (e *SVGLINEARGRADIENTElement) STYLE(k string, v string) *SVGLINEARGRADIENTE
 		e.KVStrings.Set("style", kv)
 	}
 	kv.Add(k, v)
+	return e
+}
+
+func (e *SVGLINEARGRADIENTElement) IfSTYLEF(condition bool, k string, format string, args ...any) *SVGLINEARGRADIENTElement {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
 	return e
 }
 
@@ -294,6 +399,13 @@ func (e *SVGLINEARGRADIENTElement) STYLEPairs(pairs ...string) *SVGLINEARGRADIEN
 		kv.Add(pairs[i], pairs[i+1])
 	}
 
+	return e
+}
+
+func (e *SVGLINEARGRADIENTElement) IfSTYLEPairs(condition bool, pairs ...string) *SVGLINEARGRADIENTElement {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
 	return e
 }
 

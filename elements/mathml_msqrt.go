@@ -55,13 +55,41 @@ func (e *MathMLMSQRTElement) TextF(format string, args ...any) *MathMLMSQRTEleme
 	return e.Text(fmt.Sprintf(format, args...))
 }
 
+func (e *MathMLMSQRTElement) IfText(condition bool, text string) *MathMLMSQRTElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
+}
+
+func (e *MathMLMSQRTElement) IfTextF(condition bool, format string, args ...any) *MathMLMSQRTElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
+}
+
 func (e *MathMLMSQRTElement) Escaped(text string) *MathMLMSQRTElement {
 	e.Descendants = append(e.Descendants, Escaped(text))
 	return e
 }
 
+func (e *MathMLMSQRTElement) IfEscaped(condition bool, text string) *MathMLMSQRTElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
+}
+
 func (e *MathMLMSQRTElement) EscapedF(format string, args ...any) *MathMLMSQRTElement {
 	return e.Escaped(fmt.Sprintf(format, args...))
+}
+
+func (e *MathMLMSQRTElement) IfEscapedF(condition bool, format string, args ...any) *MathMLMSQRTElement {
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *MathMLMSQRTElement) CustomData(key, value string) *MathMLMSQRTElement {
@@ -72,8 +100,22 @@ func (e *MathMLMSQRTElement) CustomData(key, value string) *MathMLMSQRTElement {
 	return e
 }
 
+func (e *MathMLMSQRTElement) IfCustomData(condition bool, key, value string) *MathMLMSQRTElement {
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
+}
+
 func (e *MathMLMSQRTElement) CustomDataF(key, format string, args ...any) *MathMLMSQRTElement {
 	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
+func (e *MathMLMSQRTElement) IfCustomDataF(condition bool, key, format string, args ...any) *MathMLMSQRTElement {
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *MathMLMSQRTElement) CustomDataRemove(key string) *MathMLMSQRTElement {
@@ -98,6 +140,13 @@ func (e *MathMLMSQRTElement) CLASS(s ...string) *MathMLMSQRTElement {
 		e.DelimitedStrings.Set("class", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *MathMLMSQRTElement) IfCLASS(condition bool, s ...string) *MathMLMSQRTElement {
+	if condition {
+		e.CLASS(s...)
+	}
 	return e
 }
 
@@ -183,6 +232,13 @@ func (e *MathMLMSQRTElement) ID(s string) *MathMLMSQRTElement {
 	return e
 }
 
+func (e *MathMLMSQRTElement) IfID(condition bool, s string) *MathMLMSQRTElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
 // Remove the attribute id from the element.
 func (e *MathMLMSQRTElement) IDRemove(s string) *MathMLMSQRTElement {
 	if e.StringAttributes == nil {
@@ -200,6 +256,13 @@ func (e *MathMLMSQRTElement) MATHBACKGROUND(s string) *MathMLMSQRTElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("mathbackground", s)
+	return e
+}
+
+func (e *MathMLMSQRTElement) IfMATHBACKGROUND(condition bool, s string) *MathMLMSQRTElement {
+	if condition {
+		e.MATHBACKGROUND(s)
+	}
 	return e
 }
 
@@ -223,6 +286,13 @@ func (e *MathMLMSQRTElement) MATHCOLOR(s string) *MathMLMSQRTElement {
 	return e
 }
 
+func (e *MathMLMSQRTElement) IfMATHCOLOR(condition bool, s string) *MathMLMSQRTElement {
+	if condition {
+		e.MATHCOLOR(s)
+	}
+	return e
+}
+
 // Remove the attribute mathcolor from the element.
 func (e *MathMLMSQRTElement) MATHCOLORRemove(s string) *MathMLMSQRTElement {
 	if e.StringAttributes == nil {
@@ -239,6 +309,13 @@ func (e *MathMLMSQRTElement) MATHSIZESTR(s string) *MathMLMSQRTElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("mathsize", s)
+	return e
+}
+
+func (e *MathMLMSQRTElement) IfMATHSIZESTR(condition bool, s string) *MathMLMSQRTElement {
+	if condition {
+		e.MATHSIZESTR(s)
+	}
 	return e
 }
 
@@ -263,6 +340,13 @@ func (e *MathMLMSQRTElement) NONCE(s string) *MathMLMSQRTElement {
 	return e
 }
 
+func (e *MathMLMSQRTElement) IfNONCE(condition bool, s string) *MathMLMSQRTElement {
+	if condition {
+		e.NONCE(s)
+	}
+	return e
+}
+
 // Remove the attribute nonce from the element.
 func (e *MathMLMSQRTElement) NONCERemove(s string) *MathMLMSQRTElement {
 	if e.StringAttributes == nil {
@@ -282,6 +366,13 @@ func (e *MathMLMSQRTElement) SCRIPTLEVEL(i int) *MathMLMSQRTElement {
 	return e
 }
 
+func (e *MathMLMSQRTElement) IfSCRIPTLEVEL(condition bool, i int) *MathMLMSQRTElement {
+	if condition {
+		e.SCRIPTLEVEL(i)
+	}
+	return e
+}
+
 // Remove the attribute scriptlevel from the element.
 func (e *MathMLMSQRTElement) SCRIPTLEVELRemove(i int) *MathMLMSQRTElement {
 	if e.IntAttributes == nil {
@@ -297,6 +388,13 @@ func (e *MathMLMSQRTElement) STYLEF(k string, format string, args ...any) *MathM
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+func (e *MathMLMSQRTElement) IfSTYLE(condition bool, k string, v string) *MathMLMSQRTElement {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
 func (e *MathMLMSQRTElement) STYLE(k string, v string) *MathMLMSQRTElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -307,6 +405,13 @@ func (e *MathMLMSQRTElement) STYLE(k string, v string) *MathMLMSQRTElement {
 		e.KVStrings.Set("style", kv)
 	}
 	kv.Add(k, v)
+	return e
+}
+
+func (e *MathMLMSQRTElement) IfSTYLEF(condition bool, k string, format string, args ...any) *MathMLMSQRTElement {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
 	return e
 }
 
@@ -347,6 +452,13 @@ func (e *MathMLMSQRTElement) STYLEPairs(pairs ...string) *MathMLMSQRTElement {
 	return e
 }
 
+func (e *MathMLMSQRTElement) IfSTYLEPairs(condition bool, pairs ...string) *MathMLMSQRTElement {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
+	return e
+}
+
 // Remove the attribute style from the element.
 func (e *MathMLMSQRTElement) STYLERemove(keys ...string) *MathMLMSQRTElement {
 	if e.KVStrings == nil {
@@ -371,6 +483,13 @@ func (e *MathMLMSQRTElement) TABINDEX(i int) *MathMLMSQRTElement {
 		e.IntAttributes = treemap.New[string, int]()
 	}
 	e.IntAttributes.Set("tabindex", i)
+	return e
+}
+
+func (e *MathMLMSQRTElement) IfTABINDEX(condition bool, i int) *MathMLMSQRTElement {
+	if condition {
+		e.TABINDEX(i)
+	}
 	return e
 }
 

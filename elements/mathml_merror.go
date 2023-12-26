@@ -58,13 +58,41 @@ func (e *MathMLMERRORElement) TextF(format string, args ...any) *MathMLMERROREle
 	return e.Text(fmt.Sprintf(format, args...))
 }
 
+func (e *MathMLMERRORElement) IfText(condition bool, text string) *MathMLMERRORElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
+}
+
+func (e *MathMLMERRORElement) IfTextF(condition bool, format string, args ...any) *MathMLMERRORElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
+}
+
 func (e *MathMLMERRORElement) Escaped(text string) *MathMLMERRORElement {
 	e.Descendants = append(e.Descendants, Escaped(text))
 	return e
 }
 
+func (e *MathMLMERRORElement) IfEscaped(condition bool, text string) *MathMLMERRORElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
+}
+
 func (e *MathMLMERRORElement) EscapedF(format string, args ...any) *MathMLMERRORElement {
 	return e.Escaped(fmt.Sprintf(format, args...))
+}
+
+func (e *MathMLMERRORElement) IfEscapedF(condition bool, format string, args ...any) *MathMLMERRORElement {
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *MathMLMERRORElement) CustomData(key, value string) *MathMLMERRORElement {
@@ -75,8 +103,22 @@ func (e *MathMLMERRORElement) CustomData(key, value string) *MathMLMERRORElement
 	return e
 }
 
+func (e *MathMLMERRORElement) IfCustomData(condition bool, key, value string) *MathMLMERRORElement {
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
+}
+
 func (e *MathMLMERRORElement) CustomDataF(key, format string, args ...any) *MathMLMERRORElement {
 	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
+func (e *MathMLMERRORElement) IfCustomDataF(condition bool, key, format string, args ...any) *MathMLMERRORElement {
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *MathMLMERRORElement) CustomDataRemove(key string) *MathMLMERRORElement {
@@ -101,6 +143,13 @@ func (e *MathMLMERRORElement) CLASS(s ...string) *MathMLMERRORElement {
 		e.DelimitedStrings.Set("class", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *MathMLMERRORElement) IfCLASS(condition bool, s ...string) *MathMLMERRORElement {
+	if condition {
+		e.CLASS(s...)
+	}
 	return e
 }
 
@@ -186,6 +235,13 @@ func (e *MathMLMERRORElement) ID(s string) *MathMLMERRORElement {
 	return e
 }
 
+func (e *MathMLMERRORElement) IfID(condition bool, s string) *MathMLMERRORElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
 // Remove the attribute id from the element.
 func (e *MathMLMERRORElement) IDRemove(s string) *MathMLMERRORElement {
 	if e.StringAttributes == nil {
@@ -203,6 +259,13 @@ func (e *MathMLMERRORElement) MATHBACKGROUND(s string) *MathMLMERRORElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("mathbackground", s)
+	return e
+}
+
+func (e *MathMLMERRORElement) IfMATHBACKGROUND(condition bool, s string) *MathMLMERRORElement {
+	if condition {
+		e.MATHBACKGROUND(s)
+	}
 	return e
 }
 
@@ -226,6 +289,13 @@ func (e *MathMLMERRORElement) MATHCOLOR(s string) *MathMLMERRORElement {
 	return e
 }
 
+func (e *MathMLMERRORElement) IfMATHCOLOR(condition bool, s string) *MathMLMERRORElement {
+	if condition {
+		e.MATHCOLOR(s)
+	}
+	return e
+}
+
 // Remove the attribute mathcolor from the element.
 func (e *MathMLMERRORElement) MATHCOLORRemove(s string) *MathMLMERRORElement {
 	if e.StringAttributes == nil {
@@ -242,6 +312,13 @@ func (e *MathMLMERRORElement) MATHSIZESTR(s string) *MathMLMERRORElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("mathsize", s)
+	return e
+}
+
+func (e *MathMLMERRORElement) IfMATHSIZESTR(condition bool, s string) *MathMLMERRORElement {
+	if condition {
+		e.MATHSIZESTR(s)
+	}
 	return e
 }
 
@@ -266,6 +343,13 @@ func (e *MathMLMERRORElement) NONCE(s string) *MathMLMERRORElement {
 	return e
 }
 
+func (e *MathMLMERRORElement) IfNONCE(condition bool, s string) *MathMLMERRORElement {
+	if condition {
+		e.NONCE(s)
+	}
+	return e
+}
+
 // Remove the attribute nonce from the element.
 func (e *MathMLMERRORElement) NONCERemove(s string) *MathMLMERRORElement {
 	if e.StringAttributes == nil {
@@ -285,6 +369,13 @@ func (e *MathMLMERRORElement) SCRIPTLEVEL(i int) *MathMLMERRORElement {
 	return e
 }
 
+func (e *MathMLMERRORElement) IfSCRIPTLEVEL(condition bool, i int) *MathMLMERRORElement {
+	if condition {
+		e.SCRIPTLEVEL(i)
+	}
+	return e
+}
+
 // Remove the attribute scriptlevel from the element.
 func (e *MathMLMERRORElement) SCRIPTLEVELRemove(i int) *MathMLMERRORElement {
 	if e.IntAttributes == nil {
@@ -300,6 +391,13 @@ func (e *MathMLMERRORElement) STYLEF(k string, format string, args ...any) *Math
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+func (e *MathMLMERRORElement) IfSTYLE(condition bool, k string, v string) *MathMLMERRORElement {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
 func (e *MathMLMERRORElement) STYLE(k string, v string) *MathMLMERRORElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -310,6 +408,13 @@ func (e *MathMLMERRORElement) STYLE(k string, v string) *MathMLMERRORElement {
 		e.KVStrings.Set("style", kv)
 	}
 	kv.Add(k, v)
+	return e
+}
+
+func (e *MathMLMERRORElement) IfSTYLEF(condition bool, k string, format string, args ...any) *MathMLMERRORElement {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
 	return e
 }
 
@@ -350,6 +455,13 @@ func (e *MathMLMERRORElement) STYLEPairs(pairs ...string) *MathMLMERRORElement {
 	return e
 }
 
+func (e *MathMLMERRORElement) IfSTYLEPairs(condition bool, pairs ...string) *MathMLMERRORElement {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
+	return e
+}
+
 // Remove the attribute style from the element.
 func (e *MathMLMERRORElement) STYLERemove(keys ...string) *MathMLMERRORElement {
 	if e.KVStrings == nil {
@@ -374,6 +486,13 @@ func (e *MathMLMERRORElement) TABINDEX(i int) *MathMLMERRORElement {
 		e.IntAttributes = treemap.New[string, int]()
 	}
 	e.IntAttributes.Set("tabindex", i)
+	return e
+}
+
+func (e *MathMLMERRORElement) IfTABINDEX(condition bool, i int) *MathMLMERRORElement {
+	if condition {
+		e.TABINDEX(i)
+	}
 	return e
 }
 

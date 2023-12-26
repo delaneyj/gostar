@@ -59,13 +59,41 @@ func (e *SVGAElement) TextF(format string, args ...any) *SVGAElement {
 	return e.Text(fmt.Sprintf(format, args...))
 }
 
+func (e *SVGAElement) IfText(condition bool, text string) *SVGAElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
+}
+
+func (e *SVGAElement) IfTextF(condition bool, format string, args ...any) *SVGAElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
+}
+
 func (e *SVGAElement) Escaped(text string) *SVGAElement {
 	e.Descendants = append(e.Descendants, Escaped(text))
 	return e
 }
 
+func (e *SVGAElement) IfEscaped(condition bool, text string) *SVGAElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
+}
+
 func (e *SVGAElement) EscapedF(format string, args ...any) *SVGAElement {
 	return e.Escaped(fmt.Sprintf(format, args...))
+}
+
+func (e *SVGAElement) IfEscapedF(condition bool, format string, args ...any) *SVGAElement {
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *SVGAElement) CustomData(key, value string) *SVGAElement {
@@ -76,8 +104,22 @@ func (e *SVGAElement) CustomData(key, value string) *SVGAElement {
 	return e
 }
 
+func (e *SVGAElement) IfCustomData(condition bool, key, value string) *SVGAElement {
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
+}
+
 func (e *SVGAElement) CustomDataF(key, format string, args ...any) *SVGAElement {
 	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
+func (e *SVGAElement) IfCustomDataF(condition bool, key, format string, args ...any) *SVGAElement {
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *SVGAElement) CustomDataRemove(key string) *SVGAElement {
@@ -101,6 +143,13 @@ func (e *SVGAElement) DOWNLOAD(s string) *SVGAElement {
 	return e
 }
 
+func (e *SVGAElement) IfDOWNLOAD(condition bool, s string) *SVGAElement {
+	if condition {
+		e.DOWNLOAD(s)
+	}
+	return e
+}
+
 // Remove the attribute download from the element.
 func (e *SVGAElement) DOWNLOADRemove(s string) *SVGAElement {
 	if e.StringAttributes == nil {
@@ -119,6 +168,13 @@ func (e *SVGAElement) HREF(s string) *SVGAElement {
 	return e
 }
 
+func (e *SVGAElement) IfHREF(condition bool, s string) *SVGAElement {
+	if condition {
+		e.HREF(s)
+	}
+	return e
+}
+
 // Remove the attribute href from the element.
 func (e *SVGAElement) HREFRemove(s string) *SVGAElement {
 	if e.StringAttributes == nil {
@@ -134,6 +190,13 @@ func (e *SVGAElement) HREFLANG(s string) *SVGAElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("hreflang", s)
+	return e
+}
+
+func (e *SVGAElement) IfHREFLANG(condition bool, s string) *SVGAElement {
+	if condition {
+		e.HREFLANG(s)
+	}
 	return e
 }
 
@@ -160,6 +223,13 @@ func (e *SVGAElement) PING(s ...string) *SVGAElement {
 		e.DelimitedStrings.Set("ping", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *SVGAElement) IfPING(condition bool, s ...string) *SVGAElement {
+	if condition {
+		e.PING(s...)
+	}
 	return e
 }
 
@@ -345,6 +415,13 @@ func (e *SVGAElement) TYPE(s string) *SVGAElement {
 	return e
 }
 
+func (e *SVGAElement) IfTYPE(condition bool, s string) *SVGAElement {
+	if condition {
+		e.TYPE(s)
+	}
+	return e
+}
+
 // Remove the attribute type from the element.
 func (e *SVGAElement) TYPERemove(s string) *SVGAElement {
 	if e.StringAttributes == nil {
@@ -360,6 +437,13 @@ func (e *SVGAElement) ID(s string) *SVGAElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("id", s)
+	return e
+}
+
+func (e *SVGAElement) IfID(condition bool, s string) *SVGAElement {
+	if condition {
+		e.ID(s)
+	}
 	return e
 }
 
@@ -387,6 +471,13 @@ func (e *SVGAElement) CLASS(s ...string) *SVGAElement {
 	return e
 }
 
+func (e *SVGAElement) IfCLASS(condition bool, s ...string) *SVGAElement {
+	if condition {
+		e.CLASS(s...)
+	}
+	return e
+}
+
 // Remove the attribute class from the element.
 func (e *SVGAElement) CLASSRemove(s ...string) *SVGAElement {
 	if e.DelimitedStrings == nil {
@@ -405,6 +496,13 @@ func (e *SVGAElement) STYLEF(k string, format string, args ...any) *SVGAElement 
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+func (e *SVGAElement) IfSTYLE(condition bool, k string, v string) *SVGAElement {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
 func (e *SVGAElement) STYLE(k string, v string) *SVGAElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -415,6 +513,13 @@ func (e *SVGAElement) STYLE(k string, v string) *SVGAElement {
 		e.KVStrings.Set("style", kv)
 	}
 	kv.Add(k, v)
+	return e
+}
+
+func (e *SVGAElement) IfSTYLEF(condition bool, k string, format string, args ...any) *SVGAElement {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
 	return e
 }
 
@@ -452,6 +557,13 @@ func (e *SVGAElement) STYLEPairs(pairs ...string) *SVGAElement {
 		kv.Add(pairs[i], pairs[i+1])
 	}
 
+	return e
+}
+
+func (e *SVGAElement) IfSTYLEPairs(condition bool, pairs ...string) *SVGAElement {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
 	return e
 }
 

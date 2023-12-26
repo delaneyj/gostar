@@ -59,13 +59,41 @@ func (e *NAVElement) TextF(format string, args ...any) *NAVElement {
 	return e.Text(fmt.Sprintf(format, args...))
 }
 
+func (e *NAVElement) IfText(condition bool, text string) *NAVElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
+}
+
+func (e *NAVElement) IfTextF(condition bool, format string, args ...any) *NAVElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
+}
+
 func (e *NAVElement) Escaped(text string) *NAVElement {
 	e.Descendants = append(e.Descendants, Escaped(text))
 	return e
 }
 
+func (e *NAVElement) IfEscaped(condition bool, text string) *NAVElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
+}
+
 func (e *NAVElement) EscapedF(format string, args ...any) *NAVElement {
 	return e.Escaped(fmt.Sprintf(format, args...))
+}
+
+func (e *NAVElement) IfEscapedF(condition bool, format string, args ...any) *NAVElement {
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *NAVElement) CustomData(key, value string) *NAVElement {
@@ -76,8 +104,22 @@ func (e *NAVElement) CustomData(key, value string) *NAVElement {
 	return e
 }
 
+func (e *NAVElement) IfCustomData(condition bool, key, value string) *NAVElement {
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
+}
+
 func (e *NAVElement) CustomDataF(key, format string, args ...any) *NAVElement {
 	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
+func (e *NAVElement) IfCustomDataF(condition bool, key, format string, args ...any) *NAVElement {
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *NAVElement) CustomDataRemove(key string) *NAVElement {
@@ -97,6 +139,13 @@ func (e *NAVElement) ACCESSKEY(r rune) *NAVElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("accesskey", string(r))
+	return e
+}
+
+func (e *NAVElement) IfACCESSKEY(condition bool, r rune) *NAVElement {
+	if condition {
+		e.ACCESSKEY(r)
+	}
 	return e
 }
 
@@ -182,12 +231,26 @@ func (e *NAVElement) AUTOFOCUS() *NAVElement {
 	return e
 }
 
+func (e *NAVElement) IfAUTOFOCUS(condition bool) *NAVElement {
+	if condition {
+		e.AUTOFOCUSSet(true)
+	}
+	return e
+}
+
 // Set the attribute autofocus to the value b explicitly.
 func (e *NAVElement) AUTOFOCUSSet(b bool) *NAVElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("autofocus", b)
+	return e
+}
+
+func (e *NAVElement) IfSetAUTOFOCUS(condition bool, b bool) *NAVElement {
+	if condition {
+		e.AUTOFOCUSSet(b)
+	}
 	return e
 }
 
@@ -215,6 +278,13 @@ func (e *NAVElement) CLASS(s ...string) *NAVElement {
 		e.DelimitedStrings.Set("class", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *NAVElement) IfCLASS(condition bool, s ...string) *NAVElement {
+	if condition {
+		e.CLASS(s...)
+	}
 	return e
 }
 
@@ -423,6 +493,13 @@ func (e *NAVElement) EXPORTPARTS(s ...string) *NAVElement {
 	return e
 }
 
+func (e *NAVElement) IfEXPORTPARTS(condition bool, s ...string) *NAVElement {
+	if condition {
+		e.EXPORTPARTS(s...)
+	}
+	return e
+}
+
 // Remove the attribute exportparts from the element.
 func (e *NAVElement) EXPORTPARTSRemove(s ...string) *NAVElement {
 	if e.DelimitedStrings == nil {
@@ -498,6 +575,13 @@ func (e *NAVElement) ID(s string) *NAVElement {
 	return e
 }
 
+func (e *NAVElement) IfID(condition bool, s string) *NAVElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
 // Remove the attribute id from the element.
 func (e *NAVElement) IDRemove(s string) *NAVElement {
 	if e.StringAttributes == nil {
@@ -524,12 +608,26 @@ func (e *NAVElement) INERT() *NAVElement {
 	return e
 }
 
+func (e *NAVElement) IfINERT(condition bool) *NAVElement {
+	if condition {
+		e.INERTSet(true)
+	}
+	return e
+}
+
 // Set the attribute inert to the value b explicitly.
 func (e *NAVElement) INERTSet(b bool) *NAVElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("inert", b)
+	return e
+}
+
+func (e *NAVElement) IfSetINERT(condition bool, b bool) *NAVElement {
+	if condition {
+		e.INERTSet(b)
+	}
 	return e
 }
 
@@ -625,6 +723,13 @@ func (e *NAVElement) IS(s string) *NAVElement {
 	return e
 }
 
+func (e *NAVElement) IfIS(condition bool, s string) *NAVElement {
+	if condition {
+		e.IS(s)
+	}
+	return e
+}
+
 // Remove the attribute is from the element.
 func (e *NAVElement) ISRemove(s string) *NAVElement {
 	if e.StringAttributes == nil {
@@ -655,6 +760,13 @@ func (e *NAVElement) ITEMID(s string) *NAVElement {
 	return e
 }
 
+func (e *NAVElement) IfITEMID(condition bool, s string) *NAVElement {
+	if condition {
+		e.ITEMID(s)
+	}
+	return e
+}
+
 // Remove the attribute itemid from the element.
 func (e *NAVElement) ITEMIDRemove(s string) *NAVElement {
 	if e.StringAttributes == nil {
@@ -680,6 +792,13 @@ func (e *NAVElement) ITEMPROP(s string) *NAVElement {
 	return e
 }
 
+func (e *NAVElement) IfITEMPROP(condition bool, s string) *NAVElement {
+	if condition {
+		e.ITEMPROP(s)
+	}
+	return e
+}
+
 // Remove the attribute itemprop from the element.
 func (e *NAVElement) ITEMPROPRemove(s string) *NAVElement {
 	if e.StringAttributes == nil {
@@ -699,6 +818,13 @@ func (e *NAVElement) ITEMREF(s string) *NAVElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("itemref", s)
+	return e
+}
+
+func (e *NAVElement) IfITEMREF(condition bool, s string) *NAVElement {
+	if condition {
+		e.ITEMREF(s)
+	}
 	return e
 }
 
@@ -724,12 +850,26 @@ func (e *NAVElement) ITEMSCOPE() *NAVElement {
 	return e
 }
 
+func (e *NAVElement) IfITEMSCOPE(condition bool) *NAVElement {
+	if condition {
+		e.ITEMSCOPESet(true)
+	}
+	return e
+}
+
 // Set the attribute itemscope to the value b explicitly.
 func (e *NAVElement) ITEMSCOPESet(b bool) *NAVElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("itemscope", b)
+	return e
+}
+
+func (e *NAVElement) IfSetITEMSCOPE(condition bool, b bool) *NAVElement {
+	if condition {
+		e.ITEMSCOPESet(b)
+	}
 	return e
 }
 
@@ -758,6 +898,13 @@ func (e *NAVElement) ITEMTYPE(s string) *NAVElement {
 	return e
 }
 
+func (e *NAVElement) IfITEMTYPE(condition bool, s string) *NAVElement {
+	if condition {
+		e.ITEMTYPE(s)
+	}
+	return e
+}
+
 // Remove the attribute itemtype from the element.
 func (e *NAVElement) ITEMTYPERemove(s string) *NAVElement {
 	if e.StringAttributes == nil {
@@ -781,6 +928,13 @@ func (e *NAVElement) LANG(s string) *NAVElement {
 	return e
 }
 
+func (e *NAVElement) IfLANG(condition bool, s string) *NAVElement {
+	if condition {
+		e.LANG(s)
+	}
+	return e
+}
+
 // Remove the attribute lang from the element.
 func (e *NAVElement) LANGRemove(s string) *NAVElement {
 	if e.StringAttributes == nil {
@@ -799,6 +953,13 @@ func (e *NAVElement) NONCE(s string) *NAVElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("nonce", s)
+	return e
+}
+
+func (e *NAVElement) IfNONCE(condition bool, s string) *NAVElement {
+	if condition {
+		e.NONCE(s)
+	}
 	return e
 }
 
@@ -825,6 +986,13 @@ func (e *NAVElement) PART(s ...string) *NAVElement {
 		e.DelimitedStrings.Set("part", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *NAVElement) IfPART(condition bool, s ...string) *NAVElement {
+	if condition {
+		e.PART(s...)
+	}
 	return e
 }
 
@@ -895,6 +1063,13 @@ func (e *NAVElement) SLOT(s string) *NAVElement {
 	return e
 }
 
+func (e *NAVElement) IfSLOT(condition bool, s string) *NAVElement {
+	if condition {
+		e.SLOT(s)
+	}
+	return e
+}
+
 // Remove the attribute slot from the element.
 func (e *NAVElement) SLOTRemove(s string) *NAVElement {
 	if e.StringAttributes == nil {
@@ -953,6 +1128,13 @@ func (e *NAVElement) STYLEF(k string, format string, args ...any) *NAVElement {
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+func (e *NAVElement) IfSTYLE(condition bool, k string, v string) *NAVElement {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
 func (e *NAVElement) STYLE(k string, v string) *NAVElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -963,6 +1145,13 @@ func (e *NAVElement) STYLE(k string, v string) *NAVElement {
 		e.KVStrings.Set("style", kv)
 	}
 	kv.Add(k, v)
+	return e
+}
+
+func (e *NAVElement) IfSTYLEF(condition bool, k string, format string, args ...any) *NAVElement {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
 	return e
 }
 
@@ -1003,6 +1192,13 @@ func (e *NAVElement) STYLEPairs(pairs ...string) *NAVElement {
 	return e
 }
 
+func (e *NAVElement) IfSTYLEPairs(condition bool, pairs ...string) *NAVElement {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
+	return e
+}
+
 // Remove the attribute style from the element.
 func (e *NAVElement) STYLERemove(keys ...string) *NAVElement {
 	if e.KVStrings == nil {
@@ -1037,6 +1233,13 @@ func (e *NAVElement) TABINDEX(i int) *NAVElement {
 		e.IntAttributes = treemap.New[string, int]()
 	}
 	e.IntAttributes.Set("tabindex", i)
+	return e
+}
+
+func (e *NAVElement) IfTABINDEX(condition bool, i int) *NAVElement {
+	if condition {
+		e.TABINDEX(i)
+	}
 	return e
 }
 
@@ -1075,6 +1278,13 @@ func (e *NAVElement) TITLE(s string) *NAVElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("title", s)
+	return e
+}
+
+func (e *NAVElement) IfTITLE(condition bool, s string) *NAVElement {
+	if condition {
+		e.TITLE(s)
+	}
 	return e
 }
 

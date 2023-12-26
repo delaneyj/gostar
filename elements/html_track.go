@@ -59,13 +59,41 @@ func (e *TRACKElement) TextF(format string, args ...any) *TRACKElement {
 	return e.Text(fmt.Sprintf(format, args...))
 }
 
+func (e *TRACKElement) IfText(condition bool, text string) *TRACKElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
+}
+
+func (e *TRACKElement) IfTextF(condition bool, format string, args ...any) *TRACKElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
+}
+
 func (e *TRACKElement) Escaped(text string) *TRACKElement {
 	e.Descendants = append(e.Descendants, Escaped(text))
 	return e
 }
 
+func (e *TRACKElement) IfEscaped(condition bool, text string) *TRACKElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
+}
+
 func (e *TRACKElement) EscapedF(format string, args ...any) *TRACKElement {
 	return e.Escaped(fmt.Sprintf(format, args...))
+}
+
+func (e *TRACKElement) IfEscapedF(condition bool, format string, args ...any) *TRACKElement {
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *TRACKElement) CustomData(key, value string) *TRACKElement {
@@ -76,8 +104,22 @@ func (e *TRACKElement) CustomData(key, value string) *TRACKElement {
 	return e
 }
 
+func (e *TRACKElement) IfCustomData(condition bool, key, value string) *TRACKElement {
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
+}
+
 func (e *TRACKElement) CustomDataF(key, format string, args ...any) *TRACKElement {
 	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
+func (e *TRACKElement) IfCustomDataF(condition bool, key, format string, args ...any) *TRACKElement {
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *TRACKElement) CustomDataRemove(key string) *TRACKElement {
@@ -94,12 +136,26 @@ func (e *TRACKElement) DEFAULT() *TRACKElement {
 	return e
 }
 
+func (e *TRACKElement) IfDEFAULT(condition bool) *TRACKElement {
+	if condition {
+		e.DEFAULTSet(true)
+	}
+	return e
+}
+
 // Set the attribute default to the value b explicitly.
 func (e *TRACKElement) DEFAULTSet(b bool) *TRACKElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("default", b)
+	return e
+}
+
+func (e *TRACKElement) IfSetDEFAULT(condition bool, b bool) *TRACKElement {
+	if condition {
+		e.DEFAULTSet(b)
+	}
 	return e
 }
 
@@ -154,6 +210,13 @@ func (e *TRACKElement) LABEL(s string) *TRACKElement {
 	return e
 }
 
+func (e *TRACKElement) IfLABEL(condition bool, s string) *TRACKElement {
+	if condition {
+		e.LABEL(s)
+	}
+	return e
+}
+
 // Remove the attribute label from the element.
 func (e *TRACKElement) LABELRemove(s string) *TRACKElement {
 	if e.StringAttributes == nil {
@@ -169,6 +232,13 @@ func (e *TRACKElement) SRC(s string) *TRACKElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("src", s)
+	return e
+}
+
+func (e *TRACKElement) IfSRC(condition bool, s string) *TRACKElement {
+	if condition {
+		e.SRC(s)
+	}
 	return e
 }
 
@@ -190,6 +260,13 @@ func (e *TRACKElement) SRCLANG(s string) *TRACKElement {
 	return e
 }
 
+func (e *TRACKElement) IfSRCLANG(condition bool, s string) *TRACKElement {
+	if condition {
+		e.SRCLANG(s)
+	}
+	return e
+}
+
 // Remove the attribute srclang from the element.
 func (e *TRACKElement) SRCLANGRemove(s string) *TRACKElement {
 	if e.StringAttributes == nil {
@@ -208,6 +285,13 @@ func (e *TRACKElement) ACCESSKEY(r rune) *TRACKElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("accesskey", string(r))
+	return e
+}
+
+func (e *TRACKElement) IfACCESSKEY(condition bool, r rune) *TRACKElement {
+	if condition {
+		e.ACCESSKEY(r)
+	}
 	return e
 }
 
@@ -293,12 +377,26 @@ func (e *TRACKElement) AUTOFOCUS() *TRACKElement {
 	return e
 }
 
+func (e *TRACKElement) IfAUTOFOCUS(condition bool) *TRACKElement {
+	if condition {
+		e.AUTOFOCUSSet(true)
+	}
+	return e
+}
+
 // Set the attribute autofocus to the value b explicitly.
 func (e *TRACKElement) AUTOFOCUSSet(b bool) *TRACKElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("autofocus", b)
+	return e
+}
+
+func (e *TRACKElement) IfSetAUTOFOCUS(condition bool, b bool) *TRACKElement {
+	if condition {
+		e.AUTOFOCUSSet(b)
+	}
 	return e
 }
 
@@ -326,6 +424,13 @@ func (e *TRACKElement) CLASS(s ...string) *TRACKElement {
 		e.DelimitedStrings.Set("class", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *TRACKElement) IfCLASS(condition bool, s ...string) *TRACKElement {
+	if condition {
+		e.CLASS(s...)
+	}
 	return e
 }
 
@@ -534,6 +639,13 @@ func (e *TRACKElement) EXPORTPARTS(s ...string) *TRACKElement {
 	return e
 }
 
+func (e *TRACKElement) IfEXPORTPARTS(condition bool, s ...string) *TRACKElement {
+	if condition {
+		e.EXPORTPARTS(s...)
+	}
+	return e
+}
+
 // Remove the attribute exportparts from the element.
 func (e *TRACKElement) EXPORTPARTSRemove(s ...string) *TRACKElement {
 	if e.DelimitedStrings == nil {
@@ -609,6 +721,13 @@ func (e *TRACKElement) ID(s string) *TRACKElement {
 	return e
 }
 
+func (e *TRACKElement) IfID(condition bool, s string) *TRACKElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
 // Remove the attribute id from the element.
 func (e *TRACKElement) IDRemove(s string) *TRACKElement {
 	if e.StringAttributes == nil {
@@ -635,12 +754,26 @@ func (e *TRACKElement) INERT() *TRACKElement {
 	return e
 }
 
+func (e *TRACKElement) IfINERT(condition bool) *TRACKElement {
+	if condition {
+		e.INERTSet(true)
+	}
+	return e
+}
+
 // Set the attribute inert to the value b explicitly.
 func (e *TRACKElement) INERTSet(b bool) *TRACKElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("inert", b)
+	return e
+}
+
+func (e *TRACKElement) IfSetINERT(condition bool, b bool) *TRACKElement {
+	if condition {
+		e.INERTSet(b)
+	}
 	return e
 }
 
@@ -736,6 +869,13 @@ func (e *TRACKElement) IS(s string) *TRACKElement {
 	return e
 }
 
+func (e *TRACKElement) IfIS(condition bool, s string) *TRACKElement {
+	if condition {
+		e.IS(s)
+	}
+	return e
+}
+
 // Remove the attribute is from the element.
 func (e *TRACKElement) ISRemove(s string) *TRACKElement {
 	if e.StringAttributes == nil {
@@ -766,6 +906,13 @@ func (e *TRACKElement) ITEMID(s string) *TRACKElement {
 	return e
 }
 
+func (e *TRACKElement) IfITEMID(condition bool, s string) *TRACKElement {
+	if condition {
+		e.ITEMID(s)
+	}
+	return e
+}
+
 // Remove the attribute itemid from the element.
 func (e *TRACKElement) ITEMIDRemove(s string) *TRACKElement {
 	if e.StringAttributes == nil {
@@ -791,6 +938,13 @@ func (e *TRACKElement) ITEMPROP(s string) *TRACKElement {
 	return e
 }
 
+func (e *TRACKElement) IfITEMPROP(condition bool, s string) *TRACKElement {
+	if condition {
+		e.ITEMPROP(s)
+	}
+	return e
+}
+
 // Remove the attribute itemprop from the element.
 func (e *TRACKElement) ITEMPROPRemove(s string) *TRACKElement {
 	if e.StringAttributes == nil {
@@ -810,6 +964,13 @@ func (e *TRACKElement) ITEMREF(s string) *TRACKElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("itemref", s)
+	return e
+}
+
+func (e *TRACKElement) IfITEMREF(condition bool, s string) *TRACKElement {
+	if condition {
+		e.ITEMREF(s)
+	}
 	return e
 }
 
@@ -835,12 +996,26 @@ func (e *TRACKElement) ITEMSCOPE() *TRACKElement {
 	return e
 }
 
+func (e *TRACKElement) IfITEMSCOPE(condition bool) *TRACKElement {
+	if condition {
+		e.ITEMSCOPESet(true)
+	}
+	return e
+}
+
 // Set the attribute itemscope to the value b explicitly.
 func (e *TRACKElement) ITEMSCOPESet(b bool) *TRACKElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("itemscope", b)
+	return e
+}
+
+func (e *TRACKElement) IfSetITEMSCOPE(condition bool, b bool) *TRACKElement {
+	if condition {
+		e.ITEMSCOPESet(b)
+	}
 	return e
 }
 
@@ -869,6 +1044,13 @@ func (e *TRACKElement) ITEMTYPE(s string) *TRACKElement {
 	return e
 }
 
+func (e *TRACKElement) IfITEMTYPE(condition bool, s string) *TRACKElement {
+	if condition {
+		e.ITEMTYPE(s)
+	}
+	return e
+}
+
 // Remove the attribute itemtype from the element.
 func (e *TRACKElement) ITEMTYPERemove(s string) *TRACKElement {
 	if e.StringAttributes == nil {
@@ -892,6 +1074,13 @@ func (e *TRACKElement) LANG(s string) *TRACKElement {
 	return e
 }
 
+func (e *TRACKElement) IfLANG(condition bool, s string) *TRACKElement {
+	if condition {
+		e.LANG(s)
+	}
+	return e
+}
+
 // Remove the attribute lang from the element.
 func (e *TRACKElement) LANGRemove(s string) *TRACKElement {
 	if e.StringAttributes == nil {
@@ -910,6 +1099,13 @@ func (e *TRACKElement) NONCE(s string) *TRACKElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("nonce", s)
+	return e
+}
+
+func (e *TRACKElement) IfNONCE(condition bool, s string) *TRACKElement {
+	if condition {
+		e.NONCE(s)
+	}
 	return e
 }
 
@@ -936,6 +1132,13 @@ func (e *TRACKElement) PART(s ...string) *TRACKElement {
 		e.DelimitedStrings.Set("part", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *TRACKElement) IfPART(condition bool, s ...string) *TRACKElement {
+	if condition {
+		e.PART(s...)
+	}
 	return e
 }
 
@@ -1006,6 +1209,13 @@ func (e *TRACKElement) SLOT(s string) *TRACKElement {
 	return e
 }
 
+func (e *TRACKElement) IfSLOT(condition bool, s string) *TRACKElement {
+	if condition {
+		e.SLOT(s)
+	}
+	return e
+}
+
 // Remove the attribute slot from the element.
 func (e *TRACKElement) SLOTRemove(s string) *TRACKElement {
 	if e.StringAttributes == nil {
@@ -1064,6 +1274,13 @@ func (e *TRACKElement) STYLEF(k string, format string, args ...any) *TRACKElemen
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+func (e *TRACKElement) IfSTYLE(condition bool, k string, v string) *TRACKElement {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
 func (e *TRACKElement) STYLE(k string, v string) *TRACKElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -1074,6 +1291,13 @@ func (e *TRACKElement) STYLE(k string, v string) *TRACKElement {
 		e.KVStrings.Set("style", kv)
 	}
 	kv.Add(k, v)
+	return e
+}
+
+func (e *TRACKElement) IfSTYLEF(condition bool, k string, format string, args ...any) *TRACKElement {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
 	return e
 }
 
@@ -1114,6 +1338,13 @@ func (e *TRACKElement) STYLEPairs(pairs ...string) *TRACKElement {
 	return e
 }
 
+func (e *TRACKElement) IfSTYLEPairs(condition bool, pairs ...string) *TRACKElement {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
+	return e
+}
+
 // Remove the attribute style from the element.
 func (e *TRACKElement) STYLERemove(keys ...string) *TRACKElement {
 	if e.KVStrings == nil {
@@ -1148,6 +1379,13 @@ func (e *TRACKElement) TABINDEX(i int) *TRACKElement {
 		e.IntAttributes = treemap.New[string, int]()
 	}
 	e.IntAttributes.Set("tabindex", i)
+	return e
+}
+
+func (e *TRACKElement) IfTABINDEX(condition bool, i int) *TRACKElement {
+	if condition {
+		e.TABINDEX(i)
+	}
 	return e
 }
 
@@ -1186,6 +1424,13 @@ func (e *TRACKElement) TITLE(s string) *TRACKElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("title", s)
+	return e
+}
+
+func (e *TRACKElement) IfTITLE(condition bool, s string) *TRACKElement {
+	if condition {
+		e.TITLE(s)
+	}
 	return e
 }
 

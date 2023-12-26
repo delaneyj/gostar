@@ -56,13 +56,41 @@ func (e *SVGTEXTPATHElement) TextF(format string, args ...any) *SVGTEXTPATHEleme
 	return e.Text(fmt.Sprintf(format, args...))
 }
 
+func (e *SVGTEXTPATHElement) IfText(condition bool, text string) *SVGTEXTPATHElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
+}
+
+func (e *SVGTEXTPATHElement) IfTextF(condition bool, format string, args ...any) *SVGTEXTPATHElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
+}
+
 func (e *SVGTEXTPATHElement) Escaped(text string) *SVGTEXTPATHElement {
 	e.Descendants = append(e.Descendants, Escaped(text))
 	return e
 }
 
+func (e *SVGTEXTPATHElement) IfEscaped(condition bool, text string) *SVGTEXTPATHElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
+}
+
 func (e *SVGTEXTPATHElement) EscapedF(format string, args ...any) *SVGTEXTPATHElement {
 	return e.Escaped(fmt.Sprintf(format, args...))
+}
+
+func (e *SVGTEXTPATHElement) IfEscapedF(condition bool, format string, args ...any) *SVGTEXTPATHElement {
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *SVGTEXTPATHElement) CustomData(key, value string) *SVGTEXTPATHElement {
@@ -73,8 +101,22 @@ func (e *SVGTEXTPATHElement) CustomData(key, value string) *SVGTEXTPATHElement {
 	return e
 }
 
+func (e *SVGTEXTPATHElement) IfCustomData(condition bool, key, value string) *SVGTEXTPATHElement {
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
+}
+
 func (e *SVGTEXTPATHElement) CustomDataF(key, format string, args ...any) *SVGTEXTPATHElement {
 	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
+func (e *SVGTEXTPATHElement) IfCustomDataF(condition bool, key, format string, args ...any) *SVGTEXTPATHElement {
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *SVGTEXTPATHElement) CustomDataRemove(key string) *SVGTEXTPATHElement {
@@ -94,6 +136,13 @@ func (e *SVGTEXTPATHElement) HREF(s string) *SVGTEXTPATHElement {
 	return e
 }
 
+func (e *SVGTEXTPATHElement) IfHREF(condition bool, s string) *SVGTEXTPATHElement {
+	if condition {
+		e.HREF(s)
+	}
+	return e
+}
+
 // Remove the attribute href from the element.
 func (e *SVGTEXTPATHElement) HREFRemove(s string) *SVGTEXTPATHElement {
 	if e.StringAttributes == nil {
@@ -110,6 +159,13 @@ func (e *SVGTEXTPATHElement) STARTOFFSET(s string) *SVGTEXTPATHElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("startOffset", s)
+	return e
+}
+
+func (e *SVGTEXTPATHElement) IfSTARTOFFSET(condition bool, s string) *SVGTEXTPATHElement {
+	if condition {
+		e.STARTOFFSET(s)
+	}
 	return e
 }
 
@@ -191,6 +247,13 @@ func (e *SVGTEXTPATHElement) CLASS(s ...string) *SVGTEXTPATHElement {
 	return e
 }
 
+func (e *SVGTEXTPATHElement) IfCLASS(condition bool, s ...string) *SVGTEXTPATHElement {
+	if condition {
+		e.CLASS(s...)
+	}
+	return e
+}
+
 // Remove the attribute class from the element.
 func (e *SVGTEXTPATHElement) CLASSRemove(s ...string) *SVGTEXTPATHElement {
 	if e.DelimitedStrings == nil {
@@ -213,6 +276,13 @@ func (e *SVGTEXTPATHElement) ID(s string) *SVGTEXTPATHElement {
 	return e
 }
 
+func (e *SVGTEXTPATHElement) IfID(condition bool, s string) *SVGTEXTPATHElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
 // Remove the attribute id from the element.
 func (e *SVGTEXTPATHElement) IDRemove(s string) *SVGTEXTPATHElement {
 	if e.StringAttributes == nil {
@@ -227,6 +297,13 @@ func (e *SVGTEXTPATHElement) STYLEF(k string, format string, args ...any) *SVGTE
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+func (e *SVGTEXTPATHElement) IfSTYLE(condition bool, k string, v string) *SVGTEXTPATHElement {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
 func (e *SVGTEXTPATHElement) STYLE(k string, v string) *SVGTEXTPATHElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -237,6 +314,13 @@ func (e *SVGTEXTPATHElement) STYLE(k string, v string) *SVGTEXTPATHElement {
 		e.KVStrings.Set("style", kv)
 	}
 	kv.Add(k, v)
+	return e
+}
+
+func (e *SVGTEXTPATHElement) IfSTYLEF(condition bool, k string, format string, args ...any) *SVGTEXTPATHElement {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
 	return e
 }
 
@@ -274,6 +358,13 @@ func (e *SVGTEXTPATHElement) STYLEPairs(pairs ...string) *SVGTEXTPATHElement {
 		kv.Add(pairs[i], pairs[i+1])
 	}
 
+	return e
+}
+
+func (e *SVGTEXTPATHElement) IfSTYLEPairs(condition bool, pairs ...string) *SVGTEXTPATHElement {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
 	return e
 }
 

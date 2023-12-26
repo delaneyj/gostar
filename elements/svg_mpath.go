@@ -56,13 +56,41 @@ func (e *SVGMPATHElement) TextF(format string, args ...any) *SVGMPATHElement {
 	return e.Text(fmt.Sprintf(format, args...))
 }
 
+func (e *SVGMPATHElement) IfText(condition bool, text string) *SVGMPATHElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
+}
+
+func (e *SVGMPATHElement) IfTextF(condition bool, format string, args ...any) *SVGMPATHElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
+}
+
 func (e *SVGMPATHElement) Escaped(text string) *SVGMPATHElement {
 	e.Descendants = append(e.Descendants, Escaped(text))
 	return e
 }
 
+func (e *SVGMPATHElement) IfEscaped(condition bool, text string) *SVGMPATHElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
+}
+
 func (e *SVGMPATHElement) EscapedF(format string, args ...any) *SVGMPATHElement {
 	return e.Escaped(fmt.Sprintf(format, args...))
+}
+
+func (e *SVGMPATHElement) IfEscapedF(condition bool, format string, args ...any) *SVGMPATHElement {
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *SVGMPATHElement) CustomData(key, value string) *SVGMPATHElement {
@@ -73,8 +101,22 @@ func (e *SVGMPATHElement) CustomData(key, value string) *SVGMPATHElement {
 	return e
 }
 
+func (e *SVGMPATHElement) IfCustomData(condition bool, key, value string) *SVGMPATHElement {
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
+}
+
 func (e *SVGMPATHElement) CustomDataF(key, format string, args ...any) *SVGMPATHElement {
 	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
+func (e *SVGMPATHElement) IfCustomDataF(condition bool, key, format string, args ...any) *SVGMPATHElement {
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *SVGMPATHElement) CustomDataRemove(key string) *SVGMPATHElement {
@@ -91,6 +133,13 @@ func (e *SVGMPATHElement) HREF(s string) *SVGMPATHElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("href", s)
+	return e
+}
+
+func (e *SVGMPATHElement) IfHREF(condition bool, s string) *SVGMPATHElement {
+	if condition {
+		e.HREF(s)
+	}
 	return e
 }
 
@@ -118,6 +167,13 @@ func (e *SVGMPATHElement) CLASS(s ...string) *SVGMPATHElement {
 	return e
 }
 
+func (e *SVGMPATHElement) IfCLASS(condition bool, s ...string) *SVGMPATHElement {
+	if condition {
+		e.CLASS(s...)
+	}
+	return e
+}
+
 // Remove the attribute class from the element.
 func (e *SVGMPATHElement) CLASSRemove(s ...string) *SVGMPATHElement {
 	if e.DelimitedStrings == nil {
@@ -140,6 +196,13 @@ func (e *SVGMPATHElement) ID(s string) *SVGMPATHElement {
 	return e
 }
 
+func (e *SVGMPATHElement) IfID(condition bool, s string) *SVGMPATHElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
 // Remove the attribute id from the element.
 func (e *SVGMPATHElement) IDRemove(s string) *SVGMPATHElement {
 	if e.StringAttributes == nil {
@@ -154,6 +217,13 @@ func (e *SVGMPATHElement) STYLEF(k string, format string, args ...any) *SVGMPATH
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+func (e *SVGMPATHElement) IfSTYLE(condition bool, k string, v string) *SVGMPATHElement {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
 func (e *SVGMPATHElement) STYLE(k string, v string) *SVGMPATHElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -164,6 +234,13 @@ func (e *SVGMPATHElement) STYLE(k string, v string) *SVGMPATHElement {
 		e.KVStrings.Set("style", kv)
 	}
 	kv.Add(k, v)
+	return e
+}
+
+func (e *SVGMPATHElement) IfSTYLEF(condition bool, k string, format string, args ...any) *SVGMPATHElement {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
 	return e
 }
 
@@ -201,6 +278,13 @@ func (e *SVGMPATHElement) STYLEPairs(pairs ...string) *SVGMPATHElement {
 		kv.Add(pairs[i], pairs[i+1])
 	}
 
+	return e
+}
+
+func (e *SVGMPATHElement) IfSTYLEPairs(condition bool, pairs ...string) *SVGMPATHElement {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
 	return e
 }
 

@@ -58,13 +58,41 @@ func (e *STYLEElement) TextF(format string, args ...any) *STYLEElement {
 	return e.Text(fmt.Sprintf(format, args...))
 }
 
+func (e *STYLEElement) IfText(condition bool, text string) *STYLEElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
+}
+
+func (e *STYLEElement) IfTextF(condition bool, format string, args ...any) *STYLEElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
+}
+
 func (e *STYLEElement) Escaped(text string) *STYLEElement {
 	e.Descendants = append(e.Descendants, Escaped(text))
 	return e
 }
 
+func (e *STYLEElement) IfEscaped(condition bool, text string) *STYLEElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
+}
+
 func (e *STYLEElement) EscapedF(format string, args ...any) *STYLEElement {
 	return e.Escaped(fmt.Sprintf(format, args...))
+}
+
+func (e *STYLEElement) IfEscapedF(condition bool, format string, args ...any) *STYLEElement {
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *STYLEElement) CustomData(key, value string) *STYLEElement {
@@ -75,8 +103,22 @@ func (e *STYLEElement) CustomData(key, value string) *STYLEElement {
 	return e
 }
 
+func (e *STYLEElement) IfCustomData(condition bool, key, value string) *STYLEElement {
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
+}
+
 func (e *STYLEElement) CustomDataF(key, format string, args ...any) *STYLEElement {
 	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
+func (e *STYLEElement) IfCustomDataF(condition bool, key, format string, args ...any) *STYLEElement {
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *STYLEElement) CustomDataRemove(key string) *STYLEElement {
@@ -93,6 +135,13 @@ func (e *STYLEElement) MEDIA(s string) *STYLEElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("media", s)
+	return e
+}
+
+func (e *STYLEElement) IfMEDIA(condition bool, s string) *STYLEElement {
+	if condition {
+		e.MEDIA(s)
+	}
 	return e
 }
 
@@ -114,6 +163,13 @@ func (e *STYLEElement) NONCE(s string) *STYLEElement {
 	return e
 }
 
+func (e *STYLEElement) IfNONCE(condition bool, s string) *STYLEElement {
+	if condition {
+		e.NONCE(s)
+	}
+	return e
+}
+
 // Remove the attribute nonce from the element.
 func (e *STYLEElement) NONCERemove(s string) *STYLEElement {
 	if e.StringAttributes == nil {
@@ -129,6 +185,13 @@ func (e *STYLEElement) TYPE(s string) *STYLEElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("type", s)
+	return e
+}
+
+func (e *STYLEElement) IfTYPE(condition bool, s string) *STYLEElement {
+	if condition {
+		e.TYPE(s)
+	}
 	return e
 }
 
@@ -150,6 +213,13 @@ func (e *STYLEElement) ACCESSKEY(r rune) *STYLEElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("accesskey", string(r))
+	return e
+}
+
+func (e *STYLEElement) IfACCESSKEY(condition bool, r rune) *STYLEElement {
+	if condition {
+		e.ACCESSKEY(r)
+	}
 	return e
 }
 
@@ -235,12 +305,26 @@ func (e *STYLEElement) AUTOFOCUS() *STYLEElement {
 	return e
 }
 
+func (e *STYLEElement) IfAUTOFOCUS(condition bool) *STYLEElement {
+	if condition {
+		e.AUTOFOCUSSet(true)
+	}
+	return e
+}
+
 // Set the attribute autofocus to the value b explicitly.
 func (e *STYLEElement) AUTOFOCUSSet(b bool) *STYLEElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("autofocus", b)
+	return e
+}
+
+func (e *STYLEElement) IfSetAUTOFOCUS(condition bool, b bool) *STYLEElement {
+	if condition {
+		e.AUTOFOCUSSet(b)
+	}
 	return e
 }
 
@@ -268,6 +352,13 @@ func (e *STYLEElement) CLASS(s ...string) *STYLEElement {
 		e.DelimitedStrings.Set("class", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *STYLEElement) IfCLASS(condition bool, s ...string) *STYLEElement {
+	if condition {
+		e.CLASS(s...)
+	}
 	return e
 }
 
@@ -476,6 +567,13 @@ func (e *STYLEElement) EXPORTPARTS(s ...string) *STYLEElement {
 	return e
 }
 
+func (e *STYLEElement) IfEXPORTPARTS(condition bool, s ...string) *STYLEElement {
+	if condition {
+		e.EXPORTPARTS(s...)
+	}
+	return e
+}
+
 // Remove the attribute exportparts from the element.
 func (e *STYLEElement) EXPORTPARTSRemove(s ...string) *STYLEElement {
 	if e.DelimitedStrings == nil {
@@ -551,6 +649,13 @@ func (e *STYLEElement) ID(s string) *STYLEElement {
 	return e
 }
 
+func (e *STYLEElement) IfID(condition bool, s string) *STYLEElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
 // Remove the attribute id from the element.
 func (e *STYLEElement) IDRemove(s string) *STYLEElement {
 	if e.StringAttributes == nil {
@@ -577,12 +682,26 @@ func (e *STYLEElement) INERT() *STYLEElement {
 	return e
 }
 
+func (e *STYLEElement) IfINERT(condition bool) *STYLEElement {
+	if condition {
+		e.INERTSet(true)
+	}
+	return e
+}
+
 // Set the attribute inert to the value b explicitly.
 func (e *STYLEElement) INERTSet(b bool) *STYLEElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("inert", b)
+	return e
+}
+
+func (e *STYLEElement) IfSetINERT(condition bool, b bool) *STYLEElement {
+	if condition {
+		e.INERTSet(b)
+	}
 	return e
 }
 
@@ -678,6 +797,13 @@ func (e *STYLEElement) IS(s string) *STYLEElement {
 	return e
 }
 
+func (e *STYLEElement) IfIS(condition bool, s string) *STYLEElement {
+	if condition {
+		e.IS(s)
+	}
+	return e
+}
+
 // Remove the attribute is from the element.
 func (e *STYLEElement) ISRemove(s string) *STYLEElement {
 	if e.StringAttributes == nil {
@@ -708,6 +834,13 @@ func (e *STYLEElement) ITEMID(s string) *STYLEElement {
 	return e
 }
 
+func (e *STYLEElement) IfITEMID(condition bool, s string) *STYLEElement {
+	if condition {
+		e.ITEMID(s)
+	}
+	return e
+}
+
 // Remove the attribute itemid from the element.
 func (e *STYLEElement) ITEMIDRemove(s string) *STYLEElement {
 	if e.StringAttributes == nil {
@@ -733,6 +866,13 @@ func (e *STYLEElement) ITEMPROP(s string) *STYLEElement {
 	return e
 }
 
+func (e *STYLEElement) IfITEMPROP(condition bool, s string) *STYLEElement {
+	if condition {
+		e.ITEMPROP(s)
+	}
+	return e
+}
+
 // Remove the attribute itemprop from the element.
 func (e *STYLEElement) ITEMPROPRemove(s string) *STYLEElement {
 	if e.StringAttributes == nil {
@@ -752,6 +892,13 @@ func (e *STYLEElement) ITEMREF(s string) *STYLEElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("itemref", s)
+	return e
+}
+
+func (e *STYLEElement) IfITEMREF(condition bool, s string) *STYLEElement {
+	if condition {
+		e.ITEMREF(s)
+	}
 	return e
 }
 
@@ -777,12 +924,26 @@ func (e *STYLEElement) ITEMSCOPE() *STYLEElement {
 	return e
 }
 
+func (e *STYLEElement) IfITEMSCOPE(condition bool) *STYLEElement {
+	if condition {
+		e.ITEMSCOPESet(true)
+	}
+	return e
+}
+
 // Set the attribute itemscope to the value b explicitly.
 func (e *STYLEElement) ITEMSCOPESet(b bool) *STYLEElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("itemscope", b)
+	return e
+}
+
+func (e *STYLEElement) IfSetITEMSCOPE(condition bool, b bool) *STYLEElement {
+	if condition {
+		e.ITEMSCOPESet(b)
+	}
 	return e
 }
 
@@ -811,6 +972,13 @@ func (e *STYLEElement) ITEMTYPE(s string) *STYLEElement {
 	return e
 }
 
+func (e *STYLEElement) IfITEMTYPE(condition bool, s string) *STYLEElement {
+	if condition {
+		e.ITEMTYPE(s)
+	}
+	return e
+}
+
 // Remove the attribute itemtype from the element.
 func (e *STYLEElement) ITEMTYPERemove(s string) *STYLEElement {
 	if e.StringAttributes == nil {
@@ -831,6 +999,13 @@ func (e *STYLEElement) LANG(s string) *STYLEElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("lang", s)
+	return e
+}
+
+func (e *STYLEElement) IfLANG(condition bool, s string) *STYLEElement {
+	if condition {
+		e.LANG(s)
+	}
 	return e
 }
 
@@ -857,6 +1032,13 @@ func (e *STYLEElement) PART(s ...string) *STYLEElement {
 		e.DelimitedStrings.Set("part", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *STYLEElement) IfPART(condition bool, s ...string) *STYLEElement {
+	if condition {
+		e.PART(s...)
+	}
 	return e
 }
 
@@ -927,6 +1109,13 @@ func (e *STYLEElement) SLOT(s string) *STYLEElement {
 	return e
 }
 
+func (e *STYLEElement) IfSLOT(condition bool, s string) *STYLEElement {
+	if condition {
+		e.SLOT(s)
+	}
+	return e
+}
+
 // Remove the attribute slot from the element.
 func (e *STYLEElement) SLOTRemove(s string) *STYLEElement {
 	if e.StringAttributes == nil {
@@ -985,6 +1174,13 @@ func (e *STYLEElement) STYLEF(k string, format string, args ...any) *STYLEElemen
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+func (e *STYLEElement) IfSTYLE(condition bool, k string, v string) *STYLEElement {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
 func (e *STYLEElement) STYLE(k string, v string) *STYLEElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -995,6 +1191,13 @@ func (e *STYLEElement) STYLE(k string, v string) *STYLEElement {
 		e.KVStrings.Set("style", kv)
 	}
 	kv.Add(k, v)
+	return e
+}
+
+func (e *STYLEElement) IfSTYLEF(condition bool, k string, format string, args ...any) *STYLEElement {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
 	return e
 }
 
@@ -1035,6 +1238,13 @@ func (e *STYLEElement) STYLEPairs(pairs ...string) *STYLEElement {
 	return e
 }
 
+func (e *STYLEElement) IfSTYLEPairs(condition bool, pairs ...string) *STYLEElement {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
+	return e
+}
+
 // Remove the attribute style from the element.
 func (e *STYLEElement) STYLERemove(keys ...string) *STYLEElement {
 	if e.KVStrings == nil {
@@ -1069,6 +1279,13 @@ func (e *STYLEElement) TABINDEX(i int) *STYLEElement {
 		e.IntAttributes = treemap.New[string, int]()
 	}
 	e.IntAttributes.Set("tabindex", i)
+	return e
+}
+
+func (e *STYLEElement) IfTABINDEX(condition bool, i int) *STYLEElement {
+	if condition {
+		e.TABINDEX(i)
+	}
 	return e
 }
 
@@ -1107,6 +1324,13 @@ func (e *STYLEElement) TITLE(s string) *STYLEElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("title", s)
+	return e
+}
+
+func (e *STYLEElement) IfTITLE(condition bool, s string) *STYLEElement {
+	if condition {
+		e.TITLE(s)
+	}
 	return e
 }
 

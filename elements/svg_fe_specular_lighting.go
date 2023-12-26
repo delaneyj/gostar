@@ -61,13 +61,41 @@ func (e *SVGFESPECULARLIGHTINGElement) TextF(format string, args ...any) *SVGFES
 	return e.Text(fmt.Sprintf(format, args...))
 }
 
+func (e *SVGFESPECULARLIGHTINGElement) IfText(condition bool, text string) *SVGFESPECULARLIGHTINGElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
+}
+
+func (e *SVGFESPECULARLIGHTINGElement) IfTextF(condition bool, format string, args ...any) *SVGFESPECULARLIGHTINGElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
+}
+
 func (e *SVGFESPECULARLIGHTINGElement) Escaped(text string) *SVGFESPECULARLIGHTINGElement {
 	e.Descendants = append(e.Descendants, Escaped(text))
 	return e
 }
 
+func (e *SVGFESPECULARLIGHTINGElement) IfEscaped(condition bool, text string) *SVGFESPECULARLIGHTINGElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
+}
+
 func (e *SVGFESPECULARLIGHTINGElement) EscapedF(format string, args ...any) *SVGFESPECULARLIGHTINGElement {
 	return e.Escaped(fmt.Sprintf(format, args...))
+}
+
+func (e *SVGFESPECULARLIGHTINGElement) IfEscapedF(condition bool, format string, args ...any) *SVGFESPECULARLIGHTINGElement {
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *SVGFESPECULARLIGHTINGElement) CustomData(key, value string) *SVGFESPECULARLIGHTINGElement {
@@ -78,8 +106,22 @@ func (e *SVGFESPECULARLIGHTINGElement) CustomData(key, value string) *SVGFESPECU
 	return e
 }
 
+func (e *SVGFESPECULARLIGHTINGElement) IfCustomData(condition bool, key, value string) *SVGFESPECULARLIGHTINGElement {
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
+}
+
 func (e *SVGFESPECULARLIGHTINGElement) CustomDataF(key, format string, args ...any) *SVGFESPECULARLIGHTINGElement {
 	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
+func (e *SVGFESPECULARLIGHTINGElement) IfCustomDataF(condition bool, key, format string, args ...any) *SVGFESPECULARLIGHTINGElement {
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *SVGFESPECULARLIGHTINGElement) CustomDataRemove(key string) *SVGFESPECULARLIGHTINGElement {
@@ -96,6 +138,13 @@ func (e *SVGFESPECULARLIGHTINGElement) IN(s string) *SVGFESPECULARLIGHTINGElemen
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("in", s)
+	return e
+}
+
+func (e *SVGFESPECULARLIGHTINGElement) IfIN(condition bool, s string) *SVGFESPECULARLIGHTINGElement {
+	if condition {
+		e.IN(s)
+	}
 	return e
 }
 
@@ -118,12 +167,26 @@ func (e *SVGFESPECULARLIGHTINGElement) SURFACESCALE(f float64) *SVGFESPECULARLIG
 	return e
 }
 
+func (e *SVGFESPECULARLIGHTINGElement) IfSURFACESCALE(condition bool, f float64) *SVGFESPECULARLIGHTINGElement {
+	if condition {
+		e.SURFACESCALE(f)
+	}
+	return e
+}
+
 // The specularConstant attribute represents the diffuse reflection constant.
 func (e *SVGFESPECULARLIGHTINGElement) SPECULARCONSTANT(f float64) *SVGFESPECULARLIGHTINGElement {
 	if e.FloatAttributes == nil {
 		e.FloatAttributes = treemap.New[string, float64]()
 	}
 	e.FloatAttributes.Set("specularConstant", f)
+	return e
+}
+
+func (e *SVGFESPECULARLIGHTINGElement) IfSPECULARCONSTANT(condition bool, f float64) *SVGFESPECULARLIGHTINGElement {
+	if condition {
+		e.SPECULARCONSTANT(f)
+	}
 	return e
 }
 
@@ -136,6 +199,13 @@ func (e *SVGFESPECULARLIGHTINGElement) SPECULAREXPONENT(f float64) *SVGFESPECULA
 	return e
 }
 
+func (e *SVGFESPECULARLIGHTINGElement) IfSPECULAREXPONENT(condition bool, f float64) *SVGFESPECULARLIGHTINGElement {
+	if condition {
+		e.SPECULAREXPONENT(f)
+	}
+	return e
+}
+
 // The kernelUnitLength attribute defines the intended distance in current filter
 // units (i.e., units as determined by the value of attribute 'primitiveUnits')
 // for dx and dy in the surface normal calculation formulas.
@@ -144,6 +214,13 @@ func (e *SVGFESPECULARLIGHTINGElement) KERNELUNITLENGTH(s string) *SVGFESPECULAR
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("kernelUnitLength", s)
+	return e
+}
+
+func (e *SVGFESPECULARLIGHTINGElement) IfKERNELUNITLENGTH(condition bool, s string) *SVGFESPECULARLIGHTINGElement {
+	if condition {
+		e.KERNELUNITLENGTH(s)
+	}
 	return e
 }
 
@@ -171,6 +248,13 @@ func (e *SVGFESPECULARLIGHTINGElement) CLASS(s ...string) *SVGFESPECULARLIGHTING
 	return e
 }
 
+func (e *SVGFESPECULARLIGHTINGElement) IfCLASS(condition bool, s ...string) *SVGFESPECULARLIGHTINGElement {
+	if condition {
+		e.CLASS(s...)
+	}
+	return e
+}
+
 // Remove the attribute class from the element.
 func (e *SVGFESPECULARLIGHTINGElement) CLASSRemove(s ...string) *SVGFESPECULARLIGHTINGElement {
 	if e.DelimitedStrings == nil {
@@ -193,6 +277,13 @@ func (e *SVGFESPECULARLIGHTINGElement) ID(s string) *SVGFESPECULARLIGHTINGElemen
 	return e
 }
 
+func (e *SVGFESPECULARLIGHTINGElement) IfID(condition bool, s string) *SVGFESPECULARLIGHTINGElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
 // Remove the attribute id from the element.
 func (e *SVGFESPECULARLIGHTINGElement) IDRemove(s string) *SVGFESPECULARLIGHTINGElement {
 	if e.StringAttributes == nil {
@@ -207,6 +298,13 @@ func (e *SVGFESPECULARLIGHTINGElement) STYLEF(k string, format string, args ...a
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+func (e *SVGFESPECULARLIGHTINGElement) IfSTYLE(condition bool, k string, v string) *SVGFESPECULARLIGHTINGElement {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
 func (e *SVGFESPECULARLIGHTINGElement) STYLE(k string, v string) *SVGFESPECULARLIGHTINGElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -217,6 +315,13 @@ func (e *SVGFESPECULARLIGHTINGElement) STYLE(k string, v string) *SVGFESPECULARL
 		e.KVStrings.Set("style", kv)
 	}
 	kv.Add(k, v)
+	return e
+}
+
+func (e *SVGFESPECULARLIGHTINGElement) IfSTYLEF(condition bool, k string, format string, args ...any) *SVGFESPECULARLIGHTINGElement {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
 	return e
 }
 
@@ -254,6 +359,13 @@ func (e *SVGFESPECULARLIGHTINGElement) STYLEPairs(pairs ...string) *SVGFESPECULA
 		kv.Add(pairs[i], pairs[i+1])
 	}
 
+	return e
+}
+
+func (e *SVGFESPECULARLIGHTINGElement) IfSTYLEPairs(condition bool, pairs ...string) *SVGFESPECULARLIGHTINGElement {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
 	return e
 }
 

@@ -56,13 +56,41 @@ func (e *MathMLMPRESCRIPTSElement) TextF(format string, args ...any) *MathMLMPRE
 	return e.Text(fmt.Sprintf(format, args...))
 }
 
+func (e *MathMLMPRESCRIPTSElement) IfText(condition bool, text string) *MathMLMPRESCRIPTSElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
+}
+
+func (e *MathMLMPRESCRIPTSElement) IfTextF(condition bool, format string, args ...any) *MathMLMPRESCRIPTSElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
+}
+
 func (e *MathMLMPRESCRIPTSElement) Escaped(text string) *MathMLMPRESCRIPTSElement {
 	e.Descendants = append(e.Descendants, Escaped(text))
 	return e
 }
 
+func (e *MathMLMPRESCRIPTSElement) IfEscaped(condition bool, text string) *MathMLMPRESCRIPTSElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
+}
+
 func (e *MathMLMPRESCRIPTSElement) EscapedF(format string, args ...any) *MathMLMPRESCRIPTSElement {
 	return e.Escaped(fmt.Sprintf(format, args...))
+}
+
+func (e *MathMLMPRESCRIPTSElement) IfEscapedF(condition bool, format string, args ...any) *MathMLMPRESCRIPTSElement {
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *MathMLMPRESCRIPTSElement) CustomData(key, value string) *MathMLMPRESCRIPTSElement {
@@ -73,8 +101,22 @@ func (e *MathMLMPRESCRIPTSElement) CustomData(key, value string) *MathMLMPRESCRI
 	return e
 }
 
+func (e *MathMLMPRESCRIPTSElement) IfCustomData(condition bool, key, value string) *MathMLMPRESCRIPTSElement {
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
+}
+
 func (e *MathMLMPRESCRIPTSElement) CustomDataF(key, format string, args ...any) *MathMLMPRESCRIPTSElement {
 	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
+func (e *MathMLMPRESCRIPTSElement) IfCustomDataF(condition bool, key, format string, args ...any) *MathMLMPRESCRIPTSElement {
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *MathMLMPRESCRIPTSElement) CustomDataRemove(key string) *MathMLMPRESCRIPTSElement {
@@ -99,6 +141,13 @@ func (e *MathMLMPRESCRIPTSElement) CLASS(s ...string) *MathMLMPRESCRIPTSElement 
 		e.DelimitedStrings.Set("class", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *MathMLMPRESCRIPTSElement) IfCLASS(condition bool, s ...string) *MathMLMPRESCRIPTSElement {
+	if condition {
+		e.CLASS(s...)
+	}
 	return e
 }
 
@@ -184,6 +233,13 @@ func (e *MathMLMPRESCRIPTSElement) ID(s string) *MathMLMPRESCRIPTSElement {
 	return e
 }
 
+func (e *MathMLMPRESCRIPTSElement) IfID(condition bool, s string) *MathMLMPRESCRIPTSElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
 // Remove the attribute id from the element.
 func (e *MathMLMPRESCRIPTSElement) IDRemove(s string) *MathMLMPRESCRIPTSElement {
 	if e.StringAttributes == nil {
@@ -201,6 +257,13 @@ func (e *MathMLMPRESCRIPTSElement) MATHBACKGROUND(s string) *MathMLMPRESCRIPTSEl
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("mathbackground", s)
+	return e
+}
+
+func (e *MathMLMPRESCRIPTSElement) IfMATHBACKGROUND(condition bool, s string) *MathMLMPRESCRIPTSElement {
+	if condition {
+		e.MATHBACKGROUND(s)
+	}
 	return e
 }
 
@@ -224,6 +287,13 @@ func (e *MathMLMPRESCRIPTSElement) MATHCOLOR(s string) *MathMLMPRESCRIPTSElement
 	return e
 }
 
+func (e *MathMLMPRESCRIPTSElement) IfMATHCOLOR(condition bool, s string) *MathMLMPRESCRIPTSElement {
+	if condition {
+		e.MATHCOLOR(s)
+	}
+	return e
+}
+
 // Remove the attribute mathcolor from the element.
 func (e *MathMLMPRESCRIPTSElement) MATHCOLORRemove(s string) *MathMLMPRESCRIPTSElement {
 	if e.StringAttributes == nil {
@@ -240,6 +310,13 @@ func (e *MathMLMPRESCRIPTSElement) MATHSIZESTR(s string) *MathMLMPRESCRIPTSEleme
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("mathsize", s)
+	return e
+}
+
+func (e *MathMLMPRESCRIPTSElement) IfMATHSIZESTR(condition bool, s string) *MathMLMPRESCRIPTSElement {
+	if condition {
+		e.MATHSIZESTR(s)
+	}
 	return e
 }
 
@@ -264,6 +341,13 @@ func (e *MathMLMPRESCRIPTSElement) NONCE(s string) *MathMLMPRESCRIPTSElement {
 	return e
 }
 
+func (e *MathMLMPRESCRIPTSElement) IfNONCE(condition bool, s string) *MathMLMPRESCRIPTSElement {
+	if condition {
+		e.NONCE(s)
+	}
+	return e
+}
+
 // Remove the attribute nonce from the element.
 func (e *MathMLMPRESCRIPTSElement) NONCERemove(s string) *MathMLMPRESCRIPTSElement {
 	if e.StringAttributes == nil {
@@ -283,6 +367,13 @@ func (e *MathMLMPRESCRIPTSElement) SCRIPTLEVEL(i int) *MathMLMPRESCRIPTSElement 
 	return e
 }
 
+func (e *MathMLMPRESCRIPTSElement) IfSCRIPTLEVEL(condition bool, i int) *MathMLMPRESCRIPTSElement {
+	if condition {
+		e.SCRIPTLEVEL(i)
+	}
+	return e
+}
+
 // Remove the attribute scriptlevel from the element.
 func (e *MathMLMPRESCRIPTSElement) SCRIPTLEVELRemove(i int) *MathMLMPRESCRIPTSElement {
 	if e.IntAttributes == nil {
@@ -298,6 +389,13 @@ func (e *MathMLMPRESCRIPTSElement) STYLEF(k string, format string, args ...any) 
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+func (e *MathMLMPRESCRIPTSElement) IfSTYLE(condition bool, k string, v string) *MathMLMPRESCRIPTSElement {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
 func (e *MathMLMPRESCRIPTSElement) STYLE(k string, v string) *MathMLMPRESCRIPTSElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -308,6 +406,13 @@ func (e *MathMLMPRESCRIPTSElement) STYLE(k string, v string) *MathMLMPRESCRIPTSE
 		e.KVStrings.Set("style", kv)
 	}
 	kv.Add(k, v)
+	return e
+}
+
+func (e *MathMLMPRESCRIPTSElement) IfSTYLEF(condition bool, k string, format string, args ...any) *MathMLMPRESCRIPTSElement {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
 	return e
 }
 
@@ -348,6 +453,13 @@ func (e *MathMLMPRESCRIPTSElement) STYLEPairs(pairs ...string) *MathMLMPRESCRIPT
 	return e
 }
 
+func (e *MathMLMPRESCRIPTSElement) IfSTYLEPairs(condition bool, pairs ...string) *MathMLMPRESCRIPTSElement {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
+	return e
+}
+
 // Remove the attribute style from the element.
 func (e *MathMLMPRESCRIPTSElement) STYLERemove(keys ...string) *MathMLMPRESCRIPTSElement {
 	if e.KVStrings == nil {
@@ -372,6 +484,13 @@ func (e *MathMLMPRESCRIPTSElement) TABINDEX(i int) *MathMLMPRESCRIPTSElement {
 		e.IntAttributes = treemap.New[string, int]()
 	}
 	e.IntAttributes.Set("tabindex", i)
+	return e
+}
+
+func (e *MathMLMPRESCRIPTSElement) IfTABINDEX(condition bool, i int) *MathMLMPRESCRIPTSElement {
+	if condition {
+		e.TABINDEX(i)
+	}
 	return e
 }
 

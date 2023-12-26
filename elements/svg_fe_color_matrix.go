@@ -58,13 +58,41 @@ func (e *SVGFECOLORMATRIXElement) TextF(format string, args ...any) *SVGFECOLORM
 	return e.Text(fmt.Sprintf(format, args...))
 }
 
+func (e *SVGFECOLORMATRIXElement) IfText(condition bool, text string) *SVGFECOLORMATRIXElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
+}
+
+func (e *SVGFECOLORMATRIXElement) IfTextF(condition bool, format string, args ...any) *SVGFECOLORMATRIXElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
+}
+
 func (e *SVGFECOLORMATRIXElement) Escaped(text string) *SVGFECOLORMATRIXElement {
 	e.Descendants = append(e.Descendants, Escaped(text))
 	return e
 }
 
+func (e *SVGFECOLORMATRIXElement) IfEscaped(condition bool, text string) *SVGFECOLORMATRIXElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
+}
+
 func (e *SVGFECOLORMATRIXElement) EscapedF(format string, args ...any) *SVGFECOLORMATRIXElement {
 	return e.Escaped(fmt.Sprintf(format, args...))
+}
+
+func (e *SVGFECOLORMATRIXElement) IfEscapedF(condition bool, format string, args ...any) *SVGFECOLORMATRIXElement {
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *SVGFECOLORMATRIXElement) CustomData(key, value string) *SVGFECOLORMATRIXElement {
@@ -75,8 +103,22 @@ func (e *SVGFECOLORMATRIXElement) CustomData(key, value string) *SVGFECOLORMATRI
 	return e
 }
 
+func (e *SVGFECOLORMATRIXElement) IfCustomData(condition bool, key, value string) *SVGFECOLORMATRIXElement {
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
+}
+
 func (e *SVGFECOLORMATRIXElement) CustomDataF(key, format string, args ...any) *SVGFECOLORMATRIXElement {
 	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
+func (e *SVGFECOLORMATRIXElement) IfCustomDataF(condition bool, key, format string, args ...any) *SVGFECOLORMATRIXElement {
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *SVGFECOLORMATRIXElement) CustomDataRemove(key string) *SVGFECOLORMATRIXElement {
@@ -93,6 +135,13 @@ func (e *SVGFECOLORMATRIXElement) IN(s string) *SVGFECOLORMATRIXElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("in", s)
+	return e
+}
+
+func (e *SVGFECOLORMATRIXElement) IfIN(condition bool, s string) *SVGFECOLORMATRIXElement {
+	if condition {
+		e.IN(s)
+	}
 	return e
 }
 
@@ -145,6 +194,13 @@ func (e *SVGFECOLORMATRIXElement) VALUES(s string) *SVGFECOLORMATRIXElement {
 	return e
 }
 
+func (e *SVGFECOLORMATRIXElement) IfVALUES(condition bool, s string) *SVGFECOLORMATRIXElement {
+	if condition {
+		e.VALUES(s)
+	}
+	return e
+}
+
 // Remove the attribute values from the element.
 func (e *SVGFECOLORMATRIXElement) VALUESRemove(s string) *SVGFECOLORMATRIXElement {
 	if e.StringAttributes == nil {
@@ -166,6 +222,13 @@ func (e *SVGFECOLORMATRIXElement) CLASS(s ...string) *SVGFECOLORMATRIXElement {
 		e.DelimitedStrings.Set("class", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *SVGFECOLORMATRIXElement) IfCLASS(condition bool, s ...string) *SVGFECOLORMATRIXElement {
+	if condition {
+		e.CLASS(s...)
+	}
 	return e
 }
 
@@ -191,6 +254,13 @@ func (e *SVGFECOLORMATRIXElement) ID(s string) *SVGFECOLORMATRIXElement {
 	return e
 }
 
+func (e *SVGFECOLORMATRIXElement) IfID(condition bool, s string) *SVGFECOLORMATRIXElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
 // Remove the attribute id from the element.
 func (e *SVGFECOLORMATRIXElement) IDRemove(s string) *SVGFECOLORMATRIXElement {
 	if e.StringAttributes == nil {
@@ -205,6 +275,13 @@ func (e *SVGFECOLORMATRIXElement) STYLEF(k string, format string, args ...any) *
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+func (e *SVGFECOLORMATRIXElement) IfSTYLE(condition bool, k string, v string) *SVGFECOLORMATRIXElement {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
 func (e *SVGFECOLORMATRIXElement) STYLE(k string, v string) *SVGFECOLORMATRIXElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -215,6 +292,13 @@ func (e *SVGFECOLORMATRIXElement) STYLE(k string, v string) *SVGFECOLORMATRIXEle
 		e.KVStrings.Set("style", kv)
 	}
 	kv.Add(k, v)
+	return e
+}
+
+func (e *SVGFECOLORMATRIXElement) IfSTYLEF(condition bool, k string, format string, args ...any) *SVGFECOLORMATRIXElement {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
 	return e
 }
 
@@ -252,6 +336,13 @@ func (e *SVGFECOLORMATRIXElement) STYLEPairs(pairs ...string) *SVGFECOLORMATRIXE
 		kv.Add(pairs[i], pairs[i+1])
 	}
 
+	return e
+}
+
+func (e *SVGFECOLORMATRIXElement) IfSTYLEPairs(condition bool, pairs ...string) *SVGFECOLORMATRIXElement {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
 	return e
 }
 

@@ -59,13 +59,41 @@ func (e *DIVElement) TextF(format string, args ...any) *DIVElement {
 	return e.Text(fmt.Sprintf(format, args...))
 }
 
+func (e *DIVElement) IfText(condition bool, text string) *DIVElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
+}
+
+func (e *DIVElement) IfTextF(condition bool, format string, args ...any) *DIVElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
+}
+
 func (e *DIVElement) Escaped(text string) *DIVElement {
 	e.Descendants = append(e.Descendants, Escaped(text))
 	return e
 }
 
+func (e *DIVElement) IfEscaped(condition bool, text string) *DIVElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
+}
+
 func (e *DIVElement) EscapedF(format string, args ...any) *DIVElement {
 	return e.Escaped(fmt.Sprintf(format, args...))
+}
+
+func (e *DIVElement) IfEscapedF(condition bool, format string, args ...any) *DIVElement {
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *DIVElement) CustomData(key, value string) *DIVElement {
@@ -76,8 +104,22 @@ func (e *DIVElement) CustomData(key, value string) *DIVElement {
 	return e
 }
 
+func (e *DIVElement) IfCustomData(condition bool, key, value string) *DIVElement {
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
+}
+
 func (e *DIVElement) CustomDataF(key, format string, args ...any) *DIVElement {
 	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
+func (e *DIVElement) IfCustomDataF(condition bool, key, format string, args ...any) *DIVElement {
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *DIVElement) CustomDataRemove(key string) *DIVElement {
@@ -97,6 +139,13 @@ func (e *DIVElement) ACCESSKEY(r rune) *DIVElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("accesskey", string(r))
+	return e
+}
+
+func (e *DIVElement) IfACCESSKEY(condition bool, r rune) *DIVElement {
+	if condition {
+		e.ACCESSKEY(r)
+	}
 	return e
 }
 
@@ -182,12 +231,26 @@ func (e *DIVElement) AUTOFOCUS() *DIVElement {
 	return e
 }
 
+func (e *DIVElement) IfAUTOFOCUS(condition bool) *DIVElement {
+	if condition {
+		e.AUTOFOCUSSet(true)
+	}
+	return e
+}
+
 // Set the attribute autofocus to the value b explicitly.
 func (e *DIVElement) AUTOFOCUSSet(b bool) *DIVElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("autofocus", b)
+	return e
+}
+
+func (e *DIVElement) IfSetAUTOFOCUS(condition bool, b bool) *DIVElement {
+	if condition {
+		e.AUTOFOCUSSet(b)
+	}
 	return e
 }
 
@@ -215,6 +278,13 @@ func (e *DIVElement) CLASS(s ...string) *DIVElement {
 		e.DelimitedStrings.Set("class", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *DIVElement) IfCLASS(condition bool, s ...string) *DIVElement {
+	if condition {
+		e.CLASS(s...)
+	}
 	return e
 }
 
@@ -423,6 +493,13 @@ func (e *DIVElement) EXPORTPARTS(s ...string) *DIVElement {
 	return e
 }
 
+func (e *DIVElement) IfEXPORTPARTS(condition bool, s ...string) *DIVElement {
+	if condition {
+		e.EXPORTPARTS(s...)
+	}
+	return e
+}
+
 // Remove the attribute exportparts from the element.
 func (e *DIVElement) EXPORTPARTSRemove(s ...string) *DIVElement {
 	if e.DelimitedStrings == nil {
@@ -498,6 +575,13 @@ func (e *DIVElement) ID(s string) *DIVElement {
 	return e
 }
 
+func (e *DIVElement) IfID(condition bool, s string) *DIVElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
 // Remove the attribute id from the element.
 func (e *DIVElement) IDRemove(s string) *DIVElement {
 	if e.StringAttributes == nil {
@@ -524,12 +608,26 @@ func (e *DIVElement) INERT() *DIVElement {
 	return e
 }
 
+func (e *DIVElement) IfINERT(condition bool) *DIVElement {
+	if condition {
+		e.INERTSet(true)
+	}
+	return e
+}
+
 // Set the attribute inert to the value b explicitly.
 func (e *DIVElement) INERTSet(b bool) *DIVElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("inert", b)
+	return e
+}
+
+func (e *DIVElement) IfSetINERT(condition bool, b bool) *DIVElement {
+	if condition {
+		e.INERTSet(b)
+	}
 	return e
 }
 
@@ -625,6 +723,13 @@ func (e *DIVElement) IS(s string) *DIVElement {
 	return e
 }
 
+func (e *DIVElement) IfIS(condition bool, s string) *DIVElement {
+	if condition {
+		e.IS(s)
+	}
+	return e
+}
+
 // Remove the attribute is from the element.
 func (e *DIVElement) ISRemove(s string) *DIVElement {
 	if e.StringAttributes == nil {
@@ -655,6 +760,13 @@ func (e *DIVElement) ITEMID(s string) *DIVElement {
 	return e
 }
 
+func (e *DIVElement) IfITEMID(condition bool, s string) *DIVElement {
+	if condition {
+		e.ITEMID(s)
+	}
+	return e
+}
+
 // Remove the attribute itemid from the element.
 func (e *DIVElement) ITEMIDRemove(s string) *DIVElement {
 	if e.StringAttributes == nil {
@@ -680,6 +792,13 @@ func (e *DIVElement) ITEMPROP(s string) *DIVElement {
 	return e
 }
 
+func (e *DIVElement) IfITEMPROP(condition bool, s string) *DIVElement {
+	if condition {
+		e.ITEMPROP(s)
+	}
+	return e
+}
+
 // Remove the attribute itemprop from the element.
 func (e *DIVElement) ITEMPROPRemove(s string) *DIVElement {
 	if e.StringAttributes == nil {
@@ -699,6 +818,13 @@ func (e *DIVElement) ITEMREF(s string) *DIVElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("itemref", s)
+	return e
+}
+
+func (e *DIVElement) IfITEMREF(condition bool, s string) *DIVElement {
+	if condition {
+		e.ITEMREF(s)
+	}
 	return e
 }
 
@@ -724,12 +850,26 @@ func (e *DIVElement) ITEMSCOPE() *DIVElement {
 	return e
 }
 
+func (e *DIVElement) IfITEMSCOPE(condition bool) *DIVElement {
+	if condition {
+		e.ITEMSCOPESet(true)
+	}
+	return e
+}
+
 // Set the attribute itemscope to the value b explicitly.
 func (e *DIVElement) ITEMSCOPESet(b bool) *DIVElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("itemscope", b)
+	return e
+}
+
+func (e *DIVElement) IfSetITEMSCOPE(condition bool, b bool) *DIVElement {
+	if condition {
+		e.ITEMSCOPESet(b)
+	}
 	return e
 }
 
@@ -758,6 +898,13 @@ func (e *DIVElement) ITEMTYPE(s string) *DIVElement {
 	return e
 }
 
+func (e *DIVElement) IfITEMTYPE(condition bool, s string) *DIVElement {
+	if condition {
+		e.ITEMTYPE(s)
+	}
+	return e
+}
+
 // Remove the attribute itemtype from the element.
 func (e *DIVElement) ITEMTYPERemove(s string) *DIVElement {
 	if e.StringAttributes == nil {
@@ -781,6 +928,13 @@ func (e *DIVElement) LANG(s string) *DIVElement {
 	return e
 }
 
+func (e *DIVElement) IfLANG(condition bool, s string) *DIVElement {
+	if condition {
+		e.LANG(s)
+	}
+	return e
+}
+
 // Remove the attribute lang from the element.
 func (e *DIVElement) LANGRemove(s string) *DIVElement {
 	if e.StringAttributes == nil {
@@ -799,6 +953,13 @@ func (e *DIVElement) NONCE(s string) *DIVElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("nonce", s)
+	return e
+}
+
+func (e *DIVElement) IfNONCE(condition bool, s string) *DIVElement {
+	if condition {
+		e.NONCE(s)
+	}
 	return e
 }
 
@@ -825,6 +986,13 @@ func (e *DIVElement) PART(s ...string) *DIVElement {
 		e.DelimitedStrings.Set("part", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *DIVElement) IfPART(condition bool, s ...string) *DIVElement {
+	if condition {
+		e.PART(s...)
+	}
 	return e
 }
 
@@ -895,6 +1063,13 @@ func (e *DIVElement) SLOT(s string) *DIVElement {
 	return e
 }
 
+func (e *DIVElement) IfSLOT(condition bool, s string) *DIVElement {
+	if condition {
+		e.SLOT(s)
+	}
+	return e
+}
+
 // Remove the attribute slot from the element.
 func (e *DIVElement) SLOTRemove(s string) *DIVElement {
 	if e.StringAttributes == nil {
@@ -953,6 +1128,13 @@ func (e *DIVElement) STYLEF(k string, format string, args ...any) *DIVElement {
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+func (e *DIVElement) IfSTYLE(condition bool, k string, v string) *DIVElement {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
 func (e *DIVElement) STYLE(k string, v string) *DIVElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -963,6 +1145,13 @@ func (e *DIVElement) STYLE(k string, v string) *DIVElement {
 		e.KVStrings.Set("style", kv)
 	}
 	kv.Add(k, v)
+	return e
+}
+
+func (e *DIVElement) IfSTYLEF(condition bool, k string, format string, args ...any) *DIVElement {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
 	return e
 }
 
@@ -1003,6 +1192,13 @@ func (e *DIVElement) STYLEPairs(pairs ...string) *DIVElement {
 	return e
 }
 
+func (e *DIVElement) IfSTYLEPairs(condition bool, pairs ...string) *DIVElement {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
+	return e
+}
+
 // Remove the attribute style from the element.
 func (e *DIVElement) STYLERemove(keys ...string) *DIVElement {
 	if e.KVStrings == nil {
@@ -1037,6 +1233,13 @@ func (e *DIVElement) TABINDEX(i int) *DIVElement {
 		e.IntAttributes = treemap.New[string, int]()
 	}
 	e.IntAttributes.Set("tabindex", i)
+	return e
+}
+
+func (e *DIVElement) IfTABINDEX(condition bool, i int) *DIVElement {
+	if condition {
+		e.TABINDEX(i)
+	}
 	return e
 }
 
@@ -1075,6 +1278,13 @@ func (e *DIVElement) TITLE(s string) *DIVElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("title", s)
+	return e
+}
+
+func (e *DIVElement) IfTITLE(condition bool, s string) *DIVElement {
+	if condition {
+		e.TITLE(s)
+	}
 	return e
 }
 

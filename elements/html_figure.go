@@ -57,13 +57,41 @@ func (e *FIGUREElement) TextF(format string, args ...any) *FIGUREElement {
 	return e.Text(fmt.Sprintf(format, args...))
 }
 
+func (e *FIGUREElement) IfText(condition bool, text string) *FIGUREElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
+}
+
+func (e *FIGUREElement) IfTextF(condition bool, format string, args ...any) *FIGUREElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
+}
+
 func (e *FIGUREElement) Escaped(text string) *FIGUREElement {
 	e.Descendants = append(e.Descendants, Escaped(text))
 	return e
 }
 
+func (e *FIGUREElement) IfEscaped(condition bool, text string) *FIGUREElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
+}
+
 func (e *FIGUREElement) EscapedF(format string, args ...any) *FIGUREElement {
 	return e.Escaped(fmt.Sprintf(format, args...))
+}
+
+func (e *FIGUREElement) IfEscapedF(condition bool, format string, args ...any) *FIGUREElement {
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *FIGUREElement) CustomData(key, value string) *FIGUREElement {
@@ -74,8 +102,22 @@ func (e *FIGUREElement) CustomData(key, value string) *FIGUREElement {
 	return e
 }
 
+func (e *FIGUREElement) IfCustomData(condition bool, key, value string) *FIGUREElement {
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
+}
+
 func (e *FIGUREElement) CustomDataF(key, format string, args ...any) *FIGUREElement {
 	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
+func (e *FIGUREElement) IfCustomDataF(condition bool, key, format string, args ...any) *FIGUREElement {
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *FIGUREElement) CustomDataRemove(key string) *FIGUREElement {
@@ -95,6 +137,13 @@ func (e *FIGUREElement) ACCESSKEY(r rune) *FIGUREElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("accesskey", string(r))
+	return e
+}
+
+func (e *FIGUREElement) IfACCESSKEY(condition bool, r rune) *FIGUREElement {
+	if condition {
+		e.ACCESSKEY(r)
+	}
 	return e
 }
 
@@ -180,12 +229,26 @@ func (e *FIGUREElement) AUTOFOCUS() *FIGUREElement {
 	return e
 }
 
+func (e *FIGUREElement) IfAUTOFOCUS(condition bool) *FIGUREElement {
+	if condition {
+		e.AUTOFOCUSSet(true)
+	}
+	return e
+}
+
 // Set the attribute autofocus to the value b explicitly.
 func (e *FIGUREElement) AUTOFOCUSSet(b bool) *FIGUREElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("autofocus", b)
+	return e
+}
+
+func (e *FIGUREElement) IfSetAUTOFOCUS(condition bool, b bool) *FIGUREElement {
+	if condition {
+		e.AUTOFOCUSSet(b)
+	}
 	return e
 }
 
@@ -213,6 +276,13 @@ func (e *FIGUREElement) CLASS(s ...string) *FIGUREElement {
 		e.DelimitedStrings.Set("class", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *FIGUREElement) IfCLASS(condition bool, s ...string) *FIGUREElement {
+	if condition {
+		e.CLASS(s...)
+	}
 	return e
 }
 
@@ -421,6 +491,13 @@ func (e *FIGUREElement) EXPORTPARTS(s ...string) *FIGUREElement {
 	return e
 }
 
+func (e *FIGUREElement) IfEXPORTPARTS(condition bool, s ...string) *FIGUREElement {
+	if condition {
+		e.EXPORTPARTS(s...)
+	}
+	return e
+}
+
 // Remove the attribute exportparts from the element.
 func (e *FIGUREElement) EXPORTPARTSRemove(s ...string) *FIGUREElement {
 	if e.DelimitedStrings == nil {
@@ -496,6 +573,13 @@ func (e *FIGUREElement) ID(s string) *FIGUREElement {
 	return e
 }
 
+func (e *FIGUREElement) IfID(condition bool, s string) *FIGUREElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
 // Remove the attribute id from the element.
 func (e *FIGUREElement) IDRemove(s string) *FIGUREElement {
 	if e.StringAttributes == nil {
@@ -522,12 +606,26 @@ func (e *FIGUREElement) INERT() *FIGUREElement {
 	return e
 }
 
+func (e *FIGUREElement) IfINERT(condition bool) *FIGUREElement {
+	if condition {
+		e.INERTSet(true)
+	}
+	return e
+}
+
 // Set the attribute inert to the value b explicitly.
 func (e *FIGUREElement) INERTSet(b bool) *FIGUREElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("inert", b)
+	return e
+}
+
+func (e *FIGUREElement) IfSetINERT(condition bool, b bool) *FIGUREElement {
+	if condition {
+		e.INERTSet(b)
+	}
 	return e
 }
 
@@ -623,6 +721,13 @@ func (e *FIGUREElement) IS(s string) *FIGUREElement {
 	return e
 }
 
+func (e *FIGUREElement) IfIS(condition bool, s string) *FIGUREElement {
+	if condition {
+		e.IS(s)
+	}
+	return e
+}
+
 // Remove the attribute is from the element.
 func (e *FIGUREElement) ISRemove(s string) *FIGUREElement {
 	if e.StringAttributes == nil {
@@ -653,6 +758,13 @@ func (e *FIGUREElement) ITEMID(s string) *FIGUREElement {
 	return e
 }
 
+func (e *FIGUREElement) IfITEMID(condition bool, s string) *FIGUREElement {
+	if condition {
+		e.ITEMID(s)
+	}
+	return e
+}
+
 // Remove the attribute itemid from the element.
 func (e *FIGUREElement) ITEMIDRemove(s string) *FIGUREElement {
 	if e.StringAttributes == nil {
@@ -678,6 +790,13 @@ func (e *FIGUREElement) ITEMPROP(s string) *FIGUREElement {
 	return e
 }
 
+func (e *FIGUREElement) IfITEMPROP(condition bool, s string) *FIGUREElement {
+	if condition {
+		e.ITEMPROP(s)
+	}
+	return e
+}
+
 // Remove the attribute itemprop from the element.
 func (e *FIGUREElement) ITEMPROPRemove(s string) *FIGUREElement {
 	if e.StringAttributes == nil {
@@ -697,6 +816,13 @@ func (e *FIGUREElement) ITEMREF(s string) *FIGUREElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("itemref", s)
+	return e
+}
+
+func (e *FIGUREElement) IfITEMREF(condition bool, s string) *FIGUREElement {
+	if condition {
+		e.ITEMREF(s)
+	}
 	return e
 }
 
@@ -722,12 +848,26 @@ func (e *FIGUREElement) ITEMSCOPE() *FIGUREElement {
 	return e
 }
 
+func (e *FIGUREElement) IfITEMSCOPE(condition bool) *FIGUREElement {
+	if condition {
+		e.ITEMSCOPESet(true)
+	}
+	return e
+}
+
 // Set the attribute itemscope to the value b explicitly.
 func (e *FIGUREElement) ITEMSCOPESet(b bool) *FIGUREElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("itemscope", b)
+	return e
+}
+
+func (e *FIGUREElement) IfSetITEMSCOPE(condition bool, b bool) *FIGUREElement {
+	if condition {
+		e.ITEMSCOPESet(b)
+	}
 	return e
 }
 
@@ -756,6 +896,13 @@ func (e *FIGUREElement) ITEMTYPE(s string) *FIGUREElement {
 	return e
 }
 
+func (e *FIGUREElement) IfITEMTYPE(condition bool, s string) *FIGUREElement {
+	if condition {
+		e.ITEMTYPE(s)
+	}
+	return e
+}
+
 // Remove the attribute itemtype from the element.
 func (e *FIGUREElement) ITEMTYPERemove(s string) *FIGUREElement {
 	if e.StringAttributes == nil {
@@ -779,6 +926,13 @@ func (e *FIGUREElement) LANG(s string) *FIGUREElement {
 	return e
 }
 
+func (e *FIGUREElement) IfLANG(condition bool, s string) *FIGUREElement {
+	if condition {
+		e.LANG(s)
+	}
+	return e
+}
+
 // Remove the attribute lang from the element.
 func (e *FIGUREElement) LANGRemove(s string) *FIGUREElement {
 	if e.StringAttributes == nil {
@@ -797,6 +951,13 @@ func (e *FIGUREElement) NONCE(s string) *FIGUREElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("nonce", s)
+	return e
+}
+
+func (e *FIGUREElement) IfNONCE(condition bool, s string) *FIGUREElement {
+	if condition {
+		e.NONCE(s)
+	}
 	return e
 }
 
@@ -823,6 +984,13 @@ func (e *FIGUREElement) PART(s ...string) *FIGUREElement {
 		e.DelimitedStrings.Set("part", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *FIGUREElement) IfPART(condition bool, s ...string) *FIGUREElement {
+	if condition {
+		e.PART(s...)
+	}
 	return e
 }
 
@@ -893,6 +1061,13 @@ func (e *FIGUREElement) SLOT(s string) *FIGUREElement {
 	return e
 }
 
+func (e *FIGUREElement) IfSLOT(condition bool, s string) *FIGUREElement {
+	if condition {
+		e.SLOT(s)
+	}
+	return e
+}
+
 // Remove the attribute slot from the element.
 func (e *FIGUREElement) SLOTRemove(s string) *FIGUREElement {
 	if e.StringAttributes == nil {
@@ -951,6 +1126,13 @@ func (e *FIGUREElement) STYLEF(k string, format string, args ...any) *FIGUREElem
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+func (e *FIGUREElement) IfSTYLE(condition bool, k string, v string) *FIGUREElement {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
 func (e *FIGUREElement) STYLE(k string, v string) *FIGUREElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -961,6 +1143,13 @@ func (e *FIGUREElement) STYLE(k string, v string) *FIGUREElement {
 		e.KVStrings.Set("style", kv)
 	}
 	kv.Add(k, v)
+	return e
+}
+
+func (e *FIGUREElement) IfSTYLEF(condition bool, k string, format string, args ...any) *FIGUREElement {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
 	return e
 }
 
@@ -1001,6 +1190,13 @@ func (e *FIGUREElement) STYLEPairs(pairs ...string) *FIGUREElement {
 	return e
 }
 
+func (e *FIGUREElement) IfSTYLEPairs(condition bool, pairs ...string) *FIGUREElement {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
+	return e
+}
+
 // Remove the attribute style from the element.
 func (e *FIGUREElement) STYLERemove(keys ...string) *FIGUREElement {
 	if e.KVStrings == nil {
@@ -1035,6 +1231,13 @@ func (e *FIGUREElement) TABINDEX(i int) *FIGUREElement {
 		e.IntAttributes = treemap.New[string, int]()
 	}
 	e.IntAttributes.Set("tabindex", i)
+	return e
+}
+
+func (e *FIGUREElement) IfTABINDEX(condition bool, i int) *FIGUREElement {
+	if condition {
+		e.TABINDEX(i)
+	}
 	return e
 }
 
@@ -1073,6 +1276,13 @@ func (e *FIGUREElement) TITLE(s string) *FIGUREElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("title", s)
+	return e
+}
+
+func (e *FIGUREElement) IfTITLE(condition bool, s string) *FIGUREElement {
+	if condition {
+		e.TITLE(s)
+	}
 	return e
 }
 

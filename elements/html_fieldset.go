@@ -56,13 +56,41 @@ func (e *FIELDSETElement) TextF(format string, args ...any) *FIELDSETElement {
 	return e.Text(fmt.Sprintf(format, args...))
 }
 
+func (e *FIELDSETElement) IfText(condition bool, text string) *FIELDSETElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
+}
+
+func (e *FIELDSETElement) IfTextF(condition bool, format string, args ...any) *FIELDSETElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
+}
+
 func (e *FIELDSETElement) Escaped(text string) *FIELDSETElement {
 	e.Descendants = append(e.Descendants, Escaped(text))
 	return e
 }
 
+func (e *FIELDSETElement) IfEscaped(condition bool, text string) *FIELDSETElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
+}
+
 func (e *FIELDSETElement) EscapedF(format string, args ...any) *FIELDSETElement {
 	return e.Escaped(fmt.Sprintf(format, args...))
+}
+
+func (e *FIELDSETElement) IfEscapedF(condition bool, format string, args ...any) *FIELDSETElement {
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *FIELDSETElement) CustomData(key, value string) *FIELDSETElement {
@@ -73,8 +101,22 @@ func (e *FIELDSETElement) CustomData(key, value string) *FIELDSETElement {
 	return e
 }
 
+func (e *FIELDSETElement) IfCustomData(condition bool, key, value string) *FIELDSETElement {
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
+}
+
 func (e *FIELDSETElement) CustomDataF(key, format string, args ...any) *FIELDSETElement {
 	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
+func (e *FIELDSETElement) IfCustomDataF(condition bool, key, format string, args ...any) *FIELDSETElement {
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *FIELDSETElement) CustomDataRemove(key string) *FIELDSETElement {
@@ -94,6 +136,13 @@ func (e *FIELDSETElement) ACCESSKEY(r rune) *FIELDSETElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("accesskey", string(r))
+	return e
+}
+
+func (e *FIELDSETElement) IfACCESSKEY(condition bool, r rune) *FIELDSETElement {
+	if condition {
+		e.ACCESSKEY(r)
+	}
 	return e
 }
 
@@ -179,12 +228,26 @@ func (e *FIELDSETElement) AUTOFOCUS() *FIELDSETElement {
 	return e
 }
 
+func (e *FIELDSETElement) IfAUTOFOCUS(condition bool) *FIELDSETElement {
+	if condition {
+		e.AUTOFOCUSSet(true)
+	}
+	return e
+}
+
 // Set the attribute autofocus to the value b explicitly.
 func (e *FIELDSETElement) AUTOFOCUSSet(b bool) *FIELDSETElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("autofocus", b)
+	return e
+}
+
+func (e *FIELDSETElement) IfSetAUTOFOCUS(condition bool, b bool) *FIELDSETElement {
+	if condition {
+		e.AUTOFOCUSSet(b)
+	}
 	return e
 }
 
@@ -212,6 +275,13 @@ func (e *FIELDSETElement) CLASS(s ...string) *FIELDSETElement {
 		e.DelimitedStrings.Set("class", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *FIELDSETElement) IfCLASS(condition bool, s ...string) *FIELDSETElement {
+	if condition {
+		e.CLASS(s...)
+	}
 	return e
 }
 
@@ -420,6 +490,13 @@ func (e *FIELDSETElement) EXPORTPARTS(s ...string) *FIELDSETElement {
 	return e
 }
 
+func (e *FIELDSETElement) IfEXPORTPARTS(condition bool, s ...string) *FIELDSETElement {
+	if condition {
+		e.EXPORTPARTS(s...)
+	}
+	return e
+}
+
 // Remove the attribute exportparts from the element.
 func (e *FIELDSETElement) EXPORTPARTSRemove(s ...string) *FIELDSETElement {
 	if e.DelimitedStrings == nil {
@@ -495,6 +572,13 @@ func (e *FIELDSETElement) ID(s string) *FIELDSETElement {
 	return e
 }
 
+func (e *FIELDSETElement) IfID(condition bool, s string) *FIELDSETElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
 // Remove the attribute id from the element.
 func (e *FIELDSETElement) IDRemove(s string) *FIELDSETElement {
 	if e.StringAttributes == nil {
@@ -521,12 +605,26 @@ func (e *FIELDSETElement) INERT() *FIELDSETElement {
 	return e
 }
 
+func (e *FIELDSETElement) IfINERT(condition bool) *FIELDSETElement {
+	if condition {
+		e.INERTSet(true)
+	}
+	return e
+}
+
 // Set the attribute inert to the value b explicitly.
 func (e *FIELDSETElement) INERTSet(b bool) *FIELDSETElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("inert", b)
+	return e
+}
+
+func (e *FIELDSETElement) IfSetINERT(condition bool, b bool) *FIELDSETElement {
+	if condition {
+		e.INERTSet(b)
+	}
 	return e
 }
 
@@ -622,6 +720,13 @@ func (e *FIELDSETElement) IS(s string) *FIELDSETElement {
 	return e
 }
 
+func (e *FIELDSETElement) IfIS(condition bool, s string) *FIELDSETElement {
+	if condition {
+		e.IS(s)
+	}
+	return e
+}
+
 // Remove the attribute is from the element.
 func (e *FIELDSETElement) ISRemove(s string) *FIELDSETElement {
 	if e.StringAttributes == nil {
@@ -652,6 +757,13 @@ func (e *FIELDSETElement) ITEMID(s string) *FIELDSETElement {
 	return e
 }
 
+func (e *FIELDSETElement) IfITEMID(condition bool, s string) *FIELDSETElement {
+	if condition {
+		e.ITEMID(s)
+	}
+	return e
+}
+
 // Remove the attribute itemid from the element.
 func (e *FIELDSETElement) ITEMIDRemove(s string) *FIELDSETElement {
 	if e.StringAttributes == nil {
@@ -677,6 +789,13 @@ func (e *FIELDSETElement) ITEMPROP(s string) *FIELDSETElement {
 	return e
 }
 
+func (e *FIELDSETElement) IfITEMPROP(condition bool, s string) *FIELDSETElement {
+	if condition {
+		e.ITEMPROP(s)
+	}
+	return e
+}
+
 // Remove the attribute itemprop from the element.
 func (e *FIELDSETElement) ITEMPROPRemove(s string) *FIELDSETElement {
 	if e.StringAttributes == nil {
@@ -696,6 +815,13 @@ func (e *FIELDSETElement) ITEMREF(s string) *FIELDSETElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("itemref", s)
+	return e
+}
+
+func (e *FIELDSETElement) IfITEMREF(condition bool, s string) *FIELDSETElement {
+	if condition {
+		e.ITEMREF(s)
+	}
 	return e
 }
 
@@ -721,12 +847,26 @@ func (e *FIELDSETElement) ITEMSCOPE() *FIELDSETElement {
 	return e
 }
 
+func (e *FIELDSETElement) IfITEMSCOPE(condition bool) *FIELDSETElement {
+	if condition {
+		e.ITEMSCOPESet(true)
+	}
+	return e
+}
+
 // Set the attribute itemscope to the value b explicitly.
 func (e *FIELDSETElement) ITEMSCOPESet(b bool) *FIELDSETElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("itemscope", b)
+	return e
+}
+
+func (e *FIELDSETElement) IfSetITEMSCOPE(condition bool, b bool) *FIELDSETElement {
+	if condition {
+		e.ITEMSCOPESet(b)
+	}
 	return e
 }
 
@@ -755,6 +895,13 @@ func (e *FIELDSETElement) ITEMTYPE(s string) *FIELDSETElement {
 	return e
 }
 
+func (e *FIELDSETElement) IfITEMTYPE(condition bool, s string) *FIELDSETElement {
+	if condition {
+		e.ITEMTYPE(s)
+	}
+	return e
+}
+
 // Remove the attribute itemtype from the element.
 func (e *FIELDSETElement) ITEMTYPERemove(s string) *FIELDSETElement {
 	if e.StringAttributes == nil {
@@ -778,6 +925,13 @@ func (e *FIELDSETElement) LANG(s string) *FIELDSETElement {
 	return e
 }
 
+func (e *FIELDSETElement) IfLANG(condition bool, s string) *FIELDSETElement {
+	if condition {
+		e.LANG(s)
+	}
+	return e
+}
+
 // Remove the attribute lang from the element.
 func (e *FIELDSETElement) LANGRemove(s string) *FIELDSETElement {
 	if e.StringAttributes == nil {
@@ -796,6 +950,13 @@ func (e *FIELDSETElement) NONCE(s string) *FIELDSETElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("nonce", s)
+	return e
+}
+
+func (e *FIELDSETElement) IfNONCE(condition bool, s string) *FIELDSETElement {
+	if condition {
+		e.NONCE(s)
+	}
 	return e
 }
 
@@ -822,6 +983,13 @@ func (e *FIELDSETElement) PART(s ...string) *FIELDSETElement {
 		e.DelimitedStrings.Set("part", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *FIELDSETElement) IfPART(condition bool, s ...string) *FIELDSETElement {
+	if condition {
+		e.PART(s...)
+	}
 	return e
 }
 
@@ -892,6 +1060,13 @@ func (e *FIELDSETElement) SLOT(s string) *FIELDSETElement {
 	return e
 }
 
+func (e *FIELDSETElement) IfSLOT(condition bool, s string) *FIELDSETElement {
+	if condition {
+		e.SLOT(s)
+	}
+	return e
+}
+
 // Remove the attribute slot from the element.
 func (e *FIELDSETElement) SLOTRemove(s string) *FIELDSETElement {
 	if e.StringAttributes == nil {
@@ -950,6 +1125,13 @@ func (e *FIELDSETElement) STYLEF(k string, format string, args ...any) *FIELDSET
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+func (e *FIELDSETElement) IfSTYLE(condition bool, k string, v string) *FIELDSETElement {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
 func (e *FIELDSETElement) STYLE(k string, v string) *FIELDSETElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -960,6 +1142,13 @@ func (e *FIELDSETElement) STYLE(k string, v string) *FIELDSETElement {
 		e.KVStrings.Set("style", kv)
 	}
 	kv.Add(k, v)
+	return e
+}
+
+func (e *FIELDSETElement) IfSTYLEF(condition bool, k string, format string, args ...any) *FIELDSETElement {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
 	return e
 }
 
@@ -1000,6 +1189,13 @@ func (e *FIELDSETElement) STYLEPairs(pairs ...string) *FIELDSETElement {
 	return e
 }
 
+func (e *FIELDSETElement) IfSTYLEPairs(condition bool, pairs ...string) *FIELDSETElement {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
+	return e
+}
+
 // Remove the attribute style from the element.
 func (e *FIELDSETElement) STYLERemove(keys ...string) *FIELDSETElement {
 	if e.KVStrings == nil {
@@ -1034,6 +1230,13 @@ func (e *FIELDSETElement) TABINDEX(i int) *FIELDSETElement {
 		e.IntAttributes = treemap.New[string, int]()
 	}
 	e.IntAttributes.Set("tabindex", i)
+	return e
+}
+
+func (e *FIELDSETElement) IfTABINDEX(condition bool, i int) *FIELDSETElement {
+	if condition {
+		e.TABINDEX(i)
+	}
 	return e
 }
 
@@ -1072,6 +1275,13 @@ func (e *FIELDSETElement) TITLE(s string) *FIELDSETElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("title", s)
+	return e
+}
+
+func (e *FIELDSETElement) IfTITLE(condition bool, s string) *FIELDSETElement {
+	if condition {
+		e.TITLE(s)
+	}
 	return e
 }
 

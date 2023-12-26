@@ -57,13 +57,41 @@ func (e *SVGFEDISTANTLIGHTElement) TextF(format string, args ...any) *SVGFEDISTA
 	return e.Text(fmt.Sprintf(format, args...))
 }
 
+func (e *SVGFEDISTANTLIGHTElement) IfText(condition bool, text string) *SVGFEDISTANTLIGHTElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
+}
+
+func (e *SVGFEDISTANTLIGHTElement) IfTextF(condition bool, format string, args ...any) *SVGFEDISTANTLIGHTElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
+}
+
 func (e *SVGFEDISTANTLIGHTElement) Escaped(text string) *SVGFEDISTANTLIGHTElement {
 	e.Descendants = append(e.Descendants, Escaped(text))
 	return e
 }
 
+func (e *SVGFEDISTANTLIGHTElement) IfEscaped(condition bool, text string) *SVGFEDISTANTLIGHTElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
+}
+
 func (e *SVGFEDISTANTLIGHTElement) EscapedF(format string, args ...any) *SVGFEDISTANTLIGHTElement {
 	return e.Escaped(fmt.Sprintf(format, args...))
+}
+
+func (e *SVGFEDISTANTLIGHTElement) IfEscapedF(condition bool, format string, args ...any) *SVGFEDISTANTLIGHTElement {
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *SVGFEDISTANTLIGHTElement) CustomData(key, value string) *SVGFEDISTANTLIGHTElement {
@@ -74,8 +102,22 @@ func (e *SVGFEDISTANTLIGHTElement) CustomData(key, value string) *SVGFEDISTANTLI
 	return e
 }
 
+func (e *SVGFEDISTANTLIGHTElement) IfCustomData(condition bool, key, value string) *SVGFEDISTANTLIGHTElement {
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
+}
+
 func (e *SVGFEDISTANTLIGHTElement) CustomDataF(key, format string, args ...any) *SVGFEDISTANTLIGHTElement {
 	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
+func (e *SVGFEDISTANTLIGHTElement) IfCustomDataF(condition bool, key, format string, args ...any) *SVGFEDISTANTLIGHTElement {
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *SVGFEDISTANTLIGHTElement) CustomDataRemove(key string) *SVGFEDISTANTLIGHTElement {
@@ -96,6 +138,13 @@ func (e *SVGFEDISTANTLIGHTElement) AZIMUTH(f float64) *SVGFEDISTANTLIGHTElement 
 	return e
 }
 
+func (e *SVGFEDISTANTLIGHTElement) IfAZIMUTH(condition bool, f float64) *SVGFEDISTANTLIGHTElement {
+	if condition {
+		e.AZIMUTH(f)
+	}
+	return e
+}
+
 // The elevation attribute represent the direction vector of the light source
 // perpendicular to the XY plane, in degrees from the XY plane towards the z axis
 // (clockwise).
@@ -104,6 +153,13 @@ func (e *SVGFEDISTANTLIGHTElement) ELEVATION(f float64) *SVGFEDISTANTLIGHTElemen
 		e.FloatAttributes = treemap.New[string, float64]()
 	}
 	e.FloatAttributes.Set("elevation", f)
+	return e
+}
+
+func (e *SVGFEDISTANTLIGHTElement) IfELEVATION(condition bool, f float64) *SVGFEDISTANTLIGHTElement {
+	if condition {
+		e.ELEVATION(f)
+	}
 	return e
 }
 
@@ -119,6 +175,13 @@ func (e *SVGFEDISTANTLIGHTElement) CLASS(s ...string) *SVGFEDISTANTLIGHTElement 
 		e.DelimitedStrings.Set("class", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *SVGFEDISTANTLIGHTElement) IfCLASS(condition bool, s ...string) *SVGFEDISTANTLIGHTElement {
+	if condition {
+		e.CLASS(s...)
+	}
 	return e
 }
 
@@ -144,6 +207,13 @@ func (e *SVGFEDISTANTLIGHTElement) ID(s string) *SVGFEDISTANTLIGHTElement {
 	return e
 }
 
+func (e *SVGFEDISTANTLIGHTElement) IfID(condition bool, s string) *SVGFEDISTANTLIGHTElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
 // Remove the attribute id from the element.
 func (e *SVGFEDISTANTLIGHTElement) IDRemove(s string) *SVGFEDISTANTLIGHTElement {
 	if e.StringAttributes == nil {
@@ -158,6 +228,13 @@ func (e *SVGFEDISTANTLIGHTElement) STYLEF(k string, format string, args ...any) 
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+func (e *SVGFEDISTANTLIGHTElement) IfSTYLE(condition bool, k string, v string) *SVGFEDISTANTLIGHTElement {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
 func (e *SVGFEDISTANTLIGHTElement) STYLE(k string, v string) *SVGFEDISTANTLIGHTElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -168,6 +245,13 @@ func (e *SVGFEDISTANTLIGHTElement) STYLE(k string, v string) *SVGFEDISTANTLIGHTE
 		e.KVStrings.Set("style", kv)
 	}
 	kv.Add(k, v)
+	return e
+}
+
+func (e *SVGFEDISTANTLIGHTElement) IfSTYLEF(condition bool, k string, format string, args ...any) *SVGFEDISTANTLIGHTElement {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
 	return e
 }
 
@@ -205,6 +289,13 @@ func (e *SVGFEDISTANTLIGHTElement) STYLEPairs(pairs ...string) *SVGFEDISTANTLIGH
 		kv.Add(pairs[i], pairs[i+1])
 	}
 
+	return e
+}
+
+func (e *SVGFEDISTANTLIGHTElement) IfSTYLEPairs(condition bool, pairs ...string) *SVGFEDISTANTLIGHTElement {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
 	return e
 }
 

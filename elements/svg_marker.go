@@ -57,13 +57,41 @@ func (e *SVGMARKERElement) TextF(format string, args ...any) *SVGMARKERElement {
 	return e.Text(fmt.Sprintf(format, args...))
 }
 
+func (e *SVGMARKERElement) IfText(condition bool, text string) *SVGMARKERElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
+}
+
+func (e *SVGMARKERElement) IfTextF(condition bool, format string, args ...any) *SVGMARKERElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
+}
+
 func (e *SVGMARKERElement) Escaped(text string) *SVGMARKERElement {
 	e.Descendants = append(e.Descendants, Escaped(text))
 	return e
 }
 
+func (e *SVGMARKERElement) IfEscaped(condition bool, text string) *SVGMARKERElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
+}
+
 func (e *SVGMARKERElement) EscapedF(format string, args ...any) *SVGMARKERElement {
 	return e.Escaped(fmt.Sprintf(format, args...))
+}
+
+func (e *SVGMARKERElement) IfEscapedF(condition bool, format string, args ...any) *SVGMARKERElement {
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *SVGMARKERElement) CustomData(key, value string) *SVGMARKERElement {
@@ -74,8 +102,22 @@ func (e *SVGMARKERElement) CustomData(key, value string) *SVGMARKERElement {
 	return e
 }
 
+func (e *SVGMARKERElement) IfCustomData(condition bool, key, value string) *SVGMARKERElement {
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
+}
+
 func (e *SVGMARKERElement) CustomDataF(key, format string, args ...any) *SVGMARKERElement {
 	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
+func (e *SVGMARKERElement) IfCustomDataF(condition bool, key, format string, args ...any) *SVGMARKERElement {
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *SVGMARKERElement) CustomDataRemove(key string) *SVGMARKERElement {
@@ -96,6 +138,13 @@ func (e *SVGMARKERElement) REFX(f float64) *SVGMARKERElement {
 	return e
 }
 
+func (e *SVGMARKERElement) IfREFX(condition bool, f float64) *SVGMARKERElement {
+	if condition {
+		e.REFX(f)
+	}
+	return e
+}
+
 // The y-axis coordinate of the reference point which is to be aligned exactly at
 // the marker position.
 func (e *SVGMARKERElement) REFY(f float64) *SVGMARKERElement {
@@ -103,6 +152,13 @@ func (e *SVGMARKERElement) REFY(f float64) *SVGMARKERElement {
 		e.FloatAttributes = treemap.New[string, float64]()
 	}
 	e.FloatAttributes.Set("refY", f)
+	return e
+}
+
+func (e *SVGMARKERElement) IfREFY(condition bool, f float64) *SVGMARKERElement {
+	if condition {
+		e.REFY(f)
+	}
 	return e
 }
 
@@ -115,12 +171,26 @@ func (e *SVGMARKERElement) MARKERWIDTH(f float64) *SVGMARKERElement {
 	return e
 }
 
+func (e *SVGMARKERElement) IfMARKERWIDTH(condition bool, f float64) *SVGMARKERElement {
+	if condition {
+		e.MARKERWIDTH(f)
+	}
+	return e
+}
+
 // The height of the marker viewport.
 func (e *SVGMARKERElement) MARKERHEIGHT(f float64) *SVGMARKERElement {
 	if e.FloatAttributes == nil {
 		e.FloatAttributes = treemap.New[string, float64]()
 	}
 	e.FloatAttributes.Set("markerHeight", f)
+	return e
+}
+
+func (e *SVGMARKERElement) IfMARKERHEIGHT(condition bool, f float64) *SVGMARKERElement {
+	if condition {
+		e.MARKERHEIGHT(f)
+	}
 	return e
 }
 
@@ -189,6 +259,13 @@ func (e *SVGMARKERElement) VIEWBOX(s string) *SVGMARKERElement {
 	return e
 }
 
+func (e *SVGMARKERElement) IfVIEWBOX(condition bool, s string) *SVGMARKERElement {
+	if condition {
+		e.VIEWBOX(s)
+	}
+	return e
+}
+
 // Remove the attribute viewBox from the element.
 func (e *SVGMARKERElement) VIEWBOXRemove(s string) *SVGMARKERElement {
 	if e.StringAttributes == nil {
@@ -210,6 +287,13 @@ func (e *SVGMARKERElement) CLASS(s ...string) *SVGMARKERElement {
 		e.DelimitedStrings.Set("class", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *SVGMARKERElement) IfCLASS(condition bool, s ...string) *SVGMARKERElement {
+	if condition {
+		e.CLASS(s...)
+	}
 	return e
 }
 
@@ -235,6 +319,13 @@ func (e *SVGMARKERElement) ID(s string) *SVGMARKERElement {
 	return e
 }
 
+func (e *SVGMARKERElement) IfID(condition bool, s string) *SVGMARKERElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
 // Remove the attribute id from the element.
 func (e *SVGMARKERElement) IDRemove(s string) *SVGMARKERElement {
 	if e.StringAttributes == nil {
@@ -249,6 +340,13 @@ func (e *SVGMARKERElement) STYLEF(k string, format string, args ...any) *SVGMARK
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+func (e *SVGMARKERElement) IfSTYLE(condition bool, k string, v string) *SVGMARKERElement {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
 func (e *SVGMARKERElement) STYLE(k string, v string) *SVGMARKERElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -259,6 +357,13 @@ func (e *SVGMARKERElement) STYLE(k string, v string) *SVGMARKERElement {
 		e.KVStrings.Set("style", kv)
 	}
 	kv.Add(k, v)
+	return e
+}
+
+func (e *SVGMARKERElement) IfSTYLEF(condition bool, k string, format string, args ...any) *SVGMARKERElement {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
 	return e
 }
 
@@ -296,6 +401,13 @@ func (e *SVGMARKERElement) STYLEPairs(pairs ...string) *SVGMARKERElement {
 		kv.Add(pairs[i], pairs[i+1])
 	}
 
+	return e
+}
+
+func (e *SVGMARKERElement) IfSTYLEPairs(condition bool, pairs ...string) *SVGMARKERElement {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
 	return e
 }
 

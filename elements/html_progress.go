@@ -56,13 +56,41 @@ func (e *PROGRESSElement) TextF(format string, args ...any) *PROGRESSElement {
 	return e.Text(fmt.Sprintf(format, args...))
 }
 
+func (e *PROGRESSElement) IfText(condition bool, text string) *PROGRESSElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
+}
+
+func (e *PROGRESSElement) IfTextF(condition bool, format string, args ...any) *PROGRESSElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
+}
+
 func (e *PROGRESSElement) Escaped(text string) *PROGRESSElement {
 	e.Descendants = append(e.Descendants, Escaped(text))
 	return e
 }
 
+func (e *PROGRESSElement) IfEscaped(condition bool, text string) *PROGRESSElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
+}
+
 func (e *PROGRESSElement) EscapedF(format string, args ...any) *PROGRESSElement {
 	return e.Escaped(fmt.Sprintf(format, args...))
+}
+
+func (e *PROGRESSElement) IfEscapedF(condition bool, format string, args ...any) *PROGRESSElement {
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *PROGRESSElement) CustomData(key, value string) *PROGRESSElement {
@@ -73,8 +101,22 @@ func (e *PROGRESSElement) CustomData(key, value string) *PROGRESSElement {
 	return e
 }
 
+func (e *PROGRESSElement) IfCustomData(condition bool, key, value string) *PROGRESSElement {
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
+}
+
 func (e *PROGRESSElement) CustomDataF(key, format string, args ...any) *PROGRESSElement {
 	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
+func (e *PROGRESSElement) IfCustomDataF(condition bool, key, format string, args ...any) *PROGRESSElement {
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *PROGRESSElement) CustomDataRemove(key string) *PROGRESSElement {
@@ -94,12 +136,26 @@ func (e *PROGRESSElement) MAX(f float64) *PROGRESSElement {
 	return e
 }
 
+func (e *PROGRESSElement) IfMAX(condition bool, f float64) *PROGRESSElement {
+	if condition {
+		e.MAX(f)
+	}
+	return e
+}
+
 // Current value of the element.
 func (e *PROGRESSElement) VALUE(f float64) *PROGRESSElement {
 	if e.FloatAttributes == nil {
 		e.FloatAttributes = treemap.New[string, float64]()
 	}
 	e.FloatAttributes.Set("value", f)
+	return e
+}
+
+func (e *PROGRESSElement) IfVALUE(condition bool, f float64) *PROGRESSElement {
+	if condition {
+		e.VALUE(f)
+	}
 	return e
 }
 
@@ -112,6 +168,13 @@ func (e *PROGRESSElement) ACCESSKEY(r rune) *PROGRESSElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("accesskey", string(r))
+	return e
+}
+
+func (e *PROGRESSElement) IfACCESSKEY(condition bool, r rune) *PROGRESSElement {
+	if condition {
+		e.ACCESSKEY(r)
+	}
 	return e
 }
 
@@ -197,12 +260,26 @@ func (e *PROGRESSElement) AUTOFOCUS() *PROGRESSElement {
 	return e
 }
 
+func (e *PROGRESSElement) IfAUTOFOCUS(condition bool) *PROGRESSElement {
+	if condition {
+		e.AUTOFOCUSSet(true)
+	}
+	return e
+}
+
 // Set the attribute autofocus to the value b explicitly.
 func (e *PROGRESSElement) AUTOFOCUSSet(b bool) *PROGRESSElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("autofocus", b)
+	return e
+}
+
+func (e *PROGRESSElement) IfSetAUTOFOCUS(condition bool, b bool) *PROGRESSElement {
+	if condition {
+		e.AUTOFOCUSSet(b)
+	}
 	return e
 }
 
@@ -230,6 +307,13 @@ func (e *PROGRESSElement) CLASS(s ...string) *PROGRESSElement {
 		e.DelimitedStrings.Set("class", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *PROGRESSElement) IfCLASS(condition bool, s ...string) *PROGRESSElement {
+	if condition {
+		e.CLASS(s...)
+	}
 	return e
 }
 
@@ -438,6 +522,13 @@ func (e *PROGRESSElement) EXPORTPARTS(s ...string) *PROGRESSElement {
 	return e
 }
 
+func (e *PROGRESSElement) IfEXPORTPARTS(condition bool, s ...string) *PROGRESSElement {
+	if condition {
+		e.EXPORTPARTS(s...)
+	}
+	return e
+}
+
 // Remove the attribute exportparts from the element.
 func (e *PROGRESSElement) EXPORTPARTSRemove(s ...string) *PROGRESSElement {
 	if e.DelimitedStrings == nil {
@@ -513,6 +604,13 @@ func (e *PROGRESSElement) ID(s string) *PROGRESSElement {
 	return e
 }
 
+func (e *PROGRESSElement) IfID(condition bool, s string) *PROGRESSElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
 // Remove the attribute id from the element.
 func (e *PROGRESSElement) IDRemove(s string) *PROGRESSElement {
 	if e.StringAttributes == nil {
@@ -539,12 +637,26 @@ func (e *PROGRESSElement) INERT() *PROGRESSElement {
 	return e
 }
 
+func (e *PROGRESSElement) IfINERT(condition bool) *PROGRESSElement {
+	if condition {
+		e.INERTSet(true)
+	}
+	return e
+}
+
 // Set the attribute inert to the value b explicitly.
 func (e *PROGRESSElement) INERTSet(b bool) *PROGRESSElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("inert", b)
+	return e
+}
+
+func (e *PROGRESSElement) IfSetINERT(condition bool, b bool) *PROGRESSElement {
+	if condition {
+		e.INERTSet(b)
+	}
 	return e
 }
 
@@ -640,6 +752,13 @@ func (e *PROGRESSElement) IS(s string) *PROGRESSElement {
 	return e
 }
 
+func (e *PROGRESSElement) IfIS(condition bool, s string) *PROGRESSElement {
+	if condition {
+		e.IS(s)
+	}
+	return e
+}
+
 // Remove the attribute is from the element.
 func (e *PROGRESSElement) ISRemove(s string) *PROGRESSElement {
 	if e.StringAttributes == nil {
@@ -670,6 +789,13 @@ func (e *PROGRESSElement) ITEMID(s string) *PROGRESSElement {
 	return e
 }
 
+func (e *PROGRESSElement) IfITEMID(condition bool, s string) *PROGRESSElement {
+	if condition {
+		e.ITEMID(s)
+	}
+	return e
+}
+
 // Remove the attribute itemid from the element.
 func (e *PROGRESSElement) ITEMIDRemove(s string) *PROGRESSElement {
 	if e.StringAttributes == nil {
@@ -695,6 +821,13 @@ func (e *PROGRESSElement) ITEMPROP(s string) *PROGRESSElement {
 	return e
 }
 
+func (e *PROGRESSElement) IfITEMPROP(condition bool, s string) *PROGRESSElement {
+	if condition {
+		e.ITEMPROP(s)
+	}
+	return e
+}
+
 // Remove the attribute itemprop from the element.
 func (e *PROGRESSElement) ITEMPROPRemove(s string) *PROGRESSElement {
 	if e.StringAttributes == nil {
@@ -714,6 +847,13 @@ func (e *PROGRESSElement) ITEMREF(s string) *PROGRESSElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("itemref", s)
+	return e
+}
+
+func (e *PROGRESSElement) IfITEMREF(condition bool, s string) *PROGRESSElement {
+	if condition {
+		e.ITEMREF(s)
+	}
 	return e
 }
 
@@ -739,12 +879,26 @@ func (e *PROGRESSElement) ITEMSCOPE() *PROGRESSElement {
 	return e
 }
 
+func (e *PROGRESSElement) IfITEMSCOPE(condition bool) *PROGRESSElement {
+	if condition {
+		e.ITEMSCOPESet(true)
+	}
+	return e
+}
+
 // Set the attribute itemscope to the value b explicitly.
 func (e *PROGRESSElement) ITEMSCOPESet(b bool) *PROGRESSElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("itemscope", b)
+	return e
+}
+
+func (e *PROGRESSElement) IfSetITEMSCOPE(condition bool, b bool) *PROGRESSElement {
+	if condition {
+		e.ITEMSCOPESet(b)
+	}
 	return e
 }
 
@@ -773,6 +927,13 @@ func (e *PROGRESSElement) ITEMTYPE(s string) *PROGRESSElement {
 	return e
 }
 
+func (e *PROGRESSElement) IfITEMTYPE(condition bool, s string) *PROGRESSElement {
+	if condition {
+		e.ITEMTYPE(s)
+	}
+	return e
+}
+
 // Remove the attribute itemtype from the element.
 func (e *PROGRESSElement) ITEMTYPERemove(s string) *PROGRESSElement {
 	if e.StringAttributes == nil {
@@ -796,6 +957,13 @@ func (e *PROGRESSElement) LANG(s string) *PROGRESSElement {
 	return e
 }
 
+func (e *PROGRESSElement) IfLANG(condition bool, s string) *PROGRESSElement {
+	if condition {
+		e.LANG(s)
+	}
+	return e
+}
+
 // Remove the attribute lang from the element.
 func (e *PROGRESSElement) LANGRemove(s string) *PROGRESSElement {
 	if e.StringAttributes == nil {
@@ -814,6 +982,13 @@ func (e *PROGRESSElement) NONCE(s string) *PROGRESSElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("nonce", s)
+	return e
+}
+
+func (e *PROGRESSElement) IfNONCE(condition bool, s string) *PROGRESSElement {
+	if condition {
+		e.NONCE(s)
+	}
 	return e
 }
 
@@ -840,6 +1015,13 @@ func (e *PROGRESSElement) PART(s ...string) *PROGRESSElement {
 		e.DelimitedStrings.Set("part", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *PROGRESSElement) IfPART(condition bool, s ...string) *PROGRESSElement {
+	if condition {
+		e.PART(s...)
+	}
 	return e
 }
 
@@ -910,6 +1092,13 @@ func (e *PROGRESSElement) SLOT(s string) *PROGRESSElement {
 	return e
 }
 
+func (e *PROGRESSElement) IfSLOT(condition bool, s string) *PROGRESSElement {
+	if condition {
+		e.SLOT(s)
+	}
+	return e
+}
+
 // Remove the attribute slot from the element.
 func (e *PROGRESSElement) SLOTRemove(s string) *PROGRESSElement {
 	if e.StringAttributes == nil {
@@ -968,6 +1157,13 @@ func (e *PROGRESSElement) STYLEF(k string, format string, args ...any) *PROGRESS
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+func (e *PROGRESSElement) IfSTYLE(condition bool, k string, v string) *PROGRESSElement {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
 func (e *PROGRESSElement) STYLE(k string, v string) *PROGRESSElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -978,6 +1174,13 @@ func (e *PROGRESSElement) STYLE(k string, v string) *PROGRESSElement {
 		e.KVStrings.Set("style", kv)
 	}
 	kv.Add(k, v)
+	return e
+}
+
+func (e *PROGRESSElement) IfSTYLEF(condition bool, k string, format string, args ...any) *PROGRESSElement {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
 	return e
 }
 
@@ -1018,6 +1221,13 @@ func (e *PROGRESSElement) STYLEPairs(pairs ...string) *PROGRESSElement {
 	return e
 }
 
+func (e *PROGRESSElement) IfSTYLEPairs(condition bool, pairs ...string) *PROGRESSElement {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
+	return e
+}
+
 // Remove the attribute style from the element.
 func (e *PROGRESSElement) STYLERemove(keys ...string) *PROGRESSElement {
 	if e.KVStrings == nil {
@@ -1052,6 +1262,13 @@ func (e *PROGRESSElement) TABINDEX(i int) *PROGRESSElement {
 		e.IntAttributes = treemap.New[string, int]()
 	}
 	e.IntAttributes.Set("tabindex", i)
+	return e
+}
+
+func (e *PROGRESSElement) IfTABINDEX(condition bool, i int) *PROGRESSElement {
+	if condition {
+		e.TABINDEX(i)
+	}
 	return e
 }
 
@@ -1090,6 +1307,13 @@ func (e *PROGRESSElement) TITLE(s string) *PROGRESSElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("title", s)
+	return e
+}
+
+func (e *PROGRESSElement) IfTITLE(condition bool, s string) *PROGRESSElement {
+	if condition {
+		e.TITLE(s)
+	}
 	return e
 }
 

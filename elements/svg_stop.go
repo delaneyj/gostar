@@ -57,13 +57,41 @@ func (e *SVGSTOPElement) TextF(format string, args ...any) *SVGSTOPElement {
 	return e.Text(fmt.Sprintf(format, args...))
 }
 
+func (e *SVGSTOPElement) IfText(condition bool, text string) *SVGSTOPElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
+}
+
+func (e *SVGSTOPElement) IfTextF(condition bool, format string, args ...any) *SVGSTOPElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
+}
+
 func (e *SVGSTOPElement) Escaped(text string) *SVGSTOPElement {
 	e.Descendants = append(e.Descendants, Escaped(text))
 	return e
 }
 
+func (e *SVGSTOPElement) IfEscaped(condition bool, text string) *SVGSTOPElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
+}
+
 func (e *SVGSTOPElement) EscapedF(format string, args ...any) *SVGSTOPElement {
 	return e.Escaped(fmt.Sprintf(format, args...))
+}
+
+func (e *SVGSTOPElement) IfEscapedF(condition bool, format string, args ...any) *SVGSTOPElement {
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *SVGSTOPElement) CustomData(key, value string) *SVGSTOPElement {
@@ -74,8 +102,22 @@ func (e *SVGSTOPElement) CustomData(key, value string) *SVGSTOPElement {
 	return e
 }
 
+func (e *SVGSTOPElement) IfCustomData(condition bool, key, value string) *SVGSTOPElement {
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
+}
+
 func (e *SVGSTOPElement) CustomDataF(key, format string, args ...any) *SVGSTOPElement {
 	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
+func (e *SVGSTOPElement) IfCustomDataF(condition bool, key, format string, args ...any) *SVGSTOPElement {
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *SVGSTOPElement) CustomDataRemove(key string) *SVGSTOPElement {
@@ -95,12 +137,26 @@ func (e *SVGSTOPElement) OFFSET(f float64) *SVGSTOPElement {
 	return e
 }
 
+func (e *SVGSTOPElement) IfOFFSET(condition bool, f float64) *SVGSTOPElement {
+	if condition {
+		e.OFFSET(f)
+	}
+	return e
+}
+
 // The color of the gradient stop.
 func (e *SVGSTOPElement) STOP_COLOR(s string) *SVGSTOPElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("stop-color", s)
+	return e
+}
+
+func (e *SVGSTOPElement) IfSTOP_COLOR(condition bool, s string) *SVGSTOPElement {
+	if condition {
+		e.STOP_COLOR(s)
+	}
 	return e
 }
 
@@ -128,6 +184,13 @@ func (e *SVGSTOPElement) CLASS(s ...string) *SVGSTOPElement {
 	return e
 }
 
+func (e *SVGSTOPElement) IfCLASS(condition bool, s ...string) *SVGSTOPElement {
+	if condition {
+		e.CLASS(s...)
+	}
+	return e
+}
+
 // Remove the attribute class from the element.
 func (e *SVGSTOPElement) CLASSRemove(s ...string) *SVGSTOPElement {
 	if e.DelimitedStrings == nil {
@@ -150,6 +213,13 @@ func (e *SVGSTOPElement) ID(s string) *SVGSTOPElement {
 	return e
 }
 
+func (e *SVGSTOPElement) IfID(condition bool, s string) *SVGSTOPElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
 // Remove the attribute id from the element.
 func (e *SVGSTOPElement) IDRemove(s string) *SVGSTOPElement {
 	if e.StringAttributes == nil {
@@ -164,6 +234,13 @@ func (e *SVGSTOPElement) STYLEF(k string, format string, args ...any) *SVGSTOPEl
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+func (e *SVGSTOPElement) IfSTYLE(condition bool, k string, v string) *SVGSTOPElement {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
 func (e *SVGSTOPElement) STYLE(k string, v string) *SVGSTOPElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -174,6 +251,13 @@ func (e *SVGSTOPElement) STYLE(k string, v string) *SVGSTOPElement {
 		e.KVStrings.Set("style", kv)
 	}
 	kv.Add(k, v)
+	return e
+}
+
+func (e *SVGSTOPElement) IfSTYLEF(condition bool, k string, format string, args ...any) *SVGSTOPElement {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
 	return e
 }
 
@@ -211,6 +295,13 @@ func (e *SVGSTOPElement) STYLEPairs(pairs ...string) *SVGSTOPElement {
 		kv.Add(pairs[i], pairs[i+1])
 	}
 
+	return e
+}
+
+func (e *SVGSTOPElement) IfSTYLEPairs(condition bool, pairs ...string) *SVGSTOPElement {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
 	return e
 }
 

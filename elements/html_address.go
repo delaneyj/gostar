@@ -56,13 +56,41 @@ func (e *ADDRESSElement) TextF(format string, args ...any) *ADDRESSElement {
 	return e.Text(fmt.Sprintf(format, args...))
 }
 
+func (e *ADDRESSElement) IfText(condition bool, text string) *ADDRESSElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
+}
+
+func (e *ADDRESSElement) IfTextF(condition bool, format string, args ...any) *ADDRESSElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
+}
+
 func (e *ADDRESSElement) Escaped(text string) *ADDRESSElement {
 	e.Descendants = append(e.Descendants, Escaped(text))
 	return e
 }
 
+func (e *ADDRESSElement) IfEscaped(condition bool, text string) *ADDRESSElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
+}
+
 func (e *ADDRESSElement) EscapedF(format string, args ...any) *ADDRESSElement {
 	return e.Escaped(fmt.Sprintf(format, args...))
+}
+
+func (e *ADDRESSElement) IfEscapedF(condition bool, format string, args ...any) *ADDRESSElement {
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *ADDRESSElement) CustomData(key, value string) *ADDRESSElement {
@@ -73,8 +101,22 @@ func (e *ADDRESSElement) CustomData(key, value string) *ADDRESSElement {
 	return e
 }
 
+func (e *ADDRESSElement) IfCustomData(condition bool, key, value string) *ADDRESSElement {
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
+}
+
 func (e *ADDRESSElement) CustomDataF(key, format string, args ...any) *ADDRESSElement {
 	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
+func (e *ADDRESSElement) IfCustomDataF(condition bool, key, format string, args ...any) *ADDRESSElement {
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *ADDRESSElement) CustomDataRemove(key string) *ADDRESSElement {
@@ -94,6 +136,13 @@ func (e *ADDRESSElement) ACCESSKEY(r rune) *ADDRESSElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("accesskey", string(r))
+	return e
+}
+
+func (e *ADDRESSElement) IfACCESSKEY(condition bool, r rune) *ADDRESSElement {
+	if condition {
+		e.ACCESSKEY(r)
+	}
 	return e
 }
 
@@ -179,12 +228,26 @@ func (e *ADDRESSElement) AUTOFOCUS() *ADDRESSElement {
 	return e
 }
 
+func (e *ADDRESSElement) IfAUTOFOCUS(condition bool) *ADDRESSElement {
+	if condition {
+		e.AUTOFOCUSSet(true)
+	}
+	return e
+}
+
 // Set the attribute autofocus to the value b explicitly.
 func (e *ADDRESSElement) AUTOFOCUSSet(b bool) *ADDRESSElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("autofocus", b)
+	return e
+}
+
+func (e *ADDRESSElement) IfSetAUTOFOCUS(condition bool, b bool) *ADDRESSElement {
+	if condition {
+		e.AUTOFOCUSSet(b)
+	}
 	return e
 }
 
@@ -212,6 +275,13 @@ func (e *ADDRESSElement) CLASS(s ...string) *ADDRESSElement {
 		e.DelimitedStrings.Set("class", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *ADDRESSElement) IfCLASS(condition bool, s ...string) *ADDRESSElement {
+	if condition {
+		e.CLASS(s...)
+	}
 	return e
 }
 
@@ -420,6 +490,13 @@ func (e *ADDRESSElement) EXPORTPARTS(s ...string) *ADDRESSElement {
 	return e
 }
 
+func (e *ADDRESSElement) IfEXPORTPARTS(condition bool, s ...string) *ADDRESSElement {
+	if condition {
+		e.EXPORTPARTS(s...)
+	}
+	return e
+}
+
 // Remove the attribute exportparts from the element.
 func (e *ADDRESSElement) EXPORTPARTSRemove(s ...string) *ADDRESSElement {
 	if e.DelimitedStrings == nil {
@@ -495,6 +572,13 @@ func (e *ADDRESSElement) ID(s string) *ADDRESSElement {
 	return e
 }
 
+func (e *ADDRESSElement) IfID(condition bool, s string) *ADDRESSElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
 // Remove the attribute id from the element.
 func (e *ADDRESSElement) IDRemove(s string) *ADDRESSElement {
 	if e.StringAttributes == nil {
@@ -521,12 +605,26 @@ func (e *ADDRESSElement) INERT() *ADDRESSElement {
 	return e
 }
 
+func (e *ADDRESSElement) IfINERT(condition bool) *ADDRESSElement {
+	if condition {
+		e.INERTSet(true)
+	}
+	return e
+}
+
 // Set the attribute inert to the value b explicitly.
 func (e *ADDRESSElement) INERTSet(b bool) *ADDRESSElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("inert", b)
+	return e
+}
+
+func (e *ADDRESSElement) IfSetINERT(condition bool, b bool) *ADDRESSElement {
+	if condition {
+		e.INERTSet(b)
+	}
 	return e
 }
 
@@ -622,6 +720,13 @@ func (e *ADDRESSElement) IS(s string) *ADDRESSElement {
 	return e
 }
 
+func (e *ADDRESSElement) IfIS(condition bool, s string) *ADDRESSElement {
+	if condition {
+		e.IS(s)
+	}
+	return e
+}
+
 // Remove the attribute is from the element.
 func (e *ADDRESSElement) ISRemove(s string) *ADDRESSElement {
 	if e.StringAttributes == nil {
@@ -652,6 +757,13 @@ func (e *ADDRESSElement) ITEMID(s string) *ADDRESSElement {
 	return e
 }
 
+func (e *ADDRESSElement) IfITEMID(condition bool, s string) *ADDRESSElement {
+	if condition {
+		e.ITEMID(s)
+	}
+	return e
+}
+
 // Remove the attribute itemid from the element.
 func (e *ADDRESSElement) ITEMIDRemove(s string) *ADDRESSElement {
 	if e.StringAttributes == nil {
@@ -677,6 +789,13 @@ func (e *ADDRESSElement) ITEMPROP(s string) *ADDRESSElement {
 	return e
 }
 
+func (e *ADDRESSElement) IfITEMPROP(condition bool, s string) *ADDRESSElement {
+	if condition {
+		e.ITEMPROP(s)
+	}
+	return e
+}
+
 // Remove the attribute itemprop from the element.
 func (e *ADDRESSElement) ITEMPROPRemove(s string) *ADDRESSElement {
 	if e.StringAttributes == nil {
@@ -696,6 +815,13 @@ func (e *ADDRESSElement) ITEMREF(s string) *ADDRESSElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("itemref", s)
+	return e
+}
+
+func (e *ADDRESSElement) IfITEMREF(condition bool, s string) *ADDRESSElement {
+	if condition {
+		e.ITEMREF(s)
+	}
 	return e
 }
 
@@ -721,12 +847,26 @@ func (e *ADDRESSElement) ITEMSCOPE() *ADDRESSElement {
 	return e
 }
 
+func (e *ADDRESSElement) IfITEMSCOPE(condition bool) *ADDRESSElement {
+	if condition {
+		e.ITEMSCOPESet(true)
+	}
+	return e
+}
+
 // Set the attribute itemscope to the value b explicitly.
 func (e *ADDRESSElement) ITEMSCOPESet(b bool) *ADDRESSElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("itemscope", b)
+	return e
+}
+
+func (e *ADDRESSElement) IfSetITEMSCOPE(condition bool, b bool) *ADDRESSElement {
+	if condition {
+		e.ITEMSCOPESet(b)
+	}
 	return e
 }
 
@@ -755,6 +895,13 @@ func (e *ADDRESSElement) ITEMTYPE(s string) *ADDRESSElement {
 	return e
 }
 
+func (e *ADDRESSElement) IfITEMTYPE(condition bool, s string) *ADDRESSElement {
+	if condition {
+		e.ITEMTYPE(s)
+	}
+	return e
+}
+
 // Remove the attribute itemtype from the element.
 func (e *ADDRESSElement) ITEMTYPERemove(s string) *ADDRESSElement {
 	if e.StringAttributes == nil {
@@ -778,6 +925,13 @@ func (e *ADDRESSElement) LANG(s string) *ADDRESSElement {
 	return e
 }
 
+func (e *ADDRESSElement) IfLANG(condition bool, s string) *ADDRESSElement {
+	if condition {
+		e.LANG(s)
+	}
+	return e
+}
+
 // Remove the attribute lang from the element.
 func (e *ADDRESSElement) LANGRemove(s string) *ADDRESSElement {
 	if e.StringAttributes == nil {
@@ -796,6 +950,13 @@ func (e *ADDRESSElement) NONCE(s string) *ADDRESSElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("nonce", s)
+	return e
+}
+
+func (e *ADDRESSElement) IfNONCE(condition bool, s string) *ADDRESSElement {
+	if condition {
+		e.NONCE(s)
+	}
 	return e
 }
 
@@ -822,6 +983,13 @@ func (e *ADDRESSElement) PART(s ...string) *ADDRESSElement {
 		e.DelimitedStrings.Set("part", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *ADDRESSElement) IfPART(condition bool, s ...string) *ADDRESSElement {
+	if condition {
+		e.PART(s...)
+	}
 	return e
 }
 
@@ -892,6 +1060,13 @@ func (e *ADDRESSElement) SLOT(s string) *ADDRESSElement {
 	return e
 }
 
+func (e *ADDRESSElement) IfSLOT(condition bool, s string) *ADDRESSElement {
+	if condition {
+		e.SLOT(s)
+	}
+	return e
+}
+
 // Remove the attribute slot from the element.
 func (e *ADDRESSElement) SLOTRemove(s string) *ADDRESSElement {
 	if e.StringAttributes == nil {
@@ -950,6 +1125,13 @@ func (e *ADDRESSElement) STYLEF(k string, format string, args ...any) *ADDRESSEl
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+func (e *ADDRESSElement) IfSTYLE(condition bool, k string, v string) *ADDRESSElement {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
 func (e *ADDRESSElement) STYLE(k string, v string) *ADDRESSElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -960,6 +1142,13 @@ func (e *ADDRESSElement) STYLE(k string, v string) *ADDRESSElement {
 		e.KVStrings.Set("style", kv)
 	}
 	kv.Add(k, v)
+	return e
+}
+
+func (e *ADDRESSElement) IfSTYLEF(condition bool, k string, format string, args ...any) *ADDRESSElement {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
 	return e
 }
 
@@ -1000,6 +1189,13 @@ func (e *ADDRESSElement) STYLEPairs(pairs ...string) *ADDRESSElement {
 	return e
 }
 
+func (e *ADDRESSElement) IfSTYLEPairs(condition bool, pairs ...string) *ADDRESSElement {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
+	return e
+}
+
 // Remove the attribute style from the element.
 func (e *ADDRESSElement) STYLERemove(keys ...string) *ADDRESSElement {
 	if e.KVStrings == nil {
@@ -1034,6 +1230,13 @@ func (e *ADDRESSElement) TABINDEX(i int) *ADDRESSElement {
 		e.IntAttributes = treemap.New[string, int]()
 	}
 	e.IntAttributes.Set("tabindex", i)
+	return e
+}
+
+func (e *ADDRESSElement) IfTABINDEX(condition bool, i int) *ADDRESSElement {
+	if condition {
+		e.TABINDEX(i)
+	}
 	return e
 }
 
@@ -1072,6 +1275,13 @@ func (e *ADDRESSElement) TITLE(s string) *ADDRESSElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("title", s)
+	return e
+}
+
+func (e *ADDRESSElement) IfTITLE(condition bool, s string) *ADDRESSElement {
+	if condition {
+		e.TITLE(s)
+	}
 	return e
 }
 

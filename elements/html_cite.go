@@ -58,13 +58,41 @@ func (e *CITEElement) TextF(format string, args ...any) *CITEElement {
 	return e.Text(fmt.Sprintf(format, args...))
 }
 
+func (e *CITEElement) IfText(condition bool, text string) *CITEElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
+}
+
+func (e *CITEElement) IfTextF(condition bool, format string, args ...any) *CITEElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
+}
+
 func (e *CITEElement) Escaped(text string) *CITEElement {
 	e.Descendants = append(e.Descendants, Escaped(text))
 	return e
 }
 
+func (e *CITEElement) IfEscaped(condition bool, text string) *CITEElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
+}
+
 func (e *CITEElement) EscapedF(format string, args ...any) *CITEElement {
 	return e.Escaped(fmt.Sprintf(format, args...))
+}
+
+func (e *CITEElement) IfEscapedF(condition bool, format string, args ...any) *CITEElement {
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *CITEElement) CustomData(key, value string) *CITEElement {
@@ -75,8 +103,22 @@ func (e *CITEElement) CustomData(key, value string) *CITEElement {
 	return e
 }
 
+func (e *CITEElement) IfCustomData(condition bool, key, value string) *CITEElement {
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
+}
+
 func (e *CITEElement) CustomDataF(key, format string, args ...any) *CITEElement {
 	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
+func (e *CITEElement) IfCustomDataF(condition bool, key, format string, args ...any) *CITEElement {
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *CITEElement) CustomDataRemove(key string) *CITEElement {
@@ -96,6 +138,13 @@ func (e *CITEElement) ACCESSKEY(r rune) *CITEElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("accesskey", string(r))
+	return e
+}
+
+func (e *CITEElement) IfACCESSKEY(condition bool, r rune) *CITEElement {
+	if condition {
+		e.ACCESSKEY(r)
+	}
 	return e
 }
 
@@ -181,12 +230,26 @@ func (e *CITEElement) AUTOFOCUS() *CITEElement {
 	return e
 }
 
+func (e *CITEElement) IfAUTOFOCUS(condition bool) *CITEElement {
+	if condition {
+		e.AUTOFOCUSSet(true)
+	}
+	return e
+}
+
 // Set the attribute autofocus to the value b explicitly.
 func (e *CITEElement) AUTOFOCUSSet(b bool) *CITEElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("autofocus", b)
+	return e
+}
+
+func (e *CITEElement) IfSetAUTOFOCUS(condition bool, b bool) *CITEElement {
+	if condition {
+		e.AUTOFOCUSSet(b)
+	}
 	return e
 }
 
@@ -214,6 +277,13 @@ func (e *CITEElement) CLASS(s ...string) *CITEElement {
 		e.DelimitedStrings.Set("class", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *CITEElement) IfCLASS(condition bool, s ...string) *CITEElement {
+	if condition {
+		e.CLASS(s...)
+	}
 	return e
 }
 
@@ -422,6 +492,13 @@ func (e *CITEElement) EXPORTPARTS(s ...string) *CITEElement {
 	return e
 }
 
+func (e *CITEElement) IfEXPORTPARTS(condition bool, s ...string) *CITEElement {
+	if condition {
+		e.EXPORTPARTS(s...)
+	}
+	return e
+}
+
 // Remove the attribute exportparts from the element.
 func (e *CITEElement) EXPORTPARTSRemove(s ...string) *CITEElement {
 	if e.DelimitedStrings == nil {
@@ -497,6 +574,13 @@ func (e *CITEElement) ID(s string) *CITEElement {
 	return e
 }
 
+func (e *CITEElement) IfID(condition bool, s string) *CITEElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
 // Remove the attribute id from the element.
 func (e *CITEElement) IDRemove(s string) *CITEElement {
 	if e.StringAttributes == nil {
@@ -523,12 +607,26 @@ func (e *CITEElement) INERT() *CITEElement {
 	return e
 }
 
+func (e *CITEElement) IfINERT(condition bool) *CITEElement {
+	if condition {
+		e.INERTSet(true)
+	}
+	return e
+}
+
 // Set the attribute inert to the value b explicitly.
 func (e *CITEElement) INERTSet(b bool) *CITEElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("inert", b)
+	return e
+}
+
+func (e *CITEElement) IfSetINERT(condition bool, b bool) *CITEElement {
+	if condition {
+		e.INERTSet(b)
+	}
 	return e
 }
 
@@ -624,6 +722,13 @@ func (e *CITEElement) IS(s string) *CITEElement {
 	return e
 }
 
+func (e *CITEElement) IfIS(condition bool, s string) *CITEElement {
+	if condition {
+		e.IS(s)
+	}
+	return e
+}
+
 // Remove the attribute is from the element.
 func (e *CITEElement) ISRemove(s string) *CITEElement {
 	if e.StringAttributes == nil {
@@ -654,6 +759,13 @@ func (e *CITEElement) ITEMID(s string) *CITEElement {
 	return e
 }
 
+func (e *CITEElement) IfITEMID(condition bool, s string) *CITEElement {
+	if condition {
+		e.ITEMID(s)
+	}
+	return e
+}
+
 // Remove the attribute itemid from the element.
 func (e *CITEElement) ITEMIDRemove(s string) *CITEElement {
 	if e.StringAttributes == nil {
@@ -679,6 +791,13 @@ func (e *CITEElement) ITEMPROP(s string) *CITEElement {
 	return e
 }
 
+func (e *CITEElement) IfITEMPROP(condition bool, s string) *CITEElement {
+	if condition {
+		e.ITEMPROP(s)
+	}
+	return e
+}
+
 // Remove the attribute itemprop from the element.
 func (e *CITEElement) ITEMPROPRemove(s string) *CITEElement {
 	if e.StringAttributes == nil {
@@ -698,6 +817,13 @@ func (e *CITEElement) ITEMREF(s string) *CITEElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("itemref", s)
+	return e
+}
+
+func (e *CITEElement) IfITEMREF(condition bool, s string) *CITEElement {
+	if condition {
+		e.ITEMREF(s)
+	}
 	return e
 }
 
@@ -723,12 +849,26 @@ func (e *CITEElement) ITEMSCOPE() *CITEElement {
 	return e
 }
 
+func (e *CITEElement) IfITEMSCOPE(condition bool) *CITEElement {
+	if condition {
+		e.ITEMSCOPESet(true)
+	}
+	return e
+}
+
 // Set the attribute itemscope to the value b explicitly.
 func (e *CITEElement) ITEMSCOPESet(b bool) *CITEElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("itemscope", b)
+	return e
+}
+
+func (e *CITEElement) IfSetITEMSCOPE(condition bool, b bool) *CITEElement {
+	if condition {
+		e.ITEMSCOPESet(b)
+	}
 	return e
 }
 
@@ -757,6 +897,13 @@ func (e *CITEElement) ITEMTYPE(s string) *CITEElement {
 	return e
 }
 
+func (e *CITEElement) IfITEMTYPE(condition bool, s string) *CITEElement {
+	if condition {
+		e.ITEMTYPE(s)
+	}
+	return e
+}
+
 // Remove the attribute itemtype from the element.
 func (e *CITEElement) ITEMTYPERemove(s string) *CITEElement {
 	if e.StringAttributes == nil {
@@ -780,6 +927,13 @@ func (e *CITEElement) LANG(s string) *CITEElement {
 	return e
 }
 
+func (e *CITEElement) IfLANG(condition bool, s string) *CITEElement {
+	if condition {
+		e.LANG(s)
+	}
+	return e
+}
+
 // Remove the attribute lang from the element.
 func (e *CITEElement) LANGRemove(s string) *CITEElement {
 	if e.StringAttributes == nil {
@@ -798,6 +952,13 @@ func (e *CITEElement) NONCE(s string) *CITEElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("nonce", s)
+	return e
+}
+
+func (e *CITEElement) IfNONCE(condition bool, s string) *CITEElement {
+	if condition {
+		e.NONCE(s)
+	}
 	return e
 }
 
@@ -824,6 +985,13 @@ func (e *CITEElement) PART(s ...string) *CITEElement {
 		e.DelimitedStrings.Set("part", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *CITEElement) IfPART(condition bool, s ...string) *CITEElement {
+	if condition {
+		e.PART(s...)
+	}
 	return e
 }
 
@@ -894,6 +1062,13 @@ func (e *CITEElement) SLOT(s string) *CITEElement {
 	return e
 }
 
+func (e *CITEElement) IfSLOT(condition bool, s string) *CITEElement {
+	if condition {
+		e.SLOT(s)
+	}
+	return e
+}
+
 // Remove the attribute slot from the element.
 func (e *CITEElement) SLOTRemove(s string) *CITEElement {
 	if e.StringAttributes == nil {
@@ -952,6 +1127,13 @@ func (e *CITEElement) STYLEF(k string, format string, args ...any) *CITEElement 
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+func (e *CITEElement) IfSTYLE(condition bool, k string, v string) *CITEElement {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
 func (e *CITEElement) STYLE(k string, v string) *CITEElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -962,6 +1144,13 @@ func (e *CITEElement) STYLE(k string, v string) *CITEElement {
 		e.KVStrings.Set("style", kv)
 	}
 	kv.Add(k, v)
+	return e
+}
+
+func (e *CITEElement) IfSTYLEF(condition bool, k string, format string, args ...any) *CITEElement {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
 	return e
 }
 
@@ -1002,6 +1191,13 @@ func (e *CITEElement) STYLEPairs(pairs ...string) *CITEElement {
 	return e
 }
 
+func (e *CITEElement) IfSTYLEPairs(condition bool, pairs ...string) *CITEElement {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
+	return e
+}
+
 // Remove the attribute style from the element.
 func (e *CITEElement) STYLERemove(keys ...string) *CITEElement {
 	if e.KVStrings == nil {
@@ -1036,6 +1232,13 @@ func (e *CITEElement) TABINDEX(i int) *CITEElement {
 		e.IntAttributes = treemap.New[string, int]()
 	}
 	e.IntAttributes.Set("tabindex", i)
+	return e
+}
+
+func (e *CITEElement) IfTABINDEX(condition bool, i int) *CITEElement {
+	if condition {
+		e.TABINDEX(i)
+	}
 	return e
 }
 
@@ -1074,6 +1277,13 @@ func (e *CITEElement) TITLE(s string) *CITEElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("title", s)
+	return e
+}
+
+func (e *CITEElement) IfTITLE(condition bool, s string) *CITEElement {
+	if condition {
+		e.TITLE(s)
+	}
 	return e
 }
 

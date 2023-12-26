@@ -55,13 +55,41 @@ func (e *METAElement) TextF(format string, args ...any) *METAElement {
 	return e.Text(fmt.Sprintf(format, args...))
 }
 
+func (e *METAElement) IfText(condition bool, text string) *METAElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
+}
+
+func (e *METAElement) IfTextF(condition bool, format string, args ...any) *METAElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
+}
+
 func (e *METAElement) Escaped(text string) *METAElement {
 	e.Descendants = append(e.Descendants, Escaped(text))
 	return e
 }
 
+func (e *METAElement) IfEscaped(condition bool, text string) *METAElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
+}
+
 func (e *METAElement) EscapedF(format string, args ...any) *METAElement {
 	return e.Escaped(fmt.Sprintf(format, args...))
+}
+
+func (e *METAElement) IfEscapedF(condition bool, format string, args ...any) *METAElement {
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *METAElement) CustomData(key, value string) *METAElement {
@@ -72,8 +100,22 @@ func (e *METAElement) CustomData(key, value string) *METAElement {
 	return e
 }
 
+func (e *METAElement) IfCustomData(condition bool, key, value string) *METAElement {
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
+}
+
 func (e *METAElement) CustomDataF(key, format string, args ...any) *METAElement {
 	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
+func (e *METAElement) IfCustomDataF(condition bool, key, format string, args ...any) *METAElement {
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *METAElement) CustomDataRemove(key string) *METAElement {
@@ -90,6 +132,13 @@ func (e *METAElement) CHARSET(s string) *METAElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("charset", s)
+	return e
+}
+
+func (e *METAElement) IfCHARSET(condition bool, s string) *METAElement {
+	if condition {
+		e.CHARSET(s)
+	}
 	return e
 }
 
@@ -111,6 +160,13 @@ func (e *METAElement) CONTENT(s string) *METAElement {
 	return e
 }
 
+func (e *METAElement) IfCONTENT(condition bool, s string) *METAElement {
+	if condition {
+		e.CONTENT(s)
+	}
+	return e
+}
+
 // Remove the attribute content from the element.
 func (e *METAElement) CONTENTRemove(s string) *METAElement {
 	if e.StringAttributes == nil {
@@ -126,6 +182,13 @@ func (e *METAElement) HTTP_EQUIV(s string) *METAElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("http-equiv", s)
+	return e
+}
+
+func (e *METAElement) IfHTTP_EQUIV(condition bool, s string) *METAElement {
+	if condition {
+		e.HTTP_EQUIV(s)
+	}
 	return e
 }
 
@@ -147,6 +210,13 @@ func (e *METAElement) NAME(s string) *METAElement {
 	return e
 }
 
+func (e *METAElement) IfNAME(condition bool, s string) *METAElement {
+	if condition {
+		e.NAME(s)
+	}
+	return e
+}
+
 // Remove the attribute name from the element.
 func (e *METAElement) NAMERemove(s string) *METAElement {
 	if e.StringAttributes == nil {
@@ -165,6 +235,13 @@ func (e *METAElement) ACCESSKEY(r rune) *METAElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("accesskey", string(r))
+	return e
+}
+
+func (e *METAElement) IfACCESSKEY(condition bool, r rune) *METAElement {
+	if condition {
+		e.ACCESSKEY(r)
+	}
 	return e
 }
 
@@ -250,12 +327,26 @@ func (e *METAElement) AUTOFOCUS() *METAElement {
 	return e
 }
 
+func (e *METAElement) IfAUTOFOCUS(condition bool) *METAElement {
+	if condition {
+		e.AUTOFOCUSSet(true)
+	}
+	return e
+}
+
 // Set the attribute autofocus to the value b explicitly.
 func (e *METAElement) AUTOFOCUSSet(b bool) *METAElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("autofocus", b)
+	return e
+}
+
+func (e *METAElement) IfSetAUTOFOCUS(condition bool, b bool) *METAElement {
+	if condition {
+		e.AUTOFOCUSSet(b)
+	}
 	return e
 }
 
@@ -283,6 +374,13 @@ func (e *METAElement) CLASS(s ...string) *METAElement {
 		e.DelimitedStrings.Set("class", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *METAElement) IfCLASS(condition bool, s ...string) *METAElement {
+	if condition {
+		e.CLASS(s...)
+	}
 	return e
 }
 
@@ -491,6 +589,13 @@ func (e *METAElement) EXPORTPARTS(s ...string) *METAElement {
 	return e
 }
 
+func (e *METAElement) IfEXPORTPARTS(condition bool, s ...string) *METAElement {
+	if condition {
+		e.EXPORTPARTS(s...)
+	}
+	return e
+}
+
 // Remove the attribute exportparts from the element.
 func (e *METAElement) EXPORTPARTSRemove(s ...string) *METAElement {
 	if e.DelimitedStrings == nil {
@@ -566,6 +671,13 @@ func (e *METAElement) ID(s string) *METAElement {
 	return e
 }
 
+func (e *METAElement) IfID(condition bool, s string) *METAElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
 // Remove the attribute id from the element.
 func (e *METAElement) IDRemove(s string) *METAElement {
 	if e.StringAttributes == nil {
@@ -592,12 +704,26 @@ func (e *METAElement) INERT() *METAElement {
 	return e
 }
 
+func (e *METAElement) IfINERT(condition bool) *METAElement {
+	if condition {
+		e.INERTSet(true)
+	}
+	return e
+}
+
 // Set the attribute inert to the value b explicitly.
 func (e *METAElement) INERTSet(b bool) *METAElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("inert", b)
+	return e
+}
+
+func (e *METAElement) IfSetINERT(condition bool, b bool) *METAElement {
+	if condition {
+		e.INERTSet(b)
+	}
 	return e
 }
 
@@ -693,6 +819,13 @@ func (e *METAElement) IS(s string) *METAElement {
 	return e
 }
 
+func (e *METAElement) IfIS(condition bool, s string) *METAElement {
+	if condition {
+		e.IS(s)
+	}
+	return e
+}
+
 // Remove the attribute is from the element.
 func (e *METAElement) ISRemove(s string) *METAElement {
 	if e.StringAttributes == nil {
@@ -723,6 +856,13 @@ func (e *METAElement) ITEMID(s string) *METAElement {
 	return e
 }
 
+func (e *METAElement) IfITEMID(condition bool, s string) *METAElement {
+	if condition {
+		e.ITEMID(s)
+	}
+	return e
+}
+
 // Remove the attribute itemid from the element.
 func (e *METAElement) ITEMIDRemove(s string) *METAElement {
 	if e.StringAttributes == nil {
@@ -748,6 +888,13 @@ func (e *METAElement) ITEMPROP(s string) *METAElement {
 	return e
 }
 
+func (e *METAElement) IfITEMPROP(condition bool, s string) *METAElement {
+	if condition {
+		e.ITEMPROP(s)
+	}
+	return e
+}
+
 // Remove the attribute itemprop from the element.
 func (e *METAElement) ITEMPROPRemove(s string) *METAElement {
 	if e.StringAttributes == nil {
@@ -767,6 +914,13 @@ func (e *METAElement) ITEMREF(s string) *METAElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("itemref", s)
+	return e
+}
+
+func (e *METAElement) IfITEMREF(condition bool, s string) *METAElement {
+	if condition {
+		e.ITEMREF(s)
+	}
 	return e
 }
 
@@ -792,12 +946,26 @@ func (e *METAElement) ITEMSCOPE() *METAElement {
 	return e
 }
 
+func (e *METAElement) IfITEMSCOPE(condition bool) *METAElement {
+	if condition {
+		e.ITEMSCOPESet(true)
+	}
+	return e
+}
+
 // Set the attribute itemscope to the value b explicitly.
 func (e *METAElement) ITEMSCOPESet(b bool) *METAElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("itemscope", b)
+	return e
+}
+
+func (e *METAElement) IfSetITEMSCOPE(condition bool, b bool) *METAElement {
+	if condition {
+		e.ITEMSCOPESet(b)
+	}
 	return e
 }
 
@@ -826,6 +994,13 @@ func (e *METAElement) ITEMTYPE(s string) *METAElement {
 	return e
 }
 
+func (e *METAElement) IfITEMTYPE(condition bool, s string) *METAElement {
+	if condition {
+		e.ITEMTYPE(s)
+	}
+	return e
+}
+
 // Remove the attribute itemtype from the element.
 func (e *METAElement) ITEMTYPERemove(s string) *METAElement {
 	if e.StringAttributes == nil {
@@ -849,6 +1024,13 @@ func (e *METAElement) LANG(s string) *METAElement {
 	return e
 }
 
+func (e *METAElement) IfLANG(condition bool, s string) *METAElement {
+	if condition {
+		e.LANG(s)
+	}
+	return e
+}
+
 // Remove the attribute lang from the element.
 func (e *METAElement) LANGRemove(s string) *METAElement {
 	if e.StringAttributes == nil {
@@ -867,6 +1049,13 @@ func (e *METAElement) NONCE(s string) *METAElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("nonce", s)
+	return e
+}
+
+func (e *METAElement) IfNONCE(condition bool, s string) *METAElement {
+	if condition {
+		e.NONCE(s)
+	}
 	return e
 }
 
@@ -893,6 +1082,13 @@ func (e *METAElement) PART(s ...string) *METAElement {
 		e.DelimitedStrings.Set("part", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *METAElement) IfPART(condition bool, s ...string) *METAElement {
+	if condition {
+		e.PART(s...)
+	}
 	return e
 }
 
@@ -963,6 +1159,13 @@ func (e *METAElement) SLOT(s string) *METAElement {
 	return e
 }
 
+func (e *METAElement) IfSLOT(condition bool, s string) *METAElement {
+	if condition {
+		e.SLOT(s)
+	}
+	return e
+}
+
 // Remove the attribute slot from the element.
 func (e *METAElement) SLOTRemove(s string) *METAElement {
 	if e.StringAttributes == nil {
@@ -1021,6 +1224,13 @@ func (e *METAElement) STYLEF(k string, format string, args ...any) *METAElement 
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+func (e *METAElement) IfSTYLE(condition bool, k string, v string) *METAElement {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
 func (e *METAElement) STYLE(k string, v string) *METAElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -1031,6 +1241,13 @@ func (e *METAElement) STYLE(k string, v string) *METAElement {
 		e.KVStrings.Set("style", kv)
 	}
 	kv.Add(k, v)
+	return e
+}
+
+func (e *METAElement) IfSTYLEF(condition bool, k string, format string, args ...any) *METAElement {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
 	return e
 }
 
@@ -1071,6 +1288,13 @@ func (e *METAElement) STYLEPairs(pairs ...string) *METAElement {
 	return e
 }
 
+func (e *METAElement) IfSTYLEPairs(condition bool, pairs ...string) *METAElement {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
+	return e
+}
+
 // Remove the attribute style from the element.
 func (e *METAElement) STYLERemove(keys ...string) *METAElement {
 	if e.KVStrings == nil {
@@ -1105,6 +1329,13 @@ func (e *METAElement) TABINDEX(i int) *METAElement {
 		e.IntAttributes = treemap.New[string, int]()
 	}
 	e.IntAttributes.Set("tabindex", i)
+	return e
+}
+
+func (e *METAElement) IfTABINDEX(condition bool, i int) *METAElement {
+	if condition {
+		e.TABINDEX(i)
+	}
 	return e
 }
 
@@ -1143,6 +1374,13 @@ func (e *METAElement) TITLE(s string) *METAElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("title", s)
+	return e
+}
+
+func (e *METAElement) IfTITLE(condition bool, s string) *METAElement {
+	if condition {
+		e.TITLE(s)
+	}
 	return e
 }
 

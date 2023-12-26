@@ -57,13 +57,41 @@ func (e *TITLEElement) TextF(format string, args ...any) *TITLEElement {
 	return e.Text(fmt.Sprintf(format, args...))
 }
 
+func (e *TITLEElement) IfText(condition bool, text string) *TITLEElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
+}
+
+func (e *TITLEElement) IfTextF(condition bool, format string, args ...any) *TITLEElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
+}
+
 func (e *TITLEElement) Escaped(text string) *TITLEElement {
 	e.Descendants = append(e.Descendants, Escaped(text))
 	return e
 }
 
+func (e *TITLEElement) IfEscaped(condition bool, text string) *TITLEElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
+}
+
 func (e *TITLEElement) EscapedF(format string, args ...any) *TITLEElement {
 	return e.Escaped(fmt.Sprintf(format, args...))
+}
+
+func (e *TITLEElement) IfEscapedF(condition bool, format string, args ...any) *TITLEElement {
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *TITLEElement) CustomData(key, value string) *TITLEElement {
@@ -74,8 +102,22 @@ func (e *TITLEElement) CustomData(key, value string) *TITLEElement {
 	return e
 }
 
+func (e *TITLEElement) IfCustomData(condition bool, key, value string) *TITLEElement {
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
+}
+
 func (e *TITLEElement) CustomDataF(key, format string, args ...any) *TITLEElement {
 	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
+func (e *TITLEElement) IfCustomDataF(condition bool, key, format string, args ...any) *TITLEElement {
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *TITLEElement) CustomDataRemove(key string) *TITLEElement {
@@ -95,6 +137,13 @@ func (e *TITLEElement) ACCESSKEY(r rune) *TITLEElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("accesskey", string(r))
+	return e
+}
+
+func (e *TITLEElement) IfACCESSKEY(condition bool, r rune) *TITLEElement {
+	if condition {
+		e.ACCESSKEY(r)
+	}
 	return e
 }
 
@@ -180,12 +229,26 @@ func (e *TITLEElement) AUTOFOCUS() *TITLEElement {
 	return e
 }
 
+func (e *TITLEElement) IfAUTOFOCUS(condition bool) *TITLEElement {
+	if condition {
+		e.AUTOFOCUSSet(true)
+	}
+	return e
+}
+
 // Set the attribute autofocus to the value b explicitly.
 func (e *TITLEElement) AUTOFOCUSSet(b bool) *TITLEElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("autofocus", b)
+	return e
+}
+
+func (e *TITLEElement) IfSetAUTOFOCUS(condition bool, b bool) *TITLEElement {
+	if condition {
+		e.AUTOFOCUSSet(b)
+	}
 	return e
 }
 
@@ -213,6 +276,13 @@ func (e *TITLEElement) CLASS(s ...string) *TITLEElement {
 		e.DelimitedStrings.Set("class", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *TITLEElement) IfCLASS(condition bool, s ...string) *TITLEElement {
+	if condition {
+		e.CLASS(s...)
+	}
 	return e
 }
 
@@ -421,6 +491,13 @@ func (e *TITLEElement) EXPORTPARTS(s ...string) *TITLEElement {
 	return e
 }
 
+func (e *TITLEElement) IfEXPORTPARTS(condition bool, s ...string) *TITLEElement {
+	if condition {
+		e.EXPORTPARTS(s...)
+	}
+	return e
+}
+
 // Remove the attribute exportparts from the element.
 func (e *TITLEElement) EXPORTPARTSRemove(s ...string) *TITLEElement {
 	if e.DelimitedStrings == nil {
@@ -496,6 +573,13 @@ func (e *TITLEElement) ID(s string) *TITLEElement {
 	return e
 }
 
+func (e *TITLEElement) IfID(condition bool, s string) *TITLEElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
 // Remove the attribute id from the element.
 func (e *TITLEElement) IDRemove(s string) *TITLEElement {
 	if e.StringAttributes == nil {
@@ -522,12 +606,26 @@ func (e *TITLEElement) INERT() *TITLEElement {
 	return e
 }
 
+func (e *TITLEElement) IfINERT(condition bool) *TITLEElement {
+	if condition {
+		e.INERTSet(true)
+	}
+	return e
+}
+
 // Set the attribute inert to the value b explicitly.
 func (e *TITLEElement) INERTSet(b bool) *TITLEElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("inert", b)
+	return e
+}
+
+func (e *TITLEElement) IfSetINERT(condition bool, b bool) *TITLEElement {
+	if condition {
+		e.INERTSet(b)
+	}
 	return e
 }
 
@@ -623,6 +721,13 @@ func (e *TITLEElement) IS(s string) *TITLEElement {
 	return e
 }
 
+func (e *TITLEElement) IfIS(condition bool, s string) *TITLEElement {
+	if condition {
+		e.IS(s)
+	}
+	return e
+}
+
 // Remove the attribute is from the element.
 func (e *TITLEElement) ISRemove(s string) *TITLEElement {
 	if e.StringAttributes == nil {
@@ -653,6 +758,13 @@ func (e *TITLEElement) ITEMID(s string) *TITLEElement {
 	return e
 }
 
+func (e *TITLEElement) IfITEMID(condition bool, s string) *TITLEElement {
+	if condition {
+		e.ITEMID(s)
+	}
+	return e
+}
+
 // Remove the attribute itemid from the element.
 func (e *TITLEElement) ITEMIDRemove(s string) *TITLEElement {
 	if e.StringAttributes == nil {
@@ -678,6 +790,13 @@ func (e *TITLEElement) ITEMPROP(s string) *TITLEElement {
 	return e
 }
 
+func (e *TITLEElement) IfITEMPROP(condition bool, s string) *TITLEElement {
+	if condition {
+		e.ITEMPROP(s)
+	}
+	return e
+}
+
 // Remove the attribute itemprop from the element.
 func (e *TITLEElement) ITEMPROPRemove(s string) *TITLEElement {
 	if e.StringAttributes == nil {
@@ -697,6 +816,13 @@ func (e *TITLEElement) ITEMREF(s string) *TITLEElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("itemref", s)
+	return e
+}
+
+func (e *TITLEElement) IfITEMREF(condition bool, s string) *TITLEElement {
+	if condition {
+		e.ITEMREF(s)
+	}
 	return e
 }
 
@@ -722,12 +848,26 @@ func (e *TITLEElement) ITEMSCOPE() *TITLEElement {
 	return e
 }
 
+func (e *TITLEElement) IfITEMSCOPE(condition bool) *TITLEElement {
+	if condition {
+		e.ITEMSCOPESet(true)
+	}
+	return e
+}
+
 // Set the attribute itemscope to the value b explicitly.
 func (e *TITLEElement) ITEMSCOPESet(b bool) *TITLEElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("itemscope", b)
+	return e
+}
+
+func (e *TITLEElement) IfSetITEMSCOPE(condition bool, b bool) *TITLEElement {
+	if condition {
+		e.ITEMSCOPESet(b)
+	}
 	return e
 }
 
@@ -756,6 +896,13 @@ func (e *TITLEElement) ITEMTYPE(s string) *TITLEElement {
 	return e
 }
 
+func (e *TITLEElement) IfITEMTYPE(condition bool, s string) *TITLEElement {
+	if condition {
+		e.ITEMTYPE(s)
+	}
+	return e
+}
+
 // Remove the attribute itemtype from the element.
 func (e *TITLEElement) ITEMTYPERemove(s string) *TITLEElement {
 	if e.StringAttributes == nil {
@@ -779,6 +926,13 @@ func (e *TITLEElement) LANG(s string) *TITLEElement {
 	return e
 }
 
+func (e *TITLEElement) IfLANG(condition bool, s string) *TITLEElement {
+	if condition {
+		e.LANG(s)
+	}
+	return e
+}
+
 // Remove the attribute lang from the element.
 func (e *TITLEElement) LANGRemove(s string) *TITLEElement {
 	if e.StringAttributes == nil {
@@ -797,6 +951,13 @@ func (e *TITLEElement) NONCE(s string) *TITLEElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("nonce", s)
+	return e
+}
+
+func (e *TITLEElement) IfNONCE(condition bool, s string) *TITLEElement {
+	if condition {
+		e.NONCE(s)
+	}
 	return e
 }
 
@@ -823,6 +984,13 @@ func (e *TITLEElement) PART(s ...string) *TITLEElement {
 		e.DelimitedStrings.Set("part", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *TITLEElement) IfPART(condition bool, s ...string) *TITLEElement {
+	if condition {
+		e.PART(s...)
+	}
 	return e
 }
 
@@ -893,6 +1061,13 @@ func (e *TITLEElement) SLOT(s string) *TITLEElement {
 	return e
 }
 
+func (e *TITLEElement) IfSLOT(condition bool, s string) *TITLEElement {
+	if condition {
+		e.SLOT(s)
+	}
+	return e
+}
+
 // Remove the attribute slot from the element.
 func (e *TITLEElement) SLOTRemove(s string) *TITLEElement {
 	if e.StringAttributes == nil {
@@ -951,6 +1126,13 @@ func (e *TITLEElement) STYLEF(k string, format string, args ...any) *TITLEElemen
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+func (e *TITLEElement) IfSTYLE(condition bool, k string, v string) *TITLEElement {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
 func (e *TITLEElement) STYLE(k string, v string) *TITLEElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -961,6 +1143,13 @@ func (e *TITLEElement) STYLE(k string, v string) *TITLEElement {
 		e.KVStrings.Set("style", kv)
 	}
 	kv.Add(k, v)
+	return e
+}
+
+func (e *TITLEElement) IfSTYLEF(condition bool, k string, format string, args ...any) *TITLEElement {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
 	return e
 }
 
@@ -1001,6 +1190,13 @@ func (e *TITLEElement) STYLEPairs(pairs ...string) *TITLEElement {
 	return e
 }
 
+func (e *TITLEElement) IfSTYLEPairs(condition bool, pairs ...string) *TITLEElement {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
+	return e
+}
+
 // Remove the attribute style from the element.
 func (e *TITLEElement) STYLERemove(keys ...string) *TITLEElement {
 	if e.KVStrings == nil {
@@ -1035,6 +1231,13 @@ func (e *TITLEElement) TABINDEX(i int) *TITLEElement {
 		e.IntAttributes = treemap.New[string, int]()
 	}
 	e.IntAttributes.Set("tabindex", i)
+	return e
+}
+
+func (e *TITLEElement) IfTABINDEX(condition bool, i int) *TITLEElement {
+	if condition {
+		e.TABINDEX(i)
+	}
 	return e
 }
 
@@ -1073,6 +1276,13 @@ func (e *TITLEElement) TITLE(s string) *TITLEElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("title", s)
+	return e
+}
+
+func (e *TITLEElement) IfTITLE(condition bool, s string) *TITLEElement {
+	if condition {
+		e.TITLE(s)
+	}
 	return e
 }
 

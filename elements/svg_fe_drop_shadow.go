@@ -57,13 +57,41 @@ func (e *SVGFEDROPSHADOWElement) TextF(format string, args ...any) *SVGFEDROPSHA
 	return e.Text(fmt.Sprintf(format, args...))
 }
 
+func (e *SVGFEDROPSHADOWElement) IfText(condition bool, text string) *SVGFEDROPSHADOWElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
+}
+
+func (e *SVGFEDROPSHADOWElement) IfTextF(condition bool, format string, args ...any) *SVGFEDROPSHADOWElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
+}
+
 func (e *SVGFEDROPSHADOWElement) Escaped(text string) *SVGFEDROPSHADOWElement {
 	e.Descendants = append(e.Descendants, Escaped(text))
 	return e
 }
 
+func (e *SVGFEDROPSHADOWElement) IfEscaped(condition bool, text string) *SVGFEDROPSHADOWElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
+}
+
 func (e *SVGFEDROPSHADOWElement) EscapedF(format string, args ...any) *SVGFEDROPSHADOWElement {
 	return e.Escaped(fmt.Sprintf(format, args...))
+}
+
+func (e *SVGFEDROPSHADOWElement) IfEscapedF(condition bool, format string, args ...any) *SVGFEDROPSHADOWElement {
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *SVGFEDROPSHADOWElement) CustomData(key, value string) *SVGFEDROPSHADOWElement {
@@ -74,8 +102,22 @@ func (e *SVGFEDROPSHADOWElement) CustomData(key, value string) *SVGFEDROPSHADOWE
 	return e
 }
 
+func (e *SVGFEDROPSHADOWElement) IfCustomData(condition bool, key, value string) *SVGFEDROPSHADOWElement {
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
+}
+
 func (e *SVGFEDROPSHADOWElement) CustomDataF(key, format string, args ...any) *SVGFEDROPSHADOWElement {
 	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
+func (e *SVGFEDROPSHADOWElement) IfCustomDataF(condition bool, key, format string, args ...any) *SVGFEDROPSHADOWElement {
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *SVGFEDROPSHADOWElement) CustomDataRemove(key string) *SVGFEDROPSHADOWElement {
@@ -96,6 +138,13 @@ func (e *SVGFEDROPSHADOWElement) DX(f float64) *SVGFEDROPSHADOWElement {
 	return e
 }
 
+func (e *SVGFEDROPSHADOWElement) IfDX(condition bool, f float64) *SVGFEDROPSHADOWElement {
+	if condition {
+		e.DX(f)
+	}
+	return e
+}
+
 // The amount of offset in the y direction
 // If the <length> is 0, the shadow is placed at the same position as the input.
 func (e *SVGFEDROPSHADOWElement) DY(f float64) *SVGFEDROPSHADOWElement {
@@ -103,6 +152,13 @@ func (e *SVGFEDROPSHADOWElement) DY(f float64) *SVGFEDROPSHADOWElement {
 		e.FloatAttributes = treemap.New[string, float64]()
 	}
 	e.FloatAttributes.Set("dy", f)
+	return e
+}
+
+func (e *SVGFEDROPSHADOWElement) IfDY(condition bool, f float64) *SVGFEDROPSHADOWElement {
+	if condition {
+		e.DY(f)
+	}
 	return e
 }
 
@@ -123,6 +179,13 @@ func (e *SVGFEDROPSHADOWElement) STDDEVIATION(f float64) *SVGFEDROPSHADOWElement
 	return e
 }
 
+func (e *SVGFEDROPSHADOWElement) IfSTDDEVIATION(condition bool, f float64) *SVGFEDROPSHADOWElement {
+	if condition {
+		e.STDDEVIATION(f)
+	}
+	return e
+}
+
 // The flood-color attribute indicates what color to use to flood the current
 // filter primitive subregion defined through the <feFlood> element
 // If attribute 'flood-color' is not specified, then the effect is as if a value
@@ -132,6 +195,13 @@ func (e *SVGFEDROPSHADOWElement) FLOOD_COLOR(s string) *SVGFEDROPSHADOWElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("flood-color", s)
+	return e
+}
+
+func (e *SVGFEDROPSHADOWElement) IfFLOOD_COLOR(condition bool, s string) *SVGFEDROPSHADOWElement {
+	if condition {
+		e.FLOOD_COLOR(s)
+	}
 	return e
 }
 
@@ -154,6 +224,13 @@ func (e *SVGFEDROPSHADOWElement) FLOOD_OPACITY(f float64) *SVGFEDROPSHADOWElemen
 	return e
 }
 
+func (e *SVGFEDROPSHADOWElement) IfFLOOD_OPACITY(condition bool, f float64) *SVGFEDROPSHADOWElement {
+	if condition {
+		e.FLOOD_OPACITY(f)
+	}
+	return e
+}
+
 // Specifies one or more classnames for an element (refers to a class in a style
 // sheet)
 func (e *SVGFEDROPSHADOWElement) CLASS(s ...string) *SVGFEDROPSHADOWElement {
@@ -166,6 +243,13 @@ func (e *SVGFEDROPSHADOWElement) CLASS(s ...string) *SVGFEDROPSHADOWElement {
 		e.DelimitedStrings.Set("class", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *SVGFEDROPSHADOWElement) IfCLASS(condition bool, s ...string) *SVGFEDROPSHADOWElement {
+	if condition {
+		e.CLASS(s...)
+	}
 	return e
 }
 
@@ -191,6 +275,13 @@ func (e *SVGFEDROPSHADOWElement) ID(s string) *SVGFEDROPSHADOWElement {
 	return e
 }
 
+func (e *SVGFEDROPSHADOWElement) IfID(condition bool, s string) *SVGFEDROPSHADOWElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
 // Remove the attribute id from the element.
 func (e *SVGFEDROPSHADOWElement) IDRemove(s string) *SVGFEDROPSHADOWElement {
 	if e.StringAttributes == nil {
@@ -205,6 +296,13 @@ func (e *SVGFEDROPSHADOWElement) STYLEF(k string, format string, args ...any) *S
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+func (e *SVGFEDROPSHADOWElement) IfSTYLE(condition bool, k string, v string) *SVGFEDROPSHADOWElement {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
 func (e *SVGFEDROPSHADOWElement) STYLE(k string, v string) *SVGFEDROPSHADOWElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -215,6 +313,13 @@ func (e *SVGFEDROPSHADOWElement) STYLE(k string, v string) *SVGFEDROPSHADOWEleme
 		e.KVStrings.Set("style", kv)
 	}
 	kv.Add(k, v)
+	return e
+}
+
+func (e *SVGFEDROPSHADOWElement) IfSTYLEF(condition bool, k string, format string, args ...any) *SVGFEDROPSHADOWElement {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
 	return e
 }
 
@@ -252,6 +357,13 @@ func (e *SVGFEDROPSHADOWElement) STYLEPairs(pairs ...string) *SVGFEDROPSHADOWEle
 		kv.Add(pairs[i], pairs[i+1])
 	}
 
+	return e
+}
+
+func (e *SVGFEDROPSHADOWElement) IfSTYLEPairs(condition bool, pairs ...string) *SVGFEDROPSHADOWElement {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
 	return e
 }
 

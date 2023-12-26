@@ -56,13 +56,41 @@ func (e *SVGFEOFFSETElement) TextF(format string, args ...any) *SVGFEOFFSETEleme
 	return e.Text(fmt.Sprintf(format, args...))
 }
 
+func (e *SVGFEOFFSETElement) IfText(condition bool, text string) *SVGFEOFFSETElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
+}
+
+func (e *SVGFEOFFSETElement) IfTextF(condition bool, format string, args ...any) *SVGFEOFFSETElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
+}
+
 func (e *SVGFEOFFSETElement) Escaped(text string) *SVGFEOFFSETElement {
 	e.Descendants = append(e.Descendants, Escaped(text))
 	return e
 }
 
+func (e *SVGFEOFFSETElement) IfEscaped(condition bool, text string) *SVGFEOFFSETElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
+}
+
 func (e *SVGFEOFFSETElement) EscapedF(format string, args ...any) *SVGFEOFFSETElement {
 	return e.Escaped(fmt.Sprintf(format, args...))
+}
+
+func (e *SVGFEOFFSETElement) IfEscapedF(condition bool, format string, args ...any) *SVGFEOFFSETElement {
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *SVGFEOFFSETElement) CustomData(key, value string) *SVGFEOFFSETElement {
@@ -73,8 +101,22 @@ func (e *SVGFEOFFSETElement) CustomData(key, value string) *SVGFEOFFSETElement {
 	return e
 }
 
+func (e *SVGFEOFFSETElement) IfCustomData(condition bool, key, value string) *SVGFEOFFSETElement {
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
+}
+
 func (e *SVGFEOFFSETElement) CustomDataF(key, format string, args ...any) *SVGFEOFFSETElement {
 	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
+func (e *SVGFEOFFSETElement) IfCustomDataF(condition bool, key, format string, args ...any) *SVGFEOFFSETElement {
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *SVGFEOFFSETElement) CustomDataRemove(key string) *SVGFEOFFSETElement {
@@ -94,12 +136,26 @@ func (e *SVGFEOFFSETElement) DX(f float64) *SVGFEOFFSETElement {
 	return e
 }
 
+func (e *SVGFEOFFSETElement) IfDX(condition bool, f float64) *SVGFEOFFSETElement {
+	if condition {
+		e.DX(f)
+	}
+	return e
+}
+
 // The dy attribute indicates a shift along the y-axis on the kernel matrix.
 func (e *SVGFEOFFSETElement) DY(f float64) *SVGFEOFFSETElement {
 	if e.FloatAttributes == nil {
 		e.FloatAttributes = treemap.New[string, float64]()
 	}
 	e.FloatAttributes.Set("dy", f)
+	return e
+}
+
+func (e *SVGFEOFFSETElement) IfDY(condition bool, f float64) *SVGFEOFFSETElement {
+	if condition {
+		e.DY(f)
+	}
 	return e
 }
 
@@ -115,6 +171,13 @@ func (e *SVGFEOFFSETElement) CLASS(s ...string) *SVGFEOFFSETElement {
 		e.DelimitedStrings.Set("class", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *SVGFEOFFSETElement) IfCLASS(condition bool, s ...string) *SVGFEOFFSETElement {
+	if condition {
+		e.CLASS(s...)
+	}
 	return e
 }
 
@@ -140,6 +203,13 @@ func (e *SVGFEOFFSETElement) ID(s string) *SVGFEOFFSETElement {
 	return e
 }
 
+func (e *SVGFEOFFSETElement) IfID(condition bool, s string) *SVGFEOFFSETElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
 // Remove the attribute id from the element.
 func (e *SVGFEOFFSETElement) IDRemove(s string) *SVGFEOFFSETElement {
 	if e.StringAttributes == nil {
@@ -154,6 +224,13 @@ func (e *SVGFEOFFSETElement) STYLEF(k string, format string, args ...any) *SVGFE
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+func (e *SVGFEOFFSETElement) IfSTYLE(condition bool, k string, v string) *SVGFEOFFSETElement {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
 func (e *SVGFEOFFSETElement) STYLE(k string, v string) *SVGFEOFFSETElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -164,6 +241,13 @@ func (e *SVGFEOFFSETElement) STYLE(k string, v string) *SVGFEOFFSETElement {
 		e.KVStrings.Set("style", kv)
 	}
 	kv.Add(k, v)
+	return e
+}
+
+func (e *SVGFEOFFSETElement) IfSTYLEF(condition bool, k string, format string, args ...any) *SVGFEOFFSETElement {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
 	return e
 }
 
@@ -201,6 +285,13 @@ func (e *SVGFEOFFSETElement) STYLEPairs(pairs ...string) *SVGFEOFFSETElement {
 		kv.Add(pairs[i], pairs[i+1])
 	}
 
+	return e
+}
+
+func (e *SVGFEOFFSETElement) IfSTYLEPairs(condition bool, pairs ...string) *SVGFEOFFSETElement {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
 	return e
 }
 

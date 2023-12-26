@@ -57,13 +57,41 @@ func (e *TIMEElement) TextF(format string, args ...any) *TIMEElement {
 	return e.Text(fmt.Sprintf(format, args...))
 }
 
+func (e *TIMEElement) IfText(condition bool, text string) *TIMEElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
+}
+
+func (e *TIMEElement) IfTextF(condition bool, format string, args ...any) *TIMEElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
+}
+
 func (e *TIMEElement) Escaped(text string) *TIMEElement {
 	e.Descendants = append(e.Descendants, Escaped(text))
 	return e
 }
 
+func (e *TIMEElement) IfEscaped(condition bool, text string) *TIMEElement {
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
+}
+
 func (e *TIMEElement) EscapedF(format string, args ...any) *TIMEElement {
 	return e.Escaped(fmt.Sprintf(format, args...))
+}
+
+func (e *TIMEElement) IfEscapedF(condition bool, format string, args ...any) *TIMEElement {
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *TIMEElement) CustomData(key, value string) *TIMEElement {
@@ -74,8 +102,22 @@ func (e *TIMEElement) CustomData(key, value string) *TIMEElement {
 	return e
 }
 
+func (e *TIMEElement) IfCustomData(condition bool, key, value string) *TIMEElement {
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
+}
+
 func (e *TIMEElement) CustomDataF(key, format string, args ...any) *TIMEElement {
 	return e.CustomData(key, fmt.Sprintf(format, args...))
+}
+
+func (e *TIMEElement) IfCustomDataF(condition bool, key, format string, args ...any) *TIMEElement {
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *TIMEElement) CustomDataRemove(key string) *TIMEElement {
@@ -92,6 +134,13 @@ func (e *TIMEElement) DATETIME(s string) *TIMEElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("datetime", s)
+	return e
+}
+
+func (e *TIMEElement) IfDATETIME(condition bool, s string) *TIMEElement {
+	if condition {
+		e.DATETIME(s)
+	}
 	return e
 }
 
@@ -113,6 +162,13 @@ func (e *TIMEElement) ACCESSKEY(r rune) *TIMEElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("accesskey", string(r))
+	return e
+}
+
+func (e *TIMEElement) IfACCESSKEY(condition bool, r rune) *TIMEElement {
+	if condition {
+		e.ACCESSKEY(r)
+	}
 	return e
 }
 
@@ -198,12 +254,26 @@ func (e *TIMEElement) AUTOFOCUS() *TIMEElement {
 	return e
 }
 
+func (e *TIMEElement) IfAUTOFOCUS(condition bool) *TIMEElement {
+	if condition {
+		e.AUTOFOCUSSet(true)
+	}
+	return e
+}
+
 // Set the attribute autofocus to the value b explicitly.
 func (e *TIMEElement) AUTOFOCUSSet(b bool) *TIMEElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("autofocus", b)
+	return e
+}
+
+func (e *TIMEElement) IfSetAUTOFOCUS(condition bool, b bool) *TIMEElement {
+	if condition {
+		e.AUTOFOCUSSet(b)
+	}
 	return e
 }
 
@@ -231,6 +301,13 @@ func (e *TIMEElement) CLASS(s ...string) *TIMEElement {
 		e.DelimitedStrings.Set("class", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *TIMEElement) IfCLASS(condition bool, s ...string) *TIMEElement {
+	if condition {
+		e.CLASS(s...)
+	}
 	return e
 }
 
@@ -439,6 +516,13 @@ func (e *TIMEElement) EXPORTPARTS(s ...string) *TIMEElement {
 	return e
 }
 
+func (e *TIMEElement) IfEXPORTPARTS(condition bool, s ...string) *TIMEElement {
+	if condition {
+		e.EXPORTPARTS(s...)
+	}
+	return e
+}
+
 // Remove the attribute exportparts from the element.
 func (e *TIMEElement) EXPORTPARTSRemove(s ...string) *TIMEElement {
 	if e.DelimitedStrings == nil {
@@ -514,6 +598,13 @@ func (e *TIMEElement) ID(s string) *TIMEElement {
 	return e
 }
 
+func (e *TIMEElement) IfID(condition bool, s string) *TIMEElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
 // Remove the attribute id from the element.
 func (e *TIMEElement) IDRemove(s string) *TIMEElement {
 	if e.StringAttributes == nil {
@@ -540,12 +631,26 @@ func (e *TIMEElement) INERT() *TIMEElement {
 	return e
 }
 
+func (e *TIMEElement) IfINERT(condition bool) *TIMEElement {
+	if condition {
+		e.INERTSet(true)
+	}
+	return e
+}
+
 // Set the attribute inert to the value b explicitly.
 func (e *TIMEElement) INERTSet(b bool) *TIMEElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("inert", b)
+	return e
+}
+
+func (e *TIMEElement) IfSetINERT(condition bool, b bool) *TIMEElement {
+	if condition {
+		e.INERTSet(b)
+	}
 	return e
 }
 
@@ -641,6 +746,13 @@ func (e *TIMEElement) IS(s string) *TIMEElement {
 	return e
 }
 
+func (e *TIMEElement) IfIS(condition bool, s string) *TIMEElement {
+	if condition {
+		e.IS(s)
+	}
+	return e
+}
+
 // Remove the attribute is from the element.
 func (e *TIMEElement) ISRemove(s string) *TIMEElement {
 	if e.StringAttributes == nil {
@@ -671,6 +783,13 @@ func (e *TIMEElement) ITEMID(s string) *TIMEElement {
 	return e
 }
 
+func (e *TIMEElement) IfITEMID(condition bool, s string) *TIMEElement {
+	if condition {
+		e.ITEMID(s)
+	}
+	return e
+}
+
 // Remove the attribute itemid from the element.
 func (e *TIMEElement) ITEMIDRemove(s string) *TIMEElement {
 	if e.StringAttributes == nil {
@@ -696,6 +815,13 @@ func (e *TIMEElement) ITEMPROP(s string) *TIMEElement {
 	return e
 }
 
+func (e *TIMEElement) IfITEMPROP(condition bool, s string) *TIMEElement {
+	if condition {
+		e.ITEMPROP(s)
+	}
+	return e
+}
+
 // Remove the attribute itemprop from the element.
 func (e *TIMEElement) ITEMPROPRemove(s string) *TIMEElement {
 	if e.StringAttributes == nil {
@@ -715,6 +841,13 @@ func (e *TIMEElement) ITEMREF(s string) *TIMEElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("itemref", s)
+	return e
+}
+
+func (e *TIMEElement) IfITEMREF(condition bool, s string) *TIMEElement {
+	if condition {
+		e.ITEMREF(s)
+	}
 	return e
 }
 
@@ -740,12 +873,26 @@ func (e *TIMEElement) ITEMSCOPE() *TIMEElement {
 	return e
 }
 
+func (e *TIMEElement) IfITEMSCOPE(condition bool) *TIMEElement {
+	if condition {
+		e.ITEMSCOPESet(true)
+	}
+	return e
+}
+
 // Set the attribute itemscope to the value b explicitly.
 func (e *TIMEElement) ITEMSCOPESet(b bool) *TIMEElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
 	e.BoolAttributes.Set("itemscope", b)
+	return e
+}
+
+func (e *TIMEElement) IfSetITEMSCOPE(condition bool, b bool) *TIMEElement {
+	if condition {
+		e.ITEMSCOPESet(b)
+	}
 	return e
 }
 
@@ -774,6 +921,13 @@ func (e *TIMEElement) ITEMTYPE(s string) *TIMEElement {
 	return e
 }
 
+func (e *TIMEElement) IfITEMTYPE(condition bool, s string) *TIMEElement {
+	if condition {
+		e.ITEMTYPE(s)
+	}
+	return e
+}
+
 // Remove the attribute itemtype from the element.
 func (e *TIMEElement) ITEMTYPERemove(s string) *TIMEElement {
 	if e.StringAttributes == nil {
@@ -797,6 +951,13 @@ func (e *TIMEElement) LANG(s string) *TIMEElement {
 	return e
 }
 
+func (e *TIMEElement) IfLANG(condition bool, s string) *TIMEElement {
+	if condition {
+		e.LANG(s)
+	}
+	return e
+}
+
 // Remove the attribute lang from the element.
 func (e *TIMEElement) LANGRemove(s string) *TIMEElement {
 	if e.StringAttributes == nil {
@@ -815,6 +976,13 @@ func (e *TIMEElement) NONCE(s string) *TIMEElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("nonce", s)
+	return e
+}
+
+func (e *TIMEElement) IfNONCE(condition bool, s string) *TIMEElement {
+	if condition {
+		e.NONCE(s)
+	}
 	return e
 }
 
@@ -841,6 +1009,13 @@ func (e *TIMEElement) PART(s ...string) *TIMEElement {
 		e.DelimitedStrings.Set("part", ds)
 	}
 	ds.Add(s...)
+	return e
+}
+
+func (e *TIMEElement) IfPART(condition bool, s ...string) *TIMEElement {
+	if condition {
+		e.PART(s...)
+	}
 	return e
 }
 
@@ -911,6 +1086,13 @@ func (e *TIMEElement) SLOT(s string) *TIMEElement {
 	return e
 }
 
+func (e *TIMEElement) IfSLOT(condition bool, s string) *TIMEElement {
+	if condition {
+		e.SLOT(s)
+	}
+	return e
+}
+
 // Remove the attribute slot from the element.
 func (e *TIMEElement) SLOTRemove(s string) *TIMEElement {
 	if e.StringAttributes == nil {
@@ -969,6 +1151,13 @@ func (e *TIMEElement) STYLEF(k string, format string, args ...any) *TIMEElement 
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+func (e *TIMEElement) IfSTYLE(condition bool, k string, v string) *TIMEElement {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
 func (e *TIMEElement) STYLE(k string, v string) *TIMEElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -979,6 +1168,13 @@ func (e *TIMEElement) STYLE(k string, v string) *TIMEElement {
 		e.KVStrings.Set("style", kv)
 	}
 	kv.Add(k, v)
+	return e
+}
+
+func (e *TIMEElement) IfSTYLEF(condition bool, k string, format string, args ...any) *TIMEElement {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
 	return e
 }
 
@@ -1019,6 +1215,13 @@ func (e *TIMEElement) STYLEPairs(pairs ...string) *TIMEElement {
 	return e
 }
 
+func (e *TIMEElement) IfSTYLEPairs(condition bool, pairs ...string) *TIMEElement {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
+	return e
+}
+
 // Remove the attribute style from the element.
 func (e *TIMEElement) STYLERemove(keys ...string) *TIMEElement {
 	if e.KVStrings == nil {
@@ -1053,6 +1256,13 @@ func (e *TIMEElement) TABINDEX(i int) *TIMEElement {
 		e.IntAttributes = treemap.New[string, int]()
 	}
 	e.IntAttributes.Set("tabindex", i)
+	return e
+}
+
+func (e *TIMEElement) IfTABINDEX(condition bool, i int) *TIMEElement {
+	if condition {
+		e.TABINDEX(i)
+	}
 	return e
 }
 
@@ -1091,6 +1301,13 @@ func (e *TIMEElement) TITLE(s string) *TIMEElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 	e.StringAttributes.Set("title", s)
+	return e
+}
+
+func (e *TIMEElement) IfTITLE(condition bool, s string) *TIMEElement {
+	if condition {
+		e.TITLE(s)
+	}
 	return e
 }
 
