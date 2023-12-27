@@ -6,7 +6,9 @@ package elements
 import (
 	"fmt"
 
+	"github.com/goccy/go-json"
 	"github.com/igrmk/treemap/v2"
+	"github.com/samber/lo"
 )
 
 // The <tspan> SVG element lets authors explicitly specify the location of a glyph
@@ -207,6 +209,31 @@ func (e *SVGTSPANElement) IfROTATE(condition bool, f float64) *SVGTSPANElement {
 	return e
 }
 
+// Specifies a unique id for an element
+func (e *SVGTSPANElement) ID(s string) *SVGTSPANElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	e.StringAttributes.Set("id", s)
+	return e
+}
+
+func (e *SVGTSPANElement) IfID(condition bool, s string) *SVGTSPANElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
+// Remove the attribute ID from the element.
+func (e *SVGTSPANElement) IDRemove(s string) *SVGTSPANElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("id")
+	return e
+}
+
 // Specifies one or more classnames for an element (refers to a class in a style
 // sheet)
 func (e *SVGTSPANElement) CLASS(s ...string) *SVGTSPANElement {
@@ -229,7 +256,7 @@ func (e *SVGTSPANElement) IfCLASS(condition bool, s ...string) *SVGTSPANElement 
 	return e
 }
 
-// Remove the attribute class from the element.
+// Remove the attribute CLASS from the element.
 func (e *SVGTSPANElement) CLASSRemove(s ...string) *SVGTSPANElement {
 	if e.DelimitedStrings == nil {
 		return e
@@ -239,31 +266,6 @@ func (e *SVGTSPANElement) CLASSRemove(s ...string) *SVGTSPANElement {
 		return e
 	}
 	ds.Remove(s...)
-	return e
-}
-
-// Specifies a unique id for an element
-func (e *SVGTSPANElement) ID(s string) *SVGTSPANElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	e.StringAttributes.Set("id", s)
-	return e
-}
-
-func (e *SVGTSPANElement) IfID(condition bool, s string) *SVGTSPANElement {
-	if condition {
-		e.ID(s)
-	}
-	return e
-}
-
-// Remove the attribute id from the element.
-func (e *SVGTSPANElement) IDRemove(s string) *SVGTSPANElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("id")
 	return e
 }
 
@@ -343,7 +345,7 @@ func (e *SVGTSPANElement) IfSTYLEPairs(condition bool, pairs ...string) *SVGTSPA
 	return e
 }
 
-// Remove the attribute style from the element.
+// Remove the attribute STYLE from the element.
 func (e *SVGTSPANElement) STYLERemove(keys ...string) *SVGTSPANElement {
 	if e.KVStrings == nil {
 		return e
@@ -355,5 +357,345 @@ func (e *SVGTSPANElement) STYLERemove(keys ...string) *SVGTSPANElement {
 	for _, k := range keys {
 		kv.Remove(k)
 	}
+	return e
+}
+
+// Merges the store with the given object
+
+func (e *SVGTSPANElement) DATASTAR_MERGE_STORE(v any) *SVGTSPANElement {
+	if e.CustomDataAttributes == nil {
+		e.CustomDataAttributes = treemap.New[string, string]()
+	}
+	b, err := json.Marshal(v)
+	if err != nil {
+		panic(err)
+	}
+	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	return e
+}
+
+// Sets the reference of the element
+
+func (e *SVGTSPANElement) DATASTAR_REF(s string) *SVGTSPANElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-ref"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SVGTSPANElement) IfDATASTAR_REF(condition bool, s string) *SVGTSPANElement {
+	if condition {
+		e.DATASTAR_REF(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_REF from the element.
+func (e *SVGTSPANElement) DATASTAR_REFRemove() *SVGTSPANElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-ref")
+	return e
+}
+
+// Sets the value of the element
+
+func (e *SVGTSPANElement) DATASTAR_BIND(s string) *SVGTSPANElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-bind"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SVGTSPANElement) IfDATASTAR_BIND(condition bool, s string) *SVGTSPANElement {
+	if condition {
+		e.DATASTAR_BIND(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_BIND from the element.
+func (e *SVGTSPANElement) DATASTAR_BINDRemove() *SVGTSPANElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-bind")
+	return e
+}
+
+// Sets the value of the element
+
+func (e *SVGTSPANElement) DATASTAR_MODEL(s string) *SVGTSPANElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-model"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SVGTSPANElement) IfDATASTAR_MODEL(condition bool, s string) *SVGTSPANElement {
+	if condition {
+		e.DATASTAR_MODEL(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_MODEL from the element.
+func (e *SVGTSPANElement) DATASTAR_MODELRemove() *SVGTSPANElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-model")
+	return e
+}
+
+// Sets the textContent of the element
+
+func (e *SVGTSPANElement) DATASTAR_TEXT(s string) *SVGTSPANElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-text"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SVGTSPANElement) IfDATASTAR_TEXT(condition bool, s string) *SVGTSPANElement {
+	if condition {
+		e.DATASTAR_TEXT(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_TEXT from the element.
+func (e *SVGTSPANElement) DATASTAR_TEXTRemove() *SVGTSPANElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-text")
+	return e
+}
+
+// Sets the event handler of the element
+
+type SVGTspanDataOnMod customDataKeyModifier
+
+// Debounces the event handler
+func SVGTspanDataOnModDebounce(
+	s string,
+) SVGTspanDataOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce_%sms", s)
+	}
+}
+
+// Throttles the event handler
+func SVGTspanDataOnModThrottle(
+	s string,
+) SVGTspanDataOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle_%sms", s)
+	}
+}
+
+func (e *SVGTSPANElement) DATASTAR_ON(s string, modifiers ...SVGTspanDataOnMod) *SVGTSPANElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	customMods := lo.Map(modifiers, func(m SVGTspanDataOnMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key := customDataKey("data-on", customMods...)
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SVGTSPANElement) IfDATASTAR_ON(condition bool, s string, modifiers ...SVGTspanDataOnMod) *SVGTSPANElement {
+	if condition {
+		e.DATASTAR_ON(s, modifiers...)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_ON from the element.
+func (e *SVGTSPANElement) DATASTAR_ONRemove() *SVGTSPANElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-on")
+	return e
+}
+
+// Sets the focus of the element
+
+func (e *SVGTSPANElement) DATASTAR_FOCUSSet(b bool) *SVGTSPANElement {
+	key := "data-focus"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *SVGTSPANElement) DATASTAR_FOCUS() *SVGTSPANElement {
+	return e.DATASTAR_FOCUSSet(true)
+}
+
+// Sets the header of for fetch requests
+
+func (e *SVGTSPANElement) DATASTAR_HEADER(s string) *SVGTSPANElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-header"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SVGTSPANElement) IfDATASTAR_HEADER(condition bool, s string) *SVGTSPANElement {
+	if condition {
+		e.DATASTAR_HEADER(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_HEADER from the element.
+func (e *SVGTSPANElement) DATASTAR_HEADERRemove() *SVGTSPANElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-header")
+	return e
+}
+
+// Sets the URL for fetch requests
+
+func (e *SVGTSPANElement) DATASTAR_FETCH_URL(s string) *SVGTSPANElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-fetch-url"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SVGTSPANElement) IfDATASTAR_FETCH_URL(condition bool, s string) *SVGTSPANElement {
+	if condition {
+		e.DATASTAR_FETCH_URL(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_FETCH_URL from the element.
+func (e *SVGTSPANElement) DATASTAR_FETCH_URLRemove() *SVGTSPANElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-fetch-url")
+	return e
+}
+
+// Sets the indicator selector for fetch requests
+
+func (e *SVGTSPANElement) DATASTAR_FETCH_INDICATOR(s string) *SVGTSPANElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "DatastarFetchIndicator"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SVGTSPANElement) IfDATASTAR_FETCH_INDICATOR(condition bool, s string) *SVGTSPANElement {
+	if condition {
+		e.DATASTAR_FETCH_INDICATOR(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_FETCH_INDICATOR from the element.
+func (e *SVGTSPANElement) DATASTAR_FETCH_INDICATORRemove() *SVGTSPANElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("DatastarFetchIndicator")
+	return e
+}
+
+// Sets the visibility of the element
+
+func (e *SVGTSPANElement) DATASTAR_SHOWSet(b bool) *SVGTSPANElement {
+	key := "data-show"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *SVGTSPANElement) DATASTAR_SHOW() *SVGTSPANElement {
+	return e.DATASTAR_SHOWSet(true)
+}
+
+// Triggers the callback when the element intersects the viewport
+
+func (e *SVGTSPANElement) DATASTAR_INTERSECTSSet(b bool) *SVGTSPANElement {
+	key := "data-intersects"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *SVGTSPANElement) DATASTAR_INTERSECTS() *SVGTSPANElement {
+	return e.DATASTAR_INTERSECTSSet(true)
+}
+
+// Teleports the element to the given selector
+
+func (e *SVGTSPANElement) DATASTAR_TELEPORTSet(b bool) *SVGTSPANElement {
+	key := "data-teleport"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *SVGTSPANElement) DATASTAR_TELEPORT() *SVGTSPANElement {
+	return e.DATASTAR_TELEPORTSet(true)
+}
+
+// Scrolls the element into view
+
+func (e *SVGTSPANElement) DATASTAR_SCROLL_INTO_VIEWSet(b bool) *SVGTSPANElement {
+	key := "data-scroll-into-view"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *SVGTSPANElement) DATASTAR_SCROLL_INTO_VIEW() *SVGTSPANElement {
+	return e.DATASTAR_SCROLL_INTO_VIEWSet(true)
+}
+
+// Setup the ViewTransitionAPI for the element
+
+func (e *SVGTSPANElement) DATASTAR_VIEW_TRANSITION(s string) *SVGTSPANElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-view-transition"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SVGTSPANElement) IfDATASTAR_VIEW_TRANSITION(condition bool, s string) *SVGTSPANElement {
+	if condition {
+		e.DATASTAR_VIEW_TRANSITION(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_VIEW_TRANSITION from the element.
+func (e *SVGTSPANElement) DATASTAR_VIEW_TRANSITIONRemove() *SVGTSPANElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-view-transition")
 	return e
 }

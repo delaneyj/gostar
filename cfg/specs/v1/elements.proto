@@ -17,8 +17,16 @@ message Attribute {
   message Choices { repeated Choice choices = 1; }
 
   message Custom {
+    message Modifier {
+      string name = 1;
+      string description = 2;
+      Type type = 3;
+      string prefix = 4;
+      string suffix = 5;
+    }
     string name = 1;
     Type type = 2;
+    repeated Modifier modifiers = 3;
   }
 
   message Type {
@@ -33,6 +41,7 @@ message Attribute {
       bool rune = 8;
       Custom custom = 9;
       bool json = 10;
+      bool duration_ms = 11;
     }
   }
   string key = 1;
@@ -53,11 +62,11 @@ message Namespace {
   string name = 1;
   string description = 2;
   string prefix = 3;
-  repeated Attribute global_attributes = 4;
-  repeated Element elements = 5;
+  repeated Element elements = 4;
+  repeated Attribute attributes = 5;
 }
 
 message Namespaces {
   repeated Namespace namespaces = 1;
-  repeated Attribute attributes_extensions = 2;
+  repeated Attribute attributes = 5;
 }

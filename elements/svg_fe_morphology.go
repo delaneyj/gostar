@@ -6,7 +6,9 @@ package elements
 import (
 	"fmt"
 
+	"github.com/goccy/go-json"
 	"github.com/igrmk/treemap/v2"
+	"github.com/samber/lo"
 )
 
 // The <feMorphology> SVG filter primitive is used to erode or dilate the input
@@ -144,7 +146,7 @@ func (e *SVGFEMORPHOLOGYElement) IfIN(condition bool, s string) *SVGFEMORPHOLOGY
 	return e
 }
 
-// Remove the attribute in from the element.
+// Remove the attribute IN from the element.
 func (e *SVGFEMORPHOLOGYElement) INRemove(s string) *SVGFEMORPHOLOGYElement {
 	if e.StringAttributes == nil {
 		return e
@@ -171,7 +173,7 @@ const (
 	SVGFeMorphologyOperator_dilate SVGFeMorphologyOperatorChoice = "dilate"
 )
 
-// Remove the attribute operator from the element.
+// Remove the attribute OPERATOR from the element.
 func (e *SVGFEMORPHOLOGYElement) OPERATORRemove(c SVGFeMorphologyOperatorChoice) *SVGFEMORPHOLOGYElement {
 	if e.StringAttributes == nil {
 		return e
@@ -193,6 +195,31 @@ func (e *SVGFEMORPHOLOGYElement) IfRADIUS(condition bool, f float64) *SVGFEMORPH
 	if condition {
 		e.RADIUS(f)
 	}
+	return e
+}
+
+// Specifies a unique id for an element
+func (e *SVGFEMORPHOLOGYElement) ID(s string) *SVGFEMORPHOLOGYElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	e.StringAttributes.Set("id", s)
+	return e
+}
+
+func (e *SVGFEMORPHOLOGYElement) IfID(condition bool, s string) *SVGFEMORPHOLOGYElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
+// Remove the attribute ID from the element.
+func (e *SVGFEMORPHOLOGYElement) IDRemove(s string) *SVGFEMORPHOLOGYElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("id")
 	return e
 }
 
@@ -218,7 +245,7 @@ func (e *SVGFEMORPHOLOGYElement) IfCLASS(condition bool, s ...string) *SVGFEMORP
 	return e
 }
 
-// Remove the attribute class from the element.
+// Remove the attribute CLASS from the element.
 func (e *SVGFEMORPHOLOGYElement) CLASSRemove(s ...string) *SVGFEMORPHOLOGYElement {
 	if e.DelimitedStrings == nil {
 		return e
@@ -228,31 +255,6 @@ func (e *SVGFEMORPHOLOGYElement) CLASSRemove(s ...string) *SVGFEMORPHOLOGYElemen
 		return e
 	}
 	ds.Remove(s...)
-	return e
-}
-
-// Specifies a unique id for an element
-func (e *SVGFEMORPHOLOGYElement) ID(s string) *SVGFEMORPHOLOGYElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	e.StringAttributes.Set("id", s)
-	return e
-}
-
-func (e *SVGFEMORPHOLOGYElement) IfID(condition bool, s string) *SVGFEMORPHOLOGYElement {
-	if condition {
-		e.ID(s)
-	}
-	return e
-}
-
-// Remove the attribute id from the element.
-func (e *SVGFEMORPHOLOGYElement) IDRemove(s string) *SVGFEMORPHOLOGYElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("id")
 	return e
 }
 
@@ -332,7 +334,7 @@ func (e *SVGFEMORPHOLOGYElement) IfSTYLEPairs(condition bool, pairs ...string) *
 	return e
 }
 
-// Remove the attribute style from the element.
+// Remove the attribute STYLE from the element.
 func (e *SVGFEMORPHOLOGYElement) STYLERemove(keys ...string) *SVGFEMORPHOLOGYElement {
 	if e.KVStrings == nil {
 		return e
@@ -344,5 +346,345 @@ func (e *SVGFEMORPHOLOGYElement) STYLERemove(keys ...string) *SVGFEMORPHOLOGYEle
 	for _, k := range keys {
 		kv.Remove(k)
 	}
+	return e
+}
+
+// Merges the store with the given object
+
+func (e *SVGFEMORPHOLOGYElement) DATASTAR_MERGE_STORE(v any) *SVGFEMORPHOLOGYElement {
+	if e.CustomDataAttributes == nil {
+		e.CustomDataAttributes = treemap.New[string, string]()
+	}
+	b, err := json.Marshal(v)
+	if err != nil {
+		panic(err)
+	}
+	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	return e
+}
+
+// Sets the reference of the element
+
+func (e *SVGFEMORPHOLOGYElement) DATASTAR_REF(s string) *SVGFEMORPHOLOGYElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-ref"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SVGFEMORPHOLOGYElement) IfDATASTAR_REF(condition bool, s string) *SVGFEMORPHOLOGYElement {
+	if condition {
+		e.DATASTAR_REF(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_REF from the element.
+func (e *SVGFEMORPHOLOGYElement) DATASTAR_REFRemove() *SVGFEMORPHOLOGYElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-ref")
+	return e
+}
+
+// Sets the value of the element
+
+func (e *SVGFEMORPHOLOGYElement) DATASTAR_BIND(s string) *SVGFEMORPHOLOGYElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-bind"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SVGFEMORPHOLOGYElement) IfDATASTAR_BIND(condition bool, s string) *SVGFEMORPHOLOGYElement {
+	if condition {
+		e.DATASTAR_BIND(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_BIND from the element.
+func (e *SVGFEMORPHOLOGYElement) DATASTAR_BINDRemove() *SVGFEMORPHOLOGYElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-bind")
+	return e
+}
+
+// Sets the value of the element
+
+func (e *SVGFEMORPHOLOGYElement) DATASTAR_MODEL(s string) *SVGFEMORPHOLOGYElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-model"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SVGFEMORPHOLOGYElement) IfDATASTAR_MODEL(condition bool, s string) *SVGFEMORPHOLOGYElement {
+	if condition {
+		e.DATASTAR_MODEL(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_MODEL from the element.
+func (e *SVGFEMORPHOLOGYElement) DATASTAR_MODELRemove() *SVGFEMORPHOLOGYElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-model")
+	return e
+}
+
+// Sets the textContent of the element
+
+func (e *SVGFEMORPHOLOGYElement) DATASTAR_TEXT(s string) *SVGFEMORPHOLOGYElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-text"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SVGFEMORPHOLOGYElement) IfDATASTAR_TEXT(condition bool, s string) *SVGFEMORPHOLOGYElement {
+	if condition {
+		e.DATASTAR_TEXT(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_TEXT from the element.
+func (e *SVGFEMORPHOLOGYElement) DATASTAR_TEXTRemove() *SVGFEMORPHOLOGYElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-text")
+	return e
+}
+
+// Sets the event handler of the element
+
+type SVGFeMorphologyDataOnMod customDataKeyModifier
+
+// Debounces the event handler
+func SVGFeMorphologyDataOnModDebounce(
+	s string,
+) SVGFeMorphologyDataOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce_%sms", s)
+	}
+}
+
+// Throttles the event handler
+func SVGFeMorphologyDataOnModThrottle(
+	s string,
+) SVGFeMorphologyDataOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle_%sms", s)
+	}
+}
+
+func (e *SVGFEMORPHOLOGYElement) DATASTAR_ON(s string, modifiers ...SVGFeMorphologyDataOnMod) *SVGFEMORPHOLOGYElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	customMods := lo.Map(modifiers, func(m SVGFeMorphologyDataOnMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key := customDataKey("data-on", customMods...)
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SVGFEMORPHOLOGYElement) IfDATASTAR_ON(condition bool, s string, modifiers ...SVGFeMorphologyDataOnMod) *SVGFEMORPHOLOGYElement {
+	if condition {
+		e.DATASTAR_ON(s, modifiers...)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_ON from the element.
+func (e *SVGFEMORPHOLOGYElement) DATASTAR_ONRemove() *SVGFEMORPHOLOGYElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-on")
+	return e
+}
+
+// Sets the focus of the element
+
+func (e *SVGFEMORPHOLOGYElement) DATASTAR_FOCUSSet(b bool) *SVGFEMORPHOLOGYElement {
+	key := "data-focus"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *SVGFEMORPHOLOGYElement) DATASTAR_FOCUS() *SVGFEMORPHOLOGYElement {
+	return e.DATASTAR_FOCUSSet(true)
+}
+
+// Sets the header of for fetch requests
+
+func (e *SVGFEMORPHOLOGYElement) DATASTAR_HEADER(s string) *SVGFEMORPHOLOGYElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-header"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SVGFEMORPHOLOGYElement) IfDATASTAR_HEADER(condition bool, s string) *SVGFEMORPHOLOGYElement {
+	if condition {
+		e.DATASTAR_HEADER(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_HEADER from the element.
+func (e *SVGFEMORPHOLOGYElement) DATASTAR_HEADERRemove() *SVGFEMORPHOLOGYElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-header")
+	return e
+}
+
+// Sets the URL for fetch requests
+
+func (e *SVGFEMORPHOLOGYElement) DATASTAR_FETCH_URL(s string) *SVGFEMORPHOLOGYElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-fetch-url"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SVGFEMORPHOLOGYElement) IfDATASTAR_FETCH_URL(condition bool, s string) *SVGFEMORPHOLOGYElement {
+	if condition {
+		e.DATASTAR_FETCH_URL(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_FETCH_URL from the element.
+func (e *SVGFEMORPHOLOGYElement) DATASTAR_FETCH_URLRemove() *SVGFEMORPHOLOGYElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-fetch-url")
+	return e
+}
+
+// Sets the indicator selector for fetch requests
+
+func (e *SVGFEMORPHOLOGYElement) DATASTAR_FETCH_INDICATOR(s string) *SVGFEMORPHOLOGYElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "DatastarFetchIndicator"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SVGFEMORPHOLOGYElement) IfDATASTAR_FETCH_INDICATOR(condition bool, s string) *SVGFEMORPHOLOGYElement {
+	if condition {
+		e.DATASTAR_FETCH_INDICATOR(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_FETCH_INDICATOR from the element.
+func (e *SVGFEMORPHOLOGYElement) DATASTAR_FETCH_INDICATORRemove() *SVGFEMORPHOLOGYElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("DatastarFetchIndicator")
+	return e
+}
+
+// Sets the visibility of the element
+
+func (e *SVGFEMORPHOLOGYElement) DATASTAR_SHOWSet(b bool) *SVGFEMORPHOLOGYElement {
+	key := "data-show"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *SVGFEMORPHOLOGYElement) DATASTAR_SHOW() *SVGFEMORPHOLOGYElement {
+	return e.DATASTAR_SHOWSet(true)
+}
+
+// Triggers the callback when the element intersects the viewport
+
+func (e *SVGFEMORPHOLOGYElement) DATASTAR_INTERSECTSSet(b bool) *SVGFEMORPHOLOGYElement {
+	key := "data-intersects"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *SVGFEMORPHOLOGYElement) DATASTAR_INTERSECTS() *SVGFEMORPHOLOGYElement {
+	return e.DATASTAR_INTERSECTSSet(true)
+}
+
+// Teleports the element to the given selector
+
+func (e *SVGFEMORPHOLOGYElement) DATASTAR_TELEPORTSet(b bool) *SVGFEMORPHOLOGYElement {
+	key := "data-teleport"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *SVGFEMORPHOLOGYElement) DATASTAR_TELEPORT() *SVGFEMORPHOLOGYElement {
+	return e.DATASTAR_TELEPORTSet(true)
+}
+
+// Scrolls the element into view
+
+func (e *SVGFEMORPHOLOGYElement) DATASTAR_SCROLL_INTO_VIEWSet(b bool) *SVGFEMORPHOLOGYElement {
+	key := "data-scroll-into-view"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *SVGFEMORPHOLOGYElement) DATASTAR_SCROLL_INTO_VIEW() *SVGFEMORPHOLOGYElement {
+	return e.DATASTAR_SCROLL_INTO_VIEWSet(true)
+}
+
+// Setup the ViewTransitionAPI for the element
+
+func (e *SVGFEMORPHOLOGYElement) DATASTAR_VIEW_TRANSITION(s string) *SVGFEMORPHOLOGYElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-view-transition"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SVGFEMORPHOLOGYElement) IfDATASTAR_VIEW_TRANSITION(condition bool, s string) *SVGFEMORPHOLOGYElement {
+	if condition {
+		e.DATASTAR_VIEW_TRANSITION(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_VIEW_TRANSITION from the element.
+func (e *SVGFEMORPHOLOGYElement) DATASTAR_VIEW_TRANSITIONRemove() *SVGFEMORPHOLOGYElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-view-transition")
 	return e
 }

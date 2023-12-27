@@ -6,7 +6,9 @@ package elements
 import (
 	"fmt"
 
+	"github.com/goccy/go-json"
 	"github.com/igrmk/treemap/v2"
+	"github.com/samber/lo"
 )
 
 // The HTML <object> element represents an external resource, which can be treated
@@ -144,7 +146,7 @@ func (e *OBJECTElement) IfDATA(condition bool, s string) *OBJECTElement {
 	return e
 }
 
-// Remove the attribute data from the element.
+// Remove the attribute DATA from the element.
 func (e *OBJECTElement) DATARemove(s string) *OBJECTElement {
 	if e.StringAttributes == nil {
 		return e
@@ -169,7 +171,7 @@ func (e *OBJECTElement) IfFORM(condition bool, s string) *OBJECTElement {
 	return e
 }
 
-// Remove the attribute form from the element.
+// Remove the attribute FORM from the element.
 func (e *OBJECTElement) FORMRemove(s string) *OBJECTElement {
 	if e.StringAttributes == nil {
 		return e
@@ -194,7 +196,7 @@ func (e *OBJECTElement) IfHEIGHT(condition bool, i int) *OBJECTElement {
 	return e
 }
 
-// Remove the attribute height from the element.
+// Remove the attribute HEIGHT from the element.
 func (e *OBJECTElement) HEIGHTRemove(i int) *OBJECTElement {
 	if e.IntAttributes == nil {
 		return e
@@ -219,7 +221,7 @@ func (e *OBJECTElement) IfNAME(condition bool, s string) *OBJECTElement {
 	return e
 }
 
-// Remove the attribute name from the element.
+// Remove the attribute NAME from the element.
 func (e *OBJECTElement) NAMERemove(s string) *OBJECTElement {
 	if e.StringAttributes == nil {
 		return e
@@ -244,7 +246,7 @@ func (e *OBJECTElement) IfTYPE(condition bool, s string) *OBJECTElement {
 	return e
 }
 
-// Remove the attribute type from the element.
+// Remove the attribute TYPE from the element.
 func (e *OBJECTElement) TYPERemove(s string) *OBJECTElement {
 	if e.StringAttributes == nil {
 		return e
@@ -267,7 +269,7 @@ func (e *OBJECTElement) IfTYPEMUSTMATCH(condition bool) *OBJECTElement {
 	return e
 }
 
-// Set the attribute typemustmatch to the value b explicitly.
+// Set the attribute TYPEMUSTMATCH to the value b explicitly.
 func (e *OBJECTElement) TYPEMUSTMATCHSet(b bool) *OBJECTElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
@@ -283,7 +285,7 @@ func (e *OBJECTElement) IfSetTYPEMUSTMATCH(condition bool, b bool) *OBJECTElemen
 	return e
 }
 
-// Remove the attribute typemustmatch from the element.
+// Remove the attribute TYPEMUSTMATCH from the element.
 func (e *OBJECTElement) TYPEMUSTMATCHRemove(b bool) *OBJECTElement {
 	if e.BoolAttributes == nil {
 		return e
@@ -308,7 +310,7 @@ func (e *OBJECTElement) IfUSEMAP(condition bool, s string) *OBJECTElement {
 	return e
 }
 
-// Remove the attribute usemap from the element.
+// Remove the attribute USEMAP from the element.
 func (e *OBJECTElement) USEMAPRemove(s string) *OBJECTElement {
 	if e.StringAttributes == nil {
 		return e
@@ -333,7 +335,7 @@ func (e *OBJECTElement) IfWIDTH(condition bool, i int) *OBJECTElement {
 	return e
 }
 
-// Remove the attribute width from the element.
+// Remove the attribute WIDTH from the element.
 func (e *OBJECTElement) WIDTHRemove(i int) *OBJECTElement {
 	if e.IntAttributes == nil {
 		return e
@@ -361,7 +363,7 @@ func (e *OBJECTElement) IfACCESSKEY(condition bool, r rune) *OBJECTElement {
 	return e
 }
 
-// Remove the attribute accesskey from the element.
+// Remove the attribute ACCESSKEY from the element.
 func (e *OBJECTElement) ACCESSKEYRemove() *OBJECTElement {
 	if e.StringAttributes == nil {
 		return e
@@ -409,7 +411,7 @@ const (
 	ObjectAutocapitalize_characters ObjectAutocapitalizeChoice = "characters"
 )
 
-// Remove the attribute autocapitalize from the element.
+// Remove the attribute AUTOCAPITALIZE from the element.
 func (e *OBJECTElement) AUTOCAPITALIZERemove(c ObjectAutocapitalizeChoice) *OBJECTElement {
 	if e.StringAttributes == nil {
 		return e
@@ -450,7 +452,7 @@ func (e *OBJECTElement) IfAUTOFOCUS(condition bool) *OBJECTElement {
 	return e
 }
 
-// Set the attribute autofocus to the value b explicitly.
+// Set the attribute AUTOFOCUS to the value b explicitly.
 func (e *OBJECTElement) AUTOFOCUSSet(b bool) *OBJECTElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
@@ -466,7 +468,7 @@ func (e *OBJECTElement) IfSetAUTOFOCUS(condition bool, b bool) *OBJECTElement {
 	return e
 }
 
-// Remove the attribute autofocus from the element.
+// Remove the attribute AUTOFOCUS from the element.
 func (e *OBJECTElement) AUTOFOCUSRemove(b bool) *OBJECTElement {
 	if e.BoolAttributes == nil {
 		return e
@@ -500,7 +502,7 @@ func (e *OBJECTElement) IfCLASS(condition bool, s ...string) *OBJECTElement {
 	return e
 }
 
-// Remove the attribute class from the element.
+// Remove the attribute CLASS from the element.
 func (e *OBJECTElement) CLASSRemove(s ...string) *OBJECTElement {
 	if e.DelimitedStrings == nil {
 		return e
@@ -538,7 +540,7 @@ const (
 	ObjectContenteditable_plaintext_only ObjectContenteditableChoice = "plaintext-only"
 )
 
-// Remove the attribute contenteditable from the element.
+// Remove the attribute CONTENTEDITABLE from the element.
 func (e *OBJECTElement) CONTENTEDITABLERemove(c ObjectContenteditableChoice) *OBJECTElement {
 	if e.StringAttributes == nil {
 		return e
@@ -586,7 +588,7 @@ const (
 	ObjectDir_auto ObjectDirChoice = "auto"
 )
 
-// Remove the attribute dir from the element.
+// Remove the attribute DIR from the element.
 func (e *OBJECTElement) DIRRemove(c ObjectDirChoice) *OBJECTElement {
 	if e.StringAttributes == nil {
 		return e
@@ -623,7 +625,7 @@ const (
 	ObjectDraggable_auto ObjectDraggableChoice = "auto"
 )
 
-// Remove the attribute draggable from the element.
+// Remove the attribute DRAGGABLE from the element.
 func (e *OBJECTElement) DRAGGABLERemove(c ObjectDraggableChoice) *OBJECTElement {
 	if e.StringAttributes == nil {
 		return e
@@ -663,7 +665,7 @@ const (
 	ObjectEnterkeyhint_send ObjectEnterkeyhintChoice = "send"
 )
 
-// Remove the attribute enterkeyhint from the element.
+// Remove the attribute ENTERKEYHINT from the element.
 func (e *OBJECTElement) ENTERKEYHINTRemove(c ObjectEnterkeyhintChoice) *OBJECTElement {
 	if e.StringAttributes == nil {
 		return e
@@ -712,7 +714,7 @@ func (e *OBJECTElement) IfEXPORTPARTS(condition bool, s ...string) *OBJECTElemen
 	return e
 }
 
-// Remove the attribute exportparts from the element.
+// Remove the attribute EXPORTPARTS from the element.
 func (e *OBJECTElement) EXPORTPARTSRemove(s ...string) *OBJECTElement {
 	if e.DelimitedStrings == nil {
 		return e
@@ -766,7 +768,7 @@ const (
 	ObjectHidden_until_found ObjectHiddenChoice = "until-found"
 )
 
-// Remove the attribute hidden from the element.
+// Remove the attribute HIDDEN from the element.
 func (e *OBJECTElement) HIDDENRemove(c ObjectHiddenChoice) *OBJECTElement {
 	if e.StringAttributes == nil {
 		return e
@@ -794,7 +796,7 @@ func (e *OBJECTElement) IfID(condition bool, s string) *OBJECTElement {
 	return e
 }
 
-// Remove the attribute id from the element.
+// Remove the attribute ID from the element.
 func (e *OBJECTElement) IDRemove(s string) *OBJECTElement {
 	if e.StringAttributes == nil {
 		return e
@@ -827,7 +829,7 @@ func (e *OBJECTElement) IfINERT(condition bool) *OBJECTElement {
 	return e
 }
 
-// Set the attribute inert to the value b explicitly.
+// Set the attribute INERT to the value b explicitly.
 func (e *OBJECTElement) INERTSet(b bool) *OBJECTElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
@@ -843,7 +845,7 @@ func (e *OBJECTElement) IfSetINERT(condition bool, b bool) *OBJECTElement {
 	return e
 }
 
-// Remove the attribute inert from the element.
+// Remove the attribute INERT from the element.
 func (e *OBJECTElement) INERTRemove(b bool) *OBJECTElement {
 	if e.BoolAttributes == nil {
 		return e
@@ -912,7 +914,7 @@ const (
 	ObjectInputmode_url ObjectInputmodeChoice = "url"
 )
 
-// Remove the attribute inputmode from the element.
+// Remove the attribute INPUTMODE from the element.
 func (e *OBJECTElement) INPUTMODERemove(c ObjectInputmodeChoice) *OBJECTElement {
 	if e.StringAttributes == nil {
 		return e
@@ -942,7 +944,7 @@ func (e *OBJECTElement) IfIS(condition bool, s string) *OBJECTElement {
 	return e
 }
 
-// Remove the attribute is from the element.
+// Remove the attribute IS from the element.
 func (e *OBJECTElement) ISRemove(s string) *OBJECTElement {
 	if e.StringAttributes == nil {
 		return e
@@ -979,7 +981,7 @@ func (e *OBJECTElement) IfITEMID(condition bool, s string) *OBJECTElement {
 	return e
 }
 
-// Remove the attribute itemid from the element.
+// Remove the attribute ITEMID from the element.
 func (e *OBJECTElement) ITEMIDRemove(s string) *OBJECTElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1011,7 +1013,7 @@ func (e *OBJECTElement) IfITEMPROP(condition bool, s string) *OBJECTElement {
 	return e
 }
 
-// Remove the attribute itemprop from the element.
+// Remove the attribute ITEMPROP from the element.
 func (e *OBJECTElement) ITEMPROPRemove(s string) *OBJECTElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1040,7 +1042,7 @@ func (e *OBJECTElement) IfITEMREF(condition bool, s string) *OBJECTElement {
 	return e
 }
 
-// Remove the attribute itemref from the element.
+// Remove the attribute ITEMREF from the element.
 func (e *OBJECTElement) ITEMREFRemove(s string) *OBJECTElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1069,7 +1071,7 @@ func (e *OBJECTElement) IfITEMSCOPE(condition bool) *OBJECTElement {
 	return e
 }
 
-// Set the attribute itemscope to the value b explicitly.
+// Set the attribute ITEMSCOPE to the value b explicitly.
 func (e *OBJECTElement) ITEMSCOPESet(b bool) *OBJECTElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
@@ -1085,7 +1087,7 @@ func (e *OBJECTElement) IfSetITEMSCOPE(condition bool, b bool) *OBJECTElement {
 	return e
 }
 
-// Remove the attribute itemscope from the element.
+// Remove the attribute ITEMSCOPE from the element.
 func (e *OBJECTElement) ITEMSCOPERemove(b bool) *OBJECTElement {
 	if e.BoolAttributes == nil {
 		return e
@@ -1117,7 +1119,7 @@ func (e *OBJECTElement) IfITEMTYPE(condition bool, s string) *OBJECTElement {
 	return e
 }
 
-// Remove the attribute itemtype from the element.
+// Remove the attribute ITEMTYPE from the element.
 func (e *OBJECTElement) ITEMTYPERemove(s string) *OBJECTElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1147,7 +1149,7 @@ func (e *OBJECTElement) IfLANG(condition bool, s string) *OBJECTElement {
 	return e
 }
 
-// Remove the attribute lang from the element.
+// Remove the attribute LANG from the element.
 func (e *OBJECTElement) LANGRemove(s string) *OBJECTElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1175,7 +1177,7 @@ func (e *OBJECTElement) IfNONCE(condition bool, s string) *OBJECTElement {
 	return e
 }
 
-// Remove the attribute nonce from the element.
+// Remove the attribute NONCE from the element.
 func (e *OBJECTElement) NONCERemove(s string) *OBJECTElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1208,7 +1210,7 @@ func (e *OBJECTElement) IfPART(condition bool, s ...string) *OBJECTElement {
 	return e
 }
 
-// Remove the attribute part from the element.
+// Remove the attribute PART from the element.
 func (e *OBJECTElement) PARTRemove(s ...string) *OBJECTElement {
 	if e.DelimitedStrings == nil {
 		return e
@@ -1254,7 +1256,7 @@ const (
 	ObjectPopver_manual ObjectPopverChoice = "manual"
 )
 
-// Remove the attribute popver from the element.
+// Remove the attribute POPVER from the element.
 func (e *OBJECTElement) POPVERRemove(c ObjectPopverChoice) *OBJECTElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1282,7 +1284,7 @@ func (e *OBJECTElement) IfSLOT(condition bool, s string) *OBJECTElement {
 	return e
 }
 
-// Remove the attribute slot from the element.
+// Remove the attribute SLOT from the element.
 func (e *OBJECTElement) SLOTRemove(s string) *OBJECTElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1324,7 +1326,7 @@ const (
 	ObjectSpellcheck_false ObjectSpellcheckChoice = "false"
 )
 
-// Remove the attribute spellcheck from the element.
+// Remove the attribute SPELLCHECK from the element.
 func (e *OBJECTElement) SPELLCHECKRemove(c ObjectSpellcheckChoice) *OBJECTElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1411,7 +1413,7 @@ func (e *OBJECTElement) IfSTYLEPairs(condition bool, pairs ...string) *OBJECTEle
 	return e
 }
 
-// Remove the attribute style from the element.
+// Remove the attribute STYLE from the element.
 func (e *OBJECTElement) STYLERemove(keys ...string) *OBJECTElement {
 	if e.KVStrings == nil {
 		return e
@@ -1455,7 +1457,7 @@ func (e *OBJECTElement) IfTABINDEX(condition bool, i int) *OBJECTElement {
 	return e
 }
 
-// Remove the attribute tabindex from the element.
+// Remove the attribute TABINDEX from the element.
 func (e *OBJECTElement) TABINDEXRemove(i int) *OBJECTElement {
 	if e.IntAttributes == nil {
 		return e
@@ -1500,7 +1502,7 @@ func (e *OBJECTElement) IfTITLE(condition bool, s string) *OBJECTElement {
 	return e
 }
 
-// Remove the attribute title from the element.
+// Remove the attribute TITLE from the element.
 func (e *OBJECTElement) TITLERemove(s string) *OBJECTElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1532,11 +1534,351 @@ const (
 	ObjectTranslate_no ObjectTranslateChoice = "no"
 )
 
-// Remove the attribute translate from the element.
+// Remove the attribute TRANSLATE from the element.
 func (e *OBJECTElement) TRANSLATERemove(c ObjectTranslateChoice) *OBJECTElement {
 	if e.StringAttributes == nil {
 		return e
 	}
 	e.StringAttributes.Del("translate")
+	return e
+}
+
+// Merges the store with the given object
+
+func (e *OBJECTElement) DATASTAR_MERGE_STORE(v any) *OBJECTElement {
+	if e.CustomDataAttributes == nil {
+		e.CustomDataAttributes = treemap.New[string, string]()
+	}
+	b, err := json.Marshal(v)
+	if err != nil {
+		panic(err)
+	}
+	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	return e
+}
+
+// Sets the reference of the element
+
+func (e *OBJECTElement) DATASTAR_REF(s string) *OBJECTElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-ref"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *OBJECTElement) IfDATASTAR_REF(condition bool, s string) *OBJECTElement {
+	if condition {
+		e.DATASTAR_REF(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_REF from the element.
+func (e *OBJECTElement) DATASTAR_REFRemove() *OBJECTElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-ref")
+	return e
+}
+
+// Sets the value of the element
+
+func (e *OBJECTElement) DATASTAR_BIND(s string) *OBJECTElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-bind"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *OBJECTElement) IfDATASTAR_BIND(condition bool, s string) *OBJECTElement {
+	if condition {
+		e.DATASTAR_BIND(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_BIND from the element.
+func (e *OBJECTElement) DATASTAR_BINDRemove() *OBJECTElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-bind")
+	return e
+}
+
+// Sets the value of the element
+
+func (e *OBJECTElement) DATASTAR_MODEL(s string) *OBJECTElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-model"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *OBJECTElement) IfDATASTAR_MODEL(condition bool, s string) *OBJECTElement {
+	if condition {
+		e.DATASTAR_MODEL(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_MODEL from the element.
+func (e *OBJECTElement) DATASTAR_MODELRemove() *OBJECTElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-model")
+	return e
+}
+
+// Sets the textContent of the element
+
+func (e *OBJECTElement) DATASTAR_TEXT(s string) *OBJECTElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-text"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *OBJECTElement) IfDATASTAR_TEXT(condition bool, s string) *OBJECTElement {
+	if condition {
+		e.DATASTAR_TEXT(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_TEXT from the element.
+func (e *OBJECTElement) DATASTAR_TEXTRemove() *OBJECTElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-text")
+	return e
+}
+
+// Sets the event handler of the element
+
+type ObjectDataOnMod customDataKeyModifier
+
+// Debounces the event handler
+func ObjectDataOnModDebounce(
+	s string,
+) ObjectDataOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce_%sms", s)
+	}
+}
+
+// Throttles the event handler
+func ObjectDataOnModThrottle(
+	s string,
+) ObjectDataOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle_%sms", s)
+	}
+}
+
+func (e *OBJECTElement) DATASTAR_ON(s string, modifiers ...ObjectDataOnMod) *OBJECTElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	customMods := lo.Map(modifiers, func(m ObjectDataOnMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key := customDataKey("data-on", customMods...)
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *OBJECTElement) IfDATASTAR_ON(condition bool, s string, modifiers ...ObjectDataOnMod) *OBJECTElement {
+	if condition {
+		e.DATASTAR_ON(s, modifiers...)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_ON from the element.
+func (e *OBJECTElement) DATASTAR_ONRemove() *OBJECTElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-on")
+	return e
+}
+
+// Sets the focus of the element
+
+func (e *OBJECTElement) DATASTAR_FOCUSSet(b bool) *OBJECTElement {
+	key := "data-focus"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *OBJECTElement) DATASTAR_FOCUS() *OBJECTElement {
+	return e.DATASTAR_FOCUSSet(true)
+}
+
+// Sets the header of for fetch requests
+
+func (e *OBJECTElement) DATASTAR_HEADER(s string) *OBJECTElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-header"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *OBJECTElement) IfDATASTAR_HEADER(condition bool, s string) *OBJECTElement {
+	if condition {
+		e.DATASTAR_HEADER(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_HEADER from the element.
+func (e *OBJECTElement) DATASTAR_HEADERRemove() *OBJECTElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-header")
+	return e
+}
+
+// Sets the URL for fetch requests
+
+func (e *OBJECTElement) DATASTAR_FETCH_URL(s string) *OBJECTElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-fetch-url"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *OBJECTElement) IfDATASTAR_FETCH_URL(condition bool, s string) *OBJECTElement {
+	if condition {
+		e.DATASTAR_FETCH_URL(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_FETCH_URL from the element.
+func (e *OBJECTElement) DATASTAR_FETCH_URLRemove() *OBJECTElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-fetch-url")
+	return e
+}
+
+// Sets the indicator selector for fetch requests
+
+func (e *OBJECTElement) DATASTAR_FETCH_INDICATOR(s string) *OBJECTElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "DatastarFetchIndicator"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *OBJECTElement) IfDATASTAR_FETCH_INDICATOR(condition bool, s string) *OBJECTElement {
+	if condition {
+		e.DATASTAR_FETCH_INDICATOR(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_FETCH_INDICATOR from the element.
+func (e *OBJECTElement) DATASTAR_FETCH_INDICATORRemove() *OBJECTElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("DatastarFetchIndicator")
+	return e
+}
+
+// Sets the visibility of the element
+
+func (e *OBJECTElement) DATASTAR_SHOWSet(b bool) *OBJECTElement {
+	key := "data-show"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *OBJECTElement) DATASTAR_SHOW() *OBJECTElement {
+	return e.DATASTAR_SHOWSet(true)
+}
+
+// Triggers the callback when the element intersects the viewport
+
+func (e *OBJECTElement) DATASTAR_INTERSECTSSet(b bool) *OBJECTElement {
+	key := "data-intersects"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *OBJECTElement) DATASTAR_INTERSECTS() *OBJECTElement {
+	return e.DATASTAR_INTERSECTSSet(true)
+}
+
+// Teleports the element to the given selector
+
+func (e *OBJECTElement) DATASTAR_TELEPORTSet(b bool) *OBJECTElement {
+	key := "data-teleport"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *OBJECTElement) DATASTAR_TELEPORT() *OBJECTElement {
+	return e.DATASTAR_TELEPORTSet(true)
+}
+
+// Scrolls the element into view
+
+func (e *OBJECTElement) DATASTAR_SCROLL_INTO_VIEWSet(b bool) *OBJECTElement {
+	key := "data-scroll-into-view"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *OBJECTElement) DATASTAR_SCROLL_INTO_VIEW() *OBJECTElement {
+	return e.DATASTAR_SCROLL_INTO_VIEWSet(true)
+}
+
+// Setup the ViewTransitionAPI for the element
+
+func (e *OBJECTElement) DATASTAR_VIEW_TRANSITION(s string) *OBJECTElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-view-transition"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *OBJECTElement) IfDATASTAR_VIEW_TRANSITION(condition bool, s string) *OBJECTElement {
+	if condition {
+		e.DATASTAR_VIEW_TRANSITION(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_VIEW_TRANSITION from the element.
+func (e *OBJECTElement) DATASTAR_VIEW_TRANSITIONRemove() *OBJECTElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-view-transition")
 	return e
 }

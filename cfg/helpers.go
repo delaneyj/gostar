@@ -71,11 +71,12 @@ func AttributeTypeRune() *pb.Attribute_Type {
 	}}
 }
 
-func AttributeTypeCustom(name string, at *pb.Attribute_Type) *pb.Attribute_Type {
+func AttributeTypeCustom(name string, at *pb.Attribute_Type, modifiers ...*pb.Attribute_Custom_Modifier) *pb.Attribute_Type {
 	return &pb.Attribute_Type{Type: &pb.Attribute_Type_Custom{
 		Custom: &pb.Attribute_Custom{
-			Name: name,
-			Type: at,
+			Name:      name,
+			Type:      at,
+			Modifiers: modifiers,
 		},
 	}}
 }
@@ -83,5 +84,11 @@ func AttributeTypeCustom(name string, at *pb.Attribute_Type) *pb.Attribute_Type 
 func AttributeTypeJSON() *pb.Attribute_Type {
 	return &pb.Attribute_Type{Type: &pb.Attribute_Type_Json{
 		Json: true,
+	}}
+}
+
+func AttributeTypeDuration() *pb.Attribute_Type {
+	return &pb.Attribute_Type{Type: &pb.Attribute_Type_DurationMs{
+		DurationMs: true,
 	}}
 }

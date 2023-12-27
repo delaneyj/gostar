@@ -6,7 +6,9 @@ package elements
 import (
 	"fmt"
 
+	"github.com/goccy/go-json"
 	"github.com/igrmk/treemap/v2"
+	"github.com/samber/lo"
 )
 
 // The HTML <h1>–<h6> elements represent six levels of section headings
@@ -146,7 +148,7 @@ func (e *H6Element) IfACCESSKEY(condition bool, r rune) *H6Element {
 	return e
 }
 
-// Remove the attribute accesskey from the element.
+// Remove the attribute ACCESSKEY from the element.
 func (e *H6Element) ACCESSKEYRemove() *H6Element {
 	if e.StringAttributes == nil {
 		return e
@@ -194,7 +196,7 @@ const (
 	H6Autocapitalize_characters H6AutocapitalizeChoice = "characters"
 )
 
-// Remove the attribute autocapitalize from the element.
+// Remove the attribute AUTOCAPITALIZE from the element.
 func (e *H6Element) AUTOCAPITALIZERemove(c H6AutocapitalizeChoice) *H6Element {
 	if e.StringAttributes == nil {
 		return e
@@ -235,7 +237,7 @@ func (e *H6Element) IfAUTOFOCUS(condition bool) *H6Element {
 	return e
 }
 
-// Set the attribute autofocus to the value b explicitly.
+// Set the attribute AUTOFOCUS to the value b explicitly.
 func (e *H6Element) AUTOFOCUSSet(b bool) *H6Element {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
@@ -251,7 +253,7 @@ func (e *H6Element) IfSetAUTOFOCUS(condition bool, b bool) *H6Element {
 	return e
 }
 
-// Remove the attribute autofocus from the element.
+// Remove the attribute AUTOFOCUS from the element.
 func (e *H6Element) AUTOFOCUSRemove(b bool) *H6Element {
 	if e.BoolAttributes == nil {
 		return e
@@ -285,7 +287,7 @@ func (e *H6Element) IfCLASS(condition bool, s ...string) *H6Element {
 	return e
 }
 
-// Remove the attribute class from the element.
+// Remove the attribute CLASS from the element.
 func (e *H6Element) CLASSRemove(s ...string) *H6Element {
 	if e.DelimitedStrings == nil {
 		return e
@@ -323,7 +325,7 @@ const (
 	H6Contenteditable_plaintext_only H6ContenteditableChoice = "plaintext-only"
 )
 
-// Remove the attribute contenteditable from the element.
+// Remove the attribute CONTENTEDITABLE from the element.
 func (e *H6Element) CONTENTEDITABLERemove(c H6ContenteditableChoice) *H6Element {
 	if e.StringAttributes == nil {
 		return e
@@ -371,7 +373,7 @@ const (
 	H6Dir_auto H6DirChoice = "auto"
 )
 
-// Remove the attribute dir from the element.
+// Remove the attribute DIR from the element.
 func (e *H6Element) DIRRemove(c H6DirChoice) *H6Element {
 	if e.StringAttributes == nil {
 		return e
@@ -408,7 +410,7 @@ const (
 	H6Draggable_auto H6DraggableChoice = "auto"
 )
 
-// Remove the attribute draggable from the element.
+// Remove the attribute DRAGGABLE from the element.
 func (e *H6Element) DRAGGABLERemove(c H6DraggableChoice) *H6Element {
 	if e.StringAttributes == nil {
 		return e
@@ -448,7 +450,7 @@ const (
 	H6Enterkeyhint_send H6EnterkeyhintChoice = "send"
 )
 
-// Remove the attribute enterkeyhint from the element.
+// Remove the attribute ENTERKEYHINT from the element.
 func (e *H6Element) ENTERKEYHINTRemove(c H6EnterkeyhintChoice) *H6Element {
 	if e.StringAttributes == nil {
 		return e
@@ -497,7 +499,7 @@ func (e *H6Element) IfEXPORTPARTS(condition bool, s ...string) *H6Element {
 	return e
 }
 
-// Remove the attribute exportparts from the element.
+// Remove the attribute EXPORTPARTS from the element.
 func (e *H6Element) EXPORTPARTSRemove(s ...string) *H6Element {
 	if e.DelimitedStrings == nil {
 		return e
@@ -551,7 +553,7 @@ const (
 	H6Hidden_until_found H6HiddenChoice = "until-found"
 )
 
-// Remove the attribute hidden from the element.
+// Remove the attribute HIDDEN from the element.
 func (e *H6Element) HIDDENRemove(c H6HiddenChoice) *H6Element {
 	if e.StringAttributes == nil {
 		return e
@@ -579,7 +581,7 @@ func (e *H6Element) IfID(condition bool, s string) *H6Element {
 	return e
 }
 
-// Remove the attribute id from the element.
+// Remove the attribute ID from the element.
 func (e *H6Element) IDRemove(s string) *H6Element {
 	if e.StringAttributes == nil {
 		return e
@@ -612,7 +614,7 @@ func (e *H6Element) IfINERT(condition bool) *H6Element {
 	return e
 }
 
-// Set the attribute inert to the value b explicitly.
+// Set the attribute INERT to the value b explicitly.
 func (e *H6Element) INERTSet(b bool) *H6Element {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
@@ -628,7 +630,7 @@ func (e *H6Element) IfSetINERT(condition bool, b bool) *H6Element {
 	return e
 }
 
-// Remove the attribute inert from the element.
+// Remove the attribute INERT from the element.
 func (e *H6Element) INERTRemove(b bool) *H6Element {
 	if e.BoolAttributes == nil {
 		return e
@@ -697,7 +699,7 @@ const (
 	H6Inputmode_url H6InputmodeChoice = "url"
 )
 
-// Remove the attribute inputmode from the element.
+// Remove the attribute INPUTMODE from the element.
 func (e *H6Element) INPUTMODERemove(c H6InputmodeChoice) *H6Element {
 	if e.StringAttributes == nil {
 		return e
@@ -727,7 +729,7 @@ func (e *H6Element) IfIS(condition bool, s string) *H6Element {
 	return e
 }
 
-// Remove the attribute is from the element.
+// Remove the attribute IS from the element.
 func (e *H6Element) ISRemove(s string) *H6Element {
 	if e.StringAttributes == nil {
 		return e
@@ -764,7 +766,7 @@ func (e *H6Element) IfITEMID(condition bool, s string) *H6Element {
 	return e
 }
 
-// Remove the attribute itemid from the element.
+// Remove the attribute ITEMID from the element.
 func (e *H6Element) ITEMIDRemove(s string) *H6Element {
 	if e.StringAttributes == nil {
 		return e
@@ -796,7 +798,7 @@ func (e *H6Element) IfITEMPROP(condition bool, s string) *H6Element {
 	return e
 }
 
-// Remove the attribute itemprop from the element.
+// Remove the attribute ITEMPROP from the element.
 func (e *H6Element) ITEMPROPRemove(s string) *H6Element {
 	if e.StringAttributes == nil {
 		return e
@@ -825,7 +827,7 @@ func (e *H6Element) IfITEMREF(condition bool, s string) *H6Element {
 	return e
 }
 
-// Remove the attribute itemref from the element.
+// Remove the attribute ITEMREF from the element.
 func (e *H6Element) ITEMREFRemove(s string) *H6Element {
 	if e.StringAttributes == nil {
 		return e
@@ -854,7 +856,7 @@ func (e *H6Element) IfITEMSCOPE(condition bool) *H6Element {
 	return e
 }
 
-// Set the attribute itemscope to the value b explicitly.
+// Set the attribute ITEMSCOPE to the value b explicitly.
 func (e *H6Element) ITEMSCOPESet(b bool) *H6Element {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
@@ -870,7 +872,7 @@ func (e *H6Element) IfSetITEMSCOPE(condition bool, b bool) *H6Element {
 	return e
 }
 
-// Remove the attribute itemscope from the element.
+// Remove the attribute ITEMSCOPE from the element.
 func (e *H6Element) ITEMSCOPERemove(b bool) *H6Element {
 	if e.BoolAttributes == nil {
 		return e
@@ -902,7 +904,7 @@ func (e *H6Element) IfITEMTYPE(condition bool, s string) *H6Element {
 	return e
 }
 
-// Remove the attribute itemtype from the element.
+// Remove the attribute ITEMTYPE from the element.
 func (e *H6Element) ITEMTYPERemove(s string) *H6Element {
 	if e.StringAttributes == nil {
 		return e
@@ -932,7 +934,7 @@ func (e *H6Element) IfLANG(condition bool, s string) *H6Element {
 	return e
 }
 
-// Remove the attribute lang from the element.
+// Remove the attribute LANG from the element.
 func (e *H6Element) LANGRemove(s string) *H6Element {
 	if e.StringAttributes == nil {
 		return e
@@ -960,7 +962,7 @@ func (e *H6Element) IfNONCE(condition bool, s string) *H6Element {
 	return e
 }
 
-// Remove the attribute nonce from the element.
+// Remove the attribute NONCE from the element.
 func (e *H6Element) NONCERemove(s string) *H6Element {
 	if e.StringAttributes == nil {
 		return e
@@ -993,7 +995,7 @@ func (e *H6Element) IfPART(condition bool, s ...string) *H6Element {
 	return e
 }
 
-// Remove the attribute part from the element.
+// Remove the attribute PART from the element.
 func (e *H6Element) PARTRemove(s ...string) *H6Element {
 	if e.DelimitedStrings == nil {
 		return e
@@ -1039,7 +1041,7 @@ const (
 	H6Popver_manual H6PopverChoice = "manual"
 )
 
-// Remove the attribute popver from the element.
+// Remove the attribute POPVER from the element.
 func (e *H6Element) POPVERRemove(c H6PopverChoice) *H6Element {
 	if e.StringAttributes == nil {
 		return e
@@ -1067,7 +1069,7 @@ func (e *H6Element) IfSLOT(condition bool, s string) *H6Element {
 	return e
 }
 
-// Remove the attribute slot from the element.
+// Remove the attribute SLOT from the element.
 func (e *H6Element) SLOTRemove(s string) *H6Element {
 	if e.StringAttributes == nil {
 		return e
@@ -1109,7 +1111,7 @@ const (
 	H6Spellcheck_false H6SpellcheckChoice = "false"
 )
 
-// Remove the attribute spellcheck from the element.
+// Remove the attribute SPELLCHECK from the element.
 func (e *H6Element) SPELLCHECKRemove(c H6SpellcheckChoice) *H6Element {
 	if e.StringAttributes == nil {
 		return e
@@ -1196,7 +1198,7 @@ func (e *H6Element) IfSTYLEPairs(condition bool, pairs ...string) *H6Element {
 	return e
 }
 
-// Remove the attribute style from the element.
+// Remove the attribute STYLE from the element.
 func (e *H6Element) STYLERemove(keys ...string) *H6Element {
 	if e.KVStrings == nil {
 		return e
@@ -1240,7 +1242,7 @@ func (e *H6Element) IfTABINDEX(condition bool, i int) *H6Element {
 	return e
 }
 
-// Remove the attribute tabindex from the element.
+// Remove the attribute TABINDEX from the element.
 func (e *H6Element) TABINDEXRemove(i int) *H6Element {
 	if e.IntAttributes == nil {
 		return e
@@ -1285,7 +1287,7 @@ func (e *H6Element) IfTITLE(condition bool, s string) *H6Element {
 	return e
 }
 
-// Remove the attribute title from the element.
+// Remove the attribute TITLE from the element.
 func (e *H6Element) TITLERemove(s string) *H6Element {
 	if e.StringAttributes == nil {
 		return e
@@ -1317,11 +1319,351 @@ const (
 	H6Translate_no H6TranslateChoice = "no"
 )
 
-// Remove the attribute translate from the element.
+// Remove the attribute TRANSLATE from the element.
 func (e *H6Element) TRANSLATERemove(c H6TranslateChoice) *H6Element {
 	if e.StringAttributes == nil {
 		return e
 	}
 	e.StringAttributes.Del("translate")
+	return e
+}
+
+// Merges the store with the given object
+
+func (e *H6Element) DATASTAR_MERGE_STORE(v any) *H6Element {
+	if e.CustomDataAttributes == nil {
+		e.CustomDataAttributes = treemap.New[string, string]()
+	}
+	b, err := json.Marshal(v)
+	if err != nil {
+		panic(err)
+	}
+	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	return e
+}
+
+// Sets the reference of the element
+
+func (e *H6Element) DATASTAR_REF(s string) *H6Element {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-ref"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *H6Element) IfDATASTAR_REF(condition bool, s string) *H6Element {
+	if condition {
+		e.DATASTAR_REF(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_REF from the element.
+func (e *H6Element) DATASTAR_REFRemove() *H6Element {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-ref")
+	return e
+}
+
+// Sets the value of the element
+
+func (e *H6Element) DATASTAR_BIND(s string) *H6Element {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-bind"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *H6Element) IfDATASTAR_BIND(condition bool, s string) *H6Element {
+	if condition {
+		e.DATASTAR_BIND(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_BIND from the element.
+func (e *H6Element) DATASTAR_BINDRemove() *H6Element {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-bind")
+	return e
+}
+
+// Sets the value of the element
+
+func (e *H6Element) DATASTAR_MODEL(s string) *H6Element {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-model"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *H6Element) IfDATASTAR_MODEL(condition bool, s string) *H6Element {
+	if condition {
+		e.DATASTAR_MODEL(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_MODEL from the element.
+func (e *H6Element) DATASTAR_MODELRemove() *H6Element {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-model")
+	return e
+}
+
+// Sets the textContent of the element
+
+func (e *H6Element) DATASTAR_TEXT(s string) *H6Element {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-text"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *H6Element) IfDATASTAR_TEXT(condition bool, s string) *H6Element {
+	if condition {
+		e.DATASTAR_TEXT(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_TEXT from the element.
+func (e *H6Element) DATASTAR_TEXTRemove() *H6Element {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-text")
+	return e
+}
+
+// Sets the event handler of the element
+
+type H6DataOnMod customDataKeyModifier
+
+// Debounces the event handler
+func H6DataOnModDebounce(
+	s string,
+) H6DataOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce_%sms", s)
+	}
+}
+
+// Throttles the event handler
+func H6DataOnModThrottle(
+	s string,
+) H6DataOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle_%sms", s)
+	}
+}
+
+func (e *H6Element) DATASTAR_ON(s string, modifiers ...H6DataOnMod) *H6Element {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	customMods := lo.Map(modifiers, func(m H6DataOnMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key := customDataKey("data-on", customMods...)
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *H6Element) IfDATASTAR_ON(condition bool, s string, modifiers ...H6DataOnMod) *H6Element {
+	if condition {
+		e.DATASTAR_ON(s, modifiers...)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_ON from the element.
+func (e *H6Element) DATASTAR_ONRemove() *H6Element {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-on")
+	return e
+}
+
+// Sets the focus of the element
+
+func (e *H6Element) DATASTAR_FOCUSSet(b bool) *H6Element {
+	key := "data-focus"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *H6Element) DATASTAR_FOCUS() *H6Element {
+	return e.DATASTAR_FOCUSSet(true)
+}
+
+// Sets the header of for fetch requests
+
+func (e *H6Element) DATASTAR_HEADER(s string) *H6Element {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-header"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *H6Element) IfDATASTAR_HEADER(condition bool, s string) *H6Element {
+	if condition {
+		e.DATASTAR_HEADER(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_HEADER from the element.
+func (e *H6Element) DATASTAR_HEADERRemove() *H6Element {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-header")
+	return e
+}
+
+// Sets the URL for fetch requests
+
+func (e *H6Element) DATASTAR_FETCH_URL(s string) *H6Element {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-fetch-url"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *H6Element) IfDATASTAR_FETCH_URL(condition bool, s string) *H6Element {
+	if condition {
+		e.DATASTAR_FETCH_URL(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_FETCH_URL from the element.
+func (e *H6Element) DATASTAR_FETCH_URLRemove() *H6Element {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-fetch-url")
+	return e
+}
+
+// Sets the indicator selector for fetch requests
+
+func (e *H6Element) DATASTAR_FETCH_INDICATOR(s string) *H6Element {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "DatastarFetchIndicator"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *H6Element) IfDATASTAR_FETCH_INDICATOR(condition bool, s string) *H6Element {
+	if condition {
+		e.DATASTAR_FETCH_INDICATOR(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_FETCH_INDICATOR from the element.
+func (e *H6Element) DATASTAR_FETCH_INDICATORRemove() *H6Element {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("DatastarFetchIndicator")
+	return e
+}
+
+// Sets the visibility of the element
+
+func (e *H6Element) DATASTAR_SHOWSet(b bool) *H6Element {
+	key := "data-show"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *H6Element) DATASTAR_SHOW() *H6Element {
+	return e.DATASTAR_SHOWSet(true)
+}
+
+// Triggers the callback when the element intersects the viewport
+
+func (e *H6Element) DATASTAR_INTERSECTSSet(b bool) *H6Element {
+	key := "data-intersects"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *H6Element) DATASTAR_INTERSECTS() *H6Element {
+	return e.DATASTAR_INTERSECTSSet(true)
+}
+
+// Teleports the element to the given selector
+
+func (e *H6Element) DATASTAR_TELEPORTSet(b bool) *H6Element {
+	key := "data-teleport"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *H6Element) DATASTAR_TELEPORT() *H6Element {
+	return e.DATASTAR_TELEPORTSet(true)
+}
+
+// Scrolls the element into view
+
+func (e *H6Element) DATASTAR_SCROLL_INTO_VIEWSet(b bool) *H6Element {
+	key := "data-scroll-into-view"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *H6Element) DATASTAR_SCROLL_INTO_VIEW() *H6Element {
+	return e.DATASTAR_SCROLL_INTO_VIEWSet(true)
+}
+
+// Setup the ViewTransitionAPI for the element
+
+func (e *H6Element) DATASTAR_VIEW_TRANSITION(s string) *H6Element {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-view-transition"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *H6Element) IfDATASTAR_VIEW_TRANSITION(condition bool, s string) *H6Element {
+	if condition {
+		e.DATASTAR_VIEW_TRANSITION(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_VIEW_TRANSITION from the element.
+func (e *H6Element) DATASTAR_VIEW_TRANSITIONRemove() *H6Element {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-view-transition")
 	return e
 }

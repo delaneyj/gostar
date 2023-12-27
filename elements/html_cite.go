@@ -6,7 +6,9 @@ package elements
 import (
 	"fmt"
 
+	"github.com/goccy/go-json"
 	"github.com/igrmk/treemap/v2"
+	"github.com/samber/lo"
 )
 
 // The HTML Citation element (<cite>) is used to describe a reference to a cited
@@ -148,7 +150,7 @@ func (e *CITEElement) IfACCESSKEY(condition bool, r rune) *CITEElement {
 	return e
 }
 
-// Remove the attribute accesskey from the element.
+// Remove the attribute ACCESSKEY from the element.
 func (e *CITEElement) ACCESSKEYRemove() *CITEElement {
 	if e.StringAttributes == nil {
 		return e
@@ -196,7 +198,7 @@ const (
 	CiteAutocapitalize_characters CiteAutocapitalizeChoice = "characters"
 )
 
-// Remove the attribute autocapitalize from the element.
+// Remove the attribute AUTOCAPITALIZE from the element.
 func (e *CITEElement) AUTOCAPITALIZERemove(c CiteAutocapitalizeChoice) *CITEElement {
 	if e.StringAttributes == nil {
 		return e
@@ -237,7 +239,7 @@ func (e *CITEElement) IfAUTOFOCUS(condition bool) *CITEElement {
 	return e
 }
 
-// Set the attribute autofocus to the value b explicitly.
+// Set the attribute AUTOFOCUS to the value b explicitly.
 func (e *CITEElement) AUTOFOCUSSet(b bool) *CITEElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
@@ -253,7 +255,7 @@ func (e *CITEElement) IfSetAUTOFOCUS(condition bool, b bool) *CITEElement {
 	return e
 }
 
-// Remove the attribute autofocus from the element.
+// Remove the attribute AUTOFOCUS from the element.
 func (e *CITEElement) AUTOFOCUSRemove(b bool) *CITEElement {
 	if e.BoolAttributes == nil {
 		return e
@@ -287,7 +289,7 @@ func (e *CITEElement) IfCLASS(condition bool, s ...string) *CITEElement {
 	return e
 }
 
-// Remove the attribute class from the element.
+// Remove the attribute CLASS from the element.
 func (e *CITEElement) CLASSRemove(s ...string) *CITEElement {
 	if e.DelimitedStrings == nil {
 		return e
@@ -325,7 +327,7 @@ const (
 	CiteContenteditable_plaintext_only CiteContenteditableChoice = "plaintext-only"
 )
 
-// Remove the attribute contenteditable from the element.
+// Remove the attribute CONTENTEDITABLE from the element.
 func (e *CITEElement) CONTENTEDITABLERemove(c CiteContenteditableChoice) *CITEElement {
 	if e.StringAttributes == nil {
 		return e
@@ -373,7 +375,7 @@ const (
 	CiteDir_auto CiteDirChoice = "auto"
 )
 
-// Remove the attribute dir from the element.
+// Remove the attribute DIR from the element.
 func (e *CITEElement) DIRRemove(c CiteDirChoice) *CITEElement {
 	if e.StringAttributes == nil {
 		return e
@@ -410,7 +412,7 @@ const (
 	CiteDraggable_auto CiteDraggableChoice = "auto"
 )
 
-// Remove the attribute draggable from the element.
+// Remove the attribute DRAGGABLE from the element.
 func (e *CITEElement) DRAGGABLERemove(c CiteDraggableChoice) *CITEElement {
 	if e.StringAttributes == nil {
 		return e
@@ -450,7 +452,7 @@ const (
 	CiteEnterkeyhint_send CiteEnterkeyhintChoice = "send"
 )
 
-// Remove the attribute enterkeyhint from the element.
+// Remove the attribute ENTERKEYHINT from the element.
 func (e *CITEElement) ENTERKEYHINTRemove(c CiteEnterkeyhintChoice) *CITEElement {
 	if e.StringAttributes == nil {
 		return e
@@ -499,7 +501,7 @@ func (e *CITEElement) IfEXPORTPARTS(condition bool, s ...string) *CITEElement {
 	return e
 }
 
-// Remove the attribute exportparts from the element.
+// Remove the attribute EXPORTPARTS from the element.
 func (e *CITEElement) EXPORTPARTSRemove(s ...string) *CITEElement {
 	if e.DelimitedStrings == nil {
 		return e
@@ -553,7 +555,7 @@ const (
 	CiteHidden_until_found CiteHiddenChoice = "until-found"
 )
 
-// Remove the attribute hidden from the element.
+// Remove the attribute HIDDEN from the element.
 func (e *CITEElement) HIDDENRemove(c CiteHiddenChoice) *CITEElement {
 	if e.StringAttributes == nil {
 		return e
@@ -581,7 +583,7 @@ func (e *CITEElement) IfID(condition bool, s string) *CITEElement {
 	return e
 }
 
-// Remove the attribute id from the element.
+// Remove the attribute ID from the element.
 func (e *CITEElement) IDRemove(s string) *CITEElement {
 	if e.StringAttributes == nil {
 		return e
@@ -614,7 +616,7 @@ func (e *CITEElement) IfINERT(condition bool) *CITEElement {
 	return e
 }
 
-// Set the attribute inert to the value b explicitly.
+// Set the attribute INERT to the value b explicitly.
 func (e *CITEElement) INERTSet(b bool) *CITEElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
@@ -630,7 +632,7 @@ func (e *CITEElement) IfSetINERT(condition bool, b bool) *CITEElement {
 	return e
 }
 
-// Remove the attribute inert from the element.
+// Remove the attribute INERT from the element.
 func (e *CITEElement) INERTRemove(b bool) *CITEElement {
 	if e.BoolAttributes == nil {
 		return e
@@ -699,7 +701,7 @@ const (
 	CiteInputmode_url CiteInputmodeChoice = "url"
 )
 
-// Remove the attribute inputmode from the element.
+// Remove the attribute INPUTMODE from the element.
 func (e *CITEElement) INPUTMODERemove(c CiteInputmodeChoice) *CITEElement {
 	if e.StringAttributes == nil {
 		return e
@@ -729,7 +731,7 @@ func (e *CITEElement) IfIS(condition bool, s string) *CITEElement {
 	return e
 }
 
-// Remove the attribute is from the element.
+// Remove the attribute IS from the element.
 func (e *CITEElement) ISRemove(s string) *CITEElement {
 	if e.StringAttributes == nil {
 		return e
@@ -766,7 +768,7 @@ func (e *CITEElement) IfITEMID(condition bool, s string) *CITEElement {
 	return e
 }
 
-// Remove the attribute itemid from the element.
+// Remove the attribute ITEMID from the element.
 func (e *CITEElement) ITEMIDRemove(s string) *CITEElement {
 	if e.StringAttributes == nil {
 		return e
@@ -798,7 +800,7 @@ func (e *CITEElement) IfITEMPROP(condition bool, s string) *CITEElement {
 	return e
 }
 
-// Remove the attribute itemprop from the element.
+// Remove the attribute ITEMPROP from the element.
 func (e *CITEElement) ITEMPROPRemove(s string) *CITEElement {
 	if e.StringAttributes == nil {
 		return e
@@ -827,7 +829,7 @@ func (e *CITEElement) IfITEMREF(condition bool, s string) *CITEElement {
 	return e
 }
 
-// Remove the attribute itemref from the element.
+// Remove the attribute ITEMREF from the element.
 func (e *CITEElement) ITEMREFRemove(s string) *CITEElement {
 	if e.StringAttributes == nil {
 		return e
@@ -856,7 +858,7 @@ func (e *CITEElement) IfITEMSCOPE(condition bool) *CITEElement {
 	return e
 }
 
-// Set the attribute itemscope to the value b explicitly.
+// Set the attribute ITEMSCOPE to the value b explicitly.
 func (e *CITEElement) ITEMSCOPESet(b bool) *CITEElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
@@ -872,7 +874,7 @@ func (e *CITEElement) IfSetITEMSCOPE(condition bool, b bool) *CITEElement {
 	return e
 }
 
-// Remove the attribute itemscope from the element.
+// Remove the attribute ITEMSCOPE from the element.
 func (e *CITEElement) ITEMSCOPERemove(b bool) *CITEElement {
 	if e.BoolAttributes == nil {
 		return e
@@ -904,7 +906,7 @@ func (e *CITEElement) IfITEMTYPE(condition bool, s string) *CITEElement {
 	return e
 }
 
-// Remove the attribute itemtype from the element.
+// Remove the attribute ITEMTYPE from the element.
 func (e *CITEElement) ITEMTYPERemove(s string) *CITEElement {
 	if e.StringAttributes == nil {
 		return e
@@ -934,7 +936,7 @@ func (e *CITEElement) IfLANG(condition bool, s string) *CITEElement {
 	return e
 }
 
-// Remove the attribute lang from the element.
+// Remove the attribute LANG from the element.
 func (e *CITEElement) LANGRemove(s string) *CITEElement {
 	if e.StringAttributes == nil {
 		return e
@@ -962,7 +964,7 @@ func (e *CITEElement) IfNONCE(condition bool, s string) *CITEElement {
 	return e
 }
 
-// Remove the attribute nonce from the element.
+// Remove the attribute NONCE from the element.
 func (e *CITEElement) NONCERemove(s string) *CITEElement {
 	if e.StringAttributes == nil {
 		return e
@@ -995,7 +997,7 @@ func (e *CITEElement) IfPART(condition bool, s ...string) *CITEElement {
 	return e
 }
 
-// Remove the attribute part from the element.
+// Remove the attribute PART from the element.
 func (e *CITEElement) PARTRemove(s ...string) *CITEElement {
 	if e.DelimitedStrings == nil {
 		return e
@@ -1041,7 +1043,7 @@ const (
 	CitePopver_manual CitePopverChoice = "manual"
 )
 
-// Remove the attribute popver from the element.
+// Remove the attribute POPVER from the element.
 func (e *CITEElement) POPVERRemove(c CitePopverChoice) *CITEElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1069,7 +1071,7 @@ func (e *CITEElement) IfSLOT(condition bool, s string) *CITEElement {
 	return e
 }
 
-// Remove the attribute slot from the element.
+// Remove the attribute SLOT from the element.
 func (e *CITEElement) SLOTRemove(s string) *CITEElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1111,7 +1113,7 @@ const (
 	CiteSpellcheck_false CiteSpellcheckChoice = "false"
 )
 
-// Remove the attribute spellcheck from the element.
+// Remove the attribute SPELLCHECK from the element.
 func (e *CITEElement) SPELLCHECKRemove(c CiteSpellcheckChoice) *CITEElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1198,7 +1200,7 @@ func (e *CITEElement) IfSTYLEPairs(condition bool, pairs ...string) *CITEElement
 	return e
 }
 
-// Remove the attribute style from the element.
+// Remove the attribute STYLE from the element.
 func (e *CITEElement) STYLERemove(keys ...string) *CITEElement {
 	if e.KVStrings == nil {
 		return e
@@ -1242,7 +1244,7 @@ func (e *CITEElement) IfTABINDEX(condition bool, i int) *CITEElement {
 	return e
 }
 
-// Remove the attribute tabindex from the element.
+// Remove the attribute TABINDEX from the element.
 func (e *CITEElement) TABINDEXRemove(i int) *CITEElement {
 	if e.IntAttributes == nil {
 		return e
@@ -1287,7 +1289,7 @@ func (e *CITEElement) IfTITLE(condition bool, s string) *CITEElement {
 	return e
 }
 
-// Remove the attribute title from the element.
+// Remove the attribute TITLE from the element.
 func (e *CITEElement) TITLERemove(s string) *CITEElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1319,11 +1321,351 @@ const (
 	CiteTranslate_no CiteTranslateChoice = "no"
 )
 
-// Remove the attribute translate from the element.
+// Remove the attribute TRANSLATE from the element.
 func (e *CITEElement) TRANSLATERemove(c CiteTranslateChoice) *CITEElement {
 	if e.StringAttributes == nil {
 		return e
 	}
 	e.StringAttributes.Del("translate")
+	return e
+}
+
+// Merges the store with the given object
+
+func (e *CITEElement) DATASTAR_MERGE_STORE(v any) *CITEElement {
+	if e.CustomDataAttributes == nil {
+		e.CustomDataAttributes = treemap.New[string, string]()
+	}
+	b, err := json.Marshal(v)
+	if err != nil {
+		panic(err)
+	}
+	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	return e
+}
+
+// Sets the reference of the element
+
+func (e *CITEElement) DATASTAR_REF(s string) *CITEElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-ref"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *CITEElement) IfDATASTAR_REF(condition bool, s string) *CITEElement {
+	if condition {
+		e.DATASTAR_REF(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_REF from the element.
+func (e *CITEElement) DATASTAR_REFRemove() *CITEElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-ref")
+	return e
+}
+
+// Sets the value of the element
+
+func (e *CITEElement) DATASTAR_BIND(s string) *CITEElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-bind"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *CITEElement) IfDATASTAR_BIND(condition bool, s string) *CITEElement {
+	if condition {
+		e.DATASTAR_BIND(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_BIND from the element.
+func (e *CITEElement) DATASTAR_BINDRemove() *CITEElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-bind")
+	return e
+}
+
+// Sets the value of the element
+
+func (e *CITEElement) DATASTAR_MODEL(s string) *CITEElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-model"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *CITEElement) IfDATASTAR_MODEL(condition bool, s string) *CITEElement {
+	if condition {
+		e.DATASTAR_MODEL(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_MODEL from the element.
+func (e *CITEElement) DATASTAR_MODELRemove() *CITEElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-model")
+	return e
+}
+
+// Sets the textContent of the element
+
+func (e *CITEElement) DATASTAR_TEXT(s string) *CITEElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-text"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *CITEElement) IfDATASTAR_TEXT(condition bool, s string) *CITEElement {
+	if condition {
+		e.DATASTAR_TEXT(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_TEXT from the element.
+func (e *CITEElement) DATASTAR_TEXTRemove() *CITEElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-text")
+	return e
+}
+
+// Sets the event handler of the element
+
+type CiteDataOnMod customDataKeyModifier
+
+// Debounces the event handler
+func CiteDataOnModDebounce(
+	s string,
+) CiteDataOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce_%sms", s)
+	}
+}
+
+// Throttles the event handler
+func CiteDataOnModThrottle(
+	s string,
+) CiteDataOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle_%sms", s)
+	}
+}
+
+func (e *CITEElement) DATASTAR_ON(s string, modifiers ...CiteDataOnMod) *CITEElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	customMods := lo.Map(modifiers, func(m CiteDataOnMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key := customDataKey("data-on", customMods...)
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *CITEElement) IfDATASTAR_ON(condition bool, s string, modifiers ...CiteDataOnMod) *CITEElement {
+	if condition {
+		e.DATASTAR_ON(s, modifiers...)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_ON from the element.
+func (e *CITEElement) DATASTAR_ONRemove() *CITEElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-on")
+	return e
+}
+
+// Sets the focus of the element
+
+func (e *CITEElement) DATASTAR_FOCUSSet(b bool) *CITEElement {
+	key := "data-focus"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *CITEElement) DATASTAR_FOCUS() *CITEElement {
+	return e.DATASTAR_FOCUSSet(true)
+}
+
+// Sets the header of for fetch requests
+
+func (e *CITEElement) DATASTAR_HEADER(s string) *CITEElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-header"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *CITEElement) IfDATASTAR_HEADER(condition bool, s string) *CITEElement {
+	if condition {
+		e.DATASTAR_HEADER(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_HEADER from the element.
+func (e *CITEElement) DATASTAR_HEADERRemove() *CITEElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-header")
+	return e
+}
+
+// Sets the URL for fetch requests
+
+func (e *CITEElement) DATASTAR_FETCH_URL(s string) *CITEElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-fetch-url"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *CITEElement) IfDATASTAR_FETCH_URL(condition bool, s string) *CITEElement {
+	if condition {
+		e.DATASTAR_FETCH_URL(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_FETCH_URL from the element.
+func (e *CITEElement) DATASTAR_FETCH_URLRemove() *CITEElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-fetch-url")
+	return e
+}
+
+// Sets the indicator selector for fetch requests
+
+func (e *CITEElement) DATASTAR_FETCH_INDICATOR(s string) *CITEElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "DatastarFetchIndicator"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *CITEElement) IfDATASTAR_FETCH_INDICATOR(condition bool, s string) *CITEElement {
+	if condition {
+		e.DATASTAR_FETCH_INDICATOR(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_FETCH_INDICATOR from the element.
+func (e *CITEElement) DATASTAR_FETCH_INDICATORRemove() *CITEElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("DatastarFetchIndicator")
+	return e
+}
+
+// Sets the visibility of the element
+
+func (e *CITEElement) DATASTAR_SHOWSet(b bool) *CITEElement {
+	key := "data-show"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *CITEElement) DATASTAR_SHOW() *CITEElement {
+	return e.DATASTAR_SHOWSet(true)
+}
+
+// Triggers the callback when the element intersects the viewport
+
+func (e *CITEElement) DATASTAR_INTERSECTSSet(b bool) *CITEElement {
+	key := "data-intersects"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *CITEElement) DATASTAR_INTERSECTS() *CITEElement {
+	return e.DATASTAR_INTERSECTSSet(true)
+}
+
+// Teleports the element to the given selector
+
+func (e *CITEElement) DATASTAR_TELEPORTSet(b bool) *CITEElement {
+	key := "data-teleport"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *CITEElement) DATASTAR_TELEPORT() *CITEElement {
+	return e.DATASTAR_TELEPORTSet(true)
+}
+
+// Scrolls the element into view
+
+func (e *CITEElement) DATASTAR_SCROLL_INTO_VIEWSet(b bool) *CITEElement {
+	key := "data-scroll-into-view"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *CITEElement) DATASTAR_SCROLL_INTO_VIEW() *CITEElement {
+	return e.DATASTAR_SCROLL_INTO_VIEWSet(true)
+}
+
+// Setup the ViewTransitionAPI for the element
+
+func (e *CITEElement) DATASTAR_VIEW_TRANSITION(s string) *CITEElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-view-transition"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *CITEElement) IfDATASTAR_VIEW_TRANSITION(condition bool, s string) *CITEElement {
+	if condition {
+		e.DATASTAR_VIEW_TRANSITION(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_VIEW_TRANSITION from the element.
+func (e *CITEElement) DATASTAR_VIEW_TRANSITIONRemove() *CITEElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-view-transition")
 	return e
 }

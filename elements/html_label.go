@@ -6,7 +6,9 @@ package elements
 import (
 	"fmt"
 
+	"github.com/goccy/go-json"
 	"github.com/igrmk/treemap/v2"
+	"github.com/samber/lo"
 )
 
 // The HTML <label> element represents a caption for an item in a user interface.
@@ -142,7 +144,7 @@ func (e *LABELElement) IfFOR(condition bool, s string) *LABELElement {
 	return e
 }
 
-// Remove the attribute for from the element.
+// Remove the attribute FOR from the element.
 func (e *LABELElement) FORRemove(s string) *LABELElement {
 	if e.StringAttributes == nil {
 		return e
@@ -167,7 +169,7 @@ func (e *LABELElement) IfFORM(condition bool, s string) *LABELElement {
 	return e
 }
 
-// Remove the attribute form from the element.
+// Remove the attribute FORM from the element.
 func (e *LABELElement) FORMRemove(s string) *LABELElement {
 	if e.StringAttributes == nil {
 		return e
@@ -195,7 +197,7 @@ func (e *LABELElement) IfACCESSKEY(condition bool, r rune) *LABELElement {
 	return e
 }
 
-// Remove the attribute accesskey from the element.
+// Remove the attribute ACCESSKEY from the element.
 func (e *LABELElement) ACCESSKEYRemove() *LABELElement {
 	if e.StringAttributes == nil {
 		return e
@@ -243,7 +245,7 @@ const (
 	LabelAutocapitalize_characters LabelAutocapitalizeChoice = "characters"
 )
 
-// Remove the attribute autocapitalize from the element.
+// Remove the attribute AUTOCAPITALIZE from the element.
 func (e *LABELElement) AUTOCAPITALIZERemove(c LabelAutocapitalizeChoice) *LABELElement {
 	if e.StringAttributes == nil {
 		return e
@@ -284,7 +286,7 @@ func (e *LABELElement) IfAUTOFOCUS(condition bool) *LABELElement {
 	return e
 }
 
-// Set the attribute autofocus to the value b explicitly.
+// Set the attribute AUTOFOCUS to the value b explicitly.
 func (e *LABELElement) AUTOFOCUSSet(b bool) *LABELElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
@@ -300,7 +302,7 @@ func (e *LABELElement) IfSetAUTOFOCUS(condition bool, b bool) *LABELElement {
 	return e
 }
 
-// Remove the attribute autofocus from the element.
+// Remove the attribute AUTOFOCUS from the element.
 func (e *LABELElement) AUTOFOCUSRemove(b bool) *LABELElement {
 	if e.BoolAttributes == nil {
 		return e
@@ -334,7 +336,7 @@ func (e *LABELElement) IfCLASS(condition bool, s ...string) *LABELElement {
 	return e
 }
 
-// Remove the attribute class from the element.
+// Remove the attribute CLASS from the element.
 func (e *LABELElement) CLASSRemove(s ...string) *LABELElement {
 	if e.DelimitedStrings == nil {
 		return e
@@ -372,7 +374,7 @@ const (
 	LabelContenteditable_plaintext_only LabelContenteditableChoice = "plaintext-only"
 )
 
-// Remove the attribute contenteditable from the element.
+// Remove the attribute CONTENTEDITABLE from the element.
 func (e *LABELElement) CONTENTEDITABLERemove(c LabelContenteditableChoice) *LABELElement {
 	if e.StringAttributes == nil {
 		return e
@@ -420,7 +422,7 @@ const (
 	LabelDir_auto LabelDirChoice = "auto"
 )
 
-// Remove the attribute dir from the element.
+// Remove the attribute DIR from the element.
 func (e *LABELElement) DIRRemove(c LabelDirChoice) *LABELElement {
 	if e.StringAttributes == nil {
 		return e
@@ -457,7 +459,7 @@ const (
 	LabelDraggable_auto LabelDraggableChoice = "auto"
 )
 
-// Remove the attribute draggable from the element.
+// Remove the attribute DRAGGABLE from the element.
 func (e *LABELElement) DRAGGABLERemove(c LabelDraggableChoice) *LABELElement {
 	if e.StringAttributes == nil {
 		return e
@@ -497,7 +499,7 @@ const (
 	LabelEnterkeyhint_send LabelEnterkeyhintChoice = "send"
 )
 
-// Remove the attribute enterkeyhint from the element.
+// Remove the attribute ENTERKEYHINT from the element.
 func (e *LABELElement) ENTERKEYHINTRemove(c LabelEnterkeyhintChoice) *LABELElement {
 	if e.StringAttributes == nil {
 		return e
@@ -546,7 +548,7 @@ func (e *LABELElement) IfEXPORTPARTS(condition bool, s ...string) *LABELElement 
 	return e
 }
 
-// Remove the attribute exportparts from the element.
+// Remove the attribute EXPORTPARTS from the element.
 func (e *LABELElement) EXPORTPARTSRemove(s ...string) *LABELElement {
 	if e.DelimitedStrings == nil {
 		return e
@@ -600,7 +602,7 @@ const (
 	LabelHidden_until_found LabelHiddenChoice = "until-found"
 )
 
-// Remove the attribute hidden from the element.
+// Remove the attribute HIDDEN from the element.
 func (e *LABELElement) HIDDENRemove(c LabelHiddenChoice) *LABELElement {
 	if e.StringAttributes == nil {
 		return e
@@ -628,7 +630,7 @@ func (e *LABELElement) IfID(condition bool, s string) *LABELElement {
 	return e
 }
 
-// Remove the attribute id from the element.
+// Remove the attribute ID from the element.
 func (e *LABELElement) IDRemove(s string) *LABELElement {
 	if e.StringAttributes == nil {
 		return e
@@ -661,7 +663,7 @@ func (e *LABELElement) IfINERT(condition bool) *LABELElement {
 	return e
 }
 
-// Set the attribute inert to the value b explicitly.
+// Set the attribute INERT to the value b explicitly.
 func (e *LABELElement) INERTSet(b bool) *LABELElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
@@ -677,7 +679,7 @@ func (e *LABELElement) IfSetINERT(condition bool, b bool) *LABELElement {
 	return e
 }
 
-// Remove the attribute inert from the element.
+// Remove the attribute INERT from the element.
 func (e *LABELElement) INERTRemove(b bool) *LABELElement {
 	if e.BoolAttributes == nil {
 		return e
@@ -746,7 +748,7 @@ const (
 	LabelInputmode_url LabelInputmodeChoice = "url"
 )
 
-// Remove the attribute inputmode from the element.
+// Remove the attribute INPUTMODE from the element.
 func (e *LABELElement) INPUTMODERemove(c LabelInputmodeChoice) *LABELElement {
 	if e.StringAttributes == nil {
 		return e
@@ -776,7 +778,7 @@ func (e *LABELElement) IfIS(condition bool, s string) *LABELElement {
 	return e
 }
 
-// Remove the attribute is from the element.
+// Remove the attribute IS from the element.
 func (e *LABELElement) ISRemove(s string) *LABELElement {
 	if e.StringAttributes == nil {
 		return e
@@ -813,7 +815,7 @@ func (e *LABELElement) IfITEMID(condition bool, s string) *LABELElement {
 	return e
 }
 
-// Remove the attribute itemid from the element.
+// Remove the attribute ITEMID from the element.
 func (e *LABELElement) ITEMIDRemove(s string) *LABELElement {
 	if e.StringAttributes == nil {
 		return e
@@ -845,7 +847,7 @@ func (e *LABELElement) IfITEMPROP(condition bool, s string) *LABELElement {
 	return e
 }
 
-// Remove the attribute itemprop from the element.
+// Remove the attribute ITEMPROP from the element.
 func (e *LABELElement) ITEMPROPRemove(s string) *LABELElement {
 	if e.StringAttributes == nil {
 		return e
@@ -874,7 +876,7 @@ func (e *LABELElement) IfITEMREF(condition bool, s string) *LABELElement {
 	return e
 }
 
-// Remove the attribute itemref from the element.
+// Remove the attribute ITEMREF from the element.
 func (e *LABELElement) ITEMREFRemove(s string) *LABELElement {
 	if e.StringAttributes == nil {
 		return e
@@ -903,7 +905,7 @@ func (e *LABELElement) IfITEMSCOPE(condition bool) *LABELElement {
 	return e
 }
 
-// Set the attribute itemscope to the value b explicitly.
+// Set the attribute ITEMSCOPE to the value b explicitly.
 func (e *LABELElement) ITEMSCOPESet(b bool) *LABELElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
@@ -919,7 +921,7 @@ func (e *LABELElement) IfSetITEMSCOPE(condition bool, b bool) *LABELElement {
 	return e
 }
 
-// Remove the attribute itemscope from the element.
+// Remove the attribute ITEMSCOPE from the element.
 func (e *LABELElement) ITEMSCOPERemove(b bool) *LABELElement {
 	if e.BoolAttributes == nil {
 		return e
@@ -951,7 +953,7 @@ func (e *LABELElement) IfITEMTYPE(condition bool, s string) *LABELElement {
 	return e
 }
 
-// Remove the attribute itemtype from the element.
+// Remove the attribute ITEMTYPE from the element.
 func (e *LABELElement) ITEMTYPERemove(s string) *LABELElement {
 	if e.StringAttributes == nil {
 		return e
@@ -981,7 +983,7 @@ func (e *LABELElement) IfLANG(condition bool, s string) *LABELElement {
 	return e
 }
 
-// Remove the attribute lang from the element.
+// Remove the attribute LANG from the element.
 func (e *LABELElement) LANGRemove(s string) *LABELElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1009,7 +1011,7 @@ func (e *LABELElement) IfNONCE(condition bool, s string) *LABELElement {
 	return e
 }
 
-// Remove the attribute nonce from the element.
+// Remove the attribute NONCE from the element.
 func (e *LABELElement) NONCERemove(s string) *LABELElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1042,7 +1044,7 @@ func (e *LABELElement) IfPART(condition bool, s ...string) *LABELElement {
 	return e
 }
 
-// Remove the attribute part from the element.
+// Remove the attribute PART from the element.
 func (e *LABELElement) PARTRemove(s ...string) *LABELElement {
 	if e.DelimitedStrings == nil {
 		return e
@@ -1088,7 +1090,7 @@ const (
 	LabelPopver_manual LabelPopverChoice = "manual"
 )
 
-// Remove the attribute popver from the element.
+// Remove the attribute POPVER from the element.
 func (e *LABELElement) POPVERRemove(c LabelPopverChoice) *LABELElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1116,7 +1118,7 @@ func (e *LABELElement) IfSLOT(condition bool, s string) *LABELElement {
 	return e
 }
 
-// Remove the attribute slot from the element.
+// Remove the attribute SLOT from the element.
 func (e *LABELElement) SLOTRemove(s string) *LABELElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1158,7 +1160,7 @@ const (
 	LabelSpellcheck_false LabelSpellcheckChoice = "false"
 )
 
-// Remove the attribute spellcheck from the element.
+// Remove the attribute SPELLCHECK from the element.
 func (e *LABELElement) SPELLCHECKRemove(c LabelSpellcheckChoice) *LABELElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1245,7 +1247,7 @@ func (e *LABELElement) IfSTYLEPairs(condition bool, pairs ...string) *LABELEleme
 	return e
 }
 
-// Remove the attribute style from the element.
+// Remove the attribute STYLE from the element.
 func (e *LABELElement) STYLERemove(keys ...string) *LABELElement {
 	if e.KVStrings == nil {
 		return e
@@ -1289,7 +1291,7 @@ func (e *LABELElement) IfTABINDEX(condition bool, i int) *LABELElement {
 	return e
 }
 
-// Remove the attribute tabindex from the element.
+// Remove the attribute TABINDEX from the element.
 func (e *LABELElement) TABINDEXRemove(i int) *LABELElement {
 	if e.IntAttributes == nil {
 		return e
@@ -1334,7 +1336,7 @@ func (e *LABELElement) IfTITLE(condition bool, s string) *LABELElement {
 	return e
 }
 
-// Remove the attribute title from the element.
+// Remove the attribute TITLE from the element.
 func (e *LABELElement) TITLERemove(s string) *LABELElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1366,11 +1368,351 @@ const (
 	LabelTranslate_no LabelTranslateChoice = "no"
 )
 
-// Remove the attribute translate from the element.
+// Remove the attribute TRANSLATE from the element.
 func (e *LABELElement) TRANSLATERemove(c LabelTranslateChoice) *LABELElement {
 	if e.StringAttributes == nil {
 		return e
 	}
 	e.StringAttributes.Del("translate")
+	return e
+}
+
+// Merges the store with the given object
+
+func (e *LABELElement) DATASTAR_MERGE_STORE(v any) *LABELElement {
+	if e.CustomDataAttributes == nil {
+		e.CustomDataAttributes = treemap.New[string, string]()
+	}
+	b, err := json.Marshal(v)
+	if err != nil {
+		panic(err)
+	}
+	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	return e
+}
+
+// Sets the reference of the element
+
+func (e *LABELElement) DATASTAR_REF(s string) *LABELElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-ref"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *LABELElement) IfDATASTAR_REF(condition bool, s string) *LABELElement {
+	if condition {
+		e.DATASTAR_REF(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_REF from the element.
+func (e *LABELElement) DATASTAR_REFRemove() *LABELElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-ref")
+	return e
+}
+
+// Sets the value of the element
+
+func (e *LABELElement) DATASTAR_BIND(s string) *LABELElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-bind"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *LABELElement) IfDATASTAR_BIND(condition bool, s string) *LABELElement {
+	if condition {
+		e.DATASTAR_BIND(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_BIND from the element.
+func (e *LABELElement) DATASTAR_BINDRemove() *LABELElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-bind")
+	return e
+}
+
+// Sets the value of the element
+
+func (e *LABELElement) DATASTAR_MODEL(s string) *LABELElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-model"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *LABELElement) IfDATASTAR_MODEL(condition bool, s string) *LABELElement {
+	if condition {
+		e.DATASTAR_MODEL(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_MODEL from the element.
+func (e *LABELElement) DATASTAR_MODELRemove() *LABELElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-model")
+	return e
+}
+
+// Sets the textContent of the element
+
+func (e *LABELElement) DATASTAR_TEXT(s string) *LABELElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-text"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *LABELElement) IfDATASTAR_TEXT(condition bool, s string) *LABELElement {
+	if condition {
+		e.DATASTAR_TEXT(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_TEXT from the element.
+func (e *LABELElement) DATASTAR_TEXTRemove() *LABELElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-text")
+	return e
+}
+
+// Sets the event handler of the element
+
+type LabelDataOnMod customDataKeyModifier
+
+// Debounces the event handler
+func LabelDataOnModDebounce(
+	s string,
+) LabelDataOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce_%sms", s)
+	}
+}
+
+// Throttles the event handler
+func LabelDataOnModThrottle(
+	s string,
+) LabelDataOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle_%sms", s)
+	}
+}
+
+func (e *LABELElement) DATASTAR_ON(s string, modifiers ...LabelDataOnMod) *LABELElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	customMods := lo.Map(modifiers, func(m LabelDataOnMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key := customDataKey("data-on", customMods...)
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *LABELElement) IfDATASTAR_ON(condition bool, s string, modifiers ...LabelDataOnMod) *LABELElement {
+	if condition {
+		e.DATASTAR_ON(s, modifiers...)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_ON from the element.
+func (e *LABELElement) DATASTAR_ONRemove() *LABELElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-on")
+	return e
+}
+
+// Sets the focus of the element
+
+func (e *LABELElement) DATASTAR_FOCUSSet(b bool) *LABELElement {
+	key := "data-focus"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *LABELElement) DATASTAR_FOCUS() *LABELElement {
+	return e.DATASTAR_FOCUSSet(true)
+}
+
+// Sets the header of for fetch requests
+
+func (e *LABELElement) DATASTAR_HEADER(s string) *LABELElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-header"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *LABELElement) IfDATASTAR_HEADER(condition bool, s string) *LABELElement {
+	if condition {
+		e.DATASTAR_HEADER(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_HEADER from the element.
+func (e *LABELElement) DATASTAR_HEADERRemove() *LABELElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-header")
+	return e
+}
+
+// Sets the URL for fetch requests
+
+func (e *LABELElement) DATASTAR_FETCH_URL(s string) *LABELElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-fetch-url"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *LABELElement) IfDATASTAR_FETCH_URL(condition bool, s string) *LABELElement {
+	if condition {
+		e.DATASTAR_FETCH_URL(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_FETCH_URL from the element.
+func (e *LABELElement) DATASTAR_FETCH_URLRemove() *LABELElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-fetch-url")
+	return e
+}
+
+// Sets the indicator selector for fetch requests
+
+func (e *LABELElement) DATASTAR_FETCH_INDICATOR(s string) *LABELElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "DatastarFetchIndicator"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *LABELElement) IfDATASTAR_FETCH_INDICATOR(condition bool, s string) *LABELElement {
+	if condition {
+		e.DATASTAR_FETCH_INDICATOR(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_FETCH_INDICATOR from the element.
+func (e *LABELElement) DATASTAR_FETCH_INDICATORRemove() *LABELElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("DatastarFetchIndicator")
+	return e
+}
+
+// Sets the visibility of the element
+
+func (e *LABELElement) DATASTAR_SHOWSet(b bool) *LABELElement {
+	key := "data-show"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *LABELElement) DATASTAR_SHOW() *LABELElement {
+	return e.DATASTAR_SHOWSet(true)
+}
+
+// Triggers the callback when the element intersects the viewport
+
+func (e *LABELElement) DATASTAR_INTERSECTSSet(b bool) *LABELElement {
+	key := "data-intersects"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *LABELElement) DATASTAR_INTERSECTS() *LABELElement {
+	return e.DATASTAR_INTERSECTSSet(true)
+}
+
+// Teleports the element to the given selector
+
+func (e *LABELElement) DATASTAR_TELEPORTSet(b bool) *LABELElement {
+	key := "data-teleport"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *LABELElement) DATASTAR_TELEPORT() *LABELElement {
+	return e.DATASTAR_TELEPORTSet(true)
+}
+
+// Scrolls the element into view
+
+func (e *LABELElement) DATASTAR_SCROLL_INTO_VIEWSet(b bool) *LABELElement {
+	key := "data-scroll-into-view"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *LABELElement) DATASTAR_SCROLL_INTO_VIEW() *LABELElement {
+	return e.DATASTAR_SCROLL_INTO_VIEWSet(true)
+}
+
+// Setup the ViewTransitionAPI for the element
+
+func (e *LABELElement) DATASTAR_VIEW_TRANSITION(s string) *LABELElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-view-transition"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *LABELElement) IfDATASTAR_VIEW_TRANSITION(condition bool, s string) *LABELElement {
+	if condition {
+		e.DATASTAR_VIEW_TRANSITION(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_VIEW_TRANSITION from the element.
+func (e *LABELElement) DATASTAR_VIEW_TRANSITIONRemove() *LABELElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-view-transition")
 	return e
 }

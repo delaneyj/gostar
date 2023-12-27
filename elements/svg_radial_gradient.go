@@ -6,7 +6,9 @@ package elements
 import (
 	"fmt"
 
+	"github.com/goccy/go-json"
 	"github.com/igrmk/treemap/v2"
+	"github.com/samber/lo"
 )
 
 // The <radialGradient> SVG element lets authors define radial gradients to fill
@@ -128,7 +130,7 @@ func (e *SVGRADIALGRADIENTElement) CustomDataRemove(key string) *SVGRADIALGRADIE
 }
 
 // The coordinate system for attributes cx, cy and r.
-func (e *SVGRADIALGRADIENTElement) GRADIENTUNITS(c SVGRadialGradientGradientUnitsChoice) *SVGRADIALGRADIENTElement {
+func (e *SVGRADIALGRADIENTElement) GRADIENT_UNITS(c SVGRadialGradientGradientUnitsChoice) *SVGRADIALGRADIENTElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
@@ -145,8 +147,8 @@ const (
 	SVGRadialGradientGradientUnits_objectBoundingBox SVGRadialGradientGradientUnitsChoice = "objectBoundingBox"
 )
 
-// Remove the attribute gradientUnits from the element.
-func (e *SVGRADIALGRADIENTElement) GRADIENTUNITSRemove(c SVGRadialGradientGradientUnitsChoice) *SVGRADIALGRADIENTElement {
+// Remove the attribute GRADIENT_UNITS from the element.
+func (e *SVGRADIALGRADIENTElement) GRADIENT_UNITSRemove(c SVGRadialGradientGradientUnitsChoice) *SVGRADIALGRADIENTElement {
 	if e.StringAttributes == nil {
 		return e
 	}
@@ -156,7 +158,7 @@ func (e *SVGRADIALGRADIENTElement) GRADIENTUNITSRemove(c SVGRadialGradientGradie
 
 // The definition of how the gradient is applied, read about <a
 // href="https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/gradientTransform">gradientTransform</a>.
-func (e *SVGRADIALGRADIENTElement) GRADIENTTRANSFORM(s string) *SVGRADIALGRADIENTElement {
+func (e *SVGRADIALGRADIENTElement) GRADIENT_TRANSFORM(s string) *SVGRADIALGRADIENTElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
@@ -164,15 +166,15 @@ func (e *SVGRADIALGRADIENTElement) GRADIENTTRANSFORM(s string) *SVGRADIALGRADIEN
 	return e
 }
 
-func (e *SVGRADIALGRADIENTElement) IfGRADIENTTRANSFORM(condition bool, s string) *SVGRADIALGRADIENTElement {
+func (e *SVGRADIALGRADIENTElement) IfGRADIENT_TRANSFORM(condition bool, s string) *SVGRADIALGRADIENTElement {
 	if condition {
-		e.GRADIENTTRANSFORM(s)
+		e.GRADIENT_TRANSFORM(s)
 	}
 	return e
 }
 
-// Remove the attribute gradientTransform from the element.
-func (e *SVGRADIALGRADIENTElement) GRADIENTTRANSFORMRemove(s string) *SVGRADIALGRADIENTElement {
+// Remove the attribute GRADIENT_TRANSFORM from the element.
+func (e *SVGRADIALGRADIENTElement) GRADIENT_TRANSFORMRemove(s string) *SVGRADIALGRADIENTElement {
 	if e.StringAttributes == nil {
 		return e
 	}
@@ -264,6 +266,31 @@ func (e *SVGRADIALGRADIENTElement) IfFY(condition bool, f float64) *SVGRADIALGRA
 	return e
 }
 
+// Specifies a unique id for an element
+func (e *SVGRADIALGRADIENTElement) ID(s string) *SVGRADIALGRADIENTElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	e.StringAttributes.Set("id", s)
+	return e
+}
+
+func (e *SVGRADIALGRADIENTElement) IfID(condition bool, s string) *SVGRADIALGRADIENTElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
+// Remove the attribute ID from the element.
+func (e *SVGRADIALGRADIENTElement) IDRemove(s string) *SVGRADIALGRADIENTElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("id")
+	return e
+}
+
 // Specifies one or more classnames for an element (refers to a class in a style
 // sheet)
 func (e *SVGRADIALGRADIENTElement) CLASS(s ...string) *SVGRADIALGRADIENTElement {
@@ -286,7 +313,7 @@ func (e *SVGRADIALGRADIENTElement) IfCLASS(condition bool, s ...string) *SVGRADI
 	return e
 }
 
-// Remove the attribute class from the element.
+// Remove the attribute CLASS from the element.
 func (e *SVGRADIALGRADIENTElement) CLASSRemove(s ...string) *SVGRADIALGRADIENTElement {
 	if e.DelimitedStrings == nil {
 		return e
@@ -296,31 +323,6 @@ func (e *SVGRADIALGRADIENTElement) CLASSRemove(s ...string) *SVGRADIALGRADIENTEl
 		return e
 	}
 	ds.Remove(s...)
-	return e
-}
-
-// Specifies a unique id for an element
-func (e *SVGRADIALGRADIENTElement) ID(s string) *SVGRADIALGRADIENTElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	e.StringAttributes.Set("id", s)
-	return e
-}
-
-func (e *SVGRADIALGRADIENTElement) IfID(condition bool, s string) *SVGRADIALGRADIENTElement {
-	if condition {
-		e.ID(s)
-	}
-	return e
-}
-
-// Remove the attribute id from the element.
-func (e *SVGRADIALGRADIENTElement) IDRemove(s string) *SVGRADIALGRADIENTElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("id")
 	return e
 }
 
@@ -400,7 +402,7 @@ func (e *SVGRADIALGRADIENTElement) IfSTYLEPairs(condition bool, pairs ...string)
 	return e
 }
 
-// Remove the attribute style from the element.
+// Remove the attribute STYLE from the element.
 func (e *SVGRADIALGRADIENTElement) STYLERemove(keys ...string) *SVGRADIALGRADIENTElement {
 	if e.KVStrings == nil {
 		return e
@@ -412,5 +414,345 @@ func (e *SVGRADIALGRADIENTElement) STYLERemove(keys ...string) *SVGRADIALGRADIEN
 	for _, k := range keys {
 		kv.Remove(k)
 	}
+	return e
+}
+
+// Merges the store with the given object
+
+func (e *SVGRADIALGRADIENTElement) DATASTAR_MERGE_STORE(v any) *SVGRADIALGRADIENTElement {
+	if e.CustomDataAttributes == nil {
+		e.CustomDataAttributes = treemap.New[string, string]()
+	}
+	b, err := json.Marshal(v)
+	if err != nil {
+		panic(err)
+	}
+	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	return e
+}
+
+// Sets the reference of the element
+
+func (e *SVGRADIALGRADIENTElement) DATASTAR_REF(s string) *SVGRADIALGRADIENTElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-ref"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SVGRADIALGRADIENTElement) IfDATASTAR_REF(condition bool, s string) *SVGRADIALGRADIENTElement {
+	if condition {
+		e.DATASTAR_REF(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_REF from the element.
+func (e *SVGRADIALGRADIENTElement) DATASTAR_REFRemove() *SVGRADIALGRADIENTElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-ref")
+	return e
+}
+
+// Sets the value of the element
+
+func (e *SVGRADIALGRADIENTElement) DATASTAR_BIND(s string) *SVGRADIALGRADIENTElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-bind"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SVGRADIALGRADIENTElement) IfDATASTAR_BIND(condition bool, s string) *SVGRADIALGRADIENTElement {
+	if condition {
+		e.DATASTAR_BIND(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_BIND from the element.
+func (e *SVGRADIALGRADIENTElement) DATASTAR_BINDRemove() *SVGRADIALGRADIENTElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-bind")
+	return e
+}
+
+// Sets the value of the element
+
+func (e *SVGRADIALGRADIENTElement) DATASTAR_MODEL(s string) *SVGRADIALGRADIENTElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-model"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SVGRADIALGRADIENTElement) IfDATASTAR_MODEL(condition bool, s string) *SVGRADIALGRADIENTElement {
+	if condition {
+		e.DATASTAR_MODEL(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_MODEL from the element.
+func (e *SVGRADIALGRADIENTElement) DATASTAR_MODELRemove() *SVGRADIALGRADIENTElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-model")
+	return e
+}
+
+// Sets the textContent of the element
+
+func (e *SVGRADIALGRADIENTElement) DATASTAR_TEXT(s string) *SVGRADIALGRADIENTElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-text"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SVGRADIALGRADIENTElement) IfDATASTAR_TEXT(condition bool, s string) *SVGRADIALGRADIENTElement {
+	if condition {
+		e.DATASTAR_TEXT(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_TEXT from the element.
+func (e *SVGRADIALGRADIENTElement) DATASTAR_TEXTRemove() *SVGRADIALGRADIENTElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-text")
+	return e
+}
+
+// Sets the event handler of the element
+
+type SVGRadialGradientDataOnMod customDataKeyModifier
+
+// Debounces the event handler
+func SVGRadialGradientDataOnModDebounce(
+	s string,
+) SVGRadialGradientDataOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce_%sms", s)
+	}
+}
+
+// Throttles the event handler
+func SVGRadialGradientDataOnModThrottle(
+	s string,
+) SVGRadialGradientDataOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle_%sms", s)
+	}
+}
+
+func (e *SVGRADIALGRADIENTElement) DATASTAR_ON(s string, modifiers ...SVGRadialGradientDataOnMod) *SVGRADIALGRADIENTElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	customMods := lo.Map(modifiers, func(m SVGRadialGradientDataOnMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key := customDataKey("data-on", customMods...)
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SVGRADIALGRADIENTElement) IfDATASTAR_ON(condition bool, s string, modifiers ...SVGRadialGradientDataOnMod) *SVGRADIALGRADIENTElement {
+	if condition {
+		e.DATASTAR_ON(s, modifiers...)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_ON from the element.
+func (e *SVGRADIALGRADIENTElement) DATASTAR_ONRemove() *SVGRADIALGRADIENTElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-on")
+	return e
+}
+
+// Sets the focus of the element
+
+func (e *SVGRADIALGRADIENTElement) DATASTAR_FOCUSSet(b bool) *SVGRADIALGRADIENTElement {
+	key := "data-focus"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *SVGRADIALGRADIENTElement) DATASTAR_FOCUS() *SVGRADIALGRADIENTElement {
+	return e.DATASTAR_FOCUSSet(true)
+}
+
+// Sets the header of for fetch requests
+
+func (e *SVGRADIALGRADIENTElement) DATASTAR_HEADER(s string) *SVGRADIALGRADIENTElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-header"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SVGRADIALGRADIENTElement) IfDATASTAR_HEADER(condition bool, s string) *SVGRADIALGRADIENTElement {
+	if condition {
+		e.DATASTAR_HEADER(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_HEADER from the element.
+func (e *SVGRADIALGRADIENTElement) DATASTAR_HEADERRemove() *SVGRADIALGRADIENTElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-header")
+	return e
+}
+
+// Sets the URL for fetch requests
+
+func (e *SVGRADIALGRADIENTElement) DATASTAR_FETCH_URL(s string) *SVGRADIALGRADIENTElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-fetch-url"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SVGRADIALGRADIENTElement) IfDATASTAR_FETCH_URL(condition bool, s string) *SVGRADIALGRADIENTElement {
+	if condition {
+		e.DATASTAR_FETCH_URL(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_FETCH_URL from the element.
+func (e *SVGRADIALGRADIENTElement) DATASTAR_FETCH_URLRemove() *SVGRADIALGRADIENTElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-fetch-url")
+	return e
+}
+
+// Sets the indicator selector for fetch requests
+
+func (e *SVGRADIALGRADIENTElement) DATASTAR_FETCH_INDICATOR(s string) *SVGRADIALGRADIENTElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "DatastarFetchIndicator"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SVGRADIALGRADIENTElement) IfDATASTAR_FETCH_INDICATOR(condition bool, s string) *SVGRADIALGRADIENTElement {
+	if condition {
+		e.DATASTAR_FETCH_INDICATOR(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_FETCH_INDICATOR from the element.
+func (e *SVGRADIALGRADIENTElement) DATASTAR_FETCH_INDICATORRemove() *SVGRADIALGRADIENTElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("DatastarFetchIndicator")
+	return e
+}
+
+// Sets the visibility of the element
+
+func (e *SVGRADIALGRADIENTElement) DATASTAR_SHOWSet(b bool) *SVGRADIALGRADIENTElement {
+	key := "data-show"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *SVGRADIALGRADIENTElement) DATASTAR_SHOW() *SVGRADIALGRADIENTElement {
+	return e.DATASTAR_SHOWSet(true)
+}
+
+// Triggers the callback when the element intersects the viewport
+
+func (e *SVGRADIALGRADIENTElement) DATASTAR_INTERSECTSSet(b bool) *SVGRADIALGRADIENTElement {
+	key := "data-intersects"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *SVGRADIALGRADIENTElement) DATASTAR_INTERSECTS() *SVGRADIALGRADIENTElement {
+	return e.DATASTAR_INTERSECTSSet(true)
+}
+
+// Teleports the element to the given selector
+
+func (e *SVGRADIALGRADIENTElement) DATASTAR_TELEPORTSet(b bool) *SVGRADIALGRADIENTElement {
+	key := "data-teleport"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *SVGRADIALGRADIENTElement) DATASTAR_TELEPORT() *SVGRADIALGRADIENTElement {
+	return e.DATASTAR_TELEPORTSet(true)
+}
+
+// Scrolls the element into view
+
+func (e *SVGRADIALGRADIENTElement) DATASTAR_SCROLL_INTO_VIEWSet(b bool) *SVGRADIALGRADIENTElement {
+	key := "data-scroll-into-view"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *SVGRADIALGRADIENTElement) DATASTAR_SCROLL_INTO_VIEW() *SVGRADIALGRADIENTElement {
+	return e.DATASTAR_SCROLL_INTO_VIEWSet(true)
+}
+
+// Setup the ViewTransitionAPI for the element
+
+func (e *SVGRADIALGRADIENTElement) DATASTAR_VIEW_TRANSITION(s string) *SVGRADIALGRADIENTElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-view-transition"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SVGRADIALGRADIENTElement) IfDATASTAR_VIEW_TRANSITION(condition bool, s string) *SVGRADIALGRADIENTElement {
+	if condition {
+		e.DATASTAR_VIEW_TRANSITION(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_VIEW_TRANSITION from the element.
+func (e *SVGRADIALGRADIENTElement) DATASTAR_VIEW_TRANSITIONRemove() *SVGRADIALGRADIENTElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-view-transition")
 	return e
 }

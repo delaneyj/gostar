@@ -6,7 +6,9 @@ package elements
 import (
 	"fmt"
 
+	"github.com/goccy/go-json"
 	"github.com/igrmk/treemap/v2"
+	"github.com/samber/lo"
 )
 
 // The HTML <option> element is used to define an item contained in a <select>, an
@@ -142,7 +144,7 @@ func (e *OPTIONElement) IfDISABLED(condition bool) *OPTIONElement {
 	return e
 }
 
-// Set the attribute disabled to the value b explicitly.
+// Set the attribute DISABLED to the value b explicitly.
 func (e *OPTIONElement) DISABLEDSet(b bool) *OPTIONElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
@@ -158,7 +160,7 @@ func (e *OPTIONElement) IfSetDISABLED(condition bool, b bool) *OPTIONElement {
 	return e
 }
 
-// Remove the attribute disabled from the element.
+// Remove the attribute DISABLED from the element.
 func (e *OPTIONElement) DISABLEDRemove(b bool) *OPTIONElement {
 	if e.BoolAttributes == nil {
 		return e
@@ -183,7 +185,7 @@ func (e *OPTIONElement) IfLABEL(condition bool, s string) *OPTIONElement {
 	return e
 }
 
-// Remove the attribute label from the element.
+// Remove the attribute LABEL from the element.
 func (e *OPTIONElement) LABELRemove(s string) *OPTIONElement {
 	if e.StringAttributes == nil {
 		return e
@@ -205,7 +207,7 @@ func (e *OPTIONElement) IfSELECTED(condition bool) *OPTIONElement {
 	return e
 }
 
-// Set the attribute selected to the value b explicitly.
+// Set the attribute SELECTED to the value b explicitly.
 func (e *OPTIONElement) SELECTEDSet(b bool) *OPTIONElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
@@ -221,7 +223,7 @@ func (e *OPTIONElement) IfSetSELECTED(condition bool, b bool) *OPTIONElement {
 	return e
 }
 
-// Remove the attribute selected from the element.
+// Remove the attribute SELECTED from the element.
 func (e *OPTIONElement) SELECTEDRemove(b bool) *OPTIONElement {
 	if e.BoolAttributes == nil {
 		return e
@@ -246,7 +248,7 @@ func (e *OPTIONElement) IfVALUE(condition bool, s string) *OPTIONElement {
 	return e
 }
 
-// Remove the attribute value from the element.
+// Remove the attribute VALUE from the element.
 func (e *OPTIONElement) VALUERemove(s string) *OPTIONElement {
 	if e.StringAttributes == nil {
 		return e
@@ -274,7 +276,7 @@ func (e *OPTIONElement) IfACCESSKEY(condition bool, r rune) *OPTIONElement {
 	return e
 }
 
-// Remove the attribute accesskey from the element.
+// Remove the attribute ACCESSKEY from the element.
 func (e *OPTIONElement) ACCESSKEYRemove() *OPTIONElement {
 	if e.StringAttributes == nil {
 		return e
@@ -322,7 +324,7 @@ const (
 	OptionAutocapitalize_characters OptionAutocapitalizeChoice = "characters"
 )
 
-// Remove the attribute autocapitalize from the element.
+// Remove the attribute AUTOCAPITALIZE from the element.
 func (e *OPTIONElement) AUTOCAPITALIZERemove(c OptionAutocapitalizeChoice) *OPTIONElement {
 	if e.StringAttributes == nil {
 		return e
@@ -363,7 +365,7 @@ func (e *OPTIONElement) IfAUTOFOCUS(condition bool) *OPTIONElement {
 	return e
 }
 
-// Set the attribute autofocus to the value b explicitly.
+// Set the attribute AUTOFOCUS to the value b explicitly.
 func (e *OPTIONElement) AUTOFOCUSSet(b bool) *OPTIONElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
@@ -379,7 +381,7 @@ func (e *OPTIONElement) IfSetAUTOFOCUS(condition bool, b bool) *OPTIONElement {
 	return e
 }
 
-// Remove the attribute autofocus from the element.
+// Remove the attribute AUTOFOCUS from the element.
 func (e *OPTIONElement) AUTOFOCUSRemove(b bool) *OPTIONElement {
 	if e.BoolAttributes == nil {
 		return e
@@ -413,7 +415,7 @@ func (e *OPTIONElement) IfCLASS(condition bool, s ...string) *OPTIONElement {
 	return e
 }
 
-// Remove the attribute class from the element.
+// Remove the attribute CLASS from the element.
 func (e *OPTIONElement) CLASSRemove(s ...string) *OPTIONElement {
 	if e.DelimitedStrings == nil {
 		return e
@@ -451,7 +453,7 @@ const (
 	OptionContenteditable_plaintext_only OptionContenteditableChoice = "plaintext-only"
 )
 
-// Remove the attribute contenteditable from the element.
+// Remove the attribute CONTENTEDITABLE from the element.
 func (e *OPTIONElement) CONTENTEDITABLERemove(c OptionContenteditableChoice) *OPTIONElement {
 	if e.StringAttributes == nil {
 		return e
@@ -499,7 +501,7 @@ const (
 	OptionDir_auto OptionDirChoice = "auto"
 )
 
-// Remove the attribute dir from the element.
+// Remove the attribute DIR from the element.
 func (e *OPTIONElement) DIRRemove(c OptionDirChoice) *OPTIONElement {
 	if e.StringAttributes == nil {
 		return e
@@ -536,7 +538,7 @@ const (
 	OptionDraggable_auto OptionDraggableChoice = "auto"
 )
 
-// Remove the attribute draggable from the element.
+// Remove the attribute DRAGGABLE from the element.
 func (e *OPTIONElement) DRAGGABLERemove(c OptionDraggableChoice) *OPTIONElement {
 	if e.StringAttributes == nil {
 		return e
@@ -576,7 +578,7 @@ const (
 	OptionEnterkeyhint_send OptionEnterkeyhintChoice = "send"
 )
 
-// Remove the attribute enterkeyhint from the element.
+// Remove the attribute ENTERKEYHINT from the element.
 func (e *OPTIONElement) ENTERKEYHINTRemove(c OptionEnterkeyhintChoice) *OPTIONElement {
 	if e.StringAttributes == nil {
 		return e
@@ -625,7 +627,7 @@ func (e *OPTIONElement) IfEXPORTPARTS(condition bool, s ...string) *OPTIONElemen
 	return e
 }
 
-// Remove the attribute exportparts from the element.
+// Remove the attribute EXPORTPARTS from the element.
 func (e *OPTIONElement) EXPORTPARTSRemove(s ...string) *OPTIONElement {
 	if e.DelimitedStrings == nil {
 		return e
@@ -679,7 +681,7 @@ const (
 	OptionHidden_until_found OptionHiddenChoice = "until-found"
 )
 
-// Remove the attribute hidden from the element.
+// Remove the attribute HIDDEN from the element.
 func (e *OPTIONElement) HIDDENRemove(c OptionHiddenChoice) *OPTIONElement {
 	if e.StringAttributes == nil {
 		return e
@@ -707,7 +709,7 @@ func (e *OPTIONElement) IfID(condition bool, s string) *OPTIONElement {
 	return e
 }
 
-// Remove the attribute id from the element.
+// Remove the attribute ID from the element.
 func (e *OPTIONElement) IDRemove(s string) *OPTIONElement {
 	if e.StringAttributes == nil {
 		return e
@@ -740,7 +742,7 @@ func (e *OPTIONElement) IfINERT(condition bool) *OPTIONElement {
 	return e
 }
 
-// Set the attribute inert to the value b explicitly.
+// Set the attribute INERT to the value b explicitly.
 func (e *OPTIONElement) INERTSet(b bool) *OPTIONElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
@@ -756,7 +758,7 @@ func (e *OPTIONElement) IfSetINERT(condition bool, b bool) *OPTIONElement {
 	return e
 }
 
-// Remove the attribute inert from the element.
+// Remove the attribute INERT from the element.
 func (e *OPTIONElement) INERTRemove(b bool) *OPTIONElement {
 	if e.BoolAttributes == nil {
 		return e
@@ -825,7 +827,7 @@ const (
 	OptionInputmode_url OptionInputmodeChoice = "url"
 )
 
-// Remove the attribute inputmode from the element.
+// Remove the attribute INPUTMODE from the element.
 func (e *OPTIONElement) INPUTMODERemove(c OptionInputmodeChoice) *OPTIONElement {
 	if e.StringAttributes == nil {
 		return e
@@ -855,7 +857,7 @@ func (e *OPTIONElement) IfIS(condition bool, s string) *OPTIONElement {
 	return e
 }
 
-// Remove the attribute is from the element.
+// Remove the attribute IS from the element.
 func (e *OPTIONElement) ISRemove(s string) *OPTIONElement {
 	if e.StringAttributes == nil {
 		return e
@@ -892,7 +894,7 @@ func (e *OPTIONElement) IfITEMID(condition bool, s string) *OPTIONElement {
 	return e
 }
 
-// Remove the attribute itemid from the element.
+// Remove the attribute ITEMID from the element.
 func (e *OPTIONElement) ITEMIDRemove(s string) *OPTIONElement {
 	if e.StringAttributes == nil {
 		return e
@@ -924,7 +926,7 @@ func (e *OPTIONElement) IfITEMPROP(condition bool, s string) *OPTIONElement {
 	return e
 }
 
-// Remove the attribute itemprop from the element.
+// Remove the attribute ITEMPROP from the element.
 func (e *OPTIONElement) ITEMPROPRemove(s string) *OPTIONElement {
 	if e.StringAttributes == nil {
 		return e
@@ -953,7 +955,7 @@ func (e *OPTIONElement) IfITEMREF(condition bool, s string) *OPTIONElement {
 	return e
 }
 
-// Remove the attribute itemref from the element.
+// Remove the attribute ITEMREF from the element.
 func (e *OPTIONElement) ITEMREFRemove(s string) *OPTIONElement {
 	if e.StringAttributes == nil {
 		return e
@@ -982,7 +984,7 @@ func (e *OPTIONElement) IfITEMSCOPE(condition bool) *OPTIONElement {
 	return e
 }
 
-// Set the attribute itemscope to the value b explicitly.
+// Set the attribute ITEMSCOPE to the value b explicitly.
 func (e *OPTIONElement) ITEMSCOPESet(b bool) *OPTIONElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
@@ -998,7 +1000,7 @@ func (e *OPTIONElement) IfSetITEMSCOPE(condition bool, b bool) *OPTIONElement {
 	return e
 }
 
-// Remove the attribute itemscope from the element.
+// Remove the attribute ITEMSCOPE from the element.
 func (e *OPTIONElement) ITEMSCOPERemove(b bool) *OPTIONElement {
 	if e.BoolAttributes == nil {
 		return e
@@ -1030,7 +1032,7 @@ func (e *OPTIONElement) IfITEMTYPE(condition bool, s string) *OPTIONElement {
 	return e
 }
 
-// Remove the attribute itemtype from the element.
+// Remove the attribute ITEMTYPE from the element.
 func (e *OPTIONElement) ITEMTYPERemove(s string) *OPTIONElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1060,7 +1062,7 @@ func (e *OPTIONElement) IfLANG(condition bool, s string) *OPTIONElement {
 	return e
 }
 
-// Remove the attribute lang from the element.
+// Remove the attribute LANG from the element.
 func (e *OPTIONElement) LANGRemove(s string) *OPTIONElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1088,7 +1090,7 @@ func (e *OPTIONElement) IfNONCE(condition bool, s string) *OPTIONElement {
 	return e
 }
 
-// Remove the attribute nonce from the element.
+// Remove the attribute NONCE from the element.
 func (e *OPTIONElement) NONCERemove(s string) *OPTIONElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1121,7 +1123,7 @@ func (e *OPTIONElement) IfPART(condition bool, s ...string) *OPTIONElement {
 	return e
 }
 
-// Remove the attribute part from the element.
+// Remove the attribute PART from the element.
 func (e *OPTIONElement) PARTRemove(s ...string) *OPTIONElement {
 	if e.DelimitedStrings == nil {
 		return e
@@ -1167,7 +1169,7 @@ const (
 	OptionPopver_manual OptionPopverChoice = "manual"
 )
 
-// Remove the attribute popver from the element.
+// Remove the attribute POPVER from the element.
 func (e *OPTIONElement) POPVERRemove(c OptionPopverChoice) *OPTIONElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1195,7 +1197,7 @@ func (e *OPTIONElement) IfSLOT(condition bool, s string) *OPTIONElement {
 	return e
 }
 
-// Remove the attribute slot from the element.
+// Remove the attribute SLOT from the element.
 func (e *OPTIONElement) SLOTRemove(s string) *OPTIONElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1237,7 +1239,7 @@ const (
 	OptionSpellcheck_false OptionSpellcheckChoice = "false"
 )
 
-// Remove the attribute spellcheck from the element.
+// Remove the attribute SPELLCHECK from the element.
 func (e *OPTIONElement) SPELLCHECKRemove(c OptionSpellcheckChoice) *OPTIONElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1324,7 +1326,7 @@ func (e *OPTIONElement) IfSTYLEPairs(condition bool, pairs ...string) *OPTIONEle
 	return e
 }
 
-// Remove the attribute style from the element.
+// Remove the attribute STYLE from the element.
 func (e *OPTIONElement) STYLERemove(keys ...string) *OPTIONElement {
 	if e.KVStrings == nil {
 		return e
@@ -1368,7 +1370,7 @@ func (e *OPTIONElement) IfTABINDEX(condition bool, i int) *OPTIONElement {
 	return e
 }
 
-// Remove the attribute tabindex from the element.
+// Remove the attribute TABINDEX from the element.
 func (e *OPTIONElement) TABINDEXRemove(i int) *OPTIONElement {
 	if e.IntAttributes == nil {
 		return e
@@ -1413,7 +1415,7 @@ func (e *OPTIONElement) IfTITLE(condition bool, s string) *OPTIONElement {
 	return e
 }
 
-// Remove the attribute title from the element.
+// Remove the attribute TITLE from the element.
 func (e *OPTIONElement) TITLERemove(s string) *OPTIONElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1445,11 +1447,351 @@ const (
 	OptionTranslate_no OptionTranslateChoice = "no"
 )
 
-// Remove the attribute translate from the element.
+// Remove the attribute TRANSLATE from the element.
 func (e *OPTIONElement) TRANSLATERemove(c OptionTranslateChoice) *OPTIONElement {
 	if e.StringAttributes == nil {
 		return e
 	}
 	e.StringAttributes.Del("translate")
+	return e
+}
+
+// Merges the store with the given object
+
+func (e *OPTIONElement) DATASTAR_MERGE_STORE(v any) *OPTIONElement {
+	if e.CustomDataAttributes == nil {
+		e.CustomDataAttributes = treemap.New[string, string]()
+	}
+	b, err := json.Marshal(v)
+	if err != nil {
+		panic(err)
+	}
+	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	return e
+}
+
+// Sets the reference of the element
+
+func (e *OPTIONElement) DATASTAR_REF(s string) *OPTIONElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-ref"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *OPTIONElement) IfDATASTAR_REF(condition bool, s string) *OPTIONElement {
+	if condition {
+		e.DATASTAR_REF(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_REF from the element.
+func (e *OPTIONElement) DATASTAR_REFRemove() *OPTIONElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-ref")
+	return e
+}
+
+// Sets the value of the element
+
+func (e *OPTIONElement) DATASTAR_BIND(s string) *OPTIONElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-bind"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *OPTIONElement) IfDATASTAR_BIND(condition bool, s string) *OPTIONElement {
+	if condition {
+		e.DATASTAR_BIND(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_BIND from the element.
+func (e *OPTIONElement) DATASTAR_BINDRemove() *OPTIONElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-bind")
+	return e
+}
+
+// Sets the value of the element
+
+func (e *OPTIONElement) DATASTAR_MODEL(s string) *OPTIONElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-model"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *OPTIONElement) IfDATASTAR_MODEL(condition bool, s string) *OPTIONElement {
+	if condition {
+		e.DATASTAR_MODEL(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_MODEL from the element.
+func (e *OPTIONElement) DATASTAR_MODELRemove() *OPTIONElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-model")
+	return e
+}
+
+// Sets the textContent of the element
+
+func (e *OPTIONElement) DATASTAR_TEXT(s string) *OPTIONElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-text"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *OPTIONElement) IfDATASTAR_TEXT(condition bool, s string) *OPTIONElement {
+	if condition {
+		e.DATASTAR_TEXT(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_TEXT from the element.
+func (e *OPTIONElement) DATASTAR_TEXTRemove() *OPTIONElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-text")
+	return e
+}
+
+// Sets the event handler of the element
+
+type OptionDataOnMod customDataKeyModifier
+
+// Debounces the event handler
+func OptionDataOnModDebounce(
+	s string,
+) OptionDataOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce_%sms", s)
+	}
+}
+
+// Throttles the event handler
+func OptionDataOnModThrottle(
+	s string,
+) OptionDataOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle_%sms", s)
+	}
+}
+
+func (e *OPTIONElement) DATASTAR_ON(s string, modifiers ...OptionDataOnMod) *OPTIONElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	customMods := lo.Map(modifiers, func(m OptionDataOnMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key := customDataKey("data-on", customMods...)
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *OPTIONElement) IfDATASTAR_ON(condition bool, s string, modifiers ...OptionDataOnMod) *OPTIONElement {
+	if condition {
+		e.DATASTAR_ON(s, modifiers...)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_ON from the element.
+func (e *OPTIONElement) DATASTAR_ONRemove() *OPTIONElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-on")
+	return e
+}
+
+// Sets the focus of the element
+
+func (e *OPTIONElement) DATASTAR_FOCUSSet(b bool) *OPTIONElement {
+	key := "data-focus"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *OPTIONElement) DATASTAR_FOCUS() *OPTIONElement {
+	return e.DATASTAR_FOCUSSet(true)
+}
+
+// Sets the header of for fetch requests
+
+func (e *OPTIONElement) DATASTAR_HEADER(s string) *OPTIONElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-header"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *OPTIONElement) IfDATASTAR_HEADER(condition bool, s string) *OPTIONElement {
+	if condition {
+		e.DATASTAR_HEADER(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_HEADER from the element.
+func (e *OPTIONElement) DATASTAR_HEADERRemove() *OPTIONElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-header")
+	return e
+}
+
+// Sets the URL for fetch requests
+
+func (e *OPTIONElement) DATASTAR_FETCH_URL(s string) *OPTIONElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-fetch-url"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *OPTIONElement) IfDATASTAR_FETCH_URL(condition bool, s string) *OPTIONElement {
+	if condition {
+		e.DATASTAR_FETCH_URL(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_FETCH_URL from the element.
+func (e *OPTIONElement) DATASTAR_FETCH_URLRemove() *OPTIONElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-fetch-url")
+	return e
+}
+
+// Sets the indicator selector for fetch requests
+
+func (e *OPTIONElement) DATASTAR_FETCH_INDICATOR(s string) *OPTIONElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "DatastarFetchIndicator"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *OPTIONElement) IfDATASTAR_FETCH_INDICATOR(condition bool, s string) *OPTIONElement {
+	if condition {
+		e.DATASTAR_FETCH_INDICATOR(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_FETCH_INDICATOR from the element.
+func (e *OPTIONElement) DATASTAR_FETCH_INDICATORRemove() *OPTIONElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("DatastarFetchIndicator")
+	return e
+}
+
+// Sets the visibility of the element
+
+func (e *OPTIONElement) DATASTAR_SHOWSet(b bool) *OPTIONElement {
+	key := "data-show"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *OPTIONElement) DATASTAR_SHOW() *OPTIONElement {
+	return e.DATASTAR_SHOWSet(true)
+}
+
+// Triggers the callback when the element intersects the viewport
+
+func (e *OPTIONElement) DATASTAR_INTERSECTSSet(b bool) *OPTIONElement {
+	key := "data-intersects"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *OPTIONElement) DATASTAR_INTERSECTS() *OPTIONElement {
+	return e.DATASTAR_INTERSECTSSet(true)
+}
+
+// Teleports the element to the given selector
+
+func (e *OPTIONElement) DATASTAR_TELEPORTSet(b bool) *OPTIONElement {
+	key := "data-teleport"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *OPTIONElement) DATASTAR_TELEPORT() *OPTIONElement {
+	return e.DATASTAR_TELEPORTSet(true)
+}
+
+// Scrolls the element into view
+
+func (e *OPTIONElement) DATASTAR_SCROLL_INTO_VIEWSet(b bool) *OPTIONElement {
+	key := "data-scroll-into-view"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *OPTIONElement) DATASTAR_SCROLL_INTO_VIEW() *OPTIONElement {
+	return e.DATASTAR_SCROLL_INTO_VIEWSet(true)
+}
+
+// Setup the ViewTransitionAPI for the element
+
+func (e *OPTIONElement) DATASTAR_VIEW_TRANSITION(s string) *OPTIONElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-view-transition"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *OPTIONElement) IfDATASTAR_VIEW_TRANSITION(condition bool, s string) *OPTIONElement {
+	if condition {
+		e.DATASTAR_VIEW_TRANSITION(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_VIEW_TRANSITION from the element.
+func (e *OPTIONElement) DATASTAR_VIEW_TRANSITIONRemove() *OPTIONElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-view-transition")
 	return e
 }

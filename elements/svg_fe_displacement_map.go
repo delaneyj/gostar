@@ -6,7 +6,9 @@ package elements
 import (
 	"fmt"
 
+	"github.com/goccy/go-json"
 	"github.com/igrmk/treemap/v2"
+	"github.com/samber/lo"
 )
 
 // The <feDisplacementMap> SVG filter primitive uses the pixel values from the
@@ -143,7 +145,7 @@ func (e *SVGFEDISPLACEMENTMAPElement) IfIN(condition bool, s string) *SVGFEDISPL
 	return e
 }
 
-// Remove the attribute in from the element.
+// Remove the attribute IN from the element.
 func (e *SVGFEDISPLACEMENTMAPElement) INRemove(s string) *SVGFEDISPLACEMENTMAPElement {
 	if e.StringAttributes == nil {
 		return e
@@ -154,7 +156,7 @@ func (e *SVGFEDISPLACEMENTMAPElement) INRemove(s string) *SVGFEDISPLACEMENTMAPEl
 
 // The displacement map
 // This attribute can take on the same values as the 'in' attribute.
-func (e *SVGFEDISPLACEMENTMAPElement) IN2(s string) *SVGFEDISPLACEMENTMAPElement {
+func (e *SVGFEDISPLACEMENTMAPElement) IN_2(s string) *SVGFEDISPLACEMENTMAPElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
@@ -162,15 +164,15 @@ func (e *SVGFEDISPLACEMENTMAPElement) IN2(s string) *SVGFEDISPLACEMENTMAPElement
 	return e
 }
 
-func (e *SVGFEDISPLACEMENTMAPElement) IfIN2(condition bool, s string) *SVGFEDISPLACEMENTMAPElement {
+func (e *SVGFEDISPLACEMENTMAPElement) IfIN_2(condition bool, s string) *SVGFEDISPLACEMENTMAPElement {
 	if condition {
-		e.IN2(s)
+		e.IN_2(s)
 	}
 	return e
 }
 
-// Remove the attribute in2 from the element.
-func (e *SVGFEDISPLACEMENTMAPElement) IN2Remove(s string) *SVGFEDISPLACEMENTMAPElement {
+// Remove the attribute IN_2 from the element.
+func (e *SVGFEDISPLACEMENTMAPElement) IN_2Remove(s string) *SVGFEDISPLACEMENTMAPElement {
 	if e.StringAttributes == nil {
 		return e
 	}
@@ -197,7 +199,7 @@ func (e *SVGFEDISPLACEMENTMAPElement) IfSCALE(condition bool, f float64) *SVGFED
 
 // The xChannelSelector attribute indicates which color channel from in2 to use to
 // displace the pixels in in the horizontal direction.
-func (e *SVGFEDISPLACEMENTMAPElement) XCHANNELSELECTOR(c SVGFeDisplacementMapXChannelSelectorChoice) *SVGFEDISPLACEMENTMAPElement {
+func (e *SVGFEDISPLACEMENTMAPElement) X_CHANNEL_SELECTOR(c SVGFeDisplacementMapXChannelSelectorChoice) *SVGFEDISPLACEMENTMAPElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
@@ -218,8 +220,8 @@ const (
 	SVGFeDisplacementMapXChannelSelector_A SVGFeDisplacementMapXChannelSelectorChoice = "A"
 )
 
-// Remove the attribute xChannelSelector from the element.
-func (e *SVGFEDISPLACEMENTMAPElement) XCHANNELSELECTORRemove(c SVGFeDisplacementMapXChannelSelectorChoice) *SVGFEDISPLACEMENTMAPElement {
+// Remove the attribute X_CHANNEL_SELECTOR from the element.
+func (e *SVGFEDISPLACEMENTMAPElement) X_CHANNEL_SELECTORRemove(c SVGFeDisplacementMapXChannelSelectorChoice) *SVGFEDISPLACEMENTMAPElement {
 	if e.StringAttributes == nil {
 		return e
 	}
@@ -229,7 +231,7 @@ func (e *SVGFEDISPLACEMENTMAPElement) XCHANNELSELECTORRemove(c SVGFeDisplacement
 
 // The yChannelSelector attribute indicates which color channel from in2 to use to
 // displace the pixels in in the vertical direction.
-func (e *SVGFEDISPLACEMENTMAPElement) YCHANNELSELECTOR(c SVGFeDisplacementMapYChannelSelectorChoice) *SVGFEDISPLACEMENTMAPElement {
+func (e *SVGFEDISPLACEMENTMAPElement) Y_CHANNEL_SELECTOR(c SVGFeDisplacementMapYChannelSelectorChoice) *SVGFEDISPLACEMENTMAPElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
@@ -250,12 +252,37 @@ const (
 	SVGFeDisplacementMapYChannelSelector_A SVGFeDisplacementMapYChannelSelectorChoice = "A"
 )
 
-// Remove the attribute yChannelSelector from the element.
-func (e *SVGFEDISPLACEMENTMAPElement) YCHANNELSELECTORRemove(c SVGFeDisplacementMapYChannelSelectorChoice) *SVGFEDISPLACEMENTMAPElement {
+// Remove the attribute Y_CHANNEL_SELECTOR from the element.
+func (e *SVGFEDISPLACEMENTMAPElement) Y_CHANNEL_SELECTORRemove(c SVGFeDisplacementMapYChannelSelectorChoice) *SVGFEDISPLACEMENTMAPElement {
 	if e.StringAttributes == nil {
 		return e
 	}
 	e.StringAttributes.Del("yChannelSelector")
+	return e
+}
+
+// Specifies a unique id for an element
+func (e *SVGFEDISPLACEMENTMAPElement) ID(s string) *SVGFEDISPLACEMENTMAPElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	e.StringAttributes.Set("id", s)
+	return e
+}
+
+func (e *SVGFEDISPLACEMENTMAPElement) IfID(condition bool, s string) *SVGFEDISPLACEMENTMAPElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
+// Remove the attribute ID from the element.
+func (e *SVGFEDISPLACEMENTMAPElement) IDRemove(s string) *SVGFEDISPLACEMENTMAPElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("id")
 	return e
 }
 
@@ -281,7 +308,7 @@ func (e *SVGFEDISPLACEMENTMAPElement) IfCLASS(condition bool, s ...string) *SVGF
 	return e
 }
 
-// Remove the attribute class from the element.
+// Remove the attribute CLASS from the element.
 func (e *SVGFEDISPLACEMENTMAPElement) CLASSRemove(s ...string) *SVGFEDISPLACEMENTMAPElement {
 	if e.DelimitedStrings == nil {
 		return e
@@ -291,31 +318,6 @@ func (e *SVGFEDISPLACEMENTMAPElement) CLASSRemove(s ...string) *SVGFEDISPLACEMEN
 		return e
 	}
 	ds.Remove(s...)
-	return e
-}
-
-// Specifies a unique id for an element
-func (e *SVGFEDISPLACEMENTMAPElement) ID(s string) *SVGFEDISPLACEMENTMAPElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	e.StringAttributes.Set("id", s)
-	return e
-}
-
-func (e *SVGFEDISPLACEMENTMAPElement) IfID(condition bool, s string) *SVGFEDISPLACEMENTMAPElement {
-	if condition {
-		e.ID(s)
-	}
-	return e
-}
-
-// Remove the attribute id from the element.
-func (e *SVGFEDISPLACEMENTMAPElement) IDRemove(s string) *SVGFEDISPLACEMENTMAPElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("id")
 	return e
 }
 
@@ -395,7 +397,7 @@ func (e *SVGFEDISPLACEMENTMAPElement) IfSTYLEPairs(condition bool, pairs ...stri
 	return e
 }
 
-// Remove the attribute style from the element.
+// Remove the attribute STYLE from the element.
 func (e *SVGFEDISPLACEMENTMAPElement) STYLERemove(keys ...string) *SVGFEDISPLACEMENTMAPElement {
 	if e.KVStrings == nil {
 		return e
@@ -407,5 +409,345 @@ func (e *SVGFEDISPLACEMENTMAPElement) STYLERemove(keys ...string) *SVGFEDISPLACE
 	for _, k := range keys {
 		kv.Remove(k)
 	}
+	return e
+}
+
+// Merges the store with the given object
+
+func (e *SVGFEDISPLACEMENTMAPElement) DATASTAR_MERGE_STORE(v any) *SVGFEDISPLACEMENTMAPElement {
+	if e.CustomDataAttributes == nil {
+		e.CustomDataAttributes = treemap.New[string, string]()
+	}
+	b, err := json.Marshal(v)
+	if err != nil {
+		panic(err)
+	}
+	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	return e
+}
+
+// Sets the reference of the element
+
+func (e *SVGFEDISPLACEMENTMAPElement) DATASTAR_REF(s string) *SVGFEDISPLACEMENTMAPElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-ref"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SVGFEDISPLACEMENTMAPElement) IfDATASTAR_REF(condition bool, s string) *SVGFEDISPLACEMENTMAPElement {
+	if condition {
+		e.DATASTAR_REF(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_REF from the element.
+func (e *SVGFEDISPLACEMENTMAPElement) DATASTAR_REFRemove() *SVGFEDISPLACEMENTMAPElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-ref")
+	return e
+}
+
+// Sets the value of the element
+
+func (e *SVGFEDISPLACEMENTMAPElement) DATASTAR_BIND(s string) *SVGFEDISPLACEMENTMAPElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-bind"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SVGFEDISPLACEMENTMAPElement) IfDATASTAR_BIND(condition bool, s string) *SVGFEDISPLACEMENTMAPElement {
+	if condition {
+		e.DATASTAR_BIND(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_BIND from the element.
+func (e *SVGFEDISPLACEMENTMAPElement) DATASTAR_BINDRemove() *SVGFEDISPLACEMENTMAPElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-bind")
+	return e
+}
+
+// Sets the value of the element
+
+func (e *SVGFEDISPLACEMENTMAPElement) DATASTAR_MODEL(s string) *SVGFEDISPLACEMENTMAPElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-model"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SVGFEDISPLACEMENTMAPElement) IfDATASTAR_MODEL(condition bool, s string) *SVGFEDISPLACEMENTMAPElement {
+	if condition {
+		e.DATASTAR_MODEL(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_MODEL from the element.
+func (e *SVGFEDISPLACEMENTMAPElement) DATASTAR_MODELRemove() *SVGFEDISPLACEMENTMAPElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-model")
+	return e
+}
+
+// Sets the textContent of the element
+
+func (e *SVGFEDISPLACEMENTMAPElement) DATASTAR_TEXT(s string) *SVGFEDISPLACEMENTMAPElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-text"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SVGFEDISPLACEMENTMAPElement) IfDATASTAR_TEXT(condition bool, s string) *SVGFEDISPLACEMENTMAPElement {
+	if condition {
+		e.DATASTAR_TEXT(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_TEXT from the element.
+func (e *SVGFEDISPLACEMENTMAPElement) DATASTAR_TEXTRemove() *SVGFEDISPLACEMENTMAPElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-text")
+	return e
+}
+
+// Sets the event handler of the element
+
+type SVGFeDisplacementMapDataOnMod customDataKeyModifier
+
+// Debounces the event handler
+func SVGFeDisplacementMapDataOnModDebounce(
+	s string,
+) SVGFeDisplacementMapDataOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce_%sms", s)
+	}
+}
+
+// Throttles the event handler
+func SVGFeDisplacementMapDataOnModThrottle(
+	s string,
+) SVGFeDisplacementMapDataOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle_%sms", s)
+	}
+}
+
+func (e *SVGFEDISPLACEMENTMAPElement) DATASTAR_ON(s string, modifiers ...SVGFeDisplacementMapDataOnMod) *SVGFEDISPLACEMENTMAPElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	customMods := lo.Map(modifiers, func(m SVGFeDisplacementMapDataOnMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key := customDataKey("data-on", customMods...)
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SVGFEDISPLACEMENTMAPElement) IfDATASTAR_ON(condition bool, s string, modifiers ...SVGFeDisplacementMapDataOnMod) *SVGFEDISPLACEMENTMAPElement {
+	if condition {
+		e.DATASTAR_ON(s, modifiers...)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_ON from the element.
+func (e *SVGFEDISPLACEMENTMAPElement) DATASTAR_ONRemove() *SVGFEDISPLACEMENTMAPElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-on")
+	return e
+}
+
+// Sets the focus of the element
+
+func (e *SVGFEDISPLACEMENTMAPElement) DATASTAR_FOCUSSet(b bool) *SVGFEDISPLACEMENTMAPElement {
+	key := "data-focus"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *SVGFEDISPLACEMENTMAPElement) DATASTAR_FOCUS() *SVGFEDISPLACEMENTMAPElement {
+	return e.DATASTAR_FOCUSSet(true)
+}
+
+// Sets the header of for fetch requests
+
+func (e *SVGFEDISPLACEMENTMAPElement) DATASTAR_HEADER(s string) *SVGFEDISPLACEMENTMAPElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-header"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SVGFEDISPLACEMENTMAPElement) IfDATASTAR_HEADER(condition bool, s string) *SVGFEDISPLACEMENTMAPElement {
+	if condition {
+		e.DATASTAR_HEADER(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_HEADER from the element.
+func (e *SVGFEDISPLACEMENTMAPElement) DATASTAR_HEADERRemove() *SVGFEDISPLACEMENTMAPElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-header")
+	return e
+}
+
+// Sets the URL for fetch requests
+
+func (e *SVGFEDISPLACEMENTMAPElement) DATASTAR_FETCH_URL(s string) *SVGFEDISPLACEMENTMAPElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-fetch-url"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SVGFEDISPLACEMENTMAPElement) IfDATASTAR_FETCH_URL(condition bool, s string) *SVGFEDISPLACEMENTMAPElement {
+	if condition {
+		e.DATASTAR_FETCH_URL(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_FETCH_URL from the element.
+func (e *SVGFEDISPLACEMENTMAPElement) DATASTAR_FETCH_URLRemove() *SVGFEDISPLACEMENTMAPElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-fetch-url")
+	return e
+}
+
+// Sets the indicator selector for fetch requests
+
+func (e *SVGFEDISPLACEMENTMAPElement) DATASTAR_FETCH_INDICATOR(s string) *SVGFEDISPLACEMENTMAPElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "DatastarFetchIndicator"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SVGFEDISPLACEMENTMAPElement) IfDATASTAR_FETCH_INDICATOR(condition bool, s string) *SVGFEDISPLACEMENTMAPElement {
+	if condition {
+		e.DATASTAR_FETCH_INDICATOR(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_FETCH_INDICATOR from the element.
+func (e *SVGFEDISPLACEMENTMAPElement) DATASTAR_FETCH_INDICATORRemove() *SVGFEDISPLACEMENTMAPElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("DatastarFetchIndicator")
+	return e
+}
+
+// Sets the visibility of the element
+
+func (e *SVGFEDISPLACEMENTMAPElement) DATASTAR_SHOWSet(b bool) *SVGFEDISPLACEMENTMAPElement {
+	key := "data-show"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *SVGFEDISPLACEMENTMAPElement) DATASTAR_SHOW() *SVGFEDISPLACEMENTMAPElement {
+	return e.DATASTAR_SHOWSet(true)
+}
+
+// Triggers the callback when the element intersects the viewport
+
+func (e *SVGFEDISPLACEMENTMAPElement) DATASTAR_INTERSECTSSet(b bool) *SVGFEDISPLACEMENTMAPElement {
+	key := "data-intersects"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *SVGFEDISPLACEMENTMAPElement) DATASTAR_INTERSECTS() *SVGFEDISPLACEMENTMAPElement {
+	return e.DATASTAR_INTERSECTSSet(true)
+}
+
+// Teleports the element to the given selector
+
+func (e *SVGFEDISPLACEMENTMAPElement) DATASTAR_TELEPORTSet(b bool) *SVGFEDISPLACEMENTMAPElement {
+	key := "data-teleport"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *SVGFEDISPLACEMENTMAPElement) DATASTAR_TELEPORT() *SVGFEDISPLACEMENTMAPElement {
+	return e.DATASTAR_TELEPORTSet(true)
+}
+
+// Scrolls the element into view
+
+func (e *SVGFEDISPLACEMENTMAPElement) DATASTAR_SCROLL_INTO_VIEWSet(b bool) *SVGFEDISPLACEMENTMAPElement {
+	key := "data-scroll-into-view"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *SVGFEDISPLACEMENTMAPElement) DATASTAR_SCROLL_INTO_VIEW() *SVGFEDISPLACEMENTMAPElement {
+	return e.DATASTAR_SCROLL_INTO_VIEWSet(true)
+}
+
+// Setup the ViewTransitionAPI for the element
+
+func (e *SVGFEDISPLACEMENTMAPElement) DATASTAR_VIEW_TRANSITION(s string) *SVGFEDISPLACEMENTMAPElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-view-transition"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SVGFEDISPLACEMENTMAPElement) IfDATASTAR_VIEW_TRANSITION(condition bool, s string) *SVGFEDISPLACEMENTMAPElement {
+	if condition {
+		e.DATASTAR_VIEW_TRANSITION(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_VIEW_TRANSITION from the element.
+func (e *SVGFEDISPLACEMENTMAPElement) DATASTAR_VIEW_TRANSITIONRemove() *SVGFEDISPLACEMENTMAPElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-view-transition")
 	return e
 }

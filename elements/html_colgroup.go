@@ -6,7 +6,9 @@ package elements
 import (
 	"fmt"
 
+	"github.com/goccy/go-json"
 	"github.com/igrmk/treemap/v2"
+	"github.com/samber/lo"
 )
 
 // The HTML <colgroup> element defines a group of columns within a table.
@@ -142,7 +144,7 @@ func (e *COLGROUPElement) IfSPAN(condition bool, i int) *COLGROUPElement {
 	return e
 }
 
-// Remove the attribute span from the element.
+// Remove the attribute SPAN from the element.
 func (e *COLGROUPElement) SPANRemove(i int) *COLGROUPElement {
 	if e.IntAttributes == nil {
 		return e
@@ -170,7 +172,7 @@ func (e *COLGROUPElement) IfACCESSKEY(condition bool, r rune) *COLGROUPElement {
 	return e
 }
 
-// Remove the attribute accesskey from the element.
+// Remove the attribute ACCESSKEY from the element.
 func (e *COLGROUPElement) ACCESSKEYRemove() *COLGROUPElement {
 	if e.StringAttributes == nil {
 		return e
@@ -218,7 +220,7 @@ const (
 	ColgroupAutocapitalize_characters ColgroupAutocapitalizeChoice = "characters"
 )
 
-// Remove the attribute autocapitalize from the element.
+// Remove the attribute AUTOCAPITALIZE from the element.
 func (e *COLGROUPElement) AUTOCAPITALIZERemove(c ColgroupAutocapitalizeChoice) *COLGROUPElement {
 	if e.StringAttributes == nil {
 		return e
@@ -259,7 +261,7 @@ func (e *COLGROUPElement) IfAUTOFOCUS(condition bool) *COLGROUPElement {
 	return e
 }
 
-// Set the attribute autofocus to the value b explicitly.
+// Set the attribute AUTOFOCUS to the value b explicitly.
 func (e *COLGROUPElement) AUTOFOCUSSet(b bool) *COLGROUPElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
@@ -275,7 +277,7 @@ func (e *COLGROUPElement) IfSetAUTOFOCUS(condition bool, b bool) *COLGROUPElemen
 	return e
 }
 
-// Remove the attribute autofocus from the element.
+// Remove the attribute AUTOFOCUS from the element.
 func (e *COLGROUPElement) AUTOFOCUSRemove(b bool) *COLGROUPElement {
 	if e.BoolAttributes == nil {
 		return e
@@ -309,7 +311,7 @@ func (e *COLGROUPElement) IfCLASS(condition bool, s ...string) *COLGROUPElement 
 	return e
 }
 
-// Remove the attribute class from the element.
+// Remove the attribute CLASS from the element.
 func (e *COLGROUPElement) CLASSRemove(s ...string) *COLGROUPElement {
 	if e.DelimitedStrings == nil {
 		return e
@@ -347,7 +349,7 @@ const (
 	ColgroupContenteditable_plaintext_only ColgroupContenteditableChoice = "plaintext-only"
 )
 
-// Remove the attribute contenteditable from the element.
+// Remove the attribute CONTENTEDITABLE from the element.
 func (e *COLGROUPElement) CONTENTEDITABLERemove(c ColgroupContenteditableChoice) *COLGROUPElement {
 	if e.StringAttributes == nil {
 		return e
@@ -395,7 +397,7 @@ const (
 	ColgroupDir_auto ColgroupDirChoice = "auto"
 )
 
-// Remove the attribute dir from the element.
+// Remove the attribute DIR from the element.
 func (e *COLGROUPElement) DIRRemove(c ColgroupDirChoice) *COLGROUPElement {
 	if e.StringAttributes == nil {
 		return e
@@ -432,7 +434,7 @@ const (
 	ColgroupDraggable_auto ColgroupDraggableChoice = "auto"
 )
 
-// Remove the attribute draggable from the element.
+// Remove the attribute DRAGGABLE from the element.
 func (e *COLGROUPElement) DRAGGABLERemove(c ColgroupDraggableChoice) *COLGROUPElement {
 	if e.StringAttributes == nil {
 		return e
@@ -472,7 +474,7 @@ const (
 	ColgroupEnterkeyhint_send ColgroupEnterkeyhintChoice = "send"
 )
 
-// Remove the attribute enterkeyhint from the element.
+// Remove the attribute ENTERKEYHINT from the element.
 func (e *COLGROUPElement) ENTERKEYHINTRemove(c ColgroupEnterkeyhintChoice) *COLGROUPElement {
 	if e.StringAttributes == nil {
 		return e
@@ -521,7 +523,7 @@ func (e *COLGROUPElement) IfEXPORTPARTS(condition bool, s ...string) *COLGROUPEl
 	return e
 }
 
-// Remove the attribute exportparts from the element.
+// Remove the attribute EXPORTPARTS from the element.
 func (e *COLGROUPElement) EXPORTPARTSRemove(s ...string) *COLGROUPElement {
 	if e.DelimitedStrings == nil {
 		return e
@@ -575,7 +577,7 @@ const (
 	ColgroupHidden_until_found ColgroupHiddenChoice = "until-found"
 )
 
-// Remove the attribute hidden from the element.
+// Remove the attribute HIDDEN from the element.
 func (e *COLGROUPElement) HIDDENRemove(c ColgroupHiddenChoice) *COLGROUPElement {
 	if e.StringAttributes == nil {
 		return e
@@ -603,7 +605,7 @@ func (e *COLGROUPElement) IfID(condition bool, s string) *COLGROUPElement {
 	return e
 }
 
-// Remove the attribute id from the element.
+// Remove the attribute ID from the element.
 func (e *COLGROUPElement) IDRemove(s string) *COLGROUPElement {
 	if e.StringAttributes == nil {
 		return e
@@ -636,7 +638,7 @@ func (e *COLGROUPElement) IfINERT(condition bool) *COLGROUPElement {
 	return e
 }
 
-// Set the attribute inert to the value b explicitly.
+// Set the attribute INERT to the value b explicitly.
 func (e *COLGROUPElement) INERTSet(b bool) *COLGROUPElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
@@ -652,7 +654,7 @@ func (e *COLGROUPElement) IfSetINERT(condition bool, b bool) *COLGROUPElement {
 	return e
 }
 
-// Remove the attribute inert from the element.
+// Remove the attribute INERT from the element.
 func (e *COLGROUPElement) INERTRemove(b bool) *COLGROUPElement {
 	if e.BoolAttributes == nil {
 		return e
@@ -721,7 +723,7 @@ const (
 	ColgroupInputmode_url ColgroupInputmodeChoice = "url"
 )
 
-// Remove the attribute inputmode from the element.
+// Remove the attribute INPUTMODE from the element.
 func (e *COLGROUPElement) INPUTMODERemove(c ColgroupInputmodeChoice) *COLGROUPElement {
 	if e.StringAttributes == nil {
 		return e
@@ -751,7 +753,7 @@ func (e *COLGROUPElement) IfIS(condition bool, s string) *COLGROUPElement {
 	return e
 }
 
-// Remove the attribute is from the element.
+// Remove the attribute IS from the element.
 func (e *COLGROUPElement) ISRemove(s string) *COLGROUPElement {
 	if e.StringAttributes == nil {
 		return e
@@ -788,7 +790,7 @@ func (e *COLGROUPElement) IfITEMID(condition bool, s string) *COLGROUPElement {
 	return e
 }
 
-// Remove the attribute itemid from the element.
+// Remove the attribute ITEMID from the element.
 func (e *COLGROUPElement) ITEMIDRemove(s string) *COLGROUPElement {
 	if e.StringAttributes == nil {
 		return e
@@ -820,7 +822,7 @@ func (e *COLGROUPElement) IfITEMPROP(condition bool, s string) *COLGROUPElement 
 	return e
 }
 
-// Remove the attribute itemprop from the element.
+// Remove the attribute ITEMPROP from the element.
 func (e *COLGROUPElement) ITEMPROPRemove(s string) *COLGROUPElement {
 	if e.StringAttributes == nil {
 		return e
@@ -849,7 +851,7 @@ func (e *COLGROUPElement) IfITEMREF(condition bool, s string) *COLGROUPElement {
 	return e
 }
 
-// Remove the attribute itemref from the element.
+// Remove the attribute ITEMREF from the element.
 func (e *COLGROUPElement) ITEMREFRemove(s string) *COLGROUPElement {
 	if e.StringAttributes == nil {
 		return e
@@ -878,7 +880,7 @@ func (e *COLGROUPElement) IfITEMSCOPE(condition bool) *COLGROUPElement {
 	return e
 }
 
-// Set the attribute itemscope to the value b explicitly.
+// Set the attribute ITEMSCOPE to the value b explicitly.
 func (e *COLGROUPElement) ITEMSCOPESet(b bool) *COLGROUPElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
@@ -894,7 +896,7 @@ func (e *COLGROUPElement) IfSetITEMSCOPE(condition bool, b bool) *COLGROUPElemen
 	return e
 }
 
-// Remove the attribute itemscope from the element.
+// Remove the attribute ITEMSCOPE from the element.
 func (e *COLGROUPElement) ITEMSCOPERemove(b bool) *COLGROUPElement {
 	if e.BoolAttributes == nil {
 		return e
@@ -926,7 +928,7 @@ func (e *COLGROUPElement) IfITEMTYPE(condition bool, s string) *COLGROUPElement 
 	return e
 }
 
-// Remove the attribute itemtype from the element.
+// Remove the attribute ITEMTYPE from the element.
 func (e *COLGROUPElement) ITEMTYPERemove(s string) *COLGROUPElement {
 	if e.StringAttributes == nil {
 		return e
@@ -956,7 +958,7 @@ func (e *COLGROUPElement) IfLANG(condition bool, s string) *COLGROUPElement {
 	return e
 }
 
-// Remove the attribute lang from the element.
+// Remove the attribute LANG from the element.
 func (e *COLGROUPElement) LANGRemove(s string) *COLGROUPElement {
 	if e.StringAttributes == nil {
 		return e
@@ -984,7 +986,7 @@ func (e *COLGROUPElement) IfNONCE(condition bool, s string) *COLGROUPElement {
 	return e
 }
 
-// Remove the attribute nonce from the element.
+// Remove the attribute NONCE from the element.
 func (e *COLGROUPElement) NONCERemove(s string) *COLGROUPElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1017,7 +1019,7 @@ func (e *COLGROUPElement) IfPART(condition bool, s ...string) *COLGROUPElement {
 	return e
 }
 
-// Remove the attribute part from the element.
+// Remove the attribute PART from the element.
 func (e *COLGROUPElement) PARTRemove(s ...string) *COLGROUPElement {
 	if e.DelimitedStrings == nil {
 		return e
@@ -1063,7 +1065,7 @@ const (
 	ColgroupPopver_manual ColgroupPopverChoice = "manual"
 )
 
-// Remove the attribute popver from the element.
+// Remove the attribute POPVER from the element.
 func (e *COLGROUPElement) POPVERRemove(c ColgroupPopverChoice) *COLGROUPElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1091,7 +1093,7 @@ func (e *COLGROUPElement) IfSLOT(condition bool, s string) *COLGROUPElement {
 	return e
 }
 
-// Remove the attribute slot from the element.
+// Remove the attribute SLOT from the element.
 func (e *COLGROUPElement) SLOTRemove(s string) *COLGROUPElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1133,7 +1135,7 @@ const (
 	ColgroupSpellcheck_false ColgroupSpellcheckChoice = "false"
 )
 
-// Remove the attribute spellcheck from the element.
+// Remove the attribute SPELLCHECK from the element.
 func (e *COLGROUPElement) SPELLCHECKRemove(c ColgroupSpellcheckChoice) *COLGROUPElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1220,7 +1222,7 @@ func (e *COLGROUPElement) IfSTYLEPairs(condition bool, pairs ...string) *COLGROU
 	return e
 }
 
-// Remove the attribute style from the element.
+// Remove the attribute STYLE from the element.
 func (e *COLGROUPElement) STYLERemove(keys ...string) *COLGROUPElement {
 	if e.KVStrings == nil {
 		return e
@@ -1264,7 +1266,7 @@ func (e *COLGROUPElement) IfTABINDEX(condition bool, i int) *COLGROUPElement {
 	return e
 }
 
-// Remove the attribute tabindex from the element.
+// Remove the attribute TABINDEX from the element.
 func (e *COLGROUPElement) TABINDEXRemove(i int) *COLGROUPElement {
 	if e.IntAttributes == nil {
 		return e
@@ -1309,7 +1311,7 @@ func (e *COLGROUPElement) IfTITLE(condition bool, s string) *COLGROUPElement {
 	return e
 }
 
-// Remove the attribute title from the element.
+// Remove the attribute TITLE from the element.
 func (e *COLGROUPElement) TITLERemove(s string) *COLGROUPElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1341,11 +1343,351 @@ const (
 	ColgroupTranslate_no ColgroupTranslateChoice = "no"
 )
 
-// Remove the attribute translate from the element.
+// Remove the attribute TRANSLATE from the element.
 func (e *COLGROUPElement) TRANSLATERemove(c ColgroupTranslateChoice) *COLGROUPElement {
 	if e.StringAttributes == nil {
 		return e
 	}
 	e.StringAttributes.Del("translate")
+	return e
+}
+
+// Merges the store with the given object
+
+func (e *COLGROUPElement) DATASTAR_MERGE_STORE(v any) *COLGROUPElement {
+	if e.CustomDataAttributes == nil {
+		e.CustomDataAttributes = treemap.New[string, string]()
+	}
+	b, err := json.Marshal(v)
+	if err != nil {
+		panic(err)
+	}
+	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	return e
+}
+
+// Sets the reference of the element
+
+func (e *COLGROUPElement) DATASTAR_REF(s string) *COLGROUPElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-ref"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *COLGROUPElement) IfDATASTAR_REF(condition bool, s string) *COLGROUPElement {
+	if condition {
+		e.DATASTAR_REF(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_REF from the element.
+func (e *COLGROUPElement) DATASTAR_REFRemove() *COLGROUPElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-ref")
+	return e
+}
+
+// Sets the value of the element
+
+func (e *COLGROUPElement) DATASTAR_BIND(s string) *COLGROUPElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-bind"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *COLGROUPElement) IfDATASTAR_BIND(condition bool, s string) *COLGROUPElement {
+	if condition {
+		e.DATASTAR_BIND(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_BIND from the element.
+func (e *COLGROUPElement) DATASTAR_BINDRemove() *COLGROUPElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-bind")
+	return e
+}
+
+// Sets the value of the element
+
+func (e *COLGROUPElement) DATASTAR_MODEL(s string) *COLGROUPElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-model"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *COLGROUPElement) IfDATASTAR_MODEL(condition bool, s string) *COLGROUPElement {
+	if condition {
+		e.DATASTAR_MODEL(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_MODEL from the element.
+func (e *COLGROUPElement) DATASTAR_MODELRemove() *COLGROUPElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-model")
+	return e
+}
+
+// Sets the textContent of the element
+
+func (e *COLGROUPElement) DATASTAR_TEXT(s string) *COLGROUPElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-text"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *COLGROUPElement) IfDATASTAR_TEXT(condition bool, s string) *COLGROUPElement {
+	if condition {
+		e.DATASTAR_TEXT(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_TEXT from the element.
+func (e *COLGROUPElement) DATASTAR_TEXTRemove() *COLGROUPElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-text")
+	return e
+}
+
+// Sets the event handler of the element
+
+type ColgroupDataOnMod customDataKeyModifier
+
+// Debounces the event handler
+func ColgroupDataOnModDebounce(
+	s string,
+) ColgroupDataOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce_%sms", s)
+	}
+}
+
+// Throttles the event handler
+func ColgroupDataOnModThrottle(
+	s string,
+) ColgroupDataOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle_%sms", s)
+	}
+}
+
+func (e *COLGROUPElement) DATASTAR_ON(s string, modifiers ...ColgroupDataOnMod) *COLGROUPElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	customMods := lo.Map(modifiers, func(m ColgroupDataOnMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key := customDataKey("data-on", customMods...)
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *COLGROUPElement) IfDATASTAR_ON(condition bool, s string, modifiers ...ColgroupDataOnMod) *COLGROUPElement {
+	if condition {
+		e.DATASTAR_ON(s, modifiers...)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_ON from the element.
+func (e *COLGROUPElement) DATASTAR_ONRemove() *COLGROUPElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-on")
+	return e
+}
+
+// Sets the focus of the element
+
+func (e *COLGROUPElement) DATASTAR_FOCUSSet(b bool) *COLGROUPElement {
+	key := "data-focus"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *COLGROUPElement) DATASTAR_FOCUS() *COLGROUPElement {
+	return e.DATASTAR_FOCUSSet(true)
+}
+
+// Sets the header of for fetch requests
+
+func (e *COLGROUPElement) DATASTAR_HEADER(s string) *COLGROUPElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-header"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *COLGROUPElement) IfDATASTAR_HEADER(condition bool, s string) *COLGROUPElement {
+	if condition {
+		e.DATASTAR_HEADER(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_HEADER from the element.
+func (e *COLGROUPElement) DATASTAR_HEADERRemove() *COLGROUPElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-header")
+	return e
+}
+
+// Sets the URL for fetch requests
+
+func (e *COLGROUPElement) DATASTAR_FETCH_URL(s string) *COLGROUPElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-fetch-url"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *COLGROUPElement) IfDATASTAR_FETCH_URL(condition bool, s string) *COLGROUPElement {
+	if condition {
+		e.DATASTAR_FETCH_URL(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_FETCH_URL from the element.
+func (e *COLGROUPElement) DATASTAR_FETCH_URLRemove() *COLGROUPElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-fetch-url")
+	return e
+}
+
+// Sets the indicator selector for fetch requests
+
+func (e *COLGROUPElement) DATASTAR_FETCH_INDICATOR(s string) *COLGROUPElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "DatastarFetchIndicator"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *COLGROUPElement) IfDATASTAR_FETCH_INDICATOR(condition bool, s string) *COLGROUPElement {
+	if condition {
+		e.DATASTAR_FETCH_INDICATOR(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_FETCH_INDICATOR from the element.
+func (e *COLGROUPElement) DATASTAR_FETCH_INDICATORRemove() *COLGROUPElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("DatastarFetchIndicator")
+	return e
+}
+
+// Sets the visibility of the element
+
+func (e *COLGROUPElement) DATASTAR_SHOWSet(b bool) *COLGROUPElement {
+	key := "data-show"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *COLGROUPElement) DATASTAR_SHOW() *COLGROUPElement {
+	return e.DATASTAR_SHOWSet(true)
+}
+
+// Triggers the callback when the element intersects the viewport
+
+func (e *COLGROUPElement) DATASTAR_INTERSECTSSet(b bool) *COLGROUPElement {
+	key := "data-intersects"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *COLGROUPElement) DATASTAR_INTERSECTS() *COLGROUPElement {
+	return e.DATASTAR_INTERSECTSSet(true)
+}
+
+// Teleports the element to the given selector
+
+func (e *COLGROUPElement) DATASTAR_TELEPORTSet(b bool) *COLGROUPElement {
+	key := "data-teleport"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *COLGROUPElement) DATASTAR_TELEPORT() *COLGROUPElement {
+	return e.DATASTAR_TELEPORTSet(true)
+}
+
+// Scrolls the element into view
+
+func (e *COLGROUPElement) DATASTAR_SCROLL_INTO_VIEWSet(b bool) *COLGROUPElement {
+	key := "data-scroll-into-view"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *COLGROUPElement) DATASTAR_SCROLL_INTO_VIEW() *COLGROUPElement {
+	return e.DATASTAR_SCROLL_INTO_VIEWSet(true)
+}
+
+// Setup the ViewTransitionAPI for the element
+
+func (e *COLGROUPElement) DATASTAR_VIEW_TRANSITION(s string) *COLGROUPElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-view-transition"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *COLGROUPElement) IfDATASTAR_VIEW_TRANSITION(condition bool, s string) *COLGROUPElement {
+	if condition {
+		e.DATASTAR_VIEW_TRANSITION(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_VIEW_TRANSITION from the element.
+func (e *COLGROUPElement) DATASTAR_VIEW_TRANSITIONRemove() *COLGROUPElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-view-transition")
 	return e
 }

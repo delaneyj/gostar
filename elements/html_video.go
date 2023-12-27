@@ -6,7 +6,9 @@ package elements
 import (
 	"fmt"
 
+	"github.com/goccy/go-json"
 	"github.com/igrmk/treemap/v2"
+	"github.com/samber/lo"
 )
 
 // The HTML <video> element is used to embed video content.
@@ -139,7 +141,7 @@ func (e *VIDEOElement) IfAUTOPLAY(condition bool) *VIDEOElement {
 	return e
 }
 
-// Set the attribute autoplay to the value b explicitly.
+// Set the attribute AUTOPLAY to the value b explicitly.
 func (e *VIDEOElement) AUTOPLAYSet(b bool) *VIDEOElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
@@ -155,7 +157,7 @@ func (e *VIDEOElement) IfSetAUTOPLAY(condition bool, b bool) *VIDEOElement {
 	return e
 }
 
-// Remove the attribute autoplay from the element.
+// Remove the attribute AUTOPLAY from the element.
 func (e *VIDEOElement) AUTOPLAYRemove(b bool) *VIDEOElement {
 	if e.BoolAttributes == nil {
 		return e
@@ -177,7 +179,7 @@ func (e *VIDEOElement) IfCONTROLS(condition bool) *VIDEOElement {
 	return e
 }
 
-// Set the attribute controls to the value b explicitly.
+// Set the attribute CONTROLS to the value b explicitly.
 func (e *VIDEOElement) CONTROLSSet(b bool) *VIDEOElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
@@ -193,7 +195,7 @@ func (e *VIDEOElement) IfSetCONTROLS(condition bool, b bool) *VIDEOElement {
 	return e
 }
 
-// Remove the attribute controls from the element.
+// Remove the attribute CONTROLS from the element.
 func (e *VIDEOElement) CONTROLSRemove(b bool) *VIDEOElement {
 	if e.BoolAttributes == nil {
 		return e
@@ -224,7 +226,7 @@ const (
 	VideoCrossorigin_use_credentials VideoCrossoriginChoice = "use-credentials"
 )
 
-// Remove the attribute crossorigin from the element.
+// Remove the attribute CROSSORIGIN from the element.
 func (e *VIDEOElement) CROSSORIGINRemove(c VideoCrossoriginChoice) *VIDEOElement {
 	if e.StringAttributes == nil {
 		return e
@@ -249,7 +251,7 @@ func (e *VIDEOElement) IfHEIGHT(condition bool, i int) *VIDEOElement {
 	return e
 }
 
-// Remove the attribute height from the element.
+// Remove the attribute HEIGHT from the element.
 func (e *VIDEOElement) HEIGHTRemove(i int) *VIDEOElement {
 	if e.IntAttributes == nil {
 		return e
@@ -271,7 +273,7 @@ func (e *VIDEOElement) IfLOOP(condition bool) *VIDEOElement {
 	return e
 }
 
-// Set the attribute loop to the value b explicitly.
+// Set the attribute LOOP to the value b explicitly.
 func (e *VIDEOElement) LOOPSet(b bool) *VIDEOElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
@@ -287,7 +289,7 @@ func (e *VIDEOElement) IfSetLOOP(condition bool, b bool) *VIDEOElement {
 	return e
 }
 
-// Remove the attribute loop from the element.
+// Remove the attribute LOOP from the element.
 func (e *VIDEOElement) LOOPRemove(b bool) *VIDEOElement {
 	if e.BoolAttributes == nil {
 		return e
@@ -309,7 +311,7 @@ func (e *VIDEOElement) IfMUTED(condition bool) *VIDEOElement {
 	return e
 }
 
-// Set the attribute muted to the value b explicitly.
+// Set the attribute MUTED to the value b explicitly.
 func (e *VIDEOElement) MUTEDSet(b bool) *VIDEOElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
@@ -325,7 +327,7 @@ func (e *VIDEOElement) IfSetMUTED(condition bool, b bool) *VIDEOElement {
 	return e
 }
 
-// Remove the attribute muted from the element.
+// Remove the attribute MUTED from the element.
 func (e *VIDEOElement) MUTEDRemove(b bool) *VIDEOElement {
 	if e.BoolAttributes == nil {
 		return e
@@ -348,7 +350,7 @@ func (e *VIDEOElement) IfPLAYSINLINE(condition bool) *VIDEOElement {
 	return e
 }
 
-// Set the attribute playsinline to the value b explicitly.
+// Set the attribute PLAYSINLINE to the value b explicitly.
 func (e *VIDEOElement) PLAYSINLINESet(b bool) *VIDEOElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
@@ -364,7 +366,7 @@ func (e *VIDEOElement) IfSetPLAYSINLINE(condition bool, b bool) *VIDEOElement {
 	return e
 }
 
-// Remove the attribute playsinline from the element.
+// Remove the attribute PLAYSINLINE from the element.
 func (e *VIDEOElement) PLAYSINLINERemove(b bool) *VIDEOElement {
 	if e.BoolAttributes == nil {
 		return e
@@ -389,7 +391,7 @@ func (e *VIDEOElement) IfPOSTER(condition bool, s string) *VIDEOElement {
 	return e
 }
 
-// Remove the attribute poster from the element.
+// Remove the attribute POSTER from the element.
 func (e *VIDEOElement) POSTERRemove(s string) *VIDEOElement {
 	if e.StringAttributes == nil {
 		return e
@@ -418,7 +420,7 @@ const (
 	VideoPreload_none VideoPreloadChoice = "none"
 )
 
-// Remove the attribute preload from the element.
+// Remove the attribute PRELOAD from the element.
 func (e *VIDEOElement) PRELOADRemove(c VideoPreloadChoice) *VIDEOElement {
 	if e.StringAttributes == nil {
 		return e
@@ -443,7 +445,7 @@ func (e *VIDEOElement) IfSRC(condition bool, s string) *VIDEOElement {
 	return e
 }
 
-// Remove the attribute src from the element.
+// Remove the attribute SRC from the element.
 func (e *VIDEOElement) SRCRemove(s string) *VIDEOElement {
 	if e.StringAttributes == nil {
 		return e
@@ -468,7 +470,7 @@ func (e *VIDEOElement) IfWIDTH(condition bool, i int) *VIDEOElement {
 	return e
 }
 
-// Remove the attribute width from the element.
+// Remove the attribute WIDTH from the element.
 func (e *VIDEOElement) WIDTHRemove(i int) *VIDEOElement {
 	if e.IntAttributes == nil {
 		return e
@@ -496,7 +498,7 @@ func (e *VIDEOElement) IfACCESSKEY(condition bool, r rune) *VIDEOElement {
 	return e
 }
 
-// Remove the attribute accesskey from the element.
+// Remove the attribute ACCESSKEY from the element.
 func (e *VIDEOElement) ACCESSKEYRemove() *VIDEOElement {
 	if e.StringAttributes == nil {
 		return e
@@ -544,7 +546,7 @@ const (
 	VideoAutocapitalize_characters VideoAutocapitalizeChoice = "characters"
 )
 
-// Remove the attribute autocapitalize from the element.
+// Remove the attribute AUTOCAPITALIZE from the element.
 func (e *VIDEOElement) AUTOCAPITALIZERemove(c VideoAutocapitalizeChoice) *VIDEOElement {
 	if e.StringAttributes == nil {
 		return e
@@ -585,7 +587,7 @@ func (e *VIDEOElement) IfAUTOFOCUS(condition bool) *VIDEOElement {
 	return e
 }
 
-// Set the attribute autofocus to the value b explicitly.
+// Set the attribute AUTOFOCUS to the value b explicitly.
 func (e *VIDEOElement) AUTOFOCUSSet(b bool) *VIDEOElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
@@ -601,7 +603,7 @@ func (e *VIDEOElement) IfSetAUTOFOCUS(condition bool, b bool) *VIDEOElement {
 	return e
 }
 
-// Remove the attribute autofocus from the element.
+// Remove the attribute AUTOFOCUS from the element.
 func (e *VIDEOElement) AUTOFOCUSRemove(b bool) *VIDEOElement {
 	if e.BoolAttributes == nil {
 		return e
@@ -635,7 +637,7 @@ func (e *VIDEOElement) IfCLASS(condition bool, s ...string) *VIDEOElement {
 	return e
 }
 
-// Remove the attribute class from the element.
+// Remove the attribute CLASS from the element.
 func (e *VIDEOElement) CLASSRemove(s ...string) *VIDEOElement {
 	if e.DelimitedStrings == nil {
 		return e
@@ -673,7 +675,7 @@ const (
 	VideoContenteditable_plaintext_only VideoContenteditableChoice = "plaintext-only"
 )
 
-// Remove the attribute contenteditable from the element.
+// Remove the attribute CONTENTEDITABLE from the element.
 func (e *VIDEOElement) CONTENTEDITABLERemove(c VideoContenteditableChoice) *VIDEOElement {
 	if e.StringAttributes == nil {
 		return e
@@ -721,7 +723,7 @@ const (
 	VideoDir_auto VideoDirChoice = "auto"
 )
 
-// Remove the attribute dir from the element.
+// Remove the attribute DIR from the element.
 func (e *VIDEOElement) DIRRemove(c VideoDirChoice) *VIDEOElement {
 	if e.StringAttributes == nil {
 		return e
@@ -758,7 +760,7 @@ const (
 	VideoDraggable_auto VideoDraggableChoice = "auto"
 )
 
-// Remove the attribute draggable from the element.
+// Remove the attribute DRAGGABLE from the element.
 func (e *VIDEOElement) DRAGGABLERemove(c VideoDraggableChoice) *VIDEOElement {
 	if e.StringAttributes == nil {
 		return e
@@ -798,7 +800,7 @@ const (
 	VideoEnterkeyhint_send VideoEnterkeyhintChoice = "send"
 )
 
-// Remove the attribute enterkeyhint from the element.
+// Remove the attribute ENTERKEYHINT from the element.
 func (e *VIDEOElement) ENTERKEYHINTRemove(c VideoEnterkeyhintChoice) *VIDEOElement {
 	if e.StringAttributes == nil {
 		return e
@@ -847,7 +849,7 @@ func (e *VIDEOElement) IfEXPORTPARTS(condition bool, s ...string) *VIDEOElement 
 	return e
 }
 
-// Remove the attribute exportparts from the element.
+// Remove the attribute EXPORTPARTS from the element.
 func (e *VIDEOElement) EXPORTPARTSRemove(s ...string) *VIDEOElement {
 	if e.DelimitedStrings == nil {
 		return e
@@ -901,7 +903,7 @@ const (
 	VideoHidden_until_found VideoHiddenChoice = "until-found"
 )
 
-// Remove the attribute hidden from the element.
+// Remove the attribute HIDDEN from the element.
 func (e *VIDEOElement) HIDDENRemove(c VideoHiddenChoice) *VIDEOElement {
 	if e.StringAttributes == nil {
 		return e
@@ -929,7 +931,7 @@ func (e *VIDEOElement) IfID(condition bool, s string) *VIDEOElement {
 	return e
 }
 
-// Remove the attribute id from the element.
+// Remove the attribute ID from the element.
 func (e *VIDEOElement) IDRemove(s string) *VIDEOElement {
 	if e.StringAttributes == nil {
 		return e
@@ -962,7 +964,7 @@ func (e *VIDEOElement) IfINERT(condition bool) *VIDEOElement {
 	return e
 }
 
-// Set the attribute inert to the value b explicitly.
+// Set the attribute INERT to the value b explicitly.
 func (e *VIDEOElement) INERTSet(b bool) *VIDEOElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
@@ -978,7 +980,7 @@ func (e *VIDEOElement) IfSetINERT(condition bool, b bool) *VIDEOElement {
 	return e
 }
 
-// Remove the attribute inert from the element.
+// Remove the attribute INERT from the element.
 func (e *VIDEOElement) INERTRemove(b bool) *VIDEOElement {
 	if e.BoolAttributes == nil {
 		return e
@@ -1047,7 +1049,7 @@ const (
 	VideoInputmode_url VideoInputmodeChoice = "url"
 )
 
-// Remove the attribute inputmode from the element.
+// Remove the attribute INPUTMODE from the element.
 func (e *VIDEOElement) INPUTMODERemove(c VideoInputmodeChoice) *VIDEOElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1077,7 +1079,7 @@ func (e *VIDEOElement) IfIS(condition bool, s string) *VIDEOElement {
 	return e
 }
 
-// Remove the attribute is from the element.
+// Remove the attribute IS from the element.
 func (e *VIDEOElement) ISRemove(s string) *VIDEOElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1114,7 +1116,7 @@ func (e *VIDEOElement) IfITEMID(condition bool, s string) *VIDEOElement {
 	return e
 }
 
-// Remove the attribute itemid from the element.
+// Remove the attribute ITEMID from the element.
 func (e *VIDEOElement) ITEMIDRemove(s string) *VIDEOElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1146,7 +1148,7 @@ func (e *VIDEOElement) IfITEMPROP(condition bool, s string) *VIDEOElement {
 	return e
 }
 
-// Remove the attribute itemprop from the element.
+// Remove the attribute ITEMPROP from the element.
 func (e *VIDEOElement) ITEMPROPRemove(s string) *VIDEOElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1175,7 +1177,7 @@ func (e *VIDEOElement) IfITEMREF(condition bool, s string) *VIDEOElement {
 	return e
 }
 
-// Remove the attribute itemref from the element.
+// Remove the attribute ITEMREF from the element.
 func (e *VIDEOElement) ITEMREFRemove(s string) *VIDEOElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1204,7 +1206,7 @@ func (e *VIDEOElement) IfITEMSCOPE(condition bool) *VIDEOElement {
 	return e
 }
 
-// Set the attribute itemscope to the value b explicitly.
+// Set the attribute ITEMSCOPE to the value b explicitly.
 func (e *VIDEOElement) ITEMSCOPESet(b bool) *VIDEOElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
@@ -1220,7 +1222,7 @@ func (e *VIDEOElement) IfSetITEMSCOPE(condition bool, b bool) *VIDEOElement {
 	return e
 }
 
-// Remove the attribute itemscope from the element.
+// Remove the attribute ITEMSCOPE from the element.
 func (e *VIDEOElement) ITEMSCOPERemove(b bool) *VIDEOElement {
 	if e.BoolAttributes == nil {
 		return e
@@ -1252,7 +1254,7 @@ func (e *VIDEOElement) IfITEMTYPE(condition bool, s string) *VIDEOElement {
 	return e
 }
 
-// Remove the attribute itemtype from the element.
+// Remove the attribute ITEMTYPE from the element.
 func (e *VIDEOElement) ITEMTYPERemove(s string) *VIDEOElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1282,7 +1284,7 @@ func (e *VIDEOElement) IfLANG(condition bool, s string) *VIDEOElement {
 	return e
 }
 
-// Remove the attribute lang from the element.
+// Remove the attribute LANG from the element.
 func (e *VIDEOElement) LANGRemove(s string) *VIDEOElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1310,7 +1312,7 @@ func (e *VIDEOElement) IfNONCE(condition bool, s string) *VIDEOElement {
 	return e
 }
 
-// Remove the attribute nonce from the element.
+// Remove the attribute NONCE from the element.
 func (e *VIDEOElement) NONCERemove(s string) *VIDEOElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1343,7 +1345,7 @@ func (e *VIDEOElement) IfPART(condition bool, s ...string) *VIDEOElement {
 	return e
 }
 
-// Remove the attribute part from the element.
+// Remove the attribute PART from the element.
 func (e *VIDEOElement) PARTRemove(s ...string) *VIDEOElement {
 	if e.DelimitedStrings == nil {
 		return e
@@ -1389,7 +1391,7 @@ const (
 	VideoPopver_manual VideoPopverChoice = "manual"
 )
 
-// Remove the attribute popver from the element.
+// Remove the attribute POPVER from the element.
 func (e *VIDEOElement) POPVERRemove(c VideoPopverChoice) *VIDEOElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1417,7 +1419,7 @@ func (e *VIDEOElement) IfSLOT(condition bool, s string) *VIDEOElement {
 	return e
 }
 
-// Remove the attribute slot from the element.
+// Remove the attribute SLOT from the element.
 func (e *VIDEOElement) SLOTRemove(s string) *VIDEOElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1459,7 +1461,7 @@ const (
 	VideoSpellcheck_false VideoSpellcheckChoice = "false"
 )
 
-// Remove the attribute spellcheck from the element.
+// Remove the attribute SPELLCHECK from the element.
 func (e *VIDEOElement) SPELLCHECKRemove(c VideoSpellcheckChoice) *VIDEOElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1546,7 +1548,7 @@ func (e *VIDEOElement) IfSTYLEPairs(condition bool, pairs ...string) *VIDEOEleme
 	return e
 }
 
-// Remove the attribute style from the element.
+// Remove the attribute STYLE from the element.
 func (e *VIDEOElement) STYLERemove(keys ...string) *VIDEOElement {
 	if e.KVStrings == nil {
 		return e
@@ -1590,7 +1592,7 @@ func (e *VIDEOElement) IfTABINDEX(condition bool, i int) *VIDEOElement {
 	return e
 }
 
-// Remove the attribute tabindex from the element.
+// Remove the attribute TABINDEX from the element.
 func (e *VIDEOElement) TABINDEXRemove(i int) *VIDEOElement {
 	if e.IntAttributes == nil {
 		return e
@@ -1635,7 +1637,7 @@ func (e *VIDEOElement) IfTITLE(condition bool, s string) *VIDEOElement {
 	return e
 }
 
-// Remove the attribute title from the element.
+// Remove the attribute TITLE from the element.
 func (e *VIDEOElement) TITLERemove(s string) *VIDEOElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1667,11 +1669,351 @@ const (
 	VideoTranslate_no VideoTranslateChoice = "no"
 )
 
-// Remove the attribute translate from the element.
+// Remove the attribute TRANSLATE from the element.
 func (e *VIDEOElement) TRANSLATERemove(c VideoTranslateChoice) *VIDEOElement {
 	if e.StringAttributes == nil {
 		return e
 	}
 	e.StringAttributes.Del("translate")
+	return e
+}
+
+// Merges the store with the given object
+
+func (e *VIDEOElement) DATASTAR_MERGE_STORE(v any) *VIDEOElement {
+	if e.CustomDataAttributes == nil {
+		e.CustomDataAttributes = treemap.New[string, string]()
+	}
+	b, err := json.Marshal(v)
+	if err != nil {
+		panic(err)
+	}
+	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	return e
+}
+
+// Sets the reference of the element
+
+func (e *VIDEOElement) DATASTAR_REF(s string) *VIDEOElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-ref"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *VIDEOElement) IfDATASTAR_REF(condition bool, s string) *VIDEOElement {
+	if condition {
+		e.DATASTAR_REF(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_REF from the element.
+func (e *VIDEOElement) DATASTAR_REFRemove() *VIDEOElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-ref")
+	return e
+}
+
+// Sets the value of the element
+
+func (e *VIDEOElement) DATASTAR_BIND(s string) *VIDEOElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-bind"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *VIDEOElement) IfDATASTAR_BIND(condition bool, s string) *VIDEOElement {
+	if condition {
+		e.DATASTAR_BIND(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_BIND from the element.
+func (e *VIDEOElement) DATASTAR_BINDRemove() *VIDEOElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-bind")
+	return e
+}
+
+// Sets the value of the element
+
+func (e *VIDEOElement) DATASTAR_MODEL(s string) *VIDEOElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-model"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *VIDEOElement) IfDATASTAR_MODEL(condition bool, s string) *VIDEOElement {
+	if condition {
+		e.DATASTAR_MODEL(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_MODEL from the element.
+func (e *VIDEOElement) DATASTAR_MODELRemove() *VIDEOElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-model")
+	return e
+}
+
+// Sets the textContent of the element
+
+func (e *VIDEOElement) DATASTAR_TEXT(s string) *VIDEOElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-text"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *VIDEOElement) IfDATASTAR_TEXT(condition bool, s string) *VIDEOElement {
+	if condition {
+		e.DATASTAR_TEXT(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_TEXT from the element.
+func (e *VIDEOElement) DATASTAR_TEXTRemove() *VIDEOElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-text")
+	return e
+}
+
+// Sets the event handler of the element
+
+type VideoDataOnMod customDataKeyModifier
+
+// Debounces the event handler
+func VideoDataOnModDebounce(
+	s string,
+) VideoDataOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce_%sms", s)
+	}
+}
+
+// Throttles the event handler
+func VideoDataOnModThrottle(
+	s string,
+) VideoDataOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle_%sms", s)
+	}
+}
+
+func (e *VIDEOElement) DATASTAR_ON(s string, modifiers ...VideoDataOnMod) *VIDEOElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	customMods := lo.Map(modifiers, func(m VideoDataOnMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key := customDataKey("data-on", customMods...)
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *VIDEOElement) IfDATASTAR_ON(condition bool, s string, modifiers ...VideoDataOnMod) *VIDEOElement {
+	if condition {
+		e.DATASTAR_ON(s, modifiers...)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_ON from the element.
+func (e *VIDEOElement) DATASTAR_ONRemove() *VIDEOElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-on")
+	return e
+}
+
+// Sets the focus of the element
+
+func (e *VIDEOElement) DATASTAR_FOCUSSet(b bool) *VIDEOElement {
+	key := "data-focus"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *VIDEOElement) DATASTAR_FOCUS() *VIDEOElement {
+	return e.DATASTAR_FOCUSSet(true)
+}
+
+// Sets the header of for fetch requests
+
+func (e *VIDEOElement) DATASTAR_HEADER(s string) *VIDEOElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-header"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *VIDEOElement) IfDATASTAR_HEADER(condition bool, s string) *VIDEOElement {
+	if condition {
+		e.DATASTAR_HEADER(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_HEADER from the element.
+func (e *VIDEOElement) DATASTAR_HEADERRemove() *VIDEOElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-header")
+	return e
+}
+
+// Sets the URL for fetch requests
+
+func (e *VIDEOElement) DATASTAR_FETCH_URL(s string) *VIDEOElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-fetch-url"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *VIDEOElement) IfDATASTAR_FETCH_URL(condition bool, s string) *VIDEOElement {
+	if condition {
+		e.DATASTAR_FETCH_URL(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_FETCH_URL from the element.
+func (e *VIDEOElement) DATASTAR_FETCH_URLRemove() *VIDEOElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-fetch-url")
+	return e
+}
+
+// Sets the indicator selector for fetch requests
+
+func (e *VIDEOElement) DATASTAR_FETCH_INDICATOR(s string) *VIDEOElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "DatastarFetchIndicator"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *VIDEOElement) IfDATASTAR_FETCH_INDICATOR(condition bool, s string) *VIDEOElement {
+	if condition {
+		e.DATASTAR_FETCH_INDICATOR(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_FETCH_INDICATOR from the element.
+func (e *VIDEOElement) DATASTAR_FETCH_INDICATORRemove() *VIDEOElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("DatastarFetchIndicator")
+	return e
+}
+
+// Sets the visibility of the element
+
+func (e *VIDEOElement) DATASTAR_SHOWSet(b bool) *VIDEOElement {
+	key := "data-show"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *VIDEOElement) DATASTAR_SHOW() *VIDEOElement {
+	return e.DATASTAR_SHOWSet(true)
+}
+
+// Triggers the callback when the element intersects the viewport
+
+func (e *VIDEOElement) DATASTAR_INTERSECTSSet(b bool) *VIDEOElement {
+	key := "data-intersects"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *VIDEOElement) DATASTAR_INTERSECTS() *VIDEOElement {
+	return e.DATASTAR_INTERSECTSSet(true)
+}
+
+// Teleports the element to the given selector
+
+func (e *VIDEOElement) DATASTAR_TELEPORTSet(b bool) *VIDEOElement {
+	key := "data-teleport"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *VIDEOElement) DATASTAR_TELEPORT() *VIDEOElement {
+	return e.DATASTAR_TELEPORTSet(true)
+}
+
+// Scrolls the element into view
+
+func (e *VIDEOElement) DATASTAR_SCROLL_INTO_VIEWSet(b bool) *VIDEOElement {
+	key := "data-scroll-into-view"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *VIDEOElement) DATASTAR_SCROLL_INTO_VIEW() *VIDEOElement {
+	return e.DATASTAR_SCROLL_INTO_VIEWSet(true)
+}
+
+// Setup the ViewTransitionAPI for the element
+
+func (e *VIDEOElement) DATASTAR_VIEW_TRANSITION(s string) *VIDEOElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-view-transition"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *VIDEOElement) IfDATASTAR_VIEW_TRANSITION(condition bool, s string) *VIDEOElement {
+	if condition {
+		e.DATASTAR_VIEW_TRANSITION(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_VIEW_TRANSITION from the element.
+func (e *VIDEOElement) DATASTAR_VIEW_TRANSITIONRemove() *VIDEOElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-view-transition")
 	return e
 }

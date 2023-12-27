@@ -61,9 +61,9 @@ func TestExample1(t *testing.T) {
 				SVG_STOP().OFFSET(1).STOP_COLOR("#0E67B4"),
 			).
 				ID("linear-gradient").
-				GRADIENTUNITS("objectBoundingBox").
-				X1(0.048).Y1(0.5).
-				X2(0.963).Y2(0.5),
+				GRADIENT_UNITS("objectBoundingBox").
+				X_1(0.048).Y_1(0.5).
+				X_2(0.963).Y_2(0.5),
 		},
 	}
 

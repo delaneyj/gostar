@@ -6,7 +6,9 @@ package elements
 import (
 	"fmt"
 
+	"github.com/goccy/go-json"
 	"github.com/igrmk/treemap/v2"
+	"github.com/samber/lo"
 )
 
 // The HTML <strike> element (or HTML Strikethrough Element) places a
@@ -146,7 +148,7 @@ func (e *STRIKEElement) IfACCESSKEY(condition bool, r rune) *STRIKEElement {
 	return e
 }
 
-// Remove the attribute accesskey from the element.
+// Remove the attribute ACCESSKEY from the element.
 func (e *STRIKEElement) ACCESSKEYRemove() *STRIKEElement {
 	if e.StringAttributes == nil {
 		return e
@@ -194,7 +196,7 @@ const (
 	StrikeAutocapitalize_characters StrikeAutocapitalizeChoice = "characters"
 )
 
-// Remove the attribute autocapitalize from the element.
+// Remove the attribute AUTOCAPITALIZE from the element.
 func (e *STRIKEElement) AUTOCAPITALIZERemove(c StrikeAutocapitalizeChoice) *STRIKEElement {
 	if e.StringAttributes == nil {
 		return e
@@ -235,7 +237,7 @@ func (e *STRIKEElement) IfAUTOFOCUS(condition bool) *STRIKEElement {
 	return e
 }
 
-// Set the attribute autofocus to the value b explicitly.
+// Set the attribute AUTOFOCUS to the value b explicitly.
 func (e *STRIKEElement) AUTOFOCUSSet(b bool) *STRIKEElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
@@ -251,7 +253,7 @@ func (e *STRIKEElement) IfSetAUTOFOCUS(condition bool, b bool) *STRIKEElement {
 	return e
 }
 
-// Remove the attribute autofocus from the element.
+// Remove the attribute AUTOFOCUS from the element.
 func (e *STRIKEElement) AUTOFOCUSRemove(b bool) *STRIKEElement {
 	if e.BoolAttributes == nil {
 		return e
@@ -285,7 +287,7 @@ func (e *STRIKEElement) IfCLASS(condition bool, s ...string) *STRIKEElement {
 	return e
 }
 
-// Remove the attribute class from the element.
+// Remove the attribute CLASS from the element.
 func (e *STRIKEElement) CLASSRemove(s ...string) *STRIKEElement {
 	if e.DelimitedStrings == nil {
 		return e
@@ -323,7 +325,7 @@ const (
 	StrikeContenteditable_plaintext_only StrikeContenteditableChoice = "plaintext-only"
 )
 
-// Remove the attribute contenteditable from the element.
+// Remove the attribute CONTENTEDITABLE from the element.
 func (e *STRIKEElement) CONTENTEDITABLERemove(c StrikeContenteditableChoice) *STRIKEElement {
 	if e.StringAttributes == nil {
 		return e
@@ -371,7 +373,7 @@ const (
 	StrikeDir_auto StrikeDirChoice = "auto"
 )
 
-// Remove the attribute dir from the element.
+// Remove the attribute DIR from the element.
 func (e *STRIKEElement) DIRRemove(c StrikeDirChoice) *STRIKEElement {
 	if e.StringAttributes == nil {
 		return e
@@ -408,7 +410,7 @@ const (
 	StrikeDraggable_auto StrikeDraggableChoice = "auto"
 )
 
-// Remove the attribute draggable from the element.
+// Remove the attribute DRAGGABLE from the element.
 func (e *STRIKEElement) DRAGGABLERemove(c StrikeDraggableChoice) *STRIKEElement {
 	if e.StringAttributes == nil {
 		return e
@@ -448,7 +450,7 @@ const (
 	StrikeEnterkeyhint_send StrikeEnterkeyhintChoice = "send"
 )
 
-// Remove the attribute enterkeyhint from the element.
+// Remove the attribute ENTERKEYHINT from the element.
 func (e *STRIKEElement) ENTERKEYHINTRemove(c StrikeEnterkeyhintChoice) *STRIKEElement {
 	if e.StringAttributes == nil {
 		return e
@@ -497,7 +499,7 @@ func (e *STRIKEElement) IfEXPORTPARTS(condition bool, s ...string) *STRIKEElemen
 	return e
 }
 
-// Remove the attribute exportparts from the element.
+// Remove the attribute EXPORTPARTS from the element.
 func (e *STRIKEElement) EXPORTPARTSRemove(s ...string) *STRIKEElement {
 	if e.DelimitedStrings == nil {
 		return e
@@ -551,7 +553,7 @@ const (
 	StrikeHidden_until_found StrikeHiddenChoice = "until-found"
 )
 
-// Remove the attribute hidden from the element.
+// Remove the attribute HIDDEN from the element.
 func (e *STRIKEElement) HIDDENRemove(c StrikeHiddenChoice) *STRIKEElement {
 	if e.StringAttributes == nil {
 		return e
@@ -579,7 +581,7 @@ func (e *STRIKEElement) IfID(condition bool, s string) *STRIKEElement {
 	return e
 }
 
-// Remove the attribute id from the element.
+// Remove the attribute ID from the element.
 func (e *STRIKEElement) IDRemove(s string) *STRIKEElement {
 	if e.StringAttributes == nil {
 		return e
@@ -612,7 +614,7 @@ func (e *STRIKEElement) IfINERT(condition bool) *STRIKEElement {
 	return e
 }
 
-// Set the attribute inert to the value b explicitly.
+// Set the attribute INERT to the value b explicitly.
 func (e *STRIKEElement) INERTSet(b bool) *STRIKEElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
@@ -628,7 +630,7 @@ func (e *STRIKEElement) IfSetINERT(condition bool, b bool) *STRIKEElement {
 	return e
 }
 
-// Remove the attribute inert from the element.
+// Remove the attribute INERT from the element.
 func (e *STRIKEElement) INERTRemove(b bool) *STRIKEElement {
 	if e.BoolAttributes == nil {
 		return e
@@ -697,7 +699,7 @@ const (
 	StrikeInputmode_url StrikeInputmodeChoice = "url"
 )
 
-// Remove the attribute inputmode from the element.
+// Remove the attribute INPUTMODE from the element.
 func (e *STRIKEElement) INPUTMODERemove(c StrikeInputmodeChoice) *STRIKEElement {
 	if e.StringAttributes == nil {
 		return e
@@ -727,7 +729,7 @@ func (e *STRIKEElement) IfIS(condition bool, s string) *STRIKEElement {
 	return e
 }
 
-// Remove the attribute is from the element.
+// Remove the attribute IS from the element.
 func (e *STRIKEElement) ISRemove(s string) *STRIKEElement {
 	if e.StringAttributes == nil {
 		return e
@@ -764,7 +766,7 @@ func (e *STRIKEElement) IfITEMID(condition bool, s string) *STRIKEElement {
 	return e
 }
 
-// Remove the attribute itemid from the element.
+// Remove the attribute ITEMID from the element.
 func (e *STRIKEElement) ITEMIDRemove(s string) *STRIKEElement {
 	if e.StringAttributes == nil {
 		return e
@@ -796,7 +798,7 @@ func (e *STRIKEElement) IfITEMPROP(condition bool, s string) *STRIKEElement {
 	return e
 }
 
-// Remove the attribute itemprop from the element.
+// Remove the attribute ITEMPROP from the element.
 func (e *STRIKEElement) ITEMPROPRemove(s string) *STRIKEElement {
 	if e.StringAttributes == nil {
 		return e
@@ -825,7 +827,7 @@ func (e *STRIKEElement) IfITEMREF(condition bool, s string) *STRIKEElement {
 	return e
 }
 
-// Remove the attribute itemref from the element.
+// Remove the attribute ITEMREF from the element.
 func (e *STRIKEElement) ITEMREFRemove(s string) *STRIKEElement {
 	if e.StringAttributes == nil {
 		return e
@@ -854,7 +856,7 @@ func (e *STRIKEElement) IfITEMSCOPE(condition bool) *STRIKEElement {
 	return e
 }
 
-// Set the attribute itemscope to the value b explicitly.
+// Set the attribute ITEMSCOPE to the value b explicitly.
 func (e *STRIKEElement) ITEMSCOPESet(b bool) *STRIKEElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
@@ -870,7 +872,7 @@ func (e *STRIKEElement) IfSetITEMSCOPE(condition bool, b bool) *STRIKEElement {
 	return e
 }
 
-// Remove the attribute itemscope from the element.
+// Remove the attribute ITEMSCOPE from the element.
 func (e *STRIKEElement) ITEMSCOPERemove(b bool) *STRIKEElement {
 	if e.BoolAttributes == nil {
 		return e
@@ -902,7 +904,7 @@ func (e *STRIKEElement) IfITEMTYPE(condition bool, s string) *STRIKEElement {
 	return e
 }
 
-// Remove the attribute itemtype from the element.
+// Remove the attribute ITEMTYPE from the element.
 func (e *STRIKEElement) ITEMTYPERemove(s string) *STRIKEElement {
 	if e.StringAttributes == nil {
 		return e
@@ -932,7 +934,7 @@ func (e *STRIKEElement) IfLANG(condition bool, s string) *STRIKEElement {
 	return e
 }
 
-// Remove the attribute lang from the element.
+// Remove the attribute LANG from the element.
 func (e *STRIKEElement) LANGRemove(s string) *STRIKEElement {
 	if e.StringAttributes == nil {
 		return e
@@ -960,7 +962,7 @@ func (e *STRIKEElement) IfNONCE(condition bool, s string) *STRIKEElement {
 	return e
 }
 
-// Remove the attribute nonce from the element.
+// Remove the attribute NONCE from the element.
 func (e *STRIKEElement) NONCERemove(s string) *STRIKEElement {
 	if e.StringAttributes == nil {
 		return e
@@ -993,7 +995,7 @@ func (e *STRIKEElement) IfPART(condition bool, s ...string) *STRIKEElement {
 	return e
 }
 
-// Remove the attribute part from the element.
+// Remove the attribute PART from the element.
 func (e *STRIKEElement) PARTRemove(s ...string) *STRIKEElement {
 	if e.DelimitedStrings == nil {
 		return e
@@ -1039,7 +1041,7 @@ const (
 	StrikePopver_manual StrikePopverChoice = "manual"
 )
 
-// Remove the attribute popver from the element.
+// Remove the attribute POPVER from the element.
 func (e *STRIKEElement) POPVERRemove(c StrikePopverChoice) *STRIKEElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1067,7 +1069,7 @@ func (e *STRIKEElement) IfSLOT(condition bool, s string) *STRIKEElement {
 	return e
 }
 
-// Remove the attribute slot from the element.
+// Remove the attribute SLOT from the element.
 func (e *STRIKEElement) SLOTRemove(s string) *STRIKEElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1109,7 +1111,7 @@ const (
 	StrikeSpellcheck_false StrikeSpellcheckChoice = "false"
 )
 
-// Remove the attribute spellcheck from the element.
+// Remove the attribute SPELLCHECK from the element.
 func (e *STRIKEElement) SPELLCHECKRemove(c StrikeSpellcheckChoice) *STRIKEElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1196,7 +1198,7 @@ func (e *STRIKEElement) IfSTYLEPairs(condition bool, pairs ...string) *STRIKEEle
 	return e
 }
 
-// Remove the attribute style from the element.
+// Remove the attribute STYLE from the element.
 func (e *STRIKEElement) STYLERemove(keys ...string) *STRIKEElement {
 	if e.KVStrings == nil {
 		return e
@@ -1240,7 +1242,7 @@ func (e *STRIKEElement) IfTABINDEX(condition bool, i int) *STRIKEElement {
 	return e
 }
 
-// Remove the attribute tabindex from the element.
+// Remove the attribute TABINDEX from the element.
 func (e *STRIKEElement) TABINDEXRemove(i int) *STRIKEElement {
 	if e.IntAttributes == nil {
 		return e
@@ -1285,7 +1287,7 @@ func (e *STRIKEElement) IfTITLE(condition bool, s string) *STRIKEElement {
 	return e
 }
 
-// Remove the attribute title from the element.
+// Remove the attribute TITLE from the element.
 func (e *STRIKEElement) TITLERemove(s string) *STRIKEElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1317,11 +1319,351 @@ const (
 	StrikeTranslate_no StrikeTranslateChoice = "no"
 )
 
-// Remove the attribute translate from the element.
+// Remove the attribute TRANSLATE from the element.
 func (e *STRIKEElement) TRANSLATERemove(c StrikeTranslateChoice) *STRIKEElement {
 	if e.StringAttributes == nil {
 		return e
 	}
 	e.StringAttributes.Del("translate")
+	return e
+}
+
+// Merges the store with the given object
+
+func (e *STRIKEElement) DATASTAR_MERGE_STORE(v any) *STRIKEElement {
+	if e.CustomDataAttributes == nil {
+		e.CustomDataAttributes = treemap.New[string, string]()
+	}
+	b, err := json.Marshal(v)
+	if err != nil {
+		panic(err)
+	}
+	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	return e
+}
+
+// Sets the reference of the element
+
+func (e *STRIKEElement) DATASTAR_REF(s string) *STRIKEElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-ref"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *STRIKEElement) IfDATASTAR_REF(condition bool, s string) *STRIKEElement {
+	if condition {
+		e.DATASTAR_REF(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_REF from the element.
+func (e *STRIKEElement) DATASTAR_REFRemove() *STRIKEElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-ref")
+	return e
+}
+
+// Sets the value of the element
+
+func (e *STRIKEElement) DATASTAR_BIND(s string) *STRIKEElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-bind"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *STRIKEElement) IfDATASTAR_BIND(condition bool, s string) *STRIKEElement {
+	if condition {
+		e.DATASTAR_BIND(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_BIND from the element.
+func (e *STRIKEElement) DATASTAR_BINDRemove() *STRIKEElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-bind")
+	return e
+}
+
+// Sets the value of the element
+
+func (e *STRIKEElement) DATASTAR_MODEL(s string) *STRIKEElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-model"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *STRIKEElement) IfDATASTAR_MODEL(condition bool, s string) *STRIKEElement {
+	if condition {
+		e.DATASTAR_MODEL(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_MODEL from the element.
+func (e *STRIKEElement) DATASTAR_MODELRemove() *STRIKEElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-model")
+	return e
+}
+
+// Sets the textContent of the element
+
+func (e *STRIKEElement) DATASTAR_TEXT(s string) *STRIKEElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-text"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *STRIKEElement) IfDATASTAR_TEXT(condition bool, s string) *STRIKEElement {
+	if condition {
+		e.DATASTAR_TEXT(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_TEXT from the element.
+func (e *STRIKEElement) DATASTAR_TEXTRemove() *STRIKEElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-text")
+	return e
+}
+
+// Sets the event handler of the element
+
+type StrikeDataOnMod customDataKeyModifier
+
+// Debounces the event handler
+func StrikeDataOnModDebounce(
+	s string,
+) StrikeDataOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce_%sms", s)
+	}
+}
+
+// Throttles the event handler
+func StrikeDataOnModThrottle(
+	s string,
+) StrikeDataOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle_%sms", s)
+	}
+}
+
+func (e *STRIKEElement) DATASTAR_ON(s string, modifiers ...StrikeDataOnMod) *STRIKEElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	customMods := lo.Map(modifiers, func(m StrikeDataOnMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key := customDataKey("data-on", customMods...)
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *STRIKEElement) IfDATASTAR_ON(condition bool, s string, modifiers ...StrikeDataOnMod) *STRIKEElement {
+	if condition {
+		e.DATASTAR_ON(s, modifiers...)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_ON from the element.
+func (e *STRIKEElement) DATASTAR_ONRemove() *STRIKEElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-on")
+	return e
+}
+
+// Sets the focus of the element
+
+func (e *STRIKEElement) DATASTAR_FOCUSSet(b bool) *STRIKEElement {
+	key := "data-focus"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *STRIKEElement) DATASTAR_FOCUS() *STRIKEElement {
+	return e.DATASTAR_FOCUSSet(true)
+}
+
+// Sets the header of for fetch requests
+
+func (e *STRIKEElement) DATASTAR_HEADER(s string) *STRIKEElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-header"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *STRIKEElement) IfDATASTAR_HEADER(condition bool, s string) *STRIKEElement {
+	if condition {
+		e.DATASTAR_HEADER(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_HEADER from the element.
+func (e *STRIKEElement) DATASTAR_HEADERRemove() *STRIKEElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-header")
+	return e
+}
+
+// Sets the URL for fetch requests
+
+func (e *STRIKEElement) DATASTAR_FETCH_URL(s string) *STRIKEElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-fetch-url"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *STRIKEElement) IfDATASTAR_FETCH_URL(condition bool, s string) *STRIKEElement {
+	if condition {
+		e.DATASTAR_FETCH_URL(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_FETCH_URL from the element.
+func (e *STRIKEElement) DATASTAR_FETCH_URLRemove() *STRIKEElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-fetch-url")
+	return e
+}
+
+// Sets the indicator selector for fetch requests
+
+func (e *STRIKEElement) DATASTAR_FETCH_INDICATOR(s string) *STRIKEElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "DatastarFetchIndicator"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *STRIKEElement) IfDATASTAR_FETCH_INDICATOR(condition bool, s string) *STRIKEElement {
+	if condition {
+		e.DATASTAR_FETCH_INDICATOR(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_FETCH_INDICATOR from the element.
+func (e *STRIKEElement) DATASTAR_FETCH_INDICATORRemove() *STRIKEElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("DatastarFetchIndicator")
+	return e
+}
+
+// Sets the visibility of the element
+
+func (e *STRIKEElement) DATASTAR_SHOWSet(b bool) *STRIKEElement {
+	key := "data-show"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *STRIKEElement) DATASTAR_SHOW() *STRIKEElement {
+	return e.DATASTAR_SHOWSet(true)
+}
+
+// Triggers the callback when the element intersects the viewport
+
+func (e *STRIKEElement) DATASTAR_INTERSECTSSet(b bool) *STRIKEElement {
+	key := "data-intersects"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *STRIKEElement) DATASTAR_INTERSECTS() *STRIKEElement {
+	return e.DATASTAR_INTERSECTSSet(true)
+}
+
+// Teleports the element to the given selector
+
+func (e *STRIKEElement) DATASTAR_TELEPORTSet(b bool) *STRIKEElement {
+	key := "data-teleport"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *STRIKEElement) DATASTAR_TELEPORT() *STRIKEElement {
+	return e.DATASTAR_TELEPORTSet(true)
+}
+
+// Scrolls the element into view
+
+func (e *STRIKEElement) DATASTAR_SCROLL_INTO_VIEWSet(b bool) *STRIKEElement {
+	key := "data-scroll-into-view"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *STRIKEElement) DATASTAR_SCROLL_INTO_VIEW() *STRIKEElement {
+	return e.DATASTAR_SCROLL_INTO_VIEWSet(true)
+}
+
+// Setup the ViewTransitionAPI for the element
+
+func (e *STRIKEElement) DATASTAR_VIEW_TRANSITION(s string) *STRIKEElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-view-transition"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *STRIKEElement) IfDATASTAR_VIEW_TRANSITION(condition bool, s string) *STRIKEElement {
+	if condition {
+		e.DATASTAR_VIEW_TRANSITION(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_VIEW_TRANSITION from the element.
+func (e *STRIKEElement) DATASTAR_VIEW_TRANSITIONRemove() *STRIKEElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-view-transition")
 	return e
 }

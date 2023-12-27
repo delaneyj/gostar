@@ -6,7 +6,9 @@ package elements
 import (
 	"fmt"
 
+	"github.com/goccy/go-json"
 	"github.com/igrmk/treemap/v2"
+	"github.com/samber/lo"
 )
 
 // The <feConvolveMatrix> SVG filter primitive applies a matrix convolution filter
@@ -127,20 +129,28 @@ func (e *SVGFECONVOLVEMATRIXElement) CustomDataRemove(key string) *SVGFECONVOLVE
 	return e
 }
 
-// The targetY attribute determines the positioning in Y of the convolution matrix
-// relative to a given target pixel in the input image.
-func (e *SVGFECONVOLVEMATRIXElement) TARGETY(f float64) *SVGFECONVOLVEMATRIXElement {
-	if e.FloatAttributes == nil {
-		e.FloatAttributes = treemap.New[string, float64]()
+// The input for this filter.
+func (e *SVGFECONVOLVEMATRIXElement) IN(s string) *SVGFECONVOLVEMATRIXElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
 	}
-	e.FloatAttributes.Set("targetY", f)
+	e.StringAttributes.Set("in", s)
 	return e
 }
 
-func (e *SVGFECONVOLVEMATRIXElement) IfTARGETY(condition bool, f float64) *SVGFECONVOLVEMATRIXElement {
+func (e *SVGFECONVOLVEMATRIXElement) IfIN(condition bool, s string) *SVGFECONVOLVEMATRIXElement {
 	if condition {
-		e.TARGETY(f)
+		e.IN(s)
 	}
+	return e
+}
+
+// Remove the attribute IN from the element.
+func (e *SVGFECONVOLVEMATRIXElement) INRemove(s string) *SVGFECONVOLVEMATRIXElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("in")
 	return e
 }
 
@@ -160,7 +170,7 @@ func (e *SVGFECONVOLVEMATRIXElement) IfORDER(condition bool, s string) *SVGFECON
 	return e
 }
 
-// Remove the attribute order from the element.
+// Remove the attribute ORDER from the element.
 func (e *SVGFECONVOLVEMATRIXElement) ORDERRemove(s string) *SVGFECONVOLVEMATRIXElement {
 	if e.StringAttributes == nil {
 		return e
@@ -170,7 +180,7 @@ func (e *SVGFECONVOLVEMATRIXElement) ORDERRemove(s string) *SVGFECONVOLVEMATRIXE
 }
 
 // A list of numbers that make up the kernel matrix for the convolution.
-func (e *SVGFECONVOLVEMATRIXElement) KERNELMATRIX(s string) *SVGFECONVOLVEMATRIXElement {
+func (e *SVGFECONVOLVEMATRIXElement) KERNEL_MATRIX(s string) *SVGFECONVOLVEMATRIXElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
@@ -178,15 +188,15 @@ func (e *SVGFECONVOLVEMATRIXElement) KERNELMATRIX(s string) *SVGFECONVOLVEMATRIX
 	return e
 }
 
-func (e *SVGFECONVOLVEMATRIXElement) IfKERNELMATRIX(condition bool, s string) *SVGFECONVOLVEMATRIXElement {
+func (e *SVGFECONVOLVEMATRIXElement) IfKERNEL_MATRIX(condition bool, s string) *SVGFECONVOLVEMATRIXElement {
 	if condition {
-		e.KERNELMATRIX(s)
+		e.KERNEL_MATRIX(s)
 	}
 	return e
 }
 
-// Remove the attribute kernelMatrix from the element.
-func (e *SVGFECONVOLVEMATRIXElement) KERNELMATRIXRemove(s string) *SVGFECONVOLVEMATRIXElement {
+// Remove the attribute KERNEL_MATRIX from the element.
+func (e *SVGFECONVOLVEMATRIXElement) KERNEL_MATRIXRemove(s string) *SVGFECONVOLVEMATRIXElement {
 	if e.StringAttributes == nil {
 		return e
 	}
@@ -231,7 +241,7 @@ func (e *SVGFECONVOLVEMATRIXElement) IfBIAS(condition bool, f float64) *SVGFECON
 
 // The targetX attribute determines the positioning in X of the convolution matrix
 // relative to a given target pixel in the input image.
-func (e *SVGFECONVOLVEMATRIXElement) TARGETX(f float64) *SVGFECONVOLVEMATRIXElement {
+func (e *SVGFECONVOLVEMATRIXElement) TARGET_X(f float64) *SVGFECONVOLVEMATRIXElement {
 	if e.FloatAttributes == nil {
 		e.FloatAttributes = treemap.New[string, float64]()
 	}
@@ -239,42 +249,34 @@ func (e *SVGFECONVOLVEMATRIXElement) TARGETX(f float64) *SVGFECONVOLVEMATRIXElem
 	return e
 }
 
-func (e *SVGFECONVOLVEMATRIXElement) IfTARGETX(condition bool, f float64) *SVGFECONVOLVEMATRIXElement {
+func (e *SVGFECONVOLVEMATRIXElement) IfTARGET_X(condition bool, f float64) *SVGFECONVOLVEMATRIXElement {
 	if condition {
-		e.TARGETX(f)
+		e.TARGET_X(f)
 	}
 	return e
 }
 
-// The input for this filter.
-func (e *SVGFECONVOLVEMATRIXElement) IN(s string) *SVGFECONVOLVEMATRIXElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
+// The targetY attribute determines the positioning in Y of the convolution matrix
+// relative to a given target pixel in the input image.
+func (e *SVGFECONVOLVEMATRIXElement) TARGET_Y(f float64) *SVGFECONVOLVEMATRIXElement {
+	if e.FloatAttributes == nil {
+		e.FloatAttributes = treemap.New[string, float64]()
 	}
-	e.StringAttributes.Set("in", s)
+	e.FloatAttributes.Set("targetY", f)
 	return e
 }
 
-func (e *SVGFECONVOLVEMATRIXElement) IfIN(condition bool, s string) *SVGFECONVOLVEMATRIXElement {
+func (e *SVGFECONVOLVEMATRIXElement) IfTARGET_Y(condition bool, f float64) *SVGFECONVOLVEMATRIXElement {
 	if condition {
-		e.IN(s)
+		e.TARGET_Y(f)
 	}
-	return e
-}
-
-// Remove the attribute in from the element.
-func (e *SVGFECONVOLVEMATRIXElement) INRemove(s string) *SVGFECONVOLVEMATRIXElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("in")
 	return e
 }
 
 // The edgeMode attribute determines how to extend the input image as necessary
 // with color values so that the matrix operations can be applied when the kernel
 // is positioned at or near the edge of the input image.
-func (e *SVGFECONVOLVEMATRIXElement) EDGEMODE(c SVGFeConvolveMatrixEdgeModeChoice) *SVGFECONVOLVEMATRIXElement {
+func (e *SVGFECONVOLVEMATRIXElement) EDGE_MODE(c SVGFeConvolveMatrixEdgeModeChoice) *SVGFECONVOLVEMATRIXElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
@@ -295,8 +297,8 @@ const (
 	SVGFeConvolveMatrixEdgeMode_none SVGFeConvolveMatrixEdgeModeChoice = "none"
 )
 
-// Remove the attribute edgeMode from the element.
-func (e *SVGFECONVOLVEMATRIXElement) EDGEMODERemove(c SVGFeConvolveMatrixEdgeModeChoice) *SVGFECONVOLVEMATRIXElement {
+// Remove the attribute EDGE_MODE from the element.
+func (e *SVGFECONVOLVEMATRIXElement) EDGE_MODERemove(c SVGFeConvolveMatrixEdgeModeChoice) *SVGFECONVOLVEMATRIXElement {
 	if e.StringAttributes == nil {
 		return e
 	}
@@ -307,7 +309,7 @@ func (e *SVGFECONVOLVEMATRIXElement) EDGEMODERemove(c SVGFeConvolveMatrixEdgeMod
 // The kernelUnitLength attribute defines the intended distance in current filter
 // units (i.e., units as determined by the value of attribute 'primitiveUnits')
 // for dx and dy in the surface normal calculation formulas.
-func (e *SVGFECONVOLVEMATRIXElement) KERNELUNITLENGTH(s string) *SVGFECONVOLVEMATRIXElement {
+func (e *SVGFECONVOLVEMATRIXElement) KERNEL_UNIT_LENGTH(s string) *SVGFECONVOLVEMATRIXElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
@@ -315,15 +317,15 @@ func (e *SVGFECONVOLVEMATRIXElement) KERNELUNITLENGTH(s string) *SVGFECONVOLVEMA
 	return e
 }
 
-func (e *SVGFECONVOLVEMATRIXElement) IfKERNELUNITLENGTH(condition bool, s string) *SVGFECONVOLVEMATRIXElement {
+func (e *SVGFECONVOLVEMATRIXElement) IfKERNEL_UNIT_LENGTH(condition bool, s string) *SVGFECONVOLVEMATRIXElement {
 	if condition {
-		e.KERNELUNITLENGTH(s)
+		e.KERNEL_UNIT_LENGTH(s)
 	}
 	return e
 }
 
-// Remove the attribute kernelUnitLength from the element.
-func (e *SVGFECONVOLVEMATRIXElement) KERNELUNITLENGTHRemove(s string) *SVGFECONVOLVEMATRIXElement {
+// Remove the attribute KERNEL_UNIT_LENGTH from the element.
+func (e *SVGFECONVOLVEMATRIXElement) KERNEL_UNIT_LENGTHRemove(s string) *SVGFECONVOLVEMATRIXElement {
 	if e.StringAttributes == nil {
 		return e
 	}
@@ -333,20 +335,20 @@ func (e *SVGFECONVOLVEMATRIXElement) KERNELUNITLENGTHRemove(s string) *SVGFECONV
 
 // The preserveAlpha attribute indicates how the convolution will handle the alpha
 // channel of the input image.
-func (e *SVGFECONVOLVEMATRIXElement) PRESERVEALPHA() *SVGFECONVOLVEMATRIXElement {
-	e.PRESERVEALPHASet(true)
+func (e *SVGFECONVOLVEMATRIXElement) PRESERVE_ALPHA() *SVGFECONVOLVEMATRIXElement {
+	e.PRESERVE_ALPHASet(true)
 	return e
 }
 
-func (e *SVGFECONVOLVEMATRIXElement) IfPRESERVEALPHA(condition bool) *SVGFECONVOLVEMATRIXElement {
+func (e *SVGFECONVOLVEMATRIXElement) IfPRESERVE_ALPHA(condition bool) *SVGFECONVOLVEMATRIXElement {
 	if condition {
-		e.PRESERVEALPHASet(true)
+		e.PRESERVE_ALPHASet(true)
 	}
 	return e
 }
 
-// Set the attribute preserveAlpha to the value b explicitly.
-func (e *SVGFECONVOLVEMATRIXElement) PRESERVEALPHASet(b bool) *SVGFECONVOLVEMATRIXElement {
+// Set the attribute PRESERVE_ALPHA to the value b explicitly.
+func (e *SVGFECONVOLVEMATRIXElement) PRESERVE_ALPHASet(b bool) *SVGFECONVOLVEMATRIXElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
 	}
@@ -354,19 +356,44 @@ func (e *SVGFECONVOLVEMATRIXElement) PRESERVEALPHASet(b bool) *SVGFECONVOLVEMATR
 	return e
 }
 
-func (e *SVGFECONVOLVEMATRIXElement) IfSetPRESERVEALPHA(condition bool, b bool) *SVGFECONVOLVEMATRIXElement {
+func (e *SVGFECONVOLVEMATRIXElement) IfSetPRESERVE_ALPHA(condition bool, b bool) *SVGFECONVOLVEMATRIXElement {
 	if condition {
-		e.PRESERVEALPHASet(b)
+		e.PRESERVE_ALPHASet(b)
 	}
 	return e
 }
 
-// Remove the attribute preserveAlpha from the element.
-func (e *SVGFECONVOLVEMATRIXElement) PRESERVEALPHARemove(b bool) *SVGFECONVOLVEMATRIXElement {
+// Remove the attribute PRESERVE_ALPHA from the element.
+func (e *SVGFECONVOLVEMATRIXElement) PRESERVE_ALPHARemove(b bool) *SVGFECONVOLVEMATRIXElement {
 	if e.BoolAttributes == nil {
 		return e
 	}
 	e.BoolAttributes.Del("preserveAlpha")
+	return e
+}
+
+// Specifies a unique id for an element
+func (e *SVGFECONVOLVEMATRIXElement) ID(s string) *SVGFECONVOLVEMATRIXElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	e.StringAttributes.Set("id", s)
+	return e
+}
+
+func (e *SVGFECONVOLVEMATRIXElement) IfID(condition bool, s string) *SVGFECONVOLVEMATRIXElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
+// Remove the attribute ID from the element.
+func (e *SVGFECONVOLVEMATRIXElement) IDRemove(s string) *SVGFECONVOLVEMATRIXElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("id")
 	return e
 }
 
@@ -392,7 +419,7 @@ func (e *SVGFECONVOLVEMATRIXElement) IfCLASS(condition bool, s ...string) *SVGFE
 	return e
 }
 
-// Remove the attribute class from the element.
+// Remove the attribute CLASS from the element.
 func (e *SVGFECONVOLVEMATRIXElement) CLASSRemove(s ...string) *SVGFECONVOLVEMATRIXElement {
 	if e.DelimitedStrings == nil {
 		return e
@@ -402,31 +429,6 @@ func (e *SVGFECONVOLVEMATRIXElement) CLASSRemove(s ...string) *SVGFECONVOLVEMATR
 		return e
 	}
 	ds.Remove(s...)
-	return e
-}
-
-// Specifies a unique id for an element
-func (e *SVGFECONVOLVEMATRIXElement) ID(s string) *SVGFECONVOLVEMATRIXElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	e.StringAttributes.Set("id", s)
-	return e
-}
-
-func (e *SVGFECONVOLVEMATRIXElement) IfID(condition bool, s string) *SVGFECONVOLVEMATRIXElement {
-	if condition {
-		e.ID(s)
-	}
-	return e
-}
-
-// Remove the attribute id from the element.
-func (e *SVGFECONVOLVEMATRIXElement) IDRemove(s string) *SVGFECONVOLVEMATRIXElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("id")
 	return e
 }
 
@@ -506,7 +508,7 @@ func (e *SVGFECONVOLVEMATRIXElement) IfSTYLEPairs(condition bool, pairs ...strin
 	return e
 }
 
-// Remove the attribute style from the element.
+// Remove the attribute STYLE from the element.
 func (e *SVGFECONVOLVEMATRIXElement) STYLERemove(keys ...string) *SVGFECONVOLVEMATRIXElement {
 	if e.KVStrings == nil {
 		return e
@@ -518,5 +520,345 @@ func (e *SVGFECONVOLVEMATRIXElement) STYLERemove(keys ...string) *SVGFECONVOLVEM
 	for _, k := range keys {
 		kv.Remove(k)
 	}
+	return e
+}
+
+// Merges the store with the given object
+
+func (e *SVGFECONVOLVEMATRIXElement) DATASTAR_MERGE_STORE(v any) *SVGFECONVOLVEMATRIXElement {
+	if e.CustomDataAttributes == nil {
+		e.CustomDataAttributes = treemap.New[string, string]()
+	}
+	b, err := json.Marshal(v)
+	if err != nil {
+		panic(err)
+	}
+	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	return e
+}
+
+// Sets the reference of the element
+
+func (e *SVGFECONVOLVEMATRIXElement) DATASTAR_REF(s string) *SVGFECONVOLVEMATRIXElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-ref"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SVGFECONVOLVEMATRIXElement) IfDATASTAR_REF(condition bool, s string) *SVGFECONVOLVEMATRIXElement {
+	if condition {
+		e.DATASTAR_REF(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_REF from the element.
+func (e *SVGFECONVOLVEMATRIXElement) DATASTAR_REFRemove() *SVGFECONVOLVEMATRIXElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-ref")
+	return e
+}
+
+// Sets the value of the element
+
+func (e *SVGFECONVOLVEMATRIXElement) DATASTAR_BIND(s string) *SVGFECONVOLVEMATRIXElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-bind"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SVGFECONVOLVEMATRIXElement) IfDATASTAR_BIND(condition bool, s string) *SVGFECONVOLVEMATRIXElement {
+	if condition {
+		e.DATASTAR_BIND(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_BIND from the element.
+func (e *SVGFECONVOLVEMATRIXElement) DATASTAR_BINDRemove() *SVGFECONVOLVEMATRIXElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-bind")
+	return e
+}
+
+// Sets the value of the element
+
+func (e *SVGFECONVOLVEMATRIXElement) DATASTAR_MODEL(s string) *SVGFECONVOLVEMATRIXElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-model"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SVGFECONVOLVEMATRIXElement) IfDATASTAR_MODEL(condition bool, s string) *SVGFECONVOLVEMATRIXElement {
+	if condition {
+		e.DATASTAR_MODEL(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_MODEL from the element.
+func (e *SVGFECONVOLVEMATRIXElement) DATASTAR_MODELRemove() *SVGFECONVOLVEMATRIXElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-model")
+	return e
+}
+
+// Sets the textContent of the element
+
+func (e *SVGFECONVOLVEMATRIXElement) DATASTAR_TEXT(s string) *SVGFECONVOLVEMATRIXElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-text"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SVGFECONVOLVEMATRIXElement) IfDATASTAR_TEXT(condition bool, s string) *SVGFECONVOLVEMATRIXElement {
+	if condition {
+		e.DATASTAR_TEXT(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_TEXT from the element.
+func (e *SVGFECONVOLVEMATRIXElement) DATASTAR_TEXTRemove() *SVGFECONVOLVEMATRIXElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-text")
+	return e
+}
+
+// Sets the event handler of the element
+
+type SVGFeConvolveMatrixDataOnMod customDataKeyModifier
+
+// Debounces the event handler
+func SVGFeConvolveMatrixDataOnModDebounce(
+	s string,
+) SVGFeConvolveMatrixDataOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce_%sms", s)
+	}
+}
+
+// Throttles the event handler
+func SVGFeConvolveMatrixDataOnModThrottle(
+	s string,
+) SVGFeConvolveMatrixDataOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle_%sms", s)
+	}
+}
+
+func (e *SVGFECONVOLVEMATRIXElement) DATASTAR_ON(s string, modifiers ...SVGFeConvolveMatrixDataOnMod) *SVGFECONVOLVEMATRIXElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	customMods := lo.Map(modifiers, func(m SVGFeConvolveMatrixDataOnMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key := customDataKey("data-on", customMods...)
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SVGFECONVOLVEMATRIXElement) IfDATASTAR_ON(condition bool, s string, modifiers ...SVGFeConvolveMatrixDataOnMod) *SVGFECONVOLVEMATRIXElement {
+	if condition {
+		e.DATASTAR_ON(s, modifiers...)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_ON from the element.
+func (e *SVGFECONVOLVEMATRIXElement) DATASTAR_ONRemove() *SVGFECONVOLVEMATRIXElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-on")
+	return e
+}
+
+// Sets the focus of the element
+
+func (e *SVGFECONVOLVEMATRIXElement) DATASTAR_FOCUSSet(b bool) *SVGFECONVOLVEMATRIXElement {
+	key := "data-focus"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *SVGFECONVOLVEMATRIXElement) DATASTAR_FOCUS() *SVGFECONVOLVEMATRIXElement {
+	return e.DATASTAR_FOCUSSet(true)
+}
+
+// Sets the header of for fetch requests
+
+func (e *SVGFECONVOLVEMATRIXElement) DATASTAR_HEADER(s string) *SVGFECONVOLVEMATRIXElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-header"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SVGFECONVOLVEMATRIXElement) IfDATASTAR_HEADER(condition bool, s string) *SVGFECONVOLVEMATRIXElement {
+	if condition {
+		e.DATASTAR_HEADER(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_HEADER from the element.
+func (e *SVGFECONVOLVEMATRIXElement) DATASTAR_HEADERRemove() *SVGFECONVOLVEMATRIXElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-header")
+	return e
+}
+
+// Sets the URL for fetch requests
+
+func (e *SVGFECONVOLVEMATRIXElement) DATASTAR_FETCH_URL(s string) *SVGFECONVOLVEMATRIXElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-fetch-url"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SVGFECONVOLVEMATRIXElement) IfDATASTAR_FETCH_URL(condition bool, s string) *SVGFECONVOLVEMATRIXElement {
+	if condition {
+		e.DATASTAR_FETCH_URL(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_FETCH_URL from the element.
+func (e *SVGFECONVOLVEMATRIXElement) DATASTAR_FETCH_URLRemove() *SVGFECONVOLVEMATRIXElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-fetch-url")
+	return e
+}
+
+// Sets the indicator selector for fetch requests
+
+func (e *SVGFECONVOLVEMATRIXElement) DATASTAR_FETCH_INDICATOR(s string) *SVGFECONVOLVEMATRIXElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "DatastarFetchIndicator"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SVGFECONVOLVEMATRIXElement) IfDATASTAR_FETCH_INDICATOR(condition bool, s string) *SVGFECONVOLVEMATRIXElement {
+	if condition {
+		e.DATASTAR_FETCH_INDICATOR(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_FETCH_INDICATOR from the element.
+func (e *SVGFECONVOLVEMATRIXElement) DATASTAR_FETCH_INDICATORRemove() *SVGFECONVOLVEMATRIXElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("DatastarFetchIndicator")
+	return e
+}
+
+// Sets the visibility of the element
+
+func (e *SVGFECONVOLVEMATRIXElement) DATASTAR_SHOWSet(b bool) *SVGFECONVOLVEMATRIXElement {
+	key := "data-show"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *SVGFECONVOLVEMATRIXElement) DATASTAR_SHOW() *SVGFECONVOLVEMATRIXElement {
+	return e.DATASTAR_SHOWSet(true)
+}
+
+// Triggers the callback when the element intersects the viewport
+
+func (e *SVGFECONVOLVEMATRIXElement) DATASTAR_INTERSECTSSet(b bool) *SVGFECONVOLVEMATRIXElement {
+	key := "data-intersects"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *SVGFECONVOLVEMATRIXElement) DATASTAR_INTERSECTS() *SVGFECONVOLVEMATRIXElement {
+	return e.DATASTAR_INTERSECTSSet(true)
+}
+
+// Teleports the element to the given selector
+
+func (e *SVGFECONVOLVEMATRIXElement) DATASTAR_TELEPORTSet(b bool) *SVGFECONVOLVEMATRIXElement {
+	key := "data-teleport"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *SVGFECONVOLVEMATRIXElement) DATASTAR_TELEPORT() *SVGFECONVOLVEMATRIXElement {
+	return e.DATASTAR_TELEPORTSet(true)
+}
+
+// Scrolls the element into view
+
+func (e *SVGFECONVOLVEMATRIXElement) DATASTAR_SCROLL_INTO_VIEWSet(b bool) *SVGFECONVOLVEMATRIXElement {
+	key := "data-scroll-into-view"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *SVGFECONVOLVEMATRIXElement) DATASTAR_SCROLL_INTO_VIEW() *SVGFECONVOLVEMATRIXElement {
+	return e.DATASTAR_SCROLL_INTO_VIEWSet(true)
+}
+
+// Setup the ViewTransitionAPI for the element
+
+func (e *SVGFECONVOLVEMATRIXElement) DATASTAR_VIEW_TRANSITION(s string) *SVGFECONVOLVEMATRIXElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-view-transition"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SVGFECONVOLVEMATRIXElement) IfDATASTAR_VIEW_TRANSITION(condition bool, s string) *SVGFECONVOLVEMATRIXElement {
+	if condition {
+		e.DATASTAR_VIEW_TRANSITION(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_VIEW_TRANSITION from the element.
+func (e *SVGFECONVOLVEMATRIXElement) DATASTAR_VIEW_TRANSITIONRemove() *SVGFECONVOLVEMATRIXElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-view-transition")
 	return e
 }

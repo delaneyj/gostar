@@ -6,7 +6,9 @@ package elements
 import (
 	"fmt"
 
+	"github.com/goccy/go-json"
 	"github.com/igrmk/treemap/v2"
+	"github.com/samber/lo"
 )
 
 // The <a> SVG element creates a hyperlink to other web pages, files, locations in
@@ -150,7 +152,7 @@ func (e *SVGAElement) IfDOWNLOAD(condition bool, s string) *SVGAElement {
 	return e
 }
 
-// Remove the attribute download from the element.
+// Remove the attribute DOWNLOAD from the element.
 func (e *SVGAElement) DOWNLOADRemove(s string) *SVGAElement {
 	if e.StringAttributes == nil {
 		return e
@@ -175,7 +177,7 @@ func (e *SVGAElement) IfHREF(condition bool, s string) *SVGAElement {
 	return e
 }
 
-// Remove the attribute href from the element.
+// Remove the attribute HREF from the element.
 func (e *SVGAElement) HREFRemove(s string) *SVGAElement {
 	if e.StringAttributes == nil {
 		return e
@@ -200,7 +202,7 @@ func (e *SVGAElement) IfHREFLANG(condition bool, s string) *SVGAElement {
 	return e
 }
 
-// Remove the attribute hreflang from the element.
+// Remove the attribute HREFLANG from the element.
 func (e *SVGAElement) HREFLANGRemove(s string) *SVGAElement {
 	if e.StringAttributes == nil {
 		return e
@@ -233,7 +235,7 @@ func (e *SVGAElement) IfPING(condition bool, s ...string) *SVGAElement {
 	return e
 }
 
-// Remove the attribute ping from the element.
+// Remove the attribute PING from the element.
 func (e *SVGAElement) PINGRemove(s ...string) *SVGAElement {
 	if e.DelimitedStrings == nil {
 		return e
@@ -281,7 +283,7 @@ const (
 	SVGAReferrerpolicy_unsafe_url SVGAReferrerpolicyChoice = "unsafe-url"
 )
 
-// Remove the attribute referrerpolicy from the element.
+// Remove the attribute REFERRERPOLICY from the element.
 func (e *SVGAElement) REFERRERPOLICYRemove(c SVGAReferrerpolicyChoice) *SVGAElement {
 	if e.StringAttributes == nil {
 		return e
@@ -363,7 +365,7 @@ const (
 	SVGARel_terms_of_service SVGARelChoice = "terms-of-service"
 )
 
-// Remove the attribute rel from the element.
+// Remove the attribute REL from the element.
 func (e *SVGAElement) RELRemove(c SVGARelChoice) *SVGAElement {
 	if e.StringAttributes == nil {
 		return e
@@ -397,7 +399,7 @@ const (
 	SVGATarget_framename SVGATargetChoice = "framename"
 )
 
-// Remove the attribute target from the element.
+// Remove the attribute TARGET from the element.
 func (e *SVGAElement) TARGETRemove(c SVGATargetChoice) *SVGAElement {
 	if e.StringAttributes == nil {
 		return e
@@ -422,7 +424,7 @@ func (e *SVGAElement) IfTYPE(condition bool, s string) *SVGAElement {
 	return e
 }
 
-// Remove the attribute type from the element.
+// Remove the attribute TYPE from the element.
 func (e *SVGAElement) TYPERemove(s string) *SVGAElement {
 	if e.StringAttributes == nil {
 		return e
@@ -447,7 +449,7 @@ func (e *SVGAElement) IfID(condition bool, s string) *SVGAElement {
 	return e
 }
 
-// Remove the attribute id from the element.
+// Remove the attribute ID from the element.
 func (e *SVGAElement) IDRemove(s string) *SVGAElement {
 	if e.StringAttributes == nil {
 		return e
@@ -478,7 +480,7 @@ func (e *SVGAElement) IfCLASS(condition bool, s ...string) *SVGAElement {
 	return e
 }
 
-// Remove the attribute class from the element.
+// Remove the attribute CLASS from the element.
 func (e *SVGAElement) CLASSRemove(s ...string) *SVGAElement {
 	if e.DelimitedStrings == nil {
 		return e
@@ -567,7 +569,7 @@ func (e *SVGAElement) IfSTYLEPairs(condition bool, pairs ...string) *SVGAElement
 	return e
 }
 
-// Remove the attribute style from the element.
+// Remove the attribute STYLE from the element.
 func (e *SVGAElement) STYLERemove(keys ...string) *SVGAElement {
 	if e.KVStrings == nil {
 		return e
@@ -579,5 +581,345 @@ func (e *SVGAElement) STYLERemove(keys ...string) *SVGAElement {
 	for _, k := range keys {
 		kv.Remove(k)
 	}
+	return e
+}
+
+// Merges the store with the given object
+
+func (e *SVGAElement) DATASTAR_MERGE_STORE(v any) *SVGAElement {
+	if e.CustomDataAttributes == nil {
+		e.CustomDataAttributes = treemap.New[string, string]()
+	}
+	b, err := json.Marshal(v)
+	if err != nil {
+		panic(err)
+	}
+	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	return e
+}
+
+// Sets the reference of the element
+
+func (e *SVGAElement) DATASTAR_REF(s string) *SVGAElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-ref"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SVGAElement) IfDATASTAR_REF(condition bool, s string) *SVGAElement {
+	if condition {
+		e.DATASTAR_REF(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_REF from the element.
+func (e *SVGAElement) DATASTAR_REFRemove() *SVGAElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-ref")
+	return e
+}
+
+// Sets the value of the element
+
+func (e *SVGAElement) DATASTAR_BIND(s string) *SVGAElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-bind"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SVGAElement) IfDATASTAR_BIND(condition bool, s string) *SVGAElement {
+	if condition {
+		e.DATASTAR_BIND(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_BIND from the element.
+func (e *SVGAElement) DATASTAR_BINDRemove() *SVGAElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-bind")
+	return e
+}
+
+// Sets the value of the element
+
+func (e *SVGAElement) DATASTAR_MODEL(s string) *SVGAElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-model"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SVGAElement) IfDATASTAR_MODEL(condition bool, s string) *SVGAElement {
+	if condition {
+		e.DATASTAR_MODEL(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_MODEL from the element.
+func (e *SVGAElement) DATASTAR_MODELRemove() *SVGAElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-model")
+	return e
+}
+
+// Sets the textContent of the element
+
+func (e *SVGAElement) DATASTAR_TEXT(s string) *SVGAElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-text"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SVGAElement) IfDATASTAR_TEXT(condition bool, s string) *SVGAElement {
+	if condition {
+		e.DATASTAR_TEXT(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_TEXT from the element.
+func (e *SVGAElement) DATASTAR_TEXTRemove() *SVGAElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-text")
+	return e
+}
+
+// Sets the event handler of the element
+
+type SVGADataOnMod customDataKeyModifier
+
+// Debounces the event handler
+func SVGADataOnModDebounce(
+	s string,
+) SVGADataOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce_%sms", s)
+	}
+}
+
+// Throttles the event handler
+func SVGADataOnModThrottle(
+	s string,
+) SVGADataOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle_%sms", s)
+	}
+}
+
+func (e *SVGAElement) DATASTAR_ON(s string, modifiers ...SVGADataOnMod) *SVGAElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	customMods := lo.Map(modifiers, func(m SVGADataOnMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key := customDataKey("data-on", customMods...)
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SVGAElement) IfDATASTAR_ON(condition bool, s string, modifiers ...SVGADataOnMod) *SVGAElement {
+	if condition {
+		e.DATASTAR_ON(s, modifiers...)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_ON from the element.
+func (e *SVGAElement) DATASTAR_ONRemove() *SVGAElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-on")
+	return e
+}
+
+// Sets the focus of the element
+
+func (e *SVGAElement) DATASTAR_FOCUSSet(b bool) *SVGAElement {
+	key := "data-focus"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *SVGAElement) DATASTAR_FOCUS() *SVGAElement {
+	return e.DATASTAR_FOCUSSet(true)
+}
+
+// Sets the header of for fetch requests
+
+func (e *SVGAElement) DATASTAR_HEADER(s string) *SVGAElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-header"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SVGAElement) IfDATASTAR_HEADER(condition bool, s string) *SVGAElement {
+	if condition {
+		e.DATASTAR_HEADER(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_HEADER from the element.
+func (e *SVGAElement) DATASTAR_HEADERRemove() *SVGAElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-header")
+	return e
+}
+
+// Sets the URL for fetch requests
+
+func (e *SVGAElement) DATASTAR_FETCH_URL(s string) *SVGAElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-fetch-url"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SVGAElement) IfDATASTAR_FETCH_URL(condition bool, s string) *SVGAElement {
+	if condition {
+		e.DATASTAR_FETCH_URL(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_FETCH_URL from the element.
+func (e *SVGAElement) DATASTAR_FETCH_URLRemove() *SVGAElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-fetch-url")
+	return e
+}
+
+// Sets the indicator selector for fetch requests
+
+func (e *SVGAElement) DATASTAR_FETCH_INDICATOR(s string) *SVGAElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "DatastarFetchIndicator"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SVGAElement) IfDATASTAR_FETCH_INDICATOR(condition bool, s string) *SVGAElement {
+	if condition {
+		e.DATASTAR_FETCH_INDICATOR(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_FETCH_INDICATOR from the element.
+func (e *SVGAElement) DATASTAR_FETCH_INDICATORRemove() *SVGAElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("DatastarFetchIndicator")
+	return e
+}
+
+// Sets the visibility of the element
+
+func (e *SVGAElement) DATASTAR_SHOWSet(b bool) *SVGAElement {
+	key := "data-show"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *SVGAElement) DATASTAR_SHOW() *SVGAElement {
+	return e.DATASTAR_SHOWSet(true)
+}
+
+// Triggers the callback when the element intersects the viewport
+
+func (e *SVGAElement) DATASTAR_INTERSECTSSet(b bool) *SVGAElement {
+	key := "data-intersects"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *SVGAElement) DATASTAR_INTERSECTS() *SVGAElement {
+	return e.DATASTAR_INTERSECTSSet(true)
+}
+
+// Teleports the element to the given selector
+
+func (e *SVGAElement) DATASTAR_TELEPORTSet(b bool) *SVGAElement {
+	key := "data-teleport"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *SVGAElement) DATASTAR_TELEPORT() *SVGAElement {
+	return e.DATASTAR_TELEPORTSet(true)
+}
+
+// Scrolls the element into view
+
+func (e *SVGAElement) DATASTAR_SCROLL_INTO_VIEWSet(b bool) *SVGAElement {
+	key := "data-scroll-into-view"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *SVGAElement) DATASTAR_SCROLL_INTO_VIEW() *SVGAElement {
+	return e.DATASTAR_SCROLL_INTO_VIEWSet(true)
+}
+
+// Setup the ViewTransitionAPI for the element
+
+func (e *SVGAElement) DATASTAR_VIEW_TRANSITION(s string) *SVGAElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-view-transition"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SVGAElement) IfDATASTAR_VIEW_TRANSITION(condition bool, s string) *SVGAElement {
+	if condition {
+		e.DATASTAR_VIEW_TRANSITION(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_VIEW_TRANSITION from the element.
+func (e *SVGAElement) DATASTAR_VIEW_TRANSITIONRemove() *SVGAElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-view-transition")
 	return e
 }

@@ -6,7 +6,9 @@ package elements
 import (
 	"fmt"
 
+	"github.com/goccy/go-json"
 	"github.com/igrmk/treemap/v2"
+	"github.com/samber/lo"
 )
 
 // The HTML <datalist> element contains a set of <option> elements that represent
@@ -147,7 +149,7 @@ func (e *DATALISTElement) IfACCESSKEY(condition bool, r rune) *DATALISTElement {
 	return e
 }
 
-// Remove the attribute accesskey from the element.
+// Remove the attribute ACCESSKEY from the element.
 func (e *DATALISTElement) ACCESSKEYRemove() *DATALISTElement {
 	if e.StringAttributes == nil {
 		return e
@@ -195,7 +197,7 @@ const (
 	DatalistAutocapitalize_characters DatalistAutocapitalizeChoice = "characters"
 )
 
-// Remove the attribute autocapitalize from the element.
+// Remove the attribute AUTOCAPITALIZE from the element.
 func (e *DATALISTElement) AUTOCAPITALIZERemove(c DatalistAutocapitalizeChoice) *DATALISTElement {
 	if e.StringAttributes == nil {
 		return e
@@ -236,7 +238,7 @@ func (e *DATALISTElement) IfAUTOFOCUS(condition bool) *DATALISTElement {
 	return e
 }
 
-// Set the attribute autofocus to the value b explicitly.
+// Set the attribute AUTOFOCUS to the value b explicitly.
 func (e *DATALISTElement) AUTOFOCUSSet(b bool) *DATALISTElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
@@ -252,7 +254,7 @@ func (e *DATALISTElement) IfSetAUTOFOCUS(condition bool, b bool) *DATALISTElemen
 	return e
 }
 
-// Remove the attribute autofocus from the element.
+// Remove the attribute AUTOFOCUS from the element.
 func (e *DATALISTElement) AUTOFOCUSRemove(b bool) *DATALISTElement {
 	if e.BoolAttributes == nil {
 		return e
@@ -286,7 +288,7 @@ func (e *DATALISTElement) IfCLASS(condition bool, s ...string) *DATALISTElement 
 	return e
 }
 
-// Remove the attribute class from the element.
+// Remove the attribute CLASS from the element.
 func (e *DATALISTElement) CLASSRemove(s ...string) *DATALISTElement {
 	if e.DelimitedStrings == nil {
 		return e
@@ -324,7 +326,7 @@ const (
 	DatalistContenteditable_plaintext_only DatalistContenteditableChoice = "plaintext-only"
 )
 
-// Remove the attribute contenteditable from the element.
+// Remove the attribute CONTENTEDITABLE from the element.
 func (e *DATALISTElement) CONTENTEDITABLERemove(c DatalistContenteditableChoice) *DATALISTElement {
 	if e.StringAttributes == nil {
 		return e
@@ -372,7 +374,7 @@ const (
 	DatalistDir_auto DatalistDirChoice = "auto"
 )
 
-// Remove the attribute dir from the element.
+// Remove the attribute DIR from the element.
 func (e *DATALISTElement) DIRRemove(c DatalistDirChoice) *DATALISTElement {
 	if e.StringAttributes == nil {
 		return e
@@ -409,7 +411,7 @@ const (
 	DatalistDraggable_auto DatalistDraggableChoice = "auto"
 )
 
-// Remove the attribute draggable from the element.
+// Remove the attribute DRAGGABLE from the element.
 func (e *DATALISTElement) DRAGGABLERemove(c DatalistDraggableChoice) *DATALISTElement {
 	if e.StringAttributes == nil {
 		return e
@@ -449,7 +451,7 @@ const (
 	DatalistEnterkeyhint_send DatalistEnterkeyhintChoice = "send"
 )
 
-// Remove the attribute enterkeyhint from the element.
+// Remove the attribute ENTERKEYHINT from the element.
 func (e *DATALISTElement) ENTERKEYHINTRemove(c DatalistEnterkeyhintChoice) *DATALISTElement {
 	if e.StringAttributes == nil {
 		return e
@@ -498,7 +500,7 @@ func (e *DATALISTElement) IfEXPORTPARTS(condition bool, s ...string) *DATALISTEl
 	return e
 }
 
-// Remove the attribute exportparts from the element.
+// Remove the attribute EXPORTPARTS from the element.
 func (e *DATALISTElement) EXPORTPARTSRemove(s ...string) *DATALISTElement {
 	if e.DelimitedStrings == nil {
 		return e
@@ -552,7 +554,7 @@ const (
 	DatalistHidden_until_found DatalistHiddenChoice = "until-found"
 )
 
-// Remove the attribute hidden from the element.
+// Remove the attribute HIDDEN from the element.
 func (e *DATALISTElement) HIDDENRemove(c DatalistHiddenChoice) *DATALISTElement {
 	if e.StringAttributes == nil {
 		return e
@@ -580,7 +582,7 @@ func (e *DATALISTElement) IfID(condition bool, s string) *DATALISTElement {
 	return e
 }
 
-// Remove the attribute id from the element.
+// Remove the attribute ID from the element.
 func (e *DATALISTElement) IDRemove(s string) *DATALISTElement {
 	if e.StringAttributes == nil {
 		return e
@@ -613,7 +615,7 @@ func (e *DATALISTElement) IfINERT(condition bool) *DATALISTElement {
 	return e
 }
 
-// Set the attribute inert to the value b explicitly.
+// Set the attribute INERT to the value b explicitly.
 func (e *DATALISTElement) INERTSet(b bool) *DATALISTElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
@@ -629,7 +631,7 @@ func (e *DATALISTElement) IfSetINERT(condition bool, b bool) *DATALISTElement {
 	return e
 }
 
-// Remove the attribute inert from the element.
+// Remove the attribute INERT from the element.
 func (e *DATALISTElement) INERTRemove(b bool) *DATALISTElement {
 	if e.BoolAttributes == nil {
 		return e
@@ -698,7 +700,7 @@ const (
 	DatalistInputmode_url DatalistInputmodeChoice = "url"
 )
 
-// Remove the attribute inputmode from the element.
+// Remove the attribute INPUTMODE from the element.
 func (e *DATALISTElement) INPUTMODERemove(c DatalistInputmodeChoice) *DATALISTElement {
 	if e.StringAttributes == nil {
 		return e
@@ -728,7 +730,7 @@ func (e *DATALISTElement) IfIS(condition bool, s string) *DATALISTElement {
 	return e
 }
 
-// Remove the attribute is from the element.
+// Remove the attribute IS from the element.
 func (e *DATALISTElement) ISRemove(s string) *DATALISTElement {
 	if e.StringAttributes == nil {
 		return e
@@ -765,7 +767,7 @@ func (e *DATALISTElement) IfITEMID(condition bool, s string) *DATALISTElement {
 	return e
 }
 
-// Remove the attribute itemid from the element.
+// Remove the attribute ITEMID from the element.
 func (e *DATALISTElement) ITEMIDRemove(s string) *DATALISTElement {
 	if e.StringAttributes == nil {
 		return e
@@ -797,7 +799,7 @@ func (e *DATALISTElement) IfITEMPROP(condition bool, s string) *DATALISTElement 
 	return e
 }
 
-// Remove the attribute itemprop from the element.
+// Remove the attribute ITEMPROP from the element.
 func (e *DATALISTElement) ITEMPROPRemove(s string) *DATALISTElement {
 	if e.StringAttributes == nil {
 		return e
@@ -826,7 +828,7 @@ func (e *DATALISTElement) IfITEMREF(condition bool, s string) *DATALISTElement {
 	return e
 }
 
-// Remove the attribute itemref from the element.
+// Remove the attribute ITEMREF from the element.
 func (e *DATALISTElement) ITEMREFRemove(s string) *DATALISTElement {
 	if e.StringAttributes == nil {
 		return e
@@ -855,7 +857,7 @@ func (e *DATALISTElement) IfITEMSCOPE(condition bool) *DATALISTElement {
 	return e
 }
 
-// Set the attribute itemscope to the value b explicitly.
+// Set the attribute ITEMSCOPE to the value b explicitly.
 func (e *DATALISTElement) ITEMSCOPESet(b bool) *DATALISTElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
@@ -871,7 +873,7 @@ func (e *DATALISTElement) IfSetITEMSCOPE(condition bool, b bool) *DATALISTElemen
 	return e
 }
 
-// Remove the attribute itemscope from the element.
+// Remove the attribute ITEMSCOPE from the element.
 func (e *DATALISTElement) ITEMSCOPERemove(b bool) *DATALISTElement {
 	if e.BoolAttributes == nil {
 		return e
@@ -903,7 +905,7 @@ func (e *DATALISTElement) IfITEMTYPE(condition bool, s string) *DATALISTElement 
 	return e
 }
 
-// Remove the attribute itemtype from the element.
+// Remove the attribute ITEMTYPE from the element.
 func (e *DATALISTElement) ITEMTYPERemove(s string) *DATALISTElement {
 	if e.StringAttributes == nil {
 		return e
@@ -933,7 +935,7 @@ func (e *DATALISTElement) IfLANG(condition bool, s string) *DATALISTElement {
 	return e
 }
 
-// Remove the attribute lang from the element.
+// Remove the attribute LANG from the element.
 func (e *DATALISTElement) LANGRemove(s string) *DATALISTElement {
 	if e.StringAttributes == nil {
 		return e
@@ -961,7 +963,7 @@ func (e *DATALISTElement) IfNONCE(condition bool, s string) *DATALISTElement {
 	return e
 }
 
-// Remove the attribute nonce from the element.
+// Remove the attribute NONCE from the element.
 func (e *DATALISTElement) NONCERemove(s string) *DATALISTElement {
 	if e.StringAttributes == nil {
 		return e
@@ -994,7 +996,7 @@ func (e *DATALISTElement) IfPART(condition bool, s ...string) *DATALISTElement {
 	return e
 }
 
-// Remove the attribute part from the element.
+// Remove the attribute PART from the element.
 func (e *DATALISTElement) PARTRemove(s ...string) *DATALISTElement {
 	if e.DelimitedStrings == nil {
 		return e
@@ -1040,7 +1042,7 @@ const (
 	DatalistPopver_manual DatalistPopverChoice = "manual"
 )
 
-// Remove the attribute popver from the element.
+// Remove the attribute POPVER from the element.
 func (e *DATALISTElement) POPVERRemove(c DatalistPopverChoice) *DATALISTElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1068,7 +1070,7 @@ func (e *DATALISTElement) IfSLOT(condition bool, s string) *DATALISTElement {
 	return e
 }
 
-// Remove the attribute slot from the element.
+// Remove the attribute SLOT from the element.
 func (e *DATALISTElement) SLOTRemove(s string) *DATALISTElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1110,7 +1112,7 @@ const (
 	DatalistSpellcheck_false DatalistSpellcheckChoice = "false"
 )
 
-// Remove the attribute spellcheck from the element.
+// Remove the attribute SPELLCHECK from the element.
 func (e *DATALISTElement) SPELLCHECKRemove(c DatalistSpellcheckChoice) *DATALISTElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1197,7 +1199,7 @@ func (e *DATALISTElement) IfSTYLEPairs(condition bool, pairs ...string) *DATALIS
 	return e
 }
 
-// Remove the attribute style from the element.
+// Remove the attribute STYLE from the element.
 func (e *DATALISTElement) STYLERemove(keys ...string) *DATALISTElement {
 	if e.KVStrings == nil {
 		return e
@@ -1241,7 +1243,7 @@ func (e *DATALISTElement) IfTABINDEX(condition bool, i int) *DATALISTElement {
 	return e
 }
 
-// Remove the attribute tabindex from the element.
+// Remove the attribute TABINDEX from the element.
 func (e *DATALISTElement) TABINDEXRemove(i int) *DATALISTElement {
 	if e.IntAttributes == nil {
 		return e
@@ -1286,7 +1288,7 @@ func (e *DATALISTElement) IfTITLE(condition bool, s string) *DATALISTElement {
 	return e
 }
 
-// Remove the attribute title from the element.
+// Remove the attribute TITLE from the element.
 func (e *DATALISTElement) TITLERemove(s string) *DATALISTElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1318,11 +1320,351 @@ const (
 	DatalistTranslate_no DatalistTranslateChoice = "no"
 )
 
-// Remove the attribute translate from the element.
+// Remove the attribute TRANSLATE from the element.
 func (e *DATALISTElement) TRANSLATERemove(c DatalistTranslateChoice) *DATALISTElement {
 	if e.StringAttributes == nil {
 		return e
 	}
 	e.StringAttributes.Del("translate")
+	return e
+}
+
+// Merges the store with the given object
+
+func (e *DATALISTElement) DATASTAR_MERGE_STORE(v any) *DATALISTElement {
+	if e.CustomDataAttributes == nil {
+		e.CustomDataAttributes = treemap.New[string, string]()
+	}
+	b, err := json.Marshal(v)
+	if err != nil {
+		panic(err)
+	}
+	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	return e
+}
+
+// Sets the reference of the element
+
+func (e *DATALISTElement) DATASTAR_REF(s string) *DATALISTElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-ref"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *DATALISTElement) IfDATASTAR_REF(condition bool, s string) *DATALISTElement {
+	if condition {
+		e.DATASTAR_REF(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_REF from the element.
+func (e *DATALISTElement) DATASTAR_REFRemove() *DATALISTElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-ref")
+	return e
+}
+
+// Sets the value of the element
+
+func (e *DATALISTElement) DATASTAR_BIND(s string) *DATALISTElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-bind"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *DATALISTElement) IfDATASTAR_BIND(condition bool, s string) *DATALISTElement {
+	if condition {
+		e.DATASTAR_BIND(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_BIND from the element.
+func (e *DATALISTElement) DATASTAR_BINDRemove() *DATALISTElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-bind")
+	return e
+}
+
+// Sets the value of the element
+
+func (e *DATALISTElement) DATASTAR_MODEL(s string) *DATALISTElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-model"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *DATALISTElement) IfDATASTAR_MODEL(condition bool, s string) *DATALISTElement {
+	if condition {
+		e.DATASTAR_MODEL(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_MODEL from the element.
+func (e *DATALISTElement) DATASTAR_MODELRemove() *DATALISTElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-model")
+	return e
+}
+
+// Sets the textContent of the element
+
+func (e *DATALISTElement) DATASTAR_TEXT(s string) *DATALISTElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-text"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *DATALISTElement) IfDATASTAR_TEXT(condition bool, s string) *DATALISTElement {
+	if condition {
+		e.DATASTAR_TEXT(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_TEXT from the element.
+func (e *DATALISTElement) DATASTAR_TEXTRemove() *DATALISTElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-text")
+	return e
+}
+
+// Sets the event handler of the element
+
+type DatalistDataOnMod customDataKeyModifier
+
+// Debounces the event handler
+func DatalistDataOnModDebounce(
+	s string,
+) DatalistDataOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce_%sms", s)
+	}
+}
+
+// Throttles the event handler
+func DatalistDataOnModThrottle(
+	s string,
+) DatalistDataOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle_%sms", s)
+	}
+}
+
+func (e *DATALISTElement) DATASTAR_ON(s string, modifiers ...DatalistDataOnMod) *DATALISTElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	customMods := lo.Map(modifiers, func(m DatalistDataOnMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key := customDataKey("data-on", customMods...)
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *DATALISTElement) IfDATASTAR_ON(condition bool, s string, modifiers ...DatalistDataOnMod) *DATALISTElement {
+	if condition {
+		e.DATASTAR_ON(s, modifiers...)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_ON from the element.
+func (e *DATALISTElement) DATASTAR_ONRemove() *DATALISTElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-on")
+	return e
+}
+
+// Sets the focus of the element
+
+func (e *DATALISTElement) DATASTAR_FOCUSSet(b bool) *DATALISTElement {
+	key := "data-focus"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *DATALISTElement) DATASTAR_FOCUS() *DATALISTElement {
+	return e.DATASTAR_FOCUSSet(true)
+}
+
+// Sets the header of for fetch requests
+
+func (e *DATALISTElement) DATASTAR_HEADER(s string) *DATALISTElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-header"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *DATALISTElement) IfDATASTAR_HEADER(condition bool, s string) *DATALISTElement {
+	if condition {
+		e.DATASTAR_HEADER(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_HEADER from the element.
+func (e *DATALISTElement) DATASTAR_HEADERRemove() *DATALISTElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-header")
+	return e
+}
+
+// Sets the URL for fetch requests
+
+func (e *DATALISTElement) DATASTAR_FETCH_URL(s string) *DATALISTElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-fetch-url"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *DATALISTElement) IfDATASTAR_FETCH_URL(condition bool, s string) *DATALISTElement {
+	if condition {
+		e.DATASTAR_FETCH_URL(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_FETCH_URL from the element.
+func (e *DATALISTElement) DATASTAR_FETCH_URLRemove() *DATALISTElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-fetch-url")
+	return e
+}
+
+// Sets the indicator selector for fetch requests
+
+func (e *DATALISTElement) DATASTAR_FETCH_INDICATOR(s string) *DATALISTElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "DatastarFetchIndicator"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *DATALISTElement) IfDATASTAR_FETCH_INDICATOR(condition bool, s string) *DATALISTElement {
+	if condition {
+		e.DATASTAR_FETCH_INDICATOR(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_FETCH_INDICATOR from the element.
+func (e *DATALISTElement) DATASTAR_FETCH_INDICATORRemove() *DATALISTElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("DatastarFetchIndicator")
+	return e
+}
+
+// Sets the visibility of the element
+
+func (e *DATALISTElement) DATASTAR_SHOWSet(b bool) *DATALISTElement {
+	key := "data-show"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *DATALISTElement) DATASTAR_SHOW() *DATALISTElement {
+	return e.DATASTAR_SHOWSet(true)
+}
+
+// Triggers the callback when the element intersects the viewport
+
+func (e *DATALISTElement) DATASTAR_INTERSECTSSet(b bool) *DATALISTElement {
+	key := "data-intersects"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *DATALISTElement) DATASTAR_INTERSECTS() *DATALISTElement {
+	return e.DATASTAR_INTERSECTSSet(true)
+}
+
+// Teleports the element to the given selector
+
+func (e *DATALISTElement) DATASTAR_TELEPORTSet(b bool) *DATALISTElement {
+	key := "data-teleport"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *DATALISTElement) DATASTAR_TELEPORT() *DATALISTElement {
+	return e.DATASTAR_TELEPORTSet(true)
+}
+
+// Scrolls the element into view
+
+func (e *DATALISTElement) DATASTAR_SCROLL_INTO_VIEWSet(b bool) *DATALISTElement {
+	key := "data-scroll-into-view"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *DATALISTElement) DATASTAR_SCROLL_INTO_VIEW() *DATALISTElement {
+	return e.DATASTAR_SCROLL_INTO_VIEWSet(true)
+}
+
+// Setup the ViewTransitionAPI for the element
+
+func (e *DATALISTElement) DATASTAR_VIEW_TRANSITION(s string) *DATALISTElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-view-transition"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *DATALISTElement) IfDATASTAR_VIEW_TRANSITION(condition bool, s string) *DATALISTElement {
+	if condition {
+		e.DATASTAR_VIEW_TRANSITION(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_VIEW_TRANSITION from the element.
+func (e *DATALISTElement) DATASTAR_VIEW_TRANSITIONRemove() *DATALISTElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-view-transition")
 	return e
 }

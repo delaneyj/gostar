@@ -4,6 +4,7 @@ go 1.21.5
 
 require (
 	github.com/delaneyj/toolbelt v0.2.0
+	github.com/goccy/go-json v0.10.2
 	github.com/samber/lo v1.38.1
 	github.com/stretchr/testify v1.8.4
 	github.com/valyala/bytebufferpool v1.0.0

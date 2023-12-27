@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"html"
 	"io"
-
+	"strings"
 	"github.com/igrmk/treemap/v2"
 	"github.com/valyala/bytebufferpool"
 	"golang.org/x/exp/constraints"
@@ -173,6 +173,21 @@ func (e *Element) Render(w io.Writer) error {
 	return nil
 }
 
+type customDataKeyModifier func() string
+func customDataKey(key string, modifiers ...customDataKeyModifier) string {
+	sb := strings.Builder{}
+	sb.WriteString("data-")
+	sb.WriteString(key)
+	for i, m := range modifiers {
+		sb.WriteString(m())
+		isLast := i == len(modifiers) - 1
+		if !isLast {
+			sb.WriteString(".")
+		}
+	}
+	return sb.String()
+}
+
 type DelimitedBuilder[T constraints.Ordered] struct {
 	Delimiter string
 	Values    *treemap.TreeMap[T, struct{}]
@@ -273,6 +288,10 @@ func Text(text string) *TextContent {
 	return (*TextContent)(&text)
 }
 
+func TextF(format string, args ...interface{}) *TextContent {
+	return Text(fmt.Sprintf(format, args...))
+}
+
 type EscapedContent string
 
 func (ec *EscapedContent) Render(w io.Writer) error {
@@ -334,4 +353,8 @@ func NewElement(tag string, children ...ElementRenderer) *Element {
 		Tag:         []byte(tag),
 		Descendants: children,
 	}
+}
+
+func Error(err error) ElementRenderer {
+	return Text(err.Error())
 }

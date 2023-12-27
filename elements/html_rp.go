@@ -6,7 +6,9 @@ package elements
 import (
 	"fmt"
 
+	"github.com/goccy/go-json"
 	"github.com/igrmk/treemap/v2"
+	"github.com/samber/lo"
 )
 
 // The HTML <rp> element is used to provide fall-back parentheses for browsers
@@ -146,7 +148,7 @@ func (e *RPElement) IfACCESSKEY(condition bool, r rune) *RPElement {
 	return e
 }
 
-// Remove the attribute accesskey from the element.
+// Remove the attribute ACCESSKEY from the element.
 func (e *RPElement) ACCESSKEYRemove() *RPElement {
 	if e.StringAttributes == nil {
 		return e
@@ -194,7 +196,7 @@ const (
 	RpAutocapitalize_characters RpAutocapitalizeChoice = "characters"
 )
 
-// Remove the attribute autocapitalize from the element.
+// Remove the attribute AUTOCAPITALIZE from the element.
 func (e *RPElement) AUTOCAPITALIZERemove(c RpAutocapitalizeChoice) *RPElement {
 	if e.StringAttributes == nil {
 		return e
@@ -235,7 +237,7 @@ func (e *RPElement) IfAUTOFOCUS(condition bool) *RPElement {
 	return e
 }
 
-// Set the attribute autofocus to the value b explicitly.
+// Set the attribute AUTOFOCUS to the value b explicitly.
 func (e *RPElement) AUTOFOCUSSet(b bool) *RPElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
@@ -251,7 +253,7 @@ func (e *RPElement) IfSetAUTOFOCUS(condition bool, b bool) *RPElement {
 	return e
 }
 
-// Remove the attribute autofocus from the element.
+// Remove the attribute AUTOFOCUS from the element.
 func (e *RPElement) AUTOFOCUSRemove(b bool) *RPElement {
 	if e.BoolAttributes == nil {
 		return e
@@ -285,7 +287,7 @@ func (e *RPElement) IfCLASS(condition bool, s ...string) *RPElement {
 	return e
 }
 
-// Remove the attribute class from the element.
+// Remove the attribute CLASS from the element.
 func (e *RPElement) CLASSRemove(s ...string) *RPElement {
 	if e.DelimitedStrings == nil {
 		return e
@@ -323,7 +325,7 @@ const (
 	RpContenteditable_plaintext_only RpContenteditableChoice = "plaintext-only"
 )
 
-// Remove the attribute contenteditable from the element.
+// Remove the attribute CONTENTEDITABLE from the element.
 func (e *RPElement) CONTENTEDITABLERemove(c RpContenteditableChoice) *RPElement {
 	if e.StringAttributes == nil {
 		return e
@@ -371,7 +373,7 @@ const (
 	RpDir_auto RpDirChoice = "auto"
 )
 
-// Remove the attribute dir from the element.
+// Remove the attribute DIR from the element.
 func (e *RPElement) DIRRemove(c RpDirChoice) *RPElement {
 	if e.StringAttributes == nil {
 		return e
@@ -408,7 +410,7 @@ const (
 	RpDraggable_auto RpDraggableChoice = "auto"
 )
 
-// Remove the attribute draggable from the element.
+// Remove the attribute DRAGGABLE from the element.
 func (e *RPElement) DRAGGABLERemove(c RpDraggableChoice) *RPElement {
 	if e.StringAttributes == nil {
 		return e
@@ -448,7 +450,7 @@ const (
 	RpEnterkeyhint_send RpEnterkeyhintChoice = "send"
 )
 
-// Remove the attribute enterkeyhint from the element.
+// Remove the attribute ENTERKEYHINT from the element.
 func (e *RPElement) ENTERKEYHINTRemove(c RpEnterkeyhintChoice) *RPElement {
 	if e.StringAttributes == nil {
 		return e
@@ -497,7 +499,7 @@ func (e *RPElement) IfEXPORTPARTS(condition bool, s ...string) *RPElement {
 	return e
 }
 
-// Remove the attribute exportparts from the element.
+// Remove the attribute EXPORTPARTS from the element.
 func (e *RPElement) EXPORTPARTSRemove(s ...string) *RPElement {
 	if e.DelimitedStrings == nil {
 		return e
@@ -551,7 +553,7 @@ const (
 	RpHidden_until_found RpHiddenChoice = "until-found"
 )
 
-// Remove the attribute hidden from the element.
+// Remove the attribute HIDDEN from the element.
 func (e *RPElement) HIDDENRemove(c RpHiddenChoice) *RPElement {
 	if e.StringAttributes == nil {
 		return e
@@ -579,7 +581,7 @@ func (e *RPElement) IfID(condition bool, s string) *RPElement {
 	return e
 }
 
-// Remove the attribute id from the element.
+// Remove the attribute ID from the element.
 func (e *RPElement) IDRemove(s string) *RPElement {
 	if e.StringAttributes == nil {
 		return e
@@ -612,7 +614,7 @@ func (e *RPElement) IfINERT(condition bool) *RPElement {
 	return e
 }
 
-// Set the attribute inert to the value b explicitly.
+// Set the attribute INERT to the value b explicitly.
 func (e *RPElement) INERTSet(b bool) *RPElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
@@ -628,7 +630,7 @@ func (e *RPElement) IfSetINERT(condition bool, b bool) *RPElement {
 	return e
 }
 
-// Remove the attribute inert from the element.
+// Remove the attribute INERT from the element.
 func (e *RPElement) INERTRemove(b bool) *RPElement {
 	if e.BoolAttributes == nil {
 		return e
@@ -697,7 +699,7 @@ const (
 	RpInputmode_url RpInputmodeChoice = "url"
 )
 
-// Remove the attribute inputmode from the element.
+// Remove the attribute INPUTMODE from the element.
 func (e *RPElement) INPUTMODERemove(c RpInputmodeChoice) *RPElement {
 	if e.StringAttributes == nil {
 		return e
@@ -727,7 +729,7 @@ func (e *RPElement) IfIS(condition bool, s string) *RPElement {
 	return e
 }
 
-// Remove the attribute is from the element.
+// Remove the attribute IS from the element.
 func (e *RPElement) ISRemove(s string) *RPElement {
 	if e.StringAttributes == nil {
 		return e
@@ -764,7 +766,7 @@ func (e *RPElement) IfITEMID(condition bool, s string) *RPElement {
 	return e
 }
 
-// Remove the attribute itemid from the element.
+// Remove the attribute ITEMID from the element.
 func (e *RPElement) ITEMIDRemove(s string) *RPElement {
 	if e.StringAttributes == nil {
 		return e
@@ -796,7 +798,7 @@ func (e *RPElement) IfITEMPROP(condition bool, s string) *RPElement {
 	return e
 }
 
-// Remove the attribute itemprop from the element.
+// Remove the attribute ITEMPROP from the element.
 func (e *RPElement) ITEMPROPRemove(s string) *RPElement {
 	if e.StringAttributes == nil {
 		return e
@@ -825,7 +827,7 @@ func (e *RPElement) IfITEMREF(condition bool, s string) *RPElement {
 	return e
 }
 
-// Remove the attribute itemref from the element.
+// Remove the attribute ITEMREF from the element.
 func (e *RPElement) ITEMREFRemove(s string) *RPElement {
 	if e.StringAttributes == nil {
 		return e
@@ -854,7 +856,7 @@ func (e *RPElement) IfITEMSCOPE(condition bool) *RPElement {
 	return e
 }
 
-// Set the attribute itemscope to the value b explicitly.
+// Set the attribute ITEMSCOPE to the value b explicitly.
 func (e *RPElement) ITEMSCOPESet(b bool) *RPElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
@@ -870,7 +872,7 @@ func (e *RPElement) IfSetITEMSCOPE(condition bool, b bool) *RPElement {
 	return e
 }
 
-// Remove the attribute itemscope from the element.
+// Remove the attribute ITEMSCOPE from the element.
 func (e *RPElement) ITEMSCOPERemove(b bool) *RPElement {
 	if e.BoolAttributes == nil {
 		return e
@@ -902,7 +904,7 @@ func (e *RPElement) IfITEMTYPE(condition bool, s string) *RPElement {
 	return e
 }
 
-// Remove the attribute itemtype from the element.
+// Remove the attribute ITEMTYPE from the element.
 func (e *RPElement) ITEMTYPERemove(s string) *RPElement {
 	if e.StringAttributes == nil {
 		return e
@@ -932,7 +934,7 @@ func (e *RPElement) IfLANG(condition bool, s string) *RPElement {
 	return e
 }
 
-// Remove the attribute lang from the element.
+// Remove the attribute LANG from the element.
 func (e *RPElement) LANGRemove(s string) *RPElement {
 	if e.StringAttributes == nil {
 		return e
@@ -960,7 +962,7 @@ func (e *RPElement) IfNONCE(condition bool, s string) *RPElement {
 	return e
 }
 
-// Remove the attribute nonce from the element.
+// Remove the attribute NONCE from the element.
 func (e *RPElement) NONCERemove(s string) *RPElement {
 	if e.StringAttributes == nil {
 		return e
@@ -993,7 +995,7 @@ func (e *RPElement) IfPART(condition bool, s ...string) *RPElement {
 	return e
 }
 
-// Remove the attribute part from the element.
+// Remove the attribute PART from the element.
 func (e *RPElement) PARTRemove(s ...string) *RPElement {
 	if e.DelimitedStrings == nil {
 		return e
@@ -1039,7 +1041,7 @@ const (
 	RpPopver_manual RpPopverChoice = "manual"
 )
 
-// Remove the attribute popver from the element.
+// Remove the attribute POPVER from the element.
 func (e *RPElement) POPVERRemove(c RpPopverChoice) *RPElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1067,7 +1069,7 @@ func (e *RPElement) IfSLOT(condition bool, s string) *RPElement {
 	return e
 }
 
-// Remove the attribute slot from the element.
+// Remove the attribute SLOT from the element.
 func (e *RPElement) SLOTRemove(s string) *RPElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1109,7 +1111,7 @@ const (
 	RpSpellcheck_false RpSpellcheckChoice = "false"
 )
 
-// Remove the attribute spellcheck from the element.
+// Remove the attribute SPELLCHECK from the element.
 func (e *RPElement) SPELLCHECKRemove(c RpSpellcheckChoice) *RPElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1196,7 +1198,7 @@ func (e *RPElement) IfSTYLEPairs(condition bool, pairs ...string) *RPElement {
 	return e
 }
 
-// Remove the attribute style from the element.
+// Remove the attribute STYLE from the element.
 func (e *RPElement) STYLERemove(keys ...string) *RPElement {
 	if e.KVStrings == nil {
 		return e
@@ -1240,7 +1242,7 @@ func (e *RPElement) IfTABINDEX(condition bool, i int) *RPElement {
 	return e
 }
 
-// Remove the attribute tabindex from the element.
+// Remove the attribute TABINDEX from the element.
 func (e *RPElement) TABINDEXRemove(i int) *RPElement {
 	if e.IntAttributes == nil {
 		return e
@@ -1285,7 +1287,7 @@ func (e *RPElement) IfTITLE(condition bool, s string) *RPElement {
 	return e
 }
 
-// Remove the attribute title from the element.
+// Remove the attribute TITLE from the element.
 func (e *RPElement) TITLERemove(s string) *RPElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1317,11 +1319,351 @@ const (
 	RpTranslate_no RpTranslateChoice = "no"
 )
 
-// Remove the attribute translate from the element.
+// Remove the attribute TRANSLATE from the element.
 func (e *RPElement) TRANSLATERemove(c RpTranslateChoice) *RPElement {
 	if e.StringAttributes == nil {
 		return e
 	}
 	e.StringAttributes.Del("translate")
+	return e
+}
+
+// Merges the store with the given object
+
+func (e *RPElement) DATASTAR_MERGE_STORE(v any) *RPElement {
+	if e.CustomDataAttributes == nil {
+		e.CustomDataAttributes = treemap.New[string, string]()
+	}
+	b, err := json.Marshal(v)
+	if err != nil {
+		panic(err)
+	}
+	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	return e
+}
+
+// Sets the reference of the element
+
+func (e *RPElement) DATASTAR_REF(s string) *RPElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-ref"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *RPElement) IfDATASTAR_REF(condition bool, s string) *RPElement {
+	if condition {
+		e.DATASTAR_REF(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_REF from the element.
+func (e *RPElement) DATASTAR_REFRemove() *RPElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-ref")
+	return e
+}
+
+// Sets the value of the element
+
+func (e *RPElement) DATASTAR_BIND(s string) *RPElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-bind"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *RPElement) IfDATASTAR_BIND(condition bool, s string) *RPElement {
+	if condition {
+		e.DATASTAR_BIND(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_BIND from the element.
+func (e *RPElement) DATASTAR_BINDRemove() *RPElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-bind")
+	return e
+}
+
+// Sets the value of the element
+
+func (e *RPElement) DATASTAR_MODEL(s string) *RPElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-model"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *RPElement) IfDATASTAR_MODEL(condition bool, s string) *RPElement {
+	if condition {
+		e.DATASTAR_MODEL(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_MODEL from the element.
+func (e *RPElement) DATASTAR_MODELRemove() *RPElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-model")
+	return e
+}
+
+// Sets the textContent of the element
+
+func (e *RPElement) DATASTAR_TEXT(s string) *RPElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-text"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *RPElement) IfDATASTAR_TEXT(condition bool, s string) *RPElement {
+	if condition {
+		e.DATASTAR_TEXT(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_TEXT from the element.
+func (e *RPElement) DATASTAR_TEXTRemove() *RPElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-text")
+	return e
+}
+
+// Sets the event handler of the element
+
+type RpDataOnMod customDataKeyModifier
+
+// Debounces the event handler
+func RpDataOnModDebounce(
+	s string,
+) RpDataOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce_%sms", s)
+	}
+}
+
+// Throttles the event handler
+func RpDataOnModThrottle(
+	s string,
+) RpDataOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle_%sms", s)
+	}
+}
+
+func (e *RPElement) DATASTAR_ON(s string, modifiers ...RpDataOnMod) *RPElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	customMods := lo.Map(modifiers, func(m RpDataOnMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key := customDataKey("data-on", customMods...)
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *RPElement) IfDATASTAR_ON(condition bool, s string, modifiers ...RpDataOnMod) *RPElement {
+	if condition {
+		e.DATASTAR_ON(s, modifiers...)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_ON from the element.
+func (e *RPElement) DATASTAR_ONRemove() *RPElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-on")
+	return e
+}
+
+// Sets the focus of the element
+
+func (e *RPElement) DATASTAR_FOCUSSet(b bool) *RPElement {
+	key := "data-focus"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *RPElement) DATASTAR_FOCUS() *RPElement {
+	return e.DATASTAR_FOCUSSet(true)
+}
+
+// Sets the header of for fetch requests
+
+func (e *RPElement) DATASTAR_HEADER(s string) *RPElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-header"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *RPElement) IfDATASTAR_HEADER(condition bool, s string) *RPElement {
+	if condition {
+		e.DATASTAR_HEADER(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_HEADER from the element.
+func (e *RPElement) DATASTAR_HEADERRemove() *RPElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-header")
+	return e
+}
+
+// Sets the URL for fetch requests
+
+func (e *RPElement) DATASTAR_FETCH_URL(s string) *RPElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-fetch-url"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *RPElement) IfDATASTAR_FETCH_URL(condition bool, s string) *RPElement {
+	if condition {
+		e.DATASTAR_FETCH_URL(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_FETCH_URL from the element.
+func (e *RPElement) DATASTAR_FETCH_URLRemove() *RPElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-fetch-url")
+	return e
+}
+
+// Sets the indicator selector for fetch requests
+
+func (e *RPElement) DATASTAR_FETCH_INDICATOR(s string) *RPElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "DatastarFetchIndicator"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *RPElement) IfDATASTAR_FETCH_INDICATOR(condition bool, s string) *RPElement {
+	if condition {
+		e.DATASTAR_FETCH_INDICATOR(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_FETCH_INDICATOR from the element.
+func (e *RPElement) DATASTAR_FETCH_INDICATORRemove() *RPElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("DatastarFetchIndicator")
+	return e
+}
+
+// Sets the visibility of the element
+
+func (e *RPElement) DATASTAR_SHOWSet(b bool) *RPElement {
+	key := "data-show"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *RPElement) DATASTAR_SHOW() *RPElement {
+	return e.DATASTAR_SHOWSet(true)
+}
+
+// Triggers the callback when the element intersects the viewport
+
+func (e *RPElement) DATASTAR_INTERSECTSSet(b bool) *RPElement {
+	key := "data-intersects"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *RPElement) DATASTAR_INTERSECTS() *RPElement {
+	return e.DATASTAR_INTERSECTSSet(true)
+}
+
+// Teleports the element to the given selector
+
+func (e *RPElement) DATASTAR_TELEPORTSet(b bool) *RPElement {
+	key := "data-teleport"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *RPElement) DATASTAR_TELEPORT() *RPElement {
+	return e.DATASTAR_TELEPORTSet(true)
+}
+
+// Scrolls the element into view
+
+func (e *RPElement) DATASTAR_SCROLL_INTO_VIEWSet(b bool) *RPElement {
+	key := "data-scroll-into-view"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *RPElement) DATASTAR_SCROLL_INTO_VIEW() *RPElement {
+	return e.DATASTAR_SCROLL_INTO_VIEWSet(true)
+}
+
+// Setup the ViewTransitionAPI for the element
+
+func (e *RPElement) DATASTAR_VIEW_TRANSITION(s string) *RPElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-view-transition"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *RPElement) IfDATASTAR_VIEW_TRANSITION(condition bool, s string) *RPElement {
+	if condition {
+		e.DATASTAR_VIEW_TRANSITION(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_VIEW_TRANSITION from the element.
+func (e *RPElement) DATASTAR_VIEW_TRANSITIONRemove() *RPElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-view-transition")
 	return e
 }

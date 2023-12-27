@@ -6,7 +6,9 @@ package elements
 import (
 	"fmt"
 
+	"github.com/goccy/go-json"
 	"github.com/igrmk/treemap/v2"
+	"github.com/samber/lo"
 )
 
 // The <feDropShadow> filter primitive creates a drop shadow of the input image
@@ -171,7 +173,7 @@ func (e *SVGFEDROPSHADOWElement) IfDY(condition bool, f float64) *SVGFEDROPSHADO
 // Negative values are not allowed
 // A value of zero disables the effect of the given filter primitive (i.e., the
 // result is a transparent black image).
-func (e *SVGFEDROPSHADOWElement) STDDEVIATION(f float64) *SVGFEDROPSHADOWElement {
+func (e *SVGFEDROPSHADOWElement) STD_DEVIATION(f float64) *SVGFEDROPSHADOWElement {
 	if e.FloatAttributes == nil {
 		e.FloatAttributes = treemap.New[string, float64]()
 	}
@@ -179,9 +181,9 @@ func (e *SVGFEDROPSHADOWElement) STDDEVIATION(f float64) *SVGFEDROPSHADOWElement
 	return e
 }
 
-func (e *SVGFEDROPSHADOWElement) IfSTDDEVIATION(condition bool, f float64) *SVGFEDROPSHADOWElement {
+func (e *SVGFEDROPSHADOWElement) IfSTD_DEVIATION(condition bool, f float64) *SVGFEDROPSHADOWElement {
 	if condition {
-		e.STDDEVIATION(f)
+		e.STD_DEVIATION(f)
 	}
 	return e
 }
@@ -205,7 +207,7 @@ func (e *SVGFEDROPSHADOWElement) IfFLOOD_COLOR(condition bool, s string) *SVGFED
 	return e
 }
 
-// Remove the attribute flood-color from the element.
+// Remove the attribute FLOOD_COLOR from the element.
 func (e *SVGFEDROPSHADOWElement) FLOOD_COLORRemove(s string) *SVGFEDROPSHADOWElement {
 	if e.StringAttributes == nil {
 		return e
@@ -231,6 +233,31 @@ func (e *SVGFEDROPSHADOWElement) IfFLOOD_OPACITY(condition bool, f float64) *SVG
 	return e
 }
 
+// Specifies a unique id for an element
+func (e *SVGFEDROPSHADOWElement) ID(s string) *SVGFEDROPSHADOWElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	e.StringAttributes.Set("id", s)
+	return e
+}
+
+func (e *SVGFEDROPSHADOWElement) IfID(condition bool, s string) *SVGFEDROPSHADOWElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
+// Remove the attribute ID from the element.
+func (e *SVGFEDROPSHADOWElement) IDRemove(s string) *SVGFEDROPSHADOWElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("id")
+	return e
+}
+
 // Specifies one or more classnames for an element (refers to a class in a style
 // sheet)
 func (e *SVGFEDROPSHADOWElement) CLASS(s ...string) *SVGFEDROPSHADOWElement {
@@ -253,7 +280,7 @@ func (e *SVGFEDROPSHADOWElement) IfCLASS(condition bool, s ...string) *SVGFEDROP
 	return e
 }
 
-// Remove the attribute class from the element.
+// Remove the attribute CLASS from the element.
 func (e *SVGFEDROPSHADOWElement) CLASSRemove(s ...string) *SVGFEDROPSHADOWElement {
 	if e.DelimitedStrings == nil {
 		return e
@@ -263,31 +290,6 @@ func (e *SVGFEDROPSHADOWElement) CLASSRemove(s ...string) *SVGFEDROPSHADOWElemen
 		return e
 	}
 	ds.Remove(s...)
-	return e
-}
-
-// Specifies a unique id for an element
-func (e *SVGFEDROPSHADOWElement) ID(s string) *SVGFEDROPSHADOWElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	e.StringAttributes.Set("id", s)
-	return e
-}
-
-func (e *SVGFEDROPSHADOWElement) IfID(condition bool, s string) *SVGFEDROPSHADOWElement {
-	if condition {
-		e.ID(s)
-	}
-	return e
-}
-
-// Remove the attribute id from the element.
-func (e *SVGFEDROPSHADOWElement) IDRemove(s string) *SVGFEDROPSHADOWElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("id")
 	return e
 }
 
@@ -367,7 +369,7 @@ func (e *SVGFEDROPSHADOWElement) IfSTYLEPairs(condition bool, pairs ...string) *
 	return e
 }
 
-// Remove the attribute style from the element.
+// Remove the attribute STYLE from the element.
 func (e *SVGFEDROPSHADOWElement) STYLERemove(keys ...string) *SVGFEDROPSHADOWElement {
 	if e.KVStrings == nil {
 		return e
@@ -379,5 +381,345 @@ func (e *SVGFEDROPSHADOWElement) STYLERemove(keys ...string) *SVGFEDROPSHADOWEle
 	for _, k := range keys {
 		kv.Remove(k)
 	}
+	return e
+}
+
+// Merges the store with the given object
+
+func (e *SVGFEDROPSHADOWElement) DATASTAR_MERGE_STORE(v any) *SVGFEDROPSHADOWElement {
+	if e.CustomDataAttributes == nil {
+		e.CustomDataAttributes = treemap.New[string, string]()
+	}
+	b, err := json.Marshal(v)
+	if err != nil {
+		panic(err)
+	}
+	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	return e
+}
+
+// Sets the reference of the element
+
+func (e *SVGFEDROPSHADOWElement) DATASTAR_REF(s string) *SVGFEDROPSHADOWElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-ref"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SVGFEDROPSHADOWElement) IfDATASTAR_REF(condition bool, s string) *SVGFEDROPSHADOWElement {
+	if condition {
+		e.DATASTAR_REF(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_REF from the element.
+func (e *SVGFEDROPSHADOWElement) DATASTAR_REFRemove() *SVGFEDROPSHADOWElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-ref")
+	return e
+}
+
+// Sets the value of the element
+
+func (e *SVGFEDROPSHADOWElement) DATASTAR_BIND(s string) *SVGFEDROPSHADOWElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-bind"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SVGFEDROPSHADOWElement) IfDATASTAR_BIND(condition bool, s string) *SVGFEDROPSHADOWElement {
+	if condition {
+		e.DATASTAR_BIND(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_BIND from the element.
+func (e *SVGFEDROPSHADOWElement) DATASTAR_BINDRemove() *SVGFEDROPSHADOWElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-bind")
+	return e
+}
+
+// Sets the value of the element
+
+func (e *SVGFEDROPSHADOWElement) DATASTAR_MODEL(s string) *SVGFEDROPSHADOWElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-model"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SVGFEDROPSHADOWElement) IfDATASTAR_MODEL(condition bool, s string) *SVGFEDROPSHADOWElement {
+	if condition {
+		e.DATASTAR_MODEL(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_MODEL from the element.
+func (e *SVGFEDROPSHADOWElement) DATASTAR_MODELRemove() *SVGFEDROPSHADOWElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-model")
+	return e
+}
+
+// Sets the textContent of the element
+
+func (e *SVGFEDROPSHADOWElement) DATASTAR_TEXT(s string) *SVGFEDROPSHADOWElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-text"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SVGFEDROPSHADOWElement) IfDATASTAR_TEXT(condition bool, s string) *SVGFEDROPSHADOWElement {
+	if condition {
+		e.DATASTAR_TEXT(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_TEXT from the element.
+func (e *SVGFEDROPSHADOWElement) DATASTAR_TEXTRemove() *SVGFEDROPSHADOWElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-text")
+	return e
+}
+
+// Sets the event handler of the element
+
+type SVGFeDropShadowDataOnMod customDataKeyModifier
+
+// Debounces the event handler
+func SVGFeDropShadowDataOnModDebounce(
+	s string,
+) SVGFeDropShadowDataOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce_%sms", s)
+	}
+}
+
+// Throttles the event handler
+func SVGFeDropShadowDataOnModThrottle(
+	s string,
+) SVGFeDropShadowDataOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle_%sms", s)
+	}
+}
+
+func (e *SVGFEDROPSHADOWElement) DATASTAR_ON(s string, modifiers ...SVGFeDropShadowDataOnMod) *SVGFEDROPSHADOWElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	customMods := lo.Map(modifiers, func(m SVGFeDropShadowDataOnMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key := customDataKey("data-on", customMods...)
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SVGFEDROPSHADOWElement) IfDATASTAR_ON(condition bool, s string, modifiers ...SVGFeDropShadowDataOnMod) *SVGFEDROPSHADOWElement {
+	if condition {
+		e.DATASTAR_ON(s, modifiers...)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_ON from the element.
+func (e *SVGFEDROPSHADOWElement) DATASTAR_ONRemove() *SVGFEDROPSHADOWElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-on")
+	return e
+}
+
+// Sets the focus of the element
+
+func (e *SVGFEDROPSHADOWElement) DATASTAR_FOCUSSet(b bool) *SVGFEDROPSHADOWElement {
+	key := "data-focus"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *SVGFEDROPSHADOWElement) DATASTAR_FOCUS() *SVGFEDROPSHADOWElement {
+	return e.DATASTAR_FOCUSSet(true)
+}
+
+// Sets the header of for fetch requests
+
+func (e *SVGFEDROPSHADOWElement) DATASTAR_HEADER(s string) *SVGFEDROPSHADOWElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-header"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SVGFEDROPSHADOWElement) IfDATASTAR_HEADER(condition bool, s string) *SVGFEDROPSHADOWElement {
+	if condition {
+		e.DATASTAR_HEADER(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_HEADER from the element.
+func (e *SVGFEDROPSHADOWElement) DATASTAR_HEADERRemove() *SVGFEDROPSHADOWElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-header")
+	return e
+}
+
+// Sets the URL for fetch requests
+
+func (e *SVGFEDROPSHADOWElement) DATASTAR_FETCH_URL(s string) *SVGFEDROPSHADOWElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-fetch-url"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SVGFEDROPSHADOWElement) IfDATASTAR_FETCH_URL(condition bool, s string) *SVGFEDROPSHADOWElement {
+	if condition {
+		e.DATASTAR_FETCH_URL(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_FETCH_URL from the element.
+func (e *SVGFEDROPSHADOWElement) DATASTAR_FETCH_URLRemove() *SVGFEDROPSHADOWElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-fetch-url")
+	return e
+}
+
+// Sets the indicator selector for fetch requests
+
+func (e *SVGFEDROPSHADOWElement) DATASTAR_FETCH_INDICATOR(s string) *SVGFEDROPSHADOWElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "DatastarFetchIndicator"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SVGFEDROPSHADOWElement) IfDATASTAR_FETCH_INDICATOR(condition bool, s string) *SVGFEDROPSHADOWElement {
+	if condition {
+		e.DATASTAR_FETCH_INDICATOR(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_FETCH_INDICATOR from the element.
+func (e *SVGFEDROPSHADOWElement) DATASTAR_FETCH_INDICATORRemove() *SVGFEDROPSHADOWElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("DatastarFetchIndicator")
+	return e
+}
+
+// Sets the visibility of the element
+
+func (e *SVGFEDROPSHADOWElement) DATASTAR_SHOWSet(b bool) *SVGFEDROPSHADOWElement {
+	key := "data-show"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *SVGFEDROPSHADOWElement) DATASTAR_SHOW() *SVGFEDROPSHADOWElement {
+	return e.DATASTAR_SHOWSet(true)
+}
+
+// Triggers the callback when the element intersects the viewport
+
+func (e *SVGFEDROPSHADOWElement) DATASTAR_INTERSECTSSet(b bool) *SVGFEDROPSHADOWElement {
+	key := "data-intersects"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *SVGFEDROPSHADOWElement) DATASTAR_INTERSECTS() *SVGFEDROPSHADOWElement {
+	return e.DATASTAR_INTERSECTSSet(true)
+}
+
+// Teleports the element to the given selector
+
+func (e *SVGFEDROPSHADOWElement) DATASTAR_TELEPORTSet(b bool) *SVGFEDROPSHADOWElement {
+	key := "data-teleport"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *SVGFEDROPSHADOWElement) DATASTAR_TELEPORT() *SVGFEDROPSHADOWElement {
+	return e.DATASTAR_TELEPORTSet(true)
+}
+
+// Scrolls the element into view
+
+func (e *SVGFEDROPSHADOWElement) DATASTAR_SCROLL_INTO_VIEWSet(b bool) *SVGFEDROPSHADOWElement {
+	key := "data-scroll-into-view"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *SVGFEDROPSHADOWElement) DATASTAR_SCROLL_INTO_VIEW() *SVGFEDROPSHADOWElement {
+	return e.DATASTAR_SCROLL_INTO_VIEWSet(true)
+}
+
+// Setup the ViewTransitionAPI for the element
+
+func (e *SVGFEDROPSHADOWElement) DATASTAR_VIEW_TRANSITION(s string) *SVGFEDROPSHADOWElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-view-transition"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SVGFEDROPSHADOWElement) IfDATASTAR_VIEW_TRANSITION(condition bool, s string) *SVGFEDROPSHADOWElement {
+	if condition {
+		e.DATASTAR_VIEW_TRANSITION(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_VIEW_TRANSITION from the element.
+func (e *SVGFEDROPSHADOWElement) DATASTAR_VIEW_TRANSITIONRemove() *SVGFEDROPSHADOWElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-view-transition")
 	return e
 }

@@ -6,7 +6,9 @@ package elements
 import (
 	"fmt"
 
+	"github.com/goccy/go-json"
 	"github.com/igrmk/treemap/v2"
+	"github.com/samber/lo"
 )
 
 // The <animateMotion> SVG element is used to animate a transformation attribute
@@ -128,33 +130,117 @@ func (e *SVGANIMATEMOTIONElement) CustomDataRemove(key string) *SVGANIMATEMOTION
 	return e
 }
 
-// Defines when the animation should take place in terms of time fractions.
-func (e *SVGANIMATEMOTIONElement) KEYTIMES(s string) *SVGANIMATEMOTIONElement {
+// Controls whether or not the animation is cumulative.
+func (e *SVGANIMATEMOTIONElement) ACCUMULATE(c SVGAnimateMotionAccumulateChoice) *SVGANIMATEMOTIONElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
-	e.StringAttributes.Set("keyTimes", s)
+	e.StringAttributes.Set("accumulate", string(c))
 	return e
 }
 
-func (e *SVGANIMATEMOTIONElement) IfKEYTIMES(condition bool, s string) *SVGANIMATEMOTIONElement {
-	if condition {
-		e.KEYTIMES(s)
-	}
-	return e
-}
+type SVGAnimateMotionAccumulateChoice string
 
-// Remove the attribute keyTimes from the element.
-func (e *SVGANIMATEMOTIONElement) KEYTIMESRemove(s string) *SVGANIMATEMOTIONElement {
+const (
+	// The animation is not cumulative
+	// Each iteration starts over from the beginning.
+	SVGAnimateMotionAccumulate_none SVGAnimateMotionAccumulateChoice = "none"
+	// The animation is cumulative
+	// Each iteration the animation picks up where it left off in the previous
+	// iteration.
+	SVGAnimateMotionAccumulate_sum SVGAnimateMotionAccumulateChoice = "sum"
+)
+
+// Remove the attribute ACCUMULATE from the element.
+func (e *SVGANIMATEMOTIONElement) ACCUMULATERemove(c SVGAnimateMotionAccumulateChoice) *SVGANIMATEMOTIONElement {
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("keyTimes")
+	e.StringAttributes.Del("accumulate")
+	return e
+}
+
+// Controls whether or not the animation is additive.
+func (e *SVGANIMATEMOTIONElement) ADDITIVE(c SVGAnimateMotionAdditiveChoice) *SVGANIMATEMOTIONElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	e.StringAttributes.Set("additive", string(c))
+	return e
+}
+
+type SVGAnimateMotionAdditiveChoice string
+
+const (
+	// The animation is not additive
+	// The animation replaces the underlying value.
+	SVGAnimateMotionAdditive_replace SVGAnimateMotionAdditiveChoice = "replace"
+	// The animation is additive
+	// The animation adds to the underlying value.
+	SVGAnimateMotionAdditive_sum SVGAnimateMotionAdditiveChoice = "sum"
+)
+
+// Remove the attribute ADDITIVE from the element.
+func (e *SVGANIMATEMOTIONElement) ADDITIVERemove(c SVGAnimateMotionAdditiveChoice) *SVGANIMATEMOTIONElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("additive")
+	return e
+}
+
+// Defines when the animation should begin.
+func (e *SVGANIMATEMOTIONElement) BEGIN(s string) *SVGANIMATEMOTIONElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	e.StringAttributes.Set("begin", s)
+	return e
+}
+
+func (e *SVGANIMATEMOTIONElement) IfBEGIN(condition bool, s string) *SVGANIMATEMOTIONElement {
+	if condition {
+		e.BEGIN(s)
+	}
+	return e
+}
+
+// Remove the attribute BEGIN from the element.
+func (e *SVGANIMATEMOTIONElement) BEGINRemove(s string) *SVGANIMATEMOTIONElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("begin")
+	return e
+}
+
+// Defines a relative offset value for the animation.
+func (e *SVGANIMATEMOTIONElement) BY(s string) *SVGANIMATEMOTIONElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	e.StringAttributes.Set("by", s)
+	return e
+}
+
+func (e *SVGANIMATEMOTIONElement) IfBY(condition bool, s string) *SVGANIMATEMOTIONElement {
+	if condition {
+		e.BY(s)
+	}
+	return e
+}
+
+// Remove the attribute BY from the element.
+func (e *SVGANIMATEMOTIONElement) BYRemove(s string) *SVGANIMATEMOTIONElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("by")
 	return e
 }
 
 // Defines the pacing of the animation.
-func (e *SVGANIMATEMOTIONElement) CALCMODE(c SVGAnimateMotionCalcModeChoice) *SVGANIMATEMOTIONElement {
+func (e *SVGANIMATEMOTIONElement) CALC_MODE(c SVGAnimateMotionCalcModeChoice) *SVGANIMATEMOTIONElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
@@ -178,92 +264,12 @@ const (
 	SVGAnimateMotionCalcMode_spline SVGAnimateMotionCalcModeChoice = "spline"
 )
 
-// Remove the attribute calcMode from the element.
-func (e *SVGANIMATEMOTIONElement) CALCMODERemove(c SVGAnimateMotionCalcModeChoice) *SVGANIMATEMOTIONElement {
+// Remove the attribute CALC_MODE from the element.
+func (e *SVGANIMATEMOTIONElement) CALC_MODERemove(c SVGAnimateMotionCalcModeChoice) *SVGANIMATEMOTIONElement {
 	if e.StringAttributes == nil {
 		return e
 	}
 	e.StringAttributes.Del("calcMode")
-	return e
-}
-
-// Controls whether or not the animation is cumulative.
-func (e *SVGANIMATEMOTIONElement) ACCUMULATE(c SVGAnimateMotionAccumulateChoice) *SVGANIMATEMOTIONElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	e.StringAttributes.Set("accumulate", string(c))
-	return e
-}
-
-type SVGAnimateMotionAccumulateChoice string
-
-const (
-	// The animation is not cumulative
-	// Each iteration starts over from the beginning.
-	SVGAnimateMotionAccumulate_none SVGAnimateMotionAccumulateChoice = "none"
-	// The animation is cumulative
-	// Each iteration the animation picks up where it left off in the previous
-	// iteration.
-	SVGAnimateMotionAccumulate_sum SVGAnimateMotionAccumulateChoice = "sum"
-)
-
-// Remove the attribute accumulate from the element.
-func (e *SVGANIMATEMOTIONElement) ACCUMULATERemove(c SVGAnimateMotionAccumulateChoice) *SVGANIMATEMOTIONElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("accumulate")
-	return e
-}
-
-// Defines the minimum value allowed for the attribute.
-func (e *SVGANIMATEMOTIONElement) MIN(s string) *SVGANIMATEMOTIONElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	e.StringAttributes.Set("min", s)
-	return e
-}
-
-func (e *SVGANIMATEMOTIONElement) IfMIN(condition bool, s string) *SVGANIMATEMOTIONElement {
-	if condition {
-		e.MIN(s)
-	}
-	return e
-}
-
-// Remove the attribute min from the element.
-func (e *SVGANIMATEMOTIONElement) MINRemove(s string) *SVGANIMATEMOTIONElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("min")
-	return e
-}
-
-// Defines the maximum value allowed for the attribute.
-func (e *SVGANIMATEMOTIONElement) MAX(s string) *SVGANIMATEMOTIONElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	e.StringAttributes.Set("max", s)
-	return e
-}
-
-func (e *SVGANIMATEMOTIONElement) IfMAX(condition bool, s string) *SVGANIMATEMOTIONElement {
-	if condition {
-		e.MAX(s)
-	}
-	return e
-}
-
-// Remove the attribute max from the element.
-func (e *SVGANIMATEMOTIONElement) MAXRemove(s string) *SVGANIMATEMOTIONElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("max")
 	return e
 }
 
@@ -283,7 +289,7 @@ func (e *SVGANIMATEMOTIONElement) IfDUR(condition bool, s string) *SVGANIMATEMOT
 	return e
 }
 
-// Remove the attribute dur from the element.
+// Remove the attribute DUR from the element.
 func (e *SVGANIMATEMOTIONElement) DURRemove(s string) *SVGANIMATEMOTIONElement {
 	if e.StringAttributes == nil {
 		return e
@@ -308,7 +314,7 @@ func (e *SVGANIMATEMOTIONElement) IfEND(condition bool, s string) *SVGANIMATEMOT
 	return e
 }
 
-// Remove the attribute end from the element.
+// Remove the attribute END from the element.
 func (e *SVGANIMATEMOTIONElement) ENDRemove(s string) *SVGANIMATEMOTIONElement {
 	if e.StringAttributes == nil {
 		return e
@@ -335,7 +341,7 @@ const (
 	SVGAnimateMotionFill_remove SVGAnimateMotionFillChoice = "remove"
 )
 
-// Remove the attribute fill from the element.
+// Remove the attribute FILL from the element.
 func (e *SVGANIMATEMOTIONElement) FILLRemove(c SVGAnimateMotionFillChoice) *SVGANIMATEMOTIONElement {
 	if e.StringAttributes == nil {
 		return e
@@ -360,7 +366,7 @@ func (e *SVGANIMATEMOTIONElement) IfFROM(condition bool, s string) *SVGANIMATEMO
 	return e
 }
 
-// Remove the attribute from from the element.
+// Remove the attribute FROM from the element.
 func (e *SVGANIMATEMOTIONElement) FROMRemove(s string) *SVGANIMATEMOTIONElement {
 	if e.StringAttributes == nil {
 		return e
@@ -370,7 +376,7 @@ func (e *SVGANIMATEMOTIONElement) FROMRemove(s string) *SVGANIMATEMOTIONElement 
 }
 
 // Defines the values for a cubic Bézier function that controls interval pacing.
-func (e *SVGANIMATEMOTIONElement) KEYSPLINES(s string) *SVGANIMATEMOTIONElement {
+func (e *SVGANIMATEMOTIONElement) KEY_SPLINES(s string) *SVGANIMATEMOTIONElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
@@ -378,15 +384,15 @@ func (e *SVGANIMATEMOTIONElement) KEYSPLINES(s string) *SVGANIMATEMOTIONElement 
 	return e
 }
 
-func (e *SVGANIMATEMOTIONElement) IfKEYSPLINES(condition bool, s string) *SVGANIMATEMOTIONElement {
+func (e *SVGANIMATEMOTIONElement) IfKEY_SPLINES(condition bool, s string) *SVGANIMATEMOTIONElement {
 	if condition {
-		e.KEYSPLINES(s)
+		e.KEY_SPLINES(s)
 	}
 	return e
 }
 
-// Remove the attribute keySplines from the element.
-func (e *SVGANIMATEMOTIONElement) KEYSPLINESRemove(s string) *SVGANIMATEMOTIONElement {
+// Remove the attribute KEY_SPLINES from the element.
+func (e *SVGANIMATEMOTIONElement) KEY_SPLINESRemove(s string) *SVGANIMATEMOTIONElement {
 	if e.StringAttributes == nil {
 		return e
 	}
@@ -394,87 +400,83 @@ func (e *SVGANIMATEMOTIONElement) KEYSPLINESRemove(s string) *SVGANIMATEMOTIONEl
 	return e
 }
 
-// Defines when the animation should begin.
-func (e *SVGANIMATEMOTIONElement) BEGIN(s string) *SVGANIMATEMOTIONElement {
+// Defines when the animation should take place in terms of time fractions.
+func (e *SVGANIMATEMOTIONElement) KEY_TIMES(s string) *SVGANIMATEMOTIONElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
-	e.StringAttributes.Set("begin", s)
+	e.StringAttributes.Set("keyTimes", s)
 	return e
 }
 
-func (e *SVGANIMATEMOTIONElement) IfBEGIN(condition bool, s string) *SVGANIMATEMOTIONElement {
+func (e *SVGANIMATEMOTIONElement) IfKEY_TIMES(condition bool, s string) *SVGANIMATEMOTIONElement {
 	if condition {
-		e.BEGIN(s)
+		e.KEY_TIMES(s)
 	}
 	return e
 }
 
-// Remove the attribute begin from the element.
-func (e *SVGANIMATEMOTIONElement) BEGINRemove(s string) *SVGANIMATEMOTIONElement {
+// Remove the attribute KEY_TIMES from the element.
+func (e *SVGANIMATEMOTIONElement) KEY_TIMESRemove(s string) *SVGANIMATEMOTIONElement {
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("begin")
+	e.StringAttributes.Del("keyTimes")
 	return e
 }
 
-// Controls whether or not the animation is additive.
-func (e *SVGANIMATEMOTIONElement) ADDITIVE(c SVGAnimateMotionAdditiveChoice) *SVGANIMATEMOTIONElement {
+// Defines the maximum value allowed for the attribute.
+func (e *SVGANIMATEMOTIONElement) MAX(s string) *SVGANIMATEMOTIONElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
-	e.StringAttributes.Set("additive", string(c))
+	e.StringAttributes.Set("max", s)
 	return e
 }
 
-type SVGAnimateMotionAdditiveChoice string
-
-const (
-	// The animation is not additive
-	// The animation replaces the underlying value.
-	SVGAnimateMotionAdditive_replace SVGAnimateMotionAdditiveChoice = "replace"
-	// The animation is additive
-	// The animation adds to the underlying value.
-	SVGAnimateMotionAdditive_sum SVGAnimateMotionAdditiveChoice = "sum"
-)
-
-// Remove the attribute additive from the element.
-func (e *SVGANIMATEMOTIONElement) ADDITIVERemove(c SVGAnimateMotionAdditiveChoice) *SVGANIMATEMOTIONElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("additive")
-	return e
-}
-
-// Defines a relative offset value for the animation.
-func (e *SVGANIMATEMOTIONElement) BY(s string) *SVGANIMATEMOTIONElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	e.StringAttributes.Set("by", s)
-	return e
-}
-
-func (e *SVGANIMATEMOTIONElement) IfBY(condition bool, s string) *SVGANIMATEMOTIONElement {
+func (e *SVGANIMATEMOTIONElement) IfMAX(condition bool, s string) *SVGANIMATEMOTIONElement {
 	if condition {
-		e.BY(s)
+		e.MAX(s)
 	}
 	return e
 }
 
-// Remove the attribute by from the element.
-func (e *SVGANIMATEMOTIONElement) BYRemove(s string) *SVGANIMATEMOTIONElement {
+// Remove the attribute MAX from the element.
+func (e *SVGANIMATEMOTIONElement) MAXRemove(s string) *SVGANIMATEMOTIONElement {
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("by")
+	e.StringAttributes.Del("max")
+	return e
+}
+
+// Defines the minimum value allowed for the attribute.
+func (e *SVGANIMATEMOTIONElement) MIN(s string) *SVGANIMATEMOTIONElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	e.StringAttributes.Set("min", s)
+	return e
+}
+
+func (e *SVGANIMATEMOTIONElement) IfMIN(condition bool, s string) *SVGANIMATEMOTIONElement {
+	if condition {
+		e.MIN(s)
+	}
+	return e
+}
+
+// Remove the attribute MIN from the element.
+func (e *SVGANIMATEMOTIONElement) MINRemove(s string) *SVGANIMATEMOTIONElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("min")
 	return e
 }
 
 // Defines the number of times the animation should repeat.
-func (e *SVGANIMATEMOTIONElement) REPEATCOUNT(s string) *SVGANIMATEMOTIONElement {
+func (e *SVGANIMATEMOTIONElement) REPEAT_COUNT(s string) *SVGANIMATEMOTIONElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
@@ -482,15 +484,15 @@ func (e *SVGANIMATEMOTIONElement) REPEATCOUNT(s string) *SVGANIMATEMOTIONElement
 	return e
 }
 
-func (e *SVGANIMATEMOTIONElement) IfREPEATCOUNT(condition bool, s string) *SVGANIMATEMOTIONElement {
+func (e *SVGANIMATEMOTIONElement) IfREPEAT_COUNT(condition bool, s string) *SVGANIMATEMOTIONElement {
 	if condition {
-		e.REPEATCOUNT(s)
+		e.REPEAT_COUNT(s)
 	}
 	return e
 }
 
-// Remove the attribute repeatCount from the element.
-func (e *SVGANIMATEMOTIONElement) REPEATCOUNTRemove(s string) *SVGANIMATEMOTIONElement {
+// Remove the attribute REPEAT_COUNT from the element.
+func (e *SVGANIMATEMOTIONElement) REPEAT_COUNTRemove(s string) *SVGANIMATEMOTIONElement {
 	if e.StringAttributes == nil {
 		return e
 	}
@@ -499,7 +501,7 @@ func (e *SVGANIMATEMOTIONElement) REPEATCOUNTRemove(s string) *SVGANIMATEMOTIONE
 }
 
 // Defines the duration for repeating an animation.
-func (e *SVGANIMATEMOTIONElement) REPEATDUR(s string) *SVGANIMATEMOTIONElement {
+func (e *SVGANIMATEMOTIONElement) REPEAT_DUR(s string) *SVGANIMATEMOTIONElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
@@ -507,15 +509,15 @@ func (e *SVGANIMATEMOTIONElement) REPEATDUR(s string) *SVGANIMATEMOTIONElement {
 	return e
 }
 
-func (e *SVGANIMATEMOTIONElement) IfREPEATDUR(condition bool, s string) *SVGANIMATEMOTIONElement {
+func (e *SVGANIMATEMOTIONElement) IfREPEAT_DUR(condition bool, s string) *SVGANIMATEMOTIONElement {
 	if condition {
-		e.REPEATDUR(s)
+		e.REPEAT_DUR(s)
 	}
 	return e
 }
 
-// Remove the attribute repeatDur from the element.
-func (e *SVGANIMATEMOTIONElement) REPEATDURRemove(s string) *SVGANIMATEMOTIONElement {
+// Remove the attribute REPEAT_DUR from the element.
+func (e *SVGANIMATEMOTIONElement) REPEAT_DURRemove(s string) *SVGANIMATEMOTIONElement {
 	if e.StringAttributes == nil {
 		return e
 	}
@@ -544,7 +546,7 @@ const (
 	SVGAnimateMotionRestart_whenNotActive SVGAnimateMotionRestartChoice = "whenNotActive"
 )
 
-// Remove the attribute restart from the element.
+// Remove the attribute RESTART from the element.
 func (e *SVGANIMATEMOTIONElement) RESTARTRemove(c SVGAnimateMotionRestartChoice) *SVGANIMATEMOTIONElement {
 	if e.StringAttributes == nil {
 		return e
@@ -569,7 +571,7 @@ func (e *SVGANIMATEMOTIONElement) IfTO(condition bool, s string) *SVGANIMATEMOTI
 	return e
 }
 
-// Remove the attribute to from the element.
+// Remove the attribute TO from the element.
 func (e *SVGANIMATEMOTIONElement) TORemove(s string) *SVGANIMATEMOTIONElement {
 	if e.StringAttributes == nil {
 		return e
@@ -594,12 +596,37 @@ func (e *SVGANIMATEMOTIONElement) IfVALUES(condition bool, s string) *SVGANIMATE
 	return e
 }
 
-// Remove the attribute values from the element.
+// Remove the attribute VALUES from the element.
 func (e *SVGANIMATEMOTIONElement) VALUESRemove(s string) *SVGANIMATEMOTIONElement {
 	if e.StringAttributes == nil {
 		return e
 	}
 	e.StringAttributes.Del("values")
+	return e
+}
+
+// Specifies a unique id for an element
+func (e *SVGANIMATEMOTIONElement) ID(s string) *SVGANIMATEMOTIONElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	e.StringAttributes.Set("id", s)
+	return e
+}
+
+func (e *SVGANIMATEMOTIONElement) IfID(condition bool, s string) *SVGANIMATEMOTIONElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
+// Remove the attribute ID from the element.
+func (e *SVGANIMATEMOTIONElement) IDRemove(s string) *SVGANIMATEMOTIONElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("id")
 	return e
 }
 
@@ -625,7 +652,7 @@ func (e *SVGANIMATEMOTIONElement) IfCLASS(condition bool, s ...string) *SVGANIMA
 	return e
 }
 
-// Remove the attribute class from the element.
+// Remove the attribute CLASS from the element.
 func (e *SVGANIMATEMOTIONElement) CLASSRemove(s ...string) *SVGANIMATEMOTIONElement {
 	if e.DelimitedStrings == nil {
 		return e
@@ -635,31 +662,6 @@ func (e *SVGANIMATEMOTIONElement) CLASSRemove(s ...string) *SVGANIMATEMOTIONElem
 		return e
 	}
 	ds.Remove(s...)
-	return e
-}
-
-// Specifies a unique id for an element
-func (e *SVGANIMATEMOTIONElement) ID(s string) *SVGANIMATEMOTIONElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	e.StringAttributes.Set("id", s)
-	return e
-}
-
-func (e *SVGANIMATEMOTIONElement) IfID(condition bool, s string) *SVGANIMATEMOTIONElement {
-	if condition {
-		e.ID(s)
-	}
-	return e
-}
-
-// Remove the attribute id from the element.
-func (e *SVGANIMATEMOTIONElement) IDRemove(s string) *SVGANIMATEMOTIONElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("id")
 	return e
 }
 
@@ -739,7 +741,7 @@ func (e *SVGANIMATEMOTIONElement) IfSTYLEPairs(condition bool, pairs ...string) 
 	return e
 }
 
-// Remove the attribute style from the element.
+// Remove the attribute STYLE from the element.
 func (e *SVGANIMATEMOTIONElement) STYLERemove(keys ...string) *SVGANIMATEMOTIONElement {
 	if e.KVStrings == nil {
 		return e
@@ -751,5 +753,345 @@ func (e *SVGANIMATEMOTIONElement) STYLERemove(keys ...string) *SVGANIMATEMOTIONE
 	for _, k := range keys {
 		kv.Remove(k)
 	}
+	return e
+}
+
+// Merges the store with the given object
+
+func (e *SVGANIMATEMOTIONElement) DATASTAR_MERGE_STORE(v any) *SVGANIMATEMOTIONElement {
+	if e.CustomDataAttributes == nil {
+		e.CustomDataAttributes = treemap.New[string, string]()
+	}
+	b, err := json.Marshal(v)
+	if err != nil {
+		panic(err)
+	}
+	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	return e
+}
+
+// Sets the reference of the element
+
+func (e *SVGANIMATEMOTIONElement) DATASTAR_REF(s string) *SVGANIMATEMOTIONElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-ref"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SVGANIMATEMOTIONElement) IfDATASTAR_REF(condition bool, s string) *SVGANIMATEMOTIONElement {
+	if condition {
+		e.DATASTAR_REF(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_REF from the element.
+func (e *SVGANIMATEMOTIONElement) DATASTAR_REFRemove() *SVGANIMATEMOTIONElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-ref")
+	return e
+}
+
+// Sets the value of the element
+
+func (e *SVGANIMATEMOTIONElement) DATASTAR_BIND(s string) *SVGANIMATEMOTIONElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-bind"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SVGANIMATEMOTIONElement) IfDATASTAR_BIND(condition bool, s string) *SVGANIMATEMOTIONElement {
+	if condition {
+		e.DATASTAR_BIND(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_BIND from the element.
+func (e *SVGANIMATEMOTIONElement) DATASTAR_BINDRemove() *SVGANIMATEMOTIONElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-bind")
+	return e
+}
+
+// Sets the value of the element
+
+func (e *SVGANIMATEMOTIONElement) DATASTAR_MODEL(s string) *SVGANIMATEMOTIONElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-model"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SVGANIMATEMOTIONElement) IfDATASTAR_MODEL(condition bool, s string) *SVGANIMATEMOTIONElement {
+	if condition {
+		e.DATASTAR_MODEL(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_MODEL from the element.
+func (e *SVGANIMATEMOTIONElement) DATASTAR_MODELRemove() *SVGANIMATEMOTIONElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-model")
+	return e
+}
+
+// Sets the textContent of the element
+
+func (e *SVGANIMATEMOTIONElement) DATASTAR_TEXT(s string) *SVGANIMATEMOTIONElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-text"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SVGANIMATEMOTIONElement) IfDATASTAR_TEXT(condition bool, s string) *SVGANIMATEMOTIONElement {
+	if condition {
+		e.DATASTAR_TEXT(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_TEXT from the element.
+func (e *SVGANIMATEMOTIONElement) DATASTAR_TEXTRemove() *SVGANIMATEMOTIONElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-text")
+	return e
+}
+
+// Sets the event handler of the element
+
+type SVGAnimateMotionDataOnMod customDataKeyModifier
+
+// Debounces the event handler
+func SVGAnimateMotionDataOnModDebounce(
+	s string,
+) SVGAnimateMotionDataOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce_%sms", s)
+	}
+}
+
+// Throttles the event handler
+func SVGAnimateMotionDataOnModThrottle(
+	s string,
+) SVGAnimateMotionDataOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle_%sms", s)
+	}
+}
+
+func (e *SVGANIMATEMOTIONElement) DATASTAR_ON(s string, modifiers ...SVGAnimateMotionDataOnMod) *SVGANIMATEMOTIONElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	customMods := lo.Map(modifiers, func(m SVGAnimateMotionDataOnMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key := customDataKey("data-on", customMods...)
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SVGANIMATEMOTIONElement) IfDATASTAR_ON(condition bool, s string, modifiers ...SVGAnimateMotionDataOnMod) *SVGANIMATEMOTIONElement {
+	if condition {
+		e.DATASTAR_ON(s, modifiers...)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_ON from the element.
+func (e *SVGANIMATEMOTIONElement) DATASTAR_ONRemove() *SVGANIMATEMOTIONElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-on")
+	return e
+}
+
+// Sets the focus of the element
+
+func (e *SVGANIMATEMOTIONElement) DATASTAR_FOCUSSet(b bool) *SVGANIMATEMOTIONElement {
+	key := "data-focus"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *SVGANIMATEMOTIONElement) DATASTAR_FOCUS() *SVGANIMATEMOTIONElement {
+	return e.DATASTAR_FOCUSSet(true)
+}
+
+// Sets the header of for fetch requests
+
+func (e *SVGANIMATEMOTIONElement) DATASTAR_HEADER(s string) *SVGANIMATEMOTIONElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-header"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SVGANIMATEMOTIONElement) IfDATASTAR_HEADER(condition bool, s string) *SVGANIMATEMOTIONElement {
+	if condition {
+		e.DATASTAR_HEADER(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_HEADER from the element.
+func (e *SVGANIMATEMOTIONElement) DATASTAR_HEADERRemove() *SVGANIMATEMOTIONElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-header")
+	return e
+}
+
+// Sets the URL for fetch requests
+
+func (e *SVGANIMATEMOTIONElement) DATASTAR_FETCH_URL(s string) *SVGANIMATEMOTIONElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-fetch-url"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SVGANIMATEMOTIONElement) IfDATASTAR_FETCH_URL(condition bool, s string) *SVGANIMATEMOTIONElement {
+	if condition {
+		e.DATASTAR_FETCH_URL(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_FETCH_URL from the element.
+func (e *SVGANIMATEMOTIONElement) DATASTAR_FETCH_URLRemove() *SVGANIMATEMOTIONElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-fetch-url")
+	return e
+}
+
+// Sets the indicator selector for fetch requests
+
+func (e *SVGANIMATEMOTIONElement) DATASTAR_FETCH_INDICATOR(s string) *SVGANIMATEMOTIONElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "DatastarFetchIndicator"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SVGANIMATEMOTIONElement) IfDATASTAR_FETCH_INDICATOR(condition bool, s string) *SVGANIMATEMOTIONElement {
+	if condition {
+		e.DATASTAR_FETCH_INDICATOR(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_FETCH_INDICATOR from the element.
+func (e *SVGANIMATEMOTIONElement) DATASTAR_FETCH_INDICATORRemove() *SVGANIMATEMOTIONElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("DatastarFetchIndicator")
+	return e
+}
+
+// Sets the visibility of the element
+
+func (e *SVGANIMATEMOTIONElement) DATASTAR_SHOWSet(b bool) *SVGANIMATEMOTIONElement {
+	key := "data-show"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *SVGANIMATEMOTIONElement) DATASTAR_SHOW() *SVGANIMATEMOTIONElement {
+	return e.DATASTAR_SHOWSet(true)
+}
+
+// Triggers the callback when the element intersects the viewport
+
+func (e *SVGANIMATEMOTIONElement) DATASTAR_INTERSECTSSet(b bool) *SVGANIMATEMOTIONElement {
+	key := "data-intersects"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *SVGANIMATEMOTIONElement) DATASTAR_INTERSECTS() *SVGANIMATEMOTIONElement {
+	return e.DATASTAR_INTERSECTSSet(true)
+}
+
+// Teleports the element to the given selector
+
+func (e *SVGANIMATEMOTIONElement) DATASTAR_TELEPORTSet(b bool) *SVGANIMATEMOTIONElement {
+	key := "data-teleport"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *SVGANIMATEMOTIONElement) DATASTAR_TELEPORT() *SVGANIMATEMOTIONElement {
+	return e.DATASTAR_TELEPORTSet(true)
+}
+
+// Scrolls the element into view
+
+func (e *SVGANIMATEMOTIONElement) DATASTAR_SCROLL_INTO_VIEWSet(b bool) *SVGANIMATEMOTIONElement {
+	key := "data-scroll-into-view"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *SVGANIMATEMOTIONElement) DATASTAR_SCROLL_INTO_VIEW() *SVGANIMATEMOTIONElement {
+	return e.DATASTAR_SCROLL_INTO_VIEWSet(true)
+}
+
+// Setup the ViewTransitionAPI for the element
+
+func (e *SVGANIMATEMOTIONElement) DATASTAR_VIEW_TRANSITION(s string) *SVGANIMATEMOTIONElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-view-transition"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SVGANIMATEMOTIONElement) IfDATASTAR_VIEW_TRANSITION(condition bool, s string) *SVGANIMATEMOTIONElement {
+	if condition {
+		e.DATASTAR_VIEW_TRANSITION(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_VIEW_TRANSITION from the element.
+func (e *SVGANIMATEMOTIONElement) DATASTAR_VIEW_TRANSITIONRemove() *SVGANIMATEMOTIONElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-view-transition")
 	return e
 }

@@ -6,7 +6,9 @@ package elements
 import (
 	"fmt"
 
+	"github.com/goccy/go-json"
 	"github.com/igrmk/treemap/v2"
+	"github.com/samber/lo"
 )
 
 // The HTML <figure> element represents self-contained content, potentially with
@@ -147,7 +149,7 @@ func (e *FIGUREElement) IfACCESSKEY(condition bool, r rune) *FIGUREElement {
 	return e
 }
 
-// Remove the attribute accesskey from the element.
+// Remove the attribute ACCESSKEY from the element.
 func (e *FIGUREElement) ACCESSKEYRemove() *FIGUREElement {
 	if e.StringAttributes == nil {
 		return e
@@ -195,7 +197,7 @@ const (
 	FigureAutocapitalize_characters FigureAutocapitalizeChoice = "characters"
 )
 
-// Remove the attribute autocapitalize from the element.
+// Remove the attribute AUTOCAPITALIZE from the element.
 func (e *FIGUREElement) AUTOCAPITALIZERemove(c FigureAutocapitalizeChoice) *FIGUREElement {
 	if e.StringAttributes == nil {
 		return e
@@ -236,7 +238,7 @@ func (e *FIGUREElement) IfAUTOFOCUS(condition bool) *FIGUREElement {
 	return e
 }
 
-// Set the attribute autofocus to the value b explicitly.
+// Set the attribute AUTOFOCUS to the value b explicitly.
 func (e *FIGUREElement) AUTOFOCUSSet(b bool) *FIGUREElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
@@ -252,7 +254,7 @@ func (e *FIGUREElement) IfSetAUTOFOCUS(condition bool, b bool) *FIGUREElement {
 	return e
 }
 
-// Remove the attribute autofocus from the element.
+// Remove the attribute AUTOFOCUS from the element.
 func (e *FIGUREElement) AUTOFOCUSRemove(b bool) *FIGUREElement {
 	if e.BoolAttributes == nil {
 		return e
@@ -286,7 +288,7 @@ func (e *FIGUREElement) IfCLASS(condition bool, s ...string) *FIGUREElement {
 	return e
 }
 
-// Remove the attribute class from the element.
+// Remove the attribute CLASS from the element.
 func (e *FIGUREElement) CLASSRemove(s ...string) *FIGUREElement {
 	if e.DelimitedStrings == nil {
 		return e
@@ -324,7 +326,7 @@ const (
 	FigureContenteditable_plaintext_only FigureContenteditableChoice = "plaintext-only"
 )
 
-// Remove the attribute contenteditable from the element.
+// Remove the attribute CONTENTEDITABLE from the element.
 func (e *FIGUREElement) CONTENTEDITABLERemove(c FigureContenteditableChoice) *FIGUREElement {
 	if e.StringAttributes == nil {
 		return e
@@ -372,7 +374,7 @@ const (
 	FigureDir_auto FigureDirChoice = "auto"
 )
 
-// Remove the attribute dir from the element.
+// Remove the attribute DIR from the element.
 func (e *FIGUREElement) DIRRemove(c FigureDirChoice) *FIGUREElement {
 	if e.StringAttributes == nil {
 		return e
@@ -409,7 +411,7 @@ const (
 	FigureDraggable_auto FigureDraggableChoice = "auto"
 )
 
-// Remove the attribute draggable from the element.
+// Remove the attribute DRAGGABLE from the element.
 func (e *FIGUREElement) DRAGGABLERemove(c FigureDraggableChoice) *FIGUREElement {
 	if e.StringAttributes == nil {
 		return e
@@ -449,7 +451,7 @@ const (
 	FigureEnterkeyhint_send FigureEnterkeyhintChoice = "send"
 )
 
-// Remove the attribute enterkeyhint from the element.
+// Remove the attribute ENTERKEYHINT from the element.
 func (e *FIGUREElement) ENTERKEYHINTRemove(c FigureEnterkeyhintChoice) *FIGUREElement {
 	if e.StringAttributes == nil {
 		return e
@@ -498,7 +500,7 @@ func (e *FIGUREElement) IfEXPORTPARTS(condition bool, s ...string) *FIGUREElemen
 	return e
 }
 
-// Remove the attribute exportparts from the element.
+// Remove the attribute EXPORTPARTS from the element.
 func (e *FIGUREElement) EXPORTPARTSRemove(s ...string) *FIGUREElement {
 	if e.DelimitedStrings == nil {
 		return e
@@ -552,7 +554,7 @@ const (
 	FigureHidden_until_found FigureHiddenChoice = "until-found"
 )
 
-// Remove the attribute hidden from the element.
+// Remove the attribute HIDDEN from the element.
 func (e *FIGUREElement) HIDDENRemove(c FigureHiddenChoice) *FIGUREElement {
 	if e.StringAttributes == nil {
 		return e
@@ -580,7 +582,7 @@ func (e *FIGUREElement) IfID(condition bool, s string) *FIGUREElement {
 	return e
 }
 
-// Remove the attribute id from the element.
+// Remove the attribute ID from the element.
 func (e *FIGUREElement) IDRemove(s string) *FIGUREElement {
 	if e.StringAttributes == nil {
 		return e
@@ -613,7 +615,7 @@ func (e *FIGUREElement) IfINERT(condition bool) *FIGUREElement {
 	return e
 }
 
-// Set the attribute inert to the value b explicitly.
+// Set the attribute INERT to the value b explicitly.
 func (e *FIGUREElement) INERTSet(b bool) *FIGUREElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
@@ -629,7 +631,7 @@ func (e *FIGUREElement) IfSetINERT(condition bool, b bool) *FIGUREElement {
 	return e
 }
 
-// Remove the attribute inert from the element.
+// Remove the attribute INERT from the element.
 func (e *FIGUREElement) INERTRemove(b bool) *FIGUREElement {
 	if e.BoolAttributes == nil {
 		return e
@@ -698,7 +700,7 @@ const (
 	FigureInputmode_url FigureInputmodeChoice = "url"
 )
 
-// Remove the attribute inputmode from the element.
+// Remove the attribute INPUTMODE from the element.
 func (e *FIGUREElement) INPUTMODERemove(c FigureInputmodeChoice) *FIGUREElement {
 	if e.StringAttributes == nil {
 		return e
@@ -728,7 +730,7 @@ func (e *FIGUREElement) IfIS(condition bool, s string) *FIGUREElement {
 	return e
 }
 
-// Remove the attribute is from the element.
+// Remove the attribute IS from the element.
 func (e *FIGUREElement) ISRemove(s string) *FIGUREElement {
 	if e.StringAttributes == nil {
 		return e
@@ -765,7 +767,7 @@ func (e *FIGUREElement) IfITEMID(condition bool, s string) *FIGUREElement {
 	return e
 }
 
-// Remove the attribute itemid from the element.
+// Remove the attribute ITEMID from the element.
 func (e *FIGUREElement) ITEMIDRemove(s string) *FIGUREElement {
 	if e.StringAttributes == nil {
 		return e
@@ -797,7 +799,7 @@ func (e *FIGUREElement) IfITEMPROP(condition bool, s string) *FIGUREElement {
 	return e
 }
 
-// Remove the attribute itemprop from the element.
+// Remove the attribute ITEMPROP from the element.
 func (e *FIGUREElement) ITEMPROPRemove(s string) *FIGUREElement {
 	if e.StringAttributes == nil {
 		return e
@@ -826,7 +828,7 @@ func (e *FIGUREElement) IfITEMREF(condition bool, s string) *FIGUREElement {
 	return e
 }
 
-// Remove the attribute itemref from the element.
+// Remove the attribute ITEMREF from the element.
 func (e *FIGUREElement) ITEMREFRemove(s string) *FIGUREElement {
 	if e.StringAttributes == nil {
 		return e
@@ -855,7 +857,7 @@ func (e *FIGUREElement) IfITEMSCOPE(condition bool) *FIGUREElement {
 	return e
 }
 
-// Set the attribute itemscope to the value b explicitly.
+// Set the attribute ITEMSCOPE to the value b explicitly.
 func (e *FIGUREElement) ITEMSCOPESet(b bool) *FIGUREElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
@@ -871,7 +873,7 @@ func (e *FIGUREElement) IfSetITEMSCOPE(condition bool, b bool) *FIGUREElement {
 	return e
 }
 
-// Remove the attribute itemscope from the element.
+// Remove the attribute ITEMSCOPE from the element.
 func (e *FIGUREElement) ITEMSCOPERemove(b bool) *FIGUREElement {
 	if e.BoolAttributes == nil {
 		return e
@@ -903,7 +905,7 @@ func (e *FIGUREElement) IfITEMTYPE(condition bool, s string) *FIGUREElement {
 	return e
 }
 
-// Remove the attribute itemtype from the element.
+// Remove the attribute ITEMTYPE from the element.
 func (e *FIGUREElement) ITEMTYPERemove(s string) *FIGUREElement {
 	if e.StringAttributes == nil {
 		return e
@@ -933,7 +935,7 @@ func (e *FIGUREElement) IfLANG(condition bool, s string) *FIGUREElement {
 	return e
 }
 
-// Remove the attribute lang from the element.
+// Remove the attribute LANG from the element.
 func (e *FIGUREElement) LANGRemove(s string) *FIGUREElement {
 	if e.StringAttributes == nil {
 		return e
@@ -961,7 +963,7 @@ func (e *FIGUREElement) IfNONCE(condition bool, s string) *FIGUREElement {
 	return e
 }
 
-// Remove the attribute nonce from the element.
+// Remove the attribute NONCE from the element.
 func (e *FIGUREElement) NONCERemove(s string) *FIGUREElement {
 	if e.StringAttributes == nil {
 		return e
@@ -994,7 +996,7 @@ func (e *FIGUREElement) IfPART(condition bool, s ...string) *FIGUREElement {
 	return e
 }
 
-// Remove the attribute part from the element.
+// Remove the attribute PART from the element.
 func (e *FIGUREElement) PARTRemove(s ...string) *FIGUREElement {
 	if e.DelimitedStrings == nil {
 		return e
@@ -1040,7 +1042,7 @@ const (
 	FigurePopver_manual FigurePopverChoice = "manual"
 )
 
-// Remove the attribute popver from the element.
+// Remove the attribute POPVER from the element.
 func (e *FIGUREElement) POPVERRemove(c FigurePopverChoice) *FIGUREElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1068,7 +1070,7 @@ func (e *FIGUREElement) IfSLOT(condition bool, s string) *FIGUREElement {
 	return e
 }
 
-// Remove the attribute slot from the element.
+// Remove the attribute SLOT from the element.
 func (e *FIGUREElement) SLOTRemove(s string) *FIGUREElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1110,7 +1112,7 @@ const (
 	FigureSpellcheck_false FigureSpellcheckChoice = "false"
 )
 
-// Remove the attribute spellcheck from the element.
+// Remove the attribute SPELLCHECK from the element.
 func (e *FIGUREElement) SPELLCHECKRemove(c FigureSpellcheckChoice) *FIGUREElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1197,7 +1199,7 @@ func (e *FIGUREElement) IfSTYLEPairs(condition bool, pairs ...string) *FIGUREEle
 	return e
 }
 
-// Remove the attribute style from the element.
+// Remove the attribute STYLE from the element.
 func (e *FIGUREElement) STYLERemove(keys ...string) *FIGUREElement {
 	if e.KVStrings == nil {
 		return e
@@ -1241,7 +1243,7 @@ func (e *FIGUREElement) IfTABINDEX(condition bool, i int) *FIGUREElement {
 	return e
 }
 
-// Remove the attribute tabindex from the element.
+// Remove the attribute TABINDEX from the element.
 func (e *FIGUREElement) TABINDEXRemove(i int) *FIGUREElement {
 	if e.IntAttributes == nil {
 		return e
@@ -1286,7 +1288,7 @@ func (e *FIGUREElement) IfTITLE(condition bool, s string) *FIGUREElement {
 	return e
 }
 
-// Remove the attribute title from the element.
+// Remove the attribute TITLE from the element.
 func (e *FIGUREElement) TITLERemove(s string) *FIGUREElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1318,11 +1320,351 @@ const (
 	FigureTranslate_no FigureTranslateChoice = "no"
 )
 
-// Remove the attribute translate from the element.
+// Remove the attribute TRANSLATE from the element.
 func (e *FIGUREElement) TRANSLATERemove(c FigureTranslateChoice) *FIGUREElement {
 	if e.StringAttributes == nil {
 		return e
 	}
 	e.StringAttributes.Del("translate")
+	return e
+}
+
+// Merges the store with the given object
+
+func (e *FIGUREElement) DATASTAR_MERGE_STORE(v any) *FIGUREElement {
+	if e.CustomDataAttributes == nil {
+		e.CustomDataAttributes = treemap.New[string, string]()
+	}
+	b, err := json.Marshal(v)
+	if err != nil {
+		panic(err)
+	}
+	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	return e
+}
+
+// Sets the reference of the element
+
+func (e *FIGUREElement) DATASTAR_REF(s string) *FIGUREElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-ref"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *FIGUREElement) IfDATASTAR_REF(condition bool, s string) *FIGUREElement {
+	if condition {
+		e.DATASTAR_REF(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_REF from the element.
+func (e *FIGUREElement) DATASTAR_REFRemove() *FIGUREElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-ref")
+	return e
+}
+
+// Sets the value of the element
+
+func (e *FIGUREElement) DATASTAR_BIND(s string) *FIGUREElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-bind"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *FIGUREElement) IfDATASTAR_BIND(condition bool, s string) *FIGUREElement {
+	if condition {
+		e.DATASTAR_BIND(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_BIND from the element.
+func (e *FIGUREElement) DATASTAR_BINDRemove() *FIGUREElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-bind")
+	return e
+}
+
+// Sets the value of the element
+
+func (e *FIGUREElement) DATASTAR_MODEL(s string) *FIGUREElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-model"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *FIGUREElement) IfDATASTAR_MODEL(condition bool, s string) *FIGUREElement {
+	if condition {
+		e.DATASTAR_MODEL(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_MODEL from the element.
+func (e *FIGUREElement) DATASTAR_MODELRemove() *FIGUREElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-model")
+	return e
+}
+
+// Sets the textContent of the element
+
+func (e *FIGUREElement) DATASTAR_TEXT(s string) *FIGUREElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-text"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *FIGUREElement) IfDATASTAR_TEXT(condition bool, s string) *FIGUREElement {
+	if condition {
+		e.DATASTAR_TEXT(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_TEXT from the element.
+func (e *FIGUREElement) DATASTAR_TEXTRemove() *FIGUREElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-text")
+	return e
+}
+
+// Sets the event handler of the element
+
+type FigureDataOnMod customDataKeyModifier
+
+// Debounces the event handler
+func FigureDataOnModDebounce(
+	s string,
+) FigureDataOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce_%sms", s)
+	}
+}
+
+// Throttles the event handler
+func FigureDataOnModThrottle(
+	s string,
+) FigureDataOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle_%sms", s)
+	}
+}
+
+func (e *FIGUREElement) DATASTAR_ON(s string, modifiers ...FigureDataOnMod) *FIGUREElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	customMods := lo.Map(modifiers, func(m FigureDataOnMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key := customDataKey("data-on", customMods...)
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *FIGUREElement) IfDATASTAR_ON(condition bool, s string, modifiers ...FigureDataOnMod) *FIGUREElement {
+	if condition {
+		e.DATASTAR_ON(s, modifiers...)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_ON from the element.
+func (e *FIGUREElement) DATASTAR_ONRemove() *FIGUREElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-on")
+	return e
+}
+
+// Sets the focus of the element
+
+func (e *FIGUREElement) DATASTAR_FOCUSSet(b bool) *FIGUREElement {
+	key := "data-focus"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *FIGUREElement) DATASTAR_FOCUS() *FIGUREElement {
+	return e.DATASTAR_FOCUSSet(true)
+}
+
+// Sets the header of for fetch requests
+
+func (e *FIGUREElement) DATASTAR_HEADER(s string) *FIGUREElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-header"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *FIGUREElement) IfDATASTAR_HEADER(condition bool, s string) *FIGUREElement {
+	if condition {
+		e.DATASTAR_HEADER(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_HEADER from the element.
+func (e *FIGUREElement) DATASTAR_HEADERRemove() *FIGUREElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-header")
+	return e
+}
+
+// Sets the URL for fetch requests
+
+func (e *FIGUREElement) DATASTAR_FETCH_URL(s string) *FIGUREElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-fetch-url"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *FIGUREElement) IfDATASTAR_FETCH_URL(condition bool, s string) *FIGUREElement {
+	if condition {
+		e.DATASTAR_FETCH_URL(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_FETCH_URL from the element.
+func (e *FIGUREElement) DATASTAR_FETCH_URLRemove() *FIGUREElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-fetch-url")
+	return e
+}
+
+// Sets the indicator selector for fetch requests
+
+func (e *FIGUREElement) DATASTAR_FETCH_INDICATOR(s string) *FIGUREElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "DatastarFetchIndicator"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *FIGUREElement) IfDATASTAR_FETCH_INDICATOR(condition bool, s string) *FIGUREElement {
+	if condition {
+		e.DATASTAR_FETCH_INDICATOR(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_FETCH_INDICATOR from the element.
+func (e *FIGUREElement) DATASTAR_FETCH_INDICATORRemove() *FIGUREElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("DatastarFetchIndicator")
+	return e
+}
+
+// Sets the visibility of the element
+
+func (e *FIGUREElement) DATASTAR_SHOWSet(b bool) *FIGUREElement {
+	key := "data-show"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *FIGUREElement) DATASTAR_SHOW() *FIGUREElement {
+	return e.DATASTAR_SHOWSet(true)
+}
+
+// Triggers the callback when the element intersects the viewport
+
+func (e *FIGUREElement) DATASTAR_INTERSECTSSet(b bool) *FIGUREElement {
+	key := "data-intersects"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *FIGUREElement) DATASTAR_INTERSECTS() *FIGUREElement {
+	return e.DATASTAR_INTERSECTSSet(true)
+}
+
+// Teleports the element to the given selector
+
+func (e *FIGUREElement) DATASTAR_TELEPORTSet(b bool) *FIGUREElement {
+	key := "data-teleport"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *FIGUREElement) DATASTAR_TELEPORT() *FIGUREElement {
+	return e.DATASTAR_TELEPORTSet(true)
+}
+
+// Scrolls the element into view
+
+func (e *FIGUREElement) DATASTAR_SCROLL_INTO_VIEWSet(b bool) *FIGUREElement {
+	key := "data-scroll-into-view"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *FIGUREElement) DATASTAR_SCROLL_INTO_VIEW() *FIGUREElement {
+	return e.DATASTAR_SCROLL_INTO_VIEWSet(true)
+}
+
+// Setup the ViewTransitionAPI for the element
+
+func (e *FIGUREElement) DATASTAR_VIEW_TRANSITION(s string) *FIGUREElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-view-transition"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *FIGUREElement) IfDATASTAR_VIEW_TRANSITION(condition bool, s string) *FIGUREElement {
+	if condition {
+		e.DATASTAR_VIEW_TRANSITION(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_VIEW_TRANSITION from the element.
+func (e *FIGUREElement) DATASTAR_VIEW_TRANSITIONRemove() *FIGUREElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-view-transition")
 	return e
 }

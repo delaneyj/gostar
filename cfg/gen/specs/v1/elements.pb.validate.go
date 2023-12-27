@@ -337,40 +337,6 @@ func (m *Namespace) validate(all bool) error {
 
 	// no validation rules for Prefix
 
-	for idx, item := range m.GetGlobalAttributes() {
-		_, _ = idx, item
-
-		if all {
-			switch v := interface{}(item).(type) {
-			case interface{ ValidateAll() error }:
-				if err := v.ValidateAll(); err != nil {
-					errors = append(errors, NamespaceValidationError{
-						field:  fmt.Sprintf("GlobalAttributes[%v]", idx),
-						reason: "embedded message failed validation",
-						cause:  err,
-					})
-				}
-			case interface{ Validate() error }:
-				if err := v.Validate(); err != nil {
-					errors = append(errors, NamespaceValidationError{
-						field:  fmt.Sprintf("GlobalAttributes[%v]", idx),
-						reason: "embedded message failed validation",
-						cause:  err,
-					})
-				}
-			}
-		} else if v, ok := interface{}(item).(interface{ Validate() error }); ok {
-			if err := v.Validate(); err != nil {
-				return NamespaceValidationError{
-					field:  fmt.Sprintf("GlobalAttributes[%v]", idx),
-					reason: "embedded message failed validation",
-					cause:  err,
-				}
-			}
-		}
-
-	}
-
 	for idx, item := range m.GetElements() {
 		_, _ = idx, item
 
@@ -397,6 +363,40 @@ func (m *Namespace) validate(all bool) error {
 			if err := v.Validate(); err != nil {
 				return NamespaceValidationError{
 					field:  fmt.Sprintf("Elements[%v]", idx),
+					reason: "embedded message failed validation",
+					cause:  err,
+				}
+			}
+		}
+
+	}
+
+	for idx, item := range m.GetAttributes() {
+		_, _ = idx, item
+
+		if all {
+			switch v := interface{}(item).(type) {
+			case interface{ ValidateAll() error }:
+				if err := v.ValidateAll(); err != nil {
+					errors = append(errors, NamespaceValidationError{
+						field:  fmt.Sprintf("Attributes[%v]", idx),
+						reason: "embedded message failed validation",
+						cause:  err,
+					})
+				}
+			case interface{ Validate() error }:
+				if err := v.Validate(); err != nil {
+					errors = append(errors, NamespaceValidationError{
+						field:  fmt.Sprintf("Attributes[%v]", idx),
+						reason: "embedded message failed validation",
+						cause:  err,
+					})
+				}
+			}
+		} else if v, ok := interface{}(item).(interface{ Validate() error }); ok {
+			if err := v.Validate(); err != nil {
+				return NamespaceValidationError{
+					field:  fmt.Sprintf("Attributes[%v]", idx),
 					reason: "embedded message failed validation",
 					cause:  err,
 				}
@@ -538,7 +538,7 @@ func (m *Namespaces) validate(all bool) error {
 
 	}
 
-	for idx, item := range m.GetAttributesExtensions() {
+	for idx, item := range m.GetAttributes() {
 		_, _ = idx, item
 
 		if all {
@@ -546,7 +546,7 @@ func (m *Namespaces) validate(all bool) error {
 			case interface{ ValidateAll() error }:
 				if err := v.ValidateAll(); err != nil {
 					errors = append(errors, NamespacesValidationError{
-						field:  fmt.Sprintf("AttributesExtensions[%v]", idx),
+						field:  fmt.Sprintf("Attributes[%v]", idx),
 						reason: "embedded message failed validation",
 						cause:  err,
 					})
@@ -554,7 +554,7 @@ func (m *Namespaces) validate(all bool) error {
 			case interface{ Validate() error }:
 				if err := v.Validate(); err != nil {
 					errors = append(errors, NamespacesValidationError{
-						field:  fmt.Sprintf("AttributesExtensions[%v]", idx),
+						field:  fmt.Sprintf("Attributes[%v]", idx),
 						reason: "embedded message failed validation",
 						cause:  err,
 					})
@@ -563,7 +563,7 @@ func (m *Namespaces) validate(all bool) error {
 		} else if v, ok := interface{}(item).(interface{ Validate() error }); ok {
 			if err := v.Validate(); err != nil {
 				return NamespacesValidationError{
-					field:  fmt.Sprintf("AttributesExtensions[%v]", idx),
+					field:  fmt.Sprintf("Attributes[%v]", idx),
 					reason: "embedded message failed validation",
 					cause:  err,
 				}
@@ -1045,6 +1045,40 @@ func (m *Attribute_Custom) validate(all bool) error {
 		}
 	}
 
+	for idx, item := range m.GetModifiers() {
+		_, _ = idx, item
+
+		if all {
+			switch v := interface{}(item).(type) {
+			case interface{ ValidateAll() error }:
+				if err := v.ValidateAll(); err != nil {
+					errors = append(errors, Attribute_CustomValidationError{
+						field:  fmt.Sprintf("Modifiers[%v]", idx),
+						reason: "embedded message failed validation",
+						cause:  err,
+					})
+				}
+			case interface{ Validate() error }:
+				if err := v.Validate(); err != nil {
+					errors = append(errors, Attribute_CustomValidationError{
+						field:  fmt.Sprintf("Modifiers[%v]", idx),
+						reason: "embedded message failed validation",
+						cause:  err,
+					})
+				}
+			}
+		} else if v, ok := interface{}(item).(interface{ Validate() error }); ok {
+			if err := v.Validate(); err != nil {
+				return Attribute_CustomValidationError{
+					field:  fmt.Sprintf("Modifiers[%v]", idx),
+					reason: "embedded message failed validation",
+					cause:  err,
+				}
+			}
+		}
+
+	}
+
 	if len(errors) > 0 {
 		return Attribute_CustomMultiError(errors)
 	}
@@ -1353,6 +1387,18 @@ func (m *Attribute_Type) validate(all bool) error {
 			errors = append(errors, err)
 		}
 		// no validation rules for Json
+	case *Attribute_Type_DurationMs:
+		if v == nil {
+			err := Attribute_TypeValidationError{
+				field:  "Type",
+				reason: "oneof value cannot be a typed-nil",
+			}
+			if !all {
+				return err
+			}
+			errors = append(errors, err)
+		}
+		// no validation rules for DurationMs
 	default:
 		_ = v // ensures v is used
 	}
@@ -1434,3 +1480,142 @@ var _ interface {
 	Cause() error
 	ErrorName() string
 } = Attribute_TypeValidationError{}
+
+// Validate checks the field values on Attribute_Custom_Modifier with the rules
+// defined in the proto definition for this message. If any rules are
+// violated, the first error encountered is returned, or nil if there are no violations.
+func (m *Attribute_Custom_Modifier) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on Attribute_Custom_Modifier with the
+// rules defined in the proto definition for this message. If any rules are
+// violated, the result is a list of violation errors wrapped in
+// Attribute_Custom_ModifierMultiError, or nil if none found.
+func (m *Attribute_Custom_Modifier) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *Attribute_Custom_Modifier) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	// no validation rules for Name
+
+	// no validation rules for Description
+
+	if all {
+		switch v := interface{}(m.GetType()).(type) {
+		case interface{ ValidateAll() error }:
+			if err := v.ValidateAll(); err != nil {
+				errors = append(errors, Attribute_Custom_ModifierValidationError{
+					field:  "Type",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		case interface{ Validate() error }:
+			if err := v.Validate(); err != nil {
+				errors = append(errors, Attribute_Custom_ModifierValidationError{
+					field:  "Type",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		}
+	} else if v, ok := interface{}(m.GetType()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return Attribute_Custom_ModifierValidationError{
+				field:  "Type",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
+		}
+	}
+
+	// no validation rules for Prefix
+
+	// no validation rules for Suffix
+
+	if len(errors) > 0 {
+		return Attribute_Custom_ModifierMultiError(errors)
+	}
+
+	return nil
+}
+
+// Attribute_Custom_ModifierMultiError is an error wrapping multiple validation
+// errors returned by Attribute_Custom_Modifier.ValidateAll() if the
+// designated constraints aren't met.
+type Attribute_Custom_ModifierMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m Attribute_Custom_ModifierMultiError) Error() string {
+	var msgs []string
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m Attribute_Custom_ModifierMultiError) AllErrors() []error { return m }
+
+// Attribute_Custom_ModifierValidationError is the validation error returned by
+// Attribute_Custom_Modifier.Validate if the designated constraints aren't met.
+type Attribute_Custom_ModifierValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e Attribute_Custom_ModifierValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e Attribute_Custom_ModifierValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e Attribute_Custom_ModifierValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e Attribute_Custom_ModifierValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e Attribute_Custom_ModifierValidationError) ErrorName() string {
+	return "Attribute_Custom_ModifierValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e Attribute_Custom_ModifierValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sAttribute_Custom_Modifier.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = Attribute_Custom_ModifierValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = Attribute_Custom_ModifierValidationError{}

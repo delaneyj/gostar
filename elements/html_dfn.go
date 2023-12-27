@@ -6,7 +6,9 @@ package elements
 import (
 	"fmt"
 
+	"github.com/goccy/go-json"
 	"github.com/igrmk/treemap/v2"
+	"github.com/samber/lo"
 )
 
 // The HTML Definition element (<dfn>) is used to indicate the term being defined
@@ -148,7 +150,7 @@ func (e *DFNElement) IfACCESSKEY(condition bool, r rune) *DFNElement {
 	return e
 }
 
-// Remove the attribute accesskey from the element.
+// Remove the attribute ACCESSKEY from the element.
 func (e *DFNElement) ACCESSKEYRemove() *DFNElement {
 	if e.StringAttributes == nil {
 		return e
@@ -196,7 +198,7 @@ const (
 	DfnAutocapitalize_characters DfnAutocapitalizeChoice = "characters"
 )
 
-// Remove the attribute autocapitalize from the element.
+// Remove the attribute AUTOCAPITALIZE from the element.
 func (e *DFNElement) AUTOCAPITALIZERemove(c DfnAutocapitalizeChoice) *DFNElement {
 	if e.StringAttributes == nil {
 		return e
@@ -237,7 +239,7 @@ func (e *DFNElement) IfAUTOFOCUS(condition bool) *DFNElement {
 	return e
 }
 
-// Set the attribute autofocus to the value b explicitly.
+// Set the attribute AUTOFOCUS to the value b explicitly.
 func (e *DFNElement) AUTOFOCUSSet(b bool) *DFNElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
@@ -253,7 +255,7 @@ func (e *DFNElement) IfSetAUTOFOCUS(condition bool, b bool) *DFNElement {
 	return e
 }
 
-// Remove the attribute autofocus from the element.
+// Remove the attribute AUTOFOCUS from the element.
 func (e *DFNElement) AUTOFOCUSRemove(b bool) *DFNElement {
 	if e.BoolAttributes == nil {
 		return e
@@ -287,7 +289,7 @@ func (e *DFNElement) IfCLASS(condition bool, s ...string) *DFNElement {
 	return e
 }
 
-// Remove the attribute class from the element.
+// Remove the attribute CLASS from the element.
 func (e *DFNElement) CLASSRemove(s ...string) *DFNElement {
 	if e.DelimitedStrings == nil {
 		return e
@@ -325,7 +327,7 @@ const (
 	DfnContenteditable_plaintext_only DfnContenteditableChoice = "plaintext-only"
 )
 
-// Remove the attribute contenteditable from the element.
+// Remove the attribute CONTENTEDITABLE from the element.
 func (e *DFNElement) CONTENTEDITABLERemove(c DfnContenteditableChoice) *DFNElement {
 	if e.StringAttributes == nil {
 		return e
@@ -373,7 +375,7 @@ const (
 	DfnDir_auto DfnDirChoice = "auto"
 )
 
-// Remove the attribute dir from the element.
+// Remove the attribute DIR from the element.
 func (e *DFNElement) DIRRemove(c DfnDirChoice) *DFNElement {
 	if e.StringAttributes == nil {
 		return e
@@ -410,7 +412,7 @@ const (
 	DfnDraggable_auto DfnDraggableChoice = "auto"
 )
 
-// Remove the attribute draggable from the element.
+// Remove the attribute DRAGGABLE from the element.
 func (e *DFNElement) DRAGGABLERemove(c DfnDraggableChoice) *DFNElement {
 	if e.StringAttributes == nil {
 		return e
@@ -450,7 +452,7 @@ const (
 	DfnEnterkeyhint_send DfnEnterkeyhintChoice = "send"
 )
 
-// Remove the attribute enterkeyhint from the element.
+// Remove the attribute ENTERKEYHINT from the element.
 func (e *DFNElement) ENTERKEYHINTRemove(c DfnEnterkeyhintChoice) *DFNElement {
 	if e.StringAttributes == nil {
 		return e
@@ -499,7 +501,7 @@ func (e *DFNElement) IfEXPORTPARTS(condition bool, s ...string) *DFNElement {
 	return e
 }
 
-// Remove the attribute exportparts from the element.
+// Remove the attribute EXPORTPARTS from the element.
 func (e *DFNElement) EXPORTPARTSRemove(s ...string) *DFNElement {
 	if e.DelimitedStrings == nil {
 		return e
@@ -553,7 +555,7 @@ const (
 	DfnHidden_until_found DfnHiddenChoice = "until-found"
 )
 
-// Remove the attribute hidden from the element.
+// Remove the attribute HIDDEN from the element.
 func (e *DFNElement) HIDDENRemove(c DfnHiddenChoice) *DFNElement {
 	if e.StringAttributes == nil {
 		return e
@@ -581,7 +583,7 @@ func (e *DFNElement) IfID(condition bool, s string) *DFNElement {
 	return e
 }
 
-// Remove the attribute id from the element.
+// Remove the attribute ID from the element.
 func (e *DFNElement) IDRemove(s string) *DFNElement {
 	if e.StringAttributes == nil {
 		return e
@@ -614,7 +616,7 @@ func (e *DFNElement) IfINERT(condition bool) *DFNElement {
 	return e
 }
 
-// Set the attribute inert to the value b explicitly.
+// Set the attribute INERT to the value b explicitly.
 func (e *DFNElement) INERTSet(b bool) *DFNElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
@@ -630,7 +632,7 @@ func (e *DFNElement) IfSetINERT(condition bool, b bool) *DFNElement {
 	return e
 }
 
-// Remove the attribute inert from the element.
+// Remove the attribute INERT from the element.
 func (e *DFNElement) INERTRemove(b bool) *DFNElement {
 	if e.BoolAttributes == nil {
 		return e
@@ -699,7 +701,7 @@ const (
 	DfnInputmode_url DfnInputmodeChoice = "url"
 )
 
-// Remove the attribute inputmode from the element.
+// Remove the attribute INPUTMODE from the element.
 func (e *DFNElement) INPUTMODERemove(c DfnInputmodeChoice) *DFNElement {
 	if e.StringAttributes == nil {
 		return e
@@ -729,7 +731,7 @@ func (e *DFNElement) IfIS(condition bool, s string) *DFNElement {
 	return e
 }
 
-// Remove the attribute is from the element.
+// Remove the attribute IS from the element.
 func (e *DFNElement) ISRemove(s string) *DFNElement {
 	if e.StringAttributes == nil {
 		return e
@@ -766,7 +768,7 @@ func (e *DFNElement) IfITEMID(condition bool, s string) *DFNElement {
 	return e
 }
 
-// Remove the attribute itemid from the element.
+// Remove the attribute ITEMID from the element.
 func (e *DFNElement) ITEMIDRemove(s string) *DFNElement {
 	if e.StringAttributes == nil {
 		return e
@@ -798,7 +800,7 @@ func (e *DFNElement) IfITEMPROP(condition bool, s string) *DFNElement {
 	return e
 }
 
-// Remove the attribute itemprop from the element.
+// Remove the attribute ITEMPROP from the element.
 func (e *DFNElement) ITEMPROPRemove(s string) *DFNElement {
 	if e.StringAttributes == nil {
 		return e
@@ -827,7 +829,7 @@ func (e *DFNElement) IfITEMREF(condition bool, s string) *DFNElement {
 	return e
 }
 
-// Remove the attribute itemref from the element.
+// Remove the attribute ITEMREF from the element.
 func (e *DFNElement) ITEMREFRemove(s string) *DFNElement {
 	if e.StringAttributes == nil {
 		return e
@@ -856,7 +858,7 @@ func (e *DFNElement) IfITEMSCOPE(condition bool) *DFNElement {
 	return e
 }
 
-// Set the attribute itemscope to the value b explicitly.
+// Set the attribute ITEMSCOPE to the value b explicitly.
 func (e *DFNElement) ITEMSCOPESet(b bool) *DFNElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
@@ -872,7 +874,7 @@ func (e *DFNElement) IfSetITEMSCOPE(condition bool, b bool) *DFNElement {
 	return e
 }
 
-// Remove the attribute itemscope from the element.
+// Remove the attribute ITEMSCOPE from the element.
 func (e *DFNElement) ITEMSCOPERemove(b bool) *DFNElement {
 	if e.BoolAttributes == nil {
 		return e
@@ -904,7 +906,7 @@ func (e *DFNElement) IfITEMTYPE(condition bool, s string) *DFNElement {
 	return e
 }
 
-// Remove the attribute itemtype from the element.
+// Remove the attribute ITEMTYPE from the element.
 func (e *DFNElement) ITEMTYPERemove(s string) *DFNElement {
 	if e.StringAttributes == nil {
 		return e
@@ -934,7 +936,7 @@ func (e *DFNElement) IfLANG(condition bool, s string) *DFNElement {
 	return e
 }
 
-// Remove the attribute lang from the element.
+// Remove the attribute LANG from the element.
 func (e *DFNElement) LANGRemove(s string) *DFNElement {
 	if e.StringAttributes == nil {
 		return e
@@ -962,7 +964,7 @@ func (e *DFNElement) IfNONCE(condition bool, s string) *DFNElement {
 	return e
 }
 
-// Remove the attribute nonce from the element.
+// Remove the attribute NONCE from the element.
 func (e *DFNElement) NONCERemove(s string) *DFNElement {
 	if e.StringAttributes == nil {
 		return e
@@ -995,7 +997,7 @@ func (e *DFNElement) IfPART(condition bool, s ...string) *DFNElement {
 	return e
 }
 
-// Remove the attribute part from the element.
+// Remove the attribute PART from the element.
 func (e *DFNElement) PARTRemove(s ...string) *DFNElement {
 	if e.DelimitedStrings == nil {
 		return e
@@ -1041,7 +1043,7 @@ const (
 	DfnPopver_manual DfnPopverChoice = "manual"
 )
 
-// Remove the attribute popver from the element.
+// Remove the attribute POPVER from the element.
 func (e *DFNElement) POPVERRemove(c DfnPopverChoice) *DFNElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1069,7 +1071,7 @@ func (e *DFNElement) IfSLOT(condition bool, s string) *DFNElement {
 	return e
 }
 
-// Remove the attribute slot from the element.
+// Remove the attribute SLOT from the element.
 func (e *DFNElement) SLOTRemove(s string) *DFNElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1111,7 +1113,7 @@ const (
 	DfnSpellcheck_false DfnSpellcheckChoice = "false"
 )
 
-// Remove the attribute spellcheck from the element.
+// Remove the attribute SPELLCHECK from the element.
 func (e *DFNElement) SPELLCHECKRemove(c DfnSpellcheckChoice) *DFNElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1198,7 +1200,7 @@ func (e *DFNElement) IfSTYLEPairs(condition bool, pairs ...string) *DFNElement {
 	return e
 }
 
-// Remove the attribute style from the element.
+// Remove the attribute STYLE from the element.
 func (e *DFNElement) STYLERemove(keys ...string) *DFNElement {
 	if e.KVStrings == nil {
 		return e
@@ -1242,7 +1244,7 @@ func (e *DFNElement) IfTABINDEX(condition bool, i int) *DFNElement {
 	return e
 }
 
-// Remove the attribute tabindex from the element.
+// Remove the attribute TABINDEX from the element.
 func (e *DFNElement) TABINDEXRemove(i int) *DFNElement {
 	if e.IntAttributes == nil {
 		return e
@@ -1287,7 +1289,7 @@ func (e *DFNElement) IfTITLE(condition bool, s string) *DFNElement {
 	return e
 }
 
-// Remove the attribute title from the element.
+// Remove the attribute TITLE from the element.
 func (e *DFNElement) TITLERemove(s string) *DFNElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1319,11 +1321,351 @@ const (
 	DfnTranslate_no DfnTranslateChoice = "no"
 )
 
-// Remove the attribute translate from the element.
+// Remove the attribute TRANSLATE from the element.
 func (e *DFNElement) TRANSLATERemove(c DfnTranslateChoice) *DFNElement {
 	if e.StringAttributes == nil {
 		return e
 	}
 	e.StringAttributes.Del("translate")
+	return e
+}
+
+// Merges the store with the given object
+
+func (e *DFNElement) DATASTAR_MERGE_STORE(v any) *DFNElement {
+	if e.CustomDataAttributes == nil {
+		e.CustomDataAttributes = treemap.New[string, string]()
+	}
+	b, err := json.Marshal(v)
+	if err != nil {
+		panic(err)
+	}
+	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	return e
+}
+
+// Sets the reference of the element
+
+func (e *DFNElement) DATASTAR_REF(s string) *DFNElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-ref"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *DFNElement) IfDATASTAR_REF(condition bool, s string) *DFNElement {
+	if condition {
+		e.DATASTAR_REF(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_REF from the element.
+func (e *DFNElement) DATASTAR_REFRemove() *DFNElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-ref")
+	return e
+}
+
+// Sets the value of the element
+
+func (e *DFNElement) DATASTAR_BIND(s string) *DFNElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-bind"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *DFNElement) IfDATASTAR_BIND(condition bool, s string) *DFNElement {
+	if condition {
+		e.DATASTAR_BIND(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_BIND from the element.
+func (e *DFNElement) DATASTAR_BINDRemove() *DFNElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-bind")
+	return e
+}
+
+// Sets the value of the element
+
+func (e *DFNElement) DATASTAR_MODEL(s string) *DFNElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-model"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *DFNElement) IfDATASTAR_MODEL(condition bool, s string) *DFNElement {
+	if condition {
+		e.DATASTAR_MODEL(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_MODEL from the element.
+func (e *DFNElement) DATASTAR_MODELRemove() *DFNElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-model")
+	return e
+}
+
+// Sets the textContent of the element
+
+func (e *DFNElement) DATASTAR_TEXT(s string) *DFNElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-text"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *DFNElement) IfDATASTAR_TEXT(condition bool, s string) *DFNElement {
+	if condition {
+		e.DATASTAR_TEXT(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_TEXT from the element.
+func (e *DFNElement) DATASTAR_TEXTRemove() *DFNElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-text")
+	return e
+}
+
+// Sets the event handler of the element
+
+type DfnDataOnMod customDataKeyModifier
+
+// Debounces the event handler
+func DfnDataOnModDebounce(
+	s string,
+) DfnDataOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce_%sms", s)
+	}
+}
+
+// Throttles the event handler
+func DfnDataOnModThrottle(
+	s string,
+) DfnDataOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle_%sms", s)
+	}
+}
+
+func (e *DFNElement) DATASTAR_ON(s string, modifiers ...DfnDataOnMod) *DFNElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	customMods := lo.Map(modifiers, func(m DfnDataOnMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key := customDataKey("data-on", customMods...)
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *DFNElement) IfDATASTAR_ON(condition bool, s string, modifiers ...DfnDataOnMod) *DFNElement {
+	if condition {
+		e.DATASTAR_ON(s, modifiers...)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_ON from the element.
+func (e *DFNElement) DATASTAR_ONRemove() *DFNElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-on")
+	return e
+}
+
+// Sets the focus of the element
+
+func (e *DFNElement) DATASTAR_FOCUSSet(b bool) *DFNElement {
+	key := "data-focus"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *DFNElement) DATASTAR_FOCUS() *DFNElement {
+	return e.DATASTAR_FOCUSSet(true)
+}
+
+// Sets the header of for fetch requests
+
+func (e *DFNElement) DATASTAR_HEADER(s string) *DFNElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-header"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *DFNElement) IfDATASTAR_HEADER(condition bool, s string) *DFNElement {
+	if condition {
+		e.DATASTAR_HEADER(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_HEADER from the element.
+func (e *DFNElement) DATASTAR_HEADERRemove() *DFNElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-header")
+	return e
+}
+
+// Sets the URL for fetch requests
+
+func (e *DFNElement) DATASTAR_FETCH_URL(s string) *DFNElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-fetch-url"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *DFNElement) IfDATASTAR_FETCH_URL(condition bool, s string) *DFNElement {
+	if condition {
+		e.DATASTAR_FETCH_URL(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_FETCH_URL from the element.
+func (e *DFNElement) DATASTAR_FETCH_URLRemove() *DFNElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-fetch-url")
+	return e
+}
+
+// Sets the indicator selector for fetch requests
+
+func (e *DFNElement) DATASTAR_FETCH_INDICATOR(s string) *DFNElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "DatastarFetchIndicator"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *DFNElement) IfDATASTAR_FETCH_INDICATOR(condition bool, s string) *DFNElement {
+	if condition {
+		e.DATASTAR_FETCH_INDICATOR(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_FETCH_INDICATOR from the element.
+func (e *DFNElement) DATASTAR_FETCH_INDICATORRemove() *DFNElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("DatastarFetchIndicator")
+	return e
+}
+
+// Sets the visibility of the element
+
+func (e *DFNElement) DATASTAR_SHOWSet(b bool) *DFNElement {
+	key := "data-show"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *DFNElement) DATASTAR_SHOW() *DFNElement {
+	return e.DATASTAR_SHOWSet(true)
+}
+
+// Triggers the callback when the element intersects the viewport
+
+func (e *DFNElement) DATASTAR_INTERSECTSSet(b bool) *DFNElement {
+	key := "data-intersects"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *DFNElement) DATASTAR_INTERSECTS() *DFNElement {
+	return e.DATASTAR_INTERSECTSSet(true)
+}
+
+// Teleports the element to the given selector
+
+func (e *DFNElement) DATASTAR_TELEPORTSet(b bool) *DFNElement {
+	key := "data-teleport"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *DFNElement) DATASTAR_TELEPORT() *DFNElement {
+	return e.DATASTAR_TELEPORTSet(true)
+}
+
+// Scrolls the element into view
+
+func (e *DFNElement) DATASTAR_SCROLL_INTO_VIEWSet(b bool) *DFNElement {
+	key := "data-scroll-into-view"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *DFNElement) DATASTAR_SCROLL_INTO_VIEW() *DFNElement {
+	return e.DATASTAR_SCROLL_INTO_VIEWSet(true)
+}
+
+// Setup the ViewTransitionAPI for the element
+
+func (e *DFNElement) DATASTAR_VIEW_TRANSITION(s string) *DFNElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-view-transition"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *DFNElement) IfDATASTAR_VIEW_TRANSITION(condition bool, s string) *DFNElement {
+	if condition {
+		e.DATASTAR_VIEW_TRANSITION(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_VIEW_TRANSITION from the element.
+func (e *DFNElement) DATASTAR_VIEW_TRANSITIONRemove() *DFNElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-view-transition")
 	return e
 }

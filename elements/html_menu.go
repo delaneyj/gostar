@@ -6,7 +6,9 @@ package elements
 import (
 	"fmt"
 
+	"github.com/goccy/go-json"
 	"github.com/igrmk/treemap/v2"
+	"github.com/samber/lo"
 )
 
 // The HTML <menu> element represents a group of commands that a user can perform
@@ -150,7 +152,7 @@ const (
 	MenuType_toolbar MenuTypeChoice = "toolbar"
 )
 
-// Remove the attribute type from the element.
+// Remove the attribute TYPE from the element.
 func (e *MENUElement) TYPERemove(c MenuTypeChoice) *MENUElement {
 	if e.StringAttributes == nil {
 		return e
@@ -178,7 +180,7 @@ func (e *MENUElement) IfACCESSKEY(condition bool, r rune) *MENUElement {
 	return e
 }
 
-// Remove the attribute accesskey from the element.
+// Remove the attribute ACCESSKEY from the element.
 func (e *MENUElement) ACCESSKEYRemove() *MENUElement {
 	if e.StringAttributes == nil {
 		return e
@@ -226,7 +228,7 @@ const (
 	MenuAutocapitalize_characters MenuAutocapitalizeChoice = "characters"
 )
 
-// Remove the attribute autocapitalize from the element.
+// Remove the attribute AUTOCAPITALIZE from the element.
 func (e *MENUElement) AUTOCAPITALIZERemove(c MenuAutocapitalizeChoice) *MENUElement {
 	if e.StringAttributes == nil {
 		return e
@@ -267,7 +269,7 @@ func (e *MENUElement) IfAUTOFOCUS(condition bool) *MENUElement {
 	return e
 }
 
-// Set the attribute autofocus to the value b explicitly.
+// Set the attribute AUTOFOCUS to the value b explicitly.
 func (e *MENUElement) AUTOFOCUSSet(b bool) *MENUElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
@@ -283,7 +285,7 @@ func (e *MENUElement) IfSetAUTOFOCUS(condition bool, b bool) *MENUElement {
 	return e
 }
 
-// Remove the attribute autofocus from the element.
+// Remove the attribute AUTOFOCUS from the element.
 func (e *MENUElement) AUTOFOCUSRemove(b bool) *MENUElement {
 	if e.BoolAttributes == nil {
 		return e
@@ -317,7 +319,7 @@ func (e *MENUElement) IfCLASS(condition bool, s ...string) *MENUElement {
 	return e
 }
 
-// Remove the attribute class from the element.
+// Remove the attribute CLASS from the element.
 func (e *MENUElement) CLASSRemove(s ...string) *MENUElement {
 	if e.DelimitedStrings == nil {
 		return e
@@ -355,7 +357,7 @@ const (
 	MenuContenteditable_plaintext_only MenuContenteditableChoice = "plaintext-only"
 )
 
-// Remove the attribute contenteditable from the element.
+// Remove the attribute CONTENTEDITABLE from the element.
 func (e *MENUElement) CONTENTEDITABLERemove(c MenuContenteditableChoice) *MENUElement {
 	if e.StringAttributes == nil {
 		return e
@@ -403,7 +405,7 @@ const (
 	MenuDir_auto MenuDirChoice = "auto"
 )
 
-// Remove the attribute dir from the element.
+// Remove the attribute DIR from the element.
 func (e *MENUElement) DIRRemove(c MenuDirChoice) *MENUElement {
 	if e.StringAttributes == nil {
 		return e
@@ -440,7 +442,7 @@ const (
 	MenuDraggable_auto MenuDraggableChoice = "auto"
 )
 
-// Remove the attribute draggable from the element.
+// Remove the attribute DRAGGABLE from the element.
 func (e *MENUElement) DRAGGABLERemove(c MenuDraggableChoice) *MENUElement {
 	if e.StringAttributes == nil {
 		return e
@@ -480,7 +482,7 @@ const (
 	MenuEnterkeyhint_send MenuEnterkeyhintChoice = "send"
 )
 
-// Remove the attribute enterkeyhint from the element.
+// Remove the attribute ENTERKEYHINT from the element.
 func (e *MENUElement) ENTERKEYHINTRemove(c MenuEnterkeyhintChoice) *MENUElement {
 	if e.StringAttributes == nil {
 		return e
@@ -529,7 +531,7 @@ func (e *MENUElement) IfEXPORTPARTS(condition bool, s ...string) *MENUElement {
 	return e
 }
 
-// Remove the attribute exportparts from the element.
+// Remove the attribute EXPORTPARTS from the element.
 func (e *MENUElement) EXPORTPARTSRemove(s ...string) *MENUElement {
 	if e.DelimitedStrings == nil {
 		return e
@@ -583,7 +585,7 @@ const (
 	MenuHidden_until_found MenuHiddenChoice = "until-found"
 )
 
-// Remove the attribute hidden from the element.
+// Remove the attribute HIDDEN from the element.
 func (e *MENUElement) HIDDENRemove(c MenuHiddenChoice) *MENUElement {
 	if e.StringAttributes == nil {
 		return e
@@ -611,7 +613,7 @@ func (e *MENUElement) IfID(condition bool, s string) *MENUElement {
 	return e
 }
 
-// Remove the attribute id from the element.
+// Remove the attribute ID from the element.
 func (e *MENUElement) IDRemove(s string) *MENUElement {
 	if e.StringAttributes == nil {
 		return e
@@ -644,7 +646,7 @@ func (e *MENUElement) IfINERT(condition bool) *MENUElement {
 	return e
 }
 
-// Set the attribute inert to the value b explicitly.
+// Set the attribute INERT to the value b explicitly.
 func (e *MENUElement) INERTSet(b bool) *MENUElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
@@ -660,7 +662,7 @@ func (e *MENUElement) IfSetINERT(condition bool, b bool) *MENUElement {
 	return e
 }
 
-// Remove the attribute inert from the element.
+// Remove the attribute INERT from the element.
 func (e *MENUElement) INERTRemove(b bool) *MENUElement {
 	if e.BoolAttributes == nil {
 		return e
@@ -729,7 +731,7 @@ const (
 	MenuInputmode_url MenuInputmodeChoice = "url"
 )
 
-// Remove the attribute inputmode from the element.
+// Remove the attribute INPUTMODE from the element.
 func (e *MENUElement) INPUTMODERemove(c MenuInputmodeChoice) *MENUElement {
 	if e.StringAttributes == nil {
 		return e
@@ -759,7 +761,7 @@ func (e *MENUElement) IfIS(condition bool, s string) *MENUElement {
 	return e
 }
 
-// Remove the attribute is from the element.
+// Remove the attribute IS from the element.
 func (e *MENUElement) ISRemove(s string) *MENUElement {
 	if e.StringAttributes == nil {
 		return e
@@ -796,7 +798,7 @@ func (e *MENUElement) IfITEMID(condition bool, s string) *MENUElement {
 	return e
 }
 
-// Remove the attribute itemid from the element.
+// Remove the attribute ITEMID from the element.
 func (e *MENUElement) ITEMIDRemove(s string) *MENUElement {
 	if e.StringAttributes == nil {
 		return e
@@ -828,7 +830,7 @@ func (e *MENUElement) IfITEMPROP(condition bool, s string) *MENUElement {
 	return e
 }
 
-// Remove the attribute itemprop from the element.
+// Remove the attribute ITEMPROP from the element.
 func (e *MENUElement) ITEMPROPRemove(s string) *MENUElement {
 	if e.StringAttributes == nil {
 		return e
@@ -857,7 +859,7 @@ func (e *MENUElement) IfITEMREF(condition bool, s string) *MENUElement {
 	return e
 }
 
-// Remove the attribute itemref from the element.
+// Remove the attribute ITEMREF from the element.
 func (e *MENUElement) ITEMREFRemove(s string) *MENUElement {
 	if e.StringAttributes == nil {
 		return e
@@ -886,7 +888,7 @@ func (e *MENUElement) IfITEMSCOPE(condition bool) *MENUElement {
 	return e
 }
 
-// Set the attribute itemscope to the value b explicitly.
+// Set the attribute ITEMSCOPE to the value b explicitly.
 func (e *MENUElement) ITEMSCOPESet(b bool) *MENUElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
@@ -902,7 +904,7 @@ func (e *MENUElement) IfSetITEMSCOPE(condition bool, b bool) *MENUElement {
 	return e
 }
 
-// Remove the attribute itemscope from the element.
+// Remove the attribute ITEMSCOPE from the element.
 func (e *MENUElement) ITEMSCOPERemove(b bool) *MENUElement {
 	if e.BoolAttributes == nil {
 		return e
@@ -934,7 +936,7 @@ func (e *MENUElement) IfITEMTYPE(condition bool, s string) *MENUElement {
 	return e
 }
 
-// Remove the attribute itemtype from the element.
+// Remove the attribute ITEMTYPE from the element.
 func (e *MENUElement) ITEMTYPERemove(s string) *MENUElement {
 	if e.StringAttributes == nil {
 		return e
@@ -964,7 +966,7 @@ func (e *MENUElement) IfLANG(condition bool, s string) *MENUElement {
 	return e
 }
 
-// Remove the attribute lang from the element.
+// Remove the attribute LANG from the element.
 func (e *MENUElement) LANGRemove(s string) *MENUElement {
 	if e.StringAttributes == nil {
 		return e
@@ -992,7 +994,7 @@ func (e *MENUElement) IfNONCE(condition bool, s string) *MENUElement {
 	return e
 }
 
-// Remove the attribute nonce from the element.
+// Remove the attribute NONCE from the element.
 func (e *MENUElement) NONCERemove(s string) *MENUElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1025,7 +1027,7 @@ func (e *MENUElement) IfPART(condition bool, s ...string) *MENUElement {
 	return e
 }
 
-// Remove the attribute part from the element.
+// Remove the attribute PART from the element.
 func (e *MENUElement) PARTRemove(s ...string) *MENUElement {
 	if e.DelimitedStrings == nil {
 		return e
@@ -1071,7 +1073,7 @@ const (
 	MenuPopver_manual MenuPopverChoice = "manual"
 )
 
-// Remove the attribute popver from the element.
+// Remove the attribute POPVER from the element.
 func (e *MENUElement) POPVERRemove(c MenuPopverChoice) *MENUElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1099,7 +1101,7 @@ func (e *MENUElement) IfSLOT(condition bool, s string) *MENUElement {
 	return e
 }
 
-// Remove the attribute slot from the element.
+// Remove the attribute SLOT from the element.
 func (e *MENUElement) SLOTRemove(s string) *MENUElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1141,7 +1143,7 @@ const (
 	MenuSpellcheck_false MenuSpellcheckChoice = "false"
 )
 
-// Remove the attribute spellcheck from the element.
+// Remove the attribute SPELLCHECK from the element.
 func (e *MENUElement) SPELLCHECKRemove(c MenuSpellcheckChoice) *MENUElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1228,7 +1230,7 @@ func (e *MENUElement) IfSTYLEPairs(condition bool, pairs ...string) *MENUElement
 	return e
 }
 
-// Remove the attribute style from the element.
+// Remove the attribute STYLE from the element.
 func (e *MENUElement) STYLERemove(keys ...string) *MENUElement {
 	if e.KVStrings == nil {
 		return e
@@ -1272,7 +1274,7 @@ func (e *MENUElement) IfTABINDEX(condition bool, i int) *MENUElement {
 	return e
 }
 
-// Remove the attribute tabindex from the element.
+// Remove the attribute TABINDEX from the element.
 func (e *MENUElement) TABINDEXRemove(i int) *MENUElement {
 	if e.IntAttributes == nil {
 		return e
@@ -1317,7 +1319,7 @@ func (e *MENUElement) IfTITLE(condition bool, s string) *MENUElement {
 	return e
 }
 
-// Remove the attribute title from the element.
+// Remove the attribute TITLE from the element.
 func (e *MENUElement) TITLERemove(s string) *MENUElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1349,11 +1351,351 @@ const (
 	MenuTranslate_no MenuTranslateChoice = "no"
 )
 
-// Remove the attribute translate from the element.
+// Remove the attribute TRANSLATE from the element.
 func (e *MENUElement) TRANSLATERemove(c MenuTranslateChoice) *MENUElement {
 	if e.StringAttributes == nil {
 		return e
 	}
 	e.StringAttributes.Del("translate")
+	return e
+}
+
+// Merges the store with the given object
+
+func (e *MENUElement) DATASTAR_MERGE_STORE(v any) *MENUElement {
+	if e.CustomDataAttributes == nil {
+		e.CustomDataAttributes = treemap.New[string, string]()
+	}
+	b, err := json.Marshal(v)
+	if err != nil {
+		panic(err)
+	}
+	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	return e
+}
+
+// Sets the reference of the element
+
+func (e *MENUElement) DATASTAR_REF(s string) *MENUElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-ref"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *MENUElement) IfDATASTAR_REF(condition bool, s string) *MENUElement {
+	if condition {
+		e.DATASTAR_REF(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_REF from the element.
+func (e *MENUElement) DATASTAR_REFRemove() *MENUElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-ref")
+	return e
+}
+
+// Sets the value of the element
+
+func (e *MENUElement) DATASTAR_BIND(s string) *MENUElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-bind"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *MENUElement) IfDATASTAR_BIND(condition bool, s string) *MENUElement {
+	if condition {
+		e.DATASTAR_BIND(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_BIND from the element.
+func (e *MENUElement) DATASTAR_BINDRemove() *MENUElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-bind")
+	return e
+}
+
+// Sets the value of the element
+
+func (e *MENUElement) DATASTAR_MODEL(s string) *MENUElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-model"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *MENUElement) IfDATASTAR_MODEL(condition bool, s string) *MENUElement {
+	if condition {
+		e.DATASTAR_MODEL(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_MODEL from the element.
+func (e *MENUElement) DATASTAR_MODELRemove() *MENUElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-model")
+	return e
+}
+
+// Sets the textContent of the element
+
+func (e *MENUElement) DATASTAR_TEXT(s string) *MENUElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-text"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *MENUElement) IfDATASTAR_TEXT(condition bool, s string) *MENUElement {
+	if condition {
+		e.DATASTAR_TEXT(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_TEXT from the element.
+func (e *MENUElement) DATASTAR_TEXTRemove() *MENUElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-text")
+	return e
+}
+
+// Sets the event handler of the element
+
+type MenuDataOnMod customDataKeyModifier
+
+// Debounces the event handler
+func MenuDataOnModDebounce(
+	s string,
+) MenuDataOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce_%sms", s)
+	}
+}
+
+// Throttles the event handler
+func MenuDataOnModThrottle(
+	s string,
+) MenuDataOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle_%sms", s)
+	}
+}
+
+func (e *MENUElement) DATASTAR_ON(s string, modifiers ...MenuDataOnMod) *MENUElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	customMods := lo.Map(modifiers, func(m MenuDataOnMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key := customDataKey("data-on", customMods...)
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *MENUElement) IfDATASTAR_ON(condition bool, s string, modifiers ...MenuDataOnMod) *MENUElement {
+	if condition {
+		e.DATASTAR_ON(s, modifiers...)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_ON from the element.
+func (e *MENUElement) DATASTAR_ONRemove() *MENUElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-on")
+	return e
+}
+
+// Sets the focus of the element
+
+func (e *MENUElement) DATASTAR_FOCUSSet(b bool) *MENUElement {
+	key := "data-focus"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *MENUElement) DATASTAR_FOCUS() *MENUElement {
+	return e.DATASTAR_FOCUSSet(true)
+}
+
+// Sets the header of for fetch requests
+
+func (e *MENUElement) DATASTAR_HEADER(s string) *MENUElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-header"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *MENUElement) IfDATASTAR_HEADER(condition bool, s string) *MENUElement {
+	if condition {
+		e.DATASTAR_HEADER(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_HEADER from the element.
+func (e *MENUElement) DATASTAR_HEADERRemove() *MENUElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-header")
+	return e
+}
+
+// Sets the URL for fetch requests
+
+func (e *MENUElement) DATASTAR_FETCH_URL(s string) *MENUElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-fetch-url"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *MENUElement) IfDATASTAR_FETCH_URL(condition bool, s string) *MENUElement {
+	if condition {
+		e.DATASTAR_FETCH_URL(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_FETCH_URL from the element.
+func (e *MENUElement) DATASTAR_FETCH_URLRemove() *MENUElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-fetch-url")
+	return e
+}
+
+// Sets the indicator selector for fetch requests
+
+func (e *MENUElement) DATASTAR_FETCH_INDICATOR(s string) *MENUElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "DatastarFetchIndicator"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *MENUElement) IfDATASTAR_FETCH_INDICATOR(condition bool, s string) *MENUElement {
+	if condition {
+		e.DATASTAR_FETCH_INDICATOR(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_FETCH_INDICATOR from the element.
+func (e *MENUElement) DATASTAR_FETCH_INDICATORRemove() *MENUElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("DatastarFetchIndicator")
+	return e
+}
+
+// Sets the visibility of the element
+
+func (e *MENUElement) DATASTAR_SHOWSet(b bool) *MENUElement {
+	key := "data-show"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *MENUElement) DATASTAR_SHOW() *MENUElement {
+	return e.DATASTAR_SHOWSet(true)
+}
+
+// Triggers the callback when the element intersects the viewport
+
+func (e *MENUElement) DATASTAR_INTERSECTSSet(b bool) *MENUElement {
+	key := "data-intersects"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *MENUElement) DATASTAR_INTERSECTS() *MENUElement {
+	return e.DATASTAR_INTERSECTSSet(true)
+}
+
+// Teleports the element to the given selector
+
+func (e *MENUElement) DATASTAR_TELEPORTSet(b bool) *MENUElement {
+	key := "data-teleport"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *MENUElement) DATASTAR_TELEPORT() *MENUElement {
+	return e.DATASTAR_TELEPORTSet(true)
+}
+
+// Scrolls the element into view
+
+func (e *MENUElement) DATASTAR_SCROLL_INTO_VIEWSet(b bool) *MENUElement {
+	key := "data-scroll-into-view"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *MENUElement) DATASTAR_SCROLL_INTO_VIEW() *MENUElement {
+	return e.DATASTAR_SCROLL_INTO_VIEWSet(true)
+}
+
+// Setup the ViewTransitionAPI for the element
+
+func (e *MENUElement) DATASTAR_VIEW_TRANSITION(s string) *MENUElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-view-transition"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *MENUElement) IfDATASTAR_VIEW_TRANSITION(condition bool, s string) *MENUElement {
+	if condition {
+		e.DATASTAR_VIEW_TRANSITION(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_VIEW_TRANSITION from the element.
+func (e *MENUElement) DATASTAR_VIEW_TRANSITIONRemove() *MENUElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-view-transition")
 	return e
 }

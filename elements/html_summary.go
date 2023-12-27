@@ -6,7 +6,9 @@ package elements
 import (
 	"fmt"
 
+	"github.com/goccy/go-json"
 	"github.com/igrmk/treemap/v2"
+	"github.com/samber/lo"
 )
 
 // The HTML Disclosure Summary element (<summary>) element specifies a summary,
@@ -148,7 +150,7 @@ func (e *SUMMARYElement) IfACCESSKEY(condition bool, r rune) *SUMMARYElement {
 	return e
 }
 
-// Remove the attribute accesskey from the element.
+// Remove the attribute ACCESSKEY from the element.
 func (e *SUMMARYElement) ACCESSKEYRemove() *SUMMARYElement {
 	if e.StringAttributes == nil {
 		return e
@@ -196,7 +198,7 @@ const (
 	SummaryAutocapitalize_characters SummaryAutocapitalizeChoice = "characters"
 )
 
-// Remove the attribute autocapitalize from the element.
+// Remove the attribute AUTOCAPITALIZE from the element.
 func (e *SUMMARYElement) AUTOCAPITALIZERemove(c SummaryAutocapitalizeChoice) *SUMMARYElement {
 	if e.StringAttributes == nil {
 		return e
@@ -237,7 +239,7 @@ func (e *SUMMARYElement) IfAUTOFOCUS(condition bool) *SUMMARYElement {
 	return e
 }
 
-// Set the attribute autofocus to the value b explicitly.
+// Set the attribute AUTOFOCUS to the value b explicitly.
 func (e *SUMMARYElement) AUTOFOCUSSet(b bool) *SUMMARYElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
@@ -253,7 +255,7 @@ func (e *SUMMARYElement) IfSetAUTOFOCUS(condition bool, b bool) *SUMMARYElement 
 	return e
 }
 
-// Remove the attribute autofocus from the element.
+// Remove the attribute AUTOFOCUS from the element.
 func (e *SUMMARYElement) AUTOFOCUSRemove(b bool) *SUMMARYElement {
 	if e.BoolAttributes == nil {
 		return e
@@ -287,7 +289,7 @@ func (e *SUMMARYElement) IfCLASS(condition bool, s ...string) *SUMMARYElement {
 	return e
 }
 
-// Remove the attribute class from the element.
+// Remove the attribute CLASS from the element.
 func (e *SUMMARYElement) CLASSRemove(s ...string) *SUMMARYElement {
 	if e.DelimitedStrings == nil {
 		return e
@@ -325,7 +327,7 @@ const (
 	SummaryContenteditable_plaintext_only SummaryContenteditableChoice = "plaintext-only"
 )
 
-// Remove the attribute contenteditable from the element.
+// Remove the attribute CONTENTEDITABLE from the element.
 func (e *SUMMARYElement) CONTENTEDITABLERemove(c SummaryContenteditableChoice) *SUMMARYElement {
 	if e.StringAttributes == nil {
 		return e
@@ -373,7 +375,7 @@ const (
 	SummaryDir_auto SummaryDirChoice = "auto"
 )
 
-// Remove the attribute dir from the element.
+// Remove the attribute DIR from the element.
 func (e *SUMMARYElement) DIRRemove(c SummaryDirChoice) *SUMMARYElement {
 	if e.StringAttributes == nil {
 		return e
@@ -410,7 +412,7 @@ const (
 	SummaryDraggable_auto SummaryDraggableChoice = "auto"
 )
 
-// Remove the attribute draggable from the element.
+// Remove the attribute DRAGGABLE from the element.
 func (e *SUMMARYElement) DRAGGABLERemove(c SummaryDraggableChoice) *SUMMARYElement {
 	if e.StringAttributes == nil {
 		return e
@@ -450,7 +452,7 @@ const (
 	SummaryEnterkeyhint_send SummaryEnterkeyhintChoice = "send"
 )
 
-// Remove the attribute enterkeyhint from the element.
+// Remove the attribute ENTERKEYHINT from the element.
 func (e *SUMMARYElement) ENTERKEYHINTRemove(c SummaryEnterkeyhintChoice) *SUMMARYElement {
 	if e.StringAttributes == nil {
 		return e
@@ -499,7 +501,7 @@ func (e *SUMMARYElement) IfEXPORTPARTS(condition bool, s ...string) *SUMMARYElem
 	return e
 }
 
-// Remove the attribute exportparts from the element.
+// Remove the attribute EXPORTPARTS from the element.
 func (e *SUMMARYElement) EXPORTPARTSRemove(s ...string) *SUMMARYElement {
 	if e.DelimitedStrings == nil {
 		return e
@@ -553,7 +555,7 @@ const (
 	SummaryHidden_until_found SummaryHiddenChoice = "until-found"
 )
 
-// Remove the attribute hidden from the element.
+// Remove the attribute HIDDEN from the element.
 func (e *SUMMARYElement) HIDDENRemove(c SummaryHiddenChoice) *SUMMARYElement {
 	if e.StringAttributes == nil {
 		return e
@@ -581,7 +583,7 @@ func (e *SUMMARYElement) IfID(condition bool, s string) *SUMMARYElement {
 	return e
 }
 
-// Remove the attribute id from the element.
+// Remove the attribute ID from the element.
 func (e *SUMMARYElement) IDRemove(s string) *SUMMARYElement {
 	if e.StringAttributes == nil {
 		return e
@@ -614,7 +616,7 @@ func (e *SUMMARYElement) IfINERT(condition bool) *SUMMARYElement {
 	return e
 }
 
-// Set the attribute inert to the value b explicitly.
+// Set the attribute INERT to the value b explicitly.
 func (e *SUMMARYElement) INERTSet(b bool) *SUMMARYElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
@@ -630,7 +632,7 @@ func (e *SUMMARYElement) IfSetINERT(condition bool, b bool) *SUMMARYElement {
 	return e
 }
 
-// Remove the attribute inert from the element.
+// Remove the attribute INERT from the element.
 func (e *SUMMARYElement) INERTRemove(b bool) *SUMMARYElement {
 	if e.BoolAttributes == nil {
 		return e
@@ -699,7 +701,7 @@ const (
 	SummaryInputmode_url SummaryInputmodeChoice = "url"
 )
 
-// Remove the attribute inputmode from the element.
+// Remove the attribute INPUTMODE from the element.
 func (e *SUMMARYElement) INPUTMODERemove(c SummaryInputmodeChoice) *SUMMARYElement {
 	if e.StringAttributes == nil {
 		return e
@@ -729,7 +731,7 @@ func (e *SUMMARYElement) IfIS(condition bool, s string) *SUMMARYElement {
 	return e
 }
 
-// Remove the attribute is from the element.
+// Remove the attribute IS from the element.
 func (e *SUMMARYElement) ISRemove(s string) *SUMMARYElement {
 	if e.StringAttributes == nil {
 		return e
@@ -766,7 +768,7 @@ func (e *SUMMARYElement) IfITEMID(condition bool, s string) *SUMMARYElement {
 	return e
 }
 
-// Remove the attribute itemid from the element.
+// Remove the attribute ITEMID from the element.
 func (e *SUMMARYElement) ITEMIDRemove(s string) *SUMMARYElement {
 	if e.StringAttributes == nil {
 		return e
@@ -798,7 +800,7 @@ func (e *SUMMARYElement) IfITEMPROP(condition bool, s string) *SUMMARYElement {
 	return e
 }
 
-// Remove the attribute itemprop from the element.
+// Remove the attribute ITEMPROP from the element.
 func (e *SUMMARYElement) ITEMPROPRemove(s string) *SUMMARYElement {
 	if e.StringAttributes == nil {
 		return e
@@ -827,7 +829,7 @@ func (e *SUMMARYElement) IfITEMREF(condition bool, s string) *SUMMARYElement {
 	return e
 }
 
-// Remove the attribute itemref from the element.
+// Remove the attribute ITEMREF from the element.
 func (e *SUMMARYElement) ITEMREFRemove(s string) *SUMMARYElement {
 	if e.StringAttributes == nil {
 		return e
@@ -856,7 +858,7 @@ func (e *SUMMARYElement) IfITEMSCOPE(condition bool) *SUMMARYElement {
 	return e
 }
 
-// Set the attribute itemscope to the value b explicitly.
+// Set the attribute ITEMSCOPE to the value b explicitly.
 func (e *SUMMARYElement) ITEMSCOPESet(b bool) *SUMMARYElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
@@ -872,7 +874,7 @@ func (e *SUMMARYElement) IfSetITEMSCOPE(condition bool, b bool) *SUMMARYElement 
 	return e
 }
 
-// Remove the attribute itemscope from the element.
+// Remove the attribute ITEMSCOPE from the element.
 func (e *SUMMARYElement) ITEMSCOPERemove(b bool) *SUMMARYElement {
 	if e.BoolAttributes == nil {
 		return e
@@ -904,7 +906,7 @@ func (e *SUMMARYElement) IfITEMTYPE(condition bool, s string) *SUMMARYElement {
 	return e
 }
 
-// Remove the attribute itemtype from the element.
+// Remove the attribute ITEMTYPE from the element.
 func (e *SUMMARYElement) ITEMTYPERemove(s string) *SUMMARYElement {
 	if e.StringAttributes == nil {
 		return e
@@ -934,7 +936,7 @@ func (e *SUMMARYElement) IfLANG(condition bool, s string) *SUMMARYElement {
 	return e
 }
 
-// Remove the attribute lang from the element.
+// Remove the attribute LANG from the element.
 func (e *SUMMARYElement) LANGRemove(s string) *SUMMARYElement {
 	if e.StringAttributes == nil {
 		return e
@@ -962,7 +964,7 @@ func (e *SUMMARYElement) IfNONCE(condition bool, s string) *SUMMARYElement {
 	return e
 }
 
-// Remove the attribute nonce from the element.
+// Remove the attribute NONCE from the element.
 func (e *SUMMARYElement) NONCERemove(s string) *SUMMARYElement {
 	if e.StringAttributes == nil {
 		return e
@@ -995,7 +997,7 @@ func (e *SUMMARYElement) IfPART(condition bool, s ...string) *SUMMARYElement {
 	return e
 }
 
-// Remove the attribute part from the element.
+// Remove the attribute PART from the element.
 func (e *SUMMARYElement) PARTRemove(s ...string) *SUMMARYElement {
 	if e.DelimitedStrings == nil {
 		return e
@@ -1041,7 +1043,7 @@ const (
 	SummaryPopver_manual SummaryPopverChoice = "manual"
 )
 
-// Remove the attribute popver from the element.
+// Remove the attribute POPVER from the element.
 func (e *SUMMARYElement) POPVERRemove(c SummaryPopverChoice) *SUMMARYElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1069,7 +1071,7 @@ func (e *SUMMARYElement) IfSLOT(condition bool, s string) *SUMMARYElement {
 	return e
 }
 
-// Remove the attribute slot from the element.
+// Remove the attribute SLOT from the element.
 func (e *SUMMARYElement) SLOTRemove(s string) *SUMMARYElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1111,7 +1113,7 @@ const (
 	SummarySpellcheck_false SummarySpellcheckChoice = "false"
 )
 
-// Remove the attribute spellcheck from the element.
+// Remove the attribute SPELLCHECK from the element.
 func (e *SUMMARYElement) SPELLCHECKRemove(c SummarySpellcheckChoice) *SUMMARYElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1198,7 +1200,7 @@ func (e *SUMMARYElement) IfSTYLEPairs(condition bool, pairs ...string) *SUMMARYE
 	return e
 }
 
-// Remove the attribute style from the element.
+// Remove the attribute STYLE from the element.
 func (e *SUMMARYElement) STYLERemove(keys ...string) *SUMMARYElement {
 	if e.KVStrings == nil {
 		return e
@@ -1242,7 +1244,7 @@ func (e *SUMMARYElement) IfTABINDEX(condition bool, i int) *SUMMARYElement {
 	return e
 }
 
-// Remove the attribute tabindex from the element.
+// Remove the attribute TABINDEX from the element.
 func (e *SUMMARYElement) TABINDEXRemove(i int) *SUMMARYElement {
 	if e.IntAttributes == nil {
 		return e
@@ -1287,7 +1289,7 @@ func (e *SUMMARYElement) IfTITLE(condition bool, s string) *SUMMARYElement {
 	return e
 }
 
-// Remove the attribute title from the element.
+// Remove the attribute TITLE from the element.
 func (e *SUMMARYElement) TITLERemove(s string) *SUMMARYElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1319,11 +1321,351 @@ const (
 	SummaryTranslate_no SummaryTranslateChoice = "no"
 )
 
-// Remove the attribute translate from the element.
+// Remove the attribute TRANSLATE from the element.
 func (e *SUMMARYElement) TRANSLATERemove(c SummaryTranslateChoice) *SUMMARYElement {
 	if e.StringAttributes == nil {
 		return e
 	}
 	e.StringAttributes.Del("translate")
+	return e
+}
+
+// Merges the store with the given object
+
+func (e *SUMMARYElement) DATASTAR_MERGE_STORE(v any) *SUMMARYElement {
+	if e.CustomDataAttributes == nil {
+		e.CustomDataAttributes = treemap.New[string, string]()
+	}
+	b, err := json.Marshal(v)
+	if err != nil {
+		panic(err)
+	}
+	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	return e
+}
+
+// Sets the reference of the element
+
+func (e *SUMMARYElement) DATASTAR_REF(s string) *SUMMARYElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-ref"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SUMMARYElement) IfDATASTAR_REF(condition bool, s string) *SUMMARYElement {
+	if condition {
+		e.DATASTAR_REF(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_REF from the element.
+func (e *SUMMARYElement) DATASTAR_REFRemove() *SUMMARYElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-ref")
+	return e
+}
+
+// Sets the value of the element
+
+func (e *SUMMARYElement) DATASTAR_BIND(s string) *SUMMARYElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-bind"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SUMMARYElement) IfDATASTAR_BIND(condition bool, s string) *SUMMARYElement {
+	if condition {
+		e.DATASTAR_BIND(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_BIND from the element.
+func (e *SUMMARYElement) DATASTAR_BINDRemove() *SUMMARYElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-bind")
+	return e
+}
+
+// Sets the value of the element
+
+func (e *SUMMARYElement) DATASTAR_MODEL(s string) *SUMMARYElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-model"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SUMMARYElement) IfDATASTAR_MODEL(condition bool, s string) *SUMMARYElement {
+	if condition {
+		e.DATASTAR_MODEL(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_MODEL from the element.
+func (e *SUMMARYElement) DATASTAR_MODELRemove() *SUMMARYElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-model")
+	return e
+}
+
+// Sets the textContent of the element
+
+func (e *SUMMARYElement) DATASTAR_TEXT(s string) *SUMMARYElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-text"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SUMMARYElement) IfDATASTAR_TEXT(condition bool, s string) *SUMMARYElement {
+	if condition {
+		e.DATASTAR_TEXT(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_TEXT from the element.
+func (e *SUMMARYElement) DATASTAR_TEXTRemove() *SUMMARYElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-text")
+	return e
+}
+
+// Sets the event handler of the element
+
+type SummaryDataOnMod customDataKeyModifier
+
+// Debounces the event handler
+func SummaryDataOnModDebounce(
+	s string,
+) SummaryDataOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce_%sms", s)
+	}
+}
+
+// Throttles the event handler
+func SummaryDataOnModThrottle(
+	s string,
+) SummaryDataOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle_%sms", s)
+	}
+}
+
+func (e *SUMMARYElement) DATASTAR_ON(s string, modifiers ...SummaryDataOnMod) *SUMMARYElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	customMods := lo.Map(modifiers, func(m SummaryDataOnMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key := customDataKey("data-on", customMods...)
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SUMMARYElement) IfDATASTAR_ON(condition bool, s string, modifiers ...SummaryDataOnMod) *SUMMARYElement {
+	if condition {
+		e.DATASTAR_ON(s, modifiers...)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_ON from the element.
+func (e *SUMMARYElement) DATASTAR_ONRemove() *SUMMARYElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-on")
+	return e
+}
+
+// Sets the focus of the element
+
+func (e *SUMMARYElement) DATASTAR_FOCUSSet(b bool) *SUMMARYElement {
+	key := "data-focus"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *SUMMARYElement) DATASTAR_FOCUS() *SUMMARYElement {
+	return e.DATASTAR_FOCUSSet(true)
+}
+
+// Sets the header of for fetch requests
+
+func (e *SUMMARYElement) DATASTAR_HEADER(s string) *SUMMARYElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-header"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SUMMARYElement) IfDATASTAR_HEADER(condition bool, s string) *SUMMARYElement {
+	if condition {
+		e.DATASTAR_HEADER(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_HEADER from the element.
+func (e *SUMMARYElement) DATASTAR_HEADERRemove() *SUMMARYElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-header")
+	return e
+}
+
+// Sets the URL for fetch requests
+
+func (e *SUMMARYElement) DATASTAR_FETCH_URL(s string) *SUMMARYElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-fetch-url"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SUMMARYElement) IfDATASTAR_FETCH_URL(condition bool, s string) *SUMMARYElement {
+	if condition {
+		e.DATASTAR_FETCH_URL(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_FETCH_URL from the element.
+func (e *SUMMARYElement) DATASTAR_FETCH_URLRemove() *SUMMARYElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-fetch-url")
+	return e
+}
+
+// Sets the indicator selector for fetch requests
+
+func (e *SUMMARYElement) DATASTAR_FETCH_INDICATOR(s string) *SUMMARYElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "DatastarFetchIndicator"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SUMMARYElement) IfDATASTAR_FETCH_INDICATOR(condition bool, s string) *SUMMARYElement {
+	if condition {
+		e.DATASTAR_FETCH_INDICATOR(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_FETCH_INDICATOR from the element.
+func (e *SUMMARYElement) DATASTAR_FETCH_INDICATORRemove() *SUMMARYElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("DatastarFetchIndicator")
+	return e
+}
+
+// Sets the visibility of the element
+
+func (e *SUMMARYElement) DATASTAR_SHOWSet(b bool) *SUMMARYElement {
+	key := "data-show"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *SUMMARYElement) DATASTAR_SHOW() *SUMMARYElement {
+	return e.DATASTAR_SHOWSet(true)
+}
+
+// Triggers the callback when the element intersects the viewport
+
+func (e *SUMMARYElement) DATASTAR_INTERSECTSSet(b bool) *SUMMARYElement {
+	key := "data-intersects"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *SUMMARYElement) DATASTAR_INTERSECTS() *SUMMARYElement {
+	return e.DATASTAR_INTERSECTSSet(true)
+}
+
+// Teleports the element to the given selector
+
+func (e *SUMMARYElement) DATASTAR_TELEPORTSet(b bool) *SUMMARYElement {
+	key := "data-teleport"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *SUMMARYElement) DATASTAR_TELEPORT() *SUMMARYElement {
+	return e.DATASTAR_TELEPORTSet(true)
+}
+
+// Scrolls the element into view
+
+func (e *SUMMARYElement) DATASTAR_SCROLL_INTO_VIEWSet(b bool) *SUMMARYElement {
+	key := "data-scroll-into-view"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *SUMMARYElement) DATASTAR_SCROLL_INTO_VIEW() *SUMMARYElement {
+	return e.DATASTAR_SCROLL_INTO_VIEWSet(true)
+}
+
+// Setup the ViewTransitionAPI for the element
+
+func (e *SUMMARYElement) DATASTAR_VIEW_TRANSITION(s string) *SUMMARYElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-view-transition"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SUMMARYElement) IfDATASTAR_VIEW_TRANSITION(condition bool, s string) *SUMMARYElement {
+	if condition {
+		e.DATASTAR_VIEW_TRANSITION(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_VIEW_TRANSITION from the element.
+func (e *SUMMARYElement) DATASTAR_VIEW_TRANSITIONRemove() *SUMMARYElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-view-transition")
 	return e
 }

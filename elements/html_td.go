@@ -6,7 +6,9 @@ package elements
 import (
 	"fmt"
 
+	"github.com/goccy/go-json"
 	"github.com/igrmk/treemap/v2"
+	"github.com/samber/lo"
 )
 
 // The HTML <td> element defines a cell of a table that contains data
@@ -143,7 +145,7 @@ func (e *TDElement) IfCOLSPAN(condition bool, i int) *TDElement {
 	return e
 }
 
-// Remove the attribute colspan from the element.
+// Remove the attribute COLSPAN from the element.
 func (e *TDElement) COLSPANRemove(i int) *TDElement {
 	if e.IntAttributes == nil {
 		return e
@@ -168,7 +170,7 @@ func (e *TDElement) IfHEADERS(condition bool, s string) *TDElement {
 	return e
 }
 
-// Remove the attribute headers from the element.
+// Remove the attribute HEADERS from the element.
 func (e *TDElement) HEADERSRemove(s string) *TDElement {
 	if e.StringAttributes == nil {
 		return e
@@ -193,7 +195,7 @@ func (e *TDElement) IfROWSPAN(condition bool, i int) *TDElement {
 	return e
 }
 
-// Remove the attribute rowspan from the element.
+// Remove the attribute ROWSPAN from the element.
 func (e *TDElement) ROWSPANRemove(i int) *TDElement {
 	if e.IntAttributes == nil {
 		return e
@@ -221,7 +223,7 @@ func (e *TDElement) IfACCESSKEY(condition bool, r rune) *TDElement {
 	return e
 }
 
-// Remove the attribute accesskey from the element.
+// Remove the attribute ACCESSKEY from the element.
 func (e *TDElement) ACCESSKEYRemove() *TDElement {
 	if e.StringAttributes == nil {
 		return e
@@ -269,7 +271,7 @@ const (
 	TdAutocapitalize_characters TdAutocapitalizeChoice = "characters"
 )
 
-// Remove the attribute autocapitalize from the element.
+// Remove the attribute AUTOCAPITALIZE from the element.
 func (e *TDElement) AUTOCAPITALIZERemove(c TdAutocapitalizeChoice) *TDElement {
 	if e.StringAttributes == nil {
 		return e
@@ -310,7 +312,7 @@ func (e *TDElement) IfAUTOFOCUS(condition bool) *TDElement {
 	return e
 }
 
-// Set the attribute autofocus to the value b explicitly.
+// Set the attribute AUTOFOCUS to the value b explicitly.
 func (e *TDElement) AUTOFOCUSSet(b bool) *TDElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
@@ -326,7 +328,7 @@ func (e *TDElement) IfSetAUTOFOCUS(condition bool, b bool) *TDElement {
 	return e
 }
 
-// Remove the attribute autofocus from the element.
+// Remove the attribute AUTOFOCUS from the element.
 func (e *TDElement) AUTOFOCUSRemove(b bool) *TDElement {
 	if e.BoolAttributes == nil {
 		return e
@@ -360,7 +362,7 @@ func (e *TDElement) IfCLASS(condition bool, s ...string) *TDElement {
 	return e
 }
 
-// Remove the attribute class from the element.
+// Remove the attribute CLASS from the element.
 func (e *TDElement) CLASSRemove(s ...string) *TDElement {
 	if e.DelimitedStrings == nil {
 		return e
@@ -398,7 +400,7 @@ const (
 	TdContenteditable_plaintext_only TdContenteditableChoice = "plaintext-only"
 )
 
-// Remove the attribute contenteditable from the element.
+// Remove the attribute CONTENTEDITABLE from the element.
 func (e *TDElement) CONTENTEDITABLERemove(c TdContenteditableChoice) *TDElement {
 	if e.StringAttributes == nil {
 		return e
@@ -446,7 +448,7 @@ const (
 	TdDir_auto TdDirChoice = "auto"
 )
 
-// Remove the attribute dir from the element.
+// Remove the attribute DIR from the element.
 func (e *TDElement) DIRRemove(c TdDirChoice) *TDElement {
 	if e.StringAttributes == nil {
 		return e
@@ -483,7 +485,7 @@ const (
 	TdDraggable_auto TdDraggableChoice = "auto"
 )
 
-// Remove the attribute draggable from the element.
+// Remove the attribute DRAGGABLE from the element.
 func (e *TDElement) DRAGGABLERemove(c TdDraggableChoice) *TDElement {
 	if e.StringAttributes == nil {
 		return e
@@ -523,7 +525,7 @@ const (
 	TdEnterkeyhint_send TdEnterkeyhintChoice = "send"
 )
 
-// Remove the attribute enterkeyhint from the element.
+// Remove the attribute ENTERKEYHINT from the element.
 func (e *TDElement) ENTERKEYHINTRemove(c TdEnterkeyhintChoice) *TDElement {
 	if e.StringAttributes == nil {
 		return e
@@ -572,7 +574,7 @@ func (e *TDElement) IfEXPORTPARTS(condition bool, s ...string) *TDElement {
 	return e
 }
 
-// Remove the attribute exportparts from the element.
+// Remove the attribute EXPORTPARTS from the element.
 func (e *TDElement) EXPORTPARTSRemove(s ...string) *TDElement {
 	if e.DelimitedStrings == nil {
 		return e
@@ -626,7 +628,7 @@ const (
 	TdHidden_until_found TdHiddenChoice = "until-found"
 )
 
-// Remove the attribute hidden from the element.
+// Remove the attribute HIDDEN from the element.
 func (e *TDElement) HIDDENRemove(c TdHiddenChoice) *TDElement {
 	if e.StringAttributes == nil {
 		return e
@@ -654,7 +656,7 @@ func (e *TDElement) IfID(condition bool, s string) *TDElement {
 	return e
 }
 
-// Remove the attribute id from the element.
+// Remove the attribute ID from the element.
 func (e *TDElement) IDRemove(s string) *TDElement {
 	if e.StringAttributes == nil {
 		return e
@@ -687,7 +689,7 @@ func (e *TDElement) IfINERT(condition bool) *TDElement {
 	return e
 }
 
-// Set the attribute inert to the value b explicitly.
+// Set the attribute INERT to the value b explicitly.
 func (e *TDElement) INERTSet(b bool) *TDElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
@@ -703,7 +705,7 @@ func (e *TDElement) IfSetINERT(condition bool, b bool) *TDElement {
 	return e
 }
 
-// Remove the attribute inert from the element.
+// Remove the attribute INERT from the element.
 func (e *TDElement) INERTRemove(b bool) *TDElement {
 	if e.BoolAttributes == nil {
 		return e
@@ -772,7 +774,7 @@ const (
 	TdInputmode_url TdInputmodeChoice = "url"
 )
 
-// Remove the attribute inputmode from the element.
+// Remove the attribute INPUTMODE from the element.
 func (e *TDElement) INPUTMODERemove(c TdInputmodeChoice) *TDElement {
 	if e.StringAttributes == nil {
 		return e
@@ -802,7 +804,7 @@ func (e *TDElement) IfIS(condition bool, s string) *TDElement {
 	return e
 }
 
-// Remove the attribute is from the element.
+// Remove the attribute IS from the element.
 func (e *TDElement) ISRemove(s string) *TDElement {
 	if e.StringAttributes == nil {
 		return e
@@ -839,7 +841,7 @@ func (e *TDElement) IfITEMID(condition bool, s string) *TDElement {
 	return e
 }
 
-// Remove the attribute itemid from the element.
+// Remove the attribute ITEMID from the element.
 func (e *TDElement) ITEMIDRemove(s string) *TDElement {
 	if e.StringAttributes == nil {
 		return e
@@ -871,7 +873,7 @@ func (e *TDElement) IfITEMPROP(condition bool, s string) *TDElement {
 	return e
 }
 
-// Remove the attribute itemprop from the element.
+// Remove the attribute ITEMPROP from the element.
 func (e *TDElement) ITEMPROPRemove(s string) *TDElement {
 	if e.StringAttributes == nil {
 		return e
@@ -900,7 +902,7 @@ func (e *TDElement) IfITEMREF(condition bool, s string) *TDElement {
 	return e
 }
 
-// Remove the attribute itemref from the element.
+// Remove the attribute ITEMREF from the element.
 func (e *TDElement) ITEMREFRemove(s string) *TDElement {
 	if e.StringAttributes == nil {
 		return e
@@ -929,7 +931,7 @@ func (e *TDElement) IfITEMSCOPE(condition bool) *TDElement {
 	return e
 }
 
-// Set the attribute itemscope to the value b explicitly.
+// Set the attribute ITEMSCOPE to the value b explicitly.
 func (e *TDElement) ITEMSCOPESet(b bool) *TDElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
@@ -945,7 +947,7 @@ func (e *TDElement) IfSetITEMSCOPE(condition bool, b bool) *TDElement {
 	return e
 }
 
-// Remove the attribute itemscope from the element.
+// Remove the attribute ITEMSCOPE from the element.
 func (e *TDElement) ITEMSCOPERemove(b bool) *TDElement {
 	if e.BoolAttributes == nil {
 		return e
@@ -977,7 +979,7 @@ func (e *TDElement) IfITEMTYPE(condition bool, s string) *TDElement {
 	return e
 }
 
-// Remove the attribute itemtype from the element.
+// Remove the attribute ITEMTYPE from the element.
 func (e *TDElement) ITEMTYPERemove(s string) *TDElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1007,7 +1009,7 @@ func (e *TDElement) IfLANG(condition bool, s string) *TDElement {
 	return e
 }
 
-// Remove the attribute lang from the element.
+// Remove the attribute LANG from the element.
 func (e *TDElement) LANGRemove(s string) *TDElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1035,7 +1037,7 @@ func (e *TDElement) IfNONCE(condition bool, s string) *TDElement {
 	return e
 }
 
-// Remove the attribute nonce from the element.
+// Remove the attribute NONCE from the element.
 func (e *TDElement) NONCERemove(s string) *TDElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1068,7 +1070,7 @@ func (e *TDElement) IfPART(condition bool, s ...string) *TDElement {
 	return e
 }
 
-// Remove the attribute part from the element.
+// Remove the attribute PART from the element.
 func (e *TDElement) PARTRemove(s ...string) *TDElement {
 	if e.DelimitedStrings == nil {
 		return e
@@ -1114,7 +1116,7 @@ const (
 	TdPopver_manual TdPopverChoice = "manual"
 )
 
-// Remove the attribute popver from the element.
+// Remove the attribute POPVER from the element.
 func (e *TDElement) POPVERRemove(c TdPopverChoice) *TDElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1142,7 +1144,7 @@ func (e *TDElement) IfSLOT(condition bool, s string) *TDElement {
 	return e
 }
 
-// Remove the attribute slot from the element.
+// Remove the attribute SLOT from the element.
 func (e *TDElement) SLOTRemove(s string) *TDElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1184,7 +1186,7 @@ const (
 	TdSpellcheck_false TdSpellcheckChoice = "false"
 )
 
-// Remove the attribute spellcheck from the element.
+// Remove the attribute SPELLCHECK from the element.
 func (e *TDElement) SPELLCHECKRemove(c TdSpellcheckChoice) *TDElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1271,7 +1273,7 @@ func (e *TDElement) IfSTYLEPairs(condition bool, pairs ...string) *TDElement {
 	return e
 }
 
-// Remove the attribute style from the element.
+// Remove the attribute STYLE from the element.
 func (e *TDElement) STYLERemove(keys ...string) *TDElement {
 	if e.KVStrings == nil {
 		return e
@@ -1315,7 +1317,7 @@ func (e *TDElement) IfTABINDEX(condition bool, i int) *TDElement {
 	return e
 }
 
-// Remove the attribute tabindex from the element.
+// Remove the attribute TABINDEX from the element.
 func (e *TDElement) TABINDEXRemove(i int) *TDElement {
 	if e.IntAttributes == nil {
 		return e
@@ -1360,7 +1362,7 @@ func (e *TDElement) IfTITLE(condition bool, s string) *TDElement {
 	return e
 }
 
-// Remove the attribute title from the element.
+// Remove the attribute TITLE from the element.
 func (e *TDElement) TITLERemove(s string) *TDElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1392,11 +1394,351 @@ const (
 	TdTranslate_no TdTranslateChoice = "no"
 )
 
-// Remove the attribute translate from the element.
+// Remove the attribute TRANSLATE from the element.
 func (e *TDElement) TRANSLATERemove(c TdTranslateChoice) *TDElement {
 	if e.StringAttributes == nil {
 		return e
 	}
 	e.StringAttributes.Del("translate")
+	return e
+}
+
+// Merges the store with the given object
+
+func (e *TDElement) DATASTAR_MERGE_STORE(v any) *TDElement {
+	if e.CustomDataAttributes == nil {
+		e.CustomDataAttributes = treemap.New[string, string]()
+	}
+	b, err := json.Marshal(v)
+	if err != nil {
+		panic(err)
+	}
+	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	return e
+}
+
+// Sets the reference of the element
+
+func (e *TDElement) DATASTAR_REF(s string) *TDElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-ref"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *TDElement) IfDATASTAR_REF(condition bool, s string) *TDElement {
+	if condition {
+		e.DATASTAR_REF(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_REF from the element.
+func (e *TDElement) DATASTAR_REFRemove() *TDElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-ref")
+	return e
+}
+
+// Sets the value of the element
+
+func (e *TDElement) DATASTAR_BIND(s string) *TDElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-bind"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *TDElement) IfDATASTAR_BIND(condition bool, s string) *TDElement {
+	if condition {
+		e.DATASTAR_BIND(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_BIND from the element.
+func (e *TDElement) DATASTAR_BINDRemove() *TDElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-bind")
+	return e
+}
+
+// Sets the value of the element
+
+func (e *TDElement) DATASTAR_MODEL(s string) *TDElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-model"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *TDElement) IfDATASTAR_MODEL(condition bool, s string) *TDElement {
+	if condition {
+		e.DATASTAR_MODEL(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_MODEL from the element.
+func (e *TDElement) DATASTAR_MODELRemove() *TDElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-model")
+	return e
+}
+
+// Sets the textContent of the element
+
+func (e *TDElement) DATASTAR_TEXT(s string) *TDElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-text"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *TDElement) IfDATASTAR_TEXT(condition bool, s string) *TDElement {
+	if condition {
+		e.DATASTAR_TEXT(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_TEXT from the element.
+func (e *TDElement) DATASTAR_TEXTRemove() *TDElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-text")
+	return e
+}
+
+// Sets the event handler of the element
+
+type TdDataOnMod customDataKeyModifier
+
+// Debounces the event handler
+func TdDataOnModDebounce(
+	s string,
+) TdDataOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce_%sms", s)
+	}
+}
+
+// Throttles the event handler
+func TdDataOnModThrottle(
+	s string,
+) TdDataOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle_%sms", s)
+	}
+}
+
+func (e *TDElement) DATASTAR_ON(s string, modifiers ...TdDataOnMod) *TDElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	customMods := lo.Map(modifiers, func(m TdDataOnMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key := customDataKey("data-on", customMods...)
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *TDElement) IfDATASTAR_ON(condition bool, s string, modifiers ...TdDataOnMod) *TDElement {
+	if condition {
+		e.DATASTAR_ON(s, modifiers...)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_ON from the element.
+func (e *TDElement) DATASTAR_ONRemove() *TDElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-on")
+	return e
+}
+
+// Sets the focus of the element
+
+func (e *TDElement) DATASTAR_FOCUSSet(b bool) *TDElement {
+	key := "data-focus"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *TDElement) DATASTAR_FOCUS() *TDElement {
+	return e.DATASTAR_FOCUSSet(true)
+}
+
+// Sets the header of for fetch requests
+
+func (e *TDElement) DATASTAR_HEADER(s string) *TDElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-header"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *TDElement) IfDATASTAR_HEADER(condition bool, s string) *TDElement {
+	if condition {
+		e.DATASTAR_HEADER(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_HEADER from the element.
+func (e *TDElement) DATASTAR_HEADERRemove() *TDElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-header")
+	return e
+}
+
+// Sets the URL for fetch requests
+
+func (e *TDElement) DATASTAR_FETCH_URL(s string) *TDElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-fetch-url"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *TDElement) IfDATASTAR_FETCH_URL(condition bool, s string) *TDElement {
+	if condition {
+		e.DATASTAR_FETCH_URL(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_FETCH_URL from the element.
+func (e *TDElement) DATASTAR_FETCH_URLRemove() *TDElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-fetch-url")
+	return e
+}
+
+// Sets the indicator selector for fetch requests
+
+func (e *TDElement) DATASTAR_FETCH_INDICATOR(s string) *TDElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "DatastarFetchIndicator"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *TDElement) IfDATASTAR_FETCH_INDICATOR(condition bool, s string) *TDElement {
+	if condition {
+		e.DATASTAR_FETCH_INDICATOR(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_FETCH_INDICATOR from the element.
+func (e *TDElement) DATASTAR_FETCH_INDICATORRemove() *TDElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("DatastarFetchIndicator")
+	return e
+}
+
+// Sets the visibility of the element
+
+func (e *TDElement) DATASTAR_SHOWSet(b bool) *TDElement {
+	key := "data-show"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *TDElement) DATASTAR_SHOW() *TDElement {
+	return e.DATASTAR_SHOWSet(true)
+}
+
+// Triggers the callback when the element intersects the viewport
+
+func (e *TDElement) DATASTAR_INTERSECTSSet(b bool) *TDElement {
+	key := "data-intersects"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *TDElement) DATASTAR_INTERSECTS() *TDElement {
+	return e.DATASTAR_INTERSECTSSet(true)
+}
+
+// Teleports the element to the given selector
+
+func (e *TDElement) DATASTAR_TELEPORTSet(b bool) *TDElement {
+	key := "data-teleport"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *TDElement) DATASTAR_TELEPORT() *TDElement {
+	return e.DATASTAR_TELEPORTSet(true)
+}
+
+// Scrolls the element into view
+
+func (e *TDElement) DATASTAR_SCROLL_INTO_VIEWSet(b bool) *TDElement {
+	key := "data-scroll-into-view"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *TDElement) DATASTAR_SCROLL_INTO_VIEW() *TDElement {
+	return e.DATASTAR_SCROLL_INTO_VIEWSet(true)
+}
+
+// Setup the ViewTransitionAPI for the element
+
+func (e *TDElement) DATASTAR_VIEW_TRANSITION(s string) *TDElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-view-transition"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *TDElement) IfDATASTAR_VIEW_TRANSITION(condition bool, s string) *TDElement {
+	if condition {
+		e.DATASTAR_VIEW_TRANSITION(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_VIEW_TRANSITION from the element.
+func (e *TDElement) DATASTAR_VIEW_TRANSITIONRemove() *TDElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-view-transition")
 	return e
 }

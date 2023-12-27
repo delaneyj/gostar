@@ -6,7 +6,9 @@ package elements
 import (
 	"fmt"
 
+	"github.com/goccy/go-json"
 	"github.com/igrmk/treemap/v2"
+	"github.com/samber/lo"
 )
 
 // The HTML <button> element represents a clickable button, used to submit forms
@@ -141,7 +143,7 @@ func (e *BUTTONElement) IfAUTOFOCUS(condition bool) *BUTTONElement {
 	return e
 }
 
-// Set the attribute autofocus to the value b explicitly.
+// Set the attribute AUTOFOCUS to the value b explicitly.
 func (e *BUTTONElement) AUTOFOCUSSet(b bool) *BUTTONElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
@@ -157,7 +159,7 @@ func (e *BUTTONElement) IfSetAUTOFOCUS(condition bool, b bool) *BUTTONElement {
 	return e
 }
 
-// Remove the attribute autofocus from the element.
+// Remove the attribute AUTOFOCUS from the element.
 func (e *BUTTONElement) AUTOFOCUSRemove(b bool) *BUTTONElement {
 	if e.BoolAttributes == nil {
 		return e
@@ -179,7 +181,7 @@ func (e *BUTTONElement) IfDISABLED(condition bool) *BUTTONElement {
 	return e
 }
 
-// Set the attribute disabled to the value b explicitly.
+// Set the attribute DISABLED to the value b explicitly.
 func (e *BUTTONElement) DISABLEDSet(b bool) *BUTTONElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
@@ -195,7 +197,7 @@ func (e *BUTTONElement) IfSetDISABLED(condition bool, b bool) *BUTTONElement {
 	return e
 }
 
-// Remove the attribute disabled from the element.
+// Remove the attribute DISABLED from the element.
 func (e *BUTTONElement) DISABLEDRemove(b bool) *BUTTONElement {
 	if e.BoolAttributes == nil {
 		return e
@@ -220,7 +222,7 @@ func (e *BUTTONElement) IfFORM(condition bool, s string) *BUTTONElement {
 	return e
 }
 
-// Remove the attribute form from the element.
+// Remove the attribute FORM from the element.
 func (e *BUTTONElement) FORMRemove(s string) *BUTTONElement {
 	if e.StringAttributes == nil {
 		return e
@@ -246,7 +248,7 @@ func (e *BUTTONElement) IfFORMACTION(condition bool, s string) *BUTTONElement {
 	return e
 }
 
-// Remove the attribute formaction from the element.
+// Remove the attribute FORMACTION from the element.
 func (e *BUTTONElement) FORMACTIONRemove(s string) *BUTTONElement {
 	if e.StringAttributes == nil {
 		return e
@@ -277,7 +279,7 @@ const (
 	ButtonFormenctype_text_plain ButtonFormenctypeChoice = "text/plain"
 )
 
-// Remove the attribute formenctype from the element.
+// Remove the attribute FORMENCTYPE from the element.
 func (e *BUTTONElement) FORMENCTYPERemove(c ButtonFormenctypeChoice) *BUTTONElement {
 	if e.StringAttributes == nil {
 		return e
@@ -312,7 +314,7 @@ const (
 	ButtonFormmethod_dialog ButtonFormmethodChoice = "dialog"
 )
 
-// Remove the attribute formmethod from the element.
+// Remove the attribute FORMMETHOD from the element.
 func (e *BUTTONElement) FORMMETHODRemove(c ButtonFormmethodChoice) *BUTTONElement {
 	if e.StringAttributes == nil {
 		return e
@@ -337,7 +339,7 @@ func (e *BUTTONElement) IfFORMNOVALIDATE(condition bool) *BUTTONElement {
 	return e
 }
 
-// Set the attribute formnovalidate to the value b explicitly.
+// Set the attribute FORMNOVALIDATE to the value b explicitly.
 func (e *BUTTONElement) FORMNOVALIDATESet(b bool) *BUTTONElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
@@ -353,7 +355,7 @@ func (e *BUTTONElement) IfSetFORMNOVALIDATE(condition bool, b bool) *BUTTONEleme
 	return e
 }
 
-// Remove the attribute formnovalidate from the element.
+// Remove the attribute FORMNOVALIDATE from the element.
 func (e *BUTTONElement) FORMNOVALIDATERemove(b bool) *BUTTONElement {
 	if e.BoolAttributes == nil {
 		return e
@@ -395,7 +397,7 @@ const (
 	ButtonFormtarget__top ButtonFormtargetChoice = "_top"
 )
 
-// Remove the attribute formtarget from the element.
+// Remove the attribute FORMTARGET from the element.
 func (e *BUTTONElement) FORMTARGETRemove(c ButtonFormtargetChoice) *BUTTONElement {
 	if e.StringAttributes == nil {
 		return e
@@ -420,7 +422,7 @@ func (e *BUTTONElement) IfNAME(condition bool, s string) *BUTTONElement {
 	return e
 }
 
-// Remove the attribute name from the element.
+// Remove the attribute NAME from the element.
 func (e *BUTTONElement) NAMERemove(s string) *BUTTONElement {
 	if e.StringAttributes == nil {
 		return e
@@ -447,7 +449,7 @@ func (e *BUTTONElement) IfPOPOVERTARGET(condition bool, s string) *BUTTONElement
 	return e
 }
 
-// Remove the attribute popovertarget from the element.
+// Remove the attribute POPOVERTARGET from the element.
 func (e *BUTTONElement) POPOVERTARGETRemove(s string) *BUTTONElement {
 	if e.StringAttributes == nil {
 		return e
@@ -477,7 +479,7 @@ const (
 	ButtonPopovertargetaction_hide ButtonPopovertargetactionChoice = "hide"
 )
 
-// Remove the attribute popovertargetaction from the element.
+// Remove the attribute POPOVERTARGETACTION from the element.
 func (e *BUTTONElement) POPOVERTARGETACTIONRemove(c ButtonPopovertargetactionChoice) *BUTTONElement {
 	if e.StringAttributes == nil {
 		return e
@@ -511,7 +513,7 @@ const (
 	ButtonType_submit ButtonTypeChoice = "submit"
 )
 
-// Remove the attribute type from the element.
+// Remove the attribute TYPE from the element.
 func (e *BUTTONElement) TYPERemove(c ButtonTypeChoice) *BUTTONElement {
 	if e.StringAttributes == nil {
 		return e
@@ -538,7 +540,7 @@ func (e *BUTTONElement) IfVALUE(condition bool, s string) *BUTTONElement {
 	return e
 }
 
-// Remove the attribute value from the element.
+// Remove the attribute VALUE from the element.
 func (e *BUTTONElement) VALUERemove(s string) *BUTTONElement {
 	if e.StringAttributes == nil {
 		return e
@@ -566,7 +568,7 @@ func (e *BUTTONElement) IfACCESSKEY(condition bool, r rune) *BUTTONElement {
 	return e
 }
 
-// Remove the attribute accesskey from the element.
+// Remove the attribute ACCESSKEY from the element.
 func (e *BUTTONElement) ACCESSKEYRemove() *BUTTONElement {
 	if e.StringAttributes == nil {
 		return e
@@ -614,7 +616,7 @@ const (
 	ButtonAutocapitalize_characters ButtonAutocapitalizeChoice = "characters"
 )
 
-// Remove the attribute autocapitalize from the element.
+// Remove the attribute AUTOCAPITALIZE from the element.
 func (e *BUTTONElement) AUTOCAPITALIZERemove(c ButtonAutocapitalizeChoice) *BUTTONElement {
 	if e.StringAttributes == nil {
 		return e
@@ -648,7 +650,7 @@ func (e *BUTTONElement) IfCLASS(condition bool, s ...string) *BUTTONElement {
 	return e
 }
 
-// Remove the attribute class from the element.
+// Remove the attribute CLASS from the element.
 func (e *BUTTONElement) CLASSRemove(s ...string) *BUTTONElement {
 	if e.DelimitedStrings == nil {
 		return e
@@ -686,7 +688,7 @@ const (
 	ButtonContenteditable_plaintext_only ButtonContenteditableChoice = "plaintext-only"
 )
 
-// Remove the attribute contenteditable from the element.
+// Remove the attribute CONTENTEDITABLE from the element.
 func (e *BUTTONElement) CONTENTEDITABLERemove(c ButtonContenteditableChoice) *BUTTONElement {
 	if e.StringAttributes == nil {
 		return e
@@ -734,7 +736,7 @@ const (
 	ButtonDir_auto ButtonDirChoice = "auto"
 )
 
-// Remove the attribute dir from the element.
+// Remove the attribute DIR from the element.
 func (e *BUTTONElement) DIRRemove(c ButtonDirChoice) *BUTTONElement {
 	if e.StringAttributes == nil {
 		return e
@@ -771,7 +773,7 @@ const (
 	ButtonDraggable_auto ButtonDraggableChoice = "auto"
 )
 
-// Remove the attribute draggable from the element.
+// Remove the attribute DRAGGABLE from the element.
 func (e *BUTTONElement) DRAGGABLERemove(c ButtonDraggableChoice) *BUTTONElement {
 	if e.StringAttributes == nil {
 		return e
@@ -811,7 +813,7 @@ const (
 	ButtonEnterkeyhint_send ButtonEnterkeyhintChoice = "send"
 )
 
-// Remove the attribute enterkeyhint from the element.
+// Remove the attribute ENTERKEYHINT from the element.
 func (e *BUTTONElement) ENTERKEYHINTRemove(c ButtonEnterkeyhintChoice) *BUTTONElement {
 	if e.StringAttributes == nil {
 		return e
@@ -860,7 +862,7 @@ func (e *BUTTONElement) IfEXPORTPARTS(condition bool, s ...string) *BUTTONElemen
 	return e
 }
 
-// Remove the attribute exportparts from the element.
+// Remove the attribute EXPORTPARTS from the element.
 func (e *BUTTONElement) EXPORTPARTSRemove(s ...string) *BUTTONElement {
 	if e.DelimitedStrings == nil {
 		return e
@@ -914,7 +916,7 @@ const (
 	ButtonHidden_until_found ButtonHiddenChoice = "until-found"
 )
 
-// Remove the attribute hidden from the element.
+// Remove the attribute HIDDEN from the element.
 func (e *BUTTONElement) HIDDENRemove(c ButtonHiddenChoice) *BUTTONElement {
 	if e.StringAttributes == nil {
 		return e
@@ -942,7 +944,7 @@ func (e *BUTTONElement) IfID(condition bool, s string) *BUTTONElement {
 	return e
 }
 
-// Remove the attribute id from the element.
+// Remove the attribute ID from the element.
 func (e *BUTTONElement) IDRemove(s string) *BUTTONElement {
 	if e.StringAttributes == nil {
 		return e
@@ -975,7 +977,7 @@ func (e *BUTTONElement) IfINERT(condition bool) *BUTTONElement {
 	return e
 }
 
-// Set the attribute inert to the value b explicitly.
+// Set the attribute INERT to the value b explicitly.
 func (e *BUTTONElement) INERTSet(b bool) *BUTTONElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
@@ -991,7 +993,7 @@ func (e *BUTTONElement) IfSetINERT(condition bool, b bool) *BUTTONElement {
 	return e
 }
 
-// Remove the attribute inert from the element.
+// Remove the attribute INERT from the element.
 func (e *BUTTONElement) INERTRemove(b bool) *BUTTONElement {
 	if e.BoolAttributes == nil {
 		return e
@@ -1060,7 +1062,7 @@ const (
 	ButtonInputmode_url ButtonInputmodeChoice = "url"
 )
 
-// Remove the attribute inputmode from the element.
+// Remove the attribute INPUTMODE from the element.
 func (e *BUTTONElement) INPUTMODERemove(c ButtonInputmodeChoice) *BUTTONElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1090,7 +1092,7 @@ func (e *BUTTONElement) IfIS(condition bool, s string) *BUTTONElement {
 	return e
 }
 
-// Remove the attribute is from the element.
+// Remove the attribute IS from the element.
 func (e *BUTTONElement) ISRemove(s string) *BUTTONElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1127,7 +1129,7 @@ func (e *BUTTONElement) IfITEMID(condition bool, s string) *BUTTONElement {
 	return e
 }
 
-// Remove the attribute itemid from the element.
+// Remove the attribute ITEMID from the element.
 func (e *BUTTONElement) ITEMIDRemove(s string) *BUTTONElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1159,7 +1161,7 @@ func (e *BUTTONElement) IfITEMPROP(condition bool, s string) *BUTTONElement {
 	return e
 }
 
-// Remove the attribute itemprop from the element.
+// Remove the attribute ITEMPROP from the element.
 func (e *BUTTONElement) ITEMPROPRemove(s string) *BUTTONElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1188,7 +1190,7 @@ func (e *BUTTONElement) IfITEMREF(condition bool, s string) *BUTTONElement {
 	return e
 }
 
-// Remove the attribute itemref from the element.
+// Remove the attribute ITEMREF from the element.
 func (e *BUTTONElement) ITEMREFRemove(s string) *BUTTONElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1217,7 +1219,7 @@ func (e *BUTTONElement) IfITEMSCOPE(condition bool) *BUTTONElement {
 	return e
 }
 
-// Set the attribute itemscope to the value b explicitly.
+// Set the attribute ITEMSCOPE to the value b explicitly.
 func (e *BUTTONElement) ITEMSCOPESet(b bool) *BUTTONElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
@@ -1233,7 +1235,7 @@ func (e *BUTTONElement) IfSetITEMSCOPE(condition bool, b bool) *BUTTONElement {
 	return e
 }
 
-// Remove the attribute itemscope from the element.
+// Remove the attribute ITEMSCOPE from the element.
 func (e *BUTTONElement) ITEMSCOPERemove(b bool) *BUTTONElement {
 	if e.BoolAttributes == nil {
 		return e
@@ -1265,7 +1267,7 @@ func (e *BUTTONElement) IfITEMTYPE(condition bool, s string) *BUTTONElement {
 	return e
 }
 
-// Remove the attribute itemtype from the element.
+// Remove the attribute ITEMTYPE from the element.
 func (e *BUTTONElement) ITEMTYPERemove(s string) *BUTTONElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1295,7 +1297,7 @@ func (e *BUTTONElement) IfLANG(condition bool, s string) *BUTTONElement {
 	return e
 }
 
-// Remove the attribute lang from the element.
+// Remove the attribute LANG from the element.
 func (e *BUTTONElement) LANGRemove(s string) *BUTTONElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1323,7 +1325,7 @@ func (e *BUTTONElement) IfNONCE(condition bool, s string) *BUTTONElement {
 	return e
 }
 
-// Remove the attribute nonce from the element.
+// Remove the attribute NONCE from the element.
 func (e *BUTTONElement) NONCERemove(s string) *BUTTONElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1356,7 +1358,7 @@ func (e *BUTTONElement) IfPART(condition bool, s ...string) *BUTTONElement {
 	return e
 }
 
-// Remove the attribute part from the element.
+// Remove the attribute PART from the element.
 func (e *BUTTONElement) PARTRemove(s ...string) *BUTTONElement {
 	if e.DelimitedStrings == nil {
 		return e
@@ -1402,7 +1404,7 @@ const (
 	ButtonPopver_manual ButtonPopverChoice = "manual"
 )
 
-// Remove the attribute popver from the element.
+// Remove the attribute POPVER from the element.
 func (e *BUTTONElement) POPVERRemove(c ButtonPopverChoice) *BUTTONElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1430,7 +1432,7 @@ func (e *BUTTONElement) IfSLOT(condition bool, s string) *BUTTONElement {
 	return e
 }
 
-// Remove the attribute slot from the element.
+// Remove the attribute SLOT from the element.
 func (e *BUTTONElement) SLOTRemove(s string) *BUTTONElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1472,7 +1474,7 @@ const (
 	ButtonSpellcheck_false ButtonSpellcheckChoice = "false"
 )
 
-// Remove the attribute spellcheck from the element.
+// Remove the attribute SPELLCHECK from the element.
 func (e *BUTTONElement) SPELLCHECKRemove(c ButtonSpellcheckChoice) *BUTTONElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1559,7 +1561,7 @@ func (e *BUTTONElement) IfSTYLEPairs(condition bool, pairs ...string) *BUTTONEle
 	return e
 }
 
-// Remove the attribute style from the element.
+// Remove the attribute STYLE from the element.
 func (e *BUTTONElement) STYLERemove(keys ...string) *BUTTONElement {
 	if e.KVStrings == nil {
 		return e
@@ -1603,7 +1605,7 @@ func (e *BUTTONElement) IfTABINDEX(condition bool, i int) *BUTTONElement {
 	return e
 }
 
-// Remove the attribute tabindex from the element.
+// Remove the attribute TABINDEX from the element.
 func (e *BUTTONElement) TABINDEXRemove(i int) *BUTTONElement {
 	if e.IntAttributes == nil {
 		return e
@@ -1648,7 +1650,7 @@ func (e *BUTTONElement) IfTITLE(condition bool, s string) *BUTTONElement {
 	return e
 }
 
-// Remove the attribute title from the element.
+// Remove the attribute TITLE from the element.
 func (e *BUTTONElement) TITLERemove(s string) *BUTTONElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1680,11 +1682,351 @@ const (
 	ButtonTranslate_no ButtonTranslateChoice = "no"
 )
 
-// Remove the attribute translate from the element.
+// Remove the attribute TRANSLATE from the element.
 func (e *BUTTONElement) TRANSLATERemove(c ButtonTranslateChoice) *BUTTONElement {
 	if e.StringAttributes == nil {
 		return e
 	}
 	e.StringAttributes.Del("translate")
+	return e
+}
+
+// Merges the store with the given object
+
+func (e *BUTTONElement) DATASTAR_MERGE_STORE(v any) *BUTTONElement {
+	if e.CustomDataAttributes == nil {
+		e.CustomDataAttributes = treemap.New[string, string]()
+	}
+	b, err := json.Marshal(v)
+	if err != nil {
+		panic(err)
+	}
+	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	return e
+}
+
+// Sets the reference of the element
+
+func (e *BUTTONElement) DATASTAR_REF(s string) *BUTTONElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-ref"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *BUTTONElement) IfDATASTAR_REF(condition bool, s string) *BUTTONElement {
+	if condition {
+		e.DATASTAR_REF(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_REF from the element.
+func (e *BUTTONElement) DATASTAR_REFRemove() *BUTTONElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-ref")
+	return e
+}
+
+// Sets the value of the element
+
+func (e *BUTTONElement) DATASTAR_BIND(s string) *BUTTONElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-bind"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *BUTTONElement) IfDATASTAR_BIND(condition bool, s string) *BUTTONElement {
+	if condition {
+		e.DATASTAR_BIND(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_BIND from the element.
+func (e *BUTTONElement) DATASTAR_BINDRemove() *BUTTONElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-bind")
+	return e
+}
+
+// Sets the value of the element
+
+func (e *BUTTONElement) DATASTAR_MODEL(s string) *BUTTONElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-model"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *BUTTONElement) IfDATASTAR_MODEL(condition bool, s string) *BUTTONElement {
+	if condition {
+		e.DATASTAR_MODEL(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_MODEL from the element.
+func (e *BUTTONElement) DATASTAR_MODELRemove() *BUTTONElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-model")
+	return e
+}
+
+// Sets the textContent of the element
+
+func (e *BUTTONElement) DATASTAR_TEXT(s string) *BUTTONElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-text"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *BUTTONElement) IfDATASTAR_TEXT(condition bool, s string) *BUTTONElement {
+	if condition {
+		e.DATASTAR_TEXT(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_TEXT from the element.
+func (e *BUTTONElement) DATASTAR_TEXTRemove() *BUTTONElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-text")
+	return e
+}
+
+// Sets the event handler of the element
+
+type ButtonDataOnMod customDataKeyModifier
+
+// Debounces the event handler
+func ButtonDataOnModDebounce(
+	s string,
+) ButtonDataOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce_%sms", s)
+	}
+}
+
+// Throttles the event handler
+func ButtonDataOnModThrottle(
+	s string,
+) ButtonDataOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle_%sms", s)
+	}
+}
+
+func (e *BUTTONElement) DATASTAR_ON(s string, modifiers ...ButtonDataOnMod) *BUTTONElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	customMods := lo.Map(modifiers, func(m ButtonDataOnMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key := customDataKey("data-on", customMods...)
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *BUTTONElement) IfDATASTAR_ON(condition bool, s string, modifiers ...ButtonDataOnMod) *BUTTONElement {
+	if condition {
+		e.DATASTAR_ON(s, modifiers...)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_ON from the element.
+func (e *BUTTONElement) DATASTAR_ONRemove() *BUTTONElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-on")
+	return e
+}
+
+// Sets the focus of the element
+
+func (e *BUTTONElement) DATASTAR_FOCUSSet(b bool) *BUTTONElement {
+	key := "data-focus"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *BUTTONElement) DATASTAR_FOCUS() *BUTTONElement {
+	return e.DATASTAR_FOCUSSet(true)
+}
+
+// Sets the header of for fetch requests
+
+func (e *BUTTONElement) DATASTAR_HEADER(s string) *BUTTONElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-header"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *BUTTONElement) IfDATASTAR_HEADER(condition bool, s string) *BUTTONElement {
+	if condition {
+		e.DATASTAR_HEADER(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_HEADER from the element.
+func (e *BUTTONElement) DATASTAR_HEADERRemove() *BUTTONElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-header")
+	return e
+}
+
+// Sets the URL for fetch requests
+
+func (e *BUTTONElement) DATASTAR_FETCH_URL(s string) *BUTTONElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-fetch-url"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *BUTTONElement) IfDATASTAR_FETCH_URL(condition bool, s string) *BUTTONElement {
+	if condition {
+		e.DATASTAR_FETCH_URL(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_FETCH_URL from the element.
+func (e *BUTTONElement) DATASTAR_FETCH_URLRemove() *BUTTONElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-fetch-url")
+	return e
+}
+
+// Sets the indicator selector for fetch requests
+
+func (e *BUTTONElement) DATASTAR_FETCH_INDICATOR(s string) *BUTTONElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "DatastarFetchIndicator"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *BUTTONElement) IfDATASTAR_FETCH_INDICATOR(condition bool, s string) *BUTTONElement {
+	if condition {
+		e.DATASTAR_FETCH_INDICATOR(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_FETCH_INDICATOR from the element.
+func (e *BUTTONElement) DATASTAR_FETCH_INDICATORRemove() *BUTTONElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("DatastarFetchIndicator")
+	return e
+}
+
+// Sets the visibility of the element
+
+func (e *BUTTONElement) DATASTAR_SHOWSet(b bool) *BUTTONElement {
+	key := "data-show"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *BUTTONElement) DATASTAR_SHOW() *BUTTONElement {
+	return e.DATASTAR_SHOWSet(true)
+}
+
+// Triggers the callback when the element intersects the viewport
+
+func (e *BUTTONElement) DATASTAR_INTERSECTSSet(b bool) *BUTTONElement {
+	key := "data-intersects"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *BUTTONElement) DATASTAR_INTERSECTS() *BUTTONElement {
+	return e.DATASTAR_INTERSECTSSet(true)
+}
+
+// Teleports the element to the given selector
+
+func (e *BUTTONElement) DATASTAR_TELEPORTSet(b bool) *BUTTONElement {
+	key := "data-teleport"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *BUTTONElement) DATASTAR_TELEPORT() *BUTTONElement {
+	return e.DATASTAR_TELEPORTSet(true)
+}
+
+// Scrolls the element into view
+
+func (e *BUTTONElement) DATASTAR_SCROLL_INTO_VIEWSet(b bool) *BUTTONElement {
+	key := "data-scroll-into-view"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *BUTTONElement) DATASTAR_SCROLL_INTO_VIEW() *BUTTONElement {
+	return e.DATASTAR_SCROLL_INTO_VIEWSet(true)
+}
+
+// Setup the ViewTransitionAPI for the element
+
+func (e *BUTTONElement) DATASTAR_VIEW_TRANSITION(s string) *BUTTONElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-view-transition"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *BUTTONElement) IfDATASTAR_VIEW_TRANSITION(condition bool, s string) *BUTTONElement {
+	if condition {
+		e.DATASTAR_VIEW_TRANSITION(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_VIEW_TRANSITION from the element.
+func (e *BUTTONElement) DATASTAR_VIEW_TRANSITIONRemove() *BUTTONElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-view-transition")
 	return e
 }

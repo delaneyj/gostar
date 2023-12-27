@@ -6,7 +6,9 @@ package elements
 import (
 	"fmt"
 
+	"github.com/goccy/go-json"
 	"github.com/igrmk/treemap/v2"
+	"github.com/samber/lo"
 )
 
 // The <switch> SVG element evaluates the requiredFeatures, requiredExtensions and
@@ -135,7 +137,7 @@ func (e *SVGSWITCHElement) CustomDataRemove(key string) *SVGSWITCHElement {
 // A space-separated list of required features, indicating that the parent SVG
 // document must include support for all of the specified features for this
 // element to be valid.
-func (e *SVGSWITCHElement) REQUIREDFEATURES(s string) *SVGSWITCHElement {
+func (e *SVGSWITCHElement) REQUIRED_FEATURES(s string) *SVGSWITCHElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
@@ -143,15 +145,15 @@ func (e *SVGSWITCHElement) REQUIREDFEATURES(s string) *SVGSWITCHElement {
 	return e
 }
 
-func (e *SVGSWITCHElement) IfREQUIREDFEATURES(condition bool, s string) *SVGSWITCHElement {
+func (e *SVGSWITCHElement) IfREQUIRED_FEATURES(condition bool, s string) *SVGSWITCHElement {
 	if condition {
-		e.REQUIREDFEATURES(s)
+		e.REQUIRED_FEATURES(s)
 	}
 	return e
 }
 
-// Remove the attribute requiredFeatures from the element.
-func (e *SVGSWITCHElement) REQUIREDFEATURESRemove(s string) *SVGSWITCHElement {
+// Remove the attribute REQUIRED_FEATURES from the element.
+func (e *SVGSWITCHElement) REQUIRED_FEATURESRemove(s string) *SVGSWITCHElement {
 	if e.StringAttributes == nil {
 		return e
 	}
@@ -161,7 +163,7 @@ func (e *SVGSWITCHElement) REQUIREDFEATURESRemove(s string) *SVGSWITCHElement {
 
 // A space-separated list of required extensions, indicating that the parent SVG
 // document must include the specified extensions for this element to be valid.
-func (e *SVGSWITCHElement) REQUIREDEXTENSIONS(s string) *SVGSWITCHElement {
+func (e *SVGSWITCHElement) REQUIRED_EXTENSIONS(s string) *SVGSWITCHElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
@@ -169,15 +171,15 @@ func (e *SVGSWITCHElement) REQUIREDEXTENSIONS(s string) *SVGSWITCHElement {
 	return e
 }
 
-func (e *SVGSWITCHElement) IfREQUIREDEXTENSIONS(condition bool, s string) *SVGSWITCHElement {
+func (e *SVGSWITCHElement) IfREQUIRED_EXTENSIONS(condition bool, s string) *SVGSWITCHElement {
 	if condition {
-		e.REQUIREDEXTENSIONS(s)
+		e.REQUIRED_EXTENSIONS(s)
 	}
 	return e
 }
 
-// Remove the attribute requiredExtensions from the element.
-func (e *SVGSWITCHElement) REQUIREDEXTENSIONSRemove(s string) *SVGSWITCHElement {
+// Remove the attribute REQUIRED_EXTENSIONS from the element.
+func (e *SVGSWITCHElement) REQUIRED_EXTENSIONSRemove(s string) *SVGSWITCHElement {
 	if e.StringAttributes == nil {
 		return e
 	}
@@ -188,7 +190,7 @@ func (e *SVGSWITCHElement) REQUIREDEXTENSIONSRemove(s string) *SVGSWITCHElement 
 // A space-separated list of language codes, indicating that the parent SVG
 // document must include support for all of the specified languages for this
 // element to be valid.
-func (e *SVGSWITCHElement) SYSTEMLANGUAGE(s string) *SVGSWITCHElement {
+func (e *SVGSWITCHElement) SYSTEM_LANGUAGE(s string) *SVGSWITCHElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
@@ -196,19 +198,44 @@ func (e *SVGSWITCHElement) SYSTEMLANGUAGE(s string) *SVGSWITCHElement {
 	return e
 }
 
-func (e *SVGSWITCHElement) IfSYSTEMLANGUAGE(condition bool, s string) *SVGSWITCHElement {
+func (e *SVGSWITCHElement) IfSYSTEM_LANGUAGE(condition bool, s string) *SVGSWITCHElement {
 	if condition {
-		e.SYSTEMLANGUAGE(s)
+		e.SYSTEM_LANGUAGE(s)
 	}
 	return e
 }
 
-// Remove the attribute systemLanguage from the element.
-func (e *SVGSWITCHElement) SYSTEMLANGUAGERemove(s string) *SVGSWITCHElement {
+// Remove the attribute SYSTEM_LANGUAGE from the element.
+func (e *SVGSWITCHElement) SYSTEM_LANGUAGERemove(s string) *SVGSWITCHElement {
 	if e.StringAttributes == nil {
 		return e
 	}
 	e.StringAttributes.Del("systemLanguage")
+	return e
+}
+
+// Specifies a unique id for an element
+func (e *SVGSWITCHElement) ID(s string) *SVGSWITCHElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	e.StringAttributes.Set("id", s)
+	return e
+}
+
+func (e *SVGSWITCHElement) IfID(condition bool, s string) *SVGSWITCHElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
+// Remove the attribute ID from the element.
+func (e *SVGSWITCHElement) IDRemove(s string) *SVGSWITCHElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("id")
 	return e
 }
 
@@ -234,7 +261,7 @@ func (e *SVGSWITCHElement) IfCLASS(condition bool, s ...string) *SVGSWITCHElemen
 	return e
 }
 
-// Remove the attribute class from the element.
+// Remove the attribute CLASS from the element.
 func (e *SVGSWITCHElement) CLASSRemove(s ...string) *SVGSWITCHElement {
 	if e.DelimitedStrings == nil {
 		return e
@@ -244,31 +271,6 @@ func (e *SVGSWITCHElement) CLASSRemove(s ...string) *SVGSWITCHElement {
 		return e
 	}
 	ds.Remove(s...)
-	return e
-}
-
-// Specifies a unique id for an element
-func (e *SVGSWITCHElement) ID(s string) *SVGSWITCHElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	e.StringAttributes.Set("id", s)
-	return e
-}
-
-func (e *SVGSWITCHElement) IfID(condition bool, s string) *SVGSWITCHElement {
-	if condition {
-		e.ID(s)
-	}
-	return e
-}
-
-// Remove the attribute id from the element.
-func (e *SVGSWITCHElement) IDRemove(s string) *SVGSWITCHElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("id")
 	return e
 }
 
@@ -348,7 +350,7 @@ func (e *SVGSWITCHElement) IfSTYLEPairs(condition bool, pairs ...string) *SVGSWI
 	return e
 }
 
-// Remove the attribute style from the element.
+// Remove the attribute STYLE from the element.
 func (e *SVGSWITCHElement) STYLERemove(keys ...string) *SVGSWITCHElement {
 	if e.KVStrings == nil {
 		return e
@@ -360,5 +362,345 @@ func (e *SVGSWITCHElement) STYLERemove(keys ...string) *SVGSWITCHElement {
 	for _, k := range keys {
 		kv.Remove(k)
 	}
+	return e
+}
+
+// Merges the store with the given object
+
+func (e *SVGSWITCHElement) DATASTAR_MERGE_STORE(v any) *SVGSWITCHElement {
+	if e.CustomDataAttributes == nil {
+		e.CustomDataAttributes = treemap.New[string, string]()
+	}
+	b, err := json.Marshal(v)
+	if err != nil {
+		panic(err)
+	}
+	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	return e
+}
+
+// Sets the reference of the element
+
+func (e *SVGSWITCHElement) DATASTAR_REF(s string) *SVGSWITCHElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-ref"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SVGSWITCHElement) IfDATASTAR_REF(condition bool, s string) *SVGSWITCHElement {
+	if condition {
+		e.DATASTAR_REF(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_REF from the element.
+func (e *SVGSWITCHElement) DATASTAR_REFRemove() *SVGSWITCHElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-ref")
+	return e
+}
+
+// Sets the value of the element
+
+func (e *SVGSWITCHElement) DATASTAR_BIND(s string) *SVGSWITCHElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-bind"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SVGSWITCHElement) IfDATASTAR_BIND(condition bool, s string) *SVGSWITCHElement {
+	if condition {
+		e.DATASTAR_BIND(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_BIND from the element.
+func (e *SVGSWITCHElement) DATASTAR_BINDRemove() *SVGSWITCHElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-bind")
+	return e
+}
+
+// Sets the value of the element
+
+func (e *SVGSWITCHElement) DATASTAR_MODEL(s string) *SVGSWITCHElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-model"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SVGSWITCHElement) IfDATASTAR_MODEL(condition bool, s string) *SVGSWITCHElement {
+	if condition {
+		e.DATASTAR_MODEL(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_MODEL from the element.
+func (e *SVGSWITCHElement) DATASTAR_MODELRemove() *SVGSWITCHElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-model")
+	return e
+}
+
+// Sets the textContent of the element
+
+func (e *SVGSWITCHElement) DATASTAR_TEXT(s string) *SVGSWITCHElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-text"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SVGSWITCHElement) IfDATASTAR_TEXT(condition bool, s string) *SVGSWITCHElement {
+	if condition {
+		e.DATASTAR_TEXT(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_TEXT from the element.
+func (e *SVGSWITCHElement) DATASTAR_TEXTRemove() *SVGSWITCHElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-text")
+	return e
+}
+
+// Sets the event handler of the element
+
+type SVGSwitchDataOnMod customDataKeyModifier
+
+// Debounces the event handler
+func SVGSwitchDataOnModDebounce(
+	s string,
+) SVGSwitchDataOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce_%sms", s)
+	}
+}
+
+// Throttles the event handler
+func SVGSwitchDataOnModThrottle(
+	s string,
+) SVGSwitchDataOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle_%sms", s)
+	}
+}
+
+func (e *SVGSWITCHElement) DATASTAR_ON(s string, modifiers ...SVGSwitchDataOnMod) *SVGSWITCHElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	customMods := lo.Map(modifiers, func(m SVGSwitchDataOnMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key := customDataKey("data-on", customMods...)
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SVGSWITCHElement) IfDATASTAR_ON(condition bool, s string, modifiers ...SVGSwitchDataOnMod) *SVGSWITCHElement {
+	if condition {
+		e.DATASTAR_ON(s, modifiers...)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_ON from the element.
+func (e *SVGSWITCHElement) DATASTAR_ONRemove() *SVGSWITCHElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-on")
+	return e
+}
+
+// Sets the focus of the element
+
+func (e *SVGSWITCHElement) DATASTAR_FOCUSSet(b bool) *SVGSWITCHElement {
+	key := "data-focus"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *SVGSWITCHElement) DATASTAR_FOCUS() *SVGSWITCHElement {
+	return e.DATASTAR_FOCUSSet(true)
+}
+
+// Sets the header of for fetch requests
+
+func (e *SVGSWITCHElement) DATASTAR_HEADER(s string) *SVGSWITCHElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-header"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SVGSWITCHElement) IfDATASTAR_HEADER(condition bool, s string) *SVGSWITCHElement {
+	if condition {
+		e.DATASTAR_HEADER(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_HEADER from the element.
+func (e *SVGSWITCHElement) DATASTAR_HEADERRemove() *SVGSWITCHElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-header")
+	return e
+}
+
+// Sets the URL for fetch requests
+
+func (e *SVGSWITCHElement) DATASTAR_FETCH_URL(s string) *SVGSWITCHElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-fetch-url"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SVGSWITCHElement) IfDATASTAR_FETCH_URL(condition bool, s string) *SVGSWITCHElement {
+	if condition {
+		e.DATASTAR_FETCH_URL(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_FETCH_URL from the element.
+func (e *SVGSWITCHElement) DATASTAR_FETCH_URLRemove() *SVGSWITCHElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-fetch-url")
+	return e
+}
+
+// Sets the indicator selector for fetch requests
+
+func (e *SVGSWITCHElement) DATASTAR_FETCH_INDICATOR(s string) *SVGSWITCHElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "DatastarFetchIndicator"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SVGSWITCHElement) IfDATASTAR_FETCH_INDICATOR(condition bool, s string) *SVGSWITCHElement {
+	if condition {
+		e.DATASTAR_FETCH_INDICATOR(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_FETCH_INDICATOR from the element.
+func (e *SVGSWITCHElement) DATASTAR_FETCH_INDICATORRemove() *SVGSWITCHElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("DatastarFetchIndicator")
+	return e
+}
+
+// Sets the visibility of the element
+
+func (e *SVGSWITCHElement) DATASTAR_SHOWSet(b bool) *SVGSWITCHElement {
+	key := "data-show"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *SVGSWITCHElement) DATASTAR_SHOW() *SVGSWITCHElement {
+	return e.DATASTAR_SHOWSet(true)
+}
+
+// Triggers the callback when the element intersects the viewport
+
+func (e *SVGSWITCHElement) DATASTAR_INTERSECTSSet(b bool) *SVGSWITCHElement {
+	key := "data-intersects"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *SVGSWITCHElement) DATASTAR_INTERSECTS() *SVGSWITCHElement {
+	return e.DATASTAR_INTERSECTSSet(true)
+}
+
+// Teleports the element to the given selector
+
+func (e *SVGSWITCHElement) DATASTAR_TELEPORTSet(b bool) *SVGSWITCHElement {
+	key := "data-teleport"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *SVGSWITCHElement) DATASTAR_TELEPORT() *SVGSWITCHElement {
+	return e.DATASTAR_TELEPORTSet(true)
+}
+
+// Scrolls the element into view
+
+func (e *SVGSWITCHElement) DATASTAR_SCROLL_INTO_VIEWSet(b bool) *SVGSWITCHElement {
+	key := "data-scroll-into-view"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *SVGSWITCHElement) DATASTAR_SCROLL_INTO_VIEW() *SVGSWITCHElement {
+	return e.DATASTAR_SCROLL_INTO_VIEWSet(true)
+}
+
+// Setup the ViewTransitionAPI for the element
+
+func (e *SVGSWITCHElement) DATASTAR_VIEW_TRANSITION(s string) *SVGSWITCHElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-view-transition"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SVGSWITCHElement) IfDATASTAR_VIEW_TRANSITION(condition bool, s string) *SVGSWITCHElement {
+	if condition {
+		e.DATASTAR_VIEW_TRANSITION(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_VIEW_TRANSITION from the element.
+func (e *SVGSWITCHElement) DATASTAR_VIEW_TRANSITIONRemove() *SVGSWITCHElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-view-transition")
 	return e
 }

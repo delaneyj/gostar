@@ -6,7 +6,9 @@ package elements
 import (
 	"fmt"
 
+	"github.com/goccy/go-json"
 	"github.com/igrmk/treemap/v2"
+	"github.com/samber/lo"
 )
 
 // This element is the root element of a MathML expression
@@ -148,7 +150,7 @@ const (
 	MathMLMathXmlns_http___www_w3_org_1999_xhtml MathMLMathXmlnsChoice = "http://www.w3.org/1999/xhtml"
 )
 
-// Remove the attribute xmlns from the element.
+// Remove the attribute XMLNS from the element.
 func (e *MathMLMATHElement) XMLNSRemove(c MathMLMathXmlnsChoice) *MathMLMATHElement {
 	if e.StringAttributes == nil {
 		return e
@@ -177,7 +179,7 @@ const (
 	MathMLMathXmlnsm_http___www_w3_org_1999_xhtml MathMLMathXmlnsmChoice = "http://www.w3.org/1999/xhtml"
 )
 
-// Remove the attribute xmlns:m from the element.
+// Remove the attribute XMLNS_M from the element.
 func (e *MathMLMATHElement) XMLNS_MRemove(c MathMLMathXmlnsmChoice) *MathMLMATHElement {
 	if e.StringAttributes == nil {
 		return e
@@ -206,7 +208,7 @@ const (
 	MathMLMathXmlnsxlink_http___www_w3_org_1999_xhtml MathMLMathXmlnsxlinkChoice = "http://www.w3.org/1999/xhtml"
 )
 
-// Remove the attribute xmlns:xlink from the element.
+// Remove the attribute XMLNS_XLINK from the element.
 func (e *MathMLMATHElement) XMLNS_XLINKRemove(c MathMLMathXmlnsxlinkChoice) *MathMLMATHElement {
 	if e.StringAttributes == nil {
 		return e
@@ -235,7 +237,7 @@ const (
 	MathMLMathXmlnsxml_http___www_w3_org_1999_xhtml MathMLMathXmlnsxmlChoice = "http://www.w3.org/1999/xhtml"
 )
 
-// Remove the attribute xmlns:xml from the element.
+// Remove the attribute XMLNS_XML from the element.
 func (e *MathMLMATHElement) XMLNS_XMLRemove(c MathMLMathXmlnsxmlChoice) *MathMLMATHElement {
 	if e.StringAttributes == nil {
 		return e
@@ -268,7 +270,7 @@ func (e *MathMLMATHElement) IfCLASS(condition bool, s ...string) *MathMLMATHElem
 	return e
 }
 
-// Remove the attribute class from the element.
+// Remove the attribute CLASS from the element.
 func (e *MathMLMATHElement) CLASSRemove(s ...string) *MathMLMATHElement {
 	if e.DelimitedStrings == nil {
 		return e
@@ -302,7 +304,7 @@ const (
 	MathMLMathDir_rtl MathMLMathDirChoice = "rtl"
 )
 
-// Remove the attribute dir from the element.
+// Remove the attribute DIR from the element.
 func (e *MathMLMATHElement) DIRRemove(c MathMLMathDirChoice) *MathMLMATHElement {
 	if e.StringAttributes == nil {
 		return e
@@ -331,7 +333,7 @@ const (
 	MathMLMathDisplaystyle_false MathMLMathDisplaystyleChoice = "false"
 )
 
-// Remove the attribute displaystyle from the element.
+// Remove the attribute DISPLAYSTYLE from the element.
 func (e *MathMLMATHElement) DISPLAYSTYLERemove(c MathMLMathDisplaystyleChoice) *MathMLMATHElement {
 	if e.StringAttributes == nil {
 		return e
@@ -357,7 +359,7 @@ func (e *MathMLMATHElement) IfID(condition bool, s string) *MathMLMATHElement {
 	return e
 }
 
-// Remove the attribute id from the element.
+// Remove the attribute ID from the element.
 func (e *MathMLMATHElement) IDRemove(s string) *MathMLMATHElement {
 	if e.StringAttributes == nil {
 		return e
@@ -384,7 +386,7 @@ func (e *MathMLMATHElement) IfMATHBACKGROUND(condition bool, s string) *MathMLMA
 	return e
 }
 
-// Remove the attribute mathbackground from the element.
+// Remove the attribute MATHBACKGROUND from the element.
 func (e *MathMLMATHElement) MATHBACKGROUNDRemove(s string) *MathMLMATHElement {
 	if e.StringAttributes == nil {
 		return e
@@ -411,7 +413,7 @@ func (e *MathMLMATHElement) IfMATHCOLOR(condition bool, s string) *MathMLMATHEle
 	return e
 }
 
-// Remove the attribute mathcolor from the element.
+// Remove the attribute MATHCOLOR from the element.
 func (e *MathMLMATHElement) MATHCOLORRemove(s string) *MathMLMATHElement {
 	if e.StringAttributes == nil {
 		return e
@@ -422,7 +424,7 @@ func (e *MathMLMATHElement) MATHCOLORRemove(s string) *MathMLMATHElement {
 
 // This attribute specifies the size of the element
 // Possible values are a dimension or a dimensionless number.
-func (e *MathMLMATHElement) MATHSIZESTR(s string) *MathMLMATHElement {
+func (e *MathMLMATHElement) MATHSIZE_STR(s string) *MathMLMATHElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
@@ -430,15 +432,15 @@ func (e *MathMLMATHElement) MATHSIZESTR(s string) *MathMLMATHElement {
 	return e
 }
 
-func (e *MathMLMATHElement) IfMATHSIZESTR(condition bool, s string) *MathMLMATHElement {
+func (e *MathMLMATHElement) IfMATHSIZE_STR(condition bool, s string) *MathMLMATHElement {
 	if condition {
-		e.MATHSIZESTR(s)
+		e.MATHSIZE_STR(s)
 	}
 	return e
 }
 
-// Remove the attribute mathsizeStr from the element.
-func (e *MathMLMATHElement) MATHSIZESTRRemove(s string) *MathMLMATHElement {
+// Remove the attribute MATHSIZE_STR from the element.
+func (e *MathMLMATHElement) MATHSIZE_STRRemove(s string) *MathMLMATHElement {
 	if e.StringAttributes == nil {
 		return e
 	}
@@ -465,7 +467,7 @@ func (e *MathMLMATHElement) IfNONCE(condition bool, s string) *MathMLMATHElement
 	return e
 }
 
-// Remove the attribute nonce from the element.
+// Remove the attribute NONCE from the element.
 func (e *MathMLMATHElement) NONCERemove(s string) *MathMLMATHElement {
 	if e.StringAttributes == nil {
 		return e
@@ -491,7 +493,7 @@ func (e *MathMLMATHElement) IfSCRIPTLEVEL(condition bool, i int) *MathMLMATHElem
 	return e
 }
 
-// Remove the attribute scriptlevel from the element.
+// Remove the attribute SCRIPTLEVEL from the element.
 func (e *MathMLMATHElement) SCRIPTLEVELRemove(i int) *MathMLMATHElement {
 	if e.IntAttributes == nil {
 		return e
@@ -577,7 +579,7 @@ func (e *MathMLMATHElement) IfSTYLEPairs(condition bool, pairs ...string) *MathM
 	return e
 }
 
-// Remove the attribute style from the element.
+// Remove the attribute STYLE from the element.
 func (e *MathMLMATHElement) STYLERemove(keys ...string) *MathMLMATHElement {
 	if e.KVStrings == nil {
 		return e
@@ -611,11 +613,351 @@ func (e *MathMLMATHElement) IfTABINDEX(condition bool, i int) *MathMLMATHElement
 	return e
 }
 
-// Remove the attribute tabindex from the element.
+// Remove the attribute TABINDEX from the element.
 func (e *MathMLMATHElement) TABINDEXRemove(i int) *MathMLMATHElement {
 	if e.IntAttributes == nil {
 		return e
 	}
 	e.IntAttributes.Del("tabindex")
+	return e
+}
+
+// Merges the store with the given object
+
+func (e *MathMLMATHElement) DATASTAR_MERGE_STORE(v any) *MathMLMATHElement {
+	if e.CustomDataAttributes == nil {
+		e.CustomDataAttributes = treemap.New[string, string]()
+	}
+	b, err := json.Marshal(v)
+	if err != nil {
+		panic(err)
+	}
+	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	return e
+}
+
+// Sets the reference of the element
+
+func (e *MathMLMATHElement) DATASTAR_REF(s string) *MathMLMATHElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-ref"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *MathMLMATHElement) IfDATASTAR_REF(condition bool, s string) *MathMLMATHElement {
+	if condition {
+		e.DATASTAR_REF(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_REF from the element.
+func (e *MathMLMATHElement) DATASTAR_REFRemove() *MathMLMATHElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-ref")
+	return e
+}
+
+// Sets the value of the element
+
+func (e *MathMLMATHElement) DATASTAR_BIND(s string) *MathMLMATHElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-bind"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *MathMLMATHElement) IfDATASTAR_BIND(condition bool, s string) *MathMLMATHElement {
+	if condition {
+		e.DATASTAR_BIND(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_BIND from the element.
+func (e *MathMLMATHElement) DATASTAR_BINDRemove() *MathMLMATHElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-bind")
+	return e
+}
+
+// Sets the value of the element
+
+func (e *MathMLMATHElement) DATASTAR_MODEL(s string) *MathMLMATHElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-model"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *MathMLMATHElement) IfDATASTAR_MODEL(condition bool, s string) *MathMLMATHElement {
+	if condition {
+		e.DATASTAR_MODEL(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_MODEL from the element.
+func (e *MathMLMATHElement) DATASTAR_MODELRemove() *MathMLMATHElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-model")
+	return e
+}
+
+// Sets the textContent of the element
+
+func (e *MathMLMATHElement) DATASTAR_TEXT(s string) *MathMLMATHElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-text"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *MathMLMATHElement) IfDATASTAR_TEXT(condition bool, s string) *MathMLMATHElement {
+	if condition {
+		e.DATASTAR_TEXT(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_TEXT from the element.
+func (e *MathMLMATHElement) DATASTAR_TEXTRemove() *MathMLMATHElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-text")
+	return e
+}
+
+// Sets the event handler of the element
+
+type MathMLMathDataOnMod customDataKeyModifier
+
+// Debounces the event handler
+func MathMLMathDataOnModDebounce(
+	s string,
+) MathMLMathDataOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce_%sms", s)
+	}
+}
+
+// Throttles the event handler
+func MathMLMathDataOnModThrottle(
+	s string,
+) MathMLMathDataOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle_%sms", s)
+	}
+}
+
+func (e *MathMLMATHElement) DATASTAR_ON(s string, modifiers ...MathMLMathDataOnMod) *MathMLMATHElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	customMods := lo.Map(modifiers, func(m MathMLMathDataOnMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key := customDataKey("data-on", customMods...)
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *MathMLMATHElement) IfDATASTAR_ON(condition bool, s string, modifiers ...MathMLMathDataOnMod) *MathMLMATHElement {
+	if condition {
+		e.DATASTAR_ON(s, modifiers...)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_ON from the element.
+func (e *MathMLMATHElement) DATASTAR_ONRemove() *MathMLMATHElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-on")
+	return e
+}
+
+// Sets the focus of the element
+
+func (e *MathMLMATHElement) DATASTAR_FOCUSSet(b bool) *MathMLMATHElement {
+	key := "data-focus"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *MathMLMATHElement) DATASTAR_FOCUS() *MathMLMATHElement {
+	return e.DATASTAR_FOCUSSet(true)
+}
+
+// Sets the header of for fetch requests
+
+func (e *MathMLMATHElement) DATASTAR_HEADER(s string) *MathMLMATHElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-header"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *MathMLMATHElement) IfDATASTAR_HEADER(condition bool, s string) *MathMLMATHElement {
+	if condition {
+		e.DATASTAR_HEADER(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_HEADER from the element.
+func (e *MathMLMATHElement) DATASTAR_HEADERRemove() *MathMLMATHElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-header")
+	return e
+}
+
+// Sets the URL for fetch requests
+
+func (e *MathMLMATHElement) DATASTAR_FETCH_URL(s string) *MathMLMATHElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-fetch-url"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *MathMLMATHElement) IfDATASTAR_FETCH_URL(condition bool, s string) *MathMLMATHElement {
+	if condition {
+		e.DATASTAR_FETCH_URL(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_FETCH_URL from the element.
+func (e *MathMLMATHElement) DATASTAR_FETCH_URLRemove() *MathMLMATHElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-fetch-url")
+	return e
+}
+
+// Sets the indicator selector for fetch requests
+
+func (e *MathMLMATHElement) DATASTAR_FETCH_INDICATOR(s string) *MathMLMATHElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "DatastarFetchIndicator"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *MathMLMATHElement) IfDATASTAR_FETCH_INDICATOR(condition bool, s string) *MathMLMATHElement {
+	if condition {
+		e.DATASTAR_FETCH_INDICATOR(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_FETCH_INDICATOR from the element.
+func (e *MathMLMATHElement) DATASTAR_FETCH_INDICATORRemove() *MathMLMATHElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("DatastarFetchIndicator")
+	return e
+}
+
+// Sets the visibility of the element
+
+func (e *MathMLMATHElement) DATASTAR_SHOWSet(b bool) *MathMLMATHElement {
+	key := "data-show"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *MathMLMATHElement) DATASTAR_SHOW() *MathMLMATHElement {
+	return e.DATASTAR_SHOWSet(true)
+}
+
+// Triggers the callback when the element intersects the viewport
+
+func (e *MathMLMATHElement) DATASTAR_INTERSECTSSet(b bool) *MathMLMATHElement {
+	key := "data-intersects"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *MathMLMATHElement) DATASTAR_INTERSECTS() *MathMLMATHElement {
+	return e.DATASTAR_INTERSECTSSet(true)
+}
+
+// Teleports the element to the given selector
+
+func (e *MathMLMATHElement) DATASTAR_TELEPORTSet(b bool) *MathMLMATHElement {
+	key := "data-teleport"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *MathMLMATHElement) DATASTAR_TELEPORT() *MathMLMATHElement {
+	return e.DATASTAR_TELEPORTSet(true)
+}
+
+// Scrolls the element into view
+
+func (e *MathMLMATHElement) DATASTAR_SCROLL_INTO_VIEWSet(b bool) *MathMLMATHElement {
+	key := "data-scroll-into-view"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *MathMLMATHElement) DATASTAR_SCROLL_INTO_VIEW() *MathMLMATHElement {
+	return e.DATASTAR_SCROLL_INTO_VIEWSet(true)
+}
+
+// Setup the ViewTransitionAPI for the element
+
+func (e *MathMLMATHElement) DATASTAR_VIEW_TRANSITION(s string) *MathMLMATHElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-view-transition"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *MathMLMATHElement) IfDATASTAR_VIEW_TRANSITION(condition bool, s string) *MathMLMATHElement {
+	if condition {
+		e.DATASTAR_VIEW_TRANSITION(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_VIEW_TRANSITION from the element.
+func (e *MathMLMATHElement) DATASTAR_VIEW_TRANSITIONRemove() *MathMLMATHElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-view-transition")
 	return e
 }

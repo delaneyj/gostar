@@ -6,7 +6,9 @@ package elements
 import (
 	"fmt"
 
+	"github.com/goccy/go-json"
 	"github.com/igrmk/treemap/v2"
+	"github.com/samber/lo"
 )
 
 // The HTML Inline Frame element (<iframe>) represents a nested browsing context,
@@ -148,7 +150,7 @@ func (e *IFRAMEElement) IfALLOW(condition bool, s ...string) *IFRAMEElement {
 	return e
 }
 
-// Remove the attribute allow from the element.
+// Remove the attribute ALLOW from the element.
 func (e *IFRAMEElement) ALLOWRemove(s ...string) *IFRAMEElement {
 	if e.DelimitedStrings == nil {
 		return e
@@ -175,7 +177,7 @@ func (e *IFRAMEElement) IfALLOWFULLSCREEN(condition bool) *IFRAMEElement {
 	return e
 }
 
-// Set the attribute allowfullscreen to the value b explicitly.
+// Set the attribute ALLOWFULLSCREEN to the value b explicitly.
 func (e *IFRAMEElement) ALLOWFULLSCREENSet(b bool) *IFRAMEElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
@@ -191,7 +193,7 @@ func (e *IFRAMEElement) IfSetALLOWFULLSCREEN(condition bool, b bool) *IFRAMEElem
 	return e
 }
 
-// Remove the attribute allowfullscreen from the element.
+// Remove the attribute ALLOWFULLSCREEN from the element.
 func (e *IFRAMEElement) ALLOWFULLSCREENRemove(b bool) *IFRAMEElement {
 	if e.BoolAttributes == nil {
 		return e
@@ -214,7 +216,7 @@ func (e *IFRAMEElement) IfALLOWPAYMENTREQUEST(condition bool) *IFRAMEElement {
 	return e
 }
 
-// Set the attribute allowpaymentrequest to the value b explicitly.
+// Set the attribute ALLOWPAYMENTREQUEST to the value b explicitly.
 func (e *IFRAMEElement) ALLOWPAYMENTREQUESTSet(b bool) *IFRAMEElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
@@ -230,7 +232,7 @@ func (e *IFRAMEElement) IfSetALLOWPAYMENTREQUEST(condition bool, b bool) *IFRAME
 	return e
 }
 
-// Remove the attribute allowpaymentrequest from the element.
+// Remove the attribute ALLOWPAYMENTREQUEST from the element.
 func (e *IFRAMEElement) ALLOWPAYMENTREQUESTRemove(b bool) *IFRAMEElement {
 	if e.BoolAttributes == nil {
 		return e
@@ -255,7 +257,7 @@ func (e *IFRAMEElement) IfHEIGHT(condition bool, i int) *IFRAMEElement {
 	return e
 }
 
-// Remove the attribute height from the element.
+// Remove the attribute HEIGHT from the element.
 func (e *IFRAMEElement) HEIGHTRemove(i int) *IFRAMEElement {
 	if e.IntAttributes == nil {
 		return e
@@ -280,7 +282,7 @@ func (e *IFRAMEElement) IfNAME(condition bool, s string) *IFRAMEElement {
 	return e
 }
 
-// Remove the attribute name from the element.
+// Remove the attribute NAME from the element.
 func (e *IFRAMEElement) NAMERemove(s string) *IFRAMEElement {
 	if e.StringAttributes == nil {
 		return e
@@ -325,7 +327,7 @@ const (
 	IframeReferrerpolicy_unsafe_url IframeReferrerpolicyChoice = "unsafe-url"
 )
 
-// Remove the attribute referrerpolicy from the element.
+// Remove the attribute REFERRERPOLICY from the element.
 func (e *IFRAMEElement) REFERRERPOLICYRemove(c IframeReferrerpolicyChoice) *IFRAMEElement {
 	if e.StringAttributes == nil {
 		return e
@@ -371,7 +373,7 @@ const (
 	IframeSandbox_allow_top_navigation IframeSandboxChoice = "allow-top-navigation"
 )
 
-// Remove the attribute sandbox from the element.
+// Remove the attribute SANDBOX from the element.
 func (e *IFRAMEElement) SANDBOXRemove(c IframeSandboxChoice) *IFRAMEElement {
 	if e.StringAttributes == nil {
 		return e
@@ -396,7 +398,7 @@ func (e *IFRAMEElement) IfSRC(condition bool, s string) *IFRAMEElement {
 	return e
 }
 
-// Remove the attribute src from the element.
+// Remove the attribute SRC from the element.
 func (e *IFRAMEElement) SRCRemove(s string) *IFRAMEElement {
 	if e.StringAttributes == nil {
 		return e
@@ -421,7 +423,7 @@ func (e *IFRAMEElement) IfSRCDOC(condition bool, s string) *IFRAMEElement {
 	return e
 }
 
-// Remove the attribute srcdoc from the element.
+// Remove the attribute SRCDOC from the element.
 func (e *IFRAMEElement) SRCDOCRemove(s string) *IFRAMEElement {
 	if e.StringAttributes == nil {
 		return e
@@ -446,7 +448,7 @@ func (e *IFRAMEElement) IfWIDTH(condition bool, i int) *IFRAMEElement {
 	return e
 }
 
-// Remove the attribute width from the element.
+// Remove the attribute WIDTH from the element.
 func (e *IFRAMEElement) WIDTHRemove(i int) *IFRAMEElement {
 	if e.IntAttributes == nil {
 		return e
@@ -474,7 +476,7 @@ func (e *IFRAMEElement) IfACCESSKEY(condition bool, r rune) *IFRAMEElement {
 	return e
 }
 
-// Remove the attribute accesskey from the element.
+// Remove the attribute ACCESSKEY from the element.
 func (e *IFRAMEElement) ACCESSKEYRemove() *IFRAMEElement {
 	if e.StringAttributes == nil {
 		return e
@@ -522,7 +524,7 @@ const (
 	IframeAutocapitalize_characters IframeAutocapitalizeChoice = "characters"
 )
 
-// Remove the attribute autocapitalize from the element.
+// Remove the attribute AUTOCAPITALIZE from the element.
 func (e *IFRAMEElement) AUTOCAPITALIZERemove(c IframeAutocapitalizeChoice) *IFRAMEElement {
 	if e.StringAttributes == nil {
 		return e
@@ -563,7 +565,7 @@ func (e *IFRAMEElement) IfAUTOFOCUS(condition bool) *IFRAMEElement {
 	return e
 }
 
-// Set the attribute autofocus to the value b explicitly.
+// Set the attribute AUTOFOCUS to the value b explicitly.
 func (e *IFRAMEElement) AUTOFOCUSSet(b bool) *IFRAMEElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
@@ -579,7 +581,7 @@ func (e *IFRAMEElement) IfSetAUTOFOCUS(condition bool, b bool) *IFRAMEElement {
 	return e
 }
 
-// Remove the attribute autofocus from the element.
+// Remove the attribute AUTOFOCUS from the element.
 func (e *IFRAMEElement) AUTOFOCUSRemove(b bool) *IFRAMEElement {
 	if e.BoolAttributes == nil {
 		return e
@@ -613,7 +615,7 @@ func (e *IFRAMEElement) IfCLASS(condition bool, s ...string) *IFRAMEElement {
 	return e
 }
 
-// Remove the attribute class from the element.
+// Remove the attribute CLASS from the element.
 func (e *IFRAMEElement) CLASSRemove(s ...string) *IFRAMEElement {
 	if e.DelimitedStrings == nil {
 		return e
@@ -651,7 +653,7 @@ const (
 	IframeContenteditable_plaintext_only IframeContenteditableChoice = "plaintext-only"
 )
 
-// Remove the attribute contenteditable from the element.
+// Remove the attribute CONTENTEDITABLE from the element.
 func (e *IFRAMEElement) CONTENTEDITABLERemove(c IframeContenteditableChoice) *IFRAMEElement {
 	if e.StringAttributes == nil {
 		return e
@@ -699,7 +701,7 @@ const (
 	IframeDir_auto IframeDirChoice = "auto"
 )
 
-// Remove the attribute dir from the element.
+// Remove the attribute DIR from the element.
 func (e *IFRAMEElement) DIRRemove(c IframeDirChoice) *IFRAMEElement {
 	if e.StringAttributes == nil {
 		return e
@@ -736,7 +738,7 @@ const (
 	IframeDraggable_auto IframeDraggableChoice = "auto"
 )
 
-// Remove the attribute draggable from the element.
+// Remove the attribute DRAGGABLE from the element.
 func (e *IFRAMEElement) DRAGGABLERemove(c IframeDraggableChoice) *IFRAMEElement {
 	if e.StringAttributes == nil {
 		return e
@@ -776,7 +778,7 @@ const (
 	IframeEnterkeyhint_send IframeEnterkeyhintChoice = "send"
 )
 
-// Remove the attribute enterkeyhint from the element.
+// Remove the attribute ENTERKEYHINT from the element.
 func (e *IFRAMEElement) ENTERKEYHINTRemove(c IframeEnterkeyhintChoice) *IFRAMEElement {
 	if e.StringAttributes == nil {
 		return e
@@ -825,7 +827,7 @@ func (e *IFRAMEElement) IfEXPORTPARTS(condition bool, s ...string) *IFRAMEElemen
 	return e
 }
 
-// Remove the attribute exportparts from the element.
+// Remove the attribute EXPORTPARTS from the element.
 func (e *IFRAMEElement) EXPORTPARTSRemove(s ...string) *IFRAMEElement {
 	if e.DelimitedStrings == nil {
 		return e
@@ -879,7 +881,7 @@ const (
 	IframeHidden_until_found IframeHiddenChoice = "until-found"
 )
 
-// Remove the attribute hidden from the element.
+// Remove the attribute HIDDEN from the element.
 func (e *IFRAMEElement) HIDDENRemove(c IframeHiddenChoice) *IFRAMEElement {
 	if e.StringAttributes == nil {
 		return e
@@ -907,7 +909,7 @@ func (e *IFRAMEElement) IfID(condition bool, s string) *IFRAMEElement {
 	return e
 }
 
-// Remove the attribute id from the element.
+// Remove the attribute ID from the element.
 func (e *IFRAMEElement) IDRemove(s string) *IFRAMEElement {
 	if e.StringAttributes == nil {
 		return e
@@ -940,7 +942,7 @@ func (e *IFRAMEElement) IfINERT(condition bool) *IFRAMEElement {
 	return e
 }
 
-// Set the attribute inert to the value b explicitly.
+// Set the attribute INERT to the value b explicitly.
 func (e *IFRAMEElement) INERTSet(b bool) *IFRAMEElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
@@ -956,7 +958,7 @@ func (e *IFRAMEElement) IfSetINERT(condition bool, b bool) *IFRAMEElement {
 	return e
 }
 
-// Remove the attribute inert from the element.
+// Remove the attribute INERT from the element.
 func (e *IFRAMEElement) INERTRemove(b bool) *IFRAMEElement {
 	if e.BoolAttributes == nil {
 		return e
@@ -1025,7 +1027,7 @@ const (
 	IframeInputmode_url IframeInputmodeChoice = "url"
 )
 
-// Remove the attribute inputmode from the element.
+// Remove the attribute INPUTMODE from the element.
 func (e *IFRAMEElement) INPUTMODERemove(c IframeInputmodeChoice) *IFRAMEElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1055,7 +1057,7 @@ func (e *IFRAMEElement) IfIS(condition bool, s string) *IFRAMEElement {
 	return e
 }
 
-// Remove the attribute is from the element.
+// Remove the attribute IS from the element.
 func (e *IFRAMEElement) ISRemove(s string) *IFRAMEElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1092,7 +1094,7 @@ func (e *IFRAMEElement) IfITEMID(condition bool, s string) *IFRAMEElement {
 	return e
 }
 
-// Remove the attribute itemid from the element.
+// Remove the attribute ITEMID from the element.
 func (e *IFRAMEElement) ITEMIDRemove(s string) *IFRAMEElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1124,7 +1126,7 @@ func (e *IFRAMEElement) IfITEMPROP(condition bool, s string) *IFRAMEElement {
 	return e
 }
 
-// Remove the attribute itemprop from the element.
+// Remove the attribute ITEMPROP from the element.
 func (e *IFRAMEElement) ITEMPROPRemove(s string) *IFRAMEElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1153,7 +1155,7 @@ func (e *IFRAMEElement) IfITEMREF(condition bool, s string) *IFRAMEElement {
 	return e
 }
 
-// Remove the attribute itemref from the element.
+// Remove the attribute ITEMREF from the element.
 func (e *IFRAMEElement) ITEMREFRemove(s string) *IFRAMEElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1182,7 +1184,7 @@ func (e *IFRAMEElement) IfITEMSCOPE(condition bool) *IFRAMEElement {
 	return e
 }
 
-// Set the attribute itemscope to the value b explicitly.
+// Set the attribute ITEMSCOPE to the value b explicitly.
 func (e *IFRAMEElement) ITEMSCOPESet(b bool) *IFRAMEElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
@@ -1198,7 +1200,7 @@ func (e *IFRAMEElement) IfSetITEMSCOPE(condition bool, b bool) *IFRAMEElement {
 	return e
 }
 
-// Remove the attribute itemscope from the element.
+// Remove the attribute ITEMSCOPE from the element.
 func (e *IFRAMEElement) ITEMSCOPERemove(b bool) *IFRAMEElement {
 	if e.BoolAttributes == nil {
 		return e
@@ -1230,7 +1232,7 @@ func (e *IFRAMEElement) IfITEMTYPE(condition bool, s string) *IFRAMEElement {
 	return e
 }
 
-// Remove the attribute itemtype from the element.
+// Remove the attribute ITEMTYPE from the element.
 func (e *IFRAMEElement) ITEMTYPERemove(s string) *IFRAMEElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1260,7 +1262,7 @@ func (e *IFRAMEElement) IfLANG(condition bool, s string) *IFRAMEElement {
 	return e
 }
 
-// Remove the attribute lang from the element.
+// Remove the attribute LANG from the element.
 func (e *IFRAMEElement) LANGRemove(s string) *IFRAMEElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1288,7 +1290,7 @@ func (e *IFRAMEElement) IfNONCE(condition bool, s string) *IFRAMEElement {
 	return e
 }
 
-// Remove the attribute nonce from the element.
+// Remove the attribute NONCE from the element.
 func (e *IFRAMEElement) NONCERemove(s string) *IFRAMEElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1321,7 +1323,7 @@ func (e *IFRAMEElement) IfPART(condition bool, s ...string) *IFRAMEElement {
 	return e
 }
 
-// Remove the attribute part from the element.
+// Remove the attribute PART from the element.
 func (e *IFRAMEElement) PARTRemove(s ...string) *IFRAMEElement {
 	if e.DelimitedStrings == nil {
 		return e
@@ -1367,7 +1369,7 @@ const (
 	IframePopver_manual IframePopverChoice = "manual"
 )
 
-// Remove the attribute popver from the element.
+// Remove the attribute POPVER from the element.
 func (e *IFRAMEElement) POPVERRemove(c IframePopverChoice) *IFRAMEElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1395,7 +1397,7 @@ func (e *IFRAMEElement) IfSLOT(condition bool, s string) *IFRAMEElement {
 	return e
 }
 
-// Remove the attribute slot from the element.
+// Remove the attribute SLOT from the element.
 func (e *IFRAMEElement) SLOTRemove(s string) *IFRAMEElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1437,7 +1439,7 @@ const (
 	IframeSpellcheck_false IframeSpellcheckChoice = "false"
 )
 
-// Remove the attribute spellcheck from the element.
+// Remove the attribute SPELLCHECK from the element.
 func (e *IFRAMEElement) SPELLCHECKRemove(c IframeSpellcheckChoice) *IFRAMEElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1524,7 +1526,7 @@ func (e *IFRAMEElement) IfSTYLEPairs(condition bool, pairs ...string) *IFRAMEEle
 	return e
 }
 
-// Remove the attribute style from the element.
+// Remove the attribute STYLE from the element.
 func (e *IFRAMEElement) STYLERemove(keys ...string) *IFRAMEElement {
 	if e.KVStrings == nil {
 		return e
@@ -1568,7 +1570,7 @@ func (e *IFRAMEElement) IfTABINDEX(condition bool, i int) *IFRAMEElement {
 	return e
 }
 
-// Remove the attribute tabindex from the element.
+// Remove the attribute TABINDEX from the element.
 func (e *IFRAMEElement) TABINDEXRemove(i int) *IFRAMEElement {
 	if e.IntAttributes == nil {
 		return e
@@ -1613,7 +1615,7 @@ func (e *IFRAMEElement) IfTITLE(condition bool, s string) *IFRAMEElement {
 	return e
 }
 
-// Remove the attribute title from the element.
+// Remove the attribute TITLE from the element.
 func (e *IFRAMEElement) TITLERemove(s string) *IFRAMEElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1645,11 +1647,351 @@ const (
 	IframeTranslate_no IframeTranslateChoice = "no"
 )
 
-// Remove the attribute translate from the element.
+// Remove the attribute TRANSLATE from the element.
 func (e *IFRAMEElement) TRANSLATERemove(c IframeTranslateChoice) *IFRAMEElement {
 	if e.StringAttributes == nil {
 		return e
 	}
 	e.StringAttributes.Del("translate")
+	return e
+}
+
+// Merges the store with the given object
+
+func (e *IFRAMEElement) DATASTAR_MERGE_STORE(v any) *IFRAMEElement {
+	if e.CustomDataAttributes == nil {
+		e.CustomDataAttributes = treemap.New[string, string]()
+	}
+	b, err := json.Marshal(v)
+	if err != nil {
+		panic(err)
+	}
+	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	return e
+}
+
+// Sets the reference of the element
+
+func (e *IFRAMEElement) DATASTAR_REF(s string) *IFRAMEElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-ref"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *IFRAMEElement) IfDATASTAR_REF(condition bool, s string) *IFRAMEElement {
+	if condition {
+		e.DATASTAR_REF(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_REF from the element.
+func (e *IFRAMEElement) DATASTAR_REFRemove() *IFRAMEElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-ref")
+	return e
+}
+
+// Sets the value of the element
+
+func (e *IFRAMEElement) DATASTAR_BIND(s string) *IFRAMEElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-bind"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *IFRAMEElement) IfDATASTAR_BIND(condition bool, s string) *IFRAMEElement {
+	if condition {
+		e.DATASTAR_BIND(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_BIND from the element.
+func (e *IFRAMEElement) DATASTAR_BINDRemove() *IFRAMEElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-bind")
+	return e
+}
+
+// Sets the value of the element
+
+func (e *IFRAMEElement) DATASTAR_MODEL(s string) *IFRAMEElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-model"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *IFRAMEElement) IfDATASTAR_MODEL(condition bool, s string) *IFRAMEElement {
+	if condition {
+		e.DATASTAR_MODEL(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_MODEL from the element.
+func (e *IFRAMEElement) DATASTAR_MODELRemove() *IFRAMEElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-model")
+	return e
+}
+
+// Sets the textContent of the element
+
+func (e *IFRAMEElement) DATASTAR_TEXT(s string) *IFRAMEElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-text"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *IFRAMEElement) IfDATASTAR_TEXT(condition bool, s string) *IFRAMEElement {
+	if condition {
+		e.DATASTAR_TEXT(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_TEXT from the element.
+func (e *IFRAMEElement) DATASTAR_TEXTRemove() *IFRAMEElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-text")
+	return e
+}
+
+// Sets the event handler of the element
+
+type IframeDataOnMod customDataKeyModifier
+
+// Debounces the event handler
+func IframeDataOnModDebounce(
+	s string,
+) IframeDataOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce_%sms", s)
+	}
+}
+
+// Throttles the event handler
+func IframeDataOnModThrottle(
+	s string,
+) IframeDataOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle_%sms", s)
+	}
+}
+
+func (e *IFRAMEElement) DATASTAR_ON(s string, modifiers ...IframeDataOnMod) *IFRAMEElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	customMods := lo.Map(modifiers, func(m IframeDataOnMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key := customDataKey("data-on", customMods...)
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *IFRAMEElement) IfDATASTAR_ON(condition bool, s string, modifiers ...IframeDataOnMod) *IFRAMEElement {
+	if condition {
+		e.DATASTAR_ON(s, modifiers...)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_ON from the element.
+func (e *IFRAMEElement) DATASTAR_ONRemove() *IFRAMEElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-on")
+	return e
+}
+
+// Sets the focus of the element
+
+func (e *IFRAMEElement) DATASTAR_FOCUSSet(b bool) *IFRAMEElement {
+	key := "data-focus"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *IFRAMEElement) DATASTAR_FOCUS() *IFRAMEElement {
+	return e.DATASTAR_FOCUSSet(true)
+}
+
+// Sets the header of for fetch requests
+
+func (e *IFRAMEElement) DATASTAR_HEADER(s string) *IFRAMEElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-header"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *IFRAMEElement) IfDATASTAR_HEADER(condition bool, s string) *IFRAMEElement {
+	if condition {
+		e.DATASTAR_HEADER(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_HEADER from the element.
+func (e *IFRAMEElement) DATASTAR_HEADERRemove() *IFRAMEElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-header")
+	return e
+}
+
+// Sets the URL for fetch requests
+
+func (e *IFRAMEElement) DATASTAR_FETCH_URL(s string) *IFRAMEElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-fetch-url"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *IFRAMEElement) IfDATASTAR_FETCH_URL(condition bool, s string) *IFRAMEElement {
+	if condition {
+		e.DATASTAR_FETCH_URL(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_FETCH_URL from the element.
+func (e *IFRAMEElement) DATASTAR_FETCH_URLRemove() *IFRAMEElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-fetch-url")
+	return e
+}
+
+// Sets the indicator selector for fetch requests
+
+func (e *IFRAMEElement) DATASTAR_FETCH_INDICATOR(s string) *IFRAMEElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "DatastarFetchIndicator"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *IFRAMEElement) IfDATASTAR_FETCH_INDICATOR(condition bool, s string) *IFRAMEElement {
+	if condition {
+		e.DATASTAR_FETCH_INDICATOR(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_FETCH_INDICATOR from the element.
+func (e *IFRAMEElement) DATASTAR_FETCH_INDICATORRemove() *IFRAMEElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("DatastarFetchIndicator")
+	return e
+}
+
+// Sets the visibility of the element
+
+func (e *IFRAMEElement) DATASTAR_SHOWSet(b bool) *IFRAMEElement {
+	key := "data-show"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *IFRAMEElement) DATASTAR_SHOW() *IFRAMEElement {
+	return e.DATASTAR_SHOWSet(true)
+}
+
+// Triggers the callback when the element intersects the viewport
+
+func (e *IFRAMEElement) DATASTAR_INTERSECTSSet(b bool) *IFRAMEElement {
+	key := "data-intersects"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *IFRAMEElement) DATASTAR_INTERSECTS() *IFRAMEElement {
+	return e.DATASTAR_INTERSECTSSet(true)
+}
+
+// Teleports the element to the given selector
+
+func (e *IFRAMEElement) DATASTAR_TELEPORTSet(b bool) *IFRAMEElement {
+	key := "data-teleport"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *IFRAMEElement) DATASTAR_TELEPORT() *IFRAMEElement {
+	return e.DATASTAR_TELEPORTSet(true)
+}
+
+// Scrolls the element into view
+
+func (e *IFRAMEElement) DATASTAR_SCROLL_INTO_VIEWSet(b bool) *IFRAMEElement {
+	key := "data-scroll-into-view"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *IFRAMEElement) DATASTAR_SCROLL_INTO_VIEW() *IFRAMEElement {
+	return e.DATASTAR_SCROLL_INTO_VIEWSet(true)
+}
+
+// Setup the ViewTransitionAPI for the element
+
+func (e *IFRAMEElement) DATASTAR_VIEW_TRANSITION(s string) *IFRAMEElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-view-transition"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *IFRAMEElement) IfDATASTAR_VIEW_TRANSITION(condition bool, s string) *IFRAMEElement {
+	if condition {
+		e.DATASTAR_VIEW_TRANSITION(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_VIEW_TRANSITION from the element.
+func (e *IFRAMEElement) DATASTAR_VIEW_TRANSITIONRemove() *IFRAMEElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-view-transition")
 	return e
 }

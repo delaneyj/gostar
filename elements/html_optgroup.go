@@ -6,7 +6,9 @@ package elements
 import (
 	"fmt"
 
+	"github.com/goccy/go-json"
 	"github.com/igrmk/treemap/v2"
+	"github.com/samber/lo"
 )
 
 // The HTML <optgroup> element creates a grouping of options within a <select>
@@ -140,7 +142,7 @@ func (e *OPTGROUPElement) IfDISABLED(condition bool) *OPTGROUPElement {
 	return e
 }
 
-// Set the attribute disabled to the value b explicitly.
+// Set the attribute DISABLED to the value b explicitly.
 func (e *OPTGROUPElement) DISABLEDSet(b bool) *OPTGROUPElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
@@ -156,7 +158,7 @@ func (e *OPTGROUPElement) IfSetDISABLED(condition bool, b bool) *OPTGROUPElement
 	return e
 }
 
-// Remove the attribute disabled from the element.
+// Remove the attribute DISABLED from the element.
 func (e *OPTGROUPElement) DISABLEDRemove(b bool) *OPTGROUPElement {
 	if e.BoolAttributes == nil {
 		return e
@@ -181,7 +183,7 @@ func (e *OPTGROUPElement) IfLABEL(condition bool, s string) *OPTGROUPElement {
 	return e
 }
 
-// Remove the attribute label from the element.
+// Remove the attribute LABEL from the element.
 func (e *OPTGROUPElement) LABELRemove(s string) *OPTGROUPElement {
 	if e.StringAttributes == nil {
 		return e
@@ -209,7 +211,7 @@ func (e *OPTGROUPElement) IfACCESSKEY(condition bool, r rune) *OPTGROUPElement {
 	return e
 }
 
-// Remove the attribute accesskey from the element.
+// Remove the attribute ACCESSKEY from the element.
 func (e *OPTGROUPElement) ACCESSKEYRemove() *OPTGROUPElement {
 	if e.StringAttributes == nil {
 		return e
@@ -257,7 +259,7 @@ const (
 	OptgroupAutocapitalize_characters OptgroupAutocapitalizeChoice = "characters"
 )
 
-// Remove the attribute autocapitalize from the element.
+// Remove the attribute AUTOCAPITALIZE from the element.
 func (e *OPTGROUPElement) AUTOCAPITALIZERemove(c OptgroupAutocapitalizeChoice) *OPTGROUPElement {
 	if e.StringAttributes == nil {
 		return e
@@ -298,7 +300,7 @@ func (e *OPTGROUPElement) IfAUTOFOCUS(condition bool) *OPTGROUPElement {
 	return e
 }
 
-// Set the attribute autofocus to the value b explicitly.
+// Set the attribute AUTOFOCUS to the value b explicitly.
 func (e *OPTGROUPElement) AUTOFOCUSSet(b bool) *OPTGROUPElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
@@ -314,7 +316,7 @@ func (e *OPTGROUPElement) IfSetAUTOFOCUS(condition bool, b bool) *OPTGROUPElemen
 	return e
 }
 
-// Remove the attribute autofocus from the element.
+// Remove the attribute AUTOFOCUS from the element.
 func (e *OPTGROUPElement) AUTOFOCUSRemove(b bool) *OPTGROUPElement {
 	if e.BoolAttributes == nil {
 		return e
@@ -348,7 +350,7 @@ func (e *OPTGROUPElement) IfCLASS(condition bool, s ...string) *OPTGROUPElement 
 	return e
 }
 
-// Remove the attribute class from the element.
+// Remove the attribute CLASS from the element.
 func (e *OPTGROUPElement) CLASSRemove(s ...string) *OPTGROUPElement {
 	if e.DelimitedStrings == nil {
 		return e
@@ -386,7 +388,7 @@ const (
 	OptgroupContenteditable_plaintext_only OptgroupContenteditableChoice = "plaintext-only"
 )
 
-// Remove the attribute contenteditable from the element.
+// Remove the attribute CONTENTEDITABLE from the element.
 func (e *OPTGROUPElement) CONTENTEDITABLERemove(c OptgroupContenteditableChoice) *OPTGROUPElement {
 	if e.StringAttributes == nil {
 		return e
@@ -434,7 +436,7 @@ const (
 	OptgroupDir_auto OptgroupDirChoice = "auto"
 )
 
-// Remove the attribute dir from the element.
+// Remove the attribute DIR from the element.
 func (e *OPTGROUPElement) DIRRemove(c OptgroupDirChoice) *OPTGROUPElement {
 	if e.StringAttributes == nil {
 		return e
@@ -471,7 +473,7 @@ const (
 	OptgroupDraggable_auto OptgroupDraggableChoice = "auto"
 )
 
-// Remove the attribute draggable from the element.
+// Remove the attribute DRAGGABLE from the element.
 func (e *OPTGROUPElement) DRAGGABLERemove(c OptgroupDraggableChoice) *OPTGROUPElement {
 	if e.StringAttributes == nil {
 		return e
@@ -511,7 +513,7 @@ const (
 	OptgroupEnterkeyhint_send OptgroupEnterkeyhintChoice = "send"
 )
 
-// Remove the attribute enterkeyhint from the element.
+// Remove the attribute ENTERKEYHINT from the element.
 func (e *OPTGROUPElement) ENTERKEYHINTRemove(c OptgroupEnterkeyhintChoice) *OPTGROUPElement {
 	if e.StringAttributes == nil {
 		return e
@@ -560,7 +562,7 @@ func (e *OPTGROUPElement) IfEXPORTPARTS(condition bool, s ...string) *OPTGROUPEl
 	return e
 }
 
-// Remove the attribute exportparts from the element.
+// Remove the attribute EXPORTPARTS from the element.
 func (e *OPTGROUPElement) EXPORTPARTSRemove(s ...string) *OPTGROUPElement {
 	if e.DelimitedStrings == nil {
 		return e
@@ -614,7 +616,7 @@ const (
 	OptgroupHidden_until_found OptgroupHiddenChoice = "until-found"
 )
 
-// Remove the attribute hidden from the element.
+// Remove the attribute HIDDEN from the element.
 func (e *OPTGROUPElement) HIDDENRemove(c OptgroupHiddenChoice) *OPTGROUPElement {
 	if e.StringAttributes == nil {
 		return e
@@ -642,7 +644,7 @@ func (e *OPTGROUPElement) IfID(condition bool, s string) *OPTGROUPElement {
 	return e
 }
 
-// Remove the attribute id from the element.
+// Remove the attribute ID from the element.
 func (e *OPTGROUPElement) IDRemove(s string) *OPTGROUPElement {
 	if e.StringAttributes == nil {
 		return e
@@ -675,7 +677,7 @@ func (e *OPTGROUPElement) IfINERT(condition bool) *OPTGROUPElement {
 	return e
 }
 
-// Set the attribute inert to the value b explicitly.
+// Set the attribute INERT to the value b explicitly.
 func (e *OPTGROUPElement) INERTSet(b bool) *OPTGROUPElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
@@ -691,7 +693,7 @@ func (e *OPTGROUPElement) IfSetINERT(condition bool, b bool) *OPTGROUPElement {
 	return e
 }
 
-// Remove the attribute inert from the element.
+// Remove the attribute INERT from the element.
 func (e *OPTGROUPElement) INERTRemove(b bool) *OPTGROUPElement {
 	if e.BoolAttributes == nil {
 		return e
@@ -760,7 +762,7 @@ const (
 	OptgroupInputmode_url OptgroupInputmodeChoice = "url"
 )
 
-// Remove the attribute inputmode from the element.
+// Remove the attribute INPUTMODE from the element.
 func (e *OPTGROUPElement) INPUTMODERemove(c OptgroupInputmodeChoice) *OPTGROUPElement {
 	if e.StringAttributes == nil {
 		return e
@@ -790,7 +792,7 @@ func (e *OPTGROUPElement) IfIS(condition bool, s string) *OPTGROUPElement {
 	return e
 }
 
-// Remove the attribute is from the element.
+// Remove the attribute IS from the element.
 func (e *OPTGROUPElement) ISRemove(s string) *OPTGROUPElement {
 	if e.StringAttributes == nil {
 		return e
@@ -827,7 +829,7 @@ func (e *OPTGROUPElement) IfITEMID(condition bool, s string) *OPTGROUPElement {
 	return e
 }
 
-// Remove the attribute itemid from the element.
+// Remove the attribute ITEMID from the element.
 func (e *OPTGROUPElement) ITEMIDRemove(s string) *OPTGROUPElement {
 	if e.StringAttributes == nil {
 		return e
@@ -859,7 +861,7 @@ func (e *OPTGROUPElement) IfITEMPROP(condition bool, s string) *OPTGROUPElement 
 	return e
 }
 
-// Remove the attribute itemprop from the element.
+// Remove the attribute ITEMPROP from the element.
 func (e *OPTGROUPElement) ITEMPROPRemove(s string) *OPTGROUPElement {
 	if e.StringAttributes == nil {
 		return e
@@ -888,7 +890,7 @@ func (e *OPTGROUPElement) IfITEMREF(condition bool, s string) *OPTGROUPElement {
 	return e
 }
 
-// Remove the attribute itemref from the element.
+// Remove the attribute ITEMREF from the element.
 func (e *OPTGROUPElement) ITEMREFRemove(s string) *OPTGROUPElement {
 	if e.StringAttributes == nil {
 		return e
@@ -917,7 +919,7 @@ func (e *OPTGROUPElement) IfITEMSCOPE(condition bool) *OPTGROUPElement {
 	return e
 }
 
-// Set the attribute itemscope to the value b explicitly.
+// Set the attribute ITEMSCOPE to the value b explicitly.
 func (e *OPTGROUPElement) ITEMSCOPESet(b bool) *OPTGROUPElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
@@ -933,7 +935,7 @@ func (e *OPTGROUPElement) IfSetITEMSCOPE(condition bool, b bool) *OPTGROUPElemen
 	return e
 }
 
-// Remove the attribute itemscope from the element.
+// Remove the attribute ITEMSCOPE from the element.
 func (e *OPTGROUPElement) ITEMSCOPERemove(b bool) *OPTGROUPElement {
 	if e.BoolAttributes == nil {
 		return e
@@ -965,7 +967,7 @@ func (e *OPTGROUPElement) IfITEMTYPE(condition bool, s string) *OPTGROUPElement 
 	return e
 }
 
-// Remove the attribute itemtype from the element.
+// Remove the attribute ITEMTYPE from the element.
 func (e *OPTGROUPElement) ITEMTYPERemove(s string) *OPTGROUPElement {
 	if e.StringAttributes == nil {
 		return e
@@ -995,7 +997,7 @@ func (e *OPTGROUPElement) IfLANG(condition bool, s string) *OPTGROUPElement {
 	return e
 }
 
-// Remove the attribute lang from the element.
+// Remove the attribute LANG from the element.
 func (e *OPTGROUPElement) LANGRemove(s string) *OPTGROUPElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1023,7 +1025,7 @@ func (e *OPTGROUPElement) IfNONCE(condition bool, s string) *OPTGROUPElement {
 	return e
 }
 
-// Remove the attribute nonce from the element.
+// Remove the attribute NONCE from the element.
 func (e *OPTGROUPElement) NONCERemove(s string) *OPTGROUPElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1056,7 +1058,7 @@ func (e *OPTGROUPElement) IfPART(condition bool, s ...string) *OPTGROUPElement {
 	return e
 }
 
-// Remove the attribute part from the element.
+// Remove the attribute PART from the element.
 func (e *OPTGROUPElement) PARTRemove(s ...string) *OPTGROUPElement {
 	if e.DelimitedStrings == nil {
 		return e
@@ -1102,7 +1104,7 @@ const (
 	OptgroupPopver_manual OptgroupPopverChoice = "manual"
 )
 
-// Remove the attribute popver from the element.
+// Remove the attribute POPVER from the element.
 func (e *OPTGROUPElement) POPVERRemove(c OptgroupPopverChoice) *OPTGROUPElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1130,7 +1132,7 @@ func (e *OPTGROUPElement) IfSLOT(condition bool, s string) *OPTGROUPElement {
 	return e
 }
 
-// Remove the attribute slot from the element.
+// Remove the attribute SLOT from the element.
 func (e *OPTGROUPElement) SLOTRemove(s string) *OPTGROUPElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1172,7 +1174,7 @@ const (
 	OptgroupSpellcheck_false OptgroupSpellcheckChoice = "false"
 )
 
-// Remove the attribute spellcheck from the element.
+// Remove the attribute SPELLCHECK from the element.
 func (e *OPTGROUPElement) SPELLCHECKRemove(c OptgroupSpellcheckChoice) *OPTGROUPElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1259,7 +1261,7 @@ func (e *OPTGROUPElement) IfSTYLEPairs(condition bool, pairs ...string) *OPTGROU
 	return e
 }
 
-// Remove the attribute style from the element.
+// Remove the attribute STYLE from the element.
 func (e *OPTGROUPElement) STYLERemove(keys ...string) *OPTGROUPElement {
 	if e.KVStrings == nil {
 		return e
@@ -1303,7 +1305,7 @@ func (e *OPTGROUPElement) IfTABINDEX(condition bool, i int) *OPTGROUPElement {
 	return e
 }
 
-// Remove the attribute tabindex from the element.
+// Remove the attribute TABINDEX from the element.
 func (e *OPTGROUPElement) TABINDEXRemove(i int) *OPTGROUPElement {
 	if e.IntAttributes == nil {
 		return e
@@ -1348,7 +1350,7 @@ func (e *OPTGROUPElement) IfTITLE(condition bool, s string) *OPTGROUPElement {
 	return e
 }
 
-// Remove the attribute title from the element.
+// Remove the attribute TITLE from the element.
 func (e *OPTGROUPElement) TITLERemove(s string) *OPTGROUPElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1380,11 +1382,351 @@ const (
 	OptgroupTranslate_no OptgroupTranslateChoice = "no"
 )
 
-// Remove the attribute translate from the element.
+// Remove the attribute TRANSLATE from the element.
 func (e *OPTGROUPElement) TRANSLATERemove(c OptgroupTranslateChoice) *OPTGROUPElement {
 	if e.StringAttributes == nil {
 		return e
 	}
 	e.StringAttributes.Del("translate")
+	return e
+}
+
+// Merges the store with the given object
+
+func (e *OPTGROUPElement) DATASTAR_MERGE_STORE(v any) *OPTGROUPElement {
+	if e.CustomDataAttributes == nil {
+		e.CustomDataAttributes = treemap.New[string, string]()
+	}
+	b, err := json.Marshal(v)
+	if err != nil {
+		panic(err)
+	}
+	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	return e
+}
+
+// Sets the reference of the element
+
+func (e *OPTGROUPElement) DATASTAR_REF(s string) *OPTGROUPElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-ref"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *OPTGROUPElement) IfDATASTAR_REF(condition bool, s string) *OPTGROUPElement {
+	if condition {
+		e.DATASTAR_REF(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_REF from the element.
+func (e *OPTGROUPElement) DATASTAR_REFRemove() *OPTGROUPElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-ref")
+	return e
+}
+
+// Sets the value of the element
+
+func (e *OPTGROUPElement) DATASTAR_BIND(s string) *OPTGROUPElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-bind"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *OPTGROUPElement) IfDATASTAR_BIND(condition bool, s string) *OPTGROUPElement {
+	if condition {
+		e.DATASTAR_BIND(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_BIND from the element.
+func (e *OPTGROUPElement) DATASTAR_BINDRemove() *OPTGROUPElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-bind")
+	return e
+}
+
+// Sets the value of the element
+
+func (e *OPTGROUPElement) DATASTAR_MODEL(s string) *OPTGROUPElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-model"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *OPTGROUPElement) IfDATASTAR_MODEL(condition bool, s string) *OPTGROUPElement {
+	if condition {
+		e.DATASTAR_MODEL(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_MODEL from the element.
+func (e *OPTGROUPElement) DATASTAR_MODELRemove() *OPTGROUPElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-model")
+	return e
+}
+
+// Sets the textContent of the element
+
+func (e *OPTGROUPElement) DATASTAR_TEXT(s string) *OPTGROUPElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-text"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *OPTGROUPElement) IfDATASTAR_TEXT(condition bool, s string) *OPTGROUPElement {
+	if condition {
+		e.DATASTAR_TEXT(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_TEXT from the element.
+func (e *OPTGROUPElement) DATASTAR_TEXTRemove() *OPTGROUPElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-text")
+	return e
+}
+
+// Sets the event handler of the element
+
+type OptgroupDataOnMod customDataKeyModifier
+
+// Debounces the event handler
+func OptgroupDataOnModDebounce(
+	s string,
+) OptgroupDataOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce_%sms", s)
+	}
+}
+
+// Throttles the event handler
+func OptgroupDataOnModThrottle(
+	s string,
+) OptgroupDataOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle_%sms", s)
+	}
+}
+
+func (e *OPTGROUPElement) DATASTAR_ON(s string, modifiers ...OptgroupDataOnMod) *OPTGROUPElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	customMods := lo.Map(modifiers, func(m OptgroupDataOnMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key := customDataKey("data-on", customMods...)
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *OPTGROUPElement) IfDATASTAR_ON(condition bool, s string, modifiers ...OptgroupDataOnMod) *OPTGROUPElement {
+	if condition {
+		e.DATASTAR_ON(s, modifiers...)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_ON from the element.
+func (e *OPTGROUPElement) DATASTAR_ONRemove() *OPTGROUPElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-on")
+	return e
+}
+
+// Sets the focus of the element
+
+func (e *OPTGROUPElement) DATASTAR_FOCUSSet(b bool) *OPTGROUPElement {
+	key := "data-focus"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *OPTGROUPElement) DATASTAR_FOCUS() *OPTGROUPElement {
+	return e.DATASTAR_FOCUSSet(true)
+}
+
+// Sets the header of for fetch requests
+
+func (e *OPTGROUPElement) DATASTAR_HEADER(s string) *OPTGROUPElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-header"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *OPTGROUPElement) IfDATASTAR_HEADER(condition bool, s string) *OPTGROUPElement {
+	if condition {
+		e.DATASTAR_HEADER(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_HEADER from the element.
+func (e *OPTGROUPElement) DATASTAR_HEADERRemove() *OPTGROUPElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-header")
+	return e
+}
+
+// Sets the URL for fetch requests
+
+func (e *OPTGROUPElement) DATASTAR_FETCH_URL(s string) *OPTGROUPElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-fetch-url"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *OPTGROUPElement) IfDATASTAR_FETCH_URL(condition bool, s string) *OPTGROUPElement {
+	if condition {
+		e.DATASTAR_FETCH_URL(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_FETCH_URL from the element.
+func (e *OPTGROUPElement) DATASTAR_FETCH_URLRemove() *OPTGROUPElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-fetch-url")
+	return e
+}
+
+// Sets the indicator selector for fetch requests
+
+func (e *OPTGROUPElement) DATASTAR_FETCH_INDICATOR(s string) *OPTGROUPElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "DatastarFetchIndicator"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *OPTGROUPElement) IfDATASTAR_FETCH_INDICATOR(condition bool, s string) *OPTGROUPElement {
+	if condition {
+		e.DATASTAR_FETCH_INDICATOR(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_FETCH_INDICATOR from the element.
+func (e *OPTGROUPElement) DATASTAR_FETCH_INDICATORRemove() *OPTGROUPElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("DatastarFetchIndicator")
+	return e
+}
+
+// Sets the visibility of the element
+
+func (e *OPTGROUPElement) DATASTAR_SHOWSet(b bool) *OPTGROUPElement {
+	key := "data-show"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *OPTGROUPElement) DATASTAR_SHOW() *OPTGROUPElement {
+	return e.DATASTAR_SHOWSet(true)
+}
+
+// Triggers the callback when the element intersects the viewport
+
+func (e *OPTGROUPElement) DATASTAR_INTERSECTSSet(b bool) *OPTGROUPElement {
+	key := "data-intersects"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *OPTGROUPElement) DATASTAR_INTERSECTS() *OPTGROUPElement {
+	return e.DATASTAR_INTERSECTSSet(true)
+}
+
+// Teleports the element to the given selector
+
+func (e *OPTGROUPElement) DATASTAR_TELEPORTSet(b bool) *OPTGROUPElement {
+	key := "data-teleport"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *OPTGROUPElement) DATASTAR_TELEPORT() *OPTGROUPElement {
+	return e.DATASTAR_TELEPORTSet(true)
+}
+
+// Scrolls the element into view
+
+func (e *OPTGROUPElement) DATASTAR_SCROLL_INTO_VIEWSet(b bool) *OPTGROUPElement {
+	key := "data-scroll-into-view"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *OPTGROUPElement) DATASTAR_SCROLL_INTO_VIEW() *OPTGROUPElement {
+	return e.DATASTAR_SCROLL_INTO_VIEWSet(true)
+}
+
+// Setup the ViewTransitionAPI for the element
+
+func (e *OPTGROUPElement) DATASTAR_VIEW_TRANSITION(s string) *OPTGROUPElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-view-transition"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *OPTGROUPElement) IfDATASTAR_VIEW_TRANSITION(condition bool, s string) *OPTGROUPElement {
+	if condition {
+		e.DATASTAR_VIEW_TRANSITION(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_VIEW_TRANSITION from the element.
+func (e *OPTGROUPElement) DATASTAR_VIEW_TRANSITIONRemove() *OPTGROUPElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-view-transition")
 	return e
 }

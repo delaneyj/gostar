@@ -6,7 +6,9 @@ package elements
 import (
 	"fmt"
 
+	"github.com/goccy/go-json"
 	"github.com/igrmk/treemap/v2"
+	"github.com/samber/lo"
 )
 
 // The HTML Strong Importance Element (<strong>) indicates that its contents have
@@ -147,7 +149,7 @@ func (e *STRONGElement) IfACCESSKEY(condition bool, r rune) *STRONGElement {
 	return e
 }
 
-// Remove the attribute accesskey from the element.
+// Remove the attribute ACCESSKEY from the element.
 func (e *STRONGElement) ACCESSKEYRemove() *STRONGElement {
 	if e.StringAttributes == nil {
 		return e
@@ -195,7 +197,7 @@ const (
 	StrongAutocapitalize_characters StrongAutocapitalizeChoice = "characters"
 )
 
-// Remove the attribute autocapitalize from the element.
+// Remove the attribute AUTOCAPITALIZE from the element.
 func (e *STRONGElement) AUTOCAPITALIZERemove(c StrongAutocapitalizeChoice) *STRONGElement {
 	if e.StringAttributes == nil {
 		return e
@@ -236,7 +238,7 @@ func (e *STRONGElement) IfAUTOFOCUS(condition bool) *STRONGElement {
 	return e
 }
 
-// Set the attribute autofocus to the value b explicitly.
+// Set the attribute AUTOFOCUS to the value b explicitly.
 func (e *STRONGElement) AUTOFOCUSSet(b bool) *STRONGElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
@@ -252,7 +254,7 @@ func (e *STRONGElement) IfSetAUTOFOCUS(condition bool, b bool) *STRONGElement {
 	return e
 }
 
-// Remove the attribute autofocus from the element.
+// Remove the attribute AUTOFOCUS from the element.
 func (e *STRONGElement) AUTOFOCUSRemove(b bool) *STRONGElement {
 	if e.BoolAttributes == nil {
 		return e
@@ -286,7 +288,7 @@ func (e *STRONGElement) IfCLASS(condition bool, s ...string) *STRONGElement {
 	return e
 }
 
-// Remove the attribute class from the element.
+// Remove the attribute CLASS from the element.
 func (e *STRONGElement) CLASSRemove(s ...string) *STRONGElement {
 	if e.DelimitedStrings == nil {
 		return e
@@ -324,7 +326,7 @@ const (
 	StrongContenteditable_plaintext_only StrongContenteditableChoice = "plaintext-only"
 )
 
-// Remove the attribute contenteditable from the element.
+// Remove the attribute CONTENTEDITABLE from the element.
 func (e *STRONGElement) CONTENTEDITABLERemove(c StrongContenteditableChoice) *STRONGElement {
 	if e.StringAttributes == nil {
 		return e
@@ -372,7 +374,7 @@ const (
 	StrongDir_auto StrongDirChoice = "auto"
 )
 
-// Remove the attribute dir from the element.
+// Remove the attribute DIR from the element.
 func (e *STRONGElement) DIRRemove(c StrongDirChoice) *STRONGElement {
 	if e.StringAttributes == nil {
 		return e
@@ -409,7 +411,7 @@ const (
 	StrongDraggable_auto StrongDraggableChoice = "auto"
 )
 
-// Remove the attribute draggable from the element.
+// Remove the attribute DRAGGABLE from the element.
 func (e *STRONGElement) DRAGGABLERemove(c StrongDraggableChoice) *STRONGElement {
 	if e.StringAttributes == nil {
 		return e
@@ -449,7 +451,7 @@ const (
 	StrongEnterkeyhint_send StrongEnterkeyhintChoice = "send"
 )
 
-// Remove the attribute enterkeyhint from the element.
+// Remove the attribute ENTERKEYHINT from the element.
 func (e *STRONGElement) ENTERKEYHINTRemove(c StrongEnterkeyhintChoice) *STRONGElement {
 	if e.StringAttributes == nil {
 		return e
@@ -498,7 +500,7 @@ func (e *STRONGElement) IfEXPORTPARTS(condition bool, s ...string) *STRONGElemen
 	return e
 }
 
-// Remove the attribute exportparts from the element.
+// Remove the attribute EXPORTPARTS from the element.
 func (e *STRONGElement) EXPORTPARTSRemove(s ...string) *STRONGElement {
 	if e.DelimitedStrings == nil {
 		return e
@@ -552,7 +554,7 @@ const (
 	StrongHidden_until_found StrongHiddenChoice = "until-found"
 )
 
-// Remove the attribute hidden from the element.
+// Remove the attribute HIDDEN from the element.
 func (e *STRONGElement) HIDDENRemove(c StrongHiddenChoice) *STRONGElement {
 	if e.StringAttributes == nil {
 		return e
@@ -580,7 +582,7 @@ func (e *STRONGElement) IfID(condition bool, s string) *STRONGElement {
 	return e
 }
 
-// Remove the attribute id from the element.
+// Remove the attribute ID from the element.
 func (e *STRONGElement) IDRemove(s string) *STRONGElement {
 	if e.StringAttributes == nil {
 		return e
@@ -613,7 +615,7 @@ func (e *STRONGElement) IfINERT(condition bool) *STRONGElement {
 	return e
 }
 
-// Set the attribute inert to the value b explicitly.
+// Set the attribute INERT to the value b explicitly.
 func (e *STRONGElement) INERTSet(b bool) *STRONGElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
@@ -629,7 +631,7 @@ func (e *STRONGElement) IfSetINERT(condition bool, b bool) *STRONGElement {
 	return e
 }
 
-// Remove the attribute inert from the element.
+// Remove the attribute INERT from the element.
 func (e *STRONGElement) INERTRemove(b bool) *STRONGElement {
 	if e.BoolAttributes == nil {
 		return e
@@ -698,7 +700,7 @@ const (
 	StrongInputmode_url StrongInputmodeChoice = "url"
 )
 
-// Remove the attribute inputmode from the element.
+// Remove the attribute INPUTMODE from the element.
 func (e *STRONGElement) INPUTMODERemove(c StrongInputmodeChoice) *STRONGElement {
 	if e.StringAttributes == nil {
 		return e
@@ -728,7 +730,7 @@ func (e *STRONGElement) IfIS(condition bool, s string) *STRONGElement {
 	return e
 }
 
-// Remove the attribute is from the element.
+// Remove the attribute IS from the element.
 func (e *STRONGElement) ISRemove(s string) *STRONGElement {
 	if e.StringAttributes == nil {
 		return e
@@ -765,7 +767,7 @@ func (e *STRONGElement) IfITEMID(condition bool, s string) *STRONGElement {
 	return e
 }
 
-// Remove the attribute itemid from the element.
+// Remove the attribute ITEMID from the element.
 func (e *STRONGElement) ITEMIDRemove(s string) *STRONGElement {
 	if e.StringAttributes == nil {
 		return e
@@ -797,7 +799,7 @@ func (e *STRONGElement) IfITEMPROP(condition bool, s string) *STRONGElement {
 	return e
 }
 
-// Remove the attribute itemprop from the element.
+// Remove the attribute ITEMPROP from the element.
 func (e *STRONGElement) ITEMPROPRemove(s string) *STRONGElement {
 	if e.StringAttributes == nil {
 		return e
@@ -826,7 +828,7 @@ func (e *STRONGElement) IfITEMREF(condition bool, s string) *STRONGElement {
 	return e
 }
 
-// Remove the attribute itemref from the element.
+// Remove the attribute ITEMREF from the element.
 func (e *STRONGElement) ITEMREFRemove(s string) *STRONGElement {
 	if e.StringAttributes == nil {
 		return e
@@ -855,7 +857,7 @@ func (e *STRONGElement) IfITEMSCOPE(condition bool) *STRONGElement {
 	return e
 }
 
-// Set the attribute itemscope to the value b explicitly.
+// Set the attribute ITEMSCOPE to the value b explicitly.
 func (e *STRONGElement) ITEMSCOPESet(b bool) *STRONGElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
@@ -871,7 +873,7 @@ func (e *STRONGElement) IfSetITEMSCOPE(condition bool, b bool) *STRONGElement {
 	return e
 }
 
-// Remove the attribute itemscope from the element.
+// Remove the attribute ITEMSCOPE from the element.
 func (e *STRONGElement) ITEMSCOPERemove(b bool) *STRONGElement {
 	if e.BoolAttributes == nil {
 		return e
@@ -903,7 +905,7 @@ func (e *STRONGElement) IfITEMTYPE(condition bool, s string) *STRONGElement {
 	return e
 }
 
-// Remove the attribute itemtype from the element.
+// Remove the attribute ITEMTYPE from the element.
 func (e *STRONGElement) ITEMTYPERemove(s string) *STRONGElement {
 	if e.StringAttributes == nil {
 		return e
@@ -933,7 +935,7 @@ func (e *STRONGElement) IfLANG(condition bool, s string) *STRONGElement {
 	return e
 }
 
-// Remove the attribute lang from the element.
+// Remove the attribute LANG from the element.
 func (e *STRONGElement) LANGRemove(s string) *STRONGElement {
 	if e.StringAttributes == nil {
 		return e
@@ -961,7 +963,7 @@ func (e *STRONGElement) IfNONCE(condition bool, s string) *STRONGElement {
 	return e
 }
 
-// Remove the attribute nonce from the element.
+// Remove the attribute NONCE from the element.
 func (e *STRONGElement) NONCERemove(s string) *STRONGElement {
 	if e.StringAttributes == nil {
 		return e
@@ -994,7 +996,7 @@ func (e *STRONGElement) IfPART(condition bool, s ...string) *STRONGElement {
 	return e
 }
 
-// Remove the attribute part from the element.
+// Remove the attribute PART from the element.
 func (e *STRONGElement) PARTRemove(s ...string) *STRONGElement {
 	if e.DelimitedStrings == nil {
 		return e
@@ -1040,7 +1042,7 @@ const (
 	StrongPopver_manual StrongPopverChoice = "manual"
 )
 
-// Remove the attribute popver from the element.
+// Remove the attribute POPVER from the element.
 func (e *STRONGElement) POPVERRemove(c StrongPopverChoice) *STRONGElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1068,7 +1070,7 @@ func (e *STRONGElement) IfSLOT(condition bool, s string) *STRONGElement {
 	return e
 }
 
-// Remove the attribute slot from the element.
+// Remove the attribute SLOT from the element.
 func (e *STRONGElement) SLOTRemove(s string) *STRONGElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1110,7 +1112,7 @@ const (
 	StrongSpellcheck_false StrongSpellcheckChoice = "false"
 )
 
-// Remove the attribute spellcheck from the element.
+// Remove the attribute SPELLCHECK from the element.
 func (e *STRONGElement) SPELLCHECKRemove(c StrongSpellcheckChoice) *STRONGElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1197,7 +1199,7 @@ func (e *STRONGElement) IfSTYLEPairs(condition bool, pairs ...string) *STRONGEle
 	return e
 }
 
-// Remove the attribute style from the element.
+// Remove the attribute STYLE from the element.
 func (e *STRONGElement) STYLERemove(keys ...string) *STRONGElement {
 	if e.KVStrings == nil {
 		return e
@@ -1241,7 +1243,7 @@ func (e *STRONGElement) IfTABINDEX(condition bool, i int) *STRONGElement {
 	return e
 }
 
-// Remove the attribute tabindex from the element.
+// Remove the attribute TABINDEX from the element.
 func (e *STRONGElement) TABINDEXRemove(i int) *STRONGElement {
 	if e.IntAttributes == nil {
 		return e
@@ -1286,7 +1288,7 @@ func (e *STRONGElement) IfTITLE(condition bool, s string) *STRONGElement {
 	return e
 }
 
-// Remove the attribute title from the element.
+// Remove the attribute TITLE from the element.
 func (e *STRONGElement) TITLERemove(s string) *STRONGElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1318,11 +1320,351 @@ const (
 	StrongTranslate_no StrongTranslateChoice = "no"
 )
 
-// Remove the attribute translate from the element.
+// Remove the attribute TRANSLATE from the element.
 func (e *STRONGElement) TRANSLATERemove(c StrongTranslateChoice) *STRONGElement {
 	if e.StringAttributes == nil {
 		return e
 	}
 	e.StringAttributes.Del("translate")
+	return e
+}
+
+// Merges the store with the given object
+
+func (e *STRONGElement) DATASTAR_MERGE_STORE(v any) *STRONGElement {
+	if e.CustomDataAttributes == nil {
+		e.CustomDataAttributes = treemap.New[string, string]()
+	}
+	b, err := json.Marshal(v)
+	if err != nil {
+		panic(err)
+	}
+	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	return e
+}
+
+// Sets the reference of the element
+
+func (e *STRONGElement) DATASTAR_REF(s string) *STRONGElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-ref"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *STRONGElement) IfDATASTAR_REF(condition bool, s string) *STRONGElement {
+	if condition {
+		e.DATASTAR_REF(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_REF from the element.
+func (e *STRONGElement) DATASTAR_REFRemove() *STRONGElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-ref")
+	return e
+}
+
+// Sets the value of the element
+
+func (e *STRONGElement) DATASTAR_BIND(s string) *STRONGElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-bind"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *STRONGElement) IfDATASTAR_BIND(condition bool, s string) *STRONGElement {
+	if condition {
+		e.DATASTAR_BIND(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_BIND from the element.
+func (e *STRONGElement) DATASTAR_BINDRemove() *STRONGElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-bind")
+	return e
+}
+
+// Sets the value of the element
+
+func (e *STRONGElement) DATASTAR_MODEL(s string) *STRONGElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-model"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *STRONGElement) IfDATASTAR_MODEL(condition bool, s string) *STRONGElement {
+	if condition {
+		e.DATASTAR_MODEL(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_MODEL from the element.
+func (e *STRONGElement) DATASTAR_MODELRemove() *STRONGElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-model")
+	return e
+}
+
+// Sets the textContent of the element
+
+func (e *STRONGElement) DATASTAR_TEXT(s string) *STRONGElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-text"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *STRONGElement) IfDATASTAR_TEXT(condition bool, s string) *STRONGElement {
+	if condition {
+		e.DATASTAR_TEXT(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_TEXT from the element.
+func (e *STRONGElement) DATASTAR_TEXTRemove() *STRONGElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-text")
+	return e
+}
+
+// Sets the event handler of the element
+
+type StrongDataOnMod customDataKeyModifier
+
+// Debounces the event handler
+func StrongDataOnModDebounce(
+	s string,
+) StrongDataOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce_%sms", s)
+	}
+}
+
+// Throttles the event handler
+func StrongDataOnModThrottle(
+	s string,
+) StrongDataOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle_%sms", s)
+	}
+}
+
+func (e *STRONGElement) DATASTAR_ON(s string, modifiers ...StrongDataOnMod) *STRONGElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	customMods := lo.Map(modifiers, func(m StrongDataOnMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key := customDataKey("data-on", customMods...)
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *STRONGElement) IfDATASTAR_ON(condition bool, s string, modifiers ...StrongDataOnMod) *STRONGElement {
+	if condition {
+		e.DATASTAR_ON(s, modifiers...)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_ON from the element.
+func (e *STRONGElement) DATASTAR_ONRemove() *STRONGElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-on")
+	return e
+}
+
+// Sets the focus of the element
+
+func (e *STRONGElement) DATASTAR_FOCUSSet(b bool) *STRONGElement {
+	key := "data-focus"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *STRONGElement) DATASTAR_FOCUS() *STRONGElement {
+	return e.DATASTAR_FOCUSSet(true)
+}
+
+// Sets the header of for fetch requests
+
+func (e *STRONGElement) DATASTAR_HEADER(s string) *STRONGElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-header"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *STRONGElement) IfDATASTAR_HEADER(condition bool, s string) *STRONGElement {
+	if condition {
+		e.DATASTAR_HEADER(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_HEADER from the element.
+func (e *STRONGElement) DATASTAR_HEADERRemove() *STRONGElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-header")
+	return e
+}
+
+// Sets the URL for fetch requests
+
+func (e *STRONGElement) DATASTAR_FETCH_URL(s string) *STRONGElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-fetch-url"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *STRONGElement) IfDATASTAR_FETCH_URL(condition bool, s string) *STRONGElement {
+	if condition {
+		e.DATASTAR_FETCH_URL(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_FETCH_URL from the element.
+func (e *STRONGElement) DATASTAR_FETCH_URLRemove() *STRONGElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-fetch-url")
+	return e
+}
+
+// Sets the indicator selector for fetch requests
+
+func (e *STRONGElement) DATASTAR_FETCH_INDICATOR(s string) *STRONGElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "DatastarFetchIndicator"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *STRONGElement) IfDATASTAR_FETCH_INDICATOR(condition bool, s string) *STRONGElement {
+	if condition {
+		e.DATASTAR_FETCH_INDICATOR(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_FETCH_INDICATOR from the element.
+func (e *STRONGElement) DATASTAR_FETCH_INDICATORRemove() *STRONGElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("DatastarFetchIndicator")
+	return e
+}
+
+// Sets the visibility of the element
+
+func (e *STRONGElement) DATASTAR_SHOWSet(b bool) *STRONGElement {
+	key := "data-show"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *STRONGElement) DATASTAR_SHOW() *STRONGElement {
+	return e.DATASTAR_SHOWSet(true)
+}
+
+// Triggers the callback when the element intersects the viewport
+
+func (e *STRONGElement) DATASTAR_INTERSECTSSet(b bool) *STRONGElement {
+	key := "data-intersects"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *STRONGElement) DATASTAR_INTERSECTS() *STRONGElement {
+	return e.DATASTAR_INTERSECTSSet(true)
+}
+
+// Teleports the element to the given selector
+
+func (e *STRONGElement) DATASTAR_TELEPORTSet(b bool) *STRONGElement {
+	key := "data-teleport"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *STRONGElement) DATASTAR_TELEPORT() *STRONGElement {
+	return e.DATASTAR_TELEPORTSet(true)
+}
+
+// Scrolls the element into view
+
+func (e *STRONGElement) DATASTAR_SCROLL_INTO_VIEWSet(b bool) *STRONGElement {
+	key := "data-scroll-into-view"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *STRONGElement) DATASTAR_SCROLL_INTO_VIEW() *STRONGElement {
+	return e.DATASTAR_SCROLL_INTO_VIEWSet(true)
+}
+
+// Setup the ViewTransitionAPI for the element
+
+func (e *STRONGElement) DATASTAR_VIEW_TRANSITION(s string) *STRONGElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-view-transition"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *STRONGElement) IfDATASTAR_VIEW_TRANSITION(condition bool, s string) *STRONGElement {
+	if condition {
+		e.DATASTAR_VIEW_TRANSITION(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_VIEW_TRANSITION from the element.
+func (e *STRONGElement) DATASTAR_VIEW_TRANSITIONRemove() *STRONGElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-view-transition")
 	return e
 }

@@ -1,11 +1,17 @@
 package cfg
 
-import pb "github.com/delaneyj/gostar/cfg/gen/specs/v1"
+import (
+	pb "github.com/delaneyj/gostar/cfg/gen/specs/v1"
+	"github.com/samber/lo"
+)
 
-var DEFAULT = &pb.Namespaces{
+var Default = &pb.Namespaces{
 	Namespaces: []*pb.Namespace{
 		HTML,
 		SVG,
 		MathML,
 	},
+	Attributes: lo.Flatten([][]*pb.Attribute{
+		DatastarExtensions,
+	}),
 }

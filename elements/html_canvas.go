@@ -6,7 +6,9 @@ package elements
 import (
 	"fmt"
 
+	"github.com/goccy/go-json"
 	"github.com/igrmk/treemap/v2"
+	"github.com/samber/lo"
 )
 
 // The HTML <canvas> element is used to draw graphics, on the fly, via scripting
@@ -145,7 +147,7 @@ func (e *CANVASElement) IfHEIGHT(condition bool, i int) *CANVASElement {
 	return e
 }
 
-// Remove the attribute height from the element.
+// Remove the attribute HEIGHT from the element.
 func (e *CANVASElement) HEIGHTRemove(i int) *CANVASElement {
 	if e.IntAttributes == nil {
 		return e
@@ -170,7 +172,7 @@ func (e *CANVASElement) IfWIDTH(condition bool, i int) *CANVASElement {
 	return e
 }
 
-// Remove the attribute width from the element.
+// Remove the attribute WIDTH from the element.
 func (e *CANVASElement) WIDTHRemove(i int) *CANVASElement {
 	if e.IntAttributes == nil {
 		return e
@@ -198,7 +200,7 @@ func (e *CANVASElement) IfACCESSKEY(condition bool, r rune) *CANVASElement {
 	return e
 }
 
-// Remove the attribute accesskey from the element.
+// Remove the attribute ACCESSKEY from the element.
 func (e *CANVASElement) ACCESSKEYRemove() *CANVASElement {
 	if e.StringAttributes == nil {
 		return e
@@ -246,7 +248,7 @@ const (
 	CanvasAutocapitalize_characters CanvasAutocapitalizeChoice = "characters"
 )
 
-// Remove the attribute autocapitalize from the element.
+// Remove the attribute AUTOCAPITALIZE from the element.
 func (e *CANVASElement) AUTOCAPITALIZERemove(c CanvasAutocapitalizeChoice) *CANVASElement {
 	if e.StringAttributes == nil {
 		return e
@@ -287,7 +289,7 @@ func (e *CANVASElement) IfAUTOFOCUS(condition bool) *CANVASElement {
 	return e
 }
 
-// Set the attribute autofocus to the value b explicitly.
+// Set the attribute AUTOFOCUS to the value b explicitly.
 func (e *CANVASElement) AUTOFOCUSSet(b bool) *CANVASElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
@@ -303,7 +305,7 @@ func (e *CANVASElement) IfSetAUTOFOCUS(condition bool, b bool) *CANVASElement {
 	return e
 }
 
-// Remove the attribute autofocus from the element.
+// Remove the attribute AUTOFOCUS from the element.
 func (e *CANVASElement) AUTOFOCUSRemove(b bool) *CANVASElement {
 	if e.BoolAttributes == nil {
 		return e
@@ -337,7 +339,7 @@ func (e *CANVASElement) IfCLASS(condition bool, s ...string) *CANVASElement {
 	return e
 }
 
-// Remove the attribute class from the element.
+// Remove the attribute CLASS from the element.
 func (e *CANVASElement) CLASSRemove(s ...string) *CANVASElement {
 	if e.DelimitedStrings == nil {
 		return e
@@ -375,7 +377,7 @@ const (
 	CanvasContenteditable_plaintext_only CanvasContenteditableChoice = "plaintext-only"
 )
 
-// Remove the attribute contenteditable from the element.
+// Remove the attribute CONTENTEDITABLE from the element.
 func (e *CANVASElement) CONTENTEDITABLERemove(c CanvasContenteditableChoice) *CANVASElement {
 	if e.StringAttributes == nil {
 		return e
@@ -423,7 +425,7 @@ const (
 	CanvasDir_auto CanvasDirChoice = "auto"
 )
 
-// Remove the attribute dir from the element.
+// Remove the attribute DIR from the element.
 func (e *CANVASElement) DIRRemove(c CanvasDirChoice) *CANVASElement {
 	if e.StringAttributes == nil {
 		return e
@@ -460,7 +462,7 @@ const (
 	CanvasDraggable_auto CanvasDraggableChoice = "auto"
 )
 
-// Remove the attribute draggable from the element.
+// Remove the attribute DRAGGABLE from the element.
 func (e *CANVASElement) DRAGGABLERemove(c CanvasDraggableChoice) *CANVASElement {
 	if e.StringAttributes == nil {
 		return e
@@ -500,7 +502,7 @@ const (
 	CanvasEnterkeyhint_send CanvasEnterkeyhintChoice = "send"
 )
 
-// Remove the attribute enterkeyhint from the element.
+// Remove the attribute ENTERKEYHINT from the element.
 func (e *CANVASElement) ENTERKEYHINTRemove(c CanvasEnterkeyhintChoice) *CANVASElement {
 	if e.StringAttributes == nil {
 		return e
@@ -549,7 +551,7 @@ func (e *CANVASElement) IfEXPORTPARTS(condition bool, s ...string) *CANVASElemen
 	return e
 }
 
-// Remove the attribute exportparts from the element.
+// Remove the attribute EXPORTPARTS from the element.
 func (e *CANVASElement) EXPORTPARTSRemove(s ...string) *CANVASElement {
 	if e.DelimitedStrings == nil {
 		return e
@@ -603,7 +605,7 @@ const (
 	CanvasHidden_until_found CanvasHiddenChoice = "until-found"
 )
 
-// Remove the attribute hidden from the element.
+// Remove the attribute HIDDEN from the element.
 func (e *CANVASElement) HIDDENRemove(c CanvasHiddenChoice) *CANVASElement {
 	if e.StringAttributes == nil {
 		return e
@@ -631,7 +633,7 @@ func (e *CANVASElement) IfID(condition bool, s string) *CANVASElement {
 	return e
 }
 
-// Remove the attribute id from the element.
+// Remove the attribute ID from the element.
 func (e *CANVASElement) IDRemove(s string) *CANVASElement {
 	if e.StringAttributes == nil {
 		return e
@@ -664,7 +666,7 @@ func (e *CANVASElement) IfINERT(condition bool) *CANVASElement {
 	return e
 }
 
-// Set the attribute inert to the value b explicitly.
+// Set the attribute INERT to the value b explicitly.
 func (e *CANVASElement) INERTSet(b bool) *CANVASElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
@@ -680,7 +682,7 @@ func (e *CANVASElement) IfSetINERT(condition bool, b bool) *CANVASElement {
 	return e
 }
 
-// Remove the attribute inert from the element.
+// Remove the attribute INERT from the element.
 func (e *CANVASElement) INERTRemove(b bool) *CANVASElement {
 	if e.BoolAttributes == nil {
 		return e
@@ -749,7 +751,7 @@ const (
 	CanvasInputmode_url CanvasInputmodeChoice = "url"
 )
 
-// Remove the attribute inputmode from the element.
+// Remove the attribute INPUTMODE from the element.
 func (e *CANVASElement) INPUTMODERemove(c CanvasInputmodeChoice) *CANVASElement {
 	if e.StringAttributes == nil {
 		return e
@@ -779,7 +781,7 @@ func (e *CANVASElement) IfIS(condition bool, s string) *CANVASElement {
 	return e
 }
 
-// Remove the attribute is from the element.
+// Remove the attribute IS from the element.
 func (e *CANVASElement) ISRemove(s string) *CANVASElement {
 	if e.StringAttributes == nil {
 		return e
@@ -816,7 +818,7 @@ func (e *CANVASElement) IfITEMID(condition bool, s string) *CANVASElement {
 	return e
 }
 
-// Remove the attribute itemid from the element.
+// Remove the attribute ITEMID from the element.
 func (e *CANVASElement) ITEMIDRemove(s string) *CANVASElement {
 	if e.StringAttributes == nil {
 		return e
@@ -848,7 +850,7 @@ func (e *CANVASElement) IfITEMPROP(condition bool, s string) *CANVASElement {
 	return e
 }
 
-// Remove the attribute itemprop from the element.
+// Remove the attribute ITEMPROP from the element.
 func (e *CANVASElement) ITEMPROPRemove(s string) *CANVASElement {
 	if e.StringAttributes == nil {
 		return e
@@ -877,7 +879,7 @@ func (e *CANVASElement) IfITEMREF(condition bool, s string) *CANVASElement {
 	return e
 }
 
-// Remove the attribute itemref from the element.
+// Remove the attribute ITEMREF from the element.
 func (e *CANVASElement) ITEMREFRemove(s string) *CANVASElement {
 	if e.StringAttributes == nil {
 		return e
@@ -906,7 +908,7 @@ func (e *CANVASElement) IfITEMSCOPE(condition bool) *CANVASElement {
 	return e
 }
 
-// Set the attribute itemscope to the value b explicitly.
+// Set the attribute ITEMSCOPE to the value b explicitly.
 func (e *CANVASElement) ITEMSCOPESet(b bool) *CANVASElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
@@ -922,7 +924,7 @@ func (e *CANVASElement) IfSetITEMSCOPE(condition bool, b bool) *CANVASElement {
 	return e
 }
 
-// Remove the attribute itemscope from the element.
+// Remove the attribute ITEMSCOPE from the element.
 func (e *CANVASElement) ITEMSCOPERemove(b bool) *CANVASElement {
 	if e.BoolAttributes == nil {
 		return e
@@ -954,7 +956,7 @@ func (e *CANVASElement) IfITEMTYPE(condition bool, s string) *CANVASElement {
 	return e
 }
 
-// Remove the attribute itemtype from the element.
+// Remove the attribute ITEMTYPE from the element.
 func (e *CANVASElement) ITEMTYPERemove(s string) *CANVASElement {
 	if e.StringAttributes == nil {
 		return e
@@ -984,7 +986,7 @@ func (e *CANVASElement) IfLANG(condition bool, s string) *CANVASElement {
 	return e
 }
 
-// Remove the attribute lang from the element.
+// Remove the attribute LANG from the element.
 func (e *CANVASElement) LANGRemove(s string) *CANVASElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1012,7 +1014,7 @@ func (e *CANVASElement) IfNONCE(condition bool, s string) *CANVASElement {
 	return e
 }
 
-// Remove the attribute nonce from the element.
+// Remove the attribute NONCE from the element.
 func (e *CANVASElement) NONCERemove(s string) *CANVASElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1045,7 +1047,7 @@ func (e *CANVASElement) IfPART(condition bool, s ...string) *CANVASElement {
 	return e
 }
 
-// Remove the attribute part from the element.
+// Remove the attribute PART from the element.
 func (e *CANVASElement) PARTRemove(s ...string) *CANVASElement {
 	if e.DelimitedStrings == nil {
 		return e
@@ -1091,7 +1093,7 @@ const (
 	CanvasPopver_manual CanvasPopverChoice = "manual"
 )
 
-// Remove the attribute popver from the element.
+// Remove the attribute POPVER from the element.
 func (e *CANVASElement) POPVERRemove(c CanvasPopverChoice) *CANVASElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1119,7 +1121,7 @@ func (e *CANVASElement) IfSLOT(condition bool, s string) *CANVASElement {
 	return e
 }
 
-// Remove the attribute slot from the element.
+// Remove the attribute SLOT from the element.
 func (e *CANVASElement) SLOTRemove(s string) *CANVASElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1161,7 +1163,7 @@ const (
 	CanvasSpellcheck_false CanvasSpellcheckChoice = "false"
 )
 
-// Remove the attribute spellcheck from the element.
+// Remove the attribute SPELLCHECK from the element.
 func (e *CANVASElement) SPELLCHECKRemove(c CanvasSpellcheckChoice) *CANVASElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1248,7 +1250,7 @@ func (e *CANVASElement) IfSTYLEPairs(condition bool, pairs ...string) *CANVASEle
 	return e
 }
 
-// Remove the attribute style from the element.
+// Remove the attribute STYLE from the element.
 func (e *CANVASElement) STYLERemove(keys ...string) *CANVASElement {
 	if e.KVStrings == nil {
 		return e
@@ -1292,7 +1294,7 @@ func (e *CANVASElement) IfTABINDEX(condition bool, i int) *CANVASElement {
 	return e
 }
 
-// Remove the attribute tabindex from the element.
+// Remove the attribute TABINDEX from the element.
 func (e *CANVASElement) TABINDEXRemove(i int) *CANVASElement {
 	if e.IntAttributes == nil {
 		return e
@@ -1337,7 +1339,7 @@ func (e *CANVASElement) IfTITLE(condition bool, s string) *CANVASElement {
 	return e
 }
 
-// Remove the attribute title from the element.
+// Remove the attribute TITLE from the element.
 func (e *CANVASElement) TITLERemove(s string) *CANVASElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1369,11 +1371,351 @@ const (
 	CanvasTranslate_no CanvasTranslateChoice = "no"
 )
 
-// Remove the attribute translate from the element.
+// Remove the attribute TRANSLATE from the element.
 func (e *CANVASElement) TRANSLATERemove(c CanvasTranslateChoice) *CANVASElement {
 	if e.StringAttributes == nil {
 		return e
 	}
 	e.StringAttributes.Del("translate")
+	return e
+}
+
+// Merges the store with the given object
+
+func (e *CANVASElement) DATASTAR_MERGE_STORE(v any) *CANVASElement {
+	if e.CustomDataAttributes == nil {
+		e.CustomDataAttributes = treemap.New[string, string]()
+	}
+	b, err := json.Marshal(v)
+	if err != nil {
+		panic(err)
+	}
+	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	return e
+}
+
+// Sets the reference of the element
+
+func (e *CANVASElement) DATASTAR_REF(s string) *CANVASElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-ref"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *CANVASElement) IfDATASTAR_REF(condition bool, s string) *CANVASElement {
+	if condition {
+		e.DATASTAR_REF(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_REF from the element.
+func (e *CANVASElement) DATASTAR_REFRemove() *CANVASElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-ref")
+	return e
+}
+
+// Sets the value of the element
+
+func (e *CANVASElement) DATASTAR_BIND(s string) *CANVASElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-bind"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *CANVASElement) IfDATASTAR_BIND(condition bool, s string) *CANVASElement {
+	if condition {
+		e.DATASTAR_BIND(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_BIND from the element.
+func (e *CANVASElement) DATASTAR_BINDRemove() *CANVASElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-bind")
+	return e
+}
+
+// Sets the value of the element
+
+func (e *CANVASElement) DATASTAR_MODEL(s string) *CANVASElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-model"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *CANVASElement) IfDATASTAR_MODEL(condition bool, s string) *CANVASElement {
+	if condition {
+		e.DATASTAR_MODEL(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_MODEL from the element.
+func (e *CANVASElement) DATASTAR_MODELRemove() *CANVASElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-model")
+	return e
+}
+
+// Sets the textContent of the element
+
+func (e *CANVASElement) DATASTAR_TEXT(s string) *CANVASElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-text"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *CANVASElement) IfDATASTAR_TEXT(condition bool, s string) *CANVASElement {
+	if condition {
+		e.DATASTAR_TEXT(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_TEXT from the element.
+func (e *CANVASElement) DATASTAR_TEXTRemove() *CANVASElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-text")
+	return e
+}
+
+// Sets the event handler of the element
+
+type CanvasDataOnMod customDataKeyModifier
+
+// Debounces the event handler
+func CanvasDataOnModDebounce(
+	s string,
+) CanvasDataOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce_%sms", s)
+	}
+}
+
+// Throttles the event handler
+func CanvasDataOnModThrottle(
+	s string,
+) CanvasDataOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle_%sms", s)
+	}
+}
+
+func (e *CANVASElement) DATASTAR_ON(s string, modifiers ...CanvasDataOnMod) *CANVASElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	customMods := lo.Map(modifiers, func(m CanvasDataOnMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key := customDataKey("data-on", customMods...)
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *CANVASElement) IfDATASTAR_ON(condition bool, s string, modifiers ...CanvasDataOnMod) *CANVASElement {
+	if condition {
+		e.DATASTAR_ON(s, modifiers...)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_ON from the element.
+func (e *CANVASElement) DATASTAR_ONRemove() *CANVASElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-on")
+	return e
+}
+
+// Sets the focus of the element
+
+func (e *CANVASElement) DATASTAR_FOCUSSet(b bool) *CANVASElement {
+	key := "data-focus"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *CANVASElement) DATASTAR_FOCUS() *CANVASElement {
+	return e.DATASTAR_FOCUSSet(true)
+}
+
+// Sets the header of for fetch requests
+
+func (e *CANVASElement) DATASTAR_HEADER(s string) *CANVASElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-header"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *CANVASElement) IfDATASTAR_HEADER(condition bool, s string) *CANVASElement {
+	if condition {
+		e.DATASTAR_HEADER(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_HEADER from the element.
+func (e *CANVASElement) DATASTAR_HEADERRemove() *CANVASElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-header")
+	return e
+}
+
+// Sets the URL for fetch requests
+
+func (e *CANVASElement) DATASTAR_FETCH_URL(s string) *CANVASElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-fetch-url"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *CANVASElement) IfDATASTAR_FETCH_URL(condition bool, s string) *CANVASElement {
+	if condition {
+		e.DATASTAR_FETCH_URL(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_FETCH_URL from the element.
+func (e *CANVASElement) DATASTAR_FETCH_URLRemove() *CANVASElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-fetch-url")
+	return e
+}
+
+// Sets the indicator selector for fetch requests
+
+func (e *CANVASElement) DATASTAR_FETCH_INDICATOR(s string) *CANVASElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "DatastarFetchIndicator"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *CANVASElement) IfDATASTAR_FETCH_INDICATOR(condition bool, s string) *CANVASElement {
+	if condition {
+		e.DATASTAR_FETCH_INDICATOR(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_FETCH_INDICATOR from the element.
+func (e *CANVASElement) DATASTAR_FETCH_INDICATORRemove() *CANVASElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("DatastarFetchIndicator")
+	return e
+}
+
+// Sets the visibility of the element
+
+func (e *CANVASElement) DATASTAR_SHOWSet(b bool) *CANVASElement {
+	key := "data-show"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *CANVASElement) DATASTAR_SHOW() *CANVASElement {
+	return e.DATASTAR_SHOWSet(true)
+}
+
+// Triggers the callback when the element intersects the viewport
+
+func (e *CANVASElement) DATASTAR_INTERSECTSSet(b bool) *CANVASElement {
+	key := "data-intersects"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *CANVASElement) DATASTAR_INTERSECTS() *CANVASElement {
+	return e.DATASTAR_INTERSECTSSet(true)
+}
+
+// Teleports the element to the given selector
+
+func (e *CANVASElement) DATASTAR_TELEPORTSet(b bool) *CANVASElement {
+	key := "data-teleport"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *CANVASElement) DATASTAR_TELEPORT() *CANVASElement {
+	return e.DATASTAR_TELEPORTSet(true)
+}
+
+// Scrolls the element into view
+
+func (e *CANVASElement) DATASTAR_SCROLL_INTO_VIEWSet(b bool) *CANVASElement {
+	key := "data-scroll-into-view"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *CANVASElement) DATASTAR_SCROLL_INTO_VIEW() *CANVASElement {
+	return e.DATASTAR_SCROLL_INTO_VIEWSet(true)
+}
+
+// Setup the ViewTransitionAPI for the element
+
+func (e *CANVASElement) DATASTAR_VIEW_TRANSITION(s string) *CANVASElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-view-transition"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *CANVASElement) IfDATASTAR_VIEW_TRANSITION(condition bool, s string) *CANVASElement {
+	if condition {
+		e.DATASTAR_VIEW_TRANSITION(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_VIEW_TRANSITION from the element.
+func (e *CANVASElement) DATASTAR_VIEW_TRANSITIONRemove() *CANVASElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-view-transition")
 	return e
 }

@@ -6,7 +6,9 @@ package elements
 import (
 	"fmt"
 
+	"github.com/goccy/go-json"
 	"github.com/igrmk/treemap/v2"
+	"github.com/samber/lo"
 )
 
 // The <foreignObject> SVG element allows for inclusion of a foreign XML namespace
@@ -146,7 +148,7 @@ func (e *SVGFOREIGNOBJECTElement) IfX(condition bool, s string) *SVGFOREIGNOBJEC
 	return e
 }
 
-// Remove the attribute x from the element.
+// Remove the attribute X from the element.
 func (e *SVGFOREIGNOBJECTElement) XRemove(s string) *SVGFOREIGNOBJECTElement {
 	if e.StringAttributes == nil {
 		return e
@@ -172,7 +174,7 @@ func (e *SVGFOREIGNOBJECTElement) IfY(condition bool, s string) *SVGFOREIGNOBJEC
 	return e
 }
 
-// Remove the attribute y from the element.
+// Remove the attribute Y from the element.
 func (e *SVGFOREIGNOBJECTElement) YRemove(s string) *SVGFOREIGNOBJECTElement {
 	if e.StringAttributes == nil {
 		return e
@@ -197,7 +199,7 @@ func (e *SVGFOREIGNOBJECTElement) IfWIDTH(condition bool, s string) *SVGFOREIGNO
 	return e
 }
 
-// Remove the attribute width from the element.
+// Remove the attribute WIDTH from the element.
 func (e *SVGFOREIGNOBJECTElement) WIDTHRemove(s string) *SVGFOREIGNOBJECTElement {
 	if e.StringAttributes == nil {
 		return e
@@ -222,7 +224,7 @@ func (e *SVGFOREIGNOBJECTElement) IfHEIGHT(condition bool, s string) *SVGFOREIGN
 	return e
 }
 
-// Remove the attribute height from the element.
+// Remove the attribute HEIGHT from the element.
 func (e *SVGFOREIGNOBJECTElement) HEIGHTRemove(s string) *SVGFOREIGNOBJECTElement {
 	if e.StringAttributes == nil {
 		return e
@@ -233,7 +235,7 @@ func (e *SVGFOREIGNOBJECTElement) HEIGHTRemove(s string) *SVGFOREIGNOBJECTElemen
 
 // A space-separated list of required extensions, indicating that the parent SVG
 // document must include the specified extensions for this element to be valid.
-func (e *SVGFOREIGNOBJECTElement) REQUIREDEXTENSIONS(s string) *SVGFOREIGNOBJECTElement {
+func (e *SVGFOREIGNOBJECTElement) REQUIRED_EXTENSIONS(s string) *SVGFOREIGNOBJECTElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
@@ -241,15 +243,15 @@ func (e *SVGFOREIGNOBJECTElement) REQUIREDEXTENSIONS(s string) *SVGFOREIGNOBJECT
 	return e
 }
 
-func (e *SVGFOREIGNOBJECTElement) IfREQUIREDEXTENSIONS(condition bool, s string) *SVGFOREIGNOBJECTElement {
+func (e *SVGFOREIGNOBJECTElement) IfREQUIRED_EXTENSIONS(condition bool, s string) *SVGFOREIGNOBJECTElement {
 	if condition {
-		e.REQUIREDEXTENSIONS(s)
+		e.REQUIRED_EXTENSIONS(s)
 	}
 	return e
 }
 
-// Remove the attribute requiredExtensions from the element.
-func (e *SVGFOREIGNOBJECTElement) REQUIREDEXTENSIONSRemove(s string) *SVGFOREIGNOBJECTElement {
+// Remove the attribute REQUIRED_EXTENSIONS from the element.
+func (e *SVGFOREIGNOBJECTElement) REQUIRED_EXTENSIONSRemove(s string) *SVGFOREIGNOBJECTElement {
 	if e.StringAttributes == nil {
 		return e
 	}
@@ -260,7 +262,7 @@ func (e *SVGFOREIGNOBJECTElement) REQUIREDEXTENSIONSRemove(s string) *SVGFOREIGN
 // A space-separated list of required features, indicating that the parent SVG
 // document must include support for all of the specified features for this
 // element to be valid.
-func (e *SVGFOREIGNOBJECTElement) REQUIREDFEATURES(s string) *SVGFOREIGNOBJECTElement {
+func (e *SVGFOREIGNOBJECTElement) REQUIRED_FEATURES(s string) *SVGFOREIGNOBJECTElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
@@ -268,15 +270,15 @@ func (e *SVGFOREIGNOBJECTElement) REQUIREDFEATURES(s string) *SVGFOREIGNOBJECTEl
 	return e
 }
 
-func (e *SVGFOREIGNOBJECTElement) IfREQUIREDFEATURES(condition bool, s string) *SVGFOREIGNOBJECTElement {
+func (e *SVGFOREIGNOBJECTElement) IfREQUIRED_FEATURES(condition bool, s string) *SVGFOREIGNOBJECTElement {
 	if condition {
-		e.REQUIREDFEATURES(s)
+		e.REQUIRED_FEATURES(s)
 	}
 	return e
 }
 
-// Remove the attribute requiredFeatures from the element.
-func (e *SVGFOREIGNOBJECTElement) REQUIREDFEATURESRemove(s string) *SVGFOREIGNOBJECTElement {
+// Remove the attribute REQUIRED_FEATURES from the element.
+func (e *SVGFOREIGNOBJECTElement) REQUIRED_FEATURESRemove(s string) *SVGFOREIGNOBJECTElement {
 	if e.StringAttributes == nil {
 		return e
 	}
@@ -287,7 +289,7 @@ func (e *SVGFOREIGNOBJECTElement) REQUIREDFEATURESRemove(s string) *SVGFOREIGNOB
 // A space-separated list of language codes, indicating that the parent SVG
 // document must include support for all of the specified languages for this
 // element to be valid.
-func (e *SVGFOREIGNOBJECTElement) SYSTEMLANGUAGE(s string) *SVGFOREIGNOBJECTElement {
+func (e *SVGFOREIGNOBJECTElement) SYSTEM_LANGUAGE(s string) *SVGFOREIGNOBJECTElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
@@ -295,19 +297,44 @@ func (e *SVGFOREIGNOBJECTElement) SYSTEMLANGUAGE(s string) *SVGFOREIGNOBJECTElem
 	return e
 }
 
-func (e *SVGFOREIGNOBJECTElement) IfSYSTEMLANGUAGE(condition bool, s string) *SVGFOREIGNOBJECTElement {
+func (e *SVGFOREIGNOBJECTElement) IfSYSTEM_LANGUAGE(condition bool, s string) *SVGFOREIGNOBJECTElement {
 	if condition {
-		e.SYSTEMLANGUAGE(s)
+		e.SYSTEM_LANGUAGE(s)
 	}
 	return e
 }
 
-// Remove the attribute systemLanguage from the element.
-func (e *SVGFOREIGNOBJECTElement) SYSTEMLANGUAGERemove(s string) *SVGFOREIGNOBJECTElement {
+// Remove the attribute SYSTEM_LANGUAGE from the element.
+func (e *SVGFOREIGNOBJECTElement) SYSTEM_LANGUAGERemove(s string) *SVGFOREIGNOBJECTElement {
 	if e.StringAttributes == nil {
 		return e
 	}
 	e.StringAttributes.Del("systemLanguage")
+	return e
+}
+
+// Specifies a unique id for an element
+func (e *SVGFOREIGNOBJECTElement) ID(s string) *SVGFOREIGNOBJECTElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	e.StringAttributes.Set("id", s)
+	return e
+}
+
+func (e *SVGFOREIGNOBJECTElement) IfID(condition bool, s string) *SVGFOREIGNOBJECTElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
+// Remove the attribute ID from the element.
+func (e *SVGFOREIGNOBJECTElement) IDRemove(s string) *SVGFOREIGNOBJECTElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("id")
 	return e
 }
 
@@ -333,7 +360,7 @@ func (e *SVGFOREIGNOBJECTElement) IfCLASS(condition bool, s ...string) *SVGFOREI
 	return e
 }
 
-// Remove the attribute class from the element.
+// Remove the attribute CLASS from the element.
 func (e *SVGFOREIGNOBJECTElement) CLASSRemove(s ...string) *SVGFOREIGNOBJECTElement {
 	if e.DelimitedStrings == nil {
 		return e
@@ -343,31 +370,6 @@ func (e *SVGFOREIGNOBJECTElement) CLASSRemove(s ...string) *SVGFOREIGNOBJECTElem
 		return e
 	}
 	ds.Remove(s...)
-	return e
-}
-
-// Specifies a unique id for an element
-func (e *SVGFOREIGNOBJECTElement) ID(s string) *SVGFOREIGNOBJECTElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	e.StringAttributes.Set("id", s)
-	return e
-}
-
-func (e *SVGFOREIGNOBJECTElement) IfID(condition bool, s string) *SVGFOREIGNOBJECTElement {
-	if condition {
-		e.ID(s)
-	}
-	return e
-}
-
-// Remove the attribute id from the element.
-func (e *SVGFOREIGNOBJECTElement) IDRemove(s string) *SVGFOREIGNOBJECTElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("id")
 	return e
 }
 
@@ -447,7 +449,7 @@ func (e *SVGFOREIGNOBJECTElement) IfSTYLEPairs(condition bool, pairs ...string) 
 	return e
 }
 
-// Remove the attribute style from the element.
+// Remove the attribute STYLE from the element.
 func (e *SVGFOREIGNOBJECTElement) STYLERemove(keys ...string) *SVGFOREIGNOBJECTElement {
 	if e.KVStrings == nil {
 		return e
@@ -459,5 +461,345 @@ func (e *SVGFOREIGNOBJECTElement) STYLERemove(keys ...string) *SVGFOREIGNOBJECTE
 	for _, k := range keys {
 		kv.Remove(k)
 	}
+	return e
+}
+
+// Merges the store with the given object
+
+func (e *SVGFOREIGNOBJECTElement) DATASTAR_MERGE_STORE(v any) *SVGFOREIGNOBJECTElement {
+	if e.CustomDataAttributes == nil {
+		e.CustomDataAttributes = treemap.New[string, string]()
+	}
+	b, err := json.Marshal(v)
+	if err != nil {
+		panic(err)
+	}
+	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	return e
+}
+
+// Sets the reference of the element
+
+func (e *SVGFOREIGNOBJECTElement) DATASTAR_REF(s string) *SVGFOREIGNOBJECTElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-ref"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SVGFOREIGNOBJECTElement) IfDATASTAR_REF(condition bool, s string) *SVGFOREIGNOBJECTElement {
+	if condition {
+		e.DATASTAR_REF(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_REF from the element.
+func (e *SVGFOREIGNOBJECTElement) DATASTAR_REFRemove() *SVGFOREIGNOBJECTElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-ref")
+	return e
+}
+
+// Sets the value of the element
+
+func (e *SVGFOREIGNOBJECTElement) DATASTAR_BIND(s string) *SVGFOREIGNOBJECTElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-bind"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SVGFOREIGNOBJECTElement) IfDATASTAR_BIND(condition bool, s string) *SVGFOREIGNOBJECTElement {
+	if condition {
+		e.DATASTAR_BIND(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_BIND from the element.
+func (e *SVGFOREIGNOBJECTElement) DATASTAR_BINDRemove() *SVGFOREIGNOBJECTElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-bind")
+	return e
+}
+
+// Sets the value of the element
+
+func (e *SVGFOREIGNOBJECTElement) DATASTAR_MODEL(s string) *SVGFOREIGNOBJECTElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-model"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SVGFOREIGNOBJECTElement) IfDATASTAR_MODEL(condition bool, s string) *SVGFOREIGNOBJECTElement {
+	if condition {
+		e.DATASTAR_MODEL(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_MODEL from the element.
+func (e *SVGFOREIGNOBJECTElement) DATASTAR_MODELRemove() *SVGFOREIGNOBJECTElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-model")
+	return e
+}
+
+// Sets the textContent of the element
+
+func (e *SVGFOREIGNOBJECTElement) DATASTAR_TEXT(s string) *SVGFOREIGNOBJECTElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-text"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SVGFOREIGNOBJECTElement) IfDATASTAR_TEXT(condition bool, s string) *SVGFOREIGNOBJECTElement {
+	if condition {
+		e.DATASTAR_TEXT(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_TEXT from the element.
+func (e *SVGFOREIGNOBJECTElement) DATASTAR_TEXTRemove() *SVGFOREIGNOBJECTElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-text")
+	return e
+}
+
+// Sets the event handler of the element
+
+type SVGForeignObjectDataOnMod customDataKeyModifier
+
+// Debounces the event handler
+func SVGForeignObjectDataOnModDebounce(
+	s string,
+) SVGForeignObjectDataOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce_%sms", s)
+	}
+}
+
+// Throttles the event handler
+func SVGForeignObjectDataOnModThrottle(
+	s string,
+) SVGForeignObjectDataOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle_%sms", s)
+	}
+}
+
+func (e *SVGFOREIGNOBJECTElement) DATASTAR_ON(s string, modifiers ...SVGForeignObjectDataOnMod) *SVGFOREIGNOBJECTElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	customMods := lo.Map(modifiers, func(m SVGForeignObjectDataOnMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key := customDataKey("data-on", customMods...)
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SVGFOREIGNOBJECTElement) IfDATASTAR_ON(condition bool, s string, modifiers ...SVGForeignObjectDataOnMod) *SVGFOREIGNOBJECTElement {
+	if condition {
+		e.DATASTAR_ON(s, modifiers...)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_ON from the element.
+func (e *SVGFOREIGNOBJECTElement) DATASTAR_ONRemove() *SVGFOREIGNOBJECTElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-on")
+	return e
+}
+
+// Sets the focus of the element
+
+func (e *SVGFOREIGNOBJECTElement) DATASTAR_FOCUSSet(b bool) *SVGFOREIGNOBJECTElement {
+	key := "data-focus"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *SVGFOREIGNOBJECTElement) DATASTAR_FOCUS() *SVGFOREIGNOBJECTElement {
+	return e.DATASTAR_FOCUSSet(true)
+}
+
+// Sets the header of for fetch requests
+
+func (e *SVGFOREIGNOBJECTElement) DATASTAR_HEADER(s string) *SVGFOREIGNOBJECTElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-header"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SVGFOREIGNOBJECTElement) IfDATASTAR_HEADER(condition bool, s string) *SVGFOREIGNOBJECTElement {
+	if condition {
+		e.DATASTAR_HEADER(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_HEADER from the element.
+func (e *SVGFOREIGNOBJECTElement) DATASTAR_HEADERRemove() *SVGFOREIGNOBJECTElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-header")
+	return e
+}
+
+// Sets the URL for fetch requests
+
+func (e *SVGFOREIGNOBJECTElement) DATASTAR_FETCH_URL(s string) *SVGFOREIGNOBJECTElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-fetch-url"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SVGFOREIGNOBJECTElement) IfDATASTAR_FETCH_URL(condition bool, s string) *SVGFOREIGNOBJECTElement {
+	if condition {
+		e.DATASTAR_FETCH_URL(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_FETCH_URL from the element.
+func (e *SVGFOREIGNOBJECTElement) DATASTAR_FETCH_URLRemove() *SVGFOREIGNOBJECTElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-fetch-url")
+	return e
+}
+
+// Sets the indicator selector for fetch requests
+
+func (e *SVGFOREIGNOBJECTElement) DATASTAR_FETCH_INDICATOR(s string) *SVGFOREIGNOBJECTElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "DatastarFetchIndicator"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SVGFOREIGNOBJECTElement) IfDATASTAR_FETCH_INDICATOR(condition bool, s string) *SVGFOREIGNOBJECTElement {
+	if condition {
+		e.DATASTAR_FETCH_INDICATOR(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_FETCH_INDICATOR from the element.
+func (e *SVGFOREIGNOBJECTElement) DATASTAR_FETCH_INDICATORRemove() *SVGFOREIGNOBJECTElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("DatastarFetchIndicator")
+	return e
+}
+
+// Sets the visibility of the element
+
+func (e *SVGFOREIGNOBJECTElement) DATASTAR_SHOWSet(b bool) *SVGFOREIGNOBJECTElement {
+	key := "data-show"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *SVGFOREIGNOBJECTElement) DATASTAR_SHOW() *SVGFOREIGNOBJECTElement {
+	return e.DATASTAR_SHOWSet(true)
+}
+
+// Triggers the callback when the element intersects the viewport
+
+func (e *SVGFOREIGNOBJECTElement) DATASTAR_INTERSECTSSet(b bool) *SVGFOREIGNOBJECTElement {
+	key := "data-intersects"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *SVGFOREIGNOBJECTElement) DATASTAR_INTERSECTS() *SVGFOREIGNOBJECTElement {
+	return e.DATASTAR_INTERSECTSSet(true)
+}
+
+// Teleports the element to the given selector
+
+func (e *SVGFOREIGNOBJECTElement) DATASTAR_TELEPORTSet(b bool) *SVGFOREIGNOBJECTElement {
+	key := "data-teleport"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *SVGFOREIGNOBJECTElement) DATASTAR_TELEPORT() *SVGFOREIGNOBJECTElement {
+	return e.DATASTAR_TELEPORTSet(true)
+}
+
+// Scrolls the element into view
+
+func (e *SVGFOREIGNOBJECTElement) DATASTAR_SCROLL_INTO_VIEWSet(b bool) *SVGFOREIGNOBJECTElement {
+	key := "data-scroll-into-view"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *SVGFOREIGNOBJECTElement) DATASTAR_SCROLL_INTO_VIEW() *SVGFOREIGNOBJECTElement {
+	return e.DATASTAR_SCROLL_INTO_VIEWSet(true)
+}
+
+// Setup the ViewTransitionAPI for the element
+
+func (e *SVGFOREIGNOBJECTElement) DATASTAR_VIEW_TRANSITION(s string) *SVGFOREIGNOBJECTElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-view-transition"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SVGFOREIGNOBJECTElement) IfDATASTAR_VIEW_TRANSITION(condition bool, s string) *SVGFOREIGNOBJECTElement {
+	if condition {
+		e.DATASTAR_VIEW_TRANSITION(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_VIEW_TRANSITION from the element.
+func (e *SVGFOREIGNOBJECTElement) DATASTAR_VIEW_TRANSITIONRemove() *SVGFOREIGNOBJECTElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-view-transition")
 	return e
 }

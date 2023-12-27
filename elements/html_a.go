@@ -6,7 +6,9 @@ package elements
 import (
 	"fmt"
 
+	"github.com/goccy/go-json"
 	"github.com/igrmk/treemap/v2"
+	"github.com/samber/lo"
 )
 
 // The HTML <a> element (or anchor element), with its href attribute, creates a
@@ -146,7 +148,7 @@ func (e *AElement) IfDOWNLOAD(condition bool, s string) *AElement {
 	return e
 }
 
-// Remove the attribute download from the element.
+// Remove the attribute DOWNLOAD from the element.
 func (e *AElement) DOWNLOADRemove(s string) *AElement {
 	if e.StringAttributes == nil {
 		return e
@@ -173,7 +175,7 @@ func (e *AElement) IfHREF(condition bool, s string) *AElement {
 	return e
 }
 
-// Remove the attribute href from the element.
+// Remove the attribute HREF from the element.
 func (e *AElement) HREFRemove(s string) *AElement {
 	if e.StringAttributes == nil {
 		return e
@@ -201,7 +203,7 @@ func (e *AElement) IfHREFLANG(condition bool, s string) *AElement {
 	return e
 }
 
-// Remove the attribute hreflang from the element.
+// Remove the attribute HREFLANG from the element.
 func (e *AElement) HREFLANGRemove(s string) *AElement {
 	if e.StringAttributes == nil {
 		return e
@@ -234,7 +236,7 @@ func (e *AElement) IfPING(condition bool, s ...string) *AElement {
 	return e
 }
 
-// Remove the attribute ping from the element.
+// Remove the attribute PING from the element.
 func (e *AElement) PINGRemove(s ...string) *AElement {
 	if e.DelimitedStrings == nil {
 		return e
@@ -283,7 +285,7 @@ const (
 	AReferrerpolicy_unsafe_url AReferrerpolicyChoice = "unsafe-url"
 )
 
-// Remove the attribute referrerpolicy from the element.
+// Remove the attribute REFERRERPOLICY from the element.
 func (e *AElement) REFERRERPOLICYRemove(c AReferrerpolicyChoice) *AElement {
 	if e.StringAttributes == nil {
 		return e
@@ -318,7 +320,7 @@ func (e *AElement) IfREL(condition bool, s ...string) *AElement {
 	return e
 }
 
-// Remove the attribute rel from the element.
+// Remove the attribute REL from the element.
 func (e *AElement) RELRemove(s ...string) *AElement {
 	if e.DelimitedStrings == nil {
 		return e
@@ -363,7 +365,7 @@ const (
 	ATarget__top ATargetChoice = "_top"
 )
 
-// Remove the attribute target from the element.
+// Remove the attribute TARGET from the element.
 func (e *AElement) TARGETRemove(c ATargetChoice) *AElement {
 	if e.StringAttributes == nil {
 		return e
@@ -389,7 +391,7 @@ func (e *AElement) IfTYPE(condition bool, s string) *AElement {
 	return e
 }
 
-// Remove the attribute type from the element.
+// Remove the attribute TYPE from the element.
 func (e *AElement) TYPERemove(s string) *AElement {
 	if e.StringAttributes == nil {
 		return e
@@ -417,7 +419,7 @@ func (e *AElement) IfACCESSKEY(condition bool, r rune) *AElement {
 	return e
 }
 
-// Remove the attribute accesskey from the element.
+// Remove the attribute ACCESSKEY from the element.
 func (e *AElement) ACCESSKEYRemove() *AElement {
 	if e.StringAttributes == nil {
 		return e
@@ -465,7 +467,7 @@ const (
 	AAutocapitalize_characters AAutocapitalizeChoice = "characters"
 )
 
-// Remove the attribute autocapitalize from the element.
+// Remove the attribute AUTOCAPITALIZE from the element.
 func (e *AElement) AUTOCAPITALIZERemove(c AAutocapitalizeChoice) *AElement {
 	if e.StringAttributes == nil {
 		return e
@@ -506,7 +508,7 @@ func (e *AElement) IfAUTOFOCUS(condition bool) *AElement {
 	return e
 }
 
-// Set the attribute autofocus to the value b explicitly.
+// Set the attribute AUTOFOCUS to the value b explicitly.
 func (e *AElement) AUTOFOCUSSet(b bool) *AElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
@@ -522,7 +524,7 @@ func (e *AElement) IfSetAUTOFOCUS(condition bool, b bool) *AElement {
 	return e
 }
 
-// Remove the attribute autofocus from the element.
+// Remove the attribute AUTOFOCUS from the element.
 func (e *AElement) AUTOFOCUSRemove(b bool) *AElement {
 	if e.BoolAttributes == nil {
 		return e
@@ -556,7 +558,7 @@ func (e *AElement) IfCLASS(condition bool, s ...string) *AElement {
 	return e
 }
 
-// Remove the attribute class from the element.
+// Remove the attribute CLASS from the element.
 func (e *AElement) CLASSRemove(s ...string) *AElement {
 	if e.DelimitedStrings == nil {
 		return e
@@ -594,7 +596,7 @@ const (
 	AContenteditable_plaintext_only AContenteditableChoice = "plaintext-only"
 )
 
-// Remove the attribute contenteditable from the element.
+// Remove the attribute CONTENTEDITABLE from the element.
 func (e *AElement) CONTENTEDITABLERemove(c AContenteditableChoice) *AElement {
 	if e.StringAttributes == nil {
 		return e
@@ -642,7 +644,7 @@ const (
 	ADir_auto ADirChoice = "auto"
 )
 
-// Remove the attribute dir from the element.
+// Remove the attribute DIR from the element.
 func (e *AElement) DIRRemove(c ADirChoice) *AElement {
 	if e.StringAttributes == nil {
 		return e
@@ -679,7 +681,7 @@ const (
 	ADraggable_auto ADraggableChoice = "auto"
 )
 
-// Remove the attribute draggable from the element.
+// Remove the attribute DRAGGABLE from the element.
 func (e *AElement) DRAGGABLERemove(c ADraggableChoice) *AElement {
 	if e.StringAttributes == nil {
 		return e
@@ -719,7 +721,7 @@ const (
 	AEnterkeyhint_send AEnterkeyhintChoice = "send"
 )
 
-// Remove the attribute enterkeyhint from the element.
+// Remove the attribute ENTERKEYHINT from the element.
 func (e *AElement) ENTERKEYHINTRemove(c AEnterkeyhintChoice) *AElement {
 	if e.StringAttributes == nil {
 		return e
@@ -768,7 +770,7 @@ func (e *AElement) IfEXPORTPARTS(condition bool, s ...string) *AElement {
 	return e
 }
 
-// Remove the attribute exportparts from the element.
+// Remove the attribute EXPORTPARTS from the element.
 func (e *AElement) EXPORTPARTSRemove(s ...string) *AElement {
 	if e.DelimitedStrings == nil {
 		return e
@@ -822,7 +824,7 @@ const (
 	AHidden_until_found AHiddenChoice = "until-found"
 )
 
-// Remove the attribute hidden from the element.
+// Remove the attribute HIDDEN from the element.
 func (e *AElement) HIDDENRemove(c AHiddenChoice) *AElement {
 	if e.StringAttributes == nil {
 		return e
@@ -850,7 +852,7 @@ func (e *AElement) IfID(condition bool, s string) *AElement {
 	return e
 }
 
-// Remove the attribute id from the element.
+// Remove the attribute ID from the element.
 func (e *AElement) IDRemove(s string) *AElement {
 	if e.StringAttributes == nil {
 		return e
@@ -883,7 +885,7 @@ func (e *AElement) IfINERT(condition bool) *AElement {
 	return e
 }
 
-// Set the attribute inert to the value b explicitly.
+// Set the attribute INERT to the value b explicitly.
 func (e *AElement) INERTSet(b bool) *AElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
@@ -899,7 +901,7 @@ func (e *AElement) IfSetINERT(condition bool, b bool) *AElement {
 	return e
 }
 
-// Remove the attribute inert from the element.
+// Remove the attribute INERT from the element.
 func (e *AElement) INERTRemove(b bool) *AElement {
 	if e.BoolAttributes == nil {
 		return e
@@ -968,7 +970,7 @@ const (
 	AInputmode_url AInputmodeChoice = "url"
 )
 
-// Remove the attribute inputmode from the element.
+// Remove the attribute INPUTMODE from the element.
 func (e *AElement) INPUTMODERemove(c AInputmodeChoice) *AElement {
 	if e.StringAttributes == nil {
 		return e
@@ -998,7 +1000,7 @@ func (e *AElement) IfIS(condition bool, s string) *AElement {
 	return e
 }
 
-// Remove the attribute is from the element.
+// Remove the attribute IS from the element.
 func (e *AElement) ISRemove(s string) *AElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1035,7 +1037,7 @@ func (e *AElement) IfITEMID(condition bool, s string) *AElement {
 	return e
 }
 
-// Remove the attribute itemid from the element.
+// Remove the attribute ITEMID from the element.
 func (e *AElement) ITEMIDRemove(s string) *AElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1067,7 +1069,7 @@ func (e *AElement) IfITEMPROP(condition bool, s string) *AElement {
 	return e
 }
 
-// Remove the attribute itemprop from the element.
+// Remove the attribute ITEMPROP from the element.
 func (e *AElement) ITEMPROPRemove(s string) *AElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1096,7 +1098,7 @@ func (e *AElement) IfITEMREF(condition bool, s string) *AElement {
 	return e
 }
 
-// Remove the attribute itemref from the element.
+// Remove the attribute ITEMREF from the element.
 func (e *AElement) ITEMREFRemove(s string) *AElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1125,7 +1127,7 @@ func (e *AElement) IfITEMSCOPE(condition bool) *AElement {
 	return e
 }
 
-// Set the attribute itemscope to the value b explicitly.
+// Set the attribute ITEMSCOPE to the value b explicitly.
 func (e *AElement) ITEMSCOPESet(b bool) *AElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
@@ -1141,7 +1143,7 @@ func (e *AElement) IfSetITEMSCOPE(condition bool, b bool) *AElement {
 	return e
 }
 
-// Remove the attribute itemscope from the element.
+// Remove the attribute ITEMSCOPE from the element.
 func (e *AElement) ITEMSCOPERemove(b bool) *AElement {
 	if e.BoolAttributes == nil {
 		return e
@@ -1173,7 +1175,7 @@ func (e *AElement) IfITEMTYPE(condition bool, s string) *AElement {
 	return e
 }
 
-// Remove the attribute itemtype from the element.
+// Remove the attribute ITEMTYPE from the element.
 func (e *AElement) ITEMTYPERemove(s string) *AElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1203,7 +1205,7 @@ func (e *AElement) IfLANG(condition bool, s string) *AElement {
 	return e
 }
 
-// Remove the attribute lang from the element.
+// Remove the attribute LANG from the element.
 func (e *AElement) LANGRemove(s string) *AElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1231,7 +1233,7 @@ func (e *AElement) IfNONCE(condition bool, s string) *AElement {
 	return e
 }
 
-// Remove the attribute nonce from the element.
+// Remove the attribute NONCE from the element.
 func (e *AElement) NONCERemove(s string) *AElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1264,7 +1266,7 @@ func (e *AElement) IfPART(condition bool, s ...string) *AElement {
 	return e
 }
 
-// Remove the attribute part from the element.
+// Remove the attribute PART from the element.
 func (e *AElement) PARTRemove(s ...string) *AElement {
 	if e.DelimitedStrings == nil {
 		return e
@@ -1310,7 +1312,7 @@ const (
 	APopver_manual APopverChoice = "manual"
 )
 
-// Remove the attribute popver from the element.
+// Remove the attribute POPVER from the element.
 func (e *AElement) POPVERRemove(c APopverChoice) *AElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1338,7 +1340,7 @@ func (e *AElement) IfSLOT(condition bool, s string) *AElement {
 	return e
 }
 
-// Remove the attribute slot from the element.
+// Remove the attribute SLOT from the element.
 func (e *AElement) SLOTRemove(s string) *AElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1380,7 +1382,7 @@ const (
 	ASpellcheck_false ASpellcheckChoice = "false"
 )
 
-// Remove the attribute spellcheck from the element.
+// Remove the attribute SPELLCHECK from the element.
 func (e *AElement) SPELLCHECKRemove(c ASpellcheckChoice) *AElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1467,7 +1469,7 @@ func (e *AElement) IfSTYLEPairs(condition bool, pairs ...string) *AElement {
 	return e
 }
 
-// Remove the attribute style from the element.
+// Remove the attribute STYLE from the element.
 func (e *AElement) STYLERemove(keys ...string) *AElement {
 	if e.KVStrings == nil {
 		return e
@@ -1511,7 +1513,7 @@ func (e *AElement) IfTABINDEX(condition bool, i int) *AElement {
 	return e
 }
 
-// Remove the attribute tabindex from the element.
+// Remove the attribute TABINDEX from the element.
 func (e *AElement) TABINDEXRemove(i int) *AElement {
 	if e.IntAttributes == nil {
 		return e
@@ -1556,7 +1558,7 @@ func (e *AElement) IfTITLE(condition bool, s string) *AElement {
 	return e
 }
 
-// Remove the attribute title from the element.
+// Remove the attribute TITLE from the element.
 func (e *AElement) TITLERemove(s string) *AElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1588,11 +1590,351 @@ const (
 	ATranslate_no ATranslateChoice = "no"
 )
 
-// Remove the attribute translate from the element.
+// Remove the attribute TRANSLATE from the element.
 func (e *AElement) TRANSLATERemove(c ATranslateChoice) *AElement {
 	if e.StringAttributes == nil {
 		return e
 	}
 	e.StringAttributes.Del("translate")
+	return e
+}
+
+// Merges the store with the given object
+
+func (e *AElement) DATASTAR_MERGE_STORE(v any) *AElement {
+	if e.CustomDataAttributes == nil {
+		e.CustomDataAttributes = treemap.New[string, string]()
+	}
+	b, err := json.Marshal(v)
+	if err != nil {
+		panic(err)
+	}
+	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	return e
+}
+
+// Sets the reference of the element
+
+func (e *AElement) DATASTAR_REF(s string) *AElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-ref"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *AElement) IfDATASTAR_REF(condition bool, s string) *AElement {
+	if condition {
+		e.DATASTAR_REF(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_REF from the element.
+func (e *AElement) DATASTAR_REFRemove() *AElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-ref")
+	return e
+}
+
+// Sets the value of the element
+
+func (e *AElement) DATASTAR_BIND(s string) *AElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-bind"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *AElement) IfDATASTAR_BIND(condition bool, s string) *AElement {
+	if condition {
+		e.DATASTAR_BIND(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_BIND from the element.
+func (e *AElement) DATASTAR_BINDRemove() *AElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-bind")
+	return e
+}
+
+// Sets the value of the element
+
+func (e *AElement) DATASTAR_MODEL(s string) *AElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-model"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *AElement) IfDATASTAR_MODEL(condition bool, s string) *AElement {
+	if condition {
+		e.DATASTAR_MODEL(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_MODEL from the element.
+func (e *AElement) DATASTAR_MODELRemove() *AElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-model")
+	return e
+}
+
+// Sets the textContent of the element
+
+func (e *AElement) DATASTAR_TEXT(s string) *AElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-text"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *AElement) IfDATASTAR_TEXT(condition bool, s string) *AElement {
+	if condition {
+		e.DATASTAR_TEXT(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_TEXT from the element.
+func (e *AElement) DATASTAR_TEXTRemove() *AElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-text")
+	return e
+}
+
+// Sets the event handler of the element
+
+type ADataOnMod customDataKeyModifier
+
+// Debounces the event handler
+func ADataOnModDebounce(
+	s string,
+) ADataOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce_%sms", s)
+	}
+}
+
+// Throttles the event handler
+func ADataOnModThrottle(
+	s string,
+) ADataOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle_%sms", s)
+	}
+}
+
+func (e *AElement) DATASTAR_ON(s string, modifiers ...ADataOnMod) *AElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	customMods := lo.Map(modifiers, func(m ADataOnMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key := customDataKey("data-on", customMods...)
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *AElement) IfDATASTAR_ON(condition bool, s string, modifiers ...ADataOnMod) *AElement {
+	if condition {
+		e.DATASTAR_ON(s, modifiers...)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_ON from the element.
+func (e *AElement) DATASTAR_ONRemove() *AElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-on")
+	return e
+}
+
+// Sets the focus of the element
+
+func (e *AElement) DATASTAR_FOCUSSet(b bool) *AElement {
+	key := "data-focus"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *AElement) DATASTAR_FOCUS() *AElement {
+	return e.DATASTAR_FOCUSSet(true)
+}
+
+// Sets the header of for fetch requests
+
+func (e *AElement) DATASTAR_HEADER(s string) *AElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-header"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *AElement) IfDATASTAR_HEADER(condition bool, s string) *AElement {
+	if condition {
+		e.DATASTAR_HEADER(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_HEADER from the element.
+func (e *AElement) DATASTAR_HEADERRemove() *AElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-header")
+	return e
+}
+
+// Sets the URL for fetch requests
+
+func (e *AElement) DATASTAR_FETCH_URL(s string) *AElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-fetch-url"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *AElement) IfDATASTAR_FETCH_URL(condition bool, s string) *AElement {
+	if condition {
+		e.DATASTAR_FETCH_URL(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_FETCH_URL from the element.
+func (e *AElement) DATASTAR_FETCH_URLRemove() *AElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-fetch-url")
+	return e
+}
+
+// Sets the indicator selector for fetch requests
+
+func (e *AElement) DATASTAR_FETCH_INDICATOR(s string) *AElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "DatastarFetchIndicator"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *AElement) IfDATASTAR_FETCH_INDICATOR(condition bool, s string) *AElement {
+	if condition {
+		e.DATASTAR_FETCH_INDICATOR(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_FETCH_INDICATOR from the element.
+func (e *AElement) DATASTAR_FETCH_INDICATORRemove() *AElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("DatastarFetchIndicator")
+	return e
+}
+
+// Sets the visibility of the element
+
+func (e *AElement) DATASTAR_SHOWSet(b bool) *AElement {
+	key := "data-show"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *AElement) DATASTAR_SHOW() *AElement {
+	return e.DATASTAR_SHOWSet(true)
+}
+
+// Triggers the callback when the element intersects the viewport
+
+func (e *AElement) DATASTAR_INTERSECTSSet(b bool) *AElement {
+	key := "data-intersects"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *AElement) DATASTAR_INTERSECTS() *AElement {
+	return e.DATASTAR_INTERSECTSSet(true)
+}
+
+// Teleports the element to the given selector
+
+func (e *AElement) DATASTAR_TELEPORTSet(b bool) *AElement {
+	key := "data-teleport"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *AElement) DATASTAR_TELEPORT() *AElement {
+	return e.DATASTAR_TELEPORTSet(true)
+}
+
+// Scrolls the element into view
+
+func (e *AElement) DATASTAR_SCROLL_INTO_VIEWSet(b bool) *AElement {
+	key := "data-scroll-into-view"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *AElement) DATASTAR_SCROLL_INTO_VIEW() *AElement {
+	return e.DATASTAR_SCROLL_INTO_VIEWSet(true)
+}
+
+// Setup the ViewTransitionAPI for the element
+
+func (e *AElement) DATASTAR_VIEW_TRANSITION(s string) *AElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-view-transition"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *AElement) IfDATASTAR_VIEW_TRANSITION(condition bool, s string) *AElement {
+	if condition {
+		e.DATASTAR_VIEW_TRANSITION(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_VIEW_TRANSITION from the element.
+func (e *AElement) DATASTAR_VIEW_TRANSITIONRemove() *AElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-view-transition")
 	return e
 }

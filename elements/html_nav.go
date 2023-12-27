@@ -6,7 +6,9 @@ package elements
 import (
 	"fmt"
 
+	"github.com/goccy/go-json"
 	"github.com/igrmk/treemap/v2"
+	"github.com/samber/lo"
 )
 
 // The HTML <nav> element represents a section of a page whose purpose is to
@@ -149,7 +151,7 @@ func (e *NAVElement) IfACCESSKEY(condition bool, r rune) *NAVElement {
 	return e
 }
 
-// Remove the attribute accesskey from the element.
+// Remove the attribute ACCESSKEY from the element.
 func (e *NAVElement) ACCESSKEYRemove() *NAVElement {
 	if e.StringAttributes == nil {
 		return e
@@ -197,7 +199,7 @@ const (
 	NavAutocapitalize_characters NavAutocapitalizeChoice = "characters"
 )
 
-// Remove the attribute autocapitalize from the element.
+// Remove the attribute AUTOCAPITALIZE from the element.
 func (e *NAVElement) AUTOCAPITALIZERemove(c NavAutocapitalizeChoice) *NAVElement {
 	if e.StringAttributes == nil {
 		return e
@@ -238,7 +240,7 @@ func (e *NAVElement) IfAUTOFOCUS(condition bool) *NAVElement {
 	return e
 }
 
-// Set the attribute autofocus to the value b explicitly.
+// Set the attribute AUTOFOCUS to the value b explicitly.
 func (e *NAVElement) AUTOFOCUSSet(b bool) *NAVElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
@@ -254,7 +256,7 @@ func (e *NAVElement) IfSetAUTOFOCUS(condition bool, b bool) *NAVElement {
 	return e
 }
 
-// Remove the attribute autofocus from the element.
+// Remove the attribute AUTOFOCUS from the element.
 func (e *NAVElement) AUTOFOCUSRemove(b bool) *NAVElement {
 	if e.BoolAttributes == nil {
 		return e
@@ -288,7 +290,7 @@ func (e *NAVElement) IfCLASS(condition bool, s ...string) *NAVElement {
 	return e
 }
 
-// Remove the attribute class from the element.
+// Remove the attribute CLASS from the element.
 func (e *NAVElement) CLASSRemove(s ...string) *NAVElement {
 	if e.DelimitedStrings == nil {
 		return e
@@ -326,7 +328,7 @@ const (
 	NavContenteditable_plaintext_only NavContenteditableChoice = "plaintext-only"
 )
 
-// Remove the attribute contenteditable from the element.
+// Remove the attribute CONTENTEDITABLE from the element.
 func (e *NAVElement) CONTENTEDITABLERemove(c NavContenteditableChoice) *NAVElement {
 	if e.StringAttributes == nil {
 		return e
@@ -374,7 +376,7 @@ const (
 	NavDir_auto NavDirChoice = "auto"
 )
 
-// Remove the attribute dir from the element.
+// Remove the attribute DIR from the element.
 func (e *NAVElement) DIRRemove(c NavDirChoice) *NAVElement {
 	if e.StringAttributes == nil {
 		return e
@@ -411,7 +413,7 @@ const (
 	NavDraggable_auto NavDraggableChoice = "auto"
 )
 
-// Remove the attribute draggable from the element.
+// Remove the attribute DRAGGABLE from the element.
 func (e *NAVElement) DRAGGABLERemove(c NavDraggableChoice) *NAVElement {
 	if e.StringAttributes == nil {
 		return e
@@ -451,7 +453,7 @@ const (
 	NavEnterkeyhint_send NavEnterkeyhintChoice = "send"
 )
 
-// Remove the attribute enterkeyhint from the element.
+// Remove the attribute ENTERKEYHINT from the element.
 func (e *NAVElement) ENTERKEYHINTRemove(c NavEnterkeyhintChoice) *NAVElement {
 	if e.StringAttributes == nil {
 		return e
@@ -500,7 +502,7 @@ func (e *NAVElement) IfEXPORTPARTS(condition bool, s ...string) *NAVElement {
 	return e
 }
 
-// Remove the attribute exportparts from the element.
+// Remove the attribute EXPORTPARTS from the element.
 func (e *NAVElement) EXPORTPARTSRemove(s ...string) *NAVElement {
 	if e.DelimitedStrings == nil {
 		return e
@@ -554,7 +556,7 @@ const (
 	NavHidden_until_found NavHiddenChoice = "until-found"
 )
 
-// Remove the attribute hidden from the element.
+// Remove the attribute HIDDEN from the element.
 func (e *NAVElement) HIDDENRemove(c NavHiddenChoice) *NAVElement {
 	if e.StringAttributes == nil {
 		return e
@@ -582,7 +584,7 @@ func (e *NAVElement) IfID(condition bool, s string) *NAVElement {
 	return e
 }
 
-// Remove the attribute id from the element.
+// Remove the attribute ID from the element.
 func (e *NAVElement) IDRemove(s string) *NAVElement {
 	if e.StringAttributes == nil {
 		return e
@@ -615,7 +617,7 @@ func (e *NAVElement) IfINERT(condition bool) *NAVElement {
 	return e
 }
 
-// Set the attribute inert to the value b explicitly.
+// Set the attribute INERT to the value b explicitly.
 func (e *NAVElement) INERTSet(b bool) *NAVElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
@@ -631,7 +633,7 @@ func (e *NAVElement) IfSetINERT(condition bool, b bool) *NAVElement {
 	return e
 }
 
-// Remove the attribute inert from the element.
+// Remove the attribute INERT from the element.
 func (e *NAVElement) INERTRemove(b bool) *NAVElement {
 	if e.BoolAttributes == nil {
 		return e
@@ -700,7 +702,7 @@ const (
 	NavInputmode_url NavInputmodeChoice = "url"
 )
 
-// Remove the attribute inputmode from the element.
+// Remove the attribute INPUTMODE from the element.
 func (e *NAVElement) INPUTMODERemove(c NavInputmodeChoice) *NAVElement {
 	if e.StringAttributes == nil {
 		return e
@@ -730,7 +732,7 @@ func (e *NAVElement) IfIS(condition bool, s string) *NAVElement {
 	return e
 }
 
-// Remove the attribute is from the element.
+// Remove the attribute IS from the element.
 func (e *NAVElement) ISRemove(s string) *NAVElement {
 	if e.StringAttributes == nil {
 		return e
@@ -767,7 +769,7 @@ func (e *NAVElement) IfITEMID(condition bool, s string) *NAVElement {
 	return e
 }
 
-// Remove the attribute itemid from the element.
+// Remove the attribute ITEMID from the element.
 func (e *NAVElement) ITEMIDRemove(s string) *NAVElement {
 	if e.StringAttributes == nil {
 		return e
@@ -799,7 +801,7 @@ func (e *NAVElement) IfITEMPROP(condition bool, s string) *NAVElement {
 	return e
 }
 
-// Remove the attribute itemprop from the element.
+// Remove the attribute ITEMPROP from the element.
 func (e *NAVElement) ITEMPROPRemove(s string) *NAVElement {
 	if e.StringAttributes == nil {
 		return e
@@ -828,7 +830,7 @@ func (e *NAVElement) IfITEMREF(condition bool, s string) *NAVElement {
 	return e
 }
 
-// Remove the attribute itemref from the element.
+// Remove the attribute ITEMREF from the element.
 func (e *NAVElement) ITEMREFRemove(s string) *NAVElement {
 	if e.StringAttributes == nil {
 		return e
@@ -857,7 +859,7 @@ func (e *NAVElement) IfITEMSCOPE(condition bool) *NAVElement {
 	return e
 }
 
-// Set the attribute itemscope to the value b explicitly.
+// Set the attribute ITEMSCOPE to the value b explicitly.
 func (e *NAVElement) ITEMSCOPESet(b bool) *NAVElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
@@ -873,7 +875,7 @@ func (e *NAVElement) IfSetITEMSCOPE(condition bool, b bool) *NAVElement {
 	return e
 }
 
-// Remove the attribute itemscope from the element.
+// Remove the attribute ITEMSCOPE from the element.
 func (e *NAVElement) ITEMSCOPERemove(b bool) *NAVElement {
 	if e.BoolAttributes == nil {
 		return e
@@ -905,7 +907,7 @@ func (e *NAVElement) IfITEMTYPE(condition bool, s string) *NAVElement {
 	return e
 }
 
-// Remove the attribute itemtype from the element.
+// Remove the attribute ITEMTYPE from the element.
 func (e *NAVElement) ITEMTYPERemove(s string) *NAVElement {
 	if e.StringAttributes == nil {
 		return e
@@ -935,7 +937,7 @@ func (e *NAVElement) IfLANG(condition bool, s string) *NAVElement {
 	return e
 }
 
-// Remove the attribute lang from the element.
+// Remove the attribute LANG from the element.
 func (e *NAVElement) LANGRemove(s string) *NAVElement {
 	if e.StringAttributes == nil {
 		return e
@@ -963,7 +965,7 @@ func (e *NAVElement) IfNONCE(condition bool, s string) *NAVElement {
 	return e
 }
 
-// Remove the attribute nonce from the element.
+// Remove the attribute NONCE from the element.
 func (e *NAVElement) NONCERemove(s string) *NAVElement {
 	if e.StringAttributes == nil {
 		return e
@@ -996,7 +998,7 @@ func (e *NAVElement) IfPART(condition bool, s ...string) *NAVElement {
 	return e
 }
 
-// Remove the attribute part from the element.
+// Remove the attribute PART from the element.
 func (e *NAVElement) PARTRemove(s ...string) *NAVElement {
 	if e.DelimitedStrings == nil {
 		return e
@@ -1042,7 +1044,7 @@ const (
 	NavPopver_manual NavPopverChoice = "manual"
 )
 
-// Remove the attribute popver from the element.
+// Remove the attribute POPVER from the element.
 func (e *NAVElement) POPVERRemove(c NavPopverChoice) *NAVElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1070,7 +1072,7 @@ func (e *NAVElement) IfSLOT(condition bool, s string) *NAVElement {
 	return e
 }
 
-// Remove the attribute slot from the element.
+// Remove the attribute SLOT from the element.
 func (e *NAVElement) SLOTRemove(s string) *NAVElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1112,7 +1114,7 @@ const (
 	NavSpellcheck_false NavSpellcheckChoice = "false"
 )
 
-// Remove the attribute spellcheck from the element.
+// Remove the attribute SPELLCHECK from the element.
 func (e *NAVElement) SPELLCHECKRemove(c NavSpellcheckChoice) *NAVElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1199,7 +1201,7 @@ func (e *NAVElement) IfSTYLEPairs(condition bool, pairs ...string) *NAVElement {
 	return e
 }
 
-// Remove the attribute style from the element.
+// Remove the attribute STYLE from the element.
 func (e *NAVElement) STYLERemove(keys ...string) *NAVElement {
 	if e.KVStrings == nil {
 		return e
@@ -1243,7 +1245,7 @@ func (e *NAVElement) IfTABINDEX(condition bool, i int) *NAVElement {
 	return e
 }
 
-// Remove the attribute tabindex from the element.
+// Remove the attribute TABINDEX from the element.
 func (e *NAVElement) TABINDEXRemove(i int) *NAVElement {
 	if e.IntAttributes == nil {
 		return e
@@ -1288,7 +1290,7 @@ func (e *NAVElement) IfTITLE(condition bool, s string) *NAVElement {
 	return e
 }
 
-// Remove the attribute title from the element.
+// Remove the attribute TITLE from the element.
 func (e *NAVElement) TITLERemove(s string) *NAVElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1320,11 +1322,351 @@ const (
 	NavTranslate_no NavTranslateChoice = "no"
 )
 
-// Remove the attribute translate from the element.
+// Remove the attribute TRANSLATE from the element.
 func (e *NAVElement) TRANSLATERemove(c NavTranslateChoice) *NAVElement {
 	if e.StringAttributes == nil {
 		return e
 	}
 	e.StringAttributes.Del("translate")
+	return e
+}
+
+// Merges the store with the given object
+
+func (e *NAVElement) DATASTAR_MERGE_STORE(v any) *NAVElement {
+	if e.CustomDataAttributes == nil {
+		e.CustomDataAttributes = treemap.New[string, string]()
+	}
+	b, err := json.Marshal(v)
+	if err != nil {
+		panic(err)
+	}
+	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	return e
+}
+
+// Sets the reference of the element
+
+func (e *NAVElement) DATASTAR_REF(s string) *NAVElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-ref"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *NAVElement) IfDATASTAR_REF(condition bool, s string) *NAVElement {
+	if condition {
+		e.DATASTAR_REF(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_REF from the element.
+func (e *NAVElement) DATASTAR_REFRemove() *NAVElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-ref")
+	return e
+}
+
+// Sets the value of the element
+
+func (e *NAVElement) DATASTAR_BIND(s string) *NAVElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-bind"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *NAVElement) IfDATASTAR_BIND(condition bool, s string) *NAVElement {
+	if condition {
+		e.DATASTAR_BIND(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_BIND from the element.
+func (e *NAVElement) DATASTAR_BINDRemove() *NAVElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-bind")
+	return e
+}
+
+// Sets the value of the element
+
+func (e *NAVElement) DATASTAR_MODEL(s string) *NAVElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-model"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *NAVElement) IfDATASTAR_MODEL(condition bool, s string) *NAVElement {
+	if condition {
+		e.DATASTAR_MODEL(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_MODEL from the element.
+func (e *NAVElement) DATASTAR_MODELRemove() *NAVElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-model")
+	return e
+}
+
+// Sets the textContent of the element
+
+func (e *NAVElement) DATASTAR_TEXT(s string) *NAVElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-text"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *NAVElement) IfDATASTAR_TEXT(condition bool, s string) *NAVElement {
+	if condition {
+		e.DATASTAR_TEXT(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_TEXT from the element.
+func (e *NAVElement) DATASTAR_TEXTRemove() *NAVElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-text")
+	return e
+}
+
+// Sets the event handler of the element
+
+type NavDataOnMod customDataKeyModifier
+
+// Debounces the event handler
+func NavDataOnModDebounce(
+	s string,
+) NavDataOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce_%sms", s)
+	}
+}
+
+// Throttles the event handler
+func NavDataOnModThrottle(
+	s string,
+) NavDataOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle_%sms", s)
+	}
+}
+
+func (e *NAVElement) DATASTAR_ON(s string, modifiers ...NavDataOnMod) *NAVElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	customMods := lo.Map(modifiers, func(m NavDataOnMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key := customDataKey("data-on", customMods...)
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *NAVElement) IfDATASTAR_ON(condition bool, s string, modifiers ...NavDataOnMod) *NAVElement {
+	if condition {
+		e.DATASTAR_ON(s, modifiers...)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_ON from the element.
+func (e *NAVElement) DATASTAR_ONRemove() *NAVElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-on")
+	return e
+}
+
+// Sets the focus of the element
+
+func (e *NAVElement) DATASTAR_FOCUSSet(b bool) *NAVElement {
+	key := "data-focus"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *NAVElement) DATASTAR_FOCUS() *NAVElement {
+	return e.DATASTAR_FOCUSSet(true)
+}
+
+// Sets the header of for fetch requests
+
+func (e *NAVElement) DATASTAR_HEADER(s string) *NAVElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-header"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *NAVElement) IfDATASTAR_HEADER(condition bool, s string) *NAVElement {
+	if condition {
+		e.DATASTAR_HEADER(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_HEADER from the element.
+func (e *NAVElement) DATASTAR_HEADERRemove() *NAVElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-header")
+	return e
+}
+
+// Sets the URL for fetch requests
+
+func (e *NAVElement) DATASTAR_FETCH_URL(s string) *NAVElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-fetch-url"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *NAVElement) IfDATASTAR_FETCH_URL(condition bool, s string) *NAVElement {
+	if condition {
+		e.DATASTAR_FETCH_URL(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_FETCH_URL from the element.
+func (e *NAVElement) DATASTAR_FETCH_URLRemove() *NAVElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-fetch-url")
+	return e
+}
+
+// Sets the indicator selector for fetch requests
+
+func (e *NAVElement) DATASTAR_FETCH_INDICATOR(s string) *NAVElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "DatastarFetchIndicator"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *NAVElement) IfDATASTAR_FETCH_INDICATOR(condition bool, s string) *NAVElement {
+	if condition {
+		e.DATASTAR_FETCH_INDICATOR(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_FETCH_INDICATOR from the element.
+func (e *NAVElement) DATASTAR_FETCH_INDICATORRemove() *NAVElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("DatastarFetchIndicator")
+	return e
+}
+
+// Sets the visibility of the element
+
+func (e *NAVElement) DATASTAR_SHOWSet(b bool) *NAVElement {
+	key := "data-show"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *NAVElement) DATASTAR_SHOW() *NAVElement {
+	return e.DATASTAR_SHOWSet(true)
+}
+
+// Triggers the callback when the element intersects the viewport
+
+func (e *NAVElement) DATASTAR_INTERSECTSSet(b bool) *NAVElement {
+	key := "data-intersects"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *NAVElement) DATASTAR_INTERSECTS() *NAVElement {
+	return e.DATASTAR_INTERSECTSSet(true)
+}
+
+// Teleports the element to the given selector
+
+func (e *NAVElement) DATASTAR_TELEPORTSet(b bool) *NAVElement {
+	key := "data-teleport"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *NAVElement) DATASTAR_TELEPORT() *NAVElement {
+	return e.DATASTAR_TELEPORTSet(true)
+}
+
+// Scrolls the element into view
+
+func (e *NAVElement) DATASTAR_SCROLL_INTO_VIEWSet(b bool) *NAVElement {
+	key := "data-scroll-into-view"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *NAVElement) DATASTAR_SCROLL_INTO_VIEW() *NAVElement {
+	return e.DATASTAR_SCROLL_INTO_VIEWSet(true)
+}
+
+// Setup the ViewTransitionAPI for the element
+
+func (e *NAVElement) DATASTAR_VIEW_TRANSITION(s string) *NAVElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-view-transition"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *NAVElement) IfDATASTAR_VIEW_TRANSITION(condition bool, s string) *NAVElement {
+	if condition {
+		e.DATASTAR_VIEW_TRANSITION(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_VIEW_TRANSITION from the element.
+func (e *NAVElement) DATASTAR_VIEW_TRANSITIONRemove() *NAVElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-view-transition")
 	return e
 }

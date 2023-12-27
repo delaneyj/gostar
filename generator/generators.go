@@ -6,7 +6,6 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
-	"slices"
 	"strings"
 	"text/template"
 
@@ -21,9 +20,9 @@ var templatesFS embed.FS
 
 var templs *template.Template
 
-func GenerateAll(ctx context.Context, outPath string, pkgs []*pb.Namespace) (err error) {
-	if len(pkgs) == 0 {
-		return fmt.Errorf("no packages specified")
+func GenerateAll(ctx context.Context, outPath string, namespaces *pb.Namespaces) (err error) {
+	if len(namespaces.Namespaces) == 0 {
+		return fmt.Errorf("no namespaces specified")
 	}
 	// pkgs = pkgs[:1]
 	// pkgs[0].Elements = pkgs[0].Elements[:1]
@@ -40,62 +39,84 @@ func GenerateAll(ctx context.Context, outPath string, pkgs []*pb.Namespace) (err
 	fm["snake"] = toolbelt.Snake
 	fm["camel"] = toolbelt.Camel
 	fm["comments"] = strToComments
-	fm["attrIsString"] = func(attr *pb.Attribute) bool {
-		switch attr.Type.Type.(type) {
+	fm["attrIsString"] = func(attr *pb.Attribute_Type) bool {
+		switch attr.Type.(type) {
 		case *pb.Attribute_Type_String_:
 			return true
 		}
 		return false
 	}
-	fm["attrIsDelimited"] = func(attr *pb.Attribute) bool {
-		switch attr.Type.Type.(type) {
+	fm["attrIsDelimited"] = func(attr *pb.Attribute_Type) bool {
+		switch attr.Type.(type) {
 		case *pb.Attribute_Type_Delimited:
 			return true
 		}
 		return false
 	}
-	fm["attrIsKV"] = func(attr *pb.Attribute) bool {
-		switch attr.Type.Type.(type) {
+	fm["attrIsKV"] = func(attr *pb.Attribute_Type) bool {
+		switch attr.Type.(type) {
 		case *pb.Attribute_Type_Kv:
 			return true
 		}
 		return false
 	}
-	fm["attrIsRune"] = func(attr *pb.Attribute) bool {
-		switch attr.Type.Type.(type) {
+	fm["attrIsRune"] = func(attr *pb.Attribute_Type) bool {
+		switch attr.Type.(type) {
 		case *pb.Attribute_Type_Rune:
 			return true
 		}
 		return false
 	}
-	fm["attrIsBool"] = func(attr *pb.Attribute) bool {
-		switch attr.Type.Type.(type) {
+	fm["attrIsBool"] = func(attr *pb.Attribute_Type) bool {
+		switch attr.Type.(type) {
 		case *pb.Attribute_Type_Bool:
 			return true
 		}
 		return false
 	}
-	fm["attrIsInt"] = func(attr *pb.Attribute) bool {
-		switch attr.Type.Type.(type) {
+	fm["attrIsInt"] = func(attr *pb.Attribute_Type) bool {
+		switch attr.Type.(type) {
 		case *pb.Attribute_Type_Integer:
 			return true
 		}
 		return false
 	}
-	fm["attrIsNumber"] = func(attr *pb.Attribute) bool {
-		switch attr.Type.Type.(type) {
+	fm["attrIsNumber"] = func(attr *pb.Attribute_Type) bool {
+		switch attr.Type.(type) {
 		case *pb.Attribute_Type_Number:
 			return true
 		}
 		return false
 	}
-	fm["attrIsChoices"] = func(attr *pb.Attribute) bool {
-		switch attr.Type.Type.(type) {
+	fm["attrIsChoices"] = func(attr *pb.Attribute_Type) bool {
+		switch attr.Type.(type) {
 		case *pb.Attribute_Type_Choices:
 			return true
 		}
 		return false
 	}
+	fm["attrIsCustom"] = func(attr *pb.Attribute_Type) bool {
+		switch attr.Type.(type) {
+		case *pb.Attribute_Type_Custom:
+			return true
+		}
+		return false
+	}
+	fm["attrIsJson"] = func(attr *pb.Attribute_Type) bool {
+		switch attr.Type.(type) {
+		case *pb.Attribute_Type_Json:
+			return true
+		}
+		return false
+	}
+	fm["attrIsDuration"] = func(attr *pb.Attribute_Type) bool {
+		switch attr.Type.(type) {
+		case *pb.Attribute_Type_DurationMs:
+			return true
+		}
+		return false
+	}
+
 	templs, err = template.New("base").Funcs(fm).ParseFS(templatesFS, "templates/*.tmpl")
 	if err != nil {
 		return fmt.Errorf("failed to parse templates: %w", err)
@@ -111,9 +132,10 @@ func GenerateAll(ctx context.Context, outPath string, pkgs []*pb.Namespace) (err
 		return fmt.Errorf("failed to execute template: %w", err)
 	}
 
-	for _, pkg := range pkgs {
-		for _, element := range pkg.Elements {
-			if err := generateElement(ctx, outPath, pkg, element); err != nil {
+	for _, ns := range namespaces.Namespaces {
+		ns.Attributes = append(ns.Attributes, namespaces.Attributes...)
+		for _, element := range ns.Elements {
+			if err := generateElement(ctx, outPath, namespaces.Attributes, ns, element); err != nil {
 				return fmt.Errorf("failed to generate element %s: %w", element.Tag, err)
 			}
 		}
@@ -122,26 +144,44 @@ func GenerateAll(ctx context.Context, outPath string, pkgs []*pb.Namespace) (err
 	return nil
 }
 
-func generateElement(ctx context.Context, pkgPath string, pkg *pb.Namespace, element *pb.Element) error {
+func generateElement(ctx context.Context, pkgPath string, globalAttributes []*pb.Attribute, ns *pb.Namespace, element *pb.Element) error {
 	if element.Name == "" {
 		element.Name = element.Tag
 	}
-	element.Attributes = lo.UniqBy(
-		append(element.Attributes, pkg.GlobalAttributes...),
-		func(a *pb.Attribute) string {
-			return a.Key
+	element.Attributes = lo.Map(
+		lo.Flatten([][]*pb.Attribute{
+			element.Attributes,
+			ns.Attributes,
+			globalAttributes,
+		}),
+		func(attr *pb.Attribute, i int) *pb.Attribute {
+			if attr.Name == "" {
+				attr.Name = attr.Key
+			}
+			if attr.Key == "" {
+				attr.Key = attr.Name
+			}
+			return attr
 		},
 	)
-	slices.SortFunc(element.Attributes, func(i, j *pb.Attribute) int {
-		return strings.Compare(i.Name, j.Name)
-	})
+	element.Attributes = lo.UniqBy(
+		element.Attributes,
+		func(attr *pb.Attribute) string {
+			return attr.Key
+		},
+	)
+	// slices.SortFunc(element.Attributes, func(i, j *pb.Attribute) int {
+	// 	return strings.Compare(i.Name, j.Name)
+	// })
 	for _, attr := range element.Attributes {
-		if attr.Name == "" {
-			attr.Name = attr.Key
-		}
+		s := toolbelt.Snake(attr.Name)
+		s = strings.ReplaceAll(s, "-", "_")
+		s = strings.ReplaceAll(s, ":", "_")
+		s = strings.ToUpper(s)
+		attr.Name = s
 	}
 
-	filename := fmt.Sprintf("%s_%s.go", toolbelt.Snake(pkg.Name), toolbelt.Snake(element.Tag))
+	filename := fmt.Sprintf("%s_%s.go", toolbelt.Snake(ns.Name), toolbelt.Snake(element.Tag))
 	elementFilepath := filepath.Join(pkgPath, filename)
 
 	f, err := os.Create(elementFilepath)
@@ -151,8 +191,8 @@ func generateElement(ctx context.Context, pkgPath string, pkg *pb.Namespace, ele
 	defer f.Close()
 
 	if err := templs.ExecuteTemplate(f, "element.tmpl", map[string]any{
-		"Package": pkg,
-		"Element": element,
+		"Namespace": ns,
+		"Element":   element,
 	}); err != nil {
 		return fmt.Errorf("failed to execute template: %w", err)
 	}

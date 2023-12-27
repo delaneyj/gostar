@@ -6,7 +6,9 @@ package elements
 import (
 	"fmt"
 
+	"github.com/goccy/go-json"
 	"github.com/igrmk/treemap/v2"
+	"github.com/samber/lo"
 )
 
 // The HTML External Resource Link element (<link>) specifies relationships
@@ -177,7 +179,7 @@ const (
 	LinkAs_worker LinkAsChoice = "worker"
 )
 
-// Remove the attribute as from the element.
+// Remove the attribute AS from the element.
 func (e *LINKElement) ASRemove(c LinkAsChoice) *LINKElement {
 	if e.StringAttributes == nil {
 		return e
@@ -208,7 +210,7 @@ const (
 	LinkCrossorigin_use_credentials LinkCrossoriginChoice = "use-credentials"
 )
 
-// Remove the attribute crossorigin from the element.
+// Remove the attribute CROSSORIGIN from the element.
 func (e *LINKElement) CROSSORIGINRemove(c LinkCrossoriginChoice) *LINKElement {
 	if e.StringAttributes == nil {
 		return e
@@ -233,7 +235,7 @@ func (e *LINKElement) IfHREF(condition bool, s string) *LINKElement {
 	return e
 }
 
-// Remove the attribute href from the element.
+// Remove the attribute HREF from the element.
 func (e *LINKElement) HREFRemove(s string) *LINKElement {
 	if e.StringAttributes == nil {
 		return e
@@ -258,7 +260,7 @@ func (e *LINKElement) IfHREFLANG(condition bool, s string) *LINKElement {
 	return e
 }
 
-// Remove the attribute hreflang from the element.
+// Remove the attribute HREFLANG from the element.
 func (e *LINKElement) HREFLANGRemove(s string) *LINKElement {
 	if e.StringAttributes == nil {
 		return e
@@ -283,7 +285,7 @@ func (e *LINKElement) IfINTEGRITY(condition bool, s string) *LINKElement {
 	return e
 }
 
-// Remove the attribute integrity from the element.
+// Remove the attribute INTEGRITY from the element.
 func (e *LINKElement) INTEGRITYRemove(s string) *LINKElement {
 	if e.StringAttributes == nil {
 		return e
@@ -308,7 +310,7 @@ func (e *LINKElement) IfMEDIA(condition bool, s string) *LINKElement {
 	return e
 }
 
-// Remove the attribute media from the element.
+// Remove the attribute MEDIA from the element.
 func (e *LINKElement) MEDIARemove(s string) *LINKElement {
 	if e.StringAttributes == nil {
 		return e
@@ -353,7 +355,7 @@ const (
 	LinkReferrerpolicy_unsafe_url LinkReferrerpolicyChoice = "unsafe-url"
 )
 
-// Remove the attribute referrerpolicy from the element.
+// Remove the attribute REFERRERPOLICY from the element.
 func (e *LINKElement) REFERRERPOLICYRemove(c LinkReferrerpolicyChoice) *LINKElement {
 	if e.StringAttributes == nil {
 		return e
@@ -378,7 +380,7 @@ func (e *LINKElement) IfREL(condition bool, s string) *LINKElement {
 	return e
 }
 
-// Remove the attribute rel from the element.
+// Remove the attribute REL from the element.
 func (e *LINKElement) RELRemove(s string) *LINKElement {
 	if e.StringAttributes == nil {
 		return e
@@ -403,7 +405,7 @@ func (e *LINKElement) IfSIZES(condition bool, s string) *LINKElement {
 	return e
 }
 
-// Remove the attribute sizes from the element.
+// Remove the attribute SIZES from the element.
 func (e *LINKElement) SIZESRemove(s string) *LINKElement {
 	if e.StringAttributes == nil {
 		return e
@@ -428,7 +430,7 @@ func (e *LINKElement) IfTYPE(condition bool, s string) *LINKElement {
 	return e
 }
 
-// Remove the attribute type from the element.
+// Remove the attribute TYPE from the element.
 func (e *LINKElement) TYPERemove(s string) *LINKElement {
 	if e.StringAttributes == nil {
 		return e
@@ -456,7 +458,7 @@ func (e *LINKElement) IfACCESSKEY(condition bool, r rune) *LINKElement {
 	return e
 }
 
-// Remove the attribute accesskey from the element.
+// Remove the attribute ACCESSKEY from the element.
 func (e *LINKElement) ACCESSKEYRemove() *LINKElement {
 	if e.StringAttributes == nil {
 		return e
@@ -504,7 +506,7 @@ const (
 	LinkAutocapitalize_characters LinkAutocapitalizeChoice = "characters"
 )
 
-// Remove the attribute autocapitalize from the element.
+// Remove the attribute AUTOCAPITALIZE from the element.
 func (e *LINKElement) AUTOCAPITALIZERemove(c LinkAutocapitalizeChoice) *LINKElement {
 	if e.StringAttributes == nil {
 		return e
@@ -545,7 +547,7 @@ func (e *LINKElement) IfAUTOFOCUS(condition bool) *LINKElement {
 	return e
 }
 
-// Set the attribute autofocus to the value b explicitly.
+// Set the attribute AUTOFOCUS to the value b explicitly.
 func (e *LINKElement) AUTOFOCUSSet(b bool) *LINKElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
@@ -561,7 +563,7 @@ func (e *LINKElement) IfSetAUTOFOCUS(condition bool, b bool) *LINKElement {
 	return e
 }
 
-// Remove the attribute autofocus from the element.
+// Remove the attribute AUTOFOCUS from the element.
 func (e *LINKElement) AUTOFOCUSRemove(b bool) *LINKElement {
 	if e.BoolAttributes == nil {
 		return e
@@ -595,7 +597,7 @@ func (e *LINKElement) IfCLASS(condition bool, s ...string) *LINKElement {
 	return e
 }
 
-// Remove the attribute class from the element.
+// Remove the attribute CLASS from the element.
 func (e *LINKElement) CLASSRemove(s ...string) *LINKElement {
 	if e.DelimitedStrings == nil {
 		return e
@@ -633,7 +635,7 @@ const (
 	LinkContenteditable_plaintext_only LinkContenteditableChoice = "plaintext-only"
 )
 
-// Remove the attribute contenteditable from the element.
+// Remove the attribute CONTENTEDITABLE from the element.
 func (e *LINKElement) CONTENTEDITABLERemove(c LinkContenteditableChoice) *LINKElement {
 	if e.StringAttributes == nil {
 		return e
@@ -681,7 +683,7 @@ const (
 	LinkDir_auto LinkDirChoice = "auto"
 )
 
-// Remove the attribute dir from the element.
+// Remove the attribute DIR from the element.
 func (e *LINKElement) DIRRemove(c LinkDirChoice) *LINKElement {
 	if e.StringAttributes == nil {
 		return e
@@ -718,7 +720,7 @@ const (
 	LinkDraggable_auto LinkDraggableChoice = "auto"
 )
 
-// Remove the attribute draggable from the element.
+// Remove the attribute DRAGGABLE from the element.
 func (e *LINKElement) DRAGGABLERemove(c LinkDraggableChoice) *LINKElement {
 	if e.StringAttributes == nil {
 		return e
@@ -758,7 +760,7 @@ const (
 	LinkEnterkeyhint_send LinkEnterkeyhintChoice = "send"
 )
 
-// Remove the attribute enterkeyhint from the element.
+// Remove the attribute ENTERKEYHINT from the element.
 func (e *LINKElement) ENTERKEYHINTRemove(c LinkEnterkeyhintChoice) *LINKElement {
 	if e.StringAttributes == nil {
 		return e
@@ -807,7 +809,7 @@ func (e *LINKElement) IfEXPORTPARTS(condition bool, s ...string) *LINKElement {
 	return e
 }
 
-// Remove the attribute exportparts from the element.
+// Remove the attribute EXPORTPARTS from the element.
 func (e *LINKElement) EXPORTPARTSRemove(s ...string) *LINKElement {
 	if e.DelimitedStrings == nil {
 		return e
@@ -861,7 +863,7 @@ const (
 	LinkHidden_until_found LinkHiddenChoice = "until-found"
 )
 
-// Remove the attribute hidden from the element.
+// Remove the attribute HIDDEN from the element.
 func (e *LINKElement) HIDDENRemove(c LinkHiddenChoice) *LINKElement {
 	if e.StringAttributes == nil {
 		return e
@@ -889,7 +891,7 @@ func (e *LINKElement) IfID(condition bool, s string) *LINKElement {
 	return e
 }
 
-// Remove the attribute id from the element.
+// Remove the attribute ID from the element.
 func (e *LINKElement) IDRemove(s string) *LINKElement {
 	if e.StringAttributes == nil {
 		return e
@@ -922,7 +924,7 @@ func (e *LINKElement) IfINERT(condition bool) *LINKElement {
 	return e
 }
 
-// Set the attribute inert to the value b explicitly.
+// Set the attribute INERT to the value b explicitly.
 func (e *LINKElement) INERTSet(b bool) *LINKElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
@@ -938,7 +940,7 @@ func (e *LINKElement) IfSetINERT(condition bool, b bool) *LINKElement {
 	return e
 }
 
-// Remove the attribute inert from the element.
+// Remove the attribute INERT from the element.
 func (e *LINKElement) INERTRemove(b bool) *LINKElement {
 	if e.BoolAttributes == nil {
 		return e
@@ -1007,7 +1009,7 @@ const (
 	LinkInputmode_url LinkInputmodeChoice = "url"
 )
 
-// Remove the attribute inputmode from the element.
+// Remove the attribute INPUTMODE from the element.
 func (e *LINKElement) INPUTMODERemove(c LinkInputmodeChoice) *LINKElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1037,7 +1039,7 @@ func (e *LINKElement) IfIS(condition bool, s string) *LINKElement {
 	return e
 }
 
-// Remove the attribute is from the element.
+// Remove the attribute IS from the element.
 func (e *LINKElement) ISRemove(s string) *LINKElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1074,7 +1076,7 @@ func (e *LINKElement) IfITEMID(condition bool, s string) *LINKElement {
 	return e
 }
 
-// Remove the attribute itemid from the element.
+// Remove the attribute ITEMID from the element.
 func (e *LINKElement) ITEMIDRemove(s string) *LINKElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1106,7 +1108,7 @@ func (e *LINKElement) IfITEMPROP(condition bool, s string) *LINKElement {
 	return e
 }
 
-// Remove the attribute itemprop from the element.
+// Remove the attribute ITEMPROP from the element.
 func (e *LINKElement) ITEMPROPRemove(s string) *LINKElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1135,7 +1137,7 @@ func (e *LINKElement) IfITEMREF(condition bool, s string) *LINKElement {
 	return e
 }
 
-// Remove the attribute itemref from the element.
+// Remove the attribute ITEMREF from the element.
 func (e *LINKElement) ITEMREFRemove(s string) *LINKElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1164,7 +1166,7 @@ func (e *LINKElement) IfITEMSCOPE(condition bool) *LINKElement {
 	return e
 }
 
-// Set the attribute itemscope to the value b explicitly.
+// Set the attribute ITEMSCOPE to the value b explicitly.
 func (e *LINKElement) ITEMSCOPESet(b bool) *LINKElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
@@ -1180,7 +1182,7 @@ func (e *LINKElement) IfSetITEMSCOPE(condition bool, b bool) *LINKElement {
 	return e
 }
 
-// Remove the attribute itemscope from the element.
+// Remove the attribute ITEMSCOPE from the element.
 func (e *LINKElement) ITEMSCOPERemove(b bool) *LINKElement {
 	if e.BoolAttributes == nil {
 		return e
@@ -1212,7 +1214,7 @@ func (e *LINKElement) IfITEMTYPE(condition bool, s string) *LINKElement {
 	return e
 }
 
-// Remove the attribute itemtype from the element.
+// Remove the attribute ITEMTYPE from the element.
 func (e *LINKElement) ITEMTYPERemove(s string) *LINKElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1242,7 +1244,7 @@ func (e *LINKElement) IfLANG(condition bool, s string) *LINKElement {
 	return e
 }
 
-// Remove the attribute lang from the element.
+// Remove the attribute LANG from the element.
 func (e *LINKElement) LANGRemove(s string) *LINKElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1270,7 +1272,7 @@ func (e *LINKElement) IfNONCE(condition bool, s string) *LINKElement {
 	return e
 }
 
-// Remove the attribute nonce from the element.
+// Remove the attribute NONCE from the element.
 func (e *LINKElement) NONCERemove(s string) *LINKElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1303,7 +1305,7 @@ func (e *LINKElement) IfPART(condition bool, s ...string) *LINKElement {
 	return e
 }
 
-// Remove the attribute part from the element.
+// Remove the attribute PART from the element.
 func (e *LINKElement) PARTRemove(s ...string) *LINKElement {
 	if e.DelimitedStrings == nil {
 		return e
@@ -1349,7 +1351,7 @@ const (
 	LinkPopver_manual LinkPopverChoice = "manual"
 )
 
-// Remove the attribute popver from the element.
+// Remove the attribute POPVER from the element.
 func (e *LINKElement) POPVERRemove(c LinkPopverChoice) *LINKElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1377,7 +1379,7 @@ func (e *LINKElement) IfSLOT(condition bool, s string) *LINKElement {
 	return e
 }
 
-// Remove the attribute slot from the element.
+// Remove the attribute SLOT from the element.
 func (e *LINKElement) SLOTRemove(s string) *LINKElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1419,7 +1421,7 @@ const (
 	LinkSpellcheck_false LinkSpellcheckChoice = "false"
 )
 
-// Remove the attribute spellcheck from the element.
+// Remove the attribute SPELLCHECK from the element.
 func (e *LINKElement) SPELLCHECKRemove(c LinkSpellcheckChoice) *LINKElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1506,7 +1508,7 @@ func (e *LINKElement) IfSTYLEPairs(condition bool, pairs ...string) *LINKElement
 	return e
 }
 
-// Remove the attribute style from the element.
+// Remove the attribute STYLE from the element.
 func (e *LINKElement) STYLERemove(keys ...string) *LINKElement {
 	if e.KVStrings == nil {
 		return e
@@ -1550,7 +1552,7 @@ func (e *LINKElement) IfTABINDEX(condition bool, i int) *LINKElement {
 	return e
 }
 
-// Remove the attribute tabindex from the element.
+// Remove the attribute TABINDEX from the element.
 func (e *LINKElement) TABINDEXRemove(i int) *LINKElement {
 	if e.IntAttributes == nil {
 		return e
@@ -1595,7 +1597,7 @@ func (e *LINKElement) IfTITLE(condition bool, s string) *LINKElement {
 	return e
 }
 
-// Remove the attribute title from the element.
+// Remove the attribute TITLE from the element.
 func (e *LINKElement) TITLERemove(s string) *LINKElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1627,11 +1629,351 @@ const (
 	LinkTranslate_no LinkTranslateChoice = "no"
 )
 
-// Remove the attribute translate from the element.
+// Remove the attribute TRANSLATE from the element.
 func (e *LINKElement) TRANSLATERemove(c LinkTranslateChoice) *LINKElement {
 	if e.StringAttributes == nil {
 		return e
 	}
 	e.StringAttributes.Del("translate")
+	return e
+}
+
+// Merges the store with the given object
+
+func (e *LINKElement) DATASTAR_MERGE_STORE(v any) *LINKElement {
+	if e.CustomDataAttributes == nil {
+		e.CustomDataAttributes = treemap.New[string, string]()
+	}
+	b, err := json.Marshal(v)
+	if err != nil {
+		panic(err)
+	}
+	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	return e
+}
+
+// Sets the reference of the element
+
+func (e *LINKElement) DATASTAR_REF(s string) *LINKElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-ref"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *LINKElement) IfDATASTAR_REF(condition bool, s string) *LINKElement {
+	if condition {
+		e.DATASTAR_REF(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_REF from the element.
+func (e *LINKElement) DATASTAR_REFRemove() *LINKElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-ref")
+	return e
+}
+
+// Sets the value of the element
+
+func (e *LINKElement) DATASTAR_BIND(s string) *LINKElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-bind"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *LINKElement) IfDATASTAR_BIND(condition bool, s string) *LINKElement {
+	if condition {
+		e.DATASTAR_BIND(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_BIND from the element.
+func (e *LINKElement) DATASTAR_BINDRemove() *LINKElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-bind")
+	return e
+}
+
+// Sets the value of the element
+
+func (e *LINKElement) DATASTAR_MODEL(s string) *LINKElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-model"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *LINKElement) IfDATASTAR_MODEL(condition bool, s string) *LINKElement {
+	if condition {
+		e.DATASTAR_MODEL(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_MODEL from the element.
+func (e *LINKElement) DATASTAR_MODELRemove() *LINKElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-model")
+	return e
+}
+
+// Sets the textContent of the element
+
+func (e *LINKElement) DATASTAR_TEXT(s string) *LINKElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-text"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *LINKElement) IfDATASTAR_TEXT(condition bool, s string) *LINKElement {
+	if condition {
+		e.DATASTAR_TEXT(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_TEXT from the element.
+func (e *LINKElement) DATASTAR_TEXTRemove() *LINKElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-text")
+	return e
+}
+
+// Sets the event handler of the element
+
+type LinkDataOnMod customDataKeyModifier
+
+// Debounces the event handler
+func LinkDataOnModDebounce(
+	s string,
+) LinkDataOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce_%sms", s)
+	}
+}
+
+// Throttles the event handler
+func LinkDataOnModThrottle(
+	s string,
+) LinkDataOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle_%sms", s)
+	}
+}
+
+func (e *LINKElement) DATASTAR_ON(s string, modifiers ...LinkDataOnMod) *LINKElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	customMods := lo.Map(modifiers, func(m LinkDataOnMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key := customDataKey("data-on", customMods...)
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *LINKElement) IfDATASTAR_ON(condition bool, s string, modifiers ...LinkDataOnMod) *LINKElement {
+	if condition {
+		e.DATASTAR_ON(s, modifiers...)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_ON from the element.
+func (e *LINKElement) DATASTAR_ONRemove() *LINKElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-on")
+	return e
+}
+
+// Sets the focus of the element
+
+func (e *LINKElement) DATASTAR_FOCUSSet(b bool) *LINKElement {
+	key := "data-focus"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *LINKElement) DATASTAR_FOCUS() *LINKElement {
+	return e.DATASTAR_FOCUSSet(true)
+}
+
+// Sets the header of for fetch requests
+
+func (e *LINKElement) DATASTAR_HEADER(s string) *LINKElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-header"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *LINKElement) IfDATASTAR_HEADER(condition bool, s string) *LINKElement {
+	if condition {
+		e.DATASTAR_HEADER(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_HEADER from the element.
+func (e *LINKElement) DATASTAR_HEADERRemove() *LINKElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-header")
+	return e
+}
+
+// Sets the URL for fetch requests
+
+func (e *LINKElement) DATASTAR_FETCH_URL(s string) *LINKElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-fetch-url"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *LINKElement) IfDATASTAR_FETCH_URL(condition bool, s string) *LINKElement {
+	if condition {
+		e.DATASTAR_FETCH_URL(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_FETCH_URL from the element.
+func (e *LINKElement) DATASTAR_FETCH_URLRemove() *LINKElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-fetch-url")
+	return e
+}
+
+// Sets the indicator selector for fetch requests
+
+func (e *LINKElement) DATASTAR_FETCH_INDICATOR(s string) *LINKElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "DatastarFetchIndicator"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *LINKElement) IfDATASTAR_FETCH_INDICATOR(condition bool, s string) *LINKElement {
+	if condition {
+		e.DATASTAR_FETCH_INDICATOR(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_FETCH_INDICATOR from the element.
+func (e *LINKElement) DATASTAR_FETCH_INDICATORRemove() *LINKElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("DatastarFetchIndicator")
+	return e
+}
+
+// Sets the visibility of the element
+
+func (e *LINKElement) DATASTAR_SHOWSet(b bool) *LINKElement {
+	key := "data-show"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *LINKElement) DATASTAR_SHOW() *LINKElement {
+	return e.DATASTAR_SHOWSet(true)
+}
+
+// Triggers the callback when the element intersects the viewport
+
+func (e *LINKElement) DATASTAR_INTERSECTSSet(b bool) *LINKElement {
+	key := "data-intersects"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *LINKElement) DATASTAR_INTERSECTS() *LINKElement {
+	return e.DATASTAR_INTERSECTSSet(true)
+}
+
+// Teleports the element to the given selector
+
+func (e *LINKElement) DATASTAR_TELEPORTSet(b bool) *LINKElement {
+	key := "data-teleport"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *LINKElement) DATASTAR_TELEPORT() *LINKElement {
+	return e.DATASTAR_TELEPORTSet(true)
+}
+
+// Scrolls the element into view
+
+func (e *LINKElement) DATASTAR_SCROLL_INTO_VIEWSet(b bool) *LINKElement {
+	key := "data-scroll-into-view"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *LINKElement) DATASTAR_SCROLL_INTO_VIEW() *LINKElement {
+	return e.DATASTAR_SCROLL_INTO_VIEWSet(true)
+}
+
+// Setup the ViewTransitionAPI for the element
+
+func (e *LINKElement) DATASTAR_VIEW_TRANSITION(s string) *LINKElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-view-transition"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *LINKElement) IfDATASTAR_VIEW_TRANSITION(condition bool, s string) *LINKElement {
+	if condition {
+		e.DATASTAR_VIEW_TRANSITION(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_VIEW_TRANSITION from the element.
+func (e *LINKElement) DATASTAR_VIEW_TRANSITIONRemove() *LINKElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-view-transition")
 	return e
 }

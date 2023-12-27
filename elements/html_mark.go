@@ -6,7 +6,9 @@ package elements
 import (
 	"fmt"
 
+	"github.com/goccy/go-json"
 	"github.com/igrmk/treemap/v2"
+	"github.com/samber/lo"
 )
 
 // The HTML Mark Text element (<mark>) represents text which is marked or
@@ -147,7 +149,7 @@ func (e *MARKElement) IfACCESSKEY(condition bool, r rune) *MARKElement {
 	return e
 }
 
-// Remove the attribute accesskey from the element.
+// Remove the attribute ACCESSKEY from the element.
 func (e *MARKElement) ACCESSKEYRemove() *MARKElement {
 	if e.StringAttributes == nil {
 		return e
@@ -195,7 +197,7 @@ const (
 	MarkAutocapitalize_characters MarkAutocapitalizeChoice = "characters"
 )
 
-// Remove the attribute autocapitalize from the element.
+// Remove the attribute AUTOCAPITALIZE from the element.
 func (e *MARKElement) AUTOCAPITALIZERemove(c MarkAutocapitalizeChoice) *MARKElement {
 	if e.StringAttributes == nil {
 		return e
@@ -236,7 +238,7 @@ func (e *MARKElement) IfAUTOFOCUS(condition bool) *MARKElement {
 	return e
 }
 
-// Set the attribute autofocus to the value b explicitly.
+// Set the attribute AUTOFOCUS to the value b explicitly.
 func (e *MARKElement) AUTOFOCUSSet(b bool) *MARKElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
@@ -252,7 +254,7 @@ func (e *MARKElement) IfSetAUTOFOCUS(condition bool, b bool) *MARKElement {
 	return e
 }
 
-// Remove the attribute autofocus from the element.
+// Remove the attribute AUTOFOCUS from the element.
 func (e *MARKElement) AUTOFOCUSRemove(b bool) *MARKElement {
 	if e.BoolAttributes == nil {
 		return e
@@ -286,7 +288,7 @@ func (e *MARKElement) IfCLASS(condition bool, s ...string) *MARKElement {
 	return e
 }
 
-// Remove the attribute class from the element.
+// Remove the attribute CLASS from the element.
 func (e *MARKElement) CLASSRemove(s ...string) *MARKElement {
 	if e.DelimitedStrings == nil {
 		return e
@@ -324,7 +326,7 @@ const (
 	MarkContenteditable_plaintext_only MarkContenteditableChoice = "plaintext-only"
 )
 
-// Remove the attribute contenteditable from the element.
+// Remove the attribute CONTENTEDITABLE from the element.
 func (e *MARKElement) CONTENTEDITABLERemove(c MarkContenteditableChoice) *MARKElement {
 	if e.StringAttributes == nil {
 		return e
@@ -372,7 +374,7 @@ const (
 	MarkDir_auto MarkDirChoice = "auto"
 )
 
-// Remove the attribute dir from the element.
+// Remove the attribute DIR from the element.
 func (e *MARKElement) DIRRemove(c MarkDirChoice) *MARKElement {
 	if e.StringAttributes == nil {
 		return e
@@ -409,7 +411,7 @@ const (
 	MarkDraggable_auto MarkDraggableChoice = "auto"
 )
 
-// Remove the attribute draggable from the element.
+// Remove the attribute DRAGGABLE from the element.
 func (e *MARKElement) DRAGGABLERemove(c MarkDraggableChoice) *MARKElement {
 	if e.StringAttributes == nil {
 		return e
@@ -449,7 +451,7 @@ const (
 	MarkEnterkeyhint_send MarkEnterkeyhintChoice = "send"
 )
 
-// Remove the attribute enterkeyhint from the element.
+// Remove the attribute ENTERKEYHINT from the element.
 func (e *MARKElement) ENTERKEYHINTRemove(c MarkEnterkeyhintChoice) *MARKElement {
 	if e.StringAttributes == nil {
 		return e
@@ -498,7 +500,7 @@ func (e *MARKElement) IfEXPORTPARTS(condition bool, s ...string) *MARKElement {
 	return e
 }
 
-// Remove the attribute exportparts from the element.
+// Remove the attribute EXPORTPARTS from the element.
 func (e *MARKElement) EXPORTPARTSRemove(s ...string) *MARKElement {
 	if e.DelimitedStrings == nil {
 		return e
@@ -552,7 +554,7 @@ const (
 	MarkHidden_until_found MarkHiddenChoice = "until-found"
 )
 
-// Remove the attribute hidden from the element.
+// Remove the attribute HIDDEN from the element.
 func (e *MARKElement) HIDDENRemove(c MarkHiddenChoice) *MARKElement {
 	if e.StringAttributes == nil {
 		return e
@@ -580,7 +582,7 @@ func (e *MARKElement) IfID(condition bool, s string) *MARKElement {
 	return e
 }
 
-// Remove the attribute id from the element.
+// Remove the attribute ID from the element.
 func (e *MARKElement) IDRemove(s string) *MARKElement {
 	if e.StringAttributes == nil {
 		return e
@@ -613,7 +615,7 @@ func (e *MARKElement) IfINERT(condition bool) *MARKElement {
 	return e
 }
 
-// Set the attribute inert to the value b explicitly.
+// Set the attribute INERT to the value b explicitly.
 func (e *MARKElement) INERTSet(b bool) *MARKElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
@@ -629,7 +631,7 @@ func (e *MARKElement) IfSetINERT(condition bool, b bool) *MARKElement {
 	return e
 }
 
-// Remove the attribute inert from the element.
+// Remove the attribute INERT from the element.
 func (e *MARKElement) INERTRemove(b bool) *MARKElement {
 	if e.BoolAttributes == nil {
 		return e
@@ -698,7 +700,7 @@ const (
 	MarkInputmode_url MarkInputmodeChoice = "url"
 )
 
-// Remove the attribute inputmode from the element.
+// Remove the attribute INPUTMODE from the element.
 func (e *MARKElement) INPUTMODERemove(c MarkInputmodeChoice) *MARKElement {
 	if e.StringAttributes == nil {
 		return e
@@ -728,7 +730,7 @@ func (e *MARKElement) IfIS(condition bool, s string) *MARKElement {
 	return e
 }
 
-// Remove the attribute is from the element.
+// Remove the attribute IS from the element.
 func (e *MARKElement) ISRemove(s string) *MARKElement {
 	if e.StringAttributes == nil {
 		return e
@@ -765,7 +767,7 @@ func (e *MARKElement) IfITEMID(condition bool, s string) *MARKElement {
 	return e
 }
 
-// Remove the attribute itemid from the element.
+// Remove the attribute ITEMID from the element.
 func (e *MARKElement) ITEMIDRemove(s string) *MARKElement {
 	if e.StringAttributes == nil {
 		return e
@@ -797,7 +799,7 @@ func (e *MARKElement) IfITEMPROP(condition bool, s string) *MARKElement {
 	return e
 }
 
-// Remove the attribute itemprop from the element.
+// Remove the attribute ITEMPROP from the element.
 func (e *MARKElement) ITEMPROPRemove(s string) *MARKElement {
 	if e.StringAttributes == nil {
 		return e
@@ -826,7 +828,7 @@ func (e *MARKElement) IfITEMREF(condition bool, s string) *MARKElement {
 	return e
 }
 
-// Remove the attribute itemref from the element.
+// Remove the attribute ITEMREF from the element.
 func (e *MARKElement) ITEMREFRemove(s string) *MARKElement {
 	if e.StringAttributes == nil {
 		return e
@@ -855,7 +857,7 @@ func (e *MARKElement) IfITEMSCOPE(condition bool) *MARKElement {
 	return e
 }
 
-// Set the attribute itemscope to the value b explicitly.
+// Set the attribute ITEMSCOPE to the value b explicitly.
 func (e *MARKElement) ITEMSCOPESet(b bool) *MARKElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
@@ -871,7 +873,7 @@ func (e *MARKElement) IfSetITEMSCOPE(condition bool, b bool) *MARKElement {
 	return e
 }
 
-// Remove the attribute itemscope from the element.
+// Remove the attribute ITEMSCOPE from the element.
 func (e *MARKElement) ITEMSCOPERemove(b bool) *MARKElement {
 	if e.BoolAttributes == nil {
 		return e
@@ -903,7 +905,7 @@ func (e *MARKElement) IfITEMTYPE(condition bool, s string) *MARKElement {
 	return e
 }
 
-// Remove the attribute itemtype from the element.
+// Remove the attribute ITEMTYPE from the element.
 func (e *MARKElement) ITEMTYPERemove(s string) *MARKElement {
 	if e.StringAttributes == nil {
 		return e
@@ -933,7 +935,7 @@ func (e *MARKElement) IfLANG(condition bool, s string) *MARKElement {
 	return e
 }
 
-// Remove the attribute lang from the element.
+// Remove the attribute LANG from the element.
 func (e *MARKElement) LANGRemove(s string) *MARKElement {
 	if e.StringAttributes == nil {
 		return e
@@ -961,7 +963,7 @@ func (e *MARKElement) IfNONCE(condition bool, s string) *MARKElement {
 	return e
 }
 
-// Remove the attribute nonce from the element.
+// Remove the attribute NONCE from the element.
 func (e *MARKElement) NONCERemove(s string) *MARKElement {
 	if e.StringAttributes == nil {
 		return e
@@ -994,7 +996,7 @@ func (e *MARKElement) IfPART(condition bool, s ...string) *MARKElement {
 	return e
 }
 
-// Remove the attribute part from the element.
+// Remove the attribute PART from the element.
 func (e *MARKElement) PARTRemove(s ...string) *MARKElement {
 	if e.DelimitedStrings == nil {
 		return e
@@ -1040,7 +1042,7 @@ const (
 	MarkPopver_manual MarkPopverChoice = "manual"
 )
 
-// Remove the attribute popver from the element.
+// Remove the attribute POPVER from the element.
 func (e *MARKElement) POPVERRemove(c MarkPopverChoice) *MARKElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1068,7 +1070,7 @@ func (e *MARKElement) IfSLOT(condition bool, s string) *MARKElement {
 	return e
 }
 
-// Remove the attribute slot from the element.
+// Remove the attribute SLOT from the element.
 func (e *MARKElement) SLOTRemove(s string) *MARKElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1110,7 +1112,7 @@ const (
 	MarkSpellcheck_false MarkSpellcheckChoice = "false"
 )
 
-// Remove the attribute spellcheck from the element.
+// Remove the attribute SPELLCHECK from the element.
 func (e *MARKElement) SPELLCHECKRemove(c MarkSpellcheckChoice) *MARKElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1197,7 +1199,7 @@ func (e *MARKElement) IfSTYLEPairs(condition bool, pairs ...string) *MARKElement
 	return e
 }
 
-// Remove the attribute style from the element.
+// Remove the attribute STYLE from the element.
 func (e *MARKElement) STYLERemove(keys ...string) *MARKElement {
 	if e.KVStrings == nil {
 		return e
@@ -1241,7 +1243,7 @@ func (e *MARKElement) IfTABINDEX(condition bool, i int) *MARKElement {
 	return e
 }
 
-// Remove the attribute tabindex from the element.
+// Remove the attribute TABINDEX from the element.
 func (e *MARKElement) TABINDEXRemove(i int) *MARKElement {
 	if e.IntAttributes == nil {
 		return e
@@ -1286,7 +1288,7 @@ func (e *MARKElement) IfTITLE(condition bool, s string) *MARKElement {
 	return e
 }
 
-// Remove the attribute title from the element.
+// Remove the attribute TITLE from the element.
 func (e *MARKElement) TITLERemove(s string) *MARKElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1318,11 +1320,351 @@ const (
 	MarkTranslate_no MarkTranslateChoice = "no"
 )
 
-// Remove the attribute translate from the element.
+// Remove the attribute TRANSLATE from the element.
 func (e *MARKElement) TRANSLATERemove(c MarkTranslateChoice) *MARKElement {
 	if e.StringAttributes == nil {
 		return e
 	}
 	e.StringAttributes.Del("translate")
+	return e
+}
+
+// Merges the store with the given object
+
+func (e *MARKElement) DATASTAR_MERGE_STORE(v any) *MARKElement {
+	if e.CustomDataAttributes == nil {
+		e.CustomDataAttributes = treemap.New[string, string]()
+	}
+	b, err := json.Marshal(v)
+	if err != nil {
+		panic(err)
+	}
+	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	return e
+}
+
+// Sets the reference of the element
+
+func (e *MARKElement) DATASTAR_REF(s string) *MARKElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-ref"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *MARKElement) IfDATASTAR_REF(condition bool, s string) *MARKElement {
+	if condition {
+		e.DATASTAR_REF(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_REF from the element.
+func (e *MARKElement) DATASTAR_REFRemove() *MARKElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-ref")
+	return e
+}
+
+// Sets the value of the element
+
+func (e *MARKElement) DATASTAR_BIND(s string) *MARKElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-bind"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *MARKElement) IfDATASTAR_BIND(condition bool, s string) *MARKElement {
+	if condition {
+		e.DATASTAR_BIND(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_BIND from the element.
+func (e *MARKElement) DATASTAR_BINDRemove() *MARKElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-bind")
+	return e
+}
+
+// Sets the value of the element
+
+func (e *MARKElement) DATASTAR_MODEL(s string) *MARKElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-model"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *MARKElement) IfDATASTAR_MODEL(condition bool, s string) *MARKElement {
+	if condition {
+		e.DATASTAR_MODEL(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_MODEL from the element.
+func (e *MARKElement) DATASTAR_MODELRemove() *MARKElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-model")
+	return e
+}
+
+// Sets the textContent of the element
+
+func (e *MARKElement) DATASTAR_TEXT(s string) *MARKElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-text"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *MARKElement) IfDATASTAR_TEXT(condition bool, s string) *MARKElement {
+	if condition {
+		e.DATASTAR_TEXT(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_TEXT from the element.
+func (e *MARKElement) DATASTAR_TEXTRemove() *MARKElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-text")
+	return e
+}
+
+// Sets the event handler of the element
+
+type MarkDataOnMod customDataKeyModifier
+
+// Debounces the event handler
+func MarkDataOnModDebounce(
+	s string,
+) MarkDataOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce_%sms", s)
+	}
+}
+
+// Throttles the event handler
+func MarkDataOnModThrottle(
+	s string,
+) MarkDataOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle_%sms", s)
+	}
+}
+
+func (e *MARKElement) DATASTAR_ON(s string, modifiers ...MarkDataOnMod) *MARKElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	customMods := lo.Map(modifiers, func(m MarkDataOnMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key := customDataKey("data-on", customMods...)
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *MARKElement) IfDATASTAR_ON(condition bool, s string, modifiers ...MarkDataOnMod) *MARKElement {
+	if condition {
+		e.DATASTAR_ON(s, modifiers...)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_ON from the element.
+func (e *MARKElement) DATASTAR_ONRemove() *MARKElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-on")
+	return e
+}
+
+// Sets the focus of the element
+
+func (e *MARKElement) DATASTAR_FOCUSSet(b bool) *MARKElement {
+	key := "data-focus"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *MARKElement) DATASTAR_FOCUS() *MARKElement {
+	return e.DATASTAR_FOCUSSet(true)
+}
+
+// Sets the header of for fetch requests
+
+func (e *MARKElement) DATASTAR_HEADER(s string) *MARKElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-header"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *MARKElement) IfDATASTAR_HEADER(condition bool, s string) *MARKElement {
+	if condition {
+		e.DATASTAR_HEADER(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_HEADER from the element.
+func (e *MARKElement) DATASTAR_HEADERRemove() *MARKElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-header")
+	return e
+}
+
+// Sets the URL for fetch requests
+
+func (e *MARKElement) DATASTAR_FETCH_URL(s string) *MARKElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-fetch-url"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *MARKElement) IfDATASTAR_FETCH_URL(condition bool, s string) *MARKElement {
+	if condition {
+		e.DATASTAR_FETCH_URL(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_FETCH_URL from the element.
+func (e *MARKElement) DATASTAR_FETCH_URLRemove() *MARKElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-fetch-url")
+	return e
+}
+
+// Sets the indicator selector for fetch requests
+
+func (e *MARKElement) DATASTAR_FETCH_INDICATOR(s string) *MARKElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "DatastarFetchIndicator"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *MARKElement) IfDATASTAR_FETCH_INDICATOR(condition bool, s string) *MARKElement {
+	if condition {
+		e.DATASTAR_FETCH_INDICATOR(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_FETCH_INDICATOR from the element.
+func (e *MARKElement) DATASTAR_FETCH_INDICATORRemove() *MARKElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("DatastarFetchIndicator")
+	return e
+}
+
+// Sets the visibility of the element
+
+func (e *MARKElement) DATASTAR_SHOWSet(b bool) *MARKElement {
+	key := "data-show"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *MARKElement) DATASTAR_SHOW() *MARKElement {
+	return e.DATASTAR_SHOWSet(true)
+}
+
+// Triggers the callback when the element intersects the viewport
+
+func (e *MARKElement) DATASTAR_INTERSECTSSet(b bool) *MARKElement {
+	key := "data-intersects"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *MARKElement) DATASTAR_INTERSECTS() *MARKElement {
+	return e.DATASTAR_INTERSECTSSet(true)
+}
+
+// Teleports the element to the given selector
+
+func (e *MARKElement) DATASTAR_TELEPORTSet(b bool) *MARKElement {
+	key := "data-teleport"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *MARKElement) DATASTAR_TELEPORT() *MARKElement {
+	return e.DATASTAR_TELEPORTSet(true)
+}
+
+// Scrolls the element into view
+
+func (e *MARKElement) DATASTAR_SCROLL_INTO_VIEWSet(b bool) *MARKElement {
+	key := "data-scroll-into-view"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *MARKElement) DATASTAR_SCROLL_INTO_VIEW() *MARKElement {
+	return e.DATASTAR_SCROLL_INTO_VIEWSet(true)
+}
+
+// Setup the ViewTransitionAPI for the element
+
+func (e *MARKElement) DATASTAR_VIEW_TRANSITION(s string) *MARKElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-view-transition"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *MARKElement) IfDATASTAR_VIEW_TRANSITION(condition bool, s string) *MARKElement {
+	if condition {
+		e.DATASTAR_VIEW_TRANSITION(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_VIEW_TRANSITION from the element.
+func (e *MARKElement) DATASTAR_VIEW_TRANSITIONRemove() *MARKElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-view-transition")
 	return e
 }

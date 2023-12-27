@@ -6,7 +6,9 @@ package elements
 import (
 	"fmt"
 
+	"github.com/goccy/go-json"
 	"github.com/igrmk/treemap/v2"
+	"github.com/samber/lo"
 )
 
 // The HTML <div> element is the generic container for flow content and does not
@@ -149,7 +151,7 @@ func (e *DIVElement) IfACCESSKEY(condition bool, r rune) *DIVElement {
 	return e
 }
 
-// Remove the attribute accesskey from the element.
+// Remove the attribute ACCESSKEY from the element.
 func (e *DIVElement) ACCESSKEYRemove() *DIVElement {
 	if e.StringAttributes == nil {
 		return e
@@ -197,7 +199,7 @@ const (
 	DivAutocapitalize_characters DivAutocapitalizeChoice = "characters"
 )
 
-// Remove the attribute autocapitalize from the element.
+// Remove the attribute AUTOCAPITALIZE from the element.
 func (e *DIVElement) AUTOCAPITALIZERemove(c DivAutocapitalizeChoice) *DIVElement {
 	if e.StringAttributes == nil {
 		return e
@@ -238,7 +240,7 @@ func (e *DIVElement) IfAUTOFOCUS(condition bool) *DIVElement {
 	return e
 }
 
-// Set the attribute autofocus to the value b explicitly.
+// Set the attribute AUTOFOCUS to the value b explicitly.
 func (e *DIVElement) AUTOFOCUSSet(b bool) *DIVElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
@@ -254,7 +256,7 @@ func (e *DIVElement) IfSetAUTOFOCUS(condition bool, b bool) *DIVElement {
 	return e
 }
 
-// Remove the attribute autofocus from the element.
+// Remove the attribute AUTOFOCUS from the element.
 func (e *DIVElement) AUTOFOCUSRemove(b bool) *DIVElement {
 	if e.BoolAttributes == nil {
 		return e
@@ -288,7 +290,7 @@ func (e *DIVElement) IfCLASS(condition bool, s ...string) *DIVElement {
 	return e
 }
 
-// Remove the attribute class from the element.
+// Remove the attribute CLASS from the element.
 func (e *DIVElement) CLASSRemove(s ...string) *DIVElement {
 	if e.DelimitedStrings == nil {
 		return e
@@ -326,7 +328,7 @@ const (
 	DivContenteditable_plaintext_only DivContenteditableChoice = "plaintext-only"
 )
 
-// Remove the attribute contenteditable from the element.
+// Remove the attribute CONTENTEDITABLE from the element.
 func (e *DIVElement) CONTENTEDITABLERemove(c DivContenteditableChoice) *DIVElement {
 	if e.StringAttributes == nil {
 		return e
@@ -374,7 +376,7 @@ const (
 	DivDir_auto DivDirChoice = "auto"
 )
 
-// Remove the attribute dir from the element.
+// Remove the attribute DIR from the element.
 func (e *DIVElement) DIRRemove(c DivDirChoice) *DIVElement {
 	if e.StringAttributes == nil {
 		return e
@@ -411,7 +413,7 @@ const (
 	DivDraggable_auto DivDraggableChoice = "auto"
 )
 
-// Remove the attribute draggable from the element.
+// Remove the attribute DRAGGABLE from the element.
 func (e *DIVElement) DRAGGABLERemove(c DivDraggableChoice) *DIVElement {
 	if e.StringAttributes == nil {
 		return e
@@ -451,7 +453,7 @@ const (
 	DivEnterkeyhint_send DivEnterkeyhintChoice = "send"
 )
 
-// Remove the attribute enterkeyhint from the element.
+// Remove the attribute ENTERKEYHINT from the element.
 func (e *DIVElement) ENTERKEYHINTRemove(c DivEnterkeyhintChoice) *DIVElement {
 	if e.StringAttributes == nil {
 		return e
@@ -500,7 +502,7 @@ func (e *DIVElement) IfEXPORTPARTS(condition bool, s ...string) *DIVElement {
 	return e
 }
 
-// Remove the attribute exportparts from the element.
+// Remove the attribute EXPORTPARTS from the element.
 func (e *DIVElement) EXPORTPARTSRemove(s ...string) *DIVElement {
 	if e.DelimitedStrings == nil {
 		return e
@@ -554,7 +556,7 @@ const (
 	DivHidden_until_found DivHiddenChoice = "until-found"
 )
 
-// Remove the attribute hidden from the element.
+// Remove the attribute HIDDEN from the element.
 func (e *DIVElement) HIDDENRemove(c DivHiddenChoice) *DIVElement {
 	if e.StringAttributes == nil {
 		return e
@@ -582,7 +584,7 @@ func (e *DIVElement) IfID(condition bool, s string) *DIVElement {
 	return e
 }
 
-// Remove the attribute id from the element.
+// Remove the attribute ID from the element.
 func (e *DIVElement) IDRemove(s string) *DIVElement {
 	if e.StringAttributes == nil {
 		return e
@@ -615,7 +617,7 @@ func (e *DIVElement) IfINERT(condition bool) *DIVElement {
 	return e
 }
 
-// Set the attribute inert to the value b explicitly.
+// Set the attribute INERT to the value b explicitly.
 func (e *DIVElement) INERTSet(b bool) *DIVElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
@@ -631,7 +633,7 @@ func (e *DIVElement) IfSetINERT(condition bool, b bool) *DIVElement {
 	return e
 }
 
-// Remove the attribute inert from the element.
+// Remove the attribute INERT from the element.
 func (e *DIVElement) INERTRemove(b bool) *DIVElement {
 	if e.BoolAttributes == nil {
 		return e
@@ -700,7 +702,7 @@ const (
 	DivInputmode_url DivInputmodeChoice = "url"
 )
 
-// Remove the attribute inputmode from the element.
+// Remove the attribute INPUTMODE from the element.
 func (e *DIVElement) INPUTMODERemove(c DivInputmodeChoice) *DIVElement {
 	if e.StringAttributes == nil {
 		return e
@@ -730,7 +732,7 @@ func (e *DIVElement) IfIS(condition bool, s string) *DIVElement {
 	return e
 }
 
-// Remove the attribute is from the element.
+// Remove the attribute IS from the element.
 func (e *DIVElement) ISRemove(s string) *DIVElement {
 	if e.StringAttributes == nil {
 		return e
@@ -767,7 +769,7 @@ func (e *DIVElement) IfITEMID(condition bool, s string) *DIVElement {
 	return e
 }
 
-// Remove the attribute itemid from the element.
+// Remove the attribute ITEMID from the element.
 func (e *DIVElement) ITEMIDRemove(s string) *DIVElement {
 	if e.StringAttributes == nil {
 		return e
@@ -799,7 +801,7 @@ func (e *DIVElement) IfITEMPROP(condition bool, s string) *DIVElement {
 	return e
 }
 
-// Remove the attribute itemprop from the element.
+// Remove the attribute ITEMPROP from the element.
 func (e *DIVElement) ITEMPROPRemove(s string) *DIVElement {
 	if e.StringAttributes == nil {
 		return e
@@ -828,7 +830,7 @@ func (e *DIVElement) IfITEMREF(condition bool, s string) *DIVElement {
 	return e
 }
 
-// Remove the attribute itemref from the element.
+// Remove the attribute ITEMREF from the element.
 func (e *DIVElement) ITEMREFRemove(s string) *DIVElement {
 	if e.StringAttributes == nil {
 		return e
@@ -857,7 +859,7 @@ func (e *DIVElement) IfITEMSCOPE(condition bool) *DIVElement {
 	return e
 }
 
-// Set the attribute itemscope to the value b explicitly.
+// Set the attribute ITEMSCOPE to the value b explicitly.
 func (e *DIVElement) ITEMSCOPESet(b bool) *DIVElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
@@ -873,7 +875,7 @@ func (e *DIVElement) IfSetITEMSCOPE(condition bool, b bool) *DIVElement {
 	return e
 }
 
-// Remove the attribute itemscope from the element.
+// Remove the attribute ITEMSCOPE from the element.
 func (e *DIVElement) ITEMSCOPERemove(b bool) *DIVElement {
 	if e.BoolAttributes == nil {
 		return e
@@ -905,7 +907,7 @@ func (e *DIVElement) IfITEMTYPE(condition bool, s string) *DIVElement {
 	return e
 }
 
-// Remove the attribute itemtype from the element.
+// Remove the attribute ITEMTYPE from the element.
 func (e *DIVElement) ITEMTYPERemove(s string) *DIVElement {
 	if e.StringAttributes == nil {
 		return e
@@ -935,7 +937,7 @@ func (e *DIVElement) IfLANG(condition bool, s string) *DIVElement {
 	return e
 }
 
-// Remove the attribute lang from the element.
+// Remove the attribute LANG from the element.
 func (e *DIVElement) LANGRemove(s string) *DIVElement {
 	if e.StringAttributes == nil {
 		return e
@@ -963,7 +965,7 @@ func (e *DIVElement) IfNONCE(condition bool, s string) *DIVElement {
 	return e
 }
 
-// Remove the attribute nonce from the element.
+// Remove the attribute NONCE from the element.
 func (e *DIVElement) NONCERemove(s string) *DIVElement {
 	if e.StringAttributes == nil {
 		return e
@@ -996,7 +998,7 @@ func (e *DIVElement) IfPART(condition bool, s ...string) *DIVElement {
 	return e
 }
 
-// Remove the attribute part from the element.
+// Remove the attribute PART from the element.
 func (e *DIVElement) PARTRemove(s ...string) *DIVElement {
 	if e.DelimitedStrings == nil {
 		return e
@@ -1042,7 +1044,7 @@ const (
 	DivPopver_manual DivPopverChoice = "manual"
 )
 
-// Remove the attribute popver from the element.
+// Remove the attribute POPVER from the element.
 func (e *DIVElement) POPVERRemove(c DivPopverChoice) *DIVElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1070,7 +1072,7 @@ func (e *DIVElement) IfSLOT(condition bool, s string) *DIVElement {
 	return e
 }
 
-// Remove the attribute slot from the element.
+// Remove the attribute SLOT from the element.
 func (e *DIVElement) SLOTRemove(s string) *DIVElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1112,7 +1114,7 @@ const (
 	DivSpellcheck_false DivSpellcheckChoice = "false"
 )
 
-// Remove the attribute spellcheck from the element.
+// Remove the attribute SPELLCHECK from the element.
 func (e *DIVElement) SPELLCHECKRemove(c DivSpellcheckChoice) *DIVElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1199,7 +1201,7 @@ func (e *DIVElement) IfSTYLEPairs(condition bool, pairs ...string) *DIVElement {
 	return e
 }
 
-// Remove the attribute style from the element.
+// Remove the attribute STYLE from the element.
 func (e *DIVElement) STYLERemove(keys ...string) *DIVElement {
 	if e.KVStrings == nil {
 		return e
@@ -1243,7 +1245,7 @@ func (e *DIVElement) IfTABINDEX(condition bool, i int) *DIVElement {
 	return e
 }
 
-// Remove the attribute tabindex from the element.
+// Remove the attribute TABINDEX from the element.
 func (e *DIVElement) TABINDEXRemove(i int) *DIVElement {
 	if e.IntAttributes == nil {
 		return e
@@ -1288,7 +1290,7 @@ func (e *DIVElement) IfTITLE(condition bool, s string) *DIVElement {
 	return e
 }
 
-// Remove the attribute title from the element.
+// Remove the attribute TITLE from the element.
 func (e *DIVElement) TITLERemove(s string) *DIVElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1320,11 +1322,351 @@ const (
 	DivTranslate_no DivTranslateChoice = "no"
 )
 
-// Remove the attribute translate from the element.
+// Remove the attribute TRANSLATE from the element.
 func (e *DIVElement) TRANSLATERemove(c DivTranslateChoice) *DIVElement {
 	if e.StringAttributes == nil {
 		return e
 	}
 	e.StringAttributes.Del("translate")
+	return e
+}
+
+// Merges the store with the given object
+
+func (e *DIVElement) DATASTAR_MERGE_STORE(v any) *DIVElement {
+	if e.CustomDataAttributes == nil {
+		e.CustomDataAttributes = treemap.New[string, string]()
+	}
+	b, err := json.Marshal(v)
+	if err != nil {
+		panic(err)
+	}
+	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	return e
+}
+
+// Sets the reference of the element
+
+func (e *DIVElement) DATASTAR_REF(s string) *DIVElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-ref"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *DIVElement) IfDATASTAR_REF(condition bool, s string) *DIVElement {
+	if condition {
+		e.DATASTAR_REF(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_REF from the element.
+func (e *DIVElement) DATASTAR_REFRemove() *DIVElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-ref")
+	return e
+}
+
+// Sets the value of the element
+
+func (e *DIVElement) DATASTAR_BIND(s string) *DIVElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-bind"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *DIVElement) IfDATASTAR_BIND(condition bool, s string) *DIVElement {
+	if condition {
+		e.DATASTAR_BIND(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_BIND from the element.
+func (e *DIVElement) DATASTAR_BINDRemove() *DIVElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-bind")
+	return e
+}
+
+// Sets the value of the element
+
+func (e *DIVElement) DATASTAR_MODEL(s string) *DIVElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-model"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *DIVElement) IfDATASTAR_MODEL(condition bool, s string) *DIVElement {
+	if condition {
+		e.DATASTAR_MODEL(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_MODEL from the element.
+func (e *DIVElement) DATASTAR_MODELRemove() *DIVElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-model")
+	return e
+}
+
+// Sets the textContent of the element
+
+func (e *DIVElement) DATASTAR_TEXT(s string) *DIVElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-text"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *DIVElement) IfDATASTAR_TEXT(condition bool, s string) *DIVElement {
+	if condition {
+		e.DATASTAR_TEXT(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_TEXT from the element.
+func (e *DIVElement) DATASTAR_TEXTRemove() *DIVElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-text")
+	return e
+}
+
+// Sets the event handler of the element
+
+type DivDataOnMod customDataKeyModifier
+
+// Debounces the event handler
+func DivDataOnModDebounce(
+	s string,
+) DivDataOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce_%sms", s)
+	}
+}
+
+// Throttles the event handler
+func DivDataOnModThrottle(
+	s string,
+) DivDataOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle_%sms", s)
+	}
+}
+
+func (e *DIVElement) DATASTAR_ON(s string, modifiers ...DivDataOnMod) *DIVElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	customMods := lo.Map(modifiers, func(m DivDataOnMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key := customDataKey("data-on", customMods...)
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *DIVElement) IfDATASTAR_ON(condition bool, s string, modifiers ...DivDataOnMod) *DIVElement {
+	if condition {
+		e.DATASTAR_ON(s, modifiers...)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_ON from the element.
+func (e *DIVElement) DATASTAR_ONRemove() *DIVElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-on")
+	return e
+}
+
+// Sets the focus of the element
+
+func (e *DIVElement) DATASTAR_FOCUSSet(b bool) *DIVElement {
+	key := "data-focus"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *DIVElement) DATASTAR_FOCUS() *DIVElement {
+	return e.DATASTAR_FOCUSSet(true)
+}
+
+// Sets the header of for fetch requests
+
+func (e *DIVElement) DATASTAR_HEADER(s string) *DIVElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-header"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *DIVElement) IfDATASTAR_HEADER(condition bool, s string) *DIVElement {
+	if condition {
+		e.DATASTAR_HEADER(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_HEADER from the element.
+func (e *DIVElement) DATASTAR_HEADERRemove() *DIVElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-header")
+	return e
+}
+
+// Sets the URL for fetch requests
+
+func (e *DIVElement) DATASTAR_FETCH_URL(s string) *DIVElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-fetch-url"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *DIVElement) IfDATASTAR_FETCH_URL(condition bool, s string) *DIVElement {
+	if condition {
+		e.DATASTAR_FETCH_URL(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_FETCH_URL from the element.
+func (e *DIVElement) DATASTAR_FETCH_URLRemove() *DIVElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-fetch-url")
+	return e
+}
+
+// Sets the indicator selector for fetch requests
+
+func (e *DIVElement) DATASTAR_FETCH_INDICATOR(s string) *DIVElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "DatastarFetchIndicator"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *DIVElement) IfDATASTAR_FETCH_INDICATOR(condition bool, s string) *DIVElement {
+	if condition {
+		e.DATASTAR_FETCH_INDICATOR(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_FETCH_INDICATOR from the element.
+func (e *DIVElement) DATASTAR_FETCH_INDICATORRemove() *DIVElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("DatastarFetchIndicator")
+	return e
+}
+
+// Sets the visibility of the element
+
+func (e *DIVElement) DATASTAR_SHOWSet(b bool) *DIVElement {
+	key := "data-show"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *DIVElement) DATASTAR_SHOW() *DIVElement {
+	return e.DATASTAR_SHOWSet(true)
+}
+
+// Triggers the callback when the element intersects the viewport
+
+func (e *DIVElement) DATASTAR_INTERSECTSSet(b bool) *DIVElement {
+	key := "data-intersects"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *DIVElement) DATASTAR_INTERSECTS() *DIVElement {
+	return e.DATASTAR_INTERSECTSSet(true)
+}
+
+// Teleports the element to the given selector
+
+func (e *DIVElement) DATASTAR_TELEPORTSet(b bool) *DIVElement {
+	key := "data-teleport"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *DIVElement) DATASTAR_TELEPORT() *DIVElement {
+	return e.DATASTAR_TELEPORTSet(true)
+}
+
+// Scrolls the element into view
+
+func (e *DIVElement) DATASTAR_SCROLL_INTO_VIEWSet(b bool) *DIVElement {
+	key := "data-scroll-into-view"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *DIVElement) DATASTAR_SCROLL_INTO_VIEW() *DIVElement {
+	return e.DATASTAR_SCROLL_INTO_VIEWSet(true)
+}
+
+// Setup the ViewTransitionAPI for the element
+
+func (e *DIVElement) DATASTAR_VIEW_TRANSITION(s string) *DIVElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-view-transition"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *DIVElement) IfDATASTAR_VIEW_TRANSITION(condition bool, s string) *DIVElement {
+	if condition {
+		e.DATASTAR_VIEW_TRANSITION(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_VIEW_TRANSITION from the element.
+func (e *DIVElement) DATASTAR_VIEW_TRANSITIONRemove() *DIVElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-view-transition")
 	return e
 }

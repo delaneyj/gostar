@@ -6,7 +6,9 @@ package elements
 import (
 	"fmt"
 
+	"github.com/goccy/go-json"
 	"github.com/igrmk/treemap/v2"
+	"github.com/samber/lo"
 )
 
 // The HTML <sup> element defines a span of text that should be displayed, for
@@ -146,7 +148,7 @@ func (e *SUPElement) IfACCESSKEY(condition bool, r rune) *SUPElement {
 	return e
 }
 
-// Remove the attribute accesskey from the element.
+// Remove the attribute ACCESSKEY from the element.
 func (e *SUPElement) ACCESSKEYRemove() *SUPElement {
 	if e.StringAttributes == nil {
 		return e
@@ -194,7 +196,7 @@ const (
 	SupAutocapitalize_characters SupAutocapitalizeChoice = "characters"
 )
 
-// Remove the attribute autocapitalize from the element.
+// Remove the attribute AUTOCAPITALIZE from the element.
 func (e *SUPElement) AUTOCAPITALIZERemove(c SupAutocapitalizeChoice) *SUPElement {
 	if e.StringAttributes == nil {
 		return e
@@ -235,7 +237,7 @@ func (e *SUPElement) IfAUTOFOCUS(condition bool) *SUPElement {
 	return e
 }
 
-// Set the attribute autofocus to the value b explicitly.
+// Set the attribute AUTOFOCUS to the value b explicitly.
 func (e *SUPElement) AUTOFOCUSSet(b bool) *SUPElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
@@ -251,7 +253,7 @@ func (e *SUPElement) IfSetAUTOFOCUS(condition bool, b bool) *SUPElement {
 	return e
 }
 
-// Remove the attribute autofocus from the element.
+// Remove the attribute AUTOFOCUS from the element.
 func (e *SUPElement) AUTOFOCUSRemove(b bool) *SUPElement {
 	if e.BoolAttributes == nil {
 		return e
@@ -285,7 +287,7 @@ func (e *SUPElement) IfCLASS(condition bool, s ...string) *SUPElement {
 	return e
 }
 
-// Remove the attribute class from the element.
+// Remove the attribute CLASS from the element.
 func (e *SUPElement) CLASSRemove(s ...string) *SUPElement {
 	if e.DelimitedStrings == nil {
 		return e
@@ -323,7 +325,7 @@ const (
 	SupContenteditable_plaintext_only SupContenteditableChoice = "plaintext-only"
 )
 
-// Remove the attribute contenteditable from the element.
+// Remove the attribute CONTENTEDITABLE from the element.
 func (e *SUPElement) CONTENTEDITABLERemove(c SupContenteditableChoice) *SUPElement {
 	if e.StringAttributes == nil {
 		return e
@@ -371,7 +373,7 @@ const (
 	SupDir_auto SupDirChoice = "auto"
 )
 
-// Remove the attribute dir from the element.
+// Remove the attribute DIR from the element.
 func (e *SUPElement) DIRRemove(c SupDirChoice) *SUPElement {
 	if e.StringAttributes == nil {
 		return e
@@ -408,7 +410,7 @@ const (
 	SupDraggable_auto SupDraggableChoice = "auto"
 )
 
-// Remove the attribute draggable from the element.
+// Remove the attribute DRAGGABLE from the element.
 func (e *SUPElement) DRAGGABLERemove(c SupDraggableChoice) *SUPElement {
 	if e.StringAttributes == nil {
 		return e
@@ -448,7 +450,7 @@ const (
 	SupEnterkeyhint_send SupEnterkeyhintChoice = "send"
 )
 
-// Remove the attribute enterkeyhint from the element.
+// Remove the attribute ENTERKEYHINT from the element.
 func (e *SUPElement) ENTERKEYHINTRemove(c SupEnterkeyhintChoice) *SUPElement {
 	if e.StringAttributes == nil {
 		return e
@@ -497,7 +499,7 @@ func (e *SUPElement) IfEXPORTPARTS(condition bool, s ...string) *SUPElement {
 	return e
 }
 
-// Remove the attribute exportparts from the element.
+// Remove the attribute EXPORTPARTS from the element.
 func (e *SUPElement) EXPORTPARTSRemove(s ...string) *SUPElement {
 	if e.DelimitedStrings == nil {
 		return e
@@ -551,7 +553,7 @@ const (
 	SupHidden_until_found SupHiddenChoice = "until-found"
 )
 
-// Remove the attribute hidden from the element.
+// Remove the attribute HIDDEN from the element.
 func (e *SUPElement) HIDDENRemove(c SupHiddenChoice) *SUPElement {
 	if e.StringAttributes == nil {
 		return e
@@ -579,7 +581,7 @@ func (e *SUPElement) IfID(condition bool, s string) *SUPElement {
 	return e
 }
 
-// Remove the attribute id from the element.
+// Remove the attribute ID from the element.
 func (e *SUPElement) IDRemove(s string) *SUPElement {
 	if e.StringAttributes == nil {
 		return e
@@ -612,7 +614,7 @@ func (e *SUPElement) IfINERT(condition bool) *SUPElement {
 	return e
 }
 
-// Set the attribute inert to the value b explicitly.
+// Set the attribute INERT to the value b explicitly.
 func (e *SUPElement) INERTSet(b bool) *SUPElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
@@ -628,7 +630,7 @@ func (e *SUPElement) IfSetINERT(condition bool, b bool) *SUPElement {
 	return e
 }
 
-// Remove the attribute inert from the element.
+// Remove the attribute INERT from the element.
 func (e *SUPElement) INERTRemove(b bool) *SUPElement {
 	if e.BoolAttributes == nil {
 		return e
@@ -697,7 +699,7 @@ const (
 	SupInputmode_url SupInputmodeChoice = "url"
 )
 
-// Remove the attribute inputmode from the element.
+// Remove the attribute INPUTMODE from the element.
 func (e *SUPElement) INPUTMODERemove(c SupInputmodeChoice) *SUPElement {
 	if e.StringAttributes == nil {
 		return e
@@ -727,7 +729,7 @@ func (e *SUPElement) IfIS(condition bool, s string) *SUPElement {
 	return e
 }
 
-// Remove the attribute is from the element.
+// Remove the attribute IS from the element.
 func (e *SUPElement) ISRemove(s string) *SUPElement {
 	if e.StringAttributes == nil {
 		return e
@@ -764,7 +766,7 @@ func (e *SUPElement) IfITEMID(condition bool, s string) *SUPElement {
 	return e
 }
 
-// Remove the attribute itemid from the element.
+// Remove the attribute ITEMID from the element.
 func (e *SUPElement) ITEMIDRemove(s string) *SUPElement {
 	if e.StringAttributes == nil {
 		return e
@@ -796,7 +798,7 @@ func (e *SUPElement) IfITEMPROP(condition bool, s string) *SUPElement {
 	return e
 }
 
-// Remove the attribute itemprop from the element.
+// Remove the attribute ITEMPROP from the element.
 func (e *SUPElement) ITEMPROPRemove(s string) *SUPElement {
 	if e.StringAttributes == nil {
 		return e
@@ -825,7 +827,7 @@ func (e *SUPElement) IfITEMREF(condition bool, s string) *SUPElement {
 	return e
 }
 
-// Remove the attribute itemref from the element.
+// Remove the attribute ITEMREF from the element.
 func (e *SUPElement) ITEMREFRemove(s string) *SUPElement {
 	if e.StringAttributes == nil {
 		return e
@@ -854,7 +856,7 @@ func (e *SUPElement) IfITEMSCOPE(condition bool) *SUPElement {
 	return e
 }
 
-// Set the attribute itemscope to the value b explicitly.
+// Set the attribute ITEMSCOPE to the value b explicitly.
 func (e *SUPElement) ITEMSCOPESet(b bool) *SUPElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
@@ -870,7 +872,7 @@ func (e *SUPElement) IfSetITEMSCOPE(condition bool, b bool) *SUPElement {
 	return e
 }
 
-// Remove the attribute itemscope from the element.
+// Remove the attribute ITEMSCOPE from the element.
 func (e *SUPElement) ITEMSCOPERemove(b bool) *SUPElement {
 	if e.BoolAttributes == nil {
 		return e
@@ -902,7 +904,7 @@ func (e *SUPElement) IfITEMTYPE(condition bool, s string) *SUPElement {
 	return e
 }
 
-// Remove the attribute itemtype from the element.
+// Remove the attribute ITEMTYPE from the element.
 func (e *SUPElement) ITEMTYPERemove(s string) *SUPElement {
 	if e.StringAttributes == nil {
 		return e
@@ -932,7 +934,7 @@ func (e *SUPElement) IfLANG(condition bool, s string) *SUPElement {
 	return e
 }
 
-// Remove the attribute lang from the element.
+// Remove the attribute LANG from the element.
 func (e *SUPElement) LANGRemove(s string) *SUPElement {
 	if e.StringAttributes == nil {
 		return e
@@ -960,7 +962,7 @@ func (e *SUPElement) IfNONCE(condition bool, s string) *SUPElement {
 	return e
 }
 
-// Remove the attribute nonce from the element.
+// Remove the attribute NONCE from the element.
 func (e *SUPElement) NONCERemove(s string) *SUPElement {
 	if e.StringAttributes == nil {
 		return e
@@ -993,7 +995,7 @@ func (e *SUPElement) IfPART(condition bool, s ...string) *SUPElement {
 	return e
 }
 
-// Remove the attribute part from the element.
+// Remove the attribute PART from the element.
 func (e *SUPElement) PARTRemove(s ...string) *SUPElement {
 	if e.DelimitedStrings == nil {
 		return e
@@ -1039,7 +1041,7 @@ const (
 	SupPopver_manual SupPopverChoice = "manual"
 )
 
-// Remove the attribute popver from the element.
+// Remove the attribute POPVER from the element.
 func (e *SUPElement) POPVERRemove(c SupPopverChoice) *SUPElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1067,7 +1069,7 @@ func (e *SUPElement) IfSLOT(condition bool, s string) *SUPElement {
 	return e
 }
 
-// Remove the attribute slot from the element.
+// Remove the attribute SLOT from the element.
 func (e *SUPElement) SLOTRemove(s string) *SUPElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1109,7 +1111,7 @@ const (
 	SupSpellcheck_false SupSpellcheckChoice = "false"
 )
 
-// Remove the attribute spellcheck from the element.
+// Remove the attribute SPELLCHECK from the element.
 func (e *SUPElement) SPELLCHECKRemove(c SupSpellcheckChoice) *SUPElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1196,7 +1198,7 @@ func (e *SUPElement) IfSTYLEPairs(condition bool, pairs ...string) *SUPElement {
 	return e
 }
 
-// Remove the attribute style from the element.
+// Remove the attribute STYLE from the element.
 func (e *SUPElement) STYLERemove(keys ...string) *SUPElement {
 	if e.KVStrings == nil {
 		return e
@@ -1240,7 +1242,7 @@ func (e *SUPElement) IfTABINDEX(condition bool, i int) *SUPElement {
 	return e
 }
 
-// Remove the attribute tabindex from the element.
+// Remove the attribute TABINDEX from the element.
 func (e *SUPElement) TABINDEXRemove(i int) *SUPElement {
 	if e.IntAttributes == nil {
 		return e
@@ -1285,7 +1287,7 @@ func (e *SUPElement) IfTITLE(condition bool, s string) *SUPElement {
 	return e
 }
 
-// Remove the attribute title from the element.
+// Remove the attribute TITLE from the element.
 func (e *SUPElement) TITLERemove(s string) *SUPElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1317,11 +1319,351 @@ const (
 	SupTranslate_no SupTranslateChoice = "no"
 )
 
-// Remove the attribute translate from the element.
+// Remove the attribute TRANSLATE from the element.
 func (e *SUPElement) TRANSLATERemove(c SupTranslateChoice) *SUPElement {
 	if e.StringAttributes == nil {
 		return e
 	}
 	e.StringAttributes.Del("translate")
+	return e
+}
+
+// Merges the store with the given object
+
+func (e *SUPElement) DATASTAR_MERGE_STORE(v any) *SUPElement {
+	if e.CustomDataAttributes == nil {
+		e.CustomDataAttributes = treemap.New[string, string]()
+	}
+	b, err := json.Marshal(v)
+	if err != nil {
+		panic(err)
+	}
+	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	return e
+}
+
+// Sets the reference of the element
+
+func (e *SUPElement) DATASTAR_REF(s string) *SUPElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-ref"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SUPElement) IfDATASTAR_REF(condition bool, s string) *SUPElement {
+	if condition {
+		e.DATASTAR_REF(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_REF from the element.
+func (e *SUPElement) DATASTAR_REFRemove() *SUPElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-ref")
+	return e
+}
+
+// Sets the value of the element
+
+func (e *SUPElement) DATASTAR_BIND(s string) *SUPElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-bind"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SUPElement) IfDATASTAR_BIND(condition bool, s string) *SUPElement {
+	if condition {
+		e.DATASTAR_BIND(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_BIND from the element.
+func (e *SUPElement) DATASTAR_BINDRemove() *SUPElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-bind")
+	return e
+}
+
+// Sets the value of the element
+
+func (e *SUPElement) DATASTAR_MODEL(s string) *SUPElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-model"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SUPElement) IfDATASTAR_MODEL(condition bool, s string) *SUPElement {
+	if condition {
+		e.DATASTAR_MODEL(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_MODEL from the element.
+func (e *SUPElement) DATASTAR_MODELRemove() *SUPElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-model")
+	return e
+}
+
+// Sets the textContent of the element
+
+func (e *SUPElement) DATASTAR_TEXT(s string) *SUPElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-text"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SUPElement) IfDATASTAR_TEXT(condition bool, s string) *SUPElement {
+	if condition {
+		e.DATASTAR_TEXT(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_TEXT from the element.
+func (e *SUPElement) DATASTAR_TEXTRemove() *SUPElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-text")
+	return e
+}
+
+// Sets the event handler of the element
+
+type SupDataOnMod customDataKeyModifier
+
+// Debounces the event handler
+func SupDataOnModDebounce(
+	s string,
+) SupDataOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce_%sms", s)
+	}
+}
+
+// Throttles the event handler
+func SupDataOnModThrottle(
+	s string,
+) SupDataOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle_%sms", s)
+	}
+}
+
+func (e *SUPElement) DATASTAR_ON(s string, modifiers ...SupDataOnMod) *SUPElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	customMods := lo.Map(modifiers, func(m SupDataOnMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key := customDataKey("data-on", customMods...)
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SUPElement) IfDATASTAR_ON(condition bool, s string, modifiers ...SupDataOnMod) *SUPElement {
+	if condition {
+		e.DATASTAR_ON(s, modifiers...)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_ON from the element.
+func (e *SUPElement) DATASTAR_ONRemove() *SUPElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-on")
+	return e
+}
+
+// Sets the focus of the element
+
+func (e *SUPElement) DATASTAR_FOCUSSet(b bool) *SUPElement {
+	key := "data-focus"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *SUPElement) DATASTAR_FOCUS() *SUPElement {
+	return e.DATASTAR_FOCUSSet(true)
+}
+
+// Sets the header of for fetch requests
+
+func (e *SUPElement) DATASTAR_HEADER(s string) *SUPElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-header"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SUPElement) IfDATASTAR_HEADER(condition bool, s string) *SUPElement {
+	if condition {
+		e.DATASTAR_HEADER(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_HEADER from the element.
+func (e *SUPElement) DATASTAR_HEADERRemove() *SUPElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-header")
+	return e
+}
+
+// Sets the URL for fetch requests
+
+func (e *SUPElement) DATASTAR_FETCH_URL(s string) *SUPElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-fetch-url"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SUPElement) IfDATASTAR_FETCH_URL(condition bool, s string) *SUPElement {
+	if condition {
+		e.DATASTAR_FETCH_URL(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_FETCH_URL from the element.
+func (e *SUPElement) DATASTAR_FETCH_URLRemove() *SUPElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-fetch-url")
+	return e
+}
+
+// Sets the indicator selector for fetch requests
+
+func (e *SUPElement) DATASTAR_FETCH_INDICATOR(s string) *SUPElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "DatastarFetchIndicator"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SUPElement) IfDATASTAR_FETCH_INDICATOR(condition bool, s string) *SUPElement {
+	if condition {
+		e.DATASTAR_FETCH_INDICATOR(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_FETCH_INDICATOR from the element.
+func (e *SUPElement) DATASTAR_FETCH_INDICATORRemove() *SUPElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("DatastarFetchIndicator")
+	return e
+}
+
+// Sets the visibility of the element
+
+func (e *SUPElement) DATASTAR_SHOWSet(b bool) *SUPElement {
+	key := "data-show"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *SUPElement) DATASTAR_SHOW() *SUPElement {
+	return e.DATASTAR_SHOWSet(true)
+}
+
+// Triggers the callback when the element intersects the viewport
+
+func (e *SUPElement) DATASTAR_INTERSECTSSet(b bool) *SUPElement {
+	key := "data-intersects"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *SUPElement) DATASTAR_INTERSECTS() *SUPElement {
+	return e.DATASTAR_INTERSECTSSet(true)
+}
+
+// Teleports the element to the given selector
+
+func (e *SUPElement) DATASTAR_TELEPORTSet(b bool) *SUPElement {
+	key := "data-teleport"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *SUPElement) DATASTAR_TELEPORT() *SUPElement {
+	return e.DATASTAR_TELEPORTSet(true)
+}
+
+// Scrolls the element into view
+
+func (e *SUPElement) DATASTAR_SCROLL_INTO_VIEWSet(b bool) *SUPElement {
+	key := "data-scroll-into-view"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *SUPElement) DATASTAR_SCROLL_INTO_VIEW() *SUPElement {
+	return e.DATASTAR_SCROLL_INTO_VIEWSet(true)
+}
+
+// Setup the ViewTransitionAPI for the element
+
+func (e *SUPElement) DATASTAR_VIEW_TRANSITION(s string) *SUPElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-view-transition"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SUPElement) IfDATASTAR_VIEW_TRANSITION(condition bool, s string) *SUPElement {
+	if condition {
+		e.DATASTAR_VIEW_TRANSITION(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_VIEW_TRANSITION from the element.
+func (e *SUPElement) DATASTAR_VIEW_TRANSITIONRemove() *SUPElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-view-transition")
 	return e
 }

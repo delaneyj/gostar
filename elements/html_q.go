@@ -6,7 +6,9 @@ package elements
 import (
 	"fmt"
 
+	"github.com/goccy/go-json"
 	"github.com/igrmk/treemap/v2"
+	"github.com/samber/lo"
 )
 
 // The HTML <q> element indicates that the enclosed text is a short inline
@@ -145,7 +147,7 @@ func (e *QElement) IfCITE(condition bool, s string) *QElement {
 	return e
 }
 
-// Remove the attribute cite from the element.
+// Remove the attribute CITE from the element.
 func (e *QElement) CITERemove(s string) *QElement {
 	if e.StringAttributes == nil {
 		return e
@@ -173,7 +175,7 @@ func (e *QElement) IfACCESSKEY(condition bool, r rune) *QElement {
 	return e
 }
 
-// Remove the attribute accesskey from the element.
+// Remove the attribute ACCESSKEY from the element.
 func (e *QElement) ACCESSKEYRemove() *QElement {
 	if e.StringAttributes == nil {
 		return e
@@ -221,7 +223,7 @@ const (
 	QAutocapitalize_characters QAutocapitalizeChoice = "characters"
 )
 
-// Remove the attribute autocapitalize from the element.
+// Remove the attribute AUTOCAPITALIZE from the element.
 func (e *QElement) AUTOCAPITALIZERemove(c QAutocapitalizeChoice) *QElement {
 	if e.StringAttributes == nil {
 		return e
@@ -262,7 +264,7 @@ func (e *QElement) IfAUTOFOCUS(condition bool) *QElement {
 	return e
 }
 
-// Set the attribute autofocus to the value b explicitly.
+// Set the attribute AUTOFOCUS to the value b explicitly.
 func (e *QElement) AUTOFOCUSSet(b bool) *QElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
@@ -278,7 +280,7 @@ func (e *QElement) IfSetAUTOFOCUS(condition bool, b bool) *QElement {
 	return e
 }
 
-// Remove the attribute autofocus from the element.
+// Remove the attribute AUTOFOCUS from the element.
 func (e *QElement) AUTOFOCUSRemove(b bool) *QElement {
 	if e.BoolAttributes == nil {
 		return e
@@ -312,7 +314,7 @@ func (e *QElement) IfCLASS(condition bool, s ...string) *QElement {
 	return e
 }
 
-// Remove the attribute class from the element.
+// Remove the attribute CLASS from the element.
 func (e *QElement) CLASSRemove(s ...string) *QElement {
 	if e.DelimitedStrings == nil {
 		return e
@@ -350,7 +352,7 @@ const (
 	QContenteditable_plaintext_only QContenteditableChoice = "plaintext-only"
 )
 
-// Remove the attribute contenteditable from the element.
+// Remove the attribute CONTENTEDITABLE from the element.
 func (e *QElement) CONTENTEDITABLERemove(c QContenteditableChoice) *QElement {
 	if e.StringAttributes == nil {
 		return e
@@ -398,7 +400,7 @@ const (
 	QDir_auto QDirChoice = "auto"
 )
 
-// Remove the attribute dir from the element.
+// Remove the attribute DIR from the element.
 func (e *QElement) DIRRemove(c QDirChoice) *QElement {
 	if e.StringAttributes == nil {
 		return e
@@ -435,7 +437,7 @@ const (
 	QDraggable_auto QDraggableChoice = "auto"
 )
 
-// Remove the attribute draggable from the element.
+// Remove the attribute DRAGGABLE from the element.
 func (e *QElement) DRAGGABLERemove(c QDraggableChoice) *QElement {
 	if e.StringAttributes == nil {
 		return e
@@ -475,7 +477,7 @@ const (
 	QEnterkeyhint_send QEnterkeyhintChoice = "send"
 )
 
-// Remove the attribute enterkeyhint from the element.
+// Remove the attribute ENTERKEYHINT from the element.
 func (e *QElement) ENTERKEYHINTRemove(c QEnterkeyhintChoice) *QElement {
 	if e.StringAttributes == nil {
 		return e
@@ -524,7 +526,7 @@ func (e *QElement) IfEXPORTPARTS(condition bool, s ...string) *QElement {
 	return e
 }
 
-// Remove the attribute exportparts from the element.
+// Remove the attribute EXPORTPARTS from the element.
 func (e *QElement) EXPORTPARTSRemove(s ...string) *QElement {
 	if e.DelimitedStrings == nil {
 		return e
@@ -578,7 +580,7 @@ const (
 	QHidden_until_found QHiddenChoice = "until-found"
 )
 
-// Remove the attribute hidden from the element.
+// Remove the attribute HIDDEN from the element.
 func (e *QElement) HIDDENRemove(c QHiddenChoice) *QElement {
 	if e.StringAttributes == nil {
 		return e
@@ -606,7 +608,7 @@ func (e *QElement) IfID(condition bool, s string) *QElement {
 	return e
 }
 
-// Remove the attribute id from the element.
+// Remove the attribute ID from the element.
 func (e *QElement) IDRemove(s string) *QElement {
 	if e.StringAttributes == nil {
 		return e
@@ -639,7 +641,7 @@ func (e *QElement) IfINERT(condition bool) *QElement {
 	return e
 }
 
-// Set the attribute inert to the value b explicitly.
+// Set the attribute INERT to the value b explicitly.
 func (e *QElement) INERTSet(b bool) *QElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
@@ -655,7 +657,7 @@ func (e *QElement) IfSetINERT(condition bool, b bool) *QElement {
 	return e
 }
 
-// Remove the attribute inert from the element.
+// Remove the attribute INERT from the element.
 func (e *QElement) INERTRemove(b bool) *QElement {
 	if e.BoolAttributes == nil {
 		return e
@@ -724,7 +726,7 @@ const (
 	QInputmode_url QInputmodeChoice = "url"
 )
 
-// Remove the attribute inputmode from the element.
+// Remove the attribute INPUTMODE from the element.
 func (e *QElement) INPUTMODERemove(c QInputmodeChoice) *QElement {
 	if e.StringAttributes == nil {
 		return e
@@ -754,7 +756,7 @@ func (e *QElement) IfIS(condition bool, s string) *QElement {
 	return e
 }
 
-// Remove the attribute is from the element.
+// Remove the attribute IS from the element.
 func (e *QElement) ISRemove(s string) *QElement {
 	if e.StringAttributes == nil {
 		return e
@@ -791,7 +793,7 @@ func (e *QElement) IfITEMID(condition bool, s string) *QElement {
 	return e
 }
 
-// Remove the attribute itemid from the element.
+// Remove the attribute ITEMID from the element.
 func (e *QElement) ITEMIDRemove(s string) *QElement {
 	if e.StringAttributes == nil {
 		return e
@@ -823,7 +825,7 @@ func (e *QElement) IfITEMPROP(condition bool, s string) *QElement {
 	return e
 }
 
-// Remove the attribute itemprop from the element.
+// Remove the attribute ITEMPROP from the element.
 func (e *QElement) ITEMPROPRemove(s string) *QElement {
 	if e.StringAttributes == nil {
 		return e
@@ -852,7 +854,7 @@ func (e *QElement) IfITEMREF(condition bool, s string) *QElement {
 	return e
 }
 
-// Remove the attribute itemref from the element.
+// Remove the attribute ITEMREF from the element.
 func (e *QElement) ITEMREFRemove(s string) *QElement {
 	if e.StringAttributes == nil {
 		return e
@@ -881,7 +883,7 @@ func (e *QElement) IfITEMSCOPE(condition bool) *QElement {
 	return e
 }
 
-// Set the attribute itemscope to the value b explicitly.
+// Set the attribute ITEMSCOPE to the value b explicitly.
 func (e *QElement) ITEMSCOPESet(b bool) *QElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
@@ -897,7 +899,7 @@ func (e *QElement) IfSetITEMSCOPE(condition bool, b bool) *QElement {
 	return e
 }
 
-// Remove the attribute itemscope from the element.
+// Remove the attribute ITEMSCOPE from the element.
 func (e *QElement) ITEMSCOPERemove(b bool) *QElement {
 	if e.BoolAttributes == nil {
 		return e
@@ -929,7 +931,7 @@ func (e *QElement) IfITEMTYPE(condition bool, s string) *QElement {
 	return e
 }
 
-// Remove the attribute itemtype from the element.
+// Remove the attribute ITEMTYPE from the element.
 func (e *QElement) ITEMTYPERemove(s string) *QElement {
 	if e.StringAttributes == nil {
 		return e
@@ -959,7 +961,7 @@ func (e *QElement) IfLANG(condition bool, s string) *QElement {
 	return e
 }
 
-// Remove the attribute lang from the element.
+// Remove the attribute LANG from the element.
 func (e *QElement) LANGRemove(s string) *QElement {
 	if e.StringAttributes == nil {
 		return e
@@ -987,7 +989,7 @@ func (e *QElement) IfNONCE(condition bool, s string) *QElement {
 	return e
 }
 
-// Remove the attribute nonce from the element.
+// Remove the attribute NONCE from the element.
 func (e *QElement) NONCERemove(s string) *QElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1020,7 +1022,7 @@ func (e *QElement) IfPART(condition bool, s ...string) *QElement {
 	return e
 }
 
-// Remove the attribute part from the element.
+// Remove the attribute PART from the element.
 func (e *QElement) PARTRemove(s ...string) *QElement {
 	if e.DelimitedStrings == nil {
 		return e
@@ -1066,7 +1068,7 @@ const (
 	QPopver_manual QPopverChoice = "manual"
 )
 
-// Remove the attribute popver from the element.
+// Remove the attribute POPVER from the element.
 func (e *QElement) POPVERRemove(c QPopverChoice) *QElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1094,7 +1096,7 @@ func (e *QElement) IfSLOT(condition bool, s string) *QElement {
 	return e
 }
 
-// Remove the attribute slot from the element.
+// Remove the attribute SLOT from the element.
 func (e *QElement) SLOTRemove(s string) *QElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1136,7 +1138,7 @@ const (
 	QSpellcheck_false QSpellcheckChoice = "false"
 )
 
-// Remove the attribute spellcheck from the element.
+// Remove the attribute SPELLCHECK from the element.
 func (e *QElement) SPELLCHECKRemove(c QSpellcheckChoice) *QElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1223,7 +1225,7 @@ func (e *QElement) IfSTYLEPairs(condition bool, pairs ...string) *QElement {
 	return e
 }
 
-// Remove the attribute style from the element.
+// Remove the attribute STYLE from the element.
 func (e *QElement) STYLERemove(keys ...string) *QElement {
 	if e.KVStrings == nil {
 		return e
@@ -1267,7 +1269,7 @@ func (e *QElement) IfTABINDEX(condition bool, i int) *QElement {
 	return e
 }
 
-// Remove the attribute tabindex from the element.
+// Remove the attribute TABINDEX from the element.
 func (e *QElement) TABINDEXRemove(i int) *QElement {
 	if e.IntAttributes == nil {
 		return e
@@ -1312,7 +1314,7 @@ func (e *QElement) IfTITLE(condition bool, s string) *QElement {
 	return e
 }
 
-// Remove the attribute title from the element.
+// Remove the attribute TITLE from the element.
 func (e *QElement) TITLERemove(s string) *QElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1344,11 +1346,351 @@ const (
 	QTranslate_no QTranslateChoice = "no"
 )
 
-// Remove the attribute translate from the element.
+// Remove the attribute TRANSLATE from the element.
 func (e *QElement) TRANSLATERemove(c QTranslateChoice) *QElement {
 	if e.StringAttributes == nil {
 		return e
 	}
 	e.StringAttributes.Del("translate")
+	return e
+}
+
+// Merges the store with the given object
+
+func (e *QElement) DATASTAR_MERGE_STORE(v any) *QElement {
+	if e.CustomDataAttributes == nil {
+		e.CustomDataAttributes = treemap.New[string, string]()
+	}
+	b, err := json.Marshal(v)
+	if err != nil {
+		panic(err)
+	}
+	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	return e
+}
+
+// Sets the reference of the element
+
+func (e *QElement) DATASTAR_REF(s string) *QElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-ref"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *QElement) IfDATASTAR_REF(condition bool, s string) *QElement {
+	if condition {
+		e.DATASTAR_REF(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_REF from the element.
+func (e *QElement) DATASTAR_REFRemove() *QElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-ref")
+	return e
+}
+
+// Sets the value of the element
+
+func (e *QElement) DATASTAR_BIND(s string) *QElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-bind"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *QElement) IfDATASTAR_BIND(condition bool, s string) *QElement {
+	if condition {
+		e.DATASTAR_BIND(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_BIND from the element.
+func (e *QElement) DATASTAR_BINDRemove() *QElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-bind")
+	return e
+}
+
+// Sets the value of the element
+
+func (e *QElement) DATASTAR_MODEL(s string) *QElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-model"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *QElement) IfDATASTAR_MODEL(condition bool, s string) *QElement {
+	if condition {
+		e.DATASTAR_MODEL(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_MODEL from the element.
+func (e *QElement) DATASTAR_MODELRemove() *QElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-model")
+	return e
+}
+
+// Sets the textContent of the element
+
+func (e *QElement) DATASTAR_TEXT(s string) *QElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-text"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *QElement) IfDATASTAR_TEXT(condition bool, s string) *QElement {
+	if condition {
+		e.DATASTAR_TEXT(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_TEXT from the element.
+func (e *QElement) DATASTAR_TEXTRemove() *QElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-text")
+	return e
+}
+
+// Sets the event handler of the element
+
+type QDataOnMod customDataKeyModifier
+
+// Debounces the event handler
+func QDataOnModDebounce(
+	s string,
+) QDataOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce_%sms", s)
+	}
+}
+
+// Throttles the event handler
+func QDataOnModThrottle(
+	s string,
+) QDataOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle_%sms", s)
+	}
+}
+
+func (e *QElement) DATASTAR_ON(s string, modifiers ...QDataOnMod) *QElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	customMods := lo.Map(modifiers, func(m QDataOnMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key := customDataKey("data-on", customMods...)
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *QElement) IfDATASTAR_ON(condition bool, s string, modifiers ...QDataOnMod) *QElement {
+	if condition {
+		e.DATASTAR_ON(s, modifiers...)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_ON from the element.
+func (e *QElement) DATASTAR_ONRemove() *QElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-on")
+	return e
+}
+
+// Sets the focus of the element
+
+func (e *QElement) DATASTAR_FOCUSSet(b bool) *QElement {
+	key := "data-focus"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *QElement) DATASTAR_FOCUS() *QElement {
+	return e.DATASTAR_FOCUSSet(true)
+}
+
+// Sets the header of for fetch requests
+
+func (e *QElement) DATASTAR_HEADER(s string) *QElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-header"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *QElement) IfDATASTAR_HEADER(condition bool, s string) *QElement {
+	if condition {
+		e.DATASTAR_HEADER(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_HEADER from the element.
+func (e *QElement) DATASTAR_HEADERRemove() *QElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-header")
+	return e
+}
+
+// Sets the URL for fetch requests
+
+func (e *QElement) DATASTAR_FETCH_URL(s string) *QElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-fetch-url"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *QElement) IfDATASTAR_FETCH_URL(condition bool, s string) *QElement {
+	if condition {
+		e.DATASTAR_FETCH_URL(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_FETCH_URL from the element.
+func (e *QElement) DATASTAR_FETCH_URLRemove() *QElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-fetch-url")
+	return e
+}
+
+// Sets the indicator selector for fetch requests
+
+func (e *QElement) DATASTAR_FETCH_INDICATOR(s string) *QElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "DatastarFetchIndicator"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *QElement) IfDATASTAR_FETCH_INDICATOR(condition bool, s string) *QElement {
+	if condition {
+		e.DATASTAR_FETCH_INDICATOR(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_FETCH_INDICATOR from the element.
+func (e *QElement) DATASTAR_FETCH_INDICATORRemove() *QElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("DatastarFetchIndicator")
+	return e
+}
+
+// Sets the visibility of the element
+
+func (e *QElement) DATASTAR_SHOWSet(b bool) *QElement {
+	key := "data-show"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *QElement) DATASTAR_SHOW() *QElement {
+	return e.DATASTAR_SHOWSet(true)
+}
+
+// Triggers the callback when the element intersects the viewport
+
+func (e *QElement) DATASTAR_INTERSECTSSet(b bool) *QElement {
+	key := "data-intersects"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *QElement) DATASTAR_INTERSECTS() *QElement {
+	return e.DATASTAR_INTERSECTSSet(true)
+}
+
+// Teleports the element to the given selector
+
+func (e *QElement) DATASTAR_TELEPORTSet(b bool) *QElement {
+	key := "data-teleport"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *QElement) DATASTAR_TELEPORT() *QElement {
+	return e.DATASTAR_TELEPORTSet(true)
+}
+
+// Scrolls the element into view
+
+func (e *QElement) DATASTAR_SCROLL_INTO_VIEWSet(b bool) *QElement {
+	key := "data-scroll-into-view"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *QElement) DATASTAR_SCROLL_INTO_VIEW() *QElement {
+	return e.DATASTAR_SCROLL_INTO_VIEWSet(true)
+}
+
+// Setup the ViewTransitionAPI for the element
+
+func (e *QElement) DATASTAR_VIEW_TRANSITION(s string) *QElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-view-transition"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *QElement) IfDATASTAR_VIEW_TRANSITION(condition bool, s string) *QElement {
+	if condition {
+		e.DATASTAR_VIEW_TRANSITION(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_VIEW_TRANSITION from the element.
+func (e *QElement) DATASTAR_VIEW_TRANSITIONRemove() *QElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-view-transition")
 	return e
 }

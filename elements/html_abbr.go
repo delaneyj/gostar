@@ -6,7 +6,9 @@ package elements
 import (
 	"fmt"
 
+	"github.com/goccy/go-json"
 	"github.com/igrmk/treemap/v2"
+	"github.com/samber/lo"
 )
 
 // The HTML Abbreviation element (<abbr>) represents an abbreviation or acronym;
@@ -145,7 +147,7 @@ func (e *ABBRElement) IfTITLE(condition bool, s string) *ABBRElement {
 	return e
 }
 
-// Remove the attribute title from the element.
+// Remove the attribute TITLE from the element.
 func (e *ABBRElement) TITLERemove(s string) *ABBRElement {
 	if e.StringAttributes == nil {
 		return e
@@ -173,7 +175,7 @@ func (e *ABBRElement) IfACCESSKEY(condition bool, r rune) *ABBRElement {
 	return e
 }
 
-// Remove the attribute accesskey from the element.
+// Remove the attribute ACCESSKEY from the element.
 func (e *ABBRElement) ACCESSKEYRemove() *ABBRElement {
 	if e.StringAttributes == nil {
 		return e
@@ -221,7 +223,7 @@ const (
 	AbbrAutocapitalize_characters AbbrAutocapitalizeChoice = "characters"
 )
 
-// Remove the attribute autocapitalize from the element.
+// Remove the attribute AUTOCAPITALIZE from the element.
 func (e *ABBRElement) AUTOCAPITALIZERemove(c AbbrAutocapitalizeChoice) *ABBRElement {
 	if e.StringAttributes == nil {
 		return e
@@ -262,7 +264,7 @@ func (e *ABBRElement) IfAUTOFOCUS(condition bool) *ABBRElement {
 	return e
 }
 
-// Set the attribute autofocus to the value b explicitly.
+// Set the attribute AUTOFOCUS to the value b explicitly.
 func (e *ABBRElement) AUTOFOCUSSet(b bool) *ABBRElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
@@ -278,7 +280,7 @@ func (e *ABBRElement) IfSetAUTOFOCUS(condition bool, b bool) *ABBRElement {
 	return e
 }
 
-// Remove the attribute autofocus from the element.
+// Remove the attribute AUTOFOCUS from the element.
 func (e *ABBRElement) AUTOFOCUSRemove(b bool) *ABBRElement {
 	if e.BoolAttributes == nil {
 		return e
@@ -312,7 +314,7 @@ func (e *ABBRElement) IfCLASS(condition bool, s ...string) *ABBRElement {
 	return e
 }
 
-// Remove the attribute class from the element.
+// Remove the attribute CLASS from the element.
 func (e *ABBRElement) CLASSRemove(s ...string) *ABBRElement {
 	if e.DelimitedStrings == nil {
 		return e
@@ -350,7 +352,7 @@ const (
 	AbbrContenteditable_plaintext_only AbbrContenteditableChoice = "plaintext-only"
 )
 
-// Remove the attribute contenteditable from the element.
+// Remove the attribute CONTENTEDITABLE from the element.
 func (e *ABBRElement) CONTENTEDITABLERemove(c AbbrContenteditableChoice) *ABBRElement {
 	if e.StringAttributes == nil {
 		return e
@@ -398,7 +400,7 @@ const (
 	AbbrDir_auto AbbrDirChoice = "auto"
 )
 
-// Remove the attribute dir from the element.
+// Remove the attribute DIR from the element.
 func (e *ABBRElement) DIRRemove(c AbbrDirChoice) *ABBRElement {
 	if e.StringAttributes == nil {
 		return e
@@ -435,7 +437,7 @@ const (
 	AbbrDraggable_auto AbbrDraggableChoice = "auto"
 )
 
-// Remove the attribute draggable from the element.
+// Remove the attribute DRAGGABLE from the element.
 func (e *ABBRElement) DRAGGABLERemove(c AbbrDraggableChoice) *ABBRElement {
 	if e.StringAttributes == nil {
 		return e
@@ -475,7 +477,7 @@ const (
 	AbbrEnterkeyhint_send AbbrEnterkeyhintChoice = "send"
 )
 
-// Remove the attribute enterkeyhint from the element.
+// Remove the attribute ENTERKEYHINT from the element.
 func (e *ABBRElement) ENTERKEYHINTRemove(c AbbrEnterkeyhintChoice) *ABBRElement {
 	if e.StringAttributes == nil {
 		return e
@@ -524,7 +526,7 @@ func (e *ABBRElement) IfEXPORTPARTS(condition bool, s ...string) *ABBRElement {
 	return e
 }
 
-// Remove the attribute exportparts from the element.
+// Remove the attribute EXPORTPARTS from the element.
 func (e *ABBRElement) EXPORTPARTSRemove(s ...string) *ABBRElement {
 	if e.DelimitedStrings == nil {
 		return e
@@ -578,7 +580,7 @@ const (
 	AbbrHidden_until_found AbbrHiddenChoice = "until-found"
 )
 
-// Remove the attribute hidden from the element.
+// Remove the attribute HIDDEN from the element.
 func (e *ABBRElement) HIDDENRemove(c AbbrHiddenChoice) *ABBRElement {
 	if e.StringAttributes == nil {
 		return e
@@ -606,7 +608,7 @@ func (e *ABBRElement) IfID(condition bool, s string) *ABBRElement {
 	return e
 }
 
-// Remove the attribute id from the element.
+// Remove the attribute ID from the element.
 func (e *ABBRElement) IDRemove(s string) *ABBRElement {
 	if e.StringAttributes == nil {
 		return e
@@ -639,7 +641,7 @@ func (e *ABBRElement) IfINERT(condition bool) *ABBRElement {
 	return e
 }
 
-// Set the attribute inert to the value b explicitly.
+// Set the attribute INERT to the value b explicitly.
 func (e *ABBRElement) INERTSet(b bool) *ABBRElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
@@ -655,7 +657,7 @@ func (e *ABBRElement) IfSetINERT(condition bool, b bool) *ABBRElement {
 	return e
 }
 
-// Remove the attribute inert from the element.
+// Remove the attribute INERT from the element.
 func (e *ABBRElement) INERTRemove(b bool) *ABBRElement {
 	if e.BoolAttributes == nil {
 		return e
@@ -724,7 +726,7 @@ const (
 	AbbrInputmode_url AbbrInputmodeChoice = "url"
 )
 
-// Remove the attribute inputmode from the element.
+// Remove the attribute INPUTMODE from the element.
 func (e *ABBRElement) INPUTMODERemove(c AbbrInputmodeChoice) *ABBRElement {
 	if e.StringAttributes == nil {
 		return e
@@ -754,7 +756,7 @@ func (e *ABBRElement) IfIS(condition bool, s string) *ABBRElement {
 	return e
 }
 
-// Remove the attribute is from the element.
+// Remove the attribute IS from the element.
 func (e *ABBRElement) ISRemove(s string) *ABBRElement {
 	if e.StringAttributes == nil {
 		return e
@@ -791,7 +793,7 @@ func (e *ABBRElement) IfITEMID(condition bool, s string) *ABBRElement {
 	return e
 }
 
-// Remove the attribute itemid from the element.
+// Remove the attribute ITEMID from the element.
 func (e *ABBRElement) ITEMIDRemove(s string) *ABBRElement {
 	if e.StringAttributes == nil {
 		return e
@@ -823,7 +825,7 @@ func (e *ABBRElement) IfITEMPROP(condition bool, s string) *ABBRElement {
 	return e
 }
 
-// Remove the attribute itemprop from the element.
+// Remove the attribute ITEMPROP from the element.
 func (e *ABBRElement) ITEMPROPRemove(s string) *ABBRElement {
 	if e.StringAttributes == nil {
 		return e
@@ -852,7 +854,7 @@ func (e *ABBRElement) IfITEMREF(condition bool, s string) *ABBRElement {
 	return e
 }
 
-// Remove the attribute itemref from the element.
+// Remove the attribute ITEMREF from the element.
 func (e *ABBRElement) ITEMREFRemove(s string) *ABBRElement {
 	if e.StringAttributes == nil {
 		return e
@@ -881,7 +883,7 @@ func (e *ABBRElement) IfITEMSCOPE(condition bool) *ABBRElement {
 	return e
 }
 
-// Set the attribute itemscope to the value b explicitly.
+// Set the attribute ITEMSCOPE to the value b explicitly.
 func (e *ABBRElement) ITEMSCOPESet(b bool) *ABBRElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
@@ -897,7 +899,7 @@ func (e *ABBRElement) IfSetITEMSCOPE(condition bool, b bool) *ABBRElement {
 	return e
 }
 
-// Remove the attribute itemscope from the element.
+// Remove the attribute ITEMSCOPE from the element.
 func (e *ABBRElement) ITEMSCOPERemove(b bool) *ABBRElement {
 	if e.BoolAttributes == nil {
 		return e
@@ -929,7 +931,7 @@ func (e *ABBRElement) IfITEMTYPE(condition bool, s string) *ABBRElement {
 	return e
 }
 
-// Remove the attribute itemtype from the element.
+// Remove the attribute ITEMTYPE from the element.
 func (e *ABBRElement) ITEMTYPERemove(s string) *ABBRElement {
 	if e.StringAttributes == nil {
 		return e
@@ -959,7 +961,7 @@ func (e *ABBRElement) IfLANG(condition bool, s string) *ABBRElement {
 	return e
 }
 
-// Remove the attribute lang from the element.
+// Remove the attribute LANG from the element.
 func (e *ABBRElement) LANGRemove(s string) *ABBRElement {
 	if e.StringAttributes == nil {
 		return e
@@ -987,7 +989,7 @@ func (e *ABBRElement) IfNONCE(condition bool, s string) *ABBRElement {
 	return e
 }
 
-// Remove the attribute nonce from the element.
+// Remove the attribute NONCE from the element.
 func (e *ABBRElement) NONCERemove(s string) *ABBRElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1020,7 +1022,7 @@ func (e *ABBRElement) IfPART(condition bool, s ...string) *ABBRElement {
 	return e
 }
 
-// Remove the attribute part from the element.
+// Remove the attribute PART from the element.
 func (e *ABBRElement) PARTRemove(s ...string) *ABBRElement {
 	if e.DelimitedStrings == nil {
 		return e
@@ -1066,7 +1068,7 @@ const (
 	AbbrPopver_manual AbbrPopverChoice = "manual"
 )
 
-// Remove the attribute popver from the element.
+// Remove the attribute POPVER from the element.
 func (e *ABBRElement) POPVERRemove(c AbbrPopverChoice) *ABBRElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1094,7 +1096,7 @@ func (e *ABBRElement) IfSLOT(condition bool, s string) *ABBRElement {
 	return e
 }
 
-// Remove the attribute slot from the element.
+// Remove the attribute SLOT from the element.
 func (e *ABBRElement) SLOTRemove(s string) *ABBRElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1136,7 +1138,7 @@ const (
 	AbbrSpellcheck_false AbbrSpellcheckChoice = "false"
 )
 
-// Remove the attribute spellcheck from the element.
+// Remove the attribute SPELLCHECK from the element.
 func (e *ABBRElement) SPELLCHECKRemove(c AbbrSpellcheckChoice) *ABBRElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1223,7 +1225,7 @@ func (e *ABBRElement) IfSTYLEPairs(condition bool, pairs ...string) *ABBRElement
 	return e
 }
 
-// Remove the attribute style from the element.
+// Remove the attribute STYLE from the element.
 func (e *ABBRElement) STYLERemove(keys ...string) *ABBRElement {
 	if e.KVStrings == nil {
 		return e
@@ -1267,7 +1269,7 @@ func (e *ABBRElement) IfTABINDEX(condition bool, i int) *ABBRElement {
 	return e
 }
 
-// Remove the attribute tabindex from the element.
+// Remove the attribute TABINDEX from the element.
 func (e *ABBRElement) TABINDEXRemove(i int) *ABBRElement {
 	if e.IntAttributes == nil {
 		return e
@@ -1299,11 +1301,351 @@ const (
 	AbbrTranslate_no AbbrTranslateChoice = "no"
 )
 
-// Remove the attribute translate from the element.
+// Remove the attribute TRANSLATE from the element.
 func (e *ABBRElement) TRANSLATERemove(c AbbrTranslateChoice) *ABBRElement {
 	if e.StringAttributes == nil {
 		return e
 	}
 	e.StringAttributes.Del("translate")
+	return e
+}
+
+// Merges the store with the given object
+
+func (e *ABBRElement) DATASTAR_MERGE_STORE(v any) *ABBRElement {
+	if e.CustomDataAttributes == nil {
+		e.CustomDataAttributes = treemap.New[string, string]()
+	}
+	b, err := json.Marshal(v)
+	if err != nil {
+		panic(err)
+	}
+	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	return e
+}
+
+// Sets the reference of the element
+
+func (e *ABBRElement) DATASTAR_REF(s string) *ABBRElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-ref"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *ABBRElement) IfDATASTAR_REF(condition bool, s string) *ABBRElement {
+	if condition {
+		e.DATASTAR_REF(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_REF from the element.
+func (e *ABBRElement) DATASTAR_REFRemove() *ABBRElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-ref")
+	return e
+}
+
+// Sets the value of the element
+
+func (e *ABBRElement) DATASTAR_BIND(s string) *ABBRElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-bind"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *ABBRElement) IfDATASTAR_BIND(condition bool, s string) *ABBRElement {
+	if condition {
+		e.DATASTAR_BIND(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_BIND from the element.
+func (e *ABBRElement) DATASTAR_BINDRemove() *ABBRElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-bind")
+	return e
+}
+
+// Sets the value of the element
+
+func (e *ABBRElement) DATASTAR_MODEL(s string) *ABBRElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-model"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *ABBRElement) IfDATASTAR_MODEL(condition bool, s string) *ABBRElement {
+	if condition {
+		e.DATASTAR_MODEL(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_MODEL from the element.
+func (e *ABBRElement) DATASTAR_MODELRemove() *ABBRElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-model")
+	return e
+}
+
+// Sets the textContent of the element
+
+func (e *ABBRElement) DATASTAR_TEXT(s string) *ABBRElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-text"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *ABBRElement) IfDATASTAR_TEXT(condition bool, s string) *ABBRElement {
+	if condition {
+		e.DATASTAR_TEXT(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_TEXT from the element.
+func (e *ABBRElement) DATASTAR_TEXTRemove() *ABBRElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-text")
+	return e
+}
+
+// Sets the event handler of the element
+
+type AbbrDataOnMod customDataKeyModifier
+
+// Debounces the event handler
+func AbbrDataOnModDebounce(
+	s string,
+) AbbrDataOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce_%sms", s)
+	}
+}
+
+// Throttles the event handler
+func AbbrDataOnModThrottle(
+	s string,
+) AbbrDataOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle_%sms", s)
+	}
+}
+
+func (e *ABBRElement) DATASTAR_ON(s string, modifiers ...AbbrDataOnMod) *ABBRElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	customMods := lo.Map(modifiers, func(m AbbrDataOnMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key := customDataKey("data-on", customMods...)
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *ABBRElement) IfDATASTAR_ON(condition bool, s string, modifiers ...AbbrDataOnMod) *ABBRElement {
+	if condition {
+		e.DATASTAR_ON(s, modifiers...)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_ON from the element.
+func (e *ABBRElement) DATASTAR_ONRemove() *ABBRElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-on")
+	return e
+}
+
+// Sets the focus of the element
+
+func (e *ABBRElement) DATASTAR_FOCUSSet(b bool) *ABBRElement {
+	key := "data-focus"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *ABBRElement) DATASTAR_FOCUS() *ABBRElement {
+	return e.DATASTAR_FOCUSSet(true)
+}
+
+// Sets the header of for fetch requests
+
+func (e *ABBRElement) DATASTAR_HEADER(s string) *ABBRElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-header"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *ABBRElement) IfDATASTAR_HEADER(condition bool, s string) *ABBRElement {
+	if condition {
+		e.DATASTAR_HEADER(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_HEADER from the element.
+func (e *ABBRElement) DATASTAR_HEADERRemove() *ABBRElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-header")
+	return e
+}
+
+// Sets the URL for fetch requests
+
+func (e *ABBRElement) DATASTAR_FETCH_URL(s string) *ABBRElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-fetch-url"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *ABBRElement) IfDATASTAR_FETCH_URL(condition bool, s string) *ABBRElement {
+	if condition {
+		e.DATASTAR_FETCH_URL(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_FETCH_URL from the element.
+func (e *ABBRElement) DATASTAR_FETCH_URLRemove() *ABBRElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-fetch-url")
+	return e
+}
+
+// Sets the indicator selector for fetch requests
+
+func (e *ABBRElement) DATASTAR_FETCH_INDICATOR(s string) *ABBRElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "DatastarFetchIndicator"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *ABBRElement) IfDATASTAR_FETCH_INDICATOR(condition bool, s string) *ABBRElement {
+	if condition {
+		e.DATASTAR_FETCH_INDICATOR(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_FETCH_INDICATOR from the element.
+func (e *ABBRElement) DATASTAR_FETCH_INDICATORRemove() *ABBRElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("DatastarFetchIndicator")
+	return e
+}
+
+// Sets the visibility of the element
+
+func (e *ABBRElement) DATASTAR_SHOWSet(b bool) *ABBRElement {
+	key := "data-show"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *ABBRElement) DATASTAR_SHOW() *ABBRElement {
+	return e.DATASTAR_SHOWSet(true)
+}
+
+// Triggers the callback when the element intersects the viewport
+
+func (e *ABBRElement) DATASTAR_INTERSECTSSet(b bool) *ABBRElement {
+	key := "data-intersects"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *ABBRElement) DATASTAR_INTERSECTS() *ABBRElement {
+	return e.DATASTAR_INTERSECTSSet(true)
+}
+
+// Teleports the element to the given selector
+
+func (e *ABBRElement) DATASTAR_TELEPORTSet(b bool) *ABBRElement {
+	key := "data-teleport"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *ABBRElement) DATASTAR_TELEPORT() *ABBRElement {
+	return e.DATASTAR_TELEPORTSet(true)
+}
+
+// Scrolls the element into view
+
+func (e *ABBRElement) DATASTAR_SCROLL_INTO_VIEWSet(b bool) *ABBRElement {
+	key := "data-scroll-into-view"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *ABBRElement) DATASTAR_SCROLL_INTO_VIEW() *ABBRElement {
+	return e.DATASTAR_SCROLL_INTO_VIEWSet(true)
+}
+
+// Setup the ViewTransitionAPI for the element
+
+func (e *ABBRElement) DATASTAR_VIEW_TRANSITION(s string) *ABBRElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-view-transition"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *ABBRElement) IfDATASTAR_VIEW_TRANSITION(condition bool, s string) *ABBRElement {
+	if condition {
+		e.DATASTAR_VIEW_TRANSITION(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_VIEW_TRANSITION from the element.
+func (e *ABBRElement) DATASTAR_VIEW_TRANSITIONRemove() *ABBRElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-view-transition")
 	return e
 }

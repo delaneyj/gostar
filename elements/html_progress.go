@@ -6,7 +6,9 @@ package elements
 import (
 	"fmt"
 
+	"github.com/goccy/go-json"
 	"github.com/igrmk/treemap/v2"
+	"github.com/samber/lo"
 )
 
 // The HTML <progress> element displays an indicator showing the completion
@@ -178,7 +180,7 @@ func (e *PROGRESSElement) IfACCESSKEY(condition bool, r rune) *PROGRESSElement {
 	return e
 }
 
-// Remove the attribute accesskey from the element.
+// Remove the attribute ACCESSKEY from the element.
 func (e *PROGRESSElement) ACCESSKEYRemove() *PROGRESSElement {
 	if e.StringAttributes == nil {
 		return e
@@ -226,7 +228,7 @@ const (
 	ProgressAutocapitalize_characters ProgressAutocapitalizeChoice = "characters"
 )
 
-// Remove the attribute autocapitalize from the element.
+// Remove the attribute AUTOCAPITALIZE from the element.
 func (e *PROGRESSElement) AUTOCAPITALIZERemove(c ProgressAutocapitalizeChoice) *PROGRESSElement {
 	if e.StringAttributes == nil {
 		return e
@@ -267,7 +269,7 @@ func (e *PROGRESSElement) IfAUTOFOCUS(condition bool) *PROGRESSElement {
 	return e
 }
 
-// Set the attribute autofocus to the value b explicitly.
+// Set the attribute AUTOFOCUS to the value b explicitly.
 func (e *PROGRESSElement) AUTOFOCUSSet(b bool) *PROGRESSElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
@@ -283,7 +285,7 @@ func (e *PROGRESSElement) IfSetAUTOFOCUS(condition bool, b bool) *PROGRESSElemen
 	return e
 }
 
-// Remove the attribute autofocus from the element.
+// Remove the attribute AUTOFOCUS from the element.
 func (e *PROGRESSElement) AUTOFOCUSRemove(b bool) *PROGRESSElement {
 	if e.BoolAttributes == nil {
 		return e
@@ -317,7 +319,7 @@ func (e *PROGRESSElement) IfCLASS(condition bool, s ...string) *PROGRESSElement 
 	return e
 }
 
-// Remove the attribute class from the element.
+// Remove the attribute CLASS from the element.
 func (e *PROGRESSElement) CLASSRemove(s ...string) *PROGRESSElement {
 	if e.DelimitedStrings == nil {
 		return e
@@ -355,7 +357,7 @@ const (
 	ProgressContenteditable_plaintext_only ProgressContenteditableChoice = "plaintext-only"
 )
 
-// Remove the attribute contenteditable from the element.
+// Remove the attribute CONTENTEDITABLE from the element.
 func (e *PROGRESSElement) CONTENTEDITABLERemove(c ProgressContenteditableChoice) *PROGRESSElement {
 	if e.StringAttributes == nil {
 		return e
@@ -403,7 +405,7 @@ const (
 	ProgressDir_auto ProgressDirChoice = "auto"
 )
 
-// Remove the attribute dir from the element.
+// Remove the attribute DIR from the element.
 func (e *PROGRESSElement) DIRRemove(c ProgressDirChoice) *PROGRESSElement {
 	if e.StringAttributes == nil {
 		return e
@@ -440,7 +442,7 @@ const (
 	ProgressDraggable_auto ProgressDraggableChoice = "auto"
 )
 
-// Remove the attribute draggable from the element.
+// Remove the attribute DRAGGABLE from the element.
 func (e *PROGRESSElement) DRAGGABLERemove(c ProgressDraggableChoice) *PROGRESSElement {
 	if e.StringAttributes == nil {
 		return e
@@ -480,7 +482,7 @@ const (
 	ProgressEnterkeyhint_send ProgressEnterkeyhintChoice = "send"
 )
 
-// Remove the attribute enterkeyhint from the element.
+// Remove the attribute ENTERKEYHINT from the element.
 func (e *PROGRESSElement) ENTERKEYHINTRemove(c ProgressEnterkeyhintChoice) *PROGRESSElement {
 	if e.StringAttributes == nil {
 		return e
@@ -529,7 +531,7 @@ func (e *PROGRESSElement) IfEXPORTPARTS(condition bool, s ...string) *PROGRESSEl
 	return e
 }
 
-// Remove the attribute exportparts from the element.
+// Remove the attribute EXPORTPARTS from the element.
 func (e *PROGRESSElement) EXPORTPARTSRemove(s ...string) *PROGRESSElement {
 	if e.DelimitedStrings == nil {
 		return e
@@ -583,7 +585,7 @@ const (
 	ProgressHidden_until_found ProgressHiddenChoice = "until-found"
 )
 
-// Remove the attribute hidden from the element.
+// Remove the attribute HIDDEN from the element.
 func (e *PROGRESSElement) HIDDENRemove(c ProgressHiddenChoice) *PROGRESSElement {
 	if e.StringAttributes == nil {
 		return e
@@ -611,7 +613,7 @@ func (e *PROGRESSElement) IfID(condition bool, s string) *PROGRESSElement {
 	return e
 }
 
-// Remove the attribute id from the element.
+// Remove the attribute ID from the element.
 func (e *PROGRESSElement) IDRemove(s string) *PROGRESSElement {
 	if e.StringAttributes == nil {
 		return e
@@ -644,7 +646,7 @@ func (e *PROGRESSElement) IfINERT(condition bool) *PROGRESSElement {
 	return e
 }
 
-// Set the attribute inert to the value b explicitly.
+// Set the attribute INERT to the value b explicitly.
 func (e *PROGRESSElement) INERTSet(b bool) *PROGRESSElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
@@ -660,7 +662,7 @@ func (e *PROGRESSElement) IfSetINERT(condition bool, b bool) *PROGRESSElement {
 	return e
 }
 
-// Remove the attribute inert from the element.
+// Remove the attribute INERT from the element.
 func (e *PROGRESSElement) INERTRemove(b bool) *PROGRESSElement {
 	if e.BoolAttributes == nil {
 		return e
@@ -729,7 +731,7 @@ const (
 	ProgressInputmode_url ProgressInputmodeChoice = "url"
 )
 
-// Remove the attribute inputmode from the element.
+// Remove the attribute INPUTMODE from the element.
 func (e *PROGRESSElement) INPUTMODERemove(c ProgressInputmodeChoice) *PROGRESSElement {
 	if e.StringAttributes == nil {
 		return e
@@ -759,7 +761,7 @@ func (e *PROGRESSElement) IfIS(condition bool, s string) *PROGRESSElement {
 	return e
 }
 
-// Remove the attribute is from the element.
+// Remove the attribute IS from the element.
 func (e *PROGRESSElement) ISRemove(s string) *PROGRESSElement {
 	if e.StringAttributes == nil {
 		return e
@@ -796,7 +798,7 @@ func (e *PROGRESSElement) IfITEMID(condition bool, s string) *PROGRESSElement {
 	return e
 }
 
-// Remove the attribute itemid from the element.
+// Remove the attribute ITEMID from the element.
 func (e *PROGRESSElement) ITEMIDRemove(s string) *PROGRESSElement {
 	if e.StringAttributes == nil {
 		return e
@@ -828,7 +830,7 @@ func (e *PROGRESSElement) IfITEMPROP(condition bool, s string) *PROGRESSElement 
 	return e
 }
 
-// Remove the attribute itemprop from the element.
+// Remove the attribute ITEMPROP from the element.
 func (e *PROGRESSElement) ITEMPROPRemove(s string) *PROGRESSElement {
 	if e.StringAttributes == nil {
 		return e
@@ -857,7 +859,7 @@ func (e *PROGRESSElement) IfITEMREF(condition bool, s string) *PROGRESSElement {
 	return e
 }
 
-// Remove the attribute itemref from the element.
+// Remove the attribute ITEMREF from the element.
 func (e *PROGRESSElement) ITEMREFRemove(s string) *PROGRESSElement {
 	if e.StringAttributes == nil {
 		return e
@@ -886,7 +888,7 @@ func (e *PROGRESSElement) IfITEMSCOPE(condition bool) *PROGRESSElement {
 	return e
 }
 
-// Set the attribute itemscope to the value b explicitly.
+// Set the attribute ITEMSCOPE to the value b explicitly.
 func (e *PROGRESSElement) ITEMSCOPESet(b bool) *PROGRESSElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
@@ -902,7 +904,7 @@ func (e *PROGRESSElement) IfSetITEMSCOPE(condition bool, b bool) *PROGRESSElemen
 	return e
 }
 
-// Remove the attribute itemscope from the element.
+// Remove the attribute ITEMSCOPE from the element.
 func (e *PROGRESSElement) ITEMSCOPERemove(b bool) *PROGRESSElement {
 	if e.BoolAttributes == nil {
 		return e
@@ -934,7 +936,7 @@ func (e *PROGRESSElement) IfITEMTYPE(condition bool, s string) *PROGRESSElement 
 	return e
 }
 
-// Remove the attribute itemtype from the element.
+// Remove the attribute ITEMTYPE from the element.
 func (e *PROGRESSElement) ITEMTYPERemove(s string) *PROGRESSElement {
 	if e.StringAttributes == nil {
 		return e
@@ -964,7 +966,7 @@ func (e *PROGRESSElement) IfLANG(condition bool, s string) *PROGRESSElement {
 	return e
 }
 
-// Remove the attribute lang from the element.
+// Remove the attribute LANG from the element.
 func (e *PROGRESSElement) LANGRemove(s string) *PROGRESSElement {
 	if e.StringAttributes == nil {
 		return e
@@ -992,7 +994,7 @@ func (e *PROGRESSElement) IfNONCE(condition bool, s string) *PROGRESSElement {
 	return e
 }
 
-// Remove the attribute nonce from the element.
+// Remove the attribute NONCE from the element.
 func (e *PROGRESSElement) NONCERemove(s string) *PROGRESSElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1025,7 +1027,7 @@ func (e *PROGRESSElement) IfPART(condition bool, s ...string) *PROGRESSElement {
 	return e
 }
 
-// Remove the attribute part from the element.
+// Remove the attribute PART from the element.
 func (e *PROGRESSElement) PARTRemove(s ...string) *PROGRESSElement {
 	if e.DelimitedStrings == nil {
 		return e
@@ -1071,7 +1073,7 @@ const (
 	ProgressPopver_manual ProgressPopverChoice = "manual"
 )
 
-// Remove the attribute popver from the element.
+// Remove the attribute POPVER from the element.
 func (e *PROGRESSElement) POPVERRemove(c ProgressPopverChoice) *PROGRESSElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1099,7 +1101,7 @@ func (e *PROGRESSElement) IfSLOT(condition bool, s string) *PROGRESSElement {
 	return e
 }
 
-// Remove the attribute slot from the element.
+// Remove the attribute SLOT from the element.
 func (e *PROGRESSElement) SLOTRemove(s string) *PROGRESSElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1141,7 +1143,7 @@ const (
 	ProgressSpellcheck_false ProgressSpellcheckChoice = "false"
 )
 
-// Remove the attribute spellcheck from the element.
+// Remove the attribute SPELLCHECK from the element.
 func (e *PROGRESSElement) SPELLCHECKRemove(c ProgressSpellcheckChoice) *PROGRESSElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1228,7 +1230,7 @@ func (e *PROGRESSElement) IfSTYLEPairs(condition bool, pairs ...string) *PROGRES
 	return e
 }
 
-// Remove the attribute style from the element.
+// Remove the attribute STYLE from the element.
 func (e *PROGRESSElement) STYLERemove(keys ...string) *PROGRESSElement {
 	if e.KVStrings == nil {
 		return e
@@ -1272,7 +1274,7 @@ func (e *PROGRESSElement) IfTABINDEX(condition bool, i int) *PROGRESSElement {
 	return e
 }
 
-// Remove the attribute tabindex from the element.
+// Remove the attribute TABINDEX from the element.
 func (e *PROGRESSElement) TABINDEXRemove(i int) *PROGRESSElement {
 	if e.IntAttributes == nil {
 		return e
@@ -1317,7 +1319,7 @@ func (e *PROGRESSElement) IfTITLE(condition bool, s string) *PROGRESSElement {
 	return e
 }
 
-// Remove the attribute title from the element.
+// Remove the attribute TITLE from the element.
 func (e *PROGRESSElement) TITLERemove(s string) *PROGRESSElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1349,11 +1351,351 @@ const (
 	ProgressTranslate_no ProgressTranslateChoice = "no"
 )
 
-// Remove the attribute translate from the element.
+// Remove the attribute TRANSLATE from the element.
 func (e *PROGRESSElement) TRANSLATERemove(c ProgressTranslateChoice) *PROGRESSElement {
 	if e.StringAttributes == nil {
 		return e
 	}
 	e.StringAttributes.Del("translate")
+	return e
+}
+
+// Merges the store with the given object
+
+func (e *PROGRESSElement) DATASTAR_MERGE_STORE(v any) *PROGRESSElement {
+	if e.CustomDataAttributes == nil {
+		e.CustomDataAttributes = treemap.New[string, string]()
+	}
+	b, err := json.Marshal(v)
+	if err != nil {
+		panic(err)
+	}
+	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	return e
+}
+
+// Sets the reference of the element
+
+func (e *PROGRESSElement) DATASTAR_REF(s string) *PROGRESSElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-ref"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *PROGRESSElement) IfDATASTAR_REF(condition bool, s string) *PROGRESSElement {
+	if condition {
+		e.DATASTAR_REF(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_REF from the element.
+func (e *PROGRESSElement) DATASTAR_REFRemove() *PROGRESSElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-ref")
+	return e
+}
+
+// Sets the value of the element
+
+func (e *PROGRESSElement) DATASTAR_BIND(s string) *PROGRESSElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-bind"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *PROGRESSElement) IfDATASTAR_BIND(condition bool, s string) *PROGRESSElement {
+	if condition {
+		e.DATASTAR_BIND(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_BIND from the element.
+func (e *PROGRESSElement) DATASTAR_BINDRemove() *PROGRESSElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-bind")
+	return e
+}
+
+// Sets the value of the element
+
+func (e *PROGRESSElement) DATASTAR_MODEL(s string) *PROGRESSElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-model"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *PROGRESSElement) IfDATASTAR_MODEL(condition bool, s string) *PROGRESSElement {
+	if condition {
+		e.DATASTAR_MODEL(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_MODEL from the element.
+func (e *PROGRESSElement) DATASTAR_MODELRemove() *PROGRESSElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-model")
+	return e
+}
+
+// Sets the textContent of the element
+
+func (e *PROGRESSElement) DATASTAR_TEXT(s string) *PROGRESSElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-text"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *PROGRESSElement) IfDATASTAR_TEXT(condition bool, s string) *PROGRESSElement {
+	if condition {
+		e.DATASTAR_TEXT(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_TEXT from the element.
+func (e *PROGRESSElement) DATASTAR_TEXTRemove() *PROGRESSElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-text")
+	return e
+}
+
+// Sets the event handler of the element
+
+type ProgressDataOnMod customDataKeyModifier
+
+// Debounces the event handler
+func ProgressDataOnModDebounce(
+	s string,
+) ProgressDataOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce_%sms", s)
+	}
+}
+
+// Throttles the event handler
+func ProgressDataOnModThrottle(
+	s string,
+) ProgressDataOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle_%sms", s)
+	}
+}
+
+func (e *PROGRESSElement) DATASTAR_ON(s string, modifiers ...ProgressDataOnMod) *PROGRESSElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	customMods := lo.Map(modifiers, func(m ProgressDataOnMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key := customDataKey("data-on", customMods...)
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *PROGRESSElement) IfDATASTAR_ON(condition bool, s string, modifiers ...ProgressDataOnMod) *PROGRESSElement {
+	if condition {
+		e.DATASTAR_ON(s, modifiers...)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_ON from the element.
+func (e *PROGRESSElement) DATASTAR_ONRemove() *PROGRESSElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-on")
+	return e
+}
+
+// Sets the focus of the element
+
+func (e *PROGRESSElement) DATASTAR_FOCUSSet(b bool) *PROGRESSElement {
+	key := "data-focus"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *PROGRESSElement) DATASTAR_FOCUS() *PROGRESSElement {
+	return e.DATASTAR_FOCUSSet(true)
+}
+
+// Sets the header of for fetch requests
+
+func (e *PROGRESSElement) DATASTAR_HEADER(s string) *PROGRESSElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-header"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *PROGRESSElement) IfDATASTAR_HEADER(condition bool, s string) *PROGRESSElement {
+	if condition {
+		e.DATASTAR_HEADER(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_HEADER from the element.
+func (e *PROGRESSElement) DATASTAR_HEADERRemove() *PROGRESSElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-header")
+	return e
+}
+
+// Sets the URL for fetch requests
+
+func (e *PROGRESSElement) DATASTAR_FETCH_URL(s string) *PROGRESSElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-fetch-url"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *PROGRESSElement) IfDATASTAR_FETCH_URL(condition bool, s string) *PROGRESSElement {
+	if condition {
+		e.DATASTAR_FETCH_URL(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_FETCH_URL from the element.
+func (e *PROGRESSElement) DATASTAR_FETCH_URLRemove() *PROGRESSElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-fetch-url")
+	return e
+}
+
+// Sets the indicator selector for fetch requests
+
+func (e *PROGRESSElement) DATASTAR_FETCH_INDICATOR(s string) *PROGRESSElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "DatastarFetchIndicator"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *PROGRESSElement) IfDATASTAR_FETCH_INDICATOR(condition bool, s string) *PROGRESSElement {
+	if condition {
+		e.DATASTAR_FETCH_INDICATOR(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_FETCH_INDICATOR from the element.
+func (e *PROGRESSElement) DATASTAR_FETCH_INDICATORRemove() *PROGRESSElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("DatastarFetchIndicator")
+	return e
+}
+
+// Sets the visibility of the element
+
+func (e *PROGRESSElement) DATASTAR_SHOWSet(b bool) *PROGRESSElement {
+	key := "data-show"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *PROGRESSElement) DATASTAR_SHOW() *PROGRESSElement {
+	return e.DATASTAR_SHOWSet(true)
+}
+
+// Triggers the callback when the element intersects the viewport
+
+func (e *PROGRESSElement) DATASTAR_INTERSECTSSet(b bool) *PROGRESSElement {
+	key := "data-intersects"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *PROGRESSElement) DATASTAR_INTERSECTS() *PROGRESSElement {
+	return e.DATASTAR_INTERSECTSSet(true)
+}
+
+// Teleports the element to the given selector
+
+func (e *PROGRESSElement) DATASTAR_TELEPORTSet(b bool) *PROGRESSElement {
+	key := "data-teleport"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *PROGRESSElement) DATASTAR_TELEPORT() *PROGRESSElement {
+	return e.DATASTAR_TELEPORTSet(true)
+}
+
+// Scrolls the element into view
+
+func (e *PROGRESSElement) DATASTAR_SCROLL_INTO_VIEWSet(b bool) *PROGRESSElement {
+	key := "data-scroll-into-view"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *PROGRESSElement) DATASTAR_SCROLL_INTO_VIEW() *PROGRESSElement {
+	return e.DATASTAR_SCROLL_INTO_VIEWSet(true)
+}
+
+// Setup the ViewTransitionAPI for the element
+
+func (e *PROGRESSElement) DATASTAR_VIEW_TRANSITION(s string) *PROGRESSElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-view-transition"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *PROGRESSElement) IfDATASTAR_VIEW_TRANSITION(condition bool, s string) *PROGRESSElement {
+	if condition {
+		e.DATASTAR_VIEW_TRANSITION(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_VIEW_TRANSITION from the element.
+func (e *PROGRESSElement) DATASTAR_VIEW_TRANSITIONRemove() *PROGRESSElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-view-transition")
 	return e
 }

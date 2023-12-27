@@ -6,7 +6,9 @@ package elements
 import (
 	"fmt"
 
+	"github.com/goccy/go-json"
 	"github.com/igrmk/treemap/v2"
+	"github.com/samber/lo"
 )
 
 // The HTML <slot> element—part of the Web Components technology suite—is a
@@ -144,7 +146,7 @@ func (e *SLOTElement) IfNAME(condition bool, s string) *SLOTElement {
 	return e
 }
 
-// Remove the attribute name from the element.
+// Remove the attribute NAME from the element.
 func (e *SLOTElement) NAMERemove(s string) *SLOTElement {
 	if e.StringAttributes == nil {
 		return e
@@ -172,7 +174,7 @@ func (e *SLOTElement) IfACCESSKEY(condition bool, r rune) *SLOTElement {
 	return e
 }
 
-// Remove the attribute accesskey from the element.
+// Remove the attribute ACCESSKEY from the element.
 func (e *SLOTElement) ACCESSKEYRemove() *SLOTElement {
 	if e.StringAttributes == nil {
 		return e
@@ -220,7 +222,7 @@ const (
 	SlotAutocapitalize_characters SlotAutocapitalizeChoice = "characters"
 )
 
-// Remove the attribute autocapitalize from the element.
+// Remove the attribute AUTOCAPITALIZE from the element.
 func (e *SLOTElement) AUTOCAPITALIZERemove(c SlotAutocapitalizeChoice) *SLOTElement {
 	if e.StringAttributes == nil {
 		return e
@@ -261,7 +263,7 @@ func (e *SLOTElement) IfAUTOFOCUS(condition bool) *SLOTElement {
 	return e
 }
 
-// Set the attribute autofocus to the value b explicitly.
+// Set the attribute AUTOFOCUS to the value b explicitly.
 func (e *SLOTElement) AUTOFOCUSSet(b bool) *SLOTElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
@@ -277,7 +279,7 @@ func (e *SLOTElement) IfSetAUTOFOCUS(condition bool, b bool) *SLOTElement {
 	return e
 }
 
-// Remove the attribute autofocus from the element.
+// Remove the attribute AUTOFOCUS from the element.
 func (e *SLOTElement) AUTOFOCUSRemove(b bool) *SLOTElement {
 	if e.BoolAttributes == nil {
 		return e
@@ -311,7 +313,7 @@ func (e *SLOTElement) IfCLASS(condition bool, s ...string) *SLOTElement {
 	return e
 }
 
-// Remove the attribute class from the element.
+// Remove the attribute CLASS from the element.
 func (e *SLOTElement) CLASSRemove(s ...string) *SLOTElement {
 	if e.DelimitedStrings == nil {
 		return e
@@ -349,7 +351,7 @@ const (
 	SlotContenteditable_plaintext_only SlotContenteditableChoice = "plaintext-only"
 )
 
-// Remove the attribute contenteditable from the element.
+// Remove the attribute CONTENTEDITABLE from the element.
 func (e *SLOTElement) CONTENTEDITABLERemove(c SlotContenteditableChoice) *SLOTElement {
 	if e.StringAttributes == nil {
 		return e
@@ -397,7 +399,7 @@ const (
 	SlotDir_auto SlotDirChoice = "auto"
 )
 
-// Remove the attribute dir from the element.
+// Remove the attribute DIR from the element.
 func (e *SLOTElement) DIRRemove(c SlotDirChoice) *SLOTElement {
 	if e.StringAttributes == nil {
 		return e
@@ -434,7 +436,7 @@ const (
 	SlotDraggable_auto SlotDraggableChoice = "auto"
 )
 
-// Remove the attribute draggable from the element.
+// Remove the attribute DRAGGABLE from the element.
 func (e *SLOTElement) DRAGGABLERemove(c SlotDraggableChoice) *SLOTElement {
 	if e.StringAttributes == nil {
 		return e
@@ -474,7 +476,7 @@ const (
 	SlotEnterkeyhint_send SlotEnterkeyhintChoice = "send"
 )
 
-// Remove the attribute enterkeyhint from the element.
+// Remove the attribute ENTERKEYHINT from the element.
 func (e *SLOTElement) ENTERKEYHINTRemove(c SlotEnterkeyhintChoice) *SLOTElement {
 	if e.StringAttributes == nil {
 		return e
@@ -523,7 +525,7 @@ func (e *SLOTElement) IfEXPORTPARTS(condition bool, s ...string) *SLOTElement {
 	return e
 }
 
-// Remove the attribute exportparts from the element.
+// Remove the attribute EXPORTPARTS from the element.
 func (e *SLOTElement) EXPORTPARTSRemove(s ...string) *SLOTElement {
 	if e.DelimitedStrings == nil {
 		return e
@@ -577,7 +579,7 @@ const (
 	SlotHidden_until_found SlotHiddenChoice = "until-found"
 )
 
-// Remove the attribute hidden from the element.
+// Remove the attribute HIDDEN from the element.
 func (e *SLOTElement) HIDDENRemove(c SlotHiddenChoice) *SLOTElement {
 	if e.StringAttributes == nil {
 		return e
@@ -605,7 +607,7 @@ func (e *SLOTElement) IfID(condition bool, s string) *SLOTElement {
 	return e
 }
 
-// Remove the attribute id from the element.
+// Remove the attribute ID from the element.
 func (e *SLOTElement) IDRemove(s string) *SLOTElement {
 	if e.StringAttributes == nil {
 		return e
@@ -638,7 +640,7 @@ func (e *SLOTElement) IfINERT(condition bool) *SLOTElement {
 	return e
 }
 
-// Set the attribute inert to the value b explicitly.
+// Set the attribute INERT to the value b explicitly.
 func (e *SLOTElement) INERTSet(b bool) *SLOTElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
@@ -654,7 +656,7 @@ func (e *SLOTElement) IfSetINERT(condition bool, b bool) *SLOTElement {
 	return e
 }
 
-// Remove the attribute inert from the element.
+// Remove the attribute INERT from the element.
 func (e *SLOTElement) INERTRemove(b bool) *SLOTElement {
 	if e.BoolAttributes == nil {
 		return e
@@ -723,7 +725,7 @@ const (
 	SlotInputmode_url SlotInputmodeChoice = "url"
 )
 
-// Remove the attribute inputmode from the element.
+// Remove the attribute INPUTMODE from the element.
 func (e *SLOTElement) INPUTMODERemove(c SlotInputmodeChoice) *SLOTElement {
 	if e.StringAttributes == nil {
 		return e
@@ -753,7 +755,7 @@ func (e *SLOTElement) IfIS(condition bool, s string) *SLOTElement {
 	return e
 }
 
-// Remove the attribute is from the element.
+// Remove the attribute IS from the element.
 func (e *SLOTElement) ISRemove(s string) *SLOTElement {
 	if e.StringAttributes == nil {
 		return e
@@ -790,7 +792,7 @@ func (e *SLOTElement) IfITEMID(condition bool, s string) *SLOTElement {
 	return e
 }
 
-// Remove the attribute itemid from the element.
+// Remove the attribute ITEMID from the element.
 func (e *SLOTElement) ITEMIDRemove(s string) *SLOTElement {
 	if e.StringAttributes == nil {
 		return e
@@ -822,7 +824,7 @@ func (e *SLOTElement) IfITEMPROP(condition bool, s string) *SLOTElement {
 	return e
 }
 
-// Remove the attribute itemprop from the element.
+// Remove the attribute ITEMPROP from the element.
 func (e *SLOTElement) ITEMPROPRemove(s string) *SLOTElement {
 	if e.StringAttributes == nil {
 		return e
@@ -851,7 +853,7 @@ func (e *SLOTElement) IfITEMREF(condition bool, s string) *SLOTElement {
 	return e
 }
 
-// Remove the attribute itemref from the element.
+// Remove the attribute ITEMREF from the element.
 func (e *SLOTElement) ITEMREFRemove(s string) *SLOTElement {
 	if e.StringAttributes == nil {
 		return e
@@ -880,7 +882,7 @@ func (e *SLOTElement) IfITEMSCOPE(condition bool) *SLOTElement {
 	return e
 }
 
-// Set the attribute itemscope to the value b explicitly.
+// Set the attribute ITEMSCOPE to the value b explicitly.
 func (e *SLOTElement) ITEMSCOPESet(b bool) *SLOTElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
@@ -896,7 +898,7 @@ func (e *SLOTElement) IfSetITEMSCOPE(condition bool, b bool) *SLOTElement {
 	return e
 }
 
-// Remove the attribute itemscope from the element.
+// Remove the attribute ITEMSCOPE from the element.
 func (e *SLOTElement) ITEMSCOPERemove(b bool) *SLOTElement {
 	if e.BoolAttributes == nil {
 		return e
@@ -928,7 +930,7 @@ func (e *SLOTElement) IfITEMTYPE(condition bool, s string) *SLOTElement {
 	return e
 }
 
-// Remove the attribute itemtype from the element.
+// Remove the attribute ITEMTYPE from the element.
 func (e *SLOTElement) ITEMTYPERemove(s string) *SLOTElement {
 	if e.StringAttributes == nil {
 		return e
@@ -958,7 +960,7 @@ func (e *SLOTElement) IfLANG(condition bool, s string) *SLOTElement {
 	return e
 }
 
-// Remove the attribute lang from the element.
+// Remove the attribute LANG from the element.
 func (e *SLOTElement) LANGRemove(s string) *SLOTElement {
 	if e.StringAttributes == nil {
 		return e
@@ -986,7 +988,7 @@ func (e *SLOTElement) IfNONCE(condition bool, s string) *SLOTElement {
 	return e
 }
 
-// Remove the attribute nonce from the element.
+// Remove the attribute NONCE from the element.
 func (e *SLOTElement) NONCERemove(s string) *SLOTElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1019,7 +1021,7 @@ func (e *SLOTElement) IfPART(condition bool, s ...string) *SLOTElement {
 	return e
 }
 
-// Remove the attribute part from the element.
+// Remove the attribute PART from the element.
 func (e *SLOTElement) PARTRemove(s ...string) *SLOTElement {
 	if e.DelimitedStrings == nil {
 		return e
@@ -1065,7 +1067,7 @@ const (
 	SlotPopver_manual SlotPopverChoice = "manual"
 )
 
-// Remove the attribute popver from the element.
+// Remove the attribute POPVER from the element.
 func (e *SLOTElement) POPVERRemove(c SlotPopverChoice) *SLOTElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1093,7 +1095,7 @@ func (e *SLOTElement) IfSLOT(condition bool, s string) *SLOTElement {
 	return e
 }
 
-// Remove the attribute slot from the element.
+// Remove the attribute SLOT from the element.
 func (e *SLOTElement) SLOTRemove(s string) *SLOTElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1135,7 +1137,7 @@ const (
 	SlotSpellcheck_false SlotSpellcheckChoice = "false"
 )
 
-// Remove the attribute spellcheck from the element.
+// Remove the attribute SPELLCHECK from the element.
 func (e *SLOTElement) SPELLCHECKRemove(c SlotSpellcheckChoice) *SLOTElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1222,7 +1224,7 @@ func (e *SLOTElement) IfSTYLEPairs(condition bool, pairs ...string) *SLOTElement
 	return e
 }
 
-// Remove the attribute style from the element.
+// Remove the attribute STYLE from the element.
 func (e *SLOTElement) STYLERemove(keys ...string) *SLOTElement {
 	if e.KVStrings == nil {
 		return e
@@ -1266,7 +1268,7 @@ func (e *SLOTElement) IfTABINDEX(condition bool, i int) *SLOTElement {
 	return e
 }
 
-// Remove the attribute tabindex from the element.
+// Remove the attribute TABINDEX from the element.
 func (e *SLOTElement) TABINDEXRemove(i int) *SLOTElement {
 	if e.IntAttributes == nil {
 		return e
@@ -1311,7 +1313,7 @@ func (e *SLOTElement) IfTITLE(condition bool, s string) *SLOTElement {
 	return e
 }
 
-// Remove the attribute title from the element.
+// Remove the attribute TITLE from the element.
 func (e *SLOTElement) TITLERemove(s string) *SLOTElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1343,11 +1345,351 @@ const (
 	SlotTranslate_no SlotTranslateChoice = "no"
 )
 
-// Remove the attribute translate from the element.
+// Remove the attribute TRANSLATE from the element.
 func (e *SLOTElement) TRANSLATERemove(c SlotTranslateChoice) *SLOTElement {
 	if e.StringAttributes == nil {
 		return e
 	}
 	e.StringAttributes.Del("translate")
+	return e
+}
+
+// Merges the store with the given object
+
+func (e *SLOTElement) DATASTAR_MERGE_STORE(v any) *SLOTElement {
+	if e.CustomDataAttributes == nil {
+		e.CustomDataAttributes = treemap.New[string, string]()
+	}
+	b, err := json.Marshal(v)
+	if err != nil {
+		panic(err)
+	}
+	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	return e
+}
+
+// Sets the reference of the element
+
+func (e *SLOTElement) DATASTAR_REF(s string) *SLOTElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-ref"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SLOTElement) IfDATASTAR_REF(condition bool, s string) *SLOTElement {
+	if condition {
+		e.DATASTAR_REF(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_REF from the element.
+func (e *SLOTElement) DATASTAR_REFRemove() *SLOTElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-ref")
+	return e
+}
+
+// Sets the value of the element
+
+func (e *SLOTElement) DATASTAR_BIND(s string) *SLOTElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-bind"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SLOTElement) IfDATASTAR_BIND(condition bool, s string) *SLOTElement {
+	if condition {
+		e.DATASTAR_BIND(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_BIND from the element.
+func (e *SLOTElement) DATASTAR_BINDRemove() *SLOTElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-bind")
+	return e
+}
+
+// Sets the value of the element
+
+func (e *SLOTElement) DATASTAR_MODEL(s string) *SLOTElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-model"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SLOTElement) IfDATASTAR_MODEL(condition bool, s string) *SLOTElement {
+	if condition {
+		e.DATASTAR_MODEL(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_MODEL from the element.
+func (e *SLOTElement) DATASTAR_MODELRemove() *SLOTElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-model")
+	return e
+}
+
+// Sets the textContent of the element
+
+func (e *SLOTElement) DATASTAR_TEXT(s string) *SLOTElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-text"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SLOTElement) IfDATASTAR_TEXT(condition bool, s string) *SLOTElement {
+	if condition {
+		e.DATASTAR_TEXT(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_TEXT from the element.
+func (e *SLOTElement) DATASTAR_TEXTRemove() *SLOTElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-text")
+	return e
+}
+
+// Sets the event handler of the element
+
+type SlotDataOnMod customDataKeyModifier
+
+// Debounces the event handler
+func SlotDataOnModDebounce(
+	s string,
+) SlotDataOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce_%sms", s)
+	}
+}
+
+// Throttles the event handler
+func SlotDataOnModThrottle(
+	s string,
+) SlotDataOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle_%sms", s)
+	}
+}
+
+func (e *SLOTElement) DATASTAR_ON(s string, modifiers ...SlotDataOnMod) *SLOTElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	customMods := lo.Map(modifiers, func(m SlotDataOnMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key := customDataKey("data-on", customMods...)
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SLOTElement) IfDATASTAR_ON(condition bool, s string, modifiers ...SlotDataOnMod) *SLOTElement {
+	if condition {
+		e.DATASTAR_ON(s, modifiers...)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_ON from the element.
+func (e *SLOTElement) DATASTAR_ONRemove() *SLOTElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-on")
+	return e
+}
+
+// Sets the focus of the element
+
+func (e *SLOTElement) DATASTAR_FOCUSSet(b bool) *SLOTElement {
+	key := "data-focus"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *SLOTElement) DATASTAR_FOCUS() *SLOTElement {
+	return e.DATASTAR_FOCUSSet(true)
+}
+
+// Sets the header of for fetch requests
+
+func (e *SLOTElement) DATASTAR_HEADER(s string) *SLOTElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-header"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SLOTElement) IfDATASTAR_HEADER(condition bool, s string) *SLOTElement {
+	if condition {
+		e.DATASTAR_HEADER(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_HEADER from the element.
+func (e *SLOTElement) DATASTAR_HEADERRemove() *SLOTElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-header")
+	return e
+}
+
+// Sets the URL for fetch requests
+
+func (e *SLOTElement) DATASTAR_FETCH_URL(s string) *SLOTElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-fetch-url"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SLOTElement) IfDATASTAR_FETCH_URL(condition bool, s string) *SLOTElement {
+	if condition {
+		e.DATASTAR_FETCH_URL(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_FETCH_URL from the element.
+func (e *SLOTElement) DATASTAR_FETCH_URLRemove() *SLOTElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-fetch-url")
+	return e
+}
+
+// Sets the indicator selector for fetch requests
+
+func (e *SLOTElement) DATASTAR_FETCH_INDICATOR(s string) *SLOTElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "DatastarFetchIndicator"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SLOTElement) IfDATASTAR_FETCH_INDICATOR(condition bool, s string) *SLOTElement {
+	if condition {
+		e.DATASTAR_FETCH_INDICATOR(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_FETCH_INDICATOR from the element.
+func (e *SLOTElement) DATASTAR_FETCH_INDICATORRemove() *SLOTElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("DatastarFetchIndicator")
+	return e
+}
+
+// Sets the visibility of the element
+
+func (e *SLOTElement) DATASTAR_SHOWSet(b bool) *SLOTElement {
+	key := "data-show"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *SLOTElement) DATASTAR_SHOW() *SLOTElement {
+	return e.DATASTAR_SHOWSet(true)
+}
+
+// Triggers the callback when the element intersects the viewport
+
+func (e *SLOTElement) DATASTAR_INTERSECTSSet(b bool) *SLOTElement {
+	key := "data-intersects"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *SLOTElement) DATASTAR_INTERSECTS() *SLOTElement {
+	return e.DATASTAR_INTERSECTSSet(true)
+}
+
+// Teleports the element to the given selector
+
+func (e *SLOTElement) DATASTAR_TELEPORTSet(b bool) *SLOTElement {
+	key := "data-teleport"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *SLOTElement) DATASTAR_TELEPORT() *SLOTElement {
+	return e.DATASTAR_TELEPORTSet(true)
+}
+
+// Scrolls the element into view
+
+func (e *SLOTElement) DATASTAR_SCROLL_INTO_VIEWSet(b bool) *SLOTElement {
+	key := "data-scroll-into-view"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *SLOTElement) DATASTAR_SCROLL_INTO_VIEW() *SLOTElement {
+	return e.DATASTAR_SCROLL_INTO_VIEWSet(true)
+}
+
+// Setup the ViewTransitionAPI for the element
+
+func (e *SLOTElement) DATASTAR_VIEW_TRANSITION(s string) *SLOTElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-view-transition"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SLOTElement) IfDATASTAR_VIEW_TRANSITION(condition bool, s string) *SLOTElement {
+	if condition {
+		e.DATASTAR_VIEW_TRANSITION(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_VIEW_TRANSITION from the element.
+func (e *SLOTElement) DATASTAR_VIEW_TRANSITIONRemove() *SLOTElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-view-transition")
 	return e
 }

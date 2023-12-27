@@ -6,7 +6,9 @@ package elements
 import (
 	"fmt"
 
+	"github.com/goccy/go-json"
 	"github.com/igrmk/treemap/v2"
+	"github.com/samber/lo"
 )
 
 // The <textPath> SVG element defines a set of glyphs that exactly fit along a
@@ -143,7 +145,7 @@ func (e *SVGTEXTPATHElement) IfHREF(condition bool, s string) *SVGTEXTPATHElemen
 	return e
 }
 
-// Remove the attribute href from the element.
+// Remove the attribute HREF from the element.
 func (e *SVGTEXTPATHElement) HREFRemove(s string) *SVGTEXTPATHElement {
 	if e.StringAttributes == nil {
 		return e
@@ -154,7 +156,7 @@ func (e *SVGTEXTPATHElement) HREFRemove(s string) *SVGTEXTPATHElement {
 
 // Indicates an offset from the start of the path, where the first character is
 // rendered.
-func (e *SVGTEXTPATHElement) STARTOFFSET(s string) *SVGTEXTPATHElement {
+func (e *SVGTEXTPATHElement) START_OFFSET(s string) *SVGTEXTPATHElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
@@ -162,15 +164,15 @@ func (e *SVGTEXTPATHElement) STARTOFFSET(s string) *SVGTEXTPATHElement {
 	return e
 }
 
-func (e *SVGTEXTPATHElement) IfSTARTOFFSET(condition bool, s string) *SVGTEXTPATHElement {
+func (e *SVGTEXTPATHElement) IfSTART_OFFSET(condition bool, s string) *SVGTEXTPATHElement {
 	if condition {
-		e.STARTOFFSET(s)
+		e.START_OFFSET(s)
 	}
 	return e
 }
 
-// Remove the attribute startOffset from the element.
-func (e *SVGTEXTPATHElement) STARTOFFSETRemove(s string) *SVGTEXTPATHElement {
+// Remove the attribute START_OFFSET from the element.
+func (e *SVGTEXTPATHElement) START_OFFSETRemove(s string) *SVGTEXTPATHElement {
 	if e.StringAttributes == nil {
 		return e
 	}
@@ -196,7 +198,7 @@ const (
 	SVGTextPathMethod_stretch SVGTextPathMethodChoice = "stretch"
 )
 
-// Remove the attribute method from the element.
+// Remove the attribute METHOD from the element.
 func (e *SVGTEXTPATHElement) METHODRemove(c SVGTextPathMethodChoice) *SVGTEXTPATHElement {
 	if e.StringAttributes == nil {
 		return e
@@ -223,12 +225,37 @@ const (
 	SVGTextPathSpacing_exact SVGTextPathSpacingChoice = "exact"
 )
 
-// Remove the attribute spacing from the element.
+// Remove the attribute SPACING from the element.
 func (e *SVGTEXTPATHElement) SPACINGRemove(c SVGTextPathSpacingChoice) *SVGTEXTPATHElement {
 	if e.StringAttributes == nil {
 		return e
 	}
 	e.StringAttributes.Del("spacing")
+	return e
+}
+
+// Specifies a unique id for an element
+func (e *SVGTEXTPATHElement) ID(s string) *SVGTEXTPATHElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	e.StringAttributes.Set("id", s)
+	return e
+}
+
+func (e *SVGTEXTPATHElement) IfID(condition bool, s string) *SVGTEXTPATHElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
+// Remove the attribute ID from the element.
+func (e *SVGTEXTPATHElement) IDRemove(s string) *SVGTEXTPATHElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("id")
 	return e
 }
 
@@ -254,7 +281,7 @@ func (e *SVGTEXTPATHElement) IfCLASS(condition bool, s ...string) *SVGTEXTPATHEl
 	return e
 }
 
-// Remove the attribute class from the element.
+// Remove the attribute CLASS from the element.
 func (e *SVGTEXTPATHElement) CLASSRemove(s ...string) *SVGTEXTPATHElement {
 	if e.DelimitedStrings == nil {
 		return e
@@ -264,31 +291,6 @@ func (e *SVGTEXTPATHElement) CLASSRemove(s ...string) *SVGTEXTPATHElement {
 		return e
 	}
 	ds.Remove(s...)
-	return e
-}
-
-// Specifies a unique id for an element
-func (e *SVGTEXTPATHElement) ID(s string) *SVGTEXTPATHElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	e.StringAttributes.Set("id", s)
-	return e
-}
-
-func (e *SVGTEXTPATHElement) IfID(condition bool, s string) *SVGTEXTPATHElement {
-	if condition {
-		e.ID(s)
-	}
-	return e
-}
-
-// Remove the attribute id from the element.
-func (e *SVGTEXTPATHElement) IDRemove(s string) *SVGTEXTPATHElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("id")
 	return e
 }
 
@@ -368,7 +370,7 @@ func (e *SVGTEXTPATHElement) IfSTYLEPairs(condition bool, pairs ...string) *SVGT
 	return e
 }
 
-// Remove the attribute style from the element.
+// Remove the attribute STYLE from the element.
 func (e *SVGTEXTPATHElement) STYLERemove(keys ...string) *SVGTEXTPATHElement {
 	if e.KVStrings == nil {
 		return e
@@ -380,5 +382,345 @@ func (e *SVGTEXTPATHElement) STYLERemove(keys ...string) *SVGTEXTPATHElement {
 	for _, k := range keys {
 		kv.Remove(k)
 	}
+	return e
+}
+
+// Merges the store with the given object
+
+func (e *SVGTEXTPATHElement) DATASTAR_MERGE_STORE(v any) *SVGTEXTPATHElement {
+	if e.CustomDataAttributes == nil {
+		e.CustomDataAttributes = treemap.New[string, string]()
+	}
+	b, err := json.Marshal(v)
+	if err != nil {
+		panic(err)
+	}
+	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	return e
+}
+
+// Sets the reference of the element
+
+func (e *SVGTEXTPATHElement) DATASTAR_REF(s string) *SVGTEXTPATHElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-ref"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SVGTEXTPATHElement) IfDATASTAR_REF(condition bool, s string) *SVGTEXTPATHElement {
+	if condition {
+		e.DATASTAR_REF(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_REF from the element.
+func (e *SVGTEXTPATHElement) DATASTAR_REFRemove() *SVGTEXTPATHElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-ref")
+	return e
+}
+
+// Sets the value of the element
+
+func (e *SVGTEXTPATHElement) DATASTAR_BIND(s string) *SVGTEXTPATHElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-bind"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SVGTEXTPATHElement) IfDATASTAR_BIND(condition bool, s string) *SVGTEXTPATHElement {
+	if condition {
+		e.DATASTAR_BIND(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_BIND from the element.
+func (e *SVGTEXTPATHElement) DATASTAR_BINDRemove() *SVGTEXTPATHElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-bind")
+	return e
+}
+
+// Sets the value of the element
+
+func (e *SVGTEXTPATHElement) DATASTAR_MODEL(s string) *SVGTEXTPATHElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-model"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SVGTEXTPATHElement) IfDATASTAR_MODEL(condition bool, s string) *SVGTEXTPATHElement {
+	if condition {
+		e.DATASTAR_MODEL(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_MODEL from the element.
+func (e *SVGTEXTPATHElement) DATASTAR_MODELRemove() *SVGTEXTPATHElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-model")
+	return e
+}
+
+// Sets the textContent of the element
+
+func (e *SVGTEXTPATHElement) DATASTAR_TEXT(s string) *SVGTEXTPATHElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-text"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SVGTEXTPATHElement) IfDATASTAR_TEXT(condition bool, s string) *SVGTEXTPATHElement {
+	if condition {
+		e.DATASTAR_TEXT(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_TEXT from the element.
+func (e *SVGTEXTPATHElement) DATASTAR_TEXTRemove() *SVGTEXTPATHElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-text")
+	return e
+}
+
+// Sets the event handler of the element
+
+type SVGTextPathDataOnMod customDataKeyModifier
+
+// Debounces the event handler
+func SVGTextPathDataOnModDebounce(
+	s string,
+) SVGTextPathDataOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce_%sms", s)
+	}
+}
+
+// Throttles the event handler
+func SVGTextPathDataOnModThrottle(
+	s string,
+) SVGTextPathDataOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle_%sms", s)
+	}
+}
+
+func (e *SVGTEXTPATHElement) DATASTAR_ON(s string, modifiers ...SVGTextPathDataOnMod) *SVGTEXTPATHElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	customMods := lo.Map(modifiers, func(m SVGTextPathDataOnMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key := customDataKey("data-on", customMods...)
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SVGTEXTPATHElement) IfDATASTAR_ON(condition bool, s string, modifiers ...SVGTextPathDataOnMod) *SVGTEXTPATHElement {
+	if condition {
+		e.DATASTAR_ON(s, modifiers...)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_ON from the element.
+func (e *SVGTEXTPATHElement) DATASTAR_ONRemove() *SVGTEXTPATHElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-on")
+	return e
+}
+
+// Sets the focus of the element
+
+func (e *SVGTEXTPATHElement) DATASTAR_FOCUSSet(b bool) *SVGTEXTPATHElement {
+	key := "data-focus"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *SVGTEXTPATHElement) DATASTAR_FOCUS() *SVGTEXTPATHElement {
+	return e.DATASTAR_FOCUSSet(true)
+}
+
+// Sets the header of for fetch requests
+
+func (e *SVGTEXTPATHElement) DATASTAR_HEADER(s string) *SVGTEXTPATHElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-header"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SVGTEXTPATHElement) IfDATASTAR_HEADER(condition bool, s string) *SVGTEXTPATHElement {
+	if condition {
+		e.DATASTAR_HEADER(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_HEADER from the element.
+func (e *SVGTEXTPATHElement) DATASTAR_HEADERRemove() *SVGTEXTPATHElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-header")
+	return e
+}
+
+// Sets the URL for fetch requests
+
+func (e *SVGTEXTPATHElement) DATASTAR_FETCH_URL(s string) *SVGTEXTPATHElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-fetch-url"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SVGTEXTPATHElement) IfDATASTAR_FETCH_URL(condition bool, s string) *SVGTEXTPATHElement {
+	if condition {
+		e.DATASTAR_FETCH_URL(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_FETCH_URL from the element.
+func (e *SVGTEXTPATHElement) DATASTAR_FETCH_URLRemove() *SVGTEXTPATHElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-fetch-url")
+	return e
+}
+
+// Sets the indicator selector for fetch requests
+
+func (e *SVGTEXTPATHElement) DATASTAR_FETCH_INDICATOR(s string) *SVGTEXTPATHElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "DatastarFetchIndicator"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SVGTEXTPATHElement) IfDATASTAR_FETCH_INDICATOR(condition bool, s string) *SVGTEXTPATHElement {
+	if condition {
+		e.DATASTAR_FETCH_INDICATOR(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_FETCH_INDICATOR from the element.
+func (e *SVGTEXTPATHElement) DATASTAR_FETCH_INDICATORRemove() *SVGTEXTPATHElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("DatastarFetchIndicator")
+	return e
+}
+
+// Sets the visibility of the element
+
+func (e *SVGTEXTPATHElement) DATASTAR_SHOWSet(b bool) *SVGTEXTPATHElement {
+	key := "data-show"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *SVGTEXTPATHElement) DATASTAR_SHOW() *SVGTEXTPATHElement {
+	return e.DATASTAR_SHOWSet(true)
+}
+
+// Triggers the callback when the element intersects the viewport
+
+func (e *SVGTEXTPATHElement) DATASTAR_INTERSECTSSet(b bool) *SVGTEXTPATHElement {
+	key := "data-intersects"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *SVGTEXTPATHElement) DATASTAR_INTERSECTS() *SVGTEXTPATHElement {
+	return e.DATASTAR_INTERSECTSSet(true)
+}
+
+// Teleports the element to the given selector
+
+func (e *SVGTEXTPATHElement) DATASTAR_TELEPORTSet(b bool) *SVGTEXTPATHElement {
+	key := "data-teleport"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *SVGTEXTPATHElement) DATASTAR_TELEPORT() *SVGTEXTPATHElement {
+	return e.DATASTAR_TELEPORTSet(true)
+}
+
+// Scrolls the element into view
+
+func (e *SVGTEXTPATHElement) DATASTAR_SCROLL_INTO_VIEWSet(b bool) *SVGTEXTPATHElement {
+	key := "data-scroll-into-view"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *SVGTEXTPATHElement) DATASTAR_SCROLL_INTO_VIEW() *SVGTEXTPATHElement {
+	return e.DATASTAR_SCROLL_INTO_VIEWSet(true)
+}
+
+// Setup the ViewTransitionAPI for the element
+
+func (e *SVGTEXTPATHElement) DATASTAR_VIEW_TRANSITION(s string) *SVGTEXTPATHElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-view-transition"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SVGTEXTPATHElement) IfDATASTAR_VIEW_TRANSITION(condition bool, s string) *SVGTEXTPATHElement {
+	if condition {
+		e.DATASTAR_VIEW_TRANSITION(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_VIEW_TRANSITION from the element.
+func (e *SVGTEXTPATHElement) DATASTAR_VIEW_TRANSITIONRemove() *SVGTEXTPATHElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-view-transition")
 	return e
 }

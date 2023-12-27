@@ -6,7 +6,9 @@ package elements
 import (
 	"fmt"
 
+	"github.com/goccy/go-json"
 	"github.com/igrmk/treemap/v2"
+	"github.com/samber/lo"
 )
 
 // The <linearGradient> SVG element lets authors define linear gradients to fill
@@ -128,7 +130,7 @@ func (e *SVGLINEARGRADIENTElement) CustomDataRemove(key string) *SVGLINEARGRADIE
 }
 
 // The coordinate system for attributes x1, y1, x2 and y2.
-func (e *SVGLINEARGRADIENTElement) GRADIENTUNITS(c SVGLinearGradientGradientUnitsChoice) *SVGLINEARGRADIENTElement {
+func (e *SVGLINEARGRADIENTElement) GRADIENT_UNITS(c SVGLinearGradientGradientUnitsChoice) *SVGLINEARGRADIENTElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
@@ -145,8 +147,8 @@ const (
 	SVGLinearGradientGradientUnits_objectBoundingBox SVGLinearGradientGradientUnitsChoice = "objectBoundingBox"
 )
 
-// Remove the attribute gradientUnits from the element.
-func (e *SVGLINEARGRADIENTElement) GRADIENTUNITSRemove(c SVGLinearGradientGradientUnitsChoice) *SVGLINEARGRADIENTElement {
+// Remove the attribute GRADIENT_UNITS from the element.
+func (e *SVGLINEARGRADIENTElement) GRADIENT_UNITSRemove(c SVGLinearGradientGradientUnitsChoice) *SVGLINEARGRADIENTElement {
 	if e.StringAttributes == nil {
 		return e
 	}
@@ -156,7 +158,7 @@ func (e *SVGLINEARGRADIENTElement) GRADIENTUNITSRemove(c SVGLinearGradientGradie
 
 // The definition of how the gradient is applied, read about <a
 // href="https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/gradientTransform">gradientTransform</a>.
-func (e *SVGLINEARGRADIENTElement) GRADIENTTRANSFORM(s string) *SVGLINEARGRADIENTElement {
+func (e *SVGLINEARGRADIENTElement) GRADIENT_TRANSFORM(s string) *SVGLINEARGRADIENTElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
@@ -164,15 +166,15 @@ func (e *SVGLINEARGRADIENTElement) GRADIENTTRANSFORM(s string) *SVGLINEARGRADIEN
 	return e
 }
 
-func (e *SVGLINEARGRADIENTElement) IfGRADIENTTRANSFORM(condition bool, s string) *SVGLINEARGRADIENTElement {
+func (e *SVGLINEARGRADIENTElement) IfGRADIENT_TRANSFORM(condition bool, s string) *SVGLINEARGRADIENTElement {
 	if condition {
-		e.GRADIENTTRANSFORM(s)
+		e.GRADIENT_TRANSFORM(s)
 	}
 	return e
 }
 
-// Remove the attribute gradientTransform from the element.
-func (e *SVGLINEARGRADIENTElement) GRADIENTTRANSFORMRemove(s string) *SVGLINEARGRADIENTElement {
+// Remove the attribute GRADIENT_TRANSFORM from the element.
+func (e *SVGLINEARGRADIENTElement) GRADIENT_TRANSFORMRemove(s string) *SVGLINEARGRADIENTElement {
 	if e.StringAttributes == nil {
 		return e
 	}
@@ -181,7 +183,7 @@ func (e *SVGLINEARGRADIENTElement) GRADIENTTRANSFORMRemove(s string) *SVGLINEARG
 }
 
 // The method by which to fill a shape.
-func (e *SVGLINEARGRADIENTElement) SPREADMETHOD(c SVGLinearGradientSpreadMethodChoice) *SVGLINEARGRADIENTElement {
+func (e *SVGLINEARGRADIENTElement) SPREAD_METHOD(c SVGLinearGradientSpreadMethodChoice) *SVGLINEARGRADIENTElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
@@ -200,8 +202,8 @@ const (
 	SVGLinearGradientSpreadMethod_repeat SVGLinearGradientSpreadMethodChoice = "repeat"
 )
 
-// Remove the attribute spreadMethod from the element.
-func (e *SVGLINEARGRADIENTElement) SPREADMETHODRemove(c SVGLinearGradientSpreadMethodChoice) *SVGLINEARGRADIENTElement {
+// Remove the attribute SPREAD_METHOD from the element.
+func (e *SVGLINEARGRADIENTElement) SPREAD_METHODRemove(c SVGLinearGradientSpreadMethodChoice) *SVGLINEARGRADIENTElement {
 	if e.StringAttributes == nil {
 		return e
 	}
@@ -210,7 +212,7 @@ func (e *SVGLINEARGRADIENTElement) SPREADMETHODRemove(c SVGLinearGradientSpreadM
 }
 
 // The x-axis coordinate of the start of the gradient.
-func (e *SVGLINEARGRADIENTElement) X1(f float64) *SVGLINEARGRADIENTElement {
+func (e *SVGLINEARGRADIENTElement) X_1(f float64) *SVGLINEARGRADIENTElement {
 	if e.FloatAttributes == nil {
 		e.FloatAttributes = treemap.New[string, float64]()
 	}
@@ -218,15 +220,15 @@ func (e *SVGLINEARGRADIENTElement) X1(f float64) *SVGLINEARGRADIENTElement {
 	return e
 }
 
-func (e *SVGLINEARGRADIENTElement) IfX1(condition bool, f float64) *SVGLINEARGRADIENTElement {
+func (e *SVGLINEARGRADIENTElement) IfX_1(condition bool, f float64) *SVGLINEARGRADIENTElement {
 	if condition {
-		e.X1(f)
+		e.X_1(f)
 	}
 	return e
 }
 
 // The y-axis coordinate of the start of the gradient.
-func (e *SVGLINEARGRADIENTElement) Y1(f float64) *SVGLINEARGRADIENTElement {
+func (e *SVGLINEARGRADIENTElement) Y_1(f float64) *SVGLINEARGRADIENTElement {
 	if e.FloatAttributes == nil {
 		e.FloatAttributes = treemap.New[string, float64]()
 	}
@@ -234,15 +236,15 @@ func (e *SVGLINEARGRADIENTElement) Y1(f float64) *SVGLINEARGRADIENTElement {
 	return e
 }
 
-func (e *SVGLINEARGRADIENTElement) IfY1(condition bool, f float64) *SVGLINEARGRADIENTElement {
+func (e *SVGLINEARGRADIENTElement) IfY_1(condition bool, f float64) *SVGLINEARGRADIENTElement {
 	if condition {
-		e.Y1(f)
+		e.Y_1(f)
 	}
 	return e
 }
 
 // The x-axis coordinate of the end of the gradient.
-func (e *SVGLINEARGRADIENTElement) X2(f float64) *SVGLINEARGRADIENTElement {
+func (e *SVGLINEARGRADIENTElement) X_2(f float64) *SVGLINEARGRADIENTElement {
 	if e.FloatAttributes == nil {
 		e.FloatAttributes = treemap.New[string, float64]()
 	}
@@ -250,15 +252,15 @@ func (e *SVGLINEARGRADIENTElement) X2(f float64) *SVGLINEARGRADIENTElement {
 	return e
 }
 
-func (e *SVGLINEARGRADIENTElement) IfX2(condition bool, f float64) *SVGLINEARGRADIENTElement {
+func (e *SVGLINEARGRADIENTElement) IfX_2(condition bool, f float64) *SVGLINEARGRADIENTElement {
 	if condition {
-		e.X2(f)
+		e.X_2(f)
 	}
 	return e
 }
 
 // The y-axis coordinate of the end of the gradient.
-func (e *SVGLINEARGRADIENTElement) Y2(f float64) *SVGLINEARGRADIENTElement {
+func (e *SVGLINEARGRADIENTElement) Y_2(f float64) *SVGLINEARGRADIENTElement {
 	if e.FloatAttributes == nil {
 		e.FloatAttributes = treemap.New[string, float64]()
 	}
@@ -266,10 +268,35 @@ func (e *SVGLINEARGRADIENTElement) Y2(f float64) *SVGLINEARGRADIENTElement {
 	return e
 }
 
-func (e *SVGLINEARGRADIENTElement) IfY2(condition bool, f float64) *SVGLINEARGRADIENTElement {
+func (e *SVGLINEARGRADIENTElement) IfY_2(condition bool, f float64) *SVGLINEARGRADIENTElement {
 	if condition {
-		e.Y2(f)
+		e.Y_2(f)
 	}
+	return e
+}
+
+// Specifies a unique id for an element
+func (e *SVGLINEARGRADIENTElement) ID(s string) *SVGLINEARGRADIENTElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	e.StringAttributes.Set("id", s)
+	return e
+}
+
+func (e *SVGLINEARGRADIENTElement) IfID(condition bool, s string) *SVGLINEARGRADIENTElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
+// Remove the attribute ID from the element.
+func (e *SVGLINEARGRADIENTElement) IDRemove(s string) *SVGLINEARGRADIENTElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("id")
 	return e
 }
 
@@ -295,7 +322,7 @@ func (e *SVGLINEARGRADIENTElement) IfCLASS(condition bool, s ...string) *SVGLINE
 	return e
 }
 
-// Remove the attribute class from the element.
+// Remove the attribute CLASS from the element.
 func (e *SVGLINEARGRADIENTElement) CLASSRemove(s ...string) *SVGLINEARGRADIENTElement {
 	if e.DelimitedStrings == nil {
 		return e
@@ -305,31 +332,6 @@ func (e *SVGLINEARGRADIENTElement) CLASSRemove(s ...string) *SVGLINEARGRADIENTEl
 		return e
 	}
 	ds.Remove(s...)
-	return e
-}
-
-// Specifies a unique id for an element
-func (e *SVGLINEARGRADIENTElement) ID(s string) *SVGLINEARGRADIENTElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	e.StringAttributes.Set("id", s)
-	return e
-}
-
-func (e *SVGLINEARGRADIENTElement) IfID(condition bool, s string) *SVGLINEARGRADIENTElement {
-	if condition {
-		e.ID(s)
-	}
-	return e
-}
-
-// Remove the attribute id from the element.
-func (e *SVGLINEARGRADIENTElement) IDRemove(s string) *SVGLINEARGRADIENTElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("id")
 	return e
 }
 
@@ -409,7 +411,7 @@ func (e *SVGLINEARGRADIENTElement) IfSTYLEPairs(condition bool, pairs ...string)
 	return e
 }
 
-// Remove the attribute style from the element.
+// Remove the attribute STYLE from the element.
 func (e *SVGLINEARGRADIENTElement) STYLERemove(keys ...string) *SVGLINEARGRADIENTElement {
 	if e.KVStrings == nil {
 		return e
@@ -421,5 +423,345 @@ func (e *SVGLINEARGRADIENTElement) STYLERemove(keys ...string) *SVGLINEARGRADIEN
 	for _, k := range keys {
 		kv.Remove(k)
 	}
+	return e
+}
+
+// Merges the store with the given object
+
+func (e *SVGLINEARGRADIENTElement) DATASTAR_MERGE_STORE(v any) *SVGLINEARGRADIENTElement {
+	if e.CustomDataAttributes == nil {
+		e.CustomDataAttributes = treemap.New[string, string]()
+	}
+	b, err := json.Marshal(v)
+	if err != nil {
+		panic(err)
+	}
+	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	return e
+}
+
+// Sets the reference of the element
+
+func (e *SVGLINEARGRADIENTElement) DATASTAR_REF(s string) *SVGLINEARGRADIENTElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-ref"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SVGLINEARGRADIENTElement) IfDATASTAR_REF(condition bool, s string) *SVGLINEARGRADIENTElement {
+	if condition {
+		e.DATASTAR_REF(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_REF from the element.
+func (e *SVGLINEARGRADIENTElement) DATASTAR_REFRemove() *SVGLINEARGRADIENTElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-ref")
+	return e
+}
+
+// Sets the value of the element
+
+func (e *SVGLINEARGRADIENTElement) DATASTAR_BIND(s string) *SVGLINEARGRADIENTElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-bind"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SVGLINEARGRADIENTElement) IfDATASTAR_BIND(condition bool, s string) *SVGLINEARGRADIENTElement {
+	if condition {
+		e.DATASTAR_BIND(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_BIND from the element.
+func (e *SVGLINEARGRADIENTElement) DATASTAR_BINDRemove() *SVGLINEARGRADIENTElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-bind")
+	return e
+}
+
+// Sets the value of the element
+
+func (e *SVGLINEARGRADIENTElement) DATASTAR_MODEL(s string) *SVGLINEARGRADIENTElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-model"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SVGLINEARGRADIENTElement) IfDATASTAR_MODEL(condition bool, s string) *SVGLINEARGRADIENTElement {
+	if condition {
+		e.DATASTAR_MODEL(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_MODEL from the element.
+func (e *SVGLINEARGRADIENTElement) DATASTAR_MODELRemove() *SVGLINEARGRADIENTElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-model")
+	return e
+}
+
+// Sets the textContent of the element
+
+func (e *SVGLINEARGRADIENTElement) DATASTAR_TEXT(s string) *SVGLINEARGRADIENTElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-text"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SVGLINEARGRADIENTElement) IfDATASTAR_TEXT(condition bool, s string) *SVGLINEARGRADIENTElement {
+	if condition {
+		e.DATASTAR_TEXT(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_TEXT from the element.
+func (e *SVGLINEARGRADIENTElement) DATASTAR_TEXTRemove() *SVGLINEARGRADIENTElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-text")
+	return e
+}
+
+// Sets the event handler of the element
+
+type SVGLinearGradientDataOnMod customDataKeyModifier
+
+// Debounces the event handler
+func SVGLinearGradientDataOnModDebounce(
+	s string,
+) SVGLinearGradientDataOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce_%sms", s)
+	}
+}
+
+// Throttles the event handler
+func SVGLinearGradientDataOnModThrottle(
+	s string,
+) SVGLinearGradientDataOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle_%sms", s)
+	}
+}
+
+func (e *SVGLINEARGRADIENTElement) DATASTAR_ON(s string, modifiers ...SVGLinearGradientDataOnMod) *SVGLINEARGRADIENTElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	customMods := lo.Map(modifiers, func(m SVGLinearGradientDataOnMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key := customDataKey("data-on", customMods...)
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SVGLINEARGRADIENTElement) IfDATASTAR_ON(condition bool, s string, modifiers ...SVGLinearGradientDataOnMod) *SVGLINEARGRADIENTElement {
+	if condition {
+		e.DATASTAR_ON(s, modifiers...)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_ON from the element.
+func (e *SVGLINEARGRADIENTElement) DATASTAR_ONRemove() *SVGLINEARGRADIENTElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-on")
+	return e
+}
+
+// Sets the focus of the element
+
+func (e *SVGLINEARGRADIENTElement) DATASTAR_FOCUSSet(b bool) *SVGLINEARGRADIENTElement {
+	key := "data-focus"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *SVGLINEARGRADIENTElement) DATASTAR_FOCUS() *SVGLINEARGRADIENTElement {
+	return e.DATASTAR_FOCUSSet(true)
+}
+
+// Sets the header of for fetch requests
+
+func (e *SVGLINEARGRADIENTElement) DATASTAR_HEADER(s string) *SVGLINEARGRADIENTElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-header"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SVGLINEARGRADIENTElement) IfDATASTAR_HEADER(condition bool, s string) *SVGLINEARGRADIENTElement {
+	if condition {
+		e.DATASTAR_HEADER(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_HEADER from the element.
+func (e *SVGLINEARGRADIENTElement) DATASTAR_HEADERRemove() *SVGLINEARGRADIENTElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-header")
+	return e
+}
+
+// Sets the URL for fetch requests
+
+func (e *SVGLINEARGRADIENTElement) DATASTAR_FETCH_URL(s string) *SVGLINEARGRADIENTElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-fetch-url"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SVGLINEARGRADIENTElement) IfDATASTAR_FETCH_URL(condition bool, s string) *SVGLINEARGRADIENTElement {
+	if condition {
+		e.DATASTAR_FETCH_URL(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_FETCH_URL from the element.
+func (e *SVGLINEARGRADIENTElement) DATASTAR_FETCH_URLRemove() *SVGLINEARGRADIENTElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-fetch-url")
+	return e
+}
+
+// Sets the indicator selector for fetch requests
+
+func (e *SVGLINEARGRADIENTElement) DATASTAR_FETCH_INDICATOR(s string) *SVGLINEARGRADIENTElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "DatastarFetchIndicator"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SVGLINEARGRADIENTElement) IfDATASTAR_FETCH_INDICATOR(condition bool, s string) *SVGLINEARGRADIENTElement {
+	if condition {
+		e.DATASTAR_FETCH_INDICATOR(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_FETCH_INDICATOR from the element.
+func (e *SVGLINEARGRADIENTElement) DATASTAR_FETCH_INDICATORRemove() *SVGLINEARGRADIENTElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("DatastarFetchIndicator")
+	return e
+}
+
+// Sets the visibility of the element
+
+func (e *SVGLINEARGRADIENTElement) DATASTAR_SHOWSet(b bool) *SVGLINEARGRADIENTElement {
+	key := "data-show"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *SVGLINEARGRADIENTElement) DATASTAR_SHOW() *SVGLINEARGRADIENTElement {
+	return e.DATASTAR_SHOWSet(true)
+}
+
+// Triggers the callback when the element intersects the viewport
+
+func (e *SVGLINEARGRADIENTElement) DATASTAR_INTERSECTSSet(b bool) *SVGLINEARGRADIENTElement {
+	key := "data-intersects"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *SVGLINEARGRADIENTElement) DATASTAR_INTERSECTS() *SVGLINEARGRADIENTElement {
+	return e.DATASTAR_INTERSECTSSet(true)
+}
+
+// Teleports the element to the given selector
+
+func (e *SVGLINEARGRADIENTElement) DATASTAR_TELEPORTSet(b bool) *SVGLINEARGRADIENTElement {
+	key := "data-teleport"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *SVGLINEARGRADIENTElement) DATASTAR_TELEPORT() *SVGLINEARGRADIENTElement {
+	return e.DATASTAR_TELEPORTSet(true)
+}
+
+// Scrolls the element into view
+
+func (e *SVGLINEARGRADIENTElement) DATASTAR_SCROLL_INTO_VIEWSet(b bool) *SVGLINEARGRADIENTElement {
+	key := "data-scroll-into-view"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *SVGLINEARGRADIENTElement) DATASTAR_SCROLL_INTO_VIEW() *SVGLINEARGRADIENTElement {
+	return e.DATASTAR_SCROLL_INTO_VIEWSet(true)
+}
+
+// Setup the ViewTransitionAPI for the element
+
+func (e *SVGLINEARGRADIENTElement) DATASTAR_VIEW_TRANSITION(s string) *SVGLINEARGRADIENTElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-view-transition"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SVGLINEARGRADIENTElement) IfDATASTAR_VIEW_TRANSITION(condition bool, s string) *SVGLINEARGRADIENTElement {
+	if condition {
+		e.DATASTAR_VIEW_TRANSITION(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_VIEW_TRANSITION from the element.
+func (e *SVGLINEARGRADIENTElement) DATASTAR_VIEW_TRANSITIONRemove() *SVGLINEARGRADIENTElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-view-transition")
 	return e
 }

@@ -6,7 +6,9 @@ package elements
 import (
 	"fmt"
 
+	"github.com/goccy/go-json"
 	"github.com/igrmk/treemap/v2"
+	"github.com/samber/lo"
 )
 
 // This element is used to include comments or annotations within a MathML
@@ -149,7 +151,7 @@ const (
 	MathMLAnnotationXmlEncoding_application_x_tex MathMLAnnotationXmlEncodingChoice = "application/x-tex"
 )
 
-// Remove the attribute encoding from the element.
+// Remove the attribute ENCODING from the element.
 func (e *MathMLANNOTATION_XMLElement) ENCODINGRemove(c MathMLAnnotationXmlEncodingChoice) *MathMLANNOTATION_XMLElement {
 	if e.StringAttributes == nil {
 		return e
@@ -174,7 +176,7 @@ func (e *MathMLANNOTATION_XMLElement) IfNAME(condition bool, s string) *MathMLAN
 	return e
 }
 
-// Remove the attribute name from the element.
+// Remove the attribute NAME from the element.
 func (e *MathMLANNOTATION_XMLElement) NAMERemove(s string) *MathMLANNOTATION_XMLElement {
 	if e.StringAttributes == nil {
 		return e
@@ -207,7 +209,7 @@ func (e *MathMLANNOTATION_XMLElement) IfCLASS(condition bool, s ...string) *Math
 	return e
 }
 
-// Remove the attribute class from the element.
+// Remove the attribute CLASS from the element.
 func (e *MathMLANNOTATION_XMLElement) CLASSRemove(s ...string) *MathMLANNOTATION_XMLElement {
 	if e.DelimitedStrings == nil {
 		return e
@@ -241,7 +243,7 @@ const (
 	MathMLAnnotationXmlDir_rtl MathMLAnnotationXmlDirChoice = "rtl"
 )
 
-// Remove the attribute dir from the element.
+// Remove the attribute DIR from the element.
 func (e *MathMLANNOTATION_XMLElement) DIRRemove(c MathMLAnnotationXmlDirChoice) *MathMLANNOTATION_XMLElement {
 	if e.StringAttributes == nil {
 		return e
@@ -270,7 +272,7 @@ const (
 	MathMLAnnotationXmlDisplaystyle_false MathMLAnnotationXmlDisplaystyleChoice = "false"
 )
 
-// Remove the attribute displaystyle from the element.
+// Remove the attribute DISPLAYSTYLE from the element.
 func (e *MathMLANNOTATION_XMLElement) DISPLAYSTYLERemove(c MathMLAnnotationXmlDisplaystyleChoice) *MathMLANNOTATION_XMLElement {
 	if e.StringAttributes == nil {
 		return e
@@ -296,7 +298,7 @@ func (e *MathMLANNOTATION_XMLElement) IfID(condition bool, s string) *MathMLANNO
 	return e
 }
 
-// Remove the attribute id from the element.
+// Remove the attribute ID from the element.
 func (e *MathMLANNOTATION_XMLElement) IDRemove(s string) *MathMLANNOTATION_XMLElement {
 	if e.StringAttributes == nil {
 		return e
@@ -323,7 +325,7 @@ func (e *MathMLANNOTATION_XMLElement) IfMATHBACKGROUND(condition bool, s string)
 	return e
 }
 
-// Remove the attribute mathbackground from the element.
+// Remove the attribute MATHBACKGROUND from the element.
 func (e *MathMLANNOTATION_XMLElement) MATHBACKGROUNDRemove(s string) *MathMLANNOTATION_XMLElement {
 	if e.StringAttributes == nil {
 		return e
@@ -350,7 +352,7 @@ func (e *MathMLANNOTATION_XMLElement) IfMATHCOLOR(condition bool, s string) *Mat
 	return e
 }
 
-// Remove the attribute mathcolor from the element.
+// Remove the attribute MATHCOLOR from the element.
 func (e *MathMLANNOTATION_XMLElement) MATHCOLORRemove(s string) *MathMLANNOTATION_XMLElement {
 	if e.StringAttributes == nil {
 		return e
@@ -361,7 +363,7 @@ func (e *MathMLANNOTATION_XMLElement) MATHCOLORRemove(s string) *MathMLANNOTATIO
 
 // This attribute specifies the size of the element
 // Possible values are a dimension or a dimensionless number.
-func (e *MathMLANNOTATION_XMLElement) MATHSIZESTR(s string) *MathMLANNOTATION_XMLElement {
+func (e *MathMLANNOTATION_XMLElement) MATHSIZE_STR(s string) *MathMLANNOTATION_XMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
@@ -369,15 +371,15 @@ func (e *MathMLANNOTATION_XMLElement) MATHSIZESTR(s string) *MathMLANNOTATION_XM
 	return e
 }
 
-func (e *MathMLANNOTATION_XMLElement) IfMATHSIZESTR(condition bool, s string) *MathMLANNOTATION_XMLElement {
+func (e *MathMLANNOTATION_XMLElement) IfMATHSIZE_STR(condition bool, s string) *MathMLANNOTATION_XMLElement {
 	if condition {
-		e.MATHSIZESTR(s)
+		e.MATHSIZE_STR(s)
 	}
 	return e
 }
 
-// Remove the attribute mathsizeStr from the element.
-func (e *MathMLANNOTATION_XMLElement) MATHSIZESTRRemove(s string) *MathMLANNOTATION_XMLElement {
+// Remove the attribute MATHSIZE_STR from the element.
+func (e *MathMLANNOTATION_XMLElement) MATHSIZE_STRRemove(s string) *MathMLANNOTATION_XMLElement {
 	if e.StringAttributes == nil {
 		return e
 	}
@@ -404,7 +406,7 @@ func (e *MathMLANNOTATION_XMLElement) IfNONCE(condition bool, s string) *MathMLA
 	return e
 }
 
-// Remove the attribute nonce from the element.
+// Remove the attribute NONCE from the element.
 func (e *MathMLANNOTATION_XMLElement) NONCERemove(s string) *MathMLANNOTATION_XMLElement {
 	if e.StringAttributes == nil {
 		return e
@@ -430,7 +432,7 @@ func (e *MathMLANNOTATION_XMLElement) IfSCRIPTLEVEL(condition bool, i int) *Math
 	return e
 }
 
-// Remove the attribute scriptlevel from the element.
+// Remove the attribute SCRIPTLEVEL from the element.
 func (e *MathMLANNOTATION_XMLElement) SCRIPTLEVELRemove(i int) *MathMLANNOTATION_XMLElement {
 	if e.IntAttributes == nil {
 		return e
@@ -516,7 +518,7 @@ func (e *MathMLANNOTATION_XMLElement) IfSTYLEPairs(condition bool, pairs ...stri
 	return e
 }
 
-// Remove the attribute style from the element.
+// Remove the attribute STYLE from the element.
 func (e *MathMLANNOTATION_XMLElement) STYLERemove(keys ...string) *MathMLANNOTATION_XMLElement {
 	if e.KVStrings == nil {
 		return e
@@ -550,11 +552,351 @@ func (e *MathMLANNOTATION_XMLElement) IfTABINDEX(condition bool, i int) *MathMLA
 	return e
 }
 
-// Remove the attribute tabindex from the element.
+// Remove the attribute TABINDEX from the element.
 func (e *MathMLANNOTATION_XMLElement) TABINDEXRemove(i int) *MathMLANNOTATION_XMLElement {
 	if e.IntAttributes == nil {
 		return e
 	}
 	e.IntAttributes.Del("tabindex")
+	return e
+}
+
+// Merges the store with the given object
+
+func (e *MathMLANNOTATION_XMLElement) DATASTAR_MERGE_STORE(v any) *MathMLANNOTATION_XMLElement {
+	if e.CustomDataAttributes == nil {
+		e.CustomDataAttributes = treemap.New[string, string]()
+	}
+	b, err := json.Marshal(v)
+	if err != nil {
+		panic(err)
+	}
+	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	return e
+}
+
+// Sets the reference of the element
+
+func (e *MathMLANNOTATION_XMLElement) DATASTAR_REF(s string) *MathMLANNOTATION_XMLElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-ref"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *MathMLANNOTATION_XMLElement) IfDATASTAR_REF(condition bool, s string) *MathMLANNOTATION_XMLElement {
+	if condition {
+		e.DATASTAR_REF(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_REF from the element.
+func (e *MathMLANNOTATION_XMLElement) DATASTAR_REFRemove() *MathMLANNOTATION_XMLElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-ref")
+	return e
+}
+
+// Sets the value of the element
+
+func (e *MathMLANNOTATION_XMLElement) DATASTAR_BIND(s string) *MathMLANNOTATION_XMLElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-bind"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *MathMLANNOTATION_XMLElement) IfDATASTAR_BIND(condition bool, s string) *MathMLANNOTATION_XMLElement {
+	if condition {
+		e.DATASTAR_BIND(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_BIND from the element.
+func (e *MathMLANNOTATION_XMLElement) DATASTAR_BINDRemove() *MathMLANNOTATION_XMLElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-bind")
+	return e
+}
+
+// Sets the value of the element
+
+func (e *MathMLANNOTATION_XMLElement) DATASTAR_MODEL(s string) *MathMLANNOTATION_XMLElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-model"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *MathMLANNOTATION_XMLElement) IfDATASTAR_MODEL(condition bool, s string) *MathMLANNOTATION_XMLElement {
+	if condition {
+		e.DATASTAR_MODEL(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_MODEL from the element.
+func (e *MathMLANNOTATION_XMLElement) DATASTAR_MODELRemove() *MathMLANNOTATION_XMLElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-model")
+	return e
+}
+
+// Sets the textContent of the element
+
+func (e *MathMLANNOTATION_XMLElement) DATASTAR_TEXT(s string) *MathMLANNOTATION_XMLElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-text"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *MathMLANNOTATION_XMLElement) IfDATASTAR_TEXT(condition bool, s string) *MathMLANNOTATION_XMLElement {
+	if condition {
+		e.DATASTAR_TEXT(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_TEXT from the element.
+func (e *MathMLANNOTATION_XMLElement) DATASTAR_TEXTRemove() *MathMLANNOTATION_XMLElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-text")
+	return e
+}
+
+// Sets the event handler of the element
+
+type MathMLAnnotationXmlDataOnMod customDataKeyModifier
+
+// Debounces the event handler
+func MathMLAnnotationXmlDataOnModDebounce(
+	s string,
+) MathMLAnnotationXmlDataOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce_%sms", s)
+	}
+}
+
+// Throttles the event handler
+func MathMLAnnotationXmlDataOnModThrottle(
+	s string,
+) MathMLAnnotationXmlDataOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle_%sms", s)
+	}
+}
+
+func (e *MathMLANNOTATION_XMLElement) DATASTAR_ON(s string, modifiers ...MathMLAnnotationXmlDataOnMod) *MathMLANNOTATION_XMLElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	customMods := lo.Map(modifiers, func(m MathMLAnnotationXmlDataOnMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key := customDataKey("data-on", customMods...)
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *MathMLANNOTATION_XMLElement) IfDATASTAR_ON(condition bool, s string, modifiers ...MathMLAnnotationXmlDataOnMod) *MathMLANNOTATION_XMLElement {
+	if condition {
+		e.DATASTAR_ON(s, modifiers...)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_ON from the element.
+func (e *MathMLANNOTATION_XMLElement) DATASTAR_ONRemove() *MathMLANNOTATION_XMLElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-on")
+	return e
+}
+
+// Sets the focus of the element
+
+func (e *MathMLANNOTATION_XMLElement) DATASTAR_FOCUSSet(b bool) *MathMLANNOTATION_XMLElement {
+	key := "data-focus"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *MathMLANNOTATION_XMLElement) DATASTAR_FOCUS() *MathMLANNOTATION_XMLElement {
+	return e.DATASTAR_FOCUSSet(true)
+}
+
+// Sets the header of for fetch requests
+
+func (e *MathMLANNOTATION_XMLElement) DATASTAR_HEADER(s string) *MathMLANNOTATION_XMLElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-header"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *MathMLANNOTATION_XMLElement) IfDATASTAR_HEADER(condition bool, s string) *MathMLANNOTATION_XMLElement {
+	if condition {
+		e.DATASTAR_HEADER(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_HEADER from the element.
+func (e *MathMLANNOTATION_XMLElement) DATASTAR_HEADERRemove() *MathMLANNOTATION_XMLElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-header")
+	return e
+}
+
+// Sets the URL for fetch requests
+
+func (e *MathMLANNOTATION_XMLElement) DATASTAR_FETCH_URL(s string) *MathMLANNOTATION_XMLElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-fetch-url"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *MathMLANNOTATION_XMLElement) IfDATASTAR_FETCH_URL(condition bool, s string) *MathMLANNOTATION_XMLElement {
+	if condition {
+		e.DATASTAR_FETCH_URL(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_FETCH_URL from the element.
+func (e *MathMLANNOTATION_XMLElement) DATASTAR_FETCH_URLRemove() *MathMLANNOTATION_XMLElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-fetch-url")
+	return e
+}
+
+// Sets the indicator selector for fetch requests
+
+func (e *MathMLANNOTATION_XMLElement) DATASTAR_FETCH_INDICATOR(s string) *MathMLANNOTATION_XMLElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "DatastarFetchIndicator"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *MathMLANNOTATION_XMLElement) IfDATASTAR_FETCH_INDICATOR(condition bool, s string) *MathMLANNOTATION_XMLElement {
+	if condition {
+		e.DATASTAR_FETCH_INDICATOR(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_FETCH_INDICATOR from the element.
+func (e *MathMLANNOTATION_XMLElement) DATASTAR_FETCH_INDICATORRemove() *MathMLANNOTATION_XMLElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("DatastarFetchIndicator")
+	return e
+}
+
+// Sets the visibility of the element
+
+func (e *MathMLANNOTATION_XMLElement) DATASTAR_SHOWSet(b bool) *MathMLANNOTATION_XMLElement {
+	key := "data-show"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *MathMLANNOTATION_XMLElement) DATASTAR_SHOW() *MathMLANNOTATION_XMLElement {
+	return e.DATASTAR_SHOWSet(true)
+}
+
+// Triggers the callback when the element intersects the viewport
+
+func (e *MathMLANNOTATION_XMLElement) DATASTAR_INTERSECTSSet(b bool) *MathMLANNOTATION_XMLElement {
+	key := "data-intersects"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *MathMLANNOTATION_XMLElement) DATASTAR_INTERSECTS() *MathMLANNOTATION_XMLElement {
+	return e.DATASTAR_INTERSECTSSet(true)
+}
+
+// Teleports the element to the given selector
+
+func (e *MathMLANNOTATION_XMLElement) DATASTAR_TELEPORTSet(b bool) *MathMLANNOTATION_XMLElement {
+	key := "data-teleport"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *MathMLANNOTATION_XMLElement) DATASTAR_TELEPORT() *MathMLANNOTATION_XMLElement {
+	return e.DATASTAR_TELEPORTSet(true)
+}
+
+// Scrolls the element into view
+
+func (e *MathMLANNOTATION_XMLElement) DATASTAR_SCROLL_INTO_VIEWSet(b bool) *MathMLANNOTATION_XMLElement {
+	key := "data-scroll-into-view"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *MathMLANNOTATION_XMLElement) DATASTAR_SCROLL_INTO_VIEW() *MathMLANNOTATION_XMLElement {
+	return e.DATASTAR_SCROLL_INTO_VIEWSet(true)
+}
+
+// Setup the ViewTransitionAPI for the element
+
+func (e *MathMLANNOTATION_XMLElement) DATASTAR_VIEW_TRANSITION(s string) *MathMLANNOTATION_XMLElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-view-transition"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *MathMLANNOTATION_XMLElement) IfDATASTAR_VIEW_TRANSITION(condition bool, s string) *MathMLANNOTATION_XMLElement {
+	if condition {
+		e.DATASTAR_VIEW_TRANSITION(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_VIEW_TRANSITION from the element.
+func (e *MathMLANNOTATION_XMLElement) DATASTAR_VIEW_TRANSITIONRemove() *MathMLANNOTATION_XMLElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-view-transition")
 	return e
 }

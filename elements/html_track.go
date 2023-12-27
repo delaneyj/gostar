@@ -6,7 +6,9 @@ package elements
 import (
 	"fmt"
 
+	"github.com/goccy/go-json"
 	"github.com/igrmk/treemap/v2"
+	"github.com/samber/lo"
 )
 
 // The HTML <track> element is used as a child of the media elements—<audio> and
@@ -143,7 +145,7 @@ func (e *TRACKElement) IfDEFAULT(condition bool) *TRACKElement {
 	return e
 }
 
-// Set the attribute default to the value b explicitly.
+// Set the attribute DEFAULT to the value b explicitly.
 func (e *TRACKElement) DEFAULTSet(b bool) *TRACKElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
@@ -159,7 +161,7 @@ func (e *TRACKElement) IfSetDEFAULT(condition bool, b bool) *TRACKElement {
 	return e
 }
 
-// Remove the attribute default from the element.
+// Remove the attribute DEFAULT from the element.
 func (e *TRACKElement) DEFAULTRemove(b bool) *TRACKElement {
 	if e.BoolAttributes == nil {
 		return e
@@ -192,7 +194,7 @@ const (
 	TrackKind_subtitles TrackKindChoice = "subtitles"
 )
 
-// Remove the attribute kind from the element.
+// Remove the attribute KIND from the element.
 func (e *TRACKElement) KINDRemove(c TrackKindChoice) *TRACKElement {
 	if e.StringAttributes == nil {
 		return e
@@ -217,7 +219,7 @@ func (e *TRACKElement) IfLABEL(condition bool, s string) *TRACKElement {
 	return e
 }
 
-// Remove the attribute label from the element.
+// Remove the attribute LABEL from the element.
 func (e *TRACKElement) LABELRemove(s string) *TRACKElement {
 	if e.StringAttributes == nil {
 		return e
@@ -242,7 +244,7 @@ func (e *TRACKElement) IfSRC(condition bool, s string) *TRACKElement {
 	return e
 }
 
-// Remove the attribute src from the element.
+// Remove the attribute SRC from the element.
 func (e *TRACKElement) SRCRemove(s string) *TRACKElement {
 	if e.StringAttributes == nil {
 		return e
@@ -267,7 +269,7 @@ func (e *TRACKElement) IfSRCLANG(condition bool, s string) *TRACKElement {
 	return e
 }
 
-// Remove the attribute srclang from the element.
+// Remove the attribute SRCLANG from the element.
 func (e *TRACKElement) SRCLANGRemove(s string) *TRACKElement {
 	if e.StringAttributes == nil {
 		return e
@@ -295,7 +297,7 @@ func (e *TRACKElement) IfACCESSKEY(condition bool, r rune) *TRACKElement {
 	return e
 }
 
-// Remove the attribute accesskey from the element.
+// Remove the attribute ACCESSKEY from the element.
 func (e *TRACKElement) ACCESSKEYRemove() *TRACKElement {
 	if e.StringAttributes == nil {
 		return e
@@ -343,7 +345,7 @@ const (
 	TrackAutocapitalize_characters TrackAutocapitalizeChoice = "characters"
 )
 
-// Remove the attribute autocapitalize from the element.
+// Remove the attribute AUTOCAPITALIZE from the element.
 func (e *TRACKElement) AUTOCAPITALIZERemove(c TrackAutocapitalizeChoice) *TRACKElement {
 	if e.StringAttributes == nil {
 		return e
@@ -384,7 +386,7 @@ func (e *TRACKElement) IfAUTOFOCUS(condition bool) *TRACKElement {
 	return e
 }
 
-// Set the attribute autofocus to the value b explicitly.
+// Set the attribute AUTOFOCUS to the value b explicitly.
 func (e *TRACKElement) AUTOFOCUSSet(b bool) *TRACKElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
@@ -400,7 +402,7 @@ func (e *TRACKElement) IfSetAUTOFOCUS(condition bool, b bool) *TRACKElement {
 	return e
 }
 
-// Remove the attribute autofocus from the element.
+// Remove the attribute AUTOFOCUS from the element.
 func (e *TRACKElement) AUTOFOCUSRemove(b bool) *TRACKElement {
 	if e.BoolAttributes == nil {
 		return e
@@ -434,7 +436,7 @@ func (e *TRACKElement) IfCLASS(condition bool, s ...string) *TRACKElement {
 	return e
 }
 
-// Remove the attribute class from the element.
+// Remove the attribute CLASS from the element.
 func (e *TRACKElement) CLASSRemove(s ...string) *TRACKElement {
 	if e.DelimitedStrings == nil {
 		return e
@@ -472,7 +474,7 @@ const (
 	TrackContenteditable_plaintext_only TrackContenteditableChoice = "plaintext-only"
 )
 
-// Remove the attribute contenteditable from the element.
+// Remove the attribute CONTENTEDITABLE from the element.
 func (e *TRACKElement) CONTENTEDITABLERemove(c TrackContenteditableChoice) *TRACKElement {
 	if e.StringAttributes == nil {
 		return e
@@ -520,7 +522,7 @@ const (
 	TrackDir_auto TrackDirChoice = "auto"
 )
 
-// Remove the attribute dir from the element.
+// Remove the attribute DIR from the element.
 func (e *TRACKElement) DIRRemove(c TrackDirChoice) *TRACKElement {
 	if e.StringAttributes == nil {
 		return e
@@ -557,7 +559,7 @@ const (
 	TrackDraggable_auto TrackDraggableChoice = "auto"
 )
 
-// Remove the attribute draggable from the element.
+// Remove the attribute DRAGGABLE from the element.
 func (e *TRACKElement) DRAGGABLERemove(c TrackDraggableChoice) *TRACKElement {
 	if e.StringAttributes == nil {
 		return e
@@ -597,7 +599,7 @@ const (
 	TrackEnterkeyhint_send TrackEnterkeyhintChoice = "send"
 )
 
-// Remove the attribute enterkeyhint from the element.
+// Remove the attribute ENTERKEYHINT from the element.
 func (e *TRACKElement) ENTERKEYHINTRemove(c TrackEnterkeyhintChoice) *TRACKElement {
 	if e.StringAttributes == nil {
 		return e
@@ -646,7 +648,7 @@ func (e *TRACKElement) IfEXPORTPARTS(condition bool, s ...string) *TRACKElement 
 	return e
 }
 
-// Remove the attribute exportparts from the element.
+// Remove the attribute EXPORTPARTS from the element.
 func (e *TRACKElement) EXPORTPARTSRemove(s ...string) *TRACKElement {
 	if e.DelimitedStrings == nil {
 		return e
@@ -700,7 +702,7 @@ const (
 	TrackHidden_until_found TrackHiddenChoice = "until-found"
 )
 
-// Remove the attribute hidden from the element.
+// Remove the attribute HIDDEN from the element.
 func (e *TRACKElement) HIDDENRemove(c TrackHiddenChoice) *TRACKElement {
 	if e.StringAttributes == nil {
 		return e
@@ -728,7 +730,7 @@ func (e *TRACKElement) IfID(condition bool, s string) *TRACKElement {
 	return e
 }
 
-// Remove the attribute id from the element.
+// Remove the attribute ID from the element.
 func (e *TRACKElement) IDRemove(s string) *TRACKElement {
 	if e.StringAttributes == nil {
 		return e
@@ -761,7 +763,7 @@ func (e *TRACKElement) IfINERT(condition bool) *TRACKElement {
 	return e
 }
 
-// Set the attribute inert to the value b explicitly.
+// Set the attribute INERT to the value b explicitly.
 func (e *TRACKElement) INERTSet(b bool) *TRACKElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
@@ -777,7 +779,7 @@ func (e *TRACKElement) IfSetINERT(condition bool, b bool) *TRACKElement {
 	return e
 }
 
-// Remove the attribute inert from the element.
+// Remove the attribute INERT from the element.
 func (e *TRACKElement) INERTRemove(b bool) *TRACKElement {
 	if e.BoolAttributes == nil {
 		return e
@@ -846,7 +848,7 @@ const (
 	TrackInputmode_url TrackInputmodeChoice = "url"
 )
 
-// Remove the attribute inputmode from the element.
+// Remove the attribute INPUTMODE from the element.
 func (e *TRACKElement) INPUTMODERemove(c TrackInputmodeChoice) *TRACKElement {
 	if e.StringAttributes == nil {
 		return e
@@ -876,7 +878,7 @@ func (e *TRACKElement) IfIS(condition bool, s string) *TRACKElement {
 	return e
 }
 
-// Remove the attribute is from the element.
+// Remove the attribute IS from the element.
 func (e *TRACKElement) ISRemove(s string) *TRACKElement {
 	if e.StringAttributes == nil {
 		return e
@@ -913,7 +915,7 @@ func (e *TRACKElement) IfITEMID(condition bool, s string) *TRACKElement {
 	return e
 }
 
-// Remove the attribute itemid from the element.
+// Remove the attribute ITEMID from the element.
 func (e *TRACKElement) ITEMIDRemove(s string) *TRACKElement {
 	if e.StringAttributes == nil {
 		return e
@@ -945,7 +947,7 @@ func (e *TRACKElement) IfITEMPROP(condition bool, s string) *TRACKElement {
 	return e
 }
 
-// Remove the attribute itemprop from the element.
+// Remove the attribute ITEMPROP from the element.
 func (e *TRACKElement) ITEMPROPRemove(s string) *TRACKElement {
 	if e.StringAttributes == nil {
 		return e
@@ -974,7 +976,7 @@ func (e *TRACKElement) IfITEMREF(condition bool, s string) *TRACKElement {
 	return e
 }
 
-// Remove the attribute itemref from the element.
+// Remove the attribute ITEMREF from the element.
 func (e *TRACKElement) ITEMREFRemove(s string) *TRACKElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1003,7 +1005,7 @@ func (e *TRACKElement) IfITEMSCOPE(condition bool) *TRACKElement {
 	return e
 }
 
-// Set the attribute itemscope to the value b explicitly.
+// Set the attribute ITEMSCOPE to the value b explicitly.
 func (e *TRACKElement) ITEMSCOPESet(b bool) *TRACKElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
@@ -1019,7 +1021,7 @@ func (e *TRACKElement) IfSetITEMSCOPE(condition bool, b bool) *TRACKElement {
 	return e
 }
 
-// Remove the attribute itemscope from the element.
+// Remove the attribute ITEMSCOPE from the element.
 func (e *TRACKElement) ITEMSCOPERemove(b bool) *TRACKElement {
 	if e.BoolAttributes == nil {
 		return e
@@ -1051,7 +1053,7 @@ func (e *TRACKElement) IfITEMTYPE(condition bool, s string) *TRACKElement {
 	return e
 }
 
-// Remove the attribute itemtype from the element.
+// Remove the attribute ITEMTYPE from the element.
 func (e *TRACKElement) ITEMTYPERemove(s string) *TRACKElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1081,7 +1083,7 @@ func (e *TRACKElement) IfLANG(condition bool, s string) *TRACKElement {
 	return e
 }
 
-// Remove the attribute lang from the element.
+// Remove the attribute LANG from the element.
 func (e *TRACKElement) LANGRemove(s string) *TRACKElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1109,7 +1111,7 @@ func (e *TRACKElement) IfNONCE(condition bool, s string) *TRACKElement {
 	return e
 }
 
-// Remove the attribute nonce from the element.
+// Remove the attribute NONCE from the element.
 func (e *TRACKElement) NONCERemove(s string) *TRACKElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1142,7 +1144,7 @@ func (e *TRACKElement) IfPART(condition bool, s ...string) *TRACKElement {
 	return e
 }
 
-// Remove the attribute part from the element.
+// Remove the attribute PART from the element.
 func (e *TRACKElement) PARTRemove(s ...string) *TRACKElement {
 	if e.DelimitedStrings == nil {
 		return e
@@ -1188,7 +1190,7 @@ const (
 	TrackPopver_manual TrackPopverChoice = "manual"
 )
 
-// Remove the attribute popver from the element.
+// Remove the attribute POPVER from the element.
 func (e *TRACKElement) POPVERRemove(c TrackPopverChoice) *TRACKElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1216,7 +1218,7 @@ func (e *TRACKElement) IfSLOT(condition bool, s string) *TRACKElement {
 	return e
 }
 
-// Remove the attribute slot from the element.
+// Remove the attribute SLOT from the element.
 func (e *TRACKElement) SLOTRemove(s string) *TRACKElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1258,7 +1260,7 @@ const (
 	TrackSpellcheck_false TrackSpellcheckChoice = "false"
 )
 
-// Remove the attribute spellcheck from the element.
+// Remove the attribute SPELLCHECK from the element.
 func (e *TRACKElement) SPELLCHECKRemove(c TrackSpellcheckChoice) *TRACKElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1345,7 +1347,7 @@ func (e *TRACKElement) IfSTYLEPairs(condition bool, pairs ...string) *TRACKEleme
 	return e
 }
 
-// Remove the attribute style from the element.
+// Remove the attribute STYLE from the element.
 func (e *TRACKElement) STYLERemove(keys ...string) *TRACKElement {
 	if e.KVStrings == nil {
 		return e
@@ -1389,7 +1391,7 @@ func (e *TRACKElement) IfTABINDEX(condition bool, i int) *TRACKElement {
 	return e
 }
 
-// Remove the attribute tabindex from the element.
+// Remove the attribute TABINDEX from the element.
 func (e *TRACKElement) TABINDEXRemove(i int) *TRACKElement {
 	if e.IntAttributes == nil {
 		return e
@@ -1434,7 +1436,7 @@ func (e *TRACKElement) IfTITLE(condition bool, s string) *TRACKElement {
 	return e
 }
 
-// Remove the attribute title from the element.
+// Remove the attribute TITLE from the element.
 func (e *TRACKElement) TITLERemove(s string) *TRACKElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1466,11 +1468,351 @@ const (
 	TrackTranslate_no TrackTranslateChoice = "no"
 )
 
-// Remove the attribute translate from the element.
+// Remove the attribute TRANSLATE from the element.
 func (e *TRACKElement) TRANSLATERemove(c TrackTranslateChoice) *TRACKElement {
 	if e.StringAttributes == nil {
 		return e
 	}
 	e.StringAttributes.Del("translate")
+	return e
+}
+
+// Merges the store with the given object
+
+func (e *TRACKElement) DATASTAR_MERGE_STORE(v any) *TRACKElement {
+	if e.CustomDataAttributes == nil {
+		e.CustomDataAttributes = treemap.New[string, string]()
+	}
+	b, err := json.Marshal(v)
+	if err != nil {
+		panic(err)
+	}
+	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	return e
+}
+
+// Sets the reference of the element
+
+func (e *TRACKElement) DATASTAR_REF(s string) *TRACKElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-ref"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *TRACKElement) IfDATASTAR_REF(condition bool, s string) *TRACKElement {
+	if condition {
+		e.DATASTAR_REF(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_REF from the element.
+func (e *TRACKElement) DATASTAR_REFRemove() *TRACKElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-ref")
+	return e
+}
+
+// Sets the value of the element
+
+func (e *TRACKElement) DATASTAR_BIND(s string) *TRACKElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-bind"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *TRACKElement) IfDATASTAR_BIND(condition bool, s string) *TRACKElement {
+	if condition {
+		e.DATASTAR_BIND(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_BIND from the element.
+func (e *TRACKElement) DATASTAR_BINDRemove() *TRACKElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-bind")
+	return e
+}
+
+// Sets the value of the element
+
+func (e *TRACKElement) DATASTAR_MODEL(s string) *TRACKElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-model"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *TRACKElement) IfDATASTAR_MODEL(condition bool, s string) *TRACKElement {
+	if condition {
+		e.DATASTAR_MODEL(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_MODEL from the element.
+func (e *TRACKElement) DATASTAR_MODELRemove() *TRACKElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-model")
+	return e
+}
+
+// Sets the textContent of the element
+
+func (e *TRACKElement) DATASTAR_TEXT(s string) *TRACKElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-text"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *TRACKElement) IfDATASTAR_TEXT(condition bool, s string) *TRACKElement {
+	if condition {
+		e.DATASTAR_TEXT(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_TEXT from the element.
+func (e *TRACKElement) DATASTAR_TEXTRemove() *TRACKElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-text")
+	return e
+}
+
+// Sets the event handler of the element
+
+type TrackDataOnMod customDataKeyModifier
+
+// Debounces the event handler
+func TrackDataOnModDebounce(
+	s string,
+) TrackDataOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce_%sms", s)
+	}
+}
+
+// Throttles the event handler
+func TrackDataOnModThrottle(
+	s string,
+) TrackDataOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle_%sms", s)
+	}
+}
+
+func (e *TRACKElement) DATASTAR_ON(s string, modifiers ...TrackDataOnMod) *TRACKElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	customMods := lo.Map(modifiers, func(m TrackDataOnMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key := customDataKey("data-on", customMods...)
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *TRACKElement) IfDATASTAR_ON(condition bool, s string, modifiers ...TrackDataOnMod) *TRACKElement {
+	if condition {
+		e.DATASTAR_ON(s, modifiers...)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_ON from the element.
+func (e *TRACKElement) DATASTAR_ONRemove() *TRACKElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-on")
+	return e
+}
+
+// Sets the focus of the element
+
+func (e *TRACKElement) DATASTAR_FOCUSSet(b bool) *TRACKElement {
+	key := "data-focus"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *TRACKElement) DATASTAR_FOCUS() *TRACKElement {
+	return e.DATASTAR_FOCUSSet(true)
+}
+
+// Sets the header of for fetch requests
+
+func (e *TRACKElement) DATASTAR_HEADER(s string) *TRACKElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-header"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *TRACKElement) IfDATASTAR_HEADER(condition bool, s string) *TRACKElement {
+	if condition {
+		e.DATASTAR_HEADER(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_HEADER from the element.
+func (e *TRACKElement) DATASTAR_HEADERRemove() *TRACKElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-header")
+	return e
+}
+
+// Sets the URL for fetch requests
+
+func (e *TRACKElement) DATASTAR_FETCH_URL(s string) *TRACKElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-fetch-url"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *TRACKElement) IfDATASTAR_FETCH_URL(condition bool, s string) *TRACKElement {
+	if condition {
+		e.DATASTAR_FETCH_URL(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_FETCH_URL from the element.
+func (e *TRACKElement) DATASTAR_FETCH_URLRemove() *TRACKElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-fetch-url")
+	return e
+}
+
+// Sets the indicator selector for fetch requests
+
+func (e *TRACKElement) DATASTAR_FETCH_INDICATOR(s string) *TRACKElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "DatastarFetchIndicator"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *TRACKElement) IfDATASTAR_FETCH_INDICATOR(condition bool, s string) *TRACKElement {
+	if condition {
+		e.DATASTAR_FETCH_INDICATOR(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_FETCH_INDICATOR from the element.
+func (e *TRACKElement) DATASTAR_FETCH_INDICATORRemove() *TRACKElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("DatastarFetchIndicator")
+	return e
+}
+
+// Sets the visibility of the element
+
+func (e *TRACKElement) DATASTAR_SHOWSet(b bool) *TRACKElement {
+	key := "data-show"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *TRACKElement) DATASTAR_SHOW() *TRACKElement {
+	return e.DATASTAR_SHOWSet(true)
+}
+
+// Triggers the callback when the element intersects the viewport
+
+func (e *TRACKElement) DATASTAR_INTERSECTSSet(b bool) *TRACKElement {
+	key := "data-intersects"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *TRACKElement) DATASTAR_INTERSECTS() *TRACKElement {
+	return e.DATASTAR_INTERSECTSSet(true)
+}
+
+// Teleports the element to the given selector
+
+func (e *TRACKElement) DATASTAR_TELEPORTSet(b bool) *TRACKElement {
+	key := "data-teleport"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *TRACKElement) DATASTAR_TELEPORT() *TRACKElement {
+	return e.DATASTAR_TELEPORTSet(true)
+}
+
+// Scrolls the element into view
+
+func (e *TRACKElement) DATASTAR_SCROLL_INTO_VIEWSet(b bool) *TRACKElement {
+	key := "data-scroll-into-view"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *TRACKElement) DATASTAR_SCROLL_INTO_VIEW() *TRACKElement {
+	return e.DATASTAR_SCROLL_INTO_VIEWSet(true)
+}
+
+// Setup the ViewTransitionAPI for the element
+
+func (e *TRACKElement) DATASTAR_VIEW_TRANSITION(s string) *TRACKElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-view-transition"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *TRACKElement) IfDATASTAR_VIEW_TRANSITION(condition bool, s string) *TRACKElement {
+	if condition {
+		e.DATASTAR_VIEW_TRANSITION(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_VIEW_TRANSITION from the element.
+func (e *TRACKElement) DATASTAR_VIEW_TRANSITIONRemove() *TRACKElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-view-transition")
 	return e
 }

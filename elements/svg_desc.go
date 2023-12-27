@@ -6,7 +6,9 @@ package elements
 import (
 	"fmt"
 
+	"github.com/goccy/go-json"
 	"github.com/igrmk/treemap/v2"
+	"github.com/samber/lo"
 )
 
 // The <desc> SVG element provides a description container for SVG content.
@@ -126,6 +128,31 @@ func (e *SVGDESCElement) CustomDataRemove(key string) *SVGDESCElement {
 	return e
 }
 
+// Specifies a unique id for an element
+func (e *SVGDESCElement) ID(s string) *SVGDESCElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	e.StringAttributes.Set("id", s)
+	return e
+}
+
+func (e *SVGDESCElement) IfID(condition bool, s string) *SVGDESCElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
+// Remove the attribute ID from the element.
+func (e *SVGDESCElement) IDRemove(s string) *SVGDESCElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("id")
+	return e
+}
+
 // Specifies one or more classnames for an element (refers to a class in a style
 // sheet)
 func (e *SVGDESCElement) CLASS(s ...string) *SVGDESCElement {
@@ -148,7 +175,7 @@ func (e *SVGDESCElement) IfCLASS(condition bool, s ...string) *SVGDESCElement {
 	return e
 }
 
-// Remove the attribute class from the element.
+// Remove the attribute CLASS from the element.
 func (e *SVGDESCElement) CLASSRemove(s ...string) *SVGDESCElement {
 	if e.DelimitedStrings == nil {
 		return e
@@ -158,31 +185,6 @@ func (e *SVGDESCElement) CLASSRemove(s ...string) *SVGDESCElement {
 		return e
 	}
 	ds.Remove(s...)
-	return e
-}
-
-// Specifies a unique id for an element
-func (e *SVGDESCElement) ID(s string) *SVGDESCElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	e.StringAttributes.Set("id", s)
-	return e
-}
-
-func (e *SVGDESCElement) IfID(condition bool, s string) *SVGDESCElement {
-	if condition {
-		e.ID(s)
-	}
-	return e
-}
-
-// Remove the attribute id from the element.
-func (e *SVGDESCElement) IDRemove(s string) *SVGDESCElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("id")
 	return e
 }
 
@@ -262,7 +264,7 @@ func (e *SVGDESCElement) IfSTYLEPairs(condition bool, pairs ...string) *SVGDESCE
 	return e
 }
 
-// Remove the attribute style from the element.
+// Remove the attribute STYLE from the element.
 func (e *SVGDESCElement) STYLERemove(keys ...string) *SVGDESCElement {
 	if e.KVStrings == nil {
 		return e
@@ -274,5 +276,345 @@ func (e *SVGDESCElement) STYLERemove(keys ...string) *SVGDESCElement {
 	for _, k := range keys {
 		kv.Remove(k)
 	}
+	return e
+}
+
+// Merges the store with the given object
+
+func (e *SVGDESCElement) DATASTAR_MERGE_STORE(v any) *SVGDESCElement {
+	if e.CustomDataAttributes == nil {
+		e.CustomDataAttributes = treemap.New[string, string]()
+	}
+	b, err := json.Marshal(v)
+	if err != nil {
+		panic(err)
+	}
+	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	return e
+}
+
+// Sets the reference of the element
+
+func (e *SVGDESCElement) DATASTAR_REF(s string) *SVGDESCElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-ref"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SVGDESCElement) IfDATASTAR_REF(condition bool, s string) *SVGDESCElement {
+	if condition {
+		e.DATASTAR_REF(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_REF from the element.
+func (e *SVGDESCElement) DATASTAR_REFRemove() *SVGDESCElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-ref")
+	return e
+}
+
+// Sets the value of the element
+
+func (e *SVGDESCElement) DATASTAR_BIND(s string) *SVGDESCElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-bind"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SVGDESCElement) IfDATASTAR_BIND(condition bool, s string) *SVGDESCElement {
+	if condition {
+		e.DATASTAR_BIND(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_BIND from the element.
+func (e *SVGDESCElement) DATASTAR_BINDRemove() *SVGDESCElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-bind")
+	return e
+}
+
+// Sets the value of the element
+
+func (e *SVGDESCElement) DATASTAR_MODEL(s string) *SVGDESCElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-model"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SVGDESCElement) IfDATASTAR_MODEL(condition bool, s string) *SVGDESCElement {
+	if condition {
+		e.DATASTAR_MODEL(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_MODEL from the element.
+func (e *SVGDESCElement) DATASTAR_MODELRemove() *SVGDESCElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-model")
+	return e
+}
+
+// Sets the textContent of the element
+
+func (e *SVGDESCElement) DATASTAR_TEXT(s string) *SVGDESCElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-text"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SVGDESCElement) IfDATASTAR_TEXT(condition bool, s string) *SVGDESCElement {
+	if condition {
+		e.DATASTAR_TEXT(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_TEXT from the element.
+func (e *SVGDESCElement) DATASTAR_TEXTRemove() *SVGDESCElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-text")
+	return e
+}
+
+// Sets the event handler of the element
+
+type SVGDescDataOnMod customDataKeyModifier
+
+// Debounces the event handler
+func SVGDescDataOnModDebounce(
+	s string,
+) SVGDescDataOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce_%sms", s)
+	}
+}
+
+// Throttles the event handler
+func SVGDescDataOnModThrottle(
+	s string,
+) SVGDescDataOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle_%sms", s)
+	}
+}
+
+func (e *SVGDESCElement) DATASTAR_ON(s string, modifiers ...SVGDescDataOnMod) *SVGDESCElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	customMods := lo.Map(modifiers, func(m SVGDescDataOnMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key := customDataKey("data-on", customMods...)
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SVGDESCElement) IfDATASTAR_ON(condition bool, s string, modifiers ...SVGDescDataOnMod) *SVGDESCElement {
+	if condition {
+		e.DATASTAR_ON(s, modifiers...)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_ON from the element.
+func (e *SVGDESCElement) DATASTAR_ONRemove() *SVGDESCElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-on")
+	return e
+}
+
+// Sets the focus of the element
+
+func (e *SVGDESCElement) DATASTAR_FOCUSSet(b bool) *SVGDESCElement {
+	key := "data-focus"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *SVGDESCElement) DATASTAR_FOCUS() *SVGDESCElement {
+	return e.DATASTAR_FOCUSSet(true)
+}
+
+// Sets the header of for fetch requests
+
+func (e *SVGDESCElement) DATASTAR_HEADER(s string) *SVGDESCElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-header"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SVGDESCElement) IfDATASTAR_HEADER(condition bool, s string) *SVGDESCElement {
+	if condition {
+		e.DATASTAR_HEADER(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_HEADER from the element.
+func (e *SVGDESCElement) DATASTAR_HEADERRemove() *SVGDESCElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-header")
+	return e
+}
+
+// Sets the URL for fetch requests
+
+func (e *SVGDESCElement) DATASTAR_FETCH_URL(s string) *SVGDESCElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-fetch-url"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SVGDESCElement) IfDATASTAR_FETCH_URL(condition bool, s string) *SVGDESCElement {
+	if condition {
+		e.DATASTAR_FETCH_URL(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_FETCH_URL from the element.
+func (e *SVGDESCElement) DATASTAR_FETCH_URLRemove() *SVGDESCElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-fetch-url")
+	return e
+}
+
+// Sets the indicator selector for fetch requests
+
+func (e *SVGDESCElement) DATASTAR_FETCH_INDICATOR(s string) *SVGDESCElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "DatastarFetchIndicator"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SVGDESCElement) IfDATASTAR_FETCH_INDICATOR(condition bool, s string) *SVGDESCElement {
+	if condition {
+		e.DATASTAR_FETCH_INDICATOR(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_FETCH_INDICATOR from the element.
+func (e *SVGDESCElement) DATASTAR_FETCH_INDICATORRemove() *SVGDESCElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("DatastarFetchIndicator")
+	return e
+}
+
+// Sets the visibility of the element
+
+func (e *SVGDESCElement) DATASTAR_SHOWSet(b bool) *SVGDESCElement {
+	key := "data-show"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *SVGDESCElement) DATASTAR_SHOW() *SVGDESCElement {
+	return e.DATASTAR_SHOWSet(true)
+}
+
+// Triggers the callback when the element intersects the viewport
+
+func (e *SVGDESCElement) DATASTAR_INTERSECTSSet(b bool) *SVGDESCElement {
+	key := "data-intersects"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *SVGDESCElement) DATASTAR_INTERSECTS() *SVGDESCElement {
+	return e.DATASTAR_INTERSECTSSet(true)
+}
+
+// Teleports the element to the given selector
+
+func (e *SVGDESCElement) DATASTAR_TELEPORTSet(b bool) *SVGDESCElement {
+	key := "data-teleport"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *SVGDESCElement) DATASTAR_TELEPORT() *SVGDESCElement {
+	return e.DATASTAR_TELEPORTSet(true)
+}
+
+// Scrolls the element into view
+
+func (e *SVGDESCElement) DATASTAR_SCROLL_INTO_VIEWSet(b bool) *SVGDESCElement {
+	key := "data-scroll-into-view"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *SVGDESCElement) DATASTAR_SCROLL_INTO_VIEW() *SVGDESCElement {
+	return e.DATASTAR_SCROLL_INTO_VIEWSet(true)
+}
+
+// Setup the ViewTransitionAPI for the element
+
+func (e *SVGDESCElement) DATASTAR_VIEW_TRANSITION(s string) *SVGDESCElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-view-transition"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SVGDESCElement) IfDATASTAR_VIEW_TRANSITION(condition bool, s string) *SVGDESCElement {
+	if condition {
+		e.DATASTAR_VIEW_TRANSITION(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_VIEW_TRANSITION from the element.
+func (e *SVGDESCElement) DATASTAR_VIEW_TRANSITIONRemove() *SVGDESCElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-view-transition")
 	return e
 }

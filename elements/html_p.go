@@ -6,7 +6,9 @@ package elements
 import (
 	"fmt"
 
+	"github.com/goccy/go-json"
 	"github.com/igrmk/treemap/v2"
+	"github.com/samber/lo"
 )
 
 // The HTML <p> element represents a paragraph.
@@ -145,7 +147,7 @@ func (e *PElement) IfACCESSKEY(condition bool, r rune) *PElement {
 	return e
 }
 
-// Remove the attribute accesskey from the element.
+// Remove the attribute ACCESSKEY from the element.
 func (e *PElement) ACCESSKEYRemove() *PElement {
 	if e.StringAttributes == nil {
 		return e
@@ -193,7 +195,7 @@ const (
 	PAutocapitalize_characters PAutocapitalizeChoice = "characters"
 )
 
-// Remove the attribute autocapitalize from the element.
+// Remove the attribute AUTOCAPITALIZE from the element.
 func (e *PElement) AUTOCAPITALIZERemove(c PAutocapitalizeChoice) *PElement {
 	if e.StringAttributes == nil {
 		return e
@@ -234,7 +236,7 @@ func (e *PElement) IfAUTOFOCUS(condition bool) *PElement {
 	return e
 }
 
-// Set the attribute autofocus to the value b explicitly.
+// Set the attribute AUTOFOCUS to the value b explicitly.
 func (e *PElement) AUTOFOCUSSet(b bool) *PElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
@@ -250,7 +252,7 @@ func (e *PElement) IfSetAUTOFOCUS(condition bool, b bool) *PElement {
 	return e
 }
 
-// Remove the attribute autofocus from the element.
+// Remove the attribute AUTOFOCUS from the element.
 func (e *PElement) AUTOFOCUSRemove(b bool) *PElement {
 	if e.BoolAttributes == nil {
 		return e
@@ -284,7 +286,7 @@ func (e *PElement) IfCLASS(condition bool, s ...string) *PElement {
 	return e
 }
 
-// Remove the attribute class from the element.
+// Remove the attribute CLASS from the element.
 func (e *PElement) CLASSRemove(s ...string) *PElement {
 	if e.DelimitedStrings == nil {
 		return e
@@ -322,7 +324,7 @@ const (
 	PContenteditable_plaintext_only PContenteditableChoice = "plaintext-only"
 )
 
-// Remove the attribute contenteditable from the element.
+// Remove the attribute CONTENTEDITABLE from the element.
 func (e *PElement) CONTENTEDITABLERemove(c PContenteditableChoice) *PElement {
 	if e.StringAttributes == nil {
 		return e
@@ -370,7 +372,7 @@ const (
 	PDir_auto PDirChoice = "auto"
 )
 
-// Remove the attribute dir from the element.
+// Remove the attribute DIR from the element.
 func (e *PElement) DIRRemove(c PDirChoice) *PElement {
 	if e.StringAttributes == nil {
 		return e
@@ -407,7 +409,7 @@ const (
 	PDraggable_auto PDraggableChoice = "auto"
 )
 
-// Remove the attribute draggable from the element.
+// Remove the attribute DRAGGABLE from the element.
 func (e *PElement) DRAGGABLERemove(c PDraggableChoice) *PElement {
 	if e.StringAttributes == nil {
 		return e
@@ -447,7 +449,7 @@ const (
 	PEnterkeyhint_send PEnterkeyhintChoice = "send"
 )
 
-// Remove the attribute enterkeyhint from the element.
+// Remove the attribute ENTERKEYHINT from the element.
 func (e *PElement) ENTERKEYHINTRemove(c PEnterkeyhintChoice) *PElement {
 	if e.StringAttributes == nil {
 		return e
@@ -496,7 +498,7 @@ func (e *PElement) IfEXPORTPARTS(condition bool, s ...string) *PElement {
 	return e
 }
 
-// Remove the attribute exportparts from the element.
+// Remove the attribute EXPORTPARTS from the element.
 func (e *PElement) EXPORTPARTSRemove(s ...string) *PElement {
 	if e.DelimitedStrings == nil {
 		return e
@@ -550,7 +552,7 @@ const (
 	PHidden_until_found PHiddenChoice = "until-found"
 )
 
-// Remove the attribute hidden from the element.
+// Remove the attribute HIDDEN from the element.
 func (e *PElement) HIDDENRemove(c PHiddenChoice) *PElement {
 	if e.StringAttributes == nil {
 		return e
@@ -578,7 +580,7 @@ func (e *PElement) IfID(condition bool, s string) *PElement {
 	return e
 }
 
-// Remove the attribute id from the element.
+// Remove the attribute ID from the element.
 func (e *PElement) IDRemove(s string) *PElement {
 	if e.StringAttributes == nil {
 		return e
@@ -611,7 +613,7 @@ func (e *PElement) IfINERT(condition bool) *PElement {
 	return e
 }
 
-// Set the attribute inert to the value b explicitly.
+// Set the attribute INERT to the value b explicitly.
 func (e *PElement) INERTSet(b bool) *PElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
@@ -627,7 +629,7 @@ func (e *PElement) IfSetINERT(condition bool, b bool) *PElement {
 	return e
 }
 
-// Remove the attribute inert from the element.
+// Remove the attribute INERT from the element.
 func (e *PElement) INERTRemove(b bool) *PElement {
 	if e.BoolAttributes == nil {
 		return e
@@ -696,7 +698,7 @@ const (
 	PInputmode_url PInputmodeChoice = "url"
 )
 
-// Remove the attribute inputmode from the element.
+// Remove the attribute INPUTMODE from the element.
 func (e *PElement) INPUTMODERemove(c PInputmodeChoice) *PElement {
 	if e.StringAttributes == nil {
 		return e
@@ -726,7 +728,7 @@ func (e *PElement) IfIS(condition bool, s string) *PElement {
 	return e
 }
 
-// Remove the attribute is from the element.
+// Remove the attribute IS from the element.
 func (e *PElement) ISRemove(s string) *PElement {
 	if e.StringAttributes == nil {
 		return e
@@ -763,7 +765,7 @@ func (e *PElement) IfITEMID(condition bool, s string) *PElement {
 	return e
 }
 
-// Remove the attribute itemid from the element.
+// Remove the attribute ITEMID from the element.
 func (e *PElement) ITEMIDRemove(s string) *PElement {
 	if e.StringAttributes == nil {
 		return e
@@ -795,7 +797,7 @@ func (e *PElement) IfITEMPROP(condition bool, s string) *PElement {
 	return e
 }
 
-// Remove the attribute itemprop from the element.
+// Remove the attribute ITEMPROP from the element.
 func (e *PElement) ITEMPROPRemove(s string) *PElement {
 	if e.StringAttributes == nil {
 		return e
@@ -824,7 +826,7 @@ func (e *PElement) IfITEMREF(condition bool, s string) *PElement {
 	return e
 }
 
-// Remove the attribute itemref from the element.
+// Remove the attribute ITEMREF from the element.
 func (e *PElement) ITEMREFRemove(s string) *PElement {
 	if e.StringAttributes == nil {
 		return e
@@ -853,7 +855,7 @@ func (e *PElement) IfITEMSCOPE(condition bool) *PElement {
 	return e
 }
 
-// Set the attribute itemscope to the value b explicitly.
+// Set the attribute ITEMSCOPE to the value b explicitly.
 func (e *PElement) ITEMSCOPESet(b bool) *PElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
@@ -869,7 +871,7 @@ func (e *PElement) IfSetITEMSCOPE(condition bool, b bool) *PElement {
 	return e
 }
 
-// Remove the attribute itemscope from the element.
+// Remove the attribute ITEMSCOPE from the element.
 func (e *PElement) ITEMSCOPERemove(b bool) *PElement {
 	if e.BoolAttributes == nil {
 		return e
@@ -901,7 +903,7 @@ func (e *PElement) IfITEMTYPE(condition bool, s string) *PElement {
 	return e
 }
 
-// Remove the attribute itemtype from the element.
+// Remove the attribute ITEMTYPE from the element.
 func (e *PElement) ITEMTYPERemove(s string) *PElement {
 	if e.StringAttributes == nil {
 		return e
@@ -931,7 +933,7 @@ func (e *PElement) IfLANG(condition bool, s string) *PElement {
 	return e
 }
 
-// Remove the attribute lang from the element.
+// Remove the attribute LANG from the element.
 func (e *PElement) LANGRemove(s string) *PElement {
 	if e.StringAttributes == nil {
 		return e
@@ -959,7 +961,7 @@ func (e *PElement) IfNONCE(condition bool, s string) *PElement {
 	return e
 }
 
-// Remove the attribute nonce from the element.
+// Remove the attribute NONCE from the element.
 func (e *PElement) NONCERemove(s string) *PElement {
 	if e.StringAttributes == nil {
 		return e
@@ -992,7 +994,7 @@ func (e *PElement) IfPART(condition bool, s ...string) *PElement {
 	return e
 }
 
-// Remove the attribute part from the element.
+// Remove the attribute PART from the element.
 func (e *PElement) PARTRemove(s ...string) *PElement {
 	if e.DelimitedStrings == nil {
 		return e
@@ -1038,7 +1040,7 @@ const (
 	PPopver_manual PPopverChoice = "manual"
 )
 
-// Remove the attribute popver from the element.
+// Remove the attribute POPVER from the element.
 func (e *PElement) POPVERRemove(c PPopverChoice) *PElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1066,7 +1068,7 @@ func (e *PElement) IfSLOT(condition bool, s string) *PElement {
 	return e
 }
 
-// Remove the attribute slot from the element.
+// Remove the attribute SLOT from the element.
 func (e *PElement) SLOTRemove(s string) *PElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1108,7 +1110,7 @@ const (
 	PSpellcheck_false PSpellcheckChoice = "false"
 )
 
-// Remove the attribute spellcheck from the element.
+// Remove the attribute SPELLCHECK from the element.
 func (e *PElement) SPELLCHECKRemove(c PSpellcheckChoice) *PElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1195,7 +1197,7 @@ func (e *PElement) IfSTYLEPairs(condition bool, pairs ...string) *PElement {
 	return e
 }
 
-// Remove the attribute style from the element.
+// Remove the attribute STYLE from the element.
 func (e *PElement) STYLERemove(keys ...string) *PElement {
 	if e.KVStrings == nil {
 		return e
@@ -1239,7 +1241,7 @@ func (e *PElement) IfTABINDEX(condition bool, i int) *PElement {
 	return e
 }
 
-// Remove the attribute tabindex from the element.
+// Remove the attribute TABINDEX from the element.
 func (e *PElement) TABINDEXRemove(i int) *PElement {
 	if e.IntAttributes == nil {
 		return e
@@ -1284,7 +1286,7 @@ func (e *PElement) IfTITLE(condition bool, s string) *PElement {
 	return e
 }
 
-// Remove the attribute title from the element.
+// Remove the attribute TITLE from the element.
 func (e *PElement) TITLERemove(s string) *PElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1316,11 +1318,351 @@ const (
 	PTranslate_no PTranslateChoice = "no"
 )
 
-// Remove the attribute translate from the element.
+// Remove the attribute TRANSLATE from the element.
 func (e *PElement) TRANSLATERemove(c PTranslateChoice) *PElement {
 	if e.StringAttributes == nil {
 		return e
 	}
 	e.StringAttributes.Del("translate")
+	return e
+}
+
+// Merges the store with the given object
+
+func (e *PElement) DATASTAR_MERGE_STORE(v any) *PElement {
+	if e.CustomDataAttributes == nil {
+		e.CustomDataAttributes = treemap.New[string, string]()
+	}
+	b, err := json.Marshal(v)
+	if err != nil {
+		panic(err)
+	}
+	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	return e
+}
+
+// Sets the reference of the element
+
+func (e *PElement) DATASTAR_REF(s string) *PElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-ref"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *PElement) IfDATASTAR_REF(condition bool, s string) *PElement {
+	if condition {
+		e.DATASTAR_REF(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_REF from the element.
+func (e *PElement) DATASTAR_REFRemove() *PElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-ref")
+	return e
+}
+
+// Sets the value of the element
+
+func (e *PElement) DATASTAR_BIND(s string) *PElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-bind"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *PElement) IfDATASTAR_BIND(condition bool, s string) *PElement {
+	if condition {
+		e.DATASTAR_BIND(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_BIND from the element.
+func (e *PElement) DATASTAR_BINDRemove() *PElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-bind")
+	return e
+}
+
+// Sets the value of the element
+
+func (e *PElement) DATASTAR_MODEL(s string) *PElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-model"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *PElement) IfDATASTAR_MODEL(condition bool, s string) *PElement {
+	if condition {
+		e.DATASTAR_MODEL(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_MODEL from the element.
+func (e *PElement) DATASTAR_MODELRemove() *PElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-model")
+	return e
+}
+
+// Sets the textContent of the element
+
+func (e *PElement) DATASTAR_TEXT(s string) *PElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-text"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *PElement) IfDATASTAR_TEXT(condition bool, s string) *PElement {
+	if condition {
+		e.DATASTAR_TEXT(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_TEXT from the element.
+func (e *PElement) DATASTAR_TEXTRemove() *PElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-text")
+	return e
+}
+
+// Sets the event handler of the element
+
+type PDataOnMod customDataKeyModifier
+
+// Debounces the event handler
+func PDataOnModDebounce(
+	s string,
+) PDataOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce_%sms", s)
+	}
+}
+
+// Throttles the event handler
+func PDataOnModThrottle(
+	s string,
+) PDataOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle_%sms", s)
+	}
+}
+
+func (e *PElement) DATASTAR_ON(s string, modifiers ...PDataOnMod) *PElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	customMods := lo.Map(modifiers, func(m PDataOnMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key := customDataKey("data-on", customMods...)
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *PElement) IfDATASTAR_ON(condition bool, s string, modifiers ...PDataOnMod) *PElement {
+	if condition {
+		e.DATASTAR_ON(s, modifiers...)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_ON from the element.
+func (e *PElement) DATASTAR_ONRemove() *PElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-on")
+	return e
+}
+
+// Sets the focus of the element
+
+func (e *PElement) DATASTAR_FOCUSSet(b bool) *PElement {
+	key := "data-focus"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *PElement) DATASTAR_FOCUS() *PElement {
+	return e.DATASTAR_FOCUSSet(true)
+}
+
+// Sets the header of for fetch requests
+
+func (e *PElement) DATASTAR_HEADER(s string) *PElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-header"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *PElement) IfDATASTAR_HEADER(condition bool, s string) *PElement {
+	if condition {
+		e.DATASTAR_HEADER(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_HEADER from the element.
+func (e *PElement) DATASTAR_HEADERRemove() *PElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-header")
+	return e
+}
+
+// Sets the URL for fetch requests
+
+func (e *PElement) DATASTAR_FETCH_URL(s string) *PElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-fetch-url"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *PElement) IfDATASTAR_FETCH_URL(condition bool, s string) *PElement {
+	if condition {
+		e.DATASTAR_FETCH_URL(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_FETCH_URL from the element.
+func (e *PElement) DATASTAR_FETCH_URLRemove() *PElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-fetch-url")
+	return e
+}
+
+// Sets the indicator selector for fetch requests
+
+func (e *PElement) DATASTAR_FETCH_INDICATOR(s string) *PElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "DatastarFetchIndicator"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *PElement) IfDATASTAR_FETCH_INDICATOR(condition bool, s string) *PElement {
+	if condition {
+		e.DATASTAR_FETCH_INDICATOR(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_FETCH_INDICATOR from the element.
+func (e *PElement) DATASTAR_FETCH_INDICATORRemove() *PElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("DatastarFetchIndicator")
+	return e
+}
+
+// Sets the visibility of the element
+
+func (e *PElement) DATASTAR_SHOWSet(b bool) *PElement {
+	key := "data-show"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *PElement) DATASTAR_SHOW() *PElement {
+	return e.DATASTAR_SHOWSet(true)
+}
+
+// Triggers the callback when the element intersects the viewport
+
+func (e *PElement) DATASTAR_INTERSECTSSet(b bool) *PElement {
+	key := "data-intersects"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *PElement) DATASTAR_INTERSECTS() *PElement {
+	return e.DATASTAR_INTERSECTSSet(true)
+}
+
+// Teleports the element to the given selector
+
+func (e *PElement) DATASTAR_TELEPORTSet(b bool) *PElement {
+	key := "data-teleport"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *PElement) DATASTAR_TELEPORT() *PElement {
+	return e.DATASTAR_TELEPORTSet(true)
+}
+
+// Scrolls the element into view
+
+func (e *PElement) DATASTAR_SCROLL_INTO_VIEWSet(b bool) *PElement {
+	key := "data-scroll-into-view"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *PElement) DATASTAR_SCROLL_INTO_VIEW() *PElement {
+	return e.DATASTAR_SCROLL_INTO_VIEWSet(true)
+}
+
+// Setup the ViewTransitionAPI for the element
+
+func (e *PElement) DATASTAR_VIEW_TRANSITION(s string) *PElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-view-transition"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *PElement) IfDATASTAR_VIEW_TRANSITION(condition bool, s string) *PElement {
+	if condition {
+		e.DATASTAR_VIEW_TRANSITION(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_VIEW_TRANSITION from the element.
+func (e *PElement) DATASTAR_VIEW_TRANSITIONRemove() *PElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-view-transition")
 	return e
 }

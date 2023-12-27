@@ -6,7 +6,9 @@ package elements
 import (
 	"fmt"
 
+	"github.com/goccy/go-json"
 	"github.com/igrmk/treemap/v2"
+	"github.com/samber/lo"
 )
 
 // The HTML <col> element defines a column within a table and is used for defining
@@ -143,7 +145,7 @@ func (e *COLElement) IfSPAN(condition bool, i int) *COLElement {
 	return e
 }
 
-// Remove the attribute span from the element.
+// Remove the attribute SPAN from the element.
 func (e *COLElement) SPANRemove(i int) *COLElement {
 	if e.IntAttributes == nil {
 		return e
@@ -171,7 +173,7 @@ func (e *COLElement) IfACCESSKEY(condition bool, r rune) *COLElement {
 	return e
 }
 
-// Remove the attribute accesskey from the element.
+// Remove the attribute ACCESSKEY from the element.
 func (e *COLElement) ACCESSKEYRemove() *COLElement {
 	if e.StringAttributes == nil {
 		return e
@@ -219,7 +221,7 @@ const (
 	ColAutocapitalize_characters ColAutocapitalizeChoice = "characters"
 )
 
-// Remove the attribute autocapitalize from the element.
+// Remove the attribute AUTOCAPITALIZE from the element.
 func (e *COLElement) AUTOCAPITALIZERemove(c ColAutocapitalizeChoice) *COLElement {
 	if e.StringAttributes == nil {
 		return e
@@ -260,7 +262,7 @@ func (e *COLElement) IfAUTOFOCUS(condition bool) *COLElement {
 	return e
 }
 
-// Set the attribute autofocus to the value b explicitly.
+// Set the attribute AUTOFOCUS to the value b explicitly.
 func (e *COLElement) AUTOFOCUSSet(b bool) *COLElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
@@ -276,7 +278,7 @@ func (e *COLElement) IfSetAUTOFOCUS(condition bool, b bool) *COLElement {
 	return e
 }
 
-// Remove the attribute autofocus from the element.
+// Remove the attribute AUTOFOCUS from the element.
 func (e *COLElement) AUTOFOCUSRemove(b bool) *COLElement {
 	if e.BoolAttributes == nil {
 		return e
@@ -310,7 +312,7 @@ func (e *COLElement) IfCLASS(condition bool, s ...string) *COLElement {
 	return e
 }
 
-// Remove the attribute class from the element.
+// Remove the attribute CLASS from the element.
 func (e *COLElement) CLASSRemove(s ...string) *COLElement {
 	if e.DelimitedStrings == nil {
 		return e
@@ -348,7 +350,7 @@ const (
 	ColContenteditable_plaintext_only ColContenteditableChoice = "plaintext-only"
 )
 
-// Remove the attribute contenteditable from the element.
+// Remove the attribute CONTENTEDITABLE from the element.
 func (e *COLElement) CONTENTEDITABLERemove(c ColContenteditableChoice) *COLElement {
 	if e.StringAttributes == nil {
 		return e
@@ -396,7 +398,7 @@ const (
 	ColDir_auto ColDirChoice = "auto"
 )
 
-// Remove the attribute dir from the element.
+// Remove the attribute DIR from the element.
 func (e *COLElement) DIRRemove(c ColDirChoice) *COLElement {
 	if e.StringAttributes == nil {
 		return e
@@ -433,7 +435,7 @@ const (
 	ColDraggable_auto ColDraggableChoice = "auto"
 )
 
-// Remove the attribute draggable from the element.
+// Remove the attribute DRAGGABLE from the element.
 func (e *COLElement) DRAGGABLERemove(c ColDraggableChoice) *COLElement {
 	if e.StringAttributes == nil {
 		return e
@@ -473,7 +475,7 @@ const (
 	ColEnterkeyhint_send ColEnterkeyhintChoice = "send"
 )
 
-// Remove the attribute enterkeyhint from the element.
+// Remove the attribute ENTERKEYHINT from the element.
 func (e *COLElement) ENTERKEYHINTRemove(c ColEnterkeyhintChoice) *COLElement {
 	if e.StringAttributes == nil {
 		return e
@@ -522,7 +524,7 @@ func (e *COLElement) IfEXPORTPARTS(condition bool, s ...string) *COLElement {
 	return e
 }
 
-// Remove the attribute exportparts from the element.
+// Remove the attribute EXPORTPARTS from the element.
 func (e *COLElement) EXPORTPARTSRemove(s ...string) *COLElement {
 	if e.DelimitedStrings == nil {
 		return e
@@ -576,7 +578,7 @@ const (
 	ColHidden_until_found ColHiddenChoice = "until-found"
 )
 
-// Remove the attribute hidden from the element.
+// Remove the attribute HIDDEN from the element.
 func (e *COLElement) HIDDENRemove(c ColHiddenChoice) *COLElement {
 	if e.StringAttributes == nil {
 		return e
@@ -604,7 +606,7 @@ func (e *COLElement) IfID(condition bool, s string) *COLElement {
 	return e
 }
 
-// Remove the attribute id from the element.
+// Remove the attribute ID from the element.
 func (e *COLElement) IDRemove(s string) *COLElement {
 	if e.StringAttributes == nil {
 		return e
@@ -637,7 +639,7 @@ func (e *COLElement) IfINERT(condition bool) *COLElement {
 	return e
 }
 
-// Set the attribute inert to the value b explicitly.
+// Set the attribute INERT to the value b explicitly.
 func (e *COLElement) INERTSet(b bool) *COLElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
@@ -653,7 +655,7 @@ func (e *COLElement) IfSetINERT(condition bool, b bool) *COLElement {
 	return e
 }
 
-// Remove the attribute inert from the element.
+// Remove the attribute INERT from the element.
 func (e *COLElement) INERTRemove(b bool) *COLElement {
 	if e.BoolAttributes == nil {
 		return e
@@ -722,7 +724,7 @@ const (
 	ColInputmode_url ColInputmodeChoice = "url"
 )
 
-// Remove the attribute inputmode from the element.
+// Remove the attribute INPUTMODE from the element.
 func (e *COLElement) INPUTMODERemove(c ColInputmodeChoice) *COLElement {
 	if e.StringAttributes == nil {
 		return e
@@ -752,7 +754,7 @@ func (e *COLElement) IfIS(condition bool, s string) *COLElement {
 	return e
 }
 
-// Remove the attribute is from the element.
+// Remove the attribute IS from the element.
 func (e *COLElement) ISRemove(s string) *COLElement {
 	if e.StringAttributes == nil {
 		return e
@@ -789,7 +791,7 @@ func (e *COLElement) IfITEMID(condition bool, s string) *COLElement {
 	return e
 }
 
-// Remove the attribute itemid from the element.
+// Remove the attribute ITEMID from the element.
 func (e *COLElement) ITEMIDRemove(s string) *COLElement {
 	if e.StringAttributes == nil {
 		return e
@@ -821,7 +823,7 @@ func (e *COLElement) IfITEMPROP(condition bool, s string) *COLElement {
 	return e
 }
 
-// Remove the attribute itemprop from the element.
+// Remove the attribute ITEMPROP from the element.
 func (e *COLElement) ITEMPROPRemove(s string) *COLElement {
 	if e.StringAttributes == nil {
 		return e
@@ -850,7 +852,7 @@ func (e *COLElement) IfITEMREF(condition bool, s string) *COLElement {
 	return e
 }
 
-// Remove the attribute itemref from the element.
+// Remove the attribute ITEMREF from the element.
 func (e *COLElement) ITEMREFRemove(s string) *COLElement {
 	if e.StringAttributes == nil {
 		return e
@@ -879,7 +881,7 @@ func (e *COLElement) IfITEMSCOPE(condition bool) *COLElement {
 	return e
 }
 
-// Set the attribute itemscope to the value b explicitly.
+// Set the attribute ITEMSCOPE to the value b explicitly.
 func (e *COLElement) ITEMSCOPESet(b bool) *COLElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
@@ -895,7 +897,7 @@ func (e *COLElement) IfSetITEMSCOPE(condition bool, b bool) *COLElement {
 	return e
 }
 
-// Remove the attribute itemscope from the element.
+// Remove the attribute ITEMSCOPE from the element.
 func (e *COLElement) ITEMSCOPERemove(b bool) *COLElement {
 	if e.BoolAttributes == nil {
 		return e
@@ -927,7 +929,7 @@ func (e *COLElement) IfITEMTYPE(condition bool, s string) *COLElement {
 	return e
 }
 
-// Remove the attribute itemtype from the element.
+// Remove the attribute ITEMTYPE from the element.
 func (e *COLElement) ITEMTYPERemove(s string) *COLElement {
 	if e.StringAttributes == nil {
 		return e
@@ -957,7 +959,7 @@ func (e *COLElement) IfLANG(condition bool, s string) *COLElement {
 	return e
 }
 
-// Remove the attribute lang from the element.
+// Remove the attribute LANG from the element.
 func (e *COLElement) LANGRemove(s string) *COLElement {
 	if e.StringAttributes == nil {
 		return e
@@ -985,7 +987,7 @@ func (e *COLElement) IfNONCE(condition bool, s string) *COLElement {
 	return e
 }
 
-// Remove the attribute nonce from the element.
+// Remove the attribute NONCE from the element.
 func (e *COLElement) NONCERemove(s string) *COLElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1018,7 +1020,7 @@ func (e *COLElement) IfPART(condition bool, s ...string) *COLElement {
 	return e
 }
 
-// Remove the attribute part from the element.
+// Remove the attribute PART from the element.
 func (e *COLElement) PARTRemove(s ...string) *COLElement {
 	if e.DelimitedStrings == nil {
 		return e
@@ -1064,7 +1066,7 @@ const (
 	ColPopver_manual ColPopverChoice = "manual"
 )
 
-// Remove the attribute popver from the element.
+// Remove the attribute POPVER from the element.
 func (e *COLElement) POPVERRemove(c ColPopverChoice) *COLElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1092,7 +1094,7 @@ func (e *COLElement) IfSLOT(condition bool, s string) *COLElement {
 	return e
 }
 
-// Remove the attribute slot from the element.
+// Remove the attribute SLOT from the element.
 func (e *COLElement) SLOTRemove(s string) *COLElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1134,7 +1136,7 @@ const (
 	ColSpellcheck_false ColSpellcheckChoice = "false"
 )
 
-// Remove the attribute spellcheck from the element.
+// Remove the attribute SPELLCHECK from the element.
 func (e *COLElement) SPELLCHECKRemove(c ColSpellcheckChoice) *COLElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1221,7 +1223,7 @@ func (e *COLElement) IfSTYLEPairs(condition bool, pairs ...string) *COLElement {
 	return e
 }
 
-// Remove the attribute style from the element.
+// Remove the attribute STYLE from the element.
 func (e *COLElement) STYLERemove(keys ...string) *COLElement {
 	if e.KVStrings == nil {
 		return e
@@ -1265,7 +1267,7 @@ func (e *COLElement) IfTABINDEX(condition bool, i int) *COLElement {
 	return e
 }
 
-// Remove the attribute tabindex from the element.
+// Remove the attribute TABINDEX from the element.
 func (e *COLElement) TABINDEXRemove(i int) *COLElement {
 	if e.IntAttributes == nil {
 		return e
@@ -1310,7 +1312,7 @@ func (e *COLElement) IfTITLE(condition bool, s string) *COLElement {
 	return e
 }
 
-// Remove the attribute title from the element.
+// Remove the attribute TITLE from the element.
 func (e *COLElement) TITLERemove(s string) *COLElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1342,11 +1344,351 @@ const (
 	ColTranslate_no ColTranslateChoice = "no"
 )
 
-// Remove the attribute translate from the element.
+// Remove the attribute TRANSLATE from the element.
 func (e *COLElement) TRANSLATERemove(c ColTranslateChoice) *COLElement {
 	if e.StringAttributes == nil {
 		return e
 	}
 	e.StringAttributes.Del("translate")
+	return e
+}
+
+// Merges the store with the given object
+
+func (e *COLElement) DATASTAR_MERGE_STORE(v any) *COLElement {
+	if e.CustomDataAttributes == nil {
+		e.CustomDataAttributes = treemap.New[string, string]()
+	}
+	b, err := json.Marshal(v)
+	if err != nil {
+		panic(err)
+	}
+	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	return e
+}
+
+// Sets the reference of the element
+
+func (e *COLElement) DATASTAR_REF(s string) *COLElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-ref"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *COLElement) IfDATASTAR_REF(condition bool, s string) *COLElement {
+	if condition {
+		e.DATASTAR_REF(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_REF from the element.
+func (e *COLElement) DATASTAR_REFRemove() *COLElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-ref")
+	return e
+}
+
+// Sets the value of the element
+
+func (e *COLElement) DATASTAR_BIND(s string) *COLElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-bind"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *COLElement) IfDATASTAR_BIND(condition bool, s string) *COLElement {
+	if condition {
+		e.DATASTAR_BIND(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_BIND from the element.
+func (e *COLElement) DATASTAR_BINDRemove() *COLElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-bind")
+	return e
+}
+
+// Sets the value of the element
+
+func (e *COLElement) DATASTAR_MODEL(s string) *COLElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-model"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *COLElement) IfDATASTAR_MODEL(condition bool, s string) *COLElement {
+	if condition {
+		e.DATASTAR_MODEL(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_MODEL from the element.
+func (e *COLElement) DATASTAR_MODELRemove() *COLElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-model")
+	return e
+}
+
+// Sets the textContent of the element
+
+func (e *COLElement) DATASTAR_TEXT(s string) *COLElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-text"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *COLElement) IfDATASTAR_TEXT(condition bool, s string) *COLElement {
+	if condition {
+		e.DATASTAR_TEXT(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_TEXT from the element.
+func (e *COLElement) DATASTAR_TEXTRemove() *COLElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-text")
+	return e
+}
+
+// Sets the event handler of the element
+
+type ColDataOnMod customDataKeyModifier
+
+// Debounces the event handler
+func ColDataOnModDebounce(
+	s string,
+) ColDataOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce_%sms", s)
+	}
+}
+
+// Throttles the event handler
+func ColDataOnModThrottle(
+	s string,
+) ColDataOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle_%sms", s)
+	}
+}
+
+func (e *COLElement) DATASTAR_ON(s string, modifiers ...ColDataOnMod) *COLElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	customMods := lo.Map(modifiers, func(m ColDataOnMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key := customDataKey("data-on", customMods...)
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *COLElement) IfDATASTAR_ON(condition bool, s string, modifiers ...ColDataOnMod) *COLElement {
+	if condition {
+		e.DATASTAR_ON(s, modifiers...)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_ON from the element.
+func (e *COLElement) DATASTAR_ONRemove() *COLElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-on")
+	return e
+}
+
+// Sets the focus of the element
+
+func (e *COLElement) DATASTAR_FOCUSSet(b bool) *COLElement {
+	key := "data-focus"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *COLElement) DATASTAR_FOCUS() *COLElement {
+	return e.DATASTAR_FOCUSSet(true)
+}
+
+// Sets the header of for fetch requests
+
+func (e *COLElement) DATASTAR_HEADER(s string) *COLElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-header"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *COLElement) IfDATASTAR_HEADER(condition bool, s string) *COLElement {
+	if condition {
+		e.DATASTAR_HEADER(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_HEADER from the element.
+func (e *COLElement) DATASTAR_HEADERRemove() *COLElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-header")
+	return e
+}
+
+// Sets the URL for fetch requests
+
+func (e *COLElement) DATASTAR_FETCH_URL(s string) *COLElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-fetch-url"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *COLElement) IfDATASTAR_FETCH_URL(condition bool, s string) *COLElement {
+	if condition {
+		e.DATASTAR_FETCH_URL(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_FETCH_URL from the element.
+func (e *COLElement) DATASTAR_FETCH_URLRemove() *COLElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-fetch-url")
+	return e
+}
+
+// Sets the indicator selector for fetch requests
+
+func (e *COLElement) DATASTAR_FETCH_INDICATOR(s string) *COLElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "DatastarFetchIndicator"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *COLElement) IfDATASTAR_FETCH_INDICATOR(condition bool, s string) *COLElement {
+	if condition {
+		e.DATASTAR_FETCH_INDICATOR(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_FETCH_INDICATOR from the element.
+func (e *COLElement) DATASTAR_FETCH_INDICATORRemove() *COLElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("DatastarFetchIndicator")
+	return e
+}
+
+// Sets the visibility of the element
+
+func (e *COLElement) DATASTAR_SHOWSet(b bool) *COLElement {
+	key := "data-show"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *COLElement) DATASTAR_SHOW() *COLElement {
+	return e.DATASTAR_SHOWSet(true)
+}
+
+// Triggers the callback when the element intersects the viewport
+
+func (e *COLElement) DATASTAR_INTERSECTSSet(b bool) *COLElement {
+	key := "data-intersects"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *COLElement) DATASTAR_INTERSECTS() *COLElement {
+	return e.DATASTAR_INTERSECTSSet(true)
+}
+
+// Teleports the element to the given selector
+
+func (e *COLElement) DATASTAR_TELEPORTSet(b bool) *COLElement {
+	key := "data-teleport"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *COLElement) DATASTAR_TELEPORT() *COLElement {
+	return e.DATASTAR_TELEPORTSet(true)
+}
+
+// Scrolls the element into view
+
+func (e *COLElement) DATASTAR_SCROLL_INTO_VIEWSet(b bool) *COLElement {
+	key := "data-scroll-into-view"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *COLElement) DATASTAR_SCROLL_INTO_VIEW() *COLElement {
+	return e.DATASTAR_SCROLL_INTO_VIEWSet(true)
+}
+
+// Setup the ViewTransitionAPI for the element
+
+func (e *COLElement) DATASTAR_VIEW_TRANSITION(s string) *COLElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-view-transition"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *COLElement) IfDATASTAR_VIEW_TRANSITION(condition bool, s string) *COLElement {
+	if condition {
+		e.DATASTAR_VIEW_TRANSITION(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_VIEW_TRANSITION from the element.
+func (e *COLElement) DATASTAR_VIEW_TRANSITIONRemove() *COLElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-view-transition")
 	return e
 }

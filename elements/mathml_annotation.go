@@ -6,7 +6,9 @@ package elements
 import (
 	"fmt"
 
+	"github.com/goccy/go-json"
 	"github.com/igrmk/treemap/v2"
+	"github.com/samber/lo"
 )
 
 // This element is used to include comments or annotations within a MathML
@@ -129,30 +131,32 @@ func (e *MathMLANNOTATIONElement) CustomDataRemove(key string) *MathMLANNOTATION
 	return e
 }
 
-// This attribute specifies the background color of the element
-// Possible values are a color name or a color specification in the format defined
-// in the CSS3 Color Module [CSS3COLOR].
-func (e *MathMLANNOTATIONElement) MATHBACKGROUND(s string) *MathMLANNOTATIONElement {
+// This attribute specifies the encoding used for the text content of the element
+// Possible values are text/plain, text/html, and application/x-tex.
+func (e *MathMLANNOTATIONElement) ENCODING(c MathMLAnnotationEncodingChoice) *MathMLANNOTATIONElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
-	e.StringAttributes.Set("mathbackground", s)
+	e.StringAttributes.Set("encoding", string(c))
 	return e
 }
 
-func (e *MathMLANNOTATIONElement) IfMATHBACKGROUND(condition bool, s string) *MathMLANNOTATIONElement {
-	if condition {
-		e.MATHBACKGROUND(s)
-	}
-	return e
-}
+type MathMLAnnotationEncodingChoice string
 
-// Remove the attribute mathbackground from the element.
-func (e *MathMLANNOTATIONElement) MATHBACKGROUNDRemove(s string) *MathMLANNOTATIONElement {
+const (
+	MathMLAnnotationEncoding_text_plain MathMLAnnotationEncodingChoice = "text/plain"
+
+	MathMLAnnotationEncoding_text_html MathMLAnnotationEncodingChoice = "text/html"
+
+	MathMLAnnotationEncoding_application_x_tex MathMLAnnotationEncodingChoice = "application/x-tex"
+)
+
+// Remove the attribute ENCODING from the element.
+func (e *MathMLANNOTATIONElement) ENCODINGRemove(c MathMLAnnotationEncodingChoice) *MathMLANNOTATIONElement {
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("mathbackground")
+	e.StringAttributes.Del("encoding")
 	return e
 }
 
@@ -172,7 +176,7 @@ func (e *MathMLANNOTATIONElement) IfNAME(condition bool, s string) *MathMLANNOTA
 	return e
 }
 
-// Remove the attribute name from the element.
+// Remove the attribute NAME from the element.
 func (e *MathMLANNOTATIONElement) NAMERemove(s string) *MathMLANNOTATIONElement {
 	if e.StringAttributes == nil {
 		return e
@@ -205,7 +209,7 @@ func (e *MathMLANNOTATIONElement) IfCLASS(condition bool, s ...string) *MathMLAN
 	return e
 }
 
-// Remove the attribute class from the element.
+// Remove the attribute CLASS from the element.
 func (e *MathMLANNOTATIONElement) CLASSRemove(s ...string) *MathMLANNOTATIONElement {
 	if e.DelimitedStrings == nil {
 		return e
@@ -239,7 +243,7 @@ const (
 	MathMLAnnotationDir_rtl MathMLAnnotationDirChoice = "rtl"
 )
 
-// Remove the attribute dir from the element.
+// Remove the attribute DIR from the element.
 func (e *MathMLANNOTATIONElement) DIRRemove(c MathMLAnnotationDirChoice) *MathMLANNOTATIONElement {
 	if e.StringAttributes == nil {
 		return e
@@ -268,7 +272,7 @@ const (
 	MathMLAnnotationDisplaystyle_false MathMLAnnotationDisplaystyleChoice = "false"
 )
 
-// Remove the attribute displaystyle from the element.
+// Remove the attribute DISPLAYSTYLE from the element.
 func (e *MathMLANNOTATIONElement) DISPLAYSTYLERemove(c MathMLAnnotationDisplaystyleChoice) *MathMLANNOTATIONElement {
 	if e.StringAttributes == nil {
 		return e
@@ -294,7 +298,7 @@ func (e *MathMLANNOTATIONElement) IfID(condition bool, s string) *MathMLANNOTATI
 	return e
 }
 
-// Remove the attribute id from the element.
+// Remove the attribute ID from the element.
 func (e *MathMLANNOTATIONElement) IDRemove(s string) *MathMLANNOTATIONElement {
 	if e.StringAttributes == nil {
 		return e
@@ -303,32 +307,30 @@ func (e *MathMLANNOTATIONElement) IDRemove(s string) *MathMLANNOTATIONElement {
 	return e
 }
 
-// This attribute specifies the encoding used for the text content of the element
-// Possible values are text/plain, text/html, and application/x-tex.
-func (e *MathMLANNOTATIONElement) ENCODING(c MathMLAnnotationEncodingChoice) *MathMLANNOTATIONElement {
+// This attribute specifies the background color of the element
+// Possible values are a color name or a color specification in the format defined
+// in the CSS3 Color Module [CSS3COLOR].
+func (e *MathMLANNOTATIONElement) MATHBACKGROUND(s string) *MathMLANNOTATIONElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
-	e.StringAttributes.Set("encoding", string(c))
+	e.StringAttributes.Set("mathbackground", s)
 	return e
 }
 
-type MathMLAnnotationEncodingChoice string
+func (e *MathMLANNOTATIONElement) IfMATHBACKGROUND(condition bool, s string) *MathMLANNOTATIONElement {
+	if condition {
+		e.MATHBACKGROUND(s)
+	}
+	return e
+}
 
-const (
-	MathMLAnnotationEncoding_text_plain MathMLAnnotationEncodingChoice = "text/plain"
-
-	MathMLAnnotationEncoding_text_html MathMLAnnotationEncodingChoice = "text/html"
-
-	MathMLAnnotationEncoding_application_x_tex MathMLAnnotationEncodingChoice = "application/x-tex"
-)
-
-// Remove the attribute encoding from the element.
-func (e *MathMLANNOTATIONElement) ENCODINGRemove(c MathMLAnnotationEncodingChoice) *MathMLANNOTATIONElement {
+// Remove the attribute MATHBACKGROUND from the element.
+func (e *MathMLANNOTATIONElement) MATHBACKGROUNDRemove(s string) *MathMLANNOTATIONElement {
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("encoding")
+	e.StringAttributes.Del("mathbackground")
 	return e
 }
 
@@ -350,12 +352,38 @@ func (e *MathMLANNOTATIONElement) IfMATHCOLOR(condition bool, s string) *MathMLA
 	return e
 }
 
-// Remove the attribute mathcolor from the element.
+// Remove the attribute MATHCOLOR from the element.
 func (e *MathMLANNOTATIONElement) MATHCOLORRemove(s string) *MathMLANNOTATIONElement {
 	if e.StringAttributes == nil {
 		return e
 	}
 	e.StringAttributes.Del("mathcolor")
+	return e
+}
+
+// This attribute specifies the size of the element
+// Possible values are a dimension or a dimensionless number.
+func (e *MathMLANNOTATIONElement) MATHSIZE_STR(s string) *MathMLANNOTATIONElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	e.StringAttributes.Set("mathsize", s)
+	return e
+}
+
+func (e *MathMLANNOTATIONElement) IfMATHSIZE_STR(condition bool, s string) *MathMLANNOTATIONElement {
+	if condition {
+		e.MATHSIZE_STR(s)
+	}
+	return e
+}
+
+// Remove the attribute MATHSIZE_STR from the element.
+func (e *MathMLANNOTATIONElement) MATHSIZE_STRRemove(s string) *MathMLANNOTATIONElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("mathsize")
 	return e
 }
 
@@ -378,7 +406,7 @@ func (e *MathMLANNOTATIONElement) IfNONCE(condition bool, s string) *MathMLANNOT
 	return e
 }
 
-// Remove the attribute nonce from the element.
+// Remove the attribute NONCE from the element.
 func (e *MathMLANNOTATIONElement) NONCERemove(s string) *MathMLANNOTATIONElement {
 	if e.StringAttributes == nil {
 		return e
@@ -404,7 +432,7 @@ func (e *MathMLANNOTATIONElement) IfSCRIPTLEVEL(condition bool, i int) *MathMLAN
 	return e
 }
 
-// Remove the attribute scriptlevel from the element.
+// Remove the attribute SCRIPTLEVEL from the element.
 func (e *MathMLANNOTATIONElement) SCRIPTLEVELRemove(i int) *MathMLANNOTATIONElement {
 	if e.IntAttributes == nil {
 		return e
@@ -490,7 +518,7 @@ func (e *MathMLANNOTATIONElement) IfSTYLEPairs(condition bool, pairs ...string) 
 	return e
 }
 
-// Remove the attribute style from the element.
+// Remove the attribute STYLE from the element.
 func (e *MathMLANNOTATIONElement) STYLERemove(keys ...string) *MathMLANNOTATIONElement {
 	if e.KVStrings == nil {
 		return e
@@ -524,7 +552,7 @@ func (e *MathMLANNOTATIONElement) IfTABINDEX(condition bool, i int) *MathMLANNOT
 	return e
 }
 
-// Remove the attribute tabindex from the element.
+// Remove the attribute TABINDEX from the element.
 func (e *MathMLANNOTATIONElement) TABINDEXRemove(i int) *MathMLANNOTATIONElement {
 	if e.IntAttributes == nil {
 		return e
@@ -533,28 +561,342 @@ func (e *MathMLANNOTATIONElement) TABINDEXRemove(i int) *MathMLANNOTATIONElement
 	return e
 }
 
-// This attribute specifies the size of the element
-// Possible values are a dimension or a dimensionless number.
-func (e *MathMLANNOTATIONElement) MATHSIZESTR(s string) *MathMLANNOTATIONElement {
+// Merges the store with the given object
+
+func (e *MathMLANNOTATIONElement) DATASTAR_MERGE_STORE(v any) *MathMLANNOTATIONElement {
+	if e.CustomDataAttributes == nil {
+		e.CustomDataAttributes = treemap.New[string, string]()
+	}
+	b, err := json.Marshal(v)
+	if err != nil {
+		panic(err)
+	}
+	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	return e
+}
+
+// Sets the reference of the element
+
+func (e *MathMLANNOTATIONElement) DATASTAR_REF(s string) *MathMLANNOTATIONElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
-	e.StringAttributes.Set("mathsize", s)
+	key := "data-ref"
+	e.StringAttributes.Set(key, s)
 	return e
 }
 
-func (e *MathMLANNOTATIONElement) IfMATHSIZESTR(condition bool, s string) *MathMLANNOTATIONElement {
+func (e *MathMLANNOTATIONElement) IfDATASTAR_REF(condition bool, s string) *MathMLANNOTATIONElement {
 	if condition {
-		e.MATHSIZESTR(s)
+		e.DATASTAR_REF(s)
 	}
 	return e
 }
 
-// Remove the attribute mathsizeStr from the element.
-func (e *MathMLANNOTATIONElement) MATHSIZESTRRemove(s string) *MathMLANNOTATIONElement {
+// Remove the attribute DATASTAR_REF from the element.
+func (e *MathMLANNOTATIONElement) DATASTAR_REFRemove() *MathMLANNOTATIONElement {
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("mathsize")
+	e.StringAttributes.Del("data-ref")
+	return e
+}
+
+// Sets the value of the element
+
+func (e *MathMLANNOTATIONElement) DATASTAR_BIND(s string) *MathMLANNOTATIONElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-bind"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *MathMLANNOTATIONElement) IfDATASTAR_BIND(condition bool, s string) *MathMLANNOTATIONElement {
+	if condition {
+		e.DATASTAR_BIND(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_BIND from the element.
+func (e *MathMLANNOTATIONElement) DATASTAR_BINDRemove() *MathMLANNOTATIONElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-bind")
+	return e
+}
+
+// Sets the value of the element
+
+func (e *MathMLANNOTATIONElement) DATASTAR_MODEL(s string) *MathMLANNOTATIONElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-model"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *MathMLANNOTATIONElement) IfDATASTAR_MODEL(condition bool, s string) *MathMLANNOTATIONElement {
+	if condition {
+		e.DATASTAR_MODEL(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_MODEL from the element.
+func (e *MathMLANNOTATIONElement) DATASTAR_MODELRemove() *MathMLANNOTATIONElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-model")
+	return e
+}
+
+// Sets the textContent of the element
+
+func (e *MathMLANNOTATIONElement) DATASTAR_TEXT(s string) *MathMLANNOTATIONElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-text"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *MathMLANNOTATIONElement) IfDATASTAR_TEXT(condition bool, s string) *MathMLANNOTATIONElement {
+	if condition {
+		e.DATASTAR_TEXT(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_TEXT from the element.
+func (e *MathMLANNOTATIONElement) DATASTAR_TEXTRemove() *MathMLANNOTATIONElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-text")
+	return e
+}
+
+// Sets the event handler of the element
+
+type MathMLAnnotationDataOnMod customDataKeyModifier
+
+// Debounces the event handler
+func MathMLAnnotationDataOnModDebounce(
+	s string,
+) MathMLAnnotationDataOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce_%sms", s)
+	}
+}
+
+// Throttles the event handler
+func MathMLAnnotationDataOnModThrottle(
+	s string,
+) MathMLAnnotationDataOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle_%sms", s)
+	}
+}
+
+func (e *MathMLANNOTATIONElement) DATASTAR_ON(s string, modifiers ...MathMLAnnotationDataOnMod) *MathMLANNOTATIONElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	customMods := lo.Map(modifiers, func(m MathMLAnnotationDataOnMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key := customDataKey("data-on", customMods...)
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *MathMLANNOTATIONElement) IfDATASTAR_ON(condition bool, s string, modifiers ...MathMLAnnotationDataOnMod) *MathMLANNOTATIONElement {
+	if condition {
+		e.DATASTAR_ON(s, modifiers...)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_ON from the element.
+func (e *MathMLANNOTATIONElement) DATASTAR_ONRemove() *MathMLANNOTATIONElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-on")
+	return e
+}
+
+// Sets the focus of the element
+
+func (e *MathMLANNOTATIONElement) DATASTAR_FOCUSSet(b bool) *MathMLANNOTATIONElement {
+	key := "data-focus"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *MathMLANNOTATIONElement) DATASTAR_FOCUS() *MathMLANNOTATIONElement {
+	return e.DATASTAR_FOCUSSet(true)
+}
+
+// Sets the header of for fetch requests
+
+func (e *MathMLANNOTATIONElement) DATASTAR_HEADER(s string) *MathMLANNOTATIONElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-header"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *MathMLANNOTATIONElement) IfDATASTAR_HEADER(condition bool, s string) *MathMLANNOTATIONElement {
+	if condition {
+		e.DATASTAR_HEADER(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_HEADER from the element.
+func (e *MathMLANNOTATIONElement) DATASTAR_HEADERRemove() *MathMLANNOTATIONElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-header")
+	return e
+}
+
+// Sets the URL for fetch requests
+
+func (e *MathMLANNOTATIONElement) DATASTAR_FETCH_URL(s string) *MathMLANNOTATIONElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-fetch-url"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *MathMLANNOTATIONElement) IfDATASTAR_FETCH_URL(condition bool, s string) *MathMLANNOTATIONElement {
+	if condition {
+		e.DATASTAR_FETCH_URL(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_FETCH_URL from the element.
+func (e *MathMLANNOTATIONElement) DATASTAR_FETCH_URLRemove() *MathMLANNOTATIONElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-fetch-url")
+	return e
+}
+
+// Sets the indicator selector for fetch requests
+
+func (e *MathMLANNOTATIONElement) DATASTAR_FETCH_INDICATOR(s string) *MathMLANNOTATIONElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "DatastarFetchIndicator"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *MathMLANNOTATIONElement) IfDATASTAR_FETCH_INDICATOR(condition bool, s string) *MathMLANNOTATIONElement {
+	if condition {
+		e.DATASTAR_FETCH_INDICATOR(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_FETCH_INDICATOR from the element.
+func (e *MathMLANNOTATIONElement) DATASTAR_FETCH_INDICATORRemove() *MathMLANNOTATIONElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("DatastarFetchIndicator")
+	return e
+}
+
+// Sets the visibility of the element
+
+func (e *MathMLANNOTATIONElement) DATASTAR_SHOWSet(b bool) *MathMLANNOTATIONElement {
+	key := "data-show"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *MathMLANNOTATIONElement) DATASTAR_SHOW() *MathMLANNOTATIONElement {
+	return e.DATASTAR_SHOWSet(true)
+}
+
+// Triggers the callback when the element intersects the viewport
+
+func (e *MathMLANNOTATIONElement) DATASTAR_INTERSECTSSet(b bool) *MathMLANNOTATIONElement {
+	key := "data-intersects"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *MathMLANNOTATIONElement) DATASTAR_INTERSECTS() *MathMLANNOTATIONElement {
+	return e.DATASTAR_INTERSECTSSet(true)
+}
+
+// Teleports the element to the given selector
+
+func (e *MathMLANNOTATIONElement) DATASTAR_TELEPORTSet(b bool) *MathMLANNOTATIONElement {
+	key := "data-teleport"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *MathMLANNOTATIONElement) DATASTAR_TELEPORT() *MathMLANNOTATIONElement {
+	return e.DATASTAR_TELEPORTSet(true)
+}
+
+// Scrolls the element into view
+
+func (e *MathMLANNOTATIONElement) DATASTAR_SCROLL_INTO_VIEWSet(b bool) *MathMLANNOTATIONElement {
+	key := "data-scroll-into-view"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *MathMLANNOTATIONElement) DATASTAR_SCROLL_INTO_VIEW() *MathMLANNOTATIONElement {
+	return e.DATASTAR_SCROLL_INTO_VIEWSet(true)
+}
+
+// Setup the ViewTransitionAPI for the element
+
+func (e *MathMLANNOTATIONElement) DATASTAR_VIEW_TRANSITION(s string) *MathMLANNOTATIONElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-view-transition"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *MathMLANNOTATIONElement) IfDATASTAR_VIEW_TRANSITION(condition bool, s string) *MathMLANNOTATIONElement {
+	if condition {
+		e.DATASTAR_VIEW_TRANSITION(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_VIEW_TRANSITION from the element.
+func (e *MathMLANNOTATIONElement) DATASTAR_VIEW_TRANSITIONRemove() *MathMLANNOTATIONElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-view-transition")
 	return e
 }

@@ -6,7 +6,9 @@ package elements
 import (
 	"fmt"
 
+	"github.com/goccy/go-json"
 	"github.com/igrmk/treemap/v2"
+	"github.com/samber/lo"
 )
 
 // The HTML <select> element represents a control that provides a menu of options:
@@ -145,7 +147,7 @@ const (
 	SelectAutocomplete_off SelectAutocompleteChoice = "off"
 )
 
-// Remove the attribute autocomplete from the element.
+// Remove the attribute AUTOCOMPLETE from the element.
 func (e *SELECTElement) AUTOCOMPLETERemove(c SelectAutocompleteChoice) *SELECTElement {
 	if e.StringAttributes == nil {
 		return e
@@ -167,7 +169,7 @@ func (e *SELECTElement) IfDISABLED(condition bool) *SELECTElement {
 	return e
 }
 
-// Set the attribute disabled to the value b explicitly.
+// Set the attribute DISABLED to the value b explicitly.
 func (e *SELECTElement) DISABLEDSet(b bool) *SELECTElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
@@ -183,7 +185,7 @@ func (e *SELECTElement) IfSetDISABLED(condition bool, b bool) *SELECTElement {
 	return e
 }
 
-// Remove the attribute disabled from the element.
+// Remove the attribute DISABLED from the element.
 func (e *SELECTElement) DISABLEDRemove(b bool) *SELECTElement {
 	if e.BoolAttributes == nil {
 		return e
@@ -208,7 +210,7 @@ func (e *SELECTElement) IfFORM(condition bool, s string) *SELECTElement {
 	return e
 }
 
-// Remove the attribute form from the element.
+// Remove the attribute FORM from the element.
 func (e *SELECTElement) FORMRemove(s string) *SELECTElement {
 	if e.StringAttributes == nil {
 		return e
@@ -230,7 +232,7 @@ func (e *SELECTElement) IfMULTIPLE(condition bool) *SELECTElement {
 	return e
 }
 
-// Set the attribute multiple to the value b explicitly.
+// Set the attribute MULTIPLE to the value b explicitly.
 func (e *SELECTElement) MULTIPLESet(b bool) *SELECTElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
@@ -246,7 +248,7 @@ func (e *SELECTElement) IfSetMULTIPLE(condition bool, b bool) *SELECTElement {
 	return e
 }
 
-// Remove the attribute multiple from the element.
+// Remove the attribute MULTIPLE from the element.
 func (e *SELECTElement) MULTIPLERemove(b bool) *SELECTElement {
 	if e.BoolAttributes == nil {
 		return e
@@ -271,7 +273,7 @@ func (e *SELECTElement) IfNAME(condition bool, s string) *SELECTElement {
 	return e
 }
 
-// Remove the attribute name from the element.
+// Remove the attribute NAME from the element.
 func (e *SELECTElement) NAMERemove(s string) *SELECTElement {
 	if e.StringAttributes == nil {
 		return e
@@ -293,7 +295,7 @@ func (e *SELECTElement) IfREQUIRED(condition bool) *SELECTElement {
 	return e
 }
 
-// Set the attribute required to the value b explicitly.
+// Set the attribute REQUIRED to the value b explicitly.
 func (e *SELECTElement) REQUIREDSet(b bool) *SELECTElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
@@ -309,7 +311,7 @@ func (e *SELECTElement) IfSetREQUIRED(condition bool, b bool) *SELECTElement {
 	return e
 }
 
-// Remove the attribute required from the element.
+// Remove the attribute REQUIRED from the element.
 func (e *SELECTElement) REQUIREDRemove(b bool) *SELECTElement {
 	if e.BoolAttributes == nil {
 		return e
@@ -334,7 +336,7 @@ func (e *SELECTElement) IfSIZE(condition bool, i int) *SELECTElement {
 	return e
 }
 
-// Remove the attribute size from the element.
+// Remove the attribute SIZE from the element.
 func (e *SELECTElement) SIZERemove(i int) *SELECTElement {
 	if e.IntAttributes == nil {
 		return e
@@ -362,7 +364,7 @@ func (e *SELECTElement) IfACCESSKEY(condition bool, r rune) *SELECTElement {
 	return e
 }
 
-// Remove the attribute accesskey from the element.
+// Remove the attribute ACCESSKEY from the element.
 func (e *SELECTElement) ACCESSKEYRemove() *SELECTElement {
 	if e.StringAttributes == nil {
 		return e
@@ -410,7 +412,7 @@ const (
 	SelectAutocapitalize_characters SelectAutocapitalizeChoice = "characters"
 )
 
-// Remove the attribute autocapitalize from the element.
+// Remove the attribute AUTOCAPITALIZE from the element.
 func (e *SELECTElement) AUTOCAPITALIZERemove(c SelectAutocapitalizeChoice) *SELECTElement {
 	if e.StringAttributes == nil {
 		return e
@@ -451,7 +453,7 @@ func (e *SELECTElement) IfAUTOFOCUS(condition bool) *SELECTElement {
 	return e
 }
 
-// Set the attribute autofocus to the value b explicitly.
+// Set the attribute AUTOFOCUS to the value b explicitly.
 func (e *SELECTElement) AUTOFOCUSSet(b bool) *SELECTElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
@@ -467,7 +469,7 @@ func (e *SELECTElement) IfSetAUTOFOCUS(condition bool, b bool) *SELECTElement {
 	return e
 }
 
-// Remove the attribute autofocus from the element.
+// Remove the attribute AUTOFOCUS from the element.
 func (e *SELECTElement) AUTOFOCUSRemove(b bool) *SELECTElement {
 	if e.BoolAttributes == nil {
 		return e
@@ -501,7 +503,7 @@ func (e *SELECTElement) IfCLASS(condition bool, s ...string) *SELECTElement {
 	return e
 }
 
-// Remove the attribute class from the element.
+// Remove the attribute CLASS from the element.
 func (e *SELECTElement) CLASSRemove(s ...string) *SELECTElement {
 	if e.DelimitedStrings == nil {
 		return e
@@ -539,7 +541,7 @@ const (
 	SelectContenteditable_plaintext_only SelectContenteditableChoice = "plaintext-only"
 )
 
-// Remove the attribute contenteditable from the element.
+// Remove the attribute CONTENTEDITABLE from the element.
 func (e *SELECTElement) CONTENTEDITABLERemove(c SelectContenteditableChoice) *SELECTElement {
 	if e.StringAttributes == nil {
 		return e
@@ -587,7 +589,7 @@ const (
 	SelectDir_auto SelectDirChoice = "auto"
 )
 
-// Remove the attribute dir from the element.
+// Remove the attribute DIR from the element.
 func (e *SELECTElement) DIRRemove(c SelectDirChoice) *SELECTElement {
 	if e.StringAttributes == nil {
 		return e
@@ -624,7 +626,7 @@ const (
 	SelectDraggable_auto SelectDraggableChoice = "auto"
 )
 
-// Remove the attribute draggable from the element.
+// Remove the attribute DRAGGABLE from the element.
 func (e *SELECTElement) DRAGGABLERemove(c SelectDraggableChoice) *SELECTElement {
 	if e.StringAttributes == nil {
 		return e
@@ -664,7 +666,7 @@ const (
 	SelectEnterkeyhint_send SelectEnterkeyhintChoice = "send"
 )
 
-// Remove the attribute enterkeyhint from the element.
+// Remove the attribute ENTERKEYHINT from the element.
 func (e *SELECTElement) ENTERKEYHINTRemove(c SelectEnterkeyhintChoice) *SELECTElement {
 	if e.StringAttributes == nil {
 		return e
@@ -713,7 +715,7 @@ func (e *SELECTElement) IfEXPORTPARTS(condition bool, s ...string) *SELECTElemen
 	return e
 }
 
-// Remove the attribute exportparts from the element.
+// Remove the attribute EXPORTPARTS from the element.
 func (e *SELECTElement) EXPORTPARTSRemove(s ...string) *SELECTElement {
 	if e.DelimitedStrings == nil {
 		return e
@@ -767,7 +769,7 @@ const (
 	SelectHidden_until_found SelectHiddenChoice = "until-found"
 )
 
-// Remove the attribute hidden from the element.
+// Remove the attribute HIDDEN from the element.
 func (e *SELECTElement) HIDDENRemove(c SelectHiddenChoice) *SELECTElement {
 	if e.StringAttributes == nil {
 		return e
@@ -795,7 +797,7 @@ func (e *SELECTElement) IfID(condition bool, s string) *SELECTElement {
 	return e
 }
 
-// Remove the attribute id from the element.
+// Remove the attribute ID from the element.
 func (e *SELECTElement) IDRemove(s string) *SELECTElement {
 	if e.StringAttributes == nil {
 		return e
@@ -828,7 +830,7 @@ func (e *SELECTElement) IfINERT(condition bool) *SELECTElement {
 	return e
 }
 
-// Set the attribute inert to the value b explicitly.
+// Set the attribute INERT to the value b explicitly.
 func (e *SELECTElement) INERTSet(b bool) *SELECTElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
@@ -844,7 +846,7 @@ func (e *SELECTElement) IfSetINERT(condition bool, b bool) *SELECTElement {
 	return e
 }
 
-// Remove the attribute inert from the element.
+// Remove the attribute INERT from the element.
 func (e *SELECTElement) INERTRemove(b bool) *SELECTElement {
 	if e.BoolAttributes == nil {
 		return e
@@ -913,7 +915,7 @@ const (
 	SelectInputmode_url SelectInputmodeChoice = "url"
 )
 
-// Remove the attribute inputmode from the element.
+// Remove the attribute INPUTMODE from the element.
 func (e *SELECTElement) INPUTMODERemove(c SelectInputmodeChoice) *SELECTElement {
 	if e.StringAttributes == nil {
 		return e
@@ -943,7 +945,7 @@ func (e *SELECTElement) IfIS(condition bool, s string) *SELECTElement {
 	return e
 }
 
-// Remove the attribute is from the element.
+// Remove the attribute IS from the element.
 func (e *SELECTElement) ISRemove(s string) *SELECTElement {
 	if e.StringAttributes == nil {
 		return e
@@ -980,7 +982,7 @@ func (e *SELECTElement) IfITEMID(condition bool, s string) *SELECTElement {
 	return e
 }
 
-// Remove the attribute itemid from the element.
+// Remove the attribute ITEMID from the element.
 func (e *SELECTElement) ITEMIDRemove(s string) *SELECTElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1012,7 +1014,7 @@ func (e *SELECTElement) IfITEMPROP(condition bool, s string) *SELECTElement {
 	return e
 }
 
-// Remove the attribute itemprop from the element.
+// Remove the attribute ITEMPROP from the element.
 func (e *SELECTElement) ITEMPROPRemove(s string) *SELECTElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1041,7 +1043,7 @@ func (e *SELECTElement) IfITEMREF(condition bool, s string) *SELECTElement {
 	return e
 }
 
-// Remove the attribute itemref from the element.
+// Remove the attribute ITEMREF from the element.
 func (e *SELECTElement) ITEMREFRemove(s string) *SELECTElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1070,7 +1072,7 @@ func (e *SELECTElement) IfITEMSCOPE(condition bool) *SELECTElement {
 	return e
 }
 
-// Set the attribute itemscope to the value b explicitly.
+// Set the attribute ITEMSCOPE to the value b explicitly.
 func (e *SELECTElement) ITEMSCOPESet(b bool) *SELECTElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
@@ -1086,7 +1088,7 @@ func (e *SELECTElement) IfSetITEMSCOPE(condition bool, b bool) *SELECTElement {
 	return e
 }
 
-// Remove the attribute itemscope from the element.
+// Remove the attribute ITEMSCOPE from the element.
 func (e *SELECTElement) ITEMSCOPERemove(b bool) *SELECTElement {
 	if e.BoolAttributes == nil {
 		return e
@@ -1118,7 +1120,7 @@ func (e *SELECTElement) IfITEMTYPE(condition bool, s string) *SELECTElement {
 	return e
 }
 
-// Remove the attribute itemtype from the element.
+// Remove the attribute ITEMTYPE from the element.
 func (e *SELECTElement) ITEMTYPERemove(s string) *SELECTElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1148,7 +1150,7 @@ func (e *SELECTElement) IfLANG(condition bool, s string) *SELECTElement {
 	return e
 }
 
-// Remove the attribute lang from the element.
+// Remove the attribute LANG from the element.
 func (e *SELECTElement) LANGRemove(s string) *SELECTElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1176,7 +1178,7 @@ func (e *SELECTElement) IfNONCE(condition bool, s string) *SELECTElement {
 	return e
 }
 
-// Remove the attribute nonce from the element.
+// Remove the attribute NONCE from the element.
 func (e *SELECTElement) NONCERemove(s string) *SELECTElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1209,7 +1211,7 @@ func (e *SELECTElement) IfPART(condition bool, s ...string) *SELECTElement {
 	return e
 }
 
-// Remove the attribute part from the element.
+// Remove the attribute PART from the element.
 func (e *SELECTElement) PARTRemove(s ...string) *SELECTElement {
 	if e.DelimitedStrings == nil {
 		return e
@@ -1255,7 +1257,7 @@ const (
 	SelectPopver_manual SelectPopverChoice = "manual"
 )
 
-// Remove the attribute popver from the element.
+// Remove the attribute POPVER from the element.
 func (e *SELECTElement) POPVERRemove(c SelectPopverChoice) *SELECTElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1283,7 +1285,7 @@ func (e *SELECTElement) IfSLOT(condition bool, s string) *SELECTElement {
 	return e
 }
 
-// Remove the attribute slot from the element.
+// Remove the attribute SLOT from the element.
 func (e *SELECTElement) SLOTRemove(s string) *SELECTElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1325,7 +1327,7 @@ const (
 	SelectSpellcheck_false SelectSpellcheckChoice = "false"
 )
 
-// Remove the attribute spellcheck from the element.
+// Remove the attribute SPELLCHECK from the element.
 func (e *SELECTElement) SPELLCHECKRemove(c SelectSpellcheckChoice) *SELECTElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1412,7 +1414,7 @@ func (e *SELECTElement) IfSTYLEPairs(condition bool, pairs ...string) *SELECTEle
 	return e
 }
 
-// Remove the attribute style from the element.
+// Remove the attribute STYLE from the element.
 func (e *SELECTElement) STYLERemove(keys ...string) *SELECTElement {
 	if e.KVStrings == nil {
 		return e
@@ -1456,7 +1458,7 @@ func (e *SELECTElement) IfTABINDEX(condition bool, i int) *SELECTElement {
 	return e
 }
 
-// Remove the attribute tabindex from the element.
+// Remove the attribute TABINDEX from the element.
 func (e *SELECTElement) TABINDEXRemove(i int) *SELECTElement {
 	if e.IntAttributes == nil {
 		return e
@@ -1501,7 +1503,7 @@ func (e *SELECTElement) IfTITLE(condition bool, s string) *SELECTElement {
 	return e
 }
 
-// Remove the attribute title from the element.
+// Remove the attribute TITLE from the element.
 func (e *SELECTElement) TITLERemove(s string) *SELECTElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1533,11 +1535,351 @@ const (
 	SelectTranslate_no SelectTranslateChoice = "no"
 )
 
-// Remove the attribute translate from the element.
+// Remove the attribute TRANSLATE from the element.
 func (e *SELECTElement) TRANSLATERemove(c SelectTranslateChoice) *SELECTElement {
 	if e.StringAttributes == nil {
 		return e
 	}
 	e.StringAttributes.Del("translate")
+	return e
+}
+
+// Merges the store with the given object
+
+func (e *SELECTElement) DATASTAR_MERGE_STORE(v any) *SELECTElement {
+	if e.CustomDataAttributes == nil {
+		e.CustomDataAttributes = treemap.New[string, string]()
+	}
+	b, err := json.Marshal(v)
+	if err != nil {
+		panic(err)
+	}
+	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	return e
+}
+
+// Sets the reference of the element
+
+func (e *SELECTElement) DATASTAR_REF(s string) *SELECTElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-ref"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SELECTElement) IfDATASTAR_REF(condition bool, s string) *SELECTElement {
+	if condition {
+		e.DATASTAR_REF(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_REF from the element.
+func (e *SELECTElement) DATASTAR_REFRemove() *SELECTElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-ref")
+	return e
+}
+
+// Sets the value of the element
+
+func (e *SELECTElement) DATASTAR_BIND(s string) *SELECTElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-bind"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SELECTElement) IfDATASTAR_BIND(condition bool, s string) *SELECTElement {
+	if condition {
+		e.DATASTAR_BIND(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_BIND from the element.
+func (e *SELECTElement) DATASTAR_BINDRemove() *SELECTElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-bind")
+	return e
+}
+
+// Sets the value of the element
+
+func (e *SELECTElement) DATASTAR_MODEL(s string) *SELECTElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-model"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SELECTElement) IfDATASTAR_MODEL(condition bool, s string) *SELECTElement {
+	if condition {
+		e.DATASTAR_MODEL(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_MODEL from the element.
+func (e *SELECTElement) DATASTAR_MODELRemove() *SELECTElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-model")
+	return e
+}
+
+// Sets the textContent of the element
+
+func (e *SELECTElement) DATASTAR_TEXT(s string) *SELECTElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-text"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SELECTElement) IfDATASTAR_TEXT(condition bool, s string) *SELECTElement {
+	if condition {
+		e.DATASTAR_TEXT(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_TEXT from the element.
+func (e *SELECTElement) DATASTAR_TEXTRemove() *SELECTElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-text")
+	return e
+}
+
+// Sets the event handler of the element
+
+type SelectDataOnMod customDataKeyModifier
+
+// Debounces the event handler
+func SelectDataOnModDebounce(
+	s string,
+) SelectDataOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce_%sms", s)
+	}
+}
+
+// Throttles the event handler
+func SelectDataOnModThrottle(
+	s string,
+) SelectDataOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle_%sms", s)
+	}
+}
+
+func (e *SELECTElement) DATASTAR_ON(s string, modifiers ...SelectDataOnMod) *SELECTElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	customMods := lo.Map(modifiers, func(m SelectDataOnMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key := customDataKey("data-on", customMods...)
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SELECTElement) IfDATASTAR_ON(condition bool, s string, modifiers ...SelectDataOnMod) *SELECTElement {
+	if condition {
+		e.DATASTAR_ON(s, modifiers...)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_ON from the element.
+func (e *SELECTElement) DATASTAR_ONRemove() *SELECTElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-on")
+	return e
+}
+
+// Sets the focus of the element
+
+func (e *SELECTElement) DATASTAR_FOCUSSet(b bool) *SELECTElement {
+	key := "data-focus"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *SELECTElement) DATASTAR_FOCUS() *SELECTElement {
+	return e.DATASTAR_FOCUSSet(true)
+}
+
+// Sets the header of for fetch requests
+
+func (e *SELECTElement) DATASTAR_HEADER(s string) *SELECTElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-header"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SELECTElement) IfDATASTAR_HEADER(condition bool, s string) *SELECTElement {
+	if condition {
+		e.DATASTAR_HEADER(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_HEADER from the element.
+func (e *SELECTElement) DATASTAR_HEADERRemove() *SELECTElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-header")
+	return e
+}
+
+// Sets the URL for fetch requests
+
+func (e *SELECTElement) DATASTAR_FETCH_URL(s string) *SELECTElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-fetch-url"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SELECTElement) IfDATASTAR_FETCH_URL(condition bool, s string) *SELECTElement {
+	if condition {
+		e.DATASTAR_FETCH_URL(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_FETCH_URL from the element.
+func (e *SELECTElement) DATASTAR_FETCH_URLRemove() *SELECTElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-fetch-url")
+	return e
+}
+
+// Sets the indicator selector for fetch requests
+
+func (e *SELECTElement) DATASTAR_FETCH_INDICATOR(s string) *SELECTElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "DatastarFetchIndicator"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SELECTElement) IfDATASTAR_FETCH_INDICATOR(condition bool, s string) *SELECTElement {
+	if condition {
+		e.DATASTAR_FETCH_INDICATOR(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_FETCH_INDICATOR from the element.
+func (e *SELECTElement) DATASTAR_FETCH_INDICATORRemove() *SELECTElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("DatastarFetchIndicator")
+	return e
+}
+
+// Sets the visibility of the element
+
+func (e *SELECTElement) DATASTAR_SHOWSet(b bool) *SELECTElement {
+	key := "data-show"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *SELECTElement) DATASTAR_SHOW() *SELECTElement {
+	return e.DATASTAR_SHOWSet(true)
+}
+
+// Triggers the callback when the element intersects the viewport
+
+func (e *SELECTElement) DATASTAR_INTERSECTSSet(b bool) *SELECTElement {
+	key := "data-intersects"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *SELECTElement) DATASTAR_INTERSECTS() *SELECTElement {
+	return e.DATASTAR_INTERSECTSSet(true)
+}
+
+// Teleports the element to the given selector
+
+func (e *SELECTElement) DATASTAR_TELEPORTSet(b bool) *SELECTElement {
+	key := "data-teleport"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *SELECTElement) DATASTAR_TELEPORT() *SELECTElement {
+	return e.DATASTAR_TELEPORTSet(true)
+}
+
+// Scrolls the element into view
+
+func (e *SELECTElement) DATASTAR_SCROLL_INTO_VIEWSet(b bool) *SELECTElement {
+	key := "data-scroll-into-view"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *SELECTElement) DATASTAR_SCROLL_INTO_VIEW() *SELECTElement {
+	return e.DATASTAR_SCROLL_INTO_VIEWSet(true)
+}
+
+// Setup the ViewTransitionAPI for the element
+
+func (e *SELECTElement) DATASTAR_VIEW_TRANSITION(s string) *SELECTElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-view-transition"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SELECTElement) IfDATASTAR_VIEW_TRANSITION(condition bool, s string) *SELECTElement {
+	if condition {
+		e.DATASTAR_VIEW_TRANSITION(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_VIEW_TRANSITION from the element.
+func (e *SELECTElement) DATASTAR_VIEW_TRANSITIONRemove() *SELECTElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-view-transition")
 	return e
 }

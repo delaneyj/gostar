@@ -6,7 +6,9 @@ package elements
 import (
 	"fmt"
 
+	"github.com/goccy/go-json"
 	"github.com/igrmk/treemap/v2"
+	"github.com/samber/lo"
 )
 
 // The <filter> SVG element defines a custom filter effect by grouping atomic
@@ -131,7 +133,7 @@ func (e *SVGFILTERElement) CustomDataRemove(key string) *SVGFILTERElement {
 }
 
 // The coordinate system for attributes x, y, width and height.
-func (e *SVGFILTERElement) FILTERUNITS(c SVGFilterFilterUnitsChoice) *SVGFILTERElement {
+func (e *SVGFILTERElement) FILTER_UNITS(c SVGFilterFilterUnitsChoice) *SVGFILTERElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
@@ -148,8 +150,8 @@ const (
 	SVGFilterFilterUnits_objectBoundingBox SVGFilterFilterUnitsChoice = "objectBoundingBox"
 )
 
-// Remove the attribute filterUnits from the element.
-func (e *SVGFILTERElement) FILTERUNITSRemove(c SVGFilterFilterUnitsChoice) *SVGFILTERElement {
+// Remove the attribute FILTER_UNITS from the element.
+func (e *SVGFILTERElement) FILTER_UNITSRemove(c SVGFilterFilterUnitsChoice) *SVGFILTERElement {
 	if e.StringAttributes == nil {
 		return e
 	}
@@ -158,7 +160,7 @@ func (e *SVGFILTERElement) FILTERUNITSRemove(c SVGFilterFilterUnitsChoice) *SVGF
 }
 
 // The coordinate system for the various length values within the filter.
-func (e *SVGFILTERElement) PRIMITIVEUNITS(c SVGFilterPrimitiveUnitsChoice) *SVGFILTERElement {
+func (e *SVGFILTERElement) PRIMITIVE_UNITS(c SVGFilterPrimitiveUnitsChoice) *SVGFILTERElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
@@ -175,8 +177,8 @@ const (
 	SVGFilterPrimitiveUnits_objectBoundingBox SVGFilterPrimitiveUnitsChoice = "objectBoundingBox"
 )
 
-// Remove the attribute primitiveUnits from the element.
-func (e *SVGFILTERElement) PRIMITIVEUNITSRemove(c SVGFilterPrimitiveUnitsChoice) *SVGFILTERElement {
+// Remove the attribute PRIMITIVE_UNITS from the element.
+func (e *SVGFILTERElement) PRIMITIVE_UNITSRemove(c SVGFilterPrimitiveUnitsChoice) *SVGFILTERElement {
 	if e.StringAttributes == nil {
 		return e
 	}
@@ -200,7 +202,7 @@ func (e *SVGFILTERElement) IfX(condition bool, s string) *SVGFILTERElement {
 	return e
 }
 
-// Remove the attribute x from the element.
+// Remove the attribute X from the element.
 func (e *SVGFILTERElement) XRemove(s string) *SVGFILTERElement {
 	if e.StringAttributes == nil {
 		return e
@@ -225,7 +227,7 @@ func (e *SVGFILTERElement) IfY(condition bool, s string) *SVGFILTERElement {
 	return e
 }
 
-// Remove the attribute y from the element.
+// Remove the attribute Y from the element.
 func (e *SVGFILTERElement) YRemove(s string) *SVGFILTERElement {
 	if e.StringAttributes == nil {
 		return e
@@ -250,7 +252,7 @@ func (e *SVGFILTERElement) IfWIDTH(condition bool, s string) *SVGFILTERElement {
 	return e
 }
 
-// Remove the attribute width from the element.
+// Remove the attribute WIDTH from the element.
 func (e *SVGFILTERElement) WIDTHRemove(s string) *SVGFILTERElement {
 	if e.StringAttributes == nil {
 		return e
@@ -275,12 +277,37 @@ func (e *SVGFILTERElement) IfHEIGHT(condition bool, s string) *SVGFILTERElement 
 	return e
 }
 
-// Remove the attribute height from the element.
+// Remove the attribute HEIGHT from the element.
 func (e *SVGFILTERElement) HEIGHTRemove(s string) *SVGFILTERElement {
 	if e.StringAttributes == nil {
 		return e
 	}
 	e.StringAttributes.Del("height")
+	return e
+}
+
+// Specifies a unique id for an element
+func (e *SVGFILTERElement) ID(s string) *SVGFILTERElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	e.StringAttributes.Set("id", s)
+	return e
+}
+
+func (e *SVGFILTERElement) IfID(condition bool, s string) *SVGFILTERElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
+// Remove the attribute ID from the element.
+func (e *SVGFILTERElement) IDRemove(s string) *SVGFILTERElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("id")
 	return e
 }
 
@@ -306,7 +333,7 @@ func (e *SVGFILTERElement) IfCLASS(condition bool, s ...string) *SVGFILTERElemen
 	return e
 }
 
-// Remove the attribute class from the element.
+// Remove the attribute CLASS from the element.
 func (e *SVGFILTERElement) CLASSRemove(s ...string) *SVGFILTERElement {
 	if e.DelimitedStrings == nil {
 		return e
@@ -316,31 +343,6 @@ func (e *SVGFILTERElement) CLASSRemove(s ...string) *SVGFILTERElement {
 		return e
 	}
 	ds.Remove(s...)
-	return e
-}
-
-// Specifies a unique id for an element
-func (e *SVGFILTERElement) ID(s string) *SVGFILTERElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	e.StringAttributes.Set("id", s)
-	return e
-}
-
-func (e *SVGFILTERElement) IfID(condition bool, s string) *SVGFILTERElement {
-	if condition {
-		e.ID(s)
-	}
-	return e
-}
-
-// Remove the attribute id from the element.
-func (e *SVGFILTERElement) IDRemove(s string) *SVGFILTERElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("id")
 	return e
 }
 
@@ -420,7 +422,7 @@ func (e *SVGFILTERElement) IfSTYLEPairs(condition bool, pairs ...string) *SVGFIL
 	return e
 }
 
-// Remove the attribute style from the element.
+// Remove the attribute STYLE from the element.
 func (e *SVGFILTERElement) STYLERemove(keys ...string) *SVGFILTERElement {
 	if e.KVStrings == nil {
 		return e
@@ -432,5 +434,345 @@ func (e *SVGFILTERElement) STYLERemove(keys ...string) *SVGFILTERElement {
 	for _, k := range keys {
 		kv.Remove(k)
 	}
+	return e
+}
+
+// Merges the store with the given object
+
+func (e *SVGFILTERElement) DATASTAR_MERGE_STORE(v any) *SVGFILTERElement {
+	if e.CustomDataAttributes == nil {
+		e.CustomDataAttributes = treemap.New[string, string]()
+	}
+	b, err := json.Marshal(v)
+	if err != nil {
+		panic(err)
+	}
+	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	return e
+}
+
+// Sets the reference of the element
+
+func (e *SVGFILTERElement) DATASTAR_REF(s string) *SVGFILTERElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-ref"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SVGFILTERElement) IfDATASTAR_REF(condition bool, s string) *SVGFILTERElement {
+	if condition {
+		e.DATASTAR_REF(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_REF from the element.
+func (e *SVGFILTERElement) DATASTAR_REFRemove() *SVGFILTERElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-ref")
+	return e
+}
+
+// Sets the value of the element
+
+func (e *SVGFILTERElement) DATASTAR_BIND(s string) *SVGFILTERElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-bind"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SVGFILTERElement) IfDATASTAR_BIND(condition bool, s string) *SVGFILTERElement {
+	if condition {
+		e.DATASTAR_BIND(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_BIND from the element.
+func (e *SVGFILTERElement) DATASTAR_BINDRemove() *SVGFILTERElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-bind")
+	return e
+}
+
+// Sets the value of the element
+
+func (e *SVGFILTERElement) DATASTAR_MODEL(s string) *SVGFILTERElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-model"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SVGFILTERElement) IfDATASTAR_MODEL(condition bool, s string) *SVGFILTERElement {
+	if condition {
+		e.DATASTAR_MODEL(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_MODEL from the element.
+func (e *SVGFILTERElement) DATASTAR_MODELRemove() *SVGFILTERElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-model")
+	return e
+}
+
+// Sets the textContent of the element
+
+func (e *SVGFILTERElement) DATASTAR_TEXT(s string) *SVGFILTERElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-text"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SVGFILTERElement) IfDATASTAR_TEXT(condition bool, s string) *SVGFILTERElement {
+	if condition {
+		e.DATASTAR_TEXT(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_TEXT from the element.
+func (e *SVGFILTERElement) DATASTAR_TEXTRemove() *SVGFILTERElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-text")
+	return e
+}
+
+// Sets the event handler of the element
+
+type SVGFilterDataOnMod customDataKeyModifier
+
+// Debounces the event handler
+func SVGFilterDataOnModDebounce(
+	s string,
+) SVGFilterDataOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce_%sms", s)
+	}
+}
+
+// Throttles the event handler
+func SVGFilterDataOnModThrottle(
+	s string,
+) SVGFilterDataOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle_%sms", s)
+	}
+}
+
+func (e *SVGFILTERElement) DATASTAR_ON(s string, modifiers ...SVGFilterDataOnMod) *SVGFILTERElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	customMods := lo.Map(modifiers, func(m SVGFilterDataOnMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key := customDataKey("data-on", customMods...)
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SVGFILTERElement) IfDATASTAR_ON(condition bool, s string, modifiers ...SVGFilterDataOnMod) *SVGFILTERElement {
+	if condition {
+		e.DATASTAR_ON(s, modifiers...)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_ON from the element.
+func (e *SVGFILTERElement) DATASTAR_ONRemove() *SVGFILTERElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-on")
+	return e
+}
+
+// Sets the focus of the element
+
+func (e *SVGFILTERElement) DATASTAR_FOCUSSet(b bool) *SVGFILTERElement {
+	key := "data-focus"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *SVGFILTERElement) DATASTAR_FOCUS() *SVGFILTERElement {
+	return e.DATASTAR_FOCUSSet(true)
+}
+
+// Sets the header of for fetch requests
+
+func (e *SVGFILTERElement) DATASTAR_HEADER(s string) *SVGFILTERElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-header"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SVGFILTERElement) IfDATASTAR_HEADER(condition bool, s string) *SVGFILTERElement {
+	if condition {
+		e.DATASTAR_HEADER(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_HEADER from the element.
+func (e *SVGFILTERElement) DATASTAR_HEADERRemove() *SVGFILTERElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-header")
+	return e
+}
+
+// Sets the URL for fetch requests
+
+func (e *SVGFILTERElement) DATASTAR_FETCH_URL(s string) *SVGFILTERElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-fetch-url"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SVGFILTERElement) IfDATASTAR_FETCH_URL(condition bool, s string) *SVGFILTERElement {
+	if condition {
+		e.DATASTAR_FETCH_URL(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_FETCH_URL from the element.
+func (e *SVGFILTERElement) DATASTAR_FETCH_URLRemove() *SVGFILTERElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-fetch-url")
+	return e
+}
+
+// Sets the indicator selector for fetch requests
+
+func (e *SVGFILTERElement) DATASTAR_FETCH_INDICATOR(s string) *SVGFILTERElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "DatastarFetchIndicator"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SVGFILTERElement) IfDATASTAR_FETCH_INDICATOR(condition bool, s string) *SVGFILTERElement {
+	if condition {
+		e.DATASTAR_FETCH_INDICATOR(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_FETCH_INDICATOR from the element.
+func (e *SVGFILTERElement) DATASTAR_FETCH_INDICATORRemove() *SVGFILTERElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("DatastarFetchIndicator")
+	return e
+}
+
+// Sets the visibility of the element
+
+func (e *SVGFILTERElement) DATASTAR_SHOWSet(b bool) *SVGFILTERElement {
+	key := "data-show"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *SVGFILTERElement) DATASTAR_SHOW() *SVGFILTERElement {
+	return e.DATASTAR_SHOWSet(true)
+}
+
+// Triggers the callback when the element intersects the viewport
+
+func (e *SVGFILTERElement) DATASTAR_INTERSECTSSet(b bool) *SVGFILTERElement {
+	key := "data-intersects"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *SVGFILTERElement) DATASTAR_INTERSECTS() *SVGFILTERElement {
+	return e.DATASTAR_INTERSECTSSet(true)
+}
+
+// Teleports the element to the given selector
+
+func (e *SVGFILTERElement) DATASTAR_TELEPORTSet(b bool) *SVGFILTERElement {
+	key := "data-teleport"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *SVGFILTERElement) DATASTAR_TELEPORT() *SVGFILTERElement {
+	return e.DATASTAR_TELEPORTSet(true)
+}
+
+// Scrolls the element into view
+
+func (e *SVGFILTERElement) DATASTAR_SCROLL_INTO_VIEWSet(b bool) *SVGFILTERElement {
+	key := "data-scroll-into-view"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *SVGFILTERElement) DATASTAR_SCROLL_INTO_VIEW() *SVGFILTERElement {
+	return e.DATASTAR_SCROLL_INTO_VIEWSet(true)
+}
+
+// Setup the ViewTransitionAPI for the element
+
+func (e *SVGFILTERElement) DATASTAR_VIEW_TRANSITION(s string) *SVGFILTERElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-view-transition"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SVGFILTERElement) IfDATASTAR_VIEW_TRANSITION(condition bool, s string) *SVGFILTERElement {
+	if condition {
+		e.DATASTAR_VIEW_TRANSITION(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_VIEW_TRANSITION from the element.
+func (e *SVGFILTERElement) DATASTAR_VIEW_TRANSITIONRemove() *SVGFILTERElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-view-transition")
 	return e
 }

@@ -6,7 +6,9 @@ package elements
 import (
 	"fmt"
 
+	"github.com/goccy/go-json"
 	"github.com/igrmk/treemap/v2"
+	"github.com/samber/lo"
 )
 
 // The HTML <embed> element embeds external content at the specified point in the
@@ -144,7 +146,7 @@ func (e *EMBEDElement) IfHEIGHT(condition bool, i int) *EMBEDElement {
 	return e
 }
 
-// Remove the attribute height from the element.
+// Remove the attribute HEIGHT from the element.
 func (e *EMBEDElement) HEIGHTRemove(i int) *EMBEDElement {
 	if e.IntAttributes == nil {
 		return e
@@ -169,7 +171,7 @@ func (e *EMBEDElement) IfSRC(condition bool, s string) *EMBEDElement {
 	return e
 }
 
-// Remove the attribute src from the element.
+// Remove the attribute SRC from the element.
 func (e *EMBEDElement) SRCRemove(s string) *EMBEDElement {
 	if e.StringAttributes == nil {
 		return e
@@ -194,7 +196,7 @@ func (e *EMBEDElement) IfTYPE(condition bool, s string) *EMBEDElement {
 	return e
 }
 
-// Remove the attribute type from the element.
+// Remove the attribute TYPE from the element.
 func (e *EMBEDElement) TYPERemove(s string) *EMBEDElement {
 	if e.StringAttributes == nil {
 		return e
@@ -219,7 +221,7 @@ func (e *EMBEDElement) IfWIDTH(condition bool, i int) *EMBEDElement {
 	return e
 }
 
-// Remove the attribute width from the element.
+// Remove the attribute WIDTH from the element.
 func (e *EMBEDElement) WIDTHRemove(i int) *EMBEDElement {
 	if e.IntAttributes == nil {
 		return e
@@ -247,7 +249,7 @@ func (e *EMBEDElement) IfACCESSKEY(condition bool, r rune) *EMBEDElement {
 	return e
 }
 
-// Remove the attribute accesskey from the element.
+// Remove the attribute ACCESSKEY from the element.
 func (e *EMBEDElement) ACCESSKEYRemove() *EMBEDElement {
 	if e.StringAttributes == nil {
 		return e
@@ -295,7 +297,7 @@ const (
 	EmbedAutocapitalize_characters EmbedAutocapitalizeChoice = "characters"
 )
 
-// Remove the attribute autocapitalize from the element.
+// Remove the attribute AUTOCAPITALIZE from the element.
 func (e *EMBEDElement) AUTOCAPITALIZERemove(c EmbedAutocapitalizeChoice) *EMBEDElement {
 	if e.StringAttributes == nil {
 		return e
@@ -336,7 +338,7 @@ func (e *EMBEDElement) IfAUTOFOCUS(condition bool) *EMBEDElement {
 	return e
 }
 
-// Set the attribute autofocus to the value b explicitly.
+// Set the attribute AUTOFOCUS to the value b explicitly.
 func (e *EMBEDElement) AUTOFOCUSSet(b bool) *EMBEDElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
@@ -352,7 +354,7 @@ func (e *EMBEDElement) IfSetAUTOFOCUS(condition bool, b bool) *EMBEDElement {
 	return e
 }
 
-// Remove the attribute autofocus from the element.
+// Remove the attribute AUTOFOCUS from the element.
 func (e *EMBEDElement) AUTOFOCUSRemove(b bool) *EMBEDElement {
 	if e.BoolAttributes == nil {
 		return e
@@ -386,7 +388,7 @@ func (e *EMBEDElement) IfCLASS(condition bool, s ...string) *EMBEDElement {
 	return e
 }
 
-// Remove the attribute class from the element.
+// Remove the attribute CLASS from the element.
 func (e *EMBEDElement) CLASSRemove(s ...string) *EMBEDElement {
 	if e.DelimitedStrings == nil {
 		return e
@@ -424,7 +426,7 @@ const (
 	EmbedContenteditable_plaintext_only EmbedContenteditableChoice = "plaintext-only"
 )
 
-// Remove the attribute contenteditable from the element.
+// Remove the attribute CONTENTEDITABLE from the element.
 func (e *EMBEDElement) CONTENTEDITABLERemove(c EmbedContenteditableChoice) *EMBEDElement {
 	if e.StringAttributes == nil {
 		return e
@@ -472,7 +474,7 @@ const (
 	EmbedDir_auto EmbedDirChoice = "auto"
 )
 
-// Remove the attribute dir from the element.
+// Remove the attribute DIR from the element.
 func (e *EMBEDElement) DIRRemove(c EmbedDirChoice) *EMBEDElement {
 	if e.StringAttributes == nil {
 		return e
@@ -509,7 +511,7 @@ const (
 	EmbedDraggable_auto EmbedDraggableChoice = "auto"
 )
 
-// Remove the attribute draggable from the element.
+// Remove the attribute DRAGGABLE from the element.
 func (e *EMBEDElement) DRAGGABLERemove(c EmbedDraggableChoice) *EMBEDElement {
 	if e.StringAttributes == nil {
 		return e
@@ -549,7 +551,7 @@ const (
 	EmbedEnterkeyhint_send EmbedEnterkeyhintChoice = "send"
 )
 
-// Remove the attribute enterkeyhint from the element.
+// Remove the attribute ENTERKEYHINT from the element.
 func (e *EMBEDElement) ENTERKEYHINTRemove(c EmbedEnterkeyhintChoice) *EMBEDElement {
 	if e.StringAttributes == nil {
 		return e
@@ -598,7 +600,7 @@ func (e *EMBEDElement) IfEXPORTPARTS(condition bool, s ...string) *EMBEDElement 
 	return e
 }
 
-// Remove the attribute exportparts from the element.
+// Remove the attribute EXPORTPARTS from the element.
 func (e *EMBEDElement) EXPORTPARTSRemove(s ...string) *EMBEDElement {
 	if e.DelimitedStrings == nil {
 		return e
@@ -652,7 +654,7 @@ const (
 	EmbedHidden_until_found EmbedHiddenChoice = "until-found"
 )
 
-// Remove the attribute hidden from the element.
+// Remove the attribute HIDDEN from the element.
 func (e *EMBEDElement) HIDDENRemove(c EmbedHiddenChoice) *EMBEDElement {
 	if e.StringAttributes == nil {
 		return e
@@ -680,7 +682,7 @@ func (e *EMBEDElement) IfID(condition bool, s string) *EMBEDElement {
 	return e
 }
 
-// Remove the attribute id from the element.
+// Remove the attribute ID from the element.
 func (e *EMBEDElement) IDRemove(s string) *EMBEDElement {
 	if e.StringAttributes == nil {
 		return e
@@ -713,7 +715,7 @@ func (e *EMBEDElement) IfINERT(condition bool) *EMBEDElement {
 	return e
 }
 
-// Set the attribute inert to the value b explicitly.
+// Set the attribute INERT to the value b explicitly.
 func (e *EMBEDElement) INERTSet(b bool) *EMBEDElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
@@ -729,7 +731,7 @@ func (e *EMBEDElement) IfSetINERT(condition bool, b bool) *EMBEDElement {
 	return e
 }
 
-// Remove the attribute inert from the element.
+// Remove the attribute INERT from the element.
 func (e *EMBEDElement) INERTRemove(b bool) *EMBEDElement {
 	if e.BoolAttributes == nil {
 		return e
@@ -798,7 +800,7 @@ const (
 	EmbedInputmode_url EmbedInputmodeChoice = "url"
 )
 
-// Remove the attribute inputmode from the element.
+// Remove the attribute INPUTMODE from the element.
 func (e *EMBEDElement) INPUTMODERemove(c EmbedInputmodeChoice) *EMBEDElement {
 	if e.StringAttributes == nil {
 		return e
@@ -828,7 +830,7 @@ func (e *EMBEDElement) IfIS(condition bool, s string) *EMBEDElement {
 	return e
 }
 
-// Remove the attribute is from the element.
+// Remove the attribute IS from the element.
 func (e *EMBEDElement) ISRemove(s string) *EMBEDElement {
 	if e.StringAttributes == nil {
 		return e
@@ -865,7 +867,7 @@ func (e *EMBEDElement) IfITEMID(condition bool, s string) *EMBEDElement {
 	return e
 }
 
-// Remove the attribute itemid from the element.
+// Remove the attribute ITEMID from the element.
 func (e *EMBEDElement) ITEMIDRemove(s string) *EMBEDElement {
 	if e.StringAttributes == nil {
 		return e
@@ -897,7 +899,7 @@ func (e *EMBEDElement) IfITEMPROP(condition bool, s string) *EMBEDElement {
 	return e
 }
 
-// Remove the attribute itemprop from the element.
+// Remove the attribute ITEMPROP from the element.
 func (e *EMBEDElement) ITEMPROPRemove(s string) *EMBEDElement {
 	if e.StringAttributes == nil {
 		return e
@@ -926,7 +928,7 @@ func (e *EMBEDElement) IfITEMREF(condition bool, s string) *EMBEDElement {
 	return e
 }
 
-// Remove the attribute itemref from the element.
+// Remove the attribute ITEMREF from the element.
 func (e *EMBEDElement) ITEMREFRemove(s string) *EMBEDElement {
 	if e.StringAttributes == nil {
 		return e
@@ -955,7 +957,7 @@ func (e *EMBEDElement) IfITEMSCOPE(condition bool) *EMBEDElement {
 	return e
 }
 
-// Set the attribute itemscope to the value b explicitly.
+// Set the attribute ITEMSCOPE to the value b explicitly.
 func (e *EMBEDElement) ITEMSCOPESet(b bool) *EMBEDElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
@@ -971,7 +973,7 @@ func (e *EMBEDElement) IfSetITEMSCOPE(condition bool, b bool) *EMBEDElement {
 	return e
 }
 
-// Remove the attribute itemscope from the element.
+// Remove the attribute ITEMSCOPE from the element.
 func (e *EMBEDElement) ITEMSCOPERemove(b bool) *EMBEDElement {
 	if e.BoolAttributes == nil {
 		return e
@@ -1003,7 +1005,7 @@ func (e *EMBEDElement) IfITEMTYPE(condition bool, s string) *EMBEDElement {
 	return e
 }
 
-// Remove the attribute itemtype from the element.
+// Remove the attribute ITEMTYPE from the element.
 func (e *EMBEDElement) ITEMTYPERemove(s string) *EMBEDElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1033,7 +1035,7 @@ func (e *EMBEDElement) IfLANG(condition bool, s string) *EMBEDElement {
 	return e
 }
 
-// Remove the attribute lang from the element.
+// Remove the attribute LANG from the element.
 func (e *EMBEDElement) LANGRemove(s string) *EMBEDElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1061,7 +1063,7 @@ func (e *EMBEDElement) IfNONCE(condition bool, s string) *EMBEDElement {
 	return e
 }
 
-// Remove the attribute nonce from the element.
+// Remove the attribute NONCE from the element.
 func (e *EMBEDElement) NONCERemove(s string) *EMBEDElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1094,7 +1096,7 @@ func (e *EMBEDElement) IfPART(condition bool, s ...string) *EMBEDElement {
 	return e
 }
 
-// Remove the attribute part from the element.
+// Remove the attribute PART from the element.
 func (e *EMBEDElement) PARTRemove(s ...string) *EMBEDElement {
 	if e.DelimitedStrings == nil {
 		return e
@@ -1140,7 +1142,7 @@ const (
 	EmbedPopver_manual EmbedPopverChoice = "manual"
 )
 
-// Remove the attribute popver from the element.
+// Remove the attribute POPVER from the element.
 func (e *EMBEDElement) POPVERRemove(c EmbedPopverChoice) *EMBEDElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1168,7 +1170,7 @@ func (e *EMBEDElement) IfSLOT(condition bool, s string) *EMBEDElement {
 	return e
 }
 
-// Remove the attribute slot from the element.
+// Remove the attribute SLOT from the element.
 func (e *EMBEDElement) SLOTRemove(s string) *EMBEDElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1210,7 +1212,7 @@ const (
 	EmbedSpellcheck_false EmbedSpellcheckChoice = "false"
 )
 
-// Remove the attribute spellcheck from the element.
+// Remove the attribute SPELLCHECK from the element.
 func (e *EMBEDElement) SPELLCHECKRemove(c EmbedSpellcheckChoice) *EMBEDElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1297,7 +1299,7 @@ func (e *EMBEDElement) IfSTYLEPairs(condition bool, pairs ...string) *EMBEDEleme
 	return e
 }
 
-// Remove the attribute style from the element.
+// Remove the attribute STYLE from the element.
 func (e *EMBEDElement) STYLERemove(keys ...string) *EMBEDElement {
 	if e.KVStrings == nil {
 		return e
@@ -1341,7 +1343,7 @@ func (e *EMBEDElement) IfTABINDEX(condition bool, i int) *EMBEDElement {
 	return e
 }
 
-// Remove the attribute tabindex from the element.
+// Remove the attribute TABINDEX from the element.
 func (e *EMBEDElement) TABINDEXRemove(i int) *EMBEDElement {
 	if e.IntAttributes == nil {
 		return e
@@ -1386,7 +1388,7 @@ func (e *EMBEDElement) IfTITLE(condition bool, s string) *EMBEDElement {
 	return e
 }
 
-// Remove the attribute title from the element.
+// Remove the attribute TITLE from the element.
 func (e *EMBEDElement) TITLERemove(s string) *EMBEDElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1418,11 +1420,351 @@ const (
 	EmbedTranslate_no EmbedTranslateChoice = "no"
 )
 
-// Remove the attribute translate from the element.
+// Remove the attribute TRANSLATE from the element.
 func (e *EMBEDElement) TRANSLATERemove(c EmbedTranslateChoice) *EMBEDElement {
 	if e.StringAttributes == nil {
 		return e
 	}
 	e.StringAttributes.Del("translate")
+	return e
+}
+
+// Merges the store with the given object
+
+func (e *EMBEDElement) DATASTAR_MERGE_STORE(v any) *EMBEDElement {
+	if e.CustomDataAttributes == nil {
+		e.CustomDataAttributes = treemap.New[string, string]()
+	}
+	b, err := json.Marshal(v)
+	if err != nil {
+		panic(err)
+	}
+	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	return e
+}
+
+// Sets the reference of the element
+
+func (e *EMBEDElement) DATASTAR_REF(s string) *EMBEDElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-ref"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *EMBEDElement) IfDATASTAR_REF(condition bool, s string) *EMBEDElement {
+	if condition {
+		e.DATASTAR_REF(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_REF from the element.
+func (e *EMBEDElement) DATASTAR_REFRemove() *EMBEDElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-ref")
+	return e
+}
+
+// Sets the value of the element
+
+func (e *EMBEDElement) DATASTAR_BIND(s string) *EMBEDElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-bind"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *EMBEDElement) IfDATASTAR_BIND(condition bool, s string) *EMBEDElement {
+	if condition {
+		e.DATASTAR_BIND(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_BIND from the element.
+func (e *EMBEDElement) DATASTAR_BINDRemove() *EMBEDElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-bind")
+	return e
+}
+
+// Sets the value of the element
+
+func (e *EMBEDElement) DATASTAR_MODEL(s string) *EMBEDElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-model"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *EMBEDElement) IfDATASTAR_MODEL(condition bool, s string) *EMBEDElement {
+	if condition {
+		e.DATASTAR_MODEL(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_MODEL from the element.
+func (e *EMBEDElement) DATASTAR_MODELRemove() *EMBEDElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-model")
+	return e
+}
+
+// Sets the textContent of the element
+
+func (e *EMBEDElement) DATASTAR_TEXT(s string) *EMBEDElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-text"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *EMBEDElement) IfDATASTAR_TEXT(condition bool, s string) *EMBEDElement {
+	if condition {
+		e.DATASTAR_TEXT(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_TEXT from the element.
+func (e *EMBEDElement) DATASTAR_TEXTRemove() *EMBEDElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-text")
+	return e
+}
+
+// Sets the event handler of the element
+
+type EmbedDataOnMod customDataKeyModifier
+
+// Debounces the event handler
+func EmbedDataOnModDebounce(
+	s string,
+) EmbedDataOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce_%sms", s)
+	}
+}
+
+// Throttles the event handler
+func EmbedDataOnModThrottle(
+	s string,
+) EmbedDataOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle_%sms", s)
+	}
+}
+
+func (e *EMBEDElement) DATASTAR_ON(s string, modifiers ...EmbedDataOnMod) *EMBEDElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	customMods := lo.Map(modifiers, func(m EmbedDataOnMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key := customDataKey("data-on", customMods...)
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *EMBEDElement) IfDATASTAR_ON(condition bool, s string, modifiers ...EmbedDataOnMod) *EMBEDElement {
+	if condition {
+		e.DATASTAR_ON(s, modifiers...)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_ON from the element.
+func (e *EMBEDElement) DATASTAR_ONRemove() *EMBEDElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-on")
+	return e
+}
+
+// Sets the focus of the element
+
+func (e *EMBEDElement) DATASTAR_FOCUSSet(b bool) *EMBEDElement {
+	key := "data-focus"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *EMBEDElement) DATASTAR_FOCUS() *EMBEDElement {
+	return e.DATASTAR_FOCUSSet(true)
+}
+
+// Sets the header of for fetch requests
+
+func (e *EMBEDElement) DATASTAR_HEADER(s string) *EMBEDElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-header"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *EMBEDElement) IfDATASTAR_HEADER(condition bool, s string) *EMBEDElement {
+	if condition {
+		e.DATASTAR_HEADER(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_HEADER from the element.
+func (e *EMBEDElement) DATASTAR_HEADERRemove() *EMBEDElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-header")
+	return e
+}
+
+// Sets the URL for fetch requests
+
+func (e *EMBEDElement) DATASTAR_FETCH_URL(s string) *EMBEDElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-fetch-url"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *EMBEDElement) IfDATASTAR_FETCH_URL(condition bool, s string) *EMBEDElement {
+	if condition {
+		e.DATASTAR_FETCH_URL(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_FETCH_URL from the element.
+func (e *EMBEDElement) DATASTAR_FETCH_URLRemove() *EMBEDElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-fetch-url")
+	return e
+}
+
+// Sets the indicator selector for fetch requests
+
+func (e *EMBEDElement) DATASTAR_FETCH_INDICATOR(s string) *EMBEDElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "DatastarFetchIndicator"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *EMBEDElement) IfDATASTAR_FETCH_INDICATOR(condition bool, s string) *EMBEDElement {
+	if condition {
+		e.DATASTAR_FETCH_INDICATOR(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_FETCH_INDICATOR from the element.
+func (e *EMBEDElement) DATASTAR_FETCH_INDICATORRemove() *EMBEDElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("DatastarFetchIndicator")
+	return e
+}
+
+// Sets the visibility of the element
+
+func (e *EMBEDElement) DATASTAR_SHOWSet(b bool) *EMBEDElement {
+	key := "data-show"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *EMBEDElement) DATASTAR_SHOW() *EMBEDElement {
+	return e.DATASTAR_SHOWSet(true)
+}
+
+// Triggers the callback when the element intersects the viewport
+
+func (e *EMBEDElement) DATASTAR_INTERSECTSSet(b bool) *EMBEDElement {
+	key := "data-intersects"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *EMBEDElement) DATASTAR_INTERSECTS() *EMBEDElement {
+	return e.DATASTAR_INTERSECTSSet(true)
+}
+
+// Teleports the element to the given selector
+
+func (e *EMBEDElement) DATASTAR_TELEPORTSet(b bool) *EMBEDElement {
+	key := "data-teleport"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *EMBEDElement) DATASTAR_TELEPORT() *EMBEDElement {
+	return e.DATASTAR_TELEPORTSet(true)
+}
+
+// Scrolls the element into view
+
+func (e *EMBEDElement) DATASTAR_SCROLL_INTO_VIEWSet(b bool) *EMBEDElement {
+	key := "data-scroll-into-view"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *EMBEDElement) DATASTAR_SCROLL_INTO_VIEW() *EMBEDElement {
+	return e.DATASTAR_SCROLL_INTO_VIEWSet(true)
+}
+
+// Setup the ViewTransitionAPI for the element
+
+func (e *EMBEDElement) DATASTAR_VIEW_TRANSITION(s string) *EMBEDElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-view-transition"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *EMBEDElement) IfDATASTAR_VIEW_TRANSITION(condition bool, s string) *EMBEDElement {
+	if condition {
+		e.DATASTAR_VIEW_TRANSITION(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_VIEW_TRANSITION from the element.
+func (e *EMBEDElement) DATASTAR_VIEW_TRANSITIONRemove() *EMBEDElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-view-transition")
 	return e
 }

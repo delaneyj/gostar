@@ -7,7 +7,6 @@ import (
 	"time"
 
 	"github.com/delaneyj/gostar/cfg"
-	pb "github.com/delaneyj/gostar/cfg/gen/specs/v1"
 	"github.com/delaneyj/gostar/generator"
 )
 
@@ -24,13 +23,8 @@ func main() {
 }
 
 func run(ctx context.Context) error {
-	namespaces := []*pb.Namespace{
-		cfg.HTML,
-		cfg.SVG,
-		cfg.MathML,
-	}
 
-	if err := generator.GenerateAll(ctx, "./elements", namespaces); err != nil {
+	if err := generator.GenerateAll(ctx, "./elements", cfg.Default); err != nil {
 		return fmt.Errorf("failed to generate all: %w", err)
 	}
 

@@ -6,7 +6,9 @@ package elements
 import (
 	"fmt"
 
+	"github.com/goccy/go-json"
 	"github.com/igrmk/treemap/v2"
+	"github.com/samber/lo"
 )
 
 // The HTML <dialog> element represents a dialog box or other interactive
@@ -142,7 +144,7 @@ func (e *DIALOGElement) IfOPEN(condition bool) *DIALOGElement {
 	return e
 }
 
-// Set the attribute open to the value b explicitly.
+// Set the attribute OPEN to the value b explicitly.
 func (e *DIALOGElement) OPENSet(b bool) *DIALOGElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
@@ -158,7 +160,7 @@ func (e *DIALOGElement) IfSetOPEN(condition bool, b bool) *DIALOGElement {
 	return e
 }
 
-// Remove the attribute open from the element.
+// Remove the attribute OPEN from the element.
 func (e *DIALOGElement) OPENRemove(b bool) *DIALOGElement {
 	if e.BoolAttributes == nil {
 		return e
@@ -186,7 +188,7 @@ func (e *DIALOGElement) IfACCESSKEY(condition bool, r rune) *DIALOGElement {
 	return e
 }
 
-// Remove the attribute accesskey from the element.
+// Remove the attribute ACCESSKEY from the element.
 func (e *DIALOGElement) ACCESSKEYRemove() *DIALOGElement {
 	if e.StringAttributes == nil {
 		return e
@@ -234,7 +236,7 @@ const (
 	DialogAutocapitalize_characters DialogAutocapitalizeChoice = "characters"
 )
 
-// Remove the attribute autocapitalize from the element.
+// Remove the attribute AUTOCAPITALIZE from the element.
 func (e *DIALOGElement) AUTOCAPITALIZERemove(c DialogAutocapitalizeChoice) *DIALOGElement {
 	if e.StringAttributes == nil {
 		return e
@@ -275,7 +277,7 @@ func (e *DIALOGElement) IfAUTOFOCUS(condition bool) *DIALOGElement {
 	return e
 }
 
-// Set the attribute autofocus to the value b explicitly.
+// Set the attribute AUTOFOCUS to the value b explicitly.
 func (e *DIALOGElement) AUTOFOCUSSet(b bool) *DIALOGElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
@@ -291,7 +293,7 @@ func (e *DIALOGElement) IfSetAUTOFOCUS(condition bool, b bool) *DIALOGElement {
 	return e
 }
 
-// Remove the attribute autofocus from the element.
+// Remove the attribute AUTOFOCUS from the element.
 func (e *DIALOGElement) AUTOFOCUSRemove(b bool) *DIALOGElement {
 	if e.BoolAttributes == nil {
 		return e
@@ -325,7 +327,7 @@ func (e *DIALOGElement) IfCLASS(condition bool, s ...string) *DIALOGElement {
 	return e
 }
 
-// Remove the attribute class from the element.
+// Remove the attribute CLASS from the element.
 func (e *DIALOGElement) CLASSRemove(s ...string) *DIALOGElement {
 	if e.DelimitedStrings == nil {
 		return e
@@ -363,7 +365,7 @@ const (
 	DialogContenteditable_plaintext_only DialogContenteditableChoice = "plaintext-only"
 )
 
-// Remove the attribute contenteditable from the element.
+// Remove the attribute CONTENTEDITABLE from the element.
 func (e *DIALOGElement) CONTENTEDITABLERemove(c DialogContenteditableChoice) *DIALOGElement {
 	if e.StringAttributes == nil {
 		return e
@@ -411,7 +413,7 @@ const (
 	DialogDir_auto DialogDirChoice = "auto"
 )
 
-// Remove the attribute dir from the element.
+// Remove the attribute DIR from the element.
 func (e *DIALOGElement) DIRRemove(c DialogDirChoice) *DIALOGElement {
 	if e.StringAttributes == nil {
 		return e
@@ -448,7 +450,7 @@ const (
 	DialogDraggable_auto DialogDraggableChoice = "auto"
 )
 
-// Remove the attribute draggable from the element.
+// Remove the attribute DRAGGABLE from the element.
 func (e *DIALOGElement) DRAGGABLERemove(c DialogDraggableChoice) *DIALOGElement {
 	if e.StringAttributes == nil {
 		return e
@@ -488,7 +490,7 @@ const (
 	DialogEnterkeyhint_send DialogEnterkeyhintChoice = "send"
 )
 
-// Remove the attribute enterkeyhint from the element.
+// Remove the attribute ENTERKEYHINT from the element.
 func (e *DIALOGElement) ENTERKEYHINTRemove(c DialogEnterkeyhintChoice) *DIALOGElement {
 	if e.StringAttributes == nil {
 		return e
@@ -537,7 +539,7 @@ func (e *DIALOGElement) IfEXPORTPARTS(condition bool, s ...string) *DIALOGElemen
 	return e
 }
 
-// Remove the attribute exportparts from the element.
+// Remove the attribute EXPORTPARTS from the element.
 func (e *DIALOGElement) EXPORTPARTSRemove(s ...string) *DIALOGElement {
 	if e.DelimitedStrings == nil {
 		return e
@@ -591,7 +593,7 @@ const (
 	DialogHidden_until_found DialogHiddenChoice = "until-found"
 )
 
-// Remove the attribute hidden from the element.
+// Remove the attribute HIDDEN from the element.
 func (e *DIALOGElement) HIDDENRemove(c DialogHiddenChoice) *DIALOGElement {
 	if e.StringAttributes == nil {
 		return e
@@ -619,7 +621,7 @@ func (e *DIALOGElement) IfID(condition bool, s string) *DIALOGElement {
 	return e
 }
 
-// Remove the attribute id from the element.
+// Remove the attribute ID from the element.
 func (e *DIALOGElement) IDRemove(s string) *DIALOGElement {
 	if e.StringAttributes == nil {
 		return e
@@ -652,7 +654,7 @@ func (e *DIALOGElement) IfINERT(condition bool) *DIALOGElement {
 	return e
 }
 
-// Set the attribute inert to the value b explicitly.
+// Set the attribute INERT to the value b explicitly.
 func (e *DIALOGElement) INERTSet(b bool) *DIALOGElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
@@ -668,7 +670,7 @@ func (e *DIALOGElement) IfSetINERT(condition bool, b bool) *DIALOGElement {
 	return e
 }
 
-// Remove the attribute inert from the element.
+// Remove the attribute INERT from the element.
 func (e *DIALOGElement) INERTRemove(b bool) *DIALOGElement {
 	if e.BoolAttributes == nil {
 		return e
@@ -737,7 +739,7 @@ const (
 	DialogInputmode_url DialogInputmodeChoice = "url"
 )
 
-// Remove the attribute inputmode from the element.
+// Remove the attribute INPUTMODE from the element.
 func (e *DIALOGElement) INPUTMODERemove(c DialogInputmodeChoice) *DIALOGElement {
 	if e.StringAttributes == nil {
 		return e
@@ -767,7 +769,7 @@ func (e *DIALOGElement) IfIS(condition bool, s string) *DIALOGElement {
 	return e
 }
 
-// Remove the attribute is from the element.
+// Remove the attribute IS from the element.
 func (e *DIALOGElement) ISRemove(s string) *DIALOGElement {
 	if e.StringAttributes == nil {
 		return e
@@ -804,7 +806,7 @@ func (e *DIALOGElement) IfITEMID(condition bool, s string) *DIALOGElement {
 	return e
 }
 
-// Remove the attribute itemid from the element.
+// Remove the attribute ITEMID from the element.
 func (e *DIALOGElement) ITEMIDRemove(s string) *DIALOGElement {
 	if e.StringAttributes == nil {
 		return e
@@ -836,7 +838,7 @@ func (e *DIALOGElement) IfITEMPROP(condition bool, s string) *DIALOGElement {
 	return e
 }
 
-// Remove the attribute itemprop from the element.
+// Remove the attribute ITEMPROP from the element.
 func (e *DIALOGElement) ITEMPROPRemove(s string) *DIALOGElement {
 	if e.StringAttributes == nil {
 		return e
@@ -865,7 +867,7 @@ func (e *DIALOGElement) IfITEMREF(condition bool, s string) *DIALOGElement {
 	return e
 }
 
-// Remove the attribute itemref from the element.
+// Remove the attribute ITEMREF from the element.
 func (e *DIALOGElement) ITEMREFRemove(s string) *DIALOGElement {
 	if e.StringAttributes == nil {
 		return e
@@ -894,7 +896,7 @@ func (e *DIALOGElement) IfITEMSCOPE(condition bool) *DIALOGElement {
 	return e
 }
 
-// Set the attribute itemscope to the value b explicitly.
+// Set the attribute ITEMSCOPE to the value b explicitly.
 func (e *DIALOGElement) ITEMSCOPESet(b bool) *DIALOGElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
@@ -910,7 +912,7 @@ func (e *DIALOGElement) IfSetITEMSCOPE(condition bool, b bool) *DIALOGElement {
 	return e
 }
 
-// Remove the attribute itemscope from the element.
+// Remove the attribute ITEMSCOPE from the element.
 func (e *DIALOGElement) ITEMSCOPERemove(b bool) *DIALOGElement {
 	if e.BoolAttributes == nil {
 		return e
@@ -942,7 +944,7 @@ func (e *DIALOGElement) IfITEMTYPE(condition bool, s string) *DIALOGElement {
 	return e
 }
 
-// Remove the attribute itemtype from the element.
+// Remove the attribute ITEMTYPE from the element.
 func (e *DIALOGElement) ITEMTYPERemove(s string) *DIALOGElement {
 	if e.StringAttributes == nil {
 		return e
@@ -972,7 +974,7 @@ func (e *DIALOGElement) IfLANG(condition bool, s string) *DIALOGElement {
 	return e
 }
 
-// Remove the attribute lang from the element.
+// Remove the attribute LANG from the element.
 func (e *DIALOGElement) LANGRemove(s string) *DIALOGElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1000,7 +1002,7 @@ func (e *DIALOGElement) IfNONCE(condition bool, s string) *DIALOGElement {
 	return e
 }
 
-// Remove the attribute nonce from the element.
+// Remove the attribute NONCE from the element.
 func (e *DIALOGElement) NONCERemove(s string) *DIALOGElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1033,7 +1035,7 @@ func (e *DIALOGElement) IfPART(condition bool, s ...string) *DIALOGElement {
 	return e
 }
 
-// Remove the attribute part from the element.
+// Remove the attribute PART from the element.
 func (e *DIALOGElement) PARTRemove(s ...string) *DIALOGElement {
 	if e.DelimitedStrings == nil {
 		return e
@@ -1079,7 +1081,7 @@ const (
 	DialogPopver_manual DialogPopverChoice = "manual"
 )
 
-// Remove the attribute popver from the element.
+// Remove the attribute POPVER from the element.
 func (e *DIALOGElement) POPVERRemove(c DialogPopverChoice) *DIALOGElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1107,7 +1109,7 @@ func (e *DIALOGElement) IfSLOT(condition bool, s string) *DIALOGElement {
 	return e
 }
 
-// Remove the attribute slot from the element.
+// Remove the attribute SLOT from the element.
 func (e *DIALOGElement) SLOTRemove(s string) *DIALOGElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1149,7 +1151,7 @@ const (
 	DialogSpellcheck_false DialogSpellcheckChoice = "false"
 )
 
-// Remove the attribute spellcheck from the element.
+// Remove the attribute SPELLCHECK from the element.
 func (e *DIALOGElement) SPELLCHECKRemove(c DialogSpellcheckChoice) *DIALOGElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1236,7 +1238,7 @@ func (e *DIALOGElement) IfSTYLEPairs(condition bool, pairs ...string) *DIALOGEle
 	return e
 }
 
-// Remove the attribute style from the element.
+// Remove the attribute STYLE from the element.
 func (e *DIALOGElement) STYLERemove(keys ...string) *DIALOGElement {
 	if e.KVStrings == nil {
 		return e
@@ -1280,7 +1282,7 @@ func (e *DIALOGElement) IfTABINDEX(condition bool, i int) *DIALOGElement {
 	return e
 }
 
-// Remove the attribute tabindex from the element.
+// Remove the attribute TABINDEX from the element.
 func (e *DIALOGElement) TABINDEXRemove(i int) *DIALOGElement {
 	if e.IntAttributes == nil {
 		return e
@@ -1325,7 +1327,7 @@ func (e *DIALOGElement) IfTITLE(condition bool, s string) *DIALOGElement {
 	return e
 }
 
-// Remove the attribute title from the element.
+// Remove the attribute TITLE from the element.
 func (e *DIALOGElement) TITLERemove(s string) *DIALOGElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1357,11 +1359,351 @@ const (
 	DialogTranslate_no DialogTranslateChoice = "no"
 )
 
-// Remove the attribute translate from the element.
+// Remove the attribute TRANSLATE from the element.
 func (e *DIALOGElement) TRANSLATERemove(c DialogTranslateChoice) *DIALOGElement {
 	if e.StringAttributes == nil {
 		return e
 	}
 	e.StringAttributes.Del("translate")
+	return e
+}
+
+// Merges the store with the given object
+
+func (e *DIALOGElement) DATASTAR_MERGE_STORE(v any) *DIALOGElement {
+	if e.CustomDataAttributes == nil {
+		e.CustomDataAttributes = treemap.New[string, string]()
+	}
+	b, err := json.Marshal(v)
+	if err != nil {
+		panic(err)
+	}
+	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	return e
+}
+
+// Sets the reference of the element
+
+func (e *DIALOGElement) DATASTAR_REF(s string) *DIALOGElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-ref"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *DIALOGElement) IfDATASTAR_REF(condition bool, s string) *DIALOGElement {
+	if condition {
+		e.DATASTAR_REF(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_REF from the element.
+func (e *DIALOGElement) DATASTAR_REFRemove() *DIALOGElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-ref")
+	return e
+}
+
+// Sets the value of the element
+
+func (e *DIALOGElement) DATASTAR_BIND(s string) *DIALOGElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-bind"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *DIALOGElement) IfDATASTAR_BIND(condition bool, s string) *DIALOGElement {
+	if condition {
+		e.DATASTAR_BIND(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_BIND from the element.
+func (e *DIALOGElement) DATASTAR_BINDRemove() *DIALOGElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-bind")
+	return e
+}
+
+// Sets the value of the element
+
+func (e *DIALOGElement) DATASTAR_MODEL(s string) *DIALOGElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-model"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *DIALOGElement) IfDATASTAR_MODEL(condition bool, s string) *DIALOGElement {
+	if condition {
+		e.DATASTAR_MODEL(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_MODEL from the element.
+func (e *DIALOGElement) DATASTAR_MODELRemove() *DIALOGElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-model")
+	return e
+}
+
+// Sets the textContent of the element
+
+func (e *DIALOGElement) DATASTAR_TEXT(s string) *DIALOGElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-text"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *DIALOGElement) IfDATASTAR_TEXT(condition bool, s string) *DIALOGElement {
+	if condition {
+		e.DATASTAR_TEXT(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_TEXT from the element.
+func (e *DIALOGElement) DATASTAR_TEXTRemove() *DIALOGElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-text")
+	return e
+}
+
+// Sets the event handler of the element
+
+type DialogDataOnMod customDataKeyModifier
+
+// Debounces the event handler
+func DialogDataOnModDebounce(
+	s string,
+) DialogDataOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce_%sms", s)
+	}
+}
+
+// Throttles the event handler
+func DialogDataOnModThrottle(
+	s string,
+) DialogDataOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle_%sms", s)
+	}
+}
+
+func (e *DIALOGElement) DATASTAR_ON(s string, modifiers ...DialogDataOnMod) *DIALOGElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	customMods := lo.Map(modifiers, func(m DialogDataOnMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key := customDataKey("data-on", customMods...)
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *DIALOGElement) IfDATASTAR_ON(condition bool, s string, modifiers ...DialogDataOnMod) *DIALOGElement {
+	if condition {
+		e.DATASTAR_ON(s, modifiers...)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_ON from the element.
+func (e *DIALOGElement) DATASTAR_ONRemove() *DIALOGElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-on")
+	return e
+}
+
+// Sets the focus of the element
+
+func (e *DIALOGElement) DATASTAR_FOCUSSet(b bool) *DIALOGElement {
+	key := "data-focus"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *DIALOGElement) DATASTAR_FOCUS() *DIALOGElement {
+	return e.DATASTAR_FOCUSSet(true)
+}
+
+// Sets the header of for fetch requests
+
+func (e *DIALOGElement) DATASTAR_HEADER(s string) *DIALOGElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-header"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *DIALOGElement) IfDATASTAR_HEADER(condition bool, s string) *DIALOGElement {
+	if condition {
+		e.DATASTAR_HEADER(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_HEADER from the element.
+func (e *DIALOGElement) DATASTAR_HEADERRemove() *DIALOGElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-header")
+	return e
+}
+
+// Sets the URL for fetch requests
+
+func (e *DIALOGElement) DATASTAR_FETCH_URL(s string) *DIALOGElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-fetch-url"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *DIALOGElement) IfDATASTAR_FETCH_URL(condition bool, s string) *DIALOGElement {
+	if condition {
+		e.DATASTAR_FETCH_URL(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_FETCH_URL from the element.
+func (e *DIALOGElement) DATASTAR_FETCH_URLRemove() *DIALOGElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-fetch-url")
+	return e
+}
+
+// Sets the indicator selector for fetch requests
+
+func (e *DIALOGElement) DATASTAR_FETCH_INDICATOR(s string) *DIALOGElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "DatastarFetchIndicator"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *DIALOGElement) IfDATASTAR_FETCH_INDICATOR(condition bool, s string) *DIALOGElement {
+	if condition {
+		e.DATASTAR_FETCH_INDICATOR(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_FETCH_INDICATOR from the element.
+func (e *DIALOGElement) DATASTAR_FETCH_INDICATORRemove() *DIALOGElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("DatastarFetchIndicator")
+	return e
+}
+
+// Sets the visibility of the element
+
+func (e *DIALOGElement) DATASTAR_SHOWSet(b bool) *DIALOGElement {
+	key := "data-show"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *DIALOGElement) DATASTAR_SHOW() *DIALOGElement {
+	return e.DATASTAR_SHOWSet(true)
+}
+
+// Triggers the callback when the element intersects the viewport
+
+func (e *DIALOGElement) DATASTAR_INTERSECTSSet(b bool) *DIALOGElement {
+	key := "data-intersects"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *DIALOGElement) DATASTAR_INTERSECTS() *DIALOGElement {
+	return e.DATASTAR_INTERSECTSSet(true)
+}
+
+// Teleports the element to the given selector
+
+func (e *DIALOGElement) DATASTAR_TELEPORTSet(b bool) *DIALOGElement {
+	key := "data-teleport"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *DIALOGElement) DATASTAR_TELEPORT() *DIALOGElement {
+	return e.DATASTAR_TELEPORTSet(true)
+}
+
+// Scrolls the element into view
+
+func (e *DIALOGElement) DATASTAR_SCROLL_INTO_VIEWSet(b bool) *DIALOGElement {
+	key := "data-scroll-into-view"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *DIALOGElement) DATASTAR_SCROLL_INTO_VIEW() *DIALOGElement {
+	return e.DATASTAR_SCROLL_INTO_VIEWSet(true)
+}
+
+// Setup the ViewTransitionAPI for the element
+
+func (e *DIALOGElement) DATASTAR_VIEW_TRANSITION(s string) *DIALOGElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-view-transition"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *DIALOGElement) IfDATASTAR_VIEW_TRANSITION(condition bool, s string) *DIALOGElement {
+	if condition {
+		e.DATASTAR_VIEW_TRANSITION(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_VIEW_TRANSITION from the element.
+func (e *DIALOGElement) DATASTAR_VIEW_TRANSITIONRemove() *DIALOGElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-view-transition")
 	return e
 }

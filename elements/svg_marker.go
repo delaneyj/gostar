@@ -6,7 +6,9 @@ package elements
 import (
 	"fmt"
 
+	"github.com/goccy/go-json"
 	"github.com/igrmk/treemap/v2"
+	"github.com/samber/lo"
 )
 
 // The <marker> SVG element defines the graphics that is to be used for drawing
@@ -130,7 +132,7 @@ func (e *SVGMARKERElement) CustomDataRemove(key string) *SVGMARKERElement {
 
 // The x-axis coordinate of the reference point which is to be aligned exactly at
 // the marker position.
-func (e *SVGMARKERElement) REFX(f float64) *SVGMARKERElement {
+func (e *SVGMARKERElement) REF_X(f float64) *SVGMARKERElement {
 	if e.FloatAttributes == nil {
 		e.FloatAttributes = treemap.New[string, float64]()
 	}
@@ -138,16 +140,16 @@ func (e *SVGMARKERElement) REFX(f float64) *SVGMARKERElement {
 	return e
 }
 
-func (e *SVGMARKERElement) IfREFX(condition bool, f float64) *SVGMARKERElement {
+func (e *SVGMARKERElement) IfREF_X(condition bool, f float64) *SVGMARKERElement {
 	if condition {
-		e.REFX(f)
+		e.REF_X(f)
 	}
 	return e
 }
 
 // The y-axis coordinate of the reference point which is to be aligned exactly at
 // the marker position.
-func (e *SVGMARKERElement) REFY(f float64) *SVGMARKERElement {
+func (e *SVGMARKERElement) REF_Y(f float64) *SVGMARKERElement {
 	if e.FloatAttributes == nil {
 		e.FloatAttributes = treemap.New[string, float64]()
 	}
@@ -155,15 +157,15 @@ func (e *SVGMARKERElement) REFY(f float64) *SVGMARKERElement {
 	return e
 }
 
-func (e *SVGMARKERElement) IfREFY(condition bool, f float64) *SVGMARKERElement {
+func (e *SVGMARKERElement) IfREF_Y(condition bool, f float64) *SVGMARKERElement {
 	if condition {
-		e.REFY(f)
+		e.REF_Y(f)
 	}
 	return e
 }
 
 // The width of the marker viewport.
-func (e *SVGMARKERElement) MARKERWIDTH(f float64) *SVGMARKERElement {
+func (e *SVGMARKERElement) MARKER_WIDTH(f float64) *SVGMARKERElement {
 	if e.FloatAttributes == nil {
 		e.FloatAttributes = treemap.New[string, float64]()
 	}
@@ -171,15 +173,15 @@ func (e *SVGMARKERElement) MARKERWIDTH(f float64) *SVGMARKERElement {
 	return e
 }
 
-func (e *SVGMARKERElement) IfMARKERWIDTH(condition bool, f float64) *SVGMARKERElement {
+func (e *SVGMARKERElement) IfMARKER_WIDTH(condition bool, f float64) *SVGMARKERElement {
 	if condition {
-		e.MARKERWIDTH(f)
+		e.MARKER_WIDTH(f)
 	}
 	return e
 }
 
 // The height of the marker viewport.
-func (e *SVGMARKERElement) MARKERHEIGHT(f float64) *SVGMARKERElement {
+func (e *SVGMARKERElement) MARKER_HEIGHT(f float64) *SVGMARKERElement {
 	if e.FloatAttributes == nil {
 		e.FloatAttributes = treemap.New[string, float64]()
 	}
@@ -187,9 +189,9 @@ func (e *SVGMARKERElement) MARKERHEIGHT(f float64) *SVGMARKERElement {
 	return e
 }
 
-func (e *SVGMARKERElement) IfMARKERHEIGHT(condition bool, f float64) *SVGMARKERElement {
+func (e *SVGMARKERElement) IfMARKER_HEIGHT(condition bool, f float64) *SVGMARKERElement {
 	if condition {
-		e.MARKERHEIGHT(f)
+		e.MARKER_HEIGHT(f)
 	}
 	return e
 }
@@ -214,7 +216,7 @@ const (
 	SVGMarkerOrient_angle SVGMarkerOrientChoice = "angle"
 )
 
-// Remove the attribute orient from the element.
+// Remove the attribute ORIENT from the element.
 func (e *SVGMARKERElement) ORIENTRemove(c SVGMarkerOrientChoice) *SVGMARKERElement {
 	if e.StringAttributes == nil {
 		return e
@@ -224,7 +226,7 @@ func (e *SVGMARKERElement) ORIENTRemove(c SVGMarkerOrientChoice) *SVGMARKEREleme
 }
 
 // The coordinate system for the various length values within the marker.
-func (e *SVGMARKERElement) MARKERUNITS(c SVGMarkerMarkerUnitsChoice) *SVGMARKERElement {
+func (e *SVGMARKERElement) MARKER_UNITS(c SVGMarkerMarkerUnitsChoice) *SVGMARKERElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
@@ -241,8 +243,8 @@ const (
 	SVGMarkerMarkerUnits_strokeWidth SVGMarkerMarkerUnitsChoice = "strokeWidth"
 )
 
-// Remove the attribute markerUnits from the element.
-func (e *SVGMARKERElement) MARKERUNITSRemove(c SVGMarkerMarkerUnitsChoice) *SVGMARKERElement {
+// Remove the attribute MARKER_UNITS from the element.
+func (e *SVGMARKERElement) MARKER_UNITSRemove(c SVGMarkerMarkerUnitsChoice) *SVGMARKERElement {
 	if e.StringAttributes == nil {
 		return e
 	}
@@ -251,7 +253,7 @@ func (e *SVGMARKERElement) MARKERUNITSRemove(c SVGMarkerMarkerUnitsChoice) *SVGM
 }
 
 // The position and size of the marker viewport (the bounds of the marker).
-func (e *SVGMARKERElement) VIEWBOX(s string) *SVGMARKERElement {
+func (e *SVGMARKERElement) VIEW_BOX(s string) *SVGMARKERElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
@@ -259,19 +261,44 @@ func (e *SVGMARKERElement) VIEWBOX(s string) *SVGMARKERElement {
 	return e
 }
 
-func (e *SVGMARKERElement) IfVIEWBOX(condition bool, s string) *SVGMARKERElement {
+func (e *SVGMARKERElement) IfVIEW_BOX(condition bool, s string) *SVGMARKERElement {
 	if condition {
-		e.VIEWBOX(s)
+		e.VIEW_BOX(s)
 	}
 	return e
 }
 
-// Remove the attribute viewBox from the element.
-func (e *SVGMARKERElement) VIEWBOXRemove(s string) *SVGMARKERElement {
+// Remove the attribute VIEW_BOX from the element.
+func (e *SVGMARKERElement) VIEW_BOXRemove(s string) *SVGMARKERElement {
 	if e.StringAttributes == nil {
 		return e
 	}
 	e.StringAttributes.Del("viewBox")
+	return e
+}
+
+// Specifies a unique id for an element
+func (e *SVGMARKERElement) ID(s string) *SVGMARKERElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	e.StringAttributes.Set("id", s)
+	return e
+}
+
+func (e *SVGMARKERElement) IfID(condition bool, s string) *SVGMARKERElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
+// Remove the attribute ID from the element.
+func (e *SVGMARKERElement) IDRemove(s string) *SVGMARKERElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("id")
 	return e
 }
 
@@ -297,7 +324,7 @@ func (e *SVGMARKERElement) IfCLASS(condition bool, s ...string) *SVGMARKERElemen
 	return e
 }
 
-// Remove the attribute class from the element.
+// Remove the attribute CLASS from the element.
 func (e *SVGMARKERElement) CLASSRemove(s ...string) *SVGMARKERElement {
 	if e.DelimitedStrings == nil {
 		return e
@@ -307,31 +334,6 @@ func (e *SVGMARKERElement) CLASSRemove(s ...string) *SVGMARKERElement {
 		return e
 	}
 	ds.Remove(s...)
-	return e
-}
-
-// Specifies a unique id for an element
-func (e *SVGMARKERElement) ID(s string) *SVGMARKERElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	e.StringAttributes.Set("id", s)
-	return e
-}
-
-func (e *SVGMARKERElement) IfID(condition bool, s string) *SVGMARKERElement {
-	if condition {
-		e.ID(s)
-	}
-	return e
-}
-
-// Remove the attribute id from the element.
-func (e *SVGMARKERElement) IDRemove(s string) *SVGMARKERElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("id")
 	return e
 }
 
@@ -411,7 +413,7 @@ func (e *SVGMARKERElement) IfSTYLEPairs(condition bool, pairs ...string) *SVGMAR
 	return e
 }
 
-// Remove the attribute style from the element.
+// Remove the attribute STYLE from the element.
 func (e *SVGMARKERElement) STYLERemove(keys ...string) *SVGMARKERElement {
 	if e.KVStrings == nil {
 		return e
@@ -423,5 +425,345 @@ func (e *SVGMARKERElement) STYLERemove(keys ...string) *SVGMARKERElement {
 	for _, k := range keys {
 		kv.Remove(k)
 	}
+	return e
+}
+
+// Merges the store with the given object
+
+func (e *SVGMARKERElement) DATASTAR_MERGE_STORE(v any) *SVGMARKERElement {
+	if e.CustomDataAttributes == nil {
+		e.CustomDataAttributes = treemap.New[string, string]()
+	}
+	b, err := json.Marshal(v)
+	if err != nil {
+		panic(err)
+	}
+	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	return e
+}
+
+// Sets the reference of the element
+
+func (e *SVGMARKERElement) DATASTAR_REF(s string) *SVGMARKERElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-ref"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SVGMARKERElement) IfDATASTAR_REF(condition bool, s string) *SVGMARKERElement {
+	if condition {
+		e.DATASTAR_REF(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_REF from the element.
+func (e *SVGMARKERElement) DATASTAR_REFRemove() *SVGMARKERElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-ref")
+	return e
+}
+
+// Sets the value of the element
+
+func (e *SVGMARKERElement) DATASTAR_BIND(s string) *SVGMARKERElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-bind"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SVGMARKERElement) IfDATASTAR_BIND(condition bool, s string) *SVGMARKERElement {
+	if condition {
+		e.DATASTAR_BIND(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_BIND from the element.
+func (e *SVGMARKERElement) DATASTAR_BINDRemove() *SVGMARKERElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-bind")
+	return e
+}
+
+// Sets the value of the element
+
+func (e *SVGMARKERElement) DATASTAR_MODEL(s string) *SVGMARKERElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-model"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SVGMARKERElement) IfDATASTAR_MODEL(condition bool, s string) *SVGMARKERElement {
+	if condition {
+		e.DATASTAR_MODEL(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_MODEL from the element.
+func (e *SVGMARKERElement) DATASTAR_MODELRemove() *SVGMARKERElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-model")
+	return e
+}
+
+// Sets the textContent of the element
+
+func (e *SVGMARKERElement) DATASTAR_TEXT(s string) *SVGMARKERElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-text"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SVGMARKERElement) IfDATASTAR_TEXT(condition bool, s string) *SVGMARKERElement {
+	if condition {
+		e.DATASTAR_TEXT(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_TEXT from the element.
+func (e *SVGMARKERElement) DATASTAR_TEXTRemove() *SVGMARKERElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-text")
+	return e
+}
+
+// Sets the event handler of the element
+
+type SVGMarkerDataOnMod customDataKeyModifier
+
+// Debounces the event handler
+func SVGMarkerDataOnModDebounce(
+	s string,
+) SVGMarkerDataOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce_%sms", s)
+	}
+}
+
+// Throttles the event handler
+func SVGMarkerDataOnModThrottle(
+	s string,
+) SVGMarkerDataOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle_%sms", s)
+	}
+}
+
+func (e *SVGMARKERElement) DATASTAR_ON(s string, modifiers ...SVGMarkerDataOnMod) *SVGMARKERElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	customMods := lo.Map(modifiers, func(m SVGMarkerDataOnMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key := customDataKey("data-on", customMods...)
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SVGMARKERElement) IfDATASTAR_ON(condition bool, s string, modifiers ...SVGMarkerDataOnMod) *SVGMARKERElement {
+	if condition {
+		e.DATASTAR_ON(s, modifiers...)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_ON from the element.
+func (e *SVGMARKERElement) DATASTAR_ONRemove() *SVGMARKERElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-on")
+	return e
+}
+
+// Sets the focus of the element
+
+func (e *SVGMARKERElement) DATASTAR_FOCUSSet(b bool) *SVGMARKERElement {
+	key := "data-focus"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *SVGMARKERElement) DATASTAR_FOCUS() *SVGMARKERElement {
+	return e.DATASTAR_FOCUSSet(true)
+}
+
+// Sets the header of for fetch requests
+
+func (e *SVGMARKERElement) DATASTAR_HEADER(s string) *SVGMARKERElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-header"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SVGMARKERElement) IfDATASTAR_HEADER(condition bool, s string) *SVGMARKERElement {
+	if condition {
+		e.DATASTAR_HEADER(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_HEADER from the element.
+func (e *SVGMARKERElement) DATASTAR_HEADERRemove() *SVGMARKERElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-header")
+	return e
+}
+
+// Sets the URL for fetch requests
+
+func (e *SVGMARKERElement) DATASTAR_FETCH_URL(s string) *SVGMARKERElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-fetch-url"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SVGMARKERElement) IfDATASTAR_FETCH_URL(condition bool, s string) *SVGMARKERElement {
+	if condition {
+		e.DATASTAR_FETCH_URL(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_FETCH_URL from the element.
+func (e *SVGMARKERElement) DATASTAR_FETCH_URLRemove() *SVGMARKERElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-fetch-url")
+	return e
+}
+
+// Sets the indicator selector for fetch requests
+
+func (e *SVGMARKERElement) DATASTAR_FETCH_INDICATOR(s string) *SVGMARKERElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "DatastarFetchIndicator"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SVGMARKERElement) IfDATASTAR_FETCH_INDICATOR(condition bool, s string) *SVGMARKERElement {
+	if condition {
+		e.DATASTAR_FETCH_INDICATOR(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_FETCH_INDICATOR from the element.
+func (e *SVGMARKERElement) DATASTAR_FETCH_INDICATORRemove() *SVGMARKERElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("DatastarFetchIndicator")
+	return e
+}
+
+// Sets the visibility of the element
+
+func (e *SVGMARKERElement) DATASTAR_SHOWSet(b bool) *SVGMARKERElement {
+	key := "data-show"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *SVGMARKERElement) DATASTAR_SHOW() *SVGMARKERElement {
+	return e.DATASTAR_SHOWSet(true)
+}
+
+// Triggers the callback when the element intersects the viewport
+
+func (e *SVGMARKERElement) DATASTAR_INTERSECTSSet(b bool) *SVGMARKERElement {
+	key := "data-intersects"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *SVGMARKERElement) DATASTAR_INTERSECTS() *SVGMARKERElement {
+	return e.DATASTAR_INTERSECTSSet(true)
+}
+
+// Teleports the element to the given selector
+
+func (e *SVGMARKERElement) DATASTAR_TELEPORTSet(b bool) *SVGMARKERElement {
+	key := "data-teleport"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *SVGMARKERElement) DATASTAR_TELEPORT() *SVGMARKERElement {
+	return e.DATASTAR_TELEPORTSet(true)
+}
+
+// Scrolls the element into view
+
+func (e *SVGMARKERElement) DATASTAR_SCROLL_INTO_VIEWSet(b bool) *SVGMARKERElement {
+	key := "data-scroll-into-view"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *SVGMARKERElement) DATASTAR_SCROLL_INTO_VIEW() *SVGMARKERElement {
+	return e.DATASTAR_SCROLL_INTO_VIEWSet(true)
+}
+
+// Setup the ViewTransitionAPI for the element
+
+func (e *SVGMARKERElement) DATASTAR_VIEW_TRANSITION(s string) *SVGMARKERElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-view-transition"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *SVGMARKERElement) IfDATASTAR_VIEW_TRANSITION(condition bool, s string) *SVGMARKERElement {
+	if condition {
+		e.DATASTAR_VIEW_TRANSITION(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_VIEW_TRANSITION from the element.
+func (e *SVGMARKERElement) DATASTAR_VIEW_TRANSITIONRemove() *SVGMARKERElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-view-transition")
 	return e
 }

@@ -6,7 +6,9 @@ package elements
 import (
 	"fmt"
 
+	"github.com/goccy/go-json"
 	"github.com/igrmk/treemap/v2"
+	"github.com/samber/lo"
 )
 
 // The HTML <input> element is used to create interactive controls for web-based
@@ -143,7 +145,7 @@ func (e *INPUTElement) IfACCEPT(condition bool, s string) *INPUTElement {
 	return e
 }
 
-// Remove the attribute accept from the element.
+// Remove the attribute ACCEPT from the element.
 func (e *INPUTElement) ACCEPTRemove(s string) *INPUTElement {
 	if e.StringAttributes == nil {
 		return e
@@ -168,7 +170,7 @@ func (e *INPUTElement) IfALT(condition bool, s string) *INPUTElement {
 	return e
 }
 
-// Remove the attribute alt from the element.
+// Remove the attribute ALT from the element.
 func (e *INPUTElement) ALTRemove(s string) *INPUTElement {
 	if e.StringAttributes == nil {
 		return e
@@ -196,7 +198,7 @@ const (
 	InputAutocomplete_off InputAutocompleteChoice = "off"
 )
 
-// Remove the attribute autocomplete from the element.
+// Remove the attribute AUTOCOMPLETE from the element.
 func (e *INPUTElement) AUTOCOMPLETERemove(c InputAutocompleteChoice) *INPUTElement {
 	if e.StringAttributes == nil {
 		return e
@@ -218,7 +220,7 @@ func (e *INPUTElement) IfAUTOFOCUS(condition bool) *INPUTElement {
 	return e
 }
 
-// Set the attribute autofocus to the value b explicitly.
+// Set the attribute AUTOFOCUS to the value b explicitly.
 func (e *INPUTElement) AUTOFOCUSSet(b bool) *INPUTElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
@@ -234,7 +236,7 @@ func (e *INPUTElement) IfSetAUTOFOCUS(condition bool, b bool) *INPUTElement {
 	return e
 }
 
-// Remove the attribute autofocus from the element.
+// Remove the attribute AUTOFOCUS from the element.
 func (e *INPUTElement) AUTOFOCUSRemove(b bool) *INPUTElement {
 	if e.BoolAttributes == nil {
 		return e
@@ -256,7 +258,7 @@ func (e *INPUTElement) IfCHECKED(condition bool) *INPUTElement {
 	return e
 }
 
-// Set the attribute checked to the value b explicitly.
+// Set the attribute CHECKED to the value b explicitly.
 func (e *INPUTElement) CHECKEDSet(b bool) *INPUTElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
@@ -272,7 +274,7 @@ func (e *INPUTElement) IfSetCHECKED(condition bool, b bool) *INPUTElement {
 	return e
 }
 
-// Remove the attribute checked from the element.
+// Remove the attribute CHECKED from the element.
 func (e *INPUTElement) CHECKEDRemove(b bool) *INPUTElement {
 	if e.BoolAttributes == nil {
 		return e
@@ -298,7 +300,7 @@ func (e *INPUTElement) IfDIRNAME(condition bool, s string) *INPUTElement {
 	return e
 }
 
-// Remove the attribute dirname from the element.
+// Remove the attribute DIRNAME from the element.
 func (e *INPUTElement) DIRNAMERemove(s string) *INPUTElement {
 	if e.StringAttributes == nil {
 		return e
@@ -320,7 +322,7 @@ func (e *INPUTElement) IfDISABLED(condition bool) *INPUTElement {
 	return e
 }
 
-// Set the attribute disabled to the value b explicitly.
+// Set the attribute DISABLED to the value b explicitly.
 func (e *INPUTElement) DISABLEDSet(b bool) *INPUTElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
@@ -336,7 +338,7 @@ func (e *INPUTElement) IfSetDISABLED(condition bool, b bool) *INPUTElement {
 	return e
 }
 
-// Remove the attribute disabled from the element.
+// Remove the attribute DISABLED from the element.
 func (e *INPUTElement) DISABLEDRemove(b bool) *INPUTElement {
 	if e.BoolAttributes == nil {
 		return e
@@ -361,7 +363,7 @@ func (e *INPUTElement) IfFORM(condition bool, s string) *INPUTElement {
 	return e
 }
 
-// Remove the attribute form from the element.
+// Remove the attribute FORM from the element.
 func (e *INPUTElement) FORMRemove(s string) *INPUTElement {
 	if e.StringAttributes == nil {
 		return e
@@ -386,7 +388,7 @@ func (e *INPUTElement) IfFORMACTION(condition bool, s string) *INPUTElement {
 	return e
 }
 
-// Remove the attribute formaction from the element.
+// Remove the attribute FORMACTION from the element.
 func (e *INPUTElement) FORMACTIONRemove(s string) *INPUTElement {
 	if e.StringAttributes == nil {
 		return e
@@ -416,7 +418,7 @@ const (
 	InputFormenctype_text_plain InputFormenctypeChoice = "text/plain"
 )
 
-// Remove the attribute formenctype from the element.
+// Remove the attribute FORMENCTYPE from the element.
 func (e *INPUTElement) FORMENCTYPERemove(c InputFormenctypeChoice) *INPUTElement {
 	if e.StringAttributes == nil {
 		return e
@@ -449,7 +451,7 @@ const (
 	InputFormmethod_dialog InputFormmethodChoice = "dialog"
 )
 
-// Remove the attribute formmethod from the element.
+// Remove the attribute FORMMETHOD from the element.
 func (e *INPUTElement) FORMMETHODRemove(c InputFormmethodChoice) *INPUTElement {
 	if e.StringAttributes == nil {
 		return e
@@ -471,7 +473,7 @@ func (e *INPUTElement) IfFORMNOVALIDATE(condition bool) *INPUTElement {
 	return e
 }
 
-// Set the attribute formnovalidate to the value b explicitly.
+// Set the attribute FORMNOVALIDATE to the value b explicitly.
 func (e *INPUTElement) FORMNOVALIDATESet(b bool) *INPUTElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
@@ -487,7 +489,7 @@ func (e *INPUTElement) IfSetFORMNOVALIDATE(condition bool, b bool) *INPUTElement
 	return e
 }
 
-// Remove the attribute formnovalidate from the element.
+// Remove the attribute FORMNOVALIDATE from the element.
 func (e *INPUTElement) FORMNOVALIDATERemove(b bool) *INPUTElement {
 	if e.BoolAttributes == nil {
 		return e
@@ -522,7 +524,7 @@ const (
 	InputFormtarget__top InputFormtargetChoice = "_top"
 )
 
-// Remove the attribute formtarget from the element.
+// Remove the attribute FORMTARGET from the element.
 func (e *INPUTElement) FORMTARGETRemove(c InputFormtargetChoice) *INPUTElement {
 	if e.StringAttributes == nil {
 		return e
@@ -547,7 +549,7 @@ func (e *INPUTElement) IfHEIGHT(condition bool, i int) *INPUTElement {
 	return e
 }
 
-// Remove the attribute height from the element.
+// Remove the attribute HEIGHT from the element.
 func (e *INPUTElement) HEIGHTRemove(i int) *INPUTElement {
 	if e.IntAttributes == nil {
 		return e
@@ -572,12 +574,37 @@ func (e *INPUTElement) IfLIST(condition bool, s string) *INPUTElement {
 	return e
 }
 
-// Remove the attribute list from the element.
+// Remove the attribute LIST from the element.
 func (e *INPUTElement) LISTRemove(s string) *INPUTElement {
 	if e.StringAttributes == nil {
 		return e
 	}
 	e.StringAttributes.Del("list")
+	return e
+}
+
+// maximum value of an <input> element with type="number" or type="range".
+func (e *INPUTElement) MAX_STR(s string) *INPUTElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	e.StringAttributes.Set("max", s)
+	return e
+}
+
+func (e *INPUTElement) IfMAX_STR(condition bool, s string) *INPUTElement {
+	if condition {
+		e.MAX_STR(s)
+	}
+	return e
+}
+
+// Remove the attribute MAX_STR from the element.
+func (e *INPUTElement) MAX_STRRemove(s string) *INPUTElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("max")
 	return e
 }
 
@@ -602,12 +629,37 @@ func (e *INPUTElement) IfMAXLENGTH(condition bool, i int) *INPUTElement {
 	return e
 }
 
-// Remove the attribute maxlength from the element.
+// Remove the attribute MAXLENGTH from the element.
 func (e *INPUTElement) MAXLENGTHRemove(i int) *INPUTElement {
 	if e.IntAttributes == nil {
 		return e
 	}
 	e.IntAttributes.Del("maxlength")
+	return e
+}
+
+// the minimum value of an <input> element with type="number" or type="range".
+func (e *INPUTElement) MIN_STR(s string) *INPUTElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	e.StringAttributes.Set("min", s)
+	return e
+}
+
+func (e *INPUTElement) IfMIN_STR(condition bool, s string) *INPUTElement {
+	if condition {
+		e.MIN_STR(s)
+	}
+	return e
+}
+
+// Remove the attribute MIN_STR from the element.
+func (e *INPUTElement) MIN_STRRemove(s string) *INPUTElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("min")
 	return e
 }
 
@@ -632,7 +684,7 @@ func (e *INPUTElement) IfMINLENGTH(condition bool, i int) *INPUTElement {
 	return e
 }
 
-// Remove the attribute minlength from the element.
+// Remove the attribute MINLENGTH from the element.
 func (e *INPUTElement) MINLENGTHRemove(i int) *INPUTElement {
 	if e.IntAttributes == nil {
 		return e
@@ -654,7 +706,7 @@ func (e *INPUTElement) IfMULTIPLE(condition bool) *INPUTElement {
 	return e
 }
 
-// Set the attribute multiple to the value b explicitly.
+// Set the attribute MULTIPLE to the value b explicitly.
 func (e *INPUTElement) MULTIPLESet(b bool) *INPUTElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
@@ -670,7 +722,7 @@ func (e *INPUTElement) IfSetMULTIPLE(condition bool, b bool) *INPUTElement {
 	return e
 }
 
-// Remove the attribute multiple from the element.
+// Remove the attribute MULTIPLE from the element.
 func (e *INPUTElement) MULTIPLERemove(b bool) *INPUTElement {
 	if e.BoolAttributes == nil {
 		return e
@@ -695,7 +747,7 @@ func (e *INPUTElement) IfNAME(condition bool, s string) *INPUTElement {
 	return e
 }
 
-// Remove the attribute name from the element.
+// Remove the attribute NAME from the element.
 func (e *INPUTElement) NAMERemove(s string) *INPUTElement {
 	if e.StringAttributes == nil {
 		return e
@@ -720,7 +772,7 @@ func (e *INPUTElement) IfPATTERN(condition bool, s string) *INPUTElement {
 	return e
 }
 
-// Remove the attribute pattern from the element.
+// Remove the attribute PATTERN from the element.
 func (e *INPUTElement) PATTERNRemove(s string) *INPUTElement {
 	if e.StringAttributes == nil {
 		return e
@@ -745,7 +797,7 @@ func (e *INPUTElement) IfPLACEHOLDER(condition bool, s string) *INPUTElement {
 	return e
 }
 
-// Remove the attribute placeholder from the element.
+// Remove the attribute PLACEHOLDER from the element.
 func (e *INPUTElement) PLACEHOLDERRemove(s string) *INPUTElement {
 	if e.StringAttributes == nil {
 		return e
@@ -767,7 +819,7 @@ func (e *INPUTElement) IfREADONLY(condition bool) *INPUTElement {
 	return e
 }
 
-// Set the attribute readonly to the value b explicitly.
+// Set the attribute READONLY to the value b explicitly.
 func (e *INPUTElement) READONLYSet(b bool) *INPUTElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
@@ -783,7 +835,7 @@ func (e *INPUTElement) IfSetREADONLY(condition bool, b bool) *INPUTElement {
 	return e
 }
 
-// Remove the attribute readonly from the element.
+// Remove the attribute READONLY from the element.
 func (e *INPUTElement) READONLYRemove(b bool) *INPUTElement {
 	if e.BoolAttributes == nil {
 		return e
@@ -805,7 +857,7 @@ func (e *INPUTElement) IfREQUIRED(condition bool) *INPUTElement {
 	return e
 }
 
-// Set the attribute required to the value b explicitly.
+// Set the attribute REQUIRED to the value b explicitly.
 func (e *INPUTElement) REQUIREDSet(b bool) *INPUTElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
@@ -821,7 +873,7 @@ func (e *INPUTElement) IfSetREQUIRED(condition bool, b bool) *INPUTElement {
 	return e
 }
 
-// Remove the attribute required from the element.
+// Remove the attribute REQUIRED from the element.
 func (e *INPUTElement) REQUIREDRemove(b bool) *INPUTElement {
 	if e.BoolAttributes == nil {
 		return e
@@ -846,7 +898,7 @@ func (e *INPUTElement) IfSIZE(condition bool, i int) *INPUTElement {
 	return e
 }
 
-// Remove the attribute size from the element.
+// Remove the attribute SIZE from the element.
 func (e *INPUTElement) SIZERemove(i int) *INPUTElement {
 	if e.IntAttributes == nil {
 		return e
@@ -871,7 +923,7 @@ func (e *INPUTElement) IfSRC(condition bool, s string) *INPUTElement {
 	return e
 }
 
-// Remove the attribute src from the element.
+// Remove the attribute SRC from the element.
 func (e *INPUTElement) SRCRemove(s string) *INPUTElement {
 	if e.StringAttributes == nil {
 		return e
@@ -896,7 +948,7 @@ func (e *INPUTElement) IfSTEP(condition bool, s string) *INPUTElement {
 	return e
 }
 
-// Remove the attribute step from the element.
+// Remove the attribute STEP from the element.
 func (e *INPUTElement) STEPRemove(s string) *INPUTElement {
 	if e.StringAttributes == nil {
 		return e
@@ -975,7 +1027,7 @@ const (
 	InputType_week InputTypeChoice = "week"
 )
 
-// Remove the attribute type from the element.
+// Remove the attribute TYPE from the element.
 func (e *INPUTElement) TYPERemove(c InputTypeChoice) *INPUTElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1000,7 +1052,7 @@ func (e *INPUTElement) IfVALUE(condition bool, s string) *INPUTElement {
 	return e
 }
 
-// Remove the attribute value from the element.
+// Remove the attribute VALUE from the element.
 func (e *INPUTElement) VALUERemove(s string) *INPUTElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1025,7 +1077,7 @@ func (e *INPUTElement) IfWIDTH(condition bool, i int) *INPUTElement {
 	return e
 }
 
-// Remove the attribute width from the element.
+// Remove the attribute WIDTH from the element.
 func (e *INPUTElement) WIDTHRemove(i int) *INPUTElement {
 	if e.IntAttributes == nil {
 		return e
@@ -1053,7 +1105,7 @@ func (e *INPUTElement) IfACCESSKEY(condition bool, r rune) *INPUTElement {
 	return e
 }
 
-// Remove the attribute accesskey from the element.
+// Remove the attribute ACCESSKEY from the element.
 func (e *INPUTElement) ACCESSKEYRemove() *INPUTElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1101,7 +1153,7 @@ const (
 	InputAutocapitalize_characters InputAutocapitalizeChoice = "characters"
 )
 
-// Remove the attribute autocapitalize from the element.
+// Remove the attribute AUTOCAPITALIZE from the element.
 func (e *INPUTElement) AUTOCAPITALIZERemove(c InputAutocapitalizeChoice) *INPUTElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1135,7 +1187,7 @@ func (e *INPUTElement) IfCLASS(condition bool, s ...string) *INPUTElement {
 	return e
 }
 
-// Remove the attribute class from the element.
+// Remove the attribute CLASS from the element.
 func (e *INPUTElement) CLASSRemove(s ...string) *INPUTElement {
 	if e.DelimitedStrings == nil {
 		return e
@@ -1173,7 +1225,7 @@ const (
 	InputContenteditable_plaintext_only InputContenteditableChoice = "plaintext-only"
 )
 
-// Remove the attribute contenteditable from the element.
+// Remove the attribute CONTENTEDITABLE from the element.
 func (e *INPUTElement) CONTENTEDITABLERemove(c InputContenteditableChoice) *INPUTElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1221,7 +1273,7 @@ const (
 	InputDir_auto InputDirChoice = "auto"
 )
 
-// Remove the attribute dir from the element.
+// Remove the attribute DIR from the element.
 func (e *INPUTElement) DIRRemove(c InputDirChoice) *INPUTElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1258,7 +1310,7 @@ const (
 	InputDraggable_auto InputDraggableChoice = "auto"
 )
 
-// Remove the attribute draggable from the element.
+// Remove the attribute DRAGGABLE from the element.
 func (e *INPUTElement) DRAGGABLERemove(c InputDraggableChoice) *INPUTElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1298,7 +1350,7 @@ const (
 	InputEnterkeyhint_send InputEnterkeyhintChoice = "send"
 )
 
-// Remove the attribute enterkeyhint from the element.
+// Remove the attribute ENTERKEYHINT from the element.
 func (e *INPUTElement) ENTERKEYHINTRemove(c InputEnterkeyhintChoice) *INPUTElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1347,7 +1399,7 @@ func (e *INPUTElement) IfEXPORTPARTS(condition bool, s ...string) *INPUTElement 
 	return e
 }
 
-// Remove the attribute exportparts from the element.
+// Remove the attribute EXPORTPARTS from the element.
 func (e *INPUTElement) EXPORTPARTSRemove(s ...string) *INPUTElement {
 	if e.DelimitedStrings == nil {
 		return e
@@ -1401,7 +1453,7 @@ const (
 	InputHidden_until_found InputHiddenChoice = "until-found"
 )
 
-// Remove the attribute hidden from the element.
+// Remove the attribute HIDDEN from the element.
 func (e *INPUTElement) HIDDENRemove(c InputHiddenChoice) *INPUTElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1429,7 +1481,7 @@ func (e *INPUTElement) IfID(condition bool, s string) *INPUTElement {
 	return e
 }
 
-// Remove the attribute id from the element.
+// Remove the attribute ID from the element.
 func (e *INPUTElement) IDRemove(s string) *INPUTElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1462,7 +1514,7 @@ func (e *INPUTElement) IfINERT(condition bool) *INPUTElement {
 	return e
 }
 
-// Set the attribute inert to the value b explicitly.
+// Set the attribute INERT to the value b explicitly.
 func (e *INPUTElement) INERTSet(b bool) *INPUTElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
@@ -1478,7 +1530,7 @@ func (e *INPUTElement) IfSetINERT(condition bool, b bool) *INPUTElement {
 	return e
 }
 
-// Remove the attribute inert from the element.
+// Remove the attribute INERT from the element.
 func (e *INPUTElement) INERTRemove(b bool) *INPUTElement {
 	if e.BoolAttributes == nil {
 		return e
@@ -1547,7 +1599,7 @@ const (
 	InputInputmode_url InputInputmodeChoice = "url"
 )
 
-// Remove the attribute inputmode from the element.
+// Remove the attribute INPUTMODE from the element.
 func (e *INPUTElement) INPUTMODERemove(c InputInputmodeChoice) *INPUTElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1577,7 +1629,7 @@ func (e *INPUTElement) IfIS(condition bool, s string) *INPUTElement {
 	return e
 }
 
-// Remove the attribute is from the element.
+// Remove the attribute IS from the element.
 func (e *INPUTElement) ISRemove(s string) *INPUTElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1614,7 +1666,7 @@ func (e *INPUTElement) IfITEMID(condition bool, s string) *INPUTElement {
 	return e
 }
 
-// Remove the attribute itemid from the element.
+// Remove the attribute ITEMID from the element.
 func (e *INPUTElement) ITEMIDRemove(s string) *INPUTElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1646,7 +1698,7 @@ func (e *INPUTElement) IfITEMPROP(condition bool, s string) *INPUTElement {
 	return e
 }
 
-// Remove the attribute itemprop from the element.
+// Remove the attribute ITEMPROP from the element.
 func (e *INPUTElement) ITEMPROPRemove(s string) *INPUTElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1675,7 +1727,7 @@ func (e *INPUTElement) IfITEMREF(condition bool, s string) *INPUTElement {
 	return e
 }
 
-// Remove the attribute itemref from the element.
+// Remove the attribute ITEMREF from the element.
 func (e *INPUTElement) ITEMREFRemove(s string) *INPUTElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1704,7 +1756,7 @@ func (e *INPUTElement) IfITEMSCOPE(condition bool) *INPUTElement {
 	return e
 }
 
-// Set the attribute itemscope to the value b explicitly.
+// Set the attribute ITEMSCOPE to the value b explicitly.
 func (e *INPUTElement) ITEMSCOPESet(b bool) *INPUTElement {
 	if e.BoolAttributes == nil {
 		e.BoolAttributes = treemap.New[string, bool]()
@@ -1720,7 +1772,7 @@ func (e *INPUTElement) IfSetITEMSCOPE(condition bool, b bool) *INPUTElement {
 	return e
 }
 
-// Remove the attribute itemscope from the element.
+// Remove the attribute ITEMSCOPE from the element.
 func (e *INPUTElement) ITEMSCOPERemove(b bool) *INPUTElement {
 	if e.BoolAttributes == nil {
 		return e
@@ -1752,7 +1804,7 @@ func (e *INPUTElement) IfITEMTYPE(condition bool, s string) *INPUTElement {
 	return e
 }
 
-// Remove the attribute itemtype from the element.
+// Remove the attribute ITEMTYPE from the element.
 func (e *INPUTElement) ITEMTYPERemove(s string) *INPUTElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1782,62 +1834,12 @@ func (e *INPUTElement) IfLANG(condition bool, s string) *INPUTElement {
 	return e
 }
 
-// Remove the attribute lang from the element.
+// Remove the attribute LANG from the element.
 func (e *INPUTElement) LANGRemove(s string) *INPUTElement {
 	if e.StringAttributes == nil {
 		return e
 	}
 	e.StringAttributes.Del("lang")
-	return e
-}
-
-// maximum value of an <input> element with type="number" or type="range".
-func (e *INPUTElement) MAXSTR(s string) *INPUTElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	e.StringAttributes.Set("max", s)
-	return e
-}
-
-func (e *INPUTElement) IfMAXSTR(condition bool, s string) *INPUTElement {
-	if condition {
-		e.MAXSTR(s)
-	}
-	return e
-}
-
-// Remove the attribute maxStr from the element.
-func (e *INPUTElement) MAXSTRRemove(s string) *INPUTElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("max")
-	return e
-}
-
-// the minimum value of an <input> element with type="number" or type="range".
-func (e *INPUTElement) MINSTR(s string) *INPUTElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	e.StringAttributes.Set("min", s)
-	return e
-}
-
-func (e *INPUTElement) IfMINSTR(condition bool, s string) *INPUTElement {
-	if condition {
-		e.MINSTR(s)
-	}
-	return e
-}
-
-// Remove the attribute minStr from the element.
-func (e *INPUTElement) MINSTRRemove(s string) *INPUTElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("min")
 	return e
 }
 
@@ -1860,7 +1862,7 @@ func (e *INPUTElement) IfNONCE(condition bool, s string) *INPUTElement {
 	return e
 }
 
-// Remove the attribute nonce from the element.
+// Remove the attribute NONCE from the element.
 func (e *INPUTElement) NONCERemove(s string) *INPUTElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1893,7 +1895,7 @@ func (e *INPUTElement) IfPART(condition bool, s ...string) *INPUTElement {
 	return e
 }
 
-// Remove the attribute part from the element.
+// Remove the attribute PART from the element.
 func (e *INPUTElement) PARTRemove(s ...string) *INPUTElement {
 	if e.DelimitedStrings == nil {
 		return e
@@ -1939,7 +1941,7 @@ const (
 	InputPopver_manual InputPopverChoice = "manual"
 )
 
-// Remove the attribute popver from the element.
+// Remove the attribute POPVER from the element.
 func (e *INPUTElement) POPVERRemove(c InputPopverChoice) *INPUTElement {
 	if e.StringAttributes == nil {
 		return e
@@ -1967,7 +1969,7 @@ func (e *INPUTElement) IfSLOT(condition bool, s string) *INPUTElement {
 	return e
 }
 
-// Remove the attribute slot from the element.
+// Remove the attribute SLOT from the element.
 func (e *INPUTElement) SLOTRemove(s string) *INPUTElement {
 	if e.StringAttributes == nil {
 		return e
@@ -2009,7 +2011,7 @@ const (
 	InputSpellcheck_false InputSpellcheckChoice = "false"
 )
 
-// Remove the attribute spellcheck from the element.
+// Remove the attribute SPELLCHECK from the element.
 func (e *INPUTElement) SPELLCHECKRemove(c InputSpellcheckChoice) *INPUTElement {
 	if e.StringAttributes == nil {
 		return e
@@ -2096,7 +2098,7 @@ func (e *INPUTElement) IfSTYLEPairs(condition bool, pairs ...string) *INPUTEleme
 	return e
 }
 
-// Remove the attribute style from the element.
+// Remove the attribute STYLE from the element.
 func (e *INPUTElement) STYLERemove(keys ...string) *INPUTElement {
 	if e.KVStrings == nil {
 		return e
@@ -2140,7 +2142,7 @@ func (e *INPUTElement) IfTABINDEX(condition bool, i int) *INPUTElement {
 	return e
 }
 
-// Remove the attribute tabindex from the element.
+// Remove the attribute TABINDEX from the element.
 func (e *INPUTElement) TABINDEXRemove(i int) *INPUTElement {
 	if e.IntAttributes == nil {
 		return e
@@ -2185,7 +2187,7 @@ func (e *INPUTElement) IfTITLE(condition bool, s string) *INPUTElement {
 	return e
 }
 
-// Remove the attribute title from the element.
+// Remove the attribute TITLE from the element.
 func (e *INPUTElement) TITLERemove(s string) *INPUTElement {
 	if e.StringAttributes == nil {
 		return e
@@ -2217,11 +2219,351 @@ const (
 	InputTranslate_no InputTranslateChoice = "no"
 )
 
-// Remove the attribute translate from the element.
+// Remove the attribute TRANSLATE from the element.
 func (e *INPUTElement) TRANSLATERemove(c InputTranslateChoice) *INPUTElement {
 	if e.StringAttributes == nil {
 		return e
 	}
 	e.StringAttributes.Del("translate")
+	return e
+}
+
+// Merges the store with the given object
+
+func (e *INPUTElement) DATASTAR_MERGE_STORE(v any) *INPUTElement {
+	if e.CustomDataAttributes == nil {
+		e.CustomDataAttributes = treemap.New[string, string]()
+	}
+	b, err := json.Marshal(v)
+	if err != nil {
+		panic(err)
+	}
+	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	return e
+}
+
+// Sets the reference of the element
+
+func (e *INPUTElement) DATASTAR_REF(s string) *INPUTElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-ref"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *INPUTElement) IfDATASTAR_REF(condition bool, s string) *INPUTElement {
+	if condition {
+		e.DATASTAR_REF(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_REF from the element.
+func (e *INPUTElement) DATASTAR_REFRemove() *INPUTElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-ref")
+	return e
+}
+
+// Sets the value of the element
+
+func (e *INPUTElement) DATASTAR_BIND(s string) *INPUTElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-bind"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *INPUTElement) IfDATASTAR_BIND(condition bool, s string) *INPUTElement {
+	if condition {
+		e.DATASTAR_BIND(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_BIND from the element.
+func (e *INPUTElement) DATASTAR_BINDRemove() *INPUTElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-bind")
+	return e
+}
+
+// Sets the value of the element
+
+func (e *INPUTElement) DATASTAR_MODEL(s string) *INPUTElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-model"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *INPUTElement) IfDATASTAR_MODEL(condition bool, s string) *INPUTElement {
+	if condition {
+		e.DATASTAR_MODEL(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_MODEL from the element.
+func (e *INPUTElement) DATASTAR_MODELRemove() *INPUTElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-model")
+	return e
+}
+
+// Sets the textContent of the element
+
+func (e *INPUTElement) DATASTAR_TEXT(s string) *INPUTElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-text"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *INPUTElement) IfDATASTAR_TEXT(condition bool, s string) *INPUTElement {
+	if condition {
+		e.DATASTAR_TEXT(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_TEXT from the element.
+func (e *INPUTElement) DATASTAR_TEXTRemove() *INPUTElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-text")
+	return e
+}
+
+// Sets the event handler of the element
+
+type InputDataOnMod customDataKeyModifier
+
+// Debounces the event handler
+func InputDataOnModDebounce(
+	s string,
+) InputDataOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce_%sms", s)
+	}
+}
+
+// Throttles the event handler
+func InputDataOnModThrottle(
+	s string,
+) InputDataOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle_%sms", s)
+	}
+}
+
+func (e *INPUTElement) DATASTAR_ON(s string, modifiers ...InputDataOnMod) *INPUTElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	customMods := lo.Map(modifiers, func(m InputDataOnMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key := customDataKey("data-on", customMods...)
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *INPUTElement) IfDATASTAR_ON(condition bool, s string, modifiers ...InputDataOnMod) *INPUTElement {
+	if condition {
+		e.DATASTAR_ON(s, modifiers...)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_ON from the element.
+func (e *INPUTElement) DATASTAR_ONRemove() *INPUTElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-on")
+	return e
+}
+
+// Sets the focus of the element
+
+func (e *INPUTElement) DATASTAR_FOCUSSet(b bool) *INPUTElement {
+	key := "data-focus"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *INPUTElement) DATASTAR_FOCUS() *INPUTElement {
+	return e.DATASTAR_FOCUSSet(true)
+}
+
+// Sets the header of for fetch requests
+
+func (e *INPUTElement) DATASTAR_HEADER(s string) *INPUTElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-header"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *INPUTElement) IfDATASTAR_HEADER(condition bool, s string) *INPUTElement {
+	if condition {
+		e.DATASTAR_HEADER(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_HEADER from the element.
+func (e *INPUTElement) DATASTAR_HEADERRemove() *INPUTElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-header")
+	return e
+}
+
+// Sets the URL for fetch requests
+
+func (e *INPUTElement) DATASTAR_FETCH_URL(s string) *INPUTElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-fetch-url"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *INPUTElement) IfDATASTAR_FETCH_URL(condition bool, s string) *INPUTElement {
+	if condition {
+		e.DATASTAR_FETCH_URL(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_FETCH_URL from the element.
+func (e *INPUTElement) DATASTAR_FETCH_URLRemove() *INPUTElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-fetch-url")
+	return e
+}
+
+// Sets the indicator selector for fetch requests
+
+func (e *INPUTElement) DATASTAR_FETCH_INDICATOR(s string) *INPUTElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "DatastarFetchIndicator"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *INPUTElement) IfDATASTAR_FETCH_INDICATOR(condition bool, s string) *INPUTElement {
+	if condition {
+		e.DATASTAR_FETCH_INDICATOR(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_FETCH_INDICATOR from the element.
+func (e *INPUTElement) DATASTAR_FETCH_INDICATORRemove() *INPUTElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("DatastarFetchIndicator")
+	return e
+}
+
+// Sets the visibility of the element
+
+func (e *INPUTElement) DATASTAR_SHOWSet(b bool) *INPUTElement {
+	key := "data-show"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *INPUTElement) DATASTAR_SHOW() *INPUTElement {
+	return e.DATASTAR_SHOWSet(true)
+}
+
+// Triggers the callback when the element intersects the viewport
+
+func (e *INPUTElement) DATASTAR_INTERSECTSSet(b bool) *INPUTElement {
+	key := "data-intersects"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *INPUTElement) DATASTAR_INTERSECTS() *INPUTElement {
+	return e.DATASTAR_INTERSECTSSet(true)
+}
+
+// Teleports the element to the given selector
+
+func (e *INPUTElement) DATASTAR_TELEPORTSet(b bool) *INPUTElement {
+	key := "data-teleport"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *INPUTElement) DATASTAR_TELEPORT() *INPUTElement {
+	return e.DATASTAR_TELEPORTSet(true)
+}
+
+// Scrolls the element into view
+
+func (e *INPUTElement) DATASTAR_SCROLL_INTO_VIEWSet(b bool) *INPUTElement {
+	key := "data-scroll-into-view"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *INPUTElement) DATASTAR_SCROLL_INTO_VIEW() *INPUTElement {
+	return e.DATASTAR_SCROLL_INTO_VIEWSet(true)
+}
+
+// Setup the ViewTransitionAPI for the element
+
+func (e *INPUTElement) DATASTAR_VIEW_TRANSITION(s string) *INPUTElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	key := "data-view-transition"
+	e.StringAttributes.Set(key, s)
+	return e
+}
+
+func (e *INPUTElement) IfDATASTAR_VIEW_TRANSITION(condition bool, s string) *INPUTElement {
+	if condition {
+		e.DATASTAR_VIEW_TRANSITION(s)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_VIEW_TRANSITION from the element.
+func (e *INPUTElement) DATASTAR_VIEW_TRANSITIONRemove() *INPUTElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-view-transition")
 	return e
 }
