@@ -3,790 +3,852 @@
 // Description:
 package elements
 
-import (
-	"fmt"
-
-	"github.com/goccy/go-json"
-	"github.com/igrmk/treemap/v2"
-	"github.com/samber/lo"
+import(
+    "fmt"
+    "time"
+    "github.com/igrmk/treemap/v2"
+    "github.com/goccy/go-json"
+    "github.com/samber/lo"
 )
 
-// The <pattern> SVG element fills a region with a pattern defined by an SVG
-// image.
+// The <pattern> SVG element fills a region with a pattern defined by an SVG 
+// image. 
 type SVGPATTERNElement struct {
-	*Element
+    *Element
 }
 
 // Create a new SVGPATTERNElement element.
 // This will create a new element with the tag
 // "pattern" during rendering.
 func SVG_PATTERN(children ...ElementRenderer) *SVGPATTERNElement {
-	e := NewElement("pattern", children...)
-	e.IsSelfClosing = false
-	e.Descendants = children
+    e := NewElement("pattern", children...)
+    e.IsSelfClosing = false
+    e.Descendants = children
 
-	return &SVGPATTERNElement{Element: e}
+    return &SVGPATTERNElement{ Element: e }
 }
 
 func (e *SVGPATTERNElement) Children(children ...ElementRenderer) *SVGPATTERNElement {
-	e.Descendants = append(e.Descendants, children...)
-	return e
+    e.Descendants = append(e.Descendants, children...)
+    return e
 }
 
-func (e *SVGPATTERNElement) IfChildren(condition bool, children ...ElementRenderer) *SVGPATTERNElement {
-	if condition {
-		e.Descendants = append(e.Descendants, children...)
-	}
-	return e
+func(e *SVGPATTERNElement) IfChildren(condition bool, children ...ElementRenderer) *SVGPATTERNElement {
+    if condition {
+        e.Descendants = append(e.Descendants, children...)
+    }
+    return e
 }
 
-func (e *SVGPATTERNElement) TernChildren(condition bool, trueChildren, falseChildren ElementRenderer) *SVGPATTERNElement {
-	if condition {
-		e.Descendants = append(e.Descendants, trueChildren)
-	} else {
-		e.Descendants = append(e.Descendants, falseChildren)
-	}
-	return e
+func(e *SVGPATTERNElement) TernChildren(condition bool, trueChildren, falseChildren ElementRenderer) *SVGPATTERNElement {
+    if condition {
+        e.Descendants = append(e.Descendants, trueChildren)
+    } else {
+        e.Descendants = append(e.Descendants, falseChildren)
+    }
+    return e
 }
 
 func (e *SVGPATTERNElement) Text(text string) *SVGPATTERNElement {
-	e.Descendants = append(e.Descendants, Text(text))
-	return e
+    e.Descendants = append(e.Descendants, Text(text))
+    return e
 }
 
 func (e *SVGPATTERNElement) TextF(format string, args ...any) *SVGPATTERNElement {
-	return e.Text(fmt.Sprintf(format, args...))
+    return e.Text(fmt.Sprintf(format, args...))
 }
 
 func (e *SVGPATTERNElement) IfText(condition bool, text string) *SVGPATTERNElement {
-	if condition {
-		e.Descendants = append(e.Descendants, Text(text))
-	}
-	return e
+    if condition {
+        e.Descendants = append(e.Descendants, Text(text))
+    }
+    return e
 }
 
 func (e *SVGPATTERNElement) IfTextF(condition bool, format string, args ...any) *SVGPATTERNElement {
-	if condition {
-		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
-	}
-	return e
+    if condition {
+        e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+    }
+    return e
 }
 
 func (e *SVGPATTERNElement) Escaped(text string) *SVGPATTERNElement {
-	e.Descendants = append(e.Descendants, Escaped(text))
-	return e
+    e.Descendants = append(e.Descendants, Escaped(text))
+    return e
 }
 
 func (e *SVGPATTERNElement) IfEscaped(condition bool, text string) *SVGPATTERNElement {
-	if condition {
-		e.Descendants = append(e.Descendants, Escaped(text))
-	}
-	return e
+    if condition {
+        e.Descendants = append(e.Descendants, Escaped(text))
+    }
+    return e
 }
 
 func (e *SVGPATTERNElement) EscapedF(format string, args ...any) *SVGPATTERNElement {
-	return e.Escaped(fmt.Sprintf(format, args...))
+    return e.Escaped(fmt.Sprintf(format, args...))
 }
 
 func (e *SVGPATTERNElement) IfEscapedF(condition bool, format string, args ...any) *SVGPATTERNElement {
-	if condition {
-		e.Descendants = append(e.Descendants, EscapedF(format, args...))
-	}
-	return e
+    if condition {
+        e.Descendants = append(e.Descendants, EscapedF(format, args...))
+    }
+    return e
 }
 
 func (e *SVGPATTERNElement) CustomData(key, value string) *SVGPATTERNElement {
-	if e.CustomDataAttributes == nil {
-		e.CustomDataAttributes = treemap.New[string, string]()
-	}
+    if e.CustomDataAttributes == nil {
+        e.CustomDataAttributes = treemap.New[string,string]()
+    }
 	e.CustomDataAttributes.Set(key, value)
 	return e
 }
 
 func (e *SVGPATTERNElement) IfCustomData(condition bool, key, value string) *SVGPATTERNElement {
-	if condition {
-		e.CustomData(key, value)
-	}
-	return e
+    if condition {
+        e.CustomData(key, value)
+    }
+    return e
 }
 
 func (e *SVGPATTERNElement) CustomDataF(key, format string, args ...any) *SVGPATTERNElement {
-	return e.CustomData(key, fmt.Sprintf(format, args...))
+    return e.CustomData(key, fmt.Sprintf(format, args...))
 }
 
 func (e *SVGPATTERNElement) IfCustomDataF(condition bool, key, format string, args ...any) *SVGPATTERNElement {
-	if condition {
-		e.CustomData(key, fmt.Sprintf(format, args...))
-	}
-	return e
+    if condition {
+        e.CustomData(key, fmt.Sprintf(format, args...))
+    }
+    return e
 }
 
 func (e *SVGPATTERNElement) CustomDataRemove(key string) *SVGPATTERNElement {
 	if e.CustomDataAttributes == nil {
 		return e
 	}
-	e.CustomDataAttributes.Del(key)
-	return e
-}
-
-// The coordinate system for attributes x, y, width and height.
-func (e *SVGPATTERNElement) PATTERN_UNITS(c SVGPatternPatternUnitsChoice) *SVGPATTERNElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	e.StringAttributes.Set("patternUnits", string(c))
-	return e
-}
-
-type SVGPatternPatternUnitsChoice string
-
-const (
-	// The coordinate system for attributes x, y, width and height.
-	SVGPatternPatternUnits_userSpaceOnUse SVGPatternPatternUnitsChoice = "userSpaceOnUse"
-	// The coordinate system for attributes x, y, width and height.
-	SVGPatternPatternUnits_objectBoundingBox SVGPatternPatternUnitsChoice = "objectBoundingBox"
-)
-
-// Remove the attribute PATTERN_UNITS from the element.
-func (e *SVGPATTERNElement) PATTERN_UNITSRemove(c SVGPatternPatternUnitsChoice) *SVGPATTERNElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("patternUnits")
-	return e
-}
-
-// The coordinate system for the various length values within the filter.
-func (e *SVGPATTERNElement) PATTERN_CONTENT_UNITS(c SVGPatternPatternContentUnitsChoice) *SVGPATTERNElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	e.StringAttributes.Set("patternContentUnits", string(c))
-	return e
-}
-
-type SVGPatternPatternContentUnitsChoice string
-
-const (
-	// The coordinate system for the various length values within the filter.
-	SVGPatternPatternContentUnits_userSpaceOnUse SVGPatternPatternContentUnitsChoice = "userSpaceOnUse"
-	// The coordinate system for the various length values within the filter.
-	SVGPatternPatternContentUnits_objectBoundingBox SVGPatternPatternContentUnitsChoice = "objectBoundingBox"
-)
-
-// Remove the attribute PATTERN_CONTENT_UNITS from the element.
-func (e *SVGPATTERNElement) PATTERN_CONTENT_UNITSRemove(c SVGPatternPatternContentUnitsChoice) *SVGPATTERNElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("patternContentUnits")
-	return e
-}
-
-// The definition of how the pattern is tiled, read about <a
-// href="https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/patternTransform">patternTransform</a>.
-func (e *SVGPATTERNElement) PATTERN_TRANSFORM(s string) *SVGPATTERNElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	e.StringAttributes.Set("patternTransform", s)
-	return e
-}
-
-func (e *SVGPATTERNElement) IfPATTERN_TRANSFORM(condition bool, s string) *SVGPATTERNElement {
-	if condition {
-		e.PATTERN_TRANSFORM(s)
-	}
-	return e
-}
-
-// Remove the attribute PATTERN_TRANSFORM from the element.
-func (e *SVGPATTERNElement) PATTERN_TRANSFORMRemove(s string) *SVGPATTERNElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("patternTransform")
-	return e
-}
-
-// The x-axis coordinate of the side of the rectangular region which is closest to
-// the user.
-func (e *SVGPATTERNElement) X(f float64) *SVGPATTERNElement {
-	if e.FloatAttributes == nil {
-		e.FloatAttributes = treemap.New[string, float64]()
-	}
-	e.FloatAttributes.Set("x", f)
-	return e
-}
-
-func (e *SVGPATTERNElement) IfX(condition bool, f float64) *SVGPATTERNElement {
-	if condition {
-		e.X(f)
-	}
-	return e
-}
-
-// The y-axis coordinate of the side of the rectangular region which is closest to
-// the user.
-func (e *SVGPATTERNElement) Y(f float64) *SVGPATTERNElement {
-	if e.FloatAttributes == nil {
-		e.FloatAttributes = treemap.New[string, float64]()
-	}
-	e.FloatAttributes.Set("y", f)
-	return e
-}
-
-func (e *SVGPATTERNElement) IfY(condition bool, f float64) *SVGPATTERNElement {
-	if condition {
-		e.Y(f)
-	}
-	return e
-}
-
-// The width of the rectangular region.
-func (e *SVGPATTERNElement) WIDTH(f float64) *SVGPATTERNElement {
-	if e.FloatAttributes == nil {
-		e.FloatAttributes = treemap.New[string, float64]()
-	}
-	e.FloatAttributes.Set("width", f)
-	return e
-}
-
-func (e *SVGPATTERNElement) IfWIDTH(condition bool, f float64) *SVGPATTERNElement {
-	if condition {
-		e.WIDTH(f)
-	}
-	return e
-}
-
-// The height of the rectangular region.
-func (e *SVGPATTERNElement) HEIGHT(f float64) *SVGPATTERNElement {
-	if e.FloatAttributes == nil {
-		e.FloatAttributes = treemap.New[string, float64]()
-	}
-	e.FloatAttributes.Set("height", f)
-	return e
-}
-
-func (e *SVGPATTERNElement) IfHEIGHT(condition bool, f float64) *SVGPATTERNElement {
-	if condition {
-		e.HEIGHT(f)
-	}
-	return e
-}
-
-// A URI reference to the image to paint.
-func (e *SVGPATTERNElement) HREF(s string) *SVGPATTERNElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	e.StringAttributes.Set("href", s)
-	return e
-}
-
-func (e *SVGPATTERNElement) IfHREF(condition bool, s string) *SVGPATTERNElement {
-	if condition {
-		e.HREF(s)
-	}
-	return e
-}
-
-// Remove the attribute HREF from the element.
-func (e *SVGPATTERNElement) HREFRemove(s string) *SVGPATTERNElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("href")
-	return e
-}
-
-// Specifies a unique id for an element
-func (e *SVGPATTERNElement) ID(s string) *SVGPATTERNElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	e.StringAttributes.Set("id", s)
-	return e
-}
-
-func (e *SVGPATTERNElement) IfID(condition bool, s string) *SVGPATTERNElement {
-	if condition {
-		e.ID(s)
-	}
-	return e
-}
-
-// Remove the attribute ID from the element.
-func (e *SVGPATTERNElement) IDRemove(s string) *SVGPATTERNElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("id")
-	return e
-}
-
-// Specifies one or more classnames for an element (refers to a class in a style
-// sheet)
-func (e *SVGPATTERNElement) CLASS(s ...string) *SVGPATTERNElement {
-	if e.DelimitedStrings == nil {
-		e.DelimitedStrings = treemap.New[string, *DelimitedBuilder[string]]()
-	}
-	ds, ok := e.DelimitedStrings.Get("class")
-	if !ok {
-		ds = NewDelimitedBuilder[string](" ")
-		e.DelimitedStrings.Set("class", ds)
-	}
-	ds.Add(s...)
-	return e
-}
-
-func (e *SVGPATTERNElement) IfCLASS(condition bool, s ...string) *SVGPATTERNElement {
-	if condition {
-		e.CLASS(s...)
-	}
-	return e
-}
-
-// Remove the attribute CLASS from the element.
-func (e *SVGPATTERNElement) CLASSRemove(s ...string) *SVGPATTERNElement {
-	if e.DelimitedStrings == nil {
-		return e
-	}
-	ds, ok := e.DelimitedStrings.Get("class")
-	if !ok {
-		return e
-	}
-	ds.Remove(s...)
-	return e
-}
-
-// Specifies an inline CSS style for an element
-func (e *SVGPATTERNElement) STYLEF(k string, format string, args ...any) *SVGPATTERNElement {
-	return e.STYLE(k, fmt.Sprintf(format, args...))
-}
-
-func (e *SVGPATTERNElement) IfSTYLE(condition bool, k string, v string) *SVGPATTERNElement {
-	if condition {
-		e.STYLE(k, v)
-	}
-	return e
-}
-
-func (e *SVGPATTERNElement) STYLE(k string, v string) *SVGPATTERNElement {
-	if e.KVStrings == nil {
-		e.KVStrings = treemap.New[string, *KVBuilder]()
-	}
-	kv, ok := e.KVStrings.Get("style")
-	if !ok {
-		kv = NewKVBuilder(":", ";")
-		e.KVStrings.Set("style", kv)
-	}
-	kv.Add(k, v)
-	return e
-}
-
-func (e *SVGPATTERNElement) IfSTYLEF(condition bool, k string, format string, args ...any) *SVGPATTERNElement {
-	if condition {
-		e.STYLE(k, fmt.Sprintf(format, args...))
-	}
-	return e
-}
-
-// Add the attributes in the map to the element.
-func (e *SVGPATTERNElement) STYLEMap(m map[string]string) *SVGPATTERNElement {
-	if e.KVStrings == nil {
-		e.KVStrings = treemap.New[string, *KVBuilder]()
-	}
-	kv, ok := e.KVStrings.Get("style")
-	if !ok {
-		kv = NewKVBuilder(":", ";")
-		e.KVStrings.Set("style", kv)
-	}
-	for k, v := range m {
-		kv.Add(k, v)
-	}
-	return e
-}
-
-// Add pairs of attributes to the element.
-func (e *SVGPATTERNElement) STYLEPairs(pairs ...string) *SVGPATTERNElement {
-	if len(pairs)%2 != 0 {
-		panic("Must have an even number of pairs")
-	}
-	if e.KVStrings == nil {
-		e.KVStrings = treemap.New[string, *KVBuilder]()
-	}
-	kv, ok := e.KVStrings.Get("style")
-	if !ok {
-		kv = NewKVBuilder(":", ";")
-		e.KVStrings.Set("style", kv)
-	}
-
-	for i := 0; i < len(pairs); i += 2 {
-		kv.Add(pairs[i], pairs[i+1])
-	}
-
-	return e
-}
-
-func (e *SVGPATTERNElement) IfSTYLEPairs(condition bool, pairs ...string) *SVGPATTERNElement {
-	if condition {
-		e.STYLEPairs(pairs...)
-	}
-	return e
-}
-
-// Remove the attribute STYLE from the element.
-func (e *SVGPATTERNElement) STYLERemove(keys ...string) *SVGPATTERNElement {
-	if e.KVStrings == nil {
-		return e
-	}
-	kv, ok := e.KVStrings.Get("style")
-	if !ok {
-		return e
-	}
-	for _, k := range keys {
-		kv.Remove(k)
-	}
-	return e
-}
-
-// Merges the store with the given object
-
-func (e *SVGPATTERNElement) DATASTAR_MERGE_STORE(v any) *SVGPATTERNElement {
-	if e.CustomDataAttributes == nil {
-		e.CustomDataAttributes = treemap.New[string, string]()
-	}
-	b, err := json.Marshal(v)
-	if err != nil {
-		panic(err)
-	}
-	e.CustomDataAttributes.Set("data-merge-store", string(b))
-	return e
-}
-
-// Sets the reference of the element
-
-func (e *SVGPATTERNElement) DATASTAR_REF(s string) *SVGPATTERNElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	key := "data-ref"
-	e.StringAttributes.Set(key, s)
-	return e
-}
-
-func (e *SVGPATTERNElement) IfDATASTAR_REF(condition bool, s string) *SVGPATTERNElement {
-	if condition {
-		e.DATASTAR_REF(s)
-	}
-	return e
-}
+    e.CustomDataAttributes.Del(key)
+	return e
+}
+
+
+    // The coordinate system for attributes x, y, width and height. 
+    func(e *SVGPATTERNElement) PATTERN_UNITS(c SVGPatternPatternUnitsChoice) *SVGPATTERNElement{
+            if e.StringAttributes == nil {
+                e.StringAttributes = treemap.New[string,string]()
+            }
+            e.StringAttributes.Set("patternUnits", string(c))
+            return e
+        }
+
+        type SVGPatternPatternUnitsChoice string
+        const(
+        // The coordinate system for attributes x, y, width and height. 
+            SVGPatternPatternUnits_userSpaceOnUse SVGPatternPatternUnitsChoice = "userSpaceOnUse"
+        // The coordinate system for attributes x, y, width and height. 
+            SVGPatternPatternUnits_objectBoundingBox SVGPatternPatternUnitsChoice = "objectBoundingBox"
+        )
+
+        // Remove the attribute PATTERN_UNITS from the element.
+        func(e *SVGPATTERNElement) PATTERN_UNITSRemove(c SVGPatternPatternUnitsChoice) *SVGPATTERNElement{
+            if e.StringAttributes == nil {
+                return e
+            }
+            e.StringAttributes.Del("patternUnits")
+            return e
+        }
+        
+
+    // The coordinate system for the various length values within the filter. 
+    func(e *SVGPATTERNElement) PATTERN_CONTENT_UNITS(c SVGPatternPatternContentUnitsChoice) *SVGPATTERNElement{
+            if e.StringAttributes == nil {
+                e.StringAttributes = treemap.New[string,string]()
+            }
+            e.StringAttributes.Set("patternContentUnits", string(c))
+            return e
+        }
+
+        type SVGPatternPatternContentUnitsChoice string
+        const(
+        // The coordinate system for the various length values within the filter. 
+            SVGPatternPatternContentUnits_userSpaceOnUse SVGPatternPatternContentUnitsChoice = "userSpaceOnUse"
+        // The coordinate system for the various length values within the filter. 
+            SVGPatternPatternContentUnits_objectBoundingBox SVGPatternPatternContentUnitsChoice = "objectBoundingBox"
+        )
+
+        // Remove the attribute PATTERN_CONTENT_UNITS from the element.
+        func(e *SVGPATTERNElement) PATTERN_CONTENT_UNITSRemove(c SVGPatternPatternContentUnitsChoice) *SVGPATTERNElement{
+            if e.StringAttributes == nil {
+                return e
+            }
+            e.StringAttributes.Del("patternContentUnits")
+            return e
+        }
+        
+
+    // The definition of how the pattern is tiled, read about <a 
+// href="https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/patternTransform">patternTransform</a>. 
+    func(e *SVGPATTERNElement) PATTERN_TRANSFORM(s string) *SVGPATTERNElement{
+            if e.StringAttributes == nil {
+                e.StringAttributes = treemap.New[string,string]()
+            }
+            e.StringAttributes.Set("patternTransform", s)
+            return e
+        }
+
+        func(e *SVGPATTERNElement) IfPATTERN_TRANSFORM(condition bool, s string) *SVGPATTERNElement{
+            if condition {
+                e.PATTERN_TRANSFORM(s)
+            }
+            return e
+        }
+
+        // Remove the attribute PATTERN_TRANSFORM from the element.
+        func(e *SVGPATTERNElement) PATTERN_TRANSFORMRemove(s string) *SVGPATTERNElement{
+            if e.StringAttributes == nil {
+                return e
+            }
+            e.StringAttributes.Del("patternTransform")
+            return e
+        }
+    
+
+    // The x-axis coordinate of the side of the rectangular region which is closest to 
+// the user. 
+    func(e *SVGPATTERNElement) X(f float64) *SVGPATTERNElement{
+            if e.FloatAttributes == nil {
+                e.FloatAttributes = treemap.New[string,float64]()
+            }
+            e.FloatAttributes.Set("x", f)
+            return e
+        }
+
+        func (e *SVGPATTERNElement) IfX(condition bool, f float64) *SVGPATTERNElement {
+            if condition {
+                e.X(f)
+            }
+            return e
+        }
+
+    
+
+    // The y-axis coordinate of the side of the rectangular region which is closest to 
+// the user. 
+    func(e *SVGPATTERNElement) Y(f float64) *SVGPATTERNElement{
+            if e.FloatAttributes == nil {
+                e.FloatAttributes = treemap.New[string,float64]()
+            }
+            e.FloatAttributes.Set("y", f)
+            return e
+        }
+
+        func (e *SVGPATTERNElement) IfY(condition bool, f float64) *SVGPATTERNElement {
+            if condition {
+                e.Y(f)
+            }
+            return e
+        }
+
+    
+
+    // The width of the rectangular region. 
+    func(e *SVGPATTERNElement) WIDTH(f float64) *SVGPATTERNElement{
+            if e.FloatAttributes == nil {
+                e.FloatAttributes = treemap.New[string,float64]()
+            }
+            e.FloatAttributes.Set("width", f)
+            return e
+        }
+
+        func (e *SVGPATTERNElement) IfWIDTH(condition bool, f float64) *SVGPATTERNElement {
+            if condition {
+                e.WIDTH(f)
+            }
+            return e
+        }
+
+    
+
+    // The height of the rectangular region. 
+    func(e *SVGPATTERNElement) HEIGHT(f float64) *SVGPATTERNElement{
+            if e.FloatAttributes == nil {
+                e.FloatAttributes = treemap.New[string,float64]()
+            }
+            e.FloatAttributes.Set("height", f)
+            return e
+        }
+
+        func (e *SVGPATTERNElement) IfHEIGHT(condition bool, f float64) *SVGPATTERNElement {
+            if condition {
+                e.HEIGHT(f)
+            }
+            return e
+        }
+
+    
+
+    // A URI reference to the image to paint. 
+    func(e *SVGPATTERNElement) HREF(s string) *SVGPATTERNElement{
+            if e.StringAttributes == nil {
+                e.StringAttributes = treemap.New[string,string]()
+            }
+            e.StringAttributes.Set("href", s)
+            return e
+        }
+
+        func(e *SVGPATTERNElement) IfHREF(condition bool, s string) *SVGPATTERNElement{
+            if condition {
+                e.HREF(s)
+            }
+            return e
+        }
+
+        // Remove the attribute HREF from the element.
+        func(e *SVGPATTERNElement) HREFRemove(s string) *SVGPATTERNElement{
+            if e.StringAttributes == nil {
+                return e
+            }
+            e.StringAttributes.Del("href")
+            return e
+        }
+    
+
+    // Specifies a unique id for an element 
+    func(e *SVGPATTERNElement) ID(s string) *SVGPATTERNElement{
+            if e.StringAttributes == nil {
+                e.StringAttributes = treemap.New[string,string]()
+            }
+            e.StringAttributes.Set("id", s)
+            return e
+        }
+
+        func(e *SVGPATTERNElement) IfID(condition bool, s string) *SVGPATTERNElement{
+            if condition {
+                e.ID(s)
+            }
+            return e
+        }
+
+        // Remove the attribute ID from the element.
+        func(e *SVGPATTERNElement) IDRemove(s string) *SVGPATTERNElement{
+            if e.StringAttributes == nil {
+                return e
+            }
+            e.StringAttributes.Del("id")
+            return e
+        }
+    
+
+    // Specifies one or more classnames for an element (refers to a class in a style 
+// sheet) 
+    func(e *SVGPATTERNElement) CLASS(s ...string) *SVGPATTERNElement{
+            if e.DelimitedStrings == nil {
+                e.DelimitedStrings = treemap.New[string,*DelimitedBuilder[string]]()
+            }
+            ds, ok := e.DelimitedStrings.Get("class")
+            if !ok {
+                ds = NewDelimitedBuilder[string](" ")
+                e.DelimitedStrings.Set("class", ds)
+            }
+            ds.Add(s...)
+            return e
+        }
+
+        func(e *SVGPATTERNElement) IfCLASS(condition bool, s ...string) *SVGPATTERNElement{
+            if condition {
+                e.CLASS(s...)
+            }
+            return e
+        }
+
+        // Remove the attribute CLASS from the element.
+        func(e *SVGPATTERNElement) CLASSRemove(s ...string) *SVGPATTERNElement{
+            if e.DelimitedStrings == nil {
+                return e
+            }
+            ds, ok := e.DelimitedStrings.Get("class")
+            if !ok {
+                return e
+            }
+            ds.Remove(s ...)
+            return e
+        }
+
+    
+
+    // Specifies an inline CSS style for an element 
+    func (e *SVGPATTERNElement) STYLEF(k string, format string, args ...any) *SVGPATTERNElement {
+            return e.STYLE(k, fmt.Sprintf(format, args...))
+        }
+
+        func (e *SVGPATTERNElement) IfSTYLE(condition bool, k string, v string) *SVGPATTERNElement {
+            if condition {
+                e.STYLE(k, v)
+            }
+            return e
+        }
+
+        func (e *SVGPATTERNElement) STYLE(k string, v string) *SVGPATTERNElement {
+            if e.KVStrings == nil {
+                e.KVStrings = treemap.New[string,*KVBuilder]()
+            }
+            kv, ok := e.KVStrings.Get("style")
+            if !ok {
+                kv = NewKVBuilder(":", ";")
+                e.KVStrings.Set("style", kv)
+            }
+            kv.Add(k, v)
+            return e
+        }
+
+        func (e *SVGPATTERNElement) IfSTYLEF(condition bool, k string, format string, args ...any) *SVGPATTERNElement {
+            if condition {
+                e.STYLE(k, fmt.Sprintf(format, args...))
+            }
+            return e
+        }
+
+        // Add the attributes in the map to the element.
+        func (e *SVGPATTERNElement) STYLEMap(m map[string]string) *SVGPATTERNElement {
+            if e.KVStrings == nil {
+                e.KVStrings = treemap.New[string,*KVBuilder]()
+            }
+            kv, ok := e.KVStrings.Get("style")
+            if !ok {
+                kv = NewKVBuilder(":", ";")
+                e.KVStrings.Set("style", kv)
+            }
+            for k, v := range m {
+                kv.Add(k, v)
+            }
+            return e
+        }
+
+        // Add pairs of attributes to the element.
+        func (e *SVGPATTERNElement) STYLEPairs(pairs ...string) *SVGPATTERNElement {
+            if len(pairs) % 2 != 0 {
+                panic("Must have an even number of pairs")
+            }
+            if e.KVStrings == nil {
+                e.KVStrings = treemap.New[string,*KVBuilder]()
+            }
+            kv, ok := e.KVStrings.Get("style")
+            if !ok {
+                kv = NewKVBuilder(":", ";")
+                e.KVStrings.Set("style", kv)
+            }
+
+            for i := 0; i < len(pairs); i += 2 {
+                kv.Add(pairs[i], pairs[i+1])
+            }
+
+            return e
+        }
+
+        func (e *SVGPATTERNElement) IfSTYLEPairs(condition bool, pairs ...string) *SVGPATTERNElement {
+            if condition {
+                e.STYLEPairs(pairs...)
+            }
+            return e
+        }
+
+        // Remove the attribute STYLE from the element.
+        func (e *SVGPATTERNElement) STYLERemove(keys ...string) *SVGPATTERNElement {
+            if e.KVStrings == nil {
+                return e
+            }
+            kv, ok := e.KVStrings.Get("style")
+            if !ok {
+                return e
+            }
+            for _, k := range keys {
+                kv.Remove(k)
+            }
+            return e
+        }
+
+    
+
+    // Merges the store with the given object 
+    
+        func(e *SVGPATTERNElement) DATASTAR_MERGE_STORE(v any) *SVGPATTERNElement{
+                if e.CustomDataAttributes == nil {
+                    e.CustomDataAttributes = treemap.New[string,string]()
+                }
+                b, err := json.Marshal(v)
+                if err != nil {
+                    panic(err)
+                }
+                e.CustomDataAttributes.Set("data-merge-store", string(b))
+                return e
+            }
+
+        
+
+    // Sets the reference of the element 
+    
+        func(e *SVGPATTERNElement) DATASTAR_REF(expression string) *SVGPATTERNElement{
+                if e.StringAttributes == nil {
+                    e.StringAttributes = treemap.New[string,string]()
+                }
+                
+                key := "data-ref"
+                
+                e.StringAttributes.Set(key, expression)
+                return e
+            }
+
+            func(e *SVGPATTERNElement) IfDATASTAR_REF(condition bool, expression string) *SVGPATTERNElement{
+                if condition {
+                    e.DATASTAR_REF( expression, )
+                }
+                return e
+            }
+
+            // Remove the attribute DATASTAR_REF from the element.
+            func(e *SVGPATTERNElement) DATASTAR_REFRemove() *SVGPATTERNElement{
+                if e.StringAttributes == nil {
+                    return e
+                }
+                e.StringAttributes.Del("data-ref")
+                return e
+            }
+
+        
+
+    // Sets the value of the element 
+    
+        func(e *SVGPATTERNElement) DATASTAR_BIND(key string, expression string) *SVGPATTERNElement{
+                if e.StringAttributes == nil {
+                    e.StringAttributes = treemap.New[string,string]()
+                }
+                
+                key = fmt.Sprintf("data-bind-%s", key)
+                
+                e.StringAttributes.Set(key, expression)
+                return e
+            }
+
+            func(e *SVGPATTERNElement) IfDATASTAR_BIND(condition bool, key string, expression string) *SVGPATTERNElement{
+                if condition {
+                    e.DATASTAR_BIND(key,  expression, )
+                }
+                return e
+            }
+
+            // Remove the attribute DATASTAR_BIND from the element.
+            func(e *SVGPATTERNElement) DATASTAR_BINDRemove() *SVGPATTERNElement{
+                if e.StringAttributes == nil {
+                    return e
+                }
+                e.StringAttributes.Del("data-bind")
+                return e
+            }
+
+        
+
+    // Sets the value of the element 
+    
+        func(e *SVGPATTERNElement) DATASTAR_MODEL(expression string) *SVGPATTERNElement{
+                if e.StringAttributes == nil {
+                    e.StringAttributes = treemap.New[string,string]()
+                }
+                
+                key := "data-model"
+                
+                e.StringAttributes.Set(key, expression)
+                return e
+            }
+
+            func(e *SVGPATTERNElement) IfDATASTAR_MODEL(condition bool, expression string) *SVGPATTERNElement{
+                if condition {
+                    e.DATASTAR_MODEL( expression, )
+                }
+                return e
+            }
+
+            // Remove the attribute DATASTAR_MODEL from the element.
+            func(e *SVGPATTERNElement) DATASTAR_MODELRemove() *SVGPATTERNElement{
+                if e.StringAttributes == nil {
+                    return e
+                }
+                e.StringAttributes.Del("data-model")
+                return e
+            }
+
+        
+
+    // Sets the textContent of the element 
+    
+        func(e *SVGPATTERNElement) DATASTAR_TEXT(expression string) *SVGPATTERNElement{
+                if e.StringAttributes == nil {
+                    e.StringAttributes = treemap.New[string,string]()
+                }
+                
+                key := "data-text"
+                
+                e.StringAttributes.Set(key, expression)
+                return e
+            }
+
+            func(e *SVGPATTERNElement) IfDATASTAR_TEXT(condition bool, expression string) *SVGPATTERNElement{
+                if condition {
+                    e.DATASTAR_TEXT( expression, )
+                }
+                return e
+            }
+
+            // Remove the attribute DATASTAR_TEXT from the element.
+            func(e *SVGPATTERNElement) DATASTAR_TEXTRemove() *SVGPATTERNElement{
+                if e.StringAttributes == nil {
+                    return e
+                }
+                e.StringAttributes.Del("data-text")
+                return e
+            }
+
+        
+
+    // Sets the event handler of the element 
+    
+        type SVGPatternDataOnMod customDataKeyModifier
+
+            
+            // Debounces the event handler 
+            func SVGPatternDataOnModDebounce(
+                    d time.Duration,
+            ) SVGPatternDataOnMod {
+                return func() string {return fmt.Sprintf("debounce_%dms", d.Milliseconds())
+                }
+            }
+            
+            // Throttles the event handler 
+            func SVGPatternDataOnModThrottle(
+                    d time.Duration,
+            ) SVGPatternDataOnMod {
+                return func() string {return fmt.Sprintf("throttle_%dms", d.Milliseconds())
+                }
+            }
+            
+        func(e *SVGPATTERNElement) DATASTAR_ON(key string, expression string, modifiers ...SVGPatternDataOnMod) *SVGPATTERNElement{
+                if e.StringAttributes == nil {
+                    e.StringAttributes = treemap.New[string,string]()
+                }
+                
+                key = fmt.Sprintf("data-on-%s", key)
+                
+                customMods := lo.Map(modifiers, func(m SVGPatternDataOnMod, i int) customDataKeyModifier  {
+                    return customDataKeyModifier(m)
+                })
+                key = customDataKey(key, customMods...)
+                e.StringAttributes.Set(key, expression)
+                return e
+            }
+
+            func(e *SVGPATTERNElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SVGPatternDataOnMod) *SVGPATTERNElement{
+                if condition {
+                    e.DATASTAR_ON(key,  expression,  modifiers...)
+                }
+                return e
+            }
+
+            // Remove the attribute DATASTAR_ON from the element.
+            func(e *SVGPATTERNElement) DATASTAR_ONRemove() *SVGPATTERNElement{
+                if e.StringAttributes == nil {
+                    return e
+                }
+                e.StringAttributes.Del("data-on")
+                return e
+            }
+
+        
+
+    // Sets the focus of the element 
+    
+        func(e *SVGPATTERNElement) DATASTAR_FOCUSSet(b bool) *SVGPATTERNElement{
+                key := "data-focus"
+                e.BoolAttributes.Set(key, b)
+                return e
+            }
+
+            func(e *SVGPATTERNElement) DATASTAR_FOCUS() *SVGPATTERNElement{
+                return e.DATASTAR_FOCUSSet(true)
+            }
+        
+
+    // Sets the header of for fetch requests 
+    
+        func(e *SVGPATTERNElement) DATASTAR_HEADER(key string, expression string) *SVGPATTERNElement{
+                if e.StringAttributes == nil {
+                    e.StringAttributes = treemap.New[string,string]()
+                }
+                
+                key = fmt.Sprintf("data-header-%s", key)
+                
+                e.StringAttributes.Set(key, expression)
+                return e
+            }
+
+            func(e *SVGPATTERNElement) IfDATASTAR_HEADER(condition bool, key string, expression string) *SVGPATTERNElement{
+                if condition {
+                    e.DATASTAR_HEADER(key,  expression, )
+                }
+                return e
+            }
+
+            // Remove the attribute DATASTAR_HEADER from the element.
+            func(e *SVGPATTERNElement) DATASTAR_HEADERRemove() *SVGPATTERNElement{
+                if e.StringAttributes == nil {
+                    return e
+                }
+                e.StringAttributes.Del("data-header")
+                return e
+            }
+
+        
+
+    // Sets the URL for fetch requests 
+    
+        func(e *SVGPATTERNElement) DATASTAR_FETCH_URL(expression string) *SVGPATTERNElement{
+                if e.StringAttributes == nil {
+                    e.StringAttributes = treemap.New[string,string]()
+                }
+                
+                key := "data-fetch-url"
+                
+                e.StringAttributes.Set(key, expression)
+                return e
+            }
+
+            func(e *SVGPATTERNElement) IfDATASTAR_FETCH_URL(condition bool, expression string) *SVGPATTERNElement{
+                if condition {
+                    e.DATASTAR_FETCH_URL( expression, )
+                }
+                return e
+            }
+
+            // Remove the attribute DATASTAR_FETCH_URL from the element.
+            func(e *SVGPATTERNElement) DATASTAR_FETCH_URLRemove() *SVGPATTERNElement{
+                if e.StringAttributes == nil {
+                    return e
+                }
+                e.StringAttributes.Del("data-fetch-url")
+                return e
+            }
+
+        
+
+    // Sets the indicator selector for fetch requests 
+    
+        func(e *SVGPATTERNElement) DATASTAR_FETCH_INDICATOR(expression string) *SVGPATTERNElement{
+                if e.StringAttributes == nil {
+                    e.StringAttributes = treemap.New[string,string]()
+                }
+                
+                key := "DatastarFetchIndicator"
+                
+                e.StringAttributes.Set(key, expression)
+                return e
+            }
+
+            func(e *SVGPATTERNElement) IfDATASTAR_FETCH_INDICATOR(condition bool, expression string) *SVGPATTERNElement{
+                if condition {
+                    e.DATASTAR_FETCH_INDICATOR( expression, )
+                }
+                return e
+            }
+
+            // Remove the attribute DATASTAR_FETCH_INDICATOR from the element.
+            func(e *SVGPATTERNElement) DATASTAR_FETCH_INDICATORRemove() *SVGPATTERNElement{
+                if e.StringAttributes == nil {
+                    return e
+                }
+                e.StringAttributes.Del("DatastarFetchIndicator")
+                return e
+            }
+
+        
+
+    // Sets the visibility of the element 
+    
+        func(e *SVGPATTERNElement) DATASTAR_SHOWSet(b bool) *SVGPATTERNElement{
+                key := "data-show"
+                e.BoolAttributes.Set(key, b)
+                return e
+            }
+
+            func(e *SVGPATTERNElement) DATASTAR_SHOW() *SVGPATTERNElement{
+                return e.DATASTAR_SHOWSet(true)
+            }
+        
+
+    // Triggers the callback when the element intersects the viewport 
+    
+        func(e *SVGPATTERNElement) DATASTAR_INTERSECTSSet(b bool) *SVGPATTERNElement{
+                key := "data-intersects"
+                e.BoolAttributes.Set(key, b)
+                return e
+            }
+
+            func(e *SVGPATTERNElement) DATASTAR_INTERSECTS() *SVGPATTERNElement{
+                return e.DATASTAR_INTERSECTSSet(true)
+            }
+        
+
+    // Teleports the element to the given selector 
+    
+        func(e *SVGPATTERNElement) DATASTAR_TELEPORTSet(b bool) *SVGPATTERNElement{
+                key := "data-teleport"
+                e.BoolAttributes.Set(key, b)
+                return e
+            }
+
+            func(e *SVGPATTERNElement) DATASTAR_TELEPORT() *SVGPATTERNElement{
+                return e.DATASTAR_TELEPORTSet(true)
+            }
+        
+
+    // Scrolls the element into view 
+    
+        func(e *SVGPATTERNElement) DATASTAR_SCROLL_INTO_VIEWSet(b bool) *SVGPATTERNElement{
+                key := "data-scroll-into-view"
+                e.BoolAttributes.Set(key, b)
+                return e
+            }
+
+            func(e *SVGPATTERNElement) DATASTAR_SCROLL_INTO_VIEW() *SVGPATTERNElement{
+                return e.DATASTAR_SCROLL_INTO_VIEWSet(true)
+            }
+        
+
+    // Setup the ViewTransitionAPI for the element 
+    
+        func(e *SVGPATTERNElement) DATASTAR_VIEW_TRANSITION(key string, expression string) *SVGPATTERNElement{
+                if e.StringAttributes == nil {
+                    e.StringAttributes = treemap.New[string,string]()
+                }
+                
+                key = fmt.Sprintf("data-view-transition-%s", key)
+                
+                e.StringAttributes.Set(key, expression)
+                return e
+            }
+
+            func(e *SVGPATTERNElement) IfDATASTAR_VIEW_TRANSITION(condition bool, key string, expression string) *SVGPATTERNElement{
+                if condition {
+                    e.DATASTAR_VIEW_TRANSITION(key,  expression, )
+                }
+                return e
+            }
+
+            // Remove the attribute DATASTAR_VIEW_TRANSITION from the element.
+            func(e *SVGPATTERNElement) DATASTAR_VIEW_TRANSITIONRemove() *SVGPATTERNElement{
+                if e.StringAttributes == nil {
+                    return e
+                }
+                e.StringAttributes.Del("data-view-transition")
+                return e
+            }
+
+        
 
-// Remove the attribute DATASTAR_REF from the element.
-func (e *SVGPATTERNElement) DATASTAR_REFRemove() *SVGPATTERNElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-ref")
-	return e
-}
-
-// Sets the value of the element
-
-func (e *SVGPATTERNElement) DATASTAR_BIND(s string) *SVGPATTERNElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	key := "data-bind"
-	e.StringAttributes.Set(key, s)
-	return e
-}
-
-func (e *SVGPATTERNElement) IfDATASTAR_BIND(condition bool, s string) *SVGPATTERNElement {
-	if condition {
-		e.DATASTAR_BIND(s)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_BIND from the element.
-func (e *SVGPATTERNElement) DATASTAR_BINDRemove() *SVGPATTERNElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-bind")
-	return e
-}
-
-// Sets the value of the element
-
-func (e *SVGPATTERNElement) DATASTAR_MODEL(s string) *SVGPATTERNElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	key := "data-model"
-	e.StringAttributes.Set(key, s)
-	return e
-}
-
-func (e *SVGPATTERNElement) IfDATASTAR_MODEL(condition bool, s string) *SVGPATTERNElement {
-	if condition {
-		e.DATASTAR_MODEL(s)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_MODEL from the element.
-func (e *SVGPATTERNElement) DATASTAR_MODELRemove() *SVGPATTERNElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-model")
-	return e
-}
-
-// Sets the textContent of the element
-
-func (e *SVGPATTERNElement) DATASTAR_TEXT(s string) *SVGPATTERNElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	key := "data-text"
-	e.StringAttributes.Set(key, s)
-	return e
-}
-
-func (e *SVGPATTERNElement) IfDATASTAR_TEXT(condition bool, s string) *SVGPATTERNElement {
-	if condition {
-		e.DATASTAR_TEXT(s)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_TEXT from the element.
-func (e *SVGPATTERNElement) DATASTAR_TEXTRemove() *SVGPATTERNElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-text")
-	return e
-}
-
-// Sets the event handler of the element
-
-type SVGPatternDataOnMod customDataKeyModifier
-
-// Debounces the event handler
-func SVGPatternDataOnModDebounce(
-	s string,
-) SVGPatternDataOnMod {
-	return func() string {
-		return fmt.Sprintf("debounce_%sms", s)
-	}
-}
-
-// Throttles the event handler
-func SVGPatternDataOnModThrottle(
-	s string,
-) SVGPatternDataOnMod {
-	return func() string {
-		return fmt.Sprintf("throttle_%sms", s)
-	}
-}
-
-func (e *SVGPATTERNElement) DATASTAR_ON(s string, modifiers ...SVGPatternDataOnMod) *SVGPATTERNElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	customMods := lo.Map(modifiers, func(m SVGPatternDataOnMod, i int) customDataKeyModifier {
-		return customDataKeyModifier(m)
-	})
-	key := customDataKey("data-on", customMods...)
-	e.StringAttributes.Set(key, s)
-	return e
-}
-
-func (e *SVGPATTERNElement) IfDATASTAR_ON(condition bool, s string, modifiers ...SVGPatternDataOnMod) *SVGPATTERNElement {
-	if condition {
-		e.DATASTAR_ON(s, modifiers...)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_ON from the element.
-func (e *SVGPATTERNElement) DATASTAR_ONRemove() *SVGPATTERNElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-on")
-	return e
-}
-
-// Sets the focus of the element
-
-func (e *SVGPATTERNElement) DATASTAR_FOCUSSet(b bool) *SVGPATTERNElement {
-	key := "data-focus"
-	e.BoolAttributes.Set(key, b)
-	return e
-}
-
-func (e *SVGPATTERNElement) DATASTAR_FOCUS() *SVGPATTERNElement {
-	return e.DATASTAR_FOCUSSet(true)
-}
-
-// Sets the header of for fetch requests
-
-func (e *SVGPATTERNElement) DATASTAR_HEADER(s string) *SVGPATTERNElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	key := "data-header"
-	e.StringAttributes.Set(key, s)
-	return e
-}
-
-func (e *SVGPATTERNElement) IfDATASTAR_HEADER(condition bool, s string) *SVGPATTERNElement {
-	if condition {
-		e.DATASTAR_HEADER(s)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_HEADER from the element.
-func (e *SVGPATTERNElement) DATASTAR_HEADERRemove() *SVGPATTERNElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-header")
-	return e
-}
-
-// Sets the URL for fetch requests
-
-func (e *SVGPATTERNElement) DATASTAR_FETCH_URL(s string) *SVGPATTERNElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	key := "data-fetch-url"
-	e.StringAttributes.Set(key, s)
-	return e
-}
-
-func (e *SVGPATTERNElement) IfDATASTAR_FETCH_URL(condition bool, s string) *SVGPATTERNElement {
-	if condition {
-		e.DATASTAR_FETCH_URL(s)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_FETCH_URL from the element.
-func (e *SVGPATTERNElement) DATASTAR_FETCH_URLRemove() *SVGPATTERNElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-fetch-url")
-	return e
-}
-
-// Sets the indicator selector for fetch requests
-
-func (e *SVGPATTERNElement) DATASTAR_FETCH_INDICATOR(s string) *SVGPATTERNElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	key := "DatastarFetchIndicator"
-	e.StringAttributes.Set(key, s)
-	return e
-}
-
-func (e *SVGPATTERNElement) IfDATASTAR_FETCH_INDICATOR(condition bool, s string) *SVGPATTERNElement {
-	if condition {
-		e.DATASTAR_FETCH_INDICATOR(s)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_FETCH_INDICATOR from the element.
-func (e *SVGPATTERNElement) DATASTAR_FETCH_INDICATORRemove() *SVGPATTERNElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("DatastarFetchIndicator")
-	return e
-}
-
-// Sets the visibility of the element
-
-func (e *SVGPATTERNElement) DATASTAR_SHOWSet(b bool) *SVGPATTERNElement {
-	key := "data-show"
-	e.BoolAttributes.Set(key, b)
-	return e
-}
 
-func (e *SVGPATTERNElement) DATASTAR_SHOW() *SVGPATTERNElement {
-	return e.DATASTAR_SHOWSet(true)
-}
-
-// Triggers the callback when the element intersects the viewport
-
-func (e *SVGPATTERNElement) DATASTAR_INTERSECTSSet(b bool) *SVGPATTERNElement {
-	key := "data-intersects"
-	e.BoolAttributes.Set(key, b)
-	return e
-}
-
-func (e *SVGPATTERNElement) DATASTAR_INTERSECTS() *SVGPATTERNElement {
-	return e.DATASTAR_INTERSECTSSet(true)
-}
-
-// Teleports the element to the given selector
-
-func (e *SVGPATTERNElement) DATASTAR_TELEPORTSet(b bool) *SVGPATTERNElement {
-	key := "data-teleport"
-	e.BoolAttributes.Set(key, b)
-	return e
-}
-
-func (e *SVGPATTERNElement) DATASTAR_TELEPORT() *SVGPATTERNElement {
-	return e.DATASTAR_TELEPORTSet(true)
-}
 
-// Scrolls the element into view
-
-func (e *SVGPATTERNElement) DATASTAR_SCROLL_INTO_VIEWSet(b bool) *SVGPATTERNElement {
-	key := "data-scroll-into-view"
-	e.BoolAttributes.Set(key, b)
-	return e
-}
-
-func (e *SVGPATTERNElement) DATASTAR_SCROLL_INTO_VIEW() *SVGPATTERNElement {
-	return e.DATASTAR_SCROLL_INTO_VIEWSet(true)
-}
-
-// Setup the ViewTransitionAPI for the element
-
-func (e *SVGPATTERNElement) DATASTAR_VIEW_TRANSITION(s string) *SVGPATTERNElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	key := "data-view-transition"
-	e.StringAttributes.Set(key, s)
-	return e
-}
-
-func (e *SVGPATTERNElement) IfDATASTAR_VIEW_TRANSITION(condition bool, s string) *SVGPATTERNElement {
-	if condition {
-		e.DATASTAR_VIEW_TRANSITION(s)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_VIEW_TRANSITION from the element.
-func (e *SVGPATTERNElement) DATASTAR_VIEW_TRANSITIONRemove() *SVGPATTERNElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-view-transition")
-	return e
-}

@@ -1045,6 +1045,8 @@ func (m *Attribute_Custom) validate(all bool) error {
 		}
 	}
 
+	// no validation rules for HasKey
+
 	for idx, item := range m.GetModifiers() {
 		_, _ = idx, item
 

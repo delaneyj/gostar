@@ -3,667 +3,725 @@
 // Description:
 package elements
 
-import (
-	"fmt"
-
-	"github.com/goccy/go-json"
-	"github.com/igrmk/treemap/v2"
-	"github.com/samber/lo"
+import(
+    "fmt"
+    "time"
+    "github.com/igrmk/treemap/v2"
+    "github.com/goccy/go-json"
+    "github.com/samber/lo"
 )
 
-// The <circle> SVG element is an SVG basic shape, used to create circles based on
-// a center point and a radius.
+// The <circle> SVG element is an SVG basic shape, used to create circles based on 
+// a center point and a radius. 
 type SVGCIRCLEElement struct {
-	*Element
+    *Element
 }
 
 // Create a new SVGCIRCLEElement element.
 // This will create a new element with the tag
 // "circle" during rendering.
 func SVG_CIRCLE(children ...ElementRenderer) *SVGCIRCLEElement {
-	e := NewElement("circle", children...)
-	e.IsSelfClosing = false
-	e.Descendants = children
+    e := NewElement("circle", children...)
+    e.IsSelfClosing = false
+    e.Descendants = children
 
-	return &SVGCIRCLEElement{Element: e}
+    return &SVGCIRCLEElement{ Element: e }
 }
 
 func (e *SVGCIRCLEElement) Children(children ...ElementRenderer) *SVGCIRCLEElement {
-	e.Descendants = append(e.Descendants, children...)
-	return e
+    e.Descendants = append(e.Descendants, children...)
+    return e
 }
 
-func (e *SVGCIRCLEElement) IfChildren(condition bool, children ...ElementRenderer) *SVGCIRCLEElement {
-	if condition {
-		e.Descendants = append(e.Descendants, children...)
-	}
-	return e
+func(e *SVGCIRCLEElement) IfChildren(condition bool, children ...ElementRenderer) *SVGCIRCLEElement {
+    if condition {
+        e.Descendants = append(e.Descendants, children...)
+    }
+    return e
 }
 
-func (e *SVGCIRCLEElement) TernChildren(condition bool, trueChildren, falseChildren ElementRenderer) *SVGCIRCLEElement {
-	if condition {
-		e.Descendants = append(e.Descendants, trueChildren)
-	} else {
-		e.Descendants = append(e.Descendants, falseChildren)
-	}
-	return e
+func(e *SVGCIRCLEElement) TernChildren(condition bool, trueChildren, falseChildren ElementRenderer) *SVGCIRCLEElement {
+    if condition {
+        e.Descendants = append(e.Descendants, trueChildren)
+    } else {
+        e.Descendants = append(e.Descendants, falseChildren)
+    }
+    return e
 }
 
 func (e *SVGCIRCLEElement) Text(text string) *SVGCIRCLEElement {
-	e.Descendants = append(e.Descendants, Text(text))
-	return e
+    e.Descendants = append(e.Descendants, Text(text))
+    return e
 }
 
 func (e *SVGCIRCLEElement) TextF(format string, args ...any) *SVGCIRCLEElement {
-	return e.Text(fmt.Sprintf(format, args...))
+    return e.Text(fmt.Sprintf(format, args...))
 }
 
 func (e *SVGCIRCLEElement) IfText(condition bool, text string) *SVGCIRCLEElement {
-	if condition {
-		e.Descendants = append(e.Descendants, Text(text))
-	}
-	return e
+    if condition {
+        e.Descendants = append(e.Descendants, Text(text))
+    }
+    return e
 }
 
 func (e *SVGCIRCLEElement) IfTextF(condition bool, format string, args ...any) *SVGCIRCLEElement {
-	if condition {
-		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
-	}
-	return e
+    if condition {
+        e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+    }
+    return e
 }
 
 func (e *SVGCIRCLEElement) Escaped(text string) *SVGCIRCLEElement {
-	e.Descendants = append(e.Descendants, Escaped(text))
-	return e
+    e.Descendants = append(e.Descendants, Escaped(text))
+    return e
 }
 
 func (e *SVGCIRCLEElement) IfEscaped(condition bool, text string) *SVGCIRCLEElement {
-	if condition {
-		e.Descendants = append(e.Descendants, Escaped(text))
-	}
-	return e
+    if condition {
+        e.Descendants = append(e.Descendants, Escaped(text))
+    }
+    return e
 }
 
 func (e *SVGCIRCLEElement) EscapedF(format string, args ...any) *SVGCIRCLEElement {
-	return e.Escaped(fmt.Sprintf(format, args...))
+    return e.Escaped(fmt.Sprintf(format, args...))
 }
 
 func (e *SVGCIRCLEElement) IfEscapedF(condition bool, format string, args ...any) *SVGCIRCLEElement {
-	if condition {
-		e.Descendants = append(e.Descendants, EscapedF(format, args...))
-	}
-	return e
+    if condition {
+        e.Descendants = append(e.Descendants, EscapedF(format, args...))
+    }
+    return e
 }
 
 func (e *SVGCIRCLEElement) CustomData(key, value string) *SVGCIRCLEElement {
-	if e.CustomDataAttributes == nil {
-		e.CustomDataAttributes = treemap.New[string, string]()
-	}
+    if e.CustomDataAttributes == nil {
+        e.CustomDataAttributes = treemap.New[string,string]()
+    }
 	e.CustomDataAttributes.Set(key, value)
 	return e
 }
 
 func (e *SVGCIRCLEElement) IfCustomData(condition bool, key, value string) *SVGCIRCLEElement {
-	if condition {
-		e.CustomData(key, value)
-	}
-	return e
+    if condition {
+        e.CustomData(key, value)
+    }
+    return e
 }
 
 func (e *SVGCIRCLEElement) CustomDataF(key, format string, args ...any) *SVGCIRCLEElement {
-	return e.CustomData(key, fmt.Sprintf(format, args...))
+    return e.CustomData(key, fmt.Sprintf(format, args...))
 }
 
 func (e *SVGCIRCLEElement) IfCustomDataF(condition bool, key, format string, args ...any) *SVGCIRCLEElement {
-	if condition {
-		e.CustomData(key, fmt.Sprintf(format, args...))
-	}
-	return e
+    if condition {
+        e.CustomData(key, fmt.Sprintf(format, args...))
+    }
+    return e
 }
 
 func (e *SVGCIRCLEElement) CustomDataRemove(key string) *SVGCIRCLEElement {
 	if e.CustomDataAttributes == nil {
 		return e
 	}
-	e.CustomDataAttributes.Del(key)
+    e.CustomDataAttributes.Del(key)
 	return e
 }
 
-// The x-axis coordinate of the center of the circle.
-func (e *SVGCIRCLEElement) CX(f float64) *SVGCIRCLEElement {
-	if e.FloatAttributes == nil {
-		e.FloatAttributes = treemap.New[string, float64]()
-	}
-	e.FloatAttributes.Set("cx", f)
-	return e
-}
-
-func (e *SVGCIRCLEElement) IfCX(condition bool, f float64) *SVGCIRCLEElement {
-	if condition {
-		e.CX(f)
-	}
-	return e
-}
-
-// The y-axis coordinate of the center of the circle.
-func (e *SVGCIRCLEElement) CY(f float64) *SVGCIRCLEElement {
-	if e.FloatAttributes == nil {
-		e.FloatAttributes = treemap.New[string, float64]()
-	}
-	e.FloatAttributes.Set("cy", f)
-	return e
-}
-
-func (e *SVGCIRCLEElement) IfCY(condition bool, f float64) *SVGCIRCLEElement {
-	if condition {
-		e.CY(f)
-	}
-	return e
-}
-
-// The radius of the circle.
-func (e *SVGCIRCLEElement) R(f float64) *SVGCIRCLEElement {
-	if e.FloatAttributes == nil {
-		e.FloatAttributes = treemap.New[string, float64]()
-	}
-	e.FloatAttributes.Set("r", f)
-	return e
-}
-
-func (e *SVGCIRCLEElement) IfR(condition bool, f float64) *SVGCIRCLEElement {
-	if condition {
-		e.R(f)
-	}
-	return e
-}
-
-// Specifies a unique id for an element
-func (e *SVGCIRCLEElement) ID(s string) *SVGCIRCLEElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	e.StringAttributes.Set("id", s)
-	return e
-}
-
-func (e *SVGCIRCLEElement) IfID(condition bool, s string) *SVGCIRCLEElement {
-	if condition {
-		e.ID(s)
-	}
-	return e
-}
-
-// Remove the attribute ID from the element.
-func (e *SVGCIRCLEElement) IDRemove(s string) *SVGCIRCLEElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("id")
-	return e
-}
-
-// Specifies one or more classnames for an element (refers to a class in a style
-// sheet)
-func (e *SVGCIRCLEElement) CLASS(s ...string) *SVGCIRCLEElement {
-	if e.DelimitedStrings == nil {
-		e.DelimitedStrings = treemap.New[string, *DelimitedBuilder[string]]()
-	}
-	ds, ok := e.DelimitedStrings.Get("class")
-	if !ok {
-		ds = NewDelimitedBuilder[string](" ")
-		e.DelimitedStrings.Set("class", ds)
-	}
-	ds.Add(s...)
-	return e
-}
-
-func (e *SVGCIRCLEElement) IfCLASS(condition bool, s ...string) *SVGCIRCLEElement {
-	if condition {
-		e.CLASS(s...)
-	}
-	return e
-}
-
-// Remove the attribute CLASS from the element.
-func (e *SVGCIRCLEElement) CLASSRemove(s ...string) *SVGCIRCLEElement {
-	if e.DelimitedStrings == nil {
-		return e
-	}
-	ds, ok := e.DelimitedStrings.Get("class")
-	if !ok {
-		return e
-	}
-	ds.Remove(s...)
-	return e
-}
-
-// Specifies an inline CSS style for an element
-func (e *SVGCIRCLEElement) STYLEF(k string, format string, args ...any) *SVGCIRCLEElement {
-	return e.STYLE(k, fmt.Sprintf(format, args...))
-}
-
-func (e *SVGCIRCLEElement) IfSTYLE(condition bool, k string, v string) *SVGCIRCLEElement {
-	if condition {
-		e.STYLE(k, v)
-	}
-	return e
-}
-
-func (e *SVGCIRCLEElement) STYLE(k string, v string) *SVGCIRCLEElement {
-	if e.KVStrings == nil {
-		e.KVStrings = treemap.New[string, *KVBuilder]()
-	}
-	kv, ok := e.KVStrings.Get("style")
-	if !ok {
-		kv = NewKVBuilder(":", ";")
-		e.KVStrings.Set("style", kv)
-	}
-	kv.Add(k, v)
-	return e
-}
-
-func (e *SVGCIRCLEElement) IfSTYLEF(condition bool, k string, format string, args ...any) *SVGCIRCLEElement {
-	if condition {
-		e.STYLE(k, fmt.Sprintf(format, args...))
-	}
-	return e
-}
-
-// Add the attributes in the map to the element.
-func (e *SVGCIRCLEElement) STYLEMap(m map[string]string) *SVGCIRCLEElement {
-	if e.KVStrings == nil {
-		e.KVStrings = treemap.New[string, *KVBuilder]()
-	}
-	kv, ok := e.KVStrings.Get("style")
-	if !ok {
-		kv = NewKVBuilder(":", ";")
-		e.KVStrings.Set("style", kv)
-	}
-	for k, v := range m {
-		kv.Add(k, v)
-	}
-	return e
-}
-
-// Add pairs of attributes to the element.
-func (e *SVGCIRCLEElement) STYLEPairs(pairs ...string) *SVGCIRCLEElement {
-	if len(pairs)%2 != 0 {
-		panic("Must have an even number of pairs")
-	}
-	if e.KVStrings == nil {
-		e.KVStrings = treemap.New[string, *KVBuilder]()
-	}
-	kv, ok := e.KVStrings.Get("style")
-	if !ok {
-		kv = NewKVBuilder(":", ";")
-		e.KVStrings.Set("style", kv)
-	}
-
-	for i := 0; i < len(pairs); i += 2 {
-		kv.Add(pairs[i], pairs[i+1])
-	}
-
-	return e
-}
-
-func (e *SVGCIRCLEElement) IfSTYLEPairs(condition bool, pairs ...string) *SVGCIRCLEElement {
-	if condition {
-		e.STYLEPairs(pairs...)
-	}
-	return e
-}
-
-// Remove the attribute STYLE from the element.
-func (e *SVGCIRCLEElement) STYLERemove(keys ...string) *SVGCIRCLEElement {
-	if e.KVStrings == nil {
-		return e
-	}
-	kv, ok := e.KVStrings.Get("style")
-	if !ok {
-		return e
-	}
-	for _, k := range keys {
-		kv.Remove(k)
-	}
-	return e
-}
-
-// Merges the store with the given object
-
-func (e *SVGCIRCLEElement) DATASTAR_MERGE_STORE(v any) *SVGCIRCLEElement {
-	if e.CustomDataAttributes == nil {
-		e.CustomDataAttributes = treemap.New[string, string]()
-	}
-	b, err := json.Marshal(v)
-	if err != nil {
-		panic(err)
-	}
-	e.CustomDataAttributes.Set("data-merge-store", string(b))
-	return e
-}
-
-// Sets the reference of the element
-
-func (e *SVGCIRCLEElement) DATASTAR_REF(s string) *SVGCIRCLEElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	key := "data-ref"
-	e.StringAttributes.Set(key, s)
-	return e
-}
-
-func (e *SVGCIRCLEElement) IfDATASTAR_REF(condition bool, s string) *SVGCIRCLEElement {
-	if condition {
-		e.DATASTAR_REF(s)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_REF from the element.
-func (e *SVGCIRCLEElement) DATASTAR_REFRemove() *SVGCIRCLEElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-ref")
-	return e
-}
-
-// Sets the value of the element
-
-func (e *SVGCIRCLEElement) DATASTAR_BIND(s string) *SVGCIRCLEElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	key := "data-bind"
-	e.StringAttributes.Set(key, s)
-	return e
-}
-
-func (e *SVGCIRCLEElement) IfDATASTAR_BIND(condition bool, s string) *SVGCIRCLEElement {
-	if condition {
-		e.DATASTAR_BIND(s)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_BIND from the element.
-func (e *SVGCIRCLEElement) DATASTAR_BINDRemove() *SVGCIRCLEElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-bind")
-	return e
-}
-
-// Sets the value of the element
-
-func (e *SVGCIRCLEElement) DATASTAR_MODEL(s string) *SVGCIRCLEElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	key := "data-model"
-	e.StringAttributes.Set(key, s)
-	return e
-}
-
-func (e *SVGCIRCLEElement) IfDATASTAR_MODEL(condition bool, s string) *SVGCIRCLEElement {
-	if condition {
-		e.DATASTAR_MODEL(s)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_MODEL from the element.
-func (e *SVGCIRCLEElement) DATASTAR_MODELRemove() *SVGCIRCLEElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-model")
-	return e
-}
-
-// Sets the textContent of the element
-
-func (e *SVGCIRCLEElement) DATASTAR_TEXT(s string) *SVGCIRCLEElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	key := "data-text"
-	e.StringAttributes.Set(key, s)
-	return e
-}
-
-func (e *SVGCIRCLEElement) IfDATASTAR_TEXT(condition bool, s string) *SVGCIRCLEElement {
-	if condition {
-		e.DATASTAR_TEXT(s)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_TEXT from the element.
-func (e *SVGCIRCLEElement) DATASTAR_TEXTRemove() *SVGCIRCLEElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-text")
-	return e
-}
-
-// Sets the event handler of the element
-
-type SVGCircleDataOnMod customDataKeyModifier
-
-// Debounces the event handler
-func SVGCircleDataOnModDebounce(
-	s string,
-) SVGCircleDataOnMod {
-	return func() string {
-		return fmt.Sprintf("debounce_%sms", s)
-	}
-}
-
-// Throttles the event handler
-func SVGCircleDataOnModThrottle(
-	s string,
-) SVGCircleDataOnMod {
-	return func() string {
-		return fmt.Sprintf("throttle_%sms", s)
-	}
-}
-
-func (e *SVGCIRCLEElement) DATASTAR_ON(s string, modifiers ...SVGCircleDataOnMod) *SVGCIRCLEElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	customMods := lo.Map(modifiers, func(m SVGCircleDataOnMod, i int) customDataKeyModifier {
-		return customDataKeyModifier(m)
-	})
-	key := customDataKey("data-on", customMods...)
-	e.StringAttributes.Set(key, s)
-	return e
-}
-
-func (e *SVGCIRCLEElement) IfDATASTAR_ON(condition bool, s string, modifiers ...SVGCircleDataOnMod) *SVGCIRCLEElement {
-	if condition {
-		e.DATASTAR_ON(s, modifiers...)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_ON from the element.
-func (e *SVGCIRCLEElement) DATASTAR_ONRemove() *SVGCIRCLEElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-on")
-	return e
-}
-
-// Sets the focus of the element
-
-func (e *SVGCIRCLEElement) DATASTAR_FOCUSSet(b bool) *SVGCIRCLEElement {
-	key := "data-focus"
-	e.BoolAttributes.Set(key, b)
-	return e
-}
-
-func (e *SVGCIRCLEElement) DATASTAR_FOCUS() *SVGCIRCLEElement {
-	return e.DATASTAR_FOCUSSet(true)
-}
-
-// Sets the header of for fetch requests
-
-func (e *SVGCIRCLEElement) DATASTAR_HEADER(s string) *SVGCIRCLEElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	key := "data-header"
-	e.StringAttributes.Set(key, s)
-	return e
-}
-
-func (e *SVGCIRCLEElement) IfDATASTAR_HEADER(condition bool, s string) *SVGCIRCLEElement {
-	if condition {
-		e.DATASTAR_HEADER(s)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_HEADER from the element.
-func (e *SVGCIRCLEElement) DATASTAR_HEADERRemove() *SVGCIRCLEElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-header")
-	return e
-}
-
-// Sets the URL for fetch requests
-
-func (e *SVGCIRCLEElement) DATASTAR_FETCH_URL(s string) *SVGCIRCLEElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	key := "data-fetch-url"
-	e.StringAttributes.Set(key, s)
-	return e
-}
-
-func (e *SVGCIRCLEElement) IfDATASTAR_FETCH_URL(condition bool, s string) *SVGCIRCLEElement {
-	if condition {
-		e.DATASTAR_FETCH_URL(s)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_FETCH_URL from the element.
-func (e *SVGCIRCLEElement) DATASTAR_FETCH_URLRemove() *SVGCIRCLEElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-fetch-url")
-	return e
-}
-
-// Sets the indicator selector for fetch requests
-
-func (e *SVGCIRCLEElement) DATASTAR_FETCH_INDICATOR(s string) *SVGCIRCLEElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	key := "DatastarFetchIndicator"
-	e.StringAttributes.Set(key, s)
-	return e
-}
-
-func (e *SVGCIRCLEElement) IfDATASTAR_FETCH_INDICATOR(condition bool, s string) *SVGCIRCLEElement {
-	if condition {
-		e.DATASTAR_FETCH_INDICATOR(s)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_FETCH_INDICATOR from the element.
-func (e *SVGCIRCLEElement) DATASTAR_FETCH_INDICATORRemove() *SVGCIRCLEElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("DatastarFetchIndicator")
-	return e
-}
-
-// Sets the visibility of the element
-
-func (e *SVGCIRCLEElement) DATASTAR_SHOWSet(b bool) *SVGCIRCLEElement {
-	key := "data-show"
-	e.BoolAttributes.Set(key, b)
-	return e
-}
-
-func (e *SVGCIRCLEElement) DATASTAR_SHOW() *SVGCIRCLEElement {
-	return e.DATASTAR_SHOWSet(true)
-}
-
-// Triggers the callback when the element intersects the viewport
-
-func (e *SVGCIRCLEElement) DATASTAR_INTERSECTSSet(b bool) *SVGCIRCLEElement {
-	key := "data-intersects"
-	e.BoolAttributes.Set(key, b)
-	return e
-}
-
-func (e *SVGCIRCLEElement) DATASTAR_INTERSECTS() *SVGCIRCLEElement {
-	return e.DATASTAR_INTERSECTSSet(true)
-}
-
-// Teleports the element to the given selector
-
-func (e *SVGCIRCLEElement) DATASTAR_TELEPORTSet(b bool) *SVGCIRCLEElement {
-	key := "data-teleport"
-	e.BoolAttributes.Set(key, b)
-	return e
-}
-
-func (e *SVGCIRCLEElement) DATASTAR_TELEPORT() *SVGCIRCLEElement {
-	return e.DATASTAR_TELEPORTSet(true)
-}
-
-// Scrolls the element into view
-
-func (e *SVGCIRCLEElement) DATASTAR_SCROLL_INTO_VIEWSet(b bool) *SVGCIRCLEElement {
-	key := "data-scroll-into-view"
-	e.BoolAttributes.Set(key, b)
-	return e
-}
-
-func (e *SVGCIRCLEElement) DATASTAR_SCROLL_INTO_VIEW() *SVGCIRCLEElement {
-	return e.DATASTAR_SCROLL_INTO_VIEWSet(true)
-}
-
-// Setup the ViewTransitionAPI for the element
-
-func (e *SVGCIRCLEElement) DATASTAR_VIEW_TRANSITION(s string) *SVGCIRCLEElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	key := "data-view-transition"
-	e.StringAttributes.Set(key, s)
-	return e
-}
-
-func (e *SVGCIRCLEElement) IfDATASTAR_VIEW_TRANSITION(condition bool, s string) *SVGCIRCLEElement {
-	if condition {
-		e.DATASTAR_VIEW_TRANSITION(s)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_VIEW_TRANSITION from the element.
-func (e *SVGCIRCLEElement) DATASTAR_VIEW_TRANSITIONRemove() *SVGCIRCLEElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-view-transition")
-	return e
-}
+
+    // The x-axis coordinate of the center of the circle. 
+    func(e *SVGCIRCLEElement) CX(f float64) *SVGCIRCLEElement{
+            if e.FloatAttributes == nil {
+                e.FloatAttributes = treemap.New[string,float64]()
+            }
+            e.FloatAttributes.Set("cx", f)
+            return e
+        }
+
+        func (e *SVGCIRCLEElement) IfCX(condition bool, f float64) *SVGCIRCLEElement {
+            if condition {
+                e.CX(f)
+            }
+            return e
+        }
+
+    
+
+    // The y-axis coordinate of the center of the circle. 
+    func(e *SVGCIRCLEElement) CY(f float64) *SVGCIRCLEElement{
+            if e.FloatAttributes == nil {
+                e.FloatAttributes = treemap.New[string,float64]()
+            }
+            e.FloatAttributes.Set("cy", f)
+            return e
+        }
+
+        func (e *SVGCIRCLEElement) IfCY(condition bool, f float64) *SVGCIRCLEElement {
+            if condition {
+                e.CY(f)
+            }
+            return e
+        }
+
+    
+
+    // The radius of the circle. 
+    func(e *SVGCIRCLEElement) R(f float64) *SVGCIRCLEElement{
+            if e.FloatAttributes == nil {
+                e.FloatAttributes = treemap.New[string,float64]()
+            }
+            e.FloatAttributes.Set("r", f)
+            return e
+        }
+
+        func (e *SVGCIRCLEElement) IfR(condition bool, f float64) *SVGCIRCLEElement {
+            if condition {
+                e.R(f)
+            }
+            return e
+        }
+
+    
+
+    // Specifies a unique id for an element 
+    func(e *SVGCIRCLEElement) ID(s string) *SVGCIRCLEElement{
+            if e.StringAttributes == nil {
+                e.StringAttributes = treemap.New[string,string]()
+            }
+            e.StringAttributes.Set("id", s)
+            return e
+        }
+
+        func(e *SVGCIRCLEElement) IfID(condition bool, s string) *SVGCIRCLEElement{
+            if condition {
+                e.ID(s)
+            }
+            return e
+        }
+
+        // Remove the attribute ID from the element.
+        func(e *SVGCIRCLEElement) IDRemove(s string) *SVGCIRCLEElement{
+            if e.StringAttributes == nil {
+                return e
+            }
+            e.StringAttributes.Del("id")
+            return e
+        }
+    
+
+    // Specifies one or more classnames for an element (refers to a class in a style 
+// sheet) 
+    func(e *SVGCIRCLEElement) CLASS(s ...string) *SVGCIRCLEElement{
+            if e.DelimitedStrings == nil {
+                e.DelimitedStrings = treemap.New[string,*DelimitedBuilder[string]]()
+            }
+            ds, ok := e.DelimitedStrings.Get("class")
+            if !ok {
+                ds = NewDelimitedBuilder[string](" ")
+                e.DelimitedStrings.Set("class", ds)
+            }
+            ds.Add(s...)
+            return e
+        }
+
+        func(e *SVGCIRCLEElement) IfCLASS(condition bool, s ...string) *SVGCIRCLEElement{
+            if condition {
+                e.CLASS(s...)
+            }
+            return e
+        }
+
+        // Remove the attribute CLASS from the element.
+        func(e *SVGCIRCLEElement) CLASSRemove(s ...string) *SVGCIRCLEElement{
+            if e.DelimitedStrings == nil {
+                return e
+            }
+            ds, ok := e.DelimitedStrings.Get("class")
+            if !ok {
+                return e
+            }
+            ds.Remove(s ...)
+            return e
+        }
+
+    
+
+    // Specifies an inline CSS style for an element 
+    func (e *SVGCIRCLEElement) STYLEF(k string, format string, args ...any) *SVGCIRCLEElement {
+            return e.STYLE(k, fmt.Sprintf(format, args...))
+        }
+
+        func (e *SVGCIRCLEElement) IfSTYLE(condition bool, k string, v string) *SVGCIRCLEElement {
+            if condition {
+                e.STYLE(k, v)
+            }
+            return e
+        }
+
+        func (e *SVGCIRCLEElement) STYLE(k string, v string) *SVGCIRCLEElement {
+            if e.KVStrings == nil {
+                e.KVStrings = treemap.New[string,*KVBuilder]()
+            }
+            kv, ok := e.KVStrings.Get("style")
+            if !ok {
+                kv = NewKVBuilder(":", ";")
+                e.KVStrings.Set("style", kv)
+            }
+            kv.Add(k, v)
+            return e
+        }
+
+        func (e *SVGCIRCLEElement) IfSTYLEF(condition bool, k string, format string, args ...any) *SVGCIRCLEElement {
+            if condition {
+                e.STYLE(k, fmt.Sprintf(format, args...))
+            }
+            return e
+        }
+
+        // Add the attributes in the map to the element.
+        func (e *SVGCIRCLEElement) STYLEMap(m map[string]string) *SVGCIRCLEElement {
+            if e.KVStrings == nil {
+                e.KVStrings = treemap.New[string,*KVBuilder]()
+            }
+            kv, ok := e.KVStrings.Get("style")
+            if !ok {
+                kv = NewKVBuilder(":", ";")
+                e.KVStrings.Set("style", kv)
+            }
+            for k, v := range m {
+                kv.Add(k, v)
+            }
+            return e
+        }
+
+        // Add pairs of attributes to the element.
+        func (e *SVGCIRCLEElement) STYLEPairs(pairs ...string) *SVGCIRCLEElement {
+            if len(pairs) % 2 != 0 {
+                panic("Must have an even number of pairs")
+            }
+            if e.KVStrings == nil {
+                e.KVStrings = treemap.New[string,*KVBuilder]()
+            }
+            kv, ok := e.KVStrings.Get("style")
+            if !ok {
+                kv = NewKVBuilder(":", ";")
+                e.KVStrings.Set("style", kv)
+            }
+
+            for i := 0; i < len(pairs); i += 2 {
+                kv.Add(pairs[i], pairs[i+1])
+            }
+
+            return e
+        }
+
+        func (e *SVGCIRCLEElement) IfSTYLEPairs(condition bool, pairs ...string) *SVGCIRCLEElement {
+            if condition {
+                e.STYLEPairs(pairs...)
+            }
+            return e
+        }
+
+        // Remove the attribute STYLE from the element.
+        func (e *SVGCIRCLEElement) STYLERemove(keys ...string) *SVGCIRCLEElement {
+            if e.KVStrings == nil {
+                return e
+            }
+            kv, ok := e.KVStrings.Get("style")
+            if !ok {
+                return e
+            }
+            for _, k := range keys {
+                kv.Remove(k)
+            }
+            return e
+        }
+
+    
+
+    // Merges the store with the given object 
+    
+        func(e *SVGCIRCLEElement) DATASTAR_MERGE_STORE(v any) *SVGCIRCLEElement{
+                if e.CustomDataAttributes == nil {
+                    e.CustomDataAttributes = treemap.New[string,string]()
+                }
+                b, err := json.Marshal(v)
+                if err != nil {
+                    panic(err)
+                }
+                e.CustomDataAttributes.Set("data-merge-store", string(b))
+                return e
+            }
+
+        
+
+    // Sets the reference of the element 
+    
+        func(e *SVGCIRCLEElement) DATASTAR_REF(expression string) *SVGCIRCLEElement{
+                if e.StringAttributes == nil {
+                    e.StringAttributes = treemap.New[string,string]()
+                }
+                
+                key := "data-ref"
+                
+                e.StringAttributes.Set(key, expression)
+                return e
+            }
+
+            func(e *SVGCIRCLEElement) IfDATASTAR_REF(condition bool, expression string) *SVGCIRCLEElement{
+                if condition {
+                    e.DATASTAR_REF( expression, )
+                }
+                return e
+            }
+
+            // Remove the attribute DATASTAR_REF from the element.
+            func(e *SVGCIRCLEElement) DATASTAR_REFRemove() *SVGCIRCLEElement{
+                if e.StringAttributes == nil {
+                    return e
+                }
+                e.StringAttributes.Del("data-ref")
+                return e
+            }
+
+        
+
+    // Sets the value of the element 
+    
+        func(e *SVGCIRCLEElement) DATASTAR_BIND(key string, expression string) *SVGCIRCLEElement{
+                if e.StringAttributes == nil {
+                    e.StringAttributes = treemap.New[string,string]()
+                }
+                
+                key = fmt.Sprintf("data-bind-%s", key)
+                
+                e.StringAttributes.Set(key, expression)
+                return e
+            }
+
+            func(e *SVGCIRCLEElement) IfDATASTAR_BIND(condition bool, key string, expression string) *SVGCIRCLEElement{
+                if condition {
+                    e.DATASTAR_BIND(key,  expression, )
+                }
+                return e
+            }
+
+            // Remove the attribute DATASTAR_BIND from the element.
+            func(e *SVGCIRCLEElement) DATASTAR_BINDRemove() *SVGCIRCLEElement{
+                if e.StringAttributes == nil {
+                    return e
+                }
+                e.StringAttributes.Del("data-bind")
+                return e
+            }
+
+        
+
+    // Sets the value of the element 
+    
+        func(e *SVGCIRCLEElement) DATASTAR_MODEL(expression string) *SVGCIRCLEElement{
+                if e.StringAttributes == nil {
+                    e.StringAttributes = treemap.New[string,string]()
+                }
+                
+                key := "data-model"
+                
+                e.StringAttributes.Set(key, expression)
+                return e
+            }
+
+            func(e *SVGCIRCLEElement) IfDATASTAR_MODEL(condition bool, expression string) *SVGCIRCLEElement{
+                if condition {
+                    e.DATASTAR_MODEL( expression, )
+                }
+                return e
+            }
+
+            // Remove the attribute DATASTAR_MODEL from the element.
+            func(e *SVGCIRCLEElement) DATASTAR_MODELRemove() *SVGCIRCLEElement{
+                if e.StringAttributes == nil {
+                    return e
+                }
+                e.StringAttributes.Del("data-model")
+                return e
+            }
+
+        
+
+    // Sets the textContent of the element 
+    
+        func(e *SVGCIRCLEElement) DATASTAR_TEXT(expression string) *SVGCIRCLEElement{
+                if e.StringAttributes == nil {
+                    e.StringAttributes = treemap.New[string,string]()
+                }
+                
+                key := "data-text"
+                
+                e.StringAttributes.Set(key, expression)
+                return e
+            }
+
+            func(e *SVGCIRCLEElement) IfDATASTAR_TEXT(condition bool, expression string) *SVGCIRCLEElement{
+                if condition {
+                    e.DATASTAR_TEXT( expression, )
+                }
+                return e
+            }
+
+            // Remove the attribute DATASTAR_TEXT from the element.
+            func(e *SVGCIRCLEElement) DATASTAR_TEXTRemove() *SVGCIRCLEElement{
+                if e.StringAttributes == nil {
+                    return e
+                }
+                e.StringAttributes.Del("data-text")
+                return e
+            }
+
+        
+
+    // Sets the event handler of the element 
+    
+        type SVGCircleDataOnMod customDataKeyModifier
+
+            
+            // Debounces the event handler 
+            func SVGCircleDataOnModDebounce(
+                    d time.Duration,
+            ) SVGCircleDataOnMod {
+                return func() string {return fmt.Sprintf("debounce_%dms", d.Milliseconds())
+                }
+            }
+            
+            // Throttles the event handler 
+            func SVGCircleDataOnModThrottle(
+                    d time.Duration,
+            ) SVGCircleDataOnMod {
+                return func() string {return fmt.Sprintf("throttle_%dms", d.Milliseconds())
+                }
+            }
+            
+        func(e *SVGCIRCLEElement) DATASTAR_ON(key string, expression string, modifiers ...SVGCircleDataOnMod) *SVGCIRCLEElement{
+                if e.StringAttributes == nil {
+                    e.StringAttributes = treemap.New[string,string]()
+                }
+                
+                key = fmt.Sprintf("data-on-%s", key)
+                
+                customMods := lo.Map(modifiers, func(m SVGCircleDataOnMod, i int) customDataKeyModifier  {
+                    return customDataKeyModifier(m)
+                })
+                key = customDataKey(key, customMods...)
+                e.StringAttributes.Set(key, expression)
+                return e
+            }
+
+            func(e *SVGCIRCLEElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SVGCircleDataOnMod) *SVGCIRCLEElement{
+                if condition {
+                    e.DATASTAR_ON(key,  expression,  modifiers...)
+                }
+                return e
+            }
+
+            // Remove the attribute DATASTAR_ON from the element.
+            func(e *SVGCIRCLEElement) DATASTAR_ONRemove() *SVGCIRCLEElement{
+                if e.StringAttributes == nil {
+                    return e
+                }
+                e.StringAttributes.Del("data-on")
+                return e
+            }
+
+        
+
+    // Sets the focus of the element 
+    
+        func(e *SVGCIRCLEElement) DATASTAR_FOCUSSet(b bool) *SVGCIRCLEElement{
+                key := "data-focus"
+                e.BoolAttributes.Set(key, b)
+                return e
+            }
+
+            func(e *SVGCIRCLEElement) DATASTAR_FOCUS() *SVGCIRCLEElement{
+                return e.DATASTAR_FOCUSSet(true)
+            }
+        
+
+    // Sets the header of for fetch requests 
+    
+        func(e *SVGCIRCLEElement) DATASTAR_HEADER(key string, expression string) *SVGCIRCLEElement{
+                if e.StringAttributes == nil {
+                    e.StringAttributes = treemap.New[string,string]()
+                }
+                
+                key = fmt.Sprintf("data-header-%s", key)
+                
+                e.StringAttributes.Set(key, expression)
+                return e
+            }
+
+            func(e *SVGCIRCLEElement) IfDATASTAR_HEADER(condition bool, key string, expression string) *SVGCIRCLEElement{
+                if condition {
+                    e.DATASTAR_HEADER(key,  expression, )
+                }
+                return e
+            }
+
+            // Remove the attribute DATASTAR_HEADER from the element.
+            func(e *SVGCIRCLEElement) DATASTAR_HEADERRemove() *SVGCIRCLEElement{
+                if e.StringAttributes == nil {
+                    return e
+                }
+                e.StringAttributes.Del("data-header")
+                return e
+            }
+
+        
+
+    // Sets the URL for fetch requests 
+    
+        func(e *SVGCIRCLEElement) DATASTAR_FETCH_URL(expression string) *SVGCIRCLEElement{
+                if e.StringAttributes == nil {
+                    e.StringAttributes = treemap.New[string,string]()
+                }
+                
+                key := "data-fetch-url"
+                
+                e.StringAttributes.Set(key, expression)
+                return e
+            }
+
+            func(e *SVGCIRCLEElement) IfDATASTAR_FETCH_URL(condition bool, expression string) *SVGCIRCLEElement{
+                if condition {
+                    e.DATASTAR_FETCH_URL( expression, )
+                }
+                return e
+            }
+
+            // Remove the attribute DATASTAR_FETCH_URL from the element.
+            func(e *SVGCIRCLEElement) DATASTAR_FETCH_URLRemove() *SVGCIRCLEElement{
+                if e.StringAttributes == nil {
+                    return e
+                }
+                e.StringAttributes.Del("data-fetch-url")
+                return e
+            }
+
+        
+
+    // Sets the indicator selector for fetch requests 
+    
+        func(e *SVGCIRCLEElement) DATASTAR_FETCH_INDICATOR(expression string) *SVGCIRCLEElement{
+                if e.StringAttributes == nil {
+                    e.StringAttributes = treemap.New[string,string]()
+                }
+                
+                key := "DatastarFetchIndicator"
+                
+                e.StringAttributes.Set(key, expression)
+                return e
+            }
+
+            func(e *SVGCIRCLEElement) IfDATASTAR_FETCH_INDICATOR(condition bool, expression string) *SVGCIRCLEElement{
+                if condition {
+                    e.DATASTAR_FETCH_INDICATOR( expression, )
+                }
+                return e
+            }
+
+            // Remove the attribute DATASTAR_FETCH_INDICATOR from the element.
+            func(e *SVGCIRCLEElement) DATASTAR_FETCH_INDICATORRemove() *SVGCIRCLEElement{
+                if e.StringAttributes == nil {
+                    return e
+                }
+                e.StringAttributes.Del("DatastarFetchIndicator")
+                return e
+            }
+
+        
+
+    // Sets the visibility of the element 
+    
+        func(e *SVGCIRCLEElement) DATASTAR_SHOWSet(b bool) *SVGCIRCLEElement{
+                key := "data-show"
+                e.BoolAttributes.Set(key, b)
+                return e
+            }
+
+            func(e *SVGCIRCLEElement) DATASTAR_SHOW() *SVGCIRCLEElement{
+                return e.DATASTAR_SHOWSet(true)
+            }
+        
+
+    // Triggers the callback when the element intersects the viewport 
+    
+        func(e *SVGCIRCLEElement) DATASTAR_INTERSECTSSet(b bool) *SVGCIRCLEElement{
+                key := "data-intersects"
+                e.BoolAttributes.Set(key, b)
+                return e
+            }
+
+            func(e *SVGCIRCLEElement) DATASTAR_INTERSECTS() *SVGCIRCLEElement{
+                return e.DATASTAR_INTERSECTSSet(true)
+            }
+        
+
+    // Teleports the element to the given selector 
+    
+        func(e *SVGCIRCLEElement) DATASTAR_TELEPORTSet(b bool) *SVGCIRCLEElement{
+                key := "data-teleport"
+                e.BoolAttributes.Set(key, b)
+                return e
+            }
+
+            func(e *SVGCIRCLEElement) DATASTAR_TELEPORT() *SVGCIRCLEElement{
+                return e.DATASTAR_TELEPORTSet(true)
+            }
+        
+
+    // Scrolls the element into view 
+    
+        func(e *SVGCIRCLEElement) DATASTAR_SCROLL_INTO_VIEWSet(b bool) *SVGCIRCLEElement{
+                key := "data-scroll-into-view"
+                e.BoolAttributes.Set(key, b)
+                return e
+            }
+
+            func(e *SVGCIRCLEElement) DATASTAR_SCROLL_INTO_VIEW() *SVGCIRCLEElement{
+                return e.DATASTAR_SCROLL_INTO_VIEWSet(true)
+            }
+        
+
+    // Setup the ViewTransitionAPI for the element 
+    
+        func(e *SVGCIRCLEElement) DATASTAR_VIEW_TRANSITION(key string, expression string) *SVGCIRCLEElement{
+                if e.StringAttributes == nil {
+                    e.StringAttributes = treemap.New[string,string]()
+                }
+                
+                key = fmt.Sprintf("data-view-transition-%s", key)
+                
+                e.StringAttributes.Set(key, expression)
+                return e
+            }
+
+            func(e *SVGCIRCLEElement) IfDATASTAR_VIEW_TRANSITION(condition bool, key string, expression string) *SVGCIRCLEElement{
+                if condition {
+                    e.DATASTAR_VIEW_TRANSITION(key,  expression, )
+                }
+                return e
+            }
+
+            // Remove the attribute DATASTAR_VIEW_TRANSITION from the element.
+            func(e *SVGCIRCLEElement) DATASTAR_VIEW_TRANSITIONRemove() *SVGCIRCLEElement{
+                if e.StringAttributes == nil {
+                    return e
+                }
+                e.StringAttributes.Del("data-view-transition")
+                return e
+            }
+
+        
+
+
+

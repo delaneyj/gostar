@@ -3,2567 +3,2672 @@
 // Description:
 package elements
 
-import (
-	"fmt"
-
-	"github.com/goccy/go-json"
-	"github.com/igrmk/treemap/v2"
-	"github.com/samber/lo"
+import(
+    "fmt"
+    "time"
+    "github.com/igrmk/treemap/v2"
+    "github.com/goccy/go-json"
+    "github.com/samber/lo"
 )
 
-// The HTML <input> element is used to create interactive controls for web-based
-// forms in order to accept data from the user; a wide variety of types of input
-// data and control widgets are available, depending on the device and user agent.
+// The HTML <input> element is used to create interactive controls for web-based 
+// forms in order to accept data from the user; a wide variety of types of input 
+// data and control widgets are available, depending on the device and user agent. 
 type INPUTElement struct {
-	*Element
+    *Element
 }
 
 // Create a new INPUTElement element.
 // This will create a new element with the tag
 // "input" during rendering.
 func INPUT() *INPUTElement {
-	e := NewElement("input")
-	e.IsSelfClosing = true
+    e := NewElement("input", )
+    e.IsSelfClosing = true
+    
 
-	return &INPUTElement{Element: e}
+    return &INPUTElement{ Element: e }
 }
 
 func (e *INPUTElement) Children(children ...ElementRenderer) *INPUTElement {
-	e.Descendants = append(e.Descendants, children...)
-	return e
+    e.Descendants = append(e.Descendants, children...)
+    return e
 }
 
-func (e *INPUTElement) IfChildren(condition bool, children ...ElementRenderer) *INPUTElement {
-	if condition {
-		e.Descendants = append(e.Descendants, children...)
-	}
-	return e
+func(e *INPUTElement) IfChildren(condition bool, children ...ElementRenderer) *INPUTElement {
+    if condition {
+        e.Descendants = append(e.Descendants, children...)
+    }
+    return e
 }
 
-func (e *INPUTElement) TernChildren(condition bool, trueChildren, falseChildren ElementRenderer) *INPUTElement {
-	if condition {
-		e.Descendants = append(e.Descendants, trueChildren)
-	} else {
-		e.Descendants = append(e.Descendants, falseChildren)
-	}
-	return e
+func(e *INPUTElement) TernChildren(condition bool, trueChildren, falseChildren ElementRenderer) *INPUTElement {
+    if condition {
+        e.Descendants = append(e.Descendants, trueChildren)
+    } else {
+        e.Descendants = append(e.Descendants, falseChildren)
+    }
+    return e
 }
 
 func (e *INPUTElement) Text(text string) *INPUTElement {
-	e.Descendants = append(e.Descendants, Text(text))
-	return e
+    e.Descendants = append(e.Descendants, Text(text))
+    return e
 }
 
 func (e *INPUTElement) TextF(format string, args ...any) *INPUTElement {
-	return e.Text(fmt.Sprintf(format, args...))
+    return e.Text(fmt.Sprintf(format, args...))
 }
 
 func (e *INPUTElement) IfText(condition bool, text string) *INPUTElement {
-	if condition {
-		e.Descendants = append(e.Descendants, Text(text))
-	}
-	return e
+    if condition {
+        e.Descendants = append(e.Descendants, Text(text))
+    }
+    return e
 }
 
 func (e *INPUTElement) IfTextF(condition bool, format string, args ...any) *INPUTElement {
-	if condition {
-		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
-	}
-	return e
+    if condition {
+        e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+    }
+    return e
 }
 
 func (e *INPUTElement) Escaped(text string) *INPUTElement {
-	e.Descendants = append(e.Descendants, Escaped(text))
-	return e
+    e.Descendants = append(e.Descendants, Escaped(text))
+    return e
 }
 
 func (e *INPUTElement) IfEscaped(condition bool, text string) *INPUTElement {
-	if condition {
-		e.Descendants = append(e.Descendants, Escaped(text))
-	}
-	return e
+    if condition {
+        e.Descendants = append(e.Descendants, Escaped(text))
+    }
+    return e
 }
 
 func (e *INPUTElement) EscapedF(format string, args ...any) *INPUTElement {
-	return e.Escaped(fmt.Sprintf(format, args...))
+    return e.Escaped(fmt.Sprintf(format, args...))
 }
 
 func (e *INPUTElement) IfEscapedF(condition bool, format string, args ...any) *INPUTElement {
-	if condition {
-		e.Descendants = append(e.Descendants, EscapedF(format, args...))
-	}
-	return e
+    if condition {
+        e.Descendants = append(e.Descendants, EscapedF(format, args...))
+    }
+    return e
 }
 
 func (e *INPUTElement) CustomData(key, value string) *INPUTElement {
-	if e.CustomDataAttributes == nil {
-		e.CustomDataAttributes = treemap.New[string, string]()
-	}
+    if e.CustomDataAttributes == nil {
+        e.CustomDataAttributes = treemap.New[string,string]()
+    }
 	e.CustomDataAttributes.Set(key, value)
 	return e
 }
 
 func (e *INPUTElement) IfCustomData(condition bool, key, value string) *INPUTElement {
-	if condition {
-		e.CustomData(key, value)
-	}
-	return e
+    if condition {
+        e.CustomData(key, value)
+    }
+    return e
 }
 
 func (e *INPUTElement) CustomDataF(key, format string, args ...any) *INPUTElement {
-	return e.CustomData(key, fmt.Sprintf(format, args...))
+    return e.CustomData(key, fmt.Sprintf(format, args...))
 }
 
 func (e *INPUTElement) IfCustomDataF(condition bool, key, format string, args ...any) *INPUTElement {
-	if condition {
-		e.CustomData(key, fmt.Sprintf(format, args...))
-	}
-	return e
+    if condition {
+        e.CustomData(key, fmt.Sprintf(format, args...))
+    }
+    return e
 }
 
 func (e *INPUTElement) CustomDataRemove(key string) *INPUTElement {
 	if e.CustomDataAttributes == nil {
 		return e
 	}
-	e.CustomDataAttributes.Del(key)
-	return e
-}
-
-// Hint for expected file type in file upload controls.
-func (e *INPUTElement) ACCEPT(s string) *INPUTElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	e.StringAttributes.Set("accept", s)
-	return e
-}
-
-func (e *INPUTElement) IfACCEPT(condition bool, s string) *INPUTElement {
-	if condition {
-		e.ACCEPT(s)
-	}
-	return e
-}
-
-// Remove the attribute ACCEPT from the element.
-func (e *INPUTElement) ACCEPTRemove(s string) *INPUTElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("accept")
-	return e
-}
-
-// Alternative text in case an image can't be displayed.
-func (e *INPUTElement) ALT(s string) *INPUTElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	e.StringAttributes.Set("alt", s)
-	return e
-}
-
-func (e *INPUTElement) IfALT(condition bool, s string) *INPUTElement {
-	if condition {
-		e.ALT(s)
-	}
-	return e
-}
-
-// Remove the attribute ALT from the element.
-func (e *INPUTElement) ALTRemove(s string) *INPUTElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("alt")
-	return e
-}
-
-// Hint for form autofill feature.
-func (e *INPUTElement) AUTOCOMPLETE(c InputAutocompleteChoice) *INPUTElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	e.StringAttributes.Set("autocomplete", string(c))
-	return e
-}
-
-type InputAutocompleteChoice string
-
-const (
-	// The browser is allowed to automatically complete the input
-	// (Default)
-	InputAutocomplete_on InputAutocompleteChoice = "on"
-	// The browser must not automatically complete the input.
-	InputAutocomplete_off InputAutocompleteChoice = "off"
-)
-
-// Remove the attribute AUTOCOMPLETE from the element.
-func (e *INPUTElement) AUTOCOMPLETERemove(c InputAutocompleteChoice) *INPUTElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("autocomplete")
-	return e
-}
-
-// Automatically focus the form control when the page is loaded.
-func (e *INPUTElement) AUTOFOCUS() *INPUTElement {
-	e.AUTOFOCUSSet(true)
-	return e
-}
-
-func (e *INPUTElement) IfAUTOFOCUS(condition bool) *INPUTElement {
-	if condition {
-		e.AUTOFOCUSSet(true)
-	}
-	return e
-}
-
-// Set the attribute AUTOFOCUS to the value b explicitly.
-func (e *INPUTElement) AUTOFOCUSSet(b bool) *INPUTElement {
-	if e.BoolAttributes == nil {
-		e.BoolAttributes = treemap.New[string, bool]()
-	}
-	e.BoolAttributes.Set("autofocus", b)
-	return e
-}
-
-func (e *INPUTElement) IfSetAUTOFOCUS(condition bool, b bool) *INPUTElement {
-	if condition {
-		e.AUTOFOCUSSet(b)
-	}
-	return e
-}
-
-// Remove the attribute AUTOFOCUS from the element.
-func (e *INPUTElement) AUTOFOCUSRemove(b bool) *INPUTElement {
-	if e.BoolAttributes == nil {
-		return e
-	}
-	e.BoolAttributes.Del("autofocus")
-	return e
-}
-
-// Whether the command or control is checked.
-func (e *INPUTElement) CHECKED() *INPUTElement {
-	e.CHECKEDSet(true)
-	return e
-}
-
-func (e *INPUTElement) IfCHECKED(condition bool) *INPUTElement {
-	if condition {
-		e.CHECKEDSet(true)
-	}
-	return e
-}
-
-// Set the attribute CHECKED to the value b explicitly.
-func (e *INPUTElement) CHECKEDSet(b bool) *INPUTElement {
-	if e.BoolAttributes == nil {
-		e.BoolAttributes = treemap.New[string, bool]()
-	}
-	e.BoolAttributes.Set("checked", b)
-	return e
-}
-
-func (e *INPUTElement) IfSetCHECKED(condition bool, b bool) *INPUTElement {
-	if condition {
-		e.CHECKEDSet(b)
-	}
-	return e
-}
-
-// Remove the attribute CHECKED from the element.
-func (e *INPUTElement) CHECKEDRemove(b bool) *INPUTElement {
-	if e.BoolAttributes == nil {
-		return e
-	}
-	e.BoolAttributes.Del("checked")
-	return e
-}
-
-// Name of form field to use for sending the element's directionality in form
-// submission.
-func (e *INPUTElement) DIRNAME(s string) *INPUTElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	e.StringAttributes.Set("dirname", s)
-	return e
-}
-
-func (e *INPUTElement) IfDIRNAME(condition bool, s string) *INPUTElement {
-	if condition {
-		e.DIRNAME(s)
-	}
-	return e
-}
-
-// Remove the attribute DIRNAME from the element.
-func (e *INPUTElement) DIRNAMERemove(s string) *INPUTElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("dirname")
-	return e
-}
-
-// Whether the form control is disabled.
-func (e *INPUTElement) DISABLED() *INPUTElement {
-	e.DISABLEDSet(true)
-	return e
-}
-
-func (e *INPUTElement) IfDISABLED(condition bool) *INPUTElement {
-	if condition {
-		e.DISABLEDSet(true)
-	}
-	return e
-}
-
-// Set the attribute DISABLED to the value b explicitly.
-func (e *INPUTElement) DISABLEDSet(b bool) *INPUTElement {
-	if e.BoolAttributes == nil {
-		e.BoolAttributes = treemap.New[string, bool]()
-	}
-	e.BoolAttributes.Set("disabled", b)
-	return e
-}
-
-func (e *INPUTElement) IfSetDISABLED(condition bool, b bool) *INPUTElement {
-	if condition {
-		e.DISABLEDSet(b)
-	}
-	return e
-}
-
-// Remove the attribute DISABLED from the element.
-func (e *INPUTElement) DISABLEDRemove(b bool) *INPUTElement {
-	if e.BoolAttributes == nil {
-		return e
-	}
-	e.BoolAttributes.Del("disabled")
-	return e
-}
-
-// Associates the control with a form element.
-func (e *INPUTElement) FORM(s string) *INPUTElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	e.StringAttributes.Set("form", s)
-	return e
-}
-
-func (e *INPUTElement) IfFORM(condition bool, s string) *INPUTElement {
-	if condition {
-		e.FORM(s)
-	}
-	return e
-}
-
-// Remove the attribute FORM from the element.
-func (e *INPUTElement) FORMRemove(s string) *INPUTElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("form")
-	return e
-}
-
-// URL to use for form submission.
-func (e *INPUTElement) FORMACTION(s string) *INPUTElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	e.StringAttributes.Set("formaction", s)
-	return e
-}
-
-func (e *INPUTElement) IfFORMACTION(condition bool, s string) *INPUTElement {
-	if condition {
-		e.FORMACTION(s)
-	}
-	return e
-}
-
-// Remove the attribute FORMACTION from the element.
-func (e *INPUTElement) FORMACTIONRemove(s string) *INPUTElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("formaction")
-	return e
-}
-
-// Form data set encoding type to use for form submission.
-func (e *INPUTElement) FORMENCTYPE(c InputFormenctypeChoice) *INPUTElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	e.StringAttributes.Set("formenctype", string(c))
-	return e
-}
-
-type InputFormenctypeChoice string
-
-const (
-	// The default value if the attribute is not specified.
-	InputFormenctype_application_x_www_form_urlencoded InputFormenctypeChoice = "application/x-www-form-urlencoded"
-	// Use this value if you are using an enctype that requires a file upload.
-	InputFormenctype_multipart_form_data InputFormenctypeChoice = "multipart/form-data"
-	// Use this value if you are using a "text/plain" enctype and the form will not
-	// contain any file uploads.
-	InputFormenctype_text_plain InputFormenctypeChoice = "text/plain"
-)
-
-// Remove the attribute FORMENCTYPE from the element.
-func (e *INPUTElement) FORMENCTYPERemove(c InputFormenctypeChoice) *INPUTElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("formenctype")
-	return e
-}
-
-// HTTP method to use for form submission.
-func (e *INPUTElement) FORMMETHOD(c InputFormmethodChoice) *INPUTElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	e.StringAttributes.Set("formmethod", string(c))
-	return e
-}
-
-type InputFormmethodChoice string
-
-const (
-	// The data from the form is included in the body of the HTTP request when sent to
-	// the server.
-	InputFormmethod_post InputFormmethodChoice = "post"
-	// The data from the form are appended to the form attribute URI, with a '?' as a
-	// separator, and the resulting URI is sent to the server
-	// Use this method when the form has no side-effects and contains only ASCII
-	// characters.
-	InputFormmethod_get InputFormmethodChoice = "get"
-	// When the form is inside a <dialog>, closes the dialog on submission.
-	InputFormmethod_dialog InputFormmethodChoice = "dialog"
-)
-
-// Remove the attribute FORMMETHOD from the element.
-func (e *INPUTElement) FORMMETHODRemove(c InputFormmethodChoice) *INPUTElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("formmethod")
-	return e
-}
-
-// Bypass form control validation for form submission.
-func (e *INPUTElement) FORMNOVALIDATE() *INPUTElement {
-	e.FORMNOVALIDATESet(true)
-	return e
-}
-
-func (e *INPUTElement) IfFORMNOVALIDATE(condition bool) *INPUTElement {
-	if condition {
-		e.FORMNOVALIDATESet(true)
-	}
-	return e
-}
-
-// Set the attribute FORMNOVALIDATE to the value b explicitly.
-func (e *INPUTElement) FORMNOVALIDATESet(b bool) *INPUTElement {
-	if e.BoolAttributes == nil {
-		e.BoolAttributes = treemap.New[string, bool]()
-	}
-	e.BoolAttributes.Set("formnovalidate", b)
-	return e
-}
-
-func (e *INPUTElement) IfSetFORMNOVALIDATE(condition bool, b bool) *INPUTElement {
-	if condition {
-		e.FORMNOVALIDATESet(b)
-	}
-	return e
-}
-
-// Remove the attribute FORMNOVALIDATE from the element.
-func (e *INPUTElement) FORMNOVALIDATERemove(b bool) *INPUTElement {
-	if e.BoolAttributes == nil {
-		return e
-	}
-	e.BoolAttributes.Del("formnovalidate")
-	return e
-}
-
-// Browsing context for form submission.
-func (e *INPUTElement) FORMTARGET(c InputFormtargetChoice) *INPUTElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	e.StringAttributes.Set("formtarget", string(c))
-	return e
-}
-
-type InputFormtargetChoice string
-
-const (
-	// Load the response into the same browsing context as the current one
-	// This value is the default if the attribute is not specified.
-	InputFormtarget__self InputFormtargetChoice = "_self"
-	// Load the response into a new unnamed browsing context.
-	InputFormtarget__blank InputFormtargetChoice = "_blank"
-	// Load the response into the parent browsing context of the current one
-	// If there is no parent, this option behaves the same way as _self.
-	InputFormtarget__parent InputFormtargetChoice = "_parent"
-	// Load the response into the top-level browsing context (that is, the browsing
-	// context that is an ancestor of the current one, and has no parent)
-	// If there is no parent, this option behaves the same way as _self.
-	InputFormtarget__top InputFormtargetChoice = "_top"
-)
-
-// Remove the attribute FORMTARGET from the element.
-func (e *INPUTElement) FORMTARGETRemove(c InputFormtargetChoice) *INPUTElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("formtarget")
-	return e
-}
-
-// Height of the image in pixels.
-func (e *INPUTElement) HEIGHT(i int) *INPUTElement {
-	if e.IntAttributes == nil {
-		e.IntAttributes = treemap.New[string, int]()
-	}
-	e.IntAttributes.Set("height", i)
-	return e
-}
-
-func (e *INPUTElement) IfHEIGHT(condition bool, i int) *INPUTElement {
-	if condition {
-		e.HEIGHT(i)
-	}
-	return e
-}
-
-// Remove the attribute HEIGHT from the element.
-func (e *INPUTElement) HEIGHTRemove(i int) *INPUTElement {
-	if e.IntAttributes == nil {
-		return e
-	}
-	e.IntAttributes.Del("height")
-	return e
-}
-
-// Identifies a list of pre-defined options to suggest to the user.
-func (e *INPUTElement) LIST(s string) *INPUTElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	e.StringAttributes.Set("list", s)
-	return e
-}
-
-func (e *INPUTElement) IfLIST(condition bool, s string) *INPUTElement {
-	if condition {
-		e.LIST(s)
-	}
-	return e
-}
-
-// Remove the attribute LIST from the element.
-func (e *INPUTElement) LISTRemove(s string) *INPUTElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("list")
-	return e
-}
-
-// maximum value of an <input> element with type="number" or type="range".
-func (e *INPUTElement) MAX_STR(s string) *INPUTElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	e.StringAttributes.Set("max", s)
-	return e
-}
-
-func (e *INPUTElement) IfMAX_STR(condition bool, s string) *INPUTElement {
-	if condition {
-		e.MAX_STR(s)
-	}
-	return e
-}
-
-// Remove the attribute MAX_STR from the element.
-func (e *INPUTElement) MAX_STRRemove(s string) *INPUTElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("max")
-	return e
-}
-
-// maximum number of characters (as UTF-16 code units) the user can enter into an
-// <input> element
-// This must be an integer value 0 or higher
-// If no maxlength is specified, or an invalid value is specified, the input has
-// no maximum length
-// This value must also be greater than or equal to the value of minlength.
-func (e *INPUTElement) MAXLENGTH(i int) *INPUTElement {
-	if e.IntAttributes == nil {
-		e.IntAttributes = treemap.New[string, int]()
-	}
-	e.IntAttributes.Set("maxlength", i)
-	return e
-}
-
-func (e *INPUTElement) IfMAXLENGTH(condition bool, i int) *INPUTElement {
-	if condition {
-		e.MAXLENGTH(i)
-	}
-	return e
-}
-
-// Remove the attribute MAXLENGTH from the element.
-func (e *INPUTElement) MAXLENGTHRemove(i int) *INPUTElement {
-	if e.IntAttributes == nil {
-		return e
-	}
-	e.IntAttributes.Del("maxlength")
-	return e
-}
-
-// the minimum value of an <input> element with type="number" or type="range".
-func (e *INPUTElement) MIN_STR(s string) *INPUTElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	e.StringAttributes.Set("min", s)
-	return e
-}
-
-func (e *INPUTElement) IfMIN_STR(condition bool, s string) *INPUTElement {
-	if condition {
-		e.MIN_STR(s)
-	}
-	return e
-}
-
-// Remove the attribute MIN_STR from the element.
-func (e *INPUTElement) MIN_STRRemove(s string) *INPUTElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("min")
-	return e
-}
-
-// the minimum number of characters (as UTF-16 code units) the user can enter into
-// an <input> or <textarea> element
-// This must be an integer value 0 or higher
-// If no minlength is specified, or an invalid value is specified, the <input> or
-// <textarea> has no minimum length
-// This value must also be less than or equal to the value of maxlength.
-func (e *INPUTElement) MINLENGTH(i int) *INPUTElement {
-	if e.IntAttributes == nil {
-		e.IntAttributes = treemap.New[string, int]()
-	}
-	e.IntAttributes.Set("minlength", i)
-	return e
-}
-
-func (e *INPUTElement) IfMINLENGTH(condition bool, i int) *INPUTElement {
-	if condition {
-		e.MINLENGTH(i)
-	}
-	return e
-}
-
-// Remove the attribute MINLENGTH from the element.
-func (e *INPUTElement) MINLENGTHRemove(i int) *INPUTElement {
-	if e.IntAttributes == nil {
-		return e
-	}
-	e.IntAttributes.Del("minlength")
-	return e
-}
-
-// Whether to allow multiple values.
-func (e *INPUTElement) MULTIPLE() *INPUTElement {
-	e.MULTIPLESet(true)
-	return e
-}
-
-func (e *INPUTElement) IfMULTIPLE(condition bool) *INPUTElement {
-	if condition {
-		e.MULTIPLESet(true)
-	}
-	return e
-}
-
-// Set the attribute MULTIPLE to the value b explicitly.
-func (e *INPUTElement) MULTIPLESet(b bool) *INPUTElement {
-	if e.BoolAttributes == nil {
-		e.BoolAttributes = treemap.New[string, bool]()
-	}
-	e.BoolAttributes.Set("multiple", b)
-	return e
-}
-
-func (e *INPUTElement) IfSetMULTIPLE(condition bool, b bool) *INPUTElement {
-	if condition {
-		e.MULTIPLESet(b)
-	}
-	return e
-}
-
-// Remove the attribute MULTIPLE from the element.
-func (e *INPUTElement) MULTIPLERemove(b bool) *INPUTElement {
-	if e.BoolAttributes == nil {
-		return e
-	}
-	e.BoolAttributes.Del("multiple")
-	return e
-}
-
-// Name of the element to use for form submission and in the form.elements API.
-func (e *INPUTElement) NAME(s string) *INPUTElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	e.StringAttributes.Set("name", s)
-	return e
-}
-
-func (e *INPUTElement) IfNAME(condition bool, s string) *INPUTElement {
-	if condition {
-		e.NAME(s)
-	}
-	return e
-}
-
-// Remove the attribute NAME from the element.
-func (e *INPUTElement) NAMERemove(s string) *INPUTElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("name")
-	return e
-}
-
-// Pattern to be matched by the form control's value.
-func (e *INPUTElement) PATTERN(s string) *INPUTElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	e.StringAttributes.Set("pattern", s)
-	return e
-}
-
-func (e *INPUTElement) IfPATTERN(condition bool, s string) *INPUTElement {
-	if condition {
-		e.PATTERN(s)
-	}
-	return e
-}
-
-// Remove the attribute PATTERN from the element.
-func (e *INPUTElement) PATTERNRemove(s string) *INPUTElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("pattern")
-	return e
-}
-
-// User-visible label to be placed within the form control.
-func (e *INPUTElement) PLACEHOLDER(s string) *INPUTElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	e.StringAttributes.Set("placeholder", s)
-	return e
-}
-
-func (e *INPUTElement) IfPLACEHOLDER(condition bool, s string) *INPUTElement {
-	if condition {
-		e.PLACEHOLDER(s)
-	}
-	return e
-}
-
-// Remove the attribute PLACEHOLDER from the element.
-func (e *INPUTElement) PLACEHOLDERRemove(s string) *INPUTElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("placeholder")
-	return e
-}
-
-// Whether to allow the value to be edited by the user.
-func (e *INPUTElement) READONLY() *INPUTElement {
-	e.READONLYSet(true)
-	return e
-}
-
-func (e *INPUTElement) IfREADONLY(condition bool) *INPUTElement {
-	if condition {
-		e.READONLYSet(true)
-	}
-	return e
-}
-
-// Set the attribute READONLY to the value b explicitly.
-func (e *INPUTElement) READONLYSet(b bool) *INPUTElement {
-	if e.BoolAttributes == nil {
-		e.BoolAttributes = treemap.New[string, bool]()
-	}
-	e.BoolAttributes.Set("readonly", b)
-	return e
-}
-
-func (e *INPUTElement) IfSetREADONLY(condition bool, b bool) *INPUTElement {
-	if condition {
-		e.READONLYSet(b)
-	}
-	return e
-}
-
-// Remove the attribute READONLY from the element.
-func (e *INPUTElement) READONLYRemove(b bool) *INPUTElement {
-	if e.BoolAttributes == nil {
-		return e
-	}
-	e.BoolAttributes.Del("readonly")
-	return e
-}
-
-// Whether the control is required for form submission.
-func (e *INPUTElement) REQUIRED() *INPUTElement {
-	e.REQUIREDSet(true)
-	return e
-}
-
-func (e *INPUTElement) IfREQUIRED(condition bool) *INPUTElement {
-	if condition {
-		e.REQUIREDSet(true)
-	}
-	return e
-}
-
-// Set the attribute REQUIRED to the value b explicitly.
-func (e *INPUTElement) REQUIREDSet(b bool) *INPUTElement {
-	if e.BoolAttributes == nil {
-		e.BoolAttributes = treemap.New[string, bool]()
-	}
-	e.BoolAttributes.Set("required", b)
-	return e
-}
-
-func (e *INPUTElement) IfSetREQUIRED(condition bool, b bool) *INPUTElement {
-	if condition {
-		e.REQUIREDSet(b)
-	}
-	return e
-}
-
-// Remove the attribute REQUIRED from the element.
-func (e *INPUTElement) REQUIREDRemove(b bool) *INPUTElement {
-	if e.BoolAttributes == nil {
-		return e
-	}
-	e.BoolAttributes.Del("required")
-	return e
-}
-
-// Size of the control.
-func (e *INPUTElement) SIZE(i int) *INPUTElement {
-	if e.IntAttributes == nil {
-		e.IntAttributes = treemap.New[string, int]()
-	}
-	e.IntAttributes.Set("size", i)
-	return e
-}
-
-func (e *INPUTElement) IfSIZE(condition bool, i int) *INPUTElement {
-	if condition {
-		e.SIZE(i)
-	}
-	return e
-}
-
-// Remove the attribute SIZE from the element.
-func (e *INPUTElement) SIZERemove(i int) *INPUTElement {
-	if e.IntAttributes == nil {
-		return e
-	}
-	e.IntAttributes.Del("size")
-	return e
-}
-
-// Address of the resource.
-func (e *INPUTElement) SRC(s string) *INPUTElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	e.StringAttributes.Set("src", s)
-	return e
-}
-
-func (e *INPUTElement) IfSRC(condition bool, s string) *INPUTElement {
-	if condition {
-		e.SRC(s)
-	}
-	return e
-}
-
-// Remove the attribute SRC from the element.
-func (e *INPUTElement) SRCRemove(s string) *INPUTElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("src")
-	return e
-}
-
-// Granularity to be matched by the form control's value.
-func (e *INPUTElement) STEP(s string) *INPUTElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	e.StringAttributes.Set("step", s)
-	return e
-}
-
-func (e *INPUTElement) IfSTEP(condition bool, s string) *INPUTElement {
-	if condition {
-		e.STEP(s)
-	}
-	return e
-}
-
-// Remove the attribute STEP from the element.
-func (e *INPUTElement) STEPRemove(s string) *INPUTElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("step")
-	return e
-}
-
-// Type of form control.
-func (e *INPUTElement) TYPE(c InputTypeChoice) *INPUTElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	e.StringAttributes.Set("type", string(c))
-	return e
-}
-
-type InputTypeChoice string
-
-const (
-	// A push button with no default behavior.
-	InputType_button InputTypeChoice = "button"
-	// A check box allowing single values to be selected/deselected.
-	InputType_checkbox InputTypeChoice = "checkbox"
-	// A control for specifying a color
-	// A color picker's UI has no required features other than accepting simple colors
-	// as text (more info).
-	InputType_color InputTypeChoice = "color"
-	// A control for entering a date (year, month, and day, with no time).
-	InputType_date InputTypeChoice = "date"
-	// A control for entering a date and time, with no time zone.
-	InputType_datetime_local InputTypeChoice = "datetime-local"
-	// A field for editing an e-mail address.
-	InputType_email InputTypeChoice = "email"
-	// A control that lets the user select a file
-	// Use the accept attribute to define the types of files that the control can
-	// select.
-	InputType_file InputTypeChoice = "file"
-	// A control that is not displayed but whose value is submitted to the server.
-	InputType_hidden InputTypeChoice = "hidden"
-	// A graphical submit button
-	// You must use the src attribute to define the source of the image and the alt
-	// attribute to define alternative text.
-	InputType_image InputTypeChoice = "image"
-	// A control for entering a month and year, with no time zone.
-	InputType_month InputTypeChoice = "month"
-	// A control for entering a number.
-	InputType_number InputTypeChoice = "number"
-	// A single-line text field whose value is obscured
-	// Use the maxlength and minlength attributes to specify the maximum length of the
-	// value that can be entered.
-	InputType_password InputTypeChoice = "password"
-	// A radio button, allowing a single value to be selected out of multiple choices
-	// with the same name value.
-	InputType_radio InputTypeChoice = "radio"
-	// A control for entering a number whose exact value is not important.
-	InputType_range InputTypeChoice = "range"
-	// A button that resets the contents of the form to default values.
-	InputType_reset InputTypeChoice = "reset"
-	// A single-line text field for entering search strings
-	// Line-breaks are automatically removed from the input value.
-	InputType_search InputTypeChoice = "search"
-	// A button that submits the form.
-	InputType_submit InputTypeChoice = "submit"
-	// A control for entering a telephone number.
-	InputType_tel InputTypeChoice = "tel"
-	// A single-line text field
-	// Line-breaks are automatically removed from the input value.
-	InputType_text InputTypeChoice = "text"
-	// A control for entering a time value with no time zone.
-	InputType_time InputTypeChoice = "time"
-	// A field for entering a URL.
-	InputType_url InputTypeChoice = "url"
-	// A control for entering a date consisting of a week-year number and a week
-	// number with no time zone.
-	InputType_week InputTypeChoice = "week"
-)
-
-// Remove the attribute TYPE from the element.
-func (e *INPUTElement) TYPERemove(c InputTypeChoice) *INPUTElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("type")
-	return e
-}
-
-// Value of the form control.
-func (e *INPUTElement) VALUE(s string) *INPUTElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	e.StringAttributes.Set("value", s)
-	return e
-}
-
-func (e *INPUTElement) IfVALUE(condition bool, s string) *INPUTElement {
-	if condition {
-		e.VALUE(s)
-	}
-	return e
-}
-
-// Remove the attribute VALUE from the element.
-func (e *INPUTElement) VALUERemove(s string) *INPUTElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("value")
-	return e
-}
-
-// Width of the image in pixels.
-func (e *INPUTElement) WIDTH(i int) *INPUTElement {
-	if e.IntAttributes == nil {
-		e.IntAttributes = treemap.New[string, int]()
-	}
-	e.IntAttributes.Set("width", i)
-	return e
-}
-
-func (e *INPUTElement) IfWIDTH(condition bool, i int) *INPUTElement {
-	if condition {
-		e.WIDTH(i)
-	}
-	return e
-}
-
-// Remove the attribute WIDTH from the element.
-func (e *INPUTElement) WIDTHRemove(i int) *INPUTElement {
-	if e.IntAttributes == nil {
-		return e
-	}
-	e.IntAttributes.Del("width")
-	return e
-}
-
-// The accesskey global attribute provides a hint for generating a keyboard
-// shortcut for the current element
-// The attribute value must consist of a single printable character (which
-// includes accented and other characters that can be generated by the keyboard).
-func (e *INPUTElement) ACCESSKEY(r rune) *INPUTElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	e.StringAttributes.Set("accesskey", string(r))
-	return e
-}
-
-func (e *INPUTElement) IfACCESSKEY(condition bool, r rune) *INPUTElement {
-	if condition {
-		e.ACCESSKEY(r)
-	}
-	return e
-}
-
-// Remove the attribute ACCESSKEY from the element.
-func (e *INPUTElement) ACCESSKEYRemove() *INPUTElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("accesskey")
-	return e
-}
-
-// The autocapitalize global attribute is an enumerated attribute that controls
-// whether and how text input is automatically capitalized as it is entered/edited
-// by the user
-// autocapitalize can be set on <input> and <textarea> elements, and on their
-// containing <form> elements
-// When autocapitalize is set on a <form> element, it sets the autocapitalize
-// behavior for all contained <input>s and <textarea>s, overriding any
-// autocapitalize values set on contained elements
-// autocapitalize has no effect on the url, email, or password <input> types,
-// where autocapitalization is never enabled
-// Where autocapitalize is not specified, the adopted default behavior varies
-// between browsers
-// For example: Chrome and Safari default to on/sentences Firefox defaults to
-// off/none.
-func (e *INPUTElement) AUTOCAPITALIZE(c InputAutocapitalizeChoice) *INPUTElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	e.StringAttributes.Set("autocapitalize", string(c))
-	return e
-}
-
-type InputAutocapitalizeChoice string
-
-const (
-	// Do not automatically capitalize any text.
-	InputAutocapitalize_off InputAutocapitalizeChoice = "off"
-	// Do not automatically capitalize any text.
-	InputAutocapitalize_none InputAutocapitalizeChoice = "none"
-	// Automatically capitalize the first character of each sentence.
-	InputAutocapitalize_sentences InputAutocapitalizeChoice = "sentences"
-	// Automatically capitalize the first character of each sentence.
-	InputAutocapitalize_on InputAutocapitalizeChoice = "on"
-	// Automatically capitalize the first character of each word.
-	InputAutocapitalize_words InputAutocapitalizeChoice = "words"
-	// Automatically capitalize all characters.
-	InputAutocapitalize_characters InputAutocapitalizeChoice = "characters"
-)
-
-// Remove the attribute AUTOCAPITALIZE from the element.
-func (e *INPUTElement) AUTOCAPITALIZERemove(c InputAutocapitalizeChoice) *INPUTElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("autocapitalize")
-	return e
-}
-
-// The class global attribute is a space-separated list of the case-sensitive
-// classes of the element
-// Classes allow CSS and JavaScript to select and access specific elements via the
-// class selectors or functions like the DOM method
-// document.getElementsByClassName.
-func (e *INPUTElement) CLASS(s ...string) *INPUTElement {
-	if e.DelimitedStrings == nil {
-		e.DelimitedStrings = treemap.New[string, *DelimitedBuilder[string]]()
-	}
-	ds, ok := e.DelimitedStrings.Get("class")
-	if !ok {
-		ds = NewDelimitedBuilder[string](" ")
-		e.DelimitedStrings.Set("class", ds)
-	}
-	ds.Add(s...)
-	return e
-}
-
-func (e *INPUTElement) IfCLASS(condition bool, s ...string) *INPUTElement {
-	if condition {
-		e.CLASS(s...)
-	}
-	return e
-}
-
-// Remove the attribute CLASS from the element.
-func (e *INPUTElement) CLASSRemove(s ...string) *INPUTElement {
-	if e.DelimitedStrings == nil {
-		return e
-	}
-	ds, ok := e.DelimitedStrings.Get("class")
-	if !ok {
-		return e
-	}
-	ds.Remove(s...)
-	return e
-}
-
-// The contenteditable global attribute is an enumerated attribute indicating if
-// the element should be editable by the user
-// If so, the browser modifies its widget to allow editing.
-func (e *INPUTElement) CONTENTEDITABLE(c InputContenteditableChoice) *INPUTElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	e.StringAttributes.Set("contenteditable", string(c))
-	return e
-}
-
-type InputContenteditableChoice string
-
-const (
-	// The element is editable.
-	InputContenteditable_empty InputContenteditableChoice = ""
-	// The element is editable.
-	InputContenteditable_true InputContenteditableChoice = "true"
-	// The element is not editable.
-	InputContenteditable_false InputContenteditableChoice = "false"
-	// which indicates that the element's raw text is editable, but rich text
-	// formatting is disabled.
-	InputContenteditable_plaintext_only InputContenteditableChoice = "plaintext-only"
-)
-
-// Remove the attribute CONTENTEDITABLE from the element.
-func (e *INPUTElement) CONTENTEDITABLERemove(c InputContenteditableChoice) *INPUTElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("contenteditable")
-	return e
-}
-
-// The dir global attribute is an enumerated attribute that indicates the
-// directionality of the element's text
-// Note: This attribute is mandatory for the <bdo> element where it has a
-// different semantic meaning
-// This attribute is not inherited by the <bdi> element
-// If not set, its value is auto
-// This attribute can be overridden by the CSS properties direction and
-// unicode-bidi, if a CSS page is active and the element supports these properties
-// As the directionality of the text is semantically related to its content and
-// not to its presentation, it is recommended that web developers use this
-// attribute instead of the related CSS properties when possible
-// That way, the text will display correctly even on a browser that doesn't
-// support CSS or has the CSS deactivated
-// The auto value should be used for data with an unknown directionality, like
-// data coming from user input, eventually stored in a database.
-func (e *INPUTElement) DIR(c InputDirChoice) *INPUTElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	e.StringAttributes.Set("dir", string(c))
-	return e
-}
-
-type InputDirChoice string
-
-const (
-	// which means left to right and is to be used for languages that are written from
-	// the left to the right (like English);
-	InputDir_ltr InputDirChoice = "ltr"
-	// which means right to left and is to be used for languages that are written from
-	// the right to the left (like Arabic);
-	InputDir_rtl InputDirChoice = "rtl"
-	// which lets the user agent decide
-	// It uses a basic algorithm as it parses the characters inside the element until
-	// it finds a character with a strong directionality, then it applies that
-	// directionality to the whole element.
-	InputDir_auto InputDirChoice = "auto"
-)
-
-// Remove the attribute DIR from the element.
-func (e *INPUTElement) DIRRemove(c InputDirChoice) *INPUTElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("dir")
-	return e
-}
-
-// The draggable global attribute is an enumerated attribute that indicates
-// whether the element can be dragged, either with native browser behavior or the
-// HTML Drag and Drop API.
-func (e *INPUTElement) DRAGGABLE(c InputDraggableChoice) *INPUTElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	e.StringAttributes.Set("draggable", string(c))
-	return e
-}
-
-type InputDraggableChoice string
-
-const (
-	// The element is draggable.
-	InputDraggable_true InputDraggableChoice = "true"
-	// The element is not draggable.
-	InputDraggable_false InputDraggableChoice = "false"
-	// drag behavior is the default browser behavior: only text selections, images,
-	// and links can be dragged
-	// For other elements, the event ondragstart must be set for drag and drop to work
-	InputDraggable_empty InputDraggableChoice = ""
-	// drag behavior is the default browser behavior: only text selections, images,
-	// and links can be dragged
-	// For other elements, the event ondragstart must be set for drag and drop to work
-	InputDraggable_auto InputDraggableChoice = "auto"
-)
-
-// Remove the attribute DRAGGABLE from the element.
-func (e *INPUTElement) DRAGGABLERemove(c InputDraggableChoice) *INPUTElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("draggable")
-	return e
-}
-
-// The enterkeyhint global attribute is an enumerated attribute defining what
-// action label (or icon) to present for the enter key on virtual keyboards.
-func (e *INPUTElement) ENTERKEYHINT(c InputEnterkeyhintChoice) *INPUTElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	e.StringAttributes.Set("enterkeyhint", string(c))
-	return e
-}
-
-type InputEnterkeyhintChoice string
-
-const (
-	// Typically inserting a new line.
-	InputEnterkeyhint_enter InputEnterkeyhintChoice = "enter"
-	// Typically meaning there is nothing more to input and the input method editor
-	// (IME) will be closed.
-	InputEnterkeyhint_done InputEnterkeyhintChoice = "done"
-	// Typically meaning to take the user to the target of the text they typed.
-	InputEnterkeyhint_go InputEnterkeyhintChoice = "go"
-	// Typically meaning to take the user to the next field that will accept text.
-	InputEnterkeyhint_next InputEnterkeyhintChoice = "next"
-	// Typically meaning to take the user to the previous field that will accept text.
-	InputEnterkeyhint_previous InputEnterkeyhintChoice = "previous"
-	// Typically taking the user to the results of searching for the text they have
-	// typed.
-	InputEnterkeyhint_search InputEnterkeyhintChoice = "search"
-	// Typically delivering the text to its target.
-	InputEnterkeyhint_send InputEnterkeyhintChoice = "send"
-)
-
-// Remove the attribute ENTERKEYHINT from the element.
-func (e *INPUTElement) ENTERKEYHINTRemove(c InputEnterkeyhintChoice) *INPUTElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("enterkeyhint")
-	return e
-}
-
-// The exportparts global attribute allows you to select and style elements
-// existing in nested shadow trees, by exporting their part names
-// The shadow tree is an isolated structure where identifiers, classes, and styles
-// cannot be reached by selectors or queries belonging to a regular DOM
-// To apply a style to an element living in a shadow tree, by CSS rule created
-// outside of it, part global attribute has to be used
-// It has to be assigned to an element present in Shadow Tree, and its value
-// should be some identifier
-// Rules present outside of the shadow tree, must use the ::part pseudo-element,
-// containing the same identifier as the argument
-// The global attribute part makes the element visible on just a single level of
-// depth
-// When the shadow tree is nested, parts will be visible only to the parent of the
-// shadow tree but not to its ancestor
-// Exporting parts further down is exactly what exportparts attribute is for
-// Attribute exportparts must be placed on a shadow Host, which is the element to
-// which the shadow tree is attached
-// The value of the attribute should be a comma-separated list of part names
-// present in the shadow tree and which should be made available via a DOM outside
-// of the current structure.
-func (e *INPUTElement) EXPORTPARTS(s ...string) *INPUTElement {
-	if e.DelimitedStrings == nil {
-		e.DelimitedStrings = treemap.New[string, *DelimitedBuilder[string]]()
-	}
-	ds, ok := e.DelimitedStrings.Get("exportparts")
-	if !ok {
-		ds = NewDelimitedBuilder[string](",")
-		e.DelimitedStrings.Set("exportparts", ds)
-	}
-	ds.Add(s...)
-	return e
-}
-
-func (e *INPUTElement) IfEXPORTPARTS(condition bool, s ...string) *INPUTElement {
-	if condition {
-		e.EXPORTPARTS(s...)
-	}
-	return e
-}
-
-// Remove the attribute EXPORTPARTS from the element.
-func (e *INPUTElement) EXPORTPARTSRemove(s ...string) *INPUTElement {
-	if e.DelimitedStrings == nil {
-		return e
-	}
-	ds, ok := e.DelimitedStrings.Get("exportparts")
-	if !ok {
-		return e
-	}
-	ds.Remove(s...)
-	return e
-}
-
-// The hidden global attribute is a Boolean attribute indicating that the element
-// is not yet, or is no longer, relevant
-// For example, it can be used to hide elements of the page that can't be used
-// until the login process has been completed
-// Note that browsers typically implement hidden until found using
-// content-visibility: hidden
-// This means that unlike elements in the hidden state, elements in the hidden
-// until found state will have generated boxes, meaning that: the element will
-// participate in page layout margin, borders, padding, and background for the
-// element will be rendered
-// Also, the element needs to be affected by layout containment in order to be
-// revealed
-// This means that if the element in the hidden until found state has a display
-// value of none, contents, or inline, then the element will not be revealed by
-// find in page or fragment navigation.
-func (e *INPUTElement) HIDDEN(c InputHiddenChoice) *INPUTElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	e.StringAttributes.Set("hidden", string(c))
-	return e
-}
-
-type InputHiddenChoice string
-
-const (
-	// set the element to the hidden state
-	// Additionally, invalid values set the element to the hidden state.
-	InputHidden_empty InputHiddenChoice = ""
-	// set the element to the hidden state
-	// Additionally, invalid values set the element to the hidden state.
-	InputHidden_hidden InputHiddenChoice = "hidden"
-	// the element is hidden but its content will be accessible to the browser's "find
-	// in page" feature or to fragment navigation
-	// When these features cause a scroll to an element in a hidden until found
-	// subtree, the browser will fire a beforematch event on the hidden element remove
-	// the hidden attribute from the element scroll to the element
-	//
-	InputHidden_until_found InputHiddenChoice = "until-found"
-)
-
-// Remove the attribute HIDDEN from the element.
-func (e *INPUTElement) HIDDENRemove(c InputHiddenChoice) *INPUTElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("hidden")
-	return e
-}
-
-// The id global attribute defines a unique identifier (ID) which must be unique
-// in the whole document
-// Its purpose is to identify the element when linking (using a fragment
-// identifier), scripting, or styling (with CSS).
-func (e *INPUTElement) ID(s string) *INPUTElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	e.StringAttributes.Set("id", s)
-	return e
-}
-
-func (e *INPUTElement) IfID(condition bool, s string) *INPUTElement {
-	if condition {
-		e.ID(s)
-	}
-	return e
-}
-
-// Remove the attribute ID from the element.
-func (e *INPUTElement) IDRemove(s string) *INPUTElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("id")
-	return e
-}
-
-// The inert global attribute is a Boolean attribute indicating that the browser
-// will ignore the element
-// With the inert attribute, all of the element's flat tree descendants (such as
-// modal <dialog>s) that don't otherwise escape inertness are ignored
-// The inert attribute also makes the browser ignore input events sent by the
-// user, including focus-related events and events from assistive technologies
-// Specifically, inert does the following: Prevents the click event from being
-// fired when the user clicks on the element
-// Prevents the focus event from being raised by preventing the element from
-// gaining focus
-// Hides the element and its content from assistive technologies by excluding them
-// from the accessibility tree.
-func (e *INPUTElement) INERT() *INPUTElement {
-	e.INERTSet(true)
-	return e
-}
-
-func (e *INPUTElement) IfINERT(condition bool) *INPUTElement {
-	if condition {
-		e.INERTSet(true)
-	}
-	return e
-}
-
-// Set the attribute INERT to the value b explicitly.
-func (e *INPUTElement) INERTSet(b bool) *INPUTElement {
-	if e.BoolAttributes == nil {
-		e.BoolAttributes = treemap.New[string, bool]()
-	}
-	e.BoolAttributes.Set("inert", b)
-	return e
-}
-
-func (e *INPUTElement) IfSetINERT(condition bool, b bool) *INPUTElement {
-	if condition {
-		e.INERTSet(b)
-	}
-	return e
-}
-
-// Remove the attribute INERT from the element.
-func (e *INPUTElement) INERTRemove(b bool) *INPUTElement {
-	if e.BoolAttributes == nil {
-		return e
-	}
-	e.BoolAttributes.Del("inert")
-	return e
-}
-
-// The inputmode global attribute is an enumerated attribute that hints at the
-// type of data that might be entered by the user while editing the element or its
-// contents
-// This allows a browser to display an appropriate virtual keyboard
-// It is used primarily on <input> elements, but is usable on any element in
-// contenteditable mode
-// It's important to understand that the inputmode attribute doesn't cause any
-// validity requirements to be enforced on input
-// To require that input conforms to a particular data type, choose an appropriate
-// <input> element type
-// For specific guidance on choosing <input> types, see the Values section.
-func (e *INPUTElement) INPUTMODE(c InputInputmodeChoice) *INPUTElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	e.StringAttributes.Set("inputmode", string(c))
-	return e
-}
-
-type InputInputmodeChoice string
-
-const (
-	// No virtual keyboard
-	// For when the page implements its own keyboard input control.
-	InputInputmode_none InputInputmodeChoice = "none"
-	// Standard input keyboard for the user's current locale.
-	InputInputmode_empty InputInputmodeChoice = ""
-	// Standard input keyboard for the user's current locale.
-	InputInputmode_text InputInputmodeChoice = "text"
-	// Fractional numeric input keyboard containing the digits and decimal separator
-	// for the user's locale (typically
-	// or ,)
-	// Devices may or may not show a minus key (-).
-	InputInputmode_decimal InputInputmodeChoice = "decimal"
-	// Numeric input keyboard, but only requires the digits 0–9
-	// Devices may or may not show a minus key.
-	InputInputmode_numeric InputInputmodeChoice = "numeric"
-	// A telephone keypad input, including the digits 0–9, the asterisk (*), and the
-	// pound (#) key
-	// Inputs that *require* a telephone number should typically use <input
-	// type="tel"> instead.
-	InputInputmode_tel InputInputmodeChoice = "tel"
-	// A virtual keyboard optimized for search input
-	// For instance, the return/submit key may be labeled "Search", along with
-	// possible other optimizations
-	// Inputs that require a search query should typically use <input type="search">
-	// instead.
-	InputInputmode_search InputInputmodeChoice = "search"
-	// A virtual keyboard optimized for entering email addresses
-	// Typically includes the @character as well as other optimizations
-	// Inputs that require email addresses should typically use <input type="email">
-	// instead.
-	InputInputmode_email InputInputmodeChoice = "email"
-	// A keypad optimized for entering URLs
-	// This may have the / key more prominent, for example
-	// Enhanced features could include history access and so on
-	// Inputs that require a URL should typically use <input type="url"> instead.
-	InputInputmode_url InputInputmodeChoice = "url"
-)
-
-// Remove the attribute INPUTMODE from the element.
-func (e *INPUTElement) INPUTMODERemove(c InputInputmodeChoice) *INPUTElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("inputmode")
-	return e
-}
-
-// The is global attribute allows you to specify that a standard HTML element
-// should behave like a defined custom built-in element (see Using custom elements
-// for more details)
-// This attribute can only be used if the specified custom element name has been
-// successfully defined in the current document, and extends the element type it
-// is being applied to.
-func (e *INPUTElement) IS(s string) *INPUTElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	e.StringAttributes.Set("is", s)
-	return e
-}
-
-func (e *INPUTElement) IfIS(condition bool, s string) *INPUTElement {
-	if condition {
-		e.IS(s)
-	}
-	return e
-}
-
-// Remove the attribute IS from the element.
-func (e *INPUTElement) ISRemove(s string) *INPUTElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("is")
-	return e
-}
-
-// The itemid global attribute provides microdata in the form of a unique, global
-// identifier of an item.
-//
-//	An itemid attribute can only be specified for an element that has both
-//
-// itemscope and itemtype attributes
-// Also, itemid can only be specified on elements that possess an itemscope
-// attribute whose corresponding itemtype refers to or defines a vocabulary that
-// supports global identifiers
-// The exact meaning of an itemtype's global identifier is provided by the
-// definition of that identifier within the specified vocabulary
-// The vocabulary defines whether several items with the same global identifier
-// can coexist and, if so, how items with the same identifier are handled.
-func (e *INPUTElement) ITEMID(s string) *INPUTElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	e.StringAttributes.Set("itemid", s)
-	return e
-}
-
-func (e *INPUTElement) IfITEMID(condition bool, s string) *INPUTElement {
-	if condition {
-		e.ITEMID(s)
-	}
-	return e
-}
-
-// Remove the attribute ITEMID from the element.
-func (e *INPUTElement) ITEMIDRemove(s string) *INPUTElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("itemid")
-	return e
-}
-
-// The itemprop global attribute is used to add properties to an item
-// Every HTML element can have an itemprop attribute specified, and an itemprop
-// consists of a name-value pair
-// Each name-value pair is called a property, and a group of one or more
-// properties forms an item
-// Property values are either a string or a URL and can be associated with a very
-// wide range of elements including <audio>, <embed>, <iframe>, <img>, <link>,
-// <object>, <source>, <track>, and <video>.
-func (e *INPUTElement) ITEMPROP(s string) *INPUTElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	e.StringAttributes.Set("itemprop", s)
-	return e
-}
-
-func (e *INPUTElement) IfITEMPROP(condition bool, s string) *INPUTElement {
-	if condition {
-		e.ITEMPROP(s)
-	}
-	return e
-}
-
-// Remove the attribute ITEMPROP from the element.
-func (e *INPUTElement) ITEMPROPRemove(s string) *INPUTElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("itemprop")
-	return e
-}
-
-// Properties that are not descendants of an element with the itemscope attribute
-// can be associated with an item using the global attribute itemref
-// itemref provides a list of element IDs (not itemids) elsewhere in the document,
-// with additional properties The itemref attribute can only be specified on
-// elements that have an itemscope attribute specified.
-func (e *INPUTElement) ITEMREF(s string) *INPUTElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	e.StringAttributes.Set("itemref", s)
-	return e
-}
-
-func (e *INPUTElement) IfITEMREF(condition bool, s string) *INPUTElement {
-	if condition {
-		e.ITEMREF(s)
-	}
-	return e
-}
-
-// Remove the attribute ITEMREF from the element.
-func (e *INPUTElement) ITEMREFRemove(s string) *INPUTElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("itemref")
-	return e
-}
-
-// The itemscope global attribute is used to add an item to a microdata DOM tree
-// Every HTML element can have an itemscope attribute specified, and an itemscope
-// consists of a name-value pair
-// Each name-value pair is called a property, and a group of one or more
-// properties forms an item
-// Property values are either a string or a URL and can be associated with a very
-// wide range of elements including <audio>, <embed>, <iframe>, <img>, <link>,
-// <object>, <source>, <track>, and <video>.
-func (e *INPUTElement) ITEMSCOPE() *INPUTElement {
-	e.ITEMSCOPESet(true)
-	return e
-}
-
-func (e *INPUTElement) IfITEMSCOPE(condition bool) *INPUTElement {
-	if condition {
-		e.ITEMSCOPESet(true)
-	}
-	return e
-}
-
-// Set the attribute ITEMSCOPE to the value b explicitly.
-func (e *INPUTElement) ITEMSCOPESet(b bool) *INPUTElement {
-	if e.BoolAttributes == nil {
-		e.BoolAttributes = treemap.New[string, bool]()
-	}
-	e.BoolAttributes.Set("itemscope", b)
-	return e
-}
-
-func (e *INPUTElement) IfSetITEMSCOPE(condition bool, b bool) *INPUTElement {
-	if condition {
-		e.ITEMSCOPESet(b)
-	}
-	return e
-}
-
-// Remove the attribute ITEMSCOPE from the element.
-func (e *INPUTElement) ITEMSCOPERemove(b bool) *INPUTElement {
-	if e.BoolAttributes == nil {
-		return e
-	}
-	e.BoolAttributes.Del("itemscope")
-	return e
-}
-
-// The itemtype global attribute is used to add types to an item
-// Every HTML element can have an itemtype attribute specified, and an itemtype
-// consists of a name-value pair
-// Each name-value pair is called a property, and a group of one or more
-// properties forms an item
-// Property values are either a string or a URL and can be associated with a very
-// wide range of elements including <audio>, <embed>, <iframe>, <img>, <link>,
-// <object>, <source>, <track>, and <video>.
-func (e *INPUTElement) ITEMTYPE(s string) *INPUTElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	e.StringAttributes.Set("itemtype", s)
-	return e
-}
-
-func (e *INPUTElement) IfITEMTYPE(condition bool, s string) *INPUTElement {
-	if condition {
-		e.ITEMTYPE(s)
-	}
-	return e
-}
-
-// Remove the attribute ITEMTYPE from the element.
-func (e *INPUTElement) ITEMTYPERemove(s string) *INPUTElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("itemtype")
-	return e
-}
-
-// The lang global attribute helps define the language of an element: the language
-// that non-editable elements are written in or the language that editable
-// elements should be written in by the user
-// The tag contains one single entry value in the format defines in the Tags for
-// Identifying Languages (BCP47) IETF document
-// xml:lang has priority over it.
-func (e *INPUTElement) LANG(s string) *INPUTElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	e.StringAttributes.Set("lang", s)
-	return e
-}
-
-func (e *INPUTElement) IfLANG(condition bool, s string) *INPUTElement {
-	if condition {
-		e.LANG(s)
-	}
-	return e
-}
-
-// Remove the attribute LANG from the element.
-func (e *INPUTElement) LANGRemove(s string) *INPUTElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("lang")
-	return e
-}
-
-// The nonce global attribute is a unique identifier used to declare inline
-// scripts and style elements to be used in a specific document
-// It is a cryptographic nonce (number used once) that is used by Content Security
-// Policy to determine whether or not a given inline script is allowed to execute.
-func (e *INPUTElement) NONCE(s string) *INPUTElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	e.StringAttributes.Set("nonce", s)
-	return e
-}
-
-func (e *INPUTElement) IfNONCE(condition bool, s string) *INPUTElement {
-	if condition {
-		e.NONCE(s)
-	}
-	return e
-}
-
-// Remove the attribute NONCE from the element.
-func (e *INPUTElement) NONCERemove(s string) *INPUTElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("nonce")
-	return e
-}
-
-// The part global attribute contains a space-separated list of the part names of
-// the element
-// Part names allows CSS to select and style specific elements in a shadow tree
-// via the ::part pseudo-element.
-func (e *INPUTElement) PART(s ...string) *INPUTElement {
-	if e.DelimitedStrings == nil {
-		e.DelimitedStrings = treemap.New[string, *DelimitedBuilder[string]]()
-	}
-	ds, ok := e.DelimitedStrings.Get("part")
-	if !ok {
-		ds = NewDelimitedBuilder[string](" ")
-		e.DelimitedStrings.Set("part", ds)
-	}
-	ds.Add(s...)
-	return e
-}
-
-func (e *INPUTElement) IfPART(condition bool, s ...string) *INPUTElement {
-	if condition {
-		e.PART(s...)
-	}
-	return e
-}
-
-// Remove the attribute PART from the element.
-func (e *INPUTElement) PARTRemove(s ...string) *INPUTElement {
-	if e.DelimitedStrings == nil {
-		return e
-	}
-	ds, ok := e.DelimitedStrings.Get("part")
-	if !ok {
-		return e
-	}
-	ds.Remove(s...)
-	return e
-}
-
-// The popover global attribute is used to designate an element as a popover
-// element
-// Popover elements are hidden via display: none until opened via an
-// invoking/control element (i.e
-// a <button> or <input type="button"> with a popovertarget attribute) or a
-// HTMLElement.showPopover() call
-// When open, popover elements will appear above all other elements in the top
-// layer, and won't be influenced by parent elements' position or overflow
-// styling.
-func (e *INPUTElement) POPVER(c InputPopverChoice) *INPUTElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	e.StringAttributes.Set("popver", string(c))
-	return e
-}
-
-type InputPopverChoice string
-
-const (
-	// Popovers that have the auto state can be "light dismissed" by selecting outside
-	// the popover area, and generally only allow one popover to be displayed
-	// on-screen at a time.
-	InputPopver_auto InputPopverChoice = "auto"
-	// Popovers that have the auto state can be "light dismissed" by selecting outside
-	// the popover area, and generally only allow one popover to be displayed
-	// on-screen at a time.
-	InputPopver_empty InputPopverChoice = ""
-	// manual popovers must always be explicitly hidden, but allow for use cases such
-	// as nested popovers in menus.
-	InputPopver_manual InputPopverChoice = "manual"
-)
-
-// Remove the attribute POPVER from the element.
-func (e *INPUTElement) POPVERRemove(c InputPopverChoice) *INPUTElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("popver")
-	return e
-}
-
-// The slot global attribute assigns a slot in a shadow DOM shadow tree to an
-// element: An element with a slot attribute is assigned to the slot created by
-// the <slot> element whose name attribute's value matches that slot attribute's
-// value.
-func (e *INPUTElement) SLOT(s string) *INPUTElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	e.StringAttributes.Set("slot", s)
-	return e
-}
-
-func (e *INPUTElement) IfSLOT(condition bool, s string) *INPUTElement {
-	if condition {
-		e.SLOT(s)
-	}
-	return e
-}
-
-// Remove the attribute SLOT from the element.
-func (e *INPUTElement) SLOTRemove(s string) *INPUTElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("slot")
-	return e
-}
-
-// The spellcheck global attribute is an enumerated attribute that defines whether
-// the element may be checked for spelling errors
-// If this attribute is not set, its default value is element-type and
-// browser-defined
-// This default value may also be inherited, which means that the element content
-// will be checked for spelling errors only if its nearest ancestor has a
-// spellcheck state of true
-// Security and privacy concerns Using spellchecking can have consequences for
-// users' security and privacy
-// The specification does not regulate how spellchecking is done and the content
-// of the element may be sent to a third party for spellchecking results (see
-// enhanced spellchecking and "spell-jacking")
-// You should consider setting spellcheck to false for elements that can contain
-// sensitive information.
-func (e *INPUTElement) SPELLCHECK(c InputSpellcheckChoice) *INPUTElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	e.StringAttributes.Set("spellcheck", string(c))
-	return e
-}
-
-type InputSpellcheckChoice string
-
-const (
-	// The element will be checked for spelling errors.
-	InputSpellcheck_empty InputSpellcheckChoice = ""
-	// The element will be checked for spelling errors.
-	InputSpellcheck_true InputSpellcheckChoice = "true"
-	// The element will not be checked for spelling errors.
-	InputSpellcheck_false InputSpellcheckChoice = "false"
-)
-
-// Remove the attribute SPELLCHECK from the element.
-func (e *INPUTElement) SPELLCHECKRemove(c InputSpellcheckChoice) *INPUTElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("spellcheck")
-	return e
-}
-
-// The style global attribute is used to add styles to an element, such as color,
-// font, size, and more
-// Styles are written in CSS.
-func (e *INPUTElement) STYLEF(k string, format string, args ...any) *INPUTElement {
-	return e.STYLE(k, fmt.Sprintf(format, args...))
-}
-
-func (e *INPUTElement) IfSTYLE(condition bool, k string, v string) *INPUTElement {
-	if condition {
-		e.STYLE(k, v)
-	}
-	return e
-}
-
-func (e *INPUTElement) STYLE(k string, v string) *INPUTElement {
-	if e.KVStrings == nil {
-		e.KVStrings = treemap.New[string, *KVBuilder]()
-	}
-	kv, ok := e.KVStrings.Get("style")
-	if !ok {
-		kv = NewKVBuilder(":", ";")
-		e.KVStrings.Set("style", kv)
-	}
-	kv.Add(k, v)
-	return e
-}
-
-func (e *INPUTElement) IfSTYLEF(condition bool, k string, format string, args ...any) *INPUTElement {
-	if condition {
-		e.STYLE(k, fmt.Sprintf(format, args...))
-	}
-	return e
-}
-
-// Add the attributes in the map to the element.
-func (e *INPUTElement) STYLEMap(m map[string]string) *INPUTElement {
-	if e.KVStrings == nil {
-		e.KVStrings = treemap.New[string, *KVBuilder]()
-	}
-	kv, ok := e.KVStrings.Get("style")
-	if !ok {
-		kv = NewKVBuilder(":", ";")
-		e.KVStrings.Set("style", kv)
-	}
-	for k, v := range m {
-		kv.Add(k, v)
-	}
-	return e
-}
-
-// Add pairs of attributes to the element.
-func (e *INPUTElement) STYLEPairs(pairs ...string) *INPUTElement {
-	if len(pairs)%2 != 0 {
-		panic("Must have an even number of pairs")
-	}
-	if e.KVStrings == nil {
-		e.KVStrings = treemap.New[string, *KVBuilder]()
-	}
-	kv, ok := e.KVStrings.Get("style")
-	if !ok {
-		kv = NewKVBuilder(":", ";")
-		e.KVStrings.Set("style", kv)
-	}
-
-	for i := 0; i < len(pairs); i += 2 {
-		kv.Add(pairs[i], pairs[i+1])
-	}
-
-	return e
-}
-
-func (e *INPUTElement) IfSTYLEPairs(condition bool, pairs ...string) *INPUTElement {
-	if condition {
-		e.STYLEPairs(pairs...)
-	}
-	return e
-}
-
-// Remove the attribute STYLE from the element.
-func (e *INPUTElement) STYLERemove(keys ...string) *INPUTElement {
-	if e.KVStrings == nil {
-		return e
-	}
-	kv, ok := e.KVStrings.Get("style")
-	if !ok {
-		return e
-	}
-	for _, k := range keys {
-		kv.Remove(k)
-	}
-	return e
-}
-
-// The tabindex global attribute indicates if its element can be focused, and
-// if/where it participates in sequential keyboard navigation (usually with the
-// Tab key, hence the name)
-// It accepts an integer as a value, with different results depending on the
-// integer's value: a negative value (usually tabindex="-1") means that the
-// element should be focusable, but should not be reachable via sequential
-// keyboard navigation; a value of 0 (tabindex="0") means that the element should
-// be focusable and reachable via sequential keyboard navigation, but its relative
-// order is defined by the platform convention; a positive value means should be
-// focusable and reachable via sequential keyboard navigation; its relative order
-// is defined by the value of the attribute: the sequential follow the increasing
-// number of the tabindex
-// If several elements share the same tabindex, their relative order follows their
-// relative position in the document.
-func (e *INPUTElement) TABINDEX(i int) *INPUTElement {
-	if e.IntAttributes == nil {
-		e.IntAttributes = treemap.New[string, int]()
-	}
-	e.IntAttributes.Set("tabindex", i)
-	return e
-}
-
-func (e *INPUTElement) IfTABINDEX(condition bool, i int) *INPUTElement {
-	if condition {
-		e.TABINDEX(i)
-	}
-	return e
-}
-
-// Remove the attribute TABINDEX from the element.
-func (e *INPUTElement) TABINDEXRemove(i int) *INPUTElement {
-	if e.IntAttributes == nil {
-		return e
-	}
-	e.IntAttributes.Del("tabindex")
-	return e
-}
-
-// The title global attribute contains text representing advisory information
-// related to the element it belongs to
-// Such information can typically, but not necessarily, be presented to the user
-// as a tooltip
-// The main use of the title attribute is to label <iframe> elements for assistive
-// technology
-// The title attribute may also be used to label controls in data tables
-// The title attribute, when added to <link rel="stylesheet">, creates an
-// alternate stylesheet
-// When defining an alternative style sheet with <link rel="alternate"> the
-// attribute is required and must be set to a non-empty string
-// If included on the <abbr> opening tag, the title must be a full expansion of
-// the abbreviation or acronym
-// Instead of using title, when possible, provide an expansion of the abbreviation
-// or acronym in plain text on first use, using the <abbr> to mark up the
-// abbreviation
-// This enables all users know what name or term the abbreviation or acronym
-// shortens while providing a hint to user agents on how to announce the content
-// While title can be used to provide a programmatically associated label for an
-// <input> element, this is not good practice
-// Use a <label> instead.
-func (e *INPUTElement) TITLE(s string) *INPUTElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	e.StringAttributes.Set("title", s)
-	return e
-}
+    e.CustomDataAttributes.Del(key)
+	return e
+}
+
+
+    // Hint for expected file type in file upload controls. 
+    func(e *INPUTElement) ACCEPT(s string) *INPUTElement{
+            if e.StringAttributes == nil {
+                e.StringAttributes = treemap.New[string,string]()
+            }
+            e.StringAttributes.Set("accept", s)
+            return e
+        }
+
+        func(e *INPUTElement) IfACCEPT(condition bool, s string) *INPUTElement{
+            if condition {
+                e.ACCEPT(s)
+            }
+            return e
+        }
+
+        // Remove the attribute ACCEPT from the element.
+        func(e *INPUTElement) ACCEPTRemove(s string) *INPUTElement{
+            if e.StringAttributes == nil {
+                return e
+            }
+            e.StringAttributes.Del("accept")
+            return e
+        }
+    
+
+    // Alternative text in case an image can't be displayed. 
+    func(e *INPUTElement) ALT(s string) *INPUTElement{
+            if e.StringAttributes == nil {
+                e.StringAttributes = treemap.New[string,string]()
+            }
+            e.StringAttributes.Set("alt", s)
+            return e
+        }
+
+        func(e *INPUTElement) IfALT(condition bool, s string) *INPUTElement{
+            if condition {
+                e.ALT(s)
+            }
+            return e
+        }
+
+        // Remove the attribute ALT from the element.
+        func(e *INPUTElement) ALTRemove(s string) *INPUTElement{
+            if e.StringAttributes == nil {
+                return e
+            }
+            e.StringAttributes.Del("alt")
+            return e
+        }
+    
+
+    // Hint for form autofill feature. 
+    func(e *INPUTElement) AUTOCOMPLETE(c InputAutocompleteChoice) *INPUTElement{
+            if e.StringAttributes == nil {
+                e.StringAttributes = treemap.New[string,string]()
+            }
+            e.StringAttributes.Set("autocomplete", string(c))
+            return e
+        }
+
+        type InputAutocompleteChoice string
+        const(
+        // The browser is allowed to automatically complete the input 
+// (Default) 
+            InputAutocomplete_on InputAutocompleteChoice = "on"
+        // The browser must not automatically complete the input. 
+            InputAutocomplete_off InputAutocompleteChoice = "off"
+        )
+
+        // Remove the attribute AUTOCOMPLETE from the element.
+        func(e *INPUTElement) AUTOCOMPLETERemove(c InputAutocompleteChoice) *INPUTElement{
+            if e.StringAttributes == nil {
+                return e
+            }
+            e.StringAttributes.Del("autocomplete")
+            return e
+        }
+        
+
+    // Automatically focus the form control when the page is loaded. 
+    func(e *INPUTElement) AUTOFOCUS() *INPUTElement{
+            e.AUTOFOCUSSet(true)
+            return e
+        }
+
+        func(e *INPUTElement) IfAUTOFOCUS(condition bool) *INPUTElement {
+            if condition {
+                e.AUTOFOCUSSet(true)
+            }
+            return e
+        }
+
+        // Set the attribute AUTOFOCUS to the value b explicitly.
+        func(e *INPUTElement) AUTOFOCUSSet(b bool) *INPUTElement{
+            if e.BoolAttributes == nil {
+                e.BoolAttributes = treemap.New[string,bool]()
+            }
+            e.BoolAttributes.Set("autofocus", b)
+            return e
+        }
+
+        func (e *INPUTElement) IfSetAUTOFOCUS(condition bool, b bool) *INPUTElement {
+            if condition {
+                e.AUTOFOCUSSet(b)
+            }
+            return e
+        }
+
+        // Remove the attribute AUTOFOCUS from the element.
+        func(e *INPUTElement) AUTOFOCUSRemove(b bool) *INPUTElement{
+            if e.BoolAttributes == nil {
+                return e
+            }
+            e.BoolAttributes.Del("autofocus")
+            return e
+        }
+
+    
+
+    // Whether the command or control is checked. 
+    func(e *INPUTElement) CHECKED() *INPUTElement{
+            e.CHECKEDSet(true)
+            return e
+        }
+
+        func(e *INPUTElement) IfCHECKED(condition bool) *INPUTElement {
+            if condition {
+                e.CHECKEDSet(true)
+            }
+            return e
+        }
+
+        // Set the attribute CHECKED to the value b explicitly.
+        func(e *INPUTElement) CHECKEDSet(b bool) *INPUTElement{
+            if e.BoolAttributes == nil {
+                e.BoolAttributes = treemap.New[string,bool]()
+            }
+            e.BoolAttributes.Set("checked", b)
+            return e
+        }
+
+        func (e *INPUTElement) IfSetCHECKED(condition bool, b bool) *INPUTElement {
+            if condition {
+                e.CHECKEDSet(b)
+            }
+            return e
+        }
+
+        // Remove the attribute CHECKED from the element.
+        func(e *INPUTElement) CHECKEDRemove(b bool) *INPUTElement{
+            if e.BoolAttributes == nil {
+                return e
+            }
+            e.BoolAttributes.Del("checked")
+            return e
+        }
+
+    
+
+    // Name of form field to use for sending the element's directionality in form 
+// submission. 
+    func(e *INPUTElement) DIRNAME(s string) *INPUTElement{
+            if e.StringAttributes == nil {
+                e.StringAttributes = treemap.New[string,string]()
+            }
+            e.StringAttributes.Set("dirname", s)
+            return e
+        }
+
+        func(e *INPUTElement) IfDIRNAME(condition bool, s string) *INPUTElement{
+            if condition {
+                e.DIRNAME(s)
+            }
+            return e
+        }
+
+        // Remove the attribute DIRNAME from the element.
+        func(e *INPUTElement) DIRNAMERemove(s string) *INPUTElement{
+            if e.StringAttributes == nil {
+                return e
+            }
+            e.StringAttributes.Del("dirname")
+            return e
+        }
+    
+
+    // Whether the form control is disabled. 
+    func(e *INPUTElement) DISABLED() *INPUTElement{
+            e.DISABLEDSet(true)
+            return e
+        }
+
+        func(e *INPUTElement) IfDISABLED(condition bool) *INPUTElement {
+            if condition {
+                e.DISABLEDSet(true)
+            }
+            return e
+        }
+
+        // Set the attribute DISABLED to the value b explicitly.
+        func(e *INPUTElement) DISABLEDSet(b bool) *INPUTElement{
+            if e.BoolAttributes == nil {
+                e.BoolAttributes = treemap.New[string,bool]()
+            }
+            e.BoolAttributes.Set("disabled", b)
+            return e
+        }
+
+        func (e *INPUTElement) IfSetDISABLED(condition bool, b bool) *INPUTElement {
+            if condition {
+                e.DISABLEDSet(b)
+            }
+            return e
+        }
+
+        // Remove the attribute DISABLED from the element.
+        func(e *INPUTElement) DISABLEDRemove(b bool) *INPUTElement{
+            if e.BoolAttributes == nil {
+                return e
+            }
+            e.BoolAttributes.Del("disabled")
+            return e
+        }
+
+    
+
+    // Associates the control with a form element. 
+    func(e *INPUTElement) FORM(s string) *INPUTElement{
+            if e.StringAttributes == nil {
+                e.StringAttributes = treemap.New[string,string]()
+            }
+            e.StringAttributes.Set("form", s)
+            return e
+        }
+
+        func(e *INPUTElement) IfFORM(condition bool, s string) *INPUTElement{
+            if condition {
+                e.FORM(s)
+            }
+            return e
+        }
+
+        // Remove the attribute FORM from the element.
+        func(e *INPUTElement) FORMRemove(s string) *INPUTElement{
+            if e.StringAttributes == nil {
+                return e
+            }
+            e.StringAttributes.Del("form")
+            return e
+        }
+    
+
+    // URL to use for form submission. 
+    func(e *INPUTElement) FORMACTION(s string) *INPUTElement{
+            if e.StringAttributes == nil {
+                e.StringAttributes = treemap.New[string,string]()
+            }
+            e.StringAttributes.Set("formaction", s)
+            return e
+        }
+
+        func(e *INPUTElement) IfFORMACTION(condition bool, s string) *INPUTElement{
+            if condition {
+                e.FORMACTION(s)
+            }
+            return e
+        }
+
+        // Remove the attribute FORMACTION from the element.
+        func(e *INPUTElement) FORMACTIONRemove(s string) *INPUTElement{
+            if e.StringAttributes == nil {
+                return e
+            }
+            e.StringAttributes.Del("formaction")
+            return e
+        }
+    
+
+    // Form data set encoding type to use for form submission. 
+    func(e *INPUTElement) FORMENCTYPE(c InputFormenctypeChoice) *INPUTElement{
+            if e.StringAttributes == nil {
+                e.StringAttributes = treemap.New[string,string]()
+            }
+            e.StringAttributes.Set("formenctype", string(c))
+            return e
+        }
+
+        type InputFormenctypeChoice string
+        const(
+        // The default value if the attribute is not specified. 
+            InputFormenctype_application_x_www_form_urlencoded InputFormenctypeChoice = "application/x-www-form-urlencoded"
+        // Use this value if you are using an enctype that requires a file upload. 
+            InputFormenctype_multipart_form_data InputFormenctypeChoice = "multipart/form-data"
+        // Use this value if you are using a "text/plain" enctype and the form will not 
+// contain any file uploads. 
+            InputFormenctype_text_plain InputFormenctypeChoice = "text/plain"
+        )
+
+        // Remove the attribute FORMENCTYPE from the element.
+        func(e *INPUTElement) FORMENCTYPERemove(c InputFormenctypeChoice) *INPUTElement{
+            if e.StringAttributes == nil {
+                return e
+            }
+            e.StringAttributes.Del("formenctype")
+            return e
+        }
+        
+
+    // HTTP method to use for form submission. 
+    func(e *INPUTElement) FORMMETHOD(c InputFormmethodChoice) *INPUTElement{
+            if e.StringAttributes == nil {
+                e.StringAttributes = treemap.New[string,string]()
+            }
+            e.StringAttributes.Set("formmethod", string(c))
+            return e
+        }
+
+        type InputFormmethodChoice string
+        const(
+        // The data from the form is included in the body of the HTTP request when sent to 
+// the server. 
+            InputFormmethod_post InputFormmethodChoice = "post"
+        // The data from the form are appended to the form attribute URI, with a '?' as a 
+// separator, and the resulting URI is sent to the server 
+// Use this method when the form has no side-effects and contains only ASCII 
+// characters. 
+            InputFormmethod_get InputFormmethodChoice = "get"
+        // When the form is inside a <dialog>, closes the dialog on submission. 
+            InputFormmethod_dialog InputFormmethodChoice = "dialog"
+        )
+
+        // Remove the attribute FORMMETHOD from the element.
+        func(e *INPUTElement) FORMMETHODRemove(c InputFormmethodChoice) *INPUTElement{
+            if e.StringAttributes == nil {
+                return e
+            }
+            e.StringAttributes.Del("formmethod")
+            return e
+        }
+        
+
+    // Bypass form control validation for form submission. 
+    func(e *INPUTElement) FORMNOVALIDATE() *INPUTElement{
+            e.FORMNOVALIDATESet(true)
+            return e
+        }
+
+        func(e *INPUTElement) IfFORMNOVALIDATE(condition bool) *INPUTElement {
+            if condition {
+                e.FORMNOVALIDATESet(true)
+            }
+            return e
+        }
+
+        // Set the attribute FORMNOVALIDATE to the value b explicitly.
+        func(e *INPUTElement) FORMNOVALIDATESet(b bool) *INPUTElement{
+            if e.BoolAttributes == nil {
+                e.BoolAttributes = treemap.New[string,bool]()
+            }
+            e.BoolAttributes.Set("formnovalidate", b)
+            return e
+        }
+
+        func (e *INPUTElement) IfSetFORMNOVALIDATE(condition bool, b bool) *INPUTElement {
+            if condition {
+                e.FORMNOVALIDATESet(b)
+            }
+            return e
+        }
+
+        // Remove the attribute FORMNOVALIDATE from the element.
+        func(e *INPUTElement) FORMNOVALIDATERemove(b bool) *INPUTElement{
+            if e.BoolAttributes == nil {
+                return e
+            }
+            e.BoolAttributes.Del("formnovalidate")
+            return e
+        }
+
+    
+
+    // Browsing context for form submission. 
+    func(e *INPUTElement) FORMTARGET(c InputFormtargetChoice) *INPUTElement{
+            if e.StringAttributes == nil {
+                e.StringAttributes = treemap.New[string,string]()
+            }
+            e.StringAttributes.Set("formtarget", string(c))
+            return e
+        }
+
+        type InputFormtargetChoice string
+        const(
+        // Load the response into the same browsing context as the current one 
+// This value is the default if the attribute is not specified. 
+            InputFormtarget__self InputFormtargetChoice = "_self"
+        // Load the response into a new unnamed browsing context. 
+            InputFormtarget__blank InputFormtargetChoice = "_blank"
+        // Load the response into the parent browsing context of the current one 
+// If there is no parent, this option behaves the same way as _self. 
+            InputFormtarget__parent InputFormtargetChoice = "_parent"
+        // Load the response into the top-level browsing context (that is, the browsing 
+// context that is an ancestor of the current one, and has no parent) 
+// If there is no parent, this option behaves the same way as _self. 
+            InputFormtarget__top InputFormtargetChoice = "_top"
+        )
+
+        // Remove the attribute FORMTARGET from the element.
+        func(e *INPUTElement) FORMTARGETRemove(c InputFormtargetChoice) *INPUTElement{
+            if e.StringAttributes == nil {
+                return e
+            }
+            e.StringAttributes.Del("formtarget")
+            return e
+        }
+        
+
+    // Height of the image in pixels. 
+    func(e *INPUTElement) HEIGHT(i int) *INPUTElement{
+            if e.IntAttributes == nil {
+                e.IntAttributes = treemap.New[string,int]()
+            }
+            e.IntAttributes.Set("height", i)
+            return e
+        }
+
+        func (e *INPUTElement) IfHEIGHT(condition bool, i int) *INPUTElement {
+            if condition {
+                e.HEIGHT(i)
+            }
+            return e
+        }
+
+        // Remove the attribute HEIGHT from the element.
+        func(e *INPUTElement) HEIGHTRemove(i int) *INPUTElement{
+            if e.IntAttributes == nil {
+                return e
+            }
+            e.IntAttributes.Del("height")
+            return e
+        }
+        
+
+    // Identifies a list of pre-defined options to suggest to the user. 
+    func(e *INPUTElement) LIST(s string) *INPUTElement{
+            if e.StringAttributes == nil {
+                e.StringAttributes = treemap.New[string,string]()
+            }
+            e.StringAttributes.Set("list", s)
+            return e
+        }
+
+        func(e *INPUTElement) IfLIST(condition bool, s string) *INPUTElement{
+            if condition {
+                e.LIST(s)
+            }
+            return e
+        }
+
+        // Remove the attribute LIST from the element.
+        func(e *INPUTElement) LISTRemove(s string) *INPUTElement{
+            if e.StringAttributes == nil {
+                return e
+            }
+            e.StringAttributes.Del("list")
+            return e
+        }
+    
+
+    // maximum value of an <input> element with type="number" or type="range". 
+    func(e *INPUTElement) MAX_STR(s string) *INPUTElement{
+            if e.StringAttributes == nil {
+                e.StringAttributes = treemap.New[string,string]()
+            }
+            e.StringAttributes.Set("max", s)
+            return e
+        }
+
+        func(e *INPUTElement) IfMAX_STR(condition bool, s string) *INPUTElement{
+            if condition {
+                e.MAX_STR(s)
+            }
+            return e
+        }
+
+        // Remove the attribute MAX_STR from the element.
+        func(e *INPUTElement) MAX_STRRemove(s string) *INPUTElement{
+            if e.StringAttributes == nil {
+                return e
+            }
+            e.StringAttributes.Del("max")
+            return e
+        }
+    
+
+    // maximum number of characters (as UTF-16 code units) the user can enter into an 
+// <input> element 
+// This must be an integer value 0 or higher 
+// If no maxlength is specified, or an invalid value is specified, the input has 
+// no maximum length 
+// This value must also be greater than or equal to the value of minlength. 
+    func(e *INPUTElement) MAXLENGTH(i int) *INPUTElement{
+            if e.IntAttributes == nil {
+                e.IntAttributes = treemap.New[string,int]()
+            }
+            e.IntAttributes.Set("maxlength", i)
+            return e
+        }
+
+        func (e *INPUTElement) IfMAXLENGTH(condition bool, i int) *INPUTElement {
+            if condition {
+                e.MAXLENGTH(i)
+            }
+            return e
+        }
+
+        // Remove the attribute MAXLENGTH from the element.
+        func(e *INPUTElement) MAXLENGTHRemove(i int) *INPUTElement{
+            if e.IntAttributes == nil {
+                return e
+            }
+            e.IntAttributes.Del("maxlength")
+            return e
+        }
+        
+
+    // the minimum value of an <input> element with type="number" or type="range". 
+    func(e *INPUTElement) MIN_STR(s string) *INPUTElement{
+            if e.StringAttributes == nil {
+                e.StringAttributes = treemap.New[string,string]()
+            }
+            e.StringAttributes.Set("min", s)
+            return e
+        }
+
+        func(e *INPUTElement) IfMIN_STR(condition bool, s string) *INPUTElement{
+            if condition {
+                e.MIN_STR(s)
+            }
+            return e
+        }
+
+        // Remove the attribute MIN_STR from the element.
+        func(e *INPUTElement) MIN_STRRemove(s string) *INPUTElement{
+            if e.StringAttributes == nil {
+                return e
+            }
+            e.StringAttributes.Del("min")
+            return e
+        }
+    
+
+    // the minimum number of characters (as UTF-16 code units) the user can enter into 
+// an <input> or <textarea> element 
+// This must be an integer value 0 or higher 
+// If no minlength is specified, or an invalid value is specified, the <input> or 
+// <textarea> has no minimum length 
+// This value must also be less than or equal to the value of maxlength. 
+    func(e *INPUTElement) MINLENGTH(i int) *INPUTElement{
+            if e.IntAttributes == nil {
+                e.IntAttributes = treemap.New[string,int]()
+            }
+            e.IntAttributes.Set("minlength", i)
+            return e
+        }
+
+        func (e *INPUTElement) IfMINLENGTH(condition bool, i int) *INPUTElement {
+            if condition {
+                e.MINLENGTH(i)
+            }
+            return e
+        }
+
+        // Remove the attribute MINLENGTH from the element.
+        func(e *INPUTElement) MINLENGTHRemove(i int) *INPUTElement{
+            if e.IntAttributes == nil {
+                return e
+            }
+            e.IntAttributes.Del("minlength")
+            return e
+        }
+        
+
+    // Whether to allow multiple values. 
+    func(e *INPUTElement) MULTIPLE() *INPUTElement{
+            e.MULTIPLESet(true)
+            return e
+        }
+
+        func(e *INPUTElement) IfMULTIPLE(condition bool) *INPUTElement {
+            if condition {
+                e.MULTIPLESet(true)
+            }
+            return e
+        }
+
+        // Set the attribute MULTIPLE to the value b explicitly.
+        func(e *INPUTElement) MULTIPLESet(b bool) *INPUTElement{
+            if e.BoolAttributes == nil {
+                e.BoolAttributes = treemap.New[string,bool]()
+            }
+            e.BoolAttributes.Set("multiple", b)
+            return e
+        }
+
+        func (e *INPUTElement) IfSetMULTIPLE(condition bool, b bool) *INPUTElement {
+            if condition {
+                e.MULTIPLESet(b)
+            }
+            return e
+        }
+
+        // Remove the attribute MULTIPLE from the element.
+        func(e *INPUTElement) MULTIPLERemove(b bool) *INPUTElement{
+            if e.BoolAttributes == nil {
+                return e
+            }
+            e.BoolAttributes.Del("multiple")
+            return e
+        }
+
+    
+
+    // Name of the element to use for form submission and in the form.elements API. 
+    func(e *INPUTElement) NAME(s string) *INPUTElement{
+            if e.StringAttributes == nil {
+                e.StringAttributes = treemap.New[string,string]()
+            }
+            e.StringAttributes.Set("name", s)
+            return e
+        }
+
+        func(e *INPUTElement) IfNAME(condition bool, s string) *INPUTElement{
+            if condition {
+                e.NAME(s)
+            }
+            return e
+        }
+
+        // Remove the attribute NAME from the element.
+        func(e *INPUTElement) NAMERemove(s string) *INPUTElement{
+            if e.StringAttributes == nil {
+                return e
+            }
+            e.StringAttributes.Del("name")
+            return e
+        }
+    
+
+    // Pattern to be matched by the form control's value. 
+    func(e *INPUTElement) PATTERN(s string) *INPUTElement{
+            if e.StringAttributes == nil {
+                e.StringAttributes = treemap.New[string,string]()
+            }
+            e.StringAttributes.Set("pattern", s)
+            return e
+        }
+
+        func(e *INPUTElement) IfPATTERN(condition bool, s string) *INPUTElement{
+            if condition {
+                e.PATTERN(s)
+            }
+            return e
+        }
+
+        // Remove the attribute PATTERN from the element.
+        func(e *INPUTElement) PATTERNRemove(s string) *INPUTElement{
+            if e.StringAttributes == nil {
+                return e
+            }
+            e.StringAttributes.Del("pattern")
+            return e
+        }
+    
+
+    // User-visible label to be placed within the form control. 
+    func(e *INPUTElement) PLACEHOLDER(s string) *INPUTElement{
+            if e.StringAttributes == nil {
+                e.StringAttributes = treemap.New[string,string]()
+            }
+            e.StringAttributes.Set("placeholder", s)
+            return e
+        }
+
+        func(e *INPUTElement) IfPLACEHOLDER(condition bool, s string) *INPUTElement{
+            if condition {
+                e.PLACEHOLDER(s)
+            }
+            return e
+        }
+
+        // Remove the attribute PLACEHOLDER from the element.
+        func(e *INPUTElement) PLACEHOLDERRemove(s string) *INPUTElement{
+            if e.StringAttributes == nil {
+                return e
+            }
+            e.StringAttributes.Del("placeholder")
+            return e
+        }
+    
+
+    // Whether to allow the value to be edited by the user. 
+    func(e *INPUTElement) READONLY() *INPUTElement{
+            e.READONLYSet(true)
+            return e
+        }
+
+        func(e *INPUTElement) IfREADONLY(condition bool) *INPUTElement {
+            if condition {
+                e.READONLYSet(true)
+            }
+            return e
+        }
+
+        // Set the attribute READONLY to the value b explicitly.
+        func(e *INPUTElement) READONLYSet(b bool) *INPUTElement{
+            if e.BoolAttributes == nil {
+                e.BoolAttributes = treemap.New[string,bool]()
+            }
+            e.BoolAttributes.Set("readonly", b)
+            return e
+        }
+
+        func (e *INPUTElement) IfSetREADONLY(condition bool, b bool) *INPUTElement {
+            if condition {
+                e.READONLYSet(b)
+            }
+            return e
+        }
+
+        // Remove the attribute READONLY from the element.
+        func(e *INPUTElement) READONLYRemove(b bool) *INPUTElement{
+            if e.BoolAttributes == nil {
+                return e
+            }
+            e.BoolAttributes.Del("readonly")
+            return e
+        }
+
+    
+
+    // Whether the control is required for form submission. 
+    func(e *INPUTElement) REQUIRED() *INPUTElement{
+            e.REQUIREDSet(true)
+            return e
+        }
+
+        func(e *INPUTElement) IfREQUIRED(condition bool) *INPUTElement {
+            if condition {
+                e.REQUIREDSet(true)
+            }
+            return e
+        }
+
+        // Set the attribute REQUIRED to the value b explicitly.
+        func(e *INPUTElement) REQUIREDSet(b bool) *INPUTElement{
+            if e.BoolAttributes == nil {
+                e.BoolAttributes = treemap.New[string,bool]()
+            }
+            e.BoolAttributes.Set("required", b)
+            return e
+        }
+
+        func (e *INPUTElement) IfSetREQUIRED(condition bool, b bool) *INPUTElement {
+            if condition {
+                e.REQUIREDSet(b)
+            }
+            return e
+        }
+
+        // Remove the attribute REQUIRED from the element.
+        func(e *INPUTElement) REQUIREDRemove(b bool) *INPUTElement{
+            if e.BoolAttributes == nil {
+                return e
+            }
+            e.BoolAttributes.Del("required")
+            return e
+        }
+
+    
+
+    // Size of the control. 
+    func(e *INPUTElement) SIZE(i int) *INPUTElement{
+            if e.IntAttributes == nil {
+                e.IntAttributes = treemap.New[string,int]()
+            }
+            e.IntAttributes.Set("size", i)
+            return e
+        }
+
+        func (e *INPUTElement) IfSIZE(condition bool, i int) *INPUTElement {
+            if condition {
+                e.SIZE(i)
+            }
+            return e
+        }
+
+        // Remove the attribute SIZE from the element.
+        func(e *INPUTElement) SIZERemove(i int) *INPUTElement{
+            if e.IntAttributes == nil {
+                return e
+            }
+            e.IntAttributes.Del("size")
+            return e
+        }
+        
+
+    // Address of the resource. 
+    func(e *INPUTElement) SRC(s string) *INPUTElement{
+            if e.StringAttributes == nil {
+                e.StringAttributes = treemap.New[string,string]()
+            }
+            e.StringAttributes.Set("src", s)
+            return e
+        }
+
+        func(e *INPUTElement) IfSRC(condition bool, s string) *INPUTElement{
+            if condition {
+                e.SRC(s)
+            }
+            return e
+        }
+
+        // Remove the attribute SRC from the element.
+        func(e *INPUTElement) SRCRemove(s string) *INPUTElement{
+            if e.StringAttributes == nil {
+                return e
+            }
+            e.StringAttributes.Del("src")
+            return e
+        }
+    
+
+    // Granularity to be matched by the form control's value. 
+    func(e *INPUTElement) STEP(s string) *INPUTElement{
+            if e.StringAttributes == nil {
+                e.StringAttributes = treemap.New[string,string]()
+            }
+            e.StringAttributes.Set("step", s)
+            return e
+        }
+
+        func(e *INPUTElement) IfSTEP(condition bool, s string) *INPUTElement{
+            if condition {
+                e.STEP(s)
+            }
+            return e
+        }
+
+        // Remove the attribute STEP from the element.
+        func(e *INPUTElement) STEPRemove(s string) *INPUTElement{
+            if e.StringAttributes == nil {
+                return e
+            }
+            e.StringAttributes.Del("step")
+            return e
+        }
+    
+
+    // Type of form control. 
+    func(e *INPUTElement) TYPE(c InputTypeChoice) *INPUTElement{
+            if e.StringAttributes == nil {
+                e.StringAttributes = treemap.New[string,string]()
+            }
+            e.StringAttributes.Set("type", string(c))
+            return e
+        }
+
+        type InputTypeChoice string
+        const(
+        // A push button with no default behavior. 
+            InputType_button InputTypeChoice = "button"
+        // A check box allowing single values to be selected/deselected. 
+            InputType_checkbox InputTypeChoice = "checkbox"
+        // A control for specifying a color 
+// A color picker's UI has no required features other than accepting simple colors 
+// as text (more info). 
+            InputType_color InputTypeChoice = "color"
+        // A control for entering a date (year, month, and day, with no time). 
+            InputType_date InputTypeChoice = "date"
+        // A control for entering a date and time, with no time zone. 
+            InputType_datetime_local InputTypeChoice = "datetime-local"
+        // A field for editing an e-mail address. 
+            InputType_email InputTypeChoice = "email"
+        // A control that lets the user select a file 
+// Use the accept attribute to define the types of files that the control can 
+// select. 
+            InputType_file InputTypeChoice = "file"
+        // A control that is not displayed but whose value is submitted to the server. 
+            InputType_hidden InputTypeChoice = "hidden"
+        // A graphical submit button 
+// You must use the src attribute to define the source of the image and the alt 
+// attribute to define alternative text. 
+            InputType_image InputTypeChoice = "image"
+        // A control for entering a month and year, with no time zone. 
+            InputType_month InputTypeChoice = "month"
+        // A control for entering a number. 
+            InputType_number InputTypeChoice = "number"
+        // A single-line text field whose value is obscured 
+// Use the maxlength and minlength attributes to specify the maximum length of the 
+// value that can be entered. 
+            InputType_password InputTypeChoice = "password"
+        // A radio button, allowing a single value to be selected out of multiple choices 
+// with the same name value. 
+            InputType_radio InputTypeChoice = "radio"
+        // A control for entering a number whose exact value is not important. 
+            InputType_range InputTypeChoice = "range"
+        // A button that resets the contents of the form to default values. 
+            InputType_reset InputTypeChoice = "reset"
+        // A single-line text field for entering search strings 
+// Line-breaks are automatically removed from the input value. 
+            InputType_search InputTypeChoice = "search"
+        // A button that submits the form. 
+            InputType_submit InputTypeChoice = "submit"
+        // A control for entering a telephone number. 
+            InputType_tel InputTypeChoice = "tel"
+        // A single-line text field 
+// Line-breaks are automatically removed from the input value. 
+            InputType_text InputTypeChoice = "text"
+        // A control for entering a time value with no time zone. 
+            InputType_time InputTypeChoice = "time"
+        // A field for entering a URL. 
+            InputType_url InputTypeChoice = "url"
+        // A control for entering a date consisting of a week-year number and a week 
+// number with no time zone. 
+            InputType_week InputTypeChoice = "week"
+        )
+
+        // Remove the attribute TYPE from the element.
+        func(e *INPUTElement) TYPERemove(c InputTypeChoice) *INPUTElement{
+            if e.StringAttributes == nil {
+                return e
+            }
+            e.StringAttributes.Del("type")
+            return e
+        }
+        
+
+    // Value of the form control. 
+    func(e *INPUTElement) VALUE(s string) *INPUTElement{
+            if e.StringAttributes == nil {
+                e.StringAttributes = treemap.New[string,string]()
+            }
+            e.StringAttributes.Set("value", s)
+            return e
+        }
+
+        func(e *INPUTElement) IfVALUE(condition bool, s string) *INPUTElement{
+            if condition {
+                e.VALUE(s)
+            }
+            return e
+        }
+
+        // Remove the attribute VALUE from the element.
+        func(e *INPUTElement) VALUERemove(s string) *INPUTElement{
+            if e.StringAttributes == nil {
+                return e
+            }
+            e.StringAttributes.Del("value")
+            return e
+        }
+    
+
+    // Width of the image in pixels. 
+    func(e *INPUTElement) WIDTH(i int) *INPUTElement{
+            if e.IntAttributes == nil {
+                e.IntAttributes = treemap.New[string,int]()
+            }
+            e.IntAttributes.Set("width", i)
+            return e
+        }
+
+        func (e *INPUTElement) IfWIDTH(condition bool, i int) *INPUTElement {
+            if condition {
+                e.WIDTH(i)
+            }
+            return e
+        }
+
+        // Remove the attribute WIDTH from the element.
+        func(e *INPUTElement) WIDTHRemove(i int) *INPUTElement{
+            if e.IntAttributes == nil {
+                return e
+            }
+            e.IntAttributes.Del("width")
+            return e
+        }
+        
+
+    // The accesskey global attribute provides a hint for generating a keyboard 
+// shortcut for the current element 
+// The attribute value must consist of a single printable character (which 
+// includes accented and other characters that can be generated by the keyboard). 
+    func(e *INPUTElement) ACCESSKEY(r rune) *INPUTElement{
+            if e.StringAttributes == nil {
+                e.StringAttributes = treemap.New[string,string]()
+            }
+            e.StringAttributes.Set("accesskey", string(r))
+            return e
+        }
+
+        func(e *INPUTElement) IfACCESSKEY(condition bool, r rune) *INPUTElement{
+            if condition {
+                e.ACCESSKEY(r)
+            }
+            return e
+        }
+
+        // Remove the attribute ACCESSKEY from the element.
+        func(e *INPUTElement) ACCESSKEYRemove() *INPUTElement{
+            if e.StringAttributes == nil {
+                return e
+            }
+            e.StringAttributes.Del("accesskey")
+            return e
+        }
+
+    
+
+    // The autocapitalize global attribute is an enumerated attribute that controls 
+// whether and how text input is automatically capitalized as it is entered/edited 
+// by the user 
+// autocapitalize can be set on <input> and <textarea> elements, and on their 
+// containing <form> elements 
+// When autocapitalize is set on a <form> element, it sets the autocapitalize 
+// behavior for all contained <input>s and <textarea>s, overriding any 
+// autocapitalize values set on contained elements 
+// autocapitalize has no effect on the url, email, or password <input> types, 
+// where autocapitalization is never enabled 
+// Where autocapitalize is not specified, the adopted default behavior varies 
+// between browsers 
+// For example: Chrome and Safari default to on/sentences Firefox defaults to 
+// off/none. 
+    func(e *INPUTElement) AUTOCAPITALIZE(c InputAutocapitalizeChoice) *INPUTElement{
+            if e.StringAttributes == nil {
+                e.StringAttributes = treemap.New[string,string]()
+            }
+            e.StringAttributes.Set("autocapitalize", string(c))
+            return e
+        }
+
+        type InputAutocapitalizeChoice string
+        const(
+        // Do not automatically capitalize any text. 
+            InputAutocapitalize_off InputAutocapitalizeChoice = "off"
+        // Do not automatically capitalize any text. 
+            InputAutocapitalize_none InputAutocapitalizeChoice = "none"
+        // Automatically capitalize the first character of each sentence. 
+            InputAutocapitalize_sentences InputAutocapitalizeChoice = "sentences"
+        // Automatically capitalize the first character of each sentence. 
+            InputAutocapitalize_on InputAutocapitalizeChoice = "on"
+        // Automatically capitalize the first character of each word. 
+            InputAutocapitalize_words InputAutocapitalizeChoice = "words"
+        // Automatically capitalize all characters. 
+            InputAutocapitalize_characters InputAutocapitalizeChoice = "characters"
+        )
+
+        // Remove the attribute AUTOCAPITALIZE from the element.
+        func(e *INPUTElement) AUTOCAPITALIZERemove(c InputAutocapitalizeChoice) *INPUTElement{
+            if e.StringAttributes == nil {
+                return e
+            }
+            e.StringAttributes.Del("autocapitalize")
+            return e
+        }
+        
+
+    // The class global attribute is a space-separated list of the case-sensitive 
+// classes of the element 
+// Classes allow CSS and JavaScript to select and access specific elements via the 
+// class selectors or functions like the DOM method 
+// document.getElementsByClassName. 
+    func(e *INPUTElement) CLASS(s ...string) *INPUTElement{
+            if e.DelimitedStrings == nil {
+                e.DelimitedStrings = treemap.New[string,*DelimitedBuilder[string]]()
+            }
+            ds, ok := e.DelimitedStrings.Get("class")
+            if !ok {
+                ds = NewDelimitedBuilder[string](" ")
+                e.DelimitedStrings.Set("class", ds)
+            }
+            ds.Add(s...)
+            return e
+        }
+
+        func(e *INPUTElement) IfCLASS(condition bool, s ...string) *INPUTElement{
+            if condition {
+                e.CLASS(s...)
+            }
+            return e
+        }
+
+        // Remove the attribute CLASS from the element.
+        func(e *INPUTElement) CLASSRemove(s ...string) *INPUTElement{
+            if e.DelimitedStrings == nil {
+                return e
+            }
+            ds, ok := e.DelimitedStrings.Get("class")
+            if !ok {
+                return e
+            }
+            ds.Remove(s ...)
+            return e
+        }
+
+    
+
+    // The contenteditable global attribute is an enumerated attribute indicating if 
+// the element should be editable by the user 
+// If so, the browser modifies its widget to allow editing. 
+    func(e *INPUTElement) CONTENTEDITABLE(c InputContenteditableChoice) *INPUTElement{
+            if e.StringAttributes == nil {
+                e.StringAttributes = treemap.New[string,string]()
+            }
+            e.StringAttributes.Set("contenteditable", string(c))
+            return e
+        }
+
+        type InputContenteditableChoice string
+        const(
+        // The element is editable. 
+            InputContenteditable_empty InputContenteditableChoice = ""
+        // The element is editable. 
+            InputContenteditable_true InputContenteditableChoice = "true"
+        // The element is not editable. 
+            InputContenteditable_false InputContenteditableChoice = "false"
+        // which indicates that the element's raw text is editable, but rich text 
+// formatting is disabled. 
+            InputContenteditable_plaintext_only InputContenteditableChoice = "plaintext-only"
+        )
+
+        // Remove the attribute CONTENTEDITABLE from the element.
+        func(e *INPUTElement) CONTENTEDITABLERemove(c InputContenteditableChoice) *INPUTElement{
+            if e.StringAttributes == nil {
+                return e
+            }
+            e.StringAttributes.Del("contenteditable")
+            return e
+        }
+        
+
+    // The dir global attribute is an enumerated attribute that indicates the 
+// directionality of the element's text 
+// Note: This attribute is mandatory for the <bdo> element where it has a 
+// different semantic meaning 
+// This attribute is not inherited by the <bdi> element 
+// If not set, its value is auto 
+// This attribute can be overridden by the CSS properties direction and 
+// unicode-bidi, if a CSS page is active and the element supports these properties 
+// As the directionality of the text is semantically related to its content and 
+// not to its presentation, it is recommended that web developers use this 
+// attribute instead of the related CSS properties when possible 
+// That way, the text will display correctly even on a browser that doesn't 
+// support CSS or has the CSS deactivated 
+// The auto value should be used for data with an unknown directionality, like 
+// data coming from user input, eventually stored in a database. 
+    func(e *INPUTElement) DIR(c InputDirChoice) *INPUTElement{
+            if e.StringAttributes == nil {
+                e.StringAttributes = treemap.New[string,string]()
+            }
+            e.StringAttributes.Set("dir", string(c))
+            return e
+        }
+
+        type InputDirChoice string
+        const(
+        // which means left to right and is to be used for languages that are written from 
+// the left to the right (like English); 
+            InputDir_ltr InputDirChoice = "ltr"
+        // which means right to left and is to be used for languages that are written from 
+// the right to the left (like Arabic); 
+            InputDir_rtl InputDirChoice = "rtl"
+        // which lets the user agent decide 
+// It uses a basic algorithm as it parses the characters inside the element until 
+// it finds a character with a strong directionality, then it applies that 
+// directionality to the whole element. 
+            InputDir_auto InputDirChoice = "auto"
+        )
+
+        // Remove the attribute DIR from the element.
+        func(e *INPUTElement) DIRRemove(c InputDirChoice) *INPUTElement{
+            if e.StringAttributes == nil {
+                return e
+            }
+            e.StringAttributes.Del("dir")
+            return e
+        }
+        
+
+    // The draggable global attribute is an enumerated attribute that indicates 
+// whether the element can be dragged, either with native browser behavior or the 
+// HTML Drag and Drop API. 
+    func(e *INPUTElement) DRAGGABLE(c InputDraggableChoice) *INPUTElement{
+            if e.StringAttributes == nil {
+                e.StringAttributes = treemap.New[string,string]()
+            }
+            e.StringAttributes.Set("draggable", string(c))
+            return e
+        }
+
+        type InputDraggableChoice string
+        const(
+        // The element is draggable. 
+            InputDraggable_true InputDraggableChoice = "true"
+        // The element is not draggable. 
+            InputDraggable_false InputDraggableChoice = "false"
+        // drag behavior is the default browser behavior: only text selections, images, 
+// and links can be dragged 
+// For other elements, the event ondragstart must be set for drag and drop to work 
+            InputDraggable_empty InputDraggableChoice = ""
+        // drag behavior is the default browser behavior: only text selections, images, 
+// and links can be dragged 
+// For other elements, the event ondragstart must be set for drag and drop to work 
+            InputDraggable_auto InputDraggableChoice = "auto"
+        )
+
+        // Remove the attribute DRAGGABLE from the element.
+        func(e *INPUTElement) DRAGGABLERemove(c InputDraggableChoice) *INPUTElement{
+            if e.StringAttributes == nil {
+                return e
+            }
+            e.StringAttributes.Del("draggable")
+            return e
+        }
+        
+
+    // The enterkeyhint global attribute is an enumerated attribute defining what 
+// action label (or icon) to present for the enter key on virtual keyboards. 
+    func(e *INPUTElement) ENTERKEYHINT(c InputEnterkeyhintChoice) *INPUTElement{
+            if e.StringAttributes == nil {
+                e.StringAttributes = treemap.New[string,string]()
+            }
+            e.StringAttributes.Set("enterkeyhint", string(c))
+            return e
+        }
+
+        type InputEnterkeyhintChoice string
+        const(
+        // Typically inserting a new line. 
+            InputEnterkeyhint_enter InputEnterkeyhintChoice = "enter"
+        // Typically meaning there is nothing more to input and the input method editor 
+// (IME) will be closed. 
+            InputEnterkeyhint_done InputEnterkeyhintChoice = "done"
+        // Typically meaning to take the user to the target of the text they typed. 
+            InputEnterkeyhint_go InputEnterkeyhintChoice = "go"
+        // Typically meaning to take the user to the next field that will accept text. 
+            InputEnterkeyhint_next InputEnterkeyhintChoice = "next"
+        // Typically meaning to take the user to the previous field that will accept text. 
+            InputEnterkeyhint_previous InputEnterkeyhintChoice = "previous"
+        // Typically taking the user to the results of searching for the text they have 
+// typed. 
+            InputEnterkeyhint_search InputEnterkeyhintChoice = "search"
+        // Typically delivering the text to its target. 
+            InputEnterkeyhint_send InputEnterkeyhintChoice = "send"
+        )
+
+        // Remove the attribute ENTERKEYHINT from the element.
+        func(e *INPUTElement) ENTERKEYHINTRemove(c InputEnterkeyhintChoice) *INPUTElement{
+            if e.StringAttributes == nil {
+                return e
+            }
+            e.StringAttributes.Del("enterkeyhint")
+            return e
+        }
+        
+
+    // The exportparts global attribute allows you to select and style elements 
+// existing in nested shadow trees, by exporting their part names 
+// The shadow tree is an isolated structure where identifiers, classes, and styles 
+// cannot be reached by selectors or queries belonging to a regular DOM 
+// To apply a style to an element living in a shadow tree, by CSS rule created 
+// outside of it, part global attribute has to be used 
+// It has to be assigned to an element present in Shadow Tree, and its value 
+// should be some identifier 
+// Rules present outside of the shadow tree, must use the ::part pseudo-element, 
+// containing the same identifier as the argument 
+// The global attribute part makes the element visible on just a single level of 
+// depth 
+// When the shadow tree is nested, parts will be visible only to the parent of the 
+// shadow tree but not to its ancestor 
+// Exporting parts further down is exactly what exportparts attribute is for 
+// Attribute exportparts must be placed on a shadow Host, which is the element to 
+// which the shadow tree is attached 
+// The value of the attribute should be a comma-separated list of part names 
+// present in the shadow tree and which should be made available via a DOM outside 
+// of the current structure. 
+    func(e *INPUTElement) EXPORTPARTS(s ...string) *INPUTElement{
+            if e.DelimitedStrings == nil {
+                e.DelimitedStrings = treemap.New[string,*DelimitedBuilder[string]]()
+            }
+            ds, ok := e.DelimitedStrings.Get("exportparts")
+            if !ok {
+                ds = NewDelimitedBuilder[string](",")
+                e.DelimitedStrings.Set("exportparts", ds)
+            }
+            ds.Add(s...)
+            return e
+        }
+
+        func(e *INPUTElement) IfEXPORTPARTS(condition bool, s ...string) *INPUTElement{
+            if condition {
+                e.EXPORTPARTS(s...)
+            }
+            return e
+        }
+
+        // Remove the attribute EXPORTPARTS from the element.
+        func(e *INPUTElement) EXPORTPARTSRemove(s ...string) *INPUTElement{
+            if e.DelimitedStrings == nil {
+                return e
+            }
+            ds, ok := e.DelimitedStrings.Get("exportparts")
+            if !ok {
+                return e
+            }
+            ds.Remove(s ...)
+            return e
+        }
+
+    
+
+    // The hidden global attribute is a Boolean attribute indicating that the element 
+// is not yet, or is no longer, relevant 
+// For example, it can be used to hide elements of the page that can't be used 
+// until the login process has been completed 
+// Note that browsers typically implement hidden until found using 
+// content-visibility: hidden 
+// This means that unlike elements in the hidden state, elements in the hidden 
+// until found state will have generated boxes, meaning that: the element will 
+// participate in page layout margin, borders, padding, and background for the 
+// element will be rendered 
+// Also, the element needs to be affected by layout containment in order to be 
+// revealed 
+// This means that if the element in the hidden until found state has a display 
+// value of none, contents, or inline, then the element will not be revealed by 
+// find in page or fragment navigation. 
+    func(e *INPUTElement) HIDDEN(c InputHiddenChoice) *INPUTElement{
+            if e.StringAttributes == nil {
+                e.StringAttributes = treemap.New[string,string]()
+            }
+            e.StringAttributes.Set("hidden", string(c))
+            return e
+        }
+
+        type InputHiddenChoice string
+        const(
+        // set the element to the hidden state 
+// Additionally, invalid values set the element to the hidden state. 
+            InputHidden_empty InputHiddenChoice = ""
+        // set the element to the hidden state 
+// Additionally, invalid values set the element to the hidden state. 
+            InputHidden_hidden InputHiddenChoice = "hidden"
+        // the element is hidden but its content will be accessible to the browser's "find 
+// in page" feature or to fragment navigation 
+// When these features cause a scroll to an element in a hidden until found 
+// subtree, the browser will fire a beforematch event on the hidden element remove 
+// the hidden attribute from the element scroll to the element 
+// 			 
+            InputHidden_until_found InputHiddenChoice = "until-found"
+        )
+
+        // Remove the attribute HIDDEN from the element.
+        func(e *INPUTElement) HIDDENRemove(c InputHiddenChoice) *INPUTElement{
+            if e.StringAttributes == nil {
+                return e
+            }
+            e.StringAttributes.Del("hidden")
+            return e
+        }
+        
+
+    // The id global attribute defines a unique identifier (ID) which must be unique 
+// in the whole document 
+// Its purpose is to identify the element when linking (using a fragment 
+// identifier), scripting, or styling (with CSS). 
+    func(e *INPUTElement) ID(s string) *INPUTElement{
+            if e.StringAttributes == nil {
+                e.StringAttributes = treemap.New[string,string]()
+            }
+            e.StringAttributes.Set("id", s)
+            return e
+        }
+
+        func(e *INPUTElement) IfID(condition bool, s string) *INPUTElement{
+            if condition {
+                e.ID(s)
+            }
+            return e
+        }
+
+        // Remove the attribute ID from the element.
+        func(e *INPUTElement) IDRemove(s string) *INPUTElement{
+            if e.StringAttributes == nil {
+                return e
+            }
+            e.StringAttributes.Del("id")
+            return e
+        }
+    
+
+    // The inert global attribute is a Boolean attribute indicating that the browser 
+// will ignore the element 
+// With the inert attribute, all of the element's flat tree descendants (such as 
+// modal <dialog>s) that don't otherwise escape inertness are ignored 
+// The inert attribute also makes the browser ignore input events sent by the 
+// user, including focus-related events and events from assistive technologies 
+// Specifically, inert does the following: Prevents the click event from being 
+// fired when the user clicks on the element 
+// Prevents the focus event from being raised by preventing the element from 
+// gaining focus 
+// Hides the element and its content from assistive technologies by excluding them 
+// from the accessibility tree. 
+    func(e *INPUTElement) INERT() *INPUTElement{
+            e.INERTSet(true)
+            return e
+        }
+
+        func(e *INPUTElement) IfINERT(condition bool) *INPUTElement {
+            if condition {
+                e.INERTSet(true)
+            }
+            return e
+        }
+
+        // Set the attribute INERT to the value b explicitly.
+        func(e *INPUTElement) INERTSet(b bool) *INPUTElement{
+            if e.BoolAttributes == nil {
+                e.BoolAttributes = treemap.New[string,bool]()
+            }
+            e.BoolAttributes.Set("inert", b)
+            return e
+        }
+
+        func (e *INPUTElement) IfSetINERT(condition bool, b bool) *INPUTElement {
+            if condition {
+                e.INERTSet(b)
+            }
+            return e
+        }
+
+        // Remove the attribute INERT from the element.
+        func(e *INPUTElement) INERTRemove(b bool) *INPUTElement{
+            if e.BoolAttributes == nil {
+                return e
+            }
+            e.BoolAttributes.Del("inert")
+            return e
+        }
+
+    
+
+    // The inputmode global attribute is an enumerated attribute that hints at the 
+// type of data that might be entered by the user while editing the element or its 
+// contents 
+// This allows a browser to display an appropriate virtual keyboard 
+// It is used primarily on <input> elements, but is usable on any element in 
+// contenteditable mode 
+// It's important to understand that the inputmode attribute doesn't cause any 
+// validity requirements to be enforced on input 
+// To require that input conforms to a particular data type, choose an appropriate 
+// <input> element type 
+// For specific guidance on choosing <input> types, see the Values section. 
+    func(e *INPUTElement) INPUTMODE(c InputInputmodeChoice) *INPUTElement{
+            if e.StringAttributes == nil {
+                e.StringAttributes = treemap.New[string,string]()
+            }
+            e.StringAttributes.Set("inputmode", string(c))
+            return e
+        }
+
+        type InputInputmodeChoice string
+        const(
+        // No virtual keyboard 
+// For when the page implements its own keyboard input control. 
+            InputInputmode_none InputInputmodeChoice = "none"
+        // Standard input keyboard for the user's current locale. 
+            InputInputmode_empty InputInputmodeChoice = ""
+        // Standard input keyboard for the user's current locale. 
+            InputInputmode_text InputInputmodeChoice = "text"
+        // Fractional numeric input keyboard containing the digits and decimal separator 
+// for the user's locale (typically  
+// or ,) 
+// Devices may or may not show a minus key (-). 
+            InputInputmode_decimal InputInputmodeChoice = "decimal"
+        // Numeric input keyboard, but only requires the digits 0–9 
+// Devices may or may not show a minus key. 
+            InputInputmode_numeric InputInputmodeChoice = "numeric"
+        // A telephone keypad input, including the digits 0–9, the asterisk (*), and the 
+// pound (#) key 
+// Inputs that *require* a telephone number should typically use <input 
+// type="tel"> instead. 
+            InputInputmode_tel InputInputmodeChoice = "tel"
+        // A virtual keyboard optimized for search input 
+// For instance, the return/submit key may be labeled "Search", along with 
+// possible other optimizations 
+// Inputs that require a search query should typically use <input type="search"> 
+// instead. 
+            InputInputmode_search InputInputmodeChoice = "search"
+        // A virtual keyboard optimized for entering email addresses 
+// Typically includes the @character as well as other optimizations 
+// Inputs that require email addresses should typically use <input type="email"> 
+// instead. 
+            InputInputmode_email InputInputmodeChoice = "email"
+        // A keypad optimized for entering URLs 
+// This may have the / key more prominent, for example 
+// Enhanced features could include history access and so on 
+// Inputs that require a URL should typically use <input type="url"> instead. 
+            InputInputmode_url InputInputmodeChoice = "url"
+        )
+
+        // Remove the attribute INPUTMODE from the element.
+        func(e *INPUTElement) INPUTMODERemove(c InputInputmodeChoice) *INPUTElement{
+            if e.StringAttributes == nil {
+                return e
+            }
+            e.StringAttributes.Del("inputmode")
+            return e
+        }
+        
+
+    // The is global attribute allows you to specify that a standard HTML element 
+// should behave like a defined custom built-in element (see Using custom elements 
+// for more details) 
+// This attribute can only be used if the specified custom element name has been 
+// successfully defined in the current document, and extends the element type it 
+// is being applied to. 
+    func(e *INPUTElement) IS(s string) *INPUTElement{
+            if e.StringAttributes == nil {
+                e.StringAttributes = treemap.New[string,string]()
+            }
+            e.StringAttributes.Set("is", s)
+            return e
+        }
+
+        func(e *INPUTElement) IfIS(condition bool, s string) *INPUTElement{
+            if condition {
+                e.IS(s)
+            }
+            return e
+        }
+
+        // Remove the attribute IS from the element.
+        func(e *INPUTElement) ISRemove(s string) *INPUTElement{
+            if e.StringAttributes == nil {
+                return e
+            }
+            e.StringAttributes.Del("is")
+            return e
+        }
+    
+
+    // The itemid global attribute provides microdata in the form of a unique, global 
+// identifier of an item. 
+//  
+// 		An itemid attribute can only be specified for an element that has both 
+// itemscope and itemtype attributes 
+// Also, itemid can only be specified on elements that possess an itemscope 
+// attribute whose corresponding itemtype refers to or defines a vocabulary that 
+// supports global identifiers 
+// The exact meaning of an itemtype's global identifier is provided by the 
+// definition of that identifier within the specified vocabulary 
+// The vocabulary defines whether several items with the same global identifier 
+// can coexist and, if so, how items with the same identifier are handled. 
+    func(e *INPUTElement) ITEMID(s string) *INPUTElement{
+            if e.StringAttributes == nil {
+                e.StringAttributes = treemap.New[string,string]()
+            }
+            e.StringAttributes.Set("itemid", s)
+            return e
+        }
+
+        func(e *INPUTElement) IfITEMID(condition bool, s string) *INPUTElement{
+            if condition {
+                e.ITEMID(s)
+            }
+            return e
+        }
+
+        // Remove the attribute ITEMID from the element.
+        func(e *INPUTElement) ITEMIDRemove(s string) *INPUTElement{
+            if e.StringAttributes == nil {
+                return e
+            }
+            e.StringAttributes.Del("itemid")
+            return e
+        }
+    
+
+    // The itemprop global attribute is used to add properties to an item 
+// Every HTML element can have an itemprop attribute specified, and an itemprop 
+// consists of a name-value pair 
+// Each name-value pair is called a property, and a group of one or more 
+// properties forms an item 
+// Property values are either a string or a URL and can be associated with a very 
+// wide range of elements including <audio>, <embed>, <iframe>, <img>, <link>, 
+// <object>, <source>, <track>, and <video>. 
+    func(e *INPUTElement) ITEMPROP(s string) *INPUTElement{
+            if e.StringAttributes == nil {
+                e.StringAttributes = treemap.New[string,string]()
+            }
+            e.StringAttributes.Set("itemprop", s)
+            return e
+        }
+
+        func(e *INPUTElement) IfITEMPROP(condition bool, s string) *INPUTElement{
+            if condition {
+                e.ITEMPROP(s)
+            }
+            return e
+        }
+
+        // Remove the attribute ITEMPROP from the element.
+        func(e *INPUTElement) ITEMPROPRemove(s string) *INPUTElement{
+            if e.StringAttributes == nil {
+                return e
+            }
+            e.StringAttributes.Del("itemprop")
+            return e
+        }
+    
+
+    // Properties that are not descendants of an element with the itemscope attribute 
+// can be associated with an item using the global attribute itemref 
+// itemref provides a list of element IDs (not itemids) elsewhere in the document, 
+// with additional properties The itemref attribute can only be specified on 
+// elements that have an itemscope attribute specified. 
+    func(e *INPUTElement) ITEMREF(s string) *INPUTElement{
+            if e.StringAttributes == nil {
+                e.StringAttributes = treemap.New[string,string]()
+            }
+            e.StringAttributes.Set("itemref", s)
+            return e
+        }
+
+        func(e *INPUTElement) IfITEMREF(condition bool, s string) *INPUTElement{
+            if condition {
+                e.ITEMREF(s)
+            }
+            return e
+        }
+
+        // Remove the attribute ITEMREF from the element.
+        func(e *INPUTElement) ITEMREFRemove(s string) *INPUTElement{
+            if e.StringAttributes == nil {
+                return e
+            }
+            e.StringAttributes.Del("itemref")
+            return e
+        }
+    
+
+    // The itemscope global attribute is used to add an item to a microdata DOM tree 
+// Every HTML element can have an itemscope attribute specified, and an itemscope 
+// consists of a name-value pair 
+// Each name-value pair is called a property, and a group of one or more 
+// properties forms an item 
+// Property values are either a string or a URL and can be associated with a very 
+// wide range of elements including <audio>, <embed>, <iframe>, <img>, <link>, 
+// <object>, <source>, <track>, and <video>. 
+    func(e *INPUTElement) ITEMSCOPE() *INPUTElement{
+            e.ITEMSCOPESet(true)
+            return e
+        }
+
+        func(e *INPUTElement) IfITEMSCOPE(condition bool) *INPUTElement {
+            if condition {
+                e.ITEMSCOPESet(true)
+            }
+            return e
+        }
+
+        // Set the attribute ITEMSCOPE to the value b explicitly.
+        func(e *INPUTElement) ITEMSCOPESet(b bool) *INPUTElement{
+            if e.BoolAttributes == nil {
+                e.BoolAttributes = treemap.New[string,bool]()
+            }
+            e.BoolAttributes.Set("itemscope", b)
+            return e
+        }
+
+        func (e *INPUTElement) IfSetITEMSCOPE(condition bool, b bool) *INPUTElement {
+            if condition {
+                e.ITEMSCOPESet(b)
+            }
+            return e
+        }
+
+        // Remove the attribute ITEMSCOPE from the element.
+        func(e *INPUTElement) ITEMSCOPERemove(b bool) *INPUTElement{
+            if e.BoolAttributes == nil {
+                return e
+            }
+            e.BoolAttributes.Del("itemscope")
+            return e
+        }
+
+    
+
+    // The itemtype global attribute is used to add types to an item 
+// Every HTML element can have an itemtype attribute specified, and an itemtype 
+// consists of a name-value pair 
+// Each name-value pair is called a property, and a group of one or more 
+// properties forms an item 
+// Property values are either a string or a URL and can be associated with a very 
+// wide range of elements including <audio>, <embed>, <iframe>, <img>, <link>, 
+// <object>, <source>, <track>, and <video>. 
+    func(e *INPUTElement) ITEMTYPE(s string) *INPUTElement{
+            if e.StringAttributes == nil {
+                e.StringAttributes = treemap.New[string,string]()
+            }
+            e.StringAttributes.Set("itemtype", s)
+            return e
+        }
+
+        func(e *INPUTElement) IfITEMTYPE(condition bool, s string) *INPUTElement{
+            if condition {
+                e.ITEMTYPE(s)
+            }
+            return e
+        }
+
+        // Remove the attribute ITEMTYPE from the element.
+        func(e *INPUTElement) ITEMTYPERemove(s string) *INPUTElement{
+            if e.StringAttributes == nil {
+                return e
+            }
+            e.StringAttributes.Del("itemtype")
+            return e
+        }
+    
+
+    // The lang global attribute helps define the language of an element: the language 
+// that non-editable elements are written in or the language that editable 
+// elements should be written in by the user 
+// The tag contains one single entry value in the format defines in the Tags for 
+// Identifying Languages (BCP47) IETF document 
+// xml:lang has priority over it. 
+    func(e *INPUTElement) LANG(s string) *INPUTElement{
+            if e.StringAttributes == nil {
+                e.StringAttributes = treemap.New[string,string]()
+            }
+            e.StringAttributes.Set("lang", s)
+            return e
+        }
+
+        func(e *INPUTElement) IfLANG(condition bool, s string) *INPUTElement{
+            if condition {
+                e.LANG(s)
+            }
+            return e
+        }
+
+        // Remove the attribute LANG from the element.
+        func(e *INPUTElement) LANGRemove(s string) *INPUTElement{
+            if e.StringAttributes == nil {
+                return e
+            }
+            e.StringAttributes.Del("lang")
+            return e
+        }
+    
+
+    // The nonce global attribute is a unique identifier used to declare inline 
+// scripts and style elements to be used in a specific document 
+// It is a cryptographic nonce (number used once) that is used by Content Security 
+// Policy to determine whether or not a given inline script is allowed to execute. 
+    func(e *INPUTElement) NONCE(s string) *INPUTElement{
+            if e.StringAttributes == nil {
+                e.StringAttributes = treemap.New[string,string]()
+            }
+            e.StringAttributes.Set("nonce", s)
+            return e
+        }
+
+        func(e *INPUTElement) IfNONCE(condition bool, s string) *INPUTElement{
+            if condition {
+                e.NONCE(s)
+            }
+            return e
+        }
+
+        // Remove the attribute NONCE from the element.
+        func(e *INPUTElement) NONCERemove(s string) *INPUTElement{
+            if e.StringAttributes == nil {
+                return e
+            }
+            e.StringAttributes.Del("nonce")
+            return e
+        }
+    
+
+    // The part global attribute contains a space-separated list of the part names of 
+// the element 
+// Part names allows CSS to select and style specific elements in a shadow tree 
+// via the ::part pseudo-element. 
+    func(e *INPUTElement) PART(s ...string) *INPUTElement{
+            if e.DelimitedStrings == nil {
+                e.DelimitedStrings = treemap.New[string,*DelimitedBuilder[string]]()
+            }
+            ds, ok := e.DelimitedStrings.Get("part")
+            if !ok {
+                ds = NewDelimitedBuilder[string](" ")
+                e.DelimitedStrings.Set("part", ds)
+            }
+            ds.Add(s...)
+            return e
+        }
+
+        func(e *INPUTElement) IfPART(condition bool, s ...string) *INPUTElement{
+            if condition {
+                e.PART(s...)
+            }
+            return e
+        }
+
+        // Remove the attribute PART from the element.
+        func(e *INPUTElement) PARTRemove(s ...string) *INPUTElement{
+            if e.DelimitedStrings == nil {
+                return e
+            }
+            ds, ok := e.DelimitedStrings.Get("part")
+            if !ok {
+                return e
+            }
+            ds.Remove(s ...)
+            return e
+        }
+
+    
+
+    // The popover global attribute is used to designate an element as a popover 
+// element 
+// Popover elements are hidden via display: none until opened via an 
+// invoking/control element (i.e 
+// a <button> or <input type="button"> with a popovertarget attribute) or a 
+// HTMLElement.showPopover() call 
+// When open, popover elements will appear above all other elements in the top 
+// layer, and won't be influenced by parent elements' position or overflow 
+// styling. 
+    func(e *INPUTElement) POPVER(c InputPopverChoice) *INPUTElement{
+            if e.StringAttributes == nil {
+                e.StringAttributes = treemap.New[string,string]()
+            }
+            e.StringAttributes.Set("popver", string(c))
+            return e
+        }
+
+        type InputPopverChoice string
+        const(
+        // Popovers that have the auto state can be "light dismissed" by selecting outside 
+// the popover area, and generally only allow one popover to be displayed 
+// on-screen at a time. 
+            InputPopver_auto InputPopverChoice = "auto"
+        // Popovers that have the auto state can be "light dismissed" by selecting outside 
+// the popover area, and generally only allow one popover to be displayed 
+// on-screen at a time. 
+            InputPopver_empty InputPopverChoice = ""
+        // manual popovers must always be explicitly hidden, but allow for use cases such 
+// as nested popovers in menus. 
+            InputPopver_manual InputPopverChoice = "manual"
+        )
+
+        // Remove the attribute POPVER from the element.
+        func(e *INPUTElement) POPVERRemove(c InputPopverChoice) *INPUTElement{
+            if e.StringAttributes == nil {
+                return e
+            }
+            e.StringAttributes.Del("popver")
+            return e
+        }
+        
+
+    // The slot global attribute assigns a slot in a shadow DOM shadow tree to an 
+// element: An element with a slot attribute is assigned to the slot created by 
+// the <slot> element whose name attribute's value matches that slot attribute's 
+// value. 
+    func(e *INPUTElement) SLOT(s string) *INPUTElement{
+            if e.StringAttributes == nil {
+                e.StringAttributes = treemap.New[string,string]()
+            }
+            e.StringAttributes.Set("slot", s)
+            return e
+        }
+
+        func(e *INPUTElement) IfSLOT(condition bool, s string) *INPUTElement{
+            if condition {
+                e.SLOT(s)
+            }
+            return e
+        }
+
+        // Remove the attribute SLOT from the element.
+        func(e *INPUTElement) SLOTRemove(s string) *INPUTElement{
+            if e.StringAttributes == nil {
+                return e
+            }
+            e.StringAttributes.Del("slot")
+            return e
+        }
+    
+
+    // The spellcheck global attribute is an enumerated attribute that defines whether 
+// the element may be checked for spelling errors 
+// If this attribute is not set, its default value is element-type and 
+// browser-defined 
+// This default value may also be inherited, which means that the element content 
+// will be checked for spelling errors only if its nearest ancestor has a 
+// spellcheck state of true 
+// Security and privacy concerns Using spellchecking can have consequences for 
+// users' security and privacy 
+// The specification does not regulate how spellchecking is done and the content 
+// of the element may be sent to a third party for spellchecking results (see 
+// enhanced spellchecking and "spell-jacking") 
+// You should consider setting spellcheck to false for elements that can contain 
+// sensitive information. 
+    func(e *INPUTElement) SPELLCHECK(c InputSpellcheckChoice) *INPUTElement{
+            if e.StringAttributes == nil {
+                e.StringAttributes = treemap.New[string,string]()
+            }
+            e.StringAttributes.Set("spellcheck", string(c))
+            return e
+        }
+
+        type InputSpellcheckChoice string
+        const(
+        // The element will be checked for spelling errors. 
+            InputSpellcheck_empty InputSpellcheckChoice = ""
+        // The element will be checked for spelling errors. 
+            InputSpellcheck_true InputSpellcheckChoice = "true"
+        // The element will not be checked for spelling errors. 
+            InputSpellcheck_false InputSpellcheckChoice = "false"
+        )
+
+        // Remove the attribute SPELLCHECK from the element.
+        func(e *INPUTElement) SPELLCHECKRemove(c InputSpellcheckChoice) *INPUTElement{
+            if e.StringAttributes == nil {
+                return e
+            }
+            e.StringAttributes.Del("spellcheck")
+            return e
+        }
+        
+
+    // The style global attribute is used to add styles to an element, such as color, 
+// font, size, and more 
+// Styles are written in CSS. 
+    func (e *INPUTElement) STYLEF(k string, format string, args ...any) *INPUTElement {
+            return e.STYLE(k, fmt.Sprintf(format, args...))
+        }
+
+        func (e *INPUTElement) IfSTYLE(condition bool, k string, v string) *INPUTElement {
+            if condition {
+                e.STYLE(k, v)
+            }
+            return e
+        }
+
+        func (e *INPUTElement) STYLE(k string, v string) *INPUTElement {
+            if e.KVStrings == nil {
+                e.KVStrings = treemap.New[string,*KVBuilder]()
+            }
+            kv, ok := e.KVStrings.Get("style")
+            if !ok {
+                kv = NewKVBuilder(":", ";")
+                e.KVStrings.Set("style", kv)
+            }
+            kv.Add(k, v)
+            return e
+        }
+
+        func (e *INPUTElement) IfSTYLEF(condition bool, k string, format string, args ...any) *INPUTElement {
+            if condition {
+                e.STYLE(k, fmt.Sprintf(format, args...))
+            }
+            return e
+        }
+
+        // Add the attributes in the map to the element.
+        func (e *INPUTElement) STYLEMap(m map[string]string) *INPUTElement {
+            if e.KVStrings == nil {
+                e.KVStrings = treemap.New[string,*KVBuilder]()
+            }
+            kv, ok := e.KVStrings.Get("style")
+            if !ok {
+                kv = NewKVBuilder(":", ";")
+                e.KVStrings.Set("style", kv)
+            }
+            for k, v := range m {
+                kv.Add(k, v)
+            }
+            return e
+        }
+
+        // Add pairs of attributes to the element.
+        func (e *INPUTElement) STYLEPairs(pairs ...string) *INPUTElement {
+            if len(pairs) % 2 != 0 {
+                panic("Must have an even number of pairs")
+            }
+            if e.KVStrings == nil {
+                e.KVStrings = treemap.New[string,*KVBuilder]()
+            }
+            kv, ok := e.KVStrings.Get("style")
+            if !ok {
+                kv = NewKVBuilder(":", ";")
+                e.KVStrings.Set("style", kv)
+            }
+
+            for i := 0; i < len(pairs); i += 2 {
+                kv.Add(pairs[i], pairs[i+1])
+            }
+
+            return e
+        }
+
+        func (e *INPUTElement) IfSTYLEPairs(condition bool, pairs ...string) *INPUTElement {
+            if condition {
+                e.STYLEPairs(pairs...)
+            }
+            return e
+        }
+
+        // Remove the attribute STYLE from the element.
+        func (e *INPUTElement) STYLERemove(keys ...string) *INPUTElement {
+            if e.KVStrings == nil {
+                return e
+            }
+            kv, ok := e.KVStrings.Get("style")
+            if !ok {
+                return e
+            }
+            for _, k := range keys {
+                kv.Remove(k)
+            }
+            return e
+        }
+
+    
+
+    // The tabindex global attribute indicates if its element can be focused, and 
+// if/where it participates in sequential keyboard navigation (usually with the 
+// Tab key, hence the name) 
+// It accepts an integer as a value, with different results depending on the 
+// integer's value: a negative value (usually tabindex="-1") means that the 
+// element should be focusable, but should not be reachable via sequential 
+// keyboard navigation; a value of 0 (tabindex="0") means that the element should 
+// be focusable and reachable via sequential keyboard navigation, but its relative 
+// order is defined by the platform convention; a positive value means should be 
+// focusable and reachable via sequential keyboard navigation; its relative order 
+// is defined by the value of the attribute: the sequential follow the increasing 
+// number of the tabindex 
+// If several elements share the same tabindex, their relative order follows their 
+// relative position in the document. 
+    func(e *INPUTElement) TABINDEX(i int) *INPUTElement{
+            if e.IntAttributes == nil {
+                e.IntAttributes = treemap.New[string,int]()
+            }
+            e.IntAttributes.Set("tabindex", i)
+            return e
+        }
+
+        func (e *INPUTElement) IfTABINDEX(condition bool, i int) *INPUTElement {
+            if condition {
+                e.TABINDEX(i)
+            }
+            return e
+        }
+
+        // Remove the attribute TABINDEX from the element.
+        func(e *INPUTElement) TABINDEXRemove(i int) *INPUTElement{
+            if e.IntAttributes == nil {
+                return e
+            }
+            e.IntAttributes.Del("tabindex")
+            return e
+        }
+        
+
+    // The title global attribute contains text representing advisory information 
+// related to the element it belongs to 
+// Such information can typically, but not necessarily, be presented to the user 
+// as a tooltip 
+// The main use of the title attribute is to label <iframe> elements for assistive 
+// technology 
+// The title attribute may also be used to label controls in data tables 
+// The title attribute, when added to <link rel="stylesheet">, creates an 
+// alternate stylesheet 
+// When defining an alternative style sheet with <link rel="alternate"> the 
+// attribute is required and must be set to a non-empty string 
+// If included on the <abbr> opening tag, the title must be a full expansion of 
+// the abbreviation or acronym 
+// Instead of using title, when possible, provide an expansion of the abbreviation 
+// or acronym in plain text on first use, using the <abbr> to mark up the 
+// abbreviation 
+// This enables all users know what name or term the abbreviation or acronym 
+// shortens while providing a hint to user agents on how to announce the content 
+// While title can be used to provide a programmatically associated label for an 
+// <input> element, this is not good practice 
+// Use a <label> instead. 
+    func(e *INPUTElement) TITLE(s string) *INPUTElement{
+            if e.StringAttributes == nil {
+                e.StringAttributes = treemap.New[string,string]()
+            }
+            e.StringAttributes.Set("title", s)
+            return e
+        }
+
+        func(e *INPUTElement) IfTITLE(condition bool, s string) *INPUTElement{
+            if condition {
+                e.TITLE(s)
+            }
+            return e
+        }
+
+        // Remove the attribute TITLE from the element.
+        func(e *INPUTElement) TITLERemove(s string) *INPUTElement{
+            if e.StringAttributes == nil {
+                return e
+            }
+            e.StringAttributes.Del("title")
+            return e
+        }
+    
+
+    // The translate global attribute is an enumerated attribute that is used to 
+// specify whether an element's attribute values and the values of its Text node 
+// children are to be translated when the page is localized, or whether to leave 
+// them unchanged. 
+    func(e *INPUTElement) TRANSLATE(c InputTranslateChoice) *INPUTElement{
+            if e.StringAttributes == nil {
+                e.StringAttributes = treemap.New[string,string]()
+            }
+            e.StringAttributes.Set("translate", string(c))
+            return e
+        }
+
+        type InputTranslateChoice string
+        const(
+        // indicates that the element should be translated when the page is localized. 
+            InputTranslate_empty InputTranslateChoice = ""
+        // indicates that the element should be translated when the page is localized. 
+            InputTranslate_yes InputTranslateChoice = "yes"
+        // indicates that the element must not be translated when the page is localized. 
+            InputTranslate_no InputTranslateChoice = "no"
+        )
+
+        // Remove the attribute TRANSLATE from the element.
+        func(e *INPUTElement) TRANSLATERemove(c InputTranslateChoice) *INPUTElement{
+            if e.StringAttributes == nil {
+                return e
+            }
+            e.StringAttributes.Del("translate")
+            return e
+        }
+        
+
+    // Merges the store with the given object 
+    
+        func(e *INPUTElement) DATASTAR_MERGE_STORE(v any) *INPUTElement{
+                if e.CustomDataAttributes == nil {
+                    e.CustomDataAttributes = treemap.New[string,string]()
+                }
+                b, err := json.Marshal(v)
+                if err != nil {
+                    panic(err)
+                }
+                e.CustomDataAttributes.Set("data-merge-store", string(b))
+                return e
+            }
+
+        
+
+    // Sets the reference of the element 
+    
+        func(e *INPUTElement) DATASTAR_REF(expression string) *INPUTElement{
+                if e.StringAttributes == nil {
+                    e.StringAttributes = treemap.New[string,string]()
+                }
+                
+                key := "data-ref"
+                
+                e.StringAttributes.Set(key, expression)
+                return e
+            }
+
+            func(e *INPUTElement) IfDATASTAR_REF(condition bool, expression string) *INPUTElement{
+                if condition {
+                    e.DATASTAR_REF( expression, )
+                }
+                return e
+            }
+
+            // Remove the attribute DATASTAR_REF from the element.
+            func(e *INPUTElement) DATASTAR_REFRemove() *INPUTElement{
+                if e.StringAttributes == nil {
+                    return e
+                }
+                e.StringAttributes.Del("data-ref")
+                return e
+            }
+
+        
+
+    // Sets the value of the element 
+    
+        func(e *INPUTElement) DATASTAR_BIND(key string, expression string) *INPUTElement{
+                if e.StringAttributes == nil {
+                    e.StringAttributes = treemap.New[string,string]()
+                }
+                
+                key = fmt.Sprintf("data-bind-%s", key)
+                
+                e.StringAttributes.Set(key, expression)
+                return e
+            }
+
+            func(e *INPUTElement) IfDATASTAR_BIND(condition bool, key string, expression string) *INPUTElement{
+                if condition {
+                    e.DATASTAR_BIND(key,  expression, )
+                }
+                return e
+            }
+
+            // Remove the attribute DATASTAR_BIND from the element.
+            func(e *INPUTElement) DATASTAR_BINDRemove() *INPUTElement{
+                if e.StringAttributes == nil {
+                    return e
+                }
+                e.StringAttributes.Del("data-bind")
+                return e
+            }
+
+        
+
+    // Sets the value of the element 
+    
+        func(e *INPUTElement) DATASTAR_MODEL(expression string) *INPUTElement{
+                if e.StringAttributes == nil {
+                    e.StringAttributes = treemap.New[string,string]()
+                }
+                
+                key := "data-model"
+                
+                e.StringAttributes.Set(key, expression)
+                return e
+            }
+
+            func(e *INPUTElement) IfDATASTAR_MODEL(condition bool, expression string) *INPUTElement{
+                if condition {
+                    e.DATASTAR_MODEL( expression, )
+                }
+                return e
+            }
+
+            // Remove the attribute DATASTAR_MODEL from the element.
+            func(e *INPUTElement) DATASTAR_MODELRemove() *INPUTElement{
+                if e.StringAttributes == nil {
+                    return e
+                }
+                e.StringAttributes.Del("data-model")
+                return e
+            }
+
+        
+
+    // Sets the textContent of the element 
+    
+        func(e *INPUTElement) DATASTAR_TEXT(expression string) *INPUTElement{
+                if e.StringAttributes == nil {
+                    e.StringAttributes = treemap.New[string,string]()
+                }
+                
+                key := "data-text"
+                
+                e.StringAttributes.Set(key, expression)
+                return e
+            }
+
+            func(e *INPUTElement) IfDATASTAR_TEXT(condition bool, expression string) *INPUTElement{
+                if condition {
+                    e.DATASTAR_TEXT( expression, )
+                }
+                return e
+            }
+
+            // Remove the attribute DATASTAR_TEXT from the element.
+            func(e *INPUTElement) DATASTAR_TEXTRemove() *INPUTElement{
+                if e.StringAttributes == nil {
+                    return e
+                }
+                e.StringAttributes.Del("data-text")
+                return e
+            }
+
+        
+
+    // Sets the event handler of the element 
+    
+        type InputDataOnMod customDataKeyModifier
+
+            
+            // Debounces the event handler 
+            func InputDataOnModDebounce(
+                    d time.Duration,
+            ) InputDataOnMod {
+                return func() string {return fmt.Sprintf("debounce_%dms", d.Milliseconds())
+                }
+            }
+            
+            // Throttles the event handler 
+            func InputDataOnModThrottle(
+                    d time.Duration,
+            ) InputDataOnMod {
+                return func() string {return fmt.Sprintf("throttle_%dms", d.Milliseconds())
+                }
+            }
+            
+        func(e *INPUTElement) DATASTAR_ON(key string, expression string, modifiers ...InputDataOnMod) *INPUTElement{
+                if e.StringAttributes == nil {
+                    e.StringAttributes = treemap.New[string,string]()
+                }
+                
+                key = fmt.Sprintf("data-on-%s", key)
+                
+                customMods := lo.Map(modifiers, func(m InputDataOnMod, i int) customDataKeyModifier  {
+                    return customDataKeyModifier(m)
+                })
+                key = customDataKey(key, customMods...)
+                e.StringAttributes.Set(key, expression)
+                return e
+            }
+
+            func(e *INPUTElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...InputDataOnMod) *INPUTElement{
+                if condition {
+                    e.DATASTAR_ON(key,  expression,  modifiers...)
+                }
+                return e
+            }
+
+            // Remove the attribute DATASTAR_ON from the element.
+            func(e *INPUTElement) DATASTAR_ONRemove() *INPUTElement{
+                if e.StringAttributes == nil {
+                    return e
+                }
+                e.StringAttributes.Del("data-on")
+                return e
+            }
+
+        
+
+    // Sets the focus of the element 
+    
+        func(e *INPUTElement) DATASTAR_FOCUSSet(b bool) *INPUTElement{
+                key := "data-focus"
+                e.BoolAttributes.Set(key, b)
+                return e
+            }
+
+            func(e *INPUTElement) DATASTAR_FOCUS() *INPUTElement{
+                return e.DATASTAR_FOCUSSet(true)
+            }
+        
+
+    // Sets the header of for fetch requests 
+    
+        func(e *INPUTElement) DATASTAR_HEADER(key string, expression string) *INPUTElement{
+                if e.StringAttributes == nil {
+                    e.StringAttributes = treemap.New[string,string]()
+                }
+                
+                key = fmt.Sprintf("data-header-%s", key)
+                
+                e.StringAttributes.Set(key, expression)
+                return e
+            }
+
+            func(e *INPUTElement) IfDATASTAR_HEADER(condition bool, key string, expression string) *INPUTElement{
+                if condition {
+                    e.DATASTAR_HEADER(key,  expression, )
+                }
+                return e
+            }
+
+            // Remove the attribute DATASTAR_HEADER from the element.
+            func(e *INPUTElement) DATASTAR_HEADERRemove() *INPUTElement{
+                if e.StringAttributes == nil {
+                    return e
+                }
+                e.StringAttributes.Del("data-header")
+                return e
+            }
+
+        
+
+    // Sets the URL for fetch requests 
+    
+        func(e *INPUTElement) DATASTAR_FETCH_URL(expression string) *INPUTElement{
+                if e.StringAttributes == nil {
+                    e.StringAttributes = treemap.New[string,string]()
+                }
+                
+                key := "data-fetch-url"
+                
+                e.StringAttributes.Set(key, expression)
+                return e
+            }
+
+            func(e *INPUTElement) IfDATASTAR_FETCH_URL(condition bool, expression string) *INPUTElement{
+                if condition {
+                    e.DATASTAR_FETCH_URL( expression, )
+                }
+                return e
+            }
+
+            // Remove the attribute DATASTAR_FETCH_URL from the element.
+            func(e *INPUTElement) DATASTAR_FETCH_URLRemove() *INPUTElement{
+                if e.StringAttributes == nil {
+                    return e
+                }
+                e.StringAttributes.Del("data-fetch-url")
+                return e
+            }
+
+        
+
+    // Sets the indicator selector for fetch requests 
+    
+        func(e *INPUTElement) DATASTAR_FETCH_INDICATOR(expression string) *INPUTElement{
+                if e.StringAttributes == nil {
+                    e.StringAttributes = treemap.New[string,string]()
+                }
+                
+                key := "DatastarFetchIndicator"
+                
+                e.StringAttributes.Set(key, expression)
+                return e
+            }
+
+            func(e *INPUTElement) IfDATASTAR_FETCH_INDICATOR(condition bool, expression string) *INPUTElement{
+                if condition {
+                    e.DATASTAR_FETCH_INDICATOR( expression, )
+                }
+                return e
+            }
+
+            // Remove the attribute DATASTAR_FETCH_INDICATOR from the element.
+            func(e *INPUTElement) DATASTAR_FETCH_INDICATORRemove() *INPUTElement{
+                if e.StringAttributes == nil {
+                    return e
+                }
+                e.StringAttributes.Del("DatastarFetchIndicator")
+                return e
+            }
+
+        
+
+    // Sets the visibility of the element 
+    
+        func(e *INPUTElement) DATASTAR_SHOWSet(b bool) *INPUTElement{
+                key := "data-show"
+                e.BoolAttributes.Set(key, b)
+                return e
+            }
+
+            func(e *INPUTElement) DATASTAR_SHOW() *INPUTElement{
+                return e.DATASTAR_SHOWSet(true)
+            }
+        
+
+    // Triggers the callback when the element intersects the viewport 
+    
+        func(e *INPUTElement) DATASTAR_INTERSECTSSet(b bool) *INPUTElement{
+                key := "data-intersects"
+                e.BoolAttributes.Set(key, b)
+                return e
+            }
+
+            func(e *INPUTElement) DATASTAR_INTERSECTS() *INPUTElement{
+                return e.DATASTAR_INTERSECTSSet(true)
+            }
+        
+
+    // Teleports the element to the given selector 
+    
+        func(e *INPUTElement) DATASTAR_TELEPORTSet(b bool) *INPUTElement{
+                key := "data-teleport"
+                e.BoolAttributes.Set(key, b)
+                return e
+            }
+
+            func(e *INPUTElement) DATASTAR_TELEPORT() *INPUTElement{
+                return e.DATASTAR_TELEPORTSet(true)
+            }
+        
+
+    // Scrolls the element into view 
+    
+        func(e *INPUTElement) DATASTAR_SCROLL_INTO_VIEWSet(b bool) *INPUTElement{
+                key := "data-scroll-into-view"
+                e.BoolAttributes.Set(key, b)
+                return e
+            }
+
+            func(e *INPUTElement) DATASTAR_SCROLL_INTO_VIEW() *INPUTElement{
+                return e.DATASTAR_SCROLL_INTO_VIEWSet(true)
+            }
+        
+
+    // Setup the ViewTransitionAPI for the element 
+    
+        func(e *INPUTElement) DATASTAR_VIEW_TRANSITION(key string, expression string) *INPUTElement{
+                if e.StringAttributes == nil {
+                    e.StringAttributes = treemap.New[string,string]()
+                }
+                
+                key = fmt.Sprintf("data-view-transition-%s", key)
+                
+                e.StringAttributes.Set(key, expression)
+                return e
+            }
+
+            func(e *INPUTElement) IfDATASTAR_VIEW_TRANSITION(condition bool, key string, expression string) *INPUTElement{
+                if condition {
+                    e.DATASTAR_VIEW_TRANSITION(key,  expression, )
+                }
+                return e
+            }
+
+            // Remove the attribute DATASTAR_VIEW_TRANSITION from the element.
+            func(e *INPUTElement) DATASTAR_VIEW_TRANSITIONRemove() *INPUTElement{
+                if e.StringAttributes == nil {
+                    return e
+                }
+                e.StringAttributes.Del("data-view-transition")
+                return e
+            }
+
+        
 
-func (e *INPUTElement) IfTITLE(condition bool, s string) *INPUTElement {
-	if condition {
-		e.TITLE(s)
-	}
-	return e
-}
-
-// Remove the attribute TITLE from the element.
-func (e *INPUTElement) TITLERemove(s string) *INPUTElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("title")
-	return e
-}
-
-// The translate global attribute is an enumerated attribute that is used to
-// specify whether an element's attribute values and the values of its Text node
-// children are to be translated when the page is localized, or whether to leave
-// them unchanged.
-func (e *INPUTElement) TRANSLATE(c InputTranslateChoice) *INPUTElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	e.StringAttributes.Set("translate", string(c))
-	return e
-}
-
-type InputTranslateChoice string
-
-const (
-	// indicates that the element should be translated when the page is localized.
-	InputTranslate_empty InputTranslateChoice = ""
-	// indicates that the element should be translated when the page is localized.
-	InputTranslate_yes InputTranslateChoice = "yes"
-	// indicates that the element must not be translated when the page is localized.
-	InputTranslate_no InputTranslateChoice = "no"
-)
-
-// Remove the attribute TRANSLATE from the element.
-func (e *INPUTElement) TRANSLATERemove(c InputTranslateChoice) *INPUTElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("translate")
-	return e
-}
-
-// Merges the store with the given object
-
-func (e *INPUTElement) DATASTAR_MERGE_STORE(v any) *INPUTElement {
-	if e.CustomDataAttributes == nil {
-		e.CustomDataAttributes = treemap.New[string, string]()
-	}
-	b, err := json.Marshal(v)
-	if err != nil {
-		panic(err)
-	}
-	e.CustomDataAttributes.Set("data-merge-store", string(b))
-	return e
-}
-
-// Sets the reference of the element
-
-func (e *INPUTElement) DATASTAR_REF(s string) *INPUTElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	key := "data-ref"
-	e.StringAttributes.Set(key, s)
-	return e
-}
-
-func (e *INPUTElement) IfDATASTAR_REF(condition bool, s string) *INPUTElement {
-	if condition {
-		e.DATASTAR_REF(s)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_REF from the element.
-func (e *INPUTElement) DATASTAR_REFRemove() *INPUTElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-ref")
-	return e
-}
-
-// Sets the value of the element
-
-func (e *INPUTElement) DATASTAR_BIND(s string) *INPUTElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	key := "data-bind"
-	e.StringAttributes.Set(key, s)
-	return e
-}
-
-func (e *INPUTElement) IfDATASTAR_BIND(condition bool, s string) *INPUTElement {
-	if condition {
-		e.DATASTAR_BIND(s)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_BIND from the element.
-func (e *INPUTElement) DATASTAR_BINDRemove() *INPUTElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-bind")
-	return e
-}
-
-// Sets the value of the element
-
-func (e *INPUTElement) DATASTAR_MODEL(s string) *INPUTElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	key := "data-model"
-	e.StringAttributes.Set(key, s)
-	return e
-}
-
-func (e *INPUTElement) IfDATASTAR_MODEL(condition bool, s string) *INPUTElement {
-	if condition {
-		e.DATASTAR_MODEL(s)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_MODEL from the element.
-func (e *INPUTElement) DATASTAR_MODELRemove() *INPUTElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-model")
-	return e
-}
-
-// Sets the textContent of the element
-
-func (e *INPUTElement) DATASTAR_TEXT(s string) *INPUTElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	key := "data-text"
-	e.StringAttributes.Set(key, s)
-	return e
-}
-
-func (e *INPUTElement) IfDATASTAR_TEXT(condition bool, s string) *INPUTElement {
-	if condition {
-		e.DATASTAR_TEXT(s)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_TEXT from the element.
-func (e *INPUTElement) DATASTAR_TEXTRemove() *INPUTElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-text")
-	return e
-}
-
-// Sets the event handler of the element
-
-type InputDataOnMod customDataKeyModifier
-
-// Debounces the event handler
-func InputDataOnModDebounce(
-	s string,
-) InputDataOnMod {
-	return func() string {
-		return fmt.Sprintf("debounce_%sms", s)
-	}
-}
-
-// Throttles the event handler
-func InputDataOnModThrottle(
-	s string,
-) InputDataOnMod {
-	return func() string {
-		return fmt.Sprintf("throttle_%sms", s)
-	}
-}
-
-func (e *INPUTElement) DATASTAR_ON(s string, modifiers ...InputDataOnMod) *INPUTElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	customMods := lo.Map(modifiers, func(m InputDataOnMod, i int) customDataKeyModifier {
-		return customDataKeyModifier(m)
-	})
-	key := customDataKey("data-on", customMods...)
-	e.StringAttributes.Set(key, s)
-	return e
-}
-
-func (e *INPUTElement) IfDATASTAR_ON(condition bool, s string, modifiers ...InputDataOnMod) *INPUTElement {
-	if condition {
-		e.DATASTAR_ON(s, modifiers...)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_ON from the element.
-func (e *INPUTElement) DATASTAR_ONRemove() *INPUTElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-on")
-	return e
-}
-
-// Sets the focus of the element
-
-func (e *INPUTElement) DATASTAR_FOCUSSet(b bool) *INPUTElement {
-	key := "data-focus"
-	e.BoolAttributes.Set(key, b)
-	return e
-}
-
-func (e *INPUTElement) DATASTAR_FOCUS() *INPUTElement {
-	return e.DATASTAR_FOCUSSet(true)
-}
-
-// Sets the header of for fetch requests
-
-func (e *INPUTElement) DATASTAR_HEADER(s string) *INPUTElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	key := "data-header"
-	e.StringAttributes.Set(key, s)
-	return e
-}
-
-func (e *INPUTElement) IfDATASTAR_HEADER(condition bool, s string) *INPUTElement {
-	if condition {
-		e.DATASTAR_HEADER(s)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_HEADER from the element.
-func (e *INPUTElement) DATASTAR_HEADERRemove() *INPUTElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-header")
-	return e
-}
-
-// Sets the URL for fetch requests
-
-func (e *INPUTElement) DATASTAR_FETCH_URL(s string) *INPUTElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	key := "data-fetch-url"
-	e.StringAttributes.Set(key, s)
-	return e
-}
-
-func (e *INPUTElement) IfDATASTAR_FETCH_URL(condition bool, s string) *INPUTElement {
-	if condition {
-		e.DATASTAR_FETCH_URL(s)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_FETCH_URL from the element.
-func (e *INPUTElement) DATASTAR_FETCH_URLRemove() *INPUTElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-fetch-url")
-	return e
-}
-
-// Sets the indicator selector for fetch requests
-
-func (e *INPUTElement) DATASTAR_FETCH_INDICATOR(s string) *INPUTElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	key := "DatastarFetchIndicator"
-	e.StringAttributes.Set(key, s)
-	return e
-}
-
-func (e *INPUTElement) IfDATASTAR_FETCH_INDICATOR(condition bool, s string) *INPUTElement {
-	if condition {
-		e.DATASTAR_FETCH_INDICATOR(s)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_FETCH_INDICATOR from the element.
-func (e *INPUTElement) DATASTAR_FETCH_INDICATORRemove() *INPUTElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("DatastarFetchIndicator")
-	return e
-}
-
-// Sets the visibility of the element
-
-func (e *INPUTElement) DATASTAR_SHOWSet(b bool) *INPUTElement {
-	key := "data-show"
-	e.BoolAttributes.Set(key, b)
-	return e
-}
-
-func (e *INPUTElement) DATASTAR_SHOW() *INPUTElement {
-	return e.DATASTAR_SHOWSet(true)
-}
-
-// Triggers the callback when the element intersects the viewport
-
-func (e *INPUTElement) DATASTAR_INTERSECTSSet(b bool) *INPUTElement {
-	key := "data-intersects"
-	e.BoolAttributes.Set(key, b)
-	return e
-}
-
-func (e *INPUTElement) DATASTAR_INTERSECTS() *INPUTElement {
-	return e.DATASTAR_INTERSECTSSet(true)
-}
-
-// Teleports the element to the given selector
-
-func (e *INPUTElement) DATASTAR_TELEPORTSet(b bool) *INPUTElement {
-	key := "data-teleport"
-	e.BoolAttributes.Set(key, b)
-	return e
-}
-
-func (e *INPUTElement) DATASTAR_TELEPORT() *INPUTElement {
-	return e.DATASTAR_TELEPORTSet(true)
-}
-
-// Scrolls the element into view
-
-func (e *INPUTElement) DATASTAR_SCROLL_INTO_VIEWSet(b bool) *INPUTElement {
-	key := "data-scroll-into-view"
-	e.BoolAttributes.Set(key, b)
-	return e
-}
 
-func (e *INPUTElement) DATASTAR_SCROLL_INTO_VIEW() *INPUTElement {
-	return e.DATASTAR_SCROLL_INTO_VIEWSet(true)
-}
-
-// Setup the ViewTransitionAPI for the element
-
-func (e *INPUTElement) DATASTAR_VIEW_TRANSITION(s string) *INPUTElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	key := "data-view-transition"
-	e.StringAttributes.Set(key, s)
-	return e
-}
 
-func (e *INPUTElement) IfDATASTAR_VIEW_TRANSITION(condition bool, s string) *INPUTElement {
-	if condition {
-		e.DATASTAR_VIEW_TRANSITION(s)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_VIEW_TRANSITION from the element.
-func (e *INPUTElement) DATASTAR_VIEW_TRANSITIONRemove() *INPUTElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-view-transition")
-	return e
-}

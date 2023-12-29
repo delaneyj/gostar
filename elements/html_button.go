@@ -3,2030 +3,2112 @@
 // Description:
 package elements
 
-import (
-	"fmt"
-
-	"github.com/goccy/go-json"
-	"github.com/igrmk/treemap/v2"
-	"github.com/samber/lo"
+import(
+    "fmt"
+    "time"
+    "github.com/igrmk/treemap/v2"
+    "github.com/goccy/go-json"
+    "github.com/samber/lo"
 )
 
-// The HTML <button> element represents a clickable button, used to submit forms
-// or anywhere in a document for accessible, standard button functionality.
+// The HTML <button> element represents a clickable button, used to submit forms 
+// or anywhere in a document for accessible, standard button functionality. 
 type BUTTONElement struct {
-	*Element
+    *Element
 }
 
 // Create a new BUTTONElement element.
 // This will create a new element with the tag
 // "button" during rendering.
 func BUTTON(children ...ElementRenderer) *BUTTONElement {
-	e := NewElement("button", children...)
-	e.IsSelfClosing = false
-	e.Descendants = children
+    e := NewElement("button", children...)
+    e.IsSelfClosing = false
+    e.Descendants = children
 
-	return &BUTTONElement{Element: e}
+    return &BUTTONElement{ Element: e }
 }
 
 func (e *BUTTONElement) Children(children ...ElementRenderer) *BUTTONElement {
-	e.Descendants = append(e.Descendants, children...)
-	return e
+    e.Descendants = append(e.Descendants, children...)
+    return e
 }
 
-func (e *BUTTONElement) IfChildren(condition bool, children ...ElementRenderer) *BUTTONElement {
-	if condition {
-		e.Descendants = append(e.Descendants, children...)
-	}
-	return e
+func(e *BUTTONElement) IfChildren(condition bool, children ...ElementRenderer) *BUTTONElement {
+    if condition {
+        e.Descendants = append(e.Descendants, children...)
+    }
+    return e
 }
 
-func (e *BUTTONElement) TernChildren(condition bool, trueChildren, falseChildren ElementRenderer) *BUTTONElement {
-	if condition {
-		e.Descendants = append(e.Descendants, trueChildren)
-	} else {
-		e.Descendants = append(e.Descendants, falseChildren)
-	}
-	return e
+func(e *BUTTONElement) TernChildren(condition bool, trueChildren, falseChildren ElementRenderer) *BUTTONElement {
+    if condition {
+        e.Descendants = append(e.Descendants, trueChildren)
+    } else {
+        e.Descendants = append(e.Descendants, falseChildren)
+    }
+    return e
 }
 
 func (e *BUTTONElement) Text(text string) *BUTTONElement {
-	e.Descendants = append(e.Descendants, Text(text))
-	return e
+    e.Descendants = append(e.Descendants, Text(text))
+    return e
 }
 
 func (e *BUTTONElement) TextF(format string, args ...any) *BUTTONElement {
-	return e.Text(fmt.Sprintf(format, args...))
+    return e.Text(fmt.Sprintf(format, args...))
 }
 
 func (e *BUTTONElement) IfText(condition bool, text string) *BUTTONElement {
-	if condition {
-		e.Descendants = append(e.Descendants, Text(text))
-	}
-	return e
+    if condition {
+        e.Descendants = append(e.Descendants, Text(text))
+    }
+    return e
 }
 
 func (e *BUTTONElement) IfTextF(condition bool, format string, args ...any) *BUTTONElement {
-	if condition {
-		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
-	}
-	return e
+    if condition {
+        e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+    }
+    return e
 }
 
 func (e *BUTTONElement) Escaped(text string) *BUTTONElement {
-	e.Descendants = append(e.Descendants, Escaped(text))
-	return e
+    e.Descendants = append(e.Descendants, Escaped(text))
+    return e
 }
 
 func (e *BUTTONElement) IfEscaped(condition bool, text string) *BUTTONElement {
-	if condition {
-		e.Descendants = append(e.Descendants, Escaped(text))
-	}
-	return e
+    if condition {
+        e.Descendants = append(e.Descendants, Escaped(text))
+    }
+    return e
 }
 
 func (e *BUTTONElement) EscapedF(format string, args ...any) *BUTTONElement {
-	return e.Escaped(fmt.Sprintf(format, args...))
+    return e.Escaped(fmt.Sprintf(format, args...))
 }
 
 func (e *BUTTONElement) IfEscapedF(condition bool, format string, args ...any) *BUTTONElement {
-	if condition {
-		e.Descendants = append(e.Descendants, EscapedF(format, args...))
-	}
-	return e
+    if condition {
+        e.Descendants = append(e.Descendants, EscapedF(format, args...))
+    }
+    return e
 }
 
 func (e *BUTTONElement) CustomData(key, value string) *BUTTONElement {
-	if e.CustomDataAttributes == nil {
-		e.CustomDataAttributes = treemap.New[string, string]()
-	}
+    if e.CustomDataAttributes == nil {
+        e.CustomDataAttributes = treemap.New[string,string]()
+    }
 	e.CustomDataAttributes.Set(key, value)
 	return e
 }
 
 func (e *BUTTONElement) IfCustomData(condition bool, key, value string) *BUTTONElement {
-	if condition {
-		e.CustomData(key, value)
-	}
-	return e
+    if condition {
+        e.CustomData(key, value)
+    }
+    return e
 }
 
 func (e *BUTTONElement) CustomDataF(key, format string, args ...any) *BUTTONElement {
-	return e.CustomData(key, fmt.Sprintf(format, args...))
+    return e.CustomData(key, fmt.Sprintf(format, args...))
 }
 
 func (e *BUTTONElement) IfCustomDataF(condition bool, key, format string, args ...any) *BUTTONElement {
-	if condition {
-		e.CustomData(key, fmt.Sprintf(format, args...))
-	}
-	return e
+    if condition {
+        e.CustomData(key, fmt.Sprintf(format, args...))
+    }
+    return e
 }
 
 func (e *BUTTONElement) CustomDataRemove(key string) *BUTTONElement {
 	if e.CustomDataAttributes == nil {
 		return e
 	}
-	e.CustomDataAttributes.Del(key)
-	return e
-}
-
-// A Boolean attribute which, if present, indicates that the button should be
-// focused as soon as the page is loaded.
-func (e *BUTTONElement) AUTOFOCUS() *BUTTONElement {
-	e.AUTOFOCUSSet(true)
-	return e
-}
-
-func (e *BUTTONElement) IfAUTOFOCUS(condition bool) *BUTTONElement {
-	if condition {
-		e.AUTOFOCUSSet(true)
-	}
-	return e
-}
-
-// Set the attribute AUTOFOCUS to the value b explicitly.
-func (e *BUTTONElement) AUTOFOCUSSet(b bool) *BUTTONElement {
-	if e.BoolAttributes == nil {
-		e.BoolAttributes = treemap.New[string, bool]()
-	}
-	e.BoolAttributes.Set("autofocus", b)
-	return e
-}
-
-func (e *BUTTONElement) IfSetAUTOFOCUS(condition bool, b bool) *BUTTONElement {
-	if condition {
-		e.AUTOFOCUSSet(b)
-	}
-	return e
-}
-
-// Remove the attribute AUTOFOCUS from the element.
-func (e *BUTTONElement) AUTOFOCUSRemove(b bool) *BUTTONElement {
-	if e.BoolAttributes == nil {
-		return e
-	}
-	e.BoolAttributes.Del("autofocus")
-	return e
-}
-
-// A Boolean attribute which is present if the button is disabled.
-func (e *BUTTONElement) DISABLED() *BUTTONElement {
-	e.DISABLEDSet(true)
-	return e
-}
-
-func (e *BUTTONElement) IfDISABLED(condition bool) *BUTTONElement {
-	if condition {
-		e.DISABLEDSet(true)
-	}
-	return e
-}
-
-// Set the attribute DISABLED to the value b explicitly.
-func (e *BUTTONElement) DISABLEDSet(b bool) *BUTTONElement {
-	if e.BoolAttributes == nil {
-		e.BoolAttributes = treemap.New[string, bool]()
-	}
-	e.BoolAttributes.Set("disabled", b)
-	return e
-}
-
-func (e *BUTTONElement) IfSetDISABLED(condition bool, b bool) *BUTTONElement {
-	if condition {
-		e.DISABLEDSet(b)
-	}
-	return e
-}
-
-// Remove the attribute DISABLED from the element.
-func (e *BUTTONElement) DISABLEDRemove(b bool) *BUTTONElement {
-	if e.BoolAttributes == nil {
-		return e
-	}
-	e.BoolAttributes.Del("disabled")
-	return e
-}
-
-// The id of the form with which to associate the element.
-func (e *BUTTONElement) FORM(s string) *BUTTONElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	e.StringAttributes.Set("form", s)
-	return e
-}
-
-func (e *BUTTONElement) IfFORM(condition bool, s string) *BUTTONElement {
-	if condition {
-		e.FORM(s)
-	}
-	return e
-}
-
-// Remove the attribute FORM from the element.
-func (e *BUTTONElement) FORMRemove(s string) *BUTTONElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("form")
-	return e
-}
-
-// The URI of a program that processes the information submitted by the button
-// If specified, it overrides the action attribute of the button's form owner.
-func (e *BUTTONElement) FORMACTION(s string) *BUTTONElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	e.StringAttributes.Set("formaction", s)
-	return e
-}
-
-func (e *BUTTONElement) IfFORMACTION(condition bool, s string) *BUTTONElement {
-	if condition {
-		e.FORMACTION(s)
-	}
-	return e
-}
-
-// Remove the attribute FORMACTION from the element.
-func (e *BUTTONElement) FORMACTIONRemove(s string) *BUTTONElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("formaction")
-	return e
-}
-
-// If the button is a submit button, this attribute specifies the type of content
-// that is used to submit the form to the server.
-func (e *BUTTONElement) FORMENCTYPE(c ButtonFormenctypeChoice) *BUTTONElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	e.StringAttributes.Set("formenctype", string(c))
-	return e
-}
-
-type ButtonFormenctypeChoice string
-
-const (
-	// The default value if the attribute is not specified.
-	ButtonFormenctype_application_x_www_form_urlencoded ButtonFormenctypeChoice = "application/x-www-form-urlencoded"
-	// Use this value if you are using an enctype that requires a file upload.
-	ButtonFormenctype_multipart_form_data ButtonFormenctypeChoice = "multipart/form-data"
-	// Use this value if you are using a "text/plain" enctype and the form will not
-	// contain any file uploads.
-	ButtonFormenctype_text_plain ButtonFormenctypeChoice = "text/plain"
-)
-
-// Remove the attribute FORMENCTYPE from the element.
-func (e *BUTTONElement) FORMENCTYPERemove(c ButtonFormenctypeChoice) *BUTTONElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("formenctype")
-	return e
-}
-
-// If the button is a submit button, this attribute specifies the HTTP method that
-// the browser uses to submit the form
-// Possible values are:
-func (e *BUTTONElement) FORMMETHOD(c ButtonFormmethodChoice) *BUTTONElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	e.StringAttributes.Set("formmethod", string(c))
-	return e
-}
-
-type ButtonFormmethodChoice string
-
-const (
-	// The data from the form is included in the body of the HTTP request when sent to
-	// the server.
-	ButtonFormmethod_post ButtonFormmethodChoice = "post"
-	// The data from the form are appended to the form attribute URI, with a '?' as a
-	// separator, and the resulting URI is sent to the server
-	// Use this method when the form has no side-effects and contains only ASCII
-	// characters.
-	ButtonFormmethod_get ButtonFormmethodChoice = "get"
-	// When the form is inside a <dialog>, closes the dialog on submission.
-	ButtonFormmethod_dialog ButtonFormmethodChoice = "dialog"
-)
-
-// Remove the attribute FORMMETHOD from the element.
-func (e *BUTTONElement) FORMMETHODRemove(c ButtonFormmethodChoice) *BUTTONElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("formmethod")
-	return e
-}
-
-// If the button is a submit button, this Boolean attribute specifies that the
-// form is not to be validated when it is submitted
-// If this attribute is specified, it overrides the novalidate attribute of the
-// button's form owner.
-func (e *BUTTONElement) FORMNOVALIDATE() *BUTTONElement {
-	e.FORMNOVALIDATESet(true)
-	return e
-}
-
-func (e *BUTTONElement) IfFORMNOVALIDATE(condition bool) *BUTTONElement {
-	if condition {
-		e.FORMNOVALIDATESet(true)
-	}
-	return e
-}
-
-// Set the attribute FORMNOVALIDATE to the value b explicitly.
-func (e *BUTTONElement) FORMNOVALIDATESet(b bool) *BUTTONElement {
-	if e.BoolAttributes == nil {
-		e.BoolAttributes = treemap.New[string, bool]()
-	}
-	e.BoolAttributes.Set("formnovalidate", b)
-	return e
-}
-
-func (e *BUTTONElement) IfSetFORMNOVALIDATE(condition bool, b bool) *BUTTONElement {
-	if condition {
-		e.FORMNOVALIDATESet(b)
-	}
-	return e
-}
-
-// Remove the attribute FORMNOVALIDATE from the element.
-func (e *BUTTONElement) FORMNOVALIDATERemove(b bool) *BUTTONElement {
-	if e.BoolAttributes == nil {
-		return e
-	}
-	e.BoolAttributes.Del("formnovalidate")
-	return e
-}
-
-// If the button is a submit button, this attribute is a name or keyword
-// indicating where to display the response that is received after submitting the
-// form
-// This is a name of, or keyword for, a browsing context (for example, tab,
-// window, or inline frame)
-// If this attribute is specified, it overrides the target attribute of the
-// button's form owner
-// The following keywords have special meanings:
-func (e *BUTTONElement) FORMTARGET(c ButtonFormtargetChoice) *BUTTONElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	e.StringAttributes.Set("formtarget", string(c))
-	return e
-}
-
-type ButtonFormtargetChoice string
-
-const (
-	// Load the response into the same browsing context as the current one
-	// This value is the default if the attribute is not specified.
-	ButtonFormtarget__self ButtonFormtargetChoice = "_self"
-	// Load the response into a new unnamed browsing context.
-	ButtonFormtarget__blank ButtonFormtargetChoice = "_blank"
-	// Load the response into the parent browsing context of the current one
-	// If there is no parent, this option behaves the same way as _self.
-	ButtonFormtarget__parent ButtonFormtargetChoice = "_parent"
-	// Load the response into the top-level browsing context (that is, the browsing
-	// context that is an ancestor of the current one, and has no parent)
-	// If there is no parent, this option behaves the same way as _self.
-	ButtonFormtarget__top ButtonFormtargetChoice = "_top"
-)
-
-// Remove the attribute FORMTARGET from the element.
-func (e *BUTTONElement) FORMTARGETRemove(c ButtonFormtargetChoice) *BUTTONElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("formtarget")
-	return e
-}
-
-// The name of the button, which is submitted with the form data.
-func (e *BUTTONElement) NAME(s string) *BUTTONElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	e.StringAttributes.Set("name", s)
-	return e
-}
-
-func (e *BUTTONElement) IfNAME(condition bool, s string) *BUTTONElement {
-	if condition {
-		e.NAME(s)
-	}
-	return e
-}
-
-// Remove the attribute NAME from the element.
-func (e *BUTTONElement) NAMERemove(s string) *BUTTONElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("name")
-	return e
-}
-
-// Turns a <button> element into a popover control button; takes the ID of the
-// popover element to control as its value
-// See the Popover API landing page for more details.
-func (e *BUTTONElement) POPOVERTARGET(s string) *BUTTONElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	e.StringAttributes.Set("popovertarget", s)
-	return e
-}
-
-func (e *BUTTONElement) IfPOPOVERTARGET(condition bool, s string) *BUTTONElement {
-	if condition {
-		e.POPOVERTARGET(s)
-	}
-	return e
-}
-
-// Remove the attribute POPOVERTARGET from the element.
-func (e *BUTTONElement) POPOVERTARGETRemove(s string) *BUTTONElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("popovertarget")
-	return e
-}
-
-// Specifies the action to take when the popover control button is clicked
-// Possible values are:
-func (e *BUTTONElement) POPOVERTARGETACTION(c ButtonPopovertargetactionChoice) *BUTTONElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	e.StringAttributes.Set("popovertargetaction", string(c))
-	return e
-}
-
-type ButtonPopovertargetactionChoice string
-
-const (
-	// Toggle the visibility of the popover.
-	ButtonPopovertargetaction_toggle ButtonPopovertargetactionChoice = "toggle"
-	// Show the popover.
-	ButtonPopovertargetaction_show ButtonPopovertargetactionChoice = "show"
-	// Hide the popover.
-	ButtonPopovertargetaction_hide ButtonPopovertargetactionChoice = "hide"
-)
-
-// Remove the attribute POPOVERTARGETACTION from the element.
-func (e *BUTTONElement) POPOVERTARGETACTIONRemove(c ButtonPopovertargetactionChoice) *BUTTONElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("popovertargetaction")
-	return e
-}
-
-// The type of the button
-// Possible values are:
-func (e *BUTTONElement) TYPE(c ButtonTypeChoice) *BUTTONElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	e.StringAttributes.Set("type", string(c))
-	return e
-}
-
-type ButtonTypeChoice string
-
-const (
-	// The button has no default behavior
-	// It can have client-side scripts associated with the element's events, which are
-	// triggered when the events occur.
-	ButtonType_button ButtonTypeChoice = "button"
-	// The button resets all the controls to their initial values.
-	ButtonType_reset ButtonTypeChoice = "reset"
-	// The button submits the form data to the server
-	// This is the default if the attribute is not specified for buttons associated
-	// with a <form>, or if the attribute is an empty or invalid value.
-	ButtonType_submit ButtonTypeChoice = "submit"
-)
-
-// Remove the attribute TYPE from the element.
-func (e *BUTTONElement) TYPERemove(c ButtonTypeChoice) *BUTTONElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("type")
-	return e
-}
-
-// The initial value of the button
-// This attribute is optional except when the value of the type attribute is radio
-// or checkbox.
-func (e *BUTTONElement) VALUE(s string) *BUTTONElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	e.StringAttributes.Set("value", s)
-	return e
-}
-
-func (e *BUTTONElement) IfVALUE(condition bool, s string) *BUTTONElement {
-	if condition {
-		e.VALUE(s)
-	}
-	return e
-}
-
-// Remove the attribute VALUE from the element.
-func (e *BUTTONElement) VALUERemove(s string) *BUTTONElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("value")
-	return e
-}
-
-// The accesskey global attribute provides a hint for generating a keyboard
-// shortcut for the current element
-// The attribute value must consist of a single printable character (which
-// includes accented and other characters that can be generated by the keyboard).
-func (e *BUTTONElement) ACCESSKEY(r rune) *BUTTONElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	e.StringAttributes.Set("accesskey", string(r))
-	return e
-}
-
-func (e *BUTTONElement) IfACCESSKEY(condition bool, r rune) *BUTTONElement {
-	if condition {
-		e.ACCESSKEY(r)
-	}
-	return e
-}
-
-// Remove the attribute ACCESSKEY from the element.
-func (e *BUTTONElement) ACCESSKEYRemove() *BUTTONElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("accesskey")
-	return e
-}
-
-// The autocapitalize global attribute is an enumerated attribute that controls
-// whether and how text input is automatically capitalized as it is entered/edited
-// by the user
-// autocapitalize can be set on <input> and <textarea> elements, and on their
-// containing <form> elements
-// When autocapitalize is set on a <form> element, it sets the autocapitalize
-// behavior for all contained <input>s and <textarea>s, overriding any
-// autocapitalize values set on contained elements
-// autocapitalize has no effect on the url, email, or password <input> types,
-// where autocapitalization is never enabled
-// Where autocapitalize is not specified, the adopted default behavior varies
-// between browsers
-// For example: Chrome and Safari default to on/sentences Firefox defaults to
-// off/none.
-func (e *BUTTONElement) AUTOCAPITALIZE(c ButtonAutocapitalizeChoice) *BUTTONElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	e.StringAttributes.Set("autocapitalize", string(c))
-	return e
-}
-
-type ButtonAutocapitalizeChoice string
-
-const (
-	// Do not automatically capitalize any text.
-	ButtonAutocapitalize_off ButtonAutocapitalizeChoice = "off"
-	// Do not automatically capitalize any text.
-	ButtonAutocapitalize_none ButtonAutocapitalizeChoice = "none"
-	// Automatically capitalize the first character of each sentence.
-	ButtonAutocapitalize_sentences ButtonAutocapitalizeChoice = "sentences"
-	// Automatically capitalize the first character of each sentence.
-	ButtonAutocapitalize_on ButtonAutocapitalizeChoice = "on"
-	// Automatically capitalize the first character of each word.
-	ButtonAutocapitalize_words ButtonAutocapitalizeChoice = "words"
-	// Automatically capitalize all characters.
-	ButtonAutocapitalize_characters ButtonAutocapitalizeChoice = "characters"
-)
-
-// Remove the attribute AUTOCAPITALIZE from the element.
-func (e *BUTTONElement) AUTOCAPITALIZERemove(c ButtonAutocapitalizeChoice) *BUTTONElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("autocapitalize")
-	return e
-}
-
-// The class global attribute is a space-separated list of the case-sensitive
-// classes of the element
-// Classes allow CSS and JavaScript to select and access specific elements via the
-// class selectors or functions like the DOM method
-// document.getElementsByClassName.
-func (e *BUTTONElement) CLASS(s ...string) *BUTTONElement {
-	if e.DelimitedStrings == nil {
-		e.DelimitedStrings = treemap.New[string, *DelimitedBuilder[string]]()
-	}
-	ds, ok := e.DelimitedStrings.Get("class")
-	if !ok {
-		ds = NewDelimitedBuilder[string](" ")
-		e.DelimitedStrings.Set("class", ds)
-	}
-	ds.Add(s...)
-	return e
-}
-
-func (e *BUTTONElement) IfCLASS(condition bool, s ...string) *BUTTONElement {
-	if condition {
-		e.CLASS(s...)
-	}
-	return e
-}
-
-// Remove the attribute CLASS from the element.
-func (e *BUTTONElement) CLASSRemove(s ...string) *BUTTONElement {
-	if e.DelimitedStrings == nil {
-		return e
-	}
-	ds, ok := e.DelimitedStrings.Get("class")
-	if !ok {
-		return e
-	}
-	ds.Remove(s...)
-	return e
-}
-
-// The contenteditable global attribute is an enumerated attribute indicating if
-// the element should be editable by the user
-// If so, the browser modifies its widget to allow editing.
-func (e *BUTTONElement) CONTENTEDITABLE(c ButtonContenteditableChoice) *BUTTONElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	e.StringAttributes.Set("contenteditable", string(c))
-	return e
-}
-
-type ButtonContenteditableChoice string
-
-const (
-	// The element is editable.
-	ButtonContenteditable_empty ButtonContenteditableChoice = ""
-	// The element is editable.
-	ButtonContenteditable_true ButtonContenteditableChoice = "true"
-	// The element is not editable.
-	ButtonContenteditable_false ButtonContenteditableChoice = "false"
-	// which indicates that the element's raw text is editable, but rich text
-	// formatting is disabled.
-	ButtonContenteditable_plaintext_only ButtonContenteditableChoice = "plaintext-only"
-)
-
-// Remove the attribute CONTENTEDITABLE from the element.
-func (e *BUTTONElement) CONTENTEDITABLERemove(c ButtonContenteditableChoice) *BUTTONElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("contenteditable")
-	return e
-}
-
-// The dir global attribute is an enumerated attribute that indicates the
-// directionality of the element's text
-// Note: This attribute is mandatory for the <bdo> element where it has a
-// different semantic meaning
-// This attribute is not inherited by the <bdi> element
-// If not set, its value is auto
-// This attribute can be overridden by the CSS properties direction and
-// unicode-bidi, if a CSS page is active and the element supports these properties
-// As the directionality of the text is semantically related to its content and
-// not to its presentation, it is recommended that web developers use this
-// attribute instead of the related CSS properties when possible
-// That way, the text will display correctly even on a browser that doesn't
-// support CSS or has the CSS deactivated
-// The auto value should be used for data with an unknown directionality, like
-// data coming from user input, eventually stored in a database.
-func (e *BUTTONElement) DIR(c ButtonDirChoice) *BUTTONElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	e.StringAttributes.Set("dir", string(c))
-	return e
-}
-
-type ButtonDirChoice string
-
-const (
-	// which means left to right and is to be used for languages that are written from
-	// the left to the right (like English);
-	ButtonDir_ltr ButtonDirChoice = "ltr"
-	// which means right to left and is to be used for languages that are written from
-	// the right to the left (like Arabic);
-	ButtonDir_rtl ButtonDirChoice = "rtl"
-	// which lets the user agent decide
-	// It uses a basic algorithm as it parses the characters inside the element until
-	// it finds a character with a strong directionality, then it applies that
-	// directionality to the whole element.
-	ButtonDir_auto ButtonDirChoice = "auto"
-)
-
-// Remove the attribute DIR from the element.
-func (e *BUTTONElement) DIRRemove(c ButtonDirChoice) *BUTTONElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("dir")
-	return e
-}
-
-// The draggable global attribute is an enumerated attribute that indicates
-// whether the element can be dragged, either with native browser behavior or the
-// HTML Drag and Drop API.
-func (e *BUTTONElement) DRAGGABLE(c ButtonDraggableChoice) *BUTTONElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	e.StringAttributes.Set("draggable", string(c))
-	return e
-}
-
-type ButtonDraggableChoice string
-
-const (
-	// The element is draggable.
-	ButtonDraggable_true ButtonDraggableChoice = "true"
-	// The element is not draggable.
-	ButtonDraggable_false ButtonDraggableChoice = "false"
-	// drag behavior is the default browser behavior: only text selections, images,
-	// and links can be dragged
-	// For other elements, the event ondragstart must be set for drag and drop to work
-	ButtonDraggable_empty ButtonDraggableChoice = ""
-	// drag behavior is the default browser behavior: only text selections, images,
-	// and links can be dragged
-	// For other elements, the event ondragstart must be set for drag and drop to work
-	ButtonDraggable_auto ButtonDraggableChoice = "auto"
-)
-
-// Remove the attribute DRAGGABLE from the element.
-func (e *BUTTONElement) DRAGGABLERemove(c ButtonDraggableChoice) *BUTTONElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("draggable")
-	return e
-}
-
-// The enterkeyhint global attribute is an enumerated attribute defining what
-// action label (or icon) to present for the enter key on virtual keyboards.
-func (e *BUTTONElement) ENTERKEYHINT(c ButtonEnterkeyhintChoice) *BUTTONElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	e.StringAttributes.Set("enterkeyhint", string(c))
-	return e
-}
-
-type ButtonEnterkeyhintChoice string
-
-const (
-	// Typically inserting a new line.
-	ButtonEnterkeyhint_enter ButtonEnterkeyhintChoice = "enter"
-	// Typically meaning there is nothing more to input and the input method editor
-	// (IME) will be closed.
-	ButtonEnterkeyhint_done ButtonEnterkeyhintChoice = "done"
-	// Typically meaning to take the user to the target of the text they typed.
-	ButtonEnterkeyhint_go ButtonEnterkeyhintChoice = "go"
-	// Typically meaning to take the user to the next field that will accept text.
-	ButtonEnterkeyhint_next ButtonEnterkeyhintChoice = "next"
-	// Typically meaning to take the user to the previous field that will accept text.
-	ButtonEnterkeyhint_previous ButtonEnterkeyhintChoice = "previous"
-	// Typically taking the user to the results of searching for the text they have
-	// typed.
-	ButtonEnterkeyhint_search ButtonEnterkeyhintChoice = "search"
-	// Typically delivering the text to its target.
-	ButtonEnterkeyhint_send ButtonEnterkeyhintChoice = "send"
-)
-
-// Remove the attribute ENTERKEYHINT from the element.
-func (e *BUTTONElement) ENTERKEYHINTRemove(c ButtonEnterkeyhintChoice) *BUTTONElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("enterkeyhint")
-	return e
-}
-
-// The exportparts global attribute allows you to select and style elements
-// existing in nested shadow trees, by exporting their part names
-// The shadow tree is an isolated structure where identifiers, classes, and styles
-// cannot be reached by selectors or queries belonging to a regular DOM
-// To apply a style to an element living in a shadow tree, by CSS rule created
-// outside of it, part global attribute has to be used
-// It has to be assigned to an element present in Shadow Tree, and its value
-// should be some identifier
-// Rules present outside of the shadow tree, must use the ::part pseudo-element,
-// containing the same identifier as the argument
-// The global attribute part makes the element visible on just a single level of
-// depth
-// When the shadow tree is nested, parts will be visible only to the parent of the
-// shadow tree but not to its ancestor
-// Exporting parts further down is exactly what exportparts attribute is for
-// Attribute exportparts must be placed on a shadow Host, which is the element to
-// which the shadow tree is attached
-// The value of the attribute should be a comma-separated list of part names
-// present in the shadow tree and which should be made available via a DOM outside
-// of the current structure.
-func (e *BUTTONElement) EXPORTPARTS(s ...string) *BUTTONElement {
-	if e.DelimitedStrings == nil {
-		e.DelimitedStrings = treemap.New[string, *DelimitedBuilder[string]]()
-	}
-	ds, ok := e.DelimitedStrings.Get("exportparts")
-	if !ok {
-		ds = NewDelimitedBuilder[string](",")
-		e.DelimitedStrings.Set("exportparts", ds)
-	}
-	ds.Add(s...)
-	return e
-}
-
-func (e *BUTTONElement) IfEXPORTPARTS(condition bool, s ...string) *BUTTONElement {
-	if condition {
-		e.EXPORTPARTS(s...)
-	}
-	return e
-}
-
-// Remove the attribute EXPORTPARTS from the element.
-func (e *BUTTONElement) EXPORTPARTSRemove(s ...string) *BUTTONElement {
-	if e.DelimitedStrings == nil {
-		return e
-	}
-	ds, ok := e.DelimitedStrings.Get("exportparts")
-	if !ok {
-		return e
-	}
-	ds.Remove(s...)
-	return e
-}
-
-// The hidden global attribute is a Boolean attribute indicating that the element
-// is not yet, or is no longer, relevant
-// For example, it can be used to hide elements of the page that can't be used
-// until the login process has been completed
-// Note that browsers typically implement hidden until found using
-// content-visibility: hidden
-// This means that unlike elements in the hidden state, elements in the hidden
-// until found state will have generated boxes, meaning that: the element will
-// participate in page layout margin, borders, padding, and background for the
-// element will be rendered
-// Also, the element needs to be affected by layout containment in order to be
-// revealed
-// This means that if the element in the hidden until found state has a display
-// value of none, contents, or inline, then the element will not be revealed by
-// find in page or fragment navigation.
-func (e *BUTTONElement) HIDDEN(c ButtonHiddenChoice) *BUTTONElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	e.StringAttributes.Set("hidden", string(c))
-	return e
-}
-
-type ButtonHiddenChoice string
-
-const (
-	// set the element to the hidden state
-	// Additionally, invalid values set the element to the hidden state.
-	ButtonHidden_empty ButtonHiddenChoice = ""
-	// set the element to the hidden state
-	// Additionally, invalid values set the element to the hidden state.
-	ButtonHidden_hidden ButtonHiddenChoice = "hidden"
-	// the element is hidden but its content will be accessible to the browser's "find
-	// in page" feature or to fragment navigation
-	// When these features cause a scroll to an element in a hidden until found
-	// subtree, the browser will fire a beforematch event on the hidden element remove
-	// the hidden attribute from the element scroll to the element
-	//
-	ButtonHidden_until_found ButtonHiddenChoice = "until-found"
-)
-
-// Remove the attribute HIDDEN from the element.
-func (e *BUTTONElement) HIDDENRemove(c ButtonHiddenChoice) *BUTTONElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("hidden")
-	return e
-}
-
-// The id global attribute defines a unique identifier (ID) which must be unique
-// in the whole document
-// Its purpose is to identify the element when linking (using a fragment
-// identifier), scripting, or styling (with CSS).
-func (e *BUTTONElement) ID(s string) *BUTTONElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	e.StringAttributes.Set("id", s)
-	return e
-}
-
-func (e *BUTTONElement) IfID(condition bool, s string) *BUTTONElement {
-	if condition {
-		e.ID(s)
-	}
-	return e
-}
-
-// Remove the attribute ID from the element.
-func (e *BUTTONElement) IDRemove(s string) *BUTTONElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("id")
-	return e
-}
-
-// The inert global attribute is a Boolean attribute indicating that the browser
-// will ignore the element
-// With the inert attribute, all of the element's flat tree descendants (such as
-// modal <dialog>s) that don't otherwise escape inertness are ignored
-// The inert attribute also makes the browser ignore input events sent by the
-// user, including focus-related events and events from assistive technologies
-// Specifically, inert does the following: Prevents the click event from being
-// fired when the user clicks on the element
-// Prevents the focus event from being raised by preventing the element from
-// gaining focus
-// Hides the element and its content from assistive technologies by excluding them
-// from the accessibility tree.
-func (e *BUTTONElement) INERT() *BUTTONElement {
-	e.INERTSet(true)
-	return e
-}
-
-func (e *BUTTONElement) IfINERT(condition bool) *BUTTONElement {
-	if condition {
-		e.INERTSet(true)
-	}
-	return e
-}
-
-// Set the attribute INERT to the value b explicitly.
-func (e *BUTTONElement) INERTSet(b bool) *BUTTONElement {
-	if e.BoolAttributes == nil {
-		e.BoolAttributes = treemap.New[string, bool]()
-	}
-	e.BoolAttributes.Set("inert", b)
-	return e
-}
-
-func (e *BUTTONElement) IfSetINERT(condition bool, b bool) *BUTTONElement {
-	if condition {
-		e.INERTSet(b)
-	}
-	return e
-}
-
-// Remove the attribute INERT from the element.
-func (e *BUTTONElement) INERTRemove(b bool) *BUTTONElement {
-	if e.BoolAttributes == nil {
-		return e
-	}
-	e.BoolAttributes.Del("inert")
-	return e
-}
-
-// The inputmode global attribute is an enumerated attribute that hints at the
-// type of data that might be entered by the user while editing the element or its
-// contents
-// This allows a browser to display an appropriate virtual keyboard
-// It is used primarily on <input> elements, but is usable on any element in
-// contenteditable mode
-// It's important to understand that the inputmode attribute doesn't cause any
-// validity requirements to be enforced on input
-// To require that input conforms to a particular data type, choose an appropriate
-// <input> element type
-// For specific guidance on choosing <input> types, see the Values section.
-func (e *BUTTONElement) INPUTMODE(c ButtonInputmodeChoice) *BUTTONElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	e.StringAttributes.Set("inputmode", string(c))
-	return e
-}
-
-type ButtonInputmodeChoice string
-
-const (
-	// No virtual keyboard
-	// For when the page implements its own keyboard input control.
-	ButtonInputmode_none ButtonInputmodeChoice = "none"
-	// Standard input keyboard for the user's current locale.
-	ButtonInputmode_empty ButtonInputmodeChoice = ""
-	// Standard input keyboard for the user's current locale.
-	ButtonInputmode_text ButtonInputmodeChoice = "text"
-	// Fractional numeric input keyboard containing the digits and decimal separator
-	// for the user's locale (typically
-	// or ,)
-	// Devices may or may not show a minus key (-).
-	ButtonInputmode_decimal ButtonInputmodeChoice = "decimal"
-	// Numeric input keyboard, but only requires the digits 0–9
-	// Devices may or may not show a minus key.
-	ButtonInputmode_numeric ButtonInputmodeChoice = "numeric"
-	// A telephone keypad input, including the digits 0–9, the asterisk (*), and the
-	// pound (#) key
-	// Inputs that *require* a telephone number should typically use <input
-	// type="tel"> instead.
-	ButtonInputmode_tel ButtonInputmodeChoice = "tel"
-	// A virtual keyboard optimized for search input
-	// For instance, the return/submit key may be labeled "Search", along with
-	// possible other optimizations
-	// Inputs that require a search query should typically use <input type="search">
-	// instead.
-	ButtonInputmode_search ButtonInputmodeChoice = "search"
-	// A virtual keyboard optimized for entering email addresses
-	// Typically includes the @character as well as other optimizations
-	// Inputs that require email addresses should typically use <input type="email">
-	// instead.
-	ButtonInputmode_email ButtonInputmodeChoice = "email"
-	// A keypad optimized for entering URLs
-	// This may have the / key more prominent, for example
-	// Enhanced features could include history access and so on
-	// Inputs that require a URL should typically use <input type="url"> instead.
-	ButtonInputmode_url ButtonInputmodeChoice = "url"
-)
-
-// Remove the attribute INPUTMODE from the element.
-func (e *BUTTONElement) INPUTMODERemove(c ButtonInputmodeChoice) *BUTTONElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("inputmode")
-	return e
-}
-
-// The is global attribute allows you to specify that a standard HTML element
-// should behave like a defined custom built-in element (see Using custom elements
-// for more details)
-// This attribute can only be used if the specified custom element name has been
-// successfully defined in the current document, and extends the element type it
-// is being applied to.
-func (e *BUTTONElement) IS(s string) *BUTTONElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	e.StringAttributes.Set("is", s)
-	return e
-}
-
-func (e *BUTTONElement) IfIS(condition bool, s string) *BUTTONElement {
-	if condition {
-		e.IS(s)
-	}
-	return e
-}
-
-// Remove the attribute IS from the element.
-func (e *BUTTONElement) ISRemove(s string) *BUTTONElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("is")
-	return e
-}
-
-// The itemid global attribute provides microdata in the form of a unique, global
-// identifier of an item.
-//
-//	An itemid attribute can only be specified for an element that has both
-//
-// itemscope and itemtype attributes
-// Also, itemid can only be specified on elements that possess an itemscope
-// attribute whose corresponding itemtype refers to or defines a vocabulary that
-// supports global identifiers
-// The exact meaning of an itemtype's global identifier is provided by the
-// definition of that identifier within the specified vocabulary
-// The vocabulary defines whether several items with the same global identifier
-// can coexist and, if so, how items with the same identifier are handled.
-func (e *BUTTONElement) ITEMID(s string) *BUTTONElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	e.StringAttributes.Set("itemid", s)
-	return e
-}
-
-func (e *BUTTONElement) IfITEMID(condition bool, s string) *BUTTONElement {
-	if condition {
-		e.ITEMID(s)
-	}
-	return e
-}
-
-// Remove the attribute ITEMID from the element.
-func (e *BUTTONElement) ITEMIDRemove(s string) *BUTTONElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("itemid")
-	return e
-}
-
-// The itemprop global attribute is used to add properties to an item
-// Every HTML element can have an itemprop attribute specified, and an itemprop
-// consists of a name-value pair
-// Each name-value pair is called a property, and a group of one or more
-// properties forms an item
-// Property values are either a string or a URL and can be associated with a very
-// wide range of elements including <audio>, <embed>, <iframe>, <img>, <link>,
-// <object>, <source>, <track>, and <video>.
-func (e *BUTTONElement) ITEMPROP(s string) *BUTTONElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	e.StringAttributes.Set("itemprop", s)
-	return e
-}
-
-func (e *BUTTONElement) IfITEMPROP(condition bool, s string) *BUTTONElement {
-	if condition {
-		e.ITEMPROP(s)
-	}
-	return e
-}
-
-// Remove the attribute ITEMPROP from the element.
-func (e *BUTTONElement) ITEMPROPRemove(s string) *BUTTONElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("itemprop")
-	return e
-}
-
-// Properties that are not descendants of an element with the itemscope attribute
-// can be associated with an item using the global attribute itemref
-// itemref provides a list of element IDs (not itemids) elsewhere in the document,
-// with additional properties The itemref attribute can only be specified on
-// elements that have an itemscope attribute specified.
-func (e *BUTTONElement) ITEMREF(s string) *BUTTONElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	e.StringAttributes.Set("itemref", s)
-	return e
-}
-
-func (e *BUTTONElement) IfITEMREF(condition bool, s string) *BUTTONElement {
-	if condition {
-		e.ITEMREF(s)
-	}
-	return e
-}
-
-// Remove the attribute ITEMREF from the element.
-func (e *BUTTONElement) ITEMREFRemove(s string) *BUTTONElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("itemref")
-	return e
-}
-
-// The itemscope global attribute is used to add an item to a microdata DOM tree
-// Every HTML element can have an itemscope attribute specified, and an itemscope
-// consists of a name-value pair
-// Each name-value pair is called a property, and a group of one or more
-// properties forms an item
-// Property values are either a string or a URL and can be associated with a very
-// wide range of elements including <audio>, <embed>, <iframe>, <img>, <link>,
-// <object>, <source>, <track>, and <video>.
-func (e *BUTTONElement) ITEMSCOPE() *BUTTONElement {
-	e.ITEMSCOPESet(true)
-	return e
-}
-
-func (e *BUTTONElement) IfITEMSCOPE(condition bool) *BUTTONElement {
-	if condition {
-		e.ITEMSCOPESet(true)
-	}
-	return e
-}
-
-// Set the attribute ITEMSCOPE to the value b explicitly.
-func (e *BUTTONElement) ITEMSCOPESet(b bool) *BUTTONElement {
-	if e.BoolAttributes == nil {
-		e.BoolAttributes = treemap.New[string, bool]()
-	}
-	e.BoolAttributes.Set("itemscope", b)
-	return e
-}
-
-func (e *BUTTONElement) IfSetITEMSCOPE(condition bool, b bool) *BUTTONElement {
-	if condition {
-		e.ITEMSCOPESet(b)
-	}
-	return e
-}
-
-// Remove the attribute ITEMSCOPE from the element.
-func (e *BUTTONElement) ITEMSCOPERemove(b bool) *BUTTONElement {
-	if e.BoolAttributes == nil {
-		return e
-	}
-	e.BoolAttributes.Del("itemscope")
-	return e
-}
-
-// The itemtype global attribute is used to add types to an item
-// Every HTML element can have an itemtype attribute specified, and an itemtype
-// consists of a name-value pair
-// Each name-value pair is called a property, and a group of one or more
-// properties forms an item
-// Property values are either a string or a URL and can be associated with a very
-// wide range of elements including <audio>, <embed>, <iframe>, <img>, <link>,
-// <object>, <source>, <track>, and <video>.
-func (e *BUTTONElement) ITEMTYPE(s string) *BUTTONElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	e.StringAttributes.Set("itemtype", s)
-	return e
-}
-
-func (e *BUTTONElement) IfITEMTYPE(condition bool, s string) *BUTTONElement {
-	if condition {
-		e.ITEMTYPE(s)
-	}
-	return e
-}
-
-// Remove the attribute ITEMTYPE from the element.
-func (e *BUTTONElement) ITEMTYPERemove(s string) *BUTTONElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("itemtype")
-	return e
-}
-
-// The lang global attribute helps define the language of an element: the language
-// that non-editable elements are written in or the language that editable
-// elements should be written in by the user
-// The tag contains one single entry value in the format defines in the Tags for
-// Identifying Languages (BCP47) IETF document
-// xml:lang has priority over it.
-func (e *BUTTONElement) LANG(s string) *BUTTONElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	e.StringAttributes.Set("lang", s)
-	return e
-}
-
-func (e *BUTTONElement) IfLANG(condition bool, s string) *BUTTONElement {
-	if condition {
-		e.LANG(s)
-	}
-	return e
-}
-
-// Remove the attribute LANG from the element.
-func (e *BUTTONElement) LANGRemove(s string) *BUTTONElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("lang")
-	return e
-}
-
-// The nonce global attribute is a unique identifier used to declare inline
-// scripts and style elements to be used in a specific document
-// It is a cryptographic nonce (number used once) that is used by Content Security
-// Policy to determine whether or not a given inline script is allowed to execute.
-func (e *BUTTONElement) NONCE(s string) *BUTTONElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	e.StringAttributes.Set("nonce", s)
-	return e
-}
-
-func (e *BUTTONElement) IfNONCE(condition bool, s string) *BUTTONElement {
-	if condition {
-		e.NONCE(s)
-	}
-	return e
-}
-
-// Remove the attribute NONCE from the element.
-func (e *BUTTONElement) NONCERemove(s string) *BUTTONElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("nonce")
-	return e
-}
-
-// The part global attribute contains a space-separated list of the part names of
-// the element
-// Part names allows CSS to select and style specific elements in a shadow tree
-// via the ::part pseudo-element.
-func (e *BUTTONElement) PART(s ...string) *BUTTONElement {
-	if e.DelimitedStrings == nil {
-		e.DelimitedStrings = treemap.New[string, *DelimitedBuilder[string]]()
-	}
-	ds, ok := e.DelimitedStrings.Get("part")
-	if !ok {
-		ds = NewDelimitedBuilder[string](" ")
-		e.DelimitedStrings.Set("part", ds)
-	}
-	ds.Add(s...)
-	return e
-}
-
-func (e *BUTTONElement) IfPART(condition bool, s ...string) *BUTTONElement {
-	if condition {
-		e.PART(s...)
-	}
-	return e
-}
-
-// Remove the attribute PART from the element.
-func (e *BUTTONElement) PARTRemove(s ...string) *BUTTONElement {
-	if e.DelimitedStrings == nil {
-		return e
-	}
-	ds, ok := e.DelimitedStrings.Get("part")
-	if !ok {
-		return e
-	}
-	ds.Remove(s...)
-	return e
-}
-
-// The popover global attribute is used to designate an element as a popover
-// element
-// Popover elements are hidden via display: none until opened via an
-// invoking/control element (i.e
-// a <button> or <input type="button"> with a popovertarget attribute) or a
-// HTMLElement.showPopover() call
-// When open, popover elements will appear above all other elements in the top
-// layer, and won't be influenced by parent elements' position or overflow
-// styling.
-func (e *BUTTONElement) POPVER(c ButtonPopverChoice) *BUTTONElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	e.StringAttributes.Set("popver", string(c))
-	return e
-}
-
-type ButtonPopverChoice string
-
-const (
-	// Popovers that have the auto state can be "light dismissed" by selecting outside
-	// the popover area, and generally only allow one popover to be displayed
-	// on-screen at a time.
-	ButtonPopver_auto ButtonPopverChoice = "auto"
-	// Popovers that have the auto state can be "light dismissed" by selecting outside
-	// the popover area, and generally only allow one popover to be displayed
-	// on-screen at a time.
-	ButtonPopver_empty ButtonPopverChoice = ""
-	// manual popovers must always be explicitly hidden, but allow for use cases such
-	// as nested popovers in menus.
-	ButtonPopver_manual ButtonPopverChoice = "manual"
-)
-
-// Remove the attribute POPVER from the element.
-func (e *BUTTONElement) POPVERRemove(c ButtonPopverChoice) *BUTTONElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("popver")
-	return e
-}
-
-// The slot global attribute assigns a slot in a shadow DOM shadow tree to an
-// element: An element with a slot attribute is assigned to the slot created by
-// the <slot> element whose name attribute's value matches that slot attribute's
-// value.
-func (e *BUTTONElement) SLOT(s string) *BUTTONElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	e.StringAttributes.Set("slot", s)
-	return e
-}
-
-func (e *BUTTONElement) IfSLOT(condition bool, s string) *BUTTONElement {
-	if condition {
-		e.SLOT(s)
-	}
-	return e
-}
-
-// Remove the attribute SLOT from the element.
-func (e *BUTTONElement) SLOTRemove(s string) *BUTTONElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("slot")
-	return e
-}
-
-// The spellcheck global attribute is an enumerated attribute that defines whether
-// the element may be checked for spelling errors
-// If this attribute is not set, its default value is element-type and
-// browser-defined
-// This default value may also be inherited, which means that the element content
-// will be checked for spelling errors only if its nearest ancestor has a
-// spellcheck state of true
-// Security and privacy concerns Using spellchecking can have consequences for
-// users' security and privacy
-// The specification does not regulate how spellchecking is done and the content
-// of the element may be sent to a third party for spellchecking results (see
-// enhanced spellchecking and "spell-jacking")
-// You should consider setting spellcheck to false for elements that can contain
-// sensitive information.
-func (e *BUTTONElement) SPELLCHECK(c ButtonSpellcheckChoice) *BUTTONElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	e.StringAttributes.Set("spellcheck", string(c))
-	return e
-}
-
-type ButtonSpellcheckChoice string
-
-const (
-	// The element will be checked for spelling errors.
-	ButtonSpellcheck_empty ButtonSpellcheckChoice = ""
-	// The element will be checked for spelling errors.
-	ButtonSpellcheck_true ButtonSpellcheckChoice = "true"
-	// The element will not be checked for spelling errors.
-	ButtonSpellcheck_false ButtonSpellcheckChoice = "false"
-)
-
-// Remove the attribute SPELLCHECK from the element.
-func (e *BUTTONElement) SPELLCHECKRemove(c ButtonSpellcheckChoice) *BUTTONElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("spellcheck")
-	return e
-}
-
-// The style global attribute is used to add styles to an element, such as color,
-// font, size, and more
-// Styles are written in CSS.
-func (e *BUTTONElement) STYLEF(k string, format string, args ...any) *BUTTONElement {
-	return e.STYLE(k, fmt.Sprintf(format, args...))
-}
-
-func (e *BUTTONElement) IfSTYLE(condition bool, k string, v string) *BUTTONElement {
-	if condition {
-		e.STYLE(k, v)
-	}
-	return e
-}
-
-func (e *BUTTONElement) STYLE(k string, v string) *BUTTONElement {
-	if e.KVStrings == nil {
-		e.KVStrings = treemap.New[string, *KVBuilder]()
-	}
-	kv, ok := e.KVStrings.Get("style")
-	if !ok {
-		kv = NewKVBuilder(":", ";")
-		e.KVStrings.Set("style", kv)
-	}
-	kv.Add(k, v)
-	return e
-}
-
-func (e *BUTTONElement) IfSTYLEF(condition bool, k string, format string, args ...any) *BUTTONElement {
-	if condition {
-		e.STYLE(k, fmt.Sprintf(format, args...))
-	}
-	return e
-}
-
-// Add the attributes in the map to the element.
-func (e *BUTTONElement) STYLEMap(m map[string]string) *BUTTONElement {
-	if e.KVStrings == nil {
-		e.KVStrings = treemap.New[string, *KVBuilder]()
-	}
-	kv, ok := e.KVStrings.Get("style")
-	if !ok {
-		kv = NewKVBuilder(":", ";")
-		e.KVStrings.Set("style", kv)
-	}
-	for k, v := range m {
-		kv.Add(k, v)
-	}
-	return e
-}
-
-// Add pairs of attributes to the element.
-func (e *BUTTONElement) STYLEPairs(pairs ...string) *BUTTONElement {
-	if len(pairs)%2 != 0 {
-		panic("Must have an even number of pairs")
-	}
-	if e.KVStrings == nil {
-		e.KVStrings = treemap.New[string, *KVBuilder]()
-	}
-	kv, ok := e.KVStrings.Get("style")
-	if !ok {
-		kv = NewKVBuilder(":", ";")
-		e.KVStrings.Set("style", kv)
-	}
-
-	for i := 0; i < len(pairs); i += 2 {
-		kv.Add(pairs[i], pairs[i+1])
-	}
-
-	return e
-}
-
-func (e *BUTTONElement) IfSTYLEPairs(condition bool, pairs ...string) *BUTTONElement {
-	if condition {
-		e.STYLEPairs(pairs...)
-	}
-	return e
-}
-
-// Remove the attribute STYLE from the element.
-func (e *BUTTONElement) STYLERemove(keys ...string) *BUTTONElement {
-	if e.KVStrings == nil {
-		return e
-	}
-	kv, ok := e.KVStrings.Get("style")
-	if !ok {
-		return e
-	}
-	for _, k := range keys {
-		kv.Remove(k)
-	}
-	return e
-}
-
-// The tabindex global attribute indicates if its element can be focused, and
-// if/where it participates in sequential keyboard navigation (usually with the
-// Tab key, hence the name)
-// It accepts an integer as a value, with different results depending on the
-// integer's value: a negative value (usually tabindex="-1") means that the
-// element should be focusable, but should not be reachable via sequential
-// keyboard navigation; a value of 0 (tabindex="0") means that the element should
-// be focusable and reachable via sequential keyboard navigation, but its relative
-// order is defined by the platform convention; a positive value means should be
-// focusable and reachable via sequential keyboard navigation; its relative order
-// is defined by the value of the attribute: the sequential follow the increasing
-// number of the tabindex
-// If several elements share the same tabindex, their relative order follows their
-// relative position in the document.
-func (e *BUTTONElement) TABINDEX(i int) *BUTTONElement {
-	if e.IntAttributes == nil {
-		e.IntAttributes = treemap.New[string, int]()
-	}
-	e.IntAttributes.Set("tabindex", i)
-	return e
-}
-
-func (e *BUTTONElement) IfTABINDEX(condition bool, i int) *BUTTONElement {
-	if condition {
-		e.TABINDEX(i)
-	}
-	return e
-}
-
-// Remove the attribute TABINDEX from the element.
-func (e *BUTTONElement) TABINDEXRemove(i int) *BUTTONElement {
-	if e.IntAttributes == nil {
-		return e
-	}
-	e.IntAttributes.Del("tabindex")
-	return e
-}
-
-// The title global attribute contains text representing advisory information
-// related to the element it belongs to
-// Such information can typically, but not necessarily, be presented to the user
-// as a tooltip
-// The main use of the title attribute is to label <iframe> elements for assistive
-// technology
-// The title attribute may also be used to label controls in data tables
-// The title attribute, when added to <link rel="stylesheet">, creates an
-// alternate stylesheet
-// When defining an alternative style sheet with <link rel="alternate"> the
-// attribute is required and must be set to a non-empty string
-// If included on the <abbr> opening tag, the title must be a full expansion of
-// the abbreviation or acronym
-// Instead of using title, when possible, provide an expansion of the abbreviation
-// or acronym in plain text on first use, using the <abbr> to mark up the
-// abbreviation
-// This enables all users know what name or term the abbreviation or acronym
-// shortens while providing a hint to user agents on how to announce the content
-// While title can be used to provide a programmatically associated label for an
-// <input> element, this is not good practice
-// Use a <label> instead.
-func (e *BUTTONElement) TITLE(s string) *BUTTONElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	e.StringAttributes.Set("title", s)
-	return e
-}
-
-func (e *BUTTONElement) IfTITLE(condition bool, s string) *BUTTONElement {
-	if condition {
-		e.TITLE(s)
-	}
-	return e
-}
-
-// Remove the attribute TITLE from the element.
-func (e *BUTTONElement) TITLERemove(s string) *BUTTONElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("title")
-	return e
-}
-
-// The translate global attribute is an enumerated attribute that is used to
-// specify whether an element's attribute values and the values of its Text node
-// children are to be translated when the page is localized, or whether to leave
-// them unchanged.
-func (e *BUTTONElement) TRANSLATE(c ButtonTranslateChoice) *BUTTONElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	e.StringAttributes.Set("translate", string(c))
-	return e
-}
-
-type ButtonTranslateChoice string
-
-const (
-	// indicates that the element should be translated when the page is localized.
-	ButtonTranslate_empty ButtonTranslateChoice = ""
-	// indicates that the element should be translated when the page is localized.
-	ButtonTranslate_yes ButtonTranslateChoice = "yes"
-	// indicates that the element must not be translated when the page is localized.
-	ButtonTranslate_no ButtonTranslateChoice = "no"
-)
-
-// Remove the attribute TRANSLATE from the element.
-func (e *BUTTONElement) TRANSLATERemove(c ButtonTranslateChoice) *BUTTONElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("translate")
-	return e
-}
-
-// Merges the store with the given object
-
-func (e *BUTTONElement) DATASTAR_MERGE_STORE(v any) *BUTTONElement {
-	if e.CustomDataAttributes == nil {
-		e.CustomDataAttributes = treemap.New[string, string]()
-	}
-	b, err := json.Marshal(v)
-	if err != nil {
-		panic(err)
-	}
-	e.CustomDataAttributes.Set("data-merge-store", string(b))
-	return e
-}
-
-// Sets the reference of the element
-
-func (e *BUTTONElement) DATASTAR_REF(s string) *BUTTONElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	key := "data-ref"
-	e.StringAttributes.Set(key, s)
-	return e
-}
-
-func (e *BUTTONElement) IfDATASTAR_REF(condition bool, s string) *BUTTONElement {
-	if condition {
-		e.DATASTAR_REF(s)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_REF from the element.
-func (e *BUTTONElement) DATASTAR_REFRemove() *BUTTONElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-ref")
-	return e
-}
-
-// Sets the value of the element
-
-func (e *BUTTONElement) DATASTAR_BIND(s string) *BUTTONElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	key := "data-bind"
-	e.StringAttributes.Set(key, s)
-	return e
-}
-
-func (e *BUTTONElement) IfDATASTAR_BIND(condition bool, s string) *BUTTONElement {
-	if condition {
-		e.DATASTAR_BIND(s)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_BIND from the element.
-func (e *BUTTONElement) DATASTAR_BINDRemove() *BUTTONElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-bind")
-	return e
-}
-
-// Sets the value of the element
-
-func (e *BUTTONElement) DATASTAR_MODEL(s string) *BUTTONElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	key := "data-model"
-	e.StringAttributes.Set(key, s)
-	return e
-}
-
-func (e *BUTTONElement) IfDATASTAR_MODEL(condition bool, s string) *BUTTONElement {
-	if condition {
-		e.DATASTAR_MODEL(s)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_MODEL from the element.
-func (e *BUTTONElement) DATASTAR_MODELRemove() *BUTTONElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-model")
-	return e
-}
-
-// Sets the textContent of the element
-
-func (e *BUTTONElement) DATASTAR_TEXT(s string) *BUTTONElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	key := "data-text"
-	e.StringAttributes.Set(key, s)
-	return e
-}
-
-func (e *BUTTONElement) IfDATASTAR_TEXT(condition bool, s string) *BUTTONElement {
-	if condition {
-		e.DATASTAR_TEXT(s)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_TEXT from the element.
-func (e *BUTTONElement) DATASTAR_TEXTRemove() *BUTTONElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-text")
-	return e
-}
-
-// Sets the event handler of the element
-
-type ButtonDataOnMod customDataKeyModifier
-
-// Debounces the event handler
-func ButtonDataOnModDebounce(
-	s string,
-) ButtonDataOnMod {
-	return func() string {
-		return fmt.Sprintf("debounce_%sms", s)
-	}
-}
-
-// Throttles the event handler
-func ButtonDataOnModThrottle(
-	s string,
-) ButtonDataOnMod {
-	return func() string {
-		return fmt.Sprintf("throttle_%sms", s)
-	}
-}
-
-func (e *BUTTONElement) DATASTAR_ON(s string, modifiers ...ButtonDataOnMod) *BUTTONElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	customMods := lo.Map(modifiers, func(m ButtonDataOnMod, i int) customDataKeyModifier {
-		return customDataKeyModifier(m)
-	})
-	key := customDataKey("data-on", customMods...)
-	e.StringAttributes.Set(key, s)
-	return e
-}
-
-func (e *BUTTONElement) IfDATASTAR_ON(condition bool, s string, modifiers ...ButtonDataOnMod) *BUTTONElement {
-	if condition {
-		e.DATASTAR_ON(s, modifiers...)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_ON from the element.
-func (e *BUTTONElement) DATASTAR_ONRemove() *BUTTONElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-on")
-	return e
-}
-
-// Sets the focus of the element
-
-func (e *BUTTONElement) DATASTAR_FOCUSSet(b bool) *BUTTONElement {
-	key := "data-focus"
-	e.BoolAttributes.Set(key, b)
-	return e
-}
-
-func (e *BUTTONElement) DATASTAR_FOCUS() *BUTTONElement {
-	return e.DATASTAR_FOCUSSet(true)
-}
-
-// Sets the header of for fetch requests
-
-func (e *BUTTONElement) DATASTAR_HEADER(s string) *BUTTONElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	key := "data-header"
-	e.StringAttributes.Set(key, s)
-	return e
-}
-
-func (e *BUTTONElement) IfDATASTAR_HEADER(condition bool, s string) *BUTTONElement {
-	if condition {
-		e.DATASTAR_HEADER(s)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_HEADER from the element.
-func (e *BUTTONElement) DATASTAR_HEADERRemove() *BUTTONElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-header")
-	return e
-}
-
-// Sets the URL for fetch requests
-
-func (e *BUTTONElement) DATASTAR_FETCH_URL(s string) *BUTTONElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	key := "data-fetch-url"
-	e.StringAttributes.Set(key, s)
-	return e
-}
-
-func (e *BUTTONElement) IfDATASTAR_FETCH_URL(condition bool, s string) *BUTTONElement {
-	if condition {
-		e.DATASTAR_FETCH_URL(s)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_FETCH_URL from the element.
-func (e *BUTTONElement) DATASTAR_FETCH_URLRemove() *BUTTONElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-fetch-url")
-	return e
-}
-
-// Sets the indicator selector for fetch requests
-
-func (e *BUTTONElement) DATASTAR_FETCH_INDICATOR(s string) *BUTTONElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	key := "DatastarFetchIndicator"
-	e.StringAttributes.Set(key, s)
-	return e
-}
-
-func (e *BUTTONElement) IfDATASTAR_FETCH_INDICATOR(condition bool, s string) *BUTTONElement {
-	if condition {
-		e.DATASTAR_FETCH_INDICATOR(s)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_FETCH_INDICATOR from the element.
-func (e *BUTTONElement) DATASTAR_FETCH_INDICATORRemove() *BUTTONElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("DatastarFetchIndicator")
-	return e
-}
-
-// Sets the visibility of the element
-
-func (e *BUTTONElement) DATASTAR_SHOWSet(b bool) *BUTTONElement {
-	key := "data-show"
-	e.BoolAttributes.Set(key, b)
-	return e
-}
-
-func (e *BUTTONElement) DATASTAR_SHOW() *BUTTONElement {
-	return e.DATASTAR_SHOWSet(true)
-}
-
-// Triggers the callback when the element intersects the viewport
-
-func (e *BUTTONElement) DATASTAR_INTERSECTSSet(b bool) *BUTTONElement {
-	key := "data-intersects"
-	e.BoolAttributes.Set(key, b)
-	return e
-}
-
-func (e *BUTTONElement) DATASTAR_INTERSECTS() *BUTTONElement {
-	return e.DATASTAR_INTERSECTSSet(true)
-}
-
-// Teleports the element to the given selector
-
-func (e *BUTTONElement) DATASTAR_TELEPORTSet(b bool) *BUTTONElement {
-	key := "data-teleport"
-	e.BoolAttributes.Set(key, b)
-	return e
-}
-
-func (e *BUTTONElement) DATASTAR_TELEPORT() *BUTTONElement {
-	return e.DATASTAR_TELEPORTSet(true)
-}
-
-// Scrolls the element into view
-
-func (e *BUTTONElement) DATASTAR_SCROLL_INTO_VIEWSet(b bool) *BUTTONElement {
-	key := "data-scroll-into-view"
-	e.BoolAttributes.Set(key, b)
-	return e
-}
+    e.CustomDataAttributes.Del(key)
+	return e
+}
+
+
+    // A Boolean attribute which, if present, indicates that the button should be 
+// focused as soon as the page is loaded. 
+    func(e *BUTTONElement) AUTOFOCUS() *BUTTONElement{
+            e.AUTOFOCUSSet(true)
+            return e
+        }
+
+        func(e *BUTTONElement) IfAUTOFOCUS(condition bool) *BUTTONElement {
+            if condition {
+                e.AUTOFOCUSSet(true)
+            }
+            return e
+        }
+
+        // Set the attribute AUTOFOCUS to the value b explicitly.
+        func(e *BUTTONElement) AUTOFOCUSSet(b bool) *BUTTONElement{
+            if e.BoolAttributes == nil {
+                e.BoolAttributes = treemap.New[string,bool]()
+            }
+            e.BoolAttributes.Set("autofocus", b)
+            return e
+        }
+
+        func (e *BUTTONElement) IfSetAUTOFOCUS(condition bool, b bool) *BUTTONElement {
+            if condition {
+                e.AUTOFOCUSSet(b)
+            }
+            return e
+        }
+
+        // Remove the attribute AUTOFOCUS from the element.
+        func(e *BUTTONElement) AUTOFOCUSRemove(b bool) *BUTTONElement{
+            if e.BoolAttributes == nil {
+                return e
+            }
+            e.BoolAttributes.Del("autofocus")
+            return e
+        }
+
+    
+
+    // A Boolean attribute which is present if the button is disabled. 
+    func(e *BUTTONElement) DISABLED() *BUTTONElement{
+            e.DISABLEDSet(true)
+            return e
+        }
+
+        func(e *BUTTONElement) IfDISABLED(condition bool) *BUTTONElement {
+            if condition {
+                e.DISABLEDSet(true)
+            }
+            return e
+        }
+
+        // Set the attribute DISABLED to the value b explicitly.
+        func(e *BUTTONElement) DISABLEDSet(b bool) *BUTTONElement{
+            if e.BoolAttributes == nil {
+                e.BoolAttributes = treemap.New[string,bool]()
+            }
+            e.BoolAttributes.Set("disabled", b)
+            return e
+        }
+
+        func (e *BUTTONElement) IfSetDISABLED(condition bool, b bool) *BUTTONElement {
+            if condition {
+                e.DISABLEDSet(b)
+            }
+            return e
+        }
+
+        // Remove the attribute DISABLED from the element.
+        func(e *BUTTONElement) DISABLEDRemove(b bool) *BUTTONElement{
+            if e.BoolAttributes == nil {
+                return e
+            }
+            e.BoolAttributes.Del("disabled")
+            return e
+        }
+
+    
+
+    // The id of the form with which to associate the element. 
+    func(e *BUTTONElement) FORM(s string) *BUTTONElement{
+            if e.StringAttributes == nil {
+                e.StringAttributes = treemap.New[string,string]()
+            }
+            e.StringAttributes.Set("form", s)
+            return e
+        }
+
+        func(e *BUTTONElement) IfFORM(condition bool, s string) *BUTTONElement{
+            if condition {
+                e.FORM(s)
+            }
+            return e
+        }
+
+        // Remove the attribute FORM from the element.
+        func(e *BUTTONElement) FORMRemove(s string) *BUTTONElement{
+            if e.StringAttributes == nil {
+                return e
+            }
+            e.StringAttributes.Del("form")
+            return e
+        }
+    
+
+    // The URI of a program that processes the information submitted by the button 
+// If specified, it overrides the action attribute of the button's form owner. 
+    func(e *BUTTONElement) FORMACTION(s string) *BUTTONElement{
+            if e.StringAttributes == nil {
+                e.StringAttributes = treemap.New[string,string]()
+            }
+            e.StringAttributes.Set("formaction", s)
+            return e
+        }
+
+        func(e *BUTTONElement) IfFORMACTION(condition bool, s string) *BUTTONElement{
+            if condition {
+                e.FORMACTION(s)
+            }
+            return e
+        }
+
+        // Remove the attribute FORMACTION from the element.
+        func(e *BUTTONElement) FORMACTIONRemove(s string) *BUTTONElement{
+            if e.StringAttributes == nil {
+                return e
+            }
+            e.StringAttributes.Del("formaction")
+            return e
+        }
+    
+
+    // If the button is a submit button, this attribute specifies the type of content 
+// that is used to submit the form to the server. 
+    func(e *BUTTONElement) FORMENCTYPE(c ButtonFormenctypeChoice) *BUTTONElement{
+            if e.StringAttributes == nil {
+                e.StringAttributes = treemap.New[string,string]()
+            }
+            e.StringAttributes.Set("formenctype", string(c))
+            return e
+        }
+
+        type ButtonFormenctypeChoice string
+        const(
+        // The default value if the attribute is not specified. 
+            ButtonFormenctype_application_x_www_form_urlencoded ButtonFormenctypeChoice = "application/x-www-form-urlencoded"
+        // Use this value if you are using an enctype that requires a file upload. 
+            ButtonFormenctype_multipart_form_data ButtonFormenctypeChoice = "multipart/form-data"
+        // Use this value if you are using a "text/plain" enctype and the form will not 
+// contain any file uploads. 
+            ButtonFormenctype_text_plain ButtonFormenctypeChoice = "text/plain"
+        )
+
+        // Remove the attribute FORMENCTYPE from the element.
+        func(e *BUTTONElement) FORMENCTYPERemove(c ButtonFormenctypeChoice) *BUTTONElement{
+            if e.StringAttributes == nil {
+                return e
+            }
+            e.StringAttributes.Del("formenctype")
+            return e
+        }
+        
+
+    // If the button is a submit button, this attribute specifies the HTTP method that 
+// the browser uses to submit the form 
+// Possible values are: 
+    func(e *BUTTONElement) FORMMETHOD(c ButtonFormmethodChoice) *BUTTONElement{
+            if e.StringAttributes == nil {
+                e.StringAttributes = treemap.New[string,string]()
+            }
+            e.StringAttributes.Set("formmethod", string(c))
+            return e
+        }
+
+        type ButtonFormmethodChoice string
+        const(
+        // The data from the form is included in the body of the HTTP request when sent to 
+// the server. 
+            ButtonFormmethod_post ButtonFormmethodChoice = "post"
+        // The data from the form are appended to the form attribute URI, with a '?' as a 
+// separator, and the resulting URI is sent to the server 
+// Use this method when the form has no side-effects and contains only ASCII 
+// characters. 
+            ButtonFormmethod_get ButtonFormmethodChoice = "get"
+        // When the form is inside a <dialog>, closes the dialog on submission. 
+            ButtonFormmethod_dialog ButtonFormmethodChoice = "dialog"
+        )
+
+        // Remove the attribute FORMMETHOD from the element.
+        func(e *BUTTONElement) FORMMETHODRemove(c ButtonFormmethodChoice) *BUTTONElement{
+            if e.StringAttributes == nil {
+                return e
+            }
+            e.StringAttributes.Del("formmethod")
+            return e
+        }
+        
+
+    // If the button is a submit button, this Boolean attribute specifies that the 
+// form is not to be validated when it is submitted 
+// If this attribute is specified, it overrides the novalidate attribute of the 
+// button's form owner. 
+    func(e *BUTTONElement) FORMNOVALIDATE() *BUTTONElement{
+            e.FORMNOVALIDATESet(true)
+            return e
+        }
+
+        func(e *BUTTONElement) IfFORMNOVALIDATE(condition bool) *BUTTONElement {
+            if condition {
+                e.FORMNOVALIDATESet(true)
+            }
+            return e
+        }
+
+        // Set the attribute FORMNOVALIDATE to the value b explicitly.
+        func(e *BUTTONElement) FORMNOVALIDATESet(b bool) *BUTTONElement{
+            if e.BoolAttributes == nil {
+                e.BoolAttributes = treemap.New[string,bool]()
+            }
+            e.BoolAttributes.Set("formnovalidate", b)
+            return e
+        }
+
+        func (e *BUTTONElement) IfSetFORMNOVALIDATE(condition bool, b bool) *BUTTONElement {
+            if condition {
+                e.FORMNOVALIDATESet(b)
+            }
+            return e
+        }
+
+        // Remove the attribute FORMNOVALIDATE from the element.
+        func(e *BUTTONElement) FORMNOVALIDATERemove(b bool) *BUTTONElement{
+            if e.BoolAttributes == nil {
+                return e
+            }
+            e.BoolAttributes.Del("formnovalidate")
+            return e
+        }
+
+    
+
+    // If the button is a submit button, this attribute is a name or keyword 
+// indicating where to display the response that is received after submitting the 
+// form 
+// This is a name of, or keyword for, a browsing context (for example, tab, 
+// window, or inline frame) 
+// If this attribute is specified, it overrides the target attribute of the 
+// button's form owner 
+// The following keywords have special meanings: 
+    func(e *BUTTONElement) FORMTARGET(c ButtonFormtargetChoice) *BUTTONElement{
+            if e.StringAttributes == nil {
+                e.StringAttributes = treemap.New[string,string]()
+            }
+            e.StringAttributes.Set("formtarget", string(c))
+            return e
+        }
+
+        type ButtonFormtargetChoice string
+        const(
+        // Load the response into the same browsing context as the current one 
+// This value is the default if the attribute is not specified. 
+            ButtonFormtarget__self ButtonFormtargetChoice = "_self"
+        // Load the response into a new unnamed browsing context. 
+            ButtonFormtarget__blank ButtonFormtargetChoice = "_blank"
+        // Load the response into the parent browsing context of the current one 
+// If there is no parent, this option behaves the same way as _self. 
+            ButtonFormtarget__parent ButtonFormtargetChoice = "_parent"
+        // Load the response into the top-level browsing context (that is, the browsing 
+// context that is an ancestor of the current one, and has no parent) 
+// If there is no parent, this option behaves the same way as _self. 
+            ButtonFormtarget__top ButtonFormtargetChoice = "_top"
+        )
+
+        // Remove the attribute FORMTARGET from the element.
+        func(e *BUTTONElement) FORMTARGETRemove(c ButtonFormtargetChoice) *BUTTONElement{
+            if e.StringAttributes == nil {
+                return e
+            }
+            e.StringAttributes.Del("formtarget")
+            return e
+        }
+        
+
+    // The name of the button, which is submitted with the form data. 
+    func(e *BUTTONElement) NAME(s string) *BUTTONElement{
+            if e.StringAttributes == nil {
+                e.StringAttributes = treemap.New[string,string]()
+            }
+            e.StringAttributes.Set("name", s)
+            return e
+        }
+
+        func(e *BUTTONElement) IfNAME(condition bool, s string) *BUTTONElement{
+            if condition {
+                e.NAME(s)
+            }
+            return e
+        }
+
+        // Remove the attribute NAME from the element.
+        func(e *BUTTONElement) NAMERemove(s string) *BUTTONElement{
+            if e.StringAttributes == nil {
+                return e
+            }
+            e.StringAttributes.Del("name")
+            return e
+        }
+    
+
+    // Turns a <button> element into a popover control button; takes the ID of the 
+// popover element to control as its value 
+// See the Popover API landing page for more details. 
+    func(e *BUTTONElement) POPOVERTARGET(s string) *BUTTONElement{
+            if e.StringAttributes == nil {
+                e.StringAttributes = treemap.New[string,string]()
+            }
+            e.StringAttributes.Set("popovertarget", s)
+            return e
+        }
+
+        func(e *BUTTONElement) IfPOPOVERTARGET(condition bool, s string) *BUTTONElement{
+            if condition {
+                e.POPOVERTARGET(s)
+            }
+            return e
+        }
+
+        // Remove the attribute POPOVERTARGET from the element.
+        func(e *BUTTONElement) POPOVERTARGETRemove(s string) *BUTTONElement{
+            if e.StringAttributes == nil {
+                return e
+            }
+            e.StringAttributes.Del("popovertarget")
+            return e
+        }
+    
+
+    // Specifies the action to take when the popover control button is clicked 
+// Possible values are: 
+    func(e *BUTTONElement) POPOVERTARGETACTION(c ButtonPopovertargetactionChoice) *BUTTONElement{
+            if e.StringAttributes == nil {
+                e.StringAttributes = treemap.New[string,string]()
+            }
+            e.StringAttributes.Set("popovertargetaction", string(c))
+            return e
+        }
+
+        type ButtonPopovertargetactionChoice string
+        const(
+        // Toggle the visibility of the popover. 
+            ButtonPopovertargetaction_toggle ButtonPopovertargetactionChoice = "toggle"
+        // Show the popover. 
+            ButtonPopovertargetaction_show ButtonPopovertargetactionChoice = "show"
+        // Hide the popover. 
+            ButtonPopovertargetaction_hide ButtonPopovertargetactionChoice = "hide"
+        )
+
+        // Remove the attribute POPOVERTARGETACTION from the element.
+        func(e *BUTTONElement) POPOVERTARGETACTIONRemove(c ButtonPopovertargetactionChoice) *BUTTONElement{
+            if e.StringAttributes == nil {
+                return e
+            }
+            e.StringAttributes.Del("popovertargetaction")
+            return e
+        }
+        
+
+    // The type of the button 
+// Possible values are: 
+    func(e *BUTTONElement) TYPE(c ButtonTypeChoice) *BUTTONElement{
+            if e.StringAttributes == nil {
+                e.StringAttributes = treemap.New[string,string]()
+            }
+            e.StringAttributes.Set("type", string(c))
+            return e
+        }
+
+        type ButtonTypeChoice string
+        const(
+        // The button has no default behavior 
+// It can have client-side scripts associated with the element's events, which are 
+// triggered when the events occur. 
+            ButtonType_button ButtonTypeChoice = "button"
+        // The button resets all the controls to their initial values. 
+            ButtonType_reset ButtonTypeChoice = "reset"
+        // The button submits the form data to the server 
+// This is the default if the attribute is not specified for buttons associated 
+// with a <form>, or if the attribute is an empty or invalid value. 
+            ButtonType_submit ButtonTypeChoice = "submit"
+        )
+
+        // Remove the attribute TYPE from the element.
+        func(e *BUTTONElement) TYPERemove(c ButtonTypeChoice) *BUTTONElement{
+            if e.StringAttributes == nil {
+                return e
+            }
+            e.StringAttributes.Del("type")
+            return e
+        }
+        
+
+    // The initial value of the button 
+// This attribute is optional except when the value of the type attribute is radio 
+// or checkbox. 
+    func(e *BUTTONElement) VALUE(s string) *BUTTONElement{
+            if e.StringAttributes == nil {
+                e.StringAttributes = treemap.New[string,string]()
+            }
+            e.StringAttributes.Set("value", s)
+            return e
+        }
+
+        func(e *BUTTONElement) IfVALUE(condition bool, s string) *BUTTONElement{
+            if condition {
+                e.VALUE(s)
+            }
+            return e
+        }
+
+        // Remove the attribute VALUE from the element.
+        func(e *BUTTONElement) VALUERemove(s string) *BUTTONElement{
+            if e.StringAttributes == nil {
+                return e
+            }
+            e.StringAttributes.Del("value")
+            return e
+        }
+    
+
+    // The accesskey global attribute provides a hint for generating a keyboard 
+// shortcut for the current element 
+// The attribute value must consist of a single printable character (which 
+// includes accented and other characters that can be generated by the keyboard). 
+    func(e *BUTTONElement) ACCESSKEY(r rune) *BUTTONElement{
+            if e.StringAttributes == nil {
+                e.StringAttributes = treemap.New[string,string]()
+            }
+            e.StringAttributes.Set("accesskey", string(r))
+            return e
+        }
+
+        func(e *BUTTONElement) IfACCESSKEY(condition bool, r rune) *BUTTONElement{
+            if condition {
+                e.ACCESSKEY(r)
+            }
+            return e
+        }
+
+        // Remove the attribute ACCESSKEY from the element.
+        func(e *BUTTONElement) ACCESSKEYRemove() *BUTTONElement{
+            if e.StringAttributes == nil {
+                return e
+            }
+            e.StringAttributes.Del("accesskey")
+            return e
+        }
+
+    
+
+    // The autocapitalize global attribute is an enumerated attribute that controls 
+// whether and how text input is automatically capitalized as it is entered/edited 
+// by the user 
+// autocapitalize can be set on <input> and <textarea> elements, and on their 
+// containing <form> elements 
+// When autocapitalize is set on a <form> element, it sets the autocapitalize 
+// behavior for all contained <input>s and <textarea>s, overriding any 
+// autocapitalize values set on contained elements 
+// autocapitalize has no effect on the url, email, or password <input> types, 
+// where autocapitalization is never enabled 
+// Where autocapitalize is not specified, the adopted default behavior varies 
+// between browsers 
+// For example: Chrome and Safari default to on/sentences Firefox defaults to 
+// off/none. 
+    func(e *BUTTONElement) AUTOCAPITALIZE(c ButtonAutocapitalizeChoice) *BUTTONElement{
+            if e.StringAttributes == nil {
+                e.StringAttributes = treemap.New[string,string]()
+            }
+            e.StringAttributes.Set("autocapitalize", string(c))
+            return e
+        }
+
+        type ButtonAutocapitalizeChoice string
+        const(
+        // Do not automatically capitalize any text. 
+            ButtonAutocapitalize_off ButtonAutocapitalizeChoice = "off"
+        // Do not automatically capitalize any text. 
+            ButtonAutocapitalize_none ButtonAutocapitalizeChoice = "none"
+        // Automatically capitalize the first character of each sentence. 
+            ButtonAutocapitalize_sentences ButtonAutocapitalizeChoice = "sentences"
+        // Automatically capitalize the first character of each sentence. 
+            ButtonAutocapitalize_on ButtonAutocapitalizeChoice = "on"
+        // Automatically capitalize the first character of each word. 
+            ButtonAutocapitalize_words ButtonAutocapitalizeChoice = "words"
+        // Automatically capitalize all characters. 
+            ButtonAutocapitalize_characters ButtonAutocapitalizeChoice = "characters"
+        )
+
+        // Remove the attribute AUTOCAPITALIZE from the element.
+        func(e *BUTTONElement) AUTOCAPITALIZERemove(c ButtonAutocapitalizeChoice) *BUTTONElement{
+            if e.StringAttributes == nil {
+                return e
+            }
+            e.StringAttributes.Del("autocapitalize")
+            return e
+        }
+        
+
+    // The class global attribute is a space-separated list of the case-sensitive 
+// classes of the element 
+// Classes allow CSS and JavaScript to select and access specific elements via the 
+// class selectors or functions like the DOM method 
+// document.getElementsByClassName. 
+    func(e *BUTTONElement) CLASS(s ...string) *BUTTONElement{
+            if e.DelimitedStrings == nil {
+                e.DelimitedStrings = treemap.New[string,*DelimitedBuilder[string]]()
+            }
+            ds, ok := e.DelimitedStrings.Get("class")
+            if !ok {
+                ds = NewDelimitedBuilder[string](" ")
+                e.DelimitedStrings.Set("class", ds)
+            }
+            ds.Add(s...)
+            return e
+        }
+
+        func(e *BUTTONElement) IfCLASS(condition bool, s ...string) *BUTTONElement{
+            if condition {
+                e.CLASS(s...)
+            }
+            return e
+        }
+
+        // Remove the attribute CLASS from the element.
+        func(e *BUTTONElement) CLASSRemove(s ...string) *BUTTONElement{
+            if e.DelimitedStrings == nil {
+                return e
+            }
+            ds, ok := e.DelimitedStrings.Get("class")
+            if !ok {
+                return e
+            }
+            ds.Remove(s ...)
+            return e
+        }
+
+    
+
+    // The contenteditable global attribute is an enumerated attribute indicating if 
+// the element should be editable by the user 
+// If so, the browser modifies its widget to allow editing. 
+    func(e *BUTTONElement) CONTENTEDITABLE(c ButtonContenteditableChoice) *BUTTONElement{
+            if e.StringAttributes == nil {
+                e.StringAttributes = treemap.New[string,string]()
+            }
+            e.StringAttributes.Set("contenteditable", string(c))
+            return e
+        }
+
+        type ButtonContenteditableChoice string
+        const(
+        // The element is editable. 
+            ButtonContenteditable_empty ButtonContenteditableChoice = ""
+        // The element is editable. 
+            ButtonContenteditable_true ButtonContenteditableChoice = "true"
+        // The element is not editable. 
+            ButtonContenteditable_false ButtonContenteditableChoice = "false"
+        // which indicates that the element's raw text is editable, but rich text 
+// formatting is disabled. 
+            ButtonContenteditable_plaintext_only ButtonContenteditableChoice = "plaintext-only"
+        )
+
+        // Remove the attribute CONTENTEDITABLE from the element.
+        func(e *BUTTONElement) CONTENTEDITABLERemove(c ButtonContenteditableChoice) *BUTTONElement{
+            if e.StringAttributes == nil {
+                return e
+            }
+            e.StringAttributes.Del("contenteditable")
+            return e
+        }
+        
+
+    // The dir global attribute is an enumerated attribute that indicates the 
+// directionality of the element's text 
+// Note: This attribute is mandatory for the <bdo> element where it has a 
+// different semantic meaning 
+// This attribute is not inherited by the <bdi> element 
+// If not set, its value is auto 
+// This attribute can be overridden by the CSS properties direction and 
+// unicode-bidi, if a CSS page is active and the element supports these properties 
+// As the directionality of the text is semantically related to its content and 
+// not to its presentation, it is recommended that web developers use this 
+// attribute instead of the related CSS properties when possible 
+// That way, the text will display correctly even on a browser that doesn't 
+// support CSS or has the CSS deactivated 
+// The auto value should be used for data with an unknown directionality, like 
+// data coming from user input, eventually stored in a database. 
+    func(e *BUTTONElement) DIR(c ButtonDirChoice) *BUTTONElement{
+            if e.StringAttributes == nil {
+                e.StringAttributes = treemap.New[string,string]()
+            }
+            e.StringAttributes.Set("dir", string(c))
+            return e
+        }
+
+        type ButtonDirChoice string
+        const(
+        // which means left to right and is to be used for languages that are written from 
+// the left to the right (like English); 
+            ButtonDir_ltr ButtonDirChoice = "ltr"
+        // which means right to left and is to be used for languages that are written from 
+// the right to the left (like Arabic); 
+            ButtonDir_rtl ButtonDirChoice = "rtl"
+        // which lets the user agent decide 
+// It uses a basic algorithm as it parses the characters inside the element until 
+// it finds a character with a strong directionality, then it applies that 
+// directionality to the whole element. 
+            ButtonDir_auto ButtonDirChoice = "auto"
+        )
+
+        // Remove the attribute DIR from the element.
+        func(e *BUTTONElement) DIRRemove(c ButtonDirChoice) *BUTTONElement{
+            if e.StringAttributes == nil {
+                return e
+            }
+            e.StringAttributes.Del("dir")
+            return e
+        }
+        
+
+    // The draggable global attribute is an enumerated attribute that indicates 
+// whether the element can be dragged, either with native browser behavior or the 
+// HTML Drag and Drop API. 
+    func(e *BUTTONElement) DRAGGABLE(c ButtonDraggableChoice) *BUTTONElement{
+            if e.StringAttributes == nil {
+                e.StringAttributes = treemap.New[string,string]()
+            }
+            e.StringAttributes.Set("draggable", string(c))
+            return e
+        }
+
+        type ButtonDraggableChoice string
+        const(
+        // The element is draggable. 
+            ButtonDraggable_true ButtonDraggableChoice = "true"
+        // The element is not draggable. 
+            ButtonDraggable_false ButtonDraggableChoice = "false"
+        // drag behavior is the default browser behavior: only text selections, images, 
+// and links can be dragged 
+// For other elements, the event ondragstart must be set for drag and drop to work 
+            ButtonDraggable_empty ButtonDraggableChoice = ""
+        // drag behavior is the default browser behavior: only text selections, images, 
+// and links can be dragged 
+// For other elements, the event ondragstart must be set for drag and drop to work 
+            ButtonDraggable_auto ButtonDraggableChoice = "auto"
+        )
+
+        // Remove the attribute DRAGGABLE from the element.
+        func(e *BUTTONElement) DRAGGABLERemove(c ButtonDraggableChoice) *BUTTONElement{
+            if e.StringAttributes == nil {
+                return e
+            }
+            e.StringAttributes.Del("draggable")
+            return e
+        }
+        
+
+    // The enterkeyhint global attribute is an enumerated attribute defining what 
+// action label (or icon) to present for the enter key on virtual keyboards. 
+    func(e *BUTTONElement) ENTERKEYHINT(c ButtonEnterkeyhintChoice) *BUTTONElement{
+            if e.StringAttributes == nil {
+                e.StringAttributes = treemap.New[string,string]()
+            }
+            e.StringAttributes.Set("enterkeyhint", string(c))
+            return e
+        }
+
+        type ButtonEnterkeyhintChoice string
+        const(
+        // Typically inserting a new line. 
+            ButtonEnterkeyhint_enter ButtonEnterkeyhintChoice = "enter"
+        // Typically meaning there is nothing more to input and the input method editor 
+// (IME) will be closed. 
+            ButtonEnterkeyhint_done ButtonEnterkeyhintChoice = "done"
+        // Typically meaning to take the user to the target of the text they typed. 
+            ButtonEnterkeyhint_go ButtonEnterkeyhintChoice = "go"
+        // Typically meaning to take the user to the next field that will accept text. 
+            ButtonEnterkeyhint_next ButtonEnterkeyhintChoice = "next"
+        // Typically meaning to take the user to the previous field that will accept text. 
+            ButtonEnterkeyhint_previous ButtonEnterkeyhintChoice = "previous"
+        // Typically taking the user to the results of searching for the text they have 
+// typed. 
+            ButtonEnterkeyhint_search ButtonEnterkeyhintChoice = "search"
+        // Typically delivering the text to its target. 
+            ButtonEnterkeyhint_send ButtonEnterkeyhintChoice = "send"
+        )
+
+        // Remove the attribute ENTERKEYHINT from the element.
+        func(e *BUTTONElement) ENTERKEYHINTRemove(c ButtonEnterkeyhintChoice) *BUTTONElement{
+            if e.StringAttributes == nil {
+                return e
+            }
+            e.StringAttributes.Del("enterkeyhint")
+            return e
+        }
+        
+
+    // The exportparts global attribute allows you to select and style elements 
+// existing in nested shadow trees, by exporting their part names 
+// The shadow tree is an isolated structure where identifiers, classes, and styles 
+// cannot be reached by selectors or queries belonging to a regular DOM 
+// To apply a style to an element living in a shadow tree, by CSS rule created 
+// outside of it, part global attribute has to be used 
+// It has to be assigned to an element present in Shadow Tree, and its value 
+// should be some identifier 
+// Rules present outside of the shadow tree, must use the ::part pseudo-element, 
+// containing the same identifier as the argument 
+// The global attribute part makes the element visible on just a single level of 
+// depth 
+// When the shadow tree is nested, parts will be visible only to the parent of the 
+// shadow tree but not to its ancestor 
+// Exporting parts further down is exactly what exportparts attribute is for 
+// Attribute exportparts must be placed on a shadow Host, which is the element to 
+// which the shadow tree is attached 
+// The value of the attribute should be a comma-separated list of part names 
+// present in the shadow tree and which should be made available via a DOM outside 
+// of the current structure. 
+    func(e *BUTTONElement) EXPORTPARTS(s ...string) *BUTTONElement{
+            if e.DelimitedStrings == nil {
+                e.DelimitedStrings = treemap.New[string,*DelimitedBuilder[string]]()
+            }
+            ds, ok := e.DelimitedStrings.Get("exportparts")
+            if !ok {
+                ds = NewDelimitedBuilder[string](",")
+                e.DelimitedStrings.Set("exportparts", ds)
+            }
+            ds.Add(s...)
+            return e
+        }
+
+        func(e *BUTTONElement) IfEXPORTPARTS(condition bool, s ...string) *BUTTONElement{
+            if condition {
+                e.EXPORTPARTS(s...)
+            }
+            return e
+        }
+
+        // Remove the attribute EXPORTPARTS from the element.
+        func(e *BUTTONElement) EXPORTPARTSRemove(s ...string) *BUTTONElement{
+            if e.DelimitedStrings == nil {
+                return e
+            }
+            ds, ok := e.DelimitedStrings.Get("exportparts")
+            if !ok {
+                return e
+            }
+            ds.Remove(s ...)
+            return e
+        }
+
+    
+
+    // The hidden global attribute is a Boolean attribute indicating that the element 
+// is not yet, or is no longer, relevant 
+// For example, it can be used to hide elements of the page that can't be used 
+// until the login process has been completed 
+// Note that browsers typically implement hidden until found using 
+// content-visibility: hidden 
+// This means that unlike elements in the hidden state, elements in the hidden 
+// until found state will have generated boxes, meaning that: the element will 
+// participate in page layout margin, borders, padding, and background for the 
+// element will be rendered 
+// Also, the element needs to be affected by layout containment in order to be 
+// revealed 
+// This means that if the element in the hidden until found state has a display 
+// value of none, contents, or inline, then the element will not be revealed by 
+// find in page or fragment navigation. 
+    func(e *BUTTONElement) HIDDEN(c ButtonHiddenChoice) *BUTTONElement{
+            if e.StringAttributes == nil {
+                e.StringAttributes = treemap.New[string,string]()
+            }
+            e.StringAttributes.Set("hidden", string(c))
+            return e
+        }
+
+        type ButtonHiddenChoice string
+        const(
+        // set the element to the hidden state 
+// Additionally, invalid values set the element to the hidden state. 
+            ButtonHidden_empty ButtonHiddenChoice = ""
+        // set the element to the hidden state 
+// Additionally, invalid values set the element to the hidden state. 
+            ButtonHidden_hidden ButtonHiddenChoice = "hidden"
+        // the element is hidden but its content will be accessible to the browser's "find 
+// in page" feature or to fragment navigation 
+// When these features cause a scroll to an element in a hidden until found 
+// subtree, the browser will fire a beforematch event on the hidden element remove 
+// the hidden attribute from the element scroll to the element 
+// 			 
+            ButtonHidden_until_found ButtonHiddenChoice = "until-found"
+        )
+
+        // Remove the attribute HIDDEN from the element.
+        func(e *BUTTONElement) HIDDENRemove(c ButtonHiddenChoice) *BUTTONElement{
+            if e.StringAttributes == nil {
+                return e
+            }
+            e.StringAttributes.Del("hidden")
+            return e
+        }
+        
+
+    // The id global attribute defines a unique identifier (ID) which must be unique 
+// in the whole document 
+// Its purpose is to identify the element when linking (using a fragment 
+// identifier), scripting, or styling (with CSS). 
+    func(e *BUTTONElement) ID(s string) *BUTTONElement{
+            if e.StringAttributes == nil {
+                e.StringAttributes = treemap.New[string,string]()
+            }
+            e.StringAttributes.Set("id", s)
+            return e
+        }
+
+        func(e *BUTTONElement) IfID(condition bool, s string) *BUTTONElement{
+            if condition {
+                e.ID(s)
+            }
+            return e
+        }
+
+        // Remove the attribute ID from the element.
+        func(e *BUTTONElement) IDRemove(s string) *BUTTONElement{
+            if e.StringAttributes == nil {
+                return e
+            }
+            e.StringAttributes.Del("id")
+            return e
+        }
+    
+
+    // The inert global attribute is a Boolean attribute indicating that the browser 
+// will ignore the element 
+// With the inert attribute, all of the element's flat tree descendants (such as 
+// modal <dialog>s) that don't otherwise escape inertness are ignored 
+// The inert attribute also makes the browser ignore input events sent by the 
+// user, including focus-related events and events from assistive technologies 
+// Specifically, inert does the following: Prevents the click event from being 
+// fired when the user clicks on the element 
+// Prevents the focus event from being raised by preventing the element from 
+// gaining focus 
+// Hides the element and its content from assistive technologies by excluding them 
+// from the accessibility tree. 
+    func(e *BUTTONElement) INERT() *BUTTONElement{
+            e.INERTSet(true)
+            return e
+        }
+
+        func(e *BUTTONElement) IfINERT(condition bool) *BUTTONElement {
+            if condition {
+                e.INERTSet(true)
+            }
+            return e
+        }
+
+        // Set the attribute INERT to the value b explicitly.
+        func(e *BUTTONElement) INERTSet(b bool) *BUTTONElement{
+            if e.BoolAttributes == nil {
+                e.BoolAttributes = treemap.New[string,bool]()
+            }
+            e.BoolAttributes.Set("inert", b)
+            return e
+        }
+
+        func (e *BUTTONElement) IfSetINERT(condition bool, b bool) *BUTTONElement {
+            if condition {
+                e.INERTSet(b)
+            }
+            return e
+        }
+
+        // Remove the attribute INERT from the element.
+        func(e *BUTTONElement) INERTRemove(b bool) *BUTTONElement{
+            if e.BoolAttributes == nil {
+                return e
+            }
+            e.BoolAttributes.Del("inert")
+            return e
+        }
+
+    
+
+    // The inputmode global attribute is an enumerated attribute that hints at the 
+// type of data that might be entered by the user while editing the element or its 
+// contents 
+// This allows a browser to display an appropriate virtual keyboard 
+// It is used primarily on <input> elements, but is usable on any element in 
+// contenteditable mode 
+// It's important to understand that the inputmode attribute doesn't cause any 
+// validity requirements to be enforced on input 
+// To require that input conforms to a particular data type, choose an appropriate 
+// <input> element type 
+// For specific guidance on choosing <input> types, see the Values section. 
+    func(e *BUTTONElement) INPUTMODE(c ButtonInputmodeChoice) *BUTTONElement{
+            if e.StringAttributes == nil {
+                e.StringAttributes = treemap.New[string,string]()
+            }
+            e.StringAttributes.Set("inputmode", string(c))
+            return e
+        }
+
+        type ButtonInputmodeChoice string
+        const(
+        // No virtual keyboard 
+// For when the page implements its own keyboard input control. 
+            ButtonInputmode_none ButtonInputmodeChoice = "none"
+        // Standard input keyboard for the user's current locale. 
+            ButtonInputmode_empty ButtonInputmodeChoice = ""
+        // Standard input keyboard for the user's current locale. 
+            ButtonInputmode_text ButtonInputmodeChoice = "text"
+        // Fractional numeric input keyboard containing the digits and decimal separator 
+// for the user's locale (typically  
+// or ,) 
+// Devices may or may not show a minus key (-). 
+            ButtonInputmode_decimal ButtonInputmodeChoice = "decimal"
+        // Numeric input keyboard, but only requires the digits 0–9 
+// Devices may or may not show a minus key. 
+            ButtonInputmode_numeric ButtonInputmodeChoice = "numeric"
+        // A telephone keypad input, including the digits 0–9, the asterisk (*), and the 
+// pound (#) key 
+// Inputs that *require* a telephone number should typically use <input 
+// type="tel"> instead. 
+            ButtonInputmode_tel ButtonInputmodeChoice = "tel"
+        // A virtual keyboard optimized for search input 
+// For instance, the return/submit key may be labeled "Search", along with 
+// possible other optimizations 
+// Inputs that require a search query should typically use <input type="search"> 
+// instead. 
+            ButtonInputmode_search ButtonInputmodeChoice = "search"
+        // A virtual keyboard optimized for entering email addresses 
+// Typically includes the @character as well as other optimizations 
+// Inputs that require email addresses should typically use <input type="email"> 
+// instead. 
+            ButtonInputmode_email ButtonInputmodeChoice = "email"
+        // A keypad optimized for entering URLs 
+// This may have the / key more prominent, for example 
+// Enhanced features could include history access and so on 
+// Inputs that require a URL should typically use <input type="url"> instead. 
+            ButtonInputmode_url ButtonInputmodeChoice = "url"
+        )
+
+        // Remove the attribute INPUTMODE from the element.
+        func(e *BUTTONElement) INPUTMODERemove(c ButtonInputmodeChoice) *BUTTONElement{
+            if e.StringAttributes == nil {
+                return e
+            }
+            e.StringAttributes.Del("inputmode")
+            return e
+        }
+        
+
+    // The is global attribute allows you to specify that a standard HTML element 
+// should behave like a defined custom built-in element (see Using custom elements 
+// for more details) 
+// This attribute can only be used if the specified custom element name has been 
+// successfully defined in the current document, and extends the element type it 
+// is being applied to. 
+    func(e *BUTTONElement) IS(s string) *BUTTONElement{
+            if e.StringAttributes == nil {
+                e.StringAttributes = treemap.New[string,string]()
+            }
+            e.StringAttributes.Set("is", s)
+            return e
+        }
+
+        func(e *BUTTONElement) IfIS(condition bool, s string) *BUTTONElement{
+            if condition {
+                e.IS(s)
+            }
+            return e
+        }
+
+        // Remove the attribute IS from the element.
+        func(e *BUTTONElement) ISRemove(s string) *BUTTONElement{
+            if e.StringAttributes == nil {
+                return e
+            }
+            e.StringAttributes.Del("is")
+            return e
+        }
+    
+
+    // The itemid global attribute provides microdata in the form of a unique, global 
+// identifier of an item. 
+//  
+// 		An itemid attribute can only be specified for an element that has both 
+// itemscope and itemtype attributes 
+// Also, itemid can only be specified on elements that possess an itemscope 
+// attribute whose corresponding itemtype refers to or defines a vocabulary that 
+// supports global identifiers 
+// The exact meaning of an itemtype's global identifier is provided by the 
+// definition of that identifier within the specified vocabulary 
+// The vocabulary defines whether several items with the same global identifier 
+// can coexist and, if so, how items with the same identifier are handled. 
+    func(e *BUTTONElement) ITEMID(s string) *BUTTONElement{
+            if e.StringAttributes == nil {
+                e.StringAttributes = treemap.New[string,string]()
+            }
+            e.StringAttributes.Set("itemid", s)
+            return e
+        }
+
+        func(e *BUTTONElement) IfITEMID(condition bool, s string) *BUTTONElement{
+            if condition {
+                e.ITEMID(s)
+            }
+            return e
+        }
+
+        // Remove the attribute ITEMID from the element.
+        func(e *BUTTONElement) ITEMIDRemove(s string) *BUTTONElement{
+            if e.StringAttributes == nil {
+                return e
+            }
+            e.StringAttributes.Del("itemid")
+            return e
+        }
+    
+
+    // The itemprop global attribute is used to add properties to an item 
+// Every HTML element can have an itemprop attribute specified, and an itemprop 
+// consists of a name-value pair 
+// Each name-value pair is called a property, and a group of one or more 
+// properties forms an item 
+// Property values are either a string or a URL and can be associated with a very 
+// wide range of elements including <audio>, <embed>, <iframe>, <img>, <link>, 
+// <object>, <source>, <track>, and <video>. 
+    func(e *BUTTONElement) ITEMPROP(s string) *BUTTONElement{
+            if e.StringAttributes == nil {
+                e.StringAttributes = treemap.New[string,string]()
+            }
+            e.StringAttributes.Set("itemprop", s)
+            return e
+        }
+
+        func(e *BUTTONElement) IfITEMPROP(condition bool, s string) *BUTTONElement{
+            if condition {
+                e.ITEMPROP(s)
+            }
+            return e
+        }
+
+        // Remove the attribute ITEMPROP from the element.
+        func(e *BUTTONElement) ITEMPROPRemove(s string) *BUTTONElement{
+            if e.StringAttributes == nil {
+                return e
+            }
+            e.StringAttributes.Del("itemprop")
+            return e
+        }
+    
+
+    // Properties that are not descendants of an element with the itemscope attribute 
+// can be associated with an item using the global attribute itemref 
+// itemref provides a list of element IDs (not itemids) elsewhere in the document, 
+// with additional properties The itemref attribute can only be specified on 
+// elements that have an itemscope attribute specified. 
+    func(e *BUTTONElement) ITEMREF(s string) *BUTTONElement{
+            if e.StringAttributes == nil {
+                e.StringAttributes = treemap.New[string,string]()
+            }
+            e.StringAttributes.Set("itemref", s)
+            return e
+        }
+
+        func(e *BUTTONElement) IfITEMREF(condition bool, s string) *BUTTONElement{
+            if condition {
+                e.ITEMREF(s)
+            }
+            return e
+        }
+
+        // Remove the attribute ITEMREF from the element.
+        func(e *BUTTONElement) ITEMREFRemove(s string) *BUTTONElement{
+            if e.StringAttributes == nil {
+                return e
+            }
+            e.StringAttributes.Del("itemref")
+            return e
+        }
+    
+
+    // The itemscope global attribute is used to add an item to a microdata DOM tree 
+// Every HTML element can have an itemscope attribute specified, and an itemscope 
+// consists of a name-value pair 
+// Each name-value pair is called a property, and a group of one or more 
+// properties forms an item 
+// Property values are either a string or a URL and can be associated with a very 
+// wide range of elements including <audio>, <embed>, <iframe>, <img>, <link>, 
+// <object>, <source>, <track>, and <video>. 
+    func(e *BUTTONElement) ITEMSCOPE() *BUTTONElement{
+            e.ITEMSCOPESet(true)
+            return e
+        }
+
+        func(e *BUTTONElement) IfITEMSCOPE(condition bool) *BUTTONElement {
+            if condition {
+                e.ITEMSCOPESet(true)
+            }
+            return e
+        }
+
+        // Set the attribute ITEMSCOPE to the value b explicitly.
+        func(e *BUTTONElement) ITEMSCOPESet(b bool) *BUTTONElement{
+            if e.BoolAttributes == nil {
+                e.BoolAttributes = treemap.New[string,bool]()
+            }
+            e.BoolAttributes.Set("itemscope", b)
+            return e
+        }
+
+        func (e *BUTTONElement) IfSetITEMSCOPE(condition bool, b bool) *BUTTONElement {
+            if condition {
+                e.ITEMSCOPESet(b)
+            }
+            return e
+        }
+
+        // Remove the attribute ITEMSCOPE from the element.
+        func(e *BUTTONElement) ITEMSCOPERemove(b bool) *BUTTONElement{
+            if e.BoolAttributes == nil {
+                return e
+            }
+            e.BoolAttributes.Del("itemscope")
+            return e
+        }
+
+    
+
+    // The itemtype global attribute is used to add types to an item 
+// Every HTML element can have an itemtype attribute specified, and an itemtype 
+// consists of a name-value pair 
+// Each name-value pair is called a property, and a group of one or more 
+// properties forms an item 
+// Property values are either a string or a URL and can be associated with a very 
+// wide range of elements including <audio>, <embed>, <iframe>, <img>, <link>, 
+// <object>, <source>, <track>, and <video>. 
+    func(e *BUTTONElement) ITEMTYPE(s string) *BUTTONElement{
+            if e.StringAttributes == nil {
+                e.StringAttributes = treemap.New[string,string]()
+            }
+            e.StringAttributes.Set("itemtype", s)
+            return e
+        }
+
+        func(e *BUTTONElement) IfITEMTYPE(condition bool, s string) *BUTTONElement{
+            if condition {
+                e.ITEMTYPE(s)
+            }
+            return e
+        }
+
+        // Remove the attribute ITEMTYPE from the element.
+        func(e *BUTTONElement) ITEMTYPERemove(s string) *BUTTONElement{
+            if e.StringAttributes == nil {
+                return e
+            }
+            e.StringAttributes.Del("itemtype")
+            return e
+        }
+    
+
+    // The lang global attribute helps define the language of an element: the language 
+// that non-editable elements are written in or the language that editable 
+// elements should be written in by the user 
+// The tag contains one single entry value in the format defines in the Tags for 
+// Identifying Languages (BCP47) IETF document 
+// xml:lang has priority over it. 
+    func(e *BUTTONElement) LANG(s string) *BUTTONElement{
+            if e.StringAttributes == nil {
+                e.StringAttributes = treemap.New[string,string]()
+            }
+            e.StringAttributes.Set("lang", s)
+            return e
+        }
+
+        func(e *BUTTONElement) IfLANG(condition bool, s string) *BUTTONElement{
+            if condition {
+                e.LANG(s)
+            }
+            return e
+        }
+
+        // Remove the attribute LANG from the element.
+        func(e *BUTTONElement) LANGRemove(s string) *BUTTONElement{
+            if e.StringAttributes == nil {
+                return e
+            }
+            e.StringAttributes.Del("lang")
+            return e
+        }
+    
+
+    // The nonce global attribute is a unique identifier used to declare inline 
+// scripts and style elements to be used in a specific document 
+// It is a cryptographic nonce (number used once) that is used by Content Security 
+// Policy to determine whether or not a given inline script is allowed to execute. 
+    func(e *BUTTONElement) NONCE(s string) *BUTTONElement{
+            if e.StringAttributes == nil {
+                e.StringAttributes = treemap.New[string,string]()
+            }
+            e.StringAttributes.Set("nonce", s)
+            return e
+        }
+
+        func(e *BUTTONElement) IfNONCE(condition bool, s string) *BUTTONElement{
+            if condition {
+                e.NONCE(s)
+            }
+            return e
+        }
+
+        // Remove the attribute NONCE from the element.
+        func(e *BUTTONElement) NONCERemove(s string) *BUTTONElement{
+            if e.StringAttributes == nil {
+                return e
+            }
+            e.StringAttributes.Del("nonce")
+            return e
+        }
+    
+
+    // The part global attribute contains a space-separated list of the part names of 
+// the element 
+// Part names allows CSS to select and style specific elements in a shadow tree 
+// via the ::part pseudo-element. 
+    func(e *BUTTONElement) PART(s ...string) *BUTTONElement{
+            if e.DelimitedStrings == nil {
+                e.DelimitedStrings = treemap.New[string,*DelimitedBuilder[string]]()
+            }
+            ds, ok := e.DelimitedStrings.Get("part")
+            if !ok {
+                ds = NewDelimitedBuilder[string](" ")
+                e.DelimitedStrings.Set("part", ds)
+            }
+            ds.Add(s...)
+            return e
+        }
+
+        func(e *BUTTONElement) IfPART(condition bool, s ...string) *BUTTONElement{
+            if condition {
+                e.PART(s...)
+            }
+            return e
+        }
+
+        // Remove the attribute PART from the element.
+        func(e *BUTTONElement) PARTRemove(s ...string) *BUTTONElement{
+            if e.DelimitedStrings == nil {
+                return e
+            }
+            ds, ok := e.DelimitedStrings.Get("part")
+            if !ok {
+                return e
+            }
+            ds.Remove(s ...)
+            return e
+        }
+
+    
+
+    // The popover global attribute is used to designate an element as a popover 
+// element 
+// Popover elements are hidden via display: none until opened via an 
+// invoking/control element (i.e 
+// a <button> or <input type="button"> with a popovertarget attribute) or a 
+// HTMLElement.showPopover() call 
+// When open, popover elements will appear above all other elements in the top 
+// layer, and won't be influenced by parent elements' position or overflow 
+// styling. 
+    func(e *BUTTONElement) POPVER(c ButtonPopverChoice) *BUTTONElement{
+            if e.StringAttributes == nil {
+                e.StringAttributes = treemap.New[string,string]()
+            }
+            e.StringAttributes.Set("popver", string(c))
+            return e
+        }
+
+        type ButtonPopverChoice string
+        const(
+        // Popovers that have the auto state can be "light dismissed" by selecting outside 
+// the popover area, and generally only allow one popover to be displayed 
+// on-screen at a time. 
+            ButtonPopver_auto ButtonPopverChoice = "auto"
+        // Popovers that have the auto state can be "light dismissed" by selecting outside 
+// the popover area, and generally only allow one popover to be displayed 
+// on-screen at a time. 
+            ButtonPopver_empty ButtonPopverChoice = ""
+        // manual popovers must always be explicitly hidden, but allow for use cases such 
+// as nested popovers in menus. 
+            ButtonPopver_manual ButtonPopverChoice = "manual"
+        )
+
+        // Remove the attribute POPVER from the element.
+        func(e *BUTTONElement) POPVERRemove(c ButtonPopverChoice) *BUTTONElement{
+            if e.StringAttributes == nil {
+                return e
+            }
+            e.StringAttributes.Del("popver")
+            return e
+        }
+        
+
+    // The slot global attribute assigns a slot in a shadow DOM shadow tree to an 
+// element: An element with a slot attribute is assigned to the slot created by 
+// the <slot> element whose name attribute's value matches that slot attribute's 
+// value. 
+    func(e *BUTTONElement) SLOT(s string) *BUTTONElement{
+            if e.StringAttributes == nil {
+                e.StringAttributes = treemap.New[string,string]()
+            }
+            e.StringAttributes.Set("slot", s)
+            return e
+        }
+
+        func(e *BUTTONElement) IfSLOT(condition bool, s string) *BUTTONElement{
+            if condition {
+                e.SLOT(s)
+            }
+            return e
+        }
+
+        // Remove the attribute SLOT from the element.
+        func(e *BUTTONElement) SLOTRemove(s string) *BUTTONElement{
+            if e.StringAttributes == nil {
+                return e
+            }
+            e.StringAttributes.Del("slot")
+            return e
+        }
+    
+
+    // The spellcheck global attribute is an enumerated attribute that defines whether 
+// the element may be checked for spelling errors 
+// If this attribute is not set, its default value is element-type and 
+// browser-defined 
+// This default value may also be inherited, which means that the element content 
+// will be checked for spelling errors only if its nearest ancestor has a 
+// spellcheck state of true 
+// Security and privacy concerns Using spellchecking can have consequences for 
+// users' security and privacy 
+// The specification does not regulate how spellchecking is done and the content 
+// of the element may be sent to a third party for spellchecking results (see 
+// enhanced spellchecking and "spell-jacking") 
+// You should consider setting spellcheck to false for elements that can contain 
+// sensitive information. 
+    func(e *BUTTONElement) SPELLCHECK(c ButtonSpellcheckChoice) *BUTTONElement{
+            if e.StringAttributes == nil {
+                e.StringAttributes = treemap.New[string,string]()
+            }
+            e.StringAttributes.Set("spellcheck", string(c))
+            return e
+        }
+
+        type ButtonSpellcheckChoice string
+        const(
+        // The element will be checked for spelling errors. 
+            ButtonSpellcheck_empty ButtonSpellcheckChoice = ""
+        // The element will be checked for spelling errors. 
+            ButtonSpellcheck_true ButtonSpellcheckChoice = "true"
+        // The element will not be checked for spelling errors. 
+            ButtonSpellcheck_false ButtonSpellcheckChoice = "false"
+        )
+
+        // Remove the attribute SPELLCHECK from the element.
+        func(e *BUTTONElement) SPELLCHECKRemove(c ButtonSpellcheckChoice) *BUTTONElement{
+            if e.StringAttributes == nil {
+                return e
+            }
+            e.StringAttributes.Del("spellcheck")
+            return e
+        }
+        
+
+    // The style global attribute is used to add styles to an element, such as color, 
+// font, size, and more 
+// Styles are written in CSS. 
+    func (e *BUTTONElement) STYLEF(k string, format string, args ...any) *BUTTONElement {
+            return e.STYLE(k, fmt.Sprintf(format, args...))
+        }
+
+        func (e *BUTTONElement) IfSTYLE(condition bool, k string, v string) *BUTTONElement {
+            if condition {
+                e.STYLE(k, v)
+            }
+            return e
+        }
+
+        func (e *BUTTONElement) STYLE(k string, v string) *BUTTONElement {
+            if e.KVStrings == nil {
+                e.KVStrings = treemap.New[string,*KVBuilder]()
+            }
+            kv, ok := e.KVStrings.Get("style")
+            if !ok {
+                kv = NewKVBuilder(":", ";")
+                e.KVStrings.Set("style", kv)
+            }
+            kv.Add(k, v)
+            return e
+        }
+
+        func (e *BUTTONElement) IfSTYLEF(condition bool, k string, format string, args ...any) *BUTTONElement {
+            if condition {
+                e.STYLE(k, fmt.Sprintf(format, args...))
+            }
+            return e
+        }
+
+        // Add the attributes in the map to the element.
+        func (e *BUTTONElement) STYLEMap(m map[string]string) *BUTTONElement {
+            if e.KVStrings == nil {
+                e.KVStrings = treemap.New[string,*KVBuilder]()
+            }
+            kv, ok := e.KVStrings.Get("style")
+            if !ok {
+                kv = NewKVBuilder(":", ";")
+                e.KVStrings.Set("style", kv)
+            }
+            for k, v := range m {
+                kv.Add(k, v)
+            }
+            return e
+        }
+
+        // Add pairs of attributes to the element.
+        func (e *BUTTONElement) STYLEPairs(pairs ...string) *BUTTONElement {
+            if len(pairs) % 2 != 0 {
+                panic("Must have an even number of pairs")
+            }
+            if e.KVStrings == nil {
+                e.KVStrings = treemap.New[string,*KVBuilder]()
+            }
+            kv, ok := e.KVStrings.Get("style")
+            if !ok {
+                kv = NewKVBuilder(":", ";")
+                e.KVStrings.Set("style", kv)
+            }
+
+            for i := 0; i < len(pairs); i += 2 {
+                kv.Add(pairs[i], pairs[i+1])
+            }
+
+            return e
+        }
+
+        func (e *BUTTONElement) IfSTYLEPairs(condition bool, pairs ...string) *BUTTONElement {
+            if condition {
+                e.STYLEPairs(pairs...)
+            }
+            return e
+        }
+
+        // Remove the attribute STYLE from the element.
+        func (e *BUTTONElement) STYLERemove(keys ...string) *BUTTONElement {
+            if e.KVStrings == nil {
+                return e
+            }
+            kv, ok := e.KVStrings.Get("style")
+            if !ok {
+                return e
+            }
+            for _, k := range keys {
+                kv.Remove(k)
+            }
+            return e
+        }
+
+    
+
+    // The tabindex global attribute indicates if its element can be focused, and 
+// if/where it participates in sequential keyboard navigation (usually with the 
+// Tab key, hence the name) 
+// It accepts an integer as a value, with different results depending on the 
+// integer's value: a negative value (usually tabindex="-1") means that the 
+// element should be focusable, but should not be reachable via sequential 
+// keyboard navigation; a value of 0 (tabindex="0") means that the element should 
+// be focusable and reachable via sequential keyboard navigation, but its relative 
+// order is defined by the platform convention; a positive value means should be 
+// focusable and reachable via sequential keyboard navigation; its relative order 
+// is defined by the value of the attribute: the sequential follow the increasing 
+// number of the tabindex 
+// If several elements share the same tabindex, their relative order follows their 
+// relative position in the document. 
+    func(e *BUTTONElement) TABINDEX(i int) *BUTTONElement{
+            if e.IntAttributes == nil {
+                e.IntAttributes = treemap.New[string,int]()
+            }
+            e.IntAttributes.Set("tabindex", i)
+            return e
+        }
+
+        func (e *BUTTONElement) IfTABINDEX(condition bool, i int) *BUTTONElement {
+            if condition {
+                e.TABINDEX(i)
+            }
+            return e
+        }
+
+        // Remove the attribute TABINDEX from the element.
+        func(e *BUTTONElement) TABINDEXRemove(i int) *BUTTONElement{
+            if e.IntAttributes == nil {
+                return e
+            }
+            e.IntAttributes.Del("tabindex")
+            return e
+        }
+        
+
+    // The title global attribute contains text representing advisory information 
+// related to the element it belongs to 
+// Such information can typically, but not necessarily, be presented to the user 
+// as a tooltip 
+// The main use of the title attribute is to label <iframe> elements for assistive 
+// technology 
+// The title attribute may also be used to label controls in data tables 
+// The title attribute, when added to <link rel="stylesheet">, creates an 
+// alternate stylesheet 
+// When defining an alternative style sheet with <link rel="alternate"> the 
+// attribute is required and must be set to a non-empty string 
+// If included on the <abbr> opening tag, the title must be a full expansion of 
+// the abbreviation or acronym 
+// Instead of using title, when possible, provide an expansion of the abbreviation 
+// or acronym in plain text on first use, using the <abbr> to mark up the 
+// abbreviation 
+// This enables all users know what name or term the abbreviation or acronym 
+// shortens while providing a hint to user agents on how to announce the content 
+// While title can be used to provide a programmatically associated label for an 
+// <input> element, this is not good practice 
+// Use a <label> instead. 
+    func(e *BUTTONElement) TITLE(s string) *BUTTONElement{
+            if e.StringAttributes == nil {
+                e.StringAttributes = treemap.New[string,string]()
+            }
+            e.StringAttributes.Set("title", s)
+            return e
+        }
+
+        func(e *BUTTONElement) IfTITLE(condition bool, s string) *BUTTONElement{
+            if condition {
+                e.TITLE(s)
+            }
+            return e
+        }
+
+        // Remove the attribute TITLE from the element.
+        func(e *BUTTONElement) TITLERemove(s string) *BUTTONElement{
+            if e.StringAttributes == nil {
+                return e
+            }
+            e.StringAttributes.Del("title")
+            return e
+        }
+    
+
+    // The translate global attribute is an enumerated attribute that is used to 
+// specify whether an element's attribute values and the values of its Text node 
+// children are to be translated when the page is localized, or whether to leave 
+// them unchanged. 
+    func(e *BUTTONElement) TRANSLATE(c ButtonTranslateChoice) *BUTTONElement{
+            if e.StringAttributes == nil {
+                e.StringAttributes = treemap.New[string,string]()
+            }
+            e.StringAttributes.Set("translate", string(c))
+            return e
+        }
+
+        type ButtonTranslateChoice string
+        const(
+        // indicates that the element should be translated when the page is localized. 
+            ButtonTranslate_empty ButtonTranslateChoice = ""
+        // indicates that the element should be translated when the page is localized. 
+            ButtonTranslate_yes ButtonTranslateChoice = "yes"
+        // indicates that the element must not be translated when the page is localized. 
+            ButtonTranslate_no ButtonTranslateChoice = "no"
+        )
+
+        // Remove the attribute TRANSLATE from the element.
+        func(e *BUTTONElement) TRANSLATERemove(c ButtonTranslateChoice) *BUTTONElement{
+            if e.StringAttributes == nil {
+                return e
+            }
+            e.StringAttributes.Del("translate")
+            return e
+        }
+        
+
+    // Merges the store with the given object 
+    
+        func(e *BUTTONElement) DATASTAR_MERGE_STORE(v any) *BUTTONElement{
+                if e.CustomDataAttributes == nil {
+                    e.CustomDataAttributes = treemap.New[string,string]()
+                }
+                b, err := json.Marshal(v)
+                if err != nil {
+                    panic(err)
+                }
+                e.CustomDataAttributes.Set("data-merge-store", string(b))
+                return e
+            }
+
+        
+
+    // Sets the reference of the element 
+    
+        func(e *BUTTONElement) DATASTAR_REF(expression string) *BUTTONElement{
+                if e.StringAttributes == nil {
+                    e.StringAttributes = treemap.New[string,string]()
+                }
+                
+                key := "data-ref"
+                
+                e.StringAttributes.Set(key, expression)
+                return e
+            }
+
+            func(e *BUTTONElement) IfDATASTAR_REF(condition bool, expression string) *BUTTONElement{
+                if condition {
+                    e.DATASTAR_REF( expression, )
+                }
+                return e
+            }
+
+            // Remove the attribute DATASTAR_REF from the element.
+            func(e *BUTTONElement) DATASTAR_REFRemove() *BUTTONElement{
+                if e.StringAttributes == nil {
+                    return e
+                }
+                e.StringAttributes.Del("data-ref")
+                return e
+            }
+
+        
+
+    // Sets the value of the element 
+    
+        func(e *BUTTONElement) DATASTAR_BIND(key string, expression string) *BUTTONElement{
+                if e.StringAttributes == nil {
+                    e.StringAttributes = treemap.New[string,string]()
+                }
+                
+                key = fmt.Sprintf("data-bind-%s", key)
+                
+                e.StringAttributes.Set(key, expression)
+                return e
+            }
+
+            func(e *BUTTONElement) IfDATASTAR_BIND(condition bool, key string, expression string) *BUTTONElement{
+                if condition {
+                    e.DATASTAR_BIND(key,  expression, )
+                }
+                return e
+            }
+
+            // Remove the attribute DATASTAR_BIND from the element.
+            func(e *BUTTONElement) DATASTAR_BINDRemove() *BUTTONElement{
+                if e.StringAttributes == nil {
+                    return e
+                }
+                e.StringAttributes.Del("data-bind")
+                return e
+            }
+
+        
+
+    // Sets the value of the element 
+    
+        func(e *BUTTONElement) DATASTAR_MODEL(expression string) *BUTTONElement{
+                if e.StringAttributes == nil {
+                    e.StringAttributes = treemap.New[string,string]()
+                }
+                
+                key := "data-model"
+                
+                e.StringAttributes.Set(key, expression)
+                return e
+            }
+
+            func(e *BUTTONElement) IfDATASTAR_MODEL(condition bool, expression string) *BUTTONElement{
+                if condition {
+                    e.DATASTAR_MODEL( expression, )
+                }
+                return e
+            }
+
+            // Remove the attribute DATASTAR_MODEL from the element.
+            func(e *BUTTONElement) DATASTAR_MODELRemove() *BUTTONElement{
+                if e.StringAttributes == nil {
+                    return e
+                }
+                e.StringAttributes.Del("data-model")
+                return e
+            }
+
+        
+
+    // Sets the textContent of the element 
+    
+        func(e *BUTTONElement) DATASTAR_TEXT(expression string) *BUTTONElement{
+                if e.StringAttributes == nil {
+                    e.StringAttributes = treemap.New[string,string]()
+                }
+                
+                key := "data-text"
+                
+                e.StringAttributes.Set(key, expression)
+                return e
+            }
+
+            func(e *BUTTONElement) IfDATASTAR_TEXT(condition bool, expression string) *BUTTONElement{
+                if condition {
+                    e.DATASTAR_TEXT( expression, )
+                }
+                return e
+            }
+
+            // Remove the attribute DATASTAR_TEXT from the element.
+            func(e *BUTTONElement) DATASTAR_TEXTRemove() *BUTTONElement{
+                if e.StringAttributes == nil {
+                    return e
+                }
+                e.StringAttributes.Del("data-text")
+                return e
+            }
+
+        
+
+    // Sets the event handler of the element 
+    
+        type ButtonDataOnMod customDataKeyModifier
+
+            
+            // Debounces the event handler 
+            func ButtonDataOnModDebounce(
+                    d time.Duration,
+            ) ButtonDataOnMod {
+                return func() string {return fmt.Sprintf("debounce_%dms", d.Milliseconds())
+                }
+            }
+            
+            // Throttles the event handler 
+            func ButtonDataOnModThrottle(
+                    d time.Duration,
+            ) ButtonDataOnMod {
+                return func() string {return fmt.Sprintf("throttle_%dms", d.Milliseconds())
+                }
+            }
+            
+        func(e *BUTTONElement) DATASTAR_ON(key string, expression string, modifiers ...ButtonDataOnMod) *BUTTONElement{
+                if e.StringAttributes == nil {
+                    e.StringAttributes = treemap.New[string,string]()
+                }
+                
+                key = fmt.Sprintf("data-on-%s", key)
+                
+                customMods := lo.Map(modifiers, func(m ButtonDataOnMod, i int) customDataKeyModifier  {
+                    return customDataKeyModifier(m)
+                })
+                key = customDataKey(key, customMods...)
+                e.StringAttributes.Set(key, expression)
+                return e
+            }
+
+            func(e *BUTTONElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...ButtonDataOnMod) *BUTTONElement{
+                if condition {
+                    e.DATASTAR_ON(key,  expression,  modifiers...)
+                }
+                return e
+            }
+
+            // Remove the attribute DATASTAR_ON from the element.
+            func(e *BUTTONElement) DATASTAR_ONRemove() *BUTTONElement{
+                if e.StringAttributes == nil {
+                    return e
+                }
+                e.StringAttributes.Del("data-on")
+                return e
+            }
+
+        
+
+    // Sets the focus of the element 
+    
+        func(e *BUTTONElement) DATASTAR_FOCUSSet(b bool) *BUTTONElement{
+                key := "data-focus"
+                e.BoolAttributes.Set(key, b)
+                return e
+            }
+
+            func(e *BUTTONElement) DATASTAR_FOCUS() *BUTTONElement{
+                return e.DATASTAR_FOCUSSet(true)
+            }
+        
+
+    // Sets the header of for fetch requests 
+    
+        func(e *BUTTONElement) DATASTAR_HEADER(key string, expression string) *BUTTONElement{
+                if e.StringAttributes == nil {
+                    e.StringAttributes = treemap.New[string,string]()
+                }
+                
+                key = fmt.Sprintf("data-header-%s", key)
+                
+                e.StringAttributes.Set(key, expression)
+                return e
+            }
+
+            func(e *BUTTONElement) IfDATASTAR_HEADER(condition bool, key string, expression string) *BUTTONElement{
+                if condition {
+                    e.DATASTAR_HEADER(key,  expression, )
+                }
+                return e
+            }
+
+            // Remove the attribute DATASTAR_HEADER from the element.
+            func(e *BUTTONElement) DATASTAR_HEADERRemove() *BUTTONElement{
+                if e.StringAttributes == nil {
+                    return e
+                }
+                e.StringAttributes.Del("data-header")
+                return e
+            }
+
+        
+
+    // Sets the URL for fetch requests 
+    
+        func(e *BUTTONElement) DATASTAR_FETCH_URL(expression string) *BUTTONElement{
+                if e.StringAttributes == nil {
+                    e.StringAttributes = treemap.New[string,string]()
+                }
+                
+                key := "data-fetch-url"
+                
+                e.StringAttributes.Set(key, expression)
+                return e
+            }
+
+            func(e *BUTTONElement) IfDATASTAR_FETCH_URL(condition bool, expression string) *BUTTONElement{
+                if condition {
+                    e.DATASTAR_FETCH_URL( expression, )
+                }
+                return e
+            }
+
+            // Remove the attribute DATASTAR_FETCH_URL from the element.
+            func(e *BUTTONElement) DATASTAR_FETCH_URLRemove() *BUTTONElement{
+                if e.StringAttributes == nil {
+                    return e
+                }
+                e.StringAttributes.Del("data-fetch-url")
+                return e
+            }
+
+        
+
+    // Sets the indicator selector for fetch requests 
+    
+        func(e *BUTTONElement) DATASTAR_FETCH_INDICATOR(expression string) *BUTTONElement{
+                if e.StringAttributes == nil {
+                    e.StringAttributes = treemap.New[string,string]()
+                }
+                
+                key := "DatastarFetchIndicator"
+                
+                e.StringAttributes.Set(key, expression)
+                return e
+            }
+
+            func(e *BUTTONElement) IfDATASTAR_FETCH_INDICATOR(condition bool, expression string) *BUTTONElement{
+                if condition {
+                    e.DATASTAR_FETCH_INDICATOR( expression, )
+                }
+                return e
+            }
+
+            // Remove the attribute DATASTAR_FETCH_INDICATOR from the element.
+            func(e *BUTTONElement) DATASTAR_FETCH_INDICATORRemove() *BUTTONElement{
+                if e.StringAttributes == nil {
+                    return e
+                }
+                e.StringAttributes.Del("DatastarFetchIndicator")
+                return e
+            }
+
+        
+
+    // Sets the visibility of the element 
+    
+        func(e *BUTTONElement) DATASTAR_SHOWSet(b bool) *BUTTONElement{
+                key := "data-show"
+                e.BoolAttributes.Set(key, b)
+                return e
+            }
+
+            func(e *BUTTONElement) DATASTAR_SHOW() *BUTTONElement{
+                return e.DATASTAR_SHOWSet(true)
+            }
+        
+
+    // Triggers the callback when the element intersects the viewport 
+    
+        func(e *BUTTONElement) DATASTAR_INTERSECTSSet(b bool) *BUTTONElement{
+                key := "data-intersects"
+                e.BoolAttributes.Set(key, b)
+                return e
+            }
+
+            func(e *BUTTONElement) DATASTAR_INTERSECTS() *BUTTONElement{
+                return e.DATASTAR_INTERSECTSSet(true)
+            }
+        
+
+    // Teleports the element to the given selector 
+    
+        func(e *BUTTONElement) DATASTAR_TELEPORTSet(b bool) *BUTTONElement{
+                key := "data-teleport"
+                e.BoolAttributes.Set(key, b)
+                return e
+            }
+
+            func(e *BUTTONElement) DATASTAR_TELEPORT() *BUTTONElement{
+                return e.DATASTAR_TELEPORTSet(true)
+            }
+        
+
+    // Scrolls the element into view 
+    
+        func(e *BUTTONElement) DATASTAR_SCROLL_INTO_VIEWSet(b bool) *BUTTONElement{
+                key := "data-scroll-into-view"
+                e.BoolAttributes.Set(key, b)
+                return e
+            }
+
+            func(e *BUTTONElement) DATASTAR_SCROLL_INTO_VIEW() *BUTTONElement{
+                return e.DATASTAR_SCROLL_INTO_VIEWSet(true)
+            }
+        
+
+    // Setup the ViewTransitionAPI for the element 
+    
+        func(e *BUTTONElement) DATASTAR_VIEW_TRANSITION(key string, expression string) *BUTTONElement{
+                if e.StringAttributes == nil {
+                    e.StringAttributes = treemap.New[string,string]()
+                }
+                
+                key = fmt.Sprintf("data-view-transition-%s", key)
+                
+                e.StringAttributes.Set(key, expression)
+                return e
+            }
+
+            func(e *BUTTONElement) IfDATASTAR_VIEW_TRANSITION(condition bool, key string, expression string) *BUTTONElement{
+                if condition {
+                    e.DATASTAR_VIEW_TRANSITION(key,  expression, )
+                }
+                return e
+            }
+
+            // Remove the attribute DATASTAR_VIEW_TRANSITION from the element.
+            func(e *BUTTONElement) DATASTAR_VIEW_TRANSITIONRemove() *BUTTONElement{
+                if e.StringAttributes == nil {
+                    return e
+                }
+                e.StringAttributes.Del("data-view-transition")
+                return e
+            }
+
+        
 
-func (e *BUTTONElement) DATASTAR_SCROLL_INTO_VIEW() *BUTTONElement {
-	return e.DATASTAR_SCROLL_INTO_VIEWSet(true)
-}
-
-// Setup the ViewTransitionAPI for the element
-
-func (e *BUTTONElement) DATASTAR_VIEW_TRANSITION(s string) *BUTTONElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	key := "data-view-transition"
-	e.StringAttributes.Set(key, s)
-	return e
-}
 
-func (e *BUTTONElement) IfDATASTAR_VIEW_TRANSITION(condition bool, s string) *BUTTONElement {
-	if condition {
-		e.DATASTAR_VIEW_TRANSITION(s)
-	}
-	return e
-}
 
-// Remove the attribute DATASTAR_VIEW_TRANSITION from the element.
-func (e *BUTTONElement) DATASTAR_VIEW_TRANSITIONRemove() *BUTTONElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-view-transition")
-	return e
-}

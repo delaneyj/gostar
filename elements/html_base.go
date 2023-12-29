@@ -3,1717 +3,1789 @@
 // Description:
 package elements
 
-import (
-	"fmt"
-
-	"github.com/goccy/go-json"
-	"github.com/igrmk/treemap/v2"
-	"github.com/samber/lo"
+import(
+    "fmt"
+    "time"
+    "github.com/igrmk/treemap/v2"
+    "github.com/goccy/go-json"
+    "github.com/samber/lo"
 )
 
-// The HTML <base> element specifies the base URL to use for all relative URLs in
-// a document
-// There can be only one <base> element in a document.
+// The HTML <base> element specifies the base URL to use for all relative URLs in 
+// a document 
+// There can be only one <base> element in a document. 
 type BASEElement struct {
-	*Element
+    *Element
 }
 
 // Create a new BASEElement element.
 // This will create a new element with the tag
 // "base" during rendering.
 func BASE() *BASEElement {
-	e := NewElement("base")
-	e.IsSelfClosing = true
+    e := NewElement("base", )
+    e.IsSelfClosing = true
+    
 
-	return &BASEElement{Element: e}
+    return &BASEElement{ Element: e }
 }
 
 func (e *BASEElement) Children(children ...ElementRenderer) *BASEElement {
-	e.Descendants = append(e.Descendants, children...)
-	return e
+    e.Descendants = append(e.Descendants, children...)
+    return e
 }
 
-func (e *BASEElement) IfChildren(condition bool, children ...ElementRenderer) *BASEElement {
-	if condition {
-		e.Descendants = append(e.Descendants, children...)
-	}
-	return e
+func(e *BASEElement) IfChildren(condition bool, children ...ElementRenderer) *BASEElement {
+    if condition {
+        e.Descendants = append(e.Descendants, children...)
+    }
+    return e
 }
 
-func (e *BASEElement) TernChildren(condition bool, trueChildren, falseChildren ElementRenderer) *BASEElement {
-	if condition {
-		e.Descendants = append(e.Descendants, trueChildren)
-	} else {
-		e.Descendants = append(e.Descendants, falseChildren)
-	}
-	return e
+func(e *BASEElement) TernChildren(condition bool, trueChildren, falseChildren ElementRenderer) *BASEElement {
+    if condition {
+        e.Descendants = append(e.Descendants, trueChildren)
+    } else {
+        e.Descendants = append(e.Descendants, falseChildren)
+    }
+    return e
 }
 
 func (e *BASEElement) Text(text string) *BASEElement {
-	e.Descendants = append(e.Descendants, Text(text))
-	return e
+    e.Descendants = append(e.Descendants, Text(text))
+    return e
 }
 
 func (e *BASEElement) TextF(format string, args ...any) *BASEElement {
-	return e.Text(fmt.Sprintf(format, args...))
+    return e.Text(fmt.Sprintf(format, args...))
 }
 
 func (e *BASEElement) IfText(condition bool, text string) *BASEElement {
-	if condition {
-		e.Descendants = append(e.Descendants, Text(text))
-	}
-	return e
+    if condition {
+        e.Descendants = append(e.Descendants, Text(text))
+    }
+    return e
 }
 
 func (e *BASEElement) IfTextF(condition bool, format string, args ...any) *BASEElement {
-	if condition {
-		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
-	}
-	return e
+    if condition {
+        e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+    }
+    return e
 }
 
 func (e *BASEElement) Escaped(text string) *BASEElement {
-	e.Descendants = append(e.Descendants, Escaped(text))
-	return e
+    e.Descendants = append(e.Descendants, Escaped(text))
+    return e
 }
 
 func (e *BASEElement) IfEscaped(condition bool, text string) *BASEElement {
-	if condition {
-		e.Descendants = append(e.Descendants, Escaped(text))
-	}
-	return e
+    if condition {
+        e.Descendants = append(e.Descendants, Escaped(text))
+    }
+    return e
 }
 
 func (e *BASEElement) EscapedF(format string, args ...any) *BASEElement {
-	return e.Escaped(fmt.Sprintf(format, args...))
+    return e.Escaped(fmt.Sprintf(format, args...))
 }
 
 func (e *BASEElement) IfEscapedF(condition bool, format string, args ...any) *BASEElement {
-	if condition {
-		e.Descendants = append(e.Descendants, EscapedF(format, args...))
-	}
-	return e
+    if condition {
+        e.Descendants = append(e.Descendants, EscapedF(format, args...))
+    }
+    return e
 }
 
 func (e *BASEElement) CustomData(key, value string) *BASEElement {
-	if e.CustomDataAttributes == nil {
-		e.CustomDataAttributes = treemap.New[string, string]()
-	}
+    if e.CustomDataAttributes == nil {
+        e.CustomDataAttributes = treemap.New[string,string]()
+    }
 	e.CustomDataAttributes.Set(key, value)
 	return e
 }
 
 func (e *BASEElement) IfCustomData(condition bool, key, value string) *BASEElement {
-	if condition {
-		e.CustomData(key, value)
-	}
-	return e
+    if condition {
+        e.CustomData(key, value)
+    }
+    return e
 }
 
 func (e *BASEElement) CustomDataF(key, format string, args ...any) *BASEElement {
-	return e.CustomData(key, fmt.Sprintf(format, args...))
+    return e.CustomData(key, fmt.Sprintf(format, args...))
 }
 
 func (e *BASEElement) IfCustomDataF(condition bool, key, format string, args ...any) *BASEElement {
-	if condition {
-		e.CustomData(key, fmt.Sprintf(format, args...))
-	}
-	return e
+    if condition {
+        e.CustomData(key, fmt.Sprintf(format, args...))
+    }
+    return e
 }
 
 func (e *BASEElement) CustomDataRemove(key string) *BASEElement {
 	if e.CustomDataAttributes == nil {
 		return e
 	}
-	e.CustomDataAttributes.Del(key)
-	return e
-}
-
-// Specifies the base URL to use for all relative URLs in the page.
-func (e *BASEElement) HREF(s string) *BASEElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	e.StringAttributes.Set("href", s)
-	return e
-}
-
-func (e *BASEElement) IfHREF(condition bool, s string) *BASEElement {
-	if condition {
-		e.HREF(s)
-	}
-	return e
-}
-
-// Remove the attribute HREF from the element.
-func (e *BASEElement) HREFRemove(s string) *BASEElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("href")
-	return e
-}
-
-// Specifies the default target attribute to use for the page.
-func (e *BASEElement) TARGET(s string) *BASEElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	e.StringAttributes.Set("target", s)
-	return e
-}
-
-func (e *BASEElement) IfTARGET(condition bool, s string) *BASEElement {
-	if condition {
-		e.TARGET(s)
-	}
-	return e
-}
-
-// Remove the attribute TARGET from the element.
-func (e *BASEElement) TARGETRemove(s string) *BASEElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("target")
-	return e
-}
-
-// The accesskey global attribute provides a hint for generating a keyboard
-// shortcut for the current element
-// The attribute value must consist of a single printable character (which
-// includes accented and other characters that can be generated by the keyboard).
-func (e *BASEElement) ACCESSKEY(r rune) *BASEElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	e.StringAttributes.Set("accesskey", string(r))
-	return e
-}
-
-func (e *BASEElement) IfACCESSKEY(condition bool, r rune) *BASEElement {
-	if condition {
-		e.ACCESSKEY(r)
-	}
-	return e
-}
-
-// Remove the attribute ACCESSKEY from the element.
-func (e *BASEElement) ACCESSKEYRemove() *BASEElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("accesskey")
-	return e
-}
-
-// The autocapitalize global attribute is an enumerated attribute that controls
-// whether and how text input is automatically capitalized as it is entered/edited
-// by the user
-// autocapitalize can be set on <input> and <textarea> elements, and on their
-// containing <form> elements
-// When autocapitalize is set on a <form> element, it sets the autocapitalize
-// behavior for all contained <input>s and <textarea>s, overriding any
-// autocapitalize values set on contained elements
-// autocapitalize has no effect on the url, email, or password <input> types,
-// where autocapitalization is never enabled
-// Where autocapitalize is not specified, the adopted default behavior varies
-// between browsers
-// For example: Chrome and Safari default to on/sentences Firefox defaults to
-// off/none.
-func (e *BASEElement) AUTOCAPITALIZE(c BaseAutocapitalizeChoice) *BASEElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	e.StringAttributes.Set("autocapitalize", string(c))
-	return e
-}
-
-type BaseAutocapitalizeChoice string
-
-const (
-	// Do not automatically capitalize any text.
-	BaseAutocapitalize_off BaseAutocapitalizeChoice = "off"
-	// Do not automatically capitalize any text.
-	BaseAutocapitalize_none BaseAutocapitalizeChoice = "none"
-	// Automatically capitalize the first character of each sentence.
-	BaseAutocapitalize_sentences BaseAutocapitalizeChoice = "sentences"
-	// Automatically capitalize the first character of each sentence.
-	BaseAutocapitalize_on BaseAutocapitalizeChoice = "on"
-	// Automatically capitalize the first character of each word.
-	BaseAutocapitalize_words BaseAutocapitalizeChoice = "words"
-	// Automatically capitalize all characters.
-	BaseAutocapitalize_characters BaseAutocapitalizeChoice = "characters"
-)
-
-// Remove the attribute AUTOCAPITALIZE from the element.
-func (e *BASEElement) AUTOCAPITALIZERemove(c BaseAutocapitalizeChoice) *BASEElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("autocapitalize")
-	return e
-}
-
-// The autofocus global attribute is a Boolean attribute indicating that an
-// element should be focused on page load, or when the <dialog> that it is part of
-// is displayed.
-//
-//	Accessibility concerns Automatically focusing a form control can confuse
-//
-// visually-impaired people using screen-reading technology and people with
-// cognitive impairments
-// When autofocus is assigned, screen-readers "teleport" their user to the form
-// control without warning them beforehand.
-//
-//	Use careful consideration for accessibility when applying the autofocus
-//
-// attribute
-// Automatically focusing on a control can cause the page to scroll on load
-// The focus can also cause dynamic keyboards to display on some touch devices
-// While a screen reader will announce the label of the form control receiving
-// focus, the screen reader will not announce anything before the label, and the
-// sighted user on a small device will equally miss the context created by the
-// preceding content.
-func (e *BASEElement) AUTOFOCUS() *BASEElement {
-	e.AUTOFOCUSSet(true)
-	return e
-}
-
-func (e *BASEElement) IfAUTOFOCUS(condition bool) *BASEElement {
-	if condition {
-		e.AUTOFOCUSSet(true)
-	}
-	return e
-}
-
-// Set the attribute AUTOFOCUS to the value b explicitly.
-func (e *BASEElement) AUTOFOCUSSet(b bool) *BASEElement {
-	if e.BoolAttributes == nil {
-		e.BoolAttributes = treemap.New[string, bool]()
-	}
-	e.BoolAttributes.Set("autofocus", b)
-	return e
-}
-
-func (e *BASEElement) IfSetAUTOFOCUS(condition bool, b bool) *BASEElement {
-	if condition {
-		e.AUTOFOCUSSet(b)
-	}
-	return e
-}
-
-// Remove the attribute AUTOFOCUS from the element.
-func (e *BASEElement) AUTOFOCUSRemove(b bool) *BASEElement {
-	if e.BoolAttributes == nil {
-		return e
-	}
-	e.BoolAttributes.Del("autofocus")
-	return e
-}
-
-// The class global attribute is a space-separated list of the case-sensitive
-// classes of the element
-// Classes allow CSS and JavaScript to select and access specific elements via the
-// class selectors or functions like the DOM method
-// document.getElementsByClassName.
-func (e *BASEElement) CLASS(s ...string) *BASEElement {
-	if e.DelimitedStrings == nil {
-		e.DelimitedStrings = treemap.New[string, *DelimitedBuilder[string]]()
-	}
-	ds, ok := e.DelimitedStrings.Get("class")
-	if !ok {
-		ds = NewDelimitedBuilder[string](" ")
-		e.DelimitedStrings.Set("class", ds)
-	}
-	ds.Add(s...)
-	return e
-}
-
-func (e *BASEElement) IfCLASS(condition bool, s ...string) *BASEElement {
-	if condition {
-		e.CLASS(s...)
-	}
-	return e
-}
-
-// Remove the attribute CLASS from the element.
-func (e *BASEElement) CLASSRemove(s ...string) *BASEElement {
-	if e.DelimitedStrings == nil {
-		return e
-	}
-	ds, ok := e.DelimitedStrings.Get("class")
-	if !ok {
-		return e
-	}
-	ds.Remove(s...)
-	return e
-}
-
-// The contenteditable global attribute is an enumerated attribute indicating if
-// the element should be editable by the user
-// If so, the browser modifies its widget to allow editing.
-func (e *BASEElement) CONTENTEDITABLE(c BaseContenteditableChoice) *BASEElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	e.StringAttributes.Set("contenteditable", string(c))
-	return e
-}
-
-type BaseContenteditableChoice string
-
-const (
-	// The element is editable.
-	BaseContenteditable_empty BaseContenteditableChoice = ""
-	// The element is editable.
-	BaseContenteditable_true BaseContenteditableChoice = "true"
-	// The element is not editable.
-	BaseContenteditable_false BaseContenteditableChoice = "false"
-	// which indicates that the element's raw text is editable, but rich text
-	// formatting is disabled.
-	BaseContenteditable_plaintext_only BaseContenteditableChoice = "plaintext-only"
-)
-
-// Remove the attribute CONTENTEDITABLE from the element.
-func (e *BASEElement) CONTENTEDITABLERemove(c BaseContenteditableChoice) *BASEElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("contenteditable")
-	return e
-}
-
-// The dir global attribute is an enumerated attribute that indicates the
-// directionality of the element's text
-// Note: This attribute is mandatory for the <bdo> element where it has a
-// different semantic meaning
-// This attribute is not inherited by the <bdi> element
-// If not set, its value is auto
-// This attribute can be overridden by the CSS properties direction and
-// unicode-bidi, if a CSS page is active and the element supports these properties
-// As the directionality of the text is semantically related to its content and
-// not to its presentation, it is recommended that web developers use this
-// attribute instead of the related CSS properties when possible
-// That way, the text will display correctly even on a browser that doesn't
-// support CSS or has the CSS deactivated
-// The auto value should be used for data with an unknown directionality, like
-// data coming from user input, eventually stored in a database.
-func (e *BASEElement) DIR(c BaseDirChoice) *BASEElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	e.StringAttributes.Set("dir", string(c))
-	return e
-}
-
-type BaseDirChoice string
-
-const (
-	// which means left to right and is to be used for languages that are written from
-	// the left to the right (like English);
-	BaseDir_ltr BaseDirChoice = "ltr"
-	// which means right to left and is to be used for languages that are written from
-	// the right to the left (like Arabic);
-	BaseDir_rtl BaseDirChoice = "rtl"
-	// which lets the user agent decide
-	// It uses a basic algorithm as it parses the characters inside the element until
-	// it finds a character with a strong directionality, then it applies that
-	// directionality to the whole element.
-	BaseDir_auto BaseDirChoice = "auto"
-)
-
-// Remove the attribute DIR from the element.
-func (e *BASEElement) DIRRemove(c BaseDirChoice) *BASEElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("dir")
-	return e
-}
-
-// The draggable global attribute is an enumerated attribute that indicates
-// whether the element can be dragged, either with native browser behavior or the
-// HTML Drag and Drop API.
-func (e *BASEElement) DRAGGABLE(c BaseDraggableChoice) *BASEElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	e.StringAttributes.Set("draggable", string(c))
-	return e
-}
-
-type BaseDraggableChoice string
-
-const (
-	// The element is draggable.
-	BaseDraggable_true BaseDraggableChoice = "true"
-	// The element is not draggable.
-	BaseDraggable_false BaseDraggableChoice = "false"
-	// drag behavior is the default browser behavior: only text selections, images,
-	// and links can be dragged
-	// For other elements, the event ondragstart must be set for drag and drop to work
-	BaseDraggable_empty BaseDraggableChoice = ""
-	// drag behavior is the default browser behavior: only text selections, images,
-	// and links can be dragged
-	// For other elements, the event ondragstart must be set for drag and drop to work
-	BaseDraggable_auto BaseDraggableChoice = "auto"
-)
-
-// Remove the attribute DRAGGABLE from the element.
-func (e *BASEElement) DRAGGABLERemove(c BaseDraggableChoice) *BASEElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("draggable")
-	return e
-}
-
-// The enterkeyhint global attribute is an enumerated attribute defining what
-// action label (or icon) to present for the enter key on virtual keyboards.
-func (e *BASEElement) ENTERKEYHINT(c BaseEnterkeyhintChoice) *BASEElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	e.StringAttributes.Set("enterkeyhint", string(c))
-	return e
-}
-
-type BaseEnterkeyhintChoice string
-
-const (
-	// Typically inserting a new line.
-	BaseEnterkeyhint_enter BaseEnterkeyhintChoice = "enter"
-	// Typically meaning there is nothing more to input and the input method editor
-	// (IME) will be closed.
-	BaseEnterkeyhint_done BaseEnterkeyhintChoice = "done"
-	// Typically meaning to take the user to the target of the text they typed.
-	BaseEnterkeyhint_go BaseEnterkeyhintChoice = "go"
-	// Typically meaning to take the user to the next field that will accept text.
-	BaseEnterkeyhint_next BaseEnterkeyhintChoice = "next"
-	// Typically meaning to take the user to the previous field that will accept text.
-	BaseEnterkeyhint_previous BaseEnterkeyhintChoice = "previous"
-	// Typically taking the user to the results of searching for the text they have
-	// typed.
-	BaseEnterkeyhint_search BaseEnterkeyhintChoice = "search"
-	// Typically delivering the text to its target.
-	BaseEnterkeyhint_send BaseEnterkeyhintChoice = "send"
-)
-
-// Remove the attribute ENTERKEYHINT from the element.
-func (e *BASEElement) ENTERKEYHINTRemove(c BaseEnterkeyhintChoice) *BASEElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("enterkeyhint")
-	return e
-}
-
-// The exportparts global attribute allows you to select and style elements
-// existing in nested shadow trees, by exporting their part names
-// The shadow tree is an isolated structure where identifiers, classes, and styles
-// cannot be reached by selectors or queries belonging to a regular DOM
-// To apply a style to an element living in a shadow tree, by CSS rule created
-// outside of it, part global attribute has to be used
-// It has to be assigned to an element present in Shadow Tree, and its value
-// should be some identifier
-// Rules present outside of the shadow tree, must use the ::part pseudo-element,
-// containing the same identifier as the argument
-// The global attribute part makes the element visible on just a single level of
-// depth
-// When the shadow tree is nested, parts will be visible only to the parent of the
-// shadow tree but not to its ancestor
-// Exporting parts further down is exactly what exportparts attribute is for
-// Attribute exportparts must be placed on a shadow Host, which is the element to
-// which the shadow tree is attached
-// The value of the attribute should be a comma-separated list of part names
-// present in the shadow tree and which should be made available via a DOM outside
-// of the current structure.
-func (e *BASEElement) EXPORTPARTS(s ...string) *BASEElement {
-	if e.DelimitedStrings == nil {
-		e.DelimitedStrings = treemap.New[string, *DelimitedBuilder[string]]()
-	}
-	ds, ok := e.DelimitedStrings.Get("exportparts")
-	if !ok {
-		ds = NewDelimitedBuilder[string](",")
-		e.DelimitedStrings.Set("exportparts", ds)
-	}
-	ds.Add(s...)
-	return e
-}
-
-func (e *BASEElement) IfEXPORTPARTS(condition bool, s ...string) *BASEElement {
-	if condition {
-		e.EXPORTPARTS(s...)
-	}
-	return e
-}
-
-// Remove the attribute EXPORTPARTS from the element.
-func (e *BASEElement) EXPORTPARTSRemove(s ...string) *BASEElement {
-	if e.DelimitedStrings == nil {
-		return e
-	}
-	ds, ok := e.DelimitedStrings.Get("exportparts")
-	if !ok {
-		return e
-	}
-	ds.Remove(s...)
-	return e
-}
-
-// The hidden global attribute is a Boolean attribute indicating that the element
-// is not yet, or is no longer, relevant
-// For example, it can be used to hide elements of the page that can't be used
-// until the login process has been completed
-// Note that browsers typically implement hidden until found using
-// content-visibility: hidden
-// This means that unlike elements in the hidden state, elements in the hidden
-// until found state will have generated boxes, meaning that: the element will
-// participate in page layout margin, borders, padding, and background for the
-// element will be rendered
-// Also, the element needs to be affected by layout containment in order to be
-// revealed
-// This means that if the element in the hidden until found state has a display
-// value of none, contents, or inline, then the element will not be revealed by
-// find in page or fragment navigation.
-func (e *BASEElement) HIDDEN(c BaseHiddenChoice) *BASEElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	e.StringAttributes.Set("hidden", string(c))
-	return e
-}
-
-type BaseHiddenChoice string
-
-const (
-	// set the element to the hidden state
-	// Additionally, invalid values set the element to the hidden state.
-	BaseHidden_empty BaseHiddenChoice = ""
-	// set the element to the hidden state
-	// Additionally, invalid values set the element to the hidden state.
-	BaseHidden_hidden BaseHiddenChoice = "hidden"
-	// the element is hidden but its content will be accessible to the browser's "find
-	// in page" feature or to fragment navigation
-	// When these features cause a scroll to an element in a hidden until found
-	// subtree, the browser will fire a beforematch event on the hidden element remove
-	// the hidden attribute from the element scroll to the element
-	//
-	BaseHidden_until_found BaseHiddenChoice = "until-found"
-)
-
-// Remove the attribute HIDDEN from the element.
-func (e *BASEElement) HIDDENRemove(c BaseHiddenChoice) *BASEElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("hidden")
-	return e
-}
-
-// The id global attribute defines a unique identifier (ID) which must be unique
-// in the whole document
-// Its purpose is to identify the element when linking (using a fragment
-// identifier), scripting, or styling (with CSS).
-func (e *BASEElement) ID(s string) *BASEElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	e.StringAttributes.Set("id", s)
-	return e
-}
-
-func (e *BASEElement) IfID(condition bool, s string) *BASEElement {
-	if condition {
-		e.ID(s)
-	}
-	return e
-}
-
-// Remove the attribute ID from the element.
-func (e *BASEElement) IDRemove(s string) *BASEElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("id")
-	return e
-}
-
-// The inert global attribute is a Boolean attribute indicating that the browser
-// will ignore the element
-// With the inert attribute, all of the element's flat tree descendants (such as
-// modal <dialog>s) that don't otherwise escape inertness are ignored
-// The inert attribute also makes the browser ignore input events sent by the
-// user, including focus-related events and events from assistive technologies
-// Specifically, inert does the following: Prevents the click event from being
-// fired when the user clicks on the element
-// Prevents the focus event from being raised by preventing the element from
-// gaining focus
-// Hides the element and its content from assistive technologies by excluding them
-// from the accessibility tree.
-func (e *BASEElement) INERT() *BASEElement {
-	e.INERTSet(true)
-	return e
-}
-
-func (e *BASEElement) IfINERT(condition bool) *BASEElement {
-	if condition {
-		e.INERTSet(true)
-	}
-	return e
-}
-
-// Set the attribute INERT to the value b explicitly.
-func (e *BASEElement) INERTSet(b bool) *BASEElement {
-	if e.BoolAttributes == nil {
-		e.BoolAttributes = treemap.New[string, bool]()
-	}
-	e.BoolAttributes.Set("inert", b)
-	return e
-}
-
-func (e *BASEElement) IfSetINERT(condition bool, b bool) *BASEElement {
-	if condition {
-		e.INERTSet(b)
-	}
-	return e
-}
-
-// Remove the attribute INERT from the element.
-func (e *BASEElement) INERTRemove(b bool) *BASEElement {
-	if e.BoolAttributes == nil {
-		return e
-	}
-	e.BoolAttributes.Del("inert")
-	return e
-}
-
-// The inputmode global attribute is an enumerated attribute that hints at the
-// type of data that might be entered by the user while editing the element or its
-// contents
-// This allows a browser to display an appropriate virtual keyboard
-// It is used primarily on <input> elements, but is usable on any element in
-// contenteditable mode
-// It's important to understand that the inputmode attribute doesn't cause any
-// validity requirements to be enforced on input
-// To require that input conforms to a particular data type, choose an appropriate
-// <input> element type
-// For specific guidance on choosing <input> types, see the Values section.
-func (e *BASEElement) INPUTMODE(c BaseInputmodeChoice) *BASEElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	e.StringAttributes.Set("inputmode", string(c))
-	return e
-}
-
-type BaseInputmodeChoice string
-
-const (
-	// No virtual keyboard
-	// For when the page implements its own keyboard input control.
-	BaseInputmode_none BaseInputmodeChoice = "none"
-	// Standard input keyboard for the user's current locale.
-	BaseInputmode_empty BaseInputmodeChoice = ""
-	// Standard input keyboard for the user's current locale.
-	BaseInputmode_text BaseInputmodeChoice = "text"
-	// Fractional numeric input keyboard containing the digits and decimal separator
-	// for the user's locale (typically
-	// or ,)
-	// Devices may or may not show a minus key (-).
-	BaseInputmode_decimal BaseInputmodeChoice = "decimal"
-	// Numeric input keyboard, but only requires the digits 0–9
-	// Devices may or may not show a minus key.
-	BaseInputmode_numeric BaseInputmodeChoice = "numeric"
-	// A telephone keypad input, including the digits 0–9, the asterisk (*), and the
-	// pound (#) key
-	// Inputs that *require* a telephone number should typically use <input
-	// type="tel"> instead.
-	BaseInputmode_tel BaseInputmodeChoice = "tel"
-	// A virtual keyboard optimized for search input
-	// For instance, the return/submit key may be labeled "Search", along with
-	// possible other optimizations
-	// Inputs that require a search query should typically use <input type="search">
-	// instead.
-	BaseInputmode_search BaseInputmodeChoice = "search"
-	// A virtual keyboard optimized for entering email addresses
-	// Typically includes the @character as well as other optimizations
-	// Inputs that require email addresses should typically use <input type="email">
-	// instead.
-	BaseInputmode_email BaseInputmodeChoice = "email"
-	// A keypad optimized for entering URLs
-	// This may have the / key more prominent, for example
-	// Enhanced features could include history access and so on
-	// Inputs that require a URL should typically use <input type="url"> instead.
-	BaseInputmode_url BaseInputmodeChoice = "url"
-)
-
-// Remove the attribute INPUTMODE from the element.
-func (e *BASEElement) INPUTMODERemove(c BaseInputmodeChoice) *BASEElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("inputmode")
-	return e
-}
-
-// The is global attribute allows you to specify that a standard HTML element
-// should behave like a defined custom built-in element (see Using custom elements
-// for more details)
-// This attribute can only be used if the specified custom element name has been
-// successfully defined in the current document, and extends the element type it
-// is being applied to.
-func (e *BASEElement) IS(s string) *BASEElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	e.StringAttributes.Set("is", s)
-	return e
-}
-
-func (e *BASEElement) IfIS(condition bool, s string) *BASEElement {
-	if condition {
-		e.IS(s)
-	}
-	return e
-}
-
-// Remove the attribute IS from the element.
-func (e *BASEElement) ISRemove(s string) *BASEElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("is")
-	return e
-}
-
-// The itemid global attribute provides microdata in the form of a unique, global
-// identifier of an item.
-//
-//	An itemid attribute can only be specified for an element that has both
-//
-// itemscope and itemtype attributes
-// Also, itemid can only be specified on elements that possess an itemscope
-// attribute whose corresponding itemtype refers to or defines a vocabulary that
-// supports global identifiers
-// The exact meaning of an itemtype's global identifier is provided by the
-// definition of that identifier within the specified vocabulary
-// The vocabulary defines whether several items with the same global identifier
-// can coexist and, if so, how items with the same identifier are handled.
-func (e *BASEElement) ITEMID(s string) *BASEElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	e.StringAttributes.Set("itemid", s)
-	return e
-}
-
-func (e *BASEElement) IfITEMID(condition bool, s string) *BASEElement {
-	if condition {
-		e.ITEMID(s)
-	}
-	return e
-}
-
-// Remove the attribute ITEMID from the element.
-func (e *BASEElement) ITEMIDRemove(s string) *BASEElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("itemid")
-	return e
-}
-
-// The itemprop global attribute is used to add properties to an item
-// Every HTML element can have an itemprop attribute specified, and an itemprop
-// consists of a name-value pair
-// Each name-value pair is called a property, and a group of one or more
-// properties forms an item
-// Property values are either a string or a URL and can be associated with a very
-// wide range of elements including <audio>, <embed>, <iframe>, <img>, <link>,
-// <object>, <source>, <track>, and <video>.
-func (e *BASEElement) ITEMPROP(s string) *BASEElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	e.StringAttributes.Set("itemprop", s)
-	return e
-}
-
-func (e *BASEElement) IfITEMPROP(condition bool, s string) *BASEElement {
-	if condition {
-		e.ITEMPROP(s)
-	}
-	return e
-}
-
-// Remove the attribute ITEMPROP from the element.
-func (e *BASEElement) ITEMPROPRemove(s string) *BASEElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("itemprop")
-	return e
-}
-
-// Properties that are not descendants of an element with the itemscope attribute
-// can be associated with an item using the global attribute itemref
-// itemref provides a list of element IDs (not itemids) elsewhere in the document,
-// with additional properties The itemref attribute can only be specified on
-// elements that have an itemscope attribute specified.
-func (e *BASEElement) ITEMREF(s string) *BASEElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	e.StringAttributes.Set("itemref", s)
-	return e
-}
-
-func (e *BASEElement) IfITEMREF(condition bool, s string) *BASEElement {
-	if condition {
-		e.ITEMREF(s)
-	}
-	return e
-}
-
-// Remove the attribute ITEMREF from the element.
-func (e *BASEElement) ITEMREFRemove(s string) *BASEElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("itemref")
-	return e
-}
-
-// The itemscope global attribute is used to add an item to a microdata DOM tree
-// Every HTML element can have an itemscope attribute specified, and an itemscope
-// consists of a name-value pair
-// Each name-value pair is called a property, and a group of one or more
-// properties forms an item
-// Property values are either a string or a URL and can be associated with a very
-// wide range of elements including <audio>, <embed>, <iframe>, <img>, <link>,
-// <object>, <source>, <track>, and <video>.
-func (e *BASEElement) ITEMSCOPE() *BASEElement {
-	e.ITEMSCOPESet(true)
-	return e
-}
-
-func (e *BASEElement) IfITEMSCOPE(condition bool) *BASEElement {
-	if condition {
-		e.ITEMSCOPESet(true)
-	}
-	return e
-}
-
-// Set the attribute ITEMSCOPE to the value b explicitly.
-func (e *BASEElement) ITEMSCOPESet(b bool) *BASEElement {
-	if e.BoolAttributes == nil {
-		e.BoolAttributes = treemap.New[string, bool]()
-	}
-	e.BoolAttributes.Set("itemscope", b)
-	return e
-}
-
-func (e *BASEElement) IfSetITEMSCOPE(condition bool, b bool) *BASEElement {
-	if condition {
-		e.ITEMSCOPESet(b)
-	}
-	return e
-}
-
-// Remove the attribute ITEMSCOPE from the element.
-func (e *BASEElement) ITEMSCOPERemove(b bool) *BASEElement {
-	if e.BoolAttributes == nil {
-		return e
-	}
-	e.BoolAttributes.Del("itemscope")
-	return e
-}
-
-// The itemtype global attribute is used to add types to an item
-// Every HTML element can have an itemtype attribute specified, and an itemtype
-// consists of a name-value pair
-// Each name-value pair is called a property, and a group of one or more
-// properties forms an item
-// Property values are either a string or a URL and can be associated with a very
-// wide range of elements including <audio>, <embed>, <iframe>, <img>, <link>,
-// <object>, <source>, <track>, and <video>.
-func (e *BASEElement) ITEMTYPE(s string) *BASEElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	e.StringAttributes.Set("itemtype", s)
-	return e
-}
-
-func (e *BASEElement) IfITEMTYPE(condition bool, s string) *BASEElement {
-	if condition {
-		e.ITEMTYPE(s)
-	}
-	return e
-}
-
-// Remove the attribute ITEMTYPE from the element.
-func (e *BASEElement) ITEMTYPERemove(s string) *BASEElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("itemtype")
-	return e
-}
-
-// The lang global attribute helps define the language of an element: the language
-// that non-editable elements are written in or the language that editable
-// elements should be written in by the user
-// The tag contains one single entry value in the format defines in the Tags for
-// Identifying Languages (BCP47) IETF document
-// xml:lang has priority over it.
-func (e *BASEElement) LANG(s string) *BASEElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	e.StringAttributes.Set("lang", s)
-	return e
-}
-
-func (e *BASEElement) IfLANG(condition bool, s string) *BASEElement {
-	if condition {
-		e.LANG(s)
-	}
-	return e
-}
-
-// Remove the attribute LANG from the element.
-func (e *BASEElement) LANGRemove(s string) *BASEElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("lang")
-	return e
-}
-
-// The nonce global attribute is a unique identifier used to declare inline
-// scripts and style elements to be used in a specific document
-// It is a cryptographic nonce (number used once) that is used by Content Security
-// Policy to determine whether or not a given inline script is allowed to execute.
-func (e *BASEElement) NONCE(s string) *BASEElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	e.StringAttributes.Set("nonce", s)
-	return e
-}
+    e.CustomDataAttributes.Del(key)
+	return e
+}
+
+
+    // Specifies the base URL to use for all relative URLs in the page. 
+    func(e *BASEElement) HREF(s string) *BASEElement{
+            if e.StringAttributes == nil {
+                e.StringAttributes = treemap.New[string,string]()
+            }
+            e.StringAttributes.Set("href", s)
+            return e
+        }
+
+        func(e *BASEElement) IfHREF(condition bool, s string) *BASEElement{
+            if condition {
+                e.HREF(s)
+            }
+            return e
+        }
+
+        // Remove the attribute HREF from the element.
+        func(e *BASEElement) HREFRemove(s string) *BASEElement{
+            if e.StringAttributes == nil {
+                return e
+            }
+            e.StringAttributes.Del("href")
+            return e
+        }
+    
+
+    // Specifies the default target attribute to use for the page. 
+    func(e *BASEElement) TARGET(s string) *BASEElement{
+            if e.StringAttributes == nil {
+                e.StringAttributes = treemap.New[string,string]()
+            }
+            e.StringAttributes.Set("target", s)
+            return e
+        }
+
+        func(e *BASEElement) IfTARGET(condition bool, s string) *BASEElement{
+            if condition {
+                e.TARGET(s)
+            }
+            return e
+        }
+
+        // Remove the attribute TARGET from the element.
+        func(e *BASEElement) TARGETRemove(s string) *BASEElement{
+            if e.StringAttributes == nil {
+                return e
+            }
+            e.StringAttributes.Del("target")
+            return e
+        }
+    
+
+    // The accesskey global attribute provides a hint for generating a keyboard 
+// shortcut for the current element 
+// The attribute value must consist of a single printable character (which 
+// includes accented and other characters that can be generated by the keyboard). 
+    func(e *BASEElement) ACCESSKEY(r rune) *BASEElement{
+            if e.StringAttributes == nil {
+                e.StringAttributes = treemap.New[string,string]()
+            }
+            e.StringAttributes.Set("accesskey", string(r))
+            return e
+        }
+
+        func(e *BASEElement) IfACCESSKEY(condition bool, r rune) *BASEElement{
+            if condition {
+                e.ACCESSKEY(r)
+            }
+            return e
+        }
+
+        // Remove the attribute ACCESSKEY from the element.
+        func(e *BASEElement) ACCESSKEYRemove() *BASEElement{
+            if e.StringAttributes == nil {
+                return e
+            }
+            e.StringAttributes.Del("accesskey")
+            return e
+        }
+
+    
+
+    // The autocapitalize global attribute is an enumerated attribute that controls 
+// whether and how text input is automatically capitalized as it is entered/edited 
+// by the user 
+// autocapitalize can be set on <input> and <textarea> elements, and on their 
+// containing <form> elements 
+// When autocapitalize is set on a <form> element, it sets the autocapitalize 
+// behavior for all contained <input>s and <textarea>s, overriding any 
+// autocapitalize values set on contained elements 
+// autocapitalize has no effect on the url, email, or password <input> types, 
+// where autocapitalization is never enabled 
+// Where autocapitalize is not specified, the adopted default behavior varies 
+// between browsers 
+// For example: Chrome and Safari default to on/sentences Firefox defaults to 
+// off/none. 
+    func(e *BASEElement) AUTOCAPITALIZE(c BaseAutocapitalizeChoice) *BASEElement{
+            if e.StringAttributes == nil {
+                e.StringAttributes = treemap.New[string,string]()
+            }
+            e.StringAttributes.Set("autocapitalize", string(c))
+            return e
+        }
+
+        type BaseAutocapitalizeChoice string
+        const(
+        // Do not automatically capitalize any text. 
+            BaseAutocapitalize_off BaseAutocapitalizeChoice = "off"
+        // Do not automatically capitalize any text. 
+            BaseAutocapitalize_none BaseAutocapitalizeChoice = "none"
+        // Automatically capitalize the first character of each sentence. 
+            BaseAutocapitalize_sentences BaseAutocapitalizeChoice = "sentences"
+        // Automatically capitalize the first character of each sentence. 
+            BaseAutocapitalize_on BaseAutocapitalizeChoice = "on"
+        // Automatically capitalize the first character of each word. 
+            BaseAutocapitalize_words BaseAutocapitalizeChoice = "words"
+        // Automatically capitalize all characters. 
+            BaseAutocapitalize_characters BaseAutocapitalizeChoice = "characters"
+        )
+
+        // Remove the attribute AUTOCAPITALIZE from the element.
+        func(e *BASEElement) AUTOCAPITALIZERemove(c BaseAutocapitalizeChoice) *BASEElement{
+            if e.StringAttributes == nil {
+                return e
+            }
+            e.StringAttributes.Del("autocapitalize")
+            return e
+        }
+        
+
+    // The autofocus global attribute is a Boolean attribute indicating that an 
+// element should be focused on page load, or when the <dialog> that it is part of 
+// is displayed. 
+// 		Accessibility concerns Automatically focusing a form control can confuse 
+// visually-impaired people using screen-reading technology and people with 
+// cognitive impairments 
+// When autofocus is assigned, screen-readers "teleport" their user to the form 
+// control without warning them beforehand. 
+// 		Use careful consideration for accessibility when applying the autofocus 
+// attribute 
+// Automatically focusing on a control can cause the page to scroll on load 
+// The focus can also cause dynamic keyboards to display on some touch devices 
+// While a screen reader will announce the label of the form control receiving 
+// focus, the screen reader will not announce anything before the label, and the 
+// sighted user on a small device will equally miss the context created by the 
+// preceding content. 
+    func(e *BASEElement) AUTOFOCUS() *BASEElement{
+            e.AUTOFOCUSSet(true)
+            return e
+        }
+
+        func(e *BASEElement) IfAUTOFOCUS(condition bool) *BASEElement {
+            if condition {
+                e.AUTOFOCUSSet(true)
+            }
+            return e
+        }
+
+        // Set the attribute AUTOFOCUS to the value b explicitly.
+        func(e *BASEElement) AUTOFOCUSSet(b bool) *BASEElement{
+            if e.BoolAttributes == nil {
+                e.BoolAttributes = treemap.New[string,bool]()
+            }
+            e.BoolAttributes.Set("autofocus", b)
+            return e
+        }
+
+        func (e *BASEElement) IfSetAUTOFOCUS(condition bool, b bool) *BASEElement {
+            if condition {
+                e.AUTOFOCUSSet(b)
+            }
+            return e
+        }
+
+        // Remove the attribute AUTOFOCUS from the element.
+        func(e *BASEElement) AUTOFOCUSRemove(b bool) *BASEElement{
+            if e.BoolAttributes == nil {
+                return e
+            }
+            e.BoolAttributes.Del("autofocus")
+            return e
+        }
+
+    
+
+    // The class global attribute is a space-separated list of the case-sensitive 
+// classes of the element 
+// Classes allow CSS and JavaScript to select and access specific elements via the 
+// class selectors or functions like the DOM method 
+// document.getElementsByClassName. 
+    func(e *BASEElement) CLASS(s ...string) *BASEElement{
+            if e.DelimitedStrings == nil {
+                e.DelimitedStrings = treemap.New[string,*DelimitedBuilder[string]]()
+            }
+            ds, ok := e.DelimitedStrings.Get("class")
+            if !ok {
+                ds = NewDelimitedBuilder[string](" ")
+                e.DelimitedStrings.Set("class", ds)
+            }
+            ds.Add(s...)
+            return e
+        }
+
+        func(e *BASEElement) IfCLASS(condition bool, s ...string) *BASEElement{
+            if condition {
+                e.CLASS(s...)
+            }
+            return e
+        }
+
+        // Remove the attribute CLASS from the element.
+        func(e *BASEElement) CLASSRemove(s ...string) *BASEElement{
+            if e.DelimitedStrings == nil {
+                return e
+            }
+            ds, ok := e.DelimitedStrings.Get("class")
+            if !ok {
+                return e
+            }
+            ds.Remove(s ...)
+            return e
+        }
+
+    
+
+    // The contenteditable global attribute is an enumerated attribute indicating if 
+// the element should be editable by the user 
+// If so, the browser modifies its widget to allow editing. 
+    func(e *BASEElement) CONTENTEDITABLE(c BaseContenteditableChoice) *BASEElement{
+            if e.StringAttributes == nil {
+                e.StringAttributes = treemap.New[string,string]()
+            }
+            e.StringAttributes.Set("contenteditable", string(c))
+            return e
+        }
+
+        type BaseContenteditableChoice string
+        const(
+        // The element is editable. 
+            BaseContenteditable_empty BaseContenteditableChoice = ""
+        // The element is editable. 
+            BaseContenteditable_true BaseContenteditableChoice = "true"
+        // The element is not editable. 
+            BaseContenteditable_false BaseContenteditableChoice = "false"
+        // which indicates that the element's raw text is editable, but rich text 
+// formatting is disabled. 
+            BaseContenteditable_plaintext_only BaseContenteditableChoice = "plaintext-only"
+        )
+
+        // Remove the attribute CONTENTEDITABLE from the element.
+        func(e *BASEElement) CONTENTEDITABLERemove(c BaseContenteditableChoice) *BASEElement{
+            if e.StringAttributes == nil {
+                return e
+            }
+            e.StringAttributes.Del("contenteditable")
+            return e
+        }
+        
+
+    // The dir global attribute is an enumerated attribute that indicates the 
+// directionality of the element's text 
+// Note: This attribute is mandatory for the <bdo> element where it has a 
+// different semantic meaning 
+// This attribute is not inherited by the <bdi> element 
+// If not set, its value is auto 
+// This attribute can be overridden by the CSS properties direction and 
+// unicode-bidi, if a CSS page is active and the element supports these properties 
+// As the directionality of the text is semantically related to its content and 
+// not to its presentation, it is recommended that web developers use this 
+// attribute instead of the related CSS properties when possible 
+// That way, the text will display correctly even on a browser that doesn't 
+// support CSS or has the CSS deactivated 
+// The auto value should be used for data with an unknown directionality, like 
+// data coming from user input, eventually stored in a database. 
+    func(e *BASEElement) DIR(c BaseDirChoice) *BASEElement{
+            if e.StringAttributes == nil {
+                e.StringAttributes = treemap.New[string,string]()
+            }
+            e.StringAttributes.Set("dir", string(c))
+            return e
+        }
+
+        type BaseDirChoice string
+        const(
+        // which means left to right and is to be used for languages that are written from 
+// the left to the right (like English); 
+            BaseDir_ltr BaseDirChoice = "ltr"
+        // which means right to left and is to be used for languages that are written from 
+// the right to the left (like Arabic); 
+            BaseDir_rtl BaseDirChoice = "rtl"
+        // which lets the user agent decide 
+// It uses a basic algorithm as it parses the characters inside the element until 
+// it finds a character with a strong directionality, then it applies that 
+// directionality to the whole element. 
+            BaseDir_auto BaseDirChoice = "auto"
+        )
+
+        // Remove the attribute DIR from the element.
+        func(e *BASEElement) DIRRemove(c BaseDirChoice) *BASEElement{
+            if e.StringAttributes == nil {
+                return e
+            }
+            e.StringAttributes.Del("dir")
+            return e
+        }
+        
+
+    // The draggable global attribute is an enumerated attribute that indicates 
+// whether the element can be dragged, either with native browser behavior or the 
+// HTML Drag and Drop API. 
+    func(e *BASEElement) DRAGGABLE(c BaseDraggableChoice) *BASEElement{
+            if e.StringAttributes == nil {
+                e.StringAttributes = treemap.New[string,string]()
+            }
+            e.StringAttributes.Set("draggable", string(c))
+            return e
+        }
+
+        type BaseDraggableChoice string
+        const(
+        // The element is draggable. 
+            BaseDraggable_true BaseDraggableChoice = "true"
+        // The element is not draggable. 
+            BaseDraggable_false BaseDraggableChoice = "false"
+        // drag behavior is the default browser behavior: only text selections, images, 
+// and links can be dragged 
+// For other elements, the event ondragstart must be set for drag and drop to work 
+            BaseDraggable_empty BaseDraggableChoice = ""
+        // drag behavior is the default browser behavior: only text selections, images, 
+// and links can be dragged 
+// For other elements, the event ondragstart must be set for drag and drop to work 
+            BaseDraggable_auto BaseDraggableChoice = "auto"
+        )
+
+        // Remove the attribute DRAGGABLE from the element.
+        func(e *BASEElement) DRAGGABLERemove(c BaseDraggableChoice) *BASEElement{
+            if e.StringAttributes == nil {
+                return e
+            }
+            e.StringAttributes.Del("draggable")
+            return e
+        }
+        
+
+    // The enterkeyhint global attribute is an enumerated attribute defining what 
+// action label (or icon) to present for the enter key on virtual keyboards. 
+    func(e *BASEElement) ENTERKEYHINT(c BaseEnterkeyhintChoice) *BASEElement{
+            if e.StringAttributes == nil {
+                e.StringAttributes = treemap.New[string,string]()
+            }
+            e.StringAttributes.Set("enterkeyhint", string(c))
+            return e
+        }
+
+        type BaseEnterkeyhintChoice string
+        const(
+        // Typically inserting a new line. 
+            BaseEnterkeyhint_enter BaseEnterkeyhintChoice = "enter"
+        // Typically meaning there is nothing more to input and the input method editor 
+// (IME) will be closed. 
+            BaseEnterkeyhint_done BaseEnterkeyhintChoice = "done"
+        // Typically meaning to take the user to the target of the text they typed. 
+            BaseEnterkeyhint_go BaseEnterkeyhintChoice = "go"
+        // Typically meaning to take the user to the next field that will accept text. 
+            BaseEnterkeyhint_next BaseEnterkeyhintChoice = "next"
+        // Typically meaning to take the user to the previous field that will accept text. 
+            BaseEnterkeyhint_previous BaseEnterkeyhintChoice = "previous"
+        // Typically taking the user to the results of searching for the text they have 
+// typed. 
+            BaseEnterkeyhint_search BaseEnterkeyhintChoice = "search"
+        // Typically delivering the text to its target. 
+            BaseEnterkeyhint_send BaseEnterkeyhintChoice = "send"
+        )
+
+        // Remove the attribute ENTERKEYHINT from the element.
+        func(e *BASEElement) ENTERKEYHINTRemove(c BaseEnterkeyhintChoice) *BASEElement{
+            if e.StringAttributes == nil {
+                return e
+            }
+            e.StringAttributes.Del("enterkeyhint")
+            return e
+        }
+        
+
+    // The exportparts global attribute allows you to select and style elements 
+// existing in nested shadow trees, by exporting their part names 
+// The shadow tree is an isolated structure where identifiers, classes, and styles 
+// cannot be reached by selectors or queries belonging to a regular DOM 
+// To apply a style to an element living in a shadow tree, by CSS rule created 
+// outside of it, part global attribute has to be used 
+// It has to be assigned to an element present in Shadow Tree, and its value 
+// should be some identifier 
+// Rules present outside of the shadow tree, must use the ::part pseudo-element, 
+// containing the same identifier as the argument 
+// The global attribute part makes the element visible on just a single level of 
+// depth 
+// When the shadow tree is nested, parts will be visible only to the parent of the 
+// shadow tree but not to its ancestor 
+// Exporting parts further down is exactly what exportparts attribute is for 
+// Attribute exportparts must be placed on a shadow Host, which is the element to 
+// which the shadow tree is attached 
+// The value of the attribute should be a comma-separated list of part names 
+// present in the shadow tree and which should be made available via a DOM outside 
+// of the current structure. 
+    func(e *BASEElement) EXPORTPARTS(s ...string) *BASEElement{
+            if e.DelimitedStrings == nil {
+                e.DelimitedStrings = treemap.New[string,*DelimitedBuilder[string]]()
+            }
+            ds, ok := e.DelimitedStrings.Get("exportparts")
+            if !ok {
+                ds = NewDelimitedBuilder[string](",")
+                e.DelimitedStrings.Set("exportparts", ds)
+            }
+            ds.Add(s...)
+            return e
+        }
+
+        func(e *BASEElement) IfEXPORTPARTS(condition bool, s ...string) *BASEElement{
+            if condition {
+                e.EXPORTPARTS(s...)
+            }
+            return e
+        }
+
+        // Remove the attribute EXPORTPARTS from the element.
+        func(e *BASEElement) EXPORTPARTSRemove(s ...string) *BASEElement{
+            if e.DelimitedStrings == nil {
+                return e
+            }
+            ds, ok := e.DelimitedStrings.Get("exportparts")
+            if !ok {
+                return e
+            }
+            ds.Remove(s ...)
+            return e
+        }
+
+    
+
+    // The hidden global attribute is a Boolean attribute indicating that the element 
+// is not yet, or is no longer, relevant 
+// For example, it can be used to hide elements of the page that can't be used 
+// until the login process has been completed 
+// Note that browsers typically implement hidden until found using 
+// content-visibility: hidden 
+// This means that unlike elements in the hidden state, elements in the hidden 
+// until found state will have generated boxes, meaning that: the element will 
+// participate in page layout margin, borders, padding, and background for the 
+// element will be rendered 
+// Also, the element needs to be affected by layout containment in order to be 
+// revealed 
+// This means that if the element in the hidden until found state has a display 
+// value of none, contents, or inline, then the element will not be revealed by 
+// find in page or fragment navigation. 
+    func(e *BASEElement) HIDDEN(c BaseHiddenChoice) *BASEElement{
+            if e.StringAttributes == nil {
+                e.StringAttributes = treemap.New[string,string]()
+            }
+            e.StringAttributes.Set("hidden", string(c))
+            return e
+        }
+
+        type BaseHiddenChoice string
+        const(
+        // set the element to the hidden state 
+// Additionally, invalid values set the element to the hidden state. 
+            BaseHidden_empty BaseHiddenChoice = ""
+        // set the element to the hidden state 
+// Additionally, invalid values set the element to the hidden state. 
+            BaseHidden_hidden BaseHiddenChoice = "hidden"
+        // the element is hidden but its content will be accessible to the browser's "find 
+// in page" feature or to fragment navigation 
+// When these features cause a scroll to an element in a hidden until found 
+// subtree, the browser will fire a beforematch event on the hidden element remove 
+// the hidden attribute from the element scroll to the element 
+// 			 
+            BaseHidden_until_found BaseHiddenChoice = "until-found"
+        )
+
+        // Remove the attribute HIDDEN from the element.
+        func(e *BASEElement) HIDDENRemove(c BaseHiddenChoice) *BASEElement{
+            if e.StringAttributes == nil {
+                return e
+            }
+            e.StringAttributes.Del("hidden")
+            return e
+        }
+        
+
+    // The id global attribute defines a unique identifier (ID) which must be unique 
+// in the whole document 
+// Its purpose is to identify the element when linking (using a fragment 
+// identifier), scripting, or styling (with CSS). 
+    func(e *BASEElement) ID(s string) *BASEElement{
+            if e.StringAttributes == nil {
+                e.StringAttributes = treemap.New[string,string]()
+            }
+            e.StringAttributes.Set("id", s)
+            return e
+        }
+
+        func(e *BASEElement) IfID(condition bool, s string) *BASEElement{
+            if condition {
+                e.ID(s)
+            }
+            return e
+        }
+
+        // Remove the attribute ID from the element.
+        func(e *BASEElement) IDRemove(s string) *BASEElement{
+            if e.StringAttributes == nil {
+                return e
+            }
+            e.StringAttributes.Del("id")
+            return e
+        }
+    
+
+    // The inert global attribute is a Boolean attribute indicating that the browser 
+// will ignore the element 
+// With the inert attribute, all of the element's flat tree descendants (such as 
+// modal <dialog>s) that don't otherwise escape inertness are ignored 
+// The inert attribute also makes the browser ignore input events sent by the 
+// user, including focus-related events and events from assistive technologies 
+// Specifically, inert does the following: Prevents the click event from being 
+// fired when the user clicks on the element 
+// Prevents the focus event from being raised by preventing the element from 
+// gaining focus 
+// Hides the element and its content from assistive technologies by excluding them 
+// from the accessibility tree. 
+    func(e *BASEElement) INERT() *BASEElement{
+            e.INERTSet(true)
+            return e
+        }
+
+        func(e *BASEElement) IfINERT(condition bool) *BASEElement {
+            if condition {
+                e.INERTSet(true)
+            }
+            return e
+        }
+
+        // Set the attribute INERT to the value b explicitly.
+        func(e *BASEElement) INERTSet(b bool) *BASEElement{
+            if e.BoolAttributes == nil {
+                e.BoolAttributes = treemap.New[string,bool]()
+            }
+            e.BoolAttributes.Set("inert", b)
+            return e
+        }
+
+        func (e *BASEElement) IfSetINERT(condition bool, b bool) *BASEElement {
+            if condition {
+                e.INERTSet(b)
+            }
+            return e
+        }
+
+        // Remove the attribute INERT from the element.
+        func(e *BASEElement) INERTRemove(b bool) *BASEElement{
+            if e.BoolAttributes == nil {
+                return e
+            }
+            e.BoolAttributes.Del("inert")
+            return e
+        }
+
+    
+
+    // The inputmode global attribute is an enumerated attribute that hints at the 
+// type of data that might be entered by the user while editing the element or its 
+// contents 
+// This allows a browser to display an appropriate virtual keyboard 
+// It is used primarily on <input> elements, but is usable on any element in 
+// contenteditable mode 
+// It's important to understand that the inputmode attribute doesn't cause any 
+// validity requirements to be enforced on input 
+// To require that input conforms to a particular data type, choose an appropriate 
+// <input> element type 
+// For specific guidance on choosing <input> types, see the Values section. 
+    func(e *BASEElement) INPUTMODE(c BaseInputmodeChoice) *BASEElement{
+            if e.StringAttributes == nil {
+                e.StringAttributes = treemap.New[string,string]()
+            }
+            e.StringAttributes.Set("inputmode", string(c))
+            return e
+        }
+
+        type BaseInputmodeChoice string
+        const(
+        // No virtual keyboard 
+// For when the page implements its own keyboard input control. 
+            BaseInputmode_none BaseInputmodeChoice = "none"
+        // Standard input keyboard for the user's current locale. 
+            BaseInputmode_empty BaseInputmodeChoice = ""
+        // Standard input keyboard for the user's current locale. 
+            BaseInputmode_text BaseInputmodeChoice = "text"
+        // Fractional numeric input keyboard containing the digits and decimal separator 
+// for the user's locale (typically  
+// or ,) 
+// Devices may or may not show a minus key (-). 
+            BaseInputmode_decimal BaseInputmodeChoice = "decimal"
+        // Numeric input keyboard, but only requires the digits 0–9 
+// Devices may or may not show a minus key. 
+            BaseInputmode_numeric BaseInputmodeChoice = "numeric"
+        // A telephone keypad input, including the digits 0–9, the asterisk (*), and the 
+// pound (#) key 
+// Inputs that *require* a telephone number should typically use <input 
+// type="tel"> instead. 
+            BaseInputmode_tel BaseInputmodeChoice = "tel"
+        // A virtual keyboard optimized for search input 
+// For instance, the return/submit key may be labeled "Search", along with 
+// possible other optimizations 
+// Inputs that require a search query should typically use <input type="search"> 
+// instead. 
+            BaseInputmode_search BaseInputmodeChoice = "search"
+        // A virtual keyboard optimized for entering email addresses 
+// Typically includes the @character as well as other optimizations 
+// Inputs that require email addresses should typically use <input type="email"> 
+// instead. 
+            BaseInputmode_email BaseInputmodeChoice = "email"
+        // A keypad optimized for entering URLs 
+// This may have the / key more prominent, for example 
+// Enhanced features could include history access and so on 
+// Inputs that require a URL should typically use <input type="url"> instead. 
+            BaseInputmode_url BaseInputmodeChoice = "url"
+        )
+
+        // Remove the attribute INPUTMODE from the element.
+        func(e *BASEElement) INPUTMODERemove(c BaseInputmodeChoice) *BASEElement{
+            if e.StringAttributes == nil {
+                return e
+            }
+            e.StringAttributes.Del("inputmode")
+            return e
+        }
+        
+
+    // The is global attribute allows you to specify that a standard HTML element 
+// should behave like a defined custom built-in element (see Using custom elements 
+// for more details) 
+// This attribute can only be used if the specified custom element name has been 
+// successfully defined in the current document, and extends the element type it 
+// is being applied to. 
+    func(e *BASEElement) IS(s string) *BASEElement{
+            if e.StringAttributes == nil {
+                e.StringAttributes = treemap.New[string,string]()
+            }
+            e.StringAttributes.Set("is", s)
+            return e
+        }
+
+        func(e *BASEElement) IfIS(condition bool, s string) *BASEElement{
+            if condition {
+                e.IS(s)
+            }
+            return e
+        }
+
+        // Remove the attribute IS from the element.
+        func(e *BASEElement) ISRemove(s string) *BASEElement{
+            if e.StringAttributes == nil {
+                return e
+            }
+            e.StringAttributes.Del("is")
+            return e
+        }
+    
+
+    // The itemid global attribute provides microdata in the form of a unique, global 
+// identifier of an item. 
+//  
+// 		An itemid attribute can only be specified for an element that has both 
+// itemscope and itemtype attributes 
+// Also, itemid can only be specified on elements that possess an itemscope 
+// attribute whose corresponding itemtype refers to or defines a vocabulary that 
+// supports global identifiers 
+// The exact meaning of an itemtype's global identifier is provided by the 
+// definition of that identifier within the specified vocabulary 
+// The vocabulary defines whether several items with the same global identifier 
+// can coexist and, if so, how items with the same identifier are handled. 
+    func(e *BASEElement) ITEMID(s string) *BASEElement{
+            if e.StringAttributes == nil {
+                e.StringAttributes = treemap.New[string,string]()
+            }
+            e.StringAttributes.Set("itemid", s)
+            return e
+        }
+
+        func(e *BASEElement) IfITEMID(condition bool, s string) *BASEElement{
+            if condition {
+                e.ITEMID(s)
+            }
+            return e
+        }
+
+        // Remove the attribute ITEMID from the element.
+        func(e *BASEElement) ITEMIDRemove(s string) *BASEElement{
+            if e.StringAttributes == nil {
+                return e
+            }
+            e.StringAttributes.Del("itemid")
+            return e
+        }
+    
+
+    // The itemprop global attribute is used to add properties to an item 
+// Every HTML element can have an itemprop attribute specified, and an itemprop 
+// consists of a name-value pair 
+// Each name-value pair is called a property, and a group of one or more 
+// properties forms an item 
+// Property values are either a string or a URL and can be associated with a very 
+// wide range of elements including <audio>, <embed>, <iframe>, <img>, <link>, 
+// <object>, <source>, <track>, and <video>. 
+    func(e *BASEElement) ITEMPROP(s string) *BASEElement{
+            if e.StringAttributes == nil {
+                e.StringAttributes = treemap.New[string,string]()
+            }
+            e.StringAttributes.Set("itemprop", s)
+            return e
+        }
+
+        func(e *BASEElement) IfITEMPROP(condition bool, s string) *BASEElement{
+            if condition {
+                e.ITEMPROP(s)
+            }
+            return e
+        }
+
+        // Remove the attribute ITEMPROP from the element.
+        func(e *BASEElement) ITEMPROPRemove(s string) *BASEElement{
+            if e.StringAttributes == nil {
+                return e
+            }
+            e.StringAttributes.Del("itemprop")
+            return e
+        }
+    
+
+    // Properties that are not descendants of an element with the itemscope attribute 
+// can be associated with an item using the global attribute itemref 
+// itemref provides a list of element IDs (not itemids) elsewhere in the document, 
+// with additional properties The itemref attribute can only be specified on 
+// elements that have an itemscope attribute specified. 
+    func(e *BASEElement) ITEMREF(s string) *BASEElement{
+            if e.StringAttributes == nil {
+                e.StringAttributes = treemap.New[string,string]()
+            }
+            e.StringAttributes.Set("itemref", s)
+            return e
+        }
+
+        func(e *BASEElement) IfITEMREF(condition bool, s string) *BASEElement{
+            if condition {
+                e.ITEMREF(s)
+            }
+            return e
+        }
+
+        // Remove the attribute ITEMREF from the element.
+        func(e *BASEElement) ITEMREFRemove(s string) *BASEElement{
+            if e.StringAttributes == nil {
+                return e
+            }
+            e.StringAttributes.Del("itemref")
+            return e
+        }
+    
+
+    // The itemscope global attribute is used to add an item to a microdata DOM tree 
+// Every HTML element can have an itemscope attribute specified, and an itemscope 
+// consists of a name-value pair 
+// Each name-value pair is called a property, and a group of one or more 
+// properties forms an item 
+// Property values are either a string or a URL and can be associated with a very 
+// wide range of elements including <audio>, <embed>, <iframe>, <img>, <link>, 
+// <object>, <source>, <track>, and <video>. 
+    func(e *BASEElement) ITEMSCOPE() *BASEElement{
+            e.ITEMSCOPESet(true)
+            return e
+        }
+
+        func(e *BASEElement) IfITEMSCOPE(condition bool) *BASEElement {
+            if condition {
+                e.ITEMSCOPESet(true)
+            }
+            return e
+        }
+
+        // Set the attribute ITEMSCOPE to the value b explicitly.
+        func(e *BASEElement) ITEMSCOPESet(b bool) *BASEElement{
+            if e.BoolAttributes == nil {
+                e.BoolAttributes = treemap.New[string,bool]()
+            }
+            e.BoolAttributes.Set("itemscope", b)
+            return e
+        }
+
+        func (e *BASEElement) IfSetITEMSCOPE(condition bool, b bool) *BASEElement {
+            if condition {
+                e.ITEMSCOPESet(b)
+            }
+            return e
+        }
+
+        // Remove the attribute ITEMSCOPE from the element.
+        func(e *BASEElement) ITEMSCOPERemove(b bool) *BASEElement{
+            if e.BoolAttributes == nil {
+                return e
+            }
+            e.BoolAttributes.Del("itemscope")
+            return e
+        }
+
+    
+
+    // The itemtype global attribute is used to add types to an item 
+// Every HTML element can have an itemtype attribute specified, and an itemtype 
+// consists of a name-value pair 
+// Each name-value pair is called a property, and a group of one or more 
+// properties forms an item 
+// Property values are either a string or a URL and can be associated with a very 
+// wide range of elements including <audio>, <embed>, <iframe>, <img>, <link>, 
+// <object>, <source>, <track>, and <video>. 
+    func(e *BASEElement) ITEMTYPE(s string) *BASEElement{
+            if e.StringAttributes == nil {
+                e.StringAttributes = treemap.New[string,string]()
+            }
+            e.StringAttributes.Set("itemtype", s)
+            return e
+        }
+
+        func(e *BASEElement) IfITEMTYPE(condition bool, s string) *BASEElement{
+            if condition {
+                e.ITEMTYPE(s)
+            }
+            return e
+        }
+
+        // Remove the attribute ITEMTYPE from the element.
+        func(e *BASEElement) ITEMTYPERemove(s string) *BASEElement{
+            if e.StringAttributes == nil {
+                return e
+            }
+            e.StringAttributes.Del("itemtype")
+            return e
+        }
+    
+
+    // The lang global attribute helps define the language of an element: the language 
+// that non-editable elements are written in or the language that editable 
+// elements should be written in by the user 
+// The tag contains one single entry value in the format defines in the Tags for 
+// Identifying Languages (BCP47) IETF document 
+// xml:lang has priority over it. 
+    func(e *BASEElement) LANG(s string) *BASEElement{
+            if e.StringAttributes == nil {
+                e.StringAttributes = treemap.New[string,string]()
+            }
+            e.StringAttributes.Set("lang", s)
+            return e
+        }
+
+        func(e *BASEElement) IfLANG(condition bool, s string) *BASEElement{
+            if condition {
+                e.LANG(s)
+            }
+            return e
+        }
+
+        // Remove the attribute LANG from the element.
+        func(e *BASEElement) LANGRemove(s string) *BASEElement{
+            if e.StringAttributes == nil {
+                return e
+            }
+            e.StringAttributes.Del("lang")
+            return e
+        }
+    
+
+    // The nonce global attribute is a unique identifier used to declare inline 
+// scripts and style elements to be used in a specific document 
+// It is a cryptographic nonce (number used once) that is used by Content Security 
+// Policy to determine whether or not a given inline script is allowed to execute. 
+    func(e *BASEElement) NONCE(s string) *BASEElement{
+            if e.StringAttributes == nil {
+                e.StringAttributes = treemap.New[string,string]()
+            }
+            e.StringAttributes.Set("nonce", s)
+            return e
+        }
+
+        func(e *BASEElement) IfNONCE(condition bool, s string) *BASEElement{
+            if condition {
+                e.NONCE(s)
+            }
+            return e
+        }
+
+        // Remove the attribute NONCE from the element.
+        func(e *BASEElement) NONCERemove(s string) *BASEElement{
+            if e.StringAttributes == nil {
+                return e
+            }
+            e.StringAttributes.Del("nonce")
+            return e
+        }
+    
+
+    // The part global attribute contains a space-separated list of the part names of 
+// the element 
+// Part names allows CSS to select and style specific elements in a shadow tree 
+// via the ::part pseudo-element. 
+    func(e *BASEElement) PART(s ...string) *BASEElement{
+            if e.DelimitedStrings == nil {
+                e.DelimitedStrings = treemap.New[string,*DelimitedBuilder[string]]()
+            }
+            ds, ok := e.DelimitedStrings.Get("part")
+            if !ok {
+                ds = NewDelimitedBuilder[string](" ")
+                e.DelimitedStrings.Set("part", ds)
+            }
+            ds.Add(s...)
+            return e
+        }
+
+        func(e *BASEElement) IfPART(condition bool, s ...string) *BASEElement{
+            if condition {
+                e.PART(s...)
+            }
+            return e
+        }
+
+        // Remove the attribute PART from the element.
+        func(e *BASEElement) PARTRemove(s ...string) *BASEElement{
+            if e.DelimitedStrings == nil {
+                return e
+            }
+            ds, ok := e.DelimitedStrings.Get("part")
+            if !ok {
+                return e
+            }
+            ds.Remove(s ...)
+            return e
+        }
+
+    
+
+    // The popover global attribute is used to designate an element as a popover 
+// element 
+// Popover elements are hidden via display: none until opened via an 
+// invoking/control element (i.e 
+// a <button> or <input type="button"> with a popovertarget attribute) or a 
+// HTMLElement.showPopover() call 
+// When open, popover elements will appear above all other elements in the top 
+// layer, and won't be influenced by parent elements' position or overflow 
+// styling. 
+    func(e *BASEElement) POPVER(c BasePopverChoice) *BASEElement{
+            if e.StringAttributes == nil {
+                e.StringAttributes = treemap.New[string,string]()
+            }
+            e.StringAttributes.Set("popver", string(c))
+            return e
+        }
+
+        type BasePopverChoice string
+        const(
+        // Popovers that have the auto state can be "light dismissed" by selecting outside 
+// the popover area, and generally only allow one popover to be displayed 
+// on-screen at a time. 
+            BasePopver_auto BasePopverChoice = "auto"
+        // Popovers that have the auto state can be "light dismissed" by selecting outside 
+// the popover area, and generally only allow one popover to be displayed 
+// on-screen at a time. 
+            BasePopver_empty BasePopverChoice = ""
+        // manual popovers must always be explicitly hidden, but allow for use cases such 
+// as nested popovers in menus. 
+            BasePopver_manual BasePopverChoice = "manual"
+        )
+
+        // Remove the attribute POPVER from the element.
+        func(e *BASEElement) POPVERRemove(c BasePopverChoice) *BASEElement{
+            if e.StringAttributes == nil {
+                return e
+            }
+            e.StringAttributes.Del("popver")
+            return e
+        }
+        
+
+    // The slot global attribute assigns a slot in a shadow DOM shadow tree to an 
+// element: An element with a slot attribute is assigned to the slot created by 
+// the <slot> element whose name attribute's value matches that slot attribute's 
+// value. 
+    func(e *BASEElement) SLOT(s string) *BASEElement{
+            if e.StringAttributes == nil {
+                e.StringAttributes = treemap.New[string,string]()
+            }
+            e.StringAttributes.Set("slot", s)
+            return e
+        }
+
+        func(e *BASEElement) IfSLOT(condition bool, s string) *BASEElement{
+            if condition {
+                e.SLOT(s)
+            }
+            return e
+        }
+
+        // Remove the attribute SLOT from the element.
+        func(e *BASEElement) SLOTRemove(s string) *BASEElement{
+            if e.StringAttributes == nil {
+                return e
+            }
+            e.StringAttributes.Del("slot")
+            return e
+        }
+    
+
+    // The spellcheck global attribute is an enumerated attribute that defines whether 
+// the element may be checked for spelling errors 
+// If this attribute is not set, its default value is element-type and 
+// browser-defined 
+// This default value may also be inherited, which means that the element content 
+// will be checked for spelling errors only if its nearest ancestor has a 
+// spellcheck state of true 
+// Security and privacy concerns Using spellchecking can have consequences for 
+// users' security and privacy 
+// The specification does not regulate how spellchecking is done and the content 
+// of the element may be sent to a third party for spellchecking results (see 
+// enhanced spellchecking and "spell-jacking") 
+// You should consider setting spellcheck to false for elements that can contain 
+// sensitive information. 
+    func(e *BASEElement) SPELLCHECK(c BaseSpellcheckChoice) *BASEElement{
+            if e.StringAttributes == nil {
+                e.StringAttributes = treemap.New[string,string]()
+            }
+            e.StringAttributes.Set("spellcheck", string(c))
+            return e
+        }
+
+        type BaseSpellcheckChoice string
+        const(
+        // The element will be checked for spelling errors. 
+            BaseSpellcheck_empty BaseSpellcheckChoice = ""
+        // The element will be checked for spelling errors. 
+            BaseSpellcheck_true BaseSpellcheckChoice = "true"
+        // The element will not be checked for spelling errors. 
+            BaseSpellcheck_false BaseSpellcheckChoice = "false"
+        )
+
+        // Remove the attribute SPELLCHECK from the element.
+        func(e *BASEElement) SPELLCHECKRemove(c BaseSpellcheckChoice) *BASEElement{
+            if e.StringAttributes == nil {
+                return e
+            }
+            e.StringAttributes.Del("spellcheck")
+            return e
+        }
+        
+
+    // The style global attribute is used to add styles to an element, such as color, 
+// font, size, and more 
+// Styles are written in CSS. 
+    func (e *BASEElement) STYLEF(k string, format string, args ...any) *BASEElement {
+            return e.STYLE(k, fmt.Sprintf(format, args...))
+        }
+
+        func (e *BASEElement) IfSTYLE(condition bool, k string, v string) *BASEElement {
+            if condition {
+                e.STYLE(k, v)
+            }
+            return e
+        }
+
+        func (e *BASEElement) STYLE(k string, v string) *BASEElement {
+            if e.KVStrings == nil {
+                e.KVStrings = treemap.New[string,*KVBuilder]()
+            }
+            kv, ok := e.KVStrings.Get("style")
+            if !ok {
+                kv = NewKVBuilder(":", ";")
+                e.KVStrings.Set("style", kv)
+            }
+            kv.Add(k, v)
+            return e
+        }
+
+        func (e *BASEElement) IfSTYLEF(condition bool, k string, format string, args ...any) *BASEElement {
+            if condition {
+                e.STYLE(k, fmt.Sprintf(format, args...))
+            }
+            return e
+        }
+
+        // Add the attributes in the map to the element.
+        func (e *BASEElement) STYLEMap(m map[string]string) *BASEElement {
+            if e.KVStrings == nil {
+                e.KVStrings = treemap.New[string,*KVBuilder]()
+            }
+            kv, ok := e.KVStrings.Get("style")
+            if !ok {
+                kv = NewKVBuilder(":", ";")
+                e.KVStrings.Set("style", kv)
+            }
+            for k, v := range m {
+                kv.Add(k, v)
+            }
+            return e
+        }
+
+        // Add pairs of attributes to the element.
+        func (e *BASEElement) STYLEPairs(pairs ...string) *BASEElement {
+            if len(pairs) % 2 != 0 {
+                panic("Must have an even number of pairs")
+            }
+            if e.KVStrings == nil {
+                e.KVStrings = treemap.New[string,*KVBuilder]()
+            }
+            kv, ok := e.KVStrings.Get("style")
+            if !ok {
+                kv = NewKVBuilder(":", ";")
+                e.KVStrings.Set("style", kv)
+            }
+
+            for i := 0; i < len(pairs); i += 2 {
+                kv.Add(pairs[i], pairs[i+1])
+            }
+
+            return e
+        }
+
+        func (e *BASEElement) IfSTYLEPairs(condition bool, pairs ...string) *BASEElement {
+            if condition {
+                e.STYLEPairs(pairs...)
+            }
+            return e
+        }
+
+        // Remove the attribute STYLE from the element.
+        func (e *BASEElement) STYLERemove(keys ...string) *BASEElement {
+            if e.KVStrings == nil {
+                return e
+            }
+            kv, ok := e.KVStrings.Get("style")
+            if !ok {
+                return e
+            }
+            for _, k := range keys {
+                kv.Remove(k)
+            }
+            return e
+        }
+
+    
+
+    // The tabindex global attribute indicates if its element can be focused, and 
+// if/where it participates in sequential keyboard navigation (usually with the 
+// Tab key, hence the name) 
+// It accepts an integer as a value, with different results depending on the 
+// integer's value: a negative value (usually tabindex="-1") means that the 
+// element should be focusable, but should not be reachable via sequential 
+// keyboard navigation; a value of 0 (tabindex="0") means that the element should 
+// be focusable and reachable via sequential keyboard navigation, but its relative 
+// order is defined by the platform convention; a positive value means should be 
+// focusable and reachable via sequential keyboard navigation; its relative order 
+// is defined by the value of the attribute: the sequential follow the increasing 
+// number of the tabindex 
+// If several elements share the same tabindex, their relative order follows their 
+// relative position in the document. 
+    func(e *BASEElement) TABINDEX(i int) *BASEElement{
+            if e.IntAttributes == nil {
+                e.IntAttributes = treemap.New[string,int]()
+            }
+            e.IntAttributes.Set("tabindex", i)
+            return e
+        }
+
+        func (e *BASEElement) IfTABINDEX(condition bool, i int) *BASEElement {
+            if condition {
+                e.TABINDEX(i)
+            }
+            return e
+        }
+
+        // Remove the attribute TABINDEX from the element.
+        func(e *BASEElement) TABINDEXRemove(i int) *BASEElement{
+            if e.IntAttributes == nil {
+                return e
+            }
+            e.IntAttributes.Del("tabindex")
+            return e
+        }
+        
+
+    // The title global attribute contains text representing advisory information 
+// related to the element it belongs to 
+// Such information can typically, but not necessarily, be presented to the user 
+// as a tooltip 
+// The main use of the title attribute is to label <iframe> elements for assistive 
+// technology 
+// The title attribute may also be used to label controls in data tables 
+// The title attribute, when added to <link rel="stylesheet">, creates an 
+// alternate stylesheet 
+// When defining an alternative style sheet with <link rel="alternate"> the 
+// attribute is required and must be set to a non-empty string 
+// If included on the <abbr> opening tag, the title must be a full expansion of 
+// the abbreviation or acronym 
+// Instead of using title, when possible, provide an expansion of the abbreviation 
+// or acronym in plain text on first use, using the <abbr> to mark up the 
+// abbreviation 
+// This enables all users know what name or term the abbreviation or acronym 
+// shortens while providing a hint to user agents on how to announce the content 
+// While title can be used to provide a programmatically associated label for an 
+// <input> element, this is not good practice 
+// Use a <label> instead. 
+    func(e *BASEElement) TITLE(s string) *BASEElement{
+            if e.StringAttributes == nil {
+                e.StringAttributes = treemap.New[string,string]()
+            }
+            e.StringAttributes.Set("title", s)
+            return e
+        }
+
+        func(e *BASEElement) IfTITLE(condition bool, s string) *BASEElement{
+            if condition {
+                e.TITLE(s)
+            }
+            return e
+        }
+
+        // Remove the attribute TITLE from the element.
+        func(e *BASEElement) TITLERemove(s string) *BASEElement{
+            if e.StringAttributes == nil {
+                return e
+            }
+            e.StringAttributes.Del("title")
+            return e
+        }
+    
+
+    // The translate global attribute is an enumerated attribute that is used to 
+// specify whether an element's attribute values and the values of its Text node 
+// children are to be translated when the page is localized, or whether to leave 
+// them unchanged. 
+    func(e *BASEElement) TRANSLATE(c BaseTranslateChoice) *BASEElement{
+            if e.StringAttributes == nil {
+                e.StringAttributes = treemap.New[string,string]()
+            }
+            e.StringAttributes.Set("translate", string(c))
+            return e
+        }
+
+        type BaseTranslateChoice string
+        const(
+        // indicates that the element should be translated when the page is localized. 
+            BaseTranslate_empty BaseTranslateChoice = ""
+        // indicates that the element should be translated when the page is localized. 
+            BaseTranslate_yes BaseTranslateChoice = "yes"
+        // indicates that the element must not be translated when the page is localized. 
+            BaseTranslate_no BaseTranslateChoice = "no"
+        )
+
+        // Remove the attribute TRANSLATE from the element.
+        func(e *BASEElement) TRANSLATERemove(c BaseTranslateChoice) *BASEElement{
+            if e.StringAttributes == nil {
+                return e
+            }
+            e.StringAttributes.Del("translate")
+            return e
+        }
+        
+
+    // Merges the store with the given object 
+    
+        func(e *BASEElement) DATASTAR_MERGE_STORE(v any) *BASEElement{
+                if e.CustomDataAttributes == nil {
+                    e.CustomDataAttributes = treemap.New[string,string]()
+                }
+                b, err := json.Marshal(v)
+                if err != nil {
+                    panic(err)
+                }
+                e.CustomDataAttributes.Set("data-merge-store", string(b))
+                return e
+            }
+
+        
+
+    // Sets the reference of the element 
+    
+        func(e *BASEElement) DATASTAR_REF(expression string) *BASEElement{
+                if e.StringAttributes == nil {
+                    e.StringAttributes = treemap.New[string,string]()
+                }
+                
+                key := "data-ref"
+                
+                e.StringAttributes.Set(key, expression)
+                return e
+            }
+
+            func(e *BASEElement) IfDATASTAR_REF(condition bool, expression string) *BASEElement{
+                if condition {
+                    e.DATASTAR_REF( expression, )
+                }
+                return e
+            }
+
+            // Remove the attribute DATASTAR_REF from the element.
+            func(e *BASEElement) DATASTAR_REFRemove() *BASEElement{
+                if e.StringAttributes == nil {
+                    return e
+                }
+                e.StringAttributes.Del("data-ref")
+                return e
+            }
+
+        
+
+    // Sets the value of the element 
+    
+        func(e *BASEElement) DATASTAR_BIND(key string, expression string) *BASEElement{
+                if e.StringAttributes == nil {
+                    e.StringAttributes = treemap.New[string,string]()
+                }
+                
+                key = fmt.Sprintf("data-bind-%s", key)
+                
+                e.StringAttributes.Set(key, expression)
+                return e
+            }
+
+            func(e *BASEElement) IfDATASTAR_BIND(condition bool, key string, expression string) *BASEElement{
+                if condition {
+                    e.DATASTAR_BIND(key,  expression, )
+                }
+                return e
+            }
+
+            // Remove the attribute DATASTAR_BIND from the element.
+            func(e *BASEElement) DATASTAR_BINDRemove() *BASEElement{
+                if e.StringAttributes == nil {
+                    return e
+                }
+                e.StringAttributes.Del("data-bind")
+                return e
+            }
+
+        
+
+    // Sets the value of the element 
+    
+        func(e *BASEElement) DATASTAR_MODEL(expression string) *BASEElement{
+                if e.StringAttributes == nil {
+                    e.StringAttributes = treemap.New[string,string]()
+                }
+                
+                key := "data-model"
+                
+                e.StringAttributes.Set(key, expression)
+                return e
+            }
+
+            func(e *BASEElement) IfDATASTAR_MODEL(condition bool, expression string) *BASEElement{
+                if condition {
+                    e.DATASTAR_MODEL( expression, )
+                }
+                return e
+            }
+
+            // Remove the attribute DATASTAR_MODEL from the element.
+            func(e *BASEElement) DATASTAR_MODELRemove() *BASEElement{
+                if e.StringAttributes == nil {
+                    return e
+                }
+                e.StringAttributes.Del("data-model")
+                return e
+            }
+
+        
+
+    // Sets the textContent of the element 
+    
+        func(e *BASEElement) DATASTAR_TEXT(expression string) *BASEElement{
+                if e.StringAttributes == nil {
+                    e.StringAttributes = treemap.New[string,string]()
+                }
+                
+                key := "data-text"
+                
+                e.StringAttributes.Set(key, expression)
+                return e
+            }
+
+            func(e *BASEElement) IfDATASTAR_TEXT(condition bool, expression string) *BASEElement{
+                if condition {
+                    e.DATASTAR_TEXT( expression, )
+                }
+                return e
+            }
+
+            // Remove the attribute DATASTAR_TEXT from the element.
+            func(e *BASEElement) DATASTAR_TEXTRemove() *BASEElement{
+                if e.StringAttributes == nil {
+                    return e
+                }
+                e.StringAttributes.Del("data-text")
+                return e
+            }
+
+        
+
+    // Sets the event handler of the element 
+    
+        type BaseDataOnMod customDataKeyModifier
+
+            
+            // Debounces the event handler 
+            func BaseDataOnModDebounce(
+                    d time.Duration,
+            ) BaseDataOnMod {
+                return func() string {return fmt.Sprintf("debounce_%dms", d.Milliseconds())
+                }
+            }
+            
+            // Throttles the event handler 
+            func BaseDataOnModThrottle(
+                    d time.Duration,
+            ) BaseDataOnMod {
+                return func() string {return fmt.Sprintf("throttle_%dms", d.Milliseconds())
+                }
+            }
+            
+        func(e *BASEElement) DATASTAR_ON(key string, expression string, modifiers ...BaseDataOnMod) *BASEElement{
+                if e.StringAttributes == nil {
+                    e.StringAttributes = treemap.New[string,string]()
+                }
+                
+                key = fmt.Sprintf("data-on-%s", key)
+                
+                customMods := lo.Map(modifiers, func(m BaseDataOnMod, i int) customDataKeyModifier  {
+                    return customDataKeyModifier(m)
+                })
+                key = customDataKey(key, customMods...)
+                e.StringAttributes.Set(key, expression)
+                return e
+            }
+
+            func(e *BASEElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...BaseDataOnMod) *BASEElement{
+                if condition {
+                    e.DATASTAR_ON(key,  expression,  modifiers...)
+                }
+                return e
+            }
+
+            // Remove the attribute DATASTAR_ON from the element.
+            func(e *BASEElement) DATASTAR_ONRemove() *BASEElement{
+                if e.StringAttributes == nil {
+                    return e
+                }
+                e.StringAttributes.Del("data-on")
+                return e
+            }
+
+        
+
+    // Sets the focus of the element 
+    
+        func(e *BASEElement) DATASTAR_FOCUSSet(b bool) *BASEElement{
+                key := "data-focus"
+                e.BoolAttributes.Set(key, b)
+                return e
+            }
+
+            func(e *BASEElement) DATASTAR_FOCUS() *BASEElement{
+                return e.DATASTAR_FOCUSSet(true)
+            }
+        
+
+    // Sets the header of for fetch requests 
+    
+        func(e *BASEElement) DATASTAR_HEADER(key string, expression string) *BASEElement{
+                if e.StringAttributes == nil {
+                    e.StringAttributes = treemap.New[string,string]()
+                }
+                
+                key = fmt.Sprintf("data-header-%s", key)
+                
+                e.StringAttributes.Set(key, expression)
+                return e
+            }
+
+            func(e *BASEElement) IfDATASTAR_HEADER(condition bool, key string, expression string) *BASEElement{
+                if condition {
+                    e.DATASTAR_HEADER(key,  expression, )
+                }
+                return e
+            }
+
+            // Remove the attribute DATASTAR_HEADER from the element.
+            func(e *BASEElement) DATASTAR_HEADERRemove() *BASEElement{
+                if e.StringAttributes == nil {
+                    return e
+                }
+                e.StringAttributes.Del("data-header")
+                return e
+            }
+
+        
+
+    // Sets the URL for fetch requests 
+    
+        func(e *BASEElement) DATASTAR_FETCH_URL(expression string) *BASEElement{
+                if e.StringAttributes == nil {
+                    e.StringAttributes = treemap.New[string,string]()
+                }
+                
+                key := "data-fetch-url"
+                
+                e.StringAttributes.Set(key, expression)
+                return e
+            }
+
+            func(e *BASEElement) IfDATASTAR_FETCH_URL(condition bool, expression string) *BASEElement{
+                if condition {
+                    e.DATASTAR_FETCH_URL( expression, )
+                }
+                return e
+            }
+
+            // Remove the attribute DATASTAR_FETCH_URL from the element.
+            func(e *BASEElement) DATASTAR_FETCH_URLRemove() *BASEElement{
+                if e.StringAttributes == nil {
+                    return e
+                }
+                e.StringAttributes.Del("data-fetch-url")
+                return e
+            }
+
+        
+
+    // Sets the indicator selector for fetch requests 
+    
+        func(e *BASEElement) DATASTAR_FETCH_INDICATOR(expression string) *BASEElement{
+                if e.StringAttributes == nil {
+                    e.StringAttributes = treemap.New[string,string]()
+                }
+                
+                key := "DatastarFetchIndicator"
+                
+                e.StringAttributes.Set(key, expression)
+                return e
+            }
+
+            func(e *BASEElement) IfDATASTAR_FETCH_INDICATOR(condition bool, expression string) *BASEElement{
+                if condition {
+                    e.DATASTAR_FETCH_INDICATOR( expression, )
+                }
+                return e
+            }
+
+            // Remove the attribute DATASTAR_FETCH_INDICATOR from the element.
+            func(e *BASEElement) DATASTAR_FETCH_INDICATORRemove() *BASEElement{
+                if e.StringAttributes == nil {
+                    return e
+                }
+                e.StringAttributes.Del("DatastarFetchIndicator")
+                return e
+            }
+
+        
+
+    // Sets the visibility of the element 
+    
+        func(e *BASEElement) DATASTAR_SHOWSet(b bool) *BASEElement{
+                key := "data-show"
+                e.BoolAttributes.Set(key, b)
+                return e
+            }
+
+            func(e *BASEElement) DATASTAR_SHOW() *BASEElement{
+                return e.DATASTAR_SHOWSet(true)
+            }
+        
+
+    // Triggers the callback when the element intersects the viewport 
+    
+        func(e *BASEElement) DATASTAR_INTERSECTSSet(b bool) *BASEElement{
+                key := "data-intersects"
+                e.BoolAttributes.Set(key, b)
+                return e
+            }
+
+            func(e *BASEElement) DATASTAR_INTERSECTS() *BASEElement{
+                return e.DATASTAR_INTERSECTSSet(true)
+            }
+        
+
+    // Teleports the element to the given selector 
+    
+        func(e *BASEElement) DATASTAR_TELEPORTSet(b bool) *BASEElement{
+                key := "data-teleport"
+                e.BoolAttributes.Set(key, b)
+                return e
+            }
+
+            func(e *BASEElement) DATASTAR_TELEPORT() *BASEElement{
+                return e.DATASTAR_TELEPORTSet(true)
+            }
+        
+
+    // Scrolls the element into view 
+    
+        func(e *BASEElement) DATASTAR_SCROLL_INTO_VIEWSet(b bool) *BASEElement{
+                key := "data-scroll-into-view"
+                e.BoolAttributes.Set(key, b)
+                return e
+            }
+
+            func(e *BASEElement) DATASTAR_SCROLL_INTO_VIEW() *BASEElement{
+                return e.DATASTAR_SCROLL_INTO_VIEWSet(true)
+            }
+        
+
+    // Setup the ViewTransitionAPI for the element 
+    
+        func(e *BASEElement) DATASTAR_VIEW_TRANSITION(key string, expression string) *BASEElement{
+                if e.StringAttributes == nil {
+                    e.StringAttributes = treemap.New[string,string]()
+                }
+                
+                key = fmt.Sprintf("data-view-transition-%s", key)
+                
+                e.StringAttributes.Set(key, expression)
+                return e
+            }
+
+            func(e *BASEElement) IfDATASTAR_VIEW_TRANSITION(condition bool, key string, expression string) *BASEElement{
+                if condition {
+                    e.DATASTAR_VIEW_TRANSITION(key,  expression, )
+                }
+                return e
+            }
+
+            // Remove the attribute DATASTAR_VIEW_TRANSITION from the element.
+            func(e *BASEElement) DATASTAR_VIEW_TRANSITIONRemove() *BASEElement{
+                if e.StringAttributes == nil {
+                    return e
+                }
+                e.StringAttributes.Del("data-view-transition")
+                return e
+            }
+
+        
 
-func (e *BASEElement) IfNONCE(condition bool, s string) *BASEElement {
-	if condition {
-		e.NONCE(s)
-	}
-	return e
-}
-
-// Remove the attribute NONCE from the element.
-func (e *BASEElement) NONCERemove(s string) *BASEElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("nonce")
-	return e
-}
-
-// The part global attribute contains a space-separated list of the part names of
-// the element
-// Part names allows CSS to select and style specific elements in a shadow tree
-// via the ::part pseudo-element.
-func (e *BASEElement) PART(s ...string) *BASEElement {
-	if e.DelimitedStrings == nil {
-		e.DelimitedStrings = treemap.New[string, *DelimitedBuilder[string]]()
-	}
-	ds, ok := e.DelimitedStrings.Get("part")
-	if !ok {
-		ds = NewDelimitedBuilder[string](" ")
-		e.DelimitedStrings.Set("part", ds)
-	}
-	ds.Add(s...)
-	return e
-}
-
-func (e *BASEElement) IfPART(condition bool, s ...string) *BASEElement {
-	if condition {
-		e.PART(s...)
-	}
-	return e
-}
-
-// Remove the attribute PART from the element.
-func (e *BASEElement) PARTRemove(s ...string) *BASEElement {
-	if e.DelimitedStrings == nil {
-		return e
-	}
-	ds, ok := e.DelimitedStrings.Get("part")
-	if !ok {
-		return e
-	}
-	ds.Remove(s...)
-	return e
-}
-
-// The popover global attribute is used to designate an element as a popover
-// element
-// Popover elements are hidden via display: none until opened via an
-// invoking/control element (i.e
-// a <button> or <input type="button"> with a popovertarget attribute) or a
-// HTMLElement.showPopover() call
-// When open, popover elements will appear above all other elements in the top
-// layer, and won't be influenced by parent elements' position or overflow
-// styling.
-func (e *BASEElement) POPVER(c BasePopverChoice) *BASEElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	e.StringAttributes.Set("popver", string(c))
-	return e
-}
-
-type BasePopverChoice string
-
-const (
-	// Popovers that have the auto state can be "light dismissed" by selecting outside
-	// the popover area, and generally only allow one popover to be displayed
-	// on-screen at a time.
-	BasePopver_auto BasePopverChoice = "auto"
-	// Popovers that have the auto state can be "light dismissed" by selecting outside
-	// the popover area, and generally only allow one popover to be displayed
-	// on-screen at a time.
-	BasePopver_empty BasePopverChoice = ""
-	// manual popovers must always be explicitly hidden, but allow for use cases such
-	// as nested popovers in menus.
-	BasePopver_manual BasePopverChoice = "manual"
-)
-
-// Remove the attribute POPVER from the element.
-func (e *BASEElement) POPVERRemove(c BasePopverChoice) *BASEElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("popver")
-	return e
-}
-
-// The slot global attribute assigns a slot in a shadow DOM shadow tree to an
-// element: An element with a slot attribute is assigned to the slot created by
-// the <slot> element whose name attribute's value matches that slot attribute's
-// value.
-func (e *BASEElement) SLOT(s string) *BASEElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	e.StringAttributes.Set("slot", s)
-	return e
-}
-
-func (e *BASEElement) IfSLOT(condition bool, s string) *BASEElement {
-	if condition {
-		e.SLOT(s)
-	}
-	return e
-}
-
-// Remove the attribute SLOT from the element.
-func (e *BASEElement) SLOTRemove(s string) *BASEElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("slot")
-	return e
-}
-
-// The spellcheck global attribute is an enumerated attribute that defines whether
-// the element may be checked for spelling errors
-// If this attribute is not set, its default value is element-type and
-// browser-defined
-// This default value may also be inherited, which means that the element content
-// will be checked for spelling errors only if its nearest ancestor has a
-// spellcheck state of true
-// Security and privacy concerns Using spellchecking can have consequences for
-// users' security and privacy
-// The specification does not regulate how spellchecking is done and the content
-// of the element may be sent to a third party for spellchecking results (see
-// enhanced spellchecking and "spell-jacking")
-// You should consider setting spellcheck to false for elements that can contain
-// sensitive information.
-func (e *BASEElement) SPELLCHECK(c BaseSpellcheckChoice) *BASEElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	e.StringAttributes.Set("spellcheck", string(c))
-	return e
-}
-
-type BaseSpellcheckChoice string
-
-const (
-	// The element will be checked for spelling errors.
-	BaseSpellcheck_empty BaseSpellcheckChoice = ""
-	// The element will be checked for spelling errors.
-	BaseSpellcheck_true BaseSpellcheckChoice = "true"
-	// The element will not be checked for spelling errors.
-	BaseSpellcheck_false BaseSpellcheckChoice = "false"
-)
-
-// Remove the attribute SPELLCHECK from the element.
-func (e *BASEElement) SPELLCHECKRemove(c BaseSpellcheckChoice) *BASEElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("spellcheck")
-	return e
-}
-
-// The style global attribute is used to add styles to an element, such as color,
-// font, size, and more
-// Styles are written in CSS.
-func (e *BASEElement) STYLEF(k string, format string, args ...any) *BASEElement {
-	return e.STYLE(k, fmt.Sprintf(format, args...))
-}
-
-func (e *BASEElement) IfSTYLE(condition bool, k string, v string) *BASEElement {
-	if condition {
-		e.STYLE(k, v)
-	}
-	return e
-}
-
-func (e *BASEElement) STYLE(k string, v string) *BASEElement {
-	if e.KVStrings == nil {
-		e.KVStrings = treemap.New[string, *KVBuilder]()
-	}
-	kv, ok := e.KVStrings.Get("style")
-	if !ok {
-		kv = NewKVBuilder(":", ";")
-		e.KVStrings.Set("style", kv)
-	}
-	kv.Add(k, v)
-	return e
-}
-
-func (e *BASEElement) IfSTYLEF(condition bool, k string, format string, args ...any) *BASEElement {
-	if condition {
-		e.STYLE(k, fmt.Sprintf(format, args...))
-	}
-	return e
-}
-
-// Add the attributes in the map to the element.
-func (e *BASEElement) STYLEMap(m map[string]string) *BASEElement {
-	if e.KVStrings == nil {
-		e.KVStrings = treemap.New[string, *KVBuilder]()
-	}
-	kv, ok := e.KVStrings.Get("style")
-	if !ok {
-		kv = NewKVBuilder(":", ";")
-		e.KVStrings.Set("style", kv)
-	}
-	for k, v := range m {
-		kv.Add(k, v)
-	}
-	return e
-}
-
-// Add pairs of attributes to the element.
-func (e *BASEElement) STYLEPairs(pairs ...string) *BASEElement {
-	if len(pairs)%2 != 0 {
-		panic("Must have an even number of pairs")
-	}
-	if e.KVStrings == nil {
-		e.KVStrings = treemap.New[string, *KVBuilder]()
-	}
-	kv, ok := e.KVStrings.Get("style")
-	if !ok {
-		kv = NewKVBuilder(":", ";")
-		e.KVStrings.Set("style", kv)
-	}
-
-	for i := 0; i < len(pairs); i += 2 {
-		kv.Add(pairs[i], pairs[i+1])
-	}
-
-	return e
-}
-
-func (e *BASEElement) IfSTYLEPairs(condition bool, pairs ...string) *BASEElement {
-	if condition {
-		e.STYLEPairs(pairs...)
-	}
-	return e
-}
-
-// Remove the attribute STYLE from the element.
-func (e *BASEElement) STYLERemove(keys ...string) *BASEElement {
-	if e.KVStrings == nil {
-		return e
-	}
-	kv, ok := e.KVStrings.Get("style")
-	if !ok {
-		return e
-	}
-	for _, k := range keys {
-		kv.Remove(k)
-	}
-	return e
-}
-
-// The tabindex global attribute indicates if its element can be focused, and
-// if/where it participates in sequential keyboard navigation (usually with the
-// Tab key, hence the name)
-// It accepts an integer as a value, with different results depending on the
-// integer's value: a negative value (usually tabindex="-1") means that the
-// element should be focusable, but should not be reachable via sequential
-// keyboard navigation; a value of 0 (tabindex="0") means that the element should
-// be focusable and reachable via sequential keyboard navigation, but its relative
-// order is defined by the platform convention; a positive value means should be
-// focusable and reachable via sequential keyboard navigation; its relative order
-// is defined by the value of the attribute: the sequential follow the increasing
-// number of the tabindex
-// If several elements share the same tabindex, their relative order follows their
-// relative position in the document.
-func (e *BASEElement) TABINDEX(i int) *BASEElement {
-	if e.IntAttributes == nil {
-		e.IntAttributes = treemap.New[string, int]()
-	}
-	e.IntAttributes.Set("tabindex", i)
-	return e
-}
-
-func (e *BASEElement) IfTABINDEX(condition bool, i int) *BASEElement {
-	if condition {
-		e.TABINDEX(i)
-	}
-	return e
-}
-
-// Remove the attribute TABINDEX from the element.
-func (e *BASEElement) TABINDEXRemove(i int) *BASEElement {
-	if e.IntAttributes == nil {
-		return e
-	}
-	e.IntAttributes.Del("tabindex")
-	return e
-}
-
-// The title global attribute contains text representing advisory information
-// related to the element it belongs to
-// Such information can typically, but not necessarily, be presented to the user
-// as a tooltip
-// The main use of the title attribute is to label <iframe> elements for assistive
-// technology
-// The title attribute may also be used to label controls in data tables
-// The title attribute, when added to <link rel="stylesheet">, creates an
-// alternate stylesheet
-// When defining an alternative style sheet with <link rel="alternate"> the
-// attribute is required and must be set to a non-empty string
-// If included on the <abbr> opening tag, the title must be a full expansion of
-// the abbreviation or acronym
-// Instead of using title, when possible, provide an expansion of the abbreviation
-// or acronym in plain text on first use, using the <abbr> to mark up the
-// abbreviation
-// This enables all users know what name or term the abbreviation or acronym
-// shortens while providing a hint to user agents on how to announce the content
-// While title can be used to provide a programmatically associated label for an
-// <input> element, this is not good practice
-// Use a <label> instead.
-func (e *BASEElement) TITLE(s string) *BASEElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	e.StringAttributes.Set("title", s)
-	return e
-}
-
-func (e *BASEElement) IfTITLE(condition bool, s string) *BASEElement {
-	if condition {
-		e.TITLE(s)
-	}
-	return e
-}
-
-// Remove the attribute TITLE from the element.
-func (e *BASEElement) TITLERemove(s string) *BASEElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("title")
-	return e
-}
-
-// The translate global attribute is an enumerated attribute that is used to
-// specify whether an element's attribute values and the values of its Text node
-// children are to be translated when the page is localized, or whether to leave
-// them unchanged.
-func (e *BASEElement) TRANSLATE(c BaseTranslateChoice) *BASEElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	e.StringAttributes.Set("translate", string(c))
-	return e
-}
-
-type BaseTranslateChoice string
-
-const (
-	// indicates that the element should be translated when the page is localized.
-	BaseTranslate_empty BaseTranslateChoice = ""
-	// indicates that the element should be translated when the page is localized.
-	BaseTranslate_yes BaseTranslateChoice = "yes"
-	// indicates that the element must not be translated when the page is localized.
-	BaseTranslate_no BaseTranslateChoice = "no"
-)
-
-// Remove the attribute TRANSLATE from the element.
-func (e *BASEElement) TRANSLATERemove(c BaseTranslateChoice) *BASEElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("translate")
-	return e
-}
-
-// Merges the store with the given object
-
-func (e *BASEElement) DATASTAR_MERGE_STORE(v any) *BASEElement {
-	if e.CustomDataAttributes == nil {
-		e.CustomDataAttributes = treemap.New[string, string]()
-	}
-	b, err := json.Marshal(v)
-	if err != nil {
-		panic(err)
-	}
-	e.CustomDataAttributes.Set("data-merge-store", string(b))
-	return e
-}
-
-// Sets the reference of the element
-
-func (e *BASEElement) DATASTAR_REF(s string) *BASEElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	key := "data-ref"
-	e.StringAttributes.Set(key, s)
-	return e
-}
-
-func (e *BASEElement) IfDATASTAR_REF(condition bool, s string) *BASEElement {
-	if condition {
-		e.DATASTAR_REF(s)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_REF from the element.
-func (e *BASEElement) DATASTAR_REFRemove() *BASEElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-ref")
-	return e
-}
-
-// Sets the value of the element
-
-func (e *BASEElement) DATASTAR_BIND(s string) *BASEElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	key := "data-bind"
-	e.StringAttributes.Set(key, s)
-	return e
-}
-
-func (e *BASEElement) IfDATASTAR_BIND(condition bool, s string) *BASEElement {
-	if condition {
-		e.DATASTAR_BIND(s)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_BIND from the element.
-func (e *BASEElement) DATASTAR_BINDRemove() *BASEElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-bind")
-	return e
-}
-
-// Sets the value of the element
-
-func (e *BASEElement) DATASTAR_MODEL(s string) *BASEElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	key := "data-model"
-	e.StringAttributes.Set(key, s)
-	return e
-}
-
-func (e *BASEElement) IfDATASTAR_MODEL(condition bool, s string) *BASEElement {
-	if condition {
-		e.DATASTAR_MODEL(s)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_MODEL from the element.
-func (e *BASEElement) DATASTAR_MODELRemove() *BASEElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-model")
-	return e
-}
-
-// Sets the textContent of the element
-
-func (e *BASEElement) DATASTAR_TEXT(s string) *BASEElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	key := "data-text"
-	e.StringAttributes.Set(key, s)
-	return e
-}
-
-func (e *BASEElement) IfDATASTAR_TEXT(condition bool, s string) *BASEElement {
-	if condition {
-		e.DATASTAR_TEXT(s)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_TEXT from the element.
-func (e *BASEElement) DATASTAR_TEXTRemove() *BASEElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-text")
-	return e
-}
-
-// Sets the event handler of the element
-
-type BaseDataOnMod customDataKeyModifier
-
-// Debounces the event handler
-func BaseDataOnModDebounce(
-	s string,
-) BaseDataOnMod {
-	return func() string {
-		return fmt.Sprintf("debounce_%sms", s)
-	}
-}
-
-// Throttles the event handler
-func BaseDataOnModThrottle(
-	s string,
-) BaseDataOnMod {
-	return func() string {
-		return fmt.Sprintf("throttle_%sms", s)
-	}
-}
-
-func (e *BASEElement) DATASTAR_ON(s string, modifiers ...BaseDataOnMod) *BASEElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	customMods := lo.Map(modifiers, func(m BaseDataOnMod, i int) customDataKeyModifier {
-		return customDataKeyModifier(m)
-	})
-	key := customDataKey("data-on", customMods...)
-	e.StringAttributes.Set(key, s)
-	return e
-}
-
-func (e *BASEElement) IfDATASTAR_ON(condition bool, s string, modifiers ...BaseDataOnMod) *BASEElement {
-	if condition {
-		e.DATASTAR_ON(s, modifiers...)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_ON from the element.
-func (e *BASEElement) DATASTAR_ONRemove() *BASEElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-on")
-	return e
-}
-
-// Sets the focus of the element
-
-func (e *BASEElement) DATASTAR_FOCUSSet(b bool) *BASEElement {
-	key := "data-focus"
-	e.BoolAttributes.Set(key, b)
-	return e
-}
-
-func (e *BASEElement) DATASTAR_FOCUS() *BASEElement {
-	return e.DATASTAR_FOCUSSet(true)
-}
-
-// Sets the header of for fetch requests
-
-func (e *BASEElement) DATASTAR_HEADER(s string) *BASEElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	key := "data-header"
-	e.StringAttributes.Set(key, s)
-	return e
-}
-
-func (e *BASEElement) IfDATASTAR_HEADER(condition bool, s string) *BASEElement {
-	if condition {
-		e.DATASTAR_HEADER(s)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_HEADER from the element.
-func (e *BASEElement) DATASTAR_HEADERRemove() *BASEElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-header")
-	return e
-}
-
-// Sets the URL for fetch requests
-
-func (e *BASEElement) DATASTAR_FETCH_URL(s string) *BASEElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	key := "data-fetch-url"
-	e.StringAttributes.Set(key, s)
-	return e
-}
-
-func (e *BASEElement) IfDATASTAR_FETCH_URL(condition bool, s string) *BASEElement {
-	if condition {
-		e.DATASTAR_FETCH_URL(s)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_FETCH_URL from the element.
-func (e *BASEElement) DATASTAR_FETCH_URLRemove() *BASEElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-fetch-url")
-	return e
-}
-
-// Sets the indicator selector for fetch requests
-
-func (e *BASEElement) DATASTAR_FETCH_INDICATOR(s string) *BASEElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	key := "DatastarFetchIndicator"
-	e.StringAttributes.Set(key, s)
-	return e
-}
-
-func (e *BASEElement) IfDATASTAR_FETCH_INDICATOR(condition bool, s string) *BASEElement {
-	if condition {
-		e.DATASTAR_FETCH_INDICATOR(s)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_FETCH_INDICATOR from the element.
-func (e *BASEElement) DATASTAR_FETCH_INDICATORRemove() *BASEElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("DatastarFetchIndicator")
-	return e
-}
-
-// Sets the visibility of the element
-
-func (e *BASEElement) DATASTAR_SHOWSet(b bool) *BASEElement {
-	key := "data-show"
-	e.BoolAttributes.Set(key, b)
-	return e
-}
-
-func (e *BASEElement) DATASTAR_SHOW() *BASEElement {
-	return e.DATASTAR_SHOWSet(true)
-}
-
-// Triggers the callback when the element intersects the viewport
-
-func (e *BASEElement) DATASTAR_INTERSECTSSet(b bool) *BASEElement {
-	key := "data-intersects"
-	e.BoolAttributes.Set(key, b)
-	return e
-}
-
-func (e *BASEElement) DATASTAR_INTERSECTS() *BASEElement {
-	return e.DATASTAR_INTERSECTSSet(true)
-}
-
-// Teleports the element to the given selector
-
-func (e *BASEElement) DATASTAR_TELEPORTSet(b bool) *BASEElement {
-	key := "data-teleport"
-	e.BoolAttributes.Set(key, b)
-	return e
-}
-
-func (e *BASEElement) DATASTAR_TELEPORT() *BASEElement {
-	return e.DATASTAR_TELEPORTSet(true)
-}
 
-// Scrolls the element into view
 
-func (e *BASEElement) DATASTAR_SCROLL_INTO_VIEWSet(b bool) *BASEElement {
-	key := "data-scroll-into-view"
-	e.BoolAttributes.Set(key, b)
-	return e
-}
-
-func (e *BASEElement) DATASTAR_SCROLL_INTO_VIEW() *BASEElement {
-	return e.DATASTAR_SCROLL_INTO_VIEWSet(true)
-}
-
-// Setup the ViewTransitionAPI for the element
-
-func (e *BASEElement) DATASTAR_VIEW_TRANSITION(s string) *BASEElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	key := "data-view-transition"
-	e.StringAttributes.Set(key, s)
-	return e
-}
-
-func (e *BASEElement) IfDATASTAR_VIEW_TRANSITION(condition bool, s string) *BASEElement {
-	if condition {
-		e.DATASTAR_VIEW_TRANSITION(s)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_VIEW_TRANSITION from the element.
-func (e *BASEElement) DATASTAR_VIEW_TRANSITIONRemove() *BASEElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-view-transition")
-	return e
-}

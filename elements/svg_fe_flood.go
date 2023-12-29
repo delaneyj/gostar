@@ -3,664 +3,719 @@
 // Description:
 package elements
 
-import (
-	"fmt"
-
-	"github.com/goccy/go-json"
-	"github.com/igrmk/treemap/v2"
-	"github.com/samber/lo"
+import(
+    "fmt"
+    "time"
+    "github.com/igrmk/treemap/v2"
+    "github.com/goccy/go-json"
+    "github.com/samber/lo"
 )
 
-// The <feFlood> SVG filter primitive fills the filter subregion with the color
-// and opacity defined by flood-color and flood-opacity.
+// The <feFlood> SVG filter primitive fills the filter subregion with the color 
+// and opacity defined by flood-color and flood-opacity. 
 type SVGFEFLOODElement struct {
-	*Element
+    *Element
 }
 
 // Create a new SVGFEFLOODElement element.
 // This will create a new element with the tag
 // "feFlood" during rendering.
 func SVG_FEFLOOD(children ...ElementRenderer) *SVGFEFLOODElement {
-	e := NewElement("feFlood", children...)
-	e.IsSelfClosing = false
-	e.Descendants = children
+    e := NewElement("feFlood", children...)
+    e.IsSelfClosing = false
+    e.Descendants = children
 
-	return &SVGFEFLOODElement{Element: e}
+    return &SVGFEFLOODElement{ Element: e }
 }
 
 func (e *SVGFEFLOODElement) Children(children ...ElementRenderer) *SVGFEFLOODElement {
-	e.Descendants = append(e.Descendants, children...)
-	return e
+    e.Descendants = append(e.Descendants, children...)
+    return e
 }
 
-func (e *SVGFEFLOODElement) IfChildren(condition bool, children ...ElementRenderer) *SVGFEFLOODElement {
-	if condition {
-		e.Descendants = append(e.Descendants, children...)
-	}
-	return e
+func(e *SVGFEFLOODElement) IfChildren(condition bool, children ...ElementRenderer) *SVGFEFLOODElement {
+    if condition {
+        e.Descendants = append(e.Descendants, children...)
+    }
+    return e
 }
 
-func (e *SVGFEFLOODElement) TernChildren(condition bool, trueChildren, falseChildren ElementRenderer) *SVGFEFLOODElement {
-	if condition {
-		e.Descendants = append(e.Descendants, trueChildren)
-	} else {
-		e.Descendants = append(e.Descendants, falseChildren)
-	}
-	return e
+func(e *SVGFEFLOODElement) TernChildren(condition bool, trueChildren, falseChildren ElementRenderer) *SVGFEFLOODElement {
+    if condition {
+        e.Descendants = append(e.Descendants, trueChildren)
+    } else {
+        e.Descendants = append(e.Descendants, falseChildren)
+    }
+    return e
 }
 
 func (e *SVGFEFLOODElement) Text(text string) *SVGFEFLOODElement {
-	e.Descendants = append(e.Descendants, Text(text))
-	return e
+    e.Descendants = append(e.Descendants, Text(text))
+    return e
 }
 
 func (e *SVGFEFLOODElement) TextF(format string, args ...any) *SVGFEFLOODElement {
-	return e.Text(fmt.Sprintf(format, args...))
+    return e.Text(fmt.Sprintf(format, args...))
 }
 
 func (e *SVGFEFLOODElement) IfText(condition bool, text string) *SVGFEFLOODElement {
-	if condition {
-		e.Descendants = append(e.Descendants, Text(text))
-	}
-	return e
+    if condition {
+        e.Descendants = append(e.Descendants, Text(text))
+    }
+    return e
 }
 
 func (e *SVGFEFLOODElement) IfTextF(condition bool, format string, args ...any) *SVGFEFLOODElement {
-	if condition {
-		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
-	}
-	return e
+    if condition {
+        e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+    }
+    return e
 }
 
 func (e *SVGFEFLOODElement) Escaped(text string) *SVGFEFLOODElement {
-	e.Descendants = append(e.Descendants, Escaped(text))
-	return e
+    e.Descendants = append(e.Descendants, Escaped(text))
+    return e
 }
 
 func (e *SVGFEFLOODElement) IfEscaped(condition bool, text string) *SVGFEFLOODElement {
-	if condition {
-		e.Descendants = append(e.Descendants, Escaped(text))
-	}
-	return e
+    if condition {
+        e.Descendants = append(e.Descendants, Escaped(text))
+    }
+    return e
 }
 
 func (e *SVGFEFLOODElement) EscapedF(format string, args ...any) *SVGFEFLOODElement {
-	return e.Escaped(fmt.Sprintf(format, args...))
+    return e.Escaped(fmt.Sprintf(format, args...))
 }
 
 func (e *SVGFEFLOODElement) IfEscapedF(condition bool, format string, args ...any) *SVGFEFLOODElement {
-	if condition {
-		e.Descendants = append(e.Descendants, EscapedF(format, args...))
-	}
-	return e
+    if condition {
+        e.Descendants = append(e.Descendants, EscapedF(format, args...))
+    }
+    return e
 }
 
 func (e *SVGFEFLOODElement) CustomData(key, value string) *SVGFEFLOODElement {
-	if e.CustomDataAttributes == nil {
-		e.CustomDataAttributes = treemap.New[string, string]()
-	}
+    if e.CustomDataAttributes == nil {
+        e.CustomDataAttributes = treemap.New[string,string]()
+    }
 	e.CustomDataAttributes.Set(key, value)
 	return e
 }
 
 func (e *SVGFEFLOODElement) IfCustomData(condition bool, key, value string) *SVGFEFLOODElement {
-	if condition {
-		e.CustomData(key, value)
-	}
-	return e
+    if condition {
+        e.CustomData(key, value)
+    }
+    return e
 }
 
 func (e *SVGFEFLOODElement) CustomDataF(key, format string, args ...any) *SVGFEFLOODElement {
-	return e.CustomData(key, fmt.Sprintf(format, args...))
+    return e.CustomData(key, fmt.Sprintf(format, args...))
 }
 
 func (e *SVGFEFLOODElement) IfCustomDataF(condition bool, key, format string, args ...any) *SVGFEFLOODElement {
-	if condition {
-		e.CustomData(key, fmt.Sprintf(format, args...))
-	}
-	return e
+    if condition {
+        e.CustomData(key, fmt.Sprintf(format, args...))
+    }
+    return e
 }
 
 func (e *SVGFEFLOODElement) CustomDataRemove(key string) *SVGFEFLOODElement {
 	if e.CustomDataAttributes == nil {
 		return e
 	}
-	e.CustomDataAttributes.Del(key)
+    e.CustomDataAttributes.Del(key)
 	return e
 }
 
-// The flood-color attribute indicates what color to use to flood the current
-// filter primitive subregion defined through the <feFlood> element
-// If attribute 'flood-color' is not specified, then the effect is as if a value
-// of black were specified.
-func (e *SVGFEFLOODElement) FLOOD_COLOR(s string) *SVGFEFLOODElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	e.StringAttributes.Set("flood-color", s)
-	return e
-}
-
-func (e *SVGFEFLOODElement) IfFLOOD_COLOR(condition bool, s string) *SVGFEFLOODElement {
-	if condition {
-		e.FLOOD_COLOR(s)
-	}
-	return e
-}
-
-// Remove the attribute FLOOD_COLOR from the element.
-func (e *SVGFEFLOODElement) FLOOD_COLORRemove(s string) *SVGFEFLOODElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("flood-color")
-	return e
-}
-
-// The flood-opacity attribute indicates the opacity value to use across the
-// current filter primitive subregion defined through the <feFlood> element.
-func (e *SVGFEFLOODElement) FLOOD_OPACITY(f float64) *SVGFEFLOODElement {
-	if e.FloatAttributes == nil {
-		e.FloatAttributes = treemap.New[string, float64]()
-	}
-	e.FloatAttributes.Set("flood-opacity", f)
-	return e
-}
-
-func (e *SVGFEFLOODElement) IfFLOOD_OPACITY(condition bool, f float64) *SVGFEFLOODElement {
-	if condition {
-		e.FLOOD_OPACITY(f)
-	}
-	return e
-}
-
-// Specifies a unique id for an element
-func (e *SVGFEFLOODElement) ID(s string) *SVGFEFLOODElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	e.StringAttributes.Set("id", s)
-	return e
-}
-
-func (e *SVGFEFLOODElement) IfID(condition bool, s string) *SVGFEFLOODElement {
-	if condition {
-		e.ID(s)
-	}
-	return e
-}
-
-// Remove the attribute ID from the element.
-func (e *SVGFEFLOODElement) IDRemove(s string) *SVGFEFLOODElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("id")
-	return e
-}
-
-// Specifies one or more classnames for an element (refers to a class in a style
-// sheet)
-func (e *SVGFEFLOODElement) CLASS(s ...string) *SVGFEFLOODElement {
-	if e.DelimitedStrings == nil {
-		e.DelimitedStrings = treemap.New[string, *DelimitedBuilder[string]]()
-	}
-	ds, ok := e.DelimitedStrings.Get("class")
-	if !ok {
-		ds = NewDelimitedBuilder[string](" ")
-		e.DelimitedStrings.Set("class", ds)
-	}
-	ds.Add(s...)
-	return e
-}
-
-func (e *SVGFEFLOODElement) IfCLASS(condition bool, s ...string) *SVGFEFLOODElement {
-	if condition {
-		e.CLASS(s...)
-	}
-	return e
-}
-
-// Remove the attribute CLASS from the element.
-func (e *SVGFEFLOODElement) CLASSRemove(s ...string) *SVGFEFLOODElement {
-	if e.DelimitedStrings == nil {
-		return e
-	}
-	ds, ok := e.DelimitedStrings.Get("class")
-	if !ok {
-		return e
-	}
-	ds.Remove(s...)
-	return e
-}
-
-// Specifies an inline CSS style for an element
-func (e *SVGFEFLOODElement) STYLEF(k string, format string, args ...any) *SVGFEFLOODElement {
-	return e.STYLE(k, fmt.Sprintf(format, args...))
-}
-
-func (e *SVGFEFLOODElement) IfSTYLE(condition bool, k string, v string) *SVGFEFLOODElement {
-	if condition {
-		e.STYLE(k, v)
-	}
-	return e
-}
-
-func (e *SVGFEFLOODElement) STYLE(k string, v string) *SVGFEFLOODElement {
-	if e.KVStrings == nil {
-		e.KVStrings = treemap.New[string, *KVBuilder]()
-	}
-	kv, ok := e.KVStrings.Get("style")
-	if !ok {
-		kv = NewKVBuilder(":", ";")
-		e.KVStrings.Set("style", kv)
-	}
-	kv.Add(k, v)
-	return e
-}
-
-func (e *SVGFEFLOODElement) IfSTYLEF(condition bool, k string, format string, args ...any) *SVGFEFLOODElement {
-	if condition {
-		e.STYLE(k, fmt.Sprintf(format, args...))
-	}
-	return e
-}
-
-// Add the attributes in the map to the element.
-func (e *SVGFEFLOODElement) STYLEMap(m map[string]string) *SVGFEFLOODElement {
-	if e.KVStrings == nil {
-		e.KVStrings = treemap.New[string, *KVBuilder]()
-	}
-	kv, ok := e.KVStrings.Get("style")
-	if !ok {
-		kv = NewKVBuilder(":", ";")
-		e.KVStrings.Set("style", kv)
-	}
-	for k, v := range m {
-		kv.Add(k, v)
-	}
-	return e
-}
-
-// Add pairs of attributes to the element.
-func (e *SVGFEFLOODElement) STYLEPairs(pairs ...string) *SVGFEFLOODElement {
-	if len(pairs)%2 != 0 {
-		panic("Must have an even number of pairs")
-	}
-	if e.KVStrings == nil {
-		e.KVStrings = treemap.New[string, *KVBuilder]()
-	}
-	kv, ok := e.KVStrings.Get("style")
-	if !ok {
-		kv = NewKVBuilder(":", ";")
-		e.KVStrings.Set("style", kv)
-	}
-
-	for i := 0; i < len(pairs); i += 2 {
-		kv.Add(pairs[i], pairs[i+1])
-	}
-
-	return e
-}
-
-func (e *SVGFEFLOODElement) IfSTYLEPairs(condition bool, pairs ...string) *SVGFEFLOODElement {
-	if condition {
-		e.STYLEPairs(pairs...)
-	}
-	return e
-}
-
-// Remove the attribute STYLE from the element.
-func (e *SVGFEFLOODElement) STYLERemove(keys ...string) *SVGFEFLOODElement {
-	if e.KVStrings == nil {
-		return e
-	}
-	kv, ok := e.KVStrings.Get("style")
-	if !ok {
-		return e
-	}
-	for _, k := range keys {
-		kv.Remove(k)
-	}
-	return e
-}
-
-// Merges the store with the given object
-
-func (e *SVGFEFLOODElement) DATASTAR_MERGE_STORE(v any) *SVGFEFLOODElement {
-	if e.CustomDataAttributes == nil {
-		e.CustomDataAttributes = treemap.New[string, string]()
-	}
-	b, err := json.Marshal(v)
-	if err != nil {
-		panic(err)
-	}
-	e.CustomDataAttributes.Set("data-merge-store", string(b))
-	return e
-}
-
-// Sets the reference of the element
-
-func (e *SVGFEFLOODElement) DATASTAR_REF(s string) *SVGFEFLOODElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	key := "data-ref"
-	e.StringAttributes.Set(key, s)
-	return e
-}
-
-func (e *SVGFEFLOODElement) IfDATASTAR_REF(condition bool, s string) *SVGFEFLOODElement {
-	if condition {
-		e.DATASTAR_REF(s)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_REF from the element.
-func (e *SVGFEFLOODElement) DATASTAR_REFRemove() *SVGFEFLOODElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-ref")
-	return e
-}
-
-// Sets the value of the element
-
-func (e *SVGFEFLOODElement) DATASTAR_BIND(s string) *SVGFEFLOODElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	key := "data-bind"
-	e.StringAttributes.Set(key, s)
-	return e
-}
-
-func (e *SVGFEFLOODElement) IfDATASTAR_BIND(condition bool, s string) *SVGFEFLOODElement {
-	if condition {
-		e.DATASTAR_BIND(s)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_BIND from the element.
-func (e *SVGFEFLOODElement) DATASTAR_BINDRemove() *SVGFEFLOODElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-bind")
-	return e
-}
-
-// Sets the value of the element
-
-func (e *SVGFEFLOODElement) DATASTAR_MODEL(s string) *SVGFEFLOODElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	key := "data-model"
-	e.StringAttributes.Set(key, s)
-	return e
-}
-
-func (e *SVGFEFLOODElement) IfDATASTAR_MODEL(condition bool, s string) *SVGFEFLOODElement {
-	if condition {
-		e.DATASTAR_MODEL(s)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_MODEL from the element.
-func (e *SVGFEFLOODElement) DATASTAR_MODELRemove() *SVGFEFLOODElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-model")
-	return e
-}
-
-// Sets the textContent of the element
-
-func (e *SVGFEFLOODElement) DATASTAR_TEXT(s string) *SVGFEFLOODElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	key := "data-text"
-	e.StringAttributes.Set(key, s)
-	return e
-}
-
-func (e *SVGFEFLOODElement) IfDATASTAR_TEXT(condition bool, s string) *SVGFEFLOODElement {
-	if condition {
-		e.DATASTAR_TEXT(s)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_TEXT from the element.
-func (e *SVGFEFLOODElement) DATASTAR_TEXTRemove() *SVGFEFLOODElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-text")
-	return e
-}
-
-// Sets the event handler of the element
-
-type SVGFeFloodDataOnMod customDataKeyModifier
-
-// Debounces the event handler
-func SVGFeFloodDataOnModDebounce(
-	s string,
-) SVGFeFloodDataOnMod {
-	return func() string {
-		return fmt.Sprintf("debounce_%sms", s)
-	}
-}
-
-// Throttles the event handler
-func SVGFeFloodDataOnModThrottle(
-	s string,
-) SVGFeFloodDataOnMod {
-	return func() string {
-		return fmt.Sprintf("throttle_%sms", s)
-	}
-}
-
-func (e *SVGFEFLOODElement) DATASTAR_ON(s string, modifiers ...SVGFeFloodDataOnMod) *SVGFEFLOODElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	customMods := lo.Map(modifiers, func(m SVGFeFloodDataOnMod, i int) customDataKeyModifier {
-		return customDataKeyModifier(m)
-	})
-	key := customDataKey("data-on", customMods...)
-	e.StringAttributes.Set(key, s)
-	return e
-}
-
-func (e *SVGFEFLOODElement) IfDATASTAR_ON(condition bool, s string, modifiers ...SVGFeFloodDataOnMod) *SVGFEFLOODElement {
-	if condition {
-		e.DATASTAR_ON(s, modifiers...)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_ON from the element.
-func (e *SVGFEFLOODElement) DATASTAR_ONRemove() *SVGFEFLOODElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-on")
-	return e
-}
-
-// Sets the focus of the element
-
-func (e *SVGFEFLOODElement) DATASTAR_FOCUSSet(b bool) *SVGFEFLOODElement {
-	key := "data-focus"
-	e.BoolAttributes.Set(key, b)
-	return e
-}
-
-func (e *SVGFEFLOODElement) DATASTAR_FOCUS() *SVGFEFLOODElement {
-	return e.DATASTAR_FOCUSSet(true)
-}
-
-// Sets the header of for fetch requests
-
-func (e *SVGFEFLOODElement) DATASTAR_HEADER(s string) *SVGFEFLOODElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	key := "data-header"
-	e.StringAttributes.Set(key, s)
-	return e
-}
-
-func (e *SVGFEFLOODElement) IfDATASTAR_HEADER(condition bool, s string) *SVGFEFLOODElement {
-	if condition {
-		e.DATASTAR_HEADER(s)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_HEADER from the element.
-func (e *SVGFEFLOODElement) DATASTAR_HEADERRemove() *SVGFEFLOODElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-header")
-	return e
-}
-
-// Sets the URL for fetch requests
-
-func (e *SVGFEFLOODElement) DATASTAR_FETCH_URL(s string) *SVGFEFLOODElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	key := "data-fetch-url"
-	e.StringAttributes.Set(key, s)
-	return e
-}
-
-func (e *SVGFEFLOODElement) IfDATASTAR_FETCH_URL(condition bool, s string) *SVGFEFLOODElement {
-	if condition {
-		e.DATASTAR_FETCH_URL(s)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_FETCH_URL from the element.
-func (e *SVGFEFLOODElement) DATASTAR_FETCH_URLRemove() *SVGFEFLOODElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-fetch-url")
-	return e
-}
-
-// Sets the indicator selector for fetch requests
-
-func (e *SVGFEFLOODElement) DATASTAR_FETCH_INDICATOR(s string) *SVGFEFLOODElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	key := "DatastarFetchIndicator"
-	e.StringAttributes.Set(key, s)
-	return e
-}
-
-func (e *SVGFEFLOODElement) IfDATASTAR_FETCH_INDICATOR(condition bool, s string) *SVGFEFLOODElement {
-	if condition {
-		e.DATASTAR_FETCH_INDICATOR(s)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_FETCH_INDICATOR from the element.
-func (e *SVGFEFLOODElement) DATASTAR_FETCH_INDICATORRemove() *SVGFEFLOODElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("DatastarFetchIndicator")
-	return e
-}
-
-// Sets the visibility of the element
-
-func (e *SVGFEFLOODElement) DATASTAR_SHOWSet(b bool) *SVGFEFLOODElement {
-	key := "data-show"
-	e.BoolAttributes.Set(key, b)
-	return e
-}
-
-func (e *SVGFEFLOODElement) DATASTAR_SHOW() *SVGFEFLOODElement {
-	return e.DATASTAR_SHOWSet(true)
-}
-
-// Triggers the callback when the element intersects the viewport
-
-func (e *SVGFEFLOODElement) DATASTAR_INTERSECTSSet(b bool) *SVGFEFLOODElement {
-	key := "data-intersects"
-	e.BoolAttributes.Set(key, b)
-	return e
-}
-
-func (e *SVGFEFLOODElement) DATASTAR_INTERSECTS() *SVGFEFLOODElement {
-	return e.DATASTAR_INTERSECTSSet(true)
-}
-
-// Teleports the element to the given selector
-
-func (e *SVGFEFLOODElement) DATASTAR_TELEPORTSet(b bool) *SVGFEFLOODElement {
-	key := "data-teleport"
-	e.BoolAttributes.Set(key, b)
-	return e
-}
-
-func (e *SVGFEFLOODElement) DATASTAR_TELEPORT() *SVGFEFLOODElement {
-	return e.DATASTAR_TELEPORTSet(true)
-}
-
-// Scrolls the element into view
-
-func (e *SVGFEFLOODElement) DATASTAR_SCROLL_INTO_VIEWSet(b bool) *SVGFEFLOODElement {
-	key := "data-scroll-into-view"
-	e.BoolAttributes.Set(key, b)
-	return e
-}
-
-func (e *SVGFEFLOODElement) DATASTAR_SCROLL_INTO_VIEW() *SVGFEFLOODElement {
-	return e.DATASTAR_SCROLL_INTO_VIEWSet(true)
-}
-
-// Setup the ViewTransitionAPI for the element
-
-func (e *SVGFEFLOODElement) DATASTAR_VIEW_TRANSITION(s string) *SVGFEFLOODElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	key := "data-view-transition"
-	e.StringAttributes.Set(key, s)
-	return e
-}
-
-func (e *SVGFEFLOODElement) IfDATASTAR_VIEW_TRANSITION(condition bool, s string) *SVGFEFLOODElement {
-	if condition {
-		e.DATASTAR_VIEW_TRANSITION(s)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_VIEW_TRANSITION from the element.
-func (e *SVGFEFLOODElement) DATASTAR_VIEW_TRANSITIONRemove() *SVGFEFLOODElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-view-transition")
-	return e
-}
+
+    // The flood-color attribute indicates what color to use to flood the current 
+// filter primitive subregion defined through the <feFlood> element 
+// If attribute 'flood-color' is not specified, then the effect is as if a value 
+// of black were specified. 
+    func(e *SVGFEFLOODElement) FLOOD_COLOR(s string) *SVGFEFLOODElement{
+            if e.StringAttributes == nil {
+                e.StringAttributes = treemap.New[string,string]()
+            }
+            e.StringAttributes.Set("flood-color", s)
+            return e
+        }
+
+        func(e *SVGFEFLOODElement) IfFLOOD_COLOR(condition bool, s string) *SVGFEFLOODElement{
+            if condition {
+                e.FLOOD_COLOR(s)
+            }
+            return e
+        }
+
+        // Remove the attribute FLOOD_COLOR from the element.
+        func(e *SVGFEFLOODElement) FLOOD_COLORRemove(s string) *SVGFEFLOODElement{
+            if e.StringAttributes == nil {
+                return e
+            }
+            e.StringAttributes.Del("flood-color")
+            return e
+        }
+    
+
+    // The flood-opacity attribute indicates the opacity value to use across the 
+// current filter primitive subregion defined through the <feFlood> element. 
+    func(e *SVGFEFLOODElement) FLOOD_OPACITY(f float64) *SVGFEFLOODElement{
+            if e.FloatAttributes == nil {
+                e.FloatAttributes = treemap.New[string,float64]()
+            }
+            e.FloatAttributes.Set("flood-opacity", f)
+            return e
+        }
+
+        func (e *SVGFEFLOODElement) IfFLOOD_OPACITY(condition bool, f float64) *SVGFEFLOODElement {
+            if condition {
+                e.FLOOD_OPACITY(f)
+            }
+            return e
+        }
+
+    
+
+    // Specifies a unique id for an element 
+    func(e *SVGFEFLOODElement) ID(s string) *SVGFEFLOODElement{
+            if e.StringAttributes == nil {
+                e.StringAttributes = treemap.New[string,string]()
+            }
+            e.StringAttributes.Set("id", s)
+            return e
+        }
+
+        func(e *SVGFEFLOODElement) IfID(condition bool, s string) *SVGFEFLOODElement{
+            if condition {
+                e.ID(s)
+            }
+            return e
+        }
+
+        // Remove the attribute ID from the element.
+        func(e *SVGFEFLOODElement) IDRemove(s string) *SVGFEFLOODElement{
+            if e.StringAttributes == nil {
+                return e
+            }
+            e.StringAttributes.Del("id")
+            return e
+        }
+    
+
+    // Specifies one or more classnames for an element (refers to a class in a style 
+// sheet) 
+    func(e *SVGFEFLOODElement) CLASS(s ...string) *SVGFEFLOODElement{
+            if e.DelimitedStrings == nil {
+                e.DelimitedStrings = treemap.New[string,*DelimitedBuilder[string]]()
+            }
+            ds, ok := e.DelimitedStrings.Get("class")
+            if !ok {
+                ds = NewDelimitedBuilder[string](" ")
+                e.DelimitedStrings.Set("class", ds)
+            }
+            ds.Add(s...)
+            return e
+        }
+
+        func(e *SVGFEFLOODElement) IfCLASS(condition bool, s ...string) *SVGFEFLOODElement{
+            if condition {
+                e.CLASS(s...)
+            }
+            return e
+        }
+
+        // Remove the attribute CLASS from the element.
+        func(e *SVGFEFLOODElement) CLASSRemove(s ...string) *SVGFEFLOODElement{
+            if e.DelimitedStrings == nil {
+                return e
+            }
+            ds, ok := e.DelimitedStrings.Get("class")
+            if !ok {
+                return e
+            }
+            ds.Remove(s ...)
+            return e
+        }
+
+    
+
+    // Specifies an inline CSS style for an element 
+    func (e *SVGFEFLOODElement) STYLEF(k string, format string, args ...any) *SVGFEFLOODElement {
+            return e.STYLE(k, fmt.Sprintf(format, args...))
+        }
+
+        func (e *SVGFEFLOODElement) IfSTYLE(condition bool, k string, v string) *SVGFEFLOODElement {
+            if condition {
+                e.STYLE(k, v)
+            }
+            return e
+        }
+
+        func (e *SVGFEFLOODElement) STYLE(k string, v string) *SVGFEFLOODElement {
+            if e.KVStrings == nil {
+                e.KVStrings = treemap.New[string,*KVBuilder]()
+            }
+            kv, ok := e.KVStrings.Get("style")
+            if !ok {
+                kv = NewKVBuilder(":", ";")
+                e.KVStrings.Set("style", kv)
+            }
+            kv.Add(k, v)
+            return e
+        }
+
+        func (e *SVGFEFLOODElement) IfSTYLEF(condition bool, k string, format string, args ...any) *SVGFEFLOODElement {
+            if condition {
+                e.STYLE(k, fmt.Sprintf(format, args...))
+            }
+            return e
+        }
+
+        // Add the attributes in the map to the element.
+        func (e *SVGFEFLOODElement) STYLEMap(m map[string]string) *SVGFEFLOODElement {
+            if e.KVStrings == nil {
+                e.KVStrings = treemap.New[string,*KVBuilder]()
+            }
+            kv, ok := e.KVStrings.Get("style")
+            if !ok {
+                kv = NewKVBuilder(":", ";")
+                e.KVStrings.Set("style", kv)
+            }
+            for k, v := range m {
+                kv.Add(k, v)
+            }
+            return e
+        }
+
+        // Add pairs of attributes to the element.
+        func (e *SVGFEFLOODElement) STYLEPairs(pairs ...string) *SVGFEFLOODElement {
+            if len(pairs) % 2 != 0 {
+                panic("Must have an even number of pairs")
+            }
+            if e.KVStrings == nil {
+                e.KVStrings = treemap.New[string,*KVBuilder]()
+            }
+            kv, ok := e.KVStrings.Get("style")
+            if !ok {
+                kv = NewKVBuilder(":", ";")
+                e.KVStrings.Set("style", kv)
+            }
+
+            for i := 0; i < len(pairs); i += 2 {
+                kv.Add(pairs[i], pairs[i+1])
+            }
+
+            return e
+        }
+
+        func (e *SVGFEFLOODElement) IfSTYLEPairs(condition bool, pairs ...string) *SVGFEFLOODElement {
+            if condition {
+                e.STYLEPairs(pairs...)
+            }
+            return e
+        }
+
+        // Remove the attribute STYLE from the element.
+        func (e *SVGFEFLOODElement) STYLERemove(keys ...string) *SVGFEFLOODElement {
+            if e.KVStrings == nil {
+                return e
+            }
+            kv, ok := e.KVStrings.Get("style")
+            if !ok {
+                return e
+            }
+            for _, k := range keys {
+                kv.Remove(k)
+            }
+            return e
+        }
+
+    
+
+    // Merges the store with the given object 
+    
+        func(e *SVGFEFLOODElement) DATASTAR_MERGE_STORE(v any) *SVGFEFLOODElement{
+                if e.CustomDataAttributes == nil {
+                    e.CustomDataAttributes = treemap.New[string,string]()
+                }
+                b, err := json.Marshal(v)
+                if err != nil {
+                    panic(err)
+                }
+                e.CustomDataAttributes.Set("data-merge-store", string(b))
+                return e
+            }
+
+        
+
+    // Sets the reference of the element 
+    
+        func(e *SVGFEFLOODElement) DATASTAR_REF(expression string) *SVGFEFLOODElement{
+                if e.StringAttributes == nil {
+                    e.StringAttributes = treemap.New[string,string]()
+                }
+                
+                key := "data-ref"
+                
+                e.StringAttributes.Set(key, expression)
+                return e
+            }
+
+            func(e *SVGFEFLOODElement) IfDATASTAR_REF(condition bool, expression string) *SVGFEFLOODElement{
+                if condition {
+                    e.DATASTAR_REF( expression, )
+                }
+                return e
+            }
+
+            // Remove the attribute DATASTAR_REF from the element.
+            func(e *SVGFEFLOODElement) DATASTAR_REFRemove() *SVGFEFLOODElement{
+                if e.StringAttributes == nil {
+                    return e
+                }
+                e.StringAttributes.Del("data-ref")
+                return e
+            }
+
+        
+
+    // Sets the value of the element 
+    
+        func(e *SVGFEFLOODElement) DATASTAR_BIND(key string, expression string) *SVGFEFLOODElement{
+                if e.StringAttributes == nil {
+                    e.StringAttributes = treemap.New[string,string]()
+                }
+                
+                key = fmt.Sprintf("data-bind-%s", key)
+                
+                e.StringAttributes.Set(key, expression)
+                return e
+            }
+
+            func(e *SVGFEFLOODElement) IfDATASTAR_BIND(condition bool, key string, expression string) *SVGFEFLOODElement{
+                if condition {
+                    e.DATASTAR_BIND(key,  expression, )
+                }
+                return e
+            }
+
+            // Remove the attribute DATASTAR_BIND from the element.
+            func(e *SVGFEFLOODElement) DATASTAR_BINDRemove() *SVGFEFLOODElement{
+                if e.StringAttributes == nil {
+                    return e
+                }
+                e.StringAttributes.Del("data-bind")
+                return e
+            }
+
+        
+
+    // Sets the value of the element 
+    
+        func(e *SVGFEFLOODElement) DATASTAR_MODEL(expression string) *SVGFEFLOODElement{
+                if e.StringAttributes == nil {
+                    e.StringAttributes = treemap.New[string,string]()
+                }
+                
+                key := "data-model"
+                
+                e.StringAttributes.Set(key, expression)
+                return e
+            }
+
+            func(e *SVGFEFLOODElement) IfDATASTAR_MODEL(condition bool, expression string) *SVGFEFLOODElement{
+                if condition {
+                    e.DATASTAR_MODEL( expression, )
+                }
+                return e
+            }
+
+            // Remove the attribute DATASTAR_MODEL from the element.
+            func(e *SVGFEFLOODElement) DATASTAR_MODELRemove() *SVGFEFLOODElement{
+                if e.StringAttributes == nil {
+                    return e
+                }
+                e.StringAttributes.Del("data-model")
+                return e
+            }
+
+        
+
+    // Sets the textContent of the element 
+    
+        func(e *SVGFEFLOODElement) DATASTAR_TEXT(expression string) *SVGFEFLOODElement{
+                if e.StringAttributes == nil {
+                    e.StringAttributes = treemap.New[string,string]()
+                }
+                
+                key := "data-text"
+                
+                e.StringAttributes.Set(key, expression)
+                return e
+            }
+
+            func(e *SVGFEFLOODElement) IfDATASTAR_TEXT(condition bool, expression string) *SVGFEFLOODElement{
+                if condition {
+                    e.DATASTAR_TEXT( expression, )
+                }
+                return e
+            }
+
+            // Remove the attribute DATASTAR_TEXT from the element.
+            func(e *SVGFEFLOODElement) DATASTAR_TEXTRemove() *SVGFEFLOODElement{
+                if e.StringAttributes == nil {
+                    return e
+                }
+                e.StringAttributes.Del("data-text")
+                return e
+            }
+
+        
+
+    // Sets the event handler of the element 
+    
+        type SVGFeFloodDataOnMod customDataKeyModifier
+
+            
+            // Debounces the event handler 
+            func SVGFeFloodDataOnModDebounce(
+                    d time.Duration,
+            ) SVGFeFloodDataOnMod {
+                return func() string {return fmt.Sprintf("debounce_%dms", d.Milliseconds())
+                }
+            }
+            
+            // Throttles the event handler 
+            func SVGFeFloodDataOnModThrottle(
+                    d time.Duration,
+            ) SVGFeFloodDataOnMod {
+                return func() string {return fmt.Sprintf("throttle_%dms", d.Milliseconds())
+                }
+            }
+            
+        func(e *SVGFEFLOODElement) DATASTAR_ON(key string, expression string, modifiers ...SVGFeFloodDataOnMod) *SVGFEFLOODElement{
+                if e.StringAttributes == nil {
+                    e.StringAttributes = treemap.New[string,string]()
+                }
+                
+                key = fmt.Sprintf("data-on-%s", key)
+                
+                customMods := lo.Map(modifiers, func(m SVGFeFloodDataOnMod, i int) customDataKeyModifier  {
+                    return customDataKeyModifier(m)
+                })
+                key = customDataKey(key, customMods...)
+                e.StringAttributes.Set(key, expression)
+                return e
+            }
+
+            func(e *SVGFEFLOODElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SVGFeFloodDataOnMod) *SVGFEFLOODElement{
+                if condition {
+                    e.DATASTAR_ON(key,  expression,  modifiers...)
+                }
+                return e
+            }
+
+            // Remove the attribute DATASTAR_ON from the element.
+            func(e *SVGFEFLOODElement) DATASTAR_ONRemove() *SVGFEFLOODElement{
+                if e.StringAttributes == nil {
+                    return e
+                }
+                e.StringAttributes.Del("data-on")
+                return e
+            }
+
+        
+
+    // Sets the focus of the element 
+    
+        func(e *SVGFEFLOODElement) DATASTAR_FOCUSSet(b bool) *SVGFEFLOODElement{
+                key := "data-focus"
+                e.BoolAttributes.Set(key, b)
+                return e
+            }
+
+            func(e *SVGFEFLOODElement) DATASTAR_FOCUS() *SVGFEFLOODElement{
+                return e.DATASTAR_FOCUSSet(true)
+            }
+        
+
+    // Sets the header of for fetch requests 
+    
+        func(e *SVGFEFLOODElement) DATASTAR_HEADER(key string, expression string) *SVGFEFLOODElement{
+                if e.StringAttributes == nil {
+                    e.StringAttributes = treemap.New[string,string]()
+                }
+                
+                key = fmt.Sprintf("data-header-%s", key)
+                
+                e.StringAttributes.Set(key, expression)
+                return e
+            }
+
+            func(e *SVGFEFLOODElement) IfDATASTAR_HEADER(condition bool, key string, expression string) *SVGFEFLOODElement{
+                if condition {
+                    e.DATASTAR_HEADER(key,  expression, )
+                }
+                return e
+            }
+
+            // Remove the attribute DATASTAR_HEADER from the element.
+            func(e *SVGFEFLOODElement) DATASTAR_HEADERRemove() *SVGFEFLOODElement{
+                if e.StringAttributes == nil {
+                    return e
+                }
+                e.StringAttributes.Del("data-header")
+                return e
+            }
+
+        
+
+    // Sets the URL for fetch requests 
+    
+        func(e *SVGFEFLOODElement) DATASTAR_FETCH_URL(expression string) *SVGFEFLOODElement{
+                if e.StringAttributes == nil {
+                    e.StringAttributes = treemap.New[string,string]()
+                }
+                
+                key := "data-fetch-url"
+                
+                e.StringAttributes.Set(key, expression)
+                return e
+            }
+
+            func(e *SVGFEFLOODElement) IfDATASTAR_FETCH_URL(condition bool, expression string) *SVGFEFLOODElement{
+                if condition {
+                    e.DATASTAR_FETCH_URL( expression, )
+                }
+                return e
+            }
+
+            // Remove the attribute DATASTAR_FETCH_URL from the element.
+            func(e *SVGFEFLOODElement) DATASTAR_FETCH_URLRemove() *SVGFEFLOODElement{
+                if e.StringAttributes == nil {
+                    return e
+                }
+                e.StringAttributes.Del("data-fetch-url")
+                return e
+            }
+
+        
+
+    // Sets the indicator selector for fetch requests 
+    
+        func(e *SVGFEFLOODElement) DATASTAR_FETCH_INDICATOR(expression string) *SVGFEFLOODElement{
+                if e.StringAttributes == nil {
+                    e.StringAttributes = treemap.New[string,string]()
+                }
+                
+                key := "DatastarFetchIndicator"
+                
+                e.StringAttributes.Set(key, expression)
+                return e
+            }
+
+            func(e *SVGFEFLOODElement) IfDATASTAR_FETCH_INDICATOR(condition bool, expression string) *SVGFEFLOODElement{
+                if condition {
+                    e.DATASTAR_FETCH_INDICATOR( expression, )
+                }
+                return e
+            }
+
+            // Remove the attribute DATASTAR_FETCH_INDICATOR from the element.
+            func(e *SVGFEFLOODElement) DATASTAR_FETCH_INDICATORRemove() *SVGFEFLOODElement{
+                if e.StringAttributes == nil {
+                    return e
+                }
+                e.StringAttributes.Del("DatastarFetchIndicator")
+                return e
+            }
+
+        
+
+    // Sets the visibility of the element 
+    
+        func(e *SVGFEFLOODElement) DATASTAR_SHOWSet(b bool) *SVGFEFLOODElement{
+                key := "data-show"
+                e.BoolAttributes.Set(key, b)
+                return e
+            }
+
+            func(e *SVGFEFLOODElement) DATASTAR_SHOW() *SVGFEFLOODElement{
+                return e.DATASTAR_SHOWSet(true)
+            }
+        
+
+    // Triggers the callback when the element intersects the viewport 
+    
+        func(e *SVGFEFLOODElement) DATASTAR_INTERSECTSSet(b bool) *SVGFEFLOODElement{
+                key := "data-intersects"
+                e.BoolAttributes.Set(key, b)
+                return e
+            }
+
+            func(e *SVGFEFLOODElement) DATASTAR_INTERSECTS() *SVGFEFLOODElement{
+                return e.DATASTAR_INTERSECTSSet(true)
+            }
+        
+
+    // Teleports the element to the given selector 
+    
+        func(e *SVGFEFLOODElement) DATASTAR_TELEPORTSet(b bool) *SVGFEFLOODElement{
+                key := "data-teleport"
+                e.BoolAttributes.Set(key, b)
+                return e
+            }
+
+            func(e *SVGFEFLOODElement) DATASTAR_TELEPORT() *SVGFEFLOODElement{
+                return e.DATASTAR_TELEPORTSet(true)
+            }
+        
+
+    // Scrolls the element into view 
+    
+        func(e *SVGFEFLOODElement) DATASTAR_SCROLL_INTO_VIEWSet(b bool) *SVGFEFLOODElement{
+                key := "data-scroll-into-view"
+                e.BoolAttributes.Set(key, b)
+                return e
+            }
+
+            func(e *SVGFEFLOODElement) DATASTAR_SCROLL_INTO_VIEW() *SVGFEFLOODElement{
+                return e.DATASTAR_SCROLL_INTO_VIEWSet(true)
+            }
+        
+
+    // Setup the ViewTransitionAPI for the element 
+    
+        func(e *SVGFEFLOODElement) DATASTAR_VIEW_TRANSITION(key string, expression string) *SVGFEFLOODElement{
+                if e.StringAttributes == nil {
+                    e.StringAttributes = treemap.New[string,string]()
+                }
+                
+                key = fmt.Sprintf("data-view-transition-%s", key)
+                
+                e.StringAttributes.Set(key, expression)
+                return e
+            }
+
+            func(e *SVGFEFLOODElement) IfDATASTAR_VIEW_TRANSITION(condition bool, key string, expression string) *SVGFEFLOODElement{
+                if condition {
+                    e.DATASTAR_VIEW_TRANSITION(key,  expression, )
+                }
+                return e
+            }
+
+            // Remove the attribute DATASTAR_VIEW_TRANSITION from the element.
+            func(e *SVGFEFLOODElement) DATASTAR_VIEW_TRANSITIONRemove() *SVGFEFLOODElement{
+                if e.StringAttributes == nil {
+                    return e
+                }
+                e.StringAttributes.Del("data-view-transition")
+                return e
+            }
+
+        
+
+
+

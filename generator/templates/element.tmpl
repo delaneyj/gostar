@@ -5,6 +5,7 @@ package elements
 
 import(
     "fmt"
+    "time"
     "github.com/igrmk/treemap/v2"
     "github.com/goccy/go-json"
     "github.com/samber/lo"
@@ -443,64 +444,69 @@ func (e *{{$elStructName}}) CustomDataRemove(key string) *{{$elStructName}} {
             type {{$modTypeName}} customDataKeyModifier
 
             {{ range $i, $mod := $custom.Modifiers -}}
+            {{ $modType := $mod.Type.Type.Custom.Type }}
             {{ $mod.Description | comments }}
             func {{$modTypeName}}{{$mod.Name | pascal}}(
-                {{- if $customType | attrIsDuration }}
+                {{- if $modType | attrIsDuration }}
                     d time.Duration,
-                {{- else if $customType | attrIsString }}
+                {{- else if $modType | attrIsString }}
                     s string,
-                {{- else if $customType | attrIsBool }}
+                {{- else if $modType | attrIsBool }}
                     b bool,
-                {{- else if $customType | attrIsInt }}
+                {{- else if $modType | attrIsInt }}
                     i int,
-                {{- else if $customType | attrIsNumber }}
+                {{- else if $modType | attrIsNumber }}
                     f float64,
-                {{- else if $customType | attrIsRune }}
+                {{- else if $modType | attrIsRune }}
                     r rune,
                 {{ else -}}
-                    !!!No handler for type {{$customType}}.
+                    !!!No handler for type {{$modType}}.
                 {{end }}
             ) {{$modTypeName}} {
                 return func() string {
-                    {{- if $customType | attrIsDuration -}}
-                        return fmt.Sprintf("{{$mod.Prefix}}%s{{$mod.Suffix}}", d.Milliseconds())
-                    {{- else if $customType | attrIsString -}}
+                    {{- if $modType | attrIsDuration -}}
+                        return fmt.Sprintf("{{$mod.Prefix}}%d{{$mod.Suffix}}", d.Milliseconds())
+                    {{- else if $modType | attrIsString -}}
                         return fmt.Sprintf("{{$mod.Prefix}}%s{{$mod.Suffix}}", s)
-                    {{- else if $customType | attrIsBool -}}
+                    {{- else if $modType | attrIsBool -}}
                         return fmt.Sprintf("{{$mod.Prefix}}%t{{$mod.Suffix}}", b)
-                    {{- else if $customType | attrIsInt -}}
+                    {{- else if $modType | attrIsInt -}}
                         return fmt.Sprintf("{{$mod.Prefix}}%d{{$mod.Suffix}}", i)
-                    {{- else if $customType | attrIsNumber -}}
+                    {{- else if $modType | attrIsNumber -}}
                         return fmt.Sprintf("{{$mod.Prefix}}%f{{$mod.Suffix}}", f)
-                    {{- else if $customType | attrIsRune -}}
+                    {{- else if $modType | attrIsRune -}}
                         return fmt.Sprintf("{{$mod.Prefix}}%c{{$mod.Suffix}}", r)
                     {{- else -}}
-                        !!!No handler for type {{$customType}}.
+                        !!!No handler for type {{$modType}}.
                     {{end}}
                 }
             }
             {{end}}
         {{ end -}}
         {{ if $customType | attrIsString -}}
-            func(e *{{$elStructName}}) {{.Name}}(s string{{if $custom.Modifiers}}, modifiers ...{{$modTypeName}}{{end}}) *{{$elStructName}}{
+            func(e *{{$elStructName}}) {{.Name}}({{if $custom.HasKey}}key string, {{end}}expression string{{if $custom.Modifiers}}, modifiers ...{{$modTypeName}}{{end}}) *{{$elStructName}}{
                 if e.StringAttributes == nil {
                     e.StringAttributes = treemap.New[string,string]()
                 }
+                {{if $custom.HasKey}}
+                key = fmt.Sprintf("{{.Key}}-%s", key)
+                {{else}}
+                key := "{{.Key}}"
+                {{end}}
+
                 {{- if $custom.Modifiers}}
                 customMods := lo.Map(modifiers, func(m {{$modTypeName}}, i int) customDataKeyModifier  {
                     return customDataKeyModifier(m)
                 })
-                key := customDataKey("{{.Key}}"{{if $custom.Modifiers}}, customMods...{{end}})
-                {{- else}}
-                key := "{{.Key}}"
+                key = customDataKey(key{{if $custom.Modifiers}}, customMods...{{end}})
                 {{- end}}
-                e.StringAttributes.Set(key, s)
+                e.StringAttributes.Set(key, expression)
                 return e
             }
 
-            func(e *{{$elStructName}}) If{{.Name}}(condition bool, s string{{if $custom.Modifiers}}, modifiers ...{{$modTypeName}}{{end}}) *{{$elStructName}}{
+            func(e *{{$elStructName}}) If{{.Name}}(condition bool, {{if $custom.HasKey}}key string, {{end}}expression string{{if $custom.Modifiers}}, modifiers ...{{$modTypeName}}{{end}}) *{{$elStructName}}{
                 if condition {
-                    e.{{.Name}}(s{{if $custom.Modifiers}}, modifiers...{{end}})
+                    e.{{.Name}}({{if $custom.HasKey}}key, {{end}} expression, {{if $custom.Modifiers}} modifiers...{{end}})
                 }
                 return e
             }

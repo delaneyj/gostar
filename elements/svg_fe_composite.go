@@ -3,773 +3,835 @@
 // Description:
 package elements
 
-import (
-	"fmt"
-
-	"github.com/goccy/go-json"
-	"github.com/igrmk/treemap/v2"
-	"github.com/samber/lo"
+import(
+    "fmt"
+    "time"
+    "github.com/igrmk/treemap/v2"
+    "github.com/goccy/go-json"
+    "github.com/samber/lo"
 )
 
-// The <feComposite> SVG filter primitive performs the combination of two input
-// images pixel-wise in image space using one of the Porter-Duff compositing
-// operations: over, in, atop, out, xor.
+// The <feComposite> SVG filter primitive performs the combination of two input 
+// images pixel-wise in image space using one of the Porter-Duff compositing 
+// operations: over, in, atop, out, xor. 
 type SVGFECOMPOSITEElement struct {
-	*Element
+    *Element
 }
 
 // Create a new SVGFECOMPOSITEElement element.
 // This will create a new element with the tag
 // "feComposite" during rendering.
 func SVG_FECOMPOSITE(children ...ElementRenderer) *SVGFECOMPOSITEElement {
-	e := NewElement("feComposite", children...)
-	e.IsSelfClosing = false
-	e.Descendants = children
+    e := NewElement("feComposite", children...)
+    e.IsSelfClosing = false
+    e.Descendants = children
 
-	return &SVGFECOMPOSITEElement{Element: e}
+    return &SVGFECOMPOSITEElement{ Element: e }
 }
 
 func (e *SVGFECOMPOSITEElement) Children(children ...ElementRenderer) *SVGFECOMPOSITEElement {
-	e.Descendants = append(e.Descendants, children...)
-	return e
+    e.Descendants = append(e.Descendants, children...)
+    return e
 }
 
-func (e *SVGFECOMPOSITEElement) IfChildren(condition bool, children ...ElementRenderer) *SVGFECOMPOSITEElement {
-	if condition {
-		e.Descendants = append(e.Descendants, children...)
-	}
-	return e
+func(e *SVGFECOMPOSITEElement) IfChildren(condition bool, children ...ElementRenderer) *SVGFECOMPOSITEElement {
+    if condition {
+        e.Descendants = append(e.Descendants, children...)
+    }
+    return e
 }
 
-func (e *SVGFECOMPOSITEElement) TernChildren(condition bool, trueChildren, falseChildren ElementRenderer) *SVGFECOMPOSITEElement {
-	if condition {
-		e.Descendants = append(e.Descendants, trueChildren)
-	} else {
-		e.Descendants = append(e.Descendants, falseChildren)
-	}
-	return e
+func(e *SVGFECOMPOSITEElement) TernChildren(condition bool, trueChildren, falseChildren ElementRenderer) *SVGFECOMPOSITEElement {
+    if condition {
+        e.Descendants = append(e.Descendants, trueChildren)
+    } else {
+        e.Descendants = append(e.Descendants, falseChildren)
+    }
+    return e
 }
 
 func (e *SVGFECOMPOSITEElement) Text(text string) *SVGFECOMPOSITEElement {
-	e.Descendants = append(e.Descendants, Text(text))
-	return e
+    e.Descendants = append(e.Descendants, Text(text))
+    return e
 }
 
 func (e *SVGFECOMPOSITEElement) TextF(format string, args ...any) *SVGFECOMPOSITEElement {
-	return e.Text(fmt.Sprintf(format, args...))
+    return e.Text(fmt.Sprintf(format, args...))
 }
 
 func (e *SVGFECOMPOSITEElement) IfText(condition bool, text string) *SVGFECOMPOSITEElement {
-	if condition {
-		e.Descendants = append(e.Descendants, Text(text))
-	}
-	return e
+    if condition {
+        e.Descendants = append(e.Descendants, Text(text))
+    }
+    return e
 }
 
 func (e *SVGFECOMPOSITEElement) IfTextF(condition bool, format string, args ...any) *SVGFECOMPOSITEElement {
-	if condition {
-		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
-	}
-	return e
+    if condition {
+        e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+    }
+    return e
 }
 
 func (e *SVGFECOMPOSITEElement) Escaped(text string) *SVGFECOMPOSITEElement {
-	e.Descendants = append(e.Descendants, Escaped(text))
-	return e
+    e.Descendants = append(e.Descendants, Escaped(text))
+    return e
 }
 
 func (e *SVGFECOMPOSITEElement) IfEscaped(condition bool, text string) *SVGFECOMPOSITEElement {
-	if condition {
-		e.Descendants = append(e.Descendants, Escaped(text))
-	}
-	return e
+    if condition {
+        e.Descendants = append(e.Descendants, Escaped(text))
+    }
+    return e
 }
 
 func (e *SVGFECOMPOSITEElement) EscapedF(format string, args ...any) *SVGFECOMPOSITEElement {
-	return e.Escaped(fmt.Sprintf(format, args...))
+    return e.Escaped(fmt.Sprintf(format, args...))
 }
 
 func (e *SVGFECOMPOSITEElement) IfEscapedF(condition bool, format string, args ...any) *SVGFECOMPOSITEElement {
-	if condition {
-		e.Descendants = append(e.Descendants, EscapedF(format, args...))
-	}
-	return e
+    if condition {
+        e.Descendants = append(e.Descendants, EscapedF(format, args...))
+    }
+    return e
 }
 
 func (e *SVGFECOMPOSITEElement) CustomData(key, value string) *SVGFECOMPOSITEElement {
-	if e.CustomDataAttributes == nil {
-		e.CustomDataAttributes = treemap.New[string, string]()
-	}
+    if e.CustomDataAttributes == nil {
+        e.CustomDataAttributes = treemap.New[string,string]()
+    }
 	e.CustomDataAttributes.Set(key, value)
 	return e
 }
 
 func (e *SVGFECOMPOSITEElement) IfCustomData(condition bool, key, value string) *SVGFECOMPOSITEElement {
-	if condition {
-		e.CustomData(key, value)
-	}
-	return e
+    if condition {
+        e.CustomData(key, value)
+    }
+    return e
 }
 
 func (e *SVGFECOMPOSITEElement) CustomDataF(key, format string, args ...any) *SVGFECOMPOSITEElement {
-	return e.CustomData(key, fmt.Sprintf(format, args...))
+    return e.CustomData(key, fmt.Sprintf(format, args...))
 }
 
 func (e *SVGFECOMPOSITEElement) IfCustomDataF(condition bool, key, format string, args ...any) *SVGFECOMPOSITEElement {
-	if condition {
-		e.CustomData(key, fmt.Sprintf(format, args...))
-	}
-	return e
+    if condition {
+        e.CustomData(key, fmt.Sprintf(format, args...))
+    }
+    return e
 }
 
 func (e *SVGFECOMPOSITEElement) CustomDataRemove(key string) *SVGFECOMPOSITEElement {
 	if e.CustomDataAttributes == nil {
 		return e
 	}
-	e.CustomDataAttributes.Del(key)
+    e.CustomDataAttributes.Del(key)
 	return e
 }
 
-// Input for the compositing operation.
-func (e *SVGFECOMPOSITEElement) IN(s string) *SVGFECOMPOSITEElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	e.StringAttributes.Set("in", s)
-	return e
-}
-
-func (e *SVGFECOMPOSITEElement) IfIN(condition bool, s string) *SVGFECOMPOSITEElement {
-	if condition {
-		e.IN(s)
-	}
-	return e
-}
-
-// Remove the attribute IN from the element.
-func (e *SVGFECOMPOSITEElement) INRemove(s string) *SVGFECOMPOSITEElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("in")
-	return e
-}
-
-// Second input for the compositing operation.
-func (e *SVGFECOMPOSITEElement) IN_2(s string) *SVGFECOMPOSITEElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	e.StringAttributes.Set("in2", s)
-	return e
-}
-
-func (e *SVGFECOMPOSITEElement) IfIN_2(condition bool, s string) *SVGFECOMPOSITEElement {
-	if condition {
-		e.IN_2(s)
-	}
-	return e
-}
-
-// Remove the attribute IN_2 from the element.
-func (e *SVGFECOMPOSITEElement) IN_2Remove(s string) *SVGFECOMPOSITEElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("in2")
-	return e
-}
-
-// The type of compositing operation.
-func (e *SVGFECOMPOSITEElement) OPERATOR(c SVGFeCompositeOperatorChoice) *SVGFECOMPOSITEElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	e.StringAttributes.Set("operator", string(c))
-	return e
-}
-
-type SVGFeCompositeOperatorChoice string
-
-const (
-	// The source image is composited over the destination image.
-	SVGFeCompositeOperator_over SVGFeCompositeOperatorChoice = "over"
-	// The part of the source image that lies inside of the destination image is
-	// composited over the destination image.
-	SVGFeCompositeOperator_in SVGFeCompositeOperatorChoice = "in"
-	// The part of the source image that lies outside of the destination image is
-	// composited over the destination image.
-	SVGFeCompositeOperator_out SVGFeCompositeOperatorChoice = "out"
-	// The part of the source image that lies inside of the destination image is
-	// composited over the destination image and replaces the destination image.
-	SVGFeCompositeOperator_atop SVGFeCompositeOperatorChoice = "atop"
-	// The part of the source image that lies outside of the destination image is
-	// composited over the destination image.
-	SVGFeCompositeOperator_xor SVGFeCompositeOperatorChoice = "xor"
-	// A standard arithmetic operator is applied (
-	SVGFeCompositeOperator_arithmetic SVGFeCompositeOperatorChoice = "arithmetic"
-)
-
-// Remove the attribute OPERATOR from the element.
-func (e *SVGFECOMPOSITEElement) OPERATORRemove(c SVGFeCompositeOperatorChoice) *SVGFECOMPOSITEElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("operator")
-	return e
-}
-
-// First value to use in the arithmetic operation.
-func (e *SVGFECOMPOSITEElement) K_1(f float64) *SVGFECOMPOSITEElement {
-	if e.FloatAttributes == nil {
-		e.FloatAttributes = treemap.New[string, float64]()
-	}
-	e.FloatAttributes.Set("k1", f)
-	return e
-}
-
-func (e *SVGFECOMPOSITEElement) IfK_1(condition bool, f float64) *SVGFECOMPOSITEElement {
-	if condition {
-		e.K_1(f)
-	}
-	return e
-}
-
-// Second value to use in the arithmetic operation.
-func (e *SVGFECOMPOSITEElement) K_2(f float64) *SVGFECOMPOSITEElement {
-	if e.FloatAttributes == nil {
-		e.FloatAttributes = treemap.New[string, float64]()
-	}
-	e.FloatAttributes.Set("k2", f)
-	return e
-}
-
-func (e *SVGFECOMPOSITEElement) IfK_2(condition bool, f float64) *SVGFECOMPOSITEElement {
-	if condition {
-		e.K_2(f)
-	}
-	return e
-}
-
-// Third value to use in the arithmetic operation.
-func (e *SVGFECOMPOSITEElement) K_3(f float64) *SVGFECOMPOSITEElement {
-	if e.FloatAttributes == nil {
-		e.FloatAttributes = treemap.New[string, float64]()
-	}
-	e.FloatAttributes.Set("k3", f)
-	return e
-}
-
-func (e *SVGFECOMPOSITEElement) IfK_3(condition bool, f float64) *SVGFECOMPOSITEElement {
-	if condition {
-		e.K_3(f)
-	}
-	return e
-}
-
-// Fourth value to use in the arithmetic operation.
-func (e *SVGFECOMPOSITEElement) K_4(f float64) *SVGFECOMPOSITEElement {
-	if e.FloatAttributes == nil {
-		e.FloatAttributes = treemap.New[string, float64]()
-	}
-	e.FloatAttributes.Set("k4", f)
-	return e
-}
-
-func (e *SVGFECOMPOSITEElement) IfK_4(condition bool, f float64) *SVGFECOMPOSITEElement {
-	if condition {
-		e.K_4(f)
-	}
-	return e
-}
-
-// Specifies a unique id for an element
-func (e *SVGFECOMPOSITEElement) ID(s string) *SVGFECOMPOSITEElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	e.StringAttributes.Set("id", s)
-	return e
-}
-
-func (e *SVGFECOMPOSITEElement) IfID(condition bool, s string) *SVGFECOMPOSITEElement {
-	if condition {
-		e.ID(s)
-	}
-	return e
-}
-
-// Remove the attribute ID from the element.
-func (e *SVGFECOMPOSITEElement) IDRemove(s string) *SVGFECOMPOSITEElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("id")
-	return e
-}
-
-// Specifies one or more classnames for an element (refers to a class in a style
-// sheet)
-func (e *SVGFECOMPOSITEElement) CLASS(s ...string) *SVGFECOMPOSITEElement {
-	if e.DelimitedStrings == nil {
-		e.DelimitedStrings = treemap.New[string, *DelimitedBuilder[string]]()
-	}
-	ds, ok := e.DelimitedStrings.Get("class")
-	if !ok {
-		ds = NewDelimitedBuilder[string](" ")
-		e.DelimitedStrings.Set("class", ds)
-	}
-	ds.Add(s...)
-	return e
-}
-
-func (e *SVGFECOMPOSITEElement) IfCLASS(condition bool, s ...string) *SVGFECOMPOSITEElement {
-	if condition {
-		e.CLASS(s...)
-	}
-	return e
-}
-
-// Remove the attribute CLASS from the element.
-func (e *SVGFECOMPOSITEElement) CLASSRemove(s ...string) *SVGFECOMPOSITEElement {
-	if e.DelimitedStrings == nil {
-		return e
-	}
-	ds, ok := e.DelimitedStrings.Get("class")
-	if !ok {
-		return e
-	}
-	ds.Remove(s...)
-	return e
-}
-
-// Specifies an inline CSS style for an element
-func (e *SVGFECOMPOSITEElement) STYLEF(k string, format string, args ...any) *SVGFECOMPOSITEElement {
-	return e.STYLE(k, fmt.Sprintf(format, args...))
-}
-
-func (e *SVGFECOMPOSITEElement) IfSTYLE(condition bool, k string, v string) *SVGFECOMPOSITEElement {
-	if condition {
-		e.STYLE(k, v)
-	}
-	return e
-}
-
-func (e *SVGFECOMPOSITEElement) STYLE(k string, v string) *SVGFECOMPOSITEElement {
-	if e.KVStrings == nil {
-		e.KVStrings = treemap.New[string, *KVBuilder]()
-	}
-	kv, ok := e.KVStrings.Get("style")
-	if !ok {
-		kv = NewKVBuilder(":", ";")
-		e.KVStrings.Set("style", kv)
-	}
-	kv.Add(k, v)
-	return e
-}
-
-func (e *SVGFECOMPOSITEElement) IfSTYLEF(condition bool, k string, format string, args ...any) *SVGFECOMPOSITEElement {
-	if condition {
-		e.STYLE(k, fmt.Sprintf(format, args...))
-	}
-	return e
-}
-
-// Add the attributes in the map to the element.
-func (e *SVGFECOMPOSITEElement) STYLEMap(m map[string]string) *SVGFECOMPOSITEElement {
-	if e.KVStrings == nil {
-		e.KVStrings = treemap.New[string, *KVBuilder]()
-	}
-	kv, ok := e.KVStrings.Get("style")
-	if !ok {
-		kv = NewKVBuilder(":", ";")
-		e.KVStrings.Set("style", kv)
-	}
-	for k, v := range m {
-		kv.Add(k, v)
-	}
-	return e
-}
-
-// Add pairs of attributes to the element.
-func (e *SVGFECOMPOSITEElement) STYLEPairs(pairs ...string) *SVGFECOMPOSITEElement {
-	if len(pairs)%2 != 0 {
-		panic("Must have an even number of pairs")
-	}
-	if e.KVStrings == nil {
-		e.KVStrings = treemap.New[string, *KVBuilder]()
-	}
-	kv, ok := e.KVStrings.Get("style")
-	if !ok {
-		kv = NewKVBuilder(":", ";")
-		e.KVStrings.Set("style", kv)
-	}
-
-	for i := 0; i < len(pairs); i += 2 {
-		kv.Add(pairs[i], pairs[i+1])
-	}
-
-	return e
-}
-
-func (e *SVGFECOMPOSITEElement) IfSTYLEPairs(condition bool, pairs ...string) *SVGFECOMPOSITEElement {
-	if condition {
-		e.STYLEPairs(pairs...)
-	}
-	return e
-}
-
-// Remove the attribute STYLE from the element.
-func (e *SVGFECOMPOSITEElement) STYLERemove(keys ...string) *SVGFECOMPOSITEElement {
-	if e.KVStrings == nil {
-		return e
-	}
-	kv, ok := e.KVStrings.Get("style")
-	if !ok {
-		return e
-	}
-	for _, k := range keys {
-		kv.Remove(k)
-	}
-	return e
-}
-
-// Merges the store with the given object
-
-func (e *SVGFECOMPOSITEElement) DATASTAR_MERGE_STORE(v any) *SVGFECOMPOSITEElement {
-	if e.CustomDataAttributes == nil {
-		e.CustomDataAttributes = treemap.New[string, string]()
-	}
-	b, err := json.Marshal(v)
-	if err != nil {
-		panic(err)
-	}
-	e.CustomDataAttributes.Set("data-merge-store", string(b))
-	return e
-}
-
-// Sets the reference of the element
-
-func (e *SVGFECOMPOSITEElement) DATASTAR_REF(s string) *SVGFECOMPOSITEElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	key := "data-ref"
-	e.StringAttributes.Set(key, s)
-	return e
-}
-
-func (e *SVGFECOMPOSITEElement) IfDATASTAR_REF(condition bool, s string) *SVGFECOMPOSITEElement {
-	if condition {
-		e.DATASTAR_REF(s)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_REF from the element.
-func (e *SVGFECOMPOSITEElement) DATASTAR_REFRemove() *SVGFECOMPOSITEElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-ref")
-	return e
-}
-
-// Sets the value of the element
-
-func (e *SVGFECOMPOSITEElement) DATASTAR_BIND(s string) *SVGFECOMPOSITEElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	key := "data-bind"
-	e.StringAttributes.Set(key, s)
-	return e
-}
-
-func (e *SVGFECOMPOSITEElement) IfDATASTAR_BIND(condition bool, s string) *SVGFECOMPOSITEElement {
-	if condition {
-		e.DATASTAR_BIND(s)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_BIND from the element.
-func (e *SVGFECOMPOSITEElement) DATASTAR_BINDRemove() *SVGFECOMPOSITEElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-bind")
-	return e
-}
-
-// Sets the value of the element
-
-func (e *SVGFECOMPOSITEElement) DATASTAR_MODEL(s string) *SVGFECOMPOSITEElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	key := "data-model"
-	e.StringAttributes.Set(key, s)
-	return e
-}
-
-func (e *SVGFECOMPOSITEElement) IfDATASTAR_MODEL(condition bool, s string) *SVGFECOMPOSITEElement {
-	if condition {
-		e.DATASTAR_MODEL(s)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_MODEL from the element.
-func (e *SVGFECOMPOSITEElement) DATASTAR_MODELRemove() *SVGFECOMPOSITEElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-model")
-	return e
-}
-
-// Sets the textContent of the element
-
-func (e *SVGFECOMPOSITEElement) DATASTAR_TEXT(s string) *SVGFECOMPOSITEElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	key := "data-text"
-	e.StringAttributes.Set(key, s)
-	return e
-}
-
-func (e *SVGFECOMPOSITEElement) IfDATASTAR_TEXT(condition bool, s string) *SVGFECOMPOSITEElement {
-	if condition {
-		e.DATASTAR_TEXT(s)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_TEXT from the element.
-func (e *SVGFECOMPOSITEElement) DATASTAR_TEXTRemove() *SVGFECOMPOSITEElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-text")
-	return e
-}
-
-// Sets the event handler of the element
-
-type SVGFeCompositeDataOnMod customDataKeyModifier
-
-// Debounces the event handler
-func SVGFeCompositeDataOnModDebounce(
-	s string,
-) SVGFeCompositeDataOnMod {
-	return func() string {
-		return fmt.Sprintf("debounce_%sms", s)
-	}
-}
-
-// Throttles the event handler
-func SVGFeCompositeDataOnModThrottle(
-	s string,
-) SVGFeCompositeDataOnMod {
-	return func() string {
-		return fmt.Sprintf("throttle_%sms", s)
-	}
-}
-
-func (e *SVGFECOMPOSITEElement) DATASTAR_ON(s string, modifiers ...SVGFeCompositeDataOnMod) *SVGFECOMPOSITEElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	customMods := lo.Map(modifiers, func(m SVGFeCompositeDataOnMod, i int) customDataKeyModifier {
-		return customDataKeyModifier(m)
-	})
-	key := customDataKey("data-on", customMods...)
-	e.StringAttributes.Set(key, s)
-	return e
-}
-
-func (e *SVGFECOMPOSITEElement) IfDATASTAR_ON(condition bool, s string, modifiers ...SVGFeCompositeDataOnMod) *SVGFECOMPOSITEElement {
-	if condition {
-		e.DATASTAR_ON(s, modifiers...)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_ON from the element.
-func (e *SVGFECOMPOSITEElement) DATASTAR_ONRemove() *SVGFECOMPOSITEElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-on")
-	return e
-}
-
-// Sets the focus of the element
-
-func (e *SVGFECOMPOSITEElement) DATASTAR_FOCUSSet(b bool) *SVGFECOMPOSITEElement {
-	key := "data-focus"
-	e.BoolAttributes.Set(key, b)
-	return e
-}
-
-func (e *SVGFECOMPOSITEElement) DATASTAR_FOCUS() *SVGFECOMPOSITEElement {
-	return e.DATASTAR_FOCUSSet(true)
-}
-
-// Sets the header of for fetch requests
-
-func (e *SVGFECOMPOSITEElement) DATASTAR_HEADER(s string) *SVGFECOMPOSITEElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	key := "data-header"
-	e.StringAttributes.Set(key, s)
-	return e
-}
-
-func (e *SVGFECOMPOSITEElement) IfDATASTAR_HEADER(condition bool, s string) *SVGFECOMPOSITEElement {
-	if condition {
-		e.DATASTAR_HEADER(s)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_HEADER from the element.
-func (e *SVGFECOMPOSITEElement) DATASTAR_HEADERRemove() *SVGFECOMPOSITEElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-header")
-	return e
-}
-
-// Sets the URL for fetch requests
-
-func (e *SVGFECOMPOSITEElement) DATASTAR_FETCH_URL(s string) *SVGFECOMPOSITEElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	key := "data-fetch-url"
-	e.StringAttributes.Set(key, s)
-	return e
-}
-
-func (e *SVGFECOMPOSITEElement) IfDATASTAR_FETCH_URL(condition bool, s string) *SVGFECOMPOSITEElement {
-	if condition {
-		e.DATASTAR_FETCH_URL(s)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_FETCH_URL from the element.
-func (e *SVGFECOMPOSITEElement) DATASTAR_FETCH_URLRemove() *SVGFECOMPOSITEElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-fetch-url")
-	return e
-}
-
-// Sets the indicator selector for fetch requests
-
-func (e *SVGFECOMPOSITEElement) DATASTAR_FETCH_INDICATOR(s string) *SVGFECOMPOSITEElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	key := "DatastarFetchIndicator"
-	e.StringAttributes.Set(key, s)
-	return e
-}
-
-func (e *SVGFECOMPOSITEElement) IfDATASTAR_FETCH_INDICATOR(condition bool, s string) *SVGFECOMPOSITEElement {
-	if condition {
-		e.DATASTAR_FETCH_INDICATOR(s)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_FETCH_INDICATOR from the element.
-func (e *SVGFECOMPOSITEElement) DATASTAR_FETCH_INDICATORRemove() *SVGFECOMPOSITEElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("DatastarFetchIndicator")
-	return e
-}
-
-// Sets the visibility of the element
-
-func (e *SVGFECOMPOSITEElement) DATASTAR_SHOWSet(b bool) *SVGFECOMPOSITEElement {
-	key := "data-show"
-	e.BoolAttributes.Set(key, b)
-	return e
-}
-
-func (e *SVGFECOMPOSITEElement) DATASTAR_SHOW() *SVGFECOMPOSITEElement {
-	return e.DATASTAR_SHOWSet(true)
-}
-
-// Triggers the callback when the element intersects the viewport
-
-func (e *SVGFECOMPOSITEElement) DATASTAR_INTERSECTSSet(b bool) *SVGFECOMPOSITEElement {
-	key := "data-intersects"
-	e.BoolAttributes.Set(key, b)
-	return e
-}
-
-func (e *SVGFECOMPOSITEElement) DATASTAR_INTERSECTS() *SVGFECOMPOSITEElement {
-	return e.DATASTAR_INTERSECTSSet(true)
-}
-
-// Teleports the element to the given selector
-
-func (e *SVGFECOMPOSITEElement) DATASTAR_TELEPORTSet(b bool) *SVGFECOMPOSITEElement {
-	key := "data-teleport"
-	e.BoolAttributes.Set(key, b)
-	return e
-}
-
-func (e *SVGFECOMPOSITEElement) DATASTAR_TELEPORT() *SVGFECOMPOSITEElement {
-	return e.DATASTAR_TELEPORTSet(true)
-}
-
-// Scrolls the element into view
-
-func (e *SVGFECOMPOSITEElement) DATASTAR_SCROLL_INTO_VIEWSet(b bool) *SVGFECOMPOSITEElement {
-	key := "data-scroll-into-view"
-	e.BoolAttributes.Set(key, b)
-	return e
-}
-
-func (e *SVGFECOMPOSITEElement) DATASTAR_SCROLL_INTO_VIEW() *SVGFECOMPOSITEElement {
-	return e.DATASTAR_SCROLL_INTO_VIEWSet(true)
-}
-
-// Setup the ViewTransitionAPI for the element
-
-func (e *SVGFECOMPOSITEElement) DATASTAR_VIEW_TRANSITION(s string) *SVGFECOMPOSITEElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	key := "data-view-transition"
-	e.StringAttributes.Set(key, s)
-	return e
-}
-
-func (e *SVGFECOMPOSITEElement) IfDATASTAR_VIEW_TRANSITION(condition bool, s string) *SVGFECOMPOSITEElement {
-	if condition {
-		e.DATASTAR_VIEW_TRANSITION(s)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_VIEW_TRANSITION from the element.
-func (e *SVGFECOMPOSITEElement) DATASTAR_VIEW_TRANSITIONRemove() *SVGFECOMPOSITEElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-view-transition")
-	return e
-}
+
+    // Input for the compositing operation. 
+    func(e *SVGFECOMPOSITEElement) IN(s string) *SVGFECOMPOSITEElement{
+            if e.StringAttributes == nil {
+                e.StringAttributes = treemap.New[string,string]()
+            }
+            e.StringAttributes.Set("in", s)
+            return e
+        }
+
+        func(e *SVGFECOMPOSITEElement) IfIN(condition bool, s string) *SVGFECOMPOSITEElement{
+            if condition {
+                e.IN(s)
+            }
+            return e
+        }
+
+        // Remove the attribute IN from the element.
+        func(e *SVGFECOMPOSITEElement) INRemove(s string) *SVGFECOMPOSITEElement{
+            if e.StringAttributes == nil {
+                return e
+            }
+            e.StringAttributes.Del("in")
+            return e
+        }
+    
+
+    // Second input for the compositing operation. 
+    func(e *SVGFECOMPOSITEElement) IN_2(s string) *SVGFECOMPOSITEElement{
+            if e.StringAttributes == nil {
+                e.StringAttributes = treemap.New[string,string]()
+            }
+            e.StringAttributes.Set("in2", s)
+            return e
+        }
+
+        func(e *SVGFECOMPOSITEElement) IfIN_2(condition bool, s string) *SVGFECOMPOSITEElement{
+            if condition {
+                e.IN_2(s)
+            }
+            return e
+        }
+
+        // Remove the attribute IN_2 from the element.
+        func(e *SVGFECOMPOSITEElement) IN_2Remove(s string) *SVGFECOMPOSITEElement{
+            if e.StringAttributes == nil {
+                return e
+            }
+            e.StringAttributes.Del("in2")
+            return e
+        }
+    
+
+    // The type of compositing operation. 
+    func(e *SVGFECOMPOSITEElement) OPERATOR(c SVGFeCompositeOperatorChoice) *SVGFECOMPOSITEElement{
+            if e.StringAttributes == nil {
+                e.StringAttributes = treemap.New[string,string]()
+            }
+            e.StringAttributes.Set("operator", string(c))
+            return e
+        }
+
+        type SVGFeCompositeOperatorChoice string
+        const(
+        // The source image is composited over the destination image. 
+            SVGFeCompositeOperator_over SVGFeCompositeOperatorChoice = "over"
+        // The part of the source image that lies inside of the destination image is 
+// composited over the destination image. 
+            SVGFeCompositeOperator_in SVGFeCompositeOperatorChoice = "in"
+        // The part of the source image that lies outside of the destination image is 
+// composited over the destination image. 
+            SVGFeCompositeOperator_out SVGFeCompositeOperatorChoice = "out"
+        // The part of the source image that lies inside of the destination image is 
+// composited over the destination image and replaces the destination image. 
+            SVGFeCompositeOperator_atop SVGFeCompositeOperatorChoice = "atop"
+        // The part of the source image that lies outside of the destination image is 
+// composited over the destination image. 
+            SVGFeCompositeOperator_xor SVGFeCompositeOperatorChoice = "xor"
+        // A standard arithmetic operator is applied ( 
+            SVGFeCompositeOperator_arithmetic SVGFeCompositeOperatorChoice = "arithmetic"
+        )
+
+        // Remove the attribute OPERATOR from the element.
+        func(e *SVGFECOMPOSITEElement) OPERATORRemove(c SVGFeCompositeOperatorChoice) *SVGFECOMPOSITEElement{
+            if e.StringAttributes == nil {
+                return e
+            }
+            e.StringAttributes.Del("operator")
+            return e
+        }
+        
+
+    // First value to use in the arithmetic operation. 
+    func(e *SVGFECOMPOSITEElement) K_1(f float64) *SVGFECOMPOSITEElement{
+            if e.FloatAttributes == nil {
+                e.FloatAttributes = treemap.New[string,float64]()
+            }
+            e.FloatAttributes.Set("k1", f)
+            return e
+        }
+
+        func (e *SVGFECOMPOSITEElement) IfK_1(condition bool, f float64) *SVGFECOMPOSITEElement {
+            if condition {
+                e.K_1(f)
+            }
+            return e
+        }
+
+    
+
+    // Second value to use in the arithmetic operation. 
+    func(e *SVGFECOMPOSITEElement) K_2(f float64) *SVGFECOMPOSITEElement{
+            if e.FloatAttributes == nil {
+                e.FloatAttributes = treemap.New[string,float64]()
+            }
+            e.FloatAttributes.Set("k2", f)
+            return e
+        }
+
+        func (e *SVGFECOMPOSITEElement) IfK_2(condition bool, f float64) *SVGFECOMPOSITEElement {
+            if condition {
+                e.K_2(f)
+            }
+            return e
+        }
+
+    
+
+    // Third value to use in the arithmetic operation. 
+    func(e *SVGFECOMPOSITEElement) K_3(f float64) *SVGFECOMPOSITEElement{
+            if e.FloatAttributes == nil {
+                e.FloatAttributes = treemap.New[string,float64]()
+            }
+            e.FloatAttributes.Set("k3", f)
+            return e
+        }
+
+        func (e *SVGFECOMPOSITEElement) IfK_3(condition bool, f float64) *SVGFECOMPOSITEElement {
+            if condition {
+                e.K_3(f)
+            }
+            return e
+        }
+
+    
+
+    // Fourth value to use in the arithmetic operation. 
+    func(e *SVGFECOMPOSITEElement) K_4(f float64) *SVGFECOMPOSITEElement{
+            if e.FloatAttributes == nil {
+                e.FloatAttributes = treemap.New[string,float64]()
+            }
+            e.FloatAttributes.Set("k4", f)
+            return e
+        }
+
+        func (e *SVGFECOMPOSITEElement) IfK_4(condition bool, f float64) *SVGFECOMPOSITEElement {
+            if condition {
+                e.K_4(f)
+            }
+            return e
+        }
+
+    
+
+    // Specifies a unique id for an element 
+    func(e *SVGFECOMPOSITEElement) ID(s string) *SVGFECOMPOSITEElement{
+            if e.StringAttributes == nil {
+                e.StringAttributes = treemap.New[string,string]()
+            }
+            e.StringAttributes.Set("id", s)
+            return e
+        }
+
+        func(e *SVGFECOMPOSITEElement) IfID(condition bool, s string) *SVGFECOMPOSITEElement{
+            if condition {
+                e.ID(s)
+            }
+            return e
+        }
+
+        // Remove the attribute ID from the element.
+        func(e *SVGFECOMPOSITEElement) IDRemove(s string) *SVGFECOMPOSITEElement{
+            if e.StringAttributes == nil {
+                return e
+            }
+            e.StringAttributes.Del("id")
+            return e
+        }
+    
+
+    // Specifies one or more classnames for an element (refers to a class in a style 
+// sheet) 
+    func(e *SVGFECOMPOSITEElement) CLASS(s ...string) *SVGFECOMPOSITEElement{
+            if e.DelimitedStrings == nil {
+                e.DelimitedStrings = treemap.New[string,*DelimitedBuilder[string]]()
+            }
+            ds, ok := e.DelimitedStrings.Get("class")
+            if !ok {
+                ds = NewDelimitedBuilder[string](" ")
+                e.DelimitedStrings.Set("class", ds)
+            }
+            ds.Add(s...)
+            return e
+        }
+
+        func(e *SVGFECOMPOSITEElement) IfCLASS(condition bool, s ...string) *SVGFECOMPOSITEElement{
+            if condition {
+                e.CLASS(s...)
+            }
+            return e
+        }
+
+        // Remove the attribute CLASS from the element.
+        func(e *SVGFECOMPOSITEElement) CLASSRemove(s ...string) *SVGFECOMPOSITEElement{
+            if e.DelimitedStrings == nil {
+                return e
+            }
+            ds, ok := e.DelimitedStrings.Get("class")
+            if !ok {
+                return e
+            }
+            ds.Remove(s ...)
+            return e
+        }
+
+    
+
+    // Specifies an inline CSS style for an element 
+    func (e *SVGFECOMPOSITEElement) STYLEF(k string, format string, args ...any) *SVGFECOMPOSITEElement {
+            return e.STYLE(k, fmt.Sprintf(format, args...))
+        }
+
+        func (e *SVGFECOMPOSITEElement) IfSTYLE(condition bool, k string, v string) *SVGFECOMPOSITEElement {
+            if condition {
+                e.STYLE(k, v)
+            }
+            return e
+        }
+
+        func (e *SVGFECOMPOSITEElement) STYLE(k string, v string) *SVGFECOMPOSITEElement {
+            if e.KVStrings == nil {
+                e.KVStrings = treemap.New[string,*KVBuilder]()
+            }
+            kv, ok := e.KVStrings.Get("style")
+            if !ok {
+                kv = NewKVBuilder(":", ";")
+                e.KVStrings.Set("style", kv)
+            }
+            kv.Add(k, v)
+            return e
+        }
+
+        func (e *SVGFECOMPOSITEElement) IfSTYLEF(condition bool, k string, format string, args ...any) *SVGFECOMPOSITEElement {
+            if condition {
+                e.STYLE(k, fmt.Sprintf(format, args...))
+            }
+            return e
+        }
+
+        // Add the attributes in the map to the element.
+        func (e *SVGFECOMPOSITEElement) STYLEMap(m map[string]string) *SVGFECOMPOSITEElement {
+            if e.KVStrings == nil {
+                e.KVStrings = treemap.New[string,*KVBuilder]()
+            }
+            kv, ok := e.KVStrings.Get("style")
+            if !ok {
+                kv = NewKVBuilder(":", ";")
+                e.KVStrings.Set("style", kv)
+            }
+            for k, v := range m {
+                kv.Add(k, v)
+            }
+            return e
+        }
+
+        // Add pairs of attributes to the element.
+        func (e *SVGFECOMPOSITEElement) STYLEPairs(pairs ...string) *SVGFECOMPOSITEElement {
+            if len(pairs) % 2 != 0 {
+                panic("Must have an even number of pairs")
+            }
+            if e.KVStrings == nil {
+                e.KVStrings = treemap.New[string,*KVBuilder]()
+            }
+            kv, ok := e.KVStrings.Get("style")
+            if !ok {
+                kv = NewKVBuilder(":", ";")
+                e.KVStrings.Set("style", kv)
+            }
+
+            for i := 0; i < len(pairs); i += 2 {
+                kv.Add(pairs[i], pairs[i+1])
+            }
+
+            return e
+        }
+
+        func (e *SVGFECOMPOSITEElement) IfSTYLEPairs(condition bool, pairs ...string) *SVGFECOMPOSITEElement {
+            if condition {
+                e.STYLEPairs(pairs...)
+            }
+            return e
+        }
+
+        // Remove the attribute STYLE from the element.
+        func (e *SVGFECOMPOSITEElement) STYLERemove(keys ...string) *SVGFECOMPOSITEElement {
+            if e.KVStrings == nil {
+                return e
+            }
+            kv, ok := e.KVStrings.Get("style")
+            if !ok {
+                return e
+            }
+            for _, k := range keys {
+                kv.Remove(k)
+            }
+            return e
+        }
+
+    
+
+    // Merges the store with the given object 
+    
+        func(e *SVGFECOMPOSITEElement) DATASTAR_MERGE_STORE(v any) *SVGFECOMPOSITEElement{
+                if e.CustomDataAttributes == nil {
+                    e.CustomDataAttributes = treemap.New[string,string]()
+                }
+                b, err := json.Marshal(v)
+                if err != nil {
+                    panic(err)
+                }
+                e.CustomDataAttributes.Set("data-merge-store", string(b))
+                return e
+            }
+
+        
+
+    // Sets the reference of the element 
+    
+        func(e *SVGFECOMPOSITEElement) DATASTAR_REF(expression string) *SVGFECOMPOSITEElement{
+                if e.StringAttributes == nil {
+                    e.StringAttributes = treemap.New[string,string]()
+                }
+                
+                key := "data-ref"
+                
+                e.StringAttributes.Set(key, expression)
+                return e
+            }
+
+            func(e *SVGFECOMPOSITEElement) IfDATASTAR_REF(condition bool, expression string) *SVGFECOMPOSITEElement{
+                if condition {
+                    e.DATASTAR_REF( expression, )
+                }
+                return e
+            }
+
+            // Remove the attribute DATASTAR_REF from the element.
+            func(e *SVGFECOMPOSITEElement) DATASTAR_REFRemove() *SVGFECOMPOSITEElement{
+                if e.StringAttributes == nil {
+                    return e
+                }
+                e.StringAttributes.Del("data-ref")
+                return e
+            }
+
+        
+
+    // Sets the value of the element 
+    
+        func(e *SVGFECOMPOSITEElement) DATASTAR_BIND(key string, expression string) *SVGFECOMPOSITEElement{
+                if e.StringAttributes == nil {
+                    e.StringAttributes = treemap.New[string,string]()
+                }
+                
+                key = fmt.Sprintf("data-bind-%s", key)
+                
+                e.StringAttributes.Set(key, expression)
+                return e
+            }
+
+            func(e *SVGFECOMPOSITEElement) IfDATASTAR_BIND(condition bool, key string, expression string) *SVGFECOMPOSITEElement{
+                if condition {
+                    e.DATASTAR_BIND(key,  expression, )
+                }
+                return e
+            }
+
+            // Remove the attribute DATASTAR_BIND from the element.
+            func(e *SVGFECOMPOSITEElement) DATASTAR_BINDRemove() *SVGFECOMPOSITEElement{
+                if e.StringAttributes == nil {
+                    return e
+                }
+                e.StringAttributes.Del("data-bind")
+                return e
+            }
+
+        
+
+    // Sets the value of the element 
+    
+        func(e *SVGFECOMPOSITEElement) DATASTAR_MODEL(expression string) *SVGFECOMPOSITEElement{
+                if e.StringAttributes == nil {
+                    e.StringAttributes = treemap.New[string,string]()
+                }
+                
+                key := "data-model"
+                
+                e.StringAttributes.Set(key, expression)
+                return e
+            }
+
+            func(e *SVGFECOMPOSITEElement) IfDATASTAR_MODEL(condition bool, expression string) *SVGFECOMPOSITEElement{
+                if condition {
+                    e.DATASTAR_MODEL( expression, )
+                }
+                return e
+            }
+
+            // Remove the attribute DATASTAR_MODEL from the element.
+            func(e *SVGFECOMPOSITEElement) DATASTAR_MODELRemove() *SVGFECOMPOSITEElement{
+                if e.StringAttributes == nil {
+                    return e
+                }
+                e.StringAttributes.Del("data-model")
+                return e
+            }
+
+        
+
+    // Sets the textContent of the element 
+    
+        func(e *SVGFECOMPOSITEElement) DATASTAR_TEXT(expression string) *SVGFECOMPOSITEElement{
+                if e.StringAttributes == nil {
+                    e.StringAttributes = treemap.New[string,string]()
+                }
+                
+                key := "data-text"
+                
+                e.StringAttributes.Set(key, expression)
+                return e
+            }
+
+            func(e *SVGFECOMPOSITEElement) IfDATASTAR_TEXT(condition bool, expression string) *SVGFECOMPOSITEElement{
+                if condition {
+                    e.DATASTAR_TEXT( expression, )
+                }
+                return e
+            }
+
+            // Remove the attribute DATASTAR_TEXT from the element.
+            func(e *SVGFECOMPOSITEElement) DATASTAR_TEXTRemove() *SVGFECOMPOSITEElement{
+                if e.StringAttributes == nil {
+                    return e
+                }
+                e.StringAttributes.Del("data-text")
+                return e
+            }
+
+        
+
+    // Sets the event handler of the element 
+    
+        type SVGFeCompositeDataOnMod customDataKeyModifier
+
+            
+            // Debounces the event handler 
+            func SVGFeCompositeDataOnModDebounce(
+                    d time.Duration,
+            ) SVGFeCompositeDataOnMod {
+                return func() string {return fmt.Sprintf("debounce_%dms", d.Milliseconds())
+                }
+            }
+            
+            // Throttles the event handler 
+            func SVGFeCompositeDataOnModThrottle(
+                    d time.Duration,
+            ) SVGFeCompositeDataOnMod {
+                return func() string {return fmt.Sprintf("throttle_%dms", d.Milliseconds())
+                }
+            }
+            
+        func(e *SVGFECOMPOSITEElement) DATASTAR_ON(key string, expression string, modifiers ...SVGFeCompositeDataOnMod) *SVGFECOMPOSITEElement{
+                if e.StringAttributes == nil {
+                    e.StringAttributes = treemap.New[string,string]()
+                }
+                
+                key = fmt.Sprintf("data-on-%s", key)
+                
+                customMods := lo.Map(modifiers, func(m SVGFeCompositeDataOnMod, i int) customDataKeyModifier  {
+                    return customDataKeyModifier(m)
+                })
+                key = customDataKey(key, customMods...)
+                e.StringAttributes.Set(key, expression)
+                return e
+            }
+
+            func(e *SVGFECOMPOSITEElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SVGFeCompositeDataOnMod) *SVGFECOMPOSITEElement{
+                if condition {
+                    e.DATASTAR_ON(key,  expression,  modifiers...)
+                }
+                return e
+            }
+
+            // Remove the attribute DATASTAR_ON from the element.
+            func(e *SVGFECOMPOSITEElement) DATASTAR_ONRemove() *SVGFECOMPOSITEElement{
+                if e.StringAttributes == nil {
+                    return e
+                }
+                e.StringAttributes.Del("data-on")
+                return e
+            }
+
+        
+
+    // Sets the focus of the element 
+    
+        func(e *SVGFECOMPOSITEElement) DATASTAR_FOCUSSet(b bool) *SVGFECOMPOSITEElement{
+                key := "data-focus"
+                e.BoolAttributes.Set(key, b)
+                return e
+            }
+
+            func(e *SVGFECOMPOSITEElement) DATASTAR_FOCUS() *SVGFECOMPOSITEElement{
+                return e.DATASTAR_FOCUSSet(true)
+            }
+        
+
+    // Sets the header of for fetch requests 
+    
+        func(e *SVGFECOMPOSITEElement) DATASTAR_HEADER(key string, expression string) *SVGFECOMPOSITEElement{
+                if e.StringAttributes == nil {
+                    e.StringAttributes = treemap.New[string,string]()
+                }
+                
+                key = fmt.Sprintf("data-header-%s", key)
+                
+                e.StringAttributes.Set(key, expression)
+                return e
+            }
+
+            func(e *SVGFECOMPOSITEElement) IfDATASTAR_HEADER(condition bool, key string, expression string) *SVGFECOMPOSITEElement{
+                if condition {
+                    e.DATASTAR_HEADER(key,  expression, )
+                }
+                return e
+            }
+
+            // Remove the attribute DATASTAR_HEADER from the element.
+            func(e *SVGFECOMPOSITEElement) DATASTAR_HEADERRemove() *SVGFECOMPOSITEElement{
+                if e.StringAttributes == nil {
+                    return e
+                }
+                e.StringAttributes.Del("data-header")
+                return e
+            }
+
+        
+
+    // Sets the URL for fetch requests 
+    
+        func(e *SVGFECOMPOSITEElement) DATASTAR_FETCH_URL(expression string) *SVGFECOMPOSITEElement{
+                if e.StringAttributes == nil {
+                    e.StringAttributes = treemap.New[string,string]()
+                }
+                
+                key := "data-fetch-url"
+                
+                e.StringAttributes.Set(key, expression)
+                return e
+            }
+
+            func(e *SVGFECOMPOSITEElement) IfDATASTAR_FETCH_URL(condition bool, expression string) *SVGFECOMPOSITEElement{
+                if condition {
+                    e.DATASTAR_FETCH_URL( expression, )
+                }
+                return e
+            }
+
+            // Remove the attribute DATASTAR_FETCH_URL from the element.
+            func(e *SVGFECOMPOSITEElement) DATASTAR_FETCH_URLRemove() *SVGFECOMPOSITEElement{
+                if e.StringAttributes == nil {
+                    return e
+                }
+                e.StringAttributes.Del("data-fetch-url")
+                return e
+            }
+
+        
+
+    // Sets the indicator selector for fetch requests 
+    
+        func(e *SVGFECOMPOSITEElement) DATASTAR_FETCH_INDICATOR(expression string) *SVGFECOMPOSITEElement{
+                if e.StringAttributes == nil {
+                    e.StringAttributes = treemap.New[string,string]()
+                }
+                
+                key := "DatastarFetchIndicator"
+                
+                e.StringAttributes.Set(key, expression)
+                return e
+            }
+
+            func(e *SVGFECOMPOSITEElement) IfDATASTAR_FETCH_INDICATOR(condition bool, expression string) *SVGFECOMPOSITEElement{
+                if condition {
+                    e.DATASTAR_FETCH_INDICATOR( expression, )
+                }
+                return e
+            }
+
+            // Remove the attribute DATASTAR_FETCH_INDICATOR from the element.
+            func(e *SVGFECOMPOSITEElement) DATASTAR_FETCH_INDICATORRemove() *SVGFECOMPOSITEElement{
+                if e.StringAttributes == nil {
+                    return e
+                }
+                e.StringAttributes.Del("DatastarFetchIndicator")
+                return e
+            }
+
+        
+
+    // Sets the visibility of the element 
+    
+        func(e *SVGFECOMPOSITEElement) DATASTAR_SHOWSet(b bool) *SVGFECOMPOSITEElement{
+                key := "data-show"
+                e.BoolAttributes.Set(key, b)
+                return e
+            }
+
+            func(e *SVGFECOMPOSITEElement) DATASTAR_SHOW() *SVGFECOMPOSITEElement{
+                return e.DATASTAR_SHOWSet(true)
+            }
+        
+
+    // Triggers the callback when the element intersects the viewport 
+    
+        func(e *SVGFECOMPOSITEElement) DATASTAR_INTERSECTSSet(b bool) *SVGFECOMPOSITEElement{
+                key := "data-intersects"
+                e.BoolAttributes.Set(key, b)
+                return e
+            }
+
+            func(e *SVGFECOMPOSITEElement) DATASTAR_INTERSECTS() *SVGFECOMPOSITEElement{
+                return e.DATASTAR_INTERSECTSSet(true)
+            }
+        
+
+    // Teleports the element to the given selector 
+    
+        func(e *SVGFECOMPOSITEElement) DATASTAR_TELEPORTSet(b bool) *SVGFECOMPOSITEElement{
+                key := "data-teleport"
+                e.BoolAttributes.Set(key, b)
+                return e
+            }
+
+            func(e *SVGFECOMPOSITEElement) DATASTAR_TELEPORT() *SVGFECOMPOSITEElement{
+                return e.DATASTAR_TELEPORTSet(true)
+            }
+        
+
+    // Scrolls the element into view 
+    
+        func(e *SVGFECOMPOSITEElement) DATASTAR_SCROLL_INTO_VIEWSet(b bool) *SVGFECOMPOSITEElement{
+                key := "data-scroll-into-view"
+                e.BoolAttributes.Set(key, b)
+                return e
+            }
+
+            func(e *SVGFECOMPOSITEElement) DATASTAR_SCROLL_INTO_VIEW() *SVGFECOMPOSITEElement{
+                return e.DATASTAR_SCROLL_INTO_VIEWSet(true)
+            }
+        
+
+    // Setup the ViewTransitionAPI for the element 
+    
+        func(e *SVGFECOMPOSITEElement) DATASTAR_VIEW_TRANSITION(key string, expression string) *SVGFECOMPOSITEElement{
+                if e.StringAttributes == nil {
+                    e.StringAttributes = treemap.New[string,string]()
+                }
+                
+                key = fmt.Sprintf("data-view-transition-%s", key)
+                
+                e.StringAttributes.Set(key, expression)
+                return e
+            }
+
+            func(e *SVGFECOMPOSITEElement) IfDATASTAR_VIEW_TRANSITION(condition bool, key string, expression string) *SVGFECOMPOSITEElement{
+                if condition {
+                    e.DATASTAR_VIEW_TRANSITION(key,  expression, )
+                }
+                return e
+            }
+
+            // Remove the attribute DATASTAR_VIEW_TRANSITION from the element.
+            func(e *SVGFECOMPOSITEElement) DATASTAR_VIEW_TRANSITIONRemove() *SVGFECOMPOSITEElement{
+                if e.StringAttributes == nil {
+                    return e
+                }
+                e.StringAttributes.Del("data-view-transition")
+                return e
+            }
+
+        
+
+
+

@@ -6,7 +6,6 @@ import (
 	"html"
 	"io"
 	"strings"
-
 	"github.com/igrmk/treemap/v2"
 	"github.com/valyala/bytebufferpool"
 	"golang.org/x/exp/constraints"
@@ -175,14 +174,13 @@ func (e *Element) Render(w io.Writer) error {
 }
 
 type customDataKeyModifier func() string
-
 func customDataKey(key string, modifiers ...customDataKeyModifier) string {
 	sb := strings.Builder{}
 	sb.WriteString("data-")
 	sb.WriteString(key)
 	for i, m := range modifiers {
 		sb.WriteString(m())
-		isLast := i == len(modifiers)-1
+		isLast := i == len(modifiers) - 1
 		if !isLast {
 			sb.WriteString(".")
 		}

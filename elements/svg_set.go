@@ -3,944 +3,1005 @@
 // Description:
 package elements
 
-import (
-	"fmt"
-
-	"github.com/goccy/go-json"
-	"github.com/igrmk/treemap/v2"
-	"github.com/samber/lo"
+import(
+    "fmt"
+    "time"
+    "github.com/igrmk/treemap/v2"
+    "github.com/goccy/go-json"
+    "github.com/samber/lo"
 )
 
-// The <set> SVG element provides a simple means of just setting the value of an
-// attribute for a specified duration
-// It supports all attribute types, including those that cannot reasonably be
-// interpolated, such as string and boolean values
-// The <set> element is non-additive
-// The additive and accumulate attributes are not allowed, and will be ignored if
-// specified.
+// The <set> SVG element provides a simple means of just setting the value of an 
+// attribute for a specified duration 
+// It supports all attribute types, including those that cannot reasonably be 
+// interpolated, such as string and boolean values 
+// The <set> element is non-additive 
+// The additive and accumulate attributes are not allowed, and will be ignored if 
+// specified. 
 type SVGSETElement struct {
-	*Element
+    *Element
 }
 
 // Create a new SVGSETElement element.
 // This will create a new element with the tag
 // "set" during rendering.
 func SVG_SET(children ...ElementRenderer) *SVGSETElement {
-	e := NewElement("set", children...)
-	e.IsSelfClosing = false
-	e.Descendants = children
+    e := NewElement("set", children...)
+    e.IsSelfClosing = false
+    e.Descendants = children
 
-	return &SVGSETElement{Element: e}
+    return &SVGSETElement{ Element: e }
 }
 
 func (e *SVGSETElement) Children(children ...ElementRenderer) *SVGSETElement {
-	e.Descendants = append(e.Descendants, children...)
-	return e
+    e.Descendants = append(e.Descendants, children...)
+    return e
 }
 
-func (e *SVGSETElement) IfChildren(condition bool, children ...ElementRenderer) *SVGSETElement {
-	if condition {
-		e.Descendants = append(e.Descendants, children...)
-	}
-	return e
+func(e *SVGSETElement) IfChildren(condition bool, children ...ElementRenderer) *SVGSETElement {
+    if condition {
+        e.Descendants = append(e.Descendants, children...)
+    }
+    return e
 }
 
-func (e *SVGSETElement) TernChildren(condition bool, trueChildren, falseChildren ElementRenderer) *SVGSETElement {
-	if condition {
-		e.Descendants = append(e.Descendants, trueChildren)
-	} else {
-		e.Descendants = append(e.Descendants, falseChildren)
-	}
-	return e
+func(e *SVGSETElement) TernChildren(condition bool, trueChildren, falseChildren ElementRenderer) *SVGSETElement {
+    if condition {
+        e.Descendants = append(e.Descendants, trueChildren)
+    } else {
+        e.Descendants = append(e.Descendants, falseChildren)
+    }
+    return e
 }
 
 func (e *SVGSETElement) Text(text string) *SVGSETElement {
-	e.Descendants = append(e.Descendants, Text(text))
-	return e
+    e.Descendants = append(e.Descendants, Text(text))
+    return e
 }
 
 func (e *SVGSETElement) TextF(format string, args ...any) *SVGSETElement {
-	return e.Text(fmt.Sprintf(format, args...))
+    return e.Text(fmt.Sprintf(format, args...))
 }
 
 func (e *SVGSETElement) IfText(condition bool, text string) *SVGSETElement {
-	if condition {
-		e.Descendants = append(e.Descendants, Text(text))
-	}
-	return e
+    if condition {
+        e.Descendants = append(e.Descendants, Text(text))
+    }
+    return e
 }
 
 func (e *SVGSETElement) IfTextF(condition bool, format string, args ...any) *SVGSETElement {
-	if condition {
-		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
-	}
-	return e
+    if condition {
+        e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+    }
+    return e
 }
 
 func (e *SVGSETElement) Escaped(text string) *SVGSETElement {
-	e.Descendants = append(e.Descendants, Escaped(text))
-	return e
+    e.Descendants = append(e.Descendants, Escaped(text))
+    return e
 }
 
 func (e *SVGSETElement) IfEscaped(condition bool, text string) *SVGSETElement {
-	if condition {
-		e.Descendants = append(e.Descendants, Escaped(text))
-	}
-	return e
+    if condition {
+        e.Descendants = append(e.Descendants, Escaped(text))
+    }
+    return e
 }
 
 func (e *SVGSETElement) EscapedF(format string, args ...any) *SVGSETElement {
-	return e.Escaped(fmt.Sprintf(format, args...))
+    return e.Escaped(fmt.Sprintf(format, args...))
 }
 
 func (e *SVGSETElement) IfEscapedF(condition bool, format string, args ...any) *SVGSETElement {
-	if condition {
-		e.Descendants = append(e.Descendants, EscapedF(format, args...))
-	}
-	return e
+    if condition {
+        e.Descendants = append(e.Descendants, EscapedF(format, args...))
+    }
+    return e
 }
 
 func (e *SVGSETElement) CustomData(key, value string) *SVGSETElement {
-	if e.CustomDataAttributes == nil {
-		e.CustomDataAttributes = treemap.New[string, string]()
-	}
+    if e.CustomDataAttributes == nil {
+        e.CustomDataAttributes = treemap.New[string,string]()
+    }
 	e.CustomDataAttributes.Set(key, value)
 	return e
 }
 
 func (e *SVGSETElement) IfCustomData(condition bool, key, value string) *SVGSETElement {
-	if condition {
-		e.CustomData(key, value)
-	}
-	return e
+    if condition {
+        e.CustomData(key, value)
+    }
+    return e
 }
 
 func (e *SVGSETElement) CustomDataF(key, format string, args ...any) *SVGSETElement {
-	return e.CustomData(key, fmt.Sprintf(format, args...))
+    return e.CustomData(key, fmt.Sprintf(format, args...))
 }
 
 func (e *SVGSETElement) IfCustomDataF(condition bool, key, format string, args ...any) *SVGSETElement {
-	if condition {
-		e.CustomData(key, fmt.Sprintf(format, args...))
-	}
-	return e
+    if condition {
+        e.CustomData(key, fmt.Sprintf(format, args...))
+    }
+    return e
 }
 
 func (e *SVGSETElement) CustomDataRemove(key string) *SVGSETElement {
 	if e.CustomDataAttributes == nil {
 		return e
 	}
-	e.CustomDataAttributes.Del(key)
-	return e
-}
-
-// The target attribute value to assign on end.
-func (e *SVGSETElement) TO(s string) *SVGSETElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	e.StringAttributes.Set("to", s)
-	return e
-}
-
-func (e *SVGSETElement) IfTO(condition bool, s string) *SVGSETElement {
-	if condition {
-		e.TO(s)
-	}
-	return e
-}
-
-// Remove the attribute TO from the element.
-func (e *SVGSETElement) TORemove(s string) *SVGSETElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("to")
-	return e
-}
-
-// The name of the attribute to assign.
-func (e *SVGSETElement) ATTRIBUTE_NAME(s string) *SVGSETElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	e.StringAttributes.Set("attributeName", s)
-	return e
-}
-
-func (e *SVGSETElement) IfATTRIBUTE_NAME(condition bool, s string) *SVGSETElement {
-	if condition {
-		e.ATTRIBUTE_NAME(s)
-	}
-	return e
-}
-
-// Remove the attribute ATTRIBUTE_NAME from the element.
-func (e *SVGSETElement) ATTRIBUTE_NAMERemove(s string) *SVGSETElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("attributeName")
-	return e
-}
-
-// The namespace in which the target attribute and its associated values are
-// defined.
-func (e *SVGSETElement) ATTRIBUTE_TYPE(c SVGSetAttributeTypeChoice) *SVGSETElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	e.StringAttributes.Set("attributeType", string(c))
-	return e
-}
-
-type SVGSetAttributeTypeChoice string
-
-const (
-	// The namespace in which the target attribute and its associated values are
-	// defined.
-	SVGSetAttributeType_auto SVGSetAttributeTypeChoice = "auto"
-	// The namespace in which the target attribute and its associated values are
-	// defined.
-	SVGSetAttributeType_CSS SVGSetAttributeTypeChoice = "CSS"
-	// The namespace in which the target attribute and its associated values are
-	// defined.
-	SVGSetAttributeType_XML SVGSetAttributeTypeChoice = "XML"
-	// The namespace in which the target attribute and its associated values are
-	// defined.
-	SVGSetAttributeType_XMLNS SVGSetAttributeTypeChoice = "XMLNS"
-	// The namespace in which the target attribute and its associated values are
-	// defined.
-	SVGSetAttributeType_empty SVGSetAttributeTypeChoice = "empty"
-)
-
-// Remove the attribute ATTRIBUTE_TYPE from the element.
-func (e *SVGSETElement) ATTRIBUTE_TYPERemove(c SVGSetAttributeTypeChoice) *SVGSETElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("attributeType")
-	return e
-}
-
-// The begin time for the element.
-func (e *SVGSETElement) BEGIN(s string) *SVGSETElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	e.StringAttributes.Set("begin", s)
-	return e
-}
-
-func (e *SVGSETElement) IfBEGIN(condition bool, s string) *SVGSETElement {
-	if condition {
-		e.BEGIN(s)
-	}
-	return e
-}
-
-// Remove the attribute BEGIN from the element.
-func (e *SVGSETElement) BEGINRemove(s string) *SVGSETElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("begin")
-	return e
-}
-
-// The simple duration for the element.
-func (e *SVGSETElement) DUR(s string) *SVGSETElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	e.StringAttributes.Set("dur", s)
-	return e
-}
-
-func (e *SVGSETElement) IfDUR(condition bool, s string) *SVGSETElement {
-	if condition {
-		e.DUR(s)
-	}
-	return e
-}
-
-// Remove the attribute DUR from the element.
-func (e *SVGSETElement) DURRemove(s string) *SVGSETElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("dur")
-	return e
-}
-
-// The end for the element.
-func (e *SVGSETElement) END(s string) *SVGSETElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	e.StringAttributes.Set("end", s)
-	return e
-}
-
-func (e *SVGSETElement) IfEND(condition bool, s string) *SVGSETElement {
-	if condition {
-		e.END(s)
-	}
-	return e
-}
-
-// Remove the attribute END from the element.
-func (e *SVGSETElement) ENDRemove(s string) *SVGSETElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("end")
-	return e
-}
-
-// The minimum value allowed for the attribute.
-func (e *SVGSETElement) MIN(s string) *SVGSETElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	e.StringAttributes.Set("min", s)
-	return e
-}
-
-func (e *SVGSETElement) IfMIN(condition bool, s string) *SVGSETElement {
-	if condition {
-		e.MIN(s)
-	}
-	return e
-}
-
-// Remove the attribute MIN from the element.
-func (e *SVGSETElement) MINRemove(s string) *SVGSETElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("min")
-	return e
-}
-
-// The maximum value allowed for the attribute.
-func (e *SVGSETElement) MAX(s string) *SVGSETElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	e.StringAttributes.Set("max", s)
-	return e
-}
-
-func (e *SVGSETElement) IfMAX(condition bool, s string) *SVGSETElement {
-	if condition {
-		e.MAX(s)
-	}
-	return e
-}
-
-// Remove the attribute MAX from the element.
-func (e *SVGSETElement) MAXRemove(s string) *SVGSETElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("max")
-	return e
-}
-
-// Defines how the element is restarted.
-func (e *SVGSETElement) RESTART(c SVGSetRestartChoice) *SVGSETElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	e.StringAttributes.Set("restart", string(c))
-	return e
-}
-
-type SVGSetRestartChoice string
-
-const (
-	// Defines how the element is restarted.
-	SVGSetRestart_always SVGSetRestartChoice = "always"
-	// Defines how the element is restarted.
-	SVGSetRestart_whenNotActive SVGSetRestartChoice = "whenNotActive"
-	// Defines how the element is restarted.
-	SVGSetRestart_never SVGSetRestartChoice = "never"
-)
-
-// Remove the attribute RESTART from the element.
-func (e *SVGSETElement) RESTARTRemove(c SVGSetRestartChoice) *SVGSETElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("restart")
-	return e
-}
-
-// Defines the number of times the element is repeated.
-func (e *SVGSETElement) REPEAT_COUNT(s string) *SVGSETElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	e.StringAttributes.Set("repeatCount", s)
-	return e
-}
-
-func (e *SVGSETElement) IfREPEAT_COUNT(condition bool, s string) *SVGSETElement {
-	if condition {
-		e.REPEAT_COUNT(s)
-	}
-	return e
-}
-
-// Remove the attribute REPEAT_COUNT from the element.
-func (e *SVGSETElement) REPEAT_COUNTRemove(s string) *SVGSETElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("repeatCount")
-	return e
-}
-
-// Defines the duration for the element to repeat.
-func (e *SVGSETElement) REPEAT_DUR(s string) *SVGSETElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	e.StringAttributes.Set("repeatDur", s)
-	return e
-}
-
-func (e *SVGSETElement) IfREPEAT_DUR(condition bool, s string) *SVGSETElement {
-	if condition {
-		e.REPEAT_DUR(s)
-	}
-	return e
-}
-
-// Remove the attribute REPEAT_DUR from the element.
-func (e *SVGSETElement) REPEAT_DURRemove(s string) *SVGSETElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("repeatDur")
-	return e
-}
-
-// Defines the value the animation will have before the begin event.
-func (e *SVGSETElement) FILL(c SVGSetFillChoice) *SVGSETElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	e.StringAttributes.Set("fill", string(c))
-	return e
-}
-
-type SVGSetFillChoice string
-
-const (
-	// Defines the value the animation will have before the begin event.
-	SVGSetFill_remove SVGSetFillChoice = "remove"
-	// Defines the value the animation will have before the begin event.
-	SVGSetFill_freeze SVGSetFillChoice = "freeze"
-)
-
-// Remove the attribute FILL from the element.
-func (e *SVGSETElement) FILLRemove(c SVGSetFillChoice) *SVGSETElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("fill")
-	return e
-}
-
-// Specifies a unique id for an element
-func (e *SVGSETElement) ID(s string) *SVGSETElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	e.StringAttributes.Set("id", s)
-	return e
-}
-
-func (e *SVGSETElement) IfID(condition bool, s string) *SVGSETElement {
-	if condition {
-		e.ID(s)
-	}
-	return e
-}
-
-// Remove the attribute ID from the element.
-func (e *SVGSETElement) IDRemove(s string) *SVGSETElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("id")
-	return e
-}
-
-// Specifies one or more classnames for an element (refers to a class in a style
-// sheet)
-func (e *SVGSETElement) CLASS(s ...string) *SVGSETElement {
-	if e.DelimitedStrings == nil {
-		e.DelimitedStrings = treemap.New[string, *DelimitedBuilder[string]]()
-	}
-	ds, ok := e.DelimitedStrings.Get("class")
-	if !ok {
-		ds = NewDelimitedBuilder[string](" ")
-		e.DelimitedStrings.Set("class", ds)
-	}
-	ds.Add(s...)
-	return e
-}
-
-func (e *SVGSETElement) IfCLASS(condition bool, s ...string) *SVGSETElement {
-	if condition {
-		e.CLASS(s...)
-	}
-	return e
-}
-
-// Remove the attribute CLASS from the element.
-func (e *SVGSETElement) CLASSRemove(s ...string) *SVGSETElement {
-	if e.DelimitedStrings == nil {
-		return e
-	}
-	ds, ok := e.DelimitedStrings.Get("class")
-	if !ok {
-		return e
-	}
-	ds.Remove(s...)
-	return e
-}
-
-// Specifies an inline CSS style for an element
-func (e *SVGSETElement) STYLEF(k string, format string, args ...any) *SVGSETElement {
-	return e.STYLE(k, fmt.Sprintf(format, args...))
-}
-
-func (e *SVGSETElement) IfSTYLE(condition bool, k string, v string) *SVGSETElement {
-	if condition {
-		e.STYLE(k, v)
-	}
-	return e
-}
-
-func (e *SVGSETElement) STYLE(k string, v string) *SVGSETElement {
-	if e.KVStrings == nil {
-		e.KVStrings = treemap.New[string, *KVBuilder]()
-	}
-	kv, ok := e.KVStrings.Get("style")
-	if !ok {
-		kv = NewKVBuilder(":", ";")
-		e.KVStrings.Set("style", kv)
-	}
-	kv.Add(k, v)
-	return e
-}
-
-func (e *SVGSETElement) IfSTYLEF(condition bool, k string, format string, args ...any) *SVGSETElement {
-	if condition {
-		e.STYLE(k, fmt.Sprintf(format, args...))
-	}
-	return e
-}
+    e.CustomDataAttributes.Del(key)
+	return e
+}
+
+
+    // The target attribute value to assign on end. 
+    func(e *SVGSETElement) TO(s string) *SVGSETElement{
+            if e.StringAttributes == nil {
+                e.StringAttributes = treemap.New[string,string]()
+            }
+            e.StringAttributes.Set("to", s)
+            return e
+        }
+
+        func(e *SVGSETElement) IfTO(condition bool, s string) *SVGSETElement{
+            if condition {
+                e.TO(s)
+            }
+            return e
+        }
+
+        // Remove the attribute TO from the element.
+        func(e *SVGSETElement) TORemove(s string) *SVGSETElement{
+            if e.StringAttributes == nil {
+                return e
+            }
+            e.StringAttributes.Del("to")
+            return e
+        }
+    
+
+    // The name of the attribute to assign. 
+    func(e *SVGSETElement) ATTRIBUTE_NAME(s string) *SVGSETElement{
+            if e.StringAttributes == nil {
+                e.StringAttributes = treemap.New[string,string]()
+            }
+            e.StringAttributes.Set("attributeName", s)
+            return e
+        }
+
+        func(e *SVGSETElement) IfATTRIBUTE_NAME(condition bool, s string) *SVGSETElement{
+            if condition {
+                e.ATTRIBUTE_NAME(s)
+            }
+            return e
+        }
+
+        // Remove the attribute ATTRIBUTE_NAME from the element.
+        func(e *SVGSETElement) ATTRIBUTE_NAMERemove(s string) *SVGSETElement{
+            if e.StringAttributes == nil {
+                return e
+            }
+            e.StringAttributes.Del("attributeName")
+            return e
+        }
+    
+
+    // The namespace in which the target attribute and its associated values are 
+// defined. 
+    func(e *SVGSETElement) ATTRIBUTE_TYPE(c SVGSetAttributeTypeChoice) *SVGSETElement{
+            if e.StringAttributes == nil {
+                e.StringAttributes = treemap.New[string,string]()
+            }
+            e.StringAttributes.Set("attributeType", string(c))
+            return e
+        }
+
+        type SVGSetAttributeTypeChoice string
+        const(
+        // The namespace in which the target attribute and its associated values are 
+// defined. 
+            SVGSetAttributeType_auto SVGSetAttributeTypeChoice = "auto"
+        // The namespace in which the target attribute and its associated values are 
+// defined. 
+            SVGSetAttributeType_CSS SVGSetAttributeTypeChoice = "CSS"
+        // The namespace in which the target attribute and its associated values are 
+// defined. 
+            SVGSetAttributeType_XML SVGSetAttributeTypeChoice = "XML"
+        // The namespace in which the target attribute and its associated values are 
+// defined. 
+            SVGSetAttributeType_XMLNS SVGSetAttributeTypeChoice = "XMLNS"
+        // The namespace in which the target attribute and its associated values are 
+// defined. 
+            SVGSetAttributeType_empty SVGSetAttributeTypeChoice = "empty"
+        )
+
+        // Remove the attribute ATTRIBUTE_TYPE from the element.
+        func(e *SVGSETElement) ATTRIBUTE_TYPERemove(c SVGSetAttributeTypeChoice) *SVGSETElement{
+            if e.StringAttributes == nil {
+                return e
+            }
+            e.StringAttributes.Del("attributeType")
+            return e
+        }
+        
+
+    // The begin time for the element. 
+    func(e *SVGSETElement) BEGIN(s string) *SVGSETElement{
+            if e.StringAttributes == nil {
+                e.StringAttributes = treemap.New[string,string]()
+            }
+            e.StringAttributes.Set("begin", s)
+            return e
+        }
+
+        func(e *SVGSETElement) IfBEGIN(condition bool, s string) *SVGSETElement{
+            if condition {
+                e.BEGIN(s)
+            }
+            return e
+        }
+
+        // Remove the attribute BEGIN from the element.
+        func(e *SVGSETElement) BEGINRemove(s string) *SVGSETElement{
+            if e.StringAttributes == nil {
+                return e
+            }
+            e.StringAttributes.Del("begin")
+            return e
+        }
+    
+
+    // The simple duration for the element. 
+    func(e *SVGSETElement) DUR(s string) *SVGSETElement{
+            if e.StringAttributes == nil {
+                e.StringAttributes = treemap.New[string,string]()
+            }
+            e.StringAttributes.Set("dur", s)
+            return e
+        }
+
+        func(e *SVGSETElement) IfDUR(condition bool, s string) *SVGSETElement{
+            if condition {
+                e.DUR(s)
+            }
+            return e
+        }
+
+        // Remove the attribute DUR from the element.
+        func(e *SVGSETElement) DURRemove(s string) *SVGSETElement{
+            if e.StringAttributes == nil {
+                return e
+            }
+            e.StringAttributes.Del("dur")
+            return e
+        }
+    
+
+    // The end for the element. 
+    func(e *SVGSETElement) END(s string) *SVGSETElement{
+            if e.StringAttributes == nil {
+                e.StringAttributes = treemap.New[string,string]()
+            }
+            e.StringAttributes.Set("end", s)
+            return e
+        }
+
+        func(e *SVGSETElement) IfEND(condition bool, s string) *SVGSETElement{
+            if condition {
+                e.END(s)
+            }
+            return e
+        }
+
+        // Remove the attribute END from the element.
+        func(e *SVGSETElement) ENDRemove(s string) *SVGSETElement{
+            if e.StringAttributes == nil {
+                return e
+            }
+            e.StringAttributes.Del("end")
+            return e
+        }
+    
+
+    // The minimum value allowed for the attribute. 
+    func(e *SVGSETElement) MIN(s string) *SVGSETElement{
+            if e.StringAttributes == nil {
+                e.StringAttributes = treemap.New[string,string]()
+            }
+            e.StringAttributes.Set("min", s)
+            return e
+        }
+
+        func(e *SVGSETElement) IfMIN(condition bool, s string) *SVGSETElement{
+            if condition {
+                e.MIN(s)
+            }
+            return e
+        }
+
+        // Remove the attribute MIN from the element.
+        func(e *SVGSETElement) MINRemove(s string) *SVGSETElement{
+            if e.StringAttributes == nil {
+                return e
+            }
+            e.StringAttributes.Del("min")
+            return e
+        }
+    
+
+    // The maximum value allowed for the attribute. 
+    func(e *SVGSETElement) MAX(s string) *SVGSETElement{
+            if e.StringAttributes == nil {
+                e.StringAttributes = treemap.New[string,string]()
+            }
+            e.StringAttributes.Set("max", s)
+            return e
+        }
+
+        func(e *SVGSETElement) IfMAX(condition bool, s string) *SVGSETElement{
+            if condition {
+                e.MAX(s)
+            }
+            return e
+        }
+
+        // Remove the attribute MAX from the element.
+        func(e *SVGSETElement) MAXRemove(s string) *SVGSETElement{
+            if e.StringAttributes == nil {
+                return e
+            }
+            e.StringAttributes.Del("max")
+            return e
+        }
+    
+
+    // Defines how the element is restarted. 
+    func(e *SVGSETElement) RESTART(c SVGSetRestartChoice) *SVGSETElement{
+            if e.StringAttributes == nil {
+                e.StringAttributes = treemap.New[string,string]()
+            }
+            e.StringAttributes.Set("restart", string(c))
+            return e
+        }
+
+        type SVGSetRestartChoice string
+        const(
+        // Defines how the element is restarted. 
+            SVGSetRestart_always SVGSetRestartChoice = "always"
+        // Defines how the element is restarted. 
+            SVGSetRestart_whenNotActive SVGSetRestartChoice = "whenNotActive"
+        // Defines how the element is restarted. 
+            SVGSetRestart_never SVGSetRestartChoice = "never"
+        )
+
+        // Remove the attribute RESTART from the element.
+        func(e *SVGSETElement) RESTARTRemove(c SVGSetRestartChoice) *SVGSETElement{
+            if e.StringAttributes == nil {
+                return e
+            }
+            e.StringAttributes.Del("restart")
+            return e
+        }
+        
+
+    // Defines the number of times the element is repeated. 
+    func(e *SVGSETElement) REPEAT_COUNT(s string) *SVGSETElement{
+            if e.StringAttributes == nil {
+                e.StringAttributes = treemap.New[string,string]()
+            }
+            e.StringAttributes.Set("repeatCount", s)
+            return e
+        }
+
+        func(e *SVGSETElement) IfREPEAT_COUNT(condition bool, s string) *SVGSETElement{
+            if condition {
+                e.REPEAT_COUNT(s)
+            }
+            return e
+        }
+
+        // Remove the attribute REPEAT_COUNT from the element.
+        func(e *SVGSETElement) REPEAT_COUNTRemove(s string) *SVGSETElement{
+            if e.StringAttributes == nil {
+                return e
+            }
+            e.StringAttributes.Del("repeatCount")
+            return e
+        }
+    
+
+    // Defines the duration for the element to repeat. 
+    func(e *SVGSETElement) REPEAT_DUR(s string) *SVGSETElement{
+            if e.StringAttributes == nil {
+                e.StringAttributes = treemap.New[string,string]()
+            }
+            e.StringAttributes.Set("repeatDur", s)
+            return e
+        }
+
+        func(e *SVGSETElement) IfREPEAT_DUR(condition bool, s string) *SVGSETElement{
+            if condition {
+                e.REPEAT_DUR(s)
+            }
+            return e
+        }
+
+        // Remove the attribute REPEAT_DUR from the element.
+        func(e *SVGSETElement) REPEAT_DURRemove(s string) *SVGSETElement{
+            if e.StringAttributes == nil {
+                return e
+            }
+            e.StringAttributes.Del("repeatDur")
+            return e
+        }
+    
+
+    // Defines the value the animation will have before the begin event. 
+    func(e *SVGSETElement) FILL(c SVGSetFillChoice) *SVGSETElement{
+            if e.StringAttributes == nil {
+                e.StringAttributes = treemap.New[string,string]()
+            }
+            e.StringAttributes.Set("fill", string(c))
+            return e
+        }
+
+        type SVGSetFillChoice string
+        const(
+        // Defines the value the animation will have before the begin event. 
+            SVGSetFill_remove SVGSetFillChoice = "remove"
+        // Defines the value the animation will have before the begin event. 
+            SVGSetFill_freeze SVGSetFillChoice = "freeze"
+        )
+
+        // Remove the attribute FILL from the element.
+        func(e *SVGSETElement) FILLRemove(c SVGSetFillChoice) *SVGSETElement{
+            if e.StringAttributes == nil {
+                return e
+            }
+            e.StringAttributes.Del("fill")
+            return e
+        }
+        
+
+    // Specifies a unique id for an element 
+    func(e *SVGSETElement) ID(s string) *SVGSETElement{
+            if e.StringAttributes == nil {
+                e.StringAttributes = treemap.New[string,string]()
+            }
+            e.StringAttributes.Set("id", s)
+            return e
+        }
+
+        func(e *SVGSETElement) IfID(condition bool, s string) *SVGSETElement{
+            if condition {
+                e.ID(s)
+            }
+            return e
+        }
+
+        // Remove the attribute ID from the element.
+        func(e *SVGSETElement) IDRemove(s string) *SVGSETElement{
+            if e.StringAttributes == nil {
+                return e
+            }
+            e.StringAttributes.Del("id")
+            return e
+        }
+    
+
+    // Specifies one or more classnames for an element (refers to a class in a style 
+// sheet) 
+    func(e *SVGSETElement) CLASS(s ...string) *SVGSETElement{
+            if e.DelimitedStrings == nil {
+                e.DelimitedStrings = treemap.New[string,*DelimitedBuilder[string]]()
+            }
+            ds, ok := e.DelimitedStrings.Get("class")
+            if !ok {
+                ds = NewDelimitedBuilder[string](" ")
+                e.DelimitedStrings.Set("class", ds)
+            }
+            ds.Add(s...)
+            return e
+        }
+
+        func(e *SVGSETElement) IfCLASS(condition bool, s ...string) *SVGSETElement{
+            if condition {
+                e.CLASS(s...)
+            }
+            return e
+        }
+
+        // Remove the attribute CLASS from the element.
+        func(e *SVGSETElement) CLASSRemove(s ...string) *SVGSETElement{
+            if e.DelimitedStrings == nil {
+                return e
+            }
+            ds, ok := e.DelimitedStrings.Get("class")
+            if !ok {
+                return e
+            }
+            ds.Remove(s ...)
+            return e
+        }
+
+    
+
+    // Specifies an inline CSS style for an element 
+    func (e *SVGSETElement) STYLEF(k string, format string, args ...any) *SVGSETElement {
+            return e.STYLE(k, fmt.Sprintf(format, args...))
+        }
+
+        func (e *SVGSETElement) IfSTYLE(condition bool, k string, v string) *SVGSETElement {
+            if condition {
+                e.STYLE(k, v)
+            }
+            return e
+        }
+
+        func (e *SVGSETElement) STYLE(k string, v string) *SVGSETElement {
+            if e.KVStrings == nil {
+                e.KVStrings = treemap.New[string,*KVBuilder]()
+            }
+            kv, ok := e.KVStrings.Get("style")
+            if !ok {
+                kv = NewKVBuilder(":", ";")
+                e.KVStrings.Set("style", kv)
+            }
+            kv.Add(k, v)
+            return e
+        }
+
+        func (e *SVGSETElement) IfSTYLEF(condition bool, k string, format string, args ...any) *SVGSETElement {
+            if condition {
+                e.STYLE(k, fmt.Sprintf(format, args...))
+            }
+            return e
+        }
+
+        // Add the attributes in the map to the element.
+        func (e *SVGSETElement) STYLEMap(m map[string]string) *SVGSETElement {
+            if e.KVStrings == nil {
+                e.KVStrings = treemap.New[string,*KVBuilder]()
+            }
+            kv, ok := e.KVStrings.Get("style")
+            if !ok {
+                kv = NewKVBuilder(":", ";")
+                e.KVStrings.Set("style", kv)
+            }
+            for k, v := range m {
+                kv.Add(k, v)
+            }
+            return e
+        }
+
+        // Add pairs of attributes to the element.
+        func (e *SVGSETElement) STYLEPairs(pairs ...string) *SVGSETElement {
+            if len(pairs) % 2 != 0 {
+                panic("Must have an even number of pairs")
+            }
+            if e.KVStrings == nil {
+                e.KVStrings = treemap.New[string,*KVBuilder]()
+            }
+            kv, ok := e.KVStrings.Get("style")
+            if !ok {
+                kv = NewKVBuilder(":", ";")
+                e.KVStrings.Set("style", kv)
+            }
+
+            for i := 0; i < len(pairs); i += 2 {
+                kv.Add(pairs[i], pairs[i+1])
+            }
+
+            return e
+        }
+
+        func (e *SVGSETElement) IfSTYLEPairs(condition bool, pairs ...string) *SVGSETElement {
+            if condition {
+                e.STYLEPairs(pairs...)
+            }
+            return e
+        }
+
+        // Remove the attribute STYLE from the element.
+        func (e *SVGSETElement) STYLERemove(keys ...string) *SVGSETElement {
+            if e.KVStrings == nil {
+                return e
+            }
+            kv, ok := e.KVStrings.Get("style")
+            if !ok {
+                return e
+            }
+            for _, k := range keys {
+                kv.Remove(k)
+            }
+            return e
+        }
+
+    
+
+    // Merges the store with the given object 
+    
+        func(e *SVGSETElement) DATASTAR_MERGE_STORE(v any) *SVGSETElement{
+                if e.CustomDataAttributes == nil {
+                    e.CustomDataAttributes = treemap.New[string,string]()
+                }
+                b, err := json.Marshal(v)
+                if err != nil {
+                    panic(err)
+                }
+                e.CustomDataAttributes.Set("data-merge-store", string(b))
+                return e
+            }
+
+        
+
+    // Sets the reference of the element 
+    
+        func(e *SVGSETElement) DATASTAR_REF(expression string) *SVGSETElement{
+                if e.StringAttributes == nil {
+                    e.StringAttributes = treemap.New[string,string]()
+                }
+                
+                key := "data-ref"
+                
+                e.StringAttributes.Set(key, expression)
+                return e
+            }
+
+            func(e *SVGSETElement) IfDATASTAR_REF(condition bool, expression string) *SVGSETElement{
+                if condition {
+                    e.DATASTAR_REF( expression, )
+                }
+                return e
+            }
+
+            // Remove the attribute DATASTAR_REF from the element.
+            func(e *SVGSETElement) DATASTAR_REFRemove() *SVGSETElement{
+                if e.StringAttributes == nil {
+                    return e
+                }
+                e.StringAttributes.Del("data-ref")
+                return e
+            }
+
+        
+
+    // Sets the value of the element 
+    
+        func(e *SVGSETElement) DATASTAR_BIND(key string, expression string) *SVGSETElement{
+                if e.StringAttributes == nil {
+                    e.StringAttributes = treemap.New[string,string]()
+                }
+                
+                key = fmt.Sprintf("data-bind-%s", key)
+                
+                e.StringAttributes.Set(key, expression)
+                return e
+            }
+
+            func(e *SVGSETElement) IfDATASTAR_BIND(condition bool, key string, expression string) *SVGSETElement{
+                if condition {
+                    e.DATASTAR_BIND(key,  expression, )
+                }
+                return e
+            }
+
+            // Remove the attribute DATASTAR_BIND from the element.
+            func(e *SVGSETElement) DATASTAR_BINDRemove() *SVGSETElement{
+                if e.StringAttributes == nil {
+                    return e
+                }
+                e.StringAttributes.Del("data-bind")
+                return e
+            }
+
+        
+
+    // Sets the value of the element 
+    
+        func(e *SVGSETElement) DATASTAR_MODEL(expression string) *SVGSETElement{
+                if e.StringAttributes == nil {
+                    e.StringAttributes = treemap.New[string,string]()
+                }
+                
+                key := "data-model"
+                
+                e.StringAttributes.Set(key, expression)
+                return e
+            }
+
+            func(e *SVGSETElement) IfDATASTAR_MODEL(condition bool, expression string) *SVGSETElement{
+                if condition {
+                    e.DATASTAR_MODEL( expression, )
+                }
+                return e
+            }
+
+            // Remove the attribute DATASTAR_MODEL from the element.
+            func(e *SVGSETElement) DATASTAR_MODELRemove() *SVGSETElement{
+                if e.StringAttributes == nil {
+                    return e
+                }
+                e.StringAttributes.Del("data-model")
+                return e
+            }
+
+        
+
+    // Sets the textContent of the element 
+    
+        func(e *SVGSETElement) DATASTAR_TEXT(expression string) *SVGSETElement{
+                if e.StringAttributes == nil {
+                    e.StringAttributes = treemap.New[string,string]()
+                }
+                
+                key := "data-text"
+                
+                e.StringAttributes.Set(key, expression)
+                return e
+            }
+
+            func(e *SVGSETElement) IfDATASTAR_TEXT(condition bool, expression string) *SVGSETElement{
+                if condition {
+                    e.DATASTAR_TEXT( expression, )
+                }
+                return e
+            }
+
+            // Remove the attribute DATASTAR_TEXT from the element.
+            func(e *SVGSETElement) DATASTAR_TEXTRemove() *SVGSETElement{
+                if e.StringAttributes == nil {
+                    return e
+                }
+                e.StringAttributes.Del("data-text")
+                return e
+            }
+
+        
+
+    // Sets the event handler of the element 
+    
+        type SVGSetDataOnMod customDataKeyModifier
+
+            
+            // Debounces the event handler 
+            func SVGSetDataOnModDebounce(
+                    d time.Duration,
+            ) SVGSetDataOnMod {
+                return func() string {return fmt.Sprintf("debounce_%dms", d.Milliseconds())
+                }
+            }
+            
+            // Throttles the event handler 
+            func SVGSetDataOnModThrottle(
+                    d time.Duration,
+            ) SVGSetDataOnMod {
+                return func() string {return fmt.Sprintf("throttle_%dms", d.Milliseconds())
+                }
+            }
+            
+        func(e *SVGSETElement) DATASTAR_ON(key string, expression string, modifiers ...SVGSetDataOnMod) *SVGSETElement{
+                if e.StringAttributes == nil {
+                    e.StringAttributes = treemap.New[string,string]()
+                }
+                
+                key = fmt.Sprintf("data-on-%s", key)
+                
+                customMods := lo.Map(modifiers, func(m SVGSetDataOnMod, i int) customDataKeyModifier  {
+                    return customDataKeyModifier(m)
+                })
+                key = customDataKey(key, customMods...)
+                e.StringAttributes.Set(key, expression)
+                return e
+            }
+
+            func(e *SVGSETElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SVGSetDataOnMod) *SVGSETElement{
+                if condition {
+                    e.DATASTAR_ON(key,  expression,  modifiers...)
+                }
+                return e
+            }
+
+            // Remove the attribute DATASTAR_ON from the element.
+            func(e *SVGSETElement) DATASTAR_ONRemove() *SVGSETElement{
+                if e.StringAttributes == nil {
+                    return e
+                }
+                e.StringAttributes.Del("data-on")
+                return e
+            }
+
+        
+
+    // Sets the focus of the element 
+    
+        func(e *SVGSETElement) DATASTAR_FOCUSSet(b bool) *SVGSETElement{
+                key := "data-focus"
+                e.BoolAttributes.Set(key, b)
+                return e
+            }
+
+            func(e *SVGSETElement) DATASTAR_FOCUS() *SVGSETElement{
+                return e.DATASTAR_FOCUSSet(true)
+            }
+        
+
+    // Sets the header of for fetch requests 
+    
+        func(e *SVGSETElement) DATASTAR_HEADER(key string, expression string) *SVGSETElement{
+                if e.StringAttributes == nil {
+                    e.StringAttributes = treemap.New[string,string]()
+                }
+                
+                key = fmt.Sprintf("data-header-%s", key)
+                
+                e.StringAttributes.Set(key, expression)
+                return e
+            }
+
+            func(e *SVGSETElement) IfDATASTAR_HEADER(condition bool, key string, expression string) *SVGSETElement{
+                if condition {
+                    e.DATASTAR_HEADER(key,  expression, )
+                }
+                return e
+            }
+
+            // Remove the attribute DATASTAR_HEADER from the element.
+            func(e *SVGSETElement) DATASTAR_HEADERRemove() *SVGSETElement{
+                if e.StringAttributes == nil {
+                    return e
+                }
+                e.StringAttributes.Del("data-header")
+                return e
+            }
+
+        
+
+    // Sets the URL for fetch requests 
+    
+        func(e *SVGSETElement) DATASTAR_FETCH_URL(expression string) *SVGSETElement{
+                if e.StringAttributes == nil {
+                    e.StringAttributes = treemap.New[string,string]()
+                }
+                
+                key := "data-fetch-url"
+                
+                e.StringAttributes.Set(key, expression)
+                return e
+            }
+
+            func(e *SVGSETElement) IfDATASTAR_FETCH_URL(condition bool, expression string) *SVGSETElement{
+                if condition {
+                    e.DATASTAR_FETCH_URL( expression, )
+                }
+                return e
+            }
+
+            // Remove the attribute DATASTAR_FETCH_URL from the element.
+            func(e *SVGSETElement) DATASTAR_FETCH_URLRemove() *SVGSETElement{
+                if e.StringAttributes == nil {
+                    return e
+                }
+                e.StringAttributes.Del("data-fetch-url")
+                return e
+            }
+
+        
+
+    // Sets the indicator selector for fetch requests 
+    
+        func(e *SVGSETElement) DATASTAR_FETCH_INDICATOR(expression string) *SVGSETElement{
+                if e.StringAttributes == nil {
+                    e.StringAttributes = treemap.New[string,string]()
+                }
+                
+                key := "DatastarFetchIndicator"
+                
+                e.StringAttributes.Set(key, expression)
+                return e
+            }
+
+            func(e *SVGSETElement) IfDATASTAR_FETCH_INDICATOR(condition bool, expression string) *SVGSETElement{
+                if condition {
+                    e.DATASTAR_FETCH_INDICATOR( expression, )
+                }
+                return e
+            }
+
+            // Remove the attribute DATASTAR_FETCH_INDICATOR from the element.
+            func(e *SVGSETElement) DATASTAR_FETCH_INDICATORRemove() *SVGSETElement{
+                if e.StringAttributes == nil {
+                    return e
+                }
+                e.StringAttributes.Del("DatastarFetchIndicator")
+                return e
+            }
+
+        
+
+    // Sets the visibility of the element 
+    
+        func(e *SVGSETElement) DATASTAR_SHOWSet(b bool) *SVGSETElement{
+                key := "data-show"
+                e.BoolAttributes.Set(key, b)
+                return e
+            }
+
+            func(e *SVGSETElement) DATASTAR_SHOW() *SVGSETElement{
+                return e.DATASTAR_SHOWSet(true)
+            }
+        
+
+    // Triggers the callback when the element intersects the viewport 
+    
+        func(e *SVGSETElement) DATASTAR_INTERSECTSSet(b bool) *SVGSETElement{
+                key := "data-intersects"
+                e.BoolAttributes.Set(key, b)
+                return e
+            }
+
+            func(e *SVGSETElement) DATASTAR_INTERSECTS() *SVGSETElement{
+                return e.DATASTAR_INTERSECTSSet(true)
+            }
+        
+
+    // Teleports the element to the given selector 
+    
+        func(e *SVGSETElement) DATASTAR_TELEPORTSet(b bool) *SVGSETElement{
+                key := "data-teleport"
+                e.BoolAttributes.Set(key, b)
+                return e
+            }
+
+            func(e *SVGSETElement) DATASTAR_TELEPORT() *SVGSETElement{
+                return e.DATASTAR_TELEPORTSet(true)
+            }
+        
+
+    // Scrolls the element into view 
+    
+        func(e *SVGSETElement) DATASTAR_SCROLL_INTO_VIEWSet(b bool) *SVGSETElement{
+                key := "data-scroll-into-view"
+                e.BoolAttributes.Set(key, b)
+                return e
+            }
+
+            func(e *SVGSETElement) DATASTAR_SCROLL_INTO_VIEW() *SVGSETElement{
+                return e.DATASTAR_SCROLL_INTO_VIEWSet(true)
+            }
+        
+
+    // Setup the ViewTransitionAPI for the element 
+    
+        func(e *SVGSETElement) DATASTAR_VIEW_TRANSITION(key string, expression string) *SVGSETElement{
+                if e.StringAttributes == nil {
+                    e.StringAttributes = treemap.New[string,string]()
+                }
+                
+                key = fmt.Sprintf("data-view-transition-%s", key)
+                
+                e.StringAttributes.Set(key, expression)
+                return e
+            }
+
+            func(e *SVGSETElement) IfDATASTAR_VIEW_TRANSITION(condition bool, key string, expression string) *SVGSETElement{
+                if condition {
+                    e.DATASTAR_VIEW_TRANSITION(key,  expression, )
+                }
+                return e
+            }
+
+            // Remove the attribute DATASTAR_VIEW_TRANSITION from the element.
+            func(e *SVGSETElement) DATASTAR_VIEW_TRANSITIONRemove() *SVGSETElement{
+                if e.StringAttributes == nil {
+                    return e
+                }
+                e.StringAttributes.Del("data-view-transition")
+                return e
+            }
+
+        
 
-// Add the attributes in the map to the element.
-func (e *SVGSETElement) STYLEMap(m map[string]string) *SVGSETElement {
-	if e.KVStrings == nil {
-		e.KVStrings = treemap.New[string, *KVBuilder]()
-	}
-	kv, ok := e.KVStrings.Get("style")
-	if !ok {
-		kv = NewKVBuilder(":", ";")
-		e.KVStrings.Set("style", kv)
-	}
-	for k, v := range m {
-		kv.Add(k, v)
-	}
-	return e
-}
-
-// Add pairs of attributes to the element.
-func (e *SVGSETElement) STYLEPairs(pairs ...string) *SVGSETElement {
-	if len(pairs)%2 != 0 {
-		panic("Must have an even number of pairs")
-	}
-	if e.KVStrings == nil {
-		e.KVStrings = treemap.New[string, *KVBuilder]()
-	}
-	kv, ok := e.KVStrings.Get("style")
-	if !ok {
-		kv = NewKVBuilder(":", ";")
-		e.KVStrings.Set("style", kv)
-	}
-
-	for i := 0; i < len(pairs); i += 2 {
-		kv.Add(pairs[i], pairs[i+1])
-	}
-
-	return e
-}
-
-func (e *SVGSETElement) IfSTYLEPairs(condition bool, pairs ...string) *SVGSETElement {
-	if condition {
-		e.STYLEPairs(pairs...)
-	}
-	return e
-}
-
-// Remove the attribute STYLE from the element.
-func (e *SVGSETElement) STYLERemove(keys ...string) *SVGSETElement {
-	if e.KVStrings == nil {
-		return e
-	}
-	kv, ok := e.KVStrings.Get("style")
-	if !ok {
-		return e
-	}
-	for _, k := range keys {
-		kv.Remove(k)
-	}
-	return e
-}
-
-// Merges the store with the given object
-
-func (e *SVGSETElement) DATASTAR_MERGE_STORE(v any) *SVGSETElement {
-	if e.CustomDataAttributes == nil {
-		e.CustomDataAttributes = treemap.New[string, string]()
-	}
-	b, err := json.Marshal(v)
-	if err != nil {
-		panic(err)
-	}
-	e.CustomDataAttributes.Set("data-merge-store", string(b))
-	return e
-}
-
-// Sets the reference of the element
-
-func (e *SVGSETElement) DATASTAR_REF(s string) *SVGSETElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	key := "data-ref"
-	e.StringAttributes.Set(key, s)
-	return e
-}
-
-func (e *SVGSETElement) IfDATASTAR_REF(condition bool, s string) *SVGSETElement {
-	if condition {
-		e.DATASTAR_REF(s)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_REF from the element.
-func (e *SVGSETElement) DATASTAR_REFRemove() *SVGSETElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-ref")
-	return e
-}
-
-// Sets the value of the element
-
-func (e *SVGSETElement) DATASTAR_BIND(s string) *SVGSETElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	key := "data-bind"
-	e.StringAttributes.Set(key, s)
-	return e
-}
-
-func (e *SVGSETElement) IfDATASTAR_BIND(condition bool, s string) *SVGSETElement {
-	if condition {
-		e.DATASTAR_BIND(s)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_BIND from the element.
-func (e *SVGSETElement) DATASTAR_BINDRemove() *SVGSETElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-bind")
-	return e
-}
-
-// Sets the value of the element
-
-func (e *SVGSETElement) DATASTAR_MODEL(s string) *SVGSETElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	key := "data-model"
-	e.StringAttributes.Set(key, s)
-	return e
-}
-
-func (e *SVGSETElement) IfDATASTAR_MODEL(condition bool, s string) *SVGSETElement {
-	if condition {
-		e.DATASTAR_MODEL(s)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_MODEL from the element.
-func (e *SVGSETElement) DATASTAR_MODELRemove() *SVGSETElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-model")
-	return e
-}
-
-// Sets the textContent of the element
-
-func (e *SVGSETElement) DATASTAR_TEXT(s string) *SVGSETElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	key := "data-text"
-	e.StringAttributes.Set(key, s)
-	return e
-}
-
-func (e *SVGSETElement) IfDATASTAR_TEXT(condition bool, s string) *SVGSETElement {
-	if condition {
-		e.DATASTAR_TEXT(s)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_TEXT from the element.
-func (e *SVGSETElement) DATASTAR_TEXTRemove() *SVGSETElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-text")
-	return e
-}
-
-// Sets the event handler of the element
-
-type SVGSetDataOnMod customDataKeyModifier
-
-// Debounces the event handler
-func SVGSetDataOnModDebounce(
-	s string,
-) SVGSetDataOnMod {
-	return func() string {
-		return fmt.Sprintf("debounce_%sms", s)
-	}
-}
-
-// Throttles the event handler
-func SVGSetDataOnModThrottle(
-	s string,
-) SVGSetDataOnMod {
-	return func() string {
-		return fmt.Sprintf("throttle_%sms", s)
-	}
-}
-
-func (e *SVGSETElement) DATASTAR_ON(s string, modifiers ...SVGSetDataOnMod) *SVGSETElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	customMods := lo.Map(modifiers, func(m SVGSetDataOnMod, i int) customDataKeyModifier {
-		return customDataKeyModifier(m)
-	})
-	key := customDataKey("data-on", customMods...)
-	e.StringAttributes.Set(key, s)
-	return e
-}
-
-func (e *SVGSETElement) IfDATASTAR_ON(condition bool, s string, modifiers ...SVGSetDataOnMod) *SVGSETElement {
-	if condition {
-		e.DATASTAR_ON(s, modifiers...)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_ON from the element.
-func (e *SVGSETElement) DATASTAR_ONRemove() *SVGSETElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-on")
-	return e
-}
-
-// Sets the focus of the element
-
-func (e *SVGSETElement) DATASTAR_FOCUSSet(b bool) *SVGSETElement {
-	key := "data-focus"
-	e.BoolAttributes.Set(key, b)
-	return e
-}
-
-func (e *SVGSETElement) DATASTAR_FOCUS() *SVGSETElement {
-	return e.DATASTAR_FOCUSSet(true)
-}
-
-// Sets the header of for fetch requests
-
-func (e *SVGSETElement) DATASTAR_HEADER(s string) *SVGSETElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	key := "data-header"
-	e.StringAttributes.Set(key, s)
-	return e
-}
-
-func (e *SVGSETElement) IfDATASTAR_HEADER(condition bool, s string) *SVGSETElement {
-	if condition {
-		e.DATASTAR_HEADER(s)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_HEADER from the element.
-func (e *SVGSETElement) DATASTAR_HEADERRemove() *SVGSETElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-header")
-	return e
-}
-
-// Sets the URL for fetch requests
-
-func (e *SVGSETElement) DATASTAR_FETCH_URL(s string) *SVGSETElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	key := "data-fetch-url"
-	e.StringAttributes.Set(key, s)
-	return e
-}
-
-func (e *SVGSETElement) IfDATASTAR_FETCH_URL(condition bool, s string) *SVGSETElement {
-	if condition {
-		e.DATASTAR_FETCH_URL(s)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_FETCH_URL from the element.
-func (e *SVGSETElement) DATASTAR_FETCH_URLRemove() *SVGSETElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-fetch-url")
-	return e
-}
-
-// Sets the indicator selector for fetch requests
-
-func (e *SVGSETElement) DATASTAR_FETCH_INDICATOR(s string) *SVGSETElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	key := "DatastarFetchIndicator"
-	e.StringAttributes.Set(key, s)
-	return e
-}
-
-func (e *SVGSETElement) IfDATASTAR_FETCH_INDICATOR(condition bool, s string) *SVGSETElement {
-	if condition {
-		e.DATASTAR_FETCH_INDICATOR(s)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_FETCH_INDICATOR from the element.
-func (e *SVGSETElement) DATASTAR_FETCH_INDICATORRemove() *SVGSETElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("DatastarFetchIndicator")
-	return e
-}
-
-// Sets the visibility of the element
-
-func (e *SVGSETElement) DATASTAR_SHOWSet(b bool) *SVGSETElement {
-	key := "data-show"
-	e.BoolAttributes.Set(key, b)
-	return e
-}
-
-func (e *SVGSETElement) DATASTAR_SHOW() *SVGSETElement {
-	return e.DATASTAR_SHOWSet(true)
-}
-
-// Triggers the callback when the element intersects the viewport
-
-func (e *SVGSETElement) DATASTAR_INTERSECTSSet(b bool) *SVGSETElement {
-	key := "data-intersects"
-	e.BoolAttributes.Set(key, b)
-	return e
-}
-
-func (e *SVGSETElement) DATASTAR_INTERSECTS() *SVGSETElement {
-	return e.DATASTAR_INTERSECTSSet(true)
-}
-
-// Teleports the element to the given selector
-
-func (e *SVGSETElement) DATASTAR_TELEPORTSet(b bool) *SVGSETElement {
-	key := "data-teleport"
-	e.BoolAttributes.Set(key, b)
-	return e
-}
-
-func (e *SVGSETElement) DATASTAR_TELEPORT() *SVGSETElement {
-	return e.DATASTAR_TELEPORTSet(true)
-}
-
-// Scrolls the element into view
-
-func (e *SVGSETElement) DATASTAR_SCROLL_INTO_VIEWSet(b bool) *SVGSETElement {
-	key := "data-scroll-into-view"
-	e.BoolAttributes.Set(key, b)
-	return e
-}
 
-func (e *SVGSETElement) DATASTAR_SCROLL_INTO_VIEW() *SVGSETElement {
-	return e.DATASTAR_SCROLL_INTO_VIEWSet(true)
-}
-
-// Setup the ViewTransitionAPI for the element
-
-func (e *SVGSETElement) DATASTAR_VIEW_TRANSITION(s string) *SVGSETElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-	key := "data-view-transition"
-	e.StringAttributes.Set(key, s)
-	return e
-}
 
-func (e *SVGSETElement) IfDATASTAR_VIEW_TRANSITION(condition bool, s string) *SVGSETElement {
-	if condition {
-		e.DATASTAR_VIEW_TRANSITION(s)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_VIEW_TRANSITION from the element.
-func (e *SVGSETElement) DATASTAR_VIEW_TRANSITIONRemove() *SVGSETElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-view-transition")
-	return e
-}

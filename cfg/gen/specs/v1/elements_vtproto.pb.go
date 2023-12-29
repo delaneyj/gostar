@@ -107,8 +107,9 @@ func (m *Attribute_Custom) CloneVT() *Attribute_Custom {
 		return (*Attribute_Custom)(nil)
 	}
 	r := &Attribute_Custom{
-		Name: m.Name,
-		Type: m.Type.CloneVT(),
+		Name:   m.Name,
+		Type:   m.Type.CloneVT(),
+		HasKey: m.HasKey,
 	}
 	if rhs := m.Modifiers; rhs != nil {
 		tmpContainer := make([]*Attribute_Custom_Modifier, len(rhs))
@@ -488,6 +489,9 @@ func (this *Attribute_Custom) EqualVT(that *Attribute_Custom) bool {
 		return false
 	}
 	if !this.Type.EqualVT(that.Type) {
+		return false
+	}
+	if this.HasKey != that.HasKey {
 		return false
 	}
 	if len(this.Modifiers) != len(that.Modifiers) {
@@ -1187,8 +1191,18 @@ func (m *Attribute_Custom) MarshalToSizedBufferVT(dAtA []byte) (int, error) {
 			i -= size
 			i = encodeVarint(dAtA, i, uint64(size))
 			i--
-			dAtA[i] = 0x1a
+			dAtA[i] = 0x22
 		}
+	}
+	if m.HasKey {
+		i--
+		if m.HasKey {
+			dAtA[i] = 1
+		} else {
+			dAtA[i] = 0
+		}
+		i--
+		dAtA[i] = 0x18
 	}
 	if m.Type != nil {
 		size, err := m.Type.MarshalToSizedBufferVT(dAtA[:i])
@@ -1977,8 +1991,18 @@ func (m *Attribute_Custom) MarshalToSizedBufferVTStrict(dAtA []byte) (int, error
 			i -= size
 			i = encodeVarint(dAtA, i, uint64(size))
 			i--
-			dAtA[i] = 0x1a
+			dAtA[i] = 0x22
 		}
+	}
+	if m.HasKey {
+		i--
+		if m.HasKey {
+			dAtA[i] = 1
+		} else {
+			dAtA[i] = 0
+		}
+		i--
+		dAtA[i] = 0x18
 	}
 	if m.Type != nil {
 		size, err := m.Type.MarshalToSizedBufferVTStrict(dAtA[:i])
@@ -2670,6 +2694,9 @@ func (m *Attribute_Custom) SizeVT() (n int) {
 	if m.Type != nil {
 		l = m.Type.SizeVT()
 		n += 1 + l + sov(uint64(l))
+	}
+	if m.HasKey {
+		n += 2
 	}
 	if len(m.Modifiers) > 0 {
 		for _, e := range m.Modifiers {
@@ -3550,6 +3577,26 @@ func (m *Attribute_Custom) UnmarshalVT(dAtA []byte) error {
 			}
 			iNdEx = postIndex
 		case 3:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field HasKey", wireType)
+			}
+			var v int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflow
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				v |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			m.HasKey = bool(v != 0)
+		case 4:
 			if wireType != 2 {
 				return fmt.Errorf("proto: wrong wireType = %d for field Modifiers", wireType)
 			}

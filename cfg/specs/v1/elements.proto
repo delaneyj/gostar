@@ -26,7 +26,8 @@ message Attribute {
     }
     string name = 1;
     Type type = 2;
-    repeated Modifier modifiers = 3;
+    bool has_key = 3;
+    repeated Modifier modifiers = 4;
   }
 
   message Type {
