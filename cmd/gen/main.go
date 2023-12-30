@@ -29,7 +29,7 @@ func run(ctx context.Context) error {
 		return fmt.Errorf("failed to generate all: %w", err)
 	}
 
-	if err := iconify.GenerateIconify(ctx, "./tmp", "./elements/iconify"); err != nil {
+	if err := iconify.GenerateIconify(ctx, "./tmp", "./elements"); err != nil {
 		return fmt.Errorf("failed to generate iconify: %w", err)
 	}
 
