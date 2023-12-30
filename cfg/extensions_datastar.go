@@ -94,7 +94,7 @@ var DatastarExtensions = []*pb.Attribute{
 		Name:        "DatastarIntersects",
 		Key:         "data-intersects",
 		Description: "Triggers the callback when the element intersects the viewport",
-		Type:        AttributeTypeCustom("intersects", false, AttributeTypeBool()),
+		Type:        AttributeTypeCustom("intersects", false, AttributeTypeString()),
 	},
 	{
 		Name:        "DatastarTeleport",

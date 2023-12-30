@@ -198,6 +198,12 @@ var HTML = &pb.Namespace{
 		},
 
 		{
+			Key:         "role",
+			Description: `The role global attribute is used to define the purpose or state of an element to the browser, in order to facilitate assistive technology such as screen readers. It is a simple string value that can be used to describe the role of an element.`,
+			Type:        AttributeTypeString(),
+		},
+
+		{
 
 			Key:         "slot",
 			Description: `The slot global attribute assigns a slot in a shadow DOM shadow tree to an element: An element with a slot attribute is assigned to the slot created by the <slot> element whose name attribute's value matches that slot attribute's value.`,

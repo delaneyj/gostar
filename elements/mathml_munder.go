@@ -834,14 +834,31 @@ func (e *MathMLMUNDERElement) DATASTAR_SHOW() *MathMLMUNDERElement {
 
 // Triggers the callback when the element intersects the viewport
 
-func (e *MathMLMUNDERElement) DATASTAR_INTERSECTSSet(b bool) *MathMLMUNDERElement {
+func (e *MathMLMUNDERElement) DATASTAR_INTERSECTS(expression string) *MathMLMUNDERElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
 	key := "data-intersects"
-	e.BoolAttributes.Set(key, b)
+
+	e.StringAttributes.Set(key, expression)
 	return e
 }
 
-func (e *MathMLMUNDERElement) DATASTAR_INTERSECTS() *MathMLMUNDERElement {
-	return e.DATASTAR_INTERSECTSSet(true)
+func (e *MathMLMUNDERElement) IfDATASTAR_INTERSECTS(condition bool, expression string) *MathMLMUNDERElement {
+	if condition {
+		e.DATASTAR_INTERSECTS(expression)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_INTERSECTS from the element.
+func (e *MathMLMUNDERElement) DATASTAR_INTERSECTSRemove() *MathMLMUNDERElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-intersects")
+	return e
 }
 
 // Teleports the element to the given selector

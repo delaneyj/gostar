@@ -756,14 +756,31 @@ func (e *SVGLINEARGRADIENTElement) DATASTAR_SHOW() *SVGLINEARGRADIENTElement {
 
 // Triggers the callback when the element intersects the viewport
 
-func (e *SVGLINEARGRADIENTElement) DATASTAR_INTERSECTSSet(b bool) *SVGLINEARGRADIENTElement {
+func (e *SVGLINEARGRADIENTElement) DATASTAR_INTERSECTS(expression string) *SVGLINEARGRADIENTElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
 	key := "data-intersects"
-	e.BoolAttributes.Set(key, b)
+
+	e.StringAttributes.Set(key, expression)
 	return e
 }
 
-func (e *SVGLINEARGRADIENTElement) DATASTAR_INTERSECTS() *SVGLINEARGRADIENTElement {
-	return e.DATASTAR_INTERSECTSSet(true)
+func (e *SVGLINEARGRADIENTElement) IfDATASTAR_INTERSECTS(condition bool, expression string) *SVGLINEARGRADIENTElement {
+	if condition {
+		e.DATASTAR_INTERSECTS(expression)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_INTERSECTS from the element.
+func (e *SVGLINEARGRADIENTElement) DATASTAR_INTERSECTSRemove() *SVGLINEARGRADIENTElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-intersects")
+	return e
 }
 
 // Teleports the element to the given selector

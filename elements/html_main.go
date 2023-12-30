@@ -1087,6 +1087,35 @@ func (e *MAINElement) POPVERRemove(c MainPopverChoice) *MAINElement {
 	return e
 }
 
+// The role global attribute is used to define the purpose or state of an element
+// to the browser, in order to facilitate assistive technology such as screen
+// readers
+// It is a simple string value that can be used to describe the role of an
+// element.
+func (e *MAINElement) ROLE(s string) *MAINElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	e.StringAttributes.Set("role", s)
+	return e
+}
+
+func (e *MAINElement) IfROLE(condition bool, s string) *MAINElement {
+	if condition {
+		e.ROLE(s)
+	}
+	return e
+}
+
+// Remove the attribute ROLE from the element.
+func (e *MAINElement) ROLERemove(s string) *MAINElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("role")
+	return e
+}
+
 // The slot global attribute assigns a slot in a shadow DOM shadow tree to an
 // element: An element with a slot attribute is assigned to the slot created by
 // the <slot> element whose name attribute's value matches that slot attribute's
@@ -1661,14 +1690,31 @@ func (e *MAINElement) DATASTAR_SHOW() *MAINElement {
 
 // Triggers the callback when the element intersects the viewport
 
-func (e *MAINElement) DATASTAR_INTERSECTSSet(b bool) *MAINElement {
+func (e *MAINElement) DATASTAR_INTERSECTS(expression string) *MAINElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
 	key := "data-intersects"
-	e.BoolAttributes.Set(key, b)
+
+	e.StringAttributes.Set(key, expression)
 	return e
 }
 
-func (e *MAINElement) DATASTAR_INTERSECTS() *MAINElement {
-	return e.DATASTAR_INTERSECTSSet(true)
+func (e *MAINElement) IfDATASTAR_INTERSECTS(condition bool, expression string) *MAINElement {
+	if condition {
+		e.DATASTAR_INTERSECTS(expression)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_INTERSECTS from the element.
+func (e *MAINElement) DATASTAR_INTERSECTSRemove() *MAINElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-intersects")
+	return e
 }
 
 // Teleports the element to the given selector

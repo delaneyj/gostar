@@ -764,14 +764,31 @@ func (e *SVGFECOMPOSITEElement) DATASTAR_SHOW() *SVGFECOMPOSITEElement {
 
 // Triggers the callback when the element intersects the viewport
 
-func (e *SVGFECOMPOSITEElement) DATASTAR_INTERSECTSSet(b bool) *SVGFECOMPOSITEElement {
+func (e *SVGFECOMPOSITEElement) DATASTAR_INTERSECTS(expression string) *SVGFECOMPOSITEElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
 	key := "data-intersects"
-	e.BoolAttributes.Set(key, b)
+
+	e.StringAttributes.Set(key, expression)
 	return e
 }
 
-func (e *SVGFECOMPOSITEElement) DATASTAR_INTERSECTS() *SVGFECOMPOSITEElement {
-	return e.DATASTAR_INTERSECTSSet(true)
+func (e *SVGFECOMPOSITEElement) IfDATASTAR_INTERSECTS(condition bool, expression string) *SVGFECOMPOSITEElement {
+	if condition {
+		e.DATASTAR_INTERSECTS(expression)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_INTERSECTS from the element.
+func (e *SVGFECOMPOSITEElement) DATASTAR_INTERSECTSRemove() *SVGFECOMPOSITEElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-intersects")
+	return e
 }
 
 // Teleports the element to the given selector
