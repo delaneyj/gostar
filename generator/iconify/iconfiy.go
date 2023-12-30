@@ -126,27 +126,42 @@ func GenerateIconify(ctx context.Context, gentmpDir, output string) error {
 				revisedName = toolbelt.Pascal(strings.Join(parts, " "))
 			}
 
+			revisedNameLower := toolbelt.Lower(revisedName)
 			if _, ok := lo.Find(
 				[]string{
-					"Group",
+					"group",
+					"text",
+					"error",
+					"element",
+					"a",
+					"i",
+					"b",
+					"q",
+					"s",
+					"p",
+					"u",
+					"range",
+					"tern",
 				},
 				func(s string) bool {
-					return revisedName == s
+					return revisedNameLower == s
 				},
 			); ok {
 				revisedName = fmt.Sprintf("%sIcon", revisedName)
 			}
 
-			if namesUsed.Has(revisedName) {
+			name := toolbelt.ToCasedString(revisedName)
+			if namesUsed.Has(name.Pascal) {
 				continue
 			}
+			namesUsed.Insert(name.Pascal)
 
 			namedIcons = append(namedIcons, NamedIcon{
 				OriginalName: iconName,
-				Name:         toolbelt.ToCasedString(revisedName),
+				Name:         name,
 				Icon:         icon,
 			})
-			namesUsed.Insert(revisedName)
+
 		}
 
 		slices.SortFunc(namedIcons, func(a, b NamedIcon) int {

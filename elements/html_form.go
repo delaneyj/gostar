@@ -50,6 +50,39 @@ func (e *FORMElement) TernChildren(condition bool, trueChildren, falseChildren E
 	return e
 }
 
+func (e *FORMElement) Attr(name string, value string) *FORMElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	e.StringAttributes.Set(name, value)
+	return e
+}
+
+func (e *FORMElement) Attrs(attrs ...string) *FORMElement {
+	if len(attrs)%2 != 0 {
+		panic("attrs must be a multiple of 2")
+	}
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	for i := 0; i < len(attrs); i += 2 {
+		k := attrs[i]
+		v := attrs[i+1]
+		e.StringAttributes.Set(k, v)
+	}
+	return e
+}
+
+func (e *FORMElement) AttrsMap(attrs map[string]string) *FORMElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	for k, v := range attrs {
+		e.StringAttributes.Set(k, v)
+	}
+	return e
+}
+
 func (e *FORMElement) Text(text string) *FORMElement {
 	e.Descendants = append(e.Descendants, Text(text))
 	return e

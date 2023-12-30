@@ -11,11 +11,18 @@ const (
 	fill = "currentColor"
 )
 
+{{$baseIconName := printf "%sIcon" .Name.Pascal -}}
+type {{$baseIconName}} struct {
+	*SVGSVGElement
+}
+
 {{range .Icons -}}
-func {{.Name.Pascal}}(children ...ElementRenderer) *SVGSVGElement {
-	return SVG_SVG(
-		Text(`{{.Icon.SvgBody}}`),
-	).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...)
+func {{.Name.Pascal}}(children ...ElementRenderer) *{{$baseIconName}} {
+	return &{{$baseIconName}}{
+		SVGSVGElement: SVG_SVG(
+			Text(`{{.Icon.SvgBody}}`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
 }
 
 {{end}}

@@ -51,6 +51,39 @@ func (e *SVGMARKERElement) TernChildren(condition bool, trueChildren, falseChild
 	return e
 }
 
+func (e *SVGMARKERElement) Attr(name string, value string) *SVGMARKERElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	e.StringAttributes.Set(name, value)
+	return e
+}
+
+func (e *SVGMARKERElement) Attrs(attrs ...string) *SVGMARKERElement {
+	if len(attrs)%2 != 0 {
+		panic("attrs must be a multiple of 2")
+	}
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	for i := 0; i < len(attrs); i += 2 {
+		k := attrs[i]
+		v := attrs[i+1]
+		e.StringAttributes.Set(k, v)
+	}
+	return e
+}
+
+func (e *SVGMARKERElement) AttrsMap(attrs map[string]string) *SVGMARKERElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	for k, v := range attrs {
+		e.StringAttributes.Set(k, v)
+	}
+	return e
+}
+
 func (e *SVGMARKERElement) Text(text string) *SVGMARKERElement {
 	e.Descendants = append(e.Descendants, Text(text))
 	return e

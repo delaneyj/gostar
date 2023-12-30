@@ -53,6 +53,39 @@ func (e *MAINElement) TernChildren(condition bool, trueChildren, falseChildren E
 	return e
 }
 
+func (e *MAINElement) Attr(name string, value string) *MAINElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	e.StringAttributes.Set(name, value)
+	return e
+}
+
+func (e *MAINElement) Attrs(attrs ...string) *MAINElement {
+	if len(attrs)%2 != 0 {
+		panic("attrs must be a multiple of 2")
+	}
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	for i := 0; i < len(attrs); i += 2 {
+		k := attrs[i]
+		v := attrs[i+1]
+		e.StringAttributes.Set(k, v)
+	}
+	return e
+}
+
+func (e *MAINElement) AttrsMap(attrs map[string]string) *MAINElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	for k, v := range attrs {
+		e.StringAttributes.Set(k, v)
+	}
+	return e
+}
+
 func (e *MAINElement) Text(text string) *MAINElement {
 	e.Descendants = append(e.Descendants, Text(text))
 	return e

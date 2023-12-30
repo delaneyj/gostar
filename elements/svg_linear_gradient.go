@@ -50,6 +50,39 @@ func (e *SVGLINEARGRADIENTElement) TernChildren(condition bool, trueChildren, fa
 	return e
 }
 
+func (e *SVGLINEARGRADIENTElement) Attr(name string, value string) *SVGLINEARGRADIENTElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	e.StringAttributes.Set(name, value)
+	return e
+}
+
+func (e *SVGLINEARGRADIENTElement) Attrs(attrs ...string) *SVGLINEARGRADIENTElement {
+	if len(attrs)%2 != 0 {
+		panic("attrs must be a multiple of 2")
+	}
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	for i := 0; i < len(attrs); i += 2 {
+		k := attrs[i]
+		v := attrs[i+1]
+		e.StringAttributes.Set(k, v)
+	}
+	return e
+}
+
+func (e *SVGLINEARGRADIENTElement) AttrsMap(attrs map[string]string) *SVGLINEARGRADIENTElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	for k, v := range attrs {
+		e.StringAttributes.Set(k, v)
+	}
+	return e
+}
+
 func (e *SVGLINEARGRADIENTElement) Text(text string) *SVGLINEARGRADIENTElement {
 	e.Descendants = append(e.Descendants, Text(text))
 	return e

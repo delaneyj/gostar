@@ -50,6 +50,39 @@ func (e *TDElement) TernChildren(condition bool, trueChildren, falseChildren Ele
 	return e
 }
 
+func (e *TDElement) Attr(name string, value string) *TDElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	e.StringAttributes.Set(name, value)
+	return e
+}
+
+func (e *TDElement) Attrs(attrs ...string) *TDElement {
+	if len(attrs)%2 != 0 {
+		panic("attrs must be a multiple of 2")
+	}
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	for i := 0; i < len(attrs); i += 2 {
+		k := attrs[i]
+		v := attrs[i+1]
+		e.StringAttributes.Set(k, v)
+	}
+	return e
+}
+
+func (e *TDElement) AttrsMap(attrs map[string]string) *TDElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	for k, v := range attrs {
+		e.StringAttributes.Set(k, v)
+	}
+	return e
+}
+
 func (e *TDElement) Text(text string) *TDElement {
 	e.Descendants = append(e.Descendants, Text(text))
 	return e

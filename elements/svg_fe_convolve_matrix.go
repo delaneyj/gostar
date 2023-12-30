@@ -50,6 +50,39 @@ func (e *SVGFECONVOLVEMATRIXElement) TernChildren(condition bool, trueChildren, 
 	return e
 }
 
+func (e *SVGFECONVOLVEMATRIXElement) Attr(name string, value string) *SVGFECONVOLVEMATRIXElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	e.StringAttributes.Set(name, value)
+	return e
+}
+
+func (e *SVGFECONVOLVEMATRIXElement) Attrs(attrs ...string) *SVGFECONVOLVEMATRIXElement {
+	if len(attrs)%2 != 0 {
+		panic("attrs must be a multiple of 2")
+	}
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	for i := 0; i < len(attrs); i += 2 {
+		k := attrs[i]
+		v := attrs[i+1]
+		e.StringAttributes.Set(k, v)
+	}
+	return e
+}
+
+func (e *SVGFECONVOLVEMATRIXElement) AttrsMap(attrs map[string]string) *SVGFECONVOLVEMATRIXElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	for k, v := range attrs {
+		e.StringAttributes.Set(k, v)
+	}
+	return e
+}
+
 func (e *SVGFECONVOLVEMATRIXElement) Text(text string) *SVGFECONVOLVEMATRIXElement {
 	e.Descendants = append(e.Descendants, Text(text))
 	return e

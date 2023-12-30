@@ -50,6 +50,39 @@ func (e *MathMLMUNDEROVERElement) TernChildren(condition bool, trueChildren, fal
 	return e
 }
 
+func (e *MathMLMUNDEROVERElement) Attr(name string, value string) *MathMLMUNDEROVERElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	e.StringAttributes.Set(name, value)
+	return e
+}
+
+func (e *MathMLMUNDEROVERElement) Attrs(attrs ...string) *MathMLMUNDEROVERElement {
+	if len(attrs)%2 != 0 {
+		panic("attrs must be a multiple of 2")
+	}
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	for i := 0; i < len(attrs); i += 2 {
+		k := attrs[i]
+		v := attrs[i+1]
+		e.StringAttributes.Set(k, v)
+	}
+	return e
+}
+
+func (e *MathMLMUNDEROVERElement) AttrsMap(attrs map[string]string) *MathMLMUNDEROVERElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	for k, v := range attrs {
+		e.StringAttributes.Set(k, v)
+	}
+	return e
+}
+
 func (e *MathMLMUNDEROVERElement) Text(text string) *MathMLMUNDEROVERElement {
 	e.Descendants = append(e.Descendants, Text(text))
 	return e

@@ -52,6 +52,39 @@ func (e *CODEElement) TernChildren(condition bool, trueChildren, falseChildren E
 	return e
 }
 
+func (e *CODEElement) Attr(name string, value string) *CODEElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	e.StringAttributes.Set(name, value)
+	return e
+}
+
+func (e *CODEElement) Attrs(attrs ...string) *CODEElement {
+	if len(attrs)%2 != 0 {
+		panic("attrs must be a multiple of 2")
+	}
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	for i := 0; i < len(attrs); i += 2 {
+		k := attrs[i]
+		v := attrs[i+1]
+		e.StringAttributes.Set(k, v)
+	}
+	return e
+}
+
+func (e *CODEElement) AttrsMap(attrs map[string]string) *CODEElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	for k, v := range attrs {
+		e.StringAttributes.Set(k, v)
+	}
+	return e
+}
+
 func (e *CODEElement) Text(text string) *CODEElement {
 	e.Descendants = append(e.Descendants, Text(text))
 	return e

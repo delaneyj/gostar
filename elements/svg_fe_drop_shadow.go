@@ -51,6 +51,39 @@ func (e *SVGFEDROPSHADOWElement) TernChildren(condition bool, trueChildren, fals
 	return e
 }
 
+func (e *SVGFEDROPSHADOWElement) Attr(name string, value string) *SVGFEDROPSHADOWElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	e.StringAttributes.Set(name, value)
+	return e
+}
+
+func (e *SVGFEDROPSHADOWElement) Attrs(attrs ...string) *SVGFEDROPSHADOWElement {
+	if len(attrs)%2 != 0 {
+		panic("attrs must be a multiple of 2")
+	}
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	for i := 0; i < len(attrs); i += 2 {
+		k := attrs[i]
+		v := attrs[i+1]
+		e.StringAttributes.Set(k, v)
+	}
+	return e
+}
+
+func (e *SVGFEDROPSHADOWElement) AttrsMap(attrs map[string]string) *SVGFEDROPSHADOWElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	for k, v := range attrs {
+		e.StringAttributes.Set(k, v)
+	}
+	return e
+}
+
 func (e *SVGFEDROPSHADOWElement) Text(text string) *SVGFEDROPSHADOWElement {
 	e.Descendants = append(e.Descendants, Text(text))
 	return e
