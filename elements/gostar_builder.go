@@ -350,6 +350,14 @@ func Range[T any](values []T, cb func(T) ElementRenderer) ElementRenderer {
 	return Group(children...)
 }
 
+func RangeI[T any](values []T, cb func(int, T) ElementRenderer) ElementRenderer {
+	children := make([]ElementRenderer, 0, len(values))
+	for i, value := range values {
+		children = append(children, cb(i, value))
+	}
+	return Group(children...)
+}
+
 func NewElement(tag string, children ...ElementRenderer) *Element {
 	return &Element{
 		Tag:         []byte(tag),
