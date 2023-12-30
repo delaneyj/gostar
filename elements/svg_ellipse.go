@@ -3,743 +3,703 @@
 // Description:
 package elements
 
-import(
-    "fmt"
-    "time"
-    "github.com/igrmk/treemap/v2"
-    "github.com/goccy/go-json"
-    "github.com/samber/lo"
+import (
+	"fmt"
+	"time"
+
+	"github.com/goccy/go-json"
+	"github.com/igrmk/treemap/v2"
+	"github.com/samber/lo"
 )
 
-// The <ellipse> SVG element is an SVG basic shape, used to create ellipses based 
-// on a center coordinate, and both their x and y radius. 
+// The <ellipse> SVG element is an SVG basic shape, used to create ellipses based
+// on a center coordinate, and both their x and y radius.
 type SVGELLIPSEElement struct {
-    *Element
+	*Element
 }
 
 // Create a new SVGELLIPSEElement element.
 // This will create a new element with the tag
 // "ellipse" during rendering.
 func SVG_ELLIPSE(children ...ElementRenderer) *SVGELLIPSEElement {
-    e := NewElement("ellipse", children...)
-    e.IsSelfClosing = false
-    e.Descendants = children
+	e := NewElement("ellipse", children...)
+	e.IsSelfClosing = false
+	e.Descendants = children
 
-    return &SVGELLIPSEElement{ Element: e }
+	return &SVGELLIPSEElement{Element: e}
 }
 
 func (e *SVGELLIPSEElement) Children(children ...ElementRenderer) *SVGELLIPSEElement {
-    e.Descendants = append(e.Descendants, children...)
-    return e
+	e.Descendants = append(e.Descendants, children...)
+	return e
 }
 
-func(e *SVGELLIPSEElement) IfChildren(condition bool, children ...ElementRenderer) *SVGELLIPSEElement {
-    if condition {
-        e.Descendants = append(e.Descendants, children...)
-    }
-    return e
+func (e *SVGELLIPSEElement) IfChildren(condition bool, children ...ElementRenderer) *SVGELLIPSEElement {
+	if condition {
+		e.Descendants = append(e.Descendants, children...)
+	}
+	return e
 }
 
-func(e *SVGELLIPSEElement) TernChildren(condition bool, trueChildren, falseChildren ElementRenderer) *SVGELLIPSEElement {
-    if condition {
-        e.Descendants = append(e.Descendants, trueChildren)
-    } else {
-        e.Descendants = append(e.Descendants, falseChildren)
-    }
-    return e
+func (e *SVGELLIPSEElement) TernChildren(condition bool, trueChildren, falseChildren ElementRenderer) *SVGELLIPSEElement {
+	if condition {
+		e.Descendants = append(e.Descendants, trueChildren)
+	} else {
+		e.Descendants = append(e.Descendants, falseChildren)
+	}
+	return e
 }
 
 func (e *SVGELLIPSEElement) Text(text string) *SVGELLIPSEElement {
-    e.Descendants = append(e.Descendants, Text(text))
-    return e
+	e.Descendants = append(e.Descendants, Text(text))
+	return e
 }
 
 func (e *SVGELLIPSEElement) TextF(format string, args ...any) *SVGELLIPSEElement {
-    return e.Text(fmt.Sprintf(format, args...))
+	return e.Text(fmt.Sprintf(format, args...))
 }
 
 func (e *SVGELLIPSEElement) IfText(condition bool, text string) *SVGELLIPSEElement {
-    if condition {
-        e.Descendants = append(e.Descendants, Text(text))
-    }
-    return e
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
 }
 
 func (e *SVGELLIPSEElement) IfTextF(condition bool, format string, args ...any) *SVGELLIPSEElement {
-    if condition {
-        e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
-    }
-    return e
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
 }
 
 func (e *SVGELLIPSEElement) Escaped(text string) *SVGELLIPSEElement {
-    e.Descendants = append(e.Descendants, Escaped(text))
-    return e
+	e.Descendants = append(e.Descendants, Escaped(text))
+	return e
 }
 
 func (e *SVGELLIPSEElement) IfEscaped(condition bool, text string) *SVGELLIPSEElement {
-    if condition {
-        e.Descendants = append(e.Descendants, Escaped(text))
-    }
-    return e
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
 }
 
 func (e *SVGELLIPSEElement) EscapedF(format string, args ...any) *SVGELLIPSEElement {
-    return e.Escaped(fmt.Sprintf(format, args...))
+	return e.Escaped(fmt.Sprintf(format, args...))
 }
 
 func (e *SVGELLIPSEElement) IfEscapedF(condition bool, format string, args ...any) *SVGELLIPSEElement {
-    if condition {
-        e.Descendants = append(e.Descendants, EscapedF(format, args...))
-    }
-    return e
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *SVGELLIPSEElement) CustomData(key, value string) *SVGELLIPSEElement {
-    if e.CustomDataAttributes == nil {
-        e.CustomDataAttributes = treemap.New[string,string]()
-    }
+	if e.CustomDataAttributes == nil {
+		e.CustomDataAttributes = treemap.New[string, string]()
+	}
 	e.CustomDataAttributes.Set(key, value)
 	return e
 }
 
 func (e *SVGELLIPSEElement) IfCustomData(condition bool, key, value string) *SVGELLIPSEElement {
-    if condition {
-        e.CustomData(key, value)
-    }
-    return e
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
 }
 
 func (e *SVGELLIPSEElement) CustomDataF(key, format string, args ...any) *SVGELLIPSEElement {
-    return e.CustomData(key, fmt.Sprintf(format, args...))
+	return e.CustomData(key, fmt.Sprintf(format, args...))
 }
 
 func (e *SVGELLIPSEElement) IfCustomDataF(condition bool, key, format string, args ...any) *SVGELLIPSEElement {
-    if condition {
-        e.CustomData(key, fmt.Sprintf(format, args...))
-    }
-    return e
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *SVGELLIPSEElement) CustomDataRemove(key string) *SVGELLIPSEElement {
 	if e.CustomDataAttributes == nil {
 		return e
 	}
-    e.CustomDataAttributes.Del(key)
+	e.CustomDataAttributes.Del(key)
 	return e
 }
 
-
-    // The x-axis coordinate of the center of the ellipse. 
-    func(e *SVGELLIPSEElement) CX(f float64) *SVGELLIPSEElement{
-            if e.FloatAttributes == nil {
-                e.FloatAttributes = treemap.New[string,float64]()
-            }
-            e.FloatAttributes.Set("cx", f)
-            return e
-        }
-
-        func (e *SVGELLIPSEElement) IfCX(condition bool, f float64) *SVGELLIPSEElement {
-            if condition {
-                e.CX(f)
-            }
-            return e
-        }
-
-    
-
-    // The y-axis coordinate of the center of the ellipse. 
-    func(e *SVGELLIPSEElement) CY(f float64) *SVGELLIPSEElement{
-            if e.FloatAttributes == nil {
-                e.FloatAttributes = treemap.New[string,float64]()
-            }
-            e.FloatAttributes.Set("cy", f)
-            return e
-        }
-
-        func (e *SVGELLIPSEElement) IfCY(condition bool, f float64) *SVGELLIPSEElement {
-            if condition {
-                e.CY(f)
-            }
-            return e
-        }
-
-    
-
-    // The x-axis radius of the ellipse. 
-    func(e *SVGELLIPSEElement) RX(f float64) *SVGELLIPSEElement{
-            if e.FloatAttributes == nil {
-                e.FloatAttributes = treemap.New[string,float64]()
-            }
-            e.FloatAttributes.Set("rx", f)
-            return e
-        }
-
-        func (e *SVGELLIPSEElement) IfRX(condition bool, f float64) *SVGELLIPSEElement {
-            if condition {
-                e.RX(f)
-            }
-            return e
-        }
-
-    
-
-    // The y-axis radius of the ellipse. 
-    func(e *SVGELLIPSEElement) RY(f float64) *SVGELLIPSEElement{
-            if e.FloatAttributes == nil {
-                e.FloatAttributes = treemap.New[string,float64]()
-            }
-            e.FloatAttributes.Set("ry", f)
-            return e
-        }
-
-        func (e *SVGELLIPSEElement) IfRY(condition bool, f float64) *SVGELLIPSEElement {
-            if condition {
-                e.RY(f)
-            }
-            return e
-        }
-
-    
-
-    // Specifies a unique id for an element 
-    func(e *SVGELLIPSEElement) ID(s string) *SVGELLIPSEElement{
-            if e.StringAttributes == nil {
-                e.StringAttributes = treemap.New[string,string]()
-            }
-            e.StringAttributes.Set("id", s)
-            return e
-        }
-
-        func(e *SVGELLIPSEElement) IfID(condition bool, s string) *SVGELLIPSEElement{
-            if condition {
-                e.ID(s)
-            }
-            return e
-        }
-
-        // Remove the attribute ID from the element.
-        func(e *SVGELLIPSEElement) IDRemove(s string) *SVGELLIPSEElement{
-            if e.StringAttributes == nil {
-                return e
-            }
-            e.StringAttributes.Del("id")
-            return e
-        }
-    
-
-    // Specifies one or more classnames for an element (refers to a class in a style 
-// sheet) 
-    func(e *SVGELLIPSEElement) CLASS(s ...string) *SVGELLIPSEElement{
-            if e.DelimitedStrings == nil {
-                e.DelimitedStrings = treemap.New[string,*DelimitedBuilder[string]]()
-            }
-            ds, ok := e.DelimitedStrings.Get("class")
-            if !ok {
-                ds = NewDelimitedBuilder[string](" ")
-                e.DelimitedStrings.Set("class", ds)
-            }
-            ds.Add(s...)
-            return e
-        }
-
-        func(e *SVGELLIPSEElement) IfCLASS(condition bool, s ...string) *SVGELLIPSEElement{
-            if condition {
-                e.CLASS(s...)
-            }
-            return e
-        }
-
-        // Remove the attribute CLASS from the element.
-        func(e *SVGELLIPSEElement) CLASSRemove(s ...string) *SVGELLIPSEElement{
-            if e.DelimitedStrings == nil {
-                return e
-            }
-            ds, ok := e.DelimitedStrings.Get("class")
-            if !ok {
-                return e
-            }
-            ds.Remove(s ...)
-            return e
-        }
-
-    
-
-    // Specifies an inline CSS style for an element 
-    func (e *SVGELLIPSEElement) STYLEF(k string, format string, args ...any) *SVGELLIPSEElement {
-            return e.STYLE(k, fmt.Sprintf(format, args...))
-        }
-
-        func (e *SVGELLIPSEElement) IfSTYLE(condition bool, k string, v string) *SVGELLIPSEElement {
-            if condition {
-                e.STYLE(k, v)
-            }
-            return e
-        }
-
-        func (e *SVGELLIPSEElement) STYLE(k string, v string) *SVGELLIPSEElement {
-            if e.KVStrings == nil {
-                e.KVStrings = treemap.New[string,*KVBuilder]()
-            }
-            kv, ok := e.KVStrings.Get("style")
-            if !ok {
-                kv = NewKVBuilder(":", ";")
-                e.KVStrings.Set("style", kv)
-            }
-            kv.Add(k, v)
-            return e
-        }
-
-        func (e *SVGELLIPSEElement) IfSTYLEF(condition bool, k string, format string, args ...any) *SVGELLIPSEElement {
-            if condition {
-                e.STYLE(k, fmt.Sprintf(format, args...))
-            }
-            return e
-        }
-
-        // Add the attributes in the map to the element.
-        func (e *SVGELLIPSEElement) STYLEMap(m map[string]string) *SVGELLIPSEElement {
-            if e.KVStrings == nil {
-                e.KVStrings = treemap.New[string,*KVBuilder]()
-            }
-            kv, ok := e.KVStrings.Get("style")
-            if !ok {
-                kv = NewKVBuilder(":", ";")
-                e.KVStrings.Set("style", kv)
-            }
-            for k, v := range m {
-                kv.Add(k, v)
-            }
-            return e
-        }
-
-        // Add pairs of attributes to the element.
-        func (e *SVGELLIPSEElement) STYLEPairs(pairs ...string) *SVGELLIPSEElement {
-            if len(pairs) % 2 != 0 {
-                panic("Must have an even number of pairs")
-            }
-            if e.KVStrings == nil {
-                e.KVStrings = treemap.New[string,*KVBuilder]()
-            }
-            kv, ok := e.KVStrings.Get("style")
-            if !ok {
-                kv = NewKVBuilder(":", ";")
-                e.KVStrings.Set("style", kv)
-            }
-
-            for i := 0; i < len(pairs); i += 2 {
-                kv.Add(pairs[i], pairs[i+1])
-            }
-
-            return e
-        }
-
-        func (e *SVGELLIPSEElement) IfSTYLEPairs(condition bool, pairs ...string) *SVGELLIPSEElement {
-            if condition {
-                e.STYLEPairs(pairs...)
-            }
-            return e
-        }
-
-        // Remove the attribute STYLE from the element.
-        func (e *SVGELLIPSEElement) STYLERemove(keys ...string) *SVGELLIPSEElement {
-            if e.KVStrings == nil {
-                return e
-            }
-            kv, ok := e.KVStrings.Get("style")
-            if !ok {
-                return e
-            }
-            for _, k := range keys {
-                kv.Remove(k)
-            }
-            return e
-        }
-
-    
-
-    // Merges the store with the given object 
-    
-        func(e *SVGELLIPSEElement) DATASTAR_MERGE_STORE(v any) *SVGELLIPSEElement{
-                if e.CustomDataAttributes == nil {
-                    e.CustomDataAttributes = treemap.New[string,string]()
-                }
-                b, err := json.Marshal(v)
-                if err != nil {
-                    panic(err)
-                }
-                e.CustomDataAttributes.Set("data-merge-store", string(b))
-                return e
-            }
-
-        
-
-    // Sets the reference of the element 
-    
-        func(e *SVGELLIPSEElement) DATASTAR_REF(expression string) *SVGELLIPSEElement{
-                if e.StringAttributes == nil {
-                    e.StringAttributes = treemap.New[string,string]()
-                }
-                
-                key := "data-ref"
-                
-                e.StringAttributes.Set(key, expression)
-                return e
-            }
-
-            func(e *SVGELLIPSEElement) IfDATASTAR_REF(condition bool, expression string) *SVGELLIPSEElement{
-                if condition {
-                    e.DATASTAR_REF( expression, )
-                }
-                return e
-            }
-
-            // Remove the attribute DATASTAR_REF from the element.
-            func(e *SVGELLIPSEElement) DATASTAR_REFRemove() *SVGELLIPSEElement{
-                if e.StringAttributes == nil {
-                    return e
-                }
-                e.StringAttributes.Del("data-ref")
-                return e
-            }
-
-        
-
-    // Sets the value of the element 
-    
-        func(e *SVGELLIPSEElement) DATASTAR_BIND(key string, expression string) *SVGELLIPSEElement{
-                if e.StringAttributes == nil {
-                    e.StringAttributes = treemap.New[string,string]()
-                }
-                
-                key = fmt.Sprintf("data-bind-%s", key)
-                
-                e.StringAttributes.Set(key, expression)
-                return e
-            }
-
-            func(e *SVGELLIPSEElement) IfDATASTAR_BIND(condition bool, key string, expression string) *SVGELLIPSEElement{
-                if condition {
-                    e.DATASTAR_BIND(key,  expression, )
-                }
-                return e
-            }
-
-            // Remove the attribute DATASTAR_BIND from the element.
-            func(e *SVGELLIPSEElement) DATASTAR_BINDRemove() *SVGELLIPSEElement{
-                if e.StringAttributes == nil {
-                    return e
-                }
-                e.StringAttributes.Del("data-bind")
-                return e
-            }
-
-        
-
-    // Sets the value of the element 
-    
-        func(e *SVGELLIPSEElement) DATASTAR_MODEL(expression string) *SVGELLIPSEElement{
-                if e.StringAttributes == nil {
-                    e.StringAttributes = treemap.New[string,string]()
-                }
-                
-                key := "data-model"
-                
-                e.StringAttributes.Set(key, expression)
-                return e
-            }
-
-            func(e *SVGELLIPSEElement) IfDATASTAR_MODEL(condition bool, expression string) *SVGELLIPSEElement{
-                if condition {
-                    e.DATASTAR_MODEL( expression, )
-                }
-                return e
-            }
-
-            // Remove the attribute DATASTAR_MODEL from the element.
-            func(e *SVGELLIPSEElement) DATASTAR_MODELRemove() *SVGELLIPSEElement{
-                if e.StringAttributes == nil {
-                    return e
-                }
-                e.StringAttributes.Del("data-model")
-                return e
-            }
-
-        
-
-    // Sets the textContent of the element 
-    
-        func(e *SVGELLIPSEElement) DATASTAR_TEXT(expression string) *SVGELLIPSEElement{
-                if e.StringAttributes == nil {
-                    e.StringAttributes = treemap.New[string,string]()
-                }
-                
-                key := "data-text"
-                
-                e.StringAttributes.Set(key, expression)
-                return e
-            }
-
-            func(e *SVGELLIPSEElement) IfDATASTAR_TEXT(condition bool, expression string) *SVGELLIPSEElement{
-                if condition {
-                    e.DATASTAR_TEXT( expression, )
-                }
-                return e
-            }
-
-            // Remove the attribute DATASTAR_TEXT from the element.
-            func(e *SVGELLIPSEElement) DATASTAR_TEXTRemove() *SVGELLIPSEElement{
-                if e.StringAttributes == nil {
-                    return e
-                }
-                e.StringAttributes.Del("data-text")
-                return e
-            }
-
-        
-
-    // Sets the event handler of the element 
-    
-        type SVGEllipseDataOnMod customDataKeyModifier
-
-            
-            // Debounces the event handler 
-            func SVGEllipseDataOnModDebounce(
-                    d time.Duration,
-            ) SVGEllipseDataOnMod {
-                return func() string {return fmt.Sprintf("debounce_%dms", d.Milliseconds())
-                }
-            }
-            
-            // Throttles the event handler 
-            func SVGEllipseDataOnModThrottle(
-                    d time.Duration,
-            ) SVGEllipseDataOnMod {
-                return func() string {return fmt.Sprintf("throttle_%dms", d.Milliseconds())
-                }
-            }
-            
-        func(e *SVGELLIPSEElement) DATASTAR_ON(key string, expression string, modifiers ...SVGEllipseDataOnMod) *SVGELLIPSEElement{
-                if e.StringAttributes == nil {
-                    e.StringAttributes = treemap.New[string,string]()
-                }
-                
-                key = fmt.Sprintf("data-on-%s", key)
-                
-                customMods := lo.Map(modifiers, func(m SVGEllipseDataOnMod, i int) customDataKeyModifier  {
-                    return customDataKeyModifier(m)
-                })
-                key = customDataKey(key, customMods...)
-                e.StringAttributes.Set(key, expression)
-                return e
-            }
-
-            func(e *SVGELLIPSEElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SVGEllipseDataOnMod) *SVGELLIPSEElement{
-                if condition {
-                    e.DATASTAR_ON(key,  expression,  modifiers...)
-                }
-                return e
-            }
-
-            // Remove the attribute DATASTAR_ON from the element.
-            func(e *SVGELLIPSEElement) DATASTAR_ONRemove() *SVGELLIPSEElement{
-                if e.StringAttributes == nil {
-                    return e
-                }
-                e.StringAttributes.Del("data-on")
-                return e
-            }
-
-        
-
-    // Sets the focus of the element 
-    
-        func(e *SVGELLIPSEElement) DATASTAR_FOCUSSet(b bool) *SVGELLIPSEElement{
-                key := "data-focus"
-                e.BoolAttributes.Set(key, b)
-                return e
-            }
-
-            func(e *SVGELLIPSEElement) DATASTAR_FOCUS() *SVGELLIPSEElement{
-                return e.DATASTAR_FOCUSSet(true)
-            }
-        
-
-    // Sets the header of for fetch requests 
-    
-        func(e *SVGELLIPSEElement) DATASTAR_HEADER(key string, expression string) *SVGELLIPSEElement{
-                if e.StringAttributes == nil {
-                    e.StringAttributes = treemap.New[string,string]()
-                }
-                
-                key = fmt.Sprintf("data-header-%s", key)
-                
-                e.StringAttributes.Set(key, expression)
-                return e
-            }
-
-            func(e *SVGELLIPSEElement) IfDATASTAR_HEADER(condition bool, key string, expression string) *SVGELLIPSEElement{
-                if condition {
-                    e.DATASTAR_HEADER(key,  expression, )
-                }
-                return e
-            }
-
-            // Remove the attribute DATASTAR_HEADER from the element.
-            func(e *SVGELLIPSEElement) DATASTAR_HEADERRemove() *SVGELLIPSEElement{
-                if e.StringAttributes == nil {
-                    return e
-                }
-                e.StringAttributes.Del("data-header")
-                return e
-            }
-
-        
-
-    // Sets the URL for fetch requests 
-    
-        func(e *SVGELLIPSEElement) DATASTAR_FETCH_URL(expression string) *SVGELLIPSEElement{
-                if e.StringAttributes == nil {
-                    e.StringAttributes = treemap.New[string,string]()
-                }
-                
-                key := "data-fetch-url"
-                
-                e.StringAttributes.Set(key, expression)
-                return e
-            }
-
-            func(e *SVGELLIPSEElement) IfDATASTAR_FETCH_URL(condition bool, expression string) *SVGELLIPSEElement{
-                if condition {
-                    e.DATASTAR_FETCH_URL( expression, )
-                }
-                return e
-            }
-
-            // Remove the attribute DATASTAR_FETCH_URL from the element.
-            func(e *SVGELLIPSEElement) DATASTAR_FETCH_URLRemove() *SVGELLIPSEElement{
-                if e.StringAttributes == nil {
-                    return e
-                }
-                e.StringAttributes.Del("data-fetch-url")
-                return e
-            }
-
-        
-
-    // Sets the indicator selector for fetch requests 
-    
-        func(e *SVGELLIPSEElement) DATASTAR_FETCH_INDICATOR(expression string) *SVGELLIPSEElement{
-                if e.StringAttributes == nil {
-                    e.StringAttributes = treemap.New[string,string]()
-                }
-                
-                key := "DatastarFetchIndicator"
-                
-                e.StringAttributes.Set(key, expression)
-                return e
-            }
-
-            func(e *SVGELLIPSEElement) IfDATASTAR_FETCH_INDICATOR(condition bool, expression string) *SVGELLIPSEElement{
-                if condition {
-                    e.DATASTAR_FETCH_INDICATOR( expression, )
-                }
-                return e
-            }
-
-            // Remove the attribute DATASTAR_FETCH_INDICATOR from the element.
-            func(e *SVGELLIPSEElement) DATASTAR_FETCH_INDICATORRemove() *SVGELLIPSEElement{
-                if e.StringAttributes == nil {
-                    return e
-                }
-                e.StringAttributes.Del("DatastarFetchIndicator")
-                return e
-            }
-
-        
-
-    // Sets the visibility of the element 
-    
-        func(e *SVGELLIPSEElement) DATASTAR_SHOWSet(b bool) *SVGELLIPSEElement{
-                key := "data-show"
-                e.BoolAttributes.Set(key, b)
-                return e
-            }
-
-            func(e *SVGELLIPSEElement) DATASTAR_SHOW() *SVGELLIPSEElement{
-                return e.DATASTAR_SHOWSet(true)
-            }
-        
-
-    // Triggers the callback when the element intersects the viewport 
-    
-        func(e *SVGELLIPSEElement) DATASTAR_INTERSECTSSet(b bool) *SVGELLIPSEElement{
-                key := "data-intersects"
-                e.BoolAttributes.Set(key, b)
-                return e
-            }
-
-            func(e *SVGELLIPSEElement) DATASTAR_INTERSECTS() *SVGELLIPSEElement{
-                return e.DATASTAR_INTERSECTSSet(true)
-            }
-        
-
-    // Teleports the element to the given selector 
-    
-        func(e *SVGELLIPSEElement) DATASTAR_TELEPORTSet(b bool) *SVGELLIPSEElement{
-                key := "data-teleport"
-                e.BoolAttributes.Set(key, b)
-                return e
-            }
-
-            func(e *SVGELLIPSEElement) DATASTAR_TELEPORT() *SVGELLIPSEElement{
-                return e.DATASTAR_TELEPORTSet(true)
-            }
-        
-
-    // Scrolls the element into view 
-    
-        func(e *SVGELLIPSEElement) DATASTAR_SCROLL_INTO_VIEWSet(b bool) *SVGELLIPSEElement{
-                key := "data-scroll-into-view"
-                e.BoolAttributes.Set(key, b)
-                return e
-            }
-
-            func(e *SVGELLIPSEElement) DATASTAR_SCROLL_INTO_VIEW() *SVGELLIPSEElement{
-                return e.DATASTAR_SCROLL_INTO_VIEWSet(true)
-            }
-        
-
-    // Setup the ViewTransitionAPI for the element 
-    
-        func(e *SVGELLIPSEElement) DATASTAR_VIEW_TRANSITION(key string, expression string) *SVGELLIPSEElement{
-                if e.StringAttributes == nil {
-                    e.StringAttributes = treemap.New[string,string]()
-                }
-                
-                key = fmt.Sprintf("data-view-transition-%s", key)
-                
-                e.StringAttributes.Set(key, expression)
-                return e
-            }
-
-            func(e *SVGELLIPSEElement) IfDATASTAR_VIEW_TRANSITION(condition bool, key string, expression string) *SVGELLIPSEElement{
-                if condition {
-                    e.DATASTAR_VIEW_TRANSITION(key,  expression, )
-                }
-                return e
-            }
-
-            // Remove the attribute DATASTAR_VIEW_TRANSITION from the element.
-            func(e *SVGELLIPSEElement) DATASTAR_VIEW_TRANSITIONRemove() *SVGELLIPSEElement{
-                if e.StringAttributes == nil {
-                    return e
-                }
-                e.StringAttributes.Del("data-view-transition")
-                return e
-            }
-
-        
-
-
-
+// The x-axis coordinate of the center of the ellipse.
+func (e *SVGELLIPSEElement) CX(f float64) *SVGELLIPSEElement {
+	if e.FloatAttributes == nil {
+		e.FloatAttributes = treemap.New[string, float64]()
+	}
+	e.FloatAttributes.Set("cx", f)
+	return e
+}
+
+func (e *SVGELLIPSEElement) IfCX(condition bool, f float64) *SVGELLIPSEElement {
+	if condition {
+		e.CX(f)
+	}
+	return e
+}
+
+// The y-axis coordinate of the center of the ellipse.
+func (e *SVGELLIPSEElement) CY(f float64) *SVGELLIPSEElement {
+	if e.FloatAttributes == nil {
+		e.FloatAttributes = treemap.New[string, float64]()
+	}
+	e.FloatAttributes.Set("cy", f)
+	return e
+}
+
+func (e *SVGELLIPSEElement) IfCY(condition bool, f float64) *SVGELLIPSEElement {
+	if condition {
+		e.CY(f)
+	}
+	return e
+}
+
+// The x-axis radius of the ellipse.
+func (e *SVGELLIPSEElement) RX(f float64) *SVGELLIPSEElement {
+	if e.FloatAttributes == nil {
+		e.FloatAttributes = treemap.New[string, float64]()
+	}
+	e.FloatAttributes.Set("rx", f)
+	return e
+}
+
+func (e *SVGELLIPSEElement) IfRX(condition bool, f float64) *SVGELLIPSEElement {
+	if condition {
+		e.RX(f)
+	}
+	return e
+}
+
+// The y-axis radius of the ellipse.
+func (e *SVGELLIPSEElement) RY(f float64) *SVGELLIPSEElement {
+	if e.FloatAttributes == nil {
+		e.FloatAttributes = treemap.New[string, float64]()
+	}
+	e.FloatAttributes.Set("ry", f)
+	return e
+}
+
+func (e *SVGELLIPSEElement) IfRY(condition bool, f float64) *SVGELLIPSEElement {
+	if condition {
+		e.RY(f)
+	}
+	return e
+}
+
+// Specifies a unique id for an element
+func (e *SVGELLIPSEElement) ID(s string) *SVGELLIPSEElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	e.StringAttributes.Set("id", s)
+	return e
+}
+
+func (e *SVGELLIPSEElement) IfID(condition bool, s string) *SVGELLIPSEElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
+// Remove the attribute ID from the element.
+func (e *SVGELLIPSEElement) IDRemove(s string) *SVGELLIPSEElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("id")
+	return e
+}
+
+// Specifies one or more classnames for an element (refers to a class in a style
+// sheet)
+func (e *SVGELLIPSEElement) CLASS(s ...string) *SVGELLIPSEElement {
+	if e.DelimitedStrings == nil {
+		e.DelimitedStrings = treemap.New[string, *DelimitedBuilder[string]]()
+	}
+	ds, ok := e.DelimitedStrings.Get("class")
+	if !ok {
+		ds = NewDelimitedBuilder[string](" ")
+		e.DelimitedStrings.Set("class", ds)
+	}
+	ds.Add(s...)
+	return e
+}
+
+func (e *SVGELLIPSEElement) IfCLASS(condition bool, s ...string) *SVGELLIPSEElement {
+	if condition {
+		e.CLASS(s...)
+	}
+	return e
+}
+
+// Remove the attribute CLASS from the element.
+func (e *SVGELLIPSEElement) CLASSRemove(s ...string) *SVGELLIPSEElement {
+	if e.DelimitedStrings == nil {
+		return e
+	}
+	ds, ok := e.DelimitedStrings.Get("class")
+	if !ok {
+		return e
+	}
+	ds.Remove(s...)
+	return e
+}
+
+// Specifies an inline CSS style for an element
+func (e *SVGELLIPSEElement) STYLEF(k string, format string, args ...any) *SVGELLIPSEElement {
+	return e.STYLE(k, fmt.Sprintf(format, args...))
+}
+
+func (e *SVGELLIPSEElement) IfSTYLE(condition bool, k string, v string) *SVGELLIPSEElement {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
+func (e *SVGELLIPSEElement) STYLE(k string, v string) *SVGELLIPSEElement {
+	if e.KVStrings == nil {
+		e.KVStrings = treemap.New[string, *KVBuilder]()
+	}
+	kv, ok := e.KVStrings.Get("style")
+	if !ok {
+		kv = NewKVBuilder(":", ";")
+		e.KVStrings.Set("style", kv)
+	}
+	kv.Add(k, v)
+	return e
+}
+
+func (e *SVGELLIPSEElement) IfSTYLEF(condition bool, k string, format string, args ...any) *SVGELLIPSEElement {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
+	return e
+}
+
+// Add the attributes in the map to the element.
+func (e *SVGELLIPSEElement) STYLEMap(m map[string]string) *SVGELLIPSEElement {
+	if e.KVStrings == nil {
+		e.KVStrings = treemap.New[string, *KVBuilder]()
+	}
+	kv, ok := e.KVStrings.Get("style")
+	if !ok {
+		kv = NewKVBuilder(":", ";")
+		e.KVStrings.Set("style", kv)
+	}
+	for k, v := range m {
+		kv.Add(k, v)
+	}
+	return e
+}
+
+// Add pairs of attributes to the element.
+func (e *SVGELLIPSEElement) STYLEPairs(pairs ...string) *SVGELLIPSEElement {
+	if len(pairs)%2 != 0 {
+		panic("Must have an even number of pairs")
+	}
+	if e.KVStrings == nil {
+		e.KVStrings = treemap.New[string, *KVBuilder]()
+	}
+	kv, ok := e.KVStrings.Get("style")
+	if !ok {
+		kv = NewKVBuilder(":", ";")
+		e.KVStrings.Set("style", kv)
+	}
+
+	for i := 0; i < len(pairs); i += 2 {
+		kv.Add(pairs[i], pairs[i+1])
+	}
+
+	return e
+}
+
+func (e *SVGELLIPSEElement) IfSTYLEPairs(condition bool, pairs ...string) *SVGELLIPSEElement {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
+	return e
+}
+
+// Remove the attribute STYLE from the element.
+func (e *SVGELLIPSEElement) STYLERemove(keys ...string) *SVGELLIPSEElement {
+	if e.KVStrings == nil {
+		return e
+	}
+	kv, ok := e.KVStrings.Get("style")
+	if !ok {
+		return e
+	}
+	for _, k := range keys {
+		kv.Remove(k)
+	}
+	return e
+}
+
+// Merges the store with the given object
+
+func (e *SVGELLIPSEElement) DATASTAR_MERGE_STORE(v any) *SVGELLIPSEElement {
+	if e.CustomDataAttributes == nil {
+		e.CustomDataAttributes = treemap.New[string, string]()
+	}
+	b, err := json.Marshal(v)
+	if err != nil {
+		panic(err)
+	}
+	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	return e
+}
+
+// Sets the reference of the element
+
+func (e *SVGELLIPSEElement) DATASTAR_REF(expression string) *SVGELLIPSEElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-ref"
+
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+func (e *SVGELLIPSEElement) IfDATASTAR_REF(condition bool, expression string) *SVGELLIPSEElement {
+	if condition {
+		e.DATASTAR_REF(expression)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_REF from the element.
+func (e *SVGELLIPSEElement) DATASTAR_REFRemove() *SVGELLIPSEElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-ref")
+	return e
+}
+
+// Sets the value of the element
+
+func (e *SVGELLIPSEElement) DATASTAR_BIND(key string, expression string) *SVGELLIPSEElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key = fmt.Sprintf("data-bind-%s", key)
+
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+func (e *SVGELLIPSEElement) IfDATASTAR_BIND(condition bool, key string, expression string) *SVGELLIPSEElement {
+	if condition {
+		e.DATASTAR_BIND(key, expression)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_BIND from the element.
+func (e *SVGELLIPSEElement) DATASTAR_BINDRemove() *SVGELLIPSEElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-bind")
+	return e
+}
+
+// Sets the value of the element
+
+func (e *SVGELLIPSEElement) DATASTAR_MODEL(expression string) *SVGELLIPSEElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-model"
+
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+func (e *SVGELLIPSEElement) IfDATASTAR_MODEL(condition bool, expression string) *SVGELLIPSEElement {
+	if condition {
+		e.DATASTAR_MODEL(expression)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_MODEL from the element.
+func (e *SVGELLIPSEElement) DATASTAR_MODELRemove() *SVGELLIPSEElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-model")
+	return e
+}
+
+// Sets the textContent of the element
+
+func (e *SVGELLIPSEElement) DATASTAR_TEXT(expression string) *SVGELLIPSEElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-text"
+
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+func (e *SVGELLIPSEElement) IfDATASTAR_TEXT(condition bool, expression string) *SVGELLIPSEElement {
+	if condition {
+		e.DATASTAR_TEXT(expression)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_TEXT from the element.
+func (e *SVGELLIPSEElement) DATASTAR_TEXTRemove() *SVGELLIPSEElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-text")
+	return e
+}
+
+// Sets the event handler of the element
+
+type SVGEllipseDataOnMod customDataKeyModifier
+
+// Debounces the event handler
+func SVGEllipseDataOnModDebounce(
+	d time.Duration,
+) SVGEllipseDataOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce_%dms", d.Milliseconds())
+	}
+}
+
+// Throttles the event handler
+func SVGEllipseDataOnModThrottle(
+	d time.Duration,
+) SVGEllipseDataOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle_%dms", d.Milliseconds())
+	}
+}
+
+func (e *SVGELLIPSEElement) DATASTAR_ON(key string, expression string, modifiers ...SVGEllipseDataOnMod) *SVGELLIPSEElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key = fmt.Sprintf("data-on-%s", key)
+
+	customMods := lo.Map(modifiers, func(m SVGEllipseDataOnMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+func (e *SVGELLIPSEElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SVGEllipseDataOnMod) *SVGELLIPSEElement {
+	if condition {
+		e.DATASTAR_ON(key, expression, modifiers...)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_ON from the element.
+func (e *SVGELLIPSEElement) DATASTAR_ONRemove() *SVGELLIPSEElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-on")
+	return e
+}
+
+// Sets the focus of the element
+
+func (e *SVGELLIPSEElement) DATASTAR_FOCUSSet(b bool) *SVGELLIPSEElement {
+	key := "data-focus"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *SVGELLIPSEElement) DATASTAR_FOCUS() *SVGELLIPSEElement {
+	return e.DATASTAR_FOCUSSet(true)
+}
+
+// Sets the header of for fetch requests
+
+func (e *SVGELLIPSEElement) DATASTAR_HEADER(key string, expression string) *SVGELLIPSEElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key = fmt.Sprintf("data-header-%s", key)
+
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+func (e *SVGELLIPSEElement) IfDATASTAR_HEADER(condition bool, key string, expression string) *SVGELLIPSEElement {
+	if condition {
+		e.DATASTAR_HEADER(key, expression)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_HEADER from the element.
+func (e *SVGELLIPSEElement) DATASTAR_HEADERRemove() *SVGELLIPSEElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-header")
+	return e
+}
+
+// Sets the URL for fetch requests
+
+func (e *SVGELLIPSEElement) DATASTAR_FETCH_URL(expression string) *SVGELLIPSEElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-fetch-url"
+
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+func (e *SVGELLIPSEElement) IfDATASTAR_FETCH_URL(condition bool, expression string) *SVGELLIPSEElement {
+	if condition {
+		e.DATASTAR_FETCH_URL(expression)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_FETCH_URL from the element.
+func (e *SVGELLIPSEElement) DATASTAR_FETCH_URLRemove() *SVGELLIPSEElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-fetch-url")
+	return e
+}
+
+// Sets the indicator selector for fetch requests
+
+func (e *SVGELLIPSEElement) DATASTAR_FETCH_INDICATOR(expression string) *SVGELLIPSEElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "DatastarFetchIndicator"
+
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+func (e *SVGELLIPSEElement) IfDATASTAR_FETCH_INDICATOR(condition bool, expression string) *SVGELLIPSEElement {
+	if condition {
+		e.DATASTAR_FETCH_INDICATOR(expression)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_FETCH_INDICATOR from the element.
+func (e *SVGELLIPSEElement) DATASTAR_FETCH_INDICATORRemove() *SVGELLIPSEElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("DatastarFetchIndicator")
+	return e
+}
+
+// Sets the visibility of the element
+
+func (e *SVGELLIPSEElement) DATASTAR_SHOWSet(b bool) *SVGELLIPSEElement {
+	key := "data-show"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *SVGELLIPSEElement) DATASTAR_SHOW() *SVGELLIPSEElement {
+	return e.DATASTAR_SHOWSet(true)
+}
+
+// Triggers the callback when the element intersects the viewport
+
+func (e *SVGELLIPSEElement) DATASTAR_INTERSECTSSet(b bool) *SVGELLIPSEElement {
+	key := "data-intersects"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *SVGELLIPSEElement) DATASTAR_INTERSECTS() *SVGELLIPSEElement {
+	return e.DATASTAR_INTERSECTSSet(true)
+}
+
+// Teleports the element to the given selector
+
+func (e *SVGELLIPSEElement) DATASTAR_TELEPORTSet(b bool) *SVGELLIPSEElement {
+	key := "data-teleport"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *SVGELLIPSEElement) DATASTAR_TELEPORT() *SVGELLIPSEElement {
+	return e.DATASTAR_TELEPORTSet(true)
+}
+
+// Scrolls the element into view
+
+func (e *SVGELLIPSEElement) DATASTAR_SCROLL_INTO_VIEWSet(b bool) *SVGELLIPSEElement {
+	key := "data-scroll-into-view"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *SVGELLIPSEElement) DATASTAR_SCROLL_INTO_VIEW() *SVGELLIPSEElement {
+	return e.DATASTAR_SCROLL_INTO_VIEWSet(true)
+}
+
+// Setup the ViewTransitionAPI for the element
+
+func (e *SVGELLIPSEElement) DATASTAR_VIEW_TRANSITION(key string, expression string) *SVGELLIPSEElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key = fmt.Sprintf("data-view-transition-%s", key)
+
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+func (e *SVGELLIPSEElement) IfDATASTAR_VIEW_TRANSITION(condition bool, key string, expression string) *SVGELLIPSEElement {
+	if condition {
+		e.DATASTAR_VIEW_TRANSITION(key, expression)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_VIEW_TRANSITION from the element.
+func (e *SVGELLIPSEElement) DATASTAR_VIEW_TRANSITIONRemove() *SVGELLIPSEElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-view-transition")
+	return e
+}

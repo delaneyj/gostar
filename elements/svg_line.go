@@ -3,743 +3,703 @@
 // Description:
 package elements
 
-import(
-    "fmt"
-    "time"
-    "github.com/igrmk/treemap/v2"
-    "github.com/goccy/go-json"
-    "github.com/samber/lo"
+import (
+	"fmt"
+	"time"
+
+	"github.com/goccy/go-json"
+	"github.com/igrmk/treemap/v2"
+	"github.com/samber/lo"
 )
 
-// The <line> SVG element is an SVG basic shape, used to create a line connecting 
-// two points. 
+// The <line> SVG element is an SVG basic shape, used to create a line connecting
+// two points.
 type SVGLINEElement struct {
-    *Element
+	*Element
 }
 
 // Create a new SVGLINEElement element.
 // This will create a new element with the tag
 // "line" during rendering.
 func SVG_LINE(children ...ElementRenderer) *SVGLINEElement {
-    e := NewElement("line", children...)
-    e.IsSelfClosing = false
-    e.Descendants = children
+	e := NewElement("line", children...)
+	e.IsSelfClosing = false
+	e.Descendants = children
 
-    return &SVGLINEElement{ Element: e }
+	return &SVGLINEElement{Element: e}
 }
 
 func (e *SVGLINEElement) Children(children ...ElementRenderer) *SVGLINEElement {
-    e.Descendants = append(e.Descendants, children...)
-    return e
+	e.Descendants = append(e.Descendants, children...)
+	return e
 }
 
-func(e *SVGLINEElement) IfChildren(condition bool, children ...ElementRenderer) *SVGLINEElement {
-    if condition {
-        e.Descendants = append(e.Descendants, children...)
-    }
-    return e
+func (e *SVGLINEElement) IfChildren(condition bool, children ...ElementRenderer) *SVGLINEElement {
+	if condition {
+		e.Descendants = append(e.Descendants, children...)
+	}
+	return e
 }
 
-func(e *SVGLINEElement) TernChildren(condition bool, trueChildren, falseChildren ElementRenderer) *SVGLINEElement {
-    if condition {
-        e.Descendants = append(e.Descendants, trueChildren)
-    } else {
-        e.Descendants = append(e.Descendants, falseChildren)
-    }
-    return e
+func (e *SVGLINEElement) TernChildren(condition bool, trueChildren, falseChildren ElementRenderer) *SVGLINEElement {
+	if condition {
+		e.Descendants = append(e.Descendants, trueChildren)
+	} else {
+		e.Descendants = append(e.Descendants, falseChildren)
+	}
+	return e
 }
 
 func (e *SVGLINEElement) Text(text string) *SVGLINEElement {
-    e.Descendants = append(e.Descendants, Text(text))
-    return e
+	e.Descendants = append(e.Descendants, Text(text))
+	return e
 }
 
 func (e *SVGLINEElement) TextF(format string, args ...any) *SVGLINEElement {
-    return e.Text(fmt.Sprintf(format, args...))
+	return e.Text(fmt.Sprintf(format, args...))
 }
 
 func (e *SVGLINEElement) IfText(condition bool, text string) *SVGLINEElement {
-    if condition {
-        e.Descendants = append(e.Descendants, Text(text))
-    }
-    return e
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
 }
 
 func (e *SVGLINEElement) IfTextF(condition bool, format string, args ...any) *SVGLINEElement {
-    if condition {
-        e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
-    }
-    return e
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
 }
 
 func (e *SVGLINEElement) Escaped(text string) *SVGLINEElement {
-    e.Descendants = append(e.Descendants, Escaped(text))
-    return e
+	e.Descendants = append(e.Descendants, Escaped(text))
+	return e
 }
 
 func (e *SVGLINEElement) IfEscaped(condition bool, text string) *SVGLINEElement {
-    if condition {
-        e.Descendants = append(e.Descendants, Escaped(text))
-    }
-    return e
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
 }
 
 func (e *SVGLINEElement) EscapedF(format string, args ...any) *SVGLINEElement {
-    return e.Escaped(fmt.Sprintf(format, args...))
+	return e.Escaped(fmt.Sprintf(format, args...))
 }
 
 func (e *SVGLINEElement) IfEscapedF(condition bool, format string, args ...any) *SVGLINEElement {
-    if condition {
-        e.Descendants = append(e.Descendants, EscapedF(format, args...))
-    }
-    return e
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *SVGLINEElement) CustomData(key, value string) *SVGLINEElement {
-    if e.CustomDataAttributes == nil {
-        e.CustomDataAttributes = treemap.New[string,string]()
-    }
+	if e.CustomDataAttributes == nil {
+		e.CustomDataAttributes = treemap.New[string, string]()
+	}
 	e.CustomDataAttributes.Set(key, value)
 	return e
 }
 
 func (e *SVGLINEElement) IfCustomData(condition bool, key, value string) *SVGLINEElement {
-    if condition {
-        e.CustomData(key, value)
-    }
-    return e
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
 }
 
 func (e *SVGLINEElement) CustomDataF(key, format string, args ...any) *SVGLINEElement {
-    return e.CustomData(key, fmt.Sprintf(format, args...))
+	return e.CustomData(key, fmt.Sprintf(format, args...))
 }
 
 func (e *SVGLINEElement) IfCustomDataF(condition bool, key, format string, args ...any) *SVGLINEElement {
-    if condition {
-        e.CustomData(key, fmt.Sprintf(format, args...))
-    }
-    return e
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *SVGLINEElement) CustomDataRemove(key string) *SVGLINEElement {
 	if e.CustomDataAttributes == nil {
 		return e
 	}
-    e.CustomDataAttributes.Del(key)
+	e.CustomDataAttributes.Del(key)
 	return e
 }
 
-
-    // The x-axis coordinate of the starting point of the line. 
-    func(e *SVGLINEElement) X_1(f float64) *SVGLINEElement{
-            if e.FloatAttributes == nil {
-                e.FloatAttributes = treemap.New[string,float64]()
-            }
-            e.FloatAttributes.Set("x1", f)
-            return e
-        }
-
-        func (e *SVGLINEElement) IfX_1(condition bool, f float64) *SVGLINEElement {
-            if condition {
-                e.X_1(f)
-            }
-            return e
-        }
-
-    
-
-    // The y-axis coordinate of the starting point of the line. 
-    func(e *SVGLINEElement) Y_1(f float64) *SVGLINEElement{
-            if e.FloatAttributes == nil {
-                e.FloatAttributes = treemap.New[string,float64]()
-            }
-            e.FloatAttributes.Set("y1", f)
-            return e
-        }
-
-        func (e *SVGLINEElement) IfY_1(condition bool, f float64) *SVGLINEElement {
-            if condition {
-                e.Y_1(f)
-            }
-            return e
-        }
-
-    
-
-    // The x-axis coordinate of the ending point of the line. 
-    func(e *SVGLINEElement) X_2(f float64) *SVGLINEElement{
-            if e.FloatAttributes == nil {
-                e.FloatAttributes = treemap.New[string,float64]()
-            }
-            e.FloatAttributes.Set("x2", f)
-            return e
-        }
-
-        func (e *SVGLINEElement) IfX_2(condition bool, f float64) *SVGLINEElement {
-            if condition {
-                e.X_2(f)
-            }
-            return e
-        }
-
-    
-
-    // The y-axis coordinate of the ending point of the line. 
-    func(e *SVGLINEElement) Y_2(f float64) *SVGLINEElement{
-            if e.FloatAttributes == nil {
-                e.FloatAttributes = treemap.New[string,float64]()
-            }
-            e.FloatAttributes.Set("y2", f)
-            return e
-        }
-
-        func (e *SVGLINEElement) IfY_2(condition bool, f float64) *SVGLINEElement {
-            if condition {
-                e.Y_2(f)
-            }
-            return e
-        }
-
-    
-
-    // Specifies a unique id for an element 
-    func(e *SVGLINEElement) ID(s string) *SVGLINEElement{
-            if e.StringAttributes == nil {
-                e.StringAttributes = treemap.New[string,string]()
-            }
-            e.StringAttributes.Set("id", s)
-            return e
-        }
-
-        func(e *SVGLINEElement) IfID(condition bool, s string) *SVGLINEElement{
-            if condition {
-                e.ID(s)
-            }
-            return e
-        }
-
-        // Remove the attribute ID from the element.
-        func(e *SVGLINEElement) IDRemove(s string) *SVGLINEElement{
-            if e.StringAttributes == nil {
-                return e
-            }
-            e.StringAttributes.Del("id")
-            return e
-        }
-    
-
-    // Specifies one or more classnames for an element (refers to a class in a style 
-// sheet) 
-    func(e *SVGLINEElement) CLASS(s ...string) *SVGLINEElement{
-            if e.DelimitedStrings == nil {
-                e.DelimitedStrings = treemap.New[string,*DelimitedBuilder[string]]()
-            }
-            ds, ok := e.DelimitedStrings.Get("class")
-            if !ok {
-                ds = NewDelimitedBuilder[string](" ")
-                e.DelimitedStrings.Set("class", ds)
-            }
-            ds.Add(s...)
-            return e
-        }
-
-        func(e *SVGLINEElement) IfCLASS(condition bool, s ...string) *SVGLINEElement{
-            if condition {
-                e.CLASS(s...)
-            }
-            return e
-        }
-
-        // Remove the attribute CLASS from the element.
-        func(e *SVGLINEElement) CLASSRemove(s ...string) *SVGLINEElement{
-            if e.DelimitedStrings == nil {
-                return e
-            }
-            ds, ok := e.DelimitedStrings.Get("class")
-            if !ok {
-                return e
-            }
-            ds.Remove(s ...)
-            return e
-        }
-
-    
-
-    // Specifies an inline CSS style for an element 
-    func (e *SVGLINEElement) STYLEF(k string, format string, args ...any) *SVGLINEElement {
-            return e.STYLE(k, fmt.Sprintf(format, args...))
-        }
-
-        func (e *SVGLINEElement) IfSTYLE(condition bool, k string, v string) *SVGLINEElement {
-            if condition {
-                e.STYLE(k, v)
-            }
-            return e
-        }
-
-        func (e *SVGLINEElement) STYLE(k string, v string) *SVGLINEElement {
-            if e.KVStrings == nil {
-                e.KVStrings = treemap.New[string,*KVBuilder]()
-            }
-            kv, ok := e.KVStrings.Get("style")
-            if !ok {
-                kv = NewKVBuilder(":", ";")
-                e.KVStrings.Set("style", kv)
-            }
-            kv.Add(k, v)
-            return e
-        }
-
-        func (e *SVGLINEElement) IfSTYLEF(condition bool, k string, format string, args ...any) *SVGLINEElement {
-            if condition {
-                e.STYLE(k, fmt.Sprintf(format, args...))
-            }
-            return e
-        }
-
-        // Add the attributes in the map to the element.
-        func (e *SVGLINEElement) STYLEMap(m map[string]string) *SVGLINEElement {
-            if e.KVStrings == nil {
-                e.KVStrings = treemap.New[string,*KVBuilder]()
-            }
-            kv, ok := e.KVStrings.Get("style")
-            if !ok {
-                kv = NewKVBuilder(":", ";")
-                e.KVStrings.Set("style", kv)
-            }
-            for k, v := range m {
-                kv.Add(k, v)
-            }
-            return e
-        }
-
-        // Add pairs of attributes to the element.
-        func (e *SVGLINEElement) STYLEPairs(pairs ...string) *SVGLINEElement {
-            if len(pairs) % 2 != 0 {
-                panic("Must have an even number of pairs")
-            }
-            if e.KVStrings == nil {
-                e.KVStrings = treemap.New[string,*KVBuilder]()
-            }
-            kv, ok := e.KVStrings.Get("style")
-            if !ok {
-                kv = NewKVBuilder(":", ";")
-                e.KVStrings.Set("style", kv)
-            }
-
-            for i := 0; i < len(pairs); i += 2 {
-                kv.Add(pairs[i], pairs[i+1])
-            }
-
-            return e
-        }
-
-        func (e *SVGLINEElement) IfSTYLEPairs(condition bool, pairs ...string) *SVGLINEElement {
-            if condition {
-                e.STYLEPairs(pairs...)
-            }
-            return e
-        }
-
-        // Remove the attribute STYLE from the element.
-        func (e *SVGLINEElement) STYLERemove(keys ...string) *SVGLINEElement {
-            if e.KVStrings == nil {
-                return e
-            }
-            kv, ok := e.KVStrings.Get("style")
-            if !ok {
-                return e
-            }
-            for _, k := range keys {
-                kv.Remove(k)
-            }
-            return e
-        }
-
-    
-
-    // Merges the store with the given object 
-    
-        func(e *SVGLINEElement) DATASTAR_MERGE_STORE(v any) *SVGLINEElement{
-                if e.CustomDataAttributes == nil {
-                    e.CustomDataAttributes = treemap.New[string,string]()
-                }
-                b, err := json.Marshal(v)
-                if err != nil {
-                    panic(err)
-                }
-                e.CustomDataAttributes.Set("data-merge-store", string(b))
-                return e
-            }
-
-        
-
-    // Sets the reference of the element 
-    
-        func(e *SVGLINEElement) DATASTAR_REF(expression string) *SVGLINEElement{
-                if e.StringAttributes == nil {
-                    e.StringAttributes = treemap.New[string,string]()
-                }
-                
-                key := "data-ref"
-                
-                e.StringAttributes.Set(key, expression)
-                return e
-            }
-
-            func(e *SVGLINEElement) IfDATASTAR_REF(condition bool, expression string) *SVGLINEElement{
-                if condition {
-                    e.DATASTAR_REF( expression, )
-                }
-                return e
-            }
-
-            // Remove the attribute DATASTAR_REF from the element.
-            func(e *SVGLINEElement) DATASTAR_REFRemove() *SVGLINEElement{
-                if e.StringAttributes == nil {
-                    return e
-                }
-                e.StringAttributes.Del("data-ref")
-                return e
-            }
-
-        
-
-    // Sets the value of the element 
-    
-        func(e *SVGLINEElement) DATASTAR_BIND(key string, expression string) *SVGLINEElement{
-                if e.StringAttributes == nil {
-                    e.StringAttributes = treemap.New[string,string]()
-                }
-                
-                key = fmt.Sprintf("data-bind-%s", key)
-                
-                e.StringAttributes.Set(key, expression)
-                return e
-            }
-
-            func(e *SVGLINEElement) IfDATASTAR_BIND(condition bool, key string, expression string) *SVGLINEElement{
-                if condition {
-                    e.DATASTAR_BIND(key,  expression, )
-                }
-                return e
-            }
-
-            // Remove the attribute DATASTAR_BIND from the element.
-            func(e *SVGLINEElement) DATASTAR_BINDRemove() *SVGLINEElement{
-                if e.StringAttributes == nil {
-                    return e
-                }
-                e.StringAttributes.Del("data-bind")
-                return e
-            }
-
-        
-
-    // Sets the value of the element 
-    
-        func(e *SVGLINEElement) DATASTAR_MODEL(expression string) *SVGLINEElement{
-                if e.StringAttributes == nil {
-                    e.StringAttributes = treemap.New[string,string]()
-                }
-                
-                key := "data-model"
-                
-                e.StringAttributes.Set(key, expression)
-                return e
-            }
-
-            func(e *SVGLINEElement) IfDATASTAR_MODEL(condition bool, expression string) *SVGLINEElement{
-                if condition {
-                    e.DATASTAR_MODEL( expression, )
-                }
-                return e
-            }
-
-            // Remove the attribute DATASTAR_MODEL from the element.
-            func(e *SVGLINEElement) DATASTAR_MODELRemove() *SVGLINEElement{
-                if e.StringAttributes == nil {
-                    return e
-                }
-                e.StringAttributes.Del("data-model")
-                return e
-            }
-
-        
-
-    // Sets the textContent of the element 
-    
-        func(e *SVGLINEElement) DATASTAR_TEXT(expression string) *SVGLINEElement{
-                if e.StringAttributes == nil {
-                    e.StringAttributes = treemap.New[string,string]()
-                }
-                
-                key := "data-text"
-                
-                e.StringAttributes.Set(key, expression)
-                return e
-            }
-
-            func(e *SVGLINEElement) IfDATASTAR_TEXT(condition bool, expression string) *SVGLINEElement{
-                if condition {
-                    e.DATASTAR_TEXT( expression, )
-                }
-                return e
-            }
-
-            // Remove the attribute DATASTAR_TEXT from the element.
-            func(e *SVGLINEElement) DATASTAR_TEXTRemove() *SVGLINEElement{
-                if e.StringAttributes == nil {
-                    return e
-                }
-                e.StringAttributes.Del("data-text")
-                return e
-            }
-
-        
-
-    // Sets the event handler of the element 
-    
-        type SVGLineDataOnMod customDataKeyModifier
-
-            
-            // Debounces the event handler 
-            func SVGLineDataOnModDebounce(
-                    d time.Duration,
-            ) SVGLineDataOnMod {
-                return func() string {return fmt.Sprintf("debounce_%dms", d.Milliseconds())
-                }
-            }
-            
-            // Throttles the event handler 
-            func SVGLineDataOnModThrottle(
-                    d time.Duration,
-            ) SVGLineDataOnMod {
-                return func() string {return fmt.Sprintf("throttle_%dms", d.Milliseconds())
-                }
-            }
-            
-        func(e *SVGLINEElement) DATASTAR_ON(key string, expression string, modifiers ...SVGLineDataOnMod) *SVGLINEElement{
-                if e.StringAttributes == nil {
-                    e.StringAttributes = treemap.New[string,string]()
-                }
-                
-                key = fmt.Sprintf("data-on-%s", key)
-                
-                customMods := lo.Map(modifiers, func(m SVGLineDataOnMod, i int) customDataKeyModifier  {
-                    return customDataKeyModifier(m)
-                })
-                key = customDataKey(key, customMods...)
-                e.StringAttributes.Set(key, expression)
-                return e
-            }
-
-            func(e *SVGLINEElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SVGLineDataOnMod) *SVGLINEElement{
-                if condition {
-                    e.DATASTAR_ON(key,  expression,  modifiers...)
-                }
-                return e
-            }
-
-            // Remove the attribute DATASTAR_ON from the element.
-            func(e *SVGLINEElement) DATASTAR_ONRemove() *SVGLINEElement{
-                if e.StringAttributes == nil {
-                    return e
-                }
-                e.StringAttributes.Del("data-on")
-                return e
-            }
-
-        
-
-    // Sets the focus of the element 
-    
-        func(e *SVGLINEElement) DATASTAR_FOCUSSet(b bool) *SVGLINEElement{
-                key := "data-focus"
-                e.BoolAttributes.Set(key, b)
-                return e
-            }
-
-            func(e *SVGLINEElement) DATASTAR_FOCUS() *SVGLINEElement{
-                return e.DATASTAR_FOCUSSet(true)
-            }
-        
-
-    // Sets the header of for fetch requests 
-    
-        func(e *SVGLINEElement) DATASTAR_HEADER(key string, expression string) *SVGLINEElement{
-                if e.StringAttributes == nil {
-                    e.StringAttributes = treemap.New[string,string]()
-                }
-                
-                key = fmt.Sprintf("data-header-%s", key)
-                
-                e.StringAttributes.Set(key, expression)
-                return e
-            }
-
-            func(e *SVGLINEElement) IfDATASTAR_HEADER(condition bool, key string, expression string) *SVGLINEElement{
-                if condition {
-                    e.DATASTAR_HEADER(key,  expression, )
-                }
-                return e
-            }
-
-            // Remove the attribute DATASTAR_HEADER from the element.
-            func(e *SVGLINEElement) DATASTAR_HEADERRemove() *SVGLINEElement{
-                if e.StringAttributes == nil {
-                    return e
-                }
-                e.StringAttributes.Del("data-header")
-                return e
-            }
-
-        
-
-    // Sets the URL for fetch requests 
-    
-        func(e *SVGLINEElement) DATASTAR_FETCH_URL(expression string) *SVGLINEElement{
-                if e.StringAttributes == nil {
-                    e.StringAttributes = treemap.New[string,string]()
-                }
-                
-                key := "data-fetch-url"
-                
-                e.StringAttributes.Set(key, expression)
-                return e
-            }
-
-            func(e *SVGLINEElement) IfDATASTAR_FETCH_URL(condition bool, expression string) *SVGLINEElement{
-                if condition {
-                    e.DATASTAR_FETCH_URL( expression, )
-                }
-                return e
-            }
-
-            // Remove the attribute DATASTAR_FETCH_URL from the element.
-            func(e *SVGLINEElement) DATASTAR_FETCH_URLRemove() *SVGLINEElement{
-                if e.StringAttributes == nil {
-                    return e
-                }
-                e.StringAttributes.Del("data-fetch-url")
-                return e
-            }
-
-        
-
-    // Sets the indicator selector for fetch requests 
-    
-        func(e *SVGLINEElement) DATASTAR_FETCH_INDICATOR(expression string) *SVGLINEElement{
-                if e.StringAttributes == nil {
-                    e.StringAttributes = treemap.New[string,string]()
-                }
-                
-                key := "DatastarFetchIndicator"
-                
-                e.StringAttributes.Set(key, expression)
-                return e
-            }
-
-            func(e *SVGLINEElement) IfDATASTAR_FETCH_INDICATOR(condition bool, expression string) *SVGLINEElement{
-                if condition {
-                    e.DATASTAR_FETCH_INDICATOR( expression, )
-                }
-                return e
-            }
-
-            // Remove the attribute DATASTAR_FETCH_INDICATOR from the element.
-            func(e *SVGLINEElement) DATASTAR_FETCH_INDICATORRemove() *SVGLINEElement{
-                if e.StringAttributes == nil {
-                    return e
-                }
-                e.StringAttributes.Del("DatastarFetchIndicator")
-                return e
-            }
-
-        
-
-    // Sets the visibility of the element 
-    
-        func(e *SVGLINEElement) DATASTAR_SHOWSet(b bool) *SVGLINEElement{
-                key := "data-show"
-                e.BoolAttributes.Set(key, b)
-                return e
-            }
-
-            func(e *SVGLINEElement) DATASTAR_SHOW() *SVGLINEElement{
-                return e.DATASTAR_SHOWSet(true)
-            }
-        
-
-    // Triggers the callback when the element intersects the viewport 
-    
-        func(e *SVGLINEElement) DATASTAR_INTERSECTSSet(b bool) *SVGLINEElement{
-                key := "data-intersects"
-                e.BoolAttributes.Set(key, b)
-                return e
-            }
-
-            func(e *SVGLINEElement) DATASTAR_INTERSECTS() *SVGLINEElement{
-                return e.DATASTAR_INTERSECTSSet(true)
-            }
-        
-
-    // Teleports the element to the given selector 
-    
-        func(e *SVGLINEElement) DATASTAR_TELEPORTSet(b bool) *SVGLINEElement{
-                key := "data-teleport"
-                e.BoolAttributes.Set(key, b)
-                return e
-            }
-
-            func(e *SVGLINEElement) DATASTAR_TELEPORT() *SVGLINEElement{
-                return e.DATASTAR_TELEPORTSet(true)
-            }
-        
-
-    // Scrolls the element into view 
-    
-        func(e *SVGLINEElement) DATASTAR_SCROLL_INTO_VIEWSet(b bool) *SVGLINEElement{
-                key := "data-scroll-into-view"
-                e.BoolAttributes.Set(key, b)
-                return e
-            }
-
-            func(e *SVGLINEElement) DATASTAR_SCROLL_INTO_VIEW() *SVGLINEElement{
-                return e.DATASTAR_SCROLL_INTO_VIEWSet(true)
-            }
-        
-
-    // Setup the ViewTransitionAPI for the element 
-    
-        func(e *SVGLINEElement) DATASTAR_VIEW_TRANSITION(key string, expression string) *SVGLINEElement{
-                if e.StringAttributes == nil {
-                    e.StringAttributes = treemap.New[string,string]()
-                }
-                
-                key = fmt.Sprintf("data-view-transition-%s", key)
-                
-                e.StringAttributes.Set(key, expression)
-                return e
-            }
-
-            func(e *SVGLINEElement) IfDATASTAR_VIEW_TRANSITION(condition bool, key string, expression string) *SVGLINEElement{
-                if condition {
-                    e.DATASTAR_VIEW_TRANSITION(key,  expression, )
-                }
-                return e
-            }
-
-            // Remove the attribute DATASTAR_VIEW_TRANSITION from the element.
-            func(e *SVGLINEElement) DATASTAR_VIEW_TRANSITIONRemove() *SVGLINEElement{
-                if e.StringAttributes == nil {
-                    return e
-                }
-                e.StringAttributes.Del("data-view-transition")
-                return e
-            }
-
-        
-
-
-
+// The x-axis coordinate of the starting point of the line.
+func (e *SVGLINEElement) X_1(f float64) *SVGLINEElement {
+	if e.FloatAttributes == nil {
+		e.FloatAttributes = treemap.New[string, float64]()
+	}
+	e.FloatAttributes.Set("x1", f)
+	return e
+}
+
+func (e *SVGLINEElement) IfX_1(condition bool, f float64) *SVGLINEElement {
+	if condition {
+		e.X_1(f)
+	}
+	return e
+}
+
+// The y-axis coordinate of the starting point of the line.
+func (e *SVGLINEElement) Y_1(f float64) *SVGLINEElement {
+	if e.FloatAttributes == nil {
+		e.FloatAttributes = treemap.New[string, float64]()
+	}
+	e.FloatAttributes.Set("y1", f)
+	return e
+}
+
+func (e *SVGLINEElement) IfY_1(condition bool, f float64) *SVGLINEElement {
+	if condition {
+		e.Y_1(f)
+	}
+	return e
+}
+
+// The x-axis coordinate of the ending point of the line.
+func (e *SVGLINEElement) X_2(f float64) *SVGLINEElement {
+	if e.FloatAttributes == nil {
+		e.FloatAttributes = treemap.New[string, float64]()
+	}
+	e.FloatAttributes.Set("x2", f)
+	return e
+}
+
+func (e *SVGLINEElement) IfX_2(condition bool, f float64) *SVGLINEElement {
+	if condition {
+		e.X_2(f)
+	}
+	return e
+}
+
+// The y-axis coordinate of the ending point of the line.
+func (e *SVGLINEElement) Y_2(f float64) *SVGLINEElement {
+	if e.FloatAttributes == nil {
+		e.FloatAttributes = treemap.New[string, float64]()
+	}
+	e.FloatAttributes.Set("y2", f)
+	return e
+}
+
+func (e *SVGLINEElement) IfY_2(condition bool, f float64) *SVGLINEElement {
+	if condition {
+		e.Y_2(f)
+	}
+	return e
+}
+
+// Specifies a unique id for an element
+func (e *SVGLINEElement) ID(s string) *SVGLINEElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	e.StringAttributes.Set("id", s)
+	return e
+}
+
+func (e *SVGLINEElement) IfID(condition bool, s string) *SVGLINEElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
+// Remove the attribute ID from the element.
+func (e *SVGLINEElement) IDRemove(s string) *SVGLINEElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("id")
+	return e
+}
+
+// Specifies one or more classnames for an element (refers to a class in a style
+// sheet)
+func (e *SVGLINEElement) CLASS(s ...string) *SVGLINEElement {
+	if e.DelimitedStrings == nil {
+		e.DelimitedStrings = treemap.New[string, *DelimitedBuilder[string]]()
+	}
+	ds, ok := e.DelimitedStrings.Get("class")
+	if !ok {
+		ds = NewDelimitedBuilder[string](" ")
+		e.DelimitedStrings.Set("class", ds)
+	}
+	ds.Add(s...)
+	return e
+}
+
+func (e *SVGLINEElement) IfCLASS(condition bool, s ...string) *SVGLINEElement {
+	if condition {
+		e.CLASS(s...)
+	}
+	return e
+}
+
+// Remove the attribute CLASS from the element.
+func (e *SVGLINEElement) CLASSRemove(s ...string) *SVGLINEElement {
+	if e.DelimitedStrings == nil {
+		return e
+	}
+	ds, ok := e.DelimitedStrings.Get("class")
+	if !ok {
+		return e
+	}
+	ds.Remove(s...)
+	return e
+}
+
+// Specifies an inline CSS style for an element
+func (e *SVGLINEElement) STYLEF(k string, format string, args ...any) *SVGLINEElement {
+	return e.STYLE(k, fmt.Sprintf(format, args...))
+}
+
+func (e *SVGLINEElement) IfSTYLE(condition bool, k string, v string) *SVGLINEElement {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
+func (e *SVGLINEElement) STYLE(k string, v string) *SVGLINEElement {
+	if e.KVStrings == nil {
+		e.KVStrings = treemap.New[string, *KVBuilder]()
+	}
+	kv, ok := e.KVStrings.Get("style")
+	if !ok {
+		kv = NewKVBuilder(":", ";")
+		e.KVStrings.Set("style", kv)
+	}
+	kv.Add(k, v)
+	return e
+}
+
+func (e *SVGLINEElement) IfSTYLEF(condition bool, k string, format string, args ...any) *SVGLINEElement {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
+	return e
+}
+
+// Add the attributes in the map to the element.
+func (e *SVGLINEElement) STYLEMap(m map[string]string) *SVGLINEElement {
+	if e.KVStrings == nil {
+		e.KVStrings = treemap.New[string, *KVBuilder]()
+	}
+	kv, ok := e.KVStrings.Get("style")
+	if !ok {
+		kv = NewKVBuilder(":", ";")
+		e.KVStrings.Set("style", kv)
+	}
+	for k, v := range m {
+		kv.Add(k, v)
+	}
+	return e
+}
+
+// Add pairs of attributes to the element.
+func (e *SVGLINEElement) STYLEPairs(pairs ...string) *SVGLINEElement {
+	if len(pairs)%2 != 0 {
+		panic("Must have an even number of pairs")
+	}
+	if e.KVStrings == nil {
+		e.KVStrings = treemap.New[string, *KVBuilder]()
+	}
+	kv, ok := e.KVStrings.Get("style")
+	if !ok {
+		kv = NewKVBuilder(":", ";")
+		e.KVStrings.Set("style", kv)
+	}
+
+	for i := 0; i < len(pairs); i += 2 {
+		kv.Add(pairs[i], pairs[i+1])
+	}
+
+	return e
+}
+
+func (e *SVGLINEElement) IfSTYLEPairs(condition bool, pairs ...string) *SVGLINEElement {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
+	return e
+}
+
+// Remove the attribute STYLE from the element.
+func (e *SVGLINEElement) STYLERemove(keys ...string) *SVGLINEElement {
+	if e.KVStrings == nil {
+		return e
+	}
+	kv, ok := e.KVStrings.Get("style")
+	if !ok {
+		return e
+	}
+	for _, k := range keys {
+		kv.Remove(k)
+	}
+	return e
+}
+
+// Merges the store with the given object
+
+func (e *SVGLINEElement) DATASTAR_MERGE_STORE(v any) *SVGLINEElement {
+	if e.CustomDataAttributes == nil {
+		e.CustomDataAttributes = treemap.New[string, string]()
+	}
+	b, err := json.Marshal(v)
+	if err != nil {
+		panic(err)
+	}
+	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	return e
+}
+
+// Sets the reference of the element
+
+func (e *SVGLINEElement) DATASTAR_REF(expression string) *SVGLINEElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-ref"
+
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+func (e *SVGLINEElement) IfDATASTAR_REF(condition bool, expression string) *SVGLINEElement {
+	if condition {
+		e.DATASTAR_REF(expression)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_REF from the element.
+func (e *SVGLINEElement) DATASTAR_REFRemove() *SVGLINEElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-ref")
+	return e
+}
+
+// Sets the value of the element
+
+func (e *SVGLINEElement) DATASTAR_BIND(key string, expression string) *SVGLINEElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key = fmt.Sprintf("data-bind-%s", key)
+
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+func (e *SVGLINEElement) IfDATASTAR_BIND(condition bool, key string, expression string) *SVGLINEElement {
+	if condition {
+		e.DATASTAR_BIND(key, expression)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_BIND from the element.
+func (e *SVGLINEElement) DATASTAR_BINDRemove() *SVGLINEElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-bind")
+	return e
+}
+
+// Sets the value of the element
+
+func (e *SVGLINEElement) DATASTAR_MODEL(expression string) *SVGLINEElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-model"
+
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+func (e *SVGLINEElement) IfDATASTAR_MODEL(condition bool, expression string) *SVGLINEElement {
+	if condition {
+		e.DATASTAR_MODEL(expression)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_MODEL from the element.
+func (e *SVGLINEElement) DATASTAR_MODELRemove() *SVGLINEElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-model")
+	return e
+}
+
+// Sets the textContent of the element
+
+func (e *SVGLINEElement) DATASTAR_TEXT(expression string) *SVGLINEElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-text"
+
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+func (e *SVGLINEElement) IfDATASTAR_TEXT(condition bool, expression string) *SVGLINEElement {
+	if condition {
+		e.DATASTAR_TEXT(expression)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_TEXT from the element.
+func (e *SVGLINEElement) DATASTAR_TEXTRemove() *SVGLINEElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-text")
+	return e
+}
+
+// Sets the event handler of the element
+
+type SVGLineDataOnMod customDataKeyModifier
+
+// Debounces the event handler
+func SVGLineDataOnModDebounce(
+	d time.Duration,
+) SVGLineDataOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce_%dms", d.Milliseconds())
+	}
+}
+
+// Throttles the event handler
+func SVGLineDataOnModThrottle(
+	d time.Duration,
+) SVGLineDataOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle_%dms", d.Milliseconds())
+	}
+}
+
+func (e *SVGLINEElement) DATASTAR_ON(key string, expression string, modifiers ...SVGLineDataOnMod) *SVGLINEElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key = fmt.Sprintf("data-on-%s", key)
+
+	customMods := lo.Map(modifiers, func(m SVGLineDataOnMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+func (e *SVGLINEElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SVGLineDataOnMod) *SVGLINEElement {
+	if condition {
+		e.DATASTAR_ON(key, expression, modifiers...)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_ON from the element.
+func (e *SVGLINEElement) DATASTAR_ONRemove() *SVGLINEElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-on")
+	return e
+}
+
+// Sets the focus of the element
+
+func (e *SVGLINEElement) DATASTAR_FOCUSSet(b bool) *SVGLINEElement {
+	key := "data-focus"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *SVGLINEElement) DATASTAR_FOCUS() *SVGLINEElement {
+	return e.DATASTAR_FOCUSSet(true)
+}
+
+// Sets the header of for fetch requests
+
+func (e *SVGLINEElement) DATASTAR_HEADER(key string, expression string) *SVGLINEElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key = fmt.Sprintf("data-header-%s", key)
+
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+func (e *SVGLINEElement) IfDATASTAR_HEADER(condition bool, key string, expression string) *SVGLINEElement {
+	if condition {
+		e.DATASTAR_HEADER(key, expression)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_HEADER from the element.
+func (e *SVGLINEElement) DATASTAR_HEADERRemove() *SVGLINEElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-header")
+	return e
+}
+
+// Sets the URL for fetch requests
+
+func (e *SVGLINEElement) DATASTAR_FETCH_URL(expression string) *SVGLINEElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-fetch-url"
+
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+func (e *SVGLINEElement) IfDATASTAR_FETCH_URL(condition bool, expression string) *SVGLINEElement {
+	if condition {
+		e.DATASTAR_FETCH_URL(expression)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_FETCH_URL from the element.
+func (e *SVGLINEElement) DATASTAR_FETCH_URLRemove() *SVGLINEElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-fetch-url")
+	return e
+}
+
+// Sets the indicator selector for fetch requests
+
+func (e *SVGLINEElement) DATASTAR_FETCH_INDICATOR(expression string) *SVGLINEElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "DatastarFetchIndicator"
+
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+func (e *SVGLINEElement) IfDATASTAR_FETCH_INDICATOR(condition bool, expression string) *SVGLINEElement {
+	if condition {
+		e.DATASTAR_FETCH_INDICATOR(expression)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_FETCH_INDICATOR from the element.
+func (e *SVGLINEElement) DATASTAR_FETCH_INDICATORRemove() *SVGLINEElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("DatastarFetchIndicator")
+	return e
+}
+
+// Sets the visibility of the element
+
+func (e *SVGLINEElement) DATASTAR_SHOWSet(b bool) *SVGLINEElement {
+	key := "data-show"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *SVGLINEElement) DATASTAR_SHOW() *SVGLINEElement {
+	return e.DATASTAR_SHOWSet(true)
+}
+
+// Triggers the callback when the element intersects the viewport
+
+func (e *SVGLINEElement) DATASTAR_INTERSECTSSet(b bool) *SVGLINEElement {
+	key := "data-intersects"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *SVGLINEElement) DATASTAR_INTERSECTS() *SVGLINEElement {
+	return e.DATASTAR_INTERSECTSSet(true)
+}
+
+// Teleports the element to the given selector
+
+func (e *SVGLINEElement) DATASTAR_TELEPORTSet(b bool) *SVGLINEElement {
+	key := "data-teleport"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *SVGLINEElement) DATASTAR_TELEPORT() *SVGLINEElement {
+	return e.DATASTAR_TELEPORTSet(true)
+}
+
+// Scrolls the element into view
+
+func (e *SVGLINEElement) DATASTAR_SCROLL_INTO_VIEWSet(b bool) *SVGLINEElement {
+	key := "data-scroll-into-view"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *SVGLINEElement) DATASTAR_SCROLL_INTO_VIEW() *SVGLINEElement {
+	return e.DATASTAR_SCROLL_INTO_VIEWSet(true)
+}
+
+// Setup the ViewTransitionAPI for the element
+
+func (e *SVGLINEElement) DATASTAR_VIEW_TRANSITION(key string, expression string) *SVGLINEElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key = fmt.Sprintf("data-view-transition-%s", key)
+
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+func (e *SVGLINEElement) IfDATASTAR_VIEW_TRANSITION(condition bool, key string, expression string) *SVGLINEElement {
+	if condition {
+		e.DATASTAR_VIEW_TRANSITION(key, expression)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_VIEW_TRANSITION from the element.
+func (e *SVGLINEElement) DATASTAR_VIEW_TRANSITIONRemove() *SVGLINEElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-view-transition")
+	return e
+}

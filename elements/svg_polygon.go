@@ -3,697 +3,664 @@
 // Description:
 package elements
 
-import(
-    "fmt"
-    "time"
-    "github.com/igrmk/treemap/v2"
-    "github.com/goccy/go-json"
-    "github.com/samber/lo"
+import (
+	"fmt"
+	"time"
+
+	"github.com/goccy/go-json"
+	"github.com/igrmk/treemap/v2"
+	"github.com/samber/lo"
 )
 
-// The <polygon> SVG element is an SVG basic shape, used to create a vector-based 
-// polygonal shape. 
+// The <polygon> SVG element is an SVG basic shape, used to create a vector-based
+// polygonal shape.
 type SVGPOLYGONElement struct {
-    *Element
+	*Element
 }
 
 // Create a new SVGPOLYGONElement element.
 // This will create a new element with the tag
 // "polygon" during rendering.
 func SVG_POLYGON(children ...ElementRenderer) *SVGPOLYGONElement {
-    e := NewElement("polygon", children...)
-    e.IsSelfClosing = false
-    e.Descendants = children
+	e := NewElement("polygon", children...)
+	e.IsSelfClosing = false
+	e.Descendants = children
 
-    return &SVGPOLYGONElement{ Element: e }
+	return &SVGPOLYGONElement{Element: e}
 }
 
 func (e *SVGPOLYGONElement) Children(children ...ElementRenderer) *SVGPOLYGONElement {
-    e.Descendants = append(e.Descendants, children...)
-    return e
+	e.Descendants = append(e.Descendants, children...)
+	return e
 }
 
-func(e *SVGPOLYGONElement) IfChildren(condition bool, children ...ElementRenderer) *SVGPOLYGONElement {
-    if condition {
-        e.Descendants = append(e.Descendants, children...)
-    }
-    return e
+func (e *SVGPOLYGONElement) IfChildren(condition bool, children ...ElementRenderer) *SVGPOLYGONElement {
+	if condition {
+		e.Descendants = append(e.Descendants, children...)
+	}
+	return e
 }
 
-func(e *SVGPOLYGONElement) TernChildren(condition bool, trueChildren, falseChildren ElementRenderer) *SVGPOLYGONElement {
-    if condition {
-        e.Descendants = append(e.Descendants, trueChildren)
-    } else {
-        e.Descendants = append(e.Descendants, falseChildren)
-    }
-    return e
+func (e *SVGPOLYGONElement) TernChildren(condition bool, trueChildren, falseChildren ElementRenderer) *SVGPOLYGONElement {
+	if condition {
+		e.Descendants = append(e.Descendants, trueChildren)
+	} else {
+		e.Descendants = append(e.Descendants, falseChildren)
+	}
+	return e
 }
 
 func (e *SVGPOLYGONElement) Text(text string) *SVGPOLYGONElement {
-    e.Descendants = append(e.Descendants, Text(text))
-    return e
+	e.Descendants = append(e.Descendants, Text(text))
+	return e
 }
 
 func (e *SVGPOLYGONElement) TextF(format string, args ...any) *SVGPOLYGONElement {
-    return e.Text(fmt.Sprintf(format, args...))
+	return e.Text(fmt.Sprintf(format, args...))
 }
 
 func (e *SVGPOLYGONElement) IfText(condition bool, text string) *SVGPOLYGONElement {
-    if condition {
-        e.Descendants = append(e.Descendants, Text(text))
-    }
-    return e
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
 }
 
 func (e *SVGPOLYGONElement) IfTextF(condition bool, format string, args ...any) *SVGPOLYGONElement {
-    if condition {
-        e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
-    }
-    return e
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
 }
 
 func (e *SVGPOLYGONElement) Escaped(text string) *SVGPOLYGONElement {
-    e.Descendants = append(e.Descendants, Escaped(text))
-    return e
+	e.Descendants = append(e.Descendants, Escaped(text))
+	return e
 }
 
 func (e *SVGPOLYGONElement) IfEscaped(condition bool, text string) *SVGPOLYGONElement {
-    if condition {
-        e.Descendants = append(e.Descendants, Escaped(text))
-    }
-    return e
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
 }
 
 func (e *SVGPOLYGONElement) EscapedF(format string, args ...any) *SVGPOLYGONElement {
-    return e.Escaped(fmt.Sprintf(format, args...))
+	return e.Escaped(fmt.Sprintf(format, args...))
 }
 
 func (e *SVGPOLYGONElement) IfEscapedF(condition bool, format string, args ...any) *SVGPOLYGONElement {
-    if condition {
-        e.Descendants = append(e.Descendants, EscapedF(format, args...))
-    }
-    return e
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *SVGPOLYGONElement) CustomData(key, value string) *SVGPOLYGONElement {
-    if e.CustomDataAttributes == nil {
-        e.CustomDataAttributes = treemap.New[string,string]()
-    }
+	if e.CustomDataAttributes == nil {
+		e.CustomDataAttributes = treemap.New[string, string]()
+	}
 	e.CustomDataAttributes.Set(key, value)
 	return e
 }
 
 func (e *SVGPOLYGONElement) IfCustomData(condition bool, key, value string) *SVGPOLYGONElement {
-    if condition {
-        e.CustomData(key, value)
-    }
-    return e
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
 }
 
 func (e *SVGPOLYGONElement) CustomDataF(key, format string, args ...any) *SVGPOLYGONElement {
-    return e.CustomData(key, fmt.Sprintf(format, args...))
+	return e.CustomData(key, fmt.Sprintf(format, args...))
 }
 
 func (e *SVGPOLYGONElement) IfCustomDataF(condition bool, key, format string, args ...any) *SVGPOLYGONElement {
-    if condition {
-        e.CustomData(key, fmt.Sprintf(format, args...))
-    }
-    return e
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *SVGPOLYGONElement) CustomDataRemove(key string) *SVGPOLYGONElement {
 	if e.CustomDataAttributes == nil {
 		return e
 	}
-    e.CustomDataAttributes.Del(key)
+	e.CustomDataAttributes.Del(key)
 	return e
 }
 
-
-    // A list of points, each of which is a coordinate pair. 
-    func(e *SVGPOLYGONElement) POINTS(s string) *SVGPOLYGONElement{
-            if e.StringAttributes == nil {
-                e.StringAttributes = treemap.New[string,string]()
-            }
-            e.StringAttributes.Set("points", s)
-            return e
-        }
-
-        func(e *SVGPOLYGONElement) IfPOINTS(condition bool, s string) *SVGPOLYGONElement{
-            if condition {
-                e.POINTS(s)
-            }
-            return e
-        }
-
-        // Remove the attribute POINTS from the element.
-        func(e *SVGPOLYGONElement) POINTSRemove(s string) *SVGPOLYGONElement{
-            if e.StringAttributes == nil {
-                return e
-            }
-            e.StringAttributes.Del("points")
-            return e
-        }
-    
-
-    // Specifies a unique id for an element 
-    func(e *SVGPOLYGONElement) ID(s string) *SVGPOLYGONElement{
-            if e.StringAttributes == nil {
-                e.StringAttributes = treemap.New[string,string]()
-            }
-            e.StringAttributes.Set("id", s)
-            return e
-        }
-
-        func(e *SVGPOLYGONElement) IfID(condition bool, s string) *SVGPOLYGONElement{
-            if condition {
-                e.ID(s)
-            }
-            return e
-        }
-
-        // Remove the attribute ID from the element.
-        func(e *SVGPOLYGONElement) IDRemove(s string) *SVGPOLYGONElement{
-            if e.StringAttributes == nil {
-                return e
-            }
-            e.StringAttributes.Del("id")
-            return e
-        }
-    
-
-    // Specifies one or more classnames for an element (refers to a class in a style 
-// sheet) 
-    func(e *SVGPOLYGONElement) CLASS(s ...string) *SVGPOLYGONElement{
-            if e.DelimitedStrings == nil {
-                e.DelimitedStrings = treemap.New[string,*DelimitedBuilder[string]]()
-            }
-            ds, ok := e.DelimitedStrings.Get("class")
-            if !ok {
-                ds = NewDelimitedBuilder[string](" ")
-                e.DelimitedStrings.Set("class", ds)
-            }
-            ds.Add(s...)
-            return e
-        }
-
-        func(e *SVGPOLYGONElement) IfCLASS(condition bool, s ...string) *SVGPOLYGONElement{
-            if condition {
-                e.CLASS(s...)
-            }
-            return e
-        }
-
-        // Remove the attribute CLASS from the element.
-        func(e *SVGPOLYGONElement) CLASSRemove(s ...string) *SVGPOLYGONElement{
-            if e.DelimitedStrings == nil {
-                return e
-            }
-            ds, ok := e.DelimitedStrings.Get("class")
-            if !ok {
-                return e
-            }
-            ds.Remove(s ...)
-            return e
-        }
-
-    
-
-    // Specifies an inline CSS style for an element 
-    func (e *SVGPOLYGONElement) STYLEF(k string, format string, args ...any) *SVGPOLYGONElement {
-            return e.STYLE(k, fmt.Sprintf(format, args...))
-        }
-
-        func (e *SVGPOLYGONElement) IfSTYLE(condition bool, k string, v string) *SVGPOLYGONElement {
-            if condition {
-                e.STYLE(k, v)
-            }
-            return e
-        }
-
-        func (e *SVGPOLYGONElement) STYLE(k string, v string) *SVGPOLYGONElement {
-            if e.KVStrings == nil {
-                e.KVStrings = treemap.New[string,*KVBuilder]()
-            }
-            kv, ok := e.KVStrings.Get("style")
-            if !ok {
-                kv = NewKVBuilder(":", ";")
-                e.KVStrings.Set("style", kv)
-            }
-            kv.Add(k, v)
-            return e
-        }
-
-        func (e *SVGPOLYGONElement) IfSTYLEF(condition bool, k string, format string, args ...any) *SVGPOLYGONElement {
-            if condition {
-                e.STYLE(k, fmt.Sprintf(format, args...))
-            }
-            return e
-        }
-
-        // Add the attributes in the map to the element.
-        func (e *SVGPOLYGONElement) STYLEMap(m map[string]string) *SVGPOLYGONElement {
-            if e.KVStrings == nil {
-                e.KVStrings = treemap.New[string,*KVBuilder]()
-            }
-            kv, ok := e.KVStrings.Get("style")
-            if !ok {
-                kv = NewKVBuilder(":", ";")
-                e.KVStrings.Set("style", kv)
-            }
-            for k, v := range m {
-                kv.Add(k, v)
-            }
-            return e
-        }
-
-        // Add pairs of attributes to the element.
-        func (e *SVGPOLYGONElement) STYLEPairs(pairs ...string) *SVGPOLYGONElement {
-            if len(pairs) % 2 != 0 {
-                panic("Must have an even number of pairs")
-            }
-            if e.KVStrings == nil {
-                e.KVStrings = treemap.New[string,*KVBuilder]()
-            }
-            kv, ok := e.KVStrings.Get("style")
-            if !ok {
-                kv = NewKVBuilder(":", ";")
-                e.KVStrings.Set("style", kv)
-            }
-
-            for i := 0; i < len(pairs); i += 2 {
-                kv.Add(pairs[i], pairs[i+1])
-            }
-
-            return e
-        }
-
-        func (e *SVGPOLYGONElement) IfSTYLEPairs(condition bool, pairs ...string) *SVGPOLYGONElement {
-            if condition {
-                e.STYLEPairs(pairs...)
-            }
-            return e
-        }
-
-        // Remove the attribute STYLE from the element.
-        func (e *SVGPOLYGONElement) STYLERemove(keys ...string) *SVGPOLYGONElement {
-            if e.KVStrings == nil {
-                return e
-            }
-            kv, ok := e.KVStrings.Get("style")
-            if !ok {
-                return e
-            }
-            for _, k := range keys {
-                kv.Remove(k)
-            }
-            return e
-        }
-
-    
-
-    // Merges the store with the given object 
-    
-        func(e *SVGPOLYGONElement) DATASTAR_MERGE_STORE(v any) *SVGPOLYGONElement{
-                if e.CustomDataAttributes == nil {
-                    e.CustomDataAttributes = treemap.New[string,string]()
-                }
-                b, err := json.Marshal(v)
-                if err != nil {
-                    panic(err)
-                }
-                e.CustomDataAttributes.Set("data-merge-store", string(b))
-                return e
-            }
-
-        
-
-    // Sets the reference of the element 
-    
-        func(e *SVGPOLYGONElement) DATASTAR_REF(expression string) *SVGPOLYGONElement{
-                if e.StringAttributes == nil {
-                    e.StringAttributes = treemap.New[string,string]()
-                }
-                
-                key := "data-ref"
-                
-                e.StringAttributes.Set(key, expression)
-                return e
-            }
-
-            func(e *SVGPOLYGONElement) IfDATASTAR_REF(condition bool, expression string) *SVGPOLYGONElement{
-                if condition {
-                    e.DATASTAR_REF( expression, )
-                }
-                return e
-            }
-
-            // Remove the attribute DATASTAR_REF from the element.
-            func(e *SVGPOLYGONElement) DATASTAR_REFRemove() *SVGPOLYGONElement{
-                if e.StringAttributes == nil {
-                    return e
-                }
-                e.StringAttributes.Del("data-ref")
-                return e
-            }
-
-        
-
-    // Sets the value of the element 
-    
-        func(e *SVGPOLYGONElement) DATASTAR_BIND(key string, expression string) *SVGPOLYGONElement{
-                if e.StringAttributes == nil {
-                    e.StringAttributes = treemap.New[string,string]()
-                }
-                
-                key = fmt.Sprintf("data-bind-%s", key)
-                
-                e.StringAttributes.Set(key, expression)
-                return e
-            }
-
-            func(e *SVGPOLYGONElement) IfDATASTAR_BIND(condition bool, key string, expression string) *SVGPOLYGONElement{
-                if condition {
-                    e.DATASTAR_BIND(key,  expression, )
-                }
-                return e
-            }
-
-            // Remove the attribute DATASTAR_BIND from the element.
-            func(e *SVGPOLYGONElement) DATASTAR_BINDRemove() *SVGPOLYGONElement{
-                if e.StringAttributes == nil {
-                    return e
-                }
-                e.StringAttributes.Del("data-bind")
-                return e
-            }
-
-        
-
-    // Sets the value of the element 
-    
-        func(e *SVGPOLYGONElement) DATASTAR_MODEL(expression string) *SVGPOLYGONElement{
-                if e.StringAttributes == nil {
-                    e.StringAttributes = treemap.New[string,string]()
-                }
-                
-                key := "data-model"
-                
-                e.StringAttributes.Set(key, expression)
-                return e
-            }
-
-            func(e *SVGPOLYGONElement) IfDATASTAR_MODEL(condition bool, expression string) *SVGPOLYGONElement{
-                if condition {
-                    e.DATASTAR_MODEL( expression, )
-                }
-                return e
-            }
-
-            // Remove the attribute DATASTAR_MODEL from the element.
-            func(e *SVGPOLYGONElement) DATASTAR_MODELRemove() *SVGPOLYGONElement{
-                if e.StringAttributes == nil {
-                    return e
-                }
-                e.StringAttributes.Del("data-model")
-                return e
-            }
-
-        
-
-    // Sets the textContent of the element 
-    
-        func(e *SVGPOLYGONElement) DATASTAR_TEXT(expression string) *SVGPOLYGONElement{
-                if e.StringAttributes == nil {
-                    e.StringAttributes = treemap.New[string,string]()
-                }
-                
-                key := "data-text"
-                
-                e.StringAttributes.Set(key, expression)
-                return e
-            }
-
-            func(e *SVGPOLYGONElement) IfDATASTAR_TEXT(condition bool, expression string) *SVGPOLYGONElement{
-                if condition {
-                    e.DATASTAR_TEXT( expression, )
-                }
-                return e
-            }
-
-            // Remove the attribute DATASTAR_TEXT from the element.
-            func(e *SVGPOLYGONElement) DATASTAR_TEXTRemove() *SVGPOLYGONElement{
-                if e.StringAttributes == nil {
-                    return e
-                }
-                e.StringAttributes.Del("data-text")
-                return e
-            }
-
-        
-
-    // Sets the event handler of the element 
-    
-        type SVGPolygonDataOnMod customDataKeyModifier
-
-            
-            // Debounces the event handler 
-            func SVGPolygonDataOnModDebounce(
-                    d time.Duration,
-            ) SVGPolygonDataOnMod {
-                return func() string {return fmt.Sprintf("debounce_%dms", d.Milliseconds())
-                }
-            }
-            
-            // Throttles the event handler 
-            func SVGPolygonDataOnModThrottle(
-                    d time.Duration,
-            ) SVGPolygonDataOnMod {
-                return func() string {return fmt.Sprintf("throttle_%dms", d.Milliseconds())
-                }
-            }
-            
-        func(e *SVGPOLYGONElement) DATASTAR_ON(key string, expression string, modifiers ...SVGPolygonDataOnMod) *SVGPOLYGONElement{
-                if e.StringAttributes == nil {
-                    e.StringAttributes = treemap.New[string,string]()
-                }
-                
-                key = fmt.Sprintf("data-on-%s", key)
-                
-                customMods := lo.Map(modifiers, func(m SVGPolygonDataOnMod, i int) customDataKeyModifier  {
-                    return customDataKeyModifier(m)
-                })
-                key = customDataKey(key, customMods...)
-                e.StringAttributes.Set(key, expression)
-                return e
-            }
-
-            func(e *SVGPOLYGONElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SVGPolygonDataOnMod) *SVGPOLYGONElement{
-                if condition {
-                    e.DATASTAR_ON(key,  expression,  modifiers...)
-                }
-                return e
-            }
-
-            // Remove the attribute DATASTAR_ON from the element.
-            func(e *SVGPOLYGONElement) DATASTAR_ONRemove() *SVGPOLYGONElement{
-                if e.StringAttributes == nil {
-                    return e
-                }
-                e.StringAttributes.Del("data-on")
-                return e
-            }
-
-        
-
-    // Sets the focus of the element 
-    
-        func(e *SVGPOLYGONElement) DATASTAR_FOCUSSet(b bool) *SVGPOLYGONElement{
-                key := "data-focus"
-                e.BoolAttributes.Set(key, b)
-                return e
-            }
-
-            func(e *SVGPOLYGONElement) DATASTAR_FOCUS() *SVGPOLYGONElement{
-                return e.DATASTAR_FOCUSSet(true)
-            }
-        
-
-    // Sets the header of for fetch requests 
-    
-        func(e *SVGPOLYGONElement) DATASTAR_HEADER(key string, expression string) *SVGPOLYGONElement{
-                if e.StringAttributes == nil {
-                    e.StringAttributes = treemap.New[string,string]()
-                }
-                
-                key = fmt.Sprintf("data-header-%s", key)
-                
-                e.StringAttributes.Set(key, expression)
-                return e
-            }
-
-            func(e *SVGPOLYGONElement) IfDATASTAR_HEADER(condition bool, key string, expression string) *SVGPOLYGONElement{
-                if condition {
-                    e.DATASTAR_HEADER(key,  expression, )
-                }
-                return e
-            }
-
-            // Remove the attribute DATASTAR_HEADER from the element.
-            func(e *SVGPOLYGONElement) DATASTAR_HEADERRemove() *SVGPOLYGONElement{
-                if e.StringAttributes == nil {
-                    return e
-                }
-                e.StringAttributes.Del("data-header")
-                return e
-            }
-
-        
-
-    // Sets the URL for fetch requests 
-    
-        func(e *SVGPOLYGONElement) DATASTAR_FETCH_URL(expression string) *SVGPOLYGONElement{
-                if e.StringAttributes == nil {
-                    e.StringAttributes = treemap.New[string,string]()
-                }
-                
-                key := "data-fetch-url"
-                
-                e.StringAttributes.Set(key, expression)
-                return e
-            }
-
-            func(e *SVGPOLYGONElement) IfDATASTAR_FETCH_URL(condition bool, expression string) *SVGPOLYGONElement{
-                if condition {
-                    e.DATASTAR_FETCH_URL( expression, )
-                }
-                return e
-            }
-
-            // Remove the attribute DATASTAR_FETCH_URL from the element.
-            func(e *SVGPOLYGONElement) DATASTAR_FETCH_URLRemove() *SVGPOLYGONElement{
-                if e.StringAttributes == nil {
-                    return e
-                }
-                e.StringAttributes.Del("data-fetch-url")
-                return e
-            }
-
-        
-
-    // Sets the indicator selector for fetch requests 
-    
-        func(e *SVGPOLYGONElement) DATASTAR_FETCH_INDICATOR(expression string) *SVGPOLYGONElement{
-                if e.StringAttributes == nil {
-                    e.StringAttributes = treemap.New[string,string]()
-                }
-                
-                key := "DatastarFetchIndicator"
-                
-                e.StringAttributes.Set(key, expression)
-                return e
-            }
-
-            func(e *SVGPOLYGONElement) IfDATASTAR_FETCH_INDICATOR(condition bool, expression string) *SVGPOLYGONElement{
-                if condition {
-                    e.DATASTAR_FETCH_INDICATOR( expression, )
-                }
-                return e
-            }
-
-            // Remove the attribute DATASTAR_FETCH_INDICATOR from the element.
-            func(e *SVGPOLYGONElement) DATASTAR_FETCH_INDICATORRemove() *SVGPOLYGONElement{
-                if e.StringAttributes == nil {
-                    return e
-                }
-                e.StringAttributes.Del("DatastarFetchIndicator")
-                return e
-            }
-
-        
-
-    // Sets the visibility of the element 
-    
-        func(e *SVGPOLYGONElement) DATASTAR_SHOWSet(b bool) *SVGPOLYGONElement{
-                key := "data-show"
-                e.BoolAttributes.Set(key, b)
-                return e
-            }
-
-            func(e *SVGPOLYGONElement) DATASTAR_SHOW() *SVGPOLYGONElement{
-                return e.DATASTAR_SHOWSet(true)
-            }
-        
-
-    // Triggers the callback when the element intersects the viewport 
-    
-        func(e *SVGPOLYGONElement) DATASTAR_INTERSECTSSet(b bool) *SVGPOLYGONElement{
-                key := "data-intersects"
-                e.BoolAttributes.Set(key, b)
-                return e
-            }
-
-            func(e *SVGPOLYGONElement) DATASTAR_INTERSECTS() *SVGPOLYGONElement{
-                return e.DATASTAR_INTERSECTSSet(true)
-            }
-        
-
-    // Teleports the element to the given selector 
-    
-        func(e *SVGPOLYGONElement) DATASTAR_TELEPORTSet(b bool) *SVGPOLYGONElement{
-                key := "data-teleport"
-                e.BoolAttributes.Set(key, b)
-                return e
-            }
-
-            func(e *SVGPOLYGONElement) DATASTAR_TELEPORT() *SVGPOLYGONElement{
-                return e.DATASTAR_TELEPORTSet(true)
-            }
-        
-
-    // Scrolls the element into view 
-    
-        func(e *SVGPOLYGONElement) DATASTAR_SCROLL_INTO_VIEWSet(b bool) *SVGPOLYGONElement{
-                key := "data-scroll-into-view"
-                e.BoolAttributes.Set(key, b)
-                return e
-            }
-
-            func(e *SVGPOLYGONElement) DATASTAR_SCROLL_INTO_VIEW() *SVGPOLYGONElement{
-                return e.DATASTAR_SCROLL_INTO_VIEWSet(true)
-            }
-        
-
-    // Setup the ViewTransitionAPI for the element 
-    
-        func(e *SVGPOLYGONElement) DATASTAR_VIEW_TRANSITION(key string, expression string) *SVGPOLYGONElement{
-                if e.StringAttributes == nil {
-                    e.StringAttributes = treemap.New[string,string]()
-                }
-                
-                key = fmt.Sprintf("data-view-transition-%s", key)
-                
-                e.StringAttributes.Set(key, expression)
-                return e
-            }
-
-            func(e *SVGPOLYGONElement) IfDATASTAR_VIEW_TRANSITION(condition bool, key string, expression string) *SVGPOLYGONElement{
-                if condition {
-                    e.DATASTAR_VIEW_TRANSITION(key,  expression, )
-                }
-                return e
-            }
-
-            // Remove the attribute DATASTAR_VIEW_TRANSITION from the element.
-            func(e *SVGPOLYGONElement) DATASTAR_VIEW_TRANSITIONRemove() *SVGPOLYGONElement{
-                if e.StringAttributes == nil {
-                    return e
-                }
-                e.StringAttributes.Del("data-view-transition")
-                return e
-            }
-
-        
-
-
-
+// A list of points, each of which is a coordinate pair.
+func (e *SVGPOLYGONElement) POINTS(s string) *SVGPOLYGONElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	e.StringAttributes.Set("points", s)
+	return e
+}
+
+func (e *SVGPOLYGONElement) IfPOINTS(condition bool, s string) *SVGPOLYGONElement {
+	if condition {
+		e.POINTS(s)
+	}
+	return e
+}
+
+// Remove the attribute POINTS from the element.
+func (e *SVGPOLYGONElement) POINTSRemove(s string) *SVGPOLYGONElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("points")
+	return e
+}
+
+// Specifies a unique id for an element
+func (e *SVGPOLYGONElement) ID(s string) *SVGPOLYGONElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	e.StringAttributes.Set("id", s)
+	return e
+}
+
+func (e *SVGPOLYGONElement) IfID(condition bool, s string) *SVGPOLYGONElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
+// Remove the attribute ID from the element.
+func (e *SVGPOLYGONElement) IDRemove(s string) *SVGPOLYGONElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("id")
+	return e
+}
+
+// Specifies one or more classnames for an element (refers to a class in a style
+// sheet)
+func (e *SVGPOLYGONElement) CLASS(s ...string) *SVGPOLYGONElement {
+	if e.DelimitedStrings == nil {
+		e.DelimitedStrings = treemap.New[string, *DelimitedBuilder[string]]()
+	}
+	ds, ok := e.DelimitedStrings.Get("class")
+	if !ok {
+		ds = NewDelimitedBuilder[string](" ")
+		e.DelimitedStrings.Set("class", ds)
+	}
+	ds.Add(s...)
+	return e
+}
+
+func (e *SVGPOLYGONElement) IfCLASS(condition bool, s ...string) *SVGPOLYGONElement {
+	if condition {
+		e.CLASS(s...)
+	}
+	return e
+}
+
+// Remove the attribute CLASS from the element.
+func (e *SVGPOLYGONElement) CLASSRemove(s ...string) *SVGPOLYGONElement {
+	if e.DelimitedStrings == nil {
+		return e
+	}
+	ds, ok := e.DelimitedStrings.Get("class")
+	if !ok {
+		return e
+	}
+	ds.Remove(s...)
+	return e
+}
+
+// Specifies an inline CSS style for an element
+func (e *SVGPOLYGONElement) STYLEF(k string, format string, args ...any) *SVGPOLYGONElement {
+	return e.STYLE(k, fmt.Sprintf(format, args...))
+}
+
+func (e *SVGPOLYGONElement) IfSTYLE(condition bool, k string, v string) *SVGPOLYGONElement {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
+func (e *SVGPOLYGONElement) STYLE(k string, v string) *SVGPOLYGONElement {
+	if e.KVStrings == nil {
+		e.KVStrings = treemap.New[string, *KVBuilder]()
+	}
+	kv, ok := e.KVStrings.Get("style")
+	if !ok {
+		kv = NewKVBuilder(":", ";")
+		e.KVStrings.Set("style", kv)
+	}
+	kv.Add(k, v)
+	return e
+}
+
+func (e *SVGPOLYGONElement) IfSTYLEF(condition bool, k string, format string, args ...any) *SVGPOLYGONElement {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
+	return e
+}
+
+// Add the attributes in the map to the element.
+func (e *SVGPOLYGONElement) STYLEMap(m map[string]string) *SVGPOLYGONElement {
+	if e.KVStrings == nil {
+		e.KVStrings = treemap.New[string, *KVBuilder]()
+	}
+	kv, ok := e.KVStrings.Get("style")
+	if !ok {
+		kv = NewKVBuilder(":", ";")
+		e.KVStrings.Set("style", kv)
+	}
+	for k, v := range m {
+		kv.Add(k, v)
+	}
+	return e
+}
+
+// Add pairs of attributes to the element.
+func (e *SVGPOLYGONElement) STYLEPairs(pairs ...string) *SVGPOLYGONElement {
+	if len(pairs)%2 != 0 {
+		panic("Must have an even number of pairs")
+	}
+	if e.KVStrings == nil {
+		e.KVStrings = treemap.New[string, *KVBuilder]()
+	}
+	kv, ok := e.KVStrings.Get("style")
+	if !ok {
+		kv = NewKVBuilder(":", ";")
+		e.KVStrings.Set("style", kv)
+	}
+
+	for i := 0; i < len(pairs); i += 2 {
+		kv.Add(pairs[i], pairs[i+1])
+	}
+
+	return e
+}
+
+func (e *SVGPOLYGONElement) IfSTYLEPairs(condition bool, pairs ...string) *SVGPOLYGONElement {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
+	return e
+}
+
+// Remove the attribute STYLE from the element.
+func (e *SVGPOLYGONElement) STYLERemove(keys ...string) *SVGPOLYGONElement {
+	if e.KVStrings == nil {
+		return e
+	}
+	kv, ok := e.KVStrings.Get("style")
+	if !ok {
+		return e
+	}
+	for _, k := range keys {
+		kv.Remove(k)
+	}
+	return e
+}
+
+// Merges the store with the given object
+
+func (e *SVGPOLYGONElement) DATASTAR_MERGE_STORE(v any) *SVGPOLYGONElement {
+	if e.CustomDataAttributes == nil {
+		e.CustomDataAttributes = treemap.New[string, string]()
+	}
+	b, err := json.Marshal(v)
+	if err != nil {
+		panic(err)
+	}
+	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	return e
+}
+
+// Sets the reference of the element
+
+func (e *SVGPOLYGONElement) DATASTAR_REF(expression string) *SVGPOLYGONElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-ref"
+
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+func (e *SVGPOLYGONElement) IfDATASTAR_REF(condition bool, expression string) *SVGPOLYGONElement {
+	if condition {
+		e.DATASTAR_REF(expression)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_REF from the element.
+func (e *SVGPOLYGONElement) DATASTAR_REFRemove() *SVGPOLYGONElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-ref")
+	return e
+}
+
+// Sets the value of the element
+
+func (e *SVGPOLYGONElement) DATASTAR_BIND(key string, expression string) *SVGPOLYGONElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key = fmt.Sprintf("data-bind-%s", key)
+
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+func (e *SVGPOLYGONElement) IfDATASTAR_BIND(condition bool, key string, expression string) *SVGPOLYGONElement {
+	if condition {
+		e.DATASTAR_BIND(key, expression)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_BIND from the element.
+func (e *SVGPOLYGONElement) DATASTAR_BINDRemove() *SVGPOLYGONElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-bind")
+	return e
+}
+
+// Sets the value of the element
+
+func (e *SVGPOLYGONElement) DATASTAR_MODEL(expression string) *SVGPOLYGONElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-model"
+
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+func (e *SVGPOLYGONElement) IfDATASTAR_MODEL(condition bool, expression string) *SVGPOLYGONElement {
+	if condition {
+		e.DATASTAR_MODEL(expression)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_MODEL from the element.
+func (e *SVGPOLYGONElement) DATASTAR_MODELRemove() *SVGPOLYGONElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-model")
+	return e
+}
+
+// Sets the textContent of the element
+
+func (e *SVGPOLYGONElement) DATASTAR_TEXT(expression string) *SVGPOLYGONElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-text"
+
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+func (e *SVGPOLYGONElement) IfDATASTAR_TEXT(condition bool, expression string) *SVGPOLYGONElement {
+	if condition {
+		e.DATASTAR_TEXT(expression)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_TEXT from the element.
+func (e *SVGPOLYGONElement) DATASTAR_TEXTRemove() *SVGPOLYGONElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-text")
+	return e
+}
+
+// Sets the event handler of the element
+
+type SVGPolygonDataOnMod customDataKeyModifier
+
+// Debounces the event handler
+func SVGPolygonDataOnModDebounce(
+	d time.Duration,
+) SVGPolygonDataOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce_%dms", d.Milliseconds())
+	}
+}
+
+// Throttles the event handler
+func SVGPolygonDataOnModThrottle(
+	d time.Duration,
+) SVGPolygonDataOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle_%dms", d.Milliseconds())
+	}
+}
+
+func (e *SVGPOLYGONElement) DATASTAR_ON(key string, expression string, modifiers ...SVGPolygonDataOnMod) *SVGPOLYGONElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key = fmt.Sprintf("data-on-%s", key)
+
+	customMods := lo.Map(modifiers, func(m SVGPolygonDataOnMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+func (e *SVGPOLYGONElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SVGPolygonDataOnMod) *SVGPOLYGONElement {
+	if condition {
+		e.DATASTAR_ON(key, expression, modifiers...)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_ON from the element.
+func (e *SVGPOLYGONElement) DATASTAR_ONRemove() *SVGPOLYGONElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-on")
+	return e
+}
+
+// Sets the focus of the element
+
+func (e *SVGPOLYGONElement) DATASTAR_FOCUSSet(b bool) *SVGPOLYGONElement {
+	key := "data-focus"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *SVGPOLYGONElement) DATASTAR_FOCUS() *SVGPOLYGONElement {
+	return e.DATASTAR_FOCUSSet(true)
+}
+
+// Sets the header of for fetch requests
+
+func (e *SVGPOLYGONElement) DATASTAR_HEADER(key string, expression string) *SVGPOLYGONElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key = fmt.Sprintf("data-header-%s", key)
+
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+func (e *SVGPOLYGONElement) IfDATASTAR_HEADER(condition bool, key string, expression string) *SVGPOLYGONElement {
+	if condition {
+		e.DATASTAR_HEADER(key, expression)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_HEADER from the element.
+func (e *SVGPOLYGONElement) DATASTAR_HEADERRemove() *SVGPOLYGONElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-header")
+	return e
+}
+
+// Sets the URL for fetch requests
+
+func (e *SVGPOLYGONElement) DATASTAR_FETCH_URL(expression string) *SVGPOLYGONElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-fetch-url"
+
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+func (e *SVGPOLYGONElement) IfDATASTAR_FETCH_URL(condition bool, expression string) *SVGPOLYGONElement {
+	if condition {
+		e.DATASTAR_FETCH_URL(expression)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_FETCH_URL from the element.
+func (e *SVGPOLYGONElement) DATASTAR_FETCH_URLRemove() *SVGPOLYGONElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-fetch-url")
+	return e
+}
+
+// Sets the indicator selector for fetch requests
+
+func (e *SVGPOLYGONElement) DATASTAR_FETCH_INDICATOR(expression string) *SVGPOLYGONElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "DatastarFetchIndicator"
+
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+func (e *SVGPOLYGONElement) IfDATASTAR_FETCH_INDICATOR(condition bool, expression string) *SVGPOLYGONElement {
+	if condition {
+		e.DATASTAR_FETCH_INDICATOR(expression)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_FETCH_INDICATOR from the element.
+func (e *SVGPOLYGONElement) DATASTAR_FETCH_INDICATORRemove() *SVGPOLYGONElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("DatastarFetchIndicator")
+	return e
+}
+
+// Sets the visibility of the element
+
+func (e *SVGPOLYGONElement) DATASTAR_SHOWSet(b bool) *SVGPOLYGONElement {
+	key := "data-show"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *SVGPOLYGONElement) DATASTAR_SHOW() *SVGPOLYGONElement {
+	return e.DATASTAR_SHOWSet(true)
+}
+
+// Triggers the callback when the element intersects the viewport
+
+func (e *SVGPOLYGONElement) DATASTAR_INTERSECTSSet(b bool) *SVGPOLYGONElement {
+	key := "data-intersects"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *SVGPOLYGONElement) DATASTAR_INTERSECTS() *SVGPOLYGONElement {
+	return e.DATASTAR_INTERSECTSSet(true)
+}
+
+// Teleports the element to the given selector
+
+func (e *SVGPOLYGONElement) DATASTAR_TELEPORTSet(b bool) *SVGPOLYGONElement {
+	key := "data-teleport"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *SVGPOLYGONElement) DATASTAR_TELEPORT() *SVGPOLYGONElement {
+	return e.DATASTAR_TELEPORTSet(true)
+}
+
+// Scrolls the element into view
+
+func (e *SVGPOLYGONElement) DATASTAR_SCROLL_INTO_VIEWSet(b bool) *SVGPOLYGONElement {
+	key := "data-scroll-into-view"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *SVGPOLYGONElement) DATASTAR_SCROLL_INTO_VIEW() *SVGPOLYGONElement {
+	return e.DATASTAR_SCROLL_INTO_VIEWSet(true)
+}
+
+// Setup the ViewTransitionAPI for the element
+
+func (e *SVGPOLYGONElement) DATASTAR_VIEW_TRANSITION(key string, expression string) *SVGPOLYGONElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key = fmt.Sprintf("data-view-transition-%s", key)
+
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+func (e *SVGPOLYGONElement) IfDATASTAR_VIEW_TRANSITION(condition bool, key string, expression string) *SVGPOLYGONElement {
+	if condition {
+		e.DATASTAR_VIEW_TRANSITION(key, expression)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_VIEW_TRANSITION from the element.
+func (e *SVGPOLYGONElement) DATASTAR_VIEW_TRANSITIONRemove() *SVGPOLYGONElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-view-transition")
+	return e
+}

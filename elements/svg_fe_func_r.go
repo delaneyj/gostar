@@ -3,822 +3,779 @@
 // Description:
 package elements
 
-import(
-    "fmt"
-    "time"
-    "github.com/igrmk/treemap/v2"
-    "github.com/goccy/go-json"
-    "github.com/samber/lo"
+import (
+	"fmt"
+	"time"
+
+	"github.com/goccy/go-json"
+	"github.com/igrmk/treemap/v2"
+	"github.com/samber/lo"
 )
 
-// The <feFuncR> SVG filter primitive defines the transfer function for the red 
-// component of the input graphic of its parent <feComponentTransfer> element. 
+// The <feFuncR> SVG filter primitive defines the transfer function for the red
+// component of the input graphic of its parent <feComponentTransfer> element.
 type SVGFEFUNCRElement struct {
-    *Element
+	*Element
 }
 
 // Create a new SVGFEFUNCRElement element.
 // This will create a new element with the tag
 // "feFuncR" during rendering.
 func SVG_FEFUNCR(children ...ElementRenderer) *SVGFEFUNCRElement {
-    e := NewElement("feFuncR", children...)
-    e.IsSelfClosing = false
-    e.Descendants = children
+	e := NewElement("feFuncR", children...)
+	e.IsSelfClosing = false
+	e.Descendants = children
 
-    return &SVGFEFUNCRElement{ Element: e }
+	return &SVGFEFUNCRElement{Element: e}
 }
 
 func (e *SVGFEFUNCRElement) Children(children ...ElementRenderer) *SVGFEFUNCRElement {
-    e.Descendants = append(e.Descendants, children...)
-    return e
+	e.Descendants = append(e.Descendants, children...)
+	return e
 }
 
-func(e *SVGFEFUNCRElement) IfChildren(condition bool, children ...ElementRenderer) *SVGFEFUNCRElement {
-    if condition {
-        e.Descendants = append(e.Descendants, children...)
-    }
-    return e
+func (e *SVGFEFUNCRElement) IfChildren(condition bool, children ...ElementRenderer) *SVGFEFUNCRElement {
+	if condition {
+		e.Descendants = append(e.Descendants, children...)
+	}
+	return e
 }
 
-func(e *SVGFEFUNCRElement) TernChildren(condition bool, trueChildren, falseChildren ElementRenderer) *SVGFEFUNCRElement {
-    if condition {
-        e.Descendants = append(e.Descendants, trueChildren)
-    } else {
-        e.Descendants = append(e.Descendants, falseChildren)
-    }
-    return e
+func (e *SVGFEFUNCRElement) TernChildren(condition bool, trueChildren, falseChildren ElementRenderer) *SVGFEFUNCRElement {
+	if condition {
+		e.Descendants = append(e.Descendants, trueChildren)
+	} else {
+		e.Descendants = append(e.Descendants, falseChildren)
+	}
+	return e
 }
 
 func (e *SVGFEFUNCRElement) Text(text string) *SVGFEFUNCRElement {
-    e.Descendants = append(e.Descendants, Text(text))
-    return e
+	e.Descendants = append(e.Descendants, Text(text))
+	return e
 }
 
 func (e *SVGFEFUNCRElement) TextF(format string, args ...any) *SVGFEFUNCRElement {
-    return e.Text(fmt.Sprintf(format, args...))
+	return e.Text(fmt.Sprintf(format, args...))
 }
 
 func (e *SVGFEFUNCRElement) IfText(condition bool, text string) *SVGFEFUNCRElement {
-    if condition {
-        e.Descendants = append(e.Descendants, Text(text))
-    }
-    return e
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
 }
 
 func (e *SVGFEFUNCRElement) IfTextF(condition bool, format string, args ...any) *SVGFEFUNCRElement {
-    if condition {
-        e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
-    }
-    return e
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
 }
 
 func (e *SVGFEFUNCRElement) Escaped(text string) *SVGFEFUNCRElement {
-    e.Descendants = append(e.Descendants, Escaped(text))
-    return e
+	e.Descendants = append(e.Descendants, Escaped(text))
+	return e
 }
 
 func (e *SVGFEFUNCRElement) IfEscaped(condition bool, text string) *SVGFEFUNCRElement {
-    if condition {
-        e.Descendants = append(e.Descendants, Escaped(text))
-    }
-    return e
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
 }
 
 func (e *SVGFEFUNCRElement) EscapedF(format string, args ...any) *SVGFEFUNCRElement {
-    return e.Escaped(fmt.Sprintf(format, args...))
+	return e.Escaped(fmt.Sprintf(format, args...))
 }
 
 func (e *SVGFEFUNCRElement) IfEscapedF(condition bool, format string, args ...any) *SVGFEFUNCRElement {
-    if condition {
-        e.Descendants = append(e.Descendants, EscapedF(format, args...))
-    }
-    return e
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *SVGFEFUNCRElement) CustomData(key, value string) *SVGFEFUNCRElement {
-    if e.CustomDataAttributes == nil {
-        e.CustomDataAttributes = treemap.New[string,string]()
-    }
+	if e.CustomDataAttributes == nil {
+		e.CustomDataAttributes = treemap.New[string, string]()
+	}
 	e.CustomDataAttributes.Set(key, value)
 	return e
 }
 
 func (e *SVGFEFUNCRElement) IfCustomData(condition bool, key, value string) *SVGFEFUNCRElement {
-    if condition {
-        e.CustomData(key, value)
-    }
-    return e
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
 }
 
 func (e *SVGFEFUNCRElement) CustomDataF(key, format string, args ...any) *SVGFEFUNCRElement {
-    return e.CustomData(key, fmt.Sprintf(format, args...))
+	return e.CustomData(key, fmt.Sprintf(format, args...))
 }
 
 func (e *SVGFEFUNCRElement) IfCustomDataF(condition bool, key, format string, args ...any) *SVGFEFUNCRElement {
-    if condition {
-        e.CustomData(key, fmt.Sprintf(format, args...))
-    }
-    return e
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *SVGFEFUNCRElement) CustomDataRemove(key string) *SVGFEFUNCRElement {
 	if e.CustomDataAttributes == nil {
 		return e
 	}
-    e.CustomDataAttributes.Del(key)
+	e.CustomDataAttributes.Del(key)
 	return e
 }
 
-
-    // The type of transfer function. 
-    func(e *SVGFEFUNCRElement) TYPE(c SVGFeFuncRTypeChoice) *SVGFEFUNCRElement{
-            if e.StringAttributes == nil {
-                e.StringAttributes = treemap.New[string,string]()
-            }
-            e.StringAttributes.Set("type", string(c))
-            return e
-        }
-
-        type SVGFeFuncRTypeChoice string
-        const(
-        // The type of transfer function. 
-            SVGFeFuncRType_identity SVGFeFuncRTypeChoice = "identity"
-        // The type of transfer function. 
-            SVGFeFuncRType_table SVGFeFuncRTypeChoice = "table"
-        // The type of transfer function. 
-            SVGFeFuncRType_discrete SVGFeFuncRTypeChoice = "discrete"
-        // The type of transfer function. 
-            SVGFeFuncRType_linear SVGFeFuncRTypeChoice = "linear"
-        // The type of transfer function. 
-            SVGFeFuncRType_gamma SVGFeFuncRTypeChoice = "gamma"
-        )
-
-        // Remove the attribute TYPE from the element.
-        func(e *SVGFEFUNCRElement) TYPERemove(c SVGFeFuncRTypeChoice) *SVGFEFUNCRElement{
-            if e.StringAttributes == nil {
-                return e
-            }
-            e.StringAttributes.Del("type")
-            return e
-        }
-        
-
-    // Contains the list of <number>s that define the lookup table 
-// Values must be in the 0-1 range and be equally spaced 
-// There must be at least two values. 
-    func(e *SVGFEFUNCRElement) TABLE_VALUES(s string) *SVGFEFUNCRElement{
-            if e.StringAttributes == nil {
-                e.StringAttributes = treemap.New[string,string]()
-            }
-            e.StringAttributes.Set("tableValues", s)
-            return e
-        }
-
-        func(e *SVGFEFUNCRElement) IfTABLE_VALUES(condition bool, s string) *SVGFEFUNCRElement{
-            if condition {
-                e.TABLE_VALUES(s)
-            }
-            return e
-        }
-
-        // Remove the attribute TABLE_VALUES from the element.
-        func(e *SVGFEFUNCRElement) TABLE_VALUESRemove(s string) *SVGFEFUNCRElement{
-            if e.StringAttributes == nil {
-                return e
-            }
-            e.StringAttributes.Del("tableValues")
-            return e
-        }
-    
-
-    // The slope attribute indicates the slope of the linear function. 
-    func(e *SVGFEFUNCRElement) SLOPE(f float64) *SVGFEFUNCRElement{
-            if e.FloatAttributes == nil {
-                e.FloatAttributes = treemap.New[string,float64]()
-            }
-            e.FloatAttributes.Set("slope", f)
-            return e
-        }
-
-        func (e *SVGFEFUNCRElement) IfSLOPE(condition bool, f float64) *SVGFEFUNCRElement {
-            if condition {
-                e.SLOPE(f)
-            }
-            return e
-        }
-
-    
-
-    // The intercept attribute indicates the intercept of the linear function. 
-    func(e *SVGFEFUNCRElement) INTERCEPT(f float64) *SVGFEFUNCRElement{
-            if e.FloatAttributes == nil {
-                e.FloatAttributes = treemap.New[string,float64]()
-            }
-            e.FloatAttributes.Set("intercept", f)
-            return e
-        }
-
-        func (e *SVGFEFUNCRElement) IfINTERCEPT(condition bool, f float64) *SVGFEFUNCRElement {
-            if condition {
-                e.INTERCEPT(f)
-            }
-            return e
-        }
-
-    
-
-    // The amplitude attribute indicates the amplitude of the cubic function. 
-    func(e *SVGFEFUNCRElement) AMPLITUDE(f float64) *SVGFEFUNCRElement{
-            if e.FloatAttributes == nil {
-                e.FloatAttributes = treemap.New[string,float64]()
-            }
-            e.FloatAttributes.Set("amplitude", f)
-            return e
-        }
-
-        func (e *SVGFEFUNCRElement) IfAMPLITUDE(condition bool, f float64) *SVGFEFUNCRElement {
-            if condition {
-                e.AMPLITUDE(f)
-            }
-            return e
-        }
-
-    
-
-    // The exponent attribute indicates the exponent of the exponential function. 
-    func(e *SVGFEFUNCRElement) EXPONENT(f float64) *SVGFEFUNCRElement{
-            if e.FloatAttributes == nil {
-                e.FloatAttributes = treemap.New[string,float64]()
-            }
-            e.FloatAttributes.Set("exponent", f)
-            return e
-        }
-
-        func (e *SVGFEFUNCRElement) IfEXPONENT(condition bool, f float64) *SVGFEFUNCRElement {
-            if condition {
-                e.EXPONENT(f)
-            }
-            return e
-        }
-
-    
-
-    // The offset attribute indicates the offset of the function. 
-    func(e *SVGFEFUNCRElement) OFFSET(f float64) *SVGFEFUNCRElement{
-            if e.FloatAttributes == nil {
-                e.FloatAttributes = treemap.New[string,float64]()
-            }
-            e.FloatAttributes.Set("offset", f)
-            return e
-        }
-
-        func (e *SVGFEFUNCRElement) IfOFFSET(condition bool, f float64) *SVGFEFUNCRElement {
-            if condition {
-                e.OFFSET(f)
-            }
-            return e
-        }
-
-    
-
-    // Specifies a unique id for an element 
-    func(e *SVGFEFUNCRElement) ID(s string) *SVGFEFUNCRElement{
-            if e.StringAttributes == nil {
-                e.StringAttributes = treemap.New[string,string]()
-            }
-            e.StringAttributes.Set("id", s)
-            return e
-        }
-
-        func(e *SVGFEFUNCRElement) IfID(condition bool, s string) *SVGFEFUNCRElement{
-            if condition {
-                e.ID(s)
-            }
-            return e
-        }
-
-        // Remove the attribute ID from the element.
-        func(e *SVGFEFUNCRElement) IDRemove(s string) *SVGFEFUNCRElement{
-            if e.StringAttributes == nil {
-                return e
-            }
-            e.StringAttributes.Del("id")
-            return e
-        }
-    
-
-    // Specifies one or more classnames for an element (refers to a class in a style 
-// sheet) 
-    func(e *SVGFEFUNCRElement) CLASS(s ...string) *SVGFEFUNCRElement{
-            if e.DelimitedStrings == nil {
-                e.DelimitedStrings = treemap.New[string,*DelimitedBuilder[string]]()
-            }
-            ds, ok := e.DelimitedStrings.Get("class")
-            if !ok {
-                ds = NewDelimitedBuilder[string](" ")
-                e.DelimitedStrings.Set("class", ds)
-            }
-            ds.Add(s...)
-            return e
-        }
-
-        func(e *SVGFEFUNCRElement) IfCLASS(condition bool, s ...string) *SVGFEFUNCRElement{
-            if condition {
-                e.CLASS(s...)
-            }
-            return e
-        }
-
-        // Remove the attribute CLASS from the element.
-        func(e *SVGFEFUNCRElement) CLASSRemove(s ...string) *SVGFEFUNCRElement{
-            if e.DelimitedStrings == nil {
-                return e
-            }
-            ds, ok := e.DelimitedStrings.Get("class")
-            if !ok {
-                return e
-            }
-            ds.Remove(s ...)
-            return e
-        }
-
-    
-
-    // Specifies an inline CSS style for an element 
-    func (e *SVGFEFUNCRElement) STYLEF(k string, format string, args ...any) *SVGFEFUNCRElement {
-            return e.STYLE(k, fmt.Sprintf(format, args...))
-        }
-
-        func (e *SVGFEFUNCRElement) IfSTYLE(condition bool, k string, v string) *SVGFEFUNCRElement {
-            if condition {
-                e.STYLE(k, v)
-            }
-            return e
-        }
-
-        func (e *SVGFEFUNCRElement) STYLE(k string, v string) *SVGFEFUNCRElement {
-            if e.KVStrings == nil {
-                e.KVStrings = treemap.New[string,*KVBuilder]()
-            }
-            kv, ok := e.KVStrings.Get("style")
-            if !ok {
-                kv = NewKVBuilder(":", ";")
-                e.KVStrings.Set("style", kv)
-            }
-            kv.Add(k, v)
-            return e
-        }
-
-        func (e *SVGFEFUNCRElement) IfSTYLEF(condition bool, k string, format string, args ...any) *SVGFEFUNCRElement {
-            if condition {
-                e.STYLE(k, fmt.Sprintf(format, args...))
-            }
-            return e
-        }
-
-        // Add the attributes in the map to the element.
-        func (e *SVGFEFUNCRElement) STYLEMap(m map[string]string) *SVGFEFUNCRElement {
-            if e.KVStrings == nil {
-                e.KVStrings = treemap.New[string,*KVBuilder]()
-            }
-            kv, ok := e.KVStrings.Get("style")
-            if !ok {
-                kv = NewKVBuilder(":", ";")
-                e.KVStrings.Set("style", kv)
-            }
-            for k, v := range m {
-                kv.Add(k, v)
-            }
-            return e
-        }
-
-        // Add pairs of attributes to the element.
-        func (e *SVGFEFUNCRElement) STYLEPairs(pairs ...string) *SVGFEFUNCRElement {
-            if len(pairs) % 2 != 0 {
-                panic("Must have an even number of pairs")
-            }
-            if e.KVStrings == nil {
-                e.KVStrings = treemap.New[string,*KVBuilder]()
-            }
-            kv, ok := e.KVStrings.Get("style")
-            if !ok {
-                kv = NewKVBuilder(":", ";")
-                e.KVStrings.Set("style", kv)
-            }
-
-            for i := 0; i < len(pairs); i += 2 {
-                kv.Add(pairs[i], pairs[i+1])
-            }
-
-            return e
-        }
-
-        func (e *SVGFEFUNCRElement) IfSTYLEPairs(condition bool, pairs ...string) *SVGFEFUNCRElement {
-            if condition {
-                e.STYLEPairs(pairs...)
-            }
-            return e
-        }
-
-        // Remove the attribute STYLE from the element.
-        func (e *SVGFEFUNCRElement) STYLERemove(keys ...string) *SVGFEFUNCRElement {
-            if e.KVStrings == nil {
-                return e
-            }
-            kv, ok := e.KVStrings.Get("style")
-            if !ok {
-                return e
-            }
-            for _, k := range keys {
-                kv.Remove(k)
-            }
-            return e
-        }
-
-    
-
-    // Merges the store with the given object 
-    
-        func(e *SVGFEFUNCRElement) DATASTAR_MERGE_STORE(v any) *SVGFEFUNCRElement{
-                if e.CustomDataAttributes == nil {
-                    e.CustomDataAttributes = treemap.New[string,string]()
-                }
-                b, err := json.Marshal(v)
-                if err != nil {
-                    panic(err)
-                }
-                e.CustomDataAttributes.Set("data-merge-store", string(b))
-                return e
-            }
-
-        
-
-    // Sets the reference of the element 
-    
-        func(e *SVGFEFUNCRElement) DATASTAR_REF(expression string) *SVGFEFUNCRElement{
-                if e.StringAttributes == nil {
-                    e.StringAttributes = treemap.New[string,string]()
-                }
-                
-                key := "data-ref"
-                
-                e.StringAttributes.Set(key, expression)
-                return e
-            }
-
-            func(e *SVGFEFUNCRElement) IfDATASTAR_REF(condition bool, expression string) *SVGFEFUNCRElement{
-                if condition {
-                    e.DATASTAR_REF( expression, )
-                }
-                return e
-            }
-
-            // Remove the attribute DATASTAR_REF from the element.
-            func(e *SVGFEFUNCRElement) DATASTAR_REFRemove() *SVGFEFUNCRElement{
-                if e.StringAttributes == nil {
-                    return e
-                }
-                e.StringAttributes.Del("data-ref")
-                return e
-            }
-
-        
-
-    // Sets the value of the element 
-    
-        func(e *SVGFEFUNCRElement) DATASTAR_BIND(key string, expression string) *SVGFEFUNCRElement{
-                if e.StringAttributes == nil {
-                    e.StringAttributes = treemap.New[string,string]()
-                }
-                
-                key = fmt.Sprintf("data-bind-%s", key)
-                
-                e.StringAttributes.Set(key, expression)
-                return e
-            }
-
-            func(e *SVGFEFUNCRElement) IfDATASTAR_BIND(condition bool, key string, expression string) *SVGFEFUNCRElement{
-                if condition {
-                    e.DATASTAR_BIND(key,  expression, )
-                }
-                return e
-            }
-
-            // Remove the attribute DATASTAR_BIND from the element.
-            func(e *SVGFEFUNCRElement) DATASTAR_BINDRemove() *SVGFEFUNCRElement{
-                if e.StringAttributes == nil {
-                    return e
-                }
-                e.StringAttributes.Del("data-bind")
-                return e
-            }
-
-        
-
-    // Sets the value of the element 
-    
-        func(e *SVGFEFUNCRElement) DATASTAR_MODEL(expression string) *SVGFEFUNCRElement{
-                if e.StringAttributes == nil {
-                    e.StringAttributes = treemap.New[string,string]()
-                }
-                
-                key := "data-model"
-                
-                e.StringAttributes.Set(key, expression)
-                return e
-            }
-
-            func(e *SVGFEFUNCRElement) IfDATASTAR_MODEL(condition bool, expression string) *SVGFEFUNCRElement{
-                if condition {
-                    e.DATASTAR_MODEL( expression, )
-                }
-                return e
-            }
-
-            // Remove the attribute DATASTAR_MODEL from the element.
-            func(e *SVGFEFUNCRElement) DATASTAR_MODELRemove() *SVGFEFUNCRElement{
-                if e.StringAttributes == nil {
-                    return e
-                }
-                e.StringAttributes.Del("data-model")
-                return e
-            }
-
-        
-
-    // Sets the textContent of the element 
-    
-        func(e *SVGFEFUNCRElement) DATASTAR_TEXT(expression string) *SVGFEFUNCRElement{
-                if e.StringAttributes == nil {
-                    e.StringAttributes = treemap.New[string,string]()
-                }
-                
-                key := "data-text"
-                
-                e.StringAttributes.Set(key, expression)
-                return e
-            }
-
-            func(e *SVGFEFUNCRElement) IfDATASTAR_TEXT(condition bool, expression string) *SVGFEFUNCRElement{
-                if condition {
-                    e.DATASTAR_TEXT( expression, )
-                }
-                return e
-            }
-
-            // Remove the attribute DATASTAR_TEXT from the element.
-            func(e *SVGFEFUNCRElement) DATASTAR_TEXTRemove() *SVGFEFUNCRElement{
-                if e.StringAttributes == nil {
-                    return e
-                }
-                e.StringAttributes.Del("data-text")
-                return e
-            }
-
-        
-
-    // Sets the event handler of the element 
-    
-        type SVGFeFuncRDataOnMod customDataKeyModifier
-
-            
-            // Debounces the event handler 
-            func SVGFeFuncRDataOnModDebounce(
-                    d time.Duration,
-            ) SVGFeFuncRDataOnMod {
-                return func() string {return fmt.Sprintf("debounce_%dms", d.Milliseconds())
-                }
-            }
-            
-            // Throttles the event handler 
-            func SVGFeFuncRDataOnModThrottle(
-                    d time.Duration,
-            ) SVGFeFuncRDataOnMod {
-                return func() string {return fmt.Sprintf("throttle_%dms", d.Milliseconds())
-                }
-            }
-            
-        func(e *SVGFEFUNCRElement) DATASTAR_ON(key string, expression string, modifiers ...SVGFeFuncRDataOnMod) *SVGFEFUNCRElement{
-                if e.StringAttributes == nil {
-                    e.StringAttributes = treemap.New[string,string]()
-                }
-                
-                key = fmt.Sprintf("data-on-%s", key)
-                
-                customMods := lo.Map(modifiers, func(m SVGFeFuncRDataOnMod, i int) customDataKeyModifier  {
-                    return customDataKeyModifier(m)
-                })
-                key = customDataKey(key, customMods...)
-                e.StringAttributes.Set(key, expression)
-                return e
-            }
-
-            func(e *SVGFEFUNCRElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SVGFeFuncRDataOnMod) *SVGFEFUNCRElement{
-                if condition {
-                    e.DATASTAR_ON(key,  expression,  modifiers...)
-                }
-                return e
-            }
-
-            // Remove the attribute DATASTAR_ON from the element.
-            func(e *SVGFEFUNCRElement) DATASTAR_ONRemove() *SVGFEFUNCRElement{
-                if e.StringAttributes == nil {
-                    return e
-                }
-                e.StringAttributes.Del("data-on")
-                return e
-            }
-
-        
-
-    // Sets the focus of the element 
-    
-        func(e *SVGFEFUNCRElement) DATASTAR_FOCUSSet(b bool) *SVGFEFUNCRElement{
-                key := "data-focus"
-                e.BoolAttributes.Set(key, b)
-                return e
-            }
-
-            func(e *SVGFEFUNCRElement) DATASTAR_FOCUS() *SVGFEFUNCRElement{
-                return e.DATASTAR_FOCUSSet(true)
-            }
-        
-
-    // Sets the header of for fetch requests 
-    
-        func(e *SVGFEFUNCRElement) DATASTAR_HEADER(key string, expression string) *SVGFEFUNCRElement{
-                if e.StringAttributes == nil {
-                    e.StringAttributes = treemap.New[string,string]()
-                }
-                
-                key = fmt.Sprintf("data-header-%s", key)
-                
-                e.StringAttributes.Set(key, expression)
-                return e
-            }
-
-            func(e *SVGFEFUNCRElement) IfDATASTAR_HEADER(condition bool, key string, expression string) *SVGFEFUNCRElement{
-                if condition {
-                    e.DATASTAR_HEADER(key,  expression, )
-                }
-                return e
-            }
-
-            // Remove the attribute DATASTAR_HEADER from the element.
-            func(e *SVGFEFUNCRElement) DATASTAR_HEADERRemove() *SVGFEFUNCRElement{
-                if e.StringAttributes == nil {
-                    return e
-                }
-                e.StringAttributes.Del("data-header")
-                return e
-            }
-
-        
-
-    // Sets the URL for fetch requests 
-    
-        func(e *SVGFEFUNCRElement) DATASTAR_FETCH_URL(expression string) *SVGFEFUNCRElement{
-                if e.StringAttributes == nil {
-                    e.StringAttributes = treemap.New[string,string]()
-                }
-                
-                key := "data-fetch-url"
-                
-                e.StringAttributes.Set(key, expression)
-                return e
-            }
-
-            func(e *SVGFEFUNCRElement) IfDATASTAR_FETCH_URL(condition bool, expression string) *SVGFEFUNCRElement{
-                if condition {
-                    e.DATASTAR_FETCH_URL( expression, )
-                }
-                return e
-            }
-
-            // Remove the attribute DATASTAR_FETCH_URL from the element.
-            func(e *SVGFEFUNCRElement) DATASTAR_FETCH_URLRemove() *SVGFEFUNCRElement{
-                if e.StringAttributes == nil {
-                    return e
-                }
-                e.StringAttributes.Del("data-fetch-url")
-                return e
-            }
-
-        
-
-    // Sets the indicator selector for fetch requests 
-    
-        func(e *SVGFEFUNCRElement) DATASTAR_FETCH_INDICATOR(expression string) *SVGFEFUNCRElement{
-                if e.StringAttributes == nil {
-                    e.StringAttributes = treemap.New[string,string]()
-                }
-                
-                key := "DatastarFetchIndicator"
-                
-                e.StringAttributes.Set(key, expression)
-                return e
-            }
-
-            func(e *SVGFEFUNCRElement) IfDATASTAR_FETCH_INDICATOR(condition bool, expression string) *SVGFEFUNCRElement{
-                if condition {
-                    e.DATASTAR_FETCH_INDICATOR( expression, )
-                }
-                return e
-            }
-
-            // Remove the attribute DATASTAR_FETCH_INDICATOR from the element.
-            func(e *SVGFEFUNCRElement) DATASTAR_FETCH_INDICATORRemove() *SVGFEFUNCRElement{
-                if e.StringAttributes == nil {
-                    return e
-                }
-                e.StringAttributes.Del("DatastarFetchIndicator")
-                return e
-            }
-
-        
-
-    // Sets the visibility of the element 
-    
-        func(e *SVGFEFUNCRElement) DATASTAR_SHOWSet(b bool) *SVGFEFUNCRElement{
-                key := "data-show"
-                e.BoolAttributes.Set(key, b)
-                return e
-            }
-
-            func(e *SVGFEFUNCRElement) DATASTAR_SHOW() *SVGFEFUNCRElement{
-                return e.DATASTAR_SHOWSet(true)
-            }
-        
-
-    // Triggers the callback when the element intersects the viewport 
-    
-        func(e *SVGFEFUNCRElement) DATASTAR_INTERSECTSSet(b bool) *SVGFEFUNCRElement{
-                key := "data-intersects"
-                e.BoolAttributes.Set(key, b)
-                return e
-            }
-
-            func(e *SVGFEFUNCRElement) DATASTAR_INTERSECTS() *SVGFEFUNCRElement{
-                return e.DATASTAR_INTERSECTSSet(true)
-            }
-        
-
-    // Teleports the element to the given selector 
-    
-        func(e *SVGFEFUNCRElement) DATASTAR_TELEPORTSet(b bool) *SVGFEFUNCRElement{
-                key := "data-teleport"
-                e.BoolAttributes.Set(key, b)
-                return e
-            }
-
-            func(e *SVGFEFUNCRElement) DATASTAR_TELEPORT() *SVGFEFUNCRElement{
-                return e.DATASTAR_TELEPORTSet(true)
-            }
-        
-
-    // Scrolls the element into view 
-    
-        func(e *SVGFEFUNCRElement) DATASTAR_SCROLL_INTO_VIEWSet(b bool) *SVGFEFUNCRElement{
-                key := "data-scroll-into-view"
-                e.BoolAttributes.Set(key, b)
-                return e
-            }
-
-            func(e *SVGFEFUNCRElement) DATASTAR_SCROLL_INTO_VIEW() *SVGFEFUNCRElement{
-                return e.DATASTAR_SCROLL_INTO_VIEWSet(true)
-            }
-        
-
-    // Setup the ViewTransitionAPI for the element 
-    
-        func(e *SVGFEFUNCRElement) DATASTAR_VIEW_TRANSITION(key string, expression string) *SVGFEFUNCRElement{
-                if e.StringAttributes == nil {
-                    e.StringAttributes = treemap.New[string,string]()
-                }
-                
-                key = fmt.Sprintf("data-view-transition-%s", key)
-                
-                e.StringAttributes.Set(key, expression)
-                return e
-            }
-
-            func(e *SVGFEFUNCRElement) IfDATASTAR_VIEW_TRANSITION(condition bool, key string, expression string) *SVGFEFUNCRElement{
-                if condition {
-                    e.DATASTAR_VIEW_TRANSITION(key,  expression, )
-                }
-                return e
-            }
-
-            // Remove the attribute DATASTAR_VIEW_TRANSITION from the element.
-            func(e *SVGFEFUNCRElement) DATASTAR_VIEW_TRANSITIONRemove() *SVGFEFUNCRElement{
-                if e.StringAttributes == nil {
-                    return e
-                }
-                e.StringAttributes.Del("data-view-transition")
-                return e
-            }
-
-        
-
-
-
+// The type of transfer function.
+func (e *SVGFEFUNCRElement) TYPE(c SVGFeFuncRTypeChoice) *SVGFEFUNCRElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	e.StringAttributes.Set("type", string(c))
+	return e
+}
+
+type SVGFeFuncRTypeChoice string
+
+const (
+	// The type of transfer function.
+	SVGFeFuncRType_identity SVGFeFuncRTypeChoice = "identity"
+	// The type of transfer function.
+	SVGFeFuncRType_table SVGFeFuncRTypeChoice = "table"
+	// The type of transfer function.
+	SVGFeFuncRType_discrete SVGFeFuncRTypeChoice = "discrete"
+	// The type of transfer function.
+	SVGFeFuncRType_linear SVGFeFuncRTypeChoice = "linear"
+	// The type of transfer function.
+	SVGFeFuncRType_gamma SVGFeFuncRTypeChoice = "gamma"
+)
+
+// Remove the attribute TYPE from the element.
+func (e *SVGFEFUNCRElement) TYPERemove(c SVGFeFuncRTypeChoice) *SVGFEFUNCRElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("type")
+	return e
+}
+
+// Contains the list of <number>s that define the lookup table
+// Values must be in the 0-1 range and be equally spaced
+// There must be at least two values.
+func (e *SVGFEFUNCRElement) TABLE_VALUES(s string) *SVGFEFUNCRElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	e.StringAttributes.Set("tableValues", s)
+	return e
+}
+
+func (e *SVGFEFUNCRElement) IfTABLE_VALUES(condition bool, s string) *SVGFEFUNCRElement {
+	if condition {
+		e.TABLE_VALUES(s)
+	}
+	return e
+}
+
+// Remove the attribute TABLE_VALUES from the element.
+func (e *SVGFEFUNCRElement) TABLE_VALUESRemove(s string) *SVGFEFUNCRElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("tableValues")
+	return e
+}
+
+// The slope attribute indicates the slope of the linear function.
+func (e *SVGFEFUNCRElement) SLOPE(f float64) *SVGFEFUNCRElement {
+	if e.FloatAttributes == nil {
+		e.FloatAttributes = treemap.New[string, float64]()
+	}
+	e.FloatAttributes.Set("slope", f)
+	return e
+}
+
+func (e *SVGFEFUNCRElement) IfSLOPE(condition bool, f float64) *SVGFEFUNCRElement {
+	if condition {
+		e.SLOPE(f)
+	}
+	return e
+}
+
+// The intercept attribute indicates the intercept of the linear function.
+func (e *SVGFEFUNCRElement) INTERCEPT(f float64) *SVGFEFUNCRElement {
+	if e.FloatAttributes == nil {
+		e.FloatAttributes = treemap.New[string, float64]()
+	}
+	e.FloatAttributes.Set("intercept", f)
+	return e
+}
+
+func (e *SVGFEFUNCRElement) IfINTERCEPT(condition bool, f float64) *SVGFEFUNCRElement {
+	if condition {
+		e.INTERCEPT(f)
+	}
+	return e
+}
+
+// The amplitude attribute indicates the amplitude of the cubic function.
+func (e *SVGFEFUNCRElement) AMPLITUDE(f float64) *SVGFEFUNCRElement {
+	if e.FloatAttributes == nil {
+		e.FloatAttributes = treemap.New[string, float64]()
+	}
+	e.FloatAttributes.Set("amplitude", f)
+	return e
+}
+
+func (e *SVGFEFUNCRElement) IfAMPLITUDE(condition bool, f float64) *SVGFEFUNCRElement {
+	if condition {
+		e.AMPLITUDE(f)
+	}
+	return e
+}
+
+// The exponent attribute indicates the exponent of the exponential function.
+func (e *SVGFEFUNCRElement) EXPONENT(f float64) *SVGFEFUNCRElement {
+	if e.FloatAttributes == nil {
+		e.FloatAttributes = treemap.New[string, float64]()
+	}
+	e.FloatAttributes.Set("exponent", f)
+	return e
+}
+
+func (e *SVGFEFUNCRElement) IfEXPONENT(condition bool, f float64) *SVGFEFUNCRElement {
+	if condition {
+		e.EXPONENT(f)
+	}
+	return e
+}
+
+// The offset attribute indicates the offset of the function.
+func (e *SVGFEFUNCRElement) OFFSET(f float64) *SVGFEFUNCRElement {
+	if e.FloatAttributes == nil {
+		e.FloatAttributes = treemap.New[string, float64]()
+	}
+	e.FloatAttributes.Set("offset", f)
+	return e
+}
+
+func (e *SVGFEFUNCRElement) IfOFFSET(condition bool, f float64) *SVGFEFUNCRElement {
+	if condition {
+		e.OFFSET(f)
+	}
+	return e
+}
+
+// Specifies a unique id for an element
+func (e *SVGFEFUNCRElement) ID(s string) *SVGFEFUNCRElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	e.StringAttributes.Set("id", s)
+	return e
+}
+
+func (e *SVGFEFUNCRElement) IfID(condition bool, s string) *SVGFEFUNCRElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
+// Remove the attribute ID from the element.
+func (e *SVGFEFUNCRElement) IDRemove(s string) *SVGFEFUNCRElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("id")
+	return e
+}
+
+// Specifies one or more classnames for an element (refers to a class in a style
+// sheet)
+func (e *SVGFEFUNCRElement) CLASS(s ...string) *SVGFEFUNCRElement {
+	if e.DelimitedStrings == nil {
+		e.DelimitedStrings = treemap.New[string, *DelimitedBuilder[string]]()
+	}
+	ds, ok := e.DelimitedStrings.Get("class")
+	if !ok {
+		ds = NewDelimitedBuilder[string](" ")
+		e.DelimitedStrings.Set("class", ds)
+	}
+	ds.Add(s...)
+	return e
+}
+
+func (e *SVGFEFUNCRElement) IfCLASS(condition bool, s ...string) *SVGFEFUNCRElement {
+	if condition {
+		e.CLASS(s...)
+	}
+	return e
+}
+
+// Remove the attribute CLASS from the element.
+func (e *SVGFEFUNCRElement) CLASSRemove(s ...string) *SVGFEFUNCRElement {
+	if e.DelimitedStrings == nil {
+		return e
+	}
+	ds, ok := e.DelimitedStrings.Get("class")
+	if !ok {
+		return e
+	}
+	ds.Remove(s...)
+	return e
+}
+
+// Specifies an inline CSS style for an element
+func (e *SVGFEFUNCRElement) STYLEF(k string, format string, args ...any) *SVGFEFUNCRElement {
+	return e.STYLE(k, fmt.Sprintf(format, args...))
+}
+
+func (e *SVGFEFUNCRElement) IfSTYLE(condition bool, k string, v string) *SVGFEFUNCRElement {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
+func (e *SVGFEFUNCRElement) STYLE(k string, v string) *SVGFEFUNCRElement {
+	if e.KVStrings == nil {
+		e.KVStrings = treemap.New[string, *KVBuilder]()
+	}
+	kv, ok := e.KVStrings.Get("style")
+	if !ok {
+		kv = NewKVBuilder(":", ";")
+		e.KVStrings.Set("style", kv)
+	}
+	kv.Add(k, v)
+	return e
+}
+
+func (e *SVGFEFUNCRElement) IfSTYLEF(condition bool, k string, format string, args ...any) *SVGFEFUNCRElement {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
+	return e
+}
+
+// Add the attributes in the map to the element.
+func (e *SVGFEFUNCRElement) STYLEMap(m map[string]string) *SVGFEFUNCRElement {
+	if e.KVStrings == nil {
+		e.KVStrings = treemap.New[string, *KVBuilder]()
+	}
+	kv, ok := e.KVStrings.Get("style")
+	if !ok {
+		kv = NewKVBuilder(":", ";")
+		e.KVStrings.Set("style", kv)
+	}
+	for k, v := range m {
+		kv.Add(k, v)
+	}
+	return e
+}
+
+// Add pairs of attributes to the element.
+func (e *SVGFEFUNCRElement) STYLEPairs(pairs ...string) *SVGFEFUNCRElement {
+	if len(pairs)%2 != 0 {
+		panic("Must have an even number of pairs")
+	}
+	if e.KVStrings == nil {
+		e.KVStrings = treemap.New[string, *KVBuilder]()
+	}
+	kv, ok := e.KVStrings.Get("style")
+	if !ok {
+		kv = NewKVBuilder(":", ";")
+		e.KVStrings.Set("style", kv)
+	}
+
+	for i := 0; i < len(pairs); i += 2 {
+		kv.Add(pairs[i], pairs[i+1])
+	}
+
+	return e
+}
+
+func (e *SVGFEFUNCRElement) IfSTYLEPairs(condition bool, pairs ...string) *SVGFEFUNCRElement {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
+	return e
+}
+
+// Remove the attribute STYLE from the element.
+func (e *SVGFEFUNCRElement) STYLERemove(keys ...string) *SVGFEFUNCRElement {
+	if e.KVStrings == nil {
+		return e
+	}
+	kv, ok := e.KVStrings.Get("style")
+	if !ok {
+		return e
+	}
+	for _, k := range keys {
+		kv.Remove(k)
+	}
+	return e
+}
+
+// Merges the store with the given object
+
+func (e *SVGFEFUNCRElement) DATASTAR_MERGE_STORE(v any) *SVGFEFUNCRElement {
+	if e.CustomDataAttributes == nil {
+		e.CustomDataAttributes = treemap.New[string, string]()
+	}
+	b, err := json.Marshal(v)
+	if err != nil {
+		panic(err)
+	}
+	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	return e
+}
+
+// Sets the reference of the element
+
+func (e *SVGFEFUNCRElement) DATASTAR_REF(expression string) *SVGFEFUNCRElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-ref"
+
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+func (e *SVGFEFUNCRElement) IfDATASTAR_REF(condition bool, expression string) *SVGFEFUNCRElement {
+	if condition {
+		e.DATASTAR_REF(expression)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_REF from the element.
+func (e *SVGFEFUNCRElement) DATASTAR_REFRemove() *SVGFEFUNCRElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-ref")
+	return e
+}
+
+// Sets the value of the element
+
+func (e *SVGFEFUNCRElement) DATASTAR_BIND(key string, expression string) *SVGFEFUNCRElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key = fmt.Sprintf("data-bind-%s", key)
+
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+func (e *SVGFEFUNCRElement) IfDATASTAR_BIND(condition bool, key string, expression string) *SVGFEFUNCRElement {
+	if condition {
+		e.DATASTAR_BIND(key, expression)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_BIND from the element.
+func (e *SVGFEFUNCRElement) DATASTAR_BINDRemove() *SVGFEFUNCRElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-bind")
+	return e
+}
+
+// Sets the value of the element
+
+func (e *SVGFEFUNCRElement) DATASTAR_MODEL(expression string) *SVGFEFUNCRElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-model"
+
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+func (e *SVGFEFUNCRElement) IfDATASTAR_MODEL(condition bool, expression string) *SVGFEFUNCRElement {
+	if condition {
+		e.DATASTAR_MODEL(expression)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_MODEL from the element.
+func (e *SVGFEFUNCRElement) DATASTAR_MODELRemove() *SVGFEFUNCRElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-model")
+	return e
+}
+
+// Sets the textContent of the element
+
+func (e *SVGFEFUNCRElement) DATASTAR_TEXT(expression string) *SVGFEFUNCRElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-text"
+
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+func (e *SVGFEFUNCRElement) IfDATASTAR_TEXT(condition bool, expression string) *SVGFEFUNCRElement {
+	if condition {
+		e.DATASTAR_TEXT(expression)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_TEXT from the element.
+func (e *SVGFEFUNCRElement) DATASTAR_TEXTRemove() *SVGFEFUNCRElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-text")
+	return e
+}
+
+// Sets the event handler of the element
+
+type SVGFeFuncRDataOnMod customDataKeyModifier
+
+// Debounces the event handler
+func SVGFeFuncRDataOnModDebounce(
+	d time.Duration,
+) SVGFeFuncRDataOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce_%dms", d.Milliseconds())
+	}
+}
+
+// Throttles the event handler
+func SVGFeFuncRDataOnModThrottle(
+	d time.Duration,
+) SVGFeFuncRDataOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle_%dms", d.Milliseconds())
+	}
+}
+
+func (e *SVGFEFUNCRElement) DATASTAR_ON(key string, expression string, modifiers ...SVGFeFuncRDataOnMod) *SVGFEFUNCRElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key = fmt.Sprintf("data-on-%s", key)
+
+	customMods := lo.Map(modifiers, func(m SVGFeFuncRDataOnMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+func (e *SVGFEFUNCRElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SVGFeFuncRDataOnMod) *SVGFEFUNCRElement {
+	if condition {
+		e.DATASTAR_ON(key, expression, modifiers...)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_ON from the element.
+func (e *SVGFEFUNCRElement) DATASTAR_ONRemove() *SVGFEFUNCRElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-on")
+	return e
+}
+
+// Sets the focus of the element
+
+func (e *SVGFEFUNCRElement) DATASTAR_FOCUSSet(b bool) *SVGFEFUNCRElement {
+	key := "data-focus"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *SVGFEFUNCRElement) DATASTAR_FOCUS() *SVGFEFUNCRElement {
+	return e.DATASTAR_FOCUSSet(true)
+}
+
+// Sets the header of for fetch requests
+
+func (e *SVGFEFUNCRElement) DATASTAR_HEADER(key string, expression string) *SVGFEFUNCRElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key = fmt.Sprintf("data-header-%s", key)
+
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+func (e *SVGFEFUNCRElement) IfDATASTAR_HEADER(condition bool, key string, expression string) *SVGFEFUNCRElement {
+	if condition {
+		e.DATASTAR_HEADER(key, expression)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_HEADER from the element.
+func (e *SVGFEFUNCRElement) DATASTAR_HEADERRemove() *SVGFEFUNCRElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-header")
+	return e
+}
+
+// Sets the URL for fetch requests
+
+func (e *SVGFEFUNCRElement) DATASTAR_FETCH_URL(expression string) *SVGFEFUNCRElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-fetch-url"
+
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+func (e *SVGFEFUNCRElement) IfDATASTAR_FETCH_URL(condition bool, expression string) *SVGFEFUNCRElement {
+	if condition {
+		e.DATASTAR_FETCH_URL(expression)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_FETCH_URL from the element.
+func (e *SVGFEFUNCRElement) DATASTAR_FETCH_URLRemove() *SVGFEFUNCRElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-fetch-url")
+	return e
+}
+
+// Sets the indicator selector for fetch requests
+
+func (e *SVGFEFUNCRElement) DATASTAR_FETCH_INDICATOR(expression string) *SVGFEFUNCRElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "DatastarFetchIndicator"
+
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+func (e *SVGFEFUNCRElement) IfDATASTAR_FETCH_INDICATOR(condition bool, expression string) *SVGFEFUNCRElement {
+	if condition {
+		e.DATASTAR_FETCH_INDICATOR(expression)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_FETCH_INDICATOR from the element.
+func (e *SVGFEFUNCRElement) DATASTAR_FETCH_INDICATORRemove() *SVGFEFUNCRElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("DatastarFetchIndicator")
+	return e
+}
+
+// Sets the visibility of the element
+
+func (e *SVGFEFUNCRElement) DATASTAR_SHOWSet(b bool) *SVGFEFUNCRElement {
+	key := "data-show"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *SVGFEFUNCRElement) DATASTAR_SHOW() *SVGFEFUNCRElement {
+	return e.DATASTAR_SHOWSet(true)
+}
+
+// Triggers the callback when the element intersects the viewport
+
+func (e *SVGFEFUNCRElement) DATASTAR_INTERSECTSSet(b bool) *SVGFEFUNCRElement {
+	key := "data-intersects"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *SVGFEFUNCRElement) DATASTAR_INTERSECTS() *SVGFEFUNCRElement {
+	return e.DATASTAR_INTERSECTSSet(true)
+}
+
+// Teleports the element to the given selector
+
+func (e *SVGFEFUNCRElement) DATASTAR_TELEPORTSet(b bool) *SVGFEFUNCRElement {
+	key := "data-teleport"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *SVGFEFUNCRElement) DATASTAR_TELEPORT() *SVGFEFUNCRElement {
+	return e.DATASTAR_TELEPORTSet(true)
+}
+
+// Scrolls the element into view
+
+func (e *SVGFEFUNCRElement) DATASTAR_SCROLL_INTO_VIEWSet(b bool) *SVGFEFUNCRElement {
+	key := "data-scroll-into-view"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *SVGFEFUNCRElement) DATASTAR_SCROLL_INTO_VIEW() *SVGFEFUNCRElement {
+	return e.DATASTAR_SCROLL_INTO_VIEWSet(true)
+}
+
+// Setup the ViewTransitionAPI for the element
+
+func (e *SVGFEFUNCRElement) DATASTAR_VIEW_TRANSITION(key string, expression string) *SVGFEFUNCRElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key = fmt.Sprintf("data-view-transition-%s", key)
+
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+func (e *SVGFEFUNCRElement) IfDATASTAR_VIEW_TRANSITION(condition bool, key string, expression string) *SVGFEFUNCRElement {
+	if condition {
+		e.DATASTAR_VIEW_TRANSITION(key, expression)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_VIEW_TRANSITION from the element.
+func (e *SVGFEFUNCRElement) DATASTAR_VIEW_TRANSITIONRemove() *SVGFEFUNCRElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-view-transition")
+	return e
+}

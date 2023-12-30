@@ -1707,6 +1707,16 @@ var SVG = &pb.Namespace{
 					Type:        AttributeTypeString(),
 				},
 				{
+					Key:         "fill",
+					Description: `The <path> SVG element is the generic element to define a shape. All the basic shapes can be created with a path element.`,
+					Type:        AttributeTypeString(),
+				},
+				{
+					Key:         "fill-opacity",
+					Description: `The <path> SVG element is the generic element to define a shape. All the basic shapes can be created with a path element.`,
+					Type:        AttributeTypeNumber(),
+				},
+				{
 					Key:         "pathLength",
 					Description: `The total length for the path, in user units.`,
 					Type:        AttributeTypeNumber(),

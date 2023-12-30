@@ -3,761 +3,727 @@
 // Description:
 package elements
 
-import(
-    "fmt"
-    "time"
-    "github.com/igrmk/treemap/v2"
-    "github.com/goccy/go-json"
-    "github.com/samber/lo"
+import (
+	"fmt"
+	"time"
+
+	"github.com/goccy/go-json"
+	"github.com/igrmk/treemap/v2"
+	"github.com/samber/lo"
 )
 
-// The <feBlend> SVG filter primitive composes two objects together ruled by a 
-// certain blending mode 
-// This is similar to what is known from image editing software when blending two 
-// layers 
-// The mode is defined by the mode attribute. 
+// The <feBlend> SVG filter primitive composes two objects together ruled by a
+// certain blending mode
+// This is similar to what is known from image editing software when blending two
+// layers
+// The mode is defined by the mode attribute.
 type SVGFEBLENDElement struct {
-    *Element
+	*Element
 }
 
 // Create a new SVGFEBLENDElement element.
 // This will create a new element with the tag
 // "feBlend" during rendering.
 func SVG_FEBLEND(children ...ElementRenderer) *SVGFEBLENDElement {
-    e := NewElement("feBlend", children...)
-    e.IsSelfClosing = false
-    e.Descendants = children
+	e := NewElement("feBlend", children...)
+	e.IsSelfClosing = false
+	e.Descendants = children
 
-    return &SVGFEBLENDElement{ Element: e }
+	return &SVGFEBLENDElement{Element: e}
 }
 
 func (e *SVGFEBLENDElement) Children(children ...ElementRenderer) *SVGFEBLENDElement {
-    e.Descendants = append(e.Descendants, children...)
-    return e
+	e.Descendants = append(e.Descendants, children...)
+	return e
 }
 
-func(e *SVGFEBLENDElement) IfChildren(condition bool, children ...ElementRenderer) *SVGFEBLENDElement {
-    if condition {
-        e.Descendants = append(e.Descendants, children...)
-    }
-    return e
+func (e *SVGFEBLENDElement) IfChildren(condition bool, children ...ElementRenderer) *SVGFEBLENDElement {
+	if condition {
+		e.Descendants = append(e.Descendants, children...)
+	}
+	return e
 }
 
-func(e *SVGFEBLENDElement) TernChildren(condition bool, trueChildren, falseChildren ElementRenderer) *SVGFEBLENDElement {
-    if condition {
-        e.Descendants = append(e.Descendants, trueChildren)
-    } else {
-        e.Descendants = append(e.Descendants, falseChildren)
-    }
-    return e
+func (e *SVGFEBLENDElement) TernChildren(condition bool, trueChildren, falseChildren ElementRenderer) *SVGFEBLENDElement {
+	if condition {
+		e.Descendants = append(e.Descendants, trueChildren)
+	} else {
+		e.Descendants = append(e.Descendants, falseChildren)
+	}
+	return e
 }
 
 func (e *SVGFEBLENDElement) Text(text string) *SVGFEBLENDElement {
-    e.Descendants = append(e.Descendants, Text(text))
-    return e
+	e.Descendants = append(e.Descendants, Text(text))
+	return e
 }
 
 func (e *SVGFEBLENDElement) TextF(format string, args ...any) *SVGFEBLENDElement {
-    return e.Text(fmt.Sprintf(format, args...))
+	return e.Text(fmt.Sprintf(format, args...))
 }
 
 func (e *SVGFEBLENDElement) IfText(condition bool, text string) *SVGFEBLENDElement {
-    if condition {
-        e.Descendants = append(e.Descendants, Text(text))
-    }
-    return e
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
 }
 
 func (e *SVGFEBLENDElement) IfTextF(condition bool, format string, args ...any) *SVGFEBLENDElement {
-    if condition {
-        e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
-    }
-    return e
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
 }
 
 func (e *SVGFEBLENDElement) Escaped(text string) *SVGFEBLENDElement {
-    e.Descendants = append(e.Descendants, Escaped(text))
-    return e
+	e.Descendants = append(e.Descendants, Escaped(text))
+	return e
 }
 
 func (e *SVGFEBLENDElement) IfEscaped(condition bool, text string) *SVGFEBLENDElement {
-    if condition {
-        e.Descendants = append(e.Descendants, Escaped(text))
-    }
-    return e
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
 }
 
 func (e *SVGFEBLENDElement) EscapedF(format string, args ...any) *SVGFEBLENDElement {
-    return e.Escaped(fmt.Sprintf(format, args...))
+	return e.Escaped(fmt.Sprintf(format, args...))
 }
 
 func (e *SVGFEBLENDElement) IfEscapedF(condition bool, format string, args ...any) *SVGFEBLENDElement {
-    if condition {
-        e.Descendants = append(e.Descendants, EscapedF(format, args...))
-    }
-    return e
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *SVGFEBLENDElement) CustomData(key, value string) *SVGFEBLENDElement {
-    if e.CustomDataAttributes == nil {
-        e.CustomDataAttributes = treemap.New[string,string]()
-    }
+	if e.CustomDataAttributes == nil {
+		e.CustomDataAttributes = treemap.New[string, string]()
+	}
 	e.CustomDataAttributes.Set(key, value)
 	return e
 }
 
 func (e *SVGFEBLENDElement) IfCustomData(condition bool, key, value string) *SVGFEBLENDElement {
-    if condition {
-        e.CustomData(key, value)
-    }
-    return e
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
 }
 
 func (e *SVGFEBLENDElement) CustomDataF(key, format string, args ...any) *SVGFEBLENDElement {
-    return e.CustomData(key, fmt.Sprintf(format, args...))
+	return e.CustomData(key, fmt.Sprintf(format, args...))
 }
 
 func (e *SVGFEBLENDElement) IfCustomDataF(condition bool, key, format string, args ...any) *SVGFEBLENDElement {
-    if condition {
-        e.CustomData(key, fmt.Sprintf(format, args...))
-    }
-    return e
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *SVGFEBLENDElement) CustomDataRemove(key string) *SVGFEBLENDElement {
 	if e.CustomDataAttributes == nil {
 		return e
 	}
-    e.CustomDataAttributes.Del(key)
+	e.CustomDataAttributes.Del(key)
 	return e
 }
 
-
-    // Input for the blending. 
-    func(e *SVGFEBLENDElement) IN(s string) *SVGFEBLENDElement{
-            if e.StringAttributes == nil {
-                e.StringAttributes = treemap.New[string,string]()
-            }
-            e.StringAttributes.Set("in", s)
-            return e
-        }
-
-        func(e *SVGFEBLENDElement) IfIN(condition bool, s string) *SVGFEBLENDElement{
-            if condition {
-                e.IN(s)
-            }
-            return e
-        }
-
-        // Remove the attribute IN from the element.
-        func(e *SVGFEBLENDElement) INRemove(s string) *SVGFEBLENDElement{
-            if e.StringAttributes == nil {
-                return e
-            }
-            e.StringAttributes.Del("in")
-            return e
-        }
-    
-
-    // Second input for the blending. 
-    func(e *SVGFEBLENDElement) IN_2(s string) *SVGFEBLENDElement{
-            if e.StringAttributes == nil {
-                e.StringAttributes = treemap.New[string,string]()
-            }
-            e.StringAttributes.Set("in2", s)
-            return e
-        }
-
-        func(e *SVGFEBLENDElement) IfIN_2(condition bool, s string) *SVGFEBLENDElement{
-            if condition {
-                e.IN_2(s)
-            }
-            return e
-        }
-
-        // Remove the attribute IN_2 from the element.
-        func(e *SVGFEBLENDElement) IN_2Remove(s string) *SVGFEBLENDElement{
-            if e.StringAttributes == nil {
-                return e
-            }
-            e.StringAttributes.Del("in2")
-            return e
-        }
-    
-
-    // The mode used to blend the two inputs together. 
-    func(e *SVGFEBLENDElement) MODE(c SVGFeBlendModeChoice) *SVGFEBLENDElement{
-            if e.StringAttributes == nil {
-                e.StringAttributes = treemap.New[string,string]()
-            }
-            e.StringAttributes.Set("mode", string(c))
-            return e
-        }
-
-        type SVGFeBlendModeChoice string
-        const(
-        // The input image is placed over the backdrop image, then the parts of the input 
-// image that are outside the backdrop are discarded. 
-            SVGFeBlendMode_normal SVGFeBlendModeChoice = "normal"
-        // The input image is multiplied by the backdrop image. 
-            SVGFeBlendMode_multiply SVGFeBlendModeChoice = "multiply"
-        // Multiplies the complements of the backdrop and input image color values, then 
-// complements the result. 
-            SVGFeBlendMode_screen SVGFeBlendModeChoice = "screen"
-        // Selects the darker of the backdrop and input image pixels. 
-            SVGFeBlendMode_darken SVGFeBlendModeChoice = "darken"
-        // Selects the lighter of the backdrop and input image pixels. 
-            SVGFeBlendMode_lighten SVGFeBlendModeChoice = "lighten"
-        )
-
-        // Remove the attribute MODE from the element.
-        func(e *SVGFEBLENDElement) MODERemove(c SVGFeBlendModeChoice) *SVGFEBLENDElement{
-            if e.StringAttributes == nil {
-                return e
-            }
-            e.StringAttributes.Del("mode")
-            return e
-        }
-        
-
-    // Specifies a unique id for an element 
-    func(e *SVGFEBLENDElement) ID(s string) *SVGFEBLENDElement{
-            if e.StringAttributes == nil {
-                e.StringAttributes = treemap.New[string,string]()
-            }
-            e.StringAttributes.Set("id", s)
-            return e
-        }
-
-        func(e *SVGFEBLENDElement) IfID(condition bool, s string) *SVGFEBLENDElement{
-            if condition {
-                e.ID(s)
-            }
-            return e
-        }
-
-        // Remove the attribute ID from the element.
-        func(e *SVGFEBLENDElement) IDRemove(s string) *SVGFEBLENDElement{
-            if e.StringAttributes == nil {
-                return e
-            }
-            e.StringAttributes.Del("id")
-            return e
-        }
-    
-
-    // Specifies one or more classnames for an element (refers to a class in a style 
-// sheet) 
-    func(e *SVGFEBLENDElement) CLASS(s ...string) *SVGFEBLENDElement{
-            if e.DelimitedStrings == nil {
-                e.DelimitedStrings = treemap.New[string,*DelimitedBuilder[string]]()
-            }
-            ds, ok := e.DelimitedStrings.Get("class")
-            if !ok {
-                ds = NewDelimitedBuilder[string](" ")
-                e.DelimitedStrings.Set("class", ds)
-            }
-            ds.Add(s...)
-            return e
-        }
-
-        func(e *SVGFEBLENDElement) IfCLASS(condition bool, s ...string) *SVGFEBLENDElement{
-            if condition {
-                e.CLASS(s...)
-            }
-            return e
-        }
-
-        // Remove the attribute CLASS from the element.
-        func(e *SVGFEBLENDElement) CLASSRemove(s ...string) *SVGFEBLENDElement{
-            if e.DelimitedStrings == nil {
-                return e
-            }
-            ds, ok := e.DelimitedStrings.Get("class")
-            if !ok {
-                return e
-            }
-            ds.Remove(s ...)
-            return e
-        }
-
-    
-
-    // Specifies an inline CSS style for an element 
-    func (e *SVGFEBLENDElement) STYLEF(k string, format string, args ...any) *SVGFEBLENDElement {
-            return e.STYLE(k, fmt.Sprintf(format, args...))
-        }
-
-        func (e *SVGFEBLENDElement) IfSTYLE(condition bool, k string, v string) *SVGFEBLENDElement {
-            if condition {
-                e.STYLE(k, v)
-            }
-            return e
-        }
-
-        func (e *SVGFEBLENDElement) STYLE(k string, v string) *SVGFEBLENDElement {
-            if e.KVStrings == nil {
-                e.KVStrings = treemap.New[string,*KVBuilder]()
-            }
-            kv, ok := e.KVStrings.Get("style")
-            if !ok {
-                kv = NewKVBuilder(":", ";")
-                e.KVStrings.Set("style", kv)
-            }
-            kv.Add(k, v)
-            return e
-        }
-
-        func (e *SVGFEBLENDElement) IfSTYLEF(condition bool, k string, format string, args ...any) *SVGFEBLENDElement {
-            if condition {
-                e.STYLE(k, fmt.Sprintf(format, args...))
-            }
-            return e
-        }
-
-        // Add the attributes in the map to the element.
-        func (e *SVGFEBLENDElement) STYLEMap(m map[string]string) *SVGFEBLENDElement {
-            if e.KVStrings == nil {
-                e.KVStrings = treemap.New[string,*KVBuilder]()
-            }
-            kv, ok := e.KVStrings.Get("style")
-            if !ok {
-                kv = NewKVBuilder(":", ";")
-                e.KVStrings.Set("style", kv)
-            }
-            for k, v := range m {
-                kv.Add(k, v)
-            }
-            return e
-        }
-
-        // Add pairs of attributes to the element.
-        func (e *SVGFEBLENDElement) STYLEPairs(pairs ...string) *SVGFEBLENDElement {
-            if len(pairs) % 2 != 0 {
-                panic("Must have an even number of pairs")
-            }
-            if e.KVStrings == nil {
-                e.KVStrings = treemap.New[string,*KVBuilder]()
-            }
-            kv, ok := e.KVStrings.Get("style")
-            if !ok {
-                kv = NewKVBuilder(":", ";")
-                e.KVStrings.Set("style", kv)
-            }
-
-            for i := 0; i < len(pairs); i += 2 {
-                kv.Add(pairs[i], pairs[i+1])
-            }
-
-            return e
-        }
-
-        func (e *SVGFEBLENDElement) IfSTYLEPairs(condition bool, pairs ...string) *SVGFEBLENDElement {
-            if condition {
-                e.STYLEPairs(pairs...)
-            }
-            return e
-        }
-
-        // Remove the attribute STYLE from the element.
-        func (e *SVGFEBLENDElement) STYLERemove(keys ...string) *SVGFEBLENDElement {
-            if e.KVStrings == nil {
-                return e
-            }
-            kv, ok := e.KVStrings.Get("style")
-            if !ok {
-                return e
-            }
-            for _, k := range keys {
-                kv.Remove(k)
-            }
-            return e
-        }
-
-    
-
-    // Merges the store with the given object 
-    
-        func(e *SVGFEBLENDElement) DATASTAR_MERGE_STORE(v any) *SVGFEBLENDElement{
-                if e.CustomDataAttributes == nil {
-                    e.CustomDataAttributes = treemap.New[string,string]()
-                }
-                b, err := json.Marshal(v)
-                if err != nil {
-                    panic(err)
-                }
-                e.CustomDataAttributes.Set("data-merge-store", string(b))
-                return e
-            }
-
-        
-
-    // Sets the reference of the element 
-    
-        func(e *SVGFEBLENDElement) DATASTAR_REF(expression string) *SVGFEBLENDElement{
-                if e.StringAttributes == nil {
-                    e.StringAttributes = treemap.New[string,string]()
-                }
-                
-                key := "data-ref"
-                
-                e.StringAttributes.Set(key, expression)
-                return e
-            }
-
-            func(e *SVGFEBLENDElement) IfDATASTAR_REF(condition bool, expression string) *SVGFEBLENDElement{
-                if condition {
-                    e.DATASTAR_REF( expression, )
-                }
-                return e
-            }
-
-            // Remove the attribute DATASTAR_REF from the element.
-            func(e *SVGFEBLENDElement) DATASTAR_REFRemove() *SVGFEBLENDElement{
-                if e.StringAttributes == nil {
-                    return e
-                }
-                e.StringAttributes.Del("data-ref")
-                return e
-            }
-
-        
-
-    // Sets the value of the element 
-    
-        func(e *SVGFEBLENDElement) DATASTAR_BIND(key string, expression string) *SVGFEBLENDElement{
-                if e.StringAttributes == nil {
-                    e.StringAttributes = treemap.New[string,string]()
-                }
-                
-                key = fmt.Sprintf("data-bind-%s", key)
-                
-                e.StringAttributes.Set(key, expression)
-                return e
-            }
-
-            func(e *SVGFEBLENDElement) IfDATASTAR_BIND(condition bool, key string, expression string) *SVGFEBLENDElement{
-                if condition {
-                    e.DATASTAR_BIND(key,  expression, )
-                }
-                return e
-            }
-
-            // Remove the attribute DATASTAR_BIND from the element.
-            func(e *SVGFEBLENDElement) DATASTAR_BINDRemove() *SVGFEBLENDElement{
-                if e.StringAttributes == nil {
-                    return e
-                }
-                e.StringAttributes.Del("data-bind")
-                return e
-            }
-
-        
-
-    // Sets the value of the element 
-    
-        func(e *SVGFEBLENDElement) DATASTAR_MODEL(expression string) *SVGFEBLENDElement{
-                if e.StringAttributes == nil {
-                    e.StringAttributes = treemap.New[string,string]()
-                }
-                
-                key := "data-model"
-                
-                e.StringAttributes.Set(key, expression)
-                return e
-            }
-
-            func(e *SVGFEBLENDElement) IfDATASTAR_MODEL(condition bool, expression string) *SVGFEBLENDElement{
-                if condition {
-                    e.DATASTAR_MODEL( expression, )
-                }
-                return e
-            }
-
-            // Remove the attribute DATASTAR_MODEL from the element.
-            func(e *SVGFEBLENDElement) DATASTAR_MODELRemove() *SVGFEBLENDElement{
-                if e.StringAttributes == nil {
-                    return e
-                }
-                e.StringAttributes.Del("data-model")
-                return e
-            }
-
-        
-
-    // Sets the textContent of the element 
-    
-        func(e *SVGFEBLENDElement) DATASTAR_TEXT(expression string) *SVGFEBLENDElement{
-                if e.StringAttributes == nil {
-                    e.StringAttributes = treemap.New[string,string]()
-                }
-                
-                key := "data-text"
-                
-                e.StringAttributes.Set(key, expression)
-                return e
-            }
-
-            func(e *SVGFEBLENDElement) IfDATASTAR_TEXT(condition bool, expression string) *SVGFEBLENDElement{
-                if condition {
-                    e.DATASTAR_TEXT( expression, )
-                }
-                return e
-            }
-
-            // Remove the attribute DATASTAR_TEXT from the element.
-            func(e *SVGFEBLENDElement) DATASTAR_TEXTRemove() *SVGFEBLENDElement{
-                if e.StringAttributes == nil {
-                    return e
-                }
-                e.StringAttributes.Del("data-text")
-                return e
-            }
-
-        
-
-    // Sets the event handler of the element 
-    
-        type SVGFeBlendDataOnMod customDataKeyModifier
-
-            
-            // Debounces the event handler 
-            func SVGFeBlendDataOnModDebounce(
-                    d time.Duration,
-            ) SVGFeBlendDataOnMod {
-                return func() string {return fmt.Sprintf("debounce_%dms", d.Milliseconds())
-                }
-            }
-            
-            // Throttles the event handler 
-            func SVGFeBlendDataOnModThrottle(
-                    d time.Duration,
-            ) SVGFeBlendDataOnMod {
-                return func() string {return fmt.Sprintf("throttle_%dms", d.Milliseconds())
-                }
-            }
-            
-        func(e *SVGFEBLENDElement) DATASTAR_ON(key string, expression string, modifiers ...SVGFeBlendDataOnMod) *SVGFEBLENDElement{
-                if e.StringAttributes == nil {
-                    e.StringAttributes = treemap.New[string,string]()
-                }
-                
-                key = fmt.Sprintf("data-on-%s", key)
-                
-                customMods := lo.Map(modifiers, func(m SVGFeBlendDataOnMod, i int) customDataKeyModifier  {
-                    return customDataKeyModifier(m)
-                })
-                key = customDataKey(key, customMods...)
-                e.StringAttributes.Set(key, expression)
-                return e
-            }
-
-            func(e *SVGFEBLENDElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SVGFeBlendDataOnMod) *SVGFEBLENDElement{
-                if condition {
-                    e.DATASTAR_ON(key,  expression,  modifiers...)
-                }
-                return e
-            }
-
-            // Remove the attribute DATASTAR_ON from the element.
-            func(e *SVGFEBLENDElement) DATASTAR_ONRemove() *SVGFEBLENDElement{
-                if e.StringAttributes == nil {
-                    return e
-                }
-                e.StringAttributes.Del("data-on")
-                return e
-            }
-
-        
-
-    // Sets the focus of the element 
-    
-        func(e *SVGFEBLENDElement) DATASTAR_FOCUSSet(b bool) *SVGFEBLENDElement{
-                key := "data-focus"
-                e.BoolAttributes.Set(key, b)
-                return e
-            }
-
-            func(e *SVGFEBLENDElement) DATASTAR_FOCUS() *SVGFEBLENDElement{
-                return e.DATASTAR_FOCUSSet(true)
-            }
-        
-
-    // Sets the header of for fetch requests 
-    
-        func(e *SVGFEBLENDElement) DATASTAR_HEADER(key string, expression string) *SVGFEBLENDElement{
-                if e.StringAttributes == nil {
-                    e.StringAttributes = treemap.New[string,string]()
-                }
-                
-                key = fmt.Sprintf("data-header-%s", key)
-                
-                e.StringAttributes.Set(key, expression)
-                return e
-            }
-
-            func(e *SVGFEBLENDElement) IfDATASTAR_HEADER(condition bool, key string, expression string) *SVGFEBLENDElement{
-                if condition {
-                    e.DATASTAR_HEADER(key,  expression, )
-                }
-                return e
-            }
-
-            // Remove the attribute DATASTAR_HEADER from the element.
-            func(e *SVGFEBLENDElement) DATASTAR_HEADERRemove() *SVGFEBLENDElement{
-                if e.StringAttributes == nil {
-                    return e
-                }
-                e.StringAttributes.Del("data-header")
-                return e
-            }
-
-        
-
-    // Sets the URL for fetch requests 
-    
-        func(e *SVGFEBLENDElement) DATASTAR_FETCH_URL(expression string) *SVGFEBLENDElement{
-                if e.StringAttributes == nil {
-                    e.StringAttributes = treemap.New[string,string]()
-                }
-                
-                key := "data-fetch-url"
-                
-                e.StringAttributes.Set(key, expression)
-                return e
-            }
-
-            func(e *SVGFEBLENDElement) IfDATASTAR_FETCH_URL(condition bool, expression string) *SVGFEBLENDElement{
-                if condition {
-                    e.DATASTAR_FETCH_URL( expression, )
-                }
-                return e
-            }
-
-            // Remove the attribute DATASTAR_FETCH_URL from the element.
-            func(e *SVGFEBLENDElement) DATASTAR_FETCH_URLRemove() *SVGFEBLENDElement{
-                if e.StringAttributes == nil {
-                    return e
-                }
-                e.StringAttributes.Del("data-fetch-url")
-                return e
-            }
-
-        
-
-    // Sets the indicator selector for fetch requests 
-    
-        func(e *SVGFEBLENDElement) DATASTAR_FETCH_INDICATOR(expression string) *SVGFEBLENDElement{
-                if e.StringAttributes == nil {
-                    e.StringAttributes = treemap.New[string,string]()
-                }
-                
-                key := "DatastarFetchIndicator"
-                
-                e.StringAttributes.Set(key, expression)
-                return e
-            }
-
-            func(e *SVGFEBLENDElement) IfDATASTAR_FETCH_INDICATOR(condition bool, expression string) *SVGFEBLENDElement{
-                if condition {
-                    e.DATASTAR_FETCH_INDICATOR( expression, )
-                }
-                return e
-            }
-
-            // Remove the attribute DATASTAR_FETCH_INDICATOR from the element.
-            func(e *SVGFEBLENDElement) DATASTAR_FETCH_INDICATORRemove() *SVGFEBLENDElement{
-                if e.StringAttributes == nil {
-                    return e
-                }
-                e.StringAttributes.Del("DatastarFetchIndicator")
-                return e
-            }
-
-        
-
-    // Sets the visibility of the element 
-    
-        func(e *SVGFEBLENDElement) DATASTAR_SHOWSet(b bool) *SVGFEBLENDElement{
-                key := "data-show"
-                e.BoolAttributes.Set(key, b)
-                return e
-            }
-
-            func(e *SVGFEBLENDElement) DATASTAR_SHOW() *SVGFEBLENDElement{
-                return e.DATASTAR_SHOWSet(true)
-            }
-        
-
-    // Triggers the callback when the element intersects the viewport 
-    
-        func(e *SVGFEBLENDElement) DATASTAR_INTERSECTSSet(b bool) *SVGFEBLENDElement{
-                key := "data-intersects"
-                e.BoolAttributes.Set(key, b)
-                return e
-            }
-
-            func(e *SVGFEBLENDElement) DATASTAR_INTERSECTS() *SVGFEBLENDElement{
-                return e.DATASTAR_INTERSECTSSet(true)
-            }
-        
-
-    // Teleports the element to the given selector 
-    
-        func(e *SVGFEBLENDElement) DATASTAR_TELEPORTSet(b bool) *SVGFEBLENDElement{
-                key := "data-teleport"
-                e.BoolAttributes.Set(key, b)
-                return e
-            }
-
-            func(e *SVGFEBLENDElement) DATASTAR_TELEPORT() *SVGFEBLENDElement{
-                return e.DATASTAR_TELEPORTSet(true)
-            }
-        
-
-    // Scrolls the element into view 
-    
-        func(e *SVGFEBLENDElement) DATASTAR_SCROLL_INTO_VIEWSet(b bool) *SVGFEBLENDElement{
-                key := "data-scroll-into-view"
-                e.BoolAttributes.Set(key, b)
-                return e
-            }
-
-            func(e *SVGFEBLENDElement) DATASTAR_SCROLL_INTO_VIEW() *SVGFEBLENDElement{
-                return e.DATASTAR_SCROLL_INTO_VIEWSet(true)
-            }
-        
-
-    // Setup the ViewTransitionAPI for the element 
-    
-        func(e *SVGFEBLENDElement) DATASTAR_VIEW_TRANSITION(key string, expression string) *SVGFEBLENDElement{
-                if e.StringAttributes == nil {
-                    e.StringAttributes = treemap.New[string,string]()
-                }
-                
-                key = fmt.Sprintf("data-view-transition-%s", key)
-                
-                e.StringAttributes.Set(key, expression)
-                return e
-            }
-
-            func(e *SVGFEBLENDElement) IfDATASTAR_VIEW_TRANSITION(condition bool, key string, expression string) *SVGFEBLENDElement{
-                if condition {
-                    e.DATASTAR_VIEW_TRANSITION(key,  expression, )
-                }
-                return e
-            }
-
-            // Remove the attribute DATASTAR_VIEW_TRANSITION from the element.
-            func(e *SVGFEBLENDElement) DATASTAR_VIEW_TRANSITIONRemove() *SVGFEBLENDElement{
-                if e.StringAttributes == nil {
-                    return e
-                }
-                e.StringAttributes.Del("data-view-transition")
-                return e
-            }
-
-        
-
-
-
+// Input for the blending.
+func (e *SVGFEBLENDElement) IN(s string) *SVGFEBLENDElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	e.StringAttributes.Set("in", s)
+	return e
+}
+
+func (e *SVGFEBLENDElement) IfIN(condition bool, s string) *SVGFEBLENDElement {
+	if condition {
+		e.IN(s)
+	}
+	return e
+}
+
+// Remove the attribute IN from the element.
+func (e *SVGFEBLENDElement) INRemove(s string) *SVGFEBLENDElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("in")
+	return e
+}
+
+// Second input for the blending.
+func (e *SVGFEBLENDElement) IN_2(s string) *SVGFEBLENDElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	e.StringAttributes.Set("in2", s)
+	return e
+}
+
+func (e *SVGFEBLENDElement) IfIN_2(condition bool, s string) *SVGFEBLENDElement {
+	if condition {
+		e.IN_2(s)
+	}
+	return e
+}
+
+// Remove the attribute IN_2 from the element.
+func (e *SVGFEBLENDElement) IN_2Remove(s string) *SVGFEBLENDElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("in2")
+	return e
+}
+
+// The mode used to blend the two inputs together.
+func (e *SVGFEBLENDElement) MODE(c SVGFeBlendModeChoice) *SVGFEBLENDElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	e.StringAttributes.Set("mode", string(c))
+	return e
+}
+
+type SVGFeBlendModeChoice string
+
+const (
+	// The input image is placed over the backdrop image, then the parts of the input
+	// image that are outside the backdrop are discarded.
+	SVGFeBlendMode_normal SVGFeBlendModeChoice = "normal"
+	// The input image is multiplied by the backdrop image.
+	SVGFeBlendMode_multiply SVGFeBlendModeChoice = "multiply"
+	// Multiplies the complements of the backdrop and input image color values, then
+	// complements the result.
+	SVGFeBlendMode_screen SVGFeBlendModeChoice = "screen"
+	// Selects the darker of the backdrop and input image pixels.
+	SVGFeBlendMode_darken SVGFeBlendModeChoice = "darken"
+	// Selects the lighter of the backdrop and input image pixels.
+	SVGFeBlendMode_lighten SVGFeBlendModeChoice = "lighten"
+)
+
+// Remove the attribute MODE from the element.
+func (e *SVGFEBLENDElement) MODERemove(c SVGFeBlendModeChoice) *SVGFEBLENDElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("mode")
+	return e
+}
+
+// Specifies a unique id for an element
+func (e *SVGFEBLENDElement) ID(s string) *SVGFEBLENDElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	e.StringAttributes.Set("id", s)
+	return e
+}
+
+func (e *SVGFEBLENDElement) IfID(condition bool, s string) *SVGFEBLENDElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
+// Remove the attribute ID from the element.
+func (e *SVGFEBLENDElement) IDRemove(s string) *SVGFEBLENDElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("id")
+	return e
+}
+
+// Specifies one or more classnames for an element (refers to a class in a style
+// sheet)
+func (e *SVGFEBLENDElement) CLASS(s ...string) *SVGFEBLENDElement {
+	if e.DelimitedStrings == nil {
+		e.DelimitedStrings = treemap.New[string, *DelimitedBuilder[string]]()
+	}
+	ds, ok := e.DelimitedStrings.Get("class")
+	if !ok {
+		ds = NewDelimitedBuilder[string](" ")
+		e.DelimitedStrings.Set("class", ds)
+	}
+	ds.Add(s...)
+	return e
+}
+
+func (e *SVGFEBLENDElement) IfCLASS(condition bool, s ...string) *SVGFEBLENDElement {
+	if condition {
+		e.CLASS(s...)
+	}
+	return e
+}
+
+// Remove the attribute CLASS from the element.
+func (e *SVGFEBLENDElement) CLASSRemove(s ...string) *SVGFEBLENDElement {
+	if e.DelimitedStrings == nil {
+		return e
+	}
+	ds, ok := e.DelimitedStrings.Get("class")
+	if !ok {
+		return e
+	}
+	ds.Remove(s...)
+	return e
+}
+
+// Specifies an inline CSS style for an element
+func (e *SVGFEBLENDElement) STYLEF(k string, format string, args ...any) *SVGFEBLENDElement {
+	return e.STYLE(k, fmt.Sprintf(format, args...))
+}
+
+func (e *SVGFEBLENDElement) IfSTYLE(condition bool, k string, v string) *SVGFEBLENDElement {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
+func (e *SVGFEBLENDElement) STYLE(k string, v string) *SVGFEBLENDElement {
+	if e.KVStrings == nil {
+		e.KVStrings = treemap.New[string, *KVBuilder]()
+	}
+	kv, ok := e.KVStrings.Get("style")
+	if !ok {
+		kv = NewKVBuilder(":", ";")
+		e.KVStrings.Set("style", kv)
+	}
+	kv.Add(k, v)
+	return e
+}
+
+func (e *SVGFEBLENDElement) IfSTYLEF(condition bool, k string, format string, args ...any) *SVGFEBLENDElement {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
+	return e
+}
+
+// Add the attributes in the map to the element.
+func (e *SVGFEBLENDElement) STYLEMap(m map[string]string) *SVGFEBLENDElement {
+	if e.KVStrings == nil {
+		e.KVStrings = treemap.New[string, *KVBuilder]()
+	}
+	kv, ok := e.KVStrings.Get("style")
+	if !ok {
+		kv = NewKVBuilder(":", ";")
+		e.KVStrings.Set("style", kv)
+	}
+	for k, v := range m {
+		kv.Add(k, v)
+	}
+	return e
+}
+
+// Add pairs of attributes to the element.
+func (e *SVGFEBLENDElement) STYLEPairs(pairs ...string) *SVGFEBLENDElement {
+	if len(pairs)%2 != 0 {
+		panic("Must have an even number of pairs")
+	}
+	if e.KVStrings == nil {
+		e.KVStrings = treemap.New[string, *KVBuilder]()
+	}
+	kv, ok := e.KVStrings.Get("style")
+	if !ok {
+		kv = NewKVBuilder(":", ";")
+		e.KVStrings.Set("style", kv)
+	}
+
+	for i := 0; i < len(pairs); i += 2 {
+		kv.Add(pairs[i], pairs[i+1])
+	}
+
+	return e
+}
+
+func (e *SVGFEBLENDElement) IfSTYLEPairs(condition bool, pairs ...string) *SVGFEBLENDElement {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
+	return e
+}
+
+// Remove the attribute STYLE from the element.
+func (e *SVGFEBLENDElement) STYLERemove(keys ...string) *SVGFEBLENDElement {
+	if e.KVStrings == nil {
+		return e
+	}
+	kv, ok := e.KVStrings.Get("style")
+	if !ok {
+		return e
+	}
+	for _, k := range keys {
+		kv.Remove(k)
+	}
+	return e
+}
+
+// Merges the store with the given object
+
+func (e *SVGFEBLENDElement) DATASTAR_MERGE_STORE(v any) *SVGFEBLENDElement {
+	if e.CustomDataAttributes == nil {
+		e.CustomDataAttributes = treemap.New[string, string]()
+	}
+	b, err := json.Marshal(v)
+	if err != nil {
+		panic(err)
+	}
+	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	return e
+}
+
+// Sets the reference of the element
+
+func (e *SVGFEBLENDElement) DATASTAR_REF(expression string) *SVGFEBLENDElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-ref"
+
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+func (e *SVGFEBLENDElement) IfDATASTAR_REF(condition bool, expression string) *SVGFEBLENDElement {
+	if condition {
+		e.DATASTAR_REF(expression)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_REF from the element.
+func (e *SVGFEBLENDElement) DATASTAR_REFRemove() *SVGFEBLENDElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-ref")
+	return e
+}
+
+// Sets the value of the element
+
+func (e *SVGFEBLENDElement) DATASTAR_BIND(key string, expression string) *SVGFEBLENDElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key = fmt.Sprintf("data-bind-%s", key)
+
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+func (e *SVGFEBLENDElement) IfDATASTAR_BIND(condition bool, key string, expression string) *SVGFEBLENDElement {
+	if condition {
+		e.DATASTAR_BIND(key, expression)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_BIND from the element.
+func (e *SVGFEBLENDElement) DATASTAR_BINDRemove() *SVGFEBLENDElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-bind")
+	return e
+}
+
+// Sets the value of the element
+
+func (e *SVGFEBLENDElement) DATASTAR_MODEL(expression string) *SVGFEBLENDElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-model"
+
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+func (e *SVGFEBLENDElement) IfDATASTAR_MODEL(condition bool, expression string) *SVGFEBLENDElement {
+	if condition {
+		e.DATASTAR_MODEL(expression)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_MODEL from the element.
+func (e *SVGFEBLENDElement) DATASTAR_MODELRemove() *SVGFEBLENDElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-model")
+	return e
+}
+
+// Sets the textContent of the element
+
+func (e *SVGFEBLENDElement) DATASTAR_TEXT(expression string) *SVGFEBLENDElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-text"
+
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+func (e *SVGFEBLENDElement) IfDATASTAR_TEXT(condition bool, expression string) *SVGFEBLENDElement {
+	if condition {
+		e.DATASTAR_TEXT(expression)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_TEXT from the element.
+func (e *SVGFEBLENDElement) DATASTAR_TEXTRemove() *SVGFEBLENDElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-text")
+	return e
+}
+
+// Sets the event handler of the element
+
+type SVGFeBlendDataOnMod customDataKeyModifier
+
+// Debounces the event handler
+func SVGFeBlendDataOnModDebounce(
+	d time.Duration,
+) SVGFeBlendDataOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce_%dms", d.Milliseconds())
+	}
+}
+
+// Throttles the event handler
+func SVGFeBlendDataOnModThrottle(
+	d time.Duration,
+) SVGFeBlendDataOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle_%dms", d.Milliseconds())
+	}
+}
+
+func (e *SVGFEBLENDElement) DATASTAR_ON(key string, expression string, modifiers ...SVGFeBlendDataOnMod) *SVGFEBLENDElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key = fmt.Sprintf("data-on-%s", key)
+
+	customMods := lo.Map(modifiers, func(m SVGFeBlendDataOnMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+func (e *SVGFEBLENDElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SVGFeBlendDataOnMod) *SVGFEBLENDElement {
+	if condition {
+		e.DATASTAR_ON(key, expression, modifiers...)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_ON from the element.
+func (e *SVGFEBLENDElement) DATASTAR_ONRemove() *SVGFEBLENDElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-on")
+	return e
+}
+
+// Sets the focus of the element
+
+func (e *SVGFEBLENDElement) DATASTAR_FOCUSSet(b bool) *SVGFEBLENDElement {
+	key := "data-focus"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *SVGFEBLENDElement) DATASTAR_FOCUS() *SVGFEBLENDElement {
+	return e.DATASTAR_FOCUSSet(true)
+}
+
+// Sets the header of for fetch requests
+
+func (e *SVGFEBLENDElement) DATASTAR_HEADER(key string, expression string) *SVGFEBLENDElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key = fmt.Sprintf("data-header-%s", key)
+
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+func (e *SVGFEBLENDElement) IfDATASTAR_HEADER(condition bool, key string, expression string) *SVGFEBLENDElement {
+	if condition {
+		e.DATASTAR_HEADER(key, expression)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_HEADER from the element.
+func (e *SVGFEBLENDElement) DATASTAR_HEADERRemove() *SVGFEBLENDElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-header")
+	return e
+}
+
+// Sets the URL for fetch requests
+
+func (e *SVGFEBLENDElement) DATASTAR_FETCH_URL(expression string) *SVGFEBLENDElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-fetch-url"
+
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+func (e *SVGFEBLENDElement) IfDATASTAR_FETCH_URL(condition bool, expression string) *SVGFEBLENDElement {
+	if condition {
+		e.DATASTAR_FETCH_URL(expression)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_FETCH_URL from the element.
+func (e *SVGFEBLENDElement) DATASTAR_FETCH_URLRemove() *SVGFEBLENDElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-fetch-url")
+	return e
+}
+
+// Sets the indicator selector for fetch requests
+
+func (e *SVGFEBLENDElement) DATASTAR_FETCH_INDICATOR(expression string) *SVGFEBLENDElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "DatastarFetchIndicator"
+
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+func (e *SVGFEBLENDElement) IfDATASTAR_FETCH_INDICATOR(condition bool, expression string) *SVGFEBLENDElement {
+	if condition {
+		e.DATASTAR_FETCH_INDICATOR(expression)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_FETCH_INDICATOR from the element.
+func (e *SVGFEBLENDElement) DATASTAR_FETCH_INDICATORRemove() *SVGFEBLENDElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("DatastarFetchIndicator")
+	return e
+}
+
+// Sets the visibility of the element
+
+func (e *SVGFEBLENDElement) DATASTAR_SHOWSet(b bool) *SVGFEBLENDElement {
+	key := "data-show"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *SVGFEBLENDElement) DATASTAR_SHOW() *SVGFEBLENDElement {
+	return e.DATASTAR_SHOWSet(true)
+}
+
+// Triggers the callback when the element intersects the viewport
+
+func (e *SVGFEBLENDElement) DATASTAR_INTERSECTSSet(b bool) *SVGFEBLENDElement {
+	key := "data-intersects"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *SVGFEBLENDElement) DATASTAR_INTERSECTS() *SVGFEBLENDElement {
+	return e.DATASTAR_INTERSECTSSet(true)
+}
+
+// Teleports the element to the given selector
+
+func (e *SVGFEBLENDElement) DATASTAR_TELEPORTSet(b bool) *SVGFEBLENDElement {
+	key := "data-teleport"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *SVGFEBLENDElement) DATASTAR_TELEPORT() *SVGFEBLENDElement {
+	return e.DATASTAR_TELEPORTSet(true)
+}
+
+// Scrolls the element into view
+
+func (e *SVGFEBLENDElement) DATASTAR_SCROLL_INTO_VIEWSet(b bool) *SVGFEBLENDElement {
+	key := "data-scroll-into-view"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *SVGFEBLENDElement) DATASTAR_SCROLL_INTO_VIEW() *SVGFEBLENDElement {
+	return e.DATASTAR_SCROLL_INTO_VIEWSet(true)
+}
+
+// Setup the ViewTransitionAPI for the element
+
+func (e *SVGFEBLENDElement) DATASTAR_VIEW_TRANSITION(key string, expression string) *SVGFEBLENDElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key = fmt.Sprintf("data-view-transition-%s", key)
+
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+func (e *SVGFEBLENDElement) IfDATASTAR_VIEW_TRANSITION(condition bool, key string, expression string) *SVGFEBLENDElement {
+	if condition {
+		e.DATASTAR_VIEW_TRANSITION(key, expression)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_VIEW_TRANSITION from the element.
+func (e *SVGFEBLENDElement) DATASTAR_VIEW_TRANSITIONRemove() *SVGFEBLENDElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-view-transition")
+	return e
+}

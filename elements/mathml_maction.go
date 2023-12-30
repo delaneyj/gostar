@@ -3,968 +3,928 @@
 // Description:
 package elements
 
-import(
-    "fmt"
-    "time"
-    "github.com/igrmk/treemap/v2"
-    "github.com/goccy/go-json"
-    "github.com/samber/lo"
+import (
+	"fmt"
+	"time"
+
+	"github.com/goccy/go-json"
+	"github.com/igrmk/treemap/v2"
+	"github.com/samber/lo"
 )
 
-// This element is used to specify the behavior of a subexpression when it is 
-// activated by the user 
-// The action can be to toggle the visibility of the subexpression, or to toggle 
-// the selection of the subexpression, or to execute a script. 
+// This element is used to specify the behavior of a subexpression when it is
+// activated by the user
+// The action can be to toggle the visibility of the subexpression, or to toggle
+// the selection of the subexpression, or to execute a script.
 type MathMLMACTIONElement struct {
-    *Element
+	*Element
 }
 
 // Create a new MathMLMACTIONElement element.
 // This will create a new element with the tag
 // "maction" during rendering.
 func MathML_MACTION(children ...ElementRenderer) *MathMLMACTIONElement {
-    e := NewElement("maction", children...)
-    e.IsSelfClosing = false
-    e.Descendants = children
+	e := NewElement("maction", children...)
+	e.IsSelfClosing = false
+	e.Descendants = children
 
-    return &MathMLMACTIONElement{ Element: e }
+	return &MathMLMACTIONElement{Element: e}
 }
 
 func (e *MathMLMACTIONElement) Children(children ...ElementRenderer) *MathMLMACTIONElement {
-    e.Descendants = append(e.Descendants, children...)
-    return e
+	e.Descendants = append(e.Descendants, children...)
+	return e
 }
 
-func(e *MathMLMACTIONElement) IfChildren(condition bool, children ...ElementRenderer) *MathMLMACTIONElement {
-    if condition {
-        e.Descendants = append(e.Descendants, children...)
-    }
-    return e
+func (e *MathMLMACTIONElement) IfChildren(condition bool, children ...ElementRenderer) *MathMLMACTIONElement {
+	if condition {
+		e.Descendants = append(e.Descendants, children...)
+	}
+	return e
 }
 
-func(e *MathMLMACTIONElement) TernChildren(condition bool, trueChildren, falseChildren ElementRenderer) *MathMLMACTIONElement {
-    if condition {
-        e.Descendants = append(e.Descendants, trueChildren)
-    } else {
-        e.Descendants = append(e.Descendants, falseChildren)
-    }
-    return e
+func (e *MathMLMACTIONElement) TernChildren(condition bool, trueChildren, falseChildren ElementRenderer) *MathMLMACTIONElement {
+	if condition {
+		e.Descendants = append(e.Descendants, trueChildren)
+	} else {
+		e.Descendants = append(e.Descendants, falseChildren)
+	}
+	return e
 }
 
 func (e *MathMLMACTIONElement) Text(text string) *MathMLMACTIONElement {
-    e.Descendants = append(e.Descendants, Text(text))
-    return e
+	e.Descendants = append(e.Descendants, Text(text))
+	return e
 }
 
 func (e *MathMLMACTIONElement) TextF(format string, args ...any) *MathMLMACTIONElement {
-    return e.Text(fmt.Sprintf(format, args...))
+	return e.Text(fmt.Sprintf(format, args...))
 }
 
 func (e *MathMLMACTIONElement) IfText(condition bool, text string) *MathMLMACTIONElement {
-    if condition {
-        e.Descendants = append(e.Descendants, Text(text))
-    }
-    return e
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
 }
 
 func (e *MathMLMACTIONElement) IfTextF(condition bool, format string, args ...any) *MathMLMACTIONElement {
-    if condition {
-        e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
-    }
-    return e
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
 }
 
 func (e *MathMLMACTIONElement) Escaped(text string) *MathMLMACTIONElement {
-    e.Descendants = append(e.Descendants, Escaped(text))
-    return e
+	e.Descendants = append(e.Descendants, Escaped(text))
+	return e
 }
 
 func (e *MathMLMACTIONElement) IfEscaped(condition bool, text string) *MathMLMACTIONElement {
-    if condition {
-        e.Descendants = append(e.Descendants, Escaped(text))
-    }
-    return e
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
 }
 
 func (e *MathMLMACTIONElement) EscapedF(format string, args ...any) *MathMLMACTIONElement {
-    return e.Escaped(fmt.Sprintf(format, args...))
+	return e.Escaped(fmt.Sprintf(format, args...))
 }
 
 func (e *MathMLMACTIONElement) IfEscapedF(condition bool, format string, args ...any) *MathMLMACTIONElement {
-    if condition {
-        e.Descendants = append(e.Descendants, EscapedF(format, args...))
-    }
-    return e
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *MathMLMACTIONElement) CustomData(key, value string) *MathMLMACTIONElement {
-    if e.CustomDataAttributes == nil {
-        e.CustomDataAttributes = treemap.New[string,string]()
-    }
+	if e.CustomDataAttributes == nil {
+		e.CustomDataAttributes = treemap.New[string, string]()
+	}
 	e.CustomDataAttributes.Set(key, value)
 	return e
 }
 
 func (e *MathMLMACTIONElement) IfCustomData(condition bool, key, value string) *MathMLMACTIONElement {
-    if condition {
-        e.CustomData(key, value)
-    }
-    return e
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
 }
 
 func (e *MathMLMACTIONElement) CustomDataF(key, format string, args ...any) *MathMLMACTIONElement {
-    return e.CustomData(key, fmt.Sprintf(format, args...))
+	return e.CustomData(key, fmt.Sprintf(format, args...))
 }
 
 func (e *MathMLMACTIONElement) IfCustomDataF(condition bool, key, format string, args ...any) *MathMLMACTIONElement {
-    if condition {
-        e.CustomData(key, fmt.Sprintf(format, args...))
-    }
-    return e
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *MathMLMACTIONElement) CustomDataRemove(key string) *MathMLMACTIONElement {
 	if e.CustomDataAttributes == nil {
 		return e
 	}
-    e.CustomDataAttributes.Del(key)
+	e.CustomDataAttributes.Del(key)
 	return e
 }
 
-
-    // This attribute specifies the type of action performed when the element is 
-// activated 
-// Possible values are toggle, statusline, tooltip, and script. 
-    func(e *MathMLMACTIONElement) ACTIONTYPE(c MathMLMactionActiontypeChoice) *MathMLMACTIONElement{
-            if e.StringAttributes == nil {
-                e.StringAttributes = treemap.New[string,string]()
-            }
-            e.StringAttributes.Set("actiontype", string(c))
-            return e
-        }
-
-        type MathMLMactionActiontypeChoice string
-        const(
-        
-            MathMLMactionActiontype_toggle MathMLMactionActiontypeChoice = "toggle"
-        
-            MathMLMactionActiontype_statusline MathMLMactionActiontypeChoice = "statusline"
-        
-            MathMLMactionActiontype_tooltip MathMLMactionActiontypeChoice = "tooltip"
-        
-            MathMLMactionActiontype_script MathMLMactionActiontypeChoice = "script"
-        )
-
-        // Remove the attribute ACTIONTYPE from the element.
-        func(e *MathMLMACTIONElement) ACTIONTYPERemove(c MathMLMactionActiontypeChoice) *MathMLMACTIONElement{
-            if e.StringAttributes == nil {
-                return e
-            }
-            e.StringAttributes.Del("actiontype")
-            return e
-        }
-        
-
-    // This attribute specifies the type of selection performed when the element is 
-// activated 
-// Possible values are none, highlight, and unhighlight. 
-    func(e *MathMLMACTIONElement) SELECTION(c MathMLMactionSelectionChoice) *MathMLMACTIONElement{
-            if e.StringAttributes == nil {
-                e.StringAttributes = treemap.New[string,string]()
-            }
-            e.StringAttributes.Set("selection", string(c))
-            return e
-        }
-
-        type MathMLMactionSelectionChoice string
-        const(
-        
-            MathMLMactionSelection_none MathMLMactionSelectionChoice = "none"
-        
-            MathMLMactionSelection_highlight MathMLMactionSelectionChoice = "highlight"
-        
-            MathMLMactionSelection_unhighlight MathMLMactionSelectionChoice = "unhighlight"
-        )
-
-        // Remove the attribute SELECTION from the element.
-        func(e *MathMLMACTIONElement) SELECTIONRemove(c MathMLMactionSelectionChoice) *MathMLMACTIONElement{
-            if e.StringAttributes == nil {
-                return e
-            }
-            e.StringAttributes.Del("selection")
-            return e
-        }
-        
-
-    // Assigns a class name or set of class names to an element 
-// You may assign the same class name or names to any number of elements 
-// If you specify multiple class names, they must be separated by whitespace 
-// characters. 
-    func(e *MathMLMACTIONElement) CLASS(s ...string) *MathMLMACTIONElement{
-            if e.DelimitedStrings == nil {
-                e.DelimitedStrings = treemap.New[string,*DelimitedBuilder[string]]()
-            }
-            ds, ok := e.DelimitedStrings.Get("class")
-            if !ok {
-                ds = NewDelimitedBuilder[string](" ")
-                e.DelimitedStrings.Set("class", ds)
-            }
-            ds.Add(s...)
-            return e
-        }
-
-        func(e *MathMLMACTIONElement) IfCLASS(condition bool, s ...string) *MathMLMACTIONElement{
-            if condition {
-                e.CLASS(s...)
-            }
-            return e
-        }
-
-        // Remove the attribute CLASS from the element.
-        func(e *MathMLMACTIONElement) CLASSRemove(s ...string) *MathMLMACTIONElement{
-            if e.DelimitedStrings == nil {
-                return e
-            }
-            ds, ok := e.DelimitedStrings.Get("class")
-            if !ok {
-                return e
-            }
-            ds.Remove(s ...)
-            return e
-        }
-
-    
-
-    // This attribute specifies the text directionality of the element, merely 
-// indicating what direction the text flows when surrounded by text with inherent 
-// directionality (such as Arabic or Hebrew) 
-// Possible values are ltr (left-to-right) and rtl (right-to-left). 
-    func(e *MathMLMACTIONElement) DIR(c MathMLMactionDirChoice) *MathMLMACTIONElement{
-            if e.StringAttributes == nil {
-                e.StringAttributes = treemap.New[string,string]()
-            }
-            e.StringAttributes.Set("dir", string(c))
-            return e
-        }
-
-        type MathMLMactionDirChoice string
-        const(
-        // left-to-right 
-            MathMLMactionDir_ltr MathMLMactionDirChoice = "ltr"
-        // right-to-left 
-            MathMLMactionDir_rtl MathMLMactionDirChoice = "rtl"
-        )
-
-        // Remove the attribute DIR from the element.
-        func(e *MathMLMACTIONElement) DIRRemove(c MathMLMactionDirChoice) *MathMLMACTIONElement{
-            if e.StringAttributes == nil {
-                return e
-            }
-            e.StringAttributes.Del("dir")
-            return e
-        }
-        
-
-    // This attribute specifies whether the element should be rendered using 
-// displaystyle rules or not 
-// Possible values are true and false. 
-    func(e *MathMLMACTIONElement) DISPLAYSTYLE(c MathMLMactionDisplaystyleChoice) *MathMLMACTIONElement{
-            if e.StringAttributes == nil {
-                e.StringAttributes = treemap.New[string,string]()
-            }
-            e.StringAttributes.Set("displaystyle", string(c))
-            return e
-        }
-
-        type MathMLMactionDisplaystyleChoice string
-        const(
-        // displaystyle rules 
-            MathMLMactionDisplaystyle_true MathMLMactionDisplaystyleChoice = "true"
-        // not displaystyle rules 
-            MathMLMactionDisplaystyle_false MathMLMactionDisplaystyleChoice = "false"
-        )
-
-        // Remove the attribute DISPLAYSTYLE from the element.
-        func(e *MathMLMACTIONElement) DISPLAYSTYLERemove(c MathMLMactionDisplaystyleChoice) *MathMLMACTIONElement{
-            if e.StringAttributes == nil {
-                return e
-            }
-            e.StringAttributes.Del("displaystyle")
-            return e
-        }
-        
-
-    // This attribute assigns a name to an element 
-// This name must be unique in a document. 
-    func(e *MathMLMACTIONElement) ID(s string) *MathMLMACTIONElement{
-            if e.StringAttributes == nil {
-                e.StringAttributes = treemap.New[string,string]()
-            }
-            e.StringAttributes.Set("id", s)
-            return e
-        }
-
-        func(e *MathMLMACTIONElement) IfID(condition bool, s string) *MathMLMACTIONElement{
-            if condition {
-                e.ID(s)
-            }
-            return e
-        }
-
-        // Remove the attribute ID from the element.
-        func(e *MathMLMACTIONElement) IDRemove(s string) *MathMLMACTIONElement{
-            if e.StringAttributes == nil {
-                return e
-            }
-            e.StringAttributes.Del("id")
-            return e
-        }
-    
-
-    // This attribute specifies the background color of the element 
-// Possible values are a color name or a color specification in the format defined 
-// in the CSS3 Color Module [CSS3COLOR]. 
-    func(e *MathMLMACTIONElement) MATHBACKGROUND(s string) *MathMLMACTIONElement{
-            if e.StringAttributes == nil {
-                e.StringAttributes = treemap.New[string,string]()
-            }
-            e.StringAttributes.Set("mathbackground", s)
-            return e
-        }
-
-        func(e *MathMLMACTIONElement) IfMATHBACKGROUND(condition bool, s string) *MathMLMACTIONElement{
-            if condition {
-                e.MATHBACKGROUND(s)
-            }
-            return e
-        }
-
-        // Remove the attribute MATHBACKGROUND from the element.
-        func(e *MathMLMACTIONElement) MATHBACKGROUNDRemove(s string) *MathMLMACTIONElement{
-            if e.StringAttributes == nil {
-                return e
-            }
-            e.StringAttributes.Del("mathbackground")
-            return e
-        }
-    
-
-    // This attribute specifies the color of the element 
-// Possible values are a color name or a color specification in the format defined 
-// in the CSS3 Color Module [CSS3COLOR]. 
-    func(e *MathMLMACTIONElement) MATHCOLOR(s string) *MathMLMACTIONElement{
-            if e.StringAttributes == nil {
-                e.StringAttributes = treemap.New[string,string]()
-            }
-            e.StringAttributes.Set("mathcolor", s)
-            return e
-        }
-
-        func(e *MathMLMACTIONElement) IfMATHCOLOR(condition bool, s string) *MathMLMACTIONElement{
-            if condition {
-                e.MATHCOLOR(s)
-            }
-            return e
-        }
-
-        // Remove the attribute MATHCOLOR from the element.
-        func(e *MathMLMACTIONElement) MATHCOLORRemove(s string) *MathMLMACTIONElement{
-            if e.StringAttributes == nil {
-                return e
-            }
-            e.StringAttributes.Del("mathcolor")
-            return e
-        }
-    
-
-    // This attribute specifies the size of the element 
-// Possible values are a dimension or a dimensionless number. 
-    func(e *MathMLMACTIONElement) MATHSIZE_STR(s string) *MathMLMACTIONElement{
-            if e.StringAttributes == nil {
-                e.StringAttributes = treemap.New[string,string]()
-            }
-            e.StringAttributes.Set("mathsize", s)
-            return e
-        }
-
-        func(e *MathMLMACTIONElement) IfMATHSIZE_STR(condition bool, s string) *MathMLMACTIONElement{
-            if condition {
-                e.MATHSIZE_STR(s)
-            }
-            return e
-        }
-
-        // Remove the attribute MATHSIZE_STR from the element.
-        func(e *MathMLMACTIONElement) MATHSIZE_STRRemove(s string) *MathMLMACTIONElement{
-            if e.StringAttributes == nil {
-                return e
-            }
-            e.StringAttributes.Del("mathsize")
-            return e
-        }
-    
-
-    // This attribute declares a cryptographic nonce (number used once) that should be 
-// used by the server processing the element’s submission, and the resulting 
-// resource must be delivered with a Content-Security-Policy nonce attribute 
-// matching the value of the nonce attribute. 
-    func(e *MathMLMACTIONElement) NONCE(s string) *MathMLMACTIONElement{
-            if e.StringAttributes == nil {
-                e.StringAttributes = treemap.New[string,string]()
-            }
-            e.StringAttributes.Set("nonce", s)
-            return e
-        }
-
-        func(e *MathMLMACTIONElement) IfNONCE(condition bool, s string) *MathMLMACTIONElement{
-            if condition {
-                e.NONCE(s)
-            }
-            return e
-        }
-
-        // Remove the attribute NONCE from the element.
-        func(e *MathMLMACTIONElement) NONCERemove(s string) *MathMLMACTIONElement{
-            if e.StringAttributes == nil {
-                return e
-            }
-            e.StringAttributes.Del("nonce")
-            return e
-        }
-    
-
-    // This attribute specifies the script level of the element 
-// Possible values are an integer between 0 and 7, inclusive. 
-    func(e *MathMLMACTIONElement) SCRIPTLEVEL(i int) *MathMLMACTIONElement{
-            if e.IntAttributes == nil {
-                e.IntAttributes = treemap.New[string,int]()
-            }
-            e.IntAttributes.Set("scriptlevel", i)
-            return e
-        }
-
-        func (e *MathMLMACTIONElement) IfSCRIPTLEVEL(condition bool, i int) *MathMLMACTIONElement {
-            if condition {
-                e.SCRIPTLEVEL(i)
-            }
-            return e
-        }
-
-        // Remove the attribute SCRIPTLEVEL from the element.
-        func(e *MathMLMACTIONElement) SCRIPTLEVELRemove(i int) *MathMLMACTIONElement{
-            if e.IntAttributes == nil {
-                return e
-            }
-            e.IntAttributes.Del("scriptlevel")
-            return e
-        }
-        
-
-    // This attribute offers advisory information about the element for which it is 
-// set. 
-    func (e *MathMLMACTIONElement) STYLEF(k string, format string, args ...any) *MathMLMACTIONElement {
-            return e.STYLE(k, fmt.Sprintf(format, args...))
-        }
-
-        func (e *MathMLMACTIONElement) IfSTYLE(condition bool, k string, v string) *MathMLMACTIONElement {
-            if condition {
-                e.STYLE(k, v)
-            }
-            return e
-        }
-
-        func (e *MathMLMACTIONElement) STYLE(k string, v string) *MathMLMACTIONElement {
-            if e.KVStrings == nil {
-                e.KVStrings = treemap.New[string,*KVBuilder]()
-            }
-            kv, ok := e.KVStrings.Get("style")
-            if !ok {
-                kv = NewKVBuilder(":", ";")
-                e.KVStrings.Set("style", kv)
-            }
-            kv.Add(k, v)
-            return e
-        }
-
-        func (e *MathMLMACTIONElement) IfSTYLEF(condition bool, k string, format string, args ...any) *MathMLMACTIONElement {
-            if condition {
-                e.STYLE(k, fmt.Sprintf(format, args...))
-            }
-            return e
-        }
-
-        // Add the attributes in the map to the element.
-        func (e *MathMLMACTIONElement) STYLEMap(m map[string]string) *MathMLMACTIONElement {
-            if e.KVStrings == nil {
-                e.KVStrings = treemap.New[string,*KVBuilder]()
-            }
-            kv, ok := e.KVStrings.Get("style")
-            if !ok {
-                kv = NewKVBuilder(":", ";")
-                e.KVStrings.Set("style", kv)
-            }
-            for k, v := range m {
-                kv.Add(k, v)
-            }
-            return e
-        }
-
-        // Add pairs of attributes to the element.
-        func (e *MathMLMACTIONElement) STYLEPairs(pairs ...string) *MathMLMACTIONElement {
-            if len(pairs) % 2 != 0 {
-                panic("Must have an even number of pairs")
-            }
-            if e.KVStrings == nil {
-                e.KVStrings = treemap.New[string,*KVBuilder]()
-            }
-            kv, ok := e.KVStrings.Get("style")
-            if !ok {
-                kv = NewKVBuilder(":", ";")
-                e.KVStrings.Set("style", kv)
-            }
-
-            for i := 0; i < len(pairs); i += 2 {
-                kv.Add(pairs[i], pairs[i+1])
-            }
-
-            return e
-        }
-
-        func (e *MathMLMACTIONElement) IfSTYLEPairs(condition bool, pairs ...string) *MathMLMACTIONElement {
-            if condition {
-                e.STYLEPairs(pairs...)
-            }
-            return e
-        }
-
-        // Remove the attribute STYLE from the element.
-        func (e *MathMLMACTIONElement) STYLERemove(keys ...string) *MathMLMACTIONElement {
-            if e.KVStrings == nil {
-                return e
-            }
-            kv, ok := e.KVStrings.Get("style")
-            if !ok {
-                return e
-            }
-            for _, k := range keys {
-                kv.Remove(k)
-            }
-            return e
-        }
-
-    
-
-    // This attribute specifies the position of the current element in the tabbing 
-// order for the current document 
-// This value must be a number between 0 and 32767 
-// User agents should ignore leading zeros. 
-    func(e *MathMLMACTIONElement) TABINDEX(i int) *MathMLMACTIONElement{
-            if e.IntAttributes == nil {
-                e.IntAttributes = treemap.New[string,int]()
-            }
-            e.IntAttributes.Set("tabindex", i)
-            return e
-        }
-
-        func (e *MathMLMACTIONElement) IfTABINDEX(condition bool, i int) *MathMLMACTIONElement {
-            if condition {
-                e.TABINDEX(i)
-            }
-            return e
-        }
-
-        // Remove the attribute TABINDEX from the element.
-        func(e *MathMLMACTIONElement) TABINDEXRemove(i int) *MathMLMACTIONElement{
-            if e.IntAttributes == nil {
-                return e
-            }
-            e.IntAttributes.Del("tabindex")
-            return e
-        }
-        
-
-    // Merges the store with the given object 
-    
-        func(e *MathMLMACTIONElement) DATASTAR_MERGE_STORE(v any) *MathMLMACTIONElement{
-                if e.CustomDataAttributes == nil {
-                    e.CustomDataAttributes = treemap.New[string,string]()
-                }
-                b, err := json.Marshal(v)
-                if err != nil {
-                    panic(err)
-                }
-                e.CustomDataAttributes.Set("data-merge-store", string(b))
-                return e
-            }
-
-        
-
-    // Sets the reference of the element 
-    
-        func(e *MathMLMACTIONElement) DATASTAR_REF(expression string) *MathMLMACTIONElement{
-                if e.StringAttributes == nil {
-                    e.StringAttributes = treemap.New[string,string]()
-                }
-                
-                key := "data-ref"
-                
-                e.StringAttributes.Set(key, expression)
-                return e
-            }
-
-            func(e *MathMLMACTIONElement) IfDATASTAR_REF(condition bool, expression string) *MathMLMACTIONElement{
-                if condition {
-                    e.DATASTAR_REF( expression, )
-                }
-                return e
-            }
-
-            // Remove the attribute DATASTAR_REF from the element.
-            func(e *MathMLMACTIONElement) DATASTAR_REFRemove() *MathMLMACTIONElement{
-                if e.StringAttributes == nil {
-                    return e
-                }
-                e.StringAttributes.Del("data-ref")
-                return e
-            }
-
-        
-
-    // Sets the value of the element 
-    
-        func(e *MathMLMACTIONElement) DATASTAR_BIND(key string, expression string) *MathMLMACTIONElement{
-                if e.StringAttributes == nil {
-                    e.StringAttributes = treemap.New[string,string]()
-                }
-                
-                key = fmt.Sprintf("data-bind-%s", key)
-                
-                e.StringAttributes.Set(key, expression)
-                return e
-            }
-
-            func(e *MathMLMACTIONElement) IfDATASTAR_BIND(condition bool, key string, expression string) *MathMLMACTIONElement{
-                if condition {
-                    e.DATASTAR_BIND(key,  expression, )
-                }
-                return e
-            }
-
-            // Remove the attribute DATASTAR_BIND from the element.
-            func(e *MathMLMACTIONElement) DATASTAR_BINDRemove() *MathMLMACTIONElement{
-                if e.StringAttributes == nil {
-                    return e
-                }
-                e.StringAttributes.Del("data-bind")
-                return e
-            }
-
-        
-
-    // Sets the value of the element 
-    
-        func(e *MathMLMACTIONElement) DATASTAR_MODEL(expression string) *MathMLMACTIONElement{
-                if e.StringAttributes == nil {
-                    e.StringAttributes = treemap.New[string,string]()
-                }
-                
-                key := "data-model"
-                
-                e.StringAttributes.Set(key, expression)
-                return e
-            }
-
-            func(e *MathMLMACTIONElement) IfDATASTAR_MODEL(condition bool, expression string) *MathMLMACTIONElement{
-                if condition {
-                    e.DATASTAR_MODEL( expression, )
-                }
-                return e
-            }
-
-            // Remove the attribute DATASTAR_MODEL from the element.
-            func(e *MathMLMACTIONElement) DATASTAR_MODELRemove() *MathMLMACTIONElement{
-                if e.StringAttributes == nil {
-                    return e
-                }
-                e.StringAttributes.Del("data-model")
-                return e
-            }
-
-        
-
-    // Sets the textContent of the element 
-    
-        func(e *MathMLMACTIONElement) DATASTAR_TEXT(expression string) *MathMLMACTIONElement{
-                if e.StringAttributes == nil {
-                    e.StringAttributes = treemap.New[string,string]()
-                }
-                
-                key := "data-text"
-                
-                e.StringAttributes.Set(key, expression)
-                return e
-            }
-
-            func(e *MathMLMACTIONElement) IfDATASTAR_TEXT(condition bool, expression string) *MathMLMACTIONElement{
-                if condition {
-                    e.DATASTAR_TEXT( expression, )
-                }
-                return e
-            }
-
-            // Remove the attribute DATASTAR_TEXT from the element.
-            func(e *MathMLMACTIONElement) DATASTAR_TEXTRemove() *MathMLMACTIONElement{
-                if e.StringAttributes == nil {
-                    return e
-                }
-                e.StringAttributes.Del("data-text")
-                return e
-            }
-
-        
-
-    // Sets the event handler of the element 
-    
-        type MathMLMactionDataOnMod customDataKeyModifier
-
-            
-            // Debounces the event handler 
-            func MathMLMactionDataOnModDebounce(
-                    d time.Duration,
-            ) MathMLMactionDataOnMod {
-                return func() string {return fmt.Sprintf("debounce_%dms", d.Milliseconds())
-                }
-            }
-            
-            // Throttles the event handler 
-            func MathMLMactionDataOnModThrottle(
-                    d time.Duration,
-            ) MathMLMactionDataOnMod {
-                return func() string {return fmt.Sprintf("throttle_%dms", d.Milliseconds())
-                }
-            }
-            
-        func(e *MathMLMACTIONElement) DATASTAR_ON(key string, expression string, modifiers ...MathMLMactionDataOnMod) *MathMLMACTIONElement{
-                if e.StringAttributes == nil {
-                    e.StringAttributes = treemap.New[string,string]()
-                }
-                
-                key = fmt.Sprintf("data-on-%s", key)
-                
-                customMods := lo.Map(modifiers, func(m MathMLMactionDataOnMod, i int) customDataKeyModifier  {
-                    return customDataKeyModifier(m)
-                })
-                key = customDataKey(key, customMods...)
-                e.StringAttributes.Set(key, expression)
-                return e
-            }
-
-            func(e *MathMLMACTIONElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...MathMLMactionDataOnMod) *MathMLMACTIONElement{
-                if condition {
-                    e.DATASTAR_ON(key,  expression,  modifiers...)
-                }
-                return e
-            }
-
-            // Remove the attribute DATASTAR_ON from the element.
-            func(e *MathMLMACTIONElement) DATASTAR_ONRemove() *MathMLMACTIONElement{
-                if e.StringAttributes == nil {
-                    return e
-                }
-                e.StringAttributes.Del("data-on")
-                return e
-            }
-
-        
-
-    // Sets the focus of the element 
-    
-        func(e *MathMLMACTIONElement) DATASTAR_FOCUSSet(b bool) *MathMLMACTIONElement{
-                key := "data-focus"
-                e.BoolAttributes.Set(key, b)
-                return e
-            }
-
-            func(e *MathMLMACTIONElement) DATASTAR_FOCUS() *MathMLMACTIONElement{
-                return e.DATASTAR_FOCUSSet(true)
-            }
-        
-
-    // Sets the header of for fetch requests 
-    
-        func(e *MathMLMACTIONElement) DATASTAR_HEADER(key string, expression string) *MathMLMACTIONElement{
-                if e.StringAttributes == nil {
-                    e.StringAttributes = treemap.New[string,string]()
-                }
-                
-                key = fmt.Sprintf("data-header-%s", key)
-                
-                e.StringAttributes.Set(key, expression)
-                return e
-            }
-
-            func(e *MathMLMACTIONElement) IfDATASTAR_HEADER(condition bool, key string, expression string) *MathMLMACTIONElement{
-                if condition {
-                    e.DATASTAR_HEADER(key,  expression, )
-                }
-                return e
-            }
-
-            // Remove the attribute DATASTAR_HEADER from the element.
-            func(e *MathMLMACTIONElement) DATASTAR_HEADERRemove() *MathMLMACTIONElement{
-                if e.StringAttributes == nil {
-                    return e
-                }
-                e.StringAttributes.Del("data-header")
-                return e
-            }
-
-        
-
-    // Sets the URL for fetch requests 
-    
-        func(e *MathMLMACTIONElement) DATASTAR_FETCH_URL(expression string) *MathMLMACTIONElement{
-                if e.StringAttributes == nil {
-                    e.StringAttributes = treemap.New[string,string]()
-                }
-                
-                key := "data-fetch-url"
-                
-                e.StringAttributes.Set(key, expression)
-                return e
-            }
-
-            func(e *MathMLMACTIONElement) IfDATASTAR_FETCH_URL(condition bool, expression string) *MathMLMACTIONElement{
-                if condition {
-                    e.DATASTAR_FETCH_URL( expression, )
-                }
-                return e
-            }
-
-            // Remove the attribute DATASTAR_FETCH_URL from the element.
-            func(e *MathMLMACTIONElement) DATASTAR_FETCH_URLRemove() *MathMLMACTIONElement{
-                if e.StringAttributes == nil {
-                    return e
-                }
-                e.StringAttributes.Del("data-fetch-url")
-                return e
-            }
-
-        
-
-    // Sets the indicator selector for fetch requests 
-    
-        func(e *MathMLMACTIONElement) DATASTAR_FETCH_INDICATOR(expression string) *MathMLMACTIONElement{
-                if e.StringAttributes == nil {
-                    e.StringAttributes = treemap.New[string,string]()
-                }
-                
-                key := "DatastarFetchIndicator"
-                
-                e.StringAttributes.Set(key, expression)
-                return e
-            }
-
-            func(e *MathMLMACTIONElement) IfDATASTAR_FETCH_INDICATOR(condition bool, expression string) *MathMLMACTIONElement{
-                if condition {
-                    e.DATASTAR_FETCH_INDICATOR( expression, )
-                }
-                return e
-            }
-
-            // Remove the attribute DATASTAR_FETCH_INDICATOR from the element.
-            func(e *MathMLMACTIONElement) DATASTAR_FETCH_INDICATORRemove() *MathMLMACTIONElement{
-                if e.StringAttributes == nil {
-                    return e
-                }
-                e.StringAttributes.Del("DatastarFetchIndicator")
-                return e
-            }
-
-        
-
-    // Sets the visibility of the element 
-    
-        func(e *MathMLMACTIONElement) DATASTAR_SHOWSet(b bool) *MathMLMACTIONElement{
-                key := "data-show"
-                e.BoolAttributes.Set(key, b)
-                return e
-            }
-
-            func(e *MathMLMACTIONElement) DATASTAR_SHOW() *MathMLMACTIONElement{
-                return e.DATASTAR_SHOWSet(true)
-            }
-        
-
-    // Triggers the callback when the element intersects the viewport 
-    
-        func(e *MathMLMACTIONElement) DATASTAR_INTERSECTSSet(b bool) *MathMLMACTIONElement{
-                key := "data-intersects"
-                e.BoolAttributes.Set(key, b)
-                return e
-            }
-
-            func(e *MathMLMACTIONElement) DATASTAR_INTERSECTS() *MathMLMACTIONElement{
-                return e.DATASTAR_INTERSECTSSet(true)
-            }
-        
-
-    // Teleports the element to the given selector 
-    
-        func(e *MathMLMACTIONElement) DATASTAR_TELEPORTSet(b bool) *MathMLMACTIONElement{
-                key := "data-teleport"
-                e.BoolAttributes.Set(key, b)
-                return e
-            }
-
-            func(e *MathMLMACTIONElement) DATASTAR_TELEPORT() *MathMLMACTIONElement{
-                return e.DATASTAR_TELEPORTSet(true)
-            }
-        
-
-    // Scrolls the element into view 
-    
-        func(e *MathMLMACTIONElement) DATASTAR_SCROLL_INTO_VIEWSet(b bool) *MathMLMACTIONElement{
-                key := "data-scroll-into-view"
-                e.BoolAttributes.Set(key, b)
-                return e
-            }
-
-            func(e *MathMLMACTIONElement) DATASTAR_SCROLL_INTO_VIEW() *MathMLMACTIONElement{
-                return e.DATASTAR_SCROLL_INTO_VIEWSet(true)
-            }
-        
-
-    // Setup the ViewTransitionAPI for the element 
-    
-        func(e *MathMLMACTIONElement) DATASTAR_VIEW_TRANSITION(key string, expression string) *MathMLMACTIONElement{
-                if e.StringAttributes == nil {
-                    e.StringAttributes = treemap.New[string,string]()
-                }
-                
-                key = fmt.Sprintf("data-view-transition-%s", key)
-                
-                e.StringAttributes.Set(key, expression)
-                return e
-            }
-
-            func(e *MathMLMACTIONElement) IfDATASTAR_VIEW_TRANSITION(condition bool, key string, expression string) *MathMLMACTIONElement{
-                if condition {
-                    e.DATASTAR_VIEW_TRANSITION(key,  expression, )
-                }
-                return e
-            }
-
-            // Remove the attribute DATASTAR_VIEW_TRANSITION from the element.
-            func(e *MathMLMACTIONElement) DATASTAR_VIEW_TRANSITIONRemove() *MathMLMACTIONElement{
-                if e.StringAttributes == nil {
-                    return e
-                }
-                e.StringAttributes.Del("data-view-transition")
-                return e
-            }
-
-        
-
-
-
+// This attribute specifies the type of action performed when the element is
+// activated
+// Possible values are toggle, statusline, tooltip, and script.
+func (e *MathMLMACTIONElement) ACTIONTYPE(c MathMLMactionActiontypeChoice) *MathMLMACTIONElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	e.StringAttributes.Set("actiontype", string(c))
+	return e
+}
+
+type MathMLMactionActiontypeChoice string
+
+const (
+	MathMLMactionActiontype_toggle MathMLMactionActiontypeChoice = "toggle"
+
+	MathMLMactionActiontype_statusline MathMLMactionActiontypeChoice = "statusline"
+
+	MathMLMactionActiontype_tooltip MathMLMactionActiontypeChoice = "tooltip"
+
+	MathMLMactionActiontype_script MathMLMactionActiontypeChoice = "script"
+)
+
+// Remove the attribute ACTIONTYPE from the element.
+func (e *MathMLMACTIONElement) ACTIONTYPERemove(c MathMLMactionActiontypeChoice) *MathMLMACTIONElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("actiontype")
+	return e
+}
+
+// This attribute specifies the type of selection performed when the element is
+// activated
+// Possible values are none, highlight, and unhighlight.
+func (e *MathMLMACTIONElement) SELECTION(c MathMLMactionSelectionChoice) *MathMLMACTIONElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	e.StringAttributes.Set("selection", string(c))
+	return e
+}
+
+type MathMLMactionSelectionChoice string
+
+const (
+	MathMLMactionSelection_none MathMLMactionSelectionChoice = "none"
+
+	MathMLMactionSelection_highlight MathMLMactionSelectionChoice = "highlight"
+
+	MathMLMactionSelection_unhighlight MathMLMactionSelectionChoice = "unhighlight"
+)
+
+// Remove the attribute SELECTION from the element.
+func (e *MathMLMACTIONElement) SELECTIONRemove(c MathMLMactionSelectionChoice) *MathMLMACTIONElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("selection")
+	return e
+}
+
+// Assigns a class name or set of class names to an element
+// You may assign the same class name or names to any number of elements
+// If you specify multiple class names, they must be separated by whitespace
+// characters.
+func (e *MathMLMACTIONElement) CLASS(s ...string) *MathMLMACTIONElement {
+	if e.DelimitedStrings == nil {
+		e.DelimitedStrings = treemap.New[string, *DelimitedBuilder[string]]()
+	}
+	ds, ok := e.DelimitedStrings.Get("class")
+	if !ok {
+		ds = NewDelimitedBuilder[string](" ")
+		e.DelimitedStrings.Set("class", ds)
+	}
+	ds.Add(s...)
+	return e
+}
+
+func (e *MathMLMACTIONElement) IfCLASS(condition bool, s ...string) *MathMLMACTIONElement {
+	if condition {
+		e.CLASS(s...)
+	}
+	return e
+}
+
+// Remove the attribute CLASS from the element.
+func (e *MathMLMACTIONElement) CLASSRemove(s ...string) *MathMLMACTIONElement {
+	if e.DelimitedStrings == nil {
+		return e
+	}
+	ds, ok := e.DelimitedStrings.Get("class")
+	if !ok {
+		return e
+	}
+	ds.Remove(s...)
+	return e
+}
+
+// This attribute specifies the text directionality of the element, merely
+// indicating what direction the text flows when surrounded by text with inherent
+// directionality (such as Arabic or Hebrew)
+// Possible values are ltr (left-to-right) and rtl (right-to-left).
+func (e *MathMLMACTIONElement) DIR(c MathMLMactionDirChoice) *MathMLMACTIONElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	e.StringAttributes.Set("dir", string(c))
+	return e
+}
+
+type MathMLMactionDirChoice string
+
+const (
+	// left-to-right
+	MathMLMactionDir_ltr MathMLMactionDirChoice = "ltr"
+	// right-to-left
+	MathMLMactionDir_rtl MathMLMactionDirChoice = "rtl"
+)
+
+// Remove the attribute DIR from the element.
+func (e *MathMLMACTIONElement) DIRRemove(c MathMLMactionDirChoice) *MathMLMACTIONElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("dir")
+	return e
+}
+
+// This attribute specifies whether the element should be rendered using
+// displaystyle rules or not
+// Possible values are true and false.
+func (e *MathMLMACTIONElement) DISPLAYSTYLE(c MathMLMactionDisplaystyleChoice) *MathMLMACTIONElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	e.StringAttributes.Set("displaystyle", string(c))
+	return e
+}
+
+type MathMLMactionDisplaystyleChoice string
+
+const (
+	// displaystyle rules
+	MathMLMactionDisplaystyle_true MathMLMactionDisplaystyleChoice = "true"
+	// not displaystyle rules
+	MathMLMactionDisplaystyle_false MathMLMactionDisplaystyleChoice = "false"
+)
+
+// Remove the attribute DISPLAYSTYLE from the element.
+func (e *MathMLMACTIONElement) DISPLAYSTYLERemove(c MathMLMactionDisplaystyleChoice) *MathMLMACTIONElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("displaystyle")
+	return e
+}
+
+// This attribute assigns a name to an element
+// This name must be unique in a document.
+func (e *MathMLMACTIONElement) ID(s string) *MathMLMACTIONElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	e.StringAttributes.Set("id", s)
+	return e
+}
+
+func (e *MathMLMACTIONElement) IfID(condition bool, s string) *MathMLMACTIONElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
+// Remove the attribute ID from the element.
+func (e *MathMLMACTIONElement) IDRemove(s string) *MathMLMACTIONElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("id")
+	return e
+}
+
+// This attribute specifies the background color of the element
+// Possible values are a color name or a color specification in the format defined
+// in the CSS3 Color Module [CSS3COLOR].
+func (e *MathMLMACTIONElement) MATHBACKGROUND(s string) *MathMLMACTIONElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	e.StringAttributes.Set("mathbackground", s)
+	return e
+}
+
+func (e *MathMLMACTIONElement) IfMATHBACKGROUND(condition bool, s string) *MathMLMACTIONElement {
+	if condition {
+		e.MATHBACKGROUND(s)
+	}
+	return e
+}
+
+// Remove the attribute MATHBACKGROUND from the element.
+func (e *MathMLMACTIONElement) MATHBACKGROUNDRemove(s string) *MathMLMACTIONElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("mathbackground")
+	return e
+}
+
+// This attribute specifies the color of the element
+// Possible values are a color name or a color specification in the format defined
+// in the CSS3 Color Module [CSS3COLOR].
+func (e *MathMLMACTIONElement) MATHCOLOR(s string) *MathMLMACTIONElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	e.StringAttributes.Set("mathcolor", s)
+	return e
+}
+
+func (e *MathMLMACTIONElement) IfMATHCOLOR(condition bool, s string) *MathMLMACTIONElement {
+	if condition {
+		e.MATHCOLOR(s)
+	}
+	return e
+}
+
+// Remove the attribute MATHCOLOR from the element.
+func (e *MathMLMACTIONElement) MATHCOLORRemove(s string) *MathMLMACTIONElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("mathcolor")
+	return e
+}
+
+// This attribute specifies the size of the element
+// Possible values are a dimension or a dimensionless number.
+func (e *MathMLMACTIONElement) MATHSIZE_STR(s string) *MathMLMACTIONElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	e.StringAttributes.Set("mathsize", s)
+	return e
+}
+
+func (e *MathMLMACTIONElement) IfMATHSIZE_STR(condition bool, s string) *MathMLMACTIONElement {
+	if condition {
+		e.MATHSIZE_STR(s)
+	}
+	return e
+}
+
+// Remove the attribute MATHSIZE_STR from the element.
+func (e *MathMLMACTIONElement) MATHSIZE_STRRemove(s string) *MathMLMACTIONElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("mathsize")
+	return e
+}
+
+// This attribute declares a cryptographic nonce (number used once) that should be
+// used by the server processing the element’s submission, and the resulting
+// resource must be delivered with a Content-Security-Policy nonce attribute
+// matching the value of the nonce attribute.
+func (e *MathMLMACTIONElement) NONCE(s string) *MathMLMACTIONElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	e.StringAttributes.Set("nonce", s)
+	return e
+}
+
+func (e *MathMLMACTIONElement) IfNONCE(condition bool, s string) *MathMLMACTIONElement {
+	if condition {
+		e.NONCE(s)
+	}
+	return e
+}
+
+// Remove the attribute NONCE from the element.
+func (e *MathMLMACTIONElement) NONCERemove(s string) *MathMLMACTIONElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("nonce")
+	return e
+}
+
+// This attribute specifies the script level of the element
+// Possible values are an integer between 0 and 7, inclusive.
+func (e *MathMLMACTIONElement) SCRIPTLEVEL(i int) *MathMLMACTIONElement {
+	if e.IntAttributes == nil {
+		e.IntAttributes = treemap.New[string, int]()
+	}
+	e.IntAttributes.Set("scriptlevel", i)
+	return e
+}
+
+func (e *MathMLMACTIONElement) IfSCRIPTLEVEL(condition bool, i int) *MathMLMACTIONElement {
+	if condition {
+		e.SCRIPTLEVEL(i)
+	}
+	return e
+}
+
+// Remove the attribute SCRIPTLEVEL from the element.
+func (e *MathMLMACTIONElement) SCRIPTLEVELRemove(i int) *MathMLMACTIONElement {
+	if e.IntAttributes == nil {
+		return e
+	}
+	e.IntAttributes.Del("scriptlevel")
+	return e
+}
+
+// This attribute offers advisory information about the element for which it is
+// set.
+func (e *MathMLMACTIONElement) STYLEF(k string, format string, args ...any) *MathMLMACTIONElement {
+	return e.STYLE(k, fmt.Sprintf(format, args...))
+}
+
+func (e *MathMLMACTIONElement) IfSTYLE(condition bool, k string, v string) *MathMLMACTIONElement {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
+func (e *MathMLMACTIONElement) STYLE(k string, v string) *MathMLMACTIONElement {
+	if e.KVStrings == nil {
+		e.KVStrings = treemap.New[string, *KVBuilder]()
+	}
+	kv, ok := e.KVStrings.Get("style")
+	if !ok {
+		kv = NewKVBuilder(":", ";")
+		e.KVStrings.Set("style", kv)
+	}
+	kv.Add(k, v)
+	return e
+}
+
+func (e *MathMLMACTIONElement) IfSTYLEF(condition bool, k string, format string, args ...any) *MathMLMACTIONElement {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
+	return e
+}
+
+// Add the attributes in the map to the element.
+func (e *MathMLMACTIONElement) STYLEMap(m map[string]string) *MathMLMACTIONElement {
+	if e.KVStrings == nil {
+		e.KVStrings = treemap.New[string, *KVBuilder]()
+	}
+	kv, ok := e.KVStrings.Get("style")
+	if !ok {
+		kv = NewKVBuilder(":", ";")
+		e.KVStrings.Set("style", kv)
+	}
+	for k, v := range m {
+		kv.Add(k, v)
+	}
+	return e
+}
+
+// Add pairs of attributes to the element.
+func (e *MathMLMACTIONElement) STYLEPairs(pairs ...string) *MathMLMACTIONElement {
+	if len(pairs)%2 != 0 {
+		panic("Must have an even number of pairs")
+	}
+	if e.KVStrings == nil {
+		e.KVStrings = treemap.New[string, *KVBuilder]()
+	}
+	kv, ok := e.KVStrings.Get("style")
+	if !ok {
+		kv = NewKVBuilder(":", ";")
+		e.KVStrings.Set("style", kv)
+	}
+
+	for i := 0; i < len(pairs); i += 2 {
+		kv.Add(pairs[i], pairs[i+1])
+	}
+
+	return e
+}
+
+func (e *MathMLMACTIONElement) IfSTYLEPairs(condition bool, pairs ...string) *MathMLMACTIONElement {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
+	return e
+}
+
+// Remove the attribute STYLE from the element.
+func (e *MathMLMACTIONElement) STYLERemove(keys ...string) *MathMLMACTIONElement {
+	if e.KVStrings == nil {
+		return e
+	}
+	kv, ok := e.KVStrings.Get("style")
+	if !ok {
+		return e
+	}
+	for _, k := range keys {
+		kv.Remove(k)
+	}
+	return e
+}
+
+// This attribute specifies the position of the current element in the tabbing
+// order for the current document
+// This value must be a number between 0 and 32767
+// User agents should ignore leading zeros.
+func (e *MathMLMACTIONElement) TABINDEX(i int) *MathMLMACTIONElement {
+	if e.IntAttributes == nil {
+		e.IntAttributes = treemap.New[string, int]()
+	}
+	e.IntAttributes.Set("tabindex", i)
+	return e
+}
+
+func (e *MathMLMACTIONElement) IfTABINDEX(condition bool, i int) *MathMLMACTIONElement {
+	if condition {
+		e.TABINDEX(i)
+	}
+	return e
+}
+
+// Remove the attribute TABINDEX from the element.
+func (e *MathMLMACTIONElement) TABINDEXRemove(i int) *MathMLMACTIONElement {
+	if e.IntAttributes == nil {
+		return e
+	}
+	e.IntAttributes.Del("tabindex")
+	return e
+}
+
+// Merges the store with the given object
+
+func (e *MathMLMACTIONElement) DATASTAR_MERGE_STORE(v any) *MathMLMACTIONElement {
+	if e.CustomDataAttributes == nil {
+		e.CustomDataAttributes = treemap.New[string, string]()
+	}
+	b, err := json.Marshal(v)
+	if err != nil {
+		panic(err)
+	}
+	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	return e
+}
+
+// Sets the reference of the element
+
+func (e *MathMLMACTIONElement) DATASTAR_REF(expression string) *MathMLMACTIONElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-ref"
+
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+func (e *MathMLMACTIONElement) IfDATASTAR_REF(condition bool, expression string) *MathMLMACTIONElement {
+	if condition {
+		e.DATASTAR_REF(expression)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_REF from the element.
+func (e *MathMLMACTIONElement) DATASTAR_REFRemove() *MathMLMACTIONElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-ref")
+	return e
+}
+
+// Sets the value of the element
+
+func (e *MathMLMACTIONElement) DATASTAR_BIND(key string, expression string) *MathMLMACTIONElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key = fmt.Sprintf("data-bind-%s", key)
+
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+func (e *MathMLMACTIONElement) IfDATASTAR_BIND(condition bool, key string, expression string) *MathMLMACTIONElement {
+	if condition {
+		e.DATASTAR_BIND(key, expression)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_BIND from the element.
+func (e *MathMLMACTIONElement) DATASTAR_BINDRemove() *MathMLMACTIONElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-bind")
+	return e
+}
+
+// Sets the value of the element
+
+func (e *MathMLMACTIONElement) DATASTAR_MODEL(expression string) *MathMLMACTIONElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-model"
+
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+func (e *MathMLMACTIONElement) IfDATASTAR_MODEL(condition bool, expression string) *MathMLMACTIONElement {
+	if condition {
+		e.DATASTAR_MODEL(expression)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_MODEL from the element.
+func (e *MathMLMACTIONElement) DATASTAR_MODELRemove() *MathMLMACTIONElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-model")
+	return e
+}
+
+// Sets the textContent of the element
+
+func (e *MathMLMACTIONElement) DATASTAR_TEXT(expression string) *MathMLMACTIONElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-text"
+
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+func (e *MathMLMACTIONElement) IfDATASTAR_TEXT(condition bool, expression string) *MathMLMACTIONElement {
+	if condition {
+		e.DATASTAR_TEXT(expression)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_TEXT from the element.
+func (e *MathMLMACTIONElement) DATASTAR_TEXTRemove() *MathMLMACTIONElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-text")
+	return e
+}
+
+// Sets the event handler of the element
+
+type MathMLMactionDataOnMod customDataKeyModifier
+
+// Debounces the event handler
+func MathMLMactionDataOnModDebounce(
+	d time.Duration,
+) MathMLMactionDataOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce_%dms", d.Milliseconds())
+	}
+}
+
+// Throttles the event handler
+func MathMLMactionDataOnModThrottle(
+	d time.Duration,
+) MathMLMactionDataOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle_%dms", d.Milliseconds())
+	}
+}
+
+func (e *MathMLMACTIONElement) DATASTAR_ON(key string, expression string, modifiers ...MathMLMactionDataOnMod) *MathMLMACTIONElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key = fmt.Sprintf("data-on-%s", key)
+
+	customMods := lo.Map(modifiers, func(m MathMLMactionDataOnMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+func (e *MathMLMACTIONElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...MathMLMactionDataOnMod) *MathMLMACTIONElement {
+	if condition {
+		e.DATASTAR_ON(key, expression, modifiers...)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_ON from the element.
+func (e *MathMLMACTIONElement) DATASTAR_ONRemove() *MathMLMACTIONElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-on")
+	return e
+}
+
+// Sets the focus of the element
+
+func (e *MathMLMACTIONElement) DATASTAR_FOCUSSet(b bool) *MathMLMACTIONElement {
+	key := "data-focus"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *MathMLMACTIONElement) DATASTAR_FOCUS() *MathMLMACTIONElement {
+	return e.DATASTAR_FOCUSSet(true)
+}
+
+// Sets the header of for fetch requests
+
+func (e *MathMLMACTIONElement) DATASTAR_HEADER(key string, expression string) *MathMLMACTIONElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key = fmt.Sprintf("data-header-%s", key)
+
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+func (e *MathMLMACTIONElement) IfDATASTAR_HEADER(condition bool, key string, expression string) *MathMLMACTIONElement {
+	if condition {
+		e.DATASTAR_HEADER(key, expression)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_HEADER from the element.
+func (e *MathMLMACTIONElement) DATASTAR_HEADERRemove() *MathMLMACTIONElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-header")
+	return e
+}
+
+// Sets the URL for fetch requests
+
+func (e *MathMLMACTIONElement) DATASTAR_FETCH_URL(expression string) *MathMLMACTIONElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-fetch-url"
+
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+func (e *MathMLMACTIONElement) IfDATASTAR_FETCH_URL(condition bool, expression string) *MathMLMACTIONElement {
+	if condition {
+		e.DATASTAR_FETCH_URL(expression)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_FETCH_URL from the element.
+func (e *MathMLMACTIONElement) DATASTAR_FETCH_URLRemove() *MathMLMACTIONElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-fetch-url")
+	return e
+}
+
+// Sets the indicator selector for fetch requests
+
+func (e *MathMLMACTIONElement) DATASTAR_FETCH_INDICATOR(expression string) *MathMLMACTIONElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "DatastarFetchIndicator"
+
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+func (e *MathMLMACTIONElement) IfDATASTAR_FETCH_INDICATOR(condition bool, expression string) *MathMLMACTIONElement {
+	if condition {
+		e.DATASTAR_FETCH_INDICATOR(expression)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_FETCH_INDICATOR from the element.
+func (e *MathMLMACTIONElement) DATASTAR_FETCH_INDICATORRemove() *MathMLMACTIONElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("DatastarFetchIndicator")
+	return e
+}
+
+// Sets the visibility of the element
+
+func (e *MathMLMACTIONElement) DATASTAR_SHOWSet(b bool) *MathMLMACTIONElement {
+	key := "data-show"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *MathMLMACTIONElement) DATASTAR_SHOW() *MathMLMACTIONElement {
+	return e.DATASTAR_SHOWSet(true)
+}
+
+// Triggers the callback when the element intersects the viewport
+
+func (e *MathMLMACTIONElement) DATASTAR_INTERSECTSSet(b bool) *MathMLMACTIONElement {
+	key := "data-intersects"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *MathMLMACTIONElement) DATASTAR_INTERSECTS() *MathMLMACTIONElement {
+	return e.DATASTAR_INTERSECTSSet(true)
+}
+
+// Teleports the element to the given selector
+
+func (e *MathMLMACTIONElement) DATASTAR_TELEPORTSet(b bool) *MathMLMACTIONElement {
+	key := "data-teleport"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *MathMLMACTIONElement) DATASTAR_TELEPORT() *MathMLMACTIONElement {
+	return e.DATASTAR_TELEPORTSet(true)
+}
+
+// Scrolls the element into view
+
+func (e *MathMLMACTIONElement) DATASTAR_SCROLL_INTO_VIEWSet(b bool) *MathMLMACTIONElement {
+	key := "data-scroll-into-view"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *MathMLMACTIONElement) DATASTAR_SCROLL_INTO_VIEW() *MathMLMACTIONElement {
+	return e.DATASTAR_SCROLL_INTO_VIEWSet(true)
+}
+
+// Setup the ViewTransitionAPI for the element
+
+func (e *MathMLMACTIONElement) DATASTAR_VIEW_TRANSITION(key string, expression string) *MathMLMACTIONElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key = fmt.Sprintf("data-view-transition-%s", key)
+
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+func (e *MathMLMACTIONElement) IfDATASTAR_VIEW_TRANSITION(condition bool, key string, expression string) *MathMLMACTIONElement {
+	if condition {
+		e.DATASTAR_VIEW_TRANSITION(key, expression)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_VIEW_TRANSITION from the element.
+func (e *MathMLMACTIONElement) DATASTAR_VIEW_TRANSITIONRemove() *MathMLMACTIONElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-view-transition")
+	return e
+}

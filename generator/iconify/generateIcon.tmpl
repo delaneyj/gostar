@@ -1,0 +1,21 @@
+package {{ .Name.Lower }}
+
+import (
+	. "github.com/delaneyj/gostar/elements"
+)
+
+const (
+	IconifyVersion = "{{.Version}}"
+	hAttr = "1em"
+	viewbox = "0 0 {{.ViewWidth}} {{.ViewHeight}}"
+	fill = "currentColor"
+)
+
+{{range .Icons -}}
+func {{.Name.Pascal}}(children ...ElementRenderer) *SVGSVGElement {
+	return SVG_SVG(
+		Text(`{{.Icon.SvgBody}}`),
+	).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...)
+}
+
+{{end}}

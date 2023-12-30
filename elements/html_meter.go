@@ -3,1844 +3,1783 @@
 // Description:
 package elements
 
-import(
-    "fmt"
-    "time"
-    "github.com/igrmk/treemap/v2"
-    "github.com/goccy/go-json"
-    "github.com/samber/lo"
+import (
+	"fmt"
+	"time"
+
+	"github.com/goccy/go-json"
+	"github.com/igrmk/treemap/v2"
+	"github.com/samber/lo"
 )
 
-// The HTML <meter> element represents either a scalar value within a known range 
-// or a fractional value. 
+// The HTML <meter> element represents either a scalar value within a known range
+// or a fractional value.
 type METERElement struct {
-    *Element
+	*Element
 }
 
 // Create a new METERElement element.
 // This will create a new element with the tag
 // "meter" during rendering.
 func METER(children ...ElementRenderer) *METERElement {
-    e := NewElement("meter", children...)
-    e.IsSelfClosing = false
-    e.Descendants = children
+	e := NewElement("meter", children...)
+	e.IsSelfClosing = false
+	e.Descendants = children
 
-    return &METERElement{ Element: e }
+	return &METERElement{Element: e}
 }
 
 func (e *METERElement) Children(children ...ElementRenderer) *METERElement {
-    e.Descendants = append(e.Descendants, children...)
-    return e
+	e.Descendants = append(e.Descendants, children...)
+	return e
 }
 
-func(e *METERElement) IfChildren(condition bool, children ...ElementRenderer) *METERElement {
-    if condition {
-        e.Descendants = append(e.Descendants, children...)
-    }
-    return e
+func (e *METERElement) IfChildren(condition bool, children ...ElementRenderer) *METERElement {
+	if condition {
+		e.Descendants = append(e.Descendants, children...)
+	}
+	return e
 }
 
-func(e *METERElement) TernChildren(condition bool, trueChildren, falseChildren ElementRenderer) *METERElement {
-    if condition {
-        e.Descendants = append(e.Descendants, trueChildren)
-    } else {
-        e.Descendants = append(e.Descendants, falseChildren)
-    }
-    return e
+func (e *METERElement) TernChildren(condition bool, trueChildren, falseChildren ElementRenderer) *METERElement {
+	if condition {
+		e.Descendants = append(e.Descendants, trueChildren)
+	} else {
+		e.Descendants = append(e.Descendants, falseChildren)
+	}
+	return e
 }
 
 func (e *METERElement) Text(text string) *METERElement {
-    e.Descendants = append(e.Descendants, Text(text))
-    return e
+	e.Descendants = append(e.Descendants, Text(text))
+	return e
 }
 
 func (e *METERElement) TextF(format string, args ...any) *METERElement {
-    return e.Text(fmt.Sprintf(format, args...))
+	return e.Text(fmt.Sprintf(format, args...))
 }
 
 func (e *METERElement) IfText(condition bool, text string) *METERElement {
-    if condition {
-        e.Descendants = append(e.Descendants, Text(text))
-    }
-    return e
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
 }
 
 func (e *METERElement) IfTextF(condition bool, format string, args ...any) *METERElement {
-    if condition {
-        e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
-    }
-    return e
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
 }
 
 func (e *METERElement) Escaped(text string) *METERElement {
-    e.Descendants = append(e.Descendants, Escaped(text))
-    return e
+	e.Descendants = append(e.Descendants, Escaped(text))
+	return e
 }
 
 func (e *METERElement) IfEscaped(condition bool, text string) *METERElement {
-    if condition {
-        e.Descendants = append(e.Descendants, Escaped(text))
-    }
-    return e
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
 }
 
 func (e *METERElement) EscapedF(format string, args ...any) *METERElement {
-    return e.Escaped(fmt.Sprintf(format, args...))
+	return e.Escaped(fmt.Sprintf(format, args...))
 }
 
 func (e *METERElement) IfEscapedF(condition bool, format string, args ...any) *METERElement {
-    if condition {
-        e.Descendants = append(e.Descendants, EscapedF(format, args...))
-    }
-    return e
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *METERElement) CustomData(key, value string) *METERElement {
-    if e.CustomDataAttributes == nil {
-        e.CustomDataAttributes = treemap.New[string,string]()
-    }
+	if e.CustomDataAttributes == nil {
+		e.CustomDataAttributes = treemap.New[string, string]()
+	}
 	e.CustomDataAttributes.Set(key, value)
 	return e
 }
 
 func (e *METERElement) IfCustomData(condition bool, key, value string) *METERElement {
-    if condition {
-        e.CustomData(key, value)
-    }
-    return e
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
 }
 
 func (e *METERElement) CustomDataF(key, format string, args ...any) *METERElement {
-    return e.CustomData(key, fmt.Sprintf(format, args...))
+	return e.CustomData(key, fmt.Sprintf(format, args...))
 }
 
 func (e *METERElement) IfCustomDataF(condition bool, key, format string, args ...any) *METERElement {
-    if condition {
-        e.CustomData(key, fmt.Sprintf(format, args...))
-    }
-    return e
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *METERElement) CustomDataRemove(key string) *METERElement {
 	if e.CustomDataAttributes == nil {
 		return e
 	}
-    e.CustomDataAttributes.Del(key)
+	e.CustomDataAttributes.Del(key)
 	return e
 }
 
-
-    // Indicates the range's upper bound. 
-    func(e *METERElement) HIGH(f float64) *METERElement{
-            if e.FloatAttributes == nil {
-                e.FloatAttributes = treemap.New[string,float64]()
-            }
-            e.FloatAttributes.Set("high", f)
-            return e
-        }
-
-        func (e *METERElement) IfHIGH(condition bool, f float64) *METERElement {
-            if condition {
-                e.HIGH(f)
-            }
-            return e
-        }
-
-    
-
-    // Indicates the range's lower bound. 
-    func(e *METERElement) LOW(f float64) *METERElement{
-            if e.FloatAttributes == nil {
-                e.FloatAttributes = treemap.New[string,float64]()
-            }
-            e.FloatAttributes.Set("low", f)
-            return e
-        }
-
-        func (e *METERElement) IfLOW(condition bool, f float64) *METERElement {
-            if condition {
-                e.LOW(f)
-            }
-            return e
-        }
-
-    
-
-    // Indicates the maximum value allowed. 
-    func(e *METERElement) MAX(f float64) *METERElement{
-            if e.FloatAttributes == nil {
-                e.FloatAttributes = treemap.New[string,float64]()
-            }
-            e.FloatAttributes.Set("max", f)
-            return e
-        }
-
-        func (e *METERElement) IfMAX(condition bool, f float64) *METERElement {
-            if condition {
-                e.MAX(f)
-            }
-            return e
-        }
-
-    
-
-    // Indicates the minimum value allowed. 
-    func(e *METERElement) MIN(f float64) *METERElement{
-            if e.FloatAttributes == nil {
-                e.FloatAttributes = treemap.New[string,float64]()
-            }
-            e.FloatAttributes.Set("min", f)
-            return e
-        }
-
-        func (e *METERElement) IfMIN(condition bool, f float64) *METERElement {
-            if condition {
-                e.MIN(f)
-            }
-            return e
-        }
-
-    
-
-    // Indicates the optimal numeric value. 
-    func(e *METERElement) OPTIMUM(f float64) *METERElement{
-            if e.FloatAttributes == nil {
-                e.FloatAttributes = treemap.New[string,float64]()
-            }
-            e.FloatAttributes.Set("optimum", f)
-            return e
-        }
-
-        func (e *METERElement) IfOPTIMUM(condition bool, f float64) *METERElement {
-            if condition {
-                e.OPTIMUM(f)
-            }
-            return e
-        }
-
-    
-
-    // Current numeric value. 
-    func(e *METERElement) VALUE(f float64) *METERElement{
-            if e.FloatAttributes == nil {
-                e.FloatAttributes = treemap.New[string,float64]()
-            }
-            e.FloatAttributes.Set("value", f)
-            return e
-        }
-
-        func (e *METERElement) IfVALUE(condition bool, f float64) *METERElement {
-            if condition {
-                e.VALUE(f)
-            }
-            return e
-        }
-
-    
-
-    // The accesskey global attribute provides a hint for generating a keyboard 
-// shortcut for the current element 
-// The attribute value must consist of a single printable character (which 
-// includes accented and other characters that can be generated by the keyboard). 
-    func(e *METERElement) ACCESSKEY(r rune) *METERElement{
-            if e.StringAttributes == nil {
-                e.StringAttributes = treemap.New[string,string]()
-            }
-            e.StringAttributes.Set("accesskey", string(r))
-            return e
-        }
-
-        func(e *METERElement) IfACCESSKEY(condition bool, r rune) *METERElement{
-            if condition {
-                e.ACCESSKEY(r)
-            }
-            return e
-        }
-
-        // Remove the attribute ACCESSKEY from the element.
-        func(e *METERElement) ACCESSKEYRemove() *METERElement{
-            if e.StringAttributes == nil {
-                return e
-            }
-            e.StringAttributes.Del("accesskey")
-            return e
-        }
-
-    
-
-    // The autocapitalize global attribute is an enumerated attribute that controls 
-// whether and how text input is automatically capitalized as it is entered/edited 
-// by the user 
-// autocapitalize can be set on <input> and <textarea> elements, and on their 
-// containing <form> elements 
-// When autocapitalize is set on a <form> element, it sets the autocapitalize 
-// behavior for all contained <input>s and <textarea>s, overriding any 
-// autocapitalize values set on contained elements 
-// autocapitalize has no effect on the url, email, or password <input> types, 
-// where autocapitalization is never enabled 
-// Where autocapitalize is not specified, the adopted default behavior varies 
-// between browsers 
-// For example: Chrome and Safari default to on/sentences Firefox defaults to 
-// off/none. 
-    func(e *METERElement) AUTOCAPITALIZE(c MeterAutocapitalizeChoice) *METERElement{
-            if e.StringAttributes == nil {
-                e.StringAttributes = treemap.New[string,string]()
-            }
-            e.StringAttributes.Set("autocapitalize", string(c))
-            return e
-        }
-
-        type MeterAutocapitalizeChoice string
-        const(
-        // Do not automatically capitalize any text. 
-            MeterAutocapitalize_off MeterAutocapitalizeChoice = "off"
-        // Do not automatically capitalize any text. 
-            MeterAutocapitalize_none MeterAutocapitalizeChoice = "none"
-        // Automatically capitalize the first character of each sentence. 
-            MeterAutocapitalize_sentences MeterAutocapitalizeChoice = "sentences"
-        // Automatically capitalize the first character of each sentence. 
-            MeterAutocapitalize_on MeterAutocapitalizeChoice = "on"
-        // Automatically capitalize the first character of each word. 
-            MeterAutocapitalize_words MeterAutocapitalizeChoice = "words"
-        // Automatically capitalize all characters. 
-            MeterAutocapitalize_characters MeterAutocapitalizeChoice = "characters"
-        )
-
-        // Remove the attribute AUTOCAPITALIZE from the element.
-        func(e *METERElement) AUTOCAPITALIZERemove(c MeterAutocapitalizeChoice) *METERElement{
-            if e.StringAttributes == nil {
-                return e
-            }
-            e.StringAttributes.Del("autocapitalize")
-            return e
-        }
-        
-
-    // The autofocus global attribute is a Boolean attribute indicating that an 
-// element should be focused on page load, or when the <dialog> that it is part of 
-// is displayed. 
-// 		Accessibility concerns Automatically focusing a form control can confuse 
-// visually-impaired people using screen-reading technology and people with 
-// cognitive impairments 
-// When autofocus is assigned, screen-readers "teleport" their user to the form 
-// control without warning them beforehand. 
-// 		Use careful consideration for accessibility when applying the autofocus 
-// attribute 
-// Automatically focusing on a control can cause the page to scroll on load 
-// The focus can also cause dynamic keyboards to display on some touch devices 
-// While a screen reader will announce the label of the form control receiving 
-// focus, the screen reader will not announce anything before the label, and the 
-// sighted user on a small device will equally miss the context created by the 
-// preceding content. 
-    func(e *METERElement) AUTOFOCUS() *METERElement{
-            e.AUTOFOCUSSet(true)
-            return e
-        }
-
-        func(e *METERElement) IfAUTOFOCUS(condition bool) *METERElement {
-            if condition {
-                e.AUTOFOCUSSet(true)
-            }
-            return e
-        }
-
-        // Set the attribute AUTOFOCUS to the value b explicitly.
-        func(e *METERElement) AUTOFOCUSSet(b bool) *METERElement{
-            if e.BoolAttributes == nil {
-                e.BoolAttributes = treemap.New[string,bool]()
-            }
-            e.BoolAttributes.Set("autofocus", b)
-            return e
-        }
-
-        func (e *METERElement) IfSetAUTOFOCUS(condition bool, b bool) *METERElement {
-            if condition {
-                e.AUTOFOCUSSet(b)
-            }
-            return e
-        }
-
-        // Remove the attribute AUTOFOCUS from the element.
-        func(e *METERElement) AUTOFOCUSRemove(b bool) *METERElement{
-            if e.BoolAttributes == nil {
-                return e
-            }
-            e.BoolAttributes.Del("autofocus")
-            return e
-        }
-
-    
-
-    // The class global attribute is a space-separated list of the case-sensitive 
-// classes of the element 
-// Classes allow CSS and JavaScript to select and access specific elements via the 
-// class selectors or functions like the DOM method 
-// document.getElementsByClassName. 
-    func(e *METERElement) CLASS(s ...string) *METERElement{
-            if e.DelimitedStrings == nil {
-                e.DelimitedStrings = treemap.New[string,*DelimitedBuilder[string]]()
-            }
-            ds, ok := e.DelimitedStrings.Get("class")
-            if !ok {
-                ds = NewDelimitedBuilder[string](" ")
-                e.DelimitedStrings.Set("class", ds)
-            }
-            ds.Add(s...)
-            return e
-        }
-
-        func(e *METERElement) IfCLASS(condition bool, s ...string) *METERElement{
-            if condition {
-                e.CLASS(s...)
-            }
-            return e
-        }
-
-        // Remove the attribute CLASS from the element.
-        func(e *METERElement) CLASSRemove(s ...string) *METERElement{
-            if e.DelimitedStrings == nil {
-                return e
-            }
-            ds, ok := e.DelimitedStrings.Get("class")
-            if !ok {
-                return e
-            }
-            ds.Remove(s ...)
-            return e
-        }
-
-    
-
-    // The contenteditable global attribute is an enumerated attribute indicating if 
-// the element should be editable by the user 
-// If so, the browser modifies its widget to allow editing. 
-    func(e *METERElement) CONTENTEDITABLE(c MeterContenteditableChoice) *METERElement{
-            if e.StringAttributes == nil {
-                e.StringAttributes = treemap.New[string,string]()
-            }
-            e.StringAttributes.Set("contenteditable", string(c))
-            return e
-        }
-
-        type MeterContenteditableChoice string
-        const(
-        // The element is editable. 
-            MeterContenteditable_empty MeterContenteditableChoice = ""
-        // The element is editable. 
-            MeterContenteditable_true MeterContenteditableChoice = "true"
-        // The element is not editable. 
-            MeterContenteditable_false MeterContenteditableChoice = "false"
-        // which indicates that the element's raw text is editable, but rich text 
-// formatting is disabled. 
-            MeterContenteditable_plaintext_only MeterContenteditableChoice = "plaintext-only"
-        )
-
-        // Remove the attribute CONTENTEDITABLE from the element.
-        func(e *METERElement) CONTENTEDITABLERemove(c MeterContenteditableChoice) *METERElement{
-            if e.StringAttributes == nil {
-                return e
-            }
-            e.StringAttributes.Del("contenteditable")
-            return e
-        }
-        
-
-    // The dir global attribute is an enumerated attribute that indicates the 
-// directionality of the element's text 
-// Note: This attribute is mandatory for the <bdo> element where it has a 
-// different semantic meaning 
-// This attribute is not inherited by the <bdi> element 
-// If not set, its value is auto 
-// This attribute can be overridden by the CSS properties direction and 
-// unicode-bidi, if a CSS page is active and the element supports these properties 
-// As the directionality of the text is semantically related to its content and 
-// not to its presentation, it is recommended that web developers use this 
-// attribute instead of the related CSS properties when possible 
-// That way, the text will display correctly even on a browser that doesn't 
-// support CSS or has the CSS deactivated 
-// The auto value should be used for data with an unknown directionality, like 
-// data coming from user input, eventually stored in a database. 
-    func(e *METERElement) DIR(c MeterDirChoice) *METERElement{
-            if e.StringAttributes == nil {
-                e.StringAttributes = treemap.New[string,string]()
-            }
-            e.StringAttributes.Set("dir", string(c))
-            return e
-        }
-
-        type MeterDirChoice string
-        const(
-        // which means left to right and is to be used for languages that are written from 
-// the left to the right (like English); 
-            MeterDir_ltr MeterDirChoice = "ltr"
-        // which means right to left and is to be used for languages that are written from 
-// the right to the left (like Arabic); 
-            MeterDir_rtl MeterDirChoice = "rtl"
-        // which lets the user agent decide 
-// It uses a basic algorithm as it parses the characters inside the element until 
-// it finds a character with a strong directionality, then it applies that 
-// directionality to the whole element. 
-            MeterDir_auto MeterDirChoice = "auto"
-        )
-
-        // Remove the attribute DIR from the element.
-        func(e *METERElement) DIRRemove(c MeterDirChoice) *METERElement{
-            if e.StringAttributes == nil {
-                return e
-            }
-            e.StringAttributes.Del("dir")
-            return e
-        }
-        
-
-    // The draggable global attribute is an enumerated attribute that indicates 
-// whether the element can be dragged, either with native browser behavior or the 
-// HTML Drag and Drop API. 
-    func(e *METERElement) DRAGGABLE(c MeterDraggableChoice) *METERElement{
-            if e.StringAttributes == nil {
-                e.StringAttributes = treemap.New[string,string]()
-            }
-            e.StringAttributes.Set("draggable", string(c))
-            return e
-        }
-
-        type MeterDraggableChoice string
-        const(
-        // The element is draggable. 
-            MeterDraggable_true MeterDraggableChoice = "true"
-        // The element is not draggable. 
-            MeterDraggable_false MeterDraggableChoice = "false"
-        // drag behavior is the default browser behavior: only text selections, images, 
-// and links can be dragged 
-// For other elements, the event ondragstart must be set for drag and drop to work 
-            MeterDraggable_empty MeterDraggableChoice = ""
-        // drag behavior is the default browser behavior: only text selections, images, 
-// and links can be dragged 
-// For other elements, the event ondragstart must be set for drag and drop to work 
-            MeterDraggable_auto MeterDraggableChoice = "auto"
-        )
-
-        // Remove the attribute DRAGGABLE from the element.
-        func(e *METERElement) DRAGGABLERemove(c MeterDraggableChoice) *METERElement{
-            if e.StringAttributes == nil {
-                return e
-            }
-            e.StringAttributes.Del("draggable")
-            return e
-        }
-        
-
-    // The enterkeyhint global attribute is an enumerated attribute defining what 
-// action label (or icon) to present for the enter key on virtual keyboards. 
-    func(e *METERElement) ENTERKEYHINT(c MeterEnterkeyhintChoice) *METERElement{
-            if e.StringAttributes == nil {
-                e.StringAttributes = treemap.New[string,string]()
-            }
-            e.StringAttributes.Set("enterkeyhint", string(c))
-            return e
-        }
-
-        type MeterEnterkeyhintChoice string
-        const(
-        // Typically inserting a new line. 
-            MeterEnterkeyhint_enter MeterEnterkeyhintChoice = "enter"
-        // Typically meaning there is nothing more to input and the input method editor 
-// (IME) will be closed. 
-            MeterEnterkeyhint_done MeterEnterkeyhintChoice = "done"
-        // Typically meaning to take the user to the target of the text they typed. 
-            MeterEnterkeyhint_go MeterEnterkeyhintChoice = "go"
-        // Typically meaning to take the user to the next field that will accept text. 
-            MeterEnterkeyhint_next MeterEnterkeyhintChoice = "next"
-        // Typically meaning to take the user to the previous field that will accept text. 
-            MeterEnterkeyhint_previous MeterEnterkeyhintChoice = "previous"
-        // Typically taking the user to the results of searching for the text they have 
-// typed. 
-            MeterEnterkeyhint_search MeterEnterkeyhintChoice = "search"
-        // Typically delivering the text to its target. 
-            MeterEnterkeyhint_send MeterEnterkeyhintChoice = "send"
-        )
-
-        // Remove the attribute ENTERKEYHINT from the element.
-        func(e *METERElement) ENTERKEYHINTRemove(c MeterEnterkeyhintChoice) *METERElement{
-            if e.StringAttributes == nil {
-                return e
-            }
-            e.StringAttributes.Del("enterkeyhint")
-            return e
-        }
-        
-
-    // The exportparts global attribute allows you to select and style elements 
-// existing in nested shadow trees, by exporting their part names 
-// The shadow tree is an isolated structure where identifiers, classes, and styles 
-// cannot be reached by selectors or queries belonging to a regular DOM 
-// To apply a style to an element living in a shadow tree, by CSS rule created 
-// outside of it, part global attribute has to be used 
-// It has to be assigned to an element present in Shadow Tree, and its value 
-// should be some identifier 
-// Rules present outside of the shadow tree, must use the ::part pseudo-element, 
-// containing the same identifier as the argument 
-// The global attribute part makes the element visible on just a single level of 
-// depth 
-// When the shadow tree is nested, parts will be visible only to the parent of the 
-// shadow tree but not to its ancestor 
-// Exporting parts further down is exactly what exportparts attribute is for 
-// Attribute exportparts must be placed on a shadow Host, which is the element to 
-// which the shadow tree is attached 
-// The value of the attribute should be a comma-separated list of part names 
-// present in the shadow tree and which should be made available via a DOM outside 
-// of the current structure. 
-    func(e *METERElement) EXPORTPARTS(s ...string) *METERElement{
-            if e.DelimitedStrings == nil {
-                e.DelimitedStrings = treemap.New[string,*DelimitedBuilder[string]]()
-            }
-            ds, ok := e.DelimitedStrings.Get("exportparts")
-            if !ok {
-                ds = NewDelimitedBuilder[string](",")
-                e.DelimitedStrings.Set("exportparts", ds)
-            }
-            ds.Add(s...)
-            return e
-        }
-
-        func(e *METERElement) IfEXPORTPARTS(condition bool, s ...string) *METERElement{
-            if condition {
-                e.EXPORTPARTS(s...)
-            }
-            return e
-        }
-
-        // Remove the attribute EXPORTPARTS from the element.
-        func(e *METERElement) EXPORTPARTSRemove(s ...string) *METERElement{
-            if e.DelimitedStrings == nil {
-                return e
-            }
-            ds, ok := e.DelimitedStrings.Get("exportparts")
-            if !ok {
-                return e
-            }
-            ds.Remove(s ...)
-            return e
-        }
-
-    
-
-    // The hidden global attribute is a Boolean attribute indicating that the element 
-// is not yet, or is no longer, relevant 
-// For example, it can be used to hide elements of the page that can't be used 
-// until the login process has been completed 
-// Note that browsers typically implement hidden until found using 
-// content-visibility: hidden 
-// This means that unlike elements in the hidden state, elements in the hidden 
-// until found state will have generated boxes, meaning that: the element will 
-// participate in page layout margin, borders, padding, and background for the 
-// element will be rendered 
-// Also, the element needs to be affected by layout containment in order to be 
-// revealed 
-// This means that if the element in the hidden until found state has a display 
-// value of none, contents, or inline, then the element will not be revealed by 
-// find in page or fragment navigation. 
-    func(e *METERElement) HIDDEN(c MeterHiddenChoice) *METERElement{
-            if e.StringAttributes == nil {
-                e.StringAttributes = treemap.New[string,string]()
-            }
-            e.StringAttributes.Set("hidden", string(c))
-            return e
-        }
-
-        type MeterHiddenChoice string
-        const(
-        // set the element to the hidden state 
-// Additionally, invalid values set the element to the hidden state. 
-            MeterHidden_empty MeterHiddenChoice = ""
-        // set the element to the hidden state 
-// Additionally, invalid values set the element to the hidden state. 
-            MeterHidden_hidden MeterHiddenChoice = "hidden"
-        // the element is hidden but its content will be accessible to the browser's "find 
-// in page" feature or to fragment navigation 
-// When these features cause a scroll to an element in a hidden until found 
-// subtree, the browser will fire a beforematch event on the hidden element remove 
-// the hidden attribute from the element scroll to the element 
-// 			 
-            MeterHidden_until_found MeterHiddenChoice = "until-found"
-        )
-
-        // Remove the attribute HIDDEN from the element.
-        func(e *METERElement) HIDDENRemove(c MeterHiddenChoice) *METERElement{
-            if e.StringAttributes == nil {
-                return e
-            }
-            e.StringAttributes.Del("hidden")
-            return e
-        }
-        
-
-    // The id global attribute defines a unique identifier (ID) which must be unique 
-// in the whole document 
-// Its purpose is to identify the element when linking (using a fragment 
-// identifier), scripting, or styling (with CSS). 
-    func(e *METERElement) ID(s string) *METERElement{
-            if e.StringAttributes == nil {
-                e.StringAttributes = treemap.New[string,string]()
-            }
-            e.StringAttributes.Set("id", s)
-            return e
-        }
-
-        func(e *METERElement) IfID(condition bool, s string) *METERElement{
-            if condition {
-                e.ID(s)
-            }
-            return e
-        }
-
-        // Remove the attribute ID from the element.
-        func(e *METERElement) IDRemove(s string) *METERElement{
-            if e.StringAttributes == nil {
-                return e
-            }
-            e.StringAttributes.Del("id")
-            return e
-        }
-    
-
-    // The inert global attribute is a Boolean attribute indicating that the browser 
-// will ignore the element 
-// With the inert attribute, all of the element's flat tree descendants (such as 
-// modal <dialog>s) that don't otherwise escape inertness are ignored 
-// The inert attribute also makes the browser ignore input events sent by the 
-// user, including focus-related events and events from assistive technologies 
-// Specifically, inert does the following: Prevents the click event from being 
-// fired when the user clicks on the element 
-// Prevents the focus event from being raised by preventing the element from 
-// gaining focus 
-// Hides the element and its content from assistive technologies by excluding them 
-// from the accessibility tree. 
-    func(e *METERElement) INERT() *METERElement{
-            e.INERTSet(true)
-            return e
-        }
-
-        func(e *METERElement) IfINERT(condition bool) *METERElement {
-            if condition {
-                e.INERTSet(true)
-            }
-            return e
-        }
-
-        // Set the attribute INERT to the value b explicitly.
-        func(e *METERElement) INERTSet(b bool) *METERElement{
-            if e.BoolAttributes == nil {
-                e.BoolAttributes = treemap.New[string,bool]()
-            }
-            e.BoolAttributes.Set("inert", b)
-            return e
-        }
-
-        func (e *METERElement) IfSetINERT(condition bool, b bool) *METERElement {
-            if condition {
-                e.INERTSet(b)
-            }
-            return e
-        }
-
-        // Remove the attribute INERT from the element.
-        func(e *METERElement) INERTRemove(b bool) *METERElement{
-            if e.BoolAttributes == nil {
-                return e
-            }
-            e.BoolAttributes.Del("inert")
-            return e
-        }
-
-    
-
-    // The inputmode global attribute is an enumerated attribute that hints at the 
-// type of data that might be entered by the user while editing the element or its 
-// contents 
-// This allows a browser to display an appropriate virtual keyboard 
-// It is used primarily on <input> elements, but is usable on any element in 
-// contenteditable mode 
-// It's important to understand that the inputmode attribute doesn't cause any 
-// validity requirements to be enforced on input 
-// To require that input conforms to a particular data type, choose an appropriate 
-// <input> element type 
-// For specific guidance on choosing <input> types, see the Values section. 
-    func(e *METERElement) INPUTMODE(c MeterInputmodeChoice) *METERElement{
-            if e.StringAttributes == nil {
-                e.StringAttributes = treemap.New[string,string]()
-            }
-            e.StringAttributes.Set("inputmode", string(c))
-            return e
-        }
-
-        type MeterInputmodeChoice string
-        const(
-        // No virtual keyboard 
-// For when the page implements its own keyboard input control. 
-            MeterInputmode_none MeterInputmodeChoice = "none"
-        // Standard input keyboard for the user's current locale. 
-            MeterInputmode_empty MeterInputmodeChoice = ""
-        // Standard input keyboard for the user's current locale. 
-            MeterInputmode_text MeterInputmodeChoice = "text"
-        // Fractional numeric input keyboard containing the digits and decimal separator 
-// for the user's locale (typically  
-// or ,) 
-// Devices may or may not show a minus key (-). 
-            MeterInputmode_decimal MeterInputmodeChoice = "decimal"
-        // Numeric input keyboard, but only requires the digits 0–9 
-// Devices may or may not show a minus key. 
-            MeterInputmode_numeric MeterInputmodeChoice = "numeric"
-        // A telephone keypad input, including the digits 0–9, the asterisk (*), and the 
-// pound (#) key 
-// Inputs that *require* a telephone number should typically use <input 
-// type="tel"> instead. 
-            MeterInputmode_tel MeterInputmodeChoice = "tel"
-        // A virtual keyboard optimized for search input 
-// For instance, the return/submit key may be labeled "Search", along with 
-// possible other optimizations 
-// Inputs that require a search query should typically use <input type="search"> 
-// instead. 
-            MeterInputmode_search MeterInputmodeChoice = "search"
-        // A virtual keyboard optimized for entering email addresses 
-// Typically includes the @character as well as other optimizations 
-// Inputs that require email addresses should typically use <input type="email"> 
-// instead. 
-            MeterInputmode_email MeterInputmodeChoice = "email"
-        // A keypad optimized for entering URLs 
-// This may have the / key more prominent, for example 
-// Enhanced features could include history access and so on 
-// Inputs that require a URL should typically use <input type="url"> instead. 
-            MeterInputmode_url MeterInputmodeChoice = "url"
-        )
-
-        // Remove the attribute INPUTMODE from the element.
-        func(e *METERElement) INPUTMODERemove(c MeterInputmodeChoice) *METERElement{
-            if e.StringAttributes == nil {
-                return e
-            }
-            e.StringAttributes.Del("inputmode")
-            return e
-        }
-        
-
-    // The is global attribute allows you to specify that a standard HTML element 
-// should behave like a defined custom built-in element (see Using custom elements 
-// for more details) 
-// This attribute can only be used if the specified custom element name has been 
-// successfully defined in the current document, and extends the element type it 
-// is being applied to. 
-    func(e *METERElement) IS(s string) *METERElement{
-            if e.StringAttributes == nil {
-                e.StringAttributes = treemap.New[string,string]()
-            }
-            e.StringAttributes.Set("is", s)
-            return e
-        }
-
-        func(e *METERElement) IfIS(condition bool, s string) *METERElement{
-            if condition {
-                e.IS(s)
-            }
-            return e
-        }
-
-        // Remove the attribute IS from the element.
-        func(e *METERElement) ISRemove(s string) *METERElement{
-            if e.StringAttributes == nil {
-                return e
-            }
-            e.StringAttributes.Del("is")
-            return e
-        }
-    
-
-    // The itemid global attribute provides microdata in the form of a unique, global 
-// identifier of an item. 
-//  
-// 		An itemid attribute can only be specified for an element that has both 
-// itemscope and itemtype attributes 
-// Also, itemid can only be specified on elements that possess an itemscope 
-// attribute whose corresponding itemtype refers to or defines a vocabulary that 
-// supports global identifiers 
-// The exact meaning of an itemtype's global identifier is provided by the 
-// definition of that identifier within the specified vocabulary 
-// The vocabulary defines whether several items with the same global identifier 
-// can coexist and, if so, how items with the same identifier are handled. 
-    func(e *METERElement) ITEMID(s string) *METERElement{
-            if e.StringAttributes == nil {
-                e.StringAttributes = treemap.New[string,string]()
-            }
-            e.StringAttributes.Set("itemid", s)
-            return e
-        }
-
-        func(e *METERElement) IfITEMID(condition bool, s string) *METERElement{
-            if condition {
-                e.ITEMID(s)
-            }
-            return e
-        }
-
-        // Remove the attribute ITEMID from the element.
-        func(e *METERElement) ITEMIDRemove(s string) *METERElement{
-            if e.StringAttributes == nil {
-                return e
-            }
-            e.StringAttributes.Del("itemid")
-            return e
-        }
-    
-
-    // The itemprop global attribute is used to add properties to an item 
-// Every HTML element can have an itemprop attribute specified, and an itemprop 
-// consists of a name-value pair 
-// Each name-value pair is called a property, and a group of one or more 
-// properties forms an item 
-// Property values are either a string or a URL and can be associated with a very 
-// wide range of elements including <audio>, <embed>, <iframe>, <img>, <link>, 
-// <object>, <source>, <track>, and <video>. 
-    func(e *METERElement) ITEMPROP(s string) *METERElement{
-            if e.StringAttributes == nil {
-                e.StringAttributes = treemap.New[string,string]()
-            }
-            e.StringAttributes.Set("itemprop", s)
-            return e
-        }
-
-        func(e *METERElement) IfITEMPROP(condition bool, s string) *METERElement{
-            if condition {
-                e.ITEMPROP(s)
-            }
-            return e
-        }
-
-        // Remove the attribute ITEMPROP from the element.
-        func(e *METERElement) ITEMPROPRemove(s string) *METERElement{
-            if e.StringAttributes == nil {
-                return e
-            }
-            e.StringAttributes.Del("itemprop")
-            return e
-        }
-    
-
-    // Properties that are not descendants of an element with the itemscope attribute 
-// can be associated with an item using the global attribute itemref 
-// itemref provides a list of element IDs (not itemids) elsewhere in the document, 
-// with additional properties The itemref attribute can only be specified on 
-// elements that have an itemscope attribute specified. 
-    func(e *METERElement) ITEMREF(s string) *METERElement{
-            if e.StringAttributes == nil {
-                e.StringAttributes = treemap.New[string,string]()
-            }
-            e.StringAttributes.Set("itemref", s)
-            return e
-        }
-
-        func(e *METERElement) IfITEMREF(condition bool, s string) *METERElement{
-            if condition {
-                e.ITEMREF(s)
-            }
-            return e
-        }
-
-        // Remove the attribute ITEMREF from the element.
-        func(e *METERElement) ITEMREFRemove(s string) *METERElement{
-            if e.StringAttributes == nil {
-                return e
-            }
-            e.StringAttributes.Del("itemref")
-            return e
-        }
-    
-
-    // The itemscope global attribute is used to add an item to a microdata DOM tree 
-// Every HTML element can have an itemscope attribute specified, and an itemscope 
-// consists of a name-value pair 
-// Each name-value pair is called a property, and a group of one or more 
-// properties forms an item 
-// Property values are either a string or a URL and can be associated with a very 
-// wide range of elements including <audio>, <embed>, <iframe>, <img>, <link>, 
-// <object>, <source>, <track>, and <video>. 
-    func(e *METERElement) ITEMSCOPE() *METERElement{
-            e.ITEMSCOPESet(true)
-            return e
-        }
-
-        func(e *METERElement) IfITEMSCOPE(condition bool) *METERElement {
-            if condition {
-                e.ITEMSCOPESet(true)
-            }
-            return e
-        }
-
-        // Set the attribute ITEMSCOPE to the value b explicitly.
-        func(e *METERElement) ITEMSCOPESet(b bool) *METERElement{
-            if e.BoolAttributes == nil {
-                e.BoolAttributes = treemap.New[string,bool]()
-            }
-            e.BoolAttributes.Set("itemscope", b)
-            return e
-        }
-
-        func (e *METERElement) IfSetITEMSCOPE(condition bool, b bool) *METERElement {
-            if condition {
-                e.ITEMSCOPESet(b)
-            }
-            return e
-        }
-
-        // Remove the attribute ITEMSCOPE from the element.
-        func(e *METERElement) ITEMSCOPERemove(b bool) *METERElement{
-            if e.BoolAttributes == nil {
-                return e
-            }
-            e.BoolAttributes.Del("itemscope")
-            return e
-        }
-
-    
-
-    // The itemtype global attribute is used to add types to an item 
-// Every HTML element can have an itemtype attribute specified, and an itemtype 
-// consists of a name-value pair 
-// Each name-value pair is called a property, and a group of one or more 
-// properties forms an item 
-// Property values are either a string or a URL and can be associated with a very 
-// wide range of elements including <audio>, <embed>, <iframe>, <img>, <link>, 
-// <object>, <source>, <track>, and <video>. 
-    func(e *METERElement) ITEMTYPE(s string) *METERElement{
-            if e.StringAttributes == nil {
-                e.StringAttributes = treemap.New[string,string]()
-            }
-            e.StringAttributes.Set("itemtype", s)
-            return e
-        }
-
-        func(e *METERElement) IfITEMTYPE(condition bool, s string) *METERElement{
-            if condition {
-                e.ITEMTYPE(s)
-            }
-            return e
-        }
-
-        // Remove the attribute ITEMTYPE from the element.
-        func(e *METERElement) ITEMTYPERemove(s string) *METERElement{
-            if e.StringAttributes == nil {
-                return e
-            }
-            e.StringAttributes.Del("itemtype")
-            return e
-        }
-    
-
-    // The lang global attribute helps define the language of an element: the language 
-// that non-editable elements are written in or the language that editable 
-// elements should be written in by the user 
-// The tag contains one single entry value in the format defines in the Tags for 
-// Identifying Languages (BCP47) IETF document 
-// xml:lang has priority over it. 
-    func(e *METERElement) LANG(s string) *METERElement{
-            if e.StringAttributes == nil {
-                e.StringAttributes = treemap.New[string,string]()
-            }
-            e.StringAttributes.Set("lang", s)
-            return e
-        }
-
-        func(e *METERElement) IfLANG(condition bool, s string) *METERElement{
-            if condition {
-                e.LANG(s)
-            }
-            return e
-        }
-
-        // Remove the attribute LANG from the element.
-        func(e *METERElement) LANGRemove(s string) *METERElement{
-            if e.StringAttributes == nil {
-                return e
-            }
-            e.StringAttributes.Del("lang")
-            return e
-        }
-    
-
-    // The nonce global attribute is a unique identifier used to declare inline 
-// scripts and style elements to be used in a specific document 
-// It is a cryptographic nonce (number used once) that is used by Content Security 
-// Policy to determine whether or not a given inline script is allowed to execute. 
-    func(e *METERElement) NONCE(s string) *METERElement{
-            if e.StringAttributes == nil {
-                e.StringAttributes = treemap.New[string,string]()
-            }
-            e.StringAttributes.Set("nonce", s)
-            return e
-        }
-
-        func(e *METERElement) IfNONCE(condition bool, s string) *METERElement{
-            if condition {
-                e.NONCE(s)
-            }
-            return e
-        }
-
-        // Remove the attribute NONCE from the element.
-        func(e *METERElement) NONCERemove(s string) *METERElement{
-            if e.StringAttributes == nil {
-                return e
-            }
-            e.StringAttributes.Del("nonce")
-            return e
-        }
-    
-
-    // The part global attribute contains a space-separated list of the part names of 
-// the element 
-// Part names allows CSS to select and style specific elements in a shadow tree 
-// via the ::part pseudo-element. 
-    func(e *METERElement) PART(s ...string) *METERElement{
-            if e.DelimitedStrings == nil {
-                e.DelimitedStrings = treemap.New[string,*DelimitedBuilder[string]]()
-            }
-            ds, ok := e.DelimitedStrings.Get("part")
-            if !ok {
-                ds = NewDelimitedBuilder[string](" ")
-                e.DelimitedStrings.Set("part", ds)
-            }
-            ds.Add(s...)
-            return e
-        }
-
-        func(e *METERElement) IfPART(condition bool, s ...string) *METERElement{
-            if condition {
-                e.PART(s...)
-            }
-            return e
-        }
-
-        // Remove the attribute PART from the element.
-        func(e *METERElement) PARTRemove(s ...string) *METERElement{
-            if e.DelimitedStrings == nil {
-                return e
-            }
-            ds, ok := e.DelimitedStrings.Get("part")
-            if !ok {
-                return e
-            }
-            ds.Remove(s ...)
-            return e
-        }
-
-    
-
-    // The popover global attribute is used to designate an element as a popover 
-// element 
-// Popover elements are hidden via display: none until opened via an 
-// invoking/control element (i.e 
-// a <button> or <input type="button"> with a popovertarget attribute) or a 
-// HTMLElement.showPopover() call 
-// When open, popover elements will appear above all other elements in the top 
-// layer, and won't be influenced by parent elements' position or overflow 
-// styling. 
-    func(e *METERElement) POPVER(c MeterPopverChoice) *METERElement{
-            if e.StringAttributes == nil {
-                e.StringAttributes = treemap.New[string,string]()
-            }
-            e.StringAttributes.Set("popver", string(c))
-            return e
-        }
-
-        type MeterPopverChoice string
-        const(
-        // Popovers that have the auto state can be "light dismissed" by selecting outside 
-// the popover area, and generally only allow one popover to be displayed 
-// on-screen at a time. 
-            MeterPopver_auto MeterPopverChoice = "auto"
-        // Popovers that have the auto state can be "light dismissed" by selecting outside 
-// the popover area, and generally only allow one popover to be displayed 
-// on-screen at a time. 
-            MeterPopver_empty MeterPopverChoice = ""
-        // manual popovers must always be explicitly hidden, but allow for use cases such 
-// as nested popovers in menus. 
-            MeterPopver_manual MeterPopverChoice = "manual"
-        )
-
-        // Remove the attribute POPVER from the element.
-        func(e *METERElement) POPVERRemove(c MeterPopverChoice) *METERElement{
-            if e.StringAttributes == nil {
-                return e
-            }
-            e.StringAttributes.Del("popver")
-            return e
-        }
-        
-
-    // The slot global attribute assigns a slot in a shadow DOM shadow tree to an 
-// element: An element with a slot attribute is assigned to the slot created by 
-// the <slot> element whose name attribute's value matches that slot attribute's 
-// value. 
-    func(e *METERElement) SLOT(s string) *METERElement{
-            if e.StringAttributes == nil {
-                e.StringAttributes = treemap.New[string,string]()
-            }
-            e.StringAttributes.Set("slot", s)
-            return e
-        }
-
-        func(e *METERElement) IfSLOT(condition bool, s string) *METERElement{
-            if condition {
-                e.SLOT(s)
-            }
-            return e
-        }
-
-        // Remove the attribute SLOT from the element.
-        func(e *METERElement) SLOTRemove(s string) *METERElement{
-            if e.StringAttributes == nil {
-                return e
-            }
-            e.StringAttributes.Del("slot")
-            return e
-        }
-    
-
-    // The spellcheck global attribute is an enumerated attribute that defines whether 
-// the element may be checked for spelling errors 
-// If this attribute is not set, its default value is element-type and 
-// browser-defined 
-// This default value may also be inherited, which means that the element content 
-// will be checked for spelling errors only if its nearest ancestor has a 
-// spellcheck state of true 
-// Security and privacy concerns Using spellchecking can have consequences for 
-// users' security and privacy 
-// The specification does not regulate how spellchecking is done and the content 
-// of the element may be sent to a third party for spellchecking results (see 
-// enhanced spellchecking and "spell-jacking") 
-// You should consider setting spellcheck to false for elements that can contain 
-// sensitive information. 
-    func(e *METERElement) SPELLCHECK(c MeterSpellcheckChoice) *METERElement{
-            if e.StringAttributes == nil {
-                e.StringAttributes = treemap.New[string,string]()
-            }
-            e.StringAttributes.Set("spellcheck", string(c))
-            return e
-        }
-
-        type MeterSpellcheckChoice string
-        const(
-        // The element will be checked for spelling errors. 
-            MeterSpellcheck_empty MeterSpellcheckChoice = ""
-        // The element will be checked for spelling errors. 
-            MeterSpellcheck_true MeterSpellcheckChoice = "true"
-        // The element will not be checked for spelling errors. 
-            MeterSpellcheck_false MeterSpellcheckChoice = "false"
-        )
-
-        // Remove the attribute SPELLCHECK from the element.
-        func(e *METERElement) SPELLCHECKRemove(c MeterSpellcheckChoice) *METERElement{
-            if e.StringAttributes == nil {
-                return e
-            }
-            e.StringAttributes.Del("spellcheck")
-            return e
-        }
-        
-
-    // The style global attribute is used to add styles to an element, such as color, 
-// font, size, and more 
-// Styles are written in CSS. 
-    func (e *METERElement) STYLEF(k string, format string, args ...any) *METERElement {
-            return e.STYLE(k, fmt.Sprintf(format, args...))
-        }
-
-        func (e *METERElement) IfSTYLE(condition bool, k string, v string) *METERElement {
-            if condition {
-                e.STYLE(k, v)
-            }
-            return e
-        }
-
-        func (e *METERElement) STYLE(k string, v string) *METERElement {
-            if e.KVStrings == nil {
-                e.KVStrings = treemap.New[string,*KVBuilder]()
-            }
-            kv, ok := e.KVStrings.Get("style")
-            if !ok {
-                kv = NewKVBuilder(":", ";")
-                e.KVStrings.Set("style", kv)
-            }
-            kv.Add(k, v)
-            return e
-        }
-
-        func (e *METERElement) IfSTYLEF(condition bool, k string, format string, args ...any) *METERElement {
-            if condition {
-                e.STYLE(k, fmt.Sprintf(format, args...))
-            }
-            return e
-        }
-
-        // Add the attributes in the map to the element.
-        func (e *METERElement) STYLEMap(m map[string]string) *METERElement {
-            if e.KVStrings == nil {
-                e.KVStrings = treemap.New[string,*KVBuilder]()
-            }
-            kv, ok := e.KVStrings.Get("style")
-            if !ok {
-                kv = NewKVBuilder(":", ";")
-                e.KVStrings.Set("style", kv)
-            }
-            for k, v := range m {
-                kv.Add(k, v)
-            }
-            return e
-        }
-
-        // Add pairs of attributes to the element.
-        func (e *METERElement) STYLEPairs(pairs ...string) *METERElement {
-            if len(pairs) % 2 != 0 {
-                panic("Must have an even number of pairs")
-            }
-            if e.KVStrings == nil {
-                e.KVStrings = treemap.New[string,*KVBuilder]()
-            }
-            kv, ok := e.KVStrings.Get("style")
-            if !ok {
-                kv = NewKVBuilder(":", ";")
-                e.KVStrings.Set("style", kv)
-            }
-
-            for i := 0; i < len(pairs); i += 2 {
-                kv.Add(pairs[i], pairs[i+1])
-            }
-
-            return e
-        }
-
-        func (e *METERElement) IfSTYLEPairs(condition bool, pairs ...string) *METERElement {
-            if condition {
-                e.STYLEPairs(pairs...)
-            }
-            return e
-        }
-
-        // Remove the attribute STYLE from the element.
-        func (e *METERElement) STYLERemove(keys ...string) *METERElement {
-            if e.KVStrings == nil {
-                return e
-            }
-            kv, ok := e.KVStrings.Get("style")
-            if !ok {
-                return e
-            }
-            for _, k := range keys {
-                kv.Remove(k)
-            }
-            return e
-        }
-
-    
-
-    // The tabindex global attribute indicates if its element can be focused, and 
-// if/where it participates in sequential keyboard navigation (usually with the 
-// Tab key, hence the name) 
-// It accepts an integer as a value, with different results depending on the 
-// integer's value: a negative value (usually tabindex="-1") means that the 
-// element should be focusable, but should not be reachable via sequential 
-// keyboard navigation; a value of 0 (tabindex="0") means that the element should 
-// be focusable and reachable via sequential keyboard navigation, but its relative 
-// order is defined by the platform convention; a positive value means should be 
-// focusable and reachable via sequential keyboard navigation; its relative order 
-// is defined by the value of the attribute: the sequential follow the increasing 
-// number of the tabindex 
-// If several elements share the same tabindex, their relative order follows their 
-// relative position in the document. 
-    func(e *METERElement) TABINDEX(i int) *METERElement{
-            if e.IntAttributes == nil {
-                e.IntAttributes = treemap.New[string,int]()
-            }
-            e.IntAttributes.Set("tabindex", i)
-            return e
-        }
-
-        func (e *METERElement) IfTABINDEX(condition bool, i int) *METERElement {
-            if condition {
-                e.TABINDEX(i)
-            }
-            return e
-        }
-
-        // Remove the attribute TABINDEX from the element.
-        func(e *METERElement) TABINDEXRemove(i int) *METERElement{
-            if e.IntAttributes == nil {
-                return e
-            }
-            e.IntAttributes.Del("tabindex")
-            return e
-        }
-        
-
-    // The title global attribute contains text representing advisory information 
-// related to the element it belongs to 
-// Such information can typically, but not necessarily, be presented to the user 
-// as a tooltip 
-// The main use of the title attribute is to label <iframe> elements for assistive 
-// technology 
-// The title attribute may also be used to label controls in data tables 
-// The title attribute, when added to <link rel="stylesheet">, creates an 
-// alternate stylesheet 
-// When defining an alternative style sheet with <link rel="alternate"> the 
-// attribute is required and must be set to a non-empty string 
-// If included on the <abbr> opening tag, the title must be a full expansion of 
-// the abbreviation or acronym 
-// Instead of using title, when possible, provide an expansion of the abbreviation 
-// or acronym in plain text on first use, using the <abbr> to mark up the 
-// abbreviation 
-// This enables all users know what name or term the abbreviation or acronym 
-// shortens while providing a hint to user agents on how to announce the content 
-// While title can be used to provide a programmatically associated label for an 
-// <input> element, this is not good practice 
-// Use a <label> instead. 
-    func(e *METERElement) TITLE(s string) *METERElement{
-            if e.StringAttributes == nil {
-                e.StringAttributes = treemap.New[string,string]()
-            }
-            e.StringAttributes.Set("title", s)
-            return e
-        }
-
-        func(e *METERElement) IfTITLE(condition bool, s string) *METERElement{
-            if condition {
-                e.TITLE(s)
-            }
-            return e
-        }
-
-        // Remove the attribute TITLE from the element.
-        func(e *METERElement) TITLERemove(s string) *METERElement{
-            if e.StringAttributes == nil {
-                return e
-            }
-            e.StringAttributes.Del("title")
-            return e
-        }
-    
-
-    // The translate global attribute is an enumerated attribute that is used to 
-// specify whether an element's attribute values and the values of its Text node 
-// children are to be translated when the page is localized, or whether to leave 
-// them unchanged. 
-    func(e *METERElement) TRANSLATE(c MeterTranslateChoice) *METERElement{
-            if e.StringAttributes == nil {
-                e.StringAttributes = treemap.New[string,string]()
-            }
-            e.StringAttributes.Set("translate", string(c))
-            return e
-        }
-
-        type MeterTranslateChoice string
-        const(
-        // indicates that the element should be translated when the page is localized. 
-            MeterTranslate_empty MeterTranslateChoice = ""
-        // indicates that the element should be translated when the page is localized. 
-            MeterTranslate_yes MeterTranslateChoice = "yes"
-        // indicates that the element must not be translated when the page is localized. 
-            MeterTranslate_no MeterTranslateChoice = "no"
-        )
-
-        // Remove the attribute TRANSLATE from the element.
-        func(e *METERElement) TRANSLATERemove(c MeterTranslateChoice) *METERElement{
-            if e.StringAttributes == nil {
-                return e
-            }
-            e.StringAttributes.Del("translate")
-            return e
-        }
-        
-
-    // Merges the store with the given object 
-    
-        func(e *METERElement) DATASTAR_MERGE_STORE(v any) *METERElement{
-                if e.CustomDataAttributes == nil {
-                    e.CustomDataAttributes = treemap.New[string,string]()
-                }
-                b, err := json.Marshal(v)
-                if err != nil {
-                    panic(err)
-                }
-                e.CustomDataAttributes.Set("data-merge-store", string(b))
-                return e
-            }
-
-        
-
-    // Sets the reference of the element 
-    
-        func(e *METERElement) DATASTAR_REF(expression string) *METERElement{
-                if e.StringAttributes == nil {
-                    e.StringAttributes = treemap.New[string,string]()
-                }
-                
-                key := "data-ref"
-                
-                e.StringAttributes.Set(key, expression)
-                return e
-            }
-
-            func(e *METERElement) IfDATASTAR_REF(condition bool, expression string) *METERElement{
-                if condition {
-                    e.DATASTAR_REF( expression, )
-                }
-                return e
-            }
-
-            // Remove the attribute DATASTAR_REF from the element.
-            func(e *METERElement) DATASTAR_REFRemove() *METERElement{
-                if e.StringAttributes == nil {
-                    return e
-                }
-                e.StringAttributes.Del("data-ref")
-                return e
-            }
-
-        
-
-    // Sets the value of the element 
-    
-        func(e *METERElement) DATASTAR_BIND(key string, expression string) *METERElement{
-                if e.StringAttributes == nil {
-                    e.StringAttributes = treemap.New[string,string]()
-                }
-                
-                key = fmt.Sprintf("data-bind-%s", key)
-                
-                e.StringAttributes.Set(key, expression)
-                return e
-            }
-
-            func(e *METERElement) IfDATASTAR_BIND(condition bool, key string, expression string) *METERElement{
-                if condition {
-                    e.DATASTAR_BIND(key,  expression, )
-                }
-                return e
-            }
-
-            // Remove the attribute DATASTAR_BIND from the element.
-            func(e *METERElement) DATASTAR_BINDRemove() *METERElement{
-                if e.StringAttributes == nil {
-                    return e
-                }
-                e.StringAttributes.Del("data-bind")
-                return e
-            }
-
-        
-
-    // Sets the value of the element 
-    
-        func(e *METERElement) DATASTAR_MODEL(expression string) *METERElement{
-                if e.StringAttributes == nil {
-                    e.StringAttributes = treemap.New[string,string]()
-                }
-                
-                key := "data-model"
-                
-                e.StringAttributes.Set(key, expression)
-                return e
-            }
-
-            func(e *METERElement) IfDATASTAR_MODEL(condition bool, expression string) *METERElement{
-                if condition {
-                    e.DATASTAR_MODEL( expression, )
-                }
-                return e
-            }
-
-            // Remove the attribute DATASTAR_MODEL from the element.
-            func(e *METERElement) DATASTAR_MODELRemove() *METERElement{
-                if e.StringAttributes == nil {
-                    return e
-                }
-                e.StringAttributes.Del("data-model")
-                return e
-            }
-
-        
-
-    // Sets the textContent of the element 
-    
-        func(e *METERElement) DATASTAR_TEXT(expression string) *METERElement{
-                if e.StringAttributes == nil {
-                    e.StringAttributes = treemap.New[string,string]()
-                }
-                
-                key := "data-text"
-                
-                e.StringAttributes.Set(key, expression)
-                return e
-            }
-
-            func(e *METERElement) IfDATASTAR_TEXT(condition bool, expression string) *METERElement{
-                if condition {
-                    e.DATASTAR_TEXT( expression, )
-                }
-                return e
-            }
-
-            // Remove the attribute DATASTAR_TEXT from the element.
-            func(e *METERElement) DATASTAR_TEXTRemove() *METERElement{
-                if e.StringAttributes == nil {
-                    return e
-                }
-                e.StringAttributes.Del("data-text")
-                return e
-            }
-
-        
-
-    // Sets the event handler of the element 
-    
-        type MeterDataOnMod customDataKeyModifier
-
-            
-            // Debounces the event handler 
-            func MeterDataOnModDebounce(
-                    d time.Duration,
-            ) MeterDataOnMod {
-                return func() string {return fmt.Sprintf("debounce_%dms", d.Milliseconds())
-                }
-            }
-            
-            // Throttles the event handler 
-            func MeterDataOnModThrottle(
-                    d time.Duration,
-            ) MeterDataOnMod {
-                return func() string {return fmt.Sprintf("throttle_%dms", d.Milliseconds())
-                }
-            }
-            
-        func(e *METERElement) DATASTAR_ON(key string, expression string, modifiers ...MeterDataOnMod) *METERElement{
-                if e.StringAttributes == nil {
-                    e.StringAttributes = treemap.New[string,string]()
-                }
-                
-                key = fmt.Sprintf("data-on-%s", key)
-                
-                customMods := lo.Map(modifiers, func(m MeterDataOnMod, i int) customDataKeyModifier  {
-                    return customDataKeyModifier(m)
-                })
-                key = customDataKey(key, customMods...)
-                e.StringAttributes.Set(key, expression)
-                return e
-            }
-
-            func(e *METERElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...MeterDataOnMod) *METERElement{
-                if condition {
-                    e.DATASTAR_ON(key,  expression,  modifiers...)
-                }
-                return e
-            }
-
-            // Remove the attribute DATASTAR_ON from the element.
-            func(e *METERElement) DATASTAR_ONRemove() *METERElement{
-                if e.StringAttributes == nil {
-                    return e
-                }
-                e.StringAttributes.Del("data-on")
-                return e
-            }
-
-        
-
-    // Sets the focus of the element 
-    
-        func(e *METERElement) DATASTAR_FOCUSSet(b bool) *METERElement{
-                key := "data-focus"
-                e.BoolAttributes.Set(key, b)
-                return e
-            }
-
-            func(e *METERElement) DATASTAR_FOCUS() *METERElement{
-                return e.DATASTAR_FOCUSSet(true)
-            }
-        
-
-    // Sets the header of for fetch requests 
-    
-        func(e *METERElement) DATASTAR_HEADER(key string, expression string) *METERElement{
-                if e.StringAttributes == nil {
-                    e.StringAttributes = treemap.New[string,string]()
-                }
-                
-                key = fmt.Sprintf("data-header-%s", key)
-                
-                e.StringAttributes.Set(key, expression)
-                return e
-            }
-
-            func(e *METERElement) IfDATASTAR_HEADER(condition bool, key string, expression string) *METERElement{
-                if condition {
-                    e.DATASTAR_HEADER(key,  expression, )
-                }
-                return e
-            }
-
-            // Remove the attribute DATASTAR_HEADER from the element.
-            func(e *METERElement) DATASTAR_HEADERRemove() *METERElement{
-                if e.StringAttributes == nil {
-                    return e
-                }
-                e.StringAttributes.Del("data-header")
-                return e
-            }
-
-        
-
-    // Sets the URL for fetch requests 
-    
-        func(e *METERElement) DATASTAR_FETCH_URL(expression string) *METERElement{
-                if e.StringAttributes == nil {
-                    e.StringAttributes = treemap.New[string,string]()
-                }
-                
-                key := "data-fetch-url"
-                
-                e.StringAttributes.Set(key, expression)
-                return e
-            }
-
-            func(e *METERElement) IfDATASTAR_FETCH_URL(condition bool, expression string) *METERElement{
-                if condition {
-                    e.DATASTAR_FETCH_URL( expression, )
-                }
-                return e
-            }
-
-            // Remove the attribute DATASTAR_FETCH_URL from the element.
-            func(e *METERElement) DATASTAR_FETCH_URLRemove() *METERElement{
-                if e.StringAttributes == nil {
-                    return e
-                }
-                e.StringAttributes.Del("data-fetch-url")
-                return e
-            }
-
-        
-
-    // Sets the indicator selector for fetch requests 
-    
-        func(e *METERElement) DATASTAR_FETCH_INDICATOR(expression string) *METERElement{
-                if e.StringAttributes == nil {
-                    e.StringAttributes = treemap.New[string,string]()
-                }
-                
-                key := "DatastarFetchIndicator"
-                
-                e.StringAttributes.Set(key, expression)
-                return e
-            }
-
-            func(e *METERElement) IfDATASTAR_FETCH_INDICATOR(condition bool, expression string) *METERElement{
-                if condition {
-                    e.DATASTAR_FETCH_INDICATOR( expression, )
-                }
-                return e
-            }
-
-            // Remove the attribute DATASTAR_FETCH_INDICATOR from the element.
-            func(e *METERElement) DATASTAR_FETCH_INDICATORRemove() *METERElement{
-                if e.StringAttributes == nil {
-                    return e
-                }
-                e.StringAttributes.Del("DatastarFetchIndicator")
-                return e
-            }
-
-        
-
-    // Sets the visibility of the element 
-    
-        func(e *METERElement) DATASTAR_SHOWSet(b bool) *METERElement{
-                key := "data-show"
-                e.BoolAttributes.Set(key, b)
-                return e
-            }
-
-            func(e *METERElement) DATASTAR_SHOW() *METERElement{
-                return e.DATASTAR_SHOWSet(true)
-            }
-        
-
-    // Triggers the callback when the element intersects the viewport 
-    
-        func(e *METERElement) DATASTAR_INTERSECTSSet(b bool) *METERElement{
-                key := "data-intersects"
-                e.BoolAttributes.Set(key, b)
-                return e
-            }
-
-            func(e *METERElement) DATASTAR_INTERSECTS() *METERElement{
-                return e.DATASTAR_INTERSECTSSet(true)
-            }
-        
-
-    // Teleports the element to the given selector 
-    
-        func(e *METERElement) DATASTAR_TELEPORTSet(b bool) *METERElement{
-                key := "data-teleport"
-                e.BoolAttributes.Set(key, b)
-                return e
-            }
-
-            func(e *METERElement) DATASTAR_TELEPORT() *METERElement{
-                return e.DATASTAR_TELEPORTSet(true)
-            }
-        
-
-    // Scrolls the element into view 
-    
-        func(e *METERElement) DATASTAR_SCROLL_INTO_VIEWSet(b bool) *METERElement{
-                key := "data-scroll-into-view"
-                e.BoolAttributes.Set(key, b)
-                return e
-            }
-
-            func(e *METERElement) DATASTAR_SCROLL_INTO_VIEW() *METERElement{
-                return e.DATASTAR_SCROLL_INTO_VIEWSet(true)
-            }
-        
-
-    // Setup the ViewTransitionAPI for the element 
-    
-        func(e *METERElement) DATASTAR_VIEW_TRANSITION(key string, expression string) *METERElement{
-                if e.StringAttributes == nil {
-                    e.StringAttributes = treemap.New[string,string]()
-                }
-                
-                key = fmt.Sprintf("data-view-transition-%s", key)
-                
-                e.StringAttributes.Set(key, expression)
-                return e
-            }
-
-            func(e *METERElement) IfDATASTAR_VIEW_TRANSITION(condition bool, key string, expression string) *METERElement{
-                if condition {
-                    e.DATASTAR_VIEW_TRANSITION(key,  expression, )
-                }
-                return e
-            }
-
-            // Remove the attribute DATASTAR_VIEW_TRANSITION from the element.
-            func(e *METERElement) DATASTAR_VIEW_TRANSITIONRemove() *METERElement{
-                if e.StringAttributes == nil {
-                    return e
-                }
-                e.StringAttributes.Del("data-view-transition")
-                return e
-            }
-
-        
-
-
-
+// Indicates the range's upper bound.
+func (e *METERElement) HIGH(f float64) *METERElement {
+	if e.FloatAttributes == nil {
+		e.FloatAttributes = treemap.New[string, float64]()
+	}
+	e.FloatAttributes.Set("high", f)
+	return e
+}
+
+func (e *METERElement) IfHIGH(condition bool, f float64) *METERElement {
+	if condition {
+		e.HIGH(f)
+	}
+	return e
+}
+
+// Indicates the range's lower bound.
+func (e *METERElement) LOW(f float64) *METERElement {
+	if e.FloatAttributes == nil {
+		e.FloatAttributes = treemap.New[string, float64]()
+	}
+	e.FloatAttributes.Set("low", f)
+	return e
+}
+
+func (e *METERElement) IfLOW(condition bool, f float64) *METERElement {
+	if condition {
+		e.LOW(f)
+	}
+	return e
+}
+
+// Indicates the maximum value allowed.
+func (e *METERElement) MAX(f float64) *METERElement {
+	if e.FloatAttributes == nil {
+		e.FloatAttributes = treemap.New[string, float64]()
+	}
+	e.FloatAttributes.Set("max", f)
+	return e
+}
+
+func (e *METERElement) IfMAX(condition bool, f float64) *METERElement {
+	if condition {
+		e.MAX(f)
+	}
+	return e
+}
+
+// Indicates the minimum value allowed.
+func (e *METERElement) MIN(f float64) *METERElement {
+	if e.FloatAttributes == nil {
+		e.FloatAttributes = treemap.New[string, float64]()
+	}
+	e.FloatAttributes.Set("min", f)
+	return e
+}
+
+func (e *METERElement) IfMIN(condition bool, f float64) *METERElement {
+	if condition {
+		e.MIN(f)
+	}
+	return e
+}
+
+// Indicates the optimal numeric value.
+func (e *METERElement) OPTIMUM(f float64) *METERElement {
+	if e.FloatAttributes == nil {
+		e.FloatAttributes = treemap.New[string, float64]()
+	}
+	e.FloatAttributes.Set("optimum", f)
+	return e
+}
+
+func (e *METERElement) IfOPTIMUM(condition bool, f float64) *METERElement {
+	if condition {
+		e.OPTIMUM(f)
+	}
+	return e
+}
+
+// Current numeric value.
+func (e *METERElement) VALUE(f float64) *METERElement {
+	if e.FloatAttributes == nil {
+		e.FloatAttributes = treemap.New[string, float64]()
+	}
+	e.FloatAttributes.Set("value", f)
+	return e
+}
+
+func (e *METERElement) IfVALUE(condition bool, f float64) *METERElement {
+	if condition {
+		e.VALUE(f)
+	}
+	return e
+}
+
+// The accesskey global attribute provides a hint for generating a keyboard
+// shortcut for the current element
+// The attribute value must consist of a single printable character (which
+// includes accented and other characters that can be generated by the keyboard).
+func (e *METERElement) ACCESSKEY(r rune) *METERElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	e.StringAttributes.Set("accesskey", string(r))
+	return e
+}
+
+func (e *METERElement) IfACCESSKEY(condition bool, r rune) *METERElement {
+	if condition {
+		e.ACCESSKEY(r)
+	}
+	return e
+}
+
+// Remove the attribute ACCESSKEY from the element.
+func (e *METERElement) ACCESSKEYRemove() *METERElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("accesskey")
+	return e
+}
+
+// The autocapitalize global attribute is an enumerated attribute that controls
+// whether and how text input is automatically capitalized as it is entered/edited
+// by the user
+// autocapitalize can be set on <input> and <textarea> elements, and on their
+// containing <form> elements
+// When autocapitalize is set on a <form> element, it sets the autocapitalize
+// behavior for all contained <input>s and <textarea>s, overriding any
+// autocapitalize values set on contained elements
+// autocapitalize has no effect on the url, email, or password <input> types,
+// where autocapitalization is never enabled
+// Where autocapitalize is not specified, the adopted default behavior varies
+// between browsers
+// For example: Chrome and Safari default to on/sentences Firefox defaults to
+// off/none.
+func (e *METERElement) AUTOCAPITALIZE(c MeterAutocapitalizeChoice) *METERElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	e.StringAttributes.Set("autocapitalize", string(c))
+	return e
+}
+
+type MeterAutocapitalizeChoice string
+
+const (
+	// Do not automatically capitalize any text.
+	MeterAutocapitalize_off MeterAutocapitalizeChoice = "off"
+	// Do not automatically capitalize any text.
+	MeterAutocapitalize_none MeterAutocapitalizeChoice = "none"
+	// Automatically capitalize the first character of each sentence.
+	MeterAutocapitalize_sentences MeterAutocapitalizeChoice = "sentences"
+	// Automatically capitalize the first character of each sentence.
+	MeterAutocapitalize_on MeterAutocapitalizeChoice = "on"
+	// Automatically capitalize the first character of each word.
+	MeterAutocapitalize_words MeterAutocapitalizeChoice = "words"
+	// Automatically capitalize all characters.
+	MeterAutocapitalize_characters MeterAutocapitalizeChoice = "characters"
+)
+
+// Remove the attribute AUTOCAPITALIZE from the element.
+func (e *METERElement) AUTOCAPITALIZERemove(c MeterAutocapitalizeChoice) *METERElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("autocapitalize")
+	return e
+}
+
+// The autofocus global attribute is a Boolean attribute indicating that an
+// element should be focused on page load, or when the <dialog> that it is part of
+// is displayed.
+//
+//	Accessibility concerns Automatically focusing a form control can confuse
+//
+// visually-impaired people using screen-reading technology and people with
+// cognitive impairments
+// When autofocus is assigned, screen-readers "teleport" their user to the form
+// control without warning them beforehand.
+//
+//	Use careful consideration for accessibility when applying the autofocus
+//
+// attribute
+// Automatically focusing on a control can cause the page to scroll on load
+// The focus can also cause dynamic keyboards to display on some touch devices
+// While a screen reader will announce the label of the form control receiving
+// focus, the screen reader will not announce anything before the label, and the
+// sighted user on a small device will equally miss the context created by the
+// preceding content.
+func (e *METERElement) AUTOFOCUS() *METERElement {
+	e.AUTOFOCUSSet(true)
+	return e
+}
+
+func (e *METERElement) IfAUTOFOCUS(condition bool) *METERElement {
+	if condition {
+		e.AUTOFOCUSSet(true)
+	}
+	return e
+}
+
+// Set the attribute AUTOFOCUS to the value b explicitly.
+func (e *METERElement) AUTOFOCUSSet(b bool) *METERElement {
+	if e.BoolAttributes == nil {
+		e.BoolAttributes = treemap.New[string, bool]()
+	}
+	e.BoolAttributes.Set("autofocus", b)
+	return e
+}
+
+func (e *METERElement) IfSetAUTOFOCUS(condition bool, b bool) *METERElement {
+	if condition {
+		e.AUTOFOCUSSet(b)
+	}
+	return e
+}
+
+// Remove the attribute AUTOFOCUS from the element.
+func (e *METERElement) AUTOFOCUSRemove(b bool) *METERElement {
+	if e.BoolAttributes == nil {
+		return e
+	}
+	e.BoolAttributes.Del("autofocus")
+	return e
+}
+
+// The class global attribute is a space-separated list of the case-sensitive
+// classes of the element
+// Classes allow CSS and JavaScript to select and access specific elements via the
+// class selectors or functions like the DOM method
+// document.getElementsByClassName.
+func (e *METERElement) CLASS(s ...string) *METERElement {
+	if e.DelimitedStrings == nil {
+		e.DelimitedStrings = treemap.New[string, *DelimitedBuilder[string]]()
+	}
+	ds, ok := e.DelimitedStrings.Get("class")
+	if !ok {
+		ds = NewDelimitedBuilder[string](" ")
+		e.DelimitedStrings.Set("class", ds)
+	}
+	ds.Add(s...)
+	return e
+}
+
+func (e *METERElement) IfCLASS(condition bool, s ...string) *METERElement {
+	if condition {
+		e.CLASS(s...)
+	}
+	return e
+}
+
+// Remove the attribute CLASS from the element.
+func (e *METERElement) CLASSRemove(s ...string) *METERElement {
+	if e.DelimitedStrings == nil {
+		return e
+	}
+	ds, ok := e.DelimitedStrings.Get("class")
+	if !ok {
+		return e
+	}
+	ds.Remove(s...)
+	return e
+}
+
+// The contenteditable global attribute is an enumerated attribute indicating if
+// the element should be editable by the user
+// If so, the browser modifies its widget to allow editing.
+func (e *METERElement) CONTENTEDITABLE(c MeterContenteditableChoice) *METERElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	e.StringAttributes.Set("contenteditable", string(c))
+	return e
+}
+
+type MeterContenteditableChoice string
+
+const (
+	// The element is editable.
+	MeterContenteditable_empty MeterContenteditableChoice = ""
+	// The element is editable.
+	MeterContenteditable_true MeterContenteditableChoice = "true"
+	// The element is not editable.
+	MeterContenteditable_false MeterContenteditableChoice = "false"
+	// which indicates that the element's raw text is editable, but rich text
+	// formatting is disabled.
+	MeterContenteditable_plaintext_only MeterContenteditableChoice = "plaintext-only"
+)
+
+// Remove the attribute CONTENTEDITABLE from the element.
+func (e *METERElement) CONTENTEDITABLERemove(c MeterContenteditableChoice) *METERElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("contenteditable")
+	return e
+}
+
+// The dir global attribute is an enumerated attribute that indicates the
+// directionality of the element's text
+// Note: This attribute is mandatory for the <bdo> element where it has a
+// different semantic meaning
+// This attribute is not inherited by the <bdi> element
+// If not set, its value is auto
+// This attribute can be overridden by the CSS properties direction and
+// unicode-bidi, if a CSS page is active and the element supports these properties
+// As the directionality of the text is semantically related to its content and
+// not to its presentation, it is recommended that web developers use this
+// attribute instead of the related CSS properties when possible
+// That way, the text will display correctly even on a browser that doesn't
+// support CSS or has the CSS deactivated
+// The auto value should be used for data with an unknown directionality, like
+// data coming from user input, eventually stored in a database.
+func (e *METERElement) DIR(c MeterDirChoice) *METERElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	e.StringAttributes.Set("dir", string(c))
+	return e
+}
+
+type MeterDirChoice string
+
+const (
+	// which means left to right and is to be used for languages that are written from
+	// the left to the right (like English);
+	MeterDir_ltr MeterDirChoice = "ltr"
+	// which means right to left and is to be used for languages that are written from
+	// the right to the left (like Arabic);
+	MeterDir_rtl MeterDirChoice = "rtl"
+	// which lets the user agent decide
+	// It uses a basic algorithm as it parses the characters inside the element until
+	// it finds a character with a strong directionality, then it applies that
+	// directionality to the whole element.
+	MeterDir_auto MeterDirChoice = "auto"
+)
+
+// Remove the attribute DIR from the element.
+func (e *METERElement) DIRRemove(c MeterDirChoice) *METERElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("dir")
+	return e
+}
+
+// The draggable global attribute is an enumerated attribute that indicates
+// whether the element can be dragged, either with native browser behavior or the
+// HTML Drag and Drop API.
+func (e *METERElement) DRAGGABLE(c MeterDraggableChoice) *METERElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	e.StringAttributes.Set("draggable", string(c))
+	return e
+}
+
+type MeterDraggableChoice string
+
+const (
+	// The element is draggable.
+	MeterDraggable_true MeterDraggableChoice = "true"
+	// The element is not draggable.
+	MeterDraggable_false MeterDraggableChoice = "false"
+	// drag behavior is the default browser behavior: only text selections, images,
+	// and links can be dragged
+	// For other elements, the event ondragstart must be set for drag and drop to work
+	MeterDraggable_empty MeterDraggableChoice = ""
+	// drag behavior is the default browser behavior: only text selections, images,
+	// and links can be dragged
+	// For other elements, the event ondragstart must be set for drag and drop to work
+	MeterDraggable_auto MeterDraggableChoice = "auto"
+)
+
+// Remove the attribute DRAGGABLE from the element.
+func (e *METERElement) DRAGGABLERemove(c MeterDraggableChoice) *METERElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("draggable")
+	return e
+}
+
+// The enterkeyhint global attribute is an enumerated attribute defining what
+// action label (or icon) to present for the enter key on virtual keyboards.
+func (e *METERElement) ENTERKEYHINT(c MeterEnterkeyhintChoice) *METERElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	e.StringAttributes.Set("enterkeyhint", string(c))
+	return e
+}
+
+type MeterEnterkeyhintChoice string
+
+const (
+	// Typically inserting a new line.
+	MeterEnterkeyhint_enter MeterEnterkeyhintChoice = "enter"
+	// Typically meaning there is nothing more to input and the input method editor
+	// (IME) will be closed.
+	MeterEnterkeyhint_done MeterEnterkeyhintChoice = "done"
+	// Typically meaning to take the user to the target of the text they typed.
+	MeterEnterkeyhint_go MeterEnterkeyhintChoice = "go"
+	// Typically meaning to take the user to the next field that will accept text.
+	MeterEnterkeyhint_next MeterEnterkeyhintChoice = "next"
+	// Typically meaning to take the user to the previous field that will accept text.
+	MeterEnterkeyhint_previous MeterEnterkeyhintChoice = "previous"
+	// Typically taking the user to the results of searching for the text they have
+	// typed.
+	MeterEnterkeyhint_search MeterEnterkeyhintChoice = "search"
+	// Typically delivering the text to its target.
+	MeterEnterkeyhint_send MeterEnterkeyhintChoice = "send"
+)
+
+// Remove the attribute ENTERKEYHINT from the element.
+func (e *METERElement) ENTERKEYHINTRemove(c MeterEnterkeyhintChoice) *METERElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("enterkeyhint")
+	return e
+}
+
+// The exportparts global attribute allows you to select and style elements
+// existing in nested shadow trees, by exporting their part names
+// The shadow tree is an isolated structure where identifiers, classes, and styles
+// cannot be reached by selectors or queries belonging to a regular DOM
+// To apply a style to an element living in a shadow tree, by CSS rule created
+// outside of it, part global attribute has to be used
+// It has to be assigned to an element present in Shadow Tree, and its value
+// should be some identifier
+// Rules present outside of the shadow tree, must use the ::part pseudo-element,
+// containing the same identifier as the argument
+// The global attribute part makes the element visible on just a single level of
+// depth
+// When the shadow tree is nested, parts will be visible only to the parent of the
+// shadow tree but not to its ancestor
+// Exporting parts further down is exactly what exportparts attribute is for
+// Attribute exportparts must be placed on a shadow Host, which is the element to
+// which the shadow tree is attached
+// The value of the attribute should be a comma-separated list of part names
+// present in the shadow tree and which should be made available via a DOM outside
+// of the current structure.
+func (e *METERElement) EXPORTPARTS(s ...string) *METERElement {
+	if e.DelimitedStrings == nil {
+		e.DelimitedStrings = treemap.New[string, *DelimitedBuilder[string]]()
+	}
+	ds, ok := e.DelimitedStrings.Get("exportparts")
+	if !ok {
+		ds = NewDelimitedBuilder[string](",")
+		e.DelimitedStrings.Set("exportparts", ds)
+	}
+	ds.Add(s...)
+	return e
+}
+
+func (e *METERElement) IfEXPORTPARTS(condition bool, s ...string) *METERElement {
+	if condition {
+		e.EXPORTPARTS(s...)
+	}
+	return e
+}
+
+// Remove the attribute EXPORTPARTS from the element.
+func (e *METERElement) EXPORTPARTSRemove(s ...string) *METERElement {
+	if e.DelimitedStrings == nil {
+		return e
+	}
+	ds, ok := e.DelimitedStrings.Get("exportparts")
+	if !ok {
+		return e
+	}
+	ds.Remove(s...)
+	return e
+}
+
+// The hidden global attribute is a Boolean attribute indicating that the element
+// is not yet, or is no longer, relevant
+// For example, it can be used to hide elements of the page that can't be used
+// until the login process has been completed
+// Note that browsers typically implement hidden until found using
+// content-visibility: hidden
+// This means that unlike elements in the hidden state, elements in the hidden
+// until found state will have generated boxes, meaning that: the element will
+// participate in page layout margin, borders, padding, and background for the
+// element will be rendered
+// Also, the element needs to be affected by layout containment in order to be
+// revealed
+// This means that if the element in the hidden until found state has a display
+// value of none, contents, or inline, then the element will not be revealed by
+// find in page or fragment navigation.
+func (e *METERElement) HIDDEN(c MeterHiddenChoice) *METERElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	e.StringAttributes.Set("hidden", string(c))
+	return e
+}
+
+type MeterHiddenChoice string
+
+const (
+	// set the element to the hidden state
+	// Additionally, invalid values set the element to the hidden state.
+	MeterHidden_empty MeterHiddenChoice = ""
+	// set the element to the hidden state
+	// Additionally, invalid values set the element to the hidden state.
+	MeterHidden_hidden MeterHiddenChoice = "hidden"
+	// the element is hidden but its content will be accessible to the browser's "find
+	// in page" feature or to fragment navigation
+	// When these features cause a scroll to an element in a hidden until found
+	// subtree, the browser will fire a beforematch event on the hidden element remove
+	// the hidden attribute from the element scroll to the element
+	//
+	MeterHidden_until_found MeterHiddenChoice = "until-found"
+)
+
+// Remove the attribute HIDDEN from the element.
+func (e *METERElement) HIDDENRemove(c MeterHiddenChoice) *METERElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("hidden")
+	return e
+}
+
+// The id global attribute defines a unique identifier (ID) which must be unique
+// in the whole document
+// Its purpose is to identify the element when linking (using a fragment
+// identifier), scripting, or styling (with CSS).
+func (e *METERElement) ID(s string) *METERElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	e.StringAttributes.Set("id", s)
+	return e
+}
+
+func (e *METERElement) IfID(condition bool, s string) *METERElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
+// Remove the attribute ID from the element.
+func (e *METERElement) IDRemove(s string) *METERElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("id")
+	return e
+}
+
+// The inert global attribute is a Boolean attribute indicating that the browser
+// will ignore the element
+// With the inert attribute, all of the element's flat tree descendants (such as
+// modal <dialog>s) that don't otherwise escape inertness are ignored
+// The inert attribute also makes the browser ignore input events sent by the
+// user, including focus-related events and events from assistive technologies
+// Specifically, inert does the following: Prevents the click event from being
+// fired when the user clicks on the element
+// Prevents the focus event from being raised by preventing the element from
+// gaining focus
+// Hides the element and its content from assistive technologies by excluding them
+// from the accessibility tree.
+func (e *METERElement) INERT() *METERElement {
+	e.INERTSet(true)
+	return e
+}
+
+func (e *METERElement) IfINERT(condition bool) *METERElement {
+	if condition {
+		e.INERTSet(true)
+	}
+	return e
+}
+
+// Set the attribute INERT to the value b explicitly.
+func (e *METERElement) INERTSet(b bool) *METERElement {
+	if e.BoolAttributes == nil {
+		e.BoolAttributes = treemap.New[string, bool]()
+	}
+	e.BoolAttributes.Set("inert", b)
+	return e
+}
+
+func (e *METERElement) IfSetINERT(condition bool, b bool) *METERElement {
+	if condition {
+		e.INERTSet(b)
+	}
+	return e
+}
+
+// Remove the attribute INERT from the element.
+func (e *METERElement) INERTRemove(b bool) *METERElement {
+	if e.BoolAttributes == nil {
+		return e
+	}
+	e.BoolAttributes.Del("inert")
+	return e
+}
+
+// The inputmode global attribute is an enumerated attribute that hints at the
+// type of data that might be entered by the user while editing the element or its
+// contents
+// This allows a browser to display an appropriate virtual keyboard
+// It is used primarily on <input> elements, but is usable on any element in
+// contenteditable mode
+// It's important to understand that the inputmode attribute doesn't cause any
+// validity requirements to be enforced on input
+// To require that input conforms to a particular data type, choose an appropriate
+// <input> element type
+// For specific guidance on choosing <input> types, see the Values section.
+func (e *METERElement) INPUTMODE(c MeterInputmodeChoice) *METERElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	e.StringAttributes.Set("inputmode", string(c))
+	return e
+}
+
+type MeterInputmodeChoice string
+
+const (
+	// No virtual keyboard
+	// For when the page implements its own keyboard input control.
+	MeterInputmode_none MeterInputmodeChoice = "none"
+	// Standard input keyboard for the user's current locale.
+	MeterInputmode_empty MeterInputmodeChoice = ""
+	// Standard input keyboard for the user's current locale.
+	MeterInputmode_text MeterInputmodeChoice = "text"
+	// Fractional numeric input keyboard containing the digits and decimal separator
+	// for the user's locale (typically
+	// or ,)
+	// Devices may or may not show a minus key (-).
+	MeterInputmode_decimal MeterInputmodeChoice = "decimal"
+	// Numeric input keyboard, but only requires the digits 0–9
+	// Devices may or may not show a minus key.
+	MeterInputmode_numeric MeterInputmodeChoice = "numeric"
+	// A telephone keypad input, including the digits 0–9, the asterisk (*), and the
+	// pound (#) key
+	// Inputs that *require* a telephone number should typically use <input
+	// type="tel"> instead.
+	MeterInputmode_tel MeterInputmodeChoice = "tel"
+	// A virtual keyboard optimized for search input
+	// For instance, the return/submit key may be labeled "Search", along with
+	// possible other optimizations
+	// Inputs that require a search query should typically use <input type="search">
+	// instead.
+	MeterInputmode_search MeterInputmodeChoice = "search"
+	// A virtual keyboard optimized for entering email addresses
+	// Typically includes the @character as well as other optimizations
+	// Inputs that require email addresses should typically use <input type="email">
+	// instead.
+	MeterInputmode_email MeterInputmodeChoice = "email"
+	// A keypad optimized for entering URLs
+	// This may have the / key more prominent, for example
+	// Enhanced features could include history access and so on
+	// Inputs that require a URL should typically use <input type="url"> instead.
+	MeterInputmode_url MeterInputmodeChoice = "url"
+)
+
+// Remove the attribute INPUTMODE from the element.
+func (e *METERElement) INPUTMODERemove(c MeterInputmodeChoice) *METERElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("inputmode")
+	return e
+}
+
+// The is global attribute allows you to specify that a standard HTML element
+// should behave like a defined custom built-in element (see Using custom elements
+// for more details)
+// This attribute can only be used if the specified custom element name has been
+// successfully defined in the current document, and extends the element type it
+// is being applied to.
+func (e *METERElement) IS(s string) *METERElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	e.StringAttributes.Set("is", s)
+	return e
+}
+
+func (e *METERElement) IfIS(condition bool, s string) *METERElement {
+	if condition {
+		e.IS(s)
+	}
+	return e
+}
+
+// Remove the attribute IS from the element.
+func (e *METERElement) ISRemove(s string) *METERElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("is")
+	return e
+}
+
+// The itemid global attribute provides microdata in the form of a unique, global
+// identifier of an item.
+//
+//	An itemid attribute can only be specified for an element that has both
+//
+// itemscope and itemtype attributes
+// Also, itemid can only be specified on elements that possess an itemscope
+// attribute whose corresponding itemtype refers to or defines a vocabulary that
+// supports global identifiers
+// The exact meaning of an itemtype's global identifier is provided by the
+// definition of that identifier within the specified vocabulary
+// The vocabulary defines whether several items with the same global identifier
+// can coexist and, if so, how items with the same identifier are handled.
+func (e *METERElement) ITEMID(s string) *METERElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	e.StringAttributes.Set("itemid", s)
+	return e
+}
+
+func (e *METERElement) IfITEMID(condition bool, s string) *METERElement {
+	if condition {
+		e.ITEMID(s)
+	}
+	return e
+}
+
+// Remove the attribute ITEMID from the element.
+func (e *METERElement) ITEMIDRemove(s string) *METERElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("itemid")
+	return e
+}
+
+// The itemprop global attribute is used to add properties to an item
+// Every HTML element can have an itemprop attribute specified, and an itemprop
+// consists of a name-value pair
+// Each name-value pair is called a property, and a group of one or more
+// properties forms an item
+// Property values are either a string or a URL and can be associated with a very
+// wide range of elements including <audio>, <embed>, <iframe>, <img>, <link>,
+// <object>, <source>, <track>, and <video>.
+func (e *METERElement) ITEMPROP(s string) *METERElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	e.StringAttributes.Set("itemprop", s)
+	return e
+}
+
+func (e *METERElement) IfITEMPROP(condition bool, s string) *METERElement {
+	if condition {
+		e.ITEMPROP(s)
+	}
+	return e
+}
+
+// Remove the attribute ITEMPROP from the element.
+func (e *METERElement) ITEMPROPRemove(s string) *METERElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("itemprop")
+	return e
+}
+
+// Properties that are not descendants of an element with the itemscope attribute
+// can be associated with an item using the global attribute itemref
+// itemref provides a list of element IDs (not itemids) elsewhere in the document,
+// with additional properties The itemref attribute can only be specified on
+// elements that have an itemscope attribute specified.
+func (e *METERElement) ITEMREF(s string) *METERElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	e.StringAttributes.Set("itemref", s)
+	return e
+}
+
+func (e *METERElement) IfITEMREF(condition bool, s string) *METERElement {
+	if condition {
+		e.ITEMREF(s)
+	}
+	return e
+}
+
+// Remove the attribute ITEMREF from the element.
+func (e *METERElement) ITEMREFRemove(s string) *METERElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("itemref")
+	return e
+}
+
+// The itemscope global attribute is used to add an item to a microdata DOM tree
+// Every HTML element can have an itemscope attribute specified, and an itemscope
+// consists of a name-value pair
+// Each name-value pair is called a property, and a group of one or more
+// properties forms an item
+// Property values are either a string or a URL and can be associated with a very
+// wide range of elements including <audio>, <embed>, <iframe>, <img>, <link>,
+// <object>, <source>, <track>, and <video>.
+func (e *METERElement) ITEMSCOPE() *METERElement {
+	e.ITEMSCOPESet(true)
+	return e
+}
+
+func (e *METERElement) IfITEMSCOPE(condition bool) *METERElement {
+	if condition {
+		e.ITEMSCOPESet(true)
+	}
+	return e
+}
+
+// Set the attribute ITEMSCOPE to the value b explicitly.
+func (e *METERElement) ITEMSCOPESet(b bool) *METERElement {
+	if e.BoolAttributes == nil {
+		e.BoolAttributes = treemap.New[string, bool]()
+	}
+	e.BoolAttributes.Set("itemscope", b)
+	return e
+}
+
+func (e *METERElement) IfSetITEMSCOPE(condition bool, b bool) *METERElement {
+	if condition {
+		e.ITEMSCOPESet(b)
+	}
+	return e
+}
+
+// Remove the attribute ITEMSCOPE from the element.
+func (e *METERElement) ITEMSCOPERemove(b bool) *METERElement {
+	if e.BoolAttributes == nil {
+		return e
+	}
+	e.BoolAttributes.Del("itemscope")
+	return e
+}
+
+// The itemtype global attribute is used to add types to an item
+// Every HTML element can have an itemtype attribute specified, and an itemtype
+// consists of a name-value pair
+// Each name-value pair is called a property, and a group of one or more
+// properties forms an item
+// Property values are either a string or a URL and can be associated with a very
+// wide range of elements including <audio>, <embed>, <iframe>, <img>, <link>,
+// <object>, <source>, <track>, and <video>.
+func (e *METERElement) ITEMTYPE(s string) *METERElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	e.StringAttributes.Set("itemtype", s)
+	return e
+}
+
+func (e *METERElement) IfITEMTYPE(condition bool, s string) *METERElement {
+	if condition {
+		e.ITEMTYPE(s)
+	}
+	return e
+}
+
+// Remove the attribute ITEMTYPE from the element.
+func (e *METERElement) ITEMTYPERemove(s string) *METERElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("itemtype")
+	return e
+}
+
+// The lang global attribute helps define the language of an element: the language
+// that non-editable elements are written in or the language that editable
+// elements should be written in by the user
+// The tag contains one single entry value in the format defines in the Tags for
+// Identifying Languages (BCP47) IETF document
+// xml:lang has priority over it.
+func (e *METERElement) LANG(s string) *METERElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	e.StringAttributes.Set("lang", s)
+	return e
+}
+
+func (e *METERElement) IfLANG(condition bool, s string) *METERElement {
+	if condition {
+		e.LANG(s)
+	}
+	return e
+}
+
+// Remove the attribute LANG from the element.
+func (e *METERElement) LANGRemove(s string) *METERElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("lang")
+	return e
+}
+
+// The nonce global attribute is a unique identifier used to declare inline
+// scripts and style elements to be used in a specific document
+// It is a cryptographic nonce (number used once) that is used by Content Security
+// Policy to determine whether or not a given inline script is allowed to execute.
+func (e *METERElement) NONCE(s string) *METERElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	e.StringAttributes.Set("nonce", s)
+	return e
+}
+
+func (e *METERElement) IfNONCE(condition bool, s string) *METERElement {
+	if condition {
+		e.NONCE(s)
+	}
+	return e
+}
+
+// Remove the attribute NONCE from the element.
+func (e *METERElement) NONCERemove(s string) *METERElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("nonce")
+	return e
+}
+
+// The part global attribute contains a space-separated list of the part names of
+// the element
+// Part names allows CSS to select and style specific elements in a shadow tree
+// via the ::part pseudo-element.
+func (e *METERElement) PART(s ...string) *METERElement {
+	if e.DelimitedStrings == nil {
+		e.DelimitedStrings = treemap.New[string, *DelimitedBuilder[string]]()
+	}
+	ds, ok := e.DelimitedStrings.Get("part")
+	if !ok {
+		ds = NewDelimitedBuilder[string](" ")
+		e.DelimitedStrings.Set("part", ds)
+	}
+	ds.Add(s...)
+	return e
+}
+
+func (e *METERElement) IfPART(condition bool, s ...string) *METERElement {
+	if condition {
+		e.PART(s...)
+	}
+	return e
+}
+
+// Remove the attribute PART from the element.
+func (e *METERElement) PARTRemove(s ...string) *METERElement {
+	if e.DelimitedStrings == nil {
+		return e
+	}
+	ds, ok := e.DelimitedStrings.Get("part")
+	if !ok {
+		return e
+	}
+	ds.Remove(s...)
+	return e
+}
+
+// The popover global attribute is used to designate an element as a popover
+// element
+// Popover elements are hidden via display: none until opened via an
+// invoking/control element (i.e
+// a <button> or <input type="button"> with a popovertarget attribute) or a
+// HTMLElement.showPopover() call
+// When open, popover elements will appear above all other elements in the top
+// layer, and won't be influenced by parent elements' position or overflow
+// styling.
+func (e *METERElement) POPVER(c MeterPopverChoice) *METERElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	e.StringAttributes.Set("popver", string(c))
+	return e
+}
+
+type MeterPopverChoice string
+
+const (
+	// Popovers that have the auto state can be "light dismissed" by selecting outside
+	// the popover area, and generally only allow one popover to be displayed
+	// on-screen at a time.
+	MeterPopver_auto MeterPopverChoice = "auto"
+	// Popovers that have the auto state can be "light dismissed" by selecting outside
+	// the popover area, and generally only allow one popover to be displayed
+	// on-screen at a time.
+	MeterPopver_empty MeterPopverChoice = ""
+	// manual popovers must always be explicitly hidden, but allow for use cases such
+	// as nested popovers in menus.
+	MeterPopver_manual MeterPopverChoice = "manual"
+)
+
+// Remove the attribute POPVER from the element.
+func (e *METERElement) POPVERRemove(c MeterPopverChoice) *METERElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("popver")
+	return e
+}
+
+// The slot global attribute assigns a slot in a shadow DOM shadow tree to an
+// element: An element with a slot attribute is assigned to the slot created by
+// the <slot> element whose name attribute's value matches that slot attribute's
+// value.
+func (e *METERElement) SLOT(s string) *METERElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	e.StringAttributes.Set("slot", s)
+	return e
+}
+
+func (e *METERElement) IfSLOT(condition bool, s string) *METERElement {
+	if condition {
+		e.SLOT(s)
+	}
+	return e
+}
+
+// Remove the attribute SLOT from the element.
+func (e *METERElement) SLOTRemove(s string) *METERElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("slot")
+	return e
+}
+
+// The spellcheck global attribute is an enumerated attribute that defines whether
+// the element may be checked for spelling errors
+// If this attribute is not set, its default value is element-type and
+// browser-defined
+// This default value may also be inherited, which means that the element content
+// will be checked for spelling errors only if its nearest ancestor has a
+// spellcheck state of true
+// Security and privacy concerns Using spellchecking can have consequences for
+// users' security and privacy
+// The specification does not regulate how spellchecking is done and the content
+// of the element may be sent to a third party for spellchecking results (see
+// enhanced spellchecking and "spell-jacking")
+// You should consider setting spellcheck to false for elements that can contain
+// sensitive information.
+func (e *METERElement) SPELLCHECK(c MeterSpellcheckChoice) *METERElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	e.StringAttributes.Set("spellcheck", string(c))
+	return e
+}
+
+type MeterSpellcheckChoice string
+
+const (
+	// The element will be checked for spelling errors.
+	MeterSpellcheck_empty MeterSpellcheckChoice = ""
+	// The element will be checked for spelling errors.
+	MeterSpellcheck_true MeterSpellcheckChoice = "true"
+	// The element will not be checked for spelling errors.
+	MeterSpellcheck_false MeterSpellcheckChoice = "false"
+)
+
+// Remove the attribute SPELLCHECK from the element.
+func (e *METERElement) SPELLCHECKRemove(c MeterSpellcheckChoice) *METERElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("spellcheck")
+	return e
+}
+
+// The style global attribute is used to add styles to an element, such as color,
+// font, size, and more
+// Styles are written in CSS.
+func (e *METERElement) STYLEF(k string, format string, args ...any) *METERElement {
+	return e.STYLE(k, fmt.Sprintf(format, args...))
+}
+
+func (e *METERElement) IfSTYLE(condition bool, k string, v string) *METERElement {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
+func (e *METERElement) STYLE(k string, v string) *METERElement {
+	if e.KVStrings == nil {
+		e.KVStrings = treemap.New[string, *KVBuilder]()
+	}
+	kv, ok := e.KVStrings.Get("style")
+	if !ok {
+		kv = NewKVBuilder(":", ";")
+		e.KVStrings.Set("style", kv)
+	}
+	kv.Add(k, v)
+	return e
+}
+
+func (e *METERElement) IfSTYLEF(condition bool, k string, format string, args ...any) *METERElement {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
+	return e
+}
+
+// Add the attributes in the map to the element.
+func (e *METERElement) STYLEMap(m map[string]string) *METERElement {
+	if e.KVStrings == nil {
+		e.KVStrings = treemap.New[string, *KVBuilder]()
+	}
+	kv, ok := e.KVStrings.Get("style")
+	if !ok {
+		kv = NewKVBuilder(":", ";")
+		e.KVStrings.Set("style", kv)
+	}
+	for k, v := range m {
+		kv.Add(k, v)
+	}
+	return e
+}
+
+// Add pairs of attributes to the element.
+func (e *METERElement) STYLEPairs(pairs ...string) *METERElement {
+	if len(pairs)%2 != 0 {
+		panic("Must have an even number of pairs")
+	}
+	if e.KVStrings == nil {
+		e.KVStrings = treemap.New[string, *KVBuilder]()
+	}
+	kv, ok := e.KVStrings.Get("style")
+	if !ok {
+		kv = NewKVBuilder(":", ";")
+		e.KVStrings.Set("style", kv)
+	}
+
+	for i := 0; i < len(pairs); i += 2 {
+		kv.Add(pairs[i], pairs[i+1])
+	}
+
+	return e
+}
+
+func (e *METERElement) IfSTYLEPairs(condition bool, pairs ...string) *METERElement {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
+	return e
+}
+
+// Remove the attribute STYLE from the element.
+func (e *METERElement) STYLERemove(keys ...string) *METERElement {
+	if e.KVStrings == nil {
+		return e
+	}
+	kv, ok := e.KVStrings.Get("style")
+	if !ok {
+		return e
+	}
+	for _, k := range keys {
+		kv.Remove(k)
+	}
+	return e
+}
+
+// The tabindex global attribute indicates if its element can be focused, and
+// if/where it participates in sequential keyboard navigation (usually with the
+// Tab key, hence the name)
+// It accepts an integer as a value, with different results depending on the
+// integer's value: a negative value (usually tabindex="-1") means that the
+// element should be focusable, but should not be reachable via sequential
+// keyboard navigation; a value of 0 (tabindex="0") means that the element should
+// be focusable and reachable via sequential keyboard navigation, but its relative
+// order is defined by the platform convention; a positive value means should be
+// focusable and reachable via sequential keyboard navigation; its relative order
+// is defined by the value of the attribute: the sequential follow the increasing
+// number of the tabindex
+// If several elements share the same tabindex, their relative order follows their
+// relative position in the document.
+func (e *METERElement) TABINDEX(i int) *METERElement {
+	if e.IntAttributes == nil {
+		e.IntAttributes = treemap.New[string, int]()
+	}
+	e.IntAttributes.Set("tabindex", i)
+	return e
+}
+
+func (e *METERElement) IfTABINDEX(condition bool, i int) *METERElement {
+	if condition {
+		e.TABINDEX(i)
+	}
+	return e
+}
+
+// Remove the attribute TABINDEX from the element.
+func (e *METERElement) TABINDEXRemove(i int) *METERElement {
+	if e.IntAttributes == nil {
+		return e
+	}
+	e.IntAttributes.Del("tabindex")
+	return e
+}
+
+// The title global attribute contains text representing advisory information
+// related to the element it belongs to
+// Such information can typically, but not necessarily, be presented to the user
+// as a tooltip
+// The main use of the title attribute is to label <iframe> elements for assistive
+// technology
+// The title attribute may also be used to label controls in data tables
+// The title attribute, when added to <link rel="stylesheet">, creates an
+// alternate stylesheet
+// When defining an alternative style sheet with <link rel="alternate"> the
+// attribute is required and must be set to a non-empty string
+// If included on the <abbr> opening tag, the title must be a full expansion of
+// the abbreviation or acronym
+// Instead of using title, when possible, provide an expansion of the abbreviation
+// or acronym in plain text on first use, using the <abbr> to mark up the
+// abbreviation
+// This enables all users know what name or term the abbreviation or acronym
+// shortens while providing a hint to user agents on how to announce the content
+// While title can be used to provide a programmatically associated label for an
+// <input> element, this is not good practice
+// Use a <label> instead.
+func (e *METERElement) TITLE(s string) *METERElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	e.StringAttributes.Set("title", s)
+	return e
+}
+
+func (e *METERElement) IfTITLE(condition bool, s string) *METERElement {
+	if condition {
+		e.TITLE(s)
+	}
+	return e
+}
+
+// Remove the attribute TITLE from the element.
+func (e *METERElement) TITLERemove(s string) *METERElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("title")
+	return e
+}
+
+// The translate global attribute is an enumerated attribute that is used to
+// specify whether an element's attribute values and the values of its Text node
+// children are to be translated when the page is localized, or whether to leave
+// them unchanged.
+func (e *METERElement) TRANSLATE(c MeterTranslateChoice) *METERElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	e.StringAttributes.Set("translate", string(c))
+	return e
+}
+
+type MeterTranslateChoice string
+
+const (
+	// indicates that the element should be translated when the page is localized.
+	MeterTranslate_empty MeterTranslateChoice = ""
+	// indicates that the element should be translated when the page is localized.
+	MeterTranslate_yes MeterTranslateChoice = "yes"
+	// indicates that the element must not be translated when the page is localized.
+	MeterTranslate_no MeterTranslateChoice = "no"
+)
+
+// Remove the attribute TRANSLATE from the element.
+func (e *METERElement) TRANSLATERemove(c MeterTranslateChoice) *METERElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("translate")
+	return e
+}
+
+// Merges the store with the given object
+
+func (e *METERElement) DATASTAR_MERGE_STORE(v any) *METERElement {
+	if e.CustomDataAttributes == nil {
+		e.CustomDataAttributes = treemap.New[string, string]()
+	}
+	b, err := json.Marshal(v)
+	if err != nil {
+		panic(err)
+	}
+	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	return e
+}
+
+// Sets the reference of the element
+
+func (e *METERElement) DATASTAR_REF(expression string) *METERElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-ref"
+
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+func (e *METERElement) IfDATASTAR_REF(condition bool, expression string) *METERElement {
+	if condition {
+		e.DATASTAR_REF(expression)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_REF from the element.
+func (e *METERElement) DATASTAR_REFRemove() *METERElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-ref")
+	return e
+}
+
+// Sets the value of the element
+
+func (e *METERElement) DATASTAR_BIND(key string, expression string) *METERElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key = fmt.Sprintf("data-bind-%s", key)
+
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+func (e *METERElement) IfDATASTAR_BIND(condition bool, key string, expression string) *METERElement {
+	if condition {
+		e.DATASTAR_BIND(key, expression)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_BIND from the element.
+func (e *METERElement) DATASTAR_BINDRemove() *METERElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-bind")
+	return e
+}
+
+// Sets the value of the element
+
+func (e *METERElement) DATASTAR_MODEL(expression string) *METERElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-model"
+
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+func (e *METERElement) IfDATASTAR_MODEL(condition bool, expression string) *METERElement {
+	if condition {
+		e.DATASTAR_MODEL(expression)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_MODEL from the element.
+func (e *METERElement) DATASTAR_MODELRemove() *METERElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-model")
+	return e
+}
+
+// Sets the textContent of the element
+
+func (e *METERElement) DATASTAR_TEXT(expression string) *METERElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-text"
+
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+func (e *METERElement) IfDATASTAR_TEXT(condition bool, expression string) *METERElement {
+	if condition {
+		e.DATASTAR_TEXT(expression)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_TEXT from the element.
+func (e *METERElement) DATASTAR_TEXTRemove() *METERElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-text")
+	return e
+}
+
+// Sets the event handler of the element
+
+type MeterDataOnMod customDataKeyModifier
+
+// Debounces the event handler
+func MeterDataOnModDebounce(
+	d time.Duration,
+) MeterDataOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce_%dms", d.Milliseconds())
+	}
+}
+
+// Throttles the event handler
+func MeterDataOnModThrottle(
+	d time.Duration,
+) MeterDataOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle_%dms", d.Milliseconds())
+	}
+}
+
+func (e *METERElement) DATASTAR_ON(key string, expression string, modifiers ...MeterDataOnMod) *METERElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key = fmt.Sprintf("data-on-%s", key)
+
+	customMods := lo.Map(modifiers, func(m MeterDataOnMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+func (e *METERElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...MeterDataOnMod) *METERElement {
+	if condition {
+		e.DATASTAR_ON(key, expression, modifiers...)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_ON from the element.
+func (e *METERElement) DATASTAR_ONRemove() *METERElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-on")
+	return e
+}
+
+// Sets the focus of the element
+
+func (e *METERElement) DATASTAR_FOCUSSet(b bool) *METERElement {
+	key := "data-focus"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *METERElement) DATASTAR_FOCUS() *METERElement {
+	return e.DATASTAR_FOCUSSet(true)
+}
+
+// Sets the header of for fetch requests
+
+func (e *METERElement) DATASTAR_HEADER(key string, expression string) *METERElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key = fmt.Sprintf("data-header-%s", key)
+
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+func (e *METERElement) IfDATASTAR_HEADER(condition bool, key string, expression string) *METERElement {
+	if condition {
+		e.DATASTAR_HEADER(key, expression)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_HEADER from the element.
+func (e *METERElement) DATASTAR_HEADERRemove() *METERElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-header")
+	return e
+}
+
+// Sets the URL for fetch requests
+
+func (e *METERElement) DATASTAR_FETCH_URL(expression string) *METERElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-fetch-url"
+
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+func (e *METERElement) IfDATASTAR_FETCH_URL(condition bool, expression string) *METERElement {
+	if condition {
+		e.DATASTAR_FETCH_URL(expression)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_FETCH_URL from the element.
+func (e *METERElement) DATASTAR_FETCH_URLRemove() *METERElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-fetch-url")
+	return e
+}
+
+// Sets the indicator selector for fetch requests
+
+func (e *METERElement) DATASTAR_FETCH_INDICATOR(expression string) *METERElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "DatastarFetchIndicator"
+
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+func (e *METERElement) IfDATASTAR_FETCH_INDICATOR(condition bool, expression string) *METERElement {
+	if condition {
+		e.DATASTAR_FETCH_INDICATOR(expression)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_FETCH_INDICATOR from the element.
+func (e *METERElement) DATASTAR_FETCH_INDICATORRemove() *METERElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("DatastarFetchIndicator")
+	return e
+}
+
+// Sets the visibility of the element
+
+func (e *METERElement) DATASTAR_SHOWSet(b bool) *METERElement {
+	key := "data-show"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *METERElement) DATASTAR_SHOW() *METERElement {
+	return e.DATASTAR_SHOWSet(true)
+}
+
+// Triggers the callback when the element intersects the viewport
+
+func (e *METERElement) DATASTAR_INTERSECTSSet(b bool) *METERElement {
+	key := "data-intersects"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *METERElement) DATASTAR_INTERSECTS() *METERElement {
+	return e.DATASTAR_INTERSECTSSet(true)
+}
+
+// Teleports the element to the given selector
+
+func (e *METERElement) DATASTAR_TELEPORTSet(b bool) *METERElement {
+	key := "data-teleport"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *METERElement) DATASTAR_TELEPORT() *METERElement {
+	return e.DATASTAR_TELEPORTSet(true)
+}
+
+// Scrolls the element into view
+
+func (e *METERElement) DATASTAR_SCROLL_INTO_VIEWSet(b bool) *METERElement {
+	key := "data-scroll-into-view"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *METERElement) DATASTAR_SCROLL_INTO_VIEW() *METERElement {
+	return e.DATASTAR_SCROLL_INTO_VIEWSet(true)
+}
+
+// Setup the ViewTransitionAPI for the element
+
+func (e *METERElement) DATASTAR_VIEW_TRANSITION(key string, expression string) *METERElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key = fmt.Sprintf("data-view-transition-%s", key)
+
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+func (e *METERElement) IfDATASTAR_VIEW_TRANSITION(condition bool, key string, expression string) *METERElement {
+	if condition {
+		e.DATASTAR_VIEW_TRANSITION(key, expression)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_VIEW_TRANSITION from the element.
+func (e *METERElement) DATASTAR_VIEW_TRANSITIONRemove() *METERElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-view-transition")
+	return e
+}

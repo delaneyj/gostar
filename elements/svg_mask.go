@@ -3,830 +3,794 @@
 // Description:
 package elements
 
-import(
-    "fmt"
-    "time"
-    "github.com/igrmk/treemap/v2"
-    "github.com/goccy/go-json"
-    "github.com/samber/lo"
+import (
+	"fmt"
+	"time"
+
+	"github.com/goccy/go-json"
+	"github.com/igrmk/treemap/v2"
+	"github.com/samber/lo"
 )
 
-// The <mask> SVG element hides portions of SVG elements for user display. 
+// The <mask> SVG element hides portions of SVG elements for user display.
 type SVGMASKElement struct {
-    *Element
+	*Element
 }
 
 // Create a new SVGMASKElement element.
 // This will create a new element with the tag
 // "mask" during rendering.
 func SVG_MASK(children ...ElementRenderer) *SVGMASKElement {
-    e := NewElement("mask", children...)
-    e.IsSelfClosing = false
-    e.Descendants = children
+	e := NewElement("mask", children...)
+	e.IsSelfClosing = false
+	e.Descendants = children
 
-    return &SVGMASKElement{ Element: e }
+	return &SVGMASKElement{Element: e}
 }
 
 func (e *SVGMASKElement) Children(children ...ElementRenderer) *SVGMASKElement {
-    e.Descendants = append(e.Descendants, children...)
-    return e
+	e.Descendants = append(e.Descendants, children...)
+	return e
 }
 
-func(e *SVGMASKElement) IfChildren(condition bool, children ...ElementRenderer) *SVGMASKElement {
-    if condition {
-        e.Descendants = append(e.Descendants, children...)
-    }
-    return e
+func (e *SVGMASKElement) IfChildren(condition bool, children ...ElementRenderer) *SVGMASKElement {
+	if condition {
+		e.Descendants = append(e.Descendants, children...)
+	}
+	return e
 }
 
-func(e *SVGMASKElement) TernChildren(condition bool, trueChildren, falseChildren ElementRenderer) *SVGMASKElement {
-    if condition {
-        e.Descendants = append(e.Descendants, trueChildren)
-    } else {
-        e.Descendants = append(e.Descendants, falseChildren)
-    }
-    return e
+func (e *SVGMASKElement) TernChildren(condition bool, trueChildren, falseChildren ElementRenderer) *SVGMASKElement {
+	if condition {
+		e.Descendants = append(e.Descendants, trueChildren)
+	} else {
+		e.Descendants = append(e.Descendants, falseChildren)
+	}
+	return e
 }
 
 func (e *SVGMASKElement) Text(text string) *SVGMASKElement {
-    e.Descendants = append(e.Descendants, Text(text))
-    return e
+	e.Descendants = append(e.Descendants, Text(text))
+	return e
 }
 
 func (e *SVGMASKElement) TextF(format string, args ...any) *SVGMASKElement {
-    return e.Text(fmt.Sprintf(format, args...))
+	return e.Text(fmt.Sprintf(format, args...))
 }
 
 func (e *SVGMASKElement) IfText(condition bool, text string) *SVGMASKElement {
-    if condition {
-        e.Descendants = append(e.Descendants, Text(text))
-    }
-    return e
+	if condition {
+		e.Descendants = append(e.Descendants, Text(text))
+	}
+	return e
 }
 
 func (e *SVGMASKElement) IfTextF(condition bool, format string, args ...any) *SVGMASKElement {
-    if condition {
-        e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
-    }
-    return e
+	if condition {
+		e.Descendants = append(e.Descendants, Text(fmt.Sprintf(format, args...)))
+	}
+	return e
 }
 
 func (e *SVGMASKElement) Escaped(text string) *SVGMASKElement {
-    e.Descendants = append(e.Descendants, Escaped(text))
-    return e
+	e.Descendants = append(e.Descendants, Escaped(text))
+	return e
 }
 
 func (e *SVGMASKElement) IfEscaped(condition bool, text string) *SVGMASKElement {
-    if condition {
-        e.Descendants = append(e.Descendants, Escaped(text))
-    }
-    return e
+	if condition {
+		e.Descendants = append(e.Descendants, Escaped(text))
+	}
+	return e
 }
 
 func (e *SVGMASKElement) EscapedF(format string, args ...any) *SVGMASKElement {
-    return e.Escaped(fmt.Sprintf(format, args...))
+	return e.Escaped(fmt.Sprintf(format, args...))
 }
 
 func (e *SVGMASKElement) IfEscapedF(condition bool, format string, args ...any) *SVGMASKElement {
-    if condition {
-        e.Descendants = append(e.Descendants, EscapedF(format, args...))
-    }
-    return e
+	if condition {
+		e.Descendants = append(e.Descendants, EscapedF(format, args...))
+	}
+	return e
 }
 
 func (e *SVGMASKElement) CustomData(key, value string) *SVGMASKElement {
-    if e.CustomDataAttributes == nil {
-        e.CustomDataAttributes = treemap.New[string,string]()
-    }
+	if e.CustomDataAttributes == nil {
+		e.CustomDataAttributes = treemap.New[string, string]()
+	}
 	e.CustomDataAttributes.Set(key, value)
 	return e
 }
 
 func (e *SVGMASKElement) IfCustomData(condition bool, key, value string) *SVGMASKElement {
-    if condition {
-        e.CustomData(key, value)
-    }
-    return e
+	if condition {
+		e.CustomData(key, value)
+	}
+	return e
 }
 
 func (e *SVGMASKElement) CustomDataF(key, format string, args ...any) *SVGMASKElement {
-    return e.CustomData(key, fmt.Sprintf(format, args...))
+	return e.CustomData(key, fmt.Sprintf(format, args...))
 }
 
 func (e *SVGMASKElement) IfCustomDataF(condition bool, key, format string, args ...any) *SVGMASKElement {
-    if condition {
-        e.CustomData(key, fmt.Sprintf(format, args...))
-    }
-    return e
+	if condition {
+		e.CustomData(key, fmt.Sprintf(format, args...))
+	}
+	return e
 }
 
 func (e *SVGMASKElement) CustomDataRemove(key string) *SVGMASKElement {
 	if e.CustomDataAttributes == nil {
 		return e
 	}
-    e.CustomDataAttributes.Del(key)
+	e.CustomDataAttributes.Del(key)
 	return e
 }
 
-
-    // The coordinate system for attributes x, y, width and height. 
-    func(e *SVGMASKElement) MASK_CONTENT_UNITS(c SVGMaskMaskContentUnitsChoice) *SVGMASKElement{
-            if e.StringAttributes == nil {
-                e.StringAttributes = treemap.New[string,string]()
-            }
-            e.StringAttributes.Set("maskContentUnits", string(c))
-            return e
-        }
-
-        type SVGMaskMaskContentUnitsChoice string
-        const(
-        // The coordinate system for attributes x, y, width and height. 
-            SVGMaskMaskContentUnits_userSpaceOnUse SVGMaskMaskContentUnitsChoice = "userSpaceOnUse"
-        // The coordinate system for attributes x, y, width and height. 
-            SVGMaskMaskContentUnits_objectBoundingBox SVGMaskMaskContentUnitsChoice = "objectBoundingBox"
-        )
-
-        // Remove the attribute MASK_CONTENT_UNITS from the element.
-        func(e *SVGMASKElement) MASK_CONTENT_UNITSRemove(c SVGMaskMaskContentUnitsChoice) *SVGMASKElement{
-            if e.StringAttributes == nil {
-                return e
-            }
-            e.StringAttributes.Del("maskContentUnits")
-            return e
-        }
-        
-
-    // The coordinate system for the various length values within the filter. 
-    func(e *SVGMASKElement) MASK_UNITS(c SVGMaskMaskUnitsChoice) *SVGMASKElement{
-            if e.StringAttributes == nil {
-                e.StringAttributes = treemap.New[string,string]()
-            }
-            e.StringAttributes.Set("maskUnits", string(c))
-            return e
-        }
-
-        type SVGMaskMaskUnitsChoice string
-        const(
-        // The coordinate system for the various length values within the filter. 
-            SVGMaskMaskUnits_userSpaceOnUse SVGMaskMaskUnitsChoice = "userSpaceOnUse"
-        // The coordinate system for the various length values within the filter. 
-            SVGMaskMaskUnits_objectBoundingBox SVGMaskMaskUnitsChoice = "objectBoundingBox"
-        )
-
-        // Remove the attribute MASK_UNITS from the element.
-        func(e *SVGMASKElement) MASK_UNITSRemove(c SVGMaskMaskUnitsChoice) *SVGMASKElement{
-            if e.StringAttributes == nil {
-                return e
-            }
-            e.StringAttributes.Del("maskUnits")
-            return e
-        }
-        
-
-    // The x-axis coordinate of the side of the rectangular region which is closest to 
-// the user. 
-    func(e *SVGMASKElement) X(s string) *SVGMASKElement{
-            if e.StringAttributes == nil {
-                e.StringAttributes = treemap.New[string,string]()
-            }
-            e.StringAttributes.Set("x", s)
-            return e
-        }
-
-        func(e *SVGMASKElement) IfX(condition bool, s string) *SVGMASKElement{
-            if condition {
-                e.X(s)
-            }
-            return e
-        }
-
-        // Remove the attribute X from the element.
-        func(e *SVGMASKElement) XRemove(s string) *SVGMASKElement{
-            if e.StringAttributes == nil {
-                return e
-            }
-            e.StringAttributes.Del("x")
-            return e
-        }
-    
-
-    // The y-axis coordinate of the side of the rectangular region which is closest to 
-// the user. 
-    func(e *SVGMASKElement) Y(s string) *SVGMASKElement{
-            if e.StringAttributes == nil {
-                e.StringAttributes = treemap.New[string,string]()
-            }
-            e.StringAttributes.Set("y", s)
-            return e
-        }
-
-        func(e *SVGMASKElement) IfY(condition bool, s string) *SVGMASKElement{
-            if condition {
-                e.Y(s)
-            }
-            return e
-        }
-
-        // Remove the attribute Y from the element.
-        func(e *SVGMASKElement) YRemove(s string) *SVGMASKElement{
-            if e.StringAttributes == nil {
-                return e
-            }
-            e.StringAttributes.Del("y")
-            return e
-        }
-    
-
-    // The width of the rectangular region. 
-    func(e *SVGMASKElement) WIDTH(s string) *SVGMASKElement{
-            if e.StringAttributes == nil {
-                e.StringAttributes = treemap.New[string,string]()
-            }
-            e.StringAttributes.Set("width", s)
-            return e
-        }
-
-        func(e *SVGMASKElement) IfWIDTH(condition bool, s string) *SVGMASKElement{
-            if condition {
-                e.WIDTH(s)
-            }
-            return e
-        }
-
-        // Remove the attribute WIDTH from the element.
-        func(e *SVGMASKElement) WIDTHRemove(s string) *SVGMASKElement{
-            if e.StringAttributes == nil {
-                return e
-            }
-            e.StringAttributes.Del("width")
-            return e
-        }
-    
-
-    // The height of the rectangular region. 
-    func(e *SVGMASKElement) HEIGHT(s string) *SVGMASKElement{
-            if e.StringAttributes == nil {
-                e.StringAttributes = treemap.New[string,string]()
-            }
-            e.StringAttributes.Set("height", s)
-            return e
-        }
-
-        func(e *SVGMASKElement) IfHEIGHT(condition bool, s string) *SVGMASKElement{
-            if condition {
-                e.HEIGHT(s)
-            }
-            return e
-        }
-
-        // Remove the attribute HEIGHT from the element.
-        func(e *SVGMASKElement) HEIGHTRemove(s string) *SVGMASKElement{
-            if e.StringAttributes == nil {
-                return e
-            }
-            e.StringAttributes.Del("height")
-            return e
-        }
-    
-
-    // Specifies a unique id for an element 
-    func(e *SVGMASKElement) ID(s string) *SVGMASKElement{
-            if e.StringAttributes == nil {
-                e.StringAttributes = treemap.New[string,string]()
-            }
-            e.StringAttributes.Set("id", s)
-            return e
-        }
-
-        func(e *SVGMASKElement) IfID(condition bool, s string) *SVGMASKElement{
-            if condition {
-                e.ID(s)
-            }
-            return e
-        }
-
-        // Remove the attribute ID from the element.
-        func(e *SVGMASKElement) IDRemove(s string) *SVGMASKElement{
-            if e.StringAttributes == nil {
-                return e
-            }
-            e.StringAttributes.Del("id")
-            return e
-        }
-    
-
-    // Specifies one or more classnames for an element (refers to a class in a style 
-// sheet) 
-    func(e *SVGMASKElement) CLASS(s ...string) *SVGMASKElement{
-            if e.DelimitedStrings == nil {
-                e.DelimitedStrings = treemap.New[string,*DelimitedBuilder[string]]()
-            }
-            ds, ok := e.DelimitedStrings.Get("class")
-            if !ok {
-                ds = NewDelimitedBuilder[string](" ")
-                e.DelimitedStrings.Set("class", ds)
-            }
-            ds.Add(s...)
-            return e
-        }
-
-        func(e *SVGMASKElement) IfCLASS(condition bool, s ...string) *SVGMASKElement{
-            if condition {
-                e.CLASS(s...)
-            }
-            return e
-        }
-
-        // Remove the attribute CLASS from the element.
-        func(e *SVGMASKElement) CLASSRemove(s ...string) *SVGMASKElement{
-            if e.DelimitedStrings == nil {
-                return e
-            }
-            ds, ok := e.DelimitedStrings.Get("class")
-            if !ok {
-                return e
-            }
-            ds.Remove(s ...)
-            return e
-        }
-
-    
-
-    // Specifies an inline CSS style for an element 
-    func (e *SVGMASKElement) STYLEF(k string, format string, args ...any) *SVGMASKElement {
-            return e.STYLE(k, fmt.Sprintf(format, args...))
-        }
-
-        func (e *SVGMASKElement) IfSTYLE(condition bool, k string, v string) *SVGMASKElement {
-            if condition {
-                e.STYLE(k, v)
-            }
-            return e
-        }
-
-        func (e *SVGMASKElement) STYLE(k string, v string) *SVGMASKElement {
-            if e.KVStrings == nil {
-                e.KVStrings = treemap.New[string,*KVBuilder]()
-            }
-            kv, ok := e.KVStrings.Get("style")
-            if !ok {
-                kv = NewKVBuilder(":", ";")
-                e.KVStrings.Set("style", kv)
-            }
-            kv.Add(k, v)
-            return e
-        }
-
-        func (e *SVGMASKElement) IfSTYLEF(condition bool, k string, format string, args ...any) *SVGMASKElement {
-            if condition {
-                e.STYLE(k, fmt.Sprintf(format, args...))
-            }
-            return e
-        }
-
-        // Add the attributes in the map to the element.
-        func (e *SVGMASKElement) STYLEMap(m map[string]string) *SVGMASKElement {
-            if e.KVStrings == nil {
-                e.KVStrings = treemap.New[string,*KVBuilder]()
-            }
-            kv, ok := e.KVStrings.Get("style")
-            if !ok {
-                kv = NewKVBuilder(":", ";")
-                e.KVStrings.Set("style", kv)
-            }
-            for k, v := range m {
-                kv.Add(k, v)
-            }
-            return e
-        }
-
-        // Add pairs of attributes to the element.
-        func (e *SVGMASKElement) STYLEPairs(pairs ...string) *SVGMASKElement {
-            if len(pairs) % 2 != 0 {
-                panic("Must have an even number of pairs")
-            }
-            if e.KVStrings == nil {
-                e.KVStrings = treemap.New[string,*KVBuilder]()
-            }
-            kv, ok := e.KVStrings.Get("style")
-            if !ok {
-                kv = NewKVBuilder(":", ";")
-                e.KVStrings.Set("style", kv)
-            }
-
-            for i := 0; i < len(pairs); i += 2 {
-                kv.Add(pairs[i], pairs[i+1])
-            }
-
-            return e
-        }
-
-        func (e *SVGMASKElement) IfSTYLEPairs(condition bool, pairs ...string) *SVGMASKElement {
-            if condition {
-                e.STYLEPairs(pairs...)
-            }
-            return e
-        }
-
-        // Remove the attribute STYLE from the element.
-        func (e *SVGMASKElement) STYLERemove(keys ...string) *SVGMASKElement {
-            if e.KVStrings == nil {
-                return e
-            }
-            kv, ok := e.KVStrings.Get("style")
-            if !ok {
-                return e
-            }
-            for _, k := range keys {
-                kv.Remove(k)
-            }
-            return e
-        }
-
-    
-
-    // Merges the store with the given object 
-    
-        func(e *SVGMASKElement) DATASTAR_MERGE_STORE(v any) *SVGMASKElement{
-                if e.CustomDataAttributes == nil {
-                    e.CustomDataAttributes = treemap.New[string,string]()
-                }
-                b, err := json.Marshal(v)
-                if err != nil {
-                    panic(err)
-                }
-                e.CustomDataAttributes.Set("data-merge-store", string(b))
-                return e
-            }
-
-        
-
-    // Sets the reference of the element 
-    
-        func(e *SVGMASKElement) DATASTAR_REF(expression string) *SVGMASKElement{
-                if e.StringAttributes == nil {
-                    e.StringAttributes = treemap.New[string,string]()
-                }
-                
-                key := "data-ref"
-                
-                e.StringAttributes.Set(key, expression)
-                return e
-            }
-
-            func(e *SVGMASKElement) IfDATASTAR_REF(condition bool, expression string) *SVGMASKElement{
-                if condition {
-                    e.DATASTAR_REF( expression, )
-                }
-                return e
-            }
-
-            // Remove the attribute DATASTAR_REF from the element.
-            func(e *SVGMASKElement) DATASTAR_REFRemove() *SVGMASKElement{
-                if e.StringAttributes == nil {
-                    return e
-                }
-                e.StringAttributes.Del("data-ref")
-                return e
-            }
-
-        
-
-    // Sets the value of the element 
-    
-        func(e *SVGMASKElement) DATASTAR_BIND(key string, expression string) *SVGMASKElement{
-                if e.StringAttributes == nil {
-                    e.StringAttributes = treemap.New[string,string]()
-                }
-                
-                key = fmt.Sprintf("data-bind-%s", key)
-                
-                e.StringAttributes.Set(key, expression)
-                return e
-            }
-
-            func(e *SVGMASKElement) IfDATASTAR_BIND(condition bool, key string, expression string) *SVGMASKElement{
-                if condition {
-                    e.DATASTAR_BIND(key,  expression, )
-                }
-                return e
-            }
-
-            // Remove the attribute DATASTAR_BIND from the element.
-            func(e *SVGMASKElement) DATASTAR_BINDRemove() *SVGMASKElement{
-                if e.StringAttributes == nil {
-                    return e
-                }
-                e.StringAttributes.Del("data-bind")
-                return e
-            }
-
-        
-
-    // Sets the value of the element 
-    
-        func(e *SVGMASKElement) DATASTAR_MODEL(expression string) *SVGMASKElement{
-                if e.StringAttributes == nil {
-                    e.StringAttributes = treemap.New[string,string]()
-                }
-                
-                key := "data-model"
-                
-                e.StringAttributes.Set(key, expression)
-                return e
-            }
-
-            func(e *SVGMASKElement) IfDATASTAR_MODEL(condition bool, expression string) *SVGMASKElement{
-                if condition {
-                    e.DATASTAR_MODEL( expression, )
-                }
-                return e
-            }
-
-            // Remove the attribute DATASTAR_MODEL from the element.
-            func(e *SVGMASKElement) DATASTAR_MODELRemove() *SVGMASKElement{
-                if e.StringAttributes == nil {
-                    return e
-                }
-                e.StringAttributes.Del("data-model")
-                return e
-            }
-
-        
-
-    // Sets the textContent of the element 
-    
-        func(e *SVGMASKElement) DATASTAR_TEXT(expression string) *SVGMASKElement{
-                if e.StringAttributes == nil {
-                    e.StringAttributes = treemap.New[string,string]()
-                }
-                
-                key := "data-text"
-                
-                e.StringAttributes.Set(key, expression)
-                return e
-            }
-
-            func(e *SVGMASKElement) IfDATASTAR_TEXT(condition bool, expression string) *SVGMASKElement{
-                if condition {
-                    e.DATASTAR_TEXT( expression, )
-                }
-                return e
-            }
-
-            // Remove the attribute DATASTAR_TEXT from the element.
-            func(e *SVGMASKElement) DATASTAR_TEXTRemove() *SVGMASKElement{
-                if e.StringAttributes == nil {
-                    return e
-                }
-                e.StringAttributes.Del("data-text")
-                return e
-            }
-
-        
-
-    // Sets the event handler of the element 
-    
-        type SVGMaskDataOnMod customDataKeyModifier
-
-            
-            // Debounces the event handler 
-            func SVGMaskDataOnModDebounce(
-                    d time.Duration,
-            ) SVGMaskDataOnMod {
-                return func() string {return fmt.Sprintf("debounce_%dms", d.Milliseconds())
-                }
-            }
-            
-            // Throttles the event handler 
-            func SVGMaskDataOnModThrottle(
-                    d time.Duration,
-            ) SVGMaskDataOnMod {
-                return func() string {return fmt.Sprintf("throttle_%dms", d.Milliseconds())
-                }
-            }
-            
-        func(e *SVGMASKElement) DATASTAR_ON(key string, expression string, modifiers ...SVGMaskDataOnMod) *SVGMASKElement{
-                if e.StringAttributes == nil {
-                    e.StringAttributes = treemap.New[string,string]()
-                }
-                
-                key = fmt.Sprintf("data-on-%s", key)
-                
-                customMods := lo.Map(modifiers, func(m SVGMaskDataOnMod, i int) customDataKeyModifier  {
-                    return customDataKeyModifier(m)
-                })
-                key = customDataKey(key, customMods...)
-                e.StringAttributes.Set(key, expression)
-                return e
-            }
-
-            func(e *SVGMASKElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SVGMaskDataOnMod) *SVGMASKElement{
-                if condition {
-                    e.DATASTAR_ON(key,  expression,  modifiers...)
-                }
-                return e
-            }
-
-            // Remove the attribute DATASTAR_ON from the element.
-            func(e *SVGMASKElement) DATASTAR_ONRemove() *SVGMASKElement{
-                if e.StringAttributes == nil {
-                    return e
-                }
-                e.StringAttributes.Del("data-on")
-                return e
-            }
-
-        
-
-    // Sets the focus of the element 
-    
-        func(e *SVGMASKElement) DATASTAR_FOCUSSet(b bool) *SVGMASKElement{
-                key := "data-focus"
-                e.BoolAttributes.Set(key, b)
-                return e
-            }
-
-            func(e *SVGMASKElement) DATASTAR_FOCUS() *SVGMASKElement{
-                return e.DATASTAR_FOCUSSet(true)
-            }
-        
-
-    // Sets the header of for fetch requests 
-    
-        func(e *SVGMASKElement) DATASTAR_HEADER(key string, expression string) *SVGMASKElement{
-                if e.StringAttributes == nil {
-                    e.StringAttributes = treemap.New[string,string]()
-                }
-                
-                key = fmt.Sprintf("data-header-%s", key)
-                
-                e.StringAttributes.Set(key, expression)
-                return e
-            }
-
-            func(e *SVGMASKElement) IfDATASTAR_HEADER(condition bool, key string, expression string) *SVGMASKElement{
-                if condition {
-                    e.DATASTAR_HEADER(key,  expression, )
-                }
-                return e
-            }
-
-            // Remove the attribute DATASTAR_HEADER from the element.
-            func(e *SVGMASKElement) DATASTAR_HEADERRemove() *SVGMASKElement{
-                if e.StringAttributes == nil {
-                    return e
-                }
-                e.StringAttributes.Del("data-header")
-                return e
-            }
-
-        
-
-    // Sets the URL for fetch requests 
-    
-        func(e *SVGMASKElement) DATASTAR_FETCH_URL(expression string) *SVGMASKElement{
-                if e.StringAttributes == nil {
-                    e.StringAttributes = treemap.New[string,string]()
-                }
-                
-                key := "data-fetch-url"
-                
-                e.StringAttributes.Set(key, expression)
-                return e
-            }
-
-            func(e *SVGMASKElement) IfDATASTAR_FETCH_URL(condition bool, expression string) *SVGMASKElement{
-                if condition {
-                    e.DATASTAR_FETCH_URL( expression, )
-                }
-                return e
-            }
-
-            // Remove the attribute DATASTAR_FETCH_URL from the element.
-            func(e *SVGMASKElement) DATASTAR_FETCH_URLRemove() *SVGMASKElement{
-                if e.StringAttributes == nil {
-                    return e
-                }
-                e.StringAttributes.Del("data-fetch-url")
-                return e
-            }
-
-        
-
-    // Sets the indicator selector for fetch requests 
-    
-        func(e *SVGMASKElement) DATASTAR_FETCH_INDICATOR(expression string) *SVGMASKElement{
-                if e.StringAttributes == nil {
-                    e.StringAttributes = treemap.New[string,string]()
-                }
-                
-                key := "DatastarFetchIndicator"
-                
-                e.StringAttributes.Set(key, expression)
-                return e
-            }
-
-            func(e *SVGMASKElement) IfDATASTAR_FETCH_INDICATOR(condition bool, expression string) *SVGMASKElement{
-                if condition {
-                    e.DATASTAR_FETCH_INDICATOR( expression, )
-                }
-                return e
-            }
-
-            // Remove the attribute DATASTAR_FETCH_INDICATOR from the element.
-            func(e *SVGMASKElement) DATASTAR_FETCH_INDICATORRemove() *SVGMASKElement{
-                if e.StringAttributes == nil {
-                    return e
-                }
-                e.StringAttributes.Del("DatastarFetchIndicator")
-                return e
-            }
-
-        
-
-    // Sets the visibility of the element 
-    
-        func(e *SVGMASKElement) DATASTAR_SHOWSet(b bool) *SVGMASKElement{
-                key := "data-show"
-                e.BoolAttributes.Set(key, b)
-                return e
-            }
-
-            func(e *SVGMASKElement) DATASTAR_SHOW() *SVGMASKElement{
-                return e.DATASTAR_SHOWSet(true)
-            }
-        
-
-    // Triggers the callback when the element intersects the viewport 
-    
-        func(e *SVGMASKElement) DATASTAR_INTERSECTSSet(b bool) *SVGMASKElement{
-                key := "data-intersects"
-                e.BoolAttributes.Set(key, b)
-                return e
-            }
-
-            func(e *SVGMASKElement) DATASTAR_INTERSECTS() *SVGMASKElement{
-                return e.DATASTAR_INTERSECTSSet(true)
-            }
-        
-
-    // Teleports the element to the given selector 
-    
-        func(e *SVGMASKElement) DATASTAR_TELEPORTSet(b bool) *SVGMASKElement{
-                key := "data-teleport"
-                e.BoolAttributes.Set(key, b)
-                return e
-            }
-
-            func(e *SVGMASKElement) DATASTAR_TELEPORT() *SVGMASKElement{
-                return e.DATASTAR_TELEPORTSet(true)
-            }
-        
-
-    // Scrolls the element into view 
-    
-        func(e *SVGMASKElement) DATASTAR_SCROLL_INTO_VIEWSet(b bool) *SVGMASKElement{
-                key := "data-scroll-into-view"
-                e.BoolAttributes.Set(key, b)
-                return e
-            }
-
-            func(e *SVGMASKElement) DATASTAR_SCROLL_INTO_VIEW() *SVGMASKElement{
-                return e.DATASTAR_SCROLL_INTO_VIEWSet(true)
-            }
-        
-
-    // Setup the ViewTransitionAPI for the element 
-    
-        func(e *SVGMASKElement) DATASTAR_VIEW_TRANSITION(key string, expression string) *SVGMASKElement{
-                if e.StringAttributes == nil {
-                    e.StringAttributes = treemap.New[string,string]()
-                }
-                
-                key = fmt.Sprintf("data-view-transition-%s", key)
-                
-                e.StringAttributes.Set(key, expression)
-                return e
-            }
-
-            func(e *SVGMASKElement) IfDATASTAR_VIEW_TRANSITION(condition bool, key string, expression string) *SVGMASKElement{
-                if condition {
-                    e.DATASTAR_VIEW_TRANSITION(key,  expression, )
-                }
-                return e
-            }
-
-            // Remove the attribute DATASTAR_VIEW_TRANSITION from the element.
-            func(e *SVGMASKElement) DATASTAR_VIEW_TRANSITIONRemove() *SVGMASKElement{
-                if e.StringAttributes == nil {
-                    return e
-                }
-                e.StringAttributes.Del("data-view-transition")
-                return e
-            }
-
-        
-
-
-
+// The coordinate system for attributes x, y, width and height.
+func (e *SVGMASKElement) MASK_CONTENT_UNITS(c SVGMaskMaskContentUnitsChoice) *SVGMASKElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	e.StringAttributes.Set("maskContentUnits", string(c))
+	return e
+}
+
+type SVGMaskMaskContentUnitsChoice string
+
+const (
+	// The coordinate system for attributes x, y, width and height.
+	SVGMaskMaskContentUnits_userSpaceOnUse SVGMaskMaskContentUnitsChoice = "userSpaceOnUse"
+	// The coordinate system for attributes x, y, width and height.
+	SVGMaskMaskContentUnits_objectBoundingBox SVGMaskMaskContentUnitsChoice = "objectBoundingBox"
+)
+
+// Remove the attribute MASK_CONTENT_UNITS from the element.
+func (e *SVGMASKElement) MASK_CONTENT_UNITSRemove(c SVGMaskMaskContentUnitsChoice) *SVGMASKElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("maskContentUnits")
+	return e
+}
+
+// The coordinate system for the various length values within the filter.
+func (e *SVGMASKElement) MASK_UNITS(c SVGMaskMaskUnitsChoice) *SVGMASKElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	e.StringAttributes.Set("maskUnits", string(c))
+	return e
+}
+
+type SVGMaskMaskUnitsChoice string
+
+const (
+	// The coordinate system for the various length values within the filter.
+	SVGMaskMaskUnits_userSpaceOnUse SVGMaskMaskUnitsChoice = "userSpaceOnUse"
+	// The coordinate system for the various length values within the filter.
+	SVGMaskMaskUnits_objectBoundingBox SVGMaskMaskUnitsChoice = "objectBoundingBox"
+)
+
+// Remove the attribute MASK_UNITS from the element.
+func (e *SVGMASKElement) MASK_UNITSRemove(c SVGMaskMaskUnitsChoice) *SVGMASKElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("maskUnits")
+	return e
+}
+
+// The x-axis coordinate of the side of the rectangular region which is closest to
+// the user.
+func (e *SVGMASKElement) X(s string) *SVGMASKElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	e.StringAttributes.Set("x", s)
+	return e
+}
+
+func (e *SVGMASKElement) IfX(condition bool, s string) *SVGMASKElement {
+	if condition {
+		e.X(s)
+	}
+	return e
+}
+
+// Remove the attribute X from the element.
+func (e *SVGMASKElement) XRemove(s string) *SVGMASKElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("x")
+	return e
+}
+
+// The y-axis coordinate of the side of the rectangular region which is closest to
+// the user.
+func (e *SVGMASKElement) Y(s string) *SVGMASKElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	e.StringAttributes.Set("y", s)
+	return e
+}
+
+func (e *SVGMASKElement) IfY(condition bool, s string) *SVGMASKElement {
+	if condition {
+		e.Y(s)
+	}
+	return e
+}
+
+// Remove the attribute Y from the element.
+func (e *SVGMASKElement) YRemove(s string) *SVGMASKElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("y")
+	return e
+}
+
+// The width of the rectangular region.
+func (e *SVGMASKElement) WIDTH(s string) *SVGMASKElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	e.StringAttributes.Set("width", s)
+	return e
+}
+
+func (e *SVGMASKElement) IfWIDTH(condition bool, s string) *SVGMASKElement {
+	if condition {
+		e.WIDTH(s)
+	}
+	return e
+}
+
+// Remove the attribute WIDTH from the element.
+func (e *SVGMASKElement) WIDTHRemove(s string) *SVGMASKElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("width")
+	return e
+}
+
+// The height of the rectangular region.
+func (e *SVGMASKElement) HEIGHT(s string) *SVGMASKElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	e.StringAttributes.Set("height", s)
+	return e
+}
+
+func (e *SVGMASKElement) IfHEIGHT(condition bool, s string) *SVGMASKElement {
+	if condition {
+		e.HEIGHT(s)
+	}
+	return e
+}
+
+// Remove the attribute HEIGHT from the element.
+func (e *SVGMASKElement) HEIGHTRemove(s string) *SVGMASKElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("height")
+	return e
+}
+
+// Specifies a unique id for an element
+func (e *SVGMASKElement) ID(s string) *SVGMASKElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	e.StringAttributes.Set("id", s)
+	return e
+}
+
+func (e *SVGMASKElement) IfID(condition bool, s string) *SVGMASKElement {
+	if condition {
+		e.ID(s)
+	}
+	return e
+}
+
+// Remove the attribute ID from the element.
+func (e *SVGMASKElement) IDRemove(s string) *SVGMASKElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("id")
+	return e
+}
+
+// Specifies one or more classnames for an element (refers to a class in a style
+// sheet)
+func (e *SVGMASKElement) CLASS(s ...string) *SVGMASKElement {
+	if e.DelimitedStrings == nil {
+		e.DelimitedStrings = treemap.New[string, *DelimitedBuilder[string]]()
+	}
+	ds, ok := e.DelimitedStrings.Get("class")
+	if !ok {
+		ds = NewDelimitedBuilder[string](" ")
+		e.DelimitedStrings.Set("class", ds)
+	}
+	ds.Add(s...)
+	return e
+}
+
+func (e *SVGMASKElement) IfCLASS(condition bool, s ...string) *SVGMASKElement {
+	if condition {
+		e.CLASS(s...)
+	}
+	return e
+}
+
+// Remove the attribute CLASS from the element.
+func (e *SVGMASKElement) CLASSRemove(s ...string) *SVGMASKElement {
+	if e.DelimitedStrings == nil {
+		return e
+	}
+	ds, ok := e.DelimitedStrings.Get("class")
+	if !ok {
+		return e
+	}
+	ds.Remove(s...)
+	return e
+}
+
+// Specifies an inline CSS style for an element
+func (e *SVGMASKElement) STYLEF(k string, format string, args ...any) *SVGMASKElement {
+	return e.STYLE(k, fmt.Sprintf(format, args...))
+}
+
+func (e *SVGMASKElement) IfSTYLE(condition bool, k string, v string) *SVGMASKElement {
+	if condition {
+		e.STYLE(k, v)
+	}
+	return e
+}
+
+func (e *SVGMASKElement) STYLE(k string, v string) *SVGMASKElement {
+	if e.KVStrings == nil {
+		e.KVStrings = treemap.New[string, *KVBuilder]()
+	}
+	kv, ok := e.KVStrings.Get("style")
+	if !ok {
+		kv = NewKVBuilder(":", ";")
+		e.KVStrings.Set("style", kv)
+	}
+	kv.Add(k, v)
+	return e
+}
+
+func (e *SVGMASKElement) IfSTYLEF(condition bool, k string, format string, args ...any) *SVGMASKElement {
+	if condition {
+		e.STYLE(k, fmt.Sprintf(format, args...))
+	}
+	return e
+}
+
+// Add the attributes in the map to the element.
+func (e *SVGMASKElement) STYLEMap(m map[string]string) *SVGMASKElement {
+	if e.KVStrings == nil {
+		e.KVStrings = treemap.New[string, *KVBuilder]()
+	}
+	kv, ok := e.KVStrings.Get("style")
+	if !ok {
+		kv = NewKVBuilder(":", ";")
+		e.KVStrings.Set("style", kv)
+	}
+	for k, v := range m {
+		kv.Add(k, v)
+	}
+	return e
+}
+
+// Add pairs of attributes to the element.
+func (e *SVGMASKElement) STYLEPairs(pairs ...string) *SVGMASKElement {
+	if len(pairs)%2 != 0 {
+		panic("Must have an even number of pairs")
+	}
+	if e.KVStrings == nil {
+		e.KVStrings = treemap.New[string, *KVBuilder]()
+	}
+	kv, ok := e.KVStrings.Get("style")
+	if !ok {
+		kv = NewKVBuilder(":", ";")
+		e.KVStrings.Set("style", kv)
+	}
+
+	for i := 0; i < len(pairs); i += 2 {
+		kv.Add(pairs[i], pairs[i+1])
+	}
+
+	return e
+}
+
+func (e *SVGMASKElement) IfSTYLEPairs(condition bool, pairs ...string) *SVGMASKElement {
+	if condition {
+		e.STYLEPairs(pairs...)
+	}
+	return e
+}
+
+// Remove the attribute STYLE from the element.
+func (e *SVGMASKElement) STYLERemove(keys ...string) *SVGMASKElement {
+	if e.KVStrings == nil {
+		return e
+	}
+	kv, ok := e.KVStrings.Get("style")
+	if !ok {
+		return e
+	}
+	for _, k := range keys {
+		kv.Remove(k)
+	}
+	return e
+}
+
+// Merges the store with the given object
+
+func (e *SVGMASKElement) DATASTAR_MERGE_STORE(v any) *SVGMASKElement {
+	if e.CustomDataAttributes == nil {
+		e.CustomDataAttributes = treemap.New[string, string]()
+	}
+	b, err := json.Marshal(v)
+	if err != nil {
+		panic(err)
+	}
+	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	return e
+}
+
+// Sets the reference of the element
+
+func (e *SVGMASKElement) DATASTAR_REF(expression string) *SVGMASKElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-ref"
+
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+func (e *SVGMASKElement) IfDATASTAR_REF(condition bool, expression string) *SVGMASKElement {
+	if condition {
+		e.DATASTAR_REF(expression)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_REF from the element.
+func (e *SVGMASKElement) DATASTAR_REFRemove() *SVGMASKElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-ref")
+	return e
+}
+
+// Sets the value of the element
+
+func (e *SVGMASKElement) DATASTAR_BIND(key string, expression string) *SVGMASKElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key = fmt.Sprintf("data-bind-%s", key)
+
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+func (e *SVGMASKElement) IfDATASTAR_BIND(condition bool, key string, expression string) *SVGMASKElement {
+	if condition {
+		e.DATASTAR_BIND(key, expression)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_BIND from the element.
+func (e *SVGMASKElement) DATASTAR_BINDRemove() *SVGMASKElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-bind")
+	return e
+}
+
+// Sets the value of the element
+
+func (e *SVGMASKElement) DATASTAR_MODEL(expression string) *SVGMASKElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-model"
+
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+func (e *SVGMASKElement) IfDATASTAR_MODEL(condition bool, expression string) *SVGMASKElement {
+	if condition {
+		e.DATASTAR_MODEL(expression)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_MODEL from the element.
+func (e *SVGMASKElement) DATASTAR_MODELRemove() *SVGMASKElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-model")
+	return e
+}
+
+// Sets the textContent of the element
+
+func (e *SVGMASKElement) DATASTAR_TEXT(expression string) *SVGMASKElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-text"
+
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+func (e *SVGMASKElement) IfDATASTAR_TEXT(condition bool, expression string) *SVGMASKElement {
+	if condition {
+		e.DATASTAR_TEXT(expression)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_TEXT from the element.
+func (e *SVGMASKElement) DATASTAR_TEXTRemove() *SVGMASKElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-text")
+	return e
+}
+
+// Sets the event handler of the element
+
+type SVGMaskDataOnMod customDataKeyModifier
+
+// Debounces the event handler
+func SVGMaskDataOnModDebounce(
+	d time.Duration,
+) SVGMaskDataOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce_%dms", d.Milliseconds())
+	}
+}
+
+// Throttles the event handler
+func SVGMaskDataOnModThrottle(
+	d time.Duration,
+) SVGMaskDataOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle_%dms", d.Milliseconds())
+	}
+}
+
+func (e *SVGMASKElement) DATASTAR_ON(key string, expression string, modifiers ...SVGMaskDataOnMod) *SVGMASKElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key = fmt.Sprintf("data-on-%s", key)
+
+	customMods := lo.Map(modifiers, func(m SVGMaskDataOnMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+func (e *SVGMASKElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SVGMaskDataOnMod) *SVGMASKElement {
+	if condition {
+		e.DATASTAR_ON(key, expression, modifiers...)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_ON from the element.
+func (e *SVGMASKElement) DATASTAR_ONRemove() *SVGMASKElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-on")
+	return e
+}
+
+// Sets the focus of the element
+
+func (e *SVGMASKElement) DATASTAR_FOCUSSet(b bool) *SVGMASKElement {
+	key := "data-focus"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *SVGMASKElement) DATASTAR_FOCUS() *SVGMASKElement {
+	return e.DATASTAR_FOCUSSet(true)
+}
+
+// Sets the header of for fetch requests
+
+func (e *SVGMASKElement) DATASTAR_HEADER(key string, expression string) *SVGMASKElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key = fmt.Sprintf("data-header-%s", key)
+
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+func (e *SVGMASKElement) IfDATASTAR_HEADER(condition bool, key string, expression string) *SVGMASKElement {
+	if condition {
+		e.DATASTAR_HEADER(key, expression)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_HEADER from the element.
+func (e *SVGMASKElement) DATASTAR_HEADERRemove() *SVGMASKElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-header")
+	return e
+}
+
+// Sets the URL for fetch requests
+
+func (e *SVGMASKElement) DATASTAR_FETCH_URL(expression string) *SVGMASKElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-fetch-url"
+
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+func (e *SVGMASKElement) IfDATASTAR_FETCH_URL(condition bool, expression string) *SVGMASKElement {
+	if condition {
+		e.DATASTAR_FETCH_URL(expression)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_FETCH_URL from the element.
+func (e *SVGMASKElement) DATASTAR_FETCH_URLRemove() *SVGMASKElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-fetch-url")
+	return e
+}
+
+// Sets the indicator selector for fetch requests
+
+func (e *SVGMASKElement) DATASTAR_FETCH_INDICATOR(expression string) *SVGMASKElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "DatastarFetchIndicator"
+
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+func (e *SVGMASKElement) IfDATASTAR_FETCH_INDICATOR(condition bool, expression string) *SVGMASKElement {
+	if condition {
+		e.DATASTAR_FETCH_INDICATOR(expression)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_FETCH_INDICATOR from the element.
+func (e *SVGMASKElement) DATASTAR_FETCH_INDICATORRemove() *SVGMASKElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("DatastarFetchIndicator")
+	return e
+}
+
+// Sets the visibility of the element
+
+func (e *SVGMASKElement) DATASTAR_SHOWSet(b bool) *SVGMASKElement {
+	key := "data-show"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *SVGMASKElement) DATASTAR_SHOW() *SVGMASKElement {
+	return e.DATASTAR_SHOWSet(true)
+}
+
+// Triggers the callback when the element intersects the viewport
+
+func (e *SVGMASKElement) DATASTAR_INTERSECTSSet(b bool) *SVGMASKElement {
+	key := "data-intersects"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *SVGMASKElement) DATASTAR_INTERSECTS() *SVGMASKElement {
+	return e.DATASTAR_INTERSECTSSet(true)
+}
+
+// Teleports the element to the given selector
+
+func (e *SVGMASKElement) DATASTAR_TELEPORTSet(b bool) *SVGMASKElement {
+	key := "data-teleport"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *SVGMASKElement) DATASTAR_TELEPORT() *SVGMASKElement {
+	return e.DATASTAR_TELEPORTSet(true)
+}
+
+// Scrolls the element into view
+
+func (e *SVGMASKElement) DATASTAR_SCROLL_INTO_VIEWSet(b bool) *SVGMASKElement {
+	key := "data-scroll-into-view"
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+func (e *SVGMASKElement) DATASTAR_SCROLL_INTO_VIEW() *SVGMASKElement {
+	return e.DATASTAR_SCROLL_INTO_VIEWSet(true)
+}
+
+// Setup the ViewTransitionAPI for the element
+
+func (e *SVGMASKElement) DATASTAR_VIEW_TRANSITION(key string, expression string) *SVGMASKElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key = fmt.Sprintf("data-view-transition-%s", key)
+
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+func (e *SVGMASKElement) IfDATASTAR_VIEW_TRANSITION(condition bool, key string, expression string) *SVGMASKElement {
+	if condition {
+		e.DATASTAR_VIEW_TRANSITION(key, expression)
+	}
+	return e
+}
+
+// Remove the attribute DATASTAR_VIEW_TRANSITION from the element.
+func (e *SVGMASKElement) DATASTAR_VIEW_TRANSITIONRemove() *SVGMASKElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("data-view-transition")
+	return e
+}
