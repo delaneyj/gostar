@@ -12,7 +12,7 @@ import(
 )
 
 {{ .Element.Description | comments}}
-{{ $elUpper := .Element.Tag | upper | replace "-" "_" -}}
+{{ $elUpper := .Element.Name | upper | replace "-" "_" -}}
 {{ $elStructName := printf "%s%sElement" .Namespace.Prefix $elUpper -}}
 type {{$elStructName}} struct {
     *Element
