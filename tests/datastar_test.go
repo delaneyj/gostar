@@ -37,6 +37,23 @@ func TestDatastar(t *testing.T) {
 			Expected: "<div data-bind-foo=\"bar\"></div>",
 			Actual:   DIV().DATASTAR_BIND("foo", "bar"),
 		},
+		{
+			Expected: "<div data-model=\"foo\"></div>",
+			Actual:   DIV().DATASTAR_MODEL("foo"),
+		},
+		{
+			Expected: "<div data-text=\"foo\"></div>",
+			Actual:   DIV().DATASTAR_TEXT("foo"),
+		},
+
+		{
+			Expected: "<div data-on-click=\"foo\"></div>",
+			Actual:   DIV().DATASTAR_ON("click", "foo"),
+		},
+		{
+			Expected: "<div data-on-load=\"foo\"></div>",
+			Actual:   DIV().DATASTAR_ON("load", "foo"),
+		},
 	}
 
 	for _, expectedResult := range expectedResults {

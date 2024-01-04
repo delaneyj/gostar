@@ -3,7 +3,7 @@
 version: "3"
 
 vars:
-  VERSION: 0.5.11
+  VERSION: 0.5.12
 
 interval: 1000ms
 
@@ -34,7 +34,7 @@ tasks:
     cmds:
       - go install golang.org/x/tools/cmd/goimports@latest
       - go run cmd/gen/*.go
-      - goimports -w elements
+      - time goimports -w elements
 
   test:
     deps:

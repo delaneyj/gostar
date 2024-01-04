@@ -180,7 +180,6 @@ type customDataKeyModifier func() string
 
 func customDataKey(key string, modifiers ...customDataKeyModifier) string {
 	sb := strings.Builder{}
-	sb.WriteString("data-")
 	sb.WriteString(key)
 	for i, m := range modifiers {
 		sb.WriteString(m())

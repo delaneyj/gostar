@@ -591,7 +591,7 @@ func (e *{{$elStructName}}) CustomDataRemove(key string) *{{$elStructName}} {
         {{else if $customType | attrIsDuration -}}
             func(e *{{$elStructName}}) {{.Name}}(d time.Duration{{if $custom.Modifiers}}, modifiers ...{{$modTypeName}}{{end}}) *{{$elStructName}}{
                 {{- if $custom.Modifiers}}
-                key := customDataKey("{{.Key}}"{{if $custom.Modifiers}}, modifiers...{{end}})
+                key := customDataKey("data-{{.Key}}"{{if $custom.Modifiers}}, modifiers...{{end}})
                 {{- else}}
                 key := "data-{{.Key}}"
                 {{- end}}
@@ -605,7 +605,7 @@ func (e *{{$elStructName}}) CustomDataRemove(key string) *{{$elStructName}} {
         {{ else if $customType | attrIsBool -}}
             func(e *{{$elStructName}}) {{.Name}}Set(b bool{{if $custom.Modifiers}}, modifiers ...{{$modTypeName}}{{end}}) *{{$elStructName}}{
                 {{- if $custom.Modifiers}}
-                key := customDataKey("{{.Key}}"{{if $custom.Modifiers}}, modifiers...{{end}})
+                key := customDataKey("data-{{.Key}}"{{if $custom.Modifiers}}, modifiers...{{end}})
                 {{- else}}
                 key := "data-{{.Key}}"
                 {{- end}}
