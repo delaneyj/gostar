@@ -5,6 +5,7 @@ package elements
 
 import (
 	"fmt"
+	"html"
 	"time"
 
 	"github.com/goccy/go-json"
@@ -1812,7 +1813,7 @@ func (e *SELECTElement) DATASTAR_MERGE_STORE(v any) *SELECTElement {
 	if err != nil {
 		panic(err)
 	}
-	e.CustomDataAttributes.Set("merge-store", string(b))
+	e.CustomDataAttributes.Set("merge-store", html.EscapeString(string(b)))
 	return e
 }
 

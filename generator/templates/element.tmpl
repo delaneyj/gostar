@@ -578,7 +578,7 @@ func (e *{{$elStructName}}) CustomDataRemove(key string) *{{$elStructName}} {
                 if err != nil {
                     panic(err)
                 }
-                e.CustomDataAttributes.Set("{{.Key}}", string(b))
+                e.CustomDataAttributes.Set("{{.Key}}", html.EscapeString(string(b)))
 
                 {{- if $custom.Modifiers}}
                 for _, mod := range modifiers {

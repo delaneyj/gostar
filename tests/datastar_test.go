@@ -16,10 +16,17 @@ func TestDatastar(t *testing.T) {
 
 	expectedResults := []ExpectedResult{
 		{
-			Expected: "<div data-merge-store=\"{\"baz\":1234,\"foo\":\"bar\"}\"></div>",
+			Expected: "<div data-merge-store=\"{&#34;baz&#34;:1234,&#34;foo&#34;:&#34;bar&#34;}\"></div>",
 			Actual: DIV().DATASTAR_MERGE_STORE(map[string]any{
 				"foo": "bar",
 				"baz": 1234,
+			}),
+		},
+		{
+			Expected: "<div data-merge-store=\"{&#34;label&#34;:&#34;HTML on whatever backend you like&#34;,&#34;v&#34;:1}\"></div>",
+			Actual: DIV().DATASTAR_MERGE_STORE(map[string]any{
+				"label": "HTML on whatever backend you like",
+				"v":     1,
 			}),
 		},
 		{
