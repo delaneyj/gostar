@@ -915,20 +915,20 @@ func (e *MathMLMFRACElement) DATASTAR_SCROLL_INTO_VIEW() *MathMLMFRACElement {
 
 // Setup the ViewTransitionAPI for the element
 
-func (e *MathMLMFRACElement) DATASTAR_VIEW_TRANSITION(key string, expression string) *MathMLMFRACElement {
+func (e *MathMLMFRACElement) DATASTAR_VIEW_TRANSITION(expression string) *MathMLMFRACElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key = fmt.Sprintf("data-view-transition-%s", key)
+	key := "data-view-transition"
 
 	e.StringAttributes.Set(key, expression)
 	return e
 }
 
-func (e *MathMLMFRACElement) IfDATASTAR_VIEW_TRANSITION(condition bool, key string, expression string) *MathMLMFRACElement {
+func (e *MathMLMFRACElement) IfDATASTAR_VIEW_TRANSITION(condition bool, expression string) *MathMLMFRACElement {
 	if condition {
-		e.DATASTAR_VIEW_TRANSITION(key, expression)
+		e.DATASTAR_VIEW_TRANSITION(expression)
 	}
 	return e
 }

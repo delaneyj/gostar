@@ -1770,20 +1770,20 @@ func (e *BLOCKQUOTEElement) DATASTAR_SCROLL_INTO_VIEW() *BLOCKQUOTEElement {
 
 // Setup the ViewTransitionAPI for the element
 
-func (e *BLOCKQUOTEElement) DATASTAR_VIEW_TRANSITION(key string, expression string) *BLOCKQUOTEElement {
+func (e *BLOCKQUOTEElement) DATASTAR_VIEW_TRANSITION(expression string) *BLOCKQUOTEElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key = fmt.Sprintf("data-view-transition-%s", key)
+	key := "data-view-transition"
 
 	e.StringAttributes.Set(key, expression)
 	return e
 }
 
-func (e *BLOCKQUOTEElement) IfDATASTAR_VIEW_TRANSITION(condition bool, key string, expression string) *BLOCKQUOTEElement {
+func (e *BLOCKQUOTEElement) IfDATASTAR_VIEW_TRANSITION(condition bool, expression string) *BLOCKQUOTEElement {
 	if condition {
-		e.DATASTAR_VIEW_TRANSITION(key, expression)
+		e.DATASTAR_VIEW_TRANSITION(expression)
 	}
 	return e
 }

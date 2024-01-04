@@ -1740,20 +1740,20 @@ func (e *VARElement) DATASTAR_SCROLL_INTO_VIEW() *VARElement {
 
 // Setup the ViewTransitionAPI for the element
 
-func (e *VARElement) DATASTAR_VIEW_TRANSITION(key string, expression string) *VARElement {
+func (e *VARElement) DATASTAR_VIEW_TRANSITION(expression string) *VARElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key = fmt.Sprintf("data-view-transition-%s", key)
+	key := "data-view-transition"
 
 	e.StringAttributes.Set(key, expression)
 	return e
 }
 
-func (e *VARElement) IfDATASTAR_VIEW_TRANSITION(condition bool, key string, expression string) *VARElement {
+func (e *VARElement) IfDATASTAR_VIEW_TRANSITION(condition bool, expression string) *VARElement {
 	if condition {
-		e.DATASTAR_VIEW_TRANSITION(key, expression)
+		e.DATASTAR_VIEW_TRANSITION(expression)
 	}
 	return e
 }

@@ -671,20 +671,20 @@ func (e *SLRADIOGROUPElement) DATASTAR_SCROLL_INTO_VIEW() *SLRADIOGROUPElement {
 
 // Setup the ViewTransitionAPI for the element
 
-func (e *SLRADIOGROUPElement) DATASTAR_VIEW_TRANSITION(key string, expression string) *SLRADIOGROUPElement {
+func (e *SLRADIOGROUPElement) DATASTAR_VIEW_TRANSITION(expression string) *SLRADIOGROUPElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key = fmt.Sprintf("data-view-transition-%s", key)
+	key := "data-view-transition"
 
 	e.StringAttributes.Set(key, expression)
 	return e
 }
 
-func (e *SLRADIOGROUPElement) IfDATASTAR_VIEW_TRANSITION(condition bool, key string, expression string) *SLRADIOGROUPElement {
+func (e *SLRADIOGROUPElement) IfDATASTAR_VIEW_TRANSITION(condition bool, expression string) *SLRADIOGROUPElement {
 	if condition {
-		e.DATASTAR_VIEW_TRANSITION(key, expression)
+		e.DATASTAR_VIEW_TRANSITION(expression)
 	}
 	return e
 }

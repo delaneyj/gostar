@@ -2083,20 +2083,20 @@ func (e *IMGElement) DATASTAR_SCROLL_INTO_VIEW() *IMGElement {
 
 // Setup the ViewTransitionAPI for the element
 
-func (e *IMGElement) DATASTAR_VIEW_TRANSITION(key string, expression string) *IMGElement {
+func (e *IMGElement) DATASTAR_VIEW_TRANSITION(expression string) *IMGElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key = fmt.Sprintf("data-view-transition-%s", key)
+	key := "data-view-transition"
 
 	e.StringAttributes.Set(key, expression)
 	return e
 }
 
-func (e *IMGElement) IfDATASTAR_VIEW_TRANSITION(condition bool, key string, expression string) *IMGElement {
+func (e *IMGElement) IfDATASTAR_VIEW_TRANSITION(condition bool, expression string) *IMGElement {
 	if condition {
-		e.DATASTAR_VIEW_TRANSITION(key, expression)
+		e.DATASTAR_VIEW_TRANSITION(expression)
 	}
 	return e
 }

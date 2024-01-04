@@ -1741,20 +1741,20 @@ func (e *TRElement) DATASTAR_SCROLL_INTO_VIEW() *TRElement {
 
 // Setup the ViewTransitionAPI for the element
 
-func (e *TRElement) DATASTAR_VIEW_TRANSITION(key string, expression string) *TRElement {
+func (e *TRElement) DATASTAR_VIEW_TRANSITION(expression string) *TRElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key = fmt.Sprintf("data-view-transition-%s", key)
+	key := "data-view-transition"
 
 	e.StringAttributes.Set(key, expression)
 	return e
 }
 
-func (e *TRElement) IfDATASTAR_VIEW_TRANSITION(condition bool, key string, expression string) *TRElement {
+func (e *TRElement) IfDATASTAR_VIEW_TRANSITION(condition bool, expression string) *TRElement {
 	if condition {
-		e.DATASTAR_VIEW_TRANSITION(key, expression)
+		e.DATASTAR_VIEW_TRANSITION(expression)
 	}
 	return e
 }

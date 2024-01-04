@@ -636,20 +636,20 @@ func (e *SLRADIOBUTTONElement) DATASTAR_SCROLL_INTO_VIEW() *SLRADIOBUTTONElement
 
 // Setup the ViewTransitionAPI for the element
 
-func (e *SLRADIOBUTTONElement) DATASTAR_VIEW_TRANSITION(key string, expression string) *SLRADIOBUTTONElement {
+func (e *SLRADIOBUTTONElement) DATASTAR_VIEW_TRANSITION(expression string) *SLRADIOBUTTONElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key = fmt.Sprintf("data-view-transition-%s", key)
+	key := "data-view-transition"
 
 	e.StringAttributes.Set(key, expression)
 	return e
 }
 
-func (e *SLRADIOBUTTONElement) IfDATASTAR_VIEW_TRANSITION(condition bool, key string, expression string) *SLRADIOBUTTONElement {
+func (e *SLRADIOBUTTONElement) IfDATASTAR_VIEW_TRANSITION(condition bool, expression string) *SLRADIOBUTTONElement {
 	if condition {
-		e.DATASTAR_VIEW_TRANSITION(key, expression)
+		e.DATASTAR_VIEW_TRANSITION(expression)
 	}
 	return e
 }

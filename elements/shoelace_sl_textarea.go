@@ -1095,20 +1095,20 @@ func (e *SLTEXTAREAElement) DATASTAR_SCROLL_INTO_VIEW() *SLTEXTAREAElement {
 
 // Setup the ViewTransitionAPI for the element
 
-func (e *SLTEXTAREAElement) DATASTAR_VIEW_TRANSITION(key string, expression string) *SLTEXTAREAElement {
+func (e *SLTEXTAREAElement) DATASTAR_VIEW_TRANSITION(expression string) *SLTEXTAREAElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key = fmt.Sprintf("data-view-transition-%s", key)
+	key := "data-view-transition"
 
 	e.StringAttributes.Set(key, expression)
 	return e
 }
 
-func (e *SLTEXTAREAElement) IfDATASTAR_VIEW_TRANSITION(condition bool, key string, expression string) *SLTEXTAREAElement {
+func (e *SLTEXTAREAElement) IfDATASTAR_VIEW_TRANSITION(condition bool, expression string) *SLTEXTAREAElement {
 	if condition {
-		e.DATASTAR_VIEW_TRANSITION(key, expression)
+		e.DATASTAR_VIEW_TRANSITION(expression)
 	}
 	return e
 }

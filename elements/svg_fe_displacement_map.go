@@ -795,20 +795,20 @@ func (e *SVGFEDISPLACEMENTMAPElement) DATASTAR_SCROLL_INTO_VIEW() *SVGFEDISPLACE
 
 // Setup the ViewTransitionAPI for the element
 
-func (e *SVGFEDISPLACEMENTMAPElement) DATASTAR_VIEW_TRANSITION(key string, expression string) *SVGFEDISPLACEMENTMAPElement {
+func (e *SVGFEDISPLACEMENTMAPElement) DATASTAR_VIEW_TRANSITION(expression string) *SVGFEDISPLACEMENTMAPElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key = fmt.Sprintf("data-view-transition-%s", key)
+	key := "data-view-transition"
 
 	e.StringAttributes.Set(key, expression)
 	return e
 }
 
-func (e *SVGFEDISPLACEMENTMAPElement) IfDATASTAR_VIEW_TRANSITION(condition bool, key string, expression string) *SVGFEDISPLACEMENTMAPElement {
+func (e *SVGFEDISPLACEMENTMAPElement) IfDATASTAR_VIEW_TRANSITION(condition bool, expression string) *SVGFEDISPLACEMENTMAPElement {
 	if condition {
-		e.DATASTAR_VIEW_TRANSITION(key, expression)
+		e.DATASTAR_VIEW_TRANSITION(expression)
 	}
 	return e
 }

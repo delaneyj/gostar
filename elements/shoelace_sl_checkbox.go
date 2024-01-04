@@ -710,20 +710,20 @@ func (e *SLCHECKBOXElement) DATASTAR_SCROLL_INTO_VIEW() *SLCHECKBOXElement {
 
 // Setup the ViewTransitionAPI for the element
 
-func (e *SLCHECKBOXElement) DATASTAR_VIEW_TRANSITION(key string, expression string) *SLCHECKBOXElement {
+func (e *SLCHECKBOXElement) DATASTAR_VIEW_TRANSITION(expression string) *SLCHECKBOXElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key = fmt.Sprintf("data-view-transition-%s", key)
+	key := "data-view-transition"
 
 	e.StringAttributes.Set(key, expression)
 	return e
 }
 
-func (e *SLCHECKBOXElement) IfDATASTAR_VIEW_TRANSITION(condition bool, key string, expression string) *SLCHECKBOXElement {
+func (e *SLCHECKBOXElement) IfDATASTAR_VIEW_TRANSITION(condition bool, expression string) *SLCHECKBOXElement {
 	if condition {
-		e.DATASTAR_VIEW_TRANSITION(key, expression)
+		e.DATASTAR_VIEW_TRANSITION(expression)
 	}
 	return e
 }

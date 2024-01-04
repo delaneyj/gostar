@@ -776,20 +776,20 @@ func (e *SVGFEIMAGEElement) DATASTAR_SCROLL_INTO_VIEW() *SVGFEIMAGEElement {
 
 // Setup the ViewTransitionAPI for the element
 
-func (e *SVGFEIMAGEElement) DATASTAR_VIEW_TRANSITION(key string, expression string) *SVGFEIMAGEElement {
+func (e *SVGFEIMAGEElement) DATASTAR_VIEW_TRANSITION(expression string) *SVGFEIMAGEElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key = fmt.Sprintf("data-view-transition-%s", key)
+	key := "data-view-transition"
 
 	e.StringAttributes.Set(key, expression)
 	return e
 }
 
-func (e *SVGFEIMAGEElement) IfDATASTAR_VIEW_TRANSITION(condition bool, key string, expression string) *SVGFEIMAGEElement {
+func (e *SVGFEIMAGEElement) IfDATASTAR_VIEW_TRANSITION(condition bool, expression string) *SVGFEIMAGEElement {
 	if condition {
-		e.DATASTAR_VIEW_TRANSITION(key, expression)
+		e.DATASTAR_VIEW_TRANSITION(expression)
 	}
 	return e
 }

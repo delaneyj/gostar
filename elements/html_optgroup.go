@@ -1803,20 +1803,20 @@ func (e *OPTGROUPElement) DATASTAR_SCROLL_INTO_VIEW() *OPTGROUPElement {
 
 // Setup the ViewTransitionAPI for the element
 
-func (e *OPTGROUPElement) DATASTAR_VIEW_TRANSITION(key string, expression string) *OPTGROUPElement {
+func (e *OPTGROUPElement) DATASTAR_VIEW_TRANSITION(expression string) *OPTGROUPElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key = fmt.Sprintf("data-view-transition-%s", key)
+	key := "data-view-transition"
 
 	e.StringAttributes.Set(key, expression)
 	return e
 }
 
-func (e *OPTGROUPElement) IfDATASTAR_VIEW_TRANSITION(condition bool, key string, expression string) *OPTGROUPElement {
+func (e *OPTGROUPElement) IfDATASTAR_VIEW_TRANSITION(condition bool, expression string) *OPTGROUPElement {
 	if condition {
-		e.DATASTAR_VIEW_TRANSITION(key, expression)
+		e.DATASTAR_VIEW_TRANSITION(expression)
 	}
 	return e
 }

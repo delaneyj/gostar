@@ -1765,20 +1765,20 @@ func (e *MAPElement) DATASTAR_SCROLL_INTO_VIEW() *MAPElement {
 
 // Setup the ViewTransitionAPI for the element
 
-func (e *MAPElement) DATASTAR_VIEW_TRANSITION(key string, expression string) *MAPElement {
+func (e *MAPElement) DATASTAR_VIEW_TRANSITION(expression string) *MAPElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key = fmt.Sprintf("data-view-transition-%s", key)
+	key := "data-view-transition"
 
 	e.StringAttributes.Set(key, expression)
 	return e
 }
 
-func (e *MAPElement) IfDATASTAR_VIEW_TRANSITION(condition bool, key string, expression string) *MAPElement {
+func (e *MAPElement) IfDATASTAR_VIEW_TRANSITION(condition bool, expression string) *MAPElement {
 	if condition {
-		e.DATASTAR_VIEW_TRANSITION(key, expression)
+		e.DATASTAR_VIEW_TRANSITION(expression)
 	}
 	return e
 }

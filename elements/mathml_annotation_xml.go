@@ -944,20 +944,20 @@ func (e *MathMLANNOTATION_XMLElement) DATASTAR_SCROLL_INTO_VIEW() *MathMLANNOTAT
 
 // Setup the ViewTransitionAPI for the element
 
-func (e *MathMLANNOTATION_XMLElement) DATASTAR_VIEW_TRANSITION(key string, expression string) *MathMLANNOTATION_XMLElement {
+func (e *MathMLANNOTATION_XMLElement) DATASTAR_VIEW_TRANSITION(expression string) *MathMLANNOTATION_XMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key = fmt.Sprintf("data-view-transition-%s", key)
+	key := "data-view-transition"
 
 	e.StringAttributes.Set(key, expression)
 	return e
 }
 
-func (e *MathMLANNOTATION_XMLElement) IfDATASTAR_VIEW_TRANSITION(condition bool, key string, expression string) *MathMLANNOTATION_XMLElement {
+func (e *MathMLANNOTATION_XMLElement) IfDATASTAR_VIEW_TRANSITION(condition bool, expression string) *MathMLANNOTATION_XMLElement {
 	if condition {
-		e.DATASTAR_VIEW_TRANSITION(key, expression)
+		e.DATASTAR_VIEW_TRANSITION(expression)
 	}
 	return e
 }

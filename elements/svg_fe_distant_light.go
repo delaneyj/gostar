@@ -699,20 +699,20 @@ func (e *SVGFEDISTANTLIGHTElement) DATASTAR_SCROLL_INTO_VIEW() *SVGFEDISTANTLIGH
 
 // Setup the ViewTransitionAPI for the element
 
-func (e *SVGFEDISTANTLIGHTElement) DATASTAR_VIEW_TRANSITION(key string, expression string) *SVGFEDISTANTLIGHTElement {
+func (e *SVGFEDISTANTLIGHTElement) DATASTAR_VIEW_TRANSITION(expression string) *SVGFEDISTANTLIGHTElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key = fmt.Sprintf("data-view-transition-%s", key)
+	key := "data-view-transition"
 
 	e.StringAttributes.Set(key, expression)
 	return e
 }
 
-func (e *SVGFEDISTANTLIGHTElement) IfDATASTAR_VIEW_TRANSITION(condition bool, key string, expression string) *SVGFEDISTANTLIGHTElement {
+func (e *SVGFEDISTANTLIGHTElement) IfDATASTAR_VIEW_TRANSITION(condition bool, expression string) *SVGFEDISTANTLIGHTElement {
 	if condition {
-		e.DATASTAR_VIEW_TRANSITION(key, expression)
+		e.DATASTAR_VIEW_TRANSITION(expression)
 	}
 	return e
 }

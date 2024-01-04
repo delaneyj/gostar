@@ -1740,20 +1740,20 @@ func (e *FIGCAPTIONElement) DATASTAR_SCROLL_INTO_VIEW() *FIGCAPTIONElement {
 
 // Setup the ViewTransitionAPI for the element
 
-func (e *FIGCAPTIONElement) DATASTAR_VIEW_TRANSITION(key string, expression string) *FIGCAPTIONElement {
+func (e *FIGCAPTIONElement) DATASTAR_VIEW_TRANSITION(expression string) *FIGCAPTIONElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key = fmt.Sprintf("data-view-transition-%s", key)
+	key := "data-view-transition"
 
 	e.StringAttributes.Set(key, expression)
 	return e
 }
 
-func (e *FIGCAPTIONElement) IfDATASTAR_VIEW_TRANSITION(condition bool, key string, expression string) *FIGCAPTIONElement {
+func (e *FIGCAPTIONElement) IfDATASTAR_VIEW_TRANSITION(condition bool, expression string) *FIGCAPTIONElement {
 	if condition {
-		e.DATASTAR_VIEW_TRANSITION(key, expression)
+		e.DATASTAR_VIEW_TRANSITION(expression)
 	}
 	return e
 }

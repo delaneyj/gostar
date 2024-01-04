@@ -712,20 +712,20 @@ func (e *SVGFEGAUSSIANBLURElement) DATASTAR_SCROLL_INTO_VIEW() *SVGFEGAUSSIANBLU
 
 // Setup the ViewTransitionAPI for the element
 
-func (e *SVGFEGAUSSIANBLURElement) DATASTAR_VIEW_TRANSITION(key string, expression string) *SVGFEGAUSSIANBLURElement {
+func (e *SVGFEGAUSSIANBLURElement) DATASTAR_VIEW_TRANSITION(expression string) *SVGFEGAUSSIANBLURElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key = fmt.Sprintf("data-view-transition-%s", key)
+	key := "data-view-transition"
 
 	e.StringAttributes.Set(key, expression)
 	return e
 }
 
-func (e *SVGFEGAUSSIANBLURElement) IfDATASTAR_VIEW_TRANSITION(condition bool, key string, expression string) *SVGFEGAUSSIANBLURElement {
+func (e *SVGFEGAUSSIANBLURElement) IfDATASTAR_VIEW_TRANSITION(condition bool, expression string) *SVGFEGAUSSIANBLURElement {
 	if condition {
-		e.DATASTAR_VIEW_TRANSITION(key, expression)
+		e.DATASTAR_VIEW_TRANSITION(expression)
 	}
 	return e
 }

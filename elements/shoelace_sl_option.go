@@ -534,20 +534,20 @@ func (e *SLOPTIONElement) DATASTAR_SCROLL_INTO_VIEW() *SLOPTIONElement {
 
 // Setup the ViewTransitionAPI for the element
 
-func (e *SLOPTIONElement) DATASTAR_VIEW_TRANSITION(key string, expression string) *SLOPTIONElement {
+func (e *SLOPTIONElement) DATASTAR_VIEW_TRANSITION(expression string) *SLOPTIONElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key = fmt.Sprintf("data-view-transition-%s", key)
+	key := "data-view-transition"
 
 	e.StringAttributes.Set(key, expression)
 	return e
 }
 
-func (e *SLOPTIONElement) IfDATASTAR_VIEW_TRANSITION(condition bool, key string, expression string) *SLOPTIONElement {
+func (e *SLOPTIONElement) IfDATASTAR_VIEW_TRANSITION(condition bool, expression string) *SLOPTIONElement {
 	if condition {
-		e.DATASTAR_VIEW_TRANSITION(key, expression)
+		e.DATASTAR_VIEW_TRANSITION(expression)
 	}
 	return e
 }

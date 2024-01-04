@@ -887,20 +887,20 @@ func (e *MathMLMSQRTElement) DATASTAR_SCROLL_INTO_VIEW() *MathMLMSQRTElement {
 
 // Setup the ViewTransitionAPI for the element
 
-func (e *MathMLMSQRTElement) DATASTAR_VIEW_TRANSITION(key string, expression string) *MathMLMSQRTElement {
+func (e *MathMLMSQRTElement) DATASTAR_VIEW_TRANSITION(expression string) *MathMLMSQRTElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key = fmt.Sprintf("data-view-transition-%s", key)
+	key := "data-view-transition"
 
 	e.StringAttributes.Set(key, expression)
 	return e
 }
 
-func (e *MathMLMSQRTElement) IfDATASTAR_VIEW_TRANSITION(condition bool, key string, expression string) *MathMLMSQRTElement {
+func (e *MathMLMSQRTElement) IfDATASTAR_VIEW_TRANSITION(condition bool, expression string) *MathMLMSQRTElement {
 	if condition {
-		e.DATASTAR_VIEW_TRANSITION(key, expression)
+		e.DATASTAR_VIEW_TRANSITION(expression)
 	}
 	return e
 }

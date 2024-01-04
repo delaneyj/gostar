@@ -1740,20 +1740,20 @@ func (e *RUBYElement) DATASTAR_SCROLL_INTO_VIEW() *RUBYElement {
 
 // Setup the ViewTransitionAPI for the element
 
-func (e *RUBYElement) DATASTAR_VIEW_TRANSITION(key string, expression string) *RUBYElement {
+func (e *RUBYElement) DATASTAR_VIEW_TRANSITION(expression string) *RUBYElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key = fmt.Sprintf("data-view-transition-%s", key)
+	key := "data-view-transition"
 
 	e.StringAttributes.Set(key, expression)
 	return e
 }
 
-func (e *RUBYElement) IfDATASTAR_VIEW_TRANSITION(condition bool, key string, expression string) *RUBYElement {
+func (e *RUBYElement) IfDATASTAR_VIEW_TRANSITION(condition bool, expression string) *RUBYElement {
 	if condition {
-		e.DATASTAR_VIEW_TRANSITION(key, expression)
+		e.DATASTAR_VIEW_TRANSITION(expression)
 	}
 	return e
 }

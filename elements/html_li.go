@@ -1764,20 +1764,20 @@ func (e *LIElement) DATASTAR_SCROLL_INTO_VIEW() *LIElement {
 
 // Setup the ViewTransitionAPI for the element
 
-func (e *LIElement) DATASTAR_VIEW_TRANSITION(key string, expression string) *LIElement {
+func (e *LIElement) DATASTAR_VIEW_TRANSITION(expression string) *LIElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key = fmt.Sprintf("data-view-transition-%s", key)
+	key := "data-view-transition"
 
 	e.StringAttributes.Set(key, expression)
 	return e
 }
 
-func (e *LIElement) IfDATASTAR_VIEW_TRANSITION(condition bool, key string, expression string) *LIElement {
+func (e *LIElement) IfDATASTAR_VIEW_TRANSITION(condition bool, expression string) *LIElement {
 	if condition {
-		e.DATASTAR_VIEW_TRANSITION(key, expression)
+		e.DATASTAR_VIEW_TRANSITION(expression)
 	}
 	return e
 }

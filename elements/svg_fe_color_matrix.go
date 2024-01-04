@@ -746,20 +746,20 @@ func (e *SVGFECOLORMATRIXElement) DATASTAR_SCROLL_INTO_VIEW() *SVGFECOLORMATRIXE
 
 // Setup the ViewTransitionAPI for the element
 
-func (e *SVGFECOLORMATRIXElement) DATASTAR_VIEW_TRANSITION(key string, expression string) *SVGFECOLORMATRIXElement {
+func (e *SVGFECOLORMATRIXElement) DATASTAR_VIEW_TRANSITION(expression string) *SVGFECOLORMATRIXElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key = fmt.Sprintf("data-view-transition-%s", key)
+	key := "data-view-transition"
 
 	e.StringAttributes.Set(key, expression)
 	return e
 }
 
-func (e *SVGFECOLORMATRIXElement) IfDATASTAR_VIEW_TRANSITION(condition bool, key string, expression string) *SVGFECOLORMATRIXElement {
+func (e *SVGFECOLORMATRIXElement) IfDATASTAR_VIEW_TRANSITION(condition bool, expression string) *SVGFECOLORMATRIXElement {
 	if condition {
-		e.DATASTAR_VIEW_TRANSITION(key, expression)
+		e.DATASTAR_VIEW_TRANSITION(expression)
 	}
 	return e
 }

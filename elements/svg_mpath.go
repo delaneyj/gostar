@@ -688,20 +688,20 @@ func (e *SVGMPATHElement) DATASTAR_SCROLL_INTO_VIEW() *SVGMPATHElement {
 
 // Setup the ViewTransitionAPI for the element
 
-func (e *SVGMPATHElement) DATASTAR_VIEW_TRANSITION(key string, expression string) *SVGMPATHElement {
+func (e *SVGMPATHElement) DATASTAR_VIEW_TRANSITION(expression string) *SVGMPATHElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key = fmt.Sprintf("data-view-transition-%s", key)
+	key := "data-view-transition"
 
 	e.StringAttributes.Set(key, expression)
 	return e
 }
 
-func (e *SVGMPATHElement) IfDATASTAR_VIEW_TRANSITION(condition bool, key string, expression string) *SVGMPATHElement {
+func (e *SVGMPATHElement) IfDATASTAR_VIEW_TRANSITION(condition bool, expression string) *SVGMPATHElement {
 	if condition {
-		e.DATASTAR_VIEW_TRANSITION(key, expression)
+		e.DATASTAR_VIEW_TRANSITION(expression)
 	}
 	return e
 }

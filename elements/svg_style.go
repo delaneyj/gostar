@@ -740,20 +740,20 @@ func (e *SVGSTYLEElement) DATASTAR_SCROLL_INTO_VIEW() *SVGSTYLEElement {
 
 // Setup the ViewTransitionAPI for the element
 
-func (e *SVGSTYLEElement) DATASTAR_VIEW_TRANSITION(key string, expression string) *SVGSTYLEElement {
+func (e *SVGSTYLEElement) DATASTAR_VIEW_TRANSITION(expression string) *SVGSTYLEElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key = fmt.Sprintf("data-view-transition-%s", key)
+	key := "data-view-transition"
 
 	e.StringAttributes.Set(key, expression)
 	return e
 }
 
-func (e *SVGSTYLEElement) IfDATASTAR_VIEW_TRANSITION(condition bool, key string, expression string) *SVGSTYLEElement {
+func (e *SVGSTYLEElement) IfDATASTAR_VIEW_TRANSITION(condition bool, expression string) *SVGSTYLEElement {
 	if condition {
-		e.DATASTAR_VIEW_TRANSITION(key, expression)
+		e.DATASTAR_VIEW_TRANSITION(expression)
 	}
 	return e
 }

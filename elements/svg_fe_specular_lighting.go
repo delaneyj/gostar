@@ -769,20 +769,20 @@ func (e *SVGFESPECULARLIGHTINGElement) DATASTAR_SCROLL_INTO_VIEW() *SVGFESPECULA
 
 // Setup the ViewTransitionAPI for the element
 
-func (e *SVGFESPECULARLIGHTINGElement) DATASTAR_VIEW_TRANSITION(key string, expression string) *SVGFESPECULARLIGHTINGElement {
+func (e *SVGFESPECULARLIGHTINGElement) DATASTAR_VIEW_TRANSITION(expression string) *SVGFESPECULARLIGHTINGElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key = fmt.Sprintf("data-view-transition-%s", key)
+	key := "data-view-transition"
 
 	e.StringAttributes.Set(key, expression)
 	return e
 }
 
-func (e *SVGFESPECULARLIGHTINGElement) IfDATASTAR_VIEW_TRANSITION(condition bool, key string, expression string) *SVGFESPECULARLIGHTINGElement {
+func (e *SVGFESPECULARLIGHTINGElement) IfDATASTAR_VIEW_TRANSITION(condition bool, expression string) *SVGFESPECULARLIGHTINGElement {
 	if condition {
-		e.DATASTAR_VIEW_TRANSITION(key, expression)
+		e.DATASTAR_VIEW_TRANSITION(expression)
 	}
 	return e
 }

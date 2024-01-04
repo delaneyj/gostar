@@ -112,6 +112,6 @@ var DatastarExtensions = []*pb.Attribute{
 		Name:        "DatastarViewTransition",
 		Key:         "data-view-transition",
 		Description: "Setup the ViewTransitionAPI for the element",
-		Type:        AttributeTypeCustom("view-transition", true, AttributeTypeString()),
+		Type:        AttributeTypeCustom("view-transition", false, AttributeTypeString()),
 	},
 }
