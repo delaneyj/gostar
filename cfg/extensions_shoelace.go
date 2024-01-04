@@ -77,6 +77,7 @@ var ShoelaceExtensions = &pb.Namespace{
 			Attributes: []*pb.Attribute{
 				shoelaceVariant,
 				shoelaceSize,
+
 				{
 					Key:  "outline",
 					Type: AttributeTypeBool(),
@@ -398,6 +399,21 @@ var ShoelaceExtensions = &pb.Namespace{
 						AttributeTypeChoice("bottom", "Bottom"),
 						AttributeTypeChoice("top", "Top"),
 					),
+				},
+			},
+		},
+		{
+			Name: "Option",
+			Tag:  "sl-option",
+			Attributes: []*pb.Attribute{
+				{
+					Key:  "value",
+					Type: AttributeTypeString(),
+				},
+				{
+					Key:  "value",
+					Name: "ValueI",
+					Type: AttributeTypeInt(),
 				},
 			},
 		},
