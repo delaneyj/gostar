@@ -640,9 +640,20 @@ func (e *MENUElement) ID(s string) *MENUElement {
 	return e
 }
 
+func (e *MENUElement) IDF(format string, args ...any) *MENUElement {
+	return e.ID(fmt.Sprintf(format, args...))
+}
+
 func (e *MENUElement) IfID(condition bool, s string) *MENUElement {
 	if condition {
 		e.ID(s)
+	}
+	return e
+}
+
+func (e *MENUElement) IfIDF(condition bool, format string, args ...any) *MENUElement {
+	if condition {
+		e.ID(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -654,6 +665,10 @@ func (e *MENUElement) IDRemove(s string) *MENUElement {
 	}
 	e.StringAttributes.Del("id")
 	return e
+}
+
+func (e *MENUElement) IDRemoveF(format string, args ...any) *MENUElement {
+	return e.IDRemove(fmt.Sprintf(format, args...))
 }
 
 // The inert global attribute is a Boolean attribute indicating that the browser
@@ -788,9 +803,20 @@ func (e *MENUElement) IS(s string) *MENUElement {
 	return e
 }
 
+func (e *MENUElement) ISF(format string, args ...any) *MENUElement {
+	return e.IS(fmt.Sprintf(format, args...))
+}
+
 func (e *MENUElement) IfIS(condition bool, s string) *MENUElement {
 	if condition {
 		e.IS(s)
+	}
+	return e
+}
+
+func (e *MENUElement) IfISF(condition bool, format string, args ...any) *MENUElement {
+	if condition {
+		e.IS(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -802,6 +828,10 @@ func (e *MENUElement) ISRemove(s string) *MENUElement {
 	}
 	e.StringAttributes.Del("is")
 	return e
+}
+
+func (e *MENUElement) ISRemoveF(format string, args ...any) *MENUElement {
+	return e.ISRemove(fmt.Sprintf(format, args...))
 }
 
 // The itemid global attribute provides microdata in the form of a unique, global
@@ -825,9 +855,20 @@ func (e *MENUElement) ITEMID(s string) *MENUElement {
 	return e
 }
 
+func (e *MENUElement) ITEMIDF(format string, args ...any) *MENUElement {
+	return e.ITEMID(fmt.Sprintf(format, args...))
+}
+
 func (e *MENUElement) IfITEMID(condition bool, s string) *MENUElement {
 	if condition {
 		e.ITEMID(s)
+	}
+	return e
+}
+
+func (e *MENUElement) IfITEMIDF(condition bool, format string, args ...any) *MENUElement {
+	if condition {
+		e.ITEMID(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -839,6 +880,10 @@ func (e *MENUElement) ITEMIDRemove(s string) *MENUElement {
 	}
 	e.StringAttributes.Del("itemid")
 	return e
+}
+
+func (e *MENUElement) ITEMIDRemoveF(format string, args ...any) *MENUElement {
+	return e.ITEMIDRemove(fmt.Sprintf(format, args...))
 }
 
 // The itemprop global attribute is used to add properties to an item
@@ -857,9 +902,20 @@ func (e *MENUElement) ITEMPROP(s string) *MENUElement {
 	return e
 }
 
+func (e *MENUElement) ITEMPROPF(format string, args ...any) *MENUElement {
+	return e.ITEMPROP(fmt.Sprintf(format, args...))
+}
+
 func (e *MENUElement) IfITEMPROP(condition bool, s string) *MENUElement {
 	if condition {
 		e.ITEMPROP(s)
+	}
+	return e
+}
+
+func (e *MENUElement) IfITEMPROPF(condition bool, format string, args ...any) *MENUElement {
+	if condition {
+		e.ITEMPROP(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -871,6 +927,10 @@ func (e *MENUElement) ITEMPROPRemove(s string) *MENUElement {
 	}
 	e.StringAttributes.Del("itemprop")
 	return e
+}
+
+func (e *MENUElement) ITEMPROPRemoveF(format string, args ...any) *MENUElement {
+	return e.ITEMPROPRemove(fmt.Sprintf(format, args...))
 }
 
 // Properties that are not descendants of an element with the itemscope attribute
@@ -886,9 +946,20 @@ func (e *MENUElement) ITEMREF(s string) *MENUElement {
 	return e
 }
 
+func (e *MENUElement) ITEMREFF(format string, args ...any) *MENUElement {
+	return e.ITEMREF(fmt.Sprintf(format, args...))
+}
+
 func (e *MENUElement) IfITEMREF(condition bool, s string) *MENUElement {
 	if condition {
 		e.ITEMREF(s)
+	}
+	return e
+}
+
+func (e *MENUElement) IfITEMREFF(condition bool, format string, args ...any) *MENUElement {
+	if condition {
+		e.ITEMREF(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -900,6 +971,10 @@ func (e *MENUElement) ITEMREFRemove(s string) *MENUElement {
 	}
 	e.StringAttributes.Del("itemref")
 	return e
+}
+
+func (e *MENUElement) ITEMREFRemoveF(format string, args ...any) *MENUElement {
+	return e.ITEMREFRemove(fmt.Sprintf(format, args...))
 }
 
 // The itemscope global attribute is used to add an item to a microdata DOM tree
@@ -963,9 +1038,20 @@ func (e *MENUElement) ITEMTYPE(s string) *MENUElement {
 	return e
 }
 
+func (e *MENUElement) ITEMTYPEF(format string, args ...any) *MENUElement {
+	return e.ITEMTYPE(fmt.Sprintf(format, args...))
+}
+
 func (e *MENUElement) IfITEMTYPE(condition bool, s string) *MENUElement {
 	if condition {
 		e.ITEMTYPE(s)
+	}
+	return e
+}
+
+func (e *MENUElement) IfITEMTYPEF(condition bool, format string, args ...any) *MENUElement {
+	if condition {
+		e.ITEMTYPE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -977,6 +1063,10 @@ func (e *MENUElement) ITEMTYPERemove(s string) *MENUElement {
 	}
 	e.StringAttributes.Del("itemtype")
 	return e
+}
+
+func (e *MENUElement) ITEMTYPERemoveF(format string, args ...any) *MENUElement {
+	return e.ITEMTYPERemove(fmt.Sprintf(format, args...))
 }
 
 // The lang global attribute helps define the language of an element: the language
@@ -993,9 +1083,20 @@ func (e *MENUElement) LANG(s string) *MENUElement {
 	return e
 }
 
+func (e *MENUElement) LANGF(format string, args ...any) *MENUElement {
+	return e.LANG(fmt.Sprintf(format, args...))
+}
+
 func (e *MENUElement) IfLANG(condition bool, s string) *MENUElement {
 	if condition {
 		e.LANG(s)
+	}
+	return e
+}
+
+func (e *MENUElement) IfLANGF(condition bool, format string, args ...any) *MENUElement {
+	if condition {
+		e.LANG(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1007,6 +1108,10 @@ func (e *MENUElement) LANGRemove(s string) *MENUElement {
 	}
 	e.StringAttributes.Del("lang")
 	return e
+}
+
+func (e *MENUElement) LANGRemoveF(format string, args ...any) *MENUElement {
+	return e.LANGRemove(fmt.Sprintf(format, args...))
 }
 
 // The nonce global attribute is a unique identifier used to declare inline
@@ -1021,9 +1126,20 @@ func (e *MENUElement) NONCE(s string) *MENUElement {
 	return e
 }
 
+func (e *MENUElement) NONCEF(format string, args ...any) *MENUElement {
+	return e.NONCE(fmt.Sprintf(format, args...))
+}
+
 func (e *MENUElement) IfNONCE(condition bool, s string) *MENUElement {
 	if condition {
 		e.NONCE(s)
+	}
+	return e
+}
+
+func (e *MENUElement) IfNONCEF(condition bool, format string, args ...any) *MENUElement {
+	if condition {
+		e.NONCE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1035,6 +1151,10 @@ func (e *MENUElement) NONCERemove(s string) *MENUElement {
 	}
 	e.StringAttributes.Del("nonce")
 	return e
+}
+
+func (e *MENUElement) NONCERemoveF(format string, args ...any) *MENUElement {
+	return e.NONCERemove(fmt.Sprintf(format, args...))
 }
 
 // The part global attribute contains a space-separated list of the part names of
@@ -1129,9 +1249,20 @@ func (e *MENUElement) ROLE(s string) *MENUElement {
 	return e
 }
 
+func (e *MENUElement) ROLEF(format string, args ...any) *MENUElement {
+	return e.ROLE(fmt.Sprintf(format, args...))
+}
+
 func (e *MENUElement) IfROLE(condition bool, s string) *MENUElement {
 	if condition {
 		e.ROLE(s)
+	}
+	return e
+}
+
+func (e *MENUElement) IfROLEF(condition bool, format string, args ...any) *MENUElement {
+	if condition {
+		e.ROLE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1143,6 +1274,10 @@ func (e *MENUElement) ROLERemove(s string) *MENUElement {
 	}
 	e.StringAttributes.Del("role")
 	return e
+}
+
+func (e *MENUElement) ROLERemoveF(format string, args ...any) *MENUElement {
+	return e.ROLERemove(fmt.Sprintf(format, args...))
 }
 
 // The slot global attribute assigns a slot in a shadow DOM shadow tree to an
@@ -1157,9 +1292,20 @@ func (e *MENUElement) SLOT(s string) *MENUElement {
 	return e
 }
 
+func (e *MENUElement) SLOTF(format string, args ...any) *MENUElement {
+	return e.SLOT(fmt.Sprintf(format, args...))
+}
+
 func (e *MENUElement) IfSLOT(condition bool, s string) *MENUElement {
 	if condition {
 		e.SLOT(s)
+	}
+	return e
+}
+
+func (e *MENUElement) IfSLOTF(condition bool, format string, args ...any) *MENUElement {
+	if condition {
+		e.SLOT(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1171,6 +1317,10 @@ func (e *MENUElement) SLOTRemove(s string) *MENUElement {
 	}
 	e.StringAttributes.Del("slot")
 	return e
+}
+
+func (e *MENUElement) SLOTRemoveF(format string, args ...any) *MENUElement {
+	return e.SLOTRemove(fmt.Sprintf(format, args...))
 }
 
 // The spellcheck global attribute is an enumerated attribute that defines whether
@@ -1375,9 +1525,20 @@ func (e *MENUElement) TITLE(s string) *MENUElement {
 	return e
 }
 
+func (e *MENUElement) TITLEF(format string, args ...any) *MENUElement {
+	return e.TITLE(fmt.Sprintf(format, args...))
+}
+
 func (e *MENUElement) IfTITLE(condition bool, s string) *MENUElement {
 	if condition {
 		e.TITLE(s)
+	}
+	return e
+}
+
+func (e *MENUElement) IfTITLEF(condition bool, format string, args ...any) *MENUElement {
+	if condition {
+		e.TITLE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1389,6 +1550,10 @@ func (e *MENUElement) TITLERemove(s string) *MENUElement {
 	}
 	e.StringAttributes.Del("title")
 	return e
+}
+
+func (e *MENUElement) TITLERemoveF(format string, args ...any) *MENUElement {
+	return e.TITLERemove(fmt.Sprintf(format, args...))
 }
 
 // The translate global attribute is an enumerated attribute that is used to
@@ -1433,7 +1598,7 @@ func (e *MENUElement) DATASTAR_MERGE_STORE(v any) *MENUElement {
 	if err != nil {
 		panic(err)
 	}
-	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	e.CustomDataAttributes.Set("merge-store", string(b))
 	return e
 }
 
@@ -1555,34 +1720,34 @@ func (e *MENUElement) DATASTAR_TEXTRemove() *MENUElement {
 
 // Sets the event handler of the element
 
-type MenuDataOnMod customDataKeyModifier
+type MenuOnMod customDataKeyModifier
 
 // Debounces the event handler
-func MenuDataOnModDebounce(
+func MenuOnModDebounce(
 	d time.Duration,
-) MenuDataOnMod {
+) MenuOnMod {
 	return func() string {
 		return fmt.Sprintf("debounce_%dms", d.Milliseconds())
 	}
 }
 
 // Throttles the event handler
-func MenuDataOnModThrottle(
+func MenuOnModThrottle(
 	d time.Duration,
-) MenuDataOnMod {
+) MenuOnMod {
 	return func() string {
 		return fmt.Sprintf("throttle_%dms", d.Milliseconds())
 	}
 }
 
-func (e *MENUElement) DATASTAR_ON(key string, expression string, modifiers ...MenuDataOnMod) *MENUElement {
+func (e *MENUElement) DATASTAR_ON(key string, expression string, modifiers ...MenuOnMod) *MENUElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
 	key = fmt.Sprintf("data-on-%s", key)
 
-	customMods := lo.Map(modifiers, func(m MenuDataOnMod, i int) customDataKeyModifier {
+	customMods := lo.Map(modifiers, func(m MenuOnMod, i int) customDataKeyModifier {
 		return customDataKeyModifier(m)
 	})
 	key = customDataKey(key, customMods...)
@@ -1590,7 +1755,7 @@ func (e *MENUElement) DATASTAR_ON(key string, expression string, modifiers ...Me
 	return e
 }
 
-func (e *MENUElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...MenuDataOnMod) *MENUElement {
+func (e *MENUElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...MenuOnMod) *MENUElement {
 	if condition {
 		e.DATASTAR_ON(key, expression, modifiers...)
 	}
@@ -1683,7 +1848,7 @@ func (e *MENUElement) DATASTAR_FETCH_INDICATOR(expression string) *MENUElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "DatastarFetchIndicator"
+	key := "data-fetch-indicator"
 
 	e.StringAttributes.Set(key, expression)
 	return e
@@ -1701,7 +1866,7 @@ func (e *MENUElement) DATASTAR_FETCH_INDICATORRemove() *MENUElement {
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("DatastarFetchIndicator")
+	e.StringAttributes.Del("data-fetch-indicator")
 	return e
 }
 

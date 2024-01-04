@@ -200,9 +200,20 @@ func (e *SVGRADIALGRADIENTElement) GRADIENT_TRANSFORM(s string) *SVGRADIALGRADIE
 	return e
 }
 
+func (e *SVGRADIALGRADIENTElement) GRADIENT_TRANSFORMF(format string, args ...any) *SVGRADIALGRADIENTElement {
+	return e.GRADIENT_TRANSFORM(fmt.Sprintf(format, args...))
+}
+
 func (e *SVGRADIALGRADIENTElement) IfGRADIENT_TRANSFORM(condition bool, s string) *SVGRADIALGRADIENTElement {
 	if condition {
 		e.GRADIENT_TRANSFORM(s)
+	}
+	return e
+}
+
+func (e *SVGRADIALGRADIENTElement) IfGRADIENT_TRANSFORMF(condition bool, format string, args ...any) *SVGRADIALGRADIENTElement {
+	if condition {
+		e.GRADIENT_TRANSFORM(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -214,6 +225,10 @@ func (e *SVGRADIALGRADIENTElement) GRADIENT_TRANSFORMRemove(s string) *SVGRADIAL
 	}
 	e.StringAttributes.Del("gradientTransform")
 	return e
+}
+
+func (e *SVGRADIALGRADIENTElement) GRADIENT_TRANSFORMRemoveF(format string, args ...any) *SVGRADIALGRADIENTElement {
+	return e.GRADIENT_TRANSFORMRemove(fmt.Sprintf(format, args...))
 }
 
 // The x-axis coordinate of the largest (i.e., outermost) circle for the radial
@@ -309,9 +324,20 @@ func (e *SVGRADIALGRADIENTElement) ID(s string) *SVGRADIALGRADIENTElement {
 	return e
 }
 
+func (e *SVGRADIALGRADIENTElement) IDF(format string, args ...any) *SVGRADIALGRADIENTElement {
+	return e.ID(fmt.Sprintf(format, args...))
+}
+
 func (e *SVGRADIALGRADIENTElement) IfID(condition bool, s string) *SVGRADIALGRADIENTElement {
 	if condition {
 		e.ID(s)
+	}
+	return e
+}
+
+func (e *SVGRADIALGRADIENTElement) IfIDF(condition bool, format string, args ...any) *SVGRADIALGRADIENTElement {
+	if condition {
+		e.ID(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -323,6 +349,10 @@ func (e *SVGRADIALGRADIENTElement) IDRemove(s string) *SVGRADIALGRADIENTElement 
 	}
 	e.StringAttributes.Del("id")
 	return e
+}
+
+func (e *SVGRADIALGRADIENTElement) IDRemoveF(format string, args ...any) *SVGRADIALGRADIENTElement {
+	return e.IDRemove(fmt.Sprintf(format, args...))
 }
 
 // Specifies one or more classnames for an element (refers to a class in a style
@@ -461,7 +491,7 @@ func (e *SVGRADIALGRADIENTElement) DATASTAR_MERGE_STORE(v any) *SVGRADIALGRADIEN
 	if err != nil {
 		panic(err)
 	}
-	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	e.CustomDataAttributes.Set("merge-store", string(b))
 	return e
 }
 
@@ -583,34 +613,34 @@ func (e *SVGRADIALGRADIENTElement) DATASTAR_TEXTRemove() *SVGRADIALGRADIENTEleme
 
 // Sets the event handler of the element
 
-type SVGRadialGradientDataOnMod customDataKeyModifier
+type SVGRadialGradientOnMod customDataKeyModifier
 
 // Debounces the event handler
-func SVGRadialGradientDataOnModDebounce(
+func SVGRadialGradientOnModDebounce(
 	d time.Duration,
-) SVGRadialGradientDataOnMod {
+) SVGRadialGradientOnMod {
 	return func() string {
 		return fmt.Sprintf("debounce_%dms", d.Milliseconds())
 	}
 }
 
 // Throttles the event handler
-func SVGRadialGradientDataOnModThrottle(
+func SVGRadialGradientOnModThrottle(
 	d time.Duration,
-) SVGRadialGradientDataOnMod {
+) SVGRadialGradientOnMod {
 	return func() string {
 		return fmt.Sprintf("throttle_%dms", d.Milliseconds())
 	}
 }
 
-func (e *SVGRADIALGRADIENTElement) DATASTAR_ON(key string, expression string, modifiers ...SVGRadialGradientDataOnMod) *SVGRADIALGRADIENTElement {
+func (e *SVGRADIALGRADIENTElement) DATASTAR_ON(key string, expression string, modifiers ...SVGRadialGradientOnMod) *SVGRADIALGRADIENTElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
 	key = fmt.Sprintf("data-on-%s", key)
 
-	customMods := lo.Map(modifiers, func(m SVGRadialGradientDataOnMod, i int) customDataKeyModifier {
+	customMods := lo.Map(modifiers, func(m SVGRadialGradientOnMod, i int) customDataKeyModifier {
 		return customDataKeyModifier(m)
 	})
 	key = customDataKey(key, customMods...)
@@ -618,7 +648,7 @@ func (e *SVGRADIALGRADIENTElement) DATASTAR_ON(key string, expression string, mo
 	return e
 }
 
-func (e *SVGRADIALGRADIENTElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SVGRadialGradientDataOnMod) *SVGRADIALGRADIENTElement {
+func (e *SVGRADIALGRADIENTElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SVGRadialGradientOnMod) *SVGRADIALGRADIENTElement {
 	if condition {
 		e.DATASTAR_ON(key, expression, modifiers...)
 	}
@@ -711,7 +741,7 @@ func (e *SVGRADIALGRADIENTElement) DATASTAR_FETCH_INDICATOR(expression string) *
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "DatastarFetchIndicator"
+	key := "data-fetch-indicator"
 
 	e.StringAttributes.Set(key, expression)
 	return e
@@ -729,7 +759,7 @@ func (e *SVGRADIALGRADIENTElement) DATASTAR_FETCH_INDICATORRemove() *SVGRADIALGR
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("DatastarFetchIndicator")
+	e.StringAttributes.Del("data-fetch-indicator")
 	return e
 }
 

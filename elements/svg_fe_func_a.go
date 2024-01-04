@@ -207,9 +207,20 @@ func (e *SVGFEFUNCAElement) TABLE_VALUES(s string) *SVGFEFUNCAElement {
 	return e
 }
 
+func (e *SVGFEFUNCAElement) TABLE_VALUESF(format string, args ...any) *SVGFEFUNCAElement {
+	return e.TABLE_VALUES(fmt.Sprintf(format, args...))
+}
+
 func (e *SVGFEFUNCAElement) IfTABLE_VALUES(condition bool, s string) *SVGFEFUNCAElement {
 	if condition {
 		e.TABLE_VALUES(s)
+	}
+	return e
+}
+
+func (e *SVGFEFUNCAElement) IfTABLE_VALUESF(condition bool, format string, args ...any) *SVGFEFUNCAElement {
+	if condition {
+		e.TABLE_VALUES(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -221,6 +232,10 @@ func (e *SVGFEFUNCAElement) TABLE_VALUESRemove(s string) *SVGFEFUNCAElement {
 	}
 	e.StringAttributes.Del("tableValues")
 	return e
+}
+
+func (e *SVGFEFUNCAElement) TABLE_VALUESRemoveF(format string, args ...any) *SVGFEFUNCAElement {
+	return e.TABLE_VALUESRemove(fmt.Sprintf(format, args...))
 }
 
 // The slope attribute indicates the slope of the linear function.
@@ -312,9 +327,20 @@ func (e *SVGFEFUNCAElement) ID(s string) *SVGFEFUNCAElement {
 	return e
 }
 
+func (e *SVGFEFUNCAElement) IDF(format string, args ...any) *SVGFEFUNCAElement {
+	return e.ID(fmt.Sprintf(format, args...))
+}
+
 func (e *SVGFEFUNCAElement) IfID(condition bool, s string) *SVGFEFUNCAElement {
 	if condition {
 		e.ID(s)
+	}
+	return e
+}
+
+func (e *SVGFEFUNCAElement) IfIDF(condition bool, format string, args ...any) *SVGFEFUNCAElement {
+	if condition {
+		e.ID(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -326,6 +352,10 @@ func (e *SVGFEFUNCAElement) IDRemove(s string) *SVGFEFUNCAElement {
 	}
 	e.StringAttributes.Del("id")
 	return e
+}
+
+func (e *SVGFEFUNCAElement) IDRemoveF(format string, args ...any) *SVGFEFUNCAElement {
+	return e.IDRemove(fmt.Sprintf(format, args...))
 }
 
 // Specifies one or more classnames for an element (refers to a class in a style
@@ -464,7 +494,7 @@ func (e *SVGFEFUNCAElement) DATASTAR_MERGE_STORE(v any) *SVGFEFUNCAElement {
 	if err != nil {
 		panic(err)
 	}
-	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	e.CustomDataAttributes.Set("merge-store", string(b))
 	return e
 }
 
@@ -586,34 +616,34 @@ func (e *SVGFEFUNCAElement) DATASTAR_TEXTRemove() *SVGFEFUNCAElement {
 
 // Sets the event handler of the element
 
-type SVGFeFuncADataOnMod customDataKeyModifier
+type SVGFeFuncAOnMod customDataKeyModifier
 
 // Debounces the event handler
-func SVGFeFuncADataOnModDebounce(
+func SVGFeFuncAOnModDebounce(
 	d time.Duration,
-) SVGFeFuncADataOnMod {
+) SVGFeFuncAOnMod {
 	return func() string {
 		return fmt.Sprintf("debounce_%dms", d.Milliseconds())
 	}
 }
 
 // Throttles the event handler
-func SVGFeFuncADataOnModThrottle(
+func SVGFeFuncAOnModThrottle(
 	d time.Duration,
-) SVGFeFuncADataOnMod {
+) SVGFeFuncAOnMod {
 	return func() string {
 		return fmt.Sprintf("throttle_%dms", d.Milliseconds())
 	}
 }
 
-func (e *SVGFEFUNCAElement) DATASTAR_ON(key string, expression string, modifiers ...SVGFeFuncADataOnMod) *SVGFEFUNCAElement {
+func (e *SVGFEFUNCAElement) DATASTAR_ON(key string, expression string, modifiers ...SVGFeFuncAOnMod) *SVGFEFUNCAElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
 	key = fmt.Sprintf("data-on-%s", key)
 
-	customMods := lo.Map(modifiers, func(m SVGFeFuncADataOnMod, i int) customDataKeyModifier {
+	customMods := lo.Map(modifiers, func(m SVGFeFuncAOnMod, i int) customDataKeyModifier {
 		return customDataKeyModifier(m)
 	})
 	key = customDataKey(key, customMods...)
@@ -621,7 +651,7 @@ func (e *SVGFEFUNCAElement) DATASTAR_ON(key string, expression string, modifiers
 	return e
 }
 
-func (e *SVGFEFUNCAElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SVGFeFuncADataOnMod) *SVGFEFUNCAElement {
+func (e *SVGFEFUNCAElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SVGFeFuncAOnMod) *SVGFEFUNCAElement {
 	if condition {
 		e.DATASTAR_ON(key, expression, modifiers...)
 	}
@@ -714,7 +744,7 @@ func (e *SVGFEFUNCAElement) DATASTAR_FETCH_INDICATOR(expression string) *SVGFEFU
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "DatastarFetchIndicator"
+	key := "data-fetch-indicator"
 
 	e.StringAttributes.Set(key, expression)
 	return e
@@ -732,7 +762,7 @@ func (e *SVGFEFUNCAElement) DATASTAR_FETCH_INDICATORRemove() *SVGFEFUNCAElement 
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("DatastarFetchIndicator")
+	e.StringAttributes.Del("data-fetch-indicator")
 	return e
 }
 

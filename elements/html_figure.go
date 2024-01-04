@@ -609,9 +609,20 @@ func (e *FIGUREElement) ID(s string) *FIGUREElement {
 	return e
 }
 
+func (e *FIGUREElement) IDF(format string, args ...any) *FIGUREElement {
+	return e.ID(fmt.Sprintf(format, args...))
+}
+
 func (e *FIGUREElement) IfID(condition bool, s string) *FIGUREElement {
 	if condition {
 		e.ID(s)
+	}
+	return e
+}
+
+func (e *FIGUREElement) IfIDF(condition bool, format string, args ...any) *FIGUREElement {
+	if condition {
+		e.ID(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -623,6 +634,10 @@ func (e *FIGUREElement) IDRemove(s string) *FIGUREElement {
 	}
 	e.StringAttributes.Del("id")
 	return e
+}
+
+func (e *FIGUREElement) IDRemoveF(format string, args ...any) *FIGUREElement {
+	return e.IDRemove(fmt.Sprintf(format, args...))
 }
 
 // The inert global attribute is a Boolean attribute indicating that the browser
@@ -757,9 +772,20 @@ func (e *FIGUREElement) IS(s string) *FIGUREElement {
 	return e
 }
 
+func (e *FIGUREElement) ISF(format string, args ...any) *FIGUREElement {
+	return e.IS(fmt.Sprintf(format, args...))
+}
+
 func (e *FIGUREElement) IfIS(condition bool, s string) *FIGUREElement {
 	if condition {
 		e.IS(s)
+	}
+	return e
+}
+
+func (e *FIGUREElement) IfISF(condition bool, format string, args ...any) *FIGUREElement {
+	if condition {
+		e.IS(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -771,6 +797,10 @@ func (e *FIGUREElement) ISRemove(s string) *FIGUREElement {
 	}
 	e.StringAttributes.Del("is")
 	return e
+}
+
+func (e *FIGUREElement) ISRemoveF(format string, args ...any) *FIGUREElement {
+	return e.ISRemove(fmt.Sprintf(format, args...))
 }
 
 // The itemid global attribute provides microdata in the form of a unique, global
@@ -794,9 +824,20 @@ func (e *FIGUREElement) ITEMID(s string) *FIGUREElement {
 	return e
 }
 
+func (e *FIGUREElement) ITEMIDF(format string, args ...any) *FIGUREElement {
+	return e.ITEMID(fmt.Sprintf(format, args...))
+}
+
 func (e *FIGUREElement) IfITEMID(condition bool, s string) *FIGUREElement {
 	if condition {
 		e.ITEMID(s)
+	}
+	return e
+}
+
+func (e *FIGUREElement) IfITEMIDF(condition bool, format string, args ...any) *FIGUREElement {
+	if condition {
+		e.ITEMID(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -808,6 +849,10 @@ func (e *FIGUREElement) ITEMIDRemove(s string) *FIGUREElement {
 	}
 	e.StringAttributes.Del("itemid")
 	return e
+}
+
+func (e *FIGUREElement) ITEMIDRemoveF(format string, args ...any) *FIGUREElement {
+	return e.ITEMIDRemove(fmt.Sprintf(format, args...))
 }
 
 // The itemprop global attribute is used to add properties to an item
@@ -826,9 +871,20 @@ func (e *FIGUREElement) ITEMPROP(s string) *FIGUREElement {
 	return e
 }
 
+func (e *FIGUREElement) ITEMPROPF(format string, args ...any) *FIGUREElement {
+	return e.ITEMPROP(fmt.Sprintf(format, args...))
+}
+
 func (e *FIGUREElement) IfITEMPROP(condition bool, s string) *FIGUREElement {
 	if condition {
 		e.ITEMPROP(s)
+	}
+	return e
+}
+
+func (e *FIGUREElement) IfITEMPROPF(condition bool, format string, args ...any) *FIGUREElement {
+	if condition {
+		e.ITEMPROP(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -840,6 +896,10 @@ func (e *FIGUREElement) ITEMPROPRemove(s string) *FIGUREElement {
 	}
 	e.StringAttributes.Del("itemprop")
 	return e
+}
+
+func (e *FIGUREElement) ITEMPROPRemoveF(format string, args ...any) *FIGUREElement {
+	return e.ITEMPROPRemove(fmt.Sprintf(format, args...))
 }
 
 // Properties that are not descendants of an element with the itemscope attribute
@@ -855,9 +915,20 @@ func (e *FIGUREElement) ITEMREF(s string) *FIGUREElement {
 	return e
 }
 
+func (e *FIGUREElement) ITEMREFF(format string, args ...any) *FIGUREElement {
+	return e.ITEMREF(fmt.Sprintf(format, args...))
+}
+
 func (e *FIGUREElement) IfITEMREF(condition bool, s string) *FIGUREElement {
 	if condition {
 		e.ITEMREF(s)
+	}
+	return e
+}
+
+func (e *FIGUREElement) IfITEMREFF(condition bool, format string, args ...any) *FIGUREElement {
+	if condition {
+		e.ITEMREF(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -869,6 +940,10 @@ func (e *FIGUREElement) ITEMREFRemove(s string) *FIGUREElement {
 	}
 	e.StringAttributes.Del("itemref")
 	return e
+}
+
+func (e *FIGUREElement) ITEMREFRemoveF(format string, args ...any) *FIGUREElement {
+	return e.ITEMREFRemove(fmt.Sprintf(format, args...))
 }
 
 // The itemscope global attribute is used to add an item to a microdata DOM tree
@@ -932,9 +1007,20 @@ func (e *FIGUREElement) ITEMTYPE(s string) *FIGUREElement {
 	return e
 }
 
+func (e *FIGUREElement) ITEMTYPEF(format string, args ...any) *FIGUREElement {
+	return e.ITEMTYPE(fmt.Sprintf(format, args...))
+}
+
 func (e *FIGUREElement) IfITEMTYPE(condition bool, s string) *FIGUREElement {
 	if condition {
 		e.ITEMTYPE(s)
+	}
+	return e
+}
+
+func (e *FIGUREElement) IfITEMTYPEF(condition bool, format string, args ...any) *FIGUREElement {
+	if condition {
+		e.ITEMTYPE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -946,6 +1032,10 @@ func (e *FIGUREElement) ITEMTYPERemove(s string) *FIGUREElement {
 	}
 	e.StringAttributes.Del("itemtype")
 	return e
+}
+
+func (e *FIGUREElement) ITEMTYPERemoveF(format string, args ...any) *FIGUREElement {
+	return e.ITEMTYPERemove(fmt.Sprintf(format, args...))
 }
 
 // The lang global attribute helps define the language of an element: the language
@@ -962,9 +1052,20 @@ func (e *FIGUREElement) LANG(s string) *FIGUREElement {
 	return e
 }
 
+func (e *FIGUREElement) LANGF(format string, args ...any) *FIGUREElement {
+	return e.LANG(fmt.Sprintf(format, args...))
+}
+
 func (e *FIGUREElement) IfLANG(condition bool, s string) *FIGUREElement {
 	if condition {
 		e.LANG(s)
+	}
+	return e
+}
+
+func (e *FIGUREElement) IfLANGF(condition bool, format string, args ...any) *FIGUREElement {
+	if condition {
+		e.LANG(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -976,6 +1077,10 @@ func (e *FIGUREElement) LANGRemove(s string) *FIGUREElement {
 	}
 	e.StringAttributes.Del("lang")
 	return e
+}
+
+func (e *FIGUREElement) LANGRemoveF(format string, args ...any) *FIGUREElement {
+	return e.LANGRemove(fmt.Sprintf(format, args...))
 }
 
 // The nonce global attribute is a unique identifier used to declare inline
@@ -990,9 +1095,20 @@ func (e *FIGUREElement) NONCE(s string) *FIGUREElement {
 	return e
 }
 
+func (e *FIGUREElement) NONCEF(format string, args ...any) *FIGUREElement {
+	return e.NONCE(fmt.Sprintf(format, args...))
+}
+
 func (e *FIGUREElement) IfNONCE(condition bool, s string) *FIGUREElement {
 	if condition {
 		e.NONCE(s)
+	}
+	return e
+}
+
+func (e *FIGUREElement) IfNONCEF(condition bool, format string, args ...any) *FIGUREElement {
+	if condition {
+		e.NONCE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1004,6 +1120,10 @@ func (e *FIGUREElement) NONCERemove(s string) *FIGUREElement {
 	}
 	e.StringAttributes.Del("nonce")
 	return e
+}
+
+func (e *FIGUREElement) NONCERemoveF(format string, args ...any) *FIGUREElement {
+	return e.NONCERemove(fmt.Sprintf(format, args...))
 }
 
 // The part global attribute contains a space-separated list of the part names of
@@ -1098,9 +1218,20 @@ func (e *FIGUREElement) ROLE(s string) *FIGUREElement {
 	return e
 }
 
+func (e *FIGUREElement) ROLEF(format string, args ...any) *FIGUREElement {
+	return e.ROLE(fmt.Sprintf(format, args...))
+}
+
 func (e *FIGUREElement) IfROLE(condition bool, s string) *FIGUREElement {
 	if condition {
 		e.ROLE(s)
+	}
+	return e
+}
+
+func (e *FIGUREElement) IfROLEF(condition bool, format string, args ...any) *FIGUREElement {
+	if condition {
+		e.ROLE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1112,6 +1243,10 @@ func (e *FIGUREElement) ROLERemove(s string) *FIGUREElement {
 	}
 	e.StringAttributes.Del("role")
 	return e
+}
+
+func (e *FIGUREElement) ROLERemoveF(format string, args ...any) *FIGUREElement {
+	return e.ROLERemove(fmt.Sprintf(format, args...))
 }
 
 // The slot global attribute assigns a slot in a shadow DOM shadow tree to an
@@ -1126,9 +1261,20 @@ func (e *FIGUREElement) SLOT(s string) *FIGUREElement {
 	return e
 }
 
+func (e *FIGUREElement) SLOTF(format string, args ...any) *FIGUREElement {
+	return e.SLOT(fmt.Sprintf(format, args...))
+}
+
 func (e *FIGUREElement) IfSLOT(condition bool, s string) *FIGUREElement {
 	if condition {
 		e.SLOT(s)
+	}
+	return e
+}
+
+func (e *FIGUREElement) IfSLOTF(condition bool, format string, args ...any) *FIGUREElement {
+	if condition {
+		e.SLOT(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1140,6 +1286,10 @@ func (e *FIGUREElement) SLOTRemove(s string) *FIGUREElement {
 	}
 	e.StringAttributes.Del("slot")
 	return e
+}
+
+func (e *FIGUREElement) SLOTRemoveF(format string, args ...any) *FIGUREElement {
+	return e.SLOTRemove(fmt.Sprintf(format, args...))
 }
 
 // The spellcheck global attribute is an enumerated attribute that defines whether
@@ -1344,9 +1494,20 @@ func (e *FIGUREElement) TITLE(s string) *FIGUREElement {
 	return e
 }
 
+func (e *FIGUREElement) TITLEF(format string, args ...any) *FIGUREElement {
+	return e.TITLE(fmt.Sprintf(format, args...))
+}
+
 func (e *FIGUREElement) IfTITLE(condition bool, s string) *FIGUREElement {
 	if condition {
 		e.TITLE(s)
+	}
+	return e
+}
+
+func (e *FIGUREElement) IfTITLEF(condition bool, format string, args ...any) *FIGUREElement {
+	if condition {
+		e.TITLE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1358,6 +1519,10 @@ func (e *FIGUREElement) TITLERemove(s string) *FIGUREElement {
 	}
 	e.StringAttributes.Del("title")
 	return e
+}
+
+func (e *FIGUREElement) TITLERemoveF(format string, args ...any) *FIGUREElement {
+	return e.TITLERemove(fmt.Sprintf(format, args...))
 }
 
 // The translate global attribute is an enumerated attribute that is used to
@@ -1402,7 +1567,7 @@ func (e *FIGUREElement) DATASTAR_MERGE_STORE(v any) *FIGUREElement {
 	if err != nil {
 		panic(err)
 	}
-	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	e.CustomDataAttributes.Set("merge-store", string(b))
 	return e
 }
 
@@ -1524,34 +1689,34 @@ func (e *FIGUREElement) DATASTAR_TEXTRemove() *FIGUREElement {
 
 // Sets the event handler of the element
 
-type FigureDataOnMod customDataKeyModifier
+type FigureOnMod customDataKeyModifier
 
 // Debounces the event handler
-func FigureDataOnModDebounce(
+func FigureOnModDebounce(
 	d time.Duration,
-) FigureDataOnMod {
+) FigureOnMod {
 	return func() string {
 		return fmt.Sprintf("debounce_%dms", d.Milliseconds())
 	}
 }
 
 // Throttles the event handler
-func FigureDataOnModThrottle(
+func FigureOnModThrottle(
 	d time.Duration,
-) FigureDataOnMod {
+) FigureOnMod {
 	return func() string {
 		return fmt.Sprintf("throttle_%dms", d.Milliseconds())
 	}
 }
 
-func (e *FIGUREElement) DATASTAR_ON(key string, expression string, modifiers ...FigureDataOnMod) *FIGUREElement {
+func (e *FIGUREElement) DATASTAR_ON(key string, expression string, modifiers ...FigureOnMod) *FIGUREElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
 	key = fmt.Sprintf("data-on-%s", key)
 
-	customMods := lo.Map(modifiers, func(m FigureDataOnMod, i int) customDataKeyModifier {
+	customMods := lo.Map(modifiers, func(m FigureOnMod, i int) customDataKeyModifier {
 		return customDataKeyModifier(m)
 	})
 	key = customDataKey(key, customMods...)
@@ -1559,7 +1724,7 @@ func (e *FIGUREElement) DATASTAR_ON(key string, expression string, modifiers ...
 	return e
 }
 
-func (e *FIGUREElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...FigureDataOnMod) *FIGUREElement {
+func (e *FIGUREElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...FigureOnMod) *FIGUREElement {
 	if condition {
 		e.DATASTAR_ON(key, expression, modifiers...)
 	}
@@ -1652,7 +1817,7 @@ func (e *FIGUREElement) DATASTAR_FETCH_INDICATOR(expression string) *FIGUREEleme
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "DatastarFetchIndicator"
+	key := "data-fetch-indicator"
 
 	e.StringAttributes.Set(key, expression)
 	return e
@@ -1670,7 +1835,7 @@ func (e *FIGUREElement) DATASTAR_FETCH_INDICATORRemove() *FIGUREElement {
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("DatastarFetchIndicator")
+	e.StringAttributes.Del("data-fetch-indicator")
 	return e
 }
 

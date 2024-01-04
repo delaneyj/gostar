@@ -173,9 +173,20 @@ func (e *SVGVIEWElement) VIEW_BOX(s string) *SVGVIEWElement {
 	return e
 }
 
+func (e *SVGVIEWElement) VIEW_BOXF(format string, args ...any) *SVGVIEWElement {
+	return e.VIEW_BOX(fmt.Sprintf(format, args...))
+}
+
 func (e *SVGVIEWElement) IfVIEW_BOX(condition bool, s string) *SVGVIEWElement {
 	if condition {
 		e.VIEW_BOX(s)
+	}
+	return e
+}
+
+func (e *SVGVIEWElement) IfVIEW_BOXF(condition bool, format string, args ...any) *SVGVIEWElement {
+	if condition {
+		e.VIEW_BOX(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -189,6 +200,10 @@ func (e *SVGVIEWElement) VIEW_BOXRemove(s string) *SVGVIEWElement {
 	return e
 }
 
+func (e *SVGVIEWElement) VIEW_BOXRemoveF(format string, args ...any) *SVGVIEWElement {
+	return e.VIEW_BOXRemove(fmt.Sprintf(format, args...))
+}
+
 // Specifies a unique id for an element
 func (e *SVGVIEWElement) ID(s string) *SVGVIEWElement {
 	if e.StringAttributes == nil {
@@ -198,9 +213,20 @@ func (e *SVGVIEWElement) ID(s string) *SVGVIEWElement {
 	return e
 }
 
+func (e *SVGVIEWElement) IDF(format string, args ...any) *SVGVIEWElement {
+	return e.ID(fmt.Sprintf(format, args...))
+}
+
 func (e *SVGVIEWElement) IfID(condition bool, s string) *SVGVIEWElement {
 	if condition {
 		e.ID(s)
+	}
+	return e
+}
+
+func (e *SVGVIEWElement) IfIDF(condition bool, format string, args ...any) *SVGVIEWElement {
+	if condition {
+		e.ID(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -212,6 +238,10 @@ func (e *SVGVIEWElement) IDRemove(s string) *SVGVIEWElement {
 	}
 	e.StringAttributes.Del("id")
 	return e
+}
+
+func (e *SVGVIEWElement) IDRemoveF(format string, args ...any) *SVGVIEWElement {
+	return e.IDRemove(fmt.Sprintf(format, args...))
 }
 
 // Specifies one or more classnames for an element (refers to a class in a style
@@ -350,7 +380,7 @@ func (e *SVGVIEWElement) DATASTAR_MERGE_STORE(v any) *SVGVIEWElement {
 	if err != nil {
 		panic(err)
 	}
-	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	e.CustomDataAttributes.Set("merge-store", string(b))
 	return e
 }
 
@@ -472,34 +502,34 @@ func (e *SVGVIEWElement) DATASTAR_TEXTRemove() *SVGVIEWElement {
 
 // Sets the event handler of the element
 
-type SVGViewDataOnMod customDataKeyModifier
+type SVGViewOnMod customDataKeyModifier
 
 // Debounces the event handler
-func SVGViewDataOnModDebounce(
+func SVGViewOnModDebounce(
 	d time.Duration,
-) SVGViewDataOnMod {
+) SVGViewOnMod {
 	return func() string {
 		return fmt.Sprintf("debounce_%dms", d.Milliseconds())
 	}
 }
 
 // Throttles the event handler
-func SVGViewDataOnModThrottle(
+func SVGViewOnModThrottle(
 	d time.Duration,
-) SVGViewDataOnMod {
+) SVGViewOnMod {
 	return func() string {
 		return fmt.Sprintf("throttle_%dms", d.Milliseconds())
 	}
 }
 
-func (e *SVGVIEWElement) DATASTAR_ON(key string, expression string, modifiers ...SVGViewDataOnMod) *SVGVIEWElement {
+func (e *SVGVIEWElement) DATASTAR_ON(key string, expression string, modifiers ...SVGViewOnMod) *SVGVIEWElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
 	key = fmt.Sprintf("data-on-%s", key)
 
-	customMods := lo.Map(modifiers, func(m SVGViewDataOnMod, i int) customDataKeyModifier {
+	customMods := lo.Map(modifiers, func(m SVGViewOnMod, i int) customDataKeyModifier {
 		return customDataKeyModifier(m)
 	})
 	key = customDataKey(key, customMods...)
@@ -507,7 +537,7 @@ func (e *SVGVIEWElement) DATASTAR_ON(key string, expression string, modifiers ..
 	return e
 }
 
-func (e *SVGVIEWElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SVGViewDataOnMod) *SVGVIEWElement {
+func (e *SVGVIEWElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SVGViewOnMod) *SVGVIEWElement {
 	if condition {
 		e.DATASTAR_ON(key, expression, modifiers...)
 	}
@@ -600,7 +630,7 @@ func (e *SVGVIEWElement) DATASTAR_FETCH_INDICATOR(expression string) *SVGVIEWEle
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "DatastarFetchIndicator"
+	key := "data-fetch-indicator"
 
 	e.StringAttributes.Set(key, expression)
 	return e
@@ -618,7 +648,7 @@ func (e *SVGVIEWElement) DATASTAR_FETCH_INDICATORRemove() *SVGVIEWElement {
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("DatastarFetchIndicator")
+	e.StringAttributes.Del("data-fetch-indicator")
 	return e
 }
 

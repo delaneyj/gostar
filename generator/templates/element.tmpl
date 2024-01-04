@@ -174,9 +174,20 @@ func (e *{{$elStructName}}) CustomDataRemove(key string) *{{$elStructName}} {
             return e
         }
 
+        func(e *{{$elStructName}}) {{.Name}}F(format string, args ...any) *{{$elStructName}}{
+            return e.{{.Name}}(fmt.Sprintf(format, args...))
+        }
+
         func(e *{{$elStructName}}) If{{.Name}}(condition bool, s string) *{{$elStructName}}{
             if condition {
                 e.{{.Name}}(s)
+            }
+            return e
+        }
+
+        func(e *{{$elStructName}}) If{{.Name}}F(condition bool, format string, args ...any) *{{$elStructName}}{
+            if condition {
+                e.{{.Name}}(fmt.Sprintf(format, args...))
             }
             return e
         }
@@ -189,6 +200,12 @@ func (e *{{$elStructName}}) CustomDataRemove(key string) *{{$elStructName}} {
             e.StringAttributes.Del("{{.Key}}")
             return e
         }
+
+        func(e *{{$elStructName}}) {{.Name}}RemoveF(format string, args ...any) *{{$elStructName}}{
+            return e.{{.Name}}Remove(fmt.Sprintf(format, args...))
+        }
+
+
     {{ else if .Type | attrIsDelimited -}}
         func(e *{{$elStructName}}) {{.Name}}(s ...string) *{{$elStructName}}{
             if e.DelimitedStrings == nil {
@@ -522,11 +539,10 @@ func (e *{{$elStructName}}) CustomDataRemove(key string) *{{$elStructName}} {
                     e.StringAttributes = treemap.New[string,string]()
                 }
                 {{if $custom.HasKey}}
-                key = fmt.Sprintf("{{.Key}}-%s", key)
+                key =  fmt.Sprintf("data-{{.Key}}-%s", key)
                 {{else}}
-                key := "{{.Key}}"
+                key := "data-{{.Key}}"
                 {{end}}
-
                 {{- if $custom.Modifiers}}
                 customMods := lo.Map(modifiers, func(m {{$modTypeName}}, i int) customDataKeyModifier  {
                     return customDataKeyModifier(m)
@@ -549,7 +565,7 @@ func (e *{{$elStructName}}) CustomDataRemove(key string) *{{$elStructName}} {
                 if e.StringAttributes == nil {
                     return e
                 }
-                e.StringAttributes.Del("{{.Key}}")
+                e.StringAttributes.Del("data-{{.Key}}")
                 return e
             }
 
@@ -577,7 +593,7 @@ func (e *{{$elStructName}}) CustomDataRemove(key string) *{{$elStructName}} {
                 {{- if $custom.Modifiers}}
                 key := customDataKey("{{.Key}}"{{if $custom.Modifiers}}, modifiers...{{end}})
                 {{- else}}
-                key := "{{.Key}}"
+                key := "data-{{.Key}}"
                 {{- end}}
                 if e.IntAttributes == nil {
                     e.IntAttributes = treemap.New[string,int]()
@@ -591,7 +607,7 @@ func (e *{{$elStructName}}) CustomDataRemove(key string) *{{$elStructName}} {
                 {{- if $custom.Modifiers}}
                 key := customDataKey("{{.Key}}"{{if $custom.Modifiers}}, modifiers...{{end}})
                 {{- else}}
-                key := "{{.Key}}"
+                key := "data-{{.Key}}"
                 {{- end}}
                 e.BoolAttributes.Set(key, b)
                 return e

@@ -175,9 +175,20 @@ func (e *SVGFEFLOODElement) FLOOD_COLOR(s string) *SVGFEFLOODElement {
 	return e
 }
 
+func (e *SVGFEFLOODElement) FLOOD_COLORF(format string, args ...any) *SVGFEFLOODElement {
+	return e.FLOOD_COLOR(fmt.Sprintf(format, args...))
+}
+
 func (e *SVGFEFLOODElement) IfFLOOD_COLOR(condition bool, s string) *SVGFEFLOODElement {
 	if condition {
 		e.FLOOD_COLOR(s)
+	}
+	return e
+}
+
+func (e *SVGFEFLOODElement) IfFLOOD_COLORF(condition bool, format string, args ...any) *SVGFEFLOODElement {
+	if condition {
+		e.FLOOD_COLOR(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -189,6 +200,10 @@ func (e *SVGFEFLOODElement) FLOOD_COLORRemove(s string) *SVGFEFLOODElement {
 	}
 	e.StringAttributes.Del("flood-color")
 	return e
+}
+
+func (e *SVGFEFLOODElement) FLOOD_COLORRemoveF(format string, args ...any) *SVGFEFLOODElement {
+	return e.FLOOD_COLORRemove(fmt.Sprintf(format, args...))
 }
 
 // The flood-opacity attribute indicates the opacity value to use across the
@@ -217,9 +232,20 @@ func (e *SVGFEFLOODElement) ID(s string) *SVGFEFLOODElement {
 	return e
 }
 
+func (e *SVGFEFLOODElement) IDF(format string, args ...any) *SVGFEFLOODElement {
+	return e.ID(fmt.Sprintf(format, args...))
+}
+
 func (e *SVGFEFLOODElement) IfID(condition bool, s string) *SVGFEFLOODElement {
 	if condition {
 		e.ID(s)
+	}
+	return e
+}
+
+func (e *SVGFEFLOODElement) IfIDF(condition bool, format string, args ...any) *SVGFEFLOODElement {
+	if condition {
+		e.ID(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -231,6 +257,10 @@ func (e *SVGFEFLOODElement) IDRemove(s string) *SVGFEFLOODElement {
 	}
 	e.StringAttributes.Del("id")
 	return e
+}
+
+func (e *SVGFEFLOODElement) IDRemoveF(format string, args ...any) *SVGFEFLOODElement {
+	return e.IDRemove(fmt.Sprintf(format, args...))
 }
 
 // Specifies one or more classnames for an element (refers to a class in a style
@@ -369,7 +399,7 @@ func (e *SVGFEFLOODElement) DATASTAR_MERGE_STORE(v any) *SVGFEFLOODElement {
 	if err != nil {
 		panic(err)
 	}
-	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	e.CustomDataAttributes.Set("merge-store", string(b))
 	return e
 }
 
@@ -491,34 +521,34 @@ func (e *SVGFEFLOODElement) DATASTAR_TEXTRemove() *SVGFEFLOODElement {
 
 // Sets the event handler of the element
 
-type SVGFeFloodDataOnMod customDataKeyModifier
+type SVGFeFloodOnMod customDataKeyModifier
 
 // Debounces the event handler
-func SVGFeFloodDataOnModDebounce(
+func SVGFeFloodOnModDebounce(
 	d time.Duration,
-) SVGFeFloodDataOnMod {
+) SVGFeFloodOnMod {
 	return func() string {
 		return fmt.Sprintf("debounce_%dms", d.Milliseconds())
 	}
 }
 
 // Throttles the event handler
-func SVGFeFloodDataOnModThrottle(
+func SVGFeFloodOnModThrottle(
 	d time.Duration,
-) SVGFeFloodDataOnMod {
+) SVGFeFloodOnMod {
 	return func() string {
 		return fmt.Sprintf("throttle_%dms", d.Milliseconds())
 	}
 }
 
-func (e *SVGFEFLOODElement) DATASTAR_ON(key string, expression string, modifiers ...SVGFeFloodDataOnMod) *SVGFEFLOODElement {
+func (e *SVGFEFLOODElement) DATASTAR_ON(key string, expression string, modifiers ...SVGFeFloodOnMod) *SVGFEFLOODElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
 	key = fmt.Sprintf("data-on-%s", key)
 
-	customMods := lo.Map(modifiers, func(m SVGFeFloodDataOnMod, i int) customDataKeyModifier {
+	customMods := lo.Map(modifiers, func(m SVGFeFloodOnMod, i int) customDataKeyModifier {
 		return customDataKeyModifier(m)
 	})
 	key = customDataKey(key, customMods...)
@@ -526,7 +556,7 @@ func (e *SVGFEFLOODElement) DATASTAR_ON(key string, expression string, modifiers
 	return e
 }
 
-func (e *SVGFEFLOODElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SVGFeFloodDataOnMod) *SVGFEFLOODElement {
+func (e *SVGFEFLOODElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SVGFeFloodOnMod) *SVGFEFLOODElement {
 	if condition {
 		e.DATASTAR_ON(key, expression, modifiers...)
 	}
@@ -619,7 +649,7 @@ func (e *SVGFEFLOODElement) DATASTAR_FETCH_INDICATOR(expression string) *SVGFEFL
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "DatastarFetchIndicator"
+	key := "data-fetch-indicator"
 
 	e.StringAttributes.Set(key, expression)
 	return e
@@ -637,7 +667,7 @@ func (e *SVGFEFLOODElement) DATASTAR_FETCH_INDICATORRemove() *SVGFEFLOODElement 
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("DatastarFetchIndicator")
+	e.StringAttributes.Del("data-fetch-indicator")
 	return e
 }
 

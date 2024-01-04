@@ -171,9 +171,20 @@ func (e *LABELElement) FOR(s string) *LABELElement {
 	return e
 }
 
+func (e *LABELElement) FORF(format string, args ...any) *LABELElement {
+	return e.FOR(fmt.Sprintf(format, args...))
+}
+
 func (e *LABELElement) IfFOR(condition bool, s string) *LABELElement {
 	if condition {
 		e.FOR(s)
+	}
+	return e
+}
+
+func (e *LABELElement) IfFORF(condition bool, format string, args ...any) *LABELElement {
+	if condition {
+		e.FOR(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -187,6 +198,10 @@ func (e *LABELElement) FORRemove(s string) *LABELElement {
 	return e
 }
 
+func (e *LABELElement) FORRemoveF(format string, args ...any) *LABELElement {
+	return e.FORRemove(fmt.Sprintf(format, args...))
+}
+
 // Specifies the form that is the owner of the element.
 func (e *LABELElement) FORM(s string) *LABELElement {
 	if e.StringAttributes == nil {
@@ -196,9 +211,20 @@ func (e *LABELElement) FORM(s string) *LABELElement {
 	return e
 }
 
+func (e *LABELElement) FORMF(format string, args ...any) *LABELElement {
+	return e.FORM(fmt.Sprintf(format, args...))
+}
+
 func (e *LABELElement) IfFORM(condition bool, s string) *LABELElement {
 	if condition {
 		e.FORM(s)
+	}
+	return e
+}
+
+func (e *LABELElement) IfFORMF(condition bool, format string, args ...any) *LABELElement {
+	if condition {
+		e.FORM(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -210,6 +236,10 @@ func (e *LABELElement) FORMRemove(s string) *LABELElement {
 	}
 	e.StringAttributes.Del("form")
 	return e
+}
+
+func (e *LABELElement) FORMRemoveF(format string, args ...any) *LABELElement {
+	return e.FORMRemove(fmt.Sprintf(format, args...))
 }
 
 // The accesskey global attribute provides a hint for generating a keyboard
@@ -657,9 +687,20 @@ func (e *LABELElement) ID(s string) *LABELElement {
 	return e
 }
 
+func (e *LABELElement) IDF(format string, args ...any) *LABELElement {
+	return e.ID(fmt.Sprintf(format, args...))
+}
+
 func (e *LABELElement) IfID(condition bool, s string) *LABELElement {
 	if condition {
 		e.ID(s)
+	}
+	return e
+}
+
+func (e *LABELElement) IfIDF(condition bool, format string, args ...any) *LABELElement {
+	if condition {
+		e.ID(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -671,6 +712,10 @@ func (e *LABELElement) IDRemove(s string) *LABELElement {
 	}
 	e.StringAttributes.Del("id")
 	return e
+}
+
+func (e *LABELElement) IDRemoveF(format string, args ...any) *LABELElement {
+	return e.IDRemove(fmt.Sprintf(format, args...))
 }
 
 // The inert global attribute is a Boolean attribute indicating that the browser
@@ -805,9 +850,20 @@ func (e *LABELElement) IS(s string) *LABELElement {
 	return e
 }
 
+func (e *LABELElement) ISF(format string, args ...any) *LABELElement {
+	return e.IS(fmt.Sprintf(format, args...))
+}
+
 func (e *LABELElement) IfIS(condition bool, s string) *LABELElement {
 	if condition {
 		e.IS(s)
+	}
+	return e
+}
+
+func (e *LABELElement) IfISF(condition bool, format string, args ...any) *LABELElement {
+	if condition {
+		e.IS(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -819,6 +875,10 @@ func (e *LABELElement) ISRemove(s string) *LABELElement {
 	}
 	e.StringAttributes.Del("is")
 	return e
+}
+
+func (e *LABELElement) ISRemoveF(format string, args ...any) *LABELElement {
+	return e.ISRemove(fmt.Sprintf(format, args...))
 }
 
 // The itemid global attribute provides microdata in the form of a unique, global
@@ -842,9 +902,20 @@ func (e *LABELElement) ITEMID(s string) *LABELElement {
 	return e
 }
 
+func (e *LABELElement) ITEMIDF(format string, args ...any) *LABELElement {
+	return e.ITEMID(fmt.Sprintf(format, args...))
+}
+
 func (e *LABELElement) IfITEMID(condition bool, s string) *LABELElement {
 	if condition {
 		e.ITEMID(s)
+	}
+	return e
+}
+
+func (e *LABELElement) IfITEMIDF(condition bool, format string, args ...any) *LABELElement {
+	if condition {
+		e.ITEMID(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -856,6 +927,10 @@ func (e *LABELElement) ITEMIDRemove(s string) *LABELElement {
 	}
 	e.StringAttributes.Del("itemid")
 	return e
+}
+
+func (e *LABELElement) ITEMIDRemoveF(format string, args ...any) *LABELElement {
+	return e.ITEMIDRemove(fmt.Sprintf(format, args...))
 }
 
 // The itemprop global attribute is used to add properties to an item
@@ -874,9 +949,20 @@ func (e *LABELElement) ITEMPROP(s string) *LABELElement {
 	return e
 }
 
+func (e *LABELElement) ITEMPROPF(format string, args ...any) *LABELElement {
+	return e.ITEMPROP(fmt.Sprintf(format, args...))
+}
+
 func (e *LABELElement) IfITEMPROP(condition bool, s string) *LABELElement {
 	if condition {
 		e.ITEMPROP(s)
+	}
+	return e
+}
+
+func (e *LABELElement) IfITEMPROPF(condition bool, format string, args ...any) *LABELElement {
+	if condition {
+		e.ITEMPROP(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -888,6 +974,10 @@ func (e *LABELElement) ITEMPROPRemove(s string) *LABELElement {
 	}
 	e.StringAttributes.Del("itemprop")
 	return e
+}
+
+func (e *LABELElement) ITEMPROPRemoveF(format string, args ...any) *LABELElement {
+	return e.ITEMPROPRemove(fmt.Sprintf(format, args...))
 }
 
 // Properties that are not descendants of an element with the itemscope attribute
@@ -903,9 +993,20 @@ func (e *LABELElement) ITEMREF(s string) *LABELElement {
 	return e
 }
 
+func (e *LABELElement) ITEMREFF(format string, args ...any) *LABELElement {
+	return e.ITEMREF(fmt.Sprintf(format, args...))
+}
+
 func (e *LABELElement) IfITEMREF(condition bool, s string) *LABELElement {
 	if condition {
 		e.ITEMREF(s)
+	}
+	return e
+}
+
+func (e *LABELElement) IfITEMREFF(condition bool, format string, args ...any) *LABELElement {
+	if condition {
+		e.ITEMREF(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -917,6 +1018,10 @@ func (e *LABELElement) ITEMREFRemove(s string) *LABELElement {
 	}
 	e.StringAttributes.Del("itemref")
 	return e
+}
+
+func (e *LABELElement) ITEMREFRemoveF(format string, args ...any) *LABELElement {
+	return e.ITEMREFRemove(fmt.Sprintf(format, args...))
 }
 
 // The itemscope global attribute is used to add an item to a microdata DOM tree
@@ -980,9 +1085,20 @@ func (e *LABELElement) ITEMTYPE(s string) *LABELElement {
 	return e
 }
 
+func (e *LABELElement) ITEMTYPEF(format string, args ...any) *LABELElement {
+	return e.ITEMTYPE(fmt.Sprintf(format, args...))
+}
+
 func (e *LABELElement) IfITEMTYPE(condition bool, s string) *LABELElement {
 	if condition {
 		e.ITEMTYPE(s)
+	}
+	return e
+}
+
+func (e *LABELElement) IfITEMTYPEF(condition bool, format string, args ...any) *LABELElement {
+	if condition {
+		e.ITEMTYPE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -994,6 +1110,10 @@ func (e *LABELElement) ITEMTYPERemove(s string) *LABELElement {
 	}
 	e.StringAttributes.Del("itemtype")
 	return e
+}
+
+func (e *LABELElement) ITEMTYPERemoveF(format string, args ...any) *LABELElement {
+	return e.ITEMTYPERemove(fmt.Sprintf(format, args...))
 }
 
 // The lang global attribute helps define the language of an element: the language
@@ -1010,9 +1130,20 @@ func (e *LABELElement) LANG(s string) *LABELElement {
 	return e
 }
 
+func (e *LABELElement) LANGF(format string, args ...any) *LABELElement {
+	return e.LANG(fmt.Sprintf(format, args...))
+}
+
 func (e *LABELElement) IfLANG(condition bool, s string) *LABELElement {
 	if condition {
 		e.LANG(s)
+	}
+	return e
+}
+
+func (e *LABELElement) IfLANGF(condition bool, format string, args ...any) *LABELElement {
+	if condition {
+		e.LANG(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1024,6 +1155,10 @@ func (e *LABELElement) LANGRemove(s string) *LABELElement {
 	}
 	e.StringAttributes.Del("lang")
 	return e
+}
+
+func (e *LABELElement) LANGRemoveF(format string, args ...any) *LABELElement {
+	return e.LANGRemove(fmt.Sprintf(format, args...))
 }
 
 // The nonce global attribute is a unique identifier used to declare inline
@@ -1038,9 +1173,20 @@ func (e *LABELElement) NONCE(s string) *LABELElement {
 	return e
 }
 
+func (e *LABELElement) NONCEF(format string, args ...any) *LABELElement {
+	return e.NONCE(fmt.Sprintf(format, args...))
+}
+
 func (e *LABELElement) IfNONCE(condition bool, s string) *LABELElement {
 	if condition {
 		e.NONCE(s)
+	}
+	return e
+}
+
+func (e *LABELElement) IfNONCEF(condition bool, format string, args ...any) *LABELElement {
+	if condition {
+		e.NONCE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1052,6 +1198,10 @@ func (e *LABELElement) NONCERemove(s string) *LABELElement {
 	}
 	e.StringAttributes.Del("nonce")
 	return e
+}
+
+func (e *LABELElement) NONCERemoveF(format string, args ...any) *LABELElement {
+	return e.NONCERemove(fmt.Sprintf(format, args...))
 }
 
 // The part global attribute contains a space-separated list of the part names of
@@ -1146,9 +1296,20 @@ func (e *LABELElement) ROLE(s string) *LABELElement {
 	return e
 }
 
+func (e *LABELElement) ROLEF(format string, args ...any) *LABELElement {
+	return e.ROLE(fmt.Sprintf(format, args...))
+}
+
 func (e *LABELElement) IfROLE(condition bool, s string) *LABELElement {
 	if condition {
 		e.ROLE(s)
+	}
+	return e
+}
+
+func (e *LABELElement) IfROLEF(condition bool, format string, args ...any) *LABELElement {
+	if condition {
+		e.ROLE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1160,6 +1321,10 @@ func (e *LABELElement) ROLERemove(s string) *LABELElement {
 	}
 	e.StringAttributes.Del("role")
 	return e
+}
+
+func (e *LABELElement) ROLERemoveF(format string, args ...any) *LABELElement {
+	return e.ROLERemove(fmt.Sprintf(format, args...))
 }
 
 // The slot global attribute assigns a slot in a shadow DOM shadow tree to an
@@ -1174,9 +1339,20 @@ func (e *LABELElement) SLOT(s string) *LABELElement {
 	return e
 }
 
+func (e *LABELElement) SLOTF(format string, args ...any) *LABELElement {
+	return e.SLOT(fmt.Sprintf(format, args...))
+}
+
 func (e *LABELElement) IfSLOT(condition bool, s string) *LABELElement {
 	if condition {
 		e.SLOT(s)
+	}
+	return e
+}
+
+func (e *LABELElement) IfSLOTF(condition bool, format string, args ...any) *LABELElement {
+	if condition {
+		e.SLOT(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1188,6 +1364,10 @@ func (e *LABELElement) SLOTRemove(s string) *LABELElement {
 	}
 	e.StringAttributes.Del("slot")
 	return e
+}
+
+func (e *LABELElement) SLOTRemoveF(format string, args ...any) *LABELElement {
+	return e.SLOTRemove(fmt.Sprintf(format, args...))
 }
 
 // The spellcheck global attribute is an enumerated attribute that defines whether
@@ -1392,9 +1572,20 @@ func (e *LABELElement) TITLE(s string) *LABELElement {
 	return e
 }
 
+func (e *LABELElement) TITLEF(format string, args ...any) *LABELElement {
+	return e.TITLE(fmt.Sprintf(format, args...))
+}
+
 func (e *LABELElement) IfTITLE(condition bool, s string) *LABELElement {
 	if condition {
 		e.TITLE(s)
+	}
+	return e
+}
+
+func (e *LABELElement) IfTITLEF(condition bool, format string, args ...any) *LABELElement {
+	if condition {
+		e.TITLE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1406,6 +1597,10 @@ func (e *LABELElement) TITLERemove(s string) *LABELElement {
 	}
 	e.StringAttributes.Del("title")
 	return e
+}
+
+func (e *LABELElement) TITLERemoveF(format string, args ...any) *LABELElement {
+	return e.TITLERemove(fmt.Sprintf(format, args...))
 }
 
 // The translate global attribute is an enumerated attribute that is used to
@@ -1450,7 +1645,7 @@ func (e *LABELElement) DATASTAR_MERGE_STORE(v any) *LABELElement {
 	if err != nil {
 		panic(err)
 	}
-	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	e.CustomDataAttributes.Set("merge-store", string(b))
 	return e
 }
 
@@ -1572,34 +1767,34 @@ func (e *LABELElement) DATASTAR_TEXTRemove() *LABELElement {
 
 // Sets the event handler of the element
 
-type LabelDataOnMod customDataKeyModifier
+type LabelOnMod customDataKeyModifier
 
 // Debounces the event handler
-func LabelDataOnModDebounce(
+func LabelOnModDebounce(
 	d time.Duration,
-) LabelDataOnMod {
+) LabelOnMod {
 	return func() string {
 		return fmt.Sprintf("debounce_%dms", d.Milliseconds())
 	}
 }
 
 // Throttles the event handler
-func LabelDataOnModThrottle(
+func LabelOnModThrottle(
 	d time.Duration,
-) LabelDataOnMod {
+) LabelOnMod {
 	return func() string {
 		return fmt.Sprintf("throttle_%dms", d.Milliseconds())
 	}
 }
 
-func (e *LABELElement) DATASTAR_ON(key string, expression string, modifiers ...LabelDataOnMod) *LABELElement {
+func (e *LABELElement) DATASTAR_ON(key string, expression string, modifiers ...LabelOnMod) *LABELElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
 	key = fmt.Sprintf("data-on-%s", key)
 
-	customMods := lo.Map(modifiers, func(m LabelDataOnMod, i int) customDataKeyModifier {
+	customMods := lo.Map(modifiers, func(m LabelOnMod, i int) customDataKeyModifier {
 		return customDataKeyModifier(m)
 	})
 	key = customDataKey(key, customMods...)
@@ -1607,7 +1802,7 @@ func (e *LABELElement) DATASTAR_ON(key string, expression string, modifiers ...L
 	return e
 }
 
-func (e *LABELElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...LabelDataOnMod) *LABELElement {
+func (e *LABELElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...LabelOnMod) *LABELElement {
 	if condition {
 		e.DATASTAR_ON(key, expression, modifiers...)
 	}
@@ -1700,7 +1895,7 @@ func (e *LABELElement) DATASTAR_FETCH_INDICATOR(expression string) *LABELElement
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "DatastarFetchIndicator"
+	key := "data-fetch-indicator"
 
 	e.StringAttributes.Set(key, expression)
 	return e
@@ -1718,7 +1913,7 @@ func (e *LABELElement) DATASTAR_FETCH_INDICATORRemove() *LABELElement {
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("DatastarFetchIndicator")
+	e.StringAttributes.Del("data-fetch-indicator")
 	return e
 }
 

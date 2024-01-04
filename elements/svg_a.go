@@ -179,9 +179,20 @@ func (e *SVGAElement) DOWNLOAD(s string) *SVGAElement {
 	return e
 }
 
+func (e *SVGAElement) DOWNLOADF(format string, args ...any) *SVGAElement {
+	return e.DOWNLOAD(fmt.Sprintf(format, args...))
+}
+
 func (e *SVGAElement) IfDOWNLOAD(condition bool, s string) *SVGAElement {
 	if condition {
 		e.DOWNLOAD(s)
+	}
+	return e
+}
+
+func (e *SVGAElement) IfDOWNLOADF(condition bool, format string, args ...any) *SVGAElement {
+	if condition {
+		e.DOWNLOAD(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -195,6 +206,10 @@ func (e *SVGAElement) DOWNLOADRemove(s string) *SVGAElement {
 	return e
 }
 
+func (e *SVGAElement) DOWNLOADRemoveF(format string, args ...any) *SVGAElement {
+	return e.DOWNLOADRemove(fmt.Sprintf(format, args...))
+}
+
 // The URL of a linked resource.
 func (e *SVGAElement) HREF(s string) *SVGAElement {
 	if e.StringAttributes == nil {
@@ -204,9 +219,20 @@ func (e *SVGAElement) HREF(s string) *SVGAElement {
 	return e
 }
 
+func (e *SVGAElement) HREFF(format string, args ...any) *SVGAElement {
+	return e.HREF(fmt.Sprintf(format, args...))
+}
+
 func (e *SVGAElement) IfHREF(condition bool, s string) *SVGAElement {
 	if condition {
 		e.HREF(s)
+	}
+	return e
+}
+
+func (e *SVGAElement) IfHREFF(condition bool, format string, args ...any) *SVGAElement {
+	if condition {
+		e.HREF(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -220,6 +246,10 @@ func (e *SVGAElement) HREFRemove(s string) *SVGAElement {
 	return e
 }
 
+func (e *SVGAElement) HREFRemoveF(format string, args ...any) *SVGAElement {
+	return e.HREFRemove(fmt.Sprintf(format, args...))
+}
+
 // Specifies the language of the linked resource.
 func (e *SVGAElement) HREFLANG(s string) *SVGAElement {
 	if e.StringAttributes == nil {
@@ -229,9 +259,20 @@ func (e *SVGAElement) HREFLANG(s string) *SVGAElement {
 	return e
 }
 
+func (e *SVGAElement) HREFLANGF(format string, args ...any) *SVGAElement {
+	return e.HREFLANG(fmt.Sprintf(format, args...))
+}
+
 func (e *SVGAElement) IfHREFLANG(condition bool, s string) *SVGAElement {
 	if condition {
 		e.HREFLANG(s)
+	}
+	return e
+}
+
+func (e *SVGAElement) IfHREFLANGF(condition bool, format string, args ...any) *SVGAElement {
+	if condition {
+		e.HREFLANG(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -243,6 +284,10 @@ func (e *SVGAElement) HREFLANGRemove(s string) *SVGAElement {
 	}
 	e.StringAttributes.Del("hreflang")
 	return e
+}
+
+func (e *SVGAElement) HREFLANGRemoveF(format string, args ...any) *SVGAElement {
+	return e.HREFLANGRemove(fmt.Sprintf(format, args...))
 }
 
 // A space-separated list of URLs
@@ -451,9 +496,20 @@ func (e *SVGAElement) TYPE(s string) *SVGAElement {
 	return e
 }
 
+func (e *SVGAElement) TYPEF(format string, args ...any) *SVGAElement {
+	return e.TYPE(fmt.Sprintf(format, args...))
+}
+
 func (e *SVGAElement) IfTYPE(condition bool, s string) *SVGAElement {
 	if condition {
 		e.TYPE(s)
+	}
+	return e
+}
+
+func (e *SVGAElement) IfTYPEF(condition bool, format string, args ...any) *SVGAElement {
+	if condition {
+		e.TYPE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -467,6 +523,10 @@ func (e *SVGAElement) TYPERemove(s string) *SVGAElement {
 	return e
 }
 
+func (e *SVGAElement) TYPERemoveF(format string, args ...any) *SVGAElement {
+	return e.TYPERemove(fmt.Sprintf(format, args...))
+}
+
 // Specifies a unique id for an element
 func (e *SVGAElement) ID(s string) *SVGAElement {
 	if e.StringAttributes == nil {
@@ -476,9 +536,20 @@ func (e *SVGAElement) ID(s string) *SVGAElement {
 	return e
 }
 
+func (e *SVGAElement) IDF(format string, args ...any) *SVGAElement {
+	return e.ID(fmt.Sprintf(format, args...))
+}
+
 func (e *SVGAElement) IfID(condition bool, s string) *SVGAElement {
 	if condition {
 		e.ID(s)
+	}
+	return e
+}
+
+func (e *SVGAElement) IfIDF(condition bool, format string, args ...any) *SVGAElement {
+	if condition {
+		e.ID(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -490,6 +561,10 @@ func (e *SVGAElement) IDRemove(s string) *SVGAElement {
 	}
 	e.StringAttributes.Del("id")
 	return e
+}
+
+func (e *SVGAElement) IDRemoveF(format string, args ...any) *SVGAElement {
+	return e.IDRemove(fmt.Sprintf(format, args...))
 }
 
 // Specifies one or more classnames for an element (refers to a class in a style
@@ -628,7 +703,7 @@ func (e *SVGAElement) DATASTAR_MERGE_STORE(v any) *SVGAElement {
 	if err != nil {
 		panic(err)
 	}
-	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	e.CustomDataAttributes.Set("merge-store", string(b))
 	return e
 }
 
@@ -750,34 +825,34 @@ func (e *SVGAElement) DATASTAR_TEXTRemove() *SVGAElement {
 
 // Sets the event handler of the element
 
-type SVGADataOnMod customDataKeyModifier
+type SVGAOnMod customDataKeyModifier
 
 // Debounces the event handler
-func SVGADataOnModDebounce(
+func SVGAOnModDebounce(
 	d time.Duration,
-) SVGADataOnMod {
+) SVGAOnMod {
 	return func() string {
 		return fmt.Sprintf("debounce_%dms", d.Milliseconds())
 	}
 }
 
 // Throttles the event handler
-func SVGADataOnModThrottle(
+func SVGAOnModThrottle(
 	d time.Duration,
-) SVGADataOnMod {
+) SVGAOnMod {
 	return func() string {
 		return fmt.Sprintf("throttle_%dms", d.Milliseconds())
 	}
 }
 
-func (e *SVGAElement) DATASTAR_ON(key string, expression string, modifiers ...SVGADataOnMod) *SVGAElement {
+func (e *SVGAElement) DATASTAR_ON(key string, expression string, modifiers ...SVGAOnMod) *SVGAElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
 	key = fmt.Sprintf("data-on-%s", key)
 
-	customMods := lo.Map(modifiers, func(m SVGADataOnMod, i int) customDataKeyModifier {
+	customMods := lo.Map(modifiers, func(m SVGAOnMod, i int) customDataKeyModifier {
 		return customDataKeyModifier(m)
 	})
 	key = customDataKey(key, customMods...)
@@ -785,7 +860,7 @@ func (e *SVGAElement) DATASTAR_ON(key string, expression string, modifiers ...SV
 	return e
 }
 
-func (e *SVGAElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SVGADataOnMod) *SVGAElement {
+func (e *SVGAElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SVGAOnMod) *SVGAElement {
 	if condition {
 		e.DATASTAR_ON(key, expression, modifiers...)
 	}
@@ -878,7 +953,7 @@ func (e *SVGAElement) DATASTAR_FETCH_INDICATOR(expression string) *SVGAElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "DatastarFetchIndicator"
+	key := "data-fetch-indicator"
 
 	e.StringAttributes.Set(key, expression)
 	return e
@@ -896,7 +971,7 @@ func (e *SVGAElement) DATASTAR_FETCH_INDICATORRemove() *SVGAElement {
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("DatastarFetchIndicator")
+	e.StringAttributes.Del("data-fetch-indicator")
 	return e
 }
 

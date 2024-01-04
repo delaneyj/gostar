@@ -608,9 +608,20 @@ func (e *H1Element) ID(s string) *H1Element {
 	return e
 }
 
+func (e *H1Element) IDF(format string, args ...any) *H1Element {
+	return e.ID(fmt.Sprintf(format, args...))
+}
+
 func (e *H1Element) IfID(condition bool, s string) *H1Element {
 	if condition {
 		e.ID(s)
+	}
+	return e
+}
+
+func (e *H1Element) IfIDF(condition bool, format string, args ...any) *H1Element {
+	if condition {
+		e.ID(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -622,6 +633,10 @@ func (e *H1Element) IDRemove(s string) *H1Element {
 	}
 	e.StringAttributes.Del("id")
 	return e
+}
+
+func (e *H1Element) IDRemoveF(format string, args ...any) *H1Element {
+	return e.IDRemove(fmt.Sprintf(format, args...))
 }
 
 // The inert global attribute is a Boolean attribute indicating that the browser
@@ -756,9 +771,20 @@ func (e *H1Element) IS(s string) *H1Element {
 	return e
 }
 
+func (e *H1Element) ISF(format string, args ...any) *H1Element {
+	return e.IS(fmt.Sprintf(format, args...))
+}
+
 func (e *H1Element) IfIS(condition bool, s string) *H1Element {
 	if condition {
 		e.IS(s)
+	}
+	return e
+}
+
+func (e *H1Element) IfISF(condition bool, format string, args ...any) *H1Element {
+	if condition {
+		e.IS(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -770,6 +796,10 @@ func (e *H1Element) ISRemove(s string) *H1Element {
 	}
 	e.StringAttributes.Del("is")
 	return e
+}
+
+func (e *H1Element) ISRemoveF(format string, args ...any) *H1Element {
+	return e.ISRemove(fmt.Sprintf(format, args...))
 }
 
 // The itemid global attribute provides microdata in the form of a unique, global
@@ -793,9 +823,20 @@ func (e *H1Element) ITEMID(s string) *H1Element {
 	return e
 }
 
+func (e *H1Element) ITEMIDF(format string, args ...any) *H1Element {
+	return e.ITEMID(fmt.Sprintf(format, args...))
+}
+
 func (e *H1Element) IfITEMID(condition bool, s string) *H1Element {
 	if condition {
 		e.ITEMID(s)
+	}
+	return e
+}
+
+func (e *H1Element) IfITEMIDF(condition bool, format string, args ...any) *H1Element {
+	if condition {
+		e.ITEMID(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -807,6 +848,10 @@ func (e *H1Element) ITEMIDRemove(s string) *H1Element {
 	}
 	e.StringAttributes.Del("itemid")
 	return e
+}
+
+func (e *H1Element) ITEMIDRemoveF(format string, args ...any) *H1Element {
+	return e.ITEMIDRemove(fmt.Sprintf(format, args...))
 }
 
 // The itemprop global attribute is used to add properties to an item
@@ -825,9 +870,20 @@ func (e *H1Element) ITEMPROP(s string) *H1Element {
 	return e
 }
 
+func (e *H1Element) ITEMPROPF(format string, args ...any) *H1Element {
+	return e.ITEMPROP(fmt.Sprintf(format, args...))
+}
+
 func (e *H1Element) IfITEMPROP(condition bool, s string) *H1Element {
 	if condition {
 		e.ITEMPROP(s)
+	}
+	return e
+}
+
+func (e *H1Element) IfITEMPROPF(condition bool, format string, args ...any) *H1Element {
+	if condition {
+		e.ITEMPROP(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -839,6 +895,10 @@ func (e *H1Element) ITEMPROPRemove(s string) *H1Element {
 	}
 	e.StringAttributes.Del("itemprop")
 	return e
+}
+
+func (e *H1Element) ITEMPROPRemoveF(format string, args ...any) *H1Element {
+	return e.ITEMPROPRemove(fmt.Sprintf(format, args...))
 }
 
 // Properties that are not descendants of an element with the itemscope attribute
@@ -854,9 +914,20 @@ func (e *H1Element) ITEMREF(s string) *H1Element {
 	return e
 }
 
+func (e *H1Element) ITEMREFF(format string, args ...any) *H1Element {
+	return e.ITEMREF(fmt.Sprintf(format, args...))
+}
+
 func (e *H1Element) IfITEMREF(condition bool, s string) *H1Element {
 	if condition {
 		e.ITEMREF(s)
+	}
+	return e
+}
+
+func (e *H1Element) IfITEMREFF(condition bool, format string, args ...any) *H1Element {
+	if condition {
+		e.ITEMREF(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -868,6 +939,10 @@ func (e *H1Element) ITEMREFRemove(s string) *H1Element {
 	}
 	e.StringAttributes.Del("itemref")
 	return e
+}
+
+func (e *H1Element) ITEMREFRemoveF(format string, args ...any) *H1Element {
+	return e.ITEMREFRemove(fmt.Sprintf(format, args...))
 }
 
 // The itemscope global attribute is used to add an item to a microdata DOM tree
@@ -931,9 +1006,20 @@ func (e *H1Element) ITEMTYPE(s string) *H1Element {
 	return e
 }
 
+func (e *H1Element) ITEMTYPEF(format string, args ...any) *H1Element {
+	return e.ITEMTYPE(fmt.Sprintf(format, args...))
+}
+
 func (e *H1Element) IfITEMTYPE(condition bool, s string) *H1Element {
 	if condition {
 		e.ITEMTYPE(s)
+	}
+	return e
+}
+
+func (e *H1Element) IfITEMTYPEF(condition bool, format string, args ...any) *H1Element {
+	if condition {
+		e.ITEMTYPE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -945,6 +1031,10 @@ func (e *H1Element) ITEMTYPERemove(s string) *H1Element {
 	}
 	e.StringAttributes.Del("itemtype")
 	return e
+}
+
+func (e *H1Element) ITEMTYPERemoveF(format string, args ...any) *H1Element {
+	return e.ITEMTYPERemove(fmt.Sprintf(format, args...))
 }
 
 // The lang global attribute helps define the language of an element: the language
@@ -961,9 +1051,20 @@ func (e *H1Element) LANG(s string) *H1Element {
 	return e
 }
 
+func (e *H1Element) LANGF(format string, args ...any) *H1Element {
+	return e.LANG(fmt.Sprintf(format, args...))
+}
+
 func (e *H1Element) IfLANG(condition bool, s string) *H1Element {
 	if condition {
 		e.LANG(s)
+	}
+	return e
+}
+
+func (e *H1Element) IfLANGF(condition bool, format string, args ...any) *H1Element {
+	if condition {
+		e.LANG(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -975,6 +1076,10 @@ func (e *H1Element) LANGRemove(s string) *H1Element {
 	}
 	e.StringAttributes.Del("lang")
 	return e
+}
+
+func (e *H1Element) LANGRemoveF(format string, args ...any) *H1Element {
+	return e.LANGRemove(fmt.Sprintf(format, args...))
 }
 
 // The nonce global attribute is a unique identifier used to declare inline
@@ -989,9 +1094,20 @@ func (e *H1Element) NONCE(s string) *H1Element {
 	return e
 }
 
+func (e *H1Element) NONCEF(format string, args ...any) *H1Element {
+	return e.NONCE(fmt.Sprintf(format, args...))
+}
+
 func (e *H1Element) IfNONCE(condition bool, s string) *H1Element {
 	if condition {
 		e.NONCE(s)
+	}
+	return e
+}
+
+func (e *H1Element) IfNONCEF(condition bool, format string, args ...any) *H1Element {
+	if condition {
+		e.NONCE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1003,6 +1119,10 @@ func (e *H1Element) NONCERemove(s string) *H1Element {
 	}
 	e.StringAttributes.Del("nonce")
 	return e
+}
+
+func (e *H1Element) NONCERemoveF(format string, args ...any) *H1Element {
+	return e.NONCERemove(fmt.Sprintf(format, args...))
 }
 
 // The part global attribute contains a space-separated list of the part names of
@@ -1097,9 +1217,20 @@ func (e *H1Element) ROLE(s string) *H1Element {
 	return e
 }
 
+func (e *H1Element) ROLEF(format string, args ...any) *H1Element {
+	return e.ROLE(fmt.Sprintf(format, args...))
+}
+
 func (e *H1Element) IfROLE(condition bool, s string) *H1Element {
 	if condition {
 		e.ROLE(s)
+	}
+	return e
+}
+
+func (e *H1Element) IfROLEF(condition bool, format string, args ...any) *H1Element {
+	if condition {
+		e.ROLE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1111,6 +1242,10 @@ func (e *H1Element) ROLERemove(s string) *H1Element {
 	}
 	e.StringAttributes.Del("role")
 	return e
+}
+
+func (e *H1Element) ROLERemoveF(format string, args ...any) *H1Element {
+	return e.ROLERemove(fmt.Sprintf(format, args...))
 }
 
 // The slot global attribute assigns a slot in a shadow DOM shadow tree to an
@@ -1125,9 +1260,20 @@ func (e *H1Element) SLOT(s string) *H1Element {
 	return e
 }
 
+func (e *H1Element) SLOTF(format string, args ...any) *H1Element {
+	return e.SLOT(fmt.Sprintf(format, args...))
+}
+
 func (e *H1Element) IfSLOT(condition bool, s string) *H1Element {
 	if condition {
 		e.SLOT(s)
+	}
+	return e
+}
+
+func (e *H1Element) IfSLOTF(condition bool, format string, args ...any) *H1Element {
+	if condition {
+		e.SLOT(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1139,6 +1285,10 @@ func (e *H1Element) SLOTRemove(s string) *H1Element {
 	}
 	e.StringAttributes.Del("slot")
 	return e
+}
+
+func (e *H1Element) SLOTRemoveF(format string, args ...any) *H1Element {
+	return e.SLOTRemove(fmt.Sprintf(format, args...))
 }
 
 // The spellcheck global attribute is an enumerated attribute that defines whether
@@ -1343,9 +1493,20 @@ func (e *H1Element) TITLE(s string) *H1Element {
 	return e
 }
 
+func (e *H1Element) TITLEF(format string, args ...any) *H1Element {
+	return e.TITLE(fmt.Sprintf(format, args...))
+}
+
 func (e *H1Element) IfTITLE(condition bool, s string) *H1Element {
 	if condition {
 		e.TITLE(s)
+	}
+	return e
+}
+
+func (e *H1Element) IfTITLEF(condition bool, format string, args ...any) *H1Element {
+	if condition {
+		e.TITLE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1357,6 +1518,10 @@ func (e *H1Element) TITLERemove(s string) *H1Element {
 	}
 	e.StringAttributes.Del("title")
 	return e
+}
+
+func (e *H1Element) TITLERemoveF(format string, args ...any) *H1Element {
+	return e.TITLERemove(fmt.Sprintf(format, args...))
 }
 
 // The translate global attribute is an enumerated attribute that is used to
@@ -1401,7 +1566,7 @@ func (e *H1Element) DATASTAR_MERGE_STORE(v any) *H1Element {
 	if err != nil {
 		panic(err)
 	}
-	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	e.CustomDataAttributes.Set("merge-store", string(b))
 	return e
 }
 
@@ -1523,34 +1688,34 @@ func (e *H1Element) DATASTAR_TEXTRemove() *H1Element {
 
 // Sets the event handler of the element
 
-type H1DataOnMod customDataKeyModifier
+type H1OnMod customDataKeyModifier
 
 // Debounces the event handler
-func H1DataOnModDebounce(
+func H1OnModDebounce(
 	d time.Duration,
-) H1DataOnMod {
+) H1OnMod {
 	return func() string {
 		return fmt.Sprintf("debounce_%dms", d.Milliseconds())
 	}
 }
 
 // Throttles the event handler
-func H1DataOnModThrottle(
+func H1OnModThrottle(
 	d time.Duration,
-) H1DataOnMod {
+) H1OnMod {
 	return func() string {
 		return fmt.Sprintf("throttle_%dms", d.Milliseconds())
 	}
 }
 
-func (e *H1Element) DATASTAR_ON(key string, expression string, modifiers ...H1DataOnMod) *H1Element {
+func (e *H1Element) DATASTAR_ON(key string, expression string, modifiers ...H1OnMod) *H1Element {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
 	key = fmt.Sprintf("data-on-%s", key)
 
-	customMods := lo.Map(modifiers, func(m H1DataOnMod, i int) customDataKeyModifier {
+	customMods := lo.Map(modifiers, func(m H1OnMod, i int) customDataKeyModifier {
 		return customDataKeyModifier(m)
 	})
 	key = customDataKey(key, customMods...)
@@ -1558,7 +1723,7 @@ func (e *H1Element) DATASTAR_ON(key string, expression string, modifiers ...H1Da
 	return e
 }
 
-func (e *H1Element) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...H1DataOnMod) *H1Element {
+func (e *H1Element) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...H1OnMod) *H1Element {
 	if condition {
 		e.DATASTAR_ON(key, expression, modifiers...)
 	}
@@ -1651,7 +1816,7 @@ func (e *H1Element) DATASTAR_FETCH_INDICATOR(expression string) *H1Element {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "DatastarFetchIndicator"
+	key := "data-fetch-indicator"
 
 	e.StringAttributes.Set(key, expression)
 	return e
@@ -1669,7 +1834,7 @@ func (e *H1Element) DATASTAR_FETCH_INDICATORRemove() *H1Element {
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("DatastarFetchIndicator")
+	e.StringAttributes.Del("data-fetch-indicator")
 	return e
 }
 

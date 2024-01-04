@@ -172,9 +172,20 @@ func (e *SVGMPATHElement) HREF(s string) *SVGMPATHElement {
 	return e
 }
 
+func (e *SVGMPATHElement) HREFF(format string, args ...any) *SVGMPATHElement {
+	return e.HREF(fmt.Sprintf(format, args...))
+}
+
 func (e *SVGMPATHElement) IfHREF(condition bool, s string) *SVGMPATHElement {
 	if condition {
 		e.HREF(s)
+	}
+	return e
+}
+
+func (e *SVGMPATHElement) IfHREFF(condition bool, format string, args ...any) *SVGMPATHElement {
+	if condition {
+		e.HREF(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -188,6 +199,10 @@ func (e *SVGMPATHElement) HREFRemove(s string) *SVGMPATHElement {
 	return e
 }
 
+func (e *SVGMPATHElement) HREFRemoveF(format string, args ...any) *SVGMPATHElement {
+	return e.HREFRemove(fmt.Sprintf(format, args...))
+}
+
 // Specifies a unique id for an element
 func (e *SVGMPATHElement) ID(s string) *SVGMPATHElement {
 	if e.StringAttributes == nil {
@@ -197,9 +212,20 @@ func (e *SVGMPATHElement) ID(s string) *SVGMPATHElement {
 	return e
 }
 
+func (e *SVGMPATHElement) IDF(format string, args ...any) *SVGMPATHElement {
+	return e.ID(fmt.Sprintf(format, args...))
+}
+
 func (e *SVGMPATHElement) IfID(condition bool, s string) *SVGMPATHElement {
 	if condition {
 		e.ID(s)
+	}
+	return e
+}
+
+func (e *SVGMPATHElement) IfIDF(condition bool, format string, args ...any) *SVGMPATHElement {
+	if condition {
+		e.ID(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -211,6 +237,10 @@ func (e *SVGMPATHElement) IDRemove(s string) *SVGMPATHElement {
 	}
 	e.StringAttributes.Del("id")
 	return e
+}
+
+func (e *SVGMPATHElement) IDRemoveF(format string, args ...any) *SVGMPATHElement {
+	return e.IDRemove(fmt.Sprintf(format, args...))
 }
 
 // Specifies one or more classnames for an element (refers to a class in a style
@@ -349,7 +379,7 @@ func (e *SVGMPATHElement) DATASTAR_MERGE_STORE(v any) *SVGMPATHElement {
 	if err != nil {
 		panic(err)
 	}
-	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	e.CustomDataAttributes.Set("merge-store", string(b))
 	return e
 }
 
@@ -471,34 +501,34 @@ func (e *SVGMPATHElement) DATASTAR_TEXTRemove() *SVGMPATHElement {
 
 // Sets the event handler of the element
 
-type SVGMpathDataOnMod customDataKeyModifier
+type SVGMpathOnMod customDataKeyModifier
 
 // Debounces the event handler
-func SVGMpathDataOnModDebounce(
+func SVGMpathOnModDebounce(
 	d time.Duration,
-) SVGMpathDataOnMod {
+) SVGMpathOnMod {
 	return func() string {
 		return fmt.Sprintf("debounce_%dms", d.Milliseconds())
 	}
 }
 
 // Throttles the event handler
-func SVGMpathDataOnModThrottle(
+func SVGMpathOnModThrottle(
 	d time.Duration,
-) SVGMpathDataOnMod {
+) SVGMpathOnMod {
 	return func() string {
 		return fmt.Sprintf("throttle_%dms", d.Milliseconds())
 	}
 }
 
-func (e *SVGMPATHElement) DATASTAR_ON(key string, expression string, modifiers ...SVGMpathDataOnMod) *SVGMPATHElement {
+func (e *SVGMPATHElement) DATASTAR_ON(key string, expression string, modifiers ...SVGMpathOnMod) *SVGMPATHElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
 	key = fmt.Sprintf("data-on-%s", key)
 
-	customMods := lo.Map(modifiers, func(m SVGMpathDataOnMod, i int) customDataKeyModifier {
+	customMods := lo.Map(modifiers, func(m SVGMpathOnMod, i int) customDataKeyModifier {
 		return customDataKeyModifier(m)
 	})
 	key = customDataKey(key, customMods...)
@@ -506,7 +536,7 @@ func (e *SVGMPATHElement) DATASTAR_ON(key string, expression string, modifiers .
 	return e
 }
 
-func (e *SVGMPATHElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SVGMpathDataOnMod) *SVGMPATHElement {
+func (e *SVGMPATHElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SVGMpathOnMod) *SVGMPATHElement {
 	if condition {
 		e.DATASTAR_ON(key, expression, modifiers...)
 	}
@@ -599,7 +629,7 @@ func (e *SVGMPATHElement) DATASTAR_FETCH_INDICATOR(expression string) *SVGMPATHE
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "DatastarFetchIndicator"
+	key := "data-fetch-indicator"
 
 	e.StringAttributes.Set(key, expression)
 	return e
@@ -617,7 +647,7 @@ func (e *SVGMPATHElement) DATASTAR_FETCH_INDICATORRemove() *SVGMPATHElement {
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("DatastarFetchIndicator")
+	e.StringAttributes.Del("data-fetch-indicator")
 	return e
 }
 

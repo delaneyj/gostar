@@ -173,9 +173,20 @@ func (e *OBJECTElement) DATA(s string) *OBJECTElement {
 	return e
 }
 
+func (e *OBJECTElement) DATAF(format string, args ...any) *OBJECTElement {
+	return e.DATA(fmt.Sprintf(format, args...))
+}
+
 func (e *OBJECTElement) IfDATA(condition bool, s string) *OBJECTElement {
 	if condition {
 		e.DATA(s)
+	}
+	return e
+}
+
+func (e *OBJECTElement) IfDATAF(condition bool, format string, args ...any) *OBJECTElement {
+	if condition {
+		e.DATA(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -189,6 +200,10 @@ func (e *OBJECTElement) DATARemove(s string) *OBJECTElement {
 	return e
 }
 
+func (e *OBJECTElement) DATARemoveF(format string, args ...any) *OBJECTElement {
+	return e.DATARemove(fmt.Sprintf(format, args...))
+}
+
 // Associates the control with a form element.
 func (e *OBJECTElement) FORM(s string) *OBJECTElement {
 	if e.StringAttributes == nil {
@@ -198,9 +213,20 @@ func (e *OBJECTElement) FORM(s string) *OBJECTElement {
 	return e
 }
 
+func (e *OBJECTElement) FORMF(format string, args ...any) *OBJECTElement {
+	return e.FORM(fmt.Sprintf(format, args...))
+}
+
 func (e *OBJECTElement) IfFORM(condition bool, s string) *OBJECTElement {
 	if condition {
 		e.FORM(s)
+	}
+	return e
+}
+
+func (e *OBJECTElement) IfFORMF(condition bool, format string, args ...any) *OBJECTElement {
+	if condition {
+		e.FORM(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -212,6 +238,10 @@ func (e *OBJECTElement) FORMRemove(s string) *OBJECTElement {
 	}
 	e.StringAttributes.Del("form")
 	return e
+}
+
+func (e *OBJECTElement) FORMRemoveF(format string, args ...any) *OBJECTElement {
+	return e.FORMRemove(fmt.Sprintf(format, args...))
 }
 
 // Height of the element.
@@ -248,9 +278,20 @@ func (e *OBJECTElement) NAME(s string) *OBJECTElement {
 	return e
 }
 
+func (e *OBJECTElement) NAMEF(format string, args ...any) *OBJECTElement {
+	return e.NAME(fmt.Sprintf(format, args...))
+}
+
 func (e *OBJECTElement) IfNAME(condition bool, s string) *OBJECTElement {
 	if condition {
 		e.NAME(s)
+	}
+	return e
+}
+
+func (e *OBJECTElement) IfNAMEF(condition bool, format string, args ...any) *OBJECTElement {
+	if condition {
+		e.NAME(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -264,6 +305,10 @@ func (e *OBJECTElement) NAMERemove(s string) *OBJECTElement {
 	return e
 }
 
+func (e *OBJECTElement) NAMERemoveF(format string, args ...any) *OBJECTElement {
+	return e.NAMERemove(fmt.Sprintf(format, args...))
+}
+
 // Type of embedded resource.
 func (e *OBJECTElement) TYPE(s string) *OBJECTElement {
 	if e.StringAttributes == nil {
@@ -273,9 +318,20 @@ func (e *OBJECTElement) TYPE(s string) *OBJECTElement {
 	return e
 }
 
+func (e *OBJECTElement) TYPEF(format string, args ...any) *OBJECTElement {
+	return e.TYPE(fmt.Sprintf(format, args...))
+}
+
 func (e *OBJECTElement) IfTYPE(condition bool, s string) *OBJECTElement {
 	if condition {
 		e.TYPE(s)
+	}
+	return e
+}
+
+func (e *OBJECTElement) IfTYPEF(condition bool, format string, args ...any) *OBJECTElement {
+	if condition {
+		e.TYPE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -287,6 +343,10 @@ func (e *OBJECTElement) TYPERemove(s string) *OBJECTElement {
 	}
 	e.StringAttributes.Del("type")
 	return e
+}
+
+func (e *OBJECTElement) TYPERemoveF(format string, args ...any) *OBJECTElement {
+	return e.TYPERemove(fmt.Sprintf(format, args...))
 }
 
 // Whether the type attribute and the Content-Type value need to match for the
@@ -337,9 +397,20 @@ func (e *OBJECTElement) USEMAP(s string) *OBJECTElement {
 	return e
 }
 
+func (e *OBJECTElement) USEMAPF(format string, args ...any) *OBJECTElement {
+	return e.USEMAP(fmt.Sprintf(format, args...))
+}
+
 func (e *OBJECTElement) IfUSEMAP(condition bool, s string) *OBJECTElement {
 	if condition {
 		e.USEMAP(s)
+	}
+	return e
+}
+
+func (e *OBJECTElement) IfUSEMAPF(condition bool, format string, args ...any) *OBJECTElement {
+	if condition {
+		e.USEMAP(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -351,6 +422,10 @@ func (e *OBJECTElement) USEMAPRemove(s string) *OBJECTElement {
 	}
 	e.StringAttributes.Del("usemap")
 	return e
+}
+
+func (e *OBJECTElement) USEMAPRemoveF(format string, args ...any) *OBJECTElement {
+	return e.USEMAPRemove(fmt.Sprintf(format, args...))
 }
 
 // Width of the element.
@@ -823,9 +898,20 @@ func (e *OBJECTElement) ID(s string) *OBJECTElement {
 	return e
 }
 
+func (e *OBJECTElement) IDF(format string, args ...any) *OBJECTElement {
+	return e.ID(fmt.Sprintf(format, args...))
+}
+
 func (e *OBJECTElement) IfID(condition bool, s string) *OBJECTElement {
 	if condition {
 		e.ID(s)
+	}
+	return e
+}
+
+func (e *OBJECTElement) IfIDF(condition bool, format string, args ...any) *OBJECTElement {
+	if condition {
+		e.ID(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -837,6 +923,10 @@ func (e *OBJECTElement) IDRemove(s string) *OBJECTElement {
 	}
 	e.StringAttributes.Del("id")
 	return e
+}
+
+func (e *OBJECTElement) IDRemoveF(format string, args ...any) *OBJECTElement {
+	return e.IDRemove(fmt.Sprintf(format, args...))
 }
 
 // The inert global attribute is a Boolean attribute indicating that the browser
@@ -971,9 +1061,20 @@ func (e *OBJECTElement) IS(s string) *OBJECTElement {
 	return e
 }
 
+func (e *OBJECTElement) ISF(format string, args ...any) *OBJECTElement {
+	return e.IS(fmt.Sprintf(format, args...))
+}
+
 func (e *OBJECTElement) IfIS(condition bool, s string) *OBJECTElement {
 	if condition {
 		e.IS(s)
+	}
+	return e
+}
+
+func (e *OBJECTElement) IfISF(condition bool, format string, args ...any) *OBJECTElement {
+	if condition {
+		e.IS(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -985,6 +1086,10 @@ func (e *OBJECTElement) ISRemove(s string) *OBJECTElement {
 	}
 	e.StringAttributes.Del("is")
 	return e
+}
+
+func (e *OBJECTElement) ISRemoveF(format string, args ...any) *OBJECTElement {
+	return e.ISRemove(fmt.Sprintf(format, args...))
 }
 
 // The itemid global attribute provides microdata in the form of a unique, global
@@ -1008,9 +1113,20 @@ func (e *OBJECTElement) ITEMID(s string) *OBJECTElement {
 	return e
 }
 
+func (e *OBJECTElement) ITEMIDF(format string, args ...any) *OBJECTElement {
+	return e.ITEMID(fmt.Sprintf(format, args...))
+}
+
 func (e *OBJECTElement) IfITEMID(condition bool, s string) *OBJECTElement {
 	if condition {
 		e.ITEMID(s)
+	}
+	return e
+}
+
+func (e *OBJECTElement) IfITEMIDF(condition bool, format string, args ...any) *OBJECTElement {
+	if condition {
+		e.ITEMID(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1022,6 +1138,10 @@ func (e *OBJECTElement) ITEMIDRemove(s string) *OBJECTElement {
 	}
 	e.StringAttributes.Del("itemid")
 	return e
+}
+
+func (e *OBJECTElement) ITEMIDRemoveF(format string, args ...any) *OBJECTElement {
+	return e.ITEMIDRemove(fmt.Sprintf(format, args...))
 }
 
 // The itemprop global attribute is used to add properties to an item
@@ -1040,9 +1160,20 @@ func (e *OBJECTElement) ITEMPROP(s string) *OBJECTElement {
 	return e
 }
 
+func (e *OBJECTElement) ITEMPROPF(format string, args ...any) *OBJECTElement {
+	return e.ITEMPROP(fmt.Sprintf(format, args...))
+}
+
 func (e *OBJECTElement) IfITEMPROP(condition bool, s string) *OBJECTElement {
 	if condition {
 		e.ITEMPROP(s)
+	}
+	return e
+}
+
+func (e *OBJECTElement) IfITEMPROPF(condition bool, format string, args ...any) *OBJECTElement {
+	if condition {
+		e.ITEMPROP(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1054,6 +1185,10 @@ func (e *OBJECTElement) ITEMPROPRemove(s string) *OBJECTElement {
 	}
 	e.StringAttributes.Del("itemprop")
 	return e
+}
+
+func (e *OBJECTElement) ITEMPROPRemoveF(format string, args ...any) *OBJECTElement {
+	return e.ITEMPROPRemove(fmt.Sprintf(format, args...))
 }
 
 // Properties that are not descendants of an element with the itemscope attribute
@@ -1069,9 +1204,20 @@ func (e *OBJECTElement) ITEMREF(s string) *OBJECTElement {
 	return e
 }
 
+func (e *OBJECTElement) ITEMREFF(format string, args ...any) *OBJECTElement {
+	return e.ITEMREF(fmt.Sprintf(format, args...))
+}
+
 func (e *OBJECTElement) IfITEMREF(condition bool, s string) *OBJECTElement {
 	if condition {
 		e.ITEMREF(s)
+	}
+	return e
+}
+
+func (e *OBJECTElement) IfITEMREFF(condition bool, format string, args ...any) *OBJECTElement {
+	if condition {
+		e.ITEMREF(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1083,6 +1229,10 @@ func (e *OBJECTElement) ITEMREFRemove(s string) *OBJECTElement {
 	}
 	e.StringAttributes.Del("itemref")
 	return e
+}
+
+func (e *OBJECTElement) ITEMREFRemoveF(format string, args ...any) *OBJECTElement {
+	return e.ITEMREFRemove(fmt.Sprintf(format, args...))
 }
 
 // The itemscope global attribute is used to add an item to a microdata DOM tree
@@ -1146,9 +1296,20 @@ func (e *OBJECTElement) ITEMTYPE(s string) *OBJECTElement {
 	return e
 }
 
+func (e *OBJECTElement) ITEMTYPEF(format string, args ...any) *OBJECTElement {
+	return e.ITEMTYPE(fmt.Sprintf(format, args...))
+}
+
 func (e *OBJECTElement) IfITEMTYPE(condition bool, s string) *OBJECTElement {
 	if condition {
 		e.ITEMTYPE(s)
+	}
+	return e
+}
+
+func (e *OBJECTElement) IfITEMTYPEF(condition bool, format string, args ...any) *OBJECTElement {
+	if condition {
+		e.ITEMTYPE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1160,6 +1321,10 @@ func (e *OBJECTElement) ITEMTYPERemove(s string) *OBJECTElement {
 	}
 	e.StringAttributes.Del("itemtype")
 	return e
+}
+
+func (e *OBJECTElement) ITEMTYPERemoveF(format string, args ...any) *OBJECTElement {
+	return e.ITEMTYPERemove(fmt.Sprintf(format, args...))
 }
 
 // The lang global attribute helps define the language of an element: the language
@@ -1176,9 +1341,20 @@ func (e *OBJECTElement) LANG(s string) *OBJECTElement {
 	return e
 }
 
+func (e *OBJECTElement) LANGF(format string, args ...any) *OBJECTElement {
+	return e.LANG(fmt.Sprintf(format, args...))
+}
+
 func (e *OBJECTElement) IfLANG(condition bool, s string) *OBJECTElement {
 	if condition {
 		e.LANG(s)
+	}
+	return e
+}
+
+func (e *OBJECTElement) IfLANGF(condition bool, format string, args ...any) *OBJECTElement {
+	if condition {
+		e.LANG(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1190,6 +1366,10 @@ func (e *OBJECTElement) LANGRemove(s string) *OBJECTElement {
 	}
 	e.StringAttributes.Del("lang")
 	return e
+}
+
+func (e *OBJECTElement) LANGRemoveF(format string, args ...any) *OBJECTElement {
+	return e.LANGRemove(fmt.Sprintf(format, args...))
 }
 
 // The nonce global attribute is a unique identifier used to declare inline
@@ -1204,9 +1384,20 @@ func (e *OBJECTElement) NONCE(s string) *OBJECTElement {
 	return e
 }
 
+func (e *OBJECTElement) NONCEF(format string, args ...any) *OBJECTElement {
+	return e.NONCE(fmt.Sprintf(format, args...))
+}
+
 func (e *OBJECTElement) IfNONCE(condition bool, s string) *OBJECTElement {
 	if condition {
 		e.NONCE(s)
+	}
+	return e
+}
+
+func (e *OBJECTElement) IfNONCEF(condition bool, format string, args ...any) *OBJECTElement {
+	if condition {
+		e.NONCE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1218,6 +1409,10 @@ func (e *OBJECTElement) NONCERemove(s string) *OBJECTElement {
 	}
 	e.StringAttributes.Del("nonce")
 	return e
+}
+
+func (e *OBJECTElement) NONCERemoveF(format string, args ...any) *OBJECTElement {
+	return e.NONCERemove(fmt.Sprintf(format, args...))
 }
 
 // The part global attribute contains a space-separated list of the part names of
@@ -1312,9 +1507,20 @@ func (e *OBJECTElement) ROLE(s string) *OBJECTElement {
 	return e
 }
 
+func (e *OBJECTElement) ROLEF(format string, args ...any) *OBJECTElement {
+	return e.ROLE(fmt.Sprintf(format, args...))
+}
+
 func (e *OBJECTElement) IfROLE(condition bool, s string) *OBJECTElement {
 	if condition {
 		e.ROLE(s)
+	}
+	return e
+}
+
+func (e *OBJECTElement) IfROLEF(condition bool, format string, args ...any) *OBJECTElement {
+	if condition {
+		e.ROLE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1326,6 +1532,10 @@ func (e *OBJECTElement) ROLERemove(s string) *OBJECTElement {
 	}
 	e.StringAttributes.Del("role")
 	return e
+}
+
+func (e *OBJECTElement) ROLERemoveF(format string, args ...any) *OBJECTElement {
+	return e.ROLERemove(fmt.Sprintf(format, args...))
 }
 
 // The slot global attribute assigns a slot in a shadow DOM shadow tree to an
@@ -1340,9 +1550,20 @@ func (e *OBJECTElement) SLOT(s string) *OBJECTElement {
 	return e
 }
 
+func (e *OBJECTElement) SLOTF(format string, args ...any) *OBJECTElement {
+	return e.SLOT(fmt.Sprintf(format, args...))
+}
+
 func (e *OBJECTElement) IfSLOT(condition bool, s string) *OBJECTElement {
 	if condition {
 		e.SLOT(s)
+	}
+	return e
+}
+
+func (e *OBJECTElement) IfSLOTF(condition bool, format string, args ...any) *OBJECTElement {
+	if condition {
+		e.SLOT(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1354,6 +1575,10 @@ func (e *OBJECTElement) SLOTRemove(s string) *OBJECTElement {
 	}
 	e.StringAttributes.Del("slot")
 	return e
+}
+
+func (e *OBJECTElement) SLOTRemoveF(format string, args ...any) *OBJECTElement {
+	return e.SLOTRemove(fmt.Sprintf(format, args...))
 }
 
 // The spellcheck global attribute is an enumerated attribute that defines whether
@@ -1558,9 +1783,20 @@ func (e *OBJECTElement) TITLE(s string) *OBJECTElement {
 	return e
 }
 
+func (e *OBJECTElement) TITLEF(format string, args ...any) *OBJECTElement {
+	return e.TITLE(fmt.Sprintf(format, args...))
+}
+
 func (e *OBJECTElement) IfTITLE(condition bool, s string) *OBJECTElement {
 	if condition {
 		e.TITLE(s)
+	}
+	return e
+}
+
+func (e *OBJECTElement) IfTITLEF(condition bool, format string, args ...any) *OBJECTElement {
+	if condition {
+		e.TITLE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1572,6 +1808,10 @@ func (e *OBJECTElement) TITLERemove(s string) *OBJECTElement {
 	}
 	e.StringAttributes.Del("title")
 	return e
+}
+
+func (e *OBJECTElement) TITLERemoveF(format string, args ...any) *OBJECTElement {
+	return e.TITLERemove(fmt.Sprintf(format, args...))
 }
 
 // The translate global attribute is an enumerated attribute that is used to
@@ -1616,7 +1856,7 @@ func (e *OBJECTElement) DATASTAR_MERGE_STORE(v any) *OBJECTElement {
 	if err != nil {
 		panic(err)
 	}
-	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	e.CustomDataAttributes.Set("merge-store", string(b))
 	return e
 }
 
@@ -1738,34 +1978,34 @@ func (e *OBJECTElement) DATASTAR_TEXTRemove() *OBJECTElement {
 
 // Sets the event handler of the element
 
-type ObjectDataOnMod customDataKeyModifier
+type ObjectOnMod customDataKeyModifier
 
 // Debounces the event handler
-func ObjectDataOnModDebounce(
+func ObjectOnModDebounce(
 	d time.Duration,
-) ObjectDataOnMod {
+) ObjectOnMod {
 	return func() string {
 		return fmt.Sprintf("debounce_%dms", d.Milliseconds())
 	}
 }
 
 // Throttles the event handler
-func ObjectDataOnModThrottle(
+func ObjectOnModThrottle(
 	d time.Duration,
-) ObjectDataOnMod {
+) ObjectOnMod {
 	return func() string {
 		return fmt.Sprintf("throttle_%dms", d.Milliseconds())
 	}
 }
 
-func (e *OBJECTElement) DATASTAR_ON(key string, expression string, modifiers ...ObjectDataOnMod) *OBJECTElement {
+func (e *OBJECTElement) DATASTAR_ON(key string, expression string, modifiers ...ObjectOnMod) *OBJECTElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
 	key = fmt.Sprintf("data-on-%s", key)
 
-	customMods := lo.Map(modifiers, func(m ObjectDataOnMod, i int) customDataKeyModifier {
+	customMods := lo.Map(modifiers, func(m ObjectOnMod, i int) customDataKeyModifier {
 		return customDataKeyModifier(m)
 	})
 	key = customDataKey(key, customMods...)
@@ -1773,7 +2013,7 @@ func (e *OBJECTElement) DATASTAR_ON(key string, expression string, modifiers ...
 	return e
 }
 
-func (e *OBJECTElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...ObjectDataOnMod) *OBJECTElement {
+func (e *OBJECTElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...ObjectOnMod) *OBJECTElement {
 	if condition {
 		e.DATASTAR_ON(key, expression, modifiers...)
 	}
@@ -1866,7 +2106,7 @@ func (e *OBJECTElement) DATASTAR_FETCH_INDICATOR(expression string) *OBJECTEleme
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "DatastarFetchIndicator"
+	key := "data-fetch-indicator"
 
 	e.StringAttributes.Set(key, expression)
 	return e
@@ -1884,7 +2124,7 @@ func (e *OBJECTElement) DATASTAR_FETCH_INDICATORRemove() *OBJECTElement {
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("DatastarFetchIndicator")
+	e.StringAttributes.Del("data-fetch-indicator")
 	return e
 }
 

@@ -172,9 +172,20 @@ func (e *SVGFEGAUSSIANBLURElement) IN(s string) *SVGFEGAUSSIANBLURElement {
 	return e
 }
 
+func (e *SVGFEGAUSSIANBLURElement) INF(format string, args ...any) *SVGFEGAUSSIANBLURElement {
+	return e.IN(fmt.Sprintf(format, args...))
+}
+
 func (e *SVGFEGAUSSIANBLURElement) IfIN(condition bool, s string) *SVGFEGAUSSIANBLURElement {
 	if condition {
 		e.IN(s)
+	}
+	return e
+}
+
+func (e *SVGFEGAUSSIANBLURElement) IfINF(condition bool, format string, args ...any) *SVGFEGAUSSIANBLURElement {
+	if condition {
+		e.IN(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -186,6 +197,10 @@ func (e *SVGFEGAUSSIANBLURElement) INRemove(s string) *SVGFEGAUSSIANBLURElement 
 	}
 	e.StringAttributes.Del("in")
 	return e
+}
+
+func (e *SVGFEGAUSSIANBLURElement) INRemoveF(format string, args ...any) *SVGFEGAUSSIANBLURElement {
+	return e.INRemove(fmt.Sprintf(format, args...))
 }
 
 // The standard deviation for the blur operation
@@ -221,9 +236,20 @@ func (e *SVGFEGAUSSIANBLURElement) ID(s string) *SVGFEGAUSSIANBLURElement {
 	return e
 }
 
+func (e *SVGFEGAUSSIANBLURElement) IDF(format string, args ...any) *SVGFEGAUSSIANBLURElement {
+	return e.ID(fmt.Sprintf(format, args...))
+}
+
 func (e *SVGFEGAUSSIANBLURElement) IfID(condition bool, s string) *SVGFEGAUSSIANBLURElement {
 	if condition {
 		e.ID(s)
+	}
+	return e
+}
+
+func (e *SVGFEGAUSSIANBLURElement) IfIDF(condition bool, format string, args ...any) *SVGFEGAUSSIANBLURElement {
+	if condition {
+		e.ID(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -235,6 +261,10 @@ func (e *SVGFEGAUSSIANBLURElement) IDRemove(s string) *SVGFEGAUSSIANBLURElement 
 	}
 	e.StringAttributes.Del("id")
 	return e
+}
+
+func (e *SVGFEGAUSSIANBLURElement) IDRemoveF(format string, args ...any) *SVGFEGAUSSIANBLURElement {
+	return e.IDRemove(fmt.Sprintf(format, args...))
 }
 
 // Specifies one or more classnames for an element (refers to a class in a style
@@ -373,7 +403,7 @@ func (e *SVGFEGAUSSIANBLURElement) DATASTAR_MERGE_STORE(v any) *SVGFEGAUSSIANBLU
 	if err != nil {
 		panic(err)
 	}
-	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	e.CustomDataAttributes.Set("merge-store", string(b))
 	return e
 }
 
@@ -495,34 +525,34 @@ func (e *SVGFEGAUSSIANBLURElement) DATASTAR_TEXTRemove() *SVGFEGAUSSIANBLUREleme
 
 // Sets the event handler of the element
 
-type SVGFeGaussianBlurDataOnMod customDataKeyModifier
+type SVGFeGaussianBlurOnMod customDataKeyModifier
 
 // Debounces the event handler
-func SVGFeGaussianBlurDataOnModDebounce(
+func SVGFeGaussianBlurOnModDebounce(
 	d time.Duration,
-) SVGFeGaussianBlurDataOnMod {
+) SVGFeGaussianBlurOnMod {
 	return func() string {
 		return fmt.Sprintf("debounce_%dms", d.Milliseconds())
 	}
 }
 
 // Throttles the event handler
-func SVGFeGaussianBlurDataOnModThrottle(
+func SVGFeGaussianBlurOnModThrottle(
 	d time.Duration,
-) SVGFeGaussianBlurDataOnMod {
+) SVGFeGaussianBlurOnMod {
 	return func() string {
 		return fmt.Sprintf("throttle_%dms", d.Milliseconds())
 	}
 }
 
-func (e *SVGFEGAUSSIANBLURElement) DATASTAR_ON(key string, expression string, modifiers ...SVGFeGaussianBlurDataOnMod) *SVGFEGAUSSIANBLURElement {
+func (e *SVGFEGAUSSIANBLURElement) DATASTAR_ON(key string, expression string, modifiers ...SVGFeGaussianBlurOnMod) *SVGFEGAUSSIANBLURElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
 	key = fmt.Sprintf("data-on-%s", key)
 
-	customMods := lo.Map(modifiers, func(m SVGFeGaussianBlurDataOnMod, i int) customDataKeyModifier {
+	customMods := lo.Map(modifiers, func(m SVGFeGaussianBlurOnMod, i int) customDataKeyModifier {
 		return customDataKeyModifier(m)
 	})
 	key = customDataKey(key, customMods...)
@@ -530,7 +560,7 @@ func (e *SVGFEGAUSSIANBLURElement) DATASTAR_ON(key string, expression string, mo
 	return e
 }
 
-func (e *SVGFEGAUSSIANBLURElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SVGFeGaussianBlurDataOnMod) *SVGFEGAUSSIANBLURElement {
+func (e *SVGFEGAUSSIANBLURElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SVGFeGaussianBlurOnMod) *SVGFEGAUSSIANBLURElement {
 	if condition {
 		e.DATASTAR_ON(key, expression, modifiers...)
 	}
@@ -623,7 +653,7 @@ func (e *SVGFEGAUSSIANBLURElement) DATASTAR_FETCH_INDICATOR(expression string) *
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "DatastarFetchIndicator"
+	key := "data-fetch-indicator"
 
 	e.StringAttributes.Set(key, expression)
 	return e
@@ -641,7 +671,7 @@ func (e *SVGFEGAUSSIANBLURElement) DATASTAR_FETCH_INDICATORRemove() *SVGFEGAUSSI
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("DatastarFetchIndicator")
+	e.StringAttributes.Del("data-fetch-indicator")
 	return e
 }
 

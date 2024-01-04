@@ -172,9 +172,20 @@ func (e *SVGTEXTPATHElement) HREF(s string) *SVGTEXTPATHElement {
 	return e
 }
 
+func (e *SVGTEXTPATHElement) HREFF(format string, args ...any) *SVGTEXTPATHElement {
+	return e.HREF(fmt.Sprintf(format, args...))
+}
+
 func (e *SVGTEXTPATHElement) IfHREF(condition bool, s string) *SVGTEXTPATHElement {
 	if condition {
 		e.HREF(s)
+	}
+	return e
+}
+
+func (e *SVGTEXTPATHElement) IfHREFF(condition bool, format string, args ...any) *SVGTEXTPATHElement {
+	if condition {
+		e.HREF(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -188,6 +199,10 @@ func (e *SVGTEXTPATHElement) HREFRemove(s string) *SVGTEXTPATHElement {
 	return e
 }
 
+func (e *SVGTEXTPATHElement) HREFRemoveF(format string, args ...any) *SVGTEXTPATHElement {
+	return e.HREFRemove(fmt.Sprintf(format, args...))
+}
+
 // Indicates an offset from the start of the path, where the first character is
 // rendered.
 func (e *SVGTEXTPATHElement) START_OFFSET(s string) *SVGTEXTPATHElement {
@@ -198,9 +213,20 @@ func (e *SVGTEXTPATHElement) START_OFFSET(s string) *SVGTEXTPATHElement {
 	return e
 }
 
+func (e *SVGTEXTPATHElement) START_OFFSETF(format string, args ...any) *SVGTEXTPATHElement {
+	return e.START_OFFSET(fmt.Sprintf(format, args...))
+}
+
 func (e *SVGTEXTPATHElement) IfSTART_OFFSET(condition bool, s string) *SVGTEXTPATHElement {
 	if condition {
 		e.START_OFFSET(s)
+	}
+	return e
+}
+
+func (e *SVGTEXTPATHElement) IfSTART_OFFSETF(condition bool, format string, args ...any) *SVGTEXTPATHElement {
+	if condition {
+		e.START_OFFSET(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -212,6 +238,10 @@ func (e *SVGTEXTPATHElement) START_OFFSETRemove(s string) *SVGTEXTPATHElement {
 	}
 	e.StringAttributes.Del("startOffset")
 	return e
+}
+
+func (e *SVGTEXTPATHElement) START_OFFSETRemoveF(format string, args ...any) *SVGTEXTPATHElement {
+	return e.START_OFFSETRemove(fmt.Sprintf(format, args...))
 }
 
 // Indicates the method by which text should be rendered along the path.
@@ -277,9 +307,20 @@ func (e *SVGTEXTPATHElement) ID(s string) *SVGTEXTPATHElement {
 	return e
 }
 
+func (e *SVGTEXTPATHElement) IDF(format string, args ...any) *SVGTEXTPATHElement {
+	return e.ID(fmt.Sprintf(format, args...))
+}
+
 func (e *SVGTEXTPATHElement) IfID(condition bool, s string) *SVGTEXTPATHElement {
 	if condition {
 		e.ID(s)
+	}
+	return e
+}
+
+func (e *SVGTEXTPATHElement) IfIDF(condition bool, format string, args ...any) *SVGTEXTPATHElement {
+	if condition {
+		e.ID(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -291,6 +332,10 @@ func (e *SVGTEXTPATHElement) IDRemove(s string) *SVGTEXTPATHElement {
 	}
 	e.StringAttributes.Del("id")
 	return e
+}
+
+func (e *SVGTEXTPATHElement) IDRemoveF(format string, args ...any) *SVGTEXTPATHElement {
+	return e.IDRemove(fmt.Sprintf(format, args...))
 }
 
 // Specifies one or more classnames for an element (refers to a class in a style
@@ -429,7 +474,7 @@ func (e *SVGTEXTPATHElement) DATASTAR_MERGE_STORE(v any) *SVGTEXTPATHElement {
 	if err != nil {
 		panic(err)
 	}
-	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	e.CustomDataAttributes.Set("merge-store", string(b))
 	return e
 }
 
@@ -551,34 +596,34 @@ func (e *SVGTEXTPATHElement) DATASTAR_TEXTRemove() *SVGTEXTPATHElement {
 
 // Sets the event handler of the element
 
-type SVGTextPathDataOnMod customDataKeyModifier
+type SVGTextPathOnMod customDataKeyModifier
 
 // Debounces the event handler
-func SVGTextPathDataOnModDebounce(
+func SVGTextPathOnModDebounce(
 	d time.Duration,
-) SVGTextPathDataOnMod {
+) SVGTextPathOnMod {
 	return func() string {
 		return fmt.Sprintf("debounce_%dms", d.Milliseconds())
 	}
 }
 
 // Throttles the event handler
-func SVGTextPathDataOnModThrottle(
+func SVGTextPathOnModThrottle(
 	d time.Duration,
-) SVGTextPathDataOnMod {
+) SVGTextPathOnMod {
 	return func() string {
 		return fmt.Sprintf("throttle_%dms", d.Milliseconds())
 	}
 }
 
-func (e *SVGTEXTPATHElement) DATASTAR_ON(key string, expression string, modifiers ...SVGTextPathDataOnMod) *SVGTEXTPATHElement {
+func (e *SVGTEXTPATHElement) DATASTAR_ON(key string, expression string, modifiers ...SVGTextPathOnMod) *SVGTEXTPATHElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
 	key = fmt.Sprintf("data-on-%s", key)
 
-	customMods := lo.Map(modifiers, func(m SVGTextPathDataOnMod, i int) customDataKeyModifier {
+	customMods := lo.Map(modifiers, func(m SVGTextPathOnMod, i int) customDataKeyModifier {
 		return customDataKeyModifier(m)
 	})
 	key = customDataKey(key, customMods...)
@@ -586,7 +631,7 @@ func (e *SVGTEXTPATHElement) DATASTAR_ON(key string, expression string, modifier
 	return e
 }
 
-func (e *SVGTEXTPATHElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SVGTextPathDataOnMod) *SVGTEXTPATHElement {
+func (e *SVGTEXTPATHElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SVGTextPathOnMod) *SVGTEXTPATHElement {
 	if condition {
 		e.DATASTAR_ON(key, expression, modifiers...)
 	}
@@ -679,7 +724,7 @@ func (e *SVGTEXTPATHElement) DATASTAR_FETCH_INDICATOR(expression string) *SVGTEX
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "DatastarFetchIndicator"
+	key := "data-fetch-indicator"
 
 	e.StringAttributes.Set(key, expression)
 	return e
@@ -697,7 +742,7 @@ func (e *SVGTEXTPATHElement) DATASTAR_FETCH_INDICATORRemove() *SVGTEXTPATHElemen
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("DatastarFetchIndicator")
+	e.StringAttributes.Del("data-fetch-indicator")
 	return e
 }
 

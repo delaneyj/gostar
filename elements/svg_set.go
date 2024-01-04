@@ -177,9 +177,20 @@ func (e *SVGSETElement) TO(s string) *SVGSETElement {
 	return e
 }
 
+func (e *SVGSETElement) TOF(format string, args ...any) *SVGSETElement {
+	return e.TO(fmt.Sprintf(format, args...))
+}
+
 func (e *SVGSETElement) IfTO(condition bool, s string) *SVGSETElement {
 	if condition {
 		e.TO(s)
+	}
+	return e
+}
+
+func (e *SVGSETElement) IfTOF(condition bool, format string, args ...any) *SVGSETElement {
+	if condition {
+		e.TO(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -193,6 +204,10 @@ func (e *SVGSETElement) TORemove(s string) *SVGSETElement {
 	return e
 }
 
+func (e *SVGSETElement) TORemoveF(format string, args ...any) *SVGSETElement {
+	return e.TORemove(fmt.Sprintf(format, args...))
+}
+
 // The name of the attribute to assign.
 func (e *SVGSETElement) ATTRIBUTE_NAME(s string) *SVGSETElement {
 	if e.StringAttributes == nil {
@@ -202,9 +217,20 @@ func (e *SVGSETElement) ATTRIBUTE_NAME(s string) *SVGSETElement {
 	return e
 }
 
+func (e *SVGSETElement) ATTRIBUTE_NAMEF(format string, args ...any) *SVGSETElement {
+	return e.ATTRIBUTE_NAME(fmt.Sprintf(format, args...))
+}
+
 func (e *SVGSETElement) IfATTRIBUTE_NAME(condition bool, s string) *SVGSETElement {
 	if condition {
 		e.ATTRIBUTE_NAME(s)
+	}
+	return e
+}
+
+func (e *SVGSETElement) IfATTRIBUTE_NAMEF(condition bool, format string, args ...any) *SVGSETElement {
+	if condition {
+		e.ATTRIBUTE_NAME(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -216,6 +242,10 @@ func (e *SVGSETElement) ATTRIBUTE_NAMERemove(s string) *SVGSETElement {
 	}
 	e.StringAttributes.Del("attributeName")
 	return e
+}
+
+func (e *SVGSETElement) ATTRIBUTE_NAMERemoveF(format string, args ...any) *SVGSETElement {
+	return e.ATTRIBUTE_NAMERemove(fmt.Sprintf(format, args...))
 }
 
 // The namespace in which the target attribute and its associated values are
@@ -266,9 +296,20 @@ func (e *SVGSETElement) BEGIN(s string) *SVGSETElement {
 	return e
 }
 
+func (e *SVGSETElement) BEGINF(format string, args ...any) *SVGSETElement {
+	return e.BEGIN(fmt.Sprintf(format, args...))
+}
+
 func (e *SVGSETElement) IfBEGIN(condition bool, s string) *SVGSETElement {
 	if condition {
 		e.BEGIN(s)
+	}
+	return e
+}
+
+func (e *SVGSETElement) IfBEGINF(condition bool, format string, args ...any) *SVGSETElement {
+	if condition {
+		e.BEGIN(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -282,6 +323,10 @@ func (e *SVGSETElement) BEGINRemove(s string) *SVGSETElement {
 	return e
 }
 
+func (e *SVGSETElement) BEGINRemoveF(format string, args ...any) *SVGSETElement {
+	return e.BEGINRemove(fmt.Sprintf(format, args...))
+}
+
 // The simple duration for the element.
 func (e *SVGSETElement) DUR(s string) *SVGSETElement {
 	if e.StringAttributes == nil {
@@ -291,9 +336,20 @@ func (e *SVGSETElement) DUR(s string) *SVGSETElement {
 	return e
 }
 
+func (e *SVGSETElement) DURF(format string, args ...any) *SVGSETElement {
+	return e.DUR(fmt.Sprintf(format, args...))
+}
+
 func (e *SVGSETElement) IfDUR(condition bool, s string) *SVGSETElement {
 	if condition {
 		e.DUR(s)
+	}
+	return e
+}
+
+func (e *SVGSETElement) IfDURF(condition bool, format string, args ...any) *SVGSETElement {
+	if condition {
+		e.DUR(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -307,6 +363,10 @@ func (e *SVGSETElement) DURRemove(s string) *SVGSETElement {
 	return e
 }
 
+func (e *SVGSETElement) DURRemoveF(format string, args ...any) *SVGSETElement {
+	return e.DURRemove(fmt.Sprintf(format, args...))
+}
+
 // The end for the element.
 func (e *SVGSETElement) END(s string) *SVGSETElement {
 	if e.StringAttributes == nil {
@@ -316,9 +376,20 @@ func (e *SVGSETElement) END(s string) *SVGSETElement {
 	return e
 }
 
+func (e *SVGSETElement) ENDF(format string, args ...any) *SVGSETElement {
+	return e.END(fmt.Sprintf(format, args...))
+}
+
 func (e *SVGSETElement) IfEND(condition bool, s string) *SVGSETElement {
 	if condition {
 		e.END(s)
+	}
+	return e
+}
+
+func (e *SVGSETElement) IfENDF(condition bool, format string, args ...any) *SVGSETElement {
+	if condition {
+		e.END(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -332,6 +403,10 @@ func (e *SVGSETElement) ENDRemove(s string) *SVGSETElement {
 	return e
 }
 
+func (e *SVGSETElement) ENDRemoveF(format string, args ...any) *SVGSETElement {
+	return e.ENDRemove(fmt.Sprintf(format, args...))
+}
+
 // The minimum value allowed for the attribute.
 func (e *SVGSETElement) MIN(s string) *SVGSETElement {
 	if e.StringAttributes == nil {
@@ -341,9 +416,20 @@ func (e *SVGSETElement) MIN(s string) *SVGSETElement {
 	return e
 }
 
+func (e *SVGSETElement) MINF(format string, args ...any) *SVGSETElement {
+	return e.MIN(fmt.Sprintf(format, args...))
+}
+
 func (e *SVGSETElement) IfMIN(condition bool, s string) *SVGSETElement {
 	if condition {
 		e.MIN(s)
+	}
+	return e
+}
+
+func (e *SVGSETElement) IfMINF(condition bool, format string, args ...any) *SVGSETElement {
+	if condition {
+		e.MIN(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -357,6 +443,10 @@ func (e *SVGSETElement) MINRemove(s string) *SVGSETElement {
 	return e
 }
 
+func (e *SVGSETElement) MINRemoveF(format string, args ...any) *SVGSETElement {
+	return e.MINRemove(fmt.Sprintf(format, args...))
+}
+
 // The maximum value allowed for the attribute.
 func (e *SVGSETElement) MAX(s string) *SVGSETElement {
 	if e.StringAttributes == nil {
@@ -366,9 +456,20 @@ func (e *SVGSETElement) MAX(s string) *SVGSETElement {
 	return e
 }
 
+func (e *SVGSETElement) MAXF(format string, args ...any) *SVGSETElement {
+	return e.MAX(fmt.Sprintf(format, args...))
+}
+
 func (e *SVGSETElement) IfMAX(condition bool, s string) *SVGSETElement {
 	if condition {
 		e.MAX(s)
+	}
+	return e
+}
+
+func (e *SVGSETElement) IfMAXF(condition bool, format string, args ...any) *SVGSETElement {
+	if condition {
+		e.MAX(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -380,6 +481,10 @@ func (e *SVGSETElement) MAXRemove(s string) *SVGSETElement {
 	}
 	e.StringAttributes.Del("max")
 	return e
+}
+
+func (e *SVGSETElement) MAXRemoveF(format string, args ...any) *SVGSETElement {
+	return e.MAXRemove(fmt.Sprintf(format, args...))
 }
 
 // Defines how the element is restarted.
@@ -420,9 +525,20 @@ func (e *SVGSETElement) REPEAT_COUNT(s string) *SVGSETElement {
 	return e
 }
 
+func (e *SVGSETElement) REPEAT_COUNTF(format string, args ...any) *SVGSETElement {
+	return e.REPEAT_COUNT(fmt.Sprintf(format, args...))
+}
+
 func (e *SVGSETElement) IfREPEAT_COUNT(condition bool, s string) *SVGSETElement {
 	if condition {
 		e.REPEAT_COUNT(s)
+	}
+	return e
+}
+
+func (e *SVGSETElement) IfREPEAT_COUNTF(condition bool, format string, args ...any) *SVGSETElement {
+	if condition {
+		e.REPEAT_COUNT(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -436,6 +552,10 @@ func (e *SVGSETElement) REPEAT_COUNTRemove(s string) *SVGSETElement {
 	return e
 }
 
+func (e *SVGSETElement) REPEAT_COUNTRemoveF(format string, args ...any) *SVGSETElement {
+	return e.REPEAT_COUNTRemove(fmt.Sprintf(format, args...))
+}
+
 // Defines the duration for the element to repeat.
 func (e *SVGSETElement) REPEAT_DUR(s string) *SVGSETElement {
 	if e.StringAttributes == nil {
@@ -445,9 +565,20 @@ func (e *SVGSETElement) REPEAT_DUR(s string) *SVGSETElement {
 	return e
 }
 
+func (e *SVGSETElement) REPEAT_DURF(format string, args ...any) *SVGSETElement {
+	return e.REPEAT_DUR(fmt.Sprintf(format, args...))
+}
+
 func (e *SVGSETElement) IfREPEAT_DUR(condition bool, s string) *SVGSETElement {
 	if condition {
 		e.REPEAT_DUR(s)
+	}
+	return e
+}
+
+func (e *SVGSETElement) IfREPEAT_DURF(condition bool, format string, args ...any) *SVGSETElement {
+	if condition {
+		e.REPEAT_DUR(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -459,6 +590,10 @@ func (e *SVGSETElement) REPEAT_DURRemove(s string) *SVGSETElement {
 	}
 	e.StringAttributes.Del("repeatDur")
 	return e
+}
+
+func (e *SVGSETElement) REPEAT_DURRemoveF(format string, args ...any) *SVGSETElement {
+	return e.REPEAT_DURRemove(fmt.Sprintf(format, args...))
 }
 
 // Defines the value the animation will have before the begin event.
@@ -497,9 +632,20 @@ func (e *SVGSETElement) ID(s string) *SVGSETElement {
 	return e
 }
 
+func (e *SVGSETElement) IDF(format string, args ...any) *SVGSETElement {
+	return e.ID(fmt.Sprintf(format, args...))
+}
+
 func (e *SVGSETElement) IfID(condition bool, s string) *SVGSETElement {
 	if condition {
 		e.ID(s)
+	}
+	return e
+}
+
+func (e *SVGSETElement) IfIDF(condition bool, format string, args ...any) *SVGSETElement {
+	if condition {
+		e.ID(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -511,6 +657,10 @@ func (e *SVGSETElement) IDRemove(s string) *SVGSETElement {
 	}
 	e.StringAttributes.Del("id")
 	return e
+}
+
+func (e *SVGSETElement) IDRemoveF(format string, args ...any) *SVGSETElement {
+	return e.IDRemove(fmt.Sprintf(format, args...))
 }
 
 // Specifies one or more classnames for an element (refers to a class in a style
@@ -649,7 +799,7 @@ func (e *SVGSETElement) DATASTAR_MERGE_STORE(v any) *SVGSETElement {
 	if err != nil {
 		panic(err)
 	}
-	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	e.CustomDataAttributes.Set("merge-store", string(b))
 	return e
 }
 
@@ -771,34 +921,34 @@ func (e *SVGSETElement) DATASTAR_TEXTRemove() *SVGSETElement {
 
 // Sets the event handler of the element
 
-type SVGSetDataOnMod customDataKeyModifier
+type SVGSetOnMod customDataKeyModifier
 
 // Debounces the event handler
-func SVGSetDataOnModDebounce(
+func SVGSetOnModDebounce(
 	d time.Duration,
-) SVGSetDataOnMod {
+) SVGSetOnMod {
 	return func() string {
 		return fmt.Sprintf("debounce_%dms", d.Milliseconds())
 	}
 }
 
 // Throttles the event handler
-func SVGSetDataOnModThrottle(
+func SVGSetOnModThrottle(
 	d time.Duration,
-) SVGSetDataOnMod {
+) SVGSetOnMod {
 	return func() string {
 		return fmt.Sprintf("throttle_%dms", d.Milliseconds())
 	}
 }
 
-func (e *SVGSETElement) DATASTAR_ON(key string, expression string, modifiers ...SVGSetDataOnMod) *SVGSETElement {
+func (e *SVGSETElement) DATASTAR_ON(key string, expression string, modifiers ...SVGSetOnMod) *SVGSETElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
 	key = fmt.Sprintf("data-on-%s", key)
 
-	customMods := lo.Map(modifiers, func(m SVGSetDataOnMod, i int) customDataKeyModifier {
+	customMods := lo.Map(modifiers, func(m SVGSetOnMod, i int) customDataKeyModifier {
 		return customDataKeyModifier(m)
 	})
 	key = customDataKey(key, customMods...)
@@ -806,7 +956,7 @@ func (e *SVGSETElement) DATASTAR_ON(key string, expression string, modifiers ...
 	return e
 }
 
-func (e *SVGSETElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SVGSetDataOnMod) *SVGSETElement {
+func (e *SVGSETElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SVGSetOnMod) *SVGSETElement {
 	if condition {
 		e.DATASTAR_ON(key, expression, modifiers...)
 	}
@@ -899,7 +1049,7 @@ func (e *SVGSETElement) DATASTAR_FETCH_INDICATOR(expression string) *SVGSETEleme
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "DatastarFetchIndicator"
+	key := "data-fetch-indicator"
 
 	e.StringAttributes.Set(key, expression)
 	return e
@@ -917,7 +1067,7 @@ func (e *SVGSETElement) DATASTAR_FETCH_INDICATORRemove() *SVGSETElement {
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("DatastarFetchIndicator")
+	e.StringAttributes.Del("data-fetch-indicator")
 	return e
 }
 

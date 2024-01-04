@@ -174,9 +174,20 @@ func (e *SVGSTYLEElement) TYPE(s string) *SVGSTYLEElement {
 	return e
 }
 
+func (e *SVGSTYLEElement) TYPEF(format string, args ...any) *SVGSTYLEElement {
+	return e.TYPE(fmt.Sprintf(format, args...))
+}
+
 func (e *SVGSTYLEElement) IfTYPE(condition bool, s string) *SVGSTYLEElement {
 	if condition {
 		e.TYPE(s)
+	}
+	return e
+}
+
+func (e *SVGSTYLEElement) IfTYPEF(condition bool, format string, args ...any) *SVGSTYLEElement {
+	if condition {
+		e.TYPE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -190,6 +201,10 @@ func (e *SVGSTYLEElement) TYPERemove(s string) *SVGSTYLEElement {
 	return e
 }
 
+func (e *SVGSTYLEElement) TYPERemoveF(format string, args ...any) *SVGSTYLEElement {
+	return e.TYPERemove(fmt.Sprintf(format, args...))
+}
+
 // The intended destination medium for style information.
 func (e *SVGSTYLEElement) MEDIA(s string) *SVGSTYLEElement {
 	if e.StringAttributes == nil {
@@ -199,9 +214,20 @@ func (e *SVGSTYLEElement) MEDIA(s string) *SVGSTYLEElement {
 	return e
 }
 
+func (e *SVGSTYLEElement) MEDIAF(format string, args ...any) *SVGSTYLEElement {
+	return e.MEDIA(fmt.Sprintf(format, args...))
+}
+
 func (e *SVGSTYLEElement) IfMEDIA(condition bool, s string) *SVGSTYLEElement {
 	if condition {
 		e.MEDIA(s)
+	}
+	return e
+}
+
+func (e *SVGSTYLEElement) IfMEDIAF(condition bool, format string, args ...any) *SVGSTYLEElement {
+	if condition {
+		e.MEDIA(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -215,6 +241,10 @@ func (e *SVGSTYLEElement) MEDIARemove(s string) *SVGSTYLEElement {
 	return e
 }
 
+func (e *SVGSTYLEElement) MEDIARemoveF(format string, args ...any) *SVGSTYLEElement {
+	return e.MEDIARemove(fmt.Sprintf(format, args...))
+}
+
 // The advisory title.
 func (e *SVGSTYLEElement) TITLE(s string) *SVGSTYLEElement {
 	if e.StringAttributes == nil {
@@ -224,9 +254,20 @@ func (e *SVGSTYLEElement) TITLE(s string) *SVGSTYLEElement {
 	return e
 }
 
+func (e *SVGSTYLEElement) TITLEF(format string, args ...any) *SVGSTYLEElement {
+	return e.TITLE(fmt.Sprintf(format, args...))
+}
+
 func (e *SVGSTYLEElement) IfTITLE(condition bool, s string) *SVGSTYLEElement {
 	if condition {
 		e.TITLE(s)
+	}
+	return e
+}
+
+func (e *SVGSTYLEElement) IfTITLEF(condition bool, format string, args ...any) *SVGSTYLEElement {
+	if condition {
+		e.TITLE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -240,6 +281,10 @@ func (e *SVGSTYLEElement) TITLERemove(s string) *SVGSTYLEElement {
 	return e
 }
 
+func (e *SVGSTYLEElement) TITLERemoveF(format string, args ...any) *SVGSTYLEElement {
+	return e.TITLERemove(fmt.Sprintf(format, args...))
+}
+
 // Specifies a unique id for an element
 func (e *SVGSTYLEElement) ID(s string) *SVGSTYLEElement {
 	if e.StringAttributes == nil {
@@ -249,9 +294,20 @@ func (e *SVGSTYLEElement) ID(s string) *SVGSTYLEElement {
 	return e
 }
 
+func (e *SVGSTYLEElement) IDF(format string, args ...any) *SVGSTYLEElement {
+	return e.ID(fmt.Sprintf(format, args...))
+}
+
 func (e *SVGSTYLEElement) IfID(condition bool, s string) *SVGSTYLEElement {
 	if condition {
 		e.ID(s)
+	}
+	return e
+}
+
+func (e *SVGSTYLEElement) IfIDF(condition bool, format string, args ...any) *SVGSTYLEElement {
+	if condition {
+		e.ID(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -263,6 +319,10 @@ func (e *SVGSTYLEElement) IDRemove(s string) *SVGSTYLEElement {
 	}
 	e.StringAttributes.Del("id")
 	return e
+}
+
+func (e *SVGSTYLEElement) IDRemoveF(format string, args ...any) *SVGSTYLEElement {
+	return e.IDRemove(fmt.Sprintf(format, args...))
 }
 
 // Specifies one or more classnames for an element (refers to a class in a style
@@ -401,7 +461,7 @@ func (e *SVGSTYLEElement) DATASTAR_MERGE_STORE(v any) *SVGSTYLEElement {
 	if err != nil {
 		panic(err)
 	}
-	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	e.CustomDataAttributes.Set("merge-store", string(b))
 	return e
 }
 
@@ -523,34 +583,34 @@ func (e *SVGSTYLEElement) DATASTAR_TEXTRemove() *SVGSTYLEElement {
 
 // Sets the event handler of the element
 
-type SVGStyleDataOnMod customDataKeyModifier
+type SVGStyleOnMod customDataKeyModifier
 
 // Debounces the event handler
-func SVGStyleDataOnModDebounce(
+func SVGStyleOnModDebounce(
 	d time.Duration,
-) SVGStyleDataOnMod {
+) SVGStyleOnMod {
 	return func() string {
 		return fmt.Sprintf("debounce_%dms", d.Milliseconds())
 	}
 }
 
 // Throttles the event handler
-func SVGStyleDataOnModThrottle(
+func SVGStyleOnModThrottle(
 	d time.Duration,
-) SVGStyleDataOnMod {
+) SVGStyleOnMod {
 	return func() string {
 		return fmt.Sprintf("throttle_%dms", d.Milliseconds())
 	}
 }
 
-func (e *SVGSTYLEElement) DATASTAR_ON(key string, expression string, modifiers ...SVGStyleDataOnMod) *SVGSTYLEElement {
+func (e *SVGSTYLEElement) DATASTAR_ON(key string, expression string, modifiers ...SVGStyleOnMod) *SVGSTYLEElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
 	key = fmt.Sprintf("data-on-%s", key)
 
-	customMods := lo.Map(modifiers, func(m SVGStyleDataOnMod, i int) customDataKeyModifier {
+	customMods := lo.Map(modifiers, func(m SVGStyleOnMod, i int) customDataKeyModifier {
 		return customDataKeyModifier(m)
 	})
 	key = customDataKey(key, customMods...)
@@ -558,7 +618,7 @@ func (e *SVGSTYLEElement) DATASTAR_ON(key string, expression string, modifiers .
 	return e
 }
 
-func (e *SVGSTYLEElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SVGStyleDataOnMod) *SVGSTYLEElement {
+func (e *SVGSTYLEElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SVGStyleOnMod) *SVGSTYLEElement {
 	if condition {
 		e.DATASTAR_ON(key, expression, modifiers...)
 	}
@@ -651,7 +711,7 @@ func (e *SVGSTYLEElement) DATASTAR_FETCH_INDICATOR(expression string) *SVGSTYLEE
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "DatastarFetchIndicator"
+	key := "data-fetch-indicator"
 
 	e.StringAttributes.Set(key, expression)
 	return e
@@ -669,7 +729,7 @@ func (e *SVGSTYLEElement) DATASTAR_FETCH_INDICATORRemove() *SVGSTYLEElement {
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("DatastarFetchIndicator")
+	e.StringAttributes.Del("data-fetch-indicator")
 	return e
 }
 

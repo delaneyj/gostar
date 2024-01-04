@@ -171,7 +171,7 @@ func (e *SLCARDElement) DATASTAR_MERGE_STORE(v any) *SLCARDElement {
 	if err != nil {
 		panic(err)
 	}
-	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	e.CustomDataAttributes.Set("merge-store", string(b))
 	return e
 }
 
@@ -293,34 +293,34 @@ func (e *SLCARDElement) DATASTAR_TEXTRemove() *SLCARDElement {
 
 // Sets the event handler of the element
 
-type SLCardDataOnMod customDataKeyModifier
+type SLCardOnMod customDataKeyModifier
 
 // Debounces the event handler
-func SLCardDataOnModDebounce(
+func SLCardOnModDebounce(
 	d time.Duration,
-) SLCardDataOnMod {
+) SLCardOnMod {
 	return func() string {
 		return fmt.Sprintf("debounce_%dms", d.Milliseconds())
 	}
 }
 
 // Throttles the event handler
-func SLCardDataOnModThrottle(
+func SLCardOnModThrottle(
 	d time.Duration,
-) SLCardDataOnMod {
+) SLCardOnMod {
 	return func() string {
 		return fmt.Sprintf("throttle_%dms", d.Milliseconds())
 	}
 }
 
-func (e *SLCARDElement) DATASTAR_ON(key string, expression string, modifiers ...SLCardDataOnMod) *SLCARDElement {
+func (e *SLCARDElement) DATASTAR_ON(key string, expression string, modifiers ...SLCardOnMod) *SLCARDElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
 	key = fmt.Sprintf("data-on-%s", key)
 
-	customMods := lo.Map(modifiers, func(m SLCardDataOnMod, i int) customDataKeyModifier {
+	customMods := lo.Map(modifiers, func(m SLCardOnMod, i int) customDataKeyModifier {
 		return customDataKeyModifier(m)
 	})
 	key = customDataKey(key, customMods...)
@@ -328,7 +328,7 @@ func (e *SLCARDElement) DATASTAR_ON(key string, expression string, modifiers ...
 	return e
 }
 
-func (e *SLCARDElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SLCardDataOnMod) *SLCARDElement {
+func (e *SLCARDElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SLCardOnMod) *SLCARDElement {
 	if condition {
 		e.DATASTAR_ON(key, expression, modifiers...)
 	}
@@ -421,7 +421,7 @@ func (e *SLCARDElement) DATASTAR_FETCH_INDICATOR(expression string) *SLCARDEleme
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "DatastarFetchIndicator"
+	key := "data-fetch-indicator"
 
 	e.StringAttributes.Set(key, expression)
 	return e
@@ -439,7 +439,7 @@ func (e *SLCARDElement) DATASTAR_FETCH_INDICATORRemove() *SLCARDElement {
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("DatastarFetchIndicator")
+	e.StringAttributes.Del("data-fetch-indicator")
 	return e
 }
 

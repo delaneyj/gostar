@@ -260,9 +260,20 @@ func (e *SVGFEIMAGEElement) HREF(s string) *SVGFEIMAGEElement {
 	return e
 }
 
+func (e *SVGFEIMAGEElement) HREFF(format string, args ...any) *SVGFEIMAGEElement {
+	return e.HREF(fmt.Sprintf(format, args...))
+}
+
 func (e *SVGFEIMAGEElement) IfHREF(condition bool, s string) *SVGFEIMAGEElement {
 	if condition {
 		e.HREF(s)
+	}
+	return e
+}
+
+func (e *SVGFEIMAGEElement) IfHREFF(condition bool, format string, args ...any) *SVGFEIMAGEElement {
+	if condition {
+		e.HREF(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -276,6 +287,10 @@ func (e *SVGFEIMAGEElement) HREFRemove(s string) *SVGFEIMAGEElement {
 	return e
 }
 
+func (e *SVGFEIMAGEElement) HREFRemoveF(format string, args ...any) *SVGFEIMAGEElement {
+	return e.HREFRemove(fmt.Sprintf(format, args...))
+}
+
 // Specifies a unique id for an element
 func (e *SVGFEIMAGEElement) ID(s string) *SVGFEIMAGEElement {
 	if e.StringAttributes == nil {
@@ -285,9 +300,20 @@ func (e *SVGFEIMAGEElement) ID(s string) *SVGFEIMAGEElement {
 	return e
 }
 
+func (e *SVGFEIMAGEElement) IDF(format string, args ...any) *SVGFEIMAGEElement {
+	return e.ID(fmt.Sprintf(format, args...))
+}
+
 func (e *SVGFEIMAGEElement) IfID(condition bool, s string) *SVGFEIMAGEElement {
 	if condition {
 		e.ID(s)
+	}
+	return e
+}
+
+func (e *SVGFEIMAGEElement) IfIDF(condition bool, format string, args ...any) *SVGFEIMAGEElement {
+	if condition {
+		e.ID(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -299,6 +325,10 @@ func (e *SVGFEIMAGEElement) IDRemove(s string) *SVGFEIMAGEElement {
 	}
 	e.StringAttributes.Del("id")
 	return e
+}
+
+func (e *SVGFEIMAGEElement) IDRemoveF(format string, args ...any) *SVGFEIMAGEElement {
+	return e.IDRemove(fmt.Sprintf(format, args...))
 }
 
 // Specifies one or more classnames for an element (refers to a class in a style
@@ -437,7 +467,7 @@ func (e *SVGFEIMAGEElement) DATASTAR_MERGE_STORE(v any) *SVGFEIMAGEElement {
 	if err != nil {
 		panic(err)
 	}
-	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	e.CustomDataAttributes.Set("merge-store", string(b))
 	return e
 }
 
@@ -559,34 +589,34 @@ func (e *SVGFEIMAGEElement) DATASTAR_TEXTRemove() *SVGFEIMAGEElement {
 
 // Sets the event handler of the element
 
-type SVGFeImageDataOnMod customDataKeyModifier
+type SVGFeImageOnMod customDataKeyModifier
 
 // Debounces the event handler
-func SVGFeImageDataOnModDebounce(
+func SVGFeImageOnModDebounce(
 	d time.Duration,
-) SVGFeImageDataOnMod {
+) SVGFeImageOnMod {
 	return func() string {
 		return fmt.Sprintf("debounce_%dms", d.Milliseconds())
 	}
 }
 
 // Throttles the event handler
-func SVGFeImageDataOnModThrottle(
+func SVGFeImageOnModThrottle(
 	d time.Duration,
-) SVGFeImageDataOnMod {
+) SVGFeImageOnMod {
 	return func() string {
 		return fmt.Sprintf("throttle_%dms", d.Milliseconds())
 	}
 }
 
-func (e *SVGFEIMAGEElement) DATASTAR_ON(key string, expression string, modifiers ...SVGFeImageDataOnMod) *SVGFEIMAGEElement {
+func (e *SVGFEIMAGEElement) DATASTAR_ON(key string, expression string, modifiers ...SVGFeImageOnMod) *SVGFEIMAGEElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
 	key = fmt.Sprintf("data-on-%s", key)
 
-	customMods := lo.Map(modifiers, func(m SVGFeImageDataOnMod, i int) customDataKeyModifier {
+	customMods := lo.Map(modifiers, func(m SVGFeImageOnMod, i int) customDataKeyModifier {
 		return customDataKeyModifier(m)
 	})
 	key = customDataKey(key, customMods...)
@@ -594,7 +624,7 @@ func (e *SVGFEIMAGEElement) DATASTAR_ON(key string, expression string, modifiers
 	return e
 }
 
-func (e *SVGFEIMAGEElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SVGFeImageDataOnMod) *SVGFEIMAGEElement {
+func (e *SVGFEIMAGEElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SVGFeImageOnMod) *SVGFEIMAGEElement {
 	if condition {
 		e.DATASTAR_ON(key, expression, modifiers...)
 	}
@@ -687,7 +717,7 @@ func (e *SVGFEIMAGEElement) DATASTAR_FETCH_INDICATOR(expression string) *SVGFEIM
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "DatastarFetchIndicator"
+	key := "data-fetch-indicator"
 
 	e.StringAttributes.Set(key, expression)
 	return e
@@ -705,7 +735,7 @@ func (e *SVGFEIMAGEElement) DATASTAR_FETCH_INDICATORRemove() *SVGFEIMAGEElement 
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("DatastarFetchIndicator")
+	e.StringAttributes.Del("data-fetch-indicator")
 	return e
 }
 

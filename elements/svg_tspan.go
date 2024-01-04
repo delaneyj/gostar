@@ -252,9 +252,20 @@ func (e *SVGTSPANElement) ID(s string) *SVGTSPANElement {
 	return e
 }
 
+func (e *SVGTSPANElement) IDF(format string, args ...any) *SVGTSPANElement {
+	return e.ID(fmt.Sprintf(format, args...))
+}
+
 func (e *SVGTSPANElement) IfID(condition bool, s string) *SVGTSPANElement {
 	if condition {
 		e.ID(s)
+	}
+	return e
+}
+
+func (e *SVGTSPANElement) IfIDF(condition bool, format string, args ...any) *SVGTSPANElement {
+	if condition {
+		e.ID(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -266,6 +277,10 @@ func (e *SVGTSPANElement) IDRemove(s string) *SVGTSPANElement {
 	}
 	e.StringAttributes.Del("id")
 	return e
+}
+
+func (e *SVGTSPANElement) IDRemoveF(format string, args ...any) *SVGTSPANElement {
+	return e.IDRemove(fmt.Sprintf(format, args...))
 }
 
 // Specifies one or more classnames for an element (refers to a class in a style
@@ -404,7 +419,7 @@ func (e *SVGTSPANElement) DATASTAR_MERGE_STORE(v any) *SVGTSPANElement {
 	if err != nil {
 		panic(err)
 	}
-	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	e.CustomDataAttributes.Set("merge-store", string(b))
 	return e
 }
 
@@ -526,34 +541,34 @@ func (e *SVGTSPANElement) DATASTAR_TEXTRemove() *SVGTSPANElement {
 
 // Sets the event handler of the element
 
-type SVGTspanDataOnMod customDataKeyModifier
+type SVGTspanOnMod customDataKeyModifier
 
 // Debounces the event handler
-func SVGTspanDataOnModDebounce(
+func SVGTspanOnModDebounce(
 	d time.Duration,
-) SVGTspanDataOnMod {
+) SVGTspanOnMod {
 	return func() string {
 		return fmt.Sprintf("debounce_%dms", d.Milliseconds())
 	}
 }
 
 // Throttles the event handler
-func SVGTspanDataOnModThrottle(
+func SVGTspanOnModThrottle(
 	d time.Duration,
-) SVGTspanDataOnMod {
+) SVGTspanOnMod {
 	return func() string {
 		return fmt.Sprintf("throttle_%dms", d.Milliseconds())
 	}
 }
 
-func (e *SVGTSPANElement) DATASTAR_ON(key string, expression string, modifiers ...SVGTspanDataOnMod) *SVGTSPANElement {
+func (e *SVGTSPANElement) DATASTAR_ON(key string, expression string, modifiers ...SVGTspanOnMod) *SVGTSPANElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
 	key = fmt.Sprintf("data-on-%s", key)
 
-	customMods := lo.Map(modifiers, func(m SVGTspanDataOnMod, i int) customDataKeyModifier {
+	customMods := lo.Map(modifiers, func(m SVGTspanOnMod, i int) customDataKeyModifier {
 		return customDataKeyModifier(m)
 	})
 	key = customDataKey(key, customMods...)
@@ -561,7 +576,7 @@ func (e *SVGTSPANElement) DATASTAR_ON(key string, expression string, modifiers .
 	return e
 }
 
-func (e *SVGTSPANElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SVGTspanDataOnMod) *SVGTSPANElement {
+func (e *SVGTSPANElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SVGTspanOnMod) *SVGTSPANElement {
 	if condition {
 		e.DATASTAR_ON(key, expression, modifiers...)
 	}
@@ -654,7 +669,7 @@ func (e *SVGTSPANElement) DATASTAR_FETCH_INDICATOR(expression string) *SVGTSPANE
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "DatastarFetchIndicator"
+	key := "data-fetch-indicator"
 
 	e.StringAttributes.Set(key, expression)
 	return e
@@ -672,7 +687,7 @@ func (e *SVGTSPANElement) DATASTAR_FETCH_INDICATORRemove() *SVGTSPANElement {
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("DatastarFetchIndicator")
+	e.StringAttributes.Del("data-fetch-indicator")
 	return e
 }
 

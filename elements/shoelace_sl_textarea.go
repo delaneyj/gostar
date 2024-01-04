@@ -169,9 +169,20 @@ func (e *SLTEXTAREAElement) NAME(s string) *SLTEXTAREAElement {
 	return e
 }
 
+func (e *SLTEXTAREAElement) NAMEF(format string, args ...any) *SLTEXTAREAElement {
+	return e.NAME(fmt.Sprintf(format, args...))
+}
+
 func (e *SLTEXTAREAElement) IfNAME(condition bool, s string) *SLTEXTAREAElement {
 	if condition {
 		e.NAME(s)
+	}
+	return e
+}
+
+func (e *SLTEXTAREAElement) IfNAMEF(condition bool, format string, args ...any) *SLTEXTAREAElement {
+	if condition {
+		e.NAME(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -185,6 +196,10 @@ func (e *SLTEXTAREAElement) NAMERemove(s string) *SLTEXTAREAElement {
 	return e
 }
 
+func (e *SLTEXTAREAElement) NAMERemoveF(format string, args ...any) *SLTEXTAREAElement {
+	return e.NAMERemove(fmt.Sprintf(format, args...))
+}
+
 func (e *SLTEXTAREAElement) VALUE(s string) *SLTEXTAREAElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
@@ -193,9 +208,20 @@ func (e *SLTEXTAREAElement) VALUE(s string) *SLTEXTAREAElement {
 	return e
 }
 
+func (e *SLTEXTAREAElement) VALUEF(format string, args ...any) *SLTEXTAREAElement {
+	return e.VALUE(fmt.Sprintf(format, args...))
+}
+
 func (e *SLTEXTAREAElement) IfVALUE(condition bool, s string) *SLTEXTAREAElement {
 	if condition {
 		e.VALUE(s)
+	}
+	return e
+}
+
+func (e *SLTEXTAREAElement) IfVALUEF(condition bool, format string, args ...any) *SLTEXTAREAElement {
+	if condition {
+		e.VALUE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -207,6 +233,10 @@ func (e *SLTEXTAREAElement) VALUERemove(s string) *SLTEXTAREAElement {
 	}
 	e.StringAttributes.Del("value")
 	return e
+}
+
+func (e *SLTEXTAREAElement) VALUERemoveF(format string, args ...any) *SLTEXTAREAElement {
+	return e.VALUERemove(fmt.Sprintf(format, args...))
 }
 
 func (e *SLTEXTAREAElement) SIZE(c SLTextareaSizeChoice) *SLTEXTAREAElement {
@@ -282,9 +312,20 @@ func (e *SLTEXTAREAElement) LABEL(s string) *SLTEXTAREAElement {
 	return e
 }
 
+func (e *SLTEXTAREAElement) LABELF(format string, args ...any) *SLTEXTAREAElement {
+	return e.LABEL(fmt.Sprintf(format, args...))
+}
+
 func (e *SLTEXTAREAElement) IfLABEL(condition bool, s string) *SLTEXTAREAElement {
 	if condition {
 		e.LABEL(s)
+	}
+	return e
+}
+
+func (e *SLTEXTAREAElement) IfLABELF(condition bool, format string, args ...any) *SLTEXTAREAElement {
+	if condition {
+		e.LABEL(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -298,6 +339,10 @@ func (e *SLTEXTAREAElement) LABELRemove(s string) *SLTEXTAREAElement {
 	return e
 }
 
+func (e *SLTEXTAREAElement) LABELRemoveF(format string, args ...any) *SLTEXTAREAElement {
+	return e.LABELRemove(fmt.Sprintf(format, args...))
+}
+
 func (e *SLTEXTAREAElement) HELP_TEXT(s string) *SLTEXTAREAElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
@@ -306,9 +351,20 @@ func (e *SLTEXTAREAElement) HELP_TEXT(s string) *SLTEXTAREAElement {
 	return e
 }
 
+func (e *SLTEXTAREAElement) HELP_TEXTF(format string, args ...any) *SLTEXTAREAElement {
+	return e.HELP_TEXT(fmt.Sprintf(format, args...))
+}
+
 func (e *SLTEXTAREAElement) IfHELP_TEXT(condition bool, s string) *SLTEXTAREAElement {
 	if condition {
 		e.HELP_TEXT(s)
+	}
+	return e
+}
+
+func (e *SLTEXTAREAElement) IfHELP_TEXTF(condition bool, format string, args ...any) *SLTEXTAREAElement {
+	if condition {
+		e.HELP_TEXT(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -322,6 +378,10 @@ func (e *SLTEXTAREAElement) HELP_TEXTRemove(s string) *SLTEXTAREAElement {
 	return e
 }
 
+func (e *SLTEXTAREAElement) HELP_TEXTRemoveF(format string, args ...any) *SLTEXTAREAElement {
+	return e.HELP_TEXTRemove(fmt.Sprintf(format, args...))
+}
+
 func (e *SLTEXTAREAElement) PLACEHOLDER(s string) *SLTEXTAREAElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
@@ -330,9 +390,20 @@ func (e *SLTEXTAREAElement) PLACEHOLDER(s string) *SLTEXTAREAElement {
 	return e
 }
 
+func (e *SLTEXTAREAElement) PLACEHOLDERF(format string, args ...any) *SLTEXTAREAElement {
+	return e.PLACEHOLDER(fmt.Sprintf(format, args...))
+}
+
 func (e *SLTEXTAREAElement) IfPLACEHOLDER(condition bool, s string) *SLTEXTAREAElement {
 	if condition {
 		e.PLACEHOLDER(s)
+	}
+	return e
+}
+
+func (e *SLTEXTAREAElement) IfPLACEHOLDERF(condition bool, format string, args ...any) *SLTEXTAREAElement {
+	if condition {
+		e.PLACEHOLDER(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -344,6 +415,10 @@ func (e *SLTEXTAREAElement) PLACEHOLDERRemove(s string) *SLTEXTAREAElement {
 	}
 	e.StringAttributes.Del("placeholder")
 	return e
+}
+
+func (e *SLTEXTAREAElement) PLACEHOLDERRemoveF(format string, args ...any) *SLTEXTAREAElement {
+	return e.PLACEHOLDERRemove(fmt.Sprintf(format, args...))
 }
 
 func (e *SLTEXTAREAElement) ROWS(i int) *SLTEXTAREAElement {
@@ -629,9 +704,20 @@ func (e *SLTEXTAREAElement) AUTOCOMPLETE(s string) *SLTEXTAREAElement {
 	return e
 }
 
+func (e *SLTEXTAREAElement) AUTOCOMPLETEF(format string, args ...any) *SLTEXTAREAElement {
+	return e.AUTOCOMPLETE(fmt.Sprintf(format, args...))
+}
+
 func (e *SLTEXTAREAElement) IfAUTOCOMPLETE(condition bool, s string) *SLTEXTAREAElement {
 	if condition {
 		e.AUTOCOMPLETE(s)
+	}
+	return e
+}
+
+func (e *SLTEXTAREAElement) IfAUTOCOMPLETEF(condition bool, format string, args ...any) *SLTEXTAREAElement {
+	if condition {
+		e.AUTOCOMPLETE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -643,6 +729,10 @@ func (e *SLTEXTAREAElement) AUTOCOMPLETERemove(s string) *SLTEXTAREAElement {
 	}
 	e.StringAttributes.Del("autocomplete")
 	return e
+}
+
+func (e *SLTEXTAREAElement) AUTOCOMPLETERemoveF(format string, args ...any) *SLTEXTAREAElement {
+	return e.AUTOCOMPLETERemove(fmt.Sprintf(format, args...))
 }
 
 func (e *SLTEXTAREAElement) SPELLCHECK() *SLTEXTAREAElement {
@@ -730,9 +820,20 @@ func (e *SLTEXTAREAElement) DEFAULT_VALUE(s string) *SLTEXTAREAElement {
 	return e
 }
 
+func (e *SLTEXTAREAElement) DEFAULT_VALUEF(format string, args ...any) *SLTEXTAREAElement {
+	return e.DEFAULT_VALUE(fmt.Sprintf(format, args...))
+}
+
 func (e *SLTEXTAREAElement) IfDEFAULT_VALUE(condition bool, s string) *SLTEXTAREAElement {
 	if condition {
 		e.DEFAULT_VALUE(s)
+	}
+	return e
+}
+
+func (e *SLTEXTAREAElement) IfDEFAULT_VALUEF(condition bool, format string, args ...any) *SLTEXTAREAElement {
+	if condition {
+		e.DEFAULT_VALUE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -746,6 +847,10 @@ func (e *SLTEXTAREAElement) DEFAULT_VALUERemove(s string) *SLTEXTAREAElement {
 	return e
 }
 
+func (e *SLTEXTAREAElement) DEFAULT_VALUERemoveF(format string, args ...any) *SLTEXTAREAElement {
+	return e.DEFAULT_VALUERemove(fmt.Sprintf(format, args...))
+}
+
 // Merges the store with the given object
 
 func (e *SLTEXTAREAElement) DATASTAR_MERGE_STORE(v any) *SLTEXTAREAElement {
@@ -756,7 +861,7 @@ func (e *SLTEXTAREAElement) DATASTAR_MERGE_STORE(v any) *SLTEXTAREAElement {
 	if err != nil {
 		panic(err)
 	}
-	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	e.CustomDataAttributes.Set("merge-store", string(b))
 	return e
 }
 
@@ -878,34 +983,34 @@ func (e *SLTEXTAREAElement) DATASTAR_TEXTRemove() *SLTEXTAREAElement {
 
 // Sets the event handler of the element
 
-type SLTextareaDataOnMod customDataKeyModifier
+type SLTextareaOnMod customDataKeyModifier
 
 // Debounces the event handler
-func SLTextareaDataOnModDebounce(
+func SLTextareaOnModDebounce(
 	d time.Duration,
-) SLTextareaDataOnMod {
+) SLTextareaOnMod {
 	return func() string {
 		return fmt.Sprintf("debounce_%dms", d.Milliseconds())
 	}
 }
 
 // Throttles the event handler
-func SLTextareaDataOnModThrottle(
+func SLTextareaOnModThrottle(
 	d time.Duration,
-) SLTextareaDataOnMod {
+) SLTextareaOnMod {
 	return func() string {
 		return fmt.Sprintf("throttle_%dms", d.Milliseconds())
 	}
 }
 
-func (e *SLTEXTAREAElement) DATASTAR_ON(key string, expression string, modifiers ...SLTextareaDataOnMod) *SLTEXTAREAElement {
+func (e *SLTEXTAREAElement) DATASTAR_ON(key string, expression string, modifiers ...SLTextareaOnMod) *SLTEXTAREAElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
 	key = fmt.Sprintf("data-on-%s", key)
 
-	customMods := lo.Map(modifiers, func(m SLTextareaDataOnMod, i int) customDataKeyModifier {
+	customMods := lo.Map(modifiers, func(m SLTextareaOnMod, i int) customDataKeyModifier {
 		return customDataKeyModifier(m)
 	})
 	key = customDataKey(key, customMods...)
@@ -913,7 +1018,7 @@ func (e *SLTEXTAREAElement) DATASTAR_ON(key string, expression string, modifiers
 	return e
 }
 
-func (e *SLTEXTAREAElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SLTextareaDataOnMod) *SLTEXTAREAElement {
+func (e *SLTEXTAREAElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SLTextareaOnMod) *SLTEXTAREAElement {
 	if condition {
 		e.DATASTAR_ON(key, expression, modifiers...)
 	}
@@ -1006,7 +1111,7 @@ func (e *SLTEXTAREAElement) DATASTAR_FETCH_INDICATOR(expression string) *SLTEXTA
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "DatastarFetchIndicator"
+	key := "data-fetch-indicator"
 
 	e.StringAttributes.Set(key, expression)
 	return e
@@ -1024,7 +1129,7 @@ func (e *SLTEXTAREAElement) DATASTAR_FETCH_INDICATORRemove() *SLTEXTAREAElement 
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("DatastarFetchIndicator")
+	e.StringAttributes.Del("data-fetch-indicator")
 	return e
 }
 

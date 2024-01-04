@@ -227,9 +227,20 @@ func (e *SVGPATTERNElement) PATTERN_TRANSFORM(s string) *SVGPATTERNElement {
 	return e
 }
 
+func (e *SVGPATTERNElement) PATTERN_TRANSFORMF(format string, args ...any) *SVGPATTERNElement {
+	return e.PATTERN_TRANSFORM(fmt.Sprintf(format, args...))
+}
+
 func (e *SVGPATTERNElement) IfPATTERN_TRANSFORM(condition bool, s string) *SVGPATTERNElement {
 	if condition {
 		e.PATTERN_TRANSFORM(s)
+	}
+	return e
+}
+
+func (e *SVGPATTERNElement) IfPATTERN_TRANSFORMF(condition bool, format string, args ...any) *SVGPATTERNElement {
+	if condition {
+		e.PATTERN_TRANSFORM(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -241,6 +252,10 @@ func (e *SVGPATTERNElement) PATTERN_TRANSFORMRemove(s string) *SVGPATTERNElement
 	}
 	e.StringAttributes.Del("patternTransform")
 	return e
+}
+
+func (e *SVGPATTERNElement) PATTERN_TRANSFORMRemoveF(format string, args ...any) *SVGPATTERNElement {
+	return e.PATTERN_TRANSFORMRemove(fmt.Sprintf(format, args...))
 }
 
 // The x-axis coordinate of the side of the rectangular region which is closest to
@@ -318,9 +333,20 @@ func (e *SVGPATTERNElement) HREF(s string) *SVGPATTERNElement {
 	return e
 }
 
+func (e *SVGPATTERNElement) HREFF(format string, args ...any) *SVGPATTERNElement {
+	return e.HREF(fmt.Sprintf(format, args...))
+}
+
 func (e *SVGPATTERNElement) IfHREF(condition bool, s string) *SVGPATTERNElement {
 	if condition {
 		e.HREF(s)
+	}
+	return e
+}
+
+func (e *SVGPATTERNElement) IfHREFF(condition bool, format string, args ...any) *SVGPATTERNElement {
+	if condition {
+		e.HREF(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -334,6 +360,10 @@ func (e *SVGPATTERNElement) HREFRemove(s string) *SVGPATTERNElement {
 	return e
 }
 
+func (e *SVGPATTERNElement) HREFRemoveF(format string, args ...any) *SVGPATTERNElement {
+	return e.HREFRemove(fmt.Sprintf(format, args...))
+}
+
 // Specifies a unique id for an element
 func (e *SVGPATTERNElement) ID(s string) *SVGPATTERNElement {
 	if e.StringAttributes == nil {
@@ -343,9 +373,20 @@ func (e *SVGPATTERNElement) ID(s string) *SVGPATTERNElement {
 	return e
 }
 
+func (e *SVGPATTERNElement) IDF(format string, args ...any) *SVGPATTERNElement {
+	return e.ID(fmt.Sprintf(format, args...))
+}
+
 func (e *SVGPATTERNElement) IfID(condition bool, s string) *SVGPATTERNElement {
 	if condition {
 		e.ID(s)
+	}
+	return e
+}
+
+func (e *SVGPATTERNElement) IfIDF(condition bool, format string, args ...any) *SVGPATTERNElement {
+	if condition {
+		e.ID(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -357,6 +398,10 @@ func (e *SVGPATTERNElement) IDRemove(s string) *SVGPATTERNElement {
 	}
 	e.StringAttributes.Del("id")
 	return e
+}
+
+func (e *SVGPATTERNElement) IDRemoveF(format string, args ...any) *SVGPATTERNElement {
+	return e.IDRemove(fmt.Sprintf(format, args...))
 }
 
 // Specifies one or more classnames for an element (refers to a class in a style
@@ -495,7 +540,7 @@ func (e *SVGPATTERNElement) DATASTAR_MERGE_STORE(v any) *SVGPATTERNElement {
 	if err != nil {
 		panic(err)
 	}
-	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	e.CustomDataAttributes.Set("merge-store", string(b))
 	return e
 }
 
@@ -617,34 +662,34 @@ func (e *SVGPATTERNElement) DATASTAR_TEXTRemove() *SVGPATTERNElement {
 
 // Sets the event handler of the element
 
-type SVGPatternDataOnMod customDataKeyModifier
+type SVGPatternOnMod customDataKeyModifier
 
 // Debounces the event handler
-func SVGPatternDataOnModDebounce(
+func SVGPatternOnModDebounce(
 	d time.Duration,
-) SVGPatternDataOnMod {
+) SVGPatternOnMod {
 	return func() string {
 		return fmt.Sprintf("debounce_%dms", d.Milliseconds())
 	}
 }
 
 // Throttles the event handler
-func SVGPatternDataOnModThrottle(
+func SVGPatternOnModThrottle(
 	d time.Duration,
-) SVGPatternDataOnMod {
+) SVGPatternOnMod {
 	return func() string {
 		return fmt.Sprintf("throttle_%dms", d.Milliseconds())
 	}
 }
 
-func (e *SVGPATTERNElement) DATASTAR_ON(key string, expression string, modifiers ...SVGPatternDataOnMod) *SVGPATTERNElement {
+func (e *SVGPATTERNElement) DATASTAR_ON(key string, expression string, modifiers ...SVGPatternOnMod) *SVGPATTERNElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
 	key = fmt.Sprintf("data-on-%s", key)
 
-	customMods := lo.Map(modifiers, func(m SVGPatternDataOnMod, i int) customDataKeyModifier {
+	customMods := lo.Map(modifiers, func(m SVGPatternOnMod, i int) customDataKeyModifier {
 		return customDataKeyModifier(m)
 	})
 	key = customDataKey(key, customMods...)
@@ -652,7 +697,7 @@ func (e *SVGPATTERNElement) DATASTAR_ON(key string, expression string, modifiers
 	return e
 }
 
-func (e *SVGPATTERNElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SVGPatternDataOnMod) *SVGPATTERNElement {
+func (e *SVGPATTERNElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SVGPatternOnMod) *SVGPATTERNElement {
 	if condition {
 		e.DATASTAR_ON(key, expression, modifiers...)
 	}
@@ -745,7 +790,7 @@ func (e *SVGPATTERNElement) DATASTAR_FETCH_INDICATOR(expression string) *SVGPATT
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "DatastarFetchIndicator"
+	key := "data-fetch-indicator"
 
 	e.StringAttributes.Set(key, expression)
 	return e
@@ -763,7 +808,7 @@ func (e *SVGPATTERNElement) DATASTAR_FETCH_INDICATORRemove() *SVGPATTERNElement 
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("DatastarFetchIndicator")
+	e.StringAttributes.Del("data-fetch-indicator")
 	return e
 }
 

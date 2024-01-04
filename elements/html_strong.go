@@ -609,9 +609,20 @@ func (e *STRONGElement) ID(s string) *STRONGElement {
 	return e
 }
 
+func (e *STRONGElement) IDF(format string, args ...any) *STRONGElement {
+	return e.ID(fmt.Sprintf(format, args...))
+}
+
 func (e *STRONGElement) IfID(condition bool, s string) *STRONGElement {
 	if condition {
 		e.ID(s)
+	}
+	return e
+}
+
+func (e *STRONGElement) IfIDF(condition bool, format string, args ...any) *STRONGElement {
+	if condition {
+		e.ID(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -623,6 +634,10 @@ func (e *STRONGElement) IDRemove(s string) *STRONGElement {
 	}
 	e.StringAttributes.Del("id")
 	return e
+}
+
+func (e *STRONGElement) IDRemoveF(format string, args ...any) *STRONGElement {
+	return e.IDRemove(fmt.Sprintf(format, args...))
 }
 
 // The inert global attribute is a Boolean attribute indicating that the browser
@@ -757,9 +772,20 @@ func (e *STRONGElement) IS(s string) *STRONGElement {
 	return e
 }
 
+func (e *STRONGElement) ISF(format string, args ...any) *STRONGElement {
+	return e.IS(fmt.Sprintf(format, args...))
+}
+
 func (e *STRONGElement) IfIS(condition bool, s string) *STRONGElement {
 	if condition {
 		e.IS(s)
+	}
+	return e
+}
+
+func (e *STRONGElement) IfISF(condition bool, format string, args ...any) *STRONGElement {
+	if condition {
+		e.IS(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -771,6 +797,10 @@ func (e *STRONGElement) ISRemove(s string) *STRONGElement {
 	}
 	e.StringAttributes.Del("is")
 	return e
+}
+
+func (e *STRONGElement) ISRemoveF(format string, args ...any) *STRONGElement {
+	return e.ISRemove(fmt.Sprintf(format, args...))
 }
 
 // The itemid global attribute provides microdata in the form of a unique, global
@@ -794,9 +824,20 @@ func (e *STRONGElement) ITEMID(s string) *STRONGElement {
 	return e
 }
 
+func (e *STRONGElement) ITEMIDF(format string, args ...any) *STRONGElement {
+	return e.ITEMID(fmt.Sprintf(format, args...))
+}
+
 func (e *STRONGElement) IfITEMID(condition bool, s string) *STRONGElement {
 	if condition {
 		e.ITEMID(s)
+	}
+	return e
+}
+
+func (e *STRONGElement) IfITEMIDF(condition bool, format string, args ...any) *STRONGElement {
+	if condition {
+		e.ITEMID(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -808,6 +849,10 @@ func (e *STRONGElement) ITEMIDRemove(s string) *STRONGElement {
 	}
 	e.StringAttributes.Del("itemid")
 	return e
+}
+
+func (e *STRONGElement) ITEMIDRemoveF(format string, args ...any) *STRONGElement {
+	return e.ITEMIDRemove(fmt.Sprintf(format, args...))
 }
 
 // The itemprop global attribute is used to add properties to an item
@@ -826,9 +871,20 @@ func (e *STRONGElement) ITEMPROP(s string) *STRONGElement {
 	return e
 }
 
+func (e *STRONGElement) ITEMPROPF(format string, args ...any) *STRONGElement {
+	return e.ITEMPROP(fmt.Sprintf(format, args...))
+}
+
 func (e *STRONGElement) IfITEMPROP(condition bool, s string) *STRONGElement {
 	if condition {
 		e.ITEMPROP(s)
+	}
+	return e
+}
+
+func (e *STRONGElement) IfITEMPROPF(condition bool, format string, args ...any) *STRONGElement {
+	if condition {
+		e.ITEMPROP(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -840,6 +896,10 @@ func (e *STRONGElement) ITEMPROPRemove(s string) *STRONGElement {
 	}
 	e.StringAttributes.Del("itemprop")
 	return e
+}
+
+func (e *STRONGElement) ITEMPROPRemoveF(format string, args ...any) *STRONGElement {
+	return e.ITEMPROPRemove(fmt.Sprintf(format, args...))
 }
 
 // Properties that are not descendants of an element with the itemscope attribute
@@ -855,9 +915,20 @@ func (e *STRONGElement) ITEMREF(s string) *STRONGElement {
 	return e
 }
 
+func (e *STRONGElement) ITEMREFF(format string, args ...any) *STRONGElement {
+	return e.ITEMREF(fmt.Sprintf(format, args...))
+}
+
 func (e *STRONGElement) IfITEMREF(condition bool, s string) *STRONGElement {
 	if condition {
 		e.ITEMREF(s)
+	}
+	return e
+}
+
+func (e *STRONGElement) IfITEMREFF(condition bool, format string, args ...any) *STRONGElement {
+	if condition {
+		e.ITEMREF(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -869,6 +940,10 @@ func (e *STRONGElement) ITEMREFRemove(s string) *STRONGElement {
 	}
 	e.StringAttributes.Del("itemref")
 	return e
+}
+
+func (e *STRONGElement) ITEMREFRemoveF(format string, args ...any) *STRONGElement {
+	return e.ITEMREFRemove(fmt.Sprintf(format, args...))
 }
 
 // The itemscope global attribute is used to add an item to a microdata DOM tree
@@ -932,9 +1007,20 @@ func (e *STRONGElement) ITEMTYPE(s string) *STRONGElement {
 	return e
 }
 
+func (e *STRONGElement) ITEMTYPEF(format string, args ...any) *STRONGElement {
+	return e.ITEMTYPE(fmt.Sprintf(format, args...))
+}
+
 func (e *STRONGElement) IfITEMTYPE(condition bool, s string) *STRONGElement {
 	if condition {
 		e.ITEMTYPE(s)
+	}
+	return e
+}
+
+func (e *STRONGElement) IfITEMTYPEF(condition bool, format string, args ...any) *STRONGElement {
+	if condition {
+		e.ITEMTYPE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -946,6 +1032,10 @@ func (e *STRONGElement) ITEMTYPERemove(s string) *STRONGElement {
 	}
 	e.StringAttributes.Del("itemtype")
 	return e
+}
+
+func (e *STRONGElement) ITEMTYPERemoveF(format string, args ...any) *STRONGElement {
+	return e.ITEMTYPERemove(fmt.Sprintf(format, args...))
 }
 
 // The lang global attribute helps define the language of an element: the language
@@ -962,9 +1052,20 @@ func (e *STRONGElement) LANG(s string) *STRONGElement {
 	return e
 }
 
+func (e *STRONGElement) LANGF(format string, args ...any) *STRONGElement {
+	return e.LANG(fmt.Sprintf(format, args...))
+}
+
 func (e *STRONGElement) IfLANG(condition bool, s string) *STRONGElement {
 	if condition {
 		e.LANG(s)
+	}
+	return e
+}
+
+func (e *STRONGElement) IfLANGF(condition bool, format string, args ...any) *STRONGElement {
+	if condition {
+		e.LANG(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -976,6 +1077,10 @@ func (e *STRONGElement) LANGRemove(s string) *STRONGElement {
 	}
 	e.StringAttributes.Del("lang")
 	return e
+}
+
+func (e *STRONGElement) LANGRemoveF(format string, args ...any) *STRONGElement {
+	return e.LANGRemove(fmt.Sprintf(format, args...))
 }
 
 // The nonce global attribute is a unique identifier used to declare inline
@@ -990,9 +1095,20 @@ func (e *STRONGElement) NONCE(s string) *STRONGElement {
 	return e
 }
 
+func (e *STRONGElement) NONCEF(format string, args ...any) *STRONGElement {
+	return e.NONCE(fmt.Sprintf(format, args...))
+}
+
 func (e *STRONGElement) IfNONCE(condition bool, s string) *STRONGElement {
 	if condition {
 		e.NONCE(s)
+	}
+	return e
+}
+
+func (e *STRONGElement) IfNONCEF(condition bool, format string, args ...any) *STRONGElement {
+	if condition {
+		e.NONCE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1004,6 +1120,10 @@ func (e *STRONGElement) NONCERemove(s string) *STRONGElement {
 	}
 	e.StringAttributes.Del("nonce")
 	return e
+}
+
+func (e *STRONGElement) NONCERemoveF(format string, args ...any) *STRONGElement {
+	return e.NONCERemove(fmt.Sprintf(format, args...))
 }
 
 // The part global attribute contains a space-separated list of the part names of
@@ -1098,9 +1218,20 @@ func (e *STRONGElement) ROLE(s string) *STRONGElement {
 	return e
 }
 
+func (e *STRONGElement) ROLEF(format string, args ...any) *STRONGElement {
+	return e.ROLE(fmt.Sprintf(format, args...))
+}
+
 func (e *STRONGElement) IfROLE(condition bool, s string) *STRONGElement {
 	if condition {
 		e.ROLE(s)
+	}
+	return e
+}
+
+func (e *STRONGElement) IfROLEF(condition bool, format string, args ...any) *STRONGElement {
+	if condition {
+		e.ROLE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1112,6 +1243,10 @@ func (e *STRONGElement) ROLERemove(s string) *STRONGElement {
 	}
 	e.StringAttributes.Del("role")
 	return e
+}
+
+func (e *STRONGElement) ROLERemoveF(format string, args ...any) *STRONGElement {
+	return e.ROLERemove(fmt.Sprintf(format, args...))
 }
 
 // The slot global attribute assigns a slot in a shadow DOM shadow tree to an
@@ -1126,9 +1261,20 @@ func (e *STRONGElement) SLOT(s string) *STRONGElement {
 	return e
 }
 
+func (e *STRONGElement) SLOTF(format string, args ...any) *STRONGElement {
+	return e.SLOT(fmt.Sprintf(format, args...))
+}
+
 func (e *STRONGElement) IfSLOT(condition bool, s string) *STRONGElement {
 	if condition {
 		e.SLOT(s)
+	}
+	return e
+}
+
+func (e *STRONGElement) IfSLOTF(condition bool, format string, args ...any) *STRONGElement {
+	if condition {
+		e.SLOT(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1140,6 +1286,10 @@ func (e *STRONGElement) SLOTRemove(s string) *STRONGElement {
 	}
 	e.StringAttributes.Del("slot")
 	return e
+}
+
+func (e *STRONGElement) SLOTRemoveF(format string, args ...any) *STRONGElement {
+	return e.SLOTRemove(fmt.Sprintf(format, args...))
 }
 
 // The spellcheck global attribute is an enumerated attribute that defines whether
@@ -1344,9 +1494,20 @@ func (e *STRONGElement) TITLE(s string) *STRONGElement {
 	return e
 }
 
+func (e *STRONGElement) TITLEF(format string, args ...any) *STRONGElement {
+	return e.TITLE(fmt.Sprintf(format, args...))
+}
+
 func (e *STRONGElement) IfTITLE(condition bool, s string) *STRONGElement {
 	if condition {
 		e.TITLE(s)
+	}
+	return e
+}
+
+func (e *STRONGElement) IfTITLEF(condition bool, format string, args ...any) *STRONGElement {
+	if condition {
+		e.TITLE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1358,6 +1519,10 @@ func (e *STRONGElement) TITLERemove(s string) *STRONGElement {
 	}
 	e.StringAttributes.Del("title")
 	return e
+}
+
+func (e *STRONGElement) TITLERemoveF(format string, args ...any) *STRONGElement {
+	return e.TITLERemove(fmt.Sprintf(format, args...))
 }
 
 // The translate global attribute is an enumerated attribute that is used to
@@ -1402,7 +1567,7 @@ func (e *STRONGElement) DATASTAR_MERGE_STORE(v any) *STRONGElement {
 	if err != nil {
 		panic(err)
 	}
-	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	e.CustomDataAttributes.Set("merge-store", string(b))
 	return e
 }
 
@@ -1524,34 +1689,34 @@ func (e *STRONGElement) DATASTAR_TEXTRemove() *STRONGElement {
 
 // Sets the event handler of the element
 
-type StrongDataOnMod customDataKeyModifier
+type StrongOnMod customDataKeyModifier
 
 // Debounces the event handler
-func StrongDataOnModDebounce(
+func StrongOnModDebounce(
 	d time.Duration,
-) StrongDataOnMod {
+) StrongOnMod {
 	return func() string {
 		return fmt.Sprintf("debounce_%dms", d.Milliseconds())
 	}
 }
 
 // Throttles the event handler
-func StrongDataOnModThrottle(
+func StrongOnModThrottle(
 	d time.Duration,
-) StrongDataOnMod {
+) StrongOnMod {
 	return func() string {
 		return fmt.Sprintf("throttle_%dms", d.Milliseconds())
 	}
 }
 
-func (e *STRONGElement) DATASTAR_ON(key string, expression string, modifiers ...StrongDataOnMod) *STRONGElement {
+func (e *STRONGElement) DATASTAR_ON(key string, expression string, modifiers ...StrongOnMod) *STRONGElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
 	key = fmt.Sprintf("data-on-%s", key)
 
-	customMods := lo.Map(modifiers, func(m StrongDataOnMod, i int) customDataKeyModifier {
+	customMods := lo.Map(modifiers, func(m StrongOnMod, i int) customDataKeyModifier {
 		return customDataKeyModifier(m)
 	})
 	key = customDataKey(key, customMods...)
@@ -1559,7 +1724,7 @@ func (e *STRONGElement) DATASTAR_ON(key string, expression string, modifiers ...
 	return e
 }
 
-func (e *STRONGElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...StrongDataOnMod) *STRONGElement {
+func (e *STRONGElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...StrongOnMod) *STRONGElement {
 	if condition {
 		e.DATASTAR_ON(key, expression, modifiers...)
 	}
@@ -1652,7 +1817,7 @@ func (e *STRONGElement) DATASTAR_FETCH_INDICATOR(expression string) *STRONGEleme
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "DatastarFetchIndicator"
+	key := "data-fetch-indicator"
 
 	e.StringAttributes.Set(key, expression)
 	return e
@@ -1670,7 +1835,7 @@ func (e *STRONGElement) DATASTAR_FETCH_INDICATORRemove() *STRONGElement {
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("DatastarFetchIndicator")
+	e.StringAttributes.Del("data-fetch-indicator")
 	return e
 }
 

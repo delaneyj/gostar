@@ -608,9 +608,20 @@ func (e *SUBElement) ID(s string) *SUBElement {
 	return e
 }
 
+func (e *SUBElement) IDF(format string, args ...any) *SUBElement {
+	return e.ID(fmt.Sprintf(format, args...))
+}
+
 func (e *SUBElement) IfID(condition bool, s string) *SUBElement {
 	if condition {
 		e.ID(s)
+	}
+	return e
+}
+
+func (e *SUBElement) IfIDF(condition bool, format string, args ...any) *SUBElement {
+	if condition {
+		e.ID(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -622,6 +633,10 @@ func (e *SUBElement) IDRemove(s string) *SUBElement {
 	}
 	e.StringAttributes.Del("id")
 	return e
+}
+
+func (e *SUBElement) IDRemoveF(format string, args ...any) *SUBElement {
+	return e.IDRemove(fmt.Sprintf(format, args...))
 }
 
 // The inert global attribute is a Boolean attribute indicating that the browser
@@ -756,9 +771,20 @@ func (e *SUBElement) IS(s string) *SUBElement {
 	return e
 }
 
+func (e *SUBElement) ISF(format string, args ...any) *SUBElement {
+	return e.IS(fmt.Sprintf(format, args...))
+}
+
 func (e *SUBElement) IfIS(condition bool, s string) *SUBElement {
 	if condition {
 		e.IS(s)
+	}
+	return e
+}
+
+func (e *SUBElement) IfISF(condition bool, format string, args ...any) *SUBElement {
+	if condition {
+		e.IS(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -770,6 +796,10 @@ func (e *SUBElement) ISRemove(s string) *SUBElement {
 	}
 	e.StringAttributes.Del("is")
 	return e
+}
+
+func (e *SUBElement) ISRemoveF(format string, args ...any) *SUBElement {
+	return e.ISRemove(fmt.Sprintf(format, args...))
 }
 
 // The itemid global attribute provides microdata in the form of a unique, global
@@ -793,9 +823,20 @@ func (e *SUBElement) ITEMID(s string) *SUBElement {
 	return e
 }
 
+func (e *SUBElement) ITEMIDF(format string, args ...any) *SUBElement {
+	return e.ITEMID(fmt.Sprintf(format, args...))
+}
+
 func (e *SUBElement) IfITEMID(condition bool, s string) *SUBElement {
 	if condition {
 		e.ITEMID(s)
+	}
+	return e
+}
+
+func (e *SUBElement) IfITEMIDF(condition bool, format string, args ...any) *SUBElement {
+	if condition {
+		e.ITEMID(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -807,6 +848,10 @@ func (e *SUBElement) ITEMIDRemove(s string) *SUBElement {
 	}
 	e.StringAttributes.Del("itemid")
 	return e
+}
+
+func (e *SUBElement) ITEMIDRemoveF(format string, args ...any) *SUBElement {
+	return e.ITEMIDRemove(fmt.Sprintf(format, args...))
 }
 
 // The itemprop global attribute is used to add properties to an item
@@ -825,9 +870,20 @@ func (e *SUBElement) ITEMPROP(s string) *SUBElement {
 	return e
 }
 
+func (e *SUBElement) ITEMPROPF(format string, args ...any) *SUBElement {
+	return e.ITEMPROP(fmt.Sprintf(format, args...))
+}
+
 func (e *SUBElement) IfITEMPROP(condition bool, s string) *SUBElement {
 	if condition {
 		e.ITEMPROP(s)
+	}
+	return e
+}
+
+func (e *SUBElement) IfITEMPROPF(condition bool, format string, args ...any) *SUBElement {
+	if condition {
+		e.ITEMPROP(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -839,6 +895,10 @@ func (e *SUBElement) ITEMPROPRemove(s string) *SUBElement {
 	}
 	e.StringAttributes.Del("itemprop")
 	return e
+}
+
+func (e *SUBElement) ITEMPROPRemoveF(format string, args ...any) *SUBElement {
+	return e.ITEMPROPRemove(fmt.Sprintf(format, args...))
 }
 
 // Properties that are not descendants of an element with the itemscope attribute
@@ -854,9 +914,20 @@ func (e *SUBElement) ITEMREF(s string) *SUBElement {
 	return e
 }
 
+func (e *SUBElement) ITEMREFF(format string, args ...any) *SUBElement {
+	return e.ITEMREF(fmt.Sprintf(format, args...))
+}
+
 func (e *SUBElement) IfITEMREF(condition bool, s string) *SUBElement {
 	if condition {
 		e.ITEMREF(s)
+	}
+	return e
+}
+
+func (e *SUBElement) IfITEMREFF(condition bool, format string, args ...any) *SUBElement {
+	if condition {
+		e.ITEMREF(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -868,6 +939,10 @@ func (e *SUBElement) ITEMREFRemove(s string) *SUBElement {
 	}
 	e.StringAttributes.Del("itemref")
 	return e
+}
+
+func (e *SUBElement) ITEMREFRemoveF(format string, args ...any) *SUBElement {
+	return e.ITEMREFRemove(fmt.Sprintf(format, args...))
 }
 
 // The itemscope global attribute is used to add an item to a microdata DOM tree
@@ -931,9 +1006,20 @@ func (e *SUBElement) ITEMTYPE(s string) *SUBElement {
 	return e
 }
 
+func (e *SUBElement) ITEMTYPEF(format string, args ...any) *SUBElement {
+	return e.ITEMTYPE(fmt.Sprintf(format, args...))
+}
+
 func (e *SUBElement) IfITEMTYPE(condition bool, s string) *SUBElement {
 	if condition {
 		e.ITEMTYPE(s)
+	}
+	return e
+}
+
+func (e *SUBElement) IfITEMTYPEF(condition bool, format string, args ...any) *SUBElement {
+	if condition {
+		e.ITEMTYPE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -945,6 +1031,10 @@ func (e *SUBElement) ITEMTYPERemove(s string) *SUBElement {
 	}
 	e.StringAttributes.Del("itemtype")
 	return e
+}
+
+func (e *SUBElement) ITEMTYPERemoveF(format string, args ...any) *SUBElement {
+	return e.ITEMTYPERemove(fmt.Sprintf(format, args...))
 }
 
 // The lang global attribute helps define the language of an element: the language
@@ -961,9 +1051,20 @@ func (e *SUBElement) LANG(s string) *SUBElement {
 	return e
 }
 
+func (e *SUBElement) LANGF(format string, args ...any) *SUBElement {
+	return e.LANG(fmt.Sprintf(format, args...))
+}
+
 func (e *SUBElement) IfLANG(condition bool, s string) *SUBElement {
 	if condition {
 		e.LANG(s)
+	}
+	return e
+}
+
+func (e *SUBElement) IfLANGF(condition bool, format string, args ...any) *SUBElement {
+	if condition {
+		e.LANG(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -975,6 +1076,10 @@ func (e *SUBElement) LANGRemove(s string) *SUBElement {
 	}
 	e.StringAttributes.Del("lang")
 	return e
+}
+
+func (e *SUBElement) LANGRemoveF(format string, args ...any) *SUBElement {
+	return e.LANGRemove(fmt.Sprintf(format, args...))
 }
 
 // The nonce global attribute is a unique identifier used to declare inline
@@ -989,9 +1094,20 @@ func (e *SUBElement) NONCE(s string) *SUBElement {
 	return e
 }
 
+func (e *SUBElement) NONCEF(format string, args ...any) *SUBElement {
+	return e.NONCE(fmt.Sprintf(format, args...))
+}
+
 func (e *SUBElement) IfNONCE(condition bool, s string) *SUBElement {
 	if condition {
 		e.NONCE(s)
+	}
+	return e
+}
+
+func (e *SUBElement) IfNONCEF(condition bool, format string, args ...any) *SUBElement {
+	if condition {
+		e.NONCE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1003,6 +1119,10 @@ func (e *SUBElement) NONCERemove(s string) *SUBElement {
 	}
 	e.StringAttributes.Del("nonce")
 	return e
+}
+
+func (e *SUBElement) NONCERemoveF(format string, args ...any) *SUBElement {
+	return e.NONCERemove(fmt.Sprintf(format, args...))
 }
 
 // The part global attribute contains a space-separated list of the part names of
@@ -1097,9 +1217,20 @@ func (e *SUBElement) ROLE(s string) *SUBElement {
 	return e
 }
 
+func (e *SUBElement) ROLEF(format string, args ...any) *SUBElement {
+	return e.ROLE(fmt.Sprintf(format, args...))
+}
+
 func (e *SUBElement) IfROLE(condition bool, s string) *SUBElement {
 	if condition {
 		e.ROLE(s)
+	}
+	return e
+}
+
+func (e *SUBElement) IfROLEF(condition bool, format string, args ...any) *SUBElement {
+	if condition {
+		e.ROLE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1111,6 +1242,10 @@ func (e *SUBElement) ROLERemove(s string) *SUBElement {
 	}
 	e.StringAttributes.Del("role")
 	return e
+}
+
+func (e *SUBElement) ROLERemoveF(format string, args ...any) *SUBElement {
+	return e.ROLERemove(fmt.Sprintf(format, args...))
 }
 
 // The slot global attribute assigns a slot in a shadow DOM shadow tree to an
@@ -1125,9 +1260,20 @@ func (e *SUBElement) SLOT(s string) *SUBElement {
 	return e
 }
 
+func (e *SUBElement) SLOTF(format string, args ...any) *SUBElement {
+	return e.SLOT(fmt.Sprintf(format, args...))
+}
+
 func (e *SUBElement) IfSLOT(condition bool, s string) *SUBElement {
 	if condition {
 		e.SLOT(s)
+	}
+	return e
+}
+
+func (e *SUBElement) IfSLOTF(condition bool, format string, args ...any) *SUBElement {
+	if condition {
+		e.SLOT(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1139,6 +1285,10 @@ func (e *SUBElement) SLOTRemove(s string) *SUBElement {
 	}
 	e.StringAttributes.Del("slot")
 	return e
+}
+
+func (e *SUBElement) SLOTRemoveF(format string, args ...any) *SUBElement {
+	return e.SLOTRemove(fmt.Sprintf(format, args...))
 }
 
 // The spellcheck global attribute is an enumerated attribute that defines whether
@@ -1343,9 +1493,20 @@ func (e *SUBElement) TITLE(s string) *SUBElement {
 	return e
 }
 
+func (e *SUBElement) TITLEF(format string, args ...any) *SUBElement {
+	return e.TITLE(fmt.Sprintf(format, args...))
+}
+
 func (e *SUBElement) IfTITLE(condition bool, s string) *SUBElement {
 	if condition {
 		e.TITLE(s)
+	}
+	return e
+}
+
+func (e *SUBElement) IfTITLEF(condition bool, format string, args ...any) *SUBElement {
+	if condition {
+		e.TITLE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1357,6 +1518,10 @@ func (e *SUBElement) TITLERemove(s string) *SUBElement {
 	}
 	e.StringAttributes.Del("title")
 	return e
+}
+
+func (e *SUBElement) TITLERemoveF(format string, args ...any) *SUBElement {
+	return e.TITLERemove(fmt.Sprintf(format, args...))
 }
 
 // The translate global attribute is an enumerated attribute that is used to
@@ -1401,7 +1566,7 @@ func (e *SUBElement) DATASTAR_MERGE_STORE(v any) *SUBElement {
 	if err != nil {
 		panic(err)
 	}
-	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	e.CustomDataAttributes.Set("merge-store", string(b))
 	return e
 }
 
@@ -1523,34 +1688,34 @@ func (e *SUBElement) DATASTAR_TEXTRemove() *SUBElement {
 
 // Sets the event handler of the element
 
-type SubDataOnMod customDataKeyModifier
+type SubOnMod customDataKeyModifier
 
 // Debounces the event handler
-func SubDataOnModDebounce(
+func SubOnModDebounce(
 	d time.Duration,
-) SubDataOnMod {
+) SubOnMod {
 	return func() string {
 		return fmt.Sprintf("debounce_%dms", d.Milliseconds())
 	}
 }
 
 // Throttles the event handler
-func SubDataOnModThrottle(
+func SubOnModThrottle(
 	d time.Duration,
-) SubDataOnMod {
+) SubOnMod {
 	return func() string {
 		return fmt.Sprintf("throttle_%dms", d.Milliseconds())
 	}
 }
 
-func (e *SUBElement) DATASTAR_ON(key string, expression string, modifiers ...SubDataOnMod) *SUBElement {
+func (e *SUBElement) DATASTAR_ON(key string, expression string, modifiers ...SubOnMod) *SUBElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
 	key = fmt.Sprintf("data-on-%s", key)
 
-	customMods := lo.Map(modifiers, func(m SubDataOnMod, i int) customDataKeyModifier {
+	customMods := lo.Map(modifiers, func(m SubOnMod, i int) customDataKeyModifier {
 		return customDataKeyModifier(m)
 	})
 	key = customDataKey(key, customMods...)
@@ -1558,7 +1723,7 @@ func (e *SUBElement) DATASTAR_ON(key string, expression string, modifiers ...Sub
 	return e
 }
 
-func (e *SUBElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SubDataOnMod) *SUBElement {
+func (e *SUBElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SubOnMod) *SUBElement {
 	if condition {
 		e.DATASTAR_ON(key, expression, modifiers...)
 	}
@@ -1651,7 +1816,7 @@ func (e *SUBElement) DATASTAR_FETCH_INDICATOR(expression string) *SUBElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "DatastarFetchIndicator"
+	key := "data-fetch-indicator"
 
 	e.StringAttributes.Set(key, expression)
 	return e
@@ -1669,7 +1834,7 @@ func (e *SUBElement) DATASTAR_FETCH_INDICATORRemove() *SUBElement {
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("DatastarFetchIndicator")
+	e.StringAttributes.Del("data-fetch-indicator")
 	return e
 }
 

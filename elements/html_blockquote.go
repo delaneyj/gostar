@@ -177,9 +177,20 @@ func (e *BLOCKQUOTEElement) CITE(s string) *BLOCKQUOTEElement {
 	return e
 }
 
+func (e *BLOCKQUOTEElement) CITEF(format string, args ...any) *BLOCKQUOTEElement {
+	return e.CITE(fmt.Sprintf(format, args...))
+}
+
 func (e *BLOCKQUOTEElement) IfCITE(condition bool, s string) *BLOCKQUOTEElement {
 	if condition {
 		e.CITE(s)
+	}
+	return e
+}
+
+func (e *BLOCKQUOTEElement) IfCITEF(condition bool, format string, args ...any) *BLOCKQUOTEElement {
+	if condition {
+		e.CITE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -191,6 +202,10 @@ func (e *BLOCKQUOTEElement) CITERemove(s string) *BLOCKQUOTEElement {
 	}
 	e.StringAttributes.Del("cite")
 	return e
+}
+
+func (e *BLOCKQUOTEElement) CITERemoveF(format string, args ...any) *BLOCKQUOTEElement {
+	return e.CITERemove(fmt.Sprintf(format, args...))
 }
 
 // The accesskey global attribute provides a hint for generating a keyboard
@@ -638,9 +653,20 @@ func (e *BLOCKQUOTEElement) ID(s string) *BLOCKQUOTEElement {
 	return e
 }
 
+func (e *BLOCKQUOTEElement) IDF(format string, args ...any) *BLOCKQUOTEElement {
+	return e.ID(fmt.Sprintf(format, args...))
+}
+
 func (e *BLOCKQUOTEElement) IfID(condition bool, s string) *BLOCKQUOTEElement {
 	if condition {
 		e.ID(s)
+	}
+	return e
+}
+
+func (e *BLOCKQUOTEElement) IfIDF(condition bool, format string, args ...any) *BLOCKQUOTEElement {
+	if condition {
+		e.ID(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -652,6 +678,10 @@ func (e *BLOCKQUOTEElement) IDRemove(s string) *BLOCKQUOTEElement {
 	}
 	e.StringAttributes.Del("id")
 	return e
+}
+
+func (e *BLOCKQUOTEElement) IDRemoveF(format string, args ...any) *BLOCKQUOTEElement {
+	return e.IDRemove(fmt.Sprintf(format, args...))
 }
 
 // The inert global attribute is a Boolean attribute indicating that the browser
@@ -786,9 +816,20 @@ func (e *BLOCKQUOTEElement) IS(s string) *BLOCKQUOTEElement {
 	return e
 }
 
+func (e *BLOCKQUOTEElement) ISF(format string, args ...any) *BLOCKQUOTEElement {
+	return e.IS(fmt.Sprintf(format, args...))
+}
+
 func (e *BLOCKQUOTEElement) IfIS(condition bool, s string) *BLOCKQUOTEElement {
 	if condition {
 		e.IS(s)
+	}
+	return e
+}
+
+func (e *BLOCKQUOTEElement) IfISF(condition bool, format string, args ...any) *BLOCKQUOTEElement {
+	if condition {
+		e.IS(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -800,6 +841,10 @@ func (e *BLOCKQUOTEElement) ISRemove(s string) *BLOCKQUOTEElement {
 	}
 	e.StringAttributes.Del("is")
 	return e
+}
+
+func (e *BLOCKQUOTEElement) ISRemoveF(format string, args ...any) *BLOCKQUOTEElement {
+	return e.ISRemove(fmt.Sprintf(format, args...))
 }
 
 // The itemid global attribute provides microdata in the form of a unique, global
@@ -823,9 +868,20 @@ func (e *BLOCKQUOTEElement) ITEMID(s string) *BLOCKQUOTEElement {
 	return e
 }
 
+func (e *BLOCKQUOTEElement) ITEMIDF(format string, args ...any) *BLOCKQUOTEElement {
+	return e.ITEMID(fmt.Sprintf(format, args...))
+}
+
 func (e *BLOCKQUOTEElement) IfITEMID(condition bool, s string) *BLOCKQUOTEElement {
 	if condition {
 		e.ITEMID(s)
+	}
+	return e
+}
+
+func (e *BLOCKQUOTEElement) IfITEMIDF(condition bool, format string, args ...any) *BLOCKQUOTEElement {
+	if condition {
+		e.ITEMID(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -837,6 +893,10 @@ func (e *BLOCKQUOTEElement) ITEMIDRemove(s string) *BLOCKQUOTEElement {
 	}
 	e.StringAttributes.Del("itemid")
 	return e
+}
+
+func (e *BLOCKQUOTEElement) ITEMIDRemoveF(format string, args ...any) *BLOCKQUOTEElement {
+	return e.ITEMIDRemove(fmt.Sprintf(format, args...))
 }
 
 // The itemprop global attribute is used to add properties to an item
@@ -855,9 +915,20 @@ func (e *BLOCKQUOTEElement) ITEMPROP(s string) *BLOCKQUOTEElement {
 	return e
 }
 
+func (e *BLOCKQUOTEElement) ITEMPROPF(format string, args ...any) *BLOCKQUOTEElement {
+	return e.ITEMPROP(fmt.Sprintf(format, args...))
+}
+
 func (e *BLOCKQUOTEElement) IfITEMPROP(condition bool, s string) *BLOCKQUOTEElement {
 	if condition {
 		e.ITEMPROP(s)
+	}
+	return e
+}
+
+func (e *BLOCKQUOTEElement) IfITEMPROPF(condition bool, format string, args ...any) *BLOCKQUOTEElement {
+	if condition {
+		e.ITEMPROP(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -869,6 +940,10 @@ func (e *BLOCKQUOTEElement) ITEMPROPRemove(s string) *BLOCKQUOTEElement {
 	}
 	e.StringAttributes.Del("itemprop")
 	return e
+}
+
+func (e *BLOCKQUOTEElement) ITEMPROPRemoveF(format string, args ...any) *BLOCKQUOTEElement {
+	return e.ITEMPROPRemove(fmt.Sprintf(format, args...))
 }
 
 // Properties that are not descendants of an element with the itemscope attribute
@@ -884,9 +959,20 @@ func (e *BLOCKQUOTEElement) ITEMREF(s string) *BLOCKQUOTEElement {
 	return e
 }
 
+func (e *BLOCKQUOTEElement) ITEMREFF(format string, args ...any) *BLOCKQUOTEElement {
+	return e.ITEMREF(fmt.Sprintf(format, args...))
+}
+
 func (e *BLOCKQUOTEElement) IfITEMREF(condition bool, s string) *BLOCKQUOTEElement {
 	if condition {
 		e.ITEMREF(s)
+	}
+	return e
+}
+
+func (e *BLOCKQUOTEElement) IfITEMREFF(condition bool, format string, args ...any) *BLOCKQUOTEElement {
+	if condition {
+		e.ITEMREF(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -898,6 +984,10 @@ func (e *BLOCKQUOTEElement) ITEMREFRemove(s string) *BLOCKQUOTEElement {
 	}
 	e.StringAttributes.Del("itemref")
 	return e
+}
+
+func (e *BLOCKQUOTEElement) ITEMREFRemoveF(format string, args ...any) *BLOCKQUOTEElement {
+	return e.ITEMREFRemove(fmt.Sprintf(format, args...))
 }
 
 // The itemscope global attribute is used to add an item to a microdata DOM tree
@@ -961,9 +1051,20 @@ func (e *BLOCKQUOTEElement) ITEMTYPE(s string) *BLOCKQUOTEElement {
 	return e
 }
 
+func (e *BLOCKQUOTEElement) ITEMTYPEF(format string, args ...any) *BLOCKQUOTEElement {
+	return e.ITEMTYPE(fmt.Sprintf(format, args...))
+}
+
 func (e *BLOCKQUOTEElement) IfITEMTYPE(condition bool, s string) *BLOCKQUOTEElement {
 	if condition {
 		e.ITEMTYPE(s)
+	}
+	return e
+}
+
+func (e *BLOCKQUOTEElement) IfITEMTYPEF(condition bool, format string, args ...any) *BLOCKQUOTEElement {
+	if condition {
+		e.ITEMTYPE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -975,6 +1076,10 @@ func (e *BLOCKQUOTEElement) ITEMTYPERemove(s string) *BLOCKQUOTEElement {
 	}
 	e.StringAttributes.Del("itemtype")
 	return e
+}
+
+func (e *BLOCKQUOTEElement) ITEMTYPERemoveF(format string, args ...any) *BLOCKQUOTEElement {
+	return e.ITEMTYPERemove(fmt.Sprintf(format, args...))
 }
 
 // The lang global attribute helps define the language of an element: the language
@@ -991,9 +1096,20 @@ func (e *BLOCKQUOTEElement) LANG(s string) *BLOCKQUOTEElement {
 	return e
 }
 
+func (e *BLOCKQUOTEElement) LANGF(format string, args ...any) *BLOCKQUOTEElement {
+	return e.LANG(fmt.Sprintf(format, args...))
+}
+
 func (e *BLOCKQUOTEElement) IfLANG(condition bool, s string) *BLOCKQUOTEElement {
 	if condition {
 		e.LANG(s)
+	}
+	return e
+}
+
+func (e *BLOCKQUOTEElement) IfLANGF(condition bool, format string, args ...any) *BLOCKQUOTEElement {
+	if condition {
+		e.LANG(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1005,6 +1121,10 @@ func (e *BLOCKQUOTEElement) LANGRemove(s string) *BLOCKQUOTEElement {
 	}
 	e.StringAttributes.Del("lang")
 	return e
+}
+
+func (e *BLOCKQUOTEElement) LANGRemoveF(format string, args ...any) *BLOCKQUOTEElement {
+	return e.LANGRemove(fmt.Sprintf(format, args...))
 }
 
 // The nonce global attribute is a unique identifier used to declare inline
@@ -1019,9 +1139,20 @@ func (e *BLOCKQUOTEElement) NONCE(s string) *BLOCKQUOTEElement {
 	return e
 }
 
+func (e *BLOCKQUOTEElement) NONCEF(format string, args ...any) *BLOCKQUOTEElement {
+	return e.NONCE(fmt.Sprintf(format, args...))
+}
+
 func (e *BLOCKQUOTEElement) IfNONCE(condition bool, s string) *BLOCKQUOTEElement {
 	if condition {
 		e.NONCE(s)
+	}
+	return e
+}
+
+func (e *BLOCKQUOTEElement) IfNONCEF(condition bool, format string, args ...any) *BLOCKQUOTEElement {
+	if condition {
+		e.NONCE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1033,6 +1164,10 @@ func (e *BLOCKQUOTEElement) NONCERemove(s string) *BLOCKQUOTEElement {
 	}
 	e.StringAttributes.Del("nonce")
 	return e
+}
+
+func (e *BLOCKQUOTEElement) NONCERemoveF(format string, args ...any) *BLOCKQUOTEElement {
+	return e.NONCERemove(fmt.Sprintf(format, args...))
 }
 
 // The part global attribute contains a space-separated list of the part names of
@@ -1127,9 +1262,20 @@ func (e *BLOCKQUOTEElement) ROLE(s string) *BLOCKQUOTEElement {
 	return e
 }
 
+func (e *BLOCKQUOTEElement) ROLEF(format string, args ...any) *BLOCKQUOTEElement {
+	return e.ROLE(fmt.Sprintf(format, args...))
+}
+
 func (e *BLOCKQUOTEElement) IfROLE(condition bool, s string) *BLOCKQUOTEElement {
 	if condition {
 		e.ROLE(s)
+	}
+	return e
+}
+
+func (e *BLOCKQUOTEElement) IfROLEF(condition bool, format string, args ...any) *BLOCKQUOTEElement {
+	if condition {
+		e.ROLE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1141,6 +1287,10 @@ func (e *BLOCKQUOTEElement) ROLERemove(s string) *BLOCKQUOTEElement {
 	}
 	e.StringAttributes.Del("role")
 	return e
+}
+
+func (e *BLOCKQUOTEElement) ROLERemoveF(format string, args ...any) *BLOCKQUOTEElement {
+	return e.ROLERemove(fmt.Sprintf(format, args...))
 }
 
 // The slot global attribute assigns a slot in a shadow DOM shadow tree to an
@@ -1155,9 +1305,20 @@ func (e *BLOCKQUOTEElement) SLOT(s string) *BLOCKQUOTEElement {
 	return e
 }
 
+func (e *BLOCKQUOTEElement) SLOTF(format string, args ...any) *BLOCKQUOTEElement {
+	return e.SLOT(fmt.Sprintf(format, args...))
+}
+
 func (e *BLOCKQUOTEElement) IfSLOT(condition bool, s string) *BLOCKQUOTEElement {
 	if condition {
 		e.SLOT(s)
+	}
+	return e
+}
+
+func (e *BLOCKQUOTEElement) IfSLOTF(condition bool, format string, args ...any) *BLOCKQUOTEElement {
+	if condition {
+		e.SLOT(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1169,6 +1330,10 @@ func (e *BLOCKQUOTEElement) SLOTRemove(s string) *BLOCKQUOTEElement {
 	}
 	e.StringAttributes.Del("slot")
 	return e
+}
+
+func (e *BLOCKQUOTEElement) SLOTRemoveF(format string, args ...any) *BLOCKQUOTEElement {
+	return e.SLOTRemove(fmt.Sprintf(format, args...))
 }
 
 // The spellcheck global attribute is an enumerated attribute that defines whether
@@ -1373,9 +1538,20 @@ func (e *BLOCKQUOTEElement) TITLE(s string) *BLOCKQUOTEElement {
 	return e
 }
 
+func (e *BLOCKQUOTEElement) TITLEF(format string, args ...any) *BLOCKQUOTEElement {
+	return e.TITLE(fmt.Sprintf(format, args...))
+}
+
 func (e *BLOCKQUOTEElement) IfTITLE(condition bool, s string) *BLOCKQUOTEElement {
 	if condition {
 		e.TITLE(s)
+	}
+	return e
+}
+
+func (e *BLOCKQUOTEElement) IfTITLEF(condition bool, format string, args ...any) *BLOCKQUOTEElement {
+	if condition {
+		e.TITLE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1387,6 +1563,10 @@ func (e *BLOCKQUOTEElement) TITLERemove(s string) *BLOCKQUOTEElement {
 	}
 	e.StringAttributes.Del("title")
 	return e
+}
+
+func (e *BLOCKQUOTEElement) TITLERemoveF(format string, args ...any) *BLOCKQUOTEElement {
+	return e.TITLERemove(fmt.Sprintf(format, args...))
 }
 
 // The translate global attribute is an enumerated attribute that is used to
@@ -1431,7 +1611,7 @@ func (e *BLOCKQUOTEElement) DATASTAR_MERGE_STORE(v any) *BLOCKQUOTEElement {
 	if err != nil {
 		panic(err)
 	}
-	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	e.CustomDataAttributes.Set("merge-store", string(b))
 	return e
 }
 
@@ -1553,34 +1733,34 @@ func (e *BLOCKQUOTEElement) DATASTAR_TEXTRemove() *BLOCKQUOTEElement {
 
 // Sets the event handler of the element
 
-type BlockquoteDataOnMod customDataKeyModifier
+type BlockquoteOnMod customDataKeyModifier
 
 // Debounces the event handler
-func BlockquoteDataOnModDebounce(
+func BlockquoteOnModDebounce(
 	d time.Duration,
-) BlockquoteDataOnMod {
+) BlockquoteOnMod {
 	return func() string {
 		return fmt.Sprintf("debounce_%dms", d.Milliseconds())
 	}
 }
 
 // Throttles the event handler
-func BlockquoteDataOnModThrottle(
+func BlockquoteOnModThrottle(
 	d time.Duration,
-) BlockquoteDataOnMod {
+) BlockquoteOnMod {
 	return func() string {
 		return fmt.Sprintf("throttle_%dms", d.Milliseconds())
 	}
 }
 
-func (e *BLOCKQUOTEElement) DATASTAR_ON(key string, expression string, modifiers ...BlockquoteDataOnMod) *BLOCKQUOTEElement {
+func (e *BLOCKQUOTEElement) DATASTAR_ON(key string, expression string, modifiers ...BlockquoteOnMod) *BLOCKQUOTEElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
 	key = fmt.Sprintf("data-on-%s", key)
 
-	customMods := lo.Map(modifiers, func(m BlockquoteDataOnMod, i int) customDataKeyModifier {
+	customMods := lo.Map(modifiers, func(m BlockquoteOnMod, i int) customDataKeyModifier {
 		return customDataKeyModifier(m)
 	})
 	key = customDataKey(key, customMods...)
@@ -1588,7 +1768,7 @@ func (e *BLOCKQUOTEElement) DATASTAR_ON(key string, expression string, modifiers
 	return e
 }
 
-func (e *BLOCKQUOTEElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...BlockquoteDataOnMod) *BLOCKQUOTEElement {
+func (e *BLOCKQUOTEElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...BlockquoteOnMod) *BLOCKQUOTEElement {
 	if condition {
 		e.DATASTAR_ON(key, expression, modifiers...)
 	}
@@ -1681,7 +1861,7 @@ func (e *BLOCKQUOTEElement) DATASTAR_FETCH_INDICATOR(expression string) *BLOCKQU
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "DatastarFetchIndicator"
+	key := "data-fetch-indicator"
 
 	e.StringAttributes.Set(key, expression)
 	return e
@@ -1699,7 +1879,7 @@ func (e *BLOCKQUOTEElement) DATASTAR_FETCH_INDICATORRemove() *BLOCKQUOTEElement 
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("DatastarFetchIndicator")
+	e.StringAttributes.Del("data-fetch-indicator")
 	return e
 }
 

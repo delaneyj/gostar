@@ -274,9 +274,20 @@ func (e *SVGRECTElement) ID(s string) *SVGRECTElement {
 	return e
 }
 
+func (e *SVGRECTElement) IDF(format string, args ...any) *SVGRECTElement {
+	return e.ID(fmt.Sprintf(format, args...))
+}
+
 func (e *SVGRECTElement) IfID(condition bool, s string) *SVGRECTElement {
 	if condition {
 		e.ID(s)
+	}
+	return e
+}
+
+func (e *SVGRECTElement) IfIDF(condition bool, format string, args ...any) *SVGRECTElement {
+	if condition {
+		e.ID(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -288,6 +299,10 @@ func (e *SVGRECTElement) IDRemove(s string) *SVGRECTElement {
 	}
 	e.StringAttributes.Del("id")
 	return e
+}
+
+func (e *SVGRECTElement) IDRemoveF(format string, args ...any) *SVGRECTElement {
+	return e.IDRemove(fmt.Sprintf(format, args...))
 }
 
 // Specifies one or more classnames for an element (refers to a class in a style
@@ -426,7 +441,7 @@ func (e *SVGRECTElement) DATASTAR_MERGE_STORE(v any) *SVGRECTElement {
 	if err != nil {
 		panic(err)
 	}
-	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	e.CustomDataAttributes.Set("merge-store", string(b))
 	return e
 }
 
@@ -548,34 +563,34 @@ func (e *SVGRECTElement) DATASTAR_TEXTRemove() *SVGRECTElement {
 
 // Sets the event handler of the element
 
-type SVGRectDataOnMod customDataKeyModifier
+type SVGRectOnMod customDataKeyModifier
 
 // Debounces the event handler
-func SVGRectDataOnModDebounce(
+func SVGRectOnModDebounce(
 	d time.Duration,
-) SVGRectDataOnMod {
+) SVGRectOnMod {
 	return func() string {
 		return fmt.Sprintf("debounce_%dms", d.Milliseconds())
 	}
 }
 
 // Throttles the event handler
-func SVGRectDataOnModThrottle(
+func SVGRectOnModThrottle(
 	d time.Duration,
-) SVGRectDataOnMod {
+) SVGRectOnMod {
 	return func() string {
 		return fmt.Sprintf("throttle_%dms", d.Milliseconds())
 	}
 }
 
-func (e *SVGRECTElement) DATASTAR_ON(key string, expression string, modifiers ...SVGRectDataOnMod) *SVGRECTElement {
+func (e *SVGRECTElement) DATASTAR_ON(key string, expression string, modifiers ...SVGRectOnMod) *SVGRECTElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
 	key = fmt.Sprintf("data-on-%s", key)
 
-	customMods := lo.Map(modifiers, func(m SVGRectDataOnMod, i int) customDataKeyModifier {
+	customMods := lo.Map(modifiers, func(m SVGRectOnMod, i int) customDataKeyModifier {
 		return customDataKeyModifier(m)
 	})
 	key = customDataKey(key, customMods...)
@@ -583,7 +598,7 @@ func (e *SVGRECTElement) DATASTAR_ON(key string, expression string, modifiers ..
 	return e
 }
 
-func (e *SVGRECTElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SVGRectDataOnMod) *SVGRECTElement {
+func (e *SVGRECTElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SVGRectOnMod) *SVGRECTElement {
 	if condition {
 		e.DATASTAR_ON(key, expression, modifiers...)
 	}
@@ -676,7 +691,7 @@ func (e *SVGRECTElement) DATASTAR_FETCH_INDICATOR(expression string) *SVGRECTEle
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "DatastarFetchIndicator"
+	key := "data-fetch-indicator"
 
 	e.StringAttributes.Set(key, expression)
 	return e
@@ -694,7 +709,7 @@ func (e *SVGRECTElement) DATASTAR_FETCH_INDICATORRemove() *SVGRECTElement {
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("DatastarFetchIndicator")
+	e.StringAttributes.Del("data-fetch-indicator")
 	return e
 }
 

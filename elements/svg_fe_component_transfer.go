@@ -174,9 +174,20 @@ func (e *SVGFECOMPONENTTRANSFERElement) IN(s string) *SVGFECOMPONENTTRANSFERElem
 	return e
 }
 
+func (e *SVGFECOMPONENTTRANSFERElement) INF(format string, args ...any) *SVGFECOMPONENTTRANSFERElement {
+	return e.IN(fmt.Sprintf(format, args...))
+}
+
 func (e *SVGFECOMPONENTTRANSFERElement) IfIN(condition bool, s string) *SVGFECOMPONENTTRANSFERElement {
 	if condition {
 		e.IN(s)
+	}
+	return e
+}
+
+func (e *SVGFECOMPONENTTRANSFERElement) IfINF(condition bool, format string, args ...any) *SVGFECOMPONENTTRANSFERElement {
+	if condition {
+		e.IN(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -190,6 +201,10 @@ func (e *SVGFECOMPONENTTRANSFERElement) INRemove(s string) *SVGFECOMPONENTTRANSF
 	return e
 }
 
+func (e *SVGFECOMPONENTTRANSFERElement) INRemoveF(format string, args ...any) *SVGFECOMPONENTTRANSFERElement {
+	return e.INRemove(fmt.Sprintf(format, args...))
+}
+
 // Specifies a unique id for an element
 func (e *SVGFECOMPONENTTRANSFERElement) ID(s string) *SVGFECOMPONENTTRANSFERElement {
 	if e.StringAttributes == nil {
@@ -199,9 +214,20 @@ func (e *SVGFECOMPONENTTRANSFERElement) ID(s string) *SVGFECOMPONENTTRANSFERElem
 	return e
 }
 
+func (e *SVGFECOMPONENTTRANSFERElement) IDF(format string, args ...any) *SVGFECOMPONENTTRANSFERElement {
+	return e.ID(fmt.Sprintf(format, args...))
+}
+
 func (e *SVGFECOMPONENTTRANSFERElement) IfID(condition bool, s string) *SVGFECOMPONENTTRANSFERElement {
 	if condition {
 		e.ID(s)
+	}
+	return e
+}
+
+func (e *SVGFECOMPONENTTRANSFERElement) IfIDF(condition bool, format string, args ...any) *SVGFECOMPONENTTRANSFERElement {
+	if condition {
+		e.ID(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -213,6 +239,10 @@ func (e *SVGFECOMPONENTTRANSFERElement) IDRemove(s string) *SVGFECOMPONENTTRANSF
 	}
 	e.StringAttributes.Del("id")
 	return e
+}
+
+func (e *SVGFECOMPONENTTRANSFERElement) IDRemoveF(format string, args ...any) *SVGFECOMPONENTTRANSFERElement {
+	return e.IDRemove(fmt.Sprintf(format, args...))
 }
 
 // Specifies one or more classnames for an element (refers to a class in a style
@@ -351,7 +381,7 @@ func (e *SVGFECOMPONENTTRANSFERElement) DATASTAR_MERGE_STORE(v any) *SVGFECOMPON
 	if err != nil {
 		panic(err)
 	}
-	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	e.CustomDataAttributes.Set("merge-store", string(b))
 	return e
 }
 
@@ -473,34 +503,34 @@ func (e *SVGFECOMPONENTTRANSFERElement) DATASTAR_TEXTRemove() *SVGFECOMPONENTTRA
 
 // Sets the event handler of the element
 
-type SVGFeComponentTransferDataOnMod customDataKeyModifier
+type SVGFeComponentTransferOnMod customDataKeyModifier
 
 // Debounces the event handler
-func SVGFeComponentTransferDataOnModDebounce(
+func SVGFeComponentTransferOnModDebounce(
 	d time.Duration,
-) SVGFeComponentTransferDataOnMod {
+) SVGFeComponentTransferOnMod {
 	return func() string {
 		return fmt.Sprintf("debounce_%dms", d.Milliseconds())
 	}
 }
 
 // Throttles the event handler
-func SVGFeComponentTransferDataOnModThrottle(
+func SVGFeComponentTransferOnModThrottle(
 	d time.Duration,
-) SVGFeComponentTransferDataOnMod {
+) SVGFeComponentTransferOnMod {
 	return func() string {
 		return fmt.Sprintf("throttle_%dms", d.Milliseconds())
 	}
 }
 
-func (e *SVGFECOMPONENTTRANSFERElement) DATASTAR_ON(key string, expression string, modifiers ...SVGFeComponentTransferDataOnMod) *SVGFECOMPONENTTRANSFERElement {
+func (e *SVGFECOMPONENTTRANSFERElement) DATASTAR_ON(key string, expression string, modifiers ...SVGFeComponentTransferOnMod) *SVGFECOMPONENTTRANSFERElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
 	key = fmt.Sprintf("data-on-%s", key)
 
-	customMods := lo.Map(modifiers, func(m SVGFeComponentTransferDataOnMod, i int) customDataKeyModifier {
+	customMods := lo.Map(modifiers, func(m SVGFeComponentTransferOnMod, i int) customDataKeyModifier {
 		return customDataKeyModifier(m)
 	})
 	key = customDataKey(key, customMods...)
@@ -508,7 +538,7 @@ func (e *SVGFECOMPONENTTRANSFERElement) DATASTAR_ON(key string, expression strin
 	return e
 }
 
-func (e *SVGFECOMPONENTTRANSFERElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SVGFeComponentTransferDataOnMod) *SVGFECOMPONENTTRANSFERElement {
+func (e *SVGFECOMPONENTTRANSFERElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SVGFeComponentTransferOnMod) *SVGFECOMPONENTTRANSFERElement {
 	if condition {
 		e.DATASTAR_ON(key, expression, modifiers...)
 	}
@@ -601,7 +631,7 @@ func (e *SVGFECOMPONENTTRANSFERElement) DATASTAR_FETCH_INDICATOR(expression stri
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "DatastarFetchIndicator"
+	key := "data-fetch-indicator"
 
 	e.StringAttributes.Set(key, expression)
 	return e
@@ -619,7 +649,7 @@ func (e *SVGFECOMPONENTTRANSFERElement) DATASTAR_FETCH_INDICATORRemove() *SVGFEC
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("DatastarFetchIndicator")
+	e.StringAttributes.Del("data-fetch-indicator")
 	return e
 }
 

@@ -610,9 +610,20 @@ func (e *SUMMARYElement) ID(s string) *SUMMARYElement {
 	return e
 }
 
+func (e *SUMMARYElement) IDF(format string, args ...any) *SUMMARYElement {
+	return e.ID(fmt.Sprintf(format, args...))
+}
+
 func (e *SUMMARYElement) IfID(condition bool, s string) *SUMMARYElement {
 	if condition {
 		e.ID(s)
+	}
+	return e
+}
+
+func (e *SUMMARYElement) IfIDF(condition bool, format string, args ...any) *SUMMARYElement {
+	if condition {
+		e.ID(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -624,6 +635,10 @@ func (e *SUMMARYElement) IDRemove(s string) *SUMMARYElement {
 	}
 	e.StringAttributes.Del("id")
 	return e
+}
+
+func (e *SUMMARYElement) IDRemoveF(format string, args ...any) *SUMMARYElement {
+	return e.IDRemove(fmt.Sprintf(format, args...))
 }
 
 // The inert global attribute is a Boolean attribute indicating that the browser
@@ -758,9 +773,20 @@ func (e *SUMMARYElement) IS(s string) *SUMMARYElement {
 	return e
 }
 
+func (e *SUMMARYElement) ISF(format string, args ...any) *SUMMARYElement {
+	return e.IS(fmt.Sprintf(format, args...))
+}
+
 func (e *SUMMARYElement) IfIS(condition bool, s string) *SUMMARYElement {
 	if condition {
 		e.IS(s)
+	}
+	return e
+}
+
+func (e *SUMMARYElement) IfISF(condition bool, format string, args ...any) *SUMMARYElement {
+	if condition {
+		e.IS(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -772,6 +798,10 @@ func (e *SUMMARYElement) ISRemove(s string) *SUMMARYElement {
 	}
 	e.StringAttributes.Del("is")
 	return e
+}
+
+func (e *SUMMARYElement) ISRemoveF(format string, args ...any) *SUMMARYElement {
+	return e.ISRemove(fmt.Sprintf(format, args...))
 }
 
 // The itemid global attribute provides microdata in the form of a unique, global
@@ -795,9 +825,20 @@ func (e *SUMMARYElement) ITEMID(s string) *SUMMARYElement {
 	return e
 }
 
+func (e *SUMMARYElement) ITEMIDF(format string, args ...any) *SUMMARYElement {
+	return e.ITEMID(fmt.Sprintf(format, args...))
+}
+
 func (e *SUMMARYElement) IfITEMID(condition bool, s string) *SUMMARYElement {
 	if condition {
 		e.ITEMID(s)
+	}
+	return e
+}
+
+func (e *SUMMARYElement) IfITEMIDF(condition bool, format string, args ...any) *SUMMARYElement {
+	if condition {
+		e.ITEMID(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -809,6 +850,10 @@ func (e *SUMMARYElement) ITEMIDRemove(s string) *SUMMARYElement {
 	}
 	e.StringAttributes.Del("itemid")
 	return e
+}
+
+func (e *SUMMARYElement) ITEMIDRemoveF(format string, args ...any) *SUMMARYElement {
+	return e.ITEMIDRemove(fmt.Sprintf(format, args...))
 }
 
 // The itemprop global attribute is used to add properties to an item
@@ -827,9 +872,20 @@ func (e *SUMMARYElement) ITEMPROP(s string) *SUMMARYElement {
 	return e
 }
 
+func (e *SUMMARYElement) ITEMPROPF(format string, args ...any) *SUMMARYElement {
+	return e.ITEMPROP(fmt.Sprintf(format, args...))
+}
+
 func (e *SUMMARYElement) IfITEMPROP(condition bool, s string) *SUMMARYElement {
 	if condition {
 		e.ITEMPROP(s)
+	}
+	return e
+}
+
+func (e *SUMMARYElement) IfITEMPROPF(condition bool, format string, args ...any) *SUMMARYElement {
+	if condition {
+		e.ITEMPROP(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -841,6 +897,10 @@ func (e *SUMMARYElement) ITEMPROPRemove(s string) *SUMMARYElement {
 	}
 	e.StringAttributes.Del("itemprop")
 	return e
+}
+
+func (e *SUMMARYElement) ITEMPROPRemoveF(format string, args ...any) *SUMMARYElement {
+	return e.ITEMPROPRemove(fmt.Sprintf(format, args...))
 }
 
 // Properties that are not descendants of an element with the itemscope attribute
@@ -856,9 +916,20 @@ func (e *SUMMARYElement) ITEMREF(s string) *SUMMARYElement {
 	return e
 }
 
+func (e *SUMMARYElement) ITEMREFF(format string, args ...any) *SUMMARYElement {
+	return e.ITEMREF(fmt.Sprintf(format, args...))
+}
+
 func (e *SUMMARYElement) IfITEMREF(condition bool, s string) *SUMMARYElement {
 	if condition {
 		e.ITEMREF(s)
+	}
+	return e
+}
+
+func (e *SUMMARYElement) IfITEMREFF(condition bool, format string, args ...any) *SUMMARYElement {
+	if condition {
+		e.ITEMREF(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -870,6 +941,10 @@ func (e *SUMMARYElement) ITEMREFRemove(s string) *SUMMARYElement {
 	}
 	e.StringAttributes.Del("itemref")
 	return e
+}
+
+func (e *SUMMARYElement) ITEMREFRemoveF(format string, args ...any) *SUMMARYElement {
+	return e.ITEMREFRemove(fmt.Sprintf(format, args...))
 }
 
 // The itemscope global attribute is used to add an item to a microdata DOM tree
@@ -933,9 +1008,20 @@ func (e *SUMMARYElement) ITEMTYPE(s string) *SUMMARYElement {
 	return e
 }
 
+func (e *SUMMARYElement) ITEMTYPEF(format string, args ...any) *SUMMARYElement {
+	return e.ITEMTYPE(fmt.Sprintf(format, args...))
+}
+
 func (e *SUMMARYElement) IfITEMTYPE(condition bool, s string) *SUMMARYElement {
 	if condition {
 		e.ITEMTYPE(s)
+	}
+	return e
+}
+
+func (e *SUMMARYElement) IfITEMTYPEF(condition bool, format string, args ...any) *SUMMARYElement {
+	if condition {
+		e.ITEMTYPE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -947,6 +1033,10 @@ func (e *SUMMARYElement) ITEMTYPERemove(s string) *SUMMARYElement {
 	}
 	e.StringAttributes.Del("itemtype")
 	return e
+}
+
+func (e *SUMMARYElement) ITEMTYPERemoveF(format string, args ...any) *SUMMARYElement {
+	return e.ITEMTYPERemove(fmt.Sprintf(format, args...))
 }
 
 // The lang global attribute helps define the language of an element: the language
@@ -963,9 +1053,20 @@ func (e *SUMMARYElement) LANG(s string) *SUMMARYElement {
 	return e
 }
 
+func (e *SUMMARYElement) LANGF(format string, args ...any) *SUMMARYElement {
+	return e.LANG(fmt.Sprintf(format, args...))
+}
+
 func (e *SUMMARYElement) IfLANG(condition bool, s string) *SUMMARYElement {
 	if condition {
 		e.LANG(s)
+	}
+	return e
+}
+
+func (e *SUMMARYElement) IfLANGF(condition bool, format string, args ...any) *SUMMARYElement {
+	if condition {
+		e.LANG(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -977,6 +1078,10 @@ func (e *SUMMARYElement) LANGRemove(s string) *SUMMARYElement {
 	}
 	e.StringAttributes.Del("lang")
 	return e
+}
+
+func (e *SUMMARYElement) LANGRemoveF(format string, args ...any) *SUMMARYElement {
+	return e.LANGRemove(fmt.Sprintf(format, args...))
 }
 
 // The nonce global attribute is a unique identifier used to declare inline
@@ -991,9 +1096,20 @@ func (e *SUMMARYElement) NONCE(s string) *SUMMARYElement {
 	return e
 }
 
+func (e *SUMMARYElement) NONCEF(format string, args ...any) *SUMMARYElement {
+	return e.NONCE(fmt.Sprintf(format, args...))
+}
+
 func (e *SUMMARYElement) IfNONCE(condition bool, s string) *SUMMARYElement {
 	if condition {
 		e.NONCE(s)
+	}
+	return e
+}
+
+func (e *SUMMARYElement) IfNONCEF(condition bool, format string, args ...any) *SUMMARYElement {
+	if condition {
+		e.NONCE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1005,6 +1121,10 @@ func (e *SUMMARYElement) NONCERemove(s string) *SUMMARYElement {
 	}
 	e.StringAttributes.Del("nonce")
 	return e
+}
+
+func (e *SUMMARYElement) NONCERemoveF(format string, args ...any) *SUMMARYElement {
+	return e.NONCERemove(fmt.Sprintf(format, args...))
 }
 
 // The part global attribute contains a space-separated list of the part names of
@@ -1099,9 +1219,20 @@ func (e *SUMMARYElement) ROLE(s string) *SUMMARYElement {
 	return e
 }
 
+func (e *SUMMARYElement) ROLEF(format string, args ...any) *SUMMARYElement {
+	return e.ROLE(fmt.Sprintf(format, args...))
+}
+
 func (e *SUMMARYElement) IfROLE(condition bool, s string) *SUMMARYElement {
 	if condition {
 		e.ROLE(s)
+	}
+	return e
+}
+
+func (e *SUMMARYElement) IfROLEF(condition bool, format string, args ...any) *SUMMARYElement {
+	if condition {
+		e.ROLE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1113,6 +1244,10 @@ func (e *SUMMARYElement) ROLERemove(s string) *SUMMARYElement {
 	}
 	e.StringAttributes.Del("role")
 	return e
+}
+
+func (e *SUMMARYElement) ROLERemoveF(format string, args ...any) *SUMMARYElement {
+	return e.ROLERemove(fmt.Sprintf(format, args...))
 }
 
 // The slot global attribute assigns a slot in a shadow DOM shadow tree to an
@@ -1127,9 +1262,20 @@ func (e *SUMMARYElement) SLOT(s string) *SUMMARYElement {
 	return e
 }
 
+func (e *SUMMARYElement) SLOTF(format string, args ...any) *SUMMARYElement {
+	return e.SLOT(fmt.Sprintf(format, args...))
+}
+
 func (e *SUMMARYElement) IfSLOT(condition bool, s string) *SUMMARYElement {
 	if condition {
 		e.SLOT(s)
+	}
+	return e
+}
+
+func (e *SUMMARYElement) IfSLOTF(condition bool, format string, args ...any) *SUMMARYElement {
+	if condition {
+		e.SLOT(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1141,6 +1287,10 @@ func (e *SUMMARYElement) SLOTRemove(s string) *SUMMARYElement {
 	}
 	e.StringAttributes.Del("slot")
 	return e
+}
+
+func (e *SUMMARYElement) SLOTRemoveF(format string, args ...any) *SUMMARYElement {
+	return e.SLOTRemove(fmt.Sprintf(format, args...))
 }
 
 // The spellcheck global attribute is an enumerated attribute that defines whether
@@ -1345,9 +1495,20 @@ func (e *SUMMARYElement) TITLE(s string) *SUMMARYElement {
 	return e
 }
 
+func (e *SUMMARYElement) TITLEF(format string, args ...any) *SUMMARYElement {
+	return e.TITLE(fmt.Sprintf(format, args...))
+}
+
 func (e *SUMMARYElement) IfTITLE(condition bool, s string) *SUMMARYElement {
 	if condition {
 		e.TITLE(s)
+	}
+	return e
+}
+
+func (e *SUMMARYElement) IfTITLEF(condition bool, format string, args ...any) *SUMMARYElement {
+	if condition {
+		e.TITLE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1359,6 +1520,10 @@ func (e *SUMMARYElement) TITLERemove(s string) *SUMMARYElement {
 	}
 	e.StringAttributes.Del("title")
 	return e
+}
+
+func (e *SUMMARYElement) TITLERemoveF(format string, args ...any) *SUMMARYElement {
+	return e.TITLERemove(fmt.Sprintf(format, args...))
 }
 
 // The translate global attribute is an enumerated attribute that is used to
@@ -1403,7 +1568,7 @@ func (e *SUMMARYElement) DATASTAR_MERGE_STORE(v any) *SUMMARYElement {
 	if err != nil {
 		panic(err)
 	}
-	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	e.CustomDataAttributes.Set("merge-store", string(b))
 	return e
 }
 
@@ -1525,34 +1690,34 @@ func (e *SUMMARYElement) DATASTAR_TEXTRemove() *SUMMARYElement {
 
 // Sets the event handler of the element
 
-type SummaryDataOnMod customDataKeyModifier
+type SummaryOnMod customDataKeyModifier
 
 // Debounces the event handler
-func SummaryDataOnModDebounce(
+func SummaryOnModDebounce(
 	d time.Duration,
-) SummaryDataOnMod {
+) SummaryOnMod {
 	return func() string {
 		return fmt.Sprintf("debounce_%dms", d.Milliseconds())
 	}
 }
 
 // Throttles the event handler
-func SummaryDataOnModThrottle(
+func SummaryOnModThrottle(
 	d time.Duration,
-) SummaryDataOnMod {
+) SummaryOnMod {
 	return func() string {
 		return fmt.Sprintf("throttle_%dms", d.Milliseconds())
 	}
 }
 
-func (e *SUMMARYElement) DATASTAR_ON(key string, expression string, modifiers ...SummaryDataOnMod) *SUMMARYElement {
+func (e *SUMMARYElement) DATASTAR_ON(key string, expression string, modifiers ...SummaryOnMod) *SUMMARYElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
 	key = fmt.Sprintf("data-on-%s", key)
 
-	customMods := lo.Map(modifiers, func(m SummaryDataOnMod, i int) customDataKeyModifier {
+	customMods := lo.Map(modifiers, func(m SummaryOnMod, i int) customDataKeyModifier {
 		return customDataKeyModifier(m)
 	})
 	key = customDataKey(key, customMods...)
@@ -1560,7 +1725,7 @@ func (e *SUMMARYElement) DATASTAR_ON(key string, expression string, modifiers ..
 	return e
 }
 
-func (e *SUMMARYElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SummaryDataOnMod) *SUMMARYElement {
+func (e *SUMMARYElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SummaryOnMod) *SUMMARYElement {
 	if condition {
 		e.DATASTAR_ON(key, expression, modifiers...)
 	}
@@ -1653,7 +1818,7 @@ func (e *SUMMARYElement) DATASTAR_FETCH_INDICATOR(expression string) *SUMMARYEle
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "DatastarFetchIndicator"
+	key := "data-fetch-indicator"
 
 	e.StringAttributes.Set(key, expression)
 	return e
@@ -1671,7 +1836,7 @@ func (e *SUMMARYElement) DATASTAR_FETCH_INDICATORRemove() *SUMMARYElement {
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("DatastarFetchIndicator")
+	e.StringAttributes.Del("data-fetch-indicator")
 	return e
 }
 

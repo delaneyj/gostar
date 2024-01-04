@@ -298,7 +298,7 @@ func (e *SLALERTElement) DATASTAR_MERGE_STORE(v any) *SLALERTElement {
 	if err != nil {
 		panic(err)
 	}
-	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	e.CustomDataAttributes.Set("merge-store", string(b))
 	return e
 }
 
@@ -420,34 +420,34 @@ func (e *SLALERTElement) DATASTAR_TEXTRemove() *SLALERTElement {
 
 // Sets the event handler of the element
 
-type SLAlertDataOnMod customDataKeyModifier
+type SLAlertOnMod customDataKeyModifier
 
 // Debounces the event handler
-func SLAlertDataOnModDebounce(
+func SLAlertOnModDebounce(
 	d time.Duration,
-) SLAlertDataOnMod {
+) SLAlertOnMod {
 	return func() string {
 		return fmt.Sprintf("debounce_%dms", d.Milliseconds())
 	}
 }
 
 // Throttles the event handler
-func SLAlertDataOnModThrottle(
+func SLAlertOnModThrottle(
 	d time.Duration,
-) SLAlertDataOnMod {
+) SLAlertOnMod {
 	return func() string {
 		return fmt.Sprintf("throttle_%dms", d.Milliseconds())
 	}
 }
 
-func (e *SLALERTElement) DATASTAR_ON(key string, expression string, modifiers ...SLAlertDataOnMod) *SLALERTElement {
+func (e *SLALERTElement) DATASTAR_ON(key string, expression string, modifiers ...SLAlertOnMod) *SLALERTElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
 	key = fmt.Sprintf("data-on-%s", key)
 
-	customMods := lo.Map(modifiers, func(m SLAlertDataOnMod, i int) customDataKeyModifier {
+	customMods := lo.Map(modifiers, func(m SLAlertOnMod, i int) customDataKeyModifier {
 		return customDataKeyModifier(m)
 	})
 	key = customDataKey(key, customMods...)
@@ -455,7 +455,7 @@ func (e *SLALERTElement) DATASTAR_ON(key string, expression string, modifiers ..
 	return e
 }
 
-func (e *SLALERTElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SLAlertDataOnMod) *SLALERTElement {
+func (e *SLALERTElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SLAlertOnMod) *SLALERTElement {
 	if condition {
 		e.DATASTAR_ON(key, expression, modifiers...)
 	}
@@ -548,7 +548,7 @@ func (e *SLALERTElement) DATASTAR_FETCH_INDICATOR(expression string) *SLALERTEle
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "DatastarFetchIndicator"
+	key := "data-fetch-indicator"
 
 	e.StringAttributes.Set(key, expression)
 	return e
@@ -566,7 +566,7 @@ func (e *SLALERTElement) DATASTAR_FETCH_INDICATORRemove() *SLALERTElement {
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("DatastarFetchIndicator")
+	e.StringAttributes.Del("data-fetch-indicator")
 	return e
 }
 

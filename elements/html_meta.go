@@ -171,9 +171,20 @@ func (e *METAElement) CHARSET(s string) *METAElement {
 	return e
 }
 
+func (e *METAElement) CHARSETF(format string, args ...any) *METAElement {
+	return e.CHARSET(fmt.Sprintf(format, args...))
+}
+
 func (e *METAElement) IfCHARSET(condition bool, s string) *METAElement {
 	if condition {
 		e.CHARSET(s)
+	}
+	return e
+}
+
+func (e *METAElement) IfCHARSETF(condition bool, format string, args ...any) *METAElement {
+	if condition {
+		e.CHARSET(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -187,6 +198,10 @@ func (e *METAElement) CHARSETRemove(s string) *METAElement {
 	return e
 }
 
+func (e *METAElement) CHARSETRemoveF(format string, args ...any) *METAElement {
+	return e.CHARSETRemove(fmt.Sprintf(format, args...))
+}
+
 // Gives the value associated with the http-equiv or name attribute.
 func (e *METAElement) CONTENT(s string) *METAElement {
 	if e.StringAttributes == nil {
@@ -196,9 +211,20 @@ func (e *METAElement) CONTENT(s string) *METAElement {
 	return e
 }
 
+func (e *METAElement) CONTENTF(format string, args ...any) *METAElement {
+	return e.CONTENT(fmt.Sprintf(format, args...))
+}
+
 func (e *METAElement) IfCONTENT(condition bool, s string) *METAElement {
 	if condition {
 		e.CONTENT(s)
+	}
+	return e
+}
+
+func (e *METAElement) IfCONTENTF(condition bool, format string, args ...any) *METAElement {
+	if condition {
+		e.CONTENT(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -212,6 +238,10 @@ func (e *METAElement) CONTENTRemove(s string) *METAElement {
 	return e
 }
 
+func (e *METAElement) CONTENTRemoveF(format string, args ...any) *METAElement {
+	return e.CONTENTRemove(fmt.Sprintf(format, args...))
+}
+
 // Provides an HTTP header for the information/value of the content attribute.
 func (e *METAElement) HTTP_EQUIV(s string) *METAElement {
 	if e.StringAttributes == nil {
@@ -221,9 +251,20 @@ func (e *METAElement) HTTP_EQUIV(s string) *METAElement {
 	return e
 }
 
+func (e *METAElement) HTTP_EQUIVF(format string, args ...any) *METAElement {
+	return e.HTTP_EQUIV(fmt.Sprintf(format, args...))
+}
+
 func (e *METAElement) IfHTTP_EQUIV(condition bool, s string) *METAElement {
 	if condition {
 		e.HTTP_EQUIV(s)
+	}
+	return e
+}
+
+func (e *METAElement) IfHTTP_EQUIVF(condition bool, format string, args ...any) *METAElement {
+	if condition {
+		e.HTTP_EQUIV(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -237,6 +278,10 @@ func (e *METAElement) HTTP_EQUIVRemove(s string) *METAElement {
 	return e
 }
 
+func (e *METAElement) HTTP_EQUIVRemoveF(format string, args ...any) *METAElement {
+	return e.HTTP_EQUIVRemove(fmt.Sprintf(format, args...))
+}
+
 // Specifies a name for the metadata.
 func (e *METAElement) NAME(s string) *METAElement {
 	if e.StringAttributes == nil {
@@ -246,9 +291,20 @@ func (e *METAElement) NAME(s string) *METAElement {
 	return e
 }
 
+func (e *METAElement) NAMEF(format string, args ...any) *METAElement {
+	return e.NAME(fmt.Sprintf(format, args...))
+}
+
 func (e *METAElement) IfNAME(condition bool, s string) *METAElement {
 	if condition {
 		e.NAME(s)
+	}
+	return e
+}
+
+func (e *METAElement) IfNAMEF(condition bool, format string, args ...any) *METAElement {
+	if condition {
+		e.NAME(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -260,6 +316,10 @@ func (e *METAElement) NAMERemove(s string) *METAElement {
 	}
 	e.StringAttributes.Del("name")
 	return e
+}
+
+func (e *METAElement) NAMERemoveF(format string, args ...any) *METAElement {
+	return e.NAMERemove(fmt.Sprintf(format, args...))
 }
 
 // The accesskey global attribute provides a hint for generating a keyboard
@@ -707,9 +767,20 @@ func (e *METAElement) ID(s string) *METAElement {
 	return e
 }
 
+func (e *METAElement) IDF(format string, args ...any) *METAElement {
+	return e.ID(fmt.Sprintf(format, args...))
+}
+
 func (e *METAElement) IfID(condition bool, s string) *METAElement {
 	if condition {
 		e.ID(s)
+	}
+	return e
+}
+
+func (e *METAElement) IfIDF(condition bool, format string, args ...any) *METAElement {
+	if condition {
+		e.ID(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -721,6 +792,10 @@ func (e *METAElement) IDRemove(s string) *METAElement {
 	}
 	e.StringAttributes.Del("id")
 	return e
+}
+
+func (e *METAElement) IDRemoveF(format string, args ...any) *METAElement {
+	return e.IDRemove(fmt.Sprintf(format, args...))
 }
 
 // The inert global attribute is a Boolean attribute indicating that the browser
@@ -855,9 +930,20 @@ func (e *METAElement) IS(s string) *METAElement {
 	return e
 }
 
+func (e *METAElement) ISF(format string, args ...any) *METAElement {
+	return e.IS(fmt.Sprintf(format, args...))
+}
+
 func (e *METAElement) IfIS(condition bool, s string) *METAElement {
 	if condition {
 		e.IS(s)
+	}
+	return e
+}
+
+func (e *METAElement) IfISF(condition bool, format string, args ...any) *METAElement {
+	if condition {
+		e.IS(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -869,6 +955,10 @@ func (e *METAElement) ISRemove(s string) *METAElement {
 	}
 	e.StringAttributes.Del("is")
 	return e
+}
+
+func (e *METAElement) ISRemoveF(format string, args ...any) *METAElement {
+	return e.ISRemove(fmt.Sprintf(format, args...))
 }
 
 // The itemid global attribute provides microdata in the form of a unique, global
@@ -892,9 +982,20 @@ func (e *METAElement) ITEMID(s string) *METAElement {
 	return e
 }
 
+func (e *METAElement) ITEMIDF(format string, args ...any) *METAElement {
+	return e.ITEMID(fmt.Sprintf(format, args...))
+}
+
 func (e *METAElement) IfITEMID(condition bool, s string) *METAElement {
 	if condition {
 		e.ITEMID(s)
+	}
+	return e
+}
+
+func (e *METAElement) IfITEMIDF(condition bool, format string, args ...any) *METAElement {
+	if condition {
+		e.ITEMID(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -906,6 +1007,10 @@ func (e *METAElement) ITEMIDRemove(s string) *METAElement {
 	}
 	e.StringAttributes.Del("itemid")
 	return e
+}
+
+func (e *METAElement) ITEMIDRemoveF(format string, args ...any) *METAElement {
+	return e.ITEMIDRemove(fmt.Sprintf(format, args...))
 }
 
 // The itemprop global attribute is used to add properties to an item
@@ -924,9 +1029,20 @@ func (e *METAElement) ITEMPROP(s string) *METAElement {
 	return e
 }
 
+func (e *METAElement) ITEMPROPF(format string, args ...any) *METAElement {
+	return e.ITEMPROP(fmt.Sprintf(format, args...))
+}
+
 func (e *METAElement) IfITEMPROP(condition bool, s string) *METAElement {
 	if condition {
 		e.ITEMPROP(s)
+	}
+	return e
+}
+
+func (e *METAElement) IfITEMPROPF(condition bool, format string, args ...any) *METAElement {
+	if condition {
+		e.ITEMPROP(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -938,6 +1054,10 @@ func (e *METAElement) ITEMPROPRemove(s string) *METAElement {
 	}
 	e.StringAttributes.Del("itemprop")
 	return e
+}
+
+func (e *METAElement) ITEMPROPRemoveF(format string, args ...any) *METAElement {
+	return e.ITEMPROPRemove(fmt.Sprintf(format, args...))
 }
 
 // Properties that are not descendants of an element with the itemscope attribute
@@ -953,9 +1073,20 @@ func (e *METAElement) ITEMREF(s string) *METAElement {
 	return e
 }
 
+func (e *METAElement) ITEMREFF(format string, args ...any) *METAElement {
+	return e.ITEMREF(fmt.Sprintf(format, args...))
+}
+
 func (e *METAElement) IfITEMREF(condition bool, s string) *METAElement {
 	if condition {
 		e.ITEMREF(s)
+	}
+	return e
+}
+
+func (e *METAElement) IfITEMREFF(condition bool, format string, args ...any) *METAElement {
+	if condition {
+		e.ITEMREF(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -967,6 +1098,10 @@ func (e *METAElement) ITEMREFRemove(s string) *METAElement {
 	}
 	e.StringAttributes.Del("itemref")
 	return e
+}
+
+func (e *METAElement) ITEMREFRemoveF(format string, args ...any) *METAElement {
+	return e.ITEMREFRemove(fmt.Sprintf(format, args...))
 }
 
 // The itemscope global attribute is used to add an item to a microdata DOM tree
@@ -1030,9 +1165,20 @@ func (e *METAElement) ITEMTYPE(s string) *METAElement {
 	return e
 }
 
+func (e *METAElement) ITEMTYPEF(format string, args ...any) *METAElement {
+	return e.ITEMTYPE(fmt.Sprintf(format, args...))
+}
+
 func (e *METAElement) IfITEMTYPE(condition bool, s string) *METAElement {
 	if condition {
 		e.ITEMTYPE(s)
+	}
+	return e
+}
+
+func (e *METAElement) IfITEMTYPEF(condition bool, format string, args ...any) *METAElement {
+	if condition {
+		e.ITEMTYPE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1044,6 +1190,10 @@ func (e *METAElement) ITEMTYPERemove(s string) *METAElement {
 	}
 	e.StringAttributes.Del("itemtype")
 	return e
+}
+
+func (e *METAElement) ITEMTYPERemoveF(format string, args ...any) *METAElement {
+	return e.ITEMTYPERemove(fmt.Sprintf(format, args...))
 }
 
 // The lang global attribute helps define the language of an element: the language
@@ -1060,9 +1210,20 @@ func (e *METAElement) LANG(s string) *METAElement {
 	return e
 }
 
+func (e *METAElement) LANGF(format string, args ...any) *METAElement {
+	return e.LANG(fmt.Sprintf(format, args...))
+}
+
 func (e *METAElement) IfLANG(condition bool, s string) *METAElement {
 	if condition {
 		e.LANG(s)
+	}
+	return e
+}
+
+func (e *METAElement) IfLANGF(condition bool, format string, args ...any) *METAElement {
+	if condition {
+		e.LANG(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1074,6 +1235,10 @@ func (e *METAElement) LANGRemove(s string) *METAElement {
 	}
 	e.StringAttributes.Del("lang")
 	return e
+}
+
+func (e *METAElement) LANGRemoveF(format string, args ...any) *METAElement {
+	return e.LANGRemove(fmt.Sprintf(format, args...))
 }
 
 // The nonce global attribute is a unique identifier used to declare inline
@@ -1088,9 +1253,20 @@ func (e *METAElement) NONCE(s string) *METAElement {
 	return e
 }
 
+func (e *METAElement) NONCEF(format string, args ...any) *METAElement {
+	return e.NONCE(fmt.Sprintf(format, args...))
+}
+
 func (e *METAElement) IfNONCE(condition bool, s string) *METAElement {
 	if condition {
 		e.NONCE(s)
+	}
+	return e
+}
+
+func (e *METAElement) IfNONCEF(condition bool, format string, args ...any) *METAElement {
+	if condition {
+		e.NONCE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1102,6 +1278,10 @@ func (e *METAElement) NONCERemove(s string) *METAElement {
 	}
 	e.StringAttributes.Del("nonce")
 	return e
+}
+
+func (e *METAElement) NONCERemoveF(format string, args ...any) *METAElement {
+	return e.NONCERemove(fmt.Sprintf(format, args...))
 }
 
 // The part global attribute contains a space-separated list of the part names of
@@ -1196,9 +1376,20 @@ func (e *METAElement) ROLE(s string) *METAElement {
 	return e
 }
 
+func (e *METAElement) ROLEF(format string, args ...any) *METAElement {
+	return e.ROLE(fmt.Sprintf(format, args...))
+}
+
 func (e *METAElement) IfROLE(condition bool, s string) *METAElement {
 	if condition {
 		e.ROLE(s)
+	}
+	return e
+}
+
+func (e *METAElement) IfROLEF(condition bool, format string, args ...any) *METAElement {
+	if condition {
+		e.ROLE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1210,6 +1401,10 @@ func (e *METAElement) ROLERemove(s string) *METAElement {
 	}
 	e.StringAttributes.Del("role")
 	return e
+}
+
+func (e *METAElement) ROLERemoveF(format string, args ...any) *METAElement {
+	return e.ROLERemove(fmt.Sprintf(format, args...))
 }
 
 // The slot global attribute assigns a slot in a shadow DOM shadow tree to an
@@ -1224,9 +1419,20 @@ func (e *METAElement) SLOT(s string) *METAElement {
 	return e
 }
 
+func (e *METAElement) SLOTF(format string, args ...any) *METAElement {
+	return e.SLOT(fmt.Sprintf(format, args...))
+}
+
 func (e *METAElement) IfSLOT(condition bool, s string) *METAElement {
 	if condition {
 		e.SLOT(s)
+	}
+	return e
+}
+
+func (e *METAElement) IfSLOTF(condition bool, format string, args ...any) *METAElement {
+	if condition {
+		e.SLOT(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1238,6 +1444,10 @@ func (e *METAElement) SLOTRemove(s string) *METAElement {
 	}
 	e.StringAttributes.Del("slot")
 	return e
+}
+
+func (e *METAElement) SLOTRemoveF(format string, args ...any) *METAElement {
+	return e.SLOTRemove(fmt.Sprintf(format, args...))
 }
 
 // The spellcheck global attribute is an enumerated attribute that defines whether
@@ -1442,9 +1652,20 @@ func (e *METAElement) TITLE(s string) *METAElement {
 	return e
 }
 
+func (e *METAElement) TITLEF(format string, args ...any) *METAElement {
+	return e.TITLE(fmt.Sprintf(format, args...))
+}
+
 func (e *METAElement) IfTITLE(condition bool, s string) *METAElement {
 	if condition {
 		e.TITLE(s)
+	}
+	return e
+}
+
+func (e *METAElement) IfTITLEF(condition bool, format string, args ...any) *METAElement {
+	if condition {
+		e.TITLE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1456,6 +1677,10 @@ func (e *METAElement) TITLERemove(s string) *METAElement {
 	}
 	e.StringAttributes.Del("title")
 	return e
+}
+
+func (e *METAElement) TITLERemoveF(format string, args ...any) *METAElement {
+	return e.TITLERemove(fmt.Sprintf(format, args...))
 }
 
 // The translate global attribute is an enumerated attribute that is used to
@@ -1500,7 +1725,7 @@ func (e *METAElement) DATASTAR_MERGE_STORE(v any) *METAElement {
 	if err != nil {
 		panic(err)
 	}
-	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	e.CustomDataAttributes.Set("merge-store", string(b))
 	return e
 }
 
@@ -1622,34 +1847,34 @@ func (e *METAElement) DATASTAR_TEXTRemove() *METAElement {
 
 // Sets the event handler of the element
 
-type MetaDataOnMod customDataKeyModifier
+type MetaOnMod customDataKeyModifier
 
 // Debounces the event handler
-func MetaDataOnModDebounce(
+func MetaOnModDebounce(
 	d time.Duration,
-) MetaDataOnMod {
+) MetaOnMod {
 	return func() string {
 		return fmt.Sprintf("debounce_%dms", d.Milliseconds())
 	}
 }
 
 // Throttles the event handler
-func MetaDataOnModThrottle(
+func MetaOnModThrottle(
 	d time.Duration,
-) MetaDataOnMod {
+) MetaOnMod {
 	return func() string {
 		return fmt.Sprintf("throttle_%dms", d.Milliseconds())
 	}
 }
 
-func (e *METAElement) DATASTAR_ON(key string, expression string, modifiers ...MetaDataOnMod) *METAElement {
+func (e *METAElement) DATASTAR_ON(key string, expression string, modifiers ...MetaOnMod) *METAElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
 	key = fmt.Sprintf("data-on-%s", key)
 
-	customMods := lo.Map(modifiers, func(m MetaDataOnMod, i int) customDataKeyModifier {
+	customMods := lo.Map(modifiers, func(m MetaOnMod, i int) customDataKeyModifier {
 		return customDataKeyModifier(m)
 	})
 	key = customDataKey(key, customMods...)
@@ -1657,7 +1882,7 @@ func (e *METAElement) DATASTAR_ON(key string, expression string, modifiers ...Me
 	return e
 }
 
-func (e *METAElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...MetaDataOnMod) *METAElement {
+func (e *METAElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...MetaOnMod) *METAElement {
 	if condition {
 		e.DATASTAR_ON(key, expression, modifiers...)
 	}
@@ -1750,7 +1975,7 @@ func (e *METAElement) DATASTAR_FETCH_INDICATOR(expression string) *METAElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "DatastarFetchIndicator"
+	key := "data-fetch-indicator"
 
 	e.StringAttributes.Set(key, expression)
 	return e
@@ -1768,7 +1993,7 @@ func (e *METAElement) DATASTAR_FETCH_INDICATORRemove() *METAElement {
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("DatastarFetchIndicator")
+	e.StringAttributes.Del("data-fetch-indicator")
 	return e
 }
 

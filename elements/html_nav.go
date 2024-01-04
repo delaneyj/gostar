@@ -611,9 +611,20 @@ func (e *NAVElement) ID(s string) *NAVElement {
 	return e
 }
 
+func (e *NAVElement) IDF(format string, args ...any) *NAVElement {
+	return e.ID(fmt.Sprintf(format, args...))
+}
+
 func (e *NAVElement) IfID(condition bool, s string) *NAVElement {
 	if condition {
 		e.ID(s)
+	}
+	return e
+}
+
+func (e *NAVElement) IfIDF(condition bool, format string, args ...any) *NAVElement {
+	if condition {
+		e.ID(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -625,6 +636,10 @@ func (e *NAVElement) IDRemove(s string) *NAVElement {
 	}
 	e.StringAttributes.Del("id")
 	return e
+}
+
+func (e *NAVElement) IDRemoveF(format string, args ...any) *NAVElement {
+	return e.IDRemove(fmt.Sprintf(format, args...))
 }
 
 // The inert global attribute is a Boolean attribute indicating that the browser
@@ -759,9 +774,20 @@ func (e *NAVElement) IS(s string) *NAVElement {
 	return e
 }
 
+func (e *NAVElement) ISF(format string, args ...any) *NAVElement {
+	return e.IS(fmt.Sprintf(format, args...))
+}
+
 func (e *NAVElement) IfIS(condition bool, s string) *NAVElement {
 	if condition {
 		e.IS(s)
+	}
+	return e
+}
+
+func (e *NAVElement) IfISF(condition bool, format string, args ...any) *NAVElement {
+	if condition {
+		e.IS(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -773,6 +799,10 @@ func (e *NAVElement) ISRemove(s string) *NAVElement {
 	}
 	e.StringAttributes.Del("is")
 	return e
+}
+
+func (e *NAVElement) ISRemoveF(format string, args ...any) *NAVElement {
+	return e.ISRemove(fmt.Sprintf(format, args...))
 }
 
 // The itemid global attribute provides microdata in the form of a unique, global
@@ -796,9 +826,20 @@ func (e *NAVElement) ITEMID(s string) *NAVElement {
 	return e
 }
 
+func (e *NAVElement) ITEMIDF(format string, args ...any) *NAVElement {
+	return e.ITEMID(fmt.Sprintf(format, args...))
+}
+
 func (e *NAVElement) IfITEMID(condition bool, s string) *NAVElement {
 	if condition {
 		e.ITEMID(s)
+	}
+	return e
+}
+
+func (e *NAVElement) IfITEMIDF(condition bool, format string, args ...any) *NAVElement {
+	if condition {
+		e.ITEMID(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -810,6 +851,10 @@ func (e *NAVElement) ITEMIDRemove(s string) *NAVElement {
 	}
 	e.StringAttributes.Del("itemid")
 	return e
+}
+
+func (e *NAVElement) ITEMIDRemoveF(format string, args ...any) *NAVElement {
+	return e.ITEMIDRemove(fmt.Sprintf(format, args...))
 }
 
 // The itemprop global attribute is used to add properties to an item
@@ -828,9 +873,20 @@ func (e *NAVElement) ITEMPROP(s string) *NAVElement {
 	return e
 }
 
+func (e *NAVElement) ITEMPROPF(format string, args ...any) *NAVElement {
+	return e.ITEMPROP(fmt.Sprintf(format, args...))
+}
+
 func (e *NAVElement) IfITEMPROP(condition bool, s string) *NAVElement {
 	if condition {
 		e.ITEMPROP(s)
+	}
+	return e
+}
+
+func (e *NAVElement) IfITEMPROPF(condition bool, format string, args ...any) *NAVElement {
+	if condition {
+		e.ITEMPROP(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -842,6 +898,10 @@ func (e *NAVElement) ITEMPROPRemove(s string) *NAVElement {
 	}
 	e.StringAttributes.Del("itemprop")
 	return e
+}
+
+func (e *NAVElement) ITEMPROPRemoveF(format string, args ...any) *NAVElement {
+	return e.ITEMPROPRemove(fmt.Sprintf(format, args...))
 }
 
 // Properties that are not descendants of an element with the itemscope attribute
@@ -857,9 +917,20 @@ func (e *NAVElement) ITEMREF(s string) *NAVElement {
 	return e
 }
 
+func (e *NAVElement) ITEMREFF(format string, args ...any) *NAVElement {
+	return e.ITEMREF(fmt.Sprintf(format, args...))
+}
+
 func (e *NAVElement) IfITEMREF(condition bool, s string) *NAVElement {
 	if condition {
 		e.ITEMREF(s)
+	}
+	return e
+}
+
+func (e *NAVElement) IfITEMREFF(condition bool, format string, args ...any) *NAVElement {
+	if condition {
+		e.ITEMREF(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -871,6 +942,10 @@ func (e *NAVElement) ITEMREFRemove(s string) *NAVElement {
 	}
 	e.StringAttributes.Del("itemref")
 	return e
+}
+
+func (e *NAVElement) ITEMREFRemoveF(format string, args ...any) *NAVElement {
+	return e.ITEMREFRemove(fmt.Sprintf(format, args...))
 }
 
 // The itemscope global attribute is used to add an item to a microdata DOM tree
@@ -934,9 +1009,20 @@ func (e *NAVElement) ITEMTYPE(s string) *NAVElement {
 	return e
 }
 
+func (e *NAVElement) ITEMTYPEF(format string, args ...any) *NAVElement {
+	return e.ITEMTYPE(fmt.Sprintf(format, args...))
+}
+
 func (e *NAVElement) IfITEMTYPE(condition bool, s string) *NAVElement {
 	if condition {
 		e.ITEMTYPE(s)
+	}
+	return e
+}
+
+func (e *NAVElement) IfITEMTYPEF(condition bool, format string, args ...any) *NAVElement {
+	if condition {
+		e.ITEMTYPE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -948,6 +1034,10 @@ func (e *NAVElement) ITEMTYPERemove(s string) *NAVElement {
 	}
 	e.StringAttributes.Del("itemtype")
 	return e
+}
+
+func (e *NAVElement) ITEMTYPERemoveF(format string, args ...any) *NAVElement {
+	return e.ITEMTYPERemove(fmt.Sprintf(format, args...))
 }
 
 // The lang global attribute helps define the language of an element: the language
@@ -964,9 +1054,20 @@ func (e *NAVElement) LANG(s string) *NAVElement {
 	return e
 }
 
+func (e *NAVElement) LANGF(format string, args ...any) *NAVElement {
+	return e.LANG(fmt.Sprintf(format, args...))
+}
+
 func (e *NAVElement) IfLANG(condition bool, s string) *NAVElement {
 	if condition {
 		e.LANG(s)
+	}
+	return e
+}
+
+func (e *NAVElement) IfLANGF(condition bool, format string, args ...any) *NAVElement {
+	if condition {
+		e.LANG(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -978,6 +1079,10 @@ func (e *NAVElement) LANGRemove(s string) *NAVElement {
 	}
 	e.StringAttributes.Del("lang")
 	return e
+}
+
+func (e *NAVElement) LANGRemoveF(format string, args ...any) *NAVElement {
+	return e.LANGRemove(fmt.Sprintf(format, args...))
 }
 
 // The nonce global attribute is a unique identifier used to declare inline
@@ -992,9 +1097,20 @@ func (e *NAVElement) NONCE(s string) *NAVElement {
 	return e
 }
 
+func (e *NAVElement) NONCEF(format string, args ...any) *NAVElement {
+	return e.NONCE(fmt.Sprintf(format, args...))
+}
+
 func (e *NAVElement) IfNONCE(condition bool, s string) *NAVElement {
 	if condition {
 		e.NONCE(s)
+	}
+	return e
+}
+
+func (e *NAVElement) IfNONCEF(condition bool, format string, args ...any) *NAVElement {
+	if condition {
+		e.NONCE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1006,6 +1122,10 @@ func (e *NAVElement) NONCERemove(s string) *NAVElement {
 	}
 	e.StringAttributes.Del("nonce")
 	return e
+}
+
+func (e *NAVElement) NONCERemoveF(format string, args ...any) *NAVElement {
+	return e.NONCERemove(fmt.Sprintf(format, args...))
 }
 
 // The part global attribute contains a space-separated list of the part names of
@@ -1100,9 +1220,20 @@ func (e *NAVElement) ROLE(s string) *NAVElement {
 	return e
 }
 
+func (e *NAVElement) ROLEF(format string, args ...any) *NAVElement {
+	return e.ROLE(fmt.Sprintf(format, args...))
+}
+
 func (e *NAVElement) IfROLE(condition bool, s string) *NAVElement {
 	if condition {
 		e.ROLE(s)
+	}
+	return e
+}
+
+func (e *NAVElement) IfROLEF(condition bool, format string, args ...any) *NAVElement {
+	if condition {
+		e.ROLE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1114,6 +1245,10 @@ func (e *NAVElement) ROLERemove(s string) *NAVElement {
 	}
 	e.StringAttributes.Del("role")
 	return e
+}
+
+func (e *NAVElement) ROLERemoveF(format string, args ...any) *NAVElement {
+	return e.ROLERemove(fmt.Sprintf(format, args...))
 }
 
 // The slot global attribute assigns a slot in a shadow DOM shadow tree to an
@@ -1128,9 +1263,20 @@ func (e *NAVElement) SLOT(s string) *NAVElement {
 	return e
 }
 
+func (e *NAVElement) SLOTF(format string, args ...any) *NAVElement {
+	return e.SLOT(fmt.Sprintf(format, args...))
+}
+
 func (e *NAVElement) IfSLOT(condition bool, s string) *NAVElement {
 	if condition {
 		e.SLOT(s)
+	}
+	return e
+}
+
+func (e *NAVElement) IfSLOTF(condition bool, format string, args ...any) *NAVElement {
+	if condition {
+		e.SLOT(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1142,6 +1288,10 @@ func (e *NAVElement) SLOTRemove(s string) *NAVElement {
 	}
 	e.StringAttributes.Del("slot")
 	return e
+}
+
+func (e *NAVElement) SLOTRemoveF(format string, args ...any) *NAVElement {
+	return e.SLOTRemove(fmt.Sprintf(format, args...))
 }
 
 // The spellcheck global attribute is an enumerated attribute that defines whether
@@ -1346,9 +1496,20 @@ func (e *NAVElement) TITLE(s string) *NAVElement {
 	return e
 }
 
+func (e *NAVElement) TITLEF(format string, args ...any) *NAVElement {
+	return e.TITLE(fmt.Sprintf(format, args...))
+}
+
 func (e *NAVElement) IfTITLE(condition bool, s string) *NAVElement {
 	if condition {
 		e.TITLE(s)
+	}
+	return e
+}
+
+func (e *NAVElement) IfTITLEF(condition bool, format string, args ...any) *NAVElement {
+	if condition {
+		e.TITLE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1360,6 +1521,10 @@ func (e *NAVElement) TITLERemove(s string) *NAVElement {
 	}
 	e.StringAttributes.Del("title")
 	return e
+}
+
+func (e *NAVElement) TITLERemoveF(format string, args ...any) *NAVElement {
+	return e.TITLERemove(fmt.Sprintf(format, args...))
 }
 
 // The translate global attribute is an enumerated attribute that is used to
@@ -1404,7 +1569,7 @@ func (e *NAVElement) DATASTAR_MERGE_STORE(v any) *NAVElement {
 	if err != nil {
 		panic(err)
 	}
-	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	e.CustomDataAttributes.Set("merge-store", string(b))
 	return e
 }
 
@@ -1526,34 +1691,34 @@ func (e *NAVElement) DATASTAR_TEXTRemove() *NAVElement {
 
 // Sets the event handler of the element
 
-type NavDataOnMod customDataKeyModifier
+type NavOnMod customDataKeyModifier
 
 // Debounces the event handler
-func NavDataOnModDebounce(
+func NavOnModDebounce(
 	d time.Duration,
-) NavDataOnMod {
+) NavOnMod {
 	return func() string {
 		return fmt.Sprintf("debounce_%dms", d.Milliseconds())
 	}
 }
 
 // Throttles the event handler
-func NavDataOnModThrottle(
+func NavOnModThrottle(
 	d time.Duration,
-) NavDataOnMod {
+) NavOnMod {
 	return func() string {
 		return fmt.Sprintf("throttle_%dms", d.Milliseconds())
 	}
 }
 
-func (e *NAVElement) DATASTAR_ON(key string, expression string, modifiers ...NavDataOnMod) *NAVElement {
+func (e *NAVElement) DATASTAR_ON(key string, expression string, modifiers ...NavOnMod) *NAVElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
 	key = fmt.Sprintf("data-on-%s", key)
 
-	customMods := lo.Map(modifiers, func(m NavDataOnMod, i int) customDataKeyModifier {
+	customMods := lo.Map(modifiers, func(m NavOnMod, i int) customDataKeyModifier {
 		return customDataKeyModifier(m)
 	})
 	key = customDataKey(key, customMods...)
@@ -1561,7 +1726,7 @@ func (e *NAVElement) DATASTAR_ON(key string, expression string, modifiers ...Nav
 	return e
 }
 
-func (e *NAVElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...NavDataOnMod) *NAVElement {
+func (e *NAVElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...NavOnMod) *NAVElement {
 	if condition {
 		e.DATASTAR_ON(key, expression, modifiers...)
 	}
@@ -1654,7 +1819,7 @@ func (e *NAVElement) DATASTAR_FETCH_INDICATOR(expression string) *NAVElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "DatastarFetchIndicator"
+	key := "data-fetch-indicator"
 
 	e.StringAttributes.Set(key, expression)
 	return e
@@ -1672,7 +1837,7 @@ func (e *NAVElement) DATASTAR_FETCH_INDICATORRemove() *NAVElement {
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("DatastarFetchIndicator")
+	e.StringAttributes.Del("data-fetch-indicator")
 	return e
 }
 

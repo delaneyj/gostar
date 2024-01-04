@@ -175,9 +175,20 @@ func (e *SVGFEMERGENODEElement) IN(s string) *SVGFEMERGENODEElement {
 	return e
 }
 
+func (e *SVGFEMERGENODEElement) INF(format string, args ...any) *SVGFEMERGENODEElement {
+	return e.IN(fmt.Sprintf(format, args...))
+}
+
 func (e *SVGFEMERGENODEElement) IfIN(condition bool, s string) *SVGFEMERGENODEElement {
 	if condition {
 		e.IN(s)
+	}
+	return e
+}
+
+func (e *SVGFEMERGENODEElement) IfINF(condition bool, format string, args ...any) *SVGFEMERGENODEElement {
+	if condition {
+		e.IN(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -191,6 +202,10 @@ func (e *SVGFEMERGENODEElement) INRemove(s string) *SVGFEMERGENODEElement {
 	return e
 }
 
+func (e *SVGFEMERGENODEElement) INRemoveF(format string, args ...any) *SVGFEMERGENODEElement {
+	return e.INRemove(fmt.Sprintf(format, args...))
+}
+
 // Specifies a unique id for an element
 func (e *SVGFEMERGENODEElement) ID(s string) *SVGFEMERGENODEElement {
 	if e.StringAttributes == nil {
@@ -200,9 +215,20 @@ func (e *SVGFEMERGENODEElement) ID(s string) *SVGFEMERGENODEElement {
 	return e
 }
 
+func (e *SVGFEMERGENODEElement) IDF(format string, args ...any) *SVGFEMERGENODEElement {
+	return e.ID(fmt.Sprintf(format, args...))
+}
+
 func (e *SVGFEMERGENODEElement) IfID(condition bool, s string) *SVGFEMERGENODEElement {
 	if condition {
 		e.ID(s)
+	}
+	return e
+}
+
+func (e *SVGFEMERGENODEElement) IfIDF(condition bool, format string, args ...any) *SVGFEMERGENODEElement {
+	if condition {
+		e.ID(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -214,6 +240,10 @@ func (e *SVGFEMERGENODEElement) IDRemove(s string) *SVGFEMERGENODEElement {
 	}
 	e.StringAttributes.Del("id")
 	return e
+}
+
+func (e *SVGFEMERGENODEElement) IDRemoveF(format string, args ...any) *SVGFEMERGENODEElement {
+	return e.IDRemove(fmt.Sprintf(format, args...))
 }
 
 // Specifies one or more classnames for an element (refers to a class in a style
@@ -352,7 +382,7 @@ func (e *SVGFEMERGENODEElement) DATASTAR_MERGE_STORE(v any) *SVGFEMERGENODEEleme
 	if err != nil {
 		panic(err)
 	}
-	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	e.CustomDataAttributes.Set("merge-store", string(b))
 	return e
 }
 
@@ -474,34 +504,34 @@ func (e *SVGFEMERGENODEElement) DATASTAR_TEXTRemove() *SVGFEMERGENODEElement {
 
 // Sets the event handler of the element
 
-type SVGFeMergeNodeDataOnMod customDataKeyModifier
+type SVGFeMergeNodeOnMod customDataKeyModifier
 
 // Debounces the event handler
-func SVGFeMergeNodeDataOnModDebounce(
+func SVGFeMergeNodeOnModDebounce(
 	d time.Duration,
-) SVGFeMergeNodeDataOnMod {
+) SVGFeMergeNodeOnMod {
 	return func() string {
 		return fmt.Sprintf("debounce_%dms", d.Milliseconds())
 	}
 }
 
 // Throttles the event handler
-func SVGFeMergeNodeDataOnModThrottle(
+func SVGFeMergeNodeOnModThrottle(
 	d time.Duration,
-) SVGFeMergeNodeDataOnMod {
+) SVGFeMergeNodeOnMod {
 	return func() string {
 		return fmt.Sprintf("throttle_%dms", d.Milliseconds())
 	}
 }
 
-func (e *SVGFEMERGENODEElement) DATASTAR_ON(key string, expression string, modifiers ...SVGFeMergeNodeDataOnMod) *SVGFEMERGENODEElement {
+func (e *SVGFEMERGENODEElement) DATASTAR_ON(key string, expression string, modifiers ...SVGFeMergeNodeOnMod) *SVGFEMERGENODEElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
 	key = fmt.Sprintf("data-on-%s", key)
 
-	customMods := lo.Map(modifiers, func(m SVGFeMergeNodeDataOnMod, i int) customDataKeyModifier {
+	customMods := lo.Map(modifiers, func(m SVGFeMergeNodeOnMod, i int) customDataKeyModifier {
 		return customDataKeyModifier(m)
 	})
 	key = customDataKey(key, customMods...)
@@ -509,7 +539,7 @@ func (e *SVGFEMERGENODEElement) DATASTAR_ON(key string, expression string, modif
 	return e
 }
 
-func (e *SVGFEMERGENODEElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SVGFeMergeNodeDataOnMod) *SVGFEMERGENODEElement {
+func (e *SVGFEMERGENODEElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SVGFeMergeNodeOnMod) *SVGFEMERGENODEElement {
 	if condition {
 		e.DATASTAR_ON(key, expression, modifiers...)
 	}
@@ -602,7 +632,7 @@ func (e *SVGFEMERGENODEElement) DATASTAR_FETCH_INDICATOR(expression string) *SVG
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "DatastarFetchIndicator"
+	key := "data-fetch-indicator"
 
 	e.StringAttributes.Set(key, expression)
 	return e
@@ -620,7 +650,7 @@ func (e *SVGFEMERGENODEElement) DATASTAR_FETCH_INDICATORRemove() *SVGFEMERGENODE
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("DatastarFetchIndicator")
+	e.StringAttributes.Del("data-fetch-indicator")
 	return e
 }
 

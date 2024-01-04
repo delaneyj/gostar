@@ -611,9 +611,20 @@ func (e *DIVElement) ID(s string) *DIVElement {
 	return e
 }
 
+func (e *DIVElement) IDF(format string, args ...any) *DIVElement {
+	return e.ID(fmt.Sprintf(format, args...))
+}
+
 func (e *DIVElement) IfID(condition bool, s string) *DIVElement {
 	if condition {
 		e.ID(s)
+	}
+	return e
+}
+
+func (e *DIVElement) IfIDF(condition bool, format string, args ...any) *DIVElement {
+	if condition {
+		e.ID(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -625,6 +636,10 @@ func (e *DIVElement) IDRemove(s string) *DIVElement {
 	}
 	e.StringAttributes.Del("id")
 	return e
+}
+
+func (e *DIVElement) IDRemoveF(format string, args ...any) *DIVElement {
+	return e.IDRemove(fmt.Sprintf(format, args...))
 }
 
 // The inert global attribute is a Boolean attribute indicating that the browser
@@ -759,9 +774,20 @@ func (e *DIVElement) IS(s string) *DIVElement {
 	return e
 }
 
+func (e *DIVElement) ISF(format string, args ...any) *DIVElement {
+	return e.IS(fmt.Sprintf(format, args...))
+}
+
 func (e *DIVElement) IfIS(condition bool, s string) *DIVElement {
 	if condition {
 		e.IS(s)
+	}
+	return e
+}
+
+func (e *DIVElement) IfISF(condition bool, format string, args ...any) *DIVElement {
+	if condition {
+		e.IS(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -773,6 +799,10 @@ func (e *DIVElement) ISRemove(s string) *DIVElement {
 	}
 	e.StringAttributes.Del("is")
 	return e
+}
+
+func (e *DIVElement) ISRemoveF(format string, args ...any) *DIVElement {
+	return e.ISRemove(fmt.Sprintf(format, args...))
 }
 
 // The itemid global attribute provides microdata in the form of a unique, global
@@ -796,9 +826,20 @@ func (e *DIVElement) ITEMID(s string) *DIVElement {
 	return e
 }
 
+func (e *DIVElement) ITEMIDF(format string, args ...any) *DIVElement {
+	return e.ITEMID(fmt.Sprintf(format, args...))
+}
+
 func (e *DIVElement) IfITEMID(condition bool, s string) *DIVElement {
 	if condition {
 		e.ITEMID(s)
+	}
+	return e
+}
+
+func (e *DIVElement) IfITEMIDF(condition bool, format string, args ...any) *DIVElement {
+	if condition {
+		e.ITEMID(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -810,6 +851,10 @@ func (e *DIVElement) ITEMIDRemove(s string) *DIVElement {
 	}
 	e.StringAttributes.Del("itemid")
 	return e
+}
+
+func (e *DIVElement) ITEMIDRemoveF(format string, args ...any) *DIVElement {
+	return e.ITEMIDRemove(fmt.Sprintf(format, args...))
 }
 
 // The itemprop global attribute is used to add properties to an item
@@ -828,9 +873,20 @@ func (e *DIVElement) ITEMPROP(s string) *DIVElement {
 	return e
 }
 
+func (e *DIVElement) ITEMPROPF(format string, args ...any) *DIVElement {
+	return e.ITEMPROP(fmt.Sprintf(format, args...))
+}
+
 func (e *DIVElement) IfITEMPROP(condition bool, s string) *DIVElement {
 	if condition {
 		e.ITEMPROP(s)
+	}
+	return e
+}
+
+func (e *DIVElement) IfITEMPROPF(condition bool, format string, args ...any) *DIVElement {
+	if condition {
+		e.ITEMPROP(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -842,6 +898,10 @@ func (e *DIVElement) ITEMPROPRemove(s string) *DIVElement {
 	}
 	e.StringAttributes.Del("itemprop")
 	return e
+}
+
+func (e *DIVElement) ITEMPROPRemoveF(format string, args ...any) *DIVElement {
+	return e.ITEMPROPRemove(fmt.Sprintf(format, args...))
 }
 
 // Properties that are not descendants of an element with the itemscope attribute
@@ -857,9 +917,20 @@ func (e *DIVElement) ITEMREF(s string) *DIVElement {
 	return e
 }
 
+func (e *DIVElement) ITEMREFF(format string, args ...any) *DIVElement {
+	return e.ITEMREF(fmt.Sprintf(format, args...))
+}
+
 func (e *DIVElement) IfITEMREF(condition bool, s string) *DIVElement {
 	if condition {
 		e.ITEMREF(s)
+	}
+	return e
+}
+
+func (e *DIVElement) IfITEMREFF(condition bool, format string, args ...any) *DIVElement {
+	if condition {
+		e.ITEMREF(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -871,6 +942,10 @@ func (e *DIVElement) ITEMREFRemove(s string) *DIVElement {
 	}
 	e.StringAttributes.Del("itemref")
 	return e
+}
+
+func (e *DIVElement) ITEMREFRemoveF(format string, args ...any) *DIVElement {
+	return e.ITEMREFRemove(fmt.Sprintf(format, args...))
 }
 
 // The itemscope global attribute is used to add an item to a microdata DOM tree
@@ -934,9 +1009,20 @@ func (e *DIVElement) ITEMTYPE(s string) *DIVElement {
 	return e
 }
 
+func (e *DIVElement) ITEMTYPEF(format string, args ...any) *DIVElement {
+	return e.ITEMTYPE(fmt.Sprintf(format, args...))
+}
+
 func (e *DIVElement) IfITEMTYPE(condition bool, s string) *DIVElement {
 	if condition {
 		e.ITEMTYPE(s)
+	}
+	return e
+}
+
+func (e *DIVElement) IfITEMTYPEF(condition bool, format string, args ...any) *DIVElement {
+	if condition {
+		e.ITEMTYPE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -948,6 +1034,10 @@ func (e *DIVElement) ITEMTYPERemove(s string) *DIVElement {
 	}
 	e.StringAttributes.Del("itemtype")
 	return e
+}
+
+func (e *DIVElement) ITEMTYPERemoveF(format string, args ...any) *DIVElement {
+	return e.ITEMTYPERemove(fmt.Sprintf(format, args...))
 }
 
 // The lang global attribute helps define the language of an element: the language
@@ -964,9 +1054,20 @@ func (e *DIVElement) LANG(s string) *DIVElement {
 	return e
 }
 
+func (e *DIVElement) LANGF(format string, args ...any) *DIVElement {
+	return e.LANG(fmt.Sprintf(format, args...))
+}
+
 func (e *DIVElement) IfLANG(condition bool, s string) *DIVElement {
 	if condition {
 		e.LANG(s)
+	}
+	return e
+}
+
+func (e *DIVElement) IfLANGF(condition bool, format string, args ...any) *DIVElement {
+	if condition {
+		e.LANG(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -978,6 +1079,10 @@ func (e *DIVElement) LANGRemove(s string) *DIVElement {
 	}
 	e.StringAttributes.Del("lang")
 	return e
+}
+
+func (e *DIVElement) LANGRemoveF(format string, args ...any) *DIVElement {
+	return e.LANGRemove(fmt.Sprintf(format, args...))
 }
 
 // The nonce global attribute is a unique identifier used to declare inline
@@ -992,9 +1097,20 @@ func (e *DIVElement) NONCE(s string) *DIVElement {
 	return e
 }
 
+func (e *DIVElement) NONCEF(format string, args ...any) *DIVElement {
+	return e.NONCE(fmt.Sprintf(format, args...))
+}
+
 func (e *DIVElement) IfNONCE(condition bool, s string) *DIVElement {
 	if condition {
 		e.NONCE(s)
+	}
+	return e
+}
+
+func (e *DIVElement) IfNONCEF(condition bool, format string, args ...any) *DIVElement {
+	if condition {
+		e.NONCE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1006,6 +1122,10 @@ func (e *DIVElement) NONCERemove(s string) *DIVElement {
 	}
 	e.StringAttributes.Del("nonce")
 	return e
+}
+
+func (e *DIVElement) NONCERemoveF(format string, args ...any) *DIVElement {
+	return e.NONCERemove(fmt.Sprintf(format, args...))
 }
 
 // The part global attribute contains a space-separated list of the part names of
@@ -1100,9 +1220,20 @@ func (e *DIVElement) ROLE(s string) *DIVElement {
 	return e
 }
 
+func (e *DIVElement) ROLEF(format string, args ...any) *DIVElement {
+	return e.ROLE(fmt.Sprintf(format, args...))
+}
+
 func (e *DIVElement) IfROLE(condition bool, s string) *DIVElement {
 	if condition {
 		e.ROLE(s)
+	}
+	return e
+}
+
+func (e *DIVElement) IfROLEF(condition bool, format string, args ...any) *DIVElement {
+	if condition {
+		e.ROLE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1114,6 +1245,10 @@ func (e *DIVElement) ROLERemove(s string) *DIVElement {
 	}
 	e.StringAttributes.Del("role")
 	return e
+}
+
+func (e *DIVElement) ROLERemoveF(format string, args ...any) *DIVElement {
+	return e.ROLERemove(fmt.Sprintf(format, args...))
 }
 
 // The slot global attribute assigns a slot in a shadow DOM shadow tree to an
@@ -1128,9 +1263,20 @@ func (e *DIVElement) SLOT(s string) *DIVElement {
 	return e
 }
 
+func (e *DIVElement) SLOTF(format string, args ...any) *DIVElement {
+	return e.SLOT(fmt.Sprintf(format, args...))
+}
+
 func (e *DIVElement) IfSLOT(condition bool, s string) *DIVElement {
 	if condition {
 		e.SLOT(s)
+	}
+	return e
+}
+
+func (e *DIVElement) IfSLOTF(condition bool, format string, args ...any) *DIVElement {
+	if condition {
+		e.SLOT(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1142,6 +1288,10 @@ func (e *DIVElement) SLOTRemove(s string) *DIVElement {
 	}
 	e.StringAttributes.Del("slot")
 	return e
+}
+
+func (e *DIVElement) SLOTRemoveF(format string, args ...any) *DIVElement {
+	return e.SLOTRemove(fmt.Sprintf(format, args...))
 }
 
 // The spellcheck global attribute is an enumerated attribute that defines whether
@@ -1346,9 +1496,20 @@ func (e *DIVElement) TITLE(s string) *DIVElement {
 	return e
 }
 
+func (e *DIVElement) TITLEF(format string, args ...any) *DIVElement {
+	return e.TITLE(fmt.Sprintf(format, args...))
+}
+
 func (e *DIVElement) IfTITLE(condition bool, s string) *DIVElement {
 	if condition {
 		e.TITLE(s)
+	}
+	return e
+}
+
+func (e *DIVElement) IfTITLEF(condition bool, format string, args ...any) *DIVElement {
+	if condition {
+		e.TITLE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1360,6 +1521,10 @@ func (e *DIVElement) TITLERemove(s string) *DIVElement {
 	}
 	e.StringAttributes.Del("title")
 	return e
+}
+
+func (e *DIVElement) TITLERemoveF(format string, args ...any) *DIVElement {
+	return e.TITLERemove(fmt.Sprintf(format, args...))
 }
 
 // The translate global attribute is an enumerated attribute that is used to
@@ -1404,7 +1569,7 @@ func (e *DIVElement) DATASTAR_MERGE_STORE(v any) *DIVElement {
 	if err != nil {
 		panic(err)
 	}
-	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	e.CustomDataAttributes.Set("merge-store", string(b))
 	return e
 }
 
@@ -1526,34 +1691,34 @@ func (e *DIVElement) DATASTAR_TEXTRemove() *DIVElement {
 
 // Sets the event handler of the element
 
-type DivDataOnMod customDataKeyModifier
+type DivOnMod customDataKeyModifier
 
 // Debounces the event handler
-func DivDataOnModDebounce(
+func DivOnModDebounce(
 	d time.Duration,
-) DivDataOnMod {
+) DivOnMod {
 	return func() string {
 		return fmt.Sprintf("debounce_%dms", d.Milliseconds())
 	}
 }
 
 // Throttles the event handler
-func DivDataOnModThrottle(
+func DivOnModThrottle(
 	d time.Duration,
-) DivDataOnMod {
+) DivOnMod {
 	return func() string {
 		return fmt.Sprintf("throttle_%dms", d.Milliseconds())
 	}
 }
 
-func (e *DIVElement) DATASTAR_ON(key string, expression string, modifiers ...DivDataOnMod) *DIVElement {
+func (e *DIVElement) DATASTAR_ON(key string, expression string, modifiers ...DivOnMod) *DIVElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
 	key = fmt.Sprintf("data-on-%s", key)
 
-	customMods := lo.Map(modifiers, func(m DivDataOnMod, i int) customDataKeyModifier {
+	customMods := lo.Map(modifiers, func(m DivOnMod, i int) customDataKeyModifier {
 		return customDataKeyModifier(m)
 	})
 	key = customDataKey(key, customMods...)
@@ -1561,7 +1726,7 @@ func (e *DIVElement) DATASTAR_ON(key string, expression string, modifiers ...Div
 	return e
 }
 
-func (e *DIVElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...DivDataOnMod) *DIVElement {
+func (e *DIVElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...DivOnMod) *DIVElement {
 	if condition {
 		e.DATASTAR_ON(key, expression, modifiers...)
 	}
@@ -1654,7 +1819,7 @@ func (e *DIVElement) DATASTAR_FETCH_INDICATOR(expression string) *DIVElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "DatastarFetchIndicator"
+	key := "data-fetch-indicator"
 
 	e.StringAttributes.Set(key, expression)
 	return e
@@ -1672,7 +1837,7 @@ func (e *DIVElement) DATASTAR_FETCH_INDICATORRemove() *DIVElement {
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("DatastarFetchIndicator")
+	e.StringAttributes.Del("data-fetch-indicator")
 	return e
 }
 

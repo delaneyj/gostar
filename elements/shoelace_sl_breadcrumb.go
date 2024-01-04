@@ -171,7 +171,7 @@ func (e *SLBREADCRUMBElement) DATASTAR_MERGE_STORE(v any) *SLBREADCRUMBElement {
 	if err != nil {
 		panic(err)
 	}
-	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	e.CustomDataAttributes.Set("merge-store", string(b))
 	return e
 }
 
@@ -293,34 +293,34 @@ func (e *SLBREADCRUMBElement) DATASTAR_TEXTRemove() *SLBREADCRUMBElement {
 
 // Sets the event handler of the element
 
-type SLBreadcrumbDataOnMod customDataKeyModifier
+type SLBreadcrumbOnMod customDataKeyModifier
 
 // Debounces the event handler
-func SLBreadcrumbDataOnModDebounce(
+func SLBreadcrumbOnModDebounce(
 	d time.Duration,
-) SLBreadcrumbDataOnMod {
+) SLBreadcrumbOnMod {
 	return func() string {
 		return fmt.Sprintf("debounce_%dms", d.Milliseconds())
 	}
 }
 
 // Throttles the event handler
-func SLBreadcrumbDataOnModThrottle(
+func SLBreadcrumbOnModThrottle(
 	d time.Duration,
-) SLBreadcrumbDataOnMod {
+) SLBreadcrumbOnMod {
 	return func() string {
 		return fmt.Sprintf("throttle_%dms", d.Milliseconds())
 	}
 }
 
-func (e *SLBREADCRUMBElement) DATASTAR_ON(key string, expression string, modifiers ...SLBreadcrumbDataOnMod) *SLBREADCRUMBElement {
+func (e *SLBREADCRUMBElement) DATASTAR_ON(key string, expression string, modifiers ...SLBreadcrumbOnMod) *SLBREADCRUMBElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
 	key = fmt.Sprintf("data-on-%s", key)
 
-	customMods := lo.Map(modifiers, func(m SLBreadcrumbDataOnMod, i int) customDataKeyModifier {
+	customMods := lo.Map(modifiers, func(m SLBreadcrumbOnMod, i int) customDataKeyModifier {
 		return customDataKeyModifier(m)
 	})
 	key = customDataKey(key, customMods...)
@@ -328,7 +328,7 @@ func (e *SLBREADCRUMBElement) DATASTAR_ON(key string, expression string, modifie
 	return e
 }
 
-func (e *SLBREADCRUMBElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SLBreadcrumbDataOnMod) *SLBREADCRUMBElement {
+func (e *SLBREADCRUMBElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SLBreadcrumbOnMod) *SLBREADCRUMBElement {
 	if condition {
 		e.DATASTAR_ON(key, expression, modifiers...)
 	}
@@ -421,7 +421,7 @@ func (e *SLBREADCRUMBElement) DATASTAR_FETCH_INDICATOR(expression string) *SLBRE
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "DatastarFetchIndicator"
+	key := "data-fetch-indicator"
 
 	e.StringAttributes.Set(key, expression)
 	return e
@@ -439,7 +439,7 @@ func (e *SLBREADCRUMBElement) DATASTAR_FETCH_INDICATORRemove() *SLBREADCRUMBElem
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("DatastarFetchIndicator")
+	e.StringAttributes.Del("data-fetch-indicator")
 	return e
 }
 

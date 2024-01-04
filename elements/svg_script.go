@@ -172,9 +172,20 @@ func (e *SVGSCRIPTElement) TYPE(s string) *SVGSCRIPTElement {
 	return e
 }
 
+func (e *SVGSCRIPTElement) TYPEF(format string, args ...any) *SVGSCRIPTElement {
+	return e.TYPE(fmt.Sprintf(format, args...))
+}
+
 func (e *SVGSCRIPTElement) IfTYPE(condition bool, s string) *SVGSCRIPTElement {
 	if condition {
 		e.TYPE(s)
+	}
+	return e
+}
+
+func (e *SVGSCRIPTElement) IfTYPEF(condition bool, format string, args ...any) *SVGSCRIPTElement {
+	if condition {
+		e.TYPE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -188,6 +199,10 @@ func (e *SVGSCRIPTElement) TYPERemove(s string) *SVGSCRIPTElement {
 	return e
 }
 
+func (e *SVGSCRIPTElement) TYPERemoveF(format string, args ...any) *SVGSCRIPTElement {
+	return e.TYPERemove(fmt.Sprintf(format, args...))
+}
+
 // A Uniform Resource Identifier (URI) reference that specifies the location of
 // the script to execute.
 func (e *SVGSCRIPTElement) HREF(s string) *SVGSCRIPTElement {
@@ -198,9 +213,20 @@ func (e *SVGSCRIPTElement) HREF(s string) *SVGSCRIPTElement {
 	return e
 }
 
+func (e *SVGSCRIPTElement) HREFF(format string, args ...any) *SVGSCRIPTElement {
+	return e.HREF(fmt.Sprintf(format, args...))
+}
+
 func (e *SVGSCRIPTElement) IfHREF(condition bool, s string) *SVGSCRIPTElement {
 	if condition {
 		e.HREF(s)
+	}
+	return e
+}
+
+func (e *SVGSCRIPTElement) IfHREFF(condition bool, format string, args ...any) *SVGSCRIPTElement {
+	if condition {
+		e.HREF(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -212,6 +238,10 @@ func (e *SVGSCRIPTElement) HREFRemove(s string) *SVGSCRIPTElement {
 	}
 	e.StringAttributes.Del("href")
 	return e
+}
+
+func (e *SVGSCRIPTElement) HREFRemoveF(format string, args ...any) *SVGSCRIPTElement {
+	return e.HREFRemove(fmt.Sprintf(format, args...))
 }
 
 // How the element handles crossorigin requests.
@@ -250,9 +280,20 @@ func (e *SVGSCRIPTElement) ID(s string) *SVGSCRIPTElement {
 	return e
 }
 
+func (e *SVGSCRIPTElement) IDF(format string, args ...any) *SVGSCRIPTElement {
+	return e.ID(fmt.Sprintf(format, args...))
+}
+
 func (e *SVGSCRIPTElement) IfID(condition bool, s string) *SVGSCRIPTElement {
 	if condition {
 		e.ID(s)
+	}
+	return e
+}
+
+func (e *SVGSCRIPTElement) IfIDF(condition bool, format string, args ...any) *SVGSCRIPTElement {
+	if condition {
+		e.ID(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -264,6 +305,10 @@ func (e *SVGSCRIPTElement) IDRemove(s string) *SVGSCRIPTElement {
 	}
 	e.StringAttributes.Del("id")
 	return e
+}
+
+func (e *SVGSCRIPTElement) IDRemoveF(format string, args ...any) *SVGSCRIPTElement {
+	return e.IDRemove(fmt.Sprintf(format, args...))
 }
 
 // Specifies one or more classnames for an element (refers to a class in a style
@@ -402,7 +447,7 @@ func (e *SVGSCRIPTElement) DATASTAR_MERGE_STORE(v any) *SVGSCRIPTElement {
 	if err != nil {
 		panic(err)
 	}
-	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	e.CustomDataAttributes.Set("merge-store", string(b))
 	return e
 }
 
@@ -524,34 +569,34 @@ func (e *SVGSCRIPTElement) DATASTAR_TEXTRemove() *SVGSCRIPTElement {
 
 // Sets the event handler of the element
 
-type SVGScriptDataOnMod customDataKeyModifier
+type SVGScriptOnMod customDataKeyModifier
 
 // Debounces the event handler
-func SVGScriptDataOnModDebounce(
+func SVGScriptOnModDebounce(
 	d time.Duration,
-) SVGScriptDataOnMod {
+) SVGScriptOnMod {
 	return func() string {
 		return fmt.Sprintf("debounce_%dms", d.Milliseconds())
 	}
 }
 
 // Throttles the event handler
-func SVGScriptDataOnModThrottle(
+func SVGScriptOnModThrottle(
 	d time.Duration,
-) SVGScriptDataOnMod {
+) SVGScriptOnMod {
 	return func() string {
 		return fmt.Sprintf("throttle_%dms", d.Milliseconds())
 	}
 }
 
-func (e *SVGSCRIPTElement) DATASTAR_ON(key string, expression string, modifiers ...SVGScriptDataOnMod) *SVGSCRIPTElement {
+func (e *SVGSCRIPTElement) DATASTAR_ON(key string, expression string, modifiers ...SVGScriptOnMod) *SVGSCRIPTElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
 	key = fmt.Sprintf("data-on-%s", key)
 
-	customMods := lo.Map(modifiers, func(m SVGScriptDataOnMod, i int) customDataKeyModifier {
+	customMods := lo.Map(modifiers, func(m SVGScriptOnMod, i int) customDataKeyModifier {
 		return customDataKeyModifier(m)
 	})
 	key = customDataKey(key, customMods...)
@@ -559,7 +604,7 @@ func (e *SVGSCRIPTElement) DATASTAR_ON(key string, expression string, modifiers 
 	return e
 }
 
-func (e *SVGSCRIPTElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SVGScriptDataOnMod) *SVGSCRIPTElement {
+func (e *SVGSCRIPTElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SVGScriptOnMod) *SVGSCRIPTElement {
 	if condition {
 		e.DATASTAR_ON(key, expression, modifiers...)
 	}
@@ -652,7 +697,7 @@ func (e *SVGSCRIPTElement) DATASTAR_FETCH_INDICATOR(expression string) *SVGSCRIP
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "DatastarFetchIndicator"
+	key := "data-fetch-indicator"
 
 	e.StringAttributes.Set(key, expression)
 	return e
@@ -670,7 +715,7 @@ func (e *SVGSCRIPTElement) DATASTAR_FETCH_INDICATORRemove() *SVGSCRIPTElement {
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("DatastarFetchIndicator")
+	e.StringAttributes.Del("data-fetch-indicator")
 	return e
 }
 

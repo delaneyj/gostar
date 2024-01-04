@@ -220,9 +220,20 @@ func (e *SVGCIRCLEElement) ID(s string) *SVGCIRCLEElement {
 	return e
 }
 
+func (e *SVGCIRCLEElement) IDF(format string, args ...any) *SVGCIRCLEElement {
+	return e.ID(fmt.Sprintf(format, args...))
+}
+
 func (e *SVGCIRCLEElement) IfID(condition bool, s string) *SVGCIRCLEElement {
 	if condition {
 		e.ID(s)
+	}
+	return e
+}
+
+func (e *SVGCIRCLEElement) IfIDF(condition bool, format string, args ...any) *SVGCIRCLEElement {
+	if condition {
+		e.ID(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -234,6 +245,10 @@ func (e *SVGCIRCLEElement) IDRemove(s string) *SVGCIRCLEElement {
 	}
 	e.StringAttributes.Del("id")
 	return e
+}
+
+func (e *SVGCIRCLEElement) IDRemoveF(format string, args ...any) *SVGCIRCLEElement {
+	return e.IDRemove(fmt.Sprintf(format, args...))
 }
 
 // Specifies one or more classnames for an element (refers to a class in a style
@@ -372,7 +387,7 @@ func (e *SVGCIRCLEElement) DATASTAR_MERGE_STORE(v any) *SVGCIRCLEElement {
 	if err != nil {
 		panic(err)
 	}
-	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	e.CustomDataAttributes.Set("merge-store", string(b))
 	return e
 }
 
@@ -494,34 +509,34 @@ func (e *SVGCIRCLEElement) DATASTAR_TEXTRemove() *SVGCIRCLEElement {
 
 // Sets the event handler of the element
 
-type SVGCircleDataOnMod customDataKeyModifier
+type SVGCircleOnMod customDataKeyModifier
 
 // Debounces the event handler
-func SVGCircleDataOnModDebounce(
+func SVGCircleOnModDebounce(
 	d time.Duration,
-) SVGCircleDataOnMod {
+) SVGCircleOnMod {
 	return func() string {
 		return fmt.Sprintf("debounce_%dms", d.Milliseconds())
 	}
 }
 
 // Throttles the event handler
-func SVGCircleDataOnModThrottle(
+func SVGCircleOnModThrottle(
 	d time.Duration,
-) SVGCircleDataOnMod {
+) SVGCircleOnMod {
 	return func() string {
 		return fmt.Sprintf("throttle_%dms", d.Milliseconds())
 	}
 }
 
-func (e *SVGCIRCLEElement) DATASTAR_ON(key string, expression string, modifiers ...SVGCircleDataOnMod) *SVGCIRCLEElement {
+func (e *SVGCIRCLEElement) DATASTAR_ON(key string, expression string, modifiers ...SVGCircleOnMod) *SVGCIRCLEElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
 	key = fmt.Sprintf("data-on-%s", key)
 
-	customMods := lo.Map(modifiers, func(m SVGCircleDataOnMod, i int) customDataKeyModifier {
+	customMods := lo.Map(modifiers, func(m SVGCircleOnMod, i int) customDataKeyModifier {
 		return customDataKeyModifier(m)
 	})
 	key = customDataKey(key, customMods...)
@@ -529,7 +544,7 @@ func (e *SVGCIRCLEElement) DATASTAR_ON(key string, expression string, modifiers 
 	return e
 }
 
-func (e *SVGCIRCLEElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SVGCircleDataOnMod) *SVGCIRCLEElement {
+func (e *SVGCIRCLEElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SVGCircleOnMod) *SVGCIRCLEElement {
 	if condition {
 		e.DATASTAR_ON(key, expression, modifiers...)
 	}
@@ -622,7 +637,7 @@ func (e *SVGCIRCLEElement) DATASTAR_FETCH_INDICATOR(expression string) *SVGCIRCL
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "DatastarFetchIndicator"
+	key := "data-fetch-indicator"
 
 	e.StringAttributes.Set(key, expression)
 	return e
@@ -640,7 +655,7 @@ func (e *SVGCIRCLEElement) DATASTAR_FETCH_INDICATORRemove() *SVGCIRCLEElement {
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("DatastarFetchIndicator")
+	e.StringAttributes.Del("data-fetch-indicator")
 	return e
 }
 

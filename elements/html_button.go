@@ -249,9 +249,20 @@ func (e *BUTTONElement) FORM(s string) *BUTTONElement {
 	return e
 }
 
+func (e *BUTTONElement) FORMF(format string, args ...any) *BUTTONElement {
+	return e.FORM(fmt.Sprintf(format, args...))
+}
+
 func (e *BUTTONElement) IfFORM(condition bool, s string) *BUTTONElement {
 	if condition {
 		e.FORM(s)
+	}
+	return e
+}
+
+func (e *BUTTONElement) IfFORMF(condition bool, format string, args ...any) *BUTTONElement {
+	if condition {
+		e.FORM(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -265,6 +276,10 @@ func (e *BUTTONElement) FORMRemove(s string) *BUTTONElement {
 	return e
 }
 
+func (e *BUTTONElement) FORMRemoveF(format string, args ...any) *BUTTONElement {
+	return e.FORMRemove(fmt.Sprintf(format, args...))
+}
+
 // The URI of a program that processes the information submitted by the button
 // If specified, it overrides the action attribute of the button's form owner.
 func (e *BUTTONElement) FORMACTION(s string) *BUTTONElement {
@@ -275,9 +290,20 @@ func (e *BUTTONElement) FORMACTION(s string) *BUTTONElement {
 	return e
 }
 
+func (e *BUTTONElement) FORMACTIONF(format string, args ...any) *BUTTONElement {
+	return e.FORMACTION(fmt.Sprintf(format, args...))
+}
+
 func (e *BUTTONElement) IfFORMACTION(condition bool, s string) *BUTTONElement {
 	if condition {
 		e.FORMACTION(s)
+	}
+	return e
+}
+
+func (e *BUTTONElement) IfFORMACTIONF(condition bool, format string, args ...any) *BUTTONElement {
+	if condition {
+		e.FORMACTION(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -289,6 +315,10 @@ func (e *BUTTONElement) FORMACTIONRemove(s string) *BUTTONElement {
 	}
 	e.StringAttributes.Del("formaction")
 	return e
+}
+
+func (e *BUTTONElement) FORMACTIONRemoveF(format string, args ...any) *BUTTONElement {
+	return e.FORMACTIONRemove(fmt.Sprintf(format, args...))
 }
 
 // If the button is a submit button, this attribute specifies the type of content
@@ -449,9 +479,20 @@ func (e *BUTTONElement) NAME(s string) *BUTTONElement {
 	return e
 }
 
+func (e *BUTTONElement) NAMEF(format string, args ...any) *BUTTONElement {
+	return e.NAME(fmt.Sprintf(format, args...))
+}
+
 func (e *BUTTONElement) IfNAME(condition bool, s string) *BUTTONElement {
 	if condition {
 		e.NAME(s)
+	}
+	return e
+}
+
+func (e *BUTTONElement) IfNAMEF(condition bool, format string, args ...any) *BUTTONElement {
+	if condition {
+		e.NAME(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -465,6 +506,10 @@ func (e *BUTTONElement) NAMERemove(s string) *BUTTONElement {
 	return e
 }
 
+func (e *BUTTONElement) NAMERemoveF(format string, args ...any) *BUTTONElement {
+	return e.NAMERemove(fmt.Sprintf(format, args...))
+}
+
 // Turns a <button> element into a popover control button; takes the ID of the
 // popover element to control as its value
 // See the Popover API landing page for more details.
@@ -476,9 +521,20 @@ func (e *BUTTONElement) POPOVERTARGET(s string) *BUTTONElement {
 	return e
 }
 
+func (e *BUTTONElement) POPOVERTARGETF(format string, args ...any) *BUTTONElement {
+	return e.POPOVERTARGET(fmt.Sprintf(format, args...))
+}
+
 func (e *BUTTONElement) IfPOPOVERTARGET(condition bool, s string) *BUTTONElement {
 	if condition {
 		e.POPOVERTARGET(s)
+	}
+	return e
+}
+
+func (e *BUTTONElement) IfPOPOVERTARGETF(condition bool, format string, args ...any) *BUTTONElement {
+	if condition {
+		e.POPOVERTARGET(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -490,6 +546,10 @@ func (e *BUTTONElement) POPOVERTARGETRemove(s string) *BUTTONElement {
 	}
 	e.StringAttributes.Del("popovertarget")
 	return e
+}
+
+func (e *BUTTONElement) POPOVERTARGETRemoveF(format string, args ...any) *BUTTONElement {
+	return e.POPOVERTARGETRemove(fmt.Sprintf(format, args...))
 }
 
 // Specifies the action to take when the popover control button is clicked
@@ -567,9 +627,20 @@ func (e *BUTTONElement) VALUE(s string) *BUTTONElement {
 	return e
 }
 
+func (e *BUTTONElement) VALUEF(format string, args ...any) *BUTTONElement {
+	return e.VALUE(fmt.Sprintf(format, args...))
+}
+
 func (e *BUTTONElement) IfVALUE(condition bool, s string) *BUTTONElement {
 	if condition {
 		e.VALUE(s)
+	}
+	return e
+}
+
+func (e *BUTTONElement) IfVALUEF(condition bool, format string, args ...any) *BUTTONElement {
+	if condition {
+		e.VALUE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -581,6 +652,10 @@ func (e *BUTTONElement) VALUERemove(s string) *BUTTONElement {
 	}
 	e.StringAttributes.Del("value")
 	return e
+}
+
+func (e *BUTTONElement) VALUERemoveF(format string, args ...any) *BUTTONElement {
+	return e.VALUERemove(fmt.Sprintf(format, args...))
 }
 
 // The accesskey global attribute provides a hint for generating a keyboard
@@ -971,9 +1046,20 @@ func (e *BUTTONElement) ID(s string) *BUTTONElement {
 	return e
 }
 
+func (e *BUTTONElement) IDF(format string, args ...any) *BUTTONElement {
+	return e.ID(fmt.Sprintf(format, args...))
+}
+
 func (e *BUTTONElement) IfID(condition bool, s string) *BUTTONElement {
 	if condition {
 		e.ID(s)
+	}
+	return e
+}
+
+func (e *BUTTONElement) IfIDF(condition bool, format string, args ...any) *BUTTONElement {
+	if condition {
+		e.ID(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -985,6 +1071,10 @@ func (e *BUTTONElement) IDRemove(s string) *BUTTONElement {
 	}
 	e.StringAttributes.Del("id")
 	return e
+}
+
+func (e *BUTTONElement) IDRemoveF(format string, args ...any) *BUTTONElement {
+	return e.IDRemove(fmt.Sprintf(format, args...))
 }
 
 // The inert global attribute is a Boolean attribute indicating that the browser
@@ -1119,9 +1209,20 @@ func (e *BUTTONElement) IS(s string) *BUTTONElement {
 	return e
 }
 
+func (e *BUTTONElement) ISF(format string, args ...any) *BUTTONElement {
+	return e.IS(fmt.Sprintf(format, args...))
+}
+
 func (e *BUTTONElement) IfIS(condition bool, s string) *BUTTONElement {
 	if condition {
 		e.IS(s)
+	}
+	return e
+}
+
+func (e *BUTTONElement) IfISF(condition bool, format string, args ...any) *BUTTONElement {
+	if condition {
+		e.IS(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1133,6 +1234,10 @@ func (e *BUTTONElement) ISRemove(s string) *BUTTONElement {
 	}
 	e.StringAttributes.Del("is")
 	return e
+}
+
+func (e *BUTTONElement) ISRemoveF(format string, args ...any) *BUTTONElement {
+	return e.ISRemove(fmt.Sprintf(format, args...))
 }
 
 // The itemid global attribute provides microdata in the form of a unique, global
@@ -1156,9 +1261,20 @@ func (e *BUTTONElement) ITEMID(s string) *BUTTONElement {
 	return e
 }
 
+func (e *BUTTONElement) ITEMIDF(format string, args ...any) *BUTTONElement {
+	return e.ITEMID(fmt.Sprintf(format, args...))
+}
+
 func (e *BUTTONElement) IfITEMID(condition bool, s string) *BUTTONElement {
 	if condition {
 		e.ITEMID(s)
+	}
+	return e
+}
+
+func (e *BUTTONElement) IfITEMIDF(condition bool, format string, args ...any) *BUTTONElement {
+	if condition {
+		e.ITEMID(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1170,6 +1286,10 @@ func (e *BUTTONElement) ITEMIDRemove(s string) *BUTTONElement {
 	}
 	e.StringAttributes.Del("itemid")
 	return e
+}
+
+func (e *BUTTONElement) ITEMIDRemoveF(format string, args ...any) *BUTTONElement {
+	return e.ITEMIDRemove(fmt.Sprintf(format, args...))
 }
 
 // The itemprop global attribute is used to add properties to an item
@@ -1188,9 +1308,20 @@ func (e *BUTTONElement) ITEMPROP(s string) *BUTTONElement {
 	return e
 }
 
+func (e *BUTTONElement) ITEMPROPF(format string, args ...any) *BUTTONElement {
+	return e.ITEMPROP(fmt.Sprintf(format, args...))
+}
+
 func (e *BUTTONElement) IfITEMPROP(condition bool, s string) *BUTTONElement {
 	if condition {
 		e.ITEMPROP(s)
+	}
+	return e
+}
+
+func (e *BUTTONElement) IfITEMPROPF(condition bool, format string, args ...any) *BUTTONElement {
+	if condition {
+		e.ITEMPROP(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1202,6 +1333,10 @@ func (e *BUTTONElement) ITEMPROPRemove(s string) *BUTTONElement {
 	}
 	e.StringAttributes.Del("itemprop")
 	return e
+}
+
+func (e *BUTTONElement) ITEMPROPRemoveF(format string, args ...any) *BUTTONElement {
+	return e.ITEMPROPRemove(fmt.Sprintf(format, args...))
 }
 
 // Properties that are not descendants of an element with the itemscope attribute
@@ -1217,9 +1352,20 @@ func (e *BUTTONElement) ITEMREF(s string) *BUTTONElement {
 	return e
 }
 
+func (e *BUTTONElement) ITEMREFF(format string, args ...any) *BUTTONElement {
+	return e.ITEMREF(fmt.Sprintf(format, args...))
+}
+
 func (e *BUTTONElement) IfITEMREF(condition bool, s string) *BUTTONElement {
 	if condition {
 		e.ITEMREF(s)
+	}
+	return e
+}
+
+func (e *BUTTONElement) IfITEMREFF(condition bool, format string, args ...any) *BUTTONElement {
+	if condition {
+		e.ITEMREF(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1231,6 +1377,10 @@ func (e *BUTTONElement) ITEMREFRemove(s string) *BUTTONElement {
 	}
 	e.StringAttributes.Del("itemref")
 	return e
+}
+
+func (e *BUTTONElement) ITEMREFRemoveF(format string, args ...any) *BUTTONElement {
+	return e.ITEMREFRemove(fmt.Sprintf(format, args...))
 }
 
 // The itemscope global attribute is used to add an item to a microdata DOM tree
@@ -1294,9 +1444,20 @@ func (e *BUTTONElement) ITEMTYPE(s string) *BUTTONElement {
 	return e
 }
 
+func (e *BUTTONElement) ITEMTYPEF(format string, args ...any) *BUTTONElement {
+	return e.ITEMTYPE(fmt.Sprintf(format, args...))
+}
+
 func (e *BUTTONElement) IfITEMTYPE(condition bool, s string) *BUTTONElement {
 	if condition {
 		e.ITEMTYPE(s)
+	}
+	return e
+}
+
+func (e *BUTTONElement) IfITEMTYPEF(condition bool, format string, args ...any) *BUTTONElement {
+	if condition {
+		e.ITEMTYPE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1308,6 +1469,10 @@ func (e *BUTTONElement) ITEMTYPERemove(s string) *BUTTONElement {
 	}
 	e.StringAttributes.Del("itemtype")
 	return e
+}
+
+func (e *BUTTONElement) ITEMTYPERemoveF(format string, args ...any) *BUTTONElement {
+	return e.ITEMTYPERemove(fmt.Sprintf(format, args...))
 }
 
 // The lang global attribute helps define the language of an element: the language
@@ -1324,9 +1489,20 @@ func (e *BUTTONElement) LANG(s string) *BUTTONElement {
 	return e
 }
 
+func (e *BUTTONElement) LANGF(format string, args ...any) *BUTTONElement {
+	return e.LANG(fmt.Sprintf(format, args...))
+}
+
 func (e *BUTTONElement) IfLANG(condition bool, s string) *BUTTONElement {
 	if condition {
 		e.LANG(s)
+	}
+	return e
+}
+
+func (e *BUTTONElement) IfLANGF(condition bool, format string, args ...any) *BUTTONElement {
+	if condition {
+		e.LANG(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1338,6 +1514,10 @@ func (e *BUTTONElement) LANGRemove(s string) *BUTTONElement {
 	}
 	e.StringAttributes.Del("lang")
 	return e
+}
+
+func (e *BUTTONElement) LANGRemoveF(format string, args ...any) *BUTTONElement {
+	return e.LANGRemove(fmt.Sprintf(format, args...))
 }
 
 // The nonce global attribute is a unique identifier used to declare inline
@@ -1352,9 +1532,20 @@ func (e *BUTTONElement) NONCE(s string) *BUTTONElement {
 	return e
 }
 
+func (e *BUTTONElement) NONCEF(format string, args ...any) *BUTTONElement {
+	return e.NONCE(fmt.Sprintf(format, args...))
+}
+
 func (e *BUTTONElement) IfNONCE(condition bool, s string) *BUTTONElement {
 	if condition {
 		e.NONCE(s)
+	}
+	return e
+}
+
+func (e *BUTTONElement) IfNONCEF(condition bool, format string, args ...any) *BUTTONElement {
+	if condition {
+		e.NONCE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1366,6 +1557,10 @@ func (e *BUTTONElement) NONCERemove(s string) *BUTTONElement {
 	}
 	e.StringAttributes.Del("nonce")
 	return e
+}
+
+func (e *BUTTONElement) NONCERemoveF(format string, args ...any) *BUTTONElement {
+	return e.NONCERemove(fmt.Sprintf(format, args...))
 }
 
 // The part global attribute contains a space-separated list of the part names of
@@ -1460,9 +1655,20 @@ func (e *BUTTONElement) ROLE(s string) *BUTTONElement {
 	return e
 }
 
+func (e *BUTTONElement) ROLEF(format string, args ...any) *BUTTONElement {
+	return e.ROLE(fmt.Sprintf(format, args...))
+}
+
 func (e *BUTTONElement) IfROLE(condition bool, s string) *BUTTONElement {
 	if condition {
 		e.ROLE(s)
+	}
+	return e
+}
+
+func (e *BUTTONElement) IfROLEF(condition bool, format string, args ...any) *BUTTONElement {
+	if condition {
+		e.ROLE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1474,6 +1680,10 @@ func (e *BUTTONElement) ROLERemove(s string) *BUTTONElement {
 	}
 	e.StringAttributes.Del("role")
 	return e
+}
+
+func (e *BUTTONElement) ROLERemoveF(format string, args ...any) *BUTTONElement {
+	return e.ROLERemove(fmt.Sprintf(format, args...))
 }
 
 // The slot global attribute assigns a slot in a shadow DOM shadow tree to an
@@ -1488,9 +1698,20 @@ func (e *BUTTONElement) SLOT(s string) *BUTTONElement {
 	return e
 }
 
+func (e *BUTTONElement) SLOTF(format string, args ...any) *BUTTONElement {
+	return e.SLOT(fmt.Sprintf(format, args...))
+}
+
 func (e *BUTTONElement) IfSLOT(condition bool, s string) *BUTTONElement {
 	if condition {
 		e.SLOT(s)
+	}
+	return e
+}
+
+func (e *BUTTONElement) IfSLOTF(condition bool, format string, args ...any) *BUTTONElement {
+	if condition {
+		e.SLOT(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1502,6 +1723,10 @@ func (e *BUTTONElement) SLOTRemove(s string) *BUTTONElement {
 	}
 	e.StringAttributes.Del("slot")
 	return e
+}
+
+func (e *BUTTONElement) SLOTRemoveF(format string, args ...any) *BUTTONElement {
+	return e.SLOTRemove(fmt.Sprintf(format, args...))
 }
 
 // The spellcheck global attribute is an enumerated attribute that defines whether
@@ -1706,9 +1931,20 @@ func (e *BUTTONElement) TITLE(s string) *BUTTONElement {
 	return e
 }
 
+func (e *BUTTONElement) TITLEF(format string, args ...any) *BUTTONElement {
+	return e.TITLE(fmt.Sprintf(format, args...))
+}
+
 func (e *BUTTONElement) IfTITLE(condition bool, s string) *BUTTONElement {
 	if condition {
 		e.TITLE(s)
+	}
+	return e
+}
+
+func (e *BUTTONElement) IfTITLEF(condition bool, format string, args ...any) *BUTTONElement {
+	if condition {
+		e.TITLE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1720,6 +1956,10 @@ func (e *BUTTONElement) TITLERemove(s string) *BUTTONElement {
 	}
 	e.StringAttributes.Del("title")
 	return e
+}
+
+func (e *BUTTONElement) TITLERemoveF(format string, args ...any) *BUTTONElement {
+	return e.TITLERemove(fmt.Sprintf(format, args...))
 }
 
 // The translate global attribute is an enumerated attribute that is used to
@@ -1764,7 +2004,7 @@ func (e *BUTTONElement) DATASTAR_MERGE_STORE(v any) *BUTTONElement {
 	if err != nil {
 		panic(err)
 	}
-	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	e.CustomDataAttributes.Set("merge-store", string(b))
 	return e
 }
 
@@ -1886,34 +2126,34 @@ func (e *BUTTONElement) DATASTAR_TEXTRemove() *BUTTONElement {
 
 // Sets the event handler of the element
 
-type ButtonDataOnMod customDataKeyModifier
+type ButtonOnMod customDataKeyModifier
 
 // Debounces the event handler
-func ButtonDataOnModDebounce(
+func ButtonOnModDebounce(
 	d time.Duration,
-) ButtonDataOnMod {
+) ButtonOnMod {
 	return func() string {
 		return fmt.Sprintf("debounce_%dms", d.Milliseconds())
 	}
 }
 
 // Throttles the event handler
-func ButtonDataOnModThrottle(
+func ButtonOnModThrottle(
 	d time.Duration,
-) ButtonDataOnMod {
+) ButtonOnMod {
 	return func() string {
 		return fmt.Sprintf("throttle_%dms", d.Milliseconds())
 	}
 }
 
-func (e *BUTTONElement) DATASTAR_ON(key string, expression string, modifiers ...ButtonDataOnMod) *BUTTONElement {
+func (e *BUTTONElement) DATASTAR_ON(key string, expression string, modifiers ...ButtonOnMod) *BUTTONElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
 	key = fmt.Sprintf("data-on-%s", key)
 
-	customMods := lo.Map(modifiers, func(m ButtonDataOnMod, i int) customDataKeyModifier {
+	customMods := lo.Map(modifiers, func(m ButtonOnMod, i int) customDataKeyModifier {
 		return customDataKeyModifier(m)
 	})
 	key = customDataKey(key, customMods...)
@@ -1921,7 +2161,7 @@ func (e *BUTTONElement) DATASTAR_ON(key string, expression string, modifiers ...
 	return e
 }
 
-func (e *BUTTONElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...ButtonDataOnMod) *BUTTONElement {
+func (e *BUTTONElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...ButtonOnMod) *BUTTONElement {
 	if condition {
 		e.DATASTAR_ON(key, expression, modifiers...)
 	}
@@ -2014,7 +2254,7 @@ func (e *BUTTONElement) DATASTAR_FETCH_INDICATOR(expression string) *BUTTONEleme
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "DatastarFetchIndicator"
+	key := "data-fetch-indicator"
 
 	e.StringAttributes.Set(key, expression)
 	return e
@@ -2032,7 +2272,7 @@ func (e *BUTTONElement) DATASTAR_FETCH_INDICATORRemove() *BUTTONElement {
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("DatastarFetchIndicator")
+	e.StringAttributes.Del("data-fetch-indicator")
 	return e
 }
 

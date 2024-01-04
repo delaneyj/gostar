@@ -608,9 +608,20 @@ func (e *WBRElement) ID(s string) *WBRElement {
 	return e
 }
 
+func (e *WBRElement) IDF(format string, args ...any) *WBRElement {
+	return e.ID(fmt.Sprintf(format, args...))
+}
+
 func (e *WBRElement) IfID(condition bool, s string) *WBRElement {
 	if condition {
 		e.ID(s)
+	}
+	return e
+}
+
+func (e *WBRElement) IfIDF(condition bool, format string, args ...any) *WBRElement {
+	if condition {
+		e.ID(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -622,6 +633,10 @@ func (e *WBRElement) IDRemove(s string) *WBRElement {
 	}
 	e.StringAttributes.Del("id")
 	return e
+}
+
+func (e *WBRElement) IDRemoveF(format string, args ...any) *WBRElement {
+	return e.IDRemove(fmt.Sprintf(format, args...))
 }
 
 // The inert global attribute is a Boolean attribute indicating that the browser
@@ -756,9 +771,20 @@ func (e *WBRElement) IS(s string) *WBRElement {
 	return e
 }
 
+func (e *WBRElement) ISF(format string, args ...any) *WBRElement {
+	return e.IS(fmt.Sprintf(format, args...))
+}
+
 func (e *WBRElement) IfIS(condition bool, s string) *WBRElement {
 	if condition {
 		e.IS(s)
+	}
+	return e
+}
+
+func (e *WBRElement) IfISF(condition bool, format string, args ...any) *WBRElement {
+	if condition {
+		e.IS(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -770,6 +796,10 @@ func (e *WBRElement) ISRemove(s string) *WBRElement {
 	}
 	e.StringAttributes.Del("is")
 	return e
+}
+
+func (e *WBRElement) ISRemoveF(format string, args ...any) *WBRElement {
+	return e.ISRemove(fmt.Sprintf(format, args...))
 }
 
 // The itemid global attribute provides microdata in the form of a unique, global
@@ -793,9 +823,20 @@ func (e *WBRElement) ITEMID(s string) *WBRElement {
 	return e
 }
 
+func (e *WBRElement) ITEMIDF(format string, args ...any) *WBRElement {
+	return e.ITEMID(fmt.Sprintf(format, args...))
+}
+
 func (e *WBRElement) IfITEMID(condition bool, s string) *WBRElement {
 	if condition {
 		e.ITEMID(s)
+	}
+	return e
+}
+
+func (e *WBRElement) IfITEMIDF(condition bool, format string, args ...any) *WBRElement {
+	if condition {
+		e.ITEMID(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -807,6 +848,10 @@ func (e *WBRElement) ITEMIDRemove(s string) *WBRElement {
 	}
 	e.StringAttributes.Del("itemid")
 	return e
+}
+
+func (e *WBRElement) ITEMIDRemoveF(format string, args ...any) *WBRElement {
+	return e.ITEMIDRemove(fmt.Sprintf(format, args...))
 }
 
 // The itemprop global attribute is used to add properties to an item
@@ -825,9 +870,20 @@ func (e *WBRElement) ITEMPROP(s string) *WBRElement {
 	return e
 }
 
+func (e *WBRElement) ITEMPROPF(format string, args ...any) *WBRElement {
+	return e.ITEMPROP(fmt.Sprintf(format, args...))
+}
+
 func (e *WBRElement) IfITEMPROP(condition bool, s string) *WBRElement {
 	if condition {
 		e.ITEMPROP(s)
+	}
+	return e
+}
+
+func (e *WBRElement) IfITEMPROPF(condition bool, format string, args ...any) *WBRElement {
+	if condition {
+		e.ITEMPROP(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -839,6 +895,10 @@ func (e *WBRElement) ITEMPROPRemove(s string) *WBRElement {
 	}
 	e.StringAttributes.Del("itemprop")
 	return e
+}
+
+func (e *WBRElement) ITEMPROPRemoveF(format string, args ...any) *WBRElement {
+	return e.ITEMPROPRemove(fmt.Sprintf(format, args...))
 }
 
 // Properties that are not descendants of an element with the itemscope attribute
@@ -854,9 +914,20 @@ func (e *WBRElement) ITEMREF(s string) *WBRElement {
 	return e
 }
 
+func (e *WBRElement) ITEMREFF(format string, args ...any) *WBRElement {
+	return e.ITEMREF(fmt.Sprintf(format, args...))
+}
+
 func (e *WBRElement) IfITEMREF(condition bool, s string) *WBRElement {
 	if condition {
 		e.ITEMREF(s)
+	}
+	return e
+}
+
+func (e *WBRElement) IfITEMREFF(condition bool, format string, args ...any) *WBRElement {
+	if condition {
+		e.ITEMREF(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -868,6 +939,10 @@ func (e *WBRElement) ITEMREFRemove(s string) *WBRElement {
 	}
 	e.StringAttributes.Del("itemref")
 	return e
+}
+
+func (e *WBRElement) ITEMREFRemoveF(format string, args ...any) *WBRElement {
+	return e.ITEMREFRemove(fmt.Sprintf(format, args...))
 }
 
 // The itemscope global attribute is used to add an item to a microdata DOM tree
@@ -931,9 +1006,20 @@ func (e *WBRElement) ITEMTYPE(s string) *WBRElement {
 	return e
 }
 
+func (e *WBRElement) ITEMTYPEF(format string, args ...any) *WBRElement {
+	return e.ITEMTYPE(fmt.Sprintf(format, args...))
+}
+
 func (e *WBRElement) IfITEMTYPE(condition bool, s string) *WBRElement {
 	if condition {
 		e.ITEMTYPE(s)
+	}
+	return e
+}
+
+func (e *WBRElement) IfITEMTYPEF(condition bool, format string, args ...any) *WBRElement {
+	if condition {
+		e.ITEMTYPE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -945,6 +1031,10 @@ func (e *WBRElement) ITEMTYPERemove(s string) *WBRElement {
 	}
 	e.StringAttributes.Del("itemtype")
 	return e
+}
+
+func (e *WBRElement) ITEMTYPERemoveF(format string, args ...any) *WBRElement {
+	return e.ITEMTYPERemove(fmt.Sprintf(format, args...))
 }
 
 // The lang global attribute helps define the language of an element: the language
@@ -961,9 +1051,20 @@ func (e *WBRElement) LANG(s string) *WBRElement {
 	return e
 }
 
+func (e *WBRElement) LANGF(format string, args ...any) *WBRElement {
+	return e.LANG(fmt.Sprintf(format, args...))
+}
+
 func (e *WBRElement) IfLANG(condition bool, s string) *WBRElement {
 	if condition {
 		e.LANG(s)
+	}
+	return e
+}
+
+func (e *WBRElement) IfLANGF(condition bool, format string, args ...any) *WBRElement {
+	if condition {
+		e.LANG(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -975,6 +1076,10 @@ func (e *WBRElement) LANGRemove(s string) *WBRElement {
 	}
 	e.StringAttributes.Del("lang")
 	return e
+}
+
+func (e *WBRElement) LANGRemoveF(format string, args ...any) *WBRElement {
+	return e.LANGRemove(fmt.Sprintf(format, args...))
 }
 
 // The nonce global attribute is a unique identifier used to declare inline
@@ -989,9 +1094,20 @@ func (e *WBRElement) NONCE(s string) *WBRElement {
 	return e
 }
 
+func (e *WBRElement) NONCEF(format string, args ...any) *WBRElement {
+	return e.NONCE(fmt.Sprintf(format, args...))
+}
+
 func (e *WBRElement) IfNONCE(condition bool, s string) *WBRElement {
 	if condition {
 		e.NONCE(s)
+	}
+	return e
+}
+
+func (e *WBRElement) IfNONCEF(condition bool, format string, args ...any) *WBRElement {
+	if condition {
+		e.NONCE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1003,6 +1119,10 @@ func (e *WBRElement) NONCERemove(s string) *WBRElement {
 	}
 	e.StringAttributes.Del("nonce")
 	return e
+}
+
+func (e *WBRElement) NONCERemoveF(format string, args ...any) *WBRElement {
+	return e.NONCERemove(fmt.Sprintf(format, args...))
 }
 
 // The part global attribute contains a space-separated list of the part names of
@@ -1097,9 +1217,20 @@ func (e *WBRElement) ROLE(s string) *WBRElement {
 	return e
 }
 
+func (e *WBRElement) ROLEF(format string, args ...any) *WBRElement {
+	return e.ROLE(fmt.Sprintf(format, args...))
+}
+
 func (e *WBRElement) IfROLE(condition bool, s string) *WBRElement {
 	if condition {
 		e.ROLE(s)
+	}
+	return e
+}
+
+func (e *WBRElement) IfROLEF(condition bool, format string, args ...any) *WBRElement {
+	if condition {
+		e.ROLE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1111,6 +1242,10 @@ func (e *WBRElement) ROLERemove(s string) *WBRElement {
 	}
 	e.StringAttributes.Del("role")
 	return e
+}
+
+func (e *WBRElement) ROLERemoveF(format string, args ...any) *WBRElement {
+	return e.ROLERemove(fmt.Sprintf(format, args...))
 }
 
 // The slot global attribute assigns a slot in a shadow DOM shadow tree to an
@@ -1125,9 +1260,20 @@ func (e *WBRElement) SLOT(s string) *WBRElement {
 	return e
 }
 
+func (e *WBRElement) SLOTF(format string, args ...any) *WBRElement {
+	return e.SLOT(fmt.Sprintf(format, args...))
+}
+
 func (e *WBRElement) IfSLOT(condition bool, s string) *WBRElement {
 	if condition {
 		e.SLOT(s)
+	}
+	return e
+}
+
+func (e *WBRElement) IfSLOTF(condition bool, format string, args ...any) *WBRElement {
+	if condition {
+		e.SLOT(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1139,6 +1285,10 @@ func (e *WBRElement) SLOTRemove(s string) *WBRElement {
 	}
 	e.StringAttributes.Del("slot")
 	return e
+}
+
+func (e *WBRElement) SLOTRemoveF(format string, args ...any) *WBRElement {
+	return e.SLOTRemove(fmt.Sprintf(format, args...))
 }
 
 // The spellcheck global attribute is an enumerated attribute that defines whether
@@ -1343,9 +1493,20 @@ func (e *WBRElement) TITLE(s string) *WBRElement {
 	return e
 }
 
+func (e *WBRElement) TITLEF(format string, args ...any) *WBRElement {
+	return e.TITLE(fmt.Sprintf(format, args...))
+}
+
 func (e *WBRElement) IfTITLE(condition bool, s string) *WBRElement {
 	if condition {
 		e.TITLE(s)
+	}
+	return e
+}
+
+func (e *WBRElement) IfTITLEF(condition bool, format string, args ...any) *WBRElement {
+	if condition {
+		e.TITLE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1357,6 +1518,10 @@ func (e *WBRElement) TITLERemove(s string) *WBRElement {
 	}
 	e.StringAttributes.Del("title")
 	return e
+}
+
+func (e *WBRElement) TITLERemoveF(format string, args ...any) *WBRElement {
+	return e.TITLERemove(fmt.Sprintf(format, args...))
 }
 
 // The translate global attribute is an enumerated attribute that is used to
@@ -1401,7 +1566,7 @@ func (e *WBRElement) DATASTAR_MERGE_STORE(v any) *WBRElement {
 	if err != nil {
 		panic(err)
 	}
-	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	e.CustomDataAttributes.Set("merge-store", string(b))
 	return e
 }
 
@@ -1523,34 +1688,34 @@ func (e *WBRElement) DATASTAR_TEXTRemove() *WBRElement {
 
 // Sets the event handler of the element
 
-type WbrDataOnMod customDataKeyModifier
+type WbrOnMod customDataKeyModifier
 
 // Debounces the event handler
-func WbrDataOnModDebounce(
+func WbrOnModDebounce(
 	d time.Duration,
-) WbrDataOnMod {
+) WbrOnMod {
 	return func() string {
 		return fmt.Sprintf("debounce_%dms", d.Milliseconds())
 	}
 }
 
 // Throttles the event handler
-func WbrDataOnModThrottle(
+func WbrOnModThrottle(
 	d time.Duration,
-) WbrDataOnMod {
+) WbrOnMod {
 	return func() string {
 		return fmt.Sprintf("throttle_%dms", d.Milliseconds())
 	}
 }
 
-func (e *WBRElement) DATASTAR_ON(key string, expression string, modifiers ...WbrDataOnMod) *WBRElement {
+func (e *WBRElement) DATASTAR_ON(key string, expression string, modifiers ...WbrOnMod) *WBRElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
 	key = fmt.Sprintf("data-on-%s", key)
 
-	customMods := lo.Map(modifiers, func(m WbrDataOnMod, i int) customDataKeyModifier {
+	customMods := lo.Map(modifiers, func(m WbrOnMod, i int) customDataKeyModifier {
 		return customDataKeyModifier(m)
 	})
 	key = customDataKey(key, customMods...)
@@ -1558,7 +1723,7 @@ func (e *WBRElement) DATASTAR_ON(key string, expression string, modifiers ...Wbr
 	return e
 }
 
-func (e *WBRElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...WbrDataOnMod) *WBRElement {
+func (e *WBRElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...WbrOnMod) *WBRElement {
 	if condition {
 		e.DATASTAR_ON(key, expression, modifiers...)
 	}
@@ -1651,7 +1816,7 @@ func (e *WBRElement) DATASTAR_FETCH_INDICATOR(expression string) *WBRElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "DatastarFetchIndicator"
+	key := "data-fetch-indicator"
 
 	e.StringAttributes.Set(key, expression)
 	return e
@@ -1669,7 +1834,7 @@ func (e *WBRElement) DATASTAR_FETCH_INDICATORRemove() *WBRElement {
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("DatastarFetchIndicator")
+	e.StringAttributes.Del("data-fetch-indicator")
 	return e
 }
 

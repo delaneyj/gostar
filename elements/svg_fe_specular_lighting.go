@@ -177,9 +177,20 @@ func (e *SVGFESPECULARLIGHTINGElement) IN(s string) *SVGFESPECULARLIGHTINGElemen
 	return e
 }
 
+func (e *SVGFESPECULARLIGHTINGElement) INF(format string, args ...any) *SVGFESPECULARLIGHTINGElement {
+	return e.IN(fmt.Sprintf(format, args...))
+}
+
 func (e *SVGFESPECULARLIGHTINGElement) IfIN(condition bool, s string) *SVGFESPECULARLIGHTINGElement {
 	if condition {
 		e.IN(s)
+	}
+	return e
+}
+
+func (e *SVGFESPECULARLIGHTINGElement) IfINF(condition bool, format string, args ...any) *SVGFESPECULARLIGHTINGElement {
+	if condition {
+		e.IN(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -191,6 +202,10 @@ func (e *SVGFESPECULARLIGHTINGElement) INRemove(s string) *SVGFESPECULARLIGHTING
 	}
 	e.StringAttributes.Del("in")
 	return e
+}
+
+func (e *SVGFESPECULARLIGHTINGElement) INRemoveF(format string, args ...any) *SVGFESPECULARLIGHTINGElement {
+	return e.INRemove(fmt.Sprintf(format, args...))
 }
 
 // The 'surfaceScale' attribute indicates the height of the surface when the alpha
@@ -253,9 +268,20 @@ func (e *SVGFESPECULARLIGHTINGElement) KERNEL_UNIT_LENGTH(s string) *SVGFESPECUL
 	return e
 }
 
+func (e *SVGFESPECULARLIGHTINGElement) KERNEL_UNIT_LENGTHF(format string, args ...any) *SVGFESPECULARLIGHTINGElement {
+	return e.KERNEL_UNIT_LENGTH(fmt.Sprintf(format, args...))
+}
+
 func (e *SVGFESPECULARLIGHTINGElement) IfKERNEL_UNIT_LENGTH(condition bool, s string) *SVGFESPECULARLIGHTINGElement {
 	if condition {
 		e.KERNEL_UNIT_LENGTH(s)
+	}
+	return e
+}
+
+func (e *SVGFESPECULARLIGHTINGElement) IfKERNEL_UNIT_LENGTHF(condition bool, format string, args ...any) *SVGFESPECULARLIGHTINGElement {
+	if condition {
+		e.KERNEL_UNIT_LENGTH(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -269,6 +295,10 @@ func (e *SVGFESPECULARLIGHTINGElement) KERNEL_UNIT_LENGTHRemove(s string) *SVGFE
 	return e
 }
 
+func (e *SVGFESPECULARLIGHTINGElement) KERNEL_UNIT_LENGTHRemoveF(format string, args ...any) *SVGFESPECULARLIGHTINGElement {
+	return e.KERNEL_UNIT_LENGTHRemove(fmt.Sprintf(format, args...))
+}
+
 // Specifies a unique id for an element
 func (e *SVGFESPECULARLIGHTINGElement) ID(s string) *SVGFESPECULARLIGHTINGElement {
 	if e.StringAttributes == nil {
@@ -278,9 +308,20 @@ func (e *SVGFESPECULARLIGHTINGElement) ID(s string) *SVGFESPECULARLIGHTINGElemen
 	return e
 }
 
+func (e *SVGFESPECULARLIGHTINGElement) IDF(format string, args ...any) *SVGFESPECULARLIGHTINGElement {
+	return e.ID(fmt.Sprintf(format, args...))
+}
+
 func (e *SVGFESPECULARLIGHTINGElement) IfID(condition bool, s string) *SVGFESPECULARLIGHTINGElement {
 	if condition {
 		e.ID(s)
+	}
+	return e
+}
+
+func (e *SVGFESPECULARLIGHTINGElement) IfIDF(condition bool, format string, args ...any) *SVGFESPECULARLIGHTINGElement {
+	if condition {
+		e.ID(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -292,6 +333,10 @@ func (e *SVGFESPECULARLIGHTINGElement) IDRemove(s string) *SVGFESPECULARLIGHTING
 	}
 	e.StringAttributes.Del("id")
 	return e
+}
+
+func (e *SVGFESPECULARLIGHTINGElement) IDRemoveF(format string, args ...any) *SVGFESPECULARLIGHTINGElement {
+	return e.IDRemove(fmt.Sprintf(format, args...))
 }
 
 // Specifies one or more classnames for an element (refers to a class in a style
@@ -430,7 +475,7 @@ func (e *SVGFESPECULARLIGHTINGElement) DATASTAR_MERGE_STORE(v any) *SVGFESPECULA
 	if err != nil {
 		panic(err)
 	}
-	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	e.CustomDataAttributes.Set("merge-store", string(b))
 	return e
 }
 
@@ -552,34 +597,34 @@ func (e *SVGFESPECULARLIGHTINGElement) DATASTAR_TEXTRemove() *SVGFESPECULARLIGHT
 
 // Sets the event handler of the element
 
-type SVGFeSpecularLightingDataOnMod customDataKeyModifier
+type SVGFeSpecularLightingOnMod customDataKeyModifier
 
 // Debounces the event handler
-func SVGFeSpecularLightingDataOnModDebounce(
+func SVGFeSpecularLightingOnModDebounce(
 	d time.Duration,
-) SVGFeSpecularLightingDataOnMod {
+) SVGFeSpecularLightingOnMod {
 	return func() string {
 		return fmt.Sprintf("debounce_%dms", d.Milliseconds())
 	}
 }
 
 // Throttles the event handler
-func SVGFeSpecularLightingDataOnModThrottle(
+func SVGFeSpecularLightingOnModThrottle(
 	d time.Duration,
-) SVGFeSpecularLightingDataOnMod {
+) SVGFeSpecularLightingOnMod {
 	return func() string {
 		return fmt.Sprintf("throttle_%dms", d.Milliseconds())
 	}
 }
 
-func (e *SVGFESPECULARLIGHTINGElement) DATASTAR_ON(key string, expression string, modifiers ...SVGFeSpecularLightingDataOnMod) *SVGFESPECULARLIGHTINGElement {
+func (e *SVGFESPECULARLIGHTINGElement) DATASTAR_ON(key string, expression string, modifiers ...SVGFeSpecularLightingOnMod) *SVGFESPECULARLIGHTINGElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
 	key = fmt.Sprintf("data-on-%s", key)
 
-	customMods := lo.Map(modifiers, func(m SVGFeSpecularLightingDataOnMod, i int) customDataKeyModifier {
+	customMods := lo.Map(modifiers, func(m SVGFeSpecularLightingOnMod, i int) customDataKeyModifier {
 		return customDataKeyModifier(m)
 	})
 	key = customDataKey(key, customMods...)
@@ -587,7 +632,7 @@ func (e *SVGFESPECULARLIGHTINGElement) DATASTAR_ON(key string, expression string
 	return e
 }
 
-func (e *SVGFESPECULARLIGHTINGElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SVGFeSpecularLightingDataOnMod) *SVGFESPECULARLIGHTINGElement {
+func (e *SVGFESPECULARLIGHTINGElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SVGFeSpecularLightingOnMod) *SVGFESPECULARLIGHTINGElement {
 	if condition {
 		e.DATASTAR_ON(key, expression, modifiers...)
 	}
@@ -680,7 +725,7 @@ func (e *SVGFESPECULARLIGHTINGElement) DATASTAR_FETCH_INDICATOR(expression strin
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "DatastarFetchIndicator"
+	key := "data-fetch-indicator"
 
 	e.StringAttributes.Set(key, expression)
 	return e
@@ -698,7 +743,7 @@ func (e *SVGFESPECULARLIGHTINGElement) DATASTAR_FETCH_INDICATORRemove() *SVGFESP
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("DatastarFetchIndicator")
+	e.StringAttributes.Del("data-fetch-indicator")
 	return e
 }
 

@@ -197,9 +197,20 @@ func (e *SLCHECKBOXElement) NAME(s string) *SLCHECKBOXElement {
 	return e
 }
 
+func (e *SLCHECKBOXElement) NAMEF(format string, args ...any) *SLCHECKBOXElement {
+	return e.NAME(fmt.Sprintf(format, args...))
+}
+
 func (e *SLCHECKBOXElement) IfNAME(condition bool, s string) *SLCHECKBOXElement {
 	if condition {
 		e.NAME(s)
+	}
+	return e
+}
+
+func (e *SLCHECKBOXElement) IfNAMEF(condition bool, format string, args ...any) *SLCHECKBOXElement {
+	if condition {
+		e.NAME(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -211,6 +222,10 @@ func (e *SLCHECKBOXElement) NAMERemove(s string) *SLCHECKBOXElement {
 	}
 	e.StringAttributes.Del("name")
 	return e
+}
+
+func (e *SLCHECKBOXElement) NAMERemoveF(format string, args ...any) *SLCHECKBOXElement {
+	return e.NAMERemove(fmt.Sprintf(format, args...))
 }
 
 func (e *SLCHECKBOXElement) DISABLED() *SLCHECKBOXElement {
@@ -371,7 +386,7 @@ func (e *SLCHECKBOXElement) DATASTAR_MERGE_STORE(v any) *SLCHECKBOXElement {
 	if err != nil {
 		panic(err)
 	}
-	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	e.CustomDataAttributes.Set("merge-store", string(b))
 	return e
 }
 
@@ -493,34 +508,34 @@ func (e *SLCHECKBOXElement) DATASTAR_TEXTRemove() *SLCHECKBOXElement {
 
 // Sets the event handler of the element
 
-type SLCheckboxDataOnMod customDataKeyModifier
+type SLCheckboxOnMod customDataKeyModifier
 
 // Debounces the event handler
-func SLCheckboxDataOnModDebounce(
+func SLCheckboxOnModDebounce(
 	d time.Duration,
-) SLCheckboxDataOnMod {
+) SLCheckboxOnMod {
 	return func() string {
 		return fmt.Sprintf("debounce_%dms", d.Milliseconds())
 	}
 }
 
 // Throttles the event handler
-func SLCheckboxDataOnModThrottle(
+func SLCheckboxOnModThrottle(
 	d time.Duration,
-) SLCheckboxDataOnMod {
+) SLCheckboxOnMod {
 	return func() string {
 		return fmt.Sprintf("throttle_%dms", d.Milliseconds())
 	}
 }
 
-func (e *SLCHECKBOXElement) DATASTAR_ON(key string, expression string, modifiers ...SLCheckboxDataOnMod) *SLCHECKBOXElement {
+func (e *SLCHECKBOXElement) DATASTAR_ON(key string, expression string, modifiers ...SLCheckboxOnMod) *SLCHECKBOXElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
 	key = fmt.Sprintf("data-on-%s", key)
 
-	customMods := lo.Map(modifiers, func(m SLCheckboxDataOnMod, i int) customDataKeyModifier {
+	customMods := lo.Map(modifiers, func(m SLCheckboxOnMod, i int) customDataKeyModifier {
 		return customDataKeyModifier(m)
 	})
 	key = customDataKey(key, customMods...)
@@ -528,7 +543,7 @@ func (e *SLCHECKBOXElement) DATASTAR_ON(key string, expression string, modifiers
 	return e
 }
 
-func (e *SLCHECKBOXElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SLCheckboxDataOnMod) *SLCHECKBOXElement {
+func (e *SLCHECKBOXElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SLCheckboxOnMod) *SLCHECKBOXElement {
 	if condition {
 		e.DATASTAR_ON(key, expression, modifiers...)
 	}
@@ -621,7 +636,7 @@ func (e *SLCHECKBOXElement) DATASTAR_FETCH_INDICATOR(expression string) *SLCHECK
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "DatastarFetchIndicator"
+	key := "data-fetch-indicator"
 
 	e.StringAttributes.Set(key, expression)
 	return e
@@ -639,7 +654,7 @@ func (e *SLCHECKBOXElement) DATASTAR_FETCH_INDICATORRemove() *SLCHECKBOXElement 
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("DatastarFetchIndicator")
+	e.StringAttributes.Del("data-fetch-indicator")
 	return e
 }
 

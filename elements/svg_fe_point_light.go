@@ -223,9 +223,20 @@ func (e *SVGFEPOINTLIGHTElement) ID(s string) *SVGFEPOINTLIGHTElement {
 	return e
 }
 
+func (e *SVGFEPOINTLIGHTElement) IDF(format string, args ...any) *SVGFEPOINTLIGHTElement {
+	return e.ID(fmt.Sprintf(format, args...))
+}
+
 func (e *SVGFEPOINTLIGHTElement) IfID(condition bool, s string) *SVGFEPOINTLIGHTElement {
 	if condition {
 		e.ID(s)
+	}
+	return e
+}
+
+func (e *SVGFEPOINTLIGHTElement) IfIDF(condition bool, format string, args ...any) *SVGFEPOINTLIGHTElement {
+	if condition {
+		e.ID(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -237,6 +248,10 @@ func (e *SVGFEPOINTLIGHTElement) IDRemove(s string) *SVGFEPOINTLIGHTElement {
 	}
 	e.StringAttributes.Del("id")
 	return e
+}
+
+func (e *SVGFEPOINTLIGHTElement) IDRemoveF(format string, args ...any) *SVGFEPOINTLIGHTElement {
+	return e.IDRemove(fmt.Sprintf(format, args...))
 }
 
 // Specifies one or more classnames for an element (refers to a class in a style
@@ -375,7 +390,7 @@ func (e *SVGFEPOINTLIGHTElement) DATASTAR_MERGE_STORE(v any) *SVGFEPOINTLIGHTEle
 	if err != nil {
 		panic(err)
 	}
-	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	e.CustomDataAttributes.Set("merge-store", string(b))
 	return e
 }
 
@@ -497,34 +512,34 @@ func (e *SVGFEPOINTLIGHTElement) DATASTAR_TEXTRemove() *SVGFEPOINTLIGHTElement {
 
 // Sets the event handler of the element
 
-type SVGFePointLightDataOnMod customDataKeyModifier
+type SVGFePointLightOnMod customDataKeyModifier
 
 // Debounces the event handler
-func SVGFePointLightDataOnModDebounce(
+func SVGFePointLightOnModDebounce(
 	d time.Duration,
-) SVGFePointLightDataOnMod {
+) SVGFePointLightOnMod {
 	return func() string {
 		return fmt.Sprintf("debounce_%dms", d.Milliseconds())
 	}
 }
 
 // Throttles the event handler
-func SVGFePointLightDataOnModThrottle(
+func SVGFePointLightOnModThrottle(
 	d time.Duration,
-) SVGFePointLightDataOnMod {
+) SVGFePointLightOnMod {
 	return func() string {
 		return fmt.Sprintf("throttle_%dms", d.Milliseconds())
 	}
 }
 
-func (e *SVGFEPOINTLIGHTElement) DATASTAR_ON(key string, expression string, modifiers ...SVGFePointLightDataOnMod) *SVGFEPOINTLIGHTElement {
+func (e *SVGFEPOINTLIGHTElement) DATASTAR_ON(key string, expression string, modifiers ...SVGFePointLightOnMod) *SVGFEPOINTLIGHTElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
 	key = fmt.Sprintf("data-on-%s", key)
 
-	customMods := lo.Map(modifiers, func(m SVGFePointLightDataOnMod, i int) customDataKeyModifier {
+	customMods := lo.Map(modifiers, func(m SVGFePointLightOnMod, i int) customDataKeyModifier {
 		return customDataKeyModifier(m)
 	})
 	key = customDataKey(key, customMods...)
@@ -532,7 +547,7 @@ func (e *SVGFEPOINTLIGHTElement) DATASTAR_ON(key string, expression string, modi
 	return e
 }
 
-func (e *SVGFEPOINTLIGHTElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SVGFePointLightDataOnMod) *SVGFEPOINTLIGHTElement {
+func (e *SVGFEPOINTLIGHTElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SVGFePointLightOnMod) *SVGFEPOINTLIGHTElement {
 	if condition {
 		e.DATASTAR_ON(key, expression, modifiers...)
 	}
@@ -625,7 +640,7 @@ func (e *SVGFEPOINTLIGHTElement) DATASTAR_FETCH_INDICATOR(expression string) *SV
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "DatastarFetchIndicator"
+	key := "data-fetch-indicator"
 
 	e.StringAttributes.Set(key, expression)
 	return e
@@ -643,7 +658,7 @@ func (e *SVGFEPOINTLIGHTElement) DATASTAR_FETCH_INDICATORRemove() *SVGFEPOINTLIG
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("DatastarFetchIndicator")
+	e.StringAttributes.Del("data-fetch-indicator")
 	return e
 }
 

@@ -173,9 +173,20 @@ func (e *SVGFEMORPHOLOGYElement) IN(s string) *SVGFEMORPHOLOGYElement {
 	return e
 }
 
+func (e *SVGFEMORPHOLOGYElement) INF(format string, args ...any) *SVGFEMORPHOLOGYElement {
+	return e.IN(fmt.Sprintf(format, args...))
+}
+
 func (e *SVGFEMORPHOLOGYElement) IfIN(condition bool, s string) *SVGFEMORPHOLOGYElement {
 	if condition {
 		e.IN(s)
+	}
+	return e
+}
+
+func (e *SVGFEMORPHOLOGYElement) IfINF(condition bool, format string, args ...any) *SVGFEMORPHOLOGYElement {
+	if condition {
+		e.IN(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -187,6 +198,10 @@ func (e *SVGFEMORPHOLOGYElement) INRemove(s string) *SVGFEMORPHOLOGYElement {
 	}
 	e.StringAttributes.Del("in")
 	return e
+}
+
+func (e *SVGFEMORPHOLOGYElement) INRemoveF(format string, args ...any) *SVGFEMORPHOLOGYElement {
+	return e.INRemove(fmt.Sprintf(format, args...))
 }
 
 // The operator attribute defines what type of operation is performed.
@@ -241,9 +256,20 @@ func (e *SVGFEMORPHOLOGYElement) ID(s string) *SVGFEMORPHOLOGYElement {
 	return e
 }
 
+func (e *SVGFEMORPHOLOGYElement) IDF(format string, args ...any) *SVGFEMORPHOLOGYElement {
+	return e.ID(fmt.Sprintf(format, args...))
+}
+
 func (e *SVGFEMORPHOLOGYElement) IfID(condition bool, s string) *SVGFEMORPHOLOGYElement {
 	if condition {
 		e.ID(s)
+	}
+	return e
+}
+
+func (e *SVGFEMORPHOLOGYElement) IfIDF(condition bool, format string, args ...any) *SVGFEMORPHOLOGYElement {
+	if condition {
+		e.ID(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -255,6 +281,10 @@ func (e *SVGFEMORPHOLOGYElement) IDRemove(s string) *SVGFEMORPHOLOGYElement {
 	}
 	e.StringAttributes.Del("id")
 	return e
+}
+
+func (e *SVGFEMORPHOLOGYElement) IDRemoveF(format string, args ...any) *SVGFEMORPHOLOGYElement {
+	return e.IDRemove(fmt.Sprintf(format, args...))
 }
 
 // Specifies one or more classnames for an element (refers to a class in a style
@@ -393,7 +423,7 @@ func (e *SVGFEMORPHOLOGYElement) DATASTAR_MERGE_STORE(v any) *SVGFEMORPHOLOGYEle
 	if err != nil {
 		panic(err)
 	}
-	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	e.CustomDataAttributes.Set("merge-store", string(b))
 	return e
 }
 
@@ -515,34 +545,34 @@ func (e *SVGFEMORPHOLOGYElement) DATASTAR_TEXTRemove() *SVGFEMORPHOLOGYElement {
 
 // Sets the event handler of the element
 
-type SVGFeMorphologyDataOnMod customDataKeyModifier
+type SVGFeMorphologyOnMod customDataKeyModifier
 
 // Debounces the event handler
-func SVGFeMorphologyDataOnModDebounce(
+func SVGFeMorphologyOnModDebounce(
 	d time.Duration,
-) SVGFeMorphologyDataOnMod {
+) SVGFeMorphologyOnMod {
 	return func() string {
 		return fmt.Sprintf("debounce_%dms", d.Milliseconds())
 	}
 }
 
 // Throttles the event handler
-func SVGFeMorphologyDataOnModThrottle(
+func SVGFeMorphologyOnModThrottle(
 	d time.Duration,
-) SVGFeMorphologyDataOnMod {
+) SVGFeMorphologyOnMod {
 	return func() string {
 		return fmt.Sprintf("throttle_%dms", d.Milliseconds())
 	}
 }
 
-func (e *SVGFEMORPHOLOGYElement) DATASTAR_ON(key string, expression string, modifiers ...SVGFeMorphologyDataOnMod) *SVGFEMORPHOLOGYElement {
+func (e *SVGFEMORPHOLOGYElement) DATASTAR_ON(key string, expression string, modifiers ...SVGFeMorphologyOnMod) *SVGFEMORPHOLOGYElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
 	key = fmt.Sprintf("data-on-%s", key)
 
-	customMods := lo.Map(modifiers, func(m SVGFeMorphologyDataOnMod, i int) customDataKeyModifier {
+	customMods := lo.Map(modifiers, func(m SVGFeMorphologyOnMod, i int) customDataKeyModifier {
 		return customDataKeyModifier(m)
 	})
 	key = customDataKey(key, customMods...)
@@ -550,7 +580,7 @@ func (e *SVGFEMORPHOLOGYElement) DATASTAR_ON(key string, expression string, modi
 	return e
 }
 
-func (e *SVGFEMORPHOLOGYElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SVGFeMorphologyDataOnMod) *SVGFEMORPHOLOGYElement {
+func (e *SVGFEMORPHOLOGYElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SVGFeMorphologyOnMod) *SVGFEMORPHOLOGYElement {
 	if condition {
 		e.DATASTAR_ON(key, expression, modifiers...)
 	}
@@ -643,7 +673,7 @@ func (e *SVGFEMORPHOLOGYElement) DATASTAR_FETCH_INDICATOR(expression string) *SV
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "DatastarFetchIndicator"
+	key := "data-fetch-indicator"
 
 	e.StringAttributes.Set(key, expression)
 	return e
@@ -661,7 +691,7 @@ func (e *SVGFEMORPHOLOGYElement) DATASTAR_FETCH_INDICATORRemove() *SVGFEMORPHOLO
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("DatastarFetchIndicator")
+	e.StringAttributes.Del("data-fetch-indicator")
 	return e
 }
 

@@ -612,9 +612,20 @@ func (e *RBElement) ID(s string) *RBElement {
 	return e
 }
 
+func (e *RBElement) IDF(format string, args ...any) *RBElement {
+	return e.ID(fmt.Sprintf(format, args...))
+}
+
 func (e *RBElement) IfID(condition bool, s string) *RBElement {
 	if condition {
 		e.ID(s)
+	}
+	return e
+}
+
+func (e *RBElement) IfIDF(condition bool, format string, args ...any) *RBElement {
+	if condition {
+		e.ID(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -626,6 +637,10 @@ func (e *RBElement) IDRemove(s string) *RBElement {
 	}
 	e.StringAttributes.Del("id")
 	return e
+}
+
+func (e *RBElement) IDRemoveF(format string, args ...any) *RBElement {
+	return e.IDRemove(fmt.Sprintf(format, args...))
 }
 
 // The inert global attribute is a Boolean attribute indicating that the browser
@@ -760,9 +775,20 @@ func (e *RBElement) IS(s string) *RBElement {
 	return e
 }
 
+func (e *RBElement) ISF(format string, args ...any) *RBElement {
+	return e.IS(fmt.Sprintf(format, args...))
+}
+
 func (e *RBElement) IfIS(condition bool, s string) *RBElement {
 	if condition {
 		e.IS(s)
+	}
+	return e
+}
+
+func (e *RBElement) IfISF(condition bool, format string, args ...any) *RBElement {
+	if condition {
+		e.IS(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -774,6 +800,10 @@ func (e *RBElement) ISRemove(s string) *RBElement {
 	}
 	e.StringAttributes.Del("is")
 	return e
+}
+
+func (e *RBElement) ISRemoveF(format string, args ...any) *RBElement {
+	return e.ISRemove(fmt.Sprintf(format, args...))
 }
 
 // The itemid global attribute provides microdata in the form of a unique, global
@@ -797,9 +827,20 @@ func (e *RBElement) ITEMID(s string) *RBElement {
 	return e
 }
 
+func (e *RBElement) ITEMIDF(format string, args ...any) *RBElement {
+	return e.ITEMID(fmt.Sprintf(format, args...))
+}
+
 func (e *RBElement) IfITEMID(condition bool, s string) *RBElement {
 	if condition {
 		e.ITEMID(s)
+	}
+	return e
+}
+
+func (e *RBElement) IfITEMIDF(condition bool, format string, args ...any) *RBElement {
+	if condition {
+		e.ITEMID(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -811,6 +852,10 @@ func (e *RBElement) ITEMIDRemove(s string) *RBElement {
 	}
 	e.StringAttributes.Del("itemid")
 	return e
+}
+
+func (e *RBElement) ITEMIDRemoveF(format string, args ...any) *RBElement {
+	return e.ITEMIDRemove(fmt.Sprintf(format, args...))
 }
 
 // The itemprop global attribute is used to add properties to an item
@@ -829,9 +874,20 @@ func (e *RBElement) ITEMPROP(s string) *RBElement {
 	return e
 }
 
+func (e *RBElement) ITEMPROPF(format string, args ...any) *RBElement {
+	return e.ITEMPROP(fmt.Sprintf(format, args...))
+}
+
 func (e *RBElement) IfITEMPROP(condition bool, s string) *RBElement {
 	if condition {
 		e.ITEMPROP(s)
+	}
+	return e
+}
+
+func (e *RBElement) IfITEMPROPF(condition bool, format string, args ...any) *RBElement {
+	if condition {
+		e.ITEMPROP(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -843,6 +899,10 @@ func (e *RBElement) ITEMPROPRemove(s string) *RBElement {
 	}
 	e.StringAttributes.Del("itemprop")
 	return e
+}
+
+func (e *RBElement) ITEMPROPRemoveF(format string, args ...any) *RBElement {
+	return e.ITEMPROPRemove(fmt.Sprintf(format, args...))
 }
 
 // Properties that are not descendants of an element with the itemscope attribute
@@ -858,9 +918,20 @@ func (e *RBElement) ITEMREF(s string) *RBElement {
 	return e
 }
 
+func (e *RBElement) ITEMREFF(format string, args ...any) *RBElement {
+	return e.ITEMREF(fmt.Sprintf(format, args...))
+}
+
 func (e *RBElement) IfITEMREF(condition bool, s string) *RBElement {
 	if condition {
 		e.ITEMREF(s)
+	}
+	return e
+}
+
+func (e *RBElement) IfITEMREFF(condition bool, format string, args ...any) *RBElement {
+	if condition {
+		e.ITEMREF(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -872,6 +943,10 @@ func (e *RBElement) ITEMREFRemove(s string) *RBElement {
 	}
 	e.StringAttributes.Del("itemref")
 	return e
+}
+
+func (e *RBElement) ITEMREFRemoveF(format string, args ...any) *RBElement {
+	return e.ITEMREFRemove(fmt.Sprintf(format, args...))
 }
 
 // The itemscope global attribute is used to add an item to a microdata DOM tree
@@ -935,9 +1010,20 @@ func (e *RBElement) ITEMTYPE(s string) *RBElement {
 	return e
 }
 
+func (e *RBElement) ITEMTYPEF(format string, args ...any) *RBElement {
+	return e.ITEMTYPE(fmt.Sprintf(format, args...))
+}
+
 func (e *RBElement) IfITEMTYPE(condition bool, s string) *RBElement {
 	if condition {
 		e.ITEMTYPE(s)
+	}
+	return e
+}
+
+func (e *RBElement) IfITEMTYPEF(condition bool, format string, args ...any) *RBElement {
+	if condition {
+		e.ITEMTYPE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -949,6 +1035,10 @@ func (e *RBElement) ITEMTYPERemove(s string) *RBElement {
 	}
 	e.StringAttributes.Del("itemtype")
 	return e
+}
+
+func (e *RBElement) ITEMTYPERemoveF(format string, args ...any) *RBElement {
+	return e.ITEMTYPERemove(fmt.Sprintf(format, args...))
 }
 
 // The lang global attribute helps define the language of an element: the language
@@ -965,9 +1055,20 @@ func (e *RBElement) LANG(s string) *RBElement {
 	return e
 }
 
+func (e *RBElement) LANGF(format string, args ...any) *RBElement {
+	return e.LANG(fmt.Sprintf(format, args...))
+}
+
 func (e *RBElement) IfLANG(condition bool, s string) *RBElement {
 	if condition {
 		e.LANG(s)
+	}
+	return e
+}
+
+func (e *RBElement) IfLANGF(condition bool, format string, args ...any) *RBElement {
+	if condition {
+		e.LANG(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -979,6 +1080,10 @@ func (e *RBElement) LANGRemove(s string) *RBElement {
 	}
 	e.StringAttributes.Del("lang")
 	return e
+}
+
+func (e *RBElement) LANGRemoveF(format string, args ...any) *RBElement {
+	return e.LANGRemove(fmt.Sprintf(format, args...))
 }
 
 // The nonce global attribute is a unique identifier used to declare inline
@@ -993,9 +1098,20 @@ func (e *RBElement) NONCE(s string) *RBElement {
 	return e
 }
 
+func (e *RBElement) NONCEF(format string, args ...any) *RBElement {
+	return e.NONCE(fmt.Sprintf(format, args...))
+}
+
 func (e *RBElement) IfNONCE(condition bool, s string) *RBElement {
 	if condition {
 		e.NONCE(s)
+	}
+	return e
+}
+
+func (e *RBElement) IfNONCEF(condition bool, format string, args ...any) *RBElement {
+	if condition {
+		e.NONCE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1007,6 +1123,10 @@ func (e *RBElement) NONCERemove(s string) *RBElement {
 	}
 	e.StringAttributes.Del("nonce")
 	return e
+}
+
+func (e *RBElement) NONCERemoveF(format string, args ...any) *RBElement {
+	return e.NONCERemove(fmt.Sprintf(format, args...))
 }
 
 // The part global attribute contains a space-separated list of the part names of
@@ -1101,9 +1221,20 @@ func (e *RBElement) ROLE(s string) *RBElement {
 	return e
 }
 
+func (e *RBElement) ROLEF(format string, args ...any) *RBElement {
+	return e.ROLE(fmt.Sprintf(format, args...))
+}
+
 func (e *RBElement) IfROLE(condition bool, s string) *RBElement {
 	if condition {
 		e.ROLE(s)
+	}
+	return e
+}
+
+func (e *RBElement) IfROLEF(condition bool, format string, args ...any) *RBElement {
+	if condition {
+		e.ROLE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1115,6 +1246,10 @@ func (e *RBElement) ROLERemove(s string) *RBElement {
 	}
 	e.StringAttributes.Del("role")
 	return e
+}
+
+func (e *RBElement) ROLERemoveF(format string, args ...any) *RBElement {
+	return e.ROLERemove(fmt.Sprintf(format, args...))
 }
 
 // The slot global attribute assigns a slot in a shadow DOM shadow tree to an
@@ -1129,9 +1264,20 @@ func (e *RBElement) SLOT(s string) *RBElement {
 	return e
 }
 
+func (e *RBElement) SLOTF(format string, args ...any) *RBElement {
+	return e.SLOT(fmt.Sprintf(format, args...))
+}
+
 func (e *RBElement) IfSLOT(condition bool, s string) *RBElement {
 	if condition {
 		e.SLOT(s)
+	}
+	return e
+}
+
+func (e *RBElement) IfSLOTF(condition bool, format string, args ...any) *RBElement {
+	if condition {
+		e.SLOT(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1143,6 +1289,10 @@ func (e *RBElement) SLOTRemove(s string) *RBElement {
 	}
 	e.StringAttributes.Del("slot")
 	return e
+}
+
+func (e *RBElement) SLOTRemoveF(format string, args ...any) *RBElement {
+	return e.SLOTRemove(fmt.Sprintf(format, args...))
 }
 
 // The spellcheck global attribute is an enumerated attribute that defines whether
@@ -1347,9 +1497,20 @@ func (e *RBElement) TITLE(s string) *RBElement {
 	return e
 }
 
+func (e *RBElement) TITLEF(format string, args ...any) *RBElement {
+	return e.TITLE(fmt.Sprintf(format, args...))
+}
+
 func (e *RBElement) IfTITLE(condition bool, s string) *RBElement {
 	if condition {
 		e.TITLE(s)
+	}
+	return e
+}
+
+func (e *RBElement) IfTITLEF(condition bool, format string, args ...any) *RBElement {
+	if condition {
+		e.TITLE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1361,6 +1522,10 @@ func (e *RBElement) TITLERemove(s string) *RBElement {
 	}
 	e.StringAttributes.Del("title")
 	return e
+}
+
+func (e *RBElement) TITLERemoveF(format string, args ...any) *RBElement {
+	return e.TITLERemove(fmt.Sprintf(format, args...))
 }
 
 // The translate global attribute is an enumerated attribute that is used to
@@ -1405,7 +1570,7 @@ func (e *RBElement) DATASTAR_MERGE_STORE(v any) *RBElement {
 	if err != nil {
 		panic(err)
 	}
-	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	e.CustomDataAttributes.Set("merge-store", string(b))
 	return e
 }
 
@@ -1527,34 +1692,34 @@ func (e *RBElement) DATASTAR_TEXTRemove() *RBElement {
 
 // Sets the event handler of the element
 
-type RbDataOnMod customDataKeyModifier
+type RbOnMod customDataKeyModifier
 
 // Debounces the event handler
-func RbDataOnModDebounce(
+func RbOnModDebounce(
 	d time.Duration,
-) RbDataOnMod {
+) RbOnMod {
 	return func() string {
 		return fmt.Sprintf("debounce_%dms", d.Milliseconds())
 	}
 }
 
 // Throttles the event handler
-func RbDataOnModThrottle(
+func RbOnModThrottle(
 	d time.Duration,
-) RbDataOnMod {
+) RbOnMod {
 	return func() string {
 		return fmt.Sprintf("throttle_%dms", d.Milliseconds())
 	}
 }
 
-func (e *RBElement) DATASTAR_ON(key string, expression string, modifiers ...RbDataOnMod) *RBElement {
+func (e *RBElement) DATASTAR_ON(key string, expression string, modifiers ...RbOnMod) *RBElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
 	key = fmt.Sprintf("data-on-%s", key)
 
-	customMods := lo.Map(modifiers, func(m RbDataOnMod, i int) customDataKeyModifier {
+	customMods := lo.Map(modifiers, func(m RbOnMod, i int) customDataKeyModifier {
 		return customDataKeyModifier(m)
 	})
 	key = customDataKey(key, customMods...)
@@ -1562,7 +1727,7 @@ func (e *RBElement) DATASTAR_ON(key string, expression string, modifiers ...RbDa
 	return e
 }
 
-func (e *RBElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...RbDataOnMod) *RBElement {
+func (e *RBElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...RbOnMod) *RBElement {
 	if condition {
 		e.DATASTAR_ON(key, expression, modifiers...)
 	}
@@ -1655,7 +1820,7 @@ func (e *RBElement) DATASTAR_FETCH_INDICATOR(expression string) *RBElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "DatastarFetchIndicator"
+	key := "data-fetch-indicator"
 
 	e.StringAttributes.Set(key, expression)
 	return e
@@ -1673,7 +1838,7 @@ func (e *RBElement) DATASTAR_FETCH_INDICATORRemove() *RBElement {
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("DatastarFetchIndicator")
+	e.StringAttributes.Del("data-fetch-indicator")
 	return e
 }
 

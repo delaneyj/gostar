@@ -169,9 +169,20 @@ func (e *SLBREADCRUMBITEMElement) HREF(s string) *SLBREADCRUMBITEMElement {
 	return e
 }
 
+func (e *SLBREADCRUMBITEMElement) HREFF(format string, args ...any) *SLBREADCRUMBITEMElement {
+	return e.HREF(fmt.Sprintf(format, args...))
+}
+
 func (e *SLBREADCRUMBITEMElement) IfHREF(condition bool, s string) *SLBREADCRUMBITEMElement {
 	if condition {
 		e.HREF(s)
+	}
+	return e
+}
+
+func (e *SLBREADCRUMBITEMElement) IfHREFF(condition bool, format string, args ...any) *SLBREADCRUMBITEMElement {
+	if condition {
+		e.HREF(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -185,6 +196,10 @@ func (e *SLBREADCRUMBITEMElement) HREFRemove(s string) *SLBREADCRUMBITEMElement 
 	return e
 }
 
+func (e *SLBREADCRUMBITEMElement) HREFRemoveF(format string, args ...any) *SLBREADCRUMBITEMElement {
+	return e.HREFRemove(fmt.Sprintf(format, args...))
+}
+
 // Merges the store with the given object
 
 func (e *SLBREADCRUMBITEMElement) DATASTAR_MERGE_STORE(v any) *SLBREADCRUMBITEMElement {
@@ -195,7 +210,7 @@ func (e *SLBREADCRUMBITEMElement) DATASTAR_MERGE_STORE(v any) *SLBREADCRUMBITEME
 	if err != nil {
 		panic(err)
 	}
-	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	e.CustomDataAttributes.Set("merge-store", string(b))
 	return e
 }
 
@@ -317,34 +332,34 @@ func (e *SLBREADCRUMBITEMElement) DATASTAR_TEXTRemove() *SLBREADCRUMBITEMElement
 
 // Sets the event handler of the element
 
-type SLBreadcrumbItemDataOnMod customDataKeyModifier
+type SLBreadcrumbItemOnMod customDataKeyModifier
 
 // Debounces the event handler
-func SLBreadcrumbItemDataOnModDebounce(
+func SLBreadcrumbItemOnModDebounce(
 	d time.Duration,
-) SLBreadcrumbItemDataOnMod {
+) SLBreadcrumbItemOnMod {
 	return func() string {
 		return fmt.Sprintf("debounce_%dms", d.Milliseconds())
 	}
 }
 
 // Throttles the event handler
-func SLBreadcrumbItemDataOnModThrottle(
+func SLBreadcrumbItemOnModThrottle(
 	d time.Duration,
-) SLBreadcrumbItemDataOnMod {
+) SLBreadcrumbItemOnMod {
 	return func() string {
 		return fmt.Sprintf("throttle_%dms", d.Milliseconds())
 	}
 }
 
-func (e *SLBREADCRUMBITEMElement) DATASTAR_ON(key string, expression string, modifiers ...SLBreadcrumbItemDataOnMod) *SLBREADCRUMBITEMElement {
+func (e *SLBREADCRUMBITEMElement) DATASTAR_ON(key string, expression string, modifiers ...SLBreadcrumbItemOnMod) *SLBREADCRUMBITEMElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
 	key = fmt.Sprintf("data-on-%s", key)
 
-	customMods := lo.Map(modifiers, func(m SLBreadcrumbItemDataOnMod, i int) customDataKeyModifier {
+	customMods := lo.Map(modifiers, func(m SLBreadcrumbItemOnMod, i int) customDataKeyModifier {
 		return customDataKeyModifier(m)
 	})
 	key = customDataKey(key, customMods...)
@@ -352,7 +367,7 @@ func (e *SLBREADCRUMBITEMElement) DATASTAR_ON(key string, expression string, mod
 	return e
 }
 
-func (e *SLBREADCRUMBITEMElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SLBreadcrumbItemDataOnMod) *SLBREADCRUMBITEMElement {
+func (e *SLBREADCRUMBITEMElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SLBreadcrumbItemOnMod) *SLBREADCRUMBITEMElement {
 	if condition {
 		e.DATASTAR_ON(key, expression, modifiers...)
 	}
@@ -445,7 +460,7 @@ func (e *SLBREADCRUMBITEMElement) DATASTAR_FETCH_INDICATOR(expression string) *S
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "DatastarFetchIndicator"
+	key := "data-fetch-indicator"
 
 	e.StringAttributes.Set(key, expression)
 	return e
@@ -463,7 +478,7 @@ func (e *SLBREADCRUMBITEMElement) DATASTAR_FETCH_INDICATORRemove() *SLBREADCRUMB
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("DatastarFetchIndicator")
+	e.StringAttributes.Del("data-fetch-indicator")
 	return e
 }
 

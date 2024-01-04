@@ -174,9 +174,20 @@ func (e *QElement) CITE(s string) *QElement {
 	return e
 }
 
+func (e *QElement) CITEF(format string, args ...any) *QElement {
+	return e.CITE(fmt.Sprintf(format, args...))
+}
+
 func (e *QElement) IfCITE(condition bool, s string) *QElement {
 	if condition {
 		e.CITE(s)
+	}
+	return e
+}
+
+func (e *QElement) IfCITEF(condition bool, format string, args ...any) *QElement {
+	if condition {
+		e.CITE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -188,6 +199,10 @@ func (e *QElement) CITERemove(s string) *QElement {
 	}
 	e.StringAttributes.Del("cite")
 	return e
+}
+
+func (e *QElement) CITERemoveF(format string, args ...any) *QElement {
+	return e.CITERemove(fmt.Sprintf(format, args...))
 }
 
 // The accesskey global attribute provides a hint for generating a keyboard
@@ -635,9 +650,20 @@ func (e *QElement) ID(s string) *QElement {
 	return e
 }
 
+func (e *QElement) IDF(format string, args ...any) *QElement {
+	return e.ID(fmt.Sprintf(format, args...))
+}
+
 func (e *QElement) IfID(condition bool, s string) *QElement {
 	if condition {
 		e.ID(s)
+	}
+	return e
+}
+
+func (e *QElement) IfIDF(condition bool, format string, args ...any) *QElement {
+	if condition {
+		e.ID(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -649,6 +675,10 @@ func (e *QElement) IDRemove(s string) *QElement {
 	}
 	e.StringAttributes.Del("id")
 	return e
+}
+
+func (e *QElement) IDRemoveF(format string, args ...any) *QElement {
+	return e.IDRemove(fmt.Sprintf(format, args...))
 }
 
 // The inert global attribute is a Boolean attribute indicating that the browser
@@ -783,9 +813,20 @@ func (e *QElement) IS(s string) *QElement {
 	return e
 }
 
+func (e *QElement) ISF(format string, args ...any) *QElement {
+	return e.IS(fmt.Sprintf(format, args...))
+}
+
 func (e *QElement) IfIS(condition bool, s string) *QElement {
 	if condition {
 		e.IS(s)
+	}
+	return e
+}
+
+func (e *QElement) IfISF(condition bool, format string, args ...any) *QElement {
+	if condition {
+		e.IS(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -797,6 +838,10 @@ func (e *QElement) ISRemove(s string) *QElement {
 	}
 	e.StringAttributes.Del("is")
 	return e
+}
+
+func (e *QElement) ISRemoveF(format string, args ...any) *QElement {
+	return e.ISRemove(fmt.Sprintf(format, args...))
 }
 
 // The itemid global attribute provides microdata in the form of a unique, global
@@ -820,9 +865,20 @@ func (e *QElement) ITEMID(s string) *QElement {
 	return e
 }
 
+func (e *QElement) ITEMIDF(format string, args ...any) *QElement {
+	return e.ITEMID(fmt.Sprintf(format, args...))
+}
+
 func (e *QElement) IfITEMID(condition bool, s string) *QElement {
 	if condition {
 		e.ITEMID(s)
+	}
+	return e
+}
+
+func (e *QElement) IfITEMIDF(condition bool, format string, args ...any) *QElement {
+	if condition {
+		e.ITEMID(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -834,6 +890,10 @@ func (e *QElement) ITEMIDRemove(s string) *QElement {
 	}
 	e.StringAttributes.Del("itemid")
 	return e
+}
+
+func (e *QElement) ITEMIDRemoveF(format string, args ...any) *QElement {
+	return e.ITEMIDRemove(fmt.Sprintf(format, args...))
 }
 
 // The itemprop global attribute is used to add properties to an item
@@ -852,9 +912,20 @@ func (e *QElement) ITEMPROP(s string) *QElement {
 	return e
 }
 
+func (e *QElement) ITEMPROPF(format string, args ...any) *QElement {
+	return e.ITEMPROP(fmt.Sprintf(format, args...))
+}
+
 func (e *QElement) IfITEMPROP(condition bool, s string) *QElement {
 	if condition {
 		e.ITEMPROP(s)
+	}
+	return e
+}
+
+func (e *QElement) IfITEMPROPF(condition bool, format string, args ...any) *QElement {
+	if condition {
+		e.ITEMPROP(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -866,6 +937,10 @@ func (e *QElement) ITEMPROPRemove(s string) *QElement {
 	}
 	e.StringAttributes.Del("itemprop")
 	return e
+}
+
+func (e *QElement) ITEMPROPRemoveF(format string, args ...any) *QElement {
+	return e.ITEMPROPRemove(fmt.Sprintf(format, args...))
 }
 
 // Properties that are not descendants of an element with the itemscope attribute
@@ -881,9 +956,20 @@ func (e *QElement) ITEMREF(s string) *QElement {
 	return e
 }
 
+func (e *QElement) ITEMREFF(format string, args ...any) *QElement {
+	return e.ITEMREF(fmt.Sprintf(format, args...))
+}
+
 func (e *QElement) IfITEMREF(condition bool, s string) *QElement {
 	if condition {
 		e.ITEMREF(s)
+	}
+	return e
+}
+
+func (e *QElement) IfITEMREFF(condition bool, format string, args ...any) *QElement {
+	if condition {
+		e.ITEMREF(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -895,6 +981,10 @@ func (e *QElement) ITEMREFRemove(s string) *QElement {
 	}
 	e.StringAttributes.Del("itemref")
 	return e
+}
+
+func (e *QElement) ITEMREFRemoveF(format string, args ...any) *QElement {
+	return e.ITEMREFRemove(fmt.Sprintf(format, args...))
 }
 
 // The itemscope global attribute is used to add an item to a microdata DOM tree
@@ -958,9 +1048,20 @@ func (e *QElement) ITEMTYPE(s string) *QElement {
 	return e
 }
 
+func (e *QElement) ITEMTYPEF(format string, args ...any) *QElement {
+	return e.ITEMTYPE(fmt.Sprintf(format, args...))
+}
+
 func (e *QElement) IfITEMTYPE(condition bool, s string) *QElement {
 	if condition {
 		e.ITEMTYPE(s)
+	}
+	return e
+}
+
+func (e *QElement) IfITEMTYPEF(condition bool, format string, args ...any) *QElement {
+	if condition {
+		e.ITEMTYPE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -972,6 +1073,10 @@ func (e *QElement) ITEMTYPERemove(s string) *QElement {
 	}
 	e.StringAttributes.Del("itemtype")
 	return e
+}
+
+func (e *QElement) ITEMTYPERemoveF(format string, args ...any) *QElement {
+	return e.ITEMTYPERemove(fmt.Sprintf(format, args...))
 }
 
 // The lang global attribute helps define the language of an element: the language
@@ -988,9 +1093,20 @@ func (e *QElement) LANG(s string) *QElement {
 	return e
 }
 
+func (e *QElement) LANGF(format string, args ...any) *QElement {
+	return e.LANG(fmt.Sprintf(format, args...))
+}
+
 func (e *QElement) IfLANG(condition bool, s string) *QElement {
 	if condition {
 		e.LANG(s)
+	}
+	return e
+}
+
+func (e *QElement) IfLANGF(condition bool, format string, args ...any) *QElement {
+	if condition {
+		e.LANG(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1002,6 +1118,10 @@ func (e *QElement) LANGRemove(s string) *QElement {
 	}
 	e.StringAttributes.Del("lang")
 	return e
+}
+
+func (e *QElement) LANGRemoveF(format string, args ...any) *QElement {
+	return e.LANGRemove(fmt.Sprintf(format, args...))
 }
 
 // The nonce global attribute is a unique identifier used to declare inline
@@ -1016,9 +1136,20 @@ func (e *QElement) NONCE(s string) *QElement {
 	return e
 }
 
+func (e *QElement) NONCEF(format string, args ...any) *QElement {
+	return e.NONCE(fmt.Sprintf(format, args...))
+}
+
 func (e *QElement) IfNONCE(condition bool, s string) *QElement {
 	if condition {
 		e.NONCE(s)
+	}
+	return e
+}
+
+func (e *QElement) IfNONCEF(condition bool, format string, args ...any) *QElement {
+	if condition {
+		e.NONCE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1030,6 +1161,10 @@ func (e *QElement) NONCERemove(s string) *QElement {
 	}
 	e.StringAttributes.Del("nonce")
 	return e
+}
+
+func (e *QElement) NONCERemoveF(format string, args ...any) *QElement {
+	return e.NONCERemove(fmt.Sprintf(format, args...))
 }
 
 // The part global attribute contains a space-separated list of the part names of
@@ -1124,9 +1259,20 @@ func (e *QElement) ROLE(s string) *QElement {
 	return e
 }
 
+func (e *QElement) ROLEF(format string, args ...any) *QElement {
+	return e.ROLE(fmt.Sprintf(format, args...))
+}
+
 func (e *QElement) IfROLE(condition bool, s string) *QElement {
 	if condition {
 		e.ROLE(s)
+	}
+	return e
+}
+
+func (e *QElement) IfROLEF(condition bool, format string, args ...any) *QElement {
+	if condition {
+		e.ROLE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1138,6 +1284,10 @@ func (e *QElement) ROLERemove(s string) *QElement {
 	}
 	e.StringAttributes.Del("role")
 	return e
+}
+
+func (e *QElement) ROLERemoveF(format string, args ...any) *QElement {
+	return e.ROLERemove(fmt.Sprintf(format, args...))
 }
 
 // The slot global attribute assigns a slot in a shadow DOM shadow tree to an
@@ -1152,9 +1302,20 @@ func (e *QElement) SLOT(s string) *QElement {
 	return e
 }
 
+func (e *QElement) SLOTF(format string, args ...any) *QElement {
+	return e.SLOT(fmt.Sprintf(format, args...))
+}
+
 func (e *QElement) IfSLOT(condition bool, s string) *QElement {
 	if condition {
 		e.SLOT(s)
+	}
+	return e
+}
+
+func (e *QElement) IfSLOTF(condition bool, format string, args ...any) *QElement {
+	if condition {
+		e.SLOT(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1166,6 +1327,10 @@ func (e *QElement) SLOTRemove(s string) *QElement {
 	}
 	e.StringAttributes.Del("slot")
 	return e
+}
+
+func (e *QElement) SLOTRemoveF(format string, args ...any) *QElement {
+	return e.SLOTRemove(fmt.Sprintf(format, args...))
 }
 
 // The spellcheck global attribute is an enumerated attribute that defines whether
@@ -1370,9 +1535,20 @@ func (e *QElement) TITLE(s string) *QElement {
 	return e
 }
 
+func (e *QElement) TITLEF(format string, args ...any) *QElement {
+	return e.TITLE(fmt.Sprintf(format, args...))
+}
+
 func (e *QElement) IfTITLE(condition bool, s string) *QElement {
 	if condition {
 		e.TITLE(s)
+	}
+	return e
+}
+
+func (e *QElement) IfTITLEF(condition bool, format string, args ...any) *QElement {
+	if condition {
+		e.TITLE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1384,6 +1560,10 @@ func (e *QElement) TITLERemove(s string) *QElement {
 	}
 	e.StringAttributes.Del("title")
 	return e
+}
+
+func (e *QElement) TITLERemoveF(format string, args ...any) *QElement {
+	return e.TITLERemove(fmt.Sprintf(format, args...))
 }
 
 // The translate global attribute is an enumerated attribute that is used to
@@ -1428,7 +1608,7 @@ func (e *QElement) DATASTAR_MERGE_STORE(v any) *QElement {
 	if err != nil {
 		panic(err)
 	}
-	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	e.CustomDataAttributes.Set("merge-store", string(b))
 	return e
 }
 
@@ -1550,34 +1730,34 @@ func (e *QElement) DATASTAR_TEXTRemove() *QElement {
 
 // Sets the event handler of the element
 
-type QDataOnMod customDataKeyModifier
+type QOnMod customDataKeyModifier
 
 // Debounces the event handler
-func QDataOnModDebounce(
+func QOnModDebounce(
 	d time.Duration,
-) QDataOnMod {
+) QOnMod {
 	return func() string {
 		return fmt.Sprintf("debounce_%dms", d.Milliseconds())
 	}
 }
 
 // Throttles the event handler
-func QDataOnModThrottle(
+func QOnModThrottle(
 	d time.Duration,
-) QDataOnMod {
+) QOnMod {
 	return func() string {
 		return fmt.Sprintf("throttle_%dms", d.Milliseconds())
 	}
 }
 
-func (e *QElement) DATASTAR_ON(key string, expression string, modifiers ...QDataOnMod) *QElement {
+func (e *QElement) DATASTAR_ON(key string, expression string, modifiers ...QOnMod) *QElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
 	key = fmt.Sprintf("data-on-%s", key)
 
-	customMods := lo.Map(modifiers, func(m QDataOnMod, i int) customDataKeyModifier {
+	customMods := lo.Map(modifiers, func(m QOnMod, i int) customDataKeyModifier {
 		return customDataKeyModifier(m)
 	})
 	key = customDataKey(key, customMods...)
@@ -1585,7 +1765,7 @@ func (e *QElement) DATASTAR_ON(key string, expression string, modifiers ...QData
 	return e
 }
 
-func (e *QElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...QDataOnMod) *QElement {
+func (e *QElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...QOnMod) *QElement {
 	if condition {
 		e.DATASTAR_ON(key, expression, modifiers...)
 	}
@@ -1678,7 +1858,7 @@ func (e *QElement) DATASTAR_FETCH_INDICATOR(expression string) *QElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "DatastarFetchIndicator"
+	key := "data-fetch-indicator"
 
 	e.StringAttributes.Set(key, expression)
 	return e
@@ -1696,7 +1876,7 @@ func (e *QElement) DATASTAR_FETCH_INDICATORRemove() *QElement {
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("DatastarFetchIndicator")
+	e.StringAttributes.Del("data-fetch-indicator")
 	return e
 }
 

@@ -172,9 +172,20 @@ func (e *SVGGElement) REQUIRED_EXTENSIONS(s string) *SVGGElement {
 	return e
 }
 
+func (e *SVGGElement) REQUIRED_EXTENSIONSF(format string, args ...any) *SVGGElement {
+	return e.REQUIRED_EXTENSIONS(fmt.Sprintf(format, args...))
+}
+
 func (e *SVGGElement) IfREQUIRED_EXTENSIONS(condition bool, s string) *SVGGElement {
 	if condition {
 		e.REQUIRED_EXTENSIONS(s)
+	}
+	return e
+}
+
+func (e *SVGGElement) IfREQUIRED_EXTENSIONSF(condition bool, format string, args ...any) *SVGGElement {
+	if condition {
+		e.REQUIRED_EXTENSIONS(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -188,6 +199,10 @@ func (e *SVGGElement) REQUIRED_EXTENSIONSRemove(s string) *SVGGElement {
 	return e
 }
 
+func (e *SVGGElement) REQUIRED_EXTENSIONSRemoveF(format string, args ...any) *SVGGElement {
+	return e.REQUIRED_EXTENSIONSRemove(fmt.Sprintf(format, args...))
+}
+
 // A space-separated list of required features, indicating that the parent SVG
 // document must include support for all of the specified features for this
 // element to be valid.
@@ -199,9 +214,20 @@ func (e *SVGGElement) REQUIRED_FEATURES(s string) *SVGGElement {
 	return e
 }
 
+func (e *SVGGElement) REQUIRED_FEATURESF(format string, args ...any) *SVGGElement {
+	return e.REQUIRED_FEATURES(fmt.Sprintf(format, args...))
+}
+
 func (e *SVGGElement) IfREQUIRED_FEATURES(condition bool, s string) *SVGGElement {
 	if condition {
 		e.REQUIRED_FEATURES(s)
+	}
+	return e
+}
+
+func (e *SVGGElement) IfREQUIRED_FEATURESF(condition bool, format string, args ...any) *SVGGElement {
+	if condition {
+		e.REQUIRED_FEATURES(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -215,6 +241,10 @@ func (e *SVGGElement) REQUIRED_FEATURESRemove(s string) *SVGGElement {
 	return e
 }
 
+func (e *SVGGElement) REQUIRED_FEATURESRemoveF(format string, args ...any) *SVGGElement {
+	return e.REQUIRED_FEATURESRemove(fmt.Sprintf(format, args...))
+}
+
 // A space-separated list of language codes, indicating that the parent SVG
 // document must include support for all of the specified languages for this
 // element to be valid.
@@ -226,9 +256,20 @@ func (e *SVGGElement) SYSTEM_LANGUAGE(s string) *SVGGElement {
 	return e
 }
 
+func (e *SVGGElement) SYSTEM_LANGUAGEF(format string, args ...any) *SVGGElement {
+	return e.SYSTEM_LANGUAGE(fmt.Sprintf(format, args...))
+}
+
 func (e *SVGGElement) IfSYSTEM_LANGUAGE(condition bool, s string) *SVGGElement {
 	if condition {
 		e.SYSTEM_LANGUAGE(s)
+	}
+	return e
+}
+
+func (e *SVGGElement) IfSYSTEM_LANGUAGEF(condition bool, format string, args ...any) *SVGGElement {
+	if condition {
+		e.SYSTEM_LANGUAGE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -242,6 +283,10 @@ func (e *SVGGElement) SYSTEM_LANGUAGERemove(s string) *SVGGElement {
 	return e
 }
 
+func (e *SVGGElement) SYSTEM_LANGUAGERemoveF(format string, args ...any) *SVGGElement {
+	return e.SYSTEM_LANGUAGERemove(fmt.Sprintf(format, args...))
+}
+
 // Specifies a unique id for an element
 func (e *SVGGElement) ID(s string) *SVGGElement {
 	if e.StringAttributes == nil {
@@ -251,9 +296,20 @@ func (e *SVGGElement) ID(s string) *SVGGElement {
 	return e
 }
 
+func (e *SVGGElement) IDF(format string, args ...any) *SVGGElement {
+	return e.ID(fmt.Sprintf(format, args...))
+}
+
 func (e *SVGGElement) IfID(condition bool, s string) *SVGGElement {
 	if condition {
 		e.ID(s)
+	}
+	return e
+}
+
+func (e *SVGGElement) IfIDF(condition bool, format string, args ...any) *SVGGElement {
+	if condition {
+		e.ID(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -265,6 +321,10 @@ func (e *SVGGElement) IDRemove(s string) *SVGGElement {
 	}
 	e.StringAttributes.Del("id")
 	return e
+}
+
+func (e *SVGGElement) IDRemoveF(format string, args ...any) *SVGGElement {
+	return e.IDRemove(fmt.Sprintf(format, args...))
 }
 
 // Specifies one or more classnames for an element (refers to a class in a style
@@ -403,7 +463,7 @@ func (e *SVGGElement) DATASTAR_MERGE_STORE(v any) *SVGGElement {
 	if err != nil {
 		panic(err)
 	}
-	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	e.CustomDataAttributes.Set("merge-store", string(b))
 	return e
 }
 
@@ -525,34 +585,34 @@ func (e *SVGGElement) DATASTAR_TEXTRemove() *SVGGElement {
 
 // Sets the event handler of the element
 
-type SVGGDataOnMod customDataKeyModifier
+type SVGGOnMod customDataKeyModifier
 
 // Debounces the event handler
-func SVGGDataOnModDebounce(
+func SVGGOnModDebounce(
 	d time.Duration,
-) SVGGDataOnMod {
+) SVGGOnMod {
 	return func() string {
 		return fmt.Sprintf("debounce_%dms", d.Milliseconds())
 	}
 }
 
 // Throttles the event handler
-func SVGGDataOnModThrottle(
+func SVGGOnModThrottle(
 	d time.Duration,
-) SVGGDataOnMod {
+) SVGGOnMod {
 	return func() string {
 		return fmt.Sprintf("throttle_%dms", d.Milliseconds())
 	}
 }
 
-func (e *SVGGElement) DATASTAR_ON(key string, expression string, modifiers ...SVGGDataOnMod) *SVGGElement {
+func (e *SVGGElement) DATASTAR_ON(key string, expression string, modifiers ...SVGGOnMod) *SVGGElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
 	key = fmt.Sprintf("data-on-%s", key)
 
-	customMods := lo.Map(modifiers, func(m SVGGDataOnMod, i int) customDataKeyModifier {
+	customMods := lo.Map(modifiers, func(m SVGGOnMod, i int) customDataKeyModifier {
 		return customDataKeyModifier(m)
 	})
 	key = customDataKey(key, customMods...)
@@ -560,7 +620,7 @@ func (e *SVGGElement) DATASTAR_ON(key string, expression string, modifiers ...SV
 	return e
 }
 
-func (e *SVGGElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SVGGDataOnMod) *SVGGElement {
+func (e *SVGGElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SVGGOnMod) *SVGGElement {
 	if condition {
 		e.DATASTAR_ON(key, expression, modifiers...)
 	}
@@ -653,7 +713,7 @@ func (e *SVGGElement) DATASTAR_FETCH_INDICATOR(expression string) *SVGGElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "DatastarFetchIndicator"
+	key := "data-fetch-indicator"
 
 	e.StringAttributes.Set(key, expression)
 	return e
@@ -671,7 +731,7 @@ func (e *SVGGElement) DATASTAR_FETCH_INDICATORRemove() *SVGGElement {
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("DatastarFetchIndicator")
+	e.StringAttributes.Del("data-fetch-indicator")
 	return e
 }
 

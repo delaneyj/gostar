@@ -608,9 +608,20 @@ func (e *FIELDSETElement) ID(s string) *FIELDSETElement {
 	return e
 }
 
+func (e *FIELDSETElement) IDF(format string, args ...any) *FIELDSETElement {
+	return e.ID(fmt.Sprintf(format, args...))
+}
+
 func (e *FIELDSETElement) IfID(condition bool, s string) *FIELDSETElement {
 	if condition {
 		e.ID(s)
+	}
+	return e
+}
+
+func (e *FIELDSETElement) IfIDF(condition bool, format string, args ...any) *FIELDSETElement {
+	if condition {
+		e.ID(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -622,6 +633,10 @@ func (e *FIELDSETElement) IDRemove(s string) *FIELDSETElement {
 	}
 	e.StringAttributes.Del("id")
 	return e
+}
+
+func (e *FIELDSETElement) IDRemoveF(format string, args ...any) *FIELDSETElement {
+	return e.IDRemove(fmt.Sprintf(format, args...))
 }
 
 // The inert global attribute is a Boolean attribute indicating that the browser
@@ -756,9 +771,20 @@ func (e *FIELDSETElement) IS(s string) *FIELDSETElement {
 	return e
 }
 
+func (e *FIELDSETElement) ISF(format string, args ...any) *FIELDSETElement {
+	return e.IS(fmt.Sprintf(format, args...))
+}
+
 func (e *FIELDSETElement) IfIS(condition bool, s string) *FIELDSETElement {
 	if condition {
 		e.IS(s)
+	}
+	return e
+}
+
+func (e *FIELDSETElement) IfISF(condition bool, format string, args ...any) *FIELDSETElement {
+	if condition {
+		e.IS(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -770,6 +796,10 @@ func (e *FIELDSETElement) ISRemove(s string) *FIELDSETElement {
 	}
 	e.StringAttributes.Del("is")
 	return e
+}
+
+func (e *FIELDSETElement) ISRemoveF(format string, args ...any) *FIELDSETElement {
+	return e.ISRemove(fmt.Sprintf(format, args...))
 }
 
 // The itemid global attribute provides microdata in the form of a unique, global
@@ -793,9 +823,20 @@ func (e *FIELDSETElement) ITEMID(s string) *FIELDSETElement {
 	return e
 }
 
+func (e *FIELDSETElement) ITEMIDF(format string, args ...any) *FIELDSETElement {
+	return e.ITEMID(fmt.Sprintf(format, args...))
+}
+
 func (e *FIELDSETElement) IfITEMID(condition bool, s string) *FIELDSETElement {
 	if condition {
 		e.ITEMID(s)
+	}
+	return e
+}
+
+func (e *FIELDSETElement) IfITEMIDF(condition bool, format string, args ...any) *FIELDSETElement {
+	if condition {
+		e.ITEMID(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -807,6 +848,10 @@ func (e *FIELDSETElement) ITEMIDRemove(s string) *FIELDSETElement {
 	}
 	e.StringAttributes.Del("itemid")
 	return e
+}
+
+func (e *FIELDSETElement) ITEMIDRemoveF(format string, args ...any) *FIELDSETElement {
+	return e.ITEMIDRemove(fmt.Sprintf(format, args...))
 }
 
 // The itemprop global attribute is used to add properties to an item
@@ -825,9 +870,20 @@ func (e *FIELDSETElement) ITEMPROP(s string) *FIELDSETElement {
 	return e
 }
 
+func (e *FIELDSETElement) ITEMPROPF(format string, args ...any) *FIELDSETElement {
+	return e.ITEMPROP(fmt.Sprintf(format, args...))
+}
+
 func (e *FIELDSETElement) IfITEMPROP(condition bool, s string) *FIELDSETElement {
 	if condition {
 		e.ITEMPROP(s)
+	}
+	return e
+}
+
+func (e *FIELDSETElement) IfITEMPROPF(condition bool, format string, args ...any) *FIELDSETElement {
+	if condition {
+		e.ITEMPROP(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -839,6 +895,10 @@ func (e *FIELDSETElement) ITEMPROPRemove(s string) *FIELDSETElement {
 	}
 	e.StringAttributes.Del("itemprop")
 	return e
+}
+
+func (e *FIELDSETElement) ITEMPROPRemoveF(format string, args ...any) *FIELDSETElement {
+	return e.ITEMPROPRemove(fmt.Sprintf(format, args...))
 }
 
 // Properties that are not descendants of an element with the itemscope attribute
@@ -854,9 +914,20 @@ func (e *FIELDSETElement) ITEMREF(s string) *FIELDSETElement {
 	return e
 }
 
+func (e *FIELDSETElement) ITEMREFF(format string, args ...any) *FIELDSETElement {
+	return e.ITEMREF(fmt.Sprintf(format, args...))
+}
+
 func (e *FIELDSETElement) IfITEMREF(condition bool, s string) *FIELDSETElement {
 	if condition {
 		e.ITEMREF(s)
+	}
+	return e
+}
+
+func (e *FIELDSETElement) IfITEMREFF(condition bool, format string, args ...any) *FIELDSETElement {
+	if condition {
+		e.ITEMREF(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -868,6 +939,10 @@ func (e *FIELDSETElement) ITEMREFRemove(s string) *FIELDSETElement {
 	}
 	e.StringAttributes.Del("itemref")
 	return e
+}
+
+func (e *FIELDSETElement) ITEMREFRemoveF(format string, args ...any) *FIELDSETElement {
+	return e.ITEMREFRemove(fmt.Sprintf(format, args...))
 }
 
 // The itemscope global attribute is used to add an item to a microdata DOM tree
@@ -931,9 +1006,20 @@ func (e *FIELDSETElement) ITEMTYPE(s string) *FIELDSETElement {
 	return e
 }
 
+func (e *FIELDSETElement) ITEMTYPEF(format string, args ...any) *FIELDSETElement {
+	return e.ITEMTYPE(fmt.Sprintf(format, args...))
+}
+
 func (e *FIELDSETElement) IfITEMTYPE(condition bool, s string) *FIELDSETElement {
 	if condition {
 		e.ITEMTYPE(s)
+	}
+	return e
+}
+
+func (e *FIELDSETElement) IfITEMTYPEF(condition bool, format string, args ...any) *FIELDSETElement {
+	if condition {
+		e.ITEMTYPE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -945,6 +1031,10 @@ func (e *FIELDSETElement) ITEMTYPERemove(s string) *FIELDSETElement {
 	}
 	e.StringAttributes.Del("itemtype")
 	return e
+}
+
+func (e *FIELDSETElement) ITEMTYPERemoveF(format string, args ...any) *FIELDSETElement {
+	return e.ITEMTYPERemove(fmt.Sprintf(format, args...))
 }
 
 // The lang global attribute helps define the language of an element: the language
@@ -961,9 +1051,20 @@ func (e *FIELDSETElement) LANG(s string) *FIELDSETElement {
 	return e
 }
 
+func (e *FIELDSETElement) LANGF(format string, args ...any) *FIELDSETElement {
+	return e.LANG(fmt.Sprintf(format, args...))
+}
+
 func (e *FIELDSETElement) IfLANG(condition bool, s string) *FIELDSETElement {
 	if condition {
 		e.LANG(s)
+	}
+	return e
+}
+
+func (e *FIELDSETElement) IfLANGF(condition bool, format string, args ...any) *FIELDSETElement {
+	if condition {
+		e.LANG(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -975,6 +1076,10 @@ func (e *FIELDSETElement) LANGRemove(s string) *FIELDSETElement {
 	}
 	e.StringAttributes.Del("lang")
 	return e
+}
+
+func (e *FIELDSETElement) LANGRemoveF(format string, args ...any) *FIELDSETElement {
+	return e.LANGRemove(fmt.Sprintf(format, args...))
 }
 
 // The nonce global attribute is a unique identifier used to declare inline
@@ -989,9 +1094,20 @@ func (e *FIELDSETElement) NONCE(s string) *FIELDSETElement {
 	return e
 }
 
+func (e *FIELDSETElement) NONCEF(format string, args ...any) *FIELDSETElement {
+	return e.NONCE(fmt.Sprintf(format, args...))
+}
+
 func (e *FIELDSETElement) IfNONCE(condition bool, s string) *FIELDSETElement {
 	if condition {
 		e.NONCE(s)
+	}
+	return e
+}
+
+func (e *FIELDSETElement) IfNONCEF(condition bool, format string, args ...any) *FIELDSETElement {
+	if condition {
+		e.NONCE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1003,6 +1119,10 @@ func (e *FIELDSETElement) NONCERemove(s string) *FIELDSETElement {
 	}
 	e.StringAttributes.Del("nonce")
 	return e
+}
+
+func (e *FIELDSETElement) NONCERemoveF(format string, args ...any) *FIELDSETElement {
+	return e.NONCERemove(fmt.Sprintf(format, args...))
 }
 
 // The part global attribute contains a space-separated list of the part names of
@@ -1097,9 +1217,20 @@ func (e *FIELDSETElement) ROLE(s string) *FIELDSETElement {
 	return e
 }
 
+func (e *FIELDSETElement) ROLEF(format string, args ...any) *FIELDSETElement {
+	return e.ROLE(fmt.Sprintf(format, args...))
+}
+
 func (e *FIELDSETElement) IfROLE(condition bool, s string) *FIELDSETElement {
 	if condition {
 		e.ROLE(s)
+	}
+	return e
+}
+
+func (e *FIELDSETElement) IfROLEF(condition bool, format string, args ...any) *FIELDSETElement {
+	if condition {
+		e.ROLE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1111,6 +1242,10 @@ func (e *FIELDSETElement) ROLERemove(s string) *FIELDSETElement {
 	}
 	e.StringAttributes.Del("role")
 	return e
+}
+
+func (e *FIELDSETElement) ROLERemoveF(format string, args ...any) *FIELDSETElement {
+	return e.ROLERemove(fmt.Sprintf(format, args...))
 }
 
 // The slot global attribute assigns a slot in a shadow DOM shadow tree to an
@@ -1125,9 +1260,20 @@ func (e *FIELDSETElement) SLOT(s string) *FIELDSETElement {
 	return e
 }
 
+func (e *FIELDSETElement) SLOTF(format string, args ...any) *FIELDSETElement {
+	return e.SLOT(fmt.Sprintf(format, args...))
+}
+
 func (e *FIELDSETElement) IfSLOT(condition bool, s string) *FIELDSETElement {
 	if condition {
 		e.SLOT(s)
+	}
+	return e
+}
+
+func (e *FIELDSETElement) IfSLOTF(condition bool, format string, args ...any) *FIELDSETElement {
+	if condition {
+		e.SLOT(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1139,6 +1285,10 @@ func (e *FIELDSETElement) SLOTRemove(s string) *FIELDSETElement {
 	}
 	e.StringAttributes.Del("slot")
 	return e
+}
+
+func (e *FIELDSETElement) SLOTRemoveF(format string, args ...any) *FIELDSETElement {
+	return e.SLOTRemove(fmt.Sprintf(format, args...))
 }
 
 // The spellcheck global attribute is an enumerated attribute that defines whether
@@ -1343,9 +1493,20 @@ func (e *FIELDSETElement) TITLE(s string) *FIELDSETElement {
 	return e
 }
 
+func (e *FIELDSETElement) TITLEF(format string, args ...any) *FIELDSETElement {
+	return e.TITLE(fmt.Sprintf(format, args...))
+}
+
 func (e *FIELDSETElement) IfTITLE(condition bool, s string) *FIELDSETElement {
 	if condition {
 		e.TITLE(s)
+	}
+	return e
+}
+
+func (e *FIELDSETElement) IfTITLEF(condition bool, format string, args ...any) *FIELDSETElement {
+	if condition {
+		e.TITLE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1357,6 +1518,10 @@ func (e *FIELDSETElement) TITLERemove(s string) *FIELDSETElement {
 	}
 	e.StringAttributes.Del("title")
 	return e
+}
+
+func (e *FIELDSETElement) TITLERemoveF(format string, args ...any) *FIELDSETElement {
+	return e.TITLERemove(fmt.Sprintf(format, args...))
 }
 
 // The translate global attribute is an enumerated attribute that is used to
@@ -1401,7 +1566,7 @@ func (e *FIELDSETElement) DATASTAR_MERGE_STORE(v any) *FIELDSETElement {
 	if err != nil {
 		panic(err)
 	}
-	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	e.CustomDataAttributes.Set("merge-store", string(b))
 	return e
 }
 
@@ -1523,34 +1688,34 @@ func (e *FIELDSETElement) DATASTAR_TEXTRemove() *FIELDSETElement {
 
 // Sets the event handler of the element
 
-type FieldsetDataOnMod customDataKeyModifier
+type FieldsetOnMod customDataKeyModifier
 
 // Debounces the event handler
-func FieldsetDataOnModDebounce(
+func FieldsetOnModDebounce(
 	d time.Duration,
-) FieldsetDataOnMod {
+) FieldsetOnMod {
 	return func() string {
 		return fmt.Sprintf("debounce_%dms", d.Milliseconds())
 	}
 }
 
 // Throttles the event handler
-func FieldsetDataOnModThrottle(
+func FieldsetOnModThrottle(
 	d time.Duration,
-) FieldsetDataOnMod {
+) FieldsetOnMod {
 	return func() string {
 		return fmt.Sprintf("throttle_%dms", d.Milliseconds())
 	}
 }
 
-func (e *FIELDSETElement) DATASTAR_ON(key string, expression string, modifiers ...FieldsetDataOnMod) *FIELDSETElement {
+func (e *FIELDSETElement) DATASTAR_ON(key string, expression string, modifiers ...FieldsetOnMod) *FIELDSETElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
 	key = fmt.Sprintf("data-on-%s", key)
 
-	customMods := lo.Map(modifiers, func(m FieldsetDataOnMod, i int) customDataKeyModifier {
+	customMods := lo.Map(modifiers, func(m FieldsetOnMod, i int) customDataKeyModifier {
 		return customDataKeyModifier(m)
 	})
 	key = customDataKey(key, customMods...)
@@ -1558,7 +1723,7 @@ func (e *FIELDSETElement) DATASTAR_ON(key string, expression string, modifiers .
 	return e
 }
 
-func (e *FIELDSETElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...FieldsetDataOnMod) *FIELDSETElement {
+func (e *FIELDSETElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...FieldsetOnMod) *FIELDSETElement {
 	if condition {
 		e.DATASTAR_ON(key, expression, modifiers...)
 	}
@@ -1651,7 +1816,7 @@ func (e *FIELDSETElement) DATASTAR_FETCH_INDICATOR(expression string) *FIELDSETE
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "DatastarFetchIndicator"
+	key := "data-fetch-indicator"
 
 	e.StringAttributes.Set(key, expression)
 	return e
@@ -1669,7 +1834,7 @@ func (e *FIELDSETElement) DATASTAR_FETCH_INDICATORRemove() *FIELDSETElement {
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("DatastarFetchIndicator")
+	e.StringAttributes.Del("data-fetch-indicator")
 	return e
 }
 

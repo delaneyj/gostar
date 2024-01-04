@@ -229,9 +229,20 @@ func (e *SVGFILTERElement) X(s string) *SVGFILTERElement {
 	return e
 }
 
+func (e *SVGFILTERElement) XF(format string, args ...any) *SVGFILTERElement {
+	return e.X(fmt.Sprintf(format, args...))
+}
+
 func (e *SVGFILTERElement) IfX(condition bool, s string) *SVGFILTERElement {
 	if condition {
 		e.X(s)
+	}
+	return e
+}
+
+func (e *SVGFILTERElement) IfXF(condition bool, format string, args ...any) *SVGFILTERElement {
+	if condition {
+		e.X(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -245,6 +256,10 @@ func (e *SVGFILTERElement) XRemove(s string) *SVGFILTERElement {
 	return e
 }
 
+func (e *SVGFILTERElement) XRemoveF(format string, args ...any) *SVGFILTERElement {
+	return e.XRemove(fmt.Sprintf(format, args...))
+}
+
 // The y attribute indicates where the top edge of the filter is placed.
 func (e *SVGFILTERElement) Y(s string) *SVGFILTERElement {
 	if e.StringAttributes == nil {
@@ -254,9 +269,20 @@ func (e *SVGFILTERElement) Y(s string) *SVGFILTERElement {
 	return e
 }
 
+func (e *SVGFILTERElement) YF(format string, args ...any) *SVGFILTERElement {
+	return e.Y(fmt.Sprintf(format, args...))
+}
+
 func (e *SVGFILTERElement) IfY(condition bool, s string) *SVGFILTERElement {
 	if condition {
 		e.Y(s)
+	}
+	return e
+}
+
+func (e *SVGFILTERElement) IfYF(condition bool, format string, args ...any) *SVGFILTERElement {
+	if condition {
+		e.Y(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -270,6 +296,10 @@ func (e *SVGFILTERElement) YRemove(s string) *SVGFILTERElement {
 	return e
 }
 
+func (e *SVGFILTERElement) YRemoveF(format string, args ...any) *SVGFILTERElement {
+	return e.YRemove(fmt.Sprintf(format, args...))
+}
+
 // The width attribute indicates the width of the filter primitive box.
 func (e *SVGFILTERElement) WIDTH(s string) *SVGFILTERElement {
 	if e.StringAttributes == nil {
@@ -279,9 +309,20 @@ func (e *SVGFILTERElement) WIDTH(s string) *SVGFILTERElement {
 	return e
 }
 
+func (e *SVGFILTERElement) WIDTHF(format string, args ...any) *SVGFILTERElement {
+	return e.WIDTH(fmt.Sprintf(format, args...))
+}
+
 func (e *SVGFILTERElement) IfWIDTH(condition bool, s string) *SVGFILTERElement {
 	if condition {
 		e.WIDTH(s)
+	}
+	return e
+}
+
+func (e *SVGFILTERElement) IfWIDTHF(condition bool, format string, args ...any) *SVGFILTERElement {
+	if condition {
+		e.WIDTH(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -295,6 +336,10 @@ func (e *SVGFILTERElement) WIDTHRemove(s string) *SVGFILTERElement {
 	return e
 }
 
+func (e *SVGFILTERElement) WIDTHRemoveF(format string, args ...any) *SVGFILTERElement {
+	return e.WIDTHRemove(fmt.Sprintf(format, args...))
+}
+
 // The height attribute indicates the height of the filter primitive box.
 func (e *SVGFILTERElement) HEIGHT(s string) *SVGFILTERElement {
 	if e.StringAttributes == nil {
@@ -304,9 +349,20 @@ func (e *SVGFILTERElement) HEIGHT(s string) *SVGFILTERElement {
 	return e
 }
 
+func (e *SVGFILTERElement) HEIGHTF(format string, args ...any) *SVGFILTERElement {
+	return e.HEIGHT(fmt.Sprintf(format, args...))
+}
+
 func (e *SVGFILTERElement) IfHEIGHT(condition bool, s string) *SVGFILTERElement {
 	if condition {
 		e.HEIGHT(s)
+	}
+	return e
+}
+
+func (e *SVGFILTERElement) IfHEIGHTF(condition bool, format string, args ...any) *SVGFILTERElement {
+	if condition {
+		e.HEIGHT(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -320,6 +376,10 @@ func (e *SVGFILTERElement) HEIGHTRemove(s string) *SVGFILTERElement {
 	return e
 }
 
+func (e *SVGFILTERElement) HEIGHTRemoveF(format string, args ...any) *SVGFILTERElement {
+	return e.HEIGHTRemove(fmt.Sprintf(format, args...))
+}
+
 // Specifies a unique id for an element
 func (e *SVGFILTERElement) ID(s string) *SVGFILTERElement {
 	if e.StringAttributes == nil {
@@ -329,9 +389,20 @@ func (e *SVGFILTERElement) ID(s string) *SVGFILTERElement {
 	return e
 }
 
+func (e *SVGFILTERElement) IDF(format string, args ...any) *SVGFILTERElement {
+	return e.ID(fmt.Sprintf(format, args...))
+}
+
 func (e *SVGFILTERElement) IfID(condition bool, s string) *SVGFILTERElement {
 	if condition {
 		e.ID(s)
+	}
+	return e
+}
+
+func (e *SVGFILTERElement) IfIDF(condition bool, format string, args ...any) *SVGFILTERElement {
+	if condition {
+		e.ID(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -343,6 +414,10 @@ func (e *SVGFILTERElement) IDRemove(s string) *SVGFILTERElement {
 	}
 	e.StringAttributes.Del("id")
 	return e
+}
+
+func (e *SVGFILTERElement) IDRemoveF(format string, args ...any) *SVGFILTERElement {
+	return e.IDRemove(fmt.Sprintf(format, args...))
 }
 
 // Specifies one or more classnames for an element (refers to a class in a style
@@ -481,7 +556,7 @@ func (e *SVGFILTERElement) DATASTAR_MERGE_STORE(v any) *SVGFILTERElement {
 	if err != nil {
 		panic(err)
 	}
-	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	e.CustomDataAttributes.Set("merge-store", string(b))
 	return e
 }
 
@@ -603,34 +678,34 @@ func (e *SVGFILTERElement) DATASTAR_TEXTRemove() *SVGFILTERElement {
 
 // Sets the event handler of the element
 
-type SVGFilterDataOnMod customDataKeyModifier
+type SVGFilterOnMod customDataKeyModifier
 
 // Debounces the event handler
-func SVGFilterDataOnModDebounce(
+func SVGFilterOnModDebounce(
 	d time.Duration,
-) SVGFilterDataOnMod {
+) SVGFilterOnMod {
 	return func() string {
 		return fmt.Sprintf("debounce_%dms", d.Milliseconds())
 	}
 }
 
 // Throttles the event handler
-func SVGFilterDataOnModThrottle(
+func SVGFilterOnModThrottle(
 	d time.Duration,
-) SVGFilterDataOnMod {
+) SVGFilterOnMod {
 	return func() string {
 		return fmt.Sprintf("throttle_%dms", d.Milliseconds())
 	}
 }
 
-func (e *SVGFILTERElement) DATASTAR_ON(key string, expression string, modifiers ...SVGFilterDataOnMod) *SVGFILTERElement {
+func (e *SVGFILTERElement) DATASTAR_ON(key string, expression string, modifiers ...SVGFilterOnMod) *SVGFILTERElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
 	key = fmt.Sprintf("data-on-%s", key)
 
-	customMods := lo.Map(modifiers, func(m SVGFilterDataOnMod, i int) customDataKeyModifier {
+	customMods := lo.Map(modifiers, func(m SVGFilterOnMod, i int) customDataKeyModifier {
 		return customDataKeyModifier(m)
 	})
 	key = customDataKey(key, customMods...)
@@ -638,7 +713,7 @@ func (e *SVGFILTERElement) DATASTAR_ON(key string, expression string, modifiers 
 	return e
 }
 
-func (e *SVGFILTERElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SVGFilterDataOnMod) *SVGFILTERElement {
+func (e *SVGFILTERElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SVGFilterOnMod) *SVGFILTERElement {
 	if condition {
 		e.DATASTAR_ON(key, expression, modifiers...)
 	}
@@ -731,7 +806,7 @@ func (e *SVGFILTERElement) DATASTAR_FETCH_INDICATOR(expression string) *SVGFILTE
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "DatastarFetchIndicator"
+	key := "data-fetch-indicator"
 
 	e.StringAttributes.Set(key, expression)
 	return e
@@ -749,7 +824,7 @@ func (e *SVGFILTERElement) DATASTAR_FETCH_INDICATORRemove() *SVGFILTERElement {
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("DatastarFetchIndicator")
+	e.StringAttributes.Del("data-fetch-indicator")
 	return e
 }
 

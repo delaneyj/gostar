@@ -174,9 +174,20 @@ func (e *SVGFETILEElement) IN(s string) *SVGFETILEElement {
 	return e
 }
 
+func (e *SVGFETILEElement) INF(format string, args ...any) *SVGFETILEElement {
+	return e.IN(fmt.Sprintf(format, args...))
+}
+
 func (e *SVGFETILEElement) IfIN(condition bool, s string) *SVGFETILEElement {
 	if condition {
 		e.IN(s)
+	}
+	return e
+}
+
+func (e *SVGFETILEElement) IfINF(condition bool, format string, args ...any) *SVGFETILEElement {
+	if condition {
+		e.IN(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -190,6 +201,10 @@ func (e *SVGFETILEElement) INRemove(s string) *SVGFETILEElement {
 	return e
 }
 
+func (e *SVGFETILEElement) INRemoveF(format string, args ...any) *SVGFETILEElement {
+	return e.INRemove(fmt.Sprintf(format, args...))
+}
+
 // Specifies a unique id for an element
 func (e *SVGFETILEElement) ID(s string) *SVGFETILEElement {
 	if e.StringAttributes == nil {
@@ -199,9 +214,20 @@ func (e *SVGFETILEElement) ID(s string) *SVGFETILEElement {
 	return e
 }
 
+func (e *SVGFETILEElement) IDF(format string, args ...any) *SVGFETILEElement {
+	return e.ID(fmt.Sprintf(format, args...))
+}
+
 func (e *SVGFETILEElement) IfID(condition bool, s string) *SVGFETILEElement {
 	if condition {
 		e.ID(s)
+	}
+	return e
+}
+
+func (e *SVGFETILEElement) IfIDF(condition bool, format string, args ...any) *SVGFETILEElement {
+	if condition {
+		e.ID(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -213,6 +239,10 @@ func (e *SVGFETILEElement) IDRemove(s string) *SVGFETILEElement {
 	}
 	e.StringAttributes.Del("id")
 	return e
+}
+
+func (e *SVGFETILEElement) IDRemoveF(format string, args ...any) *SVGFETILEElement {
+	return e.IDRemove(fmt.Sprintf(format, args...))
 }
 
 // Specifies one or more classnames for an element (refers to a class in a style
@@ -351,7 +381,7 @@ func (e *SVGFETILEElement) DATASTAR_MERGE_STORE(v any) *SVGFETILEElement {
 	if err != nil {
 		panic(err)
 	}
-	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	e.CustomDataAttributes.Set("merge-store", string(b))
 	return e
 }
 
@@ -473,34 +503,34 @@ func (e *SVGFETILEElement) DATASTAR_TEXTRemove() *SVGFETILEElement {
 
 // Sets the event handler of the element
 
-type SVGFeTileDataOnMod customDataKeyModifier
+type SVGFeTileOnMod customDataKeyModifier
 
 // Debounces the event handler
-func SVGFeTileDataOnModDebounce(
+func SVGFeTileOnModDebounce(
 	d time.Duration,
-) SVGFeTileDataOnMod {
+) SVGFeTileOnMod {
 	return func() string {
 		return fmt.Sprintf("debounce_%dms", d.Milliseconds())
 	}
 }
 
 // Throttles the event handler
-func SVGFeTileDataOnModThrottle(
+func SVGFeTileOnModThrottle(
 	d time.Duration,
-) SVGFeTileDataOnMod {
+) SVGFeTileOnMod {
 	return func() string {
 		return fmt.Sprintf("throttle_%dms", d.Milliseconds())
 	}
 }
 
-func (e *SVGFETILEElement) DATASTAR_ON(key string, expression string, modifiers ...SVGFeTileDataOnMod) *SVGFETILEElement {
+func (e *SVGFETILEElement) DATASTAR_ON(key string, expression string, modifiers ...SVGFeTileOnMod) *SVGFETILEElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
 	key = fmt.Sprintf("data-on-%s", key)
 
-	customMods := lo.Map(modifiers, func(m SVGFeTileDataOnMod, i int) customDataKeyModifier {
+	customMods := lo.Map(modifiers, func(m SVGFeTileOnMod, i int) customDataKeyModifier {
 		return customDataKeyModifier(m)
 	})
 	key = customDataKey(key, customMods...)
@@ -508,7 +538,7 @@ func (e *SVGFETILEElement) DATASTAR_ON(key string, expression string, modifiers 
 	return e
 }
 
-func (e *SVGFETILEElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SVGFeTileDataOnMod) *SVGFETILEElement {
+func (e *SVGFETILEElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SVGFeTileOnMod) *SVGFETILEElement {
 	if condition {
 		e.DATASTAR_ON(key, expression, modifiers...)
 	}
@@ -601,7 +631,7 @@ func (e *SVGFETILEElement) DATASTAR_FETCH_INDICATOR(expression string) *SVGFETIL
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "DatastarFetchIndicator"
+	key := "data-fetch-indicator"
 
 	e.StringAttributes.Set(key, expression)
 	return e
@@ -619,7 +649,7 @@ func (e *SVGFETILEElement) DATASTAR_FETCH_INDICATORRemove() *SVGFETILEElement {
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("DatastarFetchIndicator")
+	e.StringAttributes.Del("data-fetch-indicator")
 	return e
 }
 

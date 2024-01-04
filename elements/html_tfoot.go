@@ -608,9 +608,20 @@ func (e *TFOOTElement) ID(s string) *TFOOTElement {
 	return e
 }
 
+func (e *TFOOTElement) IDF(format string, args ...any) *TFOOTElement {
+	return e.ID(fmt.Sprintf(format, args...))
+}
+
 func (e *TFOOTElement) IfID(condition bool, s string) *TFOOTElement {
 	if condition {
 		e.ID(s)
+	}
+	return e
+}
+
+func (e *TFOOTElement) IfIDF(condition bool, format string, args ...any) *TFOOTElement {
+	if condition {
+		e.ID(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -622,6 +633,10 @@ func (e *TFOOTElement) IDRemove(s string) *TFOOTElement {
 	}
 	e.StringAttributes.Del("id")
 	return e
+}
+
+func (e *TFOOTElement) IDRemoveF(format string, args ...any) *TFOOTElement {
+	return e.IDRemove(fmt.Sprintf(format, args...))
 }
 
 // The inert global attribute is a Boolean attribute indicating that the browser
@@ -756,9 +771,20 @@ func (e *TFOOTElement) IS(s string) *TFOOTElement {
 	return e
 }
 
+func (e *TFOOTElement) ISF(format string, args ...any) *TFOOTElement {
+	return e.IS(fmt.Sprintf(format, args...))
+}
+
 func (e *TFOOTElement) IfIS(condition bool, s string) *TFOOTElement {
 	if condition {
 		e.IS(s)
+	}
+	return e
+}
+
+func (e *TFOOTElement) IfISF(condition bool, format string, args ...any) *TFOOTElement {
+	if condition {
+		e.IS(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -770,6 +796,10 @@ func (e *TFOOTElement) ISRemove(s string) *TFOOTElement {
 	}
 	e.StringAttributes.Del("is")
 	return e
+}
+
+func (e *TFOOTElement) ISRemoveF(format string, args ...any) *TFOOTElement {
+	return e.ISRemove(fmt.Sprintf(format, args...))
 }
 
 // The itemid global attribute provides microdata in the form of a unique, global
@@ -793,9 +823,20 @@ func (e *TFOOTElement) ITEMID(s string) *TFOOTElement {
 	return e
 }
 
+func (e *TFOOTElement) ITEMIDF(format string, args ...any) *TFOOTElement {
+	return e.ITEMID(fmt.Sprintf(format, args...))
+}
+
 func (e *TFOOTElement) IfITEMID(condition bool, s string) *TFOOTElement {
 	if condition {
 		e.ITEMID(s)
+	}
+	return e
+}
+
+func (e *TFOOTElement) IfITEMIDF(condition bool, format string, args ...any) *TFOOTElement {
+	if condition {
+		e.ITEMID(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -807,6 +848,10 @@ func (e *TFOOTElement) ITEMIDRemove(s string) *TFOOTElement {
 	}
 	e.StringAttributes.Del("itemid")
 	return e
+}
+
+func (e *TFOOTElement) ITEMIDRemoveF(format string, args ...any) *TFOOTElement {
+	return e.ITEMIDRemove(fmt.Sprintf(format, args...))
 }
 
 // The itemprop global attribute is used to add properties to an item
@@ -825,9 +870,20 @@ func (e *TFOOTElement) ITEMPROP(s string) *TFOOTElement {
 	return e
 }
 
+func (e *TFOOTElement) ITEMPROPF(format string, args ...any) *TFOOTElement {
+	return e.ITEMPROP(fmt.Sprintf(format, args...))
+}
+
 func (e *TFOOTElement) IfITEMPROP(condition bool, s string) *TFOOTElement {
 	if condition {
 		e.ITEMPROP(s)
+	}
+	return e
+}
+
+func (e *TFOOTElement) IfITEMPROPF(condition bool, format string, args ...any) *TFOOTElement {
+	if condition {
+		e.ITEMPROP(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -839,6 +895,10 @@ func (e *TFOOTElement) ITEMPROPRemove(s string) *TFOOTElement {
 	}
 	e.StringAttributes.Del("itemprop")
 	return e
+}
+
+func (e *TFOOTElement) ITEMPROPRemoveF(format string, args ...any) *TFOOTElement {
+	return e.ITEMPROPRemove(fmt.Sprintf(format, args...))
 }
 
 // Properties that are not descendants of an element with the itemscope attribute
@@ -854,9 +914,20 @@ func (e *TFOOTElement) ITEMREF(s string) *TFOOTElement {
 	return e
 }
 
+func (e *TFOOTElement) ITEMREFF(format string, args ...any) *TFOOTElement {
+	return e.ITEMREF(fmt.Sprintf(format, args...))
+}
+
 func (e *TFOOTElement) IfITEMREF(condition bool, s string) *TFOOTElement {
 	if condition {
 		e.ITEMREF(s)
+	}
+	return e
+}
+
+func (e *TFOOTElement) IfITEMREFF(condition bool, format string, args ...any) *TFOOTElement {
+	if condition {
+		e.ITEMREF(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -868,6 +939,10 @@ func (e *TFOOTElement) ITEMREFRemove(s string) *TFOOTElement {
 	}
 	e.StringAttributes.Del("itemref")
 	return e
+}
+
+func (e *TFOOTElement) ITEMREFRemoveF(format string, args ...any) *TFOOTElement {
+	return e.ITEMREFRemove(fmt.Sprintf(format, args...))
 }
 
 // The itemscope global attribute is used to add an item to a microdata DOM tree
@@ -931,9 +1006,20 @@ func (e *TFOOTElement) ITEMTYPE(s string) *TFOOTElement {
 	return e
 }
 
+func (e *TFOOTElement) ITEMTYPEF(format string, args ...any) *TFOOTElement {
+	return e.ITEMTYPE(fmt.Sprintf(format, args...))
+}
+
 func (e *TFOOTElement) IfITEMTYPE(condition bool, s string) *TFOOTElement {
 	if condition {
 		e.ITEMTYPE(s)
+	}
+	return e
+}
+
+func (e *TFOOTElement) IfITEMTYPEF(condition bool, format string, args ...any) *TFOOTElement {
+	if condition {
+		e.ITEMTYPE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -945,6 +1031,10 @@ func (e *TFOOTElement) ITEMTYPERemove(s string) *TFOOTElement {
 	}
 	e.StringAttributes.Del("itemtype")
 	return e
+}
+
+func (e *TFOOTElement) ITEMTYPERemoveF(format string, args ...any) *TFOOTElement {
+	return e.ITEMTYPERemove(fmt.Sprintf(format, args...))
 }
 
 // The lang global attribute helps define the language of an element: the language
@@ -961,9 +1051,20 @@ func (e *TFOOTElement) LANG(s string) *TFOOTElement {
 	return e
 }
 
+func (e *TFOOTElement) LANGF(format string, args ...any) *TFOOTElement {
+	return e.LANG(fmt.Sprintf(format, args...))
+}
+
 func (e *TFOOTElement) IfLANG(condition bool, s string) *TFOOTElement {
 	if condition {
 		e.LANG(s)
+	}
+	return e
+}
+
+func (e *TFOOTElement) IfLANGF(condition bool, format string, args ...any) *TFOOTElement {
+	if condition {
+		e.LANG(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -975,6 +1076,10 @@ func (e *TFOOTElement) LANGRemove(s string) *TFOOTElement {
 	}
 	e.StringAttributes.Del("lang")
 	return e
+}
+
+func (e *TFOOTElement) LANGRemoveF(format string, args ...any) *TFOOTElement {
+	return e.LANGRemove(fmt.Sprintf(format, args...))
 }
 
 // The nonce global attribute is a unique identifier used to declare inline
@@ -989,9 +1094,20 @@ func (e *TFOOTElement) NONCE(s string) *TFOOTElement {
 	return e
 }
 
+func (e *TFOOTElement) NONCEF(format string, args ...any) *TFOOTElement {
+	return e.NONCE(fmt.Sprintf(format, args...))
+}
+
 func (e *TFOOTElement) IfNONCE(condition bool, s string) *TFOOTElement {
 	if condition {
 		e.NONCE(s)
+	}
+	return e
+}
+
+func (e *TFOOTElement) IfNONCEF(condition bool, format string, args ...any) *TFOOTElement {
+	if condition {
+		e.NONCE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1003,6 +1119,10 @@ func (e *TFOOTElement) NONCERemove(s string) *TFOOTElement {
 	}
 	e.StringAttributes.Del("nonce")
 	return e
+}
+
+func (e *TFOOTElement) NONCERemoveF(format string, args ...any) *TFOOTElement {
+	return e.NONCERemove(fmt.Sprintf(format, args...))
 }
 
 // The part global attribute contains a space-separated list of the part names of
@@ -1097,9 +1217,20 @@ func (e *TFOOTElement) ROLE(s string) *TFOOTElement {
 	return e
 }
 
+func (e *TFOOTElement) ROLEF(format string, args ...any) *TFOOTElement {
+	return e.ROLE(fmt.Sprintf(format, args...))
+}
+
 func (e *TFOOTElement) IfROLE(condition bool, s string) *TFOOTElement {
 	if condition {
 		e.ROLE(s)
+	}
+	return e
+}
+
+func (e *TFOOTElement) IfROLEF(condition bool, format string, args ...any) *TFOOTElement {
+	if condition {
+		e.ROLE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1111,6 +1242,10 @@ func (e *TFOOTElement) ROLERemove(s string) *TFOOTElement {
 	}
 	e.StringAttributes.Del("role")
 	return e
+}
+
+func (e *TFOOTElement) ROLERemoveF(format string, args ...any) *TFOOTElement {
+	return e.ROLERemove(fmt.Sprintf(format, args...))
 }
 
 // The slot global attribute assigns a slot in a shadow DOM shadow tree to an
@@ -1125,9 +1260,20 @@ func (e *TFOOTElement) SLOT(s string) *TFOOTElement {
 	return e
 }
 
+func (e *TFOOTElement) SLOTF(format string, args ...any) *TFOOTElement {
+	return e.SLOT(fmt.Sprintf(format, args...))
+}
+
 func (e *TFOOTElement) IfSLOT(condition bool, s string) *TFOOTElement {
 	if condition {
 		e.SLOT(s)
+	}
+	return e
+}
+
+func (e *TFOOTElement) IfSLOTF(condition bool, format string, args ...any) *TFOOTElement {
+	if condition {
+		e.SLOT(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1139,6 +1285,10 @@ func (e *TFOOTElement) SLOTRemove(s string) *TFOOTElement {
 	}
 	e.StringAttributes.Del("slot")
 	return e
+}
+
+func (e *TFOOTElement) SLOTRemoveF(format string, args ...any) *TFOOTElement {
+	return e.SLOTRemove(fmt.Sprintf(format, args...))
 }
 
 // The spellcheck global attribute is an enumerated attribute that defines whether
@@ -1343,9 +1493,20 @@ func (e *TFOOTElement) TITLE(s string) *TFOOTElement {
 	return e
 }
 
+func (e *TFOOTElement) TITLEF(format string, args ...any) *TFOOTElement {
+	return e.TITLE(fmt.Sprintf(format, args...))
+}
+
 func (e *TFOOTElement) IfTITLE(condition bool, s string) *TFOOTElement {
 	if condition {
 		e.TITLE(s)
+	}
+	return e
+}
+
+func (e *TFOOTElement) IfTITLEF(condition bool, format string, args ...any) *TFOOTElement {
+	if condition {
+		e.TITLE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1357,6 +1518,10 @@ func (e *TFOOTElement) TITLERemove(s string) *TFOOTElement {
 	}
 	e.StringAttributes.Del("title")
 	return e
+}
+
+func (e *TFOOTElement) TITLERemoveF(format string, args ...any) *TFOOTElement {
+	return e.TITLERemove(fmt.Sprintf(format, args...))
 }
 
 // The translate global attribute is an enumerated attribute that is used to
@@ -1401,7 +1566,7 @@ func (e *TFOOTElement) DATASTAR_MERGE_STORE(v any) *TFOOTElement {
 	if err != nil {
 		panic(err)
 	}
-	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	e.CustomDataAttributes.Set("merge-store", string(b))
 	return e
 }
 
@@ -1523,34 +1688,34 @@ func (e *TFOOTElement) DATASTAR_TEXTRemove() *TFOOTElement {
 
 // Sets the event handler of the element
 
-type TfootDataOnMod customDataKeyModifier
+type TfootOnMod customDataKeyModifier
 
 // Debounces the event handler
-func TfootDataOnModDebounce(
+func TfootOnModDebounce(
 	d time.Duration,
-) TfootDataOnMod {
+) TfootOnMod {
 	return func() string {
 		return fmt.Sprintf("debounce_%dms", d.Milliseconds())
 	}
 }
 
 // Throttles the event handler
-func TfootDataOnModThrottle(
+func TfootOnModThrottle(
 	d time.Duration,
-) TfootDataOnMod {
+) TfootOnMod {
 	return func() string {
 		return fmt.Sprintf("throttle_%dms", d.Milliseconds())
 	}
 }
 
-func (e *TFOOTElement) DATASTAR_ON(key string, expression string, modifiers ...TfootDataOnMod) *TFOOTElement {
+func (e *TFOOTElement) DATASTAR_ON(key string, expression string, modifiers ...TfootOnMod) *TFOOTElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
 	key = fmt.Sprintf("data-on-%s", key)
 
-	customMods := lo.Map(modifiers, func(m TfootDataOnMod, i int) customDataKeyModifier {
+	customMods := lo.Map(modifiers, func(m TfootOnMod, i int) customDataKeyModifier {
 		return customDataKeyModifier(m)
 	})
 	key = customDataKey(key, customMods...)
@@ -1558,7 +1723,7 @@ func (e *TFOOTElement) DATASTAR_ON(key string, expression string, modifiers ...T
 	return e
 }
 
-func (e *TFOOTElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...TfootDataOnMod) *TFOOTElement {
+func (e *TFOOTElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...TfootOnMod) *TFOOTElement {
 	if condition {
 		e.DATASTAR_ON(key, expression, modifiers...)
 	}
@@ -1651,7 +1816,7 @@ func (e *TFOOTElement) DATASTAR_FETCH_INDICATOR(expression string) *TFOOTElement
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "DatastarFetchIndicator"
+	key := "data-fetch-indicator"
 
 	e.StringAttributes.Set(key, expression)
 	return e
@@ -1669,7 +1834,7 @@ func (e *TFOOTElement) DATASTAR_FETCH_INDICATORRemove() *TFOOTElement {
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("DatastarFetchIndicator")
+	e.StringAttributes.Del("data-fetch-indicator")
 	return e
 }
 

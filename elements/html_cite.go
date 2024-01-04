@@ -610,9 +610,20 @@ func (e *CITEElement) ID(s string) *CITEElement {
 	return e
 }
 
+func (e *CITEElement) IDF(format string, args ...any) *CITEElement {
+	return e.ID(fmt.Sprintf(format, args...))
+}
+
 func (e *CITEElement) IfID(condition bool, s string) *CITEElement {
 	if condition {
 		e.ID(s)
+	}
+	return e
+}
+
+func (e *CITEElement) IfIDF(condition bool, format string, args ...any) *CITEElement {
+	if condition {
+		e.ID(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -624,6 +635,10 @@ func (e *CITEElement) IDRemove(s string) *CITEElement {
 	}
 	e.StringAttributes.Del("id")
 	return e
+}
+
+func (e *CITEElement) IDRemoveF(format string, args ...any) *CITEElement {
+	return e.IDRemove(fmt.Sprintf(format, args...))
 }
 
 // The inert global attribute is a Boolean attribute indicating that the browser
@@ -758,9 +773,20 @@ func (e *CITEElement) IS(s string) *CITEElement {
 	return e
 }
 
+func (e *CITEElement) ISF(format string, args ...any) *CITEElement {
+	return e.IS(fmt.Sprintf(format, args...))
+}
+
 func (e *CITEElement) IfIS(condition bool, s string) *CITEElement {
 	if condition {
 		e.IS(s)
+	}
+	return e
+}
+
+func (e *CITEElement) IfISF(condition bool, format string, args ...any) *CITEElement {
+	if condition {
+		e.IS(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -772,6 +798,10 @@ func (e *CITEElement) ISRemove(s string) *CITEElement {
 	}
 	e.StringAttributes.Del("is")
 	return e
+}
+
+func (e *CITEElement) ISRemoveF(format string, args ...any) *CITEElement {
+	return e.ISRemove(fmt.Sprintf(format, args...))
 }
 
 // The itemid global attribute provides microdata in the form of a unique, global
@@ -795,9 +825,20 @@ func (e *CITEElement) ITEMID(s string) *CITEElement {
 	return e
 }
 
+func (e *CITEElement) ITEMIDF(format string, args ...any) *CITEElement {
+	return e.ITEMID(fmt.Sprintf(format, args...))
+}
+
 func (e *CITEElement) IfITEMID(condition bool, s string) *CITEElement {
 	if condition {
 		e.ITEMID(s)
+	}
+	return e
+}
+
+func (e *CITEElement) IfITEMIDF(condition bool, format string, args ...any) *CITEElement {
+	if condition {
+		e.ITEMID(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -809,6 +850,10 @@ func (e *CITEElement) ITEMIDRemove(s string) *CITEElement {
 	}
 	e.StringAttributes.Del("itemid")
 	return e
+}
+
+func (e *CITEElement) ITEMIDRemoveF(format string, args ...any) *CITEElement {
+	return e.ITEMIDRemove(fmt.Sprintf(format, args...))
 }
 
 // The itemprop global attribute is used to add properties to an item
@@ -827,9 +872,20 @@ func (e *CITEElement) ITEMPROP(s string) *CITEElement {
 	return e
 }
 
+func (e *CITEElement) ITEMPROPF(format string, args ...any) *CITEElement {
+	return e.ITEMPROP(fmt.Sprintf(format, args...))
+}
+
 func (e *CITEElement) IfITEMPROP(condition bool, s string) *CITEElement {
 	if condition {
 		e.ITEMPROP(s)
+	}
+	return e
+}
+
+func (e *CITEElement) IfITEMPROPF(condition bool, format string, args ...any) *CITEElement {
+	if condition {
+		e.ITEMPROP(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -841,6 +897,10 @@ func (e *CITEElement) ITEMPROPRemove(s string) *CITEElement {
 	}
 	e.StringAttributes.Del("itemprop")
 	return e
+}
+
+func (e *CITEElement) ITEMPROPRemoveF(format string, args ...any) *CITEElement {
+	return e.ITEMPROPRemove(fmt.Sprintf(format, args...))
 }
 
 // Properties that are not descendants of an element with the itemscope attribute
@@ -856,9 +916,20 @@ func (e *CITEElement) ITEMREF(s string) *CITEElement {
 	return e
 }
 
+func (e *CITEElement) ITEMREFF(format string, args ...any) *CITEElement {
+	return e.ITEMREF(fmt.Sprintf(format, args...))
+}
+
 func (e *CITEElement) IfITEMREF(condition bool, s string) *CITEElement {
 	if condition {
 		e.ITEMREF(s)
+	}
+	return e
+}
+
+func (e *CITEElement) IfITEMREFF(condition bool, format string, args ...any) *CITEElement {
+	if condition {
+		e.ITEMREF(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -870,6 +941,10 @@ func (e *CITEElement) ITEMREFRemove(s string) *CITEElement {
 	}
 	e.StringAttributes.Del("itemref")
 	return e
+}
+
+func (e *CITEElement) ITEMREFRemoveF(format string, args ...any) *CITEElement {
+	return e.ITEMREFRemove(fmt.Sprintf(format, args...))
 }
 
 // The itemscope global attribute is used to add an item to a microdata DOM tree
@@ -933,9 +1008,20 @@ func (e *CITEElement) ITEMTYPE(s string) *CITEElement {
 	return e
 }
 
+func (e *CITEElement) ITEMTYPEF(format string, args ...any) *CITEElement {
+	return e.ITEMTYPE(fmt.Sprintf(format, args...))
+}
+
 func (e *CITEElement) IfITEMTYPE(condition bool, s string) *CITEElement {
 	if condition {
 		e.ITEMTYPE(s)
+	}
+	return e
+}
+
+func (e *CITEElement) IfITEMTYPEF(condition bool, format string, args ...any) *CITEElement {
+	if condition {
+		e.ITEMTYPE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -947,6 +1033,10 @@ func (e *CITEElement) ITEMTYPERemove(s string) *CITEElement {
 	}
 	e.StringAttributes.Del("itemtype")
 	return e
+}
+
+func (e *CITEElement) ITEMTYPERemoveF(format string, args ...any) *CITEElement {
+	return e.ITEMTYPERemove(fmt.Sprintf(format, args...))
 }
 
 // The lang global attribute helps define the language of an element: the language
@@ -963,9 +1053,20 @@ func (e *CITEElement) LANG(s string) *CITEElement {
 	return e
 }
 
+func (e *CITEElement) LANGF(format string, args ...any) *CITEElement {
+	return e.LANG(fmt.Sprintf(format, args...))
+}
+
 func (e *CITEElement) IfLANG(condition bool, s string) *CITEElement {
 	if condition {
 		e.LANG(s)
+	}
+	return e
+}
+
+func (e *CITEElement) IfLANGF(condition bool, format string, args ...any) *CITEElement {
+	if condition {
+		e.LANG(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -977,6 +1078,10 @@ func (e *CITEElement) LANGRemove(s string) *CITEElement {
 	}
 	e.StringAttributes.Del("lang")
 	return e
+}
+
+func (e *CITEElement) LANGRemoveF(format string, args ...any) *CITEElement {
+	return e.LANGRemove(fmt.Sprintf(format, args...))
 }
 
 // The nonce global attribute is a unique identifier used to declare inline
@@ -991,9 +1096,20 @@ func (e *CITEElement) NONCE(s string) *CITEElement {
 	return e
 }
 
+func (e *CITEElement) NONCEF(format string, args ...any) *CITEElement {
+	return e.NONCE(fmt.Sprintf(format, args...))
+}
+
 func (e *CITEElement) IfNONCE(condition bool, s string) *CITEElement {
 	if condition {
 		e.NONCE(s)
+	}
+	return e
+}
+
+func (e *CITEElement) IfNONCEF(condition bool, format string, args ...any) *CITEElement {
+	if condition {
+		e.NONCE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1005,6 +1121,10 @@ func (e *CITEElement) NONCERemove(s string) *CITEElement {
 	}
 	e.StringAttributes.Del("nonce")
 	return e
+}
+
+func (e *CITEElement) NONCERemoveF(format string, args ...any) *CITEElement {
+	return e.NONCERemove(fmt.Sprintf(format, args...))
 }
 
 // The part global attribute contains a space-separated list of the part names of
@@ -1099,9 +1219,20 @@ func (e *CITEElement) ROLE(s string) *CITEElement {
 	return e
 }
 
+func (e *CITEElement) ROLEF(format string, args ...any) *CITEElement {
+	return e.ROLE(fmt.Sprintf(format, args...))
+}
+
 func (e *CITEElement) IfROLE(condition bool, s string) *CITEElement {
 	if condition {
 		e.ROLE(s)
+	}
+	return e
+}
+
+func (e *CITEElement) IfROLEF(condition bool, format string, args ...any) *CITEElement {
+	if condition {
+		e.ROLE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1113,6 +1244,10 @@ func (e *CITEElement) ROLERemove(s string) *CITEElement {
 	}
 	e.StringAttributes.Del("role")
 	return e
+}
+
+func (e *CITEElement) ROLERemoveF(format string, args ...any) *CITEElement {
+	return e.ROLERemove(fmt.Sprintf(format, args...))
 }
 
 // The slot global attribute assigns a slot in a shadow DOM shadow tree to an
@@ -1127,9 +1262,20 @@ func (e *CITEElement) SLOT(s string) *CITEElement {
 	return e
 }
 
+func (e *CITEElement) SLOTF(format string, args ...any) *CITEElement {
+	return e.SLOT(fmt.Sprintf(format, args...))
+}
+
 func (e *CITEElement) IfSLOT(condition bool, s string) *CITEElement {
 	if condition {
 		e.SLOT(s)
+	}
+	return e
+}
+
+func (e *CITEElement) IfSLOTF(condition bool, format string, args ...any) *CITEElement {
+	if condition {
+		e.SLOT(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1141,6 +1287,10 @@ func (e *CITEElement) SLOTRemove(s string) *CITEElement {
 	}
 	e.StringAttributes.Del("slot")
 	return e
+}
+
+func (e *CITEElement) SLOTRemoveF(format string, args ...any) *CITEElement {
+	return e.SLOTRemove(fmt.Sprintf(format, args...))
 }
 
 // The spellcheck global attribute is an enumerated attribute that defines whether
@@ -1345,9 +1495,20 @@ func (e *CITEElement) TITLE(s string) *CITEElement {
 	return e
 }
 
+func (e *CITEElement) TITLEF(format string, args ...any) *CITEElement {
+	return e.TITLE(fmt.Sprintf(format, args...))
+}
+
 func (e *CITEElement) IfTITLE(condition bool, s string) *CITEElement {
 	if condition {
 		e.TITLE(s)
+	}
+	return e
+}
+
+func (e *CITEElement) IfTITLEF(condition bool, format string, args ...any) *CITEElement {
+	if condition {
+		e.TITLE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1359,6 +1520,10 @@ func (e *CITEElement) TITLERemove(s string) *CITEElement {
 	}
 	e.StringAttributes.Del("title")
 	return e
+}
+
+func (e *CITEElement) TITLERemoveF(format string, args ...any) *CITEElement {
+	return e.TITLERemove(fmt.Sprintf(format, args...))
 }
 
 // The translate global attribute is an enumerated attribute that is used to
@@ -1403,7 +1568,7 @@ func (e *CITEElement) DATASTAR_MERGE_STORE(v any) *CITEElement {
 	if err != nil {
 		panic(err)
 	}
-	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	e.CustomDataAttributes.Set("merge-store", string(b))
 	return e
 }
 
@@ -1525,34 +1690,34 @@ func (e *CITEElement) DATASTAR_TEXTRemove() *CITEElement {
 
 // Sets the event handler of the element
 
-type CiteDataOnMod customDataKeyModifier
+type CiteOnMod customDataKeyModifier
 
 // Debounces the event handler
-func CiteDataOnModDebounce(
+func CiteOnModDebounce(
 	d time.Duration,
-) CiteDataOnMod {
+) CiteOnMod {
 	return func() string {
 		return fmt.Sprintf("debounce_%dms", d.Milliseconds())
 	}
 }
 
 // Throttles the event handler
-func CiteDataOnModThrottle(
+func CiteOnModThrottle(
 	d time.Duration,
-) CiteDataOnMod {
+) CiteOnMod {
 	return func() string {
 		return fmt.Sprintf("throttle_%dms", d.Milliseconds())
 	}
 }
 
-func (e *CITEElement) DATASTAR_ON(key string, expression string, modifiers ...CiteDataOnMod) *CITEElement {
+func (e *CITEElement) DATASTAR_ON(key string, expression string, modifiers ...CiteOnMod) *CITEElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
 	key = fmt.Sprintf("data-on-%s", key)
 
-	customMods := lo.Map(modifiers, func(m CiteDataOnMod, i int) customDataKeyModifier {
+	customMods := lo.Map(modifiers, func(m CiteOnMod, i int) customDataKeyModifier {
 		return customDataKeyModifier(m)
 	})
 	key = customDataKey(key, customMods...)
@@ -1560,7 +1725,7 @@ func (e *CITEElement) DATASTAR_ON(key string, expression string, modifiers ...Ci
 	return e
 }
 
-func (e *CITEElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...CiteDataOnMod) *CITEElement {
+func (e *CITEElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...CiteOnMod) *CITEElement {
 	if condition {
 		e.DATASTAR_ON(key, expression, modifiers...)
 	}
@@ -1653,7 +1818,7 @@ func (e *CITEElement) DATASTAR_FETCH_INDICATOR(expression string) *CITEElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "DatastarFetchIndicator"
+	key := "data-fetch-indicator"
 
 	e.StringAttributes.Set(key, expression)
 	return e
@@ -1671,7 +1836,7 @@ func (e *CITEElement) DATASTAR_FETCH_INDICATORRemove() *CITEElement {
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("DatastarFetchIndicator")
+	e.StringAttributes.Del("data-fetch-indicator")
 	return e
 }
 

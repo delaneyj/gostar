@@ -704,9 +704,20 @@ func (e *METERElement) ID(s string) *METERElement {
 	return e
 }
 
+func (e *METERElement) IDF(format string, args ...any) *METERElement {
+	return e.ID(fmt.Sprintf(format, args...))
+}
+
 func (e *METERElement) IfID(condition bool, s string) *METERElement {
 	if condition {
 		e.ID(s)
+	}
+	return e
+}
+
+func (e *METERElement) IfIDF(condition bool, format string, args ...any) *METERElement {
+	if condition {
+		e.ID(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -718,6 +729,10 @@ func (e *METERElement) IDRemove(s string) *METERElement {
 	}
 	e.StringAttributes.Del("id")
 	return e
+}
+
+func (e *METERElement) IDRemoveF(format string, args ...any) *METERElement {
+	return e.IDRemove(fmt.Sprintf(format, args...))
 }
 
 // The inert global attribute is a Boolean attribute indicating that the browser
@@ -852,9 +867,20 @@ func (e *METERElement) IS(s string) *METERElement {
 	return e
 }
 
+func (e *METERElement) ISF(format string, args ...any) *METERElement {
+	return e.IS(fmt.Sprintf(format, args...))
+}
+
 func (e *METERElement) IfIS(condition bool, s string) *METERElement {
 	if condition {
 		e.IS(s)
+	}
+	return e
+}
+
+func (e *METERElement) IfISF(condition bool, format string, args ...any) *METERElement {
+	if condition {
+		e.IS(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -866,6 +892,10 @@ func (e *METERElement) ISRemove(s string) *METERElement {
 	}
 	e.StringAttributes.Del("is")
 	return e
+}
+
+func (e *METERElement) ISRemoveF(format string, args ...any) *METERElement {
+	return e.ISRemove(fmt.Sprintf(format, args...))
 }
 
 // The itemid global attribute provides microdata in the form of a unique, global
@@ -889,9 +919,20 @@ func (e *METERElement) ITEMID(s string) *METERElement {
 	return e
 }
 
+func (e *METERElement) ITEMIDF(format string, args ...any) *METERElement {
+	return e.ITEMID(fmt.Sprintf(format, args...))
+}
+
 func (e *METERElement) IfITEMID(condition bool, s string) *METERElement {
 	if condition {
 		e.ITEMID(s)
+	}
+	return e
+}
+
+func (e *METERElement) IfITEMIDF(condition bool, format string, args ...any) *METERElement {
+	if condition {
+		e.ITEMID(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -903,6 +944,10 @@ func (e *METERElement) ITEMIDRemove(s string) *METERElement {
 	}
 	e.StringAttributes.Del("itemid")
 	return e
+}
+
+func (e *METERElement) ITEMIDRemoveF(format string, args ...any) *METERElement {
+	return e.ITEMIDRemove(fmt.Sprintf(format, args...))
 }
 
 // The itemprop global attribute is used to add properties to an item
@@ -921,9 +966,20 @@ func (e *METERElement) ITEMPROP(s string) *METERElement {
 	return e
 }
 
+func (e *METERElement) ITEMPROPF(format string, args ...any) *METERElement {
+	return e.ITEMPROP(fmt.Sprintf(format, args...))
+}
+
 func (e *METERElement) IfITEMPROP(condition bool, s string) *METERElement {
 	if condition {
 		e.ITEMPROP(s)
+	}
+	return e
+}
+
+func (e *METERElement) IfITEMPROPF(condition bool, format string, args ...any) *METERElement {
+	if condition {
+		e.ITEMPROP(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -935,6 +991,10 @@ func (e *METERElement) ITEMPROPRemove(s string) *METERElement {
 	}
 	e.StringAttributes.Del("itemprop")
 	return e
+}
+
+func (e *METERElement) ITEMPROPRemoveF(format string, args ...any) *METERElement {
+	return e.ITEMPROPRemove(fmt.Sprintf(format, args...))
 }
 
 // Properties that are not descendants of an element with the itemscope attribute
@@ -950,9 +1010,20 @@ func (e *METERElement) ITEMREF(s string) *METERElement {
 	return e
 }
 
+func (e *METERElement) ITEMREFF(format string, args ...any) *METERElement {
+	return e.ITEMREF(fmt.Sprintf(format, args...))
+}
+
 func (e *METERElement) IfITEMREF(condition bool, s string) *METERElement {
 	if condition {
 		e.ITEMREF(s)
+	}
+	return e
+}
+
+func (e *METERElement) IfITEMREFF(condition bool, format string, args ...any) *METERElement {
+	if condition {
+		e.ITEMREF(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -964,6 +1035,10 @@ func (e *METERElement) ITEMREFRemove(s string) *METERElement {
 	}
 	e.StringAttributes.Del("itemref")
 	return e
+}
+
+func (e *METERElement) ITEMREFRemoveF(format string, args ...any) *METERElement {
+	return e.ITEMREFRemove(fmt.Sprintf(format, args...))
 }
 
 // The itemscope global attribute is used to add an item to a microdata DOM tree
@@ -1027,9 +1102,20 @@ func (e *METERElement) ITEMTYPE(s string) *METERElement {
 	return e
 }
 
+func (e *METERElement) ITEMTYPEF(format string, args ...any) *METERElement {
+	return e.ITEMTYPE(fmt.Sprintf(format, args...))
+}
+
 func (e *METERElement) IfITEMTYPE(condition bool, s string) *METERElement {
 	if condition {
 		e.ITEMTYPE(s)
+	}
+	return e
+}
+
+func (e *METERElement) IfITEMTYPEF(condition bool, format string, args ...any) *METERElement {
+	if condition {
+		e.ITEMTYPE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1041,6 +1127,10 @@ func (e *METERElement) ITEMTYPERemove(s string) *METERElement {
 	}
 	e.StringAttributes.Del("itemtype")
 	return e
+}
+
+func (e *METERElement) ITEMTYPERemoveF(format string, args ...any) *METERElement {
+	return e.ITEMTYPERemove(fmt.Sprintf(format, args...))
 }
 
 // The lang global attribute helps define the language of an element: the language
@@ -1057,9 +1147,20 @@ func (e *METERElement) LANG(s string) *METERElement {
 	return e
 }
 
+func (e *METERElement) LANGF(format string, args ...any) *METERElement {
+	return e.LANG(fmt.Sprintf(format, args...))
+}
+
 func (e *METERElement) IfLANG(condition bool, s string) *METERElement {
 	if condition {
 		e.LANG(s)
+	}
+	return e
+}
+
+func (e *METERElement) IfLANGF(condition bool, format string, args ...any) *METERElement {
+	if condition {
+		e.LANG(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1071,6 +1172,10 @@ func (e *METERElement) LANGRemove(s string) *METERElement {
 	}
 	e.StringAttributes.Del("lang")
 	return e
+}
+
+func (e *METERElement) LANGRemoveF(format string, args ...any) *METERElement {
+	return e.LANGRemove(fmt.Sprintf(format, args...))
 }
 
 // The nonce global attribute is a unique identifier used to declare inline
@@ -1085,9 +1190,20 @@ func (e *METERElement) NONCE(s string) *METERElement {
 	return e
 }
 
+func (e *METERElement) NONCEF(format string, args ...any) *METERElement {
+	return e.NONCE(fmt.Sprintf(format, args...))
+}
+
 func (e *METERElement) IfNONCE(condition bool, s string) *METERElement {
 	if condition {
 		e.NONCE(s)
+	}
+	return e
+}
+
+func (e *METERElement) IfNONCEF(condition bool, format string, args ...any) *METERElement {
+	if condition {
+		e.NONCE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1099,6 +1215,10 @@ func (e *METERElement) NONCERemove(s string) *METERElement {
 	}
 	e.StringAttributes.Del("nonce")
 	return e
+}
+
+func (e *METERElement) NONCERemoveF(format string, args ...any) *METERElement {
+	return e.NONCERemove(fmt.Sprintf(format, args...))
 }
 
 // The part global attribute contains a space-separated list of the part names of
@@ -1193,9 +1313,20 @@ func (e *METERElement) ROLE(s string) *METERElement {
 	return e
 }
 
+func (e *METERElement) ROLEF(format string, args ...any) *METERElement {
+	return e.ROLE(fmt.Sprintf(format, args...))
+}
+
 func (e *METERElement) IfROLE(condition bool, s string) *METERElement {
 	if condition {
 		e.ROLE(s)
+	}
+	return e
+}
+
+func (e *METERElement) IfROLEF(condition bool, format string, args ...any) *METERElement {
+	if condition {
+		e.ROLE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1207,6 +1338,10 @@ func (e *METERElement) ROLERemove(s string) *METERElement {
 	}
 	e.StringAttributes.Del("role")
 	return e
+}
+
+func (e *METERElement) ROLERemoveF(format string, args ...any) *METERElement {
+	return e.ROLERemove(fmt.Sprintf(format, args...))
 }
 
 // The slot global attribute assigns a slot in a shadow DOM shadow tree to an
@@ -1221,9 +1356,20 @@ func (e *METERElement) SLOT(s string) *METERElement {
 	return e
 }
 
+func (e *METERElement) SLOTF(format string, args ...any) *METERElement {
+	return e.SLOT(fmt.Sprintf(format, args...))
+}
+
 func (e *METERElement) IfSLOT(condition bool, s string) *METERElement {
 	if condition {
 		e.SLOT(s)
+	}
+	return e
+}
+
+func (e *METERElement) IfSLOTF(condition bool, format string, args ...any) *METERElement {
+	if condition {
+		e.SLOT(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1235,6 +1381,10 @@ func (e *METERElement) SLOTRemove(s string) *METERElement {
 	}
 	e.StringAttributes.Del("slot")
 	return e
+}
+
+func (e *METERElement) SLOTRemoveF(format string, args ...any) *METERElement {
+	return e.SLOTRemove(fmt.Sprintf(format, args...))
 }
 
 // The spellcheck global attribute is an enumerated attribute that defines whether
@@ -1439,9 +1589,20 @@ func (e *METERElement) TITLE(s string) *METERElement {
 	return e
 }
 
+func (e *METERElement) TITLEF(format string, args ...any) *METERElement {
+	return e.TITLE(fmt.Sprintf(format, args...))
+}
+
 func (e *METERElement) IfTITLE(condition bool, s string) *METERElement {
 	if condition {
 		e.TITLE(s)
+	}
+	return e
+}
+
+func (e *METERElement) IfTITLEF(condition bool, format string, args ...any) *METERElement {
+	if condition {
+		e.TITLE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1453,6 +1614,10 @@ func (e *METERElement) TITLERemove(s string) *METERElement {
 	}
 	e.StringAttributes.Del("title")
 	return e
+}
+
+func (e *METERElement) TITLERemoveF(format string, args ...any) *METERElement {
+	return e.TITLERemove(fmt.Sprintf(format, args...))
 }
 
 // The translate global attribute is an enumerated attribute that is used to
@@ -1497,7 +1662,7 @@ func (e *METERElement) DATASTAR_MERGE_STORE(v any) *METERElement {
 	if err != nil {
 		panic(err)
 	}
-	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	e.CustomDataAttributes.Set("merge-store", string(b))
 	return e
 }
 
@@ -1619,34 +1784,34 @@ func (e *METERElement) DATASTAR_TEXTRemove() *METERElement {
 
 // Sets the event handler of the element
 
-type MeterDataOnMod customDataKeyModifier
+type MeterOnMod customDataKeyModifier
 
 // Debounces the event handler
-func MeterDataOnModDebounce(
+func MeterOnModDebounce(
 	d time.Duration,
-) MeterDataOnMod {
+) MeterOnMod {
 	return func() string {
 		return fmt.Sprintf("debounce_%dms", d.Milliseconds())
 	}
 }
 
 // Throttles the event handler
-func MeterDataOnModThrottle(
+func MeterOnModThrottle(
 	d time.Duration,
-) MeterDataOnMod {
+) MeterOnMod {
 	return func() string {
 		return fmt.Sprintf("throttle_%dms", d.Milliseconds())
 	}
 }
 
-func (e *METERElement) DATASTAR_ON(key string, expression string, modifiers ...MeterDataOnMod) *METERElement {
+func (e *METERElement) DATASTAR_ON(key string, expression string, modifiers ...MeterOnMod) *METERElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
 	key = fmt.Sprintf("data-on-%s", key)
 
-	customMods := lo.Map(modifiers, func(m MeterDataOnMod, i int) customDataKeyModifier {
+	customMods := lo.Map(modifiers, func(m MeterOnMod, i int) customDataKeyModifier {
 		return customDataKeyModifier(m)
 	})
 	key = customDataKey(key, customMods...)
@@ -1654,7 +1819,7 @@ func (e *METERElement) DATASTAR_ON(key string, expression string, modifiers ...M
 	return e
 }
 
-func (e *METERElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...MeterDataOnMod) *METERElement {
+func (e *METERElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...MeterOnMod) *METERElement {
 	if condition {
 		e.DATASTAR_ON(key, expression, modifiers...)
 	}
@@ -1747,7 +1912,7 @@ func (e *METERElement) DATASTAR_FETCH_INDICATOR(expression string) *METERElement
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "DatastarFetchIndicator"
+	key := "data-fetch-indicator"
 
 	e.StringAttributes.Set(key, expression)
 	return e
@@ -1765,7 +1930,7 @@ func (e *METERElement) DATASTAR_FETCH_INDICATORRemove() *METERElement {
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("DatastarFetchIndicator")
+	e.StringAttributes.Del("data-fetch-indicator")
 	return e
 }
 

@@ -173,9 +173,20 @@ func (e *THElement) ABBR(s string) *THElement {
 	return e
 }
 
+func (e *THElement) ABBRF(format string, args ...any) *THElement {
+	return e.ABBR(fmt.Sprintf(format, args...))
+}
+
 func (e *THElement) IfABBR(condition bool, s string) *THElement {
 	if condition {
 		e.ABBR(s)
+	}
+	return e
+}
+
+func (e *THElement) IfABBRF(condition bool, format string, args ...any) *THElement {
+	if condition {
+		e.ABBR(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -187,6 +198,10 @@ func (e *THElement) ABBRRemove(s string) *THElement {
 	}
 	e.StringAttributes.Del("abbr")
 	return e
+}
+
+func (e *THElement) ABBRRemoveF(format string, args ...any) *THElement {
+	return e.ABBRRemove(fmt.Sprintf(format, args...))
 }
 
 // Number of columns that the cell is to span.
@@ -223,9 +238,20 @@ func (e *THElement) HEADERS(s string) *THElement {
 	return e
 }
 
+func (e *THElement) HEADERSF(format string, args ...any) *THElement {
+	return e.HEADERS(fmt.Sprintf(format, args...))
+}
+
 func (e *THElement) IfHEADERS(condition bool, s string) *THElement {
 	if condition {
 		e.HEADERS(s)
+	}
+	return e
+}
+
+func (e *THElement) IfHEADERSF(condition bool, format string, args ...any) *THElement {
+	if condition {
+		e.HEADERS(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -237,6 +263,10 @@ func (e *THElement) HEADERSRemove(s string) *THElement {
 	}
 	e.StringAttributes.Del("headers")
 	return e
+}
+
+func (e *THElement) HEADERSRemoveF(format string, args ...any) *THElement {
+	return e.HEADERSRemove(fmt.Sprintf(format, args...))
 }
 
 // Number of rows that the cell is to span.
@@ -740,9 +770,20 @@ func (e *THElement) ID(s string) *THElement {
 	return e
 }
 
+func (e *THElement) IDF(format string, args ...any) *THElement {
+	return e.ID(fmt.Sprintf(format, args...))
+}
+
 func (e *THElement) IfID(condition bool, s string) *THElement {
 	if condition {
 		e.ID(s)
+	}
+	return e
+}
+
+func (e *THElement) IfIDF(condition bool, format string, args ...any) *THElement {
+	if condition {
+		e.ID(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -754,6 +795,10 @@ func (e *THElement) IDRemove(s string) *THElement {
 	}
 	e.StringAttributes.Del("id")
 	return e
+}
+
+func (e *THElement) IDRemoveF(format string, args ...any) *THElement {
+	return e.IDRemove(fmt.Sprintf(format, args...))
 }
 
 // The inert global attribute is a Boolean attribute indicating that the browser
@@ -888,9 +933,20 @@ func (e *THElement) IS(s string) *THElement {
 	return e
 }
 
+func (e *THElement) ISF(format string, args ...any) *THElement {
+	return e.IS(fmt.Sprintf(format, args...))
+}
+
 func (e *THElement) IfIS(condition bool, s string) *THElement {
 	if condition {
 		e.IS(s)
+	}
+	return e
+}
+
+func (e *THElement) IfISF(condition bool, format string, args ...any) *THElement {
+	if condition {
+		e.IS(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -902,6 +958,10 @@ func (e *THElement) ISRemove(s string) *THElement {
 	}
 	e.StringAttributes.Del("is")
 	return e
+}
+
+func (e *THElement) ISRemoveF(format string, args ...any) *THElement {
+	return e.ISRemove(fmt.Sprintf(format, args...))
 }
 
 // The itemid global attribute provides microdata in the form of a unique, global
@@ -925,9 +985,20 @@ func (e *THElement) ITEMID(s string) *THElement {
 	return e
 }
 
+func (e *THElement) ITEMIDF(format string, args ...any) *THElement {
+	return e.ITEMID(fmt.Sprintf(format, args...))
+}
+
 func (e *THElement) IfITEMID(condition bool, s string) *THElement {
 	if condition {
 		e.ITEMID(s)
+	}
+	return e
+}
+
+func (e *THElement) IfITEMIDF(condition bool, format string, args ...any) *THElement {
+	if condition {
+		e.ITEMID(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -939,6 +1010,10 @@ func (e *THElement) ITEMIDRemove(s string) *THElement {
 	}
 	e.StringAttributes.Del("itemid")
 	return e
+}
+
+func (e *THElement) ITEMIDRemoveF(format string, args ...any) *THElement {
+	return e.ITEMIDRemove(fmt.Sprintf(format, args...))
 }
 
 // The itemprop global attribute is used to add properties to an item
@@ -957,9 +1032,20 @@ func (e *THElement) ITEMPROP(s string) *THElement {
 	return e
 }
 
+func (e *THElement) ITEMPROPF(format string, args ...any) *THElement {
+	return e.ITEMPROP(fmt.Sprintf(format, args...))
+}
+
 func (e *THElement) IfITEMPROP(condition bool, s string) *THElement {
 	if condition {
 		e.ITEMPROP(s)
+	}
+	return e
+}
+
+func (e *THElement) IfITEMPROPF(condition bool, format string, args ...any) *THElement {
+	if condition {
+		e.ITEMPROP(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -971,6 +1057,10 @@ func (e *THElement) ITEMPROPRemove(s string) *THElement {
 	}
 	e.StringAttributes.Del("itemprop")
 	return e
+}
+
+func (e *THElement) ITEMPROPRemoveF(format string, args ...any) *THElement {
+	return e.ITEMPROPRemove(fmt.Sprintf(format, args...))
 }
 
 // Properties that are not descendants of an element with the itemscope attribute
@@ -986,9 +1076,20 @@ func (e *THElement) ITEMREF(s string) *THElement {
 	return e
 }
 
+func (e *THElement) ITEMREFF(format string, args ...any) *THElement {
+	return e.ITEMREF(fmt.Sprintf(format, args...))
+}
+
 func (e *THElement) IfITEMREF(condition bool, s string) *THElement {
 	if condition {
 		e.ITEMREF(s)
+	}
+	return e
+}
+
+func (e *THElement) IfITEMREFF(condition bool, format string, args ...any) *THElement {
+	if condition {
+		e.ITEMREF(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1000,6 +1101,10 @@ func (e *THElement) ITEMREFRemove(s string) *THElement {
 	}
 	e.StringAttributes.Del("itemref")
 	return e
+}
+
+func (e *THElement) ITEMREFRemoveF(format string, args ...any) *THElement {
+	return e.ITEMREFRemove(fmt.Sprintf(format, args...))
 }
 
 // The itemscope global attribute is used to add an item to a microdata DOM tree
@@ -1063,9 +1168,20 @@ func (e *THElement) ITEMTYPE(s string) *THElement {
 	return e
 }
 
+func (e *THElement) ITEMTYPEF(format string, args ...any) *THElement {
+	return e.ITEMTYPE(fmt.Sprintf(format, args...))
+}
+
 func (e *THElement) IfITEMTYPE(condition bool, s string) *THElement {
 	if condition {
 		e.ITEMTYPE(s)
+	}
+	return e
+}
+
+func (e *THElement) IfITEMTYPEF(condition bool, format string, args ...any) *THElement {
+	if condition {
+		e.ITEMTYPE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1077,6 +1193,10 @@ func (e *THElement) ITEMTYPERemove(s string) *THElement {
 	}
 	e.StringAttributes.Del("itemtype")
 	return e
+}
+
+func (e *THElement) ITEMTYPERemoveF(format string, args ...any) *THElement {
+	return e.ITEMTYPERemove(fmt.Sprintf(format, args...))
 }
 
 // The lang global attribute helps define the language of an element: the language
@@ -1093,9 +1213,20 @@ func (e *THElement) LANG(s string) *THElement {
 	return e
 }
 
+func (e *THElement) LANGF(format string, args ...any) *THElement {
+	return e.LANG(fmt.Sprintf(format, args...))
+}
+
 func (e *THElement) IfLANG(condition bool, s string) *THElement {
 	if condition {
 		e.LANG(s)
+	}
+	return e
+}
+
+func (e *THElement) IfLANGF(condition bool, format string, args ...any) *THElement {
+	if condition {
+		e.LANG(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1107,6 +1238,10 @@ func (e *THElement) LANGRemove(s string) *THElement {
 	}
 	e.StringAttributes.Del("lang")
 	return e
+}
+
+func (e *THElement) LANGRemoveF(format string, args ...any) *THElement {
+	return e.LANGRemove(fmt.Sprintf(format, args...))
 }
 
 // The nonce global attribute is a unique identifier used to declare inline
@@ -1121,9 +1256,20 @@ func (e *THElement) NONCE(s string) *THElement {
 	return e
 }
 
+func (e *THElement) NONCEF(format string, args ...any) *THElement {
+	return e.NONCE(fmt.Sprintf(format, args...))
+}
+
 func (e *THElement) IfNONCE(condition bool, s string) *THElement {
 	if condition {
 		e.NONCE(s)
+	}
+	return e
+}
+
+func (e *THElement) IfNONCEF(condition bool, format string, args ...any) *THElement {
+	if condition {
+		e.NONCE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1135,6 +1281,10 @@ func (e *THElement) NONCERemove(s string) *THElement {
 	}
 	e.StringAttributes.Del("nonce")
 	return e
+}
+
+func (e *THElement) NONCERemoveF(format string, args ...any) *THElement {
+	return e.NONCERemove(fmt.Sprintf(format, args...))
 }
 
 // The part global attribute contains a space-separated list of the part names of
@@ -1229,9 +1379,20 @@ func (e *THElement) ROLE(s string) *THElement {
 	return e
 }
 
+func (e *THElement) ROLEF(format string, args ...any) *THElement {
+	return e.ROLE(fmt.Sprintf(format, args...))
+}
+
 func (e *THElement) IfROLE(condition bool, s string) *THElement {
 	if condition {
 		e.ROLE(s)
+	}
+	return e
+}
+
+func (e *THElement) IfROLEF(condition bool, format string, args ...any) *THElement {
+	if condition {
+		e.ROLE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1243,6 +1404,10 @@ func (e *THElement) ROLERemove(s string) *THElement {
 	}
 	e.StringAttributes.Del("role")
 	return e
+}
+
+func (e *THElement) ROLERemoveF(format string, args ...any) *THElement {
+	return e.ROLERemove(fmt.Sprintf(format, args...))
 }
 
 // The slot global attribute assigns a slot in a shadow DOM shadow tree to an
@@ -1257,9 +1422,20 @@ func (e *THElement) SLOT(s string) *THElement {
 	return e
 }
 
+func (e *THElement) SLOTF(format string, args ...any) *THElement {
+	return e.SLOT(fmt.Sprintf(format, args...))
+}
+
 func (e *THElement) IfSLOT(condition bool, s string) *THElement {
 	if condition {
 		e.SLOT(s)
+	}
+	return e
+}
+
+func (e *THElement) IfSLOTF(condition bool, format string, args ...any) *THElement {
+	if condition {
+		e.SLOT(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1271,6 +1447,10 @@ func (e *THElement) SLOTRemove(s string) *THElement {
 	}
 	e.StringAttributes.Del("slot")
 	return e
+}
+
+func (e *THElement) SLOTRemoveF(format string, args ...any) *THElement {
+	return e.SLOTRemove(fmt.Sprintf(format, args...))
 }
 
 // The spellcheck global attribute is an enumerated attribute that defines whether
@@ -1475,9 +1655,20 @@ func (e *THElement) TITLE(s string) *THElement {
 	return e
 }
 
+func (e *THElement) TITLEF(format string, args ...any) *THElement {
+	return e.TITLE(fmt.Sprintf(format, args...))
+}
+
 func (e *THElement) IfTITLE(condition bool, s string) *THElement {
 	if condition {
 		e.TITLE(s)
+	}
+	return e
+}
+
+func (e *THElement) IfTITLEF(condition bool, format string, args ...any) *THElement {
+	if condition {
+		e.TITLE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1489,6 +1680,10 @@ func (e *THElement) TITLERemove(s string) *THElement {
 	}
 	e.StringAttributes.Del("title")
 	return e
+}
+
+func (e *THElement) TITLERemoveF(format string, args ...any) *THElement {
+	return e.TITLERemove(fmt.Sprintf(format, args...))
 }
 
 // The translate global attribute is an enumerated attribute that is used to
@@ -1533,7 +1728,7 @@ func (e *THElement) DATASTAR_MERGE_STORE(v any) *THElement {
 	if err != nil {
 		panic(err)
 	}
-	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	e.CustomDataAttributes.Set("merge-store", string(b))
 	return e
 }
 
@@ -1655,34 +1850,34 @@ func (e *THElement) DATASTAR_TEXTRemove() *THElement {
 
 // Sets the event handler of the element
 
-type ThDataOnMod customDataKeyModifier
+type ThOnMod customDataKeyModifier
 
 // Debounces the event handler
-func ThDataOnModDebounce(
+func ThOnModDebounce(
 	d time.Duration,
-) ThDataOnMod {
+) ThOnMod {
 	return func() string {
 		return fmt.Sprintf("debounce_%dms", d.Milliseconds())
 	}
 }
 
 // Throttles the event handler
-func ThDataOnModThrottle(
+func ThOnModThrottle(
 	d time.Duration,
-) ThDataOnMod {
+) ThOnMod {
 	return func() string {
 		return fmt.Sprintf("throttle_%dms", d.Milliseconds())
 	}
 }
 
-func (e *THElement) DATASTAR_ON(key string, expression string, modifiers ...ThDataOnMod) *THElement {
+func (e *THElement) DATASTAR_ON(key string, expression string, modifiers ...ThOnMod) *THElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
 	key = fmt.Sprintf("data-on-%s", key)
 
-	customMods := lo.Map(modifiers, func(m ThDataOnMod, i int) customDataKeyModifier {
+	customMods := lo.Map(modifiers, func(m ThOnMod, i int) customDataKeyModifier {
 		return customDataKeyModifier(m)
 	})
 	key = customDataKey(key, customMods...)
@@ -1690,7 +1885,7 @@ func (e *THElement) DATASTAR_ON(key string, expression string, modifiers ...ThDa
 	return e
 }
 
-func (e *THElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...ThDataOnMod) *THElement {
+func (e *THElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...ThOnMod) *THElement {
 	if condition {
 		e.DATASTAR_ON(key, expression, modifiers...)
 	}
@@ -1783,7 +1978,7 @@ func (e *THElement) DATASTAR_FETCH_INDICATOR(expression string) *THElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "DatastarFetchIndicator"
+	key := "data-fetch-indicator"
 
 	e.StringAttributes.Set(key, expression)
 	return e
@@ -1801,7 +1996,7 @@ func (e *THElement) DATASTAR_FETCH_INDICATORRemove() *THElement {
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("DatastarFetchIndicator")
+	e.StringAttributes.Del("data-fetch-indicator")
 	return e
 }
 

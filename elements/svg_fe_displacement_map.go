@@ -172,9 +172,20 @@ func (e *SVGFEDISPLACEMENTMAPElement) IN(s string) *SVGFEDISPLACEMENTMAPElement 
 	return e
 }
 
+func (e *SVGFEDISPLACEMENTMAPElement) INF(format string, args ...any) *SVGFEDISPLACEMENTMAPElement {
+	return e.IN(fmt.Sprintf(format, args...))
+}
+
 func (e *SVGFEDISPLACEMENTMAPElement) IfIN(condition bool, s string) *SVGFEDISPLACEMENTMAPElement {
 	if condition {
 		e.IN(s)
+	}
+	return e
+}
+
+func (e *SVGFEDISPLACEMENTMAPElement) IfINF(condition bool, format string, args ...any) *SVGFEDISPLACEMENTMAPElement {
+	if condition {
+		e.IN(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -188,6 +199,10 @@ func (e *SVGFEDISPLACEMENTMAPElement) INRemove(s string) *SVGFEDISPLACEMENTMAPEl
 	return e
 }
 
+func (e *SVGFEDISPLACEMENTMAPElement) INRemoveF(format string, args ...any) *SVGFEDISPLACEMENTMAPElement {
+	return e.INRemove(fmt.Sprintf(format, args...))
+}
+
 // The displacement map
 // This attribute can take on the same values as the 'in' attribute.
 func (e *SVGFEDISPLACEMENTMAPElement) IN_2(s string) *SVGFEDISPLACEMENTMAPElement {
@@ -198,9 +213,20 @@ func (e *SVGFEDISPLACEMENTMAPElement) IN_2(s string) *SVGFEDISPLACEMENTMAPElemen
 	return e
 }
 
+func (e *SVGFEDISPLACEMENTMAPElement) IN_2F(format string, args ...any) *SVGFEDISPLACEMENTMAPElement {
+	return e.IN_2(fmt.Sprintf(format, args...))
+}
+
 func (e *SVGFEDISPLACEMENTMAPElement) IfIN_2(condition bool, s string) *SVGFEDISPLACEMENTMAPElement {
 	if condition {
 		e.IN_2(s)
+	}
+	return e
+}
+
+func (e *SVGFEDISPLACEMENTMAPElement) IfIN_2F(condition bool, format string, args ...any) *SVGFEDISPLACEMENTMAPElement {
+	if condition {
+		e.IN_2(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -212,6 +238,10 @@ func (e *SVGFEDISPLACEMENTMAPElement) IN_2Remove(s string) *SVGFEDISPLACEMENTMAP
 	}
 	e.StringAttributes.Del("in2")
 	return e
+}
+
+func (e *SVGFEDISPLACEMENTMAPElement) IN_2RemoveF(format string, args ...any) *SVGFEDISPLACEMENTMAPElement {
+	return e.IN_2Remove(fmt.Sprintf(format, args...))
 }
 
 // The scale attribute defines the maximum value for the in2 displacement
@@ -304,9 +334,20 @@ func (e *SVGFEDISPLACEMENTMAPElement) ID(s string) *SVGFEDISPLACEMENTMAPElement 
 	return e
 }
 
+func (e *SVGFEDISPLACEMENTMAPElement) IDF(format string, args ...any) *SVGFEDISPLACEMENTMAPElement {
+	return e.ID(fmt.Sprintf(format, args...))
+}
+
 func (e *SVGFEDISPLACEMENTMAPElement) IfID(condition bool, s string) *SVGFEDISPLACEMENTMAPElement {
 	if condition {
 		e.ID(s)
+	}
+	return e
+}
+
+func (e *SVGFEDISPLACEMENTMAPElement) IfIDF(condition bool, format string, args ...any) *SVGFEDISPLACEMENTMAPElement {
+	if condition {
+		e.ID(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -318,6 +359,10 @@ func (e *SVGFEDISPLACEMENTMAPElement) IDRemove(s string) *SVGFEDISPLACEMENTMAPEl
 	}
 	e.StringAttributes.Del("id")
 	return e
+}
+
+func (e *SVGFEDISPLACEMENTMAPElement) IDRemoveF(format string, args ...any) *SVGFEDISPLACEMENTMAPElement {
+	return e.IDRemove(fmt.Sprintf(format, args...))
 }
 
 // Specifies one or more classnames for an element (refers to a class in a style
@@ -456,7 +501,7 @@ func (e *SVGFEDISPLACEMENTMAPElement) DATASTAR_MERGE_STORE(v any) *SVGFEDISPLACE
 	if err != nil {
 		panic(err)
 	}
-	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	e.CustomDataAttributes.Set("merge-store", string(b))
 	return e
 }
 
@@ -578,34 +623,34 @@ func (e *SVGFEDISPLACEMENTMAPElement) DATASTAR_TEXTRemove() *SVGFEDISPLACEMENTMA
 
 // Sets the event handler of the element
 
-type SVGFeDisplacementMapDataOnMod customDataKeyModifier
+type SVGFeDisplacementMapOnMod customDataKeyModifier
 
 // Debounces the event handler
-func SVGFeDisplacementMapDataOnModDebounce(
+func SVGFeDisplacementMapOnModDebounce(
 	d time.Duration,
-) SVGFeDisplacementMapDataOnMod {
+) SVGFeDisplacementMapOnMod {
 	return func() string {
 		return fmt.Sprintf("debounce_%dms", d.Milliseconds())
 	}
 }
 
 // Throttles the event handler
-func SVGFeDisplacementMapDataOnModThrottle(
+func SVGFeDisplacementMapOnModThrottle(
 	d time.Duration,
-) SVGFeDisplacementMapDataOnMod {
+) SVGFeDisplacementMapOnMod {
 	return func() string {
 		return fmt.Sprintf("throttle_%dms", d.Milliseconds())
 	}
 }
 
-func (e *SVGFEDISPLACEMENTMAPElement) DATASTAR_ON(key string, expression string, modifiers ...SVGFeDisplacementMapDataOnMod) *SVGFEDISPLACEMENTMAPElement {
+func (e *SVGFEDISPLACEMENTMAPElement) DATASTAR_ON(key string, expression string, modifiers ...SVGFeDisplacementMapOnMod) *SVGFEDISPLACEMENTMAPElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
 	key = fmt.Sprintf("data-on-%s", key)
 
-	customMods := lo.Map(modifiers, func(m SVGFeDisplacementMapDataOnMod, i int) customDataKeyModifier {
+	customMods := lo.Map(modifiers, func(m SVGFeDisplacementMapOnMod, i int) customDataKeyModifier {
 		return customDataKeyModifier(m)
 	})
 	key = customDataKey(key, customMods...)
@@ -613,7 +658,7 @@ func (e *SVGFEDISPLACEMENTMAPElement) DATASTAR_ON(key string, expression string,
 	return e
 }
 
-func (e *SVGFEDISPLACEMENTMAPElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SVGFeDisplacementMapDataOnMod) *SVGFEDISPLACEMENTMAPElement {
+func (e *SVGFEDISPLACEMENTMAPElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SVGFeDisplacementMapOnMod) *SVGFEDISPLACEMENTMAPElement {
 	if condition {
 		e.DATASTAR_ON(key, expression, modifiers...)
 	}
@@ -706,7 +751,7 @@ func (e *SVGFEDISPLACEMENTMAPElement) DATASTAR_FETCH_INDICATOR(expression string
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "DatastarFetchIndicator"
+	key := "data-fetch-indicator"
 
 	e.StringAttributes.Set(key, expression)
 	return e
@@ -724,7 +769,7 @@ func (e *SVGFEDISPLACEMENTMAPElement) DATASTAR_FETCH_INDICATORRemove() *SVGFEDIS
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("DatastarFetchIndicator")
+	e.StringAttributes.Del("data-fetch-indicator")
 	return e
 }
 

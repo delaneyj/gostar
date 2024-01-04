@@ -172,9 +172,20 @@ func (e *SVGPATHElement) D(s string) *SVGPATHElement {
 	return e
 }
 
+func (e *SVGPATHElement) DF(format string, args ...any) *SVGPATHElement {
+	return e.D(fmt.Sprintf(format, args...))
+}
+
 func (e *SVGPATHElement) IfD(condition bool, s string) *SVGPATHElement {
 	if condition {
 		e.D(s)
+	}
+	return e
+}
+
+func (e *SVGPATHElement) IfDF(condition bool, format string, args ...any) *SVGPATHElement {
+	if condition {
+		e.D(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -188,6 +199,10 @@ func (e *SVGPATHElement) DRemove(s string) *SVGPATHElement {
 	return e
 }
 
+func (e *SVGPATHElement) DRemoveF(format string, args ...any) *SVGPATHElement {
+	return e.DRemove(fmt.Sprintf(format, args...))
+}
+
 // The <path> SVG element is the generic element to define a shape
 // All the basic shapes can be created with a path element.
 func (e *SVGPATHElement) FILL(s string) *SVGPATHElement {
@@ -198,9 +213,20 @@ func (e *SVGPATHElement) FILL(s string) *SVGPATHElement {
 	return e
 }
 
+func (e *SVGPATHElement) FILLF(format string, args ...any) *SVGPATHElement {
+	return e.FILL(fmt.Sprintf(format, args...))
+}
+
 func (e *SVGPATHElement) IfFILL(condition bool, s string) *SVGPATHElement {
 	if condition {
 		e.FILL(s)
+	}
+	return e
+}
+
+func (e *SVGPATHElement) IfFILLF(condition bool, format string, args ...any) *SVGPATHElement {
+	if condition {
+		e.FILL(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -212,6 +238,10 @@ func (e *SVGPATHElement) FILLRemove(s string) *SVGPATHElement {
 	}
 	e.StringAttributes.Del("fill")
 	return e
+}
+
+func (e *SVGPATHElement) FILLRemoveF(format string, args ...any) *SVGPATHElement {
+	return e.FILLRemove(fmt.Sprintf(format, args...))
 }
 
 // The <path> SVG element is the generic element to define a shape
@@ -256,9 +286,20 @@ func (e *SVGPATHElement) ID(s string) *SVGPATHElement {
 	return e
 }
 
+func (e *SVGPATHElement) IDF(format string, args ...any) *SVGPATHElement {
+	return e.ID(fmt.Sprintf(format, args...))
+}
+
 func (e *SVGPATHElement) IfID(condition bool, s string) *SVGPATHElement {
 	if condition {
 		e.ID(s)
+	}
+	return e
+}
+
+func (e *SVGPATHElement) IfIDF(condition bool, format string, args ...any) *SVGPATHElement {
+	if condition {
+		e.ID(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -270,6 +311,10 @@ func (e *SVGPATHElement) IDRemove(s string) *SVGPATHElement {
 	}
 	e.StringAttributes.Del("id")
 	return e
+}
+
+func (e *SVGPATHElement) IDRemoveF(format string, args ...any) *SVGPATHElement {
+	return e.IDRemove(fmt.Sprintf(format, args...))
 }
 
 // Specifies one or more classnames for an element (refers to a class in a style
@@ -408,7 +453,7 @@ func (e *SVGPATHElement) DATASTAR_MERGE_STORE(v any) *SVGPATHElement {
 	if err != nil {
 		panic(err)
 	}
-	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	e.CustomDataAttributes.Set("merge-store", string(b))
 	return e
 }
 
@@ -530,34 +575,34 @@ func (e *SVGPATHElement) DATASTAR_TEXTRemove() *SVGPATHElement {
 
 // Sets the event handler of the element
 
-type SVGPathDataOnMod customDataKeyModifier
+type SVGPathOnMod customDataKeyModifier
 
 // Debounces the event handler
-func SVGPathDataOnModDebounce(
+func SVGPathOnModDebounce(
 	d time.Duration,
-) SVGPathDataOnMod {
+) SVGPathOnMod {
 	return func() string {
 		return fmt.Sprintf("debounce_%dms", d.Milliseconds())
 	}
 }
 
 // Throttles the event handler
-func SVGPathDataOnModThrottle(
+func SVGPathOnModThrottle(
 	d time.Duration,
-) SVGPathDataOnMod {
+) SVGPathOnMod {
 	return func() string {
 		return fmt.Sprintf("throttle_%dms", d.Milliseconds())
 	}
 }
 
-func (e *SVGPATHElement) DATASTAR_ON(key string, expression string, modifiers ...SVGPathDataOnMod) *SVGPATHElement {
+func (e *SVGPATHElement) DATASTAR_ON(key string, expression string, modifiers ...SVGPathOnMod) *SVGPATHElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
 	key = fmt.Sprintf("data-on-%s", key)
 
-	customMods := lo.Map(modifiers, func(m SVGPathDataOnMod, i int) customDataKeyModifier {
+	customMods := lo.Map(modifiers, func(m SVGPathOnMod, i int) customDataKeyModifier {
 		return customDataKeyModifier(m)
 	})
 	key = customDataKey(key, customMods...)
@@ -565,7 +610,7 @@ func (e *SVGPATHElement) DATASTAR_ON(key string, expression string, modifiers ..
 	return e
 }
 
-func (e *SVGPATHElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SVGPathDataOnMod) *SVGPATHElement {
+func (e *SVGPATHElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SVGPathOnMod) *SVGPATHElement {
 	if condition {
 		e.DATASTAR_ON(key, expression, modifiers...)
 	}
@@ -658,7 +703,7 @@ func (e *SVGPATHElement) DATASTAR_FETCH_INDICATOR(expression string) *SVGPATHEle
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "DatastarFetchIndicator"
+	key := "data-fetch-indicator"
 
 	e.StringAttributes.Set(key, expression)
 	return e
@@ -676,7 +721,7 @@ func (e *SVGPATHElement) DATASTAR_FETCH_INDICATORRemove() *SVGPATHElement {
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("DatastarFetchIndicator")
+	e.StringAttributes.Del("data-fetch-indicator")
 	return e
 }
 

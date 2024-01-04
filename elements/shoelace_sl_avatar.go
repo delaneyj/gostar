@@ -170,9 +170,20 @@ func (e *SLAVATARElement) IMAGE(s string) *SLAVATARElement {
 	return e
 }
 
+func (e *SLAVATARElement) IMAGEF(format string, args ...any) *SLAVATARElement {
+	return e.IMAGE(fmt.Sprintf(format, args...))
+}
+
 func (e *SLAVATARElement) IfIMAGE(condition bool, s string) *SLAVATARElement {
 	if condition {
 		e.IMAGE(s)
+	}
+	return e
+}
+
+func (e *SLAVATARElement) IfIMAGEF(condition bool, format string, args ...any) *SLAVATARElement {
+	if condition {
+		e.IMAGE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -186,6 +197,10 @@ func (e *SLAVATARElement) IMAGERemove(s string) *SLAVATARElement {
 	return e
 }
 
+func (e *SLAVATARElement) IMAGERemoveF(format string, args ...any) *SLAVATARElement {
+	return e.IMAGERemove(fmt.Sprintf(format, args...))
+}
+
 func (e *SLAVATARElement) LABEL(s string) *SLAVATARElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
@@ -194,9 +209,20 @@ func (e *SLAVATARElement) LABEL(s string) *SLAVATARElement {
 	return e
 }
 
+func (e *SLAVATARElement) LABELF(format string, args ...any) *SLAVATARElement {
+	return e.LABEL(fmt.Sprintf(format, args...))
+}
+
 func (e *SLAVATARElement) IfLABEL(condition bool, s string) *SLAVATARElement {
 	if condition {
 		e.LABEL(s)
+	}
+	return e
+}
+
+func (e *SLAVATARElement) IfLABELF(condition bool, format string, args ...any) *SLAVATARElement {
+	if condition {
+		e.LABEL(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -208,6 +234,10 @@ func (e *SLAVATARElement) LABELRemove(s string) *SLAVATARElement {
 	}
 	e.StringAttributes.Del("label")
 	return e
+}
+
+func (e *SLAVATARElement) LABELRemoveF(format string, args ...any) *SLAVATARElement {
+	return e.LABELRemove(fmt.Sprintf(format, args...))
 }
 
 func (e *SLAVATARElement) LOADING(c SLAvatarLoadingChoice) *SLAVATARElement {
@@ -242,9 +272,20 @@ func (e *SLAVATARElement) INITIALS(s string) *SLAVATARElement {
 	return e
 }
 
+func (e *SLAVATARElement) INITIALSF(format string, args ...any) *SLAVATARElement {
+	return e.INITIALS(fmt.Sprintf(format, args...))
+}
+
 func (e *SLAVATARElement) IfINITIALS(condition bool, s string) *SLAVATARElement {
 	if condition {
 		e.INITIALS(s)
+	}
+	return e
+}
+
+func (e *SLAVATARElement) IfINITIALSF(condition bool, format string, args ...any) *SLAVATARElement {
+	if condition {
+		e.INITIALS(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -256,6 +297,10 @@ func (e *SLAVATARElement) INITIALSRemove(s string) *SLAVATARElement {
 	}
 	e.StringAttributes.Del("initials")
 	return e
+}
+
+func (e *SLAVATARElement) INITIALSRemoveF(format string, args ...any) *SLAVATARElement {
+	return e.INITIALSRemove(fmt.Sprintf(format, args...))
 }
 
 func (e *SLAVATARElement) SHAPE(c SLAvatarShapeChoice) *SLAVATARElement {
@@ -296,7 +341,7 @@ func (e *SLAVATARElement) DATASTAR_MERGE_STORE(v any) *SLAVATARElement {
 	if err != nil {
 		panic(err)
 	}
-	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	e.CustomDataAttributes.Set("merge-store", string(b))
 	return e
 }
 
@@ -418,34 +463,34 @@ func (e *SLAVATARElement) DATASTAR_TEXTRemove() *SLAVATARElement {
 
 // Sets the event handler of the element
 
-type SLAvatarDataOnMod customDataKeyModifier
+type SLAvatarOnMod customDataKeyModifier
 
 // Debounces the event handler
-func SLAvatarDataOnModDebounce(
+func SLAvatarOnModDebounce(
 	d time.Duration,
-) SLAvatarDataOnMod {
+) SLAvatarOnMod {
 	return func() string {
 		return fmt.Sprintf("debounce_%dms", d.Milliseconds())
 	}
 }
 
 // Throttles the event handler
-func SLAvatarDataOnModThrottle(
+func SLAvatarOnModThrottle(
 	d time.Duration,
-) SLAvatarDataOnMod {
+) SLAvatarOnMod {
 	return func() string {
 		return fmt.Sprintf("throttle_%dms", d.Milliseconds())
 	}
 }
 
-func (e *SLAVATARElement) DATASTAR_ON(key string, expression string, modifiers ...SLAvatarDataOnMod) *SLAVATARElement {
+func (e *SLAVATARElement) DATASTAR_ON(key string, expression string, modifiers ...SLAvatarOnMod) *SLAVATARElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
 	key = fmt.Sprintf("data-on-%s", key)
 
-	customMods := lo.Map(modifiers, func(m SLAvatarDataOnMod, i int) customDataKeyModifier {
+	customMods := lo.Map(modifiers, func(m SLAvatarOnMod, i int) customDataKeyModifier {
 		return customDataKeyModifier(m)
 	})
 	key = customDataKey(key, customMods...)
@@ -453,7 +498,7 @@ func (e *SLAVATARElement) DATASTAR_ON(key string, expression string, modifiers .
 	return e
 }
 
-func (e *SLAVATARElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SLAvatarDataOnMod) *SLAVATARElement {
+func (e *SLAVATARElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SLAvatarOnMod) *SLAVATARElement {
 	if condition {
 		e.DATASTAR_ON(key, expression, modifiers...)
 	}
@@ -546,7 +591,7 @@ func (e *SLAVATARElement) DATASTAR_FETCH_INDICATOR(expression string) *SLAVATARE
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "DatastarFetchIndicator"
+	key := "data-fetch-indicator"
 
 	e.StringAttributes.Set(key, expression)
 	return e
@@ -564,7 +609,7 @@ func (e *SLAVATARElement) DATASTAR_FETCH_INDICATORRemove() *SLAVATARElement {
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("DatastarFetchIndicator")
+	e.StringAttributes.Del("data-fetch-indicator")
 	return e
 }
 

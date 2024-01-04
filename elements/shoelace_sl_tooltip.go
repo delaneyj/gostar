@@ -169,9 +169,20 @@ func (e *SLTOOLTIPElement) CONTENT(s string) *SLTOOLTIPElement {
 	return e
 }
 
+func (e *SLTOOLTIPElement) CONTENTF(format string, args ...any) *SLTOOLTIPElement {
+	return e.CONTENT(fmt.Sprintf(format, args...))
+}
+
 func (e *SLTOOLTIPElement) IfCONTENT(condition bool, s string) *SLTOOLTIPElement {
 	if condition {
 		e.CONTENT(s)
+	}
+	return e
+}
+
+func (e *SLTOOLTIPElement) IfCONTENTF(condition bool, format string, args ...any) *SLTOOLTIPElement {
+	if condition {
+		e.CONTENT(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -183,6 +194,10 @@ func (e *SLTOOLTIPElement) CONTENTRemove(s string) *SLTOOLTIPElement {
 	}
 	e.StringAttributes.Del("content")
 	return e
+}
+
+func (e *SLTOOLTIPElement) CONTENTRemoveF(format string, args ...any) *SLTOOLTIPElement {
+	return e.CONTENTRemove(fmt.Sprintf(format, args...))
 }
 
 func (e *SLTOOLTIPElement) PLACEMENT(c SLTooltipPlacementChoice) *SLTOOLTIPElement {
@@ -241,7 +256,7 @@ func (e *SLTOOLTIPElement) DATASTAR_MERGE_STORE(v any) *SLTOOLTIPElement {
 	if err != nil {
 		panic(err)
 	}
-	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	e.CustomDataAttributes.Set("merge-store", string(b))
 	return e
 }
 
@@ -363,34 +378,34 @@ func (e *SLTOOLTIPElement) DATASTAR_TEXTRemove() *SLTOOLTIPElement {
 
 // Sets the event handler of the element
 
-type SLTooltipDataOnMod customDataKeyModifier
+type SLTooltipOnMod customDataKeyModifier
 
 // Debounces the event handler
-func SLTooltipDataOnModDebounce(
+func SLTooltipOnModDebounce(
 	d time.Duration,
-) SLTooltipDataOnMod {
+) SLTooltipOnMod {
 	return func() string {
 		return fmt.Sprintf("debounce_%dms", d.Milliseconds())
 	}
 }
 
 // Throttles the event handler
-func SLTooltipDataOnModThrottle(
+func SLTooltipOnModThrottle(
 	d time.Duration,
-) SLTooltipDataOnMod {
+) SLTooltipOnMod {
 	return func() string {
 		return fmt.Sprintf("throttle_%dms", d.Milliseconds())
 	}
 }
 
-func (e *SLTOOLTIPElement) DATASTAR_ON(key string, expression string, modifiers ...SLTooltipDataOnMod) *SLTOOLTIPElement {
+func (e *SLTOOLTIPElement) DATASTAR_ON(key string, expression string, modifiers ...SLTooltipOnMod) *SLTOOLTIPElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
 	key = fmt.Sprintf("data-on-%s", key)
 
-	customMods := lo.Map(modifiers, func(m SLTooltipDataOnMod, i int) customDataKeyModifier {
+	customMods := lo.Map(modifiers, func(m SLTooltipOnMod, i int) customDataKeyModifier {
 		return customDataKeyModifier(m)
 	})
 	key = customDataKey(key, customMods...)
@@ -398,7 +413,7 @@ func (e *SLTOOLTIPElement) DATASTAR_ON(key string, expression string, modifiers 
 	return e
 }
 
-func (e *SLTOOLTIPElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SLTooltipDataOnMod) *SLTOOLTIPElement {
+func (e *SLTOOLTIPElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SLTooltipOnMod) *SLTOOLTIPElement {
 	if condition {
 		e.DATASTAR_ON(key, expression, modifiers...)
 	}
@@ -491,7 +506,7 @@ func (e *SLTOOLTIPElement) DATASTAR_FETCH_INDICATOR(expression string) *SLTOOLTI
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "DatastarFetchIndicator"
+	key := "data-fetch-indicator"
 
 	e.StringAttributes.Set(key, expression)
 	return e
@@ -509,7 +524,7 @@ func (e *SLTOOLTIPElement) DATASTAR_FETCH_INDICATORRemove() *SLTOOLTIPElement {
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("DatastarFetchIndicator")
+	e.StringAttributes.Del("data-fetch-indicator")
 	return e
 }
 

@@ -286,9 +286,20 @@ func (e *SVGIMAGEElement) HREF(s string) *SVGIMAGEElement {
 	return e
 }
 
+func (e *SVGIMAGEElement) HREFF(format string, args ...any) *SVGIMAGEElement {
+	return e.HREF(fmt.Sprintf(format, args...))
+}
+
 func (e *SVGIMAGEElement) IfHREF(condition bool, s string) *SVGIMAGEElement {
 	if condition {
 		e.HREF(s)
+	}
+	return e
+}
+
+func (e *SVGIMAGEElement) IfHREFF(condition bool, format string, args ...any) *SVGIMAGEElement {
+	if condition {
+		e.HREF(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -302,6 +313,10 @@ func (e *SVGIMAGEElement) HREFRemove(s string) *SVGIMAGEElement {
 	return e
 }
 
+func (e *SVGIMAGEElement) HREFRemoveF(format string, args ...any) *SVGIMAGEElement {
+	return e.HREFRemove(fmt.Sprintf(format, args...))
+}
+
 // Specifies a unique id for an element
 func (e *SVGIMAGEElement) ID(s string) *SVGIMAGEElement {
 	if e.StringAttributes == nil {
@@ -311,9 +326,20 @@ func (e *SVGIMAGEElement) ID(s string) *SVGIMAGEElement {
 	return e
 }
 
+func (e *SVGIMAGEElement) IDF(format string, args ...any) *SVGIMAGEElement {
+	return e.ID(fmt.Sprintf(format, args...))
+}
+
 func (e *SVGIMAGEElement) IfID(condition bool, s string) *SVGIMAGEElement {
 	if condition {
 		e.ID(s)
+	}
+	return e
+}
+
+func (e *SVGIMAGEElement) IfIDF(condition bool, format string, args ...any) *SVGIMAGEElement {
+	if condition {
+		e.ID(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -325,6 +351,10 @@ func (e *SVGIMAGEElement) IDRemove(s string) *SVGIMAGEElement {
 	}
 	e.StringAttributes.Del("id")
 	return e
+}
+
+func (e *SVGIMAGEElement) IDRemoveF(format string, args ...any) *SVGIMAGEElement {
+	return e.IDRemove(fmt.Sprintf(format, args...))
 }
 
 // Specifies one or more classnames for an element (refers to a class in a style
@@ -463,7 +493,7 @@ func (e *SVGIMAGEElement) DATASTAR_MERGE_STORE(v any) *SVGIMAGEElement {
 	if err != nil {
 		panic(err)
 	}
-	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	e.CustomDataAttributes.Set("merge-store", string(b))
 	return e
 }
 
@@ -585,34 +615,34 @@ func (e *SVGIMAGEElement) DATASTAR_TEXTRemove() *SVGIMAGEElement {
 
 // Sets the event handler of the element
 
-type SVGImageDataOnMod customDataKeyModifier
+type SVGImageOnMod customDataKeyModifier
 
 // Debounces the event handler
-func SVGImageDataOnModDebounce(
+func SVGImageOnModDebounce(
 	d time.Duration,
-) SVGImageDataOnMod {
+) SVGImageOnMod {
 	return func() string {
 		return fmt.Sprintf("debounce_%dms", d.Milliseconds())
 	}
 }
 
 // Throttles the event handler
-func SVGImageDataOnModThrottle(
+func SVGImageOnModThrottle(
 	d time.Duration,
-) SVGImageDataOnMod {
+) SVGImageOnMod {
 	return func() string {
 		return fmt.Sprintf("throttle_%dms", d.Milliseconds())
 	}
 }
 
-func (e *SVGIMAGEElement) DATASTAR_ON(key string, expression string, modifiers ...SVGImageDataOnMod) *SVGIMAGEElement {
+func (e *SVGIMAGEElement) DATASTAR_ON(key string, expression string, modifiers ...SVGImageOnMod) *SVGIMAGEElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
 	key = fmt.Sprintf("data-on-%s", key)
 
-	customMods := lo.Map(modifiers, func(m SVGImageDataOnMod, i int) customDataKeyModifier {
+	customMods := lo.Map(modifiers, func(m SVGImageOnMod, i int) customDataKeyModifier {
 		return customDataKeyModifier(m)
 	})
 	key = customDataKey(key, customMods...)
@@ -620,7 +650,7 @@ func (e *SVGIMAGEElement) DATASTAR_ON(key string, expression string, modifiers .
 	return e
 }
 
-func (e *SVGIMAGEElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SVGImageDataOnMod) *SVGIMAGEElement {
+func (e *SVGIMAGEElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SVGImageOnMod) *SVGIMAGEElement {
 	if condition {
 		e.DATASTAR_ON(key, expression, modifiers...)
 	}
@@ -713,7 +743,7 @@ func (e *SVGIMAGEElement) DATASTAR_FETCH_INDICATOR(expression string) *SVGIMAGEE
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "DatastarFetchIndicator"
+	key := "data-fetch-indicator"
 
 	e.StringAttributes.Set(key, expression)
 	return e
@@ -731,7 +761,7 @@ func (e *SVGIMAGEElement) DATASTAR_FETCH_INDICATORRemove() *SVGIMAGEElement {
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("DatastarFetchIndicator")
+	e.StringAttributes.Del("data-fetch-indicator")
 	return e
 }
 

@@ -173,9 +173,20 @@ func (e *SVGTITLEElement) ID(s string) *SVGTITLEElement {
 	return e
 }
 
+func (e *SVGTITLEElement) IDF(format string, args ...any) *SVGTITLEElement {
+	return e.ID(fmt.Sprintf(format, args...))
+}
+
 func (e *SVGTITLEElement) IfID(condition bool, s string) *SVGTITLEElement {
 	if condition {
 		e.ID(s)
+	}
+	return e
+}
+
+func (e *SVGTITLEElement) IfIDF(condition bool, format string, args ...any) *SVGTITLEElement {
+	if condition {
+		e.ID(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -187,6 +198,10 @@ func (e *SVGTITLEElement) IDRemove(s string) *SVGTITLEElement {
 	}
 	e.StringAttributes.Del("id")
 	return e
+}
+
+func (e *SVGTITLEElement) IDRemoveF(format string, args ...any) *SVGTITLEElement {
+	return e.IDRemove(fmt.Sprintf(format, args...))
 }
 
 // Specifies one or more classnames for an element (refers to a class in a style
@@ -325,7 +340,7 @@ func (e *SVGTITLEElement) DATASTAR_MERGE_STORE(v any) *SVGTITLEElement {
 	if err != nil {
 		panic(err)
 	}
-	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	e.CustomDataAttributes.Set("merge-store", string(b))
 	return e
 }
 
@@ -447,34 +462,34 @@ func (e *SVGTITLEElement) DATASTAR_TEXTRemove() *SVGTITLEElement {
 
 // Sets the event handler of the element
 
-type SVGTitleDataOnMod customDataKeyModifier
+type SVGTitleOnMod customDataKeyModifier
 
 // Debounces the event handler
-func SVGTitleDataOnModDebounce(
+func SVGTitleOnModDebounce(
 	d time.Duration,
-) SVGTitleDataOnMod {
+) SVGTitleOnMod {
 	return func() string {
 		return fmt.Sprintf("debounce_%dms", d.Milliseconds())
 	}
 }
 
 // Throttles the event handler
-func SVGTitleDataOnModThrottle(
+func SVGTitleOnModThrottle(
 	d time.Duration,
-) SVGTitleDataOnMod {
+) SVGTitleOnMod {
 	return func() string {
 		return fmt.Sprintf("throttle_%dms", d.Milliseconds())
 	}
 }
 
-func (e *SVGTITLEElement) DATASTAR_ON(key string, expression string, modifiers ...SVGTitleDataOnMod) *SVGTITLEElement {
+func (e *SVGTITLEElement) DATASTAR_ON(key string, expression string, modifiers ...SVGTitleOnMod) *SVGTITLEElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
 	key = fmt.Sprintf("data-on-%s", key)
 
-	customMods := lo.Map(modifiers, func(m SVGTitleDataOnMod, i int) customDataKeyModifier {
+	customMods := lo.Map(modifiers, func(m SVGTitleOnMod, i int) customDataKeyModifier {
 		return customDataKeyModifier(m)
 	})
 	key = customDataKey(key, customMods...)
@@ -482,7 +497,7 @@ func (e *SVGTITLEElement) DATASTAR_ON(key string, expression string, modifiers .
 	return e
 }
 
-func (e *SVGTITLEElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SVGTitleDataOnMod) *SVGTITLEElement {
+func (e *SVGTITLEElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SVGTitleOnMod) *SVGTITLEElement {
 	if condition {
 		e.DATASTAR_ON(key, expression, modifiers...)
 	}
@@ -575,7 +590,7 @@ func (e *SVGTITLEElement) DATASTAR_FETCH_INDICATOR(expression string) *SVGTITLEE
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "DatastarFetchIndicator"
+	key := "data-fetch-indicator"
 
 	e.StringAttributes.Set(key, expression)
 	return e
@@ -593,7 +608,7 @@ func (e *SVGTITLEElement) DATASTAR_FETCH_INDICATORRemove() *SVGTITLEElement {
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("DatastarFetchIndicator")
+	e.StringAttributes.Del("data-fetch-indicator")
 	return e
 }
 

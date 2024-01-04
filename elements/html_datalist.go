@@ -609,9 +609,20 @@ func (e *DATALISTElement) ID(s string) *DATALISTElement {
 	return e
 }
 
+func (e *DATALISTElement) IDF(format string, args ...any) *DATALISTElement {
+	return e.ID(fmt.Sprintf(format, args...))
+}
+
 func (e *DATALISTElement) IfID(condition bool, s string) *DATALISTElement {
 	if condition {
 		e.ID(s)
+	}
+	return e
+}
+
+func (e *DATALISTElement) IfIDF(condition bool, format string, args ...any) *DATALISTElement {
+	if condition {
+		e.ID(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -623,6 +634,10 @@ func (e *DATALISTElement) IDRemove(s string) *DATALISTElement {
 	}
 	e.StringAttributes.Del("id")
 	return e
+}
+
+func (e *DATALISTElement) IDRemoveF(format string, args ...any) *DATALISTElement {
+	return e.IDRemove(fmt.Sprintf(format, args...))
 }
 
 // The inert global attribute is a Boolean attribute indicating that the browser
@@ -757,9 +772,20 @@ func (e *DATALISTElement) IS(s string) *DATALISTElement {
 	return e
 }
 
+func (e *DATALISTElement) ISF(format string, args ...any) *DATALISTElement {
+	return e.IS(fmt.Sprintf(format, args...))
+}
+
 func (e *DATALISTElement) IfIS(condition bool, s string) *DATALISTElement {
 	if condition {
 		e.IS(s)
+	}
+	return e
+}
+
+func (e *DATALISTElement) IfISF(condition bool, format string, args ...any) *DATALISTElement {
+	if condition {
+		e.IS(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -771,6 +797,10 @@ func (e *DATALISTElement) ISRemove(s string) *DATALISTElement {
 	}
 	e.StringAttributes.Del("is")
 	return e
+}
+
+func (e *DATALISTElement) ISRemoveF(format string, args ...any) *DATALISTElement {
+	return e.ISRemove(fmt.Sprintf(format, args...))
 }
 
 // The itemid global attribute provides microdata in the form of a unique, global
@@ -794,9 +824,20 @@ func (e *DATALISTElement) ITEMID(s string) *DATALISTElement {
 	return e
 }
 
+func (e *DATALISTElement) ITEMIDF(format string, args ...any) *DATALISTElement {
+	return e.ITEMID(fmt.Sprintf(format, args...))
+}
+
 func (e *DATALISTElement) IfITEMID(condition bool, s string) *DATALISTElement {
 	if condition {
 		e.ITEMID(s)
+	}
+	return e
+}
+
+func (e *DATALISTElement) IfITEMIDF(condition bool, format string, args ...any) *DATALISTElement {
+	if condition {
+		e.ITEMID(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -808,6 +849,10 @@ func (e *DATALISTElement) ITEMIDRemove(s string) *DATALISTElement {
 	}
 	e.StringAttributes.Del("itemid")
 	return e
+}
+
+func (e *DATALISTElement) ITEMIDRemoveF(format string, args ...any) *DATALISTElement {
+	return e.ITEMIDRemove(fmt.Sprintf(format, args...))
 }
 
 // The itemprop global attribute is used to add properties to an item
@@ -826,9 +871,20 @@ func (e *DATALISTElement) ITEMPROP(s string) *DATALISTElement {
 	return e
 }
 
+func (e *DATALISTElement) ITEMPROPF(format string, args ...any) *DATALISTElement {
+	return e.ITEMPROP(fmt.Sprintf(format, args...))
+}
+
 func (e *DATALISTElement) IfITEMPROP(condition bool, s string) *DATALISTElement {
 	if condition {
 		e.ITEMPROP(s)
+	}
+	return e
+}
+
+func (e *DATALISTElement) IfITEMPROPF(condition bool, format string, args ...any) *DATALISTElement {
+	if condition {
+		e.ITEMPROP(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -840,6 +896,10 @@ func (e *DATALISTElement) ITEMPROPRemove(s string) *DATALISTElement {
 	}
 	e.StringAttributes.Del("itemprop")
 	return e
+}
+
+func (e *DATALISTElement) ITEMPROPRemoveF(format string, args ...any) *DATALISTElement {
+	return e.ITEMPROPRemove(fmt.Sprintf(format, args...))
 }
 
 // Properties that are not descendants of an element with the itemscope attribute
@@ -855,9 +915,20 @@ func (e *DATALISTElement) ITEMREF(s string) *DATALISTElement {
 	return e
 }
 
+func (e *DATALISTElement) ITEMREFF(format string, args ...any) *DATALISTElement {
+	return e.ITEMREF(fmt.Sprintf(format, args...))
+}
+
 func (e *DATALISTElement) IfITEMREF(condition bool, s string) *DATALISTElement {
 	if condition {
 		e.ITEMREF(s)
+	}
+	return e
+}
+
+func (e *DATALISTElement) IfITEMREFF(condition bool, format string, args ...any) *DATALISTElement {
+	if condition {
+		e.ITEMREF(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -869,6 +940,10 @@ func (e *DATALISTElement) ITEMREFRemove(s string) *DATALISTElement {
 	}
 	e.StringAttributes.Del("itemref")
 	return e
+}
+
+func (e *DATALISTElement) ITEMREFRemoveF(format string, args ...any) *DATALISTElement {
+	return e.ITEMREFRemove(fmt.Sprintf(format, args...))
 }
 
 // The itemscope global attribute is used to add an item to a microdata DOM tree
@@ -932,9 +1007,20 @@ func (e *DATALISTElement) ITEMTYPE(s string) *DATALISTElement {
 	return e
 }
 
+func (e *DATALISTElement) ITEMTYPEF(format string, args ...any) *DATALISTElement {
+	return e.ITEMTYPE(fmt.Sprintf(format, args...))
+}
+
 func (e *DATALISTElement) IfITEMTYPE(condition bool, s string) *DATALISTElement {
 	if condition {
 		e.ITEMTYPE(s)
+	}
+	return e
+}
+
+func (e *DATALISTElement) IfITEMTYPEF(condition bool, format string, args ...any) *DATALISTElement {
+	if condition {
+		e.ITEMTYPE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -946,6 +1032,10 @@ func (e *DATALISTElement) ITEMTYPERemove(s string) *DATALISTElement {
 	}
 	e.StringAttributes.Del("itemtype")
 	return e
+}
+
+func (e *DATALISTElement) ITEMTYPERemoveF(format string, args ...any) *DATALISTElement {
+	return e.ITEMTYPERemove(fmt.Sprintf(format, args...))
 }
 
 // The lang global attribute helps define the language of an element: the language
@@ -962,9 +1052,20 @@ func (e *DATALISTElement) LANG(s string) *DATALISTElement {
 	return e
 }
 
+func (e *DATALISTElement) LANGF(format string, args ...any) *DATALISTElement {
+	return e.LANG(fmt.Sprintf(format, args...))
+}
+
 func (e *DATALISTElement) IfLANG(condition bool, s string) *DATALISTElement {
 	if condition {
 		e.LANG(s)
+	}
+	return e
+}
+
+func (e *DATALISTElement) IfLANGF(condition bool, format string, args ...any) *DATALISTElement {
+	if condition {
+		e.LANG(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -976,6 +1077,10 @@ func (e *DATALISTElement) LANGRemove(s string) *DATALISTElement {
 	}
 	e.StringAttributes.Del("lang")
 	return e
+}
+
+func (e *DATALISTElement) LANGRemoveF(format string, args ...any) *DATALISTElement {
+	return e.LANGRemove(fmt.Sprintf(format, args...))
 }
 
 // The nonce global attribute is a unique identifier used to declare inline
@@ -990,9 +1095,20 @@ func (e *DATALISTElement) NONCE(s string) *DATALISTElement {
 	return e
 }
 
+func (e *DATALISTElement) NONCEF(format string, args ...any) *DATALISTElement {
+	return e.NONCE(fmt.Sprintf(format, args...))
+}
+
 func (e *DATALISTElement) IfNONCE(condition bool, s string) *DATALISTElement {
 	if condition {
 		e.NONCE(s)
+	}
+	return e
+}
+
+func (e *DATALISTElement) IfNONCEF(condition bool, format string, args ...any) *DATALISTElement {
+	if condition {
+		e.NONCE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1004,6 +1120,10 @@ func (e *DATALISTElement) NONCERemove(s string) *DATALISTElement {
 	}
 	e.StringAttributes.Del("nonce")
 	return e
+}
+
+func (e *DATALISTElement) NONCERemoveF(format string, args ...any) *DATALISTElement {
+	return e.NONCERemove(fmt.Sprintf(format, args...))
 }
 
 // The part global attribute contains a space-separated list of the part names of
@@ -1098,9 +1218,20 @@ func (e *DATALISTElement) ROLE(s string) *DATALISTElement {
 	return e
 }
 
+func (e *DATALISTElement) ROLEF(format string, args ...any) *DATALISTElement {
+	return e.ROLE(fmt.Sprintf(format, args...))
+}
+
 func (e *DATALISTElement) IfROLE(condition bool, s string) *DATALISTElement {
 	if condition {
 		e.ROLE(s)
+	}
+	return e
+}
+
+func (e *DATALISTElement) IfROLEF(condition bool, format string, args ...any) *DATALISTElement {
+	if condition {
+		e.ROLE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1112,6 +1243,10 @@ func (e *DATALISTElement) ROLERemove(s string) *DATALISTElement {
 	}
 	e.StringAttributes.Del("role")
 	return e
+}
+
+func (e *DATALISTElement) ROLERemoveF(format string, args ...any) *DATALISTElement {
+	return e.ROLERemove(fmt.Sprintf(format, args...))
 }
 
 // The slot global attribute assigns a slot in a shadow DOM shadow tree to an
@@ -1126,9 +1261,20 @@ func (e *DATALISTElement) SLOT(s string) *DATALISTElement {
 	return e
 }
 
+func (e *DATALISTElement) SLOTF(format string, args ...any) *DATALISTElement {
+	return e.SLOT(fmt.Sprintf(format, args...))
+}
+
 func (e *DATALISTElement) IfSLOT(condition bool, s string) *DATALISTElement {
 	if condition {
 		e.SLOT(s)
+	}
+	return e
+}
+
+func (e *DATALISTElement) IfSLOTF(condition bool, format string, args ...any) *DATALISTElement {
+	if condition {
+		e.SLOT(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1140,6 +1286,10 @@ func (e *DATALISTElement) SLOTRemove(s string) *DATALISTElement {
 	}
 	e.StringAttributes.Del("slot")
 	return e
+}
+
+func (e *DATALISTElement) SLOTRemoveF(format string, args ...any) *DATALISTElement {
+	return e.SLOTRemove(fmt.Sprintf(format, args...))
 }
 
 // The spellcheck global attribute is an enumerated attribute that defines whether
@@ -1344,9 +1494,20 @@ func (e *DATALISTElement) TITLE(s string) *DATALISTElement {
 	return e
 }
 
+func (e *DATALISTElement) TITLEF(format string, args ...any) *DATALISTElement {
+	return e.TITLE(fmt.Sprintf(format, args...))
+}
+
 func (e *DATALISTElement) IfTITLE(condition bool, s string) *DATALISTElement {
 	if condition {
 		e.TITLE(s)
+	}
+	return e
+}
+
+func (e *DATALISTElement) IfTITLEF(condition bool, format string, args ...any) *DATALISTElement {
+	if condition {
+		e.TITLE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1358,6 +1519,10 @@ func (e *DATALISTElement) TITLERemove(s string) *DATALISTElement {
 	}
 	e.StringAttributes.Del("title")
 	return e
+}
+
+func (e *DATALISTElement) TITLERemoveF(format string, args ...any) *DATALISTElement {
+	return e.TITLERemove(fmt.Sprintf(format, args...))
 }
 
 // The translate global attribute is an enumerated attribute that is used to
@@ -1402,7 +1567,7 @@ func (e *DATALISTElement) DATASTAR_MERGE_STORE(v any) *DATALISTElement {
 	if err != nil {
 		panic(err)
 	}
-	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	e.CustomDataAttributes.Set("merge-store", string(b))
 	return e
 }
 
@@ -1524,34 +1689,34 @@ func (e *DATALISTElement) DATASTAR_TEXTRemove() *DATALISTElement {
 
 // Sets the event handler of the element
 
-type DatalistDataOnMod customDataKeyModifier
+type DatalistOnMod customDataKeyModifier
 
 // Debounces the event handler
-func DatalistDataOnModDebounce(
+func DatalistOnModDebounce(
 	d time.Duration,
-) DatalistDataOnMod {
+) DatalistOnMod {
 	return func() string {
 		return fmt.Sprintf("debounce_%dms", d.Milliseconds())
 	}
 }
 
 // Throttles the event handler
-func DatalistDataOnModThrottle(
+func DatalistOnModThrottle(
 	d time.Duration,
-) DatalistDataOnMod {
+) DatalistOnMod {
 	return func() string {
 		return fmt.Sprintf("throttle_%dms", d.Milliseconds())
 	}
 }
 
-func (e *DATALISTElement) DATASTAR_ON(key string, expression string, modifiers ...DatalistDataOnMod) *DATALISTElement {
+func (e *DATALISTElement) DATASTAR_ON(key string, expression string, modifiers ...DatalistOnMod) *DATALISTElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
 	key = fmt.Sprintf("data-on-%s", key)
 
-	customMods := lo.Map(modifiers, func(m DatalistDataOnMod, i int) customDataKeyModifier {
+	customMods := lo.Map(modifiers, func(m DatalistOnMod, i int) customDataKeyModifier {
 		return customDataKeyModifier(m)
 	})
 	key = customDataKey(key, customMods...)
@@ -1559,7 +1724,7 @@ func (e *DATALISTElement) DATASTAR_ON(key string, expression string, modifiers .
 	return e
 }
 
-func (e *DATALISTElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...DatalistDataOnMod) *DATALISTElement {
+func (e *DATALISTElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...DatalistOnMod) *DATALISTElement {
 	if condition {
 		e.DATASTAR_ON(key, expression, modifiers...)
 	}
@@ -1652,7 +1817,7 @@ func (e *DATALISTElement) DATASTAR_FETCH_INDICATOR(expression string) *DATALISTE
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "DatastarFetchIndicator"
+	key := "data-fetch-indicator"
 
 	e.StringAttributes.Set(key, expression)
 	return e
@@ -1670,7 +1835,7 @@ func (e *DATALISTElement) DATASTAR_FETCH_INDICATORRemove() *DATALISTElement {
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("DatastarFetchIndicator")
+	e.StringAttributes.Del("data-fetch-indicator")
 	return e
 }
 

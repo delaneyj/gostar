@@ -173,9 +173,20 @@ func (e *AREAElement) ALT(s string) *AREAElement {
 	return e
 }
 
+func (e *AREAElement) ALTF(format string, args ...any) *AREAElement {
+	return e.ALT(fmt.Sprintf(format, args...))
+}
+
 func (e *AREAElement) IfALT(condition bool, s string) *AREAElement {
 	if condition {
 		e.ALT(s)
+	}
+	return e
+}
+
+func (e *AREAElement) IfALTF(condition bool, format string, args ...any) *AREAElement {
+	if condition {
+		e.ALT(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -187,6 +198,10 @@ func (e *AREAElement) ALTRemove(s string) *AREAElement {
 	}
 	e.StringAttributes.Del("alt")
 	return e
+}
+
+func (e *AREAElement) ALTRemoveF(format string, args ...any) *AREAElement {
+	return e.ALTRemove(fmt.Sprintf(format, args...))
 }
 
 // Coordinates for the shape to be created in an image map
@@ -233,9 +248,20 @@ func (e *AREAElement) DOWNLOAD(s string) *AREAElement {
 	return e
 }
 
+func (e *AREAElement) DOWNLOADF(format string, args ...any) *AREAElement {
+	return e.DOWNLOAD(fmt.Sprintf(format, args...))
+}
+
 func (e *AREAElement) IfDOWNLOAD(condition bool, s string) *AREAElement {
 	if condition {
 		e.DOWNLOAD(s)
+	}
+	return e
+}
+
+func (e *AREAElement) IfDOWNLOADF(condition bool, format string, args ...any) *AREAElement {
+	if condition {
+		e.DOWNLOAD(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -249,6 +275,10 @@ func (e *AREAElement) DOWNLOADRemove(s string) *AREAElement {
 	return e
 }
 
+func (e *AREAElement) DOWNLOADRemoveF(format string, args ...any) *AREAElement {
+	return e.DOWNLOADRemove(fmt.Sprintf(format, args...))
+}
+
 // The URL of a linked resource
 func (e *AREAElement) HREF(s string) *AREAElement {
 	if e.StringAttributes == nil {
@@ -258,9 +288,20 @@ func (e *AREAElement) HREF(s string) *AREAElement {
 	return e
 }
 
+func (e *AREAElement) HREFF(format string, args ...any) *AREAElement {
+	return e.HREF(fmt.Sprintf(format, args...))
+}
+
 func (e *AREAElement) IfHREF(condition bool, s string) *AREAElement {
 	if condition {
 		e.HREF(s)
+	}
+	return e
+}
+
+func (e *AREAElement) IfHREFF(condition bool, format string, args ...any) *AREAElement {
+	if condition {
+		e.HREF(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -272,6 +313,10 @@ func (e *AREAElement) HREFRemove(s string) *AREAElement {
 	}
 	e.StringAttributes.Del("href")
 	return e
+}
+
+func (e *AREAElement) HREFRemoveF(format string, args ...any) *AREAElement {
+	return e.HREFRemove(fmt.Sprintf(format, args...))
 }
 
 // A list of URLs to which, when the hyperlink is followed, post requests with the
@@ -911,9 +956,20 @@ func (e *AREAElement) ID(s string) *AREAElement {
 	return e
 }
 
+func (e *AREAElement) IDF(format string, args ...any) *AREAElement {
+	return e.ID(fmt.Sprintf(format, args...))
+}
+
 func (e *AREAElement) IfID(condition bool, s string) *AREAElement {
 	if condition {
 		e.ID(s)
+	}
+	return e
+}
+
+func (e *AREAElement) IfIDF(condition bool, format string, args ...any) *AREAElement {
+	if condition {
+		e.ID(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -925,6 +981,10 @@ func (e *AREAElement) IDRemove(s string) *AREAElement {
 	}
 	e.StringAttributes.Del("id")
 	return e
+}
+
+func (e *AREAElement) IDRemoveF(format string, args ...any) *AREAElement {
+	return e.IDRemove(fmt.Sprintf(format, args...))
 }
 
 // The inert global attribute is a Boolean attribute indicating that the browser
@@ -1059,9 +1119,20 @@ func (e *AREAElement) IS(s string) *AREAElement {
 	return e
 }
 
+func (e *AREAElement) ISF(format string, args ...any) *AREAElement {
+	return e.IS(fmt.Sprintf(format, args...))
+}
+
 func (e *AREAElement) IfIS(condition bool, s string) *AREAElement {
 	if condition {
 		e.IS(s)
+	}
+	return e
+}
+
+func (e *AREAElement) IfISF(condition bool, format string, args ...any) *AREAElement {
+	if condition {
+		e.IS(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1073,6 +1144,10 @@ func (e *AREAElement) ISRemove(s string) *AREAElement {
 	}
 	e.StringAttributes.Del("is")
 	return e
+}
+
+func (e *AREAElement) ISRemoveF(format string, args ...any) *AREAElement {
+	return e.ISRemove(fmt.Sprintf(format, args...))
 }
 
 // The itemid global attribute provides microdata in the form of a unique, global
@@ -1096,9 +1171,20 @@ func (e *AREAElement) ITEMID(s string) *AREAElement {
 	return e
 }
 
+func (e *AREAElement) ITEMIDF(format string, args ...any) *AREAElement {
+	return e.ITEMID(fmt.Sprintf(format, args...))
+}
+
 func (e *AREAElement) IfITEMID(condition bool, s string) *AREAElement {
 	if condition {
 		e.ITEMID(s)
+	}
+	return e
+}
+
+func (e *AREAElement) IfITEMIDF(condition bool, format string, args ...any) *AREAElement {
+	if condition {
+		e.ITEMID(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1110,6 +1196,10 @@ func (e *AREAElement) ITEMIDRemove(s string) *AREAElement {
 	}
 	e.StringAttributes.Del("itemid")
 	return e
+}
+
+func (e *AREAElement) ITEMIDRemoveF(format string, args ...any) *AREAElement {
+	return e.ITEMIDRemove(fmt.Sprintf(format, args...))
 }
 
 // The itemprop global attribute is used to add properties to an item
@@ -1128,9 +1218,20 @@ func (e *AREAElement) ITEMPROP(s string) *AREAElement {
 	return e
 }
 
+func (e *AREAElement) ITEMPROPF(format string, args ...any) *AREAElement {
+	return e.ITEMPROP(fmt.Sprintf(format, args...))
+}
+
 func (e *AREAElement) IfITEMPROP(condition bool, s string) *AREAElement {
 	if condition {
 		e.ITEMPROP(s)
+	}
+	return e
+}
+
+func (e *AREAElement) IfITEMPROPF(condition bool, format string, args ...any) *AREAElement {
+	if condition {
+		e.ITEMPROP(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1142,6 +1243,10 @@ func (e *AREAElement) ITEMPROPRemove(s string) *AREAElement {
 	}
 	e.StringAttributes.Del("itemprop")
 	return e
+}
+
+func (e *AREAElement) ITEMPROPRemoveF(format string, args ...any) *AREAElement {
+	return e.ITEMPROPRemove(fmt.Sprintf(format, args...))
 }
 
 // Properties that are not descendants of an element with the itemscope attribute
@@ -1157,9 +1262,20 @@ func (e *AREAElement) ITEMREF(s string) *AREAElement {
 	return e
 }
 
+func (e *AREAElement) ITEMREFF(format string, args ...any) *AREAElement {
+	return e.ITEMREF(fmt.Sprintf(format, args...))
+}
+
 func (e *AREAElement) IfITEMREF(condition bool, s string) *AREAElement {
 	if condition {
 		e.ITEMREF(s)
+	}
+	return e
+}
+
+func (e *AREAElement) IfITEMREFF(condition bool, format string, args ...any) *AREAElement {
+	if condition {
+		e.ITEMREF(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1171,6 +1287,10 @@ func (e *AREAElement) ITEMREFRemove(s string) *AREAElement {
 	}
 	e.StringAttributes.Del("itemref")
 	return e
+}
+
+func (e *AREAElement) ITEMREFRemoveF(format string, args ...any) *AREAElement {
+	return e.ITEMREFRemove(fmt.Sprintf(format, args...))
 }
 
 // The itemscope global attribute is used to add an item to a microdata DOM tree
@@ -1234,9 +1354,20 @@ func (e *AREAElement) ITEMTYPE(s string) *AREAElement {
 	return e
 }
 
+func (e *AREAElement) ITEMTYPEF(format string, args ...any) *AREAElement {
+	return e.ITEMTYPE(fmt.Sprintf(format, args...))
+}
+
 func (e *AREAElement) IfITEMTYPE(condition bool, s string) *AREAElement {
 	if condition {
 		e.ITEMTYPE(s)
+	}
+	return e
+}
+
+func (e *AREAElement) IfITEMTYPEF(condition bool, format string, args ...any) *AREAElement {
+	if condition {
+		e.ITEMTYPE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1248,6 +1379,10 @@ func (e *AREAElement) ITEMTYPERemove(s string) *AREAElement {
 	}
 	e.StringAttributes.Del("itemtype")
 	return e
+}
+
+func (e *AREAElement) ITEMTYPERemoveF(format string, args ...any) *AREAElement {
+	return e.ITEMTYPERemove(fmt.Sprintf(format, args...))
 }
 
 // The lang global attribute helps define the language of an element: the language
@@ -1264,9 +1399,20 @@ func (e *AREAElement) LANG(s string) *AREAElement {
 	return e
 }
 
+func (e *AREAElement) LANGF(format string, args ...any) *AREAElement {
+	return e.LANG(fmt.Sprintf(format, args...))
+}
+
 func (e *AREAElement) IfLANG(condition bool, s string) *AREAElement {
 	if condition {
 		e.LANG(s)
+	}
+	return e
+}
+
+func (e *AREAElement) IfLANGF(condition bool, format string, args ...any) *AREAElement {
+	if condition {
+		e.LANG(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1278,6 +1424,10 @@ func (e *AREAElement) LANGRemove(s string) *AREAElement {
 	}
 	e.StringAttributes.Del("lang")
 	return e
+}
+
+func (e *AREAElement) LANGRemoveF(format string, args ...any) *AREAElement {
+	return e.LANGRemove(fmt.Sprintf(format, args...))
 }
 
 // The nonce global attribute is a unique identifier used to declare inline
@@ -1292,9 +1442,20 @@ func (e *AREAElement) NONCE(s string) *AREAElement {
 	return e
 }
 
+func (e *AREAElement) NONCEF(format string, args ...any) *AREAElement {
+	return e.NONCE(fmt.Sprintf(format, args...))
+}
+
 func (e *AREAElement) IfNONCE(condition bool, s string) *AREAElement {
 	if condition {
 		e.NONCE(s)
+	}
+	return e
+}
+
+func (e *AREAElement) IfNONCEF(condition bool, format string, args ...any) *AREAElement {
+	if condition {
+		e.NONCE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1306,6 +1467,10 @@ func (e *AREAElement) NONCERemove(s string) *AREAElement {
 	}
 	e.StringAttributes.Del("nonce")
 	return e
+}
+
+func (e *AREAElement) NONCERemoveF(format string, args ...any) *AREAElement {
+	return e.NONCERemove(fmt.Sprintf(format, args...))
 }
 
 // The part global attribute contains a space-separated list of the part names of
@@ -1400,9 +1565,20 @@ func (e *AREAElement) ROLE(s string) *AREAElement {
 	return e
 }
 
+func (e *AREAElement) ROLEF(format string, args ...any) *AREAElement {
+	return e.ROLE(fmt.Sprintf(format, args...))
+}
+
 func (e *AREAElement) IfROLE(condition bool, s string) *AREAElement {
 	if condition {
 		e.ROLE(s)
+	}
+	return e
+}
+
+func (e *AREAElement) IfROLEF(condition bool, format string, args ...any) *AREAElement {
+	if condition {
+		e.ROLE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1414,6 +1590,10 @@ func (e *AREAElement) ROLERemove(s string) *AREAElement {
 	}
 	e.StringAttributes.Del("role")
 	return e
+}
+
+func (e *AREAElement) ROLERemoveF(format string, args ...any) *AREAElement {
+	return e.ROLERemove(fmt.Sprintf(format, args...))
 }
 
 // The slot global attribute assigns a slot in a shadow DOM shadow tree to an
@@ -1428,9 +1608,20 @@ func (e *AREAElement) SLOT(s string) *AREAElement {
 	return e
 }
 
+func (e *AREAElement) SLOTF(format string, args ...any) *AREAElement {
+	return e.SLOT(fmt.Sprintf(format, args...))
+}
+
 func (e *AREAElement) IfSLOT(condition bool, s string) *AREAElement {
 	if condition {
 		e.SLOT(s)
+	}
+	return e
+}
+
+func (e *AREAElement) IfSLOTF(condition bool, format string, args ...any) *AREAElement {
+	if condition {
+		e.SLOT(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1442,6 +1633,10 @@ func (e *AREAElement) SLOTRemove(s string) *AREAElement {
 	}
 	e.StringAttributes.Del("slot")
 	return e
+}
+
+func (e *AREAElement) SLOTRemoveF(format string, args ...any) *AREAElement {
+	return e.SLOTRemove(fmt.Sprintf(format, args...))
 }
 
 // The spellcheck global attribute is an enumerated attribute that defines whether
@@ -1646,9 +1841,20 @@ func (e *AREAElement) TITLE(s string) *AREAElement {
 	return e
 }
 
+func (e *AREAElement) TITLEF(format string, args ...any) *AREAElement {
+	return e.TITLE(fmt.Sprintf(format, args...))
+}
+
 func (e *AREAElement) IfTITLE(condition bool, s string) *AREAElement {
 	if condition {
 		e.TITLE(s)
+	}
+	return e
+}
+
+func (e *AREAElement) IfTITLEF(condition bool, format string, args ...any) *AREAElement {
+	if condition {
+		e.TITLE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1660,6 +1866,10 @@ func (e *AREAElement) TITLERemove(s string) *AREAElement {
 	}
 	e.StringAttributes.Del("title")
 	return e
+}
+
+func (e *AREAElement) TITLERemoveF(format string, args ...any) *AREAElement {
+	return e.TITLERemove(fmt.Sprintf(format, args...))
 }
 
 // The translate global attribute is an enumerated attribute that is used to
@@ -1704,7 +1914,7 @@ func (e *AREAElement) DATASTAR_MERGE_STORE(v any) *AREAElement {
 	if err != nil {
 		panic(err)
 	}
-	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	e.CustomDataAttributes.Set("merge-store", string(b))
 	return e
 }
 
@@ -1826,34 +2036,34 @@ func (e *AREAElement) DATASTAR_TEXTRemove() *AREAElement {
 
 // Sets the event handler of the element
 
-type AreaDataOnMod customDataKeyModifier
+type AreaOnMod customDataKeyModifier
 
 // Debounces the event handler
-func AreaDataOnModDebounce(
+func AreaOnModDebounce(
 	d time.Duration,
-) AreaDataOnMod {
+) AreaOnMod {
 	return func() string {
 		return fmt.Sprintf("debounce_%dms", d.Milliseconds())
 	}
 }
 
 // Throttles the event handler
-func AreaDataOnModThrottle(
+func AreaOnModThrottle(
 	d time.Duration,
-) AreaDataOnMod {
+) AreaOnMod {
 	return func() string {
 		return fmt.Sprintf("throttle_%dms", d.Milliseconds())
 	}
 }
 
-func (e *AREAElement) DATASTAR_ON(key string, expression string, modifiers ...AreaDataOnMod) *AREAElement {
+func (e *AREAElement) DATASTAR_ON(key string, expression string, modifiers ...AreaOnMod) *AREAElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
 	key = fmt.Sprintf("data-on-%s", key)
 
-	customMods := lo.Map(modifiers, func(m AreaDataOnMod, i int) customDataKeyModifier {
+	customMods := lo.Map(modifiers, func(m AreaOnMod, i int) customDataKeyModifier {
 		return customDataKeyModifier(m)
 	})
 	key = customDataKey(key, customMods...)
@@ -1861,7 +2071,7 @@ func (e *AREAElement) DATASTAR_ON(key string, expression string, modifiers ...Ar
 	return e
 }
 
-func (e *AREAElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...AreaDataOnMod) *AREAElement {
+func (e *AREAElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...AreaOnMod) *AREAElement {
 	if condition {
 		e.DATASTAR_ON(key, expression, modifiers...)
 	}
@@ -1954,7 +2164,7 @@ func (e *AREAElement) DATASTAR_FETCH_INDICATOR(expression string) *AREAElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "DatastarFetchIndicator"
+	key := "data-fetch-indicator"
 
 	e.StringAttributes.Set(key, expression)
 	return e
@@ -1972,7 +2182,7 @@ func (e *AREAElement) DATASTAR_FETCH_INDICATORRemove() *AREAElement {
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("DatastarFetchIndicator")
+	e.StringAttributes.Del("data-fetch-indicator")
 	return e
 }
 

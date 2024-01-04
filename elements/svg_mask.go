@@ -226,9 +226,20 @@ func (e *SVGMASKElement) X(s string) *SVGMASKElement {
 	return e
 }
 
+func (e *SVGMASKElement) XF(format string, args ...any) *SVGMASKElement {
+	return e.X(fmt.Sprintf(format, args...))
+}
+
 func (e *SVGMASKElement) IfX(condition bool, s string) *SVGMASKElement {
 	if condition {
 		e.X(s)
+	}
+	return e
+}
+
+func (e *SVGMASKElement) IfXF(condition bool, format string, args ...any) *SVGMASKElement {
+	if condition {
+		e.X(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -242,6 +253,10 @@ func (e *SVGMASKElement) XRemove(s string) *SVGMASKElement {
 	return e
 }
 
+func (e *SVGMASKElement) XRemoveF(format string, args ...any) *SVGMASKElement {
+	return e.XRemove(fmt.Sprintf(format, args...))
+}
+
 // The y-axis coordinate of the side of the rectangular region which is closest to
 // the user.
 func (e *SVGMASKElement) Y(s string) *SVGMASKElement {
@@ -252,9 +267,20 @@ func (e *SVGMASKElement) Y(s string) *SVGMASKElement {
 	return e
 }
 
+func (e *SVGMASKElement) YF(format string, args ...any) *SVGMASKElement {
+	return e.Y(fmt.Sprintf(format, args...))
+}
+
 func (e *SVGMASKElement) IfY(condition bool, s string) *SVGMASKElement {
 	if condition {
 		e.Y(s)
+	}
+	return e
+}
+
+func (e *SVGMASKElement) IfYF(condition bool, format string, args ...any) *SVGMASKElement {
+	if condition {
+		e.Y(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -268,6 +294,10 @@ func (e *SVGMASKElement) YRemove(s string) *SVGMASKElement {
 	return e
 }
 
+func (e *SVGMASKElement) YRemoveF(format string, args ...any) *SVGMASKElement {
+	return e.YRemove(fmt.Sprintf(format, args...))
+}
+
 // The width of the rectangular region.
 func (e *SVGMASKElement) WIDTH(s string) *SVGMASKElement {
 	if e.StringAttributes == nil {
@@ -277,9 +307,20 @@ func (e *SVGMASKElement) WIDTH(s string) *SVGMASKElement {
 	return e
 }
 
+func (e *SVGMASKElement) WIDTHF(format string, args ...any) *SVGMASKElement {
+	return e.WIDTH(fmt.Sprintf(format, args...))
+}
+
 func (e *SVGMASKElement) IfWIDTH(condition bool, s string) *SVGMASKElement {
 	if condition {
 		e.WIDTH(s)
+	}
+	return e
+}
+
+func (e *SVGMASKElement) IfWIDTHF(condition bool, format string, args ...any) *SVGMASKElement {
+	if condition {
+		e.WIDTH(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -293,6 +334,10 @@ func (e *SVGMASKElement) WIDTHRemove(s string) *SVGMASKElement {
 	return e
 }
 
+func (e *SVGMASKElement) WIDTHRemoveF(format string, args ...any) *SVGMASKElement {
+	return e.WIDTHRemove(fmt.Sprintf(format, args...))
+}
+
 // The height of the rectangular region.
 func (e *SVGMASKElement) HEIGHT(s string) *SVGMASKElement {
 	if e.StringAttributes == nil {
@@ -302,9 +347,20 @@ func (e *SVGMASKElement) HEIGHT(s string) *SVGMASKElement {
 	return e
 }
 
+func (e *SVGMASKElement) HEIGHTF(format string, args ...any) *SVGMASKElement {
+	return e.HEIGHT(fmt.Sprintf(format, args...))
+}
+
 func (e *SVGMASKElement) IfHEIGHT(condition bool, s string) *SVGMASKElement {
 	if condition {
 		e.HEIGHT(s)
+	}
+	return e
+}
+
+func (e *SVGMASKElement) IfHEIGHTF(condition bool, format string, args ...any) *SVGMASKElement {
+	if condition {
+		e.HEIGHT(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -318,6 +374,10 @@ func (e *SVGMASKElement) HEIGHTRemove(s string) *SVGMASKElement {
 	return e
 }
 
+func (e *SVGMASKElement) HEIGHTRemoveF(format string, args ...any) *SVGMASKElement {
+	return e.HEIGHTRemove(fmt.Sprintf(format, args...))
+}
+
 // Specifies a unique id for an element
 func (e *SVGMASKElement) ID(s string) *SVGMASKElement {
 	if e.StringAttributes == nil {
@@ -327,9 +387,20 @@ func (e *SVGMASKElement) ID(s string) *SVGMASKElement {
 	return e
 }
 
+func (e *SVGMASKElement) IDF(format string, args ...any) *SVGMASKElement {
+	return e.ID(fmt.Sprintf(format, args...))
+}
+
 func (e *SVGMASKElement) IfID(condition bool, s string) *SVGMASKElement {
 	if condition {
 		e.ID(s)
+	}
+	return e
+}
+
+func (e *SVGMASKElement) IfIDF(condition bool, format string, args ...any) *SVGMASKElement {
+	if condition {
+		e.ID(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -341,6 +412,10 @@ func (e *SVGMASKElement) IDRemove(s string) *SVGMASKElement {
 	}
 	e.StringAttributes.Del("id")
 	return e
+}
+
+func (e *SVGMASKElement) IDRemoveF(format string, args ...any) *SVGMASKElement {
+	return e.IDRemove(fmt.Sprintf(format, args...))
 }
 
 // Specifies one or more classnames for an element (refers to a class in a style
@@ -479,7 +554,7 @@ func (e *SVGMASKElement) DATASTAR_MERGE_STORE(v any) *SVGMASKElement {
 	if err != nil {
 		panic(err)
 	}
-	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	e.CustomDataAttributes.Set("merge-store", string(b))
 	return e
 }
 
@@ -601,34 +676,34 @@ func (e *SVGMASKElement) DATASTAR_TEXTRemove() *SVGMASKElement {
 
 // Sets the event handler of the element
 
-type SVGMaskDataOnMod customDataKeyModifier
+type SVGMaskOnMod customDataKeyModifier
 
 // Debounces the event handler
-func SVGMaskDataOnModDebounce(
+func SVGMaskOnModDebounce(
 	d time.Duration,
-) SVGMaskDataOnMod {
+) SVGMaskOnMod {
 	return func() string {
 		return fmt.Sprintf("debounce_%dms", d.Milliseconds())
 	}
 }
 
 // Throttles the event handler
-func SVGMaskDataOnModThrottle(
+func SVGMaskOnModThrottle(
 	d time.Duration,
-) SVGMaskDataOnMod {
+) SVGMaskOnMod {
 	return func() string {
 		return fmt.Sprintf("throttle_%dms", d.Milliseconds())
 	}
 }
 
-func (e *SVGMASKElement) DATASTAR_ON(key string, expression string, modifiers ...SVGMaskDataOnMod) *SVGMASKElement {
+func (e *SVGMASKElement) DATASTAR_ON(key string, expression string, modifiers ...SVGMaskOnMod) *SVGMASKElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
 	key = fmt.Sprintf("data-on-%s", key)
 
-	customMods := lo.Map(modifiers, func(m SVGMaskDataOnMod, i int) customDataKeyModifier {
+	customMods := lo.Map(modifiers, func(m SVGMaskOnMod, i int) customDataKeyModifier {
 		return customDataKeyModifier(m)
 	})
 	key = customDataKey(key, customMods...)
@@ -636,7 +711,7 @@ func (e *SVGMASKElement) DATASTAR_ON(key string, expression string, modifiers ..
 	return e
 }
 
-func (e *SVGMASKElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SVGMaskDataOnMod) *SVGMASKElement {
+func (e *SVGMASKElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SVGMaskOnMod) *SVGMASKElement {
 	if condition {
 		e.DATASTAR_ON(key, expression, modifiers...)
 	}
@@ -729,7 +804,7 @@ func (e *SVGMASKElement) DATASTAR_FETCH_INDICATOR(expression string) *SVGMASKEle
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "DatastarFetchIndicator"
+	key := "data-fetch-indicator"
 
 	e.StringAttributes.Set(key, expression)
 	return e
@@ -747,7 +822,7 @@ func (e *SVGMASKElement) DATASTAR_FETCH_INDICATORRemove() *SVGMASKElement {
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("DatastarFetchIndicator")
+	e.StringAttributes.Del("data-fetch-indicator")
 	return e
 }
 

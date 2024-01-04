@@ -175,9 +175,20 @@ func (e *SVGPOLYLINEElement) POINTS(s string) *SVGPOLYLINEElement {
 	return e
 }
 
+func (e *SVGPOLYLINEElement) POINTSF(format string, args ...any) *SVGPOLYLINEElement {
+	return e.POINTS(fmt.Sprintf(format, args...))
+}
+
 func (e *SVGPOLYLINEElement) IfPOINTS(condition bool, s string) *SVGPOLYLINEElement {
 	if condition {
 		e.POINTS(s)
+	}
+	return e
+}
+
+func (e *SVGPOLYLINEElement) IfPOINTSF(condition bool, format string, args ...any) *SVGPOLYLINEElement {
+	if condition {
+		e.POINTS(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -191,6 +202,10 @@ func (e *SVGPOLYLINEElement) POINTSRemove(s string) *SVGPOLYLINEElement {
 	return e
 }
 
+func (e *SVGPOLYLINEElement) POINTSRemoveF(format string, args ...any) *SVGPOLYLINEElement {
+	return e.POINTSRemove(fmt.Sprintf(format, args...))
+}
+
 // Specifies a unique id for an element
 func (e *SVGPOLYLINEElement) ID(s string) *SVGPOLYLINEElement {
 	if e.StringAttributes == nil {
@@ -200,9 +215,20 @@ func (e *SVGPOLYLINEElement) ID(s string) *SVGPOLYLINEElement {
 	return e
 }
 
+func (e *SVGPOLYLINEElement) IDF(format string, args ...any) *SVGPOLYLINEElement {
+	return e.ID(fmt.Sprintf(format, args...))
+}
+
 func (e *SVGPOLYLINEElement) IfID(condition bool, s string) *SVGPOLYLINEElement {
 	if condition {
 		e.ID(s)
+	}
+	return e
+}
+
+func (e *SVGPOLYLINEElement) IfIDF(condition bool, format string, args ...any) *SVGPOLYLINEElement {
+	if condition {
+		e.ID(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -214,6 +240,10 @@ func (e *SVGPOLYLINEElement) IDRemove(s string) *SVGPOLYLINEElement {
 	}
 	e.StringAttributes.Del("id")
 	return e
+}
+
+func (e *SVGPOLYLINEElement) IDRemoveF(format string, args ...any) *SVGPOLYLINEElement {
+	return e.IDRemove(fmt.Sprintf(format, args...))
 }
 
 // Specifies one or more classnames for an element (refers to a class in a style
@@ -352,7 +382,7 @@ func (e *SVGPOLYLINEElement) DATASTAR_MERGE_STORE(v any) *SVGPOLYLINEElement {
 	if err != nil {
 		panic(err)
 	}
-	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	e.CustomDataAttributes.Set("merge-store", string(b))
 	return e
 }
 
@@ -474,34 +504,34 @@ func (e *SVGPOLYLINEElement) DATASTAR_TEXTRemove() *SVGPOLYLINEElement {
 
 // Sets the event handler of the element
 
-type SVGPolylineDataOnMod customDataKeyModifier
+type SVGPolylineOnMod customDataKeyModifier
 
 // Debounces the event handler
-func SVGPolylineDataOnModDebounce(
+func SVGPolylineOnModDebounce(
 	d time.Duration,
-) SVGPolylineDataOnMod {
+) SVGPolylineOnMod {
 	return func() string {
 		return fmt.Sprintf("debounce_%dms", d.Milliseconds())
 	}
 }
 
 // Throttles the event handler
-func SVGPolylineDataOnModThrottle(
+func SVGPolylineOnModThrottle(
 	d time.Duration,
-) SVGPolylineDataOnMod {
+) SVGPolylineOnMod {
 	return func() string {
 		return fmt.Sprintf("throttle_%dms", d.Milliseconds())
 	}
 }
 
-func (e *SVGPOLYLINEElement) DATASTAR_ON(key string, expression string, modifiers ...SVGPolylineDataOnMod) *SVGPOLYLINEElement {
+func (e *SVGPOLYLINEElement) DATASTAR_ON(key string, expression string, modifiers ...SVGPolylineOnMod) *SVGPOLYLINEElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
 	key = fmt.Sprintf("data-on-%s", key)
 
-	customMods := lo.Map(modifiers, func(m SVGPolylineDataOnMod, i int) customDataKeyModifier {
+	customMods := lo.Map(modifiers, func(m SVGPolylineOnMod, i int) customDataKeyModifier {
 		return customDataKeyModifier(m)
 	})
 	key = customDataKey(key, customMods...)
@@ -509,7 +539,7 @@ func (e *SVGPOLYLINEElement) DATASTAR_ON(key string, expression string, modifier
 	return e
 }
 
-func (e *SVGPOLYLINEElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SVGPolylineDataOnMod) *SVGPOLYLINEElement {
+func (e *SVGPOLYLINEElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SVGPolylineOnMod) *SVGPOLYLINEElement {
 	if condition {
 		e.DATASTAR_ON(key, expression, modifiers...)
 	}
@@ -602,7 +632,7 @@ func (e *SVGPOLYLINEElement) DATASTAR_FETCH_INDICATOR(expression string) *SVGPOL
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "DatastarFetchIndicator"
+	key := "data-fetch-indicator"
 
 	e.StringAttributes.Set(key, expression)
 	return e
@@ -620,7 +650,7 @@ func (e *SVGPOLYLINEElement) DATASTAR_FETCH_INDICATORRemove() *SVGPOLYLINEElemen
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("DatastarFetchIndicator")
+	e.StringAttributes.Del("data-fetch-indicator")
 	return e
 }
 

@@ -237,9 +237,20 @@ func (e *SELECTElement) FORM(s string) *SELECTElement {
 	return e
 }
 
+func (e *SELECTElement) FORMF(format string, args ...any) *SELECTElement {
+	return e.FORM(fmt.Sprintf(format, args...))
+}
+
 func (e *SELECTElement) IfFORM(condition bool, s string) *SELECTElement {
 	if condition {
 		e.FORM(s)
+	}
+	return e
+}
+
+func (e *SELECTElement) IfFORMF(condition bool, format string, args ...any) *SELECTElement {
+	if condition {
+		e.FORM(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -251,6 +262,10 @@ func (e *SELECTElement) FORMRemove(s string) *SELECTElement {
 	}
 	e.StringAttributes.Del("form")
 	return e
+}
+
+func (e *SELECTElement) FORMRemoveF(format string, args ...any) *SELECTElement {
+	return e.FORMRemove(fmt.Sprintf(format, args...))
 }
 
 // Whether to allow multiple values.
@@ -300,9 +315,20 @@ func (e *SELECTElement) NAME(s string) *SELECTElement {
 	return e
 }
 
+func (e *SELECTElement) NAMEF(format string, args ...any) *SELECTElement {
+	return e.NAME(fmt.Sprintf(format, args...))
+}
+
 func (e *SELECTElement) IfNAME(condition bool, s string) *SELECTElement {
 	if condition {
 		e.NAME(s)
+	}
+	return e
+}
+
+func (e *SELECTElement) IfNAMEF(condition bool, format string, args ...any) *SELECTElement {
+	if condition {
+		e.NAME(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -314,6 +340,10 @@ func (e *SELECTElement) NAMERemove(s string) *SELECTElement {
 	}
 	e.StringAttributes.Del("name")
 	return e
+}
+
+func (e *SELECTElement) NAMERemoveF(format string, args ...any) *SELECTElement {
+	return e.NAMERemove(fmt.Sprintf(format, args...))
 }
 
 // Whether the control is required for form submission.
@@ -824,9 +854,20 @@ func (e *SELECTElement) ID(s string) *SELECTElement {
 	return e
 }
 
+func (e *SELECTElement) IDF(format string, args ...any) *SELECTElement {
+	return e.ID(fmt.Sprintf(format, args...))
+}
+
 func (e *SELECTElement) IfID(condition bool, s string) *SELECTElement {
 	if condition {
 		e.ID(s)
+	}
+	return e
+}
+
+func (e *SELECTElement) IfIDF(condition bool, format string, args ...any) *SELECTElement {
+	if condition {
+		e.ID(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -838,6 +879,10 @@ func (e *SELECTElement) IDRemove(s string) *SELECTElement {
 	}
 	e.StringAttributes.Del("id")
 	return e
+}
+
+func (e *SELECTElement) IDRemoveF(format string, args ...any) *SELECTElement {
+	return e.IDRemove(fmt.Sprintf(format, args...))
 }
 
 // The inert global attribute is a Boolean attribute indicating that the browser
@@ -972,9 +1017,20 @@ func (e *SELECTElement) IS(s string) *SELECTElement {
 	return e
 }
 
+func (e *SELECTElement) ISF(format string, args ...any) *SELECTElement {
+	return e.IS(fmt.Sprintf(format, args...))
+}
+
 func (e *SELECTElement) IfIS(condition bool, s string) *SELECTElement {
 	if condition {
 		e.IS(s)
+	}
+	return e
+}
+
+func (e *SELECTElement) IfISF(condition bool, format string, args ...any) *SELECTElement {
+	if condition {
+		e.IS(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -986,6 +1042,10 @@ func (e *SELECTElement) ISRemove(s string) *SELECTElement {
 	}
 	e.StringAttributes.Del("is")
 	return e
+}
+
+func (e *SELECTElement) ISRemoveF(format string, args ...any) *SELECTElement {
+	return e.ISRemove(fmt.Sprintf(format, args...))
 }
 
 // The itemid global attribute provides microdata in the form of a unique, global
@@ -1009,9 +1069,20 @@ func (e *SELECTElement) ITEMID(s string) *SELECTElement {
 	return e
 }
 
+func (e *SELECTElement) ITEMIDF(format string, args ...any) *SELECTElement {
+	return e.ITEMID(fmt.Sprintf(format, args...))
+}
+
 func (e *SELECTElement) IfITEMID(condition bool, s string) *SELECTElement {
 	if condition {
 		e.ITEMID(s)
+	}
+	return e
+}
+
+func (e *SELECTElement) IfITEMIDF(condition bool, format string, args ...any) *SELECTElement {
+	if condition {
+		e.ITEMID(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1023,6 +1094,10 @@ func (e *SELECTElement) ITEMIDRemove(s string) *SELECTElement {
 	}
 	e.StringAttributes.Del("itemid")
 	return e
+}
+
+func (e *SELECTElement) ITEMIDRemoveF(format string, args ...any) *SELECTElement {
+	return e.ITEMIDRemove(fmt.Sprintf(format, args...))
 }
 
 // The itemprop global attribute is used to add properties to an item
@@ -1041,9 +1116,20 @@ func (e *SELECTElement) ITEMPROP(s string) *SELECTElement {
 	return e
 }
 
+func (e *SELECTElement) ITEMPROPF(format string, args ...any) *SELECTElement {
+	return e.ITEMPROP(fmt.Sprintf(format, args...))
+}
+
 func (e *SELECTElement) IfITEMPROP(condition bool, s string) *SELECTElement {
 	if condition {
 		e.ITEMPROP(s)
+	}
+	return e
+}
+
+func (e *SELECTElement) IfITEMPROPF(condition bool, format string, args ...any) *SELECTElement {
+	if condition {
+		e.ITEMPROP(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1055,6 +1141,10 @@ func (e *SELECTElement) ITEMPROPRemove(s string) *SELECTElement {
 	}
 	e.StringAttributes.Del("itemprop")
 	return e
+}
+
+func (e *SELECTElement) ITEMPROPRemoveF(format string, args ...any) *SELECTElement {
+	return e.ITEMPROPRemove(fmt.Sprintf(format, args...))
 }
 
 // Properties that are not descendants of an element with the itemscope attribute
@@ -1070,9 +1160,20 @@ func (e *SELECTElement) ITEMREF(s string) *SELECTElement {
 	return e
 }
 
+func (e *SELECTElement) ITEMREFF(format string, args ...any) *SELECTElement {
+	return e.ITEMREF(fmt.Sprintf(format, args...))
+}
+
 func (e *SELECTElement) IfITEMREF(condition bool, s string) *SELECTElement {
 	if condition {
 		e.ITEMREF(s)
+	}
+	return e
+}
+
+func (e *SELECTElement) IfITEMREFF(condition bool, format string, args ...any) *SELECTElement {
+	if condition {
+		e.ITEMREF(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1084,6 +1185,10 @@ func (e *SELECTElement) ITEMREFRemove(s string) *SELECTElement {
 	}
 	e.StringAttributes.Del("itemref")
 	return e
+}
+
+func (e *SELECTElement) ITEMREFRemoveF(format string, args ...any) *SELECTElement {
+	return e.ITEMREFRemove(fmt.Sprintf(format, args...))
 }
 
 // The itemscope global attribute is used to add an item to a microdata DOM tree
@@ -1147,9 +1252,20 @@ func (e *SELECTElement) ITEMTYPE(s string) *SELECTElement {
 	return e
 }
 
+func (e *SELECTElement) ITEMTYPEF(format string, args ...any) *SELECTElement {
+	return e.ITEMTYPE(fmt.Sprintf(format, args...))
+}
+
 func (e *SELECTElement) IfITEMTYPE(condition bool, s string) *SELECTElement {
 	if condition {
 		e.ITEMTYPE(s)
+	}
+	return e
+}
+
+func (e *SELECTElement) IfITEMTYPEF(condition bool, format string, args ...any) *SELECTElement {
+	if condition {
+		e.ITEMTYPE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1161,6 +1277,10 @@ func (e *SELECTElement) ITEMTYPERemove(s string) *SELECTElement {
 	}
 	e.StringAttributes.Del("itemtype")
 	return e
+}
+
+func (e *SELECTElement) ITEMTYPERemoveF(format string, args ...any) *SELECTElement {
+	return e.ITEMTYPERemove(fmt.Sprintf(format, args...))
 }
 
 // The lang global attribute helps define the language of an element: the language
@@ -1177,9 +1297,20 @@ func (e *SELECTElement) LANG(s string) *SELECTElement {
 	return e
 }
 
+func (e *SELECTElement) LANGF(format string, args ...any) *SELECTElement {
+	return e.LANG(fmt.Sprintf(format, args...))
+}
+
 func (e *SELECTElement) IfLANG(condition bool, s string) *SELECTElement {
 	if condition {
 		e.LANG(s)
+	}
+	return e
+}
+
+func (e *SELECTElement) IfLANGF(condition bool, format string, args ...any) *SELECTElement {
+	if condition {
+		e.LANG(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1191,6 +1322,10 @@ func (e *SELECTElement) LANGRemove(s string) *SELECTElement {
 	}
 	e.StringAttributes.Del("lang")
 	return e
+}
+
+func (e *SELECTElement) LANGRemoveF(format string, args ...any) *SELECTElement {
+	return e.LANGRemove(fmt.Sprintf(format, args...))
 }
 
 // The nonce global attribute is a unique identifier used to declare inline
@@ -1205,9 +1340,20 @@ func (e *SELECTElement) NONCE(s string) *SELECTElement {
 	return e
 }
 
+func (e *SELECTElement) NONCEF(format string, args ...any) *SELECTElement {
+	return e.NONCE(fmt.Sprintf(format, args...))
+}
+
 func (e *SELECTElement) IfNONCE(condition bool, s string) *SELECTElement {
 	if condition {
 		e.NONCE(s)
+	}
+	return e
+}
+
+func (e *SELECTElement) IfNONCEF(condition bool, format string, args ...any) *SELECTElement {
+	if condition {
+		e.NONCE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1219,6 +1365,10 @@ func (e *SELECTElement) NONCERemove(s string) *SELECTElement {
 	}
 	e.StringAttributes.Del("nonce")
 	return e
+}
+
+func (e *SELECTElement) NONCERemoveF(format string, args ...any) *SELECTElement {
+	return e.NONCERemove(fmt.Sprintf(format, args...))
 }
 
 // The part global attribute contains a space-separated list of the part names of
@@ -1313,9 +1463,20 @@ func (e *SELECTElement) ROLE(s string) *SELECTElement {
 	return e
 }
 
+func (e *SELECTElement) ROLEF(format string, args ...any) *SELECTElement {
+	return e.ROLE(fmt.Sprintf(format, args...))
+}
+
 func (e *SELECTElement) IfROLE(condition bool, s string) *SELECTElement {
 	if condition {
 		e.ROLE(s)
+	}
+	return e
+}
+
+func (e *SELECTElement) IfROLEF(condition bool, format string, args ...any) *SELECTElement {
+	if condition {
+		e.ROLE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1327,6 +1488,10 @@ func (e *SELECTElement) ROLERemove(s string) *SELECTElement {
 	}
 	e.StringAttributes.Del("role")
 	return e
+}
+
+func (e *SELECTElement) ROLERemoveF(format string, args ...any) *SELECTElement {
+	return e.ROLERemove(fmt.Sprintf(format, args...))
 }
 
 // The slot global attribute assigns a slot in a shadow DOM shadow tree to an
@@ -1341,9 +1506,20 @@ func (e *SELECTElement) SLOT(s string) *SELECTElement {
 	return e
 }
 
+func (e *SELECTElement) SLOTF(format string, args ...any) *SELECTElement {
+	return e.SLOT(fmt.Sprintf(format, args...))
+}
+
 func (e *SELECTElement) IfSLOT(condition bool, s string) *SELECTElement {
 	if condition {
 		e.SLOT(s)
+	}
+	return e
+}
+
+func (e *SELECTElement) IfSLOTF(condition bool, format string, args ...any) *SELECTElement {
+	if condition {
+		e.SLOT(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1355,6 +1531,10 @@ func (e *SELECTElement) SLOTRemove(s string) *SELECTElement {
 	}
 	e.StringAttributes.Del("slot")
 	return e
+}
+
+func (e *SELECTElement) SLOTRemoveF(format string, args ...any) *SELECTElement {
+	return e.SLOTRemove(fmt.Sprintf(format, args...))
 }
 
 // The spellcheck global attribute is an enumerated attribute that defines whether
@@ -1559,9 +1739,20 @@ func (e *SELECTElement) TITLE(s string) *SELECTElement {
 	return e
 }
 
+func (e *SELECTElement) TITLEF(format string, args ...any) *SELECTElement {
+	return e.TITLE(fmt.Sprintf(format, args...))
+}
+
 func (e *SELECTElement) IfTITLE(condition bool, s string) *SELECTElement {
 	if condition {
 		e.TITLE(s)
+	}
+	return e
+}
+
+func (e *SELECTElement) IfTITLEF(condition bool, format string, args ...any) *SELECTElement {
+	if condition {
+		e.TITLE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1573,6 +1764,10 @@ func (e *SELECTElement) TITLERemove(s string) *SELECTElement {
 	}
 	e.StringAttributes.Del("title")
 	return e
+}
+
+func (e *SELECTElement) TITLERemoveF(format string, args ...any) *SELECTElement {
+	return e.TITLERemove(fmt.Sprintf(format, args...))
 }
 
 // The translate global attribute is an enumerated attribute that is used to
@@ -1617,7 +1812,7 @@ func (e *SELECTElement) DATASTAR_MERGE_STORE(v any) *SELECTElement {
 	if err != nil {
 		panic(err)
 	}
-	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	e.CustomDataAttributes.Set("merge-store", string(b))
 	return e
 }
 
@@ -1739,34 +1934,34 @@ func (e *SELECTElement) DATASTAR_TEXTRemove() *SELECTElement {
 
 // Sets the event handler of the element
 
-type SelectDataOnMod customDataKeyModifier
+type SelectOnMod customDataKeyModifier
 
 // Debounces the event handler
-func SelectDataOnModDebounce(
+func SelectOnModDebounce(
 	d time.Duration,
-) SelectDataOnMod {
+) SelectOnMod {
 	return func() string {
 		return fmt.Sprintf("debounce_%dms", d.Milliseconds())
 	}
 }
 
 // Throttles the event handler
-func SelectDataOnModThrottle(
+func SelectOnModThrottle(
 	d time.Duration,
-) SelectDataOnMod {
+) SelectOnMod {
 	return func() string {
 		return fmt.Sprintf("throttle_%dms", d.Milliseconds())
 	}
 }
 
-func (e *SELECTElement) DATASTAR_ON(key string, expression string, modifiers ...SelectDataOnMod) *SELECTElement {
+func (e *SELECTElement) DATASTAR_ON(key string, expression string, modifiers ...SelectOnMod) *SELECTElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
 	key = fmt.Sprintf("data-on-%s", key)
 
-	customMods := lo.Map(modifiers, func(m SelectDataOnMod, i int) customDataKeyModifier {
+	customMods := lo.Map(modifiers, func(m SelectOnMod, i int) customDataKeyModifier {
 		return customDataKeyModifier(m)
 	})
 	key = customDataKey(key, customMods...)
@@ -1774,7 +1969,7 @@ func (e *SELECTElement) DATASTAR_ON(key string, expression string, modifiers ...
 	return e
 }
 
-func (e *SELECTElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SelectDataOnMod) *SELECTElement {
+func (e *SELECTElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SelectOnMod) *SELECTElement {
 	if condition {
 		e.DATASTAR_ON(key, expression, modifiers...)
 	}
@@ -1867,7 +2062,7 @@ func (e *SELECTElement) DATASTAR_FETCH_INDICATOR(expression string) *SELECTEleme
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "DatastarFetchIndicator"
+	key := "data-fetch-indicator"
 
 	e.StringAttributes.Set(key, expression)
 	return e
@@ -1885,7 +2080,7 @@ func (e *SELECTElement) DATASTAR_FETCH_INDICATORRemove() *SELECTElement {
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("DatastarFetchIndicator")
+	e.StringAttributes.Del("data-fetch-indicator")
 	return e
 }
 

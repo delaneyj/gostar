@@ -174,9 +174,20 @@ func (e *SVGUSEElement) HREF(s string) *SVGUSEElement {
 	return e
 }
 
+func (e *SVGUSEElement) HREFF(format string, args ...any) *SVGUSEElement {
+	return e.HREF(fmt.Sprintf(format, args...))
+}
+
 func (e *SVGUSEElement) IfHREF(condition bool, s string) *SVGUSEElement {
 	if condition {
 		e.HREF(s)
+	}
+	return e
+}
+
+func (e *SVGUSEElement) IfHREFF(condition bool, format string, args ...any) *SVGUSEElement {
+	if condition {
+		e.HREF(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -188,6 +199,10 @@ func (e *SVGUSEElement) HREFRemove(s string) *SVGUSEElement {
 	}
 	e.StringAttributes.Del("href")
 	return e
+}
+
+func (e *SVGUSEElement) HREFRemoveF(format string, args ...any) *SVGUSEElement {
+	return e.HREFRemove(fmt.Sprintf(format, args...))
 }
 
 // The x-axis coordinate of the side of the rectangular region which is closest to
@@ -265,9 +280,20 @@ func (e *SVGUSEElement) ID(s string) *SVGUSEElement {
 	return e
 }
 
+func (e *SVGUSEElement) IDF(format string, args ...any) *SVGUSEElement {
+	return e.ID(fmt.Sprintf(format, args...))
+}
+
 func (e *SVGUSEElement) IfID(condition bool, s string) *SVGUSEElement {
 	if condition {
 		e.ID(s)
+	}
+	return e
+}
+
+func (e *SVGUSEElement) IfIDF(condition bool, format string, args ...any) *SVGUSEElement {
+	if condition {
+		e.ID(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -279,6 +305,10 @@ func (e *SVGUSEElement) IDRemove(s string) *SVGUSEElement {
 	}
 	e.StringAttributes.Del("id")
 	return e
+}
+
+func (e *SVGUSEElement) IDRemoveF(format string, args ...any) *SVGUSEElement {
+	return e.IDRemove(fmt.Sprintf(format, args...))
 }
 
 // Specifies one or more classnames for an element (refers to a class in a style
@@ -417,7 +447,7 @@ func (e *SVGUSEElement) DATASTAR_MERGE_STORE(v any) *SVGUSEElement {
 	if err != nil {
 		panic(err)
 	}
-	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	e.CustomDataAttributes.Set("merge-store", string(b))
 	return e
 }
 
@@ -539,34 +569,34 @@ func (e *SVGUSEElement) DATASTAR_TEXTRemove() *SVGUSEElement {
 
 // Sets the event handler of the element
 
-type SVGUseDataOnMod customDataKeyModifier
+type SVGUseOnMod customDataKeyModifier
 
 // Debounces the event handler
-func SVGUseDataOnModDebounce(
+func SVGUseOnModDebounce(
 	d time.Duration,
-) SVGUseDataOnMod {
+) SVGUseOnMod {
 	return func() string {
 		return fmt.Sprintf("debounce_%dms", d.Milliseconds())
 	}
 }
 
 // Throttles the event handler
-func SVGUseDataOnModThrottle(
+func SVGUseOnModThrottle(
 	d time.Duration,
-) SVGUseDataOnMod {
+) SVGUseOnMod {
 	return func() string {
 		return fmt.Sprintf("throttle_%dms", d.Milliseconds())
 	}
 }
 
-func (e *SVGUSEElement) DATASTAR_ON(key string, expression string, modifiers ...SVGUseDataOnMod) *SVGUSEElement {
+func (e *SVGUSEElement) DATASTAR_ON(key string, expression string, modifiers ...SVGUseOnMod) *SVGUSEElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
 	key = fmt.Sprintf("data-on-%s", key)
 
-	customMods := lo.Map(modifiers, func(m SVGUseDataOnMod, i int) customDataKeyModifier {
+	customMods := lo.Map(modifiers, func(m SVGUseOnMod, i int) customDataKeyModifier {
 		return customDataKeyModifier(m)
 	})
 	key = customDataKey(key, customMods...)
@@ -574,7 +604,7 @@ func (e *SVGUSEElement) DATASTAR_ON(key string, expression string, modifiers ...
 	return e
 }
 
-func (e *SVGUSEElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SVGUseDataOnMod) *SVGUSEElement {
+func (e *SVGUSEElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SVGUseOnMod) *SVGUSEElement {
 	if condition {
 		e.DATASTAR_ON(key, expression, modifiers...)
 	}
@@ -667,7 +697,7 @@ func (e *SVGUSEElement) DATASTAR_FETCH_INDICATOR(expression string) *SVGUSEEleme
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "DatastarFetchIndicator"
+	key := "data-fetch-indicator"
 
 	e.StringAttributes.Set(key, expression)
 	return e
@@ -685,7 +715,7 @@ func (e *SVGUSEElement) DATASTAR_FETCH_INDICATORRemove() *SVGUSEElement {
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("DatastarFetchIndicator")
+	e.StringAttributes.Del("data-fetch-indicator")
 	return e
 }
 

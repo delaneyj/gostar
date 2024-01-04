@@ -172,9 +172,20 @@ func (e *FORMElement) ACCEPT_CHARSET(s string) *FORMElement {
 	return e
 }
 
+func (e *FORMElement) ACCEPT_CHARSETF(format string, args ...any) *FORMElement {
+	return e.ACCEPT_CHARSET(fmt.Sprintf(format, args...))
+}
+
 func (e *FORMElement) IfACCEPT_CHARSET(condition bool, s string) *FORMElement {
 	if condition {
 		e.ACCEPT_CHARSET(s)
+	}
+	return e
+}
+
+func (e *FORMElement) IfACCEPT_CHARSETF(condition bool, format string, args ...any) *FORMElement {
+	if condition {
+		e.ACCEPT_CHARSET(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -188,6 +199,10 @@ func (e *FORMElement) ACCEPT_CHARSETRemove(s string) *FORMElement {
 	return e
 }
 
+func (e *FORMElement) ACCEPT_CHARSETRemoveF(format string, args ...any) *FORMElement {
+	return e.ACCEPT_CHARSETRemove(fmt.Sprintf(format, args...))
+}
+
 // Specifies where to send the form-data when a form is submitted
 // Only for type="submit" and type="image".
 func (e *FORMElement) ACTION(s string) *FORMElement {
@@ -198,9 +213,20 @@ func (e *FORMElement) ACTION(s string) *FORMElement {
 	return e
 }
 
+func (e *FORMElement) ACTIONF(format string, args ...any) *FORMElement {
+	return e.ACTION(fmt.Sprintf(format, args...))
+}
+
 func (e *FORMElement) IfACTION(condition bool, s string) *FORMElement {
 	if condition {
 		e.ACTION(s)
+	}
+	return e
+}
+
+func (e *FORMElement) IfACTIONF(condition bool, format string, args ...any) *FORMElement {
+	if condition {
+		e.ACTION(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -212,6 +238,10 @@ func (e *FORMElement) ACTIONRemove(s string) *FORMElement {
 	}
 	e.StringAttributes.Del("action")
 	return e
+}
+
+func (e *FORMElement) ACTIONRemoveF(format string, args ...any) *FORMElement {
+	return e.ACTIONRemove(fmt.Sprintf(format, args...))
 }
 
 // Indicates whether controls in this form can by default have their values
@@ -312,9 +342,20 @@ func (e *FORMElement) NAME(s string) *FORMElement {
 	return e
 }
 
+func (e *FORMElement) NAMEF(format string, args ...any) *FORMElement {
+	return e.NAME(fmt.Sprintf(format, args...))
+}
+
 func (e *FORMElement) IfNAME(condition bool, s string) *FORMElement {
 	if condition {
 		e.NAME(s)
+	}
+	return e
+}
+
+func (e *FORMElement) IfNAMEF(condition bool, format string, args ...any) *FORMElement {
+	if condition {
+		e.NAME(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -326,6 +367,10 @@ func (e *FORMElement) NAMERemove(s string) *FORMElement {
 	}
 	e.StringAttributes.Del("name")
 	return e
+}
+
+func (e *FORMElement) NAMERemoveF(format string, args ...any) *FORMElement {
+	return e.NAMERemove(fmt.Sprintf(format, args...))
 }
 
 // This Boolean attribute indicates that the form is not to be validated when
@@ -850,9 +895,20 @@ func (e *FORMElement) ID(s string) *FORMElement {
 	return e
 }
 
+func (e *FORMElement) IDF(format string, args ...any) *FORMElement {
+	return e.ID(fmt.Sprintf(format, args...))
+}
+
 func (e *FORMElement) IfID(condition bool, s string) *FORMElement {
 	if condition {
 		e.ID(s)
+	}
+	return e
+}
+
+func (e *FORMElement) IfIDF(condition bool, format string, args ...any) *FORMElement {
+	if condition {
+		e.ID(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -864,6 +920,10 @@ func (e *FORMElement) IDRemove(s string) *FORMElement {
 	}
 	e.StringAttributes.Del("id")
 	return e
+}
+
+func (e *FORMElement) IDRemoveF(format string, args ...any) *FORMElement {
+	return e.IDRemove(fmt.Sprintf(format, args...))
 }
 
 // The inert global attribute is a Boolean attribute indicating that the browser
@@ -998,9 +1058,20 @@ func (e *FORMElement) IS(s string) *FORMElement {
 	return e
 }
 
+func (e *FORMElement) ISF(format string, args ...any) *FORMElement {
+	return e.IS(fmt.Sprintf(format, args...))
+}
+
 func (e *FORMElement) IfIS(condition bool, s string) *FORMElement {
 	if condition {
 		e.IS(s)
+	}
+	return e
+}
+
+func (e *FORMElement) IfISF(condition bool, format string, args ...any) *FORMElement {
+	if condition {
+		e.IS(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1012,6 +1083,10 @@ func (e *FORMElement) ISRemove(s string) *FORMElement {
 	}
 	e.StringAttributes.Del("is")
 	return e
+}
+
+func (e *FORMElement) ISRemoveF(format string, args ...any) *FORMElement {
+	return e.ISRemove(fmt.Sprintf(format, args...))
 }
 
 // The itemid global attribute provides microdata in the form of a unique, global
@@ -1035,9 +1110,20 @@ func (e *FORMElement) ITEMID(s string) *FORMElement {
 	return e
 }
 
+func (e *FORMElement) ITEMIDF(format string, args ...any) *FORMElement {
+	return e.ITEMID(fmt.Sprintf(format, args...))
+}
+
 func (e *FORMElement) IfITEMID(condition bool, s string) *FORMElement {
 	if condition {
 		e.ITEMID(s)
+	}
+	return e
+}
+
+func (e *FORMElement) IfITEMIDF(condition bool, format string, args ...any) *FORMElement {
+	if condition {
+		e.ITEMID(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1049,6 +1135,10 @@ func (e *FORMElement) ITEMIDRemove(s string) *FORMElement {
 	}
 	e.StringAttributes.Del("itemid")
 	return e
+}
+
+func (e *FORMElement) ITEMIDRemoveF(format string, args ...any) *FORMElement {
+	return e.ITEMIDRemove(fmt.Sprintf(format, args...))
 }
 
 // The itemprop global attribute is used to add properties to an item
@@ -1067,9 +1157,20 @@ func (e *FORMElement) ITEMPROP(s string) *FORMElement {
 	return e
 }
 
+func (e *FORMElement) ITEMPROPF(format string, args ...any) *FORMElement {
+	return e.ITEMPROP(fmt.Sprintf(format, args...))
+}
+
 func (e *FORMElement) IfITEMPROP(condition bool, s string) *FORMElement {
 	if condition {
 		e.ITEMPROP(s)
+	}
+	return e
+}
+
+func (e *FORMElement) IfITEMPROPF(condition bool, format string, args ...any) *FORMElement {
+	if condition {
+		e.ITEMPROP(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1081,6 +1182,10 @@ func (e *FORMElement) ITEMPROPRemove(s string) *FORMElement {
 	}
 	e.StringAttributes.Del("itemprop")
 	return e
+}
+
+func (e *FORMElement) ITEMPROPRemoveF(format string, args ...any) *FORMElement {
+	return e.ITEMPROPRemove(fmt.Sprintf(format, args...))
 }
 
 // Properties that are not descendants of an element with the itemscope attribute
@@ -1096,9 +1201,20 @@ func (e *FORMElement) ITEMREF(s string) *FORMElement {
 	return e
 }
 
+func (e *FORMElement) ITEMREFF(format string, args ...any) *FORMElement {
+	return e.ITEMREF(fmt.Sprintf(format, args...))
+}
+
 func (e *FORMElement) IfITEMREF(condition bool, s string) *FORMElement {
 	if condition {
 		e.ITEMREF(s)
+	}
+	return e
+}
+
+func (e *FORMElement) IfITEMREFF(condition bool, format string, args ...any) *FORMElement {
+	if condition {
+		e.ITEMREF(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1110,6 +1226,10 @@ func (e *FORMElement) ITEMREFRemove(s string) *FORMElement {
 	}
 	e.StringAttributes.Del("itemref")
 	return e
+}
+
+func (e *FORMElement) ITEMREFRemoveF(format string, args ...any) *FORMElement {
+	return e.ITEMREFRemove(fmt.Sprintf(format, args...))
 }
 
 // The itemscope global attribute is used to add an item to a microdata DOM tree
@@ -1173,9 +1293,20 @@ func (e *FORMElement) ITEMTYPE(s string) *FORMElement {
 	return e
 }
 
+func (e *FORMElement) ITEMTYPEF(format string, args ...any) *FORMElement {
+	return e.ITEMTYPE(fmt.Sprintf(format, args...))
+}
+
 func (e *FORMElement) IfITEMTYPE(condition bool, s string) *FORMElement {
 	if condition {
 		e.ITEMTYPE(s)
+	}
+	return e
+}
+
+func (e *FORMElement) IfITEMTYPEF(condition bool, format string, args ...any) *FORMElement {
+	if condition {
+		e.ITEMTYPE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1187,6 +1318,10 @@ func (e *FORMElement) ITEMTYPERemove(s string) *FORMElement {
 	}
 	e.StringAttributes.Del("itemtype")
 	return e
+}
+
+func (e *FORMElement) ITEMTYPERemoveF(format string, args ...any) *FORMElement {
+	return e.ITEMTYPERemove(fmt.Sprintf(format, args...))
 }
 
 // The lang global attribute helps define the language of an element: the language
@@ -1203,9 +1338,20 @@ func (e *FORMElement) LANG(s string) *FORMElement {
 	return e
 }
 
+func (e *FORMElement) LANGF(format string, args ...any) *FORMElement {
+	return e.LANG(fmt.Sprintf(format, args...))
+}
+
 func (e *FORMElement) IfLANG(condition bool, s string) *FORMElement {
 	if condition {
 		e.LANG(s)
+	}
+	return e
+}
+
+func (e *FORMElement) IfLANGF(condition bool, format string, args ...any) *FORMElement {
+	if condition {
+		e.LANG(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1217,6 +1363,10 @@ func (e *FORMElement) LANGRemove(s string) *FORMElement {
 	}
 	e.StringAttributes.Del("lang")
 	return e
+}
+
+func (e *FORMElement) LANGRemoveF(format string, args ...any) *FORMElement {
+	return e.LANGRemove(fmt.Sprintf(format, args...))
 }
 
 // The nonce global attribute is a unique identifier used to declare inline
@@ -1231,9 +1381,20 @@ func (e *FORMElement) NONCE(s string) *FORMElement {
 	return e
 }
 
+func (e *FORMElement) NONCEF(format string, args ...any) *FORMElement {
+	return e.NONCE(fmt.Sprintf(format, args...))
+}
+
 func (e *FORMElement) IfNONCE(condition bool, s string) *FORMElement {
 	if condition {
 		e.NONCE(s)
+	}
+	return e
+}
+
+func (e *FORMElement) IfNONCEF(condition bool, format string, args ...any) *FORMElement {
+	if condition {
+		e.NONCE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1245,6 +1406,10 @@ func (e *FORMElement) NONCERemove(s string) *FORMElement {
 	}
 	e.StringAttributes.Del("nonce")
 	return e
+}
+
+func (e *FORMElement) NONCERemoveF(format string, args ...any) *FORMElement {
+	return e.NONCERemove(fmt.Sprintf(format, args...))
 }
 
 // The part global attribute contains a space-separated list of the part names of
@@ -1339,9 +1504,20 @@ func (e *FORMElement) ROLE(s string) *FORMElement {
 	return e
 }
 
+func (e *FORMElement) ROLEF(format string, args ...any) *FORMElement {
+	return e.ROLE(fmt.Sprintf(format, args...))
+}
+
 func (e *FORMElement) IfROLE(condition bool, s string) *FORMElement {
 	if condition {
 		e.ROLE(s)
+	}
+	return e
+}
+
+func (e *FORMElement) IfROLEF(condition bool, format string, args ...any) *FORMElement {
+	if condition {
+		e.ROLE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1353,6 +1529,10 @@ func (e *FORMElement) ROLERemove(s string) *FORMElement {
 	}
 	e.StringAttributes.Del("role")
 	return e
+}
+
+func (e *FORMElement) ROLERemoveF(format string, args ...any) *FORMElement {
+	return e.ROLERemove(fmt.Sprintf(format, args...))
 }
 
 // The slot global attribute assigns a slot in a shadow DOM shadow tree to an
@@ -1367,9 +1547,20 @@ func (e *FORMElement) SLOT(s string) *FORMElement {
 	return e
 }
 
+func (e *FORMElement) SLOTF(format string, args ...any) *FORMElement {
+	return e.SLOT(fmt.Sprintf(format, args...))
+}
+
 func (e *FORMElement) IfSLOT(condition bool, s string) *FORMElement {
 	if condition {
 		e.SLOT(s)
+	}
+	return e
+}
+
+func (e *FORMElement) IfSLOTF(condition bool, format string, args ...any) *FORMElement {
+	if condition {
+		e.SLOT(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1381,6 +1572,10 @@ func (e *FORMElement) SLOTRemove(s string) *FORMElement {
 	}
 	e.StringAttributes.Del("slot")
 	return e
+}
+
+func (e *FORMElement) SLOTRemoveF(format string, args ...any) *FORMElement {
+	return e.SLOTRemove(fmt.Sprintf(format, args...))
 }
 
 // The spellcheck global attribute is an enumerated attribute that defines whether
@@ -1585,9 +1780,20 @@ func (e *FORMElement) TITLE(s string) *FORMElement {
 	return e
 }
 
+func (e *FORMElement) TITLEF(format string, args ...any) *FORMElement {
+	return e.TITLE(fmt.Sprintf(format, args...))
+}
+
 func (e *FORMElement) IfTITLE(condition bool, s string) *FORMElement {
 	if condition {
 		e.TITLE(s)
+	}
+	return e
+}
+
+func (e *FORMElement) IfTITLEF(condition bool, format string, args ...any) *FORMElement {
+	if condition {
+		e.TITLE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1599,6 +1805,10 @@ func (e *FORMElement) TITLERemove(s string) *FORMElement {
 	}
 	e.StringAttributes.Del("title")
 	return e
+}
+
+func (e *FORMElement) TITLERemoveF(format string, args ...any) *FORMElement {
+	return e.TITLERemove(fmt.Sprintf(format, args...))
 }
 
 // The translate global attribute is an enumerated attribute that is used to
@@ -1643,7 +1853,7 @@ func (e *FORMElement) DATASTAR_MERGE_STORE(v any) *FORMElement {
 	if err != nil {
 		panic(err)
 	}
-	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	e.CustomDataAttributes.Set("merge-store", string(b))
 	return e
 }
 
@@ -1765,34 +1975,34 @@ func (e *FORMElement) DATASTAR_TEXTRemove() *FORMElement {
 
 // Sets the event handler of the element
 
-type FormDataOnMod customDataKeyModifier
+type FormOnMod customDataKeyModifier
 
 // Debounces the event handler
-func FormDataOnModDebounce(
+func FormOnModDebounce(
 	d time.Duration,
-) FormDataOnMod {
+) FormOnMod {
 	return func() string {
 		return fmt.Sprintf("debounce_%dms", d.Milliseconds())
 	}
 }
 
 // Throttles the event handler
-func FormDataOnModThrottle(
+func FormOnModThrottle(
 	d time.Duration,
-) FormDataOnMod {
+) FormOnMod {
 	return func() string {
 		return fmt.Sprintf("throttle_%dms", d.Milliseconds())
 	}
 }
 
-func (e *FORMElement) DATASTAR_ON(key string, expression string, modifiers ...FormDataOnMod) *FORMElement {
+func (e *FORMElement) DATASTAR_ON(key string, expression string, modifiers ...FormOnMod) *FORMElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
 	key = fmt.Sprintf("data-on-%s", key)
 
-	customMods := lo.Map(modifiers, func(m FormDataOnMod, i int) customDataKeyModifier {
+	customMods := lo.Map(modifiers, func(m FormOnMod, i int) customDataKeyModifier {
 		return customDataKeyModifier(m)
 	})
 	key = customDataKey(key, customMods...)
@@ -1800,7 +2010,7 @@ func (e *FORMElement) DATASTAR_ON(key string, expression string, modifiers ...Fo
 	return e
 }
 
-func (e *FORMElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...FormDataOnMod) *FORMElement {
+func (e *FORMElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...FormOnMod) *FORMElement {
 	if condition {
 		e.DATASTAR_ON(key, expression, modifiers...)
 	}
@@ -1893,7 +2103,7 @@ func (e *FORMElement) DATASTAR_FETCH_INDICATOR(expression string) *FORMElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "DatastarFetchIndicator"
+	key := "data-fetch-indicator"
 
 	e.StringAttributes.Set(key, expression)
 	return e
@@ -1911,7 +2121,7 @@ func (e *FORMElement) DATASTAR_FETCH_INDICATORRemove() *FORMElement {
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("DatastarFetchIndicator")
+	e.StringAttributes.Del("data-fetch-indicator")
 	return e
 }
 

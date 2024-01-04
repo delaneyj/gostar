@@ -173,9 +173,20 @@ func (e *SVGFECOMPOSITEElement) IN(s string) *SVGFECOMPOSITEElement {
 	return e
 }
 
+func (e *SVGFECOMPOSITEElement) INF(format string, args ...any) *SVGFECOMPOSITEElement {
+	return e.IN(fmt.Sprintf(format, args...))
+}
+
 func (e *SVGFECOMPOSITEElement) IfIN(condition bool, s string) *SVGFECOMPOSITEElement {
 	if condition {
 		e.IN(s)
+	}
+	return e
+}
+
+func (e *SVGFECOMPOSITEElement) IfINF(condition bool, format string, args ...any) *SVGFECOMPOSITEElement {
+	if condition {
+		e.IN(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -189,6 +200,10 @@ func (e *SVGFECOMPOSITEElement) INRemove(s string) *SVGFECOMPOSITEElement {
 	return e
 }
 
+func (e *SVGFECOMPOSITEElement) INRemoveF(format string, args ...any) *SVGFECOMPOSITEElement {
+	return e.INRemove(fmt.Sprintf(format, args...))
+}
+
 // Second input for the compositing operation.
 func (e *SVGFECOMPOSITEElement) IN_2(s string) *SVGFECOMPOSITEElement {
 	if e.StringAttributes == nil {
@@ -198,9 +213,20 @@ func (e *SVGFECOMPOSITEElement) IN_2(s string) *SVGFECOMPOSITEElement {
 	return e
 }
 
+func (e *SVGFECOMPOSITEElement) IN_2F(format string, args ...any) *SVGFECOMPOSITEElement {
+	return e.IN_2(fmt.Sprintf(format, args...))
+}
+
 func (e *SVGFECOMPOSITEElement) IfIN_2(condition bool, s string) *SVGFECOMPOSITEElement {
 	if condition {
 		e.IN_2(s)
+	}
+	return e
+}
+
+func (e *SVGFECOMPOSITEElement) IfIN_2F(condition bool, format string, args ...any) *SVGFECOMPOSITEElement {
+	if condition {
+		e.IN_2(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -212,6 +238,10 @@ func (e *SVGFECOMPOSITEElement) IN_2Remove(s string) *SVGFECOMPOSITEElement {
 	}
 	e.StringAttributes.Del("in2")
 	return e
+}
+
+func (e *SVGFECOMPOSITEElement) IN_2RemoveF(format string, args ...any) *SVGFECOMPOSITEElement {
+	return e.IN_2Remove(fmt.Sprintf(format, args...))
 }
 
 // The type of compositing operation.
@@ -326,9 +356,20 @@ func (e *SVGFECOMPOSITEElement) ID(s string) *SVGFECOMPOSITEElement {
 	return e
 }
 
+func (e *SVGFECOMPOSITEElement) IDF(format string, args ...any) *SVGFECOMPOSITEElement {
+	return e.ID(fmt.Sprintf(format, args...))
+}
+
 func (e *SVGFECOMPOSITEElement) IfID(condition bool, s string) *SVGFECOMPOSITEElement {
 	if condition {
 		e.ID(s)
+	}
+	return e
+}
+
+func (e *SVGFECOMPOSITEElement) IfIDF(condition bool, format string, args ...any) *SVGFECOMPOSITEElement {
+	if condition {
+		e.ID(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -340,6 +381,10 @@ func (e *SVGFECOMPOSITEElement) IDRemove(s string) *SVGFECOMPOSITEElement {
 	}
 	e.StringAttributes.Del("id")
 	return e
+}
+
+func (e *SVGFECOMPOSITEElement) IDRemoveF(format string, args ...any) *SVGFECOMPOSITEElement {
+	return e.IDRemove(fmt.Sprintf(format, args...))
 }
 
 // Specifies one or more classnames for an element (refers to a class in a style
@@ -478,7 +523,7 @@ func (e *SVGFECOMPOSITEElement) DATASTAR_MERGE_STORE(v any) *SVGFECOMPOSITEEleme
 	if err != nil {
 		panic(err)
 	}
-	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	e.CustomDataAttributes.Set("merge-store", string(b))
 	return e
 }
 
@@ -600,34 +645,34 @@ func (e *SVGFECOMPOSITEElement) DATASTAR_TEXTRemove() *SVGFECOMPOSITEElement {
 
 // Sets the event handler of the element
 
-type SVGFeCompositeDataOnMod customDataKeyModifier
+type SVGFeCompositeOnMod customDataKeyModifier
 
 // Debounces the event handler
-func SVGFeCompositeDataOnModDebounce(
+func SVGFeCompositeOnModDebounce(
 	d time.Duration,
-) SVGFeCompositeDataOnMod {
+) SVGFeCompositeOnMod {
 	return func() string {
 		return fmt.Sprintf("debounce_%dms", d.Milliseconds())
 	}
 }
 
 // Throttles the event handler
-func SVGFeCompositeDataOnModThrottle(
+func SVGFeCompositeOnModThrottle(
 	d time.Duration,
-) SVGFeCompositeDataOnMod {
+) SVGFeCompositeOnMod {
 	return func() string {
 		return fmt.Sprintf("throttle_%dms", d.Milliseconds())
 	}
 }
 
-func (e *SVGFECOMPOSITEElement) DATASTAR_ON(key string, expression string, modifiers ...SVGFeCompositeDataOnMod) *SVGFECOMPOSITEElement {
+func (e *SVGFECOMPOSITEElement) DATASTAR_ON(key string, expression string, modifiers ...SVGFeCompositeOnMod) *SVGFECOMPOSITEElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
 	key = fmt.Sprintf("data-on-%s", key)
 
-	customMods := lo.Map(modifiers, func(m SVGFeCompositeDataOnMod, i int) customDataKeyModifier {
+	customMods := lo.Map(modifiers, func(m SVGFeCompositeOnMod, i int) customDataKeyModifier {
 		return customDataKeyModifier(m)
 	})
 	key = customDataKey(key, customMods...)
@@ -635,7 +680,7 @@ func (e *SVGFECOMPOSITEElement) DATASTAR_ON(key string, expression string, modif
 	return e
 }
 
-func (e *SVGFECOMPOSITEElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SVGFeCompositeDataOnMod) *SVGFECOMPOSITEElement {
+func (e *SVGFECOMPOSITEElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SVGFeCompositeOnMod) *SVGFECOMPOSITEElement {
 	if condition {
 		e.DATASTAR_ON(key, expression, modifiers...)
 	}
@@ -728,7 +773,7 @@ func (e *SVGFECOMPOSITEElement) DATASTAR_FETCH_INDICATOR(expression string) *SVG
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "DatastarFetchIndicator"
+	key := "data-fetch-indicator"
 
 	e.StringAttributes.Set(key, expression)
 	return e
@@ -746,7 +791,7 @@ func (e *SVGFECOMPOSITEElement) DATASTAR_FETCH_INDICATORRemove() *SVGFECOMPOSITE
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("DatastarFetchIndicator")
+	e.StringAttributes.Del("data-fetch-indicator")
 	return e
 }
 

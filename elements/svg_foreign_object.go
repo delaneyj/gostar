@@ -175,9 +175,20 @@ func (e *SVGFOREIGNOBJECTElement) X(s string) *SVGFOREIGNOBJECTElement {
 	return e
 }
 
+func (e *SVGFOREIGNOBJECTElement) XF(format string, args ...any) *SVGFOREIGNOBJECTElement {
+	return e.X(fmt.Sprintf(format, args...))
+}
+
 func (e *SVGFOREIGNOBJECTElement) IfX(condition bool, s string) *SVGFOREIGNOBJECTElement {
 	if condition {
 		e.X(s)
+	}
+	return e
+}
+
+func (e *SVGFOREIGNOBJECTElement) IfXF(condition bool, format string, args ...any) *SVGFOREIGNOBJECTElement {
+	if condition {
+		e.X(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -191,6 +202,10 @@ func (e *SVGFOREIGNOBJECTElement) XRemove(s string) *SVGFOREIGNOBJECTElement {
 	return e
 }
 
+func (e *SVGFOREIGNOBJECTElement) XRemoveF(format string, args ...any) *SVGFOREIGNOBJECTElement {
+	return e.XRemove(fmt.Sprintf(format, args...))
+}
+
 // The y-axis coordinate of the side of the rectangular region which is closest to
 // the user.
 func (e *SVGFOREIGNOBJECTElement) Y(s string) *SVGFOREIGNOBJECTElement {
@@ -201,9 +216,20 @@ func (e *SVGFOREIGNOBJECTElement) Y(s string) *SVGFOREIGNOBJECTElement {
 	return e
 }
 
+func (e *SVGFOREIGNOBJECTElement) YF(format string, args ...any) *SVGFOREIGNOBJECTElement {
+	return e.Y(fmt.Sprintf(format, args...))
+}
+
 func (e *SVGFOREIGNOBJECTElement) IfY(condition bool, s string) *SVGFOREIGNOBJECTElement {
 	if condition {
 		e.Y(s)
+	}
+	return e
+}
+
+func (e *SVGFOREIGNOBJECTElement) IfYF(condition bool, format string, args ...any) *SVGFOREIGNOBJECTElement {
+	if condition {
+		e.Y(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -217,6 +243,10 @@ func (e *SVGFOREIGNOBJECTElement) YRemove(s string) *SVGFOREIGNOBJECTElement {
 	return e
 }
 
+func (e *SVGFOREIGNOBJECTElement) YRemoveF(format string, args ...any) *SVGFOREIGNOBJECTElement {
+	return e.YRemove(fmt.Sprintf(format, args...))
+}
+
 // The width of the rectangular region.
 func (e *SVGFOREIGNOBJECTElement) WIDTH(s string) *SVGFOREIGNOBJECTElement {
 	if e.StringAttributes == nil {
@@ -226,9 +256,20 @@ func (e *SVGFOREIGNOBJECTElement) WIDTH(s string) *SVGFOREIGNOBJECTElement {
 	return e
 }
 
+func (e *SVGFOREIGNOBJECTElement) WIDTHF(format string, args ...any) *SVGFOREIGNOBJECTElement {
+	return e.WIDTH(fmt.Sprintf(format, args...))
+}
+
 func (e *SVGFOREIGNOBJECTElement) IfWIDTH(condition bool, s string) *SVGFOREIGNOBJECTElement {
 	if condition {
 		e.WIDTH(s)
+	}
+	return e
+}
+
+func (e *SVGFOREIGNOBJECTElement) IfWIDTHF(condition bool, format string, args ...any) *SVGFOREIGNOBJECTElement {
+	if condition {
+		e.WIDTH(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -242,6 +283,10 @@ func (e *SVGFOREIGNOBJECTElement) WIDTHRemove(s string) *SVGFOREIGNOBJECTElement
 	return e
 }
 
+func (e *SVGFOREIGNOBJECTElement) WIDTHRemoveF(format string, args ...any) *SVGFOREIGNOBJECTElement {
+	return e.WIDTHRemove(fmt.Sprintf(format, args...))
+}
+
 // The height of the rectangular region.
 func (e *SVGFOREIGNOBJECTElement) HEIGHT(s string) *SVGFOREIGNOBJECTElement {
 	if e.StringAttributes == nil {
@@ -251,9 +296,20 @@ func (e *SVGFOREIGNOBJECTElement) HEIGHT(s string) *SVGFOREIGNOBJECTElement {
 	return e
 }
 
+func (e *SVGFOREIGNOBJECTElement) HEIGHTF(format string, args ...any) *SVGFOREIGNOBJECTElement {
+	return e.HEIGHT(fmt.Sprintf(format, args...))
+}
+
 func (e *SVGFOREIGNOBJECTElement) IfHEIGHT(condition bool, s string) *SVGFOREIGNOBJECTElement {
 	if condition {
 		e.HEIGHT(s)
+	}
+	return e
+}
+
+func (e *SVGFOREIGNOBJECTElement) IfHEIGHTF(condition bool, format string, args ...any) *SVGFOREIGNOBJECTElement {
+	if condition {
+		e.HEIGHT(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -267,6 +323,10 @@ func (e *SVGFOREIGNOBJECTElement) HEIGHTRemove(s string) *SVGFOREIGNOBJECTElemen
 	return e
 }
 
+func (e *SVGFOREIGNOBJECTElement) HEIGHTRemoveF(format string, args ...any) *SVGFOREIGNOBJECTElement {
+	return e.HEIGHTRemove(fmt.Sprintf(format, args...))
+}
+
 // A space-separated list of required extensions, indicating that the parent SVG
 // document must include the specified extensions for this element to be valid.
 func (e *SVGFOREIGNOBJECTElement) REQUIRED_EXTENSIONS(s string) *SVGFOREIGNOBJECTElement {
@@ -277,9 +337,20 @@ func (e *SVGFOREIGNOBJECTElement) REQUIRED_EXTENSIONS(s string) *SVGFOREIGNOBJEC
 	return e
 }
 
+func (e *SVGFOREIGNOBJECTElement) REQUIRED_EXTENSIONSF(format string, args ...any) *SVGFOREIGNOBJECTElement {
+	return e.REQUIRED_EXTENSIONS(fmt.Sprintf(format, args...))
+}
+
 func (e *SVGFOREIGNOBJECTElement) IfREQUIRED_EXTENSIONS(condition bool, s string) *SVGFOREIGNOBJECTElement {
 	if condition {
 		e.REQUIRED_EXTENSIONS(s)
+	}
+	return e
+}
+
+func (e *SVGFOREIGNOBJECTElement) IfREQUIRED_EXTENSIONSF(condition bool, format string, args ...any) *SVGFOREIGNOBJECTElement {
+	if condition {
+		e.REQUIRED_EXTENSIONS(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -293,6 +364,10 @@ func (e *SVGFOREIGNOBJECTElement) REQUIRED_EXTENSIONSRemove(s string) *SVGFOREIG
 	return e
 }
 
+func (e *SVGFOREIGNOBJECTElement) REQUIRED_EXTENSIONSRemoveF(format string, args ...any) *SVGFOREIGNOBJECTElement {
+	return e.REQUIRED_EXTENSIONSRemove(fmt.Sprintf(format, args...))
+}
+
 // A space-separated list of required features, indicating that the parent SVG
 // document must include support for all of the specified features for this
 // element to be valid.
@@ -304,9 +379,20 @@ func (e *SVGFOREIGNOBJECTElement) REQUIRED_FEATURES(s string) *SVGFOREIGNOBJECTE
 	return e
 }
 
+func (e *SVGFOREIGNOBJECTElement) REQUIRED_FEATURESF(format string, args ...any) *SVGFOREIGNOBJECTElement {
+	return e.REQUIRED_FEATURES(fmt.Sprintf(format, args...))
+}
+
 func (e *SVGFOREIGNOBJECTElement) IfREQUIRED_FEATURES(condition bool, s string) *SVGFOREIGNOBJECTElement {
 	if condition {
 		e.REQUIRED_FEATURES(s)
+	}
+	return e
+}
+
+func (e *SVGFOREIGNOBJECTElement) IfREQUIRED_FEATURESF(condition bool, format string, args ...any) *SVGFOREIGNOBJECTElement {
+	if condition {
+		e.REQUIRED_FEATURES(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -320,6 +406,10 @@ func (e *SVGFOREIGNOBJECTElement) REQUIRED_FEATURESRemove(s string) *SVGFOREIGNO
 	return e
 }
 
+func (e *SVGFOREIGNOBJECTElement) REQUIRED_FEATURESRemoveF(format string, args ...any) *SVGFOREIGNOBJECTElement {
+	return e.REQUIRED_FEATURESRemove(fmt.Sprintf(format, args...))
+}
+
 // A space-separated list of language codes, indicating that the parent SVG
 // document must include support for all of the specified languages for this
 // element to be valid.
@@ -331,9 +421,20 @@ func (e *SVGFOREIGNOBJECTElement) SYSTEM_LANGUAGE(s string) *SVGFOREIGNOBJECTEle
 	return e
 }
 
+func (e *SVGFOREIGNOBJECTElement) SYSTEM_LANGUAGEF(format string, args ...any) *SVGFOREIGNOBJECTElement {
+	return e.SYSTEM_LANGUAGE(fmt.Sprintf(format, args...))
+}
+
 func (e *SVGFOREIGNOBJECTElement) IfSYSTEM_LANGUAGE(condition bool, s string) *SVGFOREIGNOBJECTElement {
 	if condition {
 		e.SYSTEM_LANGUAGE(s)
+	}
+	return e
+}
+
+func (e *SVGFOREIGNOBJECTElement) IfSYSTEM_LANGUAGEF(condition bool, format string, args ...any) *SVGFOREIGNOBJECTElement {
+	if condition {
+		e.SYSTEM_LANGUAGE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -347,6 +448,10 @@ func (e *SVGFOREIGNOBJECTElement) SYSTEM_LANGUAGERemove(s string) *SVGFOREIGNOBJ
 	return e
 }
 
+func (e *SVGFOREIGNOBJECTElement) SYSTEM_LANGUAGERemoveF(format string, args ...any) *SVGFOREIGNOBJECTElement {
+	return e.SYSTEM_LANGUAGERemove(fmt.Sprintf(format, args...))
+}
+
 // Specifies a unique id for an element
 func (e *SVGFOREIGNOBJECTElement) ID(s string) *SVGFOREIGNOBJECTElement {
 	if e.StringAttributes == nil {
@@ -356,9 +461,20 @@ func (e *SVGFOREIGNOBJECTElement) ID(s string) *SVGFOREIGNOBJECTElement {
 	return e
 }
 
+func (e *SVGFOREIGNOBJECTElement) IDF(format string, args ...any) *SVGFOREIGNOBJECTElement {
+	return e.ID(fmt.Sprintf(format, args...))
+}
+
 func (e *SVGFOREIGNOBJECTElement) IfID(condition bool, s string) *SVGFOREIGNOBJECTElement {
 	if condition {
 		e.ID(s)
+	}
+	return e
+}
+
+func (e *SVGFOREIGNOBJECTElement) IfIDF(condition bool, format string, args ...any) *SVGFOREIGNOBJECTElement {
+	if condition {
+		e.ID(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -370,6 +486,10 @@ func (e *SVGFOREIGNOBJECTElement) IDRemove(s string) *SVGFOREIGNOBJECTElement {
 	}
 	e.StringAttributes.Del("id")
 	return e
+}
+
+func (e *SVGFOREIGNOBJECTElement) IDRemoveF(format string, args ...any) *SVGFOREIGNOBJECTElement {
+	return e.IDRemove(fmt.Sprintf(format, args...))
 }
 
 // Specifies one or more classnames for an element (refers to a class in a style
@@ -508,7 +628,7 @@ func (e *SVGFOREIGNOBJECTElement) DATASTAR_MERGE_STORE(v any) *SVGFOREIGNOBJECTE
 	if err != nil {
 		panic(err)
 	}
-	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	e.CustomDataAttributes.Set("merge-store", string(b))
 	return e
 }
 
@@ -630,34 +750,34 @@ func (e *SVGFOREIGNOBJECTElement) DATASTAR_TEXTRemove() *SVGFOREIGNOBJECTElement
 
 // Sets the event handler of the element
 
-type SVGForeignObjectDataOnMod customDataKeyModifier
+type SVGForeignObjectOnMod customDataKeyModifier
 
 // Debounces the event handler
-func SVGForeignObjectDataOnModDebounce(
+func SVGForeignObjectOnModDebounce(
 	d time.Duration,
-) SVGForeignObjectDataOnMod {
+) SVGForeignObjectOnMod {
 	return func() string {
 		return fmt.Sprintf("debounce_%dms", d.Milliseconds())
 	}
 }
 
 // Throttles the event handler
-func SVGForeignObjectDataOnModThrottle(
+func SVGForeignObjectOnModThrottle(
 	d time.Duration,
-) SVGForeignObjectDataOnMod {
+) SVGForeignObjectOnMod {
 	return func() string {
 		return fmt.Sprintf("throttle_%dms", d.Milliseconds())
 	}
 }
 
-func (e *SVGFOREIGNOBJECTElement) DATASTAR_ON(key string, expression string, modifiers ...SVGForeignObjectDataOnMod) *SVGFOREIGNOBJECTElement {
+func (e *SVGFOREIGNOBJECTElement) DATASTAR_ON(key string, expression string, modifiers ...SVGForeignObjectOnMod) *SVGFOREIGNOBJECTElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
 	key = fmt.Sprintf("data-on-%s", key)
 
-	customMods := lo.Map(modifiers, func(m SVGForeignObjectDataOnMod, i int) customDataKeyModifier {
+	customMods := lo.Map(modifiers, func(m SVGForeignObjectOnMod, i int) customDataKeyModifier {
 		return customDataKeyModifier(m)
 	})
 	key = customDataKey(key, customMods...)
@@ -665,7 +785,7 @@ func (e *SVGFOREIGNOBJECTElement) DATASTAR_ON(key string, expression string, mod
 	return e
 }
 
-func (e *SVGFOREIGNOBJECTElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SVGForeignObjectDataOnMod) *SVGFOREIGNOBJECTElement {
+func (e *SVGFOREIGNOBJECTElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SVGForeignObjectOnMod) *SVGFOREIGNOBJECTElement {
 	if condition {
 		e.DATASTAR_ON(key, expression, modifiers...)
 	}
@@ -758,7 +878,7 @@ func (e *SVGFOREIGNOBJECTElement) DATASTAR_FETCH_INDICATOR(expression string) *S
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "DatastarFetchIndicator"
+	key := "data-fetch-indicator"
 
 	e.StringAttributes.Set(key, expression)
 	return e
@@ -776,7 +896,7 @@ func (e *SVGFOREIGNOBJECTElement) DATASTAR_FETCH_INDICATORRemove() *SVGFOREIGNOB
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("DatastarFetchIndicator")
+	e.StringAttributes.Del("data-fetch-indicator")
 	return e
 }
 

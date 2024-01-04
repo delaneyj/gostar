@@ -269,9 +269,20 @@ func (e *MathMLMPRESCRIPTSElement) ID(s string) *MathMLMPRESCRIPTSElement {
 	return e
 }
 
+func (e *MathMLMPRESCRIPTSElement) IDF(format string, args ...any) *MathMLMPRESCRIPTSElement {
+	return e.ID(fmt.Sprintf(format, args...))
+}
+
 func (e *MathMLMPRESCRIPTSElement) IfID(condition bool, s string) *MathMLMPRESCRIPTSElement {
 	if condition {
 		e.ID(s)
+	}
+	return e
+}
+
+func (e *MathMLMPRESCRIPTSElement) IfIDF(condition bool, format string, args ...any) *MathMLMPRESCRIPTSElement {
+	if condition {
+		e.ID(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -285,6 +296,10 @@ func (e *MathMLMPRESCRIPTSElement) IDRemove(s string) *MathMLMPRESCRIPTSElement 
 	return e
 }
 
+func (e *MathMLMPRESCRIPTSElement) IDRemoveF(format string, args ...any) *MathMLMPRESCRIPTSElement {
+	return e.IDRemove(fmt.Sprintf(format, args...))
+}
+
 // This attribute specifies the background color of the element
 // Possible values are a color name or a color specification in the format defined
 // in the CSS3 Color Module [CSS3COLOR].
@@ -296,9 +311,20 @@ func (e *MathMLMPRESCRIPTSElement) MATHBACKGROUND(s string) *MathMLMPRESCRIPTSEl
 	return e
 }
 
+func (e *MathMLMPRESCRIPTSElement) MATHBACKGROUNDF(format string, args ...any) *MathMLMPRESCRIPTSElement {
+	return e.MATHBACKGROUND(fmt.Sprintf(format, args...))
+}
+
 func (e *MathMLMPRESCRIPTSElement) IfMATHBACKGROUND(condition bool, s string) *MathMLMPRESCRIPTSElement {
 	if condition {
 		e.MATHBACKGROUND(s)
+	}
+	return e
+}
+
+func (e *MathMLMPRESCRIPTSElement) IfMATHBACKGROUNDF(condition bool, format string, args ...any) *MathMLMPRESCRIPTSElement {
+	if condition {
+		e.MATHBACKGROUND(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -312,6 +338,10 @@ func (e *MathMLMPRESCRIPTSElement) MATHBACKGROUNDRemove(s string) *MathMLMPRESCR
 	return e
 }
 
+func (e *MathMLMPRESCRIPTSElement) MATHBACKGROUNDRemoveF(format string, args ...any) *MathMLMPRESCRIPTSElement {
+	return e.MATHBACKGROUNDRemove(fmt.Sprintf(format, args...))
+}
+
 // This attribute specifies the color of the element
 // Possible values are a color name or a color specification in the format defined
 // in the CSS3 Color Module [CSS3COLOR].
@@ -323,9 +353,20 @@ func (e *MathMLMPRESCRIPTSElement) MATHCOLOR(s string) *MathMLMPRESCRIPTSElement
 	return e
 }
 
+func (e *MathMLMPRESCRIPTSElement) MATHCOLORF(format string, args ...any) *MathMLMPRESCRIPTSElement {
+	return e.MATHCOLOR(fmt.Sprintf(format, args...))
+}
+
 func (e *MathMLMPRESCRIPTSElement) IfMATHCOLOR(condition bool, s string) *MathMLMPRESCRIPTSElement {
 	if condition {
 		e.MATHCOLOR(s)
+	}
+	return e
+}
+
+func (e *MathMLMPRESCRIPTSElement) IfMATHCOLORF(condition bool, format string, args ...any) *MathMLMPRESCRIPTSElement {
+	if condition {
+		e.MATHCOLOR(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -339,6 +380,10 @@ func (e *MathMLMPRESCRIPTSElement) MATHCOLORRemove(s string) *MathMLMPRESCRIPTSE
 	return e
 }
 
+func (e *MathMLMPRESCRIPTSElement) MATHCOLORRemoveF(format string, args ...any) *MathMLMPRESCRIPTSElement {
+	return e.MATHCOLORRemove(fmt.Sprintf(format, args...))
+}
+
 // This attribute specifies the size of the element
 // Possible values are a dimension or a dimensionless number.
 func (e *MathMLMPRESCRIPTSElement) MATHSIZE_STR(s string) *MathMLMPRESCRIPTSElement {
@@ -349,9 +394,20 @@ func (e *MathMLMPRESCRIPTSElement) MATHSIZE_STR(s string) *MathMLMPRESCRIPTSElem
 	return e
 }
 
+func (e *MathMLMPRESCRIPTSElement) MATHSIZE_STRF(format string, args ...any) *MathMLMPRESCRIPTSElement {
+	return e.MATHSIZE_STR(fmt.Sprintf(format, args...))
+}
+
 func (e *MathMLMPRESCRIPTSElement) IfMATHSIZE_STR(condition bool, s string) *MathMLMPRESCRIPTSElement {
 	if condition {
 		e.MATHSIZE_STR(s)
+	}
+	return e
+}
+
+func (e *MathMLMPRESCRIPTSElement) IfMATHSIZE_STRF(condition bool, format string, args ...any) *MathMLMPRESCRIPTSElement {
+	if condition {
+		e.MATHSIZE_STR(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -363,6 +419,10 @@ func (e *MathMLMPRESCRIPTSElement) MATHSIZE_STRRemove(s string) *MathMLMPRESCRIP
 	}
 	e.StringAttributes.Del("mathsize")
 	return e
+}
+
+func (e *MathMLMPRESCRIPTSElement) MATHSIZE_STRRemoveF(format string, args ...any) *MathMLMPRESCRIPTSElement {
+	return e.MATHSIZE_STRRemove(fmt.Sprintf(format, args...))
 }
 
 // This attribute declares a cryptographic nonce (number used once) that should be
@@ -377,9 +437,20 @@ func (e *MathMLMPRESCRIPTSElement) NONCE(s string) *MathMLMPRESCRIPTSElement {
 	return e
 }
 
+func (e *MathMLMPRESCRIPTSElement) NONCEF(format string, args ...any) *MathMLMPRESCRIPTSElement {
+	return e.NONCE(fmt.Sprintf(format, args...))
+}
+
 func (e *MathMLMPRESCRIPTSElement) IfNONCE(condition bool, s string) *MathMLMPRESCRIPTSElement {
 	if condition {
 		e.NONCE(s)
+	}
+	return e
+}
+
+func (e *MathMLMPRESCRIPTSElement) IfNONCEF(condition bool, format string, args ...any) *MathMLMPRESCRIPTSElement {
+	if condition {
+		e.NONCE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -391,6 +462,10 @@ func (e *MathMLMPRESCRIPTSElement) NONCERemove(s string) *MathMLMPRESCRIPTSEleme
 	}
 	e.StringAttributes.Del("nonce")
 	return e
+}
+
+func (e *MathMLMPRESCRIPTSElement) NONCERemoveF(format string, args ...any) *MathMLMPRESCRIPTSElement {
+	return e.NONCERemove(fmt.Sprintf(format, args...))
 }
 
 // This attribute specifies the script level of the element
@@ -549,7 +624,7 @@ func (e *MathMLMPRESCRIPTSElement) DATASTAR_MERGE_STORE(v any) *MathMLMPRESCRIPT
 	if err != nil {
 		panic(err)
 	}
-	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	e.CustomDataAttributes.Set("merge-store", string(b))
 	return e
 }
 
@@ -671,34 +746,34 @@ func (e *MathMLMPRESCRIPTSElement) DATASTAR_TEXTRemove() *MathMLMPRESCRIPTSEleme
 
 // Sets the event handler of the element
 
-type MathMLMprescriptsDataOnMod customDataKeyModifier
+type MathMLMprescriptsOnMod customDataKeyModifier
 
 // Debounces the event handler
-func MathMLMprescriptsDataOnModDebounce(
+func MathMLMprescriptsOnModDebounce(
 	d time.Duration,
-) MathMLMprescriptsDataOnMod {
+) MathMLMprescriptsOnMod {
 	return func() string {
 		return fmt.Sprintf("debounce_%dms", d.Milliseconds())
 	}
 }
 
 // Throttles the event handler
-func MathMLMprescriptsDataOnModThrottle(
+func MathMLMprescriptsOnModThrottle(
 	d time.Duration,
-) MathMLMprescriptsDataOnMod {
+) MathMLMprescriptsOnMod {
 	return func() string {
 		return fmt.Sprintf("throttle_%dms", d.Milliseconds())
 	}
 }
 
-func (e *MathMLMPRESCRIPTSElement) DATASTAR_ON(key string, expression string, modifiers ...MathMLMprescriptsDataOnMod) *MathMLMPRESCRIPTSElement {
+func (e *MathMLMPRESCRIPTSElement) DATASTAR_ON(key string, expression string, modifiers ...MathMLMprescriptsOnMod) *MathMLMPRESCRIPTSElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
 	key = fmt.Sprintf("data-on-%s", key)
 
-	customMods := lo.Map(modifiers, func(m MathMLMprescriptsDataOnMod, i int) customDataKeyModifier {
+	customMods := lo.Map(modifiers, func(m MathMLMprescriptsOnMod, i int) customDataKeyModifier {
 		return customDataKeyModifier(m)
 	})
 	key = customDataKey(key, customMods...)
@@ -706,7 +781,7 @@ func (e *MathMLMPRESCRIPTSElement) DATASTAR_ON(key string, expression string, mo
 	return e
 }
 
-func (e *MathMLMPRESCRIPTSElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...MathMLMprescriptsDataOnMod) *MathMLMPRESCRIPTSElement {
+func (e *MathMLMPRESCRIPTSElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...MathMLMprescriptsOnMod) *MathMLMPRESCRIPTSElement {
 	if condition {
 		e.DATASTAR_ON(key, expression, modifiers...)
 	}
@@ -799,7 +874,7 @@ func (e *MathMLMPRESCRIPTSElement) DATASTAR_FETCH_INDICATOR(expression string) *
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "DatastarFetchIndicator"
+	key := "data-fetch-indicator"
 
 	e.StringAttributes.Set(key, expression)
 	return e
@@ -817,7 +892,7 @@ func (e *MathMLMPRESCRIPTSElement) DATASTAR_FETCH_INDICATORRemove() *MathMLMPRES
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("DatastarFetchIndicator")
+	e.StringAttributes.Del("data-fetch-indicator")
 	return e
 }
 

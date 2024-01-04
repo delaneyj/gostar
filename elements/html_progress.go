@@ -640,9 +640,20 @@ func (e *PROGRESSElement) ID(s string) *PROGRESSElement {
 	return e
 }
 
+func (e *PROGRESSElement) IDF(format string, args ...any) *PROGRESSElement {
+	return e.ID(fmt.Sprintf(format, args...))
+}
+
 func (e *PROGRESSElement) IfID(condition bool, s string) *PROGRESSElement {
 	if condition {
 		e.ID(s)
+	}
+	return e
+}
+
+func (e *PROGRESSElement) IfIDF(condition bool, format string, args ...any) *PROGRESSElement {
+	if condition {
+		e.ID(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -654,6 +665,10 @@ func (e *PROGRESSElement) IDRemove(s string) *PROGRESSElement {
 	}
 	e.StringAttributes.Del("id")
 	return e
+}
+
+func (e *PROGRESSElement) IDRemoveF(format string, args ...any) *PROGRESSElement {
+	return e.IDRemove(fmt.Sprintf(format, args...))
 }
 
 // The inert global attribute is a Boolean attribute indicating that the browser
@@ -788,9 +803,20 @@ func (e *PROGRESSElement) IS(s string) *PROGRESSElement {
 	return e
 }
 
+func (e *PROGRESSElement) ISF(format string, args ...any) *PROGRESSElement {
+	return e.IS(fmt.Sprintf(format, args...))
+}
+
 func (e *PROGRESSElement) IfIS(condition bool, s string) *PROGRESSElement {
 	if condition {
 		e.IS(s)
+	}
+	return e
+}
+
+func (e *PROGRESSElement) IfISF(condition bool, format string, args ...any) *PROGRESSElement {
+	if condition {
+		e.IS(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -802,6 +828,10 @@ func (e *PROGRESSElement) ISRemove(s string) *PROGRESSElement {
 	}
 	e.StringAttributes.Del("is")
 	return e
+}
+
+func (e *PROGRESSElement) ISRemoveF(format string, args ...any) *PROGRESSElement {
+	return e.ISRemove(fmt.Sprintf(format, args...))
 }
 
 // The itemid global attribute provides microdata in the form of a unique, global
@@ -825,9 +855,20 @@ func (e *PROGRESSElement) ITEMID(s string) *PROGRESSElement {
 	return e
 }
 
+func (e *PROGRESSElement) ITEMIDF(format string, args ...any) *PROGRESSElement {
+	return e.ITEMID(fmt.Sprintf(format, args...))
+}
+
 func (e *PROGRESSElement) IfITEMID(condition bool, s string) *PROGRESSElement {
 	if condition {
 		e.ITEMID(s)
+	}
+	return e
+}
+
+func (e *PROGRESSElement) IfITEMIDF(condition bool, format string, args ...any) *PROGRESSElement {
+	if condition {
+		e.ITEMID(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -839,6 +880,10 @@ func (e *PROGRESSElement) ITEMIDRemove(s string) *PROGRESSElement {
 	}
 	e.StringAttributes.Del("itemid")
 	return e
+}
+
+func (e *PROGRESSElement) ITEMIDRemoveF(format string, args ...any) *PROGRESSElement {
+	return e.ITEMIDRemove(fmt.Sprintf(format, args...))
 }
 
 // The itemprop global attribute is used to add properties to an item
@@ -857,9 +902,20 @@ func (e *PROGRESSElement) ITEMPROP(s string) *PROGRESSElement {
 	return e
 }
 
+func (e *PROGRESSElement) ITEMPROPF(format string, args ...any) *PROGRESSElement {
+	return e.ITEMPROP(fmt.Sprintf(format, args...))
+}
+
 func (e *PROGRESSElement) IfITEMPROP(condition bool, s string) *PROGRESSElement {
 	if condition {
 		e.ITEMPROP(s)
+	}
+	return e
+}
+
+func (e *PROGRESSElement) IfITEMPROPF(condition bool, format string, args ...any) *PROGRESSElement {
+	if condition {
+		e.ITEMPROP(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -871,6 +927,10 @@ func (e *PROGRESSElement) ITEMPROPRemove(s string) *PROGRESSElement {
 	}
 	e.StringAttributes.Del("itemprop")
 	return e
+}
+
+func (e *PROGRESSElement) ITEMPROPRemoveF(format string, args ...any) *PROGRESSElement {
+	return e.ITEMPROPRemove(fmt.Sprintf(format, args...))
 }
 
 // Properties that are not descendants of an element with the itemscope attribute
@@ -886,9 +946,20 @@ func (e *PROGRESSElement) ITEMREF(s string) *PROGRESSElement {
 	return e
 }
 
+func (e *PROGRESSElement) ITEMREFF(format string, args ...any) *PROGRESSElement {
+	return e.ITEMREF(fmt.Sprintf(format, args...))
+}
+
 func (e *PROGRESSElement) IfITEMREF(condition bool, s string) *PROGRESSElement {
 	if condition {
 		e.ITEMREF(s)
+	}
+	return e
+}
+
+func (e *PROGRESSElement) IfITEMREFF(condition bool, format string, args ...any) *PROGRESSElement {
+	if condition {
+		e.ITEMREF(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -900,6 +971,10 @@ func (e *PROGRESSElement) ITEMREFRemove(s string) *PROGRESSElement {
 	}
 	e.StringAttributes.Del("itemref")
 	return e
+}
+
+func (e *PROGRESSElement) ITEMREFRemoveF(format string, args ...any) *PROGRESSElement {
+	return e.ITEMREFRemove(fmt.Sprintf(format, args...))
 }
 
 // The itemscope global attribute is used to add an item to a microdata DOM tree
@@ -963,9 +1038,20 @@ func (e *PROGRESSElement) ITEMTYPE(s string) *PROGRESSElement {
 	return e
 }
 
+func (e *PROGRESSElement) ITEMTYPEF(format string, args ...any) *PROGRESSElement {
+	return e.ITEMTYPE(fmt.Sprintf(format, args...))
+}
+
 func (e *PROGRESSElement) IfITEMTYPE(condition bool, s string) *PROGRESSElement {
 	if condition {
 		e.ITEMTYPE(s)
+	}
+	return e
+}
+
+func (e *PROGRESSElement) IfITEMTYPEF(condition bool, format string, args ...any) *PROGRESSElement {
+	if condition {
+		e.ITEMTYPE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -977,6 +1063,10 @@ func (e *PROGRESSElement) ITEMTYPERemove(s string) *PROGRESSElement {
 	}
 	e.StringAttributes.Del("itemtype")
 	return e
+}
+
+func (e *PROGRESSElement) ITEMTYPERemoveF(format string, args ...any) *PROGRESSElement {
+	return e.ITEMTYPERemove(fmt.Sprintf(format, args...))
 }
 
 // The lang global attribute helps define the language of an element: the language
@@ -993,9 +1083,20 @@ func (e *PROGRESSElement) LANG(s string) *PROGRESSElement {
 	return e
 }
 
+func (e *PROGRESSElement) LANGF(format string, args ...any) *PROGRESSElement {
+	return e.LANG(fmt.Sprintf(format, args...))
+}
+
 func (e *PROGRESSElement) IfLANG(condition bool, s string) *PROGRESSElement {
 	if condition {
 		e.LANG(s)
+	}
+	return e
+}
+
+func (e *PROGRESSElement) IfLANGF(condition bool, format string, args ...any) *PROGRESSElement {
+	if condition {
+		e.LANG(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1007,6 +1108,10 @@ func (e *PROGRESSElement) LANGRemove(s string) *PROGRESSElement {
 	}
 	e.StringAttributes.Del("lang")
 	return e
+}
+
+func (e *PROGRESSElement) LANGRemoveF(format string, args ...any) *PROGRESSElement {
+	return e.LANGRemove(fmt.Sprintf(format, args...))
 }
 
 // The nonce global attribute is a unique identifier used to declare inline
@@ -1021,9 +1126,20 @@ func (e *PROGRESSElement) NONCE(s string) *PROGRESSElement {
 	return e
 }
 
+func (e *PROGRESSElement) NONCEF(format string, args ...any) *PROGRESSElement {
+	return e.NONCE(fmt.Sprintf(format, args...))
+}
+
 func (e *PROGRESSElement) IfNONCE(condition bool, s string) *PROGRESSElement {
 	if condition {
 		e.NONCE(s)
+	}
+	return e
+}
+
+func (e *PROGRESSElement) IfNONCEF(condition bool, format string, args ...any) *PROGRESSElement {
+	if condition {
+		e.NONCE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1035,6 +1151,10 @@ func (e *PROGRESSElement) NONCERemove(s string) *PROGRESSElement {
 	}
 	e.StringAttributes.Del("nonce")
 	return e
+}
+
+func (e *PROGRESSElement) NONCERemoveF(format string, args ...any) *PROGRESSElement {
+	return e.NONCERemove(fmt.Sprintf(format, args...))
 }
 
 // The part global attribute contains a space-separated list of the part names of
@@ -1129,9 +1249,20 @@ func (e *PROGRESSElement) ROLE(s string) *PROGRESSElement {
 	return e
 }
 
+func (e *PROGRESSElement) ROLEF(format string, args ...any) *PROGRESSElement {
+	return e.ROLE(fmt.Sprintf(format, args...))
+}
+
 func (e *PROGRESSElement) IfROLE(condition bool, s string) *PROGRESSElement {
 	if condition {
 		e.ROLE(s)
+	}
+	return e
+}
+
+func (e *PROGRESSElement) IfROLEF(condition bool, format string, args ...any) *PROGRESSElement {
+	if condition {
+		e.ROLE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1143,6 +1274,10 @@ func (e *PROGRESSElement) ROLERemove(s string) *PROGRESSElement {
 	}
 	e.StringAttributes.Del("role")
 	return e
+}
+
+func (e *PROGRESSElement) ROLERemoveF(format string, args ...any) *PROGRESSElement {
+	return e.ROLERemove(fmt.Sprintf(format, args...))
 }
 
 // The slot global attribute assigns a slot in a shadow DOM shadow tree to an
@@ -1157,9 +1292,20 @@ func (e *PROGRESSElement) SLOT(s string) *PROGRESSElement {
 	return e
 }
 
+func (e *PROGRESSElement) SLOTF(format string, args ...any) *PROGRESSElement {
+	return e.SLOT(fmt.Sprintf(format, args...))
+}
+
 func (e *PROGRESSElement) IfSLOT(condition bool, s string) *PROGRESSElement {
 	if condition {
 		e.SLOT(s)
+	}
+	return e
+}
+
+func (e *PROGRESSElement) IfSLOTF(condition bool, format string, args ...any) *PROGRESSElement {
+	if condition {
+		e.SLOT(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1171,6 +1317,10 @@ func (e *PROGRESSElement) SLOTRemove(s string) *PROGRESSElement {
 	}
 	e.StringAttributes.Del("slot")
 	return e
+}
+
+func (e *PROGRESSElement) SLOTRemoveF(format string, args ...any) *PROGRESSElement {
+	return e.SLOTRemove(fmt.Sprintf(format, args...))
 }
 
 // The spellcheck global attribute is an enumerated attribute that defines whether
@@ -1375,9 +1525,20 @@ func (e *PROGRESSElement) TITLE(s string) *PROGRESSElement {
 	return e
 }
 
+func (e *PROGRESSElement) TITLEF(format string, args ...any) *PROGRESSElement {
+	return e.TITLE(fmt.Sprintf(format, args...))
+}
+
 func (e *PROGRESSElement) IfTITLE(condition bool, s string) *PROGRESSElement {
 	if condition {
 		e.TITLE(s)
+	}
+	return e
+}
+
+func (e *PROGRESSElement) IfTITLEF(condition bool, format string, args ...any) *PROGRESSElement {
+	if condition {
+		e.TITLE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1389,6 +1550,10 @@ func (e *PROGRESSElement) TITLERemove(s string) *PROGRESSElement {
 	}
 	e.StringAttributes.Del("title")
 	return e
+}
+
+func (e *PROGRESSElement) TITLERemoveF(format string, args ...any) *PROGRESSElement {
+	return e.TITLERemove(fmt.Sprintf(format, args...))
 }
 
 // The translate global attribute is an enumerated attribute that is used to
@@ -1433,7 +1598,7 @@ func (e *PROGRESSElement) DATASTAR_MERGE_STORE(v any) *PROGRESSElement {
 	if err != nil {
 		panic(err)
 	}
-	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	e.CustomDataAttributes.Set("merge-store", string(b))
 	return e
 }
 
@@ -1555,34 +1720,34 @@ func (e *PROGRESSElement) DATASTAR_TEXTRemove() *PROGRESSElement {
 
 // Sets the event handler of the element
 
-type ProgressDataOnMod customDataKeyModifier
+type ProgressOnMod customDataKeyModifier
 
 // Debounces the event handler
-func ProgressDataOnModDebounce(
+func ProgressOnModDebounce(
 	d time.Duration,
-) ProgressDataOnMod {
+) ProgressOnMod {
 	return func() string {
 		return fmt.Sprintf("debounce_%dms", d.Milliseconds())
 	}
 }
 
 // Throttles the event handler
-func ProgressDataOnModThrottle(
+func ProgressOnModThrottle(
 	d time.Duration,
-) ProgressDataOnMod {
+) ProgressOnMod {
 	return func() string {
 		return fmt.Sprintf("throttle_%dms", d.Milliseconds())
 	}
 }
 
-func (e *PROGRESSElement) DATASTAR_ON(key string, expression string, modifiers ...ProgressDataOnMod) *PROGRESSElement {
+func (e *PROGRESSElement) DATASTAR_ON(key string, expression string, modifiers ...ProgressOnMod) *PROGRESSElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
 	key = fmt.Sprintf("data-on-%s", key)
 
-	customMods := lo.Map(modifiers, func(m ProgressDataOnMod, i int) customDataKeyModifier {
+	customMods := lo.Map(modifiers, func(m ProgressOnMod, i int) customDataKeyModifier {
 		return customDataKeyModifier(m)
 	})
 	key = customDataKey(key, customMods...)
@@ -1590,7 +1755,7 @@ func (e *PROGRESSElement) DATASTAR_ON(key string, expression string, modifiers .
 	return e
 }
 
-func (e *PROGRESSElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...ProgressDataOnMod) *PROGRESSElement {
+func (e *PROGRESSElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...ProgressOnMod) *PROGRESSElement {
 	if condition {
 		e.DATASTAR_ON(key, expression, modifiers...)
 	}
@@ -1683,7 +1848,7 @@ func (e *PROGRESSElement) DATASTAR_FETCH_INDICATOR(expression string) *PROGRESSE
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "DatastarFetchIndicator"
+	key := "data-fetch-indicator"
 
 	e.StringAttributes.Set(key, expression)
 	return e
@@ -1701,7 +1866,7 @@ func (e *PROGRESSElement) DATASTAR_FETCH_INDICATORRemove() *PROGRESSElement {
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("DatastarFetchIndicator")
+	e.StringAttributes.Del("data-fetch-indicator")
 	return e
 }
 

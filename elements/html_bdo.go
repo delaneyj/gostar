@@ -609,9 +609,20 @@ func (e *BDOElement) ID(s string) *BDOElement {
 	return e
 }
 
+func (e *BDOElement) IDF(format string, args ...any) *BDOElement {
+	return e.ID(fmt.Sprintf(format, args...))
+}
+
 func (e *BDOElement) IfID(condition bool, s string) *BDOElement {
 	if condition {
 		e.ID(s)
+	}
+	return e
+}
+
+func (e *BDOElement) IfIDF(condition bool, format string, args ...any) *BDOElement {
+	if condition {
+		e.ID(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -623,6 +634,10 @@ func (e *BDOElement) IDRemove(s string) *BDOElement {
 	}
 	e.StringAttributes.Del("id")
 	return e
+}
+
+func (e *BDOElement) IDRemoveF(format string, args ...any) *BDOElement {
+	return e.IDRemove(fmt.Sprintf(format, args...))
 }
 
 // The inert global attribute is a Boolean attribute indicating that the browser
@@ -757,9 +772,20 @@ func (e *BDOElement) IS(s string) *BDOElement {
 	return e
 }
 
+func (e *BDOElement) ISF(format string, args ...any) *BDOElement {
+	return e.IS(fmt.Sprintf(format, args...))
+}
+
 func (e *BDOElement) IfIS(condition bool, s string) *BDOElement {
 	if condition {
 		e.IS(s)
+	}
+	return e
+}
+
+func (e *BDOElement) IfISF(condition bool, format string, args ...any) *BDOElement {
+	if condition {
+		e.IS(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -771,6 +797,10 @@ func (e *BDOElement) ISRemove(s string) *BDOElement {
 	}
 	e.StringAttributes.Del("is")
 	return e
+}
+
+func (e *BDOElement) ISRemoveF(format string, args ...any) *BDOElement {
+	return e.ISRemove(fmt.Sprintf(format, args...))
 }
 
 // The itemid global attribute provides microdata in the form of a unique, global
@@ -794,9 +824,20 @@ func (e *BDOElement) ITEMID(s string) *BDOElement {
 	return e
 }
 
+func (e *BDOElement) ITEMIDF(format string, args ...any) *BDOElement {
+	return e.ITEMID(fmt.Sprintf(format, args...))
+}
+
 func (e *BDOElement) IfITEMID(condition bool, s string) *BDOElement {
 	if condition {
 		e.ITEMID(s)
+	}
+	return e
+}
+
+func (e *BDOElement) IfITEMIDF(condition bool, format string, args ...any) *BDOElement {
+	if condition {
+		e.ITEMID(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -808,6 +849,10 @@ func (e *BDOElement) ITEMIDRemove(s string) *BDOElement {
 	}
 	e.StringAttributes.Del("itemid")
 	return e
+}
+
+func (e *BDOElement) ITEMIDRemoveF(format string, args ...any) *BDOElement {
+	return e.ITEMIDRemove(fmt.Sprintf(format, args...))
 }
 
 // The itemprop global attribute is used to add properties to an item
@@ -826,9 +871,20 @@ func (e *BDOElement) ITEMPROP(s string) *BDOElement {
 	return e
 }
 
+func (e *BDOElement) ITEMPROPF(format string, args ...any) *BDOElement {
+	return e.ITEMPROP(fmt.Sprintf(format, args...))
+}
+
 func (e *BDOElement) IfITEMPROP(condition bool, s string) *BDOElement {
 	if condition {
 		e.ITEMPROP(s)
+	}
+	return e
+}
+
+func (e *BDOElement) IfITEMPROPF(condition bool, format string, args ...any) *BDOElement {
+	if condition {
+		e.ITEMPROP(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -840,6 +896,10 @@ func (e *BDOElement) ITEMPROPRemove(s string) *BDOElement {
 	}
 	e.StringAttributes.Del("itemprop")
 	return e
+}
+
+func (e *BDOElement) ITEMPROPRemoveF(format string, args ...any) *BDOElement {
+	return e.ITEMPROPRemove(fmt.Sprintf(format, args...))
 }
 
 // Properties that are not descendants of an element with the itemscope attribute
@@ -855,9 +915,20 @@ func (e *BDOElement) ITEMREF(s string) *BDOElement {
 	return e
 }
 
+func (e *BDOElement) ITEMREFF(format string, args ...any) *BDOElement {
+	return e.ITEMREF(fmt.Sprintf(format, args...))
+}
+
 func (e *BDOElement) IfITEMREF(condition bool, s string) *BDOElement {
 	if condition {
 		e.ITEMREF(s)
+	}
+	return e
+}
+
+func (e *BDOElement) IfITEMREFF(condition bool, format string, args ...any) *BDOElement {
+	if condition {
+		e.ITEMREF(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -869,6 +940,10 @@ func (e *BDOElement) ITEMREFRemove(s string) *BDOElement {
 	}
 	e.StringAttributes.Del("itemref")
 	return e
+}
+
+func (e *BDOElement) ITEMREFRemoveF(format string, args ...any) *BDOElement {
+	return e.ITEMREFRemove(fmt.Sprintf(format, args...))
 }
 
 // The itemscope global attribute is used to add an item to a microdata DOM tree
@@ -932,9 +1007,20 @@ func (e *BDOElement) ITEMTYPE(s string) *BDOElement {
 	return e
 }
 
+func (e *BDOElement) ITEMTYPEF(format string, args ...any) *BDOElement {
+	return e.ITEMTYPE(fmt.Sprintf(format, args...))
+}
+
 func (e *BDOElement) IfITEMTYPE(condition bool, s string) *BDOElement {
 	if condition {
 		e.ITEMTYPE(s)
+	}
+	return e
+}
+
+func (e *BDOElement) IfITEMTYPEF(condition bool, format string, args ...any) *BDOElement {
+	if condition {
+		e.ITEMTYPE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -946,6 +1032,10 @@ func (e *BDOElement) ITEMTYPERemove(s string) *BDOElement {
 	}
 	e.StringAttributes.Del("itemtype")
 	return e
+}
+
+func (e *BDOElement) ITEMTYPERemoveF(format string, args ...any) *BDOElement {
+	return e.ITEMTYPERemove(fmt.Sprintf(format, args...))
 }
 
 // The lang global attribute helps define the language of an element: the language
@@ -962,9 +1052,20 @@ func (e *BDOElement) LANG(s string) *BDOElement {
 	return e
 }
 
+func (e *BDOElement) LANGF(format string, args ...any) *BDOElement {
+	return e.LANG(fmt.Sprintf(format, args...))
+}
+
 func (e *BDOElement) IfLANG(condition bool, s string) *BDOElement {
 	if condition {
 		e.LANG(s)
+	}
+	return e
+}
+
+func (e *BDOElement) IfLANGF(condition bool, format string, args ...any) *BDOElement {
+	if condition {
+		e.LANG(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -976,6 +1077,10 @@ func (e *BDOElement) LANGRemove(s string) *BDOElement {
 	}
 	e.StringAttributes.Del("lang")
 	return e
+}
+
+func (e *BDOElement) LANGRemoveF(format string, args ...any) *BDOElement {
+	return e.LANGRemove(fmt.Sprintf(format, args...))
 }
 
 // The nonce global attribute is a unique identifier used to declare inline
@@ -990,9 +1095,20 @@ func (e *BDOElement) NONCE(s string) *BDOElement {
 	return e
 }
 
+func (e *BDOElement) NONCEF(format string, args ...any) *BDOElement {
+	return e.NONCE(fmt.Sprintf(format, args...))
+}
+
 func (e *BDOElement) IfNONCE(condition bool, s string) *BDOElement {
 	if condition {
 		e.NONCE(s)
+	}
+	return e
+}
+
+func (e *BDOElement) IfNONCEF(condition bool, format string, args ...any) *BDOElement {
+	if condition {
+		e.NONCE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1004,6 +1120,10 @@ func (e *BDOElement) NONCERemove(s string) *BDOElement {
 	}
 	e.StringAttributes.Del("nonce")
 	return e
+}
+
+func (e *BDOElement) NONCERemoveF(format string, args ...any) *BDOElement {
+	return e.NONCERemove(fmt.Sprintf(format, args...))
 }
 
 // The part global attribute contains a space-separated list of the part names of
@@ -1098,9 +1218,20 @@ func (e *BDOElement) ROLE(s string) *BDOElement {
 	return e
 }
 
+func (e *BDOElement) ROLEF(format string, args ...any) *BDOElement {
+	return e.ROLE(fmt.Sprintf(format, args...))
+}
+
 func (e *BDOElement) IfROLE(condition bool, s string) *BDOElement {
 	if condition {
 		e.ROLE(s)
+	}
+	return e
+}
+
+func (e *BDOElement) IfROLEF(condition bool, format string, args ...any) *BDOElement {
+	if condition {
+		e.ROLE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1112,6 +1243,10 @@ func (e *BDOElement) ROLERemove(s string) *BDOElement {
 	}
 	e.StringAttributes.Del("role")
 	return e
+}
+
+func (e *BDOElement) ROLERemoveF(format string, args ...any) *BDOElement {
+	return e.ROLERemove(fmt.Sprintf(format, args...))
 }
 
 // The slot global attribute assigns a slot in a shadow DOM shadow tree to an
@@ -1126,9 +1261,20 @@ func (e *BDOElement) SLOT(s string) *BDOElement {
 	return e
 }
 
+func (e *BDOElement) SLOTF(format string, args ...any) *BDOElement {
+	return e.SLOT(fmt.Sprintf(format, args...))
+}
+
 func (e *BDOElement) IfSLOT(condition bool, s string) *BDOElement {
 	if condition {
 		e.SLOT(s)
+	}
+	return e
+}
+
+func (e *BDOElement) IfSLOTF(condition bool, format string, args ...any) *BDOElement {
+	if condition {
+		e.SLOT(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1140,6 +1286,10 @@ func (e *BDOElement) SLOTRemove(s string) *BDOElement {
 	}
 	e.StringAttributes.Del("slot")
 	return e
+}
+
+func (e *BDOElement) SLOTRemoveF(format string, args ...any) *BDOElement {
+	return e.SLOTRemove(fmt.Sprintf(format, args...))
 }
 
 // The spellcheck global attribute is an enumerated attribute that defines whether
@@ -1344,9 +1494,20 @@ func (e *BDOElement) TITLE(s string) *BDOElement {
 	return e
 }
 
+func (e *BDOElement) TITLEF(format string, args ...any) *BDOElement {
+	return e.TITLE(fmt.Sprintf(format, args...))
+}
+
 func (e *BDOElement) IfTITLE(condition bool, s string) *BDOElement {
 	if condition {
 		e.TITLE(s)
+	}
+	return e
+}
+
+func (e *BDOElement) IfTITLEF(condition bool, format string, args ...any) *BDOElement {
+	if condition {
+		e.TITLE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1358,6 +1519,10 @@ func (e *BDOElement) TITLERemove(s string) *BDOElement {
 	}
 	e.StringAttributes.Del("title")
 	return e
+}
+
+func (e *BDOElement) TITLERemoveF(format string, args ...any) *BDOElement {
+	return e.TITLERemove(fmt.Sprintf(format, args...))
 }
 
 // The translate global attribute is an enumerated attribute that is used to
@@ -1402,7 +1567,7 @@ func (e *BDOElement) DATASTAR_MERGE_STORE(v any) *BDOElement {
 	if err != nil {
 		panic(err)
 	}
-	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	e.CustomDataAttributes.Set("merge-store", string(b))
 	return e
 }
 
@@ -1524,34 +1689,34 @@ func (e *BDOElement) DATASTAR_TEXTRemove() *BDOElement {
 
 // Sets the event handler of the element
 
-type BdoDataOnMod customDataKeyModifier
+type BdoOnMod customDataKeyModifier
 
 // Debounces the event handler
-func BdoDataOnModDebounce(
+func BdoOnModDebounce(
 	d time.Duration,
-) BdoDataOnMod {
+) BdoOnMod {
 	return func() string {
 		return fmt.Sprintf("debounce_%dms", d.Milliseconds())
 	}
 }
 
 // Throttles the event handler
-func BdoDataOnModThrottle(
+func BdoOnModThrottle(
 	d time.Duration,
-) BdoDataOnMod {
+) BdoOnMod {
 	return func() string {
 		return fmt.Sprintf("throttle_%dms", d.Milliseconds())
 	}
 }
 
-func (e *BDOElement) DATASTAR_ON(key string, expression string, modifiers ...BdoDataOnMod) *BDOElement {
+func (e *BDOElement) DATASTAR_ON(key string, expression string, modifiers ...BdoOnMod) *BDOElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
 	key = fmt.Sprintf("data-on-%s", key)
 
-	customMods := lo.Map(modifiers, func(m BdoDataOnMod, i int) customDataKeyModifier {
+	customMods := lo.Map(modifiers, func(m BdoOnMod, i int) customDataKeyModifier {
 		return customDataKeyModifier(m)
 	})
 	key = customDataKey(key, customMods...)
@@ -1559,7 +1724,7 @@ func (e *BDOElement) DATASTAR_ON(key string, expression string, modifiers ...Bdo
 	return e
 }
 
-func (e *BDOElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...BdoDataOnMod) *BDOElement {
+func (e *BDOElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...BdoOnMod) *BDOElement {
 	if condition {
 		e.DATASTAR_ON(key, expression, modifiers...)
 	}
@@ -1652,7 +1817,7 @@ func (e *BDOElement) DATASTAR_FETCH_INDICATOR(expression string) *BDOElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "DatastarFetchIndicator"
+	key := "data-fetch-indicator"
 
 	e.StringAttributes.Set(key, expression)
 	return e
@@ -1670,7 +1835,7 @@ func (e *BDOElement) DATASTAR_FETCH_INDICATORRemove() *BDOElement {
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("DatastarFetchIndicator")
+	e.StringAttributes.Del("data-fetch-indicator")
 	return e
 }
 

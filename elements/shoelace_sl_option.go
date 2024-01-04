@@ -169,9 +169,20 @@ func (e *SLOPTIONElement) VALUE(s string) *SLOPTIONElement {
 	return e
 }
 
+func (e *SLOPTIONElement) VALUEF(format string, args ...any) *SLOPTIONElement {
+	return e.VALUE(fmt.Sprintf(format, args...))
+}
+
 func (e *SLOPTIONElement) IfVALUE(condition bool, s string) *SLOPTIONElement {
 	if condition {
 		e.VALUE(s)
+	}
+	return e
+}
+
+func (e *SLOPTIONElement) IfVALUEF(condition bool, format string, args ...any) *SLOPTIONElement {
+	if condition {
+		e.VALUE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -185,6 +196,10 @@ func (e *SLOPTIONElement) VALUERemove(s string) *SLOPTIONElement {
 	return e
 }
 
+func (e *SLOPTIONElement) VALUERemoveF(format string, args ...any) *SLOPTIONElement {
+	return e.VALUERemove(fmt.Sprintf(format, args...))
+}
+
 // Merges the store with the given object
 
 func (e *SLOPTIONElement) DATASTAR_MERGE_STORE(v any) *SLOPTIONElement {
@@ -195,7 +210,7 @@ func (e *SLOPTIONElement) DATASTAR_MERGE_STORE(v any) *SLOPTIONElement {
 	if err != nil {
 		panic(err)
 	}
-	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	e.CustomDataAttributes.Set("merge-store", string(b))
 	return e
 }
 
@@ -317,34 +332,34 @@ func (e *SLOPTIONElement) DATASTAR_TEXTRemove() *SLOPTIONElement {
 
 // Sets the event handler of the element
 
-type SLOptionDataOnMod customDataKeyModifier
+type SLOptionOnMod customDataKeyModifier
 
 // Debounces the event handler
-func SLOptionDataOnModDebounce(
+func SLOptionOnModDebounce(
 	d time.Duration,
-) SLOptionDataOnMod {
+) SLOptionOnMod {
 	return func() string {
 		return fmt.Sprintf("debounce_%dms", d.Milliseconds())
 	}
 }
 
 // Throttles the event handler
-func SLOptionDataOnModThrottle(
+func SLOptionOnModThrottle(
 	d time.Duration,
-) SLOptionDataOnMod {
+) SLOptionOnMod {
 	return func() string {
 		return fmt.Sprintf("throttle_%dms", d.Milliseconds())
 	}
 }
 
-func (e *SLOPTIONElement) DATASTAR_ON(key string, expression string, modifiers ...SLOptionDataOnMod) *SLOPTIONElement {
+func (e *SLOPTIONElement) DATASTAR_ON(key string, expression string, modifiers ...SLOptionOnMod) *SLOPTIONElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
 	key = fmt.Sprintf("data-on-%s", key)
 
-	customMods := lo.Map(modifiers, func(m SLOptionDataOnMod, i int) customDataKeyModifier {
+	customMods := lo.Map(modifiers, func(m SLOptionOnMod, i int) customDataKeyModifier {
 		return customDataKeyModifier(m)
 	})
 	key = customDataKey(key, customMods...)
@@ -352,7 +367,7 @@ func (e *SLOPTIONElement) DATASTAR_ON(key string, expression string, modifiers .
 	return e
 }
 
-func (e *SLOPTIONElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SLOptionDataOnMod) *SLOPTIONElement {
+func (e *SLOPTIONElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SLOptionOnMod) *SLOPTIONElement {
 	if condition {
 		e.DATASTAR_ON(key, expression, modifiers...)
 	}
@@ -445,7 +460,7 @@ func (e *SLOPTIONElement) DATASTAR_FETCH_INDICATOR(expression string) *SLOPTIONE
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "DatastarFetchIndicator"
+	key := "data-fetch-indicator"
 
 	e.StringAttributes.Set(key, expression)
 	return e
@@ -463,7 +478,7 @@ func (e *SLOPTIONElement) DATASTAR_FETCH_INDICATORRemove() *SLOPTIONElement {
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("DatastarFetchIndicator")
+	e.StringAttributes.Del("data-fetch-indicator")
 	return e
 }
 

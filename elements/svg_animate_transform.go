@@ -232,9 +232,20 @@ func (e *SVGANIMATETRANSFORMElement) ATTRIBUTE_NAME(s string) *SVGANIMATETRANSFO
 	return e
 }
 
+func (e *SVGANIMATETRANSFORMElement) ATTRIBUTE_NAMEF(format string, args ...any) *SVGANIMATETRANSFORMElement {
+	return e.ATTRIBUTE_NAME(fmt.Sprintf(format, args...))
+}
+
 func (e *SVGANIMATETRANSFORMElement) IfATTRIBUTE_NAME(condition bool, s string) *SVGANIMATETRANSFORMElement {
 	if condition {
 		e.ATTRIBUTE_NAME(s)
+	}
+	return e
+}
+
+func (e *SVGANIMATETRANSFORMElement) IfATTRIBUTE_NAMEF(condition bool, format string, args ...any) *SVGANIMATETRANSFORMElement {
+	if condition {
+		e.ATTRIBUTE_NAME(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -246,6 +257,10 @@ func (e *SVGANIMATETRANSFORMElement) ATTRIBUTE_NAMERemove(s string) *SVGANIMATET
 	}
 	e.StringAttributes.Del("attributeName")
 	return e
+}
+
+func (e *SVGANIMATETRANSFORMElement) ATTRIBUTE_NAMERemoveF(format string, args ...any) *SVGANIMATETRANSFORMElement {
+	return e.ATTRIBUTE_NAMERemove(fmt.Sprintf(format, args...))
 }
 
 // The namespace of the attribute to animate.
@@ -295,9 +310,20 @@ func (e *SVGANIMATETRANSFORMElement) BEGIN(s string) *SVGANIMATETRANSFORMElement
 	return e
 }
 
+func (e *SVGANIMATETRANSFORMElement) BEGINF(format string, args ...any) *SVGANIMATETRANSFORMElement {
+	return e.BEGIN(fmt.Sprintf(format, args...))
+}
+
 func (e *SVGANIMATETRANSFORMElement) IfBEGIN(condition bool, s string) *SVGANIMATETRANSFORMElement {
 	if condition {
 		e.BEGIN(s)
+	}
+	return e
+}
+
+func (e *SVGANIMATETRANSFORMElement) IfBEGINF(condition bool, format string, args ...any) *SVGANIMATETRANSFORMElement {
+	if condition {
+		e.BEGIN(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -311,6 +337,10 @@ func (e *SVGANIMATETRANSFORMElement) BEGINRemove(s string) *SVGANIMATETRANSFORME
 	return e
 }
 
+func (e *SVGANIMATETRANSFORMElement) BEGINRemoveF(format string, args ...any) *SVGANIMATETRANSFORMElement {
+	return e.BEGINRemove(fmt.Sprintf(format, args...))
+}
+
 // Defines a relative offset value for the animation.
 func (e *SVGANIMATETRANSFORMElement) BY(s string) *SVGANIMATETRANSFORMElement {
 	if e.StringAttributes == nil {
@@ -320,9 +350,20 @@ func (e *SVGANIMATETRANSFORMElement) BY(s string) *SVGANIMATETRANSFORMElement {
 	return e
 }
 
+func (e *SVGANIMATETRANSFORMElement) BYF(format string, args ...any) *SVGANIMATETRANSFORMElement {
+	return e.BY(fmt.Sprintf(format, args...))
+}
+
 func (e *SVGANIMATETRANSFORMElement) IfBY(condition bool, s string) *SVGANIMATETRANSFORMElement {
 	if condition {
 		e.BY(s)
+	}
+	return e
+}
+
+func (e *SVGANIMATETRANSFORMElement) IfBYF(condition bool, format string, args ...any) *SVGANIMATETRANSFORMElement {
+	if condition {
+		e.BY(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -334,6 +375,10 @@ func (e *SVGANIMATETRANSFORMElement) BYRemove(s string) *SVGANIMATETRANSFORMElem
 	}
 	e.StringAttributes.Del("by")
 	return e
+}
+
+func (e *SVGANIMATETRANSFORMElement) BYRemoveF(format string, args ...any) *SVGANIMATETRANSFORMElement {
+	return e.BYRemove(fmt.Sprintf(format, args...))
 }
 
 // Defines the pacing of the animation.
@@ -379,9 +424,20 @@ func (e *SVGANIMATETRANSFORMElement) DUR(s string) *SVGANIMATETRANSFORMElement {
 	return e
 }
 
+func (e *SVGANIMATETRANSFORMElement) DURF(format string, args ...any) *SVGANIMATETRANSFORMElement {
+	return e.DUR(fmt.Sprintf(format, args...))
+}
+
 func (e *SVGANIMATETRANSFORMElement) IfDUR(condition bool, s string) *SVGANIMATETRANSFORMElement {
 	if condition {
 		e.DUR(s)
+	}
+	return e
+}
+
+func (e *SVGANIMATETRANSFORMElement) IfDURF(condition bool, format string, args ...any) *SVGANIMATETRANSFORMElement {
+	if condition {
+		e.DUR(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -395,6 +451,10 @@ func (e *SVGANIMATETRANSFORMElement) DURRemove(s string) *SVGANIMATETRANSFORMEle
 	return e
 }
 
+func (e *SVGANIMATETRANSFORMElement) DURRemoveF(format string, args ...any) *SVGANIMATETRANSFORMElement {
+	return e.DURRemove(fmt.Sprintf(format, args...))
+}
+
 // Defines when the animation should end.
 func (e *SVGANIMATETRANSFORMElement) END(s string) *SVGANIMATETRANSFORMElement {
 	if e.StringAttributes == nil {
@@ -404,9 +464,20 @@ func (e *SVGANIMATETRANSFORMElement) END(s string) *SVGANIMATETRANSFORMElement {
 	return e
 }
 
+func (e *SVGANIMATETRANSFORMElement) ENDF(format string, args ...any) *SVGANIMATETRANSFORMElement {
+	return e.END(fmt.Sprintf(format, args...))
+}
+
 func (e *SVGANIMATETRANSFORMElement) IfEND(condition bool, s string) *SVGANIMATETRANSFORMElement {
 	if condition {
 		e.END(s)
+	}
+	return e
+}
+
+func (e *SVGANIMATETRANSFORMElement) IfENDF(condition bool, format string, args ...any) *SVGANIMATETRANSFORMElement {
+	if condition {
+		e.END(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -418,6 +489,10 @@ func (e *SVGANIMATETRANSFORMElement) ENDRemove(s string) *SVGANIMATETRANSFORMEle
 	}
 	e.StringAttributes.Del("end")
 	return e
+}
+
+func (e *SVGANIMATETRANSFORMElement) ENDRemoveF(format string, args ...any) *SVGANIMATETRANSFORMElement {
+	return e.ENDRemove(fmt.Sprintf(format, args...))
 }
 
 // Defines the fill behavior for the animation.
@@ -456,9 +531,20 @@ func (e *SVGANIMATETRANSFORMElement) FROM(s string) *SVGANIMATETRANSFORMElement 
 	return e
 }
 
+func (e *SVGANIMATETRANSFORMElement) FROMF(format string, args ...any) *SVGANIMATETRANSFORMElement {
+	return e.FROM(fmt.Sprintf(format, args...))
+}
+
 func (e *SVGANIMATETRANSFORMElement) IfFROM(condition bool, s string) *SVGANIMATETRANSFORMElement {
 	if condition {
 		e.FROM(s)
+	}
+	return e
+}
+
+func (e *SVGANIMATETRANSFORMElement) IfFROMF(condition bool, format string, args ...any) *SVGANIMATETRANSFORMElement {
+	if condition {
+		e.FROM(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -472,6 +558,10 @@ func (e *SVGANIMATETRANSFORMElement) FROMRemove(s string) *SVGANIMATETRANSFORMEl
 	return e
 }
 
+func (e *SVGANIMATETRANSFORMElement) FROMRemoveF(format string, args ...any) *SVGANIMATETRANSFORMElement {
+	return e.FROMRemove(fmt.Sprintf(format, args...))
+}
+
 // Defines the values for a cubic Bézier function that controls interval pacing.
 func (e *SVGANIMATETRANSFORMElement) KEY_SPLINES(s string) *SVGANIMATETRANSFORMElement {
 	if e.StringAttributes == nil {
@@ -481,9 +571,20 @@ func (e *SVGANIMATETRANSFORMElement) KEY_SPLINES(s string) *SVGANIMATETRANSFORME
 	return e
 }
 
+func (e *SVGANIMATETRANSFORMElement) KEY_SPLINESF(format string, args ...any) *SVGANIMATETRANSFORMElement {
+	return e.KEY_SPLINES(fmt.Sprintf(format, args...))
+}
+
 func (e *SVGANIMATETRANSFORMElement) IfKEY_SPLINES(condition bool, s string) *SVGANIMATETRANSFORMElement {
 	if condition {
 		e.KEY_SPLINES(s)
+	}
+	return e
+}
+
+func (e *SVGANIMATETRANSFORMElement) IfKEY_SPLINESF(condition bool, format string, args ...any) *SVGANIMATETRANSFORMElement {
+	if condition {
+		e.KEY_SPLINES(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -497,6 +598,10 @@ func (e *SVGANIMATETRANSFORMElement) KEY_SPLINESRemove(s string) *SVGANIMATETRAN
 	return e
 }
 
+func (e *SVGANIMATETRANSFORMElement) KEY_SPLINESRemoveF(format string, args ...any) *SVGANIMATETRANSFORMElement {
+	return e.KEY_SPLINESRemove(fmt.Sprintf(format, args...))
+}
+
 // Defines when the animation should take place in terms of time fractions.
 func (e *SVGANIMATETRANSFORMElement) KEY_TIMES(s string) *SVGANIMATETRANSFORMElement {
 	if e.StringAttributes == nil {
@@ -506,9 +611,20 @@ func (e *SVGANIMATETRANSFORMElement) KEY_TIMES(s string) *SVGANIMATETRANSFORMEle
 	return e
 }
 
+func (e *SVGANIMATETRANSFORMElement) KEY_TIMESF(format string, args ...any) *SVGANIMATETRANSFORMElement {
+	return e.KEY_TIMES(fmt.Sprintf(format, args...))
+}
+
 func (e *SVGANIMATETRANSFORMElement) IfKEY_TIMES(condition bool, s string) *SVGANIMATETRANSFORMElement {
 	if condition {
 		e.KEY_TIMES(s)
+	}
+	return e
+}
+
+func (e *SVGANIMATETRANSFORMElement) IfKEY_TIMESF(condition bool, format string, args ...any) *SVGANIMATETRANSFORMElement {
+	if condition {
+		e.KEY_TIMES(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -522,6 +638,10 @@ func (e *SVGANIMATETRANSFORMElement) KEY_TIMESRemove(s string) *SVGANIMATETRANSF
 	return e
 }
 
+func (e *SVGANIMATETRANSFORMElement) KEY_TIMESRemoveF(format string, args ...any) *SVGANIMATETRANSFORMElement {
+	return e.KEY_TIMESRemove(fmt.Sprintf(format, args...))
+}
+
 // Defines the maximum value allowed for the attribute.
 func (e *SVGANIMATETRANSFORMElement) MAX(s string) *SVGANIMATETRANSFORMElement {
 	if e.StringAttributes == nil {
@@ -531,9 +651,20 @@ func (e *SVGANIMATETRANSFORMElement) MAX(s string) *SVGANIMATETRANSFORMElement {
 	return e
 }
 
+func (e *SVGANIMATETRANSFORMElement) MAXF(format string, args ...any) *SVGANIMATETRANSFORMElement {
+	return e.MAX(fmt.Sprintf(format, args...))
+}
+
 func (e *SVGANIMATETRANSFORMElement) IfMAX(condition bool, s string) *SVGANIMATETRANSFORMElement {
 	if condition {
 		e.MAX(s)
+	}
+	return e
+}
+
+func (e *SVGANIMATETRANSFORMElement) IfMAXF(condition bool, format string, args ...any) *SVGANIMATETRANSFORMElement {
+	if condition {
+		e.MAX(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -547,6 +678,10 @@ func (e *SVGANIMATETRANSFORMElement) MAXRemove(s string) *SVGANIMATETRANSFORMEle
 	return e
 }
 
+func (e *SVGANIMATETRANSFORMElement) MAXRemoveF(format string, args ...any) *SVGANIMATETRANSFORMElement {
+	return e.MAXRemove(fmt.Sprintf(format, args...))
+}
+
 // Defines the minimum value allowed for the attribute.
 func (e *SVGANIMATETRANSFORMElement) MIN(s string) *SVGANIMATETRANSFORMElement {
 	if e.StringAttributes == nil {
@@ -556,9 +691,20 @@ func (e *SVGANIMATETRANSFORMElement) MIN(s string) *SVGANIMATETRANSFORMElement {
 	return e
 }
 
+func (e *SVGANIMATETRANSFORMElement) MINF(format string, args ...any) *SVGANIMATETRANSFORMElement {
+	return e.MIN(fmt.Sprintf(format, args...))
+}
+
 func (e *SVGANIMATETRANSFORMElement) IfMIN(condition bool, s string) *SVGANIMATETRANSFORMElement {
 	if condition {
 		e.MIN(s)
+	}
+	return e
+}
+
+func (e *SVGANIMATETRANSFORMElement) IfMINF(condition bool, format string, args ...any) *SVGANIMATETRANSFORMElement {
+	if condition {
+		e.MIN(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -572,6 +718,10 @@ func (e *SVGANIMATETRANSFORMElement) MINRemove(s string) *SVGANIMATETRANSFORMEle
 	return e
 }
 
+func (e *SVGANIMATETRANSFORMElement) MINRemoveF(format string, args ...any) *SVGANIMATETRANSFORMElement {
+	return e.MINRemove(fmt.Sprintf(format, args...))
+}
+
 // Defines the number of times the animation should repeat.
 func (e *SVGANIMATETRANSFORMElement) REPEAT_COUNT(s string) *SVGANIMATETRANSFORMElement {
 	if e.StringAttributes == nil {
@@ -581,9 +731,20 @@ func (e *SVGANIMATETRANSFORMElement) REPEAT_COUNT(s string) *SVGANIMATETRANSFORM
 	return e
 }
 
+func (e *SVGANIMATETRANSFORMElement) REPEAT_COUNTF(format string, args ...any) *SVGANIMATETRANSFORMElement {
+	return e.REPEAT_COUNT(fmt.Sprintf(format, args...))
+}
+
 func (e *SVGANIMATETRANSFORMElement) IfREPEAT_COUNT(condition bool, s string) *SVGANIMATETRANSFORMElement {
 	if condition {
 		e.REPEAT_COUNT(s)
+	}
+	return e
+}
+
+func (e *SVGANIMATETRANSFORMElement) IfREPEAT_COUNTF(condition bool, format string, args ...any) *SVGANIMATETRANSFORMElement {
+	if condition {
+		e.REPEAT_COUNT(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -597,6 +758,10 @@ func (e *SVGANIMATETRANSFORMElement) REPEAT_COUNTRemove(s string) *SVGANIMATETRA
 	return e
 }
 
+func (e *SVGANIMATETRANSFORMElement) REPEAT_COUNTRemoveF(format string, args ...any) *SVGANIMATETRANSFORMElement {
+	return e.REPEAT_COUNTRemove(fmt.Sprintf(format, args...))
+}
+
 // Defines the duration for repeating an animation.
 func (e *SVGANIMATETRANSFORMElement) REPEAT_DUR(s string) *SVGANIMATETRANSFORMElement {
 	if e.StringAttributes == nil {
@@ -606,9 +771,20 @@ func (e *SVGANIMATETRANSFORMElement) REPEAT_DUR(s string) *SVGANIMATETRANSFORMEl
 	return e
 }
 
+func (e *SVGANIMATETRANSFORMElement) REPEAT_DURF(format string, args ...any) *SVGANIMATETRANSFORMElement {
+	return e.REPEAT_DUR(fmt.Sprintf(format, args...))
+}
+
 func (e *SVGANIMATETRANSFORMElement) IfREPEAT_DUR(condition bool, s string) *SVGANIMATETRANSFORMElement {
 	if condition {
 		e.REPEAT_DUR(s)
+	}
+	return e
+}
+
+func (e *SVGANIMATETRANSFORMElement) IfREPEAT_DURF(condition bool, format string, args ...any) *SVGANIMATETRANSFORMElement {
+	if condition {
+		e.REPEAT_DUR(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -620,6 +796,10 @@ func (e *SVGANIMATETRANSFORMElement) REPEAT_DURRemove(s string) *SVGANIMATETRANS
 	}
 	e.StringAttributes.Del("repeatDur")
 	return e
+}
+
+func (e *SVGANIMATETRANSFORMElement) REPEAT_DURRemoveF(format string, args ...any) *SVGANIMATETRANSFORMElement {
+	return e.REPEAT_DURRemove(fmt.Sprintf(format, args...))
 }
 
 // Defines if an animation should restart after it completes.
@@ -661,9 +841,20 @@ func (e *SVGANIMATETRANSFORMElement) TO(s string) *SVGANIMATETRANSFORMElement {
 	return e
 }
 
+func (e *SVGANIMATETRANSFORMElement) TOF(format string, args ...any) *SVGANIMATETRANSFORMElement {
+	return e.TO(fmt.Sprintf(format, args...))
+}
+
 func (e *SVGANIMATETRANSFORMElement) IfTO(condition bool, s string) *SVGANIMATETRANSFORMElement {
 	if condition {
 		e.TO(s)
+	}
+	return e
+}
+
+func (e *SVGANIMATETRANSFORMElement) IfTOF(condition bool, format string, args ...any) *SVGANIMATETRANSFORMElement {
+	if condition {
+		e.TO(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -675,6 +866,10 @@ func (e *SVGANIMATETRANSFORMElement) TORemove(s string) *SVGANIMATETRANSFORMElem
 	}
 	e.StringAttributes.Del("to")
 	return e
+}
+
+func (e *SVGANIMATETRANSFORMElement) TORemoveF(format string, args ...any) *SVGANIMATETRANSFORMElement {
+	return e.TORemove(fmt.Sprintf(format, args...))
 }
 
 // Defines which transform to use.
@@ -715,9 +910,20 @@ func (e *SVGANIMATETRANSFORMElement) VALUES(s string) *SVGANIMATETRANSFORMElemen
 	return e
 }
 
+func (e *SVGANIMATETRANSFORMElement) VALUESF(format string, args ...any) *SVGANIMATETRANSFORMElement {
+	return e.VALUES(fmt.Sprintf(format, args...))
+}
+
 func (e *SVGANIMATETRANSFORMElement) IfVALUES(condition bool, s string) *SVGANIMATETRANSFORMElement {
 	if condition {
 		e.VALUES(s)
+	}
+	return e
+}
+
+func (e *SVGANIMATETRANSFORMElement) IfVALUESF(condition bool, format string, args ...any) *SVGANIMATETRANSFORMElement {
+	if condition {
+		e.VALUES(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -731,6 +937,10 @@ func (e *SVGANIMATETRANSFORMElement) VALUESRemove(s string) *SVGANIMATETRANSFORM
 	return e
 }
 
+func (e *SVGANIMATETRANSFORMElement) VALUESRemoveF(format string, args ...any) *SVGANIMATETRANSFORMElement {
+	return e.VALUESRemove(fmt.Sprintf(format, args...))
+}
+
 // Specifies a unique id for an element
 func (e *SVGANIMATETRANSFORMElement) ID(s string) *SVGANIMATETRANSFORMElement {
 	if e.StringAttributes == nil {
@@ -740,9 +950,20 @@ func (e *SVGANIMATETRANSFORMElement) ID(s string) *SVGANIMATETRANSFORMElement {
 	return e
 }
 
+func (e *SVGANIMATETRANSFORMElement) IDF(format string, args ...any) *SVGANIMATETRANSFORMElement {
+	return e.ID(fmt.Sprintf(format, args...))
+}
+
 func (e *SVGANIMATETRANSFORMElement) IfID(condition bool, s string) *SVGANIMATETRANSFORMElement {
 	if condition {
 		e.ID(s)
+	}
+	return e
+}
+
+func (e *SVGANIMATETRANSFORMElement) IfIDF(condition bool, format string, args ...any) *SVGANIMATETRANSFORMElement {
+	if condition {
+		e.ID(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -754,6 +975,10 @@ func (e *SVGANIMATETRANSFORMElement) IDRemove(s string) *SVGANIMATETRANSFORMElem
 	}
 	e.StringAttributes.Del("id")
 	return e
+}
+
+func (e *SVGANIMATETRANSFORMElement) IDRemoveF(format string, args ...any) *SVGANIMATETRANSFORMElement {
+	return e.IDRemove(fmt.Sprintf(format, args...))
 }
 
 // Specifies one or more classnames for an element (refers to a class in a style
@@ -892,7 +1117,7 @@ func (e *SVGANIMATETRANSFORMElement) DATASTAR_MERGE_STORE(v any) *SVGANIMATETRAN
 	if err != nil {
 		panic(err)
 	}
-	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	e.CustomDataAttributes.Set("merge-store", string(b))
 	return e
 }
 
@@ -1014,34 +1239,34 @@ func (e *SVGANIMATETRANSFORMElement) DATASTAR_TEXTRemove() *SVGANIMATETRANSFORME
 
 // Sets the event handler of the element
 
-type SVGAnimateTransformDataOnMod customDataKeyModifier
+type SVGAnimateTransformOnMod customDataKeyModifier
 
 // Debounces the event handler
-func SVGAnimateTransformDataOnModDebounce(
+func SVGAnimateTransformOnModDebounce(
 	d time.Duration,
-) SVGAnimateTransformDataOnMod {
+) SVGAnimateTransformOnMod {
 	return func() string {
 		return fmt.Sprintf("debounce_%dms", d.Milliseconds())
 	}
 }
 
 // Throttles the event handler
-func SVGAnimateTransformDataOnModThrottle(
+func SVGAnimateTransformOnModThrottle(
 	d time.Duration,
-) SVGAnimateTransformDataOnMod {
+) SVGAnimateTransformOnMod {
 	return func() string {
 		return fmt.Sprintf("throttle_%dms", d.Milliseconds())
 	}
 }
 
-func (e *SVGANIMATETRANSFORMElement) DATASTAR_ON(key string, expression string, modifiers ...SVGAnimateTransformDataOnMod) *SVGANIMATETRANSFORMElement {
+func (e *SVGANIMATETRANSFORMElement) DATASTAR_ON(key string, expression string, modifiers ...SVGAnimateTransformOnMod) *SVGANIMATETRANSFORMElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
 	key = fmt.Sprintf("data-on-%s", key)
 
-	customMods := lo.Map(modifiers, func(m SVGAnimateTransformDataOnMod, i int) customDataKeyModifier {
+	customMods := lo.Map(modifiers, func(m SVGAnimateTransformOnMod, i int) customDataKeyModifier {
 		return customDataKeyModifier(m)
 	})
 	key = customDataKey(key, customMods...)
@@ -1049,7 +1274,7 @@ func (e *SVGANIMATETRANSFORMElement) DATASTAR_ON(key string, expression string, 
 	return e
 }
 
-func (e *SVGANIMATETRANSFORMElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SVGAnimateTransformDataOnMod) *SVGANIMATETRANSFORMElement {
+func (e *SVGANIMATETRANSFORMElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SVGAnimateTransformOnMod) *SVGANIMATETRANSFORMElement {
 	if condition {
 		e.DATASTAR_ON(key, expression, modifiers...)
 	}
@@ -1142,7 +1367,7 @@ func (e *SVGANIMATETRANSFORMElement) DATASTAR_FETCH_INDICATOR(expression string)
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "DatastarFetchIndicator"
+	key := "data-fetch-indicator"
 
 	e.StringAttributes.Set(key, expression)
 	return e
@@ -1160,7 +1385,7 @@ func (e *SVGANIMATETRANSFORMElement) DATASTAR_FETCH_INDICATORRemove() *SVGANIMAT
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("DatastarFetchIndicator")
+	e.StringAttributes.Del("data-fetch-indicator")
 	return e
 }
 

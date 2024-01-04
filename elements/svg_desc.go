@@ -171,9 +171,20 @@ func (e *SVGDESCElement) ID(s string) *SVGDESCElement {
 	return e
 }
 
+func (e *SVGDESCElement) IDF(format string, args ...any) *SVGDESCElement {
+	return e.ID(fmt.Sprintf(format, args...))
+}
+
 func (e *SVGDESCElement) IfID(condition bool, s string) *SVGDESCElement {
 	if condition {
 		e.ID(s)
+	}
+	return e
+}
+
+func (e *SVGDESCElement) IfIDF(condition bool, format string, args ...any) *SVGDESCElement {
+	if condition {
+		e.ID(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -185,6 +196,10 @@ func (e *SVGDESCElement) IDRemove(s string) *SVGDESCElement {
 	}
 	e.StringAttributes.Del("id")
 	return e
+}
+
+func (e *SVGDESCElement) IDRemoveF(format string, args ...any) *SVGDESCElement {
+	return e.IDRemove(fmt.Sprintf(format, args...))
 }
 
 // Specifies one or more classnames for an element (refers to a class in a style
@@ -323,7 +338,7 @@ func (e *SVGDESCElement) DATASTAR_MERGE_STORE(v any) *SVGDESCElement {
 	if err != nil {
 		panic(err)
 	}
-	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	e.CustomDataAttributes.Set("merge-store", string(b))
 	return e
 }
 
@@ -445,34 +460,34 @@ func (e *SVGDESCElement) DATASTAR_TEXTRemove() *SVGDESCElement {
 
 // Sets the event handler of the element
 
-type SVGDescDataOnMod customDataKeyModifier
+type SVGDescOnMod customDataKeyModifier
 
 // Debounces the event handler
-func SVGDescDataOnModDebounce(
+func SVGDescOnModDebounce(
 	d time.Duration,
-) SVGDescDataOnMod {
+) SVGDescOnMod {
 	return func() string {
 		return fmt.Sprintf("debounce_%dms", d.Milliseconds())
 	}
 }
 
 // Throttles the event handler
-func SVGDescDataOnModThrottle(
+func SVGDescOnModThrottle(
 	d time.Duration,
-) SVGDescDataOnMod {
+) SVGDescOnMod {
 	return func() string {
 		return fmt.Sprintf("throttle_%dms", d.Milliseconds())
 	}
 }
 
-func (e *SVGDESCElement) DATASTAR_ON(key string, expression string, modifiers ...SVGDescDataOnMod) *SVGDESCElement {
+func (e *SVGDESCElement) DATASTAR_ON(key string, expression string, modifiers ...SVGDescOnMod) *SVGDESCElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
 	key = fmt.Sprintf("data-on-%s", key)
 
-	customMods := lo.Map(modifiers, func(m SVGDescDataOnMod, i int) customDataKeyModifier {
+	customMods := lo.Map(modifiers, func(m SVGDescOnMod, i int) customDataKeyModifier {
 		return customDataKeyModifier(m)
 	})
 	key = customDataKey(key, customMods...)
@@ -480,7 +495,7 @@ func (e *SVGDESCElement) DATASTAR_ON(key string, expression string, modifiers ..
 	return e
 }
 
-func (e *SVGDESCElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SVGDescDataOnMod) *SVGDESCElement {
+func (e *SVGDESCElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SVGDescOnMod) *SVGDESCElement {
 	if condition {
 		e.DATASTAR_ON(key, expression, modifiers...)
 	}
@@ -573,7 +588,7 @@ func (e *SVGDESCElement) DATASTAR_FETCH_INDICATOR(expression string) *SVGDESCEle
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "DatastarFetchIndicator"
+	key := "data-fetch-indicator"
 
 	e.StringAttributes.Set(key, expression)
 	return e
@@ -591,7 +606,7 @@ func (e *SVGDESCElement) DATASTAR_FETCH_INDICATORRemove() *SVGDESCElement {
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("DatastarFetchIndicator")
+	e.StringAttributes.Del("data-fetch-indicator")
 	return e
 }
 

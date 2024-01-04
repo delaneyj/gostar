@@ -169,9 +169,20 @@ func (e *SLBUTTONGROUPElement) LABEL(s string) *SLBUTTONGROUPElement {
 	return e
 }
 
+func (e *SLBUTTONGROUPElement) LABELF(format string, args ...any) *SLBUTTONGROUPElement {
+	return e.LABEL(fmt.Sprintf(format, args...))
+}
+
 func (e *SLBUTTONGROUPElement) IfLABEL(condition bool, s string) *SLBUTTONGROUPElement {
 	if condition {
 		e.LABEL(s)
+	}
+	return e
+}
+
+func (e *SLBUTTONGROUPElement) IfLABELF(condition bool, format string, args ...any) *SLBUTTONGROUPElement {
+	if condition {
+		e.LABEL(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -185,6 +196,10 @@ func (e *SLBUTTONGROUPElement) LABELRemove(s string) *SLBUTTONGROUPElement {
 	return e
 }
 
+func (e *SLBUTTONGROUPElement) LABELRemoveF(format string, args ...any) *SLBUTTONGROUPElement {
+	return e.LABELRemove(fmt.Sprintf(format, args...))
+}
+
 // Merges the store with the given object
 
 func (e *SLBUTTONGROUPElement) DATASTAR_MERGE_STORE(v any) *SLBUTTONGROUPElement {
@@ -195,7 +210,7 @@ func (e *SLBUTTONGROUPElement) DATASTAR_MERGE_STORE(v any) *SLBUTTONGROUPElement
 	if err != nil {
 		panic(err)
 	}
-	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	e.CustomDataAttributes.Set("merge-store", string(b))
 	return e
 }
 
@@ -317,34 +332,34 @@ func (e *SLBUTTONGROUPElement) DATASTAR_TEXTRemove() *SLBUTTONGROUPElement {
 
 // Sets the event handler of the element
 
-type SLButtonGroupDataOnMod customDataKeyModifier
+type SLButtonGroupOnMod customDataKeyModifier
 
 // Debounces the event handler
-func SLButtonGroupDataOnModDebounce(
+func SLButtonGroupOnModDebounce(
 	d time.Duration,
-) SLButtonGroupDataOnMod {
+) SLButtonGroupOnMod {
 	return func() string {
 		return fmt.Sprintf("debounce_%dms", d.Milliseconds())
 	}
 }
 
 // Throttles the event handler
-func SLButtonGroupDataOnModThrottle(
+func SLButtonGroupOnModThrottle(
 	d time.Duration,
-) SLButtonGroupDataOnMod {
+) SLButtonGroupOnMod {
 	return func() string {
 		return fmt.Sprintf("throttle_%dms", d.Milliseconds())
 	}
 }
 
-func (e *SLBUTTONGROUPElement) DATASTAR_ON(key string, expression string, modifiers ...SLButtonGroupDataOnMod) *SLBUTTONGROUPElement {
+func (e *SLBUTTONGROUPElement) DATASTAR_ON(key string, expression string, modifiers ...SLButtonGroupOnMod) *SLBUTTONGROUPElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
 	key = fmt.Sprintf("data-on-%s", key)
 
-	customMods := lo.Map(modifiers, func(m SLButtonGroupDataOnMod, i int) customDataKeyModifier {
+	customMods := lo.Map(modifiers, func(m SLButtonGroupOnMod, i int) customDataKeyModifier {
 		return customDataKeyModifier(m)
 	})
 	key = customDataKey(key, customMods...)
@@ -352,7 +367,7 @@ func (e *SLBUTTONGROUPElement) DATASTAR_ON(key string, expression string, modifi
 	return e
 }
 
-func (e *SLBUTTONGROUPElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SLButtonGroupDataOnMod) *SLBUTTONGROUPElement {
+func (e *SLBUTTONGROUPElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SLButtonGroupOnMod) *SLBUTTONGROUPElement {
 	if condition {
 		e.DATASTAR_ON(key, expression, modifiers...)
 	}
@@ -445,7 +460,7 @@ func (e *SLBUTTONGROUPElement) DATASTAR_FETCH_INDICATOR(expression string) *SLBU
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "DatastarFetchIndicator"
+	key := "data-fetch-indicator"
 
 	e.StringAttributes.Set(key, expression)
 	return e
@@ -463,7 +478,7 @@ func (e *SLBUTTONGROUPElement) DATASTAR_FETCH_INDICATORRemove() *SLBUTTONGROUPEl
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("DatastarFetchIndicator")
+	e.StringAttributes.Del("data-fetch-indicator")
 	return e
 }
 

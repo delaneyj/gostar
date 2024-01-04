@@ -268,9 +268,20 @@ func (e *MathMLMSElement) ID(s string) *MathMLMSElement {
 	return e
 }
 
+func (e *MathMLMSElement) IDF(format string, args ...any) *MathMLMSElement {
+	return e.ID(fmt.Sprintf(format, args...))
+}
+
 func (e *MathMLMSElement) IfID(condition bool, s string) *MathMLMSElement {
 	if condition {
 		e.ID(s)
+	}
+	return e
+}
+
+func (e *MathMLMSElement) IfIDF(condition bool, format string, args ...any) *MathMLMSElement {
+	if condition {
+		e.ID(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -284,6 +295,10 @@ func (e *MathMLMSElement) IDRemove(s string) *MathMLMSElement {
 	return e
 }
 
+func (e *MathMLMSElement) IDRemoveF(format string, args ...any) *MathMLMSElement {
+	return e.IDRemove(fmt.Sprintf(format, args...))
+}
+
 // This attribute specifies the background color of the element
 // Possible values are a color name or a color specification in the format defined
 // in the CSS3 Color Module [CSS3COLOR].
@@ -295,9 +310,20 @@ func (e *MathMLMSElement) MATHBACKGROUND(s string) *MathMLMSElement {
 	return e
 }
 
+func (e *MathMLMSElement) MATHBACKGROUNDF(format string, args ...any) *MathMLMSElement {
+	return e.MATHBACKGROUND(fmt.Sprintf(format, args...))
+}
+
 func (e *MathMLMSElement) IfMATHBACKGROUND(condition bool, s string) *MathMLMSElement {
 	if condition {
 		e.MATHBACKGROUND(s)
+	}
+	return e
+}
+
+func (e *MathMLMSElement) IfMATHBACKGROUNDF(condition bool, format string, args ...any) *MathMLMSElement {
+	if condition {
+		e.MATHBACKGROUND(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -311,6 +337,10 @@ func (e *MathMLMSElement) MATHBACKGROUNDRemove(s string) *MathMLMSElement {
 	return e
 }
 
+func (e *MathMLMSElement) MATHBACKGROUNDRemoveF(format string, args ...any) *MathMLMSElement {
+	return e.MATHBACKGROUNDRemove(fmt.Sprintf(format, args...))
+}
+
 // This attribute specifies the color of the element
 // Possible values are a color name or a color specification in the format defined
 // in the CSS3 Color Module [CSS3COLOR].
@@ -322,9 +352,20 @@ func (e *MathMLMSElement) MATHCOLOR(s string) *MathMLMSElement {
 	return e
 }
 
+func (e *MathMLMSElement) MATHCOLORF(format string, args ...any) *MathMLMSElement {
+	return e.MATHCOLOR(fmt.Sprintf(format, args...))
+}
+
 func (e *MathMLMSElement) IfMATHCOLOR(condition bool, s string) *MathMLMSElement {
 	if condition {
 		e.MATHCOLOR(s)
+	}
+	return e
+}
+
+func (e *MathMLMSElement) IfMATHCOLORF(condition bool, format string, args ...any) *MathMLMSElement {
+	if condition {
+		e.MATHCOLOR(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -338,6 +379,10 @@ func (e *MathMLMSElement) MATHCOLORRemove(s string) *MathMLMSElement {
 	return e
 }
 
+func (e *MathMLMSElement) MATHCOLORRemoveF(format string, args ...any) *MathMLMSElement {
+	return e.MATHCOLORRemove(fmt.Sprintf(format, args...))
+}
+
 // This attribute specifies the size of the element
 // Possible values are a dimension or a dimensionless number.
 func (e *MathMLMSElement) MATHSIZE_STR(s string) *MathMLMSElement {
@@ -348,9 +393,20 @@ func (e *MathMLMSElement) MATHSIZE_STR(s string) *MathMLMSElement {
 	return e
 }
 
+func (e *MathMLMSElement) MATHSIZE_STRF(format string, args ...any) *MathMLMSElement {
+	return e.MATHSIZE_STR(fmt.Sprintf(format, args...))
+}
+
 func (e *MathMLMSElement) IfMATHSIZE_STR(condition bool, s string) *MathMLMSElement {
 	if condition {
 		e.MATHSIZE_STR(s)
+	}
+	return e
+}
+
+func (e *MathMLMSElement) IfMATHSIZE_STRF(condition bool, format string, args ...any) *MathMLMSElement {
+	if condition {
+		e.MATHSIZE_STR(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -362,6 +418,10 @@ func (e *MathMLMSElement) MATHSIZE_STRRemove(s string) *MathMLMSElement {
 	}
 	e.StringAttributes.Del("mathsize")
 	return e
+}
+
+func (e *MathMLMSElement) MATHSIZE_STRRemoveF(format string, args ...any) *MathMLMSElement {
+	return e.MATHSIZE_STRRemove(fmt.Sprintf(format, args...))
 }
 
 // This attribute declares a cryptographic nonce (number used once) that should be
@@ -376,9 +436,20 @@ func (e *MathMLMSElement) NONCE(s string) *MathMLMSElement {
 	return e
 }
 
+func (e *MathMLMSElement) NONCEF(format string, args ...any) *MathMLMSElement {
+	return e.NONCE(fmt.Sprintf(format, args...))
+}
+
 func (e *MathMLMSElement) IfNONCE(condition bool, s string) *MathMLMSElement {
 	if condition {
 		e.NONCE(s)
+	}
+	return e
+}
+
+func (e *MathMLMSElement) IfNONCEF(condition bool, format string, args ...any) *MathMLMSElement {
+	if condition {
+		e.NONCE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -390,6 +461,10 @@ func (e *MathMLMSElement) NONCERemove(s string) *MathMLMSElement {
 	}
 	e.StringAttributes.Del("nonce")
 	return e
+}
+
+func (e *MathMLMSElement) NONCERemoveF(format string, args ...any) *MathMLMSElement {
+	return e.NONCERemove(fmt.Sprintf(format, args...))
 }
 
 // This attribute specifies the script level of the element
@@ -548,7 +623,7 @@ func (e *MathMLMSElement) DATASTAR_MERGE_STORE(v any) *MathMLMSElement {
 	if err != nil {
 		panic(err)
 	}
-	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	e.CustomDataAttributes.Set("merge-store", string(b))
 	return e
 }
 
@@ -670,34 +745,34 @@ func (e *MathMLMSElement) DATASTAR_TEXTRemove() *MathMLMSElement {
 
 // Sets the event handler of the element
 
-type MathMLMsDataOnMod customDataKeyModifier
+type MathMLMsOnMod customDataKeyModifier
 
 // Debounces the event handler
-func MathMLMsDataOnModDebounce(
+func MathMLMsOnModDebounce(
 	d time.Duration,
-) MathMLMsDataOnMod {
+) MathMLMsOnMod {
 	return func() string {
 		return fmt.Sprintf("debounce_%dms", d.Milliseconds())
 	}
 }
 
 // Throttles the event handler
-func MathMLMsDataOnModThrottle(
+func MathMLMsOnModThrottle(
 	d time.Duration,
-) MathMLMsDataOnMod {
+) MathMLMsOnMod {
 	return func() string {
 		return fmt.Sprintf("throttle_%dms", d.Milliseconds())
 	}
 }
 
-func (e *MathMLMSElement) DATASTAR_ON(key string, expression string, modifiers ...MathMLMsDataOnMod) *MathMLMSElement {
+func (e *MathMLMSElement) DATASTAR_ON(key string, expression string, modifiers ...MathMLMsOnMod) *MathMLMSElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
 	key = fmt.Sprintf("data-on-%s", key)
 
-	customMods := lo.Map(modifiers, func(m MathMLMsDataOnMod, i int) customDataKeyModifier {
+	customMods := lo.Map(modifiers, func(m MathMLMsOnMod, i int) customDataKeyModifier {
 		return customDataKeyModifier(m)
 	})
 	key = customDataKey(key, customMods...)
@@ -705,7 +780,7 @@ func (e *MathMLMSElement) DATASTAR_ON(key string, expression string, modifiers .
 	return e
 }
 
-func (e *MathMLMSElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...MathMLMsDataOnMod) *MathMLMSElement {
+func (e *MathMLMSElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...MathMLMsOnMod) *MathMLMSElement {
 	if condition {
 		e.DATASTAR_ON(key, expression, modifiers...)
 	}
@@ -798,7 +873,7 @@ func (e *MathMLMSElement) DATASTAR_FETCH_INDICATOR(expression string) *MathMLMSE
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "DatastarFetchIndicator"
+	key := "data-fetch-indicator"
 
 	e.StringAttributes.Set(key, expression)
 	return e
@@ -816,7 +891,7 @@ func (e *MathMLMSElement) DATASTAR_FETCH_INDICATORRemove() *MathMLMSElement {
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("DatastarFetchIndicator")
+	e.StringAttributes.Del("data-fetch-indicator")
 	return e
 }
 

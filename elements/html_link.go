@@ -262,9 +262,20 @@ func (e *LINKElement) HREF(s string) *LINKElement {
 	return e
 }
 
+func (e *LINKElement) HREFF(format string, args ...any) *LINKElement {
+	return e.HREF(fmt.Sprintf(format, args...))
+}
+
 func (e *LINKElement) IfHREF(condition bool, s string) *LINKElement {
 	if condition {
 		e.HREF(s)
+	}
+	return e
+}
+
+func (e *LINKElement) IfHREFF(condition bool, format string, args ...any) *LINKElement {
+	if condition {
+		e.HREF(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -278,6 +289,10 @@ func (e *LINKElement) HREFRemove(s string) *LINKElement {
 	return e
 }
 
+func (e *LINKElement) HREFRemoveF(format string, args ...any) *LINKElement {
+	return e.HREFRemove(fmt.Sprintf(format, args...))
+}
+
 // Specifies the language of the linked resource.
 func (e *LINKElement) HREFLANG(s string) *LINKElement {
 	if e.StringAttributes == nil {
@@ -287,9 +302,20 @@ func (e *LINKElement) HREFLANG(s string) *LINKElement {
 	return e
 }
 
+func (e *LINKElement) HREFLANGF(format string, args ...any) *LINKElement {
+	return e.HREFLANG(fmt.Sprintf(format, args...))
+}
+
 func (e *LINKElement) IfHREFLANG(condition bool, s string) *LINKElement {
 	if condition {
 		e.HREFLANG(s)
+	}
+	return e
+}
+
+func (e *LINKElement) IfHREFLANGF(condition bool, format string, args ...any) *LINKElement {
+	if condition {
+		e.HREFLANG(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -303,6 +329,10 @@ func (e *LINKElement) HREFLANGRemove(s string) *LINKElement {
 	return e
 }
 
+func (e *LINKElement) HREFLANGRemoveF(format string, args ...any) *LINKElement {
+	return e.HREFLANGRemove(fmt.Sprintf(format, args...))
+}
+
 // Security Feature that allows browsers to verify what they fetch.
 func (e *LINKElement) INTEGRITY(s string) *LINKElement {
 	if e.StringAttributes == nil {
@@ -312,9 +342,20 @@ func (e *LINKElement) INTEGRITY(s string) *LINKElement {
 	return e
 }
 
+func (e *LINKElement) INTEGRITYF(format string, args ...any) *LINKElement {
+	return e.INTEGRITY(fmt.Sprintf(format, args...))
+}
+
 func (e *LINKElement) IfINTEGRITY(condition bool, s string) *LINKElement {
 	if condition {
 		e.INTEGRITY(s)
+	}
+	return e
+}
+
+func (e *LINKElement) IfINTEGRITYF(condition bool, format string, args ...any) *LINKElement {
+	if condition {
+		e.INTEGRITY(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -328,6 +369,10 @@ func (e *LINKElement) INTEGRITYRemove(s string) *LINKElement {
 	return e
 }
 
+func (e *LINKElement) INTEGRITYRemoveF(format string, args ...any) *LINKElement {
+	return e.INTEGRITYRemove(fmt.Sprintf(format, args...))
+}
+
 // Specifies a hint of the media for which the linked resource was designed.
 func (e *LINKElement) MEDIA(s string) *LINKElement {
 	if e.StringAttributes == nil {
@@ -337,9 +382,20 @@ func (e *LINKElement) MEDIA(s string) *LINKElement {
 	return e
 }
 
+func (e *LINKElement) MEDIAF(format string, args ...any) *LINKElement {
+	return e.MEDIA(fmt.Sprintf(format, args...))
+}
+
 func (e *LINKElement) IfMEDIA(condition bool, s string) *LINKElement {
 	if condition {
 		e.MEDIA(s)
+	}
+	return e
+}
+
+func (e *LINKElement) IfMEDIAF(condition bool, format string, args ...any) *LINKElement {
+	if condition {
+		e.MEDIA(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -351,6 +407,10 @@ func (e *LINKElement) MEDIARemove(s string) *LINKElement {
 	}
 	e.StringAttributes.Del("media")
 	return e
+}
+
+func (e *LINKElement) MEDIARemoveF(format string, args ...any) *LINKElement {
+	return e.MEDIARemove(fmt.Sprintf(format, args...))
 }
 
 // Specifies which referrer to send when fetching the resource
@@ -407,9 +467,20 @@ func (e *LINKElement) REL(s string) *LINKElement {
 	return e
 }
 
+func (e *LINKElement) RELF(format string, args ...any) *LINKElement {
+	return e.REL(fmt.Sprintf(format, args...))
+}
+
 func (e *LINKElement) IfREL(condition bool, s string) *LINKElement {
 	if condition {
 		e.REL(s)
+	}
+	return e
+}
+
+func (e *LINKElement) IfRELF(condition bool, format string, args ...any) *LINKElement {
+	if condition {
+		e.REL(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -423,6 +494,10 @@ func (e *LINKElement) RELRemove(s string) *LINKElement {
 	return e
 }
 
+func (e *LINKElement) RELRemoveF(format string, args ...any) *LINKElement {
+	return e.RELRemove(fmt.Sprintf(format, args...))
+}
+
 // Sizes of the icons (for rel="icon").
 func (e *LINKElement) SIZES(s string) *LINKElement {
 	if e.StringAttributes == nil {
@@ -432,9 +507,20 @@ func (e *LINKElement) SIZES(s string) *LINKElement {
 	return e
 }
 
+func (e *LINKElement) SIZESF(format string, args ...any) *LINKElement {
+	return e.SIZES(fmt.Sprintf(format, args...))
+}
+
 func (e *LINKElement) IfSIZES(condition bool, s string) *LINKElement {
 	if condition {
 		e.SIZES(s)
+	}
+	return e
+}
+
+func (e *LINKElement) IfSIZESF(condition bool, format string, args ...any) *LINKElement {
+	if condition {
+		e.SIZES(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -448,6 +534,10 @@ func (e *LINKElement) SIZESRemove(s string) *LINKElement {
 	return e
 }
 
+func (e *LINKElement) SIZESRemoveF(format string, args ...any) *LINKElement {
+	return e.SIZESRemove(fmt.Sprintf(format, args...))
+}
+
 // Specifies the MIME type of the linked resource.
 func (e *LINKElement) TYPE(s string) *LINKElement {
 	if e.StringAttributes == nil {
@@ -457,9 +547,20 @@ func (e *LINKElement) TYPE(s string) *LINKElement {
 	return e
 }
 
+func (e *LINKElement) TYPEF(format string, args ...any) *LINKElement {
+	return e.TYPE(fmt.Sprintf(format, args...))
+}
+
 func (e *LINKElement) IfTYPE(condition bool, s string) *LINKElement {
 	if condition {
 		e.TYPE(s)
+	}
+	return e
+}
+
+func (e *LINKElement) IfTYPEF(condition bool, format string, args ...any) *LINKElement {
+	if condition {
+		e.TYPE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -471,6 +572,10 @@ func (e *LINKElement) TYPERemove(s string) *LINKElement {
 	}
 	e.StringAttributes.Del("type")
 	return e
+}
+
+func (e *LINKElement) TYPERemoveF(format string, args ...any) *LINKElement {
+	return e.TYPERemove(fmt.Sprintf(format, args...))
 }
 
 // The accesskey global attribute provides a hint for generating a keyboard
@@ -918,9 +1023,20 @@ func (e *LINKElement) ID(s string) *LINKElement {
 	return e
 }
 
+func (e *LINKElement) IDF(format string, args ...any) *LINKElement {
+	return e.ID(fmt.Sprintf(format, args...))
+}
+
 func (e *LINKElement) IfID(condition bool, s string) *LINKElement {
 	if condition {
 		e.ID(s)
+	}
+	return e
+}
+
+func (e *LINKElement) IfIDF(condition bool, format string, args ...any) *LINKElement {
+	if condition {
+		e.ID(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -932,6 +1048,10 @@ func (e *LINKElement) IDRemove(s string) *LINKElement {
 	}
 	e.StringAttributes.Del("id")
 	return e
+}
+
+func (e *LINKElement) IDRemoveF(format string, args ...any) *LINKElement {
+	return e.IDRemove(fmt.Sprintf(format, args...))
 }
 
 // The inert global attribute is a Boolean attribute indicating that the browser
@@ -1066,9 +1186,20 @@ func (e *LINKElement) IS(s string) *LINKElement {
 	return e
 }
 
+func (e *LINKElement) ISF(format string, args ...any) *LINKElement {
+	return e.IS(fmt.Sprintf(format, args...))
+}
+
 func (e *LINKElement) IfIS(condition bool, s string) *LINKElement {
 	if condition {
 		e.IS(s)
+	}
+	return e
+}
+
+func (e *LINKElement) IfISF(condition bool, format string, args ...any) *LINKElement {
+	if condition {
+		e.IS(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1080,6 +1211,10 @@ func (e *LINKElement) ISRemove(s string) *LINKElement {
 	}
 	e.StringAttributes.Del("is")
 	return e
+}
+
+func (e *LINKElement) ISRemoveF(format string, args ...any) *LINKElement {
+	return e.ISRemove(fmt.Sprintf(format, args...))
 }
 
 // The itemid global attribute provides microdata in the form of a unique, global
@@ -1103,9 +1238,20 @@ func (e *LINKElement) ITEMID(s string) *LINKElement {
 	return e
 }
 
+func (e *LINKElement) ITEMIDF(format string, args ...any) *LINKElement {
+	return e.ITEMID(fmt.Sprintf(format, args...))
+}
+
 func (e *LINKElement) IfITEMID(condition bool, s string) *LINKElement {
 	if condition {
 		e.ITEMID(s)
+	}
+	return e
+}
+
+func (e *LINKElement) IfITEMIDF(condition bool, format string, args ...any) *LINKElement {
+	if condition {
+		e.ITEMID(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1117,6 +1263,10 @@ func (e *LINKElement) ITEMIDRemove(s string) *LINKElement {
 	}
 	e.StringAttributes.Del("itemid")
 	return e
+}
+
+func (e *LINKElement) ITEMIDRemoveF(format string, args ...any) *LINKElement {
+	return e.ITEMIDRemove(fmt.Sprintf(format, args...))
 }
 
 // The itemprop global attribute is used to add properties to an item
@@ -1135,9 +1285,20 @@ func (e *LINKElement) ITEMPROP(s string) *LINKElement {
 	return e
 }
 
+func (e *LINKElement) ITEMPROPF(format string, args ...any) *LINKElement {
+	return e.ITEMPROP(fmt.Sprintf(format, args...))
+}
+
 func (e *LINKElement) IfITEMPROP(condition bool, s string) *LINKElement {
 	if condition {
 		e.ITEMPROP(s)
+	}
+	return e
+}
+
+func (e *LINKElement) IfITEMPROPF(condition bool, format string, args ...any) *LINKElement {
+	if condition {
+		e.ITEMPROP(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1149,6 +1310,10 @@ func (e *LINKElement) ITEMPROPRemove(s string) *LINKElement {
 	}
 	e.StringAttributes.Del("itemprop")
 	return e
+}
+
+func (e *LINKElement) ITEMPROPRemoveF(format string, args ...any) *LINKElement {
+	return e.ITEMPROPRemove(fmt.Sprintf(format, args...))
 }
 
 // Properties that are not descendants of an element with the itemscope attribute
@@ -1164,9 +1329,20 @@ func (e *LINKElement) ITEMREF(s string) *LINKElement {
 	return e
 }
 
+func (e *LINKElement) ITEMREFF(format string, args ...any) *LINKElement {
+	return e.ITEMREF(fmt.Sprintf(format, args...))
+}
+
 func (e *LINKElement) IfITEMREF(condition bool, s string) *LINKElement {
 	if condition {
 		e.ITEMREF(s)
+	}
+	return e
+}
+
+func (e *LINKElement) IfITEMREFF(condition bool, format string, args ...any) *LINKElement {
+	if condition {
+		e.ITEMREF(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1178,6 +1354,10 @@ func (e *LINKElement) ITEMREFRemove(s string) *LINKElement {
 	}
 	e.StringAttributes.Del("itemref")
 	return e
+}
+
+func (e *LINKElement) ITEMREFRemoveF(format string, args ...any) *LINKElement {
+	return e.ITEMREFRemove(fmt.Sprintf(format, args...))
 }
 
 // The itemscope global attribute is used to add an item to a microdata DOM tree
@@ -1241,9 +1421,20 @@ func (e *LINKElement) ITEMTYPE(s string) *LINKElement {
 	return e
 }
 
+func (e *LINKElement) ITEMTYPEF(format string, args ...any) *LINKElement {
+	return e.ITEMTYPE(fmt.Sprintf(format, args...))
+}
+
 func (e *LINKElement) IfITEMTYPE(condition bool, s string) *LINKElement {
 	if condition {
 		e.ITEMTYPE(s)
+	}
+	return e
+}
+
+func (e *LINKElement) IfITEMTYPEF(condition bool, format string, args ...any) *LINKElement {
+	if condition {
+		e.ITEMTYPE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1255,6 +1446,10 @@ func (e *LINKElement) ITEMTYPERemove(s string) *LINKElement {
 	}
 	e.StringAttributes.Del("itemtype")
 	return e
+}
+
+func (e *LINKElement) ITEMTYPERemoveF(format string, args ...any) *LINKElement {
+	return e.ITEMTYPERemove(fmt.Sprintf(format, args...))
 }
 
 // The lang global attribute helps define the language of an element: the language
@@ -1271,9 +1466,20 @@ func (e *LINKElement) LANG(s string) *LINKElement {
 	return e
 }
 
+func (e *LINKElement) LANGF(format string, args ...any) *LINKElement {
+	return e.LANG(fmt.Sprintf(format, args...))
+}
+
 func (e *LINKElement) IfLANG(condition bool, s string) *LINKElement {
 	if condition {
 		e.LANG(s)
+	}
+	return e
+}
+
+func (e *LINKElement) IfLANGF(condition bool, format string, args ...any) *LINKElement {
+	if condition {
+		e.LANG(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1285,6 +1491,10 @@ func (e *LINKElement) LANGRemove(s string) *LINKElement {
 	}
 	e.StringAttributes.Del("lang")
 	return e
+}
+
+func (e *LINKElement) LANGRemoveF(format string, args ...any) *LINKElement {
+	return e.LANGRemove(fmt.Sprintf(format, args...))
 }
 
 // The nonce global attribute is a unique identifier used to declare inline
@@ -1299,9 +1509,20 @@ func (e *LINKElement) NONCE(s string) *LINKElement {
 	return e
 }
 
+func (e *LINKElement) NONCEF(format string, args ...any) *LINKElement {
+	return e.NONCE(fmt.Sprintf(format, args...))
+}
+
 func (e *LINKElement) IfNONCE(condition bool, s string) *LINKElement {
 	if condition {
 		e.NONCE(s)
+	}
+	return e
+}
+
+func (e *LINKElement) IfNONCEF(condition bool, format string, args ...any) *LINKElement {
+	if condition {
+		e.NONCE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1313,6 +1534,10 @@ func (e *LINKElement) NONCERemove(s string) *LINKElement {
 	}
 	e.StringAttributes.Del("nonce")
 	return e
+}
+
+func (e *LINKElement) NONCERemoveF(format string, args ...any) *LINKElement {
+	return e.NONCERemove(fmt.Sprintf(format, args...))
 }
 
 // The part global attribute contains a space-separated list of the part names of
@@ -1407,9 +1632,20 @@ func (e *LINKElement) ROLE(s string) *LINKElement {
 	return e
 }
 
+func (e *LINKElement) ROLEF(format string, args ...any) *LINKElement {
+	return e.ROLE(fmt.Sprintf(format, args...))
+}
+
 func (e *LINKElement) IfROLE(condition bool, s string) *LINKElement {
 	if condition {
 		e.ROLE(s)
+	}
+	return e
+}
+
+func (e *LINKElement) IfROLEF(condition bool, format string, args ...any) *LINKElement {
+	if condition {
+		e.ROLE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1421,6 +1657,10 @@ func (e *LINKElement) ROLERemove(s string) *LINKElement {
 	}
 	e.StringAttributes.Del("role")
 	return e
+}
+
+func (e *LINKElement) ROLERemoveF(format string, args ...any) *LINKElement {
+	return e.ROLERemove(fmt.Sprintf(format, args...))
 }
 
 // The slot global attribute assigns a slot in a shadow DOM shadow tree to an
@@ -1435,9 +1675,20 @@ func (e *LINKElement) SLOT(s string) *LINKElement {
 	return e
 }
 
+func (e *LINKElement) SLOTF(format string, args ...any) *LINKElement {
+	return e.SLOT(fmt.Sprintf(format, args...))
+}
+
 func (e *LINKElement) IfSLOT(condition bool, s string) *LINKElement {
 	if condition {
 		e.SLOT(s)
+	}
+	return e
+}
+
+func (e *LINKElement) IfSLOTF(condition bool, format string, args ...any) *LINKElement {
+	if condition {
+		e.SLOT(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1449,6 +1700,10 @@ func (e *LINKElement) SLOTRemove(s string) *LINKElement {
 	}
 	e.StringAttributes.Del("slot")
 	return e
+}
+
+func (e *LINKElement) SLOTRemoveF(format string, args ...any) *LINKElement {
+	return e.SLOTRemove(fmt.Sprintf(format, args...))
 }
 
 // The spellcheck global attribute is an enumerated attribute that defines whether
@@ -1653,9 +1908,20 @@ func (e *LINKElement) TITLE(s string) *LINKElement {
 	return e
 }
 
+func (e *LINKElement) TITLEF(format string, args ...any) *LINKElement {
+	return e.TITLE(fmt.Sprintf(format, args...))
+}
+
 func (e *LINKElement) IfTITLE(condition bool, s string) *LINKElement {
 	if condition {
 		e.TITLE(s)
+	}
+	return e
+}
+
+func (e *LINKElement) IfTITLEF(condition bool, format string, args ...any) *LINKElement {
+	if condition {
+		e.TITLE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1667,6 +1933,10 @@ func (e *LINKElement) TITLERemove(s string) *LINKElement {
 	}
 	e.StringAttributes.Del("title")
 	return e
+}
+
+func (e *LINKElement) TITLERemoveF(format string, args ...any) *LINKElement {
+	return e.TITLERemove(fmt.Sprintf(format, args...))
 }
 
 // The translate global attribute is an enumerated attribute that is used to
@@ -1711,7 +1981,7 @@ func (e *LINKElement) DATASTAR_MERGE_STORE(v any) *LINKElement {
 	if err != nil {
 		panic(err)
 	}
-	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	e.CustomDataAttributes.Set("merge-store", string(b))
 	return e
 }
 
@@ -1833,34 +2103,34 @@ func (e *LINKElement) DATASTAR_TEXTRemove() *LINKElement {
 
 // Sets the event handler of the element
 
-type LinkDataOnMod customDataKeyModifier
+type LinkOnMod customDataKeyModifier
 
 // Debounces the event handler
-func LinkDataOnModDebounce(
+func LinkOnModDebounce(
 	d time.Duration,
-) LinkDataOnMod {
+) LinkOnMod {
 	return func() string {
 		return fmt.Sprintf("debounce_%dms", d.Milliseconds())
 	}
 }
 
 // Throttles the event handler
-func LinkDataOnModThrottle(
+func LinkOnModThrottle(
 	d time.Duration,
-) LinkDataOnMod {
+) LinkOnMod {
 	return func() string {
 		return fmt.Sprintf("throttle_%dms", d.Milliseconds())
 	}
 }
 
-func (e *LINKElement) DATASTAR_ON(key string, expression string, modifiers ...LinkDataOnMod) *LINKElement {
+func (e *LINKElement) DATASTAR_ON(key string, expression string, modifiers ...LinkOnMod) *LINKElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
 	key = fmt.Sprintf("data-on-%s", key)
 
-	customMods := lo.Map(modifiers, func(m LinkDataOnMod, i int) customDataKeyModifier {
+	customMods := lo.Map(modifiers, func(m LinkOnMod, i int) customDataKeyModifier {
 		return customDataKeyModifier(m)
 	})
 	key = customDataKey(key, customMods...)
@@ -1868,7 +2138,7 @@ func (e *LINKElement) DATASTAR_ON(key string, expression string, modifiers ...Li
 	return e
 }
 
-func (e *LINKElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...LinkDataOnMod) *LINKElement {
+func (e *LINKElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...LinkOnMod) *LINKElement {
 	if condition {
 		e.DATASTAR_ON(key, expression, modifiers...)
 	}
@@ -1961,7 +2231,7 @@ func (e *LINKElement) DATASTAR_FETCH_INDICATOR(expression string) *LINKElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "DatastarFetchIndicator"
+	key := "data-fetch-indicator"
 
 	e.StringAttributes.Set(key, expression)
 	return e
@@ -1979,7 +2249,7 @@ func (e *LINKElement) DATASTAR_FETCH_INDICATORRemove() *LINKElement {
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("DatastarFetchIndicator")
+	e.StringAttributes.Del("data-fetch-indicator")
 	return e
 }
 

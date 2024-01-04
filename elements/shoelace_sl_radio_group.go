@@ -197,9 +197,20 @@ func (e *SLRADIOGROUPElement) LABEL(s string) *SLRADIOGROUPElement {
 	return e
 }
 
+func (e *SLRADIOGROUPElement) LABELF(format string, args ...any) *SLRADIOGROUPElement {
+	return e.LABEL(fmt.Sprintf(format, args...))
+}
+
 func (e *SLRADIOGROUPElement) IfLABEL(condition bool, s string) *SLRADIOGROUPElement {
 	if condition {
 		e.LABEL(s)
+	}
+	return e
+}
+
+func (e *SLRADIOGROUPElement) IfLABELF(condition bool, format string, args ...any) *SLRADIOGROUPElement {
+	if condition {
+		e.LABEL(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -213,6 +224,10 @@ func (e *SLRADIOGROUPElement) LABELRemove(s string) *SLRADIOGROUPElement {
 	return e
 }
 
+func (e *SLRADIOGROUPElement) LABELRemoveF(format string, args ...any) *SLRADIOGROUPElement {
+	return e.LABELRemove(fmt.Sprintf(format, args...))
+}
+
 func (e *SLRADIOGROUPElement) HELP_TEXT(s string) *SLRADIOGROUPElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
@@ -221,9 +236,20 @@ func (e *SLRADIOGROUPElement) HELP_TEXT(s string) *SLRADIOGROUPElement {
 	return e
 }
 
+func (e *SLRADIOGROUPElement) HELP_TEXTF(format string, args ...any) *SLRADIOGROUPElement {
+	return e.HELP_TEXT(fmt.Sprintf(format, args...))
+}
+
 func (e *SLRADIOGROUPElement) IfHELP_TEXT(condition bool, s string) *SLRADIOGROUPElement {
 	if condition {
 		e.HELP_TEXT(s)
+	}
+	return e
+}
+
+func (e *SLRADIOGROUPElement) IfHELP_TEXTF(condition bool, format string, args ...any) *SLRADIOGROUPElement {
+	if condition {
+		e.HELP_TEXT(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -237,6 +263,10 @@ func (e *SLRADIOGROUPElement) HELP_TEXTRemove(s string) *SLRADIOGROUPElement {
 	return e
 }
 
+func (e *SLRADIOGROUPElement) HELP_TEXTRemoveF(format string, args ...any) *SLRADIOGROUPElement {
+	return e.HELP_TEXTRemove(fmt.Sprintf(format, args...))
+}
+
 func (e *SLRADIOGROUPElement) NAME(s string) *SLRADIOGROUPElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
@@ -245,9 +275,20 @@ func (e *SLRADIOGROUPElement) NAME(s string) *SLRADIOGROUPElement {
 	return e
 }
 
+func (e *SLRADIOGROUPElement) NAMEF(format string, args ...any) *SLRADIOGROUPElement {
+	return e.NAME(fmt.Sprintf(format, args...))
+}
+
 func (e *SLRADIOGROUPElement) IfNAME(condition bool, s string) *SLRADIOGROUPElement {
 	if condition {
 		e.NAME(s)
+	}
+	return e
+}
+
+func (e *SLRADIOGROUPElement) IfNAMEF(condition bool, format string, args ...any) *SLRADIOGROUPElement {
+	if condition {
+		e.NAME(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -261,6 +302,10 @@ func (e *SLRADIOGROUPElement) NAMERemove(s string) *SLRADIOGROUPElement {
 	return e
 }
 
+func (e *SLRADIOGROUPElement) NAMERemoveF(format string, args ...any) *SLRADIOGROUPElement {
+	return e.NAMERemove(fmt.Sprintf(format, args...))
+}
+
 func (e *SLRADIOGROUPElement) VALUE(s string) *SLRADIOGROUPElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
@@ -269,9 +314,20 @@ func (e *SLRADIOGROUPElement) VALUE(s string) *SLRADIOGROUPElement {
 	return e
 }
 
+func (e *SLRADIOGROUPElement) VALUEF(format string, args ...any) *SLRADIOGROUPElement {
+	return e.VALUE(fmt.Sprintf(format, args...))
+}
+
 func (e *SLRADIOGROUPElement) IfVALUE(condition bool, s string) *SLRADIOGROUPElement {
 	if condition {
 		e.VALUE(s)
+	}
+	return e
+}
+
+func (e *SLRADIOGROUPElement) IfVALUEF(condition bool, format string, args ...any) *SLRADIOGROUPElement {
+	if condition {
+		e.VALUE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -283,6 +339,10 @@ func (e *SLRADIOGROUPElement) VALUERemove(s string) *SLRADIOGROUPElement {
 	}
 	e.StringAttributes.Del("value")
 	return e
+}
+
+func (e *SLRADIOGROUPElement) VALUERemoveF(format string, args ...any) *SLRADIOGROUPElement {
+	return e.VALUERemove(fmt.Sprintf(format, args...))
 }
 
 func (e *SLRADIOGROUPElement) REQUIRED() *SLRADIOGROUPElement {
@@ -332,7 +392,7 @@ func (e *SLRADIOGROUPElement) DATASTAR_MERGE_STORE(v any) *SLRADIOGROUPElement {
 	if err != nil {
 		panic(err)
 	}
-	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	e.CustomDataAttributes.Set("merge-store", string(b))
 	return e
 }
 
@@ -454,34 +514,34 @@ func (e *SLRADIOGROUPElement) DATASTAR_TEXTRemove() *SLRADIOGROUPElement {
 
 // Sets the event handler of the element
 
-type SLRadioGroupDataOnMod customDataKeyModifier
+type SLRadioGroupOnMod customDataKeyModifier
 
 // Debounces the event handler
-func SLRadioGroupDataOnModDebounce(
+func SLRadioGroupOnModDebounce(
 	d time.Duration,
-) SLRadioGroupDataOnMod {
+) SLRadioGroupOnMod {
 	return func() string {
 		return fmt.Sprintf("debounce_%dms", d.Milliseconds())
 	}
 }
 
 // Throttles the event handler
-func SLRadioGroupDataOnModThrottle(
+func SLRadioGroupOnModThrottle(
 	d time.Duration,
-) SLRadioGroupDataOnMod {
+) SLRadioGroupOnMod {
 	return func() string {
 		return fmt.Sprintf("throttle_%dms", d.Milliseconds())
 	}
 }
 
-func (e *SLRADIOGROUPElement) DATASTAR_ON(key string, expression string, modifiers ...SLRadioGroupDataOnMod) *SLRADIOGROUPElement {
+func (e *SLRADIOGROUPElement) DATASTAR_ON(key string, expression string, modifiers ...SLRadioGroupOnMod) *SLRADIOGROUPElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
 	key = fmt.Sprintf("data-on-%s", key)
 
-	customMods := lo.Map(modifiers, func(m SLRadioGroupDataOnMod, i int) customDataKeyModifier {
+	customMods := lo.Map(modifiers, func(m SLRadioGroupOnMod, i int) customDataKeyModifier {
 		return customDataKeyModifier(m)
 	})
 	key = customDataKey(key, customMods...)
@@ -489,7 +549,7 @@ func (e *SLRADIOGROUPElement) DATASTAR_ON(key string, expression string, modifie
 	return e
 }
 
-func (e *SLRADIOGROUPElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SLRadioGroupDataOnMod) *SLRADIOGROUPElement {
+func (e *SLRADIOGROUPElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SLRadioGroupOnMod) *SLRADIOGROUPElement {
 	if condition {
 		e.DATASTAR_ON(key, expression, modifiers...)
 	}
@@ -582,7 +642,7 @@ func (e *SLRADIOGROUPElement) DATASTAR_FETCH_INDICATOR(expression string) *SLRAD
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "DatastarFetchIndicator"
+	key := "data-fetch-indicator"
 
 	e.StringAttributes.Set(key, expression)
 	return e
@@ -600,7 +660,7 @@ func (e *SLRADIOGROUPElement) DATASTAR_FETCH_INDICATORRemove() *SLRADIOGROUPElem
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("DatastarFetchIndicator")
+	e.StringAttributes.Del("data-fetch-indicator")
 	return e
 }
 

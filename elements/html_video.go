@@ -418,9 +418,20 @@ func (e *VIDEOElement) POSTER(s string) *VIDEOElement {
 	return e
 }
 
+func (e *VIDEOElement) POSTERF(format string, args ...any) *VIDEOElement {
+	return e.POSTER(fmt.Sprintf(format, args...))
+}
+
 func (e *VIDEOElement) IfPOSTER(condition bool, s string) *VIDEOElement {
 	if condition {
 		e.POSTER(s)
+	}
+	return e
+}
+
+func (e *VIDEOElement) IfPOSTERF(condition bool, format string, args ...any) *VIDEOElement {
+	if condition {
+		e.POSTER(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -432,6 +443,10 @@ func (e *VIDEOElement) POSTERRemove(s string) *VIDEOElement {
 	}
 	e.StringAttributes.Del("poster")
 	return e
+}
+
+func (e *VIDEOElement) POSTERRemoveF(format string, args ...any) *VIDEOElement {
+	return e.POSTERRemove(fmt.Sprintf(format, args...))
 }
 
 // Hints how much buffering the media resource will likely need.
@@ -472,9 +487,20 @@ func (e *VIDEOElement) SRC(s string) *VIDEOElement {
 	return e
 }
 
+func (e *VIDEOElement) SRCF(format string, args ...any) *VIDEOElement {
+	return e.SRC(fmt.Sprintf(format, args...))
+}
+
 func (e *VIDEOElement) IfSRC(condition bool, s string) *VIDEOElement {
 	if condition {
 		e.SRC(s)
+	}
+	return e
+}
+
+func (e *VIDEOElement) IfSRCF(condition bool, format string, args ...any) *VIDEOElement {
+	if condition {
+		e.SRC(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -486,6 +512,10 @@ func (e *VIDEOElement) SRCRemove(s string) *VIDEOElement {
 	}
 	e.StringAttributes.Del("src")
 	return e
+}
+
+func (e *VIDEOElement) SRCRemoveF(format string, args ...any) *VIDEOElement {
+	return e.SRCRemove(fmt.Sprintf(format, args...))
 }
 
 // Horizontal dimension.
@@ -958,9 +988,20 @@ func (e *VIDEOElement) ID(s string) *VIDEOElement {
 	return e
 }
 
+func (e *VIDEOElement) IDF(format string, args ...any) *VIDEOElement {
+	return e.ID(fmt.Sprintf(format, args...))
+}
+
 func (e *VIDEOElement) IfID(condition bool, s string) *VIDEOElement {
 	if condition {
 		e.ID(s)
+	}
+	return e
+}
+
+func (e *VIDEOElement) IfIDF(condition bool, format string, args ...any) *VIDEOElement {
+	if condition {
+		e.ID(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -972,6 +1013,10 @@ func (e *VIDEOElement) IDRemove(s string) *VIDEOElement {
 	}
 	e.StringAttributes.Del("id")
 	return e
+}
+
+func (e *VIDEOElement) IDRemoveF(format string, args ...any) *VIDEOElement {
+	return e.IDRemove(fmt.Sprintf(format, args...))
 }
 
 // The inert global attribute is a Boolean attribute indicating that the browser
@@ -1106,9 +1151,20 @@ func (e *VIDEOElement) IS(s string) *VIDEOElement {
 	return e
 }
 
+func (e *VIDEOElement) ISF(format string, args ...any) *VIDEOElement {
+	return e.IS(fmt.Sprintf(format, args...))
+}
+
 func (e *VIDEOElement) IfIS(condition bool, s string) *VIDEOElement {
 	if condition {
 		e.IS(s)
+	}
+	return e
+}
+
+func (e *VIDEOElement) IfISF(condition bool, format string, args ...any) *VIDEOElement {
+	if condition {
+		e.IS(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1120,6 +1176,10 @@ func (e *VIDEOElement) ISRemove(s string) *VIDEOElement {
 	}
 	e.StringAttributes.Del("is")
 	return e
+}
+
+func (e *VIDEOElement) ISRemoveF(format string, args ...any) *VIDEOElement {
+	return e.ISRemove(fmt.Sprintf(format, args...))
 }
 
 // The itemid global attribute provides microdata in the form of a unique, global
@@ -1143,9 +1203,20 @@ func (e *VIDEOElement) ITEMID(s string) *VIDEOElement {
 	return e
 }
 
+func (e *VIDEOElement) ITEMIDF(format string, args ...any) *VIDEOElement {
+	return e.ITEMID(fmt.Sprintf(format, args...))
+}
+
 func (e *VIDEOElement) IfITEMID(condition bool, s string) *VIDEOElement {
 	if condition {
 		e.ITEMID(s)
+	}
+	return e
+}
+
+func (e *VIDEOElement) IfITEMIDF(condition bool, format string, args ...any) *VIDEOElement {
+	if condition {
+		e.ITEMID(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1157,6 +1228,10 @@ func (e *VIDEOElement) ITEMIDRemove(s string) *VIDEOElement {
 	}
 	e.StringAttributes.Del("itemid")
 	return e
+}
+
+func (e *VIDEOElement) ITEMIDRemoveF(format string, args ...any) *VIDEOElement {
+	return e.ITEMIDRemove(fmt.Sprintf(format, args...))
 }
 
 // The itemprop global attribute is used to add properties to an item
@@ -1175,9 +1250,20 @@ func (e *VIDEOElement) ITEMPROP(s string) *VIDEOElement {
 	return e
 }
 
+func (e *VIDEOElement) ITEMPROPF(format string, args ...any) *VIDEOElement {
+	return e.ITEMPROP(fmt.Sprintf(format, args...))
+}
+
 func (e *VIDEOElement) IfITEMPROP(condition bool, s string) *VIDEOElement {
 	if condition {
 		e.ITEMPROP(s)
+	}
+	return e
+}
+
+func (e *VIDEOElement) IfITEMPROPF(condition bool, format string, args ...any) *VIDEOElement {
+	if condition {
+		e.ITEMPROP(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1189,6 +1275,10 @@ func (e *VIDEOElement) ITEMPROPRemove(s string) *VIDEOElement {
 	}
 	e.StringAttributes.Del("itemprop")
 	return e
+}
+
+func (e *VIDEOElement) ITEMPROPRemoveF(format string, args ...any) *VIDEOElement {
+	return e.ITEMPROPRemove(fmt.Sprintf(format, args...))
 }
 
 // Properties that are not descendants of an element with the itemscope attribute
@@ -1204,9 +1294,20 @@ func (e *VIDEOElement) ITEMREF(s string) *VIDEOElement {
 	return e
 }
 
+func (e *VIDEOElement) ITEMREFF(format string, args ...any) *VIDEOElement {
+	return e.ITEMREF(fmt.Sprintf(format, args...))
+}
+
 func (e *VIDEOElement) IfITEMREF(condition bool, s string) *VIDEOElement {
 	if condition {
 		e.ITEMREF(s)
+	}
+	return e
+}
+
+func (e *VIDEOElement) IfITEMREFF(condition bool, format string, args ...any) *VIDEOElement {
+	if condition {
+		e.ITEMREF(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1218,6 +1319,10 @@ func (e *VIDEOElement) ITEMREFRemove(s string) *VIDEOElement {
 	}
 	e.StringAttributes.Del("itemref")
 	return e
+}
+
+func (e *VIDEOElement) ITEMREFRemoveF(format string, args ...any) *VIDEOElement {
+	return e.ITEMREFRemove(fmt.Sprintf(format, args...))
 }
 
 // The itemscope global attribute is used to add an item to a microdata DOM tree
@@ -1281,9 +1386,20 @@ func (e *VIDEOElement) ITEMTYPE(s string) *VIDEOElement {
 	return e
 }
 
+func (e *VIDEOElement) ITEMTYPEF(format string, args ...any) *VIDEOElement {
+	return e.ITEMTYPE(fmt.Sprintf(format, args...))
+}
+
 func (e *VIDEOElement) IfITEMTYPE(condition bool, s string) *VIDEOElement {
 	if condition {
 		e.ITEMTYPE(s)
+	}
+	return e
+}
+
+func (e *VIDEOElement) IfITEMTYPEF(condition bool, format string, args ...any) *VIDEOElement {
+	if condition {
+		e.ITEMTYPE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1295,6 +1411,10 @@ func (e *VIDEOElement) ITEMTYPERemove(s string) *VIDEOElement {
 	}
 	e.StringAttributes.Del("itemtype")
 	return e
+}
+
+func (e *VIDEOElement) ITEMTYPERemoveF(format string, args ...any) *VIDEOElement {
+	return e.ITEMTYPERemove(fmt.Sprintf(format, args...))
 }
 
 // The lang global attribute helps define the language of an element: the language
@@ -1311,9 +1431,20 @@ func (e *VIDEOElement) LANG(s string) *VIDEOElement {
 	return e
 }
 
+func (e *VIDEOElement) LANGF(format string, args ...any) *VIDEOElement {
+	return e.LANG(fmt.Sprintf(format, args...))
+}
+
 func (e *VIDEOElement) IfLANG(condition bool, s string) *VIDEOElement {
 	if condition {
 		e.LANG(s)
+	}
+	return e
+}
+
+func (e *VIDEOElement) IfLANGF(condition bool, format string, args ...any) *VIDEOElement {
+	if condition {
+		e.LANG(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1325,6 +1456,10 @@ func (e *VIDEOElement) LANGRemove(s string) *VIDEOElement {
 	}
 	e.StringAttributes.Del("lang")
 	return e
+}
+
+func (e *VIDEOElement) LANGRemoveF(format string, args ...any) *VIDEOElement {
+	return e.LANGRemove(fmt.Sprintf(format, args...))
 }
 
 // The nonce global attribute is a unique identifier used to declare inline
@@ -1339,9 +1474,20 @@ func (e *VIDEOElement) NONCE(s string) *VIDEOElement {
 	return e
 }
 
+func (e *VIDEOElement) NONCEF(format string, args ...any) *VIDEOElement {
+	return e.NONCE(fmt.Sprintf(format, args...))
+}
+
 func (e *VIDEOElement) IfNONCE(condition bool, s string) *VIDEOElement {
 	if condition {
 		e.NONCE(s)
+	}
+	return e
+}
+
+func (e *VIDEOElement) IfNONCEF(condition bool, format string, args ...any) *VIDEOElement {
+	if condition {
+		e.NONCE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1353,6 +1499,10 @@ func (e *VIDEOElement) NONCERemove(s string) *VIDEOElement {
 	}
 	e.StringAttributes.Del("nonce")
 	return e
+}
+
+func (e *VIDEOElement) NONCERemoveF(format string, args ...any) *VIDEOElement {
+	return e.NONCERemove(fmt.Sprintf(format, args...))
 }
 
 // The part global attribute contains a space-separated list of the part names of
@@ -1447,9 +1597,20 @@ func (e *VIDEOElement) ROLE(s string) *VIDEOElement {
 	return e
 }
 
+func (e *VIDEOElement) ROLEF(format string, args ...any) *VIDEOElement {
+	return e.ROLE(fmt.Sprintf(format, args...))
+}
+
 func (e *VIDEOElement) IfROLE(condition bool, s string) *VIDEOElement {
 	if condition {
 		e.ROLE(s)
+	}
+	return e
+}
+
+func (e *VIDEOElement) IfROLEF(condition bool, format string, args ...any) *VIDEOElement {
+	if condition {
+		e.ROLE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1461,6 +1622,10 @@ func (e *VIDEOElement) ROLERemove(s string) *VIDEOElement {
 	}
 	e.StringAttributes.Del("role")
 	return e
+}
+
+func (e *VIDEOElement) ROLERemoveF(format string, args ...any) *VIDEOElement {
+	return e.ROLERemove(fmt.Sprintf(format, args...))
 }
 
 // The slot global attribute assigns a slot in a shadow DOM shadow tree to an
@@ -1475,9 +1640,20 @@ func (e *VIDEOElement) SLOT(s string) *VIDEOElement {
 	return e
 }
 
+func (e *VIDEOElement) SLOTF(format string, args ...any) *VIDEOElement {
+	return e.SLOT(fmt.Sprintf(format, args...))
+}
+
 func (e *VIDEOElement) IfSLOT(condition bool, s string) *VIDEOElement {
 	if condition {
 		e.SLOT(s)
+	}
+	return e
+}
+
+func (e *VIDEOElement) IfSLOTF(condition bool, format string, args ...any) *VIDEOElement {
+	if condition {
+		e.SLOT(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1489,6 +1665,10 @@ func (e *VIDEOElement) SLOTRemove(s string) *VIDEOElement {
 	}
 	e.StringAttributes.Del("slot")
 	return e
+}
+
+func (e *VIDEOElement) SLOTRemoveF(format string, args ...any) *VIDEOElement {
+	return e.SLOTRemove(fmt.Sprintf(format, args...))
 }
 
 // The spellcheck global attribute is an enumerated attribute that defines whether
@@ -1693,9 +1873,20 @@ func (e *VIDEOElement) TITLE(s string) *VIDEOElement {
 	return e
 }
 
+func (e *VIDEOElement) TITLEF(format string, args ...any) *VIDEOElement {
+	return e.TITLE(fmt.Sprintf(format, args...))
+}
+
 func (e *VIDEOElement) IfTITLE(condition bool, s string) *VIDEOElement {
 	if condition {
 		e.TITLE(s)
+	}
+	return e
+}
+
+func (e *VIDEOElement) IfTITLEF(condition bool, format string, args ...any) *VIDEOElement {
+	if condition {
+		e.TITLE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1707,6 +1898,10 @@ func (e *VIDEOElement) TITLERemove(s string) *VIDEOElement {
 	}
 	e.StringAttributes.Del("title")
 	return e
+}
+
+func (e *VIDEOElement) TITLERemoveF(format string, args ...any) *VIDEOElement {
+	return e.TITLERemove(fmt.Sprintf(format, args...))
 }
 
 // The translate global attribute is an enumerated attribute that is used to
@@ -1751,7 +1946,7 @@ func (e *VIDEOElement) DATASTAR_MERGE_STORE(v any) *VIDEOElement {
 	if err != nil {
 		panic(err)
 	}
-	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	e.CustomDataAttributes.Set("merge-store", string(b))
 	return e
 }
 
@@ -1873,34 +2068,34 @@ func (e *VIDEOElement) DATASTAR_TEXTRemove() *VIDEOElement {
 
 // Sets the event handler of the element
 
-type VideoDataOnMod customDataKeyModifier
+type VideoOnMod customDataKeyModifier
 
 // Debounces the event handler
-func VideoDataOnModDebounce(
+func VideoOnModDebounce(
 	d time.Duration,
-) VideoDataOnMod {
+) VideoOnMod {
 	return func() string {
 		return fmt.Sprintf("debounce_%dms", d.Milliseconds())
 	}
 }
 
 // Throttles the event handler
-func VideoDataOnModThrottle(
+func VideoOnModThrottle(
 	d time.Duration,
-) VideoDataOnMod {
+) VideoOnMod {
 	return func() string {
 		return fmt.Sprintf("throttle_%dms", d.Milliseconds())
 	}
 }
 
-func (e *VIDEOElement) DATASTAR_ON(key string, expression string, modifiers ...VideoDataOnMod) *VIDEOElement {
+func (e *VIDEOElement) DATASTAR_ON(key string, expression string, modifiers ...VideoOnMod) *VIDEOElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
 	key = fmt.Sprintf("data-on-%s", key)
 
-	customMods := lo.Map(modifiers, func(m VideoDataOnMod, i int) customDataKeyModifier {
+	customMods := lo.Map(modifiers, func(m VideoOnMod, i int) customDataKeyModifier {
 		return customDataKeyModifier(m)
 	})
 	key = customDataKey(key, customMods...)
@@ -1908,7 +2103,7 @@ func (e *VIDEOElement) DATASTAR_ON(key string, expression string, modifiers ...V
 	return e
 }
 
-func (e *VIDEOElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...VideoDataOnMod) *VIDEOElement {
+func (e *VIDEOElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...VideoOnMod) *VIDEOElement {
 	if condition {
 		e.DATASTAR_ON(key, expression, modifiers...)
 	}
@@ -2001,7 +2196,7 @@ func (e *VIDEOElement) DATASTAR_FETCH_INDICATOR(expression string) *VIDEOElement
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "DatastarFetchIndicator"
+	key := "data-fetch-indicator"
 
 	e.StringAttributes.Set(key, expression)
 	return e
@@ -2019,7 +2214,7 @@ func (e *VIDEOElement) DATASTAR_FETCH_INDICATORRemove() *VIDEOElement {
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("DatastarFetchIndicator")
+	e.StringAttributes.Del("data-fetch-indicator")
 	return e
 }
 

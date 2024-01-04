@@ -230,9 +230,20 @@ func (e *SVGSYMBOLElement) ID(s string) *SVGSYMBOLElement {
 	return e
 }
 
+func (e *SVGSYMBOLElement) IDF(format string, args ...any) *SVGSYMBOLElement {
+	return e.ID(fmt.Sprintf(format, args...))
+}
+
 func (e *SVGSYMBOLElement) IfID(condition bool, s string) *SVGSYMBOLElement {
 	if condition {
 		e.ID(s)
+	}
+	return e
+}
+
+func (e *SVGSYMBOLElement) IfIDF(condition bool, format string, args ...any) *SVGSYMBOLElement {
+	if condition {
+		e.ID(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -244,6 +255,10 @@ func (e *SVGSYMBOLElement) IDRemove(s string) *SVGSYMBOLElement {
 	}
 	e.StringAttributes.Del("id")
 	return e
+}
+
+func (e *SVGSYMBOLElement) IDRemoveF(format string, args ...any) *SVGSYMBOLElement {
+	return e.IDRemove(fmt.Sprintf(format, args...))
 }
 
 // Specifies one or more classnames for an element (refers to a class in a style
@@ -382,7 +397,7 @@ func (e *SVGSYMBOLElement) DATASTAR_MERGE_STORE(v any) *SVGSYMBOLElement {
 	if err != nil {
 		panic(err)
 	}
-	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	e.CustomDataAttributes.Set("merge-store", string(b))
 	return e
 }
 
@@ -504,34 +519,34 @@ func (e *SVGSYMBOLElement) DATASTAR_TEXTRemove() *SVGSYMBOLElement {
 
 // Sets the event handler of the element
 
-type SVGSymbolDataOnMod customDataKeyModifier
+type SVGSymbolOnMod customDataKeyModifier
 
 // Debounces the event handler
-func SVGSymbolDataOnModDebounce(
+func SVGSymbolOnModDebounce(
 	d time.Duration,
-) SVGSymbolDataOnMod {
+) SVGSymbolOnMod {
 	return func() string {
 		return fmt.Sprintf("debounce_%dms", d.Milliseconds())
 	}
 }
 
 // Throttles the event handler
-func SVGSymbolDataOnModThrottle(
+func SVGSymbolOnModThrottle(
 	d time.Duration,
-) SVGSymbolDataOnMod {
+) SVGSymbolOnMod {
 	return func() string {
 		return fmt.Sprintf("throttle_%dms", d.Milliseconds())
 	}
 }
 
-func (e *SVGSYMBOLElement) DATASTAR_ON(key string, expression string, modifiers ...SVGSymbolDataOnMod) *SVGSYMBOLElement {
+func (e *SVGSYMBOLElement) DATASTAR_ON(key string, expression string, modifiers ...SVGSymbolOnMod) *SVGSYMBOLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
 	key = fmt.Sprintf("data-on-%s", key)
 
-	customMods := lo.Map(modifiers, func(m SVGSymbolDataOnMod, i int) customDataKeyModifier {
+	customMods := lo.Map(modifiers, func(m SVGSymbolOnMod, i int) customDataKeyModifier {
 		return customDataKeyModifier(m)
 	})
 	key = customDataKey(key, customMods...)
@@ -539,7 +554,7 @@ func (e *SVGSYMBOLElement) DATASTAR_ON(key string, expression string, modifiers 
 	return e
 }
 
-func (e *SVGSYMBOLElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SVGSymbolDataOnMod) *SVGSYMBOLElement {
+func (e *SVGSYMBOLElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SVGSymbolOnMod) *SVGSYMBOLElement {
 	if condition {
 		e.DATASTAR_ON(key, expression, modifiers...)
 	}
@@ -632,7 +647,7 @@ func (e *SVGSYMBOLElement) DATASTAR_FETCH_INDICATOR(expression string) *SVGSYMBO
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "DatastarFetchIndicator"
+	key := "data-fetch-indicator"
 
 	e.StringAttributes.Set(key, expression)
 	return e
@@ -650,7 +665,7 @@ func (e *SVGSYMBOLElement) DATASTAR_FETCH_INDICATORRemove() *SVGSYMBOLElement {
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("DatastarFetchIndicator")
+	e.StringAttributes.Del("data-fetch-indicator")
 	return e
 }
 

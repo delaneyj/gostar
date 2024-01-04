@@ -234,9 +234,20 @@ func (e *SLSELECTElement) LABEL(s string) *SLSELECTElement {
 	return e
 }
 
+func (e *SLSELECTElement) LABELF(format string, args ...any) *SLSELECTElement {
+	return e.LABEL(fmt.Sprintf(format, args...))
+}
+
 func (e *SLSELECTElement) IfLABEL(condition bool, s string) *SLSELECTElement {
 	if condition {
 		e.LABEL(s)
+	}
+	return e
+}
+
+func (e *SLSELECTElement) IfLABELF(condition bool, format string, args ...any) *SLSELECTElement {
+	if condition {
+		e.LABEL(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -250,6 +261,10 @@ func (e *SLSELECTElement) LABELRemove(s string) *SLSELECTElement {
 	return e
 }
 
+func (e *SLSELECTElement) LABELRemoveF(format string, args ...any) *SLSELECTElement {
+	return e.LABELRemove(fmt.Sprintf(format, args...))
+}
+
 func (e *SLSELECTElement) HELP_TEXT(s string) *SLSELECTElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
@@ -258,9 +273,20 @@ func (e *SLSELECTElement) HELP_TEXT(s string) *SLSELECTElement {
 	return e
 }
 
+func (e *SLSELECTElement) HELP_TEXTF(format string, args ...any) *SLSELECTElement {
+	return e.HELP_TEXT(fmt.Sprintf(format, args...))
+}
+
 func (e *SLSELECTElement) IfHELP_TEXT(condition bool, s string) *SLSELECTElement {
 	if condition {
 		e.HELP_TEXT(s)
+	}
+	return e
+}
+
+func (e *SLSELECTElement) IfHELP_TEXTF(condition bool, format string, args ...any) *SLSELECTElement {
+	if condition {
+		e.HELP_TEXT(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -274,6 +300,10 @@ func (e *SLSELECTElement) HELP_TEXTRemove(s string) *SLSELECTElement {
 	return e
 }
 
+func (e *SLSELECTElement) HELP_TEXTRemoveF(format string, args ...any) *SLSELECTElement {
+	return e.HELP_TEXTRemove(fmt.Sprintf(format, args...))
+}
+
 func (e *SLSELECTElement) PLACEHOLDER(s string) *SLSELECTElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
@@ -282,9 +312,20 @@ func (e *SLSELECTElement) PLACEHOLDER(s string) *SLSELECTElement {
 	return e
 }
 
+func (e *SLSELECTElement) PLACEHOLDERF(format string, args ...any) *SLSELECTElement {
+	return e.PLACEHOLDER(fmt.Sprintf(format, args...))
+}
+
 func (e *SLSELECTElement) IfPLACEHOLDER(condition bool, s string) *SLSELECTElement {
 	if condition {
 		e.PLACEHOLDER(s)
+	}
+	return e
+}
+
+func (e *SLSELECTElement) IfPLACEHOLDERF(condition bool, format string, args ...any) *SLSELECTElement {
+	if condition {
+		e.PLACEHOLDER(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -296,6 +337,10 @@ func (e *SLSELECTElement) PLACEHOLDERRemove(s string) *SLSELECTElement {
 	}
 	e.StringAttributes.Del("placeholder")
 	return e
+}
+
+func (e *SLSELECTElement) PLACEHOLDERRemoveF(format string, args ...any) *SLSELECTElement {
+	return e.PLACEHOLDERRemove(fmt.Sprintf(format, args...))
 }
 
 func (e *SLSELECTElement) CLEARABLE() *SLSELECTElement {
@@ -454,9 +499,20 @@ func (e *SLSELECTElement) VALUE(s string) *SLSELECTElement {
 	return e
 }
 
+func (e *SLSELECTElement) VALUEF(format string, args ...any) *SLSELECTElement {
+	return e.VALUE(fmt.Sprintf(format, args...))
+}
+
 func (e *SLSELECTElement) IfVALUE(condition bool, s string) *SLSELECTElement {
 	if condition {
 		e.VALUE(s)
+	}
+	return e
+}
+
+func (e *SLSELECTElement) IfVALUEF(condition bool, format string, args ...any) *SLSELECTElement {
+	if condition {
+		e.VALUE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -468,6 +524,10 @@ func (e *SLSELECTElement) VALUERemove(s string) *SLSELECTElement {
 	}
 	e.StringAttributes.Del("value")
 	return e
+}
+
+func (e *SLSELECTElement) VALUERemoveF(format string, args ...any) *SLSELECTElement {
+	return e.VALUERemove(fmt.Sprintf(format, args...))
 }
 
 func (e *SLSELECTElement) PLACEMENT(c SLSelectPlacementChoice) *SLSELECTElement {
@@ -506,7 +566,7 @@ func (e *SLSELECTElement) DATASTAR_MERGE_STORE(v any) *SLSELECTElement {
 	if err != nil {
 		panic(err)
 	}
-	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	e.CustomDataAttributes.Set("merge-store", string(b))
 	return e
 }
 
@@ -628,34 +688,34 @@ func (e *SLSELECTElement) DATASTAR_TEXTRemove() *SLSELECTElement {
 
 // Sets the event handler of the element
 
-type SLSelectDataOnMod customDataKeyModifier
+type SLSelectOnMod customDataKeyModifier
 
 // Debounces the event handler
-func SLSelectDataOnModDebounce(
+func SLSelectOnModDebounce(
 	d time.Duration,
-) SLSelectDataOnMod {
+) SLSelectOnMod {
 	return func() string {
 		return fmt.Sprintf("debounce_%dms", d.Milliseconds())
 	}
 }
 
 // Throttles the event handler
-func SLSelectDataOnModThrottle(
+func SLSelectOnModThrottle(
 	d time.Duration,
-) SLSelectDataOnMod {
+) SLSelectOnMod {
 	return func() string {
 		return fmt.Sprintf("throttle_%dms", d.Milliseconds())
 	}
 }
 
-func (e *SLSELECTElement) DATASTAR_ON(key string, expression string, modifiers ...SLSelectDataOnMod) *SLSELECTElement {
+func (e *SLSELECTElement) DATASTAR_ON(key string, expression string, modifiers ...SLSelectOnMod) *SLSELECTElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
 	key = fmt.Sprintf("data-on-%s", key)
 
-	customMods := lo.Map(modifiers, func(m SLSelectDataOnMod, i int) customDataKeyModifier {
+	customMods := lo.Map(modifiers, func(m SLSelectOnMod, i int) customDataKeyModifier {
 		return customDataKeyModifier(m)
 	})
 	key = customDataKey(key, customMods...)
@@ -663,7 +723,7 @@ func (e *SLSELECTElement) DATASTAR_ON(key string, expression string, modifiers .
 	return e
 }
 
-func (e *SLSELECTElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SLSelectDataOnMod) *SLSELECTElement {
+func (e *SLSELECTElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SLSelectOnMod) *SLSELECTElement {
 	if condition {
 		e.DATASTAR_ON(key, expression, modifiers...)
 	}
@@ -756,7 +816,7 @@ func (e *SLSELECTElement) DATASTAR_FETCH_INDICATOR(expression string) *SLSELECTE
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "DatastarFetchIndicator"
+	key := "data-fetch-indicator"
 
 	e.StringAttributes.Set(key, expression)
 	return e
@@ -774,7 +834,7 @@ func (e *SLSELECTElement) DATASTAR_FETCH_INDICATORRemove() *SLSELECTElement {
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("DatastarFetchIndicator")
+	e.StringAttributes.Del("data-fetch-indicator")
 	return e
 }
 

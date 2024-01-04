@@ -236,9 +236,20 @@ func (e *SVGELLIPSEElement) ID(s string) *SVGELLIPSEElement {
 	return e
 }
 
+func (e *SVGELLIPSEElement) IDF(format string, args ...any) *SVGELLIPSEElement {
+	return e.ID(fmt.Sprintf(format, args...))
+}
+
 func (e *SVGELLIPSEElement) IfID(condition bool, s string) *SVGELLIPSEElement {
 	if condition {
 		e.ID(s)
+	}
+	return e
+}
+
+func (e *SVGELLIPSEElement) IfIDF(condition bool, format string, args ...any) *SVGELLIPSEElement {
+	if condition {
+		e.ID(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -250,6 +261,10 @@ func (e *SVGELLIPSEElement) IDRemove(s string) *SVGELLIPSEElement {
 	}
 	e.StringAttributes.Del("id")
 	return e
+}
+
+func (e *SVGELLIPSEElement) IDRemoveF(format string, args ...any) *SVGELLIPSEElement {
+	return e.IDRemove(fmt.Sprintf(format, args...))
 }
 
 // Specifies one or more classnames for an element (refers to a class in a style
@@ -388,7 +403,7 @@ func (e *SVGELLIPSEElement) DATASTAR_MERGE_STORE(v any) *SVGELLIPSEElement {
 	if err != nil {
 		panic(err)
 	}
-	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	e.CustomDataAttributes.Set("merge-store", string(b))
 	return e
 }
 
@@ -510,34 +525,34 @@ func (e *SVGELLIPSEElement) DATASTAR_TEXTRemove() *SVGELLIPSEElement {
 
 // Sets the event handler of the element
 
-type SVGEllipseDataOnMod customDataKeyModifier
+type SVGEllipseOnMod customDataKeyModifier
 
 // Debounces the event handler
-func SVGEllipseDataOnModDebounce(
+func SVGEllipseOnModDebounce(
 	d time.Duration,
-) SVGEllipseDataOnMod {
+) SVGEllipseOnMod {
 	return func() string {
 		return fmt.Sprintf("debounce_%dms", d.Milliseconds())
 	}
 }
 
 // Throttles the event handler
-func SVGEllipseDataOnModThrottle(
+func SVGEllipseOnModThrottle(
 	d time.Duration,
-) SVGEllipseDataOnMod {
+) SVGEllipseOnMod {
 	return func() string {
 		return fmt.Sprintf("throttle_%dms", d.Milliseconds())
 	}
 }
 
-func (e *SVGELLIPSEElement) DATASTAR_ON(key string, expression string, modifiers ...SVGEllipseDataOnMod) *SVGELLIPSEElement {
+func (e *SVGELLIPSEElement) DATASTAR_ON(key string, expression string, modifiers ...SVGEllipseOnMod) *SVGELLIPSEElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
 	key = fmt.Sprintf("data-on-%s", key)
 
-	customMods := lo.Map(modifiers, func(m SVGEllipseDataOnMod, i int) customDataKeyModifier {
+	customMods := lo.Map(modifiers, func(m SVGEllipseOnMod, i int) customDataKeyModifier {
 		return customDataKeyModifier(m)
 	})
 	key = customDataKey(key, customMods...)
@@ -545,7 +560,7 @@ func (e *SVGELLIPSEElement) DATASTAR_ON(key string, expression string, modifiers
 	return e
 }
 
-func (e *SVGELLIPSEElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SVGEllipseDataOnMod) *SVGELLIPSEElement {
+func (e *SVGELLIPSEElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SVGEllipseOnMod) *SVGELLIPSEElement {
 	if condition {
 		e.DATASTAR_ON(key, expression, modifiers...)
 	}
@@ -638,7 +653,7 @@ func (e *SVGELLIPSEElement) DATASTAR_FETCH_INDICATOR(expression string) *SVGELLI
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "DatastarFetchIndicator"
+	key := "data-fetch-indicator"
 
 	e.StringAttributes.Set(key, expression)
 	return e
@@ -656,7 +671,7 @@ func (e *SVGELLIPSEElement) DATASTAR_FETCH_INDICATORRemove() *SVGELLIPSEElement 
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("DatastarFetchIndicator")
+	e.StringAttributes.Del("data-fetch-indicator")
 	return e
 }
 

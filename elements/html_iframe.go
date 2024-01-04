@@ -309,9 +309,20 @@ func (e *IFRAMEElement) NAME(s string) *IFRAMEElement {
 	return e
 }
 
+func (e *IFRAMEElement) NAMEF(format string, args ...any) *IFRAMEElement {
+	return e.NAME(fmt.Sprintf(format, args...))
+}
+
 func (e *IFRAMEElement) IfNAME(condition bool, s string) *IFRAMEElement {
 	if condition {
 		e.NAME(s)
+	}
+	return e
+}
+
+func (e *IFRAMEElement) IfNAMEF(condition bool, format string, args ...any) *IFRAMEElement {
+	if condition {
+		e.NAME(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -323,6 +334,10 @@ func (e *IFRAMEElement) NAMERemove(s string) *IFRAMEElement {
 	}
 	e.StringAttributes.Del("name")
 	return e
+}
+
+func (e *IFRAMEElement) NAMERemoveF(format string, args ...any) *IFRAMEElement {
+	return e.NAMERemove(fmt.Sprintf(format, args...))
 }
 
 // Specifies which referrer to send when fetching the resource
@@ -425,9 +440,20 @@ func (e *IFRAMEElement) SRC(s string) *IFRAMEElement {
 	return e
 }
 
+func (e *IFRAMEElement) SRCF(format string, args ...any) *IFRAMEElement {
+	return e.SRC(fmt.Sprintf(format, args...))
+}
+
 func (e *IFRAMEElement) IfSRC(condition bool, s string) *IFRAMEElement {
 	if condition {
 		e.SRC(s)
+	}
+	return e
+}
+
+func (e *IFRAMEElement) IfSRCF(condition bool, format string, args ...any) *IFRAMEElement {
+	if condition {
+		e.SRC(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -441,6 +467,10 @@ func (e *IFRAMEElement) SRCRemove(s string) *IFRAMEElement {
 	return e
 }
 
+func (e *IFRAMEElement) SRCRemoveF(format string, args ...any) *IFRAMEElement {
+	return e.SRCRemove(fmt.Sprintf(format, args...))
+}
+
 // A document to render in the iframe.
 func (e *IFRAMEElement) SRCDOC(s string) *IFRAMEElement {
 	if e.StringAttributes == nil {
@@ -450,9 +480,20 @@ func (e *IFRAMEElement) SRCDOC(s string) *IFRAMEElement {
 	return e
 }
 
+func (e *IFRAMEElement) SRCDOCF(format string, args ...any) *IFRAMEElement {
+	return e.SRCDOC(fmt.Sprintf(format, args...))
+}
+
 func (e *IFRAMEElement) IfSRCDOC(condition bool, s string) *IFRAMEElement {
 	if condition {
 		e.SRCDOC(s)
+	}
+	return e
+}
+
+func (e *IFRAMEElement) IfSRCDOCF(condition bool, format string, args ...any) *IFRAMEElement {
+	if condition {
+		e.SRCDOC(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -464,6 +505,10 @@ func (e *IFRAMEElement) SRCDOCRemove(s string) *IFRAMEElement {
 	}
 	e.StringAttributes.Del("srcdoc")
 	return e
+}
+
+func (e *IFRAMEElement) SRCDOCRemoveF(format string, args ...any) *IFRAMEElement {
+	return e.SRCDOCRemove(fmt.Sprintf(format, args...))
 }
 
 // The width of the frame in CSS pixels.
@@ -936,9 +981,20 @@ func (e *IFRAMEElement) ID(s string) *IFRAMEElement {
 	return e
 }
 
+func (e *IFRAMEElement) IDF(format string, args ...any) *IFRAMEElement {
+	return e.ID(fmt.Sprintf(format, args...))
+}
+
 func (e *IFRAMEElement) IfID(condition bool, s string) *IFRAMEElement {
 	if condition {
 		e.ID(s)
+	}
+	return e
+}
+
+func (e *IFRAMEElement) IfIDF(condition bool, format string, args ...any) *IFRAMEElement {
+	if condition {
+		e.ID(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -950,6 +1006,10 @@ func (e *IFRAMEElement) IDRemove(s string) *IFRAMEElement {
 	}
 	e.StringAttributes.Del("id")
 	return e
+}
+
+func (e *IFRAMEElement) IDRemoveF(format string, args ...any) *IFRAMEElement {
+	return e.IDRemove(fmt.Sprintf(format, args...))
 }
 
 // The inert global attribute is a Boolean attribute indicating that the browser
@@ -1084,9 +1144,20 @@ func (e *IFRAMEElement) IS(s string) *IFRAMEElement {
 	return e
 }
 
+func (e *IFRAMEElement) ISF(format string, args ...any) *IFRAMEElement {
+	return e.IS(fmt.Sprintf(format, args...))
+}
+
 func (e *IFRAMEElement) IfIS(condition bool, s string) *IFRAMEElement {
 	if condition {
 		e.IS(s)
+	}
+	return e
+}
+
+func (e *IFRAMEElement) IfISF(condition bool, format string, args ...any) *IFRAMEElement {
+	if condition {
+		e.IS(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1098,6 +1169,10 @@ func (e *IFRAMEElement) ISRemove(s string) *IFRAMEElement {
 	}
 	e.StringAttributes.Del("is")
 	return e
+}
+
+func (e *IFRAMEElement) ISRemoveF(format string, args ...any) *IFRAMEElement {
+	return e.ISRemove(fmt.Sprintf(format, args...))
 }
 
 // The itemid global attribute provides microdata in the form of a unique, global
@@ -1121,9 +1196,20 @@ func (e *IFRAMEElement) ITEMID(s string) *IFRAMEElement {
 	return e
 }
 
+func (e *IFRAMEElement) ITEMIDF(format string, args ...any) *IFRAMEElement {
+	return e.ITEMID(fmt.Sprintf(format, args...))
+}
+
 func (e *IFRAMEElement) IfITEMID(condition bool, s string) *IFRAMEElement {
 	if condition {
 		e.ITEMID(s)
+	}
+	return e
+}
+
+func (e *IFRAMEElement) IfITEMIDF(condition bool, format string, args ...any) *IFRAMEElement {
+	if condition {
+		e.ITEMID(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1135,6 +1221,10 @@ func (e *IFRAMEElement) ITEMIDRemove(s string) *IFRAMEElement {
 	}
 	e.StringAttributes.Del("itemid")
 	return e
+}
+
+func (e *IFRAMEElement) ITEMIDRemoveF(format string, args ...any) *IFRAMEElement {
+	return e.ITEMIDRemove(fmt.Sprintf(format, args...))
 }
 
 // The itemprop global attribute is used to add properties to an item
@@ -1153,9 +1243,20 @@ func (e *IFRAMEElement) ITEMPROP(s string) *IFRAMEElement {
 	return e
 }
 
+func (e *IFRAMEElement) ITEMPROPF(format string, args ...any) *IFRAMEElement {
+	return e.ITEMPROP(fmt.Sprintf(format, args...))
+}
+
 func (e *IFRAMEElement) IfITEMPROP(condition bool, s string) *IFRAMEElement {
 	if condition {
 		e.ITEMPROP(s)
+	}
+	return e
+}
+
+func (e *IFRAMEElement) IfITEMPROPF(condition bool, format string, args ...any) *IFRAMEElement {
+	if condition {
+		e.ITEMPROP(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1167,6 +1268,10 @@ func (e *IFRAMEElement) ITEMPROPRemove(s string) *IFRAMEElement {
 	}
 	e.StringAttributes.Del("itemprop")
 	return e
+}
+
+func (e *IFRAMEElement) ITEMPROPRemoveF(format string, args ...any) *IFRAMEElement {
+	return e.ITEMPROPRemove(fmt.Sprintf(format, args...))
 }
 
 // Properties that are not descendants of an element with the itemscope attribute
@@ -1182,9 +1287,20 @@ func (e *IFRAMEElement) ITEMREF(s string) *IFRAMEElement {
 	return e
 }
 
+func (e *IFRAMEElement) ITEMREFF(format string, args ...any) *IFRAMEElement {
+	return e.ITEMREF(fmt.Sprintf(format, args...))
+}
+
 func (e *IFRAMEElement) IfITEMREF(condition bool, s string) *IFRAMEElement {
 	if condition {
 		e.ITEMREF(s)
+	}
+	return e
+}
+
+func (e *IFRAMEElement) IfITEMREFF(condition bool, format string, args ...any) *IFRAMEElement {
+	if condition {
+		e.ITEMREF(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1196,6 +1312,10 @@ func (e *IFRAMEElement) ITEMREFRemove(s string) *IFRAMEElement {
 	}
 	e.StringAttributes.Del("itemref")
 	return e
+}
+
+func (e *IFRAMEElement) ITEMREFRemoveF(format string, args ...any) *IFRAMEElement {
+	return e.ITEMREFRemove(fmt.Sprintf(format, args...))
 }
 
 // The itemscope global attribute is used to add an item to a microdata DOM tree
@@ -1259,9 +1379,20 @@ func (e *IFRAMEElement) ITEMTYPE(s string) *IFRAMEElement {
 	return e
 }
 
+func (e *IFRAMEElement) ITEMTYPEF(format string, args ...any) *IFRAMEElement {
+	return e.ITEMTYPE(fmt.Sprintf(format, args...))
+}
+
 func (e *IFRAMEElement) IfITEMTYPE(condition bool, s string) *IFRAMEElement {
 	if condition {
 		e.ITEMTYPE(s)
+	}
+	return e
+}
+
+func (e *IFRAMEElement) IfITEMTYPEF(condition bool, format string, args ...any) *IFRAMEElement {
+	if condition {
+		e.ITEMTYPE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1273,6 +1404,10 @@ func (e *IFRAMEElement) ITEMTYPERemove(s string) *IFRAMEElement {
 	}
 	e.StringAttributes.Del("itemtype")
 	return e
+}
+
+func (e *IFRAMEElement) ITEMTYPERemoveF(format string, args ...any) *IFRAMEElement {
+	return e.ITEMTYPERemove(fmt.Sprintf(format, args...))
 }
 
 // The lang global attribute helps define the language of an element: the language
@@ -1289,9 +1424,20 @@ func (e *IFRAMEElement) LANG(s string) *IFRAMEElement {
 	return e
 }
 
+func (e *IFRAMEElement) LANGF(format string, args ...any) *IFRAMEElement {
+	return e.LANG(fmt.Sprintf(format, args...))
+}
+
 func (e *IFRAMEElement) IfLANG(condition bool, s string) *IFRAMEElement {
 	if condition {
 		e.LANG(s)
+	}
+	return e
+}
+
+func (e *IFRAMEElement) IfLANGF(condition bool, format string, args ...any) *IFRAMEElement {
+	if condition {
+		e.LANG(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1303,6 +1449,10 @@ func (e *IFRAMEElement) LANGRemove(s string) *IFRAMEElement {
 	}
 	e.StringAttributes.Del("lang")
 	return e
+}
+
+func (e *IFRAMEElement) LANGRemoveF(format string, args ...any) *IFRAMEElement {
+	return e.LANGRemove(fmt.Sprintf(format, args...))
 }
 
 // The nonce global attribute is a unique identifier used to declare inline
@@ -1317,9 +1467,20 @@ func (e *IFRAMEElement) NONCE(s string) *IFRAMEElement {
 	return e
 }
 
+func (e *IFRAMEElement) NONCEF(format string, args ...any) *IFRAMEElement {
+	return e.NONCE(fmt.Sprintf(format, args...))
+}
+
 func (e *IFRAMEElement) IfNONCE(condition bool, s string) *IFRAMEElement {
 	if condition {
 		e.NONCE(s)
+	}
+	return e
+}
+
+func (e *IFRAMEElement) IfNONCEF(condition bool, format string, args ...any) *IFRAMEElement {
+	if condition {
+		e.NONCE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1331,6 +1492,10 @@ func (e *IFRAMEElement) NONCERemove(s string) *IFRAMEElement {
 	}
 	e.StringAttributes.Del("nonce")
 	return e
+}
+
+func (e *IFRAMEElement) NONCERemoveF(format string, args ...any) *IFRAMEElement {
+	return e.NONCERemove(fmt.Sprintf(format, args...))
 }
 
 // The part global attribute contains a space-separated list of the part names of
@@ -1425,9 +1590,20 @@ func (e *IFRAMEElement) ROLE(s string) *IFRAMEElement {
 	return e
 }
 
+func (e *IFRAMEElement) ROLEF(format string, args ...any) *IFRAMEElement {
+	return e.ROLE(fmt.Sprintf(format, args...))
+}
+
 func (e *IFRAMEElement) IfROLE(condition bool, s string) *IFRAMEElement {
 	if condition {
 		e.ROLE(s)
+	}
+	return e
+}
+
+func (e *IFRAMEElement) IfROLEF(condition bool, format string, args ...any) *IFRAMEElement {
+	if condition {
+		e.ROLE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1439,6 +1615,10 @@ func (e *IFRAMEElement) ROLERemove(s string) *IFRAMEElement {
 	}
 	e.StringAttributes.Del("role")
 	return e
+}
+
+func (e *IFRAMEElement) ROLERemoveF(format string, args ...any) *IFRAMEElement {
+	return e.ROLERemove(fmt.Sprintf(format, args...))
 }
 
 // The slot global attribute assigns a slot in a shadow DOM shadow tree to an
@@ -1453,9 +1633,20 @@ func (e *IFRAMEElement) SLOT(s string) *IFRAMEElement {
 	return e
 }
 
+func (e *IFRAMEElement) SLOTF(format string, args ...any) *IFRAMEElement {
+	return e.SLOT(fmt.Sprintf(format, args...))
+}
+
 func (e *IFRAMEElement) IfSLOT(condition bool, s string) *IFRAMEElement {
 	if condition {
 		e.SLOT(s)
+	}
+	return e
+}
+
+func (e *IFRAMEElement) IfSLOTF(condition bool, format string, args ...any) *IFRAMEElement {
+	if condition {
+		e.SLOT(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1467,6 +1658,10 @@ func (e *IFRAMEElement) SLOTRemove(s string) *IFRAMEElement {
 	}
 	e.StringAttributes.Del("slot")
 	return e
+}
+
+func (e *IFRAMEElement) SLOTRemoveF(format string, args ...any) *IFRAMEElement {
+	return e.SLOTRemove(fmt.Sprintf(format, args...))
 }
 
 // The spellcheck global attribute is an enumerated attribute that defines whether
@@ -1671,9 +1866,20 @@ func (e *IFRAMEElement) TITLE(s string) *IFRAMEElement {
 	return e
 }
 
+func (e *IFRAMEElement) TITLEF(format string, args ...any) *IFRAMEElement {
+	return e.TITLE(fmt.Sprintf(format, args...))
+}
+
 func (e *IFRAMEElement) IfTITLE(condition bool, s string) *IFRAMEElement {
 	if condition {
 		e.TITLE(s)
+	}
+	return e
+}
+
+func (e *IFRAMEElement) IfTITLEF(condition bool, format string, args ...any) *IFRAMEElement {
+	if condition {
+		e.TITLE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1685,6 +1891,10 @@ func (e *IFRAMEElement) TITLERemove(s string) *IFRAMEElement {
 	}
 	e.StringAttributes.Del("title")
 	return e
+}
+
+func (e *IFRAMEElement) TITLERemoveF(format string, args ...any) *IFRAMEElement {
+	return e.TITLERemove(fmt.Sprintf(format, args...))
 }
 
 // The translate global attribute is an enumerated attribute that is used to
@@ -1729,7 +1939,7 @@ func (e *IFRAMEElement) DATASTAR_MERGE_STORE(v any) *IFRAMEElement {
 	if err != nil {
 		panic(err)
 	}
-	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	e.CustomDataAttributes.Set("merge-store", string(b))
 	return e
 }
 
@@ -1851,34 +2061,34 @@ func (e *IFRAMEElement) DATASTAR_TEXTRemove() *IFRAMEElement {
 
 // Sets the event handler of the element
 
-type IframeDataOnMod customDataKeyModifier
+type IframeOnMod customDataKeyModifier
 
 // Debounces the event handler
-func IframeDataOnModDebounce(
+func IframeOnModDebounce(
 	d time.Duration,
-) IframeDataOnMod {
+) IframeOnMod {
 	return func() string {
 		return fmt.Sprintf("debounce_%dms", d.Milliseconds())
 	}
 }
 
 // Throttles the event handler
-func IframeDataOnModThrottle(
+func IframeOnModThrottle(
 	d time.Duration,
-) IframeDataOnMod {
+) IframeOnMod {
 	return func() string {
 		return fmt.Sprintf("throttle_%dms", d.Milliseconds())
 	}
 }
 
-func (e *IFRAMEElement) DATASTAR_ON(key string, expression string, modifiers ...IframeDataOnMod) *IFRAMEElement {
+func (e *IFRAMEElement) DATASTAR_ON(key string, expression string, modifiers ...IframeOnMod) *IFRAMEElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
 	key = fmt.Sprintf("data-on-%s", key)
 
-	customMods := lo.Map(modifiers, func(m IframeDataOnMod, i int) customDataKeyModifier {
+	customMods := lo.Map(modifiers, func(m IframeOnMod, i int) customDataKeyModifier {
 		return customDataKeyModifier(m)
 	})
 	key = customDataKey(key, customMods...)
@@ -1886,7 +2096,7 @@ func (e *IFRAMEElement) DATASTAR_ON(key string, expression string, modifiers ...
 	return e
 }
 
-func (e *IFRAMEElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...IframeDataOnMod) *IFRAMEElement {
+func (e *IFRAMEElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...IframeOnMod) *IFRAMEElement {
 	if condition {
 		e.DATASTAR_ON(key, expression, modifiers...)
 	}
@@ -1979,7 +2189,7 @@ func (e *IFRAMEElement) DATASTAR_FETCH_INDICATOR(expression string) *IFRAMEEleme
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "DatastarFetchIndicator"
+	key := "data-fetch-indicator"
 
 	e.StringAttributes.Set(key, expression)
 	return e
@@ -1997,7 +2207,7 @@ func (e *IFRAMEElement) DATASTAR_FETCH_INDICATORRemove() *IFRAMEElement {
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("DatastarFetchIndicator")
+	e.StringAttributes.Del("data-fetch-indicator")
 	return e
 }
 

@@ -239,9 +239,20 @@ func (e *SLINPUTElement) NAME(s string) *SLINPUTElement {
 	return e
 }
 
+func (e *SLINPUTElement) NAMEF(format string, args ...any) *SLINPUTElement {
+	return e.NAME(fmt.Sprintf(format, args...))
+}
+
 func (e *SLINPUTElement) IfNAME(condition bool, s string) *SLINPUTElement {
 	if condition {
 		e.NAME(s)
+	}
+	return e
+}
+
+func (e *SLINPUTElement) IfNAMEF(condition bool, format string, args ...any) *SLINPUTElement {
+	if condition {
+		e.NAME(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -255,6 +266,10 @@ func (e *SLINPUTElement) NAMERemove(s string) *SLINPUTElement {
 	return e
 }
 
+func (e *SLINPUTElement) NAMERemoveF(format string, args ...any) *SLINPUTElement {
+	return e.NAMERemove(fmt.Sprintf(format, args...))
+}
+
 func (e *SLINPUTElement) VALUE(s string) *SLINPUTElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
@@ -263,9 +278,20 @@ func (e *SLINPUTElement) VALUE(s string) *SLINPUTElement {
 	return e
 }
 
+func (e *SLINPUTElement) VALUEF(format string, args ...any) *SLINPUTElement {
+	return e.VALUE(fmt.Sprintf(format, args...))
+}
+
 func (e *SLINPUTElement) IfVALUE(condition bool, s string) *SLINPUTElement {
 	if condition {
 		e.VALUE(s)
+	}
+	return e
+}
+
+func (e *SLINPUTElement) IfVALUEF(condition bool, format string, args ...any) *SLINPUTElement {
+	if condition {
+		e.VALUE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -279,6 +305,10 @@ func (e *SLINPUTElement) VALUERemove(s string) *SLINPUTElement {
 	return e
 }
 
+func (e *SLINPUTElement) VALUERemoveF(format string, args ...any) *SLINPUTElement {
+	return e.VALUERemove(fmt.Sprintf(format, args...))
+}
+
 func (e *SLINPUTElement) DEFAULT_VALUE(s string) *SLINPUTElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
@@ -287,9 +317,20 @@ func (e *SLINPUTElement) DEFAULT_VALUE(s string) *SLINPUTElement {
 	return e
 }
 
+func (e *SLINPUTElement) DEFAULT_VALUEF(format string, args ...any) *SLINPUTElement {
+	return e.DEFAULT_VALUE(fmt.Sprintf(format, args...))
+}
+
 func (e *SLINPUTElement) IfDEFAULT_VALUE(condition bool, s string) *SLINPUTElement {
 	if condition {
 		e.DEFAULT_VALUE(s)
+	}
+	return e
+}
+
+func (e *SLINPUTElement) IfDEFAULT_VALUEF(condition bool, format string, args ...any) *SLINPUTElement {
+	if condition {
+		e.DEFAULT_VALUE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -301,6 +342,10 @@ func (e *SLINPUTElement) DEFAULT_VALUERemove(s string) *SLINPUTElement {
 	}
 	e.StringAttributes.Del("defaultValue")
 	return e
+}
+
+func (e *SLINPUTElement) DEFAULT_VALUERemoveF(format string, args ...any) *SLINPUTElement {
+	return e.DEFAULT_VALUERemove(fmt.Sprintf(format, args...))
 }
 
 func (e *SLINPUTElement) FILLED() *SLINPUTElement {
@@ -385,9 +430,20 @@ func (e *SLINPUTElement) LABEL(s string) *SLINPUTElement {
 	return e
 }
 
+func (e *SLINPUTElement) LABELF(format string, args ...any) *SLINPUTElement {
+	return e.LABEL(fmt.Sprintf(format, args...))
+}
+
 func (e *SLINPUTElement) IfLABEL(condition bool, s string) *SLINPUTElement {
 	if condition {
 		e.LABEL(s)
+	}
+	return e
+}
+
+func (e *SLINPUTElement) IfLABELF(condition bool, format string, args ...any) *SLINPUTElement {
+	if condition {
+		e.LABEL(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -401,6 +457,10 @@ func (e *SLINPUTElement) LABELRemove(s string) *SLINPUTElement {
 	return e
 }
 
+func (e *SLINPUTElement) LABELRemoveF(format string, args ...any) *SLINPUTElement {
+	return e.LABELRemove(fmt.Sprintf(format, args...))
+}
+
 func (e *SLINPUTElement) HELP_TEXT(s string) *SLINPUTElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
@@ -409,9 +469,20 @@ func (e *SLINPUTElement) HELP_TEXT(s string) *SLINPUTElement {
 	return e
 }
 
+func (e *SLINPUTElement) HELP_TEXTF(format string, args ...any) *SLINPUTElement {
+	return e.HELP_TEXT(fmt.Sprintf(format, args...))
+}
+
 func (e *SLINPUTElement) IfHELP_TEXT(condition bool, s string) *SLINPUTElement {
 	if condition {
 		e.HELP_TEXT(s)
+	}
+	return e
+}
+
+func (e *SLINPUTElement) IfHELP_TEXTF(condition bool, format string, args ...any) *SLINPUTElement {
+	if condition {
+		e.HELP_TEXT(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -423,6 +494,10 @@ func (e *SLINPUTElement) HELP_TEXTRemove(s string) *SLINPUTElement {
 	}
 	e.StringAttributes.Del("help-text")
 	return e
+}
+
+func (e *SLINPUTElement) HELP_TEXTRemoveF(format string, args ...any) *SLINPUTElement {
+	return e.HELP_TEXTRemove(fmt.Sprintf(format, args...))
 }
 
 func (e *SLINPUTElement) READONLY() *SLINPUTElement {
@@ -544,9 +619,20 @@ func (e *SLINPUTElement) PLACEHOLDER(s string) *SLINPUTElement {
 	return e
 }
 
+func (e *SLINPUTElement) PLACEHOLDERF(format string, args ...any) *SLINPUTElement {
+	return e.PLACEHOLDER(fmt.Sprintf(format, args...))
+}
+
 func (e *SLINPUTElement) IfPLACEHOLDER(condition bool, s string) *SLINPUTElement {
 	if condition {
 		e.PLACEHOLDER(s)
+	}
+	return e
+}
+
+func (e *SLINPUTElement) IfPLACEHOLDERF(condition bool, format string, args ...any) *SLINPUTElement {
+	if condition {
+		e.PLACEHOLDER(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -558,6 +644,10 @@ func (e *SLINPUTElement) PLACEHOLDERRemove(s string) *SLINPUTElement {
 	}
 	e.StringAttributes.Del("placeholder")
 	return e
+}
+
+func (e *SLINPUTElement) PLACEHOLDERRemoveF(format string, args ...any) *SLINPUTElement {
+	return e.PLACEHOLDERRemove(fmt.Sprintf(format, args...))
 }
 
 func (e *SLINPUTElement) PASSWORD_TOGGLE() *SLINPUTElement {
@@ -871,9 +961,20 @@ func (e *SLINPUTElement) AUTOCOMPLETE(s string) *SLINPUTElement {
 	return e
 }
 
+func (e *SLINPUTElement) AUTOCOMPLETEF(format string, args ...any) *SLINPUTElement {
+	return e.AUTOCOMPLETE(fmt.Sprintf(format, args...))
+}
+
 func (e *SLINPUTElement) IfAUTOCOMPLETE(condition bool, s string) *SLINPUTElement {
 	if condition {
 		e.AUTOCOMPLETE(s)
+	}
+	return e
+}
+
+func (e *SLINPUTElement) IfAUTOCOMPLETEF(condition bool, format string, args ...any) *SLINPUTElement {
+	if condition {
+		e.AUTOCOMPLETE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -887,6 +988,10 @@ func (e *SLINPUTElement) AUTOCOMPLETERemove(s string) *SLINPUTElement {
 	return e
 }
 
+func (e *SLINPUTElement) AUTOCOMPLETERemoveF(format string, args ...any) *SLINPUTElement {
+	return e.AUTOCOMPLETERemove(fmt.Sprintf(format, args...))
+}
+
 func (e *SLINPUTElement) ENTER_KEY_HINT(s string) *SLINPUTElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
@@ -895,9 +1000,20 @@ func (e *SLINPUTElement) ENTER_KEY_HINT(s string) *SLINPUTElement {
 	return e
 }
 
+func (e *SLINPUTElement) ENTER_KEY_HINTF(format string, args ...any) *SLINPUTElement {
+	return e.ENTER_KEY_HINT(fmt.Sprintf(format, args...))
+}
+
 func (e *SLINPUTElement) IfENTER_KEY_HINT(condition bool, s string) *SLINPUTElement {
 	if condition {
 		e.ENTER_KEY_HINT(s)
+	}
+	return e
+}
+
+func (e *SLINPUTElement) IfENTER_KEY_HINTF(condition bool, format string, args ...any) *SLINPUTElement {
+	if condition {
+		e.ENTER_KEY_HINT(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -909,6 +1025,10 @@ func (e *SLINPUTElement) ENTER_KEY_HINTRemove(s string) *SLINPUTElement {
 	}
 	e.StringAttributes.Del("enter-key-hint")
 	return e
+}
+
+func (e *SLINPUTElement) ENTER_KEY_HINTRemoveF(format string, args ...any) *SLINPUTElement {
+	return e.ENTER_KEY_HINTRemove(fmt.Sprintf(format, args...))
 }
 
 func (e *SLINPUTElement) SPELLCHECK() *SLINPUTElement {
@@ -958,7 +1078,7 @@ func (e *SLINPUTElement) DATASTAR_MERGE_STORE(v any) *SLINPUTElement {
 	if err != nil {
 		panic(err)
 	}
-	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	e.CustomDataAttributes.Set("merge-store", string(b))
 	return e
 }
 
@@ -1080,34 +1200,34 @@ func (e *SLINPUTElement) DATASTAR_TEXTRemove() *SLINPUTElement {
 
 // Sets the event handler of the element
 
-type SLInputDataOnMod customDataKeyModifier
+type SLInputOnMod customDataKeyModifier
 
 // Debounces the event handler
-func SLInputDataOnModDebounce(
+func SLInputOnModDebounce(
 	d time.Duration,
-) SLInputDataOnMod {
+) SLInputOnMod {
 	return func() string {
 		return fmt.Sprintf("debounce_%dms", d.Milliseconds())
 	}
 }
 
 // Throttles the event handler
-func SLInputDataOnModThrottle(
+func SLInputOnModThrottle(
 	d time.Duration,
-) SLInputDataOnMod {
+) SLInputOnMod {
 	return func() string {
 		return fmt.Sprintf("throttle_%dms", d.Milliseconds())
 	}
 }
 
-func (e *SLINPUTElement) DATASTAR_ON(key string, expression string, modifiers ...SLInputDataOnMod) *SLINPUTElement {
+func (e *SLINPUTElement) DATASTAR_ON(key string, expression string, modifiers ...SLInputOnMod) *SLINPUTElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
 	key = fmt.Sprintf("data-on-%s", key)
 
-	customMods := lo.Map(modifiers, func(m SLInputDataOnMod, i int) customDataKeyModifier {
+	customMods := lo.Map(modifiers, func(m SLInputOnMod, i int) customDataKeyModifier {
 		return customDataKeyModifier(m)
 	})
 	key = customDataKey(key, customMods...)
@@ -1115,7 +1235,7 @@ func (e *SLINPUTElement) DATASTAR_ON(key string, expression string, modifiers ..
 	return e
 }
 
-func (e *SLINPUTElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SLInputDataOnMod) *SLINPUTElement {
+func (e *SLINPUTElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SLInputOnMod) *SLINPUTElement {
 	if condition {
 		e.DATASTAR_ON(key, expression, modifiers...)
 	}
@@ -1208,7 +1328,7 @@ func (e *SLINPUTElement) DATASTAR_FETCH_INDICATOR(expression string) *SLINPUTEle
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "DatastarFetchIndicator"
+	key := "data-fetch-indicator"
 
 	e.StringAttributes.Set(key, expression)
 	return e
@@ -1226,7 +1346,7 @@ func (e *SLINPUTElement) DATASTAR_FETCH_INDICATORRemove() *SLINPUTElement {
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("DatastarFetchIndicator")
+	e.StringAttributes.Del("data-fetch-indicator")
 	return e
 }
 

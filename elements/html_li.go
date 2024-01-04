@@ -632,9 +632,20 @@ func (e *LIElement) ID(s string) *LIElement {
 	return e
 }
 
+func (e *LIElement) IDF(format string, args ...any) *LIElement {
+	return e.ID(fmt.Sprintf(format, args...))
+}
+
 func (e *LIElement) IfID(condition bool, s string) *LIElement {
 	if condition {
 		e.ID(s)
+	}
+	return e
+}
+
+func (e *LIElement) IfIDF(condition bool, format string, args ...any) *LIElement {
+	if condition {
+		e.ID(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -646,6 +657,10 @@ func (e *LIElement) IDRemove(s string) *LIElement {
 	}
 	e.StringAttributes.Del("id")
 	return e
+}
+
+func (e *LIElement) IDRemoveF(format string, args ...any) *LIElement {
+	return e.IDRemove(fmt.Sprintf(format, args...))
 }
 
 // The inert global attribute is a Boolean attribute indicating that the browser
@@ -780,9 +795,20 @@ func (e *LIElement) IS(s string) *LIElement {
 	return e
 }
 
+func (e *LIElement) ISF(format string, args ...any) *LIElement {
+	return e.IS(fmt.Sprintf(format, args...))
+}
+
 func (e *LIElement) IfIS(condition bool, s string) *LIElement {
 	if condition {
 		e.IS(s)
+	}
+	return e
+}
+
+func (e *LIElement) IfISF(condition bool, format string, args ...any) *LIElement {
+	if condition {
+		e.IS(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -794,6 +820,10 @@ func (e *LIElement) ISRemove(s string) *LIElement {
 	}
 	e.StringAttributes.Del("is")
 	return e
+}
+
+func (e *LIElement) ISRemoveF(format string, args ...any) *LIElement {
+	return e.ISRemove(fmt.Sprintf(format, args...))
 }
 
 // The itemid global attribute provides microdata in the form of a unique, global
@@ -817,9 +847,20 @@ func (e *LIElement) ITEMID(s string) *LIElement {
 	return e
 }
 
+func (e *LIElement) ITEMIDF(format string, args ...any) *LIElement {
+	return e.ITEMID(fmt.Sprintf(format, args...))
+}
+
 func (e *LIElement) IfITEMID(condition bool, s string) *LIElement {
 	if condition {
 		e.ITEMID(s)
+	}
+	return e
+}
+
+func (e *LIElement) IfITEMIDF(condition bool, format string, args ...any) *LIElement {
+	if condition {
+		e.ITEMID(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -831,6 +872,10 @@ func (e *LIElement) ITEMIDRemove(s string) *LIElement {
 	}
 	e.StringAttributes.Del("itemid")
 	return e
+}
+
+func (e *LIElement) ITEMIDRemoveF(format string, args ...any) *LIElement {
+	return e.ITEMIDRemove(fmt.Sprintf(format, args...))
 }
 
 // The itemprop global attribute is used to add properties to an item
@@ -849,9 +894,20 @@ func (e *LIElement) ITEMPROP(s string) *LIElement {
 	return e
 }
 
+func (e *LIElement) ITEMPROPF(format string, args ...any) *LIElement {
+	return e.ITEMPROP(fmt.Sprintf(format, args...))
+}
+
 func (e *LIElement) IfITEMPROP(condition bool, s string) *LIElement {
 	if condition {
 		e.ITEMPROP(s)
+	}
+	return e
+}
+
+func (e *LIElement) IfITEMPROPF(condition bool, format string, args ...any) *LIElement {
+	if condition {
+		e.ITEMPROP(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -863,6 +919,10 @@ func (e *LIElement) ITEMPROPRemove(s string) *LIElement {
 	}
 	e.StringAttributes.Del("itemprop")
 	return e
+}
+
+func (e *LIElement) ITEMPROPRemoveF(format string, args ...any) *LIElement {
+	return e.ITEMPROPRemove(fmt.Sprintf(format, args...))
 }
 
 // Properties that are not descendants of an element with the itemscope attribute
@@ -878,9 +938,20 @@ func (e *LIElement) ITEMREF(s string) *LIElement {
 	return e
 }
 
+func (e *LIElement) ITEMREFF(format string, args ...any) *LIElement {
+	return e.ITEMREF(fmt.Sprintf(format, args...))
+}
+
 func (e *LIElement) IfITEMREF(condition bool, s string) *LIElement {
 	if condition {
 		e.ITEMREF(s)
+	}
+	return e
+}
+
+func (e *LIElement) IfITEMREFF(condition bool, format string, args ...any) *LIElement {
+	if condition {
+		e.ITEMREF(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -892,6 +963,10 @@ func (e *LIElement) ITEMREFRemove(s string) *LIElement {
 	}
 	e.StringAttributes.Del("itemref")
 	return e
+}
+
+func (e *LIElement) ITEMREFRemoveF(format string, args ...any) *LIElement {
+	return e.ITEMREFRemove(fmt.Sprintf(format, args...))
 }
 
 // The itemscope global attribute is used to add an item to a microdata DOM tree
@@ -955,9 +1030,20 @@ func (e *LIElement) ITEMTYPE(s string) *LIElement {
 	return e
 }
 
+func (e *LIElement) ITEMTYPEF(format string, args ...any) *LIElement {
+	return e.ITEMTYPE(fmt.Sprintf(format, args...))
+}
+
 func (e *LIElement) IfITEMTYPE(condition bool, s string) *LIElement {
 	if condition {
 		e.ITEMTYPE(s)
+	}
+	return e
+}
+
+func (e *LIElement) IfITEMTYPEF(condition bool, format string, args ...any) *LIElement {
+	if condition {
+		e.ITEMTYPE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -969,6 +1055,10 @@ func (e *LIElement) ITEMTYPERemove(s string) *LIElement {
 	}
 	e.StringAttributes.Del("itemtype")
 	return e
+}
+
+func (e *LIElement) ITEMTYPERemoveF(format string, args ...any) *LIElement {
+	return e.ITEMTYPERemove(fmt.Sprintf(format, args...))
 }
 
 // The lang global attribute helps define the language of an element: the language
@@ -985,9 +1075,20 @@ func (e *LIElement) LANG(s string) *LIElement {
 	return e
 }
 
+func (e *LIElement) LANGF(format string, args ...any) *LIElement {
+	return e.LANG(fmt.Sprintf(format, args...))
+}
+
 func (e *LIElement) IfLANG(condition bool, s string) *LIElement {
 	if condition {
 		e.LANG(s)
+	}
+	return e
+}
+
+func (e *LIElement) IfLANGF(condition bool, format string, args ...any) *LIElement {
+	if condition {
+		e.LANG(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -999,6 +1100,10 @@ func (e *LIElement) LANGRemove(s string) *LIElement {
 	}
 	e.StringAttributes.Del("lang")
 	return e
+}
+
+func (e *LIElement) LANGRemoveF(format string, args ...any) *LIElement {
+	return e.LANGRemove(fmt.Sprintf(format, args...))
 }
 
 // The nonce global attribute is a unique identifier used to declare inline
@@ -1013,9 +1118,20 @@ func (e *LIElement) NONCE(s string) *LIElement {
 	return e
 }
 
+func (e *LIElement) NONCEF(format string, args ...any) *LIElement {
+	return e.NONCE(fmt.Sprintf(format, args...))
+}
+
 func (e *LIElement) IfNONCE(condition bool, s string) *LIElement {
 	if condition {
 		e.NONCE(s)
+	}
+	return e
+}
+
+func (e *LIElement) IfNONCEF(condition bool, format string, args ...any) *LIElement {
+	if condition {
+		e.NONCE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1027,6 +1143,10 @@ func (e *LIElement) NONCERemove(s string) *LIElement {
 	}
 	e.StringAttributes.Del("nonce")
 	return e
+}
+
+func (e *LIElement) NONCERemoveF(format string, args ...any) *LIElement {
+	return e.NONCERemove(fmt.Sprintf(format, args...))
 }
 
 // The part global attribute contains a space-separated list of the part names of
@@ -1121,9 +1241,20 @@ func (e *LIElement) ROLE(s string) *LIElement {
 	return e
 }
 
+func (e *LIElement) ROLEF(format string, args ...any) *LIElement {
+	return e.ROLE(fmt.Sprintf(format, args...))
+}
+
 func (e *LIElement) IfROLE(condition bool, s string) *LIElement {
 	if condition {
 		e.ROLE(s)
+	}
+	return e
+}
+
+func (e *LIElement) IfROLEF(condition bool, format string, args ...any) *LIElement {
+	if condition {
+		e.ROLE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1135,6 +1266,10 @@ func (e *LIElement) ROLERemove(s string) *LIElement {
 	}
 	e.StringAttributes.Del("role")
 	return e
+}
+
+func (e *LIElement) ROLERemoveF(format string, args ...any) *LIElement {
+	return e.ROLERemove(fmt.Sprintf(format, args...))
 }
 
 // The slot global attribute assigns a slot in a shadow DOM shadow tree to an
@@ -1149,9 +1284,20 @@ func (e *LIElement) SLOT(s string) *LIElement {
 	return e
 }
 
+func (e *LIElement) SLOTF(format string, args ...any) *LIElement {
+	return e.SLOT(fmt.Sprintf(format, args...))
+}
+
 func (e *LIElement) IfSLOT(condition bool, s string) *LIElement {
 	if condition {
 		e.SLOT(s)
+	}
+	return e
+}
+
+func (e *LIElement) IfSLOTF(condition bool, format string, args ...any) *LIElement {
+	if condition {
+		e.SLOT(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1163,6 +1309,10 @@ func (e *LIElement) SLOTRemove(s string) *LIElement {
 	}
 	e.StringAttributes.Del("slot")
 	return e
+}
+
+func (e *LIElement) SLOTRemoveF(format string, args ...any) *LIElement {
+	return e.SLOTRemove(fmt.Sprintf(format, args...))
 }
 
 // The spellcheck global attribute is an enumerated attribute that defines whether
@@ -1367,9 +1517,20 @@ func (e *LIElement) TITLE(s string) *LIElement {
 	return e
 }
 
+func (e *LIElement) TITLEF(format string, args ...any) *LIElement {
+	return e.TITLE(fmt.Sprintf(format, args...))
+}
+
 func (e *LIElement) IfTITLE(condition bool, s string) *LIElement {
 	if condition {
 		e.TITLE(s)
+	}
+	return e
+}
+
+func (e *LIElement) IfTITLEF(condition bool, format string, args ...any) *LIElement {
+	if condition {
+		e.TITLE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1381,6 +1542,10 @@ func (e *LIElement) TITLERemove(s string) *LIElement {
 	}
 	e.StringAttributes.Del("title")
 	return e
+}
+
+func (e *LIElement) TITLERemoveF(format string, args ...any) *LIElement {
+	return e.TITLERemove(fmt.Sprintf(format, args...))
 }
 
 // The translate global attribute is an enumerated attribute that is used to
@@ -1425,7 +1590,7 @@ func (e *LIElement) DATASTAR_MERGE_STORE(v any) *LIElement {
 	if err != nil {
 		panic(err)
 	}
-	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	e.CustomDataAttributes.Set("merge-store", string(b))
 	return e
 }
 
@@ -1547,34 +1712,34 @@ func (e *LIElement) DATASTAR_TEXTRemove() *LIElement {
 
 // Sets the event handler of the element
 
-type LiDataOnMod customDataKeyModifier
+type LiOnMod customDataKeyModifier
 
 // Debounces the event handler
-func LiDataOnModDebounce(
+func LiOnModDebounce(
 	d time.Duration,
-) LiDataOnMod {
+) LiOnMod {
 	return func() string {
 		return fmt.Sprintf("debounce_%dms", d.Milliseconds())
 	}
 }
 
 // Throttles the event handler
-func LiDataOnModThrottle(
+func LiOnModThrottle(
 	d time.Duration,
-) LiDataOnMod {
+) LiOnMod {
 	return func() string {
 		return fmt.Sprintf("throttle_%dms", d.Milliseconds())
 	}
 }
 
-func (e *LIElement) DATASTAR_ON(key string, expression string, modifiers ...LiDataOnMod) *LIElement {
+func (e *LIElement) DATASTAR_ON(key string, expression string, modifiers ...LiOnMod) *LIElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
 	key = fmt.Sprintf("data-on-%s", key)
 
-	customMods := lo.Map(modifiers, func(m LiDataOnMod, i int) customDataKeyModifier {
+	customMods := lo.Map(modifiers, func(m LiOnMod, i int) customDataKeyModifier {
 		return customDataKeyModifier(m)
 	})
 	key = customDataKey(key, customMods...)
@@ -1582,7 +1747,7 @@ func (e *LIElement) DATASTAR_ON(key string, expression string, modifiers ...LiDa
 	return e
 }
 
-func (e *LIElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...LiDataOnMod) *LIElement {
+func (e *LIElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...LiOnMod) *LIElement {
 	if condition {
 		e.DATASTAR_ON(key, expression, modifiers...)
 	}
@@ -1675,7 +1840,7 @@ func (e *LIElement) DATASTAR_FETCH_INDICATOR(expression string) *LIElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "DatastarFetchIndicator"
+	key := "data-fetch-indicator"
 
 	e.StringAttributes.Set(key, expression)
 	return e
@@ -1693,7 +1858,7 @@ func (e *LIElement) DATASTAR_FETCH_INDICATORRemove() *LIElement {
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("DatastarFetchIndicator")
+	e.StringAttributes.Del("data-fetch-indicator")
 	return e
 }
 

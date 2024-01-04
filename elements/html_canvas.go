@@ -660,9 +660,20 @@ func (e *CANVASElement) ID(s string) *CANVASElement {
 	return e
 }
 
+func (e *CANVASElement) IDF(format string, args ...any) *CANVASElement {
+	return e.ID(fmt.Sprintf(format, args...))
+}
+
 func (e *CANVASElement) IfID(condition bool, s string) *CANVASElement {
 	if condition {
 		e.ID(s)
+	}
+	return e
+}
+
+func (e *CANVASElement) IfIDF(condition bool, format string, args ...any) *CANVASElement {
+	if condition {
+		e.ID(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -674,6 +685,10 @@ func (e *CANVASElement) IDRemove(s string) *CANVASElement {
 	}
 	e.StringAttributes.Del("id")
 	return e
+}
+
+func (e *CANVASElement) IDRemoveF(format string, args ...any) *CANVASElement {
+	return e.IDRemove(fmt.Sprintf(format, args...))
 }
 
 // The inert global attribute is a Boolean attribute indicating that the browser
@@ -808,9 +823,20 @@ func (e *CANVASElement) IS(s string) *CANVASElement {
 	return e
 }
 
+func (e *CANVASElement) ISF(format string, args ...any) *CANVASElement {
+	return e.IS(fmt.Sprintf(format, args...))
+}
+
 func (e *CANVASElement) IfIS(condition bool, s string) *CANVASElement {
 	if condition {
 		e.IS(s)
+	}
+	return e
+}
+
+func (e *CANVASElement) IfISF(condition bool, format string, args ...any) *CANVASElement {
+	if condition {
+		e.IS(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -822,6 +848,10 @@ func (e *CANVASElement) ISRemove(s string) *CANVASElement {
 	}
 	e.StringAttributes.Del("is")
 	return e
+}
+
+func (e *CANVASElement) ISRemoveF(format string, args ...any) *CANVASElement {
+	return e.ISRemove(fmt.Sprintf(format, args...))
 }
 
 // The itemid global attribute provides microdata in the form of a unique, global
@@ -845,9 +875,20 @@ func (e *CANVASElement) ITEMID(s string) *CANVASElement {
 	return e
 }
 
+func (e *CANVASElement) ITEMIDF(format string, args ...any) *CANVASElement {
+	return e.ITEMID(fmt.Sprintf(format, args...))
+}
+
 func (e *CANVASElement) IfITEMID(condition bool, s string) *CANVASElement {
 	if condition {
 		e.ITEMID(s)
+	}
+	return e
+}
+
+func (e *CANVASElement) IfITEMIDF(condition bool, format string, args ...any) *CANVASElement {
+	if condition {
+		e.ITEMID(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -859,6 +900,10 @@ func (e *CANVASElement) ITEMIDRemove(s string) *CANVASElement {
 	}
 	e.StringAttributes.Del("itemid")
 	return e
+}
+
+func (e *CANVASElement) ITEMIDRemoveF(format string, args ...any) *CANVASElement {
+	return e.ITEMIDRemove(fmt.Sprintf(format, args...))
 }
 
 // The itemprop global attribute is used to add properties to an item
@@ -877,9 +922,20 @@ func (e *CANVASElement) ITEMPROP(s string) *CANVASElement {
 	return e
 }
 
+func (e *CANVASElement) ITEMPROPF(format string, args ...any) *CANVASElement {
+	return e.ITEMPROP(fmt.Sprintf(format, args...))
+}
+
 func (e *CANVASElement) IfITEMPROP(condition bool, s string) *CANVASElement {
 	if condition {
 		e.ITEMPROP(s)
+	}
+	return e
+}
+
+func (e *CANVASElement) IfITEMPROPF(condition bool, format string, args ...any) *CANVASElement {
+	if condition {
+		e.ITEMPROP(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -891,6 +947,10 @@ func (e *CANVASElement) ITEMPROPRemove(s string) *CANVASElement {
 	}
 	e.StringAttributes.Del("itemprop")
 	return e
+}
+
+func (e *CANVASElement) ITEMPROPRemoveF(format string, args ...any) *CANVASElement {
+	return e.ITEMPROPRemove(fmt.Sprintf(format, args...))
 }
 
 // Properties that are not descendants of an element with the itemscope attribute
@@ -906,9 +966,20 @@ func (e *CANVASElement) ITEMREF(s string) *CANVASElement {
 	return e
 }
 
+func (e *CANVASElement) ITEMREFF(format string, args ...any) *CANVASElement {
+	return e.ITEMREF(fmt.Sprintf(format, args...))
+}
+
 func (e *CANVASElement) IfITEMREF(condition bool, s string) *CANVASElement {
 	if condition {
 		e.ITEMREF(s)
+	}
+	return e
+}
+
+func (e *CANVASElement) IfITEMREFF(condition bool, format string, args ...any) *CANVASElement {
+	if condition {
+		e.ITEMREF(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -920,6 +991,10 @@ func (e *CANVASElement) ITEMREFRemove(s string) *CANVASElement {
 	}
 	e.StringAttributes.Del("itemref")
 	return e
+}
+
+func (e *CANVASElement) ITEMREFRemoveF(format string, args ...any) *CANVASElement {
+	return e.ITEMREFRemove(fmt.Sprintf(format, args...))
 }
 
 // The itemscope global attribute is used to add an item to a microdata DOM tree
@@ -983,9 +1058,20 @@ func (e *CANVASElement) ITEMTYPE(s string) *CANVASElement {
 	return e
 }
 
+func (e *CANVASElement) ITEMTYPEF(format string, args ...any) *CANVASElement {
+	return e.ITEMTYPE(fmt.Sprintf(format, args...))
+}
+
 func (e *CANVASElement) IfITEMTYPE(condition bool, s string) *CANVASElement {
 	if condition {
 		e.ITEMTYPE(s)
+	}
+	return e
+}
+
+func (e *CANVASElement) IfITEMTYPEF(condition bool, format string, args ...any) *CANVASElement {
+	if condition {
+		e.ITEMTYPE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -997,6 +1083,10 @@ func (e *CANVASElement) ITEMTYPERemove(s string) *CANVASElement {
 	}
 	e.StringAttributes.Del("itemtype")
 	return e
+}
+
+func (e *CANVASElement) ITEMTYPERemoveF(format string, args ...any) *CANVASElement {
+	return e.ITEMTYPERemove(fmt.Sprintf(format, args...))
 }
 
 // The lang global attribute helps define the language of an element: the language
@@ -1013,9 +1103,20 @@ func (e *CANVASElement) LANG(s string) *CANVASElement {
 	return e
 }
 
+func (e *CANVASElement) LANGF(format string, args ...any) *CANVASElement {
+	return e.LANG(fmt.Sprintf(format, args...))
+}
+
 func (e *CANVASElement) IfLANG(condition bool, s string) *CANVASElement {
 	if condition {
 		e.LANG(s)
+	}
+	return e
+}
+
+func (e *CANVASElement) IfLANGF(condition bool, format string, args ...any) *CANVASElement {
+	if condition {
+		e.LANG(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1027,6 +1128,10 @@ func (e *CANVASElement) LANGRemove(s string) *CANVASElement {
 	}
 	e.StringAttributes.Del("lang")
 	return e
+}
+
+func (e *CANVASElement) LANGRemoveF(format string, args ...any) *CANVASElement {
+	return e.LANGRemove(fmt.Sprintf(format, args...))
 }
 
 // The nonce global attribute is a unique identifier used to declare inline
@@ -1041,9 +1146,20 @@ func (e *CANVASElement) NONCE(s string) *CANVASElement {
 	return e
 }
 
+func (e *CANVASElement) NONCEF(format string, args ...any) *CANVASElement {
+	return e.NONCE(fmt.Sprintf(format, args...))
+}
+
 func (e *CANVASElement) IfNONCE(condition bool, s string) *CANVASElement {
 	if condition {
 		e.NONCE(s)
+	}
+	return e
+}
+
+func (e *CANVASElement) IfNONCEF(condition bool, format string, args ...any) *CANVASElement {
+	if condition {
+		e.NONCE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1055,6 +1171,10 @@ func (e *CANVASElement) NONCERemove(s string) *CANVASElement {
 	}
 	e.StringAttributes.Del("nonce")
 	return e
+}
+
+func (e *CANVASElement) NONCERemoveF(format string, args ...any) *CANVASElement {
+	return e.NONCERemove(fmt.Sprintf(format, args...))
 }
 
 // The part global attribute contains a space-separated list of the part names of
@@ -1149,9 +1269,20 @@ func (e *CANVASElement) ROLE(s string) *CANVASElement {
 	return e
 }
 
+func (e *CANVASElement) ROLEF(format string, args ...any) *CANVASElement {
+	return e.ROLE(fmt.Sprintf(format, args...))
+}
+
 func (e *CANVASElement) IfROLE(condition bool, s string) *CANVASElement {
 	if condition {
 		e.ROLE(s)
+	}
+	return e
+}
+
+func (e *CANVASElement) IfROLEF(condition bool, format string, args ...any) *CANVASElement {
+	if condition {
+		e.ROLE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1163,6 +1294,10 @@ func (e *CANVASElement) ROLERemove(s string) *CANVASElement {
 	}
 	e.StringAttributes.Del("role")
 	return e
+}
+
+func (e *CANVASElement) ROLERemoveF(format string, args ...any) *CANVASElement {
+	return e.ROLERemove(fmt.Sprintf(format, args...))
 }
 
 // The slot global attribute assigns a slot in a shadow DOM shadow tree to an
@@ -1177,9 +1312,20 @@ func (e *CANVASElement) SLOT(s string) *CANVASElement {
 	return e
 }
 
+func (e *CANVASElement) SLOTF(format string, args ...any) *CANVASElement {
+	return e.SLOT(fmt.Sprintf(format, args...))
+}
+
 func (e *CANVASElement) IfSLOT(condition bool, s string) *CANVASElement {
 	if condition {
 		e.SLOT(s)
+	}
+	return e
+}
+
+func (e *CANVASElement) IfSLOTF(condition bool, format string, args ...any) *CANVASElement {
+	if condition {
+		e.SLOT(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1191,6 +1337,10 @@ func (e *CANVASElement) SLOTRemove(s string) *CANVASElement {
 	}
 	e.StringAttributes.Del("slot")
 	return e
+}
+
+func (e *CANVASElement) SLOTRemoveF(format string, args ...any) *CANVASElement {
+	return e.SLOTRemove(fmt.Sprintf(format, args...))
 }
 
 // The spellcheck global attribute is an enumerated attribute that defines whether
@@ -1395,9 +1545,20 @@ func (e *CANVASElement) TITLE(s string) *CANVASElement {
 	return e
 }
 
+func (e *CANVASElement) TITLEF(format string, args ...any) *CANVASElement {
+	return e.TITLE(fmt.Sprintf(format, args...))
+}
+
 func (e *CANVASElement) IfTITLE(condition bool, s string) *CANVASElement {
 	if condition {
 		e.TITLE(s)
+	}
+	return e
+}
+
+func (e *CANVASElement) IfTITLEF(condition bool, format string, args ...any) *CANVASElement {
+	if condition {
+		e.TITLE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1409,6 +1570,10 @@ func (e *CANVASElement) TITLERemove(s string) *CANVASElement {
 	}
 	e.StringAttributes.Del("title")
 	return e
+}
+
+func (e *CANVASElement) TITLERemoveF(format string, args ...any) *CANVASElement {
+	return e.TITLERemove(fmt.Sprintf(format, args...))
 }
 
 // The translate global attribute is an enumerated attribute that is used to
@@ -1453,7 +1618,7 @@ func (e *CANVASElement) DATASTAR_MERGE_STORE(v any) *CANVASElement {
 	if err != nil {
 		panic(err)
 	}
-	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	e.CustomDataAttributes.Set("merge-store", string(b))
 	return e
 }
 
@@ -1575,34 +1740,34 @@ func (e *CANVASElement) DATASTAR_TEXTRemove() *CANVASElement {
 
 // Sets the event handler of the element
 
-type CanvasDataOnMod customDataKeyModifier
+type CanvasOnMod customDataKeyModifier
 
 // Debounces the event handler
-func CanvasDataOnModDebounce(
+func CanvasOnModDebounce(
 	d time.Duration,
-) CanvasDataOnMod {
+) CanvasOnMod {
 	return func() string {
 		return fmt.Sprintf("debounce_%dms", d.Milliseconds())
 	}
 }
 
 // Throttles the event handler
-func CanvasDataOnModThrottle(
+func CanvasOnModThrottle(
 	d time.Duration,
-) CanvasDataOnMod {
+) CanvasOnMod {
 	return func() string {
 		return fmt.Sprintf("throttle_%dms", d.Milliseconds())
 	}
 }
 
-func (e *CANVASElement) DATASTAR_ON(key string, expression string, modifiers ...CanvasDataOnMod) *CANVASElement {
+func (e *CANVASElement) DATASTAR_ON(key string, expression string, modifiers ...CanvasOnMod) *CANVASElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
 	key = fmt.Sprintf("data-on-%s", key)
 
-	customMods := lo.Map(modifiers, func(m CanvasDataOnMod, i int) customDataKeyModifier {
+	customMods := lo.Map(modifiers, func(m CanvasOnMod, i int) customDataKeyModifier {
 		return customDataKeyModifier(m)
 	})
 	key = customDataKey(key, customMods...)
@@ -1610,7 +1775,7 @@ func (e *CANVASElement) DATASTAR_ON(key string, expression string, modifiers ...
 	return e
 }
 
-func (e *CANVASElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...CanvasDataOnMod) *CANVASElement {
+func (e *CANVASElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...CanvasOnMod) *CANVASElement {
 	if condition {
 		e.DATASTAR_ON(key, expression, modifiers...)
 	}
@@ -1703,7 +1868,7 @@ func (e *CANVASElement) DATASTAR_FETCH_INDICATOR(expression string) *CANVASEleme
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "DatastarFetchIndicator"
+	key := "data-fetch-indicator"
 
 	e.StringAttributes.Set(key, expression)
 	return e
@@ -1721,7 +1886,7 @@ func (e *CANVASElement) DATASTAR_FETCH_INDICATORRemove() *CANVASElement {
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("DatastarFetchIndicator")
+	e.StringAttributes.Del("data-fetch-indicator")
 	return e
 }
 

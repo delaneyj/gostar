@@ -608,9 +608,20 @@ func (e *STRIKEElement) ID(s string) *STRIKEElement {
 	return e
 }
 
+func (e *STRIKEElement) IDF(format string, args ...any) *STRIKEElement {
+	return e.ID(fmt.Sprintf(format, args...))
+}
+
 func (e *STRIKEElement) IfID(condition bool, s string) *STRIKEElement {
 	if condition {
 		e.ID(s)
+	}
+	return e
+}
+
+func (e *STRIKEElement) IfIDF(condition bool, format string, args ...any) *STRIKEElement {
+	if condition {
+		e.ID(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -622,6 +633,10 @@ func (e *STRIKEElement) IDRemove(s string) *STRIKEElement {
 	}
 	e.StringAttributes.Del("id")
 	return e
+}
+
+func (e *STRIKEElement) IDRemoveF(format string, args ...any) *STRIKEElement {
+	return e.IDRemove(fmt.Sprintf(format, args...))
 }
 
 // The inert global attribute is a Boolean attribute indicating that the browser
@@ -756,9 +771,20 @@ func (e *STRIKEElement) IS(s string) *STRIKEElement {
 	return e
 }
 
+func (e *STRIKEElement) ISF(format string, args ...any) *STRIKEElement {
+	return e.IS(fmt.Sprintf(format, args...))
+}
+
 func (e *STRIKEElement) IfIS(condition bool, s string) *STRIKEElement {
 	if condition {
 		e.IS(s)
+	}
+	return e
+}
+
+func (e *STRIKEElement) IfISF(condition bool, format string, args ...any) *STRIKEElement {
+	if condition {
+		e.IS(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -770,6 +796,10 @@ func (e *STRIKEElement) ISRemove(s string) *STRIKEElement {
 	}
 	e.StringAttributes.Del("is")
 	return e
+}
+
+func (e *STRIKEElement) ISRemoveF(format string, args ...any) *STRIKEElement {
+	return e.ISRemove(fmt.Sprintf(format, args...))
 }
 
 // The itemid global attribute provides microdata in the form of a unique, global
@@ -793,9 +823,20 @@ func (e *STRIKEElement) ITEMID(s string) *STRIKEElement {
 	return e
 }
 
+func (e *STRIKEElement) ITEMIDF(format string, args ...any) *STRIKEElement {
+	return e.ITEMID(fmt.Sprintf(format, args...))
+}
+
 func (e *STRIKEElement) IfITEMID(condition bool, s string) *STRIKEElement {
 	if condition {
 		e.ITEMID(s)
+	}
+	return e
+}
+
+func (e *STRIKEElement) IfITEMIDF(condition bool, format string, args ...any) *STRIKEElement {
+	if condition {
+		e.ITEMID(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -807,6 +848,10 @@ func (e *STRIKEElement) ITEMIDRemove(s string) *STRIKEElement {
 	}
 	e.StringAttributes.Del("itemid")
 	return e
+}
+
+func (e *STRIKEElement) ITEMIDRemoveF(format string, args ...any) *STRIKEElement {
+	return e.ITEMIDRemove(fmt.Sprintf(format, args...))
 }
 
 // The itemprop global attribute is used to add properties to an item
@@ -825,9 +870,20 @@ func (e *STRIKEElement) ITEMPROP(s string) *STRIKEElement {
 	return e
 }
 
+func (e *STRIKEElement) ITEMPROPF(format string, args ...any) *STRIKEElement {
+	return e.ITEMPROP(fmt.Sprintf(format, args...))
+}
+
 func (e *STRIKEElement) IfITEMPROP(condition bool, s string) *STRIKEElement {
 	if condition {
 		e.ITEMPROP(s)
+	}
+	return e
+}
+
+func (e *STRIKEElement) IfITEMPROPF(condition bool, format string, args ...any) *STRIKEElement {
+	if condition {
+		e.ITEMPROP(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -839,6 +895,10 @@ func (e *STRIKEElement) ITEMPROPRemove(s string) *STRIKEElement {
 	}
 	e.StringAttributes.Del("itemprop")
 	return e
+}
+
+func (e *STRIKEElement) ITEMPROPRemoveF(format string, args ...any) *STRIKEElement {
+	return e.ITEMPROPRemove(fmt.Sprintf(format, args...))
 }
 
 // Properties that are not descendants of an element with the itemscope attribute
@@ -854,9 +914,20 @@ func (e *STRIKEElement) ITEMREF(s string) *STRIKEElement {
 	return e
 }
 
+func (e *STRIKEElement) ITEMREFF(format string, args ...any) *STRIKEElement {
+	return e.ITEMREF(fmt.Sprintf(format, args...))
+}
+
 func (e *STRIKEElement) IfITEMREF(condition bool, s string) *STRIKEElement {
 	if condition {
 		e.ITEMREF(s)
+	}
+	return e
+}
+
+func (e *STRIKEElement) IfITEMREFF(condition bool, format string, args ...any) *STRIKEElement {
+	if condition {
+		e.ITEMREF(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -868,6 +939,10 @@ func (e *STRIKEElement) ITEMREFRemove(s string) *STRIKEElement {
 	}
 	e.StringAttributes.Del("itemref")
 	return e
+}
+
+func (e *STRIKEElement) ITEMREFRemoveF(format string, args ...any) *STRIKEElement {
+	return e.ITEMREFRemove(fmt.Sprintf(format, args...))
 }
 
 // The itemscope global attribute is used to add an item to a microdata DOM tree
@@ -931,9 +1006,20 @@ func (e *STRIKEElement) ITEMTYPE(s string) *STRIKEElement {
 	return e
 }
 
+func (e *STRIKEElement) ITEMTYPEF(format string, args ...any) *STRIKEElement {
+	return e.ITEMTYPE(fmt.Sprintf(format, args...))
+}
+
 func (e *STRIKEElement) IfITEMTYPE(condition bool, s string) *STRIKEElement {
 	if condition {
 		e.ITEMTYPE(s)
+	}
+	return e
+}
+
+func (e *STRIKEElement) IfITEMTYPEF(condition bool, format string, args ...any) *STRIKEElement {
+	if condition {
+		e.ITEMTYPE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -945,6 +1031,10 @@ func (e *STRIKEElement) ITEMTYPERemove(s string) *STRIKEElement {
 	}
 	e.StringAttributes.Del("itemtype")
 	return e
+}
+
+func (e *STRIKEElement) ITEMTYPERemoveF(format string, args ...any) *STRIKEElement {
+	return e.ITEMTYPERemove(fmt.Sprintf(format, args...))
 }
 
 // The lang global attribute helps define the language of an element: the language
@@ -961,9 +1051,20 @@ func (e *STRIKEElement) LANG(s string) *STRIKEElement {
 	return e
 }
 
+func (e *STRIKEElement) LANGF(format string, args ...any) *STRIKEElement {
+	return e.LANG(fmt.Sprintf(format, args...))
+}
+
 func (e *STRIKEElement) IfLANG(condition bool, s string) *STRIKEElement {
 	if condition {
 		e.LANG(s)
+	}
+	return e
+}
+
+func (e *STRIKEElement) IfLANGF(condition bool, format string, args ...any) *STRIKEElement {
+	if condition {
+		e.LANG(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -975,6 +1076,10 @@ func (e *STRIKEElement) LANGRemove(s string) *STRIKEElement {
 	}
 	e.StringAttributes.Del("lang")
 	return e
+}
+
+func (e *STRIKEElement) LANGRemoveF(format string, args ...any) *STRIKEElement {
+	return e.LANGRemove(fmt.Sprintf(format, args...))
 }
 
 // The nonce global attribute is a unique identifier used to declare inline
@@ -989,9 +1094,20 @@ func (e *STRIKEElement) NONCE(s string) *STRIKEElement {
 	return e
 }
 
+func (e *STRIKEElement) NONCEF(format string, args ...any) *STRIKEElement {
+	return e.NONCE(fmt.Sprintf(format, args...))
+}
+
 func (e *STRIKEElement) IfNONCE(condition bool, s string) *STRIKEElement {
 	if condition {
 		e.NONCE(s)
+	}
+	return e
+}
+
+func (e *STRIKEElement) IfNONCEF(condition bool, format string, args ...any) *STRIKEElement {
+	if condition {
+		e.NONCE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1003,6 +1119,10 @@ func (e *STRIKEElement) NONCERemove(s string) *STRIKEElement {
 	}
 	e.StringAttributes.Del("nonce")
 	return e
+}
+
+func (e *STRIKEElement) NONCERemoveF(format string, args ...any) *STRIKEElement {
+	return e.NONCERemove(fmt.Sprintf(format, args...))
 }
 
 // The part global attribute contains a space-separated list of the part names of
@@ -1097,9 +1217,20 @@ func (e *STRIKEElement) ROLE(s string) *STRIKEElement {
 	return e
 }
 
+func (e *STRIKEElement) ROLEF(format string, args ...any) *STRIKEElement {
+	return e.ROLE(fmt.Sprintf(format, args...))
+}
+
 func (e *STRIKEElement) IfROLE(condition bool, s string) *STRIKEElement {
 	if condition {
 		e.ROLE(s)
+	}
+	return e
+}
+
+func (e *STRIKEElement) IfROLEF(condition bool, format string, args ...any) *STRIKEElement {
+	if condition {
+		e.ROLE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1111,6 +1242,10 @@ func (e *STRIKEElement) ROLERemove(s string) *STRIKEElement {
 	}
 	e.StringAttributes.Del("role")
 	return e
+}
+
+func (e *STRIKEElement) ROLERemoveF(format string, args ...any) *STRIKEElement {
+	return e.ROLERemove(fmt.Sprintf(format, args...))
 }
 
 // The slot global attribute assigns a slot in a shadow DOM shadow tree to an
@@ -1125,9 +1260,20 @@ func (e *STRIKEElement) SLOT(s string) *STRIKEElement {
 	return e
 }
 
+func (e *STRIKEElement) SLOTF(format string, args ...any) *STRIKEElement {
+	return e.SLOT(fmt.Sprintf(format, args...))
+}
+
 func (e *STRIKEElement) IfSLOT(condition bool, s string) *STRIKEElement {
 	if condition {
 		e.SLOT(s)
+	}
+	return e
+}
+
+func (e *STRIKEElement) IfSLOTF(condition bool, format string, args ...any) *STRIKEElement {
+	if condition {
+		e.SLOT(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1139,6 +1285,10 @@ func (e *STRIKEElement) SLOTRemove(s string) *STRIKEElement {
 	}
 	e.StringAttributes.Del("slot")
 	return e
+}
+
+func (e *STRIKEElement) SLOTRemoveF(format string, args ...any) *STRIKEElement {
+	return e.SLOTRemove(fmt.Sprintf(format, args...))
 }
 
 // The spellcheck global attribute is an enumerated attribute that defines whether
@@ -1343,9 +1493,20 @@ func (e *STRIKEElement) TITLE(s string) *STRIKEElement {
 	return e
 }
 
+func (e *STRIKEElement) TITLEF(format string, args ...any) *STRIKEElement {
+	return e.TITLE(fmt.Sprintf(format, args...))
+}
+
 func (e *STRIKEElement) IfTITLE(condition bool, s string) *STRIKEElement {
 	if condition {
 		e.TITLE(s)
+	}
+	return e
+}
+
+func (e *STRIKEElement) IfTITLEF(condition bool, format string, args ...any) *STRIKEElement {
+	if condition {
+		e.TITLE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1357,6 +1518,10 @@ func (e *STRIKEElement) TITLERemove(s string) *STRIKEElement {
 	}
 	e.StringAttributes.Del("title")
 	return e
+}
+
+func (e *STRIKEElement) TITLERemoveF(format string, args ...any) *STRIKEElement {
+	return e.TITLERemove(fmt.Sprintf(format, args...))
 }
 
 // The translate global attribute is an enumerated attribute that is used to
@@ -1401,7 +1566,7 @@ func (e *STRIKEElement) DATASTAR_MERGE_STORE(v any) *STRIKEElement {
 	if err != nil {
 		panic(err)
 	}
-	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	e.CustomDataAttributes.Set("merge-store", string(b))
 	return e
 }
 
@@ -1523,34 +1688,34 @@ func (e *STRIKEElement) DATASTAR_TEXTRemove() *STRIKEElement {
 
 // Sets the event handler of the element
 
-type StrikeDataOnMod customDataKeyModifier
+type StrikeOnMod customDataKeyModifier
 
 // Debounces the event handler
-func StrikeDataOnModDebounce(
+func StrikeOnModDebounce(
 	d time.Duration,
-) StrikeDataOnMod {
+) StrikeOnMod {
 	return func() string {
 		return fmt.Sprintf("debounce_%dms", d.Milliseconds())
 	}
 }
 
 // Throttles the event handler
-func StrikeDataOnModThrottle(
+func StrikeOnModThrottle(
 	d time.Duration,
-) StrikeDataOnMod {
+) StrikeOnMod {
 	return func() string {
 		return fmt.Sprintf("throttle_%dms", d.Milliseconds())
 	}
 }
 
-func (e *STRIKEElement) DATASTAR_ON(key string, expression string, modifiers ...StrikeDataOnMod) *STRIKEElement {
+func (e *STRIKEElement) DATASTAR_ON(key string, expression string, modifiers ...StrikeOnMod) *STRIKEElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
 	key = fmt.Sprintf("data-on-%s", key)
 
-	customMods := lo.Map(modifiers, func(m StrikeDataOnMod, i int) customDataKeyModifier {
+	customMods := lo.Map(modifiers, func(m StrikeOnMod, i int) customDataKeyModifier {
 		return customDataKeyModifier(m)
 	})
 	key = customDataKey(key, customMods...)
@@ -1558,7 +1723,7 @@ func (e *STRIKEElement) DATASTAR_ON(key string, expression string, modifiers ...
 	return e
 }
 
-func (e *STRIKEElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...StrikeDataOnMod) *STRIKEElement {
+func (e *STRIKEElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...StrikeOnMod) *STRIKEElement {
 	if condition {
 		e.DATASTAR_ON(key, expression, modifiers...)
 	}
@@ -1651,7 +1816,7 @@ func (e *STRIKEElement) DATASTAR_FETCH_INDICATOR(expression string) *STRIKEEleme
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "DatastarFetchIndicator"
+	key := "data-fetch-indicator"
 
 	e.StringAttributes.Set(key, expression)
 	return e
@@ -1669,7 +1834,7 @@ func (e *STRIKEElement) DATASTAR_FETCH_INDICATORRemove() *STRIKEElement {
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("DatastarFetchIndicator")
+	e.StringAttributes.Del("data-fetch-indicator")
 	return e
 }
 

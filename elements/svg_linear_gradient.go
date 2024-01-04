@@ -200,9 +200,20 @@ func (e *SVGLINEARGRADIENTElement) GRADIENT_TRANSFORM(s string) *SVGLINEARGRADIE
 	return e
 }
 
+func (e *SVGLINEARGRADIENTElement) GRADIENT_TRANSFORMF(format string, args ...any) *SVGLINEARGRADIENTElement {
+	return e.GRADIENT_TRANSFORM(fmt.Sprintf(format, args...))
+}
+
 func (e *SVGLINEARGRADIENTElement) IfGRADIENT_TRANSFORM(condition bool, s string) *SVGLINEARGRADIENTElement {
 	if condition {
 		e.GRADIENT_TRANSFORM(s)
+	}
+	return e
+}
+
+func (e *SVGLINEARGRADIENTElement) IfGRADIENT_TRANSFORMF(condition bool, format string, args ...any) *SVGLINEARGRADIENTElement {
+	if condition {
+		e.GRADIENT_TRANSFORM(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -214,6 +225,10 @@ func (e *SVGLINEARGRADIENTElement) GRADIENT_TRANSFORMRemove(s string) *SVGLINEAR
 	}
 	e.StringAttributes.Del("gradientTransform")
 	return e
+}
+
+func (e *SVGLINEARGRADIENTElement) GRADIENT_TRANSFORMRemoveF(format string, args ...any) *SVGLINEARGRADIENTElement {
+	return e.GRADIENT_TRANSFORMRemove(fmt.Sprintf(format, args...))
 }
 
 // The method by which to fill a shape.
@@ -318,9 +333,20 @@ func (e *SVGLINEARGRADIENTElement) ID(s string) *SVGLINEARGRADIENTElement {
 	return e
 }
 
+func (e *SVGLINEARGRADIENTElement) IDF(format string, args ...any) *SVGLINEARGRADIENTElement {
+	return e.ID(fmt.Sprintf(format, args...))
+}
+
 func (e *SVGLINEARGRADIENTElement) IfID(condition bool, s string) *SVGLINEARGRADIENTElement {
 	if condition {
 		e.ID(s)
+	}
+	return e
+}
+
+func (e *SVGLINEARGRADIENTElement) IfIDF(condition bool, format string, args ...any) *SVGLINEARGRADIENTElement {
+	if condition {
+		e.ID(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -332,6 +358,10 @@ func (e *SVGLINEARGRADIENTElement) IDRemove(s string) *SVGLINEARGRADIENTElement 
 	}
 	e.StringAttributes.Del("id")
 	return e
+}
+
+func (e *SVGLINEARGRADIENTElement) IDRemoveF(format string, args ...any) *SVGLINEARGRADIENTElement {
+	return e.IDRemove(fmt.Sprintf(format, args...))
 }
 
 // Specifies one or more classnames for an element (refers to a class in a style
@@ -470,7 +500,7 @@ func (e *SVGLINEARGRADIENTElement) DATASTAR_MERGE_STORE(v any) *SVGLINEARGRADIEN
 	if err != nil {
 		panic(err)
 	}
-	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	e.CustomDataAttributes.Set("merge-store", string(b))
 	return e
 }
 
@@ -592,34 +622,34 @@ func (e *SVGLINEARGRADIENTElement) DATASTAR_TEXTRemove() *SVGLINEARGRADIENTEleme
 
 // Sets the event handler of the element
 
-type SVGLinearGradientDataOnMod customDataKeyModifier
+type SVGLinearGradientOnMod customDataKeyModifier
 
 // Debounces the event handler
-func SVGLinearGradientDataOnModDebounce(
+func SVGLinearGradientOnModDebounce(
 	d time.Duration,
-) SVGLinearGradientDataOnMod {
+) SVGLinearGradientOnMod {
 	return func() string {
 		return fmt.Sprintf("debounce_%dms", d.Milliseconds())
 	}
 }
 
 // Throttles the event handler
-func SVGLinearGradientDataOnModThrottle(
+func SVGLinearGradientOnModThrottle(
 	d time.Duration,
-) SVGLinearGradientDataOnMod {
+) SVGLinearGradientOnMod {
 	return func() string {
 		return fmt.Sprintf("throttle_%dms", d.Milliseconds())
 	}
 }
 
-func (e *SVGLINEARGRADIENTElement) DATASTAR_ON(key string, expression string, modifiers ...SVGLinearGradientDataOnMod) *SVGLINEARGRADIENTElement {
+func (e *SVGLINEARGRADIENTElement) DATASTAR_ON(key string, expression string, modifiers ...SVGLinearGradientOnMod) *SVGLINEARGRADIENTElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
 	key = fmt.Sprintf("data-on-%s", key)
 
-	customMods := lo.Map(modifiers, func(m SVGLinearGradientDataOnMod, i int) customDataKeyModifier {
+	customMods := lo.Map(modifiers, func(m SVGLinearGradientOnMod, i int) customDataKeyModifier {
 		return customDataKeyModifier(m)
 	})
 	key = customDataKey(key, customMods...)
@@ -627,7 +657,7 @@ func (e *SVGLINEARGRADIENTElement) DATASTAR_ON(key string, expression string, mo
 	return e
 }
 
-func (e *SVGLINEARGRADIENTElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SVGLinearGradientDataOnMod) *SVGLINEARGRADIENTElement {
+func (e *SVGLINEARGRADIENTElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SVGLinearGradientOnMod) *SVGLINEARGRADIENTElement {
 	if condition {
 		e.DATASTAR_ON(key, expression, modifiers...)
 	}
@@ -720,7 +750,7 @@ func (e *SVGLINEARGRADIENTElement) DATASTAR_FETCH_INDICATOR(expression string) *
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "DatastarFetchIndicator"
+	key := "data-fetch-indicator"
 
 	e.StringAttributes.Set(key, expression)
 	return e
@@ -738,7 +768,7 @@ func (e *SVGLINEARGRADIENTElement) DATASTAR_FETCH_INDICATORRemove() *SVGLINEARGR
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("DatastarFetchIndicator")
+	e.StringAttributes.Del("data-fetch-indicator")
 	return e
 }
 

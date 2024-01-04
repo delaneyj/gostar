@@ -204,9 +204,20 @@ func (e *SVGCLIPPATHElement) ID(s string) *SVGCLIPPATHElement {
 	return e
 }
 
+func (e *SVGCLIPPATHElement) IDF(format string, args ...any) *SVGCLIPPATHElement {
+	return e.ID(fmt.Sprintf(format, args...))
+}
+
 func (e *SVGCLIPPATHElement) IfID(condition bool, s string) *SVGCLIPPATHElement {
 	if condition {
 		e.ID(s)
+	}
+	return e
+}
+
+func (e *SVGCLIPPATHElement) IfIDF(condition bool, format string, args ...any) *SVGCLIPPATHElement {
+	if condition {
+		e.ID(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -218,6 +229,10 @@ func (e *SVGCLIPPATHElement) IDRemove(s string) *SVGCLIPPATHElement {
 	}
 	e.StringAttributes.Del("id")
 	return e
+}
+
+func (e *SVGCLIPPATHElement) IDRemoveF(format string, args ...any) *SVGCLIPPATHElement {
+	return e.IDRemove(fmt.Sprintf(format, args...))
 }
 
 // Specifies one or more classnames for an element (refers to a class in a style
@@ -356,7 +371,7 @@ func (e *SVGCLIPPATHElement) DATASTAR_MERGE_STORE(v any) *SVGCLIPPATHElement {
 	if err != nil {
 		panic(err)
 	}
-	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	e.CustomDataAttributes.Set("merge-store", string(b))
 	return e
 }
 
@@ -478,34 +493,34 @@ func (e *SVGCLIPPATHElement) DATASTAR_TEXTRemove() *SVGCLIPPATHElement {
 
 // Sets the event handler of the element
 
-type SVGClipPathDataOnMod customDataKeyModifier
+type SVGClipPathOnMod customDataKeyModifier
 
 // Debounces the event handler
-func SVGClipPathDataOnModDebounce(
+func SVGClipPathOnModDebounce(
 	d time.Duration,
-) SVGClipPathDataOnMod {
+) SVGClipPathOnMod {
 	return func() string {
 		return fmt.Sprintf("debounce_%dms", d.Milliseconds())
 	}
 }
 
 // Throttles the event handler
-func SVGClipPathDataOnModThrottle(
+func SVGClipPathOnModThrottle(
 	d time.Duration,
-) SVGClipPathDataOnMod {
+) SVGClipPathOnMod {
 	return func() string {
 		return fmt.Sprintf("throttle_%dms", d.Milliseconds())
 	}
 }
 
-func (e *SVGCLIPPATHElement) DATASTAR_ON(key string, expression string, modifiers ...SVGClipPathDataOnMod) *SVGCLIPPATHElement {
+func (e *SVGCLIPPATHElement) DATASTAR_ON(key string, expression string, modifiers ...SVGClipPathOnMod) *SVGCLIPPATHElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
 	key = fmt.Sprintf("data-on-%s", key)
 
-	customMods := lo.Map(modifiers, func(m SVGClipPathDataOnMod, i int) customDataKeyModifier {
+	customMods := lo.Map(modifiers, func(m SVGClipPathOnMod, i int) customDataKeyModifier {
 		return customDataKeyModifier(m)
 	})
 	key = customDataKey(key, customMods...)
@@ -513,7 +528,7 @@ func (e *SVGCLIPPATHElement) DATASTAR_ON(key string, expression string, modifier
 	return e
 }
 
-func (e *SVGCLIPPATHElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SVGClipPathDataOnMod) *SVGCLIPPATHElement {
+func (e *SVGCLIPPATHElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SVGClipPathOnMod) *SVGCLIPPATHElement {
 	if condition {
 		e.DATASTAR_ON(key, expression, modifiers...)
 	}
@@ -606,7 +621,7 @@ func (e *SVGCLIPPATHElement) DATASTAR_FETCH_INDICATOR(expression string) *SVGCLI
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "DatastarFetchIndicator"
+	key := "data-fetch-indicator"
 
 	e.StringAttributes.Set(key, expression)
 	return e
@@ -624,7 +639,7 @@ func (e *SVGCLIPPATHElement) DATASTAR_FETCH_INDICATORRemove() *SVGCLIPPATHElemen
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("DatastarFetchIndicator")
+	e.StringAttributes.Del("data-fetch-indicator")
 	return e
 }
 

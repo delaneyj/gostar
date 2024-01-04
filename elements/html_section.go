@@ -610,9 +610,20 @@ func (e *SECTIONElement) ID(s string) *SECTIONElement {
 	return e
 }
 
+func (e *SECTIONElement) IDF(format string, args ...any) *SECTIONElement {
+	return e.ID(fmt.Sprintf(format, args...))
+}
+
 func (e *SECTIONElement) IfID(condition bool, s string) *SECTIONElement {
 	if condition {
 		e.ID(s)
+	}
+	return e
+}
+
+func (e *SECTIONElement) IfIDF(condition bool, format string, args ...any) *SECTIONElement {
+	if condition {
+		e.ID(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -624,6 +635,10 @@ func (e *SECTIONElement) IDRemove(s string) *SECTIONElement {
 	}
 	e.StringAttributes.Del("id")
 	return e
+}
+
+func (e *SECTIONElement) IDRemoveF(format string, args ...any) *SECTIONElement {
+	return e.IDRemove(fmt.Sprintf(format, args...))
 }
 
 // The inert global attribute is a Boolean attribute indicating that the browser
@@ -758,9 +773,20 @@ func (e *SECTIONElement) IS(s string) *SECTIONElement {
 	return e
 }
 
+func (e *SECTIONElement) ISF(format string, args ...any) *SECTIONElement {
+	return e.IS(fmt.Sprintf(format, args...))
+}
+
 func (e *SECTIONElement) IfIS(condition bool, s string) *SECTIONElement {
 	if condition {
 		e.IS(s)
+	}
+	return e
+}
+
+func (e *SECTIONElement) IfISF(condition bool, format string, args ...any) *SECTIONElement {
+	if condition {
+		e.IS(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -772,6 +798,10 @@ func (e *SECTIONElement) ISRemove(s string) *SECTIONElement {
 	}
 	e.StringAttributes.Del("is")
 	return e
+}
+
+func (e *SECTIONElement) ISRemoveF(format string, args ...any) *SECTIONElement {
+	return e.ISRemove(fmt.Sprintf(format, args...))
 }
 
 // The itemid global attribute provides microdata in the form of a unique, global
@@ -795,9 +825,20 @@ func (e *SECTIONElement) ITEMID(s string) *SECTIONElement {
 	return e
 }
 
+func (e *SECTIONElement) ITEMIDF(format string, args ...any) *SECTIONElement {
+	return e.ITEMID(fmt.Sprintf(format, args...))
+}
+
 func (e *SECTIONElement) IfITEMID(condition bool, s string) *SECTIONElement {
 	if condition {
 		e.ITEMID(s)
+	}
+	return e
+}
+
+func (e *SECTIONElement) IfITEMIDF(condition bool, format string, args ...any) *SECTIONElement {
+	if condition {
+		e.ITEMID(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -809,6 +850,10 @@ func (e *SECTIONElement) ITEMIDRemove(s string) *SECTIONElement {
 	}
 	e.StringAttributes.Del("itemid")
 	return e
+}
+
+func (e *SECTIONElement) ITEMIDRemoveF(format string, args ...any) *SECTIONElement {
+	return e.ITEMIDRemove(fmt.Sprintf(format, args...))
 }
 
 // The itemprop global attribute is used to add properties to an item
@@ -827,9 +872,20 @@ func (e *SECTIONElement) ITEMPROP(s string) *SECTIONElement {
 	return e
 }
 
+func (e *SECTIONElement) ITEMPROPF(format string, args ...any) *SECTIONElement {
+	return e.ITEMPROP(fmt.Sprintf(format, args...))
+}
+
 func (e *SECTIONElement) IfITEMPROP(condition bool, s string) *SECTIONElement {
 	if condition {
 		e.ITEMPROP(s)
+	}
+	return e
+}
+
+func (e *SECTIONElement) IfITEMPROPF(condition bool, format string, args ...any) *SECTIONElement {
+	if condition {
+		e.ITEMPROP(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -841,6 +897,10 @@ func (e *SECTIONElement) ITEMPROPRemove(s string) *SECTIONElement {
 	}
 	e.StringAttributes.Del("itemprop")
 	return e
+}
+
+func (e *SECTIONElement) ITEMPROPRemoveF(format string, args ...any) *SECTIONElement {
+	return e.ITEMPROPRemove(fmt.Sprintf(format, args...))
 }
 
 // Properties that are not descendants of an element with the itemscope attribute
@@ -856,9 +916,20 @@ func (e *SECTIONElement) ITEMREF(s string) *SECTIONElement {
 	return e
 }
 
+func (e *SECTIONElement) ITEMREFF(format string, args ...any) *SECTIONElement {
+	return e.ITEMREF(fmt.Sprintf(format, args...))
+}
+
 func (e *SECTIONElement) IfITEMREF(condition bool, s string) *SECTIONElement {
 	if condition {
 		e.ITEMREF(s)
+	}
+	return e
+}
+
+func (e *SECTIONElement) IfITEMREFF(condition bool, format string, args ...any) *SECTIONElement {
+	if condition {
+		e.ITEMREF(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -870,6 +941,10 @@ func (e *SECTIONElement) ITEMREFRemove(s string) *SECTIONElement {
 	}
 	e.StringAttributes.Del("itemref")
 	return e
+}
+
+func (e *SECTIONElement) ITEMREFRemoveF(format string, args ...any) *SECTIONElement {
+	return e.ITEMREFRemove(fmt.Sprintf(format, args...))
 }
 
 // The itemscope global attribute is used to add an item to a microdata DOM tree
@@ -933,9 +1008,20 @@ func (e *SECTIONElement) ITEMTYPE(s string) *SECTIONElement {
 	return e
 }
 
+func (e *SECTIONElement) ITEMTYPEF(format string, args ...any) *SECTIONElement {
+	return e.ITEMTYPE(fmt.Sprintf(format, args...))
+}
+
 func (e *SECTIONElement) IfITEMTYPE(condition bool, s string) *SECTIONElement {
 	if condition {
 		e.ITEMTYPE(s)
+	}
+	return e
+}
+
+func (e *SECTIONElement) IfITEMTYPEF(condition bool, format string, args ...any) *SECTIONElement {
+	if condition {
+		e.ITEMTYPE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -947,6 +1033,10 @@ func (e *SECTIONElement) ITEMTYPERemove(s string) *SECTIONElement {
 	}
 	e.StringAttributes.Del("itemtype")
 	return e
+}
+
+func (e *SECTIONElement) ITEMTYPERemoveF(format string, args ...any) *SECTIONElement {
+	return e.ITEMTYPERemove(fmt.Sprintf(format, args...))
 }
 
 // The lang global attribute helps define the language of an element: the language
@@ -963,9 +1053,20 @@ func (e *SECTIONElement) LANG(s string) *SECTIONElement {
 	return e
 }
 
+func (e *SECTIONElement) LANGF(format string, args ...any) *SECTIONElement {
+	return e.LANG(fmt.Sprintf(format, args...))
+}
+
 func (e *SECTIONElement) IfLANG(condition bool, s string) *SECTIONElement {
 	if condition {
 		e.LANG(s)
+	}
+	return e
+}
+
+func (e *SECTIONElement) IfLANGF(condition bool, format string, args ...any) *SECTIONElement {
+	if condition {
+		e.LANG(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -977,6 +1078,10 @@ func (e *SECTIONElement) LANGRemove(s string) *SECTIONElement {
 	}
 	e.StringAttributes.Del("lang")
 	return e
+}
+
+func (e *SECTIONElement) LANGRemoveF(format string, args ...any) *SECTIONElement {
+	return e.LANGRemove(fmt.Sprintf(format, args...))
 }
 
 // The nonce global attribute is a unique identifier used to declare inline
@@ -991,9 +1096,20 @@ func (e *SECTIONElement) NONCE(s string) *SECTIONElement {
 	return e
 }
 
+func (e *SECTIONElement) NONCEF(format string, args ...any) *SECTIONElement {
+	return e.NONCE(fmt.Sprintf(format, args...))
+}
+
 func (e *SECTIONElement) IfNONCE(condition bool, s string) *SECTIONElement {
 	if condition {
 		e.NONCE(s)
+	}
+	return e
+}
+
+func (e *SECTIONElement) IfNONCEF(condition bool, format string, args ...any) *SECTIONElement {
+	if condition {
+		e.NONCE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1005,6 +1121,10 @@ func (e *SECTIONElement) NONCERemove(s string) *SECTIONElement {
 	}
 	e.StringAttributes.Del("nonce")
 	return e
+}
+
+func (e *SECTIONElement) NONCERemoveF(format string, args ...any) *SECTIONElement {
+	return e.NONCERemove(fmt.Sprintf(format, args...))
 }
 
 // The part global attribute contains a space-separated list of the part names of
@@ -1099,9 +1219,20 @@ func (e *SECTIONElement) ROLE(s string) *SECTIONElement {
 	return e
 }
 
+func (e *SECTIONElement) ROLEF(format string, args ...any) *SECTIONElement {
+	return e.ROLE(fmt.Sprintf(format, args...))
+}
+
 func (e *SECTIONElement) IfROLE(condition bool, s string) *SECTIONElement {
 	if condition {
 		e.ROLE(s)
+	}
+	return e
+}
+
+func (e *SECTIONElement) IfROLEF(condition bool, format string, args ...any) *SECTIONElement {
+	if condition {
+		e.ROLE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1113,6 +1244,10 @@ func (e *SECTIONElement) ROLERemove(s string) *SECTIONElement {
 	}
 	e.StringAttributes.Del("role")
 	return e
+}
+
+func (e *SECTIONElement) ROLERemoveF(format string, args ...any) *SECTIONElement {
+	return e.ROLERemove(fmt.Sprintf(format, args...))
 }
 
 // The slot global attribute assigns a slot in a shadow DOM shadow tree to an
@@ -1127,9 +1262,20 @@ func (e *SECTIONElement) SLOT(s string) *SECTIONElement {
 	return e
 }
 
+func (e *SECTIONElement) SLOTF(format string, args ...any) *SECTIONElement {
+	return e.SLOT(fmt.Sprintf(format, args...))
+}
+
 func (e *SECTIONElement) IfSLOT(condition bool, s string) *SECTIONElement {
 	if condition {
 		e.SLOT(s)
+	}
+	return e
+}
+
+func (e *SECTIONElement) IfSLOTF(condition bool, format string, args ...any) *SECTIONElement {
+	if condition {
+		e.SLOT(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1141,6 +1287,10 @@ func (e *SECTIONElement) SLOTRemove(s string) *SECTIONElement {
 	}
 	e.StringAttributes.Del("slot")
 	return e
+}
+
+func (e *SECTIONElement) SLOTRemoveF(format string, args ...any) *SECTIONElement {
+	return e.SLOTRemove(fmt.Sprintf(format, args...))
 }
 
 // The spellcheck global attribute is an enumerated attribute that defines whether
@@ -1345,9 +1495,20 @@ func (e *SECTIONElement) TITLE(s string) *SECTIONElement {
 	return e
 }
 
+func (e *SECTIONElement) TITLEF(format string, args ...any) *SECTIONElement {
+	return e.TITLE(fmt.Sprintf(format, args...))
+}
+
 func (e *SECTIONElement) IfTITLE(condition bool, s string) *SECTIONElement {
 	if condition {
 		e.TITLE(s)
+	}
+	return e
+}
+
+func (e *SECTIONElement) IfTITLEF(condition bool, format string, args ...any) *SECTIONElement {
+	if condition {
+		e.TITLE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1359,6 +1520,10 @@ func (e *SECTIONElement) TITLERemove(s string) *SECTIONElement {
 	}
 	e.StringAttributes.Del("title")
 	return e
+}
+
+func (e *SECTIONElement) TITLERemoveF(format string, args ...any) *SECTIONElement {
+	return e.TITLERemove(fmt.Sprintf(format, args...))
 }
 
 // The translate global attribute is an enumerated attribute that is used to
@@ -1403,7 +1568,7 @@ func (e *SECTIONElement) DATASTAR_MERGE_STORE(v any) *SECTIONElement {
 	if err != nil {
 		panic(err)
 	}
-	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	e.CustomDataAttributes.Set("merge-store", string(b))
 	return e
 }
 
@@ -1525,34 +1690,34 @@ func (e *SECTIONElement) DATASTAR_TEXTRemove() *SECTIONElement {
 
 // Sets the event handler of the element
 
-type SectionDataOnMod customDataKeyModifier
+type SectionOnMod customDataKeyModifier
 
 // Debounces the event handler
-func SectionDataOnModDebounce(
+func SectionOnModDebounce(
 	d time.Duration,
-) SectionDataOnMod {
+) SectionOnMod {
 	return func() string {
 		return fmt.Sprintf("debounce_%dms", d.Milliseconds())
 	}
 }
 
 // Throttles the event handler
-func SectionDataOnModThrottle(
+func SectionOnModThrottle(
 	d time.Duration,
-) SectionDataOnMod {
+) SectionOnMod {
 	return func() string {
 		return fmt.Sprintf("throttle_%dms", d.Milliseconds())
 	}
 }
 
-func (e *SECTIONElement) DATASTAR_ON(key string, expression string, modifiers ...SectionDataOnMod) *SECTIONElement {
+func (e *SECTIONElement) DATASTAR_ON(key string, expression string, modifiers ...SectionOnMod) *SECTIONElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
 	key = fmt.Sprintf("data-on-%s", key)
 
-	customMods := lo.Map(modifiers, func(m SectionDataOnMod, i int) customDataKeyModifier {
+	customMods := lo.Map(modifiers, func(m SectionOnMod, i int) customDataKeyModifier {
 		return customDataKeyModifier(m)
 	})
 	key = customDataKey(key, customMods...)
@@ -1560,7 +1725,7 @@ func (e *SECTIONElement) DATASTAR_ON(key string, expression string, modifiers ..
 	return e
 }
 
-func (e *SECTIONElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SectionDataOnMod) *SECTIONElement {
+func (e *SECTIONElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SectionOnMod) *SECTIONElement {
 	if condition {
 		e.DATASTAR_ON(key, expression, modifiers...)
 	}
@@ -1653,7 +1818,7 @@ func (e *SECTIONElement) DATASTAR_FETCH_INDICATOR(expression string) *SECTIONEle
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "DatastarFetchIndicator"
+	key := "data-fetch-indicator"
 
 	e.StringAttributes.Set(key, expression)
 	return e
@@ -1671,7 +1836,7 @@ func (e *SECTIONElement) DATASTAR_FETCH_INDICATORRemove() *SECTIONElement {
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("DatastarFetchIndicator")
+	e.StringAttributes.Del("data-fetch-indicator")
 	return e
 }
 

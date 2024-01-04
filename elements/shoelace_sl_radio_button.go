@@ -197,9 +197,20 @@ func (e *SLRADIOBUTTONElement) VALUE(s string) *SLRADIOBUTTONElement {
 	return e
 }
 
+func (e *SLRADIOBUTTONElement) VALUEF(format string, args ...any) *SLRADIOBUTTONElement {
+	return e.VALUE(fmt.Sprintf(format, args...))
+}
+
 func (e *SLRADIOBUTTONElement) IfVALUE(condition bool, s string) *SLRADIOBUTTONElement {
 	if condition {
 		e.VALUE(s)
+	}
+	return e
+}
+
+func (e *SLRADIOBUTTONElement) IfVALUEF(condition bool, format string, args ...any) *SLRADIOBUTTONElement {
+	if condition {
+		e.VALUE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -211,6 +222,10 @@ func (e *SLRADIOBUTTONElement) VALUERemove(s string) *SLRADIOBUTTONElement {
 	}
 	e.StringAttributes.Del("value")
 	return e
+}
+
+func (e *SLRADIOBUTTONElement) VALUERemoveF(format string, args ...any) *SLRADIOBUTTONElement {
+	return e.VALUERemove(fmt.Sprintf(format, args...))
 }
 
 func (e *SLRADIOBUTTONElement) DISABLED() *SLRADIOBUTTONElement {
@@ -297,7 +312,7 @@ func (e *SLRADIOBUTTONElement) DATASTAR_MERGE_STORE(v any) *SLRADIOBUTTONElement
 	if err != nil {
 		panic(err)
 	}
-	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	e.CustomDataAttributes.Set("merge-store", string(b))
 	return e
 }
 
@@ -419,34 +434,34 @@ func (e *SLRADIOBUTTONElement) DATASTAR_TEXTRemove() *SLRADIOBUTTONElement {
 
 // Sets the event handler of the element
 
-type SLRadioButtonDataOnMod customDataKeyModifier
+type SLRadioButtonOnMod customDataKeyModifier
 
 // Debounces the event handler
-func SLRadioButtonDataOnModDebounce(
+func SLRadioButtonOnModDebounce(
 	d time.Duration,
-) SLRadioButtonDataOnMod {
+) SLRadioButtonOnMod {
 	return func() string {
 		return fmt.Sprintf("debounce_%dms", d.Milliseconds())
 	}
 }
 
 // Throttles the event handler
-func SLRadioButtonDataOnModThrottle(
+func SLRadioButtonOnModThrottle(
 	d time.Duration,
-) SLRadioButtonDataOnMod {
+) SLRadioButtonOnMod {
 	return func() string {
 		return fmt.Sprintf("throttle_%dms", d.Milliseconds())
 	}
 }
 
-func (e *SLRADIOBUTTONElement) DATASTAR_ON(key string, expression string, modifiers ...SLRadioButtonDataOnMod) *SLRADIOBUTTONElement {
+func (e *SLRADIOBUTTONElement) DATASTAR_ON(key string, expression string, modifiers ...SLRadioButtonOnMod) *SLRADIOBUTTONElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
 	key = fmt.Sprintf("data-on-%s", key)
 
-	customMods := lo.Map(modifiers, func(m SLRadioButtonDataOnMod, i int) customDataKeyModifier {
+	customMods := lo.Map(modifiers, func(m SLRadioButtonOnMod, i int) customDataKeyModifier {
 		return customDataKeyModifier(m)
 	})
 	key = customDataKey(key, customMods...)
@@ -454,7 +469,7 @@ func (e *SLRADIOBUTTONElement) DATASTAR_ON(key string, expression string, modifi
 	return e
 }
 
-func (e *SLRADIOBUTTONElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SLRadioButtonDataOnMod) *SLRADIOBUTTONElement {
+func (e *SLRADIOBUTTONElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SLRadioButtonOnMod) *SLRADIOBUTTONElement {
 	if condition {
 		e.DATASTAR_ON(key, expression, modifiers...)
 	}
@@ -547,7 +562,7 @@ func (e *SLRADIOBUTTONElement) DATASTAR_FETCH_INDICATOR(expression string) *SLRA
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "DatastarFetchIndicator"
+	key := "data-fetch-indicator"
 
 	e.StringAttributes.Set(key, expression)
 	return e
@@ -565,7 +580,7 @@ func (e *SLRADIOBUTTONElement) DATASTAR_FETCH_INDICATORRemove() *SLRADIOBUTTONEl
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("DatastarFetchIndicator")
+	e.StringAttributes.Del("data-fetch-indicator")
 	return e
 }
 

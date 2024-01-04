@@ -344,9 +344,20 @@ func (e *SLBUTTONElement) HREF(s string) *SLBUTTONElement {
 	return e
 }
 
+func (e *SLBUTTONElement) HREFF(format string, args ...any) *SLBUTTONElement {
+	return e.HREF(fmt.Sprintf(format, args...))
+}
+
 func (e *SLBUTTONElement) IfHREF(condition bool, s string) *SLBUTTONElement {
 	if condition {
 		e.HREF(s)
+	}
+	return e
+}
+
+func (e *SLBUTTONElement) IfHREFF(condition bool, format string, args ...any) *SLBUTTONElement {
+	if condition {
+		e.HREF(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -358,6 +369,10 @@ func (e *SLBUTTONElement) HREFRemove(s string) *SLBUTTONElement {
 	}
 	e.StringAttributes.Del("href")
 	return e
+}
+
+func (e *SLBUTTONElement) HREFRemoveF(format string, args ...any) *SLBUTTONElement {
+	return e.HREFRemove(fmt.Sprintf(format, args...))
 }
 
 func (e *SLBUTTONElement) CARET() *SLBUTTONElement {
@@ -481,7 +496,7 @@ func (e *SLBUTTONElement) DATASTAR_MERGE_STORE(v any) *SLBUTTONElement {
 	if err != nil {
 		panic(err)
 	}
-	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	e.CustomDataAttributes.Set("merge-store", string(b))
 	return e
 }
 
@@ -603,34 +618,34 @@ func (e *SLBUTTONElement) DATASTAR_TEXTRemove() *SLBUTTONElement {
 
 // Sets the event handler of the element
 
-type SLButtonDataOnMod customDataKeyModifier
+type SLButtonOnMod customDataKeyModifier
 
 // Debounces the event handler
-func SLButtonDataOnModDebounce(
+func SLButtonOnModDebounce(
 	d time.Duration,
-) SLButtonDataOnMod {
+) SLButtonOnMod {
 	return func() string {
 		return fmt.Sprintf("debounce_%dms", d.Milliseconds())
 	}
 }
 
 // Throttles the event handler
-func SLButtonDataOnModThrottle(
+func SLButtonOnModThrottle(
 	d time.Duration,
-) SLButtonDataOnMod {
+) SLButtonOnMod {
 	return func() string {
 		return fmt.Sprintf("throttle_%dms", d.Milliseconds())
 	}
 }
 
-func (e *SLBUTTONElement) DATASTAR_ON(key string, expression string, modifiers ...SLButtonDataOnMod) *SLBUTTONElement {
+func (e *SLBUTTONElement) DATASTAR_ON(key string, expression string, modifiers ...SLButtonOnMod) *SLBUTTONElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
 	key = fmt.Sprintf("data-on-%s", key)
 
-	customMods := lo.Map(modifiers, func(m SLButtonDataOnMod, i int) customDataKeyModifier {
+	customMods := lo.Map(modifiers, func(m SLButtonOnMod, i int) customDataKeyModifier {
 		return customDataKeyModifier(m)
 	})
 	key = customDataKey(key, customMods...)
@@ -638,7 +653,7 @@ func (e *SLBUTTONElement) DATASTAR_ON(key string, expression string, modifiers .
 	return e
 }
 
-func (e *SLBUTTONElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SLButtonDataOnMod) *SLBUTTONElement {
+func (e *SLBUTTONElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SLButtonOnMod) *SLBUTTONElement {
 	if condition {
 		e.DATASTAR_ON(key, expression, modifiers...)
 	}
@@ -731,7 +746,7 @@ func (e *SLBUTTONElement) DATASTAR_FETCH_INDICATOR(expression string) *SLBUTTONE
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "DatastarFetchIndicator"
+	key := "data-fetch-indicator"
 
 	e.StringAttributes.Set(key, expression)
 	return e
@@ -749,7 +764,7 @@ func (e *SLBUTTONElement) DATASTAR_FETCH_INDICATORRemove() *SLBUTTONElement {
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("DatastarFetchIndicator")
+	e.StringAttributes.Del("data-fetch-indicator")
 	return e
 }
 

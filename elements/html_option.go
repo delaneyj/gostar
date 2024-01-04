@@ -212,9 +212,20 @@ func (e *OPTIONElement) LABEL(s string) *OPTIONElement {
 	return e
 }
 
+func (e *OPTIONElement) LABELF(format string, args ...any) *OPTIONElement {
+	return e.LABEL(fmt.Sprintf(format, args...))
+}
+
 func (e *OPTIONElement) IfLABEL(condition bool, s string) *OPTIONElement {
 	if condition {
 		e.LABEL(s)
+	}
+	return e
+}
+
+func (e *OPTIONElement) IfLABELF(condition bool, format string, args ...any) *OPTIONElement {
+	if condition {
+		e.LABEL(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -226,6 +237,10 @@ func (e *OPTIONElement) LABELRemove(s string) *OPTIONElement {
 	}
 	e.StringAttributes.Del("label")
 	return e
+}
+
+func (e *OPTIONElement) LABELRemoveF(format string, args ...any) *OPTIONElement {
+	return e.LABELRemove(fmt.Sprintf(format, args...))
 }
 
 // Whether the option is selected by default.
@@ -275,9 +290,20 @@ func (e *OPTIONElement) VALUE(s string) *OPTIONElement {
 	return e
 }
 
+func (e *OPTIONElement) VALUEF(format string, args ...any) *OPTIONElement {
+	return e.VALUE(fmt.Sprintf(format, args...))
+}
+
 func (e *OPTIONElement) IfVALUE(condition bool, s string) *OPTIONElement {
 	if condition {
 		e.VALUE(s)
+	}
+	return e
+}
+
+func (e *OPTIONElement) IfVALUEF(condition bool, format string, args ...any) *OPTIONElement {
+	if condition {
+		e.VALUE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -289,6 +315,10 @@ func (e *OPTIONElement) VALUERemove(s string) *OPTIONElement {
 	}
 	e.StringAttributes.Del("value")
 	return e
+}
+
+func (e *OPTIONElement) VALUERemoveF(format string, args ...any) *OPTIONElement {
+	return e.VALUERemove(fmt.Sprintf(format, args...))
 }
 
 // The accesskey global attribute provides a hint for generating a keyboard
@@ -736,9 +766,20 @@ func (e *OPTIONElement) ID(s string) *OPTIONElement {
 	return e
 }
 
+func (e *OPTIONElement) IDF(format string, args ...any) *OPTIONElement {
+	return e.ID(fmt.Sprintf(format, args...))
+}
+
 func (e *OPTIONElement) IfID(condition bool, s string) *OPTIONElement {
 	if condition {
 		e.ID(s)
+	}
+	return e
+}
+
+func (e *OPTIONElement) IfIDF(condition bool, format string, args ...any) *OPTIONElement {
+	if condition {
+		e.ID(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -750,6 +791,10 @@ func (e *OPTIONElement) IDRemove(s string) *OPTIONElement {
 	}
 	e.StringAttributes.Del("id")
 	return e
+}
+
+func (e *OPTIONElement) IDRemoveF(format string, args ...any) *OPTIONElement {
+	return e.IDRemove(fmt.Sprintf(format, args...))
 }
 
 // The inert global attribute is a Boolean attribute indicating that the browser
@@ -884,9 +929,20 @@ func (e *OPTIONElement) IS(s string) *OPTIONElement {
 	return e
 }
 
+func (e *OPTIONElement) ISF(format string, args ...any) *OPTIONElement {
+	return e.IS(fmt.Sprintf(format, args...))
+}
+
 func (e *OPTIONElement) IfIS(condition bool, s string) *OPTIONElement {
 	if condition {
 		e.IS(s)
+	}
+	return e
+}
+
+func (e *OPTIONElement) IfISF(condition bool, format string, args ...any) *OPTIONElement {
+	if condition {
+		e.IS(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -898,6 +954,10 @@ func (e *OPTIONElement) ISRemove(s string) *OPTIONElement {
 	}
 	e.StringAttributes.Del("is")
 	return e
+}
+
+func (e *OPTIONElement) ISRemoveF(format string, args ...any) *OPTIONElement {
+	return e.ISRemove(fmt.Sprintf(format, args...))
 }
 
 // The itemid global attribute provides microdata in the form of a unique, global
@@ -921,9 +981,20 @@ func (e *OPTIONElement) ITEMID(s string) *OPTIONElement {
 	return e
 }
 
+func (e *OPTIONElement) ITEMIDF(format string, args ...any) *OPTIONElement {
+	return e.ITEMID(fmt.Sprintf(format, args...))
+}
+
 func (e *OPTIONElement) IfITEMID(condition bool, s string) *OPTIONElement {
 	if condition {
 		e.ITEMID(s)
+	}
+	return e
+}
+
+func (e *OPTIONElement) IfITEMIDF(condition bool, format string, args ...any) *OPTIONElement {
+	if condition {
+		e.ITEMID(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -935,6 +1006,10 @@ func (e *OPTIONElement) ITEMIDRemove(s string) *OPTIONElement {
 	}
 	e.StringAttributes.Del("itemid")
 	return e
+}
+
+func (e *OPTIONElement) ITEMIDRemoveF(format string, args ...any) *OPTIONElement {
+	return e.ITEMIDRemove(fmt.Sprintf(format, args...))
 }
 
 // The itemprop global attribute is used to add properties to an item
@@ -953,9 +1028,20 @@ func (e *OPTIONElement) ITEMPROP(s string) *OPTIONElement {
 	return e
 }
 
+func (e *OPTIONElement) ITEMPROPF(format string, args ...any) *OPTIONElement {
+	return e.ITEMPROP(fmt.Sprintf(format, args...))
+}
+
 func (e *OPTIONElement) IfITEMPROP(condition bool, s string) *OPTIONElement {
 	if condition {
 		e.ITEMPROP(s)
+	}
+	return e
+}
+
+func (e *OPTIONElement) IfITEMPROPF(condition bool, format string, args ...any) *OPTIONElement {
+	if condition {
+		e.ITEMPROP(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -967,6 +1053,10 @@ func (e *OPTIONElement) ITEMPROPRemove(s string) *OPTIONElement {
 	}
 	e.StringAttributes.Del("itemprop")
 	return e
+}
+
+func (e *OPTIONElement) ITEMPROPRemoveF(format string, args ...any) *OPTIONElement {
+	return e.ITEMPROPRemove(fmt.Sprintf(format, args...))
 }
 
 // Properties that are not descendants of an element with the itemscope attribute
@@ -982,9 +1072,20 @@ func (e *OPTIONElement) ITEMREF(s string) *OPTIONElement {
 	return e
 }
 
+func (e *OPTIONElement) ITEMREFF(format string, args ...any) *OPTIONElement {
+	return e.ITEMREF(fmt.Sprintf(format, args...))
+}
+
 func (e *OPTIONElement) IfITEMREF(condition bool, s string) *OPTIONElement {
 	if condition {
 		e.ITEMREF(s)
+	}
+	return e
+}
+
+func (e *OPTIONElement) IfITEMREFF(condition bool, format string, args ...any) *OPTIONElement {
+	if condition {
+		e.ITEMREF(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -996,6 +1097,10 @@ func (e *OPTIONElement) ITEMREFRemove(s string) *OPTIONElement {
 	}
 	e.StringAttributes.Del("itemref")
 	return e
+}
+
+func (e *OPTIONElement) ITEMREFRemoveF(format string, args ...any) *OPTIONElement {
+	return e.ITEMREFRemove(fmt.Sprintf(format, args...))
 }
 
 // The itemscope global attribute is used to add an item to a microdata DOM tree
@@ -1059,9 +1164,20 @@ func (e *OPTIONElement) ITEMTYPE(s string) *OPTIONElement {
 	return e
 }
 
+func (e *OPTIONElement) ITEMTYPEF(format string, args ...any) *OPTIONElement {
+	return e.ITEMTYPE(fmt.Sprintf(format, args...))
+}
+
 func (e *OPTIONElement) IfITEMTYPE(condition bool, s string) *OPTIONElement {
 	if condition {
 		e.ITEMTYPE(s)
+	}
+	return e
+}
+
+func (e *OPTIONElement) IfITEMTYPEF(condition bool, format string, args ...any) *OPTIONElement {
+	if condition {
+		e.ITEMTYPE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1073,6 +1189,10 @@ func (e *OPTIONElement) ITEMTYPERemove(s string) *OPTIONElement {
 	}
 	e.StringAttributes.Del("itemtype")
 	return e
+}
+
+func (e *OPTIONElement) ITEMTYPERemoveF(format string, args ...any) *OPTIONElement {
+	return e.ITEMTYPERemove(fmt.Sprintf(format, args...))
 }
 
 // The lang global attribute helps define the language of an element: the language
@@ -1089,9 +1209,20 @@ func (e *OPTIONElement) LANG(s string) *OPTIONElement {
 	return e
 }
 
+func (e *OPTIONElement) LANGF(format string, args ...any) *OPTIONElement {
+	return e.LANG(fmt.Sprintf(format, args...))
+}
+
 func (e *OPTIONElement) IfLANG(condition bool, s string) *OPTIONElement {
 	if condition {
 		e.LANG(s)
+	}
+	return e
+}
+
+func (e *OPTIONElement) IfLANGF(condition bool, format string, args ...any) *OPTIONElement {
+	if condition {
+		e.LANG(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1103,6 +1234,10 @@ func (e *OPTIONElement) LANGRemove(s string) *OPTIONElement {
 	}
 	e.StringAttributes.Del("lang")
 	return e
+}
+
+func (e *OPTIONElement) LANGRemoveF(format string, args ...any) *OPTIONElement {
+	return e.LANGRemove(fmt.Sprintf(format, args...))
 }
 
 // The nonce global attribute is a unique identifier used to declare inline
@@ -1117,9 +1252,20 @@ func (e *OPTIONElement) NONCE(s string) *OPTIONElement {
 	return e
 }
 
+func (e *OPTIONElement) NONCEF(format string, args ...any) *OPTIONElement {
+	return e.NONCE(fmt.Sprintf(format, args...))
+}
+
 func (e *OPTIONElement) IfNONCE(condition bool, s string) *OPTIONElement {
 	if condition {
 		e.NONCE(s)
+	}
+	return e
+}
+
+func (e *OPTIONElement) IfNONCEF(condition bool, format string, args ...any) *OPTIONElement {
+	if condition {
+		e.NONCE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1131,6 +1277,10 @@ func (e *OPTIONElement) NONCERemove(s string) *OPTIONElement {
 	}
 	e.StringAttributes.Del("nonce")
 	return e
+}
+
+func (e *OPTIONElement) NONCERemoveF(format string, args ...any) *OPTIONElement {
+	return e.NONCERemove(fmt.Sprintf(format, args...))
 }
 
 // The part global attribute contains a space-separated list of the part names of
@@ -1225,9 +1375,20 @@ func (e *OPTIONElement) ROLE(s string) *OPTIONElement {
 	return e
 }
 
+func (e *OPTIONElement) ROLEF(format string, args ...any) *OPTIONElement {
+	return e.ROLE(fmt.Sprintf(format, args...))
+}
+
 func (e *OPTIONElement) IfROLE(condition bool, s string) *OPTIONElement {
 	if condition {
 		e.ROLE(s)
+	}
+	return e
+}
+
+func (e *OPTIONElement) IfROLEF(condition bool, format string, args ...any) *OPTIONElement {
+	if condition {
+		e.ROLE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1239,6 +1400,10 @@ func (e *OPTIONElement) ROLERemove(s string) *OPTIONElement {
 	}
 	e.StringAttributes.Del("role")
 	return e
+}
+
+func (e *OPTIONElement) ROLERemoveF(format string, args ...any) *OPTIONElement {
+	return e.ROLERemove(fmt.Sprintf(format, args...))
 }
 
 // The slot global attribute assigns a slot in a shadow DOM shadow tree to an
@@ -1253,9 +1418,20 @@ func (e *OPTIONElement) SLOT(s string) *OPTIONElement {
 	return e
 }
 
+func (e *OPTIONElement) SLOTF(format string, args ...any) *OPTIONElement {
+	return e.SLOT(fmt.Sprintf(format, args...))
+}
+
 func (e *OPTIONElement) IfSLOT(condition bool, s string) *OPTIONElement {
 	if condition {
 		e.SLOT(s)
+	}
+	return e
+}
+
+func (e *OPTIONElement) IfSLOTF(condition bool, format string, args ...any) *OPTIONElement {
+	if condition {
+		e.SLOT(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1267,6 +1443,10 @@ func (e *OPTIONElement) SLOTRemove(s string) *OPTIONElement {
 	}
 	e.StringAttributes.Del("slot")
 	return e
+}
+
+func (e *OPTIONElement) SLOTRemoveF(format string, args ...any) *OPTIONElement {
+	return e.SLOTRemove(fmt.Sprintf(format, args...))
 }
 
 // The spellcheck global attribute is an enumerated attribute that defines whether
@@ -1471,9 +1651,20 @@ func (e *OPTIONElement) TITLE(s string) *OPTIONElement {
 	return e
 }
 
+func (e *OPTIONElement) TITLEF(format string, args ...any) *OPTIONElement {
+	return e.TITLE(fmt.Sprintf(format, args...))
+}
+
 func (e *OPTIONElement) IfTITLE(condition bool, s string) *OPTIONElement {
 	if condition {
 		e.TITLE(s)
+	}
+	return e
+}
+
+func (e *OPTIONElement) IfTITLEF(condition bool, format string, args ...any) *OPTIONElement {
+	if condition {
+		e.TITLE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1485,6 +1676,10 @@ func (e *OPTIONElement) TITLERemove(s string) *OPTIONElement {
 	}
 	e.StringAttributes.Del("title")
 	return e
+}
+
+func (e *OPTIONElement) TITLERemoveF(format string, args ...any) *OPTIONElement {
+	return e.TITLERemove(fmt.Sprintf(format, args...))
 }
 
 // The translate global attribute is an enumerated attribute that is used to
@@ -1529,7 +1724,7 @@ func (e *OPTIONElement) DATASTAR_MERGE_STORE(v any) *OPTIONElement {
 	if err != nil {
 		panic(err)
 	}
-	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	e.CustomDataAttributes.Set("merge-store", string(b))
 	return e
 }
 
@@ -1651,34 +1846,34 @@ func (e *OPTIONElement) DATASTAR_TEXTRemove() *OPTIONElement {
 
 // Sets the event handler of the element
 
-type OptionDataOnMod customDataKeyModifier
+type OptionOnMod customDataKeyModifier
 
 // Debounces the event handler
-func OptionDataOnModDebounce(
+func OptionOnModDebounce(
 	d time.Duration,
-) OptionDataOnMod {
+) OptionOnMod {
 	return func() string {
 		return fmt.Sprintf("debounce_%dms", d.Milliseconds())
 	}
 }
 
 // Throttles the event handler
-func OptionDataOnModThrottle(
+func OptionOnModThrottle(
 	d time.Duration,
-) OptionDataOnMod {
+) OptionOnMod {
 	return func() string {
 		return fmt.Sprintf("throttle_%dms", d.Milliseconds())
 	}
 }
 
-func (e *OPTIONElement) DATASTAR_ON(key string, expression string, modifiers ...OptionDataOnMod) *OPTIONElement {
+func (e *OPTIONElement) DATASTAR_ON(key string, expression string, modifiers ...OptionOnMod) *OPTIONElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
 	key = fmt.Sprintf("data-on-%s", key)
 
-	customMods := lo.Map(modifiers, func(m OptionDataOnMod, i int) customDataKeyModifier {
+	customMods := lo.Map(modifiers, func(m OptionOnMod, i int) customDataKeyModifier {
 		return customDataKeyModifier(m)
 	})
 	key = customDataKey(key, customMods...)
@@ -1686,7 +1881,7 @@ func (e *OPTIONElement) DATASTAR_ON(key string, expression string, modifiers ...
 	return e
 }
 
-func (e *OPTIONElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...OptionDataOnMod) *OPTIONElement {
+func (e *OPTIONElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...OptionOnMod) *OPTIONElement {
 	if condition {
 		e.DATASTAR_ON(key, expression, modifiers...)
 	}
@@ -1779,7 +1974,7 @@ func (e *OPTIONElement) DATASTAR_FETCH_INDICATOR(expression string) *OPTIONEleme
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "DatastarFetchIndicator"
+	key := "data-fetch-indicator"
 
 	e.StringAttributes.Set(key, expression)
 	return e
@@ -1797,7 +1992,7 @@ func (e *OPTIONElement) DATASTAR_FETCH_INDICATORRemove() *OPTIONElement {
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("DatastarFetchIndicator")
+	e.StringAttributes.Del("data-fetch-indicator")
 	return e
 }
 

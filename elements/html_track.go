@@ -246,9 +246,20 @@ func (e *TRACKElement) LABEL(s string) *TRACKElement {
 	return e
 }
 
+func (e *TRACKElement) LABELF(format string, args ...any) *TRACKElement {
+	return e.LABEL(fmt.Sprintf(format, args...))
+}
+
 func (e *TRACKElement) IfLABEL(condition bool, s string) *TRACKElement {
 	if condition {
 		e.LABEL(s)
+	}
+	return e
+}
+
+func (e *TRACKElement) IfLABELF(condition bool, format string, args ...any) *TRACKElement {
+	if condition {
+		e.LABEL(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -262,6 +273,10 @@ func (e *TRACKElement) LABELRemove(s string) *TRACKElement {
 	return e
 }
 
+func (e *TRACKElement) LABELRemoveF(format string, args ...any) *TRACKElement {
+	return e.LABELRemove(fmt.Sprintf(format, args...))
+}
+
 // Address of the resource.
 func (e *TRACKElement) SRC(s string) *TRACKElement {
 	if e.StringAttributes == nil {
@@ -271,9 +286,20 @@ func (e *TRACKElement) SRC(s string) *TRACKElement {
 	return e
 }
 
+func (e *TRACKElement) SRCF(format string, args ...any) *TRACKElement {
+	return e.SRC(fmt.Sprintf(format, args...))
+}
+
 func (e *TRACKElement) IfSRC(condition bool, s string) *TRACKElement {
 	if condition {
 		e.SRC(s)
+	}
+	return e
+}
+
+func (e *TRACKElement) IfSRCF(condition bool, format string, args ...any) *TRACKElement {
+	if condition {
+		e.SRC(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -287,6 +313,10 @@ func (e *TRACKElement) SRCRemove(s string) *TRACKElement {
 	return e
 }
 
+func (e *TRACKElement) SRCRemoveF(format string, args ...any) *TRACKElement {
+	return e.SRCRemove(fmt.Sprintf(format, args...))
+}
+
 // Language of the text track.
 func (e *TRACKElement) SRCLANG(s string) *TRACKElement {
 	if e.StringAttributes == nil {
@@ -296,9 +326,20 @@ func (e *TRACKElement) SRCLANG(s string) *TRACKElement {
 	return e
 }
 
+func (e *TRACKElement) SRCLANGF(format string, args ...any) *TRACKElement {
+	return e.SRCLANG(fmt.Sprintf(format, args...))
+}
+
 func (e *TRACKElement) IfSRCLANG(condition bool, s string) *TRACKElement {
 	if condition {
 		e.SRCLANG(s)
+	}
+	return e
+}
+
+func (e *TRACKElement) IfSRCLANGF(condition bool, format string, args ...any) *TRACKElement {
+	if condition {
+		e.SRCLANG(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -310,6 +351,10 @@ func (e *TRACKElement) SRCLANGRemove(s string) *TRACKElement {
 	}
 	e.StringAttributes.Del("srclang")
 	return e
+}
+
+func (e *TRACKElement) SRCLANGRemoveF(format string, args ...any) *TRACKElement {
+	return e.SRCLANGRemove(fmt.Sprintf(format, args...))
 }
 
 // The accesskey global attribute provides a hint for generating a keyboard
@@ -757,9 +802,20 @@ func (e *TRACKElement) ID(s string) *TRACKElement {
 	return e
 }
 
+func (e *TRACKElement) IDF(format string, args ...any) *TRACKElement {
+	return e.ID(fmt.Sprintf(format, args...))
+}
+
 func (e *TRACKElement) IfID(condition bool, s string) *TRACKElement {
 	if condition {
 		e.ID(s)
+	}
+	return e
+}
+
+func (e *TRACKElement) IfIDF(condition bool, format string, args ...any) *TRACKElement {
+	if condition {
+		e.ID(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -771,6 +827,10 @@ func (e *TRACKElement) IDRemove(s string) *TRACKElement {
 	}
 	e.StringAttributes.Del("id")
 	return e
+}
+
+func (e *TRACKElement) IDRemoveF(format string, args ...any) *TRACKElement {
+	return e.IDRemove(fmt.Sprintf(format, args...))
 }
 
 // The inert global attribute is a Boolean attribute indicating that the browser
@@ -905,9 +965,20 @@ func (e *TRACKElement) IS(s string) *TRACKElement {
 	return e
 }
 
+func (e *TRACKElement) ISF(format string, args ...any) *TRACKElement {
+	return e.IS(fmt.Sprintf(format, args...))
+}
+
 func (e *TRACKElement) IfIS(condition bool, s string) *TRACKElement {
 	if condition {
 		e.IS(s)
+	}
+	return e
+}
+
+func (e *TRACKElement) IfISF(condition bool, format string, args ...any) *TRACKElement {
+	if condition {
+		e.IS(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -919,6 +990,10 @@ func (e *TRACKElement) ISRemove(s string) *TRACKElement {
 	}
 	e.StringAttributes.Del("is")
 	return e
+}
+
+func (e *TRACKElement) ISRemoveF(format string, args ...any) *TRACKElement {
+	return e.ISRemove(fmt.Sprintf(format, args...))
 }
 
 // The itemid global attribute provides microdata in the form of a unique, global
@@ -942,9 +1017,20 @@ func (e *TRACKElement) ITEMID(s string) *TRACKElement {
 	return e
 }
 
+func (e *TRACKElement) ITEMIDF(format string, args ...any) *TRACKElement {
+	return e.ITEMID(fmt.Sprintf(format, args...))
+}
+
 func (e *TRACKElement) IfITEMID(condition bool, s string) *TRACKElement {
 	if condition {
 		e.ITEMID(s)
+	}
+	return e
+}
+
+func (e *TRACKElement) IfITEMIDF(condition bool, format string, args ...any) *TRACKElement {
+	if condition {
+		e.ITEMID(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -956,6 +1042,10 @@ func (e *TRACKElement) ITEMIDRemove(s string) *TRACKElement {
 	}
 	e.StringAttributes.Del("itemid")
 	return e
+}
+
+func (e *TRACKElement) ITEMIDRemoveF(format string, args ...any) *TRACKElement {
+	return e.ITEMIDRemove(fmt.Sprintf(format, args...))
 }
 
 // The itemprop global attribute is used to add properties to an item
@@ -974,9 +1064,20 @@ func (e *TRACKElement) ITEMPROP(s string) *TRACKElement {
 	return e
 }
 
+func (e *TRACKElement) ITEMPROPF(format string, args ...any) *TRACKElement {
+	return e.ITEMPROP(fmt.Sprintf(format, args...))
+}
+
 func (e *TRACKElement) IfITEMPROP(condition bool, s string) *TRACKElement {
 	if condition {
 		e.ITEMPROP(s)
+	}
+	return e
+}
+
+func (e *TRACKElement) IfITEMPROPF(condition bool, format string, args ...any) *TRACKElement {
+	if condition {
+		e.ITEMPROP(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -988,6 +1089,10 @@ func (e *TRACKElement) ITEMPROPRemove(s string) *TRACKElement {
 	}
 	e.StringAttributes.Del("itemprop")
 	return e
+}
+
+func (e *TRACKElement) ITEMPROPRemoveF(format string, args ...any) *TRACKElement {
+	return e.ITEMPROPRemove(fmt.Sprintf(format, args...))
 }
 
 // Properties that are not descendants of an element with the itemscope attribute
@@ -1003,9 +1108,20 @@ func (e *TRACKElement) ITEMREF(s string) *TRACKElement {
 	return e
 }
 
+func (e *TRACKElement) ITEMREFF(format string, args ...any) *TRACKElement {
+	return e.ITEMREF(fmt.Sprintf(format, args...))
+}
+
 func (e *TRACKElement) IfITEMREF(condition bool, s string) *TRACKElement {
 	if condition {
 		e.ITEMREF(s)
+	}
+	return e
+}
+
+func (e *TRACKElement) IfITEMREFF(condition bool, format string, args ...any) *TRACKElement {
+	if condition {
+		e.ITEMREF(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1017,6 +1133,10 @@ func (e *TRACKElement) ITEMREFRemove(s string) *TRACKElement {
 	}
 	e.StringAttributes.Del("itemref")
 	return e
+}
+
+func (e *TRACKElement) ITEMREFRemoveF(format string, args ...any) *TRACKElement {
+	return e.ITEMREFRemove(fmt.Sprintf(format, args...))
 }
 
 // The itemscope global attribute is used to add an item to a microdata DOM tree
@@ -1080,9 +1200,20 @@ func (e *TRACKElement) ITEMTYPE(s string) *TRACKElement {
 	return e
 }
 
+func (e *TRACKElement) ITEMTYPEF(format string, args ...any) *TRACKElement {
+	return e.ITEMTYPE(fmt.Sprintf(format, args...))
+}
+
 func (e *TRACKElement) IfITEMTYPE(condition bool, s string) *TRACKElement {
 	if condition {
 		e.ITEMTYPE(s)
+	}
+	return e
+}
+
+func (e *TRACKElement) IfITEMTYPEF(condition bool, format string, args ...any) *TRACKElement {
+	if condition {
+		e.ITEMTYPE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1094,6 +1225,10 @@ func (e *TRACKElement) ITEMTYPERemove(s string) *TRACKElement {
 	}
 	e.StringAttributes.Del("itemtype")
 	return e
+}
+
+func (e *TRACKElement) ITEMTYPERemoveF(format string, args ...any) *TRACKElement {
+	return e.ITEMTYPERemove(fmt.Sprintf(format, args...))
 }
 
 // The lang global attribute helps define the language of an element: the language
@@ -1110,9 +1245,20 @@ func (e *TRACKElement) LANG(s string) *TRACKElement {
 	return e
 }
 
+func (e *TRACKElement) LANGF(format string, args ...any) *TRACKElement {
+	return e.LANG(fmt.Sprintf(format, args...))
+}
+
 func (e *TRACKElement) IfLANG(condition bool, s string) *TRACKElement {
 	if condition {
 		e.LANG(s)
+	}
+	return e
+}
+
+func (e *TRACKElement) IfLANGF(condition bool, format string, args ...any) *TRACKElement {
+	if condition {
+		e.LANG(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1124,6 +1270,10 @@ func (e *TRACKElement) LANGRemove(s string) *TRACKElement {
 	}
 	e.StringAttributes.Del("lang")
 	return e
+}
+
+func (e *TRACKElement) LANGRemoveF(format string, args ...any) *TRACKElement {
+	return e.LANGRemove(fmt.Sprintf(format, args...))
 }
 
 // The nonce global attribute is a unique identifier used to declare inline
@@ -1138,9 +1288,20 @@ func (e *TRACKElement) NONCE(s string) *TRACKElement {
 	return e
 }
 
+func (e *TRACKElement) NONCEF(format string, args ...any) *TRACKElement {
+	return e.NONCE(fmt.Sprintf(format, args...))
+}
+
 func (e *TRACKElement) IfNONCE(condition bool, s string) *TRACKElement {
 	if condition {
 		e.NONCE(s)
+	}
+	return e
+}
+
+func (e *TRACKElement) IfNONCEF(condition bool, format string, args ...any) *TRACKElement {
+	if condition {
+		e.NONCE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1152,6 +1313,10 @@ func (e *TRACKElement) NONCERemove(s string) *TRACKElement {
 	}
 	e.StringAttributes.Del("nonce")
 	return e
+}
+
+func (e *TRACKElement) NONCERemoveF(format string, args ...any) *TRACKElement {
+	return e.NONCERemove(fmt.Sprintf(format, args...))
 }
 
 // The part global attribute contains a space-separated list of the part names of
@@ -1246,9 +1411,20 @@ func (e *TRACKElement) ROLE(s string) *TRACKElement {
 	return e
 }
 
+func (e *TRACKElement) ROLEF(format string, args ...any) *TRACKElement {
+	return e.ROLE(fmt.Sprintf(format, args...))
+}
+
 func (e *TRACKElement) IfROLE(condition bool, s string) *TRACKElement {
 	if condition {
 		e.ROLE(s)
+	}
+	return e
+}
+
+func (e *TRACKElement) IfROLEF(condition bool, format string, args ...any) *TRACKElement {
+	if condition {
+		e.ROLE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1260,6 +1436,10 @@ func (e *TRACKElement) ROLERemove(s string) *TRACKElement {
 	}
 	e.StringAttributes.Del("role")
 	return e
+}
+
+func (e *TRACKElement) ROLERemoveF(format string, args ...any) *TRACKElement {
+	return e.ROLERemove(fmt.Sprintf(format, args...))
 }
 
 // The slot global attribute assigns a slot in a shadow DOM shadow tree to an
@@ -1274,9 +1454,20 @@ func (e *TRACKElement) SLOT(s string) *TRACKElement {
 	return e
 }
 
+func (e *TRACKElement) SLOTF(format string, args ...any) *TRACKElement {
+	return e.SLOT(fmt.Sprintf(format, args...))
+}
+
 func (e *TRACKElement) IfSLOT(condition bool, s string) *TRACKElement {
 	if condition {
 		e.SLOT(s)
+	}
+	return e
+}
+
+func (e *TRACKElement) IfSLOTF(condition bool, format string, args ...any) *TRACKElement {
+	if condition {
+		e.SLOT(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1288,6 +1479,10 @@ func (e *TRACKElement) SLOTRemove(s string) *TRACKElement {
 	}
 	e.StringAttributes.Del("slot")
 	return e
+}
+
+func (e *TRACKElement) SLOTRemoveF(format string, args ...any) *TRACKElement {
+	return e.SLOTRemove(fmt.Sprintf(format, args...))
 }
 
 // The spellcheck global attribute is an enumerated attribute that defines whether
@@ -1492,9 +1687,20 @@ func (e *TRACKElement) TITLE(s string) *TRACKElement {
 	return e
 }
 
+func (e *TRACKElement) TITLEF(format string, args ...any) *TRACKElement {
+	return e.TITLE(fmt.Sprintf(format, args...))
+}
+
 func (e *TRACKElement) IfTITLE(condition bool, s string) *TRACKElement {
 	if condition {
 		e.TITLE(s)
+	}
+	return e
+}
+
+func (e *TRACKElement) IfTITLEF(condition bool, format string, args ...any) *TRACKElement {
+	if condition {
+		e.TITLE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1506,6 +1712,10 @@ func (e *TRACKElement) TITLERemove(s string) *TRACKElement {
 	}
 	e.StringAttributes.Del("title")
 	return e
+}
+
+func (e *TRACKElement) TITLERemoveF(format string, args ...any) *TRACKElement {
+	return e.TITLERemove(fmt.Sprintf(format, args...))
 }
 
 // The translate global attribute is an enumerated attribute that is used to
@@ -1550,7 +1760,7 @@ func (e *TRACKElement) DATASTAR_MERGE_STORE(v any) *TRACKElement {
 	if err != nil {
 		panic(err)
 	}
-	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	e.CustomDataAttributes.Set("merge-store", string(b))
 	return e
 }
 
@@ -1672,34 +1882,34 @@ func (e *TRACKElement) DATASTAR_TEXTRemove() *TRACKElement {
 
 // Sets the event handler of the element
 
-type TrackDataOnMod customDataKeyModifier
+type TrackOnMod customDataKeyModifier
 
 // Debounces the event handler
-func TrackDataOnModDebounce(
+func TrackOnModDebounce(
 	d time.Duration,
-) TrackDataOnMod {
+) TrackOnMod {
 	return func() string {
 		return fmt.Sprintf("debounce_%dms", d.Milliseconds())
 	}
 }
 
 // Throttles the event handler
-func TrackDataOnModThrottle(
+func TrackOnModThrottle(
 	d time.Duration,
-) TrackDataOnMod {
+) TrackOnMod {
 	return func() string {
 		return fmt.Sprintf("throttle_%dms", d.Milliseconds())
 	}
 }
 
-func (e *TRACKElement) DATASTAR_ON(key string, expression string, modifiers ...TrackDataOnMod) *TRACKElement {
+func (e *TRACKElement) DATASTAR_ON(key string, expression string, modifiers ...TrackOnMod) *TRACKElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
 	key = fmt.Sprintf("data-on-%s", key)
 
-	customMods := lo.Map(modifiers, func(m TrackDataOnMod, i int) customDataKeyModifier {
+	customMods := lo.Map(modifiers, func(m TrackOnMod, i int) customDataKeyModifier {
 		return customDataKeyModifier(m)
 	})
 	key = customDataKey(key, customMods...)
@@ -1707,7 +1917,7 @@ func (e *TRACKElement) DATASTAR_ON(key string, expression string, modifiers ...T
 	return e
 }
 
-func (e *TRACKElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...TrackDataOnMod) *TRACKElement {
+func (e *TRACKElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...TrackOnMod) *TRACKElement {
 	if condition {
 		e.DATASTAR_ON(key, expression, modifiers...)
 	}
@@ -1800,7 +2010,7 @@ func (e *TRACKElement) DATASTAR_FETCH_INDICATOR(expression string) *TRACKElement
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "DatastarFetchIndicator"
+	key := "data-fetch-indicator"
 
 	e.StringAttributes.Set(key, expression)
 	return e
@@ -1818,7 +2028,7 @@ func (e *TRACKElement) DATASTAR_FETCH_INDICATORRemove() *TRACKElement {
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("DatastarFetchIndicator")
+	e.StringAttributes.Del("data-fetch-indicator")
 	return e
 }
 

@@ -174,9 +174,20 @@ func (e *SVGMETADATAElement) REQUIRED_EXTENSIONS(s string) *SVGMETADATAElement {
 	return e
 }
 
+func (e *SVGMETADATAElement) REQUIRED_EXTENSIONSF(format string, args ...any) *SVGMETADATAElement {
+	return e.REQUIRED_EXTENSIONS(fmt.Sprintf(format, args...))
+}
+
 func (e *SVGMETADATAElement) IfREQUIRED_EXTENSIONS(condition bool, s string) *SVGMETADATAElement {
 	if condition {
 		e.REQUIRED_EXTENSIONS(s)
+	}
+	return e
+}
+
+func (e *SVGMETADATAElement) IfREQUIRED_EXTENSIONSF(condition bool, format string, args ...any) *SVGMETADATAElement {
+	if condition {
+		e.REQUIRED_EXTENSIONS(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -190,6 +201,10 @@ func (e *SVGMETADATAElement) REQUIRED_EXTENSIONSRemove(s string) *SVGMETADATAEle
 	return e
 }
 
+func (e *SVGMETADATAElement) REQUIRED_EXTENSIONSRemoveF(format string, args ...any) *SVGMETADATAElement {
+	return e.REQUIRED_EXTENSIONSRemove(fmt.Sprintf(format, args...))
+}
+
 // A space-separated list of required features, indicating that the parent SVG
 // document must include support for all of the specified features for this
 // element to be valid.
@@ -201,9 +216,20 @@ func (e *SVGMETADATAElement) REQUIRED_FEATURES(s string) *SVGMETADATAElement {
 	return e
 }
 
+func (e *SVGMETADATAElement) REQUIRED_FEATURESF(format string, args ...any) *SVGMETADATAElement {
+	return e.REQUIRED_FEATURES(fmt.Sprintf(format, args...))
+}
+
 func (e *SVGMETADATAElement) IfREQUIRED_FEATURES(condition bool, s string) *SVGMETADATAElement {
 	if condition {
 		e.REQUIRED_FEATURES(s)
+	}
+	return e
+}
+
+func (e *SVGMETADATAElement) IfREQUIRED_FEATURESF(condition bool, format string, args ...any) *SVGMETADATAElement {
+	if condition {
+		e.REQUIRED_FEATURES(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -217,6 +243,10 @@ func (e *SVGMETADATAElement) REQUIRED_FEATURESRemove(s string) *SVGMETADATAEleme
 	return e
 }
 
+func (e *SVGMETADATAElement) REQUIRED_FEATURESRemoveF(format string, args ...any) *SVGMETADATAElement {
+	return e.REQUIRED_FEATURESRemove(fmt.Sprintf(format, args...))
+}
+
 // A space-separated list of language codes, indicating that the parent SVG
 // document must include support for all of the specified languages for this
 // element to be valid.
@@ -228,9 +258,20 @@ func (e *SVGMETADATAElement) SYSTEM_LANGUAGE(s string) *SVGMETADATAElement {
 	return e
 }
 
+func (e *SVGMETADATAElement) SYSTEM_LANGUAGEF(format string, args ...any) *SVGMETADATAElement {
+	return e.SYSTEM_LANGUAGE(fmt.Sprintf(format, args...))
+}
+
 func (e *SVGMETADATAElement) IfSYSTEM_LANGUAGE(condition bool, s string) *SVGMETADATAElement {
 	if condition {
 		e.SYSTEM_LANGUAGE(s)
+	}
+	return e
+}
+
+func (e *SVGMETADATAElement) IfSYSTEM_LANGUAGEF(condition bool, format string, args ...any) *SVGMETADATAElement {
+	if condition {
+		e.SYSTEM_LANGUAGE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -244,6 +285,10 @@ func (e *SVGMETADATAElement) SYSTEM_LANGUAGERemove(s string) *SVGMETADATAElement
 	return e
 }
 
+func (e *SVGMETADATAElement) SYSTEM_LANGUAGERemoveF(format string, args ...any) *SVGMETADATAElement {
+	return e.SYSTEM_LANGUAGERemove(fmt.Sprintf(format, args...))
+}
+
 // Specifies a unique id for an element
 func (e *SVGMETADATAElement) ID(s string) *SVGMETADATAElement {
 	if e.StringAttributes == nil {
@@ -253,9 +298,20 @@ func (e *SVGMETADATAElement) ID(s string) *SVGMETADATAElement {
 	return e
 }
 
+func (e *SVGMETADATAElement) IDF(format string, args ...any) *SVGMETADATAElement {
+	return e.ID(fmt.Sprintf(format, args...))
+}
+
 func (e *SVGMETADATAElement) IfID(condition bool, s string) *SVGMETADATAElement {
 	if condition {
 		e.ID(s)
+	}
+	return e
+}
+
+func (e *SVGMETADATAElement) IfIDF(condition bool, format string, args ...any) *SVGMETADATAElement {
+	if condition {
+		e.ID(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -267,6 +323,10 @@ func (e *SVGMETADATAElement) IDRemove(s string) *SVGMETADATAElement {
 	}
 	e.StringAttributes.Del("id")
 	return e
+}
+
+func (e *SVGMETADATAElement) IDRemoveF(format string, args ...any) *SVGMETADATAElement {
+	return e.IDRemove(fmt.Sprintf(format, args...))
 }
 
 // Specifies one or more classnames for an element (refers to a class in a style
@@ -405,7 +465,7 @@ func (e *SVGMETADATAElement) DATASTAR_MERGE_STORE(v any) *SVGMETADATAElement {
 	if err != nil {
 		panic(err)
 	}
-	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	e.CustomDataAttributes.Set("merge-store", string(b))
 	return e
 }
 
@@ -527,34 +587,34 @@ func (e *SVGMETADATAElement) DATASTAR_TEXTRemove() *SVGMETADATAElement {
 
 // Sets the event handler of the element
 
-type SVGMetadataDataOnMod customDataKeyModifier
+type SVGMetadataOnMod customDataKeyModifier
 
 // Debounces the event handler
-func SVGMetadataDataOnModDebounce(
+func SVGMetadataOnModDebounce(
 	d time.Duration,
-) SVGMetadataDataOnMod {
+) SVGMetadataOnMod {
 	return func() string {
 		return fmt.Sprintf("debounce_%dms", d.Milliseconds())
 	}
 }
 
 // Throttles the event handler
-func SVGMetadataDataOnModThrottle(
+func SVGMetadataOnModThrottle(
 	d time.Duration,
-) SVGMetadataDataOnMod {
+) SVGMetadataOnMod {
 	return func() string {
 		return fmt.Sprintf("throttle_%dms", d.Milliseconds())
 	}
 }
 
-func (e *SVGMETADATAElement) DATASTAR_ON(key string, expression string, modifiers ...SVGMetadataDataOnMod) *SVGMETADATAElement {
+func (e *SVGMETADATAElement) DATASTAR_ON(key string, expression string, modifiers ...SVGMetadataOnMod) *SVGMETADATAElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
 	key = fmt.Sprintf("data-on-%s", key)
 
-	customMods := lo.Map(modifiers, func(m SVGMetadataDataOnMod, i int) customDataKeyModifier {
+	customMods := lo.Map(modifiers, func(m SVGMetadataOnMod, i int) customDataKeyModifier {
 		return customDataKeyModifier(m)
 	})
 	key = customDataKey(key, customMods...)
@@ -562,7 +622,7 @@ func (e *SVGMETADATAElement) DATASTAR_ON(key string, expression string, modifier
 	return e
 }
 
-func (e *SVGMETADATAElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SVGMetadataDataOnMod) *SVGMETADATAElement {
+func (e *SVGMETADATAElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SVGMetadataOnMod) *SVGMETADATAElement {
 	if condition {
 		e.DATASTAR_ON(key, expression, modifiers...)
 	}
@@ -655,7 +715,7 @@ func (e *SVGMETADATAElement) DATASTAR_FETCH_INDICATOR(expression string) *SVGMET
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "DatastarFetchIndicator"
+	key := "data-fetch-indicator"
 
 	e.StringAttributes.Set(key, expression)
 	return e
@@ -673,7 +733,7 @@ func (e *SVGMETADATAElement) DATASTAR_FETCH_INDICATORRemove() *SVGMETADATAElemen
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("DatastarFetchIndicator")
+	e.StringAttributes.Del("data-fetch-indicator")
 	return e
 }
 

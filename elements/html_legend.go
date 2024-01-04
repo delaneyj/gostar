@@ -608,9 +608,20 @@ func (e *LEGENDElement) ID(s string) *LEGENDElement {
 	return e
 }
 
+func (e *LEGENDElement) IDF(format string, args ...any) *LEGENDElement {
+	return e.ID(fmt.Sprintf(format, args...))
+}
+
 func (e *LEGENDElement) IfID(condition bool, s string) *LEGENDElement {
 	if condition {
 		e.ID(s)
+	}
+	return e
+}
+
+func (e *LEGENDElement) IfIDF(condition bool, format string, args ...any) *LEGENDElement {
+	if condition {
+		e.ID(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -622,6 +633,10 @@ func (e *LEGENDElement) IDRemove(s string) *LEGENDElement {
 	}
 	e.StringAttributes.Del("id")
 	return e
+}
+
+func (e *LEGENDElement) IDRemoveF(format string, args ...any) *LEGENDElement {
+	return e.IDRemove(fmt.Sprintf(format, args...))
 }
 
 // The inert global attribute is a Boolean attribute indicating that the browser
@@ -756,9 +771,20 @@ func (e *LEGENDElement) IS(s string) *LEGENDElement {
 	return e
 }
 
+func (e *LEGENDElement) ISF(format string, args ...any) *LEGENDElement {
+	return e.IS(fmt.Sprintf(format, args...))
+}
+
 func (e *LEGENDElement) IfIS(condition bool, s string) *LEGENDElement {
 	if condition {
 		e.IS(s)
+	}
+	return e
+}
+
+func (e *LEGENDElement) IfISF(condition bool, format string, args ...any) *LEGENDElement {
+	if condition {
+		e.IS(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -770,6 +796,10 @@ func (e *LEGENDElement) ISRemove(s string) *LEGENDElement {
 	}
 	e.StringAttributes.Del("is")
 	return e
+}
+
+func (e *LEGENDElement) ISRemoveF(format string, args ...any) *LEGENDElement {
+	return e.ISRemove(fmt.Sprintf(format, args...))
 }
 
 // The itemid global attribute provides microdata in the form of a unique, global
@@ -793,9 +823,20 @@ func (e *LEGENDElement) ITEMID(s string) *LEGENDElement {
 	return e
 }
 
+func (e *LEGENDElement) ITEMIDF(format string, args ...any) *LEGENDElement {
+	return e.ITEMID(fmt.Sprintf(format, args...))
+}
+
 func (e *LEGENDElement) IfITEMID(condition bool, s string) *LEGENDElement {
 	if condition {
 		e.ITEMID(s)
+	}
+	return e
+}
+
+func (e *LEGENDElement) IfITEMIDF(condition bool, format string, args ...any) *LEGENDElement {
+	if condition {
+		e.ITEMID(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -807,6 +848,10 @@ func (e *LEGENDElement) ITEMIDRemove(s string) *LEGENDElement {
 	}
 	e.StringAttributes.Del("itemid")
 	return e
+}
+
+func (e *LEGENDElement) ITEMIDRemoveF(format string, args ...any) *LEGENDElement {
+	return e.ITEMIDRemove(fmt.Sprintf(format, args...))
 }
 
 // The itemprop global attribute is used to add properties to an item
@@ -825,9 +870,20 @@ func (e *LEGENDElement) ITEMPROP(s string) *LEGENDElement {
 	return e
 }
 
+func (e *LEGENDElement) ITEMPROPF(format string, args ...any) *LEGENDElement {
+	return e.ITEMPROP(fmt.Sprintf(format, args...))
+}
+
 func (e *LEGENDElement) IfITEMPROP(condition bool, s string) *LEGENDElement {
 	if condition {
 		e.ITEMPROP(s)
+	}
+	return e
+}
+
+func (e *LEGENDElement) IfITEMPROPF(condition bool, format string, args ...any) *LEGENDElement {
+	if condition {
+		e.ITEMPROP(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -839,6 +895,10 @@ func (e *LEGENDElement) ITEMPROPRemove(s string) *LEGENDElement {
 	}
 	e.StringAttributes.Del("itemprop")
 	return e
+}
+
+func (e *LEGENDElement) ITEMPROPRemoveF(format string, args ...any) *LEGENDElement {
+	return e.ITEMPROPRemove(fmt.Sprintf(format, args...))
 }
 
 // Properties that are not descendants of an element with the itemscope attribute
@@ -854,9 +914,20 @@ func (e *LEGENDElement) ITEMREF(s string) *LEGENDElement {
 	return e
 }
 
+func (e *LEGENDElement) ITEMREFF(format string, args ...any) *LEGENDElement {
+	return e.ITEMREF(fmt.Sprintf(format, args...))
+}
+
 func (e *LEGENDElement) IfITEMREF(condition bool, s string) *LEGENDElement {
 	if condition {
 		e.ITEMREF(s)
+	}
+	return e
+}
+
+func (e *LEGENDElement) IfITEMREFF(condition bool, format string, args ...any) *LEGENDElement {
+	if condition {
+		e.ITEMREF(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -868,6 +939,10 @@ func (e *LEGENDElement) ITEMREFRemove(s string) *LEGENDElement {
 	}
 	e.StringAttributes.Del("itemref")
 	return e
+}
+
+func (e *LEGENDElement) ITEMREFRemoveF(format string, args ...any) *LEGENDElement {
+	return e.ITEMREFRemove(fmt.Sprintf(format, args...))
 }
 
 // The itemscope global attribute is used to add an item to a microdata DOM tree
@@ -931,9 +1006,20 @@ func (e *LEGENDElement) ITEMTYPE(s string) *LEGENDElement {
 	return e
 }
 
+func (e *LEGENDElement) ITEMTYPEF(format string, args ...any) *LEGENDElement {
+	return e.ITEMTYPE(fmt.Sprintf(format, args...))
+}
+
 func (e *LEGENDElement) IfITEMTYPE(condition bool, s string) *LEGENDElement {
 	if condition {
 		e.ITEMTYPE(s)
+	}
+	return e
+}
+
+func (e *LEGENDElement) IfITEMTYPEF(condition bool, format string, args ...any) *LEGENDElement {
+	if condition {
+		e.ITEMTYPE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -945,6 +1031,10 @@ func (e *LEGENDElement) ITEMTYPERemove(s string) *LEGENDElement {
 	}
 	e.StringAttributes.Del("itemtype")
 	return e
+}
+
+func (e *LEGENDElement) ITEMTYPERemoveF(format string, args ...any) *LEGENDElement {
+	return e.ITEMTYPERemove(fmt.Sprintf(format, args...))
 }
 
 // The lang global attribute helps define the language of an element: the language
@@ -961,9 +1051,20 @@ func (e *LEGENDElement) LANG(s string) *LEGENDElement {
 	return e
 }
 
+func (e *LEGENDElement) LANGF(format string, args ...any) *LEGENDElement {
+	return e.LANG(fmt.Sprintf(format, args...))
+}
+
 func (e *LEGENDElement) IfLANG(condition bool, s string) *LEGENDElement {
 	if condition {
 		e.LANG(s)
+	}
+	return e
+}
+
+func (e *LEGENDElement) IfLANGF(condition bool, format string, args ...any) *LEGENDElement {
+	if condition {
+		e.LANG(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -975,6 +1076,10 @@ func (e *LEGENDElement) LANGRemove(s string) *LEGENDElement {
 	}
 	e.StringAttributes.Del("lang")
 	return e
+}
+
+func (e *LEGENDElement) LANGRemoveF(format string, args ...any) *LEGENDElement {
+	return e.LANGRemove(fmt.Sprintf(format, args...))
 }
 
 // The nonce global attribute is a unique identifier used to declare inline
@@ -989,9 +1094,20 @@ func (e *LEGENDElement) NONCE(s string) *LEGENDElement {
 	return e
 }
 
+func (e *LEGENDElement) NONCEF(format string, args ...any) *LEGENDElement {
+	return e.NONCE(fmt.Sprintf(format, args...))
+}
+
 func (e *LEGENDElement) IfNONCE(condition bool, s string) *LEGENDElement {
 	if condition {
 		e.NONCE(s)
+	}
+	return e
+}
+
+func (e *LEGENDElement) IfNONCEF(condition bool, format string, args ...any) *LEGENDElement {
+	if condition {
+		e.NONCE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1003,6 +1119,10 @@ func (e *LEGENDElement) NONCERemove(s string) *LEGENDElement {
 	}
 	e.StringAttributes.Del("nonce")
 	return e
+}
+
+func (e *LEGENDElement) NONCERemoveF(format string, args ...any) *LEGENDElement {
+	return e.NONCERemove(fmt.Sprintf(format, args...))
 }
 
 // The part global attribute contains a space-separated list of the part names of
@@ -1097,9 +1217,20 @@ func (e *LEGENDElement) ROLE(s string) *LEGENDElement {
 	return e
 }
 
+func (e *LEGENDElement) ROLEF(format string, args ...any) *LEGENDElement {
+	return e.ROLE(fmt.Sprintf(format, args...))
+}
+
 func (e *LEGENDElement) IfROLE(condition bool, s string) *LEGENDElement {
 	if condition {
 		e.ROLE(s)
+	}
+	return e
+}
+
+func (e *LEGENDElement) IfROLEF(condition bool, format string, args ...any) *LEGENDElement {
+	if condition {
+		e.ROLE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1111,6 +1242,10 @@ func (e *LEGENDElement) ROLERemove(s string) *LEGENDElement {
 	}
 	e.StringAttributes.Del("role")
 	return e
+}
+
+func (e *LEGENDElement) ROLERemoveF(format string, args ...any) *LEGENDElement {
+	return e.ROLERemove(fmt.Sprintf(format, args...))
 }
 
 // The slot global attribute assigns a slot in a shadow DOM shadow tree to an
@@ -1125,9 +1260,20 @@ func (e *LEGENDElement) SLOT(s string) *LEGENDElement {
 	return e
 }
 
+func (e *LEGENDElement) SLOTF(format string, args ...any) *LEGENDElement {
+	return e.SLOT(fmt.Sprintf(format, args...))
+}
+
 func (e *LEGENDElement) IfSLOT(condition bool, s string) *LEGENDElement {
 	if condition {
 		e.SLOT(s)
+	}
+	return e
+}
+
+func (e *LEGENDElement) IfSLOTF(condition bool, format string, args ...any) *LEGENDElement {
+	if condition {
+		e.SLOT(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1139,6 +1285,10 @@ func (e *LEGENDElement) SLOTRemove(s string) *LEGENDElement {
 	}
 	e.StringAttributes.Del("slot")
 	return e
+}
+
+func (e *LEGENDElement) SLOTRemoveF(format string, args ...any) *LEGENDElement {
+	return e.SLOTRemove(fmt.Sprintf(format, args...))
 }
 
 // The spellcheck global attribute is an enumerated attribute that defines whether
@@ -1343,9 +1493,20 @@ func (e *LEGENDElement) TITLE(s string) *LEGENDElement {
 	return e
 }
 
+func (e *LEGENDElement) TITLEF(format string, args ...any) *LEGENDElement {
+	return e.TITLE(fmt.Sprintf(format, args...))
+}
+
 func (e *LEGENDElement) IfTITLE(condition bool, s string) *LEGENDElement {
 	if condition {
 		e.TITLE(s)
+	}
+	return e
+}
+
+func (e *LEGENDElement) IfTITLEF(condition bool, format string, args ...any) *LEGENDElement {
+	if condition {
+		e.TITLE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1357,6 +1518,10 @@ func (e *LEGENDElement) TITLERemove(s string) *LEGENDElement {
 	}
 	e.StringAttributes.Del("title")
 	return e
+}
+
+func (e *LEGENDElement) TITLERemoveF(format string, args ...any) *LEGENDElement {
+	return e.TITLERemove(fmt.Sprintf(format, args...))
 }
 
 // The translate global attribute is an enumerated attribute that is used to
@@ -1401,7 +1566,7 @@ func (e *LEGENDElement) DATASTAR_MERGE_STORE(v any) *LEGENDElement {
 	if err != nil {
 		panic(err)
 	}
-	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	e.CustomDataAttributes.Set("merge-store", string(b))
 	return e
 }
 
@@ -1523,34 +1688,34 @@ func (e *LEGENDElement) DATASTAR_TEXTRemove() *LEGENDElement {
 
 // Sets the event handler of the element
 
-type LegendDataOnMod customDataKeyModifier
+type LegendOnMod customDataKeyModifier
 
 // Debounces the event handler
-func LegendDataOnModDebounce(
+func LegendOnModDebounce(
 	d time.Duration,
-) LegendDataOnMod {
+) LegendOnMod {
 	return func() string {
 		return fmt.Sprintf("debounce_%dms", d.Milliseconds())
 	}
 }
 
 // Throttles the event handler
-func LegendDataOnModThrottle(
+func LegendOnModThrottle(
 	d time.Duration,
-) LegendDataOnMod {
+) LegendOnMod {
 	return func() string {
 		return fmt.Sprintf("throttle_%dms", d.Milliseconds())
 	}
 }
 
-func (e *LEGENDElement) DATASTAR_ON(key string, expression string, modifiers ...LegendDataOnMod) *LEGENDElement {
+func (e *LEGENDElement) DATASTAR_ON(key string, expression string, modifiers ...LegendOnMod) *LEGENDElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
 	key = fmt.Sprintf("data-on-%s", key)
 
-	customMods := lo.Map(modifiers, func(m LegendDataOnMod, i int) customDataKeyModifier {
+	customMods := lo.Map(modifiers, func(m LegendOnMod, i int) customDataKeyModifier {
 		return customDataKeyModifier(m)
 	})
 	key = customDataKey(key, customMods...)
@@ -1558,7 +1723,7 @@ func (e *LEGENDElement) DATASTAR_ON(key string, expression string, modifiers ...
 	return e
 }
 
-func (e *LEGENDElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...LegendDataOnMod) *LEGENDElement {
+func (e *LEGENDElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...LegendOnMod) *LEGENDElement {
 	if condition {
 		e.DATASTAR_ON(key, expression, modifiers...)
 	}
@@ -1651,7 +1816,7 @@ func (e *LEGENDElement) DATASTAR_FETCH_INDICATOR(expression string) *LEGENDEleme
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "DatastarFetchIndicator"
+	key := "data-fetch-indicator"
 
 	e.StringAttributes.Set(key, expression)
 	return e
@@ -1669,7 +1834,7 @@ func (e *LEGENDElement) DATASTAR_FETCH_INDICATORRemove() *LEGENDElement {
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("DatastarFetchIndicator")
+	e.StringAttributes.Del("data-fetch-indicator")
 	return e
 }
 

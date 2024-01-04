@@ -609,9 +609,20 @@ func (e *KBDElement) ID(s string) *KBDElement {
 	return e
 }
 
+func (e *KBDElement) IDF(format string, args ...any) *KBDElement {
+	return e.ID(fmt.Sprintf(format, args...))
+}
+
 func (e *KBDElement) IfID(condition bool, s string) *KBDElement {
 	if condition {
 		e.ID(s)
+	}
+	return e
+}
+
+func (e *KBDElement) IfIDF(condition bool, format string, args ...any) *KBDElement {
+	if condition {
+		e.ID(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -623,6 +634,10 @@ func (e *KBDElement) IDRemove(s string) *KBDElement {
 	}
 	e.StringAttributes.Del("id")
 	return e
+}
+
+func (e *KBDElement) IDRemoveF(format string, args ...any) *KBDElement {
+	return e.IDRemove(fmt.Sprintf(format, args...))
 }
 
 // The inert global attribute is a Boolean attribute indicating that the browser
@@ -757,9 +772,20 @@ func (e *KBDElement) IS(s string) *KBDElement {
 	return e
 }
 
+func (e *KBDElement) ISF(format string, args ...any) *KBDElement {
+	return e.IS(fmt.Sprintf(format, args...))
+}
+
 func (e *KBDElement) IfIS(condition bool, s string) *KBDElement {
 	if condition {
 		e.IS(s)
+	}
+	return e
+}
+
+func (e *KBDElement) IfISF(condition bool, format string, args ...any) *KBDElement {
+	if condition {
+		e.IS(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -771,6 +797,10 @@ func (e *KBDElement) ISRemove(s string) *KBDElement {
 	}
 	e.StringAttributes.Del("is")
 	return e
+}
+
+func (e *KBDElement) ISRemoveF(format string, args ...any) *KBDElement {
+	return e.ISRemove(fmt.Sprintf(format, args...))
 }
 
 // The itemid global attribute provides microdata in the form of a unique, global
@@ -794,9 +824,20 @@ func (e *KBDElement) ITEMID(s string) *KBDElement {
 	return e
 }
 
+func (e *KBDElement) ITEMIDF(format string, args ...any) *KBDElement {
+	return e.ITEMID(fmt.Sprintf(format, args...))
+}
+
 func (e *KBDElement) IfITEMID(condition bool, s string) *KBDElement {
 	if condition {
 		e.ITEMID(s)
+	}
+	return e
+}
+
+func (e *KBDElement) IfITEMIDF(condition bool, format string, args ...any) *KBDElement {
+	if condition {
+		e.ITEMID(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -808,6 +849,10 @@ func (e *KBDElement) ITEMIDRemove(s string) *KBDElement {
 	}
 	e.StringAttributes.Del("itemid")
 	return e
+}
+
+func (e *KBDElement) ITEMIDRemoveF(format string, args ...any) *KBDElement {
+	return e.ITEMIDRemove(fmt.Sprintf(format, args...))
 }
 
 // The itemprop global attribute is used to add properties to an item
@@ -826,9 +871,20 @@ func (e *KBDElement) ITEMPROP(s string) *KBDElement {
 	return e
 }
 
+func (e *KBDElement) ITEMPROPF(format string, args ...any) *KBDElement {
+	return e.ITEMPROP(fmt.Sprintf(format, args...))
+}
+
 func (e *KBDElement) IfITEMPROP(condition bool, s string) *KBDElement {
 	if condition {
 		e.ITEMPROP(s)
+	}
+	return e
+}
+
+func (e *KBDElement) IfITEMPROPF(condition bool, format string, args ...any) *KBDElement {
+	if condition {
+		e.ITEMPROP(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -840,6 +896,10 @@ func (e *KBDElement) ITEMPROPRemove(s string) *KBDElement {
 	}
 	e.StringAttributes.Del("itemprop")
 	return e
+}
+
+func (e *KBDElement) ITEMPROPRemoveF(format string, args ...any) *KBDElement {
+	return e.ITEMPROPRemove(fmt.Sprintf(format, args...))
 }
 
 // Properties that are not descendants of an element with the itemscope attribute
@@ -855,9 +915,20 @@ func (e *KBDElement) ITEMREF(s string) *KBDElement {
 	return e
 }
 
+func (e *KBDElement) ITEMREFF(format string, args ...any) *KBDElement {
+	return e.ITEMREF(fmt.Sprintf(format, args...))
+}
+
 func (e *KBDElement) IfITEMREF(condition bool, s string) *KBDElement {
 	if condition {
 		e.ITEMREF(s)
+	}
+	return e
+}
+
+func (e *KBDElement) IfITEMREFF(condition bool, format string, args ...any) *KBDElement {
+	if condition {
+		e.ITEMREF(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -869,6 +940,10 @@ func (e *KBDElement) ITEMREFRemove(s string) *KBDElement {
 	}
 	e.StringAttributes.Del("itemref")
 	return e
+}
+
+func (e *KBDElement) ITEMREFRemoveF(format string, args ...any) *KBDElement {
+	return e.ITEMREFRemove(fmt.Sprintf(format, args...))
 }
 
 // The itemscope global attribute is used to add an item to a microdata DOM tree
@@ -932,9 +1007,20 @@ func (e *KBDElement) ITEMTYPE(s string) *KBDElement {
 	return e
 }
 
+func (e *KBDElement) ITEMTYPEF(format string, args ...any) *KBDElement {
+	return e.ITEMTYPE(fmt.Sprintf(format, args...))
+}
+
 func (e *KBDElement) IfITEMTYPE(condition bool, s string) *KBDElement {
 	if condition {
 		e.ITEMTYPE(s)
+	}
+	return e
+}
+
+func (e *KBDElement) IfITEMTYPEF(condition bool, format string, args ...any) *KBDElement {
+	if condition {
+		e.ITEMTYPE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -946,6 +1032,10 @@ func (e *KBDElement) ITEMTYPERemove(s string) *KBDElement {
 	}
 	e.StringAttributes.Del("itemtype")
 	return e
+}
+
+func (e *KBDElement) ITEMTYPERemoveF(format string, args ...any) *KBDElement {
+	return e.ITEMTYPERemove(fmt.Sprintf(format, args...))
 }
 
 // The lang global attribute helps define the language of an element: the language
@@ -962,9 +1052,20 @@ func (e *KBDElement) LANG(s string) *KBDElement {
 	return e
 }
 
+func (e *KBDElement) LANGF(format string, args ...any) *KBDElement {
+	return e.LANG(fmt.Sprintf(format, args...))
+}
+
 func (e *KBDElement) IfLANG(condition bool, s string) *KBDElement {
 	if condition {
 		e.LANG(s)
+	}
+	return e
+}
+
+func (e *KBDElement) IfLANGF(condition bool, format string, args ...any) *KBDElement {
+	if condition {
+		e.LANG(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -976,6 +1077,10 @@ func (e *KBDElement) LANGRemove(s string) *KBDElement {
 	}
 	e.StringAttributes.Del("lang")
 	return e
+}
+
+func (e *KBDElement) LANGRemoveF(format string, args ...any) *KBDElement {
+	return e.LANGRemove(fmt.Sprintf(format, args...))
 }
 
 // The nonce global attribute is a unique identifier used to declare inline
@@ -990,9 +1095,20 @@ func (e *KBDElement) NONCE(s string) *KBDElement {
 	return e
 }
 
+func (e *KBDElement) NONCEF(format string, args ...any) *KBDElement {
+	return e.NONCE(fmt.Sprintf(format, args...))
+}
+
 func (e *KBDElement) IfNONCE(condition bool, s string) *KBDElement {
 	if condition {
 		e.NONCE(s)
+	}
+	return e
+}
+
+func (e *KBDElement) IfNONCEF(condition bool, format string, args ...any) *KBDElement {
+	if condition {
+		e.NONCE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1004,6 +1120,10 @@ func (e *KBDElement) NONCERemove(s string) *KBDElement {
 	}
 	e.StringAttributes.Del("nonce")
 	return e
+}
+
+func (e *KBDElement) NONCERemoveF(format string, args ...any) *KBDElement {
+	return e.NONCERemove(fmt.Sprintf(format, args...))
 }
 
 // The part global attribute contains a space-separated list of the part names of
@@ -1098,9 +1218,20 @@ func (e *KBDElement) ROLE(s string) *KBDElement {
 	return e
 }
 
+func (e *KBDElement) ROLEF(format string, args ...any) *KBDElement {
+	return e.ROLE(fmt.Sprintf(format, args...))
+}
+
 func (e *KBDElement) IfROLE(condition bool, s string) *KBDElement {
 	if condition {
 		e.ROLE(s)
+	}
+	return e
+}
+
+func (e *KBDElement) IfROLEF(condition bool, format string, args ...any) *KBDElement {
+	if condition {
+		e.ROLE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1112,6 +1243,10 @@ func (e *KBDElement) ROLERemove(s string) *KBDElement {
 	}
 	e.StringAttributes.Del("role")
 	return e
+}
+
+func (e *KBDElement) ROLERemoveF(format string, args ...any) *KBDElement {
+	return e.ROLERemove(fmt.Sprintf(format, args...))
 }
 
 // The slot global attribute assigns a slot in a shadow DOM shadow tree to an
@@ -1126,9 +1261,20 @@ func (e *KBDElement) SLOT(s string) *KBDElement {
 	return e
 }
 
+func (e *KBDElement) SLOTF(format string, args ...any) *KBDElement {
+	return e.SLOT(fmt.Sprintf(format, args...))
+}
+
 func (e *KBDElement) IfSLOT(condition bool, s string) *KBDElement {
 	if condition {
 		e.SLOT(s)
+	}
+	return e
+}
+
+func (e *KBDElement) IfSLOTF(condition bool, format string, args ...any) *KBDElement {
+	if condition {
+		e.SLOT(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1140,6 +1286,10 @@ func (e *KBDElement) SLOTRemove(s string) *KBDElement {
 	}
 	e.StringAttributes.Del("slot")
 	return e
+}
+
+func (e *KBDElement) SLOTRemoveF(format string, args ...any) *KBDElement {
+	return e.SLOTRemove(fmt.Sprintf(format, args...))
 }
 
 // The spellcheck global attribute is an enumerated attribute that defines whether
@@ -1344,9 +1494,20 @@ func (e *KBDElement) TITLE(s string) *KBDElement {
 	return e
 }
 
+func (e *KBDElement) TITLEF(format string, args ...any) *KBDElement {
+	return e.TITLE(fmt.Sprintf(format, args...))
+}
+
 func (e *KBDElement) IfTITLE(condition bool, s string) *KBDElement {
 	if condition {
 		e.TITLE(s)
+	}
+	return e
+}
+
+func (e *KBDElement) IfTITLEF(condition bool, format string, args ...any) *KBDElement {
+	if condition {
+		e.TITLE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1358,6 +1519,10 @@ func (e *KBDElement) TITLERemove(s string) *KBDElement {
 	}
 	e.StringAttributes.Del("title")
 	return e
+}
+
+func (e *KBDElement) TITLERemoveF(format string, args ...any) *KBDElement {
+	return e.TITLERemove(fmt.Sprintf(format, args...))
 }
 
 // The translate global attribute is an enumerated attribute that is used to
@@ -1402,7 +1567,7 @@ func (e *KBDElement) DATASTAR_MERGE_STORE(v any) *KBDElement {
 	if err != nil {
 		panic(err)
 	}
-	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	e.CustomDataAttributes.Set("merge-store", string(b))
 	return e
 }
 
@@ -1524,34 +1689,34 @@ func (e *KBDElement) DATASTAR_TEXTRemove() *KBDElement {
 
 // Sets the event handler of the element
 
-type KbdDataOnMod customDataKeyModifier
+type KbdOnMod customDataKeyModifier
 
 // Debounces the event handler
-func KbdDataOnModDebounce(
+func KbdOnModDebounce(
 	d time.Duration,
-) KbdDataOnMod {
+) KbdOnMod {
 	return func() string {
 		return fmt.Sprintf("debounce_%dms", d.Milliseconds())
 	}
 }
 
 // Throttles the event handler
-func KbdDataOnModThrottle(
+func KbdOnModThrottle(
 	d time.Duration,
-) KbdDataOnMod {
+) KbdOnMod {
 	return func() string {
 		return fmt.Sprintf("throttle_%dms", d.Milliseconds())
 	}
 }
 
-func (e *KBDElement) DATASTAR_ON(key string, expression string, modifiers ...KbdDataOnMod) *KBDElement {
+func (e *KBDElement) DATASTAR_ON(key string, expression string, modifiers ...KbdOnMod) *KBDElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
 	key = fmt.Sprintf("data-on-%s", key)
 
-	customMods := lo.Map(modifiers, func(m KbdDataOnMod, i int) customDataKeyModifier {
+	customMods := lo.Map(modifiers, func(m KbdOnMod, i int) customDataKeyModifier {
 		return customDataKeyModifier(m)
 	})
 	key = customDataKey(key, customMods...)
@@ -1559,7 +1724,7 @@ func (e *KBDElement) DATASTAR_ON(key string, expression string, modifiers ...Kbd
 	return e
 }
 
-func (e *KBDElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...KbdDataOnMod) *KBDElement {
+func (e *KBDElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...KbdOnMod) *KBDElement {
 	if condition {
 		e.DATASTAR_ON(key, expression, modifiers...)
 	}
@@ -1652,7 +1817,7 @@ func (e *KBDElement) DATASTAR_FETCH_INDICATOR(expression string) *KBDElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "DatastarFetchIndicator"
+	key := "data-fetch-indicator"
 
 	e.StringAttributes.Set(key, expression)
 	return e
@@ -1670,7 +1835,7 @@ func (e *KBDElement) DATASTAR_FETCH_INDICATORRemove() *KBDElement {
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("DatastarFetchIndicator")
+	e.StringAttributes.Del("data-fetch-indicator")
 	return e
 }
 

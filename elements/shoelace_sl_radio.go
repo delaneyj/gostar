@@ -197,9 +197,20 @@ func (e *SLRADIOElement) VALUE(s string) *SLRADIOElement {
 	return e
 }
 
+func (e *SLRADIOElement) VALUEF(format string, args ...any) *SLRADIOElement {
+	return e.VALUE(fmt.Sprintf(format, args...))
+}
+
 func (e *SLRADIOElement) IfVALUE(condition bool, s string) *SLRADIOElement {
 	if condition {
 		e.VALUE(s)
+	}
+	return e
+}
+
+func (e *SLRADIOElement) IfVALUEF(condition bool, format string, args ...any) *SLRADIOElement {
+	if condition {
+		e.VALUE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -211,6 +222,10 @@ func (e *SLRADIOElement) VALUERemove(s string) *SLRADIOElement {
 	}
 	e.StringAttributes.Del("value")
 	return e
+}
+
+func (e *SLRADIOElement) VALUERemoveF(format string, args ...any) *SLRADIOElement {
+	return e.VALUERemove(fmt.Sprintf(format, args...))
 }
 
 func (e *SLRADIOElement) DISABLED() *SLRADIOElement {
@@ -260,7 +275,7 @@ func (e *SLRADIOElement) DATASTAR_MERGE_STORE(v any) *SLRADIOElement {
 	if err != nil {
 		panic(err)
 	}
-	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	e.CustomDataAttributes.Set("merge-store", string(b))
 	return e
 }
 
@@ -382,34 +397,34 @@ func (e *SLRADIOElement) DATASTAR_TEXTRemove() *SLRADIOElement {
 
 // Sets the event handler of the element
 
-type SLRadioDataOnMod customDataKeyModifier
+type SLRadioOnMod customDataKeyModifier
 
 // Debounces the event handler
-func SLRadioDataOnModDebounce(
+func SLRadioOnModDebounce(
 	d time.Duration,
-) SLRadioDataOnMod {
+) SLRadioOnMod {
 	return func() string {
 		return fmt.Sprintf("debounce_%dms", d.Milliseconds())
 	}
 }
 
 // Throttles the event handler
-func SLRadioDataOnModThrottle(
+func SLRadioOnModThrottle(
 	d time.Duration,
-) SLRadioDataOnMod {
+) SLRadioOnMod {
 	return func() string {
 		return fmt.Sprintf("throttle_%dms", d.Milliseconds())
 	}
 }
 
-func (e *SLRADIOElement) DATASTAR_ON(key string, expression string, modifiers ...SLRadioDataOnMod) *SLRADIOElement {
+func (e *SLRADIOElement) DATASTAR_ON(key string, expression string, modifiers ...SLRadioOnMod) *SLRADIOElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
 	key = fmt.Sprintf("data-on-%s", key)
 
-	customMods := lo.Map(modifiers, func(m SLRadioDataOnMod, i int) customDataKeyModifier {
+	customMods := lo.Map(modifiers, func(m SLRadioOnMod, i int) customDataKeyModifier {
 		return customDataKeyModifier(m)
 	})
 	key = customDataKey(key, customMods...)
@@ -417,7 +432,7 @@ func (e *SLRADIOElement) DATASTAR_ON(key string, expression string, modifiers ..
 	return e
 }
 
-func (e *SLRADIOElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SLRadioDataOnMod) *SLRADIOElement {
+func (e *SLRADIOElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SLRadioOnMod) *SLRADIOElement {
 	if condition {
 		e.DATASTAR_ON(key, expression, modifiers...)
 	}
@@ -510,7 +525,7 @@ func (e *SLRADIOElement) DATASTAR_FETCH_INDICATOR(expression string) *SLRADIOEle
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "DatastarFetchIndicator"
+	key := "data-fetch-indicator"
 
 	e.StringAttributes.Set(key, expression)
 	return e
@@ -528,7 +543,7 @@ func (e *SLRADIOElement) DATASTAR_FETCH_INDICATORRemove() *SLRADIOElement {
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("DatastarFetchIndicator")
+	e.StringAttributes.Del("data-fetch-indicator")
 	return e
 }
 

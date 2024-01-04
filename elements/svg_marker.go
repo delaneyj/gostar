@@ -295,9 +295,20 @@ func (e *SVGMARKERElement) VIEW_BOX(s string) *SVGMARKERElement {
 	return e
 }
 
+func (e *SVGMARKERElement) VIEW_BOXF(format string, args ...any) *SVGMARKERElement {
+	return e.VIEW_BOX(fmt.Sprintf(format, args...))
+}
+
 func (e *SVGMARKERElement) IfVIEW_BOX(condition bool, s string) *SVGMARKERElement {
 	if condition {
 		e.VIEW_BOX(s)
+	}
+	return e
+}
+
+func (e *SVGMARKERElement) IfVIEW_BOXF(condition bool, format string, args ...any) *SVGMARKERElement {
+	if condition {
+		e.VIEW_BOX(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -311,6 +322,10 @@ func (e *SVGMARKERElement) VIEW_BOXRemove(s string) *SVGMARKERElement {
 	return e
 }
 
+func (e *SVGMARKERElement) VIEW_BOXRemoveF(format string, args ...any) *SVGMARKERElement {
+	return e.VIEW_BOXRemove(fmt.Sprintf(format, args...))
+}
+
 // Specifies a unique id for an element
 func (e *SVGMARKERElement) ID(s string) *SVGMARKERElement {
 	if e.StringAttributes == nil {
@@ -320,9 +335,20 @@ func (e *SVGMARKERElement) ID(s string) *SVGMARKERElement {
 	return e
 }
 
+func (e *SVGMARKERElement) IDF(format string, args ...any) *SVGMARKERElement {
+	return e.ID(fmt.Sprintf(format, args...))
+}
+
 func (e *SVGMARKERElement) IfID(condition bool, s string) *SVGMARKERElement {
 	if condition {
 		e.ID(s)
+	}
+	return e
+}
+
+func (e *SVGMARKERElement) IfIDF(condition bool, format string, args ...any) *SVGMARKERElement {
+	if condition {
+		e.ID(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -334,6 +360,10 @@ func (e *SVGMARKERElement) IDRemove(s string) *SVGMARKERElement {
 	}
 	e.StringAttributes.Del("id")
 	return e
+}
+
+func (e *SVGMARKERElement) IDRemoveF(format string, args ...any) *SVGMARKERElement {
+	return e.IDRemove(fmt.Sprintf(format, args...))
 }
 
 // Specifies one or more classnames for an element (refers to a class in a style
@@ -472,7 +502,7 @@ func (e *SVGMARKERElement) DATASTAR_MERGE_STORE(v any) *SVGMARKERElement {
 	if err != nil {
 		panic(err)
 	}
-	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	e.CustomDataAttributes.Set("merge-store", string(b))
 	return e
 }
 
@@ -594,34 +624,34 @@ func (e *SVGMARKERElement) DATASTAR_TEXTRemove() *SVGMARKERElement {
 
 // Sets the event handler of the element
 
-type SVGMarkerDataOnMod customDataKeyModifier
+type SVGMarkerOnMod customDataKeyModifier
 
 // Debounces the event handler
-func SVGMarkerDataOnModDebounce(
+func SVGMarkerOnModDebounce(
 	d time.Duration,
-) SVGMarkerDataOnMod {
+) SVGMarkerOnMod {
 	return func() string {
 		return fmt.Sprintf("debounce_%dms", d.Milliseconds())
 	}
 }
 
 // Throttles the event handler
-func SVGMarkerDataOnModThrottle(
+func SVGMarkerOnModThrottle(
 	d time.Duration,
-) SVGMarkerDataOnMod {
+) SVGMarkerOnMod {
 	return func() string {
 		return fmt.Sprintf("throttle_%dms", d.Milliseconds())
 	}
 }
 
-func (e *SVGMARKERElement) DATASTAR_ON(key string, expression string, modifiers ...SVGMarkerDataOnMod) *SVGMARKERElement {
+func (e *SVGMARKERElement) DATASTAR_ON(key string, expression string, modifiers ...SVGMarkerOnMod) *SVGMARKERElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
 	key = fmt.Sprintf("data-on-%s", key)
 
-	customMods := lo.Map(modifiers, func(m SVGMarkerDataOnMod, i int) customDataKeyModifier {
+	customMods := lo.Map(modifiers, func(m SVGMarkerOnMod, i int) customDataKeyModifier {
 		return customDataKeyModifier(m)
 	})
 	key = customDataKey(key, customMods...)
@@ -629,7 +659,7 @@ func (e *SVGMARKERElement) DATASTAR_ON(key string, expression string, modifiers 
 	return e
 }
 
-func (e *SVGMARKERElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SVGMarkerDataOnMod) *SVGMARKERElement {
+func (e *SVGMARKERElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SVGMarkerOnMod) *SVGMARKERElement {
 	if condition {
 		e.DATASTAR_ON(key, expression, modifiers...)
 	}
@@ -722,7 +752,7 @@ func (e *SVGMARKERElement) DATASTAR_FETCH_INDICATOR(expression string) *SVGMARKE
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "DatastarFetchIndicator"
+	key := "data-fetch-indicator"
 
 	e.StringAttributes.Set(key, expression)
 	return e
@@ -740,7 +770,7 @@ func (e *SVGMARKERElement) DATASTAR_FETCH_INDICATORRemove() *SVGMARKERElement {
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("DatastarFetchIndicator")
+	e.StringAttributes.Del("data-fetch-indicator")
 	return e
 }
 

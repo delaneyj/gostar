@@ -210,9 +210,20 @@ func (e *OPTGROUPElement) LABEL(s string) *OPTGROUPElement {
 	return e
 }
 
+func (e *OPTGROUPElement) LABELF(format string, args ...any) *OPTGROUPElement {
+	return e.LABEL(fmt.Sprintf(format, args...))
+}
+
 func (e *OPTGROUPElement) IfLABEL(condition bool, s string) *OPTGROUPElement {
 	if condition {
 		e.LABEL(s)
+	}
+	return e
+}
+
+func (e *OPTGROUPElement) IfLABELF(condition bool, format string, args ...any) *OPTGROUPElement {
+	if condition {
+		e.LABEL(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -224,6 +235,10 @@ func (e *OPTGROUPElement) LABELRemove(s string) *OPTGROUPElement {
 	}
 	e.StringAttributes.Del("label")
 	return e
+}
+
+func (e *OPTGROUPElement) LABELRemoveF(format string, args ...any) *OPTGROUPElement {
+	return e.LABELRemove(fmt.Sprintf(format, args...))
 }
 
 // The accesskey global attribute provides a hint for generating a keyboard
@@ -671,9 +686,20 @@ func (e *OPTGROUPElement) ID(s string) *OPTGROUPElement {
 	return e
 }
 
+func (e *OPTGROUPElement) IDF(format string, args ...any) *OPTGROUPElement {
+	return e.ID(fmt.Sprintf(format, args...))
+}
+
 func (e *OPTGROUPElement) IfID(condition bool, s string) *OPTGROUPElement {
 	if condition {
 		e.ID(s)
+	}
+	return e
+}
+
+func (e *OPTGROUPElement) IfIDF(condition bool, format string, args ...any) *OPTGROUPElement {
+	if condition {
+		e.ID(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -685,6 +711,10 @@ func (e *OPTGROUPElement) IDRemove(s string) *OPTGROUPElement {
 	}
 	e.StringAttributes.Del("id")
 	return e
+}
+
+func (e *OPTGROUPElement) IDRemoveF(format string, args ...any) *OPTGROUPElement {
+	return e.IDRemove(fmt.Sprintf(format, args...))
 }
 
 // The inert global attribute is a Boolean attribute indicating that the browser
@@ -819,9 +849,20 @@ func (e *OPTGROUPElement) IS(s string) *OPTGROUPElement {
 	return e
 }
 
+func (e *OPTGROUPElement) ISF(format string, args ...any) *OPTGROUPElement {
+	return e.IS(fmt.Sprintf(format, args...))
+}
+
 func (e *OPTGROUPElement) IfIS(condition bool, s string) *OPTGROUPElement {
 	if condition {
 		e.IS(s)
+	}
+	return e
+}
+
+func (e *OPTGROUPElement) IfISF(condition bool, format string, args ...any) *OPTGROUPElement {
+	if condition {
+		e.IS(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -833,6 +874,10 @@ func (e *OPTGROUPElement) ISRemove(s string) *OPTGROUPElement {
 	}
 	e.StringAttributes.Del("is")
 	return e
+}
+
+func (e *OPTGROUPElement) ISRemoveF(format string, args ...any) *OPTGROUPElement {
+	return e.ISRemove(fmt.Sprintf(format, args...))
 }
 
 // The itemid global attribute provides microdata in the form of a unique, global
@@ -856,9 +901,20 @@ func (e *OPTGROUPElement) ITEMID(s string) *OPTGROUPElement {
 	return e
 }
 
+func (e *OPTGROUPElement) ITEMIDF(format string, args ...any) *OPTGROUPElement {
+	return e.ITEMID(fmt.Sprintf(format, args...))
+}
+
 func (e *OPTGROUPElement) IfITEMID(condition bool, s string) *OPTGROUPElement {
 	if condition {
 		e.ITEMID(s)
+	}
+	return e
+}
+
+func (e *OPTGROUPElement) IfITEMIDF(condition bool, format string, args ...any) *OPTGROUPElement {
+	if condition {
+		e.ITEMID(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -870,6 +926,10 @@ func (e *OPTGROUPElement) ITEMIDRemove(s string) *OPTGROUPElement {
 	}
 	e.StringAttributes.Del("itemid")
 	return e
+}
+
+func (e *OPTGROUPElement) ITEMIDRemoveF(format string, args ...any) *OPTGROUPElement {
+	return e.ITEMIDRemove(fmt.Sprintf(format, args...))
 }
 
 // The itemprop global attribute is used to add properties to an item
@@ -888,9 +948,20 @@ func (e *OPTGROUPElement) ITEMPROP(s string) *OPTGROUPElement {
 	return e
 }
 
+func (e *OPTGROUPElement) ITEMPROPF(format string, args ...any) *OPTGROUPElement {
+	return e.ITEMPROP(fmt.Sprintf(format, args...))
+}
+
 func (e *OPTGROUPElement) IfITEMPROP(condition bool, s string) *OPTGROUPElement {
 	if condition {
 		e.ITEMPROP(s)
+	}
+	return e
+}
+
+func (e *OPTGROUPElement) IfITEMPROPF(condition bool, format string, args ...any) *OPTGROUPElement {
+	if condition {
+		e.ITEMPROP(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -902,6 +973,10 @@ func (e *OPTGROUPElement) ITEMPROPRemove(s string) *OPTGROUPElement {
 	}
 	e.StringAttributes.Del("itemprop")
 	return e
+}
+
+func (e *OPTGROUPElement) ITEMPROPRemoveF(format string, args ...any) *OPTGROUPElement {
+	return e.ITEMPROPRemove(fmt.Sprintf(format, args...))
 }
 
 // Properties that are not descendants of an element with the itemscope attribute
@@ -917,9 +992,20 @@ func (e *OPTGROUPElement) ITEMREF(s string) *OPTGROUPElement {
 	return e
 }
 
+func (e *OPTGROUPElement) ITEMREFF(format string, args ...any) *OPTGROUPElement {
+	return e.ITEMREF(fmt.Sprintf(format, args...))
+}
+
 func (e *OPTGROUPElement) IfITEMREF(condition bool, s string) *OPTGROUPElement {
 	if condition {
 		e.ITEMREF(s)
+	}
+	return e
+}
+
+func (e *OPTGROUPElement) IfITEMREFF(condition bool, format string, args ...any) *OPTGROUPElement {
+	if condition {
+		e.ITEMREF(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -931,6 +1017,10 @@ func (e *OPTGROUPElement) ITEMREFRemove(s string) *OPTGROUPElement {
 	}
 	e.StringAttributes.Del("itemref")
 	return e
+}
+
+func (e *OPTGROUPElement) ITEMREFRemoveF(format string, args ...any) *OPTGROUPElement {
+	return e.ITEMREFRemove(fmt.Sprintf(format, args...))
 }
 
 // The itemscope global attribute is used to add an item to a microdata DOM tree
@@ -994,9 +1084,20 @@ func (e *OPTGROUPElement) ITEMTYPE(s string) *OPTGROUPElement {
 	return e
 }
 
+func (e *OPTGROUPElement) ITEMTYPEF(format string, args ...any) *OPTGROUPElement {
+	return e.ITEMTYPE(fmt.Sprintf(format, args...))
+}
+
 func (e *OPTGROUPElement) IfITEMTYPE(condition bool, s string) *OPTGROUPElement {
 	if condition {
 		e.ITEMTYPE(s)
+	}
+	return e
+}
+
+func (e *OPTGROUPElement) IfITEMTYPEF(condition bool, format string, args ...any) *OPTGROUPElement {
+	if condition {
+		e.ITEMTYPE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1008,6 +1109,10 @@ func (e *OPTGROUPElement) ITEMTYPERemove(s string) *OPTGROUPElement {
 	}
 	e.StringAttributes.Del("itemtype")
 	return e
+}
+
+func (e *OPTGROUPElement) ITEMTYPERemoveF(format string, args ...any) *OPTGROUPElement {
+	return e.ITEMTYPERemove(fmt.Sprintf(format, args...))
 }
 
 // The lang global attribute helps define the language of an element: the language
@@ -1024,9 +1129,20 @@ func (e *OPTGROUPElement) LANG(s string) *OPTGROUPElement {
 	return e
 }
 
+func (e *OPTGROUPElement) LANGF(format string, args ...any) *OPTGROUPElement {
+	return e.LANG(fmt.Sprintf(format, args...))
+}
+
 func (e *OPTGROUPElement) IfLANG(condition bool, s string) *OPTGROUPElement {
 	if condition {
 		e.LANG(s)
+	}
+	return e
+}
+
+func (e *OPTGROUPElement) IfLANGF(condition bool, format string, args ...any) *OPTGROUPElement {
+	if condition {
+		e.LANG(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1038,6 +1154,10 @@ func (e *OPTGROUPElement) LANGRemove(s string) *OPTGROUPElement {
 	}
 	e.StringAttributes.Del("lang")
 	return e
+}
+
+func (e *OPTGROUPElement) LANGRemoveF(format string, args ...any) *OPTGROUPElement {
+	return e.LANGRemove(fmt.Sprintf(format, args...))
 }
 
 // The nonce global attribute is a unique identifier used to declare inline
@@ -1052,9 +1172,20 @@ func (e *OPTGROUPElement) NONCE(s string) *OPTGROUPElement {
 	return e
 }
 
+func (e *OPTGROUPElement) NONCEF(format string, args ...any) *OPTGROUPElement {
+	return e.NONCE(fmt.Sprintf(format, args...))
+}
+
 func (e *OPTGROUPElement) IfNONCE(condition bool, s string) *OPTGROUPElement {
 	if condition {
 		e.NONCE(s)
+	}
+	return e
+}
+
+func (e *OPTGROUPElement) IfNONCEF(condition bool, format string, args ...any) *OPTGROUPElement {
+	if condition {
+		e.NONCE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1066,6 +1197,10 @@ func (e *OPTGROUPElement) NONCERemove(s string) *OPTGROUPElement {
 	}
 	e.StringAttributes.Del("nonce")
 	return e
+}
+
+func (e *OPTGROUPElement) NONCERemoveF(format string, args ...any) *OPTGROUPElement {
+	return e.NONCERemove(fmt.Sprintf(format, args...))
 }
 
 // The part global attribute contains a space-separated list of the part names of
@@ -1160,9 +1295,20 @@ func (e *OPTGROUPElement) ROLE(s string) *OPTGROUPElement {
 	return e
 }
 
+func (e *OPTGROUPElement) ROLEF(format string, args ...any) *OPTGROUPElement {
+	return e.ROLE(fmt.Sprintf(format, args...))
+}
+
 func (e *OPTGROUPElement) IfROLE(condition bool, s string) *OPTGROUPElement {
 	if condition {
 		e.ROLE(s)
+	}
+	return e
+}
+
+func (e *OPTGROUPElement) IfROLEF(condition bool, format string, args ...any) *OPTGROUPElement {
+	if condition {
+		e.ROLE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1174,6 +1320,10 @@ func (e *OPTGROUPElement) ROLERemove(s string) *OPTGROUPElement {
 	}
 	e.StringAttributes.Del("role")
 	return e
+}
+
+func (e *OPTGROUPElement) ROLERemoveF(format string, args ...any) *OPTGROUPElement {
+	return e.ROLERemove(fmt.Sprintf(format, args...))
 }
 
 // The slot global attribute assigns a slot in a shadow DOM shadow tree to an
@@ -1188,9 +1338,20 @@ func (e *OPTGROUPElement) SLOT(s string) *OPTGROUPElement {
 	return e
 }
 
+func (e *OPTGROUPElement) SLOTF(format string, args ...any) *OPTGROUPElement {
+	return e.SLOT(fmt.Sprintf(format, args...))
+}
+
 func (e *OPTGROUPElement) IfSLOT(condition bool, s string) *OPTGROUPElement {
 	if condition {
 		e.SLOT(s)
+	}
+	return e
+}
+
+func (e *OPTGROUPElement) IfSLOTF(condition bool, format string, args ...any) *OPTGROUPElement {
+	if condition {
+		e.SLOT(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1202,6 +1363,10 @@ func (e *OPTGROUPElement) SLOTRemove(s string) *OPTGROUPElement {
 	}
 	e.StringAttributes.Del("slot")
 	return e
+}
+
+func (e *OPTGROUPElement) SLOTRemoveF(format string, args ...any) *OPTGROUPElement {
+	return e.SLOTRemove(fmt.Sprintf(format, args...))
 }
 
 // The spellcheck global attribute is an enumerated attribute that defines whether
@@ -1406,9 +1571,20 @@ func (e *OPTGROUPElement) TITLE(s string) *OPTGROUPElement {
 	return e
 }
 
+func (e *OPTGROUPElement) TITLEF(format string, args ...any) *OPTGROUPElement {
+	return e.TITLE(fmt.Sprintf(format, args...))
+}
+
 func (e *OPTGROUPElement) IfTITLE(condition bool, s string) *OPTGROUPElement {
 	if condition {
 		e.TITLE(s)
+	}
+	return e
+}
+
+func (e *OPTGROUPElement) IfTITLEF(condition bool, format string, args ...any) *OPTGROUPElement {
+	if condition {
+		e.TITLE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1420,6 +1596,10 @@ func (e *OPTGROUPElement) TITLERemove(s string) *OPTGROUPElement {
 	}
 	e.StringAttributes.Del("title")
 	return e
+}
+
+func (e *OPTGROUPElement) TITLERemoveF(format string, args ...any) *OPTGROUPElement {
+	return e.TITLERemove(fmt.Sprintf(format, args...))
 }
 
 // The translate global attribute is an enumerated attribute that is used to
@@ -1464,7 +1644,7 @@ func (e *OPTGROUPElement) DATASTAR_MERGE_STORE(v any) *OPTGROUPElement {
 	if err != nil {
 		panic(err)
 	}
-	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	e.CustomDataAttributes.Set("merge-store", string(b))
 	return e
 }
 
@@ -1586,34 +1766,34 @@ func (e *OPTGROUPElement) DATASTAR_TEXTRemove() *OPTGROUPElement {
 
 // Sets the event handler of the element
 
-type OptgroupDataOnMod customDataKeyModifier
+type OptgroupOnMod customDataKeyModifier
 
 // Debounces the event handler
-func OptgroupDataOnModDebounce(
+func OptgroupOnModDebounce(
 	d time.Duration,
-) OptgroupDataOnMod {
+) OptgroupOnMod {
 	return func() string {
 		return fmt.Sprintf("debounce_%dms", d.Milliseconds())
 	}
 }
 
 // Throttles the event handler
-func OptgroupDataOnModThrottle(
+func OptgroupOnModThrottle(
 	d time.Duration,
-) OptgroupDataOnMod {
+) OptgroupOnMod {
 	return func() string {
 		return fmt.Sprintf("throttle_%dms", d.Milliseconds())
 	}
 }
 
-func (e *OPTGROUPElement) DATASTAR_ON(key string, expression string, modifiers ...OptgroupDataOnMod) *OPTGROUPElement {
+func (e *OPTGROUPElement) DATASTAR_ON(key string, expression string, modifiers ...OptgroupOnMod) *OPTGROUPElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
 	key = fmt.Sprintf("data-on-%s", key)
 
-	customMods := lo.Map(modifiers, func(m OptgroupDataOnMod, i int) customDataKeyModifier {
+	customMods := lo.Map(modifiers, func(m OptgroupOnMod, i int) customDataKeyModifier {
 		return customDataKeyModifier(m)
 	})
 	key = customDataKey(key, customMods...)
@@ -1621,7 +1801,7 @@ func (e *OPTGROUPElement) DATASTAR_ON(key string, expression string, modifiers .
 	return e
 }
 
-func (e *OPTGROUPElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...OptgroupDataOnMod) *OPTGROUPElement {
+func (e *OPTGROUPElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...OptgroupOnMod) *OPTGROUPElement {
 	if condition {
 		e.DATASTAR_ON(key, expression, modifiers...)
 	}
@@ -1714,7 +1894,7 @@ func (e *OPTGROUPElement) DATASTAR_FETCH_INDICATOR(expression string) *OPTGROUPE
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "DatastarFetchIndicator"
+	key := "data-fetch-indicator"
 
 	e.StringAttributes.Set(key, expression)
 	return e
@@ -1732,7 +1912,7 @@ func (e *OPTGROUPElement) DATASTAR_FETCH_INDICATORRemove() *OPTGROUPElement {
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("DatastarFetchIndicator")
+	e.StringAttributes.Del("data-fetch-indicator")
 	return e
 }
 

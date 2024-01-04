@@ -234,9 +234,20 @@ func (e *SVGFEDROPSHADOWElement) FLOOD_COLOR(s string) *SVGFEDROPSHADOWElement {
 	return e
 }
 
+func (e *SVGFEDROPSHADOWElement) FLOOD_COLORF(format string, args ...any) *SVGFEDROPSHADOWElement {
+	return e.FLOOD_COLOR(fmt.Sprintf(format, args...))
+}
+
 func (e *SVGFEDROPSHADOWElement) IfFLOOD_COLOR(condition bool, s string) *SVGFEDROPSHADOWElement {
 	if condition {
 		e.FLOOD_COLOR(s)
+	}
+	return e
+}
+
+func (e *SVGFEDROPSHADOWElement) IfFLOOD_COLORF(condition bool, format string, args ...any) *SVGFEDROPSHADOWElement {
+	if condition {
+		e.FLOOD_COLOR(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -248,6 +259,10 @@ func (e *SVGFEDROPSHADOWElement) FLOOD_COLORRemove(s string) *SVGFEDROPSHADOWEle
 	}
 	e.StringAttributes.Del("flood-color")
 	return e
+}
+
+func (e *SVGFEDROPSHADOWElement) FLOOD_COLORRemoveF(format string, args ...any) *SVGFEDROPSHADOWElement {
+	return e.FLOOD_COLORRemove(fmt.Sprintf(format, args...))
 }
 
 // The flood-opacity attribute indicates the opacity value to use across the
@@ -276,9 +291,20 @@ func (e *SVGFEDROPSHADOWElement) ID(s string) *SVGFEDROPSHADOWElement {
 	return e
 }
 
+func (e *SVGFEDROPSHADOWElement) IDF(format string, args ...any) *SVGFEDROPSHADOWElement {
+	return e.ID(fmt.Sprintf(format, args...))
+}
+
 func (e *SVGFEDROPSHADOWElement) IfID(condition bool, s string) *SVGFEDROPSHADOWElement {
 	if condition {
 		e.ID(s)
+	}
+	return e
+}
+
+func (e *SVGFEDROPSHADOWElement) IfIDF(condition bool, format string, args ...any) *SVGFEDROPSHADOWElement {
+	if condition {
+		e.ID(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -290,6 +316,10 @@ func (e *SVGFEDROPSHADOWElement) IDRemove(s string) *SVGFEDROPSHADOWElement {
 	}
 	e.StringAttributes.Del("id")
 	return e
+}
+
+func (e *SVGFEDROPSHADOWElement) IDRemoveF(format string, args ...any) *SVGFEDROPSHADOWElement {
+	return e.IDRemove(fmt.Sprintf(format, args...))
 }
 
 // Specifies one or more classnames for an element (refers to a class in a style
@@ -428,7 +458,7 @@ func (e *SVGFEDROPSHADOWElement) DATASTAR_MERGE_STORE(v any) *SVGFEDROPSHADOWEle
 	if err != nil {
 		panic(err)
 	}
-	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	e.CustomDataAttributes.Set("merge-store", string(b))
 	return e
 }
 
@@ -550,34 +580,34 @@ func (e *SVGFEDROPSHADOWElement) DATASTAR_TEXTRemove() *SVGFEDROPSHADOWElement {
 
 // Sets the event handler of the element
 
-type SVGFeDropShadowDataOnMod customDataKeyModifier
+type SVGFeDropShadowOnMod customDataKeyModifier
 
 // Debounces the event handler
-func SVGFeDropShadowDataOnModDebounce(
+func SVGFeDropShadowOnModDebounce(
 	d time.Duration,
-) SVGFeDropShadowDataOnMod {
+) SVGFeDropShadowOnMod {
 	return func() string {
 		return fmt.Sprintf("debounce_%dms", d.Milliseconds())
 	}
 }
 
 // Throttles the event handler
-func SVGFeDropShadowDataOnModThrottle(
+func SVGFeDropShadowOnModThrottle(
 	d time.Duration,
-) SVGFeDropShadowDataOnMod {
+) SVGFeDropShadowOnMod {
 	return func() string {
 		return fmt.Sprintf("throttle_%dms", d.Milliseconds())
 	}
 }
 
-func (e *SVGFEDROPSHADOWElement) DATASTAR_ON(key string, expression string, modifiers ...SVGFeDropShadowDataOnMod) *SVGFEDROPSHADOWElement {
+func (e *SVGFEDROPSHADOWElement) DATASTAR_ON(key string, expression string, modifiers ...SVGFeDropShadowOnMod) *SVGFEDROPSHADOWElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
 	key = fmt.Sprintf("data-on-%s", key)
 
-	customMods := lo.Map(modifiers, func(m SVGFeDropShadowDataOnMod, i int) customDataKeyModifier {
+	customMods := lo.Map(modifiers, func(m SVGFeDropShadowOnMod, i int) customDataKeyModifier {
 		return customDataKeyModifier(m)
 	})
 	key = customDataKey(key, customMods...)
@@ -585,7 +615,7 @@ func (e *SVGFEDROPSHADOWElement) DATASTAR_ON(key string, expression string, modi
 	return e
 }
 
-func (e *SVGFEDROPSHADOWElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SVGFeDropShadowDataOnMod) *SVGFEDROPSHADOWElement {
+func (e *SVGFEDROPSHADOWElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SVGFeDropShadowOnMod) *SVGFEDROPSHADOWElement {
 	if condition {
 		e.DATASTAR_ON(key, expression, modifiers...)
 	}
@@ -678,7 +708,7 @@ func (e *SVGFEDROPSHADOWElement) DATASTAR_FETCH_INDICATOR(expression string) *SV
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "DatastarFetchIndicator"
+	key := "data-fetch-indicator"
 
 	e.StringAttributes.Set(key, expression)
 	return e
@@ -696,7 +726,7 @@ func (e *SVGFEDROPSHADOWElement) DATASTAR_FETCH_INDICATORRemove() *SVGFEDROPSHAD
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("DatastarFetchIndicator")
+	e.StringAttributes.Del("data-fetch-indicator")
 	return e
 }
 

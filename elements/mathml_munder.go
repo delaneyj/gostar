@@ -268,9 +268,20 @@ func (e *MathMLMUNDERElement) ID(s string) *MathMLMUNDERElement {
 	return e
 }
 
+func (e *MathMLMUNDERElement) IDF(format string, args ...any) *MathMLMUNDERElement {
+	return e.ID(fmt.Sprintf(format, args...))
+}
+
 func (e *MathMLMUNDERElement) IfID(condition bool, s string) *MathMLMUNDERElement {
 	if condition {
 		e.ID(s)
+	}
+	return e
+}
+
+func (e *MathMLMUNDERElement) IfIDF(condition bool, format string, args ...any) *MathMLMUNDERElement {
+	if condition {
+		e.ID(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -284,6 +295,10 @@ func (e *MathMLMUNDERElement) IDRemove(s string) *MathMLMUNDERElement {
 	return e
 }
 
+func (e *MathMLMUNDERElement) IDRemoveF(format string, args ...any) *MathMLMUNDERElement {
+	return e.IDRemove(fmt.Sprintf(format, args...))
+}
+
 // This attribute specifies the background color of the element
 // Possible values are a color name or a color specification in the format defined
 // in the CSS3 Color Module [CSS3COLOR].
@@ -295,9 +310,20 @@ func (e *MathMLMUNDERElement) MATHBACKGROUND(s string) *MathMLMUNDERElement {
 	return e
 }
 
+func (e *MathMLMUNDERElement) MATHBACKGROUNDF(format string, args ...any) *MathMLMUNDERElement {
+	return e.MATHBACKGROUND(fmt.Sprintf(format, args...))
+}
+
 func (e *MathMLMUNDERElement) IfMATHBACKGROUND(condition bool, s string) *MathMLMUNDERElement {
 	if condition {
 		e.MATHBACKGROUND(s)
+	}
+	return e
+}
+
+func (e *MathMLMUNDERElement) IfMATHBACKGROUNDF(condition bool, format string, args ...any) *MathMLMUNDERElement {
+	if condition {
+		e.MATHBACKGROUND(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -311,6 +337,10 @@ func (e *MathMLMUNDERElement) MATHBACKGROUNDRemove(s string) *MathMLMUNDERElemen
 	return e
 }
 
+func (e *MathMLMUNDERElement) MATHBACKGROUNDRemoveF(format string, args ...any) *MathMLMUNDERElement {
+	return e.MATHBACKGROUNDRemove(fmt.Sprintf(format, args...))
+}
+
 // This attribute specifies the color of the element
 // Possible values are a color name or a color specification in the format defined
 // in the CSS3 Color Module [CSS3COLOR].
@@ -322,9 +352,20 @@ func (e *MathMLMUNDERElement) MATHCOLOR(s string) *MathMLMUNDERElement {
 	return e
 }
 
+func (e *MathMLMUNDERElement) MATHCOLORF(format string, args ...any) *MathMLMUNDERElement {
+	return e.MATHCOLOR(fmt.Sprintf(format, args...))
+}
+
 func (e *MathMLMUNDERElement) IfMATHCOLOR(condition bool, s string) *MathMLMUNDERElement {
 	if condition {
 		e.MATHCOLOR(s)
+	}
+	return e
+}
+
+func (e *MathMLMUNDERElement) IfMATHCOLORF(condition bool, format string, args ...any) *MathMLMUNDERElement {
+	if condition {
+		e.MATHCOLOR(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -338,6 +379,10 @@ func (e *MathMLMUNDERElement) MATHCOLORRemove(s string) *MathMLMUNDERElement {
 	return e
 }
 
+func (e *MathMLMUNDERElement) MATHCOLORRemoveF(format string, args ...any) *MathMLMUNDERElement {
+	return e.MATHCOLORRemove(fmt.Sprintf(format, args...))
+}
+
 // This attribute specifies the size of the element
 // Possible values are a dimension or a dimensionless number.
 func (e *MathMLMUNDERElement) MATHSIZE_STR(s string) *MathMLMUNDERElement {
@@ -348,9 +393,20 @@ func (e *MathMLMUNDERElement) MATHSIZE_STR(s string) *MathMLMUNDERElement {
 	return e
 }
 
+func (e *MathMLMUNDERElement) MATHSIZE_STRF(format string, args ...any) *MathMLMUNDERElement {
+	return e.MATHSIZE_STR(fmt.Sprintf(format, args...))
+}
+
 func (e *MathMLMUNDERElement) IfMATHSIZE_STR(condition bool, s string) *MathMLMUNDERElement {
 	if condition {
 		e.MATHSIZE_STR(s)
+	}
+	return e
+}
+
+func (e *MathMLMUNDERElement) IfMATHSIZE_STRF(condition bool, format string, args ...any) *MathMLMUNDERElement {
+	if condition {
+		e.MATHSIZE_STR(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -362,6 +418,10 @@ func (e *MathMLMUNDERElement) MATHSIZE_STRRemove(s string) *MathMLMUNDERElement 
 	}
 	e.StringAttributes.Del("mathsize")
 	return e
+}
+
+func (e *MathMLMUNDERElement) MATHSIZE_STRRemoveF(format string, args ...any) *MathMLMUNDERElement {
+	return e.MATHSIZE_STRRemove(fmt.Sprintf(format, args...))
 }
 
 // This attribute declares a cryptographic nonce (number used once) that should be
@@ -376,9 +436,20 @@ func (e *MathMLMUNDERElement) NONCE(s string) *MathMLMUNDERElement {
 	return e
 }
 
+func (e *MathMLMUNDERElement) NONCEF(format string, args ...any) *MathMLMUNDERElement {
+	return e.NONCE(fmt.Sprintf(format, args...))
+}
+
 func (e *MathMLMUNDERElement) IfNONCE(condition bool, s string) *MathMLMUNDERElement {
 	if condition {
 		e.NONCE(s)
+	}
+	return e
+}
+
+func (e *MathMLMUNDERElement) IfNONCEF(condition bool, format string, args ...any) *MathMLMUNDERElement {
+	if condition {
+		e.NONCE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -390,6 +461,10 @@ func (e *MathMLMUNDERElement) NONCERemove(s string) *MathMLMUNDERElement {
 	}
 	e.StringAttributes.Del("nonce")
 	return e
+}
+
+func (e *MathMLMUNDERElement) NONCERemoveF(format string, args ...any) *MathMLMUNDERElement {
+	return e.NONCERemove(fmt.Sprintf(format, args...))
 }
 
 // This attribute specifies the script level of the element
@@ -548,7 +623,7 @@ func (e *MathMLMUNDERElement) DATASTAR_MERGE_STORE(v any) *MathMLMUNDERElement {
 	if err != nil {
 		panic(err)
 	}
-	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	e.CustomDataAttributes.Set("merge-store", string(b))
 	return e
 }
 
@@ -670,34 +745,34 @@ func (e *MathMLMUNDERElement) DATASTAR_TEXTRemove() *MathMLMUNDERElement {
 
 // Sets the event handler of the element
 
-type MathMLMunderDataOnMod customDataKeyModifier
+type MathMLMunderOnMod customDataKeyModifier
 
 // Debounces the event handler
-func MathMLMunderDataOnModDebounce(
+func MathMLMunderOnModDebounce(
 	d time.Duration,
-) MathMLMunderDataOnMod {
+) MathMLMunderOnMod {
 	return func() string {
 		return fmt.Sprintf("debounce_%dms", d.Milliseconds())
 	}
 }
 
 // Throttles the event handler
-func MathMLMunderDataOnModThrottle(
+func MathMLMunderOnModThrottle(
 	d time.Duration,
-) MathMLMunderDataOnMod {
+) MathMLMunderOnMod {
 	return func() string {
 		return fmt.Sprintf("throttle_%dms", d.Milliseconds())
 	}
 }
 
-func (e *MathMLMUNDERElement) DATASTAR_ON(key string, expression string, modifiers ...MathMLMunderDataOnMod) *MathMLMUNDERElement {
+func (e *MathMLMUNDERElement) DATASTAR_ON(key string, expression string, modifiers ...MathMLMunderOnMod) *MathMLMUNDERElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
 	key = fmt.Sprintf("data-on-%s", key)
 
-	customMods := lo.Map(modifiers, func(m MathMLMunderDataOnMod, i int) customDataKeyModifier {
+	customMods := lo.Map(modifiers, func(m MathMLMunderOnMod, i int) customDataKeyModifier {
 		return customDataKeyModifier(m)
 	})
 	key = customDataKey(key, customMods...)
@@ -705,7 +780,7 @@ func (e *MathMLMUNDERElement) DATASTAR_ON(key string, expression string, modifie
 	return e
 }
 
-func (e *MathMLMUNDERElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...MathMLMunderDataOnMod) *MathMLMUNDERElement {
+func (e *MathMLMUNDERElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...MathMLMunderOnMod) *MathMLMUNDERElement {
 	if condition {
 		e.DATASTAR_ON(key, expression, modifiers...)
 	}
@@ -798,7 +873,7 @@ func (e *MathMLMUNDERElement) DATASTAR_FETCH_INDICATOR(expression string) *MathM
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "DatastarFetchIndicator"
+	key := "data-fetch-indicator"
 
 	e.StringAttributes.Set(key, expression)
 	return e
@@ -816,7 +891,7 @@ func (e *MathMLMUNDERElement) DATASTAR_FETCH_INDICATORRemove() *MathMLMUNDERElem
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("DatastarFetchIndicator")
+	e.StringAttributes.Del("data-fetch-indicator")
 	return e
 }
 

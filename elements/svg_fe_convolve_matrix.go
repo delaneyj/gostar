@@ -172,9 +172,20 @@ func (e *SVGFECONVOLVEMATRIXElement) IN(s string) *SVGFECONVOLVEMATRIXElement {
 	return e
 }
 
+func (e *SVGFECONVOLVEMATRIXElement) INF(format string, args ...any) *SVGFECONVOLVEMATRIXElement {
+	return e.IN(fmt.Sprintf(format, args...))
+}
+
 func (e *SVGFECONVOLVEMATRIXElement) IfIN(condition bool, s string) *SVGFECONVOLVEMATRIXElement {
 	if condition {
 		e.IN(s)
+	}
+	return e
+}
+
+func (e *SVGFECONVOLVEMATRIXElement) IfINF(condition bool, format string, args ...any) *SVGFECONVOLVEMATRIXElement {
+	if condition {
+		e.IN(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -188,6 +199,10 @@ func (e *SVGFECONVOLVEMATRIXElement) INRemove(s string) *SVGFECONVOLVEMATRIXElem
 	return e
 }
 
+func (e *SVGFECONVOLVEMATRIXElement) INRemoveF(format string, args ...any) *SVGFECONVOLVEMATRIXElement {
+	return e.INRemove(fmt.Sprintf(format, args...))
+}
+
 // The number of cells in each dimension for 'kernelMatrix'
 func (e *SVGFECONVOLVEMATRIXElement) ORDER(s string) *SVGFECONVOLVEMATRIXElement {
 	if e.StringAttributes == nil {
@@ -197,9 +212,20 @@ func (e *SVGFECONVOLVEMATRIXElement) ORDER(s string) *SVGFECONVOLVEMATRIXElement
 	return e
 }
 
+func (e *SVGFECONVOLVEMATRIXElement) ORDERF(format string, args ...any) *SVGFECONVOLVEMATRIXElement {
+	return e.ORDER(fmt.Sprintf(format, args...))
+}
+
 func (e *SVGFECONVOLVEMATRIXElement) IfORDER(condition bool, s string) *SVGFECONVOLVEMATRIXElement {
 	if condition {
 		e.ORDER(s)
+	}
+	return e
+}
+
+func (e *SVGFECONVOLVEMATRIXElement) IfORDERF(condition bool, format string, args ...any) *SVGFECONVOLVEMATRIXElement {
+	if condition {
+		e.ORDER(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -213,6 +239,10 @@ func (e *SVGFECONVOLVEMATRIXElement) ORDERRemove(s string) *SVGFECONVOLVEMATRIXE
 	return e
 }
 
+func (e *SVGFECONVOLVEMATRIXElement) ORDERRemoveF(format string, args ...any) *SVGFECONVOLVEMATRIXElement {
+	return e.ORDERRemove(fmt.Sprintf(format, args...))
+}
+
 // A list of numbers that make up the kernel matrix for the convolution.
 func (e *SVGFECONVOLVEMATRIXElement) KERNEL_MATRIX(s string) *SVGFECONVOLVEMATRIXElement {
 	if e.StringAttributes == nil {
@@ -222,9 +252,20 @@ func (e *SVGFECONVOLVEMATRIXElement) KERNEL_MATRIX(s string) *SVGFECONVOLVEMATRI
 	return e
 }
 
+func (e *SVGFECONVOLVEMATRIXElement) KERNEL_MATRIXF(format string, args ...any) *SVGFECONVOLVEMATRIXElement {
+	return e.KERNEL_MATRIX(fmt.Sprintf(format, args...))
+}
+
 func (e *SVGFECONVOLVEMATRIXElement) IfKERNEL_MATRIX(condition bool, s string) *SVGFECONVOLVEMATRIXElement {
 	if condition {
 		e.KERNEL_MATRIX(s)
+	}
+	return e
+}
+
+func (e *SVGFECONVOLVEMATRIXElement) IfKERNEL_MATRIXF(condition bool, format string, args ...any) *SVGFECONVOLVEMATRIXElement {
+	if condition {
+		e.KERNEL_MATRIX(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -236,6 +277,10 @@ func (e *SVGFECONVOLVEMATRIXElement) KERNEL_MATRIXRemove(s string) *SVGFECONVOLV
 	}
 	e.StringAttributes.Del("kernelMatrix")
 	return e
+}
+
+func (e *SVGFECONVOLVEMATRIXElement) KERNEL_MATRIXRemoveF(format string, args ...any) *SVGFECONVOLVEMATRIXElement {
+	return e.KERNEL_MATRIXRemove(fmt.Sprintf(format, args...))
 }
 
 // The divisor attribute specifies the value by which to divide the result of
@@ -351,9 +396,20 @@ func (e *SVGFECONVOLVEMATRIXElement) KERNEL_UNIT_LENGTH(s string) *SVGFECONVOLVE
 	return e
 }
 
+func (e *SVGFECONVOLVEMATRIXElement) KERNEL_UNIT_LENGTHF(format string, args ...any) *SVGFECONVOLVEMATRIXElement {
+	return e.KERNEL_UNIT_LENGTH(fmt.Sprintf(format, args...))
+}
+
 func (e *SVGFECONVOLVEMATRIXElement) IfKERNEL_UNIT_LENGTH(condition bool, s string) *SVGFECONVOLVEMATRIXElement {
 	if condition {
 		e.KERNEL_UNIT_LENGTH(s)
+	}
+	return e
+}
+
+func (e *SVGFECONVOLVEMATRIXElement) IfKERNEL_UNIT_LENGTHF(condition bool, format string, args ...any) *SVGFECONVOLVEMATRIXElement {
+	if condition {
+		e.KERNEL_UNIT_LENGTH(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -365,6 +421,10 @@ func (e *SVGFECONVOLVEMATRIXElement) KERNEL_UNIT_LENGTHRemove(s string) *SVGFECO
 	}
 	e.StringAttributes.Del("kernelUnitLength")
 	return e
+}
+
+func (e *SVGFECONVOLVEMATRIXElement) KERNEL_UNIT_LENGTHRemoveF(format string, args ...any) *SVGFECONVOLVEMATRIXElement {
+	return e.KERNEL_UNIT_LENGTHRemove(fmt.Sprintf(format, args...))
 }
 
 // The preserveAlpha attribute indicates how the convolution will handle the alpha
@@ -415,9 +475,20 @@ func (e *SVGFECONVOLVEMATRIXElement) ID(s string) *SVGFECONVOLVEMATRIXElement {
 	return e
 }
 
+func (e *SVGFECONVOLVEMATRIXElement) IDF(format string, args ...any) *SVGFECONVOLVEMATRIXElement {
+	return e.ID(fmt.Sprintf(format, args...))
+}
+
 func (e *SVGFECONVOLVEMATRIXElement) IfID(condition bool, s string) *SVGFECONVOLVEMATRIXElement {
 	if condition {
 		e.ID(s)
+	}
+	return e
+}
+
+func (e *SVGFECONVOLVEMATRIXElement) IfIDF(condition bool, format string, args ...any) *SVGFECONVOLVEMATRIXElement {
+	if condition {
+		e.ID(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -429,6 +500,10 @@ func (e *SVGFECONVOLVEMATRIXElement) IDRemove(s string) *SVGFECONVOLVEMATRIXElem
 	}
 	e.StringAttributes.Del("id")
 	return e
+}
+
+func (e *SVGFECONVOLVEMATRIXElement) IDRemoveF(format string, args ...any) *SVGFECONVOLVEMATRIXElement {
+	return e.IDRemove(fmt.Sprintf(format, args...))
 }
 
 // Specifies one or more classnames for an element (refers to a class in a style
@@ -567,7 +642,7 @@ func (e *SVGFECONVOLVEMATRIXElement) DATASTAR_MERGE_STORE(v any) *SVGFECONVOLVEM
 	if err != nil {
 		panic(err)
 	}
-	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	e.CustomDataAttributes.Set("merge-store", string(b))
 	return e
 }
 
@@ -689,34 +764,34 @@ func (e *SVGFECONVOLVEMATRIXElement) DATASTAR_TEXTRemove() *SVGFECONVOLVEMATRIXE
 
 // Sets the event handler of the element
 
-type SVGFeConvolveMatrixDataOnMod customDataKeyModifier
+type SVGFeConvolveMatrixOnMod customDataKeyModifier
 
 // Debounces the event handler
-func SVGFeConvolveMatrixDataOnModDebounce(
+func SVGFeConvolveMatrixOnModDebounce(
 	d time.Duration,
-) SVGFeConvolveMatrixDataOnMod {
+) SVGFeConvolveMatrixOnMod {
 	return func() string {
 		return fmt.Sprintf("debounce_%dms", d.Milliseconds())
 	}
 }
 
 // Throttles the event handler
-func SVGFeConvolveMatrixDataOnModThrottle(
+func SVGFeConvolveMatrixOnModThrottle(
 	d time.Duration,
-) SVGFeConvolveMatrixDataOnMod {
+) SVGFeConvolveMatrixOnMod {
 	return func() string {
 		return fmt.Sprintf("throttle_%dms", d.Milliseconds())
 	}
 }
 
-func (e *SVGFECONVOLVEMATRIXElement) DATASTAR_ON(key string, expression string, modifiers ...SVGFeConvolveMatrixDataOnMod) *SVGFECONVOLVEMATRIXElement {
+func (e *SVGFECONVOLVEMATRIXElement) DATASTAR_ON(key string, expression string, modifiers ...SVGFeConvolveMatrixOnMod) *SVGFECONVOLVEMATRIXElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
 	key = fmt.Sprintf("data-on-%s", key)
 
-	customMods := lo.Map(modifiers, func(m SVGFeConvolveMatrixDataOnMod, i int) customDataKeyModifier {
+	customMods := lo.Map(modifiers, func(m SVGFeConvolveMatrixOnMod, i int) customDataKeyModifier {
 		return customDataKeyModifier(m)
 	})
 	key = customDataKey(key, customMods...)
@@ -724,7 +799,7 @@ func (e *SVGFECONVOLVEMATRIXElement) DATASTAR_ON(key string, expression string, 
 	return e
 }
 
-func (e *SVGFECONVOLVEMATRIXElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SVGFeConvolveMatrixDataOnMod) *SVGFECONVOLVEMATRIXElement {
+func (e *SVGFECONVOLVEMATRIXElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SVGFeConvolveMatrixOnMod) *SVGFECONVOLVEMATRIXElement {
 	if condition {
 		e.DATASTAR_ON(key, expression, modifiers...)
 	}
@@ -817,7 +892,7 @@ func (e *SVGFECONVOLVEMATRIXElement) DATASTAR_FETCH_INDICATOR(expression string)
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "DatastarFetchIndicator"
+	key := "data-fetch-indicator"
 
 	e.StringAttributes.Set(key, expression)
 	return e
@@ -835,7 +910,7 @@ func (e *SVGFECONVOLVEMATRIXElement) DATASTAR_FETCH_INDICATORRemove() *SVGFECONV
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("DatastarFetchIndicator")
+	e.StringAttributes.Del("data-fetch-indicator")
 	return e
 }
 

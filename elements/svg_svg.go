@@ -175,9 +175,20 @@ func (e *SVGSVGElement) X(s string) *SVGSVGElement {
 	return e
 }
 
+func (e *SVGSVGElement) XF(format string, args ...any) *SVGSVGElement {
+	return e.X(fmt.Sprintf(format, args...))
+}
+
 func (e *SVGSVGElement) IfX(condition bool, s string) *SVGSVGElement {
 	if condition {
 		e.X(s)
+	}
+	return e
+}
+
+func (e *SVGSVGElement) IfXF(condition bool, format string, args ...any) *SVGSVGElement {
+	if condition {
+		e.X(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -191,6 +202,10 @@ func (e *SVGSVGElement) XRemove(s string) *SVGSVGElement {
 	return e
 }
 
+func (e *SVGSVGElement) XRemoveF(format string, args ...any) *SVGSVGElement {
+	return e.XRemove(fmt.Sprintf(format, args...))
+}
+
 // The y-axis coordinate of the side of the rectangular region which is closest to
 // the user.
 func (e *SVGSVGElement) Y(s string) *SVGSVGElement {
@@ -201,9 +216,20 @@ func (e *SVGSVGElement) Y(s string) *SVGSVGElement {
 	return e
 }
 
+func (e *SVGSVGElement) YF(format string, args ...any) *SVGSVGElement {
+	return e.Y(fmt.Sprintf(format, args...))
+}
+
 func (e *SVGSVGElement) IfY(condition bool, s string) *SVGSVGElement {
 	if condition {
 		e.Y(s)
+	}
+	return e
+}
+
+func (e *SVGSVGElement) IfYF(condition bool, format string, args ...any) *SVGSVGElement {
+	if condition {
+		e.Y(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -217,6 +243,10 @@ func (e *SVGSVGElement) YRemove(s string) *SVGSVGElement {
 	return e
 }
 
+func (e *SVGSVGElement) YRemoveF(format string, args ...any) *SVGSVGElement {
+	return e.YRemove(fmt.Sprintf(format, args...))
+}
+
 // The width of the rectangular region.
 func (e *SVGSVGElement) WIDTH(s string) *SVGSVGElement {
 	if e.StringAttributes == nil {
@@ -226,9 +256,20 @@ func (e *SVGSVGElement) WIDTH(s string) *SVGSVGElement {
 	return e
 }
 
+func (e *SVGSVGElement) WIDTHF(format string, args ...any) *SVGSVGElement {
+	return e.WIDTH(fmt.Sprintf(format, args...))
+}
+
 func (e *SVGSVGElement) IfWIDTH(condition bool, s string) *SVGSVGElement {
 	if condition {
 		e.WIDTH(s)
+	}
+	return e
+}
+
+func (e *SVGSVGElement) IfWIDTHF(condition bool, format string, args ...any) *SVGSVGElement {
+	if condition {
+		e.WIDTH(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -242,6 +283,10 @@ func (e *SVGSVGElement) WIDTHRemove(s string) *SVGSVGElement {
 	return e
 }
 
+func (e *SVGSVGElement) WIDTHRemoveF(format string, args ...any) *SVGSVGElement {
+	return e.WIDTHRemove(fmt.Sprintf(format, args...))
+}
+
 // The height of the rectangular region.
 func (e *SVGSVGElement) HEIGHT(s string) *SVGSVGElement {
 	if e.StringAttributes == nil {
@@ -251,9 +296,20 @@ func (e *SVGSVGElement) HEIGHT(s string) *SVGSVGElement {
 	return e
 }
 
+func (e *SVGSVGElement) HEIGHTF(format string, args ...any) *SVGSVGElement {
+	return e.HEIGHT(fmt.Sprintf(format, args...))
+}
+
 func (e *SVGSVGElement) IfHEIGHT(condition bool, s string) *SVGSVGElement {
 	if condition {
 		e.HEIGHT(s)
+	}
+	return e
+}
+
+func (e *SVGSVGElement) IfHEIGHTF(condition bool, format string, args ...any) *SVGSVGElement {
+	if condition {
+		e.HEIGHT(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -267,6 +323,10 @@ func (e *SVGSVGElement) HEIGHTRemove(s string) *SVGSVGElement {
 	return e
 }
 
+func (e *SVGSVGElement) HEIGHTRemoveF(format string, args ...any) *SVGSVGElement {
+	return e.HEIGHTRemove(fmt.Sprintf(format, args...))
+}
+
 // The position and size of the viewport (the viewBox) is defined by the viewBox
 // attribute.
 func (e *SVGSVGElement) VIEW_BOX(s string) *SVGSVGElement {
@@ -277,9 +337,20 @@ func (e *SVGSVGElement) VIEW_BOX(s string) *SVGSVGElement {
 	return e
 }
 
+func (e *SVGSVGElement) VIEW_BOXF(format string, args ...any) *SVGSVGElement {
+	return e.VIEW_BOX(fmt.Sprintf(format, args...))
+}
+
 func (e *SVGSVGElement) IfVIEW_BOX(condition bool, s string) *SVGSVGElement {
 	if condition {
 		e.VIEW_BOX(s)
+	}
+	return e
+}
+
+func (e *SVGSVGElement) IfVIEW_BOXF(condition bool, format string, args ...any) *SVGSVGElement {
+	if condition {
+		e.VIEW_BOX(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -291,6 +362,10 @@ func (e *SVGSVGElement) VIEW_BOXRemove(s string) *SVGSVGElement {
 	}
 	e.StringAttributes.Del("viewBox")
 	return e
+}
+
+func (e *SVGSVGElement) VIEW_BOXRemoveF(format string, args ...any) *SVGSVGElement {
+	return e.VIEW_BOXRemove(fmt.Sprintf(format, args...))
 }
 
 // Indicates how the viewport is fitted to the rectangle of the given width and
@@ -352,9 +427,20 @@ func (e *SVGSVGElement) ID(s string) *SVGSVGElement {
 	return e
 }
 
+func (e *SVGSVGElement) IDF(format string, args ...any) *SVGSVGElement {
+	return e.ID(fmt.Sprintf(format, args...))
+}
+
 func (e *SVGSVGElement) IfID(condition bool, s string) *SVGSVGElement {
 	if condition {
 		e.ID(s)
+	}
+	return e
+}
+
+func (e *SVGSVGElement) IfIDF(condition bool, format string, args ...any) *SVGSVGElement {
+	if condition {
+		e.ID(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -366,6 +452,10 @@ func (e *SVGSVGElement) IDRemove(s string) *SVGSVGElement {
 	}
 	e.StringAttributes.Del("id")
 	return e
+}
+
+func (e *SVGSVGElement) IDRemoveF(format string, args ...any) *SVGSVGElement {
+	return e.IDRemove(fmt.Sprintf(format, args...))
 }
 
 // Specifies one or more classnames for an element (refers to a class in a style
@@ -504,7 +594,7 @@ func (e *SVGSVGElement) DATASTAR_MERGE_STORE(v any) *SVGSVGElement {
 	if err != nil {
 		panic(err)
 	}
-	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	e.CustomDataAttributes.Set("merge-store", string(b))
 	return e
 }
 
@@ -626,34 +716,34 @@ func (e *SVGSVGElement) DATASTAR_TEXTRemove() *SVGSVGElement {
 
 // Sets the event handler of the element
 
-type SVGSvgDataOnMod customDataKeyModifier
+type SVGSvgOnMod customDataKeyModifier
 
 // Debounces the event handler
-func SVGSvgDataOnModDebounce(
+func SVGSvgOnModDebounce(
 	d time.Duration,
-) SVGSvgDataOnMod {
+) SVGSvgOnMod {
 	return func() string {
 		return fmt.Sprintf("debounce_%dms", d.Milliseconds())
 	}
 }
 
 // Throttles the event handler
-func SVGSvgDataOnModThrottle(
+func SVGSvgOnModThrottle(
 	d time.Duration,
-) SVGSvgDataOnMod {
+) SVGSvgOnMod {
 	return func() string {
 		return fmt.Sprintf("throttle_%dms", d.Milliseconds())
 	}
 }
 
-func (e *SVGSVGElement) DATASTAR_ON(key string, expression string, modifiers ...SVGSvgDataOnMod) *SVGSVGElement {
+func (e *SVGSVGElement) DATASTAR_ON(key string, expression string, modifiers ...SVGSvgOnMod) *SVGSVGElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
 	key = fmt.Sprintf("data-on-%s", key)
 
-	customMods := lo.Map(modifiers, func(m SVGSvgDataOnMod, i int) customDataKeyModifier {
+	customMods := lo.Map(modifiers, func(m SVGSvgOnMod, i int) customDataKeyModifier {
 		return customDataKeyModifier(m)
 	})
 	key = customDataKey(key, customMods...)
@@ -661,7 +751,7 @@ func (e *SVGSVGElement) DATASTAR_ON(key string, expression string, modifiers ...
 	return e
 }
 
-func (e *SVGSVGElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SVGSvgDataOnMod) *SVGSVGElement {
+func (e *SVGSVGElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SVGSvgOnMod) *SVGSVGElement {
 	if condition {
 		e.DATASTAR_ON(key, expression, modifiers...)
 	}
@@ -754,7 +844,7 @@ func (e *SVGSVGElement) DATASTAR_FETCH_INDICATOR(expression string) *SVGSVGEleme
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "DatastarFetchIndicator"
+	key := "data-fetch-indicator"
 
 	e.StringAttributes.Set(key, expression)
 	return e
@@ -772,7 +862,7 @@ func (e *SVGSVGElement) DATASTAR_FETCH_INDICATORRemove() *SVGSVGElement {
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("DatastarFetchIndicator")
+	e.StringAttributes.Del("data-fetch-indicator")
 	return e
 }
 

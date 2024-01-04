@@ -174,9 +174,20 @@ func (e *SVGFEDIFFUSELIGHTINGElement) IN(s string) *SVGFEDIFFUSELIGHTINGElement 
 	return e
 }
 
+func (e *SVGFEDIFFUSELIGHTINGElement) INF(format string, args ...any) *SVGFEDIFFUSELIGHTINGElement {
+	return e.IN(fmt.Sprintf(format, args...))
+}
+
 func (e *SVGFEDIFFUSELIGHTINGElement) IfIN(condition bool, s string) *SVGFEDIFFUSELIGHTINGElement {
 	if condition {
 		e.IN(s)
+	}
+	return e
+}
+
+func (e *SVGFEDIFFUSELIGHTINGElement) IfINF(condition bool, format string, args ...any) *SVGFEDIFFUSELIGHTINGElement {
+	if condition {
+		e.IN(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -188,6 +199,10 @@ func (e *SVGFEDIFFUSELIGHTINGElement) INRemove(s string) *SVGFEDIFFUSELIGHTINGEl
 	}
 	e.StringAttributes.Del("in")
 	return e
+}
+
+func (e *SVGFEDIFFUSELIGHTINGElement) INRemoveF(format string, args ...any) *SVGFEDIFFUSELIGHTINGElement {
+	return e.INRemove(fmt.Sprintf(format, args...))
 }
 
 // The 'surfaceScale' attribute indicates the height of the surface when the alpha
@@ -235,9 +250,20 @@ func (e *SVGFEDIFFUSELIGHTINGElement) KERNEL_UNIT_LENGTH(s string) *SVGFEDIFFUSE
 	return e
 }
 
+func (e *SVGFEDIFFUSELIGHTINGElement) KERNEL_UNIT_LENGTHF(format string, args ...any) *SVGFEDIFFUSELIGHTINGElement {
+	return e.KERNEL_UNIT_LENGTH(fmt.Sprintf(format, args...))
+}
+
 func (e *SVGFEDIFFUSELIGHTINGElement) IfKERNEL_UNIT_LENGTH(condition bool, s string) *SVGFEDIFFUSELIGHTINGElement {
 	if condition {
 		e.KERNEL_UNIT_LENGTH(s)
+	}
+	return e
+}
+
+func (e *SVGFEDIFFUSELIGHTINGElement) IfKERNEL_UNIT_LENGTHF(condition bool, format string, args ...any) *SVGFEDIFFUSELIGHTINGElement {
+	if condition {
+		e.KERNEL_UNIT_LENGTH(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -251,6 +277,10 @@ func (e *SVGFEDIFFUSELIGHTINGElement) KERNEL_UNIT_LENGTHRemove(s string) *SVGFED
 	return e
 }
 
+func (e *SVGFEDIFFUSELIGHTINGElement) KERNEL_UNIT_LENGTHRemoveF(format string, args ...any) *SVGFEDIFFUSELIGHTINGElement {
+	return e.KERNEL_UNIT_LENGTHRemove(fmt.Sprintf(format, args...))
+}
+
 // Specifies a unique id for an element
 func (e *SVGFEDIFFUSELIGHTINGElement) ID(s string) *SVGFEDIFFUSELIGHTINGElement {
 	if e.StringAttributes == nil {
@@ -260,9 +290,20 @@ func (e *SVGFEDIFFUSELIGHTINGElement) ID(s string) *SVGFEDIFFUSELIGHTINGElement 
 	return e
 }
 
+func (e *SVGFEDIFFUSELIGHTINGElement) IDF(format string, args ...any) *SVGFEDIFFUSELIGHTINGElement {
+	return e.ID(fmt.Sprintf(format, args...))
+}
+
 func (e *SVGFEDIFFUSELIGHTINGElement) IfID(condition bool, s string) *SVGFEDIFFUSELIGHTINGElement {
 	if condition {
 		e.ID(s)
+	}
+	return e
+}
+
+func (e *SVGFEDIFFUSELIGHTINGElement) IfIDF(condition bool, format string, args ...any) *SVGFEDIFFUSELIGHTINGElement {
+	if condition {
+		e.ID(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -274,6 +315,10 @@ func (e *SVGFEDIFFUSELIGHTINGElement) IDRemove(s string) *SVGFEDIFFUSELIGHTINGEl
 	}
 	e.StringAttributes.Del("id")
 	return e
+}
+
+func (e *SVGFEDIFFUSELIGHTINGElement) IDRemoveF(format string, args ...any) *SVGFEDIFFUSELIGHTINGElement {
+	return e.IDRemove(fmt.Sprintf(format, args...))
 }
 
 // Specifies one or more classnames for an element (refers to a class in a style
@@ -412,7 +457,7 @@ func (e *SVGFEDIFFUSELIGHTINGElement) DATASTAR_MERGE_STORE(v any) *SVGFEDIFFUSEL
 	if err != nil {
 		panic(err)
 	}
-	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	e.CustomDataAttributes.Set("merge-store", string(b))
 	return e
 }
 
@@ -534,34 +579,34 @@ func (e *SVGFEDIFFUSELIGHTINGElement) DATASTAR_TEXTRemove() *SVGFEDIFFUSELIGHTIN
 
 // Sets the event handler of the element
 
-type SVGFeDiffuseLightingDataOnMod customDataKeyModifier
+type SVGFeDiffuseLightingOnMod customDataKeyModifier
 
 // Debounces the event handler
-func SVGFeDiffuseLightingDataOnModDebounce(
+func SVGFeDiffuseLightingOnModDebounce(
 	d time.Duration,
-) SVGFeDiffuseLightingDataOnMod {
+) SVGFeDiffuseLightingOnMod {
 	return func() string {
 		return fmt.Sprintf("debounce_%dms", d.Milliseconds())
 	}
 }
 
 // Throttles the event handler
-func SVGFeDiffuseLightingDataOnModThrottle(
+func SVGFeDiffuseLightingOnModThrottle(
 	d time.Duration,
-) SVGFeDiffuseLightingDataOnMod {
+) SVGFeDiffuseLightingOnMod {
 	return func() string {
 		return fmt.Sprintf("throttle_%dms", d.Milliseconds())
 	}
 }
 
-func (e *SVGFEDIFFUSELIGHTINGElement) DATASTAR_ON(key string, expression string, modifiers ...SVGFeDiffuseLightingDataOnMod) *SVGFEDIFFUSELIGHTINGElement {
+func (e *SVGFEDIFFUSELIGHTINGElement) DATASTAR_ON(key string, expression string, modifiers ...SVGFeDiffuseLightingOnMod) *SVGFEDIFFUSELIGHTINGElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
 	key = fmt.Sprintf("data-on-%s", key)
 
-	customMods := lo.Map(modifiers, func(m SVGFeDiffuseLightingDataOnMod, i int) customDataKeyModifier {
+	customMods := lo.Map(modifiers, func(m SVGFeDiffuseLightingOnMod, i int) customDataKeyModifier {
 		return customDataKeyModifier(m)
 	})
 	key = customDataKey(key, customMods...)
@@ -569,7 +614,7 @@ func (e *SVGFEDIFFUSELIGHTINGElement) DATASTAR_ON(key string, expression string,
 	return e
 }
 
-func (e *SVGFEDIFFUSELIGHTINGElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SVGFeDiffuseLightingDataOnMod) *SVGFEDIFFUSELIGHTINGElement {
+func (e *SVGFEDIFFUSELIGHTINGElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SVGFeDiffuseLightingOnMod) *SVGFEDIFFUSELIGHTINGElement {
 	if condition {
 		e.DATASTAR_ON(key, expression, modifiers...)
 	}
@@ -662,7 +707,7 @@ func (e *SVGFEDIFFUSELIGHTINGElement) DATASTAR_FETCH_INDICATOR(expression string
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "DatastarFetchIndicator"
+	key := "data-fetch-indicator"
 
 	e.StringAttributes.Set(key, expression)
 	return e
@@ -680,7 +725,7 @@ func (e *SVGFEDIFFUSELIGHTINGElement) DATASTAR_FETCH_INDICATORRemove() *SVGFEDIF
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("DatastarFetchIndicator")
+	e.StringAttributes.Del("data-fetch-indicator")
 	return e
 }
 

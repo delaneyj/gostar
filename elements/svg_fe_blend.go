@@ -175,9 +175,20 @@ func (e *SVGFEBLENDElement) IN(s string) *SVGFEBLENDElement {
 	return e
 }
 
+func (e *SVGFEBLENDElement) INF(format string, args ...any) *SVGFEBLENDElement {
+	return e.IN(fmt.Sprintf(format, args...))
+}
+
 func (e *SVGFEBLENDElement) IfIN(condition bool, s string) *SVGFEBLENDElement {
 	if condition {
 		e.IN(s)
+	}
+	return e
+}
+
+func (e *SVGFEBLENDElement) IfINF(condition bool, format string, args ...any) *SVGFEBLENDElement {
+	if condition {
+		e.IN(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -191,6 +202,10 @@ func (e *SVGFEBLENDElement) INRemove(s string) *SVGFEBLENDElement {
 	return e
 }
 
+func (e *SVGFEBLENDElement) INRemoveF(format string, args ...any) *SVGFEBLENDElement {
+	return e.INRemove(fmt.Sprintf(format, args...))
+}
+
 // Second input for the blending.
 func (e *SVGFEBLENDElement) IN_2(s string) *SVGFEBLENDElement {
 	if e.StringAttributes == nil {
@@ -200,9 +215,20 @@ func (e *SVGFEBLENDElement) IN_2(s string) *SVGFEBLENDElement {
 	return e
 }
 
+func (e *SVGFEBLENDElement) IN_2F(format string, args ...any) *SVGFEBLENDElement {
+	return e.IN_2(fmt.Sprintf(format, args...))
+}
+
 func (e *SVGFEBLENDElement) IfIN_2(condition bool, s string) *SVGFEBLENDElement {
 	if condition {
 		e.IN_2(s)
+	}
+	return e
+}
+
+func (e *SVGFEBLENDElement) IfIN_2F(condition bool, format string, args ...any) *SVGFEBLENDElement {
+	if condition {
+		e.IN_2(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -214,6 +240,10 @@ func (e *SVGFEBLENDElement) IN_2Remove(s string) *SVGFEBLENDElement {
 	}
 	e.StringAttributes.Del("in2")
 	return e
+}
+
+func (e *SVGFEBLENDElement) IN_2RemoveF(format string, args ...any) *SVGFEBLENDElement {
+	return e.IN_2Remove(fmt.Sprintf(format, args...))
 }
 
 // The mode used to blend the two inputs together.
@@ -260,9 +290,20 @@ func (e *SVGFEBLENDElement) ID(s string) *SVGFEBLENDElement {
 	return e
 }
 
+func (e *SVGFEBLENDElement) IDF(format string, args ...any) *SVGFEBLENDElement {
+	return e.ID(fmt.Sprintf(format, args...))
+}
+
 func (e *SVGFEBLENDElement) IfID(condition bool, s string) *SVGFEBLENDElement {
 	if condition {
 		e.ID(s)
+	}
+	return e
+}
+
+func (e *SVGFEBLENDElement) IfIDF(condition bool, format string, args ...any) *SVGFEBLENDElement {
+	if condition {
+		e.ID(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -274,6 +315,10 @@ func (e *SVGFEBLENDElement) IDRemove(s string) *SVGFEBLENDElement {
 	}
 	e.StringAttributes.Del("id")
 	return e
+}
+
+func (e *SVGFEBLENDElement) IDRemoveF(format string, args ...any) *SVGFEBLENDElement {
+	return e.IDRemove(fmt.Sprintf(format, args...))
 }
 
 // Specifies one or more classnames for an element (refers to a class in a style
@@ -412,7 +457,7 @@ func (e *SVGFEBLENDElement) DATASTAR_MERGE_STORE(v any) *SVGFEBLENDElement {
 	if err != nil {
 		panic(err)
 	}
-	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	e.CustomDataAttributes.Set("merge-store", string(b))
 	return e
 }
 
@@ -534,34 +579,34 @@ func (e *SVGFEBLENDElement) DATASTAR_TEXTRemove() *SVGFEBLENDElement {
 
 // Sets the event handler of the element
 
-type SVGFeBlendDataOnMod customDataKeyModifier
+type SVGFeBlendOnMod customDataKeyModifier
 
 // Debounces the event handler
-func SVGFeBlendDataOnModDebounce(
+func SVGFeBlendOnModDebounce(
 	d time.Duration,
-) SVGFeBlendDataOnMod {
+) SVGFeBlendOnMod {
 	return func() string {
 		return fmt.Sprintf("debounce_%dms", d.Milliseconds())
 	}
 }
 
 // Throttles the event handler
-func SVGFeBlendDataOnModThrottle(
+func SVGFeBlendOnModThrottle(
 	d time.Duration,
-) SVGFeBlendDataOnMod {
+) SVGFeBlendOnMod {
 	return func() string {
 		return fmt.Sprintf("throttle_%dms", d.Milliseconds())
 	}
 }
 
-func (e *SVGFEBLENDElement) DATASTAR_ON(key string, expression string, modifiers ...SVGFeBlendDataOnMod) *SVGFEBLENDElement {
+func (e *SVGFEBLENDElement) DATASTAR_ON(key string, expression string, modifiers ...SVGFeBlendOnMod) *SVGFEBLENDElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
 	key = fmt.Sprintf("data-on-%s", key)
 
-	customMods := lo.Map(modifiers, func(m SVGFeBlendDataOnMod, i int) customDataKeyModifier {
+	customMods := lo.Map(modifiers, func(m SVGFeBlendOnMod, i int) customDataKeyModifier {
 		return customDataKeyModifier(m)
 	})
 	key = customDataKey(key, customMods...)
@@ -569,7 +614,7 @@ func (e *SVGFEBLENDElement) DATASTAR_ON(key string, expression string, modifiers
 	return e
 }
 
-func (e *SVGFEBLENDElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SVGFeBlendDataOnMod) *SVGFEBLENDElement {
+func (e *SVGFEBLENDElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SVGFeBlendOnMod) *SVGFEBLENDElement {
 	if condition {
 		e.DATASTAR_ON(key, expression, modifiers...)
 	}
@@ -662,7 +707,7 @@ func (e *SVGFEBLENDElement) DATASTAR_FETCH_INDICATOR(expression string) *SVGFEBL
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "DatastarFetchIndicator"
+	key := "data-fetch-indicator"
 
 	e.StringAttributes.Set(key, expression)
 	return e
@@ -680,7 +725,7 @@ func (e *SVGFEBLENDElement) DATASTAR_FETCH_INDICATORRemove() *SVGFEBLENDElement 
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("DatastarFetchIndicator")
+	e.StringAttributes.Del("data-fetch-indicator")
 	return e
 }
 

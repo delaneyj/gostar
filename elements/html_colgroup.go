@@ -632,9 +632,20 @@ func (e *COLGROUPElement) ID(s string) *COLGROUPElement {
 	return e
 }
 
+func (e *COLGROUPElement) IDF(format string, args ...any) *COLGROUPElement {
+	return e.ID(fmt.Sprintf(format, args...))
+}
+
 func (e *COLGROUPElement) IfID(condition bool, s string) *COLGROUPElement {
 	if condition {
 		e.ID(s)
+	}
+	return e
+}
+
+func (e *COLGROUPElement) IfIDF(condition bool, format string, args ...any) *COLGROUPElement {
+	if condition {
+		e.ID(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -646,6 +657,10 @@ func (e *COLGROUPElement) IDRemove(s string) *COLGROUPElement {
 	}
 	e.StringAttributes.Del("id")
 	return e
+}
+
+func (e *COLGROUPElement) IDRemoveF(format string, args ...any) *COLGROUPElement {
+	return e.IDRemove(fmt.Sprintf(format, args...))
 }
 
 // The inert global attribute is a Boolean attribute indicating that the browser
@@ -780,9 +795,20 @@ func (e *COLGROUPElement) IS(s string) *COLGROUPElement {
 	return e
 }
 
+func (e *COLGROUPElement) ISF(format string, args ...any) *COLGROUPElement {
+	return e.IS(fmt.Sprintf(format, args...))
+}
+
 func (e *COLGROUPElement) IfIS(condition bool, s string) *COLGROUPElement {
 	if condition {
 		e.IS(s)
+	}
+	return e
+}
+
+func (e *COLGROUPElement) IfISF(condition bool, format string, args ...any) *COLGROUPElement {
+	if condition {
+		e.IS(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -794,6 +820,10 @@ func (e *COLGROUPElement) ISRemove(s string) *COLGROUPElement {
 	}
 	e.StringAttributes.Del("is")
 	return e
+}
+
+func (e *COLGROUPElement) ISRemoveF(format string, args ...any) *COLGROUPElement {
+	return e.ISRemove(fmt.Sprintf(format, args...))
 }
 
 // The itemid global attribute provides microdata in the form of a unique, global
@@ -817,9 +847,20 @@ func (e *COLGROUPElement) ITEMID(s string) *COLGROUPElement {
 	return e
 }
 
+func (e *COLGROUPElement) ITEMIDF(format string, args ...any) *COLGROUPElement {
+	return e.ITEMID(fmt.Sprintf(format, args...))
+}
+
 func (e *COLGROUPElement) IfITEMID(condition bool, s string) *COLGROUPElement {
 	if condition {
 		e.ITEMID(s)
+	}
+	return e
+}
+
+func (e *COLGROUPElement) IfITEMIDF(condition bool, format string, args ...any) *COLGROUPElement {
+	if condition {
+		e.ITEMID(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -831,6 +872,10 @@ func (e *COLGROUPElement) ITEMIDRemove(s string) *COLGROUPElement {
 	}
 	e.StringAttributes.Del("itemid")
 	return e
+}
+
+func (e *COLGROUPElement) ITEMIDRemoveF(format string, args ...any) *COLGROUPElement {
+	return e.ITEMIDRemove(fmt.Sprintf(format, args...))
 }
 
 // The itemprop global attribute is used to add properties to an item
@@ -849,9 +894,20 @@ func (e *COLGROUPElement) ITEMPROP(s string) *COLGROUPElement {
 	return e
 }
 
+func (e *COLGROUPElement) ITEMPROPF(format string, args ...any) *COLGROUPElement {
+	return e.ITEMPROP(fmt.Sprintf(format, args...))
+}
+
 func (e *COLGROUPElement) IfITEMPROP(condition bool, s string) *COLGROUPElement {
 	if condition {
 		e.ITEMPROP(s)
+	}
+	return e
+}
+
+func (e *COLGROUPElement) IfITEMPROPF(condition bool, format string, args ...any) *COLGROUPElement {
+	if condition {
+		e.ITEMPROP(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -863,6 +919,10 @@ func (e *COLGROUPElement) ITEMPROPRemove(s string) *COLGROUPElement {
 	}
 	e.StringAttributes.Del("itemprop")
 	return e
+}
+
+func (e *COLGROUPElement) ITEMPROPRemoveF(format string, args ...any) *COLGROUPElement {
+	return e.ITEMPROPRemove(fmt.Sprintf(format, args...))
 }
 
 // Properties that are not descendants of an element with the itemscope attribute
@@ -878,9 +938,20 @@ func (e *COLGROUPElement) ITEMREF(s string) *COLGROUPElement {
 	return e
 }
 
+func (e *COLGROUPElement) ITEMREFF(format string, args ...any) *COLGROUPElement {
+	return e.ITEMREF(fmt.Sprintf(format, args...))
+}
+
 func (e *COLGROUPElement) IfITEMREF(condition bool, s string) *COLGROUPElement {
 	if condition {
 		e.ITEMREF(s)
+	}
+	return e
+}
+
+func (e *COLGROUPElement) IfITEMREFF(condition bool, format string, args ...any) *COLGROUPElement {
+	if condition {
+		e.ITEMREF(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -892,6 +963,10 @@ func (e *COLGROUPElement) ITEMREFRemove(s string) *COLGROUPElement {
 	}
 	e.StringAttributes.Del("itemref")
 	return e
+}
+
+func (e *COLGROUPElement) ITEMREFRemoveF(format string, args ...any) *COLGROUPElement {
+	return e.ITEMREFRemove(fmt.Sprintf(format, args...))
 }
 
 // The itemscope global attribute is used to add an item to a microdata DOM tree
@@ -955,9 +1030,20 @@ func (e *COLGROUPElement) ITEMTYPE(s string) *COLGROUPElement {
 	return e
 }
 
+func (e *COLGROUPElement) ITEMTYPEF(format string, args ...any) *COLGROUPElement {
+	return e.ITEMTYPE(fmt.Sprintf(format, args...))
+}
+
 func (e *COLGROUPElement) IfITEMTYPE(condition bool, s string) *COLGROUPElement {
 	if condition {
 		e.ITEMTYPE(s)
+	}
+	return e
+}
+
+func (e *COLGROUPElement) IfITEMTYPEF(condition bool, format string, args ...any) *COLGROUPElement {
+	if condition {
+		e.ITEMTYPE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -969,6 +1055,10 @@ func (e *COLGROUPElement) ITEMTYPERemove(s string) *COLGROUPElement {
 	}
 	e.StringAttributes.Del("itemtype")
 	return e
+}
+
+func (e *COLGROUPElement) ITEMTYPERemoveF(format string, args ...any) *COLGROUPElement {
+	return e.ITEMTYPERemove(fmt.Sprintf(format, args...))
 }
 
 // The lang global attribute helps define the language of an element: the language
@@ -985,9 +1075,20 @@ func (e *COLGROUPElement) LANG(s string) *COLGROUPElement {
 	return e
 }
 
+func (e *COLGROUPElement) LANGF(format string, args ...any) *COLGROUPElement {
+	return e.LANG(fmt.Sprintf(format, args...))
+}
+
 func (e *COLGROUPElement) IfLANG(condition bool, s string) *COLGROUPElement {
 	if condition {
 		e.LANG(s)
+	}
+	return e
+}
+
+func (e *COLGROUPElement) IfLANGF(condition bool, format string, args ...any) *COLGROUPElement {
+	if condition {
+		e.LANG(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -999,6 +1100,10 @@ func (e *COLGROUPElement) LANGRemove(s string) *COLGROUPElement {
 	}
 	e.StringAttributes.Del("lang")
 	return e
+}
+
+func (e *COLGROUPElement) LANGRemoveF(format string, args ...any) *COLGROUPElement {
+	return e.LANGRemove(fmt.Sprintf(format, args...))
 }
 
 // The nonce global attribute is a unique identifier used to declare inline
@@ -1013,9 +1118,20 @@ func (e *COLGROUPElement) NONCE(s string) *COLGROUPElement {
 	return e
 }
 
+func (e *COLGROUPElement) NONCEF(format string, args ...any) *COLGROUPElement {
+	return e.NONCE(fmt.Sprintf(format, args...))
+}
+
 func (e *COLGROUPElement) IfNONCE(condition bool, s string) *COLGROUPElement {
 	if condition {
 		e.NONCE(s)
+	}
+	return e
+}
+
+func (e *COLGROUPElement) IfNONCEF(condition bool, format string, args ...any) *COLGROUPElement {
+	if condition {
+		e.NONCE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1027,6 +1143,10 @@ func (e *COLGROUPElement) NONCERemove(s string) *COLGROUPElement {
 	}
 	e.StringAttributes.Del("nonce")
 	return e
+}
+
+func (e *COLGROUPElement) NONCERemoveF(format string, args ...any) *COLGROUPElement {
+	return e.NONCERemove(fmt.Sprintf(format, args...))
 }
 
 // The part global attribute contains a space-separated list of the part names of
@@ -1121,9 +1241,20 @@ func (e *COLGROUPElement) ROLE(s string) *COLGROUPElement {
 	return e
 }
 
+func (e *COLGROUPElement) ROLEF(format string, args ...any) *COLGROUPElement {
+	return e.ROLE(fmt.Sprintf(format, args...))
+}
+
 func (e *COLGROUPElement) IfROLE(condition bool, s string) *COLGROUPElement {
 	if condition {
 		e.ROLE(s)
+	}
+	return e
+}
+
+func (e *COLGROUPElement) IfROLEF(condition bool, format string, args ...any) *COLGROUPElement {
+	if condition {
+		e.ROLE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1135,6 +1266,10 @@ func (e *COLGROUPElement) ROLERemove(s string) *COLGROUPElement {
 	}
 	e.StringAttributes.Del("role")
 	return e
+}
+
+func (e *COLGROUPElement) ROLERemoveF(format string, args ...any) *COLGROUPElement {
+	return e.ROLERemove(fmt.Sprintf(format, args...))
 }
 
 // The slot global attribute assigns a slot in a shadow DOM shadow tree to an
@@ -1149,9 +1284,20 @@ func (e *COLGROUPElement) SLOT(s string) *COLGROUPElement {
 	return e
 }
 
+func (e *COLGROUPElement) SLOTF(format string, args ...any) *COLGROUPElement {
+	return e.SLOT(fmt.Sprintf(format, args...))
+}
+
 func (e *COLGROUPElement) IfSLOT(condition bool, s string) *COLGROUPElement {
 	if condition {
 		e.SLOT(s)
+	}
+	return e
+}
+
+func (e *COLGROUPElement) IfSLOTF(condition bool, format string, args ...any) *COLGROUPElement {
+	if condition {
+		e.SLOT(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1163,6 +1309,10 @@ func (e *COLGROUPElement) SLOTRemove(s string) *COLGROUPElement {
 	}
 	e.StringAttributes.Del("slot")
 	return e
+}
+
+func (e *COLGROUPElement) SLOTRemoveF(format string, args ...any) *COLGROUPElement {
+	return e.SLOTRemove(fmt.Sprintf(format, args...))
 }
 
 // The spellcheck global attribute is an enumerated attribute that defines whether
@@ -1367,9 +1517,20 @@ func (e *COLGROUPElement) TITLE(s string) *COLGROUPElement {
 	return e
 }
 
+func (e *COLGROUPElement) TITLEF(format string, args ...any) *COLGROUPElement {
+	return e.TITLE(fmt.Sprintf(format, args...))
+}
+
 func (e *COLGROUPElement) IfTITLE(condition bool, s string) *COLGROUPElement {
 	if condition {
 		e.TITLE(s)
+	}
+	return e
+}
+
+func (e *COLGROUPElement) IfTITLEF(condition bool, format string, args ...any) *COLGROUPElement {
+	if condition {
+		e.TITLE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1381,6 +1542,10 @@ func (e *COLGROUPElement) TITLERemove(s string) *COLGROUPElement {
 	}
 	e.StringAttributes.Del("title")
 	return e
+}
+
+func (e *COLGROUPElement) TITLERemoveF(format string, args ...any) *COLGROUPElement {
+	return e.TITLERemove(fmt.Sprintf(format, args...))
 }
 
 // The translate global attribute is an enumerated attribute that is used to
@@ -1425,7 +1590,7 @@ func (e *COLGROUPElement) DATASTAR_MERGE_STORE(v any) *COLGROUPElement {
 	if err != nil {
 		panic(err)
 	}
-	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	e.CustomDataAttributes.Set("merge-store", string(b))
 	return e
 }
 
@@ -1547,34 +1712,34 @@ func (e *COLGROUPElement) DATASTAR_TEXTRemove() *COLGROUPElement {
 
 // Sets the event handler of the element
 
-type ColgroupDataOnMod customDataKeyModifier
+type ColgroupOnMod customDataKeyModifier
 
 // Debounces the event handler
-func ColgroupDataOnModDebounce(
+func ColgroupOnModDebounce(
 	d time.Duration,
-) ColgroupDataOnMod {
+) ColgroupOnMod {
 	return func() string {
 		return fmt.Sprintf("debounce_%dms", d.Milliseconds())
 	}
 }
 
 // Throttles the event handler
-func ColgroupDataOnModThrottle(
+func ColgroupOnModThrottle(
 	d time.Duration,
-) ColgroupDataOnMod {
+) ColgroupOnMod {
 	return func() string {
 		return fmt.Sprintf("throttle_%dms", d.Milliseconds())
 	}
 }
 
-func (e *COLGROUPElement) DATASTAR_ON(key string, expression string, modifiers ...ColgroupDataOnMod) *COLGROUPElement {
+func (e *COLGROUPElement) DATASTAR_ON(key string, expression string, modifiers ...ColgroupOnMod) *COLGROUPElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
 	key = fmt.Sprintf("data-on-%s", key)
 
-	customMods := lo.Map(modifiers, func(m ColgroupDataOnMod, i int) customDataKeyModifier {
+	customMods := lo.Map(modifiers, func(m ColgroupOnMod, i int) customDataKeyModifier {
 		return customDataKeyModifier(m)
 	})
 	key = customDataKey(key, customMods...)
@@ -1582,7 +1747,7 @@ func (e *COLGROUPElement) DATASTAR_ON(key string, expression string, modifiers .
 	return e
 }
 
-func (e *COLGROUPElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...ColgroupDataOnMod) *COLGROUPElement {
+func (e *COLGROUPElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...ColgroupOnMod) *COLGROUPElement {
 	if condition {
 		e.DATASTAR_ON(key, expression, modifiers...)
 	}
@@ -1675,7 +1840,7 @@ func (e *COLGROUPElement) DATASTAR_FETCH_INDICATOR(expression string) *COLGROUPE
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "DatastarFetchIndicator"
+	key := "data-fetch-indicator"
 
 	e.StringAttributes.Set(key, expression)
 	return e
@@ -1693,7 +1858,7 @@ func (e *COLGROUPElement) DATASTAR_FETCH_INDICATORRemove() *COLGROUPElement {
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("DatastarFetchIndicator")
+	e.StringAttributes.Del("data-fetch-indicator")
 	return e
 }
 

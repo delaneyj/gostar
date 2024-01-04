@@ -174,9 +174,20 @@ func (e *SVGFECOLORMATRIXElement) IN(s string) *SVGFECOLORMATRIXElement {
 	return e
 }
 
+func (e *SVGFECOLORMATRIXElement) INF(format string, args ...any) *SVGFECOLORMATRIXElement {
+	return e.IN(fmt.Sprintf(format, args...))
+}
+
 func (e *SVGFECOLORMATRIXElement) IfIN(condition bool, s string) *SVGFECOLORMATRIXElement {
 	if condition {
 		e.IN(s)
+	}
+	return e
+}
+
+func (e *SVGFECOLORMATRIXElement) IfINF(condition bool, format string, args ...any) *SVGFECOLORMATRIXElement {
+	if condition {
+		e.IN(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -188,6 +199,10 @@ func (e *SVGFECOLORMATRIXElement) INRemove(s string) *SVGFECOLORMATRIXElement {
 	}
 	e.StringAttributes.Del("in")
 	return e
+}
+
+func (e *SVGFECOLORMATRIXElement) INRemoveF(format string, args ...any) *SVGFECOLORMATRIXElement {
+	return e.INRemove(fmt.Sprintf(format, args...))
 }
 
 // The type of matrix operation.
@@ -230,9 +245,20 @@ func (e *SVGFECOLORMATRIXElement) VALUES(s string) *SVGFECOLORMATRIXElement {
 	return e
 }
 
+func (e *SVGFECOLORMATRIXElement) VALUESF(format string, args ...any) *SVGFECOLORMATRIXElement {
+	return e.VALUES(fmt.Sprintf(format, args...))
+}
+
 func (e *SVGFECOLORMATRIXElement) IfVALUES(condition bool, s string) *SVGFECOLORMATRIXElement {
 	if condition {
 		e.VALUES(s)
+	}
+	return e
+}
+
+func (e *SVGFECOLORMATRIXElement) IfVALUESF(condition bool, format string, args ...any) *SVGFECOLORMATRIXElement {
+	if condition {
+		e.VALUES(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -246,6 +272,10 @@ func (e *SVGFECOLORMATRIXElement) VALUESRemove(s string) *SVGFECOLORMATRIXElemen
 	return e
 }
 
+func (e *SVGFECOLORMATRIXElement) VALUESRemoveF(format string, args ...any) *SVGFECOLORMATRIXElement {
+	return e.VALUESRemove(fmt.Sprintf(format, args...))
+}
+
 // Specifies a unique id for an element
 func (e *SVGFECOLORMATRIXElement) ID(s string) *SVGFECOLORMATRIXElement {
 	if e.StringAttributes == nil {
@@ -255,9 +285,20 @@ func (e *SVGFECOLORMATRIXElement) ID(s string) *SVGFECOLORMATRIXElement {
 	return e
 }
 
+func (e *SVGFECOLORMATRIXElement) IDF(format string, args ...any) *SVGFECOLORMATRIXElement {
+	return e.ID(fmt.Sprintf(format, args...))
+}
+
 func (e *SVGFECOLORMATRIXElement) IfID(condition bool, s string) *SVGFECOLORMATRIXElement {
 	if condition {
 		e.ID(s)
+	}
+	return e
+}
+
+func (e *SVGFECOLORMATRIXElement) IfIDF(condition bool, format string, args ...any) *SVGFECOLORMATRIXElement {
+	if condition {
+		e.ID(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -269,6 +310,10 @@ func (e *SVGFECOLORMATRIXElement) IDRemove(s string) *SVGFECOLORMATRIXElement {
 	}
 	e.StringAttributes.Del("id")
 	return e
+}
+
+func (e *SVGFECOLORMATRIXElement) IDRemoveF(format string, args ...any) *SVGFECOLORMATRIXElement {
+	return e.IDRemove(fmt.Sprintf(format, args...))
 }
 
 // Specifies one or more classnames for an element (refers to a class in a style
@@ -407,7 +452,7 @@ func (e *SVGFECOLORMATRIXElement) DATASTAR_MERGE_STORE(v any) *SVGFECOLORMATRIXE
 	if err != nil {
 		panic(err)
 	}
-	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	e.CustomDataAttributes.Set("merge-store", string(b))
 	return e
 }
 
@@ -529,34 +574,34 @@ func (e *SVGFECOLORMATRIXElement) DATASTAR_TEXTRemove() *SVGFECOLORMATRIXElement
 
 // Sets the event handler of the element
 
-type SVGFeColorMatrixDataOnMod customDataKeyModifier
+type SVGFeColorMatrixOnMod customDataKeyModifier
 
 // Debounces the event handler
-func SVGFeColorMatrixDataOnModDebounce(
+func SVGFeColorMatrixOnModDebounce(
 	d time.Duration,
-) SVGFeColorMatrixDataOnMod {
+) SVGFeColorMatrixOnMod {
 	return func() string {
 		return fmt.Sprintf("debounce_%dms", d.Milliseconds())
 	}
 }
 
 // Throttles the event handler
-func SVGFeColorMatrixDataOnModThrottle(
+func SVGFeColorMatrixOnModThrottle(
 	d time.Duration,
-) SVGFeColorMatrixDataOnMod {
+) SVGFeColorMatrixOnMod {
 	return func() string {
 		return fmt.Sprintf("throttle_%dms", d.Milliseconds())
 	}
 }
 
-func (e *SVGFECOLORMATRIXElement) DATASTAR_ON(key string, expression string, modifiers ...SVGFeColorMatrixDataOnMod) *SVGFECOLORMATRIXElement {
+func (e *SVGFECOLORMATRIXElement) DATASTAR_ON(key string, expression string, modifiers ...SVGFeColorMatrixOnMod) *SVGFECOLORMATRIXElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
 	key = fmt.Sprintf("data-on-%s", key)
 
-	customMods := lo.Map(modifiers, func(m SVGFeColorMatrixDataOnMod, i int) customDataKeyModifier {
+	customMods := lo.Map(modifiers, func(m SVGFeColorMatrixOnMod, i int) customDataKeyModifier {
 		return customDataKeyModifier(m)
 	})
 	key = customDataKey(key, customMods...)
@@ -564,7 +609,7 @@ func (e *SVGFECOLORMATRIXElement) DATASTAR_ON(key string, expression string, mod
 	return e
 }
 
-func (e *SVGFECOLORMATRIXElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SVGFeColorMatrixDataOnMod) *SVGFECOLORMATRIXElement {
+func (e *SVGFECOLORMATRIXElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SVGFeColorMatrixOnMod) *SVGFECOLORMATRIXElement {
 	if condition {
 		e.DATASTAR_ON(key, expression, modifiers...)
 	}
@@ -657,7 +702,7 @@ func (e *SVGFECOLORMATRIXElement) DATASTAR_FETCH_INDICATOR(expression string) *S
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "DatastarFetchIndicator"
+	key := "data-fetch-indicator"
 
 	e.StringAttributes.Set(key, expression)
 	return e
@@ -675,7 +720,7 @@ func (e *SVGFECOLORMATRIXElement) DATASTAR_FETCH_INDICATORRemove() *SVGFECOLORMA
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("DatastarFetchIndicator")
+	e.StringAttributes.Del("data-fetch-indicator")
 	return e
 }
 

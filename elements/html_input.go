@@ -172,9 +172,20 @@ func (e *INPUTElement) ACCEPT(s string) *INPUTElement {
 	return e
 }
 
+func (e *INPUTElement) ACCEPTF(format string, args ...any) *INPUTElement {
+	return e.ACCEPT(fmt.Sprintf(format, args...))
+}
+
 func (e *INPUTElement) IfACCEPT(condition bool, s string) *INPUTElement {
 	if condition {
 		e.ACCEPT(s)
+	}
+	return e
+}
+
+func (e *INPUTElement) IfACCEPTF(condition bool, format string, args ...any) *INPUTElement {
+	if condition {
+		e.ACCEPT(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -188,6 +199,10 @@ func (e *INPUTElement) ACCEPTRemove(s string) *INPUTElement {
 	return e
 }
 
+func (e *INPUTElement) ACCEPTRemoveF(format string, args ...any) *INPUTElement {
+	return e.ACCEPTRemove(fmt.Sprintf(format, args...))
+}
+
 // Alternative text in case an image can't be displayed.
 func (e *INPUTElement) ALT(s string) *INPUTElement {
 	if e.StringAttributes == nil {
@@ -197,9 +212,20 @@ func (e *INPUTElement) ALT(s string) *INPUTElement {
 	return e
 }
 
+func (e *INPUTElement) ALTF(format string, args ...any) *INPUTElement {
+	return e.ALT(fmt.Sprintf(format, args...))
+}
+
 func (e *INPUTElement) IfALT(condition bool, s string) *INPUTElement {
 	if condition {
 		e.ALT(s)
+	}
+	return e
+}
+
+func (e *INPUTElement) IfALTF(condition bool, format string, args ...any) *INPUTElement {
+	if condition {
+		e.ALT(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -211,6 +237,10 @@ func (e *INPUTElement) ALTRemove(s string) *INPUTElement {
 	}
 	e.StringAttributes.Del("alt")
 	return e
+}
+
+func (e *INPUTElement) ALTRemoveF(format string, args ...any) *INPUTElement {
+	return e.ALTRemove(fmt.Sprintf(format, args...))
 }
 
 // Hint for form autofill feature.
@@ -327,9 +357,20 @@ func (e *INPUTElement) DIRNAME(s string) *INPUTElement {
 	return e
 }
 
+func (e *INPUTElement) DIRNAMEF(format string, args ...any) *INPUTElement {
+	return e.DIRNAME(fmt.Sprintf(format, args...))
+}
+
 func (e *INPUTElement) IfDIRNAME(condition bool, s string) *INPUTElement {
 	if condition {
 		e.DIRNAME(s)
+	}
+	return e
+}
+
+func (e *INPUTElement) IfDIRNAMEF(condition bool, format string, args ...any) *INPUTElement {
+	if condition {
+		e.DIRNAME(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -341,6 +382,10 @@ func (e *INPUTElement) DIRNAMERemove(s string) *INPUTElement {
 	}
 	e.StringAttributes.Del("dirname")
 	return e
+}
+
+func (e *INPUTElement) DIRNAMERemoveF(format string, args ...any) *INPUTElement {
+	return e.DIRNAMERemove(fmt.Sprintf(format, args...))
 }
 
 // Whether the form control is disabled.
@@ -390,9 +435,20 @@ func (e *INPUTElement) FORM(s string) *INPUTElement {
 	return e
 }
 
+func (e *INPUTElement) FORMF(format string, args ...any) *INPUTElement {
+	return e.FORM(fmt.Sprintf(format, args...))
+}
+
 func (e *INPUTElement) IfFORM(condition bool, s string) *INPUTElement {
 	if condition {
 		e.FORM(s)
+	}
+	return e
+}
+
+func (e *INPUTElement) IfFORMF(condition bool, format string, args ...any) *INPUTElement {
+	if condition {
+		e.FORM(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -406,6 +462,10 @@ func (e *INPUTElement) FORMRemove(s string) *INPUTElement {
 	return e
 }
 
+func (e *INPUTElement) FORMRemoveF(format string, args ...any) *INPUTElement {
+	return e.FORMRemove(fmt.Sprintf(format, args...))
+}
+
 // URL to use for form submission.
 func (e *INPUTElement) FORMACTION(s string) *INPUTElement {
 	if e.StringAttributes == nil {
@@ -415,9 +475,20 @@ func (e *INPUTElement) FORMACTION(s string) *INPUTElement {
 	return e
 }
 
+func (e *INPUTElement) FORMACTIONF(format string, args ...any) *INPUTElement {
+	return e.FORMACTION(fmt.Sprintf(format, args...))
+}
+
 func (e *INPUTElement) IfFORMACTION(condition bool, s string) *INPUTElement {
 	if condition {
 		e.FORMACTION(s)
+	}
+	return e
+}
+
+func (e *INPUTElement) IfFORMACTIONF(condition bool, format string, args ...any) *INPUTElement {
+	if condition {
+		e.FORMACTION(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -429,6 +500,10 @@ func (e *INPUTElement) FORMACTIONRemove(s string) *INPUTElement {
 	}
 	e.StringAttributes.Del("formaction")
 	return e
+}
+
+func (e *INPUTElement) FORMACTIONRemoveF(format string, args ...any) *INPUTElement {
+	return e.FORMACTIONRemove(fmt.Sprintf(format, args...))
 }
 
 // Form data set encoding type to use for form submission.
@@ -601,9 +676,20 @@ func (e *INPUTElement) LIST(s string) *INPUTElement {
 	return e
 }
 
+func (e *INPUTElement) LISTF(format string, args ...any) *INPUTElement {
+	return e.LIST(fmt.Sprintf(format, args...))
+}
+
 func (e *INPUTElement) IfLIST(condition bool, s string) *INPUTElement {
 	if condition {
 		e.LIST(s)
+	}
+	return e
+}
+
+func (e *INPUTElement) IfLISTF(condition bool, format string, args ...any) *INPUTElement {
+	if condition {
+		e.LIST(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -617,6 +703,10 @@ func (e *INPUTElement) LISTRemove(s string) *INPUTElement {
 	return e
 }
 
+func (e *INPUTElement) LISTRemoveF(format string, args ...any) *INPUTElement {
+	return e.LISTRemove(fmt.Sprintf(format, args...))
+}
+
 // maximum value of an <input> element with type="number" or type="range".
 func (e *INPUTElement) MAX_STR(s string) *INPUTElement {
 	if e.StringAttributes == nil {
@@ -626,9 +716,20 @@ func (e *INPUTElement) MAX_STR(s string) *INPUTElement {
 	return e
 }
 
+func (e *INPUTElement) MAX_STRF(format string, args ...any) *INPUTElement {
+	return e.MAX_STR(fmt.Sprintf(format, args...))
+}
+
 func (e *INPUTElement) IfMAX_STR(condition bool, s string) *INPUTElement {
 	if condition {
 		e.MAX_STR(s)
+	}
+	return e
+}
+
+func (e *INPUTElement) IfMAX_STRF(condition bool, format string, args ...any) *INPUTElement {
+	if condition {
+		e.MAX_STR(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -640,6 +741,10 @@ func (e *INPUTElement) MAX_STRRemove(s string) *INPUTElement {
 	}
 	e.StringAttributes.Del("max")
 	return e
+}
+
+func (e *INPUTElement) MAX_STRRemoveF(format string, args ...any) *INPUTElement {
+	return e.MAX_STRRemove(fmt.Sprintf(format, args...))
 }
 
 // maximum number of characters (as UTF-16 code units) the user can enter into an
@@ -681,9 +786,20 @@ func (e *INPUTElement) MIN_STR(s string) *INPUTElement {
 	return e
 }
 
+func (e *INPUTElement) MIN_STRF(format string, args ...any) *INPUTElement {
+	return e.MIN_STR(fmt.Sprintf(format, args...))
+}
+
 func (e *INPUTElement) IfMIN_STR(condition bool, s string) *INPUTElement {
 	if condition {
 		e.MIN_STR(s)
+	}
+	return e
+}
+
+func (e *INPUTElement) IfMIN_STRF(condition bool, format string, args ...any) *INPUTElement {
+	if condition {
+		e.MIN_STR(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -695,6 +811,10 @@ func (e *INPUTElement) MIN_STRRemove(s string) *INPUTElement {
 	}
 	e.StringAttributes.Del("min")
 	return e
+}
+
+func (e *INPUTElement) MIN_STRRemoveF(format string, args ...any) *INPUTElement {
+	return e.MIN_STRRemove(fmt.Sprintf(format, args...))
 }
 
 // the minimum number of characters (as UTF-16 code units) the user can enter into
@@ -774,9 +894,20 @@ func (e *INPUTElement) NAME(s string) *INPUTElement {
 	return e
 }
 
+func (e *INPUTElement) NAMEF(format string, args ...any) *INPUTElement {
+	return e.NAME(fmt.Sprintf(format, args...))
+}
+
 func (e *INPUTElement) IfNAME(condition bool, s string) *INPUTElement {
 	if condition {
 		e.NAME(s)
+	}
+	return e
+}
+
+func (e *INPUTElement) IfNAMEF(condition bool, format string, args ...any) *INPUTElement {
+	if condition {
+		e.NAME(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -790,6 +921,10 @@ func (e *INPUTElement) NAMERemove(s string) *INPUTElement {
 	return e
 }
 
+func (e *INPUTElement) NAMERemoveF(format string, args ...any) *INPUTElement {
+	return e.NAMERemove(fmt.Sprintf(format, args...))
+}
+
 // Pattern to be matched by the form control's value.
 func (e *INPUTElement) PATTERN(s string) *INPUTElement {
 	if e.StringAttributes == nil {
@@ -799,9 +934,20 @@ func (e *INPUTElement) PATTERN(s string) *INPUTElement {
 	return e
 }
 
+func (e *INPUTElement) PATTERNF(format string, args ...any) *INPUTElement {
+	return e.PATTERN(fmt.Sprintf(format, args...))
+}
+
 func (e *INPUTElement) IfPATTERN(condition bool, s string) *INPUTElement {
 	if condition {
 		e.PATTERN(s)
+	}
+	return e
+}
+
+func (e *INPUTElement) IfPATTERNF(condition bool, format string, args ...any) *INPUTElement {
+	if condition {
+		e.PATTERN(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -815,6 +961,10 @@ func (e *INPUTElement) PATTERNRemove(s string) *INPUTElement {
 	return e
 }
 
+func (e *INPUTElement) PATTERNRemoveF(format string, args ...any) *INPUTElement {
+	return e.PATTERNRemove(fmt.Sprintf(format, args...))
+}
+
 // User-visible label to be placed within the form control.
 func (e *INPUTElement) PLACEHOLDER(s string) *INPUTElement {
 	if e.StringAttributes == nil {
@@ -824,9 +974,20 @@ func (e *INPUTElement) PLACEHOLDER(s string) *INPUTElement {
 	return e
 }
 
+func (e *INPUTElement) PLACEHOLDERF(format string, args ...any) *INPUTElement {
+	return e.PLACEHOLDER(fmt.Sprintf(format, args...))
+}
+
 func (e *INPUTElement) IfPLACEHOLDER(condition bool, s string) *INPUTElement {
 	if condition {
 		e.PLACEHOLDER(s)
+	}
+	return e
+}
+
+func (e *INPUTElement) IfPLACEHOLDERF(condition bool, format string, args ...any) *INPUTElement {
+	if condition {
+		e.PLACEHOLDER(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -838,6 +999,10 @@ func (e *INPUTElement) PLACEHOLDERRemove(s string) *INPUTElement {
 	}
 	e.StringAttributes.Del("placeholder")
 	return e
+}
+
+func (e *INPUTElement) PLACEHOLDERRemoveF(format string, args ...any) *INPUTElement {
+	return e.PLACEHOLDERRemove(fmt.Sprintf(format, args...))
 }
 
 // Whether to allow the value to be edited by the user.
@@ -950,9 +1115,20 @@ func (e *INPUTElement) SRC(s string) *INPUTElement {
 	return e
 }
 
+func (e *INPUTElement) SRCF(format string, args ...any) *INPUTElement {
+	return e.SRC(fmt.Sprintf(format, args...))
+}
+
 func (e *INPUTElement) IfSRC(condition bool, s string) *INPUTElement {
 	if condition {
 		e.SRC(s)
+	}
+	return e
+}
+
+func (e *INPUTElement) IfSRCF(condition bool, format string, args ...any) *INPUTElement {
+	if condition {
+		e.SRC(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -966,6 +1142,10 @@ func (e *INPUTElement) SRCRemove(s string) *INPUTElement {
 	return e
 }
 
+func (e *INPUTElement) SRCRemoveF(format string, args ...any) *INPUTElement {
+	return e.SRCRemove(fmt.Sprintf(format, args...))
+}
+
 // Granularity to be matched by the form control's value.
 func (e *INPUTElement) STEP(s string) *INPUTElement {
 	if e.StringAttributes == nil {
@@ -975,9 +1155,20 @@ func (e *INPUTElement) STEP(s string) *INPUTElement {
 	return e
 }
 
+func (e *INPUTElement) STEPF(format string, args ...any) *INPUTElement {
+	return e.STEP(fmt.Sprintf(format, args...))
+}
+
 func (e *INPUTElement) IfSTEP(condition bool, s string) *INPUTElement {
 	if condition {
 		e.STEP(s)
+	}
+	return e
+}
+
+func (e *INPUTElement) IfSTEPF(condition bool, format string, args ...any) *INPUTElement {
+	if condition {
+		e.STEP(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -989,6 +1180,10 @@ func (e *INPUTElement) STEPRemove(s string) *INPUTElement {
 	}
 	e.StringAttributes.Del("step")
 	return e
+}
+
+func (e *INPUTElement) STEPRemoveF(format string, args ...any) *INPUTElement {
+	return e.STEPRemove(fmt.Sprintf(format, args...))
 }
 
 // Type of form control.
@@ -1079,9 +1274,20 @@ func (e *INPUTElement) VALUE(s string) *INPUTElement {
 	return e
 }
 
+func (e *INPUTElement) VALUEF(format string, args ...any) *INPUTElement {
+	return e.VALUE(fmt.Sprintf(format, args...))
+}
+
 func (e *INPUTElement) IfVALUE(condition bool, s string) *INPUTElement {
 	if condition {
 		e.VALUE(s)
+	}
+	return e
+}
+
+func (e *INPUTElement) IfVALUEF(condition bool, format string, args ...any) *INPUTElement {
+	if condition {
+		e.VALUE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1093,6 +1299,10 @@ func (e *INPUTElement) VALUERemove(s string) *INPUTElement {
 	}
 	e.StringAttributes.Del("value")
 	return e
+}
+
+func (e *INPUTElement) VALUERemoveF(format string, args ...any) *INPUTElement {
+	return e.VALUERemove(fmt.Sprintf(format, args...))
 }
 
 // Width of the image in pixels.
@@ -1508,9 +1718,20 @@ func (e *INPUTElement) ID(s string) *INPUTElement {
 	return e
 }
 
+func (e *INPUTElement) IDF(format string, args ...any) *INPUTElement {
+	return e.ID(fmt.Sprintf(format, args...))
+}
+
 func (e *INPUTElement) IfID(condition bool, s string) *INPUTElement {
 	if condition {
 		e.ID(s)
+	}
+	return e
+}
+
+func (e *INPUTElement) IfIDF(condition bool, format string, args ...any) *INPUTElement {
+	if condition {
+		e.ID(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1522,6 +1743,10 @@ func (e *INPUTElement) IDRemove(s string) *INPUTElement {
 	}
 	e.StringAttributes.Del("id")
 	return e
+}
+
+func (e *INPUTElement) IDRemoveF(format string, args ...any) *INPUTElement {
+	return e.IDRemove(fmt.Sprintf(format, args...))
 }
 
 // The inert global attribute is a Boolean attribute indicating that the browser
@@ -1656,9 +1881,20 @@ func (e *INPUTElement) IS(s string) *INPUTElement {
 	return e
 }
 
+func (e *INPUTElement) ISF(format string, args ...any) *INPUTElement {
+	return e.IS(fmt.Sprintf(format, args...))
+}
+
 func (e *INPUTElement) IfIS(condition bool, s string) *INPUTElement {
 	if condition {
 		e.IS(s)
+	}
+	return e
+}
+
+func (e *INPUTElement) IfISF(condition bool, format string, args ...any) *INPUTElement {
+	if condition {
+		e.IS(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1670,6 +1906,10 @@ func (e *INPUTElement) ISRemove(s string) *INPUTElement {
 	}
 	e.StringAttributes.Del("is")
 	return e
+}
+
+func (e *INPUTElement) ISRemoveF(format string, args ...any) *INPUTElement {
+	return e.ISRemove(fmt.Sprintf(format, args...))
 }
 
 // The itemid global attribute provides microdata in the form of a unique, global
@@ -1693,9 +1933,20 @@ func (e *INPUTElement) ITEMID(s string) *INPUTElement {
 	return e
 }
 
+func (e *INPUTElement) ITEMIDF(format string, args ...any) *INPUTElement {
+	return e.ITEMID(fmt.Sprintf(format, args...))
+}
+
 func (e *INPUTElement) IfITEMID(condition bool, s string) *INPUTElement {
 	if condition {
 		e.ITEMID(s)
+	}
+	return e
+}
+
+func (e *INPUTElement) IfITEMIDF(condition bool, format string, args ...any) *INPUTElement {
+	if condition {
+		e.ITEMID(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1707,6 +1958,10 @@ func (e *INPUTElement) ITEMIDRemove(s string) *INPUTElement {
 	}
 	e.StringAttributes.Del("itemid")
 	return e
+}
+
+func (e *INPUTElement) ITEMIDRemoveF(format string, args ...any) *INPUTElement {
+	return e.ITEMIDRemove(fmt.Sprintf(format, args...))
 }
 
 // The itemprop global attribute is used to add properties to an item
@@ -1725,9 +1980,20 @@ func (e *INPUTElement) ITEMPROP(s string) *INPUTElement {
 	return e
 }
 
+func (e *INPUTElement) ITEMPROPF(format string, args ...any) *INPUTElement {
+	return e.ITEMPROP(fmt.Sprintf(format, args...))
+}
+
 func (e *INPUTElement) IfITEMPROP(condition bool, s string) *INPUTElement {
 	if condition {
 		e.ITEMPROP(s)
+	}
+	return e
+}
+
+func (e *INPUTElement) IfITEMPROPF(condition bool, format string, args ...any) *INPUTElement {
+	if condition {
+		e.ITEMPROP(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1739,6 +2005,10 @@ func (e *INPUTElement) ITEMPROPRemove(s string) *INPUTElement {
 	}
 	e.StringAttributes.Del("itemprop")
 	return e
+}
+
+func (e *INPUTElement) ITEMPROPRemoveF(format string, args ...any) *INPUTElement {
+	return e.ITEMPROPRemove(fmt.Sprintf(format, args...))
 }
 
 // Properties that are not descendants of an element with the itemscope attribute
@@ -1754,9 +2024,20 @@ func (e *INPUTElement) ITEMREF(s string) *INPUTElement {
 	return e
 }
 
+func (e *INPUTElement) ITEMREFF(format string, args ...any) *INPUTElement {
+	return e.ITEMREF(fmt.Sprintf(format, args...))
+}
+
 func (e *INPUTElement) IfITEMREF(condition bool, s string) *INPUTElement {
 	if condition {
 		e.ITEMREF(s)
+	}
+	return e
+}
+
+func (e *INPUTElement) IfITEMREFF(condition bool, format string, args ...any) *INPUTElement {
+	if condition {
+		e.ITEMREF(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1768,6 +2049,10 @@ func (e *INPUTElement) ITEMREFRemove(s string) *INPUTElement {
 	}
 	e.StringAttributes.Del("itemref")
 	return e
+}
+
+func (e *INPUTElement) ITEMREFRemoveF(format string, args ...any) *INPUTElement {
+	return e.ITEMREFRemove(fmt.Sprintf(format, args...))
 }
 
 // The itemscope global attribute is used to add an item to a microdata DOM tree
@@ -1831,9 +2116,20 @@ func (e *INPUTElement) ITEMTYPE(s string) *INPUTElement {
 	return e
 }
 
+func (e *INPUTElement) ITEMTYPEF(format string, args ...any) *INPUTElement {
+	return e.ITEMTYPE(fmt.Sprintf(format, args...))
+}
+
 func (e *INPUTElement) IfITEMTYPE(condition bool, s string) *INPUTElement {
 	if condition {
 		e.ITEMTYPE(s)
+	}
+	return e
+}
+
+func (e *INPUTElement) IfITEMTYPEF(condition bool, format string, args ...any) *INPUTElement {
+	if condition {
+		e.ITEMTYPE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1845,6 +2141,10 @@ func (e *INPUTElement) ITEMTYPERemove(s string) *INPUTElement {
 	}
 	e.StringAttributes.Del("itemtype")
 	return e
+}
+
+func (e *INPUTElement) ITEMTYPERemoveF(format string, args ...any) *INPUTElement {
+	return e.ITEMTYPERemove(fmt.Sprintf(format, args...))
 }
 
 // The lang global attribute helps define the language of an element: the language
@@ -1861,9 +2161,20 @@ func (e *INPUTElement) LANG(s string) *INPUTElement {
 	return e
 }
 
+func (e *INPUTElement) LANGF(format string, args ...any) *INPUTElement {
+	return e.LANG(fmt.Sprintf(format, args...))
+}
+
 func (e *INPUTElement) IfLANG(condition bool, s string) *INPUTElement {
 	if condition {
 		e.LANG(s)
+	}
+	return e
+}
+
+func (e *INPUTElement) IfLANGF(condition bool, format string, args ...any) *INPUTElement {
+	if condition {
+		e.LANG(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1875,6 +2186,10 @@ func (e *INPUTElement) LANGRemove(s string) *INPUTElement {
 	}
 	e.StringAttributes.Del("lang")
 	return e
+}
+
+func (e *INPUTElement) LANGRemoveF(format string, args ...any) *INPUTElement {
+	return e.LANGRemove(fmt.Sprintf(format, args...))
 }
 
 // The nonce global attribute is a unique identifier used to declare inline
@@ -1889,9 +2204,20 @@ func (e *INPUTElement) NONCE(s string) *INPUTElement {
 	return e
 }
 
+func (e *INPUTElement) NONCEF(format string, args ...any) *INPUTElement {
+	return e.NONCE(fmt.Sprintf(format, args...))
+}
+
 func (e *INPUTElement) IfNONCE(condition bool, s string) *INPUTElement {
 	if condition {
 		e.NONCE(s)
+	}
+	return e
+}
+
+func (e *INPUTElement) IfNONCEF(condition bool, format string, args ...any) *INPUTElement {
+	if condition {
+		e.NONCE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1903,6 +2229,10 @@ func (e *INPUTElement) NONCERemove(s string) *INPUTElement {
 	}
 	e.StringAttributes.Del("nonce")
 	return e
+}
+
+func (e *INPUTElement) NONCERemoveF(format string, args ...any) *INPUTElement {
+	return e.NONCERemove(fmt.Sprintf(format, args...))
 }
 
 // The part global attribute contains a space-separated list of the part names of
@@ -1997,9 +2327,20 @@ func (e *INPUTElement) ROLE(s string) *INPUTElement {
 	return e
 }
 
+func (e *INPUTElement) ROLEF(format string, args ...any) *INPUTElement {
+	return e.ROLE(fmt.Sprintf(format, args...))
+}
+
 func (e *INPUTElement) IfROLE(condition bool, s string) *INPUTElement {
 	if condition {
 		e.ROLE(s)
+	}
+	return e
+}
+
+func (e *INPUTElement) IfROLEF(condition bool, format string, args ...any) *INPUTElement {
+	if condition {
+		e.ROLE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -2011,6 +2352,10 @@ func (e *INPUTElement) ROLERemove(s string) *INPUTElement {
 	}
 	e.StringAttributes.Del("role")
 	return e
+}
+
+func (e *INPUTElement) ROLERemoveF(format string, args ...any) *INPUTElement {
+	return e.ROLERemove(fmt.Sprintf(format, args...))
 }
 
 // The slot global attribute assigns a slot in a shadow DOM shadow tree to an
@@ -2025,9 +2370,20 @@ func (e *INPUTElement) SLOT(s string) *INPUTElement {
 	return e
 }
 
+func (e *INPUTElement) SLOTF(format string, args ...any) *INPUTElement {
+	return e.SLOT(fmt.Sprintf(format, args...))
+}
+
 func (e *INPUTElement) IfSLOT(condition bool, s string) *INPUTElement {
 	if condition {
 		e.SLOT(s)
+	}
+	return e
+}
+
+func (e *INPUTElement) IfSLOTF(condition bool, format string, args ...any) *INPUTElement {
+	if condition {
+		e.SLOT(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -2039,6 +2395,10 @@ func (e *INPUTElement) SLOTRemove(s string) *INPUTElement {
 	}
 	e.StringAttributes.Del("slot")
 	return e
+}
+
+func (e *INPUTElement) SLOTRemoveF(format string, args ...any) *INPUTElement {
+	return e.SLOTRemove(fmt.Sprintf(format, args...))
 }
 
 // The spellcheck global attribute is an enumerated attribute that defines whether
@@ -2243,9 +2603,20 @@ func (e *INPUTElement) TITLE(s string) *INPUTElement {
 	return e
 }
 
+func (e *INPUTElement) TITLEF(format string, args ...any) *INPUTElement {
+	return e.TITLE(fmt.Sprintf(format, args...))
+}
+
 func (e *INPUTElement) IfTITLE(condition bool, s string) *INPUTElement {
 	if condition {
 		e.TITLE(s)
+	}
+	return e
+}
+
+func (e *INPUTElement) IfTITLEF(condition bool, format string, args ...any) *INPUTElement {
+	if condition {
+		e.TITLE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -2257,6 +2628,10 @@ func (e *INPUTElement) TITLERemove(s string) *INPUTElement {
 	}
 	e.StringAttributes.Del("title")
 	return e
+}
+
+func (e *INPUTElement) TITLERemoveF(format string, args ...any) *INPUTElement {
+	return e.TITLERemove(fmt.Sprintf(format, args...))
 }
 
 // The translate global attribute is an enumerated attribute that is used to
@@ -2301,7 +2676,7 @@ func (e *INPUTElement) DATASTAR_MERGE_STORE(v any) *INPUTElement {
 	if err != nil {
 		panic(err)
 	}
-	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	e.CustomDataAttributes.Set("merge-store", string(b))
 	return e
 }
 
@@ -2423,34 +2798,34 @@ func (e *INPUTElement) DATASTAR_TEXTRemove() *INPUTElement {
 
 // Sets the event handler of the element
 
-type InputDataOnMod customDataKeyModifier
+type InputOnMod customDataKeyModifier
 
 // Debounces the event handler
-func InputDataOnModDebounce(
+func InputOnModDebounce(
 	d time.Duration,
-) InputDataOnMod {
+) InputOnMod {
 	return func() string {
 		return fmt.Sprintf("debounce_%dms", d.Milliseconds())
 	}
 }
 
 // Throttles the event handler
-func InputDataOnModThrottle(
+func InputOnModThrottle(
 	d time.Duration,
-) InputDataOnMod {
+) InputOnMod {
 	return func() string {
 		return fmt.Sprintf("throttle_%dms", d.Milliseconds())
 	}
 }
 
-func (e *INPUTElement) DATASTAR_ON(key string, expression string, modifiers ...InputDataOnMod) *INPUTElement {
+func (e *INPUTElement) DATASTAR_ON(key string, expression string, modifiers ...InputOnMod) *INPUTElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
 	key = fmt.Sprintf("data-on-%s", key)
 
-	customMods := lo.Map(modifiers, func(m InputDataOnMod, i int) customDataKeyModifier {
+	customMods := lo.Map(modifiers, func(m InputOnMod, i int) customDataKeyModifier {
 		return customDataKeyModifier(m)
 	})
 	key = customDataKey(key, customMods...)
@@ -2458,7 +2833,7 @@ func (e *INPUTElement) DATASTAR_ON(key string, expression string, modifiers ...I
 	return e
 }
 
-func (e *INPUTElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...InputDataOnMod) *INPUTElement {
+func (e *INPUTElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...InputOnMod) *INPUTElement {
 	if condition {
 		e.DATASTAR_ON(key, expression, modifiers...)
 	}
@@ -2551,7 +2926,7 @@ func (e *INPUTElement) DATASTAR_FETCH_INDICATOR(expression string) *INPUTElement
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "DatastarFetchIndicator"
+	key := "data-fetch-indicator"
 
 	e.StringAttributes.Set(key, expression)
 	return e
@@ -2569,7 +2944,7 @@ func (e *INPUTElement) DATASTAR_FETCH_INDICATORRemove() *INPUTElement {
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("DatastarFetchIndicator")
+	e.StringAttributes.Del("data-fetch-indicator")
 	return e
 }
 

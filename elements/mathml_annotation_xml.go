@@ -203,9 +203,20 @@ func (e *MathMLANNOTATION_XMLElement) NAME(s string) *MathMLANNOTATION_XMLElemen
 	return e
 }
 
+func (e *MathMLANNOTATION_XMLElement) NAMEF(format string, args ...any) *MathMLANNOTATION_XMLElement {
+	return e.NAME(fmt.Sprintf(format, args...))
+}
+
 func (e *MathMLANNOTATION_XMLElement) IfNAME(condition bool, s string) *MathMLANNOTATION_XMLElement {
 	if condition {
 		e.NAME(s)
+	}
+	return e
+}
+
+func (e *MathMLANNOTATION_XMLElement) IfNAMEF(condition bool, format string, args ...any) *MathMLANNOTATION_XMLElement {
+	if condition {
+		e.NAME(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -217,6 +228,10 @@ func (e *MathMLANNOTATION_XMLElement) NAMERemove(s string) *MathMLANNOTATION_XML
 	}
 	e.StringAttributes.Del("name")
 	return e
+}
+
+func (e *MathMLANNOTATION_XMLElement) NAMERemoveF(format string, args ...any) *MathMLANNOTATION_XMLElement {
+	return e.NAMERemove(fmt.Sprintf(format, args...))
 }
 
 // Assigns a class name or set of class names to an element
@@ -325,9 +340,20 @@ func (e *MathMLANNOTATION_XMLElement) ID(s string) *MathMLANNOTATION_XMLElement 
 	return e
 }
 
+func (e *MathMLANNOTATION_XMLElement) IDF(format string, args ...any) *MathMLANNOTATION_XMLElement {
+	return e.ID(fmt.Sprintf(format, args...))
+}
+
 func (e *MathMLANNOTATION_XMLElement) IfID(condition bool, s string) *MathMLANNOTATION_XMLElement {
 	if condition {
 		e.ID(s)
+	}
+	return e
+}
+
+func (e *MathMLANNOTATION_XMLElement) IfIDF(condition bool, format string, args ...any) *MathMLANNOTATION_XMLElement {
+	if condition {
+		e.ID(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -341,6 +367,10 @@ func (e *MathMLANNOTATION_XMLElement) IDRemove(s string) *MathMLANNOTATION_XMLEl
 	return e
 }
 
+func (e *MathMLANNOTATION_XMLElement) IDRemoveF(format string, args ...any) *MathMLANNOTATION_XMLElement {
+	return e.IDRemove(fmt.Sprintf(format, args...))
+}
+
 // This attribute specifies the background color of the element
 // Possible values are a color name or a color specification in the format defined
 // in the CSS3 Color Module [CSS3COLOR].
@@ -352,9 +382,20 @@ func (e *MathMLANNOTATION_XMLElement) MATHBACKGROUND(s string) *MathMLANNOTATION
 	return e
 }
 
+func (e *MathMLANNOTATION_XMLElement) MATHBACKGROUNDF(format string, args ...any) *MathMLANNOTATION_XMLElement {
+	return e.MATHBACKGROUND(fmt.Sprintf(format, args...))
+}
+
 func (e *MathMLANNOTATION_XMLElement) IfMATHBACKGROUND(condition bool, s string) *MathMLANNOTATION_XMLElement {
 	if condition {
 		e.MATHBACKGROUND(s)
+	}
+	return e
+}
+
+func (e *MathMLANNOTATION_XMLElement) IfMATHBACKGROUNDF(condition bool, format string, args ...any) *MathMLANNOTATION_XMLElement {
+	if condition {
+		e.MATHBACKGROUND(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -368,6 +409,10 @@ func (e *MathMLANNOTATION_XMLElement) MATHBACKGROUNDRemove(s string) *MathMLANNO
 	return e
 }
 
+func (e *MathMLANNOTATION_XMLElement) MATHBACKGROUNDRemoveF(format string, args ...any) *MathMLANNOTATION_XMLElement {
+	return e.MATHBACKGROUNDRemove(fmt.Sprintf(format, args...))
+}
+
 // This attribute specifies the color of the element
 // Possible values are a color name or a color specification in the format defined
 // in the CSS3 Color Module [CSS3COLOR].
@@ -379,9 +424,20 @@ func (e *MathMLANNOTATION_XMLElement) MATHCOLOR(s string) *MathMLANNOTATION_XMLE
 	return e
 }
 
+func (e *MathMLANNOTATION_XMLElement) MATHCOLORF(format string, args ...any) *MathMLANNOTATION_XMLElement {
+	return e.MATHCOLOR(fmt.Sprintf(format, args...))
+}
+
 func (e *MathMLANNOTATION_XMLElement) IfMATHCOLOR(condition bool, s string) *MathMLANNOTATION_XMLElement {
 	if condition {
 		e.MATHCOLOR(s)
+	}
+	return e
+}
+
+func (e *MathMLANNOTATION_XMLElement) IfMATHCOLORF(condition bool, format string, args ...any) *MathMLANNOTATION_XMLElement {
+	if condition {
+		e.MATHCOLOR(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -395,6 +451,10 @@ func (e *MathMLANNOTATION_XMLElement) MATHCOLORRemove(s string) *MathMLANNOTATIO
 	return e
 }
 
+func (e *MathMLANNOTATION_XMLElement) MATHCOLORRemoveF(format string, args ...any) *MathMLANNOTATION_XMLElement {
+	return e.MATHCOLORRemove(fmt.Sprintf(format, args...))
+}
+
 // This attribute specifies the size of the element
 // Possible values are a dimension or a dimensionless number.
 func (e *MathMLANNOTATION_XMLElement) MATHSIZE_STR(s string) *MathMLANNOTATION_XMLElement {
@@ -405,9 +465,20 @@ func (e *MathMLANNOTATION_XMLElement) MATHSIZE_STR(s string) *MathMLANNOTATION_X
 	return e
 }
 
+func (e *MathMLANNOTATION_XMLElement) MATHSIZE_STRF(format string, args ...any) *MathMLANNOTATION_XMLElement {
+	return e.MATHSIZE_STR(fmt.Sprintf(format, args...))
+}
+
 func (e *MathMLANNOTATION_XMLElement) IfMATHSIZE_STR(condition bool, s string) *MathMLANNOTATION_XMLElement {
 	if condition {
 		e.MATHSIZE_STR(s)
+	}
+	return e
+}
+
+func (e *MathMLANNOTATION_XMLElement) IfMATHSIZE_STRF(condition bool, format string, args ...any) *MathMLANNOTATION_XMLElement {
+	if condition {
+		e.MATHSIZE_STR(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -419,6 +490,10 @@ func (e *MathMLANNOTATION_XMLElement) MATHSIZE_STRRemove(s string) *MathMLANNOTA
 	}
 	e.StringAttributes.Del("mathsize")
 	return e
+}
+
+func (e *MathMLANNOTATION_XMLElement) MATHSIZE_STRRemoveF(format string, args ...any) *MathMLANNOTATION_XMLElement {
+	return e.MATHSIZE_STRRemove(fmt.Sprintf(format, args...))
 }
 
 // This attribute declares a cryptographic nonce (number used once) that should be
@@ -433,9 +508,20 @@ func (e *MathMLANNOTATION_XMLElement) NONCE(s string) *MathMLANNOTATION_XMLEleme
 	return e
 }
 
+func (e *MathMLANNOTATION_XMLElement) NONCEF(format string, args ...any) *MathMLANNOTATION_XMLElement {
+	return e.NONCE(fmt.Sprintf(format, args...))
+}
+
 func (e *MathMLANNOTATION_XMLElement) IfNONCE(condition bool, s string) *MathMLANNOTATION_XMLElement {
 	if condition {
 		e.NONCE(s)
+	}
+	return e
+}
+
+func (e *MathMLANNOTATION_XMLElement) IfNONCEF(condition bool, format string, args ...any) *MathMLANNOTATION_XMLElement {
+	if condition {
+		e.NONCE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -447,6 +533,10 @@ func (e *MathMLANNOTATION_XMLElement) NONCERemove(s string) *MathMLANNOTATION_XM
 	}
 	e.StringAttributes.Del("nonce")
 	return e
+}
+
+func (e *MathMLANNOTATION_XMLElement) NONCERemoveF(format string, args ...any) *MathMLANNOTATION_XMLElement {
+	return e.NONCERemove(fmt.Sprintf(format, args...))
 }
 
 // This attribute specifies the script level of the element
@@ -605,7 +695,7 @@ func (e *MathMLANNOTATION_XMLElement) DATASTAR_MERGE_STORE(v any) *MathMLANNOTAT
 	if err != nil {
 		panic(err)
 	}
-	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	e.CustomDataAttributes.Set("merge-store", string(b))
 	return e
 }
 
@@ -727,34 +817,34 @@ func (e *MathMLANNOTATION_XMLElement) DATASTAR_TEXTRemove() *MathMLANNOTATION_XM
 
 // Sets the event handler of the element
 
-type MathMLAnnotationXmlDataOnMod customDataKeyModifier
+type MathMLAnnotationXmlOnMod customDataKeyModifier
 
 // Debounces the event handler
-func MathMLAnnotationXmlDataOnModDebounce(
+func MathMLAnnotationXmlOnModDebounce(
 	d time.Duration,
-) MathMLAnnotationXmlDataOnMod {
+) MathMLAnnotationXmlOnMod {
 	return func() string {
 		return fmt.Sprintf("debounce_%dms", d.Milliseconds())
 	}
 }
 
 // Throttles the event handler
-func MathMLAnnotationXmlDataOnModThrottle(
+func MathMLAnnotationXmlOnModThrottle(
 	d time.Duration,
-) MathMLAnnotationXmlDataOnMod {
+) MathMLAnnotationXmlOnMod {
 	return func() string {
 		return fmt.Sprintf("throttle_%dms", d.Milliseconds())
 	}
 }
 
-func (e *MathMLANNOTATION_XMLElement) DATASTAR_ON(key string, expression string, modifiers ...MathMLAnnotationXmlDataOnMod) *MathMLANNOTATION_XMLElement {
+func (e *MathMLANNOTATION_XMLElement) DATASTAR_ON(key string, expression string, modifiers ...MathMLAnnotationXmlOnMod) *MathMLANNOTATION_XMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
 	key = fmt.Sprintf("data-on-%s", key)
 
-	customMods := lo.Map(modifiers, func(m MathMLAnnotationXmlDataOnMod, i int) customDataKeyModifier {
+	customMods := lo.Map(modifiers, func(m MathMLAnnotationXmlOnMod, i int) customDataKeyModifier {
 		return customDataKeyModifier(m)
 	})
 	key = customDataKey(key, customMods...)
@@ -762,7 +852,7 @@ func (e *MathMLANNOTATION_XMLElement) DATASTAR_ON(key string, expression string,
 	return e
 }
 
-func (e *MathMLANNOTATION_XMLElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...MathMLAnnotationXmlDataOnMod) *MathMLANNOTATION_XMLElement {
+func (e *MathMLANNOTATION_XMLElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...MathMLAnnotationXmlOnMod) *MathMLANNOTATION_XMLElement {
 	if condition {
 		e.DATASTAR_ON(key, expression, modifiers...)
 	}
@@ -855,7 +945,7 @@ func (e *MathMLANNOTATION_XMLElement) DATASTAR_FETCH_INDICATOR(expression string
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "DatastarFetchIndicator"
+	key := "data-fetch-indicator"
 
 	e.StringAttributes.Set(key, expression)
 	return e
@@ -873,7 +963,7 @@ func (e *MathMLANNOTATION_XMLElement) DATASTAR_FETCH_INDICATORRemove() *MathMLAN
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("DatastarFetchIndicator")
+	e.StringAttributes.Del("data-fetch-indicator")
 	return e
 }
 

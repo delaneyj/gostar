@@ -637,9 +637,20 @@ func (e *ULElement) ID(s string) *ULElement {
 	return e
 }
 
+func (e *ULElement) IDF(format string, args ...any) *ULElement {
+	return e.ID(fmt.Sprintf(format, args...))
+}
+
 func (e *ULElement) IfID(condition bool, s string) *ULElement {
 	if condition {
 		e.ID(s)
+	}
+	return e
+}
+
+func (e *ULElement) IfIDF(condition bool, format string, args ...any) *ULElement {
+	if condition {
+		e.ID(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -651,6 +662,10 @@ func (e *ULElement) IDRemove(s string) *ULElement {
 	}
 	e.StringAttributes.Del("id")
 	return e
+}
+
+func (e *ULElement) IDRemoveF(format string, args ...any) *ULElement {
+	return e.IDRemove(fmt.Sprintf(format, args...))
 }
 
 // The inert global attribute is a Boolean attribute indicating that the browser
@@ -785,9 +800,20 @@ func (e *ULElement) IS(s string) *ULElement {
 	return e
 }
 
+func (e *ULElement) ISF(format string, args ...any) *ULElement {
+	return e.IS(fmt.Sprintf(format, args...))
+}
+
 func (e *ULElement) IfIS(condition bool, s string) *ULElement {
 	if condition {
 		e.IS(s)
+	}
+	return e
+}
+
+func (e *ULElement) IfISF(condition bool, format string, args ...any) *ULElement {
+	if condition {
+		e.IS(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -799,6 +825,10 @@ func (e *ULElement) ISRemove(s string) *ULElement {
 	}
 	e.StringAttributes.Del("is")
 	return e
+}
+
+func (e *ULElement) ISRemoveF(format string, args ...any) *ULElement {
+	return e.ISRemove(fmt.Sprintf(format, args...))
 }
 
 // The itemid global attribute provides microdata in the form of a unique, global
@@ -822,9 +852,20 @@ func (e *ULElement) ITEMID(s string) *ULElement {
 	return e
 }
 
+func (e *ULElement) ITEMIDF(format string, args ...any) *ULElement {
+	return e.ITEMID(fmt.Sprintf(format, args...))
+}
+
 func (e *ULElement) IfITEMID(condition bool, s string) *ULElement {
 	if condition {
 		e.ITEMID(s)
+	}
+	return e
+}
+
+func (e *ULElement) IfITEMIDF(condition bool, format string, args ...any) *ULElement {
+	if condition {
+		e.ITEMID(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -836,6 +877,10 @@ func (e *ULElement) ITEMIDRemove(s string) *ULElement {
 	}
 	e.StringAttributes.Del("itemid")
 	return e
+}
+
+func (e *ULElement) ITEMIDRemoveF(format string, args ...any) *ULElement {
+	return e.ITEMIDRemove(fmt.Sprintf(format, args...))
 }
 
 // The itemprop global attribute is used to add properties to an item
@@ -854,9 +899,20 @@ func (e *ULElement) ITEMPROP(s string) *ULElement {
 	return e
 }
 
+func (e *ULElement) ITEMPROPF(format string, args ...any) *ULElement {
+	return e.ITEMPROP(fmt.Sprintf(format, args...))
+}
+
 func (e *ULElement) IfITEMPROP(condition bool, s string) *ULElement {
 	if condition {
 		e.ITEMPROP(s)
+	}
+	return e
+}
+
+func (e *ULElement) IfITEMPROPF(condition bool, format string, args ...any) *ULElement {
+	if condition {
+		e.ITEMPROP(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -868,6 +924,10 @@ func (e *ULElement) ITEMPROPRemove(s string) *ULElement {
 	}
 	e.StringAttributes.Del("itemprop")
 	return e
+}
+
+func (e *ULElement) ITEMPROPRemoveF(format string, args ...any) *ULElement {
+	return e.ITEMPROPRemove(fmt.Sprintf(format, args...))
 }
 
 // Properties that are not descendants of an element with the itemscope attribute
@@ -883,9 +943,20 @@ func (e *ULElement) ITEMREF(s string) *ULElement {
 	return e
 }
 
+func (e *ULElement) ITEMREFF(format string, args ...any) *ULElement {
+	return e.ITEMREF(fmt.Sprintf(format, args...))
+}
+
 func (e *ULElement) IfITEMREF(condition bool, s string) *ULElement {
 	if condition {
 		e.ITEMREF(s)
+	}
+	return e
+}
+
+func (e *ULElement) IfITEMREFF(condition bool, format string, args ...any) *ULElement {
+	if condition {
+		e.ITEMREF(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -897,6 +968,10 @@ func (e *ULElement) ITEMREFRemove(s string) *ULElement {
 	}
 	e.StringAttributes.Del("itemref")
 	return e
+}
+
+func (e *ULElement) ITEMREFRemoveF(format string, args ...any) *ULElement {
+	return e.ITEMREFRemove(fmt.Sprintf(format, args...))
 }
 
 // The itemscope global attribute is used to add an item to a microdata DOM tree
@@ -960,9 +1035,20 @@ func (e *ULElement) ITEMTYPE(s string) *ULElement {
 	return e
 }
 
+func (e *ULElement) ITEMTYPEF(format string, args ...any) *ULElement {
+	return e.ITEMTYPE(fmt.Sprintf(format, args...))
+}
+
 func (e *ULElement) IfITEMTYPE(condition bool, s string) *ULElement {
 	if condition {
 		e.ITEMTYPE(s)
+	}
+	return e
+}
+
+func (e *ULElement) IfITEMTYPEF(condition bool, format string, args ...any) *ULElement {
+	if condition {
+		e.ITEMTYPE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -974,6 +1060,10 @@ func (e *ULElement) ITEMTYPERemove(s string) *ULElement {
 	}
 	e.StringAttributes.Del("itemtype")
 	return e
+}
+
+func (e *ULElement) ITEMTYPERemoveF(format string, args ...any) *ULElement {
+	return e.ITEMTYPERemove(fmt.Sprintf(format, args...))
 }
 
 // The lang global attribute helps define the language of an element: the language
@@ -990,9 +1080,20 @@ func (e *ULElement) LANG(s string) *ULElement {
 	return e
 }
 
+func (e *ULElement) LANGF(format string, args ...any) *ULElement {
+	return e.LANG(fmt.Sprintf(format, args...))
+}
+
 func (e *ULElement) IfLANG(condition bool, s string) *ULElement {
 	if condition {
 		e.LANG(s)
+	}
+	return e
+}
+
+func (e *ULElement) IfLANGF(condition bool, format string, args ...any) *ULElement {
+	if condition {
+		e.LANG(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1004,6 +1105,10 @@ func (e *ULElement) LANGRemove(s string) *ULElement {
 	}
 	e.StringAttributes.Del("lang")
 	return e
+}
+
+func (e *ULElement) LANGRemoveF(format string, args ...any) *ULElement {
+	return e.LANGRemove(fmt.Sprintf(format, args...))
 }
 
 // The nonce global attribute is a unique identifier used to declare inline
@@ -1018,9 +1123,20 @@ func (e *ULElement) NONCE(s string) *ULElement {
 	return e
 }
 
+func (e *ULElement) NONCEF(format string, args ...any) *ULElement {
+	return e.NONCE(fmt.Sprintf(format, args...))
+}
+
 func (e *ULElement) IfNONCE(condition bool, s string) *ULElement {
 	if condition {
 		e.NONCE(s)
+	}
+	return e
+}
+
+func (e *ULElement) IfNONCEF(condition bool, format string, args ...any) *ULElement {
+	if condition {
+		e.NONCE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1032,6 +1148,10 @@ func (e *ULElement) NONCERemove(s string) *ULElement {
 	}
 	e.StringAttributes.Del("nonce")
 	return e
+}
+
+func (e *ULElement) NONCERemoveF(format string, args ...any) *ULElement {
+	return e.NONCERemove(fmt.Sprintf(format, args...))
 }
 
 // The part global attribute contains a space-separated list of the part names of
@@ -1126,9 +1246,20 @@ func (e *ULElement) ROLE(s string) *ULElement {
 	return e
 }
 
+func (e *ULElement) ROLEF(format string, args ...any) *ULElement {
+	return e.ROLE(fmt.Sprintf(format, args...))
+}
+
 func (e *ULElement) IfROLE(condition bool, s string) *ULElement {
 	if condition {
 		e.ROLE(s)
+	}
+	return e
+}
+
+func (e *ULElement) IfROLEF(condition bool, format string, args ...any) *ULElement {
+	if condition {
+		e.ROLE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1140,6 +1271,10 @@ func (e *ULElement) ROLERemove(s string) *ULElement {
 	}
 	e.StringAttributes.Del("role")
 	return e
+}
+
+func (e *ULElement) ROLERemoveF(format string, args ...any) *ULElement {
+	return e.ROLERemove(fmt.Sprintf(format, args...))
 }
 
 // The slot global attribute assigns a slot in a shadow DOM shadow tree to an
@@ -1154,9 +1289,20 @@ func (e *ULElement) SLOT(s string) *ULElement {
 	return e
 }
 
+func (e *ULElement) SLOTF(format string, args ...any) *ULElement {
+	return e.SLOT(fmt.Sprintf(format, args...))
+}
+
 func (e *ULElement) IfSLOT(condition bool, s string) *ULElement {
 	if condition {
 		e.SLOT(s)
+	}
+	return e
+}
+
+func (e *ULElement) IfSLOTF(condition bool, format string, args ...any) *ULElement {
+	if condition {
+		e.SLOT(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1168,6 +1314,10 @@ func (e *ULElement) SLOTRemove(s string) *ULElement {
 	}
 	e.StringAttributes.Del("slot")
 	return e
+}
+
+func (e *ULElement) SLOTRemoveF(format string, args ...any) *ULElement {
+	return e.SLOTRemove(fmt.Sprintf(format, args...))
 }
 
 // The spellcheck global attribute is an enumerated attribute that defines whether
@@ -1372,9 +1522,20 @@ func (e *ULElement) TITLE(s string) *ULElement {
 	return e
 }
 
+func (e *ULElement) TITLEF(format string, args ...any) *ULElement {
+	return e.TITLE(fmt.Sprintf(format, args...))
+}
+
 func (e *ULElement) IfTITLE(condition bool, s string) *ULElement {
 	if condition {
 		e.TITLE(s)
+	}
+	return e
+}
+
+func (e *ULElement) IfTITLEF(condition bool, format string, args ...any) *ULElement {
+	if condition {
+		e.TITLE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1386,6 +1547,10 @@ func (e *ULElement) TITLERemove(s string) *ULElement {
 	}
 	e.StringAttributes.Del("title")
 	return e
+}
+
+func (e *ULElement) TITLERemoveF(format string, args ...any) *ULElement {
+	return e.TITLERemove(fmt.Sprintf(format, args...))
 }
 
 // The translate global attribute is an enumerated attribute that is used to
@@ -1430,7 +1595,7 @@ func (e *ULElement) DATASTAR_MERGE_STORE(v any) *ULElement {
 	if err != nil {
 		panic(err)
 	}
-	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	e.CustomDataAttributes.Set("merge-store", string(b))
 	return e
 }
 
@@ -1552,34 +1717,34 @@ func (e *ULElement) DATASTAR_TEXTRemove() *ULElement {
 
 // Sets the event handler of the element
 
-type UlDataOnMod customDataKeyModifier
+type UlOnMod customDataKeyModifier
 
 // Debounces the event handler
-func UlDataOnModDebounce(
+func UlOnModDebounce(
 	d time.Duration,
-) UlDataOnMod {
+) UlOnMod {
 	return func() string {
 		return fmt.Sprintf("debounce_%dms", d.Milliseconds())
 	}
 }
 
 // Throttles the event handler
-func UlDataOnModThrottle(
+func UlOnModThrottle(
 	d time.Duration,
-) UlDataOnMod {
+) UlOnMod {
 	return func() string {
 		return fmt.Sprintf("throttle_%dms", d.Milliseconds())
 	}
 }
 
-func (e *ULElement) DATASTAR_ON(key string, expression string, modifiers ...UlDataOnMod) *ULElement {
+func (e *ULElement) DATASTAR_ON(key string, expression string, modifiers ...UlOnMod) *ULElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
 	key = fmt.Sprintf("data-on-%s", key)
 
-	customMods := lo.Map(modifiers, func(m UlDataOnMod, i int) customDataKeyModifier {
+	customMods := lo.Map(modifiers, func(m UlOnMod, i int) customDataKeyModifier {
 		return customDataKeyModifier(m)
 	})
 	key = customDataKey(key, customMods...)
@@ -1587,7 +1752,7 @@ func (e *ULElement) DATASTAR_ON(key string, expression string, modifiers ...UlDa
 	return e
 }
 
-func (e *ULElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...UlDataOnMod) *ULElement {
+func (e *ULElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...UlOnMod) *ULElement {
 	if condition {
 		e.DATASTAR_ON(key, expression, modifiers...)
 	}
@@ -1680,7 +1845,7 @@ func (e *ULElement) DATASTAR_FETCH_INDICATOR(expression string) *ULElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "DatastarFetchIndicator"
+	key := "data-fetch-indicator"
 
 	e.StringAttributes.Set(key, expression)
 	return e
@@ -1698,7 +1863,7 @@ func (e *ULElement) DATASTAR_FETCH_INDICATORRemove() *ULElement {
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("DatastarFetchIndicator")
+	e.StringAttributes.Del("data-fetch-indicator")
 	return e
 }
 

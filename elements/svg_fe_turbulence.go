@@ -174,9 +174,20 @@ func (e *SVGFETURBULENCEElement) BASE_FREQUENCY(s string) *SVGFETURBULENCEElemen
 	return e
 }
 
+func (e *SVGFETURBULENCEElement) BASE_FREQUENCYF(format string, args ...any) *SVGFETURBULENCEElement {
+	return e.BASE_FREQUENCY(fmt.Sprintf(format, args...))
+}
+
 func (e *SVGFETURBULENCEElement) IfBASE_FREQUENCY(condition bool, s string) *SVGFETURBULENCEElement {
 	if condition {
 		e.BASE_FREQUENCY(s)
+	}
+	return e
+}
+
+func (e *SVGFETURBULENCEElement) IfBASE_FREQUENCYF(condition bool, format string, args ...any) *SVGFETURBULENCEElement {
+	if condition {
+		e.BASE_FREQUENCY(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -188,6 +199,10 @@ func (e *SVGFETURBULENCEElement) BASE_FREQUENCYRemove(s string) *SVGFETURBULENCE
 	}
 	e.StringAttributes.Del("baseFrequency")
 	return e
+}
+
+func (e *SVGFETURBULENCEElement) BASE_FREQUENCYRemoveF(format string, args ...any) *SVGFETURBULENCEElement {
+	return e.BASE_FREQUENCYRemove(fmt.Sprintf(format, args...))
 }
 
 // The numOctaves attribute indicates the number of octaves to be used by the
@@ -293,9 +308,20 @@ func (e *SVGFETURBULENCEElement) ID(s string) *SVGFETURBULENCEElement {
 	return e
 }
 
+func (e *SVGFETURBULENCEElement) IDF(format string, args ...any) *SVGFETURBULENCEElement {
+	return e.ID(fmt.Sprintf(format, args...))
+}
+
 func (e *SVGFETURBULENCEElement) IfID(condition bool, s string) *SVGFETURBULENCEElement {
 	if condition {
 		e.ID(s)
+	}
+	return e
+}
+
+func (e *SVGFETURBULENCEElement) IfIDF(condition bool, format string, args ...any) *SVGFETURBULENCEElement {
+	if condition {
+		e.ID(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -307,6 +333,10 @@ func (e *SVGFETURBULENCEElement) IDRemove(s string) *SVGFETURBULENCEElement {
 	}
 	e.StringAttributes.Del("id")
 	return e
+}
+
+func (e *SVGFETURBULENCEElement) IDRemoveF(format string, args ...any) *SVGFETURBULENCEElement {
+	return e.IDRemove(fmt.Sprintf(format, args...))
 }
 
 // Specifies one or more classnames for an element (refers to a class in a style
@@ -445,7 +475,7 @@ func (e *SVGFETURBULENCEElement) DATASTAR_MERGE_STORE(v any) *SVGFETURBULENCEEle
 	if err != nil {
 		panic(err)
 	}
-	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	e.CustomDataAttributes.Set("merge-store", string(b))
 	return e
 }
 
@@ -567,34 +597,34 @@ func (e *SVGFETURBULENCEElement) DATASTAR_TEXTRemove() *SVGFETURBULENCEElement {
 
 // Sets the event handler of the element
 
-type SVGFeTurbulenceDataOnMod customDataKeyModifier
+type SVGFeTurbulenceOnMod customDataKeyModifier
 
 // Debounces the event handler
-func SVGFeTurbulenceDataOnModDebounce(
+func SVGFeTurbulenceOnModDebounce(
 	d time.Duration,
-) SVGFeTurbulenceDataOnMod {
+) SVGFeTurbulenceOnMod {
 	return func() string {
 		return fmt.Sprintf("debounce_%dms", d.Milliseconds())
 	}
 }
 
 // Throttles the event handler
-func SVGFeTurbulenceDataOnModThrottle(
+func SVGFeTurbulenceOnModThrottle(
 	d time.Duration,
-) SVGFeTurbulenceDataOnMod {
+) SVGFeTurbulenceOnMod {
 	return func() string {
 		return fmt.Sprintf("throttle_%dms", d.Milliseconds())
 	}
 }
 
-func (e *SVGFETURBULENCEElement) DATASTAR_ON(key string, expression string, modifiers ...SVGFeTurbulenceDataOnMod) *SVGFETURBULENCEElement {
+func (e *SVGFETURBULENCEElement) DATASTAR_ON(key string, expression string, modifiers ...SVGFeTurbulenceOnMod) *SVGFETURBULENCEElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
 	key = fmt.Sprintf("data-on-%s", key)
 
-	customMods := lo.Map(modifiers, func(m SVGFeTurbulenceDataOnMod, i int) customDataKeyModifier {
+	customMods := lo.Map(modifiers, func(m SVGFeTurbulenceOnMod, i int) customDataKeyModifier {
 		return customDataKeyModifier(m)
 	})
 	key = customDataKey(key, customMods...)
@@ -602,7 +632,7 @@ func (e *SVGFETURBULENCEElement) DATASTAR_ON(key string, expression string, modi
 	return e
 }
 
-func (e *SVGFETURBULENCEElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SVGFeTurbulenceDataOnMod) *SVGFETURBULENCEElement {
+func (e *SVGFETURBULENCEElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SVGFeTurbulenceOnMod) *SVGFETURBULENCEElement {
 	if condition {
 		e.DATASTAR_ON(key, expression, modifiers...)
 	}
@@ -695,7 +725,7 @@ func (e *SVGFETURBULENCEElement) DATASTAR_FETCH_INDICATOR(expression string) *SV
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "DatastarFetchIndicator"
+	key := "data-fetch-indicator"
 
 	e.StringAttributes.Set(key, expression)
 	return e
@@ -713,7 +743,7 @@ func (e *SVGFETURBULENCEElement) DATASTAR_FETCH_INDICATORRemove() *SVGFETURBULEN
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("DatastarFetchIndicator")
+	e.StringAttributes.Del("data-fetch-indicator")
 	return e
 }
 

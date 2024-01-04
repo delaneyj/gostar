@@ -172,9 +172,20 @@ func (e *MAPElement) NAME(s string) *MAPElement {
 	return e
 }
 
+func (e *MAPElement) NAMEF(format string, args ...any) *MAPElement {
+	return e.NAME(fmt.Sprintf(format, args...))
+}
+
 func (e *MAPElement) IfNAME(condition bool, s string) *MAPElement {
 	if condition {
 		e.NAME(s)
+	}
+	return e
+}
+
+func (e *MAPElement) IfNAMEF(condition bool, format string, args ...any) *MAPElement {
+	if condition {
+		e.NAME(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -186,6 +197,10 @@ func (e *MAPElement) NAMERemove(s string) *MAPElement {
 	}
 	e.StringAttributes.Del("name")
 	return e
+}
+
+func (e *MAPElement) NAMERemoveF(format string, args ...any) *MAPElement {
+	return e.NAMERemove(fmt.Sprintf(format, args...))
 }
 
 // The accesskey global attribute provides a hint for generating a keyboard
@@ -633,9 +648,20 @@ func (e *MAPElement) ID(s string) *MAPElement {
 	return e
 }
 
+func (e *MAPElement) IDF(format string, args ...any) *MAPElement {
+	return e.ID(fmt.Sprintf(format, args...))
+}
+
 func (e *MAPElement) IfID(condition bool, s string) *MAPElement {
 	if condition {
 		e.ID(s)
+	}
+	return e
+}
+
+func (e *MAPElement) IfIDF(condition bool, format string, args ...any) *MAPElement {
+	if condition {
+		e.ID(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -647,6 +673,10 @@ func (e *MAPElement) IDRemove(s string) *MAPElement {
 	}
 	e.StringAttributes.Del("id")
 	return e
+}
+
+func (e *MAPElement) IDRemoveF(format string, args ...any) *MAPElement {
+	return e.IDRemove(fmt.Sprintf(format, args...))
 }
 
 // The inert global attribute is a Boolean attribute indicating that the browser
@@ -781,9 +811,20 @@ func (e *MAPElement) IS(s string) *MAPElement {
 	return e
 }
 
+func (e *MAPElement) ISF(format string, args ...any) *MAPElement {
+	return e.IS(fmt.Sprintf(format, args...))
+}
+
 func (e *MAPElement) IfIS(condition bool, s string) *MAPElement {
 	if condition {
 		e.IS(s)
+	}
+	return e
+}
+
+func (e *MAPElement) IfISF(condition bool, format string, args ...any) *MAPElement {
+	if condition {
+		e.IS(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -795,6 +836,10 @@ func (e *MAPElement) ISRemove(s string) *MAPElement {
 	}
 	e.StringAttributes.Del("is")
 	return e
+}
+
+func (e *MAPElement) ISRemoveF(format string, args ...any) *MAPElement {
+	return e.ISRemove(fmt.Sprintf(format, args...))
 }
 
 // The itemid global attribute provides microdata in the form of a unique, global
@@ -818,9 +863,20 @@ func (e *MAPElement) ITEMID(s string) *MAPElement {
 	return e
 }
 
+func (e *MAPElement) ITEMIDF(format string, args ...any) *MAPElement {
+	return e.ITEMID(fmt.Sprintf(format, args...))
+}
+
 func (e *MAPElement) IfITEMID(condition bool, s string) *MAPElement {
 	if condition {
 		e.ITEMID(s)
+	}
+	return e
+}
+
+func (e *MAPElement) IfITEMIDF(condition bool, format string, args ...any) *MAPElement {
+	if condition {
+		e.ITEMID(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -832,6 +888,10 @@ func (e *MAPElement) ITEMIDRemove(s string) *MAPElement {
 	}
 	e.StringAttributes.Del("itemid")
 	return e
+}
+
+func (e *MAPElement) ITEMIDRemoveF(format string, args ...any) *MAPElement {
+	return e.ITEMIDRemove(fmt.Sprintf(format, args...))
 }
 
 // The itemprop global attribute is used to add properties to an item
@@ -850,9 +910,20 @@ func (e *MAPElement) ITEMPROP(s string) *MAPElement {
 	return e
 }
 
+func (e *MAPElement) ITEMPROPF(format string, args ...any) *MAPElement {
+	return e.ITEMPROP(fmt.Sprintf(format, args...))
+}
+
 func (e *MAPElement) IfITEMPROP(condition bool, s string) *MAPElement {
 	if condition {
 		e.ITEMPROP(s)
+	}
+	return e
+}
+
+func (e *MAPElement) IfITEMPROPF(condition bool, format string, args ...any) *MAPElement {
+	if condition {
+		e.ITEMPROP(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -864,6 +935,10 @@ func (e *MAPElement) ITEMPROPRemove(s string) *MAPElement {
 	}
 	e.StringAttributes.Del("itemprop")
 	return e
+}
+
+func (e *MAPElement) ITEMPROPRemoveF(format string, args ...any) *MAPElement {
+	return e.ITEMPROPRemove(fmt.Sprintf(format, args...))
 }
 
 // Properties that are not descendants of an element with the itemscope attribute
@@ -879,9 +954,20 @@ func (e *MAPElement) ITEMREF(s string) *MAPElement {
 	return e
 }
 
+func (e *MAPElement) ITEMREFF(format string, args ...any) *MAPElement {
+	return e.ITEMREF(fmt.Sprintf(format, args...))
+}
+
 func (e *MAPElement) IfITEMREF(condition bool, s string) *MAPElement {
 	if condition {
 		e.ITEMREF(s)
+	}
+	return e
+}
+
+func (e *MAPElement) IfITEMREFF(condition bool, format string, args ...any) *MAPElement {
+	if condition {
+		e.ITEMREF(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -893,6 +979,10 @@ func (e *MAPElement) ITEMREFRemove(s string) *MAPElement {
 	}
 	e.StringAttributes.Del("itemref")
 	return e
+}
+
+func (e *MAPElement) ITEMREFRemoveF(format string, args ...any) *MAPElement {
+	return e.ITEMREFRemove(fmt.Sprintf(format, args...))
 }
 
 // The itemscope global attribute is used to add an item to a microdata DOM tree
@@ -956,9 +1046,20 @@ func (e *MAPElement) ITEMTYPE(s string) *MAPElement {
 	return e
 }
 
+func (e *MAPElement) ITEMTYPEF(format string, args ...any) *MAPElement {
+	return e.ITEMTYPE(fmt.Sprintf(format, args...))
+}
+
 func (e *MAPElement) IfITEMTYPE(condition bool, s string) *MAPElement {
 	if condition {
 		e.ITEMTYPE(s)
+	}
+	return e
+}
+
+func (e *MAPElement) IfITEMTYPEF(condition bool, format string, args ...any) *MAPElement {
+	if condition {
+		e.ITEMTYPE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -970,6 +1071,10 @@ func (e *MAPElement) ITEMTYPERemove(s string) *MAPElement {
 	}
 	e.StringAttributes.Del("itemtype")
 	return e
+}
+
+func (e *MAPElement) ITEMTYPERemoveF(format string, args ...any) *MAPElement {
+	return e.ITEMTYPERemove(fmt.Sprintf(format, args...))
 }
 
 // The lang global attribute helps define the language of an element: the language
@@ -986,9 +1091,20 @@ func (e *MAPElement) LANG(s string) *MAPElement {
 	return e
 }
 
+func (e *MAPElement) LANGF(format string, args ...any) *MAPElement {
+	return e.LANG(fmt.Sprintf(format, args...))
+}
+
 func (e *MAPElement) IfLANG(condition bool, s string) *MAPElement {
 	if condition {
 		e.LANG(s)
+	}
+	return e
+}
+
+func (e *MAPElement) IfLANGF(condition bool, format string, args ...any) *MAPElement {
+	if condition {
+		e.LANG(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1000,6 +1116,10 @@ func (e *MAPElement) LANGRemove(s string) *MAPElement {
 	}
 	e.StringAttributes.Del("lang")
 	return e
+}
+
+func (e *MAPElement) LANGRemoveF(format string, args ...any) *MAPElement {
+	return e.LANGRemove(fmt.Sprintf(format, args...))
 }
 
 // The nonce global attribute is a unique identifier used to declare inline
@@ -1014,9 +1134,20 @@ func (e *MAPElement) NONCE(s string) *MAPElement {
 	return e
 }
 
+func (e *MAPElement) NONCEF(format string, args ...any) *MAPElement {
+	return e.NONCE(fmt.Sprintf(format, args...))
+}
+
 func (e *MAPElement) IfNONCE(condition bool, s string) *MAPElement {
 	if condition {
 		e.NONCE(s)
+	}
+	return e
+}
+
+func (e *MAPElement) IfNONCEF(condition bool, format string, args ...any) *MAPElement {
+	if condition {
+		e.NONCE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1028,6 +1159,10 @@ func (e *MAPElement) NONCERemove(s string) *MAPElement {
 	}
 	e.StringAttributes.Del("nonce")
 	return e
+}
+
+func (e *MAPElement) NONCERemoveF(format string, args ...any) *MAPElement {
+	return e.NONCERemove(fmt.Sprintf(format, args...))
 }
 
 // The part global attribute contains a space-separated list of the part names of
@@ -1122,9 +1257,20 @@ func (e *MAPElement) ROLE(s string) *MAPElement {
 	return e
 }
 
+func (e *MAPElement) ROLEF(format string, args ...any) *MAPElement {
+	return e.ROLE(fmt.Sprintf(format, args...))
+}
+
 func (e *MAPElement) IfROLE(condition bool, s string) *MAPElement {
 	if condition {
 		e.ROLE(s)
+	}
+	return e
+}
+
+func (e *MAPElement) IfROLEF(condition bool, format string, args ...any) *MAPElement {
+	if condition {
+		e.ROLE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1136,6 +1282,10 @@ func (e *MAPElement) ROLERemove(s string) *MAPElement {
 	}
 	e.StringAttributes.Del("role")
 	return e
+}
+
+func (e *MAPElement) ROLERemoveF(format string, args ...any) *MAPElement {
+	return e.ROLERemove(fmt.Sprintf(format, args...))
 }
 
 // The slot global attribute assigns a slot in a shadow DOM shadow tree to an
@@ -1150,9 +1300,20 @@ func (e *MAPElement) SLOT(s string) *MAPElement {
 	return e
 }
 
+func (e *MAPElement) SLOTF(format string, args ...any) *MAPElement {
+	return e.SLOT(fmt.Sprintf(format, args...))
+}
+
 func (e *MAPElement) IfSLOT(condition bool, s string) *MAPElement {
 	if condition {
 		e.SLOT(s)
+	}
+	return e
+}
+
+func (e *MAPElement) IfSLOTF(condition bool, format string, args ...any) *MAPElement {
+	if condition {
+		e.SLOT(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1164,6 +1325,10 @@ func (e *MAPElement) SLOTRemove(s string) *MAPElement {
 	}
 	e.StringAttributes.Del("slot")
 	return e
+}
+
+func (e *MAPElement) SLOTRemoveF(format string, args ...any) *MAPElement {
+	return e.SLOTRemove(fmt.Sprintf(format, args...))
 }
 
 // The spellcheck global attribute is an enumerated attribute that defines whether
@@ -1368,9 +1533,20 @@ func (e *MAPElement) TITLE(s string) *MAPElement {
 	return e
 }
 
+func (e *MAPElement) TITLEF(format string, args ...any) *MAPElement {
+	return e.TITLE(fmt.Sprintf(format, args...))
+}
+
 func (e *MAPElement) IfTITLE(condition bool, s string) *MAPElement {
 	if condition {
 		e.TITLE(s)
+	}
+	return e
+}
+
+func (e *MAPElement) IfTITLEF(condition bool, format string, args ...any) *MAPElement {
+	if condition {
+		e.TITLE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1382,6 +1558,10 @@ func (e *MAPElement) TITLERemove(s string) *MAPElement {
 	}
 	e.StringAttributes.Del("title")
 	return e
+}
+
+func (e *MAPElement) TITLERemoveF(format string, args ...any) *MAPElement {
+	return e.TITLERemove(fmt.Sprintf(format, args...))
 }
 
 // The translate global attribute is an enumerated attribute that is used to
@@ -1426,7 +1606,7 @@ func (e *MAPElement) DATASTAR_MERGE_STORE(v any) *MAPElement {
 	if err != nil {
 		panic(err)
 	}
-	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	e.CustomDataAttributes.Set("merge-store", string(b))
 	return e
 }
 
@@ -1548,34 +1728,34 @@ func (e *MAPElement) DATASTAR_TEXTRemove() *MAPElement {
 
 // Sets the event handler of the element
 
-type MapDataOnMod customDataKeyModifier
+type MapOnMod customDataKeyModifier
 
 // Debounces the event handler
-func MapDataOnModDebounce(
+func MapOnModDebounce(
 	d time.Duration,
-) MapDataOnMod {
+) MapOnMod {
 	return func() string {
 		return fmt.Sprintf("debounce_%dms", d.Milliseconds())
 	}
 }
 
 // Throttles the event handler
-func MapDataOnModThrottle(
+func MapOnModThrottle(
 	d time.Duration,
-) MapDataOnMod {
+) MapOnMod {
 	return func() string {
 		return fmt.Sprintf("throttle_%dms", d.Milliseconds())
 	}
 }
 
-func (e *MAPElement) DATASTAR_ON(key string, expression string, modifiers ...MapDataOnMod) *MAPElement {
+func (e *MAPElement) DATASTAR_ON(key string, expression string, modifiers ...MapOnMod) *MAPElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
 	key = fmt.Sprintf("data-on-%s", key)
 
-	customMods := lo.Map(modifiers, func(m MapDataOnMod, i int) customDataKeyModifier {
+	customMods := lo.Map(modifiers, func(m MapOnMod, i int) customDataKeyModifier {
 		return customDataKeyModifier(m)
 	})
 	key = customDataKey(key, customMods...)
@@ -1583,7 +1763,7 @@ func (e *MAPElement) DATASTAR_ON(key string, expression string, modifiers ...Map
 	return e
 }
 
-func (e *MAPElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...MapDataOnMod) *MAPElement {
+func (e *MAPElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...MapOnMod) *MAPElement {
 	if condition {
 		e.DATASTAR_ON(key, expression, modifiers...)
 	}
@@ -1676,7 +1856,7 @@ func (e *MAPElement) DATASTAR_FETCH_INDICATOR(expression string) *MAPElement {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "DatastarFetchIndicator"
+	key := "data-fetch-indicator"
 
 	e.StringAttributes.Set(key, expression)
 	return e
@@ -1694,7 +1874,7 @@ func (e *MAPElement) DATASTAR_FETCH_INDICATORRemove() *MAPElement {
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("DatastarFetchIndicator")
+	e.StringAttributes.Del("data-fetch-indicator")
 	return e
 }
 

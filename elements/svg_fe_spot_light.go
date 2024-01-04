@@ -310,9 +310,20 @@ func (e *SVGFESPOTLIGHTElement) ID(s string) *SVGFESPOTLIGHTElement {
 	return e
 }
 
+func (e *SVGFESPOTLIGHTElement) IDF(format string, args ...any) *SVGFESPOTLIGHTElement {
+	return e.ID(fmt.Sprintf(format, args...))
+}
+
 func (e *SVGFESPOTLIGHTElement) IfID(condition bool, s string) *SVGFESPOTLIGHTElement {
 	if condition {
 		e.ID(s)
+	}
+	return e
+}
+
+func (e *SVGFESPOTLIGHTElement) IfIDF(condition bool, format string, args ...any) *SVGFESPOTLIGHTElement {
+	if condition {
+		e.ID(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -324,6 +335,10 @@ func (e *SVGFESPOTLIGHTElement) IDRemove(s string) *SVGFESPOTLIGHTElement {
 	}
 	e.StringAttributes.Del("id")
 	return e
+}
+
+func (e *SVGFESPOTLIGHTElement) IDRemoveF(format string, args ...any) *SVGFESPOTLIGHTElement {
+	return e.IDRemove(fmt.Sprintf(format, args...))
 }
 
 // Specifies one or more classnames for an element (refers to a class in a style
@@ -462,7 +477,7 @@ func (e *SVGFESPOTLIGHTElement) DATASTAR_MERGE_STORE(v any) *SVGFESPOTLIGHTEleme
 	if err != nil {
 		panic(err)
 	}
-	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	e.CustomDataAttributes.Set("merge-store", string(b))
 	return e
 }
 
@@ -584,34 +599,34 @@ func (e *SVGFESPOTLIGHTElement) DATASTAR_TEXTRemove() *SVGFESPOTLIGHTElement {
 
 // Sets the event handler of the element
 
-type SVGFeSpotLightDataOnMod customDataKeyModifier
+type SVGFeSpotLightOnMod customDataKeyModifier
 
 // Debounces the event handler
-func SVGFeSpotLightDataOnModDebounce(
+func SVGFeSpotLightOnModDebounce(
 	d time.Duration,
-) SVGFeSpotLightDataOnMod {
+) SVGFeSpotLightOnMod {
 	return func() string {
 		return fmt.Sprintf("debounce_%dms", d.Milliseconds())
 	}
 }
 
 // Throttles the event handler
-func SVGFeSpotLightDataOnModThrottle(
+func SVGFeSpotLightOnModThrottle(
 	d time.Duration,
-) SVGFeSpotLightDataOnMod {
+) SVGFeSpotLightOnMod {
 	return func() string {
 		return fmt.Sprintf("throttle_%dms", d.Milliseconds())
 	}
 }
 
-func (e *SVGFESPOTLIGHTElement) DATASTAR_ON(key string, expression string, modifiers ...SVGFeSpotLightDataOnMod) *SVGFESPOTLIGHTElement {
+func (e *SVGFESPOTLIGHTElement) DATASTAR_ON(key string, expression string, modifiers ...SVGFeSpotLightOnMod) *SVGFESPOTLIGHTElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
 	key = fmt.Sprintf("data-on-%s", key)
 
-	customMods := lo.Map(modifiers, func(m SVGFeSpotLightDataOnMod, i int) customDataKeyModifier {
+	customMods := lo.Map(modifiers, func(m SVGFeSpotLightOnMod, i int) customDataKeyModifier {
 		return customDataKeyModifier(m)
 	})
 	key = customDataKey(key, customMods...)
@@ -619,7 +634,7 @@ func (e *SVGFESPOTLIGHTElement) DATASTAR_ON(key string, expression string, modif
 	return e
 }
 
-func (e *SVGFESPOTLIGHTElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SVGFeSpotLightDataOnMod) *SVGFESPOTLIGHTElement {
+func (e *SVGFESPOTLIGHTElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SVGFeSpotLightOnMod) *SVGFESPOTLIGHTElement {
 	if condition {
 		e.DATASTAR_ON(key, expression, modifiers...)
 	}
@@ -712,7 +727,7 @@ func (e *SVGFESPOTLIGHTElement) DATASTAR_FETCH_INDICATOR(expression string) *SVG
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "DatastarFetchIndicator"
+	key := "data-fetch-indicator"
 
 	e.StringAttributes.Set(key, expression)
 	return e
@@ -730,7 +745,7 @@ func (e *SVGFESPOTLIGHTElement) DATASTAR_FETCH_INDICATORRemove() *SVGFESPOTLIGHT
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("DatastarFetchIndicator")
+	e.StringAttributes.Del("data-fetch-indicator")
 	return e
 }
 

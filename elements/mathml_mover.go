@@ -268,9 +268,20 @@ func (e *MathMLMOVERElement) ID(s string) *MathMLMOVERElement {
 	return e
 }
 
+func (e *MathMLMOVERElement) IDF(format string, args ...any) *MathMLMOVERElement {
+	return e.ID(fmt.Sprintf(format, args...))
+}
+
 func (e *MathMLMOVERElement) IfID(condition bool, s string) *MathMLMOVERElement {
 	if condition {
 		e.ID(s)
+	}
+	return e
+}
+
+func (e *MathMLMOVERElement) IfIDF(condition bool, format string, args ...any) *MathMLMOVERElement {
+	if condition {
+		e.ID(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -284,6 +295,10 @@ func (e *MathMLMOVERElement) IDRemove(s string) *MathMLMOVERElement {
 	return e
 }
 
+func (e *MathMLMOVERElement) IDRemoveF(format string, args ...any) *MathMLMOVERElement {
+	return e.IDRemove(fmt.Sprintf(format, args...))
+}
+
 // This attribute specifies the background color of the element
 // Possible values are a color name or a color specification in the format defined
 // in the CSS3 Color Module [CSS3COLOR].
@@ -295,9 +310,20 @@ func (e *MathMLMOVERElement) MATHBACKGROUND(s string) *MathMLMOVERElement {
 	return e
 }
 
+func (e *MathMLMOVERElement) MATHBACKGROUNDF(format string, args ...any) *MathMLMOVERElement {
+	return e.MATHBACKGROUND(fmt.Sprintf(format, args...))
+}
+
 func (e *MathMLMOVERElement) IfMATHBACKGROUND(condition bool, s string) *MathMLMOVERElement {
 	if condition {
 		e.MATHBACKGROUND(s)
+	}
+	return e
+}
+
+func (e *MathMLMOVERElement) IfMATHBACKGROUNDF(condition bool, format string, args ...any) *MathMLMOVERElement {
+	if condition {
+		e.MATHBACKGROUND(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -311,6 +337,10 @@ func (e *MathMLMOVERElement) MATHBACKGROUNDRemove(s string) *MathMLMOVERElement 
 	return e
 }
 
+func (e *MathMLMOVERElement) MATHBACKGROUNDRemoveF(format string, args ...any) *MathMLMOVERElement {
+	return e.MATHBACKGROUNDRemove(fmt.Sprintf(format, args...))
+}
+
 // This attribute specifies the color of the element
 // Possible values are a color name or a color specification in the format defined
 // in the CSS3 Color Module [CSS3COLOR].
@@ -322,9 +352,20 @@ func (e *MathMLMOVERElement) MATHCOLOR(s string) *MathMLMOVERElement {
 	return e
 }
 
+func (e *MathMLMOVERElement) MATHCOLORF(format string, args ...any) *MathMLMOVERElement {
+	return e.MATHCOLOR(fmt.Sprintf(format, args...))
+}
+
 func (e *MathMLMOVERElement) IfMATHCOLOR(condition bool, s string) *MathMLMOVERElement {
 	if condition {
 		e.MATHCOLOR(s)
+	}
+	return e
+}
+
+func (e *MathMLMOVERElement) IfMATHCOLORF(condition bool, format string, args ...any) *MathMLMOVERElement {
+	if condition {
+		e.MATHCOLOR(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -338,6 +379,10 @@ func (e *MathMLMOVERElement) MATHCOLORRemove(s string) *MathMLMOVERElement {
 	return e
 }
 
+func (e *MathMLMOVERElement) MATHCOLORRemoveF(format string, args ...any) *MathMLMOVERElement {
+	return e.MATHCOLORRemove(fmt.Sprintf(format, args...))
+}
+
 // This attribute specifies the size of the element
 // Possible values are a dimension or a dimensionless number.
 func (e *MathMLMOVERElement) MATHSIZE_STR(s string) *MathMLMOVERElement {
@@ -348,9 +393,20 @@ func (e *MathMLMOVERElement) MATHSIZE_STR(s string) *MathMLMOVERElement {
 	return e
 }
 
+func (e *MathMLMOVERElement) MATHSIZE_STRF(format string, args ...any) *MathMLMOVERElement {
+	return e.MATHSIZE_STR(fmt.Sprintf(format, args...))
+}
+
 func (e *MathMLMOVERElement) IfMATHSIZE_STR(condition bool, s string) *MathMLMOVERElement {
 	if condition {
 		e.MATHSIZE_STR(s)
+	}
+	return e
+}
+
+func (e *MathMLMOVERElement) IfMATHSIZE_STRF(condition bool, format string, args ...any) *MathMLMOVERElement {
+	if condition {
+		e.MATHSIZE_STR(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -362,6 +418,10 @@ func (e *MathMLMOVERElement) MATHSIZE_STRRemove(s string) *MathMLMOVERElement {
 	}
 	e.StringAttributes.Del("mathsize")
 	return e
+}
+
+func (e *MathMLMOVERElement) MATHSIZE_STRRemoveF(format string, args ...any) *MathMLMOVERElement {
+	return e.MATHSIZE_STRRemove(fmt.Sprintf(format, args...))
 }
 
 // This attribute declares a cryptographic nonce (number used once) that should be
@@ -376,9 +436,20 @@ func (e *MathMLMOVERElement) NONCE(s string) *MathMLMOVERElement {
 	return e
 }
 
+func (e *MathMLMOVERElement) NONCEF(format string, args ...any) *MathMLMOVERElement {
+	return e.NONCE(fmt.Sprintf(format, args...))
+}
+
 func (e *MathMLMOVERElement) IfNONCE(condition bool, s string) *MathMLMOVERElement {
 	if condition {
 		e.NONCE(s)
+	}
+	return e
+}
+
+func (e *MathMLMOVERElement) IfNONCEF(condition bool, format string, args ...any) *MathMLMOVERElement {
+	if condition {
+		e.NONCE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -390,6 +461,10 @@ func (e *MathMLMOVERElement) NONCERemove(s string) *MathMLMOVERElement {
 	}
 	e.StringAttributes.Del("nonce")
 	return e
+}
+
+func (e *MathMLMOVERElement) NONCERemoveF(format string, args ...any) *MathMLMOVERElement {
+	return e.NONCERemove(fmt.Sprintf(format, args...))
 }
 
 // This attribute specifies the script level of the element
@@ -548,7 +623,7 @@ func (e *MathMLMOVERElement) DATASTAR_MERGE_STORE(v any) *MathMLMOVERElement {
 	if err != nil {
 		panic(err)
 	}
-	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	e.CustomDataAttributes.Set("merge-store", string(b))
 	return e
 }
 
@@ -670,34 +745,34 @@ func (e *MathMLMOVERElement) DATASTAR_TEXTRemove() *MathMLMOVERElement {
 
 // Sets the event handler of the element
 
-type MathMLMoverDataOnMod customDataKeyModifier
+type MathMLMoverOnMod customDataKeyModifier
 
 // Debounces the event handler
-func MathMLMoverDataOnModDebounce(
+func MathMLMoverOnModDebounce(
 	d time.Duration,
-) MathMLMoverDataOnMod {
+) MathMLMoverOnMod {
 	return func() string {
 		return fmt.Sprintf("debounce_%dms", d.Milliseconds())
 	}
 }
 
 // Throttles the event handler
-func MathMLMoverDataOnModThrottle(
+func MathMLMoverOnModThrottle(
 	d time.Duration,
-) MathMLMoverDataOnMod {
+) MathMLMoverOnMod {
 	return func() string {
 		return fmt.Sprintf("throttle_%dms", d.Milliseconds())
 	}
 }
 
-func (e *MathMLMOVERElement) DATASTAR_ON(key string, expression string, modifiers ...MathMLMoverDataOnMod) *MathMLMOVERElement {
+func (e *MathMLMOVERElement) DATASTAR_ON(key string, expression string, modifiers ...MathMLMoverOnMod) *MathMLMOVERElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
 	key = fmt.Sprintf("data-on-%s", key)
 
-	customMods := lo.Map(modifiers, func(m MathMLMoverDataOnMod, i int) customDataKeyModifier {
+	customMods := lo.Map(modifiers, func(m MathMLMoverOnMod, i int) customDataKeyModifier {
 		return customDataKeyModifier(m)
 	})
 	key = customDataKey(key, customMods...)
@@ -705,7 +780,7 @@ func (e *MathMLMOVERElement) DATASTAR_ON(key string, expression string, modifier
 	return e
 }
 
-func (e *MathMLMOVERElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...MathMLMoverDataOnMod) *MathMLMOVERElement {
+func (e *MathMLMOVERElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...MathMLMoverOnMod) *MathMLMOVERElement {
 	if condition {
 		e.DATASTAR_ON(key, expression, modifiers...)
 	}
@@ -798,7 +873,7 @@ func (e *MathMLMOVERElement) DATASTAR_FETCH_INDICATOR(expression string) *MathML
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "DatastarFetchIndicator"
+	key := "data-fetch-indicator"
 
 	e.StringAttributes.Set(key, expression)
 	return e
@@ -816,7 +891,7 @@ func (e *MathMLMOVERElement) DATASTAR_FETCH_INDICATORRemove() *MathMLMOVERElemen
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("DatastarFetchIndicator")
+	e.StringAttributes.Del("data-fetch-indicator")
 	return e
 }
 

@@ -175,9 +175,20 @@ func (e *SOURCEElement) MEDIA(s string) *SOURCEElement {
 	return e
 }
 
+func (e *SOURCEElement) MEDIAF(format string, args ...any) *SOURCEElement {
+	return e.MEDIA(fmt.Sprintf(format, args...))
+}
+
 func (e *SOURCEElement) IfMEDIA(condition bool, s string) *SOURCEElement {
 	if condition {
 		e.MEDIA(s)
+	}
+	return e
+}
+
+func (e *SOURCEElement) IfMEDIAF(condition bool, format string, args ...any) *SOURCEElement {
+	if condition {
+		e.MEDIA(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -191,6 +202,10 @@ func (e *SOURCEElement) MEDIARemove(s string) *SOURCEElement {
 	return e
 }
 
+func (e *SOURCEElement) MEDIARemoveF(format string, args ...any) *SOURCEElement {
+	return e.MEDIARemove(fmt.Sprintf(format, args...))
+}
+
 // Specifies the size of the linked resource.
 func (e *SOURCEElement) SIZES(s string) *SOURCEElement {
 	if e.StringAttributes == nil {
@@ -200,9 +215,20 @@ func (e *SOURCEElement) SIZES(s string) *SOURCEElement {
 	return e
 }
 
+func (e *SOURCEElement) SIZESF(format string, args ...any) *SOURCEElement {
+	return e.SIZES(fmt.Sprintf(format, args...))
+}
+
 func (e *SOURCEElement) IfSIZES(condition bool, s string) *SOURCEElement {
 	if condition {
 		e.SIZES(s)
+	}
+	return e
+}
+
+func (e *SOURCEElement) IfSIZESF(condition bool, format string, args ...any) *SOURCEElement {
+	if condition {
+		e.SIZES(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -216,6 +242,10 @@ func (e *SOURCEElement) SIZESRemove(s string) *SOURCEElement {
 	return e
 }
 
+func (e *SOURCEElement) SIZESRemoveF(format string, args ...any) *SOURCEElement {
+	return e.SIZESRemove(fmt.Sprintf(format, args...))
+}
+
 // The URL of the media resource.
 func (e *SOURCEElement) SRC(s string) *SOURCEElement {
 	if e.StringAttributes == nil {
@@ -225,9 +255,20 @@ func (e *SOURCEElement) SRC(s string) *SOURCEElement {
 	return e
 }
 
+func (e *SOURCEElement) SRCF(format string, args ...any) *SOURCEElement {
+	return e.SRC(fmt.Sprintf(format, args...))
+}
+
 func (e *SOURCEElement) IfSRC(condition bool, s string) *SOURCEElement {
 	if condition {
 		e.SRC(s)
+	}
+	return e
+}
+
+func (e *SOURCEElement) IfSRCF(condition bool, format string, args ...any) *SOURCEElement {
+	if condition {
+		e.SRC(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -241,6 +282,10 @@ func (e *SOURCEElement) SRCRemove(s string) *SOURCEElement {
 	return e
 }
 
+func (e *SOURCEElement) SRCRemoveF(format string, args ...any) *SOURCEElement {
+	return e.SRCRemove(fmt.Sprintf(format, args...))
+}
+
 // A list of one or more strings separated by commas indicating a set of possible
 // image sources for the user agent to use.
 func (e *SOURCEElement) SRCSET(s string) *SOURCEElement {
@@ -251,9 +296,20 @@ func (e *SOURCEElement) SRCSET(s string) *SOURCEElement {
 	return e
 }
 
+func (e *SOURCEElement) SRCSETF(format string, args ...any) *SOURCEElement {
+	return e.SRCSET(fmt.Sprintf(format, args...))
+}
+
 func (e *SOURCEElement) IfSRCSET(condition bool, s string) *SOURCEElement {
 	if condition {
 		e.SRCSET(s)
+	}
+	return e
+}
+
+func (e *SOURCEElement) IfSRCSETF(condition bool, format string, args ...any) *SOURCEElement {
+	if condition {
+		e.SRCSET(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -267,6 +323,10 @@ func (e *SOURCEElement) SRCSETRemove(s string) *SOURCEElement {
 	return e
 }
 
+func (e *SOURCEElement) SRCSETRemoveF(format string, args ...any) *SOURCEElement {
+	return e.SRCSETRemove(fmt.Sprintf(format, args...))
+}
+
 // Specifies the MIME type of the linked resource.
 func (e *SOURCEElement) TYPE(s string) *SOURCEElement {
 	if e.StringAttributes == nil {
@@ -276,9 +336,20 @@ func (e *SOURCEElement) TYPE(s string) *SOURCEElement {
 	return e
 }
 
+func (e *SOURCEElement) TYPEF(format string, args ...any) *SOURCEElement {
+	return e.TYPE(fmt.Sprintf(format, args...))
+}
+
 func (e *SOURCEElement) IfTYPE(condition bool, s string) *SOURCEElement {
 	if condition {
 		e.TYPE(s)
+	}
+	return e
+}
+
+func (e *SOURCEElement) IfTYPEF(condition bool, format string, args ...any) *SOURCEElement {
+	if condition {
+		e.TYPE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -290,6 +361,10 @@ func (e *SOURCEElement) TYPERemove(s string) *SOURCEElement {
 	}
 	e.StringAttributes.Del("type")
 	return e
+}
+
+func (e *SOURCEElement) TYPERemoveF(format string, args ...any) *SOURCEElement {
+	return e.TYPERemove(fmt.Sprintf(format, args...))
 }
 
 // The accesskey global attribute provides a hint for generating a keyboard
@@ -737,9 +812,20 @@ func (e *SOURCEElement) ID(s string) *SOURCEElement {
 	return e
 }
 
+func (e *SOURCEElement) IDF(format string, args ...any) *SOURCEElement {
+	return e.ID(fmt.Sprintf(format, args...))
+}
+
 func (e *SOURCEElement) IfID(condition bool, s string) *SOURCEElement {
 	if condition {
 		e.ID(s)
+	}
+	return e
+}
+
+func (e *SOURCEElement) IfIDF(condition bool, format string, args ...any) *SOURCEElement {
+	if condition {
+		e.ID(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -751,6 +837,10 @@ func (e *SOURCEElement) IDRemove(s string) *SOURCEElement {
 	}
 	e.StringAttributes.Del("id")
 	return e
+}
+
+func (e *SOURCEElement) IDRemoveF(format string, args ...any) *SOURCEElement {
+	return e.IDRemove(fmt.Sprintf(format, args...))
 }
 
 // The inert global attribute is a Boolean attribute indicating that the browser
@@ -885,9 +975,20 @@ func (e *SOURCEElement) IS(s string) *SOURCEElement {
 	return e
 }
 
+func (e *SOURCEElement) ISF(format string, args ...any) *SOURCEElement {
+	return e.IS(fmt.Sprintf(format, args...))
+}
+
 func (e *SOURCEElement) IfIS(condition bool, s string) *SOURCEElement {
 	if condition {
 		e.IS(s)
+	}
+	return e
+}
+
+func (e *SOURCEElement) IfISF(condition bool, format string, args ...any) *SOURCEElement {
+	if condition {
+		e.IS(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -899,6 +1000,10 @@ func (e *SOURCEElement) ISRemove(s string) *SOURCEElement {
 	}
 	e.StringAttributes.Del("is")
 	return e
+}
+
+func (e *SOURCEElement) ISRemoveF(format string, args ...any) *SOURCEElement {
+	return e.ISRemove(fmt.Sprintf(format, args...))
 }
 
 // The itemid global attribute provides microdata in the form of a unique, global
@@ -922,9 +1027,20 @@ func (e *SOURCEElement) ITEMID(s string) *SOURCEElement {
 	return e
 }
 
+func (e *SOURCEElement) ITEMIDF(format string, args ...any) *SOURCEElement {
+	return e.ITEMID(fmt.Sprintf(format, args...))
+}
+
 func (e *SOURCEElement) IfITEMID(condition bool, s string) *SOURCEElement {
 	if condition {
 		e.ITEMID(s)
+	}
+	return e
+}
+
+func (e *SOURCEElement) IfITEMIDF(condition bool, format string, args ...any) *SOURCEElement {
+	if condition {
+		e.ITEMID(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -936,6 +1052,10 @@ func (e *SOURCEElement) ITEMIDRemove(s string) *SOURCEElement {
 	}
 	e.StringAttributes.Del("itemid")
 	return e
+}
+
+func (e *SOURCEElement) ITEMIDRemoveF(format string, args ...any) *SOURCEElement {
+	return e.ITEMIDRemove(fmt.Sprintf(format, args...))
 }
 
 // The itemprop global attribute is used to add properties to an item
@@ -954,9 +1074,20 @@ func (e *SOURCEElement) ITEMPROP(s string) *SOURCEElement {
 	return e
 }
 
+func (e *SOURCEElement) ITEMPROPF(format string, args ...any) *SOURCEElement {
+	return e.ITEMPROP(fmt.Sprintf(format, args...))
+}
+
 func (e *SOURCEElement) IfITEMPROP(condition bool, s string) *SOURCEElement {
 	if condition {
 		e.ITEMPROP(s)
+	}
+	return e
+}
+
+func (e *SOURCEElement) IfITEMPROPF(condition bool, format string, args ...any) *SOURCEElement {
+	if condition {
+		e.ITEMPROP(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -968,6 +1099,10 @@ func (e *SOURCEElement) ITEMPROPRemove(s string) *SOURCEElement {
 	}
 	e.StringAttributes.Del("itemprop")
 	return e
+}
+
+func (e *SOURCEElement) ITEMPROPRemoveF(format string, args ...any) *SOURCEElement {
+	return e.ITEMPROPRemove(fmt.Sprintf(format, args...))
 }
 
 // Properties that are not descendants of an element with the itemscope attribute
@@ -983,9 +1118,20 @@ func (e *SOURCEElement) ITEMREF(s string) *SOURCEElement {
 	return e
 }
 
+func (e *SOURCEElement) ITEMREFF(format string, args ...any) *SOURCEElement {
+	return e.ITEMREF(fmt.Sprintf(format, args...))
+}
+
 func (e *SOURCEElement) IfITEMREF(condition bool, s string) *SOURCEElement {
 	if condition {
 		e.ITEMREF(s)
+	}
+	return e
+}
+
+func (e *SOURCEElement) IfITEMREFF(condition bool, format string, args ...any) *SOURCEElement {
+	if condition {
+		e.ITEMREF(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -997,6 +1143,10 @@ func (e *SOURCEElement) ITEMREFRemove(s string) *SOURCEElement {
 	}
 	e.StringAttributes.Del("itemref")
 	return e
+}
+
+func (e *SOURCEElement) ITEMREFRemoveF(format string, args ...any) *SOURCEElement {
+	return e.ITEMREFRemove(fmt.Sprintf(format, args...))
 }
 
 // The itemscope global attribute is used to add an item to a microdata DOM tree
@@ -1060,9 +1210,20 @@ func (e *SOURCEElement) ITEMTYPE(s string) *SOURCEElement {
 	return e
 }
 
+func (e *SOURCEElement) ITEMTYPEF(format string, args ...any) *SOURCEElement {
+	return e.ITEMTYPE(fmt.Sprintf(format, args...))
+}
+
 func (e *SOURCEElement) IfITEMTYPE(condition bool, s string) *SOURCEElement {
 	if condition {
 		e.ITEMTYPE(s)
+	}
+	return e
+}
+
+func (e *SOURCEElement) IfITEMTYPEF(condition bool, format string, args ...any) *SOURCEElement {
+	if condition {
+		e.ITEMTYPE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1074,6 +1235,10 @@ func (e *SOURCEElement) ITEMTYPERemove(s string) *SOURCEElement {
 	}
 	e.StringAttributes.Del("itemtype")
 	return e
+}
+
+func (e *SOURCEElement) ITEMTYPERemoveF(format string, args ...any) *SOURCEElement {
+	return e.ITEMTYPERemove(fmt.Sprintf(format, args...))
 }
 
 // The lang global attribute helps define the language of an element: the language
@@ -1090,9 +1255,20 @@ func (e *SOURCEElement) LANG(s string) *SOURCEElement {
 	return e
 }
 
+func (e *SOURCEElement) LANGF(format string, args ...any) *SOURCEElement {
+	return e.LANG(fmt.Sprintf(format, args...))
+}
+
 func (e *SOURCEElement) IfLANG(condition bool, s string) *SOURCEElement {
 	if condition {
 		e.LANG(s)
+	}
+	return e
+}
+
+func (e *SOURCEElement) IfLANGF(condition bool, format string, args ...any) *SOURCEElement {
+	if condition {
+		e.LANG(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1104,6 +1280,10 @@ func (e *SOURCEElement) LANGRemove(s string) *SOURCEElement {
 	}
 	e.StringAttributes.Del("lang")
 	return e
+}
+
+func (e *SOURCEElement) LANGRemoveF(format string, args ...any) *SOURCEElement {
+	return e.LANGRemove(fmt.Sprintf(format, args...))
 }
 
 // The nonce global attribute is a unique identifier used to declare inline
@@ -1118,9 +1298,20 @@ func (e *SOURCEElement) NONCE(s string) *SOURCEElement {
 	return e
 }
 
+func (e *SOURCEElement) NONCEF(format string, args ...any) *SOURCEElement {
+	return e.NONCE(fmt.Sprintf(format, args...))
+}
+
 func (e *SOURCEElement) IfNONCE(condition bool, s string) *SOURCEElement {
 	if condition {
 		e.NONCE(s)
+	}
+	return e
+}
+
+func (e *SOURCEElement) IfNONCEF(condition bool, format string, args ...any) *SOURCEElement {
+	if condition {
+		e.NONCE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1132,6 +1323,10 @@ func (e *SOURCEElement) NONCERemove(s string) *SOURCEElement {
 	}
 	e.StringAttributes.Del("nonce")
 	return e
+}
+
+func (e *SOURCEElement) NONCERemoveF(format string, args ...any) *SOURCEElement {
+	return e.NONCERemove(fmt.Sprintf(format, args...))
 }
 
 // The part global attribute contains a space-separated list of the part names of
@@ -1226,9 +1421,20 @@ func (e *SOURCEElement) ROLE(s string) *SOURCEElement {
 	return e
 }
 
+func (e *SOURCEElement) ROLEF(format string, args ...any) *SOURCEElement {
+	return e.ROLE(fmt.Sprintf(format, args...))
+}
+
 func (e *SOURCEElement) IfROLE(condition bool, s string) *SOURCEElement {
 	if condition {
 		e.ROLE(s)
+	}
+	return e
+}
+
+func (e *SOURCEElement) IfROLEF(condition bool, format string, args ...any) *SOURCEElement {
+	if condition {
+		e.ROLE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1240,6 +1446,10 @@ func (e *SOURCEElement) ROLERemove(s string) *SOURCEElement {
 	}
 	e.StringAttributes.Del("role")
 	return e
+}
+
+func (e *SOURCEElement) ROLERemoveF(format string, args ...any) *SOURCEElement {
+	return e.ROLERemove(fmt.Sprintf(format, args...))
 }
 
 // The slot global attribute assigns a slot in a shadow DOM shadow tree to an
@@ -1254,9 +1464,20 @@ func (e *SOURCEElement) SLOT(s string) *SOURCEElement {
 	return e
 }
 
+func (e *SOURCEElement) SLOTF(format string, args ...any) *SOURCEElement {
+	return e.SLOT(fmt.Sprintf(format, args...))
+}
+
 func (e *SOURCEElement) IfSLOT(condition bool, s string) *SOURCEElement {
 	if condition {
 		e.SLOT(s)
+	}
+	return e
+}
+
+func (e *SOURCEElement) IfSLOTF(condition bool, format string, args ...any) *SOURCEElement {
+	if condition {
+		e.SLOT(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1268,6 +1489,10 @@ func (e *SOURCEElement) SLOTRemove(s string) *SOURCEElement {
 	}
 	e.StringAttributes.Del("slot")
 	return e
+}
+
+func (e *SOURCEElement) SLOTRemoveF(format string, args ...any) *SOURCEElement {
+	return e.SLOTRemove(fmt.Sprintf(format, args...))
 }
 
 // The spellcheck global attribute is an enumerated attribute that defines whether
@@ -1472,9 +1697,20 @@ func (e *SOURCEElement) TITLE(s string) *SOURCEElement {
 	return e
 }
 
+func (e *SOURCEElement) TITLEF(format string, args ...any) *SOURCEElement {
+	return e.TITLE(fmt.Sprintf(format, args...))
+}
+
 func (e *SOURCEElement) IfTITLE(condition bool, s string) *SOURCEElement {
 	if condition {
 		e.TITLE(s)
+	}
+	return e
+}
+
+func (e *SOURCEElement) IfTITLEF(condition bool, format string, args ...any) *SOURCEElement {
+	if condition {
+		e.TITLE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1486,6 +1722,10 @@ func (e *SOURCEElement) TITLERemove(s string) *SOURCEElement {
 	}
 	e.StringAttributes.Del("title")
 	return e
+}
+
+func (e *SOURCEElement) TITLERemoveF(format string, args ...any) *SOURCEElement {
+	return e.TITLERemove(fmt.Sprintf(format, args...))
 }
 
 // The translate global attribute is an enumerated attribute that is used to
@@ -1530,7 +1770,7 @@ func (e *SOURCEElement) DATASTAR_MERGE_STORE(v any) *SOURCEElement {
 	if err != nil {
 		panic(err)
 	}
-	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	e.CustomDataAttributes.Set("merge-store", string(b))
 	return e
 }
 
@@ -1652,34 +1892,34 @@ func (e *SOURCEElement) DATASTAR_TEXTRemove() *SOURCEElement {
 
 // Sets the event handler of the element
 
-type SourceDataOnMod customDataKeyModifier
+type SourceOnMod customDataKeyModifier
 
 // Debounces the event handler
-func SourceDataOnModDebounce(
+func SourceOnModDebounce(
 	d time.Duration,
-) SourceDataOnMod {
+) SourceOnMod {
 	return func() string {
 		return fmt.Sprintf("debounce_%dms", d.Milliseconds())
 	}
 }
 
 // Throttles the event handler
-func SourceDataOnModThrottle(
+func SourceOnModThrottle(
 	d time.Duration,
-) SourceDataOnMod {
+) SourceOnMod {
 	return func() string {
 		return fmt.Sprintf("throttle_%dms", d.Milliseconds())
 	}
 }
 
-func (e *SOURCEElement) DATASTAR_ON(key string, expression string, modifiers ...SourceDataOnMod) *SOURCEElement {
+func (e *SOURCEElement) DATASTAR_ON(key string, expression string, modifiers ...SourceOnMod) *SOURCEElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
 	key = fmt.Sprintf("data-on-%s", key)
 
-	customMods := lo.Map(modifiers, func(m SourceDataOnMod, i int) customDataKeyModifier {
+	customMods := lo.Map(modifiers, func(m SourceOnMod, i int) customDataKeyModifier {
 		return customDataKeyModifier(m)
 	})
 	key = customDataKey(key, customMods...)
@@ -1687,7 +1927,7 @@ func (e *SOURCEElement) DATASTAR_ON(key string, expression string, modifiers ...
 	return e
 }
 
-func (e *SOURCEElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SourceDataOnMod) *SOURCEElement {
+func (e *SOURCEElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SourceOnMod) *SOURCEElement {
 	if condition {
 		e.DATASTAR_ON(key, expression, modifiers...)
 	}
@@ -1780,7 +2020,7 @@ func (e *SOURCEElement) DATASTAR_FETCH_INDICATOR(expression string) *SOURCEEleme
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "DatastarFetchIndicator"
+	key := "data-fetch-indicator"
 
 	e.StringAttributes.Set(key, expression)
 	return e
@@ -1798,7 +2038,7 @@ func (e *SOURCEElement) DATASTAR_FETCH_INDICATORRemove() *SOURCEElement {
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("DatastarFetchIndicator")
+	e.StringAttributes.Del("data-fetch-indicator")
 	return e
 }
 

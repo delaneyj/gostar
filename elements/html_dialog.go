@@ -648,9 +648,20 @@ func (e *DIALOGElement) ID(s string) *DIALOGElement {
 	return e
 }
 
+func (e *DIALOGElement) IDF(format string, args ...any) *DIALOGElement {
+	return e.ID(fmt.Sprintf(format, args...))
+}
+
 func (e *DIALOGElement) IfID(condition bool, s string) *DIALOGElement {
 	if condition {
 		e.ID(s)
+	}
+	return e
+}
+
+func (e *DIALOGElement) IfIDF(condition bool, format string, args ...any) *DIALOGElement {
+	if condition {
+		e.ID(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -662,6 +673,10 @@ func (e *DIALOGElement) IDRemove(s string) *DIALOGElement {
 	}
 	e.StringAttributes.Del("id")
 	return e
+}
+
+func (e *DIALOGElement) IDRemoveF(format string, args ...any) *DIALOGElement {
+	return e.IDRemove(fmt.Sprintf(format, args...))
 }
 
 // The inert global attribute is a Boolean attribute indicating that the browser
@@ -796,9 +811,20 @@ func (e *DIALOGElement) IS(s string) *DIALOGElement {
 	return e
 }
 
+func (e *DIALOGElement) ISF(format string, args ...any) *DIALOGElement {
+	return e.IS(fmt.Sprintf(format, args...))
+}
+
 func (e *DIALOGElement) IfIS(condition bool, s string) *DIALOGElement {
 	if condition {
 		e.IS(s)
+	}
+	return e
+}
+
+func (e *DIALOGElement) IfISF(condition bool, format string, args ...any) *DIALOGElement {
+	if condition {
+		e.IS(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -810,6 +836,10 @@ func (e *DIALOGElement) ISRemove(s string) *DIALOGElement {
 	}
 	e.StringAttributes.Del("is")
 	return e
+}
+
+func (e *DIALOGElement) ISRemoveF(format string, args ...any) *DIALOGElement {
+	return e.ISRemove(fmt.Sprintf(format, args...))
 }
 
 // The itemid global attribute provides microdata in the form of a unique, global
@@ -833,9 +863,20 @@ func (e *DIALOGElement) ITEMID(s string) *DIALOGElement {
 	return e
 }
 
+func (e *DIALOGElement) ITEMIDF(format string, args ...any) *DIALOGElement {
+	return e.ITEMID(fmt.Sprintf(format, args...))
+}
+
 func (e *DIALOGElement) IfITEMID(condition bool, s string) *DIALOGElement {
 	if condition {
 		e.ITEMID(s)
+	}
+	return e
+}
+
+func (e *DIALOGElement) IfITEMIDF(condition bool, format string, args ...any) *DIALOGElement {
+	if condition {
+		e.ITEMID(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -847,6 +888,10 @@ func (e *DIALOGElement) ITEMIDRemove(s string) *DIALOGElement {
 	}
 	e.StringAttributes.Del("itemid")
 	return e
+}
+
+func (e *DIALOGElement) ITEMIDRemoveF(format string, args ...any) *DIALOGElement {
+	return e.ITEMIDRemove(fmt.Sprintf(format, args...))
 }
 
 // The itemprop global attribute is used to add properties to an item
@@ -865,9 +910,20 @@ func (e *DIALOGElement) ITEMPROP(s string) *DIALOGElement {
 	return e
 }
 
+func (e *DIALOGElement) ITEMPROPF(format string, args ...any) *DIALOGElement {
+	return e.ITEMPROP(fmt.Sprintf(format, args...))
+}
+
 func (e *DIALOGElement) IfITEMPROP(condition bool, s string) *DIALOGElement {
 	if condition {
 		e.ITEMPROP(s)
+	}
+	return e
+}
+
+func (e *DIALOGElement) IfITEMPROPF(condition bool, format string, args ...any) *DIALOGElement {
+	if condition {
+		e.ITEMPROP(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -879,6 +935,10 @@ func (e *DIALOGElement) ITEMPROPRemove(s string) *DIALOGElement {
 	}
 	e.StringAttributes.Del("itemprop")
 	return e
+}
+
+func (e *DIALOGElement) ITEMPROPRemoveF(format string, args ...any) *DIALOGElement {
+	return e.ITEMPROPRemove(fmt.Sprintf(format, args...))
 }
 
 // Properties that are not descendants of an element with the itemscope attribute
@@ -894,9 +954,20 @@ func (e *DIALOGElement) ITEMREF(s string) *DIALOGElement {
 	return e
 }
 
+func (e *DIALOGElement) ITEMREFF(format string, args ...any) *DIALOGElement {
+	return e.ITEMREF(fmt.Sprintf(format, args...))
+}
+
 func (e *DIALOGElement) IfITEMREF(condition bool, s string) *DIALOGElement {
 	if condition {
 		e.ITEMREF(s)
+	}
+	return e
+}
+
+func (e *DIALOGElement) IfITEMREFF(condition bool, format string, args ...any) *DIALOGElement {
+	if condition {
+		e.ITEMREF(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -908,6 +979,10 @@ func (e *DIALOGElement) ITEMREFRemove(s string) *DIALOGElement {
 	}
 	e.StringAttributes.Del("itemref")
 	return e
+}
+
+func (e *DIALOGElement) ITEMREFRemoveF(format string, args ...any) *DIALOGElement {
+	return e.ITEMREFRemove(fmt.Sprintf(format, args...))
 }
 
 // The itemscope global attribute is used to add an item to a microdata DOM tree
@@ -971,9 +1046,20 @@ func (e *DIALOGElement) ITEMTYPE(s string) *DIALOGElement {
 	return e
 }
 
+func (e *DIALOGElement) ITEMTYPEF(format string, args ...any) *DIALOGElement {
+	return e.ITEMTYPE(fmt.Sprintf(format, args...))
+}
+
 func (e *DIALOGElement) IfITEMTYPE(condition bool, s string) *DIALOGElement {
 	if condition {
 		e.ITEMTYPE(s)
+	}
+	return e
+}
+
+func (e *DIALOGElement) IfITEMTYPEF(condition bool, format string, args ...any) *DIALOGElement {
+	if condition {
+		e.ITEMTYPE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -985,6 +1071,10 @@ func (e *DIALOGElement) ITEMTYPERemove(s string) *DIALOGElement {
 	}
 	e.StringAttributes.Del("itemtype")
 	return e
+}
+
+func (e *DIALOGElement) ITEMTYPERemoveF(format string, args ...any) *DIALOGElement {
+	return e.ITEMTYPERemove(fmt.Sprintf(format, args...))
 }
 
 // The lang global attribute helps define the language of an element: the language
@@ -1001,9 +1091,20 @@ func (e *DIALOGElement) LANG(s string) *DIALOGElement {
 	return e
 }
 
+func (e *DIALOGElement) LANGF(format string, args ...any) *DIALOGElement {
+	return e.LANG(fmt.Sprintf(format, args...))
+}
+
 func (e *DIALOGElement) IfLANG(condition bool, s string) *DIALOGElement {
 	if condition {
 		e.LANG(s)
+	}
+	return e
+}
+
+func (e *DIALOGElement) IfLANGF(condition bool, format string, args ...any) *DIALOGElement {
+	if condition {
+		e.LANG(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1015,6 +1116,10 @@ func (e *DIALOGElement) LANGRemove(s string) *DIALOGElement {
 	}
 	e.StringAttributes.Del("lang")
 	return e
+}
+
+func (e *DIALOGElement) LANGRemoveF(format string, args ...any) *DIALOGElement {
+	return e.LANGRemove(fmt.Sprintf(format, args...))
 }
 
 // The nonce global attribute is a unique identifier used to declare inline
@@ -1029,9 +1134,20 @@ func (e *DIALOGElement) NONCE(s string) *DIALOGElement {
 	return e
 }
 
+func (e *DIALOGElement) NONCEF(format string, args ...any) *DIALOGElement {
+	return e.NONCE(fmt.Sprintf(format, args...))
+}
+
 func (e *DIALOGElement) IfNONCE(condition bool, s string) *DIALOGElement {
 	if condition {
 		e.NONCE(s)
+	}
+	return e
+}
+
+func (e *DIALOGElement) IfNONCEF(condition bool, format string, args ...any) *DIALOGElement {
+	if condition {
+		e.NONCE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1043,6 +1159,10 @@ func (e *DIALOGElement) NONCERemove(s string) *DIALOGElement {
 	}
 	e.StringAttributes.Del("nonce")
 	return e
+}
+
+func (e *DIALOGElement) NONCERemoveF(format string, args ...any) *DIALOGElement {
+	return e.NONCERemove(fmt.Sprintf(format, args...))
 }
 
 // The part global attribute contains a space-separated list of the part names of
@@ -1137,9 +1257,20 @@ func (e *DIALOGElement) ROLE(s string) *DIALOGElement {
 	return e
 }
 
+func (e *DIALOGElement) ROLEF(format string, args ...any) *DIALOGElement {
+	return e.ROLE(fmt.Sprintf(format, args...))
+}
+
 func (e *DIALOGElement) IfROLE(condition bool, s string) *DIALOGElement {
 	if condition {
 		e.ROLE(s)
+	}
+	return e
+}
+
+func (e *DIALOGElement) IfROLEF(condition bool, format string, args ...any) *DIALOGElement {
+	if condition {
+		e.ROLE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1151,6 +1282,10 @@ func (e *DIALOGElement) ROLERemove(s string) *DIALOGElement {
 	}
 	e.StringAttributes.Del("role")
 	return e
+}
+
+func (e *DIALOGElement) ROLERemoveF(format string, args ...any) *DIALOGElement {
+	return e.ROLERemove(fmt.Sprintf(format, args...))
 }
 
 // The slot global attribute assigns a slot in a shadow DOM shadow tree to an
@@ -1165,9 +1300,20 @@ func (e *DIALOGElement) SLOT(s string) *DIALOGElement {
 	return e
 }
 
+func (e *DIALOGElement) SLOTF(format string, args ...any) *DIALOGElement {
+	return e.SLOT(fmt.Sprintf(format, args...))
+}
+
 func (e *DIALOGElement) IfSLOT(condition bool, s string) *DIALOGElement {
 	if condition {
 		e.SLOT(s)
+	}
+	return e
+}
+
+func (e *DIALOGElement) IfSLOTF(condition bool, format string, args ...any) *DIALOGElement {
+	if condition {
+		e.SLOT(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1179,6 +1325,10 @@ func (e *DIALOGElement) SLOTRemove(s string) *DIALOGElement {
 	}
 	e.StringAttributes.Del("slot")
 	return e
+}
+
+func (e *DIALOGElement) SLOTRemoveF(format string, args ...any) *DIALOGElement {
+	return e.SLOTRemove(fmt.Sprintf(format, args...))
 }
 
 // The spellcheck global attribute is an enumerated attribute that defines whether
@@ -1383,9 +1533,20 @@ func (e *DIALOGElement) TITLE(s string) *DIALOGElement {
 	return e
 }
 
+func (e *DIALOGElement) TITLEF(format string, args ...any) *DIALOGElement {
+	return e.TITLE(fmt.Sprintf(format, args...))
+}
+
 func (e *DIALOGElement) IfTITLE(condition bool, s string) *DIALOGElement {
 	if condition {
 		e.TITLE(s)
+	}
+	return e
+}
+
+func (e *DIALOGElement) IfTITLEF(condition bool, format string, args ...any) *DIALOGElement {
+	if condition {
+		e.TITLE(fmt.Sprintf(format, args...))
 	}
 	return e
 }
@@ -1397,6 +1558,10 @@ func (e *DIALOGElement) TITLERemove(s string) *DIALOGElement {
 	}
 	e.StringAttributes.Del("title")
 	return e
+}
+
+func (e *DIALOGElement) TITLERemoveF(format string, args ...any) *DIALOGElement {
+	return e.TITLERemove(fmt.Sprintf(format, args...))
 }
 
 // The translate global attribute is an enumerated attribute that is used to
@@ -1441,7 +1606,7 @@ func (e *DIALOGElement) DATASTAR_MERGE_STORE(v any) *DIALOGElement {
 	if err != nil {
 		panic(err)
 	}
-	e.CustomDataAttributes.Set("data-merge-store", string(b))
+	e.CustomDataAttributes.Set("merge-store", string(b))
 	return e
 }
 
@@ -1563,34 +1728,34 @@ func (e *DIALOGElement) DATASTAR_TEXTRemove() *DIALOGElement {
 
 // Sets the event handler of the element
 
-type DialogDataOnMod customDataKeyModifier
+type DialogOnMod customDataKeyModifier
 
 // Debounces the event handler
-func DialogDataOnModDebounce(
+func DialogOnModDebounce(
 	d time.Duration,
-) DialogDataOnMod {
+) DialogOnMod {
 	return func() string {
 		return fmt.Sprintf("debounce_%dms", d.Milliseconds())
 	}
 }
 
 // Throttles the event handler
-func DialogDataOnModThrottle(
+func DialogOnModThrottle(
 	d time.Duration,
-) DialogDataOnMod {
+) DialogOnMod {
 	return func() string {
 		return fmt.Sprintf("throttle_%dms", d.Milliseconds())
 	}
 }
 
-func (e *DIALOGElement) DATASTAR_ON(key string, expression string, modifiers ...DialogDataOnMod) *DIALOGElement {
+func (e *DIALOGElement) DATASTAR_ON(key string, expression string, modifiers ...DialogOnMod) *DIALOGElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
 	key = fmt.Sprintf("data-on-%s", key)
 
-	customMods := lo.Map(modifiers, func(m DialogDataOnMod, i int) customDataKeyModifier {
+	customMods := lo.Map(modifiers, func(m DialogOnMod, i int) customDataKeyModifier {
 		return customDataKeyModifier(m)
 	})
 	key = customDataKey(key, customMods...)
@@ -1598,7 +1763,7 @@ func (e *DIALOGElement) DATASTAR_ON(key string, expression string, modifiers ...
 	return e
 }
 
-func (e *DIALOGElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...DialogDataOnMod) *DIALOGElement {
+func (e *DIALOGElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...DialogOnMod) *DIALOGElement {
 	if condition {
 		e.DATASTAR_ON(key, expression, modifiers...)
 	}
@@ -1691,7 +1856,7 @@ func (e *DIALOGElement) DATASTAR_FETCH_INDICATOR(expression string) *DIALOGEleme
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "DatastarFetchIndicator"
+	key := "data-fetch-indicator"
 
 	e.StringAttributes.Set(key, expression)
 	return e
@@ -1709,7 +1874,7 @@ func (e *DIALOGElement) DATASTAR_FETCH_INDICATORRemove() *DIALOGElement {
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("DatastarFetchIndicator")
+	e.StringAttributes.Del("data-fetch-indicator")
 	return e
 }
 
