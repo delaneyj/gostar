@@ -16,6 +16,14 @@ type {{$baseIconName}} struct {
 	*SVGSVGElement
 }
 
+type {{$baseIconName}}Fn func(children ...ElementRenderer) *{{$baseIconName}}
+
+var IconLookup = map[string]{{$baseIconName}}Fn{
+{{range .Icons -}}
+	"{{.Name.Camel}}": {{.Name.Pascal}},
+{{end}}
+}
+
 {{range .Icons -}}
 func {{.Name.Pascal}}(children ...ElementRenderer) *{{$baseIconName}} {
 	return &{{$baseIconName}}{

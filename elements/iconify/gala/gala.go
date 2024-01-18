@@ -15,6 +15,62 @@ type GalaIcon struct {
 	*SVGSVGElement
 }
 
+type GalaIconFn func(children ...ElementRenderer) *GalaIcon
+
+var IconLookup = map[string]GalaIconFn{
+	"add":             Add,
+	"airplay":         Airplay,
+	"apple":           Apple,
+	"bag":             Bag,
+	"bell":            Bell,
+	"book":            Book,
+	"brochure":        Brochure,
+	"calendar":        Calendar,
+	"chart":           Chart,
+	"chat":            Chat,
+	"clock":           Clock,
+	"copy":            Copy,
+	"data":            Data,
+	"display":         Display,
+	"editor":          Editor,
+	"file":            File,
+	"fileCodeOne":     FileCodeOne,
+	"fileCodeTwo":     FileCodeTwo,
+	"fileDocument":    FileDocument,
+	"fileError":       FileError,
+	"fileScript":      FileScript,
+	"fileSpreadsheet": FileSpreadsheet,
+	"fileText":        FileText,
+	"folder":          Folder,
+	"globe":           Globe,
+	"help":            Help,
+	"image":           Image,
+	"issue":           Issue,
+	"layer":           Layer,
+	"lock":            Lock,
+	"mouse":           Mouse,
+	"multi":           Multi,
+	"orbit":           Orbit,
+	"portraitOne":     PortraitOne,
+	"portraitTwo":     PortraitTwo,
+	"radar":           Radar,
+	"remove":          Remove,
+	"search":          Search,
+	"secure":          Secure,
+	"select":          Select,
+	"settings":        Settings,
+	"shield":          Shield,
+	"sidebarLeft":     SidebarLeft,
+	"sidebarRight":    SidebarRight,
+	"store":           Store,
+	"terminal":        Terminal,
+	"tv":              Tv,
+	"unlock":          Unlock,
+	"usb":             Usb,
+	"video":           Video,
+	"window":          Window,
+}
+
 func Add(children ...ElementRenderer) *GalaIcon {
 	return &GalaIcon{
 		SVGSVGElement: SVG_SVG(

@@ -15,6 +15,41 @@ type GeoIcon struct {
 	*SVGSVGElement
 }
 
+type GeoIconFn func(children ...ElementRenderer) *GeoIcon
+
+var IconLookup = map[string]GeoIconFn{
+	"turfAlong":          TurfAlong,
+	"turfBboxPolygon":    TurfBboxPolygon,
+	"turfBezier":         TurfBezier,
+	"turfBuffer":         TurfBuffer,
+	"turfCenter":         TurfCenter,
+	"turfCentroid":       TurfCentroid,
+	"turfConcave":        TurfConcave,
+	"turfConvex":         TurfConvex,
+	"turfDestination":    TurfDestination,
+	"turfEnvelope":       TurfEnvelope,
+	"turfErased":         TurfErased,
+	"turfExplode":        TurfExplode,
+	"turfExtent":         TurfExtent,
+	"turfIntersect":      TurfIntersect,
+	"turfKinks":          TurfKinks,
+	"turfLineSlice":      TurfLineSlice,
+	"turfMerge":          TurfMerge,
+	"turfMidpoint":       TurfMidpoint,
+	"turfPointGrid":      TurfPointGrid,
+	"turfPointOnLine":    TurfPointOnLine,
+	"turfPointOnSurface": TurfPointOnSurface,
+	"turfSimplify":       TurfSimplify,
+	"turfSize":           TurfSize,
+	"turfSquare":         TurfSquare,
+	"turfSquareGrid":     TurfSquareGrid,
+	"turfTin":            TurfTin,
+	"turfTriangleGrid":   TurfTriangleGrid,
+	"turfUnion":          TurfUnion,
+	"uiEarthEast":        UiEarthEast,
+	"uiEarthWest":        UiEarthWest,
+}
+
 func TurfAlong(children ...ElementRenderer) *GeoIcon {
 	return &GeoIcon{
 		SVGSVGElement: SVG_SVG(

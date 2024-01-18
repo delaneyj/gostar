@@ -15,6 +15,57 @@ type SvgSpinnersIcon struct {
 	*SVGSVGElement
 }
 
+type SvgSpinnersIconFn func(children ...ElementRenderer) *SvgSpinnersIcon
+
+var IconLookup = map[string]SvgSpinnersIconFn{
+	"barsFade":                    BarsFade,
+	"barsRotateFade":              BarsRotateFade,
+	"barsScale":                   BarsScale,
+	"barsScaleFade":               BarsScaleFade,
+	"barsScaleMiddle":             BarsScaleMiddle,
+	"blocksScale":                 BlocksScale,
+	"blocksShuffleThree":          BlocksShuffleThree,
+	"blocksShuffleTwo":            BlocksShuffleTwo,
+	"blocksWave":                  BlocksWave,
+	"bouncingBall":                BouncingBall,
+	"clock":                       Clock,
+	"dotRevolve":                  DotRevolve,
+	"eclipse":                     Eclipse,
+	"eclipseHalf":                 EclipseHalf,
+	"eightDotsRotate":             EightDotsRotate,
+	"gooeyBallsOne":               GooeyBallsOne,
+	"gooeyBallsTwo":               GooeyBallsTwo,
+	"ninetyRing":                  NinetyRing,
+	"ninetyRingWithBg":            NinetyRingWithBg,
+	"oneHundredEightyRing":        OneHundredEightyRing,
+	"oneHundredEightyRingWithBg":  OneHundredEightyRingWithBg,
+	"pulse":                       Pulse,
+	"pulseMultiple":               PulseMultiple,
+	"pulseRing":                   PulseRing,
+	"pulseRingsMultiple":          PulseRingsMultiple,
+	"pulseRingsThree":             PulseRingsThree,
+	"pulseRingsTwo":               PulseRingsTwo,
+	"pulseThree":                  PulseThree,
+	"pulseTwo":                    PulseTwo,
+	"ringResize":                  RingResize,
+	"sixDotsRotate":               SixDotsRotate,
+	"sixDotsScale":                SixDotsScale,
+	"sixDotsScaleMiddle":          SixDotsScaleMiddle,
+	"tadpole":                     Tadpole,
+	"threeDotsBounce":             ThreeDotsBounce,
+	"threeDotsFade":               ThreeDotsFade,
+	"threeDotsMove":               ThreeDotsMove,
+	"threeDotsRotate":             ThreeDotsRotate,
+	"threeDotsScale":              ThreeDotsScale,
+	"threeDotsScaleMiddle":        ThreeDotsScaleMiddle,
+	"twelveDotsScaleRotate":       TwelveDotsScaleRotate,
+	"twoHundredSeventyRing":       TwoHundredSeventyRing,
+	"twoHundredSeventyRingWithBg": TwoHundredSeventyRingWithBg,
+	"wifi":                        Wifi,
+	"wifiFade":                    WifiFade,
+	"windToy":                     WindToy,
+}
+
 func BarsFade(children ...ElementRenderer) *SvgSpinnersIcon {
 	return &SvgSpinnersIcon{
 		SVGSVGElement: SVG_SVG(

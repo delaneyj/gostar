@@ -15,6 +15,45 @@ type FontelicoIcon struct {
 	*SVGSVGElement
 }
 
+type FontelicoIconFn func(children ...ElementRenderer) *FontelicoIcon
+
+var IconLookup = map[string]FontelicoIconFn{
+	"chrome":        Chrome,
+	"crown":         Crown,
+	"crownMinus":    CrownMinus,
+	"crownPlus":     CrownPlus,
+	"emoAngry":      EmoAngry,
+	"emoBeer":       EmoBeer,
+	"emoCoffee":     EmoCoffee,
+	"emoCry":        EmoCry,
+	"emoDevil":      EmoDevil,
+	"emoDispleased": EmoDispleased,
+	"emoGrin":       EmoGrin,
+	"emoHappy":      EmoHappy,
+	"emoLaugh":      EmoLaugh,
+	"emoSaint":      EmoSaint,
+	"emoShoot":      EmoShoot,
+	"emoSleep":      EmoSleep,
+	"emoSquint":     EmoSquint,
+	"emoSunglasses": EmoSunglasses,
+	"emoSurprised":  EmoSurprised,
+	"emoThumbsup":   EmoThumbsup,
+	"emoTongue":     EmoTongue,
+	"emoUnhappy":    EmoUnhappy,
+	"emoWink":       EmoWink,
+	"emoWinkTwo":    EmoWinkTwo,
+	"firefox":       Firefox,
+	"ie":            Ie,
+	"marquee":       Marquee,
+	"opera":         Opera,
+	"spinFive":      SpinFive,
+	"spinFour":      SpinFour,
+	"spinOne":       SpinOne,
+	"spinSix":       SpinSix,
+	"spinThree":     SpinThree,
+	"spinTwo":       SpinTwo,
+}
+
 func Chrome(children ...ElementRenderer) *FontelicoIcon {
 	return &FontelicoIcon{
 		SVGSVGElement: SVG_SVG(

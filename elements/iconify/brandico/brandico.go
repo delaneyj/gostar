@@ -15,6 +15,56 @@ type BrandicoIcon struct {
 	*SVGSVGElement
 }
 
+type BrandicoIconFn func(children ...ElementRenderer) *BrandicoIcon
+
+var IconLookup = map[string]BrandicoIconFn{
+	"amex":              Amex,
+	"bandcamp":          Bandcamp,
+	"blogger":           Blogger,
+	"bloggerRect":       BloggerRect,
+	"box":               Box,
+	"boxRect":           BoxRect,
+	"codepen":           Codepen,
+	"deviantart":        Deviantart,
+	"diigo":             Diigo,
+	"discover":          Discover,
+	"facebook":          Facebook,
+	"facebookRect":      FacebookRect,
+	"friendfeed":        Friendfeed,
+	"friendfeedRect":    FriendfeedRect,
+	"github":            Github,
+	"githubText":        GithubText,
+	"googleplusRect":    GoogleplusRect,
+	"houzz":             Houzz,
+	"icq":               Icq,
+	"instagram":         Instagram,
+	"instagramFilled":   InstagramFilled,
+	"jabber":            Jabber,
+	"lastfm":            Lastfm,
+	"lastfmRect":        LastfmRect,
+	"linkedin":          Linkedin,
+	"linkedinRect":      LinkedinRect,
+	"mastercard":        Mastercard,
+	"odnoklassniki":     Odnoklassniki,
+	"odnoklassnikiRect": OdnoklassnikiRect,
+	"picasa":            Picasa,
+	"skype":             Skype,
+	"tudou":             Tudou,
+	"tumblr":            Tumblr,
+	"tumblrRect":        TumblrRect,
+	"twitter":           Twitter,
+	"twitterBird":       TwitterBird,
+	"vimeo":             Vimeo,
+	"vimeoRect":         VimeoRect,
+	"visa":              Visa,
+	"vkontakteRect":     VkontakteRect,
+	"winEight":          WinEight,
+	"wordpress":         Wordpress,
+	"yandex":            Yandex,
+	"yandexRect":        YandexRect,
+	"youku":             Youku,
+}
+
 func Amex(children ...ElementRenderer) *BrandicoIcon {
 	return &BrandicoIcon{
 		SVGSVGElement: SVG_SVG(
