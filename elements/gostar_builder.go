@@ -27,7 +27,7 @@ type ElementRenderer interface {
 	Render(w io.Writer) error
 }
 
-type ElementRendererFunc func(...ElementRenderer) ElementRenderer
+type ElementRendererFunc func() ElementRenderer
 
 type Element struct {
 	Tag                  []byte
