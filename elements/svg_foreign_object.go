@@ -843,35 +843,6 @@ func (e *SVGFOREIGNOBJECTElement) DATASTAR_HEADERRemove() *SVGFOREIGNOBJECTEleme
 	return e
 }
 
-// Sets the URL for fetch requests
-
-func (e *SVGFOREIGNOBJECTElement) DATASTAR_FETCH_URL(expression string) *SVGFOREIGNOBJECTElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-
-	key := "data-fetch-url"
-
-	e.StringAttributes.Set(key, expression)
-	return e
-}
-
-func (e *SVGFOREIGNOBJECTElement) IfDATASTAR_FETCH_URL(condition bool, expression string) *SVGFOREIGNOBJECTElement {
-	if condition {
-		e.DATASTAR_FETCH_URL(expression)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_FETCH_URL from the element.
-func (e *SVGFOREIGNOBJECTElement) DATASTAR_FETCH_URLRemove() *SVGFOREIGNOBJECTElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-fetch-url")
-	return e
-}
-
 // Sets the indicator selector for fetch requests
 
 func (e *SVGFOREIGNOBJECTElement) DATASTAR_FETCH_INDICATOR(expression string) *SVGFOREIGNOBJECTElement {

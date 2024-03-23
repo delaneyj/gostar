@@ -5,7 +5,7 @@ import (
 )
 
 const (
-	IconifyVersion = "2.44.0"
+	IconifyVersion = "3.1.0"
 	hAttr          = "1em"
 	viewbox        = "0 0 24 24"
 	fill           = "currentColor"
@@ -27,6 +27,7 @@ var IconLookup = map[string]TablerIconFn{
 	"accessPoint":                      AccessPoint,
 	"accessPointOff":                   AccessPointOff,
 	"accessible":                       Accessible,
+	"accessibleFilled":                 AccessibleFilled,
 	"accessibleOff":                    AccessibleOff,
 	"accessibleOffFilled":              AccessibleOffFilled,
 	"activity":                         Activity,
@@ -244,6 +245,7 @@ var IconLookup = map[string]TablerIconFn{
 	"arrowDown":                        ArrowDown,
 	"arrowDownBar":                     ArrowDownBar,
 	"arrowDownCircle":                  ArrowDownCircle,
+	"arrowDownFromArc":                 ArrowDownFromArc,
 	"arrowDownLeft":                    ArrowDownLeft,
 	"arrowDownLeftCircle":              ArrowDownLeftCircle,
 	"arrowDownRhombus":                 ArrowDownRhombus,
@@ -251,6 +253,7 @@ var IconLookup = map[string]TablerIconFn{
 	"arrowDownRightCircle":             ArrowDownRightCircle,
 	"arrowDownSquare":                  ArrowDownSquare,
 	"arrowDownTail":                    ArrowDownTail,
+	"arrowDownToArc":                   ArrowDownToArc,
 	"arrowElbowLeft":                   ArrowElbowLeft,
 	"arrowElbowRight":                  ArrowElbowRight,
 	"arrowFork":                        ArrowFork,
@@ -262,10 +265,12 @@ var IconLookup = map[string]TablerIconFn{
 	"arrowLeft":                        ArrowLeft,
 	"arrowLeftBar":                     ArrowLeftBar,
 	"arrowLeftCircle":                  ArrowLeftCircle,
+	"arrowLeftFromArc":                 ArrowLeftFromArc,
 	"arrowLeftRhombus":                 ArrowLeftRhombus,
 	"arrowLeftRight":                   ArrowLeftRight,
 	"arrowLeftSquare":                  ArrowLeftSquare,
 	"arrowLeftTail":                    ArrowLeftTail,
+	"arrowLeftToArc":                   ArrowLeftToArc,
 	"arrowLoopLeft":                    ArrowLoopLeft,
 	"arrowLoopLeftTwo":                 ArrowLoopLeftTwo,
 	"arrowLoopRight":                   ArrowLoopRight,
@@ -293,9 +298,11 @@ var IconLookup = map[string]TablerIconFn{
 	"arrowRight":                       ArrowRight,
 	"arrowRightBar":                    ArrowRightBar,
 	"arrowRightCircle":                 ArrowRightCircle,
+	"arrowRightFromArc":                ArrowRightFromArc,
 	"arrowRightRhombus":                ArrowRightRhombus,
 	"arrowRightSquare":                 ArrowRightSquare,
 	"arrowRightTail":                   ArrowRightTail,
+	"arrowRightToArc":                  ArrowRightToArc,
 	"arrowRotaryFirstLeft":             ArrowRotaryFirstLeft,
 	"arrowRotaryFirstRight":            ArrowRotaryFirstRight,
 	"arrowRotaryLastLeft":              ArrowRotaryLastLeft,
@@ -310,6 +317,7 @@ var IconLookup = map[string]TablerIconFn{
 	"arrowUp":                          ArrowUp,
 	"arrowUpBar":                       ArrowUpBar,
 	"arrowUpCircle":                    ArrowUpCircle,
+	"arrowUpFromArc":                   ArrowUpFromArc,
 	"arrowUpLeft":                      ArrowUpLeft,
 	"arrowUpLeftCircle":                ArrowUpLeftCircle,
 	"arrowUpRhombus":                   ArrowUpRhombus,
@@ -317,6 +325,7 @@ var IconLookup = map[string]TablerIconFn{
 	"arrowUpRightCircle":               ArrowUpRightCircle,
 	"arrowUpSquare":                    ArrowUpSquare,
 	"arrowUpTail":                      ArrowUpTail,
+	"arrowUpToArc":                     ArrowUpToArc,
 	"arrowWaveLeftDown":                ArrowWaveLeftDown,
 	"arrowWaveLeftUp":                  ArrowWaveLeftUp,
 	"arrowWaveRightDown":               ArrowWaveRightDown,
@@ -367,14 +376,17 @@ var IconLookup = map[string]TablerIconFn{
 	"artboardFilled":                   ArtboardFilled,
 	"artboardOff":                      ArtboardOff,
 	"article":                          Article,
+	"articleFilled":                    ArticleFilled,
 	"articleFilledFilled":              ArticleFilledFilled,
 	"articleOff":                       ArticleOff,
 	"aspectRatio":                      AspectRatio,
 	"aspectRatioFilled":                AspectRatioFilled,
 	"aspectRatioOff":                   AspectRatioOff,
 	"assembly":                         Assembly,
+	"assemblyFilled":                   AssemblyFilled,
 	"assemblyOff":                      AssemblyOff,
 	"asset":                            Asset,
+	"assetFilled":                      AssetFilled,
 	"asterisk":                         Asterisk,
 	"asteriskSimple":                   AsteriskSimple,
 	"at":                               At,
@@ -386,7 +398,9 @@ var IconLookup = map[string]TablerIconFn{
 	"augmentedReality":                 AugmentedReality,
 	"augmentedRealityOff":              AugmentedRealityOff,
 	"augmentedRealityTwo":              AugmentedRealityTwo,
+	"authTwoFa":                        AuthTwoFa,
 	"automaticGearbox":                 AutomaticGearbox,
+	"avocado":                          Avocado,
 	"award":                            Award,
 	"awardFilled":                      AwardFilled,
 	"awardOff":                         AwardOff,
@@ -395,6 +409,7 @@ var IconLookup = map[string]TablerIconFn{
 	"axisY":                            AxisY,
 	"babyBottle":                       BabyBottle,
 	"babyCarriage":                     BabyCarriage,
+	"babyCarriageFilled":               BabyCarriageFilled,
 	"background":                       Background,
 	"backhoe":                          Backhoe,
 	"backpack":                         Backpack,
@@ -404,19 +419,32 @@ var IconLookup = map[string]TablerIconFn{
 	"backspaceFilled":                  BackspaceFilled,
 	"badge":                            Badge,
 	"badgeAd":                          BadgeAd,
+	"badgeAdFilled":                    BadgeAdFilled,
+	"badgeAdOff":                       BadgeAdOff,
 	"badgeAr":                          BadgeAr,
+	"badgeArFilled":                    BadgeArFilled,
 	"badgeCc":                          BadgeCc,
+	"badgeCcFilled":                    BadgeCcFilled,
 	"badgeEightK":                      BadgeEightK,
+	"badgeEightKfilled":                BadgeEightKfilled,
 	"badgeFilled":                      BadgeFilled,
 	"badgeFourK":                       BadgeFourK,
+	"badgeFourKfilled":                 BadgeFourKfilled,
 	"badgeHd":                          BadgeHd,
+	"badgeHdFilled":                    BadgeHdFilled,
 	"badgeOff":                         BadgeOff,
 	"badgeSd":                          BadgeSd,
+	"badgeSdFilled":                    BadgeSdFilled,
 	"badgeThreeD":                      BadgeThreeD,
+	"badgeThreeDfilled":                BadgeThreeDfilled,
 	"badgeTm":                          BadgeTm,
+	"badgeTmFilled":                    BadgeTmFilled,
 	"badgeVo":                          BadgeVo,
+	"badgeVoFilled":                    BadgeVoFilled,
 	"badgeVr":                          BadgeVr,
+	"badgeVrFilled":                    BadgeVrFilled,
 	"badgeWc":                          BadgeWc,
+	"badgeWcFilled":                    BadgeWcFilled,
 	"badges":                           Badges,
 	"badgesFilled":                     BadgesFilled,
 	"badgesOff":                        BadgesOff,
@@ -441,6 +469,7 @@ var IconLookup = map[string]TablerIconFn{
 	"bandageFilled":                    BandageFilled,
 	"bandageOff":                       BandageOff,
 	"barbell":                          Barbell,
+	"barbellFilled":                    BarbellFilled,
 	"barbellOff":                       BarbellOff,
 	"barcode":                          Barcode,
 	"barcodeOff":                       BarcodeOff,
@@ -448,6 +477,7 @@ var IconLookup = map[string]TablerIconFn{
 	"barrel":                           Barrel,
 	"barrelOff":                        BarrelOff,
 	"barrierBlock":                     BarrierBlock,
+	"barrierBlockFilled":               BarrierBlockFilled,
 	"barrierBlockOff":                  BarrierBlockOff,
 	"baseline":                         Baseline,
 	"baselineDensityLarge":             BaselineDensityLarge,
@@ -500,6 +530,7 @@ var IconLookup = map[string]TablerIconFn{
 	"bed":                              Bed,
 	"bedFilled":                        BedFilled,
 	"bedFlat":                          BedFlat,
+	"bedFlatFilled":                    BedFlatFilled,
 	"bedOff":                           BedOff,
 	"beer":                             Beer,
 	"beerFilled":                       BeerFilled,
@@ -545,6 +576,7 @@ var IconLookup = map[string]TablerIconFn{
 	"binaryTree":                       BinaryTree,
 	"binaryTreeTwo":                    BinaryTreeTwo,
 	"biohazard":                        Biohazard,
+	"biohazardFilled":                  BiohazardFilled,
 	"biohazardOff":                     BiohazardOff,
 	"blade":                            Blade,
 	"bladeFilled":                      BladeFilled,
@@ -552,7 +584,10 @@ var IconLookup = map[string]TablerIconFn{
 	"bleachChlorine":                   BleachChlorine,
 	"bleachNoChlorine":                 BleachNoChlorine,
 	"bleachOff":                        BleachOff,
+	"blendMode":                        BlendMode,
 	"blender":                          Blender,
+	"blob":                             Blob,
+	"blobFilled":                       BlobFilled,
 	"blockquote":                       Blockquote,
 	"bluetooth":                        Bluetooth,
 	"bluetoothConnected":               BluetoothConnected,
@@ -569,6 +604,7 @@ var IconLookup = map[string]TablerIconFn{
 	"bomb":                             Bomb,
 	"bombFilled":                       BombFilled,
 	"bone":                             Bone,
+	"boneFilled":                       BoneFilled,
 	"boneOff":                          BoneOff,
 	"bong":                             Bong,
 	"bongOff":                          BongOff,
@@ -591,8 +627,12 @@ var IconLookup = map[string]TablerIconFn{
 	"bookmarksOff":                     BookmarksOff,
 	"books":                            Books,
 	"booksOff":                         BooksOff,
+	"boom":                             Boom,
+	"boomFilled":                       BoomFilled,
 	"borderAll":                        BorderAll,
 	"borderBottom":                     BorderBottom,
+	"borderBottomPlus":                 BorderBottomPlus,
+	"borderCornerIos":                  BorderCornerIos,
 	"borderCornerPill":                 BorderCornerPill,
 	"borderCornerRounded":              BorderCornerRounded,
 	"borderCornerSquare":               BorderCornerSquare,
@@ -600,14 +640,17 @@ var IconLookup = map[string]TablerIconFn{
 	"borderHorizontal":                 BorderHorizontal,
 	"borderInner":                      BorderInner,
 	"borderLeft":                       BorderLeft,
+	"borderLeftPlus":                   BorderLeftPlus,
 	"borderNone":                       BorderNone,
 	"borderOuter":                      BorderOuter,
 	"borderRadius":                     BorderRadius,
 	"borderRight":                      BorderRight,
+	"borderRightPlus":                  BorderRightPlus,
 	"borderSides":                      BorderSides,
 	"borderStyle":                      BorderStyle,
 	"borderStyleTwo":                   BorderStyleTwo,
 	"borderTop":                        BorderTop,
+	"borderTopPlus":                    BorderTopPlus,
 	"borderVertical":                   BorderVertical,
 	"bottle":                           Bottle,
 	"bottleFilled":                     BottleFilled,
@@ -617,8 +660,13 @@ var IconLookup = map[string]TablerIconFn{
 	"bounceRight":                      BounceRight,
 	"bounceRightFilled":                BounceRightFilled,
 	"bow":                              Bow,
+	"bowFilled":                        BowFilled,
 	"bowl":                             Bowl,
+	"bowlChopsticks":                   BowlChopsticks,
+	"bowlChopsticksFilled":             BowlChopsticksFilled,
 	"bowlFilled":                       BowlFilled,
+	"bowlSpoon":                        BowlSpoon,
+	"bowlSpoonFilled":                  BowlSpoonFilled,
 	"box":                              Box,
 	"boxAlignBottom":                   BoxAlignBottom,
 	"boxAlignBottomFilled":             BoxAlignBottomFilled,
@@ -685,9 +733,12 @@ var IconLookup = map[string]TablerIconFn{
 	"brandAppgallery":                  BrandAppgallery,
 	"brandApple":                       BrandApple,
 	"brandAppleArcade":                 BrandAppleArcade,
+	"brandAppleFilled":                 BrandAppleFilled,
 	"brandApplePodcast":                BrandApplePodcast,
 	"brandAppstore":                    BrandAppstore,
+	"brandArc":                         BrandArc,
 	"brandAsana":                       BrandAsana,
+	"brandAstro":                       BrandAstro,
 	"brandAuthZero":                    BrandAuthZero,
 	"brandAws":                         BrandAws,
 	"brandAzure":                       BrandAzure,
@@ -705,6 +756,7 @@ var IconLookup = map[string]TablerIconFn{
 	"brandBlackberry":                  BrandBlackberry,
 	"brandBlender":                     BrandBlender,
 	"brandBlogger":                     BrandBlogger,
+	"brandBluesky":                     BrandBluesky,
 	"brandBooking":                     BrandBooking,
 	"brandBootstrap":                   BrandBootstrap,
 	"brandBulma":                       BrandBulma,
@@ -838,6 +890,7 @@ var IconLookup = map[string]TablerIconFn{
 	"brandLinkedin":                    BrandLinkedin,
 	"brandLinktree":                    BrandLinktree,
 	"brandLinqpad":                     BrandLinqpad,
+	"brandLivewire":                    BrandLivewire,
 	"brandLoom":                        BrandLoom,
 	"brandMailgun":                     BrandMailgun,
 	"brandMantine":                     BrandMantine,
@@ -893,6 +946,7 @@ var IconLookup = map[string]TablerIconFn{
 	"brandPicsart":                     BrandPicsart,
 	"brandPinterest":                   BrandPinterest,
 	"brandPlanetscale":                 BrandPlanetscale,
+	"brandPnpm":                        BrandPnpm,
 	"brandPocket":                      BrandPocket,
 	"brandPolymer":                     BrandPolymer,
 	"brandPowershell":                  BrandPowershell,
@@ -932,9 +986,11 @@ var IconLookup = map[string]TablerIconFn{
 	"brandSpacehey":                    BrandSpacehey,
 	"brandSpeedtest":                   BrandSpeedtest,
 	"brandSpotify":                     BrandSpotify,
+	"brandSpotifyFilled":               BrandSpotifyFilled,
 	"brandStackoverflow":               BrandStackoverflow,
 	"brandStackshare":                  BrandStackshare,
 	"brandSteam":                       BrandSteam,
+	"brandStocktwits":                  BrandStocktwits,
 	"brandStorj":                       BrandStorj,
 	"brandStorybook":                   BrandStorybook,
 	"brandStorytel":                    BrandStorytel,
@@ -1014,6 +1070,7 @@ var IconLookup = map[string]TablerIconFn{
 	"brandXing":                        BrandXing,
 	"brandYahoo":                       BrandYahoo,
 	"brandYandex":                      BrandYandex,
+	"brandYarn":                        BrandYarn,
 	"brandYatse":                       BrandYatse,
 	"brandYcombinator":                 BrandYcombinator,
 	"brandYoutube":                     BrandYoutube,
@@ -1027,14 +1084,19 @@ var IconLookup = map[string]TablerIconFn{
 	"brandZulip":                       BrandZulip,
 	"brandZwift":                       BrandZwift,
 	"bread":                            Bread,
+	"breadFilled":                      BreadFilled,
 	"breadOff":                         BreadOff,
 	"briefcase":                        Briefcase,
 	"briefcaseFilled":                  BriefcaseFilled,
 	"briefcaseOff":                     BriefcaseOff,
 	"briefcaseTwo":                     BriefcaseTwo,
+	"briefcaseTwoFilled":               BriefcaseTwoFilled,
 	"brightness":                       Brightness,
+	"brightnessAuto":                   BrightnessAuto,
+	"brightnessAutoFilled":             BrightnessAutoFilled,
 	"brightnessDown":                   BrightnessDown,
 	"brightnessDownFilled":             BrightnessDownFilled,
+	"brightnessFilled":                 BrightnessFilled,
 	"brightnessHalf":                   BrightnessHalf,
 	"brightnessOff":                    BrightnessOff,
 	"brightnessTwo":                    BrightnessTwo,
@@ -1061,6 +1123,7 @@ var IconLookup = map[string]TablerIconFn{
 	"buildingBridge":                   BuildingBridge,
 	"buildingBridgeTwo":                BuildingBridgeTwo,
 	"buildingBroadcastTower":           BuildingBroadcastTower,
+	"buildingBroadcastTowerFilled":     BuildingBroadcastTowerFilled,
 	"buildingCarousel":                 BuildingCarousel,
 	"buildingCastle":                   BuildingCastle,
 	"buildingChurch":                   BuildingChurch,
@@ -1177,6 +1240,12 @@ var IconLookup = map[string]TablerIconFn{
 	"car":                              Car,
 	"carCrane":                         CarCrane,
 	"carCrash":                         CarCrash,
+	"carFan":                           CarFan,
+	"carFanAuto":                       CarFanAuto,
+	"carFanOne":                        CarFanOne,
+	"carFanThree":                      CarFanThree,
+	"carFanTwo":                        CarFanTwo,
+	"carFourWd":                        CarFourWd,
 	"carGarage":                        CarGarage,
 	"carOff":                           CarOff,
 	"carSuv":                           CarSuv,
@@ -1206,6 +1275,7 @@ var IconLookup = map[string]TablerIconFn{
 	"carrotOff":                        CarrotOff,
 	"cash":                             Cash,
 	"cashBanknote":                     CashBanknote,
+	"cashBanknoteFilled":               CashBanknoteFilled,
 	"cashBanknoteOff":                  CashBanknoteOff,
 	"cashOff":                          CashOff,
 	"cast":                             Cast,
@@ -1271,6 +1341,8 @@ var IconLookup = map[string]TablerIconFn{
 	"chartPpf":                         ChartPpf,
 	"chartRadar":                       ChartRadar,
 	"chartSankey":                      ChartSankey,
+	"chartScatter":                     ChartScatter,
+	"chartScatterThreeD":               ChartScatterThreeD,
 	"chartTreemap":                     ChartTreemap,
 	"check":                            Check,
 	"checkbox":                         Checkbox,
@@ -1362,6 +1434,7 @@ var IconLookup = map[string]TablerIconFn{
 	"circleDashedNumberThree":          CircleDashedNumberThree,
 	"circleDashedNumberTwo":            CircleDashedNumberTwo,
 	"circleDashedNumberZero":           CircleDashedNumberZero,
+	"circleDashedPercentage":           CircleDashedPercentage,
 	"circleDashedX":                    CircleDashedX,
 	"circleDot":                        CircleDot,
 	"circleDotFilled":                  CircleDotFilled,
@@ -1376,46 +1449,83 @@ var IconLookup = map[string]TablerIconFn{
 	"circleKey":                        CircleKey,
 	"circleKeyFilled":                  CircleKeyFilled,
 	"circleLetterA":                    CircleLetterA,
+	"circleLetterAfilled":              CircleLetterAfilled,
 	"circleLetterB":                    CircleLetterB,
+	"circleLetterBfilled":              CircleLetterBfilled,
 	"circleLetterC":                    CircleLetterC,
+	"circleLetterCfilled":              CircleLetterCfilled,
 	"circleLetterD":                    CircleLetterD,
+	"circleLetterDfilled":              CircleLetterDfilled,
 	"circleLetterE":                    CircleLetterE,
+	"circleLetterEfilled":              CircleLetterEfilled,
 	"circleLetterF":                    CircleLetterF,
+	"circleLetterFfilled":              CircleLetterFfilled,
 	"circleLetterG":                    CircleLetterG,
+	"circleLetterGfilled":              CircleLetterGfilled,
 	"circleLetterH":                    CircleLetterH,
+	"circleLetterHfilled":              CircleLetterHfilled,
 	"circleLetterI":                    CircleLetterI,
+	"circleLetterIfilled":              CircleLetterIfilled,
 	"circleLetterJ":                    CircleLetterJ,
+	"circleLetterJfilled":              CircleLetterJfilled,
 	"circleLetterK":                    CircleLetterK,
+	"circleLetterKfilled":              CircleLetterKfilled,
 	"circleLetterL":                    CircleLetterL,
+	"circleLetterLfilled":              CircleLetterLfilled,
 	"circleLetterM":                    CircleLetterM,
+	"circleLetterMfilled":              CircleLetterMfilled,
 	"circleLetterN":                    CircleLetterN,
+	"circleLetterNfilled":              CircleLetterNfilled,
 	"circleLetterO":                    CircleLetterO,
+	"circleLetterOfilled":              CircleLetterOfilled,
 	"circleLetterP":                    CircleLetterP,
+	"circleLetterPfilled":              CircleLetterPfilled,
 	"circleLetterQ":                    CircleLetterQ,
+	"circleLetterQfilled":              CircleLetterQfilled,
 	"circleLetterR":                    CircleLetterR,
+	"circleLetterRfilled":              CircleLetterRfilled,
 	"circleLetterS":                    CircleLetterS,
+	"circleLetterSfilled":              CircleLetterSfilled,
 	"circleLetterT":                    CircleLetterT,
+	"circleLetterTfilled":              CircleLetterTfilled,
 	"circleLetterU":                    CircleLetterU,
+	"circleLetterUfilled":              CircleLetterUfilled,
 	"circleLetterV":                    CircleLetterV,
+	"circleLetterVfilled":              CircleLetterVfilled,
 	"circleLetterW":                    CircleLetterW,
+	"circleLetterWfilled":              CircleLetterWfilled,
 	"circleLetterX":                    CircleLetterX,
+	"circleLetterXfilled":              CircleLetterXfilled,
 	"circleLetterY":                    CircleLetterY,
+	"circleLetterYfilled":              CircleLetterYfilled,
 	"circleLetterZ":                    CircleLetterZ,
+	"circleLetterZfilled":              CircleLetterZfilled,
 	"circleMinus":                      CircleMinus,
 	"circleMinusTwo":                   CircleMinusTwo,
 	"circleNineFilled":                 CircleNineFilled,
 	"circleNumberEight":                CircleNumberEight,
+	"circleNumberEightFilled":          CircleNumberEightFilled,
 	"circleNumberFive":                 CircleNumberFive,
+	"circleNumberFiveFilled":           CircleNumberFiveFilled,
 	"circleNumberFour":                 CircleNumberFour,
+	"circleNumberFourFilled":           CircleNumberFourFilled,
 	"circleNumberNine":                 CircleNumberNine,
+	"circleNumberNineFilled":           CircleNumberNineFilled,
 	"circleNumberOne":                  CircleNumberOne,
+	"circleNumberOneFilled":            CircleNumberOneFilled,
 	"circleNumberSeven":                CircleNumberSeven,
+	"circleNumberSevenFilled":          CircleNumberSevenFilled,
 	"circleNumberSix":                  CircleNumberSix,
+	"circleNumberSixFilled":            CircleNumberSixFilled,
 	"circleNumberThree":                CircleNumberThree,
+	"circleNumberThreeFilled":          CircleNumberThreeFilled,
 	"circleNumberTwo":                  CircleNumberTwo,
+	"circleNumberTwoFilled":            CircleNumberTwoFilled,
 	"circleNumberZero":                 CircleNumberZero,
+	"circleNumberZeroFilled":           CircleNumberZeroFilled,
 	"circleOff":                        CircleOff,
 	"circleOneFilled":                  CircleOneFilled,
+	"circlePercentage":                 CirclePercentage,
 	"circlePlus":                       CirclePlus,
 	"circlePlusTwo":                    CirclePlusTwo,
 	"circleRectangle":                  CircleRectangle,
@@ -1462,6 +1572,7 @@ var IconLookup = map[string]TablerIconFn{
 	"clipboardList":                    ClipboardList,
 	"clipboardOff":                     ClipboardOff,
 	"clipboardPlus":                    ClipboardPlus,
+	"clipboardSmile":                   ClipboardSmile,
 	"clipboardText":                    ClipboardText,
 	"clipboardTypography":              ClipboardTypography,
 	"clipboardX":                       ClipboardX,
@@ -1478,17 +1589,29 @@ var IconLookup = map[string]TablerIconFn{
 	"clockFilled":                      ClockFilled,
 	"clockHeart":                       ClockHeart,
 	"clockHourEight":                   ClockHourEight,
+	"clockHourEightFilled":             ClockHourEightFilled,
 	"clockHourEleven":                  ClockHourEleven,
+	"clockHourElevenFilled":            ClockHourElevenFilled,
 	"clockHourFive":                    ClockHourFive,
+	"clockHourFiveFilled":              ClockHourFiveFilled,
 	"clockHourFour":                    ClockHourFour,
+	"clockHourFourFilled":              ClockHourFourFilled,
 	"clockHourNine":                    ClockHourNine,
+	"clockHourNineFilled":              ClockHourNineFilled,
 	"clockHourOne":                     ClockHourOne,
+	"clockHourOneFilled":               ClockHourOneFilled,
 	"clockHourSeven":                   ClockHourSeven,
+	"clockHourSevenFilled":             ClockHourSevenFilled,
 	"clockHourSix":                     ClockHourSix,
+	"clockHourSixFilled":               ClockHourSixFilled,
 	"clockHourTen":                     ClockHourTen,
+	"clockHourTenFilled":               ClockHourTenFilled,
 	"clockHourThree":                   ClockHourThree,
+	"clockHourThreeFilled":             ClockHourThreeFilled,
 	"clockHourTwelve":                  ClockHourTwelve,
+	"clockHourTwelveFilled":            ClockHourTwelveFilled,
 	"clockHourTwo":                     ClockHourTwo,
+	"clockHourTwoFilled":               ClockHourTwoFilled,
 	"clockMinus":                       ClockMinus,
 	"clockOff":                         ClockOff,
 	"clockPause":                       ClockPause,
@@ -1547,7 +1670,7 @@ var IconLookup = map[string]TablerIconFn{
 	"clubs":                            Clubs,
 	"clubsFilled":                      ClubsFilled,
 	"code":                             Code,
-	"codeAsterix":                      CodeAsterix,
+	"codeAsterisk":                     CodeAsterisk,
 	"codeCircle":                       CodeCircle,
 	"codeCircleTwo":                    CodeCircleTwo,
 	"codeDots":                         CodeDots,
@@ -1599,28 +1722,38 @@ var IconLookup = map[string]TablerIconFn{
 	"components":                       Components,
 	"componentsOff":                    ComponentsOff,
 	"cone":                             Cone,
+	"coneFilled":                       ConeFilled,
 	"coneOff":                          ConeOff,
 	"conePlus":                         ConePlus,
 	"coneTwo":                          ConeTwo,
+	"coneTwoFilled":                    ConeTwoFilled,
 	"confetti":                         Confetti,
 	"confettiOff":                      ConfettiOff,
 	"confucius":                        Confucius,
 	"container":                        Container,
 	"containerOff":                     ContainerOff,
 	"contrast":                         Contrast,
+	"contrastFilled":                   ContrastFilled,
 	"contrastOff":                      ContrastOff,
 	"contrastTwo":                      ContrastTwo,
+	"contrastTwoFilled":                ContrastTwoFilled,
 	"contrastTwoOff":                   ContrastTwoOff,
 	"cooker":                           Cooker,
 	"cookie":                           Cookie,
+	"cookieFilled":                     CookieFilled,
 	"cookieMan":                        CookieMan,
+	"cookieManFilled":                  CookieManFilled,
 	"cookieOff":                        CookieOff,
 	"copy":                             Copy,
 	"copyCheck":                        CopyCheck,
+	"copyCheckFilled":                  CopyCheckFilled,
 	"copyMinus":                        CopyMinus,
+	"copyMinusFilled":                  CopyMinusFilled,
 	"copyOff":                          CopyOff,
 	"copyPlus":                         CopyPlus,
+	"copyPlusFilled":                   CopyPlusFilled,
 	"copyX":                            CopyX,
+	"copyXfilled":                      CopyXfilled,
 	"copyleft":                         Copyleft,
 	"copyleftFilled":                   CopyleftFilled,
 	"copyleftOff":                      CopyleftOff,
@@ -1663,12 +1796,19 @@ var IconLookup = map[string]TablerIconFn{
 	"cricket":                          Cricket,
 	"crop":                             Crop,
 	"cropFiveFour":                     CropFiveFour,
+	"cropFiveFourFilled":               CropFiveFourFilled,
 	"cropLandscape":                    CropLandscape,
+	"cropLandscapeFilled":              CropLandscapeFilled,
 	"cropOneOne":                       CropOneOne,
+	"cropOneOneFilled":                 CropOneOneFilled,
 	"cropPortrait":                     CropPortrait,
+	"cropPortraitFilled":               CropPortraitFilled,
 	"cropSevenFive":                    CropSevenFive,
+	"cropSevenFiveFilled":              CropSevenFiveFilled,
 	"cropSixteenNine":                  CropSixteenNine,
+	"cropSixteenNineFilled":            CropSixteenNineFilled,
 	"cropThreeTwo":                     CropThreeTwo,
+	"cropThreeTwoFilled":               CropThreeTwoFilled,
 	"cross":                            Cross,
 	"crossFilled":                      CrossFilled,
 	"crossOff":                         CrossOff,
@@ -1683,6 +1823,8 @@ var IconLookup = map[string]TablerIconFn{
 	"cubeOff":                          CubeOff,
 	"cubePlus":                         CubePlus,
 	"cubeSend":                         CubeSend,
+	"cubeThreeDsphere":                 CubeThreeDsphere,
+	"cubeThreeDsphereOff":              CubeThreeDsphereOff,
 	"cubeUnfolded":                     CubeUnfolded,
 	"cup":                              Cup,
 	"cupOff":                           CupOff,
@@ -1779,6 +1921,7 @@ var IconLookup = map[string]TablerIconFn{
 	"databasePlus":                     DatabasePlus,
 	"databaseSearch":                   DatabaseSearch,
 	"databaseShare":                    DatabaseShare,
+	"databaseSmile":                    DatabaseSmile,
 	"databaseStar":                     DatabaseStar,
 	"databaseX":                        DatabaseX,
 	"decimal":                          Decimal,
@@ -2047,11 +2190,8 @@ var IconLookup = map[string]TablerIconFn{
 	"discGolf":                         DiscGolf,
 	"discOff":                          DiscOff,
 	"discount":                         Discount,
-	"discountCheck":                    DiscountCheck,
 	"discountCheckFilled":              DiscountCheckFilled,
 	"discountOff":                      DiscountOff,
-	"discountTwo":                      DiscountTwo,
-	"discountTwoOff":                   DiscountTwoOff,
 	"divide":                           Divide,
 	"dna":                              Dna,
 	"dnaOff":                           DnaOff,
@@ -2167,6 +2307,7 @@ var IconLookup = map[string]TablerIconFn{
 	"eyeCog":                           EyeCog,
 	"eyeDiscount":                      EyeDiscount,
 	"eyeDollar":                        EyeDollar,
+	"eyeDotted":                        EyeDotted,
 	"eyeDown":                          EyeDown,
 	"eyeEdit":                          EyeEdit,
 	"eyeExclamation":                   EyeExclamation,
@@ -2229,6 +2370,7 @@ var IconLookup = map[string]TablerIconFn{
 	"fileInfinity":                     FileInfinity,
 	"fileInfo":                         FileInfo,
 	"fileInvoice":                      FileInvoice,
+	"fileIsr":                          FileIsr,
 	"fileLambda":                       FileLambda,
 	"fileLike":                         FileLike,
 	"fileMinus":                        FileMinus,
@@ -2487,8 +2629,11 @@ var IconLookup = map[string]TablerIconFn{
 	"gitPullRequestDraft":              GitPullRequestDraft,
 	"gizmo":                            Gizmo,
 	"glass":                            Glass,
+	"glassChampagne":                   GlassChampagne,
+	"glassCocktail":                    GlassCocktail,
 	"glassFull":                        GlassFull,
 	"glassFullFilled":                  GlassFullFilled,
+	"glassGin":                         GlassGin,
 	"glassOff":                         GlassOff,
 	"globe":                            Globe,
 	"globeFilled":                      GlobeFilled,
@@ -2497,6 +2642,7 @@ var IconLookup = map[string]TablerIconFn{
 	"golf":                             Golf,
 	"golfOff":                          GolfOff,
 	"gps":                              Gps,
+	"gpsFilled":                        GpsFilled,
 	"gradienter":                       Gradienter,
 	"grain":                            Grain,
 	"graph":                            Graph,
@@ -2533,11 +2679,11 @@ var IconLookup = map[string]TablerIconFn{
 	"handFingerOff":                    HandFingerOff,
 	"handGrab":                         HandGrab,
 	"handLittleFinger":                 HandLittleFinger,
+	"handLoveYou":                      HandLoveYou,
 	"handMiddleFinger":                 HandMiddleFinger,
 	"handMove":                         HandMove,
 	"handOff":                          HandOff,
 	"handRingFinger":                   HandRingFinger,
-	"handRock":                         HandRock,
 	"handSanitizer":                    HandSanitizer,
 	"handStop":                         HandStop,
 	"handThreeFingers":                 HandThreeFingers,
@@ -2613,47 +2759,85 @@ var IconLookup = map[string]TablerIconFn{
 	"hexagonFiveFilled":                HexagonFiveFilled,
 	"hexagonFourFilled":                HexagonFourFilled,
 	"hexagonLetterA":                   HexagonLetterA,
+	"hexagonLetterAfilled":             HexagonLetterAfilled,
 	"hexagonLetterB":                   HexagonLetterB,
+	"hexagonLetterBfilled":             HexagonLetterBfilled,
 	"hexagonLetterC":                   HexagonLetterC,
+	"hexagonLetterCfilled":             HexagonLetterCfilled,
 	"hexagonLetterD":                   HexagonLetterD,
+	"hexagonLetterDfilled":             HexagonLetterDfilled,
 	"hexagonLetterE":                   HexagonLetterE,
+	"hexagonLetterEfilled":             HexagonLetterEfilled,
 	"hexagonLetterF":                   HexagonLetterF,
+	"hexagonLetterFfilled":             HexagonLetterFfilled,
 	"hexagonLetterG":                   HexagonLetterG,
+	"hexagonLetterGfilled":             HexagonLetterGfilled,
 	"hexagonLetterH":                   HexagonLetterH,
+	"hexagonLetterHfilled":             HexagonLetterHfilled,
 	"hexagonLetterI":                   HexagonLetterI,
+	"hexagonLetterIfilled":             HexagonLetterIfilled,
 	"hexagonLetterJ":                   HexagonLetterJ,
+	"hexagonLetterJfilled":             HexagonLetterJfilled,
 	"hexagonLetterK":                   HexagonLetterK,
+	"hexagonLetterKfilled":             HexagonLetterKfilled,
 	"hexagonLetterL":                   HexagonLetterL,
+	"hexagonLetterLfilled":             HexagonLetterLfilled,
 	"hexagonLetterM":                   HexagonLetterM,
+	"hexagonLetterMfilled":             HexagonLetterMfilled,
 	"hexagonLetterN":                   HexagonLetterN,
+	"hexagonLetterNfilled":             HexagonLetterNfilled,
 	"hexagonLetterO":                   HexagonLetterO,
+	"hexagonLetterOfilled":             HexagonLetterOfilled,
 	"hexagonLetterP":                   HexagonLetterP,
+	"hexagonLetterPfilled":             HexagonLetterPfilled,
 	"hexagonLetterQ":                   HexagonLetterQ,
+	"hexagonLetterQfilled":             HexagonLetterQfilled,
 	"hexagonLetterR":                   HexagonLetterR,
+	"hexagonLetterRfilled":             HexagonLetterRfilled,
 	"hexagonLetterS":                   HexagonLetterS,
+	"hexagonLetterSfilled":             HexagonLetterSfilled,
 	"hexagonLetterT":                   HexagonLetterT,
+	"hexagonLetterTfilled":             HexagonLetterTfilled,
 	"hexagonLetterU":                   HexagonLetterU,
+	"hexagonLetterUfilled":             HexagonLetterUfilled,
 	"hexagonLetterV":                   HexagonLetterV,
+	"hexagonLetterVfilled":             HexagonLetterVfilled,
 	"hexagonLetterW":                   HexagonLetterW,
+	"hexagonLetterWfilled":             HexagonLetterWfilled,
 	"hexagonLetterX":                   HexagonLetterX,
+	"hexagonLetterXfilled":             HexagonLetterXfilled,
 	"hexagonLetterY":                   HexagonLetterY,
+	"hexagonLetterYfilled":             HexagonLetterYfilled,
 	"hexagonLetterZ":                   HexagonLetterZ,
+	"hexagonLetterZfilled":             HexagonLetterZfilled,
 	"hexagonMinus":                     HexagonMinus,
+	"hexagonMinusFilled":               HexagonMinusFilled,
 	"hexagonMinusTwo":                  HexagonMinusTwo,
 	"hexagonNineFilled":                HexagonNineFilled,
 	"hexagonNumberEight":               HexagonNumberEight,
+	"hexagonNumberEightFilled":         HexagonNumberEightFilled,
 	"hexagonNumberFive":                HexagonNumberFive,
+	"hexagonNumberFiveFilled":          HexagonNumberFiveFilled,
 	"hexagonNumberFour":                HexagonNumberFour,
+	"hexagonNumberFourFilled":          HexagonNumberFourFilled,
 	"hexagonNumberNine":                HexagonNumberNine,
+	"hexagonNumberNineFilled":          HexagonNumberNineFilled,
 	"hexagonNumberOne":                 HexagonNumberOne,
+	"hexagonNumberOneFilled":           HexagonNumberOneFilled,
 	"hexagonNumberSeven":               HexagonNumberSeven,
+	"hexagonNumberSevenFilled":         HexagonNumberSevenFilled,
 	"hexagonNumberSix":                 HexagonNumberSix,
+	"hexagonNumberSixFilled":           HexagonNumberSixFilled,
 	"hexagonNumberThree":               HexagonNumberThree,
+	"hexagonNumberThreeFilled":         HexagonNumberThreeFilled,
 	"hexagonNumberTwo":                 HexagonNumberTwo,
+	"hexagonNumberTwoFilled":           HexagonNumberTwoFilled,
 	"hexagonNumberZero":                HexagonNumberZero,
+	"hexagonNumberZeroFilled":          HexagonNumberZeroFilled,
 	"hexagonOff":                       HexagonOff,
 	"hexagonOneFilled":                 HexagonOneFilled,
 	"hexagonPlus":                      HexagonPlus,
+	"hexagonPlusFilled":                HexagonPlusFilled,
 	"hexagonPlusTwo":                   HexagonPlusTwo,
 	"hexagonSevenFilled":               HexagonSevenFilled,
 	"hexagonSixFilled":                 HexagonSixFilled,
@@ -2689,6 +2873,7 @@ var IconLookup = map[string]TablerIconFn{
 	"homeEco":                          HomeEco,
 	"homeEdit":                         HomeEdit,
 	"homeExclamation":                  HomeExclamation,
+	"homeFilled":                       HomeFilled,
 	"homeHand":                         HomeHand,
 	"homeHeart":                        HomeHeart,
 	"homeInfinity":                     HomeInfinity,
@@ -2720,6 +2905,8 @@ var IconLookup = map[string]TablerIconFn{
 	"hourglassHigh":                    HourglassHigh,
 	"hourglassLow":                     HourglassLow,
 	"hourglassOff":                     HourglassOff,
+	"hoursTwelve":                      HoursTwelve,
+	"hoursTwentyFour":                  HoursTwentyFour,
 	"html":                             Html,
 	"httpConnect":                      HttpConnect,
 	"httpDelete":                       HttpDelete,
@@ -2742,6 +2929,7 @@ var IconLookup = map[string]TablerIconFn{
 	"idBadgeOff":                       IdBadgeOff,
 	"idBadgeTwo":                       IdBadgeTwo,
 	"idOff":                            IdOff,
+	"imageInPicture":                   ImageInPicture,
 	"inbox":                            Inbox,
 	"inboxOff":                         InboxOff,
 	"indentDecrease":                   IndentDecrease,
@@ -2781,7 +2969,9 @@ var IconLookup = map[string]TablerIconFn{
 	"inputCheck":                       InputCheck,
 	"inputSearch":                      InputSearch,
 	"inputX":                           InputX,
+	"invoice":                          Invoice,
 	"ironing":                          Ironing,
+	"ironingFilled":                    IroningFilled,
 	"ironingOff":                       IroningOff,
 	"ironingOne":                       IroningOne,
 	"ironingSteam":                     IroningSteam,
@@ -2794,6 +2984,7 @@ var IconLookup = map[string]TablerIconFn{
 	"italic":                           Italic,
 	"jacket":                           Jacket,
 	"jetpack":                          Jetpack,
+	"jetpackFilled":                    JetpackFilled,
 	"jewishStar":                       JewishStar,
 	"jewishStarFilled":                 JewishStarFilled,
 	"jpg":                              Jpg,
@@ -2801,8 +2992,9 @@ var IconLookup = map[string]TablerIconFn{
 	"jumpRope":                         JumpRope,
 	"karate":                           Karate,
 	"kayak":                            Kayak,
-	"kering":                           Kering,
+	"kerning":                          Kerning,
 	"key":                              Key,
+	"keyFilled":                        KeyFilled,
 	"keyOff":                           KeyOff,
 	"keyboard":                         Keyboard,
 	"keyboardHide":                     KeyboardHide,
@@ -2838,15 +3030,23 @@ var IconLookup = map[string]TablerIconFn{
 	"layersIntersectTwo":               LayersIntersectTwo,
 	"layersLinked":                     LayersLinked,
 	"layersOff":                        LayersOff,
+	"layersSelected":                   LayersSelected,
+	"layersSelectedBottom":             LayersSelectedBottom,
 	"layersSubtract":                   LayersSubtract,
 	"layersUnion":                      LayersUnion,
 	"layout":                           Layout,
 	"layoutAlignBottom":                LayoutAlignBottom,
+	"layoutAlignBottomFilled":          LayoutAlignBottomFilled,
 	"layoutAlignCenter":                LayoutAlignCenter,
+	"layoutAlignCenterFilled":          LayoutAlignCenterFilled,
 	"layoutAlignLeft":                  LayoutAlignLeft,
+	"layoutAlignLeftFilled":            LayoutAlignLeftFilled,
 	"layoutAlignMiddle":                LayoutAlignMiddle,
+	"layoutAlignMiddleFilled":          LayoutAlignMiddleFilled,
 	"layoutAlignRight":                 LayoutAlignRight,
+	"layoutAlignRightFilled":           LayoutAlignRightFilled,
 	"layoutAlignTop":                   LayoutAlignTop,
+	"layoutAlignTopFilled":             LayoutAlignTopFilled,
 	"layoutBoard":                      LayoutBoard,
 	"layoutBoardSplit":                 LayoutBoardSplit,
 	"layoutBottombar":                  LayoutBottombar,
@@ -2857,16 +3057,24 @@ var IconLookup = map[string]TablerIconFn{
 	"layoutBottombarFilled":            LayoutBottombarFilled,
 	"layoutBottombarInactive":          LayoutBottombarInactive,
 	"layoutCards":                      LayoutCards,
+	"layoutCardsFilled":                LayoutCardsFilled,
 	"layoutCollage":                    LayoutCollage,
 	"layoutColumns":                    LayoutColumns,
 	"layoutDashboard":                  LayoutDashboard,
+	"layoutDashboardFilled":            LayoutDashboardFilled,
 	"layoutDistributeHorizontal":       LayoutDistributeHorizontal,
+	"layoutDistributeHorizontalFilled": LayoutDistributeHorizontalFilled,
 	"layoutDistributeVertical":         LayoutDistributeVertical,
+	"layoutDistributeVerticalFilled":   LayoutDistributeVerticalFilled,
+	"layoutFilled":                     LayoutFilled,
 	"layoutGrid":                       LayoutGrid,
 	"layoutGridAdd":                    LayoutGridAdd,
+	"layoutGridFilled":                 LayoutGridFilled,
 	"layoutGridRemove":                 LayoutGridRemove,
 	"layoutKanban":                     LayoutKanban,
+	"layoutKanbanFilled":               LayoutKanbanFilled,
 	"layoutList":                       LayoutList,
+	"layoutListFilled":                 LayoutListFilled,
 	"layoutNavbar":                     LayoutNavbar,
 	"layoutNavbarCollapse":             LayoutNavbarCollapse,
 	"layoutNavbarCollapseFilled":       LayoutNavbarCollapseFilled,
@@ -2877,6 +3085,7 @@ var IconLookup = map[string]TablerIconFn{
 	"layoutOff":                        LayoutOff,
 	"layoutRows":                       LayoutRows,
 	"layoutSidebar":                    LayoutSidebar,
+	"layoutSidebarFilled":              LayoutSidebarFilled,
 	"layoutSidebarInactive":            LayoutSidebarInactive,
 	"layoutSidebarLeftCollapse":        LayoutSidebarLeftCollapse,
 	"layoutSidebarLeftCollapseFilled":  LayoutSidebarLeftCollapseFilled,
@@ -2887,11 +3096,14 @@ var IconLookup = map[string]TablerIconFn{
 	"layoutSidebarRightCollapseFilled": LayoutSidebarRightCollapseFilled,
 	"layoutSidebarRightExpand":         LayoutSidebarRightExpand,
 	"layoutSidebarRightExpandFilled":   LayoutSidebarRightExpandFilled,
+	"layoutSidebarRightFilled":         LayoutSidebarRightFilled,
 	"layoutSidebarRightInactive":       LayoutSidebarRightInactive,
 	"layoutTwo":                        LayoutTwo,
+	"layoutTwoFilled":                  LayoutTwoFilled,
 	"leaf":                             Leaf,
 	"leafOff":                          LeafOff,
 	"lego":                             Lego,
+	"legoFilled":                       LegoFilled,
 	"legoOff":                          LegoOff,
 	"lemon":                            Lemon,
 	"lemonTwo":                         LemonTwo,
@@ -3021,11 +3233,13 @@ var IconLookup = map[string]TablerIconFn{
 	"lockDollar":                       LockDollar,
 	"lockDown":                         LockDown,
 	"lockExclamation":                  LockExclamation,
+	"lockFilled":                       LockFilled,
 	"lockHeart":                        LockHeart,
 	"lockMinus":                        LockMinus,
 	"lockOff":                          LockOff,
 	"lockOpen":                         LockOpen,
 	"lockOpenOff":                      LockOpenOff,
+	"lockOpenTwo":                      LockOpenTwo,
 	"lockPause":                        LockPause,
 	"lockPin":                          LockPin,
 	"lockPlus":                         LockPlus,
@@ -3050,15 +3264,19 @@ var IconLookup = map[string]TablerIconFn{
 	"loginTwo":                         LoginTwo,
 	"logout":                           Logout,
 	"logoutTwo":                        LogoutTwo,
+	"logs":                             Logs,
 	"lollipop":                         Lollipop,
 	"lollipopOff":                      LollipopOff,
 	"luggage":                          Luggage,
 	"luggageOff":                       LuggageOff,
 	"lungs":                            Lungs,
+	"lungsFilled":                      LungsFilled,
 	"lungsOff":                         LungsOff,
 	"macro":                            Macro,
+	"macroFilled":                      MacroFilled,
 	"macroOff":                         MacroOff,
 	"magnet":                           Magnet,
+	"magnetFilled":                     MagnetFilled,
 	"magnetOff":                        MagnetOff,
 	"magnetic":                         Magnetic,
 	"mail":                             Mail,
@@ -3091,7 +3309,9 @@ var IconLookup = map[string]TablerIconFn{
 	"mailbox":                          Mailbox,
 	"mailboxOff":                       MailboxOff,
 	"man":                              Man,
+	"manFilled":                        ManFilled,
 	"manualGearbox":                    ManualGearbox,
+	"manualGearboxFilled":              ManualGearboxFilled,
 	"map":                              Map,
 	"mapBolt":                          MapBolt,
 	"mapCancel":                        MapCancel,
@@ -3168,6 +3388,7 @@ var IconLookup = map[string]TablerIconFn{
 	"mathIntegrals":                    MathIntegrals,
 	"mathLower":                        MathLower,
 	"mathMax":                          MathMax,
+	"mathMaxMin":                       MathMaxMin,
 	"mathMin":                          MathMin,
 	"mathNot":                          MathNot,
 	"mathOff":                          MathOff,
@@ -3279,6 +3500,8 @@ var IconLookup = map[string]TablerIconFn{
 	"messagesOff":                      MessagesOff,
 	"meteor":                           Meteor,
 	"meteorOff":                        MeteorOff,
+	"meterCube":                        MeterCube,
+	"meterSquare":                      MeterSquare,
 	"metronome":                        Metronome,
 	"michelinBibGourmand":              MichelinBibGourmand,
 	"michelinStar":                     MichelinStar,
@@ -3286,12 +3509,14 @@ var IconLookup = map[string]TablerIconFn{
 	"mickey":                           Mickey,
 	"mickeyFilled":                     MickeyFilled,
 	"microphone":                       Microphone,
+	"microphoneFilled":                 MicrophoneFilled,
 	"microphoneOff":                    MicrophoneOff,
 	"microphoneTwo":                    MicrophoneTwo,
 	"microphoneTwoOff":                 MicrophoneTwoOff,
 	"microscope":                       Microscope,
 	"microscopeOff":                    MicroscopeOff,
 	"microwave":                        Microwave,
+	"microwaveFilled":                  MicrowaveFilled,
 	"microwaveOff":                     MicrowaveOff,
 	"militaryAward":                    MilitaryAward,
 	"militaryRank":                     MilitaryRank,
@@ -3474,6 +3699,7 @@ var IconLookup = map[string]TablerIconFn{
 	"numberNineSmall":                  NumberNineSmall,
 	"numberNineteenSmall":              NumberNineteenSmall,
 	"numberOne":                        NumberOne,
+	"numberOneHundredTwentyThree":      NumberOneHundredTwentyThree,
 	"numberOneSmall":                   NumberOneSmall,
 	"numberSeven":                      NumberSeven,
 	"numberSevenSmall":                 NumberSevenSmall,
@@ -3518,7 +3744,6 @@ var IconLookup = map[string]TablerIconFn{
 	"olympicsOff":                      OlympicsOff,
 	"om":                               Om,
 	"omega":                            Omega,
-	"oneHundredTwentyThree":            OneHundredTwentyThree,
 	"outbound":                         Outbound,
 	"outlet":                           Outlet,
 	"oval":                             Oval,
@@ -3560,6 +3785,7 @@ var IconLookup = map[string]TablerIconFn{
 	"paw":                              Paw,
 	"pawFilled":                        PawFilled,
 	"pawOff":                           PawOff,
+	"paywall":                          Paywall,
 	"pdf":                              Pdf,
 	"peace":                            Peace,
 	"pencil":                           Pencil,
@@ -3669,6 +3895,8 @@ var IconLookup = map[string]TablerIconFn{
 	"pigMoney":                         PigMoney,
 	"pigOff":                           PigOff,
 	"pilcrow":                          Pilcrow,
+	"pilcrowLeft":                      PilcrowLeft,
+	"pilcrowRight":                     PilcrowRight,
 	"pill":                             Pill,
 	"pillOff":                          PillOff,
 	"pills":                            Pills,
@@ -3784,6 +4012,7 @@ var IconLookup = map[string]TablerIconFn{
 	"printer":                          Printer,
 	"printerOff":                       PrinterOff,
 	"prism":                            Prism,
+	"prismLight":                       PrismLight,
 	"prismOff":                         PrismOff,
 	"prismPlus":                        PrismPlus,
 	"prison":                           Prison,
@@ -3795,8 +4024,10 @@ var IconLookup = map[string]TablerIconFn{
 	"progressHelp":                     ProgressHelp,
 	"progressX":                        ProgressX,
 	"prompt":                           Prompt,
+	"prong":                            Prong,
 	"propeller":                        Propeller,
 	"propellerOff":                     PropellerOff,
+	"protocol":                         Protocol,
 	"pumpkinScary":                     PumpkinScary,
 	"puzzle":                           Puzzle,
 	"puzzleFilled":                     PuzzleFilled,
@@ -3813,6 +4044,7 @@ var IconLookup = map[string]TablerIconFn{
 	"quoteOff":                         QuoteOff,
 	"quotes":                           Quotes,
 	"radar":                            Radar,
+	"radarFilled":                      RadarFilled,
 	"radarOff":                         RadarOff,
 	"radarTwo":                         RadarTwo,
 	"radio":                            Radio,
@@ -3840,6 +4072,7 @@ var IconLookup = map[string]TablerIconFn{
 	"receiptOff":                       ReceiptOff,
 	"receiptPound":                     ReceiptPound,
 	"receiptRefund":                    ReceiptRefund,
+	"receiptRupee":                     ReceiptRupee,
 	"receiptTax":                       ReceiptTax,
 	"receiptTwo":                       ReceiptTwo,
 	"receiptYen":                       ReceiptYen,
@@ -3866,8 +4099,11 @@ var IconLookup = map[string]TablerIconFn{
 	"regexOff":                         RegexOff,
 	"registered":                       Registered,
 	"relationManyToMany":               RelationManyToMany,
+	"relationManyToManyFilled":         RelationManyToManyFilled,
 	"relationOneToMany":                RelationOneToMany,
+	"relationOneToManyFilled":          RelationOneToManyFilled,
 	"relationOneToOne":                 RelationOneToOne,
+	"relationOneToOneFilled":           RelationOneToOneFilled,
 	"reload":                           Reload,
 	"reorder":                          Reorder,
 	"repeat":                           Repeat,
@@ -3917,6 +4153,10 @@ var IconLookup = map[string]TablerIconFn{
 	"rollercoaster":                    Rollercoaster,
 	"rollercoasterOff":                 RollercoasterOff,
 	"rosette":                          Rosette,
+	"rosetteDiscount":                  RosetteDiscount,
+	"rosetteDiscountCheck":             RosetteDiscountCheck,
+	"rosetteDiscountCheckFilled":       RosetteDiscountCheckFilled,
+	"rosetteDiscountOff":               RosetteDiscountOff,
 	"rosetteFilled":                    RosetteFilled,
 	"rosetteNumberEight":               RosetteNumberEight,
 	"rosetteNumberFive":                RosetteNumberFive,
@@ -3933,6 +4173,7 @@ var IconLookup = map[string]TablerIconFn{
 	"rotateClockwiseTwo":               RotateClockwiseTwo,
 	"rotateDot":                        RotateDot,
 	"rotateRectangle":                  RotateRectangle,
+	"rotateThreeD":                     RotateThreeD,
 	"rotateThreeHundredSixty":          RotateThreeHundredSixty,
 	"rotateTwo":                        RotateTwo,
 	"route":                            Route,
@@ -3980,6 +4221,7 @@ var IconLookup = map[string]TablerIconFn{
 	"scaleOutlineOff":                  ScaleOutlineOff,
 	"scan":                             Scan,
 	"scanEye":                          ScanEye,
+	"scanPosition":                     ScanPosition,
 	"schema":                           Schema,
 	"schemaOff":                        SchemaOff,
 	"school":                           School,
@@ -4006,6 +4248,7 @@ var IconLookup = map[string]TablerIconFn{
 	"search":                           Search,
 	"searchOff":                        SearchOff,
 	"section":                          Section,
+	"sectionFilled":                    SectionFilled,
 	"sectionSign":                      SectionSign,
 	"seeding":                          Seeding,
 	"seedingOff":                       SeedingOff,
@@ -4059,7 +4302,7 @@ var IconLookup = map[string]TablerIconFn{
 	"shareOff":                         ShareOff,
 	"shareThree":                       ShareThree,
 	"shareTwo":                         ShareTwo,
-	"shiJumping":                       ShiJumping,
+	"shareplay":                        Shareplay,
 	"shield":                           Shield,
 	"shieldBolt":                       ShieldBolt,
 	"shieldCancel":                     ShieldCancel,
@@ -4103,6 +4346,7 @@ var IconLookup = map[string]TablerIconFn{
 	"shoppingBagDiscount":              ShoppingBagDiscount,
 	"shoppingBagEdit":                  ShoppingBagEdit,
 	"shoppingBagExclamation":           ShoppingBagExclamation,
+	"shoppingBagHeart":                 ShoppingBagHeart,
 	"shoppingBagMinus":                 ShoppingBagMinus,
 	"shoppingBagPlus":                  ShoppingBagPlus,
 	"shoppingBagSearch":                ShoppingBagSearch,
@@ -4158,6 +4402,7 @@ var IconLookup = map[string]TablerIconFn{
 	"skateboarding":                    Skateboarding,
 	"skewX":                            SkewX,
 	"skewY":                            SkewY,
+	"skiJumping":                       SkiJumping,
 	"skipBack":                         SkipBack,
 	"skipForward":                      SkipForward,
 	"skull":                            Skull,
@@ -4187,20 +4432,26 @@ var IconLookup = map[string]TablerIconFn{
 	"sortAscending":                    SortAscending,
 	"sortAscendingLetters":             SortAscendingLetters,
 	"sortAscendingNumbers":             SortAscendingNumbers,
+	"sortAscendingShapes":              SortAscendingShapes,
+	"sortAscendingSmallBig":            SortAscendingSmallBig,
 	"sortAscendingTwo":                 SortAscendingTwo,
 	"sortDescending":                   SortDescending,
 	"sortDescendingLetters":            SortDescendingLetters,
 	"sortDescendingNumbers":            SortDescendingNumbers,
+	"sortDescendingShapes":             SortDescendingShapes,
+	"sortDescendingSmallBig":           SortDescendingSmallBig,
 	"sortDescendingTwo":                SortDescendingTwo,
 	"sortNineZero":                     SortNineZero,
 	"sortZa":                           SortZa,
 	"sortZeroNine":                     SortZeroNine,
 	"sos":                              Sos,
 	"soup":                             Soup,
+	"soupFilled":                       SoupFilled,
 	"soupOff":                          SoupOff,
 	"sourceCode":                       SourceCode,
 	"space":                            Space,
 	"spaceOff":                         SpaceOff,
+	"spaces":                           Spaces,
 	"spacingHorizontal":                SpacingHorizontal,
 	"spacingVertical":                  SpacingVertical,
 	"spade":                            Spade,
@@ -4279,46 +4530,83 @@ var IconLookup = map[string]TablerIconFn{
 	"squareHalf":                       SquareHalf,
 	"squareKey":                        SquareKey,
 	"squareLetterA":                    SquareLetterA,
+	"squareLetterAfilled":              SquareLetterAfilled,
 	"squareLetterB":                    SquareLetterB,
+	"squareLetterBfilled":              SquareLetterBfilled,
 	"squareLetterC":                    SquareLetterC,
+	"squareLetterCfilled":              SquareLetterCfilled,
 	"squareLetterD":                    SquareLetterD,
+	"squareLetterDfilled":              SquareLetterDfilled,
 	"squareLetterE":                    SquareLetterE,
+	"squareLetterEfilled":              SquareLetterEfilled,
 	"squareLetterF":                    SquareLetterF,
+	"squareLetterFfilled":              SquareLetterFfilled,
 	"squareLetterG":                    SquareLetterG,
+	"squareLetterGfilled":              SquareLetterGfilled,
 	"squareLetterH":                    SquareLetterH,
+	"squareLetterHfilled":              SquareLetterHfilled,
 	"squareLetterI":                    SquareLetterI,
+	"squareLetterIfilled":              SquareLetterIfilled,
 	"squareLetterJ":                    SquareLetterJ,
+	"squareLetterJfilled":              SquareLetterJfilled,
 	"squareLetterK":                    SquareLetterK,
+	"squareLetterKfilled":              SquareLetterKfilled,
 	"squareLetterL":                    SquareLetterL,
+	"squareLetterLfilled":              SquareLetterLfilled,
 	"squareLetterM":                    SquareLetterM,
+	"squareLetterMfilled":              SquareLetterMfilled,
 	"squareLetterN":                    SquareLetterN,
+	"squareLetterNfilled":              SquareLetterNfilled,
 	"squareLetterO":                    SquareLetterO,
+	"squareLetterOfilled":              SquareLetterOfilled,
 	"squareLetterP":                    SquareLetterP,
+	"squareLetterPfilled":              SquareLetterPfilled,
 	"squareLetterQ":                    SquareLetterQ,
+	"squareLetterQfilled":              SquareLetterQfilled,
 	"squareLetterR":                    SquareLetterR,
+	"squareLetterRfilled":              SquareLetterRfilled,
 	"squareLetterS":                    SquareLetterS,
+	"squareLetterSfilled":              SquareLetterSfilled,
 	"squareLetterT":                    SquareLetterT,
+	"squareLetterTfilled":              SquareLetterTfilled,
 	"squareLetterU":                    SquareLetterU,
+	"squareLetterUfilled":              SquareLetterUfilled,
 	"squareLetterV":                    SquareLetterV,
+	"squareLetterVfilled":              SquareLetterVfilled,
 	"squareLetterW":                    SquareLetterW,
+	"squareLetterWfilled":              SquareLetterWfilled,
 	"squareLetterX":                    SquareLetterX,
+	"squareLetterXfilled":              SquareLetterXfilled,
 	"squareLetterY":                    SquareLetterY,
+	"squareLetterYfilled":              SquareLetterYfilled,
 	"squareLetterZ":                    SquareLetterZ,
+	"squareLetterZfilled":              SquareLetterZfilled,
 	"squareMinus":                      SquareMinus,
 	"squareMinusFilled":                SquareMinusFilled,
 	"squareNineFilled":                 SquareNineFilled,
 	"squareNumberEight":                SquareNumberEight,
+	"squareNumberEightFilled":          SquareNumberEightFilled,
 	"squareNumberFive":                 SquareNumberFive,
+	"squareNumberFiveFilled":           SquareNumberFiveFilled,
 	"squareNumberFour":                 SquareNumberFour,
+	"squareNumberFourFilled":           SquareNumberFourFilled,
 	"squareNumberNine":                 SquareNumberNine,
+	"squareNumberNineFilled":           SquareNumberNineFilled,
 	"squareNumberOne":                  SquareNumberOne,
+	"squareNumberOneFilled":            SquareNumberOneFilled,
 	"squareNumberSeven":                SquareNumberSeven,
+	"squareNumberSevenFilled":          SquareNumberSevenFilled,
 	"squareNumberSix":                  SquareNumberSix,
+	"squareNumberSixFilled":            SquareNumberSixFilled,
 	"squareNumberThree":                SquareNumberThree,
+	"squareNumberThreeFilled":          SquareNumberThreeFilled,
 	"squareNumberTwo":                  SquareNumberTwo,
+	"squareNumberTwoFilled":            SquareNumberTwoFilled,
 	"squareNumberZero":                 SquareNumberZero,
+	"squareNumberZeroFilled":           SquareNumberZeroFilled,
 	"squareOff":                        SquareOff,
 	"squareOneFilled":                  SquareOneFilled,
+	"squarePercentage":                 SquarePercentage,
 	"squarePlus":                       SquarePlus,
 	"squarePlusTwo":                    SquarePlusTwo,
 	"squareRoot":                       SquareRoot,
@@ -4357,31 +4645,57 @@ var IconLookup = map[string]TablerIconFn{
 	"squareRoundedChevronsUpFilled":    SquareRoundedChevronsUpFilled,
 	"squareRoundedFilled":              SquareRoundedFilled,
 	"squareRoundedLetterA":             SquareRoundedLetterA,
+	"squareRoundedLetterAfilled":       SquareRoundedLetterAfilled,
 	"squareRoundedLetterB":             SquareRoundedLetterB,
+	"squareRoundedLetterBfilled":       SquareRoundedLetterBfilled,
 	"squareRoundedLetterC":             SquareRoundedLetterC,
+	"squareRoundedLetterCfilled":       SquareRoundedLetterCfilled,
 	"squareRoundedLetterD":             SquareRoundedLetterD,
+	"squareRoundedLetterDfilled":       SquareRoundedLetterDfilled,
 	"squareRoundedLetterE":             SquareRoundedLetterE,
+	"squareRoundedLetterEfilled":       SquareRoundedLetterEfilled,
 	"squareRoundedLetterF":             SquareRoundedLetterF,
+	"squareRoundedLetterFfilled":       SquareRoundedLetterFfilled,
 	"squareRoundedLetterG":             SquareRoundedLetterG,
+	"squareRoundedLetterGfilled":       SquareRoundedLetterGfilled,
 	"squareRoundedLetterH":             SquareRoundedLetterH,
+	"squareRoundedLetterHfilled":       SquareRoundedLetterHfilled,
 	"squareRoundedLetterI":             SquareRoundedLetterI,
+	"squareRoundedLetterIfilled":       SquareRoundedLetterIfilled,
 	"squareRoundedLetterJ":             SquareRoundedLetterJ,
+	"squareRoundedLetterJfilled":       SquareRoundedLetterJfilled,
 	"squareRoundedLetterK":             SquareRoundedLetterK,
+	"squareRoundedLetterKfilled":       SquareRoundedLetterKfilled,
 	"squareRoundedLetterL":             SquareRoundedLetterL,
+	"squareRoundedLetterLfilled":       SquareRoundedLetterLfilled,
 	"squareRoundedLetterM":             SquareRoundedLetterM,
+	"squareRoundedLetterMfilled":       SquareRoundedLetterMfilled,
 	"squareRoundedLetterN":             SquareRoundedLetterN,
+	"squareRoundedLetterNfilled":       SquareRoundedLetterNfilled,
 	"squareRoundedLetterO":             SquareRoundedLetterO,
+	"squareRoundedLetterOfilled":       SquareRoundedLetterOfilled,
 	"squareRoundedLetterP":             SquareRoundedLetterP,
+	"squareRoundedLetterPfilled":       SquareRoundedLetterPfilled,
 	"squareRoundedLetterQ":             SquareRoundedLetterQ,
+	"squareRoundedLetterQfilled":       SquareRoundedLetterQfilled,
 	"squareRoundedLetterR":             SquareRoundedLetterR,
+	"squareRoundedLetterRfilled":       SquareRoundedLetterRfilled,
 	"squareRoundedLetterS":             SquareRoundedLetterS,
+	"squareRoundedLetterSfilled":       SquareRoundedLetterSfilled,
 	"squareRoundedLetterT":             SquareRoundedLetterT,
+	"squareRoundedLetterTfilled":       SquareRoundedLetterTfilled,
 	"squareRoundedLetterU":             SquareRoundedLetterU,
+	"squareRoundedLetterUfilled":       SquareRoundedLetterUfilled,
 	"squareRoundedLetterV":             SquareRoundedLetterV,
+	"squareRoundedLetterVfilled":       SquareRoundedLetterVfilled,
 	"squareRoundedLetterW":             SquareRoundedLetterW,
+	"squareRoundedLetterWfilled":       SquareRoundedLetterWfilled,
 	"squareRoundedLetterX":             SquareRoundedLetterX,
+	"squareRoundedLetterXfilled":       SquareRoundedLetterXfilled,
 	"squareRoundedLetterY":             SquareRoundedLetterY,
+	"squareRoundedLetterYfilled":       SquareRoundedLetterYfilled,
 	"squareRoundedLetterZ":             SquareRoundedLetterZ,
+	"squareRoundedLetterZfilled":       SquareRoundedLetterZfilled,
 	"squareRoundedMinus":               SquareRoundedMinus,
 	"squareRoundedMinusFilled":         SquareRoundedMinusFilled,
 	"squareRoundedMinusTwo":            SquareRoundedMinusTwo,
@@ -4405,6 +4719,7 @@ var IconLookup = map[string]TablerIconFn{
 	"squareRoundedNumberTwoFilled":     SquareRoundedNumberTwoFilled,
 	"squareRoundedNumberZero":          SquareRoundedNumberZero,
 	"squareRoundedNumberZeroFilled":    SquareRoundedNumberZeroFilled,
+	"squareRoundedPercentage":          SquareRoundedPercentage,
 	"squareRoundedPlus":                SquareRoundedPlus,
 	"squareRoundedPlusFilled":          SquareRoundedPlusFilled,
 	"squareRoundedPlusTwo":             SquareRoundedPlusTwo,
@@ -4419,18 +4734,23 @@ var IconLookup = map[string]TablerIconFn{
 	"squareX":                          SquareX,
 	"squareXfilled":                    SquareXfilled,
 	"squareZeroFilled":                 SquareZeroFilled,
+	"squares":                          Squares,
 	"squaresDiagonal":                  SquaresDiagonal,
 	"squaresFilled":                    SquaresFilled,
+	"squaresSelected":                  SquaresSelected,
 	"stack":                            Stack,
 	"stackBack":                        StackBack,
 	"stackBackward":                    StackBackward,
+	"stackFilled":                      StackFilled,
 	"stackForward":                     StackForward,
 	"stackFront":                       StackFront,
 	"stackMiddle":                      StackMiddle,
 	"stackPop":                         StackPop,
 	"stackPush":                        StackPush,
 	"stackThree":                       StackThree,
+	"stackThreeFilled":                 StackThreeFilled,
 	"stackTwo":                         StackTwo,
+	"stackTwoFilled":                   StackTwoFilled,
 	"stairs":                           Stairs,
 	"stairsDown":                       StairsDown,
 	"stairsUp":                         StairsUp,
@@ -4529,6 +4849,8 @@ var IconLookup = map[string]TablerIconFn{
 	"temperatureMinus":                 TemperatureMinus,
 	"temperatureOff":                   TemperatureOff,
 	"temperaturePlus":                  TemperaturePlus,
+	"temperatureSnow":                  TemperatureSnow,
+	"temperatureSun":                   TemperatureSun,
 	"template":                         Template,
 	"templateOff":                      TemplateOff,
 	"tent":                             Tent,
@@ -4559,11 +4881,6 @@ var IconLookup = map[string]TablerIconFn{
 	"texture":                          Texture,
 	"theater":                          Theater,
 	"thermometer":                      Thermometer,
-	"threeDcubeSphere":                 ThreeDcubeSphere,
-	"threeDcubeSphereOff":              ThreeDcubeSphereOff,
-	"threeDrotate":                     ThreeDrotate,
-	"threeHundredSixty":                ThreeHundredSixty,
-	"threeHundredSixtyView":            ThreeHundredSixtyView,
 	"thumbDown":                        ThumbDown,
 	"thumbDownFilled":                  ThumbDownFilled,
 	"thumbDownOff":                     ThumbDownOff,
@@ -4641,6 +4958,7 @@ var IconLookup = map[string]TablerIconFn{
 	"transactionDollar":                TransactionDollar,
 	"transactionEuro":                  TransactionEuro,
 	"transactionPound":                 TransactionPound,
+	"transactionRupee":                 TransactionRupee,
 	"transactionYen":                   TransactionYen,
 	"transactionYuan":                  TransactionYuan,
 	"transfer":                         Transfer,
@@ -4649,10 +4967,19 @@ var IconLookup = map[string]TablerIconFn{
 	"transferVertical":                 TransferVertical,
 	"transform":                        Transform,
 	"transformFilled":                  TransformFilled,
+	"transformPoint":                   TransformPoint,
+	"transformPointBottomLeft":         TransformPointBottomLeft,
+	"transformPointBottomRight":        TransformPointBottomRight,
+	"transformPointTopLeft":            TransformPointTopLeft,
+	"transformPointTopRight":           TransformPointTopRight,
 	"transitionBottom":                 TransitionBottom,
+	"transitionBottomFilled":           TransitionBottomFilled,
 	"transitionLeft":                   TransitionLeft,
+	"transitionLeftFilled":             TransitionLeftFilled,
 	"transitionRight":                  TransitionRight,
+	"transitionRightFilled":            TransitionRightFilled,
 	"transitionTop":                    TransitionTop,
+	"transitionTopFilled":              TransitionTopFilled,
 	"trash":                            Trash,
 	"trashFilled":                      TrashFilled,
 	"trashOff":                         TrashOff,
@@ -4691,12 +5018,12 @@ var IconLookup = map[string]TablerIconFn{
 	"truckLoading":                     TruckLoading,
 	"truckOff":                         TruckOff,
 	"truckReturn":                      TruckReturn,
-	"twelveHours":                      TwelveHours,
-	"twentyFourHours":                  TwentyFourHours,
-	"twoFa":                            TwoFa,
 	"txt":                              Txt,
+	"typeface":                         Typeface,
 	"typography":                       Typography,
 	"typographyOff":                    TypographyOff,
+	"uturnLeft":                        UturnLeft,
+	"uturnRight":                       UturnRight,
 	"ufo":                              Ufo,
 	"ufoOff":                           UfoOff,
 	"umbrella":                         Umbrella,
@@ -4730,6 +5057,7 @@ var IconLookup = map[string]TablerIconFn{
 	"userPlus":                         UserPlus,
 	"userQuestion":                     UserQuestion,
 	"userScan":                         UserScan,
+	"userScreen":                       UserScreen,
 	"userSearch":                       UserSearch,
 	"userShare":                        UserShare,
 	"userShield":                       UserShield,
@@ -4771,6 +5099,8 @@ var IconLookup = map[string]TablerIconFn{
 	"videoOff":                         VideoOff,
 	"videoPlus":                        VideoPlus,
 	"viewThreeHundredSixty":            ViewThreeHundredSixty,
+	"viewThreeHundredSixtyArrow":       ViewThreeHundredSixtyArrow,
+	"viewThreeHundredSixtyNumber":      ViewThreeHundredSixtyNumber,
 	"viewThreeHundredSixtyOff":         ViewThreeHundredSixtyOff,
 	"viewfinder":                       Viewfinder,
 	"viewfinderOff":                    ViewfinderOff,
@@ -4860,6 +5190,7 @@ var IconLookup = map[string]TablerIconFn{
 	"wiper":                            Wiper,
 	"wiperWash":                        WiperWash,
 	"woman":                            Woman,
+	"womanFilled":                      WomanFilled,
 	"wood":                             Wood,
 	"world":                            World,
 	"worldBolt":                        WorldBolt,
@@ -4894,15 +5225,20 @@ var IconLookup = map[string]TablerIconFn{
 	"writingSignOff":                   WritingSignOff,
 	"x":                                X,
 	"xboxA":                            XboxA,
+	"xboxAfilled":                      XboxAfilled,
 	"xboxB":                            XboxB,
+	"xboxBfilled":                      XboxBfilled,
 	"xboxX":                            XboxX,
+	"xboxXfilled":                      XboxXfilled,
 	"xboxY":                            XboxY,
+	"xboxYfilled":                      XboxYfilled,
 	"xd":                               Xd,
 	"xxx":                              Xxx,
 	"yinYang":                          YinYang,
 	"yinYangFilled":                    YinYangFilled,
 	"yoga":                             Yoga,
 	"zeppelin":                         Zeppelin,
+	"zeppelinFilled":                   ZeppelinFilled,
 	"zeppelinOff":                      ZeppelinOff,
 	"zip":                              Zip,
 	"zodiacAquarius":                   ZodiacAquarius,
@@ -4917,25 +5253,34 @@ var IconLookup = map[string]TablerIconFn{
 	"zodiacScorpio":                    ZodiacScorpio,
 	"zodiacTaurus":                     ZodiacTaurus,
 	"zodiacVirgo":                      ZodiacVirgo,
+	"zoom":                             Zoom,
 	"zoomCancel":                       ZoomCancel,
+	"zoomCancelFilled":                 ZoomCancelFilled,
 	"zoomCheck":                        ZoomCheck,
 	"zoomCheckFilled":                  ZoomCheckFilled,
 	"zoomCode":                         ZoomCode,
+	"zoomCodeFilled":                   ZoomCodeFilled,
 	"zoomExclamation":                  ZoomExclamation,
+	"zoomExclamationFilled":            ZoomExclamationFilled,
 	"zoomFilled":                       ZoomFilled,
 	"zoomIn":                           ZoomIn,
 	"zoomInArea":                       ZoomInArea,
 	"zoomInAreaFilled":                 ZoomInAreaFilled,
 	"zoomInFilled":                     ZoomInFilled,
 	"zoomMoney":                        ZoomMoney,
+	"zoomMoneyFilled":                  ZoomMoneyFilled,
 	"zoomOut":                          ZoomOut,
 	"zoomOutArea":                      ZoomOutArea,
+	"zoomOutAreaFilled":                ZoomOutAreaFilled,
 	"zoomOutFilled":                    ZoomOutFilled,
 	"zoomPan":                          ZoomPan,
+	"zoomPanFilled":                    ZoomPanFilled,
 	"zoomQuestion":                     ZoomQuestion,
+	"zoomQuestionFilled":               ZoomQuestionFilled,
 	"zoomReplace":                      ZoomReplace,
 	"zoomReset":                        ZoomReset,
 	"zoomScan":                         ZoomScan,
+	"zoomScanFilled":                   ZoomScanFilled,
 	"zzz":                              Zzz,
 	"zzzOff":                           ZzzOff,
 }
@@ -5012,6 +5357,14 @@ func Accessible(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func AccessibleFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M17 3.34a10 10 0 1 1-14.995 8.984L2 12l.005-.324A10 10 0 0 1 17 3.34m-1.051 6.844a1 1 0 0 0-1.152-.663l-.113.03l-2.684.895l-2.684-.895l-.113-.03a1 1 0 0 0-.628 1.884l.109.044L11 12.22v.976l-1.832 2.75l-.06.1a1 1 0 0 0 .237 1.21l.1.076l.101.06a1 1 0 0 0 1.21-.237l.076-.1L12 15.303l1.168 1.752l.07.093a1 1 0 0 0 1.653-1.102l-.059-.1L13 13.196v-.977l2.316-.771l.109-.044a1 1 0 0 0 .524-1.221zM12 6a1.5 1.5 0 1 0 0 3a1.5 1.5 0 0 0 0-3"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func AccessibleOff(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
@@ -5063,7 +5416,7 @@ func AdCircle(children ...ElementRenderer) *TablerIcon {
 func AdCircleFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10c-5.43 0-9.848-4.327-9.996-9.72L2 12l.004-.28C2.152 6.327 6.57 2 12 2M8.5 8a2.5 2.5 0 0 0-2.495 2.336L6 10.5V15l.007.117a1 1 0 0 0 1.986 0L8 15v-1h1v1l.007.117a1 1 0 0 0 1.986 0L11 15v-4.5l-.005-.164A2.5 2.5 0 0 0 8.5 8M15 8h-1a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h1a3 3 0 0 0 3-3v-2a3 3 0 0 0-3-3m0 2a1 1 0 0 1 1 1v2a1 1 0 0 1-.883.993L15 14zm-6.5 0a.5.5 0 0 1 .492.41L9 10.5V12H8v-1.5l.008-.09A.5.5 0 0 1 8.5 10"/></g>`),
+			Text(`<path fill="currentColor" d="M12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10c-5.43 0-9.848-4.327-9.996-9.72L2 12l.004-.28C2.152 6.327 6.57 2 12 2M8.5 8a2.5 2.5 0 0 0-2.495 2.336L6 10.5V15l.007.117a1 1 0 0 0 1.986 0L8 15v-1h1v1l.007.117a1 1 0 0 0 1.986 0L11 15v-4.5l-.005-.164A2.5 2.5 0 0 0 8.5 8M15 8h-1a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h1a3 3 0 0 0 3-3v-2a3 3 0 0 0-3-3m0 2a1 1 0 0 1 1 1v2a1 1 0 0 1-.883.993L15 14zm-6.5 0a.5.5 0 0 1 .492.41L9 10.5V12H8v-1.5l.008-.09A.5.5 0 0 1 8.5 10"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -5079,7 +5432,7 @@ func AdCircleOff(children ...ElementRenderer) *TablerIcon {
 func AdFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M19 4H5a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3M9 8a3 3 0 0 1 2.995 2.824L12 11v4a1 1 0 0 1-1.993.117L10 15v-1H8v1a1 1 0 0 1-1.993.117L6 15v-4a3 3 0 0 1 3-3m0 2a1 1 0 0 0-.993.883L8 11v1h2v-1a1 1 0 0 0-1-1m8-2a1 1 0 0 1 .993.883L18 9v6a1 1 0 0 1-.883.993L17 16h-1.5a2.5 2.5 0 1 1 .326-4.979l.174.029V9a1 1 0 0 1 .883-.993zm-1.41 5.008L15.5 13a.5.5 0 0 0-.09.992l.09.008h.5v-.5l-.008-.09a.5.5 0 0 0-.318-.379z"/></g>`),
+			Text(`<path fill="currentColor" d="M19 4H5a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3M9 8a3 3 0 0 1 2.995 2.824L12 11v4a1 1 0 0 1-1.993.117L10 15v-1H8v1a1 1 0 0 1-1.993.117L6 15v-4a3 3 0 0 1 3-3m0 2a1 1 0 0 0-.993.883L8 11v1h2v-1a1 1 0 0 0-1-1m8-2a1 1 0 0 1 .993.883L18 9v6a1 1 0 0 1-.883.993L17 16h-1.5a2.5 2.5 0 1 1 .326-4.979l.174.029V9a1 1 0 0 1 .883-.993zm-1.41 5.008L15.5 13a.5.5 0 0 0-.09.992l.09.008h.5v-.5l-.008-.09a.5.5 0 0 0-.318-.379z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -5199,7 +5552,7 @@ func AdjustmentsExclamation(children ...ElementRenderer) *TablerIcon {
 func AdjustmentsFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M6 3a1 1 0 0 1 .993.883L7 4v3.171a3.001 3.001 0 0 1 0 5.658V20a1 1 0 0 1-1.993.117L5 20v-7.17a3.002 3.002 0 0 1-1.995-2.654L3 10l.005-.176A3.002 3.002 0 0 1 5 7.17V4a1 1 0 0 1 1-1m6 0a1 1 0 0 1 .993.883L13 4v9.171a3.001 3.001 0 0 1 0 5.658V20a1 1 0 0 1-1.993.117L11 20v-1.17a3.002 3.002 0 0 1-1.995-2.654L9 16l.005-.176A3.002 3.002 0 0 1 11 13.17V4a1 1 0 0 1 1-1m6 0a1 1 0 0 1 .993.883L19 4v.171a3.001 3.001 0 0 1 0 5.658V20a1 1 0 0 1-1.993.117L17 20V9.83a3.002 3.002 0 0 1-1.995-2.654L15 7l.005-.176A3.002 3.002 0 0 1 17 4.17V4a1 1 0 0 1 1-1"/></g>`),
+			Text(`<path fill="currentColor" d="M6 3a1 1 0 0 1 .993.883L7 4v3.171a3.001 3.001 0 0 1 0 5.658V20a1 1 0 0 1-1.993.117L5 20v-7.17a3.002 3.002 0 0 1-1.995-2.654L3 10l.005-.176A3.002 3.002 0 0 1 5 7.17V4a1 1 0 0 1 1-1m6 0a1 1 0 0 1 .993.883L13 4v9.171a3.001 3.001 0 0 1 0 5.658V20a1 1 0 0 1-1.993.117L11 20v-1.17a3.002 3.002 0 0 1-1.995-2.654L9 16l.005-.176A3.002 3.002 0 0 1 11 13.17V4a1 1 0 0 1 1-1m6 0a1 1 0 0 1 .993.883L19 4v.171a3.001 3.001 0 0 1 0 5.658V20a1 1 0 0 1-1.993.117L17 20V9.83a3.002 3.002 0 0 1-1.995-2.654L15 7l.005-.176A3.002 3.002 0 0 1 17 4.17V4a1 1 0 0 1 1-1"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -5327,7 +5680,7 @@ func Affiliate(children ...ElementRenderer) *TablerIcon {
 func AffiliateFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M18.5 3a2.5 2.5 0 1 1-.912 4.828l-4.556 4.555a5.475 5.475 0 0 1 .936 3.714l2.624.787a2.5 2.5 0 1 1-.575 1.916l-2.623-.788a5.5 5.5 0 0 1-10.39-2.29L3 15.5l.004-.221a5.5 5.5 0 0 1 2.984-4.673L5.2 7.982a2.498 2.498 0 0 1-2.194-2.304L3 5.5l.005-.164a2.5 2.5 0 1 1 4.111 2.071l.787 2.625a5.475 5.475 0 0 1 3.714.936l4.555-4.556a2.487 2.487 0 0 1-.167-.748L16 5.5l.005-.164A2.5 2.5 0 0 1 18.5 3"/></g>`),
+			Text(`<path fill="currentColor" d="M18.5 3a2.5 2.5 0 1 1-.912 4.828l-4.556 4.555a5.475 5.475 0 0 1 .936 3.714l2.624.787a2.5 2.5 0 1 1-.575 1.916l-2.623-.788a5.5 5.5 0 0 1-10.39-2.29L3 15.5l.004-.221a5.5 5.5 0 0 1 2.984-4.673L5.2 7.982a2.498 2.498 0 0 1-2.194-2.304L3 5.5l.005-.164a2.5 2.5 0 1 1 4.111 2.071l.787 2.625a5.475 5.475 0 0 1 3.714.936l4.555-4.556a2.487 2.487 0 0 1-.167-.748L16 5.5l.005-.164A2.5 2.5 0 0 1 18.5 3"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -5383,7 +5736,7 @@ func AlarmAverage(children ...ElementRenderer) *TablerIcon {
 func AlarmFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M16 6.072a8 8 0 1 1-11.995 7.213L4 13l.005-.285A8 8 0 0 1 16 6.072M12 9a1 1 0 0 0-1 1v3l.007.117A1 1 0 0 0 12 14h2l.117-.007A1 1 0 0 0 15 13l-.007-.117A1 1 0 0 0 14 12h-1v-2l-.007-.117A1 1 0 0 0 12 9"/><path fill="currentColor" d="M6.412 3.191A1 1 0 0 1 7.685 4.73l-.097.08l-2.75 2a1 1 0 0 1-1.273-1.54l.097-.08zm9.779.221a1 1 0 0 1 1.291-.288l.106.067l2.75 2a1 1 0 0 1-1.07 1.685l-.106-.067l-2.75-2a1 1 0 0 1-.22-1.397z"/></g>`),
+			Text(`<g fill="currentColor"><path d="M16 6.072a8 8 0 1 1-11.995 7.213L4 13l.005-.285A8 8 0 0 1 16 6.072M12 9a1 1 0 0 0-1 1v3l.007.117A1 1 0 0 0 12 14h2l.117-.007A1 1 0 0 0 15 13l-.007-.117A1 1 0 0 0 14 12h-1v-2l-.007-.117A1 1 0 0 0 12 9"/><path d="M6.412 3.191A1 1 0 0 1 7.685 4.73l-.097.08l-2.75 2a1 1 0 0 1-1.273-1.54l.097-.08zm9.779.221a1 1 0 0 1 1.291-.288l.106.067l2.75 2a1 1 0 0 1-1.07 1.685l-.106-.067l-2.75-2a1 1 0 0 1-.22-1.397z"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -5399,7 +5752,7 @@ func AlarmMinus(children ...ElementRenderer) *TablerIcon {
 func AlarmMinusFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M16 6.072a8 8 0 1 1-11.995 7.213L4 13l.005-.285A8 8 0 0 1 16 6.072M14 12h-4l-.117.007A1 1 0 0 0 10 14h4l.117-.007A1 1 0 0 0 14 12"/><path fill="currentColor" d="M6.412 3.191A1 1 0 0 1 7.685 4.73l-.097.08l-2.75 2a1 1 0 0 1-1.273-1.54l.097-.08zm9.779.221a1 1 0 0 1 1.291-.288l.106.067l2.75 2a1 1 0 0 1-1.07 1.685l-.106-.067l-2.75-2a1 1 0 0 1-.22-1.397z"/></g>`),
+			Text(`<g fill="currentColor"><path d="M16 6.072a8 8 0 1 1-11.995 7.213L4 13l.005-.285A8 8 0 0 1 16 6.072M14 12h-4l-.117.007A1 1 0 0 0 10 14h4l.117-.007A1 1 0 0 0 14 12"/><path d="M6.412 3.191A1 1 0 0 1 7.685 4.73l-.097.08l-2.75 2a1 1 0 0 1-1.273-1.54l.097-.08zm9.779.221a1 1 0 0 1 1.291-.288l.106.067l2.75 2a1 1 0 0 1-1.07 1.685l-.106-.067l-2.75-2a1 1 0 0 1-.22-1.397z"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -5423,7 +5776,7 @@ func AlarmPlus(children ...ElementRenderer) *TablerIcon {
 func AlarmPlusFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M16 6.072a8 8 0 1 1-11.995 7.213L4 13l.005-.285A8 8 0 0 1 16 6.072M12 10a1 1 0 0 0-1 1v1h-1l-.117.007A1 1 0 0 0 10 14h1v1l.007.117A1 1 0 0 0 13 15v-1h1l.117-.007A1 1 0 0 0 14 12h-1v-1l-.007-.117A1 1 0 0 0 12 10"/><path fill="currentColor" d="M6.412 3.191A1 1 0 0 1 7.685 4.73l-.097.08l-2.75 2a1 1 0 0 1-1.273-1.54l.097-.08zm9.779.221a1 1 0 0 1 1.291-.288l.106.067l2.75 2a1 1 0 0 1-1.07 1.685l-.106-.067l-2.75-2a1 1 0 0 1-.22-1.397z"/></g>`),
+			Text(`<g fill="currentColor"><path d="M16 6.072a8 8 0 1 1-11.995 7.213L4 13l.005-.285A8 8 0 0 1 16 6.072M12 10a1 1 0 0 0-1 1v1h-1l-.117.007A1 1 0 0 0 10 14h1v1l.007.117A1 1 0 0 0 13 15v-1h1l.117-.007A1 1 0 0 0 14 12h-1v-1l-.007-.117A1 1 0 0 0 12 10"/><path d="M6.412 3.191A1 1 0 0 1 7.685 4.73l-.097.08l-2.75 2a1 1 0 0 1-1.273-1.54l.097-.08zm9.779.221a1 1 0 0 1 1.291-.288l.106.067l2.75 2a1 1 0 0 1-1.07 1.685l-.106-.067l-2.75-2a1 1 0 0 1-.22-1.397z"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -5439,7 +5792,7 @@ func AlarmSnooze(children ...ElementRenderer) *TablerIcon {
 func AlarmSnoozeFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M16 6.072a8 8 0 1 1-11.995 7.213L4 13l.005-.285A8 8 0 0 1 16 6.072M14 10h-4l-.117.007A1 1 0 0 0 9 11l.007.117A1 1 0 0 0 10 12h1.584l-2.291 2.293l-.076.084C8.703 15.014 9.147 16 10 16h4l.117-.007A1 1 0 0 0 15 15l-.007-.117A1 1 0 0 0 14 14h-1.586l2.293-2.293l.076-.084c.514-.637.07-1.623-.783-1.623"/><path fill="currentColor" d="M6.412 3.191A1 1 0 0 1 7.685 4.73l-.097.08l-2.75 2a1 1 0 0 1-1.273-1.54l.097-.08zm9.779.221a1 1 0 0 1 1.291-.288l.106.067l2.75 2a1 1 0 0 1-1.07 1.685l-.106-.067l-2.75-2a1 1 0 0 1-.22-1.397z"/></g>`),
+			Text(`<g fill="currentColor"><path d="M16 6.072a8 8 0 1 1-11.995 7.213L4 13l.005-.285A8 8 0 0 1 16 6.072M14 10h-4l-.117.007A1 1 0 0 0 9 11l.007.117A1 1 0 0 0 10 12h1.584l-2.291 2.293l-.076.084C8.703 15.014 9.147 16 10 16h4l.117-.007A1 1 0 0 0 15 15l-.007-.117A1 1 0 0 0 14 14h-1.586l2.293-2.293l.076-.084c.514-.637.07-1.623-.783-1.623"/><path d="M6.412 3.191A1 1 0 0 1 7.685 4.73l-.097.08l-2.75 2a1 1 0 0 1-1.273-1.54l.097-.08zm9.779.221a1 1 0 0 1 1.291-.288l.106.067l2.75 2a1 1 0 0 1-1.07 1.685l-.106-.067l-2.75-2a1 1 0 0 1-.22-1.397z"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -5471,7 +5824,7 @@ func AlertCircle(children ...ElementRenderer) *TablerIcon {
 func AlertCircleFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M12 2c5.523 0 10 4.477 10 10a10 10 0 0 1-19.995.324L2 12l.004-.28C2.152 6.327 6.57 2 12 2m.01 13l-.127.007a1 1 0 0 0 0 1.986L12 17l.127-.007a1 1 0 0 0 0-1.986zM12 7a1 1 0 0 0-.993.883L11 8v4l.007.117a1 1 0 0 0 1.986 0L13 12V8l-.007-.117A1 1 0 0 0 12 7"/></g>`),
+			Text(`<path fill="currentColor" d="M12 2c5.523 0 10 4.477 10 10a10 10 0 0 1-19.995.324L2 12l.004-.28C2.152 6.327 6.57 2 12 2m.01 13l-.127.007a1 1 0 0 0 0 1.986L12 17l.127-.007a1 1 0 0 0 0-1.986zM12 7a1 1 0 0 0-.993.883L11 8v4l.007.117a1 1 0 0 0 1.986 0L13 12V8l-.007-.117A1 1 0 0 0 12 7"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -5495,7 +5848,7 @@ func AlertHexagon(children ...ElementRenderer) *TablerIcon {
 func AlertHexagonFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M10.425 1.414a3.33 3.33 0 0 1 3.026-.097l.19.097l6.775 3.995l.096.063l.092.077l.107.075a3.224 3.224 0 0 1 1.266 2.188l.018.202l.005.204v7.284c0 1.106-.57 2.129-1.454 2.693l-.17.1l-6.803 4.302c-.918.504-2.019.535-3.004.068l-.196-.1l-6.695-4.237a3.225 3.225 0 0 1-1.671-2.619L2 15.502V8.217c0-1.106.57-2.128 1.476-2.705zM12.01 15l-.127.007a1 1 0 0 0 0 1.986L12 17l.127-.007a1 1 0 0 0 0-1.986zM12 7a1 1 0 0 0-.993.883L11 8v4l.007.117a1 1 0 0 0 1.986 0L13 12V8l-.007-.117A1 1 0 0 0 12 7"/></g>`),
+			Text(`<path fill="currentColor" d="M10.425 1.414a3.33 3.33 0 0 1 3.026-.097l.19.097l6.775 3.995l.096.063l.092.077l.107.075a3.224 3.224 0 0 1 1.266 2.188l.018.202l.005.204v7.284c0 1.106-.57 2.129-1.454 2.693l-.17.1l-6.803 4.302c-.918.504-2.019.535-3.004.068l-.196-.1l-6.695-4.237a3.225 3.225 0 0 1-1.671-2.619L2 15.502V8.217c0-1.106.57-2.128 1.476-2.705zM12.01 15l-.127.007a1 1 0 0 0 0 1.986L12 17l.127-.007a1 1 0 0 0 0-1.986zM12 7a1 1 0 0 0-.993.883L11 8v4l.007.117a1 1 0 0 0 1.986 0L13 12V8l-.007-.117A1 1 0 0 0 12 7"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -5519,7 +5872,7 @@ func AlertOctagon(children ...ElementRenderer) *TablerIcon {
 func AlertOctagonFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M14.897 1a4 4 0 0 1 2.664 1.016l.165.156l4.1 4.1a4 4 0 0 1 1.168 2.605l.006.227v5.794a4 4 0 0 1-1.016 2.664l-.156.165l-4.1 4.1a4 4 0 0 1-2.603 1.168l-.227.006H9.103a3.999 3.999 0 0 1-2.664-1.017l-.165-.156l-4.1-4.1a4 4 0 0 1-1.168-2.604L1 14.897V9.103a4 4 0 0 1 1.016-2.664l.156-.165l4.1-4.1a4 4 0 0 1 2.605-1.168L9.104 1zM12.01 15l-.127.007a1 1 0 0 0 0 1.986L12 17l.127-.007a1 1 0 0 0 0-1.986zM12 7a1 1 0 0 0-.993.883L11 8v4l.007.117a1 1 0 0 0 1.986 0L13 12V8l-.007-.117A1 1 0 0 0 12 7"/></g>`),
+			Text(`<path fill="currentColor" d="M14.897 1a4 4 0 0 1 2.664 1.016l.165.156l4.1 4.1a4 4 0 0 1 1.168 2.605l.006.227v5.794a4 4 0 0 1-1.016 2.664l-.156.165l-4.1 4.1a4 4 0 0 1-2.603 1.168l-.227.006H9.103a3.999 3.999 0 0 1-2.664-1.017l-.165-.156l-4.1-4.1a4 4 0 0 1-1.168-2.604L1 14.897V9.103a4 4 0 0 1 1.016-2.664l.156-.165l4.1-4.1a4 4 0 0 1 2.605-1.168L9.104 1zM12.01 15l-.127.007a1 1 0 0 0 0 1.986L12 17l.127-.007a1 1 0 0 0 0-1.986zM12 7a1 1 0 0 0-.993.883L11 8v4l.007.117a1 1 0 0 0 1.986 0L13 12V8l-.007-.117A1 1 0 0 0 12 7"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -5551,7 +5904,7 @@ func AlertSquare(children ...ElementRenderer) *TablerIcon {
 func AlertSquareFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M19 2a3 3 0 0 1 2.995 2.824L22 5v14a3 3 0 0 1-2.824 2.995L19 22H5a3 3 0 0 1-2.995-2.824L2 19V5a3 3 0 0 1 2.824-2.995L5 2zm-6.99 13l-.127.007a1 1 0 0 0 0 1.986L12 17l.127-.007a1 1 0 0 0 0-1.986zM12 7a1 1 0 0 0-.993.883L11 8v4l.007.117a1 1 0 0 0 1.986 0L13 12V8l-.007-.117A1 1 0 0 0 12 7"/></g>`),
+			Text(`<path fill="currentColor" d="M19 2a3 3 0 0 1 2.995 2.824L22 5v14a3 3 0 0 1-2.824 2.995L19 22H5a3 3 0 0 1-2.995-2.824L2 19V5a3 3 0 0 1 2.824-2.995L5 2zm-6.99 13l-.127.007a1 1 0 0 0 0 1.986L12 17l.127-.007a1 1 0 0 0 0-1.986zM12 7a1 1 0 0 0-.993.883L11 8v4l.007.117a1 1 0 0 0 1.986 0L13 12V8l-.007-.117A1 1 0 0 0 12 7"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -5567,7 +5920,7 @@ func AlertSquareRounded(children ...ElementRenderer) *TablerIcon {
 func AlertSquareRoundedFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="m12 2l.642.005l.616.017l.299.013l.579.034l.553.046c4.687.455 6.65 2.333 7.166 6.906l.03.29l.046.553l.041.727l.006.15l.017.617L22 12l-.005.642l-.017.616l-.013.299l-.034.579l-.046.553c-.455 4.687-2.333 6.65-6.906 7.166l-.29.03l-.553.046l-.727.041l-.15.006l-.617.017L12 22l-.642-.005l-.616-.017l-.299-.013l-.579-.034l-.553-.046c-4.687-.455-6.65-2.333-7.166-6.906l-.03-.29l-.046-.553l-.041-.727l-.006-.15l-.017-.617l-.004-.318v-.648l.004-.318l.017-.616l.013-.299l.034-.579l.046-.553c.455-4.687 2.333-6.65 6.906-7.166l.29-.03l.553-.046l.727-.041l.15-.006l.617-.017c.21-.003.424-.005.642-.005m.01 13l-.127.007a1 1 0 0 0 0 1.986L12 17l.127-.007a1 1 0 0 0 0-1.986zM12 7a1 1 0 0 0-.993.883L11 8v4l.007.117a1 1 0 0 0 1.986 0L13 12V8l-.007-.117A1 1 0 0 0 12 7"/></g>`),
+			Text(`<path fill="currentColor" d="m12 2l.642.005l.616.017l.299.013l.579.034l.553.046c4.687.455 6.65 2.333 7.166 6.906l.03.29l.046.553l.041.727l.006.15l.017.617L22 12l-.005.642l-.017.616l-.013.299l-.034.579l-.046.553c-.455 4.687-2.333 6.65-6.906 7.166l-.29.03l-.553.046l-.727.041l-.15.006l-.617.017L12 22l-.642-.005l-.616-.017l-.299-.013l-.579-.034l-.553-.046c-4.687-.455-6.65-2.333-7.166-6.906l-.03-.29l-.046-.553l-.041-.727l-.006-.15l-.017-.617l-.004-.318v-.648l.004-.318l.017-.616l.013-.299l.034-.579l.046-.553c.455-4.687 2.333-6.65 6.906-7.166l.29-.03l.553-.046l.727-.041l.15-.006l.617-.017c.21-.003.424-.005.642-.005m.01 13l-.127.007a1 1 0 0 0 0 1.986L12 17l.127-.007a1 1 0 0 0 0-1.986zM12 7a1 1 0 0 0-.993.883L11 8v4l.007.117a1 1 0 0 0 1.986 0L13 12V8l-.007-.117A1 1 0 0 0 12 7"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -5591,7 +5944,7 @@ func AlertTriangle(children ...ElementRenderer) *TablerIcon {
 func AlertTriangleFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M12 1.67c.955 0 1.845.467 2.39 1.247l.105.16l8.114 13.548a2.914 2.914 0 0 1-2.307 4.363l-.195.008H3.882a2.914 2.914 0 0 1-2.582-4.2l.099-.185l8.11-13.538A2.914 2.914 0 0 1 12 1.67M12.01 15l-.127.007a1 1 0 0 0 0 1.986L12 17l.127-.007a1 1 0 0 0 0-1.986zM12 8a1 1 0 0 0-.993.883L11 9v4l.007.117a1 1 0 0 0 1.986 0L13 13V9l-.007-.117A1 1 0 0 0 12 8"/></g>`),
+			Text(`<path fill="currentColor" d="M12 1.67c.955 0 1.845.467 2.39 1.247l.105.16l8.114 13.548a2.914 2.914 0 0 1-2.307 4.363l-.195.008H3.882a2.914 2.914 0 0 1-2.582-4.2l.099-.185l8.11-13.538A2.914 2.914 0 0 1 12 1.67M12.01 15l-.127.007a1 1 0 0 0 0 1.986L12 17l.127-.007a1 1 0 0 0 0-1.986zM12 8a1 1 0 0 0-.993.883L11 9v4l.007.117a1 1 0 0 0 1.986 0L13 13V9l-.007-.117A1 1 0 0 0 12 8"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -5615,7 +5968,7 @@ func Alien(children ...ElementRenderer) *TablerIcon {
 func AlienFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M12.004 2c4.942 0 8.288 2.503 8.85 6.444a12.884 12.884 0 0 1-2.163 9.308a11.794 11.794 0 0 1-3.51 3.356c-1.982 1.19-4.376 1.19-6.373-.008a11.763 11.763 0 0 1-3.489-3.34a12.808 12.808 0 0 1-2.171-9.306C3.712 4.504 7.058 2 12.004 2m1.913 14.6a1 1 0 0 0-1.317-.517l-.146.055a1.5 1.5 0 0 1-1.054-.055l-.11-.04a1 1 0 0 0-.69 1.874a3.5 3.5 0 0 0 2.8 0a1 1 0 0 0 .517-1.317m-5.304-6.39a1 1 0 0 0-1.32 1.497l2 2l.094.083a1 1 0 0 0 1.32-1.497l-2-2zm8.094.083a1 1 0 0 0-1.414 0l-2 2l-.083.094a1 1 0 0 0 1.497 1.32l2-2l.083-.094a1 1 0 0 0-.083-1.32"/></g>`),
+			Text(`<path fill="currentColor" d="M12.004 2c4.942 0 8.288 2.503 8.85 6.444a12.884 12.884 0 0 1-2.163 9.308a11.794 11.794 0 0 1-3.51 3.356c-1.982 1.19-4.376 1.19-6.373-.008a11.763 11.763 0 0 1-3.489-3.34a12.808 12.808 0 0 1-2.171-9.306C3.712 4.504 7.058 2 12.004 2m1.913 14.6a1 1 0 0 0-1.317-.517l-.146.055a1.5 1.5 0 0 1-1.054-.055l-.11-.04a1 1 0 0 0-.69 1.874a3.5 3.5 0 0 0 2.8 0a1 1 0 0 0 .517-1.317m-5.304-6.39a1 1 0 0 0-1.32 1.497l2 2l.094.083a1 1 0 0 0 1.32-1.497l-2-2zm8.094.083a1 1 0 0 0-1.414 0l-2 2l-.083.094a1 1 0 0 0 1.497 1.32l2-2l.083-.094a1 1 0 0 0-.083-1.32"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -5631,7 +5984,7 @@ func AlignBoxBottomCenter(children ...ElementRenderer) *TablerIcon {
 func AlignBoxBottomCenterFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M18.333 2c1.96 0 3.56 1.537 3.662 3.472l.005.195v12.666c0 1.96-1.537 3.56-3.472 3.662l-.195.005H5.667a3.667 3.667 0 0 1-3.662-3.472L2 18.333V5.667c0-1.96 1.537-3.56 3.472-3.662L5.667 2zM9 15a1 1 0 0 0-1 1v2l.007.117A1 1 0 0 0 10 18v-2l-.007-.117A1 1 0 0 0 9 15m3-4a1 1 0 0 0-1 1v6l.007.117A1 1 0 0 0 13 18v-6l-.007-.117A1 1 0 0 0 12 11m3 2a1 1 0 0 0-1 1v4l.007.117A1 1 0 0 0 16 18v-4l-.007-.117A1 1 0 0 0 15 13"/></g>`),
+			Text(`<path fill="currentColor" d="M18.333 2c1.96 0 3.56 1.537 3.662 3.472l.005.195v12.666c0 1.96-1.537 3.56-3.472 3.662l-.195.005H5.667a3.667 3.667 0 0 1-3.662-3.472L2 18.333V5.667c0-1.96 1.537-3.56 3.472-3.662L5.667 2zM9 15a1 1 0 0 0-1 1v2l.007.117A1 1 0 0 0 10 18v-2l-.007-.117A1 1 0 0 0 9 15m3-4a1 1 0 0 0-1 1v6l.007.117A1 1 0 0 0 13 18v-6l-.007-.117A1 1 0 0 0 12 11m3 2a1 1 0 0 0-1 1v4l.007.117A1 1 0 0 0 16 18v-4l-.007-.117A1 1 0 0 0 15 13"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -5647,7 +6000,7 @@ func AlignBoxBottomLeft(children ...ElementRenderer) *TablerIcon {
 func AlignBoxBottomLeftFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M18.333 2c1.96 0 3.56 1.537 3.662 3.472l.005.195v12.666c0 1.96-1.537 3.56-3.472 3.662l-.195.005H5.667a3.667 3.667 0 0 1-3.662-3.472L2 18.333V5.667c0-1.96 1.537-3.56 3.472-3.662L5.667 2zM6 15a1 1 0 0 0-1 1v2l.007.117A1 1 0 0 0 7 18v-2l-.007-.117A1 1 0 0 0 6 15m3-4a1 1 0 0 0-1 1v6l.007.117A1 1 0 0 0 10 18v-6l-.007-.117A1 1 0 0 0 9 11m3 2a1 1 0 0 0-1 1v4l.007.117A1 1 0 0 0 13 18v-4l-.007-.117A1 1 0 0 0 12 13"/></g>`),
+			Text(`<path fill="currentColor" d="M18.333 2c1.96 0 3.56 1.537 3.662 3.472l.005.195v12.666c0 1.96-1.537 3.56-3.472 3.662l-.195.005H5.667a3.667 3.667 0 0 1-3.662-3.472L2 18.333V5.667c0-1.96 1.537-3.56 3.472-3.662L5.667 2zM6 15a1 1 0 0 0-1 1v2l.007.117A1 1 0 0 0 7 18v-2l-.007-.117A1 1 0 0 0 6 15m3-4a1 1 0 0 0-1 1v6l.007.117A1 1 0 0 0 10 18v-6l-.007-.117A1 1 0 0 0 9 11m3 2a1 1 0 0 0-1 1v4l.007.117A1 1 0 0 0 13 18v-4l-.007-.117A1 1 0 0 0 12 13"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -5663,7 +6016,7 @@ func AlignBoxBottomRight(children ...ElementRenderer) *TablerIcon {
 func AlignBoxBottomRightFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M18.333 2c1.96 0 3.56 1.537 3.662 3.472l.005.195v12.666c0 1.96-1.537 3.56-3.472 3.662l-.195.005H5.667a3.667 3.667 0 0 1-3.662-3.472L2 18.333V5.667c0-1.96 1.537-3.56 3.472-3.662L5.667 2zM12 15a1 1 0 0 0-1 1v2l.007.117A1 1 0 0 0 13 18v-2l-.007-.117A1 1 0 0 0 12 15m3-4a1 1 0 0 0-1 1v6l.007.117A1 1 0 0 0 16 18v-6l-.007-.117A1 1 0 0 0 15 11m3 2a1 1 0 0 0-1 1v4l.007.117A1 1 0 0 0 19 18v-4l-.007-.117A1 1 0 0 0 18 13"/></g>`),
+			Text(`<path fill="currentColor" d="M18.333 2c1.96 0 3.56 1.537 3.662 3.472l.005.195v12.666c0 1.96-1.537 3.56-3.472 3.662l-.195.005H5.667a3.667 3.667 0 0 1-3.662-3.472L2 18.333V5.667c0-1.96 1.537-3.56 3.472-3.662L5.667 2zM12 15a1 1 0 0 0-1 1v2l.007.117A1 1 0 0 0 13 18v-2l-.007-.117A1 1 0 0 0 12 15m3-4a1 1 0 0 0-1 1v6l.007.117A1 1 0 0 0 16 18v-6l-.007-.117A1 1 0 0 0 15 11m3 2a1 1 0 0 0-1 1v4l.007.117A1 1 0 0 0 19 18v-4l-.007-.117A1 1 0 0 0 18 13"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -5687,7 +6040,7 @@ func AlignBoxCenterMiddle(children ...ElementRenderer) *TablerIcon {
 func AlignBoxCenterMiddleFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M19 2a3 3 0 0 1 2.995 2.824L22 5v14a3 3 0 0 1-2.824 2.995L19 22H5a3 3 0 0 1-2.993-2.802L2 19V5a3 3 0 0 1 2.824-2.995L5 2zm-6 12h-2l-.117.007a1 1 0 0 0 0 1.986L11 16h2l.117-.007a1 1 0 0 0 0-1.986zm2-3H9l-.117.007a1 1 0 0 0 0 1.986L9 13h6l.117-.007a1 1 0 0 0 0-1.986zm-1-3h-4l-.117.007a1 1 0 0 0 0 1.986L10 10h4l.117-.007a1 1 0 0 0 0-1.986z"/></g>`),
+			Text(`<path fill="currentColor" d="M19 2a3 3 0 0 1 2.995 2.824L22 5v14a3 3 0 0 1-2.824 2.995L19 22H5a3 3 0 0 1-2.993-2.802L2 19V5a3 3 0 0 1 2.824-2.995L5 2zm-6 12h-2l-.117.007a1 1 0 0 0 0 1.986L11 16h2l.117-.007a1 1 0 0 0 0-1.986zm2-3H9l-.117.007a1 1 0 0 0 0 1.986L9 13h6l.117-.007a1 1 0 0 0 0-1.986zm-1-3h-4l-.117.007a1 1 0 0 0 0 1.986L10 10h4l.117-.007a1 1 0 0 0 0-1.986z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -5719,7 +6072,7 @@ func AlignBoxLeftBottom(children ...ElementRenderer) *TablerIcon {
 func AlignBoxLeftBottomFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M18.333 2c1.96 0 3.56 1.537 3.662 3.472l.005.195v12.666c0 1.96-1.537 3.56-3.472 3.662l-.195.005H5.667a3.667 3.667 0 0 1-3.662-3.472L2 18.333V5.667c0-1.96 1.537-3.56 3.472-3.662L5.667 2zM8 17H6l-.117.007A1 1 0 0 0 6 19h2l.117-.007A1 1 0 0 0 8 17m4-3H6l-.117.007A1 1 0 0 0 6 16h6l.117-.007A1 1 0 0 0 12 14m-2-3H6l-.117.007A1 1 0 0 0 6 13h4l.117-.007A1 1 0 0 0 10 11"/></g>`),
+			Text(`<path fill="currentColor" d="M18.333 2c1.96 0 3.56 1.537 3.662 3.472l.005.195v12.666c0 1.96-1.537 3.56-3.472 3.662l-.195.005H5.667a3.667 3.667 0 0 1-3.662-3.472L2 18.333V5.667c0-1.96 1.537-3.56 3.472-3.662L5.667 2zM8 17H6l-.117.007A1 1 0 0 0 6 19h2l.117-.007A1 1 0 0 0 8 17m4-3H6l-.117.007A1 1 0 0 0 6 16h6l.117-.007A1 1 0 0 0 12 14m-2-3H6l-.117.007A1 1 0 0 0 6 13h4l.117-.007A1 1 0 0 0 10 11"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -5735,7 +6088,7 @@ func AlignBoxLeftMiddle(children ...ElementRenderer) *TablerIcon {
 func AlignBoxLeftMiddleFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M18.333 2c1.96 0 3.56 1.537 3.662 3.472l.005.195v12.666c0 1.96-1.537 3.56-3.472 3.662l-.195.005H5.667a3.667 3.667 0 0 1-3.662-3.472L2 18.333V5.667c0-1.96 1.537-3.56 3.472-3.662L5.667 2zM8 14H6l-.117.007A1 1 0 0 0 6 16h2l.117-.007A1 1 0 0 0 8 14m4-3H6l-.117.007A1 1 0 0 0 6 13h6l.117-.007A1 1 0 0 0 12 11m-2-3H6l-.117.007A1 1 0 0 0 6 10h4l.117-.007A1 1 0 0 0 10 8"/></g>`),
+			Text(`<path fill="currentColor" d="M18.333 2c1.96 0 3.56 1.537 3.662 3.472l.005.195v12.666c0 1.96-1.537 3.56-3.472 3.662l-.195.005H5.667a3.667 3.667 0 0 1-3.662-3.472L2 18.333V5.667c0-1.96 1.537-3.56 3.472-3.662L5.667 2zM8 14H6l-.117.007A1 1 0 0 0 6 16h2l.117-.007A1 1 0 0 0 8 14m4-3H6l-.117.007A1 1 0 0 0 6 13h6l.117-.007A1 1 0 0 0 12 11m-2-3H6l-.117.007A1 1 0 0 0 6 10h4l.117-.007A1 1 0 0 0 10 8"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -5759,7 +6112,7 @@ func AlignBoxLeftTop(children ...ElementRenderer) *TablerIcon {
 func AlignBoxLeftTopFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M18.333 2c1.96 0 3.56 1.537 3.662 3.472l.005.195v12.666c0 1.96-1.537 3.56-3.472 3.662l-.195.005H5.667a3.667 3.667 0 0 1-3.662-3.472L2 18.333V5.667c0-1.96 1.537-3.56 3.472-3.662L5.667 2zM8 11H6l-.117.007A1 1 0 0 0 6 13h2l.117-.007A1 1 0 0 0 8 11m4-3H6l-.117.007A1 1 0 0 0 6 10h6l.117-.007A1 1 0 0 0 12 8m-2-3H6l-.117.007A1 1 0 0 0 6 7h4l.117-.007A1 1 0 0 0 10 5"/></g>`),
+			Text(`<path fill="currentColor" d="M18.333 2c1.96 0 3.56 1.537 3.662 3.472l.005.195v12.666c0 1.96-1.537 3.56-3.472 3.662l-.195.005H5.667a3.667 3.667 0 0 1-3.662-3.472L2 18.333V5.667c0-1.96 1.537-3.56 3.472-3.662L5.667 2zM8 11H6l-.117.007A1 1 0 0 0 6 13h2l.117-.007A1 1 0 0 0 8 11m4-3H6l-.117.007A1 1 0 0 0 6 10h6l.117-.007A1 1 0 0 0 12 8m-2-3H6l-.117.007A1 1 0 0 0 6 7h4l.117-.007A1 1 0 0 0 10 5"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -5775,7 +6128,7 @@ func AlignBoxRightBottom(children ...ElementRenderer) *TablerIcon {
 func AlignBoxRightBottomFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M18.333 2c1.96 0 3.56 1.537 3.662 3.472l.005.195v12.666c0 1.96-1.537 3.56-3.472 3.662l-.195.005H5.667a3.667 3.667 0 0 1-3.662-3.472L2 18.333V5.667c0-1.96 1.537-3.56 3.472-3.662L5.667 2zM18 17h-2l-.117.007A1 1 0 0 0 16 19h2l.117-.007A1 1 0 0 0 18 17m0-3h-6l-.117.007A1 1 0 0 0 12 16h6l.117-.007A1 1 0 0 0 18 14m0-3h-4l-.117.007A1 1 0 0 0 14 13h4l.117-.007A1 1 0 0 0 18 11"/></g>`),
+			Text(`<path fill="currentColor" d="M18.333 2c1.96 0 3.56 1.537 3.662 3.472l.005.195v12.666c0 1.96-1.537 3.56-3.472 3.662l-.195.005H5.667a3.667 3.667 0 0 1-3.662-3.472L2 18.333V5.667c0-1.96 1.537-3.56 3.472-3.662L5.667 2zM18 17h-2l-.117.007A1 1 0 0 0 16 19h2l.117-.007A1 1 0 0 0 18 17m0-3h-6l-.117.007A1 1 0 0 0 12 16h6l.117-.007A1 1 0 0 0 18 14m0-3h-4l-.117.007A1 1 0 0 0 14 13h4l.117-.007A1 1 0 0 0 18 11"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -5791,7 +6144,7 @@ func AlignBoxRightMiddle(children ...ElementRenderer) *TablerIcon {
 func AlignBoxRightMiddleFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M18.333 2c1.96 0 3.56 1.537 3.662 3.472l.005.195v12.666c0 1.96-1.537 3.56-3.472 3.662l-.195.005H5.667a3.667 3.667 0 0 1-3.662-3.472L2 18.333V5.667c0-1.96 1.537-3.56 3.472-3.662L5.667 2zM18 14h-2l-.117.007a1 1 0 0 0 0 1.986L16 16h2l.117-.007a1 1 0 0 0 0-1.986zm0-3h-6l-.117.007a1 1 0 0 0 0 1.986L12 13h6l.117-.007a1 1 0 0 0 0-1.986zm0-3h-4l-.117.007a1 1 0 0 0 0 1.986L14 10h4l.117-.007a1 1 0 0 0 0-1.986z"/></g>`),
+			Text(`<path fill="currentColor" d="M18.333 2c1.96 0 3.56 1.537 3.662 3.472l.005.195v12.666c0 1.96-1.537 3.56-3.472 3.662l-.195.005H5.667a3.667 3.667 0 0 1-3.662-3.472L2 18.333V5.667c0-1.96 1.537-3.56 3.472-3.662L5.667 2zM18 14h-2l-.117.007a1 1 0 0 0 0 1.986L16 16h2l.117-.007a1 1 0 0 0 0-1.986zm0-3h-6l-.117.007a1 1 0 0 0 0 1.986L12 13h6l.117-.007a1 1 0 0 0 0-1.986zm0-3h-4l-.117.007a1 1 0 0 0 0 1.986L14 10h4l.117-.007a1 1 0 0 0 0-1.986z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -5815,7 +6168,7 @@ func AlignBoxRightTop(children ...ElementRenderer) *TablerIcon {
 func AlignBoxRightTopFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M18.333 2c1.96 0 3.56 1.537 3.662 3.472l.005.195v12.666c0 1.96-1.537 3.56-3.472 3.662l-.195.005H5.667a3.667 3.667 0 0 1-3.662-3.472L2 18.333V5.667c0-1.96 1.537-3.56 3.472-3.662L5.667 2zM18 11h-2l-.117.007A1 1 0 0 0 16 13h2l.117-.007A1 1 0 0 0 18 11m0-3h-6l-.117.007A1 1 0 0 0 12 10h6l.117-.007A1 1 0 0 0 18 8m0-3h-4l-.117.007A1 1 0 0 0 14 7h4l.117-.007A1 1 0 0 0 18 5"/></g>`),
+			Text(`<path fill="currentColor" d="M18.333 2c1.96 0 3.56 1.537 3.662 3.472l.005.195v12.666c0 1.96-1.537 3.56-3.472 3.662l-.195.005H5.667a3.667 3.667 0 0 1-3.662-3.472L2 18.333V5.667c0-1.96 1.537-3.56 3.472-3.662L5.667 2zM18 11h-2l-.117.007A1 1 0 0 0 16 13h2l.117-.007A1 1 0 0 0 18 11m0-3h-6l-.117.007A1 1 0 0 0 12 10h6l.117-.007A1 1 0 0 0 18 8m0-3h-4l-.117.007A1 1 0 0 0 14 7h4l.117-.007A1 1 0 0 0 18 5"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -5831,7 +6184,7 @@ func AlignBoxTopCenter(children ...ElementRenderer) *TablerIcon {
 func AlignBoxTopCenterFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M18.333 2c1.96 0 3.56 1.537 3.662 3.472l.005.195v12.666c0 1.96-1.537 3.56-3.472 3.662l-.195.005H5.667a3.667 3.667 0 0 1-3.662-3.472L2 18.333V5.667c0-1.96 1.537-3.56 3.472-3.662L5.667 2zM12 5a1 1 0 0 0-1 1v6l.007.117A1 1 0 0 0 13 12V6l-.007-.117A1 1 0 0 0 12 5m3 0a1 1 0 0 0-1 1v4l.007.117A1 1 0 0 0 16 10V6l-.007-.117A1 1 0 0 0 15 5M9 5a1 1 0 0 0-1 1v2l.007.117A1 1 0 0 0 10 8V6l-.007-.117A1 1 0 0 0 9 5"/></g>`),
+			Text(`<path fill="currentColor" d="M18.333 2c1.96 0 3.56 1.537 3.662 3.472l.005.195v12.666c0 1.96-1.537 3.56-3.472 3.662l-.195.005H5.667a3.667 3.667 0 0 1-3.662-3.472L2 18.333V5.667c0-1.96 1.537-3.56 3.472-3.662L5.667 2zM12 5a1 1 0 0 0-1 1v6l.007.117A1 1 0 0 0 13 12V6l-.007-.117A1 1 0 0 0 12 5m3 0a1 1 0 0 0-1 1v4l.007.117A1 1 0 0 0 16 10V6l-.007-.117A1 1 0 0 0 15 5M9 5a1 1 0 0 0-1 1v2l.007.117A1 1 0 0 0 10 8V6l-.007-.117A1 1 0 0 0 9 5"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -5847,7 +6200,7 @@ func AlignBoxTopLeft(children ...ElementRenderer) *TablerIcon {
 func AlignBoxTopLeftFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M18.333 2c1.96 0 3.56 1.537 3.662 3.472l.005.195v12.666c0 1.96-1.537 3.56-3.472 3.662l-.195.005H5.667a3.667 3.667 0 0 1-3.662-3.472L2 18.333V5.667c0-1.96 1.537-3.56 3.472-3.662L5.667 2zM9 5a1 1 0 0 0-1 1v6l.007.117A1 1 0 0 0 10 12V6l-.007-.117A1 1 0 0 0 9 5m3 0a1 1 0 0 0-1 1v4l.007.117A1 1 0 0 0 13 10V6l-.007-.117A1 1 0 0 0 12 5M6 5a1 1 0 0 0-1 1v2l.007.117A1 1 0 0 0 7 8V6l-.007-.117A1 1 0 0 0 6 5"/></g>`),
+			Text(`<path fill="currentColor" d="M18.333 2c1.96 0 3.56 1.537 3.662 3.472l.005.195v12.666c0 1.96-1.537 3.56-3.472 3.662l-.195.005H5.667a3.667 3.667 0 0 1-3.662-3.472L2 18.333V5.667c0-1.96 1.537-3.56 3.472-3.662L5.667 2zM9 5a1 1 0 0 0-1 1v6l.007.117A1 1 0 0 0 10 12V6l-.007-.117A1 1 0 0 0 9 5m3 0a1 1 0 0 0-1 1v4l.007.117A1 1 0 0 0 13 10V6l-.007-.117A1 1 0 0 0 12 5M6 5a1 1 0 0 0-1 1v2l.007.117A1 1 0 0 0 7 8V6l-.007-.117A1 1 0 0 0 6 5"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -5863,7 +6216,7 @@ func AlignBoxTopRight(children ...ElementRenderer) *TablerIcon {
 func AlignBoxTopRightFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M18.333 2c1.96 0 3.56 1.537 3.662 3.472l.005.195v12.666c0 1.96-1.537 3.56-3.472 3.662l-.195.005H5.667a3.667 3.667 0 0 1-3.662-3.472L2 18.333V5.667c0-1.96 1.537-3.56 3.472-3.662L5.667 2zM15 5a1 1 0 0 0-1 1v6l.007.117A1 1 0 0 0 16 12V6l-.007-.117A1 1 0 0 0 15 5m3 0a1 1 0 0 0-1 1v4l.007.117A1 1 0 0 0 19 10V6l-.007-.117A1 1 0 0 0 18 5m-6 0a1 1 0 0 0-1 1v2l.007.117A1 1 0 0 0 13 8V6l-.007-.117A1 1 0 0 0 12 5"/></g>`),
+			Text(`<path fill="currentColor" d="M18.333 2c1.96 0 3.56 1.537 3.662 3.472l.005.195v12.666c0 1.96-1.537 3.56-3.472 3.662l-.195.005H5.667a3.667 3.667 0 0 1-3.662-3.472L2 18.333V5.667c0-1.96 1.537-3.56 3.472-3.662L5.667 2zM15 5a1 1 0 0 0-1 1v6l.007.117A1 1 0 0 0 16 12V6l-.007-.117A1 1 0 0 0 15 5m3 0a1 1 0 0 0-1 1v4l.007.117A1 1 0 0 0 19 10V6l-.007-.117A1 1 0 0 0 18 5m-6 0a1 1 0 0 0-1 1v2l.007.117A1 1 0 0 0 13 8V6l-.007-.117A1 1 0 0 0 12 5"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -5967,7 +6320,7 @@ func Analyze(children ...ElementRenderer) *TablerIcon {
 func AnalyzeFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M4.99 12.862a7.1 7.1 0 0 0 12.171 3.924a1.956 1.956 0 0 1-.156-.637L17 16l.005-.15a2 2 0 1 1 1.769 2.137a9.099 9.099 0 0 1-15.764-4.85a1 1 0 0 1 1.98-.275"/><path fill="currentColor" d="M12 8a4 4 0 1 1-3.995 4.2L8 12l.005-.2A4 4 0 0 1 12 8"/><path fill="currentColor" d="M13.142 3.09a9.1 9.1 0 0 1 7.848 7.772a1 1 0 0 1-1.98.276a7.1 7.1 0 0 0-6.125-6.064A7.096 7.096 0 0 0 6.837 7.21a2 2 0 1 1-3.831.939L3 8l.005-.15a2 2 0 0 1 2.216-1.838a9.094 9.094 0 0 1 7.921-2.922"/></g>`),
+			Text(`<g fill="currentColor"><path d="M4.99 12.862a7.1 7.1 0 0 0 12.171 3.924a1.956 1.956 0 0 1-.156-.637L17 16l.005-.15a2 2 0 1 1 1.769 2.137a9.099 9.099 0 0 1-15.764-4.85a1 1 0 0 1 1.98-.275"/><path d="M12 8a4 4 0 1 1-3.995 4.2L8 12l.005-.2A4 4 0 0 1 12 8"/><path d="M13.142 3.09a9.1 9.1 0 0 1 7.848 7.772a1 1 0 0 1-1.98.276a7.1 7.1 0 0 0-6.125-6.064A7.096 7.096 0 0 0 6.837 7.21a2 2 0 1 1-3.831.939L3 8l.005-.15a2 2 0 0 1 2.216-1.838a9.094 9.094 0 0 1 7.921-2.922"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -6135,7 +6488,7 @@ func AppWindow(children ...ElementRenderer) *TablerIcon {
 func AppWindowFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M19 4a3 3 0 0 1 3 3v10a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3V7a3 3 0 0 1 3-3zM6.01 7l-.127.007A1 1 0 0 0 6 9l.127-.007A1 1 0 0 0 6.01 7m3 0l-.127.007A1 1 0 0 0 9 9l.127-.007A1 1 0 0 0 9.01 7"/></g>`),
+			Text(`<path fill="currentColor" d="M19 4a3 3 0 0 1 3 3v10a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3V7a3 3 0 0 1 3-3zM6.01 7l-.127.007A1 1 0 0 0 6 9l.127-.007A1 1 0 0 0 6.01 7m3 0l-.127.007A1 1 0 0 0 9 9l.127-.007A1 1 0 0 0 9.01 7"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -6159,7 +6512,7 @@ func Apps(children ...ElementRenderer) *TablerIcon {
 func AppsFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M9 3H5a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2m0 10H5a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2v-4a2 2 0 0 0-2-2m10 0h-4a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2v-4a2 2 0 0 0-2-2M17 3a1 1 0 0 1 .993.883L18 4v2h2a1 1 0 0 1 .117 1.993L20 8h-2v2a1 1 0 0 1-1.993.117L16 10V8h-2a1 1 0 0 1-.117-1.993L14 6h2V4a1 1 0 0 1 1-1"/></g>`),
+			Text(`<path fill="currentColor" d="M9 3H5a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2m0 10H5a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2v-4a2 2 0 0 0-2-2m10 0h-4a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2v-4a2 2 0 0 0-2-2M17 3a1 1 0 0 1 .993.883L18 4v2h2a1 1 0 0 1 .117 1.993L20 8h-2v2a1 1 0 0 1-1.993.117L16 10V8h-2a1 1 0 0 1-.117-1.993L14 6h2V4a1 1 0 0 1 1-1"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -6191,7 +6544,7 @@ func Archive(children ...ElementRenderer) *TablerIcon {
 func ArchiveFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><rect width="20" height="4" x="2" y="3" fill="currentColor" rx="2"/><path fill="currentColor" d="M19 9c.513 0 .936.463.993 1.06l.007.14v7.2c0 1.917-1.249 3.484-2.824 3.594L17 21H7c-1.598 0-2.904-1.499-2.995-3.388L4 17.4v-7.2C4 9.537 4.448 9 5 9zm-5 2h-4l-.117.007a1 1 0 0 0 0 1.986L10 13h4l.117-.007a1 1 0 0 0 0-1.986z"/></g>`),
+			Text(`<path fill="currentColor" d="M2 5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2m17 4c.513 0 .936.463.993 1.06l.007.14v7.2c0 1.917-1.249 3.484-2.824 3.594L17 21H7c-1.598 0-2.904-1.499-2.995-3.388L4 17.4v-7.2C4 9.537 4.448 9 5 9zm-5 2h-4l-.117.007a1 1 0 0 0 0 1.986L10 13h4l.117-.007a1 1 0 0 0 0-1.986z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -6247,7 +6600,7 @@ func ArrowAutofitContent(children ...ElementRenderer) *TablerIcon {
 func ArrowAutofitContentFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M6.707 3.293a1 1 0 0 1 .083 1.32l-.083.094L5.415 6H10a1 1 0 0 1 .117 1.993L10 8H5.415l1.292 1.293a1 1 0 0 1 .083 1.32l-.083.094a1 1 0 0 1-1.32.083l-.094-.083l-3-3a1.008 1.008 0 0 1-.097-.112l-.071-.11l-.054-.114l-.035-.105l-.025-.118l-.007-.058L2 7l.003-.075l.017-.126l.03-.111l.044-.111l.052-.098l.064-.092l.083-.094l3-3a1 1 0 0 1 1.414 0m11.906-.083l.094.083l3 3a.927.927 0 0 1 .097.112l.071.11l.054.114l.035.105l.03.148L22 7l-.003.075l-.017.126l-.03.111l-.044.111l-.052.098l-.074.104l-.073.082l-3 3a1 1 0 0 1-1.497-1.32l.083-.094L18.585 8H14a1 1 0 0 1-.117-1.993L14 6h4.585l-1.292-1.293a1 1 0 0 1-.083-1.32l.083-.094a1 1 0 0 1 1.32-.083M18 13H6a3 3 0 0 0-3 3v2a3 3 0 0 0 3 3h12a3 3 0 0 0 3-3v-2a3 3 0 0 0-3-3"/></g>`),
+			Text(`<path fill="currentColor" d="M6.707 3.293a1 1 0 0 1 .083 1.32l-.083.094L5.415 6H10a1 1 0 0 1 .117 1.993L10 8H5.415l1.292 1.293a1 1 0 0 1 .083 1.32l-.083.094a1 1 0 0 1-1.32.083l-.094-.083l-3-3a1.008 1.008 0 0 1-.097-.112l-.071-.11l-.054-.114l-.035-.105l-.025-.118l-.007-.058L2 7l.003-.075l.017-.126l.03-.111l.044-.111l.052-.098l.064-.092l.083-.094l3-3a1 1 0 0 1 1.414 0m11.906-.083l.094.083l3 3a.927.927 0 0 1 .097.112l.071.11l.054.114l.035.105l.03.148L22 7l-.003.075l-.017.126l-.03.111l-.044.111l-.052.098l-.074.104l-.073.082l-3 3a1 1 0 0 1-1.497-1.32l.083-.094L18.585 8H14a1 1 0 0 1-.117-1.993L14 6h4.585l-1.292-1.293a1 1 0 0 1-.083-1.32l.083-.094a1 1 0 0 1 1.32-.083M18 13H6a3 3 0 0 0-3 3v2a3 3 0 0 0 3 3h12a3 3 0 0 0 3-3v-2a3 3 0 0 0-3-3"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -6335,7 +6688,7 @@ func ArrowBadgeDown(children ...ElementRenderer) *TablerIcon {
 func ArrowBadgeDownFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M16.375 6.22L12 9.718l-4.375-3.5A1 1 0 0 0 6 7v6a1 1 0 0 0 .375.78l5 4a1 1 0 0 0 1.25 0l5-4A1 1 0 0 0 18 13V7a1 1 0 0 0-1.625-.78"/></g>`),
+			Text(`<path fill="currentColor" d="M16.375 6.22L12 9.718l-4.375-3.5A1 1 0 0 0 6 7v6a1 1 0 0 0 .375.78l5 4a1 1 0 0 0 1.25 0l5-4A1 1 0 0 0 18 13V7a1 1 0 0 0-1.625-.78"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -6351,7 +6704,7 @@ func ArrowBadgeLeft(children ...ElementRenderer) *TablerIcon {
 func ArrowBadgeLeftFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M17 6h-6a1 1 0 0 0-.78.375l-4 5a1 1 0 0 0 0 1.25l4 5A1 1 0 0 0 11 18h6l.112-.006a1 1 0 0 0 .669-1.619L14.28 12l3.5-4.375A1 1 0 0 0 17 6"/></g>`),
+			Text(`<path fill="currentColor" d="M17 6h-6a1 1 0 0 0-.78.375l-4 5a1 1 0 0 0 0 1.25l4 5A1 1 0 0 0 11 18h6l.112-.006a1 1 0 0 0 .669-1.619L14.28 12l3.5-4.375A1 1 0 0 0 17 6"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -6367,7 +6720,7 @@ func ArrowBadgeRight(children ...ElementRenderer) *TablerIcon {
 func ArrowBadgeRightFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="m7 6l-.112.006a1 1 0 0 0-.669 1.619L9.72 12l-3.5 4.375A1 1 0 0 0 7 18h6a1 1 0 0 0 .78-.375l4-5a1 1 0 0 0 0-1.25l-4-5A1 1 0 0 0 13 6z"/></g>`),
+			Text(`<path fill="currentColor" d="m7 6l-.112.006a1 1 0 0 0-.669 1.619L9.72 12l-3.5 4.375A1 1 0 0 0 7 18h6a1 1 0 0 0 .78-.375l4-5a1 1 0 0 0 0-1.25l-4-5A1 1 0 0 0 13 6z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -6383,7 +6736,7 @@ func ArrowBadgeUp(children ...ElementRenderer) *TablerIcon {
 func ArrowBadgeUpFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="m11.375 6.22l-5 4A1 1 0 0 0 6 11v6l.006.112a1 1 0 0 0 1.619.669L12 14.28l4.375 3.5A1 1 0 0 0 18 17v-6a1 1 0 0 0-.375-.78l-5-4a1 1 0 0 0-1.25 0"/></g>`),
+			Text(`<path fill="currentColor" d="m11.375 6.22l-5 4A1 1 0 0 0 6 11v6l.006.112a1 1 0 0 0 1.619.669L12 14.28l4.375 3.5A1 1 0 0 0 18 17v-6a1 1 0 0 0-.375-.78l-5-4a1 1 0 0 0-1.25 0"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -6503,7 +6856,7 @@ func ArrowBigDown(children ...ElementRenderer) *TablerIcon {
 func ArrowBigDownFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="m10 2l-.15.005A2 2 0 0 0 8 4v6.999L5.414 11A2 2 0 0 0 4 14.414L10.586 21a2 2 0 0 0 2.828 0L20 14.414a2 2 0 0 0 .434-2.18l-.068-.145A2 2 0 0 0 18.586 11L16 10.999V4a2 2 0 0 0-2-2z"/></g>`),
+			Text(`<path fill="currentColor" d="m10 2l-.15.005A2 2 0 0 0 8 4v6.999L5.414 11A2 2 0 0 0 4 14.414L10.586 21a2 2 0 0 0 2.828 0L20 14.414a2 2 0 0 0 .434-2.18l-.068-.145A2 2 0 0 0 18.586 11L16 10.999V4a2 2 0 0 0-2-2z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -6519,7 +6872,7 @@ func ArrowBigDownLine(children ...ElementRenderer) *TablerIcon {
 func ArrowBigDownLineFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="m9 5l-.117.007A1 1 0 0 0 8 6v4.999L5.414 11A2 2 0 0 0 4 14.414L10.586 21a2 2 0 0 0 2.828 0L20 14.414a2 2 0 0 0 .434-2.18l-.068-.145A2 2 0 0 0 18.586 11L16 10.999V6a1 1 0 0 0-1-1zm6-3a1 1 0 0 1 .117 1.993L15 4H9a1 1 0 0 1-.117-1.993L9 2z"/></g>`),
+			Text(`<path fill="currentColor" d="m9 5l-.117.007A1 1 0 0 0 8 6v4.999L5.414 11A2 2 0 0 0 4 14.414L10.586 21a2 2 0 0 0 2.828 0L20 14.414a2 2 0 0 0 .434-2.18l-.068-.145A2 2 0 0 0 18.586 11L16 10.999V6a1 1 0 0 0-1-1zm6-3a1 1 0 0 1 .117 1.993L15 4H9a1 1 0 0 1-.117-1.993L9 2z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -6535,7 +6888,7 @@ func ArrowBigDownLines(children ...ElementRenderer) *TablerIcon {
 func ArrowBigDownLinesFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="m9 8l-.117.007A1 1 0 0 0 8 9v1.999L5.414 11A2 2 0 0 0 4 14.414L10.586 21a2 2 0 0 0 2.828 0L20 14.414a2 2 0 0 0 .434-2.18l-.068-.145A2 2 0 0 0 18.586 11L16 10.999V9a1 1 0 0 0-1-1zm6-6a1 1 0 0 1 .117 1.993L15 4H9a1 1 0 0 1-.117-1.993L9 2zm0 3a1 1 0 0 1 .117 1.993L15 7H9a1 1 0 0 1-.117-1.993L9 5z"/></g>`),
+			Text(`<path fill="currentColor" d="m9 8l-.117.007A1 1 0 0 0 8 9v1.999L5.414 11A2 2 0 0 0 4 14.414L10.586 21a2 2 0 0 0 2.828 0L20 14.414a2 2 0 0 0 .434-2.18l-.068-.145A2 2 0 0 0 18.586 11L16 10.999V9a1 1 0 0 0-1-1zm6-6a1 1 0 0 1 .117 1.993L15 4H9a1 1 0 0 1-.117-1.993L9 2zm0 3a1 1 0 0 1 .117 1.993L15 7H9a1 1 0 0 1-.117-1.993L9 5z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -6551,7 +6904,7 @@ func ArrowBigLeft(children ...ElementRenderer) *TablerIcon {
 func ArrowBigLeftFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M9.586 4L3 10.586a2 2 0 0 0 0 2.828L9.586 20a2 2 0 0 0 2.18.434l.145-.068A2 2 0 0 0 13 18.586V16h7a2 2 0 0 0 2-2v-4l-.005-.15A2 2 0 0 0 20 8l-7-.001V5.414A2 2 0 0 0 9.586 4"/></g>`),
+			Text(`<path fill="currentColor" d="M9.586 4L3 10.586a2 2 0 0 0 0 2.828L9.586 20a2 2 0 0 0 2.18.434l.145-.068A2 2 0 0 0 13 18.586V16h7a2 2 0 0 0 2-2v-4l-.005-.15A2 2 0 0 0 20 8l-7-.001V5.414A2 2 0 0 0 9.586 4"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -6567,7 +6920,7 @@ func ArrowBigLeftLine(children ...ElementRenderer) *TablerIcon {
 func ArrowBigLeftLineFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M9.586 4L3 10.586a2 2 0 0 0 0 2.828L9.586 20a2 2 0 0 0 2.18.434l.145-.068A2 2 0 0 0 13 18.586V16h5a1 1 0 0 0 1-1V9l-.007-.117A1 1 0 0 0 18 8l-5-.001V5.414A2 2 0 0 0 9.586 4"/><path fill="currentColor" d="M4.415 12L11 5.414V9l.007.117A1 1 0 0 0 12 10l5-.001v4L12 14a1 1 0 0 0-1 1v3.586zM21 8a1 1 0 0 1 .993.883L22 9v6a1 1 0 0 1-1.993.117L20 15V9a1 1 0 0 1 1-1"/></g>`),
+			Text(`<g fill="currentColor"><path d="M9.586 4L3 10.586a2 2 0 0 0 0 2.828L9.586 20a2 2 0 0 0 2.18.434l.145-.068A2 2 0 0 0 13 18.586V16h5a1 1 0 0 0 1-1V9l-.007-.117A1 1 0 0 0 18 8l-5-.001V5.414A2 2 0 0 0 9.586 4"/><path d="M4.415 12L11 5.414V9l.007.117A1 1 0 0 0 12 10l5-.001v4L12 14a1 1 0 0 0-1 1v3.586zM21 8a1 1 0 0 1 .993.883L22 9v6a1 1 0 0 1-1.993.117L20 15V9a1 1 0 0 1 1-1"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -6583,7 +6936,7 @@ func ArrowBigLeftLines(children ...ElementRenderer) *TablerIcon {
 func ArrowBigLeftLinesFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M9.586 4L3 10.586a2 2 0 0 0 0 2.828L9.586 20a2 2 0 0 0 2.18.434l.145-.068A2 2 0 0 0 13 18.586V16h2a1 1 0 0 0 1-1V9l-.007-.117A1 1 0 0 0 15 8l-2-.001V5.414A2 2 0 0 0 9.586 4M21 8a1 1 0 0 1 .993.883L22 9v6a1 1 0 0 1-1.993.117L20 15V9a1 1 0 0 1 1-1m-3 0a1 1 0 0 1 .993.883L19 9v6a1 1 0 0 1-1.993.117L17 15V9a1 1 0 0 1 1-1"/></g>`),
+			Text(`<path fill="currentColor" d="M9.586 4L3 10.586a2 2 0 0 0 0 2.828L9.586 20a2 2 0 0 0 2.18.434l.145-.068A2 2 0 0 0 13 18.586V16h2a1 1 0 0 0 1-1V9l-.007-.117A1 1 0 0 0 15 8l-2-.001V5.414A2 2 0 0 0 9.586 4M21 8a1 1 0 0 1 .993.883L22 9v6a1 1 0 0 1-1.993.117L20 15V9a1 1 0 0 1 1-1m-3 0a1 1 0 0 1 .993.883L19 9v6a1 1 0 0 1-1.993.117L17 15V9a1 1 0 0 1 1-1"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -6599,7 +6952,7 @@ func ArrowBigRight(children ...ElementRenderer) *TablerIcon {
 func ArrowBigRightFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M12.089 3.634A2 2 0 0 0 11 5.414L10.999 8H4a2 2 0 0 0-2 2v4l.005.15A2 2 0 0 0 4 16l6.999-.001l.001 2.587A2 2 0 0 0 14.414 20L21 13.414a2 2 0 0 0 0-2.828L14.414 4a2 2 0 0 0-2.18-.434z"/></g>`),
+			Text(`<path fill="currentColor" d="M12.089 3.634A2 2 0 0 0 11 5.414L10.999 8H4a2 2 0 0 0-2 2v4l.005.15A2 2 0 0 0 4 16l6.999-.001l.001 2.587A2 2 0 0 0 14.414 20L21 13.414a2 2 0 0 0 0-2.828L14.414 4a2 2 0 0 0-2.18-.434z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -6615,7 +6968,7 @@ func ArrowBigRightLine(children ...ElementRenderer) *TablerIcon {
 func ArrowBigRightLineFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M12.089 3.634A2 2 0 0 0 11 5.414L10.999 8H6a1 1 0 0 0-1 1v6l.007.117A1 1 0 0 0 6 16l4.999-.001l.001 2.587A2 2 0 0 0 14.414 20L21 13.414a2 2 0 0 0 0-2.828L14.414 4a2 2 0 0 0-2.18-.434zM3 8a1 1 0 0 1 .993.883L4 9v6a1 1 0 0 1-1.993.117L2 15V9a1 1 0 0 1 1-1"/></g>`),
+			Text(`<path fill="currentColor" d="M12.089 3.634A2 2 0 0 0 11 5.414L10.999 8H6a1 1 0 0 0-1 1v6l.007.117A1 1 0 0 0 6 16l4.999-.001l.001 2.587A2 2 0 0 0 14.414 20L21 13.414a2 2 0 0 0 0-2.828L14.414 4a2 2 0 0 0-2.18-.434zM3 8a1 1 0 0 1 .993.883L4 9v6a1 1 0 0 1-1.993.117L2 15V9a1 1 0 0 1 1-1"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -6631,7 +6984,7 @@ func ArrowBigRightLines(children ...ElementRenderer) *TablerIcon {
 func ArrowBigRightLinesFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M12.089 3.634A2 2 0 0 0 11 5.414l-.001 2.585L9 8a1 1 0 0 0-1 1v6l.007.117A1 1 0 0 0 9 16l1.999-.001l.001 2.587A2 2 0 0 0 14.414 20L21 13.414a2 2 0 0 0 0-2.828L14.414 4a2 2 0 0 0-2.18-.434zM3 8a1 1 0 0 1 .993.883L4 9v6a1 1 0 0 1-1.993.117L2 15V9a1 1 0 0 1 1-1m3 0a1 1 0 0 1 .993.883L7 9v6a1 1 0 0 1-1.993.117L5 15V9a1 1 0 0 1 1-1"/></g>`),
+			Text(`<path fill="currentColor" d="M12.089 3.634A2 2 0 0 0 11 5.414l-.001 2.585L9 8a1 1 0 0 0-1 1v6l.007.117A1 1 0 0 0 9 16l1.999-.001l.001 2.587A2 2 0 0 0 14.414 20L21 13.414a2 2 0 0 0 0-2.828L14.414 4a2 2 0 0 0-2.18-.434zM3 8a1 1 0 0 1 .993.883L4 9v6a1 1 0 0 1-1.993.117L2 15V9a1 1 0 0 1 1-1m3 0a1 1 0 0 1 .993.883L7 9v6a1 1 0 0 1-1.993.117L5 15V9a1 1 0 0 1 1-1"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -6647,7 +7000,7 @@ func ArrowBigUp(children ...ElementRenderer) *TablerIcon {
 func ArrowBigUpFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M10.586 3L4 9.586a2 2 0 0 0-.434 2.18l.068.145A2 2 0 0 0 5.414 13H8v7a2 2 0 0 0 2 2h4l.15-.005A2 2 0 0 0 16 20l-.001-7h2.587A2 2 0 0 0 20 9.586L13.414 3a2 2 0 0 0-2.828 0"/></g>`),
+			Text(`<path fill="currentColor" d="M10.586 3L4 9.586a2 2 0 0 0-.434 2.18l.068.145A2 2 0 0 0 5.414 13H8v7a2 2 0 0 0 2 2h4l.15-.005A2 2 0 0 0 16 20l-.001-7h2.587A2 2 0 0 0 20 9.586L13.414 3a2 2 0 0 0-2.828 0"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -6663,7 +7016,7 @@ func ArrowBigUpLine(children ...ElementRenderer) *TablerIcon {
 func ArrowBigUpLineFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M10.586 3L4 9.586a2 2 0 0 0-.434 2.18l.068.145A2 2 0 0 0 5.414 13H8v5a1 1 0 0 0 1 1h6l.117-.007A1 1 0 0 0 16 18l-.001-5h2.587A2 2 0 0 0 20 9.586L13.414 3a2 2 0 0 0-2.828 0M15 20a1 1 0 0 1 .117 1.993L15 22H9a1 1 0 0 1-.117-1.993L9 20z"/></g>`),
+			Text(`<path fill="currentColor" d="M10.586 3L4 9.586a2 2 0 0 0-.434 2.18l.068.145A2 2 0 0 0 5.414 13H8v5a1 1 0 0 0 1 1h6l.117-.007A1 1 0 0 0 16 18l-.001-5h2.587A2 2 0 0 0 20 9.586L13.414 3a2 2 0 0 0-2.828 0M15 20a1 1 0 0 1 .117 1.993L15 22H9a1 1 0 0 1-.117-1.993L9 20z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -6679,7 +7032,7 @@ func ArrowBigUpLines(children ...ElementRenderer) *TablerIcon {
 func ArrowBigUpLinesFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M10.586 3L4 9.586a2 2 0 0 0-.434 2.18l.068.145A2 2 0 0 0 5.414 13H8v2a1 1 0 0 0 1 1h6l.117-.007A1 1 0 0 0 16 15l-.001-2h2.587A2 2 0 0 0 20 9.586L13.414 3a2 2 0 0 0-2.828 0M15 20a1 1 0 0 1 .117 1.993L15 22H9a1 1 0 0 1-.117-1.993L9 20zm0-3a1 1 0 0 1 .117 1.993L15 19H9a1 1 0 0 1-.117-1.993L9 17z"/></g>`),
+			Text(`<path fill="currentColor" d="M10.586 3L4 9.586a2 2 0 0 0-.434 2.18l.068.145A2 2 0 0 0 5.414 13H8v2a1 1 0 0 0 1 1h6l.117-.007A1 1 0 0 0 16 15l-.001-2h2.587A2 2 0 0 0 20 9.586L13.414 3a2 2 0 0 0-2.828 0M15 20a1 1 0 0 1 .117 1.993L15 22H9a1 1 0 0 1-.117-1.993L9 20zm0-3a1 1 0 0 1 .117 1.993L15 19H9a1 1 0 0 1-.117-1.993L9 17z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -6748,6 +7101,14 @@ func ArrowDownCircle(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func ArrowDownFromArc(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15V3m4 4l-4-4l-4 4m-5 5a9 9 0 0 0 18 0"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func ArrowDownLeft(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
@@ -6800,6 +7161,14 @@ func ArrowDownTail(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v15m-3-3l3 3l3-3M9 3l3 3l3-3"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func ArrowDownToArc(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M12 3v12m4-4l-4 4l-4-4"/><path d="M3 12a9 9 0 0 0 18 0"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -6892,6 +7261,14 @@ func ArrowLeftCircle(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func ArrowLeftFromArc(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h12m-4 4l4-4l-4-4m-5-5a9 9 0 1 0 0 18"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func ArrowLeftRhombus(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
@@ -6920,6 +7297,14 @@ func ArrowLeftTail(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 12H3m3-3l-3 3l3 3m15-6l-3 3l3 3"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func ArrowLeftToArc(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M21 12H9m4 4l-4-4l4-4"/><path d="M12 3a9 9 0 1 0 0 18"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -7140,6 +7525,14 @@ func ArrowRightCircle(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func ArrowRightFromArc(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12H3m4-4l-4 4l4 4m5 5a9 9 0 0 0 0-18"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func ArrowRightRhombus(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
@@ -7160,6 +7553,14 @@ func ArrowRightTail(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m18 15l3-3l-3-3M3 15l3-3l-3-3m3 3h15"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func ArrowRightToArc(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M3 12h12m-4-4l4 4l-4 4"/><path d="M12 21a9 9 0 0 0 0-18"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -7276,6 +7677,14 @@ func ArrowUpCircle(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func ArrowUpFromArc(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v12m-4-4l4 4l4-4m5-5a9 9 0 0 0-18 0"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func ArrowUpLeft(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
@@ -7328,6 +7737,14 @@ func ArrowUpTail(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18V3m3 3l-3-3l-3 3m6 15l-3-3l-3 3"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func ArrowUpToArc(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M12 21V9m-4 4l4-4l4 4"/><path d="M21 12a9 9 0 0 0-18 0"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -7711,7 +8128,7 @@ func Artboard(children ...ElementRenderer) *TablerIcon {
 func ArtboardFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M15 7H9a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2M4 7a1 1 0 0 1 .117 1.993L4 9H3a1 1 0 0 1-.117-1.993L3 7zm0 8a1 1 0 0 1 .117 1.993L4 17H3a1 1 0 0 1-.117-1.993L3 15zM8 2a1 1 0 0 1 .993.883L9 3v1a1 1 0 0 1-1.993.117L7 4V3a1 1 0 0 1 1-1m8 0a1 1 0 0 1 .993.883L17 3v1a1 1 0 0 1-1.993.117L15 4V3a1 1 0 0 1 1-1m5 5a1 1 0 0 1 .117 1.993L21 9h-1a1 1 0 0 1-.117-1.993L20 7zm0 8a1 1 0 0 1 .117 1.993L21 17h-1a1 1 0 0 1-.117-1.993L20 15zM8 19a1 1 0 0 1 .993.883L9 20v1a1 1 0 0 1-1.993.117L7 21v-1a1 1 0 0 1 1-1m8 0a1 1 0 0 1 .993.883L17 20v1a1 1 0 0 1-1.993.117L15 21v-1a1 1 0 0 1 1-1"/></g>`),
+			Text(`<path fill="currentColor" d="M15 7H9a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2M4 7a1 1 0 0 1 .117 1.993L4 9H3a1 1 0 0 1-.117-1.993L3 7zm0 8a1 1 0 0 1 .117 1.993L4 17H3a1 1 0 0 1-.117-1.993L3 15zM8 2a1 1 0 0 1 .993.883L9 3v1a1 1 0 0 1-1.993.117L7 4V3a1 1 0 0 1 1-1m8 0a1 1 0 0 1 .993.883L17 3v1a1 1 0 0 1-1.993.117L15 4V3a1 1 0 0 1 1-1m5 5a1 1 0 0 1 .117 1.993L21 9h-1a1 1 0 0 1-.117-1.993L20 7zm0 8a1 1 0 0 1 .117 1.993L21 17h-1a1 1 0 0 1-.117-1.993L20 15zM8 19a1 1 0 0 1 .993.883L9 20v1a1 1 0 0 1-1.993.117L7 21v-1a1 1 0 0 1 1-1m8 0a1 1 0 0 1 .993.883L17 20v1a1 1 0 0 1-1.993.117L15 21v-1a1 1 0 0 1 1-1"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -7728,6 +8145,14 @@ func Article(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 6a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2zm4 2h10M7 12h10M7 16h10"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func ArticleFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M19 3a3 3 0 0 1 2.995 2.824L22 6v12a3 3 0 0 1-2.824 2.995L19 21H5a3 3 0 0 1-2.995-2.824L2 18V6a3 3 0 0 1 2.824-2.995L5 3zm-2 12H7l-.117.007a1 1 0 0 0 0 1.986L7 17h10l.117-.007a1 1 0 0 0 0-1.986zm0-4H7l-.117.007a1 1 0 0 0 0 1.986L7 13h10l.117-.007a1 1 0 0 0 0-1.986zm0-4H7l-.117.007a1 1 0 0 0 0 1.986L7 9h10l.117-.007a1 1 0 0 0 0-1.986z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -7759,7 +8184,7 @@ func AspectRatio(children ...ElementRenderer) *TablerIcon {
 func AspectRatioFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M19 4H5a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3M9 7a1 1 0 0 1 .117 1.993L9 9H7v2a1 1 0 0 1-.883.993L6 12a1 1 0 0 1-.993-.883L5 11V8a1 1 0 0 1 .883-.993L6 7zm9 5a1 1 0 0 1 .993.883L19 13v3a1 1 0 0 1-.883.993L18 17h-3a1 1 0 0 1-.117-1.993L15 15h2v-2a1 1 0 0 1 .883-.993z"/></g>`),
+			Text(`<path fill="currentColor" d="M19 4H5a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3M9 7a1 1 0 0 1 .117 1.993L9 9H7v2a1 1 0 0 1-.883.993L6 12a1 1 0 0 1-.993-.883L5 11V8a1 1 0 0 1 .883-.993L6 7zm9 5a1 1 0 0 1 .993.883L19 13v3a1 1 0 0 1-.883.993L18 17h-3a1 1 0 0 1-.117-1.993L15 15h2v-2a1 1 0 0 1 .883-.993z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -7780,6 +8205,14 @@ func Assembly(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func AssemblyFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="m13.666 1.429l6.75 3.98q.1.06.18.133l.009.008l.106.075a3.22 3.22 0 0 1 1.284 2.39l.005.203v7.284c0 1.175-.643 2.256-1.623 2.793l-6.804 4.302c-.98.538-2.166.538-3.2-.032l-6.695-4.237A3.23 3.23 0 0 1 2 15.502V8.217a3.21 3.21 0 0 1 1.65-2.808l6.775-3.995a3.34 3.34 0 0 1 3.24.015m-.64 5.343a2.03 2.03 0 0 0-2-.014L8.002 8.562A1.99 1.99 0 0 0 7 10.298v3.278a2 2 0 0 0 1.03 1.75l2.946 1.89c.657.367 1.39.367 1.994.033l3.054-1.955c.582-.322.976-.992.976-1.719v-3.277l-.005-.164a2 2 0 0 0-.725-1.391l-.092-.07l-.056-.047a1 1 0 0 0-.096-.064z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func AssemblyOff(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
@@ -7792,6 +8225,14 @@ func Asset(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M3 15a6 6 0 1 0 12 0a6 6 0 1 0-12 0"/><path d="M7 15a2 2 0 1 0 4 0a2 2 0 1 0-4 0M17 5a2 2 0 1 0 4 0a2 2 0 1 0-4 0m-2.782 12.975l6.619-12.174M6.079 9.756l12.217-6.631"/><path d="M7 15a2 2 0 1 0 4 0a2 2 0 1 0-4 0"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func AssetFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M19 2a3 3 0 0 1 2.86 3.91l-.107.291l-.046.093q-.061.128-.134.25l-6.476 11.909a1 1 0 0 1-.066.104A7 7 0 0 1 2 15l.004-.24a7 7 0 0 1 3.342-5.732l.256-.15l11.705-6.355q.18-.123.378-.22l.215-.096l.136-.048C18.338 2.056 18.663 2 19 2M9 12a3 3 0 0 0-2.995 2.824L6 15a3 3 0 1 0 3-3m7.04-6.512l-5.12 2.778a7.01 7.01 0 0 1 4.816 4.824l2.788-5.128a3 3 0 0 1-2.485-2.474M19 4a1 1 0 0 0-.317.051l-.31.17a1 1 0 1 0 1.465 1.325l.072-.13A1 1 0 0 0 19 4"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -7855,7 +8296,7 @@ func AtomTwo(children ...ElementRenderer) *TablerIcon {
 func AtomTwoFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M12 8a4 4 0 1 1-3.995 4.2L8 12l.005-.2A4 4 0 0 1 12 8m0 12a1 1 0 0 1 .993.883l.007.127a1 1 0 0 1-1.993.117L11 21a1 1 0 0 1 1-1M3 8a1 1 0 0 1 .993.883L4 9.01a1 1 0 0 1-1.993.117L2 9a1 1 0 0 1 1-1m18 0a1 1 0 0 1 .993.883L22 9.01a1 1 0 0 1-1.993.117L20 9a1 1 0 0 1 1-1M2.89 12.006a1 1 0 0 1 1.104.884a8 8 0 0 0 4.444 6.311A1 1 0 1 1 7.562 21a10 10 0 0 1-5.556-7.89a1 1 0 0 1 .884-1.103zM20.993 12l.117.006a1 1 0 0 1 .884 1.104a10 10 0 0 1-5.556 7.889a1 1 0 1 1-.876-1.798a8 8 0 0 0 4.444-6.31a1 1 0 0 1 .987-.891M5.567 4.226a10 10 0 0 1 12.666 0a1 1 0 1 1-1.266 1.548a8 8 0 0 0-10.134 0a1 1 0 1 1-1.266-1.548"/></g>`),
+			Text(`<path fill="currentColor" d="M12 8a4 4 0 1 1-3.995 4.2L8 12l.005-.2A4 4 0 0 1 12 8m0 12a1 1 0 0 1 .993.883l.007.127a1 1 0 0 1-1.993.117L11 21a1 1 0 0 1 1-1M3 8a1 1 0 0 1 .993.883L4 9.01a1 1 0 0 1-1.993.117L2 9a1 1 0 0 1 1-1m18 0a1 1 0 0 1 .993.883L22 9.01a1 1 0 0 1-1.993.117L20 9a1 1 0 0 1 1-1M2.89 12.006a1 1 0 0 1 1.104.884a8 8 0 0 0 4.444 6.311A1 1 0 1 1 7.562 21a10 10 0 0 1-5.556-7.89a1 1 0 0 1 .884-1.103zM20.993 12l.117.006a1 1 0 0 1 .884 1.104a10 10 0 0 1-5.556 7.889a1 1 0 1 1-.876-1.798a8 8 0 0 0 4.444-6.31a1 1 0 0 1 .987-.891M5.567 4.226a10 10 0 0 1 12.666 0a1 1 0 1 1-1.266 1.548a8 8 0 0 0-10.134 0a1 1 0 1 1-1.266-1.548"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -7884,10 +8325,26 @@ func AugmentedRealityTwo(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func AuthTwoFa(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16H3l3.47-4.66A2 2 0 1 0 3 9.8m7 6.2V8h4m-4 4h3m4 4v-6a2 2 0 0 1 4 0v6m-4-3h4"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func AutomaticGearbox(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M17 17v4h1a2 2 0 1 0 0-4zm0-6h1.5a1.5 1.5 0 0 0 0-3H17v5M3 5a2 2 0 1 0 4 0a2 2 0 1 0-4 0"/><path d="M5 7v3a1 1 0 0 0 1 1h3v7a1 1 0 0 0 1 1h3m-4-8h4"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func Avocado(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M17.8 14.04a3.905 3.905 0 0 1 1.337-2.075C20.332 10.98 20.953 9.68 21 8.063c-.047-1.43-.54-2.626-1.477-3.586c-.96-.938-2.156-1.43-3.585-1.477c-1.618.047-2.918.668-3.903 1.863c-.562.68-1.254 1.125-2.074 1.336c-.938.188-1.828.48-2.672.88c-.844.398-1.559.878-2.144 1.44C3.715 10.02 3 11.743 3 13.688c0 1.946.715 3.668 2.145 5.168C6.645 20.285 8.367 21 10.313 21c1.945 0 3.667-.715 5.167-2.145c.563-.585 1.055-1.3 1.477-2.144c.398-.844.68-1.723.844-2.637v-.035z"/><path d="M10.87 10.036c-.942.112-1.794.538-2.556 1.278c-.74.762-1.166 1.614-1.278 2.556c-.135.92.112 1.704.74 2.354c.65.628 1.435.875 2.354.74c.942-.112 1.794-.538 2.556-1.278c.74-.762 1.166-1.614 1.278-2.556c.135-.92-.112-1.704-.74-2.354c-.65-.628-1.435-.875-2.354-.74"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -7903,7 +8360,7 @@ func Award(children ...ElementRenderer) *TablerIcon {
 func AwardFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="m19.496 13.983l1.966 3.406a1.001 1.001 0 0 1-.705 1.488l-.113.011l-.112-.001l-2.933-.19l-1.303 2.636a1.001 1.001 0 0 1-1.608.26l-.082-.094l-.072-.11l-1.968-3.407a8.994 8.994 0 0 0 6.93-3.999m-8.066 3.999L9.464 21.39a1.001 1.001 0 0 1-1.622.157l-.076-.1l-.064-.114l-1.304-2.635l-2.931.19a1.001 1.001 0 0 1-1.022-1.29l.04-.107l.05-.1l1.968-3.409a8.994 8.994 0 0 0 6.927 4.001zM12 2l.24.004A7 7 0 0 1 19 9l-.003.193l-.007.192l-.018.245l-.026.242l-.024.178a6.985 6.985 0 0 1-.317 1.268l-.116.308l-.153.348a7.001 7.001 0 0 1-12.688-.028l-.13-.297l-.052-.133l-.08-.217l-.095-.294a6.96 6.96 0 0 1-.093-.344l-.06-.271l-.049-.271l-.02-.139l-.039-.323l-.024-.365L5 9a7 7 0 0 1 6.76-6.996z"/></g>`),
+			Text(`<path fill="currentColor" d="m19.496 13.983l1.966 3.406a1.001 1.001 0 0 1-.705 1.488l-.113.011l-.112-.001l-2.933-.19l-1.303 2.636a1.001 1.001 0 0 1-1.608.26l-.082-.094l-.072-.11l-1.968-3.407a8.994 8.994 0 0 0 6.93-3.999m-8.066 3.999L9.464 21.39a1.001 1.001 0 0 1-1.622.157l-.076-.1l-.064-.114l-1.304-2.635l-2.931.19a1.001 1.001 0 0 1-1.022-1.29l.04-.107l.05-.1l1.968-3.409a8.994 8.994 0 0 0 6.927 4.001zM12 2l.24.004A7 7 0 0 1 19 9l-.003.193l-.007.192l-.018.245l-.026.242l-.024.178a6.985 6.985 0 0 1-.317 1.268l-.116.308l-.153.348a7.001 7.001 0 0 1-12.688-.028l-.13-.297l-.052-.133l-.08-.217l-.095-.294a6.96 6.96 0 0 1-.093-.344l-.06-.271l-.049-.271l-.02-.139l-.039-.323l-.024-.365L5 9a7 7 0 0 1 6.76-6.996z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -7952,6 +8409,14 @@ func BabyCarriage(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 19a2 2 0 1 0 4 0a2 2 0 1 0-4 0m10 0a2 2 0 1 0 4 0a2 2 0 1 0-4 0M2 5h2.5l1.632 4.897A6 6 0 0 0 11.825 14H14.5a5.5 5.5 0 0 0 0-11H14v6M6 9h14M9 17l1-3m6 0l1 3"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func BabyCarriageFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M14.5 2a6.5 6.5 0 0 1 6.49 6.858a1.04 1.04 0 0 1-.04.456a6.51 6.51 0 0 1-3.757 5.103l.532 1.595Q17.86 16 18 16a3 3 0 1 1-3 3l.005-.176a3 3 0 0 1 .894-1.966l-.634-1.903Q14.888 15 14.5 15h-2.675q-.547 0-1.076-.083l-.648 1.941A3 3 0 1 1 5 19l.004-.176a3 3 0 0 1 3.27-2.812l.56-1.682a7 7 0 0 1-3.652-4.117L3.78 6H2a1 1 0 0 1-.993-.883L1 5a1 1 0 0 1 1-1h2.5a1 1 0 0 1 .949.684L6.553 8H13V3a1 1 0 0 1 1-1zM8 18a1 1 0 1 0 0 2a1 1 0 0 0 0-2m10 0a1 1 0 1 0 0 2a1 1 0 0 0 0-2"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -8007,7 +8472,7 @@ func Backspace(children ...ElementRenderer) *TablerIcon {
 func BackspaceFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M20 5a2 2 0 0 1 1.995 1.85L22 7v10a2 2 0 0 1-1.85 1.995L20 19H9a1 1 0 0 1-.608-.206l-.1-.087l-5.037-5.04c-.809-.904-.847-2.25-.083-3.23l.12-.144l5-5a1 1 0 0 1 .577-.284L9 5zm-7.489 4.14a1 1 0 0 0-1.301 1.473l.083.094L12.585 12l-1.292 1.293l-.083.094a1 1 0 0 0 1.403 1.403l.094-.083L14 13.415l1.293 1.292l.094.083a1 1 0 0 0 1.403-1.403l-.083-.094L15.415 12l1.292-1.293l.083-.094a1 1 0 0 0-1.403-1.403l-.094.083L14 10.585l-1.293-1.292l-.094-.083z"/></g>`),
+			Text(`<path fill="currentColor" d="M20 5a2 2 0 0 1 1.995 1.85L22 7v10a2 2 0 0 1-1.85 1.995L20 19H9a1 1 0 0 1-.608-.206l-.1-.087l-5.037-5.04c-.809-.904-.847-2.25-.083-3.23l.12-.144l5-5a1 1 0 0 1 .577-.284L9 5zm-7.489 4.14a1 1 0 0 0-1.301 1.473l.083.094L12.585 12l-1.292 1.293l-.083.094a1 1 0 0 0 1.403 1.403l.094-.083L14 13.415l1.293 1.292l.094.083a1 1 0 0 0 1.403-1.403l-.083-.094L15.415 12l1.292-1.293l.083-.094a1 1 0 0 0-1.403-1.403l-.094.083L14 10.585l-1.293-1.292l-.094-.083z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -8028,10 +8493,34 @@ func BadgeAd(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func BadgeAdFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M19 4a3 3 0 0 1 3 3v10a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3V7a3 3 0 0 1 3-3zm-4 4h-1a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h1a3 3 0 0 0 3-3v-2a3 3 0 0 0-3-3M8.5 8A2.5 2.5 0 0 0 6 10.5V15a1 1 0 0 0 2 0v-1h1v1a1 1 0 0 0 .883.993L10 16a1 1 0 0 0 1-1v-4.5A2.5 2.5 0 0 0 8.5 8m6.5 2a1 1 0 0 1 1 1v2a1 1 0 0 1-.883.993L15 14zm-6.5 0a.5.5 0 0 1 .5.5V12H8v-1.5a.5.5 0 0 1 .41-.492z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func BadgeAdOff(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M9 5h10a2 2 0 0 1 2 2v10m-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2"/><path d="M14 14v1h1m2-2v-2a2 2 0 0 0-2-2h-1v1m-7 5v-4.5a1.5 1.5 0 0 1 2.077-1.385m.788.762c.087.19.135.4.135.623V15m-3-2h3M3 3l18 18"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func BadgeAr(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M3 7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M7 15v-4.5a1.5 1.5 0 0 1 3 0V15m-3-2h3m4-1h1.5a1.5 1.5 0 0 0 0-3H14v6m3 0l-2-3"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func BadgeArFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M19 4a3 3 0 0 1 3 3v10a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3V7a3 3 0 0 1 3-3zM8.5 8A2.5 2.5 0 0 0 6 10.5V15a1 1 0 0 0 2 0v-1h1v1a1 1 0 0 0 .883.993L10 16a1 1 0 0 0 1-1v-4.5A2.5 2.5 0 0 0 8.5 8m7 0H14a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1l.117-.007A1 1 0 0 0 15 15v-1.196l1.168 1.75a1 1 0 0 0 1.387.278l.093-.07a1 1 0 0 0 .184-1.317l-1.159-1.738l.044-.023A2.5 2.5 0 0 0 15.5 8m-7 2a.5.5 0 0 1 .5.5V12H8v-1.5a.5.5 0 0 1 .41-.492zm7 0a.5.5 0 1 1 0 1H15v-1z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -8044,6 +8533,14 @@ func BadgeCc(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func BadgeCcFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M19 4a3 3 0 0 1 3 3v10a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3V7a3 3 0 0 1 3-3zM8.5 8A2.5 2.5 0 0 0 6 10.5v3a2.5 2.5 0 1 0 5 0a1 1 0 0 0-2 0a.5.5 0 1 1-1 0v-3a.5.5 0 1 1 1 0a1 1 0 0 0 2 0A2.5 2.5 0 0 0 8.5 8m7 0a2.5 2.5 0 0 0-2.5 2.5v3a2.5 2.5 0 1 0 5 0a1 1 0 0 0-2 0a.5.5 0 1 1-1 0v-3a.5.5 0 1 1 1 0a1 1 0 0 0 2 0A2.5 2.5 0 0 0 15.5 8"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func BadgeEightK(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
@@ -8052,10 +8549,18 @@ func BadgeEightK(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func BadgeEightKfilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M19 4a3 3 0 0 1 3 3v10a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3V7a3 3 0 0 1 3-3zm-1.445 4.168a1 1 0 0 0-1.387.277L15 10.196V9a1 1 0 0 0-.883-.993L14 8a1 1 0 0 0-1 1v6a1 1 0 0 0 2 0v-1.196l1.168 1.75a1 1 0 0 0 1.286.337l.1-.059l.094-.07a1 1 0 0 0 .184-1.317L16.202 12l1.63-2.445a1 1 0 0 0-.277-1.387M9 8H8a2 2 0 0 0-2 2v1l.005.15c.022.295.108.573.245.819l.019.031l-.02.031A2 2 0 0 0 6 13v1a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-1l-.005-.15a2 2 0 0 0-.245-.819L10.731 12l.02-.031c.158-.287.249-.618.249-.969v-1a2 2 0 0 0-2-2m0 5v1H8v-1zm0-3v1H8v-1z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func BadgeFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M16.486 3.143L12 5.833l-4.486-2.69A1 1 0 0 0 6 4v13a1 1 0 0 0 .486.857l5 3a1 1 0 0 0 1.028 0l5-3A1 1 0 0 0 18 17V4a1 1 0 0 0-1.514-.857"/></g>`),
+			Text(`<path fill="currentColor" d="M16.486 3.143L12 5.833l-4.486-2.69A1 1 0 0 0 6 4v13a1 1 0 0 0 .486.857l5 3a1 1 0 0 0 1.028 0l5-3A1 1 0 0 0 18 17V4a1 1 0 0 0-1.514-.857"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -8068,10 +8573,26 @@ func BadgeFourK(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func BadgeFourKfilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M19 4a3 3 0 0 1 3 3v10a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3V7a3 3 0 0 1 3-3zm-9 4a1 1 0 0 0-1 1v2H8V9a1 1 0 1 0-2 0v2a2 2 0 0 0 2 2h1v2a1 1 0 0 0 2 0V9a1 1 0 0 0-1-1m7.555.168a1 1 0 0 0-1.387.277L15 10.196V9a1 1 0 0 0-.883-.993L14 8a1 1 0 0 0-1 1v6a1 1 0 0 0 2 0v-1.196l1.168 1.75a1 1 0 0 0 1.286.337l.1-.059l.094-.07a1 1 0 0 0 .184-1.317L16.202 12l1.63-2.445a1 1 0 0 0-.277-1.387"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func BadgeHd(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M3 7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M14 9v6h1a2 2 0 0 0 2-2v-2a2 2 0 0 0-2-2zm-7 6V9m3 6V9m-3 3h3"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func BadgeHdFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M19 4a3 3 0 0 1 3 3v10a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3V7a3 3 0 0 1 3-3zm-4 4h-1a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h1a3 3 0 0 0 3-3v-2a3 3 0 0 0-3-3m-5 0a1 1 0 0 0-1 1v2H8V9a1 1 0 0 0-.883-.993L7 8a1 1 0 0 0-1 1v6a1 1 0 0 0 2 0v-2h1v2a1 1 0 0 0 .883.993L10 16a1 1 0 0 0 1-1V9a1 1 0 0 0-1-1m5 2a1 1 0 0 1 1 1v2a1 1 0 0 1-.883.993L15 14z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -8092,10 +8613,26 @@ func BadgeSd(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func BadgeSdFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M19 4a3 3 0 0 1 3 3v10a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3V7a3 3 0 0 1 3-3zm-4 4h-1a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h1a3 3 0 0 0 3-3v-2a3 3 0 0 0-3-3M9.25 8H8a2 2 0 0 0-2 2v1a2 2 0 0 0 2 2h1v1H7.967l-.025-.087A1 1 0 0 0 6 14.25c0 .966.784 1.75 1.75 1.75H9a2 2 0 0 0 2-2v-1a2 2 0 0 0-2-2H8v-1h1.032l.026.087A1 1 0 0 0 11 9.75A1.75 1.75 0 0 0 9.25 8M15 10a1 1 0 0 1 1 1v2a1 1 0 0 1-.883.993L15 14z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func BadgeThreeD(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M3 7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M7 9.5a.5.5 0 0 1 .5-.5h1a1.5 1.5 0 0 1 0 3H8h.5a1.5 1.5 0 0 1 0 3h-1a.5.5 0 0 1-.5-.5M14 9v6h1a2 2 0 0 0 2-2v-2a2 2 0 0 0-2-2z"/></g>`),
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M3 7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M7 9h1.5a1.5 1.5 0 0 1 0 3H8h.5a1.5 1.5 0 0 1 0 3H7m7-6v6h1a2 2 0 0 0 2-2v-2a2 2 0 0 0-2-2z"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func BadgeThreeDfilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M19 4a3 3 0 0 1 3 3v10a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3V7a3 3 0 0 1 3-3zM8.5 8H7a1 1 0 1 0 0 2h1.5a.5.5 0 0 1 .09.992L8.5 11H8c-1.287 0-1.332 1.864-.133 1.993L8 13h.5a.5.5 0 1 1 0 1H7a1 1 0 0 0 0 2h1.5a2.5 2.5 0 0 0 2.5-2.5l-.005-.164a2.5 2.5 0 0 0-.477-1.312L10.499 12l.019-.024A2.5 2.5 0 0 0 8.5 8M15 8h-1a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h1a3 3 0 0 0 3-3v-2a3 3 0 0 0-3-3m0 2a1 1 0 0 1 1 1v2a1 1 0 0 1-.883.993L15 14z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -8108,10 +8645,26 @@ func BadgeTm(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func BadgeTmFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M19 4a3 3 0 0 1 3 3v10a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3V7a3 3 0 0 1 3-3zm-9 4H6a1 1 0 1 0 0 2h1v5a1 1 0 0 0 .883.993L8 16a1 1 0 0 0 1-1v-5h1a1 1 0 0 0 .993-.883L11 9a1 1 0 0 0-1-1m8 1c0-.99-1.283-1.378-1.832-.555L15 10.197l-1.168-1.752C13.283 7.622 12 8.011 12 9v6a1 1 0 0 0 1 1l.117-.007A1 1 0 0 0 14 15v-2.697l.168.252l.08.104a1 1 0 0 0 1.584-.104l.168-.253V15a1 1 0 0 0 2 0z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func BadgeVo(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M3 7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="m7 9l2 6l2-6m4.5 0a1.5 1.5 0 0 1 1.5 1.5v3a1.5 1.5 0 0 1-3 0v-3A1.5 1.5 0 0 1 15.5 9"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func BadgeVoFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M19 4a3 3 0 0 1 3 3v10a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3V7a3 3 0 0 1 3-3zm-3.5 4a2.5 2.5 0 0 0-2.5 2.5v3a2.5 2.5 0 1 0 5 0v-3A2.5 2.5 0 0 0 15.5 8m-4.184.051a1 1 0 0 0-1.265.633L9 11.838L7.949 8.684a1 1 0 0 0-1.898.632l2 6c.304.912 1.594.912 1.898 0l2-6a1 1 0 0 0-.633-1.265M15.5 10a.5.5 0 0 1 .5.5v3a.5.5 0 1 1-1 0v-3a.5.5 0 0 1 .5-.5"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -8124,10 +8677,26 @@ func BadgeVr(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func BadgeVrFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M19 4a3 3 0 0 1 3 3v10a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3V7a3 3 0 0 1 3-3zm-3.5 4H14a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1l.117-.007A1 1 0 0 0 15 15v-1.196l1.168 1.75a1 1 0 0 0 1.387.278l.093-.07a1 1 0 0 0 .184-1.317l-1.159-1.738l.044-.023A2.5 2.5 0 0 0 15.5 8m-4.184.051a1 1 0 0 0-1.265.633L9 11.838L7.949 8.684a1 1 0 0 0-1.898.632l2 6c.304.912 1.594.912 1.898 0l2-6a1 1 0 0 0-.633-1.265M15.5 10a.5.5 0 1 1 0 1H15v-1z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func BadgeWc(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M3 7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="m6.5 9l.5 6l2-4l2 4l.5-6m5.5 1.5a1.5 1.5 0 0 0-3 0v3a1.5 1.5 0 0 0 3 0"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func BadgeWcFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M19 4a3 3 0 0 1 3 3v10a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3V7a3 3 0 0 1 3-3zm-7.534 4a1 1 0 0 0-.963.917l-.204 2.445l-.405-.81l-.063-.11a1 1 0 0 0-1.725.11l-.406.81l-.203-2.445A1 1 0 0 0 6.534 8l-.117.003a1 1 0 0 0-.914 1.08l.5 6l.016.117c.175.91 1.441 1.115 1.875.247L9 13.236l1.106 2.211c.452.904 1.807.643 1.89-.364l.5-6a1 1 0 0 0-.913-1.08zM15.5 8a2.5 2.5 0 0 0-2.5 2.5v3a2.5 2.5 0 1 0 5 0a1 1 0 0 0-2 0a.5.5 0 1 1-1 0v-3a.5.5 0 1 1 1 0a1 1 0 0 0 2 0A2.5 2.5 0 0 0 15.5 8"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -8143,7 +8712,7 @@ func Badges(children ...ElementRenderer) *TablerIcon {
 func BadgesFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M16.486 12.143L12 14.833l-4.486-2.69A1 1 0 0 0 6 13v4a1 1 0 0 0 .486.857l5 3a1 1 0 0 0 1.028 0l5-3A1 1 0 0 0 18 17v-4a1 1 0 0 0-1.514-.857"/><path fill="currentColor" d="M16.486 3.143L12 5.833l-4.486-2.69A1 1 0 0 0 6 4v4a1 1 0 0 0 .486.857l5 3a1 1 0 0 0 1.028 0l5-3A1 1 0 0 0 18 8V4a1 1 0 0 0-1.514-.857"/></g>`),
+			Text(`<g fill="currentColor"><path d="M16.486 12.143L12 14.833l-4.486-2.69A1 1 0 0 0 6 13v4a1 1 0 0 0 .486.857l5 3a1 1 0 0 0 1.028 0l5-3A1 1 0 0 0 18 17v-4a1 1 0 0 0-1.514-.857"/><path d="M16.486 3.143L12 5.833l-4.486-2.69A1 1 0 0 0 6 4v4a1 1 0 0 0 .486.857l5 3a1 1 0 0 0 1.028 0l5-3A1 1 0 0 0 18 8V4a1 1 0 0 0-1.514-.857"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -8247,7 +8816,7 @@ func Balloon(children ...ElementRenderer) *TablerIcon {
 func BalloonFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M12 1a7 7 0 0 1 7 7c0 5.457-3.028 10-7 10c-3.9 0-6.89-4.379-6.997-9.703L5 8l.004-.24A7 7 0 0 1 12 1m0 4a1 1 0 0 0 0 2l.117.007A1 1 0 0 1 13 8l.007.117A1 1 0 0 0 15 8a3 3 0 0 0-3-3"/><path fill="currentColor" d="M12 16a1 1 0 0 1 .993.883L13 17v1a3 3 0 0 1-2.824 2.995L10 21H7a1 1 0 0 0-.993.883L6 22a1 1 0 0 1-2 0a3 3 0 0 1 2.824-2.995L7 19h3a1 1 0 0 0 .993-.883L11 18v-1a1 1 0 0 1 1-1"/></g>`),
+			Text(`<g fill="currentColor"><path d="M12 1a7 7 0 0 1 7 7c0 5.457-3.028 10-7 10c-3.9 0-6.89-4.379-6.997-9.703L5 8l.004-.24A7 7 0 0 1 12 1m0 4a1 1 0 0 0 0 2l.117.007A1 1 0 0 1 13 8l.007.117A1 1 0 0 0 15 8a3 3 0 0 0-3-3"/><path d="M12 16a1 1 0 0 1 .993.883L13 17v1a3 3 0 0 1-2.824 2.995L10 21H7a1 1 0 0 0-.993.883L6 22a1 1 0 0 1-2 0a3 3 0 0 1 2.824-2.995L7 19h3a1 1 0 0 0 .993-.883L11 18v-1a1 1 0 0 1 1-1"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -8271,7 +8840,7 @@ func Ballpen(children ...ElementRenderer) *TablerIcon {
 func BallpenFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M17.828 2a3 3 0 0 1 1.977.743l.145.136l1.171 1.17a3 3 0 0 1 .136 4.1l-.136.144L19.415 10l2.292 2.293a1 1 0 0 1 .083 1.32l-.083.094l-4 4a1 1 0 0 1-1.497-1.32l.083-.094L19.585 13l-1.586-1.585l-7.464 7.464a3.828 3.828 0 0 1-2.474 1.114l-.233.008c-.674 0-1.33-.178-1.905-.508l-1.216 1.214a1 1 0 0 1-1.497-1.32l.083-.094l1.214-1.216a3.828 3.828 0 0 1 .454-4.442l.16-.17L15.707 2.879a3 3 0 0 1 1.923-.873zm0 2a1 1 0 0 0-.608.206l-.099.087L15.414 6L18 8.585l1.707-1.706a1 1 0 0 0 .284-.576l.01-.131a1 1 0 0 0-.207-.609l-.087-.099l-1.171-1.171A1 1 0 0 0 17.828 4"/></g>`),
+			Text(`<path fill="currentColor" d="M17.828 2a3 3 0 0 1 1.977.743l.145.136l1.171 1.17a3 3 0 0 1 .136 4.1l-.136.144L19.415 10l2.292 2.293a1 1 0 0 1 .083 1.32l-.083.094l-4 4a1 1 0 0 1-1.497-1.32l.083-.094L19.585 13l-1.586-1.585l-7.464 7.464a3.828 3.828 0 0 1-2.474 1.114l-.233.008c-.674 0-1.33-.178-1.905-.508l-1.216 1.214a1 1 0 0 1-1.497-1.32l.083-.094l1.214-1.216a3.828 3.828 0 0 1 .454-4.442l.16-.17L15.707 2.879a3 3 0 0 1 1.923-.873zm0 2a1 1 0 0 0-.608.206l-.099.087L15.414 6L18 8.585l1.707-1.706a1 1 0 0 0 .284-.576l.01-.131a1 1 0 0 0-.207-.609l-.087-.099l-1.171-1.171A1 1 0 0 0 17.828 4"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -8303,7 +8872,7 @@ func Bandage(children ...ElementRenderer) *TablerIcon {
 func BandageFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M20.207 3.793a5.95 5.95 0 0 1 .179 8.228l-.179.186l-8 8a5.95 5.95 0 0 1-8.593-8.228l.179-.186l8-8a5.95 5.95 0 0 1 8.414 0M12 13a1 1 0 0 0-1 1l.007.127A1 1 0 0 0 13 14.01l-.007-.127A1 1 0 0 0 12 13m2-2a1 1 0 0 0-1 1l.007.127A1 1 0 0 0 15 12.01l-.007-.127A1 1 0 0 0 14 11m-4 0a1 1 0 0 0-1 1l.007.127A1 1 0 0 0 11 12.01l-.007-.127A1 1 0 0 0 10 11m2-2a1 1 0 0 0-1 1l.007.127A1 1 0 0 0 13 10.01l-.007-.127A1 1 0 0 0 12 9"/></g>`),
+			Text(`<path fill="currentColor" d="M20.207 3.793a5.95 5.95 0 0 1 .179 8.228l-.179.186l-8 8a5.95 5.95 0 0 1-8.593-8.228l.179-.186l8-8a5.95 5.95 0 0 1 8.414 0M12 13a1 1 0 0 0-1 1l.007.127A1 1 0 0 0 13 14.01l-.007-.127A1 1 0 0 0 12 13m2-2a1 1 0 0 0-1 1l.007.127A1 1 0 0 0 15 12.01l-.007-.127A1 1 0 0 0 14 11m-4 0a1 1 0 0 0-1 1l.007.127A1 1 0 0 0 11 12.01l-.007-.127A1 1 0 0 0 10 11m2-2a1 1 0 0 0-1 1l.007.127A1 1 0 0 0 13 10.01l-.007-.127A1 1 0 0 0 12 9"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -8320,6 +8889,14 @@ func Barbell(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2 12h1m3-4H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h2m0-9v10a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1V7a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1m3 5h6m0-5v10a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1V7a1 1 0 0 0-1-1h-1a1 1 0 0 0-1 1m3 1h2a1 1 0 0 1 1 1v6a1 1 0 0 1-1 1h-2m4-4h-1"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func BarbellFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M4 7a1 1 0 0 1 1 1v8a1 1 0 0 1-2 0v-3H2a1 1 0 0 1 0-2h1V8a1 1 0 0 1 1-1m16 0a1 1 0 0 1 1 1v3h1a1 1 0 0 1 0 2h-1v3a1 1 0 0 1-2 0V8a1 1 0 0 1 1-1m-4-2a2 2 0 0 1 2 2v10a2 2 0 1 1-4 0v-4h-4v4a2 2 0 1 1-4 0V7a2 2 0 1 1 4 0v4h4V7a2 2 0 0 1 2-2"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -8376,6 +8953,14 @@ func BarrierBlock(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1zm3 8v4m.5-4l9-9m-3 9L20 9.5m-16 4L10.5 7m6.5 9v4M5 20h4m6 0h4M17 7V5M7 7V5"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func BarrierBlockFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M15 21a1 1 0 0 1 0-2h1v-2H8v2h1a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2h1v-2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h1V5a1 1 0 1 1 2 0v1h8V5a1 1 0 0 1 2 0v1h1a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2h-1v2h1a1 1 0 0 1 0 2zM12.914 8l-7 7h4.17L17 8zM19 10.914L14.914 15H19zM8.084 8H5v3.084z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -8503,7 +9088,7 @@ func BasketExclamation(children ...ElementRenderer) *TablerIcon {
 func BasketFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="m12.684 3.27l.084.09l4.7 5.64H21a1 1 0 0 1 .991 1.131l-.02.112l-1.984 7.918c-.258 1.578-1.41 2.781-2.817 2.838L17 21l-10.148-.002c-1.37-.053-2.484-1.157-2.787-2.57l-.035-.185l-2-8a1 1 0 0 1 .857-1.237L3 9h3.53l4.702-5.64a1 1 0 0 1 1.452-.09M12 12a3 3 0 0 0-2.98 2.65l-.015.174L9 15l.005.176A3 3 0 1 0 12 12m0-6.438L9.135 9h5.73z"/></g>`),
+			Text(`<path fill="currentColor" d="M15.949 3.684L17.053 7H19a3 3 0 0 1 2.962 3.477l-1.252 7.131A4 4 0 0 1 16.756 21H7.244a3.994 3.994 0 0 1-3.95-3.371l-1.258-7.173A3 3 0 0 1 5 7h1.945L8.05 3.684a1 1 0 0 1 1.898.632L9.053 7h5.893l-.895-2.684a1 1 0 1 1 1.898-.632M12 11a3 3 0 0 0-2.995 2.824L9 14a3 3 0 1 0 3-3"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -8623,7 +9208,7 @@ func Bath(children ...ElementRenderer) *TablerIcon {
 func BathFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M11 2a1 1 0 0 1 .993.883L12 3v2.25a1 1 0 0 1-1.993.117L10 5.25V4H8a1 1 0 0 0-.993.883L7 5v6h13a2 2 0 0 1 1.995 1.85L22 13v3c0 1.475-.638 2.8-1.654 3.715l.486.73a1 1 0 0 1-1.594 1.203l-.07-.093l-.55-.823a4.98 4.98 0 0 1-1.337.26L17 21H7a4.994 4.994 0 0 1-1.619-.268l-.549.823a1 1 0 0 1-1.723-1.009l.059-.1l.486-.73a4.987 4.987 0 0 1-1.647-3.457L2 16v-3a2 2 0 0 1 1.85-1.995L4 11h1V5a3 3 0 0 1 2.824-2.995L8 2z"/></g>`),
+			Text(`<path fill="currentColor" d="M11 2a1 1 0 0 1 .993.883L12 3v2.25a1 1 0 0 1-1.993.117L10 5.25V4H8a1 1 0 0 0-.993.883L7 5v6h13a2 2 0 0 1 1.995 1.85L22 13v3c0 1.475-.638 2.8-1.654 3.715l.486.73a1 1 0 0 1-1.594 1.203l-.07-.093l-.55-.823a4.98 4.98 0 0 1-1.337.26L17 21H7a4.994 4.994 0 0 1-1.619-.268l-.549.823a1 1 0 0 1-1.723-1.009l.059-.1l.486-.73a4.987 4.987 0 0 1-1.647-3.457L2 16v-3a2 2 0 0 1 1.85-1.995L4 11h1V5a3 3 0 0 1 2.824-2.995L8 2z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -8679,7 +9264,7 @@ func BatteryEco(children ...ElementRenderer) *TablerIcon {
 func BatteryFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M17 6a3 3 0 0 1 2.995 2.824L20 9v.086l.052.019a1.5 1.5 0 0 1 .941 1.25L21 10.5v3a1.5 1.5 0 0 1-.948 1.395l-.052.018V15a3 3 0 0 1-2.824 2.995L17 18H6a3 3 0 0 1-2.995-2.824L3 15V9a3 3 0 0 1 2.824-2.995L6 6z"/></g>`),
+			Text(`<path fill="currentColor" d="M17 6a3 3 0 0 1 2.995 2.824L20 9v.086l.052.019a1.5 1.5 0 0 1 .941 1.25L21 10.5v3a1.5 1.5 0 0 1-.948 1.395l-.052.018V15a3 3 0 0 1-2.824 2.995L17 18H6a3 3 0 0 1-2.995-2.824L3 15V9a3 3 0 0 1 2.824-2.995L6 6z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -8695,7 +9280,7 @@ func BatteryFour(children ...ElementRenderer) *TablerIcon {
 func BatteryFourFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M17 6a3 3 0 0 1 2.995 2.824L20 9v.086l.052.019a1.5 1.5 0 0 1 .941 1.25L21 10.5v3a1.5 1.5 0 0 1-.948 1.395l-.052.018V15a3 3 0 0 1-2.824 2.995L17 18H6a3 3 0 0 1-2.995-2.824L3 15V9a3 3 0 0 1 2.824-2.995L6 6zM7 9a1 1 0 0 0-1 1v4l.007.117A1 1 0 0 0 8 14v-4l-.007-.117A1 1 0 0 0 7 9m3 0a1 1 0 0 0-1 1v4l.007.117A1 1 0 0 0 11 14v-4l-.007-.117A1 1 0 0 0 10 9m3 0a1 1 0 0 0-1 1v4l.007.117A1 1 0 0 0 14 14v-4l-.007-.117A1 1 0 0 0 13 9m3 0a1 1 0 0 0-1 1v4l.007.117A1 1 0 0 0 17 14v-4l-.007-.117A1 1 0 0 0 16 9"/></g>`),
+			Text(`<path fill="currentColor" d="M17 6a3 3 0 0 1 2.995 2.824L20 9v.086l.052.019a1.5 1.5 0 0 1 .941 1.25L21 10.5v3a1.5 1.5 0 0 1-.948 1.395l-.052.018V15a3 3 0 0 1-2.824 2.995L17 18H6a3 3 0 0 1-2.995-2.824L3 15V9a3 3 0 0 1 2.824-2.995L6 6zM7 9a1 1 0 0 0-1 1v4l.007.117A1 1 0 0 0 8 14v-4l-.007-.117A1 1 0 0 0 7 9m3 0a1 1 0 0 0-1 1v4l.007.117A1 1 0 0 0 11 14v-4l-.007-.117A1 1 0 0 0 10 9m3 0a1 1 0 0 0-1 1v4l.007.117A1 1 0 0 0 14 14v-4l-.007-.117A1 1 0 0 0 13 9m3 0a1 1 0 0 0-1 1v4l.007.117A1 1 0 0 0 17 14v-4l-.007-.117A1 1 0 0 0 16 9"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -8719,7 +9304,7 @@ func BatteryOne(children ...ElementRenderer) *TablerIcon {
 func BatteryOneFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M17 6a3 3 0 0 1 2.995 2.824L20 9v.086l.052.019a1.5 1.5 0 0 1 .941 1.25L21 10.5v3a1.5 1.5 0 0 1-.948 1.395l-.052.018V15a3 3 0 0 1-2.824 2.995L17 18H6a3 3 0 0 1-2.995-2.824L3 15V9a3 3 0 0 1 2.824-2.995L6 6zM7 9a1 1 0 0 0-1 1v4l.007.117A1 1 0 0 0 8 14v-4l-.007-.117A1 1 0 0 0 7 9"/></g>`),
+			Text(`<path fill="currentColor" d="M17 6a3 3 0 0 1 2.995 2.824L20 9v.086l.052.019a1.5 1.5 0 0 1 .941 1.25L21 10.5v3a1.5 1.5 0 0 1-.948 1.395l-.052.018V15a3 3 0 0 1-2.824 2.995L17 18H6a3 3 0 0 1-2.995-2.824L3 15V9a3 3 0 0 1 2.824-2.995L6 6zM7 9a1 1 0 0 0-1 1v4l.007.117A1 1 0 0 0 8 14v-4l-.007-.117A1 1 0 0 0 7 9"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -8735,7 +9320,7 @@ func BatteryThree(children ...ElementRenderer) *TablerIcon {
 func BatteryThreeFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M17 6a3 3 0 0 1 2.995 2.824L20 9v.086l.052.019a1.5 1.5 0 0 1 .941 1.25L21 10.5v3a1.5 1.5 0 0 1-.948 1.395l-.052.018V15a3 3 0 0 1-2.824 2.995L17 18H6a3 3 0 0 1-2.995-2.824L3 15V9a3 3 0 0 1 2.824-2.995L6 6zM7 9a1 1 0 0 0-1 1v4l.007.117A1 1 0 0 0 8 14v-4l-.007-.117A1 1 0 0 0 7 9m3 0a1 1 0 0 0-1 1v4l.007.117A1 1 0 0 0 11 14v-4l-.007-.117A1 1 0 0 0 10 9m3 0a1 1 0 0 0-1 1v4l.007.117A1 1 0 0 0 14 14v-4l-.007-.117A1 1 0 0 0 13 9"/></g>`),
+			Text(`<path fill="currentColor" d="M17 6a3 3 0 0 1 2.995 2.824L20 9v.086l.052.019a1.5 1.5 0 0 1 .941 1.25L21 10.5v3a1.5 1.5 0 0 1-.948 1.395l-.052.018V15a3 3 0 0 1-2.824 2.995L17 18H6a3 3 0 0 1-2.995-2.824L3 15V9a3 3 0 0 1 2.824-2.995L6 6zM7 9a1 1 0 0 0-1 1v4l.007.117A1 1 0 0 0 8 14v-4l-.007-.117A1 1 0 0 0 7 9m3 0a1 1 0 0 0-1 1v4l.007.117A1 1 0 0 0 11 14v-4l-.007-.117A1 1 0 0 0 10 9m3 0a1 1 0 0 0-1 1v4l.007.117A1 1 0 0 0 14 14v-4l-.007-.117A1 1 0 0 0 13 9"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -8751,7 +9336,7 @@ func BatteryTwo(children ...ElementRenderer) *TablerIcon {
 func BatteryTwoFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M17 6a3 3 0 0 1 2.995 2.824L20 9v.086l.052.019a1.5 1.5 0 0 1 .941 1.25L21 10.5v3a1.5 1.5 0 0 1-.948 1.395l-.052.018V15a3 3 0 0 1-2.824 2.995L17 18H6a3 3 0 0 1-2.995-2.824L3 15V9a3 3 0 0 1 2.824-2.995L6 6zM7 9a1 1 0 0 0-1 1v4l.007.117A1 1 0 0 0 8 14v-4l-.007-.117A1 1 0 0 0 7 9m3 0a1 1 0 0 0-1 1v4l.007.117A1 1 0 0 0 11 14v-4l-.007-.117A1 1 0 0 0 10 9"/></g>`),
+			Text(`<path fill="currentColor" d="M17 6a3 3 0 0 1 2.995 2.824L20 9v.086l.052.019a1.5 1.5 0 0 1 .941 1.25L21 10.5v3a1.5 1.5 0 0 1-.948 1.395l-.052.018V15a3 3 0 0 1-2.824 2.995L17 18H6a3 3 0 0 1-2.995-2.824L3 15V9a3 3 0 0 1 2.824-2.995L6 6zM7 9a1 1 0 0 0-1 1v4l.007.117A1 1 0 0 0 8 14v-4l-.007-.117A1 1 0 0 0 7 9m3 0a1 1 0 0 0-1 1v4l.007.117A1 1 0 0 0 11 14v-4l-.007-.117A1 1 0 0 0 10 9"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -8783,7 +9368,7 @@ func Bed(children ...ElementRenderer) *TablerIcon {
 func BedFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M3 6a1 1 0 0 1 .993.883L4 7v6h6V8a1 1 0 0 1 .883-.993L11 7h8a3 3 0 0 1 2.995 2.824L22 10v8a1 1 0 0 1-1.993.117L20 18v-3H4v3a1 1 0 0 1-1.993.117L2 18V7a1 1 0 0 1 1-1"/><path fill="currentColor" d="M7 8a2 2 0 1 1-1.995 2.15L5 10l.005-.15A2 2 0 0 1 7 8"/></g>`),
+			Text(`<g fill="currentColor"><path d="M3 6a1 1 0 0 1 .993.883L4 7v6h6V8a1 1 0 0 1 .883-.993L11 7h8a3 3 0 0 1 2.995 2.824L22 10v8a1 1 0 0 1-1.993.117L20 18v-3H4v3a1 1 0 0 1-1.993.117L2 18V7a1 1 0 0 1 1-1"/><path d="M7 8a2 2 0 1 1-1.995 2.15L5 10l.005-.15A2 2 0 0 1 7 8"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -8792,6 +9377,14 @@ func BedFlat(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 11a2 2 0 1 0 4 0a2 2 0 1 0-4 0m7 2h11v-2a3 3 0 0 0-3-3h-8zm-7 3h18"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func BedFlatFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M5 8a3 3 0 1 1-3 3l.005-.176A3 3 0 0 1 5 8m13-1a4 4 0 0 1 4 4v2a1 1 0 0 1-1 1H10a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1zm3 8a1 1 0 0 1 0 2H3a1 1 0 0 1 0-2z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -8815,7 +9408,7 @@ func Beer(children ...ElementRenderer) *TablerIcon {
 func BeerFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M17 2a2 2 0 0 1 1.995 1.85L19 4v4c0 1.335-.229 2.386-.774 3.692l-.157.363l-.31.701a8.902 8.902 0 0 0-.751 3.242l-.008.377V20a2 2 0 0 1-1.85 1.995L15 22H9a2 2 0 0 1-1.995-1.85L7 20v-3.625c0-1.132-.21-2.25-.617-3.28l-.142-.34l-.31-.699c-.604-1.358-.883-2.41-.925-3.698L5 8V4a2 2 0 0 1 1.85-1.995L7 2zm0 2H7v3h10z"/></g>`),
+			Text(`<path fill="currentColor" d="M17 2a2 2 0 0 1 1.995 1.85L19 4v4c0 1.335-.229 2.386-.774 3.692l-.157.363l-.31.701a8.902 8.902 0 0 0-.751 3.242l-.008.377V20a2 2 0 0 1-1.85 1.995L15 22H9a2 2 0 0 1-1.995-1.85L7 20v-3.625c0-1.132-.21-2.25-.617-3.28l-.142-.34l-.31-.699c-.604-1.358-.883-2.41-.925-3.698L5 8V4a2 2 0 0 1 1.85-1.995L7 2zm0 2H7v3h10z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -8903,7 +9496,7 @@ func BellExclamation(children ...ElementRenderer) *TablerIcon {
 func BellFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M14.235 19c.865 0 1.322 1.024.745 1.668A3.992 3.992 0 0 1 12 22a3.992 3.992 0 0 1-2.98-1.332c-.552-.616-.158-1.579.634-1.661l.11-.006zM12 2c1.358 0 2.506.903 2.875 2.141l.046.171l.008.043a8.013 8.013 0 0 1 4.024 6.069l.028.287L19 11v2.931l.021.136a3 3 0 0 0 1.143 1.847l.167.117l.162.099c.86.487.56 1.766-.377 1.864L20 18H4c-1.028 0-1.387-1.364-.493-1.87a3 3 0 0 0 1.472-2.063L5 13.924l.001-2.97A8 8 0 0 1 8.822 4.5l.248-.146l.01-.043a3.003 3.003 0 0 1 2.562-2.29l.182-.017z"/></g>`),
+			Text(`<path fill="currentColor" d="M14.235 19c.865 0 1.322 1.024.745 1.668A3.992 3.992 0 0 1 12 22a3.992 3.992 0 0 1-2.98-1.332c-.552-.616-.158-1.579.634-1.661l.11-.006zM12 2c1.358 0 2.506.903 2.875 2.141l.046.171l.008.043a8.013 8.013 0 0 1 4.024 6.069l.028.287L19 11v2.931l.021.136a3 3 0 0 0 1.143 1.847l.167.117l.162.099c.86.487.56 1.766-.377 1.864L20 18H4c-1.028 0-1.387-1.364-.493-1.87a3 3 0 0 0 1.472-2.063L5 13.924l.001-2.97A8 8 0 0 1 8.822 4.5l.248-.146l.01-.043a3.003 3.003 0 0 1 2.562-2.29l.182-.017z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -8927,7 +9520,7 @@ func BellMinus(children ...ElementRenderer) *TablerIcon {
 func BellMinusFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M14.235 19c.865 0 1.322 1.024.745 1.668A3.992 3.992 0 0 1 12 22a3.992 3.992 0 0 1-2.98-1.332c-.552-.616-.158-1.579.634-1.661l.11-.006zM12 2c1.358 0 2.506.903 2.875 2.141l.046.171l.008.043a8.013 8.013 0 0 1 4.024 6.069l.028.287L19 11v2.931l.021.136a3 3 0 0 0 1.143 1.847l.167.117l.162.099c.86.487.56 1.766-.377 1.864L20 18H4c-1.028 0-1.387-1.364-.493-1.87a3 3 0 0 0 1.472-2.063L5 13.924l.001-2.97A8 8 0 0 1 8.822 4.5l.248-.146l.01-.043a3.003 3.003 0 0 1 2.562-2.29l.182-.017zm2 8h-4l-.117.007A1 1 0 0 0 10 12h4l.117-.007A1 1 0 0 0 14 10"/></g>`),
+			Text(`<path fill="currentColor" d="M14.235 19c.865 0 1.322 1.024.745 1.668A3.992 3.992 0 0 1 12 22a3.992 3.992 0 0 1-2.98-1.332c-.552-.616-.158-1.579.634-1.661l.11-.006zM12 2c1.358 0 2.506.903 2.875 2.141l.046.171l.008.043a8.013 8.013 0 0 1 4.024 6.069l.028.287L19 11v2.931l.021.136a3 3 0 0 0 1.143 1.847l.167.117l.162.099c.86.487.56 1.766-.377 1.864L20 18H4c-1.028 0-1.387-1.364-.493-1.87a3 3 0 0 0 1.472-2.063L5 13.924l.001-2.97A8 8 0 0 1 8.822 4.5l.248-.146l.01-.043a3.003 3.003 0 0 1 2.562-2.29l.182-.017zm2 8h-4l-.117.007A1 1 0 0 0 10 12h4l.117-.007A1 1 0 0 0 14 10"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -8967,7 +9560,7 @@ func BellPlus(children ...ElementRenderer) *TablerIcon {
 func BellPlusFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M14.235 19c.865 0 1.322 1.024.745 1.668A3.992 3.992 0 0 1 12 22a3.992 3.992 0 0 1-2.98-1.332c-.552-.616-.158-1.579.634-1.661l.11-.006zM12 2c1.358 0 2.506.903 2.875 2.141l.046.171l.008.043a8.013 8.013 0 0 1 4.024 6.069l.028.287L19 11v2.931l.021.136a3 3 0 0 0 1.143 1.847l.167.117l.162.099c.86.487.56 1.766-.377 1.864L20 18H4c-1.028 0-1.387-1.364-.493-1.87a3 3 0 0 0 1.472-2.063L5 13.924l.001-2.97A8 8 0 0 1 8.822 4.5l.248-.146l.01-.043a3.003 3.003 0 0 1 2.562-2.29l.182-.017zm0 6a1 1 0 0 0-1 1v1h-1l-.117.007A1 1 0 0 0 10 12h1v1l.007.117A1 1 0 0 0 13 13v-1h1l.117-.007A1 1 0 0 0 14 10h-1V9l-.007-.117A1 1 0 0 0 12 8"/></g>`),
+			Text(`<path fill="currentColor" d="M14.235 19c.865 0 1.322 1.024.745 1.668A3.992 3.992 0 0 1 12 22a3.992 3.992 0 0 1-2.98-1.332c-.552-.616-.158-1.579.634-1.661l.11-.006zM12 2c1.358 0 2.506.903 2.875 2.141l.046.171l.008.043a8.013 8.013 0 0 1 4.024 6.069l.028.287L19 11v2.931l.021.136a3 3 0 0 0 1.143 1.847l.167.117l.162.099c.86.487.56 1.766-.377 1.864L20 18H4c-1.028 0-1.387-1.364-.493-1.87a3 3 0 0 0 1.472-2.063L5 13.924l.001-2.97A8 8 0 0 1 8.822 4.5l.248-.146l.01-.043a3.003 3.003 0 0 1 2.562-2.29l.182-.017zm0 6a1 1 0 0 0-1 1v1h-1l-.117.007A1 1 0 0 0 10 12h1v1l.007.117A1 1 0 0 0 13 13v-1h1l.117-.007A1 1 0 0 0 14 10h-1V9l-.007-.117A1 1 0 0 0 12 8"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -8991,7 +9584,7 @@ func BellRinging(children ...ElementRenderer) *TablerIcon {
 func BellRingingFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M17.451 2.344a1 1 0 0 1 1.41-.099a12.05 12.05 0 0 1 3.048 4.064a1 1 0 1 1-1.818.836a10.05 10.05 0 0 0-2.54-3.39a1 1 0 0 1-.1-1.41zM5.136 2.245a1 1 0 0 1 1.312 1.51a10.05 10.05 0 0 0-2.54 3.39a1 1 0 1 1-1.817-.835a12.05 12.05 0 0 1 3.045-4.065M14.235 19c.865 0 1.322 1.024.745 1.668A3.992 3.992 0 0 1 12 22a3.992 3.992 0 0 1-2.98-1.332c-.552-.616-.158-1.579.634-1.661l.11-.006zM12 2c1.358 0 2.506.903 2.875 2.141l.046.171l.008.043a8.013 8.013 0 0 1 4.024 6.069l.028.287L19 11v2.931l.021.136a3 3 0 0 0 1.143 1.847l.167.117l.162.099c.86.487.56 1.766-.377 1.864L20 18H4c-1.028 0-1.387-1.364-.493-1.87a3 3 0 0 0 1.472-2.063L5 13.924l.001-2.97A8 8 0 0 1 8.822 4.5l.248-.146l.01-.043a3.003 3.003 0 0 1 2.562-2.29l.182-.017z"/></g>`),
+			Text(`<path fill="currentColor" d="M17.451 2.344a1 1 0 0 1 1.41-.099a12.05 12.05 0 0 1 3.048 4.064a1 1 0 1 1-1.818.836a10.05 10.05 0 0 0-2.54-3.39a1 1 0 0 1-.1-1.41zM5.136 2.245a1 1 0 0 1 1.312 1.51a10.05 10.05 0 0 0-2.54 3.39a1 1 0 1 1-1.817-.835a12.05 12.05 0 0 1 3.045-4.065M14.235 19c.865 0 1.322 1.024.745 1.668A3.992 3.992 0 0 1 12 22a3.992 3.992 0 0 1-2.98-1.332c-.552-.616-.158-1.579.634-1.661l.11-.006zM12 2c1.358 0 2.506.903 2.875 2.141l.046.171l.008.043a8.013 8.013 0 0 1 4.024 6.069l.028.287L19 11v2.931l.021.136a3 3 0 0 0 1.143 1.847l.167.117l.162.099c.86.487.56 1.766-.377 1.864L20 18H4c-1.028 0-1.387-1.364-.493-1.87a3 3 0 0 0 1.472-2.063L5 13.924l.001-2.97A8 8 0 0 1 8.822 4.5l.248-.146l.01-.043a3.003 3.003 0 0 1 2.562-2.29l.182-.017z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -9007,7 +9600,7 @@ func BellRingingTwo(children ...ElementRenderer) *TablerIcon {
 func BellRingingTwoFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M9.63 17.531c.612.611.211 1.658-.652 1.706a3.992 3.992 0 0 1-3.05-1.166a3.992 3.992 0 0 1-1.165-3.049c.046-.826 1.005-1.228 1.624-.726l.082.074zM20.071 3.929c.96.96 1.134 2.41.52 3.547l-.09.153l-.024.036a8.013 8.013 0 0 1-1.446 7.137l-.183.223l-.191.218l-2.073 2.072l-.08.112a3 3 0 0 0-.499 2.113l.035.201l.045.185c.264.952-.853 1.645-1.585 1.051l-.086-.078L3.101 9.586c-.727-.727-.017-1.945.973-1.671a3 3 0 0 0 2.5-.418l.116-.086l2.101-2.1a8 8 0 0 1 7.265-1.86l.278.071l.037-.023a3.003 3.003 0 0 1 3.432.192l.14.117z"/></g>`),
+			Text(`<path fill="currentColor" d="M9.63 17.531c.612.611.211 1.658-.652 1.706a3.992 3.992 0 0 1-3.05-1.166a3.992 3.992 0 0 1-1.165-3.049c.046-.826 1.005-1.228 1.624-.726l.082.074zM20.071 3.929c.96.96 1.134 2.41.52 3.547l-.09.153l-.024.036a8.013 8.013 0 0 1-1.446 7.137l-.183.223l-.191.218l-2.073 2.072l-.08.112a3 3 0 0 0-.499 2.113l.035.201l.045.185c.264.952-.853 1.645-1.585 1.051l-.086-.078L3.101 9.586c-.727-.727-.017-1.945.973-1.671a3 3 0 0 0 2.5-.418l.116-.086l2.101-2.1a8 8 0 0 1 7.265-1.86l.278.071l.037-.023a3.003 3.003 0 0 1 3.432.192l.14.117z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -9063,7 +9656,7 @@ func BellX(children ...ElementRenderer) *TablerIcon {
 func BellXfilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M14.235 19c.865 0 1.322 1.024.745 1.668A3.992 3.992 0 0 1 12 22a3.992 3.992 0 0 1-2.98-1.332c-.552-.616-.158-1.579.634-1.661l.11-.006zM12 2c1.358 0 2.506.903 2.875 2.141l.046.171l.008.043a8.013 8.013 0 0 1 4.024 6.069l.028.287L19 11v2.931l.021.136a3 3 0 0 0 1.143 1.847l.167.117l.162.099c.86.487.56 1.766-.377 1.864L20 18H4c-1.028 0-1.387-1.364-.493-1.87a3 3 0 0 0 1.472-2.063L5 13.924l.001-2.97A8 8 0 0 1 8.822 4.5l.248-.146l.01-.043a3.003 3.003 0 0 1 2.562-2.29l.182-.017zm-1.489 6.14a1 1 0 0 0-1.218 1.567L10.585 11l-1.292 1.293l-.083.094a1 1 0 0 0 1.497 1.32L12 12.415l1.293 1.292l.094.083a1 1 0 0 0 1.32-1.497L13.415 11l1.292-1.293l.083-.094a1 1 0 0 0-1.497-1.32L12 9.585l-1.293-1.292l-.094-.083z"/></g>`),
+			Text(`<path fill="currentColor" d="M14.235 19c.865 0 1.322 1.024.745 1.668A3.992 3.992 0 0 1 12 22a3.992 3.992 0 0 1-2.98-1.332c-.552-.616-.158-1.579.634-1.661l.11-.006zM12 2c1.358 0 2.506.903 2.875 2.141l.046.171l.008.043a8.013 8.013 0 0 1 4.024 6.069l.028.287L19 11v2.931l.021.136a3 3 0 0 0 1.143 1.847l.167.117l.162.099c.86.487.56 1.766-.377 1.864L20 18H4c-1.028 0-1.387-1.364-.493-1.87a3 3 0 0 0 1.472-2.063L5 13.924l.001-2.97A8 8 0 0 1 8.822 4.5l.248-.146l.01-.043a3.003 3.003 0 0 1 2.562-2.29l.182-.017zm-1.489 6.14a1 1 0 0 0-1.218 1.567L10.585 11l-1.292 1.293l-.083.094a1 1 0 0 0 1.497 1.32L12 12.415l1.293 1.292l.094.083a1 1 0 0 0 1.32-1.497L13.415 11l1.292-1.293l.083-.094a1 1 0 0 0-1.497-1.32L12 9.585l-1.293-1.292l-.094-.083z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -9079,7 +9672,7 @@ func BellZ(children ...ElementRenderer) *TablerIcon {
 func BellZfilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M14.235 19c.865 0 1.322 1.024.745 1.668A3.992 3.992 0 0 1 12 22a3.992 3.992 0 0 1-2.98-1.332c-.552-.616-.158-1.579.634-1.661l.11-.006zM12 2c1.358 0 2.506.903 2.875 2.141l.046.171l.008.043a8.013 8.013 0 0 1 4.024 6.069l.028.287L19 11v2.931l.021.136a3 3 0 0 0 1.143 1.847l.167.117l.162.099c.86.487.56 1.766-.377 1.864L20 18H4c-1.028 0-1.387-1.364-.493-1.87a3 3 0 0 0 1.472-2.063L5 13.924l.001-2.97A8 8 0 0 1 8.822 4.5l.248-.146l.01-.043a3.003 3.003 0 0 1 2.562-2.29l.182-.017zm2 6h-4l-.117.007A1 1 0 0 0 9 9l.007.117A1 1 0 0 0 10 10h1.584l-2.291 2.293l-.076.084C8.703 13.014 9.147 14 10 14h4l.117-.007A1 1 0 0 0 15 13l-.007-.117A1 1 0 0 0 14 12h-1.586l2.293-2.293l.076-.084C15.297 8.986 14.853 8 14 8"/></g>`),
+			Text(`<path fill="currentColor" d="M14.235 19c.865 0 1.322 1.024.745 1.668A3.992 3.992 0 0 1 12 22a3.992 3.992 0 0 1-2.98-1.332c-.552-.616-.158-1.579.634-1.661l.11-.006zM12 2c1.358 0 2.506.903 2.875 2.141l.046.171l.008.043a8.013 8.013 0 0 1 4.024 6.069l.028.287L19 11v2.931l.021.136a3 3 0 0 0 1.143 1.847l.167.117l.162.099c.86.487.56 1.766-.377 1.864L20 18H4c-1.028 0-1.387-1.364-.493-1.87a3 3 0 0 0 1.472-2.063L5 13.924l.001-2.97A8 8 0 0 1 8.822 4.5l.248-.146l.01-.043a3.003 3.003 0 0 1 2.562-2.29l.182-.017zm2 6h-4l-.117.007A1 1 0 0 0 9 9l.007.117A1 1 0 0 0 10 10h1.584l-2.291 2.293l-.076.084C8.703 13.014 9.147 14 10 14h4l.117-.007A1 1 0 0 0 15 13l-.007-.117A1 1 0 0 0 14 12h-1.586l2.293-2.293l.076-.084C15.297 8.986 14.853 8 14 8"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -9156,6 +9749,14 @@ func Biohazard(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func BiohazardFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M16.41 2.072a6.25 6.25 0 0 1 1.514 6.387l-.051.137l.223.044q.325.072.645.18l.318.117l.25.105c2.155.97 3.572 3.067 3.681 5.483v.217a1.5 1.5 0 1 1-3-.003l.002-.145a3.25 3.25 0 0 0-4.412-2.886l-.091.037l.004.038l.007.217a3.5 3.5 0 0 1-1.817 3.07l-.16.082l.014.11c.082.511.285.997.595 1.416l.14.175a3.25 3.25 0 0 0 2.27 1.136l.203.006a1.5 1.5 0 0 1 0 3a6.25 6.25 0 0 1-4.575-1.991l-.177-.199l-.078.092a6.3 6.3 0 0 1-3.921 2.054l-.273.028l-.259.016h-.217a1.5 1.5 0 1 1 .003-3l.145.002a3.25 3.25 0 0 0 3.074-2.82l.003-.03l-.161-.083a3.5 3.5 0 0 1-1.804-2.883l-.005-.195l.006-.191l.003-.043l-.075-.032a3.25 3.25 0 0 0-2.398.008l-.191.084a3.25 3.25 0 0 0-1.85 2.933a1.5 1.5 0 0 1-3 0a6.25 6.25 0 0 1 5.036-6.13l.077-.014l-.05-.143l-.08-.26l-.066-.25a6.27 6.27 0 0 1 1.47-5.678l.163-.172a1.5 1.5 0 1 1 2.171 2.07l-.137.143a3.25 3.25 0 0 0 .386 4.723l.084.062l.05-.034a3.5 3.5 0 0 1 1.673-.555L12 8.5c.683 0 1.336.197 1.894.556l.048.033l.067-.048a3.25 3.25 0 0 0 1.111-1.669l.05-.2a3.25 3.25 0 0 0-.74-2.828l-.141-.15a1.5 1.5 0 1 1 2.12-2.122"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func BiohazardOff(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
@@ -9175,7 +9776,7 @@ func Blade(children ...ElementRenderer) *TablerIcon {
 func BladeFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M11.586 3a2 2 0 0 1 2.828 0l.586.585l.586-.585a2 2 0 0 1 2.7-.117l.128.117L21 5.586a2 2 0 0 1 0 2.828L20.414 9l.586.586a2 2 0 0 1 0 2.828L12.414 21a2 2 0 0 1-2.828 0L9 20.414L8.414 21a2 2 0 0 1-2.828 0L3 18.414a2 2 0 0 1 0-2.828l.585-.587L3 14.414a2 2 0 0 1-.117-2.7L3 11.585zm3.027 4.21a1 1 0 0 0-1.32 1.497l.292.293l-1.068 1.067a2.003 2.003 0 0 0-2.512 1.784L10 12l.005.15c.01.125.03.248.062.367L9 13.585l-.293-.292l-.094-.083a1 1 0 0 0-1.32 1.497l.292.293l-.292.293l-.083.094a1 1 0 0 0 1.497 1.32L9 16.415l.293.292l.094.083a1 1 0 0 0 1.32-1.497L10.415 15l1.069-1.067a2.003 2.003 0 0 0 2.449-2.45L15 10.415l.293.292l.094.083a1 1 0 0 0 1.32-1.497L16.415 9l.292-.293l.083-.094a1 1 0 0 0-1.497-1.32L15 7.585l-.293-.292z"/></g>`),
+			Text(`<path fill="currentColor" d="M11.586 3a2 2 0 0 1 2.828 0l.586.585l.586-.585a2 2 0 0 1 2.7-.117l.128.117L21 5.586a2 2 0 0 1 0 2.828L20.414 9l.586.586a2 2 0 0 1 0 2.828L12.414 21a2 2 0 0 1-2.828 0L9 20.414L8.414 21a2 2 0 0 1-2.828 0L3 18.414a2 2 0 0 1 0-2.828l.585-.587L3 14.414a2 2 0 0 1-.117-2.7L3 11.585zm3.027 4.21a1 1 0 0 0-1.32 1.497l.292.293l-1.068 1.067a2.003 2.003 0 0 0-2.512 1.784L10 12l.005.15c.01.125.03.248.062.367L9 13.585l-.293-.292l-.094-.083a1 1 0 0 0-1.32 1.497l.292.293l-.292.293l-.083.094a1 1 0 0 0 1.497 1.32L9 16.415l.293.292l.094.083a1 1 0 0 0 1.32-1.497L10.415 15l1.069-1.067a2.003 2.003 0 0 0 2.449-2.45L15 10.415l.293.292l.094.083a1 1 0 0 0 1.32-1.497L16.415 9l.292-.293l.083-.094a1 1 0 0 0-1.497-1.32L15 7.585l-.293-.292z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -9212,10 +9813,34 @@ func BleachOff(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func BlendMode(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M8 9.5a6.5 6.5 0 1 0 13 0a6.5 6.5 0 1 0-13 0"/><path d="M3 14.5a6.5 6.5 0 1 0 13 0a6.5 6.5 0 1 0-13 0"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func Blender(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M9 10H6a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h10.802a1 1 0 0 1 .984 1.179L16 15M8 4l2 11m1 0h4a3 3 0 0 1 3 3v2a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2a3 3 0 0 1 3-3"/><path d="M12 4V3h2v1m-1 14v.01"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func Blob(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.897 20.188C7.567 20.94 9.793 21 12 21s4.434-.059 6.104-.812c.868-.392 1.614-.982 2.133-1.856c.514-.865.763-1.94.763-3.234c0-2.577-.983-5.315-2.557-7.416C16.873 5.588 14.61 4 12 4S7.127 5.588 5.557 7.682C3.983 9.783 3 12.522 3 15.098c0 1.295.249 2.369.763 3.234c.519.874 1.265 1.464 2.134 1.856"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func BlobFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M12 3c2.78 0 5.349 1.556 7.243 4.083C20.97 9.388 22 12.34 22 15.098c0 1.47-.293 2.717-.903 3.745c-.602 1.014-1.479 1.758-2.582 2.256c-1.593.719-3.333.901-6.515.901s-4.922-.182-6.515-.9c-1.103-.499-1.98-1.243-2.582-2.257C2.293 17.815 2 16.569 2 15.098c0-2.758 1.03-5.71 2.757-8.015C6.651 4.556 9.22 3 12 3"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -9335,7 +9960,7 @@ func Bomb(children ...ElementRenderer) *TablerIcon {
 func BombFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M14.499 3.996a2.2 2.2 0 0 1 1.556.645l3.302 3.301a2.2 2.2 0 0 1 0 3.113l-.567.567l.043.192a8.5 8.5 0 0 1-3.732 8.83l-.23.144a8.5 8.5 0 1 1-2.687-15.623l.192.042l.567-.566a2.2 2.2 0 0 1 1.362-.636zM10 9a4 4 0 0 0-4 4a1 1 0 0 0 2 0a2 2 0 0 1 2-2a1 1 0 0 0 0-2"/><path fill="currentColor" d="M21 2a1 1 0 0 1 .117 1.993L21 4h-1c0 .83-.302 1.629-.846 2.25L19 6.413l-1.293 1.293a1 1 0 0 1-1.497-1.32l.083-.094L17.586 5c.232-.232.375-.537.407-.86L18 4a2 2 0 0 1 1.85-1.995L20 2z"/></g>`),
+			Text(`<g fill="currentColor"><path d="M14.499 3.996a2.2 2.2 0 0 1 1.556.645l3.302 3.301a2.2 2.2 0 0 1 0 3.113l-.567.567l.043.192a8.5 8.5 0 0 1-3.732 8.83l-.23.144a8.5 8.5 0 1 1-2.687-15.623l.192.042l.567-.566a2.2 2.2 0 0 1 1.362-.636zM10 9a4 4 0 0 0-4 4a1 1 0 0 0 2 0a2 2 0 0 1 2-2a1 1 0 0 0 0-2"/><path d="M21 2a1 1 0 0 1 .117 1.993L21 4h-1c0 .83-.302 1.629-.846 2.25L19 6.413l-1.293 1.293a1 1 0 0 1-1.497-1.32l.083-.094L17.586 5c.232-.232.375-.537.407-.86L18 4a2 2 0 0 1 1.85-1.995L20 2z"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -9344,6 +9969,14 @@ func Bone(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 3a3 3 0 0 1 3 3a3 3 0 1 1-2.12 5.122l-4.758 4.758a3 3 0 1 1-5.117 2.297V18h-.176a3 3 0 1 1 2.298-5.115l4.758-4.758a3 3 0 0 1 2.12-5.122z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func BoneFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M15 2a4 4 0 0 1 3.881 3.03l.016.072l.08.019a4 4 0 0 1 2.83 2.65l.057.193a4 4 0 0 1-5.847 4.51l-.047-.029l-3.525 3.525l.042.07a4 4 0 0 1 .117 3.696l-.102.197a4 4 0 0 1-4.386 1.969a3.99 3.99 0 0 1-2.982-2.904l-.023-.095l-.138-.033a4 4 0 0 1-2.82-2.783l-.05-.199a4 4 0 0 1 5.865-4.368l.068.04l3.524-3.524l-.036-.061a4 4 0 0 1-.293-3.295l.079-.205a4 4 0 0 1 3.695-2.47l-.139.004l.02-.003z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -9391,7 +10024,7 @@ func BookDownload(children ...ElementRenderer) *TablerIcon {
 func BookFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M12.088 4.82a10 10 0 0 1 9.412.314a1 1 0 0 1 .493.748L22 6v13a1 1 0 0 1-1.5.866a8 8 0 0 0-8 0a1 1 0 0 1-1 0a8 8 0 0 0-7.733-.148l-.327.18l-.103.044l-.049.016l-.11.026l-.061.01L3 20h-.042l-.11-.012l-.077-.014l-.108-.032l-.126-.056l-.095-.056l-.089-.067l-.06-.056l-.073-.082l-.064-.089l-.022-.036l-.032-.06l-.044-.103l-.016-.049l-.026-.11l-.01-.061l-.004-.049L2 19V6a1 1 0 0 1 .5-.866a10 10 0 0 1 9.412-.314l.088.044z"/></g>`),
+			Text(`<path fill="currentColor" d="M12.088 4.82a10 10 0 0 1 9.412.314a1 1 0 0 1 .493.748L22 6v13a1 1 0 0 1-1.5.866a8 8 0 0 0-8 0a1 1 0 0 1-1 0a8 8 0 0 0-7.733-.148l-.327.18l-.103.044l-.049.016l-.11.026l-.061.01L3 20h-.042l-.11-.012l-.077-.014l-.108-.032l-.126-.056l-.095-.056l-.089-.067l-.06-.056l-.073-.082l-.064-.089l-.022-.036l-.032-.06l-.044-.103l-.016-.049l-.026-.11l-.01-.061l-.004-.049L2 19V6a1 1 0 0 1 .5-.866a10 10 0 0 1 9.412-.314l.088.044z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -9447,7 +10080,7 @@ func BookmarkEdit(children ...ElementRenderer) *TablerIcon {
 func BookmarkFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M14 2a5 5 0 0 1 5 5v14a1 1 0 0 1-1.555.832L12 18.202l-5.444 3.63a1 1 0 0 1-1.55-.72L5 21V7a5 5 0 0 1 5-5z"/></g>`),
+			Text(`<path fill="currentColor" d="M14 2a5 5 0 0 1 5 5v14a1 1 0 0 1-1.555.832L12 18.202l-5.444 3.63a1 1 0 0 1-1.55-.72L5 21V7a5 5 0 0 1 5-5z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -9495,7 +10128,7 @@ func Bookmarks(children ...ElementRenderer) *TablerIcon {
 func BookmarksFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M12 6a4 4 0 0 1 4 4v11a1 1 0 0 1-1.514.857L10 19.166l-4.486 2.691a1 1 0 0 1-1.508-.743L4 21V10a4 4 0 0 1 4-4z"/><path fill="currentColor" d="M16 2a4 4 0 0 1 4 4v11a1 1 0 0 1-2 0V6a2 2 0 0 0-2-2h-5a1 1 0 0 1 0-2z"/></g>`),
+			Text(`<g fill="currentColor"><path d="M12 6a4 4 0 0 1 4 4v11a1 1 0 0 1-1.514.857L10 19.166l-4.486 2.691a1 1 0 0 1-1.508-.743L4 21V10a4 4 0 0 1 4-4z"/><path d="M16 2a4 4 0 0 1 4 4v11a1 1 0 0 1-2 0V6a2 2 0 0 0-2-2h-5a1 1 0 0 1 0-2z"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -9524,6 +10157,22 @@ func BooksOff(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func Boom(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9.662C5 12 5 14 3 16c3 .5 4.5 1 5 4c2-3 6-4 9 0c0-3 1-4 4-4.004Q18 13.001 21 10c-3 0-5-2-5-5c-2 4-5 3-7.5-1C8 7 6 9 3 9.662"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func BoomFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M7.514 3.836c.151-.909 1.346-1.147 1.834-.366c2.294 3.67 4.275 4.048 5.758 1.083C15.577 3.609 17 3.945 17 5c0 2.448 1.552 4 4 4c.89 0 1.337 1.077.707 1.707c-1.61 1.61-1.61 2.975 0 4.581c.63.63.185 1.707-.706 1.708C18.553 16.999 18 17.552 18 20c0 .961-1.223 1.369-1.8.6c-2.325-3.1-5.494-2.856-7.368-.045c-.503.754-1.67.504-1.818-.39c-.365-2.188-1.04-2.656-4.178-3.179a1 1 0 0 1-.543-1.693c1.618-1.618 1.618-3.027-.053-4.981l-.009-.013l-.013-.014l-.044-.062l-.01-.011l-.006-.013l-.038-.066l-.017-.028l-.001-.004l-.027-.066l-.019-.041a1 1 0 0 1-.051-.233l-.002-.045L2 9.648a1 1 0 0 1 .06-.328l.009-.023l.023-.049l.011-.029l.009-.015l.007-.016l.019-.029l.02-.035l.012-.017l.013-.022l.027-.034l.011-.016l.018-.02l.02-.025l.021-.02l.015-.017l.035-.032l.02-.019l.009-.007l.018-.015l.055-.039l.018-.015l.008-.004l.01-.007l.061-.034l.028-.016l.004-.002l.063-.026l.044-.019a1 1 0 0 1 .115-.032l.004-.002l.267-.063c2.39-.613 3.934-2.19 4.411-4.523z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func BorderAll(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
@@ -9536,6 +10185,22 @@ func BorderBottom(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 20H4M4 4v.01M8 4v.01M12 4v.01M16 4v.01M20 4v.01M4 8v.01M12 8v.01M20 8v.01M4 12v.01M8 12v.01m4-.01v.01m4-.01v.01m4-.01v.01M4 16v.01m8-.01v.01m8-.01v.01"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func BorderBottomPlus(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 20h16M4 16v-.01M20 16v-.01M4 12v-.01M20 12v-.01M4 8v-.01M20 8v-.01M4 4v-.01M8 4v-.01M12 4v-.01M16 4v-.01M20 4v-.01M15 12H9m3-3v6"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func BorderCornerIos(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 20c0-6.559 0-9.838 1.628-12.162a9 9 0 0 1 2.21-2.21C10.162 4 13.44 4 20 4"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -9596,6 +10261,14 @@ func BorderLeft(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func BorderLeftPlus(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 20V4m4 0v.01M12 4v.01M16 4v.01M20 4v.01M20 8v.01M20 12v.01M20 16v.01M8 20v.01m4-.01v.01m4-.01v.01m4-.01v.01M9 12h6m-3-3v6"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func BorderNone(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
@@ -9624,6 +10297,14 @@ func BorderRight(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 4v16M4 4v.01M8 4v.01M12 4v.01M16 4v.01M4 8v.01M12 8v.01M4 12v.01M8 12v.01m4-.01v.01m4-.01v.01M4 16v.01m8-.01v.01M4 20v.01M8 20v.01m4-.01v.01m4-.01v.01"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func BorderRightPlus(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 20V4m-4 0v.01M12 4v.01M8 4v.01M4 4v.01M4 8v.01M4 12v.01M4 16v.01M16 20v.01M12 20v.01M8 20v.01M4 20v.01M15 12H9m3-3v6"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -9660,6 +10341,14 @@ func BorderTop(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func BorderTopPlus(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4h16M4 8v.01M20 8v.01M4 12v.01M20 12v.01M4 16v.01M15 12H9m3-3v6m8 1v.01M4 20v.01M8 20v.01m4-.01v.01m4-.01v.01m4-.01v.01"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func BorderVertical(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
@@ -9679,7 +10368,7 @@ func Bottle(children ...ElementRenderer) *TablerIcon {
 func BottleFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M13 1a2 2 0 0 1 1.995 1.85L15 3v.5c0 1.317.381 2.604 1.094 3.705l.17.25l.05.072a9.093 9.093 0 0 1 1.68 4.92l.006.354V19a3 3 0 0 1-2.824 2.995L15 22H9a3 3 0 0 1-2.995-2.824L6 19v-6.2a9.1 9.1 0 0 1 1.486-4.982l.2-.292l.05-.069A6.823 6.823 0 0 0 9 3.5V3a2 2 0 0 1 1.85-1.995L11 1zm.362 5h-2.724a8.827 8.827 0 0 1-1.08 2.334l-.194.284l-.05.069a7.091 7.091 0 0 0-1.307 3.798l-.003.125A3.33 3.33 0 0 1 9.979 12a3.4 3.4 0 0 1 2.833 1.417c.27.375.706.593 1.209.583a1.4 1.4 0 0 0 1.166-.583a3.4 3.4 0 0 1 .81-.8L16 12.8c0-1.37-.396-2.707-1.137-3.852l-.228-.332A8.827 8.827 0 0 1 13.362 6"/></g>`),
+			Text(`<path fill="currentColor" d="M13 1a2 2 0 0 1 1.995 1.85L15 3v.5c0 1.317.381 2.604 1.094 3.705l.17.25l.05.072a9.093 9.093 0 0 1 1.68 4.92l.006.354V19a3 3 0 0 1-2.824 2.995L15 22H9a3 3 0 0 1-2.995-2.824L6 19v-6.2a9.1 9.1 0 0 1 1.486-4.982l.2-.292l.05-.069A6.823 6.823 0 0 0 9 3.5V3a2 2 0 0 1 1.85-1.995L11 1zm.362 5h-2.724a8.827 8.827 0 0 1-1.08 2.334l-.194.284l-.05.069a7.091 7.091 0 0 0-1.307 3.798l-.003.125A3.33 3.33 0 0 1 9.979 12a3.4 3.4 0 0 1 2.833 1.417c.27.375.706.593 1.209.583a1.4 1.4 0 0 0 1.166-.583a3.4 3.4 0 0 1 .81-.8L16 12.8c0-1.37-.396-2.707-1.137-3.852l-.228-.332A8.827 8.827 0 0 1 13.362 6"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -9703,7 +10392,7 @@ func BounceLeft(children ...ElementRenderer) *TablerIcon {
 func BounceLeftFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M8.486 11.143a1 1 0 0 1 1.371.343c1.045 1.74 1.83 3.443 2.392 5.237l.172.581l.092-.13c2.093-2.921 4.48-3.653 7.565-2.7l.238.077a1 1 0 1 1-.632 1.898c-2.932-.978-4.73-.122-6.79 3.998c-.433.866-1.721.673-1.88-.283c-.46-2.76-1.369-5.145-2.871-7.65a1 1 0 0 1 .343-1.371M6 4a3 3 0 1 0 0 6a3 3 0 0 0 0-6"/></g>`),
+			Text(`<path fill="currentColor" d="M8.486 11.143a1 1 0 0 1 1.371.343c1.045 1.74 1.83 3.443 2.392 5.237l.172.581l.092-.13c2.093-2.921 4.48-3.653 7.565-2.7l.238.077a1 1 0 1 1-.632 1.898c-2.932-.978-4.73-.122-6.79 3.998c-.433.866-1.721.673-1.88-.283c-.46-2.76-1.369-5.145-2.871-7.65a1 1 0 0 1 .343-1.371M6 4a3 3 0 1 0 0 6a3 3 0 0 0 0-6"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -9719,7 +10408,7 @@ func BounceRight(children ...ElementRenderer) *TablerIcon {
 func BounceRightFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M14.143 11.486a1 1 0 0 1 1.714 1.028c-1.502 2.505-2.41 4.89-2.87 7.65c-.16.956-1.448 1.15-1.881.283c-2.06-4.12-3.858-4.976-6.79-3.998a1 1 0 1 1-.632-1.898c3.2-1.067 5.656-.373 7.803 2.623l.091.13l.011-.04c.522-1.828 1.267-3.55 2.273-5.3l.28-.478zM18 4a3 3 0 1 0 0 6a3 3 0 0 0 0-6"/></g>`),
+			Text(`<path fill="currentColor" d="M14.143 11.486a1 1 0 0 1 1.714 1.028c-1.502 2.505-2.41 4.89-2.87 7.65c-.16.956-1.448 1.15-1.881.283c-2.06-4.12-3.858-4.976-6.79-3.998a1 1 0 1 1-.632-1.898c3.2-1.067 5.656-.373 7.803 2.623l.091.13l.011-.04c.522-1.828 1.267-3.55 2.273-5.3l.28-.478zM18 4a3 3 0 1 0 0 6a3 3 0 0 0 0-6"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -9732,6 +10421,14 @@ func Bow(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func BowFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="m21 2l.081.003l.12.017l.111.03l.111.044l.098.052l.096.067l.09.08q.054.053.097.112l.071.11l.031.062l.034.081l.024.076l.03.148L22 3v4a1 1 0 0 1-2 0V5.414l-2.07 2.07C19.231 9.108 20 11.19 20 13.5c0 2.703-1.047 5.462-2.793 7.207a1 1 0 0 1-1.414 0l-5.543-5.542L7 18.414V21a1 1 0 0 1-2 0v-2H3a1 1 0 0 1-.993-.883L2 18a1 1 0 0 1 1-1h2.584l3.251-3.25l-5.542-5.543a1 1 0 0 1-.002-1.412C5.036 5.04 7.78 4 10.5 4c2.31 0 4.393.768 6.015 2.07L18.584 4H17a1 1 0 0 1-.993-.883L16 3a1 1 0 0 1 1-1zm-4.495 6.91L12.415 13l4.595 4.594a9.1 9.1 0 0 0 .985-3.795L18 13.5c0-1.754-.55-3.336-1.495-4.59M10.5 6c-1.44 0-2.89.36-4.098.987L11 11.585l4.09-4.09C13.836 6.55 12.254 6 10.5 6"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func Bowl(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
@@ -9740,10 +10437,42 @@ func Bowl(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func BowlChopsticks(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 11h16a1 1 0 0 1 1 1v.5c0 1.5-2.517 5.573-4 6.5v1a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1v-1c-1.687-1.054-4-5-4-6.5V12a1 1 0 0 1 1-1m15-4L5 8m14-6L5 5"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func BowlChopsticksFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M20 10a2 2 0 0 1 2 2v.5c0 1.694-2.247 5.49-3.983 6.983l-.017.013V20a2 2 0 0 1-1.85 1.995L16 22H8a2 2 0 0 1-2-2v-.496l-.065-.053c-1.76-1.496-3.794-4.965-3.928-6.77L2 12.5V12a2 2 0 0 1 2-2zm-1.071-3.997a1 1 0 1 1 .142 1.994l-14 1a1 1 0 1 1-.142-1.994zm-.139-4.981a1 1 0 1 1 .42 1.956l-14 3a1 1 0 1 1-.42-1.956z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func BowlFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M20 7H4a2 2 0 0 0-2 2v.5l.007.18c.134 1.806 2.169 5.275 3.928 6.771l.065.053V17a2 2 0 0 0 2 2h8l.15-.005A2 2 0 0 0 18 17v-.504l.017-.013C19.753 14.989 22 11.194 22 9.5V9a2 2 0 0 0-2-2"/></g>`),
+			Text(`<path fill="currentColor" d="M20 7a2 2 0 0 1 2 2v.5c0 1.694-2.247 5.49-3.983 6.983l-.017.013V17a2 2 0 0 1-1.85 1.995L16 19H8a2 2 0 0 1-2-2v-.496l-.065-.053c-1.76-1.496-3.794-4.965-3.928-6.77L2 9.5V9a2 2 0 0 1 2-2z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func BowlSpoon(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 11h16a1 1 0 0 1 1 1v.5c0 1.5-2.517 5.573-4 6.5v1a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1v-1c-1.687-1.054-4-5-4-6.5V12a1 1 0 0 1 1-1m4-4c1.657 0 3-.895 3-2S9.657 3 8 3s-3 .895-3 2s1.343 2 3 2m3-2h9"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func BowlSpoonFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M20 10a2 2 0 0 1 2 2v.5c0 1.694-2.247 5.49-3.983 6.983l-.017.013V20a2 2 0 0 1-1.85 1.995L16 22H8a2 2 0 0 1-2-2v-.496l-.065-.053c-1.76-1.496-3.794-4.965-3.928-6.77L2 12.5V12a2 2 0 0 1 2-2zM8 2c1.71 0 3.237.787 3.785 2H20a1 1 0 0 1 0 2l-8.216.001C11.236 7.214 9.71 8 8 8C5.856 8 4 6.763 4 5s1.856-3 4-3"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -9767,7 +10496,7 @@ func BoxAlignBottom(children ...ElementRenderer) *TablerIcon {
 func BoxAlignBottomFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M20 13H4a1 1 0 0 0-1 1v5a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-5a1 1 0 0 0-1-1M4 8a1 1 0 0 1 .993.883L5 9.01a1 1 0 0 1-1.993.117L3 9a1 1 0 0 1 1-1m0-5a1 1 0 0 1 .993.883L5 4.01a1 1 0 0 1-1.993.117L3 4a1 1 0 0 1 1-1m5 0a1 1 0 0 1 .993.883L10 4.01a1 1 0 0 1-1.993.117L8 4a1 1 0 0 1 1-1m6 0a1 1 0 0 1 .993.883L16 4.01a1 1 0 0 1-1.993.117L14 4a1 1 0 0 1 1-1m5 0a1 1 0 0 1 .993.883L21 4.01a1 1 0 0 1-1.993.117L19 4a1 1 0 0 1 1-1m0 5a1 1 0 0 1 .993.883L21 9.01a1 1 0 0 1-1.993.117L19 9a1 1 0 0 1 1-1"/></g>`),
+			Text(`<path fill="currentColor" d="M20 13H4a1 1 0 0 0-1 1v5a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-5a1 1 0 0 0-1-1M4 8a1 1 0 0 1 .993.883L5 9.01a1 1 0 0 1-1.993.117L3 9a1 1 0 0 1 1-1m0-5a1 1 0 0 1 .993.883L5 4.01a1 1 0 0 1-1.993.117L3 4a1 1 0 0 1 1-1m5 0a1 1 0 0 1 .993.883L10 4.01a1 1 0 0 1-1.993.117L8 4a1 1 0 0 1 1-1m6 0a1 1 0 0 1 .993.883L16 4.01a1 1 0 0 1-1.993.117L14 4a1 1 0 0 1 1-1m5 0a1 1 0 0 1 .993.883L21 4.01a1 1 0 0 1-1.993.117L19 4a1 1 0 0 1 1-1m0 5a1 1 0 0 1 .993.883L21 9.01a1 1 0 0 1-1.993.117L19 9a1 1 0 0 1 1-1"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -9783,7 +10512,7 @@ func BoxAlignBottomLeft(children ...ElementRenderer) *TablerIcon {
 func BoxAlignBottomLeftFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M10 12H5a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h5a2 2 0 0 0 2-2v-5a2 2 0 0 0-2-2M4 8a1 1 0 0 1 .993.883L5 9.01a1 1 0 0 1-1.993.117L3 9a1 1 0 0 1 1-1m0-5a1 1 0 0 1 .993.883L5 4.01a1 1 0 0 1-1.993.117L3 4a1 1 0 0 1 1-1m5 0a1 1 0 0 1 .993.883L10 4.01a1 1 0 0 1-1.993.117L8 4a1 1 0 0 1 1-1m6 0a1 1 0 0 1 .993.883L16 4.01a1 1 0 0 1-1.993.117L14 4a1 1 0 0 1 1-1m0 16a1 1 0 0 1 .993.883l.007.127a1 1 0 0 1-1.993.117L14 20a1 1 0 0 1 1-1m5-16a1 1 0 0 1 .993.883L21 4.01a1 1 0 0 1-1.993.117L19 4a1 1 0 0 1 1-1m0 5a1 1 0 0 1 .993.883L21 9.01a1 1 0 0 1-1.993.117L19 9a1 1 0 0 1 1-1m0 6a1 1 0 0 1 .993.883l.007.127a1 1 0 0 1-1.993.117L19 15a1 1 0 0 1 1-1m0 5a1 1 0 0 1 .993.883l.007.127a1 1 0 0 1-1.993.117L19 20a1 1 0 0 1 1-1"/></g>`),
+			Text(`<path fill="currentColor" d="M10 12H5a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h5a2 2 0 0 0 2-2v-5a2 2 0 0 0-2-2M4 8a1 1 0 0 1 .993.883L5 9.01a1 1 0 0 1-1.993.117L3 9a1 1 0 0 1 1-1m0-5a1 1 0 0 1 .993.883L5 4.01a1 1 0 0 1-1.993.117L3 4a1 1 0 0 1 1-1m5 0a1 1 0 0 1 .993.883L10 4.01a1 1 0 0 1-1.993.117L8 4a1 1 0 0 1 1-1m6 0a1 1 0 0 1 .993.883L16 4.01a1 1 0 0 1-1.993.117L14 4a1 1 0 0 1 1-1m0 16a1 1 0 0 1 .993.883l.007.127a1 1 0 0 1-1.993.117L14 20a1 1 0 0 1 1-1m5-16a1 1 0 0 1 .993.883L21 4.01a1 1 0 0 1-1.993.117L19 4a1 1 0 0 1 1-1m0 5a1 1 0 0 1 .993.883L21 9.01a1 1 0 0 1-1.993.117L19 9a1 1 0 0 1 1-1m0 6a1 1 0 0 1 .993.883l.007.127a1 1 0 0 1-1.993.117L19 15a1 1 0 0 1 1-1m0 5a1 1 0 0 1 .993.883l.007.127a1 1 0 0 1-1.993.117L19 20a1 1 0 0 1 1-1"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -9799,7 +10528,7 @@ func BoxAlignBottomRight(children ...ElementRenderer) *TablerIcon {
 func BoxAlignBottomRightFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M19 12h-5a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h5a2 2 0 0 0 2-2v-5a2 2 0 0 0-2-2m1-4a1 1 0 0 1 .993.883L21 9.01a1 1 0 0 1-1.993.117L19 9a1 1 0 0 1 1-1m0-5a1 1 0 0 1 .993.883L21 4.01a1 1 0 0 1-1.993.117L19 4a1 1 0 0 1 1-1m-5 0a1 1 0 0 1 .993.883L16 4.01a1 1 0 0 1-1.993.117L14 4a1 1 0 0 1 1-1M9 3a1 1 0 0 1 .993.883L10 4.01a1 1 0 0 1-1.993.117L8 4a1 1 0 0 1 1-1m0 16a1 1 0 0 1 .993.883l.007.127a1 1 0 0 1-1.993.117L8 20a1 1 0 0 1 1-1M4 3a1 1 0 0 1 .993.883L5 4.01a1 1 0 0 1-1.993.117L3 4a1 1 0 0 1 1-1m0 5a1 1 0 0 1 .993.883L5 9.01a1 1 0 0 1-1.993.117L3 9a1 1 0 0 1 1-1m0 6a1 1 0 0 1 .993.883L5 15.01a1 1 0 0 1-1.993.117L3 15a1 1 0 0 1 1-1m0 5a1 1 0 0 1 .993.883L5 20.01a1 1 0 0 1-1.993.117L3 20a1 1 0 0 1 1-1"/></g>`),
+			Text(`<path fill="currentColor" d="M19 12h-5a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h5a2 2 0 0 0 2-2v-5a2 2 0 0 0-2-2m1-4a1 1 0 0 1 .993.883L21 9.01a1 1 0 0 1-1.993.117L19 9a1 1 0 0 1 1-1m0-5a1 1 0 0 1 .993.883L21 4.01a1 1 0 0 1-1.993.117L19 4a1 1 0 0 1 1-1m-5 0a1 1 0 0 1 .993.883L16 4.01a1 1 0 0 1-1.993.117L14 4a1 1 0 0 1 1-1M9 3a1 1 0 0 1 .993.883L10 4.01a1 1 0 0 1-1.993.117L8 4a1 1 0 0 1 1-1m0 16a1 1 0 0 1 .993.883l.007.127a1 1 0 0 1-1.993.117L8 20a1 1 0 0 1 1-1M4 3a1 1 0 0 1 .993.883L5 4.01a1 1 0 0 1-1.993.117L3 4a1 1 0 0 1 1-1m0 5a1 1 0 0 1 .993.883L5 9.01a1 1 0 0 1-1.993.117L3 9a1 1 0 0 1 1-1m0 6a1 1 0 0 1 .993.883L5 15.01a1 1 0 0 1-1.993.117L3 15a1 1 0 0 1 1-1m0 5a1 1 0 0 1 .993.883L5 20.01a1 1 0 0 1-1.993.117L3 20a1 1 0 0 1 1-1"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -9815,7 +10544,7 @@ func BoxAlignLeft(children ...ElementRenderer) *TablerIcon {
 func BoxAlignLeftFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M10.002 3.003h-5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h5a1 1 0 0 0 1-1v-16a1 1 0 0 0-1-1m5 16a1 1 0 0 1 .117 1.993l-.127.007a1 1 0 0 1-.117-1.993zm5.001 0a1 1 0 0 1 .117 1.993l-.128.007a1 1 0 0 1-.117-1.993zm0-5.001a1 1 0 0 1 .117 1.993l-.128.007a1 1 0 0 1-.117-1.993zm0-6a1 1 0 0 1 .117 1.993l-.128.007a1 1 0 0 1-.117-1.993zm0-5a1 1 0 0 1 .117 1.993l-.128.007a1 1 0 0 1-.117-1.993zm-5.001 0a1 1 0 0 1 .117 1.993l-.127.007a1 1 0 0 1-.117-1.993z"/></g>`),
+			Text(`<path fill="currentColor" d="M10.002 3.003h-5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h5a1 1 0 0 0 1-1v-16a1 1 0 0 0-1-1m5 16a1 1 0 0 1 .117 1.993l-.127.007a1 1 0 0 1-.117-1.993zm5.001 0a1 1 0 0 1 .117 1.993l-.128.007a1 1 0 0 1-.117-1.993zm0-5.001a1 1 0 0 1 .117 1.993l-.128.007a1 1 0 0 1-.117-1.993zm0-6a1 1 0 0 1 .117 1.993l-.128.007a1 1 0 0 1-.117-1.993zm0-5a1 1 0 0 1 .117 1.993l-.128.007a1 1 0 0 1-.117-1.993zm-5.001 0a1 1 0 0 1 .117 1.993l-.127.007a1 1 0 0 1-.117-1.993z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -9831,7 +10560,7 @@ func BoxAlignRight(children ...ElementRenderer) *TablerIcon {
 func BoxAlignRightFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M18.998 3.003h-5a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h5a2 2 0 0 0 2-2v-14a2 2 0 0 0-2-2m-9.99 16a1 1 0 0 1 .117 1.993l-.127.007a1 1 0 0 1-.117-1.993zm-5 0a1 1 0 0 1 .117 1.993l-.128.007a1 1 0 0 1-.117-1.993zm0-5.001a1 1 0 0 1 .117 1.993l-.128.007a1 1 0 0 1-.117-1.993zm0-6a1 1 0 0 1 .117 1.993l-.128.007a1 1 0 0 1-.117-1.993zm0-5a1 1 0 0 1 .117 1.993l-.128.007a1 1 0 0 1-.117-1.993zm5 0a1 1 0 0 1 .117 1.993l-.127.007a1 1 0 0 1-.117-1.993z"/></g>`),
+			Text(`<path fill="currentColor" d="M18.998 3.003h-5a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h5a2 2 0 0 0 2-2v-14a2 2 0 0 0-2-2m-9.99 16a1 1 0 0 1 .117 1.993l-.127.007a1 1 0 0 1-.117-1.993zm-5 0a1 1 0 0 1 .117 1.993l-.128.007a1 1 0 0 1-.117-1.993zm0-5.001a1 1 0 0 1 .117 1.993l-.128.007a1 1 0 0 1-.117-1.993zm0-6a1 1 0 0 1 .117 1.993l-.128.007a1 1 0 0 1-.117-1.993zm0-5a1 1 0 0 1 .117 1.993l-.128.007a1 1 0 0 1-.117-1.993zm5 0a1 1 0 0 1 .117 1.993l-.127.007a1 1 0 0 1-.117-1.993z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -9847,7 +10576,7 @@ func BoxAlignTop(children ...ElementRenderer) *TablerIcon {
 func BoxAlignTopFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M19 3.005H5a2 2 0 0 0-2 2v5a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1v-5a2 2 0 0 0-2-2M4 13.995a1 1 0 0 1 .993.883l.007.127a1 1 0 0 1-1.993.117L3 14.995a1 1 0 0 1 1-1m0 5a1 1 0 0 1 .993.883l.007.127a1 1 0 0 1-1.993.117L3 19.995a1 1 0 0 1 1-1m5 0a1 1 0 0 1 .993.883l.007.127a1 1 0 0 1-1.993.117L8 19.995a1 1 0 0 1 1-1m6 0a1 1 0 0 1 .993.883l.007.127a1 1 0 0 1-1.993.117L14 19.995a1 1 0 0 1 1-1m5 0a1 1 0 0 1 .993.883l.007.127a1 1 0 0 1-1.993.117L19 19.995a1 1 0 0 1 1-1m0-5a1 1 0 0 1 .993.883l.007.127a1 1 0 0 1-1.993.117L19 14.995a1 1 0 0 1 1-1"/></g>`),
+			Text(`<path fill="currentColor" d="M19 3.005H5a2 2 0 0 0-2 2v5a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1v-5a2 2 0 0 0-2-2M4 13.995a1 1 0 0 1 .993.883l.007.127a1 1 0 0 1-1.993.117L3 14.995a1 1 0 0 1 1-1m0 5a1 1 0 0 1 .993.883l.007.127a1 1 0 0 1-1.993.117L3 19.995a1 1 0 0 1 1-1m5 0a1 1 0 0 1 .993.883l.007.127a1 1 0 0 1-1.993.117L8 19.995a1 1 0 0 1 1-1m6 0a1 1 0 0 1 .993.883l.007.127a1 1 0 0 1-1.993.117L14 19.995a1 1 0 0 1 1-1m5 0a1 1 0 0 1 .993.883l.007.127a1 1 0 0 1-1.993.117L19 19.995a1 1 0 0 1 1-1m0-5a1 1 0 0 1 .993.883l.007.127a1 1 0 0 1-1.993.117L19 14.995a1 1 0 0 1 1-1"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -9863,7 +10592,7 @@ func BoxAlignTopLeft(children ...ElementRenderer) *TablerIcon {
 func BoxAlignTopLeftFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M10 3H5a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h5a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2m5 0a1 1 0 0 1 .117 1.993L14.99 5a1 1 0 0 1-.117-1.993zm5 0a1 1 0 0 1 .117 1.993L19.99 5a1 1 0 0 1-.117-1.993zm0 5a1 1 0 0 1 .117 1.993L19.99 10a1 1 0 0 1-.117-1.993zm0 6a1 1 0 0 1 .117 1.993L19.99 16a1 1 0 0 1-.117-1.993zM4 14a1 1 0 0 1 .117 1.993L3.99 16a1 1 0 0 1-.117-1.993zm16 5a1 1 0 0 1 .117 1.993L19.99 21a1 1 0 0 1-.117-1.993zm-5 0a1 1 0 0 1 .117 1.993L14.99 21a1 1 0 0 1-.117-1.993zm-6 0a1 1 0 0 1 .117 1.993L8.99 21a1 1 0 0 1-.117-1.993zm-5 0a1 1 0 0 1 .117 1.993L3.99 21a1 1 0 0 1-.117-1.993z"/></g>`),
+			Text(`<path fill="currentColor" d="M10 3H5a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h5a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2m5 0a1 1 0 0 1 .117 1.993L14.99 5a1 1 0 0 1-.117-1.993zm5 0a1 1 0 0 1 .117 1.993L19.99 5a1 1 0 0 1-.117-1.993zm0 5a1 1 0 0 1 .117 1.993L19.99 10a1 1 0 0 1-.117-1.993zm0 6a1 1 0 0 1 .117 1.993L19.99 16a1 1 0 0 1-.117-1.993zM4 14a1 1 0 0 1 .117 1.993L3.99 16a1 1 0 0 1-.117-1.993zm16 5a1 1 0 0 1 .117 1.993L19.99 21a1 1 0 0 1-.117-1.993zm-5 0a1 1 0 0 1 .117 1.993L14.99 21a1 1 0 0 1-.117-1.993zm-6 0a1 1 0 0 1 .117 1.993L8.99 21a1 1 0 0 1-.117-1.993zm-5 0a1 1 0 0 1 .117 1.993L3.99 21a1 1 0 0 1-.117-1.993z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -9879,7 +10608,7 @@ func BoxAlignTopRight(children ...ElementRenderer) *TablerIcon {
 func BoxAlignTopRightFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M19 3.01h-5a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h5a2 2 0 0 0 2-2v-5a2 2 0 0 0-2-2M20 14a1 1 0 0 1 .993.883l.007.127a1 1 0 0 1-1.993.117L19 15a1 1 0 0 1 1-1m0 5a1 1 0 0 1 .993.883l.007.127a1 1 0 0 1-1.993.117L19 20a1 1 0 0 1 1-1m-5 0a1 1 0 0 1 .993.883l.007.127a1 1 0 0 1-1.993.117L14 20a1 1 0 0 1 1-1m-6 0a1 1 0 0 1 .993.883l.007.127a1 1 0 0 1-1.993.117L8 20a1 1 0 0 1 1-1M9 3a1 1 0 0 1 .993.883L10 4.01a1 1 0 0 1-1.993.117L8 4a1 1 0 0 1 1-1M4 19a1 1 0 0 1 .993.883L5 20.01a1 1 0 0 1-1.993.117L3 20a1 1 0 0 1 1-1m0-5a1 1 0 0 1 .993.883L5 15.01a1 1 0 0 1-1.993.117L3 15a1 1 0 0 1 1-1m0-6a1 1 0 0 1 .993.883L5 9.01a1 1 0 0 1-1.993.117L3 9a1 1 0 0 1 1-1m0-5a1 1 0 0 1 .993.883L5 4.01a1 1 0 0 1-1.993.117L3 4a1 1 0 0 1 1-1"/></g>`),
+			Text(`<path fill="currentColor" d="M19 3.01h-5a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h5a2 2 0 0 0 2-2v-5a2 2 0 0 0-2-2M20 14a1 1 0 0 1 .993.883l.007.127a1 1 0 0 1-1.993.117L19 15a1 1 0 0 1 1-1m0 5a1 1 0 0 1 .993.883l.007.127a1 1 0 0 1-1.993.117L19 20a1 1 0 0 1 1-1m-5 0a1 1 0 0 1 .993.883l.007.127a1 1 0 0 1-1.993.117L14 20a1 1 0 0 1 1-1m-6 0a1 1 0 0 1 .993.883l.007.127a1 1 0 0 1-1.993.117L8 20a1 1 0 0 1 1-1M9 3a1 1 0 0 1 .993.883L10 4.01a1 1 0 0 1-1.993.117L8 4a1 1 0 0 1 1-1M4 19a1 1 0 0 1 .993.883L5 20.01a1 1 0 0 1-1.993.117L3 20a1 1 0 0 1 1-1m0-5a1 1 0 0 1 .993.883L5 15.01a1 1 0 0 1-1.993.117L3 15a1 1 0 0 1 1-1m0-6a1 1 0 0 1 .993.883L5 9.01a1 1 0 0 1-1.993.117L3 9a1 1 0 0 1 1-1m0-5a1 1 0 0 1 .993.883L5 4.01a1 1 0 0 1-1.993.117L3 4a1 1 0 0 1 1-1"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -10263,7 +10992,7 @@ func BrandAppgallery(children ...ElementRenderer) *TablerIcon {
 func BrandApple(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7c-3 0-4 3-4 5.5c0 3 2 7.5 4 7.5c1.088-.046 1.679-.5 3-.5c1.312 0 1.5.5 3 .5s4-3 4-5c-.028-.01-2.472-.403-2.5-3c-.019-2.17 2.416-2.954 2.5-3c-1.023-1.492-2.951-1.963-3.5-2c-1.433-.111-2.83 1-3.5 1c-.68 0-1.9-1-3-1m3-3a2 2 0 0 0 2-2a2 2 0 0 0-2 2"/>`),
+			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.286 7.008C5.07 7.008 4 10.238 4 12.928C4 16.157 6.143 21 8.286 21c1.165-.05 1.799-.538 3.214-.538c1.406 0 1.607.538 3.214.538S19 17.771 19 15.619c-.03-.011-2.649-.434-2.679-3.23c-.02-2.335 2.589-3.179 2.679-3.228c-1.096-1.606-3.162-2.113-3.75-2.153c-1.535-.12-3.032 1.077-3.75 1.077c-.729 0-2.036-1.077-3.214-1.077M12 4a2 2 0 0 0 2-2a2 2 0 0 0-2 2"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -10272,6 +11001,14 @@ func BrandAppleArcade(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M10 5a2 2 0 1 0 4 0a2 2 0 1 0-4 0m10 7.5v4.75a.734.734 0 0 1-.055.325a.704.704 0 0 1-.348.366l-5.462 2.58a5 5 0 0 1-4.27 0l-5.462-2.58a.705.705 0 0 1-.401-.691V12.5"/><path d="m4.431 12.216l5.634-2.332a5.065 5.065 0 0 1 3.87 0l5.634 2.332a.692.692 0 0 1 .028 1.269l-5.462 2.543a5.064 5.064 0 0 1-4.27 0l-5.462-2.543a.691.691 0 0 1 .028-1.27zM12 7v6"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func BrandAppleFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="m15.079 5.999l.239.012c1.43.097 3.434 1.013 4.508 2.586a1 1 0 0 1-.344 1.44c-.05.028-.372.158-.497.217a4.15 4.15 0 0 0-.722.431c-.614.461-.948 1.009-.942 1.694c.01.885.339 1.454.907 1.846c.208.143.436.253.666.33c.126.043.426.116.444.122a1 1 0 0 1 .662.942C20 18.24 16.96 22 14.714 22c-.79 0-1.272-.091-1.983-.315l-.098-.031c-.463-.146-.702-.192-1.133-.192c-.52 0-.863.06-1.518.237l-.197.053c-.575.153-.964.226-1.5.248C5.536 22 3 16.907 3 12.928c0-3.87 1.786-6.92 5.286-6.92c.297 0 .598.045.909.128c.403.107.774.26 1.296.508c.787.374.948.44 1.009.44h.016c.03-.003.128-.047 1.056-.457c1.061-.467 1.864-.685 2.746-.616l-.24-.012zM14 1a1 1 0 0 1 1 1a3 3 0 0 1-3 3a1 1 0 0 1-1-1a3 3 0 0 1 3-3"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -10292,10 +11029,26 @@ func BrandAppstore(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func BrandArc(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M4.687 14.694L3.7 16.797c-.502 1.07-.125 2.387.908 2.945c1.096.59 2.444.13 2.972-.995l.9-1.92m9.837-2.251c1.818-1.6 3.16-3.78 3.64-6.217c.235-1.194-.525-2.351-1.695-2.586a2.14 2.14 0 0 0-1.625.326c-.478.323-.81.826-.922 1.398c-.208 1.054-.695 2.037-1.366 2.872"/><path d="M12.68 12.759a5.4 5.4 0 0 1-1.283.157c-.336 0-.683-.04-1.03-.115c-1.44-.31-2.89-1.215-3.709-2.315a3.7 3.7 0 0 1-.487-.853A2.157 2.157 0 0 0 3.353 8.42c-1.107.455-1.641 1.736-1.196 2.86c.508 1.278 1.404 2.45 2.53 3.415a11.2 11.2 0 0 0 3.791 2.133c.953.31 1.942.483 2.916.483a9.8 9.8 0 0 0 3.162-.537"/><path d="m10.37 12.801l.943-2.013c.09-.19.357-.19.446 0l.923 1.97h.006h-.006l1.88 4.015l.923 1.971a2.16 2.16 0 0 0 1.957 1.254q.29 0 .576-.081c1.303-.365 1.92-1.887 1.339-3.129l-1.04-2.218l-1.968-4.204l-.003.003l.003-.003l-2.862-6.112A2.16 2.16 0 0 0 11.533 3C10.7 3 9.94 3.488 9.58 4.254l-2.92 6.232"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func BrandAsana(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7a3 3 0 1 0 6 0a3 3 0 1 0-6 0m5 9a3 3 0 1 0 6 0a3 3 0 1 0-6 0M4 16a3 3 0 1 0 6 0a3 3 0 1 0-6 0"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func BrandAstro(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.972 3.483c.163.196.247.46.413.987L19.025 16a15.5 15.5 0 0 0-4.352-1.42l-2.37-7.723a.31.31 0 0 0-.296-.213a.31.31 0 0 0-.295.214L9.37 14.576A15.5 15.5 0 0 0 5 15.998l3.657-11.53c.168-.527.251-.79.415-.986c.144-.172.331-.306.544-.388C9.858 3 10.143 3 10.715 3h2.612c.572 0 .858 0 1.1.094c.213.082.4.217.545.39M9 18c0 1.5 2 3 3 4c1-1 3-3 3-4q-3 1.5-6 0"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -10432,6 +11185,14 @@ func BrandBlogger(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M8 21h8a5 5 0 0 0 5-5v-3a3 3 0 0 0-3-3h-1V8a5 5 0 0 0-5-5H8a5 5 0 0 0-5 5v8a5 5 0 0 0 5 5"/><path d="M7 8.5A1.5 1.5 0 0 1 8.5 7h3A1.5 1.5 0 0 1 13 8.5v0a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 7 8.5m0 7A1.5 1.5 0 0 1 8.5 14h7a1.5 1.5 0 0 1 1.5 1.5v0a1.5 1.5 0 0 1-1.5 1.5h-7A1.5 1.5 0 0 1 7 15.5"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func BrandBluesky(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6.335 5.144C4.681 3.945 2 3.017 2 5.97c0 .59.35 4.953.556 5.661C3.269 14.094 5.686 14.381 8 14c-4.045.665-4.889 3.208-2.667 5.41C6.363 20.428 7.246 21 8 21c2 0 3.134-2.769 3.5-3.5c.333-.667.5-1.167.5-1.5c0 .333.167.833.5 1.5c.366.731 1.5 3.5 3.5 3.5c.754 0 1.637-.571 2.667-1.59C20.889 17.207 20.045 14.664 16 14c2.314.38 4.73.094 5.444-2.369c.206-.708.556-5.072.556-5.661c0-2.953-2.68-2.025-4.335-.826C15.372 6.806 12.905 10.192 12 12c-.905-1.808-3.372-5.194-5.665-6.856"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -10799,7 +11560,7 @@ func BrandDiscord(children ...ElementRenderer) *TablerIcon {
 func BrandDiscordFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="m14.983 3l.123.006c2.014.214 3.527.672 4.966 1.673a1 1 0 0 1 .371.488c1.876 5.315 2.373 9.987 1.451 12.28C20.891 19.452 19.288 21 17.5 21c-.732 0-1.693-.968-2.328-2.045a21.512 21.512 0 0 0 2.103-.493a1 1 0 1 0-.55-1.924c-3.32.95-6.13.95-9.45 0a1 1 0 0 0-.55 1.924c.717.204 1.416.37 2.103.494C8.193 20.031 7.232 21 6.5 21c-1.788 0-3.391-1.548-4.428-3.629c-.888-2.217-.39-6.89 1.485-12.204a1 1 0 0 1 .371-.488C5.367 3.678 6.88 3.22 8.894 3.006a1 1 0 0 1 .935.435l.063.107l.651 1.285l.137-.016a12.97 12.97 0 0 1 2.643 0l.134.016l.65-1.284a1 1 0 0 1 .754-.54zM9 10a2 2 0 0 0-1.977 1.697l-.018.154L7 12l.005.15A2 2 0 1 0 9 10m6 0a2 2 0 0 0-1.977 1.697l-.018.154L13 12l.005.15A2 2 0 1 0 15 10"/></g>`),
+			Text(`<path fill="currentColor" d="m14.983 3l.123.006c2.014.214 3.527.672 4.966 1.673a1 1 0 0 1 .371.488c1.876 5.315 2.373 9.987 1.451 12.28C20.891 19.452 19.288 21 17.5 21c-.732 0-1.693-.968-2.328-2.045a21.512 21.512 0 0 0 2.103-.493a1 1 0 1 0-.55-1.924c-3.32.95-6.13.95-9.45 0a1 1 0 0 0-.55 1.924c.717.204 1.416.37 2.103.494C8.193 20.031 7.232 21 6.5 21c-1.788 0-3.391-1.548-4.428-3.629c-.888-2.217-.39-6.89 1.485-12.204a1 1 0 0 1 .371-.488C5.367 3.678 6.88 3.22 8.894 3.006a1 1 0 0 1 .935.435l.063.107l.651 1.285l.137-.016a12.97 12.97 0 0 1 2.643 0l.134.016l.65-1.284a1 1 0 0 1 .754-.54zM9 10a2 2 0 0 0-1.977 1.697l-.018.154L7 12l.005.15A2 2 0 1 0 9 10m6 0a2 2 0 0 0-1.977 1.697l-.018.154L13 12l.005.15A2 2 0 1 0 15 10"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -10871,7 +11632,7 @@ func BrandDribbble(children ...ElementRenderer) *TablerIcon {
 func BrandDribbbleFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M14.384 14.38a22.877 22.877 0 0 1 1.056 4.863l.064.644l.126 1.431a10 10 0 0 1-9.15-.98l2.08-2.087l.246-.24c1.793-1.728 3.41-2.875 5.387-3.566zm6.09-.783l.414.003l.981.014a9.997 9.997 0 0 1-4.319 6.704l-.054-.605c-.18-2.057-.55-3.958-1.163-5.814c1.044-.182 2.203-.278 3.529-.298zm-7.869-3.181a24.91 24.91 0 0 1 1.052 2.098c-2.276.77-4.142 2.053-6.144 3.967l-.355.344l-2.236 2.24a10 10 0 0 1-2.917-6.741L2 12l.004-.25H3.1l.467-.002c3.547-.026 6.356-.367 8.938-1.295zm9.388 1.202l-1.515-.02c-1.86-.003-3.45.124-4.865.402a26.112 26.112 0 0 0-1.163-2.38c1.393-.695 2.757-1.597 4.179-2.75l.428-.354l.816-.682a10 10 0 0 1 2.098 5.409zM7.33 3.158L8.596 4.68c1.145 1.398 2.121 2.713 2.949 3.985c-2.26.766-4.739 1.052-7.883 1.081L3.1 9.75h-.844A10 10 0 0 1 7.33 3.157zM17 3.34c.53.306 1.026.657 1.483 1.046l-1.025.857c-1.379 1.128-2.688 1.993-4.034 2.649c-.89-1.398-1.943-2.836-3.182-4.358l-.474-.574l-.485-.584A10 10 0 0 1 17 3.34"/></g>`),
+			Text(`<path fill="currentColor" d="M14.384 14.38a22.877 22.877 0 0 1 1.056 4.863l.064.644l.126 1.431a10 10 0 0 1-9.15-.98l2.08-2.087l.246-.24c1.793-1.728 3.41-2.875 5.387-3.566zm6.09-.783l.414.003l.981.014a9.997 9.997 0 0 1-4.319 6.704l-.054-.605c-.18-2.057-.55-3.958-1.163-5.814c1.044-.182 2.203-.278 3.529-.298zm-7.869-3.181a24.91 24.91 0 0 1 1.052 2.098c-2.276.77-4.142 2.053-6.144 3.967l-.355.344l-2.236 2.24a10 10 0 0 1-2.917-6.741L2 12l.004-.25H3.1l.467-.002c3.547-.026 6.356-.367 8.938-1.295zm9.388 1.202l-1.515-.02c-1.86-.003-3.45.124-4.865.402a26.112 26.112 0 0 0-1.163-2.38c1.393-.695 2.757-1.597 4.179-2.75l.428-.354l.816-.682a10 10 0 0 1 2.098 5.409zM7.33 3.158L8.596 4.68c1.145 1.398 2.121 2.713 2.949 3.985c-2.26.766-4.739 1.052-7.883 1.081L3.1 9.75h-.844A10 10 0 0 1 7.33 3.157zM17 3.34c.53.306 1.026.657 1.483 1.046l-1.025.857c-1.379 1.128-2.688 1.993-4.034 2.649c-.89-1.398-1.943-2.836-3.182-4.358l-.474-.574l-.485-.584A10 10 0 0 1 17 3.34"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -10959,7 +11720,7 @@ func BrandFacebook(children ...ElementRenderer) *TablerIcon {
 func BrandFacebookFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M18 2a1 1 0 0 1 .993.883L19 3v4a1 1 0 0 1-.883.993L18 8h-3v1h3a1 1 0 0 1 .991 1.131l-.02.112l-1 4a1 1 0 0 1-.858.75L17 15h-2v6a1 1 0 0 1-.883.993L14 22h-4a1 1 0 0 1-.993-.883L9 21v-6H7a1 1 0 0 1-.993-.883L6 14v-4a1 1 0 0 1 .883-.993L7 9h2V8a6 6 0 0 1 5.775-5.996L15 2z"/></g>`),
+			Text(`<path fill="currentColor" d="M18 2a1 1 0 0 1 .993.883L19 3v4a1 1 0 0 1-.883.993L18 8h-3v1h3a1 1 0 0 1 .991 1.131l-.02.112l-1 4a1 1 0 0 1-.858.75L17 15h-2v6a1 1 0 0 1-.883.993L14 22h-4a1 1 0 0 1-.993-.883L9 21v-6H7a1 1 0 0 1-.993-.883L6 14v-4a1 1 0 0 1 .883-.993L7 9h2V8a6 6 0 0 1 5.775-5.996L15 2z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -11135,7 +11896,7 @@ func BrandGithubCopilot(children ...ElementRenderer) *TablerIcon {
 func BrandGithubFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M5.315 2.1c.791-.113 1.9.145 3.333.966l.272.161l.16.1l.397-.083a13.3 13.3 0 0 1 4.59-.08l.456.08l.396.083l.161-.1c1.385-.84 2.487-1.17 3.322-1.148l.164.008l.147.017l.076.014l.05.011l.144.047a1 1 0 0 1 .53.514a5.2 5.2 0 0 1 .397 2.91l-.047.267l-.046.196l.123.163c.574.795.93 1.728 1.03 2.707l.023.295L21 9.5c0 3.855-1.659 5.883-4.644 6.68l-.245.061l-.132.029l.014.161l.008.157l.004.365l-.002.213L16 21a1 1 0 0 1-.883.993L15 22H9a1 1 0 0 1-.993-.883L8 21v-.734c-1.818.26-3.03-.424-4.11-1.878l-.535-.766c-.28-.396-.455-.579-.589-.644l-.048-.019a1 1 0 0 1 .564-1.918c.642.188 1.074.568 1.57 1.239l.538.769c.76 1.079 1.36 1.459 2.609 1.191L8 17.562l-.018-.168a5.03 5.03 0 0 1-.021-.824l.017-.185l.019-.12l-.108-.024c-2.976-.71-4.703-2.573-4.875-6.139l-.01-.31L3 9.5a5.6 5.6 0 0 1 .908-3.051l.152-.222l.122-.163l-.045-.196a5.2 5.2 0 0 1 .145-2.642l.1-.282l.106-.253a1 1 0 0 1 .529-.514l.144-.047z"/></g>`),
+			Text(`<path fill="currentColor" d="M5.315 2.1c.791-.113 1.9.145 3.333.966l.272.161l.16.1l.397-.083a13.3 13.3 0 0 1 4.59-.08l.456.08l.396.083l.161-.1c1.385-.84 2.487-1.17 3.322-1.148l.164.008l.147.017l.076.014l.05.011l.144.047a1 1 0 0 1 .53.514a5.2 5.2 0 0 1 .397 2.91l-.047.267l-.046.196l.123.163c.574.795.93 1.728 1.03 2.707l.023.295L21 9.5c0 3.855-1.659 5.883-4.644 6.68l-.245.061l-.132.029l.014.161l.008.157l.004.365l-.002.213L16 21a1 1 0 0 1-.883.993L15 22H9a1 1 0 0 1-.993-.883L8 21v-.734c-1.818.26-3.03-.424-4.11-1.878l-.535-.766c-.28-.396-.455-.579-.589-.644l-.048-.019a1 1 0 0 1 .564-1.918c.642.188 1.074.568 1.57 1.239l.538.769c.76 1.079 1.36 1.459 2.609 1.191L8 17.562l-.018-.168a5.03 5.03 0 0 1-.021-.824l.017-.185l.019-.12l-.108-.024c-2.976-.71-4.703-2.573-4.875-6.139l-.01-.31L3 9.5a5.6 5.6 0 0 1 .908-3.051l.152-.222l.122-.163l-.045-.196a5.2 5.2 0 0 1 .145-2.642l.1-.282l.106-.253a1 1 0 0 1 .529-.514l.144-.047z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -11199,7 +11960,7 @@ func BrandGoogleDrive(children ...ElementRenderer) *TablerIcon {
 func BrandGoogleFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M12 2a9.96 9.96 0 0 1 6.29 2.226a1 1 0 0 1 .04 1.52l-1.51 1.362a1 1 0 0 1-1.265.06a6 6 0 1 0 2.103 6.836l.001-.004h-3.66a1 1 0 0 1-.992-.883L13 13v-2a1 1 0 0 1 1-1h6.945a1 1 0 0 1 .994.89c.04.367.061.737.061 1.11c0 5.523-4.477 10-10 10S2 17.523 2 12S6.477 2 12 2"/></g>`),
+			Text(`<path fill="currentColor" d="M12 2a9.96 9.96 0 0 1 6.29 2.226a1 1 0 0 1 .04 1.52l-1.51 1.362a1 1 0 0 1-1.265.06a6 6 0 1 0 2.103 6.836l.001-.004h-3.66a1 1 0 0 1-.992-.883L13 13v-2a1 1 0 0 1 1-1h6.945a1 1 0 0 1 .994.89c.04.367.061.737.061 1.11c0 5.523-4.477 10-10 10S2 17.523 2 12S6.477 2 12 2"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -11271,7 +12032,7 @@ func BrandGrammarly(children ...ElementRenderer) *TablerIcon {
 func BrandGraphql(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m5.308 7.265l5.385-3.029m2.615-.001l5.384 3.03M20 9.5v5m-1.307 2.236l-5.385 3.029m-2.616 0l-5.384-3.03M4 14.5v-5m8.772-4.714l6.121 10.202M18.5 16h-13m-.393-1.012l6.122-10.201M10.5 3.5a1.5 1.5 0 1 0 3 0a1.5 1.5 0 1 0-3 0m0 17a1.5 1.5 0 1 0 3 0a1.5 1.5 0 1 0-3 0M2.5 8a1.5 1.5 0 1 0 3 0a1.5 1.5 0 1 0-3 0m0 8a1.5 1.5 0 1 0 3 0a1.5 1.5 0 1 0-3 0m16 0a1.5 1.5 0 1 0 3 0a1.5 1.5 0 1 0-3 0m0-8a1.5 1.5 0 1 0 3 0a1.5 1.5 0 1 0-3 0"/>`),
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="m4 8l8-5l8 5v8l-8 5l-8-5z"/><path d="m12 4l7.5 12h-15z"/><path d="M11 3a1 1 0 1 0 2 0a1 1 0 0 0-2 0m0 18a1 1 0 1 0 2 0a1 1 0 0 0-2 0M3 8a1 1 0 1 0 2 0a1 1 0 0 0-2 0m0 8a1 1 0 1 0 2 0a1 1 0 0 0-2 0m16 0a1 1 0 1 0 2 0a1 1 0 0 0-2 0m0-8a1 1 0 1 0 2 0a1 1 0 0 0-2 0"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -11487,7 +12248,7 @@ func BrandLinkedin(children ...ElementRenderer) *TablerIcon {
 func BrandLinktree(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3L2 15h3v5h5v-5H8l4-7zm6 0l7 12h-3v5h-5v-5h2l-4-7z"/>`),
+			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 10h16M6.5 4.5l11 11m-11 0l11-11M12 10V2m0 13v7"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -11496,6 +12257,14 @@ func BrandLinqpad(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 21h3.5l2.5-6l2.5-1l2.5 7h4l1-4.5l-2-1l-7-12L6 3l1.5 4l2.5.5l1 2.5l-7 8z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func BrandLivewire(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<defs><path id="tablerBrandLivewire0" d="M20.982 18.777C20.61 19.325 20.33 20 19.576 20c-1.269 0-1.337-1.913-2.607-1.913c-1.27 0-1.2 1.913-2.47 1.913c-1.268 0-1.337-1.913-2.607-1.913c-1.269 0-1.2 1.913-2.47 1.913c-1.268 0-1.337-1.913-2.607-1.913c-1.27 0-1.2 1.913-2.47 1.913c-.398 0-.679-.189-.915-.448A10.414 10.414 0 0 1 2 14.262C2 8.593 6.477 4 12 4c5.524 0 10 4.594 10 10.261c0 1.62-.366 3.152-1.018 4.516"/></defs><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><use href="#tablerBrandLivewire0"/><use href="#tablerBrandLivewire0"/><path d="M11.5 16c3.167 0 4.5-1.748 4.5-4.231C16 9.285 13.986 7 11.5 7C9.015 7 7 9.286 7 11.769S8.333 16 11.5 16"/><path d="M10 11a1 1 0 1 0 0-2a1 1 0 0 0 0 2"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -11863,7 +12632,7 @@ func BrandPatreon(children ...ElementRenderer) *TablerIcon {
 func BrandPatreonFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M7.462 3.1c2.615-1.268 6.226-1.446 9.063-.503c2.568.853 4.471 3.175 4.475 5.81c.004 3.061-1.942 5.492-4.896 6.243c-1.693.43-2.338.75-2.942 1.582c-.238.328-.45.745-.796 1.533l-.22.5C11 20.866 9.99 22.027 7.91 22c-2.232-.03-3.603-1.742-4.313-4.48c-.458-1.768-.617-3.808-.594-5.876c.044-3.993 1.42-7.072 4.46-8.545z"/></g>`),
+			Text(`<path fill="currentColor" d="M7.462 3.1c2.615-1.268 6.226-1.446 9.063-.503c2.568.853 4.471 3.175 4.475 5.81c.004 3.061-1.942 5.492-4.896 6.243c-1.693.43-2.338.75-2.942 1.582c-.238.328-.45.745-.796 1.533l-.22.5C11 20.866 9.99 22.027 7.91 22c-2.232-.03-3.603-1.742-4.313-4.48c-.458-1.768-.617-3.808-.594-5.876c.044-3.993 1.42-7.072 4.46-8.545z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -11879,7 +12648,7 @@ func BrandPaypal(children ...ElementRenderer) *TablerIcon {
 func BrandPaypalFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M12.5 2c3.113 0 5.309 1.785 5.863 4.565C20.088 7.75 21 9.717 21 12c0 2.933-2.748 5.384-5.783 5.496L15 17.5h-1.754l-.466 2.8a1.998 1.998 0 0 1-1.823 1.597l-.157.003H8.12a1.5 1.5 0 0 1-1.182-.54a1.495 1.495 0 0 1-.348-1.07l.042-.29H5c-1.004 0-1.914-.864-1.994-1.857L3 18l.01-.141L5.003 3.905l.003-.048c.072-.894.815-1.682 1.695-1.832l.156-.02L7 2zm5.812 7.35l-.024.087c-.706 2.403-3.072 4.436-5.555 4.557L12.5 14H9.997v.05l-.025.183l-1.2 5a1.007 1.007 0 0 1-.019.07l-.088.597h2.154l.595-3.564a1 1 0 0 1 .865-.829l.121-.007H15c2.073 0 4-1.67 4-3.5c0-1.022-.236-1.924-.688-2.65"/></g>`),
+			Text(`<path fill="currentColor" d="M12.5 2c3.113 0 5.309 1.785 5.863 4.565C20.088 7.75 21 9.717 21 12c0 2.933-2.748 5.384-5.783 5.496L15 17.5h-1.754l-.466 2.8a1.998 1.998 0 0 1-1.823 1.597l-.157.003H8.12a1.5 1.5 0 0 1-1.182-.54a1.495 1.495 0 0 1-.348-1.07l.042-.29H5c-1.004 0-1.914-.864-1.994-1.857L3 18l.01-.141L5.003 3.905l.003-.048c.072-.894.815-1.682 1.695-1.832l.156-.02L7 2zm5.812 7.35l-.024.087c-.706 2.403-3.072 4.436-5.555 4.557L12.5 14H9.997v.05l-.025.183l-1.2 5a1.007 1.007 0 0 1-.019.07l-.088.597h2.154l.595-3.564a1 1 0 0 1 .865-.829l.121-.007H15c2.073 0 4-1.67 4-3.5c0-1.022-.236-1.924-.688-2.65"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -11936,6 +12705,14 @@ func BrandPlanetscale(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.993 11.63a9 9 0 0 1-9.362 9.362zM12 3a9.001 9.001 0 0 1 8.166 5.211L8.211 20.166A9 9 0 0 1 12 3m0 9l-6 6"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func BrandPnpm(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 17h4v4H3zm7 0h4v4h-4zm7 0h4v4h-4zm0-7h4v4h-4zm0-7h4v4h-4zm-7 7h4v4h-4zm0-7h4v4h-4zM3 3h4v4H3z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -12252,6 +13029,14 @@ func BrandSpotify(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func BrandSpotifyFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M17 3.34A10 10 0 1 1 2 12l.005-.324A10 10 0 0 1 17 3.34m-2.168 11.605c-1.285-1.927-4.354-2.132-6.387-.777a1 1 0 0 0 1.11 1.664c1.195-.797 3.014-.675 3.613.223a1 1 0 1 0 1.664-1.11M16.1 11.7c-2.469-1.852-5.895-2.187-8.608-.589a1 1 0 0 0 1.016 1.724c1.986-1.171 4.544-.92 6.392.465a1 1 0 0 0 1.2-1.6m1.43-3.048C13.853 6.354 9.764 6.5 6.553 8.106a1 1 0 0 0 .894 1.788c2.635-1.317 5.997-1.437 9.023.454a1 1 0 1 0 1.06-1.696"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func BrandStackoverflow(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
@@ -12272,6 +13057,14 @@ func BrandSteam(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M16.5 5a4.5 4.5 0 1 1-.653 8.953L11.5 16.962V17a3 3 0 0 1-2.824 3H8.5a3 3 0 0 1-2.94-2.402L3 16.5V13l3.51 1.755a2.989 2.989 0 0 1 2.834-.635l2.727-3.818A4.5 4.5 0 0 1 16.5 5"/><circle cx="16.5" cy="9.5" r="1" fill="currentColor"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func BrandStocktwits(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 3L8 7.5l8 4.5m-8 0l8 4.5L8 21"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -12495,7 +13288,7 @@ func BrandTiktok(children ...ElementRenderer) *TablerIcon {
 func BrandTiktokFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M16.083 2H12a1 1 0 0 0-1 1v11.5a1.5 1.5 0 1 1-2.519-1.1l.12-.1A1 1 0 0 0 9 12.5V8.174A1 1 0 0 0 7.77 7.2A7.5 7.5 0 0 0 9.5 22l.243-.005A7.5 7.5 0 0 0 17 14.5v-2.7l.311.153c1.122.53 2.333.868 3.59.993A1 1 0 0 0 22 11.95V7.917a1 1 0 0 0-.834-.986a5.005 5.005 0 0 1-4.097-4.096A1 1 0 0 0 16.083 2"/></g>`),
+			Text(`<path fill="currentColor" d="M16.083 2H12a1 1 0 0 0-1 1v11.5a1.5 1.5 0 1 1-2.519-1.1l.12-.1A1 1 0 0 0 9 12.5V8.174A1 1 0 0 0 7.77 7.2A7.5 7.5 0 0 0 9.5 22l.243-.005A7.5 7.5 0 0 0 17 14.5v-2.7l.311.153c1.122.53 2.333.868 3.59.993A1 1 0 0 0 22 11.95V7.917a1 1 0 0 0-.834-.986a5.005 5.005 0 0 1-4.097-4.096A1 1 0 0 0 16.083 2"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -12583,7 +13376,7 @@ func BrandTwitter(children ...ElementRenderer) *TablerIcon {
 func BrandTwitterFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M14.058 3.41c-1.807.767-2.995 2.453-3.056 4.38L11 7.972l-.243-.023C8.365 7.68 6.259 6.437 4.813 4.418a1 1 0 0 0-1.685.092l-.097.186l-.049.099c-.719 1.485-1.19 3.29-1.017 5.203l.03.273c.283 2.263 1.5 4.215 3.779 5.679l.173.107l-.081.043c-1.315.663-2.518.952-3.827.9c-1.056-.04-1.446 1.372-.518 1.878c3.598 1.961 7.461 2.566 10.792 1.6c4.06-1.18 7.152-4.223 8.335-8.433l.127-.495c.238-.993.372-2.006.401-3.024l.003-.332l.393-.779l.44-.862l.214-.434l.118-.247c.265-.565.456-1.033.574-1.43l.014-.056l.008-.018c.22-.593-.166-1.358-.941-1.358l-.122.007a.997.997 0 0 0-.231.057l-.086.038a7.46 7.46 0 0 1-.88.36l-.356.115l-.271.08l-.772.214c-1.336-1.118-3.144-1.254-5.012-.554l-.211.084z"/></g>`),
+			Text(`<path fill="currentColor" d="M14.058 3.41c-1.807.767-2.995 2.453-3.056 4.38L11 7.972l-.243-.023C8.365 7.68 6.259 6.437 4.813 4.418a1 1 0 0 0-1.685.092l-.097.186l-.049.099c-.719 1.485-1.19 3.29-1.017 5.203l.03.273c.283 2.263 1.5 4.215 3.779 5.679l.173.107l-.081.043c-1.315.663-2.518.952-3.827.9c-1.056-.04-1.446 1.372-.518 1.878c3.598 1.961 7.461 2.566 10.792 1.6c4.06-1.18 7.152-4.223 8.335-8.433l.127-.495c.238-.993.372-2.006.401-3.024l.003-.332l.393-.779l.44-.862l.214-.434l.118-.247c.265-.565.456-1.033.574-1.43l.014-.056l.008-.018c.22-.593-.166-1.358-.941-1.358l-.122.007a.997.997 0 0 0-.231.057l-.086.038a7.46 7.46 0 0 1-.88.36l-.356.115l-.271.08l-.772.214c-1.336-1.118-3.144-1.254-5.012-.554l-.211.084z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -12855,7 +13648,7 @@ func BrandX(children ...ElementRenderer) *TablerIcon {
 func BrandXfilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M8.267 3a1 1 0 0 1 .73.317l.076.092l4.274 5.828l5.946-5.944a1 1 0 0 1 1.497 1.32l-.083.094l-6.163 6.162l6.262 8.54a1 1 0 0 1-.697 1.585L20 21h-4.267a1 1 0 0 1-.73-.317l-.076-.092l-4.276-5.829l-5.944 5.945a1 1 0 0 1-1.497-1.32l.083-.094l6.161-6.163l-6.26-8.539a1 1 0 0 1 .697-1.585L4 3z"/></g>`),
+			Text(`<path fill="currentColor" d="M8.267 3a1 1 0 0 1 .73.317l.076.092l4.274 5.828l5.946-5.944a1 1 0 0 1 1.497 1.32l-.083.094l-6.163 6.162l6.262 8.54a1 1 0 0 1-.697 1.585L20 21h-4.267a1 1 0 0 1-.73-.317l-.076-.092l-4.276-5.829l-5.944 5.945a1 1 0 0 1-1.497-1.32l.083-.094l6.161-6.163l-6.26-8.539a1 1 0 0 1 .697-1.585L4 3z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -12908,6 +13701,14 @@ func BrandYandex(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func BrandYarn(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.845 19.308c-1.268.814-2.41 1.254-3.845 1.692c-.176.21-.645.544-.912.588A42.469 42.469 0 0 1 8.59 22c-.812.006-1.31-.214-1.447-.554c-.115-.279.336-2.054.298-1.964c-.157.392-.575 1.287-.997 1.72c-.579.6-1.674.4-2.322.051c-.71-.386-.07-1.28-.346-1.267C3.5 20 3 18.5 3 17.75c0-.828.622-1.674 1.235-2.211a6.811 6.811 0 0 1 .46-3.143a7.414 7.414 0 0 1 2.208-2.615S5.55 8.247 6.054 6.869c.328-.902.46-.895.567-.935c.38-.12.727-.33 1.013-.612c.78-.88 1.96-1.438 3.116-1.322c0 0 .781-2.43 1.533-1.936c.415.653.671 1.218.967 1.936c0 0 1.15-.7 1.25-.5c.514 1.398.487 3.204.211 4.67c-.324 1.408-.84 2.691-1.711 3.83c-.094.16.98.705 1.722 2.812c.686 1.928.278 2.438.278 2.688s.716.144 2.296-.855A5.848 5.848 0 0 1 20.28 15.5c.735-.066.988-.035 1.22 1c.232 1.035-.346 1.406-.744 1.506c0 0-2.09.675-2.911 1.302"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func BrandYatse(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
@@ -12935,7 +13736,7 @@ func BrandYoutube(children ...ElementRenderer) *TablerIcon {
 func BrandYoutubeFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M18 3a5 5 0 0 1 5 5v8a5 5 0 0 1-5 5H6a5 5 0 0 1-5-5V8a5 5 0 0 1 5-5zM9 9v6a1 1 0 0 0 1.514.857l5-3a1 1 0 0 0 0-1.714l-5-3A1 1 0 0 0 9 9"/></g>`),
+			Text(`<path fill="currentColor" d="M18 3a5 5 0 0 1 5 5v8a5 5 0 0 1-5 5H6a5 5 0 0 1-5-5V8a5 5 0 0 1 5-5zM9 9v6a1 1 0 0 0 1.514.857l5-3a1 1 0 0 0 0-1.714l-5-3A1 1 0 0 0 9 9"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -13012,6 +13813,14 @@ func Bread(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func BreadFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M18 3a4 4 0 0 1 3.109 6.516l-.11.126L21 18a3 3 0 0 1-2.824 2.995L18 21H6a3 3 0 0 1-3-3V9.644l-.116-.136a4 4 0 0 1-.728-3.616l.067-.21c.532-1.525 1.93-2.58 3.601-2.677l12.079.001z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func BreadOff(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
@@ -13031,7 +13840,7 @@ func Briefcase(children ...ElementRenderer) *TablerIcon {
 func BriefcaseFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M22 13.478V18a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3v-4.522l.553.277a20.999 20.999 0 0 0 18.897-.002zM14 2a3 3 0 0 1 3 3v1h2a3 3 0 0 1 3 3v2.242l-1.447.724a19.002 19.002 0 0 1-16.726.186l-.647-.32l-1.18-.59V9a3 3 0 0 1 3-3h2V5a3 3 0 0 1 3-3zm-2 8a1 1 0 0 0-1 1a1 1 0 1 0 2 .01c0-.562-.448-1.01-1-1.01m2-6h-4a1 1 0 0 0-1 1v1h6V5a1 1 0 0 0-1-1"/></g>`),
+			Text(`<path fill="currentColor" d="M22 13.478V18a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3v-4.522l.553.277a20.999 20.999 0 0 0 18.897-.002zM14 2a3 3 0 0 1 3 3v1h2a3 3 0 0 1 3 3v2.242l-1.447.724a19.002 19.002 0 0 1-16.726.186l-.647-.32l-1.18-.59V9a3 3 0 0 1 3-3h2V5a3 3 0 0 1 3-3zm-2 8a1 1 0 0 0-1 1a1 1 0 1 0 2 .01c0-.562-.448-1.01-1-1.01m2-6h-4a1 1 0 0 0-1 1v1h6V5a1 1 0 0 0-1-1"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -13052,10 +13861,34 @@ func BriefcaseTwo(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func BriefcaseTwoFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M14 2a3 3 0 0 1 3 3v1h2a3 3 0 0 1 3 3v9a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3V9a3 3 0 0 1 3-3h2V5a3 3 0 0 1 3-3zm0 2h-4a1 1 0 0 0-1 1v1h6V5a1 1 0 0 0-1-1"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func Brightness(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12a9 9 0 1 0 18 0a9 9 0 1 0-18 0m9-9v18m0-12l4.65-4.65M12 14.3l7.37-7.37M12 19.6l8.85-8.85"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func BrightnessAuto(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M6 6h3.5L12 3.5L14.5 6H18v3.5l2.5 2.5l-2.5 2.5V18h-3.5L12 20.5L9.5 18H6v-3.5L3.5 12L6 9.5z"/><path d="M10 14.5V11a2 2 0 1 1 4 0v3.5M10 13h4"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func BrightnessAutoFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M12.707 2.793L14.915 5H18a1 1 0 0 1 .993.883L19 6v3.085l2.207 2.208a1 1 0 0 1 .083 1.32l-.083.094L19 14.914V18a1 1 0 0 1-.883.993L18 19h-3.086l-2.207 2.207a1 1 0 0 1-1.32.083l-.094-.083L9.085 19H6a1 1 0 0 1-.993-.883L5 18v-3.085l-2.207-2.208a1 1 0 0 1-.083-1.32l.083-.094L5 9.084V6a1 1 0 0 1 .883-.993L6 5h3.084l2.209-2.207a1 1 0 0 1 1.414 0M12 8a3 3 0 0 0-3 3v3.5a1 1 0 0 0 2 0V14h2v.5a1 1 0 0 0 .883.993L14 15.5a1 1 0 0 0 1-1V11a3 3 0 0 0-3-3m0 2a1 1 0 0 1 1 1v1h-2v-1a1 1 0 0 1 .883-.993z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -13071,7 +13904,15 @@ func BrightnessDown(children ...ElementRenderer) *TablerIcon {
 func BrightnessDownFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M12 8a4 4 0 1 1-3.995 4.2L8 12l.005-.2A4 4 0 0 1 12 8m0-4a1 1 0 0 1 .993.883L13 5.01a1 1 0 0 1-1.993.117L11 5a1 1 0 0 1 1-1m5 2a1 1 0 0 1 .993.883L18 7.01a1 1 0 0 1-1.993.117L16 7a1 1 0 0 1 1-1m2 5a1 1 0 0 1 .993.883l.007.127a1 1 0 0 1-1.993.117L18 12a1 1 0 0 1 1-1m-2 5a1 1 0 0 1 .993.883l.007.127a1 1 0 0 1-1.993.117L16 17a1 1 0 0 1 1-1m-5 2a1 1 0 0 1 .993.883l.007.127a1 1 0 0 1-1.993.117L11 19a1 1 0 0 1 1-1m-5-2a1 1 0 0 1 .993.883L8 17.01a1 1 0 0 1-1.993.117L6 17a1 1 0 0 1 1-1m-2-5a1 1 0 0 1 .993.883L6 12.01a1 1 0 0 1-1.993.117L4 12a1 1 0 0 1 1-1m2-5a1 1 0 0 1 .993.883L8 7.01a1 1 0 0 1-1.993.117L6 7a1 1 0 0 1 1-1"/></g>`),
+			Text(`<path fill="currentColor" d="M12 8a4 4 0 1 1-3.995 4.2L8 12l.005-.2A4 4 0 0 1 12 8m0-4a1 1 0 0 1 .993.883L13 5.01a1 1 0 0 1-1.993.117L11 5a1 1 0 0 1 1-1m5 2a1 1 0 0 1 .993.883L18 7.01a1 1 0 0 1-1.993.117L16 7a1 1 0 0 1 1-1m2 5a1 1 0 0 1 .993.883l.007.127a1 1 0 0 1-1.993.117L18 12a1 1 0 0 1 1-1m-2 5a1 1 0 0 1 .993.883l.007.127a1 1 0 0 1-1.993.117L16 17a1 1 0 0 1 1-1m-5 2a1 1 0 0 1 .993.883l.007.127a1 1 0 0 1-1.993.117L11 19a1 1 0 0 1 1-1m-5-2a1 1 0 0 1 .993.883L8 17.01a1 1 0 0 1-1.993.117L6 17a1 1 0 0 1 1-1m-2-5a1 1 0 0 1 .993.883L6 12.01a1 1 0 0 1-1.993.117L4 12a1 1 0 0 1 1-1m2-5a1 1 0 0 1 .993.883L8 7.01a1 1 0 0 1-1.993.117L6 7a1 1 0 0 1 1-1"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func BrightnessFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M17 3.34A10 10 0 1 1 2 12l.005-.324A10 10 0 0 1 17 3.34M8 5.072A8 8 0 0 0 12.001 20L12 4a8 8 0 0 0-4 1.072"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -13111,7 +13952,7 @@ func BrightnessUp(children ...ElementRenderer) *TablerIcon {
 func BrightnessUpFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M12 8a4 4 0 1 1-3.995 4.2L8 12l.005-.2A4 4 0 0 1 12 8m0-6a1 1 0 0 1 .993.883L13 3v2a1 1 0 0 1-1.993.117L11 5V3a1 1 0 0 1 1-1m5.693 2.893a1 1 0 0 1 1.497 1.32l-.083.094l-1.4 1.4a1 1 0 0 1-1.497-1.32l.083-.094zM21 11a1 1 0 0 1 .117 1.993L21 13h-2a1 1 0 0 1-.117-1.993L19 11zm-4.707 5.293a1 1 0 0 1 1.32-.083l.094.083l1.4 1.4a1 1 0 0 1-1.32 1.497l-.094-.083l-1.4-1.4a1 1 0 0 1 0-1.414M12 18a1 1 0 0 1 .993.883L13 19v2a1 1 0 0 1-1.993.117L11 21v-2a1 1 0 0 1 1-1m-5.707-1.707a1 1 0 0 1 1.497 1.32l-.083.094l-1.4 1.4a1 1 0 0 1-1.497-1.32l.083-.094zM6 11a1 1 0 0 1 .117 1.993L6 13H4a1 1 0 0 1-.117-1.993L4 11zM4.893 4.893a1 1 0 0 1 1.32-.083l.094.083l1.4 1.4a1 1 0 0 1-1.32 1.497l-.094-.083l-1.4-1.4a1 1 0 0 1 0-1.414"/></g>`),
+			Text(`<path fill="currentColor" d="M12 8a4 4 0 1 1-3.995 4.2L8 12l.005-.2A4 4 0 0 1 12 8m0-6a1 1 0 0 1 .993.883L13 3v2a1 1 0 0 1-1.993.117L11 5V3a1 1 0 0 1 1-1m5.693 2.893a1 1 0 0 1 1.497 1.32l-.083.094l-1.4 1.4a1 1 0 0 1-1.497-1.32l.083-.094zM21 11a1 1 0 0 1 .117 1.993L21 13h-2a1 1 0 0 1-.117-1.993L19 11zm-4.707 5.293a1 1 0 0 1 1.32-.083l.094.083l1.4 1.4a1 1 0 0 1-1.32 1.497l-.094-.083l-1.4-1.4a1 1 0 0 1 0-1.414M12 18a1 1 0 0 1 .993.883L13 19v2a1 1 0 0 1-1.993.117L11 21v-2a1 1 0 0 1 1-1m-5.707-1.707a1 1 0 0 1 1.497 1.32l-.083.094l-1.4 1.4a1 1 0 0 1-1.497-1.32l.083-.094zM6 11a1 1 0 0 1 .117 1.993L6 13H4a1 1 0 0 1-.117-1.993L4 11zM4.893 4.893a1 1 0 0 1 1.32-.083l.094.083l1.4 1.4a1 1 0 0 1-1.32 1.497l-.094-.083l-1.4-1.4a1 1 0 0 1 0-1.414"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -13223,7 +14064,7 @@ func Bug(children ...ElementRenderer) *TablerIcon {
 func BugFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M12 4a4 4 0 0 1 3.995 3.8L16 8a1 1 0 0 1 .428.096l3.033-1.938a1 1 0 1 1 1.078 1.684l-3.015 1.931A7.17 7.17 0 0 1 18 12h3a1 1 0 0 1 0 2h-3v1a6.01 6.01 0 0 1-.195 1.525l2.708 1.616a1 1 0 1 1-1.026 1.718l-2.514-1.501A6.002 6.002 0 0 1 13 20.918V15a1 1 0 0 0-2 0v5.917a6.002 6.002 0 0 1-3.973-2.56L4.513 19.86a1 1 0 1 1-1.026-1.718l2.708-1.616A6.01 6.01 0 0 1 6 15v-1H3a1 1 0 0 1 0-2h3.001v-.055a7 7 0 0 1 .474-2.173l-3.014-1.93a1 1 0 1 1 1.078-1.684l3.032 1.939l.024-.012l.068-.027l.019-.005l.016-.006l.032-.008l.04-.013l.034-.007l.034-.004l.045-.008l.015-.001l.015-.002L8 8a4 4 0 0 1 4-4m0 2a2 2 0 0 0-2 2h4a2 2 0 0 0-2-2"/></g>`),
+			Text(`<path fill="currentColor" d="M12 4a4 4 0 0 1 3.995 3.8L16 8a1 1 0 0 1 .428.096l3.033-1.938a1 1 0 1 1 1.078 1.684l-3.015 1.931A7.17 7.17 0 0 1 18 12h3a1 1 0 0 1 0 2h-3v1a6.01 6.01 0 0 1-.195 1.525l2.708 1.616a1 1 0 1 1-1.026 1.718l-2.514-1.501A6.002 6.002 0 0 1 13 20.918V15a1 1 0 0 0-2 0v5.917a6.002 6.002 0 0 1-3.973-2.56L4.513 19.86a1 1 0 1 1-1.026-1.718l2.708-1.616A6.01 6.01 0 0 1 6 15v-1H3a1 1 0 0 1 0-2h3.001v-.055a7 7 0 0 1 .474-2.173l-3.014-1.93a1 1 0 1 1 1.078-1.684l3.032 1.939l.024-.012l.068-.027l.019-.005l.016-.006l.032-.008l.04-.013l.034-.007l.034-.004l.045-.008l.015-.001l.015-.002L8 8a4 4 0 0 1 4-4m0 2a2 2 0 0 0-2 2h4a2 2 0 0 0-2-2"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -13280,6 +14121,14 @@ func BuildingBroadcastTower(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M11 12a1 1 0 1 0 2 0a1 1 0 1 0-2 0"/><path d="M16.616 13.924a5 5 0 1 0-9.23 0"/><path d="M20.307 15.469a9 9 0 1 0-16.615 0"/><path d="m9 21l3-9l3 9m-5-2h4"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func BuildingBroadcastTowerFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="currentColor"><path d="M12 10a2 2 0 0 1 1.497 3.327l2.452 7.357a1 1 0 1 1-1.898.632L13.611 20h-3.224l-.438 1.317a1 1 0 0 1-1.152.663l-.113-.03a1 1 0 0 1-.633-1.265l2.452-7.357A2 2 0 0 1 10 12l.005-.15A2 2 0 0 1 12 10"/><path d="M18.093 4.078a10 10 0 0 1 3.137 11.776a1 1 0 0 1-1.846-.77a8 8 0 1 0-14.769 0a1 1 0 0 1-1.846.77A10 10 0 0 1 18.093 4.078"/><path d="M15.657 7.243a6 6 0 0 1 1.882 7.066a1 1 0 1 1-1.846-.77a4 4 0 1 0-7.384 0a1 1 0 1 1-1.846.77a6 6 0 0 1 9.194-7.066"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -13463,7 +14312,7 @@ func Bulb(children ...ElementRenderer) *TablerIcon {
 func BulbFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M4 11a1 1 0 0 1 .117 1.993L4 13H3a1 1 0 0 1-.117-1.993L3 11zm8-9a1 1 0 0 1 .993.883L13 3v1a1 1 0 0 1-1.993.117L11 4V3a1 1 0 0 1 1-1m9 9a1 1 0 0 1 .117 1.993L21 13h-1a1 1 0 0 1-.117-1.993L20 11zM4.893 4.893a1 1 0 0 1 1.32-.083l.094.083l.7.7a1 1 0 0 1-1.32 1.497l-.094-.083l-.7-.7a1 1 0 0 1 0-1.414m12.8 0a1 1 0 0 1 1.497 1.32l-.083.094l-.7.7a1 1 0 0 1-1.497-1.32l.083-.094zM14 18a1 1 0 0 1 1 1a3 3 0 0 1-6 0a1 1 0 0 1 .883-.993L10 18zM12 6a6 6 0 0 1 3.6 10.8a1 1 0 0 1-.471.192L15 17H9a1 1 0 0 1-.6-.2A6 6 0 0 1 12 6"/></g>`),
+			Text(`<path fill="currentColor" d="M4 11a1 1 0 0 1 .117 1.993L4 13H3a1 1 0 0 1-.117-1.993L3 11zm8-9a1 1 0 0 1 .993.883L13 3v1a1 1 0 0 1-1.993.117L11 4V3a1 1 0 0 1 1-1m9 9a1 1 0 0 1 .117 1.993L21 13h-1a1 1 0 0 1-.117-1.993L20 11zM4.893 4.893a1 1 0 0 1 1.32-.083l.094.083l.7.7a1 1 0 0 1-1.32 1.497l-.094-.083l-.7-.7a1 1 0 0 1 0-1.414m12.8 0a1 1 0 0 1 1.497 1.32l-.083.094l-.7.7a1 1 0 0 1-1.497-1.32l.083-.094zM14 18a1 1 0 0 1 1 1a3 3 0 0 1-6 0a1 1 0 0 1 .883-.993L10 18zM12 6a6 6 0 0 1 3.6 10.8a1 1 0 0 1-.471.192L15 17H9a1 1 0 0 1-.6-.2A6 6 0 0 1 12 6"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -13543,7 +14392,7 @@ func Cactus(children ...ElementRenderer) *TablerIcon {
 func CactusFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M7 22a1 1 0 0 1-.117-1.993L7 20h2v-6a4 4 0 0 1-3.995-3.8L5 10V9a1 1 0 0 1 1.993-.117L7 9v1a2 2 0 0 0 1.85 1.995L9 12V5a3 3 0 0 1 5.995-.176L15 5v10a2 2 0 0 0 1.995-1.85L17 13V8a1 1 0 0 1 1.993-.117L19 8v5a4 4 0 0 1-3.8 3.995L15 17v3h2a1 1 0 0 1 .117 1.993L17 22z"/></g>`),
+			Text(`<path fill="currentColor" d="M7 22a1 1 0 0 1-.117-1.993L7 20h2v-6a4 4 0 0 1-3.995-3.8L5 10V9a1 1 0 0 1 1.993-.117L7 9v1a2 2 0 0 0 1.85 1.995L9 12V5a3 3 0 0 1 5.995-.176L15 5v10a2 2 0 0 0 1.995-1.85L17 13V8a1 1 0 0 1 1.993-.117L19 8v5a4 4 0 0 1-3.8 3.995L15 17v3h2a1 1 0 0 1 .117 1.993L17 22z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -13583,7 +14432,7 @@ func Calculator(children ...ElementRenderer) *TablerIcon {
 func CalculatorFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M18 2a3 3 0 0 1 3 3v14a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V5a3 3 0 0 1 3-3zM8 17a1 1 0 0 0-1 1l.007.127A1 1 0 0 0 9 18.01l-.007-.127A1 1 0 0 0 8 17m4 0a1 1 0 0 0-1 1l.007.127A1 1 0 0 0 13 18.01l-.007-.127A1 1 0 0 0 12 17m4 0a1 1 0 0 0-1 1l.007.127A1 1 0 0 0 17 18.01l-.007-.127A1 1 0 0 0 16 17m-8-4a1 1 0 0 0-1 1l.007.127A1 1 0 0 0 9 14.01l-.007-.127A1 1 0 0 0 8 13m4 0a1 1 0 0 0-1 1l.007.127A1 1 0 0 0 13 14.01l-.007-.127A1 1 0 0 0 12 13m4 0a1 1 0 0 0-1 1l.007.127A1 1 0 0 0 17 14.01l-.007-.127A1 1 0 0 0 16 13m-1-7H9a2 2 0 0 0-2 2v1a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2"/></g>`),
+			Text(`<path fill="currentColor" d="M18 2a3 3 0 0 1 3 3v14a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V5a3 3 0 0 1 3-3zM8 17a1 1 0 0 0-1 1l.007.127A1 1 0 0 0 9 18.01l-.007-.127A1 1 0 0 0 8 17m4 0a1 1 0 0 0-1 1l.007.127A1 1 0 0 0 13 18.01l-.007-.127A1 1 0 0 0 12 17m4 0a1 1 0 0 0-1 1l.007.127A1 1 0 0 0 17 18.01l-.007-.127A1 1 0 0 0 16 17m-8-4a1 1 0 0 0-1 1l.007.127A1 1 0 0 0 9 14.01l-.007-.127A1 1 0 0 0 8 13m4 0a1 1 0 0 0-1 1l.007.127A1 1 0 0 0 13 14.01l-.007-.127A1 1 0 0 0 12 13m4 0a1 1 0 0 0-1 1l.007.127A1 1 0 0 0 17 14.01l-.007-.127A1 1 0 0 0 16 13m-1-7H9a2 2 0 0 0-2 2v1a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -13703,7 +14552,7 @@ func CalendarExclamation(children ...ElementRenderer) *TablerIcon {
 func CalendarFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M16 2a1 1 0 0 1 .993.883L17 3v1h1a3 3 0 0 1 2.995 2.824L21 7v12a3 3 0 0 1-2.824 2.995L18 22H6a3 3 0 0 1-2.995-2.824L3 19V7a3 3 0 0 1 2.824-2.995L6 4h1V3a1 1 0 0 1 1.993-.117L9 3v1h6V3a1 1 0 0 1 1-1m3 7H5v9.625c0 .705.386 1.286.883 1.366L6 20h12c.513 0 .936-.53.993-1.215l.007-.16z"/><path fill="currentColor" d="M12 12a1 1 0 0 1 .993.883L13 13v3a1 1 0 0 1-1.993.117L11 16v-2a1 1 0 0 1-.117-1.993L11 12z"/></g>`),
+			Text(`<g fill="currentColor"><path d="M16 2a1 1 0 0 1 .993.883L17 3v1h1a3 3 0 0 1 2.995 2.824L21 7v12a3 3 0 0 1-2.824 2.995L18 22H6a3 3 0 0 1-2.995-2.824L3 19V7a3 3 0 0 1 2.824-2.995L6 4h1V3a1 1 0 0 1 1.993-.117L9 3v1h6V3a1 1 0 0 1 1-1m3 7H5v9.625c0 .705.386 1.286.883 1.366L6 20h12c.513 0 .936-.53.993-1.215l.007-.16z"/><path d="M12 12a1 1 0 0 1 .993.883L13 13v3a1 1 0 0 1-1.993.117L11 16v-2a1 1 0 0 1-.117-1.993L11 12z"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -13943,7 +14792,7 @@ func CameraExclamation(children ...ElementRenderer) *TablerIcon {
 func CameraFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M15 3a2 2 0 0 1 1.995 1.85L17 5a1 1 0 0 0 .883.993L18 6h1a3 3 0 0 1 2.995 2.824L22 9v9a3 3 0 0 1-2.824 2.995L19 21H5a3 3 0 0 1-2.995-2.824L2 18V9a3 3 0 0 1 2.824-2.995L5 6h1a1 1 0 0 0 1-1a2 2 0 0 1 1.85-1.995L9 3zm-3 7a3 3 0 0 0-2.985 2.698l-.011.152L9 13l.004.15A3 3 0 1 0 12 10"/></g>`),
+			Text(`<path fill="currentColor" d="M15 3a2 2 0 0 1 1.995 1.85L17 5a1 1 0 0 0 .883.993L18 6h1a3 3 0 0 1 2.995 2.824L22 9v9a3 3 0 0 1-2.824 2.995L19 21H5a3 3 0 0 1-2.995-2.824L2 18V9a3 3 0 0 1 2.824-2.995L5 6h1a1 1 0 0 0 1-1a2 2 0 0 1 1.85-1.995L9 3zm-3 7a3 3 0 0 0-2.985 2.698l-.011.152L9 13l.004.15A3 3 0 1 0 12 10"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -14079,7 +14928,7 @@ func Campfire(children ...ElementRenderer) *TablerIcon {
 func CampfireFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M19.757 16.03a1 1 0 0 1 .597 1.905l-.111.035l-16 4a1 1 0 0 1-.597-1.905l.111-.035z"/><path fill="currentColor" d="M3.03 16.757a1 1 0 0 1 1.098-.749l.115.022l16 4a1 1 0 0 1-.37 1.962l-.116-.022l-16-4a1 1 0 0 1-.727-1.213M13.553 2.106C9.379 4.192 7 7.464 7 11a5 5 0 0 0 10 0c0-1.047-.188-1.808-.606-2.705l-.169-.345l-.33-.647C15.274 6.063 15 4.965 15 3a1 1 0 0 0-1.447-.894"/></g>`),
+			Text(`<g fill="currentColor"><path d="M19.757 16.03a1 1 0 0 1 .597 1.905l-.111.035l-16 4a1 1 0 0 1-.597-1.905l.111-.035z"/><path d="M3.03 16.757a1 1 0 0 1 1.098-.749l.115.022l16 4a1 1 0 0 1-.37 1.962l-.116-.022l-16-4a1 1 0 0 1-.727-1.213M13.553 2.106C9.379 4.192 7 7.464 7 11a5 5 0 0 0 10 0c0-1.047-.188-1.808-.606-2.705l-.169-.345l-.33-.647C15.274 6.063 15 4.965 15 3a1 1 0 0 0-1.447-.894"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -14095,7 +14944,7 @@ func Candle(children ...ElementRenderer) *TablerIcon {
 func CandleFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M14 10h-4a2 2 0 0 0-2 2v9a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-9a2 2 0 0 0-2-2m-2.746-7.666l-1.55 1.737C8.662 5.348 8.806 7.168 10 8.237a3 3 0 0 0 4.196-4.28l-1.452-1.624a1 1 0 0 0-1.491.001z"/></g>`),
+			Text(`<path fill="currentColor" d="M14 10h-4a2 2 0 0 0-2 2v9a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-9a2 2 0 0 0-2-2m-2.746-7.666l-1.55 1.737C8.662 5.348 8.806 7.168 10 8.237a3 3 0 0 0 4.196-4.28l-1.452-1.624a1 1 0 0 0-1.491.001z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -14143,7 +14992,7 @@ func Capsule(children ...ElementRenderer) *TablerIcon {
 func CapsuleFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="m12 2l-.243.004A7.004 7.004 0 0 0 5 9v6a7 7 0 0 0 7 7l.243-.004A7.004 7.004 0 0 0 19 15V9a7 7 0 0 0-7-7"/></g>`),
+			Text(`<path fill="currentColor" d="m12 2l-.243.004A7.004 7.004 0 0 0 5 9v6a7 7 0 0 0 7 7l.243-.004A7.004 7.004 0 0 0 19 15V9a7 7 0 0 0-7-7"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -14159,7 +15008,7 @@ func CapsuleHorizontal(children ...ElementRenderer) *TablerIcon {
 func CapsuleHorizontalFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M15 5H9a7 7 0 1 0 0 14h6a7 7 0 0 0 7-7l-.007-.303A7 7 0 0 0 15 5"/></g>`),
+			Text(`<path fill="currentColor" d="M15 5H9a7 7 0 1 0 0 14h6a7 7 0 0 0 7-7l-.007-.303A7 7 0 0 0 15 5"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -14175,7 +15024,7 @@ func Capture(children ...ElementRenderer) *TablerIcon {
 func CaptureFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M8 3a1 1 0 0 1 .117 1.993L8 5H6a1 1 0 0 0-.993.883L5 6v2a1 1 0 0 1-1.993.117L3 8V6a3 3 0 0 1 2.824-2.995L6 3zM4 15a1 1 0 0 1 .993.883L5 16v2a1 1 0 0 0 .883.993L6 19h2a1 1 0 0 1 .117 1.993L8 21H6a3 3 0 0 1-2.995-2.824L3 18v-2a1 1 0 0 1 1-1M18 3a3 3 0 0 1 2.995 2.824L21 6v2a1 1 0 0 1-1.993.117L19 8V6a1 1 0 0 0-.883-.993L18 5h-2a1 1 0 0 1-.117-1.993L16 3zm2 12a1 1 0 0 1 .993.883L21 16v2a3 3 0 0 1-2.824 2.995L18 21h-2a1 1 0 0 1-.117-1.993L16 19h2a1 1 0 0 0 .993-.883L19 18v-2a1 1 0 0 1 1-1m-8-7a4 4 0 1 1-3.995 4.2L8 12l.005-.2A4 4 0 0 1 12 8"/></g>`),
+			Text(`<path fill="currentColor" d="M8 3a1 1 0 0 1 .117 1.993L8 5H6a1 1 0 0 0-.993.883L5 6v2a1 1 0 0 1-1.993.117L3 8V6a3 3 0 0 1 2.824-2.995L6 3zM4 15a1 1 0 0 1 .993.883L5 16v2a1 1 0 0 0 .883.993L6 19h2a1 1 0 0 1 .117 1.993L8 21H6a3 3 0 0 1-2.995-2.824L3 18v-2a1 1 0 0 1 1-1M18 3a3 3 0 0 1 2.995 2.824L21 6v2a1 1 0 0 1-1.993.117L19 8V6a1 1 0 0 0-.883-.993L18 5h-2a1 1 0 0 1-.117-1.993L16 3zm2 12a1 1 0 0 1 .993.883L21 16v2a3 3 0 0 1-2.824 2.995L18 21h-2a1 1 0 0 1-.117-1.993L16 19h2a1 1 0 0 0 .993-.883L19 18v-2a1 1 0 0 1 1-1m-8-7a4 4 0 1 1-3.995 4.2L8 12l.005-.2A4 4 0 0 1 12 8"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -14208,6 +15057,54 @@ func CarCrash(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M8 17a2 2 0 1 0 4 0a2 2 0 1 0-4 0"/><path d="m7 6l4 5h1a2 2 0 0 1 2 2v4h-2m-4 0H3m0-6h8m-6 0V6m2 0H3m11 2V6m5 6h2m-3.5 3.5L19 17m-1.5-8.5L19 7"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func CarFan(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 12V3l4.912 1.914a1.7 1.7 0 0 1 .428 2.925zm0 0h9l-1.914 4.912a1.7 1.7 0 0 1-2.925.428zm0 0H3l1.914-4.912a1.7 1.7 0 0 1 2.925-.428zm0 0v9l-4.912-1.914a1.7 1.7 0 0 1-.428-2.925z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func CarFanAuto(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 12V3l4.912 1.914a1.7 1.7 0 0 1 .428 2.925zm2.044 2.624L12 12h4m-4 0H3l1.914-4.912a1.7 1.7 0 0 1 2.925-.428zm0 0v9l-4.912-1.914a1.7 1.7 0 0 1-.428-2.925zm5 9v-4a2 2 0 1 1 4 0v4m-4-2h4"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func CarFanOne(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 12V3l4.912 1.914a1.7 1.7 0 0 1 .428 2.925zm2.424 3.03L12 12h6m-6 0H3l1.914-4.912a1.7 1.7 0 0 1 2.925-.428zm0 0v9l-4.912-1.914a1.7 1.7 0 0 1-.428-2.925zm6 5l2-2v6"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func CarFanThree(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 12V3l4.912 1.914a1.7 1.7 0 0 1 .428 2.925zm2.044 2.624L12 12h4m-4 0H3l1.914-4.912a1.7 1.7 0 0 1 2.925-.428zm0 0v9l-4.912-1.914a1.7 1.7 0 0 1-.428-2.925zm6 3.5a.5.5 0 0 1 .5-.5h1a1.5 1.5 0 0 1 0 3H19h.5a1.5 1.5 0 0 1 0 3h-1a.5.5 0 0 1-.5-.5"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func CarFanTwo(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 12V3l4.912 1.914a1.7 1.7 0 0 1 .428 2.925zm2.044 2.624L12 12h4m-4 0H3l1.914-4.912a1.7 1.7 0 0 1 2.925-.428zm0 0v9l-4.912-1.914a1.7 1.7 0 0 1-.428-2.925zm6 3h2a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1h-1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1h2"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func CarFourWd(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5a2 2 0 0 1 2-2h0a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2h0a2 2 0 0 1-2-2zm0 12a2 2 0 0 1 2-2h0a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2h0a2 2 0 0 1-2-2zM15 5a2 2 0 0 1 2-2h0a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2h0a2 2 0 0 1-2-2zm0 12a2 2 0 0 1 2-2h0a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2h0a2 2 0 0 1-2-2zm-6 1h6M9 6h6m-3 .5V6v12"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -14279,7 +15176,7 @@ func Cards(children ...ElementRenderer) *TablerIcon {
 func CardsFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="m10.348 3.169l-7.15 3.113a2 2 0 0 0-1.03 2.608l4.92 11.895a1.96 1.96 0 0 0 2.59 1.063l7.142-3.11a2.002 2.002 0 0 0 1.036-2.611l-4.92-11.894a1.96 1.96 0 0 0-2.588-1.064M16 3a2 2 0 0 1 1.995 1.85L18 5v3.5a1 1 0 0 1-1.993.117L16 8.5V5h-1a1 1 0 0 1-.117-1.993L15 3zm3.08 2.61a1 1 0 0 1 1.31-.53c.257.108.505.21.769.314a2 2 0 0 1 1.114 2.479l-.056.146l-2.298 5.374a1 1 0 0 1-1.878-.676l.04-.11l2.296-5.371l-.366-.148l-.402-.167a1 1 0 0 1-.53-1.312z"/></g>`),
+			Text(`<path fill="currentColor" d="m10.348 3.169l-7.15 3.113a2 2 0 0 0-1.03 2.608l4.92 11.895a1.96 1.96 0 0 0 2.59 1.063l7.142-3.11a2.002 2.002 0 0 0 1.036-2.611l-4.92-11.894a1.96 1.96 0 0 0-2.588-1.064M16 3a2 2 0 0 1 1.995 1.85L18 5v3.5a1 1 0 0 1-1.993.117L16 8.5V5h-1a1 1 0 0 1-.117-1.993L15 3zm3.08 2.61a1 1 0 0 1 1.31-.53c.257.108.505.21.769.314a2 2 0 0 1 1.114 2.479l-.056.146l-2.298 5.374a1 1 0 0 1-1.878-.676l.04-.11l2.296-5.371l-.366-.148l-.402-.167a1 1 0 0 1-.53-1.312z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -14295,7 +15192,7 @@ func CaretDown(children ...ElementRenderer) *TablerIcon {
 func CaretDownFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M18 9c.852 0 1.297.986.783 1.623l-.076.084l-6 6a1 1 0 0 1-1.32.083l-.094-.083l-6-6l-.083-.094l-.054-.077l-.054-.096l-.017-.036l-.027-.067l-.032-.108l-.01-.053l-.01-.06l-.004-.057v-.118l.005-.058l.009-.06l.01-.052l.032-.108l.027-.067l.07-.132l.065-.09l.073-.081l.094-.083l.077-.054l.096-.054l.036-.017l.067-.027l.108-.032l.053-.01l.06-.01l.057-.004z"/></g>`),
+			Text(`<path fill="currentColor" d="M18 9c.852 0 1.297.986.783 1.623l-.076.084l-6 6a1 1 0 0 1-1.32.083l-.094-.083l-6-6l-.083-.094l-.054-.077l-.054-.096l-.017-.036l-.027-.067l-.032-.108l-.01-.053l-.01-.06l-.004-.057v-.118l.005-.058l.009-.06l.01-.052l.032-.108l.027-.067l.07-.132l.065-.09l.073-.081l.094-.083l.077-.054l.096-.054l.036-.017l.067-.027l.108-.032l.053-.01l.06-.01l.057-.004z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -14311,7 +15208,7 @@ func CaretLeft(children ...ElementRenderer) *TablerIcon {
 func CaretLeftFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="m13.883 5.007l.058-.005h.118l.058.005l.06.009l.052.01l.108.032l.067.027l.132.07l.09.065l.081.073l.083.094l.054.077l.054.096l.017.036l.027.067l.032.108l.01.053l.01.06l.004.057L15 6v12c0 .852-.986 1.297-1.623.783l-.084-.076l-6-6a1 1 0 0 1-.083-1.32l.083-.094l6-6l.094-.083l.077-.054l.096-.054l.036-.017l.067-.027l.108-.032l.053-.01l.06-.01z"/></g>`),
+			Text(`<path fill="currentColor" d="m13.883 5.007l.058-.005h.118l.058.005l.06.009l.052.01l.108.032l.067.027l.132.07l.09.065l.081.073l.083.094l.054.077l.054.096l.017.036l.027.067l.032.108l.01.053l.01.06l.004.057L15 6v12c0 .852-.986 1.297-1.623.783l-.084-.076l-6-6a1 1 0 0 1-.083-1.32l.083-.094l6-6l.094-.083l.077-.054l.096-.054l.036-.017l.067-.027l.108-.032l.053-.01l.06-.01z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -14327,7 +15224,7 @@ func CaretLeftRight(children ...ElementRenderer) *TablerIcon {
 func CaretLeftRightFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M13 6c0-.89 1.077-1.337 1.707-.707l6 6a1 1 0 0 1 0 1.414l-6 6a.95.95 0 0 1-.082.073l-.009.006l-.022.016l-.058.042l-.016.009l-.009.007l-.028.014l-.043.024l-.018.007l-.018.01l-.034.012l-.033.015l-.026.007l-.02.008l-.026.005l-.036.012l-.029.004l-.024.006l-.028.003l-.031.006l-.032.002l-.026.003h-.026L14 19l-.033-.002h-.026l-.026-.003l-.032-.002l-.031-.006l-.028-.003l-.024-.006l-.03-.004l-.035-.012l-.027-.005l-.019-.008l-.026-.007l-.033-.015l-.034-.012l-.018-.01l-.018-.007l-.043-.024l-.028-.014l-.009-.007l-.016-.009l-.058-.042l-.019-.012l-.003-.004l-.01-.006a1.006 1.006 0 0 1-.154-.155l-.006-.009l-.016-.022l-.042-.058l-.009-.016l-.007-.009l-.014-.028l-.024-.043l-.007-.018l-.01-.018l-.012-.034l-.015-.033l-.007-.026l-.008-.02l-.005-.026l-.012-.036l-.004-.029l-.006-.024l-.003-.028l-.006-.031l-.002-.032l-.003-.026v-.026L13 18zm-3.707-.707C9.923 4.663 11 5.109 11 6v12l-.002.033v.026l-.003.026l-.002.032l-.006.031l-.003.028l-.006.024l-.004.03l-.012.035l-.005.027l-.008.019l-.007.026l-.015.033l-.012.034l-.01.018l-.007.018l-.024.043l-.014.028l-.007.009l-.009.016l-.042.058l-.012.019l-.004.003l-.006.01a1.006 1.006 0 0 1-.155.154l-.009.006l-.022.016l-.058.042l-.016.009l-.009.007l-.028.014l-.043.024l-.018.007l-.018.01l-.034.012l-.033.015l-.026.007l-.02.008l-.026.005l-.036.012l-.029.004l-.024.006l-.028.003l-.031.006l-.032.002l-.026.003h-.026L10 19l-.033-.002h-.026l-.028-.003l-.03-.002l-.032-.006l-.027-.003l-.025-.006l-.028-.004l-.037-.012l-.026-.005l-.02-.008l-.025-.007l-.034-.015l-.033-.012l-.019-.01l-.017-.007l-.044-.024l-.027-.014l-.01-.007l-.015-.009l-.059-.042l-.018-.012l-.004-.004l-.008-.006a1.006 1.006 0 0 1-.082-.073l-6-6a1 1 0 0 1 0-1.414z"/></g>`),
+			Text(`<path fill="currentColor" d="M13 6c0-.89 1.077-1.337 1.707-.707l6 6a1 1 0 0 1 0 1.414l-6 6a.95.95 0 0 1-.082.073l-.009.006l-.022.016l-.058.042l-.016.009l-.009.007l-.028.014l-.043.024l-.018.007l-.018.01l-.034.012l-.033.015l-.026.007l-.02.008l-.026.005l-.036.012l-.029.004l-.024.006l-.028.003l-.031.006l-.032.002l-.026.003h-.026L14 19l-.033-.002h-.026l-.026-.003l-.032-.002l-.031-.006l-.028-.003l-.024-.006l-.03-.004l-.035-.012l-.027-.005l-.019-.008l-.026-.007l-.033-.015l-.034-.012l-.018-.01l-.018-.007l-.043-.024l-.028-.014l-.009-.007l-.016-.009l-.058-.042l-.019-.012l-.003-.004l-.01-.006a1.006 1.006 0 0 1-.154-.155l-.006-.009l-.016-.022l-.042-.058l-.009-.016l-.007-.009l-.014-.028l-.024-.043l-.007-.018l-.01-.018l-.012-.034l-.015-.033l-.007-.026l-.008-.02l-.005-.026l-.012-.036l-.004-.029l-.006-.024l-.003-.028l-.006-.031l-.002-.032l-.003-.026v-.026L13 18zm-3.707-.707C9.923 4.663 11 5.109 11 6v12l-.002.033v.026l-.003.026l-.002.032l-.006.031l-.003.028l-.006.024l-.004.03l-.012.035l-.005.027l-.008.019l-.007.026l-.015.033l-.012.034l-.01.018l-.007.018l-.024.043l-.014.028l-.007.009l-.009.016l-.042.058l-.012.019l-.004.003l-.006.01a1.006 1.006 0 0 1-.155.154l-.009.006l-.022.016l-.058.042l-.016.009l-.009.007l-.028.014l-.043.024l-.018.007l-.018.01l-.034.012l-.033.015l-.026.007l-.02.008l-.026.005l-.036.012l-.029.004l-.024.006l-.028.003l-.031.006l-.032.002l-.026.003h-.026L10 19l-.033-.002h-.026l-.028-.003l-.03-.002l-.032-.006l-.027-.003l-.025-.006l-.028-.004l-.037-.012l-.026-.005l-.02-.008l-.025-.007l-.034-.015l-.033-.012l-.019-.01l-.017-.007l-.044-.024l-.027-.014l-.01-.007l-.015-.009l-.059-.042l-.018-.012l-.004-.004l-.008-.006a1.006 1.006 0 0 1-.082-.073l-6-6a1 1 0 0 1 0-1.414z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -14343,7 +15240,7 @@ func CaretRight(children ...ElementRenderer) *TablerIcon {
 func CaretRightFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M9 6c0-.852.986-1.297 1.623-.783l.084.076l6 6a1 1 0 0 1 .083 1.32l-.083.094l-6 6l-.094.083l-.077.054l-.096.054l-.036.017l-.067.027l-.108.032l-.053.01l-.06.01l-.057.004L10 19l-.059-.002l-.058-.005l-.06-.009l-.052-.01l-.108-.032l-.067-.027l-.132-.07l-.09-.065l-.081-.073l-.083-.094l-.054-.077l-.054-.096l-.017-.036l-.027-.067l-.032-.108l-.01-.053l-.01-.06l-.004-.057z"/></g>`),
+			Text(`<path fill="currentColor" d="M9 6c0-.852.986-1.297 1.623-.783l.084.076l6 6a1 1 0 0 1 .083 1.32l-.083.094l-6 6l-.094.083l-.077.054l-.096.054l-.036.017l-.067.027l-.108.032l-.053.01l-.06.01l-.057.004L10 19l-.059-.002l-.058-.005l-.06-.009l-.052-.01l-.108-.032l-.067-.027l-.132-.07l-.09-.065l-.081-.073l-.083-.094l-.054-.077l-.054-.096l-.017-.036l-.027-.067l-.032-.108l-.01-.053l-.01-.06l-.004-.057z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -14367,7 +15264,7 @@ func CaretUpDown(children ...ElementRenderer) *TablerIcon {
 func CaretUpDownFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M11.293 3.293a1 1 0 0 1 1.414 0l6 6a.95.95 0 0 1 .073.082l.006.008l.016.022l.042.059l.009.015l.007.01l.014.027l.024.044l.007.017l.01.02l.012.032l.015.034l.007.025l.008.02l.005.026l.012.037l.004.028l.006.025l.003.026l.006.033l.002.03l.003.028v.026L19 10l-.002.033v.026l-.003.026l-.002.032l-.005.029l-.004.03l-.006.024l-.004.03l-.012.035l-.005.027l-.008.019l-.007.026l-.015.033l-.012.034l-.01.018l-.007.018l-.024.043l-.014.028l-.007.009l-.009.016l-.042.058l-.012.019l-.004.003l-.006.01a1.006 1.006 0 0 1-.155.154l-.009.006l-.022.016l-.058.042l-.016.009l-.009.007l-.028.014l-.043.024l-.018.007l-.018.01l-.034.012l-.033.015l-.024.006l-.021.009l-.027.005l-.036.012l-.029.004l-.024.006l-.028.003l-.031.006l-.032.002l-.026.003h-.026L18 11H6c-.89 0-1.337-1.077-.707-1.707zM18 13l.033.002h.026l.026.003l.032.002l.031.006l.028.003l.024.006l.03.004l.035.012l.027.005l.019.008l.026.007l.033.015l.034.012l.018.01l.018.007l.043.024l.028.014l.009.007l.016.009l.051.037l.026.017l.003.004l.01.006a.982.982 0 0 1 .154.155l.006.009l.015.02l.043.06l.009.016l.007.009l.014.028l.024.043l.005.013l.012.023l.012.034l.015.033l.007.026l.008.02l.005.026l.012.036l.004.029l.006.024l.003.028l.006.031l.002.032l.003.026v.026L19 14l-.002.033v.026l-.003.026l-.002.032l-.006.031l-.003.028l-.006.024l-.004.03l-.012.035l-.005.027l-.008.019l-.007.026l-.015.033l-.012.034l-.01.018l-.007.018l-.024.043l-.014.028l-.007.009l-.009.016l-.042.058l-.012.019l-.004.003l-.006.01l-.073.081l-6 6a1 1 0 0 1-1.414 0l-6-6C4.663 14.077 5.109 13 6 13z"/></g>`),
+			Text(`<path fill="currentColor" d="M11.293 3.293a1 1 0 0 1 1.414 0l6 6a.95.95 0 0 1 .073.082l.006.008l.016.022l.042.059l.009.015l.007.01l.014.027l.024.044l.007.017l.01.02l.012.032l.015.034l.007.025l.008.02l.005.026l.012.037l.004.028l.006.025l.003.026l.006.033l.002.03l.003.028v.026L19 10l-.002.033v.026l-.003.026l-.002.032l-.005.029l-.004.03l-.006.024l-.004.03l-.012.035l-.005.027l-.008.019l-.007.026l-.015.033l-.012.034l-.01.018l-.007.018l-.024.043l-.014.028l-.007.009l-.009.016l-.042.058l-.012.019l-.004.003l-.006.01a1.006 1.006 0 0 1-.155.154l-.009.006l-.022.016l-.058.042l-.016.009l-.009.007l-.028.014l-.043.024l-.018.007l-.018.01l-.034.012l-.033.015l-.024.006l-.021.009l-.027.005l-.036.012l-.029.004l-.024.006l-.028.003l-.031.006l-.032.002l-.026.003h-.026L18 11H6c-.89 0-1.337-1.077-.707-1.707zM18 13l.033.002h.026l.026.003l.032.002l.031.006l.028.003l.024.006l.03.004l.035.012l.027.005l.019.008l.026.007l.033.015l.034.012l.018.01l.018.007l.043.024l.028.014l.009.007l.016.009l.051.037l.026.017l.003.004l.01.006a.982.982 0 0 1 .154.155l.006.009l.015.02l.043.06l.009.016l.007.009l.014.028l.024.043l.005.013l.012.023l.012.034l.015.033l.007.026l.008.02l.005.026l.012.036l.004.029l.006.024l.003.028l.006.031l.002.032l.003.026v.026L19 14l-.002.033v.026l-.003.026l-.002.032l-.006.031l-.003.028l-.006.024l-.004.03l-.012.035l-.005.027l-.008.019l-.007.026l-.015.033l-.012.034l-.01.018l-.007.018l-.024.043l-.014.028l-.007.009l-.009.016l-.042.058l-.012.019l-.004.003l-.006.01l-.073.081l-6 6a1 1 0 0 1-1.414 0l-6-6C4.663 14.077 5.109 13 6 13z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -14375,7 +15272,7 @@ func CaretUpDownFilled(children ...ElementRenderer) *TablerIcon {
 func CaretUpFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M11.293 7.293a1 1 0 0 1 1.32-.083l.094.083l6 6l.083.094l.054.077l.054.096l.017.036l.027.067l.032.108l.01.053l.01.06l.004.057L19 14l-.002.059l-.005.058l-.009.06l-.01.052l-.032.108l-.027.067l-.07.132l-.065.09l-.073.081l-.094.083l-.077.054l-.096.054l-.036.017l-.067.027l-.108.032l-.053.01l-.06.01l-.057.004L18 15H6c-.852 0-1.297-.986-.783-1.623l.076-.084z"/></g>`),
+			Text(`<path fill="currentColor" d="M11.293 7.293a1 1 0 0 1 1.32-.083l.094.083l6 6l.083.094l.054.077l.054.096l.017.036l.027.067l.032.108l.01.053l.01.06l.004.057L19 14l-.002.059l-.005.058l-.009.06l-.01.052l-.032.108l-.027.067l-.07.132l-.065.09l-.073.081l-.094.083l-.077.054l-.096.054l-.036.017l-.067.027l-.108.032l-.053.01l-.06.01l-.057.004L18 15H6c-.852 0-1.297-.986-.783-1.623l.076-.084z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -14391,7 +15288,7 @@ func CarouselHorizontal(children ...ElementRenderer) *TablerIcon {
 func CarouselHorizontalFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M16 4H8a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2m6 2a1 1 0 0 1 .117 1.993L22 8h-1v8h1a1 1 0 0 1 .117 1.993L22 18h-1a2 2 0 0 1-1.995-1.85L19 16V8a2 2 0 0 1 1.85-1.995L21 6zM3 6a2 2 0 0 1 1.995 1.85L5 8v8a2 2 0 0 1-1.85 1.995L3 18H2a1 1 0 0 1-.117-1.993L2 16h1V8H2a1 1 0 0 1-.117-1.993L2 6z"/></g>`),
+			Text(`<path fill="currentColor" d="M16 4H8a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2m6 2a1 1 0 0 1 .117 1.993L22 8h-1v8h1a1 1 0 0 1 .117 1.993L22 18h-1a2 2 0 0 1-1.995-1.85L19 16V8a2 2 0 0 1 1.85-1.995L21 6zM3 6a2 2 0 0 1 1.995 1.85L5 8v8a2 2 0 0 1-1.85 1.995L3 18H2a1 1 0 0 1-.117-1.993L2 16h1V8H2a1 1 0 0 1-.117-1.993L2 6z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -14407,7 +15304,7 @@ func CarouselVertical(children ...ElementRenderer) *TablerIcon {
 func CarouselVerticalFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M18 6H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2m-2 13a2 2 0 0 1 1.995 1.85L18 21v1a1 1 0 0 1-1.993.117L16 22v-1H8v1a1 1 0 0 1-1.993.117L6 22v-1a2 2 0 0 1 1.85-1.995L8 19zm1-18a1 1 0 0 1 .993.883L18 2v1a2 2 0 0 1-1.85 1.995L16 5H8a2 2 0 0 1-1.995-1.85L6 3V2a1 1 0 0 1 1.993-.117L8 2v1h8V2a1 1 0 0 1 1-1"/></g>`),
+			Text(`<path fill="currentColor" d="M18 6H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2m-2 13a2 2 0 0 1 1.995 1.85L18 21v1a1 1 0 0 1-1.993.117L16 22v-1H8v1a1 1 0 0 1-1.993.117L6 22v-1a2 2 0 0 1 1.85-1.995L8 19zm1-18a1 1 0 0 1 .993.883L18 2v1a2 2 0 0 1-1.85 1.995L16 5H8a2 2 0 0 1-1.995-1.85L6 3V2a1 1 0 0 1 1.993-.117L8 2v1h8V2a1 1 0 0 1 1-1"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -14440,6 +15337,14 @@ func CashBanknote(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M9 12a3 3 0 1 0 6 0a3 3 0 1 0-6 0"/><path d="M3 8a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2zm15 4h.01M6 12h.01"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func CashBanknoteFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M19 5a3 3 0 0 1 3 3v8a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3V8a3 3 0 0 1 3-3zm-7 4a3 3 0 0 0-2.996 2.85L9 12a3 3 0 1 0 3-3m6.01 2H18a1 1 0 0 0 0 2h.01a1 1 0 0 0 0-2m-12 0H6a1 1 0 1 0 .01 2a1 1 0 0 0 0-2"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -14495,7 +15400,7 @@ func Category(children ...ElementRenderer) *TablerIcon {
 func CategoryFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M10 3H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1m10 0h-6a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1M10 13H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-6a1 1 0 0 0-1-1m7 0a4 4 0 1 1-3.995 4.2L13 17l.005-.2A4 4 0 0 1 17 13"/></g>`),
+			Text(`<path fill="currentColor" d="M10 3H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1m10 0h-6a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1M10 13H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-6a1 1 0 0 0-1-1m7 0a4 4 0 1 1-3.995 4.2L13 17l.005-.2A4 4 0 0 1 17 13"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -14535,7 +15440,7 @@ func Ce(children ...ElementRenderer) *TablerIcon {
 func CeOff(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 4a7.99 7.99 0 0 0-2.581.426M5.867 5.864A8 8 0 0 0 11 20m9-16a8 8 0 0 0-7.29 4.7M12 12a8 8 0 0 0 8 8m-4-8h4M3 3l18 18"/>`),
+			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6.53 6.53A6.001 6.001 0 0 0 9 18M21 6a6 6 0 0 0-5.927 5.061L16 12m0 0h5M3 3l18 18"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -14687,7 +15592,7 @@ func ChartArea(children ...ElementRenderer) *TablerIcon {
 func ChartAreaFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M20 18a1 1 0 0 1 .117 1.993L20 20H4a1 1 0 0 1-.117-1.993L4 18zM15.22 5.375a1 1 0 0 1 1.393-.165l.094.083l4 4a1 1 0 0 1 .284.576L21 10v5a1 1 0 0 1-.883.993L20 16H3.978l-.11-.009l-.11-.02l-.107-.034l-.105-.046l-.1-.059l-.094-.07l-.06-.055l-.072-.082l-.064-.089l-.054-.096l-.016-.035l-.04-.103l-.027-.106l-.015-.108l-.004-.11l.009-.11l.019-.105c.01-.04.022-.077.035-.112l.046-.105l.059-.1l4-6a1 1 0 0 1 1.165-.39l.114.05l3.277 1.638z"/></g>`),
+			Text(`<path fill="currentColor" d="M20 18a1 1 0 0 1 .117 1.993L20 20H4a1 1 0 0 1-.117-1.993L4 18zM15.22 5.375a1 1 0 0 1 1.393-.165l.094.083l4 4a1 1 0 0 1 .284.576L21 10v5a1 1 0 0 1-.883.993L20 16H3.978l-.11-.009l-.11-.02l-.107-.034l-.105-.046l-.1-.059l-.094-.07l-.06-.055l-.072-.082l-.064-.089l-.054-.096l-.016-.035l-.04-.103l-.027-.106l-.015-.108l-.004-.11l.009-.11l.019-.105c.01-.04.022-.077.035-.112l.046-.105l.059-.1l4-6a1 1 0 0 1 1.165-.39l.114.05l3.277 1.638z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -14703,7 +15608,7 @@ func ChartAreaLine(children ...ElementRenderer) *TablerIcon {
 func ChartAreaLineFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M15.22 9.375a1 1 0 0 1 1.393-.165l.094.083l4 4a1 1 0 0 1 .284.576L21 14v5a1 1 0 0 1-.883.993L20 20H3.978l-.11-.009l-.11-.02l-.107-.034l-.105-.046l-.1-.059l-.094-.07l-.06-.055l-.072-.082l-.064-.089l-.054-.096l-.016-.035l-.04-.103l-.027-.106l-.015-.108l-.004-.11l.009-.11l.019-.105c.01-.04.022-.077.035-.112l.046-.105l.059-.1l4-6a1 1 0 0 1 1.165-.39l.114.05l3.277 1.638z"/><path fill="currentColor" d="M15.232 3.36a1 1 0 0 1 1.382-.15l.093.083l4 4a1 1 0 0 1-1.32 1.497l-.094-.083l-3.226-3.225l-4.299 5.158a1 1 0 0 1-1.1.303l-.115-.049l-3.254-1.626L4.8 12.6a1 1 0 0 1-1.295.269L3.4 12.8a1 1 0 0 1-.269-1.295L3.2 11.4l3-4a1 1 0 0 1 1.137-.341l.11.047l3.291 1.645z"/></g>`),
+			Text(`<g fill="currentColor"><path d="M15.22 9.375a1 1 0 0 1 1.393-.165l.094.083l4 4a1 1 0 0 1 .284.576L21 14v5a1 1 0 0 1-.883.993L20 20H3.978l-.11-.009l-.11-.02l-.107-.034l-.105-.046l-.1-.059l-.094-.07l-.06-.055l-.072-.082l-.064-.089l-.054-.096l-.016-.035l-.04-.103l-.027-.106l-.015-.108l-.004-.11l.009-.11l.019-.105c.01-.04.022-.077.035-.112l.046-.105l.059-.1l4-6a1 1 0 0 1 1.165-.39l.114.05l3.277 1.638z"/><path d="M15.232 3.36a1 1 0 0 1 1.382-.15l.093.083l4 4a1 1 0 0 1-1.32 1.497l-.094-.083l-3.226-3.225l-4.299 5.158a1 1 0 0 1-1.1.303l-.115-.049l-3.254-1.626L4.8 12.6a1 1 0 0 1-1.295.269L3.4 12.8a1 1 0 0 1-.269-1.295L3.2 11.4l3-4a1 1 0 0 1 1.137-.341l.11.047l3.291 1.645z"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -14751,7 +15656,7 @@ func ChartBubble(children ...ElementRenderer) *TablerIcon {
 func ChartBubbleFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M6 12a4 4 0 1 1-3.995 4.2L2 16l.005-.2A4 4 0 0 1 6 12m10 4a3 3 0 1 1-2.995 3.176L13 19l.005-.176A3 3 0 0 1 16 16M14.5 2a5.5 5.5 0 1 1-5.496 5.721L9 7.5l.004-.221A5.5 5.5 0 0 1 14.5 2"/></g>`),
+			Text(`<path fill="currentColor" d="M6 12a4 4 0 1 1-3.995 4.2L2 16l.005-.2A4 4 0 0 1 6 12m10 4a3 3 0 1 1-2.995 3.176L13 19l.005-.176A3 3 0 0 1 16 16M14.5 2a5.5 5.5 0 1 1-5.496 5.721L9 7.5l.004-.221A5.5 5.5 0 0 1 14.5 2"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -14767,7 +15672,7 @@ func ChartCandle(children ...ElementRenderer) *TablerIcon {
 func ChartCandleFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M6 3a1 1 0 0 1 .993.883L7 4v1a2 2 0 0 1 1.995 1.85L9 7v3a2 2 0 0 1-1.85 1.995L7 12v8a1 1 0 0 1-1.993.117L5 20v-8a2 2 0 0 1-1.995-1.85L3 10V7a2 2 0 0 1 1.85-1.995L5 5V4a1 1 0 0 1 1-1m6 0a1 1 0 0 1 .993.883L13 4v9a2 2 0 0 1 1.995 1.85L15 15v3a2 2 0 0 1-1.85 1.995L13 20a1 1 0 0 1-1.993.117L11 20l-.15-.005a2 2 0 0 1-1.844-1.838L9 18v-3a2 2 0 0 1 1.85-1.995L11 13V4a1 1 0 0 1 1-1m6 0a1 1 0 0 1 .993.883L19 4a2 2 0 0 1 1.995 1.85L21 6v4a2 2 0 0 1-1.85 1.995L19 12v8a1 1 0 0 1-1.993.117L17 20v-8a2 2 0 0 1-1.995-1.85L15 10V6a2 2 0 0 1 1.85-1.995L17 4a1 1 0 0 1 1-1"/></g>`),
+			Text(`<path fill="currentColor" d="M6 3a1 1 0 0 1 .993.883L7 4v1a2 2 0 0 1 1.995 1.85L9 7v3a2 2 0 0 1-1.85 1.995L7 12v8a1 1 0 0 1-1.993.117L5 20v-8a2 2 0 0 1-1.995-1.85L3 10V7a2 2 0 0 1 1.85-1.995L5 5V4a1 1 0 0 1 1-1m6 0a1 1 0 0 1 .993.883L13 4v9a2 2 0 0 1 1.995 1.85L15 15v3a2 2 0 0 1-1.85 1.995L13 20a1 1 0 0 1-1.993.117L11 20l-.15-.005a2 2 0 0 1-1.844-1.838L9 18v-3a2 2 0 0 1 1.85-1.995L11 13V4a1 1 0 0 1 1-1m6 0a1 1 0 0 1 .993.883L19 4a2 2 0 0 1 1.995 1.85L21 6v4a2 2 0 0 1-1.85 1.995L19 12v8a1 1 0 0 1-1.993.117L17 20v-8a2 2 0 0 1-1.995-1.85L15 10V6a2 2 0 0 1 1.85-1.995L17 4a1 1 0 0 1 1-1"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -14791,7 +15696,7 @@ func ChartDonut(children ...ElementRenderer) *TablerIcon {
 func ChartDonutFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M9.883 2.207a1.9 1.9 0 0 1 2.087 1.522l.025.167L12 4v4a1 1 0 0 1-.641.933l-.107.035a3.1 3.1 0 1 0 3.73 3.953l.05-.173a1 1 0 0 1 .855-.742L16 12h3.8a2 2 0 0 1 2 2a1 1 0 0 1-.026.226A10 10 0 1 1 9.504 2.293l.27-.067z"/><path fill="currentColor" d="M14.775 2.526a.996.996 0 0 1 .22-.026l.122.007l.112.02l.103.03a10 10 0 0 1 6.003 5.817l.108.294a1 1 0 0 1-.824 1.325L20.5 10H16a1 1 0 0 1-.76-.35a8 8 0 0 0-.89-.89a1 1 0 0 1-.342-.636L14 8V3.505l.006-.118c.005-.042.012-.08.02-.116l.03-.103a.998.998 0 0 1 .168-.299l.071-.08c.03-.028.058-.052.087-.075l.09-.063l.088-.05l.103-.043z"/></g>`),
+			Text(`<g fill="currentColor"><path d="M9.883 2.207a1.9 1.9 0 0 1 2.087 1.522l.025.167L12 4v4a1 1 0 0 1-.641.933l-.107.035a3.1 3.1 0 1 0 3.73 3.953l.05-.173a1 1 0 0 1 .855-.742L16 12h3.8a2 2 0 0 1 2 2a1 1 0 0 1-.026.226A10 10 0 1 1 9.504 2.293l.27-.067z"/><path d="M14.775 2.526a.996.996 0 0 1 .22-.026l.122.007l.112.02l.103.03a10 10 0 0 1 6.003 5.817l.108.294a1 1 0 0 1-.824 1.325L20.5 10H16a1 1 0 0 1-.76-.35a8 8 0 0 0-.89-.89a1 1 0 0 1-.342-.636L14 8V3.505l.006-.118c.005-.042.012-.08.02-.116l.03-.103a.998.998 0 0 1 .168-.299l.071-.08c.03-.028.058-.052.087-.075l.09-.063l.088-.05l.103-.043z"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -14831,7 +15736,7 @@ func ChartDots(children ...ElementRenderer) *TablerIcon {
 func ChartDotsFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M3 2a1 1 0 0 1 1 1v17h17a1 1 0 0 1 .993.883L22 21a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1"/><path fill="currentColor" d="M19 4a3 3 0 1 1-.651 5.93l-2.002 3.202a3 3 0 1 1-4.927.337l-1.378-1.655a3 3 0 1 1 1.538-1.282l1.378 1.654a2.994 2.994 0 0 1 1.693-.115l2.002-3.203A3 3 0 0 1 19 4"/></g>`),
+			Text(`<g fill="currentColor"><path d="M3 2a1 1 0 0 1 1 1v17h17a1 1 0 0 1 .993.883L22 21a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1"/><path d="M19 4a3 3 0 1 1-.651 5.93l-2.002 3.202a3 3 0 1 1-4.927.337l-1.378-1.655a3 3 0 1 1 1.538-1.282l1.378 1.654a2.994 2.994 0 0 1 1.693-.115l2.002-3.203A3 3 0 0 1 19 4"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -14863,7 +15768,7 @@ func ChartGridDots(children ...ElementRenderer) *TablerIcon {
 func ChartGridDotsFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M18 2a1 1 0 0 1 1 1v.171a3.008 3.008 0 0 1 1.83 1.83L21 5a1 1 0 0 1 0 2h-.171a3.008 3.008 0 0 1-1.828 1.829L19 11h2a1 1 0 0 1 0 2h-2v2.171a3.008 3.008 0 0 1 1.83 1.83L21 17a1 1 0 0 1 0 2h-.171a3.008 3.008 0 0 1-1.828 1.829L19 21a1 1 0 0 1-2 0v-.17A3.008 3.008 0 0 1 15.171 19H13v2a1 1 0 0 1-2 0v-2H8.829a3.008 3.008 0 0 1-1.828 1.829L7 21a1 1 0 0 1-2 0v-.17A3.008 3.008 0 0 1 3.171 19H3a1 1 0 0 1 0-2h.17A3.008 3.008 0 0 1 5 15.17v-.34A3.008 3.008 0 0 1 3.171 13H3a1 1 0 0 1 0-2h.17A3.008 3.008 0 0 1 5 9.17V7H3a1 1 0 1 1 0-2h2V3a1 1 0 1 1 2 0v2h4V3a1 1 0 0 1 2 0v2h2.17A3.008 3.008 0 0 1 17 3.17V3a1 1 0 0 1 1-1m-7 11H8.829a3.008 3.008 0 0 1-1.828 1.829v.342A3.008 3.008 0 0 1 8.829 17H11zm6 0h-4v4h2.17A3.008 3.008 0 0 1 17 15.17zm-6-6H7v2.171a3.008 3.008 0 0 1 1.83 1.83L11 11zm4.171 0H13v4h4V8.83A3.008 3.008 0 0 1 15.171 7"/></g>`),
+			Text(`<path fill="currentColor" d="M18 2a1 1 0 0 1 1 1v.171a3.008 3.008 0 0 1 1.83 1.83L21 5a1 1 0 0 1 0 2h-.171a3.008 3.008 0 0 1-1.828 1.829L19 11h2a1 1 0 0 1 0 2h-2v2.171a3.008 3.008 0 0 1 1.83 1.83L21 17a1 1 0 0 1 0 2h-.171a3.008 3.008 0 0 1-1.828 1.829L19 21a1 1 0 0 1-2 0v-.17A3.008 3.008 0 0 1 15.171 19H13v2a1 1 0 0 1-2 0v-2H8.829a3.008 3.008 0 0 1-1.828 1.829L7 21a1 1 0 0 1-2 0v-.17A3.008 3.008 0 0 1 3.171 19H3a1 1 0 0 1 0-2h.17A3.008 3.008 0 0 1 5 15.17v-.34A3.008 3.008 0 0 1 3.171 13H3a1 1 0 0 1 0-2h.17A3.008 3.008 0 0 1 5 9.17V7H3a1 1 0 1 1 0-2h2V3a1 1 0 1 1 2 0v2h4V3a1 1 0 0 1 2 0v2h2.17A3.008 3.008 0 0 1 17 3.17V3a1 1 0 0 1 1-1m-7 11H8.829a3.008 3.008 0 0 1-1.828 1.829v.342A3.008 3.008 0 0 1 8.829 17H11zm6 0h-4v4h2.17A3.008 3.008 0 0 1 17 15.17zm-6-6H7v2.171a3.008 3.008 0 0 1 1.83 1.83L11 11zm4.171 0H13v4h4V8.83A3.008 3.008 0 0 1 15.171 7"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -14903,7 +15808,7 @@ func ChartPie(children ...ElementRenderer) *TablerIcon {
 func ChartPieFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M9.883 2.207a1.9 1.9 0 0 1 2.087 1.522l.025.167L12 4v7a1 1 0 0 0 .883.993L13 12h6.8a2 2 0 0 1 2 2a1 1 0 0 1-.026.226A10 10 0 1 1 9.504 2.293l.27-.067z"/><path fill="currentColor" d="M14 3.5V9a1 1 0 0 0 1 1h5.5a1 1 0 0 0 .943-1.332a10 10 0 0 0-6.11-6.111A1 1 0 0 0 14 3.5"/></g>`),
+			Text(`<g fill="currentColor"><path d="M9.883 2.207a1.9 1.9 0 0 1 2.087 1.522l.025.167L12 4v7a1 1 0 0 0 .883.993L13 12h6.8a2 2 0 0 1 2 2a1 1 0 0 1-.026.226A10 10 0 1 1 9.504 2.293l.27-.067z"/><path d="M14 3.5V9a1 1 0 0 0 1 1h5.5a1 1 0 0 0 .943-1.332a10 10 0 0 0-6.11-6.111A1 1 0 0 0 14 3.5"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -14960,6 +15865,22 @@ func ChartSankey(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M3 3v18h18M3 6h18"/><path d="M3 8c10 0 8 9 18 9"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func ChartScatter(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3v18h18M8 15.015v.015m8 .985v.015m-8-9v.015m4 3.985v.015m7-.015v.015"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func ChartScatterThreeD(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m3 20l9-7m0-10v10l9 7m-4-8v.015m0-8v.015m4 3.985v.015m-9 10.985v.015m-9-7.015v.015m4-4.015v.015M3 4.015v.015"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -15047,7 +15968,7 @@ func Cherry(children ...ElementRenderer) *TablerIcon {
 func CherryFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="m16.588 5.191l.058.045l.078.074l.072.084l.013.018a.998.998 0 0 1 .182.727l-.022.111l-.03.092c-.99 2.725-.666 5.158.679 7.706a4 4 0 1 1-4.613 4.152L13 18l.005-.2a4.002 4.002 0 0 1 2.5-3.511c-.947-2.03-1.342-4.065-1.052-6.207c-.166.077-.332.15-.499.218l.094-.064c-2.243 1.47-3.552 3.004-3.98 4.57a4.5 4.5 0 1 1-7.064 3.906L3 16.5l.005-.212a4.5 4.5 0 0 1 5.2-4.233c.332-1.073.945-2.096 1.83-3.069C8.241 8.89 6.449 8.227 4.68 7l-.268-.19l-.051-.04l-.046-.04l-.044-.044l-.04-.046l-.04-.05l-.032-.047l-.035-.06l-.053-.11l-.038-.116l-.023-.117l-.005-.042L4 5.98l.01-.118l.023-.117l.038-.115l.03-.066l.023-.045l.035-.06l.032-.046l.04-.051l.04-.046l.044-.044l.046-.04l.05-.04c4.018-2.922 8.16-2.922 12.177 0z"/></g>`),
+			Text(`<path fill="currentColor" d="m16.588 5.191l.058.045l.078.074l.072.084l.013.018a.998.998 0 0 1 .182.727l-.022.111l-.03.092c-.99 2.725-.666 5.158.679 7.706a4 4 0 1 1-4.613 4.152L13 18l.005-.2a4.002 4.002 0 0 1 2.5-3.511c-.947-2.03-1.342-4.065-1.052-6.207c-.166.077-.332.15-.499.218l.094-.064c-2.243 1.47-3.552 3.004-3.98 4.57a4.5 4.5 0 1 1-7.064 3.906L3 16.5l.005-.212a4.5 4.5 0 0 1 5.2-4.233c.332-1.073.945-2.096 1.83-3.069C8.241 8.89 6.449 8.227 4.68 7l-.268-.19l-.051-.04l-.046-.04l-.044-.044l-.04-.046l-.04-.05l-.032-.047l-.035-.06l-.053-.11l-.038-.116l-.023-.117l-.005-.042L4 5.98l.01-.118l.023-.117l.038-.115l.03-.066l.023-.045l.035-.06l.032-.046l.04-.051l.04-.046l.044-.044l.046-.04l.05-.04c4.018-2.922 8.16-2.922 12.177 0z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -15071,7 +15992,7 @@ func ChessBishop(children ...ElementRenderer) *TablerIcon {
 func ChessBishopFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M12 2a2 2 0 0 1 1.386 3.442c.646.28 1.226.62 1.74 1.017l-3.833 3.834l-.083.094a1 1 0 0 0 1.403 1.403l.094-.083l3.814-3.813C17.498 9.244 18 10.964 18 13c0 1.913-1.178 3.722-3.089 3.973l-.2.02L14.5 17h-5C7.374 17 6 15.076 6 13c0-3.68 1.57-6.255 4.613-7.56A2 2 0 0 1 12 2m0 3v1m6 12H6a1 1 0 0 0-1 1a2 2 0 0 0 2 2h10a2 2 0 0 0 1.987-1.768l.011-.174A1 1 0 0 0 18 18"/></g>`),
+			Text(`<path fill="currentColor" d="M12 2a2 2 0 0 1 1.386 3.442c.646.28 1.226.62 1.74 1.017l-3.833 3.834l-.083.094a1 1 0 0 0 1.403 1.403l.094-.083l3.814-3.813C17.498 9.244 18 10.964 18 13c0 1.913-1.178 3.722-3.089 3.973l-.2.02L14.5 17h-5C7.374 17 6 15.076 6 13c0-3.68 1.57-6.255 4.613-7.56A2 2 0 0 1 12 2m0 3v1m6 12H6a1 1 0 0 0-1 1a2 2 0 0 0 2 2h10a2 2 0 0 0 1.987-1.768l.011-.174A1 1 0 0 0 18 18"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -15079,7 +16000,7 @@ func ChessBishopFilled(children ...ElementRenderer) *TablerIcon {
 func ChessFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M12 2a4 4 0 0 1 4 4a5.03 5.03 0 0 1-.438 2.001L16 8a1 1 0 0 1 .117 1.993L16 10h-1.263l1.24 5.79a1 1 0 0 1-.747 1.184l-.113.02L15 17H9a1 1 0 0 1-.996-1.093l.018-.117L9.262 10H8a1 1 0 0 1-.117-1.993L8 8h.438a5.154 5.154 0 0 1-.412-1.525l-.02-.259L8 6a4 4 0 0 1 4-4m6 16H6a1 1 0 0 0-1 1a2 2 0 0 0 2 2h10a2 2 0 0 0 1.987-1.768l.011-.174A1 1 0 0 0 18 18"/></g>`),
+			Text(`<path fill="currentColor" d="M12 2a4 4 0 0 1 4 4a5.03 5.03 0 0 1-.438 2.001L16 8a1 1 0 0 1 .117 1.993L16 10h-1.263l1.24 5.79a1 1 0 0 1-.747 1.184l-.113.02L15 17H9a1 1 0 0 1-.996-1.093l.018-.117L9.262 10H8a1 1 0 0 1-.117-1.993L8 8h.438a5.154 5.154 0 0 1-.412-1.525l-.02-.259L8 6a4 4 0 0 1 4-4m6 16H6a1 1 0 0 0-1 1a2 2 0 0 0 2 2h10a2 2 0 0 0 1.987-1.768l.011-.174A1 1 0 0 0 18 18"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -15095,7 +16016,7 @@ func ChessKing(children ...ElementRenderer) *TablerIcon {
 func ChessKingFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M12 2a1 1 0 0 1 .993.883L13 3v2h2a1 1 0 0 1 .117 1.993L15 7h-2v1.758a4.49 4.49 0 0 1 2.033-.734l.24-.018L15.5 8a4.5 4.5 0 0 1 4.5 4.5a4.504 4.504 0 0 1-4.064 4.478l-.217.016L15.5 17h-7a4.5 4.5 0 1 1 2.501-8.241L11 7H9a1 1 0 0 1-.117-1.993L9 5h2V3a1 1 0 0 1 1-1m6 16H6a1 1 0 0 0-1 1a2 2 0 0 0 2 2h10a2 2 0 0 0 1.987-1.768l.011-.174A1 1 0 0 0 18 18"/></g>`),
+			Text(`<path fill="currentColor" d="M12 2a1 1 0 0 1 .993.883L13 3v2h2a1 1 0 0 1 .117 1.993L15 7h-2v1.758a4.49 4.49 0 0 1 2.033-.734l.24-.018L15.5 8a4.5 4.5 0 0 1 4.5 4.5a4.504 4.504 0 0 1-4.064 4.478l-.217.016L15.5 17h-7a4.5 4.5 0 1 1 2.501-8.241L11 7H9a1 1 0 0 1-.117-1.993L9 5h2V3a1 1 0 0 1 1-1m6 16H6a1 1 0 0 0-1 1a2 2 0 0 0 2 2h10a2 2 0 0 0 1.987-1.768l.011-.174A1 1 0 0 0 18 18"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -15111,7 +16032,7 @@ func ChessKnight(children ...ElementRenderer) *TablerIcon {
 func ChessKnightFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="m8.959 1.99l-.147.028l-.115.029a1 1 0 0 0-.646 1.27L8.8 5.562L5.985 7.297a2 2 0 0 0-.655 2.751l.089.133A2 2 0 0 0 7.033 11l1.563-.001l-1.614 4.674A1 1 0 0 0 7.927 17h7.961a1 1 0 0 0 1-.978l.112-5c0-3.827-1.555-6.878-4.67-7.966l-2.399-.83l-.375-.121l-.258-.074L9.163 2l-.101-.013l-.055-.001zM18 18H6a1 1 0 0 0-1 1a2 2 0 0 0 2 2h10a2 2 0 0 0 1.987-1.768l.011-.174A1 1 0 0 0 18 18"/></g>`),
+			Text(`<path fill="currentColor" d="m8.959 1.99l-.147.028l-.115.029a1 1 0 0 0-.646 1.27L8.8 5.562L5.985 7.297a2 2 0 0 0-.655 2.751l.089.133A2 2 0 0 0 7.033 11l1.563-.001l-1.614 4.674A1 1 0 0 0 7.927 17h7.961a1 1 0 0 0 1-.978l.112-5c0-3.827-1.555-6.878-4.67-7.966l-2.399-.83l-.375-.121l-.258-.074L9.163 2l-.101-.013l-.055-.001zM18 18H6a1 1 0 0 0-1 1a2 2 0 0 0 2 2h10a2 2 0 0 0 1.987-1.768l.011-.174A1 1 0 0 0 18 18"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -15127,7 +16048,7 @@ func ChessQueen(children ...ElementRenderer) *TablerIcon {
 func ChessQueenFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M12 2a2 2 0 0 1 1.572 3.236l.793 1.983l1.702-1.702A2.003 2.003 0 0 1 18 3a2 2 0 0 1 .674 3.884l-1.69 9.295a1 1 0 0 1-.865.814L16 17H8a1 1 0 0 1-.956-.705l-.028-.116l-1.69-9.295a2 2 0 1 1 2.607-1.367l1.701 1.702l.794-1.983A2 2 0 0 1 12 2m6 16H6a1 1 0 0 0-1 1a2 2 0 0 0 2 2h10a2 2 0 0 0 1.987-1.768l.011-.174A1 1 0 0 0 18 18"/></g>`),
+			Text(`<path fill="currentColor" d="M12 2a2 2 0 0 1 1.572 3.236l.793 1.983l1.702-1.702A2.003 2.003 0 0 1 18 3a2 2 0 0 1 .674 3.884l-1.69 9.295a1 1 0 0 1-.865.814L16 17H8a1 1 0 0 1-.956-.705l-.028-.116l-1.69-9.295a2 2 0 1 1 2.607-1.367l1.701 1.702l.794-1.983A2 2 0 0 1 12 2m6 16H6a1 1 0 0 0-1 1a2 2 0 0 0 2 2h10a2 2 0 0 0 1.987-1.768l.011-.174A1 1 0 0 0 18 18"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -15143,7 +16064,7 @@ func ChessRook(children ...ElementRenderer) *TablerIcon {
 func ChessRookFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M14 3a1 1 0 0 1 .993.883L15 4v2h1.652l.362-2.164A1 1 0 0 1 18.048 3l.116.013A1 1 0 0 1 19 4.048l-.013.116l-.5 3a1 1 0 0 1-.865.829L17.5 8h-1.383l.877 7.89a1 1 0 0 1-.877 1.103L16 17H8a1 1 0 0 1-1-.993l.006-.117L7.883 8H6.5a1 1 0 0 1-.96-.718l-.026-.118l-.5-3a1 1 0 0 1 1.947-.442l.025.114L7.347 6H9V4a1 1 0 0 1 1.993-.117L11 4v2h2V4a1 1 0 0 1 1-1m4 15H6a1 1 0 0 0-1 1a2 2 0 0 0 2 2h10a2 2 0 0 0 1.987-1.768l.011-.174A1 1 0 0 0 18 18"/></g>`),
+			Text(`<path fill="currentColor" d="M14 3a1 1 0 0 1 .993.883L15 4v2h1.652l.362-2.164A1 1 0 0 1 18.048 3l.116.013A1 1 0 0 1 19 4.048l-.013.116l-.5 3a1 1 0 0 1-.865.829L17.5 8h-1.383l.877 7.89a1 1 0 0 1-.877 1.103L16 17H8a1 1 0 0 1-1-.993l.006-.117L7.883 8H6.5a1 1 0 0 1-.96-.718l-.026-.118l-.5-3a1 1 0 0 1 1.947-.442l.025.114L7.347 6H9V4a1 1 0 0 1 1.993-.117L11 4v2h2V4a1 1 0 0 1 1-1m4 15H6a1 1 0 0 0-1 1a2 2 0 0 0 2 2h10a2 2 0 0 0 1.987-1.768l.011-.174A1 1 0 0 0 18 18"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -15375,7 +16296,7 @@ func CircleArrowDown(children ...ElementRenderer) *TablerIcon {
 func CircleArrowDownFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M17 3.34a10 10 0 1 1-14.995 8.984L2 12l.005-.324A10 10 0 0 1 17 3.34M12 7a1 1 0 0 0-1 1v5.585l-2.293-2.292l-.094-.083a1 1 0 0 0-1.32 1.497l4 4c.028.028.057.054.094.083l.092.064l.098.052l.081.034l.113.034l.112.02L12 17l.115-.007l.114-.02l.142-.044l.113-.054l.111-.071a.939.939 0 0 0 .112-.097l4-4l.083-.094a1 1 0 0 0-1.497-1.32L13 13.584V8l-.007-.117A1 1 0 0 0 12 7"/></g>`),
+			Text(`<path fill="currentColor" d="M17 3.34a10 10 0 1 1-14.995 8.984L2 12l.005-.324A10 10 0 0 1 17 3.34M12 7a1 1 0 0 0-1 1v5.585l-2.293-2.292l-.094-.083a1 1 0 0 0-1.32 1.497l4 4c.028.028.057.054.094.083l.092.064l.098.052l.081.034l.113.034l.112.02L12 17l.115-.007l.114-.02l.142-.044l.113-.054l.111-.071a.939.939 0 0 0 .112-.097l4-4l.083-.094a1 1 0 0 0-1.497-1.32L13 13.584V8l-.007-.117A1 1 0 0 0 12 7"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -15391,7 +16312,7 @@ func CircleArrowDownLeft(children ...ElementRenderer) *TablerIcon {
 func CircleArrowDownLeftFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M17 3.34a10 10 0 1 1-14.995 8.984L2 12l.005-.324A10 10 0 0 1 17 3.34M9 8a1 1 0 0 0-1 1v6l.007.117l.029.149l.035.105l.054.113l.071.111c.03.04.061.077.097.112l.09.08l.096.067l.098.052l.11.044l.112.03l.126.017L15 16l.117-.007A1 1 0 0 0 16 15l-.007-.117A1 1 0 0 0 15 14h-3.586l4.293-4.293l.083-.094a1 1 0 0 0-1.497-1.32L10 12.584V9l-.007-.117A1 1 0 0 0 9 8"/></g>`),
+			Text(`<path fill="currentColor" d="M17 3.34a10 10 0 1 1-14.995 8.984L2 12l.005-.324A10 10 0 0 1 17 3.34M9 8a1 1 0 0 0-1 1v6l.007.117l.029.149l.035.105l.054.113l.071.111c.03.04.061.077.097.112l.09.08l.096.067l.098.052l.11.044l.112.03l.126.017L15 16l.117-.007A1 1 0 0 0 16 15l-.007-.117A1 1 0 0 0 15 14h-3.586l4.293-4.293l.083-.094a1 1 0 0 0-1.497-1.32L10 12.584V9l-.007-.117A1 1 0 0 0 9 8"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -15407,7 +16328,7 @@ func CircleArrowDownRight(children ...ElementRenderer) *TablerIcon {
 func CircleArrowDownRightFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M17 3.34a10 10 0 1 1-14.995 8.984L2 12l.005-.324A10 10 0 0 1 17 3.34M15 8l-.117.007A1 1 0 0 0 14 9v3.585L9.707 8.293l-.094-.083a1 1 0 0 0-1.32 1.497L12.585 14H9l-.117.007A1 1 0 0 0 9 16l6.034.001a.998.998 0 0 0 .186-.025l.053-.014l.066-.02l.13-.059l.093-.055A.98.98 0 0 0 16 15V9l-.007-.117A1 1 0 0 0 15 8"/></g>`),
+			Text(`<path fill="currentColor" d="M17 3.34a10 10 0 1 1-14.995 8.984L2 12l.005-.324A10 10 0 0 1 17 3.34M15 8l-.117.007A1 1 0 0 0 14 9v3.585L9.707 8.293l-.094-.083a1 1 0 0 0-1.32 1.497L12.585 14H9l-.117.007A1 1 0 0 0 9 16l6.034.001a.998.998 0 0 0 .186-.025l.053-.014l.066-.02l.13-.059l.093-.055A.98.98 0 0 0 16 15V9l-.007-.117A1 1 0 0 0 15 8"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -15423,7 +16344,7 @@ func CircleArrowLeft(children ...ElementRenderer) *TablerIcon {
 func CircleArrowLeftFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M12 2a10 10 0 0 1 .324 19.995L12 22l-.324-.005A10 10 0 0 1 12 2m.707 5.293a1 1 0 0 0-1.414 0l-4 4a1.048 1.048 0 0 0-.083.094l-.064.092l-.052.098l-.044.11l-.03.112l-.017.126L7 12l.004.09l.007.058l.025.118l.035.105l.054.113l.043.07l.071.095l.054.058l4 4l.094.083a1 1 0 0 0 1.32-1.497L10.415 13H16l.117-.007A1 1 0 0 0 16 11h-5.586l2.293-2.293l.083-.094a1 1 0 0 0-.083-1.32"/></g>`),
+			Text(`<path fill="currentColor" d="M12 2a10 10 0 0 1 .324 19.995L12 22l-.324-.005A10 10 0 0 1 12 2m.707 5.293a1 1 0 0 0-1.414 0l-4 4a1.048 1.048 0 0 0-.083.094l-.064.092l-.052.098l-.044.11l-.03.112l-.017.126L7 12l.004.09l.007.058l.025.118l.035.105l.054.113l.043.07l.071.095l.054.058l4 4l.094.083a1 1 0 0 0 1.32-1.497L10.415 13H16l.117-.007A1 1 0 0 0 16 11h-5.586l2.293-2.293l.083-.094a1 1 0 0 0-.083-1.32"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -15439,7 +16360,7 @@ func CircleArrowRight(children ...ElementRenderer) *TablerIcon {
 func CircleArrowRightFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="m12 2l.324.005a10 10 0 1 1-.648 0zm.613 5.21a1 1 0 0 0-1.32 1.497L13.584 11H8l-.117.007A1 1 0 0 0 8 13h5.584l-2.291 2.293l-.083.094a1 1 0 0 0 1.497 1.32l4-4l.073-.082l.064-.089l.062-.113l.044-.11l.03-.112l.017-.126L17 12l-.007-.118l-.029-.148l-.035-.105l-.054-.113l-.071-.111a1.008 1.008 0 0 0-.097-.112l-4-4z"/></g>`),
+			Text(`<path fill="currentColor" d="m12 2l.324.005a10 10 0 1 1-.648 0zm.613 5.21a1 1 0 0 0-1.32 1.497L13.584 11H8l-.117.007A1 1 0 0 0 8 13h5.584l-2.291 2.293l-.083.094a1 1 0 0 0 1.497 1.32l4-4l.073-.082l.064-.089l.062-.113l.044-.11l.03-.112l.017-.126L17 12l-.007-.118l-.029-.148l-.035-.105l-.054-.113l-.071-.111a1.008 1.008 0 0 0-.097-.112l-4-4z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -15455,7 +16376,7 @@ func CircleArrowUp(children ...ElementRenderer) *TablerIcon {
 func CircleArrowUpFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M17 3.34a10 10 0 1 1-14.995 8.984L2 12l.005-.324A10 10 0 0 1 17 3.34M12.02 7l-.163.01l-.086.016l-.142.045l-.113.054l-.07.043l-.095.071l-.058.054l-4 4l-.083.094a1 1 0 0 0 1.497 1.32L11 10.414V16l.007.117A1 1 0 0 0 13 16v-5.585l2.293 2.292l.094.083a1 1 0 0 0 1.32-1.497l-4-4l-.082-.073l-.089-.064l-.113-.062l-.081-.034l-.113-.034l-.112-.02z"/></g>`),
+			Text(`<path fill="currentColor" d="M17 3.34a10 10 0 1 1-14.995 8.984L2 12l.005-.324A10 10 0 0 1 17 3.34M12.02 7l-.163.01l-.086.016l-.142.045l-.113.054l-.07.043l-.095.071l-.058.054l-4 4l-.083.094a1 1 0 0 0 1.497 1.32L11 10.414V16l.007.117A1 1 0 0 0 13 16v-5.585l2.293 2.292l.094.083a1 1 0 0 0 1.32-1.497l-4-4l-.082-.073l-.089-.064l-.113-.062l-.081-.034l-.113-.034l-.112-.02z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -15471,7 +16392,7 @@ func CircleArrowUpLeft(children ...ElementRenderer) *TablerIcon {
 func CircleArrowUpLeftFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M17 3.34a10 10 0 1 1-14.995 8.984L2 12l.005-.324A10 10 0 0 1 17 3.34M15 8H9l-.117.007l-.149.029l-.105.035l-.113.054l-.111.071a1.01 1.01 0 0 0-.112.097l-.08.09l-.067.096l-.052.098l-.044.11l-.03.112l-.017.126L8 15l.007.117A1 1 0 0 0 9 16l.117-.007A1 1 0 0 0 10 15v-3.585l4.293 4.292l.094.083a1 1 0 0 0 1.32-1.497L11.415 10H15l.117-.007A1 1 0 0 0 15 8"/></g>`),
+			Text(`<path fill="currentColor" d="M17 3.34a10 10 0 1 1-14.995 8.984L2 12l.005-.324A10 10 0 0 1 17 3.34M15 8H9l-.117.007l-.149.029l-.105.035l-.113.054l-.111.071a1.01 1.01 0 0 0-.112.097l-.08.09l-.067.096l-.052.098l-.044.11l-.03.112l-.017.126L8 15l.007.117A1 1 0 0 0 9 16l.117-.007A1 1 0 0 0 10 15v-3.585l4.293 4.292l.094.083a1 1 0 0 0 1.32-1.497L11.415 10H15l.117-.007A1 1 0 0 0 15 8"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -15487,7 +16408,7 @@ func CircleArrowUpRight(children ...ElementRenderer) *TablerIcon {
 func CircleArrowUpRightFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M17 3.34a10 10 0 1 1-14.995 8.984L2 12l.005-.324A10 10 0 0 1 17 3.34M15 8H9l-.117.007A1 1 0 0 0 8 9l.007.117A1 1 0 0 0 9 10h3.584l-4.291 4.293l-.083.094a1 1 0 0 0 1.497 1.32L14 11.414V15l.007.117A1 1 0 0 0 16 15V9l-.007-.117l-.029-.149l-.035-.105l-.054-.113l-.071-.111a1.01 1.01 0 0 0-.097-.112l-.09-.08l-.096-.067l-.098-.052l-.11-.044l-.112-.03l-.126-.017z"/></g>`),
+			Text(`<path fill="currentColor" d="M17 3.34a10 10 0 1 1-14.995 8.984L2 12l.005-.324A10 10 0 0 1 17 3.34M15 8H9l-.117.007A1 1 0 0 0 8 9l.007.117A1 1 0 0 0 9 10h3.584l-4.291 4.293l-.083.094a1 1 0 0 0 1.497 1.32L14 11.414V15l.007.117A1 1 0 0 0 16 15V9l-.007-.117l-.029-.149l-.035-.105l-.054-.113l-.071-.111a1.01 1.01 0 0 0-.097-.112l-.09-.08l-.096-.067l-.098-.052l-.11-.044l-.112-.03l-.126-.017z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -15535,7 +16456,7 @@ func CircleCheck(children ...ElementRenderer) *TablerIcon {
 func CircleCheckFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M17 3.34a10 10 0 1 1-14.995 8.984L2 12l.005-.324A10 10 0 0 1 17 3.34m-1.293 5.953a1 1 0 0 0-1.32-.083l-.094.083L11 12.585l-1.293-1.292l-.094-.083a1 1 0 0 0-1.403 1.403l.083.094l2 2l.094.083a1 1 0 0 0 1.226 0l.094-.083l4-4l.083-.094a1 1 0 0 0-.083-1.32"/></g>`),
+			Text(`<path fill="currentColor" d="M17 3.34a10 10 0 1 1-14.995 8.984L2 12l.005-.324A10 10 0 0 1 17 3.34m-1.293 5.953a1 1 0 0 0-1.32-.083l-.094.083L11 12.585l-1.293-1.292l-.094-.083a1 1 0 0 0-1.403 1.403l.083.094l2 2l.094.083a1 1 0 0 0 1.226 0l.094-.083l4-4l.083-.094a1 1 0 0 0-.083-1.32"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -15692,6 +16613,14 @@ func CircleDashedNumberZero(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func CircleDashedPercentage(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m9 15l6-6M8.56 3.69a9 9 0 0 0-2.92 1.95M3.69 8.56A9 9 0 0 0 3 12m.69 3.44a9 9 0 0 0 1.95 2.92m2.92 1.95A9 9 0 0 0 12 21m3.44-.69a9 9 0 0 0 2.92-1.95m1.95-2.92A9 9 0 0 0 21 12m-.69-3.44a9 9 0 0 0-1.95-2.92m-2.92-1.95A9 9 0 0 0 12 3M9 9.03v.015m6 6v.015"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func CircleDashedX(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
@@ -15711,7 +16640,7 @@ func CircleDot(children ...ElementRenderer) *TablerIcon {
 func CircleDotFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M17 3.34a10 10 0 1 1-14.995 8.984L2 12l.005-.324A10 10 0 0 1 17 3.34M12 10a2 2 0 0 0-1.977 1.697l-.018.154L10 12l.005.15A2 2 0 1 0 12 10"/></g>`),
+			Text(`<path fill="currentColor" d="M17 3.34a10 10 0 1 1-14.995 8.984L2 12l.005-.324A10 10 0 0 1 17 3.34M12 10a2 2 0 0 0-1.977 1.697l-.018.154L10 12l.005.15A2 2 0 1 0 12 10"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -15735,7 +16664,7 @@ func CircleEightFilled(children ...ElementRenderer) *TablerIcon {
 func CircleFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M7 3.34a10 10 0 1 1-4.995 8.984L2 12l.005-.324A10 10 0 0 1 7 3.34"/></g>`),
+			Text(`<path fill="currentColor" d="M7 3.34a10 10 0 1 1-4.995 8.984L2 12l.005-.324A10 10 0 0 1 7 3.34"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -15791,7 +16720,7 @@ func CircleKey(children ...ElementRenderer) *TablerIcon {
 func CircleKeyFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M12 2c5.523 0 10 4.477 10 10a10 10 0 0 1-20 0C2 6.477 6.477 2 12 2m2 5a3 3 0 0 0-2.98 2.65l-.015.174L11 10l.005.176c.019.319.087.624.197.908l.09.209l-3.5 3.5l-.082.094a1 1 0 0 0 0 1.226l.083.094l1.5 1.5l.094.083a1 1 0 0 0 1.226 0l.094-.083l.083-.094a1 1 0 0 0 0-1.226l-.083-.094l-.792-.793l.585-.585l.793.792l.094.083a1 1 0 0 0 1.403-1.403l-.083-.094l-.792-.793l.792-.792A3 3 0 1 0 14 7m0 2a1 1 0 1 1 0 2a1 1 0 0 1 0-2"/></g>`),
+			Text(`<path fill="currentColor" d="M12 2c5.523 0 10 4.477 10 10a10 10 0 0 1-20 0C2 6.477 6.477 2 12 2m2 5a3 3 0 0 0-2.98 2.65l-.015.174L11 10l.005.176c.019.319.087.624.197.908l.09.209l-3.5 3.5l-.082.094a1 1 0 0 0 0 1.226l.083.094l1.5 1.5l.094.083a1 1 0 0 0 1.226 0l.094-.083l.083-.094a1 1 0 0 0 0-1.226l-.083-.094l-.792-.793l.585-.585l.793.792l.094.083a1 1 0 0 0 1.403-1.403l-.083-.094l-.792-.793l.792-.792A3 3 0 1 0 14 7m0 2a1 1 0 1 1 0 2a1 1 0 0 1 0-2"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -15804,10 +16733,26 @@ func CircleLetterA(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func CircleLetterAfilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12S6.477 2 12 2m0 5a3 3 0 0 0-3 3v6a1 1 0 0 0 2 0v-2h2v2a1 1 0 0 0 .883.993L14 17a1 1 0 0 0 1-1v-6a3 3 0 0 0-3-3m0 2a1 1 0 0 1 1 1v2h-2v-2a1 1 0 0 1 .883-.993z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func CircleLetterB(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M3 12a9 9 0 1 0 18 0a9 9 0 1 0-18 0"/><path d="M10 16h2a2 2 0 1 0 0-4h-2h2a2 2 0 1 0 0-4h-2z"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func CircleLetterBfilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12S6.477 2 12 2m0 5h-2a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h2a3 3 0 0 0 3-3l-.005-.176a3 3 0 0 0-.654-1.7L14.235 12l.106-.124A3 3 0 0 0 12 7m0 6a1 1 0 0 1 0 2h-1v-2zm0-4a1 1 0 0 1 0 2h-1V9z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -15820,10 +16765,26 @@ func CircleLetterC(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func CircleLetterCfilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12S6.477 2 12 2m0 5a3 3 0 0 0-3 3v4a3 3 0 0 0 6 0a1 1 0 0 0-1.993-.117L13 14a1 1 0 0 1-2 0v-4a1 1 0 0 1 1.993-.117L13 10a1 1 0 0 0 2 0a3 3 0 0 0-3-3"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func CircleLetterD(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M3 12a9 9 0 1 0 18 0a9 9 0 1 0-18 0"/><path d="M10 8v8h2a2 2 0 0 0 2-2v-4a2 2 0 0 0-2-2z"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func CircleLetterDfilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12S6.477 2 12 2m0 5h-2a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h2a3 3 0 0 0 3-3v-4a3 3 0 0 0-3-3m0 2a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1h-1V9z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -15836,10 +16797,26 @@ func CircleLetterE(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func CircleLetterEfilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12S6.477 2 12 2m2 5h-4a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1l-.007-.117A1 1 0 0 0 14 15h-3v-2h1.5a1 1 0 0 0 .993-.883L13.5 12a1 1 0 0 0-1-1H11V9h3a1 1 0 0 0 0-2"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func CircleLetterF(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M3 12a9 9 0 1 0 18 0a9 9 0 1 0-18 0m7 0h3"/><path d="M14 8h-4v8"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func CircleLetterFfilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12S6.477 2 12 2m2 5h-4a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1l.117-.007A1 1 0 0 0 11 16v-3h2a1 1 0 0 0 .993-.883L14 12a1 1 0 0 0-1-1h-2V9h3a1 1 0 0 0 0-2"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -15852,10 +16829,26 @@ func CircleLetterG(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func CircleLetterGfilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12S6.477 2 12 2m2 5h-2a3 3 0 0 0-3 3v4a3 3 0 0 0 3 3h2a1 1 0 0 0 1-1v-4a1 1 0 0 0-1-1h-1a1 1 0 0 0-1 1l.007.117A1 1 0 0 0 13 13v2h-1a1 1 0 0 1-1-1v-4a1 1 0 0 1 1-1h2a1 1 0 0 0 0-2"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func CircleLetterH(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12a9 9 0 1 0 18 0a9 9 0 1 0-18 0m7 4V8m4 0v8m-4-4h4"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func CircleLetterHfilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12S6.477 2 12 2m2 5a1 1 0 0 0-1 1v3h-2V8a1 1 0 0 0-.883-.993L10 7a1 1 0 0 0-1 1v8a1 1 0 0 0 2 0v-3h2v3a1 1 0 0 0 .883.993L14 17a1 1 0 0 0 1-1V8a1 1 0 0 0-1-1"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -15868,10 +16861,26 @@ func CircleLetterI(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func CircleLetterIfilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12S6.477 2 12 2m0 5a1 1 0 0 0-1 1v8a1 1 0 0 0 2 0V8a1 1 0 0 0-1-1"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func CircleLetterJ(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M3 12a9 9 0 1 0 18 0a9 9 0 1 0-18 0"/><path d="M10 8h4v6a2 2 0 1 1-4 0"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func CircleLetterJfilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12S6.477 2 12 2m2 5h-4a1 1 0 0 0-1 1l.007.117A1 1 0 0 0 10 9h3v5a1 1 0 0 1-1.993.117L11 14a1 1 0 0 0-2 0a3 3 0 0 0 6 0V8a1 1 0 0 0-1-1"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -15884,10 +16893,26 @@ func CircleLetterK(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func CircleLetterKfilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12S6.477 2 12 2m2.53 5.152a1 1 0 0 0-1.378.318L11 10.913V8a1 1 0 0 0-.883-.993L10 7a1 1 0 0 0-1 1v8a1 1 0 0 0 2 0v-2.914l2.152 3.444a1 1 0 0 0 1.276.374l.102-.056l.095-.068a1 1 0 0 0 .223-1.31L12.678 12l2.17-3.47a1 1 0 0 0-.318-1.378"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func CircleLetterL(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M3 12a9 9 0 1 0 18 0a9 9 0 1 0-18 0"/><path d="M10 8v8h4"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func CircleLetterLfilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12S6.477 2 12 2m-2 5a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1l-.007-.117A1 1 0 0 0 14 15h-3V8a1 1 0 0 0-1-1"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -15900,10 +16925,26 @@ func CircleLetterM(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func CircleLetterMfilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12S6.477 2 12 2m4 6c0-1.014-1.336-1.384-1.857-.514L12 11.056l-2.143-3.57C9.336 6.616 8 6.986 8 8v8a1 1 0 0 0 1 1l.117-.007A1 1 0 0 0 10 16v-4.39l1.143 1.904l.074.108a1 1 0 0 0 1.64-.108L14 11.61V16a1 1 0 0 0 2 0z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func CircleLetterN(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M3 12a9 9 0 1 0 18 0a9 9 0 1 0-18 0"/><path d="M10 16V8l4 8V8"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func CircleLetterNfilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12S6.477 2 12 2m-1.106 5.553C10.423 6.609 9 6.945 9 8v8a1 1 0 0 0 1 1l.117-.007A1 1 0 0 0 11 16v-3.764l2.106 4.211c.471.944 1.894.608 1.894-.447V8a1 1 0 0 0-1-1l-.117.007A1 1 0 0 0 13 8v3.764z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -15916,10 +16957,26 @@ func CircleLetterO(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func CircleLetterOfilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12S6.477 2 12 2m0 5a3 3 0 0 0-3 3v4a3 3 0 0 0 6 0v-4a3 3 0 0 0-3-3m0 2a1 1 0 0 1 1 1v4a1 1 0 0 1-2 0v-4a1 1 0 0 1 1-1"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func CircleLetterP(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M3 12a9 9 0 1 0 18 0a9 9 0 1 0-18 0"/><path d="M10 12h2a2 2 0 1 0 0-4h-2v8"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func CircleLetterPfilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12S6.477 2 12 2m0 5h-2a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1l.117-.007A1 1 0 0 0 11 16v-3h1a3 3 0 0 0 0-6m0 2a1 1 0 0 1 0 2h-1V9z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -15932,10 +16989,26 @@ func CircleLetterQ(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func CircleLetterQfilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12S6.477 2 12 2m0 5a3 3 0 0 0-3 3v4a3 3 0 0 0 4.168 2.764l.125-.057a1 1 0 0 0 1.414-1.414l.057-.125A3 3 0 0 0 15 14v-4a3 3 0 0 0-3-3m1 7.001h-.059a.996.996 0 0 0-.941 1A1 1 0 0 1 11 14v-4a1 1 0 0 1 2 0z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func CircleLetterR(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M3 12a9 9 0 1 0 18 0a9 9 0 1 0-18 0"/><path d="M10 12h2a2 2 0 1 0 0-4h-2v8m4 0l-3-4"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func CircleLetterRfilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12S6.477 2 12 2m0 5h-2a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1l.117-.007A1 1 0 0 0 11 16v-2.332l2.2 2.932a1 1 0 0 0 1.4.2l.096-.081A1 1 0 0 0 14.8 15.4l-1.903-2.538l.115-.037A3.001 3.001 0 0 0 12 7m0 2a1 1 0 0 1 0 2h-1V9z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -15948,10 +17021,26 @@ func CircleLetterS(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func CircleLetterSfilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12S6.477 2 12 2m1 5h-2a2 2 0 0 0-2 2v2a2 2 0 0 0 2 2h2v2h-2a1 1 0 0 0-2 0a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2v-2a2 2 0 0 0-2-2h-2V9h2l.007.117A1 1 0 0 0 15 9a2 2 0 0 0-2-2"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func CircleLetterT(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12a9 9 0 1 0 18 0a9 9 0 1 0-18 0m7-4h4m-2 0v8"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func CircleLetterTfilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12S6.477 2 12 2m2 5h-4a1 1 0 1 0 0 2h1v7a1 1 0 0 0 .883.993L12 17a1 1 0 0 0 1-1V9h1a1 1 0 0 0 .993-.883L15 8a1 1 0 0 0-1-1"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -15964,10 +17053,26 @@ func CircleLetterU(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func CircleLetterUfilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12S6.477 2 12 2m2 5a1 1 0 0 0-1 1v6a1 1 0 0 1-2 0V8a1 1 0 0 0-2 0v6a3 3 0 0 0 6 0V8a1 1 0 0 0-1-1"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func CircleLetterV(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M3 12a9 9 0 1 0 18 0a9 9 0 1 0-18 0"/><path d="m10 8l2 8l2-8"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func CircleLetterVfilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12S6.477 2 12 2m2.243 5.03a1 1 0 0 0-1.213.727L12 11.875l-1.03-4.118a1 1 0 1 0-1.94.486l2 8c.252 1.01 1.688 1.01 1.94 0l2-8a1 1 0 0 0-.727-1.213"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -15980,10 +17085,26 @@ func CircleLetterW(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func CircleLetterWfilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12S6.477 2 12 2m2.008 5.876l-.52 4.153l-.56-1.4c-.319-.799-1.41-.837-1.803-.114l-.053.114l-.561 1.4l-.519-4.153a1 1 0 0 0-1-.876l-.116.008a1 1 0 0 0-.868 1.116l1 8c.128 1.025 1.537 1.207 1.92.247L12 13.693l1.072 2.678c.383.96 1.792.778 1.92-.247l1-8a1 1 0 0 0-1.984-.248"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func CircleLetterX(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12a9 9 0 1 0 18 0a9 9 0 1 0-18 0m7-4l4 8m-4 0l4-8"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func CircleLetterXfilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12S6.477 2 12 2m2.447 5.106a1 1 0 0 0-1.341.447L12 9.763l-1.106-2.21a1 1 0 0 0-1.234-.494l-.107.047a1 1 0 0 0-.447 1.341L10.88 12l-1.775 3.553a1 1 0 0 0 .345 1.283l.102.058a1 1 0 0 0 1.341-.447L12 14.236l1.106 2.211a1 1 0 0 0 1.234.494l.107-.047a1 1 0 0 0 .447-1.341L13.118 12l1.776-3.553a1 1 0 0 0-.345-1.283z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -15996,10 +17117,26 @@ func CircleLetterY(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func CircleLetterYfilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12S6.477 2 12 2m2.371 5.072a1 1 0 0 0-1.3.557L12 10.307l-1.072-2.678a1 1 0 0 0-1.856.742L11 13.194V16a1 1 0 0 0 .883.993L12 17a1 1 0 0 0 1-1v-2.809l1.928-4.82a1 1 0 0 0-.45-1.25z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func CircleLetterZ(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M3 12a9 9 0 1 0 18 0a9 9 0 1 0-18 0"/><path d="M10 8h4l-4 8h4"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func CircleLetterZfilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12S6.477 2 12 2m2 5h-4a1 1 0 0 0-1 1l.007.117A1 1 0 0 0 10 9h2.382l-3.276 6.553A1 1 0 0 0 10 17h4a1 1 0 0 0 1-1l-.007-.117A1 1 0 0 0 14 15h-2.382l3.276-6.553A1 1 0 0 0 14 7"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -16036,10 +17173,26 @@ func CircleNumberEight(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func CircleNumberEightFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12S6.477 2 12 2m1 5h-2l-.15.005a2 2 0 0 0-1.844 1.838L9 9v2l.005.15c.018.236.077.46.17.667l.075.152l.018.03l-.018.032c-.133.24-.218.509-.243.795L9 13v2l.005.15a2 2 0 0 0 1.838 1.844L11 17h2l.15-.005a2 2 0 0 0 1.844-1.838L15 15v-2l-.005-.15a1.988 1.988 0 0 0-.17-.667l-.075-.152l-.019-.032l.02-.03a2.01 2.01 0 0 0 .242-.795L15 11V9l-.005-.15a2 2 0 0 0-1.838-1.844zm0 6v2h-2v-2zm0-4v2h-2V9z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func CircleNumberFive(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M3 12a9 9 0 1 0 18 0a9 9 0 1 0-18 0"/><path d="M10 15a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1h-3V8h4"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func CircleNumberFiveFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12S6.477 2 12 2m2 5h-4a1 1 0 0 0-.993.883L9 8v4a1 1 0 0 0 .883.993L10 13h3v2h-2l-.007-.117A1 1 0 0 0 9 15a2 2 0 0 0 1.85 1.995L11 17h2a2 2 0 0 0 1.995-1.85L15 15v-2a2 2 0 0 0-1.85-1.995L13 11h-2V9h3a1 1 0 0 0 .993-.883L15 8a1 1 0 0 0-.883-.993z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -16052,10 +17205,26 @@ func CircleNumberFour(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func CircleNumberFourFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12S6.477 2 12 2m2 5a1 1 0 0 0-.993.883L13 8v3h-2V8l-.007-.117a1 1 0 0 0-1.986 0L9 8v3l.005.15a2 2 0 0 0 1.838 1.844L11 13h2v3l.007.117a1 1 0 0 0 1.986 0L15 16V8l-.007-.117A1 1 0 0 0 14 7"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func CircleNumberNine(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M3 12a9 9 0 1 0 18 0a9 9 0 1 0-18 0"/><path d="M10 15a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1V9a1 1 0 0 0-1-1h-2a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h3"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func CircleNumberNineFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12S6.477 2 12 2m1 5h-2l-.15.005a2 2 0 0 0-1.844 1.838L9 9v2l.005.15a2 2 0 0 0 1.838 1.844L11 13h2v2h-2l-.007-.117A1 1 0 0 0 9 15a2 2 0 0 0 1.85 1.995L11 17h2l.15-.005a2 2 0 0 0 1.844-1.838L15 15V9l-.005-.15a2 2 0 0 0-1.838-1.844zm0 2v2h-2V9z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -16068,10 +17237,26 @@ func CircleNumberOne(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func CircleNumberOneFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12S6.477 2 12 2m.994 5.886c-.083-.777-1.008-1.16-1.617-.67l-.084.077l-2 2l-.083.094a1 1 0 0 0 0 1.226l.083.094l.094.083a1 1 0 0 0 1.226 0l.094-.083l.293-.293V16l.007.117a1 1 0 0 0 1.986 0L13 16V8z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func CircleNumberSeven(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M3 12a9 9 0 1 0 18 0a9 9 0 1 0-18 0"/><path d="M10 8h4l-2 8"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func CircleNumberSevenFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12S6.477 2 12 2m2 5h-4l-.117.007a1 1 0 0 0-.876.876L9 8l.007.117a1 1 0 0 0 .876.876L10 9h2.718l-1.688 6.757l-.022.115a1 1 0 0 0 1.927.482l.035-.111l2-8l.021-.112a1 1 0 0 0-.878-1.125z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -16084,10 +17269,26 @@ func CircleNumberSix(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func CircleNumberSixFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12S6.477 2 12 2m1 5h-2l-.15.005a2 2 0 0 0-1.844 1.838L9 9v6l.005.15a2 2 0 0 0 1.838 1.844L11 17h2l.15-.005a2 2 0 0 0 1.844-1.838L15 15v-2l-.005-.15a2 2 0 0 0-1.838-1.844L13 11h-2V9h2l.007.117A1 1 0 0 0 15 9a2 2 0 0 0-1.85-1.995zm0 6v2h-2v-2z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func CircleNumberThree(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M3 12a9 9 0 1 0 18 0a9 9 0 1 0-18 0"/><path d="M10 9a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-2h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func CircleNumberThreeFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12S6.477 2 12 2m1 5h-2l-.15.005A2 2 0 0 0 9 9a1 1 0 0 0 1.974.23l.02-.113L11 9h2v2h-2l-.133.007c-1.111.12-1.154 1.73-.128 1.965l.128.021L11 13h2v2h-2l-.007-.117A1 1 0 0 0 9 15a2 2 0 0 0 1.85 1.995L11 17h2l.15-.005a2 2 0 0 0 1.844-1.838L15 15v-2l-.005-.15a1.988 1.988 0 0 0-.17-.667l-.075-.152l-.019-.032l.02-.03a2.01 2.01 0 0 0 .242-.795L15 11V9l-.005-.15a2 2 0 0 0-1.838-1.844z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -16100,10 +17301,26 @@ func CircleNumberTwo(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func CircleNumberTwoFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12S6.477 2 12 2m1 5h-3l-.117.007a1 1 0 0 0 0 1.986L10 9h3v2h-2l-.15.005a2 2 0 0 0-1.844 1.838L9 13v2l.005.15a2 2 0 0 0 1.838 1.844L11 17h3l.117-.007a1 1 0 0 0 0-1.986L14 15h-3v-2h2l.15-.005a2 2 0 0 0 1.844-1.838L15 11V9l-.005-.15a2 2 0 0 0-1.838-1.844z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func CircleNumberZero(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M3 12a9 9 0 1 0 18 0a9 9 0 1 0-18 0"/><path d="M10 10v4a2 2 0 1 0 4 0v-4a2 2 0 1 0-4 0"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func CircleNumberZeroFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12S6.477 2 12 2m0 5a3 3 0 0 0-2.995 2.824L9 10v4l.005.176a3 3 0 0 0 5.99 0L15 14v-4l-.005-.176A3 3 0 0 0 12 7m0 2a1 1 0 0 1 .993.883L13 10v4l-.007.117a1 1 0 0 1-1.986 0L11 14v-4l.007-.117A1 1 0 0 1 12 9"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -16120,6 +17337,14 @@ func CircleOneFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12S6.477 2 12 2m.994 5.886c-.083-.777-1.008-1.16-1.617-.67l-.084.077l-2 2l-.083.094a1 1 0 0 0 0 1.226l.083.094l.094.083a1 1 0 0 0 1.226 0l.094-.083l.293-.293V16l.007.117a1 1 0 0 0 1.986 0L13 16V8z"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func CirclePercentage(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0-18 0m6 3.075l6-6m-6 .03v.015m6 6v.015"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -16215,7 +17440,7 @@ func CircleX(children ...ElementRenderer) *TablerIcon {
 func CircleXfilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M17 3.34a10 10 0 1 1-14.995 8.984L2 12l.005-.324A10 10 0 0 1 17 3.34m-6.489 5.8a1 1 0 0 0-1.218 1.567L10.585 12l-1.292 1.293l-.083.094a1 1 0 0 0 1.497 1.32L12 13.415l1.293 1.292l.094.083a1 1 0 0 0 1.32-1.497L13.415 12l1.292-1.293l.083-.094a1 1 0 0 0-1.497-1.32L12 10.585l-1.293-1.292l-.094-.083z"/></g>`),
+			Text(`<path fill="currentColor" d="M17 3.34a10 10 0 1 1-14.995 8.984L2 12l.005-.324A10 10 0 0 1 17 3.34m-6.489 5.8a1 1 0 0 0-1.218 1.567L10.585 12l-1.292 1.293l-.083.094a1 1 0 0 0 1.497 1.32L12 13.415l1.293 1.292l.094.083a1 1 0 0 0 1.32-1.497L13.415 12l1.292-1.293l.083-.094a1 1 0 0 0-1.497-1.32L12 10.585l-1.293-1.292l-.094-.083z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -16239,7 +17464,7 @@ func Circles(children ...ElementRenderer) *TablerIcon {
 func CirclesFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M6.5 12a5 5 0 1 1-4.995 5.217L1.5 17l.005-.217A5 5 0 0 1 6.5 12m11 0a5 5 0 1 1-4.995 5.217L12.5 17l.005-.217A5 5 0 0 1 17.5 12M12 2a5 5 0 1 1-4.995 5.217L7 7l.005-.217A5 5 0 0 1 12 2"/></g>`),
+			Text(`<path fill="currentColor" d="M6.5 12a5 5 0 1 1-4.995 5.217L1.5 17l.005-.217A5 5 0 0 1 6.5 12m11 0a5 5 0 1 1-4.995 5.217L12.5 17l.005-.217A5 5 0 0 1 17.5 12M12 2a5 5 0 1 1-4.995 5.217L7 7l.005-.217A5 5 0 0 1 12 2"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -16492,6 +17717,14 @@ func ClipboardPlus(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func ClipboardSmile(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M10 13h.01M14 13h.01M10 16a3.5 3.5 0 0 0 4 0"/><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><path d="M9 5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2a2 2 0 0 1-2 2h-2a2 2 0 0 1-2-2"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func ClipboardText(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
@@ -16599,7 +17832,7 @@ func ClockExclamation(children ...ElementRenderer) *TablerIcon {
 func ClockFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M17 3.34a10 10 0 1 1-14.995 8.984L2 12l.005-.324A10 10 0 0 1 17 3.34M12 6a1 1 0 0 0-.993.883L11 7v5l.009.131a1 1 0 0 0 .197.477l.087.1l3 3l.094.082a1 1 0 0 0 1.226 0l.094-.083l.083-.094a1 1 0 0 0 0-1.226l-.083-.094L13 11.585V7l-.007-.117A1 1 0 0 0 12 6"/></g>`),
+			Text(`<path fill="currentColor" d="M17 3.34a10 10 0 1 1-14.995 8.984L2 12l.005-.324A10 10 0 0 1 17 3.34M12 6a1 1 0 0 0-.993.883L11 7v5l.009.131a1 1 0 0 0 .197.477l.087.1l3 3l.094.082a1 1 0 0 0 1.226 0l.094-.083l.083-.094a1 1 0 0 0 0-1.226l-.083-.094L13 11.585V7l-.007-.117A1 1 0 0 0 12 6"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -16620,10 +17853,26 @@ func ClockHourEight(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func ClockHourEightFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M17 3.34A10 10 0 1 1 2 12l.005-.324A10 10 0 0 1 17 3.34M12 6a1 1 0 0 0-1 1v4.464l-2.555 1.704a1 1 0 0 0-.336 1.286l.059.1a1 1 0 0 0 1.387.278l3.027-2.018l.087-.07l.074-.075l.075-.094l.052-.08l.035-.07l.051-.132l.031-.135l.01-.082L13 12V7a1 1 0 0 0-1-1"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func ClockHourEleven(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12a9 9 0 1 0 18 0a9 9 0 1 0-18 0m9 0l-2-3m2-2v5"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func ClockHourElevenFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M17 3.34A10 10 0 1 1 2 12l.005-.324A10 10 0 0 1 17 3.34m-4.952 9.659l.069-.006l.096-.016l.089-.023l.099-.038l.082-.04l.113-.073l.073-.06l.074-.074l.075-.094l.052-.08l.035-.07l.051-.132l.031-.135l.01-.082L13 12V7a1 1 0 0 0-2 0v1.697l-.168-.252a1 1 0 0 0-1.286-.336l-.1.059a1 1 0 0 0-.278 1.387l2.018 3.027l.07.087l.075.074l.094.075l.08.052l.07.035l.132.051l.135.031l.082.01z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -16636,10 +17885,26 @@ func ClockHourFive(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func ClockHourFiveFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M17 3.34A10 10 0 1 1 2 12l.005-.324A10 10 0 0 1 17 3.34M11 7v5.022l.003.054l.02.135l.005.025a1 1 0 0 0 .056.165l.04.082l.04.065l2.004 3.007a1 1 0 1 0 1.664-1.11L13 11.697V7a1 1 0 0 0-.883-.993L12 6a1 1 0 0 0-1 1"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func ClockHourFour(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12a9 9 0 1 0 18 0a9 9 0 1 0-18 0m9 0l3 2m-3-7v5"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func ClockHourFourFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M17 3.34A10 10 0 1 1 2 12l.005-.324A10 10 0 0 1 17 3.34M12 6a1 1 0 0 0-1 1v5.026l.009.105l.02.107l.04.129l.048.102l.046.078l.042.06l.069.08l.088.083l.083.062l3 2a1 1 0 1 0 1.11-1.664L13 11.464V7a1 1 0 0 0-.883-.993z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -16652,10 +17917,26 @@ func ClockHourNine(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func ClockHourNineFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M17 3.34A10 10 0 1 1 2 12l.005-.324A10 10 0 0 1 17 3.34m-4.883 9.653A1 1 0 0 0 13 12V7a1 1 0 0 0-2 0v4H8.5a1 1 0 0 0-.993.883L7.5 12a1 1 0 0 0 1 1H12z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func ClockHourOne(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12a9 9 0 1 0 18 0a9 9 0 1 0-18 0m9-5v5m0 0l2-3"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func ClockHourOneFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M17 3.34A10 10 0 1 1 2 12l.005-.324A10 10 0 0 1 17 3.34m-5.401 9.576l.052.021l.08.026l.08.019l.072.011L12 13l.076-.003l.135-.02l.082-.02l.103-.039l.073-.035l.078-.046l.06-.042l.08-.069l.083-.088l.062-.083l2-3a1 1 0 1 0-1.664-1.11L13 8.696V7a1 1 0 0 0-.883-.993L12 6a1 1 0 0 0-1 1v5.026l.009.105l.02.107l.04.129l.048.102l.046.078l.042.06l.069.08l.088.083l.083.062l.09.053z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -16668,10 +17949,26 @@ func ClockHourSeven(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func ClockHourSevenFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M17 3.34A10 10 0 1 1 2 12l.005-.324A10 10 0 0 1 17 3.34m-4.007 8.777L13 12V7a1 1 0 0 0-2 0v4.696l-1.832 2.75a1 1 0 0 0 .184 1.316l.093.07a1 1 0 0 0 1.387-.277l2.024-3.038l.06-.116l.032-.081l.03-.109z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func ClockHourSix(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12a9 9 0 1 0 18 0a9 9 0 1 0-18 0m9 0v3.5M12 7v5"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func ClockHourSixFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M17 3.34A10 10 0 1 1 2 12l.005-.324A10 10 0 0 1 17 3.34M11 15.5a1 1 0 0 0 2 0V7a1 1 0 0 0-2 0z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -16684,10 +17981,26 @@ func ClockHourTen(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func ClockHourTenFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M17 3.34A10 10 0 1 1 2 12l.005-.324A10 10 0 0 1 17 3.34m-5.401 9.576l.052.021l.08.026l.08.019l.072.011L12 13l.076-.003l.135-.02l.082-.02l.103-.039l.073-.035l.078-.046l.06-.042l.08-.069l.083-.088l.062-.083l.053-.09l.031-.064l.032-.081l.03-.109l.015-.094L13 12V7a1 1 0 0 0-2 0v3.131l-1.445-.963a1 1 0 0 0-1.317.184l-.07.093a1 1 0 0 0 .277 1.387l3.038 2.024z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func ClockHourThree(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12a9 9 0 1 0 18 0a9 9 0 1 0-18 0m9 0h3.5M12 7v5"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func ClockHourThreeFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M17 3.34A10 10 0 1 1 2 12l.005-.324A10 10 0 0 1 17 3.34M12 6a1 1 0 0 0-1 1v5a1 1 0 0 0 1 1h3.5a1 1 0 0 0 0-2H13V7a1 1 0 0 0-.883-.993z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -16700,10 +18013,26 @@ func ClockHourTwelve(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func ClockHourTwelveFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M17 3.34A10 10 0 1 1 2 12l.005-.324A10 10 0 0 1 17 3.34M12 6a1 1 0 0 0-1 1v5a1 1 0 0 0 2 0V7a1 1 0 0 0-1-1"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func ClockHourTwo(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12a9 9 0 1 0 18 0a9 9 0 1 0-18 0m9 0l3-2m-3-3v5"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func ClockHourTwoFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M17 3.34A10 10 0 1 1 2 12l.005-.324A10 10 0 0 1 17 3.34M11 7v5.022l.003.054l.02.135l.005.025a1 1 0 0 0 .056.165l.04.082l.062.099l.07.087l.075.074l.094.075l.08.052l.07.035l.132.051l.135.031l.082.01l.124.002l.113-.012l.108-.024l.106-.036l.108-.051l.065-.04l3.007-2.004a1 1 0 1 0-1.11-1.664L13 10.13V7a1 1 0 0 0-.883-.993L12 6a1 1 0 0 0-1 1"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -16967,7 +18296,7 @@ func CloudExclamation(children ...ElementRenderer) *TablerIcon {
 func CloudFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M10.04 4.305c2.195-.667 4.615-.224 6.36 1.176c1.386 1.108 2.188 2.686 2.252 4.34l.003.212l.091.003c2.3.107 4.143 1.961 4.25 4.27l.004.211c0 2.407-1.885 4.372-4.255 4.482l-.21.005H6.657l-.222-.008c-2.94-.11-5.317-2.399-5.43-5.263L1 13.517C1 10.77 3.08 8.507 5.784 8.1l.114-.016l.07-.181c.663-1.62 2.056-2.906 3.829-3.518l.244-.08z"/></g>`),
+			Text(`<path fill="currentColor" d="M10.04 4.305c2.195-.667 4.615-.224 6.36 1.176c1.386 1.108 2.188 2.686 2.252 4.34l.003.212l.091.003c2.3.107 4.143 1.961 4.25 4.27l.004.211c0 2.407-1.885 4.372-4.255 4.482l-.21.005H6.657l-.222-.008c-2.94-.11-5.317-2.399-5.43-5.263L1 13.517C1 10.77 3.08 8.507 5.784 8.1l.114-.016l.07-.181c.663-1.62 2.056-2.906 3.829-3.518l.244-.08z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -17159,7 +18488,7 @@ func Clubs(children ...ElementRenderer) *TablerIcon {
 func ClubsFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M12 2a5 5 0 0 0-4.488 2.797l-.103.225a4.998 4.998 0 0 0-.334 2.837l.027.14a5 5 0 0 0-3.091 9.009l.198.14a4.998 4.998 0 0 0 4.42.58l.174-.066l-.773 3.095A1 1 0 0 0 9 22h6l.113-.006a1 1 0 0 0 .857-1.237l-.774-3.095l.174.065A5 5 0 1 0 16.897 8l.028-.14A4.997 4.997 0 0 0 12 2"/></g>`),
+			Text(`<path fill="currentColor" d="M12 2a5 5 0 0 0-4.488 2.797l-.103.225a4.998 4.998 0 0 0-.334 2.837l.027.14a5 5 0 0 0-3.091 9.009l.198.14a4.998 4.998 0 0 0 4.42.58l.174-.066l-.773 3.095A1 1 0 0 0 9 22h6l.113-.006a1 1 0 0 0 .857-1.237l-.774-3.095l.174.065A5 5 0 1 0 16.897 8l.028-.14A4.997 4.997 0 0 0 12 2"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -17172,7 +18501,7 @@ func Code(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
-func CodeAsterix(children ...ElementRenderer) *TablerIcon {
+func CodeAsterisk(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 19a2 2 0 0 1-2-2v-4l-1-1l1-1V7a2 2 0 0 1 2-2m6 6.875l3-1.687m-3 1.687v3.375m0-3.375l-3-1.687m3 1.687l3 1.688M12 8.5v3.375m0 0l-3 1.688M18 19a2 2 0 0 0 2-2v-4l1-1l-1-1V7a2 2 0 0 0-2-2"/>`),
@@ -17271,7 +18600,7 @@ func CoinBitcoin(children ...ElementRenderer) *TablerIcon {
 func CoinBitcoinFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M17 3.34A10 10 0 1 1 2 12l.005-.324A10 10 0 0 1 17 3.34M13 6a1 1 0 0 0-1 1h-1a1 1 0 0 0-2 0a1 1 0 1 0 0 2v6a1 1 0 0 0 0 2c0 1.333 2 1.333 2 0h1a1 1 0 0 0 2 0v-.15c1.167-.394 2-1.527 2-2.85l-.005-.175a3.063 3.063 0 0 0-.734-1.827c.46-.532.739-1.233.739-1.998c0-1.323-.833-2.456-2-2.85V7a1 1 0 0 0-1-1m.09 7c.492 0 .91.437.91 1s-.418 1-.91 1H11v-2zm0-4c.492 0 .91.437.91 1c0 .522-.36.937-.806.993L13.09 11H11V9z"/></g>`),
+			Text(`<path fill="currentColor" d="M17 3.34A10 10 0 1 1 2 12l.005-.324A10 10 0 0 1 17 3.34M13 6a1 1 0 0 0-1 1h-1a1 1 0 0 0-2 0a1 1 0 1 0 0 2v6a1 1 0 0 0 0 2c0 1.333 2 1.333 2 0h1a1 1 0 0 0 2 0v-.15c1.167-.394 2-1.527 2-2.85l-.005-.175a3.063 3.063 0 0 0-.734-1.827c.46-.532.739-1.233.739-1.998c0-1.323-.833-2.456-2-2.85V7a1 1 0 0 0-1-1m.09 7c.492 0 .91.437.91 1s-.418 1-.91 1H11v-2zm0-4c.492 0 .91.437.91 1c0 .522-.36.937-.806.993L13.09 11H11V9z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -17287,7 +18616,7 @@ func CoinEuro(children ...ElementRenderer) *TablerIcon {
 func CoinEuroFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M17 3.34A10 10 0 1 1 2 12l.005-.324A10 10 0 0 1 17 3.34M12 6C9.948 6 8.232 7.449 7.451 9.5H7a1 1 0 0 0-.117 1.993l.134.007a7.298 7.298 0 0 0 0 1H7a1 1 0 0 0 0 2h.452C8.232 16.553 9.948 18 12 18c1.141 0 2.217-.457 3.084-1.27a1 1 0 0 0-1.368-1.46c-.509.478-1.102.73-1.716.73c-.922 0-1.776-.578-2.335-1.499L11 14.5a1 1 0 0 0 0-2H9.023a5.342 5.342 0 0 1 0-1H11a1 1 0 0 0 0-2H9.664C10.224 8.579 11.078 8 12 8c.615 0 1.208.252 1.717.73a1 1 0 0 0 1.368-1.46C14.218 6.458 13.142 6 12 6"/></g>`),
+			Text(`<path fill="currentColor" d="M17 3.34A10 10 0 1 1 2 12l.005-.324A10 10 0 0 1 17 3.34M12 6C9.948 6 8.232 7.449 7.451 9.5H7a1 1 0 0 0-.117 1.993l.134.007a7.298 7.298 0 0 0 0 1H7a1 1 0 0 0 0 2h.452C8.232 16.553 9.948 18 12 18c1.141 0 2.217-.457 3.084-1.27a1 1 0 0 0-1.368-1.46c-.509.478-1.102.73-1.716.73c-.922 0-1.776-.578-2.335-1.499L11 14.5a1 1 0 0 0 0-2H9.023a5.342 5.342 0 0 1 0-1H11a1 1 0 0 0 0-2H9.664C10.224 8.579 11.078 8 12 8c.615 0 1.208.252 1.717.73a1 1 0 0 0 1.368-1.46C14.218 6.458 13.142 6 12 6"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -17295,7 +18624,7 @@ func CoinEuroFilled(children ...ElementRenderer) *TablerIcon {
 func CoinFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M17 3.34A10 10 0 1 1 2 12l.005-.324A10 10 0 0 1 17 3.34M12 6a1 1 0 0 0-1 1a3 3 0 1 0 0 6v2a1.024 1.024 0 0 1-.866-.398l-.068-.101a1 1 0 0 0-1.732.998a3 3 0 0 0 2.505 1.5H11a1 1 0 0 0 .883.994L12 18a1 1 0 0 0 1-1l.176-.005A3 3 0 0 0 13 11V9c.358-.012.671.14.866.398l.068.101a1 1 0 0 0 1.732-.998A3 3 0 0 0 13.161 7H13a1 1 0 0 0-1-1m1 7a1 1 0 0 1 0 2zm-2-4v2a1 1 0 0 1 0-2"/></g>`),
+			Text(`<path fill="currentColor" d="M17 3.34A10 10 0 1 1 2 12l.005-.324A10 10 0 0 1 17 3.34M12 6a1 1 0 0 0-1 1a3 3 0 1 0 0 6v2a1.024 1.024 0 0 1-.866-.398l-.068-.101a1 1 0 0 0-1.732.998a3 3 0 0 0 2.505 1.5H11a1 1 0 0 0 .883.994L12 18a1 1 0 0 0 1-1l.176-.005A3 3 0 0 0 13 11V9c.358-.012.671.14.866.398l.068.101a1 1 0 0 0 1.732-.998A3 3 0 0 0 13.161 7H13a1 1 0 0 0-1-1m1 7a1 1 0 0 1 0 2zm-2-4v2a1 1 0 0 1 0-2"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -17311,7 +18640,7 @@ func CoinMonero(children ...ElementRenderer) *TablerIcon {
 func CoinMoneroFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M15 11.414V16a1 1 0 0 0 1 1l4.66.001a10 10 0 0 1-17.32 0L8 17l.117-.007A1 1 0 0 0 9 16v-4.585l2.293 2.292l.094.083a1 1 0 0 0 1.32-.083zm2-8.074A10 10 0 0 1 21.54 15H17V9c0-.89-1.077-1.337-1.707-.707L12 11.585L8.707 8.293l-.084-.076C7.986 7.703 7 8.147 7 9v6H2.46A9.991 9.991 0 0 1 2 12l.005-.324A10 10 0 0 1 17 3.34"/></g>`),
+			Text(`<path fill="currentColor" d="M15 11.414V16a1 1 0 0 0 1 1l4.66.001a10 10 0 0 1-17.32 0L8 17l.117-.007A1 1 0 0 0 9 16v-4.585l2.293 2.292l.094.083a1 1 0 0 0 1.32-.083zm2-8.074A10 10 0 0 1 21.54 15H17V9c0-.89-1.077-1.337-1.707-.707L12 11.585L8.707 8.293l-.084-.076C7.986 7.703 7 8.147 7 9v6H2.46A9.991 9.991 0 0 1 2 12l.005-.324A10 10 0 0 1 17 3.34"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -17335,7 +18664,7 @@ func CoinPound(children ...ElementRenderer) *TablerIcon {
 func CoinPoundFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M17 3.34A10 10 0 1 1 2 12l.005-.324A10 10 0 0 1 17 3.34M13 6a3 3 0 0 0-3 3v2H9a1 1 0 0 0-.993.883L8 12a1 1 0 0 0 1 1h1v1a1 1 0 0 1-.77.974l-.113.02L9 15c-1.287 0-1.332 1.864-.133 1.993L9 17h6a1 1 0 0 0 1-1l-.007-.117A1 1 0 0 0 15 15h-3.171l.048-.148A3 3 0 0 0 12 14v-1h1a1 1 0 0 0 .993-.883L14 12a1 1 0 0 0-1-1h-1V9a1 1 0 0 1 .883-.993L13 8a1 1 0 0 1 .993.883L14 9a1 1 0 0 0 2 0a3 3 0 0 0-3-3"/></g>`),
+			Text(`<path fill="currentColor" d="M17 3.34A10 10 0 1 1 2 12l.005-.324A10 10 0 0 1 17 3.34M13 6a3 3 0 0 0-3 3v2H9a1 1 0 0 0-.993.883L8 12a1 1 0 0 0 1 1h1v1a1 1 0 0 1-.77.974l-.113.02L9 15c-1.287 0-1.332 1.864-.133 1.993L9 17h6a1 1 0 0 0 1-1l-.007-.117A1 1 0 0 0 15 15h-3.171l.048-.148A3 3 0 0 0 12 14v-1h1a1 1 0 0 0 .993-.883L14 12a1 1 0 0 0-1-1h-1V9a1 1 0 0 1 .883-.993L13 8a1 1 0 0 1 .993.883L14 9a1 1 0 0 0 2 0a3 3 0 0 0-3-3"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -17351,7 +18680,7 @@ func CoinRupee(children ...ElementRenderer) *TablerIcon {
 func CoinRupeeFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M17 3.34A10 10 0 1 1 2 12l.005-.324A10 10 0 0 1 17 3.34M15 7H9c-1.287 0-1.332 1.864-.133 1.993L9 9h1a2 2 0 0 1 1.732 1H9a1 1 0 0 0 0 2l2.732.001A2 2 0 0 1 10 13H9c-.89 0-1.337 1.077-.707 1.707l3 3a1 1 0 0 0 1.414 0l.083-.094a1 1 0 0 0-.083-1.32l-1.484-1.485l.113-.037a4.009 4.009 0 0 0 2.538-2.77L15 12a1 1 0 0 0 0-2h-1.126a3.973 3.973 0 0 0-.33-.855L13.465 9H15a1 1 0 0 0 1-1l-.007-.117A1 1 0 0 0 15 7"/></g>`),
+			Text(`<path fill="currentColor" d="M17 3.34A10 10 0 1 1 2 12l.005-.324A10 10 0 0 1 17 3.34M15 7H9c-1.287 0-1.332 1.864-.133 1.993L9 9h1a2 2 0 0 1 1.732 1H9a1 1 0 0 0 0 2l2.732.001A2 2 0 0 1 10 13H9c-.89 0-1.337 1.077-.707 1.707l3 3a1 1 0 0 0 1.414 0l.083-.094a1 1 0 0 0-.083-1.32l-1.484-1.485l.113-.037a4.009 4.009 0 0 0 2.538-2.77L15 12a1 1 0 0 0 0-2h-1.126a3.973 3.973 0 0 0-.33-.855L13.465 9H15a1 1 0 0 0 1-1l-.007-.117A1 1 0 0 0 15 7"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -17367,7 +18696,7 @@ func CoinTaka(children ...ElementRenderer) *TablerIcon {
 func CoinTakaFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M17 3.34A10 10 0 1 1 2 12l.005-.324A10 10 0 0 1 17 3.34m-6.211 4.384a2 2 0 0 0-2.683-.895l-.553.277a1 1 0 0 0 .894 1.788L9 8.618L8.999 10H8a1 1 0 0 0-.993.883L7 11a1 1 0 0 0 1 1h.999L9 15a3 3 0 0 0 2.824 2.995L12 18h.5a3.5 3.5 0 0 0 3.5-3.5V14a1 1 0 0 0-1-1h-1a1 1 0 0 0-1 1l.007.117a1 1 0 0 0 .876.876l.032.002l-.02.057A1.5 1.5 0 0 1 12.5 16H12a1 1 0 0 1-1-1l-.001-3H15a1 1 0 0 0 .993-.883L16 11a1 1 0 0 0-1-1h-4.001L11 8.618a2 2 0 0 0-.136-.725z"/></g>`),
+			Text(`<path fill="currentColor" d="M17 3.34A10 10 0 1 1 2 12l.005-.324A10 10 0 0 1 17 3.34m-6.211 4.384a2 2 0 0 0-2.683-.895l-.553.277a1 1 0 0 0 .894 1.788L9 8.618L8.999 10H8a1 1 0 0 0-.993.883L7 11a1 1 0 0 0 1 1h.999L9 15a3 3 0 0 0 2.824 2.995L12 18h.5a3.5 3.5 0 0 0 3.5-3.5V14a1 1 0 0 0-1-1h-1a1 1 0 0 0-1 1l.007.117a1 1 0 0 0 .876.876l.032.002l-.02.057A1.5 1.5 0 0 1 12.5 16H12a1 1 0 0 1-1-1l-.001-3H15a1 1 0 0 0 .993-.883L16 11a1 1 0 0 0-1-1h-4.001L11 8.618a2 2 0 0 0-.136-.725z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -17383,7 +18712,7 @@ func CoinYen(children ...ElementRenderer) *TablerIcon {
 func CoinYenFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M17 3.34A10 10 0 1 1 2 12l.005-.324A10 10 0 0 1 17 3.34m-1.445 3.828a1 1 0 0 0-1.387.277L12 10.696l-2.168-3.25a1 1 0 0 0-1.286-.337l-.1.059a1 1 0 0 0-.278 1.387L9.798 11H9a1 1 0 0 0-.993.883L8 12a1 1 0 0 0 1 1h2v1H9a1 1 0 0 0-.993.883L8 15a1 1 0 0 0 1 1h2v1a1 1 0 0 0 .883.993L12 18l.117-.007A1 1 0 0 0 13 17v-1h2a1 1 0 0 0 .993-.883L16 15a1 1 0 0 0-1-1h-2v-1h2a1 1 0 0 0 .993-.883L16 12a1 1 0 0 0-1-1h-.799l1.631-2.445a1 1 0 0 0-.184-1.317z"/></g>`),
+			Text(`<path fill="currentColor" d="M17 3.34A10 10 0 1 1 2 12l.005-.324A10 10 0 0 1 17 3.34m-1.445 3.828a1 1 0 0 0-1.387.277L12 10.696l-2.168-3.25a1 1 0 0 0-1.286-.337l-.1.059a1 1 0 0 0-.278 1.387L9.798 11H9a1 1 0 0 0-.993.883L8 12a1 1 0 0 0 1 1h2v1H9a1 1 0 0 0-.993.883L8 15a1 1 0 0 0 1 1h2v1a1 1 0 0 0 .883.993L12 18l.117-.007A1 1 0 0 0 13 17v-1h2a1 1 0 0 0 .993-.883L16 15a1 1 0 0 0-1-1h-2v-1h2a1 1 0 0 0 .993-.883L16 12a1 1 0 0 0-1-1h-.799l1.631-2.445a1 1 0 0 0-.184-1.317z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -17399,7 +18728,7 @@ func CoinYuan(children ...ElementRenderer) *TablerIcon {
 func CoinYuanFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M17 3.34A10 10 0 1 1 2 12l.005-.324A10 10 0 0 1 17 3.34m-1.445 3.828a1 1 0 0 0-1.387.277L12 10.696l-2.168-3.25a1 1 0 0 0-1.286-.337l-.1.059a1 1 0 0 0-.278 1.387L10.464 12H9a1 1 0 0 0-.993.883L8 13a1 1 0 0 0 1 1h2v3a1 1 0 0 0 .883.993L12 18l.117-.007A1 1 0 0 0 13 17v-3h2a1 1 0 0 0 .993-.883L16 13a1 1 0 0 0-1-1h-1.465l2.297-3.445a1 1 0 0 0-.184-1.317z"/></g>`),
+			Text(`<path fill="currentColor" d="M17 3.34A10 10 0 1 1 2 12l.005-.324A10 10 0 0 1 17 3.34m-1.445 3.828a1 1 0 0 0-1.387.277L12 10.696l-2.168-3.25a1 1 0 0 0-1.286-.337l-.1.059a1 1 0 0 0-.278 1.387L10.464 12H9a1 1 0 0 0-.993.883L8 13a1 1 0 0 0 1 1h2v3a1 1 0 0 0 .883.993L12 18l.117-.007A1 1 0 0 0 13 17v-3h2a1 1 0 0 0 .993-.883L16 13a1 1 0 0 0-1-1h-1.465l2.297-3.445a1 1 0 0 0-.184-1.317z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -17551,7 +18880,7 @@ func Compass(children ...ElementRenderer) *TablerIcon {
 func CompassFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M17 3.34A10 10 0 1 1 2 12l.005-.324A10 10 0 0 1 17 3.34M12 18a1 1 0 1 0 0 2a1 1 0 0 0 0-2m3.684-10.949l-6 2a1 1 0 0 0-.633.633L7.044 15.71l-.023.086l-.017.113l-.004.068v.044l.009.111l.012.07l.04.144l.045.1l.054.095l.064.09l.069.075l.084.074l.098.07l.1.054l.078.033l.105.033l.109.02l.043.005l.068.004h.044l.111-.009l.07-.012l.02-.006l.019-.002l.074-.022l6-2a1 1 0 0 0 .633-.633l2-6a1 1 0 0 0-1.265-1.265zM14.419 9.58l-1.21 3.629l-3.629 1.21l1.21-3.629zM5 11a1 1 0 1 0 0 2a1 1 0 0 0 0-2m14 0a1 1 0 1 0 0 2a1 1 0 0 0 0-2m-7-7a1 1 0 1 0 0 2a1 1 0 0 0 0-2"/></g>`),
+			Text(`<path fill="currentColor" d="M17 3.34A10 10 0 1 1 2 12l.005-.324A10 10 0 0 1 17 3.34M12 18a1 1 0 1 0 0 2a1 1 0 0 0 0-2m3.684-10.949l-6 2a1 1 0 0 0-.633.633L7.044 15.71l-.023.086l-.017.113l-.004.068v.044l.009.111l.012.07l.04.144l.045.1l.054.095l.064.09l.069.075l.084.074l.098.07l.1.054l.078.033l.105.033l.109.02l.043.005l.068.004h.044l.111-.009l.07-.012l.02-.006l.019-.002l.074-.022l6-2a1 1 0 0 0 .633-.633l2-6a1 1 0 0 0-1.265-1.265zM14.419 9.58l-1.21 3.629l-3.629 1.21l1.21-3.629zM5 11a1 1 0 1 0 0 2a1 1 0 0 0 0-2m14 0a1 1 0 1 0 0 2a1 1 0 0 0 0-2m-7-7a1 1 0 1 0 0 2a1 1 0 0 0 0-2"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -17588,6 +18917,14 @@ func Cone(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func ConeFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M12 1.001c.72 0 1.385.387 1.749 1.03l8.13 14.99a1 1 0 0 1 .121.477v.498c0 2.46-4.306 3.945-9.677 4.002L12 22c-5.52 0-10-1.495-10-4.003v-.5a1 1 0 0 1 .121-.477L10.26 2.015A2 2 0 0 1 12 1"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func ConeOff(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
@@ -17608,6 +18945,14 @@ func ConeTwo(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 5.002v.5l-8.13 14.99a1 1 0 0 1-1.74 0L3 5.503v-.5C3 3.344 7.03 2 12 2s9 1.344 9 3.002"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func ConeTwoFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M12 1c5.52 0 10 1.494 10 4.002v.5a1 1 0 0 1-.121.477L13.74 20.985a2 2 0 0 1-3.489-.016l-8.13-14.99A1 1 0 0 1 2 5.504v-.5C2 2.495 6.48 1 12 1"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -17660,6 +19005,14 @@ func Contrast(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func ContrastFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M17 3.34A10 10 0 1 1 2 12l.005-.324A10 10 0 0 1 17 3.34M8 5.072A8 8 0 0 0 12.001 20L12 4a8 8 0 0 0-4 1.072"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func ContrastOff(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
@@ -17671,7 +19024,15 @@ func ContrastOff(children ...ElementRenderer) *TablerIcon {
 func ContrastTwo(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M4 6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z"/><path d="M4 18h2a6 6 0 0 0 6-6a6 6 0 0 1 6-6h2"/></g>`),
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M3 5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M3 19h2.25C8.978 19 12 15.866 12 12s3.022-7 6.75-7H21"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func ContrastTwoFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M19 2a3 3 0 0 1 3 3v14a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3V5a3 3 0 0 1 3-3zm0 2H5a1 1 0 0 0-1 1v14a1 1 0 0 0 .769.973c3.499-.347 7.082-4.127 7.226-7.747L12 12c0-3.687 3.66-7.619 7.232-7.974A1 1 0 0 0 19 4"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -17695,7 +19056,15 @@ func Cooker(children ...ElementRenderer) *TablerIcon {
 func Cookie(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 13v.01M12 17v.01M12 12v.01M16 14v.01M11 8v.01m2.148-4.534l2.667 1.104a4 4 0 0 0 4.656 6.14l.053.132a3 3 0 0 1 0 2.296c-.497.786-.838 1.404-1.024 1.852c-.189.456-.409 1.194-.66 2.216a3 3 0 0 1-1.624 1.623c-1.048.263-1.787.483-2.216.661c-.475.197-1.092.538-1.852 1.024a3 3 0 0 1-2.296 0C10.05 20.021 9.433 19.68 9 19.5c-.471-.195-1.21-.415-2.216-.66a3 3 0 0 1-1.623-1.624c-.265-1.052-.485-1.79-.661-2.216c-.198-.479-.54-1.096-1.024-1.852a3 3 0 0 1 0-2.296c.48-.744.82-1.361 1.024-1.852c.171-.413.391-1.152.66-2.216a3 3 0 0 1 1.624-1.623C7.816 4.905 8.554 4.685 9 4.5c.458-.19 1.075-.531 1.852-1.024a3 3 0 0 1 2.296 0"/>`),
+			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 13v.01M12 17v.01M12 12v.01M16 14v.01M11 8v.01m2.148-4.534l2.667 1.104a4 4 0 0 0 4.656 6.14l.053.132a3 3 0 0 1 0 2.296Q19.779 14.328 19.5 15q-.283.684-.66 2.216a3 3 0 0 1-1.624 1.623q-1.572.394-2.216.661q-.712.295-1.852 1.024a3 3 0 0 1-2.296 0Q9.649 19.77 9 19.5q-.707-.292-2.216-.66a3 3 0 0 1-1.623-1.624Q4.764 15.639 4.5 15q-.298-.718-1.024-1.852a3 3 0 0 1 0-2.296Q4.195 9.736 4.5 9q.257-.62.66-2.216a3 3 0 0 1 1.624-1.623Q8.331 4.777 9 4.5q.687-.285 1.852-1.024a3 3 0 0 1 2.296 0"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func CookieFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="m13.53 2.552l2.667 1.104a1 1 0 0 1 .414 1.53a3 3 0 0 0 3.492 4.604a1 1 0 0 1 1.296.557l.049.122a4 4 0 0 1 0 3.062l-.079.151c-.467.74-.785 1.314-.945 1.7c-.166.4-.373 1.097-.613 2.073l-.047.144a4 4 0 0 1-2.166 2.164l-.139.046c-1.006.253-1.705.461-2.076.615c-.412.17-.982.486-1.696.942l-.156.082a4 4 0 0 1-3.062 0l-.148-.077c-.759-.475-1.333-.793-1.704-.947c-.413-.171-1.109-.378-2.07-.612l-.146-.048a4 4 0 0 1-2.164-2.166l-.046-.138c-.254-1.009-.463-1.709-.615-2.078q-.256-.621-.942-1.695l-.082-.156a4 4 0 0 1 0-3.062l.084-.16c.447-.692.761-1.262.94-1.692c.147-.355.356-1.057.615-2.078l.045-.138a4 4 0 0 1 2.166-2.164l.141-.047c.988-.245 1.686-.453 2.074-.614c.395-.164.967-.48 1.7-.944l.152-.08a4 4 0 0 1 3.062 0M12 16a1 1 0 0 0-1 1v.01a1 1 0 0 0 2 0V17a1 1 0 0 0-1-1m4-3a1 1 0 0 0-1 1v.01a1 1 0 0 0 2 0V14a1 1 0 0 0-1-1m-8-1a1 1 0 0 0-1 1v.01a1 1 0 0 0 2 0V13a1 1 0 0 0-1-1m4-1a1 1 0 0 0-1 1v.01a1 1 0 0 0 2 0V12a1 1 0 0 0-1-1m-1-4c-.552 0-1 .448-1 1.01A1 1 0 1 0 12 8a1 1 0 0 0-1-1"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -17703,7 +19072,15 @@ func Cookie(children ...ElementRenderer) *TablerIcon {
 func CookieMan(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 2a5 5 0 0 1 2.845 9.112l.147.369l1.755-.803c.969-.443 2.12-.032 2.571.918a1.88 1.88 0 0 1-.787 2.447l-.148.076L16 15.208v2.02l1.426 1.425l.114.125a1.96 1.96 0 0 1-2.762 2.762l-.125-.114l-2.079-2.08l-.114-.124a1.957 1.957 0 0 1-.161-.22H11.7c-.047.075-.101.15-.16.22l-.115.125l-2.08 2.079a1.96 1.96 0 0 1-2.886-2.648l.114-.125L8 17.227v-2.019l-2.383-1.09l-.148-.075a1.88 1.88 0 0 1-.787-2.447c.429-.902 1.489-1.318 2.424-.978l.147.06l1.755.803l.147-.369a5 5 0 0 1-2.15-3.895V7a5 5 0 0 1 5-5zm0 14h.01M12 13h.01M10 7h.01M14 7h.01M12 9h.01"/>`),
+			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 2a5 5 0 0 1 2.845 9.112l.147.369l1.755-.803c.969-.443 2.12-.032 2.571.918a1.88 1.88 0 0 1-.787 2.447l-.148.076L16 15.208v2.02l1.426 1.425l.114.125a1.96 1.96 0 0 1-2.762 2.762l-.125-.114l-2.079-2.08l-.114-.124a2 2 0 0 1-.161-.22H11.7q-.071.114-.16.22l-.115.125l-2.08 2.079a1.96 1.96 0 0 1-2.886-2.648l.114-.125L8 17.227v-2.019l-2.383-1.09l-.148-.075a1.88 1.88 0 0 1-.787-2.447c.429-.902 1.489-1.318 2.424-.978l.147.06l1.755.803l.147-.369a5 5 0 0 1-2.15-3.895V7a5 5 0 0 1 5-5zm0 14h.01M12 13h.01M10 7h.01M14 7h.01M12 9h.01"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func CookieManFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="m12.007 1l.238.005a6 6 0 0 1 5.405 3.974l.078.233a6 6 0 0 1-.182 4.08l-.093.21l.05-.002a2.94 2.94 0 0 1 2.638 1.511l.081.158a2.887 2.887 0 0 1-1.234 3.764l-.19.096L17 15.85v.963l1.166 1.166l.14.154a2.96 2.96 0 0 1-.17 4.002c-1.087 1.088-2.827 1.161-4.03.144l-.16-.146L12 20.185l-1.946 1.947a2.96 2.96 0 0 1-3.95.22l-.15-.128c-1.17-1.073-1.284-2.879-.234-4.12l.146-.158L7 16.812v-.962l-1.834-.84l-.181-.093a2.88 2.88 0 0 1-1.205-3.75a2.93 2.93 0 0 1 2.646-1.661l.13.003l-.03-.064a6.1 6.1 0 0 1-.503-1.968l-.017-.26V7a6 6 0 0 1 5.775-5.996L12.005 1zm.003 15H12a1 1 0 0 0 0 2h.01a1 1 0 0 0 0-2m0-3H12a1 1 0 0 0 0 2h.01a1 1 0 0 0 0-2m0-5H12a1 1 0 0 0 0 2h.01a1 1 0 0 0 0-2m-2-3H10a1 1 0 1 0 0 2h.01a1 1 0 0 0 0-2m4 0H14a1 1 0 0 0 0 2h.01a1 1 0 0 0 0-2"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -17727,7 +19104,15 @@ func Copy(children ...ElementRenderer) *TablerIcon {
 func CopyCheck(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M7 9.667A2.667 2.667 0 0 1 9.667 7h8.666A2.667 2.667 0 0 1 21 9.667v8.666A2.667 2.667 0 0 1 18.333 21H9.667A2.667 2.667 0 0 1 7 18.333z"/><path d="M4.012 16.737A2.005 2.005 0 0 1 3 15V5c0-1.1.9-2 2-2h10c.75 0 1.158.385 1.5 1M11 14l2 2l4-4"/></g>`),
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M7 9.667A2.667 2.667 0 0 1 9.667 7h8.666A2.667 2.667 0 0 1 21 9.667v8.666A2.667 2.667 0 0 1 18.333 21H9.667A2.667 2.667 0 0 1 7 18.333z"/><path d="M4.012 16.737A2 2 0 0 1 3 15V5c0-1.1.9-2 2-2h10c.75 0 1.158.385 1.5 1M11 14l2 2l4-4"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func CopyCheckFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M18.333 6A3.667 3.667 0 0 1 22 9.667v8.666A3.667 3.667 0 0 1 18.333 22H9.667A3.667 3.667 0 0 1 6 18.333V9.667A3.667 3.667 0 0 1 9.667 6zM15 2c1.094 0 1.828.533 2.374 1.514a1 1 0 1 1-1.748.972C15.405 4.088 15.284 4 15 4H5c-.548 0-1 .452-1 1v9.998c0 .32.154.618.407.805l.1.065a1 1 0 1 1-.99 1.738A3 3 0 0 1 2 15V5c0-1.652 1.348-3 3-3zm1.293 9.293L13 14.585l-1.293-1.292a1 1 0 0 0-1.414 1.414l2 2a1 1 0 0 0 1.414 0l4-4a1 1 0 0 0-1.414-1.414"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -17735,7 +19120,15 @@ func CopyCheck(children ...ElementRenderer) *TablerIcon {
 func CopyMinus(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M7 9.667A2.667 2.667 0 0 1 9.667 7h8.666A2.667 2.667 0 0 1 21 9.667v8.666A2.667 2.667 0 0 1 18.333 21H9.667A2.667 2.667 0 0 1 7 18.333z"/><path d="M4.012 16.737A2.005 2.005 0 0 1 3 15V5c0-1.1.9-2 2-2h10c.75 0 1.158.385 1.5 1M11 14h6"/></g>`),
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M7 9.667A2.667 2.667 0 0 1 9.667 7h8.666A2.667 2.667 0 0 1 21 9.667v8.666A2.667 2.667 0 0 1 18.333 21H9.667A2.667 2.667 0 0 1 7 18.333z"/><path d="M4.012 16.737A2 2 0 0 1 3 15V5c0-1.1.9-2 2-2h10c.75 0 1.158.385 1.5 1M11 14h6"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func CopyMinusFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M18.333 6A3.667 3.667 0 0 1 22 9.667v8.666A3.667 3.667 0 0 1 18.333 22H9.667A3.667 3.667 0 0 1 6 18.333V9.667A3.667 3.667 0 0 1 9.667 6zM15 2c1.094 0 1.828.533 2.374 1.514a1 1 0 1 1-1.748.972C15.405 4.088 15.284 4 15 4H5c-.548 0-1 .452-1 1v9.998c0 .32.154.618.407.805l.1.065a1 1 0 1 1-.99 1.738A3 3 0 0 1 2 15V5c0-1.652 1.348-3 3-3zm2 11h-6a1 1 0 0 0 0 2h6a1 1 0 0 0 0-2"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -17751,7 +19144,15 @@ func CopyOff(children ...ElementRenderer) *TablerIcon {
 func CopyPlus(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M7 9.667A2.667 2.667 0 0 1 9.667 7h8.666A2.667 2.667 0 0 1 21 9.667v8.666A2.667 2.667 0 0 1 18.333 21H9.667A2.667 2.667 0 0 1 7 18.333z"/><path d="M4.012 16.737A2.005 2.005 0 0 1 3 15V5c0-1.1.9-2 2-2h10c.75 0 1.158.385 1.5 1M11 14h6m-3-3v6"/></g>`),
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M7 9.667A2.667 2.667 0 0 1 9.667 7h8.666A2.667 2.667 0 0 1 21 9.667v8.666A2.667 2.667 0 0 1 18.333 21H9.667A2.667 2.667 0 0 1 7 18.333z"/><path d="M4.012 16.737A2 2 0 0 1 3 15V5c0-1.1.9-2 2-2h10c.75 0 1.158.385 1.5 1M11 14h6m-3-3v6"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func CopyPlusFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M18.333 6A3.667 3.667 0 0 1 22 9.667v8.666A3.667 3.667 0 0 1 18.333 22H9.667A3.667 3.667 0 0 1 6 18.333V9.667A3.667 3.667 0 0 1 9.667 6zM14 10a1 1 0 0 0-1 1v2h-2a1 1 0 0 0-.993.883L10 14a1 1 0 0 0 1 1h2v2a1 1 0 0 0 .883.993L14 18a1 1 0 0 0 1-1v-2h2a1 1 0 0 0 .993-.883L18 14a1 1 0 0 0-1-1h-2v-2a1 1 0 0 0-.883-.993zm1-8c1.094 0 1.828.533 2.374 1.514a1 1 0 1 1-1.748.972C15.405 4.088 15.284 4 15 4H5c-.548 0-1 .452-1 1v9.998c0 .32.154.618.407.805l.1.065a1 1 0 1 1-.99 1.738A3 3 0 0 1 2 15V5c0-1.652 1.348-3 3-3z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -17759,7 +19160,15 @@ func CopyPlus(children ...ElementRenderer) *TablerIcon {
 func CopyX(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M7 9.667A2.667 2.667 0 0 1 9.667 7h8.666A2.667 2.667 0 0 1 21 9.667v8.666A2.667 2.667 0 0 1 18.333 21H9.667A2.667 2.667 0 0 1 7 18.333z"/><path d="M4.012 16.737A2.005 2.005 0 0 1 3 15V5c0-1.1.9-2 2-2h10c.75 0 1.158.385 1.5 1m-5 7.5l4.9 5m.1-5l-5.1 5"/></g>`),
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M7 9.667A2.667 2.667 0 0 1 9.667 7h8.666A2.667 2.667 0 0 1 21 9.667v8.666A2.667 2.667 0 0 1 18.333 21H9.667A2.667 2.667 0 0 1 7 18.333z"/><path d="M4.012 16.737A2 2 0 0 1 3 15V5c0-1.1.9-2 2-2h10c.75 0 1.158.385 1.5 1m-5 7.5l4.9 5m.1-5l-5.1 5"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func CopyXfilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M18.333 6A3.667 3.667 0 0 1 22 9.667v8.666A3.667 3.667 0 0 1 18.333 22H9.667A3.667 3.667 0 0 1 6 18.333V9.667A3.667 3.667 0 0 1 9.667 6zM15 2c1.094 0 1.828.533 2.374 1.514a1 1 0 1 1-1.748.972C15.405 4.088 15.284 4 15 4H5c-.548 0-1 .452-1 1v9.998c0 .32.154.618.407.805l.1.065a1 1 0 1 1-.99 1.738A3 3 0 0 1 2 15V5c0-1.652 1.348-3 3-3zm.8 8.786l-1.837 1.799l-1.749-1.785a1 1 0 0 0-1.319-.096l-.095.082a1 1 0 0 0-.014 1.414l1.749 1.785l-1.835 1.8a1 1 0 0 0-.096 1.32l.082.095a1 1 0 0 0 1.414.014l1.836-1.8l1.75 1.786a1 1 0 0 0 1.319.096l.095-.082a1 1 0 0 0 .014-1.414l-1.75-1.786l1.836-1.8a1 1 0 0 0 .096-1.319l-.082-.095a1 1 0 0 0-1.414-.014"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -17775,7 +19184,7 @@ func Copyleft(children ...ElementRenderer) *TablerIcon {
 func CopyleftFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M17 3.34a10 10 0 1 1-14.995 8.984L2 12l.005-.324A10 10 0 0 1 17 3.34m-2.117 5.889a4.016 4.016 0 0 0-5.543-.23a1 1 0 0 0 1.32 1.502a2.016 2.016 0 0 1 2.783.116a1.993 1.993 0 0 1 0 2.766a2.016 2.016 0 0 1-2.783.116A1 1 0 0 0 9.34 15a4.016 4.016 0 0 0 5.543-.23a3.993 3.993 0 0 0 0-5.542z"/></g>`),
+			Text(`<path fill="currentColor" d="M17 3.34a10 10 0 1 1-14.995 8.984L2 12l.005-.324A10 10 0 0 1 17 3.34m-2.117 5.889a4.016 4.016 0 0 0-5.543-.23a1 1 0 0 0 1.32 1.502a2.016 2.016 0 0 1 2.783.116a1.993 1.993 0 0 1 0 2.766a2.016 2.016 0 0 1-2.783.116A1 1 0 0 0 9.34 15a4.016 4.016 0 0 0 5.543-.23a3.993 3.993 0 0 0 0-5.542z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -17799,7 +19208,7 @@ func Copyright(children ...ElementRenderer) *TablerIcon {
 func CopyrightFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M17 3.34a10 10 0 1 1-14.995 8.984L2 12l.005-.324A10 10 0 0 1 17 3.34m-2.34 5.659a4.016 4.016 0 0 0-5.543.23a3.993 3.993 0 0 0 0 5.542a4.016 4.016 0 0 0 5.543.23a1 1 0 0 0-1.32-1.502c-.81.711-2.035.66-2.783-.116a1.993 1.993 0 0 1 0-2.766a2.016 2.016 0 0 1 2.783-.116A1 1 0 0 0 14.66 9z"/></g>`),
+			Text(`<path fill="currentColor" d="M17 3.34a10 10 0 1 1-14.995 8.984L2 12l.005-.324A10 10 0 0 1 17 3.34m-2.34 5.659a4.016 4.016 0 0 0-5.543.23a3.993 3.993 0 0 0 0 5.542a4.016 4.016 0 0 0 5.543.23a1 1 0 0 0-1.32-1.502c-.81.711-2.035.66-2.783-.116a1.993 1.993 0 0 1 0-2.766a2.016 2.016 0 0 1 2.783-.116A1 1 0 0 0 14.66 9z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -18047,7 +19456,7 @@ func CreditCard(children ...ElementRenderer) *TablerIcon {
 func CreditCardFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M22 10v6a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4v-6zM7.01 14H7a1 1 0 1 0 .01 2a1 1 0 0 0 0-2M13 14h-2a1 1 0 0 0 0 2h2a1 1 0 0 0 0-2m5-10a4 4 0 0 1 4 4H2a4 4 0 0 1 4-4z"/></g>`),
+			Text(`<path fill="currentColor" d="M22 10v6a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4v-6zM7.01 14H7a1 1 0 1 0 .01 2a1 1 0 0 0 0-2M13 14h-2a1 1 0 0 0 0 2h2a1 1 0 0 0 0-2m5-10a4 4 0 0 1 4 4H2a4 4 0 0 1 4-4z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -18100,10 +19509,26 @@ func CropFiveFour(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func CropFiveFourFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M18 4a3 3 0 0 1 3 3v10a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V7a3 3 0 0 1 3-3z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func CropLandscape(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func CropLandscapeFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M18 5a3 3 0 0 1 3 3v8a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V8a3 3 0 0 1 3-3z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -18116,10 +19541,26 @@ func CropOneOne(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func CropOneOneFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M18 3a3 3 0 0 1 3 3v12a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func CropPortrait(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 6a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func CropPortraitFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M16 3a3 3 0 0 1 3 3v12a3 3 0 0 1-3 3H8a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -18132,6 +19573,14 @@ func CropSevenFive(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func CropSevenFiveFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M18 5a3 3 0 0 1 3 3v8a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V8a3 3 0 0 1 3-3z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func CropSixteenNine(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
@@ -18140,10 +19589,26 @@ func CropSixteenNine(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func CropSixteenNineFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M18 7a3 3 0 0 1 3 3v4a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3v-4a3 3 0 0 1 3-3z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func CropThreeTwo(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 9a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func CropThreeTwoFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M18 6a3 3 0 0 1 3 3v6a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V9a3 3 0 0 1 3-3z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -18159,7 +19624,7 @@ func Cross(children ...ElementRenderer) *TablerIcon {
 func CrossFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="m10 2l-.117.007A1 1 0 0 0 9 3v4H5a1 1 0 0 0-1 1v4l.007.117A1 1 0 0 0 5 13h4v8a1 1 0 0 0 1 1h4l.117-.007A1 1 0 0 0 15 21v-8h4a1 1 0 0 0 1-1V8l-.007-.117A1 1 0 0 0 19 7h-4V3a1 1 0 0 0-1-1z"/></g>`),
+			Text(`<path fill="currentColor" d="m10 2l-.117.007A1 1 0 0 0 9 3v4H5a1 1 0 0 0-1 1v4l.007.117A1 1 0 0 0 5 13h4v8a1 1 0 0 0 1 1h4l.117-.007A1 1 0 0 0 15 21v-8h4a1 1 0 0 0 1-1V8l-.007-.117A1 1 0 0 0 19 7h-4V3a1 1 0 0 0-1-1z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -18256,6 +19721,22 @@ func CubeSend(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="m16 12.5l-5-3l5-3l5 3V15l-5 3z"/><path d="M11 9.5V15l5 3m0-5.455l5-3.03M7 9H2m5 3H4m3 3H6"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func CubeThreeDsphere(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m6 17.6l-2-1.1V14m0-4V7.5l2-1.1m4-2.3L12 3l2 1.1m4 2.3l2 1.1V10m0 4v2.5l-2 1.12m-4 2.28L12 21l-2-1.1m2-7.9l2-1.1m4-2.3l2-1.1M12 12v2.5m0 4V21m0-9l-2-1.12M6 8.6L4 7.5"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func CubeThreeDsphereOff(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m6 17.6l-2-1.1V14m0-4V7.5l2-1.1m4-2.3L12 3l2 1.1m4 2.3l2 1.1V10m0 4v2m-6 3.9L12 21l-2-1.1m8-11.3l2-1.1M12 12v2.5m0 4V21m0-9l-2-1.12M6 8.6L4 7.5M3 3l18 18"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -19028,6 +20509,14 @@ func DatabaseShare(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func DatabaseSmile(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M10 14h.01M14 14h.01M10 17a3.5 3.5 0 0 0 4 0M4 6c0 1.657 3.582 3 8 3s8-1.343 8-3s-3.582-3-8-3s-8 1.343-8 3"/><path d="M4 6v12c0 1.657 3.582 3 8 3s8-1.343 8-3V6"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func DatabaseStar(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
@@ -19423,7 +20912,7 @@ func DeviceHeartMonitor(children ...ElementRenderer) *TablerIcon {
 func DeviceHeartMonitorFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M18 3a3 3 0 0 1 2.995 2.824L21 6v12a3 3 0 0 1-2.824 2.995L18 21H6a3 3 0 0 1-2.995-2.824L3 18V6a3 3 0 0 1 2.824-2.995L6 3zm-4 13a1 1 0 0 0-.993.883L13 17l.007.127a1 1 0 0 0 1.986 0L15 17.01l-.007-.127A1 1 0 0 0 14 16m3 0a1 1 0 0 0-.993.883L16 17l.007.127a1 1 0 0 0 1.986 0L18 17.01l-.007-.127A1 1 0 0 0 17 16m-6-6.764l-.106.211a1 1 0 0 1-.77.545L10 10l-5-.001V13h14V9.999L14.618 10l-.724 1.447a1 1 0 0 1-1.725.11l-.063-.11zM18 5H6a1 1 0 0 0-.993.883L5 6v1.999L9.381 8l.725-1.447a1 1 0 0 1 1.725-.11l.063.11L13 8.763l.106-.21a1 1 0 0 1 .77-.545L14 8l5-.001V6a1 1 0 0 0-.883-.993z"/></g>`),
+			Text(`<path fill="currentColor" d="M18 3a3 3 0 0 1 2.995 2.824L21 6v12a3 3 0 0 1-2.824 2.995L18 21H6a3 3 0 0 1-2.995-2.824L3 18V6a3 3 0 0 1 2.824-2.995L6 3zm-4 13a1 1 0 0 0-.993.883L13 17l.007.127a1 1 0 0 0 1.986 0L15 17.01l-.007-.127A1 1 0 0 0 14 16m3 0a1 1 0 0 0-.993.883L16 17l.007.127a1 1 0 0 0 1.986 0L18 17.01l-.007-.127A1 1 0 0 0 17 16m-6-6.764l-.106.211a1 1 0 0 1-.77.545L10 10l-5-.001V13h14V9.999L14.618 10l-.724 1.447a1 1 0 0 1-1.725.11l-.063-.11zM18 5H6a1 1 0 0 0-.993.883L5 6v1.999L9.381 8l.725-1.447a1 1 0 0 1 1.725-.11l.063.11L13 8.763l.106-.21a1 1 0 0 1 .77-.545L14 8l5-.001V6a1 1 0 0 0-.883-.993z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -20039,7 +21528,7 @@ func DeviceMobileExclamation(children ...ElementRenderer) *TablerIcon {
 func DeviceMobileFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M16 2a3 3 0 0 1 2.995 2.824L19 5v14a3 3 0 0 1-2.824 2.995L16 22H8a3 3 0 0 1-2.995-2.824L5 19V5a3 3 0 0 1 2.824-2.995L8 2zm-4 14a1 1 0 0 0-.993.883L11 17l.007.127a1 1 0 0 0 1.986 0L13 17.01l-.007-.127A1 1 0 0 0 12 16m1-12h-2l-.117.007a1 1 0 0 0 0 1.986L11 6h2l.117-.007a1 1 0 0 0 0-1.986z"/></g>`),
+			Text(`<path fill="currentColor" d="M16 2a3 3 0 0 1 2.995 2.824L19 5v14a3 3 0 0 1-2.824 2.995L16 22H8a3 3 0 0 1-2.995-2.824L5 19V5a3 3 0 0 1 2.824-2.995L8 2zm-4 14a1 1 0 0 0-.993.883L11 17l.007.127a1 1 0 0 0 1.986 0L13 17.01l-.007-.127A1 1 0 0 0 12 16m1-12h-2l-.117.007a1 1 0 0 0 0 1.986L11 6h2l.117-.007a1 1 0 0 0 0-1.986z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -20327,7 +21816,7 @@ func DeviceTabletExclamation(children ...ElementRenderer) *TablerIcon {
 func DeviceTabletFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M18 2a2 2 0 0 1 1.995 1.85L20 4v16a2 2 0 0 1-1.85 1.995L18 22H6a2 2 0 0 1-1.995-1.85L4 20V4a2 2 0 0 1 1.85-1.995L6 2zm-6 13a2 2 0 0 0-1.977 1.697l-.018.154L10 17l.005.15A2 2 0 1 0 12 15"/></g>`),
+			Text(`<path fill="currentColor" d="M18 2a2 2 0 0 1 1.995 1.85L20 4v16a2 2 0 0 1-1.85 1.995L18 22H6a2 2 0 0 1-1.995-1.85L4 20V4a2 2 0 0 1 1.85-1.995L6 2zm-6 13a2 2 0 0 0-1.977 1.697l-.018.154L10 17l.005.15A2 2 0 1 0 12 15"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -20879,7 +22368,7 @@ func Dialpad(children ...ElementRenderer) *TablerIcon {
 func DialpadFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M6 2H4a2 2 0 0 0-2 2v2a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2m14 0h-2a2 2 0 0 0-2 2v2a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2m-7 0h-2a2 2 0 0 0-2 2v2a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2M6 9H4a2 2 0 0 0-2 2v2a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2v-2a2 2 0 0 0-2-2m14 0h-2a2 2 0 0 0-2 2v2a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2v-2a2 2 0 0 0-2-2m-7 0h-2a2 2 0 0 0-2 2v2a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2v-2a2 2 0 0 0-2-2m0 7h-2a2 2 0 0 0-2 2v2a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2v-2a2 2 0 0 0-2-2"/></g>`),
+			Text(`<path fill="currentColor" d="M6 2H4a2 2 0 0 0-2 2v2a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2m14 0h-2a2 2 0 0 0-2 2v2a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2m-7 0h-2a2 2 0 0 0-2 2v2a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2M6 9H4a2 2 0 0 0-2 2v2a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2v-2a2 2 0 0 0-2-2m14 0h-2a2 2 0 0 0-2 2v2a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2v-2a2 2 0 0 0-2-2m-7 0h-2a2 2 0 0 0-2 2v2a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2v-2a2 2 0 0 0-2-2m0 7h-2a2 2 0 0 0-2 2v2a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2v-2a2 2 0 0 0-2-2"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -20903,7 +22392,7 @@ func Diamond(children ...ElementRenderer) *TablerIcon {
 func DiamondFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M18 4a1 1 0 0 1 .783.378l.074.108l3 5a1 1 0 0 1-.032 1.078l-.08.103l-8.53 9.533a1.7 1.7 0 0 1-1.215.51c-.4 0-.785-.14-1.11-.417l-.135-.126l-8.5-9.5A1 1 0 0 1 2.083 9.6l.06-.115l3.013-5.022l.064-.09a.982.982 0 0 1 .155-.154l.089-.064l.088-.05l.05-.023l.06-.025l.109-.032l.112-.02L6 4zM9.114 7.943a1 1 0 0 0-1.371.343l-.6 1l-.06.116a1 1 0 0 0 .177 1.07l2 2.2l.09.088a1 1 0 0 0 1.323-.02l.087-.09a1 1 0 0 0-.02-1.323l-1.501-1.65l.218-.363l.055-.103a1 1 0 0 0-.398-1.268"/></g>`),
+			Text(`<path fill="currentColor" d="M18 4a1 1 0 0 1 .783.378l.074.108l3 5a1 1 0 0 1-.032 1.078l-.08.103l-8.53 9.533a1.7 1.7 0 0 1-1.215.51c-.4 0-.785-.14-1.11-.417l-.135-.126l-8.5-9.5A1 1 0 0 1 2.083 9.6l.06-.115l3.013-5.022l.064-.09a.982.982 0 0 1 .155-.154l.089-.064l.088-.05l.05-.023l.06-.025l.109-.032l.112-.02L6 4zM9.114 7.943a1 1 0 0 0-1.371.343l-.6 1l-.06.116a1 1 0 0 0 .177 1.07l2 2.2l.09.088a1 1 0 0 0 1.323-.02l.087-.09a1 1 0 0 0-.02-1.323l-1.501-1.65l.218-.363l.055-.103a1 1 0 0 0-.398-1.268"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -20927,7 +22416,7 @@ func Diamonds(children ...ElementRenderer) *TablerIcon {
 func DiamondsFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M12 2.005c-.777 0-1.508.367-1.971.99L4.667 9.89c-.89 1.136-.89 3.083 0 4.227l5.375 6.911a2.457 2.457 0 0 0 3.93-.017l5.361-6.894c.89-1.136.89-3.083 0-4.227l-5.375-6.911A2.446 2.446 0 0 0 12 2.005"/></g>`),
+			Text(`<path fill="currentColor" d="M12 2.005c-.777 0-1.508.367-1.971.99L4.667 9.89c-.89 1.136-.89 3.083 0 4.227l5.375 6.911a2.457 2.457 0 0 0 3.93-.017l5.361-6.894c.89-1.136.89-3.083 0-4.227l-5.375-6.911A2.446 2.446 0 0 0 12 2.005"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -20943,7 +22432,7 @@ func Dice(children ...ElementRenderer) *TablerIcon {
 func DiceFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M18.333 2c1.96 0 3.56 1.537 3.662 3.472l.005.195v12.666c0 1.96-1.537 3.56-3.472 3.662l-.195.005H5.667a3.667 3.667 0 0 1-3.662-3.472L2 18.333V5.667c0-1.96 1.537-3.56 3.472-3.662L5.667 2zM15.5 14a1.5 1.5 0 1 0 0 3a1.5 1.5 0 0 0 0-3m-7 0a1.5 1.5 0 1 0 0 3a1.5 1.5 0 0 0 0-3m0-7a1.5 1.5 0 1 0 0 3a1.5 1.5 0 0 0 0-3m7 0a1.5 1.5 0 1 0 0 3a1.5 1.5 0 0 0 0-3"/></g>`),
+			Text(`<path fill="currentColor" d="M18.333 2c1.96 0 3.56 1.537 3.662 3.472l.005.195v12.666c0 1.96-1.537 3.56-3.472 3.662l-.195.005H5.667a3.667 3.667 0 0 1-3.662-3.472L2 18.333V5.667c0-1.96 1.537-3.56 3.472-3.662L5.667 2zM15.5 14a1.5 1.5 0 1 0 0 3a1.5 1.5 0 0 0 0-3m-7 0a1.5 1.5 0 1 0 0 3a1.5 1.5 0 0 0 0-3m0-7a1.5 1.5 0 1 0 0 3a1.5 1.5 0 0 0 0-3m7 0a1.5 1.5 0 1 0 0 3a1.5 1.5 0 0 0 0-3"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -20959,7 +22448,7 @@ func DiceFive(children ...ElementRenderer) *TablerIcon {
 func DiceFiveFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M18.333 2c1.96 0 3.56 1.537 3.662 3.472l.005.195v12.666c0 1.96-1.537 3.56-3.472 3.662l-.195.005H5.667a3.667 3.667 0 0 1-3.662-3.472L2 18.333V5.667c0-1.96 1.537-3.56 3.472-3.662L5.667 2zM15.5 14a1.5 1.5 0 1 0 0 3a1.5 1.5 0 0 0 0-3m-7 0a1.5 1.5 0 1 0 0 3a1.5 1.5 0 0 0 0-3m3.5-3.5a1.5 1.5 0 1 0 0 3a1.5 1.5 0 0 0 0-3M8.5 7a1.5 1.5 0 1 0 0 3a1.5 1.5 0 0 0 0-3m7 0a1.5 1.5 0 1 0 0 3a1.5 1.5 0 0 0 0-3"/></g>`),
+			Text(`<path fill="currentColor" d="M18.333 2c1.96 0 3.56 1.537 3.662 3.472l.005.195v12.666c0 1.96-1.537 3.56-3.472 3.662l-.195.005H5.667a3.667 3.667 0 0 1-3.662-3.472L2 18.333V5.667c0-1.96 1.537-3.56 3.472-3.662L5.667 2zM15.5 14a1.5 1.5 0 1 0 0 3a1.5 1.5 0 0 0 0-3m-7 0a1.5 1.5 0 1 0 0 3a1.5 1.5 0 0 0 0-3m3.5-3.5a1.5 1.5 0 1 0 0 3a1.5 1.5 0 0 0 0-3M8.5 7a1.5 1.5 0 1 0 0 3a1.5 1.5 0 0 0 0-3m7 0a1.5 1.5 0 1 0 0 3a1.5 1.5 0 0 0 0-3"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -20975,7 +22464,7 @@ func DiceFour(children ...ElementRenderer) *TablerIcon {
 func DiceFourFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M18.333 2c1.96 0 3.56 1.537 3.662 3.472l.005.195v12.666c0 1.96-1.537 3.56-3.472 3.662l-.195.005H5.667a3.667 3.667 0 0 1-3.662-3.472L2 18.333V5.667c0-1.96 1.537-3.56 3.472-3.662L5.667 2zM15.5 14a1.5 1.5 0 1 0 0 3a1.5 1.5 0 0 0 0-3m-7 0a1.5 1.5 0 1 0 0 3a1.5 1.5 0 0 0 0-3m0-7a1.5 1.5 0 1 0 0 3a1.5 1.5 0 0 0 0-3m7 0a1.5 1.5 0 1 0 0 3a1.5 1.5 0 0 0 0-3"/></g>`),
+			Text(`<path fill="currentColor" d="M18.333 2c1.96 0 3.56 1.537 3.662 3.472l.005.195v12.666c0 1.96-1.537 3.56-3.472 3.662l-.195.005H5.667a3.667 3.667 0 0 1-3.662-3.472L2 18.333V5.667c0-1.96 1.537-3.56 3.472-3.662L5.667 2zM15.5 14a1.5 1.5 0 1 0 0 3a1.5 1.5 0 0 0 0-3m-7 0a1.5 1.5 0 1 0 0 3a1.5 1.5 0 0 0 0-3m0-7a1.5 1.5 0 1 0 0 3a1.5 1.5 0 0 0 0-3m7 0a1.5 1.5 0 1 0 0 3a1.5 1.5 0 0 0 0-3"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -20991,7 +22480,7 @@ func DiceOne(children ...ElementRenderer) *TablerIcon {
 func DiceOneFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M18.333 2c1.96 0 3.56 1.537 3.662 3.472l.005.195v12.666c0 1.96-1.537 3.56-3.472 3.662l-.195.005H5.667a3.667 3.667 0 0 1-3.662-3.472L2 18.333V5.667c0-1.96 1.537-3.56 3.472-3.662L5.667 2zM12 10.5a1.5 1.5 0 1 0 0 3a1.5 1.5 0 0 0 0-3"/></g>`),
+			Text(`<path fill="currentColor" d="M18.333 2c1.96 0 3.56 1.537 3.662 3.472l.005.195v12.666c0 1.96-1.537 3.56-3.472 3.662l-.195.005H5.667a3.667 3.667 0 0 1-3.662-3.472L2 18.333V5.667c0-1.96 1.537-3.56 3.472-3.662L5.667 2zM12 10.5a1.5 1.5 0 1 0 0 3a1.5 1.5 0 0 0 0-3"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -21007,7 +22496,7 @@ func DiceSix(children ...ElementRenderer) *TablerIcon {
 func DiceSixFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M18.333 2c1.96 0 3.56 1.537 3.662 3.472l.005.195v12.666c0 1.96-1.537 3.56-3.472 3.662l-.195.005H5.667a3.667 3.667 0 0 1-3.662-3.472L2 18.333V5.667c0-1.96 1.537-3.56 3.472-3.662L5.667 2zM15.5 15a1.5 1.5 0 1 0 0 3a1.5 1.5 0 0 0 0-3m-7 0a1.5 1.5 0 1 0 0 3a1.5 1.5 0 0 0 0-3m0-4.5a1.5 1.5 0 1 0 0 3a1.5 1.5 0 0 0 0-3m7 0a1.5 1.5 0 1 0 0 3a1.5 1.5 0 0 0 0-3M8.5 6a1.5 1.5 0 1 0 0 3a1.5 1.5 0 0 0 0-3m7 0a1.5 1.5 0 1 0 0 3a1.5 1.5 0 0 0 0-3"/></g>`),
+			Text(`<path fill="currentColor" d="M18.333 2c1.96 0 3.56 1.537 3.662 3.472l.005.195v12.666c0 1.96-1.537 3.56-3.472 3.662l-.195.005H5.667a3.667 3.667 0 0 1-3.662-3.472L2 18.333V5.667c0-1.96 1.537-3.56 3.472-3.662L5.667 2zM15.5 15a1.5 1.5 0 1 0 0 3a1.5 1.5 0 0 0 0-3m-7 0a1.5 1.5 0 1 0 0 3a1.5 1.5 0 0 0 0-3m0-4.5a1.5 1.5 0 1 0 0 3a1.5 1.5 0 0 0 0-3m7 0a1.5 1.5 0 1 0 0 3a1.5 1.5 0 0 0 0-3M8.5 6a1.5 1.5 0 1 0 0 3a1.5 1.5 0 0 0 0-3m7 0a1.5 1.5 0 1 0 0 3a1.5 1.5 0 0 0 0-3"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -21023,7 +22512,7 @@ func DiceThree(children ...ElementRenderer) *TablerIcon {
 func DiceThreeFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M18.333 2c1.96 0 3.56 1.537 3.662 3.472l.005.195v12.666c0 1.96-1.537 3.56-3.472 3.662l-.195.005H5.667a3.667 3.667 0 0 1-3.662-3.472L2 18.333V5.667c0-1.96 1.537-3.56 3.472-3.662L5.667 2zM15.5 14a1.5 1.5 0 1 0 0 3a1.5 1.5 0 0 0 0-3M12 10.5a1.5 1.5 0 1 0 0 3a1.5 1.5 0 0 0 0-3M8.5 7a1.5 1.5 0 1 0 0 3a1.5 1.5 0 0 0 0-3"/></g>`),
+			Text(`<path fill="currentColor" d="M18.333 2c1.96 0 3.56 1.537 3.662 3.472l.005.195v12.666c0 1.96-1.537 3.56-3.472 3.662l-.195.005H5.667a3.667 3.667 0 0 1-3.662-3.472L2 18.333V5.667c0-1.96 1.537-3.56 3.472-3.662L5.667 2zM15.5 14a1.5 1.5 0 1 0 0 3a1.5 1.5 0 0 0 0-3M12 10.5a1.5 1.5 0 1 0 0 3a1.5 1.5 0 0 0 0-3M8.5 7a1.5 1.5 0 1 0 0 3a1.5 1.5 0 0 0 0-3"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -21039,7 +22528,7 @@ func DiceTwo(children ...ElementRenderer) *TablerIcon {
 func DiceTwoFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M18.333 2c1.96 0 3.56 1.537 3.662 3.472l.005.195v12.666c0 1.96-1.537 3.56-3.472 3.662l-.195.005H5.667a3.667 3.667 0 0 1-3.662-3.472L2 18.333V5.667c0-1.96 1.537-3.56 3.472-3.662L5.667 2zM14.5 13a1.5 1.5 0 1 0 0 3a1.5 1.5 0 0 0 0-3m-5-5a1.5 1.5 0 1 0 0 3a1.5 1.5 0 0 0 0-3"/></g>`),
+			Text(`<path fill="currentColor" d="M18.333 2c1.96 0 3.56 1.537 3.662 3.472l.005.195v12.666c0 1.96-1.537 3.56-3.472 3.662l-.195.005H5.667a3.667 3.667 0 0 1-3.662-3.472L2 18.333V5.667c0-1.96 1.537-3.56 3.472-3.662L5.667 2zM14.5 13a1.5 1.5 0 1 0 0 3a1.5 1.5 0 0 0 0-3m-5-5a1.5 1.5 0 1 0 0 3a1.5 1.5 0 0 0 0-3"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -21087,7 +22576,7 @@ func DirectionSign(children ...ElementRenderer) *TablerIcon {
 func DirectionSignFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M10.52 2.614a2.095 2.095 0 0 1 2.835-.117l.126.117l7.905 7.905c.777.777.816 2.013.117 2.836l-.117.126l-7.905 7.905a2.094 2.094 0 0 1-2.836.117l-.126-.117l-7.907-7.906a2.096 2.096 0 0 1-.115-2.835l.117-.126l7.905-7.905zm5.969 9.535l.01-.116l-.003-.12l-.016-.114l-.03-.11l-.044-.112l-.052-.098l-.076-.105l-.07-.081l-3.5-3.5l-.095-.083a1 1 0 0 0-1.226 0l-.094.083l-.083.094a1 1 0 0 0 0 1.226l.083.094L13.085 11H8l-.117.007a1 1 0 0 0 0 1.986L8 13h5.085l-1.792 1.793l-.083.094a1 1 0 0 0 1.403 1.403l.094-.083l3.5-3.5l.097-.112l.05-.074l.037-.067l.05-.112l.023-.076z"/></g>`),
+			Text(`<path fill="currentColor" d="M10.52 2.614a2.095 2.095 0 0 1 2.835-.117l.126.117l7.905 7.905c.777.777.816 2.013.117 2.836l-.117.126l-7.905 7.905a2.094 2.094 0 0 1-2.836.117l-.126-.117l-7.907-7.906a2.096 2.096 0 0 1-.115-2.835l.117-.126l7.905-7.905zm5.969 9.535l.01-.116l-.003-.12l-.016-.114l-.03-.11l-.044-.112l-.052-.098l-.076-.105l-.07-.081l-3.5-3.5l-.095-.083a1 1 0 0 0-1.226 0l-.094.083l-.083.094a1 1 0 0 0 0 1.226l.083.094L13.085 11H8l-.117.007a1 1 0 0 0 0 1.986L8 13h5.085l-1.792 1.793l-.083.094a1 1 0 0 0 1.403 1.403l.094-.083l3.5-3.5l.097-.112l.05-.074l.037-.067l.05-.112l.023-.076z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -21172,14 +22661,6 @@ func Discount(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
-func DiscountCheck(children ...ElementRenderer) *TablerIcon {
-	return &TablerIcon{
-		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M5 7.2A2.2 2.2 0 0 1 7.2 5h1a2.2 2.2 0 0 0 1.55-.64l.7-.7a2.2 2.2 0 0 1 3.12 0l.7.7c.412.41.97.64 1.55.64h1a2.2 2.2 0 0 1 2.2 2.2v1c0 .58.23 1.138.64 1.55l.7.7a2.2 2.2 0 0 1 0 3.12l-.7.7a2.2 2.2 0 0 0-.64 1.55v1a2.2 2.2 0 0 1-2.2 2.2h-1a2.2 2.2 0 0 0-1.55.64l-.7.7a2.2 2.2 0 0 1-3.12 0l-.7-.7a2.2 2.2 0 0 0-1.55-.64h-1a2.2 2.2 0 0 1-2.2-2.2v-1a2.2 2.2 0 0 0-.64-1.55l-.7-.7a2.2 2.2 0 0 1 0-3.12l.7-.7A2.2 2.2 0 0 0 5 8.2z"/><path d="m9 12l2 2l4-4"/></g>`),
-		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
-	}
-}
-
 func DiscountCheckFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
@@ -21192,22 +22673,6 @@ func DiscountOff(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="m9 15l3-3m2-2l1-1m-5.852.145A.498.498 0 0 0 9.5 10a.5.5 0 0 0 .35-.142m4.298 4.287A.498.498 0 0 0 14.5 15a.5.5 0 0 0 .35-.142"/><path d="M5.641 5.631A9 9 0 1 0 18.36 18.369m1.68-2.318A9 9 0 0 0 7.966 3.953M3 3l18 18"/></g>`),
-		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
-	}
-}
-
-func DiscountTwo(children ...ElementRenderer) *TablerIcon {
-	return &TablerIcon{
-		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="m9 15l6-6"/><circle cx="9.5" cy="9.5" r=".5" fill="currentColor"/><circle cx="14.5" cy="14.5" r=".5" fill="currentColor"/><path d="M5 7.2A2.2 2.2 0 0 1 7.2 5h1a2.2 2.2 0 0 0 1.55-.64l.7-.7a2.2 2.2 0 0 1 3.12 0l.7.7a2.2 2.2 0 0 0 1.55.64h1a2.2 2.2 0 0 1 2.2 2.2v1a2.2 2.2 0 0 0 .64 1.55l.7.7a2.2 2.2 0 0 1 0 3.12l-.7.7a2.2 2.2 0 0 0-.64 1.55v1a2.2 2.2 0 0 1-2.2 2.2h-1a2.2 2.2 0 0 0-1.55.64l-.7.7a2.2 2.2 0 0 1-3.12 0l-.7-.7a2.2 2.2 0 0 0-1.55-.64h-1a2.2 2.2 0 0 1-2.2-2.2v-1a2.2 2.2 0 0 0-.64-1.55l-.7-.7a2.2 2.2 0 0 1 0-3.12l.7-.7A2.2 2.2 0 0 0 5 8.2z"/></g>`),
-		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
-	}
-}
-
-func DiscountTwoOff(children ...ElementRenderer) *TablerIcon {
-	return &TablerIcon{
-		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="m9 15l3-3m2-2l1-1m-5.852.145A.498.498 0 0 0 9.5 10a.5.5 0 0 0 .35-.142m4.298 4.287A.498.498 0 0 0 14.5 15a.5.5 0 0 0 .35-.142"/><path d="M8.887 4.89a2.2 2.2 0 0 0 .863-.53l.7-.7a2.2 2.2 0 0 1 3.12 0l.7.7c.412.41.97.64 1.55.64h1a2.2 2.2 0 0 1 2.2 2.2v1c0 .58.23 1.138.64 1.55l.7.7a2.2 2.2 0 0 1 0 3.12l-.7.7a2.2 2.2 0 0 0-.528.858m-.757 3.248a2.193 2.193 0 0 1-1.555.644h-1a2.2 2.2 0 0 0-1.55.64l-.7.7a2.2 2.2 0 0 1-3.12 0l-.7-.7a2.2 2.2 0 0 0-1.55-.64h-1a2.2 2.2 0 0 1-2.2-2.2v-1a2.2 2.2 0 0 0-.64-1.55l-.7-.7a2.2 2.2 0 0 1 0-3.12l.7-.7A2.2 2.2 0 0 0 5 8.2v-1c0-.604.244-1.152.638-1.55M3 3l18 18"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -21471,7 +22936,7 @@ func DropletExclamation(children ...ElementRenderer) *TablerIcon {
 func DropletFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M10.708 2.372a2.382 2.382 0 0 0-.71.686l-4.892 7.26c-1.981 3.314-1.22 7.466 1.767 9.882c2.969 2.402 7.286 2.402 10.254 0c2.987-2.416 3.748-6.569 1.795-9.836l-4.919-7.306c-.722-1.075-2.192-1.376-3.295-.686"/></g>`),
+			Text(`<path fill="currentColor" d="M10.708 2.372a2.382 2.382 0 0 0-.71.686l-4.892 7.26c-1.981 3.314-1.22 7.466 1.767 9.882c2.969 2.402 7.286 2.402 10.254 0c2.987-2.416 3.748-6.569 1.795-9.836l-4.919-7.306c-.722-1.075-2.192-1.376-3.295-.686"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -21495,7 +22960,7 @@ func DropletHalf(children ...ElementRenderer) *TablerIcon {
 func DropletHalfFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="m12 2l.07.003a2.41 2.41 0 0 1 1.825.907l.108.148l4.92 7.306c1.952 3.267 1.191 7.42-1.796 9.836c-2.968 2.402-7.285 2.402-10.254 0c-2.917-2.36-3.711-6.376-1.901-9.65l.134-.232l4.893-7.26c.185-.275.426-.509.709-.686a2.426 2.426 0 0 1 1.066-.36zm-1 3.149l-4.206 6.24c-1.44 2.41-.88 5.463 1.337 7.257A6.101 6.101 0 0 0 11 19.922z"/></g>`),
+			Text(`<path fill="currentColor" d="m12 2l.07.003a2.41 2.41 0 0 1 1.825.907l.108.148l4.92 7.306c1.952 3.267 1.191 7.42-1.796 9.836c-2.968 2.402-7.285 2.402-10.254 0c-2.917-2.36-3.711-6.376-1.901-9.65l.134-.232l4.893-7.26c.185-.275.426-.509.709-.686a2.426 2.426 0 0 1 1.066-.36zm-1 3.149l-4.206 6.24c-1.44 2.41-.88 5.463 1.337 7.257A6.101 6.101 0 0 0 11 19.922z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -21511,7 +22976,7 @@ func DropletHalfTwo(children ...ElementRenderer) *TablerIcon {
 func DropletHalfTwoFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="m13.905 2.923l.098.135l4.92 7.306a7.566 7.566 0 0 1 1.043 3.167l.024.326c.007.047.01.094.01.143l-.002.06c.056 2.3-.944 4.582-2.87 6.14c-2.969 2.402-7.286 2.402-10.255 0c-1.904-1.54-2.904-3.787-2.865-6.071a1.052 1.052 0 0 1 .013-.333a7.66 7.66 0 0 1 .913-3.176l.172-.302l4.893-7.26c.185-.275.426-.509.709-.686c1.055-.66 2.446-.413 3.197.55zm-2.06 1.107l-.077.038l-.041.03l-.037.036l-.033.042l-4.863 7.214A5.607 5.607 0 0 0 6.143 13h11.723a5.444 5.444 0 0 0-.49-1.313l-.141-.251l-4.891-7.261a.428.428 0 0 0-.5-.145z"/></g>`),
+			Text(`<path fill="currentColor" d="m13.905 2.923l.098.135l4.92 7.306a7.566 7.566 0 0 1 1.043 3.167l.024.326c.007.047.01.094.01.143l-.002.06c.056 2.3-.944 4.582-2.87 6.14c-2.969 2.402-7.286 2.402-10.255 0c-1.904-1.54-2.904-3.787-2.865-6.071a1.052 1.052 0 0 1 .013-.333a7.66 7.66 0 0 1 .913-3.176l.172-.302l4.893-7.26c.185-.275.426-.509.709-.686c1.055-.66 2.446-.413 3.197.55zm-2.06 1.107l-.077.038l-.041.03l-.037.036l-.033.042l-4.863 7.214A5.607 5.607 0 0 0 6.143 13h11.723a5.444 5.444 0 0 0-.49-1.313l-.141-.251l-4.891-7.261a.428.428 0 0 0-.5-.145z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -21759,7 +23224,7 @@ func EggCracked(children ...ElementRenderer) *TablerIcon {
 func EggFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M12.002 2C7.829 1.992 4 8.058 4 14.083C4 18.791 7.25 22 12 22c4.727-.206 8-3.328 8-7.917C20 8.063 16.175 2.008 12.002 2"/></g>`),
+			Text(`<path fill="currentColor" d="M12.002 2C7.829 1.992 4 8.058 4 14.083C4 18.791 7.25 22 12 22c4.727-.206 8-3.328 8-7.917C20 8.063 16.175 2.008 12.002 2"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -22132,6 +23597,14 @@ func EyeDollar(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func EyeDotted(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0-4 0m11 0h.01M3 12h.01M5 15h.01M5 9h.01M19 15h.01M12 18h.01M12 6h.01M8 17h.01M8 7h.01M16 17h.01M16 7h.01M19 9h.01"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func EyeDown(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
@@ -22159,7 +23632,7 @@ func EyeExclamation(children ...ElementRenderer) *TablerIcon {
 func EyeFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M12 4c4.29 0 7.863 2.429 10.665 7.154l.22.379l.045.1l.03.083l.014.055l.014.082l.011.1v.11l-.014.111a.992.992 0 0 1-.026.11l-.039.108l-.036.075l-.016.03c-2.764 4.836-6.3 7.38-10.555 7.499L12 20c-4.396 0-8.037-2.549-10.868-7.504a1 1 0 0 1 0-.992C3.963 6.549 7.604 4 12 4m0 5a3 3 0 1 0 0 6a3 3 0 0 0 0-6"/></g>`),
+			Text(`<path fill="currentColor" d="M12 4c4.29 0 7.863 2.429 10.665 7.154l.22.379l.045.1l.03.083l.014.055l.014.082l.011.1v.11l-.014.111a.992.992 0 0 1-.026.11l-.039.108l-.036.075l-.016.03c-2.764 4.836-6.3 7.38-10.555 7.499L12 20c-4.396 0-8.037-2.549-10.868-7.504a1 1 0 0 1 0-.992C3.963 6.549 7.604 4 12 4m0 5a3 3 0 1 0 0 6a3 3 0 0 0 0-6"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -22575,7 +24048,7 @@ func FileExport(children ...ElementRenderer) *TablerIcon {
 func FileFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="m12 2l.117.007a1 1 0 0 1 .876.876L13 3v4l.005.15a2 2 0 0 0 1.838 1.844L15 9h4l.117.007a1 1 0 0 1 .876.876L20 10v9a3 3 0 0 1-2.824 2.995L17 22H7a3 3 0 0 1-2.995-2.824L4 19V5a3 3 0 0 1 2.824-2.995L7 2z"/><path fill="currentColor" d="M19 7h-4l-.001-4.001z"/></g>`),
+			Text(`<g fill="currentColor"><path d="m12 2l.117.007a1 1 0 0 1 .876.876L13 3v4l.005.15a2 2 0 0 0 1.838 1.844L15 9h4l.117.007a1 1 0 0 1 .876.876L20 10v9a3 3 0 0 1-2.824 2.995L17 22H7a3 3 0 0 1-2.995-2.824L4 19V5a3 3 0 0 1 2.824-2.995L7 2z"/><path d="M19 7h-4l-.001-4.001z"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -22624,6 +24097,14 @@ func FileInvoice(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M17 21H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7l5 5v11a2 2 0 0 1-2 2M9 7h1m-1 6h6m-2 4h2"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func FileIsr(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<defs><path id="tablerFileIsr0" d="M15 3v4a1 1 0 0 0 1 1h4"/></defs><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><use href="#tablerFileIsr0"/><use href="#tablerFileIsr0"/><path d="M6 8V5a2 2 0 0 1 2-2h7l5 5v11a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2v-7"/><path d="m3 15l3-3l3 3"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -23087,7 +24568,7 @@ func FileX(children ...ElementRenderer) *TablerIcon {
 func FileXfilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="m12 2l.117.007a1 1 0 0 1 .876.876L13 3v4l.005.15a2 2 0 0 0 1.838 1.844L15 9h4l.117.007a1 1 0 0 1 .876.876L20 10v9a3 3 0 0 1-2.824 2.995L17 22H7a3 3 0 0 1-2.995-2.824L4 19V5a3 3 0 0 1 2.824-2.995L7 2zm-1.489 9.14a1 1 0 0 0-1.301 1.473l.083.094L10.585 14l-1.292 1.293l-.083.094a1 1 0 0 0 1.403 1.403l.094-.083L12 15.415l1.293 1.292l.094.083a1 1 0 0 0 1.403-1.403l-.083-.094L13.415 14l1.292-1.293l.083-.094a1 1 0 0 0-1.403-1.403l-.094.083L12 12.585l-1.293-1.292l-.094-.083z"/><path fill="currentColor" d="M19 7h-4l-.001-4.001z"/></g>`),
+			Text(`<g fill="currentColor"><path d="m12 2l.117.007a1 1 0 0 1 .876.876L13 3v4l.005.15a2 2 0 0 0 1.838 1.844L15 9h4l.117.007a1 1 0 0 1 .876.876L20 10v9a3 3 0 0 1-2.824 2.995L17 22H7a3 3 0 0 1-2.995-2.824L4 19V5a3 3 0 0 1 2.824-2.995L7 2zm-1.489 9.14a1 1 0 0 0-1.301 1.473l.083.094L10.585 14l-1.292 1.293l-.083.094a1 1 0 0 0 1.403 1.403l.094-.083L12 15.415l1.293 1.292l.094.083a1 1 0 0 0 1.403-1.403l-.083-.094L13.415 14l1.292-1.293l.083-.094a1 1 0 0 0-1.403-1.403l-.094.083L12 12.585l-1.293-1.292l-.094-.083z"/><path d="M19 7h-4l-.001-4.001z"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -23207,7 +24688,7 @@ func FilterExclamation(children ...ElementRenderer) *TablerIcon {
 func FilterFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M20 3H4a1 1 0 0 0-1 1v2.227l.008.223a3 3 0 0 0 .772 1.795L8 12.886V21a1 1 0 0 0 1.316.949l6-2l.108-.043A1 1 0 0 0 16 19v-6.586l4.121-4.12A3 3 0 0 0 21 6.171V4a1 1 0 0 0-1-1"/></g>`),
+			Text(`<path fill="currentColor" d="M20 3H4a1 1 0 0 0-1 1v2.227l.008.223a3 3 0 0 0 .772 1.795L8 12.886V21a1 1 0 0 0 1.316.949l6-2l.108-.043A1 1 0 0 0 16 19v-6.586l4.121-4.12A3 3 0 0 0 21 6.171V4a1 1 0 0 0-1-1"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -23519,7 +25000,7 @@ func FlagExclamation(children ...ElementRenderer) *TablerIcon {
 func FlagFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M4 5a1 1 0 0 1 .3-.714a6 6 0 0 1 8.213-.176l.351.328a4 4 0 0 0 5.272 0l.249-.227c.61-.483 1.527-.097 1.61.676L20 5v9a1 1 0 0 1-.3.714a6 6 0 0 1-8.213.176l-.351-.328A4 4 0 0 0 6 14.448V21a1 1 0 0 1-1.993.117L4 21z"/></g>`),
+			Text(`<path fill="currentColor" d="M4 5a1 1 0 0 1 .3-.714a6 6 0 0 1 8.213-.176l.351.328a4 4 0 0 0 5.272 0l.249-.227c.61-.483 1.527-.097 1.61.676L20 5v9a1 1 0 0 1-.3.714a6 6 0 0 1-8.213.176l-.351-.328A4 4 0 0 0 6 14.448V21a1 1 0 0 1-1.993.117L4 21z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -23615,7 +25096,7 @@ func FlagThree(children ...ElementRenderer) *TablerIcon {
 func FlagThreeFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M19 4c.852 0 1.297.986.783 1.623l-.076.084L15.915 9.5l3.792 3.793c.603.602.22 1.614-.593 1.701L19 15H6v6a1 1 0 0 1-.883.993L5 22a1 1 0 0 1-.993-.883L4 21V5a1 1 0 0 1 .883-.993L5 4z"/></g>`),
+			Text(`<path fill="currentColor" d="M19 4c.852 0 1.297.986.783 1.623l-.076.084L15.915 9.5l3.792 3.793c.603.602.22 1.614-.593 1.701L19 15H6v6a1 1 0 0 1-.883.993L5 22a1 1 0 0 1-.993-.883L4 21V5a1 1 0 0 1 .883-.993L5 4z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -23631,7 +25112,7 @@ func FlagTwo(children ...ElementRenderer) *TablerIcon {
 func FlagTwoFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M19 4a1 1 0 0 1 .993.883L20 5v9a1 1 0 0 1-.883.993L19 15H6v6a1 1 0 0 1-.883.993L5 22a1 1 0 0 1-.993-.883L4 21V5a1 1 0 0 1 .883-.993L5 4z"/></g>`),
+			Text(`<path fill="currentColor" d="M19 4a1 1 0 0 1 .993.883L20 5v9a1 1 0 0 1-.883.993L19 15H6v6a1 1 0 0 1-.883.993L5 22a1 1 0 0 1-.993-.883L4 21V5a1 1 0 0 1 .883-.993L5 4z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -23695,7 +25176,7 @@ func Flask(children ...ElementRenderer) *TablerIcon {
 func FlaskFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M15 2a1 1 0 0 1 0 2v4.826l3.932 10.814l.034.077a1.7 1.7 0 0 1-.002 1.193l-.07.162a1.7 1.7 0 0 1-1.213.911L17.5 22h-11l-.181-.017a1.7 1.7 0 0 1-1.285-2.266l.039-.09L9 8.823V4a1 1 0 1 1 0-2zm-2 2h-2v4h2z"/></g>`),
+			Text(`<path fill="currentColor" d="M15 2a1 1 0 0 1 0 2v4.826l3.932 10.814l.034.077a1.7 1.7 0 0 1-.002 1.193l-.07.162a1.7 1.7 0 0 1-1.213.911L17.5 22h-11l-.181-.017a1.7 1.7 0 0 1-1.285-2.266l.039-.09L9 8.823V4a1 1 0 1 1 0-2zm-2 2h-2v4h2z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -23719,7 +25200,7 @@ func FlaskTwo(children ...ElementRenderer) *TablerIcon {
 func FlaskTwoFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M15 2a1 1 0 0 1 0 2v5.674l.062.03a7 7 0 0 1 3.85 5.174l.037.262a7 7 0 0 1-3.078 6.693a1 1 0 0 1-.553.167H8.683a1 1 0 0 1-.552-.166A7 7 0 0 1 8.938 9.7L9 9.672V4a1 1 0 1 1 0-2zm-2 2h-2v6.34a1 1 0 0 1-.551.894l-.116.049A5 5 0 0 0 7.413 14h9.172a5 5 0 0 0-2.918-2.715a1 1 0 0 1-.667-.943z"/></g>`),
+			Text(`<path fill="currentColor" d="M15 2a1 1 0 0 1 0 2v5.674l.062.03a7 7 0 0 1 3.85 5.174l.037.262a7 7 0 0 1-3.078 6.693a1 1 0 0 1-.553.167H8.683a1 1 0 0 1-.552-.166A7 7 0 0 1 8.938 9.7L9 9.672V4a1 1 0 1 1 0-2zm-2 2h-2v6.34a1 1 0 0 1-.551.894l-.116.049A5 5 0 0 0 7.413 14h9.172a5 5 0 0 0-2.918-2.715a1 1 0 0 1-.667-.943z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -23935,7 +25416,7 @@ func FolderExclamation(children ...ElementRenderer) *TablerIcon {
 func FolderFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M9 3a1 1 0 0 1 .608.206l.1.087L12.414 6H19a3 3 0 0 1 2.995 2.824L22 9v8a3 3 0 0 1-2.824 2.995L19 20H5a3 3 0 0 1-2.995-2.824L2 17V6a3 3 0 0 1 2.824-2.995L5 3z"/></g>`),
+			Text(`<path fill="currentColor" d="M9 3a1 1 0 0 1 .608.206l.1.087L12.414 6H19a3 3 0 0 1 2.995 2.824L22 9v8a3 3 0 0 1-2.824 2.995L19 20H5a3 3 0 0 1-2.995-2.824L2 17V6a3 3 0 0 1 2.824-2.995L5 3z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -24087,7 +25568,7 @@ func Forbid(children ...ElementRenderer) *TablerIcon {
 func ForbidFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M17 3.34a10 10 0 1 1-14.995 8.984L2 12l.005-.324A10 10 0 0 1 17 3.34M9.613 8.21a1 1 0 0 0-1.32 1.497l6 6l.094.083a1 1 0 0 0 1.32-1.497l-6-6z"/></g>`),
+			Text(`<path fill="currentColor" d="M17 3.34a10 10 0 1 1-14.995 8.984L2 12l.005-.324A10 10 0 0 1 17 3.34M9.613 8.21a1 1 0 0 0-1.32 1.497l6 6l.094.083a1 1 0 0 0 1.32-1.497l-6-6z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -24103,7 +25584,7 @@ func ForbidTwo(children ...ElementRenderer) *TablerIcon {
 func ForbidTwoFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M17 3.34a10 10 0 1 1-14.995 8.984L2 12l.005-.324A10 10 0 0 1 17 3.34m-1.293 4.953a1 1 0 0 0-1.414 0l-6 6l-.083.094a1 1 0 0 0 1.497 1.32l6-6l.083-.094a1 1 0 0 0-.083-1.32"/></g>`),
+			Text(`<path fill="currentColor" d="M17 3.34a10 10 0 1 1-14.995 8.984L2 12l.005-.324A10 10 0 0 1 17 3.34m-1.293 4.953a1 1 0 0 0-1.414 0l-6 6l-.083.094a1 1 0 0 0 1.497 1.32l6-6l.083-.094a1 1 0 0 0-.083-1.32"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -24135,7 +25616,7 @@ func Fountain(children ...ElementRenderer) *TablerIcon {
 func FountainFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M15 2a4 4 0 0 1 4 4a1 1 0 0 1-1.993.117L17 6a2 2 0 0 0-3.995-.15L13 6v9h1v-4a3 3 0 0 1 6 0a1 1 0 0 1-1.993.117L18 11a1 1 0 0 0-1.993-.117L16 11v4h5a1 1 0 0 1 .993.883L22 16v2a4 4 0 0 1-3.8 3.995L18 22H6a4 4 0 0 1-3.995-3.8L2 18v-2a1 1 0 0 1 .883-.993L3 15h5v-4a1 1 0 0 0-1.993-.117L6 11a1 1 0 0 1-2 0a3 3 0 0 1 5.995-.176L10 11v4h1V6a2 2 0 1 0-4 0a1 1 0 1 1-2 0a4 4 0 0 1 7.001-2.645A3.983 3.983 0 0 1 15 2"/></g>`),
+			Text(`<path fill="currentColor" d="M15 2a4 4 0 0 1 4 4a1 1 0 0 1-1.993.117L17 6a2 2 0 0 0-3.995-.15L13 6v9h1v-4a3 3 0 0 1 6 0a1 1 0 0 1-1.993.117L18 11a1 1 0 0 0-1.993-.117L16 11v4h5a1 1 0 0 1 .993.883L22 16v2a4 4 0 0 1-3.8 3.995L18 22H6a4 4 0 0 1-3.995-3.8L2 18v-2a1 1 0 0 1 .883-.993L3 15h5v-4a1 1 0 0 0-1.993-.117L6 11a1 1 0 0 1-2 0a3 3 0 0 1 5.995-.176L10 11v4h1V6a2 2 0 1 0-4 0a1 1 0 1 1-2 0a4 4 0 0 1 7.001-2.645A3.983 3.983 0 0 1 15 2"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -24263,7 +25744,7 @@ func Function(children ...ElementRenderer) *TablerIcon {
 func FunctionFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M17.333 3A3.667 3.667 0 0 1 21 6.667v10.666A3.667 3.667 0 0 1 17.333 21H6.667A3.667 3.667 0 0 1 3 17.333V6.667A3.667 3.667 0 0 1 6.667 3zM13.75 6a2.38 2.38 0 0 0-2.37 2.145L11.095 11H9l-.117.007A1 1 0 0 0 9 13h1.894l-.265 2.656l-.014.071a.38.38 0 0 1-.365.273a.25.25 0 0 1-.25-.25v-.25l-.007-.117A1 1 0 0 0 8 15.5v.25l.005.154A2.25 2.25 0 0 0 10.25 18a2.38 2.38 0 0 0 2.37-2.145L12.904 13H15l.117-.007A1 1 0 0 0 15 11h-1.895l.266-2.656l.014-.071A.381.381 0 0 1 13.75 8a.25.25 0 0 1 .25.25v.25l.007.117A1 1 0 0 0 16 8.5v-.25l-.005-.154A2.25 2.25 0 0 0 13.75 6"/></g>`),
+			Text(`<path fill="currentColor" d="M17.333 3A3.667 3.667 0 0 1 21 6.667v10.666A3.667 3.667 0 0 1 17.333 21H6.667A3.667 3.667 0 0 1 3 17.333V6.667A3.667 3.667 0 0 1 6.667 3zM13.75 6a2.38 2.38 0 0 0-2.37 2.145L11.095 11H9l-.117.007A1 1 0 0 0 9 13h1.894l-.265 2.656l-.014.071a.38.38 0 0 1-.365.273a.25.25 0 0 1-.25-.25v-.25l-.007-.117A1 1 0 0 0 8 15.5v.25l.005.154A2.25 2.25 0 0 0 10.25 18a2.38 2.38 0 0 0 2.37-2.145L12.904 13H15l.117-.007A1 1 0 0 0 15 11h-1.895l.266-2.656l.014-.071A.381.381 0 0 1 13.75 8a.25.25 0 0 1 .25.25v.25l.007.117A1 1 0 0 0 16 8.5v-.25l-.005-.154A2.25 2.25 0 0 0 13.75 6"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -24327,7 +25808,7 @@ func Gauge(children ...ElementRenderer) *TablerIcon {
 func GaugeFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M17 3.34a10 10 0 1 1-14.995 8.984L2 12l.005-.324A10 10 0 0 1 17 3.34m-.293 3.953a1 1 0 0 0-1.414 0l-2.59 2.59l-.083.094l-.068.1a2.001 2.001 0 0 0-2.547 1.774L10 12l.005.15a2 2 0 1 0 3.917-.701a.968.968 0 0 0 .195-.152l2.59-2.59l.083-.094a1 1 0 0 0-.083-1.32M12 6a6 6 0 0 0-6 6a1 1 0 0 0 2 0a4 4 0 0 1 4-4a1 1 0 0 0 0-2"/></g>`),
+			Text(`<path fill="currentColor" d="M17 3.34a10 10 0 1 1-14.995 8.984L2 12l.005-.324A10 10 0 0 1 17 3.34m-.293 3.953a1 1 0 0 0-1.414 0l-2.59 2.59l-.083.094l-.068.1a2.001 2.001 0 0 0-2.547 1.774L10 12l.005.15a2 2 0 1 0 3.917-.701a.968.968 0 0 0 .195-.152l2.59-2.59l.083-.094a1 1 0 0 0-.083-1.32M12 6a6 6 0 0 0-6 6a1 1 0 0 0 2 0a4 4 0 0 1 4-4a1 1 0 0 0 0-2"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -24511,7 +25992,7 @@ func Ghost(children ...ElementRenderer) *TablerIcon {
 func GhostFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M12 3a8 8 0 0 1 7.996 7.75L20 11l-.001 6.954l.01.103a2.78 2.78 0 0 1-1.468 2.618l-.163.08c-1.053.475-2.283.248-3.129-.593l-.137-.146a.65.65 0 0 0-1.024 0a2.65 2.65 0 0 1-4.176 0a.65.65 0 0 0-.512-.25c-.2 0-.389.092-.55.296a2.78 2.78 0 0 1-4.859-2.005l.008-.091L4 11l.004-.25A8 8 0 0 1 12 3m2.82 10.429a1 1 0 0 0-1.391-.25a2.5 2.5 0 0 1-2.858 0a1 1 0 0 0-1.142 1.642a4.5 4.5 0 0 0 5.142 0a1 1 0 0 0 .25-1.392zM10.01 9l-.127.007A1 1 0 0 0 10 11l.127-.007A1 1 0 0 0 10.01 9m4 0l-.127.007A1 1 0 0 0 14 11l.127-.007A1 1 0 0 0 14.01 9"/></g>`),
+			Text(`<path fill="currentColor" d="M12 3a8 8 0 0 1 7.996 7.75L20 11l-.001 6.954l.01.103a2.78 2.78 0 0 1-1.468 2.618l-.163.08c-1.053.475-2.283.248-3.129-.593l-.137-.146a.65.65 0 0 0-1.024 0a2.65 2.65 0 0 1-4.176 0a.65.65 0 0 0-.512-.25c-.2 0-.389.092-.55.296a2.78 2.78 0 0 1-4.859-2.005l.008-.091L4 11l.004-.25A8 8 0 0 1 12 3m2.82 10.429a1 1 0 0 0-1.391-.25a2.5 2.5 0 0 1-2.858 0a1 1 0 0 0-1.142 1.642a4.5 4.5 0 0 0 5.142 0a1 1 0 0 0 .25-1.392zM10.01 9l-.127.007A1 1 0 0 0 10 11l.127-.007A1 1 0 0 0 10.01 9m4 0l-.127.007A1 1 0 0 0 14 11l.127-.007A1 1 0 0 0 14.01 9"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -24543,7 +26024,7 @@ func GhostTwo(children ...ElementRenderer) *TablerIcon {
 func GhostTwoFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="m12 1.999l.041.002l.208.003a8 8 0 0 1 7.747 7.747l.003.248l.177.006a3 3 0 0 1 2.819 2.819L23 13a3 3 0 0 1-3 3l-.001 1.696l1.833 2.75a1 1 0 0 1-.72 1.548L21 22H11c-3.445.002-6.327-2.49-6.901-5.824l-.028-.178l-.071.001a3 3 0 0 1-2.995-2.824L1 13a3 3 0 0 1 3-3l.004-.25A8 8 0 0 1 12 2zM12 12a2 2 0 0 0-2 2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1a2 2 0 0 0-2-2m-1.99-4l-.127.007A1 1 0 0 0 10 10l.127-.007A1 1 0 0 0 10.01 8m4 0l-.127.007A1 1 0 0 0 14 10l.127-.007A1 1 0 0 0 14.01 8"/></g>`),
+			Text(`<path fill="currentColor" d="m12 1.999l.041.002l.208.003a8 8 0 0 1 7.747 7.747l.003.248l.177.006a3 3 0 0 1 2.819 2.819L23 13a3 3 0 0 1-3 3l-.001 1.696l1.833 2.75a1 1 0 0 1-.72 1.548L21 22H11c-3.445.002-6.327-2.49-6.901-5.824l-.028-.178l-.071.001a3 3 0 0 1-2.995-2.824L1 13a3 3 0 0 1 3-3l.004-.25A8 8 0 0 1 12 2zM12 12a2 2 0 0 0-2 2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1a2 2 0 0 0-2-2m-1.99-4l-.127.007A1 1 0 0 0 10 10l.127-.007A1 1 0 0 0 10.01 8m4 0l-.127.007A1 1 0 0 0 14 10l.127-.007A1 1 0 0 0 14.01 8"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -24575,7 +26056,7 @@ func GiftCard(children ...ElementRenderer) *TablerIcon {
 func GiftCardFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M18 4a4 4 0 0 1 3.995 3.8L22 8v8a4 4 0 0 1-3.8 3.995L18 20H6a4 4 0 0 1-3.995-3.8L2 16V8a4 4 0 0 1 3.8-3.995L6 4zm-5.493 5l-.19.004c-.928.052-1.719.583-2.317 1.444c-.56-.805-1.288-1.322-2.139-1.428l-.198-.017L7.499 9l-.16.005C6.059 9.091 5 10.184 5 11.5c0 1.226 1.222 2.211 2.453 2.447l.16.026l-1.32 1.32l-.083.094a1 1 0 0 0 0 1.226l.083.094l.094.083a1 1 0 0 0 1.226 0l.094-.083L10 14.415l2.293 2.292l.094.083a1 1 0 0 0 1.403-1.403l-.083-.094l-1.32-1.32c1.229-.169 2.502-1.11 2.606-2.315L15 11.5l-.005-.163c-.08-1.189-1.02-2.162-2.175-2.316l-.159-.016zm-.025 2l.102.009c.194.04.367.21.407.406L13 11.5l-.012.031l-.034.04c-.13.135-.513.369-.836.42L12 12h-.602l.052-.1l.088-.156c.27-.444.574-.696.852-.738zm-4.964 0l.084.005l.094.02c.254.077.523.32.765.718l.09.157l.05.1H8l-.106-.008c-.398-.057-.894-.4-.894-.492c0-.23.194-.446.416-.491z"/></g>`),
+			Text(`<path fill="currentColor" d="M18 4a4 4 0 0 1 3.995 3.8L22 8v8a4 4 0 0 1-3.8 3.995L18 20H6a4 4 0 0 1-3.995-3.8L2 16V8a4 4 0 0 1 3.8-3.995L6 4zm-5.493 5l-.19.004c-.928.052-1.719.583-2.317 1.444c-.56-.805-1.288-1.322-2.139-1.428l-.198-.017L7.499 9l-.16.005C6.059 9.091 5 10.184 5 11.5c0 1.226 1.222 2.211 2.453 2.447l.16.026l-1.32 1.32l-.083.094a1 1 0 0 0 0 1.226l.083.094l.094.083a1 1 0 0 0 1.226 0l.094-.083L10 14.415l2.293 2.292l.094.083a1 1 0 0 0 1.403-1.403l-.083-.094l-1.32-1.32c1.229-.169 2.502-1.11 2.606-2.315L15 11.5l-.005-.163c-.08-1.189-1.02-2.162-2.175-2.316l-.159-.016zm-.025 2l.102.009c.194.04.367.21.407.406L13 11.5l-.012.031l-.034.04c-.13.135-.513.369-.836.42L12 12h-.602l.052-.1l.088-.156c.27-.444.574-.696.852-.738zm-4.964 0l.084.005l.094.02c.254.077.523.32.765.718l.09.157l.05.1H8l-.106-.008c-.398-.057-.894-.4-.894-.492c0-.23.194-.446.416-.491z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -24583,7 +26064,7 @@ func GiftCardFilled(children ...ElementRenderer) *TablerIcon {
 func GiftFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M11 14v8H7a3 3 0 0 1-3-3v-4a1 1 0 0 1 1-1zm8 0a1 1 0 0 1 1 1v4a3 3 0 0 1-3 3h-4v-8zM16.5 2a3.5 3.5 0 0 1 3.163 5H20a2 2 0 0 1 2 2v1a2 2 0 0 1-2 2h-7V7h-2v5H4a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h.337A3.486 3.486 0 0 1 4 5.5C4 3.567 5.567 2 7.483 2c1.755-.03 3.312 1.092 4.381 2.934l.136.243c1.033-1.914 2.56-3.114 4.291-3.175zm-9 2a1.5 1.5 0 0 0 0 3h3.143C9.902 5.095 8.694 3.98 7.5 4m8.983 0c-1.18-.02-2.385 1.096-3.126 3H16.5a1.5 1.5 0 1 0-.017-3"/></g>`),
+			Text(`<path fill="currentColor" d="M11 14v8H7a3 3 0 0 1-3-3v-4a1 1 0 0 1 1-1zm8 0a1 1 0 0 1 1 1v4a3 3 0 0 1-3 3h-4v-8zM16.5 2a3.5 3.5 0 0 1 3.163 5H20a2 2 0 0 1 2 2v1a2 2 0 0 1-2 2h-7V7h-2v5H4a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h.337A3.486 3.486 0 0 1 4 5.5C4 3.567 5.567 2 7.483 2c1.755-.03 3.312 1.092 4.381 2.934l.136.243c1.033-1.914 2.56-3.114 4.291-3.175zm-9 2a1.5 1.5 0 0 0 0 3h3.143C9.902 5.095 8.694 3.98 7.5 4m8.983 0c-1.18-.02-2.385 1.096-3.126 3H16.5a1.5 1.5 0 1 0-.017-3"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -24687,7 +26168,23 @@ func Gizmo(children ...ElementRenderer) *TablerIcon {
 func Glass(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 21h8m-4-6v6m5-18l1 7c0 3.012-2.686 5-6 5s-6-1.988-6-5l1-7z"/>`),
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M8 21h8m-4-5v5m5-16l1 6c0 3.012-2.686 5-6 5s-6-1.988-6-5l1-6"/><path d="M7 5a5 2 0 1 0 10 0A5 2 0 1 0 7 5"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func GlassChampagne(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M9 21h6m-3-5v5M8 5a4 2 0 1 0 8 0a4 2 0 1 0-8 0"/><path d="M8 5c0 6.075 1.79 11 4 11s4-4.925 4-11"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func GlassCocktail(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M8 21h8m-4-6v6M5 5a7 2 0 1 0 14 0A7 2 0 1 0 5 5"/><path d="M5 5v.388c0 .432.126.853.362 1.206l5 7.509c.633.951 1.88 1.183 2.785.517c.191-.141.358-.316.491-.517l5-7.509c.236-.353.362-.774.362-1.206V5"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -24703,7 +26200,15 @@ func GlassFull(children ...ElementRenderer) *TablerIcon {
 func GlassFullFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="m5.004 10.229l-.003-.186l.001-.113l.008-.071l1-7a1 1 0 0 1 .877-.853L7 2h10a1 1 0 0 1 .968.747l.022.112l1.006 7.05L19 10c0 3.226-2.56 5.564-6 5.945V20h3a1 1 0 0 1 .117 1.993L16 22H8a1 1 0 0 1-.117-1.993L8 20h3v-4.055c-3.358-.371-5.878-2.609-5.996-5.716M16.133 4H7.866l-.607 4.258a6.001 6.001 0 0 1 5.125.787l.216.155a4 4 0 0 0 4.32.31z"/></g>`),
+			Text(`<path fill="currentColor" d="m5.004 10.229l-.003-.186l.001-.113l.008-.071l1-7a1 1 0 0 1 .877-.853L7 2h10a1 1 0 0 1 .968.747l.022.112l1.006 7.05L19 10c0 3.226-2.56 5.564-6 5.945V20h3a1 1 0 0 1 .117 1.993L16 22H8a1 1 0 0 1-.117-1.993L8 20h3v-4.055c-3.358-.371-5.878-2.609-5.996-5.716M16.133 4H7.866l-.607 4.258a6.001 6.001 0 0 1 5.125.787l.216.155a4 4 0 0 0 4.32.31z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func GlassGin(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M8 21h8m-4-6v6M5.5 5a6.5 2 0 1 0 13 0a6.5 2 0 1 0-13 0"/><path d="M5.75 4.5C5.138 5.25 5 6.5 5 8a7 7 0 0 0 14 0c0-1.5-.094-2.75-.75-3.5"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -24711,7 +26216,7 @@ func GlassFullFilled(children ...ElementRenderer) *TablerIcon {
 func GlassOff(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 21h8m-4-6v6M7 3h10l1 7a4.511 4.511 0 0 1-1.053 2.94m-2.386 1.625A7.48 7.48 0 0 1 12 15c-3.314 0-6-1.988-6-5l.5-3.495M3 3l18 18"/>`),
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M8 21h8m-4-5v5m5-16l1 6c0 .887-.233 1.685-.646 2.37m-2.083 1.886c-.941.48-2.064.744-3.271.744c-3.314 0-6-1.988-6-5l.711-4.268"/><path d="M10.983 6.959c.329.027.669.041 1.017.041c2.761 0 5-.895 5-2s-2.239-2-5-2c-1.716 0-3.23.346-4.13.872M3 3l18 18"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -24727,7 +26232,7 @@ func Globe(children ...ElementRenderer) *TablerIcon {
 func GlobeFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M11 4a5 5 0 1 1-4.995 5.217L6 9l.005-.217A5 5 0 0 1 11 4"/><path fill="currentColor" d="M14.133 1.502a1 1 0 0 1 1.365-.369A9.015 9.015 0 1 1 5.094 15.755a1 1 0 1 1 1.312-1.51a7.015 7.015 0 1 0 8.096-11.378a1 1 0 0 1-.369-1.365"/><path fill="currentColor" d="M11 16a1 1 0 0 1 .993.883L12 17v4a1 1 0 0 1-1.993.117L10 21v-4a1 1 0 0 1 1-1"/><path fill="currentColor" d="M15 20a1 1 0 0 1 .117 1.993L15 22H7a1 1 0 0 1-.117-1.993L7 20z"/></g>`),
+			Text(`<g fill="currentColor"><path d="M11 4a5 5 0 1 1-4.995 5.217L6 9l.005-.217A5 5 0 0 1 11 4"/><path d="M14.133 1.502a1 1 0 0 1 1.365-.369A9.015 9.015 0 1 1 5.094 15.755a1 1 0 1 1 1.312-1.51a7.015 7.015 0 1 0 8.096-11.378a1 1 0 0 1-.369-1.365"/><path d="M11 16a1 1 0 0 1 .993.883L12 17v4a1 1 0 0 1-1.993.117L10 21v-4a1 1 0 0 1 1-1"/><path d="M15 20a1 1 0 0 1 .117 1.993L15 22H7a1 1 0 0 1-.117-1.993L7 20z"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -24772,6 +26277,14 @@ func Gps(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func GpsFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M17 3.34A10 10 0 1 1 2 12l.005-.324A10 10 0 0 1 17 3.34m-.086 5.066c.372-.837-.483-1.692-1.32-1.32l-9 4l-.108.055c-.75.44-.611 1.609.271 1.83l3.418.853l.855 3.419c.23.922 1.498 1.032 1.884.163z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func Gradienter(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
@@ -24799,7 +26312,7 @@ func Graph(children ...ElementRenderer) *TablerIcon {
 func GraphFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M18 3a3 3 0 0 1 3 3v12a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3zm-2.293 6.293a1 1 0 0 0-1.414 0L12 11.585l-1.293-1.292a1 1 0 0 0-1.414 0l-3 3a1 1 0 0 0 0 1.414l.094.083a1 1 0 0 0 1.32-.083L10 12.415l1.293 1.292l.094.083a1 1 0 0 0 1.32-.083L15 11.415l1.293 1.292a1 1 0 0 0 1.414-1.414z"/></g>`),
+			Text(`<path fill="currentColor" d="M18 3a3 3 0 0 1 3 3v12a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3zm-2.293 6.293a1 1 0 0 0-1.414 0L12 11.585l-1.293-1.292a1 1 0 0 0-1.414 0l-3 3a1 1 0 0 0 0 1.414l.094.083a1 1 0 0 0 1.32-.083L10 12.415l1.293 1.292l.094.083a1 1 0 0 0 1.32-.083L15 11.415l1.293 1.292a1 1 0 0 0 1.414-1.414z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -24943,7 +26456,7 @@ func GuitarPick(children ...ElementRenderer) *TablerIcon {
 func GuitarPickFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M12 2c-1.613 0-2.882.104-3.825.323l-.23.057C4.926 3.088 3 4.883 3 8c0 3.367 1.939 8.274 4.22 11.125c.32.4.664.786 1.03 1.158l.367.36a4.904 4.904 0 0 0 6.752.011a15.04 15.04 0 0 0 1.41-1.528C19.27 16.013 21 11.832 21 8c0-3.025-1.813-4.806-4.71-5.562l-.266-.066C15.088 2.122 13.743 2 12 2"/></g>`),
+			Text(`<path fill="currentColor" d="M12 2c-1.613 0-2.882.104-3.825.323l-.23.057C4.926 3.088 3 4.883 3 8c0 3.367 1.939 8.274 4.22 11.125c.32.4.664.786 1.03 1.158l.367.36a4.904 4.904 0 0 0 6.752.011a15.04 15.04 0 0 0 1.41-1.528C19.27 16.013 21 11.832 21 8c0-3.025-1.813-4.806-4.71-5.562l-.266-.066C15.088 2.122 13.743 2 12 2"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -25060,6 +26573,14 @@ func HandLittleFinger(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func HandLoveYou(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M11 11.5v-1a1.5 1.5 0 0 1 3 0V12"/><path d="M17 12V5.5a1.5 1.5 0 0 1 3 0V16a6 6 0 0 1-6 6h-2h.208a6 6 0 0 1-5.012-2.7A69.74 69.74 0 0 1 7 19c-.312-.479-1.407-2.388-3.286-5.728a1.5 1.5 0 0 1 .536-2.022a1.867 1.867 0 0 1 2.28.28L8 13"/><path d="M14 10.5a1.5 1.5 0 0 1 3 0V12m-9 1V4.5a1.5 1.5 0 0 1 3 0V12"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func HandMiddleFinger(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
@@ -25088,14 +26609,6 @@ func HandRingFinger(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M8 13v-2.5a1.5 1.5 0 0 1 3 0V12"/><path d="M17 11.5a1.5 1.5 0 0 1 3 0V16a6 6 0 0 1-6 6h-2h.208a6 6 0 0 1-5.012-2.7A69.74 69.74 0 0 1 7 19c-.312-.479-1.407-2.388-3.286-5.728a1.5 1.5 0 0 1 .536-2.022a1.867 1.867 0 0 1 2.28.28L8 13"/><path d="M11 11.5v-2a1.5 1.5 0 1 1 3 0V12m0 0V5.5a1.5 1.5 0 0 1 3 0V12"/></g>`),
-		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
-	}
-}
-
-func HandRock(children ...ElementRenderer) *TablerIcon {
-	return &TablerIcon{
-		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M11 11.5v-1a1.5 1.5 0 0 1 3 0V12"/><path d="M17 12V5.5a1.5 1.5 0 0 1 3 0V16a6 6 0 0 1-6 6h-2h.208a6 6 0 0 1-5.012-2.7A69.74 69.74 0 0 1 7 19c-.312-.479-1.407-2.388-3.286-5.728a1.5 1.5 0 0 1 .536-2.022a1.867 1.867 0 0 1 2.28.28L8 13"/><path d="M14 10.5a1.5 1.5 0 0 1 3 0V12m-9 1V4.5a1.5 1.5 0 0 1 3 0V12"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -25215,7 +26728,7 @@ func Headphones(children ...ElementRenderer) *TablerIcon {
 func HeadphonesFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M21 18a3 3 0 0 1-2.824 2.995L18 21h-1a3 3 0 0 1-2.995-2.824L14 18v-3a3 3 0 0 1 2.824-2.995L17 12h1c.351 0 .688.06 1 .171V12a7 7 0 0 0-13.996-.24L5 12v.17c.25-.088.516-.144.791-.163L6 12h1a3 3 0 0 1 2.995 2.824L10 15v3a3 3 0 0 1-2.824 2.995L7 21H6a3 3 0 0 1-2.995-2.824L3 18v-6a9 9 0 0 1 17.996-.265L21 12z"/></g>`),
+			Text(`<path fill="currentColor" d="M21 18a3 3 0 0 1-2.824 2.995L18 21h-1a3 3 0 0 1-2.995-2.824L14 18v-3a3 3 0 0 1 2.824-2.995L17 12h1c.351 0 .688.06 1 .171V12a7 7 0 0 0-13.996-.24L5 12v.17c.25-.088.516-.144.791-.163L6 12h1a3 3 0 0 1 2.995 2.824L10 15v3a3 3 0 0 1-2.824 2.995L7 21H6a3 3 0 0 1-2.995-2.824L3 18v-6a9 9 0 0 1 17.996-.265L21 12z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -25343,7 +26856,7 @@ func HeartExclamation(children ...ElementRenderer) *TablerIcon {
 func HeartFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M6.979 3.074a6 6 0 0 1 4.988 1.425l.037.033l.034-.03a6 6 0 0 1 4.733-1.44l.246.036a6 6 0 0 1 3.364 10.008l-.18.185l-.048.041l-7.45 7.379a1 1 0 0 1-1.313.082l-.094-.082l-7.493-7.422A6 6 0 0 1 6.979 3.074"/></g>`),
+			Text(`<path fill="currentColor" d="M6.979 3.074a6 6 0 0 1 4.988 1.425l.037.033l.034-.03a6 6 0 0 1 4.733-1.44l.246.036a6 6 0 0 1 3.364 10.008l-.18.185l-.048.041l-7.45 7.379a1 1 0 0 1-1.313.082l-.094-.082l-7.493-7.422A6 6 0 0 1 6.979 3.074"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -25527,7 +27040,7 @@ func HelpCircle(children ...ElementRenderer) *TablerIcon {
 func HelpCircleFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M12 2c5.523 0 10 4.477 10 10a10 10 0 0 1-19.995.324L2 12l.004-.28C2.152 6.327 6.57 2 12 2m0 13a1 1 0 0 0-.993.883L11 16l.007.127a1 1 0 0 0 1.986 0L13 16.01l-.007-.127A1 1 0 0 0 12 15m1.368-6.673a2.98 2.98 0 0 0-3.631.728a1 1 0 0 0 1.44 1.383l.171-.18a.98.98 0 0 1 1.11-.15a1 1 0 0 1-.34 1.886l-.232.012A1 1 0 0 0 11.997 14a3 3 0 0 0 1.371-5.673"/></g>`),
+			Text(`<path fill="currentColor" d="M12 2c5.523 0 10 4.477 10 10a10 10 0 0 1-19.995.324L2 12l.004-.28C2.152 6.327 6.57 2 12 2m0 13a1 1 0 0 0-.993.883L11 16l.007.127a1 1 0 0 0 1.986 0L13 16.01l-.007-.127A1 1 0 0 0 12 15m1.368-6.673a2.98 2.98 0 0 0-3.631.728a1 1 0 0 0 1.44 1.383l.171-.18a.98.98 0 0 1 1.11-.15a1 1 0 0 1-.34 1.886l-.232.012A1 1 0 0 0 11.997 14a3 3 0 0 0 1.371-5.673"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -25543,7 +27056,7 @@ func HelpHexagon(children ...ElementRenderer) *TablerIcon {
 func HelpHexagonFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M10.425 1.414a3.33 3.33 0 0 1 3.026-.097l.19.097l6.775 3.995l.096.063l.092.077l.107.075a3.224 3.224 0 0 1 1.266 2.188l.018.202l.005.204v7.284c0 1.106-.57 2.129-1.454 2.693l-.17.1l-6.803 4.302c-.918.504-2.019.535-3.004.068l-.196-.1l-6.695-4.237a3.225 3.225 0 0 1-1.671-2.619L2 15.502V8.217c0-1.106.57-2.128 1.476-2.705zM12 15a1 1 0 0 0-.993.883L11 16l.007.127a1 1 0 0 0 1.986 0L13 16.01l-.007-.127A1 1 0 0 0 12 15m1.368-6.673a2.98 2.98 0 0 0-3.631.728a1 1 0 0 0 1.44 1.383l.171-.18a.98.98 0 0 1 1.11-.15a1 1 0 0 1-.34 1.886l-.232.012A1 1 0 0 0 11.997 14a3 3 0 0 0 1.371-5.673"/></g>`),
+			Text(`<path fill="currentColor" d="M10.425 1.414a3.33 3.33 0 0 1 3.026-.097l.19.097l6.775 3.995l.096.063l.092.077l.107.075a3.224 3.224 0 0 1 1.266 2.188l.018.202l.005.204v7.284c0 1.106-.57 2.129-1.454 2.693l-.17.1l-6.803 4.302c-.918.504-2.019.535-3.004.068l-.196-.1l-6.695-4.237a3.225 3.225 0 0 1-1.671-2.619L2 15.502V8.217c0-1.106.57-2.128 1.476-2.705zM12 15a1 1 0 0 0-.993.883L11 16l.007.127a1 1 0 0 0 1.986 0L13 16.01l-.007-.127A1 1 0 0 0 12 15m1.368-6.673a2.98 2.98 0 0 0-3.631.728a1 1 0 0 0 1.44 1.383l.171-.18a.98.98 0 0 1 1.11-.15a1 1 0 0 1-.34 1.886l-.232.012A1 1 0 0 0 11.997 14a3 3 0 0 0 1.371-5.673"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -25559,7 +27072,7 @@ func HelpOctagon(children ...ElementRenderer) *TablerIcon {
 func HelpOctagonFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M14.897 1a4 4 0 0 1 2.664 1.016l.165.156l4.1 4.1a4 4 0 0 1 1.168 2.605l.006.227v5.794a4 4 0 0 1-1.016 2.664l-.156.165l-4.1 4.1a4 4 0 0 1-2.603 1.168l-.227.006H9.103a3.999 3.999 0 0 1-2.664-1.017l-.165-.156l-4.1-4.1a4 4 0 0 1-1.168-2.604L1 14.897V9.103a4 4 0 0 1 1.016-2.664l.156-.165l4.1-4.1a4 4 0 0 1 2.605-1.168L9.104 1zM12 15a1 1 0 0 0-.993.883L11 16l.007.127a1 1 0 0 0 1.986 0L13 16.01l-.007-.127A1 1 0 0 0 12 15m1.368-6.673a2.98 2.98 0 0 0-3.631.728a1 1 0 0 0 1.44 1.383l.171-.18a.98.98 0 0 1 1.11-.15a1 1 0 0 1-.34 1.886l-.232.012A1 1 0 0 0 11.997 14a3 3 0 0 0 1.371-5.673"/></g>`),
+			Text(`<path fill="currentColor" d="M14.897 1a4 4 0 0 1 2.664 1.016l.165.156l4.1 4.1a4 4 0 0 1 1.168 2.605l.006.227v5.794a4 4 0 0 1-1.016 2.664l-.156.165l-4.1 4.1a4 4 0 0 1-2.603 1.168l-.227.006H9.103a3.999 3.999 0 0 1-2.664-1.017l-.165-.156l-4.1-4.1a4 4 0 0 1-1.168-2.604L1 14.897V9.103a4 4 0 0 1 1.016-2.664l.156-.165l4.1-4.1a4 4 0 0 1 2.605-1.168L9.104 1zM12 15a1 1 0 0 0-.993.883L11 16l.007.127a1 1 0 0 0 1.986 0L13 16.01l-.007-.127A1 1 0 0 0 12 15m1.368-6.673a2.98 2.98 0 0 0-3.631.728a1 1 0 0 0 1.44 1.383l.171-.18a.98.98 0 0 1 1.11-.15a1 1 0 0 1-.34 1.886l-.232.012A1 1 0 0 0 11.997 14a3 3 0 0 0 1.371-5.673"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -25591,7 +27104,7 @@ func HelpSquare(children ...ElementRenderer) *TablerIcon {
 func HelpSquareFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M19 2a3 3 0 0 1 2.995 2.824L22 5v14a3 3 0 0 1-2.824 2.995L19 22H5a3 3 0 0 1-2.995-2.824L2 19V5a3 3 0 0 1 2.824-2.995L5 2zm-7 13a1 1 0 0 0-.993.883L11 16l.007.127a1 1 0 0 0 1.986 0L13 16.01l-.007-.127A1 1 0 0 0 12 15m1.368-6.673a2.98 2.98 0 0 0-3.631.728a1 1 0 0 0 1.44 1.383l.171-.18a.98.98 0 0 1 1.11-.15a1 1 0 0 1-.34 1.886l-.232.012A1 1 0 0 0 11.997 14a3 3 0 0 0 1.371-5.673"/></g>`),
+			Text(`<path fill="currentColor" d="M19 2a3 3 0 0 1 2.995 2.824L22 5v14a3 3 0 0 1-2.824 2.995L19 22H5a3 3 0 0 1-2.995-2.824L2 19V5a3 3 0 0 1 2.824-2.995L5 2zm-7 13a1 1 0 0 0-.993.883L11 16l.007.127a1 1 0 0 0 1.986 0L13 16.01l-.007-.127A1 1 0 0 0 12 15m1.368-6.673a2.98 2.98 0 0 0-3.631.728a1 1 0 0 0 1.44 1.383l.171-.18a.98.98 0 0 1 1.11-.15a1 1 0 0 1-.34 1.886l-.232.012A1 1 0 0 0 11.997 14a3 3 0 0 0 1.371-5.673"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -25607,7 +27120,7 @@ func HelpSquareRounded(children ...ElementRenderer) *TablerIcon {
 func HelpSquareRoundedFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="m12 2l.642.005l.616.017l.299.013l.579.034l.553.046c4.687.455 6.65 2.333 7.166 6.906l.03.29l.046.553l.041.727l.006.15l.017.617L22 12l-.005.642l-.017.616l-.013.299l-.034.579l-.046.553c-.455 4.687-2.333 6.65-6.906 7.166l-.29.03l-.553.046l-.727.041l-.15.006l-.617.017L12 22l-.642-.005l-.616-.017l-.299-.013l-.579-.034l-.553-.046c-4.687-.455-6.65-2.333-7.166-6.906l-.03-.29l-.046-.553l-.041-.727l-.006-.15l-.017-.617l-.004-.318v-.648l.004-.318l.017-.616l.013-.299l.034-.579l.046-.553c.455-4.687 2.333-6.65 6.906-7.166l.29-.03l.553-.046l.727-.041l.15-.006l.617-.017c.21-.003.424-.005.642-.005m0 13a1 1 0 0 0-.993.883L11 16l.007.127a1 1 0 0 0 1.986 0L13 16.01l-.007-.127A1 1 0 0 0 12 15m1.368-6.673a2.98 2.98 0 0 0-3.631.728a1 1 0 0 0 1.44 1.383l.171-.18a.98.98 0 0 1 1.11-.15a1 1 0 0 1-.34 1.886l-.232.012A1 1 0 0 0 11.997 14a3 3 0 0 0 1.371-5.673"/></g>`),
+			Text(`<path fill="currentColor" d="m12 2l.642.005l.616.017l.299.013l.579.034l.553.046c4.687.455 6.65 2.333 7.166 6.906l.03.29l.046.553l.041.727l.006.15l.017.617L22 12l-.005.642l-.017.616l-.013.299l-.034.579l-.046.553c-.455 4.687-2.333 6.65-6.906 7.166l-.29.03l-.553.046l-.727.041l-.15.006l-.617.017L12 22l-.642-.005l-.616-.017l-.299-.013l-.579-.034l-.553-.046c-4.687-.455-6.65-2.333-7.166-6.906l-.03-.29l-.046-.553l-.041-.727l-.006-.15l-.017-.617l-.004-.318v-.648l.004-.318l.017-.616l.013-.299l.034-.579l.046-.553c.455-4.687 2.333-6.65 6.906-7.166l.29-.03l.553-.046l.727-.041l.15-.006l.617-.017c.21-.003.424-.005.642-.005m0 13a1 1 0 0 0-.993.883L11 16l.007.127a1 1 0 0 0 1.986 0L13 16.01l-.007-.127A1 1 0 0 0 12 15m1.368-6.673a2.98 2.98 0 0 0-3.631.728a1 1 0 0 0 1.44 1.383l.171-.18a.98.98 0 0 1 1.11-.15a1 1 0 0 1-.34 1.886l-.232.012A1 1 0 0 0 11.997 14a3 3 0 0 0 1.371-5.673"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -25623,7 +27136,7 @@ func HelpTriangle(children ...ElementRenderer) *TablerIcon {
 func HelpTriangleFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M12 1.67c.955 0 1.845.467 2.39 1.247l.105.16l8.114 13.548a2.914 2.914 0 0 1-2.307 4.363l-.195.008H3.882a2.914 2.914 0 0 1-2.582-4.2l.099-.185l8.11-13.538A2.914 2.914 0 0 1 12 1.67M12 15a1 1 0 0 0-.993.883L11 16l.007.127a1 1 0 0 0 1.986 0L13 16.01l-.007-.127A1 1 0 0 0 12 15m1.368-6.673a2.98 2.98 0 0 0-3.631.728a1 1 0 0 0 1.44 1.383l.171-.18a.98.98 0 0 1 1.11-.15a1 1 0 0 1-.34 1.886l-.232.012A1 1 0 0 0 11.997 14a3 3 0 0 0 1.371-5.673"/></g>`),
+			Text(`<path fill="currentColor" d="M12 1.67c.955 0 1.845.467 2.39 1.247l.105.16l8.114 13.548a2.914 2.914 0 0 1-2.307 4.363l-.195.008H3.882a2.914 2.914 0 0 1-2.582-4.2l.099-.185l8.11-13.538A2.914 2.914 0 0 1 12 1.67M12 15a1 1 0 0 0-.993.883L11 16l.007.127a1 1 0 0 0 1.986 0L13 16.01l-.007-.127A1 1 0 0 0 12 15m1.368-6.673a2.98 2.98 0 0 0-3.631.728a1 1 0 0 0 1.44 1.383l.171-.18a.98.98 0 0 1 1.11-.15a1 1 0 0 1-.34 1.886l-.232.012A1 1 0 0 0 11.997 14a3 3 0 0 0 1.371-5.673"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -25671,7 +27184,7 @@ func HexagonEightFilled(children ...ElementRenderer) *TablerIcon {
 func HexagonFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M10.425 1.414L3.65 5.41A3.21 3.21 0 0 0 2 8.217v7.285a3.226 3.226 0 0 0 1.678 2.826l6.695 4.237c1.034.57 2.22.57 3.2.032l6.804-4.302c.98-.537 1.623-1.618 1.623-2.793V8.218l-.005-.204a3.223 3.223 0 0 0-1.284-2.39l-.107-.075l-.007-.007a1.074 1.074 0 0 0-.181-.133L13.64 1.414a3.33 3.33 0 0 0-3.216 0z"/></g>`),
+			Text(`<path fill="currentColor" d="M10.425 1.414L3.65 5.41A3.21 3.21 0 0 0 2 8.217v7.285a3.226 3.226 0 0 0 1.678 2.826l6.695 4.237c1.034.57 2.22.57 3.2.032l6.804-4.302c.98-.537 1.623-1.618 1.623-2.793V8.218l-.005-.204a3.223 3.223 0 0 0-1.284-2.39l-.107-.075l-.007-.007a1.074 1.074 0 0 0-.181-.133L13.64 1.414a3.33 3.33 0 0 0-3.216 0z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -25700,10 +27213,26 @@ func HexagonLetterA(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func HexagonLetterAfilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="m13.666 1.429l6.75 3.98l.096.063l.093.078l.106.074a3.22 3.22 0 0 1 1.284 2.39l.005.204v7.284c0 1.175-.643 2.256-1.623 2.793l-6.804 4.302c-.98.538-2.166.538-3.2-.032l-6.695-4.237A3.23 3.23 0 0 1 2 15.502V8.217c0-1.106.57-2.128 1.476-2.705l6.95-4.098c1-.552 2.214-.552 3.24.015M12 7a3 3 0 0 0-3 3v6a1 1 0 0 0 2 0v-2h2v2a1 1 0 0 0 .883.993L14 17a1 1 0 0 0 1-1v-6a3 3 0 0 0-3-3m0 2a1 1 0 0 1 1 1v2h-2v-2a1 1 0 0 1 .883-.993z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func HexagonLetterB(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M19.875 6.27A2.225 2.225 0 0 1 21 8.218v7.284c0 .809-.443 1.555-1.158 1.948l-6.75 4.27a2.269 2.269 0 0 1-2.184 0l-6.75-4.27A2.225 2.225 0 0 1 3 15.502V8.217c0-.809.443-1.554 1.158-1.947l6.75-3.98a2.33 2.33 0 0 1 2.25 0l6.75 3.98z"/><path d="M10 16h2a2 2 0 1 0 0-4h-2h2a2 2 0 1 0 0-4h-2z"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func HexagonLetterBfilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="m13.666 1.429l6.75 3.98l.096.063l.093.078l.106.074a3.22 3.22 0 0 1 1.284 2.39l.005.204v7.284c0 1.175-.643 2.256-1.623 2.793l-6.804 4.302c-.98.538-2.166.538-3.2-.032l-6.695-4.237A3.23 3.23 0 0 1 2 15.502V8.217c0-1.106.57-2.128 1.476-2.705l6.95-4.098c1-.552 2.214-.552 3.24.015M12 7h-2a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h2a3 3 0 0 0 3-3l-.005-.176a3 3 0 0 0-.654-1.7L14.235 12l.106-.124A3 3 0 0 0 12 7m0 6a1 1 0 0 1 0 2h-1v-2zm0-4a1 1 0 0 1 0 2h-1V9z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -25716,10 +27245,26 @@ func HexagonLetterC(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func HexagonLetterCfilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="m13.666 1.429l6.75 3.98l.096.063l.093.078l.106.074a3.22 3.22 0 0 1 1.284 2.39l.005.204v7.284c0 1.175-.643 2.256-1.623 2.793l-6.804 4.302c-.98.538-2.166.538-3.2-.032l-6.695-4.237A3.23 3.23 0 0 1 2 15.502V8.217c0-1.106.57-2.128 1.476-2.705l6.95-4.098c1-.552 2.214-.552 3.24.015M12 7a3 3 0 0 0-3 3v4a3 3 0 0 0 6 0a1 1 0 0 0-1.993-.117L13 14a1 1 0 0 1-2 0v-4a1 1 0 0 1 1.993-.117L13 10a1 1 0 0 0 2 0a3 3 0 0 0-3-3"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func HexagonLetterD(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M19.875 6.27A2.225 2.225 0 0 1 21 8.218v7.284c0 .809-.443 1.555-1.158 1.948l-6.75 4.27a2.269 2.269 0 0 1-2.184 0l-6.75-4.27A2.225 2.225 0 0 1 3 15.502V8.217c0-.809.443-1.554 1.158-1.947l6.75-3.98a2.33 2.33 0 0 1 2.25 0l6.75 3.98z"/><path d="M10 8v8h2a2 2 0 0 0 2-2v-4a2 2 0 0 0-2-2z"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func HexagonLetterDfilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="m13.666 1.429l6.75 3.98l.096.063l.093.078l.106.074a3.22 3.22 0 0 1 1.284 2.39l.005.204v7.284c0 1.175-.643 2.256-1.623 2.793l-6.804 4.302c-.98.538-2.166.538-3.2-.032l-6.695-4.237A3.23 3.23 0 0 1 2 15.502V8.217c0-1.106.57-2.128 1.476-2.705l6.95-4.098c1-.552 2.214-.552 3.24.015M12 7h-2a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h2a3 3 0 0 0 3-3v-4a3 3 0 0 0-3-3m0 2a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1h-1V9z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -25732,10 +27277,26 @@ func HexagonLetterE(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func HexagonLetterEfilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="m13.666 1.429l6.75 3.98l.096.063l.093.078l.106.074a3.22 3.22 0 0 1 1.284 2.39l.005.204v7.284c0 1.175-.643 2.256-1.623 2.793l-6.804 4.302c-.98.538-2.166.538-3.2-.032l-6.695-4.237A3.23 3.23 0 0 1 2 15.502V8.217c0-1.106.57-2.128 1.476-2.705l6.95-4.098c1-.552 2.214-.552 3.24.015M14 7h-4a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1l-.007-.117A1 1 0 0 0 14 15h-3v-2h1.5a1 1 0 0 0 .993-.883L13.5 12a1 1 0 0 0-1-1H11V9h3a1 1 0 0 0 0-2"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func HexagonLetterF(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M19.875 6.27A2.225 2.225 0 0 1 21 8.218v7.284c0 .809-.443 1.555-1.158 1.948l-6.75 4.27a2.269 2.269 0 0 1-2.184 0l-6.75-4.27A2.225 2.225 0 0 1 3 15.502V8.217c0-.809.443-1.554 1.158-1.947l6.75-3.98a2.33 2.33 0 0 1 2.25 0l6.75 3.98zM10 12h3"/><path d="M14 8h-4v8"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func HexagonLetterFfilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="m13.666 1.429l6.75 3.98l.096.063l.093.078l.106.074a3.22 3.22 0 0 1 1.284 2.39l.005.204v7.284c0 1.175-.643 2.256-1.623 2.793l-6.804 4.302c-.98.538-2.166.538-3.2-.032l-6.695-4.237A3.23 3.23 0 0 1 2 15.502V8.217c0-1.106.57-2.128 1.476-2.705l6.95-4.098c1-.552 2.214-.552 3.24.015M14 7h-4a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1l.117-.007A1 1 0 0 0 11 16v-3h2a1 1 0 0 0 .993-.883L14 12a1 1 0 0 0-1-1h-2V9h3a1 1 0 0 0 0-2"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -25748,10 +27309,26 @@ func HexagonLetterG(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func HexagonLetterGfilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="m13.666 1.429l6.75 3.98l.096.063l.093.078l.106.074a3.22 3.22 0 0 1 1.284 2.39l.005.204v7.284c0 1.175-.643 2.256-1.623 2.793l-6.804 4.302c-.98.538-2.166.538-3.2-.032l-6.695-4.237A3.23 3.23 0 0 1 2 15.502V8.217c0-1.106.57-2.128 1.476-2.705l6.95-4.098c1-.552 2.214-.552 3.24.015M14 7h-2a3 3 0 0 0-3 3v4a3 3 0 0 0 3 3h2a1 1 0 0 0 1-1v-4a1 1 0 0 0-1-1h-1a1 1 0 0 0-1 1l.007.117A1 1 0 0 0 13 13v2h-1a1 1 0 0 1-1-1v-4a1 1 0 0 1 1-1h2a1 1 0 0 0 0-2"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func HexagonLetterH(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.875 6.27A2.225 2.225 0 0 1 21 8.218v7.284c0 .809-.443 1.555-1.158 1.948l-6.75 4.27a2.269 2.269 0 0 1-2.184 0l-6.75-4.27A2.225 2.225 0 0 1 3 15.502V8.217c0-.809.443-1.554 1.158-1.947l6.75-3.98a2.33 2.33 0 0 1 2.25 0l6.75 3.98zM10 16V8m4 0v8m-4-4h4"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func HexagonLetterHfilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="m13.666 1.429l6.75 3.98l.096.063l.093.078l.106.074a3.22 3.22 0 0 1 1.284 2.39l.005.204v7.284c0 1.175-.643 2.256-1.623 2.793l-6.804 4.302c-.98.538-2.166.538-3.2-.032l-6.695-4.237A3.23 3.23 0 0 1 2 15.502V8.217c0-1.106.57-2.128 1.476-2.705l6.95-4.098c1-.552 2.214-.552 3.24.015M14 7a1 1 0 0 0-1 1v3h-2V8a1 1 0 0 0-.883-.993L10 7a1 1 0 0 0-1 1v8a1 1 0 0 0 2 0v-3h2v3a1 1 0 0 0 .883.993L14 17a1 1 0 0 0 1-1V8a1 1 0 0 0-1-1"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -25764,10 +27341,26 @@ func HexagonLetterI(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func HexagonLetterIfilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="m13.666 1.429l6.75 3.98l.096.063l.093.078l.106.074a3.22 3.22 0 0 1 1.284 2.39l.005.204v7.284c0 1.175-.643 2.256-1.623 2.793l-6.804 4.302c-.98.538-2.166.538-3.2-.032l-6.695-4.237A3.23 3.23 0 0 1 2 15.502V8.217c0-1.106.57-2.128 1.476-2.705l6.95-4.098c1-.552 2.214-.552 3.24.015M12 7a1 1 0 0 0-1 1v8a1 1 0 0 0 2 0V8a1 1 0 0 0-1-1"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func HexagonLetterJ(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M19.875 6.27A2.225 2.225 0 0 1 21 8.218v7.284c0 .809-.443 1.555-1.158 1.948l-6.75 4.27a2.269 2.269 0 0 1-2.184 0l-6.75-4.27A2.225 2.225 0 0 1 3 15.502V8.217c0-.809.443-1.554 1.158-1.947l6.75-3.98a2.33 2.33 0 0 1 2.25 0l6.75 3.98z"/><path d="M10 8h4v6a2 2 0 1 1-4 0"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func HexagonLetterJfilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="m13.666 1.429l6.75 3.98l.096.063l.093.078l.106.074a3.22 3.22 0 0 1 1.284 2.39l.005.204v7.284c0 1.175-.643 2.256-1.623 2.793l-6.804 4.302c-.98.538-2.166.538-3.2-.032l-6.695-4.237A3.23 3.23 0 0 1 2 15.502V8.217c0-1.106.57-2.128 1.476-2.705l6.95-4.098c1-.552 2.214-.552 3.24.015M14 7h-4a1 1 0 0 0-1 1l.007.117A1 1 0 0 0 10 9h3v5a1 1 0 0 1-1.993.117L11 14a1 1 0 0 0-2 0a3 3 0 0 0 6 0V8a1 1 0 0 0-1-1"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -25780,10 +27373,26 @@ func HexagonLetterK(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func HexagonLetterKfilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="m13.666 1.429l6.75 3.98l.096.063l.093.078l.106.074a3.22 3.22 0 0 1 1.284 2.39l.005.204v7.284c0 1.175-.643 2.256-1.623 2.793l-6.804 4.302c-.98.538-2.166.538-3.2-.032l-6.695-4.237A3.23 3.23 0 0 1 2 15.502V8.217c0-1.106.57-2.128 1.476-2.705l6.95-4.098c1-.552 2.214-.552 3.24.015m.864 5.723a1 1 0 0 0-1.378.318L11 10.912V8a1 1 0 0 0-.883-.993L10 7a1 1 0 0 0-1 1v8a1 1 0 0 0 2 0v-2.914l2.152 3.444a1 1 0 0 0 1.276.374l.102-.056l.095-.068a1 1 0 0 0 .223-1.31L12.678 12l2.17-3.47a1 1 0 0 0-.318-1.378"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func HexagonLetterL(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M19.875 6.27A2.225 2.225 0 0 1 21 8.218v7.284c0 .809-.443 1.555-1.158 1.948l-6.75 4.27a2.269 2.269 0 0 1-2.184 0l-6.75-4.27A2.225 2.225 0 0 1 3 15.502V8.217c0-.809.443-1.554 1.158-1.947l6.75-3.98a2.33 2.33 0 0 1 2.25 0l6.75 3.98z"/><path d="M10 8v8h4"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func HexagonLetterLfilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="m13.666 1.429l6.75 3.98l.096.063l.093.078l.106.074a3.22 3.22 0 0 1 1.284 2.39l.005.204v7.284c0 1.175-.643 2.256-1.623 2.793l-6.804 4.302c-.98.538-2.166.538-3.2-.032l-6.695-4.237A3.23 3.23 0 0 1 2 15.502V8.217c0-1.106.57-2.128 1.476-2.705l6.95-4.098c1-.552 2.214-.552 3.24.015M10 7a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1l-.007-.117A1 1 0 0 0 14 15h-3V8a1 1 0 0 0-1-1"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -25796,10 +27405,26 @@ func HexagonLetterM(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func HexagonLetterMfilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="m13.666 1.429l6.75 3.98l.096.063l.093.078l.106.074a3.22 3.22 0 0 1 1.284 2.39l.005.204v7.284c0 1.175-.643 2.256-1.623 2.793l-6.804 4.302c-.98.538-2.166.538-3.2-.032l-6.695-4.237A3.23 3.23 0 0 1 2 15.502V8.217c0-1.106.57-2.128 1.476-2.705l6.95-4.098c1-.552 2.214-.552 3.24.015M16 8c0-1.014-1.336-1.384-1.857-.514L12 11.056l-2.143-3.57C9.336 6.616 8 6.986 8 8v8a1 1 0 0 0 1 1l.117-.007A1 1 0 0 0 10 16v-4.39l1.143 1.904l.074.108a1 1 0 0 0 1.64-.108L14 11.61V16a1 1 0 0 0 2 0z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func HexagonLetterN(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M19.875 6.27A2.225 2.225 0 0 1 21 8.218v7.284c0 .809-.443 1.555-1.158 1.948l-6.75 4.27a2.269 2.269 0 0 1-2.184 0l-6.75-4.27A2.225 2.225 0 0 1 3 15.502V8.217c0-.809.443-1.554 1.158-1.947l6.75-3.98a2.33 2.33 0 0 1 2.25 0l6.75 3.98z"/><path d="M10 16V8l4 8V8"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func HexagonLetterNfilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="m13.666 1.429l6.75 3.98l.096.063l.093.078l.106.074a3.22 3.22 0 0 1 1.284 2.39l.005.204v7.284c0 1.175-.643 2.256-1.623 2.793l-6.804 4.302c-.98.538-2.166.538-3.2-.032l-6.695-4.237A3.23 3.23 0 0 1 2 15.502V8.217c0-1.106.57-2.128 1.476-2.705l6.95-4.098c1-.552 2.214-.552 3.24.015m-2.772 6.124C10.423 6.609 9 6.945 9 8v8a1 1 0 0 0 1 1l.117-.007A1 1 0 0 0 11 16v-3.764l2.106 4.211c.471.944 1.894.608 1.894-.447V8a1 1 0 0 0-1-1l-.117.007A1 1 0 0 0 13 8v3.764z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -25812,10 +27437,26 @@ func HexagonLetterO(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func HexagonLetterOfilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="m13.666 1.429l6.75 3.98l.096.063l.093.078l.106.074a3.22 3.22 0 0 1 1.284 2.39l.005.204v7.284c0 1.175-.643 2.256-1.623 2.793l-6.804 4.302c-.98.538-2.166.538-3.2-.032l-6.695-4.237A3.23 3.23 0 0 1 2 15.502V8.217c0-1.106.57-2.128 1.476-2.705l6.95-4.098c1-.552 2.214-.552 3.24.015M12 7a3 3 0 0 0-3 3v4a3 3 0 0 0 6 0v-4a3 3 0 0 0-3-3m0 2a1 1 0 0 1 1 1v4a1 1 0 0 1-2 0v-4a1 1 0 0 1 1-1"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func HexagonLetterP(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M19.875 6.27A2.225 2.225 0 0 1 21 8.218v7.284c0 .809-.443 1.555-1.158 1.948l-6.75 4.27a2.269 2.269 0 0 1-2.184 0l-6.75-4.27A2.225 2.225 0 0 1 3 15.502V8.217c0-.809.443-1.554 1.158-1.947l6.75-3.98a2.33 2.33 0 0 1 2.25 0l6.75 3.98z"/><path d="M10 12h2a2 2 0 1 0 0-4h-2v8"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func HexagonLetterPfilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="m13.666 1.429l6.75 3.98l.096.063l.093.078l.106.074a3.22 3.22 0 0 1 1.284 2.39l.005.204v7.284c0 1.175-.643 2.256-1.623 2.793l-6.804 4.302c-.98.538-2.166.538-3.2-.032l-6.695-4.237A3.23 3.23 0 0 1 2 15.502V8.217c0-1.106.57-2.128 1.476-2.705l6.95-4.098c1-.552 2.214-.552 3.24.015M12 7h-2a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1l.117-.007A1 1 0 0 0 11 16v-3h1a3 3 0 0 0 0-6m0 2a1 1 0 0 1 0 2h-1V9z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -25828,10 +27469,26 @@ func HexagonLetterQ(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func HexagonLetterQfilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="m13.666 1.429l6.75 3.98l.096.063l.093.078l.106.074a3.22 3.22 0 0 1 1.284 2.39l.005.204v7.284c0 1.175-.643 2.256-1.623 2.793l-6.804 4.302c-.98.538-2.166.538-3.2-.032l-6.695-4.237A3.23 3.23 0 0 1 2 15.502V8.217c0-1.106.57-2.128 1.476-2.705l6.95-4.098c1-.552 2.214-.552 3.24.015M12 7a3 3 0 0 0-3 3v4a3 3 0 0 0 4.168 2.764l.125-.057a1 1 0 0 0 1.414-1.414l.057-.125A3 3 0 0 0 15 14v-4a3 3 0 0 0-3-3m1 7.002h-.059A.996.996 0 0 0 12 15a1 1 0 0 1-1-1v-4a1 1 0 0 1 2 0z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func HexagonLetterR(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M19.875 6.27A2.225 2.225 0 0 1 21 8.218v7.284c0 .809-.443 1.555-1.158 1.948l-6.75 4.27a2.269 2.269 0 0 1-2.184 0l-6.75-4.27A2.225 2.225 0 0 1 3 15.502V8.217c0-.809.443-1.554 1.158-1.947l6.75-3.98a2.33 2.33 0 0 1 2.25 0l6.75 3.98z"/><path d="M10 12h2a2 2 0 1 0 0-4h-2v8m4 0l-3-4"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func HexagonLetterRfilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="m13.666 1.429l6.75 3.98l.096.063l.093.078l.106.074a3.22 3.22 0 0 1 1.284 2.39l.005.204v7.284c0 1.175-.643 2.256-1.623 2.793l-6.804 4.302c-.98.538-2.166.538-3.2-.032l-6.695-4.237A3.23 3.23 0 0 1 2 15.502V8.217c0-1.106.57-2.128 1.476-2.705l6.95-4.098c1-.552 2.214-.552 3.24.015M12 7h-2a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1l.117-.007A1 1 0 0 0 11 16v-2.332l2.2 2.932a1 1 0 0 0 1.4.2l.096-.081A1 1 0 0 0 14.8 15.4l-1.903-2.538l.115-.037A3.001 3.001 0 0 0 12 7m0 2a1 1 0 0 1 0 2h-1V9z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -25844,10 +27501,26 @@ func HexagonLetterS(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func HexagonLetterSfilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="m13.666 1.429l6.75 3.98l.096.063l.093.078l.106.074a3.22 3.22 0 0 1 1.284 2.39l.005.204v7.284c0 1.175-.643 2.256-1.623 2.793l-6.804 4.302c-.98.538-2.166.538-3.2-.032l-6.695-4.237A3.23 3.23 0 0 1 2 15.502V8.217c0-1.106.57-2.128 1.476-2.705l6.95-4.098c1-.552 2.214-.552 3.24.015M13 7h-2a2 2 0 0 0-2 2v2a2 2 0 0 0 2 2h2v2h-2a1 1 0 0 0-2 0a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2v-2a2 2 0 0 0-2-2h-2V9h2l.007.117A1 1 0 0 0 15 9a2 2 0 0 0-2-2"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func HexagonLetterT(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.875 6.27A2.225 2.225 0 0 1 21 8.218v7.284c0 .809-.443 1.555-1.158 1.948l-6.75 4.27a2.269 2.269 0 0 1-2.184 0l-6.75-4.27A2.225 2.225 0 0 1 3 15.502V8.217c0-.809.443-1.554 1.158-1.947l6.75-3.98a2.33 2.33 0 0 1 2.25 0l6.75 3.98zM10 8h4m-2 0v8"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func HexagonLetterTfilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="m13.666 1.429l6.75 3.98l.096.063l.093.078l.106.074a3.22 3.22 0 0 1 1.284 2.39l.005.204v7.284c0 1.175-.643 2.256-1.623 2.793l-6.804 4.302c-.98.538-2.166.538-3.2-.032l-6.695-4.237A3.23 3.23 0 0 1 2 15.502V8.217c0-1.106.57-2.128 1.476-2.705l6.95-4.098c1-.552 2.214-.552 3.24.015M14 7h-4a1 1 0 1 0 0 2h1v7a1 1 0 0 0 .883.993L12 17a1 1 0 0 0 1-1V9h1a1 1 0 0 0 .993-.883L15 8a1 1 0 0 0-1-1"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -25860,10 +27533,26 @@ func HexagonLetterU(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func HexagonLetterUfilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="m13.666 1.429l6.75 3.98l.096.063l.093.078l.106.074a3.22 3.22 0 0 1 1.284 2.39l.005.204v7.284c0 1.175-.643 2.256-1.623 2.793l-6.804 4.302c-.98.538-2.166.538-3.2-.032l-6.695-4.237A3.23 3.23 0 0 1 2 15.502V8.217c0-1.106.57-2.128 1.476-2.705l6.95-4.098c1-.552 2.214-.552 3.24.015M14 7a1 1 0 0 0-1 1v6a1 1 0 0 1-2 0V8a1 1 0 0 0-2 0v6a3 3 0 0 0 6 0V8a1 1 0 0 0-1-1"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func HexagonLetterV(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M19.875 6.27A2.225 2.225 0 0 1 21 8.218v7.284c0 .809-.443 1.555-1.158 1.948l-6.75 4.27a2.269 2.269 0 0 1-2.184 0l-6.75-4.27A2.225 2.225 0 0 1 3 15.502V8.217c0-.809.443-1.554 1.158-1.947l6.75-3.98a2.33 2.33 0 0 1 2.25 0l6.75 3.98z"/><path d="m10 8l2 8l2-8"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func HexagonLetterVfilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="m13.666 1.429l6.75 3.98l.096.063l.093.078l.106.074a3.22 3.22 0 0 1 1.284 2.39l.005.204v7.284c0 1.175-.643 2.256-1.623 2.793l-6.804 4.302c-.98.538-2.166.538-3.2-.032l-6.695-4.237A3.23 3.23 0 0 1 2 15.502V8.217c0-1.106.57-2.128 1.476-2.705l6.95-4.098c1-.552 2.214-.552 3.24.015m.577 5.6a1 1 0 0 0-1.213.728L12 11.875l-1.03-4.118a1 1 0 1 0-1.94.486l2 8c.252 1.01 1.688 1.01 1.94 0l2-8a1 1 0 0 0-.727-1.213"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -25876,10 +27565,26 @@ func HexagonLetterW(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func HexagonLetterWfilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="m13.666 1.429l6.75 3.98l.096.063l.093.078l.106.074a3.22 3.22 0 0 1 1.284 2.39l.005.204v7.284c0 1.175-.643 2.256-1.623 2.793l-6.804 4.302c-.98.538-2.166.538-3.2-.032l-6.695-4.237A3.23 3.23 0 0 1 2 15.502V8.217c0-1.106.57-2.128 1.476-2.705l6.95-4.098c1-.552 2.214-.552 3.24.015m.342 6.447l-.52 4.153l-.56-1.4c-.319-.799-1.41-.837-1.803-.114l-.053.114l-.561 1.4l-.519-4.153a1 1 0 0 0-1-.876l-.116.008a1 1 0 0 0-.868 1.116l1 8c.128 1.025 1.537 1.207 1.92.247L12 13.693l1.072 2.678c.383.96 1.792.778 1.92-.247l1-8a1 1 0 0 0-1.984-.248"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func HexagonLetterX(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.875 6.27A2.225 2.225 0 0 1 21 8.218v7.284c0 .809-.443 1.555-1.158 1.948l-6.75 4.27a2.269 2.269 0 0 1-2.184 0l-6.75-4.27A2.225 2.225 0 0 1 3 15.502V8.217c0-.809.443-1.554 1.158-1.947l6.75-3.98a2.33 2.33 0 0 1 2.25 0l6.75 3.98zM10 8l4 8m-4 0l4-8"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func HexagonLetterXfilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="m13.666 1.429l6.75 3.98l.096.063l.093.078l.106.074a3.22 3.22 0 0 1 1.284 2.39l.005.204v7.284c0 1.175-.643 2.256-1.623 2.793l-6.804 4.302c-.98.538-2.166.538-3.2-.032l-6.695-4.237A3.23 3.23 0 0 1 2 15.502V8.217c0-1.106.57-2.128 1.476-2.705l6.95-4.098c1-.552 2.214-.552 3.24.015m.781 5.677a1 1 0 0 0-1.341.447L12 9.763l-1.106-2.21a1 1 0 0 0-1.234-.494l-.107.047a1 1 0 0 0-.447 1.341L10.88 12l-1.775 3.553a1 1 0 0 0 .345 1.283l.102.058a1 1 0 0 0 1.341-.447L12 14.237l1.106 2.21a1 1 0 0 0 1.234.494l.107-.047a1 1 0 0 0 .447-1.341L13.118 12l1.776-3.553a1 1 0 0 0-.345-1.283z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -25892,6 +27597,14 @@ func HexagonLetterY(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func HexagonLetterYfilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="m13.666 1.429l6.75 3.98l.096.063l.093.078l.106.074a3.22 3.22 0 0 1 1.284 2.39l.005.204v7.284c0 1.175-.643 2.256-1.623 2.793l-6.804 4.302c-.98.538-2.166.538-3.2-.032l-6.695-4.237A3.23 3.23 0 0 1 2 15.502V8.217c0-1.106.57-2.128 1.476-2.705l6.95-4.098c1-.552 2.214-.552 3.24.015m.705 5.643a1 1 0 0 0-1.3.557L12 10.307l-1.072-2.678a1 1 0 0 0-1.856.742L11 13.194V16a1 1 0 0 0 .883.993L12 17a1 1 0 0 0 1-1v-2.809l1.928-4.82a1 1 0 0 0-.45-1.25z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func HexagonLetterZ(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
@@ -25900,10 +27613,26 @@ func HexagonLetterZ(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func HexagonLetterZfilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="m13.666 1.429l6.75 3.98l.096.063l.093.078l.106.074a3.22 3.22 0 0 1 1.284 2.39l.005.204v7.284c0 1.175-.643 2.256-1.623 2.793l-6.804 4.302c-.98.538-2.166.538-3.2-.032l-6.695-4.237A3.23 3.23 0 0 1 2 15.502V8.217c0-1.106.57-2.128 1.476-2.705l6.95-4.098c1-.552 2.214-.552 3.24.015M14 7h-4a1 1 0 0 0-1 1l.007.117A1 1 0 0 0 10 9h2.382l-3.276 6.553A1 1 0 0 0 10 17h4a1 1 0 0 0 1-1l-.007-.117A1 1 0 0 0 14 15h-2.382l3.276-6.553A1 1 0 0 0 14 7"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func HexagonMinus(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.875 6.27c.7.398 1.13 1.143 1.125 1.948v7.284c0 .809-.443 1.555-1.158 1.948l-6.75 4.27a2.269 2.269 0 0 1-2.184 0l-6.75-4.27A2.225 2.225 0 0 1 3 15.502V8.217c0-.809.443-1.554 1.158-1.947l6.75-3.98a2.33 2.33 0 0 1 2.25 0l6.75 3.98zM9 12h6"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func HexagonMinusFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="m13.666 1.429l6.75 3.98l.096.063l.093.078l.106.074a3.22 3.22 0 0 1 1.284 2.39l.005.204v7.284c0 1.175-.643 2.256-1.623 2.793l-6.804 4.302c-.98.538-2.166.538-3.2-.032l-6.695-4.237A3.23 3.23 0 0 1 2 15.502V8.217c0-1.106.57-2.128 1.476-2.705l6.95-4.098c1-.552 2.214-.552 3.24.015M15 11H9a1 1 0 0 0 0 2h6a1 1 0 0 0 0-2"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -25932,10 +27661,26 @@ func HexagonNumberEight(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func HexagonNumberEightFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M10.425 1.414a3.33 3.33 0 0 1 3.216 0l6.775 3.995c.067.04.127.084.18.133l.008.007l.107.076a3.223 3.223 0 0 1 1.284 2.39l.005.203v7.284c0 1.175-.643 2.256-1.623 2.793l-6.804 4.302c-.98.538-2.166.538-3.2-.032l-6.695-4.237A3.226 3.226 0 0 1 2 15.502V8.217a3.21 3.21 0 0 1 1.65-2.808zM13 7h-2l-.15.005a2 2 0 0 0-1.844 1.838L9 9v2l.005.15c.018.236.077.46.17.667l.075.152l.018.03l-.018.032c-.133.24-.218.509-.243.795L9 13v2l.005.15a2 2 0 0 0 1.838 1.844L11 17h2l.15-.005a2 2 0 0 0 1.844-1.838L15 15v-2l-.005-.15a1.988 1.988 0 0 0-.17-.667l-.075-.152l-.019-.032l.02-.03a2.01 2.01 0 0 0 .242-.795L15 11V9l-.005-.15a2 2 0 0 0-1.838-1.844zm0 6v2h-2v-2zm0-4v2h-2V9z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func HexagonNumberFive(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M19.875 6.27A2.225 2.225 0 0 1 21 8.218v7.284c0 .809-.443 1.555-1.158 1.948l-6.75 4.27a2.269 2.269 0 0 1-2.184 0l-6.75-4.27A2.225 2.225 0 0 1 3 15.502V8.217c0-.809.443-1.554 1.158-1.947l6.75-3.98a2.33 2.33 0 0 1 2.25 0l6.75 3.98z"/><path d="M10 15a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1h-3V8h4"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func HexagonNumberFiveFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M10.425 1.414a3.33 3.33 0 0 1 3.216 0l6.775 3.995c.067.04.127.084.18.133l.008.007l.107.076a3.223 3.223 0 0 1 1.284 2.39l.005.203v7.284c0 1.175-.643 2.256-1.623 2.793l-6.804 4.302c-.98.538-2.166.538-3.2-.032l-6.695-4.237A3.226 3.226 0 0 1 2 15.502V8.217a3.21 3.21 0 0 1 1.65-2.808zM14 7h-4a1 1 0 0 0-.993.883L9 8v4a1 1 0 0 0 .883.993L10 13h3v2h-2l-.007-.117A1 1 0 0 0 9 15a2 2 0 0 0 1.85 1.995L11 17h2a2 2 0 0 0 1.995-1.85L15 15v-2a2 2 0 0 0-1.85-1.995L13 11h-2V9h3a1 1 0 0 0 .993-.883L15 8a1 1 0 0 0-.883-.993z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -25948,10 +27693,26 @@ func HexagonNumberFour(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func HexagonNumberFourFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M10.425 1.414a3.33 3.33 0 0 1 3.216 0l6.775 3.995c.067.04.127.084.18.133l.008.007l.107.076a3.223 3.223 0 0 1 1.284 2.39l.005.203v7.284c0 1.175-.643 2.256-1.623 2.793l-6.804 4.302c-.98.538-2.166.538-3.2-.032l-6.695-4.237A3.226 3.226 0 0 1 2 15.502V8.217a3.21 3.21 0 0 1 1.65-2.808zM14 7a1 1 0 0 0-.993.883L13 8v3h-2V8l-.007-.117a1 1 0 0 0-1.986 0L9 8v3l.005.15a2 2 0 0 0 1.838 1.844L11 13h2v3l.007.117a1 1 0 0 0 1.986 0L15 16V8l-.007-.117A1 1 0 0 0 14 7"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func HexagonNumberNine(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M19.875 6.27A2.225 2.225 0 0 1 21 8.218v7.284c0 .809-.443 1.555-1.158 1.948l-6.75 4.27a2.269 2.269 0 0 1-2.184 0l-6.75-4.27A2.225 2.225 0 0 1 3 15.502V8.217c0-.809.443-1.554 1.158-1.947l6.75-3.98a2.33 2.33 0 0 1 2.25 0l6.75 3.98z"/><path d="M10 15a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1V9a1 1 0 0 0-1-1h-2a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h3"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func HexagonNumberNineFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M10.425 1.414a3.33 3.33 0 0 1 3.216 0l6.775 3.995c.067.04.127.084.18.133l.008.007l.107.076a3.223 3.223 0 0 1 1.284 2.39l.005.203v7.284c0 1.175-.643 2.256-1.623 2.793l-6.804 4.302c-.98.538-2.166.538-3.2-.032l-6.695-4.237A3.226 3.226 0 0 1 2 15.502V8.217a3.21 3.21 0 0 1 1.65-2.808zM13 7h-2l-.15.005a2 2 0 0 0-1.844 1.838L9 9v2l.005.15a2 2 0 0 0 1.838 1.844L11 13h2v2h-2l-.007-.117A1 1 0 0 0 9 15a2 2 0 0 0 1.85 1.995L11 17h2l.15-.005a2 2 0 0 0 1.844-1.838L15 15V9l-.005-.15a2 2 0 0 0-1.838-1.844zm0 2v2h-2V9z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -25964,10 +27725,26 @@ func HexagonNumberOne(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func HexagonNumberOneFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M10.425 1.414a3.33 3.33 0 0 1 3.216 0l6.775 3.995c.067.04.127.084.18.133l.008.007l.107.076a3.223 3.223 0 0 1 1.284 2.39l.005.203v7.284c0 1.175-.643 2.256-1.623 2.793l-6.804 4.302c-.98.538-2.166.538-3.2-.032l-6.695-4.237A3.226 3.226 0 0 1 2 15.502V8.217a3.21 3.21 0 0 1 1.65-2.808zm.952 5.803l-.084.076l-2 2l-.083.094a1 1 0 0 0 0 1.226l.083.094l.094.083a1 1 0 0 0 1.226 0l.094-.083l.293-.293V16l.007.117a1 1 0 0 0 1.986 0L13 16V8l-.006-.114c-.083-.777-1.008-1.16-1.617-.67z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func HexagonNumberSeven(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M19.02 6.858a2 2 0 0 1 1 1.752v6.555c0 .728-.395 1.4-1.032 1.753l-6.017 3.844a2 2 0 0 1-1.948 0l-6.016-3.844a2 2 0 0 1-1.032-1.752V8.61c0-.728.395-1.4 1.032-1.753l6.017-3.582a2.062 2.062 0 0 1 2 0l6.017 3.583h-.029z"/><path d="M10 8h4l-2 8"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func HexagonNumberSevenFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M10.425 1.414a3.33 3.33 0 0 1 3.216 0l6.775 3.995c.067.04.127.084.18.133l.008.007l.107.076a3.223 3.223 0 0 1 1.284 2.39l.005.203v7.284c0 1.175-.643 2.256-1.623 2.793l-6.804 4.302c-.98.538-2.166.538-3.2-.032l-6.695-4.237A3.226 3.226 0 0 1 2 15.502V8.217a3.21 3.21 0 0 1 1.65-2.808zM14 7h-4l-.117.007a1 1 0 0 0-.876.876L9 8l.007.117a1 1 0 0 0 .876.876L10 9h2.718l-1.688 6.757l-.022.115a1 1 0 0 0 1.927.482l.035-.111l2-8l.021-.112a1 1 0 0 0-.878-1.125z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -25980,10 +27757,26 @@ func HexagonNumberSix(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func HexagonNumberSixFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M10.425 1.414a3.33 3.33 0 0 1 3.216 0l6.775 3.995c.067.04.127.084.18.133l.008.007l.107.076a3.223 3.223 0 0 1 1.284 2.39l.005.203v7.284c0 1.175-.643 2.256-1.623 2.793l-6.804 4.302c-.98.538-2.166.538-3.2-.032l-6.695-4.237A3.226 3.226 0 0 1 2 15.502V8.217a3.21 3.21 0 0 1 1.65-2.808zM13 7h-2l-.15.005a2 2 0 0 0-1.844 1.838L9 9v6l.005.15a2 2 0 0 0 1.838 1.844L11 17h2l.15-.005a2 2 0 0 0 1.844-1.838L15 15v-2l-.005-.15a2 2 0 0 0-1.838-1.844L13 11h-2V9h2l.007.117A1 1 0 0 0 15 9a2 2 0 0 0-1.85-1.995zm0 6v2h-2v-2z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func HexagonNumberThree(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M19.875 6.27A2.225 2.225 0 0 1 21 8.218v7.284c0 .809-.443 1.555-1.158 1.948l-6.75 4.27a2.269 2.269 0 0 1-2.184 0l-6.75-4.27A2.225 2.225 0 0 1 3 15.502V8.217c0-.809.443-1.554 1.158-1.947l6.75-3.98a2.33 2.33 0 0 1 2.25 0l6.75 3.98z"/><path d="M10 9a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-2h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func HexagonNumberThreeFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M10.425 1.414a3.33 3.33 0 0 1 3.216 0l6.775 3.995c.067.04.127.084.18.133l.008.007l.107.076a3.223 3.223 0 0 1 1.284 2.39l.005.203v7.284c0 1.175-.643 2.256-1.623 2.793l-6.804 4.302c-.98.538-2.166.538-3.2-.032l-6.695-4.237A3.226 3.226 0 0 1 2 15.502V8.217a3.21 3.21 0 0 1 1.65-2.808zM13 7h-2l-.15.005A2 2 0 0 0 9 9a1 1 0 0 0 1.974.23l.02-.113L11 9h2v2h-2l-.133.007c-1.111.12-1.154 1.73-.128 1.965l.128.021L11 13h2v2h-2l-.007-.117A1 1 0 0 0 9 15a2 2 0 0 0 1.85 1.995L11 17h2l.15-.005a2 2 0 0 0 1.844-1.838L15 15v-2l-.005-.15a1.988 1.988 0 0 0-.17-.667l-.075-.152l-.019-.032l.02-.03a2.01 2.01 0 0 0 .242-.795L15 11V9l-.005-.15a2 2 0 0 0-1.838-1.844z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -25996,10 +27789,26 @@ func HexagonNumberTwo(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func HexagonNumberTwoFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M10.425 1.414a3.33 3.33 0 0 1 3.216 0l6.775 3.995c.067.04.127.084.18.133l.008.007l.107.076a3.223 3.223 0 0 1 1.284 2.39l.005.203v7.284c0 1.175-.643 2.256-1.623 2.793l-6.804 4.302c-.98.538-2.166.538-3.2-.032l-6.695-4.237A3.226 3.226 0 0 1 2 15.502V8.217a3.21 3.21 0 0 1 1.65-2.808zM13 7h-3l-.117.007a1 1 0 0 0 0 1.986L10 9h3v2h-2l-.15.005a2 2 0 0 0-1.844 1.838L9 13v2l.005.15a2 2 0 0 0 1.838 1.844L11 17h3l.117-.007a1 1 0 0 0 0-1.986L14 15h-3v-2h2l.15-.005a2 2 0 0 0 1.844-1.838L15 11V9l-.005-.15a2 2 0 0 0-1.838-1.844z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func HexagonNumberZero(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M19.875 6.27A2.225 2.225 0 0 1 21 8.218v7.284c0 .809-.443 1.555-1.158 1.948l-6.75 4.27a2.269 2.269 0 0 1-2.184 0l-6.75-4.27A2.225 2.225 0 0 1 3 15.502V8.217c0-.809.443-1.554 1.158-1.947l6.75-3.98a2.33 2.33 0 0 1 2.25 0l6.75 3.98z"/><path d="M10 10v4a2 2 0 1 0 4 0v-4a2 2 0 1 0-4 0"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func HexagonNumberZeroFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M10.425 1.414a3.33 3.33 0 0 1 3.216 0l6.775 3.995c.067.04.127.084.18.133l.008.007l.107.076a3.223 3.223 0 0 1 1.284 2.39l.005.203v7.284c0 1.175-.643 2.256-1.623 2.793l-6.804 4.302c-.98.538-2.166.538-3.2-.032l-6.695-4.237A3.226 3.226 0 0 1 2 15.502V8.217a3.21 3.21 0 0 1 1.65-2.808zM12 7a3 3 0 0 0-2.995 2.824L9 10v4l.005.176a3 3 0 0 0 5.99 0L15 14v-4l-.005-.176A3 3 0 0 0 12 7m0 2a1 1 0 0 1 .993.883L13 10v4l-.007.117a1 1 0 0 1-1.986 0L11 14v-4l.007-.117A1 1 0 0 1 12 9"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -26024,6 +27833,14 @@ func HexagonPlus(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.875 6.27c.7.398 1.13 1.143 1.125 1.948v7.284c0 .809-.443 1.555-1.158 1.948l-6.75 4.27a2.269 2.269 0 0 1-2.184 0l-6.75-4.27A2.225 2.225 0 0 1 3 15.502V8.217c0-.809.443-1.554 1.158-1.947l6.75-3.98a2.33 2.33 0 0 1 2.25 0l6.75 3.98zM9 12h6m-3-3v6"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func HexagonPlusFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="m13.666 1.429l6.75 3.98l.096.063l.093.078l.106.074a3.22 3.22 0 0 1 1.284 2.39l.005.204v7.284c0 1.175-.643 2.256-1.623 2.793l-6.804 4.302c-.98.538-2.166.538-3.2-.032l-6.695-4.237A3.23 3.23 0 0 1 2 15.502V8.217c0-1.106.57-2.128 1.476-2.705l6.95-4.098c1-.552 2.214-.552 3.24.015M12 8a1 1 0 0 0-1 1v2H9a1 1 0 0 0-.993.883L8 12a1 1 0 0 0 1 1h2v2a1 1 0 0 0 .883.993L12 16a1 1 0 0 0 1-1v-2h2a1 1 0 0 0 .993-.883L16 12a1 1 0 0 0-1-1h-2V9a1 1 0 0 0-.883-.993z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -26308,6 +28125,14 @@ func HomeExclamation(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func HomeFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="m12.707 2.293l9 9c.63.63.184 1.707-.707 1.707h-1v6a3 3 0 0 1-3 3h-1v-7a3 3 0 0 0-2.824-2.995L13 12h-2a3 3 0 0 0-3 3v7H7a3 3 0 0 1-3-3v-6H3c-.89 0-1.337-1.077-.707-1.707l9-9a1 1 0 0 1 1.414 0M13 14a1 1 0 0 1 1 1v7h-4v-7a1 1 0 0 1 .883-.993L11 14z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func HomeHand(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
@@ -26527,7 +28352,7 @@ func HourglassEmpty(children ...ElementRenderer) *TablerIcon {
 func HourglassFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M17 2a2 2 0 0 1 1.995 1.85L19 4v2a6.996 6.996 0 0 1-3.393 6a6.994 6.994 0 0 1 3.388 5.728L19 18v2a2 2 0 0 1-1.85 1.995L17 22H7a2 2 0 0 1-1.995-1.85L5 20v-2a6.996 6.996 0 0 1 3.393-6a6.994 6.994 0 0 1-3.388-5.728L5 6V4a2 2 0 0 1 1.85-1.995L7 2z"/></g>`),
+			Text(`<path fill="currentColor" d="M17 2a2 2 0 0 1 1.995 1.85L19 4v2a6.996 6.996 0 0 1-3.393 6a6.994 6.994 0 0 1 3.388 5.728L19 18v2a2 2 0 0 1-1.85 1.995L17 22H7a2 2 0 0 1-1.995-1.85L5 20v-2a6.996 6.996 0 0 1 3.393-6a6.994 6.994 0 0 1-3.388-5.728L5 6V4a2 2 0 0 1 1.85-1.995L7 2z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -26552,6 +28377,22 @@ func HourglassOff(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 18v2a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1v-2a6 6 0 0 1 6-6M6 6a6 6 0 0 0 6 6m3.13-.88A6 6 0 0 0 18 6V4a1 1 0 0 0-1-1H7M3 3l18 18"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func HoursTwelve(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 11A8.1 8.1 0 0 0 4.5 9M4 5v4h4m-4 4c.468 3.6 3.384 6.546 7 7m7-5h2a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1h-1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1h2m-6 0v-6"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func HoursTwentyFour(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M4 13c.325 2.532 1.881 4.781 4 6m12-8A8.1 8.1 0 0 0 4.5 9"/><path d="M4 5v4h4m4 6h2a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1h-1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1h2m3-6v2a1 1 0 0 0 1 1h1m1-3v6"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -26732,6 +28573,14 @@ func IdOff(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func ImageInPicture(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M13 15c-2 0-5 1-5 5"/><path d="M4 13a2 2 0 0 1 2-2h5a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2zm0-6V5a1 1 0 0 1 1-1h2m4 0h2m4 0h2a1 1 0 0 1 1 1v2m0 4v2m0 4v2a1 1 0 0 1-1 1h-2"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func Inbox(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
@@ -26791,7 +28640,7 @@ func InfoCircle(children ...ElementRenderer) *TablerIcon {
 func InfoCircleFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M12 2c5.523 0 10 4.477 10 10a10 10 0 0 1-19.995.324L2 12l.004-.28C2.152 6.327 6.57 2 12 2m0 9h-1l-.117.007a1 1 0 0 0 0 1.986L11 13v3l.007.117a1 1 0 0 0 .876.876L12 17h1l.117-.007a1 1 0 0 0 .876-.876L14 16l-.007-.117a1 1 0 0 0-.764-.857l-.112-.02L13 15v-3l-.007-.117a1 1 0 0 0-.876-.876zm.01-3l-.127.007a1 1 0 0 0 0 1.986L12 10l.127-.007a1 1 0 0 0 0-1.986z"/></g>`),
+			Text(`<path fill="currentColor" d="M12 2c5.523 0 10 4.477 10 10a10 10 0 0 1-19.995.324L2 12l.004-.28C2.152 6.327 6.57 2 12 2m0 9h-1l-.117.007a1 1 0 0 0 0 1.986L11 13v3l.007.117a1 1 0 0 0 .876.876L12 17h1l.117-.007a1 1 0 0 0 .876-.876L14 16l-.007-.117a1 1 0 0 0-.764-.857l-.112-.02L13 15v-3l-.007-.117a1 1 0 0 0-.876-.876zm.01-3l-.127.007a1 1 0 0 0 0 1.986L12 10l.127-.007a1 1 0 0 0 0-1.986z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -26807,7 +28656,7 @@ func InfoHexagon(children ...ElementRenderer) *TablerIcon {
 func InfoHexagonFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M10.425 1.414a3.33 3.33 0 0 1 3.026-.097l.19.097l6.775 3.995l.096.063l.092.077l.107.075a3.224 3.224 0 0 1 1.266 2.188l.018.202l.005.204v7.284c0 1.106-.57 2.129-1.454 2.693l-.17.1l-6.803 4.302c-.918.504-2.019.535-3.004.068l-.196-.1l-6.695-4.237a3.225 3.225 0 0 1-1.671-2.619L2 15.502V8.217c0-1.106.57-2.128 1.476-2.705zM12 11h-1l-.117.007a1 1 0 0 0 0 1.986L11 13v3l.007.117a1 1 0 0 0 .876.876L12 17h1l.117-.007a1 1 0 0 0 .876-.876L14 16l-.007-.117a1 1 0 0 0-.764-.857l-.112-.02L13 15v-3l-.007-.117a1 1 0 0 0-.876-.876zm.01-3l-.127.007a1 1 0 0 0 0 1.986L12 10l.127-.007a1 1 0 0 0 0-1.986z"/></g>`),
+			Text(`<path fill="currentColor" d="M10.425 1.414a3.33 3.33 0 0 1 3.026-.097l.19.097l6.775 3.995l.096.063l.092.077l.107.075a3.224 3.224 0 0 1 1.266 2.188l.018.202l.005.204v7.284c0 1.106-.57 2.129-1.454 2.693l-.17.1l-6.803 4.302c-.918.504-2.019.535-3.004.068l-.196-.1l-6.695-4.237a3.225 3.225 0 0 1-1.671-2.619L2 15.502V8.217c0-1.106.57-2.128 1.476-2.705zM12 11h-1l-.117.007a1 1 0 0 0 0 1.986L11 13v3l.007.117a1 1 0 0 0 .876.876L12 17h1l.117-.007a1 1 0 0 0 .876-.876L14 16l-.007-.117a1 1 0 0 0-.764-.857l-.112-.02L13 15v-3l-.007-.117a1 1 0 0 0-.876-.876zm.01-3l-.127.007a1 1 0 0 0 0 1.986L12 10l.127-.007a1 1 0 0 0 0-1.986z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -26823,7 +28672,7 @@ func InfoOctagon(children ...ElementRenderer) *TablerIcon {
 func InfoOctagonFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M14.897 1a4 4 0 0 1 2.664 1.016l.165.156l4.1 4.1a4 4 0 0 1 1.168 2.605l.006.227v5.794a4 4 0 0 1-1.016 2.664l-.156.165l-4.1 4.1a4 4 0 0 1-2.603 1.168l-.227.006H9.103a3.999 3.999 0 0 1-2.664-1.017l-.165-.156l-4.1-4.1a4 4 0 0 1-1.168-2.604L1 14.897V9.103a4 4 0 0 1 1.016-2.664l.156-.165l4.1-4.1a4 4 0 0 1 2.605-1.168L9.104 1zM12 11h-1l-.117.007a1 1 0 0 0 0 1.986L11 13v3l.007.117a1 1 0 0 0 .876.876L12 17h1l.117-.007a1 1 0 0 0 .876-.876L14 16l-.007-.117a1 1 0 0 0-.764-.857l-.112-.02L13 15v-3l-.007-.117a1 1 0 0 0-.876-.876zm.01-3l-.127.007a1 1 0 0 0 0 1.986L12 10l.127-.007a1 1 0 0 0 0-1.986z"/></g>`),
+			Text(`<path fill="currentColor" d="M14.897 1a4 4 0 0 1 2.664 1.016l.165.156l4.1 4.1a4 4 0 0 1 1.168 2.605l.006.227v5.794a4 4 0 0 1-1.016 2.664l-.156.165l-4.1 4.1a4 4 0 0 1-2.603 1.168l-.227.006H9.103a3.999 3.999 0 0 1-2.664-1.017l-.165-.156l-4.1-4.1a4 4 0 0 1-1.168-2.604L1 14.897V9.103a4 4 0 0 1 1.016-2.664l.156-.165l4.1-4.1a4 4 0 0 1 2.605-1.168L9.104 1zM12 11h-1l-.117.007a1 1 0 0 0 0 1.986L11 13v3l.007.117a1 1 0 0 0 .876.876L12 17h1l.117-.007a1 1 0 0 0 .876-.876L14 16l-.007-.117a1 1 0 0 0-.764-.857l-.112-.02L13 15v-3l-.007-.117a1 1 0 0 0-.876-.876zm.01-3l-.127.007a1 1 0 0 0 0 1.986L12 10l.127-.007a1 1 0 0 0 0-1.986z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -26847,7 +28696,7 @@ func InfoSquare(children ...ElementRenderer) *TablerIcon {
 func InfoSquareFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M19 2a3 3 0 0 1 2.995 2.824L22 5v14a3 3 0 0 1-2.824 2.995L19 22H5a3 3 0 0 1-2.995-2.824L2 19V5a3 3 0 0 1 2.824-2.995L5 2zm-7 9h-1l-.117.007a1 1 0 0 0 0 1.986L11 13v3l.007.117a1 1 0 0 0 .876.876L12 17h1l.117-.007a1 1 0 0 0 .876-.876L14 16l-.007-.117a1 1 0 0 0-.764-.857l-.112-.02L13 15v-3l-.007-.117a1 1 0 0 0-.876-.876zm.01-3l-.127.007a1 1 0 0 0 0 1.986L12 10l.127-.007a1 1 0 0 0 0-1.986z"/></g>`),
+			Text(`<path fill="currentColor" d="M19 2a3 3 0 0 1 2.995 2.824L22 5v14a3 3 0 0 1-2.824 2.995L19 22H5a3 3 0 0 1-2.995-2.824L2 19V5a3 3 0 0 1 2.824-2.995L5 2zm-7 9h-1l-.117.007a1 1 0 0 0 0 1.986L11 13v3l.007.117a1 1 0 0 0 .876.876L12 17h1l.117-.007a1 1 0 0 0 .876-.876L14 16l-.007-.117a1 1 0 0 0-.764-.857l-.112-.02L13 15v-3l-.007-.117a1 1 0 0 0-.876-.876zm.01-3l-.127.007a1 1 0 0 0 0 1.986L12 10l.127-.007a1 1 0 0 0 0-1.986z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -26863,7 +28712,7 @@ func InfoSquareRounded(children ...ElementRenderer) *TablerIcon {
 func InfoSquareRoundedFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="m12 2l.642.005l.616.017l.299.013l.579.034l.553.046c4.687.455 6.65 2.333 7.166 6.906l.03.29l.046.553l.041.727l.006.15l.017.617L22 12l-.005.642l-.017.616l-.013.299l-.034.579l-.046.553c-.455 4.687-2.333 6.65-6.906 7.166l-.29.03l-.553.046l-.727.041l-.15.006l-.617.017L12 22l-.642-.005l-.616-.017l-.299-.013l-.579-.034l-.553-.046c-4.687-.455-6.65-2.333-7.166-6.906l-.03-.29l-.046-.553l-.041-.727l-.006-.15l-.017-.617l-.004-.318v-.648l.004-.318l.017-.616l.013-.299l.034-.579l.046-.553c.455-4.687 2.333-6.65 6.906-7.166l.29-.03l.553-.046l.727-.041l.15-.006l.617-.017c.21-.003.424-.005.642-.005m0 9h-1l-.117.007a1 1 0 0 0 0 1.986L11 13v3l.007.117a1 1 0 0 0 .876.876L12 17h1l.117-.007a1 1 0 0 0 .876-.876L14 16l-.007-.117a1 1 0 0 0-.764-.857l-.112-.02L13 15v-3l-.007-.117a1 1 0 0 0-.876-.876zm.01-3l-.127.007a1 1 0 0 0 0 1.986L12 10l.127-.007a1 1 0 0 0 0-1.986z"/></g>`),
+			Text(`<path fill="currentColor" d="m12 2l.642.005l.616.017l.299.013l.579.034l.553.046c4.687.455 6.65 2.333 7.166 6.906l.03.29l.046.553l.041.727l.006.15l.017.617L22 12l-.005.642l-.017.616l-.013.299l-.034.579l-.046.553c-.455 4.687-2.333 6.65-6.906 7.166l-.29.03l-.553.046l-.727.041l-.15.006l-.617.017L12 22l-.642-.005l-.616-.017l-.299-.013l-.579-.034l-.553-.046c-4.687-.455-6.65-2.333-7.166-6.906l-.03-.29l-.046-.553l-.041-.727l-.006-.15l-.017-.617l-.004-.318v-.648l.004-.318l.017-.616l.013-.299l.034-.579l.046-.553c.455-4.687 2.333-6.65 6.906-7.166l.29-.03l.553-.046l.727-.041l.15-.006l.617-.017c.21-.003.424-.005.642-.005m0 9h-1l-.117.007a1 1 0 0 0 0 1.986L11 13v3l.007.117a1 1 0 0 0 .876.876L12 17h1l.117-.007a1 1 0 0 0 .876-.876L14 16l-.007-.117a1 1 0 0 0-.764-.857l-.112-.02L13 15v-3l-.007-.117a1 1 0 0 0-.876-.876zm.01-3l-.127.007a1 1 0 0 0 0 1.986L12 10l.127-.007a1 1 0 0 0 0-1.986z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -26879,7 +28728,7 @@ func InfoTriangle(children ...ElementRenderer) *TablerIcon {
 func InfoTriangleFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M12 1.67c.955 0 1.845.467 2.39 1.247l.105.16l8.114 13.548a2.914 2.914 0 0 1-2.307 4.363l-.195.008H3.882a2.914 2.914 0 0 1-2.582-4.2l.099-.185l8.11-13.538A2.914 2.914 0 0 1 12 1.67M12 11h-1l-.117.007a1 1 0 0 0 0 1.986L11 13v3l.007.117a1 1 0 0 0 .876.876L12 17h1l.117-.007a1 1 0 0 0 .876-.876L14 16l-.007-.117a1 1 0 0 0-.764-.857l-.112-.02L13 15v-3l-.007-.117a1 1 0 0 0-.876-.876zm.01-3l-.127.007a1 1 0 0 0 0 1.986L12 10l.127-.007a1 1 0 0 0 0-1.986z"/></g>`),
+			Text(`<path fill="currentColor" d="M12 1.67c.955 0 1.845.467 2.39 1.247l.105.16l8.114 13.548a2.914 2.914 0 0 1-2.307 4.363l-.195.008H3.882a2.914 2.914 0 0 1-2.582-4.2l.099-.185l8.11-13.538A2.914 2.914 0 0 1 12 1.67M12 11h-1l-.117.007a1 1 0 0 0 0 1.986L11 13v3l.007.117a1 1 0 0 0 .876.876L12 17h1l.117-.007a1 1 0 0 0 .876-.876L14 16l-.007-.117a1 1 0 0 0-.764-.857l-.112-.02L13 15v-3l-.007-.117a1 1 0 0 0-.876-.876zm.01-3l-.127.007a1 1 0 0 0 0 1.986L12 10l.127-.007a1 1 0 0 0 0-1.986z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -26895,7 +28744,7 @@ func InnerShadowBottom(children ...ElementRenderer) *TablerIcon {
 func InnerShadowBottomFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M5.144 4.72c3.92-3.695 10.093-3.625 13.927.209c3.905 3.905 3.905 10.237 0 14.142c-3.905 3.905-10.237 3.905-14.142 0c-3.905-3.905-3.905-10.237 0-14.142zm3.32 10.816A1 1 0 1 0 7.05 16.95a7 7 0 0 0 9.9 0a1 1 0 0 0-1.414-1.414a5 5 0 0 1-7.072 0"/></g>`),
+			Text(`<path fill="currentColor" d="M5.144 4.72c3.92-3.695 10.093-3.625 13.927.209c3.905 3.905 3.905 10.237 0 14.142c-3.905 3.905-10.237 3.905-14.142 0c-3.905-3.905-3.905-10.237 0-14.142zm3.32 10.816A1 1 0 1 0 7.05 16.95a7 7 0 0 0 9.9 0a1 1 0 0 0-1.414-1.414a5 5 0 0 1-7.072 0"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -26911,7 +28760,7 @@ func InnerShadowBottomLeft(children ...ElementRenderer) *TablerIcon {
 func InnerShadowBottomLeftFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12S6.477 2 12 2m-6 9a1 1 0 0 0-1 1a7 7 0 0 0 7 7a1 1 0 0 0 0-2a5 5 0 0 1-5-5a1 1 0 0 0-1-1"/></g>`),
+			Text(`<path fill="currentColor" d="M12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12S6.477 2 12 2m-6 9a1 1 0 0 0-1 1a7 7 0 0 0 7 7a1 1 0 0 0 0-2a5 5 0 0 1-5-5a1 1 0 0 0-1-1"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -26927,7 +28776,7 @@ func InnerShadowBottomRight(children ...ElementRenderer) *TablerIcon {
 func InnerShadowBottomRightFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12S6.477 2 12 2m6 9a1 1 0 0 0-1 1a5 5 0 0 1-5 5a1 1 0 0 0 0 2a7 7 0 0 0 7-7a1 1 0 0 0-1-1"/></g>`),
+			Text(`<path fill="currentColor" d="M12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12S6.477 2 12 2m6 9a1 1 0 0 0-1 1a5 5 0 0 1-5 5a1 1 0 0 0 0 2a7 7 0 0 0 7-7a1 1 0 0 0-1-1"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -26943,7 +28792,7 @@ func InnerShadowLeft(children ...ElementRenderer) *TablerIcon {
 func InnerShadowLeftFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M4.929 4.929c3.905-3.905 10.237-3.905 14.142 0c3.905 3.905 3.905 10.237 0 14.142c-3.905 3.905-10.237 3.905-14.142 0c-3.905-3.905-3.905-10.237 0-14.142M8.464 7.05a1 1 0 0 0-1.414 0a7 7 0 0 0 0 9.9a1 1 0 1 0 1.414-1.414a5 5 0 0 1 0-7.072a1 1 0 0 0 0-1.414"/></g>`),
+			Text(`<path fill="currentColor" d="M4.929 4.929c3.905-3.905 10.237-3.905 14.142 0c3.905 3.905 3.905 10.237 0 14.142c-3.905 3.905-10.237 3.905-14.142 0c-3.905-3.905-3.905-10.237 0-14.142M8.464 7.05a1 1 0 0 0-1.414 0a7 7 0 0 0 0 9.9a1 1 0 1 0 1.414-1.414a5 5 0 0 1 0-7.072a1 1 0 0 0 0-1.414"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -26959,7 +28808,7 @@ func InnerShadowRight(children ...ElementRenderer) *TablerIcon {
 func InnerShadowRightFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M4.929 4.929c3.905-3.905 10.237-3.905 14.142 0c3.905 3.905 3.905 10.237 0 14.142c-3.905 3.905-10.237 3.905-14.142 0c-3.905-3.905-3.905-10.237 0-14.142m12.02 2.121a1 1 0 0 0-1.413 1.414a5 5 0 0 1 0 7.072a1 1 0 0 0 1.414 1.414a7 7 0 0 0 0-9.9z"/></g>`),
+			Text(`<path fill="currentColor" d="M4.929 4.929c3.905-3.905 10.237-3.905 14.142 0c3.905 3.905 3.905 10.237 0 14.142c-3.905 3.905-10.237 3.905-14.142 0c-3.905-3.905-3.905-10.237 0-14.142m12.02 2.121a1 1 0 0 0-1.413 1.414a5 5 0 0 1 0 7.072a1 1 0 0 0 1.414 1.414a7 7 0 0 0 0-9.9z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -26975,7 +28824,7 @@ func InnerShadowTop(children ...ElementRenderer) *TablerIcon {
 func InnerShadowTopFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M4.929 4.929c3.905-3.905 10.237-3.905 14.142 0c3.905 3.905 3.905 10.237 0 14.142c-3.905 3.905-10.237 3.905-14.142 0c-3.905-3.905-3.905-10.237 0-14.142m12.02 2.121a7 7 0 0 0-9.899 0a1 1 0 0 0 1.414 1.414a5 5 0 0 1 7.072 0A1 1 0 0 0 16.95 7.05z"/></g>`),
+			Text(`<path fill="currentColor" d="M4.929 4.929c3.905-3.905 10.237-3.905 14.142 0c3.905 3.905 3.905 10.237 0 14.142c-3.905 3.905-10.237 3.905-14.142 0c-3.905-3.905-3.905-10.237 0-14.142m12.02 2.121a7 7 0 0 0-9.899 0a1 1 0 0 0 1.414 1.414a5 5 0 0 1 7.072 0A1 1 0 0 0 16.95 7.05z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -26991,7 +28840,7 @@ func InnerShadowTopLeft(children ...ElementRenderer) *TablerIcon {
 func InnerShadowTopLeftFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12S6.477 2 12 2m0 3a7 7 0 0 0-7 7a1 1 0 0 0 2 0a5 5 0 0 1 5-5a1 1 0 0 0 0-2"/></g>`),
+			Text(`<path fill="currentColor" d="M12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12S6.477 2 12 2m0 3a7 7 0 0 0-7 7a1 1 0 0 0 2 0a5 5 0 0 1 5-5a1 1 0 0 0 0-2"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -27007,7 +28856,7 @@ func InnerShadowTopRight(children ...ElementRenderer) *TablerIcon {
 func InnerShadowTopRightFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12S6.477 2 12 2m0 3a1 1 0 0 0 0 2a5 5 0 0 1 5 5a1 1 0 0 0 2 0a7 7 0 0 0-7-7"/></g>`),
+			Text(`<path fill="currentColor" d="M12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12S6.477 2 12 2m0 3a1 1 0 0 0 0 2a5 5 0 0 1 5 5a1 1 0 0 0 2 0a7 7 0 0 0-7-7"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -27044,10 +28893,26 @@ func InputX(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func Invoice(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M19 12v7a1.78 1.78 0 0 1-3.1 1.4a1.65 1.65 0 0 0-2.6 0a1.65 1.65 0 0 1-2.6 0a1.65 1.65 0 0 0-2.6 0A1.78 1.78 0 0 1 5 19V5a2 2 0 0 1 2-2h7l5 5v4.25"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func Ironing(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 6h7.459a3 3 0 0 1 2.959 2.507l.577 3.464l.81 4.865A1 1 0 0 1 19.82 18H3a7 7 0 0 1 7-7h9.8"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func IroningFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M16.459 5a4 4 0 0 1 3.945 3.343l.577 3.464l.81 4.865A2 2 0 0 1 19.82 19H3a1 1 0 0 1-1-1a8 8 0 0 1 8-8h8.652l-.22-1.329a2 2 0 0 0-1.811-1.665L16.459 7H9a1 1 0 1 1 0-2z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -27148,6 +29013,14 @@ func Jetpack(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func JetpackFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M17 2a4 4 0 0 1 4 4v7a1 1 0 0 1-1 1h-6a1 1 0 0 1-1-1v-1h-2v1a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V6a4 4 0 0 1 8 0v1h2V6a4 4 0 0 1 4-4m-4 8V9h-2v1zm-4 5a1 1 0 0 1 1 1c0 2.623-.787 4.59-2.4 5.8a1 1 0 0 1-1.2 0C4.787 20.59 4 18.623 4 16a1 1 0 0 1 2 0c0 1.532.308 2.684.906 3.498l.094.119l.094-.12c.558-.759.864-1.813.902-3.196L8 16a1 1 0 0 1 1-1m10 0a1 1 0 0 1 1 1c0 2.623-.787 4.59-2.4 5.8a1 1 0 0 1-1.2 0C14.787 20.59 14 18.623 14 16a1 1 0 0 1 2 0c0 1.532.308 2.684.906 3.498l.094.119l.094-.12c.558-.759.864-1.813.902-3.196L18 16a1 1 0 0 1 1-1"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func JewishStar(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
@@ -27159,7 +29032,7 @@ func JewishStar(children ...ElementRenderer) *TablerIcon {
 func JewishStarFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M8.433 6H3l-.114.006a1 1 0 0 0-.743 1.508L4.833 12l-2.69 4.486l-.054.1A1 1 0 0 0 3 18h5.434l2.709 4.514l.074.108a1 1 0 0 0 1.64-.108L15.565 18H21l.114-.006a1 1 0 0 0 .743-1.508L19.166 12l2.691-4.486l.054-.1A1 1 0 0 0 21 6h-5.434l-2.709-4.514a1 1 0 0 0-1.714 0z"/></g>`),
+			Text(`<path fill="currentColor" d="M8.433 6H3l-.114.006a1 1 0 0 0-.743 1.508L4.833 12l-2.69 4.486l-.054.1A1 1 0 0 0 3 18h5.434l2.709 4.514l.074.108a1 1 0 0 0 1.64-.108L15.565 18H21l.114-.006a1 1 0 0 0 .743-1.508L19.166 12l2.691-4.486l.054-.1A1 1 0 0 0 21 6h-5.434l-2.709-4.514a1 1 0 0 0-1.714 0z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -27204,7 +29077,7 @@ func Kayak(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
-func Kering(children ...ElementRenderer) *TablerIcon {
+func Kerning(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 15v-3.5a2.5 2.5 0 1 1 5 0V15m0-2h-5M3 9l3 6l3-6m0 11l6-16"/>`),
@@ -27216,6 +29089,14 @@ func Key(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m16.555 3.843l3.602 3.602a2.877 2.877 0 0 1 0 4.069l-2.643 2.643a2.877 2.877 0 0 1-4.069 0l-.301-.301l-6.558 6.558a2 2 0 0 1-1.239.578L5.172 21H4a1 1 0 0 1-.993-.883L3 20v-1.172a2 2 0 0 1 .467-1.284l.119-.13L4 17h2v-2h2v-2l2.144-2.144l-.301-.301a2.877 2.877 0 0 1 0-4.069l2.643-2.643a2.877 2.877 0 0 1 4.069 0M15 9h.01"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func KeyFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M14.52 2c1.029 0 2.015.409 2.742 1.136l3.602 3.602a3.877 3.877 0 0 1 0 5.483l-2.643 2.643a3.88 3.88 0 0 1-4.941.452l-.105-.078l-5.882 5.883a3 3 0 0 1-1.68.843l-.22.027l-.221.009H4c-1.014 0-1.867-.759-1.991-1.823L2 20v-1.172c0-.704.248-1.386.73-1.96l.149-.161l.414-.414A1 1 0 0 1 4 16h1v-1a1 1 0 0 1 .883-.993L6 14h1v-1a1 1 0 0 1 .206-.608l.087-.1l1.468-1.469l-.076-.103a3.9 3.9 0 0 1-.678-1.963L8 8.521c0-1.029.409-2.015 1.136-2.742l2.643-2.643A3.88 3.88 0 0 1 14.52 2m.495 5h-.02a2 2 0 1 0 0 4h.02a2 2 0 1 0 0-4"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -27279,7 +29160,7 @@ func KeyframeAlignCenter(children ...ElementRenderer) *TablerIcon {
 func KeyframeAlignCenterFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M12 19a1 1 0 0 1 .993.883L13 20v2a1 1 0 0 1-1.993.117L11 22v-2a1 1 0 0 1 1-1m0-13c-.629 0-1.214.301-1.606.807l-2.908 3.748a2.395 2.395 0 0 0-.011 2.876l2.919 3.762c.39.505.977.807 1.606.807c.629 0 1.214-.301 1.606-.807l2.908-3.748a2.395 2.395 0 0 0 .011-2.876l-2.919-3.762A2.032 2.032 0 0 0 12 6m0-5a1 1 0 0 1 .993.883L13 2v2a1 1 0 0 1-1.993.117L11 4V2a1 1 0 0 1 1-1M5 11a1 1 0 0 1 .117 1.993L5 13H3a1 1 0 0 1-.117-1.993L3 11zm16 0a1 1 0 0 1 .117 1.993L21 13h-2a1 1 0 0 1-.117-1.993L19 11z"/></g>`),
+			Text(`<path fill="currentColor" d="M12 19a1 1 0 0 1 .993.883L13 20v2a1 1 0 0 1-1.993.117L11 22v-2a1 1 0 0 1 1-1m0-13c-.629 0-1.214.301-1.606.807l-2.908 3.748a2.395 2.395 0 0 0-.011 2.876l2.919 3.762c.39.505.977.807 1.606.807c.629 0 1.214-.301 1.606-.807l2.908-3.748a2.395 2.395 0 0 0 .011-2.876l-2.919-3.762A2.032 2.032 0 0 0 12 6m0-5a1 1 0 0 1 .993.883L13 2v2a1 1 0 0 1-1.993.117L11 4V2a1 1 0 0 1 1-1M5 11a1 1 0 0 1 .117 1.993L5 13H3a1 1 0 0 1-.117-1.993L3 11zm16 0a1 1 0 0 1 .117 1.993L21 13h-2a1 1 0 0 1-.117-1.993L19 11z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -27295,7 +29176,7 @@ func KeyframeAlignHorizontal(children ...ElementRenderer) *TablerIcon {
 func KeyframeAlignHorizontalFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M12 6c-.629 0-1.214.301-1.606.807l-2.908 3.748a2.395 2.395 0 0 0-.011 2.876l2.919 3.762c.39.505.977.807 1.606.807c.629 0 1.214-.301 1.606-.807l2.908-3.748a2.395 2.395 0 0 0 .011-2.876l-2.919-3.762A2.032 2.032 0 0 0 12 6m-7 5a1 1 0 0 1 .117 1.993L5 13H3a1 1 0 0 1-.117-1.993L3 11zm16 0a1 1 0 0 1 .117 1.993L21 13h-2a1 1 0 0 1-.117-1.993L19 11z"/></g>`),
+			Text(`<path fill="currentColor" d="M12 6c-.629 0-1.214.301-1.606.807l-2.908 3.748a2.395 2.395 0 0 0-.011 2.876l2.919 3.762c.39.505.977.807 1.606.807c.629 0 1.214-.301 1.606-.807l2.908-3.748a2.395 2.395 0 0 0 .011-2.876l-2.919-3.762A2.032 2.032 0 0 0 12 6m-7 5a1 1 0 0 1 .117 1.993L5 13H3a1 1 0 0 1-.117-1.993L3 11zm16 0a1 1 0 0 1 .117 1.993L21 13h-2a1 1 0 0 1-.117-1.993L19 11z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -27311,7 +29192,7 @@ func KeyframeAlignVertical(children ...ElementRenderer) *TablerIcon {
 func KeyframeAlignVerticalFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M12 1a1 1 0 0 1 .993.883L13 2v2a1 1 0 0 1-1.993.117L11 4V2a1 1 0 0 1 1-1m0 5c-.629 0-1.214.301-1.606.807l-2.908 3.748a2.395 2.395 0 0 0-.011 2.876l2.919 3.762c.39.505.977.807 1.606.807c.629 0 1.214-.301 1.606-.807l2.908-3.748a2.395 2.395 0 0 0 .011-2.876l-2.919-3.762A2.032 2.032 0 0 0 12 6m0 13a1 1 0 0 1 .993.883L13 20v2a1 1 0 0 1-1.993.117L11 22v-2a1 1 0 0 1 1-1"/></g>`),
+			Text(`<path fill="currentColor" d="M12 1a1 1 0 0 1 .993.883L13 2v2a1 1 0 0 1-1.993.117L11 4V2a1 1 0 0 1 1-1m0 5c-.629 0-1.214.301-1.606.807l-2.908 3.748a2.395 2.395 0 0 0-.011 2.876l2.919 3.762c.39.505.977.807 1.606.807c.629 0 1.214-.301 1.606-.807l2.908-3.748a2.395 2.395 0 0 0 .011-2.876l-2.919-3.762A2.032 2.032 0 0 0 12 6m0 13a1 1 0 0 1 .993.883L13 20v2a1 1 0 0 1-1.993.117L11 22v-2a1 1 0 0 1 1-1"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -27319,7 +29200,7 @@ func KeyframeAlignVerticalFilled(children ...ElementRenderer) *TablerIcon {
 func KeyframeFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M12 4a2.599 2.599 0 0 0-2 .957l-4.355 5.24a2.847 2.847 0 0 0-.007 3.598l4.368 5.256c.499.6 1.225.949 1.994.949a2.599 2.599 0 0 0 2-.957l4.355-5.24a2.847 2.847 0 0 0 .007-3.598l-4.368-5.256A2.593 2.593 0 0 0 12 4"/></g>`),
+			Text(`<path fill="currentColor" d="M12 4a2.599 2.599 0 0 0-2 .957l-4.355 5.24a2.847 2.847 0 0 0-.007 3.598l4.368 5.256c.499.6 1.225.949 1.994.949a2.599 2.599 0 0 0 2-.957l4.355-5.24a2.847 2.847 0 0 0 .007-3.598l-4.368-5.256A2.593 2.593 0 0 0 12 4"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -27335,7 +29216,7 @@ func Keyframes(children ...ElementRenderer) *TablerIcon {
 func KeyframesFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M8 4a2.599 2.599 0 0 0-2 .957l-4.355 5.24a2.847 2.847 0 0 0-.007 3.598l4.368 5.256C6.505 19.651 7.23 20 8 20a2.599 2.599 0 0 0 2-.957l4.355-5.24a2.847 2.847 0 0 0 .007-3.598L9.994 4.949A2.593 2.593 0 0 0 8 4m8.382.214a1 1 0 0 1 1.32.074l.084.094l4.576 5.823c.808.993.848 2.396.13 3.419l-.12.158l-4.586 5.836a1 1 0 0 1-1.644-1.132l.072-.104l4.596-5.85a.845.845 0 0 0 .06-.978l-.07-.1l-4.586-5.836a1 1 0 0 1 .168-1.404"/><path fill="currentColor" d="M12.382 4.214a1 1 0 0 1 1.32.074l.084.094l4.576 5.823c.808.993.848 2.396.13 3.419l-.12.158l-4.586 5.836a1 1 0 0 1-1.644-1.132l.072-.104l4.596-5.85a.845.845 0 0 0 .06-.978l-.07-.1l-4.586-5.836a1 1 0 0 1 .168-1.404"/></g>`),
+			Text(`<g fill="currentColor"><path d="M8 4a2.599 2.599 0 0 0-2 .957l-4.355 5.24a2.847 2.847 0 0 0-.007 3.598l4.368 5.256C6.505 19.651 7.23 20 8 20a2.599 2.599 0 0 0 2-.957l4.355-5.24a2.847 2.847 0 0 0 .007-3.598L9.994 4.949A2.593 2.593 0 0 0 8 4m8.382.214a1 1 0 0 1 1.32.074l.084.094l4.576 5.823c.808.993.848 2.396.13 3.419l-.12.158l-4.586 5.836a1 1 0 0 1-1.644-1.132l.072-.104l4.596-5.85a.845.845 0 0 0 .06-.978l-.07-.1l-4.586-5.836a1 1 0 0 1 .168-1.404"/><path d="M12.382 4.214a1 1 0 0 1 1.32.074l.084.094l4.576 5.823c.808.993.848 2.396.13 3.419l-.12.158l-4.586 5.836a1 1 0 0 1-1.644-1.132l.072-.104l4.596-5.85a.845.845 0 0 0 .06-.978l-.07-.1l-4.586-5.836a1 1 0 0 1 .168-1.404"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -27500,6 +29381,22 @@ func LayersOff(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func LayersSelected(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="m8 10.5l6.492-6.492M13.496 16L20 9.496zm-4.91-.586L19.413 4.587M8 6a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-8a2 2 0 0 1-2-2z"/><path d="M16 16v2a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h2"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func LayersSelectedBottom(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="m4 14.5l4-4M9.496 20l4.004-4zm-4.91-.586L8.5 15.5M8 6a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-8a2 2 0 0 1-2-2z"/><path d="M16 16v2a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h2"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func LayersSubtract(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
@@ -27532,10 +29429,26 @@ func LayoutAlignBottom(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func LayoutAlignBottomFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M20 19a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zM13 3a3 3 0 0 1 3 3v8a3 3 0 0 1-3 3h-2a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func LayoutAlignCenter(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v5m0 6v5m-6-9a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func LayoutAlignCenterFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M12 3a1 1 0 0 1 1 1v4h3a3 3 0 0 1 3 3v2a3 3 0 0 1-3 3h-3v4a1 1 0 0 1-2 0v-4H8a3 3 0 0 1-3-3v-2a3 3 0 0 1 3-3h3V4a1 1 0 0 1 1-1"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -27548,10 +29461,26 @@ func LayoutAlignLeft(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func LayoutAlignLeftFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M4 3a1 1 0 0 1 1 1v16a1 1 0 0 1-2 0V4a1 1 0 0 1 1-1m14 5a3 3 0 0 1 3 3v2a3 3 0 0 1-3 3h-8a3 3 0 0 1-3-3v-2a3 3 0 0 1 3-3z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func LayoutAlignMiddle(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 12h5m6 0h5M9 8a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-2a2 2 0 0 1-2-2z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func LayoutAlignMiddleFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M13 5a3 3 0 0 1 3 3v3h4a1 1 0 0 1 0 2h-4v3a3 3 0 0 1-3 3h-2a3 3 0 0 1-3-3v-3H4a1 1 0 0 1 0-2h4V8a3 3 0 0 1 3-3z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -27564,10 +29493,26 @@ func LayoutAlignRight(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func LayoutAlignRightFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M20 3a1 1 0 0 1 1 1v16a1 1 0 0 1-2 0V4a1 1 0 0 1 1-1m-6 5a3 3 0 0 1 3 3v2a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3v-2a3 3 0 0 1 3-3z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func LayoutAlignTop(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4h16M9 10a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-2a2 2 0 0 1-2-2z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func LayoutAlignTopFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M20 3a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm-7 4a3 3 0 0 1 3 3v8a3 3 0 0 1-3 3h-2a3 3 0 0 1-3-3v-8a3 3 0 0 1 3-3z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -27607,7 +29552,7 @@ func LayoutBottombarCollapse(children ...ElementRenderer) *TablerIcon {
 func LayoutBottombarCollapseFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M18 3a3 3 0 0 1 2.995 2.824L21 6v12a3 3 0 0 1-2.824 2.995L18 21H6a3 3 0 0 1-2.995-2.824L3 18V6a3 3 0 0 1 2.824-2.995L6 3zm0 2H6a1 1 0 0 0-.993.883L5 6v9h14V6a1 1 0 0 0-.883-.993zm-7.387 3.21l.094.083L12 9.585l1.293-1.292a1 1 0 0 1 1.32-.083l.094.083a1 1 0 0 1 .083 1.32l-.083.094l-2 2a1 1 0 0 1-1.32.083l-.094-.083l-2-2a1 1 0 0 1 1.32-1.497"/></g>`),
+			Text(`<path fill="currentColor" d="M18 3a3 3 0 0 1 2.995 2.824L21 6v12a3 3 0 0 1-2.824 2.995L18 21H6a3 3 0 0 1-2.995-2.824L3 18V6a3 3 0 0 1 2.824-2.995L6 3zm0 2H6a1 1 0 0 0-.993.883L5 6v9h14V6a1 1 0 0 0-.883-.993zm-7.387 3.21l.094.083L12 9.585l1.293-1.292a1 1 0 0 1 1.32-.083l.094.083a1 1 0 0 1 .083 1.32l-.083.094l-2 2a1 1 0 0 1-1.32.083l-.094-.083l-2-2a1 1 0 0 1 1.32-1.497"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -27623,7 +29568,7 @@ func LayoutBottombarExpand(children ...ElementRenderer) *TablerIcon {
 func LayoutBottombarExpandFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M18 3a3 3 0 0 1 2.995 2.824L21 6v12a3 3 0 0 1-2.824 2.995L18 21H6a3 3 0 0 1-2.995-2.824L3 18V6a3 3 0 0 1 2.824-2.995L6 3zm0 2H6a1 1 0 0 0-.993.883L5 6v9h14V6a1 1 0 0 0-.883-.993zm-5.387 3.21l.094.083l2 2a1 1 0 0 1-1.32 1.497l-.094-.083L12 10.415l-1.293 1.292a1 1 0 0 1-1.32.083l-.094-.083a1 1 0 0 1-.083-1.32l.083-.094l2-2a1 1 0 0 1 1.32-.083"/></g>`),
+			Text(`<path fill="currentColor" d="M18 3a3 3 0 0 1 2.995 2.824L21 6v12a3 3 0 0 1-2.824 2.995L18 21H6a3 3 0 0 1-2.995-2.824L3 18V6a3 3 0 0 1 2.824-2.995L6 3zm0 2H6a1 1 0 0 0-.993.883L5 6v9h14V6a1 1 0 0 0-.883-.993zm-5.387 3.21l.094.083l2 2a1 1 0 0 1-1.32 1.497l-.094-.083L12 10.415l-1.293 1.292a1 1 0 0 1-1.32.083l-.094-.083a1 1 0 0 1-.083-1.32l.083-.094l2-2a1 1 0 0 1 1.32-.083"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -27631,7 +29576,7 @@ func LayoutBottombarExpandFilled(children ...ElementRenderer) *TablerIcon {
 func LayoutBottombarFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M18 3a3 3 0 0 1 2.995 2.824L21 6v12a3 3 0 0 1-2.824 2.995L18 21H6a3 3 0 0 1-2.995-2.824L3 18V6a3 3 0 0 1 2.824-2.995L6 3zm0 2H6a1 1 0 0 0-.993.883L5 6v9h14V6a1 1 0 0 0-.883-.993z"/></g>`),
+			Text(`<path fill="currentColor" d="M18 3a3 3 0 0 1 2.995 2.824L21 6v12a3 3 0 0 1-2.824 2.995L18 21H6a3 3 0 0 1-2.995-2.824L3 18V6a3 3 0 0 1 2.824-2.995L6 3zm0 2H6a1 1 0 0 0-.993.883L5 6v9h14V6a1 1 0 0 0-.883-.993z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -27648,6 +29593,14 @@ func LayoutCards(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2zm10 0a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2h-2a2 2 0 0 1-2-2z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func LayoutCardsFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M8 3a3 3 0 0 1 3 3v12a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3zm10 0a3 3 0 0 1 3 3v6a3 3 0 0 1-3 3h-2a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -27671,7 +29624,15 @@ func LayoutColumns(children ...ElementRenderer) *TablerIcon {
 func LayoutDashboard(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4h6v8H4zm0 12h6v4H4zm10-4h6v8h-6zm0-8h6v4h-6z"/>`),
+			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 4h4a1 1 0 0 1 1 1v6a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1m0 12h4a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-2a1 1 0 0 1 1-1m10-4h4a1 1 0 0 1 1 1v6a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1v-6a1 1 0 0 1 1-1m0-8h4a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func LayoutDashboardFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M9 3a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2zm0 12a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-2a2 2 0 0 1 2-2zm10-4a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2v-6a2 2 0 0 1 2-2zm0-8a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -27684,10 +29645,34 @@ func LayoutDistributeHorizontal(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func LayoutDistributeHorizontalFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M20 3a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zM16 8a3 3 0 0 1 3 3v2a3 3 0 0 1-3 3H8a3 3 0 0 1-3-3v-2a3 3 0 0 1 3-3z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func LayoutDistributeVertical(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v16M20 4v16M9 8a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-2a2 2 0 0 1-2-2z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func LayoutDistributeVerticalFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M4 3a1 1 0 0 1 1 1v16a1 1 0 0 1-2 0V4a1 1 0 0 1 1-1m16 0a1 1 0 0 1 1 1v16a1 1 0 0 1-2 0V4a1 1 0 0 1 1-1m-7 2a3 3 0 0 1 3 3v8a3 3 0 0 1-3 3h-2a3 3 0 0 1-3-3V8a3 3 0 0 1 3-3z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func LayoutFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M8 3a3 3 0 0 1 3 3v1a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3zm0 9a3 3 0 0 1 3 3v3a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3v-3a3 3 0 0 1 3-3zm10-9a3 3 0 0 1 3 3v12a3 3 0 0 1-3 3h-2a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -27708,6 +29693,14 @@ func LayoutGridAdd(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func LayoutGridFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M9 3a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2zm10 0a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2zM9 13a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4a2 2 0 0 1 2-2zm10 0a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2v-4a2 2 0 0 1 2-2z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func LayoutGridRemove(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
@@ -27724,10 +29717,26 @@ func LayoutKanban(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func LayoutKanbanFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M10 3a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm10 0a1 1 0 0 1 0 2h-6a1 1 0 0 1 0-2zM8 7a3 3 0 0 1 3 3v8a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3v-8a3 3 0 0 1 3-3zm10 0a3 3 0 0 1 3 3v2a3 3 0 0 1-3 3h-2a3 3 0 0 1-3-3v-2a3 3 0 0 1 3-3z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func LayoutList(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2zm0 10a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func LayoutListFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M18 3a3 3 0 0 1 3 3v2a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3zm0 10a3 3 0 0 1 3 3v2a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3v-2a3 3 0 0 1 3-3z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -27751,7 +29760,7 @@ func LayoutNavbarCollapse(children ...ElementRenderer) *TablerIcon {
 func LayoutNavbarCollapseFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M18 3a3 3 0 0 1 2.995 2.824L21 6v12a3 3 0 0 1-2.824 2.995L18 21H6a3 3 0 0 1-2.995-2.824L3 18V6a3 3 0 0 1 2.824-2.995L6 3zm1 6H5v9a1 1 0 0 0 .883.993L6 19h12a1 1 0 0 0 .993-.883L19 18zm-6.387 3.21l.094.083l2 2a1 1 0 0 1-1.32 1.497l-.094-.083L12 14.415l-1.293 1.292a1 1 0 0 1-1.32.083l-.094-.083a1 1 0 0 1-.083-1.32l.083-.094l2-2a1 1 0 0 1 1.32-.083"/></g>`),
+			Text(`<path fill="currentColor" d="M18 3a3 3 0 0 1 2.995 2.824L21 6v12a3 3 0 0 1-2.824 2.995L18 21H6a3 3 0 0 1-2.995-2.824L3 18V6a3 3 0 0 1 2.824-2.995L6 3zm1 6H5v9a1 1 0 0 0 .883.993L6 19h12a1 1 0 0 0 .993-.883L19 18zm-6.387 3.21l.094.083l2 2a1 1 0 0 1-1.32 1.497l-.094-.083L12 14.415l-1.293 1.292a1 1 0 0 1-1.32.083l-.094-.083a1 1 0 0 1-.083-1.32l.083-.094l2-2a1 1 0 0 1 1.32-.083"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -27767,7 +29776,7 @@ func LayoutNavbarExpand(children ...ElementRenderer) *TablerIcon {
 func LayoutNavbarExpandFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M18 3a3 3 0 0 1 2.995 2.824L21 6v12a3 3 0 0 1-2.824 2.995L18 21H6a3 3 0 0 1-2.995-2.824L3 18V6a3 3 0 0 1 2.824-2.995L6 3zm1 6H5v9a1 1 0 0 0 .883.993L6 19h12a1 1 0 0 0 .993-.883L19 18zm-8.387 3.21l.094.083L12 13.585l1.293-1.292a1 1 0 0 1 1.32-.083l.094.083a1 1 0 0 1 .083 1.32l-.083.094l-2 2a1 1 0 0 1-1.32.083l-.094-.083l-2-2a1 1 0 0 1 1.32-1.497"/></g>`),
+			Text(`<path fill="currentColor" d="M18 3a3 3 0 0 1 2.995 2.824L21 6v12a3 3 0 0 1-2.824 2.995L18 21H6a3 3 0 0 1-2.995-2.824L3 18V6a3 3 0 0 1 2.824-2.995L6 3zm1 6H5v9a1 1 0 0 0 .883.993L6 19h12a1 1 0 0 0 .993-.883L19 18zm-8.387 3.21l.094.083L12 13.585l1.293-1.292a1 1 0 0 1 1.32-.083l.094.083a1 1 0 0 1 .083 1.32l-.083.094l-2 2a1 1 0 0 1-1.32.083l-.094-.083l-2-2a1 1 0 0 1 1.32-1.497"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -27775,7 +29784,7 @@ func LayoutNavbarExpandFilled(children ...ElementRenderer) *TablerIcon {
 func LayoutNavbarFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M18 3a3 3 0 0 1 2.995 2.824L21 6v12a3 3 0 0 1-2.824 2.995L18 21H6a3 3 0 0 1-2.995-2.824L3 18V6a3 3 0 0 1 2.824-2.995L6 3zm1 6H5v9a1 1 0 0 0 .883.993L6 19h12a1 1 0 0 0 .993-.883L19 18z"/></g>`),
+			Text(`<path fill="currentColor" d="M18 3a3 3 0 0 1 2.995 2.824L21 6v12a3 3 0 0 1-2.824 2.995L18 21H6a3 3 0 0 1-2.995-2.824L3 18V6a3 3 0 0 1 2.824-2.995L6 3zm1 6H5v9a1 1 0 0 0 .883.993L6 19h12a1 1 0 0 0 .993-.883L19 18z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -27812,6 +29821,14 @@ func LayoutSidebar(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func LayoutSidebarFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M6 21a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3h12a3 3 0 0 1 3 3v12a3 3 0 0 1-3 3zM18 5h-8v14h8a1 1 0 0 0 1-1V6a1 1 0 0 0-1-1"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func LayoutSidebarInactive(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
@@ -27831,7 +29848,7 @@ func LayoutSidebarLeftCollapse(children ...ElementRenderer) *TablerIcon {
 func LayoutSidebarLeftCollapseFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M18 3a3 3 0 0 1 2.995 2.824L21 6v12a3 3 0 0 1-2.824 2.995L18 21H6a3 3 0 0 1-2.995-2.824L3 18V6a3 3 0 0 1 2.824-2.995L6 3zm0 2H9v14h9a1 1 0 0 0 .993-.883L19 18V6a1 1 0 0 0-.883-.993zm-2.293 4.293a1 1 0 0 1 .083 1.32l-.083.094L14.415 12l1.292 1.293a1 1 0 0 1 .083 1.32l-.083.094a1 1 0 0 1-1.32.083l-.094-.083l-2-2a1 1 0 0 1-.083-1.32l.083-.094l2-2a1 1 0 0 1 1.414 0"/></g>`),
+			Text(`<path fill="currentColor" d="M18 3a3 3 0 0 1 2.995 2.824L21 6v12a3 3 0 0 1-2.824 2.995L18 21H6a3 3 0 0 1-2.995-2.824L3 18V6a3 3 0 0 1 2.824-2.995L6 3zm0 2H9v14h9a1 1 0 0 0 .993-.883L19 18V6a1 1 0 0 0-.883-.993zm-2.293 4.293a1 1 0 0 1 .083 1.32l-.083.094L14.415 12l1.292 1.293a1 1 0 0 1 .083 1.32l-.083.094a1 1 0 0 1-1.32.083l-.094-.083l-2-2a1 1 0 0 1-.083-1.32l.083-.094l2-2a1 1 0 0 1 1.414 0"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -27847,7 +29864,7 @@ func LayoutSidebarLeftExpand(children ...ElementRenderer) *TablerIcon {
 func LayoutSidebarLeftExpandFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M18 3a3 3 0 0 1 2.995 2.824L21 6v12a3 3 0 0 1-2.824 2.995L18 21H6a3 3 0 0 1-2.995-2.824L3 18V6a3 3 0 0 1 2.824-2.995L6 3zm0 2H9v14h9a1 1 0 0 0 .993-.883L19 18V6a1 1 0 0 0-.883-.993zm-4.387 4.21l.094.083l2 2a1 1 0 0 1 .083 1.32l-.083.094l-2 2a1 1 0 0 1-1.497-1.32l.083-.094L13.585 12l-1.292-1.293a1 1 0 0 1-.083-1.32l.083-.094a1 1 0 0 1 1.32-.083"/></g>`),
+			Text(`<path fill="currentColor" d="M18 3a3 3 0 0 1 2.995 2.824L21 6v12a3 3 0 0 1-2.824 2.995L18 21H6a3 3 0 0 1-2.995-2.824L3 18V6a3 3 0 0 1 2.824-2.995L6 3zm0 2H9v14h9a1 1 0 0 0 .993-.883L19 18V6a1 1 0 0 0-.883-.993zm-4.387 4.21l.094.083l2 2a1 1 0 0 1 .083 1.32l-.083.094l-2 2a1 1 0 0 1-1.497-1.32l.083-.094L13.585 12l-1.292-1.293a1 1 0 0 1-.083-1.32l.083-.094a1 1 0 0 1 1.32-.083"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -27871,7 +29888,7 @@ func LayoutSidebarRightCollapse(children ...ElementRenderer) *TablerIcon {
 func LayoutSidebarRightCollapseFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M18 3a3 3 0 0 1 2.995 2.824L21 6v12a3 3 0 0 1-2.824 2.995L18 21H6a3 3 0 0 1-2.995-2.824L3 18V6a3 3 0 0 1 2.824-2.995L6 3zm-3 2H6a1 1 0 0 0-.993.883L5 6v12a1 1 0 0 0 .883.993L6 19h9zM9.613 9.21l.094.083l2 2a1 1 0 0 1 .083 1.32l-.083.094l-2 2a1 1 0 0 1-1.497-1.32l.083-.094L9.585 12l-1.292-1.293a1 1 0 0 1-.083-1.32l.083-.094a1 1 0 0 1 1.32-.083"/></g>`),
+			Text(`<path fill="currentColor" d="M18 3a3 3 0 0 1 2.995 2.824L21 6v12a3 3 0 0 1-2.824 2.995L18 21H6a3 3 0 0 1-2.995-2.824L3 18V6a3 3 0 0 1 2.824-2.995L6 3zm-3 2H6a1 1 0 0 0-.993.883L5 6v12a1 1 0 0 0 .883.993L6 19h9zM9.613 9.21l.094.083l2 2a1 1 0 0 1 .083 1.32l-.083.094l-2 2a1 1 0 0 1-1.497-1.32l.083-.094L9.585 12l-1.292-1.293a1 1 0 0 1-.083-1.32l.083-.094a1 1 0 0 1 1.32-.083"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -27887,7 +29904,15 @@ func LayoutSidebarRightExpand(children ...ElementRenderer) *TablerIcon {
 func LayoutSidebarRightExpandFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M18 3a3 3 0 0 1 2.995 2.824L21 6v12a3 3 0 0 1-2.824 2.995L18 21H6a3 3 0 0 1-2.995-2.824L3 18V6a3 3 0 0 1 2.824-2.995L6 3zm-3 2H6a1 1 0 0 0-.993.883L5 6v12a1 1 0 0 0 .883.993L6 19h9zm-3.293 4.293a1 1 0 0 1 .083 1.32l-.083.094L10.415 12l1.292 1.293a1 1 0 0 1 .083 1.32l-.083.094a1 1 0 0 1-1.32.083l-.094-.083l-2-2a1 1 0 0 1-.083-1.32l.083-.094l2-2a1 1 0 0 1 1.414 0"/></g>`),
+			Text(`<path fill="currentColor" d="M18 3a3 3 0 0 1 2.995 2.824L21 6v12a3 3 0 0 1-2.824 2.995L18 21H6a3 3 0 0 1-2.995-2.824L3 18V6a3 3 0 0 1 2.824-2.995L6 3zm-3 2H6a1 1 0 0 0-.993.883L5 6v12a1 1 0 0 0 .883.993L6 19h9zm-3.293 4.293a1 1 0 0 1 .083 1.32l-.083.094L10.415 12l1.292 1.293a1 1 0 0 1 .083 1.32l-.083.094a1 1 0 0 1-1.32.083l-.094-.083l-2-2a1 1 0 0 1-.083-1.32l.083-.094l2-2a1 1 0 0 1 1.414 0"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func LayoutSidebarRightFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M6 21a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3h12a3 3 0 0 1 3 3v12a3 3 0 0 1-3 3zm8-16H6a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -27904,6 +29929,14 @@ func LayoutTwo(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v1a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2zm0 9a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2zm10-9a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2h-2a2 2 0 0 1-2-2zm0 11a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v1a2 2 0 0 1-2 2h-2a2 2 0 0 1-2-2z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func LayoutTwoFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M8 3a3 3 0 0 1 3 3v1a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3zm0 9a3 3 0 0 1 3 3v3a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3v-3a3 3 0 0 1 3-3zm10-9a3 3 0 0 1 3 3v3a3 3 0 0 1-3 3h-2a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3zm0 11a3 3 0 0 1 3 3v1a3 3 0 0 1-3 3h-2a3 3 0 0 1-3-3v-1a3 3 0 0 1 3-3z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -27928,6 +29961,14 @@ func Lego(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M9.5 11h.01m4.99 0h.01M9.5 15a3.5 3.5 0 0 0 5 0"/><path d="M7 5h1V3h8v2h1a3 3 0 0 1 3 3v9a3 3 0 0 1-3 3v1H7v-1a3 3 0 0 1-3-3V8a3 3 0 0 1 3-3"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func LegoFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M16 2a1 1 0 0 1 1 1v1l.2.005A4 4 0 0 1 20.995 7.8L21 8v9a4 4 0 0 1-2.845 3.83l-.155.043V21a1 1 0 0 1-.883.993L17 22H7a1 1 0 0 1-1-1v-.127l-.155-.042a4 4 0 0 1-2.84-3.631L3 17V8a4 4 0 0 1 4-4V3a1 1 0 0 1 1-1zm-.8 12.286a1 1 0 0 0-1.414.014a2.5 2.5 0 0 1-3.572 0a1 1 0 0 0-1.428 1.4a4.5 4.5 0 0 0 6.428 0a1 1 0 0 0-.014-1.414M9.51 10H9.5a1 1 0 0 0 0 2h.01a1 1 0 0 0 0-2m5 0h-.01a1 1 0 0 0 0 2h.01a1 1 0 0 0 0-2"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -28775,7 +30816,7 @@ func LocationExclamation(children ...ElementRenderer) *TablerIcon {
 func LocationFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M20.891 2.006L20.997 2l.13.008l.09.016l.123.035l.107.046l.1.057l.09.067l.082.075l.052.059l.082.116l.052.096c.047.1.077.206.09.316l.005.106c0 .075-.008.149-.024.22l-.035.123l-6.532 18.077A1.55 1.55 0 0 1 14 22.32a1.547 1.547 0 0 1-1.329-.747l-.065-.127l-3.352-6.702l-6.67-3.336a1.55 1.55 0 0 1-.898-1.259L1.68 10c0-.56.301-1.072.841-1.37l.14-.07l18.017-6.506l.106-.03l.108-.018z"/></g>`),
+			Text(`<path fill="currentColor" d="M20.891 2.006L20.997 2l.13.008l.09.016l.123.035l.107.046l.1.057l.09.067l.082.075l.052.059l.082.116l.052.096c.047.1.077.206.09.316l.005.106c0 .075-.008.149-.024.22l-.035.123l-6.532 18.077A1.55 1.55 0 0 1 14 22.32a1.547 1.547 0 0 1-1.329-.747l-.065-.127l-3.352-6.702l-6.67-3.336a1.55 1.55 0 0 1-.898-1.259L1.68 10c0-.56.301-1.072.841-1.37l.14-.07l18.017-6.506l.106-.03l.108-.018z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -28964,6 +31005,14 @@ func LockExclamation(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func LockFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M12 2a5 5 0 0 1 5 5v3a3 3 0 0 1 3 3v6a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3v-6a3 3 0 0 1 3-3V7a5 5 0 0 1 5-5m0 12a2 2 0 0 0-1.995 1.85L10 16a2 2 0 1 0 2-2m0-10a3 3 0 0 0-3 3v3h6V7a3 3 0 0 0-3-3"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func LockHeart(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
@@ -29000,6 +31049,14 @@ func LockOpenOff(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M15 11h2a2 2 0 0 1 2 2v2m0 4a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-6a2 2 0 0 1 2-2h4"/><path d="M11 16a1 1 0 1 0 2 0a1 1 0 1 0-2 0m-3-5V8m.347-3.631A4 4 0 0 1 16 6M3 3l18 18"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func LockOpenTwo(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M3 13a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 16a1 1 0 1 0 2 0a1 1 0 0 0-2 0m4-5V7a4 4 0 1 1 8 0v4"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -29071,7 +31128,7 @@ func LockSquareRounded(children ...ElementRenderer) *TablerIcon {
 func LockSquareRoundedFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M12 2c-.218 0-.432.002-.642.005l-.616.017l-.299.013l-.579.034l-.553.046c-4.785.464-6.732 2.411-7.196 7.196l-.046.553l-.034.579c-.005.098-.01.198-.013.299l-.017.616l-.004.318L2 12c0 .218.002.432.005.642l.017.616l.013.299l.034.579l.046.553c.464 4.785 2.411 6.732 7.196 7.196l.553.046l.579.034c.098.005.198.01.299.013l.616.017L12 22l.642-.005l.616-.017l.299-.013l.579-.034l.553-.046c4.785-.464 6.732-2.411 7.196-7.196l.046-.553l.034-.579c.005-.098.01-.198.013-.299l.017-.616L22 12l-.005-.642l-.017-.616l-.013-.299l-.034-.579l-.046-.553c-.464-4.785-2.411-6.732-7.196-7.196l-.553-.046l-.579-.034a28.058 28.058 0 0 0-.299-.013l-.616-.017l-.318-.004zm0 4a3 3 0 0 1 2.995 2.824L15 9v1a2 2 0 0 1 1.995 1.85L17 12v3a2 2 0 0 1-1.85 1.995L15 17H9a2 2 0 0 1-1.995-1.85L7 15v-3a2 2 0 0 1 1.85-1.995L9 10V9a3 3 0 0 1 3-3m3 6H9v3h6zm-3-4a1 1 0 0 0-.993.883L11 9v1h2V9a1 1 0 0 0-1-1"/></g>`),
+			Text(`<path fill="currentColor" d="M12 2c-.218 0-.432.002-.642.005l-.616.017l-.299.013l-.579.034l-.553.046c-4.785.464-6.732 2.411-7.196 7.196l-.046.553l-.034.579c-.005.098-.01.198-.013.299l-.017.616l-.004.318L2 12c0 .218.002.432.005.642l.017.616l.013.299l.034.579l.046.553c.464 4.785 2.411 6.732 7.196 7.196l.553.046l.579.034c.098.005.198.01.299.013l.616.017L12 22l.642-.005l.616-.017l.299-.013l.579-.034l.553-.046c4.785-.464 6.732-2.411 7.196-7.196l.046-.553l.034-.579c.005-.098.01-.198.013-.299l.017-.616L22 12l-.005-.642l-.017-.616l-.013-.299l-.034-.579l-.046-.553c-.464-4.785-2.411-6.732-7.196-7.196l-.553-.046l-.579-.034a28.058 28.058 0 0 0-.299-.013l-.616-.017l-.318-.004zm0 4a3 3 0 0 1 2.995 2.824L15 9v1a2 2 0 0 1 1.995 1.85L17 12v3a2 2 0 0 1-1.85 1.995L15 17H9a2 2 0 0 1-1.995-1.85L7 15v-3a2 2 0 0 1 1.85-1.995L9 10V9a3 3 0 0 1 3-3m3 6H9v3h6zm-3-4a1 1 0 0 0-.993.883L11 9v1h2V9a1 1 0 0 0-1-1"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -29196,6 +31253,14 @@ func LogoutTwo(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func Logs(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 12h.01M4 6h.01M4 18h.01M8 18h2m-2-6h2M8 6h2m4 0h6m-6 6h6m-6 6h6"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func Lollipop(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
@@ -29236,6 +31301,14 @@ func Lungs(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func LungsFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M12 3a1 1 0 0 1 1 1v5a2 2 0 0 0 1 1.732V7.257C14 6.015 14.995 5 16.233 5c.372 0 .738.094 1.122.307l.18.117c1.695 1.23 2.76 3.035 3.773 6.34q.674 2.204.692 5.06c.016 2.195-1.657 4.024-3.843 4.168L17.92 21C15.75 21 14 19.213 14 17.02v-4.146a4 4 0 0 1-1.893-1.112L12 11.644l-.107.118a4 4 0 0 1-1.892 1.112L10 17.02C10 19.213 8.25 21 6.081 21l-.268-.01c-2.155-.142-3.827-1.971-3.811-4.165q.018-2.858.692-5.06C3.705 8.458 4.77 6.653 6.516 5.39l.188-.117A2.2 2.2 0 0 1 7.768 5C9.005 5 10 6.015 10 7.257l.001 3.475A2 2 0 0 0 11 9V4a1 1 0 0 1 1-1"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func LungsOff(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
@@ -29252,6 +31325,14 @@ func Macro(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func MacroFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M17.994 2.888L18 3v3a6 6 0 0 1-5 5.916v4.186A6.98 6.98 0 0 1 18 14a1 1 0 0 1 1 1a7 7 0 0 1-14 0a1 1 0 0 1 1-1c1.96 0 3.731.805 5.002 2.103L11 11.917A6 6 0 0 1 6 6V3a1 1 0 0 1 1.555-.832l2.317 1.544l1.42-1.42a1 1 0 0 1 1.32-.082l.095.083l1.42 1.419l2.318-1.544a1 1 0 0 1 1.55.72M7.13 16.128l.03.134a5.01 5.01 0 0 0 3.71 3.61a5 5 0 0 0-3.74-3.744m9.742.002l-.134.03a5.01 5.01 0 0 0-3.61 3.71a5 5 0 0 0 3.744-3.74"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func MacroOff(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
@@ -29264,6 +31345,14 @@ func Magnet(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 13V5a2 2 0 0 1 2-2h1a2 2 0 0 1 2 2v8a2 2 0 0 0 6 0V5a2 2 0 0 1 2-2h1a2 2 0 0 1 2 2v8a8 8 0 0 1-16 0m0-5h5m6 0h4"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func MagnetFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M21 9v4a9 9 0 0 1-18 0V9h7v4a2 2 0 1 0 4 0V9zm-3-7a3 3 0 0 1 3 3v2h-7V5a3 3 0 0 1 3-3zM7 2a3 3 0 0 1 3 3v2H3V5a3 3 0 0 1 3-3z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -29375,7 +31464,7 @@ func MailFast(children ...ElementRenderer) *TablerIcon {
 func MailFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M22 7.535V17a3 3 0 0 1-2.824 2.995L19 20H5a3 3 0 0 1-2.995-2.824L2 17V7.535l9.445 6.297l.116.066a1 1 0 0 0 .878 0l.116-.066z"/><path fill="currentColor" d="M19 4c1.08 0 2.027.57 2.555 1.427L12 11.797l-9.555-6.37a2.999 2.999 0 0 1 2.354-1.42L5 4z"/></g>`),
+			Text(`<g fill="currentColor"><path d="M22 7.535V17a3 3 0 0 1-2.824 2.995L19 20H5a3 3 0 0 1-2.995-2.824L2 17V7.535l9.445 6.297l.116.066a1 1 0 0 0 .878 0l.116-.066z"/><path d="M19 4c1.08 0 2.027.57 2.555 1.427L12 11.797l-9.555-6.37a2.999 2.999 0 0 1 2.354-1.42L5 4z"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -29423,7 +31512,7 @@ func MailOpened(children ...ElementRenderer) *TablerIcon {
 func MailOpenedFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="m14.872 14.287l6.522 6.52a2.996 2.996 0 0 1-2.218 1.188L19 22H5a2.995 2.995 0 0 1-2.394-1.191l6.521-6.522l2.318 1.545l.116.066a1 1 0 0 0 .878 0l.116-.066zM2 9.535l5.429 3.62L2 18.585zm20 0v9.05l-5.43-5.43zm-9.56-7.433l.115.066l8.444 5.629l-8.999 6l-9-6l8.445-5.63a1 1 0 0 1 .994-.065z"/></g>`),
+			Text(`<path fill="currentColor" d="m14.872 14.287l6.522 6.52a2.996 2.996 0 0 1-2.218 1.188L19 22H5a2.995 2.995 0 0 1-2.394-1.191l6.521-6.522l2.318 1.545l.116.066a1 1 0 0 0 .878 0l.116-.066zM2 9.535l5.429 3.62L2 18.585zm20 0v9.05l-5.43-5.43zm-9.56-7.433l.115.066l8.444 5.629l-8.999 6l-9-6l8.445-5.63a1 1 0 0 1 .994-.065z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -29524,10 +31613,26 @@ func Man(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func ManFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M15 8c1.628 0 3.2.787 4.707 2.293a1 1 0 0 1-1.414 1.414c-.848-.848-1.662-1.369-2.444-1.587L15 16.064V21a1 1 0 0 1-2 0v-4h-2v4a1 1 0 0 1-2 0v-4.929l-.85-5.951c-.781.218-1.595.739-2.443 1.587a1 1 0 1 1-1.414-1.414C5.799 8.787 7.373 8 9 8zm-3-7a3 3 0 1 1-3 3l.005-.176A3 3 0 0 1 12 1"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func ManualGearbox(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M3 6a2 2 0 1 0 4 0a2 2 0 1 0-4 0m7 0a2 2 0 1 0 4 0a2 2 0 1 0-4 0m7 0a2 2 0 1 0 4 0a2 2 0 1 0-4 0M3 18a2 2 0 1 0 4 0a2 2 0 1 0-4 0m7 0a2 2 0 1 0 4 0a2 2 0 1 0-4 0M5 8v8m7-8v8"/><path d="M19 8v2a2 2 0 0 1-2 2H5"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func ManualGearboxFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M19 3a3 3 0 0 1 1 5.829V10a3 3 0 0 1-3 3h-4v2.171A3.001 3.001 0 1 1 9 18l.005-.176A3 3 0 0 1 11 15.17V13H6v2.171A3.001 3.001 0 1 1 2 18l.005-.176A3 3 0 0 1 4 15.17V8.829A3 3 0 0 1 2 6l.005-.176a3 3 0 1 1 3.996 3.005L6 11h5V8.83A3 3 0 0 1 9 6l.005-.176a3 3 0 1 1 3.996 3.005L13 11h4a1 1 0 0 0 1-1V8.83A3 3 0 0 1 16 6l.005-.176A3 3 0 0 1 19 3"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -29735,7 +31840,7 @@ func MapPinExclamation(children ...ElementRenderer) *TablerIcon {
 func MapPinFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M18.364 4.636a9 9 0 0 1 .203 12.519l-.203.21l-4.243 4.242a3 3 0 0 1-4.097.135l-.144-.135l-4.244-4.243A9 9 0 0 1 18.364 4.636M12 8a3 3 0 1 0 0 6a3 3 0 0 0 0-6"/></g>`),
+			Text(`<path fill="currentColor" d="M18.364 4.636a9 9 0 0 1 .203 12.519l-.203.21l-4.243 4.242a3 3 0 0 1-4.097.135l-.144-.135l-4.244-4.243A9 9 0 0 1 18.364 4.636M12 8a3 3 0 1 0 0 6a3 3 0 0 0 0-6"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -30135,7 +32240,15 @@ func MathLower(children ...ElementRenderer) *TablerIcon {
 func MathMax(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 5a2 2 0 1 0 4 0a2 2 0 1 0-4 0M3 20c0-8.75 4-14 7-14.5m4 0c3 .5 7 5.75 7 14.5"/>`),
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M5 6a2 2 0 1 0 4 0a2 2 0 0 0-4 0"/><path d="M3 15s.616-5.544 2.332-7.93m3.305.042C11.354 10.425 14.519 20 17 20c2 0 3.333-3 4-9"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func MathMaxMin(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M15 19a2 2 0 1 0 4 0a2 2 0 0 0-4 0M5 5a2 2 0 1 0 4 0a2 2 0 0 0-4 0"/><path d="M3 14s.605-5.44 2.284-7.862m3.395.026c2.137 2.652 4.547 9.113 6.68 11.719m3.389.155C19.45 17.158 20.2 14.478 21 10"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -30143,7 +32256,7 @@ func MathMax(children ...ElementRenderer) *TablerIcon {
 func MathMin(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M12 17a2 2 0 1 1 0 4a2 2 0 0 1 0-4"/><path d="M3 4c0 8.75 4 14 7 14.5m4 0c3-.5 7-5.75 7-14.5"/></g>`),
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M15 18a2 2 0 1 0 4 0a2 2 0 0 0-4 0"/><path d="M3 13s1-9 4-9c2.48 0 5.643 9.565 8.36 12.883m3.388.155C19.45 16.158 20.2 13.478 21 9"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -30351,7 +32464,7 @@ func MedicalCrossCircle(children ...ElementRenderer) *TablerIcon {
 func MedicalCrossFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="m11 2l-.15.005A2 2 0 0 0 9 4v2.803L6.572 5.402a2 2 0 0 0-2.732.732l-1 1.732l-.073.138a2 2 0 0 0 .805 2.594L5.999 12l-2.427 1.402a2 2 0 0 0-.732 2.732l1 1.732l.083.132a2 2 0 0 0 2.649.6L9 17.196V20a2 2 0 0 0 2 2h2l.15-.005A2 2 0 0 0 15 20v-2.804l2.428 1.403a2 2 0 0 0 2.732-.732l1-1.732l.073-.138a2 2 0 0 0-.805-2.594L18 12l2.428-1.402a2 2 0 0 0 .732-2.732l-1-1.732l-.083-.132a2 2 0 0 0-2.649-.6L15 6.802V4a2 2 0 0 0-2-2z"/></g>`),
+			Text(`<path fill="currentColor" d="m11 2l-.15.005A2 2 0 0 0 9 4v2.803L6.572 5.402a2 2 0 0 0-2.732.732l-1 1.732l-.073.138a2 2 0 0 0 .805 2.594L5.999 12l-2.427 1.402a2 2 0 0 0-.732 2.732l1 1.732l.083.132a2 2 0 0 0 2.649.6L9 17.196V20a2 2 0 0 0 2 2h2l.15-.005A2 2 0 0 0 15 20v-2.804l2.428 1.403a2 2 0 0 0 2.732-.732l1-1.732l.073-.138a2 2 0 0 0-.805-2.594L18 12l2.428-1.402a2 2 0 0 0 .732-2.732l-1-1.732l-.083-.132a2 2 0 0 0-2.649-.6L15 6.802V4a2 2 0 0 0-2-2z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -30631,7 +32744,7 @@ func MessageCircleTwo(children ...ElementRenderer) *TablerIcon {
 func MessageCircleTwoFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M5.821 4.91c3.898-2.765 9.469-2.539 13.073.536c3.667 3.127 4.168 8.238 1.152 11.897c-2.842 3.447-7.965 4.583-12.231 2.805l-.232-.101l-4.375.931l-.075.013l-.11.009l-.113-.004l-.044-.005l-.11-.02l-.105-.034l-.1-.044l-.076-.042l-.108-.077l-.081-.074l-.073-.083l-.053-.075l-.065-.115l-.042-.106l-.031-.113l-.013-.075l-.009-.11l.004-.113l.005-.044l.02-.11l.022-.072l1.15-3.451l-.022-.036C.969 12.45 1.97 7.805 5.59 5.079l.23-.168z"/></g>`),
+			Text(`<path fill="currentColor" d="M5.821 4.91c3.898-2.765 9.469-2.539 13.073.536c3.667 3.127 4.168 8.238 1.152 11.897c-2.842 3.447-7.965 4.583-12.231 2.805l-.232-.101l-4.375.931l-.075.013l-.11.009l-.113-.004l-.044-.005l-.11-.02l-.105-.034l-.1-.044l-.076-.042l-.108-.077l-.081-.074l-.073-.083l-.053-.075l-.065-.115l-.042-.106l-.031-.113l-.013-.075l-.009-.11l.004-.113l.005-.044l.02-.11l.022-.072l1.15-3.451l-.022-.036C.969 12.45 1.97 7.805 5.59 5.079l.23-.168z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -31028,6 +33141,22 @@ func MeteorOff(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func MeterCube(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 5h1.5a1.5 1.5 0 0 1 0 3H18h.5a1.5 1.5 0 0 1 0 3H17M4 12v6m0-4a2 2 0 0 1 2-2h.5A2.5 2.5 0 0 1 9 14.5V18m0-2.5v-1a2.5 2.5 0 1 1 5 0V18"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func MeterSquare(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 5h2a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1h-1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1h2M4 12v6m0-4a2 2 0 0 1 2-2h.5A2.5 2.5 0 0 1 9 14.5V18m0-2.5v-1a2.5 2.5 0 1 1 5 0V18"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func Metronome(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
@@ -31071,7 +33200,7 @@ func Mickey(children ...ElementRenderer) *TablerIcon {
 func MickeyFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M18.501 2a4.5 4.5 0 0 1 .878 8.913a8 8 0 1 1-15.374 3.372L4 14l.005-.285a7.991 7.991 0 0 1 .615-2.803a4.5 4.5 0 0 1-3.187-6.348a4.505 4.505 0 0 1 3.596-2.539l.225-.018L5.535 2l.244.009a4.5 4.5 0 0 1 4.215 4.247a8.001 8.001 0 0 1 4.013 0A4.5 4.5 0 0 1 18.5 2z"/></g>`),
+			Text(`<path fill="currentColor" d="M18.501 2a4.5 4.5 0 0 1 .878 8.913a8 8 0 1 1-15.374 3.372L4 14l.005-.285a7.991 7.991 0 0 1 .615-2.803a4.5 4.5 0 0 1-3.187-6.348a4.505 4.505 0 0 1 3.596-2.539l.225-.018L5.535 2l.244.009a4.5 4.5 0 0 1 4.215 4.247a8.001 8.001 0 0 1 4.013 0A4.5 4.5 0 0 1 18.5 2z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -31080,6 +33209,14 @@ func Microphone(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M9 5a3 3 0 0 1 3-3h0a3 3 0 0 1 3 3v5a3 3 0 0 1-3 3h0a3 3 0 0 1-3-3z"/><path d="M5 10a7 7 0 0 0 14 0M8 21h8m-4-4v4"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func MicrophoneFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M19 9a1 1 0 0 1 1 1a8 8 0 0 1-6.999 7.938L13 20h3a1 1 0 0 1 0 2H8a1 1 0 0 1 0-2h3v-2.062A8 8 0 0 1 4 10a1 1 0 1 1 2 0a6 6 0 0 0 12 0a1 1 0 0 1 1-1m-7-8a4 4 0 0 1 4 4v5a4 4 0 1 1-8 0V5a4 4 0 0 1 4-4"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -31128,6 +33265,14 @@ func Microwave(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M3 7a1 1 0 0 1 1-1h16a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1zm12-1v12m3-6h.01M18 15h.01M18 9h.01"/><path d="M6.5 10.5c1-.667 1.5-.667 2.5 0c.833.347 1.667.926 2.5 0m-5 3c1-.667 1.5-.667 2.5 0c.833.347 1.667.926 2.5 0"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func MicrowaveFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="currentColor"><path d="M20 5a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2zm-6 2H4v10h10zm4.01 7H18a1 1 0 0 0-.117 1.993l.127.007a1 1 0 0 0 0-2m0-3H18a1 1 0 0 0-.117 1.993l.127.007a1 1 0 0 0 0-2m0-3H18a1 1 0 0 0-.117 1.993l.127.007a1 1 0 0 0 0-2"/><path d="M5.945 9.668c1.336-.891 2.274-.891 3.61 0l-.089-.056l.04.017l.146.064l.095.044c.378.171.533.23.674.255c.133.023.186.005.336-.16a1 1 0 1 1 1.486 1.337c-.613.681-1.358.934-2.164.794c-.368-.064-.621-.161-1.158-.405a10 10 0 0 0-.306-.135l-.17-.091c-.664-.443-.726-.443-1.39 0a1 1 0 1 1-1.11-1.664m0 3c1.336-.891 2.274-.891 3.61 0l-.089-.056l.04.017l.146.064l.095.044c.378.171.533.23.674.255c.133.023.186.005.336-.16a1 1 0 0 1 1.486 1.337c-.613.681-1.358.934-2.164.794c-.368-.064-.621-.161-1.158-.405a10 10 0 0 0-.306-.135l-.17-.091c-.664-.443-.726-.443-1.39 0a1 1 0 1 1-1.11-1.664"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -31303,7 +33448,7 @@ func MoodConfuzed(children ...ElementRenderer) *TablerIcon {
 func MoodConfuzedFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M17 3.34a10 10 0 1 1-14.995 8.984L2 12l.005-.324A10 10 0 0 1 17 3.34m-1.43 10.162a11 11 0 0 0-6.6 1.65a1 1 0 0 0 1.06 1.696a9 9 0 0 1 5.4-1.35a1 1 0 0 0 .14-1.996M9.01 9l-.127.007a1 1 0 0 0 0 1.986L9 11l.127-.007a1 1 0 0 0 0-1.986zm6 0l-.127.007a1 1 0 0 0 0 1.986L15 11l.127-.007a1 1 0 0 0 0-1.986z"/></g>`),
+			Text(`<path fill="currentColor" d="M17 3.34a10 10 0 1 1-14.995 8.984L2 12l.005-.324A10 10 0 0 1 17 3.34m-1.43 10.162a11 11 0 0 0-6.6 1.65a1 1 0 0 0 1.06 1.696a9 9 0 0 1 5.4-1.35a1 1 0 0 0 .14-1.996M9.01 9l-.127.007a1 1 0 0 0 0 1.986L9 11l.127-.007a1 1 0 0 0 0-1.986zm6 0l-.127.007a1 1 0 0 0 0 1.986L15 11l.127-.007a1 1 0 0 0 0-1.986z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -31351,7 +33496,7 @@ func MoodEmpty(children ...ElementRenderer) *TablerIcon {
 func MoodEmptyFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M17 3.34a10 10 0 1 1-14.995 8.984L2 12l.005-.324A10 10 0 0 1 17 3.34M15 14H9l-.117.007a1 1 0 0 0 0 1.986L9 16h6l.117-.007a1 1 0 0 0 0-1.986zM9.01 9l-.127.007a1 1 0 0 0 0 1.986L9 11l.127-.007a1 1 0 0 0 0-1.986zm6 0l-.127.007a1 1 0 0 0 0 1.986L15 11l.127-.007a1 1 0 0 0 0-1.986z"/></g>`),
+			Text(`<path fill="currentColor" d="M17 3.34a10 10 0 1 1-14.995 8.984L2 12l.005-.324A10 10 0 0 1 17 3.34M15 14H9l-.117.007a1 1 0 0 0 0 1.986L9 16h6l.117-.007a1 1 0 0 0 0-1.986zM9.01 9l-.127.007a1 1 0 0 0 0 1.986L9 11l.127-.007a1 1 0 0 0 0-1.986zm6 0l-.127.007a1 1 0 0 0 0 1.986L15 11l.127-.007a1 1 0 0 0 0-1.986z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -31367,7 +33512,7 @@ func MoodHappy(children ...ElementRenderer) *TablerIcon {
 func MoodHappyFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M17 3.34a10 10 0 1 1-14.995 8.984L2 12l.005-.324A10 10 0 0 1 17 3.34M15 13H9a1 1 0 0 0-1 1v.05a3.975 3.975 0 0 0 3.777 3.97l.227.005a4.026 4.026 0 0 0 3.99-3.79l.006-.206A1 1 0 0 0 15 13M9.01 8l-.127.007A1 1 0 0 0 9 10l.127-.007A1 1 0 0 0 9.01 8m6 0l-.127.007A1 1 0 0 0 15 10l.127-.007A1 1 0 0 0 15.01 8"/></g>`),
+			Text(`<path fill="currentColor" d="M17 3.34a10 10 0 1 1-14.995 8.984L2 12l.005-.324A10 10 0 0 1 17 3.34M15 13H9a1 1 0 0 0-1 1v.05a3.975 3.975 0 0 0 3.777 3.97l.227.005a4.026 4.026 0 0 0 3.99-3.79l.006-.206A1 1 0 0 0 15 13M9.01 8l-.127.007A1 1 0 0 0 9 10l.127-.007A1 1 0 0 0 9.01 8m6 0l-.127.007A1 1 0 0 0 15 10l.127-.007A1 1 0 0 0 15.01 8"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -31391,7 +33536,7 @@ func MoodKid(children ...ElementRenderer) *TablerIcon {
 func MoodKidFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M17 3.34a10 10 0 1 1-14.995 8.984L2 12l.005-.324a10 10 0 0 1 7.046-9.232A3 3 0 0 0 12 6a1 1 0 0 0 0-2l-.117-.007A1 1 0 0 1 12 2c1.726 0 3.453.447 5 1.34m-1.8 10.946a1 1 0 0 0-1.414.014a2.5 2.5 0 0 1-3.572 0a1 1 0 0 0-1.428 1.4a4.5 4.5 0 0 0 6.428 0a1 1 0 0 0-.014-1.414M9.01 9l-.127.007A1 1 0 0 0 9 11l.127-.007A1 1 0 0 0 9.01 9m6 0l-.127.007A1 1 0 0 0 15 11l.127-.007A1 1 0 0 0 15.01 9"/></g>`),
+			Text(`<path fill="currentColor" d="M17 3.34a10 10 0 1 1-14.995 8.984L2 12l.005-.324a10 10 0 0 1 7.046-9.232A3 3 0 0 0 12 6a1 1 0 0 0 0-2l-.117-.007A1 1 0 0 1 12 2c1.726 0 3.453.447 5 1.34m-1.8 10.946a1 1 0 0 0-1.414.014a2.5 2.5 0 0 1-3.572 0a1 1 0 0 0-1.428 1.4a4.5 4.5 0 0 0 6.428 0a1 1 0 0 0-.014-1.414M9.01 9l-.127.007A1 1 0 0 0 9 11l.127-.007A1 1 0 0 0 9.01 9m6 0l-.127.007A1 1 0 0 0 15 11l.127-.007A1 1 0 0 0 15.01 9"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -31463,7 +33608,7 @@ func MoodNeutral(children ...ElementRenderer) *TablerIcon {
 func MoodNeutralFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M17 3.34a10 10 0 1 1-14.995 8.984L2 12l.005-.324A10 10 0 0 1 17 3.34M9.01 9l-.127.007a1 1 0 0 0 0 1.986L9 11l.127-.007a1 1 0 0 0 0-1.986zm6 0l-.127.007a1 1 0 0 0 0 1.986L15 11l.127-.007a1 1 0 0 0 0-1.986z"/></g>`),
+			Text(`<path fill="currentColor" d="M17 3.34a10 10 0 1 1-14.995 8.984L2 12l.005-.324A10 10 0 0 1 17 3.34M9.01 9l-.127.007a1 1 0 0 0 0 1.986L9 11l.127-.007a1 1 0 0 0 0-1.986zm6 0l-.127.007a1 1 0 0 0 0 1.986L15 11l.127-.007a1 1 0 0 0 0-1.986z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -31519,7 +33664,7 @@ func MoodSadDizzy(children ...ElementRenderer) *TablerIcon {
 func MoodSadFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M17 3.34a10 10 0 1 1-14.995 8.984L2 12l.005-.324A10 10 0 0 1 17 3.34m-5 9.86a4.5 4.5 0 0 0-3.214 1.35a1 1 0 1 0 1.428 1.4a2.5 2.5 0 0 1 3.572 0a1 1 0 0 0 1.428-1.4A4.5 4.5 0 0 0 12 13.2M9.01 9l-.127.007a1 1 0 0 0 0 1.986L9 11l.127-.007a1 1 0 0 0 0-1.986zm6 0l-.127.007a1 1 0 0 0 0 1.986L15 11l.127-.007a1 1 0 0 0 0-1.986z"/></g>`),
+			Text(`<path fill="currentColor" d="M17 3.34a10 10 0 1 1-14.995 8.984L2 12l.005-.324A10 10 0 0 1 17 3.34m-5 9.86a4.5 4.5 0 0 0-3.214 1.35a1 1 0 1 0 1.428 1.4a2.5 2.5 0 0 1 3.572 0a1 1 0 0 0 1.428-1.4A4.5 4.5 0 0 0 12 13.2M9.01 9l-.127.007a1 1 0 0 0 0 1.986L9 11l.127-.007a1 1 0 0 0 0-1.986zm6 0l-.127.007a1 1 0 0 0 0 1.986L15 11l.127-.007a1 1 0 0 0 0-1.986z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -31607,7 +33752,7 @@ func MoodSmileDizzy(children ...ElementRenderer) *TablerIcon {
 func MoodSmileFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M17 3.34a10 10 0 1 1-14.995 8.984L2 12l.005-.324A10 10 0 0 1 17 3.34m-1.8 10.946a1 1 0 0 0-1.414.014a2.5 2.5 0 0 1-3.572 0a1 1 0 0 0-1.428 1.4a4.5 4.5 0 0 0 6.428 0a1 1 0 0 0-.014-1.414M9.01 9l-.127.007A1 1 0 0 0 9 11l.127-.007A1 1 0 0 0 9.01 9m6 0l-.127.007A1 1 0 0 0 15 11l.127-.007A1 1 0 0 0 15.01 9"/></g>`),
+			Text(`<path fill="currentColor" d="M17 3.34a10 10 0 1 1-14.995 8.984L2 12l.005-.324A10 10 0 0 1 17 3.34m-1.8 10.946a1 1 0 0 0-1.414.014a2.5 2.5 0 0 1-3.572 0a1 1 0 0 0-1.428 1.4a4.5 4.5 0 0 0 6.428 0a1 1 0 0 0-.014-1.414M9.01 9l-.127.007A1 1 0 0 0 9 11l.127-.007A1 1 0 0 0 9.01 9m6 0l-.127.007A1 1 0 0 0 15 11l.127-.007A1 1 0 0 0 15.01 9"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -31711,7 +33856,7 @@ func Moon(children ...ElementRenderer) *TablerIcon {
 func MoonFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M12 1.992a10 10 0 1 0 9.236 13.838c.341-.82-.476-1.644-1.298-1.31a6.5 6.5 0 0 1-6.864-10.787l.077-.08c.551-.63.113-1.653-.758-1.653h-.266l-.068-.006z"/></g>`),
+			Text(`<path fill="currentColor" d="M12 1.992a10 10 0 1 0 9.236 13.838c.341-.82-.476-1.644-1.298-1.31a6.5 6.5 0 0 1-6.864-10.787l.077-.08c.551-.63.113-1.653-.758-1.653h-.266l-.068-.006z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -31783,7 +33928,7 @@ func Mouse(children ...ElementRenderer) *TablerIcon {
 func MouseFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M14 2a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5h-4a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm-2 4a1 1 0 0 0-1 1v4l.007.117A1 1 0 0 0 13 11V7l-.007-.117A1 1 0 0 0 12 6"/></g>`),
+			Text(`<path fill="currentColor" d="M14 2a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5h-4a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm-2 4a1 1 0 0 0-1 1v4l.007.117A1 1 0 0 0 13 11V7l-.007-.117A1 1 0 0 0 12 6"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -31887,7 +34032,7 @@ func Mushroom(children ...ElementRenderer) *TablerIcon {
 func MushroomFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M15 15v4a3 3 0 0 1-5.995.176L9 19v-4zM4.9 13a1.9 1.9 0 0 1-1.894-1.752L3 11.1C3 6.077 7.027 2 12 2s9 4.077 9 9.1a1.9 1.9 0 0 1-1.752 1.894L19.1 13z"/></g>`),
+			Text(`<path fill="currentColor" d="M15 15v4a3 3 0 0 1-5.995.176L9 19v-4zM4.9 13a1.9 1.9 0 0 1-1.894-1.752L3 11.1C3 6.077 7.027 2 12 2s9 4.077 9 9.1a1.9 1.9 0 0 1-1.752 1.894L19.1 13z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -32167,7 +34312,7 @@ func NavigationExclamation(children ...ElementRenderer) *TablerIcon {
 func NavigationFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M11.092 2.581a1 1 0 0 1 1.754-.116l.062.116l8.005 17.365c.198.566.05 1.196-.378 1.615a1.53 1.53 0 0 1-1.459.393l-7.077-2.398L5.1 21.894a1.535 1.535 0 0 1-1.52-.231l-.112-.1c-.398-.386-.556-.954-.393-1.556l.047-.15z"/></g>`),
+			Text(`<path fill="currentColor" d="M11.092 2.581a1 1 0 0 1 1.754-.116l.062.116l8.005 17.365c.198.566.05 1.196-.378 1.615a1.53 1.53 0 0 1-1.459.393l-7.077-2.398L5.1 21.894a1.535 1.535 0 0 1-1.52-.231l-.112-.1c-.398-.386-.556-.954-.393-1.556l.047-.15z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -32588,6 +34733,14 @@ func NumberOne(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func NumberOneHundredTwentyThree(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m3 10l2-2v8m4-8h3a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-2a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h3m4-8h2.5A1.5 1.5 0 0 1 21 9.5v1a1.5 1.5 0 0 1-1.5 1.5H18h1.5a1.5 1.5 0 0 1 1.5 1.5v1a1.5 1.5 0 0 1-1.5 1.5H17"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func NumberOneSmall(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
@@ -32831,7 +34984,7 @@ func Octagon(children ...ElementRenderer) *TablerIcon {
 func OctagonFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M15.3 2H8.7c-.562 0-1.016.201-1.407.593l-4.7 4.7A1.894 1.894 0 0 0 2 8.7v6.6c0 .562.201 1.016.593 1.407l4.7 4.7c.391.392.845.593 1.407.593h6.6c.562 0 1.016-.201 1.407-.593l4.7-4.7c.392-.391.593-.845.593-1.407V8.7c0-.562-.201-1.016-.593-1.407l-4.7-4.7A1.894 1.894 0 0 0 15.3 2"/></g>`),
+			Text(`<path fill="currentColor" d="M15.3 2H8.7c-.562 0-1.016.201-1.407.593l-4.7 4.7A1.894 1.894 0 0 0 2 8.7v6.6c0 .562.201 1.016.593 1.407l4.7 4.7c.391.392.845.593 1.407.593h6.6c.562 0 1.016-.201 1.407-.593l4.7-4.7c.392-.391.593-.845.593-1.407V8.7c0-.562-.201-1.016-.593-1.407l-4.7-4.7A1.894 1.894 0 0 0 15.3 2"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -32940,14 +35093,6 @@ func Omega(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
-func OneHundredTwentyThree(children ...ElementRenderer) *TablerIcon {
-	return &TablerIcon{
-		SVGSVGElement: SVG_SVG(
-			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m3 10l2-2v8m4-8h3a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-2a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h3m4-8h2.5A1.5 1.5 0 0 1 21 9.5v1a1.5 1.5 0 0 1-1.5 1.5H18h1.5a1.5 1.5 0 0 1 1.5 1.5v1a1.5 1.5 0 0 1-1.5 1.5H17"/>`),
-		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
-	}
-}
-
 func Outbound(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
@@ -32975,7 +35120,7 @@ func Oval(children ...ElementRenderer) *TablerIcon {
 func OvalFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M12 2c3.972 0 7 4.542 7 10s-3.028 10-7 10c-3.9 0-6.89-4.379-6.997-9.703L5 12l.003-.297C5.11 6.38 8.1 2 12 2"/></g>`),
+			Text(`<path fill="currentColor" d="M12 2c3.972 0 7 4.542 7 10s-3.028 10-7 10c-3.9 0-6.89-4.379-6.997-9.703L5 12l.003-.297C5.11 6.38 8.1 2 12 2"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -32991,7 +35136,7 @@ func OvalVertical(children ...ElementRenderer) *TablerIcon {
 func OvalVerticalFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M12 5C6.543 5 2 8.028 2 12s4.543 7 10 7s10-3.028 10-7s-4.543-7-10-7"/></g>`),
+			Text(`<path fill="currentColor" d="M12 5C6.543 5 2 8.028 2 12s4.543 7 10 7s10-3.028 10-7s-4.543-7-10-7"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -33071,7 +35216,7 @@ func Paint(children ...ElementRenderer) *TablerIcon {
 func PaintFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M17 2a3 3 0 0 1 2.995 2.824L20 5a3 3 0 0 1 3 3a6 6 0 0 1-5.775 5.996L17 14h-4l.15.005a2 2 0 0 1 1.844 1.838L15 16v4a2 2 0 0 1-1.85 1.995L13 22h-2a2 2 0 0 1-1.995-1.85L9 20v-4a2 2 0 0 1 1.85-1.995L11 14v-1a1 1 0 0 1 .883-.993L12 12h5a4 4 0 0 0 4-4a1 1 0 0 0-.883-.993L20 7l-.005.176a3 3 0 0 1-2.819 2.819L17 10H7a3 3 0 0 1-2.995-2.824L4 7V5a3 3 0 0 1 2.824-2.995L7 2z"/></g>`),
+			Text(`<path fill="currentColor" d="M17 2a3 3 0 0 1 2.995 2.824L20 5a3 3 0 0 1 3 3a6 6 0 0 1-5.775 5.996L17 14h-4l.15.005a2 2 0 0 1 1.844 1.838L15 16v4a2 2 0 0 1-1.85 1.995L13 22h-2a2 2 0 0 1-1.995-1.85L9 20v-4a2 2 0 0 1 1.85-1.995L11 14v-1a1 1 0 0 1 .883-.993L12 12h5a4 4 0 0 0 4-4a1 1 0 0 0-.883-.993L20 7l-.005.176a3 3 0 0 1-2.819 2.819L17 10H7a3 3 0 0 1-2.995-2.824L4 7V5a3 3 0 0 1 2.824-2.995L7 2z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -33263,7 +35408,7 @@ func Paw(children ...ElementRenderer) *TablerIcon {
 func PawFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M12 10c-1.32 0-1.983.421-2.931 1.924l-.244.398l-.395.688a50.89 50.89 0 0 0-.141.254c-.24.434-.571.753-1.139 1.142l-.55.365c-.94.627-1.432 1.118-1.707 1.955c-.124.338-.196.853-.193 1.28C4.7 19.693 5.898 21 7.5 21l.242-.006c.119-.006.234-.017.354-.034l.248-.043l.132-.028l.291-.073l.162-.045l.57-.17l.763-.243l.455-.136c.53-.15.94-.222 1.283-.222c.344 0 .753.073 1.283.222l.455.136l.764.242l.569.171l.312.084c.097.024.187.045.273.062l.248.043c.12.017.235.028.354.034L16.5 21c1.602 0 2.8-1.307 2.8-3c0-.427-.073-.939-.207-1.306c-.236-.724-.677-1.223-1.48-1.83l-.257-.19l-.528-.38c-.642-.47-1.003-.826-1.253-1.278l-.27-.485l-.252-.432C14.042 10.403 13.435 10 12 10m7.78-3h-.03c-1.219.02-2.35 1.066-2.908 2.504c-.69 1.775-.348 3.72 1.075 4.333c.256.109.527.163.801.163c1.231 0 2.38-1.053 2.943-2.504c.686-1.774.34-3.72-1.076-4.332A2.05 2.05 0 0 0 19.781 7zM9.025 3c-.112 0-.185.002-.27.015l-.093.016C7.13 3.237 6.265 5.02 6.554 6.886C6.826 8.611 8.016 10 9.474 10l.187-.005a1.26 1.26 0 0 0 .084-.01l.092-.016c1.533-.206 2.397-1.989 2.108-3.855C11.675 4.387 10.485 3 9.025 3"/><path fill="currentColor" d="M14.972 3c-1.459 0-2.647 1.388-2.916 3.113c-.29 1.867.574 3.65 2.174 3.867c.103.013.2.02.296.02c1.39 0 2.543-1.265 2.877-2.883l.041-.23c.29-1.867-.574-3.65-2.174-3.867a2.154 2.154 0 0 0-.298-.02M4.217 7c-.274 0-.544.054-.797.161c-1.426.615-1.767 2.562-1.078 4.335C2.905 12.947 4.052 14 5.283 14c.274 0 .544-.054.797-.161c1.426-.615 1.767-2.562 1.078-4.335C6.595 8.053 5.448 7 4.217 7"/></g>`),
+			Text(`<g fill="currentColor"><path d="M12 10c-1.32 0-1.983.421-2.931 1.924l-.244.398l-.395.688a50.89 50.89 0 0 0-.141.254c-.24.434-.571.753-1.139 1.142l-.55.365c-.94.627-1.432 1.118-1.707 1.955c-.124.338-.196.853-.193 1.28C4.7 19.693 5.898 21 7.5 21l.242-.006c.119-.006.234-.017.354-.034l.248-.043l.132-.028l.291-.073l.162-.045l.57-.17l.763-.243l.455-.136c.53-.15.94-.222 1.283-.222c.344 0 .753.073 1.283.222l.455.136l.764.242l.569.171l.312.084c.097.024.187.045.273.062l.248.043c.12.017.235.028.354.034L16.5 21c1.602 0 2.8-1.307 2.8-3c0-.427-.073-.939-.207-1.306c-.236-.724-.677-1.223-1.48-1.83l-.257-.19l-.528-.38c-.642-.47-1.003-.826-1.253-1.278l-.27-.485l-.252-.432C14.042 10.403 13.435 10 12 10m7.78-3h-.03c-1.219.02-2.35 1.066-2.908 2.504c-.69 1.775-.348 3.72 1.075 4.333c.256.109.527.163.801.163c1.231 0 2.38-1.053 2.943-2.504c.686-1.774.34-3.72-1.076-4.332A2.05 2.05 0 0 0 19.781 7zM9.025 3c-.112 0-.185.002-.27.015l-.093.016C7.13 3.237 6.265 5.02 6.554 6.886C6.826 8.611 8.016 10 9.474 10l.187-.005a1.26 1.26 0 0 0 .084-.01l.092-.016c1.533-.206 2.397-1.989 2.108-3.855C11.675 4.387 10.485 3 9.025 3"/><path d="M14.972 3c-1.459 0-2.647 1.388-2.916 3.113c-.29 1.867.574 3.65 2.174 3.867c.103.013.2.02.296.02c1.39 0 2.543-1.265 2.877-2.883l.041-.23c.29-1.867-.574-3.65-2.174-3.867a2.154 2.154 0 0 0-.298-.02M4.217 7c-.274 0-.544.054-.797.161c-1.426.615-1.767 2.562-1.078 4.335C2.905 12.947 4.052 14 5.283 14c.274 0 .544-.054.797-.161c1.426-.615 1.767-2.562 1.078-4.335C6.595 8.053 5.448 7 4.217 7"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -33272,6 +35417,14 @@ func PawOff(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.168 11.154c-.71.31-1.184 1.107-2 2.593c-.942 1.703-2.846 1.845-3.321 3.291c-.097.265-.145.677-.143.962c0 1.176.787 2 1.8 2c1.259 0 3-1 4.5-1s3.241 1 4.5 1c.927 0 1.664-.689 1.783-1.708m1.901-10.21A1.039 1.039 0 0 0 19.782 8h-.015c-.735.012-1.56.75-1.993 1.866c-.519 1.335-.28 2.7.538 3.052c.129.055.267.082.406.082c.739 0 1.575-.742 2.011-1.866c.516-1.335.273-2.7-.54-3.052h0zM11 6.992a3.608 3.608 0 0 0-.04-.725C10.757 4.97 9.913 4 9.028 4a1.237 1.237 0 0 0-.758.265m8.186 2.468c.214-1.376-.375-2.594-1.32-2.722A1.164 1.164 0 0 0 14.974 4c-.885 0-1.728.97-1.93 2.267c-.214 1.376.375 2.594 1.32 2.722c.054.007.108.011.162.011c.885 0 1.73-.974 1.93-2.267M5.69 12.918c.816-.352 1.054-1.719.536-3.052C5.79 8.742 4.955 8 4.217 8c-.14 0-.277.027-.407.082c-.816.352-1.054 1.719-.536 3.052C3.71 12.258 4.545 13 5.283 13c.14 0 .277-.027.407-.082M3 3l18 18"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func Paywall(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M13 21H7a2 2 0 0 1-2-2v-6a2 2 0 0 1 2-2h10"/><path d="M11 16a1 1 0 1 0 2 0a1 1 0 0 0-2 0m-3-5V7a4 4 0 1 1 8 0v4m5 4h-2.5a1.5 1.5 0 0 0 0 3h1a1.5 1.5 0 0 1 0 3H17m2 0v1m0-8v1"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -33479,7 +35632,7 @@ func Pennant(children ...ElementRenderer) *TablerIcon {
 func PennantFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M10 2a1 1 0 0 1 .993.883L11 3v.35l8.406 3.736c.752.335.79 1.365.113 1.77l-.113.058L11 12.649V20h1a1 1 0 0 1 .117 1.993L12 22H8a1 1 0 0 1-.117-1.993L8 20h1V3a1 1 0 0 1 1-1"/></g>`),
+			Text(`<path fill="currentColor" d="M10 2a1 1 0 0 1 .993.883L11 3v.35l8.406 3.736c.752.335.79 1.365.113 1.77l-.113.058L11 12.649V20h1a1 1 0 0 1 .117 1.993L12 22H8a1 1 0 0 1-.117-1.993L8 20h1V3a1 1 0 0 1 1-1"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -33503,7 +35656,7 @@ func PennantTwo(children ...ElementRenderer) *TablerIcon {
 func PennantTwoFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M14 2a1 1 0 0 1 .993.883L15 3v17h1a1 1 0 0 1 .117 1.993L16 22h-4a1 1 0 0 1-.117-1.993L12 20h1v-7.351L4.594 8.914c-.752-.335-.79-1.365-.113-1.77l.113-.058L13 3.35V3a1 1 0 0 1 1-1"/></g>`),
+			Text(`<path fill="currentColor" d="M14 2a1 1 0 0 1 .993.883L15 3v17h1a1 1 0 0 1 .117 1.993L16 22h-4a1 1 0 0 1-.117-1.993L12 20h1v-7.351L4.594 8.914c-.752-.335-.79-1.365-.113-1.77l.113-.058L13 3.35V3a1 1 0 0 1 1-1"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -33519,7 +35672,7 @@ func Pentagon(children ...ElementRenderer) *TablerIcon {
 func PentagonFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="m10.205 2.6l-6.96 5.238A3 3 0 0 0 2.2 11.176l2.896 8.765A3 3 0 0 0 7.946 22h8.12a3 3 0 0 0 2.841-2.037l2.973-8.764a3 3 0 0 0-1.05-3.37l-7.033-5.237l-.091-.061l-.018-.01l-.106-.07a3 3 0 0 0-3.377.148z"/></g>`),
+			Text(`<path fill="currentColor" d="m10.205 2.6l-6.96 5.238A3 3 0 0 0 2.2 11.176l2.896 8.765A3 3 0 0 0 7.946 22h8.12a3 3 0 0 0 2.841-2.037l2.973-8.764a3 3 0 0 0-1.05-3.37l-7.033-5.237l-.091-.061l-.018-.01l-.106-.07a3 3 0 0 0-3.377.148z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -33719,7 +35872,7 @@ func PhoneCheck(children ...ElementRenderer) *TablerIcon {
 func PhoneFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M9 3a1 1 0 0 1 .877.519l.051.11l2 5a1 1 0 0 1-.313 1.16l-.1.068l-1.674 1.004l.063.103a10 10 0 0 0 3.132 3.132l.102.062l1.005-1.672a1 1 0 0 1 1.113-.453l.115.039l5 2a1 1 0 0 1 .622.807L21 15v4c0 1.657-1.343 3-3.06 2.998C9.361 21.477 2.522 14.638 2 6a3 3 0 0 1 2.824-2.995L5 3z"/></g>`),
+			Text(`<path fill="currentColor" d="M9 3a1 1 0 0 1 .877.519l.051.11l2 5a1 1 0 0 1-.313 1.16l-.1.068l-1.674 1.004l.063.103a10 10 0 0 0 3.132 3.132l.102.062l1.005-1.672a1 1 0 0 1 1.113-.453l.115.039l5 2a1 1 0 0 1 .622.807L21 15v4c0 1.657-1.343 3-3.06 2.998C9.361 21.477 2.522 14.638 2 6a3 3 0 0 1 2.824-2.995L5 3z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -33887,7 +36040,7 @@ func PhotoExclamation(children ...ElementRenderer) *TablerIcon {
 func PhotoFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M8.813 11.612c.457-.38.918-.38 1.386.011l.108.098l4.986 4.986l.094.083a1 1 0 0 0 1.403-1.403l-.083-.094L15.415 14l.292-.293l.106-.095c.457-.38.918-.38 1.386.011l.108.098l4.674 4.675a4 4 0 0 1-3.775 3.599L18 22H6a4 4 0 0 1-3.98-3.603l6.687-6.69zM18 2a4 4 0 0 1 3.995 3.8L22 6v9.585l-3.293-3.292l-.15-.137c-1.256-1.095-2.85-1.097-4.096-.017l-.154.14l-.307.306l-2.293-2.292l-.15-.137c-1.256-1.095-2.85-1.097-4.096-.017l-.154.14L2 15.585V6a4 4 0 0 1 3.8-3.995L6 2zm-2.99 5l-.127.007a1 1 0 0 0 0 1.986L15 9l.127-.007a1 1 0 0 0 0-1.986z"/></g>`),
+			Text(`<path fill="currentColor" d="M8.813 11.612c.457-.38.918-.38 1.386.011l.108.098l4.986 4.986l.094.083a1 1 0 0 0 1.403-1.403l-.083-.094L15.415 14l.292-.293l.106-.095c.457-.38.918-.38 1.386.011l.108.098l4.674 4.675a4 4 0 0 1-3.775 3.599L18 22H6a4 4 0 0 1-3.98-3.603l6.687-6.69zM18 2a4 4 0 0 1 3.995 3.8L22 6v9.585l-3.293-3.292l-.15-.137c-1.256-1.095-2.85-1.097-4.096-.017l-.154.14l-.307.306l-2.293-2.292l-.15-.137c-1.256-1.095-2.85-1.097-4.096-.017l-.154.14L2 15.585V6a4 4 0 0 1 3.8-3.995L6 2zm-2.99 5l-.127.007a1 1 0 0 0 0 1.986L15 9l.127-.007a1 1 0 0 0 0-1.986z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -34148,6 +36301,22 @@ func Pilcrow(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func PilcrowLeft(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 9H9a3 3 0 1 1 0-6h7m-5 0v11m4-11v11M3 18h18M6 15l-3 3l3 3"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func PilcrowRight(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 9H9a3 3 0 1 1 0-6h7m-5 0v11m4-11v11m6 4H3m15-3l3 3l-3 3"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func Pill(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
@@ -34191,7 +36360,7 @@ func PinEnd(children ...ElementRenderer) *TablerIcon {
 func PinFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="m15.113 3.21l.094.083l5.5 5.5a1 1 0 0 1-1.175 1.59l-3.172 3.171l-1.424 3.797a1 1 0 0 1-.158.277l-.07.08l-1.5 1.5a1 1 0 0 1-1.32.082l-.095-.083L9 16.415l-3.793 3.792a1 1 0 0 1-1.497-1.32l.083-.094L7.585 15l-2.792-2.793a1 1 0 0 1-.083-1.32l.083-.094l1.5-1.5a1 1 0 0 1 .258-.187l.098-.042l3.796-1.425l3.171-3.17a1 1 0 0 1 1.497-1.26z"/></g>`),
+			Text(`<path fill="currentColor" d="m15.113 3.21l.094.083l5.5 5.5a1 1 0 0 1-1.175 1.59l-3.172 3.171l-1.424 3.797a1 1 0 0 1-.158.277l-.07.08l-1.5 1.5a1 1 0 0 1-1.32.082l-.095-.083L9 16.415l-3.793 3.792a1 1 0 0 1-1.497-1.32l.083-.094L7.585 15l-2.792-2.793a1 1 0 0 1-.083-1.32l.083-.094l1.5-1.5a1 1 0 0 1 .258-.187l.098-.042l3.796-1.425l3.171-3.17a1 1 0 0 1 1.497-1.26z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -34223,7 +36392,7 @@ func Pinned(children ...ElementRenderer) *TablerIcon {
 func PinnedFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M16 3a1 1 0 0 1 .117 1.993L16 5v4.764l1.894 3.789a1 1 0 0 1 .1.331L18 14v2a1 1 0 0 1-.883.993L17 17h-4v4a1 1 0 0 1-1.993.117L11 21v-4H7a1 1 0 0 1-.993-.883L6 16v-2a1 1 0 0 1 .06-.34l.046-.107L8 9.762V5a1 1 0 0 1-.117-1.993L8 3z"/></g>`),
+			Text(`<path fill="currentColor" d="M16 3a1 1 0 0 1 .117 1.993L16 5v4.764l1.894 3.789a1 1 0 0 1 .1.331L18 14v2a1 1 0 0 1-.883.993L17 17h-4v4a1 1 0 0 1-1.993.117L11 21v-4H7a1 1 0 0 1-.993-.883L6 16v-2a1 1 0 0 1 .06-.34l.046-.107L8 9.762V5a1 1 0 0 1-.117-1.993L8 3z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -34423,7 +36592,7 @@ func PlayerEject(children ...ElementRenderer) *TablerIcon {
 func PlayerEjectFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="m11.247 3.341l-7 8C3.682 11.988 4.141 13 5 13h14c.86 0 1.318-1.012.753-1.659l-7-8a1 1 0 0 0-1.506 0M18 15H6a2 2 0 0 0-2 2v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2a2 2 0 0 0-2-2"/></g>`),
+			Text(`<path fill="currentColor" d="m11.247 3.341l-7 8C3.682 11.988 4.141 13 5 13h14c.86 0 1.318-1.012.753-1.659l-7-8a1 1 0 0 0-1.506 0M18 15H6a2 2 0 0 0-2 2v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2a2 2 0 0 0-2-2"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -34439,7 +36608,7 @@ func PlayerPause(children ...ElementRenderer) *TablerIcon {
 func PlayerPauseFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M9 4H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2m8 0h-2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2"/></g>`),
+			Text(`<path fill="currentColor" d="M9 4H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2m8 0h-2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -34455,7 +36624,7 @@ func PlayerPlay(children ...ElementRenderer) *TablerIcon {
 func PlayerPlayFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M6 4v16a1 1 0 0 0 1.524.852l13-8a1 1 0 0 0 0-1.704l-13-8A1 1 0 0 0 6 4"/></g>`),
+			Text(`<path fill="currentColor" d="M6 4v16a1 1 0 0 0 1.524.852l13-8a1 1 0 0 0 0-1.704l-13-8A1 1 0 0 0 6 4"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -34471,7 +36640,7 @@ func PlayerRecord(children ...ElementRenderer) *TablerIcon {
 func PlayerRecordFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M8 5.072a8 8 0 1 1-3.995 7.213L4 12l.005-.285A8 8 0 0 1 8 5.072"/></g>`),
+			Text(`<path fill="currentColor" d="M8 5.072a8 8 0 1 1-3.995 7.213L4 12l.005-.285A8 8 0 0 1 8 5.072"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -34487,7 +36656,7 @@ func PlayerSkipBack(children ...ElementRenderer) *TablerIcon {
 func PlayerSkipBackFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="m19.496 4.136l-12 7a1 1 0 0 0 0 1.728l12 7A1 1 0 0 0 21 19V5a1 1 0 0 0-1.504-.864M4 4a1 1 0 0 1 .993.883L5 5v14a1 1 0 0 1-1.993.117L3 19V5a1 1 0 0 1 1-1"/></g>`),
+			Text(`<path fill="currentColor" d="m19.496 4.136l-12 7a1 1 0 0 0 0 1.728l12 7A1 1 0 0 0 21 19V5a1 1 0 0 0-1.504-.864M4 4a1 1 0 0 1 .993.883L5 5v14a1 1 0 0 1-1.993.117L3 19V5a1 1 0 0 1 1-1"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -34503,7 +36672,7 @@ func PlayerSkipForward(children ...ElementRenderer) *TablerIcon {
 func PlayerSkipForwardFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M3 5v14a1 1 0 0 0 1.504.864l12-7a1 1 0 0 0 0-1.728l-12-7A1 1 0 0 0 3 5m17-1a1 1 0 0 1 .993.883L21 5v14a1 1 0 0 1-1.993.117L19 19V5a1 1 0 0 1 1-1"/></g>`),
+			Text(`<path fill="currentColor" d="M3 5v14a1 1 0 0 0 1.504.864l12-7a1 1 0 0 0 0-1.728l-12-7A1 1 0 0 0 3 5m17-1a1 1 0 0 1 .993.883L21 5v14a1 1 0 0 1-1.993.117L19 19V5a1 1 0 0 1 1-1"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -34519,7 +36688,7 @@ func PlayerStop(children ...ElementRenderer) *TablerIcon {
 func PlayerStopFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M17 4H7a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3"/></g>`),
+			Text(`<path fill="currentColor" d="M17 4H7a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -34535,7 +36704,7 @@ func PlayerTrackNext(children ...ElementRenderer) *TablerIcon {
 func PlayerTrackNextFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M2 5v14c0 .86 1.012 1.318 1.659.753l8-7a1 1 0 0 0 0-1.506l-8-7C3.012 3.682 2 4.141 2 5m11 0v14c0 .86 1.012 1.318 1.659.753l8-7a1 1 0 0 0 0-1.506l-8-7C14.012 3.682 13 4.141 13 5"/></g>`),
+			Text(`<path fill="currentColor" d="M2 5v14c0 .86 1.012 1.318 1.659.753l8-7a1 1 0 0 0 0-1.506l-8-7C3.012 3.682 2 4.141 2 5m11 0v14c0 .86 1.012 1.318 1.659.753l8-7a1 1 0 0 0 0-1.506l-8-7C14.012 3.682 13 4.141 13 5"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -34551,7 +36720,7 @@ func PlayerTrackPrev(children ...ElementRenderer) *TablerIcon {
 func PlayerTrackPrevFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="m20.341 4.247l-8 7a1 1 0 0 0 0 1.506l8 7c.647.565 1.659.106 1.659-.753V5c0-.86-1.012-1.318-1.659-.753m-11 0l-8 7a1 1 0 0 0 0 1.506l8 7C9.988 20.318 11 19.859 11 19V5c0-.86-1.012-1.318-1.659-.753"/></g>`),
+			Text(`<path fill="currentColor" d="m20.341 4.247l-8 7a1 1 0 0 0 0 1.506l8 7c.647.565 1.659.106 1.659-.753V5c0-.86-1.012-1.318-1.659-.753m-11 0l-8 7a1 1 0 0 0 0 1.506l8 7C9.988 20.318 11 19.859 11 19V5c0-.86-1.012-1.318-1.659-.753"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -34719,7 +36888,7 @@ func Point(children ...ElementRenderer) *TablerIcon {
 func PointFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M12 7a5 5 0 1 1-4.995 5.217L7 12l.005-.217A5 5 0 0 1 12 7"/></g>`),
+			Text(`<path fill="currentColor" d="M12 7a5 5 0 1 1-4.995 5.217L7 12l.005-.217A5 5 0 0 1 12 7"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -34807,7 +36976,7 @@ func PointerExclamation(children ...ElementRenderer) *TablerIcon {
 func PointerFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M3.039 4.277L6.943 17.84c.185.837.92 1.516 1.831 1.642l.17.016a2.2 2.2 0 0 0 1.982-1.006l.045-.078l1.4-2.072l4.05 4.05a2.067 2.067 0 0 0 2.924 0l1.047-1.047c.388-.388.606-.913.606-1.461l-.008-.182a2.067 2.067 0 0 0-.598-1.28l-4.047-4.048l2.103-1.412c.726-.385 1.18-1.278 1.053-2.189A2.2 2.2 0 0 0 17.8 6.928L4.276 3.038a1 1 0 0 0-1.236 1.24z"/></g>`),
+			Text(`<path fill="currentColor" d="M3.039 4.277L6.943 17.84c.185.837.92 1.516 1.831 1.642l.17.016a2.2 2.2 0 0 0 1.982-1.006l.045-.078l1.4-2.072l4.05 4.05a2.067 2.067 0 0 0 2.924 0l1.047-1.047c.388-.388.606-.913.606-1.461l-.008-.182a2.067 2.067 0 0 0-.598-1.28l-4.047-4.048l2.103-1.412c.726-.385 1.18-1.278 1.053-2.189A2.2 2.2 0 0 0 17.8 6.928L4.276 3.038a1 1 0 0 0-1.236 1.24z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -34943,7 +37112,7 @@ func Polaroid(children ...ElementRenderer) *TablerIcon {
 func PolaroidFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="m9.199 9.623l.108.098l3.986 3.986l.094.083a1 1 0 0 0 1.403-1.403l-.083-.094l-.292-.293l1.292-1.293l.106-.095c.457-.38.918-.38 1.386.011l.108.098l4.502 4.503a4.003 4.003 0 0 1-3.596 2.77L18 18H6a4.002 4.002 0 0 1-3.809-2.775l5.516-5.518l.106-.095c.457-.38.918-.38 1.386.011M18 2a4 4 0 0 1 3.995 3.8L22 6v6.585l-3.293-3.292l-.15-.137c-1.256-1.095-2.85-1.097-4.096-.017l-.154.14L13 10.585l-2.293-2.292l-.15-.137c-1.256-1.095-2.85-1.097-4.096-.017l-.154.14L2 12.585V6a4 4 0 0 1 3.8-3.995L6 2zm-2.99 3l-.127.007a1 1 0 0 0 0 1.986L15 7l.127-.007a1 1 0 0 0 0-1.986zm-7 15a1 1 0 0 1 .117 1.993L8 22a1 1 0 0 1-.117-1.993zm4 0a1 1 0 0 1 .117 1.993L12 22a1 1 0 0 1-.117-1.993zm4 0a1 1 0 0 1 .117 1.993L16 22a1 1 0 0 1-.117-1.993z"/></g>`),
+			Text(`<path fill="currentColor" d="m9.199 9.623l.108.098l3.986 3.986l.094.083a1 1 0 0 0 1.403-1.403l-.083-.094l-.292-.293l1.292-1.293l.106-.095c.457-.38.918-.38 1.386.011l.108.098l4.502 4.503a4.003 4.003 0 0 1-3.596 2.77L18 18H6a4.002 4.002 0 0 1-3.809-2.775l5.516-5.518l.106-.095c.457-.38.918-.38 1.386.011M18 2a4 4 0 0 1 3.995 3.8L22 6v6.585l-3.293-3.292l-.15-.137c-1.256-1.095-2.85-1.097-4.096-.017l-.154.14L13 10.585l-2.293-2.292l-.15-.137c-1.256-1.095-2.85-1.097-4.096-.017l-.154.14L2 12.585V6a4 4 0 0 1 3.8-3.995L6 2zm-2.99 3l-.127.007a1 1 0 0 0 0 1.986L15 7l.127-.007a1 1 0 0 0 0-1.986zm-7 15a1 1 0 0 1 .117 1.993L8 22a1 1 0 0 1-.117-1.993zm4 0a1 1 0 0 1 .117 1.993L12 22a1 1 0 0 1-.117-1.993zm4 0a1 1 0 0 1 .117 1.993L16 22a1 1 0 0 1-.117-1.993z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -35068,6 +37237,14 @@ func Prism(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func PrismLight(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.731 19H16.27a1 1 0 0 0 .866-1.5l-5.769-10a1 1 0 0 0-1.732 0l-5.769 10a1 1 0 0 0 .865 1.5M2 13h4.45M18 5l-4.5 6M22 9l-7.75 3.25M22 15l-7-1.5"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func PrismOff(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
@@ -35156,6 +37333,14 @@ func Prompt(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func Prong(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m10.2 10.2l6.3 6.3m2.847.075l1.08 1.079a1.96 1.96 0 0 1-2.773 2.772l-1.08-1.079a1.96 1.96 0 0 1 2.773-2.772M3 7l3.05 3.15a2.9 2.9 0 0 0 4.1-4.1L7 3"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func Propeller(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
@@ -35168,6 +37353,14 @@ func PropellerOff(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M10.448 10.432a3 3 0 1 0 4.106 4.143m-.282-4.303c.66-1.459 1.058-2.888 1.198-4.286C15.69 4.356 14.708 3 12 3c-1.94 0-3 .696-3.355 1.69m.697 4.653c.145.384.309.77.491 1.157m3.336 6.251c.97 1.395 2.057 2.523 3.257 3.386c1.02.789 2.265.853 3.408-.288m1.479-2.493c.492-1.634-.19-2.726-1.416-3.229a12.78 12.78 0 0 0-2.65-.852"/><path d="M8.664 13c-1.693.143-3.213.52-4.56 1.128c-1.522.623-2.206 2.153-.852 4.498s3.02 2.517 4.321 1.512c1.2-.863 2.287-1.991 3.258-3.386M3 3l18 18"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func Protocol(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 6L8 18M20 6l-7 12m-8-4v.015m0-4v.015"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -35191,7 +37384,7 @@ func Puzzle(children ...ElementRenderer) *TablerIcon {
 func PuzzleFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M10 2a3 3 0 0 1 2.995 2.824L13 5v1h3a2 2 0 0 1 1.995 1.85L18 8v3h1a3 3 0 0 1 .176 5.995L19 17h-1v3a2 2 0 0 1-1.85 1.995L16 22h-3a2 2 0 0 1-1.995-1.85L11 20v-1a1 1 0 0 0-1.993-.117L9 19v1a2 2 0 0 1-1.85 1.995L7 22H4a2 2 0 0 1-1.995-1.85L2 20v-3a2 2 0 0 1 1.85-1.995L4 15h1a1 1 0 0 0 .117-1.993L5 13H4a2 2 0 0 1-1.995-1.85L2 11V8a2 2 0 0 1 1.85-1.995L4 6h3V5a3 3 0 0 1 3-3"/></g>`),
+			Text(`<path fill="currentColor" d="M10 2a3 3 0 0 1 2.995 2.824L13 5v1h3a2 2 0 0 1 1.995 1.85L18 8v3h1a3 3 0 0 1 .176 5.995L19 17h-1v3a2 2 0 0 1-1.85 1.995L16 22h-3a2 2 0 0 1-1.995-1.85L11 20v-1a1 1 0 0 0-1.993-.117L9 19v1a2 2 0 0 1-1.85 1.995L7 22H4a2 2 0 0 1-1.995-1.85L2 20v-3a2 2 0 0 1 1.85-1.995L4 15h1a1 1 0 0 0 .117-1.993L5 13H4a2 2 0 0 1-1.995-1.85L2 11V8a2 2 0 0 1 1.85-1.995L4 6h3V5a3 3 0 0 1 3-3"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -35300,6 +37493,14 @@ func Radar(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func RadarFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M12 10a2 2 0 0 1 1.678.911l.053.089H21l.117.007A1 1 0 0 1 22 12c0 5.523-4.477 10-10 10a1 1 0 0 1-1-1v-7.269l-.089-.053a2 2 0 0 1-.906-1.529L10 12a2 2 0 0 1 2-2m9.428-1.334a1 1 0 0 1-1.884.668A8 8 0 1 0 9.337 19.552a1 1 0 0 1-.666 1.886A10 10 0 1 1 21.428 8.666M16.8 8.4a1 1 0 0 1-1.6 1.2a4 4 0 1 0-5.6 5.6a1 1 0 0 1-1.2 1.6a6 6 0 1 1 8.4-8.4"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func RadarOff(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
@@ -35343,7 +37544,7 @@ func Radioactive(children ...ElementRenderer) *TablerIcon {
 func RadioactiveFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M21 11a1 1 0 0 1 1 1a10 10 0 0 1-5 8.656a1 1 0 0 1-1.302-.268l-.064-.098l-3-5.19a.995.995 0 0 1-.133-.542l.01-.11l.023-.106l.034-.106l.046-.1l.056-.094l.067-.089a.994.994 0 0 1 .165-.155l.098-.064a2 2 0 0 0 .993-1.57l.007-.163a1 1 0 0 1 .883-.994L15 11zM7 3.344a10 10 0 0 1 10 0a1 1 0 0 1 .418 1.262l-.052.104l-3 5.19l-.064.098a.994.994 0 0 1-.155.165l-.089.067a1 1 0 0 1-.195.102l-.105.034l-.107.022a1.003 1.003 0 0 1-.547-.07L13 10.266a2 2 0 0 0-1.842-.082l-.158.082a1 1 0 0 1-1.302-.268L9.634 9.9l-3-5.19A1 1 0 0 1 7 3.344M9 11a1 1 0 0 1 .993.884l.007.117a2 2 0 0 0 .861 1.645l.237.152a.994.994 0 0 1 .165.155l.067.089l.056.095l.045.099c.014.036.026.07.035.106l.022.107l.011.11a.994.994 0 0 1-.08.437l-.053.104l-3 5.19A1 1 0 0 1 7 20.656A10 10 0 0 1 2 12a1 1 0 0 1 .883-.993L3 11z"/></g>`),
+			Text(`<path fill="currentColor" d="M21 11a1 1 0 0 1 1 1a10 10 0 0 1-5 8.656a1 1 0 0 1-1.302-.268l-.064-.098l-3-5.19a.995.995 0 0 1-.133-.542l.01-.11l.023-.106l.034-.106l.046-.1l.056-.094l.067-.089a.994.994 0 0 1 .165-.155l.098-.064a2 2 0 0 0 .993-1.57l.007-.163a1 1 0 0 1 .883-.994L15 11zM7 3.344a10 10 0 0 1 10 0a1 1 0 0 1 .418 1.262l-.052.104l-3 5.19l-.064.098a.994.994 0 0 1-.155.165l-.089.067a1 1 0 0 1-.195.102l-.105.034l-.107.022a1.003 1.003 0 0 1-.547-.07L13 10.266a2 2 0 0 0-1.842-.082l-.158.082a1 1 0 0 1-1.302-.268L9.634 9.9l-3-5.19A1 1 0 0 1 7 3.344M9 11a1 1 0 0 1 .993.884l.007.117a2 2 0 0 0 .861 1.645l.237.152a.994.994 0 0 1 .165.155l.067.089l.056.095l.045.099c.014.036.026.07.035.106l.022.107l.011.11a.994.994 0 0 1-.08.437l-.053.104l-3 5.19A1 1 0 0 1 7 20.656A10 10 0 0 1 2 12a1 1 0 0 1 .883-.993L3 11z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -35516,6 +37717,14 @@ func ReceiptRefund(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func ReceiptRupee(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M5 21V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16l-3-2l-2 2l-2-2l-2 2l-2-2z"/><path d="M15 7H9h1a3 3 0 0 1 0 6H9l3 3m-3-6h6"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func ReceiptTax(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
@@ -35583,7 +37792,7 @@ func Rectangle(children ...ElementRenderer) *TablerIcon {
 func RectangleFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M19 4H5a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3"/></g>`),
+			Text(`<path fill="currentColor" d="M19 4H5a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -35615,7 +37824,7 @@ func RectangleVertical(children ...ElementRenderer) *TablerIcon {
 func RectangleVerticalFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M17 2H7a3 3 0 0 0-3 3v14a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V5a3 3 0 0 0-3-3"/></g>`),
+			Text(`<path fill="currentColor" d="M17 2H7a3 3 0 0 0-3 3v14a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V5a3 3 0 0 0-3-3"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -35724,6 +37933,14 @@ func RelationManyToMany(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func RelationManyToManyFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M19 4a3 3 0 0 1 3 3v10a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3V7a3 3 0 0 1 3-3zm-3.2 5.4c-.577-.769-1.8-.361-1.8.6v4a1 1 0 0 0 1 1l.117-.007A1 1 0 0 0 16 14v-1l1.2 1.6c.577.769 1.8.361 1.8-.6v-4a1 1 0 0 0-1-1l-.117.007A1 1 0 0 0 17 10v1zm-9 0C6.223 8.631 5 9.039 5 10v4a1 1 0 0 0 1 1l.117-.007A1 1 0 0 0 7 14v-1l1.2 1.6c.577.769 1.8.361 1.8-.6v-4a1 1 0 0 0-1-1l-.117.007A1 1 0 0 0 8 10v1zm5.2 3.1a1 1 0 0 0-1 1v.01a1 1 0 0 0 2 0v-.01a1 1 0 0 0-1-1m0-3a1 1 0 0 0-1 1v.01a1 1 0 0 0 2 0v-.01a1 1 0 0 0-1-1"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func RelationOneToMany(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
@@ -35732,10 +37949,26 @@ func RelationOneToMany(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func RelationOneToManyFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M19 4a3 3 0 0 1 3 3v10a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3V7a3 3 0 0 1 3-3zm-4.2 5.4c-.577-.769-1.8-.361-1.8.6v4a1 1 0 0 0 1 1l.117-.007A1 1 0 0 0 15 14v-1l1.2 1.6c.577.769 1.8.361 1.8-.6v-4a1 1 0 0 0-1-1l-.117.007A1 1 0 0 0 16 10v1zM8 9H7a1 1 0 1 0 0 2v3a1 1 0 0 0 2 0v-4a1 1 0 0 0-1-1m3 3.5a1 1 0 0 0-1 1v.01a1 1 0 0 0 2 0v-.01a1 1 0 0 0-1-1m0-3a1 1 0 0 0-1 1v.01a1 1 0 0 0 2 0v-.01a1 1 0 0 0-1-1"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func RelationOneToOne(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M3 7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M8 10h1v4m6-4h1v4m-4-3.5v.01m0 2.99v.01"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func RelationOneToOneFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M19 4a3 3 0 0 1 3 3v10a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3V7a3 3 0 0 1 3-3zM9 9H8a1 1 0 1 0 0 2v3a1 1 0 0 0 2 0v-4a1 1 0 0 0-1-1m7 0h-1a1 1 0 0 0 0 2v3a1 1 0 0 0 2 0v-4a1 1 0 0 0-1-1m-4 3.5a1 1 0 0 0-1 1v.01a1 1 0 0 0 2 0v-.01a1 1 0 0 0-1-1m0-3a1 1 0 0 0-1 1v.01a1 1 0 0 0 2 0v-.01a1 1 0 0 0-1-1"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -35791,7 +38024,7 @@ func Replace(children ...ElementRenderer) *TablerIcon {
 func ReplaceFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M8 2H4a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2m12 12h-4a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2v-4a2 2 0 0 0-2-2M16.707 2.293a1 1 0 0 1 .083 1.32l-.083.094L15.414 5H19a3 3 0 0 1 2.995 2.824L22 8v3a1 1 0 0 1-1.993.117L20 11V8a1 1 0 0 0-.883-.993L19 7h-3.585l1.292 1.293a1 1 0 0 1-1.32 1.497l-.094-.083l-3-3a.98.98 0 0 1-.28-.872l.036-.146l.04-.104c.058-.126.14-.24.245-.334l2.959-2.958a1 1 0 0 1 1.414 0M3 12a1 1 0 0 1 .993.883L4 13v3a1 1 0 0 0 .883.993L5 17h3.585l-1.292-1.293a1 1 0 0 1-.083-1.32l.083-.094a1 1 0 0 1 1.32-.083l.094.083l3 3a.98.98 0 0 1 .28.872l-.036.146l-.04.104a1.02 1.02 0 0 1-.245.334l-2.959 2.958a1 1 0 0 1-1.497-1.32l.083-.094L8.584 19H5a3 3 0 0 1-2.995-2.824L2 16v-3a1 1 0 0 1 1-1"/></g>`),
+			Text(`<path fill="currentColor" d="M8 2H4a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2m12 12h-4a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2v-4a2 2 0 0 0-2-2M16.707 2.293a1 1 0 0 1 .083 1.32l-.083.094L15.414 5H19a3 3 0 0 1 2.995 2.824L22 8v3a1 1 0 0 1-1.993.117L20 11V8a1 1 0 0 0-.883-.993L19 7h-3.585l1.292 1.293a1 1 0 0 1-1.32 1.497l-.094-.083l-3-3a.98.98 0 0 1-.28-.872l.036-.146l.04-.104c.058-.126.14-.24.245-.334l2.959-2.958a1 1 0 0 1 1.414 0M3 12a1 1 0 0 1 .993.883L4 13v3a1 1 0 0 0 .883.993L5 17h3.585l-1.292-1.293a1 1 0 0 1-.083-1.32l.083-.094a1 1 0 0 1 1.32-.083l.094.083l3 3a.98.98 0 0 1 .28.872l-.036.146l-.04.104a1.02 1.02 0 0 1-.245.334l-2.959 2.958a1 1 0 0 1-1.497-1.32l.083-.094L8.584 19H5a3 3 0 0 1-2.995-2.824L2 16v-3a1 1 0 0 1 1-1"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -36132,10 +38365,42 @@ func Rosette(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func RosetteDiscount(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="m9 15l6-6"/><circle cx="9.5" cy="9.5" r=".5" fill="currentColor"/><circle cx="14.5" cy="14.5" r=".5" fill="currentColor"/><path d="M5 7.2A2.2 2.2 0 0 1 7.2 5h1a2.2 2.2 0 0 0 1.55-.64l.7-.7a2.2 2.2 0 0 1 3.12 0l.7.7a2.2 2.2 0 0 0 1.55.64h1a2.2 2.2 0 0 1 2.2 2.2v1a2.2 2.2 0 0 0 .64 1.55l.7.7a2.2 2.2 0 0 1 0 3.12l-.7.7a2.2 2.2 0 0 0-.64 1.55v1a2.2 2.2 0 0 1-2.2 2.2h-1a2.2 2.2 0 0 0-1.55.64l-.7.7a2.2 2.2 0 0 1-3.12 0l-.7-.7a2.2 2.2 0 0 0-1.55-.64h-1a2.2 2.2 0 0 1-2.2-2.2v-1a2.2 2.2 0 0 0-.64-1.55l-.7-.7a2.2 2.2 0 0 1 0-3.12l.7-.7A2.2 2.2 0 0 0 5 8.2z"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func RosetteDiscountCheck(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M5 7.2A2.2 2.2 0 0 1 7.2 5h1a2.2 2.2 0 0 0 1.55-.64l.7-.7a2.2 2.2 0 0 1 3.12 0l.7.7c.412.41.97.64 1.55.64h1a2.2 2.2 0 0 1 2.2 2.2v1c0 .58.23 1.138.64 1.55l.7.7a2.2 2.2 0 0 1 0 3.12l-.7.7a2.2 2.2 0 0 0-.64 1.55v1a2.2 2.2 0 0 1-2.2 2.2h-1a2.2 2.2 0 0 0-1.55.64l-.7.7a2.2 2.2 0 0 1-3.12 0l-.7-.7a2.2 2.2 0 0 0-1.55-.64h-1a2.2 2.2 0 0 1-2.2-2.2v-1a2.2 2.2 0 0 0-.64-1.55l-.7-.7a2.2 2.2 0 0 1 0-3.12l.7-.7A2.2 2.2 0 0 0 5 8.2z"/><path d="m9 12l2 2l4-4"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func RosetteDiscountCheckFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M12.01 2.011a3.2 3.2 0 0 1 2.113.797l.154.145l.698.698a1.2 1.2 0 0 0 .71.341L15.82 4h1a3.2 3.2 0 0 1 3.195 3.018l.005.182v1c0 .27.092.533.258.743l.09.1l.697.698a3.2 3.2 0 0 1 .147 4.382l-.145.154l-.698.698a1.2 1.2 0 0 0-.341.71l-.008.135v1a3.2 3.2 0 0 1-3.018 3.195l-.182.005h-1a1.2 1.2 0 0 0-.743.258l-.1.09l-.698.697a3.2 3.2 0 0 1-4.382.147l-.154-.145l-.698-.698a1.2 1.2 0 0 0-.71-.341L8.2 20.02h-1a3.2 3.2 0 0 1-3.195-3.018L4 16.82v-1a1.2 1.2 0 0 0-.258-.743l-.09-.1l-.697-.698a3.2 3.2 0 0 1-.147-4.382l.145-.154l.698-.698a1.2 1.2 0 0 0 .341-.71L4 8.2v-1l.005-.182a3.2 3.2 0 0 1 3.013-3.013L7.2 4h1a1.2 1.2 0 0 0 .743-.258l.1-.09l.698-.697a3.2 3.2 0 0 1 2.269-.944m3.697 7.282a1 1 0 0 0-1.414 0L11 12.585l-1.293-1.292l-.094-.083a1 1 0 0 0-1.32 1.497l2 2l.094.083a1 1 0 0 0 1.32-.083l4-4l.083-.094a1 1 0 0 0-.083-1.32"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func RosetteDiscountOff(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="m9 15l3-3m2-2l1-1m-5.852.145A.498.498 0 0 0 9.5 10a.5.5 0 0 0 .35-.142m4.298 4.287A.498.498 0 0 0 14.5 15a.5.5 0 0 0 .35-.142"/><path d="M8.887 4.89a2.2 2.2 0 0 0 .863-.53l.7-.7a2.2 2.2 0 0 1 3.12 0l.7.7c.412.41.97.64 1.55.64h1a2.2 2.2 0 0 1 2.2 2.2v1c0 .58.23 1.138.64 1.55l.7.7a2.2 2.2 0 0 1 0 3.12l-.7.7a2.2 2.2 0 0 0-.528.858m-.757 3.248a2.193 2.193 0 0 1-1.555.644h-1a2.2 2.2 0 0 0-1.55.64l-.7.7a2.2 2.2 0 0 1-3.12 0l-.7-.7a2.2 2.2 0 0 0-1.55-.64h-1a2.2 2.2 0 0 1-2.2-2.2v-1a2.2 2.2 0 0 0-.64-1.55l-.7-.7a2.2 2.2 0 0 1 0-3.12l.7-.7A2.2 2.2 0 0 0 5 8.2v-1c0-.604.244-1.152.638-1.55M3 3l18 18"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func RosetteFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M12.01 2.011a3.2 3.2 0 0 1 2.113.797l.154.145l.698.698a1.2 1.2 0 0 0 .71.341L15.82 4h1a3.2 3.2 0 0 1 3.195 3.018l.005.182v1c0 .27.092.533.258.743l.09.1l.697.698a3.2 3.2 0 0 1 .147 4.382l-.145.154l-.698.698a1.2 1.2 0 0 0-.341.71l-.008.135v1a3.2 3.2 0 0 1-3.018 3.195l-.182.005h-1a1.2 1.2 0 0 0-.743.258l-.1.09l-.698.697a3.2 3.2 0 0 1-4.382.147l-.154-.145l-.698-.698a1.2 1.2 0 0 0-.71-.341L8.2 20.02h-1a3.2 3.2 0 0 1-3.195-3.018L4 16.82v-1a1.2 1.2 0 0 0-.258-.743l-.09-.1l-.697-.698a3.2 3.2 0 0 1-.147-4.382l.145-.154l.698-.698a1.2 1.2 0 0 0 .341-.71L4 8.2v-1l.005-.182a3.2 3.2 0 0 1 3.013-3.013L7.2 4h1a1.2 1.2 0 0 0 .743-.258l.1-.09l.698-.697a3.2 3.2 0 0 1 2.269-.944"/></g>`),
+			Text(`<path fill="currentColor" d="M12.01 2.011a3.2 3.2 0 0 1 2.113.797l.154.145l.698.698a1.2 1.2 0 0 0 .71.341L15.82 4h1a3.2 3.2 0 0 1 3.195 3.018l.005.182v1c0 .27.092.533.258.743l.09.1l.697.698a3.2 3.2 0 0 1 .147 4.382l-.145.154l-.698.698a1.2 1.2 0 0 0-.341.71l-.008.135v1a3.2 3.2 0 0 1-3.018 3.195l-.182.005h-1a1.2 1.2 0 0 0-.743.258l-.1.09l-.698.697a3.2 3.2 0 0 1-4.382.147l-.154-.145l-.698-.698a1.2 1.2 0 0 0-.71-.341L8.2 20.02h-1a3.2 3.2 0 0 1-3.195-3.018L4 16.82v-1a1.2 1.2 0 0 0-.258-.743l-.09-.1l-.697-.698a3.2 3.2 0 0 1-.147-4.382l.145-.154l.698-.698a1.2 1.2 0 0 0 .341-.71L4 8.2v-1l.005-.182a3.2 3.2 0 0 1 3.013-3.013L7.2 4h1a1.2 1.2 0 0 0 .743-.258l.1-.09l.698-.697a3.2 3.2 0 0 1 2.269-.944"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -36256,6 +38521,14 @@ func RotateRectangle(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m10.09 4.01l.496-.495a2 2 0 0 1 2.828 0l7.071 7.07a2 2 0 0 1 0 2.83l-7.07 7.07a2 2 0 0 1-2.83 0l-7.07-7.07a2 2 0 0 1 0-2.83L7.05 7.05H3.062m3.988 3.988V7.05"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func RotateThreeD(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M12 3a7 7 0 0 1 7 7v4l-3-3m6 0l-3 3M8 15.5l-5-3l5-3l5 3V18l-5 3z"/><path d="M3 12.5V18l5 3m0-5.455l5-3.03"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -36636,6 +38909,14 @@ func ScanEye(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func ScanPosition(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7V6a2 2 0 0 1 2-2h2M4 17v1a2 2 0 0 0 2 2h2m8-16h2a2 2 0 0 1 2 2v1m-4 13h2a2 2 0 0 0 2-2v-1m-8 0l3-8l-8 3l3.5 1.5z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func Schema(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
@@ -36840,6 +39121,14 @@ func Section(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 20h.01M4 20h.01M8 20h.01M12 20h.01M16 20h.01M20 4h.01M4 4h.01M8 4h.01M12 4h.01M16 4v.01M4 9a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v6a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func SectionFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M20.01 19a1 1 0 0 1 .117 1.993L20 21a1 1 0 0 1-.117-1.993zm-16 0a1 1 0 0 1 0 2a1 1 0 0 1-.127-1.993zm4 0a1 1 0 0 1 0 2a1 1 0 0 1-.127-1.993zm4 0a1 1 0 0 1 .117 1.993L12 21a1 1 0 0 1-.117-1.993zm4 0a1 1 0 0 1 .117 1.993L16 21a1 1 0 0 1-.117-1.993zm4-16a1 1 0 0 1 .117 1.993L20 5a1 1 0 0 1-.117-1.993zm-16 0a1 1 0 1 1 0 2a1 1 0 0 1-.127-1.993zm4 0a1 1 0 1 1 0 2a1 1 0 0 1-.127-1.993zm4 0a1 1 0 0 1 .117 1.993L12 5a1 1 0 0 1-.117-1.993zM16 3a1 1 0 0 1 1 1a1 1 0 1 1-2 .01c0-.562.448-1.01 1-1.01m3 4a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -37079,7 +39368,7 @@ func SettingsExclamation(children ...ElementRenderer) *TablerIcon {
 func SettingsFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M14.647 4.081a.724.724 0 0 0 1.08.448c2.439-1.485 5.23 1.305 3.745 3.744a.724.724 0 0 0 .447 1.08c2.775.673 2.775 4.62 0 5.294a.724.724 0 0 0-.448 1.08c1.485 2.439-1.305 5.23-3.744 3.745a.724.724 0 0 0-1.08.447c-.673 2.775-4.62 2.775-5.294 0a.724.724 0 0 0-1.08-.448c-2.439 1.485-5.23-1.305-3.745-3.744a.724.724 0 0 0-.447-1.08c-2.775-.673-2.775-4.62 0-5.294a.724.724 0 0 0 .448-1.08c-1.485-2.439 1.305-5.23 3.744-3.745a.722.722 0 0 0 1.08-.447c.673-2.775 4.62-2.775 5.294 0M12 9a3 3 0 1 0 0 6a3 3 0 0 0 0-6"/></g>`),
+			Text(`<path fill="currentColor" d="M14.647 4.081a.724.724 0 0 0 1.08.448c2.439-1.485 5.23 1.305 3.745 3.744a.724.724 0 0 0 .447 1.08c2.775.673 2.775 4.62 0 5.294a.724.724 0 0 0-.448 1.08c1.485 2.439-1.305 5.23-3.744 3.745a.724.724 0 0 0-1.08.447c-.673 2.775-4.62 2.775-5.294 0a.724.724 0 0 0-1.08-.448c-2.439 1.485-5.23-1.305-3.745-3.744a.724.724 0 0 0-.447-1.08c-2.775-.673-2.775-4.62 0-5.294a.724.724 0 0 0 .448-1.08c-1.485-2.439 1.305-5.23 3.744-3.745a.722.722 0 0 0 1.08-.447c.673-2.775 4.62-2.775 5.294 0M12 9a3 3 0 1 0 0 6a3 3 0 0 0 0-6"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -37268,10 +39557,10 @@ func ShareTwo(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
-func ShiJumping(children ...ElementRenderer) *TablerIcon {
+func Shareplay(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M11 3a1 1 0 1 0 2 0a1 1 0 0 0-2 0m6 14.5L12 13V7l5 4M7 17.5l5-4.5"/><path d="m15.103 21.58l6.762-14.502a2 2 0 0 0-.968-2.657m-12 17.159L2.135 7.077a2 2 0 0 1 .968-2.657M7 11l5-4"/></g>`),
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M18 18a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H6a3 3 0 0 0-3 3v8a3 3 0 0 0 3 3"/><path d="M9 20h6l-3-5z"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -37311,7 +39600,7 @@ func ShieldCheck(children ...ElementRenderer) *TablerIcon {
 func ShieldCheckFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="m11.998 2l.118.007l.059.008l.061.013l.111.034a.993.993 0 0 1 .217.112l.104.082l.255.218a11 11 0 0 0 7.189 2.537l.342-.01a1 1 0 0 1 1.005.717a13 13 0 0 1-9.208 16.25a1 1 0 0 1-.502 0A13 13 0 0 1 2.54 5.718a1 1 0 0 1 1.005-.717a11 11 0 0 0 7.531-2.527l.263-.225l.096-.075a.993.993 0 0 1 .217-.112l.112-.034a.97.97 0 0 1 .119-.021zm3.71 7.293a1 1 0 0 0-1.415 0L11 12.585l-1.293-1.292l-.094-.083a1 1 0 0 0-1.32 1.497l2 2l.094.083a1 1 0 0 0 1.32-.083l4-4l.083-.094a1 1 0 0 0-.083-1.32z"/></g>`),
+			Text(`<path fill="currentColor" d="m11.998 2l.118.007l.059.008l.061.013l.111.034a.993.993 0 0 1 .217.112l.104.082l.255.218a11 11 0 0 0 7.189 2.537l.342-.01a1 1 0 0 1 1.005.717a13 13 0 0 1-9.208 16.25a1 1 0 0 1-.502 0A13 13 0 0 1 2.54 5.718a1 1 0 0 1 1.005-.717a11 11 0 0 0 7.531-2.527l.263-.225l.096-.075a.993.993 0 0 1 .217-.112l.112-.034a.97.97 0 0 1 .119-.021zm3.71 7.293a1 1 0 0 0-1.415 0L11 12.585l-1.293-1.292l-.094-.083a1 1 0 0 0-1.32 1.497l2 2l.094.083a1 1 0 0 0 1.32-.083l4-4l.083-.094a1 1 0 0 0-.083-1.32z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -37327,7 +39616,7 @@ func ShieldCheckered(children ...ElementRenderer) *TablerIcon {
 func ShieldCheckeredFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M11.013 12v9.754A13 13 0 0 1 2.28 12zm9.284 3.794a13 13 0 0 1-7.283 5.951L13.013 12h8.708a12.96 12.96 0 0 1-1.424 3.794M11.014 2.526L11.013 10H2.027c-.068-1.432.101-2.88.514-4.282a1 1 0 0 1 1.005-.717a11 11 0 0 0 7.192-2.256zM13.013 10V2.547l-.09-.073a11 11 0 0 0 7.189 2.537l.342-.01a1 1 0 0 1 1.005.717c.413 1.403.582 2.85.514 4.282z"/></g>`),
+			Text(`<path fill="currentColor" d="M11.013 12v9.754A13 13 0 0 1 2.28 12zm9.284 3.794a13 13 0 0 1-7.283 5.951L13.013 12h8.708a12.96 12.96 0 0 1-1.424 3.794M11.014 2.526L11.013 10H2.027c-.068-1.432.101-2.88.514-4.282a1 1 0 0 1 1.005-.717a11 11 0 0 0 7.192-2.256zM13.013 10V2.547l-.09-.073a11 11 0 0 0 7.189 2.537l.342-.01a1 1 0 0 1 1.005.717c.413 1.403.582 2.85.514 4.282z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -37383,7 +39672,7 @@ func ShieldExclamation(children ...ElementRenderer) *TablerIcon {
 func ShieldFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M11.884 2.007L11.998 2l.118.007l.059.008l.061.013l.111.034a.993.993 0 0 1 .217.112l.104.082l.255.218a11 11 0 0 0 7.189 2.537l.342-.01a1 1 0 0 1 1.005.717a13 13 0 0 1-9.208 16.25a1 1 0 0 1-.502 0A13 13 0 0 1 2.54 5.718a1 1 0 0 1 1.005-.717a11 11 0 0 0 7.531-2.527l.263-.225l.096-.075a.993.993 0 0 1 .217-.112l.112-.034a.97.97 0 0 1 .119-.021z"/></g>`),
+			Text(`<path fill="currentColor" d="M11.884 2.007L11.998 2l.118.007l.059.008l.061.013l.111.034a.993.993 0 0 1 .217.112l.104.082l.255.218a11 11 0 0 0 7.189 2.537l.342-.01a1 1 0 0 1 1.005.717a13 13 0 0 1-9.208 16.25a1 1 0 0 1-.502 0A13 13 0 0 1 2.54 5.718a1 1 0 0 1 1.005-.717a11 11 0 0 0 7.531-2.527l.263-.225l.096-.075a.993.993 0 0 1 .217-.112l.112-.034a.97.97 0 0 1 .119-.021z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -37399,7 +39688,7 @@ func ShieldHalf(children ...ElementRenderer) *TablerIcon {
 func ShieldHalfFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3a12 12 0 0 0 8.5 3A12 12 0 0 1 12 21A12 12 0 0 1 3.5 6A12 12 0 0 0 12 3m0 0v18m0-10h8.9M12 8h8.9M12 5h3.1M12 17h6.2M12 14h8"/>`),
+			Text(`<path fill="currentColor" d="M12 3a12 12 0 0 0 8.5 3A12 12 0 0 1 12 21A12 12 0 0 1 3.5 6A12 12 0 0 0 12 3m0 0v18m0-10h8.9M12 8h8.9M12 5h3.1M12 17h6.2M12 14h8"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -37423,7 +39712,7 @@ func ShieldLock(children ...ElementRenderer) *TablerIcon {
 func ShieldLockFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="m11.998 2l.118.007l.059.008l.061.013l.111.034a.993.993 0 0 1 .217.112l.104.082l.255.218a11 11 0 0 0 7.189 2.537l.342-.01a1 1 0 0 1 1.005.717a13 13 0 0 1-9.208 16.25a1 1 0 0 1-.502 0A13 13 0 0 1 2.54 5.718a1 1 0 0 1 1.005-.717a11 11 0 0 0 7.531-2.527l.263-.225l.096-.075a.993.993 0 0 1 .217-.112l.112-.034a.97.97 0 0 1 .119-.021zM12 9a2 2 0 0 0-1.995 1.85L10 11l.005.15A2 2 0 0 0 11 12.731V14.5l.007.117A1 1 0 0 0 13 14.5l.001-1.768A2 2 0 0 0 12 9"/></g>`),
+			Text(`<path fill="currentColor" d="m11.998 2l.118.007l.059.008l.061.013l.111.034a.993.993 0 0 1 .217.112l.104.082l.255.218a11 11 0 0 0 7.189 2.537l.342-.01a1 1 0 0 1 1.005.717a13 13 0 0 1-9.208 16.25a1 1 0 0 1-.502 0A13 13 0 0 1 2.54 5.718a1 1 0 0 1 1.005-.717a11 11 0 0 0 7.531-2.527l.263-.225l.096-.075a.993.993 0 0 1 .217-.112l.112-.034a.97.97 0 0 1 .119-.021zM12 9a2 2 0 0 0-1.995 1.85L10 11l.005.15A2 2 0 0 0 11 12.731V14.5l.007.117A1 1 0 0 0 13 14.5l.001-1.768A2 2 0 0 0 12 9"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -37543,7 +39832,7 @@ func Shirt(children ...ElementRenderer) *TablerIcon {
 func ShirtFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M14.883 3.007L14.978 3l.112.004l.113.017l.113.03l6 2a1 1 0 0 1 .677.833L22 6v5a1 1 0 0 1-.883.993L21 12h-2v7a2 2 0 0 1-1.85 1.995L17 21H7a2 2 0 0 1-1.995-1.85L5 19v-7H3a1 1 0 0 1-.993-.883L2 11V6a1 1 0 0 1 .576-.906l.108-.043l6-2A1 1 0 0 1 10 4a2 2 0 0 0 3.995.15l.009-.24l.017-.113l.037-.134l.044-.103l.05-.092l.068-.093l.069-.08c.056-.054.113-.1.175-.14l.096-.053l.103-.044l.108-.032l.112-.02z"/></g>`),
+			Text(`<path fill="currentColor" d="M14.883 3.007L14.978 3l.112.004l.113.017l.113.03l6 2a1 1 0 0 1 .677.833L22 6v5a1 1 0 0 1-.883.993L21 12h-2v7a2 2 0 0 1-1.85 1.995L17 21H7a2 2 0 0 1-1.995-1.85L5 19v-7H3a1 1 0 0 1-.993-.883L2 11V6a1 1 0 0 1 .576-.906l.108-.043l6-2A1 1 0 0 1 10 4a2 2 0 0 0 3.995.15l.009-.24l.017-.113l.037-.134l.044-.103l.05-.092l.068-.093l.069-.08c.056-.054.113-.1.175-.14l.096-.053l.103-.044l.108-.032l.112-.02z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -37616,6 +39905,14 @@ func ShoppingBagExclamation(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M15 21H8.574a3 3 0 0 1-2.965-2.544l-1.255-8.152A2 2 0 0 1 6.331 8H17.67a2 2 0 0 1 1.977 2.304l-.258 1.678"/><path d="M9 11V6a3 3 0 0 1 6 0v5m4 5v3m0 3v.01"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func ShoppingBagHeart(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M11.5 21H8.574a3 3 0 0 1-2.965-2.544l-1.255-8.152A2 2 0 0 1 6.331 8H17.67a2 2 0 0 1 1.977 2.304c-.057.368-.1.644-.127.828"/><path d="M9 11V6a3 3 0 0 1 6 0v5m3 11l3.35-3.284a2.143 2.143 0 0 0 .005-3.071a2.242 2.242 0 0 0-3.129-.006l-.224.22l-.223-.22a2.242 2.242 0 0 0-3.128-.006a2.143 2.143 0 0 0-.006 3.071z"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -37743,7 +40040,7 @@ func ShoppingCartExclamation(children ...ElementRenderer) *TablerIcon {
 func ShoppingCartFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M6 2a1 1 0 0 1 .993.883L7 3v1.068l13.071.935A1 1 0 0 1 21 6.027l-.01.114l-1 7a1 1 0 0 1-.877.853L19 14H7v2h10a3 3 0 1 1-2.995 3.176L14 19l.005-.176c.017-.288.074-.564.166-.824H8.829a3 3 0 1 1-5.824 1.176L3 19l.005-.176A3.002 3.002 0 0 1 5 16.17V4H4a1 1 0 0 1-.993-.883L3 3a1 1 0 0 1 .883-.993L4 2zm0 16a1 1 0 1 0 0 2a1 1 0 0 0 0-2m11 0a1 1 0 1 0 0 2a1 1 0 0 0 0-2"/></g>`),
+			Text(`<path fill="currentColor" d="M6 2a1 1 0 0 1 .993.883L7 3v1.068l13.071.935A1 1 0 0 1 21 6.027l-.01.114l-1 7a1 1 0 0 1-.877.853L19 14H7v2h10a3 3 0 1 1-2.995 3.176L14 19l.005-.176c.017-.288.074-.564.166-.824H8.829a3 3 0 1 1-5.824 1.176L3 19l.005-.176A3.002 3.002 0 0 1 5 16.17V4H4a1 1 0 0 1-.993-.883L3 3a1 1 0 0 1 .883-.993L4 2zm0 16a1 1 0 1 0 0 2a1 1 0 0 0 0-2m11 0a1 1 0 1 0 0 2a1 1 0 0 0 0-2"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -37879,7 +40176,7 @@ func SignLeft(children ...ElementRenderer) *TablerIcon {
 func SignLeftFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M14 2a1 1 0 0 1 .993.883L15 3v2h3a1 1 0 0 1 .993.883L19 6v5a1 1 0 0 1-.883.993L18 12h-3v8h1a1 1 0 0 1 .117 1.993L16 22h-4a1 1 0 0 1-.117-1.993L12 20h1v-8H8a1 1 0 0 1-.694-.28l-.087-.095l-2-2.5a1 1 0 0 1-.072-1.147l.072-.103l2-2.5a1 1 0 0 1 .652-.367L8 5h5V3a1 1 0 0 1 1-1"/></g>`),
+			Text(`<path fill="currentColor" d="M14 2a1 1 0 0 1 .993.883L15 3v2h3a1 1 0 0 1 .993.883L19 6v5a1 1 0 0 1-.883.993L18 12h-3v8h1a1 1 0 0 1 .117 1.993L16 22h-4a1 1 0 0 1-.117-1.993L12 20h1v-8H8a1 1 0 0 1-.694-.28l-.087-.095l-2-2.5a1 1 0 0 1-.072-1.147l.072-.103l2-2.5a1 1 0 0 1 .652-.367L8 5h5V3a1 1 0 0 1 1-1"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -37895,7 +40192,7 @@ func SignRight(children ...ElementRenderer) *TablerIcon {
 func SignRightFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M10 2a1 1 0 0 1 .993.883L11 3v2h5a1 1 0 0 1 .694.28l.087.095l2 2.5a1 1 0 0 1 .072 1.147l-.072.103l-2 2.5a1 1 0 0 1-.652.367L16 12h-5v8h1a1 1 0 0 1 .117 1.993L12 22H8a1 1 0 0 1-.117-1.993L8 20h1v-8H6a1 1 0 0 1-.993-.883L5 11V6a1 1 0 0 1 .883-.993L6 5h3V3a1 1 0 0 1 1-1"/></g>`),
+			Text(`<path fill="currentColor" d="M10 2a1 1 0 0 1 .993.883L11 3v2h5a1 1 0 0 1 .694.28l.087.095l2 2.5a1 1 0 0 1 .072 1.147l-.072.103l-2 2.5a1 1 0 0 1-.652.367L16 12h-5v8h1a1 1 0 0 1 .117 1.993L12 22H8a1 1 0 0 1-.117-1.993L8 20h1v-8H6a1 1 0 0 1-.993-.883L5 11V6a1 1 0 0 1 .883-.993L6 5h3V3a1 1 0 0 1 1-1"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -38056,6 +40353,14 @@ func SkewY(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.326 19h15.348a1 1 0 0 0 .962-1.275l-3.429-12A1 1 0 0 0 16.246 5H7.754a1 1 0 0 0-.961.725l-3.429 12A1 1 0 0 0 4.326 19"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func SkiJumping(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M11 3a1 1 0 1 0 2 0a1 1 0 0 0-2 0m6 14.5L12 13V7l5 4M7 17.5l5-4.5"/><path d="m15.103 21.58l6.762-14.502a2 2 0 0 0-.968-2.657m-12 17.159L2.135 7.077a2 2 0 0 1 .968-2.657M7 11l5-4"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -38292,6 +40597,22 @@ func SortAscendingNumbers(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func SortAscendingShapes(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m4 15l3 3l3-3M7 6v12m7-13a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1zm3 9l-3.5 6h7z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func SortAscendingSmallBig(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m4 15l3 3l3-3M7 6v12m7-12.333c0-.369.298-.667.667-.667h2.666c.369 0 .667.298.667.667v2.666a.667.667 0 0 1-.667.667h-2.666A.667.667 0 0 1 14 8.333zm0 7.5c0-.645.522-1.167 1.167-1.167h4.666c.645 0 1.167.522 1.167 1.167v4.666c0 .645-.522 1.167-1.167 1.167h-4.666A1.167 1.167 0 0 1 14 17.833z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func SortAscendingTwo(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
@@ -38320,6 +40641,22 @@ func SortDescendingNumbers(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="m4 15l3 3l3-3M7 6v12m10-4a2 2 0 0 1 2 2v3a2 2 0 1 1-4 0v-3a2 2 0 0 1 2-2m-2-9a2 2 0 1 0 4 0a2 2 0 1 0-4 0"/><path d="M19 5v3a2 2 0 0 1-2 2h-1.5"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func SortDescendingShapes(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m4 15l3 3l3-3M7 6v12m7-3a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1zm3-11l-3.5 6h7z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func SortDescendingSmallBig(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m10 15l-3 3l-3-3m3-9v12m7 .333c0 .369.298.667.667.667h2.666a.667.667 0 0 0 .667-.667v-2.666a.667.667 0 0 0-.667-.667h-2.666a.667.667 0 0 0-.667.667zm0-7.5c0 .645.522 1.167 1.167 1.167h4.666c.645 0 1.167-.522 1.167-1.167V6.167C21 5.522 20.478 5 19.833 5h-4.666C14.522 5 14 5.522 14 6.167z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -38372,6 +40709,14 @@ func Soup(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func SoupFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M20 10a2 2 0 0 1 2 2v.5c0 1.694-2.247 5.49-3.983 6.983l-.017.013V20a2 2 0 0 1-1.85 1.995L16 22H8a2 2 0 0 1-2-2v-.496l-.065-.053c-1.76-1.496-3.794-4.965-3.928-6.77L2 12.5V12a2 2 0 0 1 2-2zm-8.583-6.812a1 1 0 1 1 1.166 1.624c-.375.27-.593.706-.583 1.209a1.4 1.4 0 0 0 .583 1.167a1 1 0 1 1-1.166 1.624A3.38 3.38 0 0 1 10 6.021a3.4 3.4 0 0 1 1.417-2.833m4 0a1 1 0 1 1 1.166 1.624c-.375.27-.593.706-.583 1.209a1.4 1.4 0 0 0 .583 1.167a1 1 0 1 1-1.166 1.624A3.38 3.38 0 0 1 14 6.021a3.4 3.4 0 0 1 1.417-2.833m-8 0a1 1 0 1 1 1.166 1.624c-.375.27-.593.706-.583 1.209a1.4 1.4 0 0 0 .583 1.167a1 1 0 1 1-1.166 1.624A3.38 3.38 0 0 1 6 6.021a3.4 3.4 0 0 1 1.417-2.833"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func SoupOff(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
@@ -38404,6 +40749,14 @@ func SpaceOff(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func Spaces(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M6.045 9.777a6 6 0 1 0 5.951.023"/><path d="M11.997 20.196a6 6 0 1 0-2.948-5.97"/><path d="M17.95 9.785Q18 9.399 18 9a6 6 0 1 0-3.056 5.23"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func SpacingHorizontal(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
@@ -38431,7 +40784,7 @@ func Spade(children ...ElementRenderer) *TablerIcon {
 func SpadeFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M11.327 2.26a1395.065 1395.065 0 0 0-4.923 4.504c-.626.6-1.212 1.21-1.774 1.843a6.528 6.528 0 0 0-.314 8.245l.14.177c1.012 1.205 2.561 1.755 4.055 1.574l.246-.037l-.706 2.118A1 1 0 0 0 9 22h6l.118-.007a1 1 0 0 0 .83-1.31l-.688-2.065l.104.02c1.589.25 3.262-.387 4.32-1.785a6.527 6.527 0 0 0-.311-8.243a31.787 31.787 0 0 0-1.76-1.83l-4.938-4.518a1 1 0 0 0-1.348-.001z"/></g>`),
+			Text(`<path fill="currentColor" d="M11.327 2.26a1395.065 1395.065 0 0 0-4.923 4.504c-.626.6-1.212 1.21-1.774 1.843a6.528 6.528 0 0 0-.314 8.245l.14.177c1.012 1.205 2.561 1.755 4.055 1.574l.246-.037l-.706 2.118A1 1 0 0 0 9 22h6l.118-.007a1 1 0 0 0 .83-1.31l-.688-2.065l.104.02c1.589.25 3.262-.387 4.32-1.785a6.527 6.527 0 0 0-.311-8.243a31.787 31.787 0 0 0-1.76-1.83l-4.938-4.518a1 1 0 0 0-1.348-.001z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -38567,7 +40920,7 @@ func SquareArrowDown(children ...ElementRenderer) *TablerIcon {
 func SquareArrowDownFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M19 2a3 3 0 0 1 3 3v14a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3V5a3 3 0 0 1 3-3zm-7 5a1 1 0 0 0-1 1v5.585l-2.293-2.292l-.094-.083a1 1 0 0 0-1.32 1.497l4 4l.094.083l.092.064l.098.052l.11.044l.112.03l.126.017L12 17l.117-.007l.149-.029l.105-.035l.113-.054l.111-.071a.939.939 0 0 0 .112-.097l4-4l.083-.094a1 1 0 0 0-.083-1.32l-.094-.083a1 1 0 0 0-1.32.083L13 13.585V8l-.007-.117A1 1 0 0 0 12 7"/></g>`),
+			Text(`<path fill="currentColor" d="M19 2a3 3 0 0 1 3 3v14a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3V5a3 3 0 0 1 3-3zm-7 5a1 1 0 0 0-1 1v5.585l-2.293-2.292l-.094-.083a1 1 0 0 0-1.32 1.497l4 4l.094.083l.092.064l.098.052l.11.044l.112.03l.126.017L12 17l.117-.007l.149-.029l.105-.035l.113-.054l.111-.071a.939.939 0 0 0 .112-.097l4-4l.083-.094a1 1 0 0 0-.083-1.32l-.094-.083a1 1 0 0 0-1.32.083L13 13.585V8l-.007-.117A1 1 0 0 0 12 7"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -38583,7 +40936,7 @@ func SquareArrowLeft(children ...ElementRenderer) *TablerIcon {
 func SquareArrowLeftFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M19 2a3 3 0 0 1 3 3v14a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3V5a3 3 0 0 1 3-3zm-6.293 5.293a1 1 0 0 0-1.414 0l-4 4l-.083.094l-.064.092l-.052.098l-.044.11l-.03.112l-.017.126L7 12l.004.09l.007.058l.025.118l.035.105l.054.113l.071.111c.03.04.061.077.097.112l4 4l.094.083a1 1 0 0 0 1.32-.083l.083-.094a1 1 0 0 0-.083-1.32L10.415 13H16l.117-.007A1 1 0 0 0 16 11h-5.585l2.292-2.293l.083-.094a1 1 0 0 0-.083-1.32"/></g>`),
+			Text(`<path fill="currentColor" d="M19 2a3 3 0 0 1 3 3v14a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3V5a3 3 0 0 1 3-3zm-6.293 5.293a1 1 0 0 0-1.414 0l-4 4l-.083.094l-.064.092l-.052.098l-.044.11l-.03.112l-.017.126L7 12l.004.09l.007.058l.025.118l.035.105l.054.113l.071.111c.03.04.061.077.097.112l4 4l.094.083a1 1 0 0 0 1.32-.083l.083-.094a1 1 0 0 0-.083-1.32L10.415 13H16l.117-.007A1 1 0 0 0 16 11h-5.585l2.292-2.293l.083-.094a1 1 0 0 0-.083-1.32"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -38599,7 +40952,7 @@ func SquareArrowRight(children ...ElementRenderer) *TablerIcon {
 func SquareArrowRightFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M19 2a3 3 0 0 1 3 3v14a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3V5a3 3 0 0 1 3-3zm-6.387 5.21a1 1 0 0 0-1.32.083l-.083.094a1 1 0 0 0 .083 1.32L13.585 11H8l-.117.007A1 1 0 0 0 8 13h5.585l-2.292 2.293l-.083.094a1 1 0 0 0 1.497 1.32l4-4l.073-.082l.074-.104l.052-.098l.044-.11l.03-.112l.017-.126L17 12l-.007-.118l-.029-.148l-.035-.105l-.054-.113l-.071-.111a1.008 1.008 0 0 0-.097-.112l-4-4z"/></g>`),
+			Text(`<path fill="currentColor" d="M19 2a3 3 0 0 1 3 3v14a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3V5a3 3 0 0 1 3-3zm-6.387 5.21a1 1 0 0 0-1.32.083l-.083.094a1 1 0 0 0 .083 1.32L13.585 11H8l-.117.007A1 1 0 0 0 8 13h5.585l-2.292 2.293l-.083.094a1 1 0 0 0 1.497 1.32l4-4l.073-.082l.074-.104l.052-.098l.044-.11l.03-.112l.017-.126L17 12l-.007-.118l-.029-.148l-.035-.105l-.054-.113l-.071-.111a1.008 1.008 0 0 0-.097-.112l-4-4z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -38615,7 +40968,7 @@ func SquareArrowUp(children ...ElementRenderer) *TablerIcon {
 func SquareArrowUpFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M19 2a3 3 0 0 1 3 3v14a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3V5a3 3 0 0 1 3-3zm-7 5l-.09.004l-.058.007l-.118.025l-.105.035l-.113.054l-.111.071a1.008 1.008 0 0 0-.112.097l-4 4l-.083.094a1 1 0 0 0 .083 1.32l.094.083a1 1 0 0 0 1.32-.083L11 10.415V16l.007.117A1 1 0 0 0 13 16v-5.585l2.293 2.292l.094.083a1 1 0 0 0 1.32-1.497l-4-4l-.082-.073l-.104-.074l-.098-.052l-.11-.044l-.112-.03l-.126-.017z"/></g>`),
+			Text(`<path fill="currentColor" d="M19 2a3 3 0 0 1 3 3v14a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3V5a3 3 0 0 1 3-3zm-7 5l-.09.004l-.058.007l-.118.025l-.105.035l-.113.054l-.111.071a1.008 1.008 0 0 0-.112.097l-4 4l-.083.094a1 1 0 0 0 .083 1.32l.094.083a1 1 0 0 0 1.32-.083L11 10.415V16l.007.117A1 1 0 0 0 13 16v-5.585l2.293 2.292l.094.083a1 1 0 0 0 1.32-1.497l-4-4l-.082-.073l-.104-.074l-.098-.052l-.11-.044l-.112-.03l-.126-.017z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -38631,7 +40984,7 @@ func SquareAsterisk(children ...ElementRenderer) *TablerIcon {
 func SquareAsteriskFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M19 2a3 3 0 0 1 3 3v14a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3V5a3 3 0 0 1 3-3zm-7 5.5a1 1 0 0 0-1 1v1.631l-1.445-.963l-.101-.06a1 1 0 0 0-1.009 1.724L10.195 12l-1.75 1.169l-.093.07a1 1 0 0 0 1.203 1.594L11 13.868V15.5l.007.117A1 1 0 0 0 13 15.5v-1.631l1.445.963l.101.06a1 1 0 0 0 1.009-1.724l-1.752-1.169l1.752-1.167l.093-.07a1 1 0 0 0-1.203-1.594L13 10.13V8.5l-.007-.117A1 1 0 0 0 12 7.5"/></g>`),
+			Text(`<path fill="currentColor" d="M19 2a3 3 0 0 1 3 3v14a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3V5a3 3 0 0 1 3-3zm-7 5.5a1 1 0 0 0-1 1v1.631l-1.445-.963l-.101-.06a1 1 0 0 0-1.009 1.724L10.195 12l-1.75 1.169l-.093.07a1 1 0 0 0 1.203 1.594L11 13.868V15.5l.007.117A1 1 0 0 0 13 15.5v-1.631l1.445.963l.101.06a1 1 0 0 0 1.009-1.724l-1.752-1.169l1.752-1.167l.093-.07a1 1 0 0 0-1.203-1.594L13 10.13V8.5l-.007-.117A1 1 0 0 0 12 7.5"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -38647,7 +41000,7 @@ func SquareCheck(children ...ElementRenderer) *TablerIcon {
 func SquareCheckFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M18.333 2c1.96 0 3.56 1.537 3.662 3.472l.005.195v12.666c0 1.96-1.537 3.56-3.472 3.662l-.195.005H5.667a3.667 3.667 0 0 1-3.662-3.472L2 18.333V5.667c0-1.96 1.537-3.56 3.472-3.662L5.667 2zm-2.626 7.293a1 1 0 0 0-1.414 0L11 12.585l-1.293-1.292l-.094-.083a1 1 0 0 0-1.32 1.497l2 2l.094.083a1 1 0 0 0 1.32-.083l4-4l.083-.094a1 1 0 0 0-.083-1.32"/></g>`),
+			Text(`<path fill="currentColor" d="M18.333 2c1.96 0 3.56 1.537 3.662 3.472l.005.195v12.666c0 1.96-1.537 3.56-3.472 3.662l-.195.005H5.667a3.667 3.667 0 0 1-3.662-3.472L2 18.333V5.667c0-1.96 1.537-3.56 3.472-3.662L5.667 2zm-2.626 7.293a1 1 0 0 0-1.414 0L11 12.585l-1.293-1.292l-.094-.083a1 1 0 0 0-1.32 1.497l2 2l.094.083a1 1 0 0 0 1.32-.083l4-4l.083-.094a1 1 0 0 0-.083-1.32"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -38663,7 +41016,7 @@ func SquareChevronDown(children ...ElementRenderer) *TablerIcon {
 func SquareChevronDownFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M19 2a3 3 0 0 1 3 3v14a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3V5a3 3 0 0 1 3-3zm-9.387 8.21a1 1 0 0 0-1.32 1.497l3 3l.094.083a1 1 0 0 0 1.32-.083l3-3l.083-.094a1 1 0 0 0-.083-1.32l-.094-.083a1 1 0 0 0-1.32.083L12 12.585l-2.293-2.292z"/></g>`),
+			Text(`<path fill="currentColor" d="M19 2a3 3 0 0 1 3 3v14a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3V5a3 3 0 0 1 3-3zm-9.387 8.21a1 1 0 0 0-1.32 1.497l3 3l.094.083a1 1 0 0 0 1.32-.083l3-3l.083-.094a1 1 0 0 0-.083-1.32l-.094-.083a1 1 0 0 0-1.32.083L12 12.585l-2.293-2.292z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -38679,7 +41032,7 @@ func SquareChevronLeft(children ...ElementRenderer) *TablerIcon {
 func SquareChevronLeftFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M19 2a3 3 0 0 1 3 3v14a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3V5a3 3 0 0 1 3-3zm-5.293 6.293a1 1 0 0 0-1.414 0l-3 3l-.083.094a1 1 0 0 0 .083 1.32l3 3l.094.083a1 1 0 0 0 1.32-.083l.083-.094a1 1 0 0 0-.083-1.32L11.415 12l2.292-2.293l.083-.094a1 1 0 0 0-.083-1.32"/></g>`),
+			Text(`<path fill="currentColor" d="M19 2a3 3 0 0 1 3 3v14a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3V5a3 3 0 0 1 3-3zm-5.293 6.293a1 1 0 0 0-1.414 0l-3 3l-.083.094a1 1 0 0 0 .083 1.32l3 3l.094.083a1 1 0 0 0 1.32-.083l.083-.094a1 1 0 0 0-.083-1.32L11.415 12l2.292-2.293l.083-.094a1 1 0 0 0-.083-1.32"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -38695,7 +41048,7 @@ func SquareChevronRight(children ...ElementRenderer) *TablerIcon {
 func SquareChevronRightFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M19 2a3 3 0 0 1 3 3v14a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3V5a3 3 0 0 1 3-3zm-7.387 6.21a1 1 0 0 0-1.32.083l-.083.094a1 1 0 0 0 .083 1.32L12.585 12l-2.292 2.293l-.083.094a1 1 0 0 0 1.497 1.32l3-3l.083-.094a1 1 0 0 0-.083-1.32l-3-3z"/></g>`),
+			Text(`<path fill="currentColor" d="M19 2a3 3 0 0 1 3 3v14a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3V5a3 3 0 0 1 3-3zm-7.387 6.21a1 1 0 0 0-1.32.083l-.083.094a1 1 0 0 0 .083 1.32L12.585 12l-2.292 2.293l-.083.094a1 1 0 0 0 1.497 1.32l3-3l.083-.094a1 1 0 0 0-.083-1.32l-3-3z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -38711,7 +41064,7 @@ func SquareChevronUp(children ...ElementRenderer) *TablerIcon {
 func SquareChevronUpFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M19 2a3 3 0 0 1 3 3v14a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3V5a3 3 0 0 1 3-3zm-6.387 7.21a1 1 0 0 0-1.32.083l-3 3l-.083.094a1 1 0 0 0 .083 1.32l.094.083a1 1 0 0 0 1.32-.083L12 11.415l2.293 2.292l.094.083a1 1 0 0 0 1.32-1.497l-3-3z"/></g>`),
+			Text(`<path fill="currentColor" d="M19 2a3 3 0 0 1 3 3v14a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3V5a3 3 0 0 1 3-3zm-6.387 7.21a1 1 0 0 0-1.32.083l-3 3l-.083.094a1 1 0 0 0 .083 1.32l.094.083a1 1 0 0 0 1.32-.083L12 11.415l2.293 2.292l.094.083a1 1 0 0 0 1.32-1.497l-3-3z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -38727,7 +41080,7 @@ func SquareChevronsDown(children ...ElementRenderer) *TablerIcon {
 func SquareChevronsDownFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M19 2a3 3 0 0 1 3 3v14a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3V5a3 3 0 0 1 3-3zM9.613 12.21a1 1 0 0 0-1.32 1.497l3 3l.094.083a1 1 0 0 0 1.32-.083l3-3l.083-.094a1 1 0 0 0-.083-1.32l-.094-.083a1 1 0 0 0-1.32.083L12 14.585l-2.293-2.292zm0-5a1 1 0 0 0-1.32 1.497l3 3l.094.083a1 1 0 0 0 1.32-.083l3-3l.083-.094a1 1 0 0 0-.083-1.32l-.094-.083a1 1 0 0 0-1.32.083L12 9.585L9.707 7.293z"/></g>`),
+			Text(`<path fill="currentColor" d="M19 2a3 3 0 0 1 3 3v14a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3V5a3 3 0 0 1 3-3zM9.613 12.21a1 1 0 0 0-1.32 1.497l3 3l.094.083a1 1 0 0 0 1.32-.083l3-3l.083-.094a1 1 0 0 0-.083-1.32l-.094-.083a1 1 0 0 0-1.32.083L12 14.585l-2.293-2.292zm0-5a1 1 0 0 0-1.32 1.497l3 3l.094.083a1 1 0 0 0 1.32-.083l3-3l.083-.094a1 1 0 0 0-.083-1.32l-.094-.083a1 1 0 0 0-1.32.083L12 9.585L9.707 7.293z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -38743,7 +41096,7 @@ func SquareChevronsLeft(children ...ElementRenderer) *TablerIcon {
 func SquareChevronsLeftFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M19 2a3 3 0 0 1 3 3v14a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3V5a3 3 0 0 1 3-3zm-2.293 6.293a1 1 0 0 0-1.414 0l-3 3l-.083.094a1 1 0 0 0 .083 1.32l3 3l.094.083a1 1 0 0 0 1.32-.083l.083-.094a1 1 0 0 0-.083-1.32L14.415 12l2.292-2.293l.083-.094a1 1 0 0 0-.083-1.32m-5 0a1 1 0 0 0-1.414 0l-3 3l-.083.094a1 1 0 0 0 .083 1.32l3 3l.094.083a1 1 0 0 0 1.32-.083l.083-.094a1 1 0 0 0-.083-1.32L9.415 12l2.292-2.293l.083-.094a1 1 0 0 0-.083-1.32"/></g>`),
+			Text(`<path fill="currentColor" d="M19 2a3 3 0 0 1 3 3v14a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3V5a3 3 0 0 1 3-3zm-2.293 6.293a1 1 0 0 0-1.414 0l-3 3l-.083.094a1 1 0 0 0 .083 1.32l3 3l.094.083a1 1 0 0 0 1.32-.083l.083-.094a1 1 0 0 0-.083-1.32L14.415 12l2.292-2.293l.083-.094a1 1 0 0 0-.083-1.32m-5 0a1 1 0 0 0-1.414 0l-3 3l-.083.094a1 1 0 0 0 .083 1.32l3 3l.094.083a1 1 0 0 0 1.32-.083l.083-.094a1 1 0 0 0-.083-1.32L9.415 12l2.292-2.293l.083-.094a1 1 0 0 0-.083-1.32"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -38759,7 +41112,7 @@ func SquareChevronsRight(children ...ElementRenderer) *TablerIcon {
 func SquareChevronsRightFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M19 2a3 3 0 0 1 3 3v14a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3V5a3 3 0 0 1 3-3zM8.613 8.21a1 1 0 0 0-1.32.083l-.083.094a1 1 0 0 0 .083 1.32L9.585 12l-2.292 2.293l-.083.094a1 1 0 0 0 1.497 1.32l3-3l.083-.094a1 1 0 0 0-.083-1.32l-3-3zm5 0a1 1 0 0 0-1.32.083l-.083.094a1 1 0 0 0 .083 1.32L14.585 12l-2.292 2.293l-.083.094a1 1 0 0 0 1.497 1.32l3-3l.083-.094a1 1 0 0 0-.083-1.32l-3-3z"/></g>`),
+			Text(`<path fill="currentColor" d="M19 2a3 3 0 0 1 3 3v14a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3V5a3 3 0 0 1 3-3zM8.613 8.21a1 1 0 0 0-1.32.083l-.083.094a1 1 0 0 0 .083 1.32L9.585 12l-2.292 2.293l-.083.094a1 1 0 0 0 1.497 1.32l3-3l.083-.094a1 1 0 0 0-.083-1.32l-3-3zm5 0a1 1 0 0 0-1.32.083l-.083.094a1 1 0 0 0 .083 1.32L14.585 12l-2.292 2.293l-.083.094a1 1 0 0 0 1.497 1.32l3-3l.083-.094a1 1 0 0 0-.083-1.32l-3-3z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -38775,7 +41128,7 @@ func SquareChevronsUp(children ...ElementRenderer) *TablerIcon {
 func SquareChevronsUpFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M19 2a3 3 0 0 1 3 3v14a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3V5a3 3 0 0 1 3-3zm-6.387 10.21a1 1 0 0 0-1.32.083l-3 3l-.083.094a1 1 0 0 0 .083 1.32l.094.083a1 1 0 0 0 1.32-.083L12 14.415l2.293 2.292l.094.083a1 1 0 0 0 1.32-1.497l-3-3zm0-5a1 1 0 0 0-1.32.083l-3 3l-.083.094a1 1 0 0 0 .083 1.32l.094.083a1 1 0 0 0 1.32-.083L12 9.415l2.293 2.292l.094.083a1 1 0 0 0 1.32-1.497l-3-3z"/></g>`),
+			Text(`<path fill="currentColor" d="M19 2a3 3 0 0 1 3 3v14a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3V5a3 3 0 0 1 3-3zm-6.387 10.21a1 1 0 0 0-1.32.083l-3 3l-.083.094a1 1 0 0 0 .083 1.32l.094.083a1 1 0 0 0 1.32-.083L12 14.415l2.293 2.292l.094.083a1 1 0 0 0 1.32-1.497l-3-3zm0-5a1 1 0 0 0-1.32.083l-3 3l-.083.094a1 1 0 0 0 .083 1.32l.094.083a1 1 0 0 0 1.32-.083L12 9.415l2.293 2.292l.094.083a1 1 0 0 0 1.32-1.497l-3-3z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -38791,7 +41144,7 @@ func SquareDot(children ...ElementRenderer) *TablerIcon {
 func SquareDotFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M19 2a3 3 0 0 1 3 3v14a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3V5a3 3 0 0 1 3-3zm-7 8a2 2 0 0 0-1.995 1.85L10 12l.005.15A2 2 0 1 0 12 10"/></g>`),
+			Text(`<path fill="currentColor" d="M19 2a3 3 0 0 1 3 3v14a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3V5a3 3 0 0 1 3-3zm-7 8a2 2 0 0 0-1.995 1.85L10 12l.005.15A2 2 0 1 0 12 10"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -38815,7 +41168,7 @@ func SquareFeight(children ...ElementRenderer) *TablerIcon {
 func SquareFeightFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M18.333 2c1.96 0 3.56 1.537 3.662 3.472l.005.195v12.666c0 1.96-1.537 3.56-3.472 3.662l-.195.005H5.667a3.667 3.667 0 0 1-3.662-3.472L2 18.333V5.667c0-1.96 1.537-3.56 3.472-3.662L5.667 2zM15 8h-1l-.15.005a2 2 0 0 0-1.844 1.838L12 10v1l.005.15c.018.236.077.46.17.667l.075.152l.018.03l-.018.032c-.133.24-.218.509-.243.795L12 13v1l.005.15a2 2 0 0 0 1.838 1.844L14 16h1l.15-.005a2 2 0 0 0 1.844-1.838L17 14v-1l-.005-.15a1.988 1.988 0 0 0-.17-.667l-.075-.152l-.019-.032l.02-.03a2.01 2.01 0 0 0 .242-.795L17 11v-1l-.005-.15a2 2 0 0 0-1.838-1.844zm-5 0H8l-.117.007a1 1 0 0 0-.876.876L7 9v6l.007.117a1 1 0 0 0 .876.876L8 16l.117-.007a1 1 0 0 0 .876-.876L9 15v-2h1l.117-.007a1 1 0 0 0 0-1.986L10 11H9v-1h1l.117-.007a1 1 0 0 0 0-1.986zm5 5v1h-1v-1zm0-3v1h-1v-1z"/></g>`),
+			Text(`<path fill="currentColor" d="M18.333 2c1.96 0 3.56 1.537 3.662 3.472l.005.195v12.666c0 1.96-1.537 3.56-3.472 3.662l-.195.005H5.667a3.667 3.667 0 0 1-3.662-3.472L2 18.333V5.667c0-1.96 1.537-3.56 3.472-3.662L5.667 2zM15 8h-1l-.15.005a2 2 0 0 0-1.844 1.838L12 10v1l.005.15c.018.236.077.46.17.667l.075.152l.018.03l-.018.032c-.133.24-.218.509-.243.795L12 13v1l.005.15a2 2 0 0 0 1.838 1.844L14 16h1l.15-.005a2 2 0 0 0 1.844-1.838L17 14v-1l-.005-.15a1.988 1.988 0 0 0-.17-.667l-.075-.152l-.019-.032l.02-.03a2.01 2.01 0 0 0 .242-.795L17 11v-1l-.005-.15a2 2 0 0 0-1.838-1.844zm-5 0H8l-.117.007a1 1 0 0 0-.876.876L7 9v6l.007.117a1 1 0 0 0 .876.876L8 16l.117-.007a1 1 0 0 0 .876-.876L9 15v-2h1l.117-.007a1 1 0 0 0 0-1.986L10 11H9v-1h1l.117-.007a1 1 0 0 0 0-1.986zm5 5v1h-1v-1zm0-3v1h-1v-1z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -38831,7 +41184,7 @@ func SquareFfive(children ...ElementRenderer) *TablerIcon {
 func SquareFfiveFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M18.333 2c1.96 0 3.56 1.537 3.662 3.472l.005.195v12.666c0 1.96-1.537 3.56-3.472 3.662l-.195.005H5.667a3.667 3.667 0 0 1-3.662-3.472L2 18.333V5.667c0-1.96 1.537-3.56 3.472-3.662L5.667 2zM16 8h-3l-.117.007a1 1 0 0 0-.857.764l-.02.112L12 9v3l.007.117a1 1 0 0 0 .764.857l.112.02L13 13h2v1h-1.033l-.025-.087l-.049-.113a1 1 0 0 0-1.893.45c0 .867.63 1.587 1.458 1.726l.148.018l.144.006H15l.157-.006a2 2 0 0 0 1.819-1.683l.019-.162L17 14v-1l-.006-.157a2 2 0 0 0-1.683-1.819l-.162-.019L15 11h-1v-1h2l.117-.007a1 1 0 0 0 .857-.764l.02-.112L17 9l-.007-.117a1 1 0 0 0-.764-.857l-.112-.02zm-6 0H8l-.117.007a1 1 0 0 0-.876.876L7 9v6l.007.117a1 1 0 0 0 .876.876L8 16l.117-.007a1 1 0 0 0 .876-.876L9 15v-2h1l.117-.007a1 1 0 0 0 0-1.986L10 11H9v-1h1l.117-.007a1 1 0 0 0 0-1.986z"/></g>`),
+			Text(`<path fill="currentColor" d="M18.333 2c1.96 0 3.56 1.537 3.662 3.472l.005.195v12.666c0 1.96-1.537 3.56-3.472 3.662l-.195.005H5.667a3.667 3.667 0 0 1-3.662-3.472L2 18.333V5.667c0-1.96 1.537-3.56 3.472-3.662L5.667 2zM16 8h-3l-.117.007a1 1 0 0 0-.857.764l-.02.112L12 9v3l.007.117a1 1 0 0 0 .764.857l.112.02L13 13h2v1h-1.033l-.025-.087l-.049-.113a1 1 0 0 0-1.893.45c0 .867.63 1.587 1.458 1.726l.148.018l.144.006H15l.157-.006a2 2 0 0 0 1.819-1.683l.019-.162L17 14v-1l-.006-.157a2 2 0 0 0-1.683-1.819l-.162-.019L15 11h-1v-1h2l.117-.007a1 1 0 0 0 .857-.764l.02-.112L17 9l-.007-.117a1 1 0 0 0-.764-.857l-.112-.02zm-6 0H8l-.117.007a1 1 0 0 0-.876.876L7 9v6l.007.117a1 1 0 0 0 .876.876L8 16l.117-.007a1 1 0 0 0 .876-.876L9 15v-2h1l.117-.007a1 1 0 0 0 0-1.986L10 11H9v-1h1l.117-.007a1 1 0 0 0 0-1.986z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -38847,7 +41200,7 @@ func SquareFfour(children ...ElementRenderer) *TablerIcon {
 func SquareFfourFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M18.333 2c1.96 0 3.56 1.537 3.662 3.472l.005.195v12.666c0 1.96-1.537 3.56-3.472 3.662l-.195.005H5.667a3.667 3.667 0 0 1-3.662-3.472L2 18.333V5.667c0-1.96 1.537-3.56 3.472-3.662L5.667 2zM16 8a1 1 0 0 0-.993.883L15 9v2h-1V9l-.007-.117a1 1 0 0 0-1.986 0L12 9v2l.005.15a2 2 0 0 0 1.838 1.844L14 13h1v2l.007.117a1 1 0 0 0 1.986 0L17 15V9l-.007-.117A1 1 0 0 0 16 8m-6 0H8l-.117.007a1 1 0 0 0-.876.876L7 9v6l.007.117a1 1 0 0 0 .876.876L8 16l.117-.007a1 1 0 0 0 .876-.876L9 15v-2h1l.117-.007a1 1 0 0 0 0-1.986L10 11H9v-1h1l.117-.007a1 1 0 0 0 0-1.986z"/></g>`),
+			Text(`<path fill="currentColor" d="M18.333 2c1.96 0 3.56 1.537 3.662 3.472l.005.195v12.666c0 1.96-1.537 3.56-3.472 3.662l-.195.005H5.667a3.667 3.667 0 0 1-3.662-3.472L2 18.333V5.667c0-1.96 1.537-3.56 3.472-3.662L5.667 2zM16 8a1 1 0 0 0-.993.883L15 9v2h-1V9l-.007-.117a1 1 0 0 0-1.986 0L12 9v2l.005.15a2 2 0 0 0 1.838 1.844L14 13h1v2l.007.117a1 1 0 0 0 1.986 0L17 15V9l-.007-.117A1 1 0 0 0 16 8m-6 0H8l-.117.007a1 1 0 0 0-.876.876L7 9v6l.007.117a1 1 0 0 0 .876.876L8 16l.117-.007a1 1 0 0 0 .876-.876L9 15v-2h1l.117-.007a1 1 0 0 0 0-1.986L10 11H9v-1h1l.117-.007a1 1 0 0 0 0-1.986z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -38863,7 +41216,7 @@ func SquareFnine(children ...ElementRenderer) *TablerIcon {
 func SquareFnineFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M18.333 2c1.96 0 3.56 1.537 3.662 3.472l.005.195v12.666c0 1.96-1.537 3.56-3.472 3.662l-.195.005H5.667a3.667 3.667 0 0 1-3.662-3.472L2 18.333V5.667c0-1.96 1.537-3.56 3.472-3.662L5.667 2zM15.25 8h-1.5l-.144.006A1.75 1.75 0 0 0 12 9.75v1.5l.006.144A1.75 1.75 0 0 0 13.75 13H15v1h-1.033l-.025-.087A1 1 0 0 0 12 14.25c0 .966.784 1.75 1.75 1.75h1.5l.144-.006A1.75 1.75 0 0 0 17 14.25v-4.5l-.006-.144A1.75 1.75 0 0 0 15.25 8M10 8H8l-.117.007A1 1 0 0 0 7 9v6l.007.117A1 1 0 0 0 8 16l.117-.007A1 1 0 0 0 9 15v-2h1l.117-.007A1 1 0 0 0 10 11H9v-1h1l.117-.007A1 1 0 0 0 10 8m5 2v1h-1v-1z"/></g>`),
+			Text(`<path fill="currentColor" d="M18.333 2c1.96 0 3.56 1.537 3.662 3.472l.005.195v12.666c0 1.96-1.537 3.56-3.472 3.662l-.195.005H5.667a3.667 3.667 0 0 1-3.662-3.472L2 18.333V5.667c0-1.96 1.537-3.56 3.472-3.662L5.667 2zM15.25 8h-1.5l-.144.006A1.75 1.75 0 0 0 12 9.75v1.5l.006.144A1.75 1.75 0 0 0 13.75 13H15v1h-1.033l-.025-.087A1 1 0 0 0 12 14.25c0 .966.784 1.75 1.75 1.75h1.5l.144-.006A1.75 1.75 0 0 0 17 14.25v-4.5l-.006-.144A1.75 1.75 0 0 0 15.25 8M10 8H8l-.117.007A1 1 0 0 0 7 9v6l.007.117A1 1 0 0 0 8 16l.117-.007A1 1 0 0 0 9 15v-2h1l.117-.007A1 1 0 0 0 10 11H9v-1h1l.117-.007A1 1 0 0 0 10 8m5 2v1h-1v-1z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -38879,7 +41232,7 @@ func SquareFone(children ...ElementRenderer) *TablerIcon {
 func SquareFoneFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M18.333 2c1.96 0 3.56 1.537 3.662 3.472l.005.195v12.666c0 1.96-1.537 3.56-3.472 3.662l-.195.005H5.667a3.667 3.667 0 0 1-3.662-3.472L2 18.333V5.667c0-1.96 1.537-3.56 3.472-3.662L5.667 2zM10 8H8l-.117.007a1 1 0 0 0-.876.876L7 9v6l.007.117a1 1 0 0 0 .876.876L8 16l.117-.007a1 1 0 0 0 .876-.876L9 15v-2h1l.117-.007a1 1 0 0 0 0-1.986L10 11H9v-1h1l.117-.007a1 1 0 0 0 0-1.986zm5.994.886c-.083-.777-1.008-1.16-1.617-.67l-.084.077l-2 2l-.083.094a1 1 0 0 0 0 1.226l.083.094l.094.083a1 1 0 0 0 1.226 0l.094-.083l.293-.293V15l.007.117a1 1 0 0 0 1.986 0L16 15V9z"/></g>`),
+			Text(`<path fill="currentColor" d="M18.333 2c1.96 0 3.56 1.537 3.662 3.472l.005.195v12.666c0 1.96-1.537 3.56-3.472 3.662l-.195.005H5.667a3.667 3.667 0 0 1-3.662-3.472L2 18.333V5.667c0-1.96 1.537-3.56 3.472-3.662L5.667 2zM10 8H8l-.117.007a1 1 0 0 0-.876.876L7 9v6l.007.117a1 1 0 0 0 .876.876L8 16l.117-.007a1 1 0 0 0 .876-.876L9 15v-2h1l.117-.007a1 1 0 0 0 0-1.986L10 11H9v-1h1l.117-.007a1 1 0 0 0 0-1.986zm5.994.886c-.083-.777-1.008-1.16-1.617-.67l-.084.077l-2 2l-.083.094a1 1 0 0 0 0 1.226l.083.094l.094.083a1 1 0 0 0 1.226 0l.094-.083l.293-.293V15l.007.117a1 1 0 0 0 1.986 0L16 15V9z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -38895,7 +41248,7 @@ func SquareFseven(children ...ElementRenderer) *TablerIcon {
 func SquareFsevenFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M18.333 2c1.96 0 3.56 1.537 3.662 3.472l.005.195v12.666c0 1.96-1.537 3.56-3.472 3.662l-.195.005H5.667a3.667 3.667 0 0 1-3.662-3.472L2 18.333V5.667c0-1.96 1.537-3.56 3.472-3.662L5.667 2zM16 8h-3l-.117.007A1 1 0 0 0 12 9l.007.117A1 1 0 0 0 13 10h1.718l-1.188 4.757l-.022.115a1 1 0 0 0 1.962.37l1.5-6l.021-.11A1 1 0 0 0 16 8m-6 0H8l-.117.007A1 1 0 0 0 7 9v6l.007.117A1 1 0 0 0 8 16l.117-.007A1 1 0 0 0 9 15v-2h1l.117-.007A1 1 0 0 0 10 11H9v-1h1l.117-.007A1 1 0 0 0 10 8"/></g>`),
+			Text(`<path fill="currentColor" d="M18.333 2c1.96 0 3.56 1.537 3.662 3.472l.005.195v12.666c0 1.96-1.537 3.56-3.472 3.662l-.195.005H5.667a3.667 3.667 0 0 1-3.662-3.472L2 18.333V5.667c0-1.96 1.537-3.56 3.472-3.662L5.667 2zM16 8h-3l-.117.007A1 1 0 0 0 12 9l.007.117A1 1 0 0 0 13 10h1.718l-1.188 4.757l-.022.115a1 1 0 0 0 1.962.37l1.5-6l.021-.11A1 1 0 0 0 16 8m-6 0H8l-.117.007A1 1 0 0 0 7 9v6l.007.117A1 1 0 0 0 8 16l.117-.007A1 1 0 0 0 9 15v-2h1l.117-.007A1 1 0 0 0 10 11H9v-1h1l.117-.007A1 1 0 0 0 10 8"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -38911,7 +41264,7 @@ func SquareFsix(children ...ElementRenderer) *TablerIcon {
 func SquareFsixFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M18.333 2c1.96 0 3.56 1.537 3.662 3.472l.005.195v12.666c0 1.96-1.537 3.56-3.472 3.662l-.195.005H5.667a3.667 3.667 0 0 1-3.662-3.472L2 18.333V5.667c0-1.96 1.537-3.56 3.472-3.662L5.667 2zM15.25 8H14l-.15.005a2 2 0 0 0-1.844 1.838L12 10v4l.005.15a2 2 0 0 0 1.838 1.844L14 16h1l.15-.005a2 2 0 0 0 1.844-1.838L17 14v-1l-.005-.15a2 2 0 0 0-1.838-1.844L15 11h-1v-1h1.032l.026.087A1 1 0 0 0 17 9.75a1.75 1.75 0 0 0-1.606-1.744zM10 8H8l-.117.007a1 1 0 0 0-.876.876L7 9v6l.007.117a1 1 0 0 0 .876.876L8 16l.117-.007a1 1 0 0 0 .876-.876L9 15v-2h1l.117-.007a1 1 0 0 0 0-1.986L10 11H9v-1h1l.117-.007a1 1 0 0 0 0-1.986zm5 5v1h-1v-1z"/></g>`),
+			Text(`<path fill="currentColor" d="M18.333 2c1.96 0 3.56 1.537 3.662 3.472l.005.195v12.666c0 1.96-1.537 3.56-3.472 3.662l-.195.005H5.667a3.667 3.667 0 0 1-3.662-3.472L2 18.333V5.667c0-1.96 1.537-3.56 3.472-3.662L5.667 2zM15.25 8H14l-.15.005a2 2 0 0 0-1.844 1.838L12 10v4l.005.15a2 2 0 0 0 1.838 1.844L14 16h1l.15-.005a2 2 0 0 0 1.844-1.838L17 14v-1l-.005-.15a2 2 0 0 0-1.838-1.844L15 11h-1v-1h1.032l.026.087A1 1 0 0 0 17 9.75a1.75 1.75 0 0 0-1.606-1.744zM10 8H8l-.117.007a1 1 0 0 0-.876.876L7 9v6l.007.117a1 1 0 0 0 .876.876L8 16l.117-.007a1 1 0 0 0 .876-.876L9 15v-2h1l.117-.007a1 1 0 0 0 0-1.986L10 11H9v-1h1l.117-.007a1 1 0 0 0 0-1.986zm5 5v1h-1v-1z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -38927,7 +41280,7 @@ func SquareFthree(children ...ElementRenderer) *TablerIcon {
 func SquareFthreeFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M18.333 2c1.96 0 3.56 1.537 3.662 3.472l.005.195v12.666c0 1.96-1.537 3.56-3.472 3.662l-.195.005H5.667a3.667 3.667 0 0 1-3.662-3.472L2 18.333V5.667c0-1.96 1.537-3.56 3.472-3.662L5.667 2zM14.5 8h-1l-.144.007A1.5 1.5 0 0 0 12 9.5a1 1 0 0 0 1 1l.117-.007a1 1 0 0 0 .727-.457l.02-.036h.636l.09.008a.5.5 0 0 1 0 .984L14.5 11H14l-.133.007c-1.156.124-1.156 1.862 0 1.986L14 13h.5l.09.008a.5.5 0 0 1 .41.492l-.008.09a.5.5 0 0 1-.492.41h-.635l-.02-.036A1 1 0 0 0 12 14.5a1.5 1.5 0 0 0 1.5 1.5h1l.164-.005A2.5 2.5 0 0 0 17 13.5l-.005-.164a2.487 2.487 0 0 0-.477-1.312L16.499 12l.126-.183A2.5 2.5 0 0 0 14.5 8M10 8H8l-.117.007A1 1 0 0 0 7 9v6l.007.117A1 1 0 0 0 8 16l.117-.007A1 1 0 0 0 9 15v-2h1l.117-.007A1 1 0 0 0 10 11H9v-1h1l.117-.007A1 1 0 0 0 10 8"/></g>`),
+			Text(`<path fill="currentColor" d="M18.333 2c1.96 0 3.56 1.537 3.662 3.472l.005.195v12.666c0 1.96-1.537 3.56-3.472 3.662l-.195.005H5.667a3.667 3.667 0 0 1-3.662-3.472L2 18.333V5.667c0-1.96 1.537-3.56 3.472-3.662L5.667 2zM14.5 8h-1l-.144.007A1.5 1.5 0 0 0 12 9.5a1 1 0 0 0 1 1l.117-.007a1 1 0 0 0 .727-.457l.02-.036h.636l.09.008a.5.5 0 0 1 0 .984L14.5 11H14l-.133.007c-1.156.124-1.156 1.862 0 1.986L14 13h.5l.09.008a.5.5 0 0 1 .41.492l-.008.09a.5.5 0 0 1-.492.41h-.635l-.02-.036A1 1 0 0 0 12 14.5a1.5 1.5 0 0 0 1.5 1.5h1l.164-.005A2.5 2.5 0 0 0 17 13.5l-.005-.164a2.487 2.487 0 0 0-.477-1.312L16.499 12l.126-.183A2.5 2.5 0 0 0 14.5 8M10 8H8l-.117.007A1 1 0 0 0 7 9v6l.007.117A1 1 0 0 0 8 16l.117-.007A1 1 0 0 0 9 15v-2h1l.117-.007A1 1 0 0 0 10 11H9v-1h1l.117-.007A1 1 0 0 0 10 8"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -38943,7 +41296,7 @@ func SquareFtwo(children ...ElementRenderer) *TablerIcon {
 func SquareFtwoFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M18.333 2c1.96 0 3.56 1.537 3.662 3.472l.005.195v12.666c0 1.96-1.537 3.56-3.472 3.662l-.195.005H5.667a3.667 3.667 0 0 1-3.662-3.472L2 18.333V5.667c0-1.96 1.537-3.56 3.472-3.662L5.667 2zM15 8h-2l-.117.007a1 1 0 0 0 0 1.986L13 10h2v1h-1l-.15.005a2 2 0 0 0-1.844 1.838L12 13v1l.005.15a2 2 0 0 0 1.838 1.844L14 16h2l.117-.007a1 1 0 0 0 0-1.986L16 14h-2v-1h1l.15-.005a2 2 0 0 0 1.844-1.838L17 11v-1l-.005-.15A2 2 0 0 0 15 8m-5 0H8l-.117.007a1 1 0 0 0-.876.876L7 9v6l.007.117a1 1 0 0 0 .876.876L8 16l.117-.007a1 1 0 0 0 .876-.876L9 15v-2h1l.117-.007a1 1 0 0 0 0-1.986L10 11H9v-1h1l.117-.007a1 1 0 0 0 0-1.986z"/></g>`),
+			Text(`<path fill="currentColor" d="M18.333 2c1.96 0 3.56 1.537 3.662 3.472l.005.195v12.666c0 1.96-1.537 3.56-3.472 3.662l-.195.005H5.667a3.667 3.667 0 0 1-3.662-3.472L2 18.333V5.667c0-1.96 1.537-3.56 3.472-3.662L5.667 2zM15 8h-2l-.117.007a1 1 0 0 0 0 1.986L13 10h2v1h-1l-.15.005a2 2 0 0 0-1.844 1.838L12 13v1l.005.15a2 2 0 0 0 1.838 1.844L14 16h2l.117-.007a1 1 0 0 0 0-1.986L16 14h-2v-1h1l.15-.005a2 2 0 0 0 1.844-1.838L17 11v-1l-.005-.15A2 2 0 0 0 15 8m-5 0H8l-.117.007a1 1 0 0 0-.876.876L7 9v6l.007.117a1 1 0 0 0 .876.876L8 16l.117-.007a1 1 0 0 0 .876-.876L9 15v-2h1l.117-.007a1 1 0 0 0 0-1.986L10 11H9v-1h1l.117-.007a1 1 0 0 0 0-1.986z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -38959,7 +41312,7 @@ func SquareFzero(children ...ElementRenderer) *TablerIcon {
 func SquareFzeroFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M18.333 2c1.96 0 3.56 1.537 3.662 3.472l.005.195v12.666c0 1.96-1.537 3.56-3.472 3.662l-.195.005H5.667a3.667 3.667 0 0 1-3.662-3.472L2 18.333V5.667c0-1.96 1.537-3.56 3.472-3.662L5.667 2zM14.5 8a2.5 2.5 0 0 0-2.495 2.336L12 10.5v3l.005.164a2.5 2.5 0 0 0 4.99 0L17 13.5v-3l-.005-.164A2.5 2.5 0 0 0 14.5 8M10 8H8l-.117.007a1 1 0 0 0-.876.876L7 9v6l.007.117a1 1 0 0 0 .876.876L8 16l.117-.007a1 1 0 0 0 .876-.876L9 15v-2h1l.117-.007a1 1 0 0 0 0-1.986L10 11H9v-1h1l.117-.007a1 1 0 0 0 0-1.986zm4.5 2a.5.5 0 0 1 .492.41l.008.09v3l-.008.09a.5.5 0 0 1-.984 0L14 13.5v-3l.008-.09A.5.5 0 0 1 14.5 10"/></g>`),
+			Text(`<path fill="currentColor" d="M18.333 2c1.96 0 3.56 1.537 3.662 3.472l.005.195v12.666c0 1.96-1.537 3.56-3.472 3.662l-.195.005H5.667a3.667 3.667 0 0 1-3.662-3.472L2 18.333V5.667c0-1.96 1.537-3.56 3.472-3.662L5.667 2zM14.5 8a2.5 2.5 0 0 0-2.495 2.336L12 10.5v3l.005.164a2.5 2.5 0 0 0 4.99 0L17 13.5v-3l-.005-.164A2.5 2.5 0 0 0 14.5 8M10 8H8l-.117.007a1 1 0 0 0-.876.876L7 9v6l.007.117a1 1 0 0 0 .876.876L8 16l.117-.007a1 1 0 0 0 .876-.876L9 15v-2h1l.117-.007a1 1 0 0 0 0-1.986L10 11H9v-1h1l.117-.007a1 1 0 0 0 0-1.986zm4.5 2a.5.5 0 0 1 .492.41l.008.09v3l-.008.09a.5.5 0 0 1-.984 0L14 13.5v-3l.008-.09A.5.5 0 0 1 14.5 10"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -38967,7 +41320,7 @@ func SquareFzeroFilled(children ...ElementRenderer) *TablerIcon {
 func SquareFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M19 2H5a3 3 0 0 0-3 3v14a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3V5a3 3 0 0 0-3-3"/></g>`),
+			Text(`<path fill="currentColor" d="M19 2H5a3 3 0 0 0-3 3v14a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3V5a3 3 0 0 0-3-3"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -39028,10 +41381,26 @@ func SquareLetterA(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func SquareLetterAfilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M19 2a3 3 0 0 1 3 3v14a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3V5a3 3 0 0 1 3-3zm-7 5a3 3 0 0 0-3 3v6a1 1 0 0 0 2 0v-2h2v2a1 1 0 0 0 .883.993L14 17a1 1 0 0 0 1-1v-6a3 3 0 0 0-3-3m0 2a1 1 0 0 1 1 1v2h-2v-2a1 1 0 0 1 .883-.993z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func SquareLetterB(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M3 5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M10 16h2a2 2 0 1 0 0-4h-2h2a2 2 0 1 0 0-4h-2z"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func SquareLetterBfilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M19 2a3 3 0 0 1 3 3v14a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3V5a3 3 0 0 1 3-3zm-7 5h-2a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h2a3 3 0 0 0 3-3l-.005-.176a3 3 0 0 0-.654-1.7L14.235 12l.106-.124A3 3 0 0 0 12 7m0 6a1 1 0 0 1 0 2h-1v-2zm0-4a1 1 0 0 1 0 2h-1V9z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -39044,10 +41413,26 @@ func SquareLetterC(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func SquareLetterCfilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M19 2a3 3 0 0 1 3 3v14a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3V5a3 3 0 0 1 3-3zm-7 5a3 3 0 0 0-3 3v4a3 3 0 0 0 6 0a1 1 0 0 0-1.993-.117L13 14a1 1 0 0 1-2 0v-4a1 1 0 0 1 1.993-.117L13 10a1 1 0 0 0 2 0a3 3 0 0 0-3-3"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func SquareLetterD(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M3 5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M10 8v8h2a2 2 0 0 0 2-2v-4a2 2 0 0 0-2-2z"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func SquareLetterDfilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M19 2a3 3 0 0 1 3 3v14a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3V5a3 3 0 0 1 3-3zm-7 5h-2a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h2a3 3 0 0 0 3-3v-4a3 3 0 0 0-3-3m0 2a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1h-1V9z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -39060,10 +41445,26 @@ func SquareLetterE(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func SquareLetterEfilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M19 2a3 3 0 0 1 3 3v14a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3V5a3 3 0 0 1 3-3zm-5 5h-4a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1l-.007-.117A1 1 0 0 0 14 15h-3v-2h1.5a1 1 0 0 0 .993-.883L13.5 12a1 1 0 0 0-1-1H11V9h3a1 1 0 0 0 0-2"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func SquareLetterF(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M3 5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2zm7 7h3"/><path d="M14 8h-4v8"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func SquareLetterFfilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M19 2a3 3 0 0 1 3 3v14a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3V5a3 3 0 0 1 3-3zm-5 5h-4a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1l.117-.007A1 1 0 0 0 11 16v-3h2a1 1 0 0 0 .993-.883L14 12a1 1 0 0 0-1-1h-2V9h3a1 1 0 0 0 0-2"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -39076,10 +41477,26 @@ func SquareLetterG(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func SquareLetterGfilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M19 2a3 3 0 0 1 3 3v14a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3V5a3 3 0 0 1 3-3zm-5 5h-2a3 3 0 0 0-3 3v4a3 3 0 0 0 3 3h2a1 1 0 0 0 1-1v-4a1 1 0 0 0-1-1h-1a1 1 0 0 0-1 1l.007.117A1 1 0 0 0 13 13v2h-1a1 1 0 0 1-1-1v-4a1 1 0 0 1 1-1h2a1 1 0 0 0 0-2"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func SquareLetterH(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2zm7 11V8m4 0v8m-4-4h4"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func SquareLetterHfilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M19 2a3 3 0 0 1 3 3v14a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3V5a3 3 0 0 1 3-3zm-5 5a1 1 0 0 0-1 1v3h-2V8a1 1 0 0 0-.883-.993L10 7a1 1 0 0 0-1 1v8a1 1 0 0 0 2 0v-3h2v3a1 1 0 0 0 .883.993L14 17a1 1 0 0 0 1-1V8a1 1 0 0 0-1-1"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -39092,10 +41509,26 @@ func SquareLetterI(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func SquareLetterIfilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M19 2a3 3 0 0 1 3 3v14a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3V5a3 3 0 0 1 3-3zm-7 5a1 1 0 0 0-1 1v8a1 1 0 0 0 2 0V8a1 1 0 0 0-1-1"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func SquareLetterJ(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M3 5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M10 8h4v6a2 2 0 1 1-4 0"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func SquareLetterJfilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M19 2a3 3 0 0 1 3 3v14a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3V5a3 3 0 0 1 3-3zm-5 5h-4a1 1 0 0 0-1 1l.007.117A1 1 0 0 0 10 9h3v5a1 1 0 0 1-1.993.117L11 14a1 1 0 0 0-2 0a3 3 0 0 0 6 0V8a1 1 0 0 0-1-1"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -39108,10 +41541,26 @@ func SquareLetterK(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func SquareLetterKfilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M19 2a3 3 0 0 1 3 3v14a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3V5a3 3 0 0 1 3-3zm-4.47 5.152a1 1 0 0 0-1.378.318L11 10.913V8a1 1 0 0 0-.883-.993L10 7a1 1 0 0 0-1 1v8a1 1 0 0 0 2 0v-2.914l2.152 3.444a1 1 0 0 0 1.276.374l.102-.056l.095-.068a1 1 0 0 0 .223-1.31L12.678 12l2.17-3.47a1 1 0 0 0-.318-1.378"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func SquareLetterL(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M3 5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M10 8v8h4"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func SquareLetterLfilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M19 2a3 3 0 0 1 3 3v14a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3V5a3 3 0 0 1 3-3zm-9 5a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1l-.007-.117A1 1 0 0 0 14 15h-3V8a1 1 0 0 0-1-1"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -39124,10 +41573,26 @@ func SquareLetterM(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func SquareLetterMfilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M19 2a3 3 0 0 1 3 3v14a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3V5a3 3 0 0 1 3-3zm-3 6c0-1.014-1.336-1.384-1.857-.514L12 11.056l-2.143-3.57C9.336 6.616 8 6.986 8 8v8a1 1 0 0 0 1 1l.117-.007A1 1 0 0 0 10 16v-4.39l1.143 1.904l.074.108a1 1 0 0 0 1.64-.108L14 11.61V16a1 1 0 0 0 2 0z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func SquareLetterN(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M3 5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M10 16V8l4 8V8"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func SquareLetterNfilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M19 2a3 3 0 0 1 3 3v14a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3V5a3 3 0 0 1 3-3zm-8.106 5.553C10.423 6.609 9 6.945 9 8v8a1 1 0 0 0 1 1l.117-.007A1 1 0 0 0 11 16v-3.764l2.106 4.211c.471.944 1.894.608 1.894-.447V8a1 1 0 0 0-1-1l-.117.007A1 1 0 0 0 13 8v3.764z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -39140,10 +41605,26 @@ func SquareLetterO(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func SquareLetterOfilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M19 2a3 3 0 0 1 3 3v14a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3V5a3 3 0 0 1 3-3zm-7 5a3 3 0 0 0-3 3v4a3 3 0 0 0 6 0v-4a3 3 0 0 0-3-3m0 2a1 1 0 0 1 1 1v4a1 1 0 0 1-2 0v-4a1 1 0 0 1 1-1"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func SquareLetterP(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M3 5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M10 12h2a2 2 0 1 0 0-4h-2v8"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func SquareLetterPfilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M19 2a3 3 0 0 1 3 3v14a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3V5a3 3 0 0 1 3-3zm-7 5h-2a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1l.117-.007A1 1 0 0 0 11 16v-3h1a3 3 0 0 0 0-6m0 2a1 1 0 0 1 0 2h-1V9z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -39156,10 +41637,26 @@ func SquareLetterQ(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func SquareLetterQfilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M19 2a3 3 0 0 1 3 3v14a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3V5a3 3 0 0 1 3-3zm-7 5a3 3 0 0 0-3 3v4a3 3 0 0 0 4.168 2.764l.125-.057a1 1 0 0 0 1.414-1.414l.057-.125A3 3 0 0 0 15 14v-4a3 3 0 0 0-3-3m1 7.001h-.059a.996.996 0 0 0-.941 1A1 1 0 0 1 11 14v-4a1 1 0 0 1 2 0z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func SquareLetterR(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M3 5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M10 12h2a2 2 0 1 0 0-4h-2v8m4 0l-3-4"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func SquareLetterRfilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M19 2a3 3 0 0 1 3 3v14a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3V5a3 3 0 0 1 3-3zm-7 5h-2a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1l.117-.007A1 1 0 0 0 11 16v-2.332l2.2 2.932a1 1 0 0 0 1.4.2l.096-.081A1 1 0 0 0 14.8 15.4l-1.903-2.538l.115-.037A3.001 3.001 0 0 0 12 7m0 2a1 1 0 0 1 0 2h-1V9z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -39172,10 +41669,26 @@ func SquareLetterS(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func SquareLetterSfilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M19 2a3 3 0 0 1 3 3v14a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3V5a3 3 0 0 1 3-3zm-6 5h-2a2 2 0 0 0-2 2v2a2 2 0 0 0 2 2h2v2h-2a1 1 0 0 0-2 0a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2v-2a2 2 0 0 0-2-2h-2V9h2l.007.117A1 1 0 0 0 15 9a2 2 0 0 0-2-2"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func SquareLetterT(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2zm7 3h4m-2 0v8"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func SquareLetterTfilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M19 2a3 3 0 0 1 3 3v14a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3V5a3 3 0 0 1 3-3zm-5 5h-4a1 1 0 1 0 0 2h1v7a1 1 0 0 0 .883.993L12 17a1 1 0 0 0 1-1V9h1a1 1 0 0 0 .993-.883L15 8a1 1 0 0 0-1-1"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -39188,10 +41701,26 @@ func SquareLetterU(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func SquareLetterUfilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M19 2a3 3 0 0 1 3 3v14a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3V5a3 3 0 0 1 3-3zm-5 5a1 1 0 0 0-1 1v6a1 1 0 0 1-2 0V8a1 1 0 0 0-2 0v6a3 3 0 0 0 6 0V8a1 1 0 0 0-1-1"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func SquareLetterV(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M3 5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="m10 8l2 8l2-8"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func SquareLetterVfilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M19 2a3 3 0 0 1 3 3v14a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3V5a3 3 0 0 1 3-3zm-4.757 5.03a1 1 0 0 0-1.213.727L12 11.875l-1.03-4.118a1 1 0 1 0-1.94.486l2 8c.252 1.01 1.688 1.01 1.94 0l2-8a1 1 0 0 0-.727-1.213"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -39204,10 +41733,26 @@ func SquareLetterW(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func SquareLetterWfilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M19 2a3 3 0 0 1 3 3v14a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3V5a3 3 0 0 1 3-3zm-4.992 5.876l-.52 4.153l-.56-1.4c-.319-.799-1.41-.837-1.803-.114l-.053.114l-.561 1.4l-.519-4.153a1 1 0 0 0-1-.876l-.116.008a1 1 0 0 0-.868 1.116l1 8c.128 1.025 1.537 1.207 1.92.247L12 13.693l1.072 2.678c.383.96 1.792.778 1.92-.247l1-8a1 1 0 0 0-1.984-.248"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func SquareLetterX(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2zm7 3l4 8m-4 0l4-8"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func SquareLetterXfilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M19 2a3 3 0 0 1 3 3v14a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3V5a3 3 0 0 1 3-3zm-4.553 5.106a1 1 0 0 0-1.341.447L12 9.763l-1.106-2.21a1 1 0 0 0-1.234-.494l-.107.047a1 1 0 0 0-.447 1.341L10.88 12l-1.775 3.553a1 1 0 0 0 .345 1.283l.102.058a1 1 0 0 0 1.341-.447L12 14.236l1.106 2.211a1 1 0 0 0 1.234.494l.107-.047a1 1 0 0 0 .447-1.341L13.118 12l1.776-3.553a1 1 0 0 0-.345-1.283z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -39220,10 +41765,26 @@ func SquareLetterY(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func SquareLetterYfilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M19 2a3 3 0 0 1 3 3v14a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3V5a3 3 0 0 1 3-3zm-4.629 5.072a1 1 0 0 0-1.3.557L12 10.307l-1.072-2.678a1 1 0 0 0-1.856.742L11 13.194V16a1 1 0 0 0 .883.993L12 17a1 1 0 0 0 1-1v-2.809l1.928-4.82a1 1 0 0 0-.45-1.25z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func SquareLetterZ(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M3 5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M10 8h4l-4 8h4"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func SquareLetterZfilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M19 2a3 3 0 0 1 3 3v14a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3V5a3 3 0 0 1 3-3zm-5 5h-4a1 1 0 0 0-1 1l.007.117A1 1 0 0 0 10 9h2.382l-3.276 6.553A1 1 0 0 0 10 17h4a1 1 0 0 0 1-1l-.007-.117A1 1 0 0 0 14 15h-2.382l3.276-6.553A1 1 0 0 0 14 7"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -39239,7 +41800,7 @@ func SquareMinus(children ...ElementRenderer) *TablerIcon {
 func SquareMinusFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M19 2a3 3 0 0 1 3 3v14a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3V5a3 3 0 0 1 3-3zm-4 9H9l-.117.007A1 1 0 0 0 9 13h6l.117-.007A1 1 0 0 0 15 11"/></g>`),
+			Text(`<path fill="currentColor" d="M19 2a3 3 0 0 1 3 3v14a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3V5a3 3 0 0 1 3-3zm-4 9H9l-.117.007A1 1 0 0 0 9 13h6l.117-.007A1 1 0 0 0 15 11"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -39260,10 +41821,26 @@ func SquareNumberEight(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func SquareNumberEightFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M18.333 2c1.96 0 3.56 1.537 3.662 3.472l.005.195v12.666c0 1.96-1.537 3.56-3.472 3.662l-.195.005H5.667a3.667 3.667 0 0 1-3.662-3.472L2 18.333V5.667c0-1.96 1.537-3.56 3.472-3.662L5.667 2zM13 7h-2l-.15.005a2 2 0 0 0-1.844 1.838L9 9v2l.005.15c.018.236.077.46.17.667l.075.152l.018.03l-.018.032c-.133.24-.218.509-.243.795L9 13v2l.005.15a2 2 0 0 0 1.838 1.844L11 17h2l.15-.005a2 2 0 0 0 1.844-1.838L15 15v-2l-.005-.15a1.988 1.988 0 0 0-.17-.667l-.075-.152l-.019-.032l.02-.03a2.01 2.01 0 0 0 .242-.795L15 11V9l-.005-.15a2 2 0 0 0-1.838-1.844zm0 6v2h-2v-2zm0-4v2h-2V9z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func SquareNumberFive(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M3 5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M10 15a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1h-3V8h4"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func SquareNumberFiveFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M18.333 2c1.96 0 3.56 1.537 3.662 3.472l.005.195v12.666c0 1.96-1.537 3.56-3.472 3.662l-.195.005H5.667a3.667 3.667 0 0 1-3.662-3.472L2 18.333V5.667c0-1.96 1.537-3.56 3.472-3.662L5.667 2zM14 7h-4a1 1 0 0 0-.993.883L9 8v4a1 1 0 0 0 .883.993L10 13h3v2h-2l-.007-.117A1 1 0 0 0 9 15a2 2 0 0 0 1.85 1.995L11 17h2a2 2 0 0 0 1.995-1.85L15 15v-2a2 2 0 0 0-1.85-1.995L13 11h-2V9h3a1 1 0 0 0 .993-.883L15 8a1 1 0 0 0-.883-.993z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -39276,10 +41853,26 @@ func SquareNumberFour(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func SquareNumberFourFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M18.333 2c1.96 0 3.56 1.537 3.662 3.472l.005.195v12.666c0 1.96-1.537 3.56-3.472 3.662l-.195.005H5.667a3.667 3.667 0 0 1-3.662-3.472L2 18.333V5.667c0-1.96 1.537-3.56 3.472-3.662L5.667 2zM14 7a1 1 0 0 0-.993.883L13 8v3h-2V8l-.007-.117a1 1 0 0 0-1.986 0L9 8v3l.005.15a2 2 0 0 0 1.838 1.844L11 13h2v3l.007.117a1 1 0 0 0 1.986 0L15 16V8l-.007-.117A1 1 0 0 0 14 7"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func SquareNumberNine(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M3 5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M10 15a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1V9a1 1 0 0 0-1-1h-2a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h3"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func SquareNumberNineFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M18.333 2c1.96 0 3.56 1.537 3.662 3.472l.005.195v12.666c0 1.96-1.537 3.56-3.472 3.662l-.195.005H5.667a3.667 3.667 0 0 1-3.662-3.472L2 18.333V5.667c0-1.96 1.537-3.56 3.472-3.662L5.667 2zM13 7h-2l-.15.005a2 2 0 0 0-1.844 1.838L9 9v2l.005.15a2 2 0 0 0 1.838 1.844L11 13h2v2h-2l-.007-.117A1 1 0 0 0 9 15a2 2 0 0 0 1.85 1.995L11 17h2l.15-.005a2 2 0 0 0 1.844-1.838L15 15V9l-.005-.15a2 2 0 0 0-1.838-1.844zm0 2v2h-2V9z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -39292,10 +41885,26 @@ func SquareNumberOne(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func SquareNumberOneFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M18.333 2c1.96 0 3.56 1.537 3.662 3.472l.005.195v12.666c0 1.96-1.537 3.56-3.472 3.662l-.195.005H5.667a3.667 3.667 0 0 1-3.662-3.472L2 18.333V5.667c0-1.96 1.537-3.56 3.472-3.662L5.667 2zm-5.339 5.886c-.083-.777-1.008-1.16-1.617-.67l-.084.077l-2 2l-.083.094a1 1 0 0 0 0 1.226l.083.094l.094.083a1 1 0 0 0 1.226 0l.094-.083l.293-.293V16l.007.117a1 1 0 0 0 1.986 0L13 16V8z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func SquareNumberSeven(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M3 5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M10 8h4l-2 8"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func SquareNumberSevenFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M18.333 2c1.96 0 3.56 1.537 3.662 3.472l.005.195v12.666c0 1.96-1.537 3.56-3.472 3.662l-.195.005H5.667a3.667 3.667 0 0 1-3.662-3.472L2 18.333V5.667c0-1.96 1.537-3.56 3.472-3.662L5.667 2zM14 7h-4l-.117.007a1 1 0 0 0-.876.876L9 8l.007.117a1 1 0 0 0 .876.876L10 9h2.718l-1.688 6.757l-.022.115a1 1 0 0 0 1.927.482l.035-.111l2-8l.021-.112a1 1 0 0 0-.878-1.125z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -39308,10 +41917,26 @@ func SquareNumberSix(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func SquareNumberSixFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M18.333 2c1.96 0 3.56 1.537 3.662 3.472l.005.195v12.666c0 1.96-1.537 3.56-3.472 3.662l-.195.005H5.667a3.667 3.667 0 0 1-3.662-3.472L2 18.333V5.667c0-1.96 1.537-3.56 3.472-3.662L5.667 2zM13 7h-2l-.15.005a2 2 0 0 0-1.844 1.838L9 9v6l.005.15a2 2 0 0 0 1.838 1.844L11 17h2l.15-.005a2 2 0 0 0 1.844-1.838L15 15v-2l-.005-.15a2 2 0 0 0-1.838-1.844L13 11h-2V9h2l.007.117A1 1 0 0 0 15 9a2 2 0 0 0-1.85-1.995zm0 6v2h-2v-2z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func SquareNumberThree(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M3 5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M10 9a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-2h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func SquareNumberThreeFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M18.333 2c1.96 0 3.56 1.537 3.662 3.472l.005.195v12.666c0 1.96-1.537 3.56-3.472 3.662l-.195.005H5.667a3.667 3.667 0 0 1-3.662-3.472L2 18.333V5.667c0-1.96 1.537-3.56 3.472-3.662L5.667 2zM13 7h-2l-.15.005A2 2 0 0 0 9 9a1 1 0 0 0 1.974.23l.02-.113L11 9h2v2h-2l-.133.007c-1.111.12-1.154 1.73-.128 1.965l.128.021L11 13h2v2h-2l-.007-.117A1 1 0 0 0 9 15a2 2 0 0 0 1.85 1.995L11 17h2l.15-.005a2 2 0 0 0 1.844-1.838L15 15v-2l-.005-.15a1.988 1.988 0 0 0-.17-.667l-.075-.152l-.019-.032l.02-.03a2.01 2.01 0 0 0 .242-.795L15 11V9l-.005-.15a2 2 0 0 0-1.838-1.844z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -39324,10 +41949,26 @@ func SquareNumberTwo(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func SquareNumberTwoFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M18.333 2c1.96 0 3.56 1.537 3.662 3.472l.005.195v12.666c0 1.96-1.537 3.56-3.472 3.662l-.195.005H5.667a3.667 3.667 0 0 1-3.662-3.472L2 18.333V5.667c0-1.96 1.537-3.56 3.472-3.662L5.667 2zM13 7h-3l-.117.007a1 1 0 0 0 0 1.986L10 9h3v2h-2l-.15.005a2 2 0 0 0-1.844 1.838L9 13v2l.005.15a2 2 0 0 0 1.838 1.844L11 17h3l.117-.007a1 1 0 0 0 0-1.986L14 15h-3v-2h2l.15-.005a2 2 0 0 0 1.844-1.838L15 11V9l-.005-.15a2 2 0 0 0-1.838-1.844z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func SquareNumberZero(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M3 5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M10 10v4a2 2 0 1 0 4 0v-4a2 2 0 1 0-4 0"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func SquareNumberZeroFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M18.333 2c1.96 0 3.56 1.537 3.662 3.472l.005.195v12.666c0 1.96-1.537 3.56-3.472 3.662l-.195.005H5.667a3.667 3.667 0 0 1-3.662-3.472L2 18.333V5.667c0-1.96 1.537-3.56 3.472-3.662L5.667 2zM12 7a3 3 0 0 0-2.995 2.824L9 10v4l.005.176a3 3 0 0 0 5.99 0L15 14v-4l-.005-.176A3 3 0 0 0 12 7m0 2a1 1 0 0 1 .993.883L13 10v4l-.007.117a1 1 0 0 1-1.986 0L11 14v-4l.007-.117A1 1 0 0 1 12 9"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -39344,6 +41985,14 @@ func SquareOneFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M18.333 2c1.96 0 3.56 1.537 3.662 3.472l.005.195v12.666c0 1.96-1.537 3.56-3.472 3.662l-.195.005H5.667a3.667 3.667 0 0 1-3.662-3.472L2 18.333V5.667c0-1.96 1.537-3.56 3.472-3.662L5.667 2zm-5.339 5.886c-.083-.777-1.008-1.16-1.617-.67l-.084.077l-2 2l-.083.094a1 1 0 0 0 0 1.226l.083.094l.094.083a1 1 0 0 0 1.226 0l.094-.083l.293-.293V16l.007.117a1 1 0 0 0 1.986 0L13 16V8z"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func SquarePercentage(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2zm6 10.037l6-6m-6 .031v.014m6 6v.016"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -39391,7 +42040,7 @@ func SquareRotated(children ...ElementRenderer) *TablerIcon {
 func SquareRotatedFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="m9.793 2.893l-6.9 6.9c-1.172 1.171-1.172 3.243 0 4.414l6.9 6.9c1.171 1.172 3.243 1.172 4.414 0l6.9-6.9c1.172-1.171 1.172-3.243 0-4.414l-6.9-6.9c-1.171-1.172-3.243-1.172-4.414 0"/></g>`),
+			Text(`<path fill="currentColor" d="m9.793 2.893l-6.9 6.9c-1.172 1.171-1.172 3.243 0 4.414l6.9 6.9c1.171 1.172 3.243 1.172 4.414 0l6.9-6.9c1.172-1.171 1.172-3.243 0-4.414l-6.9-6.9c-1.171-1.172-3.243-1.172-4.414 0"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -39439,7 +42088,7 @@ func SquareRoundedArrowDown(children ...ElementRenderer) *TablerIcon {
 func SquareRoundedArrowDownFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M12 2c-.218 0-.432.002-.642.005l-.616.017l-.299.013l-.579.034l-.553.046c-4.785.464-6.732 2.411-7.196 7.196l-.046.553l-.034.579c-.005.098-.01.198-.013.299l-.017.616l-.004.318L2 12c0 .218.002.432.005.642l.017.616l.013.299l.034.579l.046.553c.464 4.785 2.411 6.732 7.196 7.196l.553.046l.579.034c.098.005.198.01.299.013l.616.017L12 22l.642-.005l.616-.017l.299-.013l.579-.034l.553-.046c4.785-.464 6.732-2.411 7.196-7.196l.046-.553l.034-.579c.005-.098.01-.198.013-.299l.017-.616L22 12l-.005-.642l-.017-.616l-.013-.299l-.034-.579l-.046-.553c-.464-4.785-2.411-6.732-7.196-7.196l-.553-.046l-.579-.034a28.058 28.058 0 0 0-.299-.013l-.616-.017l-.318-.004zm0 5a1 1 0 0 1 .993.883L13 8v5.585l2.293-2.292a1 1 0 0 1 1.32-.083l.094.083a1 1 0 0 1 .083 1.32l-.083.094l-4 4a1.008 1.008 0 0 1-.112.097l-.11.071l-.114.054l-.105.035l-.149.03L12 17l-.075-.003l-.126-.017l-.111-.03l-.111-.044l-.098-.052l-.092-.064l-.094-.083l-4-4a1 1 0 0 1 1.32-1.497l.094.083L11 13.585V8a1 1 0 0 1 1-1"/></g>`),
+			Text(`<path fill="currentColor" d="M12 2c-.218 0-.432.002-.642.005l-.616.017l-.299.013l-.579.034l-.553.046c-4.785.464-6.732 2.411-7.196 7.196l-.046.553l-.034.579c-.005.098-.01.198-.013.299l-.017.616l-.004.318L2 12c0 .218.002.432.005.642l.017.616l.013.299l.034.579l.046.553c.464 4.785 2.411 6.732 7.196 7.196l.553.046l.579.034c.098.005.198.01.299.013l.616.017L12 22l.642-.005l.616-.017l.299-.013l.579-.034l.553-.046c4.785-.464 6.732-2.411 7.196-7.196l.046-.553l.034-.579c.005-.098.01-.198.013-.299l.017-.616L22 12l-.005-.642l-.017-.616l-.013-.299l-.034-.579l-.046-.553c-.464-4.785-2.411-6.732-7.196-7.196l-.553-.046l-.579-.034a28.058 28.058 0 0 0-.299-.013l-.616-.017l-.318-.004zm0 5a1 1 0 0 1 .993.883L13 8v5.585l2.293-2.292a1 1 0 0 1 1.32-.083l.094.083a1 1 0 0 1 .083 1.32l-.083.094l-4 4a1.008 1.008 0 0 1-.112.097l-.11.071l-.114.054l-.105.035l-.149.03L12 17l-.075-.003l-.126-.017l-.111-.03l-.111-.044l-.098-.052l-.092-.064l-.094-.083l-4-4a1 1 0 0 1 1.32-1.497l.094.083L11 13.585V8a1 1 0 0 1 1-1"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -39455,7 +42104,7 @@ func SquareRoundedArrowLeft(children ...ElementRenderer) *TablerIcon {
 func SquareRoundedArrowLeftFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="m12 2l.324.001l.318.004l.616.017l.299.013l.579.034l.553.046c4.785.464 6.732 2.411 7.196 7.196l.046.553l.034.579c.005.098.01.198.013.299l.017.616L22 12l-.005.642l-.017.616l-.013.299l-.034.579l-.046.553c-.464 4.785-2.411 6.732-7.196 7.196l-.553.046l-.579.034c-.098.005-.198.01-.299.013l-.616.017L12 22l-.642-.005l-.616-.017l-.299-.013l-.579-.034l-.553-.046c-4.785-.464-6.732-2.411-7.196-7.196l-.046-.553l-.034-.579a28.058 28.058 0 0 1-.013-.299l-.017-.616C2.002 12.432 2 12.218 2 12l.001-.324l.004-.318l.017-.616l.013-.299l.034-.579l.046-.553c.464-4.785 2.411-6.732 7.196-7.196l.553-.046l.579-.034c.098-.005.198-.01.299-.013l.616-.017c.21-.003.424-.005.642-.005m.707 5.293a1 1 0 0 0-1.414 0l-4 4a1.037 1.037 0 0 0-.2.284l-.022.052a.95.95 0 0 0-.06.222l-.008.067l-.002.063v-.035v.073a1.034 1.034 0 0 0 .07.352l.023.052l.03.061l.022.037a1.2 1.2 0 0 0 .05.074l.024.03l.073.082l4 4l.094.083a1 1 0 0 0 1.32-.083l.083-.094a1 1 0 0 0-.083-1.32L10.415 13H16l.117-.007A1 1 0 0 0 16 11h-5.585l2.292-2.293l.083-.094a1 1 0 0 0-.083-1.32"/></g>`),
+			Text(`<path fill="currentColor" d="m12 2l.324.001l.318.004l.616.017l.299.013l.579.034l.553.046c4.785.464 6.732 2.411 7.196 7.196l.046.553l.034.579c.005.098.01.198.013.299l.017.616L22 12l-.005.642l-.017.616l-.013.299l-.034.579l-.046.553c-.464 4.785-2.411 6.732-7.196 7.196l-.553.046l-.579.034c-.098.005-.198.01-.299.013l-.616.017L12 22l-.642-.005l-.616-.017l-.299-.013l-.579-.034l-.553-.046c-4.785-.464-6.732-2.411-7.196-7.196l-.046-.553l-.034-.579a28.058 28.058 0 0 1-.013-.299l-.017-.616C2.002 12.432 2 12.218 2 12l.001-.324l.004-.318l.017-.616l.013-.299l.034-.579l.046-.553c.464-4.785 2.411-6.732 7.196-7.196l.553-.046l.579-.034c.098-.005.198-.01.299-.013l.616-.017c.21-.003.424-.005.642-.005m.707 5.293a1 1 0 0 0-1.414 0l-4 4a1.037 1.037 0 0 0-.2.284l-.022.052a.95.95 0 0 0-.06.222l-.008.067l-.002.063v-.035v.073a1.034 1.034 0 0 0 .07.352l.023.052l.03.061l.022.037a1.2 1.2 0 0 0 .05.074l.024.03l.073.082l4 4l.094.083a1 1 0 0 0 1.32-.083l.083-.094a1 1 0 0 0-.083-1.32L10.415 13H16l.117-.007A1 1 0 0 0 16 11h-5.585l2.292-2.293l.083-.094a1 1 0 0 0-.083-1.32"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -39471,7 +42120,7 @@ func SquareRoundedArrowRight(children ...ElementRenderer) *TablerIcon {
 func SquareRoundedArrowRightFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M12 2c-.218 0-.432.002-.642.005l-.616.017l-.299.013l-.579.034l-.553.046c-4.785.464-6.732 2.411-7.196 7.196l-.046.553l-.034.579c-.005.098-.01.198-.013.299l-.017.616l-.004.318L2 12c0 .218.002.432.005.642l.017.616l.013.299l.034.579l.046.553c.464 4.785 2.411 6.732 7.196 7.196l.553.046l.579.034c.098.005.198.01.299.013l.616.017L12 22l.642-.005l.616-.017l.299-.013l.579-.034l.553-.046c4.785-.464 6.732-2.411 7.196-7.196l.046-.553l.034-.579c.005-.098.01-.198.013-.299l.017-.616L22 12l-.005-.642l-.017-.616l-.013-.299l-.034-.579l-.046-.553c-.464-4.785-2.411-6.732-7.196-7.196l-.553-.046l-.579-.034a28.058 28.058 0 0 0-.299-.013l-.616-.017l-.318-.004zm.613 5.21l.094.083l4 4a.927.927 0 0 1 .097.112l.071.11l.054.114l.035.105l.03.148L17 12l-.003.075l-.017.126l-.03.111l-.044.111l-.052.098l-.074.104l-.073.082l-4 4a1 1 0 0 1-1.497-1.32l.083-.094L13.585 13H8a1 1 0 0 1-.117-1.993L8 11h5.585l-2.292-2.293a1 1 0 0 1-.083-1.32l.083-.094a1 1 0 0 1 1.32-.083"/></g>`),
+			Text(`<path fill="currentColor" d="M12 2c-.218 0-.432.002-.642.005l-.616.017l-.299.013l-.579.034l-.553.046c-4.785.464-6.732 2.411-7.196 7.196l-.046.553l-.034.579c-.005.098-.01.198-.013.299l-.017.616l-.004.318L2 12c0 .218.002.432.005.642l.017.616l.013.299l.034.579l.046.553c.464 4.785 2.411 6.732 7.196 7.196l.553.046l.579.034c.098.005.198.01.299.013l.616.017L12 22l.642-.005l.616-.017l.299-.013l.579-.034l.553-.046c4.785-.464 6.732-2.411 7.196-7.196l.046-.553l.034-.579c.005-.098.01-.198.013-.299l.017-.616L22 12l-.005-.642l-.017-.616l-.013-.299l-.034-.579l-.046-.553c-.464-4.785-2.411-6.732-7.196-7.196l-.553-.046l-.579-.034a28.058 28.058 0 0 0-.299-.013l-.616-.017l-.318-.004zm.613 5.21l.094.083l4 4a.927.927 0 0 1 .097.112l.071.11l.054.114l.035.105l.03.148L17 12l-.003.075l-.017.126l-.03.111l-.044.111l-.052.098l-.074.104l-.073.082l-4 4a1 1 0 0 1-1.497-1.32l.083-.094L13.585 13H8a1 1 0 0 1-.117-1.993L8 11h5.585l-2.292-2.293a1 1 0 0 1-.083-1.32l.083-.094a1 1 0 0 1 1.32-.083"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -39487,7 +42136,7 @@ func SquareRoundedArrowUp(children ...ElementRenderer) *TablerIcon {
 func SquareRoundedArrowUpFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M12 2c-.218 0-.432.002-.642.005l-.616.017l-.299.013l-.579.034l-.553.046c-4.785.464-6.732 2.411-7.196 7.196l-.046.553l-.034.579c-.005.098-.01.198-.013.299l-.017.616l-.004.318L2 12c0 .218.002.432.005.642l.017.616l.013.299l.034.579l.046.553c.464 4.785 2.411 6.732 7.196 7.196l.553.046l.579.034c.098.005.198.01.299.013l.616.017L12 22l.642-.005l.616-.017l.299-.013l.579-.034l.553-.046c4.785-.464 6.732-2.411 7.196-7.196l.046-.553l.034-.579c.005-.098.01-.198.013-.299l.017-.616L22 12l-.005-.642l-.017-.616l-.013-.299l-.034-.579l-.046-.553c-.464-4.785-2.411-6.732-7.196-7.196l-.553-.046l-.579-.034a28.058 28.058 0 0 0-.299-.013l-.616-.017l-.318-.004zm-.148 5.011l.058-.007L12 7l.075.003l.126.017l.111.03l.111.044l.098.052l.104.074l.082.073l4 4a1 1 0 0 1-1.32 1.497l-.094-.083L13 10.415V16a1 1 0 0 1-1.993.117L11 16v-5.585l-2.293 2.292a1 1 0 0 1-1.32.083l-.094-.083a1 1 0 0 1-.083-1.32l.083-.094l4-4a.927.927 0 0 1 .112-.097l.11-.071l.114-.054l.105-.035z"/></g>`),
+			Text(`<path fill="currentColor" d="M12 2c-.218 0-.432.002-.642.005l-.616.017l-.299.013l-.579.034l-.553.046c-4.785.464-6.732 2.411-7.196 7.196l-.046.553l-.034.579c-.005.098-.01.198-.013.299l-.017.616l-.004.318L2 12c0 .218.002.432.005.642l.017.616l.013.299l.034.579l.046.553c.464 4.785 2.411 6.732 7.196 7.196l.553.046l.579.034c.098.005.198.01.299.013l.616.017L12 22l.642-.005l.616-.017l.299-.013l.579-.034l.553-.046c4.785-.464 6.732-2.411 7.196-7.196l.046-.553l.034-.579c.005-.098.01-.198.013-.299l.017-.616L22 12l-.005-.642l-.017-.616l-.013-.299l-.034-.579l-.046-.553c-.464-4.785-2.411-6.732-7.196-7.196l-.553-.046l-.579-.034a28.058 28.058 0 0 0-.299-.013l-.616-.017l-.318-.004zm-.148 5.011l.058-.007L12 7l.075.003l.126.017l.111.03l.111.044l.098.052l.104.074l.082.073l4 4a1 1 0 0 1-1.32 1.497l-.094-.083L13 10.415V16a1 1 0 0 1-1.993.117L11 16v-5.585l-2.293 2.292a1 1 0 0 1-1.32.083l-.094-.083a1 1 0 0 1-.083-1.32l.083-.094l4-4a.927.927 0 0 1 .112-.097l.11-.071l.114-.054l.105-.035z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -39503,7 +42152,7 @@ func SquareRoundedCheck(children ...ElementRenderer) *TablerIcon {
 func SquareRoundedCheckFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M12 2c-.218 0-.432.002-.642.005l-.616.017l-.299.013l-.579.034l-.553.046c-4.785.464-6.732 2.411-7.196 7.196l-.046.553l-.034.579c-.005.098-.01.198-.013.299l-.017.616l-.004.318L2 12c0 .218.002.432.005.642l.017.616l.013.299l.034.579l.046.553c.464 4.785 2.411 6.732 7.196 7.196l.553.046l.579.034c.098.005.198.01.299.013l.616.017L12 22l.642-.005l.616-.017l.299-.013l.579-.034l.553-.046c4.785-.464 6.732-2.411 7.196-7.196l.046-.553l.034-.579c.005-.098.01-.198.013-.299l.017-.616L22 12l-.005-.642l-.017-.616l-.013-.299l-.034-.579l-.046-.553c-.464-4.785-2.411-6.732-7.196-7.196l-.553-.046l-.579-.034a28.058 28.058 0 0 0-.299-.013l-.616-.017l-.318-.004zm2.293 7.293a1 1 0 0 1 1.497 1.32l-.083.094l-4 4a1 1 0 0 1-1.32.083l-.094-.083l-2-2a1 1 0 0 1 1.32-1.497l.094.083L11 12.585z"/></g>`),
+			Text(`<path fill="currentColor" d="M12 2c-.218 0-.432.002-.642.005l-.616.017l-.299.013l-.579.034l-.553.046c-4.785.464-6.732 2.411-7.196 7.196l-.046.553l-.034.579c-.005.098-.01.198-.013.299l-.017.616l-.004.318L2 12c0 .218.002.432.005.642l.017.616l.013.299l.034.579l.046.553c.464 4.785 2.411 6.732 7.196 7.196l.553.046l.579.034c.098.005.198.01.299.013l.616.017L12 22l.642-.005l.616-.017l.299-.013l.579-.034l.553-.046c4.785-.464 6.732-2.411 7.196-7.196l.046-.553l.034-.579c.005-.098.01-.198.013-.299l.017-.616L22 12l-.005-.642l-.017-.616l-.013-.299l-.034-.579l-.046-.553c-.464-4.785-2.411-6.732-7.196-7.196l-.553-.046l-.579-.034a28.058 28.058 0 0 0-.299-.013l-.616-.017l-.318-.004zm2.293 7.293a1 1 0 0 1 1.497 1.32l-.083.094l-4 4a1 1 0 0 1-1.32.083l-.094-.083l-2-2a1 1 0 0 1 1.32-1.497l.094.083L11 12.585z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -39519,7 +42168,7 @@ func SquareRoundedChevronDown(children ...ElementRenderer) *TablerIcon {
 func SquareRoundedChevronDownFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M12 2c-.218 0-.432.002-.642.005l-.616.017l-.299.013l-.579.034l-.553.046c-4.785.464-6.732 2.411-7.196 7.196l-.046.553l-.034.579c-.005.098-.01.198-.013.299l-.017.616l-.004.318L2 12c0 .218.002.432.005.642l.017.616l.013.299l.034.579l.046.553c.464 4.785 2.411 6.732 7.196 7.196l.553.046l.579.034c.098.005.198.01.299.013l.616.017L12 22l.642-.005l.616-.017l.299-.013l.579-.034l.553-.046c4.785-.464 6.732-2.411 7.196-7.196l.046-.553l.034-.579c.005-.098.01-.198.013-.299l.017-.616L22 12l-.005-.642l-.017-.616l-.013-.299l-.034-.579l-.046-.553c-.464-4.785-2.411-6.732-7.196-7.196l-.553-.046l-.579-.034a28.058 28.058 0 0 0-.299-.013l-.616-.017l-.318-.004zm-3.707 8.293a1 1 0 0 1 1.32-.083l.094.083L12 12.585l2.293-2.292a1 1 0 0 1 1.32-.083l.094.083a1 1 0 0 1 .083 1.32l-.083.094l-3 3a1 1 0 0 1-1.32.083l-.094-.083l-3-3a1 1 0 0 1 0-1.414"/></g>`),
+			Text(`<path fill="currentColor" d="M12 2c-.218 0-.432.002-.642.005l-.616.017l-.299.013l-.579.034l-.553.046c-4.785.464-6.732 2.411-7.196 7.196l-.046.553l-.034.579c-.005.098-.01.198-.013.299l-.017.616l-.004.318L2 12c0 .218.002.432.005.642l.017.616l.013.299l.034.579l.046.553c.464 4.785 2.411 6.732 7.196 7.196l.553.046l.579.034c.098.005.198.01.299.013l.616.017L12 22l.642-.005l.616-.017l.299-.013l.579-.034l.553-.046c4.785-.464 6.732-2.411 7.196-7.196l.046-.553l.034-.579c.005-.098.01-.198.013-.299l.017-.616L22 12l-.005-.642l-.017-.616l-.013-.299l-.034-.579l-.046-.553c-.464-4.785-2.411-6.732-7.196-7.196l-.553-.046l-.579-.034a28.058 28.058 0 0 0-.299-.013l-.616-.017l-.318-.004zm-3.707 8.293a1 1 0 0 1 1.32-.083l.094.083L12 12.585l2.293-2.292a1 1 0 0 1 1.32-.083l.094.083a1 1 0 0 1 .083 1.32l-.083.094l-3 3a1 1 0 0 1-1.32.083l-.094-.083l-3-3a1 1 0 0 1 0-1.414"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -39535,7 +42184,7 @@ func SquareRoundedChevronLeft(children ...ElementRenderer) *TablerIcon {
 func SquareRoundedChevronLeftFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="m12 2l.324.001l.318.004l.616.017l.299.013l.579.034l.553.046c4.785.464 6.732 2.411 7.196 7.196l.046.553l.034.579c.005.098.01.198.013.299l.017.616L22 12l-.005.642l-.017.616l-.013.299l-.034.579l-.046.553c-.464 4.785-2.411 6.732-7.196 7.196l-.553.046l-.579.034c-.098.005-.198.01-.299.013l-.616.017L12 22l-.642-.005l-.616-.017l-.299-.013l-.579-.034l-.553-.046c-4.785-.464-6.732-2.411-7.196-7.196l-.046-.553l-.034-.579a28.058 28.058 0 0 1-.013-.299l-.017-.616C2.002 12.432 2 12.218 2 12l.001-.324l.004-.318l.017-.616l.013-.299l.034-.579l.046-.553c.464-4.785 2.411-6.732 7.196-7.196l.553-.046l.579-.034c.098-.005.198-.01.299-.013l.616-.017c.21-.003.424-.005.642-.005m1.707 6.293a1 1 0 0 0-1.414 0l-3 3l-.083.094a1 1 0 0 0 .083 1.32l3 3l.094.083a1 1 0 0 0 1.32-.083l.083-.094a1 1 0 0 0-.083-1.32L11.415 12l2.292-2.293l.083-.094a1 1 0 0 0-.083-1.32"/></g>`),
+			Text(`<path fill="currentColor" d="m12 2l.324.001l.318.004l.616.017l.299.013l.579.034l.553.046c4.785.464 6.732 2.411 7.196 7.196l.046.553l.034.579c.005.098.01.198.013.299l.017.616L22 12l-.005.642l-.017.616l-.013.299l-.034.579l-.046.553c-.464 4.785-2.411 6.732-7.196 7.196l-.553.046l-.579.034c-.098.005-.198.01-.299.013l-.616.017L12 22l-.642-.005l-.616-.017l-.299-.013l-.579-.034l-.553-.046c-4.785-.464-6.732-2.411-7.196-7.196l-.046-.553l-.034-.579a28.058 28.058 0 0 1-.013-.299l-.017-.616C2.002 12.432 2 12.218 2 12l.001-.324l.004-.318l.017-.616l.013-.299l.034-.579l.046-.553c.464-4.785 2.411-6.732 7.196-7.196l.553-.046l.579-.034c.098-.005.198-.01.299-.013l.616-.017c.21-.003.424-.005.642-.005m1.707 6.293a1 1 0 0 0-1.414 0l-3 3l-.083.094a1 1 0 0 0 .083 1.32l3 3l.094.083a1 1 0 0 0 1.32-.083l.083-.094a1 1 0 0 0-.083-1.32L11.415 12l2.292-2.293l.083-.094a1 1 0 0 0-.083-1.32"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -39551,7 +42200,7 @@ func SquareRoundedChevronRight(children ...ElementRenderer) *TablerIcon {
 func SquareRoundedChevronRightFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M12 2c-.218 0-.432.002-.642.005l-.616.017l-.299.013l-.579.034l-.553.046c-4.785.464-6.732 2.411-7.196 7.196l-.046.553l-.034.579c-.005.098-.01.198-.013.299l-.017.616l-.004.318L2 12c0 .218.002.432.005.642l.017.616l.013.299l.034.579l.046.553c.464 4.785 2.411 6.732 7.196 7.196l.553.046l.579.034c.098.005.198.01.299.013l.616.017L12 22l.642-.005l.616-.017l.299-.013l.579-.034l.553-.046c4.785-.464 6.732-2.411 7.196-7.196l.046-.553l.034-.579c.005-.098.01-.198.013-.299l.017-.616L22 12l-.005-.642l-.017-.616l-.013-.299l-.034-.579l-.046-.553c-.464-4.785-2.411-6.732-7.196-7.196l-.553-.046l-.579-.034a28.058 28.058 0 0 0-.299-.013l-.616-.017l-.318-.004zm-1.707 6.293a1 1 0 0 1 1.32-.083l.094.083l3 3a1 1 0 0 1 .083 1.32l-.083.094l-3 3a1 1 0 0 1-1.497-1.32l.083-.094L12.585 12l-2.292-2.293a1 1 0 0 1-.083-1.32z"/></g>`),
+			Text(`<path fill="currentColor" d="M12 2c-.218 0-.432.002-.642.005l-.616.017l-.299.013l-.579.034l-.553.046c-4.785.464-6.732 2.411-7.196 7.196l-.046.553l-.034.579c-.005.098-.01.198-.013.299l-.017.616l-.004.318L2 12c0 .218.002.432.005.642l.017.616l.013.299l.034.579l.046.553c.464 4.785 2.411 6.732 7.196 7.196l.553.046l.579.034c.098.005.198.01.299.013l.616.017L12 22l.642-.005l.616-.017l.299-.013l.579-.034l.553-.046c4.785-.464 6.732-2.411 7.196-7.196l.046-.553l.034-.579c.005-.098.01-.198.013-.299l.017-.616L22 12l-.005-.642l-.017-.616l-.013-.299l-.034-.579l-.046-.553c-.464-4.785-2.411-6.732-7.196-7.196l-.553-.046l-.579-.034a28.058 28.058 0 0 0-.299-.013l-.616-.017l-.318-.004zm-1.707 6.293a1 1 0 0 1 1.32-.083l.094.083l3 3a1 1 0 0 1 .083 1.32l-.083.094l-3 3a1 1 0 0 1-1.497-1.32l.083-.094L12.585 12l-2.292-2.293a1 1 0 0 1-.083-1.32z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -39567,7 +42216,7 @@ func SquareRoundedChevronUp(children ...ElementRenderer) *TablerIcon {
 func SquareRoundedChevronUpFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M12 2c-.218 0-.432.002-.642.005l-.616.017l-.299.013l-.579.034l-.553.046c-4.785.464-6.732 2.411-7.196 7.196l-.046.553l-.034.579c-.005.098-.01.198-.013.299l-.017.616l-.004.318L2 12c0 .218.002.432.005.642l.017.616l.013.299l.034.579l.046.553c.464 4.785 2.411 6.732 7.196 7.196l.553.046l.579.034c.098.005.198.01.299.013l.616.017L12 22l.642-.005l.616-.017l.299-.013l.579-.034l.553-.046c4.785-.464 6.732-2.411 7.196-7.196l.046-.553l.034-.579c.005-.098.01-.198.013-.299l.017-.616L22 12l-.005-.642l-.017-.616l-.013-.299l-.034-.579l-.046-.553c-.464-4.785-2.411-6.732-7.196-7.196l-.553-.046l-.579-.034a28.058 28.058 0 0 0-.299-.013l-.616-.017l-.318-.004zm-.707 7.293a1 1 0 0 1 1.32-.083l.094.083l3 3a1 1 0 0 1-1.32 1.497l-.094-.083L12 11.415l-2.293 2.292a1 1 0 0 1-1.32.083l-.094-.083a1 1 0 0 1-.083-1.32l.083-.094z"/></g>`),
+			Text(`<path fill="currentColor" d="M12 2c-.218 0-.432.002-.642.005l-.616.017l-.299.013l-.579.034l-.553.046c-4.785.464-6.732 2.411-7.196 7.196l-.046.553l-.034.579c-.005.098-.01.198-.013.299l-.017.616l-.004.318L2 12c0 .218.002.432.005.642l.017.616l.013.299l.034.579l.046.553c.464 4.785 2.411 6.732 7.196 7.196l.553.046l.579.034c.098.005.198.01.299.013l.616.017L12 22l.642-.005l.616-.017l.299-.013l.579-.034l.553-.046c4.785-.464 6.732-2.411 7.196-7.196l.046-.553l.034-.579c.005-.098.01-.198.013-.299l.017-.616L22 12l-.005-.642l-.017-.616l-.013-.299l-.034-.579l-.046-.553c-.464-4.785-2.411-6.732-7.196-7.196l-.553-.046l-.579-.034a28.058 28.058 0 0 0-.299-.013l-.616-.017l-.318-.004zm-.707 7.293a1 1 0 0 1 1.32-.083l.094.083l3 3a1 1 0 0 1-1.32 1.497l-.094-.083L12 11.415l-2.293 2.292a1 1 0 0 1-1.32.083l-.094-.083a1 1 0 0 1-.083-1.32l.083-.094z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -39583,7 +42232,7 @@ func SquareRoundedChevronsDown(children ...ElementRenderer) *TablerIcon {
 func SquareRoundedChevronsDownFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M12 2c-.218 0-.432.002-.642.005l-.616.017l-.299.013l-.579.034l-.553.046c-4.785.464-6.732 2.411-7.196 7.196l-.046.553l-.034.579c-.005.098-.01.198-.013.299l-.017.616l-.004.318L2 12c0 .218.002.432.005.642l.017.616l.013.299l.034.579l.046.553c.464 4.785 2.411 6.732 7.196 7.196l.553.046l.579.034c.098.005.198.01.299.013l.616.017L12 22l.642-.005l.616-.017l.299-.013l.579-.034l.553-.046c4.785-.464 6.732-2.411 7.196-7.196l.046-.553l.034-.579c.005-.098.01-.198.013-.299l.017-.616L22 12l-.005-.642l-.017-.616l-.013-.299l-.034-.579l-.046-.553c-.464-4.785-2.411-6.732-7.196-7.196l-.553-.046l-.579-.034a28.058 28.058 0 0 0-.299-.013l-.616-.017l-.318-.004zM8.293 8.293a1 1 0 0 1 1.32-.083l.094.083L12 10.585l2.293-2.292a1 1 0 0 1 1.32-.083l.094.083a1 1 0 0 1 .083 1.32l-.083.094l-3 3a1 1 0 0 1-1.32.083l-.094-.083l-3-3a1 1 0 0 1 0-1.414m0 4a1 1 0 0 1 1.32-.083l.094.083L12 14.585l2.293-2.292a1 1 0 0 1 1.32-.083l.094.083a1 1 0 0 1 .083 1.32l-.083.094l-3 3a1 1 0 0 1-1.32.083l-.094-.083l-3-3a1 1 0 0 1 0-1.414"/></g>`),
+			Text(`<path fill="currentColor" d="M12 2c-.218 0-.432.002-.642.005l-.616.017l-.299.013l-.579.034l-.553.046c-4.785.464-6.732 2.411-7.196 7.196l-.046.553l-.034.579c-.005.098-.01.198-.013.299l-.017.616l-.004.318L2 12c0 .218.002.432.005.642l.017.616l.013.299l.034.579l.046.553c.464 4.785 2.411 6.732 7.196 7.196l.553.046l.579.034c.098.005.198.01.299.013l.616.017L12 22l.642-.005l.616-.017l.299-.013l.579-.034l.553-.046c4.785-.464 6.732-2.411 7.196-7.196l.046-.553l.034-.579c.005-.098.01-.198.013-.299l.017-.616L22 12l-.005-.642l-.017-.616l-.013-.299l-.034-.579l-.046-.553c-.464-4.785-2.411-6.732-7.196-7.196l-.553-.046l-.579-.034a28.058 28.058 0 0 0-.299-.013l-.616-.017l-.318-.004zM8.293 8.293a1 1 0 0 1 1.32-.083l.094.083L12 10.585l2.293-2.292a1 1 0 0 1 1.32-.083l.094.083a1 1 0 0 1 .083 1.32l-.083.094l-3 3a1 1 0 0 1-1.32.083l-.094-.083l-3-3a1 1 0 0 1 0-1.414m0 4a1 1 0 0 1 1.32-.083l.094.083L12 14.585l2.293-2.292a1 1 0 0 1 1.32-.083l.094.083a1 1 0 0 1 .083 1.32l-.083.094l-3 3a1 1 0 0 1-1.32.083l-.094-.083l-3-3a1 1 0 0 1 0-1.414"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -39599,7 +42248,7 @@ func SquareRoundedChevronsLeft(children ...ElementRenderer) *TablerIcon {
 func SquareRoundedChevronsLeftFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M12 2c-.218 0-.432.002-.642.005l-.616.017l-.299.013l-.579.034l-.553.046c-4.785.464-6.732 2.411-7.196 7.196l-.046.553l-.034.579c-.005.098-.01.198-.013.299l-.017.616l-.004.318L2 12c0 .218.002.432.005.642l.017.616l.013.299l.034.579l.046.553c.464 4.785 2.411 6.732 7.196 7.196l.553.046l.579.034c.098.005.198.01.299.013l.616.017L12 22l.642-.005l.616-.017l.299-.013l.579-.034l.553-.046c4.785-.464 6.732-2.411 7.196-7.196l.046-.553l.034-.579c.005-.098.01-.198.013-.299l.017-.616L22 12l-.005-.642l-.017-.616l-.013-.299l-.034-.579l-.046-.553c-.464-4.785-2.411-6.732-7.196-7.196l-.553-.046l-.579-.034a28.058 28.058 0 0 0-.299-.013l-.616-.017l-.318-.004zm2.293 6.293a1 1 0 0 1 1.497 1.32l-.083.094L13.415 12l2.292 2.293a1 1 0 0 1 .083 1.32l-.083.094a1 1 0 0 1-1.32.083l-.094-.083l-3-3a1 1 0 0 1-.083-1.32l.083-.094zm-4 0a1 1 0 0 1 1.497 1.32l-.083.094L9.415 12l2.292 2.293a1 1 0 0 1 .083 1.32l-.083.094a1 1 0 0 1-1.32.083l-.094-.083l-3-3a1 1 0 0 1-.083-1.32l.083-.094z"/></g>`),
+			Text(`<path fill="currentColor" d="M12 2c-.218 0-.432.002-.642.005l-.616.017l-.299.013l-.579.034l-.553.046c-4.785.464-6.732 2.411-7.196 7.196l-.046.553l-.034.579c-.005.098-.01.198-.013.299l-.017.616l-.004.318L2 12c0 .218.002.432.005.642l.017.616l.013.299l.034.579l.046.553c.464 4.785 2.411 6.732 7.196 7.196l.553.046l.579.034c.098.005.198.01.299.013l.616.017L12 22l.642-.005l.616-.017l.299-.013l.579-.034l.553-.046c4.785-.464 6.732-2.411 7.196-7.196l.046-.553l.034-.579c.005-.098.01-.198.013-.299l.017-.616L22 12l-.005-.642l-.017-.616l-.013-.299l-.034-.579l-.046-.553c-.464-4.785-2.411-6.732-7.196-7.196l-.553-.046l-.579-.034a28.058 28.058 0 0 0-.299-.013l-.616-.017l-.318-.004zm2.293 6.293a1 1 0 0 1 1.497 1.32l-.083.094L13.415 12l2.292 2.293a1 1 0 0 1 .083 1.32l-.083.094a1 1 0 0 1-1.32.083l-.094-.083l-3-3a1 1 0 0 1-.083-1.32l.083-.094zm-4 0a1 1 0 0 1 1.497 1.32l-.083.094L9.415 12l2.292 2.293a1 1 0 0 1 .083 1.32l-.083.094a1 1 0 0 1-1.32.083l-.094-.083l-3-3a1 1 0 0 1-.083-1.32l.083-.094z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -39615,7 +42264,7 @@ func SquareRoundedChevronsRight(children ...ElementRenderer) *TablerIcon {
 func SquareRoundedChevronsRightFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M12 2c-.218 0-.432.002-.642.005l-.616.017l-.299.013l-.579.034l-.553.046c-4.785.464-6.732 2.411-7.196 7.196l-.046.553l-.034.579c-.005.098-.01.198-.013.299l-.017.616l-.004.318L2 12c0 .218.002.432.005.642l.017.616l.013.299l.034.579l.046.553c.464 4.785 2.411 6.732 7.196 7.196l.553.046l.579.034c.098.005.198.01.299.013l.616.017L12 22l.642-.005l.616-.017l.299-.013l.579-.034l.553-.046c4.785-.464 6.732-2.411 7.196-7.196l.046-.553l.034-.579c.005-.098.01-.198.013-.299l.017-.616L22 12l-.005-.642l-.017-.616l-.013-.299l-.034-.579l-.046-.553c-.464-4.785-2.411-6.732-7.196-7.196l-.553-.046l-.579-.034a28.058 28.058 0 0 0-.299-.013l-.616-.017l-.318-.004zM8.293 8.293a1 1 0 0 1 1.32-.083l.094.083l3 3a1 1 0 0 1 .083 1.32l-.083.094l-3 3a1 1 0 0 1-1.497-1.32l.083-.094L10.585 12L8.293 9.707a1 1 0 0 1-.083-1.32zm4 0a1 1 0 0 1 1.32-.083l.094.083l3 3a1 1 0 0 1 .083 1.32l-.083.094l-3 3a1 1 0 0 1-1.497-1.32l.083-.094L14.585 12l-2.292-2.293a1 1 0 0 1-.083-1.32z"/></g>`),
+			Text(`<path fill="currentColor" d="M12 2c-.218 0-.432.002-.642.005l-.616.017l-.299.013l-.579.034l-.553.046c-4.785.464-6.732 2.411-7.196 7.196l-.046.553l-.034.579c-.005.098-.01.198-.013.299l-.017.616l-.004.318L2 12c0 .218.002.432.005.642l.017.616l.013.299l.034.579l.046.553c.464 4.785 2.411 6.732 7.196 7.196l.553.046l.579.034c.098.005.198.01.299.013l.616.017L12 22l.642-.005l.616-.017l.299-.013l.579-.034l.553-.046c4.785-.464 6.732-2.411 7.196-7.196l.046-.553l.034-.579c.005-.098.01-.198.013-.299l.017-.616L22 12l-.005-.642l-.017-.616l-.013-.299l-.034-.579l-.046-.553c-.464-4.785-2.411-6.732-7.196-7.196l-.553-.046l-.579-.034a28.058 28.058 0 0 0-.299-.013l-.616-.017l-.318-.004zM8.293 8.293a1 1 0 0 1 1.32-.083l.094.083l3 3a1 1 0 0 1 .083 1.32l-.083.094l-3 3a1 1 0 0 1-1.497-1.32l.083-.094L10.585 12L8.293 9.707a1 1 0 0 1-.083-1.32zm4 0a1 1 0 0 1 1.32-.083l.094.083l3 3a1 1 0 0 1 .083 1.32l-.083.094l-3 3a1 1 0 0 1-1.497-1.32l.083-.094L14.585 12l-2.292-2.293a1 1 0 0 1-.083-1.32z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -39631,7 +42280,7 @@ func SquareRoundedChevronsUp(children ...ElementRenderer) *TablerIcon {
 func SquareRoundedChevronsUpFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M12 2c-.218 0-.432.002-.642.005l-.616.017l-.299.013l-.579.034l-.553.046c-4.785.464-6.732 2.411-7.196 7.196l-.046.553l-.034.579c-.005.098-.01.198-.013.299l-.017.616l-.004.318L2 12c0 .218.002.432.005.642l.017.616l.013.299l.034.579l.046.553c.464 4.785 2.411 6.732 7.196 7.196l.553.046l.579.034c.098.005.198.01.299.013l.616.017L12 22l.642-.005l.616-.017l.299-.013l.579-.034l.553-.046c4.785-.464 6.732-2.411 7.196-7.196l.046-.553l.034-.579c.005-.098.01-.198.013-.299l.017-.616L22 12l-.005-.642l-.017-.616l-.013-.299l-.034-.579l-.046-.553c-.464-4.785-2.411-6.732-7.196-7.196l-.553-.046l-.579-.034a28.058 28.058 0 0 0-.299-.013l-.616-.017l-.318-.004zm-.707 9.293a1 1 0 0 1 1.32-.083l.094.083l3 3a1 1 0 0 1-1.32 1.497l-.094-.083L12 13.415l-2.293 2.292a1 1 0 0 1-1.32.083l-.094-.083a1 1 0 0 1-.083-1.32l.083-.094zm0-4a1 1 0 0 1 1.32-.083l.094.083l3 3a1 1 0 0 1-1.32 1.497l-.094-.083L12 9.415l-2.293 2.292a1 1 0 0 1-1.32.083l-.094-.083a1 1 0 0 1-.083-1.32l.083-.094z"/></g>`),
+			Text(`<path fill="currentColor" d="M12 2c-.218 0-.432.002-.642.005l-.616.017l-.299.013l-.579.034l-.553.046c-4.785.464-6.732 2.411-7.196 7.196l-.046.553l-.034.579c-.005.098-.01.198-.013.299l-.017.616l-.004.318L2 12c0 .218.002.432.005.642l.017.616l.013.299l.034.579l.046.553c.464 4.785 2.411 6.732 7.196 7.196l.553.046l.579.034c.098.005.198.01.299.013l.616.017L12 22l.642-.005l.616-.017l.299-.013l.579-.034l.553-.046c4.785-.464 6.732-2.411 7.196-7.196l.046-.553l.034-.579c.005-.098.01-.198.013-.299l.017-.616L22 12l-.005-.642l-.017-.616l-.013-.299l-.034-.579l-.046-.553c-.464-4.785-2.411-6.732-7.196-7.196l-.553-.046l-.579-.034a28.058 28.058 0 0 0-.299-.013l-.616-.017l-.318-.004zm-.707 9.293a1 1 0 0 1 1.32-.083l.094.083l3 3a1 1 0 0 1-1.32 1.497l-.094-.083L12 13.415l-2.293 2.292a1 1 0 0 1-1.32.083l-.094-.083a1 1 0 0 1-.083-1.32l.083-.094zm0-4a1 1 0 0 1 1.32-.083l.094.083l3 3a1 1 0 0 1-1.32 1.497l-.094-.083L12 9.415l-2.293 2.292a1 1 0 0 1-1.32.083l-.094-.083a1 1 0 0 1-.083-1.32l.083-.094z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -39639,7 +42288,7 @@ func SquareRoundedChevronsUpFilled(children ...ElementRenderer) *TablerIcon {
 func SquareRoundedFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M12 2c-.218 0-.432.002-.642.005l-.616.017l-.299.013l-.579.034l-.553.046c-4.785.464-6.732 2.411-7.196 7.196l-.046.553l-.034.579c-.005.098-.01.198-.013.299l-.017.616l-.004.318L2 12c0 .218.002.432.005.642l.017.616l.013.299l.034.579l.046.553c.464 4.785 2.411 6.732 7.196 7.196l.553.046l.579.034c.098.005.198.01.299.013l.616.017L12 22l.642-.005l.616-.017l.299-.013l.579-.034l.553-.046c4.785-.464 6.732-2.411 7.196-7.196l.046-.553l.034-.579c.005-.098.01-.198.013-.299l.017-.616L22 12l-.005-.642l-.017-.616l-.013-.299l-.034-.579l-.046-.553c-.464-4.785-2.411-6.732-7.196-7.196l-.553-.046l-.579-.034a28.058 28.058 0 0 0-.299-.013l-.616-.017l-.318-.004z"/></g>`),
+			Text(`<path fill="currentColor" d="M12 2c-.218 0-.432.002-.642.005l-.616.017l-.299.013l-.579.034l-.553.046c-4.785.464-6.732 2.411-7.196 7.196l-.046.553l-.034.579c-.005.098-.01.198-.013.299l-.017.616l-.004.318L2 12c0 .218.002.432.005.642l.017.616l.013.299l.034.579l.046.553c.464 4.785 2.411 6.732 7.196 7.196l.553.046l.579.034c.098.005.198.01.299.013l.616.017L12 22l.642-.005l.616-.017l.299-.013l.579-.034l.553-.046c4.785-.464 6.732-2.411 7.196-7.196l.046-.553l.034-.579c.005-.098.01-.198.013-.299l.017-.616L22 12l-.005-.642l-.017-.616l-.013-.299l-.034-.579l-.046-.553c-.464-4.785-2.411-6.732-7.196-7.196l-.553-.046l-.579-.034a28.058 28.058 0 0 0-.299-.013l-.616-.017l-.318-.004z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -39652,10 +42301,26 @@ func SquareRoundedLetterA(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func SquareRoundedLetterAfilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M11.676 2.001L12 2c7.752 0 10 2.248 10 10l-.005.642C21.869 19.877 19.534 22 12 22l-.642-.005C4.228 21.87 2.063 19.6 2 12.325V12c0-7.643 2.185-9.936 9.676-9.999M12 7a3 3 0 0 0-3 3v6a1 1 0 0 0 2 0v-2h2v2a1 1 0 0 0 .883.993L14 17a1 1 0 0 0 1-1v-6a3 3 0 0 0-3-3m0 2a1 1 0 0 1 1 1v2h-2v-2a1 1 0 0 1 .883-.993z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func SquareRoundedLetterB(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M10 16h2a2 2 0 1 0 0-4h-2h2a2 2 0 1 0 0-4h-2z"/><path d="M12 3c7.2 0 9 1.8 9 9s-1.8 9-9 9s-9-1.8-9-9s1.8-9 9-9"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func SquareRoundedLetterBfilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M11.676 2.001L12 2c7.752 0 10 2.248 10 10l-.005.642C21.869 19.877 19.534 22 12 22l-.642-.005C4.228 21.87 2.063 19.6 2 12.325V12c0-7.643 2.185-9.936 9.676-9.999M12 7h-2a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h2a3 3 0 0 0 3-3l-.005-.176a3 3 0 0 0-.654-1.7L14.235 12l.106-.124A3 3 0 0 0 12 7m0 6a1 1 0 0 1 0 2h-1v-2zm0-4a1 1 0 0 1 0 2h-1V9z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -39668,10 +42333,26 @@ func SquareRoundedLetterC(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func SquareRoundedLetterCfilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M11.676 2.001L12 2c7.752 0 10 2.248 10 10l-.005.642C21.869 19.877 19.534 22 12 22l-.642-.005C4.228 21.87 2.063 19.6 2 12.325V12c0-7.643 2.185-9.936 9.676-9.999M12 7a3 3 0 0 0-3 3v4a3 3 0 0 0 6 0a1 1 0 0 0-1.993-.117L13 14a1 1 0 0 1-2 0v-4a1 1 0 0 1 1.993-.117L13 10a1 1 0 0 0 2 0a3 3 0 0 0-3-3"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func SquareRoundedLetterD(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M10 8v8h2a2 2 0 0 0 2-2v-4a2 2 0 0 0-2-2z"/><path d="M12 3c7.2 0 9 1.8 9 9s-1.8 9-9 9s-9-1.8-9-9s1.8-9 9-9"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func SquareRoundedLetterDfilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M11.676 2.001L12 2c7.752 0 10 2.248 10 10l-.005.642C21.869 19.877 19.534 22 12 22l-.642-.005C4.228 21.87 2.063 19.6 2 12.325V12c0-7.643 2.185-9.936 9.676-9.999M12 7h-2a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h2a3 3 0 0 0 3-3v-4a3 3 0 0 0-3-3m0 2a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1h-1V9z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -39684,10 +42365,26 @@ func SquareRoundedLetterE(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func SquareRoundedLetterEfilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M11.676 2.001L12 2c7.752 0 10 2.248 10 10l-.005.642C21.869 19.877 19.534 22 12 22l-.642-.005C4.228 21.87 2.063 19.6 2 12.325V12c0-7.643 2.185-9.936 9.676-9.999M14 7h-4a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1l-.007-.117A1 1 0 0 0 14 15h-3v-2h1.5a1 1 0 0 0 .993-.883L13.5 12a1 1 0 0 0-1-1H11V9h3a1 1 0 0 0 0-2"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func SquareRoundedLetterF(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M10 12h3m1-4h-4v8"/><path d="M12 3c7.2 0 9 1.8 9 9s-1.8 9-9 9s-9-1.8-9-9s1.8-9 9-9"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func SquareRoundedLetterFfilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M11.676 2.001L12 2c7.752 0 10 2.248 10 10l-.005.642C21.869 19.877 19.534 22 12 22l-.642-.005C4.228 21.87 2.063 19.6 2 12.325V12c0-7.643 2.185-9.936 9.676-9.999M14 7h-4a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1l.117-.007A1 1 0 0 0 11 16v-3h2a1 1 0 0 0 .993-.883L14 12a1 1 0 0 0-1-1h-2V9h3a1 1 0 0 0 0-2"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -39700,10 +42397,26 @@ func SquareRoundedLetterG(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func SquareRoundedLetterGfilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M11.676 2.001L12 2c7.752 0 10 2.248 10 10l-.005.642C21.869 19.877 19.534 22 12 22l-.642-.005C4.228 21.87 2.063 19.6 2 12.325V12c0-7.643 2.185-9.936 9.676-9.999M14 7h-2a3 3 0 0 0-3 3v4a3 3 0 0 0 3 3h2a1 1 0 0 0 1-1v-4a1 1 0 0 0-1-1h-1a1 1 0 0 0-1 1l.007.117A1 1 0 0 0 13 13v2h-1a1 1 0 0 1-1-1v-4a1 1 0 0 1 1-1h2a1 1 0 0 0 0-2"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func SquareRoundedLetterH(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 16V8m4 0v8m-4-4h4m-2-9c7.2 0 9 1.8 9 9s-1.8 9-9 9s-9-1.8-9-9s1.8-9 9-9"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func SquareRoundedLetterHfilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M11.676 2.001L12 2c7.752 0 10 2.248 10 10l-.005.642C21.869 19.877 19.534 22 12 22l-.642-.005C4.228 21.87 2.063 19.6 2 12.325V12c0-7.643 2.185-9.936 9.676-9.999M14 7a1 1 0 0 0-1 1v3h-2V8a1 1 0 0 0-.883-.993L10 7a1 1 0 0 0-1 1v8a1 1 0 0 0 2 0v-3h2v3a1 1 0 0 0 .883.993L14 17a1 1 0 0 0 1-1V8a1 1 0 0 0-1-1"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -39716,10 +42429,26 @@ func SquareRoundedLetterI(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func SquareRoundedLetterIfilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M11.676 2.001L12 2c7.752 0 10 2.248 10 10l-.005.642C21.869 19.877 19.534 22 12 22l-.642-.005C4.228 21.87 2.063 19.6 2 12.325V12c0-7.643 2.185-9.936 9.676-9.999M12 7a1 1 0 0 0-1 1v8a1 1 0 0 0 2 0V8a1 1 0 0 0-1-1"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func SquareRoundedLetterJ(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M10 8h4v6a2 2 0 1 1-4 0"/><path d="M12 3c7.2 0 9 1.8 9 9s-1.8 9-9 9s-9-1.8-9-9s1.8-9 9-9"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func SquareRoundedLetterJfilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M11.676 2.001L12 2c7.752 0 10 2.248 10 10l-.005.642C21.869 19.877 19.534 22 12 22l-.642-.005C4.228 21.87 2.063 19.6 2 12.325V12c0-7.643 2.185-9.936 9.676-9.999M14 7h-4a1 1 0 0 0-1 1l.007.117A1 1 0 0 0 10 9h3v5a1 1 0 0 1-1.993.117L11 14a1 1 0 0 0-2 0a3 3 0 0 0 6 0V8a1 1 0 0 0-1-1"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -39732,10 +42461,26 @@ func SquareRoundedLetterK(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func SquareRoundedLetterKfilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M11.676 2.001L12 2c7.752 0 10 2.248 10 10l-.005.642C21.869 19.877 19.534 22 12 22l-.642-.005C4.228 21.87 2.063 19.6 2 12.325V12c0-7.643 2.185-9.936 9.676-9.999m2.854 5.151a1 1 0 0 0-1.378.318L11 10.913V8a1 1 0 0 0-.883-.993L10 7a1 1 0 0 0-1 1v8a1 1 0 0 0 2 0v-2.914l2.152 3.444a1 1 0 0 0 1.276.374l.102-.056l.095-.068a1 1 0 0 0 .223-1.31L12.678 12l2.17-3.47a1 1 0 0 0-.318-1.378"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func SquareRoundedLetterL(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M10 8v8h4"/><path d="M12 3c7.2 0 9 1.8 9 9s-1.8 9-9 9s-9-1.8-9-9s1.8-9 9-9"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func SquareRoundedLetterLfilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M11.676 2.001L12 2c7.752 0 10 2.248 10 10l-.005.642C21.869 19.877 19.534 22 12 22l-.642-.005C4.228 21.87 2.063 19.6 2 12.325V12c0-7.643 2.185-9.936 9.676-9.999M10 7a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1l-.007-.117A1 1 0 0 0 14 15h-3V8a1 1 0 0 0-1-1"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -39748,10 +42493,26 @@ func SquareRoundedLetterM(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func SquareRoundedLetterMfilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M11.676 2.001L12 2c7.752 0 10 2.248 10 10l-.005.642C21.869 19.877 19.534 22 12 22l-.642-.005C4.228 21.87 2.063 19.6 2 12.325V12c0-7.643 2.185-9.936 9.676-9.999M16 8c0-1.014-1.336-1.384-1.857-.514L12 11.056l-2.143-3.57C9.336 6.616 8 6.986 8 8v8a1 1 0 0 0 1 1l.117-.007A1 1 0 0 0 10 16v-4.39l1.143 1.904l.074.108a1 1 0 0 0 1.64-.108L14 11.61V16a1 1 0 0 0 2 0z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func SquareRoundedLetterN(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M10 16V8l4 8V8"/><path d="M12 3c7.2 0 9 1.8 9 9s-1.8 9-9 9s-9-1.8-9-9s1.8-9 9-9"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func SquareRoundedLetterNfilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M11.676 2.001L12 2c7.752 0 10 2.248 10 10l-.005.642C21.869 19.877 19.534 22 12 22l-.642-.005C4.228 21.87 2.063 19.6 2 12.325V12c0-7.643 2.185-9.936 9.676-9.999m-.782 5.552C10.423 6.609 9 6.945 9 8v8a1 1 0 0 0 1 1l.117-.007A1 1 0 0 0 11 16v-3.764l2.106 4.211c.471.944 1.894.608 1.894-.447V8a1 1 0 0 0-1-1l-.117.007A1 1 0 0 0 13 8v3.764z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -39764,10 +42525,26 @@ func SquareRoundedLetterO(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func SquareRoundedLetterOfilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M11.676 2.001L12 2c7.752 0 10 2.248 10 10l-.005.642C21.869 19.877 19.534 22 12 22l-.642-.005C4.228 21.87 2.063 19.6 2 12.325V12c0-7.643 2.185-9.936 9.676-9.999M12 7a3 3 0 0 0-3 3v4a3 3 0 0 0 6 0v-4a3 3 0 0 0-3-3m0 2a1 1 0 0 1 1 1v4a1 1 0 0 1-2 0v-4a1 1 0 0 1 1-1"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func SquareRoundedLetterP(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M10 12h2a2 2 0 1 0 0-4h-2v8"/><path d="M12 3c7.2 0 9 1.8 9 9s-1.8 9-9 9s-9-1.8-9-9s1.8-9 9-9"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func SquareRoundedLetterPfilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M11.676 2.001L12 2c7.752 0 10 2.248 10 10l-.005.642C21.869 19.877 19.534 22 12 22l-.642-.005C4.228 21.87 2.063 19.6 2 12.325V12c0-7.643 2.185-9.936 9.676-9.999M12 7h-2a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1l.117-.007A1 1 0 0 0 11 16v-3h1a3 3 0 0 0 0-6m0 2a1 1 0 0 1 0 2h-1V9z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -39780,10 +42557,26 @@ func SquareRoundedLetterQ(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func SquareRoundedLetterQfilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M11.676 2.001L12 2c7.752 0 10 2.248 10 10l-.005.642C21.869 19.877 19.534 22 12 22l-.642-.005C4.228 21.87 2.063 19.6 2 12.325V12c0-7.643 2.185-9.936 9.676-9.999M12 7a3 3 0 0 0-3 3v4a3 3 0 0 0 4.168 2.764l.125-.057a1 1 0 0 0 1.414-1.414l.057-.125A3 3 0 0 0 15 14v-4a3 3 0 0 0-3-3m1 7.001h-.059a.996.996 0 0 0-.941 1A1 1 0 0 1 11 14v-4a1 1 0 0 1 2 0z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func SquareRoundedLetterR(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M10 12h2a2 2 0 1 0 0-4h-2v8m4 0l-3-4"/><path d="M12 3c7.2 0 9 1.8 9 9s-1.8 9-9 9s-9-1.8-9-9s1.8-9 9-9"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func SquareRoundedLetterRfilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M11.676 2.001L12 2c7.752 0 10 2.248 10 10l-.005.642C21.869 19.877 19.534 22 12 22l-.642-.005C4.228 21.87 2.063 19.6 2 12.325V12c0-7.643 2.185-9.936 9.676-9.999M12 7h-2a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1l.117-.007A1 1 0 0 0 11 16v-2.332l2.2 2.932a1 1 0 0 0 1.4.2l.096-.081A1 1 0 0 0 14.8 15.4l-1.903-2.538l.115-.037A3.001 3.001 0 0 0 12 7m0 2a1 1 0 0 1 0 2h-1V9z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -39796,10 +42589,26 @@ func SquareRoundedLetterS(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func SquareRoundedLetterSfilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M11.676 2.001L12 2c7.752 0 10 2.248 10 10l-.005.642C21.869 19.877 19.534 22 12 22l-.642-.005C4.228 21.87 2.063 19.6 2 12.325V12c0-7.643 2.185-9.936 9.676-9.999M13 7h-2a2 2 0 0 0-2 2v2a2 2 0 0 0 2 2h2v2h-2a1 1 0 0 0-2 0a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2v-2a2 2 0 0 0-2-2h-2V9h2l.007.117A1 1 0 0 0 15 9a2 2 0 0 0-2-2"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func SquareRoundedLetterT(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 8h4m-2 0v8m0-13c7.2 0 9 1.8 9 9s-1.8 9-9 9s-9-1.8-9-9s1.8-9 9-9"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func SquareRoundedLetterTfilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M11.676 2.001L12 2c7.752 0 10 2.248 10 10l-.005.642C21.869 19.877 19.534 22 12 22l-.642-.005C4.228 21.87 2.063 19.6 2 12.325V12c0-7.643 2.185-9.936 9.676-9.999M14 7h-4a1 1 0 1 0 0 2h1v7a1 1 0 0 0 .883.993L12 17a1 1 0 0 0 1-1V9h1a1 1 0 0 0 .993-.883L15 8a1 1 0 0 0-1-1"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -39812,10 +42621,26 @@ func SquareRoundedLetterU(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func SquareRoundedLetterUfilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M11.676 2.001L12 2c7.752 0 10 2.248 10 10l-.005.642C21.869 19.877 19.534 22 12 22l-.642-.005C4.228 21.87 2.063 19.6 2 12.325V12c0-7.643 2.185-9.936 9.676-9.999M14 7a1 1 0 0 0-1 1v6a1 1 0 0 1-2 0V8a1 1 0 0 0-2 0v6a3 3 0 0 0 6 0V8a1 1 0 0 0-1-1"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func SquareRoundedLetterV(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="m10 8l2 8l2-8"/><path d="M12 3c7.2 0 9 1.8 9 9s-1.8 9-9 9s-9-1.8-9-9s1.8-9 9-9"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func SquareRoundedLetterVfilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M11.676 2.001L12 2c7.752 0 10 2.248 10 10l-.005.642C21.869 19.877 19.534 22 12 22l-.642-.005C4.228 21.87 2.063 19.6 2 12.325V12c0-7.643 2.185-9.936 9.676-9.999m2.567 5.029a1 1 0 0 0-1.213.727L12 11.875l-1.03-4.118a1 1 0 1 0-1.94.486l2 8c.252 1.01 1.688 1.01 1.94 0l2-8a1 1 0 0 0-.727-1.213"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -39828,10 +42653,26 @@ func SquareRoundedLetterW(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func SquareRoundedLetterWfilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M11.676 2.001L12 2c7.752 0 10 2.248 10 10l-.005.642C21.869 19.877 19.534 22 12 22l-.642-.005C4.228 21.87 2.063 19.6 2 12.325V12c0-7.643 2.185-9.936 9.676-9.999m2.332 5.875l-.52 4.153l-.56-1.4c-.319-.799-1.41-.837-1.803-.114l-.053.114l-.561 1.4l-.519-4.153a1 1 0 0 0-1-.876l-.116.008a1 1 0 0 0-.868 1.116l1 8c.128 1.025 1.537 1.207 1.92.247L12 13.693l1.072 2.678c.383.96 1.792.778 1.92-.247l1-8a1 1 0 0 0-1.984-.248"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func SquareRoundedLetterX(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m10 8l4 8m-4 0l4-8m-2-5c7.2 0 9 1.8 9 9s-1.8 9-9 9s-9-1.8-9-9s1.8-9 9-9"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func SquareRoundedLetterXfilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M11.676 2.001L12 2c7.752 0 10 2.248 10 10l-.005.642C21.869 19.877 19.534 22 12 22l-.642-.005C4.228 21.87 2.063 19.6 2 12.325V12c0-7.643 2.185-9.936 9.676-9.999m2.771 5.105a1 1 0 0 0-1.341.447L12 9.763l-1.106-2.21a1 1 0 0 0-1.234-.494l-.107.047a1 1 0 0 0-.447 1.341L10.88 12l-1.775 3.553a1 1 0 0 0 .345 1.283l.102.058a1 1 0 0 0 1.341-.447L12 14.236l1.106 2.211a1 1 0 0 0 1.234.494l.107-.047a1 1 0 0 0 .447-1.341L13.118 12l1.776-3.553a1 1 0 0 0-.345-1.283z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -39844,10 +42685,26 @@ func SquareRoundedLetterY(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func SquareRoundedLetterYfilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M11.676 2.001L12 2c7.752 0 10 2.248 10 10l-.005.642C21.869 19.877 19.534 22 12 22l-.642-.005C4.228 21.87 2.063 19.6 2 12.325V12c0-7.643 2.185-9.936 9.676-9.999m2.695 5.07a1 1 0 0 0-1.3.558L12 10.307l-1.072-2.678a1 1 0 0 0-1.856.742L11 13.194V16a1 1 0 0 0 .883.993L12 17a1 1 0 0 0 1-1v-2.809l1.928-4.82a1 1 0 0 0-.45-1.25z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func SquareRoundedLetterZ(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M10 8h4l-4 8h4"/><path d="M12 3c7.2 0 9 1.8 9 9s-1.8 9-9 9s-9-1.8-9-9s1.8-9 9-9"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func SquareRoundedLetterZfilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M11.676 2.001L12 2c7.752 0 10 2.248 10 10l-.005.642C21.869 19.877 19.534 22 12 22l-.642-.005C4.228 21.87 2.063 19.6 2 12.325V12c0-7.643 2.185-9.936 9.676-9.999M14 7h-4a1 1 0 0 0-1 1l.007.117A1 1 0 0 0 10 9h2.382l-3.276 6.553A1 1 0 0 0 10 17h4a1 1 0 0 0 1-1l-.007-.117A1 1 0 0 0 14 15h-2.382l3.276-6.553A1 1 0 0 0 14 7"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -39863,7 +42720,7 @@ func SquareRoundedMinus(children ...ElementRenderer) *TablerIcon {
 func SquareRoundedMinusFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="m12 2l.324.001l.318.004l.616.017l.299.013l.579.034l.553.046c4.785.464 6.732 2.411 7.196 7.196l.046.553l.034.579c.005.098.01.198.013.299l.017.616L22 12l-.005.642l-.017.616l-.013.299l-.034.579l-.046.553c-.464 4.785-2.411 6.732-7.196 7.196l-.553.046l-.579.034c-.098.005-.198.01-.299.013l-.616.017L12 22l-.642-.005l-.616-.017l-.299-.013l-.579-.034l-.553-.046c-4.785-.464-6.732-2.411-7.196-7.196l-.046-.553l-.034-.579a28.058 28.058 0 0 1-.013-.299l-.017-.616C2.002 12.432 2 12.218 2 12l.001-.324l.004-.318l.017-.616l.013-.299l.034-.579l.046-.553c.464-4.785 2.411-6.732 7.196-7.196l.553-.046l.579-.034c.098-.005.198-.01.299-.013l.616-.017c.21-.003.424-.005.642-.005m3 9H9l-.117.007A1 1 0 0 0 9 13h6l.117-.007A1 1 0 0 0 15 11"/></g>`),
+			Text(`<path fill="currentColor" d="m12 2l.324.001l.318.004l.616.017l.299.013l.579.034l.553.046c4.785.464 6.732 2.411 7.196 7.196l.046.553l.034.579c.005.098.01.198.013.299l.017.616L22 12l-.005.642l-.017.616l-.013.299l-.034.579l-.046.553c-.464 4.785-2.411 6.732-7.196 7.196l-.553.046l-.579.034c-.098.005-.198.01-.299.013l-.616.017L12 22l-.642-.005l-.616-.017l-.299-.013l-.579-.034l-.553-.046c-4.785-.464-6.732-2.411-7.196-7.196l-.046-.553l-.034-.579a28.058 28.058 0 0 1-.013-.299l-.017-.616C2.002 12.432 2 12.218 2 12l.001-.324l.004-.318l.017-.616l.013-.299l.034-.579l.046-.553c.464-4.785 2.411-6.732 7.196-7.196l.553-.046l.579-.034c.098-.005.198-.01.299-.013l.616-.017c.21-.003.424-.005.642-.005m3 9H9l-.117.007A1 1 0 0 0 9 13h6l.117-.007A1 1 0 0 0 15 11"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -39887,7 +42744,7 @@ func SquareRoundedNumberEight(children ...ElementRenderer) *TablerIcon {
 func SquareRoundedNumberEightFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="m12 2l.642.005l.616.017l.299.013l.579.034l.553.046c4.687.455 6.65 2.333 7.166 6.906l.03.29l.046.553l.041.727l.006.15l.017.617L22 12l-.005.642l-.017.616l-.013.299l-.034.579l-.046.553c-.455 4.687-2.333 6.65-6.906 7.166l-.29.03l-.553.046l-.727.041l-.15.006l-.617.017L12 22l-.642-.005l-.616-.017l-.299-.013l-.579-.034l-.553-.046c-4.687-.455-6.65-2.333-7.166-6.906l-.03-.29l-.046-.553l-.041-.727l-.006-.15l-.017-.617l-.004-.318v-.648l.004-.318l.017-.616l.013-.299l.034-.579l.046-.553c.455-4.687 2.333-6.65 6.906-7.166l.29-.03l.553-.046l.727-.041l.15-.006l.617-.017c.21-.003.424-.005.642-.005m1 5h-2l-.15.005a2 2 0 0 0-1.844 1.838L9 9v2l.005.15c.018.236.077.46.17.667l.075.152l.018.03l-.018.032c-.133.24-.218.509-.243.795L9 13v2l.005.15a2 2 0 0 0 1.838 1.844L11 17h2l.15-.005a2 2 0 0 0 1.844-1.838L15 15v-2l-.005-.15a1.988 1.988 0 0 0-.17-.667l-.075-.152l-.019-.032l.02-.03a2.01 2.01 0 0 0 .242-.795L15 11V9l-.005-.15a2 2 0 0 0-1.838-1.844zm0 6v2h-2v-2zm0-4v2h-2V9z"/></g>`),
+			Text(`<path fill="currentColor" d="m12 2l.642.005l.616.017l.299.013l.579.034l.553.046c4.687.455 6.65 2.333 7.166 6.906l.03.29l.046.553l.041.727l.006.15l.017.617L22 12l-.005.642l-.017.616l-.013.299l-.034.579l-.046.553c-.455 4.687-2.333 6.65-6.906 7.166l-.29.03l-.553.046l-.727.041l-.15.006l-.617.017L12 22l-.642-.005l-.616-.017l-.299-.013l-.579-.034l-.553-.046c-4.687-.455-6.65-2.333-7.166-6.906l-.03-.29l-.046-.553l-.041-.727l-.006-.15l-.017-.617l-.004-.318v-.648l.004-.318l.017-.616l.013-.299l.034-.579l.046-.553c.455-4.687 2.333-6.65 6.906-7.166l.29-.03l.553-.046l.727-.041l.15-.006l.617-.017c.21-.003.424-.005.642-.005m1 5h-2l-.15.005a2 2 0 0 0-1.844 1.838L9 9v2l.005.15c.018.236.077.46.17.667l.075.152l.018.03l-.018.032c-.133.24-.218.509-.243.795L9 13v2l.005.15a2 2 0 0 0 1.838 1.844L11 17h2l.15-.005a2 2 0 0 0 1.844-1.838L15 15v-2l-.005-.15a1.988 1.988 0 0 0-.17-.667l-.075-.152l-.019-.032l.02-.03a2.01 2.01 0 0 0 .242-.795L15 11V9l-.005-.15a2 2 0 0 0-1.838-1.844zm0 6v2h-2v-2zm0-4v2h-2V9z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -39903,7 +42760,7 @@ func SquareRoundedNumberFive(children ...ElementRenderer) *TablerIcon {
 func SquareRoundedNumberFiveFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="m12 2l.642.005l.616.017l.299.013l.579.034l.553.046c4.687.455 6.65 2.333 7.166 6.906l.03.29l.046.553l.041.727l.006.15l.017.617L22 12l-.005.642l-.017.616l-.013.299l-.034.579l-.046.553c-.455 4.687-2.333 6.65-6.906 7.166l-.29.03l-.553.046l-.727.041l-.15.006l-.617.017L12 22l-.642-.005l-.616-.017l-.299-.013l-.579-.034l-.553-.046c-4.687-.455-6.65-2.333-7.166-6.906l-.03-.29l-.046-.553l-.041-.727l-.006-.15l-.017-.617l-.004-.318v-.648l.004-.318l.017-.616l.013-.299l.034-.579l.046-.553c.455-4.687 2.333-6.65 6.906-7.166l.29-.03l.553-.046l.727-.041l.15-.006l.617-.017c.21-.003.424-.005.642-.005m2 5h-4a1 1 0 0 0-.993.883L9 8v4a1 1 0 0 0 .883.993L10 13h3v2h-2l-.007-.117A1 1 0 0 0 9 15a2 2 0 0 0 1.85 1.995L11 17h2a2 2 0 0 0 1.995-1.85L15 15v-2a2 2 0 0 0-1.85-1.995L13 11h-2V9h3a1 1 0 0 0 .993-.883L15 8a1 1 0 0 0-.883-.993z"/></g>`),
+			Text(`<path fill="currentColor" d="m12 2l.642.005l.616.017l.299.013l.579.034l.553.046c4.687.455 6.65 2.333 7.166 6.906l.03.29l.046.553l.041.727l.006.15l.017.617L22 12l-.005.642l-.017.616l-.013.299l-.034.579l-.046.553c-.455 4.687-2.333 6.65-6.906 7.166l-.29.03l-.553.046l-.727.041l-.15.006l-.617.017L12 22l-.642-.005l-.616-.017l-.299-.013l-.579-.034l-.553-.046c-4.687-.455-6.65-2.333-7.166-6.906l-.03-.29l-.046-.553l-.041-.727l-.006-.15l-.017-.617l-.004-.318v-.648l.004-.318l.017-.616l.013-.299l.034-.579l.046-.553c.455-4.687 2.333-6.65 6.906-7.166l.29-.03l.553-.046l.727-.041l.15-.006l.617-.017c.21-.003.424-.005.642-.005m2 5h-4a1 1 0 0 0-.993.883L9 8v4a1 1 0 0 0 .883.993L10 13h3v2h-2l-.007-.117A1 1 0 0 0 9 15a2 2 0 0 0 1.85 1.995L11 17h2a2 2 0 0 0 1.995-1.85L15 15v-2a2 2 0 0 0-1.85-1.995L13 11h-2V9h3a1 1 0 0 0 .993-.883L15 8a1 1 0 0 0-.883-.993z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -39919,7 +42776,7 @@ func SquareRoundedNumberFour(children ...ElementRenderer) *TablerIcon {
 func SquareRoundedNumberFourFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="m12 2l.642.005l.616.017l.299.013l.579.034l.553.046c4.687.455 6.65 2.333 7.166 6.906l.03.29l.046.553l.041.727l.006.15l.017.617L22 12l-.005.642l-.017.616l-.013.299l-.034.579l-.046.553c-.455 4.687-2.333 6.65-6.906 7.166l-.29.03l-.553.046l-.727.041l-.15.006l-.617.017L12 22l-.642-.005l-.616-.017l-.299-.013l-.579-.034l-.553-.046c-4.687-.455-6.65-2.333-7.166-6.906l-.03-.29l-.046-.553l-.041-.727l-.006-.15l-.017-.617l-.004-.318v-.648l.004-.318l.017-.616l.013-.299l.034-.579l.046-.553c.455-4.687 2.333-6.65 6.906-7.166l.29-.03l.553-.046l.727-.041l.15-.006l.617-.017c.21-.003.424-.005.642-.005m2 5a1 1 0 0 0-.993.883L13 8v3h-2V8l-.007-.117a1 1 0 0 0-1.986 0L9 8v3l.005.15a2 2 0 0 0 1.838 1.844L11 13h2v3l.007.117a1 1 0 0 0 1.986 0L15 16V8l-.007-.117A1 1 0 0 0 14 7"/></g>`),
+			Text(`<path fill="currentColor" d="m12 2l.642.005l.616.017l.299.013l.579.034l.553.046c4.687.455 6.65 2.333 7.166 6.906l.03.29l.046.553l.041.727l.006.15l.017.617L22 12l-.005.642l-.017.616l-.013.299l-.034.579l-.046.553c-.455 4.687-2.333 6.65-6.906 7.166l-.29.03l-.553.046l-.727.041l-.15.006l-.617.017L12 22l-.642-.005l-.616-.017l-.299-.013l-.579-.034l-.553-.046c-4.687-.455-6.65-2.333-7.166-6.906l-.03-.29l-.046-.553l-.041-.727l-.006-.15l-.017-.617l-.004-.318v-.648l.004-.318l.017-.616l.013-.299l.034-.579l.046-.553c.455-4.687 2.333-6.65 6.906-7.166l.29-.03l.553-.046l.727-.041l.15-.006l.617-.017c.21-.003.424-.005.642-.005m2 5a1 1 0 0 0-.993.883L13 8v3h-2V8l-.007-.117a1 1 0 0 0-1.986 0L9 8v3l.005.15a2 2 0 0 0 1.838 1.844L11 13h2v3l.007.117a1 1 0 0 0 1.986 0L15 16V8l-.007-.117A1 1 0 0 0 14 7"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -39935,7 +42792,7 @@ func SquareRoundedNumberNine(children ...ElementRenderer) *TablerIcon {
 func SquareRoundedNumberNineFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="m12 2l.642.005l.616.017l.299.013l.579.034l.553.046c4.687.455 6.65 2.333 7.166 6.906l.03.29l.046.553l.041.727l.006.15l.017.617L22 12l-.005.642l-.017.616l-.013.299l-.034.579l-.046.553c-.455 4.687-2.333 6.65-6.906 7.166l-.29.03l-.553.046l-.727.041l-.15.006l-.617.017L12 22l-.642-.005l-.616-.017l-.299-.013l-.579-.034l-.553-.046c-4.687-.455-6.65-2.333-7.166-6.906l-.03-.29l-.046-.553l-.041-.727l-.006-.15l-.017-.617l-.004-.318v-.648l.004-.318l.017-.616l.013-.299l.034-.579l.046-.553c.455-4.687 2.333-6.65 6.906-7.166l.29-.03l.553-.046l.727-.041l.15-.006l.617-.017c.21-.003.424-.005.642-.005m1 5h-2l-.15.005a2 2 0 0 0-1.844 1.838L9 9v2l.005.15a2 2 0 0 0 1.838 1.844L11 13h2v2h-2l-.007-.117A1 1 0 0 0 9 15a2 2 0 0 0 1.85 1.995L11 17h2l.15-.005a2 2 0 0 0 1.844-1.838L15 15V9l-.005-.15a2 2 0 0 0-1.838-1.844zm0 2v2h-2V9z"/></g>`),
+			Text(`<path fill="currentColor" d="m12 2l.642.005l.616.017l.299.013l.579.034l.553.046c4.687.455 6.65 2.333 7.166 6.906l.03.29l.046.553l.041.727l.006.15l.017.617L22 12l-.005.642l-.017.616l-.013.299l-.034.579l-.046.553c-.455 4.687-2.333 6.65-6.906 7.166l-.29.03l-.553.046l-.727.041l-.15.006l-.617.017L12 22l-.642-.005l-.616-.017l-.299-.013l-.579-.034l-.553-.046c-4.687-.455-6.65-2.333-7.166-6.906l-.03-.29l-.046-.553l-.041-.727l-.006-.15l-.017-.617l-.004-.318v-.648l.004-.318l.017-.616l.013-.299l.034-.579l.046-.553c.455-4.687 2.333-6.65 6.906-7.166l.29-.03l.553-.046l.727-.041l.15-.006l.617-.017c.21-.003.424-.005.642-.005m1 5h-2l-.15.005a2 2 0 0 0-1.844 1.838L9 9v2l.005.15a2 2 0 0 0 1.838 1.844L11 13h2v2h-2l-.007-.117A1 1 0 0 0 9 15a2 2 0 0 0 1.85 1.995L11 17h2l.15-.005a2 2 0 0 0 1.844-1.838L15 15V9l-.005-.15a2 2 0 0 0-1.838-1.844zm0 2v2h-2V9z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -39951,7 +42808,7 @@ func SquareRoundedNumberOne(children ...ElementRenderer) *TablerIcon {
 func SquareRoundedNumberOneFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="m12 2l.642.005l.616.017l.299.013l.579.034l.553.046c4.687.455 6.65 2.333 7.166 6.906l.03.29l.046.553l.041.727l.006.15l.017.617L22 12l-.005.642l-.017.616l-.013.299l-.034.579l-.046.553c-.455 4.687-2.333 6.65-6.906 7.166l-.29.03l-.553.046l-.727.041l-.15.006l-.617.017L12 22l-.642-.005l-.616-.017l-.299-.013l-.579-.034l-.553-.046c-4.687-.455-6.65-2.333-7.166-6.906l-.03-.29l-.046-.553l-.041-.727l-.006-.15l-.017-.617l-.004-.318v-.648l.004-.318l.017-.616l.013-.299l.034-.579l.046-.553c.455-4.687 2.333-6.65 6.906-7.166l.29-.03l.553-.046l.727-.041l.15-.006l.617-.017c.21-.003.424-.005.642-.005m.994 5.886c-.083-.777-1.008-1.16-1.617-.67l-.084.077l-2 2l-.083.094a1 1 0 0 0 0 1.226l.083.094l.094.083a1 1 0 0 0 1.226 0l.094-.083l.293-.293V16l.007.117a1 1 0 0 0 1.986 0L13 16V8z"/></g>`),
+			Text(`<path fill="currentColor" d="m12 2l.642.005l.616.017l.299.013l.579.034l.553.046c4.687.455 6.65 2.333 7.166 6.906l.03.29l.046.553l.041.727l.006.15l.017.617L22 12l-.005.642l-.017.616l-.013.299l-.034.579l-.046.553c-.455 4.687-2.333 6.65-6.906 7.166l-.29.03l-.553.046l-.727.041l-.15.006l-.617.017L12 22l-.642-.005l-.616-.017l-.299-.013l-.579-.034l-.553-.046c-4.687-.455-6.65-2.333-7.166-6.906l-.03-.29l-.046-.553l-.041-.727l-.006-.15l-.017-.617l-.004-.318v-.648l.004-.318l.017-.616l.013-.299l.034-.579l.046-.553c.455-4.687 2.333-6.65 6.906-7.166l.29-.03l.553-.046l.727-.041l.15-.006l.617-.017c.21-.003.424-.005.642-.005m.994 5.886c-.083-.777-1.008-1.16-1.617-.67l-.084.077l-2 2l-.083.094a1 1 0 0 0 0 1.226l.083.094l.094.083a1 1 0 0 0 1.226 0l.094-.083l.293-.293V16l.007.117a1 1 0 0 0 1.986 0L13 16V8z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -39967,7 +42824,7 @@ func SquareRoundedNumberSeven(children ...ElementRenderer) *TablerIcon {
 func SquareRoundedNumberSevenFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="m12 2l.642.005l.616.017l.299.013l.579.034l.553.046c4.687.455 6.65 2.333 7.166 6.906l.03.29l.046.553l.041.727l.006.15l.017.617L22 12l-.005.642l-.017.616l-.013.299l-.034.579l-.046.553c-.455 4.687-2.333 6.65-6.906 7.166l-.29.03l-.553.046l-.727.041l-.15.006l-.617.017L12 22l-.642-.005l-.616-.017l-.299-.013l-.579-.034l-.553-.046c-4.687-.455-6.65-2.333-7.166-6.906l-.03-.29l-.046-.553l-.041-.727l-.006-.15l-.017-.617l-.004-.318v-.648l.004-.318l.017-.616l.013-.299l.034-.579l.046-.553c.455-4.687 2.333-6.65 6.906-7.166l.29-.03l.553-.046l.727-.041l.15-.006l.617-.017c.21-.003.424-.005.642-.005m2 5h-4l-.117.007a1 1 0 0 0-.876.876L9 8l.007.117a1 1 0 0 0 .876.876L10 9h2.718l-1.688 6.757l-.022.115a1 1 0 0 0 1.927.482l.035-.111l2-8l.021-.112a1 1 0 0 0-.878-1.125z"/></g>`),
+			Text(`<path fill="currentColor" d="m12 2l.642.005l.616.017l.299.013l.579.034l.553.046c4.687.455 6.65 2.333 7.166 6.906l.03.29l.046.553l.041.727l.006.15l.017.617L22 12l-.005.642l-.017.616l-.013.299l-.034.579l-.046.553c-.455 4.687-2.333 6.65-6.906 7.166l-.29.03l-.553.046l-.727.041l-.15.006l-.617.017L12 22l-.642-.005l-.616-.017l-.299-.013l-.579-.034l-.553-.046c-4.687-.455-6.65-2.333-7.166-6.906l-.03-.29l-.046-.553l-.041-.727l-.006-.15l-.017-.617l-.004-.318v-.648l.004-.318l.017-.616l.013-.299l.034-.579l.046-.553c.455-4.687 2.333-6.65 6.906-7.166l.29-.03l.553-.046l.727-.041l.15-.006l.617-.017c.21-.003.424-.005.642-.005m2 5h-4l-.117.007a1 1 0 0 0-.876.876L9 8l.007.117a1 1 0 0 0 .876.876L10 9h2.718l-1.688 6.757l-.022.115a1 1 0 0 0 1.927.482l.035-.111l2-8l.021-.112a1 1 0 0 0-.878-1.125z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -39983,7 +42840,7 @@ func SquareRoundedNumberSix(children ...ElementRenderer) *TablerIcon {
 func SquareRoundedNumberSixFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="m12 2l.642.005l.616.017l.299.013l.579.034l.553.046c4.687.455 6.65 2.333 7.166 6.906l.03.29l.046.553l.041.727l.006.15l.017.617L22 12l-.005.642l-.017.616l-.013.299l-.034.579l-.046.553c-.455 4.687-2.333 6.65-6.906 7.166l-.29.03l-.553.046l-.727.041l-.15.006l-.617.017L12 22l-.642-.005l-.616-.017l-.299-.013l-.579-.034l-.553-.046c-4.687-.455-6.65-2.333-7.166-6.906l-.03-.29l-.046-.553l-.041-.727l-.006-.15l-.017-.617l-.004-.318v-.648l.004-.318l.017-.616l.013-.299l.034-.579l.046-.553c.455-4.687 2.333-6.65 6.906-7.166l.29-.03l.553-.046l.727-.041l.15-.006l.617-.017c.21-.003.424-.005.642-.005m1 5h-2l-.15.005a2 2 0 0 0-1.844 1.838L9 9v6l.005.15a2 2 0 0 0 1.838 1.844L11 17h2l.15-.005a2 2 0 0 0 1.844-1.838L15 15v-2l-.005-.15a2 2 0 0 0-1.838-1.844L13 11h-2V9h2l.007.117A1 1 0 0 0 15 9a2 2 0 0 0-1.85-1.995zm0 6v2h-2v-2z"/></g>`),
+			Text(`<path fill="currentColor" d="m12 2l.642.005l.616.017l.299.013l.579.034l.553.046c4.687.455 6.65 2.333 7.166 6.906l.03.29l.046.553l.041.727l.006.15l.017.617L22 12l-.005.642l-.017.616l-.013.299l-.034.579l-.046.553c-.455 4.687-2.333 6.65-6.906 7.166l-.29.03l-.553.046l-.727.041l-.15.006l-.617.017L12 22l-.642-.005l-.616-.017l-.299-.013l-.579-.034l-.553-.046c-4.687-.455-6.65-2.333-7.166-6.906l-.03-.29l-.046-.553l-.041-.727l-.006-.15l-.017-.617l-.004-.318v-.648l.004-.318l.017-.616l.013-.299l.034-.579l.046-.553c.455-4.687 2.333-6.65 6.906-7.166l.29-.03l.553-.046l.727-.041l.15-.006l.617-.017c.21-.003.424-.005.642-.005m1 5h-2l-.15.005a2 2 0 0 0-1.844 1.838L9 9v6l.005.15a2 2 0 0 0 1.838 1.844L11 17h2l.15-.005a2 2 0 0 0 1.844-1.838L15 15v-2l-.005-.15a2 2 0 0 0-1.838-1.844L13 11h-2V9h2l.007.117A1 1 0 0 0 15 9a2 2 0 0 0-1.85-1.995zm0 6v2h-2v-2z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -39999,7 +42856,7 @@ func SquareRoundedNumberThree(children ...ElementRenderer) *TablerIcon {
 func SquareRoundedNumberThreeFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="m12 2l.642.005l.616.017l.299.013l.579.034l.553.046c4.687.455 6.65 2.333 7.166 6.906l.03.29l.046.553l.041.727l.006.15l.017.617L22 12l-.005.642l-.017.616l-.013.299l-.034.579l-.046.553c-.455 4.687-2.333 6.65-6.906 7.166l-.29.03l-.553.046l-.727.041l-.15.006l-.617.017L12 22l-.642-.005l-.616-.017l-.299-.013l-.579-.034l-.553-.046c-4.687-.455-6.65-2.333-7.166-6.906l-.03-.29l-.046-.553l-.041-.727l-.006-.15l-.017-.617l-.004-.318v-.648l.004-.318l.017-.616l.013-.299l.034-.579l.046-.553c.455-4.687 2.333-6.65 6.906-7.166l.29-.03l.553-.046l.727-.041l.15-.006l.617-.017c.21-.003.424-.005.642-.005m1 5h-2l-.15.005A2 2 0 0 0 9 9a1 1 0 0 0 1.974.23l.02-.113L11 9h2v2h-2l-.133.007c-1.111.12-1.154 1.73-.128 1.965l.128.021L11 13h2v2h-2l-.007-.117A1 1 0 0 0 9 15a2 2 0 0 0 1.85 1.995L11 17h2l.15-.005a2 2 0 0 0 1.844-1.838L15 15v-2l-.005-.15a1.988 1.988 0 0 0-.17-.667l-.075-.152l-.019-.032l.02-.03a2.01 2.01 0 0 0 .242-.795L15 11V9l-.005-.15a2 2 0 0 0-1.838-1.844z"/></g>`),
+			Text(`<path fill="currentColor" d="m12 2l.642.005l.616.017l.299.013l.579.034l.553.046c4.687.455 6.65 2.333 7.166 6.906l.03.29l.046.553l.041.727l.006.15l.017.617L22 12l-.005.642l-.017.616l-.013.299l-.034.579l-.046.553c-.455 4.687-2.333 6.65-6.906 7.166l-.29.03l-.553.046l-.727.041l-.15.006l-.617.017L12 22l-.642-.005l-.616-.017l-.299-.013l-.579-.034l-.553-.046c-4.687-.455-6.65-2.333-7.166-6.906l-.03-.29l-.046-.553l-.041-.727l-.006-.15l-.017-.617l-.004-.318v-.648l.004-.318l.017-.616l.013-.299l.034-.579l.046-.553c.455-4.687 2.333-6.65 6.906-7.166l.29-.03l.553-.046l.727-.041l.15-.006l.617-.017c.21-.003.424-.005.642-.005m1 5h-2l-.15.005A2 2 0 0 0 9 9a1 1 0 0 0 1.974.23l.02-.113L11 9h2v2h-2l-.133.007c-1.111.12-1.154 1.73-.128 1.965l.128.021L11 13h2v2h-2l-.007-.117A1 1 0 0 0 9 15a2 2 0 0 0 1.85 1.995L11 17h2l.15-.005a2 2 0 0 0 1.844-1.838L15 15v-2l-.005-.15a1.988 1.988 0 0 0-.17-.667l-.075-.152l-.019-.032l.02-.03a2.01 2.01 0 0 0 .242-.795L15 11V9l-.005-.15a2 2 0 0 0-1.838-1.844z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -40015,7 +42872,7 @@ func SquareRoundedNumberTwo(children ...ElementRenderer) *TablerIcon {
 func SquareRoundedNumberTwoFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="m12 2l.642.005l.616.017l.299.013l.579.034l.553.046c4.687.455 6.65 2.333 7.166 6.906l.03.29l.046.553l.041.727l.006.15l.017.617L22 12l-.005.642l-.017.616l-.013.299l-.034.579l-.046.553c-.455 4.687-2.333 6.65-6.906 7.166l-.29.03l-.553.046l-.727.041l-.15.006l-.617.017L12 22l-.642-.005l-.616-.017l-.299-.013l-.579-.034l-.553-.046c-4.687-.455-6.65-2.333-7.166-6.906l-.03-.29l-.046-.553l-.041-.727l-.006-.15l-.017-.617l-.004-.318v-.648l.004-.318l.017-.616l.013-.299l.034-.579l.046-.553c.455-4.687 2.333-6.65 6.906-7.166l.29-.03l.553-.046l.727-.041l.15-.006l.617-.017c.21-.003.424-.005.642-.005m1 5h-3l-.117.007a1 1 0 0 0 0 1.986L10 9h3v2h-2l-.15.005a2 2 0 0 0-1.844 1.838L9 13v2l.005.15a2 2 0 0 0 1.838 1.844L11 17h3l.117-.007a1 1 0 0 0 0-1.986L14 15h-3v-2h2l.15-.005a2 2 0 0 0 1.844-1.838L15 11V9l-.005-.15a2 2 0 0 0-1.838-1.844z"/></g>`),
+			Text(`<path fill="currentColor" d="m12 2l.642.005l.616.017l.299.013l.579.034l.553.046c4.687.455 6.65 2.333 7.166 6.906l.03.29l.046.553l.041.727l.006.15l.017.617L22 12l-.005.642l-.017.616l-.013.299l-.034.579l-.046.553c-.455 4.687-2.333 6.65-6.906 7.166l-.29.03l-.553.046l-.727.041l-.15.006l-.617.017L12 22l-.642-.005l-.616-.017l-.299-.013l-.579-.034l-.553-.046c-4.687-.455-6.65-2.333-7.166-6.906l-.03-.29l-.046-.553l-.041-.727l-.006-.15l-.017-.617l-.004-.318v-.648l.004-.318l.017-.616l.013-.299l.034-.579l.046-.553c.455-4.687 2.333-6.65 6.906-7.166l.29-.03l.553-.046l.727-.041l.15-.006l.617-.017c.21-.003.424-.005.642-.005m1 5h-3l-.117.007a1 1 0 0 0 0 1.986L10 9h3v2h-2l-.15.005a2 2 0 0 0-1.844 1.838L9 13v2l.005.15a2 2 0 0 0 1.838 1.844L11 17h3l.117-.007a1 1 0 0 0 0-1.986L14 15h-3v-2h2l.15-.005a2 2 0 0 0 1.844-1.838L15 11V9l-.005-.15a2 2 0 0 0-1.838-1.844z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -40031,7 +42888,15 @@ func SquareRoundedNumberZero(children ...ElementRenderer) *TablerIcon {
 func SquareRoundedNumberZeroFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="m12 2l.642.005l.616.017l.299.013l.579.034l.553.046c4.687.455 6.65 2.333 7.166 6.906l.03.29l.046.553l.041.727l.006.15l.017.617L22 12l-.005.642l-.017.616l-.013.299l-.034.579l-.046.553c-.455 4.687-2.333 6.65-6.906 7.166l-.29.03l-.553.046l-.727.041l-.15.006l-.617.017L12 22l-.642-.005l-.616-.017l-.299-.013l-.579-.034l-.553-.046c-4.687-.455-6.65-2.333-7.166-6.906l-.03-.29l-.046-.553l-.041-.727l-.006-.15l-.017-.617l-.004-.318v-.648l.004-.318l.017-.616l.013-.299l.034-.579l.046-.553c.455-4.687 2.333-6.65 6.906-7.166l.29-.03l.553-.046l.727-.041l.15-.006l.617-.017c.21-.003.424-.005.642-.005m0 5a3 3 0 0 0-3 3v4a3 3 0 0 0 6 0v-4a3 3 0 0 0-3-3m0 2a1 1 0 0 1 1 1v4a1 1 0 0 1-2 0v-4a1 1 0 0 1 1-1"/></g>`),
+			Text(`<path fill="currentColor" d="m12 2l.642.005l.616.017l.299.013l.579.034l.553.046c4.687.455 6.65 2.333 7.166 6.906l.03.29l.046.553l.041.727l.006.15l.017.617L22 12l-.005.642l-.017.616l-.013.299l-.034.579l-.046.553c-.455 4.687-2.333 6.65-6.906 7.166l-.29.03l-.553.046l-.727.041l-.15.006l-.617.017L12 22l-.642-.005l-.616-.017l-.299-.013l-.579-.034l-.553-.046c-4.687-.455-6.65-2.333-7.166-6.906l-.03-.29l-.046-.553l-.041-.727l-.006-.15l-.017-.617l-.004-.318v-.648l.004-.318l.017-.616l.013-.299l.034-.579l.046-.553c.455-4.687 2.333-6.65 6.906-7.166l.29-.03l.553-.046l.727-.041l.15-.006l.617-.017c.21-.003.424-.005.642-.005m0 5a3 3 0 0 0-3 3v4a3 3 0 0 0 6 0v-4a3 3 0 0 0-3-3m0 2a1 1 0 0 1 1 1v4a1 1 0 0 1-2 0v-4a1 1 0 0 1 1-1"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func SquareRoundedPercentage(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3c7.2 0 9 1.8 9 9s-1.8 9-9 9s-9-1.8-9-9s1.8-9 9-9M9 15.075l6-6m-6 .03v.015m6 6v.015"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -40047,7 +42912,7 @@ func SquareRoundedPlus(children ...ElementRenderer) *TablerIcon {
 func SquareRoundedPlusFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="m12 2l.324.001l.318.004l.616.017l.299.013l.579.034l.553.046c4.785.464 6.732 2.411 7.196 7.196l.046.553l.034.579c.005.098.01.198.013.299l.017.616L22 12l-.005.642l-.017.616l-.013.299l-.034.579l-.046.553c-.464 4.785-2.411 6.732-7.196 7.196l-.553.046l-.579.034c-.098.005-.198.01-.299.013l-.616.017L12 22l-.642-.005l-.616-.017l-.299-.013l-.579-.034l-.553-.046c-4.785-.464-6.732-2.411-7.196-7.196l-.046-.553l-.034-.579a28.058 28.058 0 0 1-.013-.299l-.017-.616C2.002 12.432 2 12.218 2 12l.001-.324l.004-.318l.017-.616l.013-.299l.034-.579l.046-.553c.464-4.785 2.411-6.732 7.196-7.196l.553-.046l.579-.034c.098-.005.198-.01.299-.013l.616-.017c.21-.003.424-.005.642-.005m0 6a1 1 0 0 0-1 1v2H9l-.117.007A1 1 0 0 0 9 13h2v2l.007.117A1 1 0 0 0 13 15v-2h2l.117-.007A1 1 0 0 0 15 11h-2V9l-.007-.117A1 1 0 0 0 12 8"/></g>`),
+			Text(`<path fill="currentColor" d="m12 2l.324.001l.318.004l.616.017l.299.013l.579.034l.553.046c4.785.464 6.732 2.411 7.196 7.196l.046.553l.034.579c.005.098.01.198.013.299l.017.616L22 12l-.005.642l-.017.616l-.013.299l-.034.579l-.046.553c-.464 4.785-2.411 6.732-7.196 7.196l-.553.046l-.579.034c-.098.005-.198.01-.299.013l-.616.017L12 22l-.642-.005l-.616-.017l-.299-.013l-.579-.034l-.553-.046c-4.785-.464-6.732-2.411-7.196-7.196l-.046-.553l-.034-.579a28.058 28.058 0 0 1-.013-.299l-.017-.616C2.002 12.432 2 12.218 2 12l.001-.324l.004-.318l.017-.616l.013-.299l.034-.579l.046-.553c.464-4.785 2.411-6.732 7.196-7.196l.553-.046l.579-.034c.098-.005.198-.01.299-.013l.616-.017c.21-.003.424-.005.642-.005m0 6a1 1 0 0 0-1 1v2H9l-.117.007A1 1 0 0 0 9 13h2v2l.007.117A1 1 0 0 0 13 15v-2h2l.117-.007A1 1 0 0 0 15 11h-2V9l-.007-.117A1 1 0 0 0 12 8"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -40071,7 +42936,7 @@ func SquareRoundedX(children ...ElementRenderer) *TablerIcon {
 func SquareRoundedXfilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="m12 2l.324.001l.318.004l.616.017l.299.013l.579.034l.553.046c4.785.464 6.732 2.411 7.196 7.196l.046.553l.034.579c.005.098.01.198.013.299l.017.616L22 12l-.005.642l-.017.616l-.013.299l-.034.579l-.046.553c-.464 4.785-2.411 6.732-7.196 7.196l-.553.046l-.579.034c-.098.005-.198.01-.299.013l-.616.017L12 22l-.642-.005l-.616-.017l-.299-.013l-.579-.034l-.553-.046c-4.785-.464-6.732-2.411-7.196-7.196l-.046-.553l-.034-.579a28.058 28.058 0 0 1-.013-.299l-.017-.616C2.002 12.432 2 12.218 2 12l.001-.324l.004-.318l.017-.616l.013-.299l.034-.579l.046-.553c.464-4.785 2.411-6.732 7.196-7.196l.553-.046l.579-.034c.098-.005.198-.01.299-.013l.616-.017c.21-.003.424-.005.642-.005m-1.489 7.14a1 1 0 0 0-1.218 1.567L10.585 12l-1.292 1.293l-.083.094a1 1 0 0 0 1.497 1.32L12 13.415l1.293 1.292l.094.083a1 1 0 0 0 1.32-1.497L13.415 12l1.292-1.293l.083-.094a1 1 0 0 0-1.497-1.32L12 10.585l-1.293-1.292l-.094-.083z"/></g>`),
+			Text(`<path fill="currentColor" d="m12 2l.324.001l.318.004l.616.017l.299.013l.579.034l.553.046c4.785.464 6.732 2.411 7.196 7.196l.046.553l.034.579c.005.098.01.198.013.299l.017.616L22 12l-.005.642l-.017.616l-.013.299l-.034.579l-.046.553c-.464 4.785-2.411 6.732-7.196 7.196l-.553.046l-.579.034c-.098.005-.198.01-.299.013l-.616.017L12 22l-.642-.005l-.616-.017l-.299-.013l-.579-.034l-.553-.046c-4.785-.464-6.732-2.411-7.196-7.196l-.046-.553l-.034-.579a28.058 28.058 0 0 1-.013-.299l-.017-.616C2.002 12.432 2 12.218 2 12l.001-.324l.004-.318l.017-.616l.013-.299l.034-.579l.046-.553c.464-4.785 2.411-6.732 7.196-7.196l.553-.046l.579-.034c.098-.005.198-.01.299-.013l.616-.017c.21-.003.424-.005.642-.005m-1.489 7.14a1 1 0 0 0-1.218 1.567L10.585 12l-1.292 1.293l-.083.094a1 1 0 0 0 1.497 1.32L12 13.415l1.293 1.292l.094.083a1 1 0 0 0 1.32-1.497L13.415 12l1.292-1.293l.083-.094a1 1 0 0 0-1.497-1.32L12 10.585l-1.293-1.292l-.094-.083z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -40135,7 +43000,7 @@ func SquareX(children ...ElementRenderer) *TablerIcon {
 func SquareXfilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M19 2H5a3 3 0 0 0-3 3v14a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3V5a3 3 0 0 0-3-3M9.613 8.21l.094.083L12 10.585l2.293-2.292a1 1 0 0 1 1.497 1.32l-.083.094L13.415 12l2.292 2.293a1 1 0 0 1-1.32 1.497l-.094-.083L12 13.415l-2.293 2.292a1 1 0 0 1-1.497-1.32l.083-.094L10.585 12L8.293 9.707a1 1 0 0 1 1.32-1.497"/></g>`),
+			Text(`<path fill="currentColor" d="M19 2H5a3 3 0 0 0-3 3v14a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3V5a3 3 0 0 0-3-3M9.613 8.21l.094.083L12 10.585l2.293-2.292a1 1 0 0 1 1.497 1.32l-.083.094L13.415 12l2.292 2.293a1 1 0 0 1-1.32 1.497l-.094-.083L12 13.415l-2.293 2.292a1 1 0 0 1-1.497-1.32l.083-.094L10.585 12L8.293 9.707a1 1 0 0 1 1.32-1.497"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -40144,6 +43009,14 @@ func SquareZeroFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M18.333 2c1.96 0 3.56 1.537 3.662 3.472l.005.195v12.666c0 1.96-1.537 3.56-3.472 3.662l-.195.005H5.667a3.667 3.667 0 0 1-3.662-3.472L2 18.333V5.667c0-1.96 1.537-3.56 3.472-3.662L5.667 2zM12 7a3 3 0 0 0-2.995 2.824L9 10v4l.005.176a3 3 0 0 0 5.99 0L15 14v-4l-.005-.176A3 3 0 0 0 12 7m0 2a1 1 0 0 1 .993.883L13 10v4l-.007.117a1 1 0 0 1-1.986 0L11 14v-4l.007-.117A1 1 0 0 1 12 9"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func Squares(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M8 10a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-9a2 2 0 0 1-2-2z"/><path d="M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h3"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -40157,6 +43030,14 @@ func SquaresDiagonal(children ...ElementRenderer) *TablerIcon {
 }
 
 func SquaresFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="currentColor"><path d="M19 7a3 3 0 0 1 3 3v9a3 3 0 0 1-3 3h-9a3 3 0 0 1-3-3v-9a3 3 0 0 1 3-3z"/><path d="M14 2a3 3 0 0 1 3 2.999L10 5a5 5 0 0 0-5 5l-.001 7l-.175-.005A3 3 0 0 1 2 14V5a3 3 0 0 1 3-3z"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func SquaresSelected(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M8 10a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-8a2 2 0 0 1-2-2zm0 4.5l6.492-6.492M13.496 20L20 13.496zm-4.91-.586L19.413 8.587"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"/></g>`),
@@ -40184,6 +43065,14 @@ func StackBackward(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="m14 12l6-3l-8-4l-8 4l6 3"/><path fill="currentColor" d="m10 12l-6 3l8 4l8-4l-6-3l-2 1z"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func StackFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M20.894 13.553a1 1 0 0 1-.447 1.341l-8 4a1 1 0 0 1-.894 0l-8-4a1 1 0 0 1 .894-1.788L12 16.88l7.554-3.775a1 1 0 0 1 1.341.447M12.008 5q.056 0 .111.007l.111.02l.086.024l.012.006l.012.002l.029.014l.05.019l.016.009l.012.005l8 4a1 1 0 0 1 0 1.788l-8 4a1 1 0 0 1-.894 0l-8-4a1 1 0 0 1 0-1.788l8-4l.011-.005l.018-.01l.078-.032l.011-.002l.013-.006l.086-.024l.11-.02l.056-.005z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -40236,10 +43125,26 @@ func StackThree(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func StackThreeFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M20.894 17.553a1 1 0 0 1-.447 1.341l-8 4a1 1 0 0 1-.894 0l-8-4a1 1 0 0 1 .894-1.788L12 20.88l7.554-3.775a1 1 0 0 1 1.341.447m0-4a1 1 0 0 1-.447 1.341l-8 4a1 1 0 0 1-.894 0l-8-4a1 1 0 0 1 .894-1.788L12 16.88l7.554-3.775a1 1 0 0 1 1.341.447m0-4a1 1 0 0 1-.447 1.341l-8 4a1 1 0 0 1-.894 0l-8-4a1 1 0 0 1 .894-1.788L12 12.88l7.554-3.775a1 1 0 0 1 1.341.447M12.008 1q.056 0 .111.007l.111.02l.086.024l.012.006l.012.002l.029.014l.05.019l.016.009l.012.005l8 4a1 1 0 0 1 0 1.788l-8 4a1 1 0 0 1-.894 0l-8-4a1 1 0 0 1 0-1.788l8-4l.011-.005l.018-.01l.078-.032l.011-.002l.013-.006l.086-.024l.11-.02l.056-.005z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func StackTwo(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4L4 8l8 4l8-4zm-8 8l8 4l8-4M4 16l8 4l8-4"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func StackTwoFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M20.894 15.553a1 1 0 0 1-.447 1.341l-8 4a1 1 0 0 1-.894 0l-8-4a1 1 0 0 1 .894-1.788L12 18.88l7.554-3.775a1 1 0 0 1 1.341.447m0-4a1 1 0 0 1-.447 1.341l-8 4a1 1 0 0 1-.894 0l-8-4a1 1 0 0 1 .894-1.788L12 14.88l7.554-3.775a1 1 0 0 1 1.341.447M12.008 3q.056 0 .111.007l.111.02l.086.024l.012.006l.012.002l.029.014l.05.019l.016.009l.012.005l8 4a1 1 0 0 1 0 1.788l-8 4a1 1 0 0 1-.894 0l-8-4a1 1 0 0 1 0-1.788l8-4l.011-.005l.018-.01l.078-.032l.011-.002l.013-.006l.086-.024l.11-.02l.056-.005z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -40279,7 +43184,7 @@ func Star(children ...ElementRenderer) *TablerIcon {
 func StarFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="m8.243 7.34l-6.38.925l-.113.023a1 1 0 0 0-.44 1.684l4.622 4.499l-1.09 6.355l-.013.11a1 1 0 0 0 1.464.944l5.706-3l5.693 3l.1.046a1 1 0 0 0 1.352-1.1l-1.091-6.355l4.624-4.5l.078-.085a1 1 0 0 0-.633-1.62l-6.38-.926l-2.852-5.78a1 1 0 0 0-1.794 0z"/></g>`),
+			Text(`<path fill="currentColor" d="m8.243 7.34l-6.38.925l-.113.023a1 1 0 0 0-.44 1.684l4.622 4.499l-1.09 6.355l-.013.11a1 1 0 0 0 1.464.944l5.706-3l5.693 3l.1.046a1 1 0 0 0 1.352-1.1l-1.091-6.355l4.624-4.5l.078-.085a1 1 0 0 0-.633-1.62l-6.38-.926l-2.852-5.78a1 1 0 0 0-1.794 0z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -40295,7 +43200,7 @@ func StarHalf(children ...ElementRenderer) *TablerIcon {
 func StarHalfFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M12 1a.993.993 0 0 1 .823.443l.067.116l2.852 5.781l6.38.925c.741.108 1.08.94.703 1.526l-.07.095l-.078.086l-4.624 4.499l1.09 6.355a1.001 1.001 0 0 1-1.249 1.135l-.101-.035l-.101-.046l-5.693-3l-5.706 3c-.105.055-.212.09-.32.106l-.106.01a1.003 1.003 0 0 1-1.038-1.06l.013-.11l1.09-6.355l-4.623-4.5a1.001 1.001 0 0 1 .328-1.647l.113-.036l.114-.023l6.379-.925l2.853-5.78A.968.968 0 0 1 12 1m0 3.274V16.75a1 1 0 0 1 .239.029l.115.036l.112.05l4.363 2.299l-.836-4.873a1 1 0 0 1 .136-.696l.07-.099l.082-.09l3.546-3.453l-4.891-.708a1 1 0 0 1-.62-.344l-.073-.097l-.06-.106z"/></g>`),
+			Text(`<path fill="currentColor" d="M12 1a.993.993 0 0 1 .823.443l.067.116l2.852 5.781l6.38.925c.741.108 1.08.94.703 1.526l-.07.095l-.078.086l-4.624 4.499l1.09 6.355a1.001 1.001 0 0 1-1.249 1.135l-.101-.035l-.101-.046l-5.693-3l-5.706 3c-.105.055-.212.09-.32.106l-.106.01a1.003 1.003 0 0 1-1.038-1.06l.013-.11l1.09-6.355l-4.623-4.5a1.001 1.001 0 0 1 .328-1.647l.113-.036l.114-.023l6.379-.925l2.853-5.78A.968.968 0 0 1 12 1m0 3.274V16.75a1 1 0 0 1 .239.029l.115.036l.112.05l4.363 2.299l-.836-4.873a1 1 0 0 1 .136-.696l.07-.099l.082-.09l3.546-3.453l-4.891-.708a1 1 0 0 1-.62-.344l-.073-.097l-.06-.106z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -40319,7 +43224,7 @@ func Stars(children ...ElementRenderer) *TablerIcon {
 func StarsFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M17.657 12.007a1.39 1.39 0 0 0-1.103.765l-.855 1.723l-1.907.277c-.52.072-.96.44-1.124.944l-.038.14c-.1.465.046.954.393 1.29l1.377 1.337l-.326 1.892a1.393 1.393 0 0 0 2.018 1.465l1.708-.895l1.708.896a1.388 1.388 0 0 0 1.462-.105l.112-.09a1.39 1.39 0 0 0 .442-1.272l-.325-1.891l1.38-1.339c.38-.371.516-.924.352-1.427l-.051-.134a1.39 1.39 0 0 0-1.073-.81l-1.907-.278l-.853-1.722A1.393 1.393 0 0 0 17.8 12zm-11.6 0a1.39 1.39 0 0 0-1.103.765l-.855 1.723l-1.907.277c-.52.072-.96.44-1.124.944l-.038.14c-.1.465.046.954.393 1.29L2.8 18.483l-.326 1.892a1.393 1.393 0 0 0 2.018 1.465l1.708-.895l1.708.896a1.388 1.388 0 0 0 1.462-.105l.112-.09a1.39 1.39 0 0 0 .442-1.272L9.6 18.483l1.38-1.339c.38-.371.516-.924.352-1.427l-.051-.134a1.39 1.39 0 0 0-1.073-.81L8.3 14.494l-.853-1.722A1.393 1.393 0 0 0 6.2 12zm5.8-10a1.39 1.39 0 0 0-1.103.765l-.855 1.723l-1.907.277c-.52.072-.96.44-1.124.944l-.038.14c-.1.465.046.954.393 1.29L8.6 8.483l-.326 1.892a1.393 1.393 0 0 0 2.018 1.465L12 10.946l1.709.896a1.388 1.388 0 0 0 1.462-.105l.112-.09a1.39 1.39 0 0 0 .442-1.272L15.4 8.483l1.38-1.339c.38-.371.516-.924.352-1.427l-.051-.134a1.39 1.39 0 0 0-1.073-.81L14.1 4.494l-.853-1.722A1.393 1.393 0 0 0 12 2z"/></g>`),
+			Text(`<path fill="currentColor" d="M17.657 12.007a1.39 1.39 0 0 0-1.103.765l-.855 1.723l-1.907.277c-.52.072-.96.44-1.124.944l-.038.14c-.1.465.046.954.393 1.29l1.377 1.337l-.326 1.892a1.393 1.393 0 0 0 2.018 1.465l1.708-.895l1.708.896a1.388 1.388 0 0 0 1.462-.105l.112-.09a1.39 1.39 0 0 0 .442-1.272l-.325-1.891l1.38-1.339c.38-.371.516-.924.352-1.427l-.051-.134a1.39 1.39 0 0 0-1.073-.81l-1.907-.278l-.853-1.722A1.393 1.393 0 0 0 17.8 12zm-11.6 0a1.39 1.39 0 0 0-1.103.765l-.855 1.723l-1.907.277c-.52.072-.96.44-1.124.944l-.038.14c-.1.465.046.954.393 1.29L2.8 18.483l-.326 1.892a1.393 1.393 0 0 0 2.018 1.465l1.708-.895l1.708.896a1.388 1.388 0 0 0 1.462-.105l.112-.09a1.39 1.39 0 0 0 .442-1.272L9.6 18.483l1.38-1.339c.38-.371.516-.924.352-1.427l-.051-.134a1.39 1.39 0 0 0-1.073-.81L8.3 14.494l-.853-1.722A1.393 1.393 0 0 0 6.2 12zm5.8-10a1.39 1.39 0 0 0-1.103.765l-.855 1.723l-1.907.277c-.52.072-.96.44-1.124.944l-.038.14c-.1.465.046.954.393 1.29L8.6 8.483l-.326 1.892a1.393 1.393 0 0 0 2.018 1.465L12 10.946l1.709.896a1.388 1.388 0 0 0 1.462-.105l.112-.09a1.39 1.39 0 0 0 .442-1.272L15.4 8.483l1.38-1.339c.38-.371.516-.924.352-1.427l-.051-.134a1.39 1.39 0 0 0-1.073-.81L14.1 4.494l-.853-1.722A1.393 1.393 0 0 0 12 2z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -40519,7 +43424,7 @@ func SunElectricity(children ...ElementRenderer) *TablerIcon {
 func SunFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M12 19a1 1 0 0 1 .993.883L13 20v1a1 1 0 0 1-1.993.117L11 21v-1a1 1 0 0 1 1-1m6.313-2.09l.094.083l.7.7a1 1 0 0 1-1.32 1.497l-.094-.083l-.7-.7a1 1 0 0 1 1.218-1.567zm-11.306.083a1 1 0 0 1 .083 1.32l-.083.094l-.7.7a1 1 0 0 1-1.497-1.32l.083-.094l.7-.7a1 1 0 0 1 1.414 0M4 11a1 1 0 0 1 .117 1.993L4 13H3a1 1 0 0 1-.117-1.993L3 11zm17 0a1 1 0 0 1 .117 1.993L21 13h-1a1 1 0 0 1-.117-1.993L20 11zM6.213 4.81l.094.083l.7.7a1 1 0 0 1-1.32 1.497l-.094-.083l-.7-.7A1 1 0 0 1 6.11 4.74zm12.894.083a1 1 0 0 1 .083 1.32l-.083.094l-.7.7a1 1 0 0 1-1.497-1.32l.083-.094l.7-.7a1 1 0 0 1 1.414 0M12 2a1 1 0 0 1 .993.883L13 3v1a1 1 0 0 1-1.993.117L11 4V3a1 1 0 0 1 1-1m0 5a5 5 0 1 1-4.995 5.217L7 12l.005-.217A5 5 0 0 1 12 7"/></g>`),
+			Text(`<path fill="currentColor" d="M12 19a1 1 0 0 1 .993.883L13 20v1a1 1 0 0 1-1.993.117L11 21v-1a1 1 0 0 1 1-1m6.313-2.09l.094.083l.7.7a1 1 0 0 1-1.32 1.497l-.094-.083l-.7-.7a1 1 0 0 1 1.218-1.567zm-11.306.083a1 1 0 0 1 .083 1.32l-.083.094l-.7.7a1 1 0 0 1-1.497-1.32l.083-.094l.7-.7a1 1 0 0 1 1.414 0M4 11a1 1 0 0 1 .117 1.993L4 13H3a1 1 0 0 1-.117-1.993L3 11zm17 0a1 1 0 0 1 .117 1.993L21 13h-1a1 1 0 0 1-.117-1.993L20 11zM6.213 4.81l.094.083l.7.7a1 1 0 0 1-1.32 1.497l-.094-.083l-.7-.7A1 1 0 0 1 6.11 4.74zm12.894.083a1 1 0 0 1 .083 1.32l-.083.094l-.7.7a1 1 0 0 1-1.497-1.32l.083-.094l.7-.7a1 1 0 0 1 1.414 0M12 2a1 1 0 0 1 .993.883L13 3v1a1 1 0 0 1-1.993.117L11 4V3a1 1 0 0 1 1-1m0 5a5 5 0 1 1-4.995 5.217L7 12l.005-.217A5 5 0 0 1 12 7"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -40767,7 +43672,7 @@ func TableExport(children ...ElementRenderer) *TablerIcon {
 func TableFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M4 11h4a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H6a3 3 0 0 1-2.995-2.824L3 18v-6a1 1 0 0 1 1-1m17 1v6a3 3 0 0 1-2.824 2.995L18 21h-6a1 1 0 0 1-1-1v-8a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1m-3-9a3 3 0 0 1 2.995 2.824L21 6v2a1 1 0 0 1-1 1h-8a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1zM9 4v4a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V6a3 3 0 0 1 2.824-2.995L6 3h2a1 1 0 0 1 1 1"/></g>`),
+			Text(`<path fill="currentColor" d="M4 11h4a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H6a3 3 0 0 1-2.995-2.824L3 18v-6a1 1 0 0 1 1-1m17 1v6a3 3 0 0 1-2.824 2.995L18 21h-6a1 1 0 0 1-1-1v-8a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1m-3-9a3 3 0 0 1 2.995 2.824L21 6v2a1 1 0 0 1-1 1h-8a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1zM9 4v4a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V6a3 3 0 0 1 2.824-2.995L6 3h2a1 1 0 0 1 1 1"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -41028,6 +43933,22 @@ func TemperaturePlus(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func TemperatureSnow(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M4 13.5a4 4 0 1 0 4 0V5a2 2 0 1 0-4 0zM4 9h4m6.75-5l1 2H18"/><path d="m17 4l-3 5l2 3m4.25-2L19 12l1.25 2"/><path d="M22 12h-6l-2 3m4 3h-2.25l-1 2"/><path d="m17 20l-3-5h-1m-1-6l2.088.008"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func TemperatureSun(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 13.5a4 4 0 1 0 4 0V5a2 2 0 1 0-4 0zM4 9h4m5 7a4 4 0 1 0 0-8a4.07 4.07 0 0 0-1 .124M13 3v1m8 8h1m-9 8v1m6.4-15.4l-.7.7m0 11.4l.7.7"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func Template(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
@@ -41268,46 +44189,6 @@ func Thermometer(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
-func ThreeDcubeSphere(children ...ElementRenderer) *TablerIcon {
-	return &TablerIcon{
-		SVGSVGElement: SVG_SVG(
-			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m6 17.6l-2-1.1V14m0-4V7.5l2-1.1m4-2.3L12 3l2 1.1m4 2.3l2 1.1V10m0 4v2.5l-2 1.12m-4 2.28L12 21l-2-1.1m2-7.9l2-1.1m4-2.3l2-1.1M12 12v2.5m0 4V21m0-9l-2-1.12M6 8.6L4 7.5"/>`),
-		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
-	}
-}
-
-func ThreeDcubeSphereOff(children ...ElementRenderer) *TablerIcon {
-	return &TablerIcon{
-		SVGSVGElement: SVG_SVG(
-			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m6 17.6l-2-1.1V14m0-4V7.5l2-1.1m4-2.3L12 3l2 1.1m4 2.3l2 1.1V10m0 4v2m-6 3.9L12 21l-2-1.1m8-11.3l2-1.1M12 12v2.5m0 4V21m0-9l-2-1.12M6 8.6L4 7.5M3 3l18 18"/>`),
-		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
-	}
-}
-
-func ThreeDrotate(children ...ElementRenderer) *TablerIcon {
-	return &TablerIcon{
-		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M12 3a7 7 0 0 1 7 7v4l-3-3m6 0l-3 3M8 15.5l-5-3l5-3l5 3V18l-5 3z"/><path d="M3 12.5V18l5 3m0-5.455l5-3.03"/></g>`),
-		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
-	}
-}
-
-func ThreeHundredSixty(children ...ElementRenderer) *TablerIcon {
-	return &TablerIcon{
-		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M17 15.328c2.414-.718 4-1.94 4-3.328c0-2.21-4.03-4-9-4s-9 1.79-9 4s4.03 4 9 4"/><path d="m9 13l3 3l-3 3"/></g>`),
-		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
-	}
-}
-
-func ThreeHundredSixtyView(children ...ElementRenderer) *TablerIcon {
-	return &TablerIcon{
-		SVGSVGElement: SVG_SVG(
-			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 6a1 1 0 0 0-1-1h-2a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1h-3M3 5h2.5A1.5 1.5 0 0 1 7 6.5v1A1.5 1.5 0 0 1 5.5 9H4h1.5A1.5 1.5 0 0 1 7 10.5v1A1.5 1.5 0 0 1 5.5 13H3m14-6v4a2 2 0 1 0 4 0V7a2 2 0 1 0-4 0M3 16c0 1.657 4.03 3 9 3s9-1.343 9-3"/>`),
-		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
-	}
-}
-
 func ThumbDown(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
@@ -41319,7 +44200,7 @@ func ThumbDown(children ...ElementRenderer) *TablerIcon {
 func ThumbDownFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M13 21.008a3 3 0 0 0 2.995-2.823l.005-.177v-4h2a3 3 0 0 0 2.98-2.65l.015-.173l.005-.177l-.02-.196l-1.006-5.032c-.381-1.625-1.502-2.796-2.81-2.78L17 3.008H9a1 1 0 0 0-.993.884L8 4.008l.001 9.536a1 1 0 0 0 .5.866a2.998 2.998 0 0 1 1.492 2.396l.007.202v1a3 3 0 0 0 3 3m-8-7a1 1 0 0 0 .993-.883L6 13.008v-9a1 1 0 0 0-.883-.993L5 3.008H4A2 2 0 0 0 2.005 4.86L2 5.01v7a2 2 0 0 0 1.85 1.994l.15.005h1z"/></g>`),
+			Text(`<path fill="currentColor" d="M13 21.008a3 3 0 0 0 2.995-2.823l.005-.177v-4h2a3 3 0 0 0 2.98-2.65l.015-.173l.005-.177l-.02-.196l-1.006-5.032c-.381-1.625-1.502-2.796-2.81-2.78L17 3.008H9a1 1 0 0 0-.993.884L8 4.008l.001 9.536a1 1 0 0 0 .5.866a2.998 2.998 0 0 1 1.492 2.396l.007.202v1a3 3 0 0 0 3 3m-8-7a1 1 0 0 0 .993-.883L6 13.008v-9a1 1 0 0 0-.883-.993L5 3.008H4A2 2 0 0 0 2.005 4.86L2 5.01v7a2 2 0 0 0 1.85 1.994l.15.005h1z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -41343,7 +44224,7 @@ func ThumbUp(children ...ElementRenderer) *TablerIcon {
 func ThumbUpFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M13 3a3 3 0 0 1 2.995 2.824L16 6v4h2a3 3 0 0 1 2.98 2.65l.015.174L21 13l-.02.196l-1.006 5.032c-.381 1.626-1.502 2.796-2.81 2.78L17 21H9a1 1 0 0 1-.993-.883L8 20l.001-9.536a1 1 0 0 1 .5-.865a2.998 2.998 0 0 0 1.492-2.397L10 7V6a3 3 0 0 1 3-3m-8 7a1 1 0 0 1 .993.883L6 11v9a1 1 0 0 1-.883.993L5 21H4a2 2 0 0 1-1.995-1.85L2 19v-7a2 2 0 0 1 1.85-1.995L4 10z"/></g>`),
+			Text(`<path fill="currentColor" d="M13 3a3 3 0 0 1 2.995 2.824L16 6v4h2a3 3 0 0 1 2.98 2.65l.015.174L21 13l-.02.196l-1.006 5.032c-.381 1.626-1.502 2.796-2.81 2.78L17 21H9a1 1 0 0 1-.993-.883L8 20l.001-9.536a1 1 0 0 1 .5-.865a2.998 2.998 0 0 0 1.492-2.397L10 7V6a3 3 0 0 1 3-3m-8 7a1 1 0 0 1 .993.883L6 11v9a1 1 0 0 1-.883.993L5 21H4a2 2 0 0 1-1.995-1.85L2 19v-7a2 2 0 0 1 1.85-1.995L4 10z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -41511,7 +44392,7 @@ func TimelineEventExclamation(children ...ElementRenderer) *TablerIcon {
 func TimelineEventFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M12 17c1.306 0 2.418.835 2.83 2H20a1 1 0 0 1 0 2h-5.171a3.001 3.001 0 0 1-5.658 0H4a1 1 0 0 1 0-2h5.17A3.001 3.001 0 0 1 12 17m5-15a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-2.586l-1.707 1.707a1 1 0 0 1-1.32.083l-.094-.083L9.585 14H7a2 2 0 0 1-1.995-1.85L5 12V4a2 2 0 0 1 2-2z"/></g>`),
+			Text(`<path fill="currentColor" d="M12 17c1.306 0 2.418.835 2.83 2H20a1 1 0 0 1 0 2h-5.171a3.001 3.001 0 0 1-5.658 0H4a1 1 0 0 1 0-2h5.17A3.001 3.001 0 0 1 12 17m5-15a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-2.586l-1.707 1.707a1 1 0 0 1-1.32.083l-.094-.083L9.585 14H7a2 2 0 0 1-1.995-1.85L5 12V4a2 2 0 0 1 2-2z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -41924,6 +44805,14 @@ func TransactionPound(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func TransactionRupee(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12h-6h1a3 3 0 0 1 0 6h-1l3 3m-3-6h6M3 5a2 2 0 1 0 4 0a2 2 0 1 0-4 0m12 0a2 2 0 1 0 4 0a2 2 0 1 0-4 0M7 5h8M7 5v8a3 3 0 0 0 3 3h1"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func TransactionYen(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
@@ -41983,7 +44872,47 @@ func Transform(children ...ElementRenderer) *TablerIcon {
 func TransformFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M18 14a4 4 0 1 1-3.995 4.2L14 18l.005-.2A4 4 0 0 1 18 14M16.707 2.293a1 1 0 0 1 .083 1.32l-.083.094L15.414 5H19a3 3 0 0 1 2.995 2.824L22 8v3a1 1 0 0 1-1.993.117L20 11V8a1 1 0 0 0-.883-.993L19 7h-3.585l1.292 1.293a1 1 0 0 1-1.32 1.497l-.094-.083l-3-3a.98.98 0 0 1-.28-.872l.036-.146l.04-.104c.058-.126.14-.24.245-.334l2.959-2.958a1 1 0 0 1 1.414 0M3 12a1 1 0 0 1 .993.883L4 13v3a1 1 0 0 0 .883.993L5 17h3.585l-1.292-1.293a1 1 0 0 1-.083-1.32l.083-.094a1 1 0 0 1 1.32-.083l.094.083l3 3a.98.98 0 0 1 .28.872l-.036.146l-.04.104a1.02 1.02 0 0 1-.245.334l-2.959 2.958a1 1 0 0 1-1.497-1.32l.083-.094L8.584 19H5a3 3 0 0 1-2.995-2.824L2 16v-3a1 1 0 0 1 1-1M6 2a4 4 0 1 1-3.995 4.2L2 6l.005-.2A4 4 0 0 1 6 2"/></g>`),
+			Text(`<path fill="currentColor" d="M18 14a4 4 0 1 1-3.995 4.2L14 18l.005-.2A4 4 0 0 1 18 14M16.707 2.293a1 1 0 0 1 .083 1.32l-.083.094L15.414 5H19a3 3 0 0 1 2.995 2.824L22 8v3a1 1 0 0 1-1.993.117L20 11V8a1 1 0 0 0-.883-.993L19 7h-3.585l1.292 1.293a1 1 0 0 1-1.32 1.497l-.094-.083l-3-3a.98.98 0 0 1-.28-.872l.036-.146l.04-.104c.058-.126.14-.24.245-.334l2.959-2.958a1 1 0 0 1 1.414 0M3 12a1 1 0 0 1 .993.883L4 13v3a1 1 0 0 0 .883.993L5 17h3.585l-1.292-1.293a1 1 0 0 1-.083-1.32l.083-.094a1 1 0 0 1 1.32-.083l.094.083l3 3a.98.98 0 0 1 .28.872l-.036.146l-.04.104a1.02 1.02 0 0 1-.245.334l-2.959 2.958a1 1 0 0 1-1.497-1.32l.083-.094L8.584 19H5a3 3 0 0 1-2.995-2.824L2 16v-3a1 1 0 0 1 1-1M6 2a4 4 0 1 1-3.995 4.2L2 6l.005-.2A4 4 0 0 1 6 2"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func TransformPoint(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1zm0 14a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1zM17 4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1zm0 14a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1zM11 5h2m-8 6v2m14-2v2m-8 6h2"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func TransformPointBottomLeft(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M3 4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1z"/><path fill="currentColor" d="M3 18a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1z"/><path d="M17 4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1zm0 14a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1zM11 5h2m-8 6v2m14-2v2m-8 6h2"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func TransformPointBottomRight(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M3 4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1zm0 14a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1zM17 4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1z"/><path fill="currentColor" d="M17 18a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1z"/><path d="M11 5h2m-8 6v2m14-2v2m-8 6h2"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func TransformPointTopLeft(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path fill="currentColor" d="M3 4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1z"/><path d="M3 18a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1zM17 4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1zm0 14a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1zM11 5h2m-8 6v2m14-2v2m-8 6h2"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func TransformPointTopRight(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M3 4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1zm0 14a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1z"/><path fill="currentColor" d="M17 4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1z"/><path d="M17 18a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1zM11 5h2m-8 6v2m14-2v2m-8 6h2"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -41996,10 +44925,26 @@ func TransitionBottom(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func TransitionBottomFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M21 17a1 1 0 0 1 1 1a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4a1 1 0 0 1 2 0a2 2 0 0 0 2 2h12a2 2 0 0 0 1.995-1.85L20 18a1 1 0 0 1 1-1m-9 1l-.082-.004l-.119-.016l-.111-.03l-.111-.044l-.098-.052l-.096-.067l-.09-.08l-3-3a1 1 0 0 1 1.414-1.414L11 14.586V10H6a4 4 0 1 1 0-8h12a4 4 0 1 1 0 8h-5v4.583l1.293-1.29a1 1 0 0 1 1.32-.083l.094.083a1 1 0 0 1 0 1.414l-3 3l-.112.097l-.11.071l-.062.031l-.081.034l-.076.024l-.149.03z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func TransitionLeft(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 21a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3m15 3v12a3 3 0 0 1-6 0V6a3 3 0 0 1 6 0m-6 6H7m3-3l-3 3l3 3"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func TransitionLeftFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M6 2a1 1 0 1 1 0 2a2 2 0 0 0-2 2v12a2 2 0 0 0 1.85 1.995L6 20a1 1 0 0 1 0 2a4 4 0 0 1-4-4V6a4 4 0 0 1 4-4m12 0a4 4 0 0 1 4 4v12a4 4 0 1 1-8 0v-5H9.415l1.292 1.293a1 1 0 0 1 .083 1.32l-.083.094a1 1 0 0 1-1.414 0l-3-3l-.097-.112l-.071-.11l-.031-.062l-.034-.081l-.024-.076l-.025-.118l-.007-.058L6 11.982l.003-.064l.017-.119l.03-.111l.044-.111l.052-.098l.067-.096l.08-.09l3-3a1 1 0 0 1 1.414 1.414L9.415 11H14V6a4 4 0 0 1 4-4"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -42012,10 +44957,26 @@ func TransitionRight(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func TransitionRightFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M18 2a4 4 0 0 1 4 4v12a4 4 0 0 1-4 4a1 1 0 0 1-.117-1.993L18 20a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2a1 1 0 0 1 0-2m-8 16a4 4 0 1 1-8 0V6a4 4 0 1 1 8 0v5h4.585l-1.292-1.293a1 1 0 0 1-.083-1.32l.083-.094a1 1 0 0 1 1.414 0l3 3l.097.112l.071.11l.031.062l.034.081l.024.076l.03.148L18 12l-.004.085l-.016.116l-.03.111l-.044.111l-.052.098l-.074.104l-.073.082l-3 3a1 1 0 0 1-1.414-1.414L14.585 13H10z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func TransitionTop(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 6a3 3 0 0 0-3-3H6a3 3 0 0 0-3 3m3 15h12a3 3 0 0 0 0-6H6a3 3 0 0 0 0 6m6-6V7m-3 3l3-3l3 3"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func TransitionTopFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="m12 6l.081.003l.12.017l.111.03l.111.044l.098.052l.104.074l.082.073l3 3a1 1 0 1 1-1.414 1.414L13 9.415V14h5a4 4 0 1 1 0 8H6a4 4 0 1 1 0-8h5V9.415l-1.293 1.292a1 1 0 0 1-1.32.083l-.094-.083a1 1 0 0 1 0-1.414l3-3l.112-.097l.11-.071l.062-.031l.081-.034l.076-.024l.118-.025l.058-.007zm6-4a4 4 0 0 1 4 4a1 1 0 0 1-1.993.117L20 6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2a1 1 0 1 1-2 0a4 4 0 0 1 4-4z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -42031,7 +44992,7 @@ func Trash(children ...ElementRenderer) *TablerIcon {
 func TrashFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M20 6a1 1 0 0 1 .117 1.993L20 8h-.081L19 19a3 3 0 0 1-2.824 2.995L16 22H8c-1.598 0-2.904-1.249-2.992-2.75l-.005-.167L4.08 8H4a1 1 0 0 1-.117-1.993L4 6zm-6-4a2 2 0 0 1 2 2a1 1 0 0 1-1.993.117L14 4h-4l-.007.117A1 1 0 0 1 8 4a2 2 0 0 1 1.85-1.995L10 2z"/></g>`),
+			Text(`<path fill="currentColor" d="M20 6a1 1 0 0 1 .117 1.993L20 8h-.081L19 19a3 3 0 0 1-2.824 2.995L16 22H8c-1.598 0-2.904-1.249-2.992-2.75l-.005-.167L4.08 8H4a1 1 0 0 1-.117-1.993L4 6zm-6-4a2 2 0 0 1 2 2a1 1 0 0 1-1.993.117L14 4h-4l-.007.117A1 1 0 0 1 8 4a2 2 0 0 1 1.85-1.995L10 2z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -42055,7 +45016,7 @@ func TrashX(children ...ElementRenderer) *TablerIcon {
 func TrashXfilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M20 6a1 1 0 0 1 .117 1.993L20 8h-.081L19 19a3 3 0 0 1-2.824 2.995L16 22H8c-1.598 0-2.904-1.249-2.992-2.75l-.005-.167L4.08 8H4a1 1 0 0 1-.117-1.993L4 6zm-9.489 5.14a1 1 0 0 0-1.218 1.567L10.585 14l-1.292 1.293l-.083.094a1 1 0 0 0 1.497 1.32L12 15.415l1.293 1.292l.094.083a1 1 0 0 0 1.32-1.497L13.415 14l1.292-1.293l.083-.094a1 1 0 0 0-1.497-1.32L12 12.585l-1.293-1.292l-.094-.083zM14 2a2 2 0 0 1 2 2a1 1 0 0 1-1.993.117L14 4h-4l-.007.117A1 1 0 0 1 8 4a2 2 0 0 1 1.85-1.995L10 2z"/></g>`),
+			Text(`<path fill="currentColor" d="M20 6a1 1 0 0 1 .117 1.993L20 8h-.081L19 19a3 3 0 0 1-2.824 2.995L16 22H8c-1.598 0-2.904-1.249-2.992-2.75l-.005-.167L4.08 8H4a1 1 0 0 1-.117-1.993L4 6zm-9.489 5.14a1 1 0 0 0-1.218 1.567L10.585 14l-1.292 1.293l-.083.094a1 1 0 0 0 1.497 1.32L12 15.415l1.293 1.292l.094.083a1 1 0 0 0 1.32-1.497L13.415 14l1.292-1.293l.083-.094a1 1 0 0 0-1.497-1.32L12 12.585l-1.293-1.292l-.094-.083zM14 2a2 2 0 0 1 2 2a1 1 0 0 1-1.993.117L14 4h-4l-.007.117A1 1 0 0 1 8 4a2 2 0 0 1 1.85-1.995L10 2z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -42151,7 +45112,7 @@ func Triangle(children ...ElementRenderer) *TablerIcon {
 func TriangleFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M12 1.67a2.914 2.914 0 0 0-2.492 1.403L1.398 16.61a2.914 2.914 0 0 0 2.484 4.385h16.225a2.914 2.914 0 0 0 2.503-4.371L14.494 3.078A2.917 2.917 0 0 0 12 1.67"/></g>`),
+			Text(`<path fill="currentColor" d="M12 1.67a2.914 2.914 0 0 0-2.492 1.403L1.398 16.61a2.914 2.914 0 0 0 2.484 4.385h16.225a2.914 2.914 0 0 0 2.503-4.371L14.494 3.078A2.917 2.917 0 0 0 12 1.67"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -42167,7 +45128,7 @@ func TriangleInverted(children ...ElementRenderer) *TablerIcon {
 func TriangleInvertedFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M20.118 3H3.893A2.914 2.914 0 0 0 1.39 7.371L9.506 20.92a2.917 2.917 0 0 0 4.987.005l8.11-13.539A2.914 2.914 0 0 0 20.117 3z"/></g>`),
+			Text(`<path fill="currentColor" d="M20.118 3H3.893A2.914 2.914 0 0 0 1.39 7.371L9.506 20.92a2.917 2.917 0 0 0 4.987.005l8.11-13.539A2.914 2.914 0 0 0 20.117 3z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -42223,7 +45184,7 @@ func TriangleSquareCircle(children ...ElementRenderer) *TablerIcon {
 func TriangleSquareCircleFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="m11.132 2.504l-4 7A1 1 0 0 0 8 11h8a1 1 0 0 0 .868-1.496l-4-7a1 1 0 0 0-1.736 0M17 13a4 4 0 1 1-3.995 4.2L13 17l.005-.2A4 4 0 0 1 17 13m-8 0H5a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2v-4a2 2 0 0 0-2-2"/></g>`),
+			Text(`<path fill="currentColor" d="m11.132 2.504l-4 7A1 1 0 0 0 8 11h8a1 1 0 0 0 .868-1.496l-4-7a1 1 0 0 0-1.736 0M17 13a4 4 0 1 1-3.995 4.2L13 17l.005-.2A4 4 0 0 1 17 13m-8 0H5a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2v-4a2 2 0 0 0-2-2"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -42263,7 +45224,7 @@ func Trophy(children ...ElementRenderer) *TablerIcon {
 func TrophyFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M17 3a1 1 0 0 1 .993.883L18 4v2.17a3 3 0 1 1 0 5.659V12a6.002 6.002 0 0 1-5 5.917V20h3a1 1 0 0 1 .117 1.993L16 22H8a1 1 0 0 1-.117-1.993L8 20h3v-2.083a6.002 6.002 0 0 1-4.996-5.692L6 12v-.171a3 3 0 0 1-3.996-2.653L2.001 9l.005-.176A3 3 0 0 1 6.001 6.17L6 4a1 1 0 0 1 1-1zM5 8a1 1 0 1 0 0 2a1 1 0 0 0 0-2m14 0a1 1 0 1 0 0 2a1 1 0 0 0 0-2"/></g>`),
+			Text(`<path fill="currentColor" d="M17 3a1 1 0 0 1 .993.883L18 4v2.17a3 3 0 1 1 0 5.659V12a6.002 6.002 0 0 1-5 5.917V20h3a1 1 0 0 1 .117 1.993L16 22H8a1 1 0 0 1-.117-1.993L8 20h3v-2.083a6.002 6.002 0 0 1-4.996-5.692L6 12v-.171a3 3 0 0 1-3.996-2.653L2.001 9l.005-.176A3 3 0 0 1 6.001 6.17L6 4a1 1 0 0 1 1-1zM5 8a1 1 0 1 0 0 2a1 1 0 0 0 0-2m14 0a1 1 0 1 0 0 2a1 1 0 0 0 0-2"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -42324,34 +45285,18 @@ func TruckReturn(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
-func TwelveHours(children ...ElementRenderer) *TablerIcon {
-	return &TablerIcon{
-		SVGSVGElement: SVG_SVG(
-			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 11A8.1 8.1 0 0 0 4.5 9M4 5v4h4m-4 4c.468 3.6 3.384 6.546 7 7m7-5h2a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1h-1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1h2m-6 0v-6"/>`),
-		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
-	}
-}
-
-func TwentyFourHours(children ...ElementRenderer) *TablerIcon {
-	return &TablerIcon{
-		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M4 13c.325 2.532 1.881 4.781 4 6m12-8A8.1 8.1 0 0 0 4.5 9"/><path d="M4 5v4h4m4 6h2a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1h-1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1h2m3-6v2a1 1 0 0 0 1 1h1m1-3v6"/></g>`),
-		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
-	}
-}
-
-func TwoFa(children ...ElementRenderer) *TablerIcon {
-	return &TablerIcon{
-		SVGSVGElement: SVG_SVG(
-			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16H3l3.47-4.66A2 2 0 1 0 3 9.8m7 6.2V8h4m-4 4h3m4 4v-6a2 2 0 0 1 4 0v6m-4-3h4"/>`),
-		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
-	}
-}
-
 func Txt(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8h4M5 8v8m12-8h4m-2 0v8m-9-8l4 8m-4 0l4-8"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func Typeface(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M3 5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M17 17a2 2 0 0 1-2-2V7h-5a2 2 0 0 0-2 2"/><path d="M7 17a2.775 2.775 0 0 0 2.632-1.897L10 14a13.4 13.4 0 0 1 3.236-5.236L15 7m-5 7h5"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -42368,6 +45313,22 @@ func TypographyOff(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 20h3m7 0h6M6.9 15h6.9m-.8-2l3 7M5 20L9.09 9.094m1.091-2.911L11 4h2l3.904 8.924M3 3l18 18"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func UturnLeft(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M17 20V8.5a4.5 4.5 0 1 0-9 0V17"/><path d="m11 14l-3 3l-3-3"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func UturnRight(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M7 20V8.5a4.5 4.5 0 0 1 9 0V17"/><path d="m13 14l3 3l3-3"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -42399,7 +45360,7 @@ func Umbrella(children ...ElementRenderer) *TablerIcon {
 func UmbrellaFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M12 3a9 9 0 0 1 9 9a1 1 0 0 1-.883.993L20 13h-7v5a1 1 0 0 0 1.993.117L15 18a1 1 0 0 1 2 0a3 3 0 0 1-5.995.176L11 18v-5H4a1 1 0 0 1-.993-.883L3 12a9 9 0 0 1 9-9"/></g>`),
+			Text(`<path fill="currentColor" d="M12 3a9 9 0 0 1 9 9a1 1 0 0 1-.883.993L20 13h-7v5a1 1 0 0 0 1.993.117L15 18a1 1 0 0 1 2 0a3 3 0 0 1-5.995.176L11 18v-5H4a1 1 0 0 1-.993-.883L3 12a9 9 0 0 1 9-9"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -42551,7 +45512,7 @@ func UserExclamation(children ...ElementRenderer) *TablerIcon {
 func UserFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M12 2a5 5 0 1 1-5 5l.005-.217A5 5 0 0 1 12 2m2 12a5 5 0 0 1 5 5v1a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-1a5 5 0 0 1 5-5z"/></g>`),
+			Text(`<path fill="currentColor" d="M12 2a5 5 0 1 1-5 5l.005-.217A5 5 0 0 1 12 2m2 12a5 5 0 0 1 5 5v1a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-1a5 5 0 0 1 5-5z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -42632,6 +45593,14 @@ func UserScan(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 9a2 2 0 1 0 4 0a2 2 0 0 0-4 0M4 8V6a2 2 0 0 1 2-2h2M4 16v2a2 2 0 0 0 2 2h2m8-16h2a2 2 0 0 1 2 2v2m-4 12h2a2 2 0 0 0 2-2v-2M8 16a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func UserScreen(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M19.03 17.818A3 3 0 0 0 21 15V7a3 3 0 0 0-3-3H6a3 3 0 0 0-3 3v8c0 1.317.85 2.436 2.03 2.84"/><path d="M10 14a2 2 0 1 0 4 0a2 2 0 0 0-4 0m-2 7a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -42911,7 +45880,7 @@ func Versions(children ...ElementRenderer) *TablerIcon {
 func VersionsFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M18 4h-6a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h6a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3M7 6a1 1 0 0 1 .993.883L8 7v10a1 1 0 0 1-1.993.117L6 17V7a1 1 0 0 1 1-1M4 7a1 1 0 0 1 .993.883L5 8v8a1 1 0 0 1-1.993.117L3 16V8a1 1 0 0 1 1-1"/></g>`),
+			Text(`<path fill="currentColor" d="M18 4h-6a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h6a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3M7 6a1 1 0 0 1 .993.883L8 7v10a1 1 0 0 1-1.993.117L6 17V7a1 1 0 0 1 1-1M4 7a1 1 0 0 1 .993.883L5 8v8a1 1 0 0 1-1.993.117L3 16V8a1 1 0 0 1 1-1"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -42960,6 +45929,22 @@ func ViewThreeHundredSixty(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M3 12a9 9 0 1 0 18 0a9 9 0 1 0-18 0"/><path d="M8 12a4 9 0 1 0 8 0a4 9 0 1 0-8 0"/><path d="M3 12c0 2.21 4.03 4 9 4s9-1.79 9-4s-4.03-4-9-4s-9 1.79-9 4"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func ViewThreeHundredSixtyArrow(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M17 15.328c2.414-.718 4-1.94 4-3.328c0-2.21-4.03-4-9-4s-9 1.79-9 4s4.03 4 9 4"/><path d="m9 13l3 3l-3 3"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func ViewThreeHundredSixtyNumber(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 6a1 1 0 0 0-1-1h-2a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1h-3M3 5h2.5A1.5 1.5 0 0 1 7 6.5v1A1.5 1.5 0 0 1 5.5 9H4h1.5A1.5 1.5 0 0 1 7 10.5v1A1.5 1.5 0 0 1 5.5 13H3m14-6v4a2 2 0 1 0 4 0V7a2 2 0 1 0-4 0M3 16c0 1.657 4.03 3 9 3s9-1.343 9-3"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -43599,7 +46584,7 @@ func Windmill(children ...ElementRenderer) *TablerIcon {
 func WindmillFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M12 2c3.292 0 6 2.435 6 5.5c0 1.337-.515 2.554-1.369 3.5H21a1 1 0 0 1 1 1c0 3.292-2.435 6-5.5 6c-1.336 0-2.553-.515-3.5-1.368V21a1 1 0 0 1-1 1c-3.292 0-6-2.435-6-5.5c0-1.336.515-2.553 1.368-3.5H3a1 1 0 0 1-1-1c0-3.292 2.435-6 5.5-6c1.337 0 2.554.515 3.5 1.369V3a1 1 0 0 1 1-1"/></g>`),
+			Text(`<path fill="currentColor" d="M12 2c3.292 0 6 2.435 6 5.5c0 1.337-.515 2.554-1.369 3.5H21a1 1 0 0 1 1 1c0 3.292-2.435 6-5.5 6c-1.336 0-2.553-.515-3.5-1.368V21a1 1 0 0 1-1 1c-3.292 0-6-2.435-6-5.5c0-1.336.515-2.553 1.368-3.5H3a1 1 0 0 1-1-1c0-3.292 2.435-6 5.5-6c1.337 0 2.554.515 3.5 1.369V3a1 1 0 0 1 1-1"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -43672,6 +46657,14 @@ func Woman(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 16v5m4-5v5m-6-5h8l-2-7h-4zm-3-5c1.667-1.333 3.333-2 5-2m9 2c-1.667-1.333-3.333-2-5-2m-4-5a2 2 0 1 0 4 0a2 2 0 1 0-4 0"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func WomanFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M14 8c1.91 0 3.79.752 5.625 2.219a1 1 0 1 1-1.25 1.562c-1.019-.815-2.016-1.345-2.997-1.6l1.584 5.544A1 1 0 0 1 16 17h-1v4a1 1 0 0 1-2 0v-4h-2v4a1 1 0 0 1-2 0v-4H8a1 1 0 0 1-.962-1.275l1.584-5.545c-.98.256-1.978.786-2.997 1.601a1 1 0 1 1-1.25-1.562c1.733-1.386 3.506-2.133 5.307-2.212L10.017 8zm-2-7a3 3 0 1 1-3 3l.005-.176A3 3 0 0 1 12 1"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -43948,10 +46941,26 @@ func XboxA(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func XboxAfilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12S6.477 2 12 2m.936 5.649c-.324-.865-1.548-.865-1.872 0l-3 8a1 1 0 0 0 .585 1.287l.111.035a1 1 0 0 0 1.176-.62L10.443 15h3.114l.507 1.351a1 1 0 1 0 1.872-.702zM12 10.848L12.807 13h-1.614z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func XboxB(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M12 21a9 9 0 0 0 9-9a9 9 0 0 0-9-9a9 9 0 0 0-9 9a9 9 0 0 0 9 9"/><path d="M13 12a2 2 0 1 1 0 4h-3v-4m3 0h-3m3 0a2 2 0 1 0 0-4h-3v4"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func XboxBfilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12S6.477 2 12 2m1 5h-3a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h3a3 3 0 0 0 2.235-5A3 3 0 0 0 13 7m0 6a1 1 0 0 1 1 1l-.007.117A1 1 0 0 1 13 15h-2v-2zm0-4a1 1 0 0 1 0 2h-2V9z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -43964,10 +46973,26 @@ func XboxX(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func XboxXfilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12S6.477 2 12 2m3.6 5.2a1 1 0 0 0-1.4.2L12 10.333L9.8 7.4a1 1 0 1 0-1.6 1.2l2.55 3.4l-2.55 3.4a1 1 0 1 0 1.6 1.2l2.2-2.933l2.2 2.933a1 1 0 0 0 1.6-1.2L13.25 12l2.55-3.4a1 1 0 0 0-.2-1.4"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func XboxY(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M12 21a9 9 0 0 0 9-9a9 9 0 0 0-9-9a9 9 0 0 0-9 9a9 9 0 0 0 9 9M9 8l3 4"/><path d="m15 8l-2.988 3.984L12 16"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func XboxYfilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12S6.477 2 12 2m3.6 5.2a1 1 0 0 0-1.4.2L12 10.333L9.8 7.4a1 1 0 1 0-1.6 1.2l2.81 3.748l-.01 3.649A1 1 0 0 0 11.997 17l.117-.006a1 1 0 0 0 .886-.991l.01-3.683L15.8 8.6a1 1 0 0 0-.2-1.4"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -43999,7 +47024,7 @@ func YinYang(children ...ElementRenderer) *TablerIcon {
 func YinYangFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M17 3.34a10 10 0 1 1-14.995 8.984L2 12l.005-.324A10 10 0 0 1 17 3.34M8 5.072A8 8 0 0 0 12 20l.2-.005a4 4 0 0 0 0-7.99L12 12a4 4 0 0 1-.2-7.995L12 4a7.995 7.995 0 0 0-4 1.072M12 6.5a1.5 1.5 0 1 0 0 3a1.5 1.5 0 0 0 0-3"/><path fill="currentColor" d="M12 14.5a1.5 1.5 0 1 1 0 3a1.5 1.5 0 0 1 0-3"/></g>`),
+			Text(`<g fill="currentColor"><path d="M17 3.34a10 10 0 1 1-14.995 8.984L2 12l.005-.324A10 10 0 0 1 17 3.34M8 5.072A8 8 0 0 0 12 20l.2-.005a4 4 0 0 0 0-7.99L12 12a4 4 0 0 1-.2-7.995L12 4a7.995 7.995 0 0 0-4 1.072M12 6.5a1.5 1.5 0 1 0 0 3a1.5 1.5 0 0 0 0-3"/><path d="M12 14.5a1.5 1.5 0 1 1 0 3a1.5 1.5 0 0 1 0-3"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -44016,6 +47041,14 @@ func Zeppelin(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M13.5 4c4.694 0 8.5 2.686 8.5 6s-3.806 6-8.5 6c-2.13 0-4.584-.926-7.364-2.777L4 15v-3.33A46.07 46.07 0 0 1 2 10a46.07 46.07 0 0 1 2-1.67V5l2.135 1.778C8.915 4.926 11.37 4 13.5 4"/><path d="M10 15.5V20h6v-4"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func ZeppelinFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M13.5 3c5.187 0 9.5 3.044 9.5 7c0 3.017-2.508 5.503-6 6.514V20a1 1 0 0 1-1 1h-6a1 1 0 0 1-1-1v-4.046a21 21 0 0 1-2.66-1.411l-.13-.082l-1.57 1.308a1 1 0 0 1-1.634-.656L3 15v-2.851l-.31-.25a47 47 0 0 1-.682-.568l-.67-.582a1 1 0 0 1 0-1.498A47 47 0 0 1 2.689 8.1L3 7.85V5a1 1 0 0 1 1.55-.836l.09.068l1.57 1.307l.128-.08c2.504-1.553 4.784-2.378 6.853-2.453zm-2.499 13.657L11 19h4l.001-2.086Q14.266 17 13.5 17a9.6 9.6 0 0 1-2.13-.252z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -44132,10 +47165,26 @@ func ZodiacVirgo(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func Zoom(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10a7 7 0 1 0 14 0a7 7 0 1 0-14 0m18 11l-6-6"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func ZoomCancel(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10a7 7 0 1 0 14 0a7 7 0 1 0-14 0m5-2l4 4m0-4l-4 4m13 9l-6-6"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func ZoomCancelFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M14 3.072a8 8 0 0 1 2.32 11.834l5.387 5.387a1 1 0 0 1-1.414 1.414l-5.388-5.387A8 8 0 0 1 2 10l.005-.285A8 8 0 0 1 14 3.072m-5.293 4.22a1 1 0 0 0-1.414 1.415L8.585 10l-1.292 1.293a1 1 0 0 0 1.414 1.414L10 11.415l1.293 1.292a1 1 0 0 0 1.414-1.414L11.415 10l1.292-1.293a1 1 0 1 0-1.414-1.414L10 8.585z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -44151,7 +47200,7 @@ func ZoomCheck(children ...ElementRenderer) *TablerIcon {
 func ZoomCheckFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M14 3.072a8 8 0 0 1 2.617 11.424l4.944 4.943a1.5 1.5 0 0 1-2.008 2.225l-.114-.103l-4.943-4.944a8 8 0 0 1-12.49-6.332L2 10l.005-.285A8 8 0 0 1 14 3.072m-.293 4.22a1 1 0 0 0-1.414 0L9 10.586L7.707 9.293l-.094-.083a1 1 0 0 0-1.32 1.497l2 2l.094.083a1 1 0 0 0 1.32-.083l4-4l.083-.094a1 1 0 0 0-.083-1.32z"/></g>`),
+			Text(`<path fill="currentColor" d="M14 3.072a8 8 0 0 1 2.617 11.424l4.944 4.943a1.5 1.5 0 0 1-2.008 2.225l-.114-.103l-4.943-4.944a8 8 0 0 1-12.49-6.332L2 10l.005-.285A8 8 0 0 1 14 3.072m-.293 4.22a1 1 0 0 0-1.414 0L9 10.586L7.707 9.293l-.094-.083a1 1 0 0 0-1.32 1.497l2 2l.094.083a1 1 0 0 0 1.32-.083l4-4l.083-.094a1 1 0 0 0-.083-1.32z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -44164,6 +47213,14 @@ func ZoomCode(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func ZoomCodeFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M14 3.072a8 8 0 0 1 2.32 11.834l5.387 5.387a1 1 0 0 1-1.414 1.414l-5.388-5.387A8 8 0 0 1 2 10l.005-.285A8 8 0 0 1 14 3.072m-5.293 4.22a1 1 0 0 0-1.414 0l-2 2a1 1 0 0 0 0 1.415l2 2a1 1 0 0 0 1.414 0l.083-.094a1 1 0 0 0-.083-1.32L7.415 10l1.292-1.293a1 1 0 0 0 0-1.414m4 0a1 1 0 0 0-1.414 0l-.083.095a1 1 0 0 0 .083 1.32L12.585 10l-1.292 1.293a1 1 0 0 0 1.414 1.414l2-2a1 1 0 0 0 0-1.414z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func ZoomExclamation(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
@@ -44172,10 +47229,18 @@ func ZoomExclamation(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func ZoomExclamationFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M14 3.072a8 8 0 0 1 2.32 11.834l5.387 5.387a1 1 0 0 1-1.414 1.414l-5.388-5.387A8 8 0 0 1 2 10l.005-.285A8 8 0 0 1 14 3.072M10 12a1 1 0 0 0-1 1l.007.127A1 1 0 0 0 11 13.01l-.007-.127A1 1 0 0 0 10 12m0-6a1 1 0 0 0-1 1v3a1 1 0 0 0 2 0V7a1 1 0 0 0-1-1"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func ZoomFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M14 3.072a8 8 0 0 1 2.617 11.424l4.944 4.943a1.5 1.5 0 0 1-2.008 2.225l-.114-.103l-4.943-4.944a8 8 0 0 1-12.49-6.332L2 10l.005-.285A8 8 0 0 1 14 3.072"/></g>`),
+			Text(`<path fill="currentColor" d="M14 3.072a8 8 0 0 1 2.617 11.424l4.944 4.943a1.5 1.5 0 0 1-2.008 2.225l-.114-.103l-4.943-4.944a8 8 0 0 1-12.49-6.332L2 10l.005-.285A8 8 0 0 1 14 3.072"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -44199,7 +47264,7 @@ func ZoomInArea(children ...ElementRenderer) *TablerIcon {
 func ZoomInAreaFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M15 9a6 6 0 0 1 4.891 9.476l2.816 2.817a1 1 0 0 1-1.32 1.497l-.094-.083l-2.817-2.816a6 6 0 0 1-9.472-4.666L9 15l.004-.225A6 6 0 0 1 15 9m0 3a1 1 0 0 0-.993.883L14 13v1h-1l-.117.007a1 1 0 0 0 0 1.986L13 16h1v1l.007.117a1 1 0 0 0 1.986 0L16 17v-1h1l.117-.007a1 1 0 0 0 0-1.986L17 14h-1v-1l-.007-.117A1 1 0 0 0 15 12M3 14a1 1 0 0 1 .993.883L4 15v1a1 1 0 0 0 .883.993L5 17h1a1 1 0 0 1 .117 1.993L6 19H5a3 3 0 0 1-2.995-2.824L2 16v-1a1 1 0 0 1 1-1m0-5a1 1 0 0 1 .993.883L4 10v1a1 1 0 0 1-1.993.117L2 11v-1a1 1 0 0 1 1-1m3-7a1 1 0 0 1 .117 1.993L6 4H5a1 1 0 0 0-.993.883L4 5v1a1 1 0 0 1-1.993.117L2 6V5a3 3 0 0 1 2.824-2.995L5 2zm5 0a1 1 0 0 1 .117 1.993L11 4h-1a1 1 0 0 1-.117-1.993L10 2zm5 0a3 3 0 0 1 2.995 2.824L19 5v1a1 1 0 0 1-1.993.117L17 6V5a1 1 0 0 0-.883-.993L16 4h-1a1 1 0 0 1-.117-1.993L15 2z"/></g>`),
+			Text(`<path fill="currentColor" d="M15 9a6 6 0 0 1 4.891 9.476l2.816 2.817a1 1 0 0 1-1.32 1.497l-.094-.083l-2.817-2.816a6 6 0 0 1-9.472-4.666L9 15l.004-.225A6 6 0 0 1 15 9m0 3a1 1 0 0 0-.993.883L14 13v1h-1l-.117.007a1 1 0 0 0 0 1.986L13 16h1v1l.007.117a1 1 0 0 0 1.986 0L16 17v-1h1l.117-.007a1 1 0 0 0 0-1.986L17 14h-1v-1l-.007-.117A1 1 0 0 0 15 12M3 14a1 1 0 0 1 .993.883L4 15v1a1 1 0 0 0 .883.993L5 17h1a1 1 0 0 1 .117 1.993L6 19H5a3 3 0 0 1-2.995-2.824L2 16v-1a1 1 0 0 1 1-1m0-5a1 1 0 0 1 .993.883L4 10v1a1 1 0 0 1-1.993.117L2 11v-1a1 1 0 0 1 1-1m3-7a1 1 0 0 1 .117 1.993L6 4H5a1 1 0 0 0-.993.883L4 5v1a1 1 0 0 1-1.993.117L2 6V5a3 3 0 0 1 2.824-2.995L5 2zm5 0a1 1 0 0 1 .117 1.993L11 4h-1a1 1 0 0 1-.117-1.993L10 2zm5 0a3 3 0 0 1 2.995 2.824L19 5v1a1 1 0 0 1-1.993.117L17 6V5a1 1 0 0 0-.883-.993L16 4h-1a1 1 0 0 1-.117-1.993L15 2z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -44207,7 +47272,7 @@ func ZoomInAreaFilled(children ...ElementRenderer) *TablerIcon {
 func ZoomInFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M14 3.072a8 8 0 0 1 2.617 11.424l4.944 4.943a1.5 1.5 0 0 1-2.008 2.225l-.114-.103l-4.943-4.944a8 8 0 0 1-12.49-6.332L2 10l.005-.285A8 8 0 0 1 14 3.072M10 6a1 1 0 0 0-.993.883L9 7v2H7l-.117.007a1 1 0 0 0 0 1.986L7 11h2v2l.007.117a1 1 0 0 0 1.986 0L11 13v-2h2l.117-.007a1 1 0 0 0 0-1.986L13 9h-2V7l-.007-.117A1 1 0 0 0 10 6"/></g>`),
+			Text(`<path fill="currentColor" d="M14 3.072a8 8 0 0 1 2.617 11.424l4.944 4.943a1.5 1.5 0 0 1-2.008 2.225l-.114-.103l-4.943-4.944a8 8 0 0 1-12.49-6.332L2 10l.005-.285A8 8 0 0 1 14 3.072M10 6a1 1 0 0 0-.993.883L9 7v2H7l-.117.007a1 1 0 0 0 0 1.986L7 11h2v2l.007.117a1 1 0 0 0 1.986 0L11 13v-2h2l.117-.007a1 1 0 0 0 0-1.986L13 9h-2V7l-.007-.117A1 1 0 0 0 10 6"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -44216,6 +47281,14 @@ func ZoomMoney(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M3 10a7 7 0 1 0 14 0a7 7 0 1 0-14 0m18 11l-6-6"/><path d="M12 7H9.5a1.5 1.5 0 0 0 0 3h1a1.5 1.5 0 0 1 0 3H8m2 0v1m0-8v1"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func ZoomMoneyFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M14 3.072a8 8 0 0 1 2.32 11.834l5.387 5.387a1 1 0 0 1-1.414 1.414l-5.388-5.387A8 8 0 0 1 2 10l.005-.285A8 8 0 0 1 14 3.072M12 6H9.5a2.5 2.5 0 0 0 0 5h1a.5.5 0 1 1 0 1H8a1 1 0 0 0 0 2h2.5a2.5 2.5 0 1 0 0-5h-1a.5.5 0 0 1 0-1H12a1 1 0 0 0 0-2"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -44236,10 +47309,18 @@ func ZoomOutArea(children ...ElementRenderer) *TablerIcon {
 	}
 }
 
+func ZoomOutAreaFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M15 9a6 6 0 0 1 4.891 9.476l2.816 2.817a1 1 0 0 1-1.414 1.414l-2.817-2.816A6 6 0 0 1 9 15l.004-.225A6 6 0 0 1 15 9m2 5h-4a1 1 0 0 0 0 2h4a1 1 0 0 0 0-2M3 14a1 1 0 0 1 1 1v1a1 1 0 0 0 1 1h1a1 1 0 0 1 0 2H5a3 3 0 0 1-3-3v-1a1 1 0 0 1 1-1m0-5a1 1 0 0 1 1 1v1a1 1 0 0 1-2 0v-1a1 1 0 0 1 1-1m3-7a1 1 0 1 1 0 2H5a1 1 0 0 0-1 1v1a1 1 0 1 1-2 0V5a3 3 0 0 1 3-3zm5 0a1 1 0 0 1 0 2h-1a1 1 0 1 1 0-2zm5 0a3 3 0 0 1 3 3v1a1 1 0 0 1-2 0V5a1 1 0 0 0-1-1h-1a1 1 0 0 1 0-2z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func ZoomOutFilled(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M0 0h24v24H0z"/><path fill="currentColor" d="M14 3.072a8 8 0 0 1 2.617 11.424l4.944 4.943a1.5 1.5 0 0 1-2.008 2.225l-.114-.103l-4.943-4.944a8 8 0 0 1-12.49-6.332L2 10l.005-.285A8 8 0 0 1 14 3.072M13 9H7l-.117.007a1 1 0 0 0 0 1.986L7 11h6l.117-.007a1 1 0 0 0 0-1.986z"/></g>`),
+			Text(`<path fill="currentColor" d="M14 3.072a8 8 0 0 1 2.617 11.424l4.944 4.943a1.5 1.5 0 0 1-2.008 2.225l-.114-.103l-4.943-4.944a8 8 0 0 1-12.49-6.332L2 10l.005-.285A8 8 0 0 1 14 3.072M13 9H7l-.117.007a1 1 0 0 0 0 1.986L7 11h6l.117-.007a1 1 0 0 0 0-1.986z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -44247,7 +47328,15 @@ func ZoomOutFilled(children ...ElementRenderer) *TablerIcon {
 func ZoomPan(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12a3 3 0 1 0 6 0a3 3 0 1 0-6 0m8 5l-2.5-2.5M10 5l2-2l2 2m5 5l2 2l-2 2M5 10l-2 2l2 2m5 5l2 2l2-2"/>`),
+			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12a3 3 0 1 0 6 0a3 3 0 0 0-6 0m8 5l-2.5-2.5M10 4l2-2l2 2m6 6l2 2l-2 2M4 10l-2 2l2 2m6 6l2 2l2-2"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func ZoomPanFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M12 8a4 4 0 0 1 3.447 6.031l2.26 2.262a1 1 0 0 1-1.414 1.414l-2.262-2.26A4 4 0 0 1 8 12l.005-.2A4 4 0 0 1 12 8m-.707-6.707a1 1 0 0 1 1.414 0l2 2a1 1 0 1 1-1.414 1.414L12 3.415l-1.293 1.292a1 1 0 0 1-1.32.083l-.094-.083a1 1 0 0 1 0-1.414zm8 8a1 1 0 0 1 1.414 0l2 2a1 1 0 0 1 0 1.414l-2 2a1 1 0 0 1-1.414-1.414L20.585 12l-1.292-1.293a1 1 0 0 1-.083-1.32zm-16 0a1 1 0 1 1 1.414 1.414L3.415 12l1.292 1.293a1 1 0 0 1 .083 1.32l-.083.094a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 0-1.414zm6 10a1 1 0 0 1 1.414 0L12 20.585l1.294-1.292a1 1 0 0 1 1.32-.083l.094.083a1 1 0 0 1 0 1.414l-2 2a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 0-1.414"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -44256,6 +47345,14 @@ func ZoomQuestion(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M3 10a7 7 0 1 0 14 0a7 7 0 1 0-14 0m18 11l-6-6m-5-2v.01"/><path d="M10 10a1.5 1.5 0 1 0-1.14-2.474"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func ZoomQuestionFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M14 3.072a8 8 0 0 1 2.32 11.834l5.387 5.387a1 1 0 0 1-1.414 1.414l-5.388-5.387A8 8 0 0 1 2 10l.005-.285A8 8 0 0 1 14 3.072M10 12a1 1 0 0 0-.993.883L9 13.01a1 1 0 0 0 1.993.117L11 13a1 1 0 0 0-1-1M8.1 6.877a1 1 0 0 0 1.433 1.389l.088-.09A.5.5 0 1 1 10 9a1 1 0 0 0-.002 2a2.5 2.5 0 1 0-1.9-4.123"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -44280,6 +47377,14 @@ func ZoomScan(children ...ElementRenderer) *TablerIcon {
 	return &TablerIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V6a2 2 0 0 1 2-2h2M4 16v2a2 2 0 0 0 2 2h2m8-16h2a2 2 0 0 1 2 2v2m-4 12h2a2 2 0 0 0 2-2v-2M8 11a3 3 0 1 0 6 0a3 3 0 0 0-6 0m8 5l-2.5-2.5"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func ZoomScanFilled(children ...ElementRenderer) *TablerIcon {
+	return &TablerIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M4 15a1 1 0 0 1 1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 1 0 2H6a3 3 0 0 1-3-3v-2a1 1 0 0 1 1-1m16 0a1 1 0 0 1 1 1v2a3 3 0 0 1-3 3h-2a1 1 0 0 1 0-2h2a1 1 0 0 0 1-1v-2a1 1 0 0 1 1-1m-9-8a4 4 0 0 1 3.446 6.031l2.261 2.262a1 1 0 0 1-1.414 1.414l-2.262-2.26l-.031.017A4 4 0 0 1 7 11l.005-.2A4 4 0 0 1 11 7M8 3a1 1 0 1 1 0 2H6a1 1 0 0 0-1 1v2a1 1 0 1 1-2 0V6a3 3 0 0 1 3-3zm10 0a3 3 0 0 1 3 3v2a1 1 0 0 1-2 0V6a1 1 0 0 0-1-1h-2a1 1 0 0 1 0-2z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }

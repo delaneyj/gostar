@@ -556,35 +556,6 @@ func (e *SLAVATARElement) DATASTAR_HEADERRemove() *SLAVATARElement {
 	return e
 }
 
-// Sets the URL for fetch requests
-
-func (e *SLAVATARElement) DATASTAR_FETCH_URL(expression string) *SLAVATARElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-
-	key := "data-fetch-url"
-
-	e.StringAttributes.Set(key, expression)
-	return e
-}
-
-func (e *SLAVATARElement) IfDATASTAR_FETCH_URL(condition bool, expression string) *SLAVATARElement {
-	if condition {
-		e.DATASTAR_FETCH_URL(expression)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_FETCH_URL from the element.
-func (e *SLAVATARElement) DATASTAR_FETCH_URLRemove() *SLAVATARElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-fetch-url")
-	return e
-}
-
 // Sets the indicator selector for fetch requests
 
 func (e *SLAVATARElement) DATASTAR_FETCH_INDICATOR(expression string) *SLAVATARElement {

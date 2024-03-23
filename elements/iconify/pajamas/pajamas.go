@@ -5,7 +5,7 @@ import (
 )
 
 const (
-	IconifyVersion = "3.74.0"
+	IconifyVersion = "3.91.0"
 	hAttr          = "1em"
 	viewbox        = "0 0 0 0"
 	fill           = "currentColor"
@@ -98,6 +98,7 @@ var IconLookup = map[string]PajamasIconFn{
 	"copyToClipboard":           CopyToClipboard,
 	"creditCard":                CreditCard,
 	"dash":                      Dash,
+	"dashCircle":                DashCircle,
 	"dashboard":                 Dashboard,
 	"deployments":               Deployments,
 	"detailsBlock":              DetailsBlock,
@@ -248,6 +249,7 @@ var IconLookup = map[string]PajamasIconFn{
 	"mergeRequestCloseM":        MergeRequestCloseM,
 	"mergeRequestOpen":          MergeRequestOpen,
 	"messages":                  Messages,
+	"milestone":                 Milestone,
 	"minimize":                  Minimize,
 	"mobile":                    Mobile,
 	"mobileIssueClose":          MobileIssueClose,
@@ -264,6 +266,7 @@ var IconLookup = map[string]PajamasIconFn{
 	"package":                   Package,
 	"paperAirplane":             PaperAirplane,
 	"paperclip":                 Paperclip,
+	"partnerVerified":           PartnerVerified,
 	"pause":                     Pause,
 	"pencil":                    Pencil,
 	"pencilSquare":              PencilSquare,
@@ -1032,6 +1035,14 @@ func Dash(children ...ElementRenderer) *PajamasIcon {
 	return &PajamasIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="currentColor" fill-rule="evenodd" d="M2 8a.75.75 0 0 1 .75-.75h10.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 8" clip-rule="evenodd"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func DashCircle(children ...ElementRenderer) *PajamasIcon {
+	return &PajamasIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" fill-rule="evenodd" d="M6.66.112a8.049 8.049 0 0 1 2.68 0a.75.75 0 1 1-.25 1.479a6.549 6.549 0 0 0-2.18 0A.75.75 0 1 1 6.66.11m4.924 1.54a.75.75 0 0 1 1.046-.177a8.04 8.04 0 0 1 1.895 1.895a.75.75 0 1 1-1.223.869a6.54 6.54 0 0 0-1.54-1.541a.75.75 0 0 1-.178-1.046m-7.168 0a.75.75 0 0 1-.177 1.046a6.541 6.541 0 0 0-1.541 1.54a.75.75 0 0 1-1.223-.868A8.042 8.042 0 0 1 3.37 1.475a.75.75 0 0 1 1.046.177M.976 6.045a.75.75 0 0 1 .615.865a6.549 6.549 0 0 0 0 2.18a.75.75 0 1 1-1.48.25a8.048 8.048 0 0 1 0-2.68a.75.75 0 0 1 .865-.615m14.048 0a.75.75 0 0 1 .864.615a8.047 8.047 0 0 1 0 2.68a.75.75 0 1 1-1.479-.25a6.552 6.552 0 0 0 0-2.18a.75.75 0 0 1 .615-.865m-13.372 5.54a.75.75 0 0 1 1.046.176a6.54 6.54 0 0 0 1.54 1.541a.75.75 0 1 1-.868 1.223a8.04 8.04 0 0 1-1.895-1.895a.75.75 0 0 1 .177-1.046m12.696 0a.75.75 0 0 1 .177 1.045a8.04 8.04 0 0 1-1.895 1.895a.75.75 0 1 1-.869-1.223a6.538 6.538 0 0 0 1.541-1.54a.75.75 0 0 1 1.046-.178m-8.303 3.439a.75.75 0 0 1 .865-.615a6.552 6.552 0 0 0 2.18 0a.75.75 0 1 1 .25 1.48a8.047 8.047 0 0 1-2.68 0a.75.75 0 0 1-.615-.865" clip-rule="evenodd"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -2236,6 +2247,14 @@ func Messages(children ...ElementRenderer) *PajamasIcon {
 	}
 }
 
+func Milestone(children ...ElementRenderer) *PajamasIcon {
+	return &PajamasIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" fill-rule="evenodd" d="M7.646 2.475L2.475 7.646a.5.5 0 0 0 0 .708l5.171 5.171a.5.5 0 0 0 .708 0l5.171-5.171a.5.5 0 0 0 0-.708L8.354 2.475a.5.5 0 0 0-.708 0m-6.232 4.11l5.172-5.17a2 2 0 0 1 2.828 0l5.172 5.17a2 2 0 0 1 0 2.83l-5.172 5.17a2 2 0 0 1-2.828 0l-5.172-5.17a2 2 0 0 1 0-2.83" clip-rule="evenodd"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func Minimize(children ...ElementRenderer) *PajamasIcon {
 	return &PajamasIcon{
 		SVGSVGElement: SVG_SVG(
@@ -2360,6 +2379,14 @@ func Paperclip(children ...ElementRenderer) *PajamasIcon {
 	return &PajamasIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="currentColor" fill-rule="evenodd" d="M9.414 3.05L4.085 8.38a3 3 0 0 0 4.243 4.242l2.403-2.403a.75.75 0 1 1 1.06 1.06l-2.403 2.404a4.5 4.5 0 0 1-6.364-6.364l5.33-5.33a3.25 3.25 0 0 1 4.596 4.597l-5.33 5.329a2 2 0 0 1-2.828-2.828l5.33-5.33a.75.75 0 0 1 1.06 1.061l-5.33 5.33a.5.5 0 1 0 .708.706l5.33-5.329A1.75 1.75 0 0 0 9.413 3.05Z" clip-rule="evenodd"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func PartnerVerified(children ...ElementRenderer) *PajamasIcon {
+	return &PajamasIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" fill-rule="evenodd" d="M8.716.315a1 1 0 0 0-1.432 0L6.646.97a1 1 0 0 1-.988.265l-.88-.248a1 1 0 0 0-1.24.716l-.226.886a1 1 0 0 1-.723.723l-.886.225a1 1 0 0 0-.716 1.24l.248.881a1 1 0 0 1-.265.988l-.655.638a1 1 0 0 0 0 1.432l.655.639a1 1 0 0 1 .265.987l-.248.88a1 1 0 0 0 .716 1.24l.886.226a1 1 0 0 1 .723.723l.225.886a1 1 0 0 0 1.24.717l.881-.248a1 1 0 0 1 .988.264l.638.655a1 1 0 0 0 1.432 0l.639-.655a1 1 0 0 1 .987-.264l.88.248a1 1 0 0 0 1.24-.717l.226-.886a1 1 0 0 1 .723-.723l.886-.225a1 1 0 0 0 .717-1.24l-.248-.88a1 1 0 0 1 .264-.988l.655-.639a1 1 0 0 0 0-1.432l-.655-.638a1 1 0 0 1-.264-.988l.248-.88a1 1 0 0 0-.717-1.24l-.886-.226a1 1 0 0 1-.723-.723l-.225-.886a1 1 0 0 0-1.24-.716l-.88.248A1 1 0 0 1 9.354.97zm3.057 5.975a.75.75 0 0 0-1.042-1.08L6.597 9.202L5.28 7.887A.75.75 0 0 0 4.22 8.95l1.839 1.834a.75.75 0 0 0 1.05.01z" clip-rule="evenodd"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }

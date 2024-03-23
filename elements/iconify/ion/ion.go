@@ -5,7 +5,7 @@ import (
 )
 
 const (
-	IconifyVersion = "7.2.2"
+	IconifyVersion = "7.3.0"
 	hAttr          = "1em"
 	viewbox        = "0 0 512 512"
 	fill           = "currentColor"
@@ -81,7 +81,13 @@ var IconLookup = map[string]IonIconFn{
 	"arrowDownCircle":                 ArrowDownCircle,
 	"arrowDownCircleOutline":          ArrowDownCircleOutline,
 	"arrowDownCircleSharp":            ArrowDownCircleSharp,
+	"arrowDownLeftBox":                ArrowDownLeftBox,
+	"arrowDownLeftBoxOutline":         ArrowDownLeftBoxOutline,
+	"arrowDownLeftBoxSharp":           ArrowDownLeftBoxSharp,
 	"arrowDownOutline":                ArrowDownOutline,
+	"arrowDownRightBox":               ArrowDownRightBox,
+	"arrowDownRightBoxOutline":        ArrowDownRightBoxOutline,
+	"arrowDownRightBoxSharp":          ArrowDownRightBoxSharp,
 	"arrowDownSharp":                  ArrowDownSharp,
 	"arrowExpand":                     ArrowExpand,
 	"arrowForward":                    ArrowForward,
@@ -125,7 +131,13 @@ var IconLookup = map[string]IonIconFn{
 	"arrowUpCircle":                   ArrowUpCircle,
 	"arrowUpCircleOutline":            ArrowUpCircleOutline,
 	"arrowUpCircleSharp":              ArrowUpCircleSharp,
+	"arrowUpLeftBox":                  ArrowUpLeftBox,
+	"arrowUpLeftBoxOutline":           ArrowUpLeftBoxOutline,
+	"arrowUpLeftBoxSharp":             ArrowUpLeftBoxSharp,
 	"arrowUpOutline":                  ArrowUpOutline,
+	"arrowUpRightBox":                 ArrowUpRightBox,
+	"arrowUpRightBoxOutline":          ArrowUpRightBoxOutline,
+	"arrowUpRightBoxSharp":            ArrowUpRightBoxSharp,
 	"arrowUpSharp":                    ArrowUpSharp,
 	"asterisk":                        Asterisk,
 	"at":                              At,
@@ -208,6 +220,9 @@ var IconLookup = map[string]IonIconFn{
 	"bicycle":                         Bicycle,
 	"bicycleOutline":                  BicycleOutline,
 	"bicycleSharp":                    BicycleSharp,
+	"binoculars":                      Binoculars,
+	"binocularsOutline":               BinocularsOutline,
+	"binocularsSharp":                 BinocularsSharp,
 	"bluetooth":                       Bluetooth,
 	"bluetoothOutline":                BluetoothOutline,
 	"bluetoothSharp":                  BluetoothSharp,
@@ -1316,6 +1331,7 @@ var IconLookup = map[string]IonIconFn{
 	"logoAmplify":                     LogoAmplify,
 	"logoAndroid":                     LogoAndroid,
 	"logoAngular":                     LogoAngular,
+	"logoAppflow":                     LogoAppflow,
 	"logoApple":                       LogoApple,
 	"logoAppleAppstore":               LogoAppleAppstore,
 	"logoAppleAr":                     LogoAppleAr,
@@ -1387,6 +1403,7 @@ var IconLookup = map[string]IonIconFn{
 	"logoStencil":                     LogoStencil,
 	"logoTableau":                     LogoTableau,
 	"logoTiktok":                      LogoTiktok,
+	"logoTrapeze":                     LogoTrapeze,
 	"logoTumblr":                      LogoTumblr,
 	"logoTux":                         LogoTux,
 	"logoTwitch":                      LogoTwitch,
@@ -2866,10 +2883,58 @@ func ArrowDownCircleSharp(children ...ElementRenderer) *IonIcon {
 	}
 }
 
+func ArrowDownLeftBox(children ...ElementRenderer) *IonIcon {
+	return &IonIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" fill-rule="evenodd" d="M180.364 480H48a16.002 16.002 0 0 1-16-16V331.636c0-8.836 7.163-16 16-16s16 7.164 16 16v93.737l51.128-51.128a58.521 58.521 0 0 0 22.591 22.663L86.627 448h93.737c8.836 0 16 7.163 16 16s-7.164 16-16 16m-42.645-83.092a58.543 58.543 0 0 0 28.59 7.456h255.146A58.545 58.545 0 0 0 480 345.818V90.545A58.543 58.543 0 0 0 421.455 32H166.182a58.545 58.545 0 0 0-58.546 58.545v255.273c0 .808.06 1.602.176 2.378a58.544 58.544 0 0 0 7.316 26.049l169.558-169.559c6.249-6.248 16.379-6.248 22.628 0c6.248 6.249 6.248 16.379 0 22.628z" clip-rule="evenodd"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func ArrowDownLeftBoxOutline(children ...ElementRenderer) *IonIcon {
+	return &IonIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M123.636 269.236V90.546A42.545 42.545 0 0 1 166.182 48h255.273A42.546 42.546 0 0 1 464 90.545v255.273a42.542 42.542 0 0 1-42.545 42.546H242.764M48 331.636V464h132.364M296 216L48 464"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func ArrowDownLeftBoxSharp(children ...ElementRenderer) *IonIcon {
+	return &IonIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" fill-rule="evenodd" d="M32 480V315.636h32v109.737l43.636-43.637v22.628h22.628L86.627 448h109.737v32zm286.628-264L130.264 404.364H480V32H107.636v349.736L296 193.373z" clip-rule="evenodd"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func ArrowDownOutline(children ...ElementRenderer) *IonIcon {
 	return &IonIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="48" d="m112 268l144 144l144-144M256 392V100"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func ArrowDownRightBox(children ...ElementRenderer) *IonIcon {
+	return &IonIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" fill-rule="evenodd" d="M480 331.636V464c0 4.243-1.686 8.313-4.686 11.314A16.004 16.004 0 0 1 464 480H331.636c-8.836 0-16-7.163-16-16s7.164-16 16-16h93.737l-51.128-51.128a58.521 58.521 0 0 0 22.663-22.591L448 425.373v-93.737c0-8.836 7.163-16 16-16s16 7.164 16 16m-83.092 42.645a58.543 58.543 0 0 0 7.456-28.59V90.546A58.547 58.547 0 0 0 345.818 32H90.545A58.546 58.546 0 0 0 32 90.546v255.272a58.545 58.545 0 0 0 58.545 58.546h255.273c.808 0 1.602-.06 2.378-.176a58.544 58.544 0 0 0 26.049-7.316L204.686 227.314c-6.248-6.249-6.248-16.379 0-22.628c6.249-6.248 16.379-6.248 22.628 0z" clip-rule="evenodd"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func ArrowDownRightBoxOutline(children ...ElementRenderer) *IonIcon {
+	return &IonIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M269.236 388.364H90.546A42.546 42.546 0 0 1 48 345.818V90.545A42.545 42.545 0 0 1 90.545 48h255.273a42.543 42.543 0 0 1 42.546 42.546v178.69M331.636 464H464V331.636M216 216l248 248"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func ArrowDownRightBoxSharp(children ...ElementRenderer) *IonIcon {
+	return &IonIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" fill-rule="evenodd" d="M480 480H315.636v-32h109.737l-43.637-43.636h22.628v-22.628L448 425.372V315.636h32zM216 193.372l188.364 188.364V32H32v372.364h349.736L193.373 216z" clip-rule="evenodd"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -3218,10 +3283,58 @@ func ArrowUpCircleSharp(children ...ElementRenderer) *IonIcon {
 	}
 }
 
+func ArrowUpLeftBox(children ...ElementRenderer) *IonIcon {
+	return &IonIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" fill-rule="evenodd" d="M32 180.364V48a16 16 0 0 1 16-16h132.364c8.836 0 16 7.163 16 16s-7.164 16-16 16H86.627l51.128 51.128a58.521 58.521 0 0 0-22.663 22.591L64 86.627v93.737c0 8.836-7.163 16-16 16s-16-7.164-16-16m83.092-42.645a58.543 58.543 0 0 0-7.456 28.59v255.146A58.545 58.545 0 0 0 166.182 480h255.273a58.541 58.541 0 0 0 41.397-17.148A58.541 58.541 0 0 0 480 421.455V166.182a58.543 58.543 0 0 0-58.545-58.546H166.182c-.808 0-1.602.06-2.378.176a58.544 58.544 0 0 0-26.049 7.316l169.559 169.558c6.248 6.249 6.248 16.379 0 22.628c-6.249 6.248-16.379 6.248-22.628 0z" clip-rule="evenodd"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func ArrowUpLeftBoxOutline(children ...ElementRenderer) *IonIcon {
+	return &IonIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M242.764 123.636h178.691A42.547 42.547 0 0 1 464 166.182v255.273A42.546 42.546 0 0 1 421.455 464H166.182a42.542 42.542 0 0 1-42.546-42.545V242.764M180.364 48H48v132.364M296 296L48 48"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func ArrowUpLeftBoxSharp(children ...ElementRenderer) *IonIcon {
+	return &IonIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" fill-rule="evenodd" d="M32 32h164.364v32H86.627l43.637 43.636h-22.628v22.628L64 86.627v109.737H32zm264 286.627L107.636 130.264V480H480V107.636H130.264L318.628 296z" clip-rule="evenodd"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func ArrowUpOutline(children ...ElementRenderer) *IonIcon {
 	return &IonIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="48" d="m112 244l144-144l144 144M256 120v292"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func ArrowUpRightBox(children ...ElementRenderer) *IonIcon {
+	return &IonIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" fill-rule="evenodd" d="M331.636 32H464a16.002 16.002 0 0 1 16 16v132.364c0 8.836-7.163 16-16 16s-16-7.164-16-16V86.627l-51.128 51.128a58.521 58.521 0 0 0-22.591-22.663L425.373 64h-93.737c-8.836 0-16-7.163-16-16s7.164-16 16-16m42.645 83.092a58.543 58.543 0 0 0-28.59-7.456H90.546A58.547 58.547 0 0 0 32 166.182v255.273A58.543 58.543 0 0 0 90.546 480h255.272a58.543 58.543 0 0 0 58.546-58.545V166.182c0-.808-.06-1.602-.176-2.378a58.544 58.544 0 0 0-7.316-26.049L227.314 307.314c-6.249 6.248-16.379 6.248-22.628 0c-6.248-6.249-6.248-16.379 0-22.628z" clip-rule="evenodd"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func ArrowUpRightBoxOutline(children ...ElementRenderer) *IonIcon {
+	return &IonIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M388.364 242.764v178.691A42.547 42.547 0 0 1 345.818 464H90.546A42.544 42.544 0 0 1 48 421.455V166.182a42.543 42.543 0 0 1 42.546-42.546h178.69M464 180.364V48H331.636M216 296L464 48"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func ArrowUpRightBoxSharp(children ...ElementRenderer) *IonIcon {
+	return &IonIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" fill-rule="evenodd" d="M480 32v164.364h-32V86.627l-43.636 43.637v-22.628h-22.628L425.373 64H315.636V32zM193.373 296l188.363-188.364H32V480h372.364V130.264L216 318.627z" clip-rule="evenodd"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -3878,6 +3991,30 @@ func BicycleSharp(children ...ElementRenderer) *IonIcon {
 	return &IonIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="currentColor" d="m320 192l-29.5-60.1C284.32 118 284.32 118 264 118c-13.26 0-14.76 0-23 7.3l-71.7 69.1c-8.3 8.45-9.3 9.45-9.3 26.6c0 12.67 3.78 14.61 18.51 22.9L240 278v90h32V254s-29-17-48.3-30l48.9-51.5c18.7 28.5 27.3 51.5 38 51.5H384v-32Z"/><path fill="currentColor" d="M388 448a92 92 0 1 1 92-92a92.1 92.1 0 0 1-92 92m0-152a60 60 0 1 0 60 60a60.07 60.07 0 0 0-60-60M124 448a92 92 0 1 1 92-92a92.1 92.1 0 0 1-92 92m0-152a60 60 0 1 0 60 60a60.07 60.07 0 0 0-60-60m196-168a31.89 31.89 0 0 0 32-32.1A31.55 31.55 0 0 0 320.2 64a32 32 0 1 0-.2 64"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func Binoculars(children ...ElementRenderer) *IonIcon {
+	return &IonIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" fill-rule="evenodd" d="M114.917 82.831C126.817 70.758 142.711 64 164 64c18.436 0 33.934 7.239 44.611 19.607C219.057 95.707 224 111.638 224 128v34.809c8.45-1.583 19.147-2.809 32-2.809c12.853 0 23.55 1.226 32 2.809V128c0-16.362 4.943-32.293 15.389-44.393C314.066 71.239 329.564 64 348 64c21.289 0 37.183 6.758 49.083 18.831c11.072 11.233 17.546 26.036 22.792 39.275l.636 1.672l68.207 181.915s2.59 7.307 2.915 8.392A103.992 103.992 0 0 1 496 344c0 57.438-46.562 104-104 104s-104-46.562-104-104v-60.461l-.04-.01C281.089 281.825 270.382 280 256 280c-14.382 0-25.089 1.825-31.96 3.529l-.04.01V344c0 57.438-46.562 104-104 104S16 401.438 16 344c0-10.399 1.526-20.441 4.367-29.916c.152-.692.352-1.383.602-2.068a155.184 155.184 0 0 1 2.314-6.324l68.842-183.586c5.246-13.239 11.721-28.042 22.792-39.275M320 343.905c.051-39.721 32.267-71.905 72-71.905c30.372 0 56.352 18.806 66.93 45.408l1.358 3.71A71.916 71.916 0 0 1 464 344c0 39.764-32.236 72-72 72c-39.751 0-71.978-32.214-72-71.96V344m-200-72c-30.371 0-56.35 18.805-66.93 45.406l-1.358 3.714A71.923 71.923 0 0 0 48 344c0 39.764 32.236 72 72 72s72-32.236 72-72s-32.236-72-72-72" clip-rule="evenodd"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func BinocularsOutline(children ...ElementRenderer) *IonIcon {
+	return &IonIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"><circle cx="392" cy="344" r="88"/><circle cx="120" cy="344" r="88"/><path d="M208 344V128c0-26.5-16-48-44-48c-35 0-46.5 21.5-57 48c0 0-48.5 127.833-71 189.5M208 184s16.5-8 48-8s48 8 48 8m-96 88s16.5-8 48-8s48 8 48 8m0 72V128c0-26.5 16-48 44-48c35 0 46.5 21.5 57 48c0 0 48.5 127.833 71 189.5"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func BinocularsSharp(children ...ElementRenderer) *IonIcon {
+	return &IonIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" fill-rule="evenodd" d="M164 64c-21.289 0-37.183 6.758-49.083 18.831c-11.071 11.233-17.546 26.036-22.792 39.275L23.283 305.692a155.028 155.028 0 0 0-2.314 6.324c-.25.685-.45 1.376-.602 2.068A104.014 104.014 0 0 0 16 344c0 57.438 46.562 104 104 104s104-46.562 104-104v-60.461l.04-.01l63.96.01V344c0 57.438 46.562 104 104 104s104-46.562 104-104c0-10.399-1.526-20.441-4.367-29.915c-.325-1.085-2.915-8.392-2.915-8.392l-68.207-181.915l-.636-1.672c-5.246-13.239-11.72-28.042-22.792-39.275C385.183 70.758 369.289 64 348 64c-18.436 0-33.934 7.239-44.611 19.607C292.943 95.707 288 111.638 288 128v34.809h-64V128c0-16.362-4.943-32.293-15.389-44.393C197.934 71.239 182.436 64 164 64M56 344c0-35.346 28.654-64 64-64c35.346 0 64 28.654 64 64c0 35.346-28.654 64-64 64c-35.346 0-64-28.654-64-64m272 0c0-35.346 28.654-64 64-64c35.346 0 64 28.654 64 64c0 35.346-28.654 64-64 64c-35.346 0-64-28.654-64-64" clip-rule="evenodd"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -12746,6 +12883,14 @@ func LogoAngular(children ...ElementRenderer) *IonIcon {
 	}
 }
 
+func LogoAppflow(children ...ElementRenderer) *IonIcon {
+	return &IonIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M198.626 28.424L8 484.424h114.376L256 164.779l133.624 319.645H504l-190.626-456z"/><path fill="currentColor" d="M312 346.039c0 30.928-25.072 56-56 56s-56-25.072-56-56s25.072-56 56-56s56 25.072 56 56"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func LogoApple(children ...ElementRenderer) *IonIcon {
 	return &IonIcon{
 		SVGSVGElement: SVG_SVG(
@@ -12997,7 +13142,7 @@ func LogoGithub(children ...ElementRenderer) *IonIcon {
 func LogoGitlab(children ...ElementRenderer) *IonIcon {
 	return &IonIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<path fill="currentColor" d="m494.07 281.6l-25.18-78.08a11 11 0 0 0-.61-2.1l-50.5-156.94a20.08 20.08 0 0 0-19.17-13.82a19.77 19.77 0 0 0-18.95 13.94l-48.14 149.55h-152L131.34 44.59a19.76 19.76 0 0 0-18.86-13.94h-.11a20.15 20.15 0 0 0-19.12 14L42.7 201.73c0 .14-.11.26-.16.4l-25.63 79.48a29.15 29.15 0 0 0 10.44 32.46l221.44 162.41a11.25 11.25 0 0 0 13.38-.07l221.48-162.34a29.13 29.13 0 0 0 10.42-32.47m-331-64.51l61.73 191.76L76.63 217.09m209.64 191.8l59.19-183.84l2.55-8h86.52L300.47 390.44M398.8 59.31l43.37 134.83h-86.82M324.16 217l-43 133.58l-25.66 79.56L186.94 217M112.27 59.31l43.46 134.83H69M40.68 295.58a6.19 6.19 0 0 1-2.21-6.9l19-59l139.61 180.59m273.26-114.69L313.92 410.22l.52-.69L453.5 229.64l19 59a6.2 6.2 0 0 1-2.19 6.92"/>`),
+			Text(`<path fill="currentColor" d="m488.028 207.68l-.674-1.731l-65.335-171.154a17.07 17.07 0 0 0-6.723-8.129a17.445 17.445 0 0 0-19.995 1.08a17.568 17.568 0 0 0-5.799 8.83l-44.114 135.478H166.756L122.641 36.576a17.215 17.215 0 0 0-5.798-8.856a17.444 17.444 0 0 0-19.996-1.079a17.22 17.22 0 0 0-6.723 8.129l-65.46 171.078l-.649 1.731a122.213 122.213 0 0 0-3.308 77.122c7.259 25.388 22.543 47.718 43.548 63.625l.225.175l.6.427l99.526 74.814l49.238 37.407l29.993 22.73A20.118 20.118 0 0 0 256.034 488c4.405 0 8.689-1.447 12.197-4.121l29.993-22.73l49.238-37.407l100.126-75.266l.25-.2c20.958-15.91 36.207-38.217 43.454-63.57a122.26 122.26 0 0 0-3.264-77.026"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -13053,7 +13198,7 @@ func LogoInstagram(children ...ElementRenderer) *IonIcon {
 func LogoIonic(children ...ElementRenderer) *IonIcon {
 	return &IonIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<path fill="currentColor" d="M256 153.9A102.1 102.1 0 1 0 358.1 256A102.23 102.23 0 0 0 256 153.9"/><circle cx="402.59" cy="116.45" r="46.52" fill="currentColor"/><path fill="currentColor" d="m459.86 163.2l-1.95-4.28l-3.11 3.52a70 70 0 0 1-28.06 19.32l-3 1.1l1.22 2.93A181.43 181.43 0 0 1 439 256c0 100.92-82.1 183-183 183S73 356.92 73 256S155.08 73 256 73a180.94 180.94 0 0 1 78.43 17.7l2.87 1.3l1.25-2.92A70.19 70.19 0 0 1 359.21 62l3.67-2.93l-4.17-2.07A221.61 221.61 0 0 0 256 32C132.49 32 32 132.49 32 256s100.49 224 224 224s224-100.49 224-224a222.19 222.19 0 0 0-20.14-92.8"/>`),
+			Text(`<path fill="currentColor" d="M73.6 256c0-100.737 81.663-182.4 182.4-182.4c40.552 0 77.992 13.212 108.286 35.603c7.946-18.702 23.958-33.15 43.67-38.976C366.589 36.357 313.656 16 256 16C123.451 16 16 123.452 16 256s107.451 240 240 240c132.548 0 239.999-107.452 239.999-240c0-27.741-4.718-54.427-13.407-79.269c-11.824 15.985-30.428 26.649-51.564 27.742c4.795 16.319 7.371 33.605 7.371 51.527c0 100.737-81.663 182.4-182.399 182.4c-100.737 0-182.4-81.663-182.4-182.4"/><path fill="currentColor" d="M491.065 207.374a238.383 238.383 0 0 0-8.473-30.643c-11.823 15.984-30.428 26.649-51.564 27.742a181.577 181.577 0 0 1 6.719 35.964c22.259-2.737 41.5-15.226 53.318-33.063M256 361.001c57.853 0 105-47.057 105-105c0-57.854-47.057-105-105-105s-105 47.146-105 105c0 57.853 47.147 105 105 105M413.5 166c28.995 0 52.5-23.505 52.5-52.5S442.495 61 413.5 61S361 84.505 361 113.5s23.505 52.5 52.5 52.5"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -13314,6 +13459,14 @@ func LogoTiktok(children ...ElementRenderer) *IonIcon {
 	}
 }
 
+func LogoTrapeze(children ...ElementRenderer) *IonIcon {
+	return &IonIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="m311.05 189.26l.055-.093l64.98-110.618L257.923 8l-64.98 110.617l-.096.164L8 433.451L126.162 504l85.948-146.312c14.612 17.618 32.393 33.074 53.108 45.442l168.804 100.785L504 384.789L335.197 284.004c-32.599-19.463-43.396-61.862-24.147-94.744"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func LogoTumblr(children ...ElementRenderer) *IonIcon {
 	return &IonIcon{
 		SVGSVGElement: SVG_SVG(
@@ -13453,7 +13606,7 @@ func LogoXing(children ...ElementRenderer) *IonIcon {
 func LogoYahoo(children ...ElementRenderer) *IonIcon {
 	return &IonIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<path fill="currentColor" d="M410.32 37.13c-13.56 0-27-.93-39.12-5.13L256 218.67L140.8 32c-12.12 4.2-24.84 5.13-38.4 5.13c-13.32 0-26.52-1.05-38.4-5.13l153.6 248.15V480c12-4.08 25-5.13 38.4-5.13s26.4 1.05 38.4 5.13V280.5L448 32c-11.88 4-24.36 5.13-37.68 5.13"/>`),
+			Text(`<path fill="currentColor" d="M0 139.009h97.648l56.86 145.729l57.6-145.729h95.066L164.022 484H68.337l39.189-91.417L.003 139.009zM417.5 256H311l94.907-228L512 28.005zm-78.208 21.221c32.672 0 59.156 26.533 59.156 59.258c0 32.727-26.484 59.26-59.156 59.26c-32.667 0-59.146-26.533-59.146-59.26c0-32.725 26.483-59.258 59.146-59.258"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -21005,7 +21158,7 @@ func Waterdrop(children ...ElementRenderer) *IonIcon {
 func Wifi(children ...ElementRenderer) *IonIcon {
 	return &IonIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<path fill="currentColor" d="M346.65 304.3a136 136 0 0 0-180.71 0a21 21 0 1 0 27.91 31.38a94 94 0 0 1 124.89 0a21 21 0 0 0 27.91-31.4Z"/><path fill="currentColor" d="M256.28 183.7a221.47 221.47 0 0 0-151.8 59.92a21 21 0 1 0 28.68 30.67a180.28 180.28 0 0 1 246.24 0a21 21 0 1 0 28.68-30.67a221.47 221.47 0 0 0-151.8-59.92"/><path fill="currentColor" d="M462 175.86a309 309 0 0 0-411.44 0a21 21 0 1 0 28 31.29a267 267 0 0 1 355.43 0a21 21 0 0 0 28-31.31Z"/><circle cx="256.28" cy="393.41" r="32" fill="currentColor"/>`),
+			Text(`<path fill="currentColor" fill-rule="evenodd" d="M331.295 353.764c.131.181-.091-.13 0 0a45.63 45.63 0 0 0-1.039-1.365a63.784 63.784 0 0 0-3.618-4.17c-3.112-3.302-7.69-7.537-13.87-11.725C300.287 328.047 281.56 320 256 320c-25.56 0-44.287 8.047-56.768 16.504c-6.18 4.188-10.758 8.423-13.87 11.725a63.784 63.784 0 0 0-3.618 4.17c.264-.361-.43.544 0 0l-1.586 2.142a16 16 0 0 0 2.135 20.463l62.586 60.5c6.202 5.995 16.039 5.995 22.241 0l62.587-60.5a16.001 16.001 0 0 0 2.136-20.463z" clip-rule="evenodd"/><path fill="currentColor" fill-rule="evenodd" d="M421.086 269.862c-.135-.218-.596-.966-.812-1.3a71.882 71.882 0 0 0-1.81-2.639c-1.552-2.163-3.813-5.096-6.861-8.536c-6.099-6.88-15.362-15.802-28.417-24.637C356.915 214.969 315.967 198 256 198c-59.967 0-100.915 16.969-127.186 34.75c-13.055 8.835-22.318 17.757-28.417 24.637c-3.049 3.44-5.31 6.373-6.861 8.536a70.641 70.641 0 0 0-1.81 2.639c-.216.334-.392.612-.527.829l-.285.471a16 16 0 0 0 2.678 19.664l35.31 34a16.001 16.001 0 0 0 23.007-.84l.195-.209c.207-.219.565-.591 1.074-1.096a92.935 92.935 0 0 1 4.831-4.436c4.402-3.785 11.093-8.947 19.955-14.141C195.658 292.436 221.893 282 256 282s60.342 10.436 78.036 20.804c8.862 5.194 15.553 10.356 19.955 14.141a92.935 92.935 0 0 1 4.831 4.436a48.464 48.464 0 0 1 1.269 1.305l-.005-.006l-.013-.015m0 0l.026.029a16.001 16.001 0 0 0 22.999.832l35.31-34a16 16 0 0 0 2.678-19.664" clip-rule="evenodd"/><path fill="currentColor" d="M507.974 181.264c.343.459 1.181 1.629 1.181 1.629a16.001 16.001 0 0 1-2.029 20.606l-36.69 35.5a16 16 0 0 1-23.345-1.17l-.003-.003a68.347 68.347 0 0 0-.567-.647a108.106 108.106 0 0 0-2.197-2.379c-2.009-2.116-5.095-5.229-9.229-9.01c-8.275-7.569-20.69-17.764-36.997-27.981C365.499 177.384 317.58 157 256 157c-61.58 0-109.499 20.384-142.098 40.809c-16.307 10.217-28.722 20.412-36.997 27.981c-4.133 3.781-7.22 6.894-9.229 9.01a108.551 108.551 0 0 0-2.197 2.379c-.23.258-.39.442-.482.548l-.047.054l-.03.034l-.004.006l-.004.005l-.004.004a16 16 0 0 1-23.344 1.169l-36.69-35.5a16 16 0 0 1-2.03-20.606l.011-.016l.013-.017l.03-.043l.079-.113l.24-.337c.197-.274.466-.644.809-1.103c.686-.92 1.667-2.199 2.949-3.786c2.563-3.174 6.335-7.585 11.367-12.818c10.057-10.46 25.185-24.241 45.783-37.973C105.437 99.146 168.48 72 256 72s150.563 27.146 191.875 54.687c20.598 13.732 35.726 27.513 45.783 37.973c5.032 5.233 8.804 9.644 11.367 12.818a124.805 124.805 0 0 1 2.949 3.786"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -21013,7 +21166,7 @@ func Wifi(children ...ElementRenderer) *IonIcon {
 func WifiOutline(children ...ElementRenderer) *IonIcon {
 	return &IonIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M332.41 310.59a115 115 0 0 0-152.8 0m213.85-61.05a201.26 201.26 0 0 0-274.92 0"/><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M447.72 182.11a288 288 0 0 0-383.44 0"/><path fill="currentColor" d="M256 416a32 32 0 1 1 32-32a32 32 0 0 1-32 32"/>`),
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"><path d="M318.586 363.5L256 424l-62.586-60.5S212 336 256 336s62.586 27.5 62.586 27.5M407.31 278L372 312s-41-46-116-46s-116 46-116 46l-35.31-34S142.5 214 256 214s151.31 64 151.31 64"/><path d="m496 192l-36.69 35.5S386.5 141 256 141S52.69 227.5 52.69 227.5L16 192S88 88 256 88s240 104 240 104"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -21021,7 +21174,7 @@ func WifiOutline(children ...ElementRenderer) *IonIcon {
 func WifiSharp(children ...ElementRenderer) *IonIcon {
 	return &IonIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<path fill="none" stroke="currentColor" stroke-linecap="square" stroke-linejoin="round" stroke-width="42" d="M332.69 320a115 115 0 0 0-152.8 0m213.85-61a201.26 201.26 0 0 0-274.92 0"/><path fill="none" stroke="currentColor" stroke-linecap="square" stroke-linejoin="round" stroke-width="42" d="M448 191.52a288 288 0 0 0-383.44 0"/><path fill="currentColor" d="M300.67 384L256 433l-44.34-49a56.73 56.73 0 0 1 88.92 0Z"/>`),
+			Text(`<path fill="currentColor" fill-rule="evenodd" d="M337.78 362.819c-4.246-8.453-11.074-15.687-12.601-17.31c-3.05-3.241-7.535-7.397-13.589-11.505c-12.228-8.299-30.57-16.191-55.59-16.191c-25.02 0-43.362 7.892-55.59 16.191c-6.054 4.108-10.539 8.264-13.589 11.505a62.537 62.537 0 0 0-3.548 4.097c-.422.535-4.307 4.76-9.053 13.213L256 442z" clip-rule="evenodd"/><path fill="currentColor" fill-rule="evenodd" d="M425.25 279.287s-7.995-10.229-15.703-18.928c-5.983-6.753-18.1-17.71-30.901-26.377c-25.762-17.444-63.897-35.077-122.646-35.077s-96.884 17.633-122.646 35.077c-12.801 8.667-20.835 15.473-28.869 24.172c-8.034 8.7-17.735 21.133-17.735 21.133l56.634 54.591l11.037-12.388l.187-.201c.2-.211.549-.573 1.044-1.065a90.734 90.734 0 0 1 4.709-4.326c4.294-3.693 10.823-8.733 19.473-13.804C197.103 291.97 222.709 281.78 256 281.78s58.897 10.19 76.166 20.314c8.65 5.071 15.179 10.111 19.473 13.804a90.734 90.734 0 0 1 4.709 4.326c.495.492.844.854 1.044 1.065l.187.201l.009.01l11.028 12.378z" clip-rule="evenodd"/><path fill="currentColor" fill-rule="evenodd" d="M512 195.36s-4.5-8.36-11.85-16.485c-4.391-4.855-6.219-7.406-11.155-12.511c-9.868-10.207-24.703-23.648-44.901-37.04C403.583 102.463 341.778 76 256 76c-85.778 0-147.583 26.463-188.094 53.324c-20.198 13.392-35.033 26.833-44.9 37.04c-4.937 5.105-8.639 9.411-11.156 12.511c-1.259 1.55-1.784 2.241-2.898 3.7C5.254 187.42 0 195.36 0 195.36l58.06 55.873l11.004-13.001l.002-.004l.002-.002l.08-.092c.089-.102.245-.28.469-.529a99.983 99.983 0 0 1 2.144-2.309c1.962-2.056 4.979-5.083 9.02-8.76c8.092-7.361 20.236-17.28 36.189-27.221c31.891-19.872 78.774-39.709 139.03-39.709s107.139 19.837 139.03 39.709c15.953 9.941 28.097 19.86 36.189 27.221c4.041 3.677 7.058 6.704 9.02 8.76a99.983 99.983 0 0 1 2.144 2.309c.224.249.38.427.469.529l.036.042l.044.051l.002.001l.002.004l11.004 13.001z" clip-rule="evenodd"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }

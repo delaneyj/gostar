@@ -910,35 +910,6 @@ func (e *MathMLANNOTATION_XMLElement) DATASTAR_HEADERRemove() *MathMLANNOTATION_
 	return e
 }
 
-// Sets the URL for fetch requests
-
-func (e *MathMLANNOTATION_XMLElement) DATASTAR_FETCH_URL(expression string) *MathMLANNOTATION_XMLElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-
-	key := "data-fetch-url"
-
-	e.StringAttributes.Set(key, expression)
-	return e
-}
-
-func (e *MathMLANNOTATION_XMLElement) IfDATASTAR_FETCH_URL(condition bool, expression string) *MathMLANNOTATION_XMLElement {
-	if condition {
-		e.DATASTAR_FETCH_URL(expression)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_FETCH_URL from the element.
-func (e *MathMLANNOTATION_XMLElement) DATASTAR_FETCH_URLRemove() *MathMLANNOTATION_XMLElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-fetch-url")
-	return e
-}
-
 // Sets the indicator selector for fetch requests
 
 func (e *MathMLANNOTATION_XMLElement) DATASTAR_FETCH_INDICATOR(expression string) *MathMLANNOTATION_XMLElement {

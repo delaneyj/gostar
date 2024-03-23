@@ -1823,35 +1823,6 @@ func (e *QElement) DATASTAR_HEADERRemove() *QElement {
 	return e
 }
 
-// Sets the URL for fetch requests
-
-func (e *QElement) DATASTAR_FETCH_URL(expression string) *QElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-
-	key := "data-fetch-url"
-
-	e.StringAttributes.Set(key, expression)
-	return e
-}
-
-func (e *QElement) IfDATASTAR_FETCH_URL(condition bool, expression string) *QElement {
-	if condition {
-		e.DATASTAR_FETCH_URL(expression)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_FETCH_URL from the element.
-func (e *QElement) DATASTAR_FETCH_URLRemove() *QElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-fetch-url")
-	return e
-}
-
 // Sets the indicator selector for fetch requests
 
 func (e *QElement) DATASTAR_FETCH_INDICATOR(expression string) *QElement {

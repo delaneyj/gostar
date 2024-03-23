@@ -676,35 +676,6 @@ func (e *SVGSTYLEElement) DATASTAR_HEADERRemove() *SVGSTYLEElement {
 	return e
 }
 
-// Sets the URL for fetch requests
-
-func (e *SVGSTYLEElement) DATASTAR_FETCH_URL(expression string) *SVGSTYLEElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-
-	key := "data-fetch-url"
-
-	e.StringAttributes.Set(key, expression)
-	return e
-}
-
-func (e *SVGSTYLEElement) IfDATASTAR_FETCH_URL(condition bool, expression string) *SVGSTYLEElement {
-	if condition {
-		e.DATASTAR_FETCH_URL(expression)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_FETCH_URL from the element.
-func (e *SVGSTYLEElement) DATASTAR_FETCH_URLRemove() *SVGSTYLEElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-fetch-url")
-	return e
-}
-
 // Sets the indicator selector for fetch requests
 
 func (e *SVGSTYLEElement) DATASTAR_FETCH_INDICATOR(expression string) *SVGSTYLEElement {

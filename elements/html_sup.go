@@ -1781,35 +1781,6 @@ func (e *SUPElement) DATASTAR_HEADERRemove() *SUPElement {
 	return e
 }
 
-// Sets the URL for fetch requests
-
-func (e *SUPElement) DATASTAR_FETCH_URL(expression string) *SUPElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-
-	key := "data-fetch-url"
-
-	e.StringAttributes.Set(key, expression)
-	return e
-}
-
-func (e *SUPElement) IfDATASTAR_FETCH_URL(condition bool, expression string) *SUPElement {
-	if condition {
-		e.DATASTAR_FETCH_URL(expression)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_FETCH_URL from the element.
-func (e *SUPElement) DATASTAR_FETCH_URLRemove() *SUPElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-fetch-url")
-	return e
-}
-
 // Sets the indicator selector for fetch requests
 
 func (e *SUPElement) DATASTAR_FETCH_INDICATOR(expression string) *SUPElement {

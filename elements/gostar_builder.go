@@ -164,6 +164,9 @@ func (e *Element) Render(w io.Writer) error {
 	w.Write(closeBracket)
 
 	for _, d := range e.Descendants {
+		if d == nil {
+			continue
+		}
 		if err := d.Render(w); err != nil {
 			return err
 		}
@@ -357,6 +360,40 @@ func RangeI[T any](values []T, cb func(int, T) ElementRenderer) ElementRenderer 
 		children = append(children, cb(i, value))
 	}
 	return Group(children...)
+}
+
+func DynGroup(childrenFuncs ...ElementRendererFunc) *Grouper {
+	children := make([]ElementRenderer, 0, len(childrenFuncs))
+	for _, childFunc := range childrenFuncs {
+		child := childFunc()
+		if child != nil {
+			children = append(children, child)
+		}
+	}
+	return &Grouper{
+		Children: children,
+	}
+}
+
+func DynIf(condition bool, childrenFuncs ...ElementRendererFunc) ElementRenderer {
+	if condition {
+		children := make([]ElementRenderer, 0, len(childrenFuncs))
+		for _, childFunc := range childrenFuncs {
+			child := childFunc()
+			if child != nil {
+				children = append(children, child)
+			}
+		}
+		return Group(children...)
+	}
+	return nil
+}
+
+func DynTern(condition bool, trueChildren, falseChildren ElementRendererFunc) ElementRenderer {
+	if condition {
+		return trueChildren()
+	}
+	return falseChildren()
 }
 
 func NewElement(tag string, children ...ElementRenderer) *Element {

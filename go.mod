@@ -1,11 +1,12 @@
 module github.com/delaneyj/gostar
 
-go 1.21.5
+go 1.22.1
 
 require (
 	github.com/delaneyj/toolbelt v0.2.0
 	github.com/divan/num2words v0.0.0-20170904212200-57dba452f942
 	github.com/goccy/go-json v0.10.2
+	github.com/planetscale/vtprotobuf v0.6.0
 	github.com/samber/lo v1.38.1
 	github.com/stretchr/testify v1.8.4
 	github.com/valyala/bytebufferpool v1.0.0

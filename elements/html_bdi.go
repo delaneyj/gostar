@@ -1782,35 +1782,6 @@ func (e *BDIElement) DATASTAR_HEADERRemove() *BDIElement {
 	return e
 }
 
-// Sets the URL for fetch requests
-
-func (e *BDIElement) DATASTAR_FETCH_URL(expression string) *BDIElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-
-	key := "data-fetch-url"
-
-	e.StringAttributes.Set(key, expression)
-	return e
-}
-
-func (e *BDIElement) IfDATASTAR_FETCH_URL(condition bool, expression string) *BDIElement {
-	if condition {
-		e.DATASTAR_FETCH_URL(expression)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_FETCH_URL from the element.
-func (e *BDIElement) DATASTAR_FETCH_URLRemove() *BDIElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-fetch-url")
-	return e
-}
-
 // Sets the indicator selector for fetch requests
 
 func (e *BDIElement) DATASTAR_FETCH_INDICATOR(expression string) *BDIElement {

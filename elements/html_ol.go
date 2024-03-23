@@ -1877,35 +1877,6 @@ func (e *OLElement) DATASTAR_HEADERRemove() *OLElement {
 	return e
 }
 
-// Sets the URL for fetch requests
-
-func (e *OLElement) DATASTAR_FETCH_URL(expression string) *OLElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-
-	key := "data-fetch-url"
-
-	e.StringAttributes.Set(key, expression)
-	return e
-}
-
-func (e *OLElement) IfDATASTAR_FETCH_URL(condition bool, expression string) *OLElement {
-	if condition {
-		e.DATASTAR_FETCH_URL(expression)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_FETCH_URL from the element.
-func (e *OLElement) DATASTAR_FETCH_URLRemove() *OLElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-fetch-url")
-	return e
-}
-
 // Sets the indicator selector for fetch requests
 
 func (e *OLElement) DATASTAR_FETCH_INDICATOR(expression string) *OLElement {

@@ -1859,35 +1859,6 @@ func (e *OPTGROUPElement) DATASTAR_HEADERRemove() *OPTGROUPElement {
 	return e
 }
 
-// Sets the URL for fetch requests
-
-func (e *OPTGROUPElement) DATASTAR_FETCH_URL(expression string) *OPTGROUPElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-
-	key := "data-fetch-url"
-
-	e.StringAttributes.Set(key, expression)
-	return e
-}
-
-func (e *OPTGROUPElement) IfDATASTAR_FETCH_URL(condition bool, expression string) *OPTGROUPElement {
-	if condition {
-		e.DATASTAR_FETCH_URL(expression)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_FETCH_URL from the element.
-func (e *OPTGROUPElement) DATASTAR_FETCH_URLRemove() *OPTGROUPElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-fetch-url")
-	return e
-}
-
 // Sets the indicator selector for fetch requests
 
 func (e *OPTGROUPElement) DATASTAR_FETCH_INDICATOR(expression string) *OPTGROUPElement {

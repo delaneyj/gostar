@@ -43,6 +43,7 @@ var IconLookup = map[string]FormkitIconFn{
 	"close":         Close,
 	"color":         Color,
 	"compress":      Compress,
+	"currency":      Currency,
 	"date":          Date,
 	"datetime":      Datetime,
 	"discover":      Discover,
@@ -51,6 +52,7 @@ var IconLookup = map[string]FormkitIconFn{
 	"down":          Down,
 	"download":      Download,
 	"downloadcloud": Downloadcloud,
+	"draghandle":    Draghandle,
 	"email":         Email,
 	"ethereum":      Ethereum,
 	"euro":          Euro,
@@ -141,6 +143,7 @@ var IconLookup = map[string]FormkitIconFn{
 	"tools":         Tools,
 	"trash":         Trash,
 	"twitter":       Twitter,
+	"unit":          Unit,
 	"up":            Up,
 	"upload":        Upload,
 	"uploadcloud":   Uploadcloud,
@@ -361,6 +364,14 @@ func Compress(children ...ElementRenderer) *FormkitIcon {
 	}
 }
 
+func Currency(children ...ElementRenderer) *FormkitIcon {
+	return &FormkitIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M12.6 13.3v-1.2c-.7 0-1.4-.2-1.8-.5l.3-.8c.4.3 1.1.5 1.7.5c.9 0 1.4-.5 1.4-1.2s-.5-1.1-1.4-1.4c-1.2-.5-2-1-2-2.1c0-1 .7-1.8 1.8-1.9V3.5h.7v1.2c.7 0 1.2.2 1.6.4l-.3.8c-.3-.1-.7-.4-1.5-.4c-.9 0-1.3.6-1.3 1c0 .6.4.9 1.5 1.4c1.2.5 1.9 1.1 1.9 2.2c0 .9-.7 1.8-1.9 2v1.2z"/><path fill="currentColor" d="M25.9 16.8H0V0h25.9zM1 15.8h23.9V1H1z"/><path fill="currentColor" d="M7.9 15.1H2.1V1.7h5.8l-.3.7c-.8 1.8-1.2 3.9-1.2 6c0 2.2.4 4.2 1.2 6zm-4.8-1h3.2c-.7-1.7-1-3.7-1-5.7s.3-4 1-5.7H3.1zm20.7 1H18l.3-.7c.8-1.8 1.2-3.9 1.2-6c0-2.2-.4-4.2-1.2-6l-.3-.7h5.8zm-4.3-1h3.2V2.7h-3.2c.7 1.7 1 3.7 1 5.7s-.3 4-1 5.7"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func Date(children ...ElementRenderer) *FormkitIcon {
 	return &FormkitIcon{
 		SVGSVGElement: SVG_SVG(
@@ -421,6 +432,14 @@ func Downloadcloud(children ...ElementRenderer) *FormkitIcon {
 	return &FormkitIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="currentColor" d="M12 11c-.28 0-.5-.22-.5-.5s.22-.5.5-.5c1.65 0 3-1.35 3-3s-1.35-3-3-3h-1.05c-.18 0-.34-.09-.43-.25C9.88 2.65 8.76 2 7.51 2c-1.93 0-3.5 1.57-3.5 3.5c0 .28-.22.5-.5.5h-.5c-1.1 0-2 .9-2 2s.9 2 2 2c.28 0 .5.22.5.5s-.22.5-.5.5c-1.65 0-3-1.35-3-3s1.35-3 3-3h.03c.25-2.25 2.16-4 4.47-4c1.49 0 2.89.76 3.72 2h.78c2.21 0 4 1.79 4 4s-1.79 4-4 4Z"/><path fill="currentColor" d="M7.5 13a.47.47 0 0 1-.35-.15l-2.5-2.5c-.2-.2-.2-.51 0-.71c.2-.2.51-.2.71 0l2.15 2.15l2.15-2.15c.2-.2.51-.2.71 0s.2.51 0 .71l-2.5 2.5c-.1.1-.23.15-.35.15Z"/><path fill="currentColor" d="M7.5 12.75c-.28 0-.5-.22-.5-.5v-6c0-.28.22-.5.5-.5s.5.22.5.5v6c0 .28-.22.5-.5.5"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func Draghandle(children ...ElementRenderer) *FormkitIcon {
+	return &FormkitIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M0 72c0-4.4 3.6-8 8-8s8 3.6 8 8s-3.6 8-8 8s-8-3.6-8-8m0-32c0-4.4 3.6-8 8-8s8 3.6 8 8s-3.6 8-8 8s-8-3.6-8-8M0 8c0-4.4 3.6-8 8-8s8 3.6 8 8s-3.6 8-8 8s-8-3.6-8-8m30 64c0-4.4 3.6-8 8-8s8 3.6 8 8s-3.6 8-8 8s-8-3.6-8-8m0-32c0-4.4 3.6-8 8-8s8 3.6 8 8s-3.6 8-8 8s-8-3.6-8-8m0-32c0-4.4 3.6-8 8-8s8 3.6 8 8s-3.6 8-8 8s-8-3.6-8-8"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -1141,6 +1160,14 @@ func Twitter(children ...ElementRenderer) *FormkitIcon {
 	return &FormkitIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="currentColor" d="M7 0c3.87 0 7 3.13 7 7s-3.13 7-7 7s-7-3.13-7-7s3.13-7 7-7M5.72 10.69c3.1 0 4.8-2.57 4.8-4.8v-.22c.33-.24.62-.54.84-.88c-.3.13-.63.22-.97.27c.35-.21.62-.54.74-.93c-.33.19-.69.33-1.07.41c-.31-.33-.75-.53-1.23-.53c-.93 0-1.69.76-1.69 1.69c0 .13.01.26.05.38c-1.4-.07-2.65-.74-3.48-1.76c-.14.25-.23.54-.23.85c0 .58.3 1.1.75 1.4c-.28 0-.54-.08-.76-.21v.02c0 .82.58 1.5 1.35 1.66c-.14.04-.29.06-.44.06c-.11 0-.21-.01-.32-.03c.21.67.84 1.16 1.57 1.17c-.58.45-1.31.72-2.1.72c-.14 0-.27 0-.4-.02c.74.48 1.63.76 2.58.76" class="cls-1"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func Unit(children ...ElementRenderer) *FormkitIcon {
+	return &FormkitIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M0 17.5v8.2h23.3v-8.2zm22.3 7.2H1v-6.2h1V20h1v-1.6h1v3.1h1v-3.1h1.5V20h1v-1.6h1.2v3.1h1v-3.1h1.4V20h1v-1.6h1.4v3.1h1v-3.1h1.2V20h1v-1.6h1.5v3.1h1v-3.1h1.1V20h1v-1.6h1zm-3-22.1H13V0h-2.7v2.6H4L1.4 15.9H22zm-8-1.6h.7v1.6h-.7zM4.8 3.6h13.7l2.2 11.3H2.6z"/><path fill="currentColor" d="M11 6.9h-1L8.6 8.6c-.2.1-.3.3-.5.5V4.7h-.8v7h.9V9.9l.4-.5l1.7 2.3h1.1L9.2 8.9zm4.2.7c-.2-.4-.7-.8-1.5-.8c-1.1 0-2.2.9-2.2 2.5c0 1.3.9 2.3 2 2.3c.7 0 1.3-.4 1.5-.8v.5c0 1.2-.7 1.7-1.5 1.7c-.6 0-1.1-.2-1.4-.4l-.1.8c.4.3 1 .4 1.6.4c.6 0 1.3-.1 1.7-.6c.5-.4.7-1.1.7-2.2V6.9h-.8zm-.1 2c0 .1 0 .3-.1.5c-.2.6-.7.9-1.2.9c-.9 0-1.4-.8-1.4-1.7c0-1.1.6-1.8 1.4-1.8c.6 0 1.1.4 1.2.9v1.2z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }

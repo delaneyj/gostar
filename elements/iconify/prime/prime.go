@@ -18,266 +18,327 @@ type PrimeIcon struct {
 type PrimeIconFn func(children ...ElementRenderer) *PrimeIcon
 
 var IconLookup = map[string]PrimeIconFn{
-	"alignCenter":         AlignCenter,
-	"alignJustify":        AlignJustify,
-	"alignLeft":           AlignLeft,
-	"alignRight":          AlignRight,
-	"android":             Android,
-	"angleDoubleDown":     AngleDoubleDown,
-	"angleDoubleLeft":     AngleDoubleLeft,
-	"angleDoubleRight":    AngleDoubleRight,
-	"angleDoubleUp":       AngleDoubleUp,
-	"angleDown":           AngleDown,
-	"angleLeft":           AngleLeft,
-	"angleRight":          AngleRight,
-	"angleUp":             AngleUp,
-	"apple":               Apple,
-	"arrowCircleDown":     ArrowCircleDown,
-	"arrowCircleLeft":     ArrowCircleLeft,
-	"arrowCircleRight":    ArrowCircleRight,
-	"arrowCircleUp":       ArrowCircleUp,
-	"arrowDown":           ArrowDown,
-	"arrowDownLeft":       ArrowDownLeft,
-	"arrowDownRight":      ArrowDownRight,
-	"arrowLeft":           ArrowLeft,
-	"arrowRight":          ArrowRight,
-	"arrowRightArrowLeft": ArrowRightArrowLeft,
-	"arrowUp":             ArrowUp,
-	"arrowUpLeft":         ArrowUpLeft,
-	"arrowUpRight":        ArrowUpRight,
-	"arrowsAlt":           ArrowsAlt,
-	"arrowsH":             ArrowsH,
-	"arrowsV":             ArrowsV,
-	"at":                  At,
-	"backward":            Backward,
-	"ban":                 Ban,
-	"bars":                Bars,
-	"bell":                Bell,
-	"bitcoin":             Bitcoin,
-	"bolt":                Bolt,
-	"book":                Book,
-	"bookmark":            Bookmark,
-	"bookmarkFill":        BookmarkFill,
-	"box":                 Box,
-	"briefcase":           Briefcase,
-	"building":            Building,
-	"calculator":          Calculator,
-	"calendar":            Calendar,
-	"calendarMinus":       CalendarMinus,
-	"calendarPlus":        CalendarPlus,
-	"calendarTimes":       CalendarTimes,
-	"camera":              Camera,
-	"car":                 Car,
-	"caretDown":           CaretDown,
-	"caretLeft":           CaretLeft,
-	"caretRight":          CaretRight,
-	"caretUp":             CaretUp,
-	"cartPlus":            CartPlus,
-	"chartBar":            ChartBar,
-	"chartLine":           ChartLine,
-	"chartPie":            ChartPie,
-	"check":               Check,
-	"checkCircle":         CheckCircle,
-	"checkSquare":         CheckSquare,
-	"chevronCircleDown":   ChevronCircleDown,
-	"chevronCircleLeft":   ChevronCircleLeft,
-	"chevronCircleRight":  ChevronCircleRight,
-	"chevronCircleUp":     ChevronCircleUp,
-	"chevronDown":         ChevronDown,
-	"chevronLeft":         ChevronLeft,
-	"chevronRight":        ChevronRight,
-	"chevronUp":           ChevronUp,
-	"circle":              Circle,
-	"circleFill":          CircleFill,
-	"circleOff":           CircleOff,
-	"circleOn":            CircleOn,
-	"clock":               Clock,
-	"clone":               Clone,
-	"cloud":               Cloud,
-	"cloudDownload":       CloudDownload,
-	"cloudUpload":         CloudUpload,
-	"code":                Code,
-	"cog":                 Cog,
-	"comment":             Comment,
-	"comments":            Comments,
-	"compass":             Compass,
-	"copy":                Copy,
-	"creditCard":          CreditCard,
-	"database":            Database,
-	"deleteLeft":          DeleteLeft,
-	"desktop":             Desktop,
-	"directions":          Directions,
-	"directionsAlt":       DirectionsAlt,
-	"discord":             Discord,
-	"dollar":              Dollar,
-	"download":            Download,
-	"eject":               Eject,
-	"ellipsisH":           EllipsisH,
-	"ellipsisV":           EllipsisV,
-	"envelope":            Envelope,
-	"eraser":              Eraser,
-	"euro":                Euro,
-	"exclamationCircle":   ExclamationCircle,
-	"exclamationTriangle": ExclamationTriangle,
-	"externalLink":        ExternalLink,
-	"eye":                 Eye,
-	"eyeSlash":            EyeSlash,
-	"facebook":            Facebook,
-	"fastBackward":        FastBackward,
-	"fastForward":         FastForward,
-	"file":                File,
-	"fileEdit":            FileEdit,
-	"fileExcel":           FileExcel,
-	"fileExport":          FileExport,
-	"fileImport":          FileImport,
-	"fileO":               FileO,
-	"filePdf":             FilePdf,
-	"fileWord":            FileWord,
-	"filter":              Filter,
-	"filterFill":          FilterFill,
-	"filterSlash":         FilterSlash,
-	"flag":                Flag,
-	"flagFill":            FlagFill,
-	"folder":              Folder,
-	"folderOpen":          FolderOpen,
-	"forward":             Forward,
-	"gift":                Gift,
-	"github":              Github,
-	"globe":               Globe,
-	"google":              Google,
-	"hashtag":             Hashtag,
-	"heart":               Heart,
-	"heartFill":           HeartFill,
-	"history":             History,
-	"home":                Home,
-	"hourglass":           Hourglass,
-	"idCard":              IdCard,
-	"image":               Image,
-	"images":              Images,
-	"inbox":               Inbox,
-	"info":                Info,
-	"infoCircle":          InfoCircle,
-	"instagram":           Instagram,
-	"key":                 Key,
-	"language":            Language,
-	"link":                Link,
-	"linkedin":            Linkedin,
-	"list":                List,
-	"lock":                Lock,
-	"lockOpen":            LockOpen,
-	"map":                 Map,
-	"mapMarker":           MapMarker,
-	"megaphone":           Megaphone,
-	"microphone":          Microphone,
-	"microsoft":           Microsoft,
-	"minus":               Minus,
-	"minusCircle":         MinusCircle,
-	"mobile":              Mobile,
-	"moneyBill":           MoneyBill,
-	"moon":                Moon,
-	"palette":             Palette,
-	"paperclip":           Paperclip,
-	"pause":               Pause,
-	"paypal":              Paypal,
-	"pencil":              Pencil,
-	"percentage":          Percentage,
-	"phone":               Phone,
-	"play":                Play,
-	"plus":                Plus,
-	"plusCircle":          PlusCircle,
-	"pound":               Pound,
-	"powerOff":            PowerOff,
-	"prime":               Prime,
-	"print":               Print,
-	"qrcode":              Qrcode,
-	"question":            Question,
-	"questionCircle":      QuestionCircle,
-	"reddit":              Reddit,
-	"refresh":             Refresh,
-	"replay":              Replay,
-	"reply":               Reply,
-	"save":                Save,
-	"search":              Search,
-	"searchMinus":         SearchMinus,
-	"searchPlus":          SearchPlus,
-	"send":                Send,
-	"server":              Server,
-	"shareAlt":            ShareAlt,
-	"shield":              Shield,
-	"shoppingBag":         ShoppingBag,
-	"shoppingCart":        ShoppingCart,
-	"signIn":              SignIn,
-	"signOut":             SignOut,
-	"sitemap":             Sitemap,
-	"slack":               Slack,
-	"slidersH":            SlidersH,
-	"slidersV":            SlidersV,
-	"sort":                Sort,
-	"sortAlphaAltDown":    SortAlphaAltDown,
-	"sortAlphaAltUp":      SortAlphaAltUp,
-	"sortAlphaDown":       SortAlphaDown,
-	"sortAlphaUp":         SortAlphaUp,
-	"sortAlt":             SortAlt,
-	"sortAltSlash":        SortAltSlash,
-	"sortAmountDown":      SortAmountDown,
-	"sortAmountDownAlt":   SortAmountDownAlt,
-	"sortAmountUp":        SortAmountUp,
-	"sortAmountUpAlt":     SortAmountUpAlt,
-	"sortDown":            SortDown,
-	"sortNumericAltDown":  SortNumericAltDown,
-	"sortNumericAltUp":    SortNumericAltUp,
-	"sortNumericDown":     SortNumericDown,
-	"sortNumericUp":       SortNumericUp,
-	"sortUp":              SortUp,
-	"spinner":             Spinner,
-	"star":                Star,
-	"starFill":            StarFill,
-	"stepBackward":        StepBackward,
-	"stepBackwardAlt":     StepBackwardAlt,
-	"stepForward":         StepForward,
-	"stepForwardAlt":      StepForwardAlt,
-	"stop":                Stop,
-	"stopCircle":          StopCircle,
-	"stopwatch":           Stopwatch,
-	"sun":                 Sun,
-	"sync":                Sync,
-	"table":               Table,
-	"tablet":              Tablet,
-	"tag":                 Tag,
-	"tags":                Tags,
-	"telegram":            Telegram,
-	"thLarge":             ThLarge,
-	"thumbsDown":          ThumbsDown,
-	"thumbsDownFill":      ThumbsDownFill,
-	"thumbsUp":            ThumbsUp,
-	"thumbsUpFill":        ThumbsUpFill,
-	"ticket":              Ticket,
-	"times":               Times,
-	"timesCircle":         TimesCircle,
-	"trash":               Trash,
-	"truck":               Truck,
-	"twitter":             Twitter,
-	"undo":                Undo,
-	"unlock":              Unlock,
-	"upload":              Upload,
-	"user":                User,
-	"userEdit":            UserEdit,
-	"userMinus":           UserMinus,
-	"userPlus":            UserPlus,
-	"users":               Users,
-	"verified":            Verified,
-	"video":               Video,
-	"vimeo":               Vimeo,
-	"volumeDown":          VolumeDown,
-	"volumeOff":           VolumeOff,
-	"volumeUp":            VolumeUp,
-	"wallet":              Wallet,
-	"whatsapp":            Whatsapp,
-	"wifi":                Wifi,
-	"windowMaximize":      WindowMaximize,
-	"windowMinimize":      WindowMinimize,
-	"wrench":              Wrench,
-	"youtube":             Youtube,
+	"addressBook":                            AddressBook,
+	"alignCenter":                            AlignCenter,
+	"alignJustify":                           AlignJustify,
+	"alignLeft":                              AlignLeft,
+	"alignRight":                             AlignRight,
+	"android":                                Android,
+	"angleDoubleDown":                        AngleDoubleDown,
+	"angleDoubleLeft":                        AngleDoubleLeft,
+	"angleDoubleRight":                       AngleDoubleRight,
+	"angleDoubleUp":                          AngleDoubleUp,
+	"angleDown":                              AngleDown,
+	"angleLeft":                              AngleLeft,
+	"angleRight":                             AngleRight,
+	"angleUp":                                AngleUp,
+	"apple":                                  Apple,
+	"arrowCircleDown":                        ArrowCircleDown,
+	"arrowCircleLeft":                        ArrowCircleLeft,
+	"arrowCircleRight":                       ArrowCircleRight,
+	"arrowCircleUp":                          ArrowCircleUp,
+	"arrowDown":                              ArrowDown,
+	"arrowDownLeft":                          ArrowDownLeft,
+	"arrowDownLeftAndArrowUpRightToCenter":   ArrowDownLeftAndArrowUpRightToCenter,
+	"arrowDownRight":                         ArrowDownRight,
+	"arrowLeft":                              ArrowLeft,
+	"arrowRight":                             ArrowRight,
+	"arrowRightArrowLeft":                    ArrowRightArrowLeft,
+	"arrowUp":                                ArrowUp,
+	"arrowUpLeft":                            ArrowUpLeft,
+	"arrowUpRight":                           ArrowUpRight,
+	"arrowUpRightAndArrowDownLeftFromCenter": ArrowUpRightAndArrowDownLeftFromCenter,
+	"arrowsAlt":                              ArrowsAlt,
+	"arrowsH":                                ArrowsH,
+	"arrowsV":                                ArrowsV,
+	"asteriks":                               Asteriks,
+	"at":                                     At,
+	"backward":                               Backward,
+	"ban":                                    Ban,
+	"barcode":                                Barcode,
+	"bars":                                   Bars,
+	"bell":                                   Bell,
+	"bellSlash":                              BellSlash,
+	"bitcoin":                                Bitcoin,
+	"bolt":                                   Bolt,
+	"book":                                   Book,
+	"bookmark":                               Bookmark,
+	"bookmarkFill":                           BookmarkFill,
+	"box":                                    Box,
+	"briefcase":                              Briefcase,
+	"building":                               Building,
+	"buildingColumns":                        BuildingColumns,
+	"bullseye":                               Bullseye,
+	"calculator":                             Calculator,
+	"calendar":                               Calendar,
+	"calendarClock":                          CalendarClock,
+	"calendarMinus":                          CalendarMinus,
+	"calendarPlus":                           CalendarPlus,
+	"calendarTimes":                          CalendarTimes,
+	"camera":                                 Camera,
+	"car":                                    Car,
+	"caretDown":                              CaretDown,
+	"caretLeft":                              CaretLeft,
+	"caretRight":                             CaretRight,
+	"caretUp":                                CaretUp,
+	"cartArrowDown":                          CartArrowDown,
+	"cartMinus":                              CartMinus,
+	"cartPlus":                               CartPlus,
+	"chartBar":                               ChartBar,
+	"chartLine":                              ChartLine,
+	"chartPie":                               ChartPie,
+	"chartScatter":                           ChartScatter,
+	"check":                                  Check,
+	"checkCircle":                            CheckCircle,
+	"checkSquare":                            CheckSquare,
+	"chevronCircleDown":                      ChevronCircleDown,
+	"chevronCircleLeft":                      ChevronCircleLeft,
+	"chevronCircleRight":                     ChevronCircleRight,
+	"chevronCircleUp":                        ChevronCircleUp,
+	"chevronDown":                            ChevronDown,
+	"chevronLeft":                            ChevronLeft,
+	"chevronRight":                           ChevronRight,
+	"chevronUp":                              ChevronUp,
+	"circle":                                 Circle,
+	"circleFill":                             CircleFill,
+	"circleOff":                              CircleOff,
+	"circleOn":                               CircleOn,
+	"clipboard":                              Clipboard,
+	"clock":                                  Clock,
+	"clone":                                  Clone,
+	"cloud":                                  Cloud,
+	"cloudDownload":                          CloudDownload,
+	"cloudUpload":                            CloudUpload,
+	"code":                                   Code,
+	"cog":                                    Cog,
+	"comment":                                Comment,
+	"comments":                               Comments,
+	"compass":                                Compass,
+	"copy":                                   Copy,
+	"creditCard":                             CreditCard,
+	"crown":                                  Crown,
+	"database":                               Database,
+	"deleteLeft":                             DeleteLeft,
+	"desktop":                                Desktop,
+	"directions":                             Directions,
+	"directionsAlt":                          DirectionsAlt,
+	"discord":                                Discord,
+	"dollar":                                 Dollar,
+	"download":                               Download,
+	"eject":                                  Eject,
+	"ellipsisH":                              EllipsisH,
+	"ellipsisV":                              EllipsisV,
+	"envelope":                               Envelope,
+	"equals":                                 Equals,
+	"eraser":                                 Eraser,
+	"ethereum":                               Ethereum,
+	"euro":                                   Euro,
+	"exclamationCircle":                      ExclamationCircle,
+	"exclamationTriangle":                    ExclamationTriangle,
+	"expand":                                 Expand,
+	"externalLink":                           ExternalLink,
+	"eye":                                    Eye,
+	"eyeSlash":                               EyeSlash,
+	"faceSmile":                              FaceSmile,
+	"facebook":                               Facebook,
+	"fastBackward":                           FastBackward,
+	"fastForward":                            FastForward,
+	"file":                                   File,
+	"fileArrowUp":                            FileArrowUp,
+	"fileCheck":                              FileCheck,
+	"fileEdit":                               FileEdit,
+	"fileExcel":                              FileExcel,
+	"fileExport":                             FileExport,
+	"fileImport":                             FileImport,
+	"fileO":                                  FileO,
+	"filePdf":                                FilePdf,
+	"filePlus":                               FilePlus,
+	"fileWord":                               FileWord,
+	"filter":                                 Filter,
+	"filterFill":                             FilterFill,
+	"filterSlash":                            FilterSlash,
+	"flag":                                   Flag,
+	"flagFill":                               FlagFill,
+	"folder":                                 Folder,
+	"folderOpen":                             FolderOpen,
+	"folderPlus":                             FolderPlus,
+	"forward":                                Forward,
+	"gauge":                                  Gauge,
+	"gift":                                   Gift,
+	"github":                                 Github,
+	"globe":                                  Globe,
+	"google":                                 Google,
+	"graduationCap":                          GraduationCap,
+	"hammer":                                 Hammer,
+	"hashtag":                                Hashtag,
+	"headphones":                             Headphones,
+	"heart":                                  Heart,
+	"heartFill":                              HeartFill,
+	"history":                                History,
+	"home":                                   Home,
+	"hourglass":                              Hourglass,
+	"idCard":                                 IdCard,
+	"image":                                  Image,
+	"images":                                 Images,
+	"inbox":                                  Inbox,
+	"indianRupee":                            IndianRupee,
+	"info":                                   Info,
+	"infoCircle":                             InfoCircle,
+	"instagram":                              Instagram,
+	"key":                                    Key,
+	"language":                               Language,
+	"lightbulb":                              Lightbulb,
+	"link":                                   Link,
+	"linkedin":                               Linkedin,
+	"list":                                   List,
+	"listCheck":                              ListCheck,
+	"lock":                                   Lock,
+	"lockOpen":                               LockOpen,
+	"map":                                    Map,
+	"mapMarker":                              MapMarker,
+	"mars":                                   Mars,
+	"megaphone":                              Megaphone,
+	"microchip":                              Microchip,
+	"microchipAi":                            MicrochipAi,
+	"microphone":                             Microphone,
+	"microsoft":                              Microsoft,
+	"minus":                                  Minus,
+	"minusCircle":                            MinusCircle,
+	"mobile":                                 Mobile,
+	"moneyBill":                              MoneyBill,
+	"moon":                                   Moon,
+	"objectsColumn":                          ObjectsColumn,
+	"palette":                                Palette,
+	"paperclip":                              Paperclip,
+	"pause":                                  Pause,
+	"pauseCircle":                            PauseCircle,
+	"paypal":                                 Paypal,
+	"penToSquare":                            PenToSquare,
+	"pencil":                                 Pencil,
+	"percentage":                             Percentage,
+	"phone":                                  Phone,
+	"pinterest":                              Pinterest,
+	"play":                                   Play,
+	"playCircle":                             PlayCircle,
+	"plus":                                   Plus,
+	"plusCircle":                             PlusCircle,
+	"pound":                                  Pound,
+	"powerOff":                               PowerOff,
+	"prime":                                  Prime,
+	"print":                                  Print,
+	"qrcode":                                 Qrcode,
+	"question":                               Question,
+	"questionCircle":                         QuestionCircle,
+	"receipt":                                Receipt,
+	"reddit":                                 Reddit,
+	"refresh":                                Refresh,
+	"replay":                                 Replay,
+	"reply":                                  Reply,
+	"save":                                   Save,
+	"search":                                 Search,
+	"searchMinus":                            SearchMinus,
+	"searchPlus":                             SearchPlus,
+	"send":                                   Send,
+	"server":                                 Server,
+	"shareAlt":                               ShareAlt,
+	"shield":                                 Shield,
+	"shop":                                   Shop,
+	"shoppingBag":                            ShoppingBag,
+	"shoppingCart":                           ShoppingCart,
+	"signIn":                                 SignIn,
+	"signOut":                                SignOut,
+	"sitemap":                                Sitemap,
+	"slack":                                  Slack,
+	"slidersH":                               SlidersH,
+	"slidersV":                               SlidersV,
+	"sort":                                   Sort,
+	"sortAlphaAltDown":                       SortAlphaAltDown,
+	"sortAlphaAltUp":                         SortAlphaAltUp,
+	"sortAlphaDown":                          SortAlphaDown,
+	"sortAlphaUp":                            SortAlphaUp,
+	"sortAlt":                                SortAlt,
+	"sortAltSlash":                           SortAltSlash,
+	"sortAmountDown":                         SortAmountDown,
+	"sortAmountDownAlt":                      SortAmountDownAlt,
+	"sortAmountUp":                           SortAmountUp,
+	"sortAmountUpAlt":                        SortAmountUpAlt,
+	"sortDown":                               SortDown,
+	"sortDownFill":                           SortDownFill,
+	"sortNumericAltDown":                     SortNumericAltDown,
+	"sortNumericAltUp":                       SortNumericAltUp,
+	"sortNumericDown":                        SortNumericDown,
+	"sortNumericUp":                          SortNumericUp,
+	"sortUp":                                 SortUp,
+	"sortUpFill":                             SortUpFill,
+	"sparkles":                               Sparkles,
+	"spinner":                                Spinner,
+	"spinnerDotted":                          SpinnerDotted,
+	"star":                                   Star,
+	"starFill":                               StarFill,
+	"starHalf":                               StarHalf,
+	"starHalfFill":                           StarHalfFill,
+	"stepBackward":                           StepBackward,
+	"stepBackwardAlt":                        StepBackwardAlt,
+	"stepForward":                            StepForward,
+	"stepForwardAlt":                         StepForwardAlt,
+	"stop":                                   Stop,
+	"stopCircle":                             StopCircle,
+	"stopwatch":                              Stopwatch,
+	"sun":                                    Sun,
+	"sync":                                   Sync,
+	"table":                                  Table,
+	"tablet":                                 Tablet,
+	"tag":                                    Tag,
+	"tags":                                   Tags,
+	"telegram":                               Telegram,
+	"thLarge":                                ThLarge,
+	"thumbsDown":                             ThumbsDown,
+	"thumbsDownFill":                         ThumbsDownFill,
+	"thumbsUp":                               ThumbsUp,
+	"thumbsUpFill":                           ThumbsUpFill,
+	"thumbtack":                              Thumbtack,
+	"ticket":                                 Ticket,
+	"tiktok":                                 Tiktok,
+	"times":                                  Times,
+	"timesCircle":                            TimesCircle,
+	"trash":                                  Trash,
+	"trophy":                                 Trophy,
+	"truck":                                  Truck,
+	"turkishLira":                            TurkishLira,
+	"twitch":                                 Twitch,
+	"twitter":                                Twitter,
+	"undo":                                   Undo,
+	"unlock":                                 Unlock,
+	"upload":                                 Upload,
+	"user":                                   User,
+	"userEdit":                               UserEdit,
+	"userMinus":                              UserMinus,
+	"userPlus":                               UserPlus,
+	"users":                                  Users,
+	"venus":                                  Venus,
+	"verified":                               Verified,
+	"video":                                  Video,
+	"vimeo":                                  Vimeo,
+	"volumeDown":                             VolumeDown,
+	"volumeOff":                              VolumeOff,
+	"volumeUp":                               VolumeUp,
+	"wallet":                                 Wallet,
+	"warehouse":                              Warehouse,
+	"wavePulse":                              WavePulse,
+	"whatsapp":                               Whatsapp,
+	"wifi":                                   Wifi,
+	"windowMaximize":                         WindowMaximize,
+	"windowMinimize":                         WindowMinimize,
+	"wrench":                                 Wrench,
+	"youtube":                                Youtube,
+}
+
+func AddressBook(children ...ElementRenderer) *PrimeIcon {
+	return &PrimeIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" fill-rule="evenodd" d="M5.75 5c0-.107.1-.25.295-.25h9.41c.194 0 .295.143.295.25v14c0 .107-.1.25-.296.25H6.045c-.194 0-.295-.143-.295-.25zm.295-1.75c-.96 0-1.795.752-1.795 1.75v14c0 .998.836 1.75 1.795 1.75h9.41c.96 0 1.795-.752 1.795-1.75V5c0-.998-.836-1.75-1.796-1.75zM19.75 6a.75.75 0 0 0-1.5 0v2a.75.75 0 0 0 1.5 0zm-9 3.5a.5.5 0 1 0 0 1a.5.5 0 0 0 0-1m-2 .5a2 2 0 1 1 4 0a2 2 0 0 1-4 0m11 1a.75.75 0 0 0-1.5 0v2a.75.75 0 0 0 1.5 0zM19 15.25a.75.75 0 0 1 .75.75v2a.75.75 0 0 1-1.5 0v-2a.75.75 0 0 1 .75-.75m-10.5 0c0-.433.066-.68.136-.82a.514.514 0 0 1 .261-.253c.145-.069.36-.12.689-.149A14.39 14.39 0 0 1 10.75 14c.459 0 .837 0 1.164.028c.329.029.544.08.689.15c.123.058.2.13.26.251c.07.14.137.388.137.821a.75.75 0 0 0 1.5 0c0-.567-.084-1.07-.295-1.492a2.01 2.01 0 0 0-.958-.935c-.38-.181-.802-.255-1.205-.289c-.398-.034-.837-.034-1.272-.034h-.04c-.435 0-.874 0-1.272.034c-.403.034-.825.107-1.205.289a2.01 2.01 0 0 0-.958.935c-.211.423-.295.925-.295 1.492a.75.75 0 0 0 1.5 0" clip-rule="evenodd"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
 }
 
 func AlignCenter(children ...ElementRenderer) *PrimeIcon {
@@ -440,6 +501,14 @@ func ArrowDownLeft(children ...ElementRenderer) *PrimeIcon {
 	}
 }
 
+func ArrowDownLeftAndArrowUpRightToCenter(children ...ElementRenderer) *PrimeIcon {
+	return &PrimeIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" fill-rule="evenodd" d="M19 11.25a.75.75 0 0 0 0-1.5h-3.69l4.72-4.72a.75.75 0 0 0-1.06-1.06l-4.72 4.72V5a.75.75 0 0 0-1.5 0v5.5c0 .414.336.75.75.75zm-14 1.5a.75.75 0 0 0 0 1.5h3.69l-4.72 4.72a.75.75 0 1 0 1.06 1.06l4.72-4.72V19a.75.75 0 0 0 1.5 0v-5.5a.75.75 0 0 0-.75-.75z" clip-rule="evenodd"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func ArrowDownRight(children ...ElementRenderer) *PrimeIcon {
 	return &PrimeIcon{
 		SVGSVGElement: SVG_SVG(
@@ -496,6 +565,14 @@ func ArrowUpRight(children ...ElementRenderer) *PrimeIcon {
 	}
 }
 
+func ArrowUpRightAndArrowDownLeftFromCenter(children ...ElementRenderer) *PrimeIcon {
+	return &PrimeIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" fill-rule="evenodd" d="M14 3.75a.75.75 0 0 0 0 1.5h3.69l-4.72 4.72a.75.75 0 1 0 1.06 1.06l4.72-4.72V10a.75.75 0 0 0 1.5 0V4.5a.75.75 0 0 0-.75-.75zm-4 16.5a.75.75 0 0 0 0-1.5H6.31l4.72-4.72a.75.75 0 1 0-1.06-1.06l-4.72 4.72V14a.75.75 0 0 0-1.5 0v5.5c0 .414.336.75.75.75z" clip-rule="evenodd"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func ArrowsAlt(children ...ElementRenderer) *PrimeIcon {
 	return &PrimeIcon{
 		SVGSVGElement: SVG_SVG(
@@ -516,6 +593,14 @@ func ArrowsV(children ...ElementRenderer) *PrimeIcon {
 	return &PrimeIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="currentColor" d="M12.29 20.69a.78.78 0 0 0 .24-.16l4-4a.75.75 0 0 0-1.06-1.06l-2.72 2.72V5.81l2.72 2.72a.75.75 0 0 0 1.06-1.06l-4-4a.78.78 0 0 0-.24-.16a.73.73 0 0 0-.58 0a.78.78 0 0 0-.24.16l-4 4a.75.75 0 0 0 0 1.06a.75.75 0 0 0 1.06 0l2.72-2.72v12.38l-2.72-2.72a.75.75 0 0 0-1.06 0a.75.75 0 0 0 0 1.06l4 4a.78.78 0 0 0 .24.16a.73.73 0 0 0 .58 0"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func Asteriks(children ...ElementRenderer) *PrimeIcon {
+	return &PrimeIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" fill-rule="evenodd" d="M12.75 5a.75.75 0 0 0-1.5 0v5.701l-4.937-2.85a.75.75 0 1 0-.75 1.299L10.5 12l-4.937 2.85a.75.75 0 1 0 .75 1.3l4.937-2.851V19a.75.75 0 0 0 1.5 0v-5.701l4.937 2.85a.75.75 0 0 0 .75-1.299L13.5 12l4.937-2.85a.75.75 0 0 0-.75-1.3l-4.937 2.851z" clip-rule="evenodd"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -544,6 +629,14 @@ func Ban(children ...ElementRenderer) *PrimeIcon {
 	}
 }
 
+func Barcode(children ...ElementRenderer) *PrimeIcon {
+	return &PrimeIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" fill-rule="evenodd" d="M4 4a1 1 0 0 0-1 1v14a1 1 0 1 0 2 0V5a1 1 0 0 0-1-1m3 0a.5.5 0 0 0-.5.5v15a.5.5 0 0 0 1 0v-15A.5.5 0 0 0 7 4m2.5 0a.5.5 0 0 0-.5.5v15a.5.5 0 0 0 1 0v-15a.5.5 0 0 0-.5-.5m10 .75a.75.75 0 0 1 1.5 0v14.5a.75.75 0 0 1-1.5 0zm-7 .25a1 1 0 1 1 2 0v14a1 1 0 1 1-2 0zM17 4a1 1 0 0 0-1 1v14a1 1 0 1 0 2 0V5a1 1 0 0 0-1-1" clip-rule="evenodd"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func Bars(children ...ElementRenderer) *PrimeIcon {
 	return &PrimeIcon{
 		SVGSVGElement: SVG_SVG(
@@ -556,6 +649,14 @@ func Bell(children ...ElementRenderer) *PrimeIcon {
 	return &PrimeIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="currentColor" d="M20.53 16.25c-.09 0-2.11-.36-2.11-6.25c0-4.16-2.42-6.75-6.42-6.75S5.58 5.84 5.58 10c0 6-2.09 6.25-2.08 6.25a.75.75 0 0 0 0 1.5h4.83a3.74 3.74 0 0 0 7.34 0h4.84a.75.75 0 0 0 0-1.5Zm-8.53 3a2.24 2.24 0 0 1-2.11-1.5h4.22a2.24 2.24 0 0 1-2.11 1.5m-6.24-3c.72-1.09 1.32-3 1.32-6.25S8.88 4.75 12 4.75s4.92 1.91 4.92 5.25s.6 5.16 1.32 6.25Z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func BellSlash(children ...ElementRenderer) *PrimeIcon {
+	return &PrimeIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" fill-rule="evenodd" d="M12 3.25c-1.563 0-2.887.394-3.927 1.14c-.535.385-.958.943-1.242 1.38l-1.3-1.3A.75.75 0 0 0 4.47 5.53l2 2l10 10l2 2a.75.75 0 1 0 1.06-1.06l-.72-.72h1.69a.75.75 0 0 0 .026-1.5h-.002a.695.695 0 0 1-.18-.053c-.152-.062-.403-.206-.676-.544c-.554-.685-1.248-2.235-1.248-5.653c0-1.878-.507-3.574-1.607-4.81C15.7 3.94 14.065 3.25 12 3.25M8.055 6.641c-.049.077-.093.15-.134.22l9.39 9.389h.937c-.744-1.124-1.328-3.026-1.328-6.25c0-1.622-.438-2.926-1.228-3.814C14.914 5.31 13.715 4.75 12 4.75c-1.308 0-2.311.327-3.052.86c-.328.234-.643.637-.893 1.031M7.08 10a.75.75 0 1 0-1.5 0c0 1.404-.117 2.497-.296 3.346c-.342 1.631-.904 2.334-1.274 2.635a1.319 1.319 0 0 1-.44.247a.613.613 0 0 1-.093.022h-.004a.75.75 0 0 0 .027 1.5h4.825a3.746 3.746 0 0 0 3.675 3c1.349 0 2.53-.71 3.19-1.775a.75.75 0 0 0-1.275-.79A2.245 2.245 0 0 1 12 19.25a2.246 2.246 0 0 1-2.123-1.5H13a.75.75 0 0 0 0-1.5H5.752c.402-.609.759-1.447 1-2.596c.204-.97.328-2.17.328-3.654" clip-rule="evenodd"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -624,6 +725,22 @@ func Building(children ...ElementRenderer) *PrimeIcon {
 	}
 }
 
+func BuildingColumns(children ...ElementRenderer) *PrimeIcon {
+	return &PrimeIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" fill-rule="evenodd" d="M12.121 4.925a.25.25 0 0 0-.242 0l-8.515 4.73a.75.75 0 0 1-.728-1.31l8.514-4.73a1.75 1.75 0 0 1 1.7 0l8.514 4.73a.75.75 0 1 1-.728 1.31zM9.25 9a.75.75 0 0 1 .75-.75h4a.75.75 0 0 1 0 1.5h-4A.75.75 0 0 1 9.25 9M6 11.25a.75.75 0 0 1 .75.75v5a.75.75 0 0 1-1.5 0v-5a.75.75 0 0 1 .75-.75m4 0a.75.75 0 0 1 .75.75v5a.75.75 0 0 1-1.5 0v-5a.75.75 0 0 1 .75-.75m4 0a.75.75 0 0 1 .75.75v5a.75.75 0 0 1-1.5 0v-5a.75.75 0 0 1 .75-.75m4 0a.75.75 0 0 1 .75.75v5a.75.75 0 0 1-1.5 0v-5a.75.75 0 0 1 .75-.75M4.25 20a.75.75 0 0 1 .75-.75h14a.75.75 0 1 1 0 1.5H5a.75.75 0 0 1-.75-.75" clip-rule="evenodd"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func Bullseye(children ...ElementRenderer) *PrimeIcon {
+	return &PrimeIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" fill-rule="evenodd" d="M12 4.5a7.5 7.5 0 1 0 0 15a7.5 7.5 0 0 0 0-15M3 12a9 9 0 1 1 18 0a9 9 0 0 1-18 0m9-4.375a4.375 4.375 0 1 0 0 8.75a4.375 4.375 0 0 0 0-8.75M6.125 12a5.875 5.875 0 1 1 11.75 0a5.875 5.875 0 0 1-11.75 0m4.625 0a1.25 1.25 0 1 1 2.5 0a1.25 1.25 0 0 1-2.5 0M12 9.25a2.75 2.75 0 1 0 0 5.5a2.75 2.75 0 0 0 0-5.5" clip-rule="evenodd"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func Calculator(children ...ElementRenderer) *PrimeIcon {
 	return &PrimeIcon{
 		SVGSVGElement: SVG_SVG(
@@ -636,6 +753,14 @@ func Calendar(children ...ElementRenderer) *PrimeIcon {
 	return &PrimeIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="currentColor" d="M17 4.25h-1.25V3a.75.75 0 0 0-1.5 0v1.25h-4.5V3a.75.75 0 0 0-1.5 0v1.25H7A2.75 2.75 0 0 0 4.25 7v11A2.75 2.75 0 0 0 7 20.75h10A2.75 2.75 0 0 0 19.75 18V7A2.75 2.75 0 0 0 17 4.25M7 5.75h1.25V7a.75.75 0 0 0 1.5 0V5.75h4.5V7a.75.75 0 0 0 1.5 0V5.75H17A1.25 1.25 0 0 1 18.25 7v2.75H5.75V7A1.25 1.25 0 0 1 7 5.75m10 13.5H7A1.25 1.25 0 0 1 5.75 18v-6.75h12.5V18A1.25 1.25 0 0 1 17 19.25"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func CalendarClock(children ...ElementRenderer) *PrimeIcon {
+	return &PrimeIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" fill-rule="evenodd" d="M9 2.25a.75.75 0 0 1 .75.75v1.25h4.5V3a.75.75 0 0 1 1.5 0v1.25H17A2.75 2.75 0 0 1 19.75 7v3.5a.75.75 0 0 1-.75.75H5.75V18c0 .69.56 1.25 1.25 1.25h4a.75.75 0 0 1 0 1.5H7A2.75 2.75 0 0 1 4.25 18V7A2.75 2.75 0 0 1 7 4.25h1.25V3A.75.75 0 0 1 9 2.25m5.25 3.5V7a.75.75 0 0 0 1.5 0V5.75H17c.69 0 1.25.56 1.25 1.25v2.75H5.75V7c0-.69.56-1.25 1.25-1.25h1.25V7a.75.75 0 0 0 1.5 0V5.75zm2.5 8a3 3 0 1 0 0 6a3 3 0 0 0 0-6m-4.5 3a4.5 4.5 0 1 1 9 0a4.5 4.5 0 0 1-9 0m5-1.25a.75.75 0 0 0-1.5 0v2c0 .414.336.75.75.75h1a.75.75 0 0 0 0-1.5h-.25z" clip-rule="evenodd"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -712,6 +837,22 @@ func CaretUp(children ...ElementRenderer) *PrimeIcon {
 	}
 }
 
+func CartArrowDown(children ...ElementRenderer) *PrimeIcon {
+	return &PrimeIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" fill-rule="evenodd" d="M3.25 4A.75.75 0 0 1 4 3.25h2a.75.75 0 0 1 .738.616L8.626 14.25h8.788l1.858-7.432a.75.75 0 0 1 1.455.364l-2 8a.75.75 0 0 1-.727.568H8a.75.75 0 0 1-.738-.616L5.374 4.75H4A.75.75 0 0 1 3.25 4m5 14.25c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5s-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5m6.5 0c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5s-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5M13.75 5a.75.75 0 0 0-1.5 0v3.19l-.72-.72a.75.75 0 1 0-1.06 1.06l2 2a.75.75 0 0 0 1.06 0l2-2a.75.75 0 0 0-1.06-1.06l-.72.72z" clip-rule="evenodd"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func CartMinus(children ...ElementRenderer) *PrimeIcon {
+	return &PrimeIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" fill-rule="evenodd" d="M4 3.75a.75.75 0 0 0 0 1.5h1.374l1.888 10.384A.75.75 0 0 0 8 16.25h10a.75.75 0 0 0 .728-.568l2-8A.75.75 0 0 0 20 6.75H7.171l-.433-2.384A.75.75 0 0 0 6 3.75zm4.626 11l-1.182-6.5H19.04l-1.625 6.5zm2.514-4a.75.75 0 0 0 0 1.5h4a.75.75 0 0 0 0-1.5zm-1.39 6.5a1.5 1.5 0 1 0 0 3a1.5 1.5 0 0 0 0-3m5 1.5a1.5 1.5 0 1 1 3 0a1.5 1.5 0 0 1-3 0" clip-rule="evenodd"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func CartPlus(children ...ElementRenderer) *PrimeIcon {
 	return &PrimeIcon{
 		SVGSVGElement: SVG_SVG(
@@ -740,6 +881,14 @@ func ChartPie(children ...ElementRenderer) *PrimeIcon {
 	return &PrimeIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="currentColor" d="M13.25 4.79V4.5a.76.76 0 0 0-.75-.75a8.8 8.8 0 0 0-7.61 13.13a.75.75 0 0 0 .65.37a.74.74 0 0 0 .37-.1L6.2 17a7.74 7.74 0 1 0 7.05-12.2Zm-1.5.5v6.78l-5.89 3.38a7.28 7.28 0 0 1 5.89-10.16m.75 13.46a6.27 6.27 0 0 1-5-2.51l5.37-3.09a.73.73 0 0 0 .38-.65V6.3a6.25 6.25 0 0 1-.75 12.45"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func ChartScatter(children ...ElementRenderer) *PrimeIcon {
+	return &PrimeIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" fill-rule="evenodd" d="M4.5 3.75a.75.75 0 0 1 .75.75v14.25H19.5a.75.75 0 0 1 0 1.5h-15a.75.75 0 0 1-.75-.75v-15a.75.75 0 0 1 .75-.75M8 14a1 1 0 1 0 0-2a1 1 0 0 0 0 2m3.5-5a1 1 0 1 1-2 0a1 1 0 0 1 2 0m1.5 7a1 1 0 1 0 0-2a1 1 0 0 0 0 2m3.5-5a1 1 0 1 1-2 0a1 1 0 0 1 2 0M18 8a1 1 0 1 0 0-2a1 1 0 0 0 0 2" clip-rule="evenodd"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -864,6 +1013,14 @@ func CircleOn(children ...ElementRenderer) *PrimeIcon {
 	}
 }
 
+func Clipboard(children ...ElementRenderer) *PrimeIcon {
+	return &PrimeIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" fill-rule="evenodd" d="M11.223 4.75a.973.973 0 0 0-.973.973v1.465h3.5V5.723a.973.973 0 0 0-.973-.973zm3.911.223H16a2.75 2.75 0 0 1 2.75 2.75V18A2.75 2.75 0 0 1 16 20.75H8A2.75 2.75 0 0 1 5.25 18V7.723A2.75 2.75 0 0 1 8 4.973h.866a2.474 2.474 0 0 1 2.357-1.723h1.554c1.104 0 2.04.724 2.357 1.723m.116 1.5v1.365c0 .47-.38.85-.85.85H9.6a.85.85 0 0 1-.85-.85V6.473H8c-.69 0-1.25.56-1.25 1.25V18c0 .69.56 1.25 1.25 1.25h8c.69 0 1.25-.56 1.25-1.25V7.723c0-.69-.56-1.25-1.25-1.25z" clip-rule="evenodd"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func Clock(children ...ElementRenderer) *PrimeIcon {
 	return &PrimeIcon{
 		SVGSVGElement: SVG_SVG(
@@ -956,6 +1113,14 @@ func CreditCard(children ...ElementRenderer) *PrimeIcon {
 	return &PrimeIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="currentColor" d="M19 5.25H5A1.76 1.76 0 0 0 3.25 7v10A1.76 1.76 0 0 0 5 18.75h14A1.76 1.76 0 0 0 20.75 17V7A1.76 1.76 0 0 0 19 5.25M5 6.75h14a.25.25 0 0 1 .25.25v2.25H4.75V7A.25.25 0 0 1 5 6.75m14 10.5H5a.25.25 0 0 1-.25-.25v-6.25h14.5V17a.25.25 0 0 1-.25.25"/><path fill="currentColor" d="M9 13H7a1 1 0 0 0 0 2h2a1 1 0 0 0 0-2"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func Crown(children ...ElementRenderer) *PrimeIcon {
+	return &PrimeIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" fill-rule="evenodd" d="M10.193 9.556L12 6.665l1.807 2.891a.85.85 0 0 0 1.221.237l3.88-2.822l-1.49 7.826a.25.25 0 0 1-.245.203H6.828a.25.25 0 0 1-.246-.203L5.092 6.97l3.88 2.822a.85.85 0 0 0 1.22-.237m2.528-4.568a.85.85 0 0 0-1.442 0L9.29 8.17L4.646 4.792c-.623-.453-1.48.09-1.335.846l1.797 9.44a1.75 1.75 0 0 0 1.72 1.422h10.345a1.75 1.75 0 0 0 1.719-1.423l1.797-9.439c.145-.756-.711-1.3-1.334-.846L14.71 8.17zM6 18a.75.75 0 0 0 0 1.5h12a.75.75 0 1 0 0-1.5z" clip-rule="evenodd"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -1056,10 +1221,26 @@ func Envelope(children ...ElementRenderer) *PrimeIcon {
 	}
 }
 
+func Equals(children ...ElementRenderer) *PrimeIcon {
+	return &PrimeIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" fill-rule="evenodd" d="M4.25 9A.75.75 0 0 1 5 8.25h14a.75.75 0 0 1 0 1.5H5A.75.75 0 0 1 4.25 9m0 6a.75.75 0 0 1 .75-.75h14a.75.75 0 0 1 0 1.5H5a.75.75 0 0 1-.75-.75" clip-rule="evenodd"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func Eraser(children ...ElementRenderer) *PrimeIcon {
 	return &PrimeIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="currentColor" d="M20.25 9.84c0-.46-.18-.9-.51-1.23l-4.35-4.35c-.68-.68-1.78-.68-2.46 0l-8.67 8.67c-.33.33-.51.77-.51 1.23s.18.9.51 1.23l4.35 4.35c.34.34.78.51 1.23.51c.04 0 .09 0 .13-.01h8.04c.41 0 .75-.34.75-.75s-.34-.75-.75-.75h-5.95l7.67-7.67c.33-.33.51-.77.51-1.23ZM5.32 14.33c-.06-.06-.07-.13-.07-.17s0-.11.07-.17l3.8-3.8l4.69 4.69l-3.8 3.8c-.09.09-.24.09-.34 0l-4.35-4.36Zm13.36-4.31l-3.8 3.8l-4.69-4.69l3.8-3.8c.09-.09.24-.09.34 0l4.35 4.36c.06.06.07.13.07.17s0 .11-.07.17Z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func Ethereum(children ...ElementRenderer) *PrimeIcon {
+	return &PrimeIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M16.747 12.16L12 15.24l-4.75-3.08L12 3.5zM12 16.23l-4.75-3.08L12 20.5l4.75-7.351z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -1088,6 +1269,14 @@ func ExclamationTriangle(children ...ElementRenderer) *PrimeIcon {
 	}
 }
 
+func Expand(children ...ElementRenderer) *PrimeIcon {
+	return &PrimeIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" fill-rule="evenodd" d="M6 4.75c-.69 0-1.25.56-1.25 1.25v3a.75.75 0 0 1-1.5 0V6A2.75 2.75 0 0 1 6 3.25h3a.75.75 0 0 1 0 1.5zM14.25 4a.75.75 0 0 1 .75-.75h3A2.75 2.75 0 0 1 20.75 6v3a.75.75 0 0 1-1.5 0V6c0-.69-.56-1.25-1.25-1.25h-3a.75.75 0 0 1-.75-.75M4 14.25a.75.75 0 0 1 .75.75v3c0 .69.56 1.25 1.25 1.25h3a.75.75 0 0 1 0 1.5H6A2.75 2.75 0 0 1 3.25 18v-3a.75.75 0 0 1 .75-.75m16 0a.75.75 0 0 1 .75.75v3A2.75 2.75 0 0 1 18 20.75h-3a.75.75 0 0 1 0-1.5h3c.69 0 1.25-.56 1.25-1.25v-3a.75.75 0 0 1 .75-.75" clip-rule="evenodd"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func ExternalLink(children ...ElementRenderer) *PrimeIcon {
 	return &PrimeIcon{
 		SVGSVGElement: SVG_SVG(
@@ -1108,6 +1297,14 @@ func EyeSlash(children ...ElementRenderer) *PrimeIcon {
 	return &PrimeIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="currentColor" d="M20.69 11.7c-.12-.26-2.86-6.45-8.69-6.45a7.67 7.67 0 0 0-1.66.18a.75.75 0 0 0 .32 1.46A6.62 6.62 0 0 1 12 6.75c4.18 0 6.58 4.1 7.17 5.25a13.28 13.28 0 0 1-1.26 2a.75.75 0 0 0 .59 1.21a.75.75 0 0 0 .59-.29a13.42 13.42 0 0 0 1.6-2.59a.78.78 0 0 0 0-.63M6.53 5.47a.75.75 0 0 0-1.06 1.06l.92.92a13.16 13.16 0 0 0-3.08 4.26a.76.76 0 0 0 0 .59c.12.26 2.86 6.45 8.69 6.45a7.93 7.93 0 0 0 4.39-1.3l1.08 1.08a.75.75 0 0 0 1.06 0a.75.75 0 0 0 0-1.06Zm3.83 6l2.21 2.22a1.81 1.81 0 0 1-1.81-.4a1.74 1.74 0 0 1-.4-1.87ZM12 17.25c-4.19 0-6.58-4.11-7.17-5.25a12 12 0 0 1 2.62-3.49l1.79 1.79a3.24 3.24 0 0 0 4.46 4.46l1.61 1.61a6.5 6.5 0 0 1-3.31.88"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func FaceSmile(children ...ElementRenderer) *PrimeIcon {
+	return &PrimeIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" fill-rule="evenodd" d="M4.5 12a7.5 7.5 0 1 1 15 0a7.5 7.5 0 0 1-15 0M12 3a9 9 0 1 0 0 18a9 9 0 0 0 0-18m-2.75 7.5a1.25 1.25 0 1 0 0-2.5a1.25 1.25 0 0 0 0 2.5M16 9.25a1.25 1.25 0 1 1-2.5 0a1.25 1.25 0 0 1 2.5 0m-7.3 4.476l-.004-.008a.75.75 0 0 0-1.391.56L8 14c-.696.278-.696.279-.696.28l.001.002l.002.004l.004.011a1.685 1.685 0 0 0 .063.138a5.248 5.248 0 0 0 .97 1.345c.74.739 1.922 1.47 3.656 1.47c1.734 0 2.917-.731 3.655-1.47a5.22 5.22 0 0 0 .785-1.003a4.464 4.464 0 0 0 .249-.48l.004-.011l.002-.004v-.002h.001c0-.001 0-.002-.696-.28l.696.278a.75.75 0 0 0-1.39-.56l-.004.008l-.025.054a3.753 3.753 0 0 1-.682.94c-.512.511-1.33 1.03-2.595 1.03c-1.266 0-2.083-.519-2.595-1.03a3.754 3.754 0 0 1-.681-.94a1.477 1.477 0 0 1-.025-.054" clip-rule="evenodd"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -1140,6 +1337,22 @@ func File(children ...ElementRenderer) *PrimeIcon {
 	return &PrimeIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="currentColor" d="M18.53 9L13 3.47a.75.75 0 0 0-.53-.22H8A2.75 2.75 0 0 0 5.25 6v12A2.75 2.75 0 0 0 8 20.75h8A2.75 2.75 0 0 0 18.75 18V9.5a.75.75 0 0 0-.22-.5m-5.28-3.19l2.94 2.94h-2.94ZM16 19.25H8A1.25 1.25 0 0 1 6.75 18V6A1.25 1.25 0 0 1 8 4.75h3.75V9.5a.76.76 0 0 0 .75.75h4.75V18A1.25 1.25 0 0 1 16 19.25"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func FileArrowUp(children ...ElementRenderer) *PrimeIcon {
+	return &PrimeIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" fill-rule="evenodd" d="M5.25 6A2.756 2.756 0 0 1 8 3.25h4.5a.75.75 0 0 1 .53.22l5.5 5.5c.141.14.22.331.22.53V18A2.756 2.756 0 0 1 16 20.75H8A2.756 2.756 0 0 1 5.25 18zM8 4.75c-.686 0-1.25.564-1.25 1.25v12c0 .686.564 1.25 1.25 1.25h8c.686 0 1.25-.564 1.25-1.25v-7.75H12.5a.75.75 0 0 1-.75-.75V4.75zm5.25 1.06l2.94 2.94h-2.94zm-.72 6.16a.75.75 0 0 0-1.06 0l-2 2a.75.75 0 1 0 1.06 1.06l.72-.72v3.19a.75.75 0 0 0 1.5 0v-3.19l.72.72a.75.75 0 1 0 1.06-1.06z" clip-rule="evenodd"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func FileCheck(children ...ElementRenderer) *PrimeIcon {
+	return &PrimeIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" fill-rule="evenodd" d="M5.25 6A2.756 2.756 0 0 1 8 3.25h4.5a.75.75 0 0 1 .53.22l5.5 5.5c.141.14.22.331.22.53V18A2.756 2.756 0 0 1 16 20.75H8A2.756 2.756 0 0 1 5.25 18zM8 4.75c-.686 0-1.25.564-1.25 1.25v12c0 .686.564 1.25 1.25 1.25h8c.686 0 1.25-.564 1.25-1.25v-7.75H12.5a.75.75 0 0 1-.75-.75V4.75zm5.25 1.06l2.94 2.94h-2.94zm2.03 7.22a.75.75 0 1 0-1.06-1.06l-3.47 3.47l-.97-.97a.75.75 0 0 0-1.06 1.06l1.5 1.5a.75.75 0 0 0 1.06 0z" clip-rule="evenodd"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -1188,6 +1401,14 @@ func FilePdf(children ...ElementRenderer) *PrimeIcon {
 	return &PrimeIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="currentColor" d="M18.53 9L13 3.47a.75.75 0 0 0-.53-.22H8A2.75 2.75 0 0 0 5.25 6v12A2.75 2.75 0 0 0 8 20.75h8A2.75 2.75 0 0 0 18.75 18V9.5a.75.75 0 0 0-.22-.5m-5.28-3.19l2.94 2.94h-2.94ZM16 19.25H8A1.25 1.25 0 0 1 6.75 18V6A1.25 1.25 0 0 1 8 4.75h3.75V9.5a.76.76 0 0 0 .75.75h4.75V18A1.25 1.25 0 0 1 16 19.25"/><path fill="currentColor" d="M13.49 14.85a3.15 3.15 0 0 1-1.31-1.66a4.44 4.44 0 0 0 .19-2a.8.8 0 0 0-1.52-.19a5 5 0 0 0 .25 2.4A29 29 0 0 1 9.83 16c-.71.4-1.68 1-1.83 1.69c-.12.56.93 2 2.72-1.12a18.58 18.58 0 0 1 2.44-.72a4.72 4.72 0 0 0 2 .61a.82.82 0 0 0 .62-1.38c-.42-.43-1.67-.31-2.29-.23m-4.78 3a4.32 4.32 0 0 1 1.09-1.24c-.68 1.08-1.09 1.27-1.09 1.25Zm2.92-6.81c.26 0 .24 1.15.06 1.46a3.07 3.07 0 0 1-.06-1.45Zm-.87 4.88a14.76 14.76 0 0 0 .88-1.92a3.88 3.88 0 0 0 1.08 1.26a12.35 12.35 0 0 0-1.96.67Zm4.7-.18s-.18.22-1.33-.28c1.25-.08 1.46.21 1.33.29Z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func FilePlus(children ...ElementRenderer) *PrimeIcon {
+	return &PrimeIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" fill-rule="evenodd" d="M8 3.25A2.756 2.756 0 0 0 5.25 6v12A2.756 2.756 0 0 0 8 20.75h8A2.756 2.756 0 0 0 18.75 18V9.5a.75.75 0 0 0-.22-.53l-5.5-5.5a.75.75 0 0 0-.53-.22zM6.75 6c0-.686.564-1.25 1.25-1.25h3.75V9.5c0 .414.336.75.75.75h4.75V18c0 .686-.564 1.25-1.25 1.25H8c-.686 0-1.25-.564-1.25-1.25zm9.44 2.75l-2.94-2.94v2.94zM15.25 15a.75.75 0 0 1-.75.75h-1.75v1.75a.75.75 0 0 1-1.5 0v-1.75H9.5a.75.75 0 0 1 0-1.5h1.75V12.5a.75.75 0 0 1 1.5 0v1.75h1.75a.75.75 0 0 1 .75.75" clip-rule="evenodd"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -1256,10 +1477,26 @@ func FolderOpen(children ...ElementRenderer) *PrimeIcon {
 	}
 }
 
+func FolderPlus(children ...ElementRenderer) *PrimeIcon {
+	return &PrimeIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" fill-rule="evenodd" d="M5.25 7.5c0-.686.564-1.25 1.25-1.25h2.155l2.776 3.238A.75.75 0 0 0 12 9.75h5.5c.686 0 1.25.564 1.25 1.25v5.5c0 .686-.564 1.25-1.25 1.25h-11c-.686 0-1.25-.564-1.25-1.25zM6.5 4.75A2.756 2.756 0 0 0 3.75 7.5v9a2.756 2.756 0 0 0 2.75 2.75h11a2.756 2.756 0 0 0 2.75-2.75V11a2.756 2.756 0 0 0-2.75-2.75h-5.155L9.569 5.012A.75.75 0 0 0 9 4.75zm5.5 6a.75.75 0 0 1 .75.75v1.25H14a.75.75 0 0 1 0 1.5h-1.25v1.25a.75.75 0 0 1-1.5 0v-1.25H10a.75.75 0 0 1 0-1.5h1.25V11.5a.75.75 0 0 1 .75-.75" clip-rule="evenodd"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func Forward(children ...ElementRenderer) *PrimeIcon {
 	return &PrimeIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="currentColor" d="m20.51 11.45l-7.47-7a.756.756 0 0 0-.81-.14c-.27.12-.45.39-.45.69v6.27L4.51 4.45a.756.756 0 0 0-.81-.14c-.27.12-.45.39-.45.69v14c0 .3.18.57.45.69c.1.04.2.06.3.06c.19 0 .37-.07.51-.2l7.27-6.82V19c0 .3.18.57.45.69c.1.04.2.06.3.06c.19 0 .37-.07.51-.2l7.47-7c.15-.14.24-.34.24-.55s-.09-.41-.24-.55M4.75 17.27V6.73L10.37 12zm8.53 0V6.73L18.9 12z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func Gauge(children ...ElementRenderer) *PrimeIcon {
+	return &PrimeIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" fill-rule="evenodd" d="m7.15 8.073l1.383 1.4a.75.75 0 1 1-1.066 1.054l-1.455-1.47c-1.033 1.116-1.6 2.47-1.91 3.63c-.162.61-.25 1.154-.297 1.563H5.5a.75.75 0 0 1 0 1.5H3.75V17c0 .138.112.25.25.25h3.69l5.28-5.28a.75.75 0 1 1 1.06 1.06l-4.22 4.22H20a.25.25 0 0 0 .25-.25v-1.25H18.5a.75.75 0 0 1 0-1.5h1.695a10.885 10.885 0 0 0-.075-.533a10.313 10.313 0 0 0-.916-2.882a7.645 7.645 0 0 0-1.208-1.77L16.53 10.53a.75.75 0 1 1-1.06-1.06l1.39-1.39a7.016 7.016 0 0 0-.073-.05c-.991-.66-2.299-1.148-4.037-1.257V8.5a.75.75 0 0 1-1.5 0V6.773c-1.77.111-3.096.614-4.1 1.3M21 15h.75v-.038l-.003-.088a11.79 11.79 0 0 0-.148-1.403a11.81 11.81 0 0 0-1.053-3.306c-.607-1.214-1.53-2.451-2.927-3.383C16.217 5.847 14.381 5.25 12 5.25c-2.91 0-4.998.893-6.472 2.186c-1.664 1.46-2.476 3.366-2.875 4.865c-.2.755-.301 1.42-.352 1.9a10.102 10.102 0 0 0-.05.778l-.001.014v.006L3 15h-.75v2c0 .966.784 1.75 1.75 1.75h16A1.75 1.75 0 0 0 21.75 17v-2z" clip-rule="evenodd"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -1296,10 +1533,34 @@ func Google(children ...ElementRenderer) *PrimeIcon {
 	}
 }
 
+func GraduationCap(children ...ElementRenderer) *PrimeIcon {
+	return &PrimeIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" fill-rule="evenodd" d="M11.473 3.418a1.25 1.25 0 0 1 1.054 0l7.75 3.603c.99.46.955 1.879-.056 2.291l-.471.192v3.815c0 .475-.194.963-.609 1.293c-.402.32-1.141.852-2.156 1.344V20a.75.75 0 0 1-1.5 0v-3.437a11.18 11.18 0 0 1-3.485.561c-3.696 0-6.333-2.022-7.202-2.787a1.643 1.643 0 0 1-.548-1.24V9.504l-.471-.192c-1.011-.412-1.045-1.83-.055-2.29zM5.75 10.193l5.712 2.75c.337.162.73.164 1.069.007l2.954-1.374v3.396a9.773 9.773 0 0 1-3.485.652c-3.156 0-5.447-1.74-6.21-2.412c-.015-.013-.04-.046-.04-.115zm11.235 4.068a9.83 9.83 0 0 0 1.222-.823c.015-.011.043-.045.043-.119V10.22l-1.265.64zm-.744-4.705l2.448-1.239l.435-.178L12 4.827L4.876 8.14l.428.175l6.701 3.226l2.536-1.18l-2.889-1.51a.75.75 0 1 1 .696-1.33z" clip-rule="evenodd"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func Hammer(children ...ElementRenderer) *PrimeIcon {
+	return &PrimeIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" fill-rule="evenodd" d="M11.577 4.237a.25.25 0 0 0-.354 0L9.037 6.423a.25.25 0 0 0 0 .354l8.186 8.186a.25.25 0 0 0 .354 0l2.186-2.186a.25.25 0 0 0 0-.354zm-1.414-1.06a1.75 1.75 0 0 1 2.474 0l8.186 8.186a1.75 1.75 0 0 1 0 2.474l-2.186 2.186a1.75 1.75 0 0 1-2.474 0L13.8 13.661l-6.67 6.67a2.447 2.447 0 0 1-3.46-3.461l6.67-6.67l-2.363-2.363a1.75 1.75 0 0 1 0-2.474zM11.4 11.26l-6.67 6.67a.947.947 0 1 0 1.34 1.339l6.67-6.67z" clip-rule="evenodd"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func Hashtag(children ...ElementRenderer) *PrimeIcon {
 	return &PrimeIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="currentColor" d="M21 7.25h-3l.77-3.07a.75.75 0 0 0-1.46-.36l-.86 3.43H10l.77-3.07a.75.75 0 0 0-1.46-.36l-.9 3.43H5a.75.75 0 0 0 0 1.5h3l-1.63 6.5H3a.75.75 0 0 0 0 1.5h3l-.77 3.07a.75.75 0 0 0 1.46.36l.86-3.43H14l-.77 3.07a.75.75 0 0 0 1.46.36l.86-3.43H19a.75.75 0 0 0 0-1.5h-3l1.63-6.5H21a.75.75 0 0 0 0-1.5m-5 1.5l-1.63 6.5H8l1.63-6.5Z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func Headphones(children ...ElementRenderer) *PrimeIcon {
+	return &PrimeIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" fill-rule="evenodd" d="M5.799 12.525A1.75 1.75 0 0 1 7.25 14.25v3.174a1.75 1.75 0 0 1-2.23 1.683l-1.5-.429a1.75 1.75 0 0 1-1.27-1.682v-2.128c0-.663.374-1.269.967-1.565l1.054-.527c.016-.229.045-.53.096-.884a11.62 11.62 0 0 1 .82-2.943C5.662 7.87 6.386 6.752 7.5 5.903C8.622 5.048 10.096 4.5 12 4.5s3.378.548 4.501 1.403c1.114.849 1.838 1.966 2.311 3.046c.473 1.08.705 2.15.82 2.943c.052.353.081.656.097.884l1.054.527c.592.296.967.902.967 1.565v2.128a1.75 1.75 0 0 1-1.27 1.682l-1.5.429a1.75 1.75 0 0 1-2.23-1.683V14.25a1.75 1.75 0 0 1 1.451-1.725a8.685 8.685 0 0 0-.053-.417a10.126 10.126 0 0 0-.71-2.557c-.402-.92-.99-1.803-1.846-2.454C14.747 6.452 13.596 6 12 6s-2.747.452-3.592 1.097c-.856.651-1.444 1.534-1.846 2.454c-.402.92-.607 1.85-.71 2.557c-.022.151-.04.291-.053.417M18.823 14H18.5a.25.25 0 0 0-.25.25v3.174a.25.25 0 0 0 .319.24l1.5-.428a.25.25 0 0 0 .181-.24v-2.128a.25.25 0 0 0-.138-.224zM5.177 14l-1.289.645a.25.25 0 0 0-.138.223v2.128c0 .111.074.21.181.24l1.5.429a.25.25 0 0 0 .319-.24V14.25A.25.25 0 0 0 5.5 14z" clip-rule="evenodd"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -1376,6 +1637,14 @@ func Inbox(children ...ElementRenderer) *PrimeIcon {
 	}
 }
 
+func IndianRupee(children ...ElementRenderer) *PrimeIcon {
+	return &PrimeIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" fill-rule="evenodd" d="M5.25 3.5A.75.75 0 0 1 6 2.75h12a.75.75 0 0 1 0 1.5h-4.919a5.413 5.413 0 0 1 1.603 3.111H18a.75.75 0 0 1 0 1.5h-3.284c-.124 1.145-.592 2.264-1.419 3.144c-.987 1.052-2.44 1.717-4.297 1.717H7.93l7.076 6.475a.75.75 0 1 1-1.012 1.106l-8.5-7.778A.75.75 0 0 1 6 12.223h3c1.477 0 2.523-.518 3.203-1.243a3.921 3.921 0 0 0 1.002-2.118H6a.75.75 0 0 1 0-1.5h7.16a3.887 3.887 0 0 0-.957-1.868C11.523 4.77 10.477 4.25 9 4.25H6a.75.75 0 0 1-.75-.75" clip-rule="evenodd"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func Info(children ...ElementRenderer) *PrimeIcon {
 	return &PrimeIcon{
 		SVGSVGElement: SVG_SVG(
@@ -1416,6 +1685,14 @@ func Language(children ...ElementRenderer) *PrimeIcon {
 	}
 }
 
+func Lightbulb(children ...ElementRenderer) *PrimeIcon {
+	return &PrimeIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" fill-rule="evenodd" d="M12 4a5.25 5.25 0 0 0-3.049 9.525c.455.325.799.862.799 1.5v1.725c0 .138.112.25.25.25h4a.25.25 0 0 0 .25-.25v-1.726c0-.637.344-1.174.799-1.5A5.25 5.25 0 0 0 12 4M5.25 9.25a6.75 6.75 0 1 1 10.67 5.495c-.126.09-.17.202-.17.28v1.725A1.75 1.75 0 0 1 14 18.5h-4a1.75 1.75 0 0 1-1.75-1.75v-1.726c0-.077-.044-.189-.17-.279A6.743 6.743 0 0 1 5.25 9.25m3 11.5A.75.75 0 0 1 9 20h6a.75.75 0 0 1 0 1.5H9a.75.75 0 0 1-.75-.75" clip-rule="evenodd"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func Link(children ...ElementRenderer) *PrimeIcon {
 	return &PrimeIcon{
 		SVGSVGElement: SVG_SVG(
@@ -1436,6 +1713,14 @@ func List(children ...ElementRenderer) *PrimeIcon {
 	return &PrimeIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="currentColor" d="M19 12.75H8a.75.75 0 0 1 0-1.5h11a.75.75 0 0 1 0 1.5m0-4.5H8a.75.75 0 0 1 0-1.5h11a.75.75 0 0 1 0 1.5m0 9H8a.75.75 0 0 1 0-1.5h11a.75.75 0 0 1 0 1.5M5 8.5a1 1 0 0 1-.38-.07a1.46 1.46 0 0 1-.33-.22A1 1 0 0 1 4 7.5a1.05 1.05 0 0 1 .29-.71a.93.93 0 0 1 .33-.21a1 1 0 0 1 .76 0a1 1 0 0 1 .33.21A1.05 1.05 0 0 1 6 7.5a1 1 0 0 1-.29.71a1.46 1.46 0 0 1-.33.22A1 1 0 0 1 5 8.5M5 13a1 1 0 0 1-.38-.08a1.15 1.15 0 0 1-.33-.21A1 1 0 0 1 4 12a1.05 1.05 0 0 1 .29-.71a1.15 1.15 0 0 1 .33-.21A1 1 0 0 1 5.2 11l.18.06l.18.09a1.58 1.58 0 0 1 .15.12A1.05 1.05 0 0 1 6 12a1 1 0 0 1-1 1m0 4.5a1 1 0 0 1-.38-.07a1.46 1.46 0 0 1-.33-.22a1.15 1.15 0 0 1-.21-.33a.94.94 0 0 1 0-.76a1.15 1.15 0 0 1 .21-.33a1 1 0 0 1 1.09-.21a1 1 0 0 1 .33.21a1.15 1.15 0 0 1 .21.33a.94.94 0 0 1 0 .76a1.15 1.15 0 0 1-.21.33a1 1 0 0 1-.71.29"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func ListCheck(children ...ElementRenderer) *PrimeIcon {
+	return &PrimeIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" fill-rule="evenodd" d="M7.53 7.03a.75.75 0 0 0-1.06-1.06L5 7.44l-.47-.47a.75.75 0 0 0-1.06 1.06l1 1a.75.75 0 0 0 1.06 0zm2.47.22a.75.75 0 0 0 0 1.5h10a.75.75 0 0 0 0-1.5zm0 4a.75.75 0 0 0 0 1.5h10a.75.75 0 0 0 0-1.5zm10 6h-9.875a.75.75 0 0 1 0-1.5H20a.75.75 0 0 1 0 1.5M7.53 9.97a.75.75 0 0 1 0 1.06l-2 2a.75.75 0 0 1-1.06 0l-1-1a.75.75 0 1 1 1.06-1.06l.47.47l1.47-1.47a.75.75 0 0 1 1.06 0m0 6.06a.75.75 0 1 0-1.06-1.06L5 16.44l-.47-.47a.75.75 0 0 0-1.06 1.06l1 1a.75.75 0 0 0 1.06 0z" clip-rule="evenodd"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -1472,10 +1757,34 @@ func MapMarker(children ...ElementRenderer) *PrimeIcon {
 	}
 }
 
+func Mars(children ...ElementRenderer) *PrimeIcon {
+	return &PrimeIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" fill-rule="evenodd" d="M15.5 4.25a.75.75 0 0 1 .75-.75h3.5a.75.75 0 0 1 .75.75v3.5a.75.75 0 0 1-1.5 0V6.076L15.55 9.57a6.75 6.75 0 1 1-1.054-1.067L17.954 5H16.25a.75.75 0 0 1-.75-.75M10.25 8.5a5.25 5.25 0 1 0 0 10.5a5.25 5.25 0 0 0 0-10.5" clip-rule="evenodd"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func Megaphone(children ...ElementRenderer) *PrimeIcon {
 	return &PrimeIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="currentColor" d="M18.17 4.44h-1.34c-1.01 0-1.83.82-1.83 1.83v.45L5.5 8.76v-.51c0-.41-.34-.75-.75-.75S4 7.84 4 8.25v7c0 .41.34.75.75.75s.75-.34.75-.75v-.63l9.5 2.04v.45c0 1.01.82 1.83 1.83 1.83h1.34c1.01 0 1.83-.82 1.83-1.83V6.27c0-1.01-.82-1.83-1.83-1.83M5.5 13.08v-2.79L15 8.25v6.87zm13 4.03c0 .18-.15.33-.33.33h-1.34c-.18 0-.33-.15-.33-.33V6.27c0-.18.15-.33.33-.33h1.34c.18 0 .33.15.33.33zm-5.53.52a2.785 2.785 0 0 1-2.67 1.94c-1.54 0-2.8-1.24-2.8-2.75c0-.11 0-.23.02-.34c.05-.41.43-.7.84-.65c.41.05.7.42.65.83v.15c0 .69.58 1.25 1.3 1.25c.57 0 1.07-.36 1.24-.89c.12-.4.55-.62.94-.49c.4.12.61.55.49.94Z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func Microchip(children ...ElementRenderer) *PrimeIcon {
+	return &PrimeIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" fill-rule="evenodd" d="M8 3.25a.75.75 0 0 1 .75.75v1.25h2.5V4a.75.75 0 0 1 1.5 0v1.25h2.5V4a.75.75 0 0 1 1.5 0v1.25H17c.966 0 1.75.784 1.75 1.75v.25H20a.75.75 0 0 1 0 1.5h-1.25v2.5H20a.75.75 0 0 1 0 1.5h-1.25v2.5H20a.75.75 0 0 1 0 1.5h-1.25V17A1.75 1.75 0 0 1 17 18.75h-.25V20a.75.75 0 0 1-1.5 0v-1.25h-2.5V20a.75.75 0 0 1-1.5 0v-1.25h-2.5V20a.75.75 0 0 1-1.5 0v-1.25H7A1.75 1.75 0 0 1 5.25 17v-.25H4a.75.75 0 0 1 0-1.5h1.25v-2.5H4a.75.75 0 0 1 0-1.5h1.25v-2.5H4a.75.75 0 0 1 0-1.5h1.25V7c0-.966.783-1.75 1.75-1.75h.25V4A.75.75 0 0 1 8 3.25m-1 3.5a.25.25 0 0 0-.25.25v10c0 .138.112.25.25.25h10a.25.25 0 0 0 .25-.25V7a.25.25 0 0 0-.25-.25z" clip-rule="evenodd"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func MicrochipAi(children ...ElementRenderer) *PrimeIcon {
+	return &PrimeIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" fill-rule="evenodd" d="M8.75 4a.75.75 0 0 0-1.5 0v1.25H7A1.75 1.75 0 0 0 5.25 7v.25H4a.75.75 0 0 0 0 1.5h1.25v2.5H4a.75.75 0 0 0 0 1.5h1.25v2.5H4a.75.75 0 0 0 0 1.5h1.25V17c0 .966.784 1.75 1.75 1.75h.25V20a.75.75 0 0 0 1.5 0v-1.25h2.5V20a.75.75 0 0 0 1.5 0v-1.25h2.5V20a.75.75 0 0 0 1.5 0v-1.25H17A1.75 1.75 0 0 0 18.75 17v-.25H20a.75.75 0 0 0 0-1.5h-1.25v-2.5H20a.75.75 0 0 0 0-1.5h-1.25v-2.5H20a.75.75 0 0 0 0-1.5h-1.25V7A1.75 1.75 0 0 0 17 5.25h-.25V4a.75.75 0 0 0-1.5 0v1.25h-2.5V4a.75.75 0 0 0-1.5 0v1.25h-2.5zm-2 3A.25.25 0 0 1 7 6.75h10a.25.25 0 0 1 .25.25v10a.25.25 0 0 1-.25.25H7a.25.25 0 0 1-.25-.25V8zm5.049 7.753l-.275-.772H9.497l-.275.772a.75.75 0 0 1-1.413-.504l1.7-4.77l.003-.009l.004-.01c.152-.392.516-.711.994-.711c.479 0 .842.319.995.712l.003.009l.004.01l1.7 4.77a.75.75 0 0 1-1.413.503m-1.289-3.615l.479 1.343h-.958zm3.74-1.64a.75.75 0 0 1 1.5 0v5.003a.75.75 0 1 1-1.5 0z" clip-rule="evenodd"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -1536,6 +1845,14 @@ func Moon(children ...ElementRenderer) *PrimeIcon {
 	}
 }
 
+func ObjectsColumn(children ...ElementRenderer) *PrimeIcon {
+	return &PrimeIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" fill-rule="evenodd" d="M5 3.25A1.75 1.75 0 0 0 3.25 5v6c0 .966.784 1.75 1.75 1.75h4A1.75 1.75 0 0 0 10.75 11V5A1.75 1.75 0 0 0 9 3.25zM4.75 5A.25.25 0 0 1 5 4.75h4a.25.25 0 0 1 .25.25v6a.25.25 0 0 1-.25.25H5a.25.25 0 0 1-.25-.25zM5 15.25A1.75 1.75 0 0 0 3.25 17v2c0 .966.784 1.75 1.75 1.75h4A1.75 1.75 0 0 0 10.75 19v-2A1.75 1.75 0 0 0 9 15.25zM4.75 17a.25.25 0 0 1 .25-.25h4a.25.25 0 0 1 .25.25v2a.25.25 0 0 1-.25.25H5a.25.25 0 0 1-.25-.25zm8.5-4c0-.966.784-1.75 1.75-1.75h4c.966 0 1.75.784 1.75 1.75v6A1.75 1.75 0 0 1 19 20.75h-4A1.75 1.75 0 0 1 13.25 19zm1.75-.25a.25.25 0 0 0-.25.25v6c0 .138.112.25.25.25h4a.25.25 0 0 0 .25-.25v-6a.25.25 0 0 0-.25-.25zm0-9.5A1.75 1.75 0 0 0 13.25 5v2c0 .966.784 1.75 1.75 1.75h4A1.75 1.75 0 0 0 20.75 7V5A1.75 1.75 0 0 0 19 3.25zM14.75 5a.25.25 0 0 1 .25-.25h4a.25.25 0 0 1 .25.25v2a.25.25 0 0 1-.25.25h-4a.25.25 0 0 1-.25-.25z" clip-rule="evenodd"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func Palette(children ...ElementRenderer) *PrimeIcon {
 	return &PrimeIcon{
 		SVGSVGElement: SVG_SVG(
@@ -1560,10 +1877,26 @@ func Pause(children ...ElementRenderer) *PrimeIcon {
 	}
 }
 
+func PauseCircle(children ...ElementRenderer) *PrimeIcon {
+	return &PrimeIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" fill-rule="evenodd" d="M12 4.5a7.5 7.5 0 1 0 0 15a7.5 7.5 0 0 0 0-15M3 12a9 9 0 1 1 18 0a9 9 0 0 1-18 0m7-3.75a.75.75 0 0 1 .75.75v6a.75.75 0 0 1-1.5 0V9a.75.75 0 0 1 .75-.75m4.75.75a.75.75 0 0 0-1.5 0v6a.75.75 0 0 0 1.5 0z" clip-rule="evenodd"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func Paypal(children ...ElementRenderer) *PrimeIcon {
 	return &PrimeIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="currentColor" d="M9.16 13.41c-.12.67-.61 3.83-.75 4.72c0 .07 0 .09-.11.09H5.68a.43.43 0 0 1-.43-.49L7.31 4.61A.73.73 0 0 1 8 4c5.35 0 5.8-.13 7.17.41c2.11.82 2.31 2.8 1.55 4.95s-2.55 3.15-4.93 3.18c-1.52 0-2.44-.24-2.65.86Zm8.64-5.08c-.06-.05-.08-.06-.1 0a8 8 0 0 1-.31 1.19c-1.4 4-5.29 3.67-7.19 3.67a.35.35 0 0 0-.39.33c-.79 5-1 6-1 6a.38.38 0 0 0 .37.46h2.24a.63.63 0 0 0 .61-.53c0-.19 0 .22.51-3.22c.16-.77.5-.69 1-.69c2.49 0 4.44-1 5-4a3.14 3.14 0 0 0-.84-3.27Z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func PenToSquare(children ...ElementRenderer) *PrimeIcon {
+	return &PrimeIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" fill-rule="evenodd" d="M17.907 4.93c.104-.105.294-.186.539-.18a.848.848 0 0 1 .572.216c.13.13.222.34.231.575c.01.234-.065.413-.167.515l-7.49 7.5l-1.273.116l.1-1.245zm2.173-1.024c-.437-.438-1.037-.643-1.6-.656c-.564-.013-1.182.167-1.635.62l-7.682 7.692a.75.75 0 0 0-.217.47l-.194 2.407a.75.75 0 0 0 .816.807l2.43-.22a.75.75 0 0 0 .463-.218l7.682-7.692c.456-.456.627-1.073.605-1.635a2.373 2.373 0 0 0-.668-1.575M5.812 4.75a2.568 2.568 0 0 0-2.563 2.562v10.875a2.568 2.568 0 0 0 2.563 2.563h10.875a2.568 2.568 0 0 0 2.563-2.562V12.75a.75.75 0 0 0-1.5 0v5.438c0 .582-.48 1.062-1.063 1.062H5.812c-.583 0-1.063-.48-1.063-1.062V7.312c0-.582.48-1.062 1.063-1.062h5.437a.75.75 0 0 0 0-1.5z" clip-rule="evenodd"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -1592,10 +1925,26 @@ func Phone(children ...ElementRenderer) *PrimeIcon {
 	}
 }
 
+func Pinterest(children ...ElementRenderer) *PrimeIcon {
+	return &PrimeIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M20 12a7.999 7.999 0 0 1-10.368 7.642c.326-.532.813-1.403.994-2.097l.497-1.903c.26.497 1.022.92 1.832.92c2.413 0 4.152-2.22 4.152-4.978c0-2.642-2.159-4.62-4.933-4.62c-3.451 0-5.287 2.317-5.287 4.842c0 1.175.626 2.636 1.623 3.1c.151.071.232.04.267-.106c.026-.11.162-.655.223-.907a.24.24 0 0 0-.055-.229c-.326-.403-.59-1.138-.59-1.825c0-1.765 1.335-3.471 3.613-3.471c1.964 0 3.342 1.338 3.342 3.255c0 2.164-1.094 3.664-2.517 3.664c-.783 0-1.374-.648-1.183-1.445c.226-.952.661-1.978.661-2.665c0-.612-.33-1.125-1.013-1.125c-.803 0-1.448.829-1.448 1.941c0 .71.238 1.188.238 1.188s-.79 3.348-.935 3.974c-.161.69-.097 1.664-.03 2.297A8.003 8.003 0 0 1 4 12c0-4.42 3.58-8 8-8s8 3.58 8 8"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func Play(children ...ElementRenderer) *PrimeIcon {
 	return &PrimeIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="currentColor" d="M8.5 19.75a.75.75 0 0 1-.29-.06a.74.74 0 0 1-.46-.69V5A.75.75 0 0 1 9 4.47l7 7a.75.75 0 0 1 0 1.06l-7 7a.77.77 0 0 1-.5.22m.75-12.94v10.38L14.44 12Z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func PlayCircle(children ...ElementRenderer) *PrimeIcon {
+	return &PrimeIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" fill-rule="evenodd" d="M4.5 12a7.5 7.5 0 1 1 15 0a7.5 7.5 0 0 1-15 0M12 3a9 9 0 1 0 0 18a9 9 0 0 0 0-18m-2 12.586c0 .89 1.077 1.337 1.707.707l3.586-3.586a1 1 0 0 0 0-1.414l-3.586-3.586c-.63-.63-1.707-.184-1.707.707z" clip-rule="evenodd"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -1668,6 +2017,14 @@ func QuestionCircle(children ...ElementRenderer) *PrimeIcon {
 	return &PrimeIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="currentColor" d="M12 3c-4.96 0-9 4.04-9 9s4.04 9 9 9s9-4.04 9-9s-4.04-9-9-9m0 16.5c-4.14 0-7.5-3.36-7.5-7.5S7.86 4.5 12 4.5s7.5 3.36 7.5 7.5s-3.36 7.5-7.5 7.5m2.3-11.8c.61.61.95 1.43.95 2.3s-.34 1.68-.95 2.3c-.43.43-.97.73-1.55.86v.34c0 .41-.34.75-.75.75s-.75-.34-.75-.75v-1c0-.41.34-.75.75-.75A1.739 1.739 0 0 0 13.75 10c0-.47-.18-.91-.51-1.24c-.66-.66-1.81-.66-2.47 0c-.33.33-.51.77-.51 1.24c0 .41-.34.75-.75.75s-.75-.34-.75-.75c0-.87.34-1.68.95-2.3c1.23-1.23 3.37-1.23 4.6 0ZM13 16.25c0 .55-.45 1-1 1s-1-.45-1-1s.45-1 1-1s1 .45 1 1"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func Receipt(children ...ElementRenderer) *PrimeIcon {
+	return &PrimeIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" fill-rule="evenodd" d="M8.601 6.46L10 5.06l1.399 1.4a.85.85 0 0 0 1.202 0L14 5.06l1.399 1.4a.85.85 0 0 0 1.202 0l.649-.65v12.38l-.649-.65a.85.85 0 0 0-1.202 0L14 18.94l-1.399-1.4a.85.85 0 0 0-1.202 0L10 18.94l-1.399-1.4a.85.85 0 0 0-1.202 0l-.649.65V5.81l.649.65a.85.85 0 0 0 1.202 0m2-2.92a.85.85 0 0 0-1.202 0L8 4.94l-1.299-1.3c-.535-.535-1.451-.156-1.451.601V19.76c0 .757.916 1.136 1.451.6L8 19.062l1.399 1.399a.85.85 0 0 0 1.202 0L12 19.06l1.399 1.4a.85.85 0 0 0 1.202 0L16 19.06l1.299 1.3c.535.535 1.451.156 1.451-.601V4.24c0-.757-.916-1.136-1.451-.6L16 4.938L14.601 3.54a.85.85 0 0 0-1.202 0L12 4.94zM10 8.25a.75.75 0 0 0 0 1.5h4a.75.75 0 0 0 0-1.5zM9.25 12a.75.75 0 0 1 .75-.75h4a.75.75 0 0 1 0 1.5h-4a.75.75 0 0 1-.75-.75m.75 2.25a.75.75 0 0 0 0 1.5h4a.75.75 0 0 0 0-1.5z" clip-rule="evenodd"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -1764,6 +2121,14 @@ func Shield(children ...ElementRenderer) *PrimeIcon {
 	return &PrimeIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="currentColor" d="M12 20.75a.87.87 0 0 1-.28-.05A14.27 14.27 0 0 1 3.29 6.43a.74.74 0 0 1 .61-.69a27.12 27.12 0 0 0 7.79-2.42a.75.75 0 0 1 .62 0a27.12 27.12 0 0 0 7.79 2.42a.74.74 0 0 1 .61.69a14.27 14.27 0 0 1-8.43 14.27a.87.87 0 0 1-.28.05M4.76 7.11A12.47 12.47 0 0 0 12 19.18a12.47 12.47 0 0 0 7.24-12.07A27.56 27.56 0 0 1 12 4.82a27.56 27.56 0 0 1-7.24 2.29"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func Shop(children ...ElementRenderer) *PrimeIcon {
+	return &PrimeIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" fill-rule="evenodd" d="M7.48 5.75a.25.25 0 0 0-.195.094l-2.4 3a.25.25 0 0 0 .196.406h13.838a.25.25 0 0 0 .196-.406l-2.4-3a.25.25 0 0 0-.196-.094zm-1.366-.843a1.75 1.75 0 0 1 1.367-.657h9.038a1.75 1.75 0 0 1 1.367.657l2.4 3c.917 1.146.1 2.843-1.367 2.843h-.169V19a.75.75 0 0 1-1.5 0v-8.25h-1.5V17A2.75 2.75 0 0 1 13 19.75H8A2.75 2.75 0 0 1 5.25 17v-6.25h-.17c-1.467 0-2.282-1.697-1.366-2.843zm.636 5.843V17c0 .69.56 1.25 1.25 1.25h5c.69 0 1.25-.56 1.25-1.25v-6.25H13v4.5A1.75 1.75 0 0 1 11.25 17h-1.5A1.75 1.75 0 0 1 8 15.25v-4.5zm2.75 0v4.5c0 .138.112.25.25.25h1.5a.25.25 0 0 0 .25-.25v-4.5z" clip-rule="evenodd"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -1928,6 +2293,14 @@ func SortDown(children ...ElementRenderer) *PrimeIcon {
 	}
 }
 
+func SortDownFill(children ...ElementRenderer) *PrimeIcon {
+	return &PrimeIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M5 7.75a.75.75 0 0 0-.53 1.28l7 7a.75.75 0 0 0 1.06 0l7-7A.75.75 0 0 0 19 7.75z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func SortNumericAltDown(children ...ElementRenderer) *PrimeIcon {
 	return &PrimeIcon{
 		SVGSVGElement: SVG_SVG(
@@ -1968,10 +2341,34 @@ func SortUp(children ...ElementRenderer) *PrimeIcon {
 	}
 }
 
+func SortUpFill(children ...ElementRenderer) *PrimeIcon {
+	return &PrimeIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M12.53 7.97a.75.75 0 0 0-1.06 0l-7 7A.75.75 0 0 0 5 16.25h14a.75.75 0 0 0 .53-1.28z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func Sparkles(children ...ElementRenderer) *PrimeIcon {
+	return &PrimeIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" fill-rule="evenodd" d="m18.892 5.297l1.254.418a.3.3 0 0 1 0 .57l-1.254.418a.3.3 0 0 0-.19.19l-.417 1.253a.3.3 0 0 1-.57 0l-.418-1.254a.3.3 0 0 0-.19-.19l-1.253-.417a.3.3 0 0 1 0-.57l1.254-.418a.3.3 0 0 0 .19-.19l.417-1.253a.3.3 0 0 1 .57 0l.418 1.254c.03.09.1.16.19.19m-9.698-.25c.258-.775 1.354-.774 1.612 0l1.537 4.61l4.61 1.537c.774.258.774 1.354 0 1.612l-4.61 1.537l-1.537 4.61c-.258.774-1.354.774-1.612 0l-1.537-4.61l-4.61-1.537c-.775-.258-.775-1.354 0-1.612l4.61-1.537zM10 7.372L8.977 10.44a.85.85 0 0 1-.537.537L5.372 12l3.068 1.023a.85.85 0 0 1 .537.537L10 16.628l1.023-3.068a.85.85 0 0 1 .537-.537L14.628 12l-3.068-1.023a.85.85 0 0 1-.537-.537zm10.146 10.343l-1.254-.418a.3.3 0 0 1-.19-.19l-.417-1.253a.3.3 0 0 0-.57 0l-.418 1.254a.3.3 0 0 1-.19.19l-1.253.417a.3.3 0 0 0 0 .57l1.254.418c.09.03.16.1.19.19l.417 1.253a.3.3 0 0 0 .57 0l.418-1.254a.3.3 0 0 1 .19-.19l1.253-.417a.3.3 0 0 0 0-.57" clip-rule="evenodd"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func Spinner(children ...ElementRenderer) *PrimeIcon {
 	return &PrimeIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="currentColor" d="M12 21a9 9 0 1 1 6.18-15.55a.75.75 0 0 1 0 1.06a.74.74 0 0 1-1.06 0A7.51 7.51 0 1 0 19.5 12a.75.75 0 0 1 1.5 0a9 9 0 0 1-9 9"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func SpinnerDotted(children ...ElementRenderer) *PrimeIcon {
+	return &PrimeIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" fill-rule="evenodd" d="M12 5.5a1.5 1.5 0 1 0 0-3a1.5 1.5 0 0 0 0 3M5.5 12a1.5 1.5 0 1 1-3 0a1.5 1.5 0 0 1 3 0m16 0a1.5 1.5 0 1 1-3 0a1.5 1.5 0 0 1 3 0m-8 8a1.5 1.5 0 1 1-3 0a1.5 1.5 0 0 1 3 0M5.283 7.404a1.5 1.5 0 1 0 2.121-2.121a1.5 1.5 0 0 0-2.121 2.121m13.434 11.313a1.5 1.5 0 1 1-2.121-2.121a1.5 1.5 0 0 1 2.121 2.121m-13.434 0a1.5 1.5 0 1 0 2.121-2.121a1.5 1.5 0 0 0-2.121 2.121" clip-rule="evenodd"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -1988,6 +2385,22 @@ func StarFill(children ...ElementRenderer) *PrimeIcon {
 	return &PrimeIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="currentColor" d="M21.12 9.88a.74.74 0 0 0-.6-.51l-5.42-.79l-2.43-4.91a.78.78 0 0 0-1.34 0L8.9 8.58l-5.42.79a.74.74 0 0 0-.6.51a.75.75 0 0 0 .18.77L7 14.47l-.93 5.4a.76.76 0 0 0 .3.74a.75.75 0 0 0 .79.05L12 18.11l4.85 2.55a.73.73 0 0 0 .35.09a.79.79 0 0 0 .44-.14a.76.76 0 0 0 .3-.74l-.94-5.4l3.93-3.82a.75.75 0 0 0 .19-.77"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func StarHalf(children ...ElementRenderer) *PrimeIcon {
+	return &PrimeIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" fill-rule="evenodd" d="M12.17 3.27c.34.079.58.381.58.73v13.27a.75.75 0 0 1-.401.664l-5.2 2.73a.75.75 0 0 1-1.088-.79l.923-5.402l-3.918-3.825a.75.75 0 0 1 .417-1.28l5.419-.783l2.425-4.916a.75.75 0 0 1 .843-.398m-.92 3.945l-1.177 2.387a.75.75 0 0 1-.566.41l-4.306.623l3.113 3.038a.75.75 0 0 1 .215.663l-.734 4.295l3.455-1.814z" clip-rule="evenodd"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func StarHalfFill(children ...ElementRenderer) *PrimeIcon {
+	return &PrimeIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M12.75 4a.75.75 0 0 0-1.423-.332L8.902 8.584l-5.42.784a.75.75 0 0 0-.416 1.279l3.918 3.825l-.923 5.402a.75.75 0 0 0 1.088.79l5.2-2.73a.75.75 0 0 0 .401-.664z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -2144,10 +2557,26 @@ func ThumbsUpFill(children ...ElementRenderer) *PrimeIcon {
 	}
 }
 
+func Thumbtack(children ...ElementRenderer) *PrimeIcon {
+	return &PrimeIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" fill-rule="evenodd" d="M6.25 4A.75.75 0 0 1 7 3.25h10a.75.75 0 0 1 0 1.5h-.25V10c0 .053.019.123.102.214c.087.096.225.19.393.252c1.344.506 1.948 1.753 2.222 2.693a7.302 7.302 0 0 1 .282 1.79v.034l.001.01v.005c0 .001 0 .002-.75.002h.75a.75.75 0 0 1-.75.75h-6.25V20a.75.75 0 0 1-1.5 0v-4.25H5a.75.75 0 0 1-.75-.75H5h-.75v-.051l.005-.117a7.313 7.313 0 0 1 .278-1.673c.274-.94.878-2.187 2.222-2.693a1.03 1.03 0 0 0 .393-.252c.083-.09.102-.162.102-.214V4.75H7A.75.75 0 0 1 6.25 4m2.5.75V10c0 1.01-.822 1.628-1.467 1.87c-.675.254-1.08.923-1.31 1.71a5.563 5.563 0 0 0-.15.67h12.355a5.576 5.576 0 0 0-.15-.67c-.23-.787-.636-1.456-1.311-1.71c-.645-.242-1.467-.86-1.467-1.87V4.75z" clip-rule="evenodd"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func Ticket(children ...ElementRenderer) *PrimeIcon {
 	return &PrimeIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="currentColor" d="M19 18.75H5A1.76 1.76 0 0 1 3.25 17v-2.5a.76.76 0 0 1 .75-.75a1.75 1.75 0 0 0 0-3.5a.76.76 0 0 1-.75-.75V7A1.76 1.76 0 0 1 5 5.25h14A1.76 1.76 0 0 1 20.75 7v2.5a.76.76 0 0 1-.75.75a1.75 1.75 0 0 0 0 3.5a.76.76 0 0 1 .75.75V17A1.76 1.76 0 0 1 19 18.75M4.75 15.16V17a.25.25 0 0 0 .25.25h14a.25.25 0 0 0 .25-.25v-1.84a3.25 3.25 0 0 1 0-6.32V7a.25.25 0 0 0-.25-.25H5a.25.25 0 0 0-.25.25v1.84a3.25 3.25 0 0 1 0 6.32"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func Tiktok(children ...ElementRenderer) *PrimeIcon {
+	return &PrimeIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M19 10.56a6.566 6.566 0 0 1-3.838-1.229v5.588a5.082 5.082 0 1 1-4.38-5.035v2.81a2.33 2.33 0 1 0 1.63 2.225V4h2.75c-.001.233.019.465.06.694A3.818 3.818 0 0 0 16.906 7.2c.621.41 1.35.629 2.094.628z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -2176,6 +2605,14 @@ func Trash(children ...ElementRenderer) *PrimeIcon {
 	}
 }
 
+func Trophy(children ...ElementRenderer) *PrimeIcon {
+	return &PrimeIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" fill-rule="evenodd" d="M7.802 4.821c-.041.038-.052.075-.052.102v5.538c0 1.4.386 2.6 1.083 3.437c.683.818 1.715 1.352 3.167 1.352c1.452 0 2.484-.534 3.167-1.352c.697-.836 1.083-2.037 1.083-3.437V4.923c0-.027-.01-.064-.052-.102A.291.291 0 0 0 16 4.75H8a.291.291 0 0 0-.198.071m-1.552.102c0-.98.841-1.673 1.75-1.673h8c.909 0 1.75.694 1.75 1.673v.327H19c.966 0 1.75.784 1.75 1.75v2c0 1.908-1.527 3.421-3.307 3.703a5.957 5.957 0 0 1-1.124 2.155c-.853 1.022-2.06 1.688-3.569 1.852v2.54H15a.75.75 0 0 1 0 1.5H9a.75.75 0 0 1 0-1.5h2.25v-2.54c-1.509-.165-2.716-.83-3.569-1.852a5.959 5.959 0 0 1-1.124-2.155C4.777 12.42 3.25 10.908 3.25 9V7c0-.966.784-1.75 1.75-1.75h1.25zm0 1.827H5a.25.25 0 0 0-.25.25v2c0 .91.644 1.738 1.522 2.082a8.766 8.766 0 0 1-.022-.62zm11.478 4.332C18.606 10.738 19.25 9.91 19.25 9V7a.25.25 0 0 0-.25-.25h-1.25v3.711c0 .209-.007.416-.022.621" clip-rule="evenodd"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func Truck(children ...ElementRenderer) *PrimeIcon {
 	return &PrimeIcon{
 		SVGSVGElement: SVG_SVG(
@@ -2184,10 +2621,26 @@ func Truck(children ...ElementRenderer) *PrimeIcon {
 	}
 }
 
+func TurkishLira(children ...ElementRenderer) *PrimeIcon {
+	return &PrimeIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" fill-rule="evenodd" d="M10 3.25a.75.75 0 0 1 .75.75v3.627l4.884-1.83a.75.75 0 1 1 .526 1.405l-5.41 2.026v.649l4.884-1.83a.75.75 0 1 1 .526 1.405l-5.41 2.026v7.733c3.618-.379 6.5-3.465 6.5-7.211a.75.75 0 0 1 1.5 0c0 4.835-3.966 8.75-8.75 8.75a.75.75 0 0 1-.75-.75v-7.96l-2.987 1.119a.75.75 0 1 1-.526-1.405l3.513-1.316V9.79l-2.987 1.119a.75.75 0 1 1-.526-1.405L9.25 8.188V4a.75.75 0 0 1 .75-.75" clip-rule="evenodd"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func Twitch(children ...ElementRenderer) *PrimeIcon {
+	return &PrimeIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M11.706 7.144h1.168v3.424h-1.168m3.21-3.424h1.168v3.424h-1.168M7.916 4L5 6.856v10.288h3.496V20l2.924-2.856h2.328L19 12V4m-1.168 7.432l-2.328 2.28h-2.336l-2.042 2v-2h-2.63V5.144h9.336z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func Twitter(children ...ElementRenderer) *PrimeIcon {
 	return &PrimeIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<path fill="currentColor" d="M19.83 8v.52A11.41 11.41 0 0 1 8.35 20a11.41 11.41 0 0 1-6.2-1.81h1a8.09 8.09 0 0 0 5-1.73a4 4 0 0 1-3.78-2.8a4.81 4.81 0 0 0 .77.06a4.66 4.66 0 0 0 1.06-.13A4 4 0 0 1 3 9.67a4.13 4.13 0 0 0 1.82.51A4.06 4.06 0 0 1 3 6.77a4 4 0 0 1 .54-2A11.47 11.47 0 0 0 11.85 9a4.71 4.71 0 0 1-.1-.92a4 4 0 0 1 7-2.77a7.93 7.93 0 0 0 2.56-1a4 4 0 0 1-1.78 2.22a7.94 7.94 0 0 0 2.33-.62a8.91 8.91 0 0 1-2 2.09Z"/>`),
+			Text(`<g fill="none"><g clip-path="url(#primeTwitter0)"><path fill="currentColor" d="M11.025.656h2.147L8.482 6.03L14 13.344H9.68L6.294 8.909l-3.87 4.435H.275l5.016-5.75L0 .657h4.43L7.486 4.71zm-.755 11.4h1.19L3.78 1.877H2.504z"/></g><defs><clipPath id="primeTwitter0"><path fill="#fff" d="M0 0h14v14H0z"/></clipPath></defs></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -2256,6 +2709,14 @@ func Users(children ...ElementRenderer) *PrimeIcon {
 	}
 }
 
+func Venus(children ...ElementRenderer) *PrimeIcon {
+	return &PrimeIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" fill-rule="evenodd" d="M12 3.75a5.25 5.25 0 1 0 0 10.5a5.25 5.25 0 0 0 0-10.5M5.25 9a6.75 6.75 0 1 1 7.5 6.709v2.041H15a.75.75 0 0 1 0 1.5h-2.25V21a.75.75 0 0 1-1.5 0v-1.75H9a.75.75 0 0 1 0-1.5h2.25v-2.041A6.751 6.751 0 0 1 5.25 9" clip-rule="evenodd"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func Verified(children ...ElementRenderer) *PrimeIcon {
 	return &PrimeIcon{
 		SVGSVGElement: SVG_SVG(
@@ -2308,6 +2769,22 @@ func Wallet(children ...ElementRenderer) *PrimeIcon {
 	return &PrimeIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="currentColor" d="M19 7.25h-.25V5A1.76 1.76 0 0 0 17 3.25a.67.67 0 0 0-.24 0l-11.9 4h-.27l-.17.06h-.14l-.16.09l-.12.17l-.14.12l-.11.1l-.12.15a.39.39 0 0 0-.08.1a1.62 1.62 0 0 0-.1.18l-.06.11a1.87 1.87 0 0 0-.07.22a.45.45 0 0 1 0 .11a1.87 1.87 0 0 0 0 .34v10A1.76 1.76 0 0 0 5 20.75h14A1.76 1.76 0 0 0 20.75 19V9A1.76 1.76 0 0 0 19 7.25m-1.92-2.49a.26.26 0 0 1 .17.24v2.25H9.62ZM19.25 19a.25.25 0 0 1-.25.25H5a.25.25 0 0 1-.25-.25V9A.25.25 0 0 1 5 8.75h14a.25.25 0 0 1 .25.25Z"/><circle cx="16.5" cy="14" r="1.25" fill="currentColor"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func Warehouse(children ...ElementRenderer) *PrimeIcon {
+	return &PrimeIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" fill-rule="evenodd" d="M11.217 3.553a1.75 1.75 0 0 1 1.566 0l7 3.5c.592.296.967.902.967 1.565V20a.75.75 0 0 1-1.5 0V8.618a.25.25 0 0 0-.138-.224l-7-3.5a.25.25 0 0 0-.224 0l-7 3.5a.25.25 0 0 0-.138.224V20a.75.75 0 0 1-1.5 0V8.618c0-.663.375-1.269.967-1.565zM6.25 12c0-.966.784-1.75 1.75-1.75h8c.966 0 1.75.784 1.75 1.75v7A1.75 1.75 0 0 1 16 20.75H8A1.75 1.75 0 0 1 6.25 19zM8 11.75a.25.25 0 0 0-.25.25v1.25h8.5V12a.25.25 0 0 0-.25-.25zm8.25 3h-8.5v1.5h8.5zm0 3h-8.5V19c0 .138.112.25.25.25h8a.25.25 0 0 0 .25-.25z" clip-rule="evenodd"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func WavePulse(children ...ElementRenderer) *PrimeIcon {
+	return &PrimeIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" fill-rule="evenodd" d="M10.053 5.252a.75.75 0 0 1 .658.51l3.428 10.283l2.19-4.38A.75.75 0 0 1 17 11.25h2a.75.75 0 1 1 0 1.5h-1.537l-2.792 5.585a.75.75 0 0 1-1.382-.098L9.86 7.955l-2.19 4.38a.75.75 0 0 1-.67.415H5a.75.75 0 0 1 0-1.5h1.536L9.33 5.665a.75.75 0 0 1 .724-.413" clip-rule="evenodd"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }

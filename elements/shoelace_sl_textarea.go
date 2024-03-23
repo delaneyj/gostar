@@ -1076,35 +1076,6 @@ func (e *SLTEXTAREAElement) DATASTAR_HEADERRemove() *SLTEXTAREAElement {
 	return e
 }
 
-// Sets the URL for fetch requests
-
-func (e *SLTEXTAREAElement) DATASTAR_FETCH_URL(expression string) *SLTEXTAREAElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-
-	key := "data-fetch-url"
-
-	e.StringAttributes.Set(key, expression)
-	return e
-}
-
-func (e *SLTEXTAREAElement) IfDATASTAR_FETCH_URL(condition bool, expression string) *SLTEXTAREAElement {
-	if condition {
-		e.DATASTAR_FETCH_URL(expression)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_FETCH_URL from the element.
-func (e *SLTEXTAREAElement) DATASTAR_FETCH_URLRemove() *SLTEXTAREAElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-fetch-url")
-	return e
-}
-
 // Sets the indicator selector for fetch requests
 
 func (e *SLTEXTAREAElement) DATASTAR_FETCH_INDICATOR(expression string) *SLTEXTAREAElement {

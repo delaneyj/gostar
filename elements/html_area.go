@@ -2129,35 +2129,6 @@ func (e *AREAElement) DATASTAR_HEADERRemove() *AREAElement {
 	return e
 }
 
-// Sets the URL for fetch requests
-
-func (e *AREAElement) DATASTAR_FETCH_URL(expression string) *AREAElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-
-	key := "data-fetch-url"
-
-	e.StringAttributes.Set(key, expression)
-	return e
-}
-
-func (e *AREAElement) IfDATASTAR_FETCH_URL(condition bool, expression string) *AREAElement {
-	if condition {
-		e.DATASTAR_FETCH_URL(expression)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_FETCH_URL from the element.
-func (e *AREAElement) DATASTAR_FETCH_URLRemove() *AREAElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-fetch-url")
-	return e
-}
-
 // Sets the indicator selector for fetch requests
 
 func (e *AREAElement) DATASTAR_FETCH_INDICATOR(expression string) *AREAElement {

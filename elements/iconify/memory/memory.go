@@ -26,6 +26,8 @@ var IconLookup = map[string]MemoryIconFn{
 	"alertCircle":                            AlertCircle,
 	"alertCircleFill":                        AlertCircleFill,
 	"alertHexagon":                           AlertHexagon,
+	"alertHexagonFill":                       AlertHexagonFill,
+	"alertOctagon":                           AlertOctagon,
 	"alertRhombus":                           AlertRhombus,
 	"alertRhombusFill":                       AlertRhombusFill,
 	"alignHorizontalCenter":                  AlignHorizontalCenter,
@@ -88,6 +90,7 @@ var IconLookup = map[string]MemoryIconFn{
 	"alphaYfill":                             AlphaYfill,
 	"alphaZ":                                 AlphaZ,
 	"alphaZfill":                             AlphaZfill,
+	"anvil":                                  Anvil,
 	"application":                            Application,
 	"applicationCode":                        ApplicationCode,
 	"apps":                                   Apps,
@@ -138,6 +141,7 @@ var IconLookup = map[string]MemoryIconFn{
 	"bagPersonal":                            BagPersonal,
 	"bagPersonalFill":                        BagPersonalFill,
 	"bank":                                   Bank,
+	"barcode":                                Barcode,
 	"batteryFifty":                           BatteryFifty,
 	"batteryOneHundred":                      BatteryOneHundred,
 	"batterySeventyFive":                     BatterySeventyFive,
@@ -361,6 +365,7 @@ var IconLookup = map[string]MemoryIconFn{
 	"card":                                           Card,
 	"cardText":                                       CardText,
 	"cart":                                           Cart,
+	"cash":                                           Cash,
 	"cast":                                           Cast,
 	"castle":                                         Castle,
 	"chartBar":                                       ChartBar,
@@ -376,6 +381,8 @@ var IconLookup = map[string]MemoryIconFn{
 	"checkerMedium":                                  CheckerMedium,
 	"checkerSmall":                                   CheckerSmall,
 	"checkerboard":                                   Checkerboard,
+	"chest":                                          Chest,
+	"chestFill":                                      ChestFill,
 	"chevronDown":                                    ChevronDown,
 	"chevronDownCircle":                              ChevronDownCircle,
 	"chevronLeft":                                    ChevronLeft,
@@ -387,6 +394,12 @@ var IconLookup = map[string]MemoryIconFn{
 	"circle":                                         Circle,
 	"clipboard":                                      Clipboard,
 	"clock":                                          Clock,
+	"clockFill":                                      ClockFill,
+	"close":                                          Close,
+	"closeOutline":                                   CloseOutline,
+	"cloud":                                          Cloud,
+	"cloudDown":                                      CloudDown,
+	"cloudUp":                                        CloudUp,
 	"coffee":                                         Coffee,
 	"coinCopper":                                     CoinCopper,
 	"coinElectrum":                                   CoinElectrum,
@@ -406,6 +419,7 @@ var IconLookup = map[string]MemoryIconFn{
 	"compassSouthWest":                               CompassSouthWest,
 	"compassWestArrow":                               CompassWestArrow,
 	"creditCard":                                     CreditCard,
+	"crossbow":                                       Crossbow,
 	"crown":                                          Crown,
 	"cube":                                           Cube,
 	"cubeUnfolded":                                   CubeUnfolded,
@@ -418,7 +432,9 @@ var IconLookup = map[string]MemoryIconFn{
 	"doorBox":                                        DoorBox,
 	"doorOpen":                                       DoorOpen,
 	"dotHexagon":                                     DotHexagon,
+	"dotHexagonFill":                                 DotHexagonFill,
 	"dotOctagon":                                     DotOctagon,
+	"dotOctagonFill":                                 DotOctagonFill,
 	"download":                                       Download,
 	"email":                                          Email,
 	"eye":                                            Eye,
@@ -446,6 +462,9 @@ var IconLookup = map[string]MemoryIconFn{
 	"formatHorizontalAlignCenter":                    FormatHorizontalAlignCenter,
 	"formatItalic":                                   FormatItalic,
 	"formatLineSpacing":                              FormatLineSpacing,
+	"formatText":                                     FormatText,
+	"formatTextMultiline":                            FormatTextMultiline,
+	"formatTextSingleLine":                           FormatTextSingleLine,
 	"formatVerticalAlignCenter":                      FormatVerticalAlignCenter,
 	"gamepad":                                        Gamepad,
 	"gamepadCenter":                                  GamepadCenter,
@@ -467,17 +486,26 @@ var IconLookup = map[string]MemoryIconFn{
 	"gamepadUpLeftFill":                              GamepadUpLeftFill,
 	"gamepadUpRight":                                 GamepadUpRight,
 	"gamepadUpRightFill":                             GamepadUpRightFill,
+	"glaive":                                         Glaive,
 	"glasses":                                        Glasses,
+	"halberd":                                        Halberd,
 	"heart":                                          Heart,
 	"heartBroken":                                    HeartBroken,
 	"help":                                           Help,
+	"helpBox":                                        HelpBox,
+	"helpBoxFill":                                    HelpBoxFill,
 	"hexagon":                                        Hexagon,
+	"homeThatched":                                   HomeThatched,
 	"image":                                          Image,
+	"javalin":                                        Javalin,
+	"journal":                                        Journal,
 	"key":                                            Key,
 	"label":                                          Label,
 	"labelVariant":                                   LabelVariant,
+	"lance":                                          Lance,
 	"led":                                            Led,
 	"lightbulb":                                      Lightbulb,
+	"linen":                                          Linen,
 	"lock":                                           Lock,
 	"lockOpen":                                       LockOpen,
 	"login":                                          Login,
@@ -515,16 +543,18 @@ var IconLookup = map[string]MemoryIconFn{
 	"musicNote":                                      MusicNote,
 	"necklace":                                       Necklace,
 	"note":                                           Note,
+	"noteNailed":                                     NoteNailed,
 	"notebook":                                       Notebook,
 	"notification":                                   Notification,
+	"number":                                         Number,
 	"octagon":                                        Octagon,
-	"octagonAlert":                                   OctagonAlert,
 	"paperclip":                                      Paperclip,
 	"pause":                                          Pause,
 	"peace":                                          Peace,
 	"pencil":                                         Pencil,
 	"pickaxe":                                        Pickaxe,
 	"pictogrammers":                                  Pictogrammers,
+	"pike":                                           Pike,
 	"play":                                           Play,
 	"plus":                                           Plus,
 	"plusBox":                                        PlusBox,
@@ -533,17 +563,26 @@ var IconLookup = map[string]MemoryIconFn{
 	"plusCircleFill":                                 PlusCircleFill,
 	"poll":                                           Poll,
 	"pound":                                          Pound,
+	"quarterstaff":                                   Quarterstaff,
 	"radiobox":                                       Radiobox,
 	"radioboxMarked":                                 RadioboxMarked,
+	"rangeIcon":                                      RangeIcon,
 	"relativeScale":                                  RelativeScale,
 	"removeCircle":                                   RemoveCircle,
+	"ring":                                           Ring,
 	"rotateClockwise":                                RotateClockwise,
 	"rotateCounterclockwise":                         RotateCounterclockwise,
+	"scimitar":                                       Scimitar,
 	"script":                                         Script,
 	"search":                                         Search,
 	"shield":                                         Shield,
+	"shovel":                                         Shovel,
 	"skull":                                          Skull,
+	"sliderEnd":                                      SliderEnd,
+	"sliderRight":                                    SliderRight,
 	"speaker":                                        Speaker,
+	"spear":                                          Spear,
+	"stool":                                          Stool,
 	"stop":                                           Stop,
 	"sword":                                          Sword,
 	"tableTopDoorHorizontal":                         TableTopDoorHorizontal,
@@ -588,23 +627,30 @@ var IconLookup = map[string]MemoryIconFn{
 	"tileCautionHeavy":                         TileCautionHeavy,
 	"tileCautionThin":                          TileCautionThin,
 	"tileDiamondHex":                           TileDiamondHex,
+	"timeSand":                                 TimeSand,
 	"toggleSwitchOff":                          ToggleSwitchOff,
 	"toggleSwitchOn":                           ToggleSwitchOn,
 	"toolbox":                                  Toolbox,
 	"tooltipAbove":                             TooltipAbove,
 	"tooltipAboveAlert":                        TooltipAboveAlert,
+	"tooltipAboveHelp":                         TooltipAboveHelp,
 	"tooltipAboveText":                         TooltipAboveText,
 	"tooltipBelow":                             TooltipBelow,
 	"tooltipBelowAlert":                        TooltipBelowAlert,
+	"tooltipBelowHelp":                         TooltipBelowHelp,
 	"tooltipBelowText":                         TooltipBelowText,
 	"tooltipEnd":                               TooltipEnd,
 	"tooltipEndAlert":                          TooltipEndAlert,
+	"tooltipEndHelp":                           TooltipEndHelp,
 	"tooltipEndText":                           TooltipEndText,
 	"tooltipStart":                             TooltipStart,
 	"tooltipStartAlert":                        TooltipStartAlert,
+	"tooltipStartHelp":                         TooltipStartHelp,
 	"tooltipStartText":                         TooltipStartText,
+	"torch":                                    Torch,
 	"toyBrick":                                 ToyBrick,
 	"trash":                                    Trash,
+	"trident":                                  Trident,
 	"umbrella":                                 Umbrella,
 	"upload":                                   Upload,
 	"volumeHigh":                               VolumeHigh,
@@ -618,7 +664,11 @@ var IconLookup = map[string]MemoryIconFn{
 	"wallFrontGate":                            WallFrontGate,
 	"water":                                    Water,
 	"waterFill":                                WaterFill,
+	"weight":                                   Weight,
+	"weightFill":                               WeightFill,
 	"well":                                     Well,
+	"whip":                                     Whip,
+	"wind":                                     Wind,
 }
 
 func Account(children ...ElementRenderer) *MemoryIcon {
@@ -681,6 +731,22 @@ func AlertHexagon(children ...ElementRenderer) *MemoryIcon {
 	return &MemoryIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="currentColor" d="M12 12h-2V6h2m0 10h-2v-2h2m0 7h-2v-1H8v-1H6v-1H4v-1H2V5h2V4h2V3h2V2h2V1h2v1h2v1h2v1h2v1h2v12h-2v1h-2v1h-2v1h-2m0-1v-1h2v-1h2v-1h2V6h-2V5h-2V4h-2V3h-2v1H8v1H6v1H4v10h2v1h2v1h2v1Z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func AlertHexagonFill(children ...ElementRenderer) *MemoryIcon {
+	return &MemoryIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M12 21h-2v-1H8v-1H6v-1H4v-1H2V5h2V4h2V3h2V2h2V1h2v1h2v1h2v1h2v1h2v12h-2v1h-2v1h-2v1h-2m0-8V6h-2v6m2 4v-2h-2v2Z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func AlertOctagon(children ...ElementRenderer) *MemoryIcon {
+	return &MemoryIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M2 6h1V5h1V4h1V3h1V2h1V1h8v1h1v1h1v1h1v1h1v1h1v1h1v8h-1v1h-1v1h-1v1h-1v1h-1v1h-1v1H7v-1H6v-1H5v-1H4v-1H3v-1H2v-1H1V7h1zm13 11h1v-1h1v-1h1v-1h1V8h-1V7h-1V6h-1V5h-1V4h-1V3H8v1H7v1H6v1H5v1H4v1H3v6h1v1h1v1h1v1h1v1h1v1h6v-1h1zM10 6h2v7h-2zm0 8h2v2h-2z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -1181,6 +1247,14 @@ func AlphaZfill(children ...ElementRenderer) *MemoryIcon {
 	}
 }
 
+func Anvil(children ...ElementRenderer) *MemoryIcon {
+	return &MemoryIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M6 11H4v-1H2V8H1V6h5m14 13H3v-2h1v-1h2v-1h1v-1h1v-3H7V5h13v3h-2v1h-1v1h-1v1h-1v3h1v1h1v1h2v1h1Z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func Application(children ...ElementRenderer) *MemoryIcon {
 	return &MemoryIcon{
 		SVGSVGElement: SVG_SVG(
@@ -1577,6 +1651,14 @@ func Bank(children ...ElementRenderer) *MemoryIcon {
 	return &MemoryIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="currentColor" d="M20 19H2v-2h2V9H2V7h1V6h2V5h2V4h2V3h4v1h2v1h2v1h2v1h1v2h-2v8h2m-3-8V7h-2V6h-2V5H9v1H7v1H5v2m3 8v-6H6v6m6 0v-6h-2v6m6 0v-6h-2v6Z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func Barcode(children ...ElementRenderer) *MemoryIcon {
+	return &MemoryIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M4 17H2V5h2m2 12H5V5h1m4 12H7V5h3m2 12h-1V5h1m3 12h-2V5h2m2 12h-1V5h1m3 12h-2V5h2Z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -3365,6 +3447,14 @@ func Cart(children ...ElementRenderer) *MemoryIcon {
 	}
 }
 
+func Cash(children ...ElementRenderer) *MemoryIcon {
+	return &MemoryIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M12 13h-2v-1H9v-2h1V9h2v1h1v2h-1m8 5H2V5h18m-4 10v-2h2V9h-2V7H6v2H4v4h2v2Z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func Cast(children ...ElementRenderer) *MemoryIcon {
 	return &MemoryIcon{
 		SVGSVGElement: SVG_SVG(
@@ -3485,6 +3575,22 @@ func Checkerboard(children ...ElementRenderer) *MemoryIcon {
 	}
 }
 
+func Chest(children ...ElementRenderer) *MemoryIcon {
+	return &MemoryIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M19 19H3v-1H2V4h1V3h16v1h1v14h-1M18 8V5H4v3m8 4v-2h-2v2m8 5v-7h-4v3h-1v1H9v-1H8v-3H4v7Z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func ChestFill(children ...ElementRenderer) *MemoryIcon {
+	return &MemoryIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M20 9h-5V7H7v2H2V4h1V3h16v1h1m-8 9h-2v-1H9V9h4v3h-1m7 7H3v-1H2v-7h5v2h1v1h1v1h4v-1h1v-1h1v-2h5v7h-1Z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func ChevronDown(children ...ElementRenderer) *MemoryIcon {
 	return &MemoryIcon{
 		SVGSVGElement: SVG_SVG(
@@ -3569,6 +3675,54 @@ func Clock(children ...ElementRenderer) *MemoryIcon {
 	return &MemoryIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="currentColor" d="M10 5h2v6h1v1h1v1h1v2h-2v-1h-1v-1h-1v-1h-1zm5-4v1h2v1h1v1h1v1h1v2h1v8h-1v2h-1v1h-1v1h-1v1h-2v1H7v-1H5v-1H4v-1H3v-1H2v-2H1V7h1V5h1V4h1V3h1V2h2V1zm-1 2H8v1H6v1H5v1H4v2H3v6h1v2h1v1h1v1h2v1h6v-1h2v-1h1v-1h1v-2h1V8h-1V6h-1V5h-1V4h-2z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func ClockFill(children ...ElementRenderer) *MemoryIcon {
+	return &MemoryIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M13 15h1v-1h1v-1h-1v-1h-1v-1h-1V5h-2v7h1v1h1v1h1m2 7H7v-1H5v-1H4v-1H3v-1H2v-2H1V7h1V5h1V4h1V3h1V2h2V1h8v1h2v1h1v1h1v1h1v2h1v8h-1v2h-1v1h-1v1h-1v1h-2Z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func Close(children ...ElementRenderer) *MemoryIcon {
+	return &MemoryIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M16 17h-1v-1h-1v-1h-1v-1h-1v-1h-2v1H9v1H8v1H7v1H6v-1H5v-1h1v-1h1v-1h1v-1h1v-2H8V9H7V8H6V7H5V6h1V5h1v1h1v1h1v1h1v1h2V8h1V7h1V6h1V5h1v1h1v1h-1v1h-1v1h-1v1h-1v2h1v1h1v1h1v1h1v1h-1Z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func CloseOutline(children ...ElementRenderer) *MemoryIcon {
+	return &MemoryIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M15 17h1v-1h1v-1h-1v-1h-1v-1h-1v-1h-1v-2h1V9h1V8h1V7h1V6h-1V5h-1v1h-1v1h-1v1h-1v1h-2V8H9V7H8V6H7V5H6v1H5v1h1v1h1v1h1v1h1v2H8v1H7v1H6v1H5v1h1v1h1v-1h1v-1h1v-1h1v-1h2v1h1v1h1v1h1m2 3h-3v-1h-1v-1h-1v-1h-2v1H9v1H8v1H5v-1H4v-1H3v-3h1v-1h1v-1h1v-2H5V9H4V8H3V5h1V4h1V3h3v1h1v1h1v1h2V5h1V4h1V3h3v1h1v1h1v3h-1v1h-1v1h-1v2h1v1h1v1h1v3h-1v1h-1Z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func Cloud(children ...ElementRenderer) *MemoryIcon {
+	return &MemoryIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M19 18H3v-1H2v-1H1v-5h1v-1h1V9h2V8h1V6h1V5h1V4h6v1h1v1h1v1h1v3h2v1h1v1h1v4h-1v1h-1m-1-1v-1h1v-2h-1v-1h-4v-1h1V8h-1V7h-1V6H9v1H8v2h1v1H6v1H4v1H3v3h1v1Z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func CloudDown(children ...ElementRenderer) *MemoryIcon {
+	return &MemoryIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M19 15h-5v-2h4v-1h1v-2h-1V9h-4V8h1V5h-1V4h-1V3H9v1H8v2h1v1H6v1H4v1H3v3h1v1h4v2H3v-1H2v-1H1V8h1V7h1V6h2V5h1V3h1V2h1V1h6v1h1v1h1v1h1v3h2v1h1v1h1v4h-1v1h-1m-7 7h-2v-1H9v-1H8v-1H7v-1h3v-6h2v6h3v1h-1v1h-1v1h-1Z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func CloudUp(children ...ElementRenderer) *MemoryIcon {
+	return &MemoryIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M19 16h-3v-2h2v-1h1v-2h-1v-1h-4V9h1V6h-1V5h-1V4H9v1H8v2h1v1H6v1H4v1H3v3h1v1h2v2H3v-1H2v-1H1V9h1V8h1V7h2V6h1V4h1V3h1V2h6v1h1v1h1v1h1v3h2v1h1v1h1v4h-1v1h-1m-7 5h-2v-4H7v-1h1v-1h1v-1h1v-1h2v1h1v1h1v1h1v1h-3Z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -3725,6 +3879,14 @@ func CreditCard(children ...ElementRenderer) *MemoryIcon {
 	}
 }
 
+func Crossbow(children ...ElementRenderer) *MemoryIcon {
+	return &MemoryIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M9 11h1v-1h1V9h1V7h1V5h-1V4H7v1H5v2h1v1h1v1h1v1h1m7 7h1v-1h1v-6h-1V9h-2v1h-2v1h-1v2h1v1h1v1h1v1h1m2 4h-1v-1h-1v-1h-1v-1h-1v-1h-1v-1h-1v-1h-2v1H9v1H8v1H7v1H6v1H4v-1H3v-2h1v-1h1v-1h1v-1h1v-1h1v-2H7V9H6V8H5V7H4V6H3V5H2V4h2V3h2V2h8v1h1v1h2V3h2v2h-1v2h1v2h1v7h-1v2h-1Z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func Crown(children ...ElementRenderer) *MemoryIcon {
 	return &MemoryIcon{
 		SVGSVGElement: SVG_SVG(
@@ -3821,10 +3983,26 @@ func DotHexagon(children ...ElementRenderer) *MemoryIcon {
 	}
 }
 
+func DotHexagonFill(children ...ElementRenderer) *MemoryIcon {
+	return &MemoryIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M12 21h-2v-1H8v-1H6v-1H4v-1H2V5h2V4h2V3h2V2h2V1h2v1h2v1h2v1h2v1h2v12h-2v1h-2v1h-2v1h-2m0-7v-1h1v-2h-1V9h-2v1H9v2h1v1Z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func DotOctagon(children ...ElementRenderer) *MemoryIcon {
 	return &MemoryIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="currentColor" d="M12 13h-2v-1H9v-2h1V9h2v1h1v2h-1m3 9H7v-1H6v-1H5v-1H4v-1H3v-1H2v-1H1V7h1V6h1V5h1V4h1V3h1V2h1V1h8v1h1v1h1v1h1v1h1v1h1v1h1v8h-1v1h-1v1h-1v1h-1v1h-1v1h-1m-1-1v-1h1v-1h1v-1h1v-1h1v-1h1V8h-1V7h-1V6h-1V5h-1V4h-1V3H8v1H7v1H6v1H5v1H4v1H3v6h1v1h1v1h1v1h1v1h1v1Z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func DotOctagonFill(children ...ElementRenderer) *MemoryIcon {
+	return &MemoryIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M15 21H7v-1H6v-1H5v-1H4v-1H3v-1H2v-1H1V7h1V6h1V5h1V4h1V3h1V2h1V1h8v1h1v1h1v1h1v1h1v1h1v1h1v8h-1v1h-1v1h-1v1h-1v1h-1v1h-1m-3-7v-1h1v-2h-1V9h-2v1H9v2h1v1Z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -4045,6 +4223,30 @@ func FormatLineSpacing(children ...ElementRenderer) *MemoryIcon {
 	}
 }
 
+func FormatText(children ...ElementRenderer) *MemoryIcon {
+	return &MemoryIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M19 6h-8V4h8m0 6h-8V8h8M7 14H5V6H3V4h6v2H7m12 8h-8v-2h8m0 6H3v-2h16Z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func FormatTextMultiline(children ...ElementRenderer) *MemoryIcon {
+	return &MemoryIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M19 6H3V4h16m-6 6H3V8h10m0 6H3v-2h10m0 6H3v-2h10m5 2h-2v-1h-1v-1h-1v-1h2V8h2v7h2v1h-1v1h-1Z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func FormatTextSingleLine(children ...ElementRenderer) *MemoryIcon {
+	return &MemoryIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M19 6H3V4h16m-6 6h-1V9h-1v1h-1V9H9v1H8V9H7v1H6V9H5v1H4V9H3V8h1v1h1V8h1v1h1V8h1v1h1V8h1v1h1V8h1v1h1m0 5h-1v-1h-1v1h-1v-1H9v1H8v-1H7v1H6v-1H5v1H4v-1H3v-1h1v1h1v-1h1v1h1v-1h1v1h1v-1h1v1h1v-1h1v1h1m0 5h-1v-1h-1v1h-1v-1H9v1H8v-1H7v1H6v-1H5v1H4v-1H3v-1h1v1h1v-1h1v1h1v-1h1v1h1v-1h1v1h1v-1h1v1h1m5 1h-2v-7h-2v-1h1V9h1V8h2v1h1v1h1v1h-2Z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func FormatVerticalAlignCenter(children ...ElementRenderer) *MemoryIcon {
 	return &MemoryIcon{
 		SVGSVGElement: SVG_SVG(
@@ -4213,10 +4415,26 @@ func GamepadUpRightFill(children ...ElementRenderer) *MemoryIcon {
 	}
 }
 
+func Glaive(children ...ElementRenderer) *MemoryIcon {
+	return &MemoryIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M5 18H3v-2h1v-1h1v-1h1v-1h1v-1h1v-1h1v-1h1V9H9V8h1V7h1v1h1V7h2V6h1V5h1V3h1V2h1v5h-1v1h-1v1h-3v1h1v1h-1v1h-1v-1h-1v1h-1v1H9v1H8v1H7v1H6v1H5Z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func Glasses(children ...ElementRenderer) *MemoryIcon {
 	return &MemoryIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="currentColor" d="M19 16h-6v-1h-1v-1h-2v1H9v1H3v-1H2v-1H1V8h1V7h18v1h1v6h-1v1h-1M8 14v-1h1v-1h1V9H3v4h1v1m14 0v-1h1V9h-7v3h1v1h1v1Z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func Halberd(children ...ElementRenderer) *MemoryIcon {
+	return &MemoryIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M5 18H3v-2h1v-1h1v-1h1v-1h1v-1h1v-1h1v-1h1V9h1V8h1V7h-1V5h2v1h1V5h1V4h1V3h1v3h-1v1h-1v1h2V7h2v5h-1v1h-1v1h-4v-1h-1v-1h1v-1h1V9h-1v1h-1v1h-1v1h-1v1H9v1H8v1H7v1H6v1H5Z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -4245,6 +4463,22 @@ func Help(children ...ElementRenderer) *MemoryIcon {
 	}
 }
 
+func HelpBox(children ...ElementRenderer) *MemoryIcon {
+	return &MemoryIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M12 13h-2v-2h1v-1h1V8h-2v2H8V7h1V6h4v1h1v4h-1v1h-1m0 4h-2v-2h2m6 6H4v-1H3v-1H2V4h1V3h1V2h14v1h1v1h1v14h-1v1h-1m-1-1v-1h1V5h-1V4H5v1H4v12h1v1Z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func HelpBoxFill(children ...ElementRenderer) *MemoryIcon {
+	return &MemoryIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M18 20H4v-1H3v-1H2V4h1V3h1V2h14v1h1v1h1v14h-1v1h-1m-6-6v-1h1v-1h1V7h-1V6H9v1H8v3h2V8h2v2h-1v1h-1v2m2 3v-2h-2v2Z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func Hexagon(children ...ElementRenderer) *MemoryIcon {
 	return &MemoryIcon{
 		SVGSVGElement: SVG_SVG(
@@ -4253,10 +4487,34 @@ func Hexagon(children ...ElementRenderer) *MemoryIcon {
 	}
 }
 
+func HomeThatched(children ...ElementRenderer) *MemoryIcon {
+	return &MemoryIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M19 20H3v-8H1V9h1V6h1V3h1V2h14v3h1v2h1v2h1v3h-1v1h-1m-3-3V9h2V8h-1V6h-1V4H6v2H5v2H4v1h2v1h3V9h4v1m-1 8v-3h-2v3m7 0v-7h-1v1h-4v-1h-2v1H6v-1H5v7h3v-5h6v5Z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func Image(children ...ElementRenderer) *MemoryIcon {
 	return &MemoryIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="currentColor" d="M1 4h1V3h18v1h1v14h-1v1H2v-1H1zm2 10h1v-1h1v-1h1v-1h1v-1h1V9h2v1h1v1h1v1h1v1h1v1h1v1h1v1h1v1h2V5H3zm11 3v-1h-1v-1h-1v-1h-1v-1h-1v-1H8v1H7v1H6v1H5v1H4v1zm-1-9h1V7h2v1h1v2h-1v1h-2v-1h-1z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func Javalin(children ...ElementRenderer) *MemoryIcon {
+	return &MemoryIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M5 18H3v-1h1v-1h1v-1h1v-1h1v-1h1v-1h1v-1h1v-1h1V9h1V8h1V7h-1V6h2V5h1V4h2V3h1v3h-1v2h-1v1h-1V8h-1v1h-1v1h-1v1h-1v1h-1v1H9v1H8v1H7v1H6v1H5Z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func Journal(children ...ElementRenderer) *MemoryIcon {
+	return &MemoryIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M15 8H8V6h7m-1 7H9v-2h5m4 10H4v-1H3v-3H2v-3h1v-2H2v-2h1V8H2V5h1V2h1V1h14v1h1v18h-1m-1-1V3H5v2h1v3H5v2h1v2H5v2h1v3H5v2Z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -4285,6 +4543,14 @@ func LabelVariant(children ...ElementRenderer) *MemoryIcon {
 	}
 }
 
+func Lance(children ...ElementRenderer) *MemoryIcon {
+	return &MemoryIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M5 19H3v-2h1v-1h1v-1h1v-1H5v-1h1v-1h1v-1h2v-1h1V9h1V8h2V7h1V6h1V5h1V4h2V3h1v1h-1v2h-1v1h-1v1h-1v1h-1v2h-1v1h-1v1h-1v2h-1v1H9v1H8v-1H7v1H6v1H5Z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func Led(children ...ElementRenderer) *MemoryIcon {
 	return &MemoryIcon{
 		SVGSVGElement: SVG_SVG(
@@ -4297,6 +4563,14 @@ func Lightbulb(children ...ElementRenderer) *MemoryIcon {
 	return &MemoryIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="currentColor" d="M8 19h6v2H8zm0-1v-4H7v-1H6v-1H5v-1H4V5h1V4h1V3h1V2h1V1h6v1h1v1h1v1h1v1h1v6h-1v1h-1v1h-1v1h-1v4zm5-6h1v-1h1v-1h1V6h-1V5h-1V4h-1V3H9v1H8v1H7v1H6v4h1v1h1v1h1v1h1v3h2v-3h1z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func Linen(children ...ElementRenderer) *MemoryIcon {
+	return &MemoryIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M12 21h-1v-1H9v-1H7v-1H4v-1H2v-1H1v-4h1v-1h1v-1h1V9h1V8h1V7h1V6h1V5h1V4h1V3h1V2h4v1h1v1h1v3h1v1h2v1h1v1h1v1h-1v1h-1v1h-1v1h-1v1h-1v1h-1v1h-1v1h-1v1h-1v1h-1m-3-7v-1h1v-1h1v-1h1V9h1V8h1V7h1V5h-1V4h-3v1h-1v1H9v1H8v1H7v1H6v1H5v1h1v1h1v1m-1 3v-2H5v-1H3v2h1v1m8 3v-1h1v-1h1v-1h1v-1h1v-1h1v-1h1v-1h1v-1h1v-1h-1V9h-2V8h-2v1h-1v1h-1v1h-1v1h-1v1h-1v1H9v1H8v1H7v1h1v1h2v1Z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -4597,6 +4871,14 @@ func Note(children ...ElementRenderer) *MemoryIcon {
 	}
 }
 
+func NoteNailed(children ...ElementRenderer) *MemoryIcon {
+	return &MemoryIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M14 12H8v-2h6m0 6H8v-2h5v1h1m5 6h-4v-1h-1v1h-4v-1H8v1H6v-1H5v-2H4v-2H3v-5h1V6H3V4h7V3H9V2h4v1h-1v1h7v8h-1v3h1m-6 4v-1h4v-2h-1v-5h1V6h-5v2h-1v1h-1V6H6v6H5v3h1v2h1v1h4v1Z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func Notebook(children ...ElementRenderer) *MemoryIcon {
 	return &MemoryIcon{
 		SVGSVGElement: SVG_SVG(
@@ -4613,18 +4895,18 @@ func Notification(children ...ElementRenderer) *MemoryIcon {
 	}
 }
 
-func Octagon(children ...ElementRenderer) *MemoryIcon {
+func Number(children ...ElementRenderer) *MemoryIcon {
 	return &MemoryIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<path fill="currentColor" d="M2 6h1V5h1V4h1V3h1V2h1V1h8v1h1v1h1v1h1v1h1v1h1v1h1v8h-1v1h-1v1h-1v1h-1v1h-1v1h-1v1H7v-1H6v-1H5v-1H4v-1H3v-1H2v-1H1V7h1zm13 11h1v-1h1v-1h1v-1h1V8h-1V7h-1V6h-1V5h-1V4h-1V3H8v1H7v1H6v1H5v1H4v1H3v6h1v1h1v1h1v1h1v1h1v1h6v-1h1z"/>`),
+			Text(`<path fill="currentColor" d="M9 14H4v-1H3v-1H2V4h1V3h1V2h5v1h1v1h1v8h-1v1H9m10 7h-6v-2h2v-6h-2v-2h1V9h1V8h2v10h2M8 12v-1h1V5H8V4H5v1H4v6h1v1Z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
 
-func OctagonAlert(children ...ElementRenderer) *MemoryIcon {
+func Octagon(children ...ElementRenderer) *MemoryIcon {
 	return &MemoryIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<path fill="currentColor" d="M2 6h1V5h1V4h1V3h1V2h1V1h8v1h1v1h1v1h1v1h1v1h1v1h1v8h-1v1h-1v1h-1v1h-1v1h-1v1h-1v1H7v-1H6v-1H5v-1H4v-1H3v-1H2v-1H1V7h1zm13 11h1v-1h1v-1h1v-1h1V8h-1V7h-1V6h-1V5h-1V4h-1V3H8v1H7v1H6v1H5v1H4v1H3v6h1v1h1v1h1v1h1v1h1v1h6v-1h1zM10 6h2v7h-2zm0 8h2v2h-2z"/>`),
+			Text(`<path fill="currentColor" d="M2 6h1V5h1V4h1V3h1V2h1V1h8v1h1v1h1v1h1v1h1v1h1v1h1v8h-1v1h-1v1h-1v1h-1v1h-1v1h-1v1H7v-1H6v-1H5v-1H4v-1H3v-1H2v-1H1V7h1zm13 11h1v-1h1v-1h1v-1h1V8h-1V7h-1V6h-1V5h-1V4h-1V3H8v1H7v1H6v1H5v1H4v1H3v6h1v1h1v1h1v1h1v1h1v1h6v-1h1z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -4673,6 +4955,14 @@ func Pictogrammers(children ...ElementRenderer) *MemoryIcon {
 	return &MemoryIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="currentColor" d="M4 0h14v1h1v1h1v18h-1v1h-1v1H4v-1H3v-1H2V2h1V1h1zm0 18v1h1v1h12v-1h1v-1zM17 2H5v1H4v12h1v1h12v-1h1V3h-1zm-4 2v1h1v1h1v2h-1v1h-1v1h-3v4H8V4zm-1 2h-2v2h2z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func Pike(children ...ElementRenderer) *MemoryIcon {
+	return &MemoryIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M5 19H4v-1H3v-1h1v-1h1v-1h1v-1h1v-1h1v-1h1v-1h1V9H9V8h1V7h1v1h2V7h-1V5h2V4h2V3h3v3h-1v2h-1v2h-2V9h-1v2h1v1h-1v1h-1v-1h-2v1h-1v1H9v1H8v1H7v1H6v1H5Z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -4741,6 +5031,14 @@ func Pound(children ...ElementRenderer) *MemoryIcon {
 	}
 }
 
+func Quarterstaff(children ...ElementRenderer) *MemoryIcon {
+	return &MemoryIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M4 20H3v-1H2v-1h1v-1h1v-1h1v-1h1v-1h1v-1h1v-1h1v-1h1v-1h1V9h1V8h1V7h1V6h1V5h1V4h1V3h1V2h1v1h1v1h-1v1h-1v1h-1v1h-1v1h-1v1h-1v1h-1v1h-1v1h-1v1h-1v1H9v1H8v1H7v1H6v1H5v1H4Z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func Radiobox(children ...ElementRenderer) *MemoryIcon {
 	return &MemoryIcon{
 		SVGSVGElement: SVG_SVG(
@@ -4753,6 +5051,14 @@ func RadioboxMarked(children ...ElementRenderer) *MemoryIcon {
 	return &MemoryIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="currentColor" d="M8 2h6v1h2v1h1v1h1v1h1v2h1v6h-1v2h-1v1h-1v1h-1v1h-2v1H8v-1H6v-1H5v-1H4v-1H3v-2H2V8h1V6h1V5h1V4h1V3h2zm1 2v1H7v1H6v1H5v2H4v4h1v2h1v1h1v1h2v1h4v-1h2v-1h1v-1h1v-2h1V9h-1V7h-1V6h-1V5h-2V4zm4 3v1h1v1h1v4h-1v1h-1v1H9v-1H8v-1H7V9h1V8h1V7z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func RangeIcon(children ...ElementRenderer) *MemoryIcon {
+	return &MemoryIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M7 8H5V7H4V6H3V4h6v2H8v1H7m-4 5H1v-2h2m9 2H9v-2h3m9 2h-3v-2h3M7 13H5v-1H4v-2h1V9h2v1h1v2H7m9 1h-2v-1h-1v-2h1V9h2v1h1v2h-1m2 6h-6v-2h1v-1h1v-1h2v1h1v1h1Z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -4773,6 +5079,14 @@ func RemoveCircle(children ...ElementRenderer) *MemoryIcon {
 	}
 }
 
+func Ring(children ...ElementRenderer) *MemoryIcon {
+	return &MemoryIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M14 21H8v-1H6v-1H5v-1H4v-2H3v-6h1V8h1V7h1V6h2V5H7V4H6V3h1V2h8v1h1v1h-1v1h-1v1h2v1h1v1h1v2h1v6h-1v2h-1v1h-1v1h-2M12 6V5h1V4H9v1h1v1m3 12v-1h2v-2h1v-4h-1V9h-2V8H9v1H7v2H6v4h1v2h2v1Z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func RotateClockwise(children ...ElementRenderer) *MemoryIcon {
 	return &MemoryIcon{
 		SVGSVGElement: SVG_SVG(
@@ -4785,6 +5099,14 @@ func RotateCounterclockwise(children ...ElementRenderer) *MemoryIcon {
 	return &MemoryIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="currentColor" d="M0 11v1h1v1h1v1h1v1h2v-1h1v-1h1v-1h1v-1H5V9h1V7h1V6h2V5h4v1h2v1h1v2h1v4h-1v2h-1v1h-2v1H9v-1H6v2h2v1h6v-1h2v-1h1v-1h1v-2h1V8h-1V6h-1V5h-1V4h-2V3H8v1H6v1H5v1H4v2H3v3z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func Scimitar(children ...ElementRenderer) *MemoryIcon {
+	return &MemoryIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M10 19H9v-1H8v-1H7v1H6v1H4v-2h1v-1h1v-1H5v-1H4v-1h1v-1h1v1h1v1h1v-1h1v-1h1v-1h1v-1h1V9h1V7h1V4h-1V3h3v1h1v4h-1v2h-1v1h-1v1h-1v1h-1v1h-2v1H9v1h1v1h1v1h-1Z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -4813,6 +5135,14 @@ func Shield(children ...ElementRenderer) *MemoryIcon {
 	}
 }
 
+func Shovel(children ...ElementRenderer) *MemoryIcon {
+	return &MemoryIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M5 19H4v-1H3v-1h1v-1h1v-1h1v-1h1v-1h1v-1h1v-1h1v-1h1V9h1V8h-2V6h1V5h1V4h1V3h3v1h1v1h1v1h1v3h-1v1h-1v1h-1v1h-2v-2h-1v1h-1v1h-1v1h-1v1H9v1H8v1H7v1H6v1H5Z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func Skull(children ...ElementRenderer) *MemoryIcon {
 	return &MemoryIcon{
 		SVGSVGElement: SVG_SVG(
@@ -4821,10 +5151,42 @@ func Skull(children ...ElementRenderer) *MemoryIcon {
 	}
 }
 
+func SliderEnd(children ...ElementRenderer) *MemoryIcon {
+	return &MemoryIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M5 12H1v-2h4m4 3H7v-1H6v-2h1V9h2v1h1v2H9m10 3h-2v-3h-6v-2h6V7h2m-8 11H5v-2h1v-1h1v-1h2v1h1v1h1Z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func SliderRight(children ...ElementRenderer) *MemoryIcon {
+	return &MemoryIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M21 12h-4v-2h4m-6 3h-2v-1h-1v-2h1V9h2v1h1v2h-1M5 15H3V7h2v3h6v2H5m12 6h-6v-2h1v-1h1v-1h2v1h1v1h1Z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func Speaker(children ...ElementRenderer) *MemoryIcon {
 	return &MemoryIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="currentColor" d="M4 1h14v1h1v18h-1v1H4v-1H3V2h1zm1 2v16h12V3zm4 2h1V4h2v1h1v2h-1v1h-2V7H9zm0 13v-1H8v-1H7v-4h1v-1h1v-1h4v1h1v1h1v4h-1v1h-1v1zm1-5H9v2h1v1h2v-1h1v-2h-1v-1h-2z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func Spear(children ...ElementRenderer) *MemoryIcon {
+	return &MemoryIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M5 19H4v-1H3v-1h1v-1h1v-1h1v-1h1v-1h1v-1h1v-1h1v-1h1V9h1V8h1V7h-1V5h2V4h2V3h3v3h-1v2h-1v2h-2V9h-1v1h-1v1h-1v1h-1v1h-1v1H9v1H8v1H7v1H6v1H5Z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func Stool(children ...ElementRenderer) *MemoryIcon {
+	return &MemoryIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M18 19h-2v-2h-1v-4h-1V9h-1V8h-1v11h-2V8H9v1H8v4H7v4H6v2H4v-2h1v-4h1V9h1V8H5V6h12v2h-2v1h1v4h1v4h1Z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -5181,6 +5543,14 @@ func TileDiamondHex(children ...ElementRenderer) *MemoryIcon {
 	}
 }
 
+func TimeSand(children ...ElementRenderer) *MemoryIcon {
+	return &MemoryIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M11 8h1V7h-1m-2 3h1V9h1V8h-1V7H9V6h1v1h1V6h1v1h1v1h1V7h1V5h1V4H6v1h1v1h1v2h1m1 3h1v-1h-1m1 2h1v-1h-1m8 9H3v-3h1v-1h1v-2h1v-2h1v-2H6V8H5V6H4V5H3V2h16v3h-1v1h-1v2h-1v2h-1v2h1v2h1v2h1v1h1m-6-7V8h-1v1h-1v1m5 8v-1h-1v-2h-1v-2h-1v-1h-1v2h1v2h1v1H8v-1h1v-2h1v-1h1v-1H9v1H8v2H7v2H6v1Z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func ToggleSwitchOff(children ...ElementRenderer) *MemoryIcon {
 	return &MemoryIcon{
 		SVGSVGElement: SVG_SVG(
@@ -5221,6 +5591,14 @@ func TooltipAboveAlert(children ...ElementRenderer) *MemoryIcon {
 	}
 }
 
+func TooltipAboveHelp(children ...ElementRenderer) *MemoryIcon {
+	return &MemoryIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M12 11h-2V9h1V8h1V7h-2v1H8V6h1V5h4v1h1v3h-1v1h-1m0 4h-2v-2h2m0 9h-2v-1H9v-1H8v-1H7v-1H2v-1H1V2h1V1h18v1h1v14h-1v1h-5v1h-1v1h-1v1h-1m0-2v-1h1v-1h1v-1h5V3H3v12h5v1h1v1h1v1Z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func TooltipAboveText(children ...ElementRenderer) *MemoryIcon {
 	return &MemoryIcon{
 		SVGSVGElement: SVG_SVG(
@@ -5241,6 +5619,14 @@ func TooltipBelowAlert(children ...ElementRenderer) *MemoryIcon {
 	return &MemoryIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="currentColor" d="M10 17h2v-2h-2zm0-3h2V9h-2zm-8 7h18v-1h1V6h-1V5h-5V4h-1V3h-1V2h-1V1h-2v1H9v1H8v1H7v1H2v1H1v14h1zm1-2V7h5V6h1V5h1V4h2v1h1v1h1v1h5v12z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func TooltipBelowHelp(children ...ElementRenderer) *MemoryIcon {
+	return &MemoryIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M12 14h-2v-2h1v-1h1v-1h-2v1H8V9h1V8h4v1h1v3h-1v1h-1m0 4h-2v-2h2m8 6H2v-1H1V6h1V5h5V4h1V3h1V2h1V1h2v1h1v1h1v1h1v1h5v1h1v14h-1m-1-1V7h-5V6h-1V5h-1V4h-2v1H9v1H8v1H3v12Z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -5269,6 +5655,14 @@ func TooltipEndAlert(children ...ElementRenderer) *MemoryIcon {
 	}
 }
 
+func TooltipEndHelp(children ...ElementRenderer) *MemoryIcon {
+	return &MemoryIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M14 13h-2v-2h1v-1h1V8h-2v2h-2V7h1V6h4v1h1v4h-1v1h-1m0 4h-2v-2h2m6 7H6v-1H5v-5H4v-1H3v-1H2v-1H1v-2h1V9h1V8h1V7h1V2h1V1h14v1h1v18h-1m-1-1V3H7v5H6v1H5v1H4v2h1v1h1v1h1v5Z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func TooltipEndText(children ...ElementRenderer) *MemoryIcon {
 	return &MemoryIcon{
 		SVGSVGElement: SVG_SVG(
@@ -5293,10 +5687,26 @@ func TooltipStartAlert(children ...ElementRenderer) *MemoryIcon {
 	}
 }
 
+func TooltipStartHelp(children ...ElementRenderer) *MemoryIcon {
+	return &MemoryIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M10 13H8v-2h1v-1h1V8H8v2H6V7h1V6h4v1h1v4h-1v1h-1m0 4H8v-2h2m6 7H2v-1H1V2h1V1h14v1h1v5h1v1h1v1h1v1h1v2h-1v1h-1v1h-1v1h-1v5h-1m-1-1v-5h1v-1h1v-1h1v-2h-1V9h-1V8h-1V3H3v16Z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func TooltipStartText(children ...ElementRenderer) *MemoryIcon {
 	return &MemoryIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="currentColor" d="M5 8V6h8v2zm0 8v-2h6v2zm0-4v-2h8v2zm-4 8V2h1V1h14v1h1v5h1v1h1v1h1v1h1v2h-1v1h-1v1h-1v1h-1v5h-1v1H2v-1zm2-1h12v-5h1v-1h1v-1h1v-2h-1V9h-1V8h-1V3H3z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func Torch(children ...ElementRenderer) *MemoryIcon {
+	return &MemoryIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M15 8h1V6h-1m2 4h-3V9h-1V6h2V4h-1V3h-1V2h2v1h1v1h1v2h1v2h-1M6 18H4v-1h1v-1h1v-1h1v-1h1v-2h1v-1h1v-1h1V9h1v1h1v1h2v1h-1v1h-2v1h-1v1H9v1H8v1H6Z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -5313,6 +5723,14 @@ func Trash(children ...ElementRenderer) *MemoryIcon {
 	return &MemoryIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="currentColor" d="M10 7v9H8V7zm2 0h2v9h-2zM8 2h6v1h5v2h-1v14h-1v1H5v-1H4V5H3V3h5zM6 5v13h10V5z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func Trident(children ...ElementRenderer) *MemoryIcon {
+	return &MemoryIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M6 18H4v-2h1v-1h1v-1h1v-1h1v-1h1v-1h1v-1h1V5h1V4h1V3h1V2h2v1h-1v1h-1v1h-1v2h1V6h1V5h1V4h2v2h-1v1h-1v1h-1v1h2V8h1V7h1V6h1v2h-1v1h-1v1h-1v1h-5v1h-1v1h-1v1H9v1H8v1H7v1H6Z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -5421,10 +5839,42 @@ func WaterFill(children ...ElementRenderer) *MemoryIcon {
 	}
 }
 
+func Weight(children ...ElementRenderer) *MemoryIcon {
+	return &MemoryIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M20 20H2v-2h1v-4h1v-3h1V8h3V7H7V4h1V3h1V2h4v1h1v1h1v3h-1v1h3v3h1v3h1v4h1ZM12 7V6h1V5h-1V4h-2v1H9v1h1v1Zm5 11v-2h-1v-4h-1v-2H7v2H6v4H5v2Z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func WeightFill(children ...ElementRenderer) *MemoryIcon {
+	return &MemoryIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M20 20H2v-2h1v-4h1v-3h1V8h3V7H7V4h1V3h1V2h4v1h1v1h1v3h-1v1h3v3h1v3h1v4h1M12 7V6h1V5h-1V4h-2v1H9v1h1v1Z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func Well(children ...ElementRenderer) *MemoryIcon {
 	return &MemoryIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="currentColor" d="M19 21H3v-5H1v-2h20v2h-2zM5 16v3h12v-3zM2 7V5h1V4h1V3h1V2h1V1h10v1h1v1h1v1h1v1h1v2h-2v6h-2V7h-4v2h2v4H8V9h2V7H6v6H4V7zm5-4v1H6v1h10V4h-1V3z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func Whip(children ...ElementRenderer) *MemoryIcon {
+	return &MemoryIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M14 18h-3v-1h-1v-1H9v-5h1V8h1V7h4v1h1v3h-1v1h-1v1h-2v-1h1v-1h1V9h-2v2h-1v4h1v1h1v-1h2v-1h1v-2h1V6h-1V5h-1V4h-3v1h-1v1h-1v1H9v1H8v1H7v2H6v1H5v1H4v1H3v-1H2v-2h1v-1h1V9h1V8h1V7h1V6h1V5h1V4h1V3h2V2h4v1h1v1h1v1h1v8h-1v2h-1v1h-1v1h-2Z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func Wind(children ...ElementRenderer) *MemoryIcon {
+	return &MemoryIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M9 10H2V8h6V7h1V6H8V5H7v2H6V6H5V4h1V3h3v1h1v1h1v3h-1v1H9m6 4H2v-2h11v-1h3V9h1V8h-1V7h-2v2h-1V8h-1V6h1V5h4v1h1v1h1v3h-1v1h-1v1h-2m-1 9h-4v-1H9v-3h2v2h2v-2h-1v-1H4v-1H3v-1h10v1h1v1h1v1h1v2h-1v1h-1Z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }

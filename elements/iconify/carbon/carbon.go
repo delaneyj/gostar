@@ -5,7 +5,7 @@ import (
 )
 
 const (
-	IconifyVersion = "11.33.0"
+	IconifyVersion = "11.38.0"
 	hAttr          = "1em"
 	viewbox        = "0 0 32 32"
 	fill           = "currentColor"
@@ -38,6 +38,7 @@ var IconLookup = map[string]CarbonIconFn{
 	"aiGovernanceLifecycle":                 AiGovernanceLifecycle,
 	"aiGovernanceTracked":                   AiGovernanceTracked,
 	"aiGovernanceUntracked":                 AiGovernanceUntracked,
+	"aiLaunch":                              AiLaunch,
 	"aiResults":                             AiResults,
 	"aiResultsHigh":                         AiResultsHigh,
 	"aiResultsLow":                          AiResultsLow,
@@ -235,6 +236,7 @@ var IconLookup = map[string]CarbonIconFn{
 	"carbonForIbmDotcom":                    CarbonForIbmDotcom,
 	"carbonForIbmProduct":                   CarbonForIbmProduct,
 	"carbonForMobile":                       CarbonForMobile,
+	"carbonForSalesforce":                   CarbonForSalesforce,
 	"carbonUiBuilder":                       CarbonUiBuilder,
 	"caretDown":                             CaretDown,
 	"caretLeft":                             CaretLeft,
@@ -1617,6 +1619,10 @@ var IconLookup = map[string]CarbonIconFn{
 	"rewindFive":                             RewindFive,
 	"rewindTen":                              RewindTen,
 	"rewindThirty":                           RewindThirty,
+	"rightPanelClose":                        RightPanelClose,
+	"rightPanelCloseFilled":                  RightPanelCloseFilled,
+	"rightPanelOpen":                         RightPanelOpen,
+	"rightPanelOpenFilled":                   RightPanelOpenFilled,
 	"road":                                   Road,
 	"roadWeather":                            RoadWeather,
 	"roadmap":                                Roadmap,
@@ -1861,6 +1867,7 @@ var IconLookup = map[string]CarbonIconFn{
 	"switchLayerThree":                       SwitchLayerThree,
 	"switchLayerTwo":                         SwitchLayerTwo,
 	"switcher":                               Switcher,
+	"syncSettings":                           SyncSettings,
 	"sysProvision":                           SysProvision,
 	"t":                                      T,
 	"talt":                                   Talt,
@@ -2394,6 +2401,14 @@ func AiGovernanceUntracked(children ...ElementRenderer) *CarbonIcon {
 	return &CarbonIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="currentColor" d="M27.41 26L31 22.41L29.59 21L26 24.59L22.41 21L21 22.41L24.59 26L21 29.59L22.41 31L26 27.41L29.59 31L31 29.59zM16 23l-2.139-1.013A5.022 5.022 0 0 1 11 17.467V11h10v6.468a5.021 5.021 0 0 1-2.861 4.52zm-3-10v4.468a3.01 3.01 0 0 0 1.717 2.71l1.283.608l1.283-.607A3.012 3.012 0 0 0 19 17.468V13zm-8.88 4.656A2 2 0 1 0 1 16c0 .789.46 1.464 1.124 1.79a13.946 13.946 0 0 0 9.569 11.535l.614-1.904a11.954 11.954 0 0 1-8.186-9.765m25.756-3.446a13.946 13.946 0 0 0-9.569-11.535l-.614 1.904a11.954 11.954 0 0 1 8.186 9.765A2 2 0 1 0 31 16a1.992 1.992 0 0 0-1.123-1.79M16 1c-.789 0-1.464.46-1.79 1.124a13.947 13.947 0 0 0-11.535 9.568l1.904.616a11.954 11.954 0 0 1 9.765-8.187A2 2 0 1 0 16 1"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func AiLaunch(children ...ElementRenderer) *CarbonIcon {
+	return &CarbonIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="m15 19l-1.414 1.414L17.172 24H4V11H2v13a2 2 0 0 0 2 2h13.172l-3.586 3.586L15 31l6-6zm9-1v-2h2V4h-2V2h6v2h-2v12h2v2z"/><path fill="currentColor" d="M21 18h2L17.5 2l-3 .009L9 18h2l1.333-4h7.334zm-8-6l3-9l3 9z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -3970,6 +3985,14 @@ func CarbonForMobile(children ...ElementRenderer) *CarbonIcon {
 	return &CarbonIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="currentColor" d="M32 14h-2V8.074l-5.504-3.21l1.008-1.728l6 3.5A1 1 0 0 1 32 7.5zm-12 8a1 1 0 0 1-.504-.136l-6-3.5A1 1 0 0 1 13 17.5v-7a1 1 0 0 1 .496-.864l6-3.5a1 1 0 0 1 1.008 0l6 3.5A1 1 0 0 1 27 10.5v7a1 1 0 0 1-.496.864l-6 3.5A1 1 0 0 1 20 22m-5-5.074l5 2.916l5-2.916v-5.852l-5-2.916l-5 2.916z"/><circle cx="12.5" cy="24.5" r="1.5" fill="currentColor"/><path fill="currentColor" d="M19 30H6c-1.103 0-2-.897-2-2V4c0-1.103.897-2 2-2h13v2H6v24h13v-4h2v4c0 1.103-.897 2-2 2"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func CarbonForSalesforce(children ...ElementRenderer) *CarbonIcon {
+	return &CarbonIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="m29.51 17.69l-6-3.55c-.16-.09-.33-.14-.51-.14s-.35.05-.51.14l-6 3.55c-.3.18-.49.51-.49.86v6.9c0 .35.19.68.49.86l6 3.55c.16.09.33.14.51.14s.35-.05.51-.14l6-3.55c.3-.18.49-.51.49-.86v-6.9c0-.35-.19-.68-.49-.86M28 24.88l-5 2.96l-5-2.96v-5.76l5-2.96l5 2.96z"/><path fill="currentColor" d="M23.4 4.47c-.65 0-1.28.09-1.88.27a5.59 5.59 0 0 0-4.4-2.17c-1.17 0-2.28.36-3.22 1.03A6.055 6.055 0 0 0 9.81 2H9.8c-1.62 0-3.14.63-4.29 1.78a5.968 5.968 0 0 0-1.53 5.88a5.379 5.379 0 0 0-1.97 4.18c0 2.97 2.39 5.39 5.34 5.39h.28a5.69 5.69 0 0 0 4.99 2.98c.47 0 .94-.06 1.38-.17v-2.11c-.43.18-.9.28-1.38.28c-1.53 0-2.92-.97-3.44-2.4l-.3-.81l-.84.17c-.23.05-.46.07-.69.07c-1.84 0-3.34-1.53-3.34-3.4c0-1.2.64-2.33 1.68-2.94l.77-.45l-.36-.82c-.23-.51-.34-1.05-.34-1.61c0-1.07.41-2.07 1.17-2.83C7.7 4.42 8.72 4 9.8 4c1.25 0 2.46.6 3.22 1.59l.6.79l1.2-.96c.65-.55 1.46-.85 2.3-.85c1.29 0 2.49.72 3.14 1.87l.45.8l.83-.38c.58-.26 1.21-.39 1.86-.39c2.54 0 4.6 2.09 4.6 4.65a4.6 4.6 0 0 1-.98 2.83l1.75 1.01a6.622 6.622 0 0 0 1.22-3.84c0-3.67-2.96-6.65-6.6-6.65z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -6361,7 +6384,7 @@ func DataDiode(children ...ElementRenderer) *CarbonIcon {
 func DataEnrichment(children ...ElementRenderer) *CarbonIcon {
 	return &CarbonIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<path fill="currentColor" d="M28 13h2v2h-2zm-4.222-8.203l1.414-1.415l1.414 1.415l-1.414 1.414zM15 0h2v2h-2zM6.808 6.234L5.394 4.819l1.414-1.414L8.222 4.82zM2 13h2v2H2zm11 17h6v2h-6zm-2-4h10v2H11zm5-22C10.5 4 6 8.5 6 14c0 4.4 2 6.3 3.5 7.6c1 .9 1.5 1.5 1.5 2.4h2c0-1.8-1.1-2.9-2.2-3.9C9.4 18.9 8 17.5 8 14c0-4.4 3.6-8 8-8s8 3.6 8 8c0 3.5-1.4 4.9-2.8 6.1c-1.1 1-2.2 2-2.2 3.9h2c0-.9.5-1.5 1.5-2.4C24 20.3 26 18.4 26 14c0-5.5-4.5-10-10-10"/>`),
+			Text(`<path fill="currentColor" d="M28 13h2v2h-2zm-4.222-8.203l1.414-1.414l1.414 1.414l-1.414 1.414zM15 0h2v2h-2zM6.808 6.233L5.393 4.818l1.415-1.414l1.414 1.414zM2 13h2v2H2zm11 17h6v2h-6zm-2-4h10v2H11zm5-22C10.5 4 6 8.5 6 14c0 4.4 2 6.3 3.5 7.6c1 .9 1.5 1.5 1.5 2.4h2c0-1.8-1.1-2.9-2.2-3.9C9.4 18.9 8 17.5 8 14c0-4.4 3.6-8 8-8s8 3.6 8 8c0 3.5-1.4 4.9-2.8 6.1c-1.1 1-2.2 2-2.2 3.9h2c0-.9.5-1.5 1.5-2.4C24 20.3 26 18.4 26 14c0-5.5-4.5-10-10-10"/><path fill="none" d="M0 0h32v32H0z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -6369,7 +6392,7 @@ func DataEnrichment(children ...ElementRenderer) *CarbonIcon {
 func DataEnrichmentAdd(children ...ElementRenderer) *CarbonIcon {
 	return &CarbonIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<path fill="currentColor" d="M28 13h2v2h-2zm-4.222-8.203l1.414-1.415l1.414 1.415l-1.414 1.414zM15 0h2v2h-2zM6.808 6.234L5.394 4.819l1.414-1.414L8.222 4.82zM2 13h2v2H2zm18 0h-3v-3h-2v3h-3v2h3v3h2v-3h3zm-7 17h6v2h-6zm-2-4h10v2H11z"/><path fill="currentColor" d="M16 4C10.5 4 6 8.5 6 14c0 4.4 2 6.3 3.5 7.6c1 .9 1.5 1.5 1.5 2.4h2c0-1.8-1.1-2.9-2.2-3.9C9.4 18.9 8 17.5 8 14c0-4.4 3.6-8 8-8s8 3.6 8 8c0 3.5-1.4 4.9-2.8 6.1c-1.1 1-2.2 2-2.2 3.9h2c0-.9.5-1.5 1.5-2.4C24 20.3 26 18.4 26 14c0-5.5-4.5-10-10-10"/>`),
+			Text(`<path fill="currentColor" d="M28 13h2v2h-2zm-4.222-8.203l1.414-1.414l1.414 1.414l-1.414 1.414zM15 0h2v2h-2zM6.808 6.233L5.393 4.818l1.415-1.414l1.414 1.414zM2 13h2v2H2zm18 0h-3v-3h-2v3h-3v2h3v3h2v-3h3zm-7 17h6v2h-6zm-2-4h10v2H11z"/><path fill="currentColor" d="M16 4C10.5 4 6 8.5 6 14c0 4.4 2 6.3 3.5 7.6c1 .9 1.5 1.5 1.5 2.4h2c0-1.8-1.1-2.9-2.2-3.9C9.4 18.9 8 17.5 8 14c0-4.4 3.6-8 8-8s8 3.6 8 8c0 3.5-1.4 4.9-2.8 6.1c-1.1 1-2.2 2-2.2 3.9h2c0-.9.5-1.5 1.5-2.4C24 20.3 26 18.4 26 14c0-5.5-4.5-10-10-10"/><path fill="none" d="M0 0h32v32H0z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -9697,7 +9720,7 @@ func IbmCloudPakApplications(children ...ElementRenderer) *CarbonIcon {
 func IbmCloudPakBusinessAutomation(children ...ElementRenderer) *CarbonIcon {
 	return &CarbonIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<path fill="currentColor" d="M25 16c0-1.5-1.2-2.8-2.7-3c-1.1-2.4-3.5-4-6.3-4c-.2 0-.5 0-.7.1C14.7 8.4 13.9 8 13 8c-1.7 0-3 1.3-3 3c0 .4.1.7.2 1.1C9.4 13.2 9 14.5 9 16s.4 2.8 1.2 3.9c-.1.4-.2.7-.2 1.1c0 1.7 1.3 3 3 3c.9 0 1.7-.4 2.3-1.1c.2 0 .5.1.7.1c2.8 0 5.2-1.7 6.3-4c1.5-.2 2.7-1.5 2.7-3m-12-6c.6 0 1 .4 1 1s-.4 1-1 1s-1-.4-1-1s.4-1 1-1m0 12c-.6 0-1-.4-1-1s.4-1 1-1s1 .4 1 1s-.4 1-1 1m3-1c0-1.7-1.3-3-3-3c-.5 0-1 .1-1.4.4c-.4-.7-.6-1.5-.6-2.4s.2-1.7.6-2.4c.4.3.9.4 1.4.4c1.7 0 3-1.3 3-3c1.9 0 3.4 1 4.3 2.5c-.8.6-1.3 1.5-1.3 2.5s.5 1.9 1.3 2.5C19.4 20 17.9 21 16 21m6-4c-.6 0-1-.4-1-1s.4-1 1-1s1 .4 1 1s-.4 1-1 1"/><path fill="currentColor" d="M16 31c-.2 0-.3 0-.5-.1l-12-7c-.3-.2-.5-.5-.5-.9V9c0-.4.2-.7.5-.9l12-7c.3-.2.7-.2 1 0l12 7l-1 1.7L16 3.2L5 9.6v12.9l11 6.4l11-6.4V15h2v8c0 .4-.2.7-.5.9l-12 7c-.2.1-.3.1-.5.1"/>`),
+			Text(`<path fill="currentColor" d="M25 16c0-1.5-1.2-2.8-2.7-3c-1.1-2.4-3.5-4-6.3-4c-.2 0-.5 0-.7.1C14.7 8.4 13.9 8 13 8c-1.7 0-3 1.3-3 3c0 .4.1.7.2 1.1C9.4 13.2 9 14.5 9 16s.4 2.8 1.2 3.9c-.1.4-.2.7-.2 1.1c0 1.7 1.3 3 3 3c.9 0 1.7-.4 2.3-1.1c.2 0 .5.1.7.1c2.8 0 5.2-1.7 6.3-4c1.5-.2 2.7-1.5 2.7-3m-12-6c.6 0 1 .4 1 1s-.4 1-1 1s-1-.4-1-1s.4-1 1-1m0 12c-.6 0-1-.4-1-1s.4-1 1-1s1 .4 1 1s-.4 1-1 1m3-1c0-1.7-1.3-3-3-3c-.5 0-1 .1-1.4.4c-.4-.7-.6-1.5-.6-2.4s.2-1.7.6-2.4c.4.3.9.4 1.4.4c1.7 0 3-1.3 3-3c1.9 0 3.4 1 4.3 2.5c-.8.6-1.3 1.5-1.3 2.5s.5 1.9 1.3 2.5C19.4 20 17.9 21 16 21m6-4c-.6 0-1-.4-1-1s.4-1 1-1s1 .4 1 1s-.4 1-1 1"/><path fill="currentColor" d="M16 31c-.2 0-.3 0-.5-.1l-12-7c-.3-.2-.5-.5-.5-.9V9c0-.4.2-.7.5-.9l12-7c.3-.2.7-.2 1 0l12 7l-1 1.7L16 3.2L5 9.6v12.9l11 6.4l11-6.4V15h2v8c0 .4-.2.7-.5.9l-12 7c-.2.1-.3.1-.5.1"/><path fill="none" d="M0 0h32v32H0z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -12401,7 +12424,7 @@ func Microscope(children ...ElementRenderer) *CarbonIcon {
 func MicroservicesOne(children ...ElementRenderer) *CarbonIcon {
 	return &CarbonIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<path fill="currentColor" d="m11 21l-4-2.2v-4.5l4-2.2l4 2.2v4.5zm-2-3.4l2 1.1l2-1.1v-2.2l-2-1.1l-2 1.1zM6 30l-4-2.2v-4.5L6 21l4 2.2v4.5zm-2-3.4l2 1.1l2-1.1v-2.2l-2-1.1l-2 1.1zM16 30l-4-2.2v-4.5l4-2.2l4 2.2v4.5zm-2-3.4l2 1.1l2-1.1v-2.2l-2-1.1l-2 1.1zM26 30l-4-2.2v-4.5l4-2.2l4 2.2v4.5zm-2-3.4l2 1.1l2-1.1v-2.2l-2-1.1l-2 1.1zm.6-15L22 14.2V9.4l3-1.7V3.2L21 1l-4 2.2v4.5l3 1.7v4.7l-2.6-2.6L16 13l5 5l5-5zM19 4.4l2-1.1l2 1.1v2.2l-2 1.1l-2-1.1z"/>`),
+			Text(`<path fill="currentColor" d="m11 21l-4-2.2v-4.5l4-2.2l4 2.2v4.5zm-2-3.4l2 1.1l2-1.1v-2.2l-2-1.1l-2 1.1zM6 30l-4-2.2v-4.5L6 21l4 2.2v4.5zm-2-3.4l2 1.1l2-1.1v-2.2l-2-1.1l-2 1.1zM16 30l-4-2.2v-4.5l4-2.2l4 2.2v4.5zm-2-3.4l2 1.1l2-1.1v-2.2l-2-1.1l-2 1.1zM26 30l-4-2.2v-4.5l4-2.2l4 2.2v4.5zm-2-3.4l2 1.1l2-1.1v-2.2l-2-1.1l-2 1.1zm.6-15L22 14.2V9.4l3-1.7V3.2L21 1l-4 2.2v4.5l3 1.7v4.7l-2.6-2.6L16 13l5 5l5-5zM19 4.4l2-1.1l2 1.1v2.2l-2 1.1l-2-1.1z"/><path fill="none" d="M0 0h32v32H0z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -12409,7 +12432,7 @@ func MicroservicesOne(children ...ElementRenderer) *CarbonIcon {
 func MicroservicesTwo(children ...ElementRenderer) *CarbonIcon {
 	return &CarbonIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<path fill="currentColor" d="M16 22v-6h-6v-6H2v20h20v-8zm-2-4v4h-4v-4zM4 12h4v4H4zm4 6v4H4v-4zM4 28v-4h4v4zm10 0h-4v-4h4zm6 0h-4v-4h4zm9.6-14.4L27 16.2V10h3V2h-8v8h3v6.2l-2.6-2.6L21 15l5 5l5-5zM24 4h4v4h-4z"/>`),
+			Text(`<path fill="currentColor" d="M16 22v-6h-6v-6H2v20h20v-8zm-2-4v4h-4v-4zM4 12h4v4H4zm4 6v4H4v-4zM4 28v-4h4v4zm10 0h-4v-4h4zm6 0h-4v-4h4zm9.6-14.4L27 16.2V10h3V2h-8v8h3v6.2l-2.6-2.6L21 15l5 5l5-5zM24 4h4v4h-4z"/><path fill="none" d="M0 0h32v32H0z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -15030,6 +15053,38 @@ func RewindThirty(children ...ElementRenderer) *CarbonIcon {
 	}
 }
 
+func RightPanelClose(children ...ElementRenderer) *CarbonIcon {
+	return &CarbonIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M2 6v20a2 2 0 0 0 2 2h24a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2m20 0h6v20h-6zM4 6h16v20H4v-9h10.17l-3.58 3.59L12 22l6-6l-6-6l-1.41 1.41L14.17 15H4z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func RightPanelCloseFilled(children ...ElementRenderer) *CarbonIcon {
+	return &CarbonIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M2 6v20a2 2 0 0 0 2 2h24a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2m2 0h16v20H4v-9h10.17l-3.58 3.59L12 22l6-6l-6-6l-1.41 1.41L14.17 15H4z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func RightPanelOpen(children ...ElementRenderer) *CarbonIcon {
+	return &CarbonIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M2 6v20a2 2 0 0 0 2 2h24a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2m20 0h6v20h-6zM4 6h16v9H9.83l3.58-3.59L12 10l-6 6l6 6l1.41-1.41L9.83 17H20v9H4z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func RightPanelOpenFilled(children ...ElementRenderer) *CarbonIcon {
+	return &CarbonIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M2 6v20a2 2 0 0 0 2 2h24a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2m2 0h16v9H9.83l3.58-3.59L12 10l-6 6l6 6l1.41-1.41L9.83 17H20v9H4z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func Road(children ...ElementRenderer) *CarbonIcon {
 	return &CarbonIcon{
 		SVGSVGElement: SVG_SVG(
@@ -16978,6 +17033,14 @@ func Switcher(children ...ElementRenderer) *CarbonIcon {
 	return &CarbonIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="currentColor" d="M14 4h4v4h-4zM4 4h4v4H4zm20 0h4v4h-4zM14 14h4v4h-4zM4 14h4v4H4zm20 0h4v4h-4zM14 24h4v4h-4zM4 24h4v4H4zm20 0h4v4h-4z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func SyncSettings(children ...ElementRenderer) *CarbonIcon {
+	return &CarbonIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M15 24v-2h-3.6L22 11.4V15h2V8h-7v2h3.6L10 20.6V17H8v7zm10-4v2h3c1.1 0 2-.9 2-2v-3h-2v3zm3-10h2v4h-2zm-3-8v2h3v3h2V4c0-1.1-.9-2-2-2zm-7 0h4v2h-4z"/><path fill="currentColor" d="M10 4v3h2V4h3V2h-3c-1.1 0-2 .9-2 2m2 6H4c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2v-8h-2v8H4V12h8z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }

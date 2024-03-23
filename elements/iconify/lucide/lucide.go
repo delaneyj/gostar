@@ -23,7 +23,6 @@ var IconLookup = map[string]LucideIconFn{
 	"alargeSmall":                     AlargeSmall,
 	"accessibility":                   Accessibility,
 	"activity":                        Activity,
-	"activitySquare":                  ActivitySquare,
 	"airVent":                         AirVent,
 	"airplay":                         Airplay,
 	"alarmClock":                      AlarmClock,
@@ -33,9 +32,6 @@ var IconLookup = map[string]LucideIconFn{
 	"alarmClockPlus":                  AlarmClockPlus,
 	"alarmSmoke":                      AlarmSmoke,
 	"album":                           Album,
-	"alertCircle":                     AlertCircle,
-	"alertOctagon":                    AlertOctagon,
-	"alertTriangle":                   AlertTriangle,
 	"alignCenter":                     AlignCenter,
 	"alignCenterHorizontal":           AlignCenterHorizontal,
 	"alignCenterVertical":             AlignCenterVertical,
@@ -62,6 +58,7 @@ var IconLookup = map[string]LucideIconFn{
 	"alignVerticalJustifyStart":       AlignVerticalJustifyStart,
 	"alignVerticalSpaceAround":        AlignVerticalSpaceAround,
 	"alignVerticalSpaceBetween":       AlignVerticalSpaceBetween,
+	"ambulance":                       Ambulance,
 	"ampersand":                       Ampersand,
 	"ampersands":                      Ampersands,
 	"anchor":                          Anchor,
@@ -71,6 +68,7 @@ var IconLookup = map[string]LucideIconFn{
 	"anvil":                           Anvil,
 	"aperture":                        Aperture,
 	"appWindow":                       AppWindow,
+	"appWindowMac":                    AppWindowMac,
 	"apple":                           Apple,
 	"archive":                         Archive,
 	"archiveRestore":                  ArchiveRestore,
@@ -87,17 +85,11 @@ var IconLookup = map[string]LucideIconFn{
 	"arrowBigUpDash":                  ArrowBigUpDash,
 	"arrowDown":                       ArrowDown,
 	"arrowDownAz":                     ArrowDownAz,
-	"arrowDownCircle":                 ArrowDownCircle,
 	"arrowDownFromLine":               ArrowDownFromLine,
 	"arrowDownLeft":                   ArrowDownLeft,
-	"arrowDownLeftFromCircle":         ArrowDownLeftFromCircle,
-	"arrowDownLeftSquare":             ArrowDownLeftSquare,
 	"arrowDownNarrowWide":             ArrowDownNarrowWide,
 	"arrowDownOneZero":                ArrowDownOneZero,
 	"arrowDownRight":                  ArrowDownRight,
-	"arrowDownRightFromCircle":        ArrowDownRightFromCircle,
-	"arrowDownRightSquare":            ArrowDownRightSquare,
-	"arrowDownSquare":                 ArrowDownSquare,
 	"arrowDownToDot":                  ArrowDownToDot,
 	"arrowDownToLine":                 ArrowDownToLine,
 	"arrowDownUp":                     ArrowDownUp,
@@ -105,32 +97,22 @@ var IconLookup = map[string]LucideIconFn{
 	"arrowDownZa":                     ArrowDownZa,
 	"arrowDownZeroOne":                ArrowDownZeroOne,
 	"arrowLeft":                       ArrowLeft,
-	"arrowLeftCircle":                 ArrowLeftCircle,
 	"arrowLeftFromLine":               ArrowLeftFromLine,
 	"arrowLeftRight":                  ArrowLeftRight,
-	"arrowLeftSquare":                 ArrowLeftSquare,
 	"arrowLeftToLine":                 ArrowLeftToLine,
 	"arrowRight":                      ArrowRight,
-	"arrowRightCircle":                ArrowRightCircle,
 	"arrowRightFromLine":              ArrowRightFromLine,
 	"arrowRightLeft":                  ArrowRightLeft,
-	"arrowRightSquare":                ArrowRightSquare,
 	"arrowRightToLine":                ArrowRightToLine,
 	"arrowUp":                         ArrowUp,
 	"arrowUpAz":                       ArrowUpAz,
-	"arrowUpCircle":                   ArrowUpCircle,
 	"arrowUpDown":                     ArrowUpDown,
 	"arrowUpFromDot":                  ArrowUpFromDot,
 	"arrowUpFromLine":                 ArrowUpFromLine,
 	"arrowUpLeft":                     ArrowUpLeft,
-	"arrowUpLeftFromCircle":           ArrowUpLeftFromCircle,
-	"arrowUpLeftSquare":               ArrowUpLeftSquare,
 	"arrowUpNarrowWide":               ArrowUpNarrowWide,
 	"arrowUpOneZero":                  ArrowUpOneZero,
 	"arrowUpRight":                    ArrowUpRight,
-	"arrowUpRightFromCircle":          ArrowUpRightFromCircle,
-	"arrowUpRightSquare":              ArrowUpRightSquare,
-	"arrowUpSquare":                   ArrowUpSquare,
 	"arrowUpToLine":                   ArrowUpToLine,
 	"arrowUpWideNarrow":               ArrowUpWideNarrow,
 	"arrowUpZa":                       ArrowUpZa,
@@ -191,6 +173,7 @@ var IconLookup = map[string]LucideIconFn{
 	"bedSingle":                       BedSingle,
 	"beef":                            Beef,
 	"beer":                            Beer,
+	"beerOff":                         BeerOff,
 	"bell":                            Bell,
 	"bellDot":                         BellDot,
 	"bellElectric":                    BellElectric,
@@ -198,11 +181,16 @@ var IconLookup = map[string]LucideIconFn{
 	"bellOff":                         BellOff,
 	"bellPlus":                        BellPlus,
 	"bellRing":                        BellRing,
+	"betweenHorizontalEnd":            BetweenHorizontalEnd,
+	"betweenHorizontalStart":          BetweenHorizontalStart,
+	"betweenVerticalEnd":              BetweenVerticalEnd,
+	"betweenVerticalStart":            BetweenVerticalStart,
 	"bike":                            Bike,
 	"binary":                          Binary,
 	"biohazard":                       Biohazard,
 	"bird":                            Bird,
 	"bitcoin":                         Bitcoin,
+	"blend":                           Blend,
 	"blinds":                          Blinds,
 	"blocks":                          Blocks,
 	"bluetooth":                       Bluetooth,
@@ -210,6 +198,7 @@ var IconLookup = map[string]LucideIconFn{
 	"bluetoothOff":                    BluetoothOff,
 	"bluetoothSearching":              BluetoothSearching,
 	"bold":                            Bold,
+	"bolt":                            Bolt,
 	"bomb":                            Bomb,
 	"bone":                            Bone,
 	"book":                            Book,
@@ -243,6 +232,7 @@ var IconLookup = map[string]LucideIconFn{
 	"bookmarkX":                       BookmarkX,
 	"boomBox":                         BoomBox,
 	"bot":                             Bot,
+	"botMessageSquare":                BotMessageSquare,
 	"box":                             Box,
 	"boxSelect":                       BoxSelect,
 	"boxes":                           Boxes,
@@ -253,6 +243,8 @@ var IconLookup = map[string]LucideIconFn{
 	"brainCog":                        BrainCog,
 	"brickWall":                       BrickWall,
 	"briefcase":                       Briefcase,
+	"briefcaseBusiness":               BriefcaseBusiness,
+	"briefcaseMedical":                BriefcaseMedical,
 	"bringToFront":                    BringToFront,
 	"brush":                           Brush,
 	"bug":                             Bug,
@@ -272,10 +264,13 @@ var IconLookup = map[string]LucideIconFn{
 	"calendarCheckTwo":                CalendarCheckTwo,
 	"calendarClock":                   CalendarClock,
 	"calendarDays":                    CalendarDays,
+	"calendarFold":                    CalendarFold,
 	"calendarHeart":                   CalendarHeart,
 	"calendarMinus":                   CalendarMinus,
+	"calendarMinusTwo":                CalendarMinusTwo,
 	"calendarOff":                     CalendarOff,
 	"calendarPlus":                    CalendarPlus,
+	"calendarPlusTwo":                 CalendarPlusTwo,
 	"calendarRange":                   CalendarRange,
 	"calendarSearch":                  CalendarSearch,
 	"calendarX":                       CalendarX,
@@ -286,6 +281,9 @@ var IconLookup = map[string]LucideIconFn{
 	"candy":                           Candy,
 	"candyCane":                       CandyCane,
 	"candyOff":                        CandyOff,
+	"cannabis":                        Cannabis,
+	"captions":                        Captions,
+	"captionsOff":                     CaptionsOff,
 	"car":                             Car,
 	"carFront":                        CarFront,
 	"carTaxiFront":                    CarTaxiFront,
@@ -301,26 +299,14 @@ var IconLookup = map[string]LucideIconFn{
 	"cctv":                            Cctv,
 	"check":                           Check,
 	"checkCheck":                      CheckCheck,
-	"checkCircle":                     CheckCircle,
-	"checkCircleTwo":                  CheckCircleTwo,
-	"checkSquare":                     CheckSquare,
-	"checkSquareTwo":                  CheckSquareTwo,
 	"chefHat":                         ChefHat,
 	"cherry":                          Cherry,
 	"chevronDown":                     ChevronDown,
-	"chevronDownCircle":               ChevronDownCircle,
-	"chevronDownSquare":               ChevronDownSquare,
 	"chevronFirst":                    ChevronFirst,
 	"chevronLast":                     ChevronLast,
 	"chevronLeft":                     ChevronLeft,
-	"chevronLeftCircle":               ChevronLeftCircle,
-	"chevronLeftSquare":               ChevronLeftSquare,
 	"chevronRight":                    ChevronRight,
-	"chevronRightCircle":              ChevronRightCircle,
-	"chevronRightSquare":              ChevronRightSquare,
 	"chevronUp":                       ChevronUp,
-	"chevronUpCircle":                 ChevronUpCircle,
-	"chevronUpSquare":                 ChevronUpSquare,
 	"chevronsDown":                    ChevronsDown,
 	"chevronsDownUp":                  ChevronsDownUp,
 	"chevronsLeft":                    ChevronsLeft,
@@ -334,27 +320,58 @@ var IconLookup = map[string]LucideIconFn{
 	"cigarette":                       Cigarette,
 	"cigaretteOff":                    CigaretteOff,
 	"circle":                          Circle,
+	"circleAlert":                     CircleAlert,
+	"circleArrowDown":                 CircleArrowDown,
+	"circleArrowLeft":                 CircleArrowLeft,
+	"circleArrowOutDownLeft":          CircleArrowOutDownLeft,
+	"circleArrowOutDownRight":         CircleArrowOutDownRight,
+	"circleArrowOutUpLeft":            CircleArrowOutUpLeft,
+	"circleArrowOutUpRight":           CircleArrowOutUpRight,
+	"circleArrowRight":                CircleArrowRight,
+	"circleArrowUp":                   CircleArrowUp,
+	"circleCheck":                     CircleCheck,
+	"circleCheckBig":                  CircleCheckBig,
+	"circleChevronDown":               CircleChevronDown,
+	"circleChevronLeft":               CircleChevronLeft,
+	"circleChevronRight":              CircleChevronRight,
+	"circleChevronUp":                 CircleChevronUp,
 	"circleDashed":                    CircleDashed,
+	"circleDivide":                    CircleDivide,
 	"circleDollarSign":                CircleDollarSign,
 	"circleDot":                       CircleDot,
 	"circleDotDashed":                 CircleDotDashed,
 	"circleEllipsis":                  CircleEllipsis,
 	"circleEqual":                     CircleEqual,
+	"circleFadingPlus":                CircleFadingPlus,
+	"circleGauge":                     CircleGauge,
+	"circleHelp":                      CircleHelp,
+	"circleMinus":                     CircleMinus,
 	"circleOff":                       CircleOff,
+	"circleParking":                   CircleParking,
+	"circleParkingOff":                CircleParkingOff,
+	"circlePause":                     CirclePause,
+	"circlePercent":                   CirclePercent,
+	"circlePlay":                      CirclePlay,
+	"circlePlus":                      CirclePlus,
+	"circlePower":                     CirclePower,
 	"circleSlash":                     CircleSlash,
 	"circleSlashTwo":                  CircleSlashTwo,
+	"circleStop":                      CircleStop,
 	"circleUser":                      CircleUser,
 	"circleUserRound":                 CircleUserRound,
+	"circleX":                         CircleX,
 	"circuitBoard":                    CircuitBoard,
 	"citrus":                          Citrus,
 	"clapperboard":                    Clapperboard,
 	"clipboard":                       Clipboard,
 	"clipboardCheck":                  ClipboardCheck,
 	"clipboardCopy":                   ClipboardCopy,
-	"clipboardEdit":                   ClipboardEdit,
 	"clipboardList":                   ClipboardList,
+	"clipboardMinus":                  ClipboardMinus,
 	"clipboardPaste":                  ClipboardPaste,
-	"clipboardSignature":              ClipboardSignature,
+	"clipboardPen":                    ClipboardPen,
+	"clipboardPenLine":                ClipboardPenLine,
+	"clipboardPlus":                   ClipboardPlus,
 	"clipboardType":                   ClipboardType,
 	"clipboardX":                      ClipboardX,
 	"clock":                           Clock,
@@ -372,6 +389,7 @@ var IconLookup = map[string]LucideIconFn{
 	"clockTwo":                        ClockTwo,
 	"cloud":                           Cloud,
 	"cloudCog":                        CloudCog,
+	"cloudDownload":                   CloudDownload,
 	"cloudDrizzle":                    CloudDrizzle,
 	"cloudFog":                        CloudFog,
 	"cloudHail":                       CloudHail,
@@ -384,17 +402,17 @@ var IconLookup = map[string]LucideIconFn{
 	"cloudSnow":                       CloudSnow,
 	"cloudSun":                        CloudSun,
 	"cloudSunRain":                    CloudSunRain,
+	"cloudUpload":                     CloudUpload,
 	"cloudy":                          Cloudy,
 	"clover":                          Clover,
 	"club":                            Club,
 	"code":                            Code,
-	"codeTwo":                         CodeTwo,
+	"codeXml":                         CodeXml,
 	"codepen":                         Codepen,
 	"codesandbox":                     Codesandbox,
 	"coffee":                          Coffee,
 	"cog":                             Cog,
 	"coins":                           Coins,
-	"columns":                         Columns,
 	"columnsFour":                     ColumnsFour,
 	"columnsThree":                    ColumnsThree,
 	"columnsTwo":                      ColumnsTwo,
@@ -407,7 +425,7 @@ var IconLookup = map[string]LucideIconFn{
 	"cone":                            Cone,
 	"construction":                    Construction,
 	"contact":                         Contact,
-	"contactTwo":                      ContactTwo,
+	"contactRound":                    ContactRound,
 	"container":                       Container,
 	"contrast":                        Contrast,
 	"cookie":                          Cookie,
@@ -447,6 +465,7 @@ var IconLookup = map[string]LucideIconFn{
 	"dessert":                         Dessert,
 	"diameter":                        Diameter,
 	"diamond":                         Diamond,
+	"diamondPercent":                  DiamondPercent,
 	"diceFive":                        DiceFive,
 	"diceFour":                        DiceFour,
 	"diceOne":                         DiceOne,
@@ -460,10 +479,9 @@ var IconLookup = map[string]LucideIconFn{
 	"discThree":                       DiscThree,
 	"discTwo":                         DiscTwo,
 	"divide":                          Divide,
-	"divideCircle":                    DivideCircle,
-	"divideSquare":                    DivideSquare,
 	"dna":                             Dna,
 	"dnaOff":                          DnaOff,
+	"dock":                            Dock,
 	"dog":                             Dog,
 	"dollarSign":                      DollarSign,
 	"donut":                           Donut,
@@ -471,10 +489,10 @@ var IconLookup = map[string]LucideIconFn{
 	"doorOpen":                        DoorOpen,
 	"dot":                             Dot,
 	"download":                        Download,
-	"downloadCloud":                   DownloadCloud,
 	"draftingCompass":                 DraftingCompass,
 	"drama":                           Drama,
 	"dribbble":                        Dribbble,
+	"drill":                           Drill,
 	"droplet":                         Droplet,
 	"droplets":                        Droplets,
 	"drum":                            Drum,
@@ -482,12 +500,14 @@ var IconLookup = map[string]LucideIconFn{
 	"dumbbell":                        Dumbbell,
 	"ear":                             Ear,
 	"earOff":                          EarOff,
-	"edit":                            Edit,
-	"editThree":                       EditThree,
-	"editTwo":                         EditTwo,
+	"earth":                           Earth,
+	"earthLock":                       EarthLock,
+	"eclipse":                         Eclipse,
 	"egg":                             Egg,
 	"eggFried":                        EggFried,
 	"eggOff":                          EggOff,
+	"ellipsis":                        Ellipsis,
+	"ellipsisVertical":                EllipsisVertical,
 	"equal":                           Equal,
 	"equalNot":                        EqualNot,
 	"eraser":                          Eraser,
@@ -520,11 +540,9 @@ var IconLookup = map[string]LucideIconFn{
 	"fileCode":                        FileCode,
 	"fileCodeTwo":                     FileCodeTwo,
 	"fileCog":                         FileCog,
-	"fileCogTwo":                      FileCogTwo,
 	"fileDiff":                        FileDiff,
 	"fileDigit":                       FileDigit,
 	"fileDown":                        FileDown,
-	"fileEdit":                        FileEdit,
 	"fileHeart":                       FileHeart,
 	"fileImage":                       FileImage,
 	"fileInput":                       FileInput,
@@ -539,6 +557,8 @@ var IconLookup = map[string]LucideIconFn{
 	"fileMinusTwo":                    FileMinusTwo,
 	"fileMusic":                       FileMusic,
 	"fileOutput":                      FileOutput,
+	"filePen":                         FilePen,
+	"filePenLine":                     FilePenLine,
 	"filePieChart":                    FilePieChart,
 	"filePlus":                        FilePlus,
 	"filePlusTwo":                     FilePlusTwo,
@@ -546,7 +566,7 @@ var IconLookup = map[string]LucideIconFn{
 	"fileScan":                        FileScan,
 	"fileSearch":                      FileSearch,
 	"fileSearchTwo":                   FileSearchTwo,
-	"fileSignature":                   FileSignature,
+	"fileSliders":                     FileSliders,
 	"fileSpreadsheet":                 FileSpreadsheet,
 	"fileStack":                       FileStack,
 	"fileSymlink":                     FileSymlink,
@@ -597,10 +617,8 @@ var IconLookup = map[string]LucideIconFn{
 	"folderClock":                     FolderClock,
 	"folderClosed":                    FolderClosed,
 	"folderCog":                       FolderCog,
-	"folderCogTwo":                    FolderCogTwo,
 	"folderDot":                       FolderDot,
 	"folderDown":                      FolderDown,
-	"folderEdit":                      FolderEdit,
 	"folderGit":                       FolderGit,
 	"folderGitTwo":                    FolderGitTwo,
 	"folderHeart":                     FolderHeart,
@@ -612,6 +630,7 @@ var IconLookup = map[string]LucideIconFn{
 	"folderOpen":                      FolderOpen,
 	"folderOpenDot":                   FolderOpenDot,
 	"folderOutput":                    FolderOutput,
+	"folderPen":                       FolderPen,
 	"folderPlus":                      FolderPlus,
 	"folderRoot":                      FolderRoot,
 	"folderSearch":                    FolderSearch,
@@ -624,14 +643,12 @@ var IconLookup = map[string]LucideIconFn{
 	"folders":                         Folders,
 	"footprints":                      Footprints,
 	"forklift":                        Forklift,
-	"formInput":                       FormInput,
 	"forward":                         Forward,
 	"frame":                           Frame,
 	"framer":                          Framer,
 	"frown":                           Frown,
 	"fuel":                            Fuel,
 	"fullscreen":                      Fullscreen,
-	"functionSquare":                  FunctionSquare,
 	"galleryHorizontal":               GalleryHorizontal,
 	"galleryHorizontalEnd":            GalleryHorizontalEnd,
 	"galleryThumbnails":               GalleryThumbnails,
@@ -640,9 +657,7 @@ var IconLookup = map[string]LucideIconFn{
 	"gamepad":                         Gamepad,
 	"gamepadTwo":                      GamepadTwo,
 	"ganttChart":                      GanttChart,
-	"ganttChartSquare":                GanttChartSquare,
 	"gauge":                           Gauge,
-	"gaugeCircle":                     GaugeCircle,
 	"gavel":                           Gavel,
 	"gem":                             Gem,
 	"ghost":                           Ghost,
@@ -667,12 +682,11 @@ var IconLookup = map[string]LucideIconFn{
 	"glassWater":                      GlassWater,
 	"glasses":                         Glasses,
 	"globe":                           Globe,
-	"globeTwo":                        GlobeTwo,
+	"globeLock":                       GlobeLock,
 	"goal":                            Goal,
 	"grab":                            Grab,
 	"graduationCap":                   GraduationCap,
 	"grape":                           Grape,
-	"grid":                            Grid,
 	"gridThreeXthree":                 GridThreeXthree,
 	"gridTwoXtwo":                     GridTwoXtwo,
 	"grip":                            Grip,
@@ -680,9 +694,15 @@ var IconLookup = map[string]LucideIconFn{
 	"gripVertical":                    GripVertical,
 	"groupIcon":                       GroupIcon,
 	"guitar":                          Guitar,
+	"ham":                             Ham,
 	"hammer":                          Hammer,
 	"hand":                            Hand,
+	"handCoins":                       HandCoins,
+	"handHeart":                       HandHeart,
+	"handHelping":                     HandHelping,
 	"handMetal":                       HandMetal,
+	"handPlatter":                     HandPlatter,
+	"handshake":                       Handshake,
 	"hardDrive":                       HardDrive,
 	"hardDriveDownload":               HardDriveDownload,
 	"hardDriveUpload":                 HardDriveUpload,
@@ -698,31 +718,35 @@ var IconLookup = map[string]LucideIconFn{
 	"headingThree":                    HeadingThree,
 	"headingTwo":                      HeadingTwo,
 	"headphones":                      Headphones,
+	"headset":                         Headset,
 	"heart":                           Heart,
 	"heartCrack":                      HeartCrack,
 	"heartHandshake":                  HeartHandshake,
 	"heartOff":                        HeartOff,
 	"heartPulse":                      HeartPulse,
-	"helpCircle":                      HelpCircle,
-	"helpingHand":                     HelpingHand,
+	"heater":                          Heater,
 	"hexagon":                         Hexagon,
 	"highlighter":                     Highlighter,
 	"history":                         History,
 	"home":                            Home,
 	"hop":                             Hop,
 	"hopOff":                          HopOff,
+	"hospital":                        Hospital,
 	"hotel":                           Hotel,
 	"hourglass":                       Hourglass,
-	"iceCream":                        IceCream,
-	"iceCreamTwo":                     IceCreamTwo,
+	"iceCreamBowl":                    IceCreamBowl,
+	"iceCreamCone":                    IceCreamCone,
 	"image":                           Image,
 	"imageDown":                       ImageDown,
 	"imageMinus":                      ImageMinus,
 	"imageOff":                        ImageOff,
 	"imagePlus":                       ImagePlus,
+	"imageUp":                         ImageUp,
+	"images":                          Images,
 	"import":                          Import,
 	"inbox":                           Inbox,
-	"indent":                          Indent,
+	"indentDecrease":                  IndentDecrease,
+	"indentIncrease":                  IndentIncrease,
 	"indianRupee":                     IndianRupee,
 	"infinity":                        Infinity,
 	"info":                            Info,
@@ -734,8 +758,6 @@ var IconLookup = map[string]LucideIconFn{
 	"japaneseYen":                     JapaneseYen,
 	"joystick":                        Joystick,
 	"kanban":                          Kanban,
-	"kanbanSquare":                    KanbanSquare,
-	"kanbanSquareDashed":              KanbanSquareDashed,
 	"key":                             Key,
 	"keyRound":                        KeyRound,
 	"keySquare":                       KeySquare,
@@ -751,14 +773,13 @@ var IconLookup = map[string]LucideIconFn{
 	"landmark":                        Landmark,
 	"languages":                       Languages,
 	"laptop":                          Laptop,
-	"laptopTwo":                       LaptopTwo,
+	"laptopMinimal":                   LaptopMinimal,
 	"lasso":                           Lasso,
 	"lassoSelect":                     LassoSelect,
 	"laugh":                           Laugh,
 	"layers":                          Layers,
 	"layersThree":                     LayersThree,
 	"layersTwo":                       LayersTwo,
-	"layout":                          Layout,
 	"layoutDashboard":                 LayoutDashboard,
 	"layoutGrid":                      LayoutGrid,
 	"layoutList":                      LayoutList,
@@ -769,7 +790,6 @@ var IconLookup = map[string]LucideIconFn{
 	"leafyGreen":                      LeafyGreen,
 	"library":                         Library,
 	"libraryBig":                      LibraryBig,
-	"librarySquare":                   LibrarySquare,
 	"lifeBuoy":                        LifeBuoy,
 	"ligature":                        Ligature,
 	"lightbulb":                       Lightbulb,
@@ -781,6 +801,7 @@ var IconLookup = map[string]LucideIconFn{
 	"linkedin":                        Linkedin,
 	"list":                            List,
 	"listChecks":                      ListChecks,
+	"listCollapse":                    ListCollapse,
 	"listEnd":                         ListEnd,
 	"listFilter":                      ListFilter,
 	"listMinus":                       ListMinus,
@@ -794,17 +815,18 @@ var IconLookup = map[string]LucideIconFn{
 	"listVideo":                       ListVideo,
 	"listX":                           ListX,
 	"loader":                          Loader,
-	"loaderTwo":                       LoaderTwo,
+	"loaderCircle":                    LoaderCircle,
 	"locate":                          Locate,
 	"locateFixed":                     LocateFixed,
 	"locateOff":                       LocateOff,
 	"lock":                            Lock,
 	"lockKeyhole":                     LockKeyhole,
+	"lockKeyholeOpen":                 LockKeyholeOpen,
+	"lockOpen":                        LockOpen,
 	"logIn":                           LogIn,
 	"logOut":                          LogOut,
 	"lollipop":                        Lollipop,
 	"luggage":                         Luggage,
-	"msquare":                         Msquare,
 	"magnet":                          Magnet,
 	"mail":                            Mail,
 	"mailCheck":                       MailCheck,
@@ -830,7 +852,6 @@ var IconLookup = map[string]LucideIconFn{
 	"meh":                             Meh,
 	"memoryStick":                     MemoryStick,
 	"menu":                            Menu,
-	"menuSquare":                      MenuSquare,
 	"merge":                           Merge,
 	"messageCircle":                   MessageCircle,
 	"messageCircleCode":               MessageCircleCode,
@@ -861,7 +882,7 @@ var IconLookup = map[string]LucideIconFn{
 	"messagesSquare":                  MessagesSquare,
 	"mic":                             Mic,
 	"micOff":                          MicOff,
-	"micTwo":                          MicTwo,
+	"micVocal":                        MicVocal,
 	"microscope":                      Microscope,
 	"microwave":                       Microwave,
 	"milestone":                       Milestone,
@@ -870,8 +891,6 @@ var IconLookup = map[string]LucideIconFn{
 	"minimize":                        Minimize,
 	"minimizeTwo":                     MinimizeTwo,
 	"minus":                           Minus,
-	"minusCircle":                     MinusCircle,
-	"minusSquare":                     MinusSquare,
 	"monitor":                         Monitor,
 	"monitorCheck":                    MonitorCheck,
 	"monitorDot":                      MonitorDot,
@@ -886,15 +905,11 @@ var IconLookup = map[string]LucideIconFn{
 	"monitorX":                        MonitorX,
 	"moon":                            Moon,
 	"moonStar":                        MoonStar,
-	"moreHorizontal":                  MoreHorizontal,
-	"moreVertical":                    MoreVertical,
 	"mountain":                        Mountain,
 	"mountainSnow":                    MountainSnow,
 	"mouse":                           Mouse,
 	"mousePointer":                    MousePointer,
 	"mousePointerClick":               MousePointerClick,
-	"mousePointerSquare":              MousePointerSquare,
-	"mousePointerSquareDashed":        MousePointerSquareDashed,
 	"mousePointerTwo":                 MousePointerTwo,
 	"move":                            Move,
 	"moveDiagonal":                    MoveDiagonal,
@@ -921,12 +936,20 @@ var IconLookup = map[string]LucideIconFn{
 	"network":                         Network,
 	"newspaper":                       Newspaper,
 	"nfc":                             Nfc,
+	"notebook":                        Notebook,
+	"notebookPen":                     NotebookPen,
+	"notebookTabs":                    NotebookTabs,
+	"notebookText":                    NotebookText,
+	"notepadText":                     NotepadText,
+	"notepadTextDashed":               NotepadTextDashed,
 	"nut":                             Nut,
 	"nutOff":                          NutOff,
 	"octagon":                         Octagon,
+	"octagonAlert":                    OctagonAlert,
+	"octagonPause":                    OctagonPause,
+	"octagonX":                        OctagonX,
 	"option":                          Option,
 	"orbit":                           Orbit,
-	"outdent":                         Outdent,
 	"package":                         Package,
 	"packageCheck":                    PackageCheck,
 	"packageMinus":                    PackageMinus,
@@ -936,10 +959,10 @@ var IconLookup = map[string]LucideIconFn{
 	"packageTwo":                      PackageTwo,
 	"packageX":                        PackageX,
 	"paintBucket":                     PaintBucket,
+	"paintRoller":                     PaintRoller,
 	"paintbrush":                      Paintbrush,
 	"paintbrushTwo":                   PaintbrushTwo,
 	"palette":                         Palette,
-	"palmtree":                        Palmtree,
 	"panelBottom":                     PanelBottom,
 	"panelBottomClose":                PanelBottomClose,
 	"panelBottomDashed":               PanelBottomDashed,
@@ -961,29 +984,19 @@ var IconLookup = map[string]LucideIconFn{
 	"panelsTopLeft":                   PanelsTopLeft,
 	"paperclip":                       Paperclip,
 	"parentheses":                     Parentheses,
-	"parkingCircle":                   ParkingCircle,
-	"parkingCircleOff":                ParkingCircleOff,
 	"parkingMeter":                    ParkingMeter,
-	"parkingSquare":                   ParkingSquare,
-	"parkingSquareOff":                ParkingSquareOff,
 	"partyPopper":                     PartyPopper,
 	"pause":                           Pause,
-	"pauseCircle":                     PauseCircle,
-	"pauseOctagon":                    PauseOctagon,
 	"pawPrint":                        PawPrint,
 	"pcCase":                          PcCase,
 	"pen":                             Pen,
 	"penLine":                         PenLine,
-	"penSquare":                       PenSquare,
 	"penTool":                         PenTool,
 	"pencil":                          Pencil,
 	"pencilLine":                      PencilLine,
 	"pencilRuler":                     PencilRuler,
 	"pentagon":                        Pentagon,
 	"percent":                         Percent,
-	"percentCircle":                   PercentCircle,
-	"percentDiamond":                  PercentDiamond,
-	"percentSquare":                   PercentSquare,
 	"personStanding":                  PersonStanding,
 	"phone":                           Phone,
 	"phoneCall":                       PhoneCall,
@@ -993,14 +1006,13 @@ var IconLookup = map[string]LucideIconFn{
 	"phoneOff":                        PhoneOff,
 	"phoneOutgoing":                   PhoneOutgoing,
 	"pi":                              Pi,
-	"piSquare":                        PiSquare,
 	"piano":                           Piano,
+	"pickaxe":                         Pickaxe,
 	"pictureInPicture":                PictureInPicture,
 	"pictureInPictureTwo":             PictureInPictureTwo,
 	"pieChart":                        PieChart,
 	"piggyBank":                       PiggyBank,
 	"pilcrow":                         Pilcrow,
-	"pilcrowSquare":                   PilcrowSquare,
 	"pill":                            Pill,
 	"pin":                             Pin,
 	"pinOff":                          PinOff,
@@ -1010,15 +1022,11 @@ var IconLookup = map[string]LucideIconFn{
 	"planeLanding":                    PlaneLanding,
 	"planeTakeoff":                    PlaneTakeoff,
 	"play":                            Play,
-	"playCircle":                      PlayCircle,
-	"playSquare":                      PlaySquare,
 	"plug":                            Plug,
 	"plugTwo":                         PlugTwo,
 	"plugZap":                         PlugZap,
 	"plugZapTwo":                      PlugZapTwo,
 	"plus":                            Plus,
-	"plusCircle":                      PlusCircle,
-	"plusSquare":                      PlusSquare,
 	"pocket":                          Pocket,
 	"pocketKnife":                     PocketKnife,
 	"podcast":                         Podcast,
@@ -1028,12 +1036,11 @@ var IconLookup = map[string]LucideIconFn{
 	"popsicle":                        Popsicle,
 	"poundSterling":                   PoundSterling,
 	"power":                           Power,
-	"powerCircle":                     PowerCircle,
 	"powerOff":                        PowerOff,
-	"powerSquare":                     PowerSquare,
 	"presentation":                    Presentation,
 	"printer":                         Printer,
 	"projector":                       Projector,
+	"proportions":                     Proportions,
 	"puzzle":                          Puzzle,
 	"pyramid":                         Pyramid,
 	"qrCode":                          QrCode,
@@ -1041,6 +1048,7 @@ var IconLookup = map[string]LucideIconFn{
 	"rabbit":                          Rabbit,
 	"radar":                           Radar,
 	"radiation":                       Radiation,
+	"radical":                         Radical,
 	"radio":                           Radio,
 	"radioReceiver":                   RadioReceiver,
 	"radioTower":                      RadioTower,
@@ -1050,6 +1058,15 @@ var IconLookup = map[string]LucideIconFn{
 	"rat":                             Rat,
 	"ratio":                           Ratio,
 	"receipt":                         Receipt,
+	"receiptCent":                     ReceiptCent,
+	"receiptEuro":                     ReceiptEuro,
+	"receiptIndianRupee":              ReceiptIndianRupee,
+	"receiptJapaneseYen":              ReceiptJapaneseYen,
+	"receiptPoundSterling":            ReceiptPoundSterling,
+	"receiptRussianRuble":             ReceiptRussianRuble,
+	"receiptSwissFranc":               ReceiptSwissFranc,
+	"receiptText":                     ReceiptText,
+	"rectangleEllipsis":               RectangleEllipsis,
 	"rectangleHorizontal":             RectangleHorizontal,
 	"rectangleVertical":               RectangleVertical,
 	"recycle":                         Recycle,
@@ -1076,12 +1093,13 @@ var IconLookup = map[string]LucideIconFn{
 	"rockingChair":                    RockingChair,
 	"rollerCoaster":                   RollerCoaster,
 	"rotateCcw":                       RotateCcw,
+	"rotateCcwSquare":                 RotateCcwSquare,
 	"rotateCw":                        RotateCw,
+	"rotateCwSquare":                  RotateCwSquare,
 	"rotateThreeD":                    RotateThreeD,
 	"route":                           Route,
 	"routeOff":                        RouteOff,
 	"router":                          Router,
-	"rows":                            Rows,
 	"rowsFour":                        RowsFour,
 	"rowsThree":                       RowsThree,
 	"rowsTwo":                         RowsTwo,
@@ -1107,11 +1125,8 @@ var IconLookup = map[string]LucideIconFn{
 	"scanText":                        ScanText,
 	"scatterChart":                    ScatterChart,
 	"school":                          School,
-	"schoolTwo":                       SchoolTwo,
 	"scissors":                        Scissors,
 	"scissorsLineDashed":              ScissorsLineDashed,
-	"scissorsSquare":                  ScissorsSquare,
-	"scissorsSquareDashedBottom":      ScissorsSquareDashedBottom,
 	"screenShare":                     ScreenShare,
 	"screenShareOff":                  ScreenShareOff,
 	"scroll":                          Scroll,
@@ -1142,7 +1157,6 @@ var IconLookup = map[string]LucideIconFn{
 	"shieldAlert":                     ShieldAlert,
 	"shieldBan":                       ShieldBan,
 	"shieldCheck":                     ShieldCheck,
-	"shieldClose":                     ShieldClose,
 	"shieldEllipsis":                  ShieldEllipsis,
 	"shieldHalf":                      ShieldHalf,
 	"shieldMinus":                     ShieldMinus,
@@ -1162,7 +1176,6 @@ var IconLookup = map[string]LucideIconFn{
 	"shrub":                           Shrub,
 	"shuffle":                         Shuffle,
 	"sigma":                           Sigma,
-	"sigmaSquare":                     SigmaSquare,
 	"signal":                          Signal,
 	"signalHigh":                      SignalHigh,
 	"signalLow":                       SignalLow,
@@ -1177,8 +1190,8 @@ var IconLookup = map[string]LucideIconFn{
 	"slack":                           Slack,
 	"slash":                           Slash,
 	"slice":                           Slice,
-	"sliders":                         Sliders,
 	"slidersHorizontal":               SlidersHorizontal,
+	"slidersVertical":                 SlidersVertical,
 	"smartphone":                      Smartphone,
 	"smartphoneCharging":              SmartphoneCharging,
 	"smartphoneNfc":                   SmartphoneNfc,
@@ -1187,8 +1200,6 @@ var IconLookup = map[string]LucideIconFn{
 	"snail":                           Snail,
 	"snowflake":                       Snowflake,
 	"sofa":                            Sofa,
-	"sortAsc":                         SortAsc,
-	"sortDesc":                        SortDesc,
 	"soup":                            Soup,
 	"space":                           Space,
 	"spade":                           Spade,
@@ -1200,21 +1211,66 @@ var IconLookup = map[string]LucideIconFn{
 	"spellCheckTwo":                   SpellCheckTwo,
 	"spline":                          Spline,
 	"split":                           Split,
-	"splitSquareHorizontal":           SplitSquareHorizontal,
-	"splitSquareVertical":             SplitSquareVertical,
 	"sprayCan":                        SprayCan,
 	"sprout":                          Sprout,
 	"square":                          Square,
+	"squareActivity":                  SquareActivity,
+	"squareArrowDown":                 SquareArrowDown,
+	"squareArrowDownLeft":             SquareArrowDownLeft,
+	"squareArrowDownRight":            SquareArrowDownRight,
+	"squareArrowLeft":                 SquareArrowLeft,
+	"squareArrowOutDownLeft":          SquareArrowOutDownLeft,
+	"squareArrowOutDownRight":         SquareArrowOutDownRight,
+	"squareArrowOutUpLeft":            SquareArrowOutUpLeft,
+	"squareArrowOutUpRight":           SquareArrowOutUpRight,
+	"squareArrowRight":                SquareArrowRight,
+	"squareArrowUp":                   SquareArrowUp,
+	"squareArrowUpLeft":               SquareArrowUpLeft,
+	"squareArrowUpRight":              SquareArrowUpRight,
 	"squareAsterisk":                  SquareAsterisk,
+	"squareBottomDashedScissors":      SquareBottomDashedScissors,
+	"squareCheck":                     SquareCheck,
+	"squareCheckBig":                  SquareCheckBig,
+	"squareChevronDown":               SquareChevronDown,
+	"squareChevronLeft":               SquareChevronLeft,
+	"squareChevronRight":              SquareChevronRight,
+	"squareChevronUp":                 SquareChevronUp,
 	"squareCode":                      SquareCode,
 	"squareDashedBottom":              SquareDashedBottom,
 	"squareDashedBottomCode":          SquareDashedBottomCode,
+	"squareDashedKanban":              SquareDashedKanban,
+	"squareDashedMousePointer":        SquareDashedMousePointer,
+	"squareDivide":                    SquareDivide,
 	"squareDot":                       SquareDot,
 	"squareEqual":                     SquareEqual,
+	"squareFunction":                  SquareFunction,
+	"squareGanttChart":                SquareGanttChart,
+	"squareKanban":                    SquareKanban,
+	"squareLibrary":                   SquareLibrary,
+	"squareM":                         SquareM,
+	"squareMenu":                      SquareMenu,
+	"squareMinus":                     SquareMinus,
+	"squareMousePointer":              SquareMousePointer,
+	"squareParking":                   SquareParking,
+	"squareParkingOff":                SquareParkingOff,
+	"squarePen":                       SquarePen,
+	"squarePercent":                   SquarePercent,
+	"squarePi":                        SquarePi,
+	"squarePilcrow":                   SquarePilcrow,
+	"squarePlay":                      SquarePlay,
+	"squarePlus":                      SquarePlus,
+	"squarePower":                     SquarePower,
+	"squareRadical":                   SquareRadical,
+	"squareScissors":                  SquareScissors,
+	"squareSigma":                     SquareSigma,
 	"squareSlash":                     SquareSlash,
+	"squareSplitHorizontal":           SquareSplitHorizontal,
+	"squareSplitVertical":             SquareSplitVertical,
 	"squareStack":                     SquareStack,
+	"squareTerminal":                  SquareTerminal,
 	"squareUser":                      SquareUser,
 	"squareUserRound":                 SquareUserRound,
+	"squareX":                         SquareX,
 	"squircle":                        Squircle,
 	"squirrel":                        Squirrel,
 	"stamp":                           Stamp,
@@ -1226,13 +1282,11 @@ var IconLookup = map[string]LucideIconFn{
 	"stethoscope":                     Stethoscope,
 	"sticker":                         Sticker,
 	"stickyNote":                      StickyNote,
-	"stopCircle":                      StopCircle,
 	"store":                           Store,
 	"stretchHorizontal":               StretchHorizontal,
 	"stretchVertical":                 StretchVertical,
 	"strikethrough":                   Strikethrough,
 	"subscript":                       Subscript,
-	"subtitles":                       Subtitles,
 	"sun":                             Sun,
 	"sunDim":                          SunDim,
 	"sunMedium":                       SunMedium,
@@ -1241,13 +1295,18 @@ var IconLookup = map[string]LucideIconFn{
 	"sunrise":                         Sunrise,
 	"sunset":                          Sunset,
 	"superscript":                     Superscript,
+	"swatchBook":                      SwatchBook,
 	"swissFranc":                      SwissFranc,
 	"switchCamera":                    SwitchCamera,
 	"sword":                           Sword,
 	"swords":                          Swords,
 	"syringe":                         Syringe,
 	"table":                           Table,
+	"tableCellsMerge":                 TableCellsMerge,
+	"tableCellsSplit":                 TableCellsSplit,
+	"tableColumnsSplit":               TableColumnsSplit,
 	"tableProperties":                 TableProperties,
+	"tableRowsSplit":                  TableRowsSplit,
 	"tableTwo":                        TableTwo,
 	"tablet":                          Tablet,
 	"tabletSmartphone":                TabletSmartphone,
@@ -1261,17 +1320,18 @@ var IconLookup = map[string]LucideIconFn{
 	"tallyTwo":                        TallyTwo,
 	"tangent":                         Tangent,
 	"target":                          Target,
+	"telescope":                       Telescope,
 	"tent":                            Tent,
 	"tentTree":                        TentTree,
 	"terminal":                        Terminal,
-	"terminalSquare":                  TerminalSquare,
 	"testTube":                        TestTube,
-	"testTubeTwo":                     TestTubeTwo,
+	"testTubeDiagonal":                TestTubeDiagonal,
 	"testTubes":                       TestTubes,
 	"textCursor":                      TextCursor,
 	"textCursorInput":                 TextCursorInput,
 	"textIcon":                        TextIcon,
 	"textQuote":                       TextQuote,
+	"textSearch":                      TextSearch,
 	"textSelect":                      TextSelect,
 	"theater":                         Theater,
 	"thermometer":                     Thermometer,
@@ -1280,6 +1340,12 @@ var IconLookup = map[string]LucideIconFn{
 	"thumbsDown":                      ThumbsDown,
 	"thumbsUp":                        ThumbsUp,
 	"ticket":                          Ticket,
+	"ticketCheck":                     TicketCheck,
+	"ticketMinus":                     TicketMinus,
+	"ticketPercent":                   TicketPercent,
+	"ticketPlus":                      TicketPlus,
+	"ticketSlash":                     TicketSlash,
+	"ticketX":                         TicketX,
 	"timer":                           Timer,
 	"timerOff":                        TimerOff,
 	"timerReset":                      TimerReset,
@@ -1300,12 +1366,14 @@ var IconLookup = map[string]LucideIconFn{
 	"trash":                           Trash,
 	"trashTwo":                        TrashTwo,
 	"treeDeciduous":                   TreeDeciduous,
+	"treePalm":                        TreePalm,
 	"treePine":                        TreePine,
 	"trees":                           Trees,
 	"trello":                          Trello,
 	"trendingDown":                    TrendingDown,
 	"trendingUp":                      TrendingUp,
 	"triangle":                        Triangle,
+	"triangleAlert":                   TriangleAlert,
 	"triangleRight":                   TriangleRight,
 	"trophy":                          Trophy,
 	"truck":                           Truck,
@@ -1324,23 +1392,17 @@ var IconLookup = map[string]LucideIconFn{
 	"unfoldHorizontal":                UnfoldHorizontal,
 	"unfoldVertical":                  UnfoldVertical,
 	"ungroup":                         Ungroup,
+	"university":                      University,
 	"unlink":                          Unlink,
 	"unlinkTwo":                       UnlinkTwo,
-	"unlock":                          Unlock,
-	"unlockKeyhole":                   UnlockKeyhole,
 	"unplug":                          Unplug,
 	"upload":                          Upload,
-	"uploadCloud":                     UploadCloud,
 	"usb":                             Usb,
 	"user":                            User,
 	"userCheck":                       UserCheck,
-	"userCheckTwo":                    UserCheckTwo,
 	"userCog":                         UserCog,
-	"userCogTwo":                      UserCogTwo,
 	"userMinus":                       UserMinus,
-	"userMinusTwo":                    UserMinusTwo,
 	"userPlus":                        UserPlus,
-	"userPlusTwo":                     UserPlusTwo,
 	"userRound":                       UserRound,
 	"userRoundCheck":                  UserRoundCheck,
 	"userRoundCog":                    UserRoundCog,
@@ -1349,19 +1411,16 @@ var IconLookup = map[string]LucideIconFn{
 	"userRoundSearch":                 UserRoundSearch,
 	"userRoundX":                      UserRoundX,
 	"userSearch":                      UserSearch,
-	"userTwo":                         UserTwo,
 	"userX":                           UserX,
-	"userXtwo":                        UserXtwo,
 	"users":                           Users,
 	"usersRound":                      UsersRound,
-	"usersTwo":                        UsersTwo,
 	"utensils":                        Utensils,
 	"utensilsCrossed":                 UtensilsCrossed,
 	"utilityPole":                     UtilityPole,
 	"variable":                        Variable,
+	"vault":                           Vault,
 	"vegan":                           Vegan,
 	"venetianMask":                    VenetianMask,
-	"verified":                        Verified,
 	"vibrate":                         Vibrate,
 	"vibrateOff":                      VibrateOff,
 	"video":                           Video,
@@ -1376,16 +1435,18 @@ var IconLookup = map[string]LucideIconFn{
 	"vote":                            Vote,
 	"wallet":                          Wallet,
 	"walletCards":                     WalletCards,
-	"walletTwo":                       WalletTwo,
+	"walletMinimal":                   WalletMinimal,
 	"wallpaper":                       Wallpaper,
 	"wand":                            Wand,
-	"wandTwo":                         WandTwo,
+	"wandSparkles":                    WandSparkles,
 	"warehouse":                       Warehouse,
+	"washingMachine":                  WashingMachine,
 	"watch":                           Watch,
 	"waves":                           Waves,
 	"waypoints":                       Waypoints,
 	"webcam":                          Webcam,
 	"webhook":                         Webhook,
+	"webhookOff":                      WebhookOff,
 	"weight":                          Weight,
 	"wheat":                           Wheat,
 	"wheatOff":                        WheatOff,
@@ -1396,12 +1457,10 @@ var IconLookup = map[string]LucideIconFn{
 	"wine":                            Wine,
 	"wineOff":                         WineOff,
 	"workflow":                        Workflow,
+	"worm":                            Worm,
 	"wrapText":                        WrapText,
 	"wrench":                          Wrench,
 	"x":                               X,
-	"xcircle":                         Xcircle,
-	"xoctagon":                        Xoctagon,
-	"xsquare":                         Xsquare,
 	"youtube":                         Youtube,
 	"zap":                             Zap,
 	"zapOff":                          ZapOff,
@@ -1449,14 +1508,6 @@ func Activity(children ...ElementRenderer) *LucideIcon {
 	}
 }
 
-func ActivitySquare(children ...ElementRenderer) *LucideIcon {
-	return &LucideIcon{
-		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M17 12h-2l-2 5l-2-10l-2 5H7"/></g>`),
-		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
-	}
-}
-
 func AirVent(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
@@ -1468,7 +1519,7 @@ func AirVent(children ...ElementRenderer) *LucideIcon {
 func Airplay(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M5 17H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-1"/><path d="m12 15l5 6H7z"/></g>`),
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M5 17H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-1"/><path d="m12 15l5 6H7Z"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -1525,30 +1576,6 @@ func Album(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><path d="M11 3v8l3-3l3 3V3"/></g>`),
-		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
-	}
-}
-
-func AlertCircle(children ...ElementRenderer) *LucideIcon {
-	return &LucideIcon{
-		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4m0 4h.01"/></g>`),
-		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
-	}
-}
-
-func AlertOctagon(children ...ElementRenderer) *LucideIcon {
-	return &LucideIcon{
-		SVGSVGElement: SVG_SVG(
-			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7.86 2h8.28L22 7.86v8.28L16.14 22H7.86L2 16.14V7.86zM12 8v4m0 4h.01"/>`),
-		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
-	}
-}
-
-func AlertTriangle(children ...ElementRenderer) *LucideIcon {
-	return &LucideIcon{
-		SVGSVGElement: SVG_SVG(
-			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m21.73 18l-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3M12 9v4m0 4h.01"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -1700,7 +1727,7 @@ func AlignStartVertical(children ...ElementRenderer) *LucideIcon {
 func AlignVerticalDistributeCenter(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect width="14" height="6" x="5" y="14" rx="2"/><rect width="10" height="6" x="7" y="4" rx="2"/><path d="M22 7h-5M7 7H1m21 10h-3M5 17H2"/></g>`),
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M22 17h-3m3-10h-5M5 17H2M7 7H2"/><rect width="14" height="6" x="5" y="14" rx="2"/><rect width="10" height="6" x="7" y="4" rx="2"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -1761,6 +1788,14 @@ func AlignVerticalSpaceBetween(children ...ElementRenderer) *LucideIcon {
 	}
 }
 
+func Ambulance(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M10 10H6m8 8V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2m14 0h2a1 1 0 0 0 1-1v-3.28a1 1 0 0 0-.684-.948l-1.923-.641a1 1 0 0 1-.578-.502l-1.539-3.076A1 1 0 0 0 16.382 8H14M8 8v4m1 6h6"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func Ampersand(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
@@ -1780,7 +1815,7 @@ func Ampersands(children ...ElementRenderer) *LucideIcon {
 func Anchor(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="5" r="3"/><path d="M12 22V8m-7 4H2a10 10 0 0 0 20 0h-3"/></g>`),
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M12 22V8m-7 4H2a10 10 0 0 0 20 0h-3"/><circle cx="12" cy="5" r="3"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -1812,7 +1847,7 @@ func Antenna(children ...ElementRenderer) *LucideIcon {
 func Anvil(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 10c-2.8 0-5-2.2-5-5h5m0-1v8h7a8 8 0 0 0 8-8Zm2 8v5m6-5v5M5 20a3 3 0 0 1 3-3h8a3 3 0 0 1 3 3v1H5Z"/>`),
+			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 10H6a4 4 0 0 1-4-4a1 1 0 0 1 1-1h4m0 0a1 1 0 0 1 1-1h13a1 1 0 0 1 1 1a7 7 0 0 1-7 7H8a1 1 0 0 1-1-1zm2 7v5m6-5v5M5 20a3 3 0 0 1 3-3h8a3 3 0 0 1 3 3a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -1829,6 +1864,14 @@ func AppWindow(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="M10 4v4M2 8h20M6 4v4"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func AppWindowMac(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="M6 8h.01M10 8h.01M14 8h.01"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -1961,14 +2004,6 @@ func ArrowDownAz(children ...ElementRenderer) *LucideIcon {
 	}
 }
 
-func ArrowDownCircle(children ...ElementRenderer) *LucideIcon {
-	return &LucideIcon{
-		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v8m-4-4l4 4l4-4"/></g>`),
-		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
-	}
-}
-
 func ArrowDownFromLine(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
@@ -1981,22 +2016,6 @@ func ArrowDownLeft(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 7L7 17m10 0H7V7"/>`),
-		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
-	}
-}
-
-func ArrowDownLeftFromCircle(children ...ElementRenderer) *LucideIcon {
-	return &LucideIcon{
-		SVGSVGElement: SVG_SVG(
-			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2 12a10 10 0 1 1 10 10M2 22l10-10M8 22H2v-6"/>`),
-		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
-	}
-}
-
-func ArrowDownLeftSquare(children ...ElementRenderer) *LucideIcon {
-	return &LucideIcon{
-		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="m16 8l-8 8m8 0H8V8"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -2021,30 +2040,6 @@ func ArrowDownRight(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m7 7l10 10m0-10v10H7"/>`),
-		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
-	}
-}
-
-func ArrowDownRightFromCircle(children ...ElementRenderer) *LucideIcon {
-	return &LucideIcon{
-		SVGSVGElement: SVG_SVG(
-			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 22a10 10 0 1 1 10-10m0 10L12 12m10 4v6h-6"/>`),
-		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
-	}
-}
-
-func ArrowDownRightSquare(children ...ElementRenderer) *LucideIcon {
-	return &LucideIcon{
-		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="m8 8l8 8m0-8v8H8"/></g>`),
-		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
-	}
-}
-
-func ArrowDownSquare(children ...ElementRenderer) *LucideIcon {
-	return &LucideIcon{
-		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M12 8v8m-4-4l4 4l4-4"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -2105,14 +2100,6 @@ func ArrowLeft(children ...ElementRenderer) *LucideIcon {
 	}
 }
 
-func ArrowLeftCircle(children ...ElementRenderer) *LucideIcon {
-	return &LucideIcon{
-		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M16 12H8m4-4l-4 4l4 4"/></g>`),
-		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
-	}
-}
-
 func ArrowLeftFromLine(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
@@ -2125,14 +2112,6 @@ func ArrowLeftRight(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 3L4 7l4 4M4 7h16m-4 14l4-4l-4-4m4 4H4"/>`),
-		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
-	}
-}
-
-func ArrowLeftSquare(children ...ElementRenderer) *LucideIcon {
-	return &LucideIcon{
-		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="m12 8l-4 4l4 4m4-4H8"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -2153,14 +2132,6 @@ func ArrowRight(children ...ElementRenderer) *LucideIcon {
 	}
 }
 
-func ArrowRightCircle(children ...ElementRenderer) *LucideIcon {
-	return &LucideIcon{
-		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 12h8m-4 4l4-4l-4-4"/></g>`),
-		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
-	}
-}
-
 func ArrowRightFromLine(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
@@ -2173,14 +2144,6 @@ func ArrowRightLeft(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m16 3l4 4l-4 4m4-4H4m4 14l-4-4l4-4m-4 4h16"/>`),
-		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
-	}
-}
-
-func ArrowRightSquare(children ...ElementRenderer) *LucideIcon {
-	return &LucideIcon{
-		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M8 12h8m-4 4l4-4l-4-4"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -2205,14 +2168,6 @@ func ArrowUpAz(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m3 8l4-4l4 4M7 4v16M20 8h-5m0 2V6.5a2.5 2.5 0 0 1 5 0V10m-5 4h5l-5 6h5"/>`),
-		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
-	}
-}
-
-func ArrowUpCircle(children ...ElementRenderer) *LucideIcon {
-	return &LucideIcon{
-		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m16 12l-4-4l-4 4m4 4V8"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -2249,22 +2204,6 @@ func ArrowUpLeft(children ...ElementRenderer) *LucideIcon {
 	}
 }
 
-func ArrowUpLeftFromCircle(children ...ElementRenderer) *LucideIcon {
-	return &LucideIcon{
-		SVGSVGElement: SVG_SVG(
-			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2 8V2h6M2 2l10 10m0-10A10 10 0 1 1 2 12"/>`),
-		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
-	}
-}
-
-func ArrowUpLeftSquare(children ...ElementRenderer) *LucideIcon {
-	return &LucideIcon{
-		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M8 16V8h8m0 8L8 8"/></g>`),
-		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
-	}
-}
-
 func ArrowUpNarrowWide(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
@@ -2285,30 +2224,6 @@ func ArrowUpRight(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h10v10M7 17L17 7"/>`),
-		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
-	}
-}
-
-func ArrowUpRightFromCircle(children ...ElementRenderer) *LucideIcon {
-	return &LucideIcon{
-		SVGSVGElement: SVG_SVG(
-			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M22 12A10 10 0 1 1 12 2m10 0L12 12m4-10h6v6"/>`),
-		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
-	}
-}
-
-func ArrowUpRightSquare(children ...ElementRenderer) *LucideIcon {
-	return &LucideIcon{
-		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M8 8h8v8m-8 0l8-8"/></g>`),
-		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
-	}
-}
-
-func ArrowUpSquare(children ...ElementRenderer) *LucideIcon {
-	return &LucideIcon{
-		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="m16 12l-4-4l-4 4m4 4V8"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -2793,6 +2708,14 @@ func Beer(children ...ElementRenderer) *LucideIcon {
 	}
 }
 
+func BeerOff(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M13 13v5m4-6.53V8m0 3h1a3 3 0 0 1 2.745 4.211M2 2l20 20M5 8v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2v-3"/><path d="M7.536 7.535C6.766 7.649 6.154 8 5.5 8a2.5 2.5 0 0 1-1.768-4.268m4.995-.528C9.306 2.767 9.885 2 11 2c1.56 0 2 1.5 3 1.5s1.72-.5 2.5-.5a1 1 0 1 1 0 5c-.78 0-1.5-.5-2.5-.5a3.149 3.149 0 0 0-.842.12M9 14.6V18"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func Bell(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
@@ -2849,6 +2772,38 @@ func BellRing(children ...ElementRenderer) *LucideIcon {
 	}
 }
 
+func BetweenHorizontalEnd(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect width="13" height="7" x="3" y="3" rx="1"/><path d="m22 15l-3-3l3-3"/><rect width="13" height="7" x="3" y="14" rx="1"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func BetweenHorizontalStart(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect width="13" height="7" x="8" y="3" rx="1"/><path d="m2 9l3 3l-3 3"/><rect width="13" height="7" x="8" y="14" rx="1"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func BetweenVerticalEnd(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect width="7" height="13" x="3" y="3" rx="1"/><path d="m9 22l3-3l3 3"/><rect width="7" height="13" x="14" y="3" rx="1"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func BetweenVerticalStart(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect width="7" height="13" x="3" y="8" rx="1"/><path d="m15 2l-3 3l-3-3"/><rect width="7" height="13" x="14" y="8" rx="1"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func Bike(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
@@ -2885,6 +2840,14 @@ func Bitcoin(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.767 19.089c4.924.868 6.14-6.025 1.216-6.894m-1.216 6.894L5.86 18.047m5.908 1.042l-.347 1.97m1.563-8.864c4.924.869 6.14-6.025 1.215-6.893m-1.215 6.893l-3.94-.694m5.155-6.2L8.29 4.26m5.908 1.042l.348-1.97M7.48 20.364l3.126-17.727"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func Blend(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="9" cy="9" r="7"/><circle cx="15" cy="15" r="7"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -2941,6 +2904,14 @@ func Bold(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 12a4 4 0 0 0 0-8H6v8m9 8a4 4 0 0 0 0-8H6v8Z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func Bolt(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16"/><circle cx="12" cy="12" r="4"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -3209,6 +3180,14 @@ func Bot(children ...ElementRenderer) *LucideIcon {
 	}
 }
 
+func BotMessageSquare(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V2H8m0 16l-4 4V8a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2Zm-6-6h2m5-1v2m6-2v2m5-1h2"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func Box(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
@@ -3252,7 +3231,7 @@ func Brackets(children ...ElementRenderer) *LucideIcon {
 func Brain(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44a2.5 2.5 0 0 1-2.96-3.08a3 3 0 0 1-.34-5.58a2.5 2.5 0 0 1 1.32-4.24a2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2m5 0A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44a2.5 2.5 0 0 0 2.96-3.08a3 3 0 0 0 .34-5.58a2.5 2.5 0 0 0-1.32-4.24a2.5 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 14.5 2"/>`),
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M12 5a3 3 0 1 0-5.997.125a4 4 0 0 0-2.526 5.77a4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18Z"/><path d="M12 5a3 3 0 1 1 5.997.125a4 4 0 0 1 2.526 5.77a4 4 0 0 1-.556 6.588A4 4 0 1 1 12 18Z"/><path d="M15 13a4.5 4.5 0 0 1-3-4a4.5 4.5 0 0 1-3 4m8.599-6.5a3 3 0 0 0 .399-1.375m-11.995 0A3 3 0 0 0 6.401 6.5m-2.924 4.396a4 4 0 0 1 .585-.396m15.876 0a4 4 0 0 1 .585.396M6 18a4 4 0 0 1-1.967-.516m15.934 0A4 4 0 0 1 18 18"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -3260,7 +3239,7 @@ func Brain(children ...ElementRenderer) *LucideIcon {
 func BrainCircuit(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M12 4.5a2.5 2.5 0 0 0-4.96-.46a2.5 2.5 0 0 0-1.98 3a2.5 2.5 0 0 0-1.32 4.24a3 3 0 0 0 .34 5.58a2.5 2.5 0 0 0 2.96 3.08a2.5 2.5 0 0 0 4.91.05L12 20zM16 8V5c0-1.1.9-2 2-2m-6 10h4"/><path d="M12 18h6a2 2 0 0 1 2 2v1M12 8h8m.5 0a.5.5 0 1 1-1 0a.5.5 0 0 1 1 0m-4 5a.5.5 0 1 1-1 0a.5.5 0 0 1 1 0"/><path d="M20.5 21a.5.5 0 1 1-1 0a.5.5 0 0 1 1 0m-2-18a.5.5 0 1 1-1 0a.5.5 0 0 1 1 0"/></g>`),
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M12 5a3 3 0 1 0-5.997.125a4 4 0 0 0-2.526 5.77a4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18Z"/><path d="M9 13a4.5 4.5 0 0 0 3-4M6.003 5.125A3 3 0 0 0 6.401 6.5m-2.924 4.396a4 4 0 0 1 .585-.396M6 18a4 4 0 0 1-1.967-.516M12 13h4m-4 5h6a2 2 0 0 1 2 2v1M12 8h8m-4 0V5a2 2 0 0 1 2-2"/><circle cx="16" cy="13" r=".5"/><circle cx="18" cy="3" r=".5"/><circle cx="20" cy="21" r=".5"/><circle cx="20" cy="8" r=".5"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -3268,7 +3247,7 @@ func BrainCircuit(children ...ElementRenderer) *LucideIcon {
 func BrainCog(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 4.5a2.5 2.5 0 0 0-4.96-.46a2.5 2.5 0 0 0-1.98 3a2.5 2.5 0 0 0-1.32 4.24a3 3 0 0 0 .34 5.58a2.5 2.5 0 0 0 2.96 3.08A2.5 2.5 0 0 0 12 19.5a2.5 2.5 0 0 0 4.96.44a2.5 2.5 0 0 0 2.96-3.08a3 3 0 0 0 .34-5.58a2.5 2.5 0 0 0-1.32-4.24a2.5 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 12 4.5m3.7 5.9l-.9.4m-5.6 2.4l-.9.4m5.3 2.1l-.4-.9m-2.4-5.6l-.4-.9m5.3 5.2l-.9-.4m-5.6-2.2l-.9-.4m2.2 5.2l.4-.9m2.2-5.6l.4-.9"/></g>`),
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M12 5a3 3 0 1 0-5.997.142a4 4 0 0 0-2.526 5.77a4 4 0 0 0 .556 6.588a4 4 0 0 0 7.636 2.106a3.2 3.2 0 0 0 .164-.546c.028-.13.306-.13.335 0a3.2 3.2 0 0 0 .163.546a4 4 0 0 0 7.636-2.106a4 4 0 0 0 .556-6.588a4 4 0 0 0-2.526-5.77A3 3 0 1 0 12 5"/><path d="M17.599 6.5a3 3 0 0 0 .399-1.375m-11.995 0A3 3 0 0 0 6.401 6.5m-2.924 4.396a4 4 0 0 1 .585-.396m15.876 0a4 4 0 0 1 .585.396M6 18a4 4 0 0 1-1.967-.516m15.934 0A4 4 0 0 1 18 18"/><circle cx="12" cy="12" r="3"/><path d="m15.7 10.4l-.9.4m-5.6 2.4l-.9.4m5.3 2.1l-.4-.9m-2.4-5.6l-.4-.9m5.3 5.2l-.9-.4m-5.6-2.2l-.9-.4m2.2 5.2l.4-.9m2.2-5.6l.4-.9"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -3284,7 +3263,23 @@ func BrickWall(children ...ElementRenderer) *LucideIcon {
 func Briefcase(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect width="20" height="14" x="2" y="7" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></g>`),
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/><rect width="20" height="14" x="2" y="6" rx="2"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func BriefcaseBusiness(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M12 12h.01M16 6V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2m14 7a18.15 18.15 0 0 1-20 0"/><rect width="20" height="14" x="2" y="6" rx="2"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func BriefcaseMedical(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M12 11v4m2-2h-4m6-7V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2m10 0v14M6 6v14"/><rect width="20" height="14" x="2" y="6" rx="2"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -3324,7 +3319,7 @@ func BugOff(children ...ElementRenderer) *LucideIcon {
 func BugPlay(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="m8 2l1.88 1.88m4.24 0L16 2M9 7.13v-1a3.003 3.003 0 1 1 6 0v1"/><path d="M18 11a4 4 0 0 0-4-4h-4a4 4 0 0 0-4 4v3a6.1 6.1 0 0 0 2 4.5"/><path d="M6.53 9C4.6 8.8 3 7.1 3 5m3 8H2m1 8c0-2.1 1.7-3.9 3.8-4M20.97 5c0 2.1-1.6 3.8-3.5 4M12 12l8 5l-8 5Z"/></g>`),
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M12.765 21.522a.5.5 0 0 1-.765-.424v-8.196a.5.5 0 0 1 .765-.424l5.878 3.674a1 1 0 0 1 0 1.696zM14.12 3.88L16 2"/><path d="M18 11a4 4 0 0 0-4-4h-4a4 4 0 0 0-4 4v3a6.1 6.1 0 0 0 2 4.5"/><path d="M20.97 5c0 2.1-1.6 3.8-3.5 4M3 21c0-2.1 1.7-3.9 3.8-4M6 13H2m4.53-4C4.6 8.8 3 7.1 3 5m5-3l1.88 1.88M9 7.13v-1a3.003 3.003 0 1 1 6 0v1"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -3404,7 +3399,7 @@ func Calculator(children ...ElementRenderer) *LucideIcon {
 func Calendar(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><path d="M16 2v4M8 2v4m-5 4h18"/></g>`),
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M8 2v4m8-4v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -3412,7 +3407,7 @@ func Calendar(children ...ElementRenderer) *LucideIcon {
 func CalendarCheck(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><path d="M16 2v4M8 2v4m-5 4h18M9 16l2 2l4-4"/></g>`),
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M8 2v4m8-4v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18M9 16l2 2l4-4"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -3420,7 +3415,7 @@ func CalendarCheck(children ...ElementRenderer) *LucideIcon {
 func CalendarCheckTwo(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 14V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h8m3-20v4M8 2v4m-5 4h18m-5 10l2 2l4-4"/>`),
+			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 2v4m8-4v4m5 8V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h8M3 10h18m-5 10l2 2l4-4"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -3428,7 +3423,7 @@ func CalendarCheckTwo(children ...ElementRenderer) *LucideIcon {
 func CalendarClock(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M21 7.5V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h3.5M16 2v4M8 2v4m-5 4h5m9.5 7.5L16 16.25V14"/><path d="M22 16a6 6 0 1 1-12 0a6 6 0 0 1 12 0"/></g>`),
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M21 7.5V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h3.5M16 2v4M8 2v4m-5 4h5m9.5 7.5L16 16.3V14"/><circle cx="16" cy="16" r="6"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -3436,7 +3431,15 @@ func CalendarClock(children ...ElementRenderer) *LucideIcon {
 func CalendarDays(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><path d="M16 2v4M8 2v4m-5 4h18M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01M16 18h.01"/></g>`),
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M8 2v4m8-4v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01M16 18h.01"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func CalendarFold(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M8 2v4m8-4v4m5 11V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h11ZM3 10h18"/><path d="M15 22v-4a2 2 0 0 1 2-2h4"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -3444,7 +3447,7 @@ func CalendarDays(children ...ElementRenderer) *LucideIcon {
 func CalendarHeart(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M21 10V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14c0 1.1.9 2 2 2h7m4-20v4M8 2v4m-5 4h18"/><path d="M21.29 14.7a2.43 2.43 0 0 0-2.65-.52c-.3.12-.57.3-.8.53l-.34.34l-.35-.34a2.43 2.43 0 0 0-2.65-.53c-.3.12-.56.3-.79.53c-.95.94-1 2.53.2 3.74L17.5 22l3.6-3.55c1.2-1.21 1.14-2.8.19-3.74Z"/></g>`),
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M3 10h18V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h7M8 2v4m8-4v4"/><path d="M21.29 14.7a2.43 2.43 0 0 0-2.65-.52c-.3.12-.57.3-.8.53l-.34.34l-.35-.34a2.43 2.43 0 0 0-2.65-.53c-.3.12-.56.3-.79.53c-.95.94-1 2.53.2 3.74L17.5 22l3.6-3.55c1.2-1.21 1.14-2.8.19-3.74Z"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -3452,7 +3455,15 @@ func CalendarHeart(children ...ElementRenderer) *LucideIcon {
 func CalendarMinus(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h8m3-20v4M8 2v4m-5 4h18m-5 9h6"/>`),
+			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 2v4m8-4v4m5 7V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h8M3 10h18m-5 9h6"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func CalendarMinusTwo(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M8 2v4m8-4v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18m-11 6h4"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -3460,7 +3471,7 @@ func CalendarMinus(children ...ElementRenderer) *LucideIcon {
 func CalendarOff(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.18 4.18A2 2 0 0 0 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 1.82-1.18M21 15.5V6a2 2 0 0 0-2-2H9.5M16 2v4M3 10h7m11 0h-5.5M2 2l20 20"/>`),
+			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.2 4.2A2 2 0 0 0 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 1.82-1.18M21 15.5V6a2 2 0 0 0-2-2H9.5M16 2v4M3 10h7m11 0h-5.5M2 2l20 20"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -3468,7 +3479,15 @@ func CalendarOff(children ...ElementRenderer) *LucideIcon {
 func CalendarPlus(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h8m3-20v4M8 2v4m-5 4h18m-2 6v6m-3-3h6"/>`),
+			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 2v4m8-4v4m5 7V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h8M3 10h18m-5 9h6m-3-3v6"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func CalendarPlusTwo(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M8 2v4m8-4v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18m-11 6h4m-2-2v4"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -3476,7 +3495,7 @@ func CalendarPlus(children ...ElementRenderer) *LucideIcon {
 func CalendarRange(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><path d="M16 2v4M8 2v4m-5 4h18m-4 4h-6m2 4H7m0-4h.01M17 18h.01"/></g>`),
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M16 2v4M3 10h18M8 2v4m9 8h-6m2 4H7m0-4h.01M17 18h.01"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -3484,7 +3503,7 @@ func CalendarRange(children ...ElementRenderer) *LucideIcon {
 func CalendarSearch(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M21 12V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14c0 1.1.9 2 2 2h7.5M16 2v4M8 2v4m-5 4h18"/><path d="M18 21a3 3 0 1 0 0-6a3 3 0 0 0 0 6m4 1l-1.5-1.5"/></g>`),
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M21 12V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h7.5M16 2v4M8 2v4m-5 4h18"/><circle cx="18" cy="18" r="3"/><path d="m22 22l-1.5-1.5"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -3492,7 +3511,7 @@ func CalendarSearch(children ...ElementRenderer) *LucideIcon {
 func CalendarX(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><path d="M16 2v4M8 2v4m-5 4h18m-11 4l4 4m0-4l-4 4"/></g>`),
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M8 2v4m8-4v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18m-7 4l-4 4m0-4l4 4"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -3500,7 +3519,7 @@ func CalendarX(children ...ElementRenderer) *LucideIcon {
 func CalendarXtwo(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h8m3-20v4M8 2v4m-5 4h18m-4 7l5 5m-5 0l5-5"/>`),
+			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 2v4m8-4v4m5 7V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h8M3 10h18m-4 12l5-5m-5 0l5 5"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -3549,6 +3568,30 @@ func CandyOff(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="m8.5 8.5l-1 1a4.95 4.95 0 0 0 7 7l1-1m-3.657-9.313A4.947 4.947 0 0 1 16.5 7.5a4.947 4.947 0 0 1 1.313 4.657M14 16.5V14m0-7.5v1.843M10 10v7.5"/><path d="m16 7l1-5l1.367.683A3 3 0 0 0 19.708 3H21v1.292a3 3 0 0 0 .317 1.341L22 7l-5 1m-9 9l-1 5l-1.367-.683A3 3 0 0 0 4.292 21H3v-1.292a3 3 0 0 0-.317-1.341L2 17l5-1M2 2l20 20"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func Cannabis(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 22v-4m-5-6c-1.5 0-4.5 1.5-5 3c3.5 1.5 6 1 6 1c-1.5 1.5-2 3.5-2 5c2.5 0 4.5-1.5 6-3c1.5 1.5 3.5 3 6 3c0-1.5-.5-3.5-2-5c0 0 2.5.5 6-1c-.5-1.5-3.5-3-5-3c1.5-1 4-4 4-6c-2.5 0-5.5 1.5-7 3c0-2.5-.5-5-2-7c-1.5 2-2 4.5-2 7c-1.5-1.5-4.5-3-7-3c0 2 2.5 5 4 6"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func Captions(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect width="18" height="14" x="3" y="5" rx="2" ry="2"/><path d="M7 15h4m4 0h2M7 11h2m4 0h4"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func CaptionsOff(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.5 5H19a2 2 0 0 1 2 2v8.5M17 11h-.5m2.5 8H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2M2 2l20 20M7 11h4m-4 4h2.5"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -3673,42 +3716,10 @@ func CheckCheck(children ...ElementRenderer) *LucideIcon {
 	}
 }
 
-func CheckCircle(children ...ElementRenderer) *LucideIcon {
-	return &LucideIcon{
-		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11l3 3L22 4"/></g>`),
-		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
-	}
-}
-
-func CheckCircleTwo(children ...ElementRenderer) *LucideIcon {
-	return &LucideIcon{
-		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m9 12l2 2l4-4"/></g>`),
-		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
-	}
-}
-
-func CheckSquare(children ...ElementRenderer) *LucideIcon {
-	return &LucideIcon{
-		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="m9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></g>`),
-		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
-	}
-}
-
-func CheckSquareTwo(children ...ElementRenderer) *LucideIcon {
-	return &LucideIcon{
-		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="m9 12l2 2l4-4"/></g>`),
-		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
-	}
-}
-
 func ChefHat(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 13.87A4 4 0 0 1 7.41 6a5.11 5.11 0 0 1 1.05-1.54a5 5 0 0 1 7.08 0A5.11 5.11 0 0 1 16.59 6A4 4 0 0 1 18 13.87V21H6ZM6 17h12"/>`),
+			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 21a1 1 0 0 0 1-1v-5.35c0-.457.316-.844.727-1.041a4 4 0 0 0-2.134-7.589a5 5 0 0 0-9.186 0a4 4 0 0 0-2.134 7.588c.411.198.727.585.727 1.041V20a1 1 0 0 0 1 1ZM6 17h12"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -3725,22 +3736,6 @@ func ChevronDown(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m6 9l6 6l6-6"/>`),
-		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
-	}
-}
-
-func ChevronDownCircle(children ...ElementRenderer) *LucideIcon {
-	return &LucideIcon{
-		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m16 10l-4 4l-4-4"/></g>`),
-		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
-	}
-}
-
-func ChevronDownSquare(children ...ElementRenderer) *LucideIcon {
-	return &LucideIcon{
-		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="m16 10l-4 4l-4-4"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -3769,22 +3764,6 @@ func ChevronLeft(children ...ElementRenderer) *LucideIcon {
 	}
 }
 
-func ChevronLeftCircle(children ...ElementRenderer) *LucideIcon {
-	return &LucideIcon{
-		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m14 16l-4-4l4-4"/></g>`),
-		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
-	}
-}
-
-func ChevronLeftSquare(children ...ElementRenderer) *LucideIcon {
-	return &LucideIcon{
-		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="m14 16l-4-4l4-4"/></g>`),
-		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
-	}
-}
-
 func ChevronRight(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
@@ -3793,42 +3772,10 @@ func ChevronRight(children ...ElementRenderer) *LucideIcon {
 	}
 }
 
-func ChevronRightCircle(children ...ElementRenderer) *LucideIcon {
-	return &LucideIcon{
-		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m10 8l4 4l-4 4"/></g>`),
-		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
-	}
-}
-
-func ChevronRightSquare(children ...ElementRenderer) *LucideIcon {
-	return &LucideIcon{
-		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="m10 8l4 4l-4 4"/></g>`),
-		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
-	}
-}
-
 func ChevronUp(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m18 15l-6-6l-6 6"/>`),
-		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
-	}
-}
-
-func ChevronUpCircle(children ...ElementRenderer) *LucideIcon {
-	return &LucideIcon{
-		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m8 14l4-4l4 4"/></g>`),
-		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
-	}
-}
-
-func ChevronUpSquare(children ...ElementRenderer) *LucideIcon {
-	return &LucideIcon{
-		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="m8 14l4-4l4 4"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -3937,10 +3884,138 @@ func Circle(children ...ElementRenderer) *LucideIcon {
 	}
 }
 
+func CircleAlert(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4m0 4h.01"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func CircleArrowDown(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v8m-4-4l4 4l4-4"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func CircleArrowLeft(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M16 12H8m4-4l-4 4l4 4"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func CircleArrowOutDownLeft(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2 12a10 10 0 1 1 10 10M2 22l10-10M8 22H2v-6"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func CircleArrowOutDownRight(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 22a10 10 0 1 1 10-10m0 10L12 12m10 4v6h-6"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func CircleArrowOutUpLeft(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2 8V2h6M2 2l10 10m0-10A10 10 0 1 1 2 12"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func CircleArrowOutUpRight(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M22 12A10 10 0 1 1 12 2m10 0L12 12m4-10h6v6"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func CircleArrowRight(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 12h8m-4 4l4-4l-4-4"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func CircleArrowUp(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m16 12l-4-4l-4 4m4 4V8"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func CircleCheck(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m9 12l2 2l4-4"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func CircleCheckBig(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11l3 3L22 4"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func CircleChevronDown(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m16 10l-4 4l-4-4"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func CircleChevronLeft(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m14 16l-4-4l4-4"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func CircleChevronRight(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m10 8l4 4l-4 4"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func CircleChevronUp(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m8 14l4-4l4 4"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func CircleDashed(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.1 2.18a9.93 9.93 0 0 1 3.8 0m3.7 1.53a9.95 9.95 0 0 1 2.69 2.7m1.53 3.69a9.93 9.93 0 0 1 0 3.8m-1.53 3.7a9.95 9.95 0 0 1-2.7 2.69m-3.69 1.53a9.94 9.94 0 0 1-3.8 0m-3.7-1.53a9.95 9.95 0 0 1-2.69-2.7M2.18 13.9a9.93 9.93 0 0 1 0-3.8m1.53-3.7a9.95 9.95 0 0 1 2.7-2.69"/>`),
+			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.1 2.182a10 10 0 0 1 3.8 0m0 19.636a10 10 0 0 1-3.8 0m7.509-18.097a10 10 0 0 1 2.69 2.7M2.182 13.9a10 10 0 0 1 0-3.8m18.097 7.509a10 10 0 0 1-2.7 2.69M21.818 10.1a10 10 0 0 1 0 3.8M3.721 6.391a10 10 0 0 1 2.7-2.69m-.03 16.578a10 10 0 0 1-2.69-2.7"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func CircleDivide(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M8 12h8m-4-4"/><circle cx="12" cy="12" r="10"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -3985,10 +4060,98 @@ func CircleEqual(children ...ElementRenderer) *LucideIcon {
 	}
 }
 
+func CircleFadingPlus(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 2a10 10 0 0 1 7.38 16.75M12 8v8m4-4H8M2.5 8.875a10 10 0 0 0-.5 3M2.83 16a10 10 0 0 0 2.43 3.4M4.636 5.235a10 10 0 0 1 .891-.857M8.644 21.42a10 10 0 0 0 7.631-.38"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func CircleGauge(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M15.6 2.7a10 10 0 1 0 5.7 5.7"/><circle cx="12" cy="12" r="2"/><path d="M13.4 10.6L19 5"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func CircleHelp(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3m.08 4h.01"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func CircleMinus(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 12h8"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func CircleOff(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m2 2l20 20M8.35 2.69A10 10 0 0 1 21.3 15.65m-2.22 3.43A10 10 0 1 1 4.92 4.92"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func CircleParking(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9 17V7h4a3 3 0 0 1 0 6H9"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func CircleParkingOff(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m5 5l14 14m-6-6a3 3 0 1 0 0-6H9v2m0 8v-2.34"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func CirclePause(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M10 15V9m4 6V9"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func CirclePercent(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m15 9l-6 6m0-6h.01M15 15h.01"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func CirclePlay(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m10 8l6 4l-6 4z"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func CirclePlus(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 12h8m-4-4v8"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func CirclePower(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 12V7m4 2a5 5 0 1 1-8 0"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -4009,6 +4172,14 @@ func CircleSlashTwo(children ...ElementRenderer) *LucideIcon {
 	}
 }
 
+func CircleStop(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9 9h6v6H9z"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func CircleUser(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
@@ -4021,6 +4192,14 @@ func CircleUserRound(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M18 20a6 6 0 0 0-12 0"/><circle cx="12" cy="10" r="4"/><circle cx="12" cy="12" r="10"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func CircleX(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m15 9l-6 6m0-6l6 6"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -4073,18 +4252,18 @@ func ClipboardCopy(children ...ElementRenderer) *LucideIcon {
 	}
 }
 
-func ClipboardEdit(children ...ElementRenderer) *LucideIcon {
-	return &LucideIcon{
-		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M10.42 12.61a2.1 2.1 0 1 1 2.97 2.97L7.95 21L4 22l.99-3.95z"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-5.5M4 13.5V6a2 2 0 0 1 2-2h2"/></g>`),
-		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
-	}
-}
-
 func ClipboardList(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2m4 7h4m-4 5h4m-8-5h.01M8 16h.01"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func ClipboardMinus(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2m1 10h6"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -4097,10 +4276,26 @@ func ClipboardPaste(children ...ElementRenderer) *LucideIcon {
 	}
 }
 
-func ClipboardSignature(children ...ElementRenderer) *LucideIcon {
+func ClipboardPen(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M8 4H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-.5M16 4h2a2 2 0 0 1 1.73 1"/><path d="M18.42 9.61a2.1 2.1 0 1 1 2.97 2.97L16.95 17L13 18l.99-3.95zM8 18h1"/></g>`),
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect width="8" height="4" x="8" y="2" rx="1"/><path d="M10.4 12.6a2 2 0 0 1 3 3L8 21l-4 1l1-4Z"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-5.5M4 13.5V6a2 2 0 0 1 2-2h2"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func ClipboardPenLine(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect width="8" height="4" x="8" y="2" rx="1"/><path d="M8 4H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-.5M16 4h2a2 2 0 0 1 1.73 1M8 18h1"/><path d="M18.4 9.6a2 2 0 0 1 3 3L17 17l-4 1l1-4Z"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func ClipboardPlus(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2m1 10h6m-3 3v-6"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -4241,6 +4436,14 @@ func CloudCog(children ...ElementRenderer) *LucideIcon {
 	}
 }
 
+func CloudDownload(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242M12 12v9m-4-4l4 4l4-4"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func CloudDrizzle(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
@@ -4337,6 +4540,14 @@ func CloudSunRain(children ...ElementRenderer) *LucideIcon {
 	}
 }
 
+func CloudUpload(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242M12 12v9"/><path d="m16 16l-4-4l-4 4"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func Cloudy(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
@@ -4348,7 +4559,7 @@ func Cloudy(children ...ElementRenderer) *LucideIcon {
 func Clover(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M16.2 3.8a2.7 2.7 0 0 0-3.81 0l-.4.38l-.4-.4a2.7 2.7 0 0 0-3.82 0C6.73 4.85 6.67 6.64 8 8l4 4l4-4c1.33-1.36 1.27-3.15.2-4.2M8 8c-1.36-1.33-3.15-1.27-4.2-.2a2.7 2.7 0 0 0 0 3.81l.38.4l-.4.4a2.7 2.7 0 0 0 0 3.82C4.85 17.27 6.64 17.33 8 16m8 0c1.36 1.33 3.15 1.27 4.2.2a2.7 2.7 0 0 0 0-3.81l-.38-.4l.4-.4a2.7 2.7 0 0 0 0-3.82C19.15 6.73 17.36 6.67 16 8"/><path d="M7.8 20.2a2.7 2.7 0 0 0 3.81 0l.4-.38l.4.4a2.7 2.7 0 0 0 3.82 0c1.06-1.06 1.12-2.85-.21-4.21l-4-4l-4 4c-1.33 1.36-1.27 3.15-.2 4.2zM7 17l-5 5"/></g>`),
+			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16.17 7.83L2 22m2.02-10a2.827 2.827 0 1 1 3.81-4.17A2.827 2.827 0 1 1 12 4.02a2.827 2.827 0 1 1 4.17 3.81A2.827 2.827 0 1 1 19.98 12a2.827 2.827 0 1 1-3.81 4.17A2.827 2.827 0 1 1 12 19.98a2.827 2.827 0 1 1-4.17-3.81A1 1 0 1 1 4 12m3.83-4.17l8.34 8.34"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -4369,7 +4580,7 @@ func Code(children ...ElementRenderer) *LucideIcon {
 	}
 }
 
-func CodeTwo(children ...ElementRenderer) *LucideIcon {
+func CodeXml(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m18 16l4-4l-4-4M6 8l-4 4l4 4m8.5-12l-5 16"/>`),
@@ -4413,14 +4624,6 @@ func Coins(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="8" cy="8" r="6"/><path d="M18.09 10.37A6 6 0 1 1 10.34 18M7 6h1v4"/><path d="m16.71 13.88l.7.71l-2.82 2.82"/></g>`),
-		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
-	}
-}
-
-func Columns(children ...ElementRenderer) *LucideIcon {
-	return &LucideIcon{
-		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><path d="M12 3v18"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -4492,7 +4695,7 @@ func Computer(children ...ElementRenderer) *LucideIcon {
 func ConciergeBell(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2 18a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v2H2zm18-2a8 8 0 1 0-16 0m8-12v4m-2-4h4"/>`),
+			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 20a1 1 0 0 1-1-1v-1a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v1a1 1 0 0 1-1 1Zm17-4a8 8 0 1 0-16 0m8-12v4m-2-4h4"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -4521,7 +4724,7 @@ func Contact(children ...ElementRenderer) *LucideIcon {
 	}
 }
 
-func ContactTwo(children ...ElementRenderer) *LucideIcon {
+func ContactRound(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M16 18a4 4 0 0 0-8 0"/><circle cx="12" cy="11" r="3"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M8 2v2m8-2v2"/></g>`),
@@ -4692,7 +4895,7 @@ func CornerUpRight(children ...ElementRenderer) *LucideIcon {
 func Cpu(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect width="16" height="16" x="4" y="4" rx="2"/><path d="M9 9h6v6H9zm6-7v2m0 16v2M2 15h2M2 9h2m16 6h2m-2-6h2M9 2v2m0 16v2"/></g>`),
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect width="16" height="16" x="4" y="4" rx="2"/><rect width="6" height="6" x="9" y="9" rx="1"/><path d="M15 2v2m0 16v2M2 15h2M2 9h2m16 6h2m-2-6h2M9 2v2m0 16v2"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -4748,7 +4951,7 @@ func Crosshair(children ...ElementRenderer) *LucideIcon {
 func Crown(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m2 4l3 12h14l3-12l-6 7l-4-7l-4 7zm3 16h14"/>`),
+			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.562 3.266a.5.5 0 0 1 .876 0L15.39 8.87a1 1 0 0 0 1.516.294L21.183 5.5a.5.5 0 0 1 .798.519l-2.834 10.246a1 1 0 0 1-.956.734H5.81a1 1 0 0 1-.957-.734L2.02 6.02a.5.5 0 0 1 .798-.519l4.276 3.664a1 1 0 0 0 1.516-.294zM5 21h14"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -4837,6 +5040,14 @@ func Diamond(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.7 10.3a2.41 2.41 0 0 0 0 3.41l7.59 7.59a2.41 2.41 0 0 0 3.41 0l7.59-7.59a2.41 2.41 0 0 0 0-3.41L13.7 2.71a2.41 2.41 0 0 0-3.41 0Z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func DiamondPercent(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.7 10.3a2.41 2.41 0 0 0 0 3.41l7.59 7.59a2.41 2.41 0 0 0 3.41 0l7.59-7.59a2.41 2.41 0 0 0 0-3.41L13.7 2.71a2.41 2.41 0 0 0-3.41 0Zm6.5-1.1h.01m5.29.3l-5 5m5.2.3h.01"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -4945,22 +5156,6 @@ func Divide(children ...ElementRenderer) *LucideIcon {
 	}
 }
 
-func DivideCircle(children ...ElementRenderer) *LucideIcon {
-	return &LucideIcon{
-		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M8 12h8m-4-4"/><circle cx="12" cy="12" r="10"/></g>`),
-		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
-	}
-}
-
-func DivideSquare(children ...ElementRenderer) *LucideIcon {
-	return &LucideIcon{
-		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><path d="M8 12h8m-4-4"/></g>`),
-		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
-	}
-}
-
 func Dna(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
@@ -4973,6 +5168,14 @@ func DnaOff(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 2c-1.35 1.5-2.092 3-2.5 4.5M9 22c1.35-1.5 2.092-3 2.5-4.5M2 15c3.333-3 6.667-3 10-3m10-3c-1.5 1.35-3 2.092-4.5 2.5M17 6l-2.5-2.5M14 8l-1.5-1.5M7 18l2.5 2.5m-6-6l.5.5m16-6l.5.5m-14 3l1 1m9-3l1 1M10 16l1.5 1.5M2 2l20 20"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func Dock(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M2 8h20"/><rect width="20" height="16" x="2" y="4" rx="2"/><path d="M6 16h12"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -5033,14 +5236,6 @@ func Download(children ...ElementRenderer) *LucideIcon {
 	}
 }
 
-func DownloadCloud(children ...ElementRenderer) *LucideIcon {
-	return &LucideIcon{
-		SVGSVGElement: SVG_SVG(
-			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242M12 12v9m-4-4l4 4l4-4"/>`),
-		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
-	}
-}
-
 func DraftingCompass(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
@@ -5061,6 +5256,14 @@ func Dribbble(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M19.13 5.09C15.22 9.14 10 10.44 2.25 10.94m19.5 1.9c-6.62-1.41-12.14 1-16.38 6.32"/><path d="M8.56 2.75c4.37 6 6 9.42 8 17.72"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func Drill(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 9c0 .6-.4 1-1 1H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9c.6 0 1 .4 1 1Zm4-3h4m-8-2h3a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-3m-9 2l-2 8m9-8v3c0 .6-.4 1-1 1H8m-1 4l2-8M5 22c-1.7 0-3-1.3-3-3c0-.6.4-1 1-1h7c.6 0 1 .4 1 1v2c0 .6-.4 1-1 1Z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -5121,26 +5324,26 @@ func EarOff(children ...ElementRenderer) *LucideIcon {
 	}
 }
 
-func Edit(children ...ElementRenderer) *LucideIcon {
+func Earth(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1l1-4l9.5-9.5z"/></g>`),
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M21.54 15H17a2 2 0 0 0-2 2v4.54M7 3.34V5a3 3 0 0 0 3 3v0a2 2 0 0 1 2 2v0c0 1.1.9 2 2 2v0a2 2 0 0 0 2-2v0c0-1.1.9-2 2-2h3.17M11 21.95V18a2 2 0 0 0-2-2v0a2 2 0 0 1-2-2v-1a2 2 0 0 0-2-2H2.05"/><circle cx="12" cy="12" r="10"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
 
-func EditThree(children ...ElementRenderer) *LucideIcon {
+func EarthLock(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 20h9M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1l1-4L16.5 3.5z"/>`),
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M7 3.34V5a3 3 0 0 0 3 3m1 13.95V18a2 2 0 0 0-2-2a2 2 0 0 1-2-2v-1a2 2 0 0 0-2-2H2.05m19.49 4H17a2 2 0 0 0-2 2v4.54"/><path d="M12 2a10 10 0 1 0 9.54 13M20 6V4a2 2 0 1 0-4 0v2"/><rect width="8" height="5" x="14" y="6" rx="1"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
 
-func EditTwo(children ...ElementRenderer) *LucideIcon {
+func Eclipse(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5L2 22l1.5-5.5L17 3z"/>`),
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a7 7 0 1 0 10 10"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -5165,6 +5368,22 @@ func EggOff(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6.399 6.399C5.362 8.157 4.65 10.189 4.5 12c-.37 4.43 1.27 9.95 7.5 10c3.256-.026 5.259-1.547 6.375-3.625m1.157-4.5A14.07 14.07 0 0 0 19.5 12c-.36-4.34-3.95-9.96-7.5-10c-1.04.012-2.082.502-3.046 1.297M2 2l20 20"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func Ellipsis(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func EllipsisVertical(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="12" r="1"/><circle cx="12" cy="5" r="1"/><circle cx="12" cy="19" r="1"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -5212,7 +5431,7 @@ func Expand(children ...ElementRenderer) *LucideIcon {
 func ExternalLink(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6m4-3h6v6m-11 5L21 3"/>`),
+			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 3h6v6m-11 5L21 3m-3 10v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -5300,7 +5519,7 @@ func Figma(children ...ElementRenderer) *LucideIcon {
 func File(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5z"/><path d="M14 2v6h6"/></g>`),
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -5308,7 +5527,7 @@ func File(children ...ElementRenderer) *LucideIcon {
 func FileArchive(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M4 22V4c0-.5.2-1 .6-1.4C5 2.2 5.5 2 6 2h8.5L20 7.5V20c0 .5-.2 1-.6 1.4c-.4.4-.9.6-1.4.6h-2"/><path d="M14 2v6h6"/><circle cx="10" cy="20" r="2"/><path d="M10 7V6m0 6v-1m0 7v-2"/></g>`),
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M16 22h2a2 2 0 0 0 2-2V7l-5-5H6a2 2 0 0 0-2 2v18"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><circle cx="10" cy="20" r="2"/><path d="M10 7V6m0 6v-1m0 7v-2"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -5316,7 +5535,7 @@ func FileArchive(children ...ElementRenderer) *LucideIcon {
 func FileAudio(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M17.5 22h.5c.5 0 1-.2 1.4-.6c.4-.4.6-.9.6-1.4V7.5L14.5 2H6c-.5 0-1 .2-1.4.6C4.2 3 4 3.5 4 4v3"/><path d="M14 2v6h6M10 20v-1a2 2 0 1 1 4 0v1a2 2 0 1 1-4 0m-4 0v-1a2 2 0 1 0-4 0v1a2 2 0 1 0 4 0"/><path d="M2 19v-3a6 6 0 0 1 12 0v3"/></g>`),
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M17.5 22h.5a2 2 0 0 0 2-2V7l-5-5H6a2 2 0 0 0-2 2v3"/><path d="M14 2v4a2 2 0 0 0 2 2h4M2 19a2 2 0 1 1 4 0v1a2 2 0 1 1-4 0v-4a6 6 0 0 1 12 0v4a2 2 0 1 1-4 0v-1a2 2 0 1 1 4 0"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -5324,7 +5543,7 @@ func FileAudio(children ...ElementRenderer) *LucideIcon {
 func FileAudioTwo(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M4 22h14a2 2 0 0 0 2-2V7.5L14.5 2H6a2 2 0 0 0-2 2v2"/><path d="M14 2v6h6M2 17v-3a4 4 0 0 1 8 0v3"/><circle cx="9" cy="17" r="1"/><circle cx="3" cy="17" r="1"/></g>`),
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M4 22h14a2 2 0 0 0 2-2V7l-5-5H6a2 2 0 0 0-2 2v2"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><circle cx="3" cy="17" r="1"/><path d="M2 17v-3a4 4 0 0 1 8 0v3"/><circle cx="9" cy="17" r="1"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -5332,7 +5551,7 @@ func FileAudioTwo(children ...ElementRenderer) *LucideIcon {
 func FileAxisThreeD(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5z"/><path d="M14 2v6h6M8 10v8h8m-8 0l4-4"/></g>`),
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4M8 18l4-4m-4-4v8h8"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -5340,7 +5559,7 @@ func FileAxisThreeD(children ...ElementRenderer) *LucideIcon {
 func FileBadge(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M4 7V4a2 2 0 0 1 2-2h8.5L20 7.5V20a2 2 0 0 1-2 2h-6"/><path d="M14 2v6h6M5 17a3 3 0 1 0 0-6a3 3 0 0 0 0 6"/><path d="M7 16.5L8 22l-3-1l-3 1l1-5.5"/></g>`),
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M12 22h6a2 2 0 0 0 2-2V7l-5-5H6a2 2 0 0 0-2 2v3"/><path d="M14 2v4a2 2 0 0 0 2 2h4M5 17a3 3 0 1 0 0-6a3 3 0 0 0 0 6"/><path d="M7 16.5L8 22l-3-1l-3 1l1-5.5"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -5348,7 +5567,7 @@ func FileBadge(children ...ElementRenderer) *LucideIcon {
 func FileBadgeTwo(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5z"/><path d="M12 13a3 3 0 1 0 0-6a3 3 0 0 0 0 6"/><path d="m14 12.5l1 5.5l-3-1l-3 1l1-5.5"/></g>`),
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><circle cx="12" cy="10" r="3"/><path d="M14 2v4a2 2 0 0 0 2 2h4m-6 4.5l1 5.5l-3-1l-3 1l1-5.5"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -5356,7 +5575,7 @@ func FileBadgeTwo(children ...ElementRenderer) *LucideIcon {
 func FileBarChart(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5z"/><path d="M14 2v6h6m-8 10v-4m-4 4v-2m8 2v-6"/></g>`),
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4M8 18v-2m4 2v-4m4 4v-6"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -5364,7 +5583,7 @@ func FileBarChart(children ...ElementRenderer) *LucideIcon {
 func FileBarChartTwo(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5z"/><path d="M14 2v6h6m-8 10v-6m-4 6v-1m8 1v-3"/></g>`),
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4M8 18v-1m4 1v-6m4 6v-3"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -5372,7 +5591,7 @@ func FileBarChartTwo(children ...ElementRenderer) *LucideIcon {
 func FileBox(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M14.5 22H18a2 2 0 0 0 2-2V7.5L14.5 2H6a2 2 0 0 0-2 2v4"/><path d="M14 2v6h6M2.97 13.12c-.6.36-.97 1.02-.97 1.74v3.28c0 .72.37 1.38.97 1.74l3 1.83c.63.39 1.43.39 2.06 0l3-1.83c.6-.36.97-1.02.97-1.74v-3.28c0-.72-.37-1.38-.97-1.74l-3-1.83a1.97 1.97 0 0 0-2.06 0zM7 17l-4.74-2.85M7 17l4.74-2.85M7 17v5"/></g>`),
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M14.5 22H18a2 2 0 0 0 2-2V7l-5-5H6a2 2 0 0 0-2 2v4"/><path d="M14 2v4a2 2 0 0 0 2 2h4M3 13.1a2 2 0 0 0-1 1.76v3.24a2 2 0 0 0 .97 1.78L6 21.7a2 2 0 0 0 2.03.01L11 19.9a2 2 0 0 0 1-1.76V14.9a2 2 0 0 0-.97-1.78L8 11.3a2 2 0 0 0-2.03-.01ZM7 17v5"/><path d="M11.7 14.2L7 17l-4.7-2.8"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -5380,7 +5599,7 @@ func FileBox(children ...ElementRenderer) *LucideIcon {
 func FileCheck(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5z"/><path d="M14 2v6h6M9 15l2 2l4-4"/></g>`),
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4M9 15l2 2l4-4"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -5388,7 +5607,7 @@ func FileCheck(children ...ElementRenderer) *LucideIcon {
 func FileCheckTwo(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M4 22h14a2 2 0 0 0 2-2V7.5L14.5 2H6a2 2 0 0 0-2 2v4"/><path d="M14 2v6h6M3 15l2 2l4-4"/></g>`),
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M4 22h14a2 2 0 0 0 2-2V7l-5-5H6a2 2 0 0 0-2 2v4"/><path d="M14 2v4a2 2 0 0 0 2 2h4M3 15l2 2l4-4"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -5396,7 +5615,7 @@ func FileCheckTwo(children ...ElementRenderer) *LucideIcon {
 func FileClock(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M16 22h2c.5 0 1-.2 1.4-.6c.4-.4.6-.9.6-1.4V7.5L14.5 2H6c-.5 0-1 .2-1.4.6C4.2 3 4 3.5 4 4v3"/><path d="M14 2v6h6"/><circle cx="8" cy="16" r="6"/><path d="M9.5 17.5L8 16.25V14"/></g>`),
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M16 22h2a2 2 0 0 0 2-2V7l-5-5H6a2 2 0 0 0-2 2v3"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><circle cx="8" cy="16" r="6"/><path d="M9.5 17.5L8 16.25V14"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -5404,7 +5623,7 @@ func FileClock(children ...ElementRenderer) *LucideIcon {
 func FileCode(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5z"/><path d="M14 2v6h6m-10 5l-2 2l2 2m4 0l2-2l-2-2"/></g>`),
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4m-10 5l-2 2l2 2m4 0l2-2l-2-2"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -5412,7 +5631,7 @@ func FileCode(children ...ElementRenderer) *LucideIcon {
 func FileCodeTwo(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M4 22h14a2 2 0 0 0 2-2V7.5L14.5 2H6a2 2 0 0 0-2 2v4"/><path d="M14 2v6h6M9 18l3-3l-3-3m-4 0l-3 3l3 3"/></g>`),
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M4 22h14a2 2 0 0 0 2-2V7l-5-5H6a2 2 0 0 0-2 2v4"/><path d="M14 2v4a2 2 0 0 0 2 2h4M5 12l-3 3l3 3m4 0l3-3l-3-3"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -5420,15 +5639,7 @@ func FileCodeTwo(children ...ElementRenderer) *LucideIcon {
 func FileCog(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="6" cy="13" r="3"/><path d="m9.7 14.4l-.9-.3m-5.6-2.2l-.9-.3m2.3 5.1l.3-.9m2.7.9l-.4-1m-2.4-5.4l-.4-1m-2.1 5.3l1-.4m5.4-2.4l1-.4M7.4 9.3l-.3.9M14 2v6h6"/><path d="M4 5.5V4a2 2 0 0 1 2-2h8.5L20 7.5V20a2 2 0 0 1-2 2H6a2 2 0 0 1-2-1.5"/></g>`),
-		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
-	}
-}
-
-func FileCogTwo(children ...ElementRenderer) *LucideIcon {
-	return &LucideIcon{
-		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><path d="M14 2v6h6"/><circle cx="12" cy="15" r="2"/><path d="M12 12v1m0 4v1m2.6-4.5l-.87.5m-3.46 2l-.87.5m5.2 0l-.87-.5m-3.46-2l-.87-.5"/></g>`),
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M4 22h14a2 2 0 0 0 2-2V7l-5-5H6a2 2 0 0 0-2 2v2"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><circle cx="6" cy="14" r="3"/><path d="M6 10v1m0 6v1m4-4H9m-6 0H2m7-3l-.88.88m-4.24 4.24L3 17m6 0l-.88-.88m-4.24-4.24L3 11"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -5436,7 +5647,7 @@ func FileCogTwo(children ...ElementRenderer) *LucideIcon {
 func FileDiff(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5zM12 13V7m-3 3h6m-6 7h6"/>`),
+			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Zm-6 8h6m-3 3V7M9 17h6"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -5444,7 +5655,7 @@ func FileDiff(children ...ElementRenderer) *LucideIcon {
 func FileDigit(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect width="4" height="6" x="2" y="12" rx="2"/><path d="M14 2v6h6"/><path d="M4 22h14a2 2 0 0 0 2-2V7.5L14.5 2H6a2 2 0 0 0-2 2v4"/><path d="M10 12h2v6m-2 0h4"/></g>`),
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M4 22h14a2 2 0 0 0 2-2V7l-5-5H6a2 2 0 0 0-2 2v4"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><rect width="4" height="6" x="2" y="12" rx="2"/><path d="M10 12h2v6m-2 0h4"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -5452,15 +5663,7 @@ func FileDigit(children ...ElementRenderer) *LucideIcon {
 func FileDown(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5z"/><path d="M14 2v6h6m-8 10v-6m-3 3l3 3l3-3"/></g>`),
-		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
-	}
-}
-
-func FileEdit(children ...ElementRenderer) *LucideIcon {
-	return &LucideIcon{
-		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M4 13.5V4a2 2 0 0 1 2-2h8.5L20 7.5V20a2 2 0 0 1-2 2h-5.5"/><path d="M14 2v6h6m-9.58 4.61a2.1 2.1 0 1 1 2.97 2.97L7.95 21L4 22l.99-3.95z"/></g>`),
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4m-8 10v-6m-3 3l3 3l3-3"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -5468,7 +5671,7 @@ func FileEdit(children ...ElementRenderer) *LucideIcon {
 func FileHeart(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M4 6V4a2 2 0 0 1 2-2h8.5L20 7.5V20a2 2 0 0 1-2 2H4"/><path d="M14 2v6h6m-9.71 2.7a2.43 2.43 0 0 0-2.66-.52c-.29.12-.56.3-.78.53l-.35.34l-.35-.34a2.43 2.43 0 0 0-2.65-.53c-.3.12-.56.3-.79.53c-.95.94-1 2.53.2 3.74L6.5 18l3.6-3.55c1.2-1.21 1.14-2.8.19-3.74Z"/></g>`),
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M4 22h14a2 2 0 0 0 2-2V7l-5-5H6a2 2 0 0 0-2 2v2"/><path d="M14 2v4a2 2 0 0 0 2 2h4m-9.71 2.7a2.43 2.43 0 0 0-2.66-.52c-.29.12-.56.3-.78.53l-.35.34l-.35-.34a2.43 2.43 0 0 0-2.65-.53c-.3.12-.56.3-.79.53c-.95.94-1 2.53.2 3.74L6.5 18l3.6-3.55c1.2-1.21 1.14-2.8.19-3.74Z"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -5476,7 +5679,7 @@ func FileHeart(children ...ElementRenderer) *LucideIcon {
 func FileImage(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5z"/><path d="M14 2v6h6"/><circle cx="10" cy="13" r="2"/><path d="m20 17l-1.09-1.09a2 2 0 0 0-2.82 0L10 22"/></g>`),
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><circle cx="10" cy="12" r="2"/><path d="m20 17l-1.296-1.296a2.41 2.41 0 0 0-3.408 0L9 22"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -5484,7 +5687,7 @@ func FileImage(children ...ElementRenderer) *LucideIcon {
 func FileInput(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M4 22h14a2 2 0 0 0 2-2V7.5L14.5 2H6a2 2 0 0 0-2 2v4"/><path d="M14 2v6h6M2 15h10m-3 3l3-3l-3-3"/></g>`),
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M4 22h14a2 2 0 0 0 2-2V7l-5-5H6a2 2 0 0 0-2 2v4"/><path d="M14 2v4a2 2 0 0 0 2 2h4M2 15h10m-3 3l3-3l-3-3"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -5492,7 +5695,7 @@ func FileInput(children ...ElementRenderer) *LucideIcon {
 func FileJson(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5z"/><path d="M14 2v6h6m-10 4a1 1 0 0 0-1 1v1a1 1 0 0 1-1 1a1 1 0 0 1 1 1v1a1 1 0 0 0 1 1m4 0a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1a1 1 0 0 1-1-1v-1a1 1 0 0 0-1-1"/></g>`),
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4m-10 4a1 1 0 0 0-1 1v1a1 1 0 0 1-1 1a1 1 0 0 1 1 1v1a1 1 0 0 0 1 1m4 0a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1a1 1 0 0 1-1-1v-1a1 1 0 0 0-1-1"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -5500,7 +5703,7 @@ func FileJson(children ...ElementRenderer) *LucideIcon {
 func FileJsonTwo(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M4 22h14a2 2 0 0 0 2-2V7.5L14.5 2H6a2 2 0 0 0-2 2v4"/><path d="M14 2v6h6M4 12a1 1 0 0 0-1 1v1a1 1 0 0 1-1 1a1 1 0 0 1 1 1v1a1 1 0 0 0 1 1m4 0a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1a1 1 0 0 1-1-1v-1a1 1 0 0 0-1-1"/></g>`),
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M4 22h14a2 2 0 0 0 2-2V7l-5-5H6a2 2 0 0 0-2 2v4"/><path d="M14 2v4a2 2 0 0 0 2 2h4M4 12a1 1 0 0 0-1 1v1a1 1 0 0 1-1 1a1 1 0 0 1 1 1v1a1 1 0 0 0 1 1m4 0a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1a1 1 0 0 1-1-1v-1a1 1 0 0 0-1-1"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -5508,7 +5711,7 @@ func FileJsonTwo(children ...ElementRenderer) *LucideIcon {
 func FileKey(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5z"/><circle cx="10" cy="16" r="2"/><path d="m16 10l-4.5 4.5M15 11l1 1"/></g>`),
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><circle cx="10" cy="16" r="2"/><path d="m16 10l-4.5 4.5M15 11l1 1"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -5516,7 +5719,7 @@ func FileKey(children ...ElementRenderer) *LucideIcon {
 func FileKeyTwo(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M4 10V4a2 2 0 0 1 2-2h8.5L20 7.5V20a2 2 0 0 1-2 2H4"/><path d="M14 2v6h6"/><circle cx="4" cy="16" r="2"/><path d="m10 10l-4.5 4.5M9 11l1 1"/></g>`),
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M4 22h14a2 2 0 0 0 2-2V7l-5-5H6a2 2 0 0 0-2 2v6"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><circle cx="4" cy="16" r="2"/><path d="m10 10l-4.5 4.5M9 11l1 1"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -5524,7 +5727,7 @@ func FileKeyTwo(children ...ElementRenderer) *LucideIcon {
 func FileLineChart(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5z"/><path d="M14 2v6h6m-4 5l-3.5 3.5l-2-2L8 17"/></g>`),
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4m-4 5l-3.5 3.5l-2-2L8 17"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -5532,7 +5735,7 @@ func FileLineChart(children ...ElementRenderer) *LucideIcon {
 func FileLock(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5z"/><rect width="8" height="6" x="8" y="12" rx="1"/><path d="M15 12v-2a3 3 0 1 0-6 0v2"/></g>`),
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><rect width="8" height="6" x="8" y="12" rx="1"/><path d="M10 12v-2a2 2 0 1 1 4 0v2"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -5540,7 +5743,7 @@ func FileLock(children ...ElementRenderer) *LucideIcon {
 func FileLockTwo(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M4 5V4a2 2 0 0 1 2-2h8.5L20 7.5V20a2 2 0 0 1-2 2H4"/><path d="M14 2v6h6"/><rect width="8" height="5" x="2" y="13" rx="1"/><path d="M8 13v-2a2 2 0 1 0-4 0v2"/></g>`),
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M4 22h14a2 2 0 0 0 2-2V7l-5-5H6a2 2 0 0 0-2 2v1"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><rect width="8" height="5" x="2" y="13" rx="1"/><path d="M8 13v-2a2 2 0 1 0-4 0v2"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -5548,7 +5751,7 @@ func FileLockTwo(children ...ElementRenderer) *LucideIcon {
 func FileMinus(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5z"/><path d="M14 2v6h6M9 15h6"/></g>`),
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4M9 15h6"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -5556,7 +5759,7 @@ func FileMinus(children ...ElementRenderer) *LucideIcon {
 func FileMinusTwo(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M4 22h14a2 2 0 0 0 2-2V7.5L14.5 2H6a2 2 0 0 0-2 2v4"/><path d="M14 2v6h6M3 15h6"/></g>`),
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M4 22h14a2 2 0 0 0 2-2V7l-5-5H6a2 2 0 0 0-2 2v4"/><path d="M14 2v4a2 2 0 0 0 2 2h4M3 15h6"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -5572,7 +5775,23 @@ func FileMusic(children ...ElementRenderer) *LucideIcon {
 func FileOutput(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M4 22h14a2 2 0 0 0 2-2V7.5L14.5 2H6a2 2 0 0 0-2 2v4"/><path d="M14 2v6h6M2 15h10m-7-3l-3 3l3 3"/></g>`),
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M14 2v4a2 2 0 0 0 2 2h4M4 7V4a2 2 0 0 1 2-2a2 2 0 0 0-2 2"/><path d="M4.063 20.999a2 2 0 0 0 2 1L18 22a2 2 0 0 0 2-2V7l-5-5H6m-1 9l-3 3"/><path d="m5 17l-3-3h10"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func FilePen(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M12 22h6a2 2 0 0 0 2-2V7l-5-5H6a2 2 0 0 0-2 2v10"/><path d="M14 2v4a2 2 0 0 0 2 2h4m-9.6 4.6a2 2 0 1 1 3 3L8 21l-4 1l1-4Z"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func FilePenLine(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="m18 5l-3-3H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2M8 18h1"/><path d="M18.4 9.6a2 2 0 1 1 3 3L17 17l-4 1l1-4Z"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -5580,7 +5799,7 @@ func FileOutput(children ...ElementRenderer) *LucideIcon {
 func FilePieChart(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M16 22h2a2 2 0 0 0 2-2V7.5L14.5 2H6a2 2 0 0 0-2 2v3"/><path d="M14 2v6h6M4.04 11.71a5.84 5.84 0 1 0 8.2 8.29"/><path d="M13.83 16A5.83 5.83 0 0 0 8 10.17V16z"/></g>`),
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M16 22h2a2 2 0 0 0 2-2V7l-5-5H6a2 2 0 0 0-2 2v3.5m.017 4.012a6 6 0 1 0 8.466 8.475"/><path d="M8 16v-6a6 6 0 0 1 6 6z"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -5588,7 +5807,7 @@ func FilePieChart(children ...ElementRenderer) *LucideIcon {
 func FilePlus(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5z"/><path d="M14 2v6h6m-8 10v-6m-3 3h6"/></g>`),
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4M9 15h6m-3 3v-6"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -5596,7 +5815,7 @@ func FilePlus(children ...ElementRenderer) *LucideIcon {
 func FilePlusTwo(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M4 22h14a2 2 0 0 0 2-2V7.5L14.5 2H6a2 2 0 0 0-2 2v4"/><path d="M14 2v6h6M3 15h6m-3-3v6"/></g>`),
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M4 22h14a2 2 0 0 0 2-2V7l-5-5H6a2 2 0 0 0-2 2v4"/><path d="M14 2v4a2 2 0 0 0 2 2h4M3 15h6m-3-3v6"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -5604,7 +5823,7 @@ func FilePlusTwo(children ...ElementRenderer) *LucideIcon {
 func FileQuestion(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5z"/><path d="M10 10.3c.2-.4.5-.8.9-1a2.1 2.1 0 0 1 2.6.4c.3.4.5.8.5 1.3c0 1.3-2 2-2 2m0 4h.01"/></g>`),
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M10 10.3c.2-.4.5-.8.9-1a2.1 2.1 0 0 1 2.6.4c.3.4.5.8.5 1.3c0 1.3-2 2-2 2m0 4h.01"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -5612,7 +5831,7 @@ func FileQuestion(children ...ElementRenderer) *LucideIcon {
 func FileScan(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M20 10V7.5L14.5 2H6a2 2 0 0 0-2 2v16c0 1.1.9 2 2 2h4.5"/><path d="M14 2v6h6m-4 14a2 2 0 0 1-2-2m6 2a2 2 0 0 0 2-2m-2-6a2 2 0 0 1 2 2m-6-2a2 2 0 0 0-2 2"/></g>`),
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M20 10V7l-5-5H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h4"/><path d="M14 2v4a2 2 0 0 0 2 2h4m-4 6a2 2 0 0 0-2 2m6-2a2 2 0 0 1 2 2m-2 6a2 2 0 0 0 2-2m-6 2a2 2 0 0 1-2-2"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -5620,7 +5839,7 @@ func FileScan(children ...ElementRenderer) *LucideIcon {
 func FileSearch(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M4 22h14a2 2 0 0 0 2-2V7.5L14.5 2H6a2 2 0 0 0-2 2v3"/><path d="M14 2v6h6M5 17a3 3 0 1 0 0-6a3 3 0 0 0 0 6m4 1l-1.5-1.5"/></g>`),
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M4.268 21a2 2 0 0 0 1.727 1H18a2 2 0 0 0 2-2V7l-5-5H6a2 2 0 0 0-2 2v3m5 11l-1.5-1.5"/><circle cx="5" cy="14" r="3"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -5628,15 +5847,15 @@ func FileSearch(children ...ElementRenderer) *LucideIcon {
 func FileSearchTwo(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5z"/><path d="M14 2v6h6"/><circle cx="11.5" cy="14.5" r="2.5"/><path d="M13.25 16.25L15 18"/></g>`),
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><circle cx="11.5" cy="14.5" r="2.5"/><path d="M13.3 16.3L15 18"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
 
-func FileSignature(children ...ElementRenderer) *LucideIcon {
+func FileSliders(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M20 19.5v.5a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8.5L18 5.5M8 18h1"/><path d="M18.42 9.61a2.1 2.1 0 1 1 2.97 2.97L16.95 17L13 18l.99-3.95z"/></g>`),
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4M8 12h8m-6-1v2m-2 4h8m-2-1v2"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -5644,7 +5863,7 @@ func FileSignature(children ...ElementRenderer) *LucideIcon {
 func FileSpreadsheet(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5z"/><path d="M14 2v6h6M8 13h2m-2 4h2m4-4h2m-2 4h2"/></g>`),
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4M8 13h2m4 0h2m-8 4h2m4 0h2"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -5652,7 +5871,7 @@ func FileSpreadsheet(children ...ElementRenderer) *LucideIcon {
 func FileStack(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M16 2v5h5"/><path d="M21 6v6.5c0 .8-.7 1.5-1.5 1.5h-7c-.8 0-1.5-.7-1.5-1.5v-9c0-.8.7-1.5 1.5-1.5H17z"/><path d="M7 8v8.8c0 .3.2.6.4.8c.2.2.5.4.8.4H15"/><path d="M3 12v8.8c0 .3.2.6.4.8c.2.2.5.4.8.4H11"/></g>`),
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M21 7h-3a2 2 0 0 1-2-2V2"/><path d="M21 6v6.5c0 .8-.7 1.5-1.5 1.5h-7c-.8 0-1.5-.7-1.5-1.5v-9c0-.8.7-1.5 1.5-1.5H17Z"/><path d="M7 8v8.8c0 .3.2.6.4.8c.2.2.5.4.8.4H15"/><path d="M3 12v8.8c0 .3.2.6.4.8c.2.2.5.4.8.4H11"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -5660,7 +5879,7 @@ func FileStack(children ...ElementRenderer) *LucideIcon {
 func FileSymlink(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M4 22h14a2 2 0 0 0 2-2V7.5L14.5 2H6a2 2 0 0 0-2 2v7"/><path d="M14 2v6h6M10 18l3-3l-3-3"/><path d="M4 18v-1a2 2 0 0 1 2-2h6"/></g>`),
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="m10 18l3-3l-3-3m4-10v4a2 2 0 0 0 2 2h4"/><path d="M4 11V4a2 2 0 0 1 2-2h9l5 5v13a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h7"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -5668,7 +5887,7 @@ func FileSymlink(children ...ElementRenderer) *LucideIcon {
 func FileTerminal(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5z"/><path d="M14 2v6h6M8 16l2-2l-2-2m4 6h4"/></g>`),
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4M8 16l2-2l-2-2m4 6h4"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -5676,7 +5895,7 @@ func FileTerminal(children ...ElementRenderer) *LucideIcon {
 func FileText(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5z"/><path d="M14 2v6h6m-4 5H8m8 4H8m2-8H8"/></g>`),
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4M10 9H8m8 4H8m8 4H8"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -5684,7 +5903,7 @@ func FileText(children ...ElementRenderer) *LucideIcon {
 func FileType(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5z"/><path d="M14 2v6h6M9 13v-1h6v1m-4 5h2m-1-6v6"/></g>`),
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4M9 13v-1h6v1m-3-1v6m-1 0h2"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -5692,7 +5911,7 @@ func FileType(children ...ElementRenderer) *LucideIcon {
 func FileTypeTwo(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M4 22h14a2 2 0 0 0 2-2V7.5L14.5 2H6a2 2 0 0 0-2 2v4"/><path d="M14 2v6h6M2 13v-1h6v1m-4 5h2m-1-6v6"/></g>`),
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M4 22h14a2 2 0 0 0 2-2V7l-5-5H6a2 2 0 0 0-2 2v4"/><path d="M14 2v4a2 2 0 0 0 2 2h4M2 13v-1h6v1m-3-1v6m-1 0h2"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -5700,7 +5919,7 @@ func FileTypeTwo(children ...ElementRenderer) *LucideIcon {
 func FileUp(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5z"/><path d="M14 2v6h6m-8 4v6m3-3l-3-3l-3 3"/></g>`),
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4m-8 4v6m3-3l-3-3l-3 3"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -5708,7 +5927,7 @@ func FileUp(children ...ElementRenderer) *LucideIcon {
 func FileVideo(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5z"/><path d="M14 2v6h6m-10 3l5 3l-5 3z"/></g>`),
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4m-10 3l5 3l-5 3z"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -5716,7 +5935,7 @@ func FileVideo(children ...ElementRenderer) *LucideIcon {
 func FileVideoTwo(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M4 8V4a2 2 0 0 1 2-2h8.5L20 7.5V20a2 2 0 0 1-2 2H4"/><path d="M14 2v6h6m-10 7.5l4 2.5v-6l-4 2.5"/><rect width="8" height="6" x="2" y="12" rx="1"/></g>`),
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M4 22h14a2 2 0 0 0 2-2V7l-5-5H6a2 2 0 0 0-2 2v4"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><rect width="8" height="6" x="2" y="12" rx="1"/><path d="m10 15.5l4 2.5v-6l-4 2.5"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -5724,7 +5943,7 @@ func FileVideoTwo(children ...ElementRenderer) *LucideIcon {
 func FileVolume(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M4 22h14a2 2 0 0 0 2-2V7.5L14.5 2H6a2 2 0 0 0-2 2v3"/><path d="M14 2v6h6M7 10l-3 2H2v4h2l3 2zm4 1c.64.8 1 1.87 1 3s-.36 2.2-1 3"/></g>`),
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M11 11a5 5 0 0 1 0 6m3-15v4a2 2 0 0 0 2 2h4"/><path d="M4.268 21A2 2 0 0 0 6 22h12a2 2 0 0 0 2-2V7l-5-5H6a2 2 0 0 0-2 2v3"/><path d="m7 10l-3 2H2v4h2l3 2z"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -5732,7 +5951,7 @@ func FileVolume(children ...ElementRenderer) *LucideIcon {
 func FileVolumeTwo(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5z"/><path d="M14 2v6h6m-8.5 5.5c.32.4.5.94.5 1.5s-.18 1.1-.5 1.5M15 12c.64.8 1 1.87 1 3s-.36 2.2-1 3m-7-3h.01"/></g>`),
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4M8 15h.01m3.49-1.5a2.5 2.5 0 0 1 0 3M15 12a5 5 0 0 1 0 6"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -5740,7 +5959,7 @@ func FileVolumeTwo(children ...ElementRenderer) *LucideIcon {
 func FileWarning(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5zM12 9v4m0 4h.01"/>`),
+			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Zm-3 7v4m0 4h.01"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -5748,7 +5967,7 @@ func FileWarning(children ...ElementRenderer) *LucideIcon {
 func FileX(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5z"/><path d="M14 2v6h6M9.5 12.5l5 5m0-5l-5 5"/></g>`),
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4m-5.5 4.5l-5 5m0-5l5 5"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -5756,7 +5975,7 @@ func FileX(children ...ElementRenderer) *LucideIcon {
 func FileXtwo(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M4 22h14a2 2 0 0 0 2-2V7.5L14.5 2H6a2 2 0 0 0-2 2v4"/><path d="M14 2v6h6M3 12.5l5 5m0-5l-5 5"/></g>`),
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M4 22h14a2 2 0 0 0 2-2V7l-5-5H6a2 2 0 0 0-2 2v4"/><path d="M14 2v4a2 2 0 0 0 2 2h4M8 12.5l-5 5m0-5l5 5"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -5764,7 +5983,7 @@ func FileXtwo(children ...ElementRenderer) *LucideIcon {
 func Files(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M15.5 2H8.6c-.4 0-.8.2-1.1.5c-.3.3-.5.7-.5 1.1v12.8c0 .4.2.8.5 1.1c.3.3.7.5 1.1.5h9.8c.4 0 .8-.2 1.1-.5c.3-.3.5-.7.5-1.1V6.5z"/><path d="M3 7.6v12.8c0 .4.2.8.5 1.1c.3.3.7.5 1.1.5h9.8M15 2v5h5"/></g>`),
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M20 7h-3a2 2 0 0 1-2-2V2"/><path d="M9 18a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h7l4 4v10a2 2 0 0 1-2 2Z"/><path d="M3 7.6v12.8A1.6 1.6 0 0 0 4.6 22h9.8"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -5956,7 +6175,7 @@ func FlipVerticalTwo(children ...ElementRenderer) *LucideIcon {
 func Flower(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M12 7.5a4.5 4.5 0 1 1 4.5 4.5M12 7.5A4.5 4.5 0 1 0 7.5 12M12 7.5V9m-4.5 3a4.5 4.5 0 1 0 4.5 4.5M7.5 12H9m7.5 0a4.5 4.5 0 1 1-4.5 4.5m4.5-4.5H15m-3 4.5V15"/><circle cx="12" cy="12" r="3"/><path d="m8 16l1.5-1.5m5-5L16 8M8 8l1.5 1.5m5 5L16 16"/></g>`),
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 16.5A4.5 4.5 0 1 1 7.5 12A4.5 4.5 0 1 1 12 7.5a4.5 4.5 0 1 1 4.5 4.5a4.5 4.5 0 1 1-4.5 4.5m0-9V9m-4.5 3H9m7.5 0H15m-3 4.5V15M8 8l1.88 1.88m4.24 0L16 8m-8 8l1.88-1.88m4.24 0L16 16"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -6041,14 +6260,6 @@ func FolderCog(children ...ElementRenderer) *LucideIcon {
 	}
 }
 
-func FolderCogTwo(children ...ElementRenderer) *LucideIcon {
-	return &LucideIcon{
-		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M4 20h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.93a2 2 0 0 1-1.66-.9l-.82-1.2A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13c0 1.1.9 2 2 2Z"/><circle cx="12" cy="13" r="2"/><path d="M12 10v1m0 4v1m2.6-4.5l-.87.5m-3.46 2l-.87.5m5.2 0l-.87-.5m-3.46-2l-.87-.5"/></g>`),
-		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
-	}
-}
-
 func FolderDot(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
@@ -6061,14 +6272,6 @@ func FolderDown(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Zm-8-10v6"/><path d="m15 13l-3 3l-3-3"/></g>`),
-		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
-	}
-}
-
-func FolderEdit(children ...ElementRenderer) *LucideIcon {
-	return &LucideIcon{
-		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M8.4 10.6a2.1 2.1 0 1 1 2.99 2.98L6 19l-4 1l1-3.9Z"/><path d="M2 11.5V5a2 2 0 0 1 2-2h3.9a2 2 0 0 1 1.69.9l.81 1.2a2 2 0 0 0 1.67.9H20a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-9.5"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -6156,7 +6359,15 @@ func FolderOpenDot(children ...ElementRenderer) *LucideIcon {
 func FolderOutput(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M2 7.5V5c0-1.1.9-2 2-2h3.93a2 2 0 0 1 1.66.9l.82 1.2a2 2 0 0 0 1.66.9H20a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H2m0-7h10"/><path d="m5 10l-3 3l3 3"/></g>`),
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M2 7.5V5a2 2 0 0 1 2-2h3.9a2 2 0 0 1 1.69.9l.81 1.2a2 2 0 0 0 1.67.9H20a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-1.5M2 13h10"/><path d="m5 10l-3 3l3 3"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func FolderPen(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M8.4 10.6a2 2 0 0 1 3 3L6 19l-4 1l1-4Z"/><path d="M2 11.5V5a2 2 0 0 1 2-2h3.9c.7 0 1.3.3 1.7.9l.8 1.2c.4.6 1 .9 1.7.9H20a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-9.5"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -6196,7 +6407,7 @@ func FolderSearchTwo(children ...ElementRenderer) *LucideIcon {
 func FolderSymlink(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M2 9V5c0-1.1.9-2 2-2h3.93a2 2 0 0 1 1.66.9l.82 1.2a2 2 0 0 0 1.66.9H20a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H2"/><path d="m8 16l3-3l-3-3"/><path d="M2 16v-1a2 2 0 0 1 2-2h6"/></g>`),
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M2 9V5a2 2 0 0 1 2-2h3.9a2 2 0 0 1 1.69.9l.81 1.2a2 2 0 0 0 1.67.9H20a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h7"/><path d="m8 16l3-3l-3-3"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -6204,7 +6415,7 @@ func FolderSymlink(children ...ElementRenderer) *LucideIcon {
 func FolderSync(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M9 20H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h3.9a2 2 0 0 1 1.69.9l.81 1.2a2 2 0 0 0 1.67.9H20a2 2 0 0 1 2 2v1"/><path d="M12 10v4h4"/><path d="m12 14l1.5-1.5c.9-.9 2.2-1.5 3.5-1.5s2.6.6 3.5 1.5c.4.4.8 1 1 1.5m.5 8v-4h-4"/><path d="m22 18l-1.5 1.5c-.9.9-2.1 1.5-3.5 1.5s-2.6-.6-3.5-1.5c-.4-.4-.8-1-1-1.5"/></g>`),
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M9 20H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h3.9a2 2 0 0 1 1.69.9l.81 1.2a2 2 0 0 0 1.67.9H20a2 2 0 0 1 2 2v.5"/><path d="M12 10v4h4"/><path d="m12 14l1.535-1.605a5 5 0 0 1 8 1.5M22 22v-4h-4"/><path d="m22 18l-1.535 1.605a5 5 0 0 1-8-1.5"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -6257,14 +6468,6 @@ func Forklift(children ...ElementRenderer) *LucideIcon {
 	}
 }
 
-func FormInput(children ...ElementRenderer) *LucideIcon {
-	return &LucideIcon{
-		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect width="20" height="12" x="2" y="6" rx="2"/><path d="M12 12h.01M17 12h.01M7 12h.01"/></g>`),
-		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
-	}
-}
-
 func Forward(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
@@ -6309,14 +6512,6 @@ func Fullscreen(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M3 7V5a2 2 0 0 1 2-2h2m10 0h2a2 2 0 0 1 2 2v2m0 10v2a2 2 0 0 1-2 2h-2M7 21H5a2 2 0 0 1-2-2v-2"/><rect width="10" height="8" x="7" y="8" rx="1"/></g>`),
-		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
-	}
-}
-
-func FunctionSquare(children ...ElementRenderer) *LucideIcon {
-	return &LucideIcon{
-		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><path d="M9 17c2 0 2.8-1 2.8-2.8V10c0-2 1-3.3 3.2-3m-6 4.2h5.7"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -6385,26 +6580,10 @@ func GanttChart(children ...ElementRenderer) *LucideIcon {
 	}
 }
 
-func GanttChartSquare(children ...ElementRenderer) *LucideIcon {
-	return &LucideIcon{
-		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M9 8h7m-8 4h6m-3 4h5"/></g>`),
-		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
-	}
-}
-
 func Gauge(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m12 14l4-4M3.34 19a10 10 0 1 1 17.32 0"/>`),
-		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
-	}
-}
-
-func GaugeCircle(children ...ElementRenderer) *LucideIcon {
-	return &LucideIcon{
-		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M15.6 2.7a10 10 0 1 0 5.7 5.7"/><circle cx="12" cy="12" r="2"/><path d="M13.4 10.6L19 5"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -6601,10 +6780,10 @@ func Globe(children ...ElementRenderer) *LucideIcon {
 	}
 }
 
-func GlobeTwo(children ...ElementRenderer) *LucideIcon {
+func GlobeLock(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M21.54 15H17a2 2 0 0 0-2 2v4.54M7 3.34V5a3 3 0 0 0 3 3v0a2 2 0 0 1 2 2v0c0 1.1.9 2 2 2v0a2 2 0 0 0 2-2v0c0-1.1.9-2 2-2h3.17M11 21.95V18a2 2 0 0 0-2-2v0a2 2 0 0 1-2-2v-1a2 2 0 0 0-2-2H2.05"/><circle cx="12" cy="12" r="10"/></g>`),
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M15.686 15A14.5 14.5 0 0 1 12 22a14.5 14.5 0 0 1 0-20a10 10 0 1 0 9.542 13M2 12h8.5M20 6V4a2 2 0 1 0-4 0v2"/><rect width="8" height="5" x="14" y="6" rx="1"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -6612,7 +6791,7 @@ func GlobeTwo(children ...ElementRenderer) *LucideIcon {
 func Goal(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M12 13V2l8 4l-8 4"/><path d="M20.55 10.23A9 9 0 1 1 8 4.94"/><path d="M8 10a5 5 0 1 0 8.9 2.02"/></g>`),
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M12 13V2l8 4l-8 4"/><path d="M20.561 10.222a9 9 0 1 1-12.55-5.29"/><path d="M8.002 9.997a5 5 0 1 0 8.9 2.02"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -6628,7 +6807,7 @@ func Grab(children ...ElementRenderer) *LucideIcon {
 func GraduationCap(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M22 10v6M2 10l10-5l10 5l-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></g>`),
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0zM22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -6637,14 +6816,6 @@ func Grape(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M22 5V2l-5.89 5.89"/><circle cx="16.6" cy="15.89" r="3"/><circle cx="8.11" cy="7.4" r="3"/><circle cx="12.35" cy="11.65" r="3"/><circle cx="13.91" cy="5.85" r="3"/><circle cx="18.15" cy="10.09" r="3"/><circle cx="6.56" cy="13.2" r="3"/><circle cx="10.8" cy="17.44" r="3"/><circle cx="5" cy="19" r="3"/></g>`),
-		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
-	}
-}
-
-func Grid(children ...ElementRenderer) *LucideIcon {
-	return &LucideIcon{
-		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><path d="M3 9h18M3 15h18M9 3v18m6-18v18"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -6700,7 +6871,15 @@ func GroupIcon(children ...ElementRenderer) *LucideIcon {
 func Guitar(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="m20 7l1.7-1.7a1 1 0 0 0 0-1.4l-1.6-1.6a1 1 0 0 0-1.4 0L17 4v3Zm-3 0l-5.1 5.1"/><circle cx="11.5" cy="12.5" r=".5"/><path d="M6 12a2 2 0 0 0 1.8-1.2l.4-.9C8.7 8.8 9.8 8 11 8c2.8 0 5 2.2 5 5c0 1.2-.8 2.3-1.9 2.8l-.9.4A2 2 0 0 0 12 18a4 4 0 0 1-4 4c-3.3 0-6-2.7-6-6a4 4 0 0 1 4-4m0 4l2 2"/></g>`),
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="m20 7l1.7-1.7a1 1 0 0 0 0-1.4l-1.6-1.6a1 1 0 0 0-1.4 0L17 4v3Zm-3 0l-5.1 5.1"/><circle cx="11.5" cy="12.5" r=".5" fill="currentColor"/><path d="M6 12a2 2 0 0 0 1.8-1.2l.4-.9C8.7 8.8 9.8 8 11 8c2.8 0 5 2.2 5 5c0 1.2-.8 2.3-1.9 2.8l-.9.4A2 2 0 0 0 12 18a4 4 0 0 1-4 4c-3.3 0-6-2.7-6-6a4 4 0 0 1 4-4m0 4l2 2"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func Ham(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M13.144 21.144A7.274 10.445 45 1 0 2.856 10.856"/><path d="M13.144 21.144A7.274 4.365 45 0 0 2.856 10.856a7.274 4.365 45 0 0 10.288 10.288m3.421-10.709L18.6 8.4a2.501 2.501 0 1 0 1.65-4.65a2.5 2.5 0 1 0-4.66 1.66l-2.024 2.025M8.5 16.5l-1-1"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -6708,7 +6887,7 @@ func Guitar(children ...ElementRenderer) *LucideIcon {
 func Hammer(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="m15 12l-8.5 8.5c-.83.83-2.17.83-3 0c0 0 0 0 0 0a2.12 2.12 0 0 1 0-3L12 9m5.64 6L22 10.64"/><path d="m20.91 11.7l-1.25-1.25c-.6-.6-.93-1.4-.93-2.25v-.86L16.01 4.6a5.56 5.56 0 0 0-3.94-1.64H9l.92.82A6.18 6.18 0 0 1 12 8.4v1.56l2 2h2.47l2.26 1.91"/></g>`),
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="m15 12l-8.373 8.373a1 1 0 1 1-3-3L12 9m6 6l4-4"/><path d="m21.5 11.5l-1.914-1.914A2 2 0 0 1 19 8.172V7l-2.26-2.26a6 6 0 0 0-4.202-1.756L9 2.96l.92.82A6.18 6.18 0 0 1 12 8.4V10l2 2h1.172a2 2 0 0 1 1.414.586L18.5 14.5"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -6721,10 +6900,50 @@ func Hand(children ...ElementRenderer) *LucideIcon {
 	}
 }
 
+func HandCoins(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M11 15h2a2 2 0 1 0 0-4h-3c-.6 0-1.1.2-1.4.6L3 17"/><path d="m7 21l1.6-1.4c.3-.4.8-.6 1.4-.6h4c1.1 0 2.1-.4 2.8-1.2l4.6-4.4a2 2 0 0 0-2.75-2.91l-4.2 3.9M2 16l6 6"/><circle cx="16" cy="9" r="2.9"/><circle cx="6" cy="5" r="3"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func HandHeart(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M11 14h2a2 2 0 1 0 0-4h-3c-.6 0-1.1.2-1.4.6L3 16"/><path d="m7 20l1.6-1.4c.3-.4.8-.6 1.4-.6h4c1.1 0 2.1-.4 2.8-1.2l4.6-4.4a2 2 0 0 0-2.75-2.91l-4.2 3.9M2 15l6 6"/><path d="M19.5 8.5c.7-.7 1.5-1.6 1.5-2.7A2.73 2.73 0 0 0 16 4a2.78 2.78 0 0 0-5 1.8c0 1.2.8 2 1.5 2.8L16 12Z"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func HandHelping(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M11 12h2a2 2 0 1 0 0-4h-3c-.6 0-1.1.2-1.4.6L3 14"/><path d="m7 18l1.6-1.4c.3-.4.8-.6 1.4-.6h4c1.1 0 2.1-.4 2.8-1.2l4.6-4.4a2 2 0 0 0-2.75-2.91l-4.2 3.9M2 13l6 6"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func HandMetal(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M18 12.5V10a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v1.4m0-.4V9a2 2 0 1 0-4 0v2m0-.5V5a2 2 0 1 0-4 0v9"/><path d="m7 15l-1.76-1.76a2 2 0 0 0-2.83 2.82l3.6 3.6C7.5 21.14 9.2 22 12 22h2a8 8 0 0 0 8-8V7a2 2 0 1 0-4 0v5"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func HandPlatter(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M12 3V2m-7 8a7.1 7.1 0 0 1 14 0M4 10h16M2 14h12a2 2 0 1 1 0 4h-2"/><path d="m15.4 17.4l3.2-2.8a2 2 0 0 1 2.8 2.9l-3.6 3.3c-.7.8-1.7 1.2-2.8 1.2h-4c-1.1 0-2.1-.4-2.8-1.2L5 18m0-4v7H2"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func Handshake(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="m11 17l2 2a1 1 0 1 0 3-3"/><path d="m14 14l2.5 2.5a1 1 0 1 0 3-3l-3.88-3.88a3 3 0 0 0-4.24 0l-.88.88a1 1 0 1 1-3-3l2.81-2.81a5.79 5.79 0 0 1 7.06-.87l.47.28a2 2 0 0 0 1.42.25L21 4"/><path d="m21 3l1 11h-2M3 3L2 14l6.5 6.5a1 1 0 1 0 3-3M3 4h8"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -6849,6 +7068,14 @@ func Headphones(children ...ElementRenderer) *LucideIcon {
 	}
 }
 
+func Headset(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M3 11h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2zm0 0a9 9 0 1 1 18 0m0 0v5a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2z"/><path d="M21 16v2a4 4 0 0 1-4 4h-5"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func Heart(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
@@ -6889,18 +7116,10 @@ func HeartPulse(children ...ElementRenderer) *LucideIcon {
 	}
 }
 
-func HelpCircle(children ...ElementRenderer) *LucideIcon {
+func Heater(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3m.08 4h.01"/></g>`),
-		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
-	}
-}
-
-func HelpingHand(children ...ElementRenderer) *LucideIcon {
-	return &LucideIcon{
-		SVGSVGElement: SVG_SVG(
-			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m3 15l5.12-5.12A3 3 0 0 1 10.24 9H13a2 2 0 1 1 0 4h-2.5m4-.68l4.17-4.89a1.88 1.88 0 0 1 2.92 2.36l-4.2 5.94A3 3 0 0 1 14.96 17H9.83a2 2 0 0 0-1.42.59L7 19m-5-5l6 6"/>`),
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M11 8c2-3-2-3 0-6m4.5 6c2-3-2-3 0-6M6 10h.01M6 14h.01M10 16v-4m4 4v-4m4 4v-4"/><path d="M20 6a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h3M5 20v2m14-2v2"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -6940,7 +7159,7 @@ func Home(children ...ElementRenderer) *LucideIcon {
 func Hop(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M17.5 5.5C19 7 20.5 9 21 11c-2.5.5-5 .5-8.5-1m-7 7.5C7 19 9 20.5 11 21c.5-2.5.5-5-1-8.5m6.5-1c1 2 1 3.5 1 6c-2.5 0-4 0-6-1m8.5-5c1 1.5 2 3.5 2 4.5c-1.5.5-3 0-4.5-.5m-6 4.5c1.5 1 3.5 2 4.5 2c.5-1.5 0-3-.5-4.5m5-1c1 2 1.5 3.5 1.5 5.5c-2 0-3.5-.5-5.5-1.5"/><path d="M4.783 4.782C8.493 1.072 14.5 1 18 5c-1 1-4.5 2-6.5 1.5c1 1.5 1 4 .5 5.5c-1.5.5-4 .5-5.5-.5C7 13.5 6 17 5 18c-4-3.5-3.927-9.508-.217-13.218M4.5 4.5L3 3c-.184-.185-.184-.816 0-1"/></g>`),
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M10.82 16.12c1.69.6 3.91.79 5.18.85c.55.03 1-.42.97-.97c-.06-1.27-.26-3.5-.85-5.18M11.5 6.5c1.64 0 5-.38 6.71-1.07c.52-.2.55-.82.12-1.17A10 10 0 0 0 4.26 18.33c.35.43.96.4 1.17-.12c.69-1.71 1.07-5.07 1.07-6.71c1.34.45 3.1.9 4.88.62a.88.88 0 0 0 .73-.74c.3-2.14-.15-3.5-.61-4.88"/><path d="M15.62 16.95c.2.85.62 2.76.5 4.28a.77.77 0 0 1-.9.7a16.64 16.64 0 0 1-4.08-1.36"/><path d="M16.13 21.05c1.65.63 3.68.84 4.87.91a.9.9 0 0 0 .96-.96a17.68 17.68 0 0 0-.9-4.87"/><path d="M16.94 15.62c.86.2 2.77.62 4.29.5a.77.77 0 0 0 .7-.9a16.64 16.64 0 0 0-1.36-4.08"/><path d="M17.99 5.52a20.82 20.82 0 0 1 3.15 4.5a.8.8 0 0 1-.68 1.13c-2.33.2-5.3-.32-8.27-1.57M4.93 4.93L3 3a.7.7 0 0 1 0-1m6.58 10.18c1.24 2.98 1.77 5.95 1.57 8.28a.8.8 0 0 1-1.13.68a20.82 20.82 0 0 1-4.5-3.15"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -6948,7 +7167,15 @@ func Hop(children ...ElementRenderer) *LucideIcon {
 func HopOff(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M17.5 5.5C19 7 20.5 9 21 11c-1.323.265-2.646.39-4.118.226M5.5 17.5C7 19 9 20.5 11 21c.5-2.5.5-5-1-8.5m7.5 5c-2.5 0-4 0-6-1m8.5-5c1 1.5 2 3.5 2 4.5m-10.5 4c1.5 1 3.5 2 4.5 2c.5-1.5 0-3-.5-4.5M22 22c-2 0-3.5-.5-5.5-1.5"/><path d="M4.783 4.782C1.073 8.492 1 14.5 5 18c1-1 2-4.5 1.5-6.5c1.5 1 4 1 5.5.5M8.227 2.57C11.578 1.335 15.453 2.089 18 5c-.88.88-3.7 1.761-5.726 1.618M2 2l20 20"/></g>`),
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M10.82 16.12c1.69.6 3.91.79 5.18.85c.28.01.53-.09.7-.27"/><path d="M11.14 20.57c.52.24 2.44 1.12 4.08 1.37c.46.06.86-.25.9-.71c.12-1.52-.3-3.43-.5-4.28"/><path d="M16.13 21.05c1.65.63 3.68.84 4.87.91a.9.9 0 0 0 .7-.26M17.99 5.52a20.83 20.83 0 0 1 3.15 4.5a.8.8 0 0 1-.68 1.13c-1.17.1-2.5.02-3.9-.25"/><path d="M20.57 11.14c.24.52 1.12 2.44 1.37 4.08c.04.3-.08.59-.31.75M4.93 4.93a10 10 0 0 0-.67 13.4c.35.43.96.4 1.17-.12c.69-1.71 1.07-5.07 1.07-6.71c1.34.45 3.1.9 4.88.62a.85.85 0 0 0 .48-.24"/><path d="M5.52 17.99c1.05.95 2.91 2.42 4.5 3.15a.8.8 0 0 0 1.13-.68c.2-2.34-.33-5.3-1.57-8.28m-1.23-9.5a10 10 0 0 1 9.98 1.58c.43.35.4.96-.12 1.17c-1.5.6-4.3.98-6.07 1.05M2 2l20 20"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func Hospital(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M12 6v4m2 4h-4m4 4h-4m4-10h-4m8 4h2a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-9a2 2 0 0 1 2-2h2"/><path d="M18 22V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v18"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -6956,7 +7183,7 @@ func HopOff(children ...ElementRenderer) *LucideIcon {
 func Hotel(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M18 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2"/><path d="m9 16l.348-.24c1.465-1.013 3.84-1.013 5.304 0L15 16M8 7h.01M16 7h.01M12 7h.01M12 11h.01M16 11h.01M8 11h.01M10 22v-6.5m4 0V22"/></g>`),
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M10 22v-6.57M12 11h.01M12 7h.01M14 15.43V22m1-6a5 5 0 0 0-6 0m7-5h.01M16 7h.01M8 11h.01M8 7h.01"/><rect width="16" height="20" x="4" y="2" rx="2"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -6969,18 +7196,18 @@ func Hourglass(children ...ElementRenderer) *LucideIcon {
 	}
 }
 
-func IceCream(children ...ElementRenderer) *LucideIcon {
+func IceCreamBowl(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m7 11l4.08 10.35a1 1 0 0 0 1.84 0L17 11m0-4A5 5 0 0 0 7 7m10 0a2 2 0 0 1 0 4H7a2 2 0 0 1 0-4"/>`),
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M12 17c5 0 8-2.69 8-6H4c0 3.31 3 6 8 6m-4 4h8m-4-3v3M5.14 11a3.5 3.5 0 1 1 6.71 0"/><path d="M12.14 11a3.5 3.5 0 1 1 6.71 0"/><path d="M15.5 6.5a3.5 3.5 0 1 0-7 0"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
 
-func IceCreamTwo(children ...ElementRenderer) *LucideIcon {
+func IceCreamCone(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M12 17c5 0 8-2.69 8-6H4c0 3.31 3 6 8 6m-4 4h8m-4-3v3M5.14 11a3.5 3.5 0 1 1 6.71 0"/><path d="M12.14 11a3.5 3.5 0 1 1 6.71 0"/><path d="M15.5 6.5a3.5 3.5 0 1 0-7 0"/></g>`),
+			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m7 11l4.08 10.35a1 1 0 0 0 1.84 0L17 11m0-4A5 5 0 0 0 7 7m10 0a2 2 0 0 1 0 4H7a2 2 0 0 1 0-4"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -6996,7 +7223,7 @@ func Image(children ...ElementRenderer) *LucideIcon {
 func ImageDown(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="9" cy="9" r="2"/><path d="M10.3 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10.8"/><path d="m21 15l-3.1-3.1a2 2 0 0 0-2.814.014L6 21"/><path d="m14 19.5l3 3v-6m0 6l3-3"/></g>`),
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M10.3 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10l-3.1-3.1a2 2 0 0 0-2.814.014L6 21"/><path d="m14 19l3 3v-5.5m0 5.5l3-3"/><circle cx="9" cy="9" r="2"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -7025,6 +7252,22 @@ func ImagePlus(children ...ElementRenderer) *LucideIcon {
 	}
 }
 
+func ImageUp(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M10.3 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10l-3.1-3.1a2 2 0 0 0-2.814.014L6 21"/><path d="m14 19.5l3-3l3 3M17 22v-5.5"/><circle cx="9" cy="9" r="2"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func Images(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M18 22H4a2 2 0 0 1-2-2V6"/><path d="m22 13l-1.296-1.296a2.41 2.41 0 0 0-3.408 0L11 18"/><circle cx="12" cy="8" r="2"/><rect width="16" height="16" x="6" y="2" rx="2"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func Import(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
@@ -7041,7 +7284,15 @@ func Inbox(children ...ElementRenderer) *LucideIcon {
 	}
 }
 
-func Indent(children ...ElementRenderer) *LucideIcon {
+func IndentDecrease(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m7 8l-4 4l4 4m14-4H11m10-6H11m10 12H11"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func IndentIncrease(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m3 8l4 4l-4 4m18-4H11m10-6H11m10 12H11"/>`),
@@ -7137,22 +7388,6 @@ func Kanban(children ...ElementRenderer) *LucideIcon {
 	}
 }
 
-func KanbanSquare(children ...ElementRenderer) *LucideIcon {
-	return &LucideIcon{
-		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M8 7v7m4-7v4m4-4v9"/></g>`),
-		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
-	}
-}
-
-func KanbanSquareDashed(children ...ElementRenderer) *LucideIcon {
-	return &LucideIcon{
-		SVGSVGElement: SVG_SVG(
-			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7v7m4-7v4m4-4v9M5 3a2 2 0 0 0-2 2m6-2h1m4 0h1m4 0a2 2 0 0 1 2 2m0 4v1m0 4v1m0 4a2 2 0 0 1-2 2m-5 0h1m-6 0h1m-5 0a2 2 0 0 1-2-2m0-5v1m0-6v1"/>`),
-		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
-	}
-}
-
 func Key(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
@@ -7164,7 +7399,7 @@ func Key(children ...ElementRenderer) *LucideIcon {
 func KeyRound(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M2 18v3c0 .6.4 1 1 1h4v-3h3v-3h2l1.4-1.4a6.5 6.5 0 1 0-4-4Z"/><circle cx="16.5" cy="7.5" r=".5"/></g>`),
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M2 18v3c0 .6.4 1 1 1h4v-3h3v-3h2l1.4-1.4a6.5 6.5 0 1 0-4-4Z"/><circle cx="16.5" cy="7.5" r=".5" fill="currentColor"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -7180,7 +7415,7 @@ func KeySquare(children ...ElementRenderer) *LucideIcon {
 func Keyboard(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect width="20" height="16" x="2" y="4" rx="2" ry="2"/><path d="M6 8h.001M18 8h.001M16 12h.001M7 16h10"/></g>`),
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M10 8h.01M12 12h.01M14 8h.01M16 12h.01M18 8h.01M6 8h.01M7 16h10m-9-4h.01"/><rect width="20" height="16" x="2" y="4" rx="2"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -7273,7 +7508,7 @@ func Laptop(children ...ElementRenderer) *LucideIcon {
 	}
 }
 
-func LaptopTwo(children ...ElementRenderer) *LucideIcon {
+func LaptopMinimal(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect width="18" height="12" x="3" y="4" rx="2" ry="2"/><path d="M2 20h20"/></g>`),
@@ -7325,14 +7560,6 @@ func LayersTwo(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="m16.02 12l5.48 3.13a1 1 0 0 1 0 1.74L13 21.74a2 2 0 0 1-2 0l-8.5-4.87a1 1 0 0 1 0-1.74L7.98 12"/><path d="M13 13.74a2 2 0 0 1-2 0L2.5 8.87a1 1 0 0 1 0-1.74L11 2.26a2 2 0 0 1 2 0l8.5 4.87a1 1 0 0 1 0 1.74Z"/></g>`),
-		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
-	}
-}
-
-func Layout(children ...ElementRenderer) *LucideIcon {
-	return &LucideIcon{
-		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><path d="M3 9h18M9 21V9"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -7413,14 +7640,6 @@ func LibraryBig(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect width="8" height="18" x="3" y="3" rx="1"/><path d="M7 3v18m13.4-2.1c.2.5-.1 1.1-.6 1.3l-1.9.7c-.5.2-1.1-.1-1.3-.6L11.1 5.1c-.2-.5.1-1.1.6-1.3l1.9-.7c.5-.2 1.1.1 1.3.6Z"/></g>`),
-		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
-	}
-}
-
-func LibrarySquare(children ...ElementRenderer) *LucideIcon {
-	return &LucideIcon{
-		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M7 7v10m4-10v10m4-10l2 10"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -7509,6 +7728,14 @@ func ListChecks(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m3 17l2 2l4-4M3 7l2 2l4-4m4 1h8m-8 6h8m-8 6h8"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func ListCollapse(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m3 10l2.5-2.5L3 5m0 14l2.5-2.5L3 14m7-8h11m-11 6h11m-11 6h11"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -7617,7 +7844,7 @@ func Loader(children ...ElementRenderer) *LucideIcon {
 	}
 }
 
-func LoaderTwo(children ...ElementRenderer) *LucideIcon {
+func LoaderCircle(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 1 1-6.219-8.56"/>`),
@@ -7665,6 +7892,22 @@ func LockKeyhole(children ...ElementRenderer) *LucideIcon {
 	}
 }
 
+func LockKeyholeOpen(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="16" r="1"/><rect width="18" height="12" x="3" y="10" rx="2"/><path d="M7 10V7a5 5 0 0 1 9.33-2.5"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func LockOpen(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 9.9-1"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func LogIn(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
@@ -7693,14 +7936,6 @@ func Luggage(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M6 20a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h0"/><path d="M8 18V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v14m-6 2h4"/><circle cx="16" cy="20" r="2"/><circle cx="8" cy="20" r="2"/></g>`),
-		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
-	}
-}
-
-func Msquare(children ...ElementRenderer) *LucideIcon {
-	return &LucideIcon{
-		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M8 16V8l4 4l4-4v8"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -7901,14 +8136,6 @@ func Menu(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 12h16M4 6h16M4 18h16"/>`),
-		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
-	}
-}
-
-func MenuSquare(children ...ElementRenderer) *LucideIcon {
-	return &LucideIcon{
-		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M7 8h10M7 12h10M7 16h10"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -8153,7 +8380,7 @@ func MicOff(children ...ElementRenderer) *LucideIcon {
 	}
 }
 
-func MicTwo(children ...ElementRenderer) *LucideIcon {
+func MicVocal(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="m12 8l-9.04 9.06a2.82 2.82 0 1 0 3.98 3.98L16 12"/><circle cx="17" cy="7" r="5"/></g>`),
@@ -8221,22 +8448,6 @@ func Minus(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14"/>`),
-		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
-	}
-}
-
-func MinusCircle(children ...ElementRenderer) *LucideIcon {
-	return &LucideIcon{
-		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 12h8"/></g>`),
-		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
-	}
-}
-
-func MinusSquare(children ...ElementRenderer) *LucideIcon {
-	return &LucideIcon{
-		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M8 12h8"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -8353,22 +8564,6 @@ func MoonStar(children ...ElementRenderer) *LucideIcon {
 	}
 }
 
-func MoreHorizontal(children ...ElementRenderer) *LucideIcon {
-	return &LucideIcon{
-		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></g>`),
-		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
-	}
-}
-
-func MoreVertical(children ...ElementRenderer) *LucideIcon {
-	return &LucideIcon{
-		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="12" r="1"/><circle cx="12" cy="5" r="1"/><circle cx="12" cy="19" r="1"/></g>`),
-		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
-	}
-}
-
 func Mountain(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
@@ -8405,22 +8600,6 @@ func MousePointerClick(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m9 9l5 12l1.8-5.2L21 14ZM7.2 2.2L8 5.1M5.1 8l-2.9-.8M14 4.1L12 6m-6 6l-1.9 2"/>`),
-		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
-	}
-}
-
-func MousePointerSquare(children ...ElementRenderer) *LucideIcon {
-	return &LucideIcon{
-		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M21 11V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h6"/><path d="m12 12l4 10l1.7-4.3L22 16Z"/></g>`),
-		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
-	}
-}
-
-func MousePointerSquareDashed(children ...ElementRenderer) *LucideIcon {
-	return &LucideIcon{
-		SVGSVGElement: SVG_SVG(
-			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3a2 2 0 0 0-2 2m16-2a2 2 0 0 1 2 2m-9 7l4 10l1.7-4.3L22 16Zm-7 9a2 2 0 0 1-2-2M9 3h1M9 21h2m3-18h1M3 9v1m18-1v2M3 14v1"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -8633,6 +8812,54 @@ func Nfc(children ...ElementRenderer) *LucideIcon {
 	}
 }
 
+func Notebook(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M2 6h4m-4 4h4m-4 4h4m-4 4h4"/><rect width="16" height="20" x="4" y="2" rx="2"/><path d="M16 2v20"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func NotebookPen(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M13.4 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-7.4M2 6h4m-4 4h4m-4 4h4m-4 4h4"/><path d="M18.4 2.6a2.17 2.17 0 0 1 3 3L16 11l-4 1l1-4Z"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func NotebookTabs(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M2 6h4m-4 4h4m-4 4h4m-4 4h4"/><rect width="16" height="20" x="4" y="2" rx="2"/><path d="M15 2v20m0-15h5m-5 5h5m-5 5h5"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func NotebookText(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M2 6h4m-4 4h4m-4 4h4m-4 4h4"/><rect width="16" height="20" x="4" y="2" rx="2"/><path d="M9.5 8h5m-5 4H16m-6.5 4H14"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func NotepadText(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M8 2v4m4-4v4m4-4v4"/><rect width="16" height="18" x="4" y="4" rx="2"/><path d="M8 10h6m-6 4h8m-8 4h5"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func NotepadTextDashed(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 2v4m4-4v4m4-4v4m0-2h2a2 2 0 0 1 2 2v2m0 4v2m0 4v2a2 2 0 0 1-2 2h-1m-4 0h-2m-4 0H6a2 2 0 0 1-2-2v-2m0-4v-2m0-4V6a2 2 0 0 1 2-2h2m0 6h6m-6 4h8m-8 4h5"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func Nut(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
@@ -8657,6 +8884,30 @@ func Octagon(children ...ElementRenderer) *LucideIcon {
 	}
 }
 
+func OctagonAlert(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7.86 2h8.28L22 7.86v8.28L16.14 22H7.86L2 16.14V7.86zM12 8v4m0 4h.01"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func OctagonPause(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 15V9m4 6V9M7.714 2h8.572L22 7.714v8.572L16.286 22H7.714L2 16.286V7.714z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func OctagonX(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7.86 2h8.28L22 7.86v8.28L16.14 22H7.86L2 16.14V7.86zM15 9l-6 6m0-6l6 6"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func Option(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
@@ -8669,14 +8920,6 @@ func Orbit(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="12" r="3"/><circle cx="19" cy="5" r="2"/><circle cx="5" cy="19" r="2"/><path d="M10.4 21.9a10 10 0 0 0 9.941-15.416M13.5 2.1a10 10 0 0 0-9.841 15.416"/></g>`),
-		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
-	}
-}
-
-func Outdent(children ...ElementRenderer) *LucideIcon {
-	return &LucideIcon{
-		SVGSVGElement: SVG_SVG(
-			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m7 8l-4 4l4 4m14-4H11m10-6H11m10 12H11"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -8708,7 +8951,7 @@ func PackageMinus(children ...ElementRenderer) *LucideIcon {
 func PackageOpen(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M20.91 8.84L8.56 2.23a1.93 1.93 0 0 0-1.81 0L3.1 4.13a2.12 2.12 0 0 0-.05 3.69l12.22 6.93a2 2 0 0 0 1.94 0L21 12.51a2.12 2.12 0 0 0-.09-3.67"/><path d="m3.09 8.84l12.35-6.61a1.93 1.93 0 0 1 1.81 0l3.65 1.9a2.12 2.12 0 0 1 .1 3.69L8.73 14.75a2 2 0 0 1-1.94 0L3 12.51a2.12 2.12 0 0 1 .09-3.67M12 22v-9"/><path d="M20 13.5v3.37a2.06 2.06 0 0 1-1.11 1.83l-6 3.08a1.93 1.93 0 0 1-1.78 0l-6-3.08A2.06 2.06 0 0 1 4 16.87V13.5"/></g>`),
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M12 22v-9m3.17-10.79a1.67 1.67 0 0 1 1.63 0L21 4.57a1.93 1.93 0 0 1 0 3.36L8.82 14.79a1.655 1.655 0 0 1-1.64 0L3 12.43a1.93 1.93 0 0 1 0-3.36z"/><path d="M20 13v3.87a2.06 2.06 0 0 1-1.11 1.83l-6 3.08a1.93 1.93 0 0 1-1.78 0l-6-3.08A2.06 2.06 0 0 1 4 16.87V13"/><path d="M21 12.43a1.93 1.93 0 0 0 0-3.36L8.83 2.2a1.64 1.64 0 0 0-1.63 0L3 4.57a1.93 1.93 0 0 0 0 3.36l12.18 6.86a1.636 1.636 0 0 0 1.63 0z"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -8753,6 +8996,14 @@ func PaintBucket(children ...ElementRenderer) *LucideIcon {
 	}
 }
 
+func PaintRoller(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect width="16" height="6" x="2" y="2" rx="2"/><path d="M10 16v-2a2 2 0 0 1 2-2h8a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect width="4" height="6" x="8" y="16" rx="1"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func Paintbrush(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
@@ -8772,15 +9023,7 @@ func PaintbrushTwo(children ...ElementRenderer) *LucideIcon {
 func Palette(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="13.5" cy="6.5" r=".5"/><circle cx="17.5" cy="10.5" r=".5"/><circle cx="8.5" cy="7.5" r=".5"/><circle cx="6.5" cy="12.5" r=".5"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688c0-.437-.18-.835-.437-1.125c-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2"/></g>`),
-		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
-	}
-}
-
-func Palmtree(children ...ElementRenderer) *LucideIcon {
-	return &LucideIcon{
-		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M13 8c0-2.76-2.46-5-5.5-5S2 5.24 2 8h2l1-1l1 1h4m3-.86A5.82 5.82 0 0 1 16.5 6c3.04 0 5.5 2.24 5.5 5h-3l-1-1l-1 1h-3"/><path d="M5.89 9.71c-2.15 2.15-2.3 5.47-.35 7.43l4.24-4.25l.7-.7l.71-.71l2.12-2.12c-1.95-1.96-5.27-1.8-7.42.35"/><path d="M11 15.5c.5 2.5-.17 4.5-1 6.5h4c2-5.5-.5-12-1-14"/></g>`),
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688c0-.437-.18-.835-.437-1.125c-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -8953,42 +9196,10 @@ func Parentheses(children ...ElementRenderer) *LucideIcon {
 	}
 }
 
-func ParkingCircle(children ...ElementRenderer) *LucideIcon {
-	return &LucideIcon{
-		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9 17V7h4a3 3 0 0 1 0 6H9"/></g>`),
-		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
-	}
-}
-
-func ParkingCircleOff(children ...ElementRenderer) *LucideIcon {
-	return &LucideIcon{
-		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m5 5l14 14m-6-6a3 3 0 1 0 0-6H9v2m0 8v-2.34"/></g>`),
-		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
-	}
-}
-
 func ParkingMeter(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M9 9a3 3 0 1 1 6 0m-3 3v3m-1 0h2"/><path d="M19 9a7 7 0 1 0-13.6 2.3C6.4 14.4 8 19 8 19h8s1.6-4.6 2.6-7.7c.3-.8.4-1.5.4-2.3m-7 10v3"/></g>`),
-		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
-	}
-}
-
-func ParkingSquare(children ...ElementRenderer) *LucideIcon {
-	return &LucideIcon{
-		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M9 17V7h4a3 3 0 0 1 0 6H9"/></g>`),
-		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
-	}
-}
-
-func ParkingSquareOff(children ...ElementRenderer) *LucideIcon {
-	return &LucideIcon{
-		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M3.6 3.6A2 2 0 0 1 5 3h14a2 2 0 0 1 2 2v14a2 2 0 0 1-.59 1.41M3 8.7V19a2 2 0 0 0 2 2h10.3M2 2l20 20"/><path d="M13 13a3 3 0 1 0 0-6H9v2m0 8v-2.3"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -9005,22 +9216,6 @@ func Pause(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 4h4v16H6zm8 0h4v16h-4z"/>`),
-		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
-	}
-}
-
-func PauseCircle(children ...ElementRenderer) *LucideIcon {
-	return &LucideIcon{
-		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M10 15V9m4 6V9"/></g>`),
-		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
-	}
-}
-
-func PauseOctagon(children ...ElementRenderer) *LucideIcon {
-	return &LucideIcon{
-		SVGSVGElement: SVG_SVG(
-			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 15V9m4 6V9M7.714 2h8.572L22 7.714v8.572L16.286 22H7.714L2 16.286V7.714z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -9053,14 +9248,6 @@ func PenLine(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 20h9M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1l1-4Z"/>`),
-		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
-	}
-}
-
-func PenSquare(children ...ElementRenderer) *LucideIcon {
-	return &LucideIcon{
-		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.12 2.12 0 0 1 3 3L12 15l-4 1l1-4Z"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -9109,30 +9296,6 @@ func Percent(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M19 5L5 19"/><circle cx="6.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="17.5" r="2.5"/></g>`),
-		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
-	}
-}
-
-func PercentCircle(children ...ElementRenderer) *LucideIcon {
-	return &LucideIcon{
-		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m15 9l-6 6m0-6h.01M15 15h.01"/></g>`),
-		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
-	}
-}
-
-func PercentDiamond(children ...ElementRenderer) *LucideIcon {
-	return &LucideIcon{
-		SVGSVGElement: SVG_SVG(
-			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.7 10.3a2.41 2.41 0 0 0 0 3.41l7.59 7.59a2.41 2.41 0 0 0 3.41 0l7.59-7.59a2.41 2.41 0 0 0 0-3.41L13.7 2.71a2.41 2.41 0 0 0-3.41 0Zm6.5-1.1h.01m5.29.3l-5 5m5.2.3h.01"/>`),
-		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
-	}
-}
-
-func PercentSquare(children ...ElementRenderer) *LucideIcon {
-	return &LucideIcon{
-		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="m15 9l-6 6m0-6h.01M15 15h.01"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -9209,18 +9372,18 @@ func Pi(children ...ElementRenderer) *LucideIcon {
 	}
 }
 
-func PiSquare(children ...ElementRenderer) *LucideIcon {
-	return &LucideIcon{
-		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M7 7h10m-7 0v10m6 0a2 2 0 0 1-2-2V7"/></g>`),
-		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
-	}
-}
-
 func Piano(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.5 8c-1.4 0-2.6-.8-3.2-2A6.87 6.87 0 0 0 2 9v11a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-8.5C22 9.6 20.4 8 18.5 8M2 14h20M6 14v4m4-4v4m4-4v4m4-4v4"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func Pickaxe(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M14.531 12.469L6.619 20.38a1 1 0 1 1-3-3l7.912-7.912m4.155-5.154A12.5 12.5 0 0 0 5.461 2.958A1 1 0 0 0 5.58 4.71a22 22 0 0 1 6.318 3.393"/><path d="M17.7 3.7a1 1 0 0 0-1.4 0l-4.6 4.6a1 1 0 0 0 0 1.4l2.6 2.6a1 1 0 0 0 1.4 0l4.6-4.6a1 1 0 0 0 0-1.4z"/><path d="M19.686 8.314a12.501 12.501 0 0 1 1.356 10.225a1 1 0 0 1-1.751-.119a22 22 0 0 0-3.393-6.319"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -9261,14 +9424,6 @@ func Pilcrow(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 4v16m4-16v16m2-16H9.5a4.5 4.5 0 0 0 0 9H13"/>`),
-		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
-	}
-}
-
-func PilcrowSquare(children ...ElementRenderer) *LucideIcon {
-	return &LucideIcon{
-		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M12 12H9.5a2.5 2.5 0 0 1 0-5H17m-5 0v10m4-10v10"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -9340,23 +9495,7 @@ func PlaneTakeoff(children ...ElementRenderer) *LucideIcon {
 func Play(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m5 3l14 9l-14 9z"/>`),
-		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
-	}
-}
-
-func PlayCircle(children ...ElementRenderer) *LucideIcon {
-	return &LucideIcon{
-		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m10 8l6 4l-6 4z"/></g>`),
-		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
-	}
-}
-
-func PlaySquare(children ...ElementRenderer) *LucideIcon {
-	return &LucideIcon{
-		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="m9 8l6 4l-6 4Z"/></g>`),
+			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m6 3l14 9l-14 9z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -9401,22 +9540,6 @@ func Plus(children ...ElementRenderer) *LucideIcon {
 	}
 }
 
-func PlusCircle(children ...ElementRenderer) *LucideIcon {
-	return &LucideIcon{
-		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 12h8m-4-4v8"/></g>`),
-		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
-	}
-}
-
-func PlusSquare(children ...ElementRenderer) *LucideIcon {
-	return &LucideIcon{
-		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M8 12h8m-4-4v8"/></g>`),
-		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
-	}
-}
-
 func Pocket(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
@@ -9436,7 +9559,7 @@ func PocketKnife(children ...ElementRenderer) *LucideIcon {
 func Podcast(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="11" r="1"/><path d="M11 17a1 1 0 0 1 2 0c0 .5-.34 3-.5 4.5a.5.5 0 0 1-1 0c-.16-1.5-.5-4-.5-4.5m-3-3a5 5 0 1 1 8 0"/><path d="M17 18.5a9 9 0 1 0-10 0"/></g>`),
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M16.85 18.58a9 9 0 1 0-9.7 0"/><path d="M8 14a5 5 0 1 1 8 0"/><circle cx="12" cy="11" r="1"/><path d="M13 17a1 1 0 1 0-2 0l.5 4.5a.5.5 0 1 0 1 0Z"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -9489,26 +9612,10 @@ func Power(children ...ElementRenderer) *LucideIcon {
 	}
 }
 
-func PowerCircle(children ...ElementRenderer) *LucideIcon {
-	return &LucideIcon{
-		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 12V6M8 7.5A6.1 6.1 0 0 0 12 18a6 6 0 0 0 4-10.5"/></g>`),
-		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
-	}
-}
-
 func PowerOff(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.36 6.64A9 9 0 0 1 20.77 15M6.16 6.16a9 9 0 1 0 12.68 12.68M12 2v4M2 2l20 20"/>`),
-		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
-	}
-}
-
-func PowerSquare(children ...ElementRenderer) *LucideIcon {
-	return &LucideIcon{
-		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M12 7v5M8 9a5.14 5.14 0 0 0 4 8a4.95 4.95 0 0 0 4-8"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -9533,6 +9640,14 @@ func Projector(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M5 7L3 5m6 1V3m4 4l2-2"/><circle cx="9" cy="13" r="3"/><path d="M11.83 12H20a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-4a2 2 0 0 1 2-2h2.17M16 16h2"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func Proportions(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="M12 9v11M2 9h13a2 2 0 0 1 2 2v9"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -9589,6 +9704,14 @@ func Radiation(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 12h.01M7.5 4.2c-.3-.5-.9-.7-1.3-.4C3.9 5.5 2.3 8.1 2 11c-.1.5.4 1 1 1h5c0-1.5.8-2.8 2-3.4c-1.1-1.9-2-3.5-2.5-4.4M21 12c.6 0 1-.4 1-1c-.3-2.9-1.8-5.5-4.1-7.1c-.4-.3-1.1-.2-1.3.3c-.6.9-1.5 2.5-2.6 4.3c1.2.7 2 2 2 3.5zM7.5 19.8c-.3.5-.1 1.1.4 1.3c2.6 1.2 5.6 1.2 8.2 0c.5-.2.7-.8.4-1.3c-.5-.9-1.4-2.5-2.5-4.3c-1.2.7-2.8.7-4 0c-1.1 1.8-2 3.4-2.5 4.3"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func Radical(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12h4l3 9l4-17h7"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -9660,7 +9783,79 @@ func Ratio(children ...ElementRenderer) *LucideIcon {
 func Receipt(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M4 2v20l2-1l2 1l2-1l2 1l2-1l2 1l2-1l2 1V2l-2 1l-2-1l-2 1l-2-1l-2 1l-2-1l-2 1z"/><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8m4 1V7"/></g>`),
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M4 2v20l2-1l2 1l2-1l2 1l2-1l2 1l2-1l2 1V2l-2 1l-2-1l-2 1l-2-1l-2 1l-2-1l-2 1Z"/><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8m4 1.5v-11"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func ReceiptCent(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M4 2v20l2-1l2 1l2-1l2 1l2-1l2 1l2-1l2 1V2l-2 1l-2-1l-2 1l-2-1l-2 1l-2-1l-2 1Zm8 4.5v11"/><path d="M15 9.4a4 4 0 1 0 0 5.2"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func ReceiptEuro(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M4 2v20l2-1l2 1l2-1l2 1l2-1l2 1l2-1l2 1V2l-2 1l-2-1l-2 1l-2-1l-2 1l-2-1l-2 1Zm4 10h5"/><path d="M16 9.5a4 4 0 1 0 0 5.2"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func ReceiptIndianRupee(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M4 2v20l2-1l2 1l2-1l2 1l2-1l2 1l2-1l2 1V2l-2 1l-2-1l-2 1l-2-1l-2 1l-2-1l-2 1Zm4 5h8"/><path d="M12 17.5L8 15h1a4 4 0 0 0 0-8m-1 4h8"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func ReceiptJapaneseYen(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M4 2v20l2-1l2 1l2-1l2 1l2-1l2 1l2-1l2 1V2l-2 1l-2-1l-2 1l-2-1l-2 1l-2-1l-2 1Zm8 8l3-3"/><path d="m9 7l3 3v7.5M9 11h6m-6 4h6"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func ReceiptPoundSterling(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M4 2v20l2-1l2 1l2-1l2 1l2-1l2 1l2-1l2 1V2l-2 1l-2-1l-2 1l-2-1l-2 1l-2-1l-2 1Zm4 11h5"/><path d="M10 17V9.5a2.5 2.5 0 0 1 5 0M8 17h7"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func ReceiptRussianRuble(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M4 2v20l2-1l2 1l2-1l2 1l2-1l2 1l2-1l2 1V2l-2 1l-2-1l-2 1l-2-1l-2 1l-2-1l-2 1Zm4 13h5"/><path d="M8 11h5a2 2 0 1 0 0-4h-3v10"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func ReceiptSwissFranc(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M4 2v20l2-1l2 1l2-1l2 1l2-1l2 1l2-1l2 1V2l-2 1l-2-1l-2 1l-2-1l-2 1l-2-1l-2 1Z"/><path d="M10 17V7h5m-5 4h4m-6 4h5"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func ReceiptText(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 2v20l2-1l2 1l2-1l2 1l2-1l2 1l2-1l2 1V2l-2 1l-2-1l-2 1l-2-1l-2 1l-2-1l-2 1Zm10 6H8m8 4H8m5 4H8"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func RectangleEllipsis(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect width="20" height="12" x="2" y="6" rx="2"/><path d="M12 12h.01M17 12h.01M7 12h.01"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -9873,10 +10068,26 @@ func RotateCcw(children ...ElementRenderer) *LucideIcon {
 	}
 }
 
+func RotateCcwSquare(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M20 9V7a2 2 0 0 0-2-2h-6"/><path d="m15 2l-3 3l3 3m5 5v5a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h2"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func RotateCw(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M21 12a9 9 0 1 1-9-9c2.52 0 4.93 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func RotateCwSquare(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M12 5H6a2 2 0 0 0-2 2v3"/><path d="m9 8l3-3l-3-3M4 14v4a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -9909,14 +10120,6 @@ func Router(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect width="20" height="8" x="2" y="14" rx="2"/><path d="M6.01 18H6m4.01 0H10m5-8v4m2.84-6.83a4 4 0 0 0-5.66 0m8.48-2.83a8 8 0 0 0-11.31 0"/></g>`),
-		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
-	}
-}
-
-func Rows(children ...ElementRenderer) *LucideIcon {
-	return &LucideIcon{
-		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><path d="M3 12h18"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -10044,7 +10247,7 @@ func ScaleThreeD(children ...ElementRenderer) *LucideIcon {
 func Scaling(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M21 3L9 15m3-12H3v18h18v-9m-5-9h5v5"/><path d="M14 15H9v-5"/></g>`),
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M12 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M14 15H9v-5m7-7h5v5m0-5L9 15"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -10108,7 +10311,7 @@ func ScanText(children ...ElementRenderer) *LucideIcon {
 func ScatterChart(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="7.5" cy="7.5" r=".5"/><circle cx="18.5" cy="5.5" r=".5"/><circle cx="11.5" cy="11.5" r=".5"/><circle cx="7.5" cy="16.5" r=".5"/><circle cx="17.5" cy="14.5" r=".5"/><path d="M3 3v18h18"/></g>`),
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="7.5" cy="7.5" r=".5" fill="currentColor"/><circle cx="18.5" cy="5.5" r=".5" fill="currentColor"/><circle cx="11.5" cy="11.5" r=".5" fill="currentColor"/><circle cx="7.5" cy="16.5" r=".5" fill="currentColor"/><circle cx="17.5" cy="14.5" r=".5" fill="currentColor"/><path d="M3 3v18h18"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -10116,15 +10319,7 @@ func ScatterChart(children ...ElementRenderer) *LucideIcon {
 func School(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="m4 6l8-4l8 4m-2 4l4 2v8a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-8l4-2"/><path d="M14 22v-4a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v4m8-17v17M6 5v17"/><circle cx="12" cy="9" r="2"/></g>`),
-		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
-	}
-}
-
-func SchoolTwo(children ...ElementRenderer) *LucideIcon {
-	return &LucideIcon{
-		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="10" r="1"/><path d="M22 20V8h-4l-6-4l-6 4H2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2M6 17v.01M6 13v.01M18 17v.01M18 13v.01"/><path d="M14 22v-5a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v5"/></g>`),
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M14 22v-4a2 2 0 1 0-4 0v4"/><path d="m18 10l4 2v8a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-8l4-2m12-5v17M4 6l8-4l8 4M6 5v17"/><circle cx="12" cy="9" r="2"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -10141,22 +10336,6 @@ func ScissorsLineDashed(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M5.42 9.42L8 12"/><circle cx="4" cy="8" r="2"/><path d="m14 6l-8.58 8.58"/><circle cx="4" cy="16" r="2"/><path d="M10.8 14.8L14 18m2-6h-2m8 0h-2"/></g>`),
-		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
-	}
-}
-
-func ScissorsSquare(children ...ElementRenderer) *LucideIcon {
-	return &LucideIcon{
-		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect width="20" height="20" x="2" y="2" rx="2"/><circle cx="8" cy="8" r="2"/><path d="M9.414 9.414L12 12m2.8 2.8L18 18"/><circle cx="8" cy="16" r="2"/><path d="m18 6l-8.586 8.586"/></g>`),
-		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
-	}
-}
-
-func ScissorsSquareDashedBottom(children ...ElementRenderer) *LucideIcon {
-	return &LucideIcon{
-		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M4 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2m-10 0H8m8 0h-2"/><circle cx="8" cy="8" r="2"/><path d="M9.414 9.414L12 12m2.8 2.8L18 18"/><circle cx="8" cy="16" r="2"/><path d="m18 6l-8.586 8.586"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -10372,7 +10551,7 @@ func Shell(children ...ElementRenderer) *LucideIcon {
 func Shield(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 22s8-4 8-10V5l-8-3l-8 3v7c0 6 8 10 8 10"/>`),
+			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -10380,7 +10559,7 @@ func Shield(children ...ElementRenderer) *LucideIcon {
 func ShieldAlert(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 22s8-4 8-10V5l-8-3l-8 3v7c0 6 8 10 8 10m0-14v4m0 4h.01"/>`),
+			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1zm-8-5v4m0 4h.01"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -10388,7 +10567,7 @@ func ShieldAlert(children ...ElementRenderer) *LucideIcon {
 func ShieldBan(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 22s8-4 8-10V5l-8-3l-8 3v7c0 6 8 10 8 10M4 5l14 12"/>`),
+			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1zM4.243 5.21l14.39 12.472"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -10396,15 +10575,7 @@ func ShieldBan(children ...ElementRenderer) *LucideIcon {
 func ShieldCheck(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3l-8 3v7c0 6 8 10 8 10"/><path d="m9 12l2 2l4-4"/></g>`),
-		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
-	}
-}
-
-func ShieldClose(children ...ElementRenderer) *LucideIcon {
-	return &LucideIcon{
-		SVGSVGElement: SVG_SVG(
-			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 22s8-4 8-10V5l-8-3l-8 3v7c0 6 8 10 8 10zM9.5 9l5 5m0-5l-5 5"/>`),
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12l2 2l4-4"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -10412,7 +10583,7 @@ func ShieldClose(children ...ElementRenderer) *LucideIcon {
 func ShieldEllipsis(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 22s8-4 8-10V5l-8-3l-8 3v7c0 6 8 10 8 10M8 11h.01M12 11h.01M16 11h.01"/>`),
+			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1zM8 12h.01M12 12h.01M16 12h.01"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -10420,7 +10591,7 @@ func ShieldEllipsis(children ...ElementRenderer) *LucideIcon {
 func ShieldHalf(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 22s8-4 8-10V5l-8-3l-8 3v7c0 6 8 10 8 10m0 0V2"/>`),
+			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1zm-8 9V2"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -10428,7 +10599,7 @@ func ShieldHalf(children ...ElementRenderer) *LucideIcon {
 func ShieldMinus(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 22s8-4 8-10V5l-8-3l-8 3v7c0 6 8 10 8 10M8 11h8"/>`),
+			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1zM9 12h6"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -10436,7 +10607,7 @@ func ShieldMinus(children ...ElementRenderer) *LucideIcon {
 func ShieldOff(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.7 14a6.9 6.9 0 0 0 .3-2V5l-8-3l-3.2 1.2M2 2l20 20M4.7 4.7L4 5v7c0 6 8 10 8 10a20.3 20.3 0 0 0 5.62-4.38"/>`),
+			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m2 2l20 20M5 5a1 1 0 0 0-1 1v7c0 5 3.5 7.5 7.67 8.94a1 1 0 0 0 .67.01c2.35-.82 4.48-1.97 5.9-3.71M9.309 3.652A12.252 12.252 0 0 0 11.24 2.28a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1v7a9.784 9.784 0 0 1-.08 1.264"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -10444,7 +10615,7 @@ func ShieldOff(children ...ElementRenderer) *LucideIcon {
 func ShieldPlus(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 22s8-4 8-10V5l-8-3l-8 3v7c0 6 8 10 8 10M8 11h8m-4 4V7"/>`),
+			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1zM9 12h6m-3-3v6"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -10452,7 +10623,7 @@ func ShieldPlus(children ...ElementRenderer) *LucideIcon {
 func ShieldQuestion(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3l-8 3v7c0 6 8 10 8 10"/><path d="M9.1 9a3 3 0 0 1 5.82 1c0 2-3 3-3 3m.08 4h.01"/></g>`),
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="M9.1 9a3 3 0 0 1 5.82 1c0 2-3 3-3 3m.08 4h.01"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -10460,7 +10631,7 @@ func ShieldQuestion(children ...ElementRenderer) *LucideIcon {
 func ShieldX(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 22s8-4 8-10V5l-8-3l-8 3v7c0 6 8 10 8 10m2.5-13l-5 5m0-5l5 5"/>`),
+			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1zm-5.5-3.5l-5 5m0-5l5 5"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -10500,7 +10671,7 @@ func ShoppingBag(children ...ElementRenderer) *LucideIcon {
 func ShoppingBasket(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m5 11l4-7m10 7l-4-7M2 11h20M3.5 11l1.6 7.4a2 2 0 0 0 2 1.6h9.8c.9 0 1.8-.7 2-1.6l1.7-7.4M9 11l1 9m-5.5-4.5h15M15 11l-1 9"/>`),
+			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m15 11l-1 9m5-9l-4-7M2 11h20M3.5 11l1.6 7.4a2 2 0 0 0 2 1.6h9.8a2 2 0 0 0 2-1.6l1.7-7.4M4.5 15.5h15M5 11l4-7m0 7l1 9"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -10557,14 +10728,6 @@ func Sigma(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 7V4H6l6 8l-6 8h12v-3"/>`),
-		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
-	}
-}
-
-func SigmaSquare(children ...ElementRenderer) *LucideIcon {
-	return &LucideIcon{
-		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M16 8.9V7H8l4 5l-4 5h8v-1.9"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -10628,7 +10791,7 @@ func SignpostBig(children ...ElementRenderer) *LucideIcon {
 func Siren(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 12a5 5 0 0 1 5-5v0a5 5 0 0 1 5 5v6H7zm-2 8a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v2H5zm16-8h1m-3.5-7.5L18 5M2 12h1m9-10v1M4.929 4.929l.707.707M12 12v6"/>`),
+			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 18v-6a5 5 0 1 1 10 0v6M5 21a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-1a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2zm16-9h1m-3.5-7.5L18 5M2 12h1m9-10v1M4.929 4.929l.707.707M12 12v6"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -10681,18 +10844,18 @@ func Slice(children ...ElementRenderer) *LucideIcon {
 	}
 }
 
-func Sliders(children ...ElementRenderer) *LucideIcon {
-	return &LucideIcon{
-		SVGSVGElement: SVG_SVG(
-			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 21v-7m0-4V3m8 18v-9m0-4V3m8 18v-5m0-4V3M2 14h4m4-6h4m4 8h4"/>`),
-		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
-	}
-}
-
 func SlidersHorizontal(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 4h-7m-4 0H3m18 8h-9m-4 0H3m18 8h-5m-4 0H3M14 2v4m-6 4v4m8 4v4"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func SlidersVertical(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 21v-7m0-4V3m8 18v-9m0-4V3m8 18v-5m0-4V3M2 14h4m4-6h4m4 8h4"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -10757,22 +10920,6 @@ func Sofa(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M20 9V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v3"/><path d="M2 11v5a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-5a2 2 0 0 0-4 0v2H6v-2a2 2 0 0 0-4 0m2 7v2m16-2v2M12 4v9"/></g>`),
-		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
-	}
-}
-
-func SortAsc(children ...ElementRenderer) *LucideIcon {
-	return &LucideIcon{
-		SVGSVGElement: SVG_SVG(
-			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 11h4m-4 4h7m-7 4h10M9 7L6 4L3 7m3-1v14"/>`),
-		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
-	}
-}
-
-func SortDesc(children ...ElementRenderer) *LucideIcon {
-	return &LucideIcon{
-		SVGSVGElement: SVG_SVG(
-			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5h10M11 9h7m-7 4h4M3 17l3 3l3-3m-3 1V4"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -10865,22 +11012,6 @@ func Split(children ...ElementRenderer) *LucideIcon {
 	}
 }
 
-func SplitSquareHorizontal(children ...ElementRenderer) *LucideIcon {
-	return &LucideIcon{
-		SVGSVGElement: SVG_SVG(
-			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 19H5c-1 0-2-1-2-2V7c0-1 1-2 2-2h3m8 0h3c1 0 2 1 2 2v10c0 1-1 2-2 2h-3M12 4v16"/>`),
-		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
-	}
-}
-
-func SplitSquareVertical(children ...ElementRenderer) *LucideIcon {
-	return &LucideIcon{
-		SVGSVGElement: SVG_SVG(
-			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8V5c0-1 1-2 2-2h10c1 0 2 1 2 2v3m0 8v3c0 1-1 2-2 2H7c-1 0-2-1-2-2v-3m-1-4h16"/>`),
-		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
-	}
-}
-
 func SprayCan(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
@@ -10905,10 +11036,170 @@ func Square(children ...ElementRenderer) *LucideIcon {
 	}
 }
 
+func SquareActivity(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M17 12h-2l-2 5l-2-10l-2 5H7"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func SquareArrowDown(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M12 8v8m-4-4l4 4l4-4"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func SquareArrowDownLeft(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="m16 8l-8 8m8 0H8V8"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func SquareArrowDownRight(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="m8 8l8 8m0-8v8H8"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func SquareArrowLeft(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="m12 8l-4 4l4 4m4-4H8"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func SquareArrowOutDownLeft(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 21h6a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v6m0 10l9-9m-3 9H3v-6"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func SquareArrowOutDownRight(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 11V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h6m10 0l-9-9m9 3v6h-6"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func SquareArrowOutUpLeft(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 3h6a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-6M3 3l9 9M3 9V3h6"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func SquareArrowOutUpRight(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h6m10 0l-9 9m3-9h6v6"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func SquareArrowRight(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M8 12h8m-4 4l4-4l-4-4"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func SquareArrowUp(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="m16 12l-4-4l-4 4m4 4V8"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func SquareArrowUpLeft(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M8 16V8h8m0 8L8 8"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func SquareArrowUpRight(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M8 8h8v8m-8 0l8-8"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func SquareAsterisk(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M12 8v8m-3.5-2l7-4m-7 0l7 4"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func SquareBottomDashedScissors(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M4 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2m-10 0H8m8 0h-2"/><circle cx="8" cy="8" r="2"/><path d="M9.414 9.414L12 12m2.8 2.8L18 18"/><circle cx="8" cy="16" r="2"/><path d="m18 6l-8.586 8.586"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func SquareCheck(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="m9 12l2 2l4-4"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func SquareCheckBig(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="m9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func SquareChevronDown(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="m16 10l-4 4l-4-4"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func SquareChevronLeft(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="m14 16l-4-4l4-4"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func SquareChevronRight(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="m10 8l4 4l-4 4"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func SquareChevronUp(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="m8 14l4-4l4 4"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -10937,6 +11228,30 @@ func SquareDashedBottomCode(children ...ElementRenderer) *LucideIcon {
 	}
 }
 
+func SquareDashedKanban(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7v7m4-7v4m4-4v9M5 3a2 2 0 0 0-2 2m6-2h1m4 0h1m4 0a2 2 0 0 1 2 2m0 4v1m0 4v1m0 4a2 2 0 0 1-2 2m-5 0h1m-6 0h1m-5 0a2 2 0 0 1-2-2m0-5v1m0-6v1"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func SquareDashedMousePointer(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3a2 2 0 0 0-2 2m16-2a2 2 0 0 1 2 2m-9 7l4 10l1.7-4.3L22 16Zm-7 9a2 2 0 0 1-2-2M9 3h1M9 21h2m3-18h1M3 9v1m18-1v2M3 14v1"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func SquareDivide(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><path d="M8 12h8m-4-4"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func SquareDot(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
@@ -10953,6 +11268,166 @@ func SquareEqual(children ...ElementRenderer) *LucideIcon {
 	}
 }
 
+func SquareFunction(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><path d="M9 17c2 0 2.8-1 2.8-2.8V10c0-2 1-3.3 3.2-3m-6 4.2h5.7"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func SquareGanttChart(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M9 8h7m-8 4h6m-3 4h5"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func SquareKanban(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M8 7v7m4-7v4m4-4v9"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func SquareLibrary(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M7 7v10m4-10v10m4-10l2 10"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func SquareM(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M8 16V8l4 4l4-4v8"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func SquareMenu(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M7 8h10M7 12h10M7 16h10"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func SquareMinus(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M8 12h8"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func SquareMousePointer(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M21 11V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h6"/><path d="m12 12l4 10l1.7-4.3L22 16Z"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func SquareParking(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M9 17V7h4a3 3 0 0 1 0 6H9"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func SquareParkingOff(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M3.6 3.6A2 2 0 0 1 5 3h14a2 2 0 0 1 2 2v14a2 2 0 0 1-.59 1.41M3 8.7V19a2 2 0 0 0 2 2h10.3M2 2l20 20"/><path d="M13 13a3 3 0 1 0 0-6H9v2m0 8v-2.3"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func SquarePen(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M12 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.375 2.625a2.121 2.121 0 1 1 3 3L12 15l-4 1l1-4Z"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func SquarePercent(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="m15 9l-6 6m0-6h.01M15 15h.01"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func SquarePi(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M7 7h10m-7 0v10m6 0a2 2 0 0 1-2-2V7"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func SquarePilcrow(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M12 12H9.5a2.5 2.5 0 0 1 0-5H17m-5 0v10m4-10v10"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func SquarePlay(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="m9 8l6 4l-6 4Z"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func SquarePlus(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M8 12h8m-4-4v8"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func SquarePower(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M12 7v5M8 9a5.14 5.14 0 0 0 4 8a4.95 4.95 0 0 0 4-8"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func SquareRadical(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M7 12h2l2 5l2-10h4"/><rect width="18" height="18" x="3" y="3" rx="2"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func SquareScissors(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect width="20" height="20" x="2" y="2" rx="2"/><circle cx="8" cy="8" r="2"/><path d="M9.414 9.414L12 12m2.8 2.8L18 18"/><circle cx="8" cy="16" r="2"/><path d="m18 6l-8.586 8.586"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func SquareSigma(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M16 8.9V7H8l4 5l-4 5h8v-1.9"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func SquareSlash(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
@@ -10961,10 +11436,34 @@ func SquareSlash(children ...ElementRenderer) *LucideIcon {
 	}
 }
 
+func SquareSplitHorizontal(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 19H5c-1 0-2-1-2-2V7c0-1 1-2 2-2h3m8 0h3c1 0 2 1 2 2v10c0 1-1 2-2 2h-3M12 4v16"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func SquareSplitVertical(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8V5c0-1 1-2 2-2h10c1 0 2 1 2 2v3m0 8v3c0 1-1 2-2 2H7c-1 0-2-1-2-2v-3m-1-4h16"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func SquareStack(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M4 10c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h4c1.1 0 2 .9 2 2m0 12c-1.1 0-2-.9-2-2v-4c0-1.1.9-2 2-2h4c1.1 0 2 .9 2 2"/><rect width="8" height="8" x="14" y="14" rx="2"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func SquareTerminal(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="m7 11l2-2l-2-2m4 6h4"/><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -10981,6 +11480,14 @@ func SquareUserRound(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M18 21a6 6 0 0 0-12 0"/><circle cx="12" cy="11" r="4"/><rect width="18" height="18" x="3" y="3" rx="2"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func SquareX(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><path d="m15 9l-6 6m0-6l6 6"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -11060,7 +11567,7 @@ func Stethoscope(children ...ElementRenderer) *LucideIcon {
 func Sticker(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M15.5 3H5a2 2 0 0 0-2 2v14c0 1.1.9 2 2 2h14a2 2 0 0 0 2-2V8.5z"/><path d="M15 3v6h6m-11 7s.8 1 2 1c1.3 0 2-1 2-1m2-3"/></g>`),
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M15.5 3H5a2 2 0 0 0-2 2v14c0 1.1.9 2 2 2h14a2 2 0 0 0 2-2V8.5z"/><path d="M14 3v4a2 2 0 0 0 2 2h4m-10 7s.8 1 2 1c1.3 0 2-1 2-1"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -11068,15 +11575,7 @@ func Sticker(children ...ElementRenderer) *LucideIcon {
 func StickyNote(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M15.5 3H5a2 2 0 0 0-2 2v14c0 1.1.9 2 2 2h14a2 2 0 0 0 2-2V8.5z"/><path d="M15 3v6h6"/></g>`),
-		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
-	}
-}
-
-func StopCircle(children ...ElementRenderer) *LucideIcon {
-	return &LucideIcon{
-		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9 9h6v6H9z"/></g>`),
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M16 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V8Z"/><path d="M15 3v4a2 2 0 0 0 2 2h4"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -11117,14 +11616,6 @@ func Subscript(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m4 5l8 8m0-8l-8 8m16 6h-4c0-1.5.44-2 1.5-2.5S20 15.33 20 14c0-.47-.17-.93-.48-1.29a2.11 2.11 0 0 0-2.62-.44c-.42.24-.74.62-.9 1.07"/>`),
-		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
-	}
-}
-
-func Subtitles(children ...ElementRenderer) *LucideIcon {
-	return &LucideIcon{
-		SVGSVGElement: SVG_SVG(
-			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 13h4m4 0h2M7 9h2m4 0h4m4 6a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2Z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -11193,6 +11684,14 @@ func Superscript(children ...ElementRenderer) *LucideIcon {
 	}
 }
 
+func SwatchBook(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M11 17a4 4 0 0 1-8 0V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2Z"/><path d="M16.7 13H19a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2H7m0-4h.01"/><path d="m11 8l2.3-2.3a2.4 2.4 0 0 1 3.404.004L18.6 7.6a2.4 2.4 0 0 1 .026 3.434L9.9 19.8"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func SwissFranc(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
@@ -11241,10 +11740,42 @@ func Table(children ...ElementRenderer) *LucideIcon {
 	}
 }
 
+func TableCellsMerge(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M12 21v-6m0-6V3M3 15h18M3 9h18"/><rect width="18" height="18" x="3" y="3" rx="2"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func TableCellsSplit(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M12 15V9m-9 6h18M3 9h18"/><rect width="18" height="18" x="3" y="3" rx="2"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func TableColumnsSplit(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 14v2m0 4v2m0-20v2m0 4v2M2 15h8M2 3h6a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H2M2 9h8m12 6h-4m4-12h-2a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h2m0-12h-4M5 3v18"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func TableProperties(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M15 3v18"/><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M21 9H3m18 6H3"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func TableRowsSplit(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 10h2m-1 12v-8m0-12v4M2 10h2m16 0h2M3 19h18M3 22v-6a2 2 135 0 1 2-2h14a2 2 45 0 1 2 2v6M3 2v2a2 2 45 0 0 2 2h14a2 2 135 0 0 2-2V2M8 10h2M9 22v-8M9 2v4"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -11284,7 +11815,7 @@ func Tablets(children ...ElementRenderer) *LucideIcon {
 func Tag(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 2H2v10l9.29 9.29c.94.94 2.48.94 3.42 0l6.58-6.58c.94-.94.94-2.48 0-3.42zM7 7h.01"/>`),
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M12.586 2.586A2 2 0 0 0 11.172 2H4a2 2 0 0 0-2 2v7.172a2 2 0 0 0 .586 1.414l8.704 8.704a2.426 2.426 0 0 0 3.42 0l6.58-6.58a2.426 2.426 0 0 0 0-3.42z"/><circle cx="7.5" cy="7.5" r=".5" fill="currentColor"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -11292,7 +11823,7 @@ func Tag(children ...ElementRenderer) *LucideIcon {
 func Tags(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M9 5H2v7l6.29 6.29c.94.94 2.48.94 3.42 0l3.58-3.58c.94-.94.94-2.48 0-3.42zM6 9.01V9"/><path d="m15 5l6.3 6.3a2.4 2.4 0 0 1 0 3.4L17 19"/></g>`),
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="m15 5l6.3 6.3a2.4 2.4 0 0 1 0 3.4L17 19"/><path d="M9.586 5.586A2 2 0 0 0 8.172 5H3a1 1 0 0 0-1 1v5.172a2 2 0 0 0 .586 1.414L8.29 18.29a2.426 2.426 0 0 0 3.42 0l3.58-3.58a2.426 2.426 0 0 0 0-3.42z"/><circle cx="6.5" cy="9.5" r=".5" fill="currentColor"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -11353,6 +11884,14 @@ func Target(children ...ElementRenderer) *LucideIcon {
 	}
 }
 
+func Telescope(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="m10.065 12.493l-6.18 1.318a.934.934 0 0 1-1.108-.702l-.537-2.15a1.07 1.07 0 0 1 .691-1.265l13.504-4.44m-2.875 6.493l4.332-.924M16 21l-3.105-6.21"/><path d="M16.485 5.94a2 2 0 0 1 1.455-2.425l1.09-.272a1 1 0 0 1 1.212.727l1.515 6.06a1 1 0 0 1-.727 1.213l-1.09.272a2 2 0 0 1-2.425-1.455zM6.158 8.633l1.114 4.456M8 21l3.105-6.21"/><circle cx="12" cy="13" r="2"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func Tent(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
@@ -11377,14 +11916,6 @@ func Terminal(children ...ElementRenderer) *LucideIcon {
 	}
 }
 
-func TerminalSquare(children ...ElementRenderer) *LucideIcon {
-	return &LucideIcon{
-		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="m7 11l2-2l-2-2m4 6h4"/><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/></g>`),
-		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
-	}
-}
-
 func TestTube(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
@@ -11393,7 +11924,7 @@ func TestTube(children ...ElementRenderer) *LucideIcon {
 	}
 }
 
-func TestTubeTwo(children ...ElementRenderer) *LucideIcon {
+func TestTubeDiagonal(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 7L6.82 21.18a2.83 2.83 0 0 1-3.99-.01v0a2.83 2.83 0 0 1 0-4L17 3m-1-1l6 6m-10 8H4"/>`),
@@ -11437,6 +11968,14 @@ func TextQuote(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 6H3m18 6H8m13 6H8m-5-6v6"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func TextSearch(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M21 6H3m7 6H3m7 6H3"/><circle cx="17" cy="15" r="3"/><path d="m21 19l-1.9-1.9"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -11501,6 +12040,54 @@ func Ticket(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Zm11-4v2m0 10v2m0-8v2"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func TicketCheck(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/><path d="m9 12l2 2l4-4"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func TicketMinus(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Zm7 3h6"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func TicketPercent(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2 9a3 3 0 1 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 1 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Zm7 0h.01M15 9l-6 6m6 0h.01"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func TicketPlus(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Zm7 3h6m-3-3v6"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func TicketSlash(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Zm7.5 5.5l5-5"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func TicketX(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Zm7.5 5.5l5-5m-5 0l5 5"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -11596,7 +12183,7 @@ func ToyBrick(children ...ElementRenderer) *LucideIcon {
 func Tractor(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M3 4h9l1 7m-9 0V4m4 6V4m10 1c-.6 0-1 .4-1 1v5.6"/><path d="m10 11l11 .9c.6 0 .9.5.8 1.1l-.8 5h-1"/><circle cx="7" cy="15" r=".5"/><circle cx="7" cy="15" r="5"/><path d="M16 18h-5"/><circle cx="18" cy="18" r="2"/></g>`),
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="m10 11l11 .9c.6 0 .9.5.8 1.1l-.8 5h-1m-4 0h-5"/><path d="M18 5a1 1 0 0 0-1 1v5.573M3 4h9l1 7.246M4 11V4m3 11h.01M8 10.1V4"/><circle cx="18" cy="18" r="2"/><circle cx="7" cy="15" r="5"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -11665,6 +12252,14 @@ func TreeDeciduous(children ...ElementRenderer) *LucideIcon {
 	}
 }
 
+func TreePalm(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M13 8c0-2.76-2.46-5-5.5-5S2 5.24 2 8h2l1-1l1 1h4m3-.86A5.82 5.82 0 0 1 16.5 6c3.04 0 5.5 2.24 5.5 5h-3l-1-1l-1 1h-3"/><path d="M5.89 9.71c-2.15 2.15-2.3 5.47-.35 7.43l4.24-4.25l.7-.7l.71-.71l2.12-2.12c-1.95-1.96-5.27-1.8-7.42.35"/><path d="M11 15.5c.5 2.5-.17 4.5-1 6.5h4c2-5.5-.5-12-1-14"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func TreePine(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
@@ -11713,6 +12308,14 @@ func Triangle(children ...ElementRenderer) *LucideIcon {
 	}
 }
 
+func TriangleAlert(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m21.73 18l-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3M12 9v4m0 4h.01"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func TriangleRight(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
@@ -11732,7 +12335,7 @@ func Trophy(children ...ElementRenderer) *LucideIcon {
 func Truck(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M5 18H3c-.6 0-1-.4-1-1V7c0-.6.4-1 1-1h10c.6 0 1 .4 1 1v11m0-9h4l4 4v4c0 .6-.4 1-1 1h-2"/><circle cx="7" cy="18" r="2"/><path d="M15 18H9"/><circle cx="17" cy="18" r="2"/></g>`),
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2m10 0H9m10 0h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -11857,6 +12460,14 @@ func Ungroup(children ...ElementRenderer) *LucideIcon {
 	}
 }
 
+func University(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="10" r="1"/><path d="M22 20V8h-4l-6-4l-6 4H2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2M6 17v.01M6 13v.01M18 17v.01M18 13v.01"/><path d="M14 22v-5a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v5"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func Unlink(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
@@ -11873,22 +12484,6 @@ func UnlinkTwo(children ...ElementRenderer) *LucideIcon {
 	}
 }
 
-func Unlock(children ...ElementRenderer) *LucideIcon {
-	return &LucideIcon{
-		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 9.9-1"/></g>`),
-		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
-	}
-}
-
-func UnlockKeyhole(children ...ElementRenderer) *LucideIcon {
-	return &LucideIcon{
-		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="16" r="1"/><rect width="18" height="12" x="3" y="10" rx="2"/><path d="M7 10V7a5 5 0 0 1 9.33-2.5"/></g>`),
-		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
-	}
-}
-
 func Unplug(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
@@ -11901,14 +12496,6 @@ func Upload(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4m14-7l-5-5l-5 5m5-5v12"/>`),
-		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
-	}
-}
-
-func UploadCloud(children ...ElementRenderer) *LucideIcon {
-	return &LucideIcon{
-		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242M12 12v9"/><path d="m16 16l-4-4l-4 4"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -11937,26 +12524,10 @@ func UserCheck(children ...ElementRenderer) *LucideIcon {
 	}
 }
 
-func UserCheckTwo(children ...ElementRenderer) *LucideIcon {
-	return &LucideIcon{
-		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M14 19a6 6 0 0 0-12 0"/><circle cx="8" cy="9" r="4"/><path d="m16 11l2 2l4-4"/></g>`),
-		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
-	}
-}
-
 func UserCog(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="18" cy="15" r="3"/><circle cx="9" cy="7" r="4"/><path d="M10 15H6a4 4 0 0 0-4 4v2m19.7-4.6l-.9-.3m-5.6-2.2l-.9-.3m2.3 5.1l.3-.9m2.2-5.6l.3-.9m.2 7.4l-.4-1m-2.4-5.4l-.4-1m-2.1 5.3l1-.4m5.4-2.4l1-.4"/></g>`),
-		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
-	}
-}
-
-func UserCogTwo(children ...ElementRenderer) *LucideIcon {
-	return &LucideIcon{
-		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="18" cy="15" r="3"/><circle cx="8" cy="9" r="4"/><path d="M10.5 13.5A6 6 0 0 0 2 19m19.7-2.6l-.9-.3m-5.6-2.2l-.9-.3m2.3 5.1l.3-.9m2.2-5.6l.3-.9m.2 7.4l-.4-1m-2.4-5.4l-.4-1m-2.1 5.3l1-.4m5.4-2.4l1-.4"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -11969,26 +12540,10 @@ func UserMinus(children ...ElementRenderer) *LucideIcon {
 	}
 }
 
-func UserMinusTwo(children ...ElementRenderer) *LucideIcon {
-	return &LucideIcon{
-		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M14 19a6 6 0 0 0-12 0"/><circle cx="8" cy="9" r="4"/><path d="M22 11h-6"/></g>`),
-		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
-	}
-}
-
 func UserPlus(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M19 8v6m3-3h-6"/></g>`),
-		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
-	}
-}
-
-func UserPlusTwo(children ...ElementRenderer) *LucideIcon {
-	return &LucideIcon{
-		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M14 19a6 6 0 0 0-12 0"/><circle cx="8" cy="9" r="4"/><path d="M19 8v6m3-3h-6"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -12057,26 +12612,10 @@ func UserSearch(children ...ElementRenderer) *LucideIcon {
 	}
 }
 
-func UserTwo(children ...ElementRenderer) *LucideIcon {
-	return &LucideIcon{
-		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="8" r="5"/><path d="M20 21a8 8 0 1 0-16 0"/></g>`),
-		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
-	}
-}
-
 func UserX(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="m17 8l5 5m0-5l-5 5"/></g>`),
-		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
-	}
-}
-
-func UserXtwo(children ...ElementRenderer) *LucideIcon {
-	return &LucideIcon{
-		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M14 19a6 6 0 0 0-12 0"/><circle cx="8" cy="9" r="4"/><path d="m17 8l5 5m0-5l-5 5"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -12093,14 +12632,6 @@ func UsersRound(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M18 21a8 8 0 0 0-16 0"/><circle cx="10" cy="8" r="5"/><path d="M22 20c0-3.37-2-6.5-4-8a5 5 0 0 0-.45-8.3"/></g>`),
-		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
-	}
-}
-
-func UsersTwo(children ...ElementRenderer) *LucideIcon {
-	return &LucideIcon{
-		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M14 19a6 6 0 0 0-12 0"/><circle cx="8" cy="9" r="4"/><path d="M22 19a6 6 0 0 0-6-6a4 4 0 1 0 0-8"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -12137,6 +12668,14 @@ func Variable(children ...ElementRenderer) *LucideIcon {
 	}
 }
 
+func Vault(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2"/><circle cx="7.5" cy="7.5" r=".5" fill="currentColor"/><path d="m7.9 7.9l2.7 2.7"/><circle cx="16.5" cy="7.5" r=".5" fill="currentColor"/><path d="m13.4 10.6l2.7-2.7"/><circle cx="7.5" cy="16.5" r=".5" fill="currentColor"/><path d="m7.9 16.1l2.7-2.7"/><circle cx="16.5" cy="16.5" r=".5" fill="currentColor"/><path d="m13.4 13.4l2.7 2.7"/><circle cx="12" cy="12" r="2"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func Vegan(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
@@ -12149,14 +12688,6 @@ func VenetianMask(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M2 12a5 5 0 0 0 5 5a8 8 0 0 1 5 2a8 8 0 0 1 5-2a5 5 0 0 0 5-5V7h-5a8 8 0 0 0-5 2a8 8 0 0 0-5-2H2Z"/><path d="M6 11c1.5 0 3 .5 3 2c-2 0-3 0-3-2m12 0c-1.5 0-3 .5-3 2c2 0 3 0 3-2"/></g>`),
-		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
-	}
-}
-
-func Verified(children ...ElementRenderer) *LucideIcon {
-	return &LucideIcon{
-		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M12 3c-1.2 0-2.4.6-3 1.7A3.6 3.6 0 0 0 4.6 9c-1 .6-1.7 1.8-1.7 3s.7 2.4 1.7 3c-.3 1.2 0 2.5 1 3.4c.8.8 2.1 1.2 3.3 1c.6 1 1.8 1.6 3 1.6s2.4-.6 3-1.7c1.2.3 2.5 0 3.4-1c.8-.8 1.2-2 1-3.3c1-.6 1.6-1.8 1.6-3s-.6-2.4-1.7-3c.3-1.2 0-2.5-1-3.4a3.7 3.7 0 0 0-3.3-1c-.6-1-1.8-1.6-3-1.6Z"/><path d="m9 12l2 2l4-4"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -12273,7 +12804,7 @@ func WalletCards(children ...ElementRenderer) *LucideIcon {
 	}
 }
 
-func WalletTwo(children ...ElementRenderer) *LucideIcon {
+func WalletMinimal(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 14h.01M7 7h12a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14"/>`),
@@ -12297,7 +12828,7 @@ func Wand(children ...ElementRenderer) *LucideIcon {
 	}
 }
 
-func WandTwo(children ...ElementRenderer) *LucideIcon {
+func WandSparkles(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m21.64 3.64l-1.28-1.28a1.21 1.21 0 0 0-1.72 0L2.36 18.64a1.21 1.21 0 0 0 0 1.72l1.28 1.28a1.2 1.2 0 0 0 1.72 0L21.64 5.36a1.2 1.2 0 0 0 0-1.72M14 7l3 3M5 6v4m14 4v4M10 2v2M7 8H3m18 8h-4M11 3H9"/>`),
@@ -12309,6 +12840,14 @@ func Warehouse(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M22 8.35V20a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V8.35A2 2 0 0 1 3.26 6.5l8-3.2a2 2 0 0 1 1.48 0l8 3.2A2 2 0 0 1 22 8.35M6 18h12M6 14h12"/><path d="M6 10h12v12H6z"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func WashingMachine(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M3 6h3m11 0h.01"/><rect width="18" height="20" x="3" y="2" rx="2"/><circle cx="12" cy="13" r="5"/><path d="M12 18a2.5 2.5 0 0 0 0-5a2.5 2.5 0 0 1 0-5"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -12353,6 +12892,14 @@ func Webhook(children ...ElementRenderer) *LucideIcon {
 	}
 }
 
+func WebhookOff(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M17 17h-5c-1.09-.02-1.94.92-2.5 1.9A3 3 0 1 1 2.57 15M9 3.4a4 4 0 0 1 6.52.66"/><path d="m6 17l3.1-5.8a2.5 2.5 0 0 0 .057-2.05M20.3 20.3a4 4 0 0 1-2.3.7m.6-8a4 4 0 0 1 3.357 3.414M12 6l.6 1M2 2l20 20"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func Weight(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
@@ -12388,7 +12935,7 @@ func WholeWord(children ...ElementRenderer) *LucideIcon {
 func Wifi(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13a10 10 0 0 1 14 0M8.5 16.5a5 5 0 0 1 7 0M2 8.82a15 15 0 0 1 20 0M12 20h.01"/>`),
+			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 20h.01M2 8.82a15 15 0 0 1 20 0M5 12.859a10 10 0 0 1 14 0m-10.5 3.57a5 5 0 0 1 7 0"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -12396,7 +12943,7 @@ func Wifi(children ...ElementRenderer) *LucideIcon {
 func WifiOff(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m2 2l20 20M8.5 16.5a5 5 0 0 1 7 0M2 8.82a15 15 0 0 1 4.17-2.65M10.66 5c4.01-.36 8.14.9 11.34 3.76m-5.15 2.49a10 10 0 0 1 2.22 1.68M5 13a10 10 0 0 1 5.24-2.76M12 20h.01"/>`),
+			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 20h.01M8.5 16.429a5 5 0 0 1 7 0M5 12.859a10 10 0 0 1 5.17-2.69m8.83 2.69a10 10 0 0 0-2.007-1.523M2 8.82a15 15 0 0 1 4.177-2.643M22 8.82a15 15 0 0 0-11.288-3.764M2 2l20 20"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -12433,6 +12980,14 @@ func Workflow(children ...ElementRenderer) *LucideIcon {
 	}
 }
 
+func Worm(children ...ElementRenderer) *LucideIcon {
+	return &LucideIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 12l-1.5 3m2.13 3.81L22 20M6.47 8.23a1.68 1.68 0 0 1 2.44 1.93l-.64 2.08a6.76 6.76 0 0 0 10.16 7.67l.42-.27a1 1 0 1 0-2.73-4.21l-.42.27a1.76 1.76 0 0 1-2.63-1.99l.64-2.08A6.66 6.66 0 0 0 3.94 3.9l-.7.4a1 1 0 1 0 2.55 4.34z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func WrapText(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
@@ -12457,30 +13012,6 @@ func X(children ...ElementRenderer) *LucideIcon {
 	}
 }
 
-func Xcircle(children ...ElementRenderer) *LucideIcon {
-	return &LucideIcon{
-		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m15 9l-6 6m0-6l6 6"/></g>`),
-		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
-	}
-}
-
-func Xoctagon(children ...ElementRenderer) *LucideIcon {
-	return &LucideIcon{
-		SVGSVGElement: SVG_SVG(
-			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7.86 2h8.28L22 7.86v8.28L16.14 22H7.86L2 16.14V7.86zM15 9l-6 6m0-6l6 6"/>`),
-		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
-	}
-}
-
-func Xsquare(children ...ElementRenderer) *LucideIcon {
-	return &LucideIcon{
-		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><path d="m15 9l-6 6m0-6l6 6"/></g>`),
-		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
-	}
-}
-
 func Youtube(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
@@ -12492,7 +13023,7 @@ func Youtube(children ...ElementRenderer) *LucideIcon {
 func Zap(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 2L3 14h9l-1 8l10-12h-9z"/>`),
+			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -12500,7 +13031,7 @@ func Zap(children ...ElementRenderer) *LucideIcon {
 func ZapOff(children ...ElementRenderer) *LucideIcon {
 	return &LucideIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12.41 6.75L13 2l-2.43 2.92m8 7.99L21 10h-5.34M8 8l-5 6h9l-1 8l5-6M2 2l20 20"/>`),
+			Text(`<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.513 4.856L13.12 2.17a.5.5 0 0 1 .86.46l-1.377 4.317M15.656 10H20a1 1 0 0 1 .78 1.63l-1.72 1.773m-2.787 2.87L10.88 21.83a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14H4a1 1 0 0 1-.78-1.63l4.507-4.643M2 2l20 20"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }

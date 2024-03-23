@@ -956,35 +956,6 @@ func (e *MathMLMATHElement) DATASTAR_HEADERRemove() *MathMLMATHElement {
 	return e
 }
 
-// Sets the URL for fetch requests
-
-func (e *MathMLMATHElement) DATASTAR_FETCH_URL(expression string) *MathMLMATHElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-
-	key := "data-fetch-url"
-
-	e.StringAttributes.Set(key, expression)
-	return e
-}
-
-func (e *MathMLMATHElement) IfDATASTAR_FETCH_URL(condition bool, expression string) *MathMLMATHElement {
-	if condition {
-		e.DATASTAR_FETCH_URL(expression)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_FETCH_URL from the element.
-func (e *MathMLMATHElement) DATASTAR_FETCH_URLRemove() *MathMLMATHElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-fetch-url")
-	return e
-}
-
 // Sets the indicator selector for fetch requests
 
 func (e *MathMLMATHElement) DATASTAR_FETCH_INDICATOR(expression string) *MathMLMATHElement {

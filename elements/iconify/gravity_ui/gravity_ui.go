@@ -5,7 +5,7 @@ import (
 )
 
 const (
-	IconifyVersion = "2.8.1"
+	IconifyVersion = "2.9.1"
 	hAttr          = "1em"
 	viewbox        = "0 0 0 0"
 	fill           = "currentColor"
@@ -94,6 +94,7 @@ var IconLookup = map[string]GravityUiIconFn{
 	"bell":                              Bell,
 	"bellDot":                           BellDot,
 	"bellSlash":                         BellSlash,
+	"binoculars":                        Binoculars,
 	"bold":                              Bold,
 	"book":                              Book,
 	"bookOpen":                          BookOpen,
@@ -198,6 +199,7 @@ var IconLookup = map[string]GravityUiIconFn{
 	"circleLetterS":                     CircleLetterS,
 	"circleLetterT":                     CircleLetterT,
 	"circleLetterW":                     CircleLetterW,
+	"circleLink":                        CircleLink,
 	"circleMinus":                       CircleMinus,
 	"circleMinusFill":                   CircleMinusFill,
 	"circleNumberEight":                 CircleNumberEight,
@@ -248,6 +250,7 @@ var IconLookup = map[string]GravityUiIconFn{
 	"commentDot":                        CommentDot,
 	"commentFill":                       CommentFill,
 	"commentPlus":                       CommentPlus,
+	"commentSlash":                      CommentSlash,
 	"comments":                          Comments,
 	"compass":                           Compass,
 	"copy":                              Copy,
@@ -268,13 +271,16 @@ var IconLookup = map[string]GravityUiIconFn{
 	"cube":                              Cube,
 	"cubesThree":                        CubesThree,
 	"cubesThreeOverlap":                 CubesThreeOverlap,
+	"cup":                               Cup,
 	"curlyBrackets":                     CurlyBrackets,
 	"curlyBracketsFunction":             CurlyBracketsFunction,
 	"curlyBracketsLock":                 CurlyBracketsLock,
 	"database":                          Database,
 	"databaseArrowRight":                DatabaseArrowRight,
+	"databaseFill":                      DatabaseFill,
 	"databaseMagnifier":                 DatabaseMagnifier,
 	"databases":                         Databases,
+	"delete":                            Delete,
 	"diamond":                           Diamond,
 	"diamondExclamation":                DiamondExclamation,
 	"diamondFill":                       DiamondFill,
@@ -299,6 +305,8 @@ var IconLookup = map[string]GravityUiIconFn{
 	"exclamationShape":                  ExclamationShape,
 	"eye":                               Eye,
 	"eyeSlash":                          EyeSlash,
+	"eyesLookLeft":                      EyesLookLeft,
+	"eyesLookRight":                     EyesLookRight,
 	"faceAlien":                         FaceAlien,
 	"faceFun":                           FaceFun,
 	"faceNeutral":                       FaceNeutral,
@@ -339,6 +347,7 @@ var IconLookup = map[string]GravityUiIconFn{
 	"folderArrowRight":                  FolderArrowRight,
 	"folderArrowUp":                     FolderArrowUp,
 	"folderArrowUpIn":                   FolderArrowUpIn,
+	"folderCheck":                       FolderCheck,
 	"folderCode":                        FolderCode,
 	"folderExclamation":                 FolderExclamation,
 	"folderFill":                        FolderFill,
@@ -348,6 +357,7 @@ var IconLookup = map[string]GravityUiIconFn{
 	"folderLock":                        FolderLock,
 	"folderMagnifier":                   FolderMagnifier,
 	"folderOpen":                        FolderOpen,
+	"folderOpenFill":                    FolderOpenFill,
 	"folderPlus":                        FolderPlus,
 	"folderTree":                        FolderTree,
 	"folders":                           Folders,
@@ -358,6 +368,7 @@ var IconLookup = map[string]GravityUiIconFn{
 	"frames":                            Frames,
 	"function":                          Function,
 	"funnel":                            Funnel,
+	"funnelXmark":                       FunnelXmark,
 	"gear":                              Gear,
 	"gearBranches":                      GearBranches,
 	"gearDot":                           GearDot,
@@ -370,6 +381,7 @@ var IconLookup = map[string]GravityUiIconFn{
 	"ghost":                             Ghost,
 	"gift":                              Gift,
 	"globe":                             Globe,
+	"gpu":                               Gpu,
 	"graduationCap":                     GraduationCap,
 	"graphNode":                         GraphNode,
 	"grip":                              Grip,
@@ -412,6 +424,7 @@ var IconLookup = map[string]GravityUiIconFn{
 	"layoutHeader":                      LayoutHeader,
 	"layoutHeaderCells":                 LayoutHeaderCells,
 	"layoutHeaderCellsLarge":            LayoutHeaderCellsLarge,
+	"layoutHeaderCellsLargeFill":        LayoutHeaderCellsLargeFill,
 	"layoutHeaderCellsLargeLetterD":     LayoutHeaderCellsLargeLetterD,
 	"layoutHeaderCellsLargeThunderbolt": LayoutHeaderCellsLargeThunderbolt,
 	"layoutHeaderColumns":               LayoutHeaderColumns,
@@ -443,11 +456,13 @@ var IconLookup = map[string]GravityUiIconFn{
 	"lockOpen":                          LockOpen,
 	"logoAcrobat":                       LogoAcrobat,
 	"logoDocker":                        LogoDocker,
+	"logoDrawIo":                        LogoDrawIo,
 	"logoFacebook":                      LogoFacebook,
 	"logoGitlab":                        LogoGitlab,
 	"logoLinux":                         LogoLinux,
 	"logoMacos":                         LogoMacos,
 	"logoMarkdown":                      LogoMarkdown,
+	"logoMermaid":                       LogoMermaid,
 	"logoNotion":                        LogoNotion,
 	"logoOsi":                           LogoOsi,
 	"logoPython":                        LogoPython,
@@ -457,6 +472,7 @@ var IconLookup = map[string]GravityUiIconFn{
 	"logoWindows":                       LogoWindows,
 	"logoYandex":                        LogoYandex,
 	"logoYandexCloud":                   LogoYandexCloud,
+	"logoYandexMessenger":               LogoYandexMessenger,
 	"logoYandexTracker":                 LogoYandexTracker,
 	"magicWand":                         MagicWand,
 	"magnet":                            Magnet,
@@ -476,6 +492,7 @@ var IconLookup = map[string]GravityUiIconFn{
 	"minus":                             Minus,
 	"molecule":                          Molecule,
 	"moon":                              Moon,
+	"mug":                               Mug,
 	"musicNote":                         MusicNote,
 	"nodesDown":                         NodesDown,
 	"nodesLeft":                         NodesLeft,
@@ -515,6 +532,7 @@ var IconLookup = map[string]GravityUiIconFn{
 	"personMagnifier":                   PersonMagnifier,
 	"personNutHex":                      PersonNutHex,
 	"personPencil":                      PersonPencil,
+	"personPlanetEarth":                 PersonPlanetEarth,
 	"personPlus":                        PersonPlus,
 	"personSpeaker":                     PersonSpeaker,
 	"personWorker":                      PersonWorker,
@@ -527,6 +545,8 @@ var IconLookup = map[string]GravityUiIconFn{
 	"pinFill":                           PinFill,
 	"pinSlash":                          PinSlash,
 	"pinSlashFill":                      PinSlashFill,
+	"pipeline":                          Pipeline,
+	"planetEarth":                       PlanetEarth,
 	"play":                              Play,
 	"playFill":                          PlayFill,
 	"plugConnection":                    PlugConnection,
@@ -566,6 +586,7 @@ var IconLookup = map[string]GravityUiIconFn{
 	"sliders":                           Sliders,
 	"slidersVertical":                   SlidersVertical,
 	"smartphone":                        Smartphone,
+	"snail":                             Snail,
 	"snowflake":                         Snowflake,
 	"sphere":                            Sphere,
 	"square":                            Square,
@@ -587,6 +608,7 @@ var IconLookup = map[string]GravityUiIconFn{
 	"squareExclamation":                 SquareExclamation,
 	"squareFill":                        SquareFill,
 	"squareHashtag":                     SquareHashtag,
+	"squareLetterP":                     SquareLetterP,
 	"squareLetterT":                     SquareLetterT,
 	"squareListUl":                      SquareListUl,
 	"squareMinus":                       SquareMinus,
@@ -608,6 +630,7 @@ var IconLookup = map[string]GravityUiIconFn{
 	"tagRuble":                          TagRuble,
 	"tags":                              Tags,
 	"target":                            Target,
+	"targetDart":                        TargetDart,
 	"terminal":                          Terminal,
 	"terminalLine":                      TerminalLine,
 	"textAlignCenter":                   TextAlignCenter,
@@ -1268,6 +1291,14 @@ func BellSlash(children ...ElementRenderer) *GravityUiIcon {
 	}
 }
 
+func Binoculars(children ...ElementRenderer) *GravityUiIcon {
+	return &GravityUiIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none"><g clip-path="url(#gravityUiBinoculars0)"><path fill="currentColor" fill-rule="evenodd" d="M1.522 10.68a2.14 2.14 0 0 0 2.11 1.82a2.125 2.125 0 1 0-2.11-1.82M3.64 14h-.015a3.626 3.626 0 0 1-3.558-2.927a3.6 3.6 0 0 1 .256-2.212L2.98 2.98a2.516 2.516 0 0 1 4.802 1.237L7.673 5.6a1.474 1.474 0 0 1 .655 0l-.11-1.382a2.516 2.516 0 0 1 4.801-1.237l2.658 5.88a3.6 3.6 0 0 1 .256 2.213A3.626 3.626 0 0 1 12.375 14h-.015a3.64 3.64 0 0 1-3.628-3.35l-.174-2.176A.963.963 0 0 0 8 8.312a.963.963 0 0 0-.558.162l-.174 2.176A3.64 3.64 0 0 1 3.64 14m-.015-7.25c.91 0 1.742.336 2.379.89l.283-3.542a1.016 1.016 0 0 0-1.94-.5L2.89 6.825a3.64 3.64 0 0 1 .736-.075Zm10.853 3.93a2.125 2.125 0 1 0-2.11 1.82a2.14 2.14 0 0 0 2.11-1.82m-2.826-7.082l1.459 3.227a3.61 3.61 0 0 0-3.115.815l-.283-3.542a1.016 1.016 0 0 1 1.94-.5Z" clip-rule="evenodd"/></g><defs><clipPath id="gravityUiBinoculars0"><path fill="currentColor" d="M0 0h16v16H0z"/></clipPath></defs></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func Bold(children ...ElementRenderer) *GravityUiIcon {
 	return &GravityUiIcon{
 		SVGSVGElement: SVG_SVG(
@@ -1511,7 +1542,7 @@ func CaretsExpandVertical(children ...ElementRenderer) *GravityUiIcon {
 func ChartAreaStacked(children ...ElementRenderer) *GravityUiIcon {
 	return &GravityUiIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<path fill="currentColor" fill-rule="evenodd" d="M10.257 4.2a.858.858 0 0 1-.86.274l-3.103-.776a2.81 2.81 0 0 0-2.796.876L1.242 7.152A3 3 0 0 0 .5 9.127V12a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2V3.309a1.933 1.933 0 0 0-3.4-1.258l-1.31 1.528l-.533.622ZM14 6.48V3.31a.433.433 0 0 0-.762-.282l-1.842 2.15a2.358 2.358 0 0 1-2.362.753L5.93 5.154a1.31 1.31 0 0 0-1.303.408L2.37 8.139a1.5 1.5 0 0 0-.37.988v.685l2.304-1.44a2.59 2.59 0 0 1 2.458-.155l1.923.888a1.578 1.578 0 0 0 1.777-.317l.22-.22l1.575-1.574A1.862 1.862 0 0 1 14 6.479ZM2 12c0 .277.226.501.5.501h11a.5.5 0 0 0 .5-.5V8.337a.4.4 0 0 0-.683-.283L11.523 9.85a3.078 3.078 0 0 1-3.466.618L6.134 9.58a1.09 1.09 0 0 0-1.035.066L2.352 11.36a.752.752 0 0 0-.352.637Z" clip-rule="evenodd"/>`),
+			Text(`<g fill="none"><g clip-path="url(#gravityUiChartAreaStacked0)"><path fill="currentColor" fill-rule="evenodd" d="M10.257 4.2a.858.858 0 0 1-.86.274l-3.103-.776a2.81 2.81 0 0 0-2.796.876L1.242 7.152A3 3 0 0 0 .5 9.127V12a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2V3.309a1.933 1.933 0 0 0-3.4-1.258l-1.31 1.528l-.533.622ZM14 6.48V3.31a.433.433 0 0 0-.762-.282l-1.842 2.15a2.358 2.358 0 0 1-2.362.753L5.93 5.154a1.31 1.31 0 0 0-1.303.408L2.37 8.139a1.5 1.5 0 0 0-.37.988v.685l2.304-1.44a2.59 2.59 0 0 1 2.458-.155l1.923.888a1.578 1.578 0 0 0 1.777-.317l.22-.22l1.575-1.574A1.862 1.862 0 0 1 14 6.479ZM2 12c0 .277.226.501.5.501h11a.5.5 0 0 0 .5-.5V8.337a.4.4 0 0 0-.683-.283L11.523 9.85a3.078 3.078 0 0 1-3.466.618L6.134 9.58a1.09 1.09 0 0 0-1.035.066L2.352 11.36a.752.752 0 0 0-.352.637Z" clip-rule="evenodd"/></g><defs><clipPath id="gravityUiChartAreaStacked0"><path fill="currentColor" d="M0 0h16v16H0z"/></clipPath></defs></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -1519,7 +1550,7 @@ func ChartAreaStacked(children ...ElementRenderer) *GravityUiIcon {
 func ChartAreaStackedNormalized(children ...ElementRenderer) *GravityUiIcon {
 	return &GravityUiIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<path fill="currentColor" fill-rule="evenodd" d="M13.5 12.5h-11A.5.5 0 0 1 2 12v-1.611l2.812-1.985a1.25 1.25 0 0 1 1.414-.019l1.753 1.169a2.75 2.75 0 0 0 3.757-.681L14 5.728V12a.5.5 0 0 1-.5.5m.22-8.95l-3.201 4.446a1.25 1.25 0 0 1-1.708.31L7.058 7.137a2.75 2.75 0 0 0-3.111.042L2 8.553V4a.5.5 0 0 1 .5-.5h11c.079 0 .153.018.22.05M.5 9.992V4a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-11a2 2 0 0 1-2-2V9.991Z" clip-rule="evenodd"/>`),
+			Text(`<g fill="none"><g clip-path="url(#gravityUiChartAreaStackedNormalized0)"><path fill="currentColor" fill-rule="evenodd" d="M13.5 12.5h-11A.5.5 0 0 1 2 12v-1.611l2.812-1.985a1.25 1.25 0 0 1 1.414-.019l1.753 1.169a2.75 2.75 0 0 0 3.757-.681L14 5.728V12a.5.5 0 0 1-.5.5m.22-8.95l-3.201 4.446a1.25 1.25 0 0 1-1.708.31L7.058 7.137a2.75 2.75 0 0 0-3.111.042L2 8.553V4a.5.5 0 0 1 .5-.5h11c.079 0 .153.018.22.05M.5 9.992V4a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-11a2 2 0 0 1-2-2V9.991Z" clip-rule="evenodd"/></g><defs><clipPath id="gravityUiChartAreaStackedNormalized0"><path fill="currentColor" d="M0 0h16v16H0z"/></clipPath></defs></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -1527,7 +1558,7 @@ func ChartAreaStackedNormalized(children ...ElementRenderer) *GravityUiIcon {
 func ChartBar(children ...ElementRenderer) *GravityUiIcon {
 	return &GravityUiIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<path fill="currentColor" fill-rule="evenodd" d="M6 4v1a.5.5 0 0 1-.5.5h-3A.5.5 0 0 1 2 5V4a.5.5 0 0 1 .5-.5h3A.5.5 0 0 1 6 4M2 7.5v1a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-7a.5.5 0 0 0-.5.5M2 11v1a.5.5 0 0 0 .5.5h11a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-11a.5.5 0 0 0-.5.5m-1.5.503V4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v1c0 .173-.022.34-.063.5H9.5a2 2 0 0 1 2 2v1c0 .173-.022.34-.063.5H13.5a2 2 0 0 1 2 2v1a2 2 0 0 1-2 2h-11a2 2 0 0 1-2-2z" clip-rule="evenodd"/>`),
+			Text(`<g fill="none"><g clip-path="url(#gravityUiChartBar0)"><path fill="currentColor" fill-rule="evenodd" d="M6 4v1a.5.5 0 0 1-.5.5h-3A.5.5 0 0 1 2 5V4a.5.5 0 0 1 .5-.5h3A.5.5 0 0 1 6 4M2 7.5v1a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-7a.5.5 0 0 0-.5.5M2 11v1a.5.5 0 0 0 .5.5h11a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-11a.5.5 0 0 0-.5.5m-1.5.503V4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v1c0 .173-.022.34-.063.5H9.5a2 2 0 0 1 2 2v1c0 .173-.022.34-.063.5H13.5a2 2 0 0 1 2 2v1a2 2 0 0 1-2 2h-11a2 2 0 0 1-2-2z" clip-rule="evenodd"/></g><defs><clipPath id="gravityUiChartBar0"><path fill="currentColor" d="M0 0h16v16H0z"/></clipPath></defs></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -1535,7 +1566,7 @@ func ChartBar(children ...ElementRenderer) *GravityUiIcon {
 func ChartBarStacked(children ...ElementRenderer) *GravityUiIcon {
 	return &GravityUiIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<path fill="currentColor" fill-rule="evenodd" d="M14 12a.5.5 0 0 1-.5.5h-11A.5.5 0 0 1 2 12v-1a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 .5.5zm0-3.5a.5.5 0 0 1-.5.5H12a.5.5 0 0 1-.5-.5v-1A.5.5 0 0 1 12 7h1.5a.5.5 0 0 1 .5.5zM14 5V4a.5.5 0 0 0-.5-.5H8a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h5.5A.5.5 0 0 0 14 5M2.5 3.5A.5.5 0 0 0 2 4v1a.5.5 0 0 0 .5.5h3A.5.5 0 0 0 6 5V4a.5.5 0 0 0-.5-.5zm-.5 4v1a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-7a.5.5 0 0 0-.5.5M.5 12a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2h-11a2 2 0 0 0-2 2z" clip-rule="evenodd"/>`),
+			Text(`<g fill="none"><g clip-path="url(#gravityUiChartBarStacked0)"><path fill="currentColor" fill-rule="evenodd" d="M14 12a.5.5 0 0 1-.5.5h-11A.5.5 0 0 1 2 12v-1a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 .5.5zm0-3.5a.5.5 0 0 1-.5.5H12a.5.5 0 0 1-.5-.5v-1A.5.5 0 0 1 12 7h1.5a.5.5 0 0 1 .5.5zM14 5V4a.5.5 0 0 0-.5-.5H8a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h5.5A.5.5 0 0 0 14 5M2.5 3.5A.5.5 0 0 0 2 4v1a.5.5 0 0 0 .5.5h3A.5.5 0 0 0 6 5V4a.5.5 0 0 0-.5-.5zm-.5 4v1a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-7a.5.5 0 0 0-.5.5M.5 12a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2h-11a2 2 0 0 0-2 2z" clip-rule="evenodd"/></g><defs><clipPath id="gravityUiChartBarStacked0"><path fill="currentColor" d="M0 0h16v16H0z"/></clipPath></defs></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -1543,7 +1574,7 @@ func ChartBarStacked(children ...ElementRenderer) *GravityUiIcon {
 func ChartColumn(children ...ElementRenderer) *GravityUiIcon {
 	return &GravityUiIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<path fill="currentColor" fill-rule="evenodd" d="M11.5 3.5h2a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5V4a.5.5 0 0 1 .5-.5m-2.5 9a.5.5 0 0 0 .5-.5V7a.5.5 0 0 0-.5-.5H7a.5.5 0 0 0-.5.5v5a.5.5 0 0 0 .5.5zm-4.5 0A.5.5 0 0 0 5 12v-2a.5.5 0 0 0-.5-.5h-2a.5.5 0 0 0-.5.5v2a.5.5 0 0 0 .5.5zm-1 1.5h-1a2 2 0 0 1-2-2v-2a2 2 0 0 1 2-2h2c.173 0 .34.022.5.063V7a2 2 0 0 1 2-2h2c.173 0 .34.022.5.063V4a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2z" clip-rule="evenodd"/>`),
+			Text(`<g fill="none"><g clip-path="url(#gravityUiChartColumn0)"><path fill="currentColor" fill-rule="evenodd" d="M11.5 3.5h2a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5V4a.5.5 0 0 1 .5-.5m-2.5 9a.5.5 0 0 0 .5-.5V7a.5.5 0 0 0-.5-.5H7a.5.5 0 0 0-.5.5v5a.5.5 0 0 0 .5.5zm-4.5 0A.5.5 0 0 0 5 12v-2a.5.5 0 0 0-.5-.5h-2a.5.5 0 0 0-.5.5v2a.5.5 0 0 0 .5.5zm-1 1.5h-1a2 2 0 0 1-2-2v-2a2 2 0 0 1 2-2h2c.173 0 .34.022.5.063V7a2 2 0 0 1 2-2h2c.173 0 .34.022.5.063V4a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2z" clip-rule="evenodd"/></g><defs><clipPath id="gravityUiChartColumn0"><path fill="currentColor" d="M0 0h16v16H0z"/></clipPath></defs></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -1551,7 +1582,7 @@ func ChartColumn(children ...ElementRenderer) *GravityUiIcon {
 func ChartColumnStacked(children ...ElementRenderer) *GravityUiIcon {
 	return &GravityUiIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<path fill="currentColor" fill-rule="evenodd" d="M11 4a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5zm-2 8.5a.5.5 0 0 0 .5-.5V7a.5.5 0 0 0-.5-.5H7a.5.5 0 0 0-.5.5v5a.5.5 0 0 0 .5.5zm-4.5 0A.5.5 0 0 0 5 12v-2a.5.5 0 0 0-.5-.5h-2a.5.5 0 0 0-.5.5v2a.5.5 0 0 0 .5.5zM2 7.5V4a.5.5 0 0 1 .5-.5h2A.5.5 0 0 1 5 4v3.5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5m5-4h2a.5.5 0 0 1 .5.5v.5A.5.5 0 0 1 9 5H7a.5.5 0 0 1-.5-.5V4a.5.5 0 0 1 .5-.5M7 2H2.5a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2z" clip-rule="evenodd"/>`),
+			Text(`<g fill="none"><g clip-path="url(#gravityUiChartColumnStacked0)"><path fill="currentColor" fill-rule="evenodd" d="M11 4a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5zm-2 8.5a.5.5 0 0 0 .5-.5V7a.5.5 0 0 0-.5-.5H7a.5.5 0 0 0-.5.5v5a.5.5 0 0 0 .5.5zm-4.5 0A.5.5 0 0 0 5 12v-2a.5.5 0 0 0-.5-.5h-2a.5.5 0 0 0-.5.5v2a.5.5 0 0 0 .5.5zM2 7.5V4a.5.5 0 0 1 .5-.5h2A.5.5 0 0 1 5 4v3.5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5m5-4h2a.5.5 0 0 1 .5.5v.5A.5.5 0 0 1 9 5H7a.5.5 0 0 1-.5-.5V4a.5.5 0 0 1 .5-.5M7 2H2.5a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2z" clip-rule="evenodd"/></g><defs><clipPath id="gravityUiChartColumnStacked0"><path fill="currentColor" d="M0 0h16v16H0z"/></clipPath></defs></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -1567,7 +1598,7 @@ func ChartDonut(children ...ElementRenderer) *GravityUiIcon {
 func ChartLine(children ...ElementRenderer) *GravityUiIcon {
 	return &GravityUiIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<path fill="currentColor" fill-rule="evenodd" d="M15.326 1.27a.75.75 0 0 1-.096 1.056l-3.674 3.062a2.75 2.75 0 0 1-2.55.522l-2.869-.86a1.25 1.25 0 0 0-1.214.285l-3.16 2.962A.75.75 0 1 1 .737 7.203l3.16-2.963a2.75 2.75 0 0 1 2.671-.628l2.868.86c.402.121.837.032 1.16-.236l3.674-3.062a.75.75 0 0 1 1.056.096m.113 6.185a.75.75 0 0 1-.393.984l-4.398 1.885a2.75 2.75 0 0 1-2.313-.068L6.186 9.182a1.25 1.25 0 0 0-1.238.068l-3.29 2.13a.75.75 0 0 1-.815-1.26l3.29-2.129a2.75 2.75 0 0 1 2.724-.15l2.149 1.073a1.25 1.25 0 0 0 1.051.031l4.398-1.884a.75.75 0 0 1 .984.394M1.25 12.5a.75.75 0 0 0 0 1.5h13.5a.75.75 0 0 0 0-1.5z" clip-rule="evenodd"/>`),
+			Text(`<g fill="none"><g clip-path="url(#gravityUiChartLine0)"><path fill="currentColor" fill-rule="evenodd" d="M15.326 1.27a.75.75 0 0 1-.096 1.056l-3.674 3.062a2.75 2.75 0 0 1-2.55.522l-2.869-.86a1.25 1.25 0 0 0-1.214.285l-3.16 2.962A.75.75 0 1 1 .737 7.203l3.16-2.963a2.75 2.75 0 0 1 2.671-.628l2.868.86c.402.121.837.032 1.16-.236l3.674-3.062a.75.75 0 0 1 1.056.096m.113 6.185a.75.75 0 0 1-.393.984l-4.398 1.885a2.75 2.75 0 0 1-2.313-.068L6.186 9.182a1.25 1.25 0 0 0-1.238.068l-3.29 2.13a.75.75 0 0 1-.815-1.26l3.29-2.129a2.75 2.75 0 0 1 2.724-.15l2.149 1.073a1.25 1.25 0 0 0 1.051.031l4.398-1.884a.75.75 0 0 1 .984.394M1.25 12.5a.75.75 0 0 0 0 1.5h13.5a.75.75 0 0 0 0-1.5z" clip-rule="evenodd"/></g><defs><clipPath id="gravityUiChartLine0"><path fill="currentColor" d="M0 0h16v16H0z"/></clipPath></defs></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -1575,7 +1606,7 @@ func ChartLine(children ...ElementRenderer) *GravityUiIcon {
 func ChartLineLabel(children ...ElementRenderer) *GravityUiIcon {
 	return &GravityUiIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none"><g clip-path="url(#gravityUiChartLineLabel0)"><path fill="currentColor" fill-rule="evenodd" d="M16 4a.75.75 0 0 0-1.4-.375l-1.176 2.037l-1.288-2.06A.75.75 0 0 0 10.75 4v4.25a.75.75 0 0 0 1.5 0V6.613l.564.901a.75.75 0 0 0 1.286-.022l.4-.694v1.45a.75.75 0 0 0 1.5 0zM2.828 4a.75.75 0 0 0-1.218-.586L.282 4.477a.75.75 0 1 0 .937 1.171l.11-.088v2.69a.75.75 0 1 0 1.5 0V4Zm4.583.75a.695.695 0 0 0-.656.464l-.085.242a.75.75 0 1 1-1.415-.498l.085-.242A2.195 2.195 0 0 1 7.411 3.25h.257A1.858 1.858 0 0 1 8.776 6.6l-1.213.9h1.375a.75.75 0 1 1 0 1.5H5.975a.975.975 0 0 1-.581-1.758L7.88 5.395a.358.358 0 0 0-.213-.645zm7.44 5.226a.778.778 0 1 1 .598 1.436l-4.717 1.968a2.85 2.85 0 0 1-2.374-.081l-2.263-1.132a1.296 1.296 0 0 0-1.262.057l-3.624 2.243a.778.778 0 0 1-.818-1.323l3.623-2.243a2.852 2.852 0 0 1 2.776-.126l2.264 1.132c.337.169.73.182 1.079.037zM4.75 8.25a.75.75 0 1 1-1.5 0a.75.75 0 0 1 1.5 0" clip-rule="evenodd"/></g><defs><clipPath id="gravityUiChartLineLabel0"><path fill="currentColor" d="M0 0h16v16H0z"/></clipPath></defs></g>`),
+			Text(`<g fill="none"><g clip-path="url(#gravityUiChartLineLabel0)"><path fill="currentColor" fill-rule="evenodd" d="M16 4a.75.75 0 0 0-1.4-.375l-1.176 2.037l-1.288-2.06A.75.75 0 0 0 10.75 4v4.25a.75.75 0 0 0 1.5 0V6.613l.564.901a.75.75 0 0 0 1.286-.022l.4-.694v1.45a.75.75 0 0 0 1.5 0zM2.828 4a.75.75 0 0 0-1.218-.586L.282 4.477a.75.75 0 1 0 .937 1.171l.11-.088v2.69a.75.75 0 1 0 1.5 0V4Zm4.583.75a.695.695 0 0 0-.656.464l-.085.242a.75.75 0 1 1-1.415-.498l.085-.242A2.195 2.195 0 0 1 7.411 3.25h.257A1.858 1.858 0 0 1 8.776 6.6l-1.213.9h1.375a.75.75 0 1 1 0 1.5H5.975a.975.975 0 0 1-.581-1.758L7.88 5.395a.358.358 0 0 0-.213-.645zm7.44 5.226a.778.778 0 1 1 .598 1.436l-4.717 1.968a2.85 2.85 0 0 1-2.374-.081l-2.263-1.132a1.296 1.296 0 0 0-1.262.057l-3.624 2.243a.778.778 0 1 1-.818-1.323l3.623-2.243a2.852 2.852 0 0 1 2.776-.126l2.264 1.132c.337.169.73.182 1.079.037zM4.75 8.25a.75.75 0 1 1-1.5 0a.75.75 0 0 1 1.5 0" clip-rule="evenodd"/></g><defs><clipPath id="gravityUiChartLineLabel0"><path fill="currentColor" d="M0 0h16v16H0z"/></clipPath></defs></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -1583,7 +1614,7 @@ func ChartLineLabel(children ...ElementRenderer) *GravityUiIcon {
 func ChartMixed(children ...ElementRenderer) *GravityUiIcon {
 	return &GravityUiIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<path fill="currentColor" fill-rule="evenodd" d="M14.98 1.826a.75.75 0 0 0-.96-1.152L10.376 3.71a1.25 1.25 0 0 1-1.196.225l-2.155-.718a2.75 2.75 0 0 0-2.973.837L.926 7.767a.75.75 0 1 0 1.148.966l3.125-3.712a1.25 1.25 0 0 1 1.352-.38l2.155.718a2.75 2.75 0 0 0 2.63-.496zM13.5 8h-2a.5.5 0 0 0-.5.5V13a.5.5 0 0 0 .5.5h2a.5.5 0 0 0 .5-.5V8.5a.5.5 0 0 0-.5-.5m-4 5a.5.5 0 0 1-.5.5H7a.5.5 0 0 1-.5-.5v-2.5A.5.5 0 0 1 7 10h2a.5.5 0 0 1 .5.5zM5 13a.5.5 0 0 1-.5.5h-2A.5.5 0 0 1 2 13v-.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 .5.5zm-2.5 2h11a2 2 0 0 0 2-2V8.5a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v.063A2.004 2.004 0 0 0 9 8.5H7a2 2 0 0 0-2 2v.063a2.005 2.005 0 0 0-.5-.063h-2a2 2 0 0 0-2 2v.5a2 2 0 0 0 2 2" clip-rule="evenodd"/>`),
+			Text(`<g fill="none"><g clip-path="url(#gravityUiChartMixed0)"><path fill="currentColor" fill-rule="evenodd" d="M14.98 1.826a.75.75 0 0 0-.96-1.152L10.376 3.71a1.25 1.25 0 0 1-1.196.225l-2.155-.718a2.75 2.75 0 0 0-2.973.837L.926 7.767a.75.75 0 1 0 1.148.966l3.125-3.712a1.25 1.25 0 0 1 1.352-.38l2.155.718a2.75 2.75 0 0 0 2.63-.496zM13.5 8h-2a.5.5 0 0 0-.5.5V13a.5.5 0 0 0 .5.5h2a.5.5 0 0 0 .5-.5V8.5a.5.5 0 0 0-.5-.5m-4 5a.5.5 0 0 1-.5.5H7a.5.5 0 0 1-.5-.5v-2.5A.5.5 0 0 1 7 10h2a.5.5 0 0 1 .5.5zM5 13a.5.5 0 0 1-.5.5h-2A.5.5 0 0 1 2 13v-.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 .5.5zm-2.5 2h11a2 2 0 0 0 2-2V8.5a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v.063A2.004 2.004 0 0 0 9 8.5H7a2 2 0 0 0-2 2v.063a2.005 2.005 0 0 0-.5-.063h-2a2 2 0 0 0-2 2v.5a2 2 0 0 0 2 2" clip-rule="evenodd"/></g><defs><clipPath id="gravityUiChartMixed0"><path fill="currentColor" d="M0 0h16v16H0z"/></clipPath></defs></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -2100,6 +2131,14 @@ func CircleLetterW(children ...ElementRenderer) *GravityUiIcon {
 	}
 }
 
+func CircleLink(children ...ElementRenderer) *GravityUiIcon {
+	return &GravityUiIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" fill-rule="evenodd" d="M8 13.5a5.5 5.5 0 1 0 0-11a5.5 5.5 0 0 0 0 11M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14M6.221 7.298a.707.707 0 0 0-1 0A2.461 2.461 0 1 0 8.7 10.78a.707.707 0 0 0 0-1l-.06-.06a.707.707 0 0 0-1 0a.961.961 0 0 1-1.36-1.36a.707.707 0 0 0 0-1l-.06-.06Zm3.497 1.344a.707.707 0 0 1 0-1.001a.961.961 0 0 0-1.359-1.36a.707.707 0 0 1-1 0l-.06-.06a.707.707 0 0 1 0-1a2.461 2.461 0 1 1 3.48 3.48a.707.707 0 0 1-1 0zm-.781-.518a.75.75 0 0 0-1.061-1.06l-.813.812a.75.75 0 0 0 1.061 1.06z" clip-rule="evenodd"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func CircleMinus(children ...ElementRenderer) *GravityUiIcon {
 	return &GravityUiIcon{
 		SVGSVGElement: SVG_SVG(
@@ -2343,7 +2382,7 @@ func CloudCheck(children ...ElementRenderer) *GravityUiIcon {
 func CloudGear(children ...ElementRenderer) *GravityUiIcon {
 	return &GravityUiIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none"><g clip-path="url(#gravityUiCloudGear0)"><path fill="currentColor" fill-rule="evenodd" d="M4.5 5.25a3.25 3.25 0 0 1 6.398-.811a.75.75 0 0 0 .702.563a2.986 2.986 0 0 1 1.94.798c.591.549.96 1.33.96 2.2A.75.75 0 0 0 16 8a4.49 4.49 0 0 0-1.44-3.3a4.489 4.489 0 0 0-2.373-1.148a4.751 4.751 0 0 0-9.184 1.522A3.751 3.751 0 0 0 3.75 12.5h.5a.75.75 0 0 0 0-1.5h-.5a2.25 2.25 0 0 1-.002-4.5h.03a.75.75 0 0 0 .747-.843A3.289 3.289 0 0 1 4.5 5.25m8.509 5.939a2.223 2.223 0 0 1-1.66-2.138l-.68-.256a2.38 2.38 0 0 1-2.748.816l-.406.569c.57.788.57 1.87 0 2.657l.406.569a2.38 2.38 0 0 1 2.747.816l.68-.255a2.223 2.223 0 0 1 1.66-2.139v-.639Zm-.113-2.396a.715.715 0 0 0-.418-.921l-1.798-.674a.865.865 0 0 0-1.114.506a.87.87 0 0 1-1.32.395a.884.884 0 0 0-1.23.2L5.94 9.805a.771.771 0 0 0 .18 1.076c.43.307.43.948 0 1.255a.771.771 0 0 0-.18 1.076l1.076 1.506a.884.884 0 0 0 1.23.2a.87.87 0 0 1 1.32.395a.865.865 0 0 0 1.114.506l1.798-.674a.715.715 0 0 0 .418-.92a.715.715 0 0 1 .67-.966h.134a.808.808 0 0 0 .809-.809v-1.883a.808.808 0 0 0-.809-.808h-.134a.715.715 0 0 1-.67-.966m-1.833 2.709a1.052 1.052 0 1 1-2.103 0a1.052 1.052 0 0 1 2.103 0" clip-rule="evenodd"/></g><defs><clipPath id="gravityUiCloudGear0"><path fill="currentColor" d="M0 0h16v16H0z"/></clipPath></defs></g>`),
+			Text(`<path fill="currentColor" fill-rule="evenodd" d="M4.5 5.25a3.25 3.25 0 0 1 6.398-.811a.75.75 0 0 0 .702.563a2.986 2.986 0 0 1 1.94.798c.591.549.96 1.33.96 2.2A.75.75 0 0 0 16 8a4.49 4.49 0 0 0-1.44-3.3a4.489 4.489 0 0 0-2.373-1.148a4.751 4.751 0 0 0-9.184 1.522A3.751 3.751 0 0 0 3.75 12.5h.5a.75.75 0 0 0 0-1.5h-.5a2.25 2.25 0 0 1-.002-4.5h.03a.75.75 0 0 0 .747-.843A3.289 3.289 0 0 1 4.5 5.25m8.509 5.939a2.223 2.223 0 0 1-1.66-2.138l-.68-.256a2.38 2.38 0 0 1-2.748.816l-.406.569c.57.788.57 1.87 0 2.657l.406.569a2.38 2.38 0 0 1 2.747.816l.68-.255a2.223 2.223 0 0 1 1.66-2.139v-.639Zm-.113-2.396a.715.715 0 0 0-.418-.921l-1.798-.674a.865.865 0 0 0-1.114.506a.87.87 0 0 1-1.32.395a.884.884 0 0 0-1.23.2L5.94 9.805a.771.771 0 0 0 .18 1.076c.43.307.43.948 0 1.255a.771.771 0 0 0-.18 1.076l1.076 1.506a.884.884 0 0 0 1.23.2a.87.87 0 0 1 1.32.395a.865.865 0 0 0 1.114.506l1.798-.674a.715.715 0 0 0 .418-.92a.715.715 0 0 1 .67-.966h.134a.808.808 0 0 0 .809-.809v-1.883a.808.808 0 0 0-.809-.808h-.134a.715.715 0 0 1-.67-.966m-1.833 2.709a1.052 1.052 0 1 1-2.103 0a1.052 1.052 0 0 1 2.103 0" clip-rule="evenodd"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -2500,6 +2539,14 @@ func CommentPlus(children ...ElementRenderer) *GravityUiIcon {
 	}
 }
 
+func CommentSlash(children ...ElementRenderer) *GravityUiIcon {
+	return &GravityUiIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" fill-rule="evenodd" d="M2.235 3.296L1.97 3.03a.75.75 0 0 1 1.06-1.06l11 11a.75.75 0 0 1-1.06 1.06l-1.621-1.62c-.995.393-2.136.59-3.349.59c-.083 0-.165 0-.247-.003L5.984 14.57a1.704 1.704 0 0 1-2.83-1.416l.123-1.484C1.877 10.674 1 9.117 1 7c0-1.526.456-2.76 1.235-3.704m7.93 7.93a8.14 8.14 0 0 1-2.378.272l-.59-.013l-.44.391l-1.77 1.572a.204.204 0 0 1-.338-.169l.123-1.484l.071-.851l-.695-.496C3.156 9.742 2.5 8.648 2.5 7c0-1.12.303-1.98.802-2.637l6.863 6.862ZM13.5 7c0 1.075-.28 1.91-.742 2.556l1.07 1.07C14.568 9.693 15 8.484 15 7c0-4-3.134-6-7-6c-1.172 0-2.276.184-3.247.551l1.194 1.194A8.231 8.231 0 0 1 8 2.5c1.695 0 3.087.44 4.02 1.177c.89.702 1.48 1.76 1.48 3.323" clip-rule="evenodd"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func Comments(children ...ElementRenderer) *GravityUiIcon {
 	return &GravityUiIcon{
 		SVGSVGElement: SVG_SVG(
@@ -2599,7 +2646,7 @@ func CopyXmark(children ...ElementRenderer) *GravityUiIcon {
 func Cpu(children ...ElementRenderer) *GravityUiIcon {
 	return &GravityUiIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none"><g clip-path="url(#gravityUiCpu0)"><path fill="currentColor" fill-rule="evenodd" d="M7 1.25a.75.75 0 0 0-1.5 0V2.5a3 3 0 0 0-3 3H1.25a.75.75 0 0 0 0 1.5H2.5v2H1.25a.75.75 0 0 0 0 1.5H2.5a3 3 0 0 0 3 3v1.25a.75.75 0 0 0 1.5 0V13.5h2v1.25a.75.75 0 0 0 1.5 0V13.5a3 3 0 0 0 3-3h1.25a.75.75 0 1 0 0-1.5H13.5V7h1.25a.75.75 0 1 0 0-1.5H13.5a3 3 0 0 0-3-3V1.25a.75.75 0 0 0-1.5 0V2.5H7zM10.5 4h-5A1.5 1.5 0 0 0 4 5.5v5A1.5 1.5 0 0 0 5.5 12h5a1.5 1.5 0 0 0 1.5-1.5v-5A1.5 1.5 0 0 0 10.5 4m0 2.25a.75.75 0 0 0-.75-.75h-3.5a.75.75 0 0 0-.75.75v3.5a.75.75 0 0 0 .75.75h3.5a.75.75 0 0 0 .75-.75zM7 7h2v2H7z" clip-rule="evenodd"/></g><defs><clipPath id="gravityUiCpu0"><path fill="currentColor" d="M0 0h16v16H0z"/></clipPath></defs></g>`),
+			Text(`<path fill="currentColor" fill-rule="evenodd" d="M7 1.25a.75.75 0 0 0-1.5 0V2.5a3 3 0 0 0-3 3H1.25a.75.75 0 0 0 0 1.5H2.5v2H1.25a.75.75 0 0 0 0 1.5H2.5a3 3 0 0 0 3 3v1.25a.75.75 0 0 0 1.5 0V13.5h2v1.25a.75.75 0 0 0 1.5 0V13.5a3 3 0 0 0 3-3h1.25a.75.75 0 1 0 0-1.5H13.5V7h1.25a.75.75 0 1 0 0-1.5H13.5a3 3 0 0 0-3-3V1.25a.75.75 0 0 0-1.5 0V2.5H7zM10.5 4h-5A1.5 1.5 0 0 0 4 5.5v5A1.5 1.5 0 0 0 5.5 12h5a1.5 1.5 0 0 0 1.5-1.5v-5A1.5 1.5 0 0 0 10.5 4m0 2.25a.75.75 0 0 0-.75-.75h-3.5a.75.75 0 0 0-.75.75v3.5a.75.75 0 0 0 .75.75h3.5a.75.75 0 0 0 .75-.75zM7 7h2v2H7z" clip-rule="evenodd"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -2607,7 +2654,7 @@ func Cpu(children ...ElementRenderer) *GravityUiIcon {
 func Cpus(children ...ElementRenderer) *GravityUiIcon {
 	return &GravityUiIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none"><g clip-path="url(#gravityUiCpus0)"><path fill="currentColor" fill-rule="evenodd" d="M7.75 0a.75.75 0 0 1 .75.75V2h2V.75a.75.75 0 0 1 1.5 0V2a2 2 0 0 1 2 2h1.25a.75.75 0 0 1 0 1.5H14v2h1.25a.75.75 0 0 1 0 1.5H14a2 2 0 0 1-2 2h-1v1a2 2 0 0 1-2 2v1.25a.75.75 0 0 1-1.5 0V14h-2v1.25a.75.75 0 0 1-1.5 0V14a2 2 0 0 1-2-2H.75a.75.75 0 0 1 0-1.5H2v-2H.75a.75.75 0 0 1 0-1.5H2a2 2 0 0 1 2-2h1V4a2 2 0 0 1 2-2V.75A.75.75 0 0 1 7.75 0M6.5 5H9a2 2 0 0 1 2 2v2.5h1a.5.5 0 0 0 .5-.5V4a.5.5 0 0 0-.5-.5H7a.5.5 0 0 0-.5.5zm3 2a.5.5 0 0 0-.5-.5H4a.5.5 0 0 0-.5.5v5a.5.5 0 0 0 .5.5h5a.5.5 0 0 0 .5-.5z" clip-rule="evenodd"/></g><defs><clipPath id="gravityUiCpus0"><path fill="currentColor" d="M0 0h16v16H0z"/></clipPath></defs></g>`),
+			Text(`<path fill="currentColor" fill-rule="evenodd" d="M7.75 0a.75.75 0 0 1 .75.75V2h2V.75a.75.75 0 0 1 1.5 0V2a2 2 0 0 1 2 2h1.25a.75.75 0 0 1 0 1.5H14v2h1.25a.75.75 0 0 1 0 1.5H14a2 2 0 0 1-2 2h-1v1a2 2 0 0 1-2 2v1.25a.75.75 0 0 1-1.5 0V14h-2v1.25a.75.75 0 0 1-1.5 0V14a2 2 0 0 1-2-2H.75a.75.75 0 0 1 0-1.5H2v-2H.75a.75.75 0 0 1 0-1.5H2a2 2 0 0 1 2-2h1V4a2 2 0 0 1 2-2V.75A.75.75 0 0 1 7.75 0M6.5 5H9a2 2 0 0 1 2 2v2.5h1a.5.5 0 0 0 .5-.5V4a.5.5 0 0 0-.5-.5H7a.5.5 0 0 0-.5.5zm3 2a.5.5 0 0 0-.5-.5H4a.5.5 0 0 0-.5.5v5a.5.5 0 0 0 .5.5h5a.5.5 0 0 0 .5-.5z" clip-rule="evenodd"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -2623,7 +2670,7 @@ func CreditCard(children ...ElementRenderer) *GravityUiIcon {
 func Crop(children ...ElementRenderer) *GravityUiIcon {
 	return &GravityUiIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none"><g clip-path="url(#gravityUiCrop0)"><path fill="currentColor" fill-rule="evenodd" d="M3.5 0a.75.75 0 0 1 .75.75V2.5h8.25a.75.75 0 0 1 .75.75v8.5h2a.75.75 0 0 1 0 1.5h-2v2a.75.75 0 0 1-1.5 0v-2H3.5a.75.75 0 0 1-.75-.75V4h-2a.75.75 0 0 1 0-1.5h2V.75A.75.75 0 0 1 3.5 0m.75 4v7.75h7.5V4z" clip-rule="evenodd"/></g><defs><clipPath id="gravityUiCrop0"><path fill="currentColor" d="M0 0h16v16H0z"/></clipPath></defs></g>`),
+			Text(`<path fill="currentColor" fill-rule="evenodd" d="M3.5 0a.75.75 0 0 1 .75.75V2.5h8.25a.75.75 0 0 1 .75.75v8.5h2a.75.75 0 0 1 0 1.5h-2v2a.75.75 0 0 1-1.5 0v-2H3.5a.75.75 0 0 1-.75-.75V4h-2a.75.75 0 0 1 0-1.5h2V.75A.75.75 0 0 1 3.5 0m.75 4v7.75h7.5V4z" clip-rule="evenodd"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -2656,6 +2703,14 @@ func CubesThreeOverlap(children ...ElementRenderer) *GravityUiIcon {
 	return &GravityUiIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="currentColor" fill-rule="evenodd" d="M9.5 2.5h-3A1.5 1.5 0 0 0 5 4v1h1a3 3 0 0 1 3 3v.5h.5A1.5 1.5 0 0 0 11 7V4a1.5 1.5 0 0 0-1.5-1.5M9 10v1c0 .546-.146 1.059-.401 1.5H13a1.5 1.5 0 0 0 1.5-1.5V8A1.5 1.5 0 0 0 13 6.5h-.5V7a3 3 0 0 1-3 3zm3.5-5V4a3 3 0 0 0-3-3h-3a3 3 0 0 0-3 3v1H3a3 3 0 0 0-3 3v3a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V8a3 3 0 0 0-3-3zM6 6.5H3A1.5 1.5 0 0 0 1.5 8v3A1.5 1.5 0 0 0 3 12.5h3A1.5 1.5 0 0 0 7.5 11V8A1.5 1.5 0 0 0 6 6.5" clip-rule="evenodd"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func Cup(children ...ElementRenderer) *GravityUiIcon {
+	return &GravityUiIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none"><g clip-path="url(#gravityUiCup0)"><path fill="currentColor" fill-rule="evenodd" d="M10.521 5.835c.84-.402.979-.795.979-1.085c0-.272-.123-.634-.83-1.01a4.02 4.02 0 0 0-.149-.075C9.666 3.255 8.351 3 6.75 3s-2.916.256-3.772.665C2.14 4.067 2 4.46 2 4.75c0 .29.14.683.978 1.085c.856.41 2.171.665 3.772.665s2.916-.256 3.771-.665M6.75 8c1.882 0 3.57-.322 4.715-.966c-.059 1.35-.216 2.595-.634 3.616c-.303.74-.72 1.293-1.296 1.674c-.579.383-1.444.676-2.785.676c-1.34 0-2.206-.293-2.785-.676c-.575-.381-.992-.934-1.296-1.674c-.418-1.021-.575-2.267-.634-3.616C3.18 7.678 4.868 8 6.75 8m6.246-3.388C12.88 2.537 10.128 1.5 6.75 1.5C3.298 1.5.5 2.583.5 4.75C.5 9 .5 14.5 6.75 14.5c3.36 0 4.913-1.589 5.632-3.719a9.67 9.67 0 0 0 .818-.293c.615-.256 1.268-.613 1.79-1.112C15.524 8.865 16 8.12 16 7.158c0-.437-.097-.89-.345-1.304a2.38 2.38 0 0 0-.956-.89c-.563-.293-1.187-.358-1.703-.352m-.003 1.5c-.015.97-.06 1.967-.204 2.92c.964-.432 1.711-1.056 1.711-1.874c0-.808-.656-1.059-1.507-1.046" clip-rule="evenodd"/></g><defs><clipPath id="gravityUiCup0"><path fill="currentColor" d="M0 0h16v16H0z"/></clipPath></defs></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -2700,10 +2755,18 @@ func DatabaseArrowRight(children ...ElementRenderer) *GravityUiIcon {
 	}
 }
 
+func DatabaseFill(children ...ElementRenderer) *GravityUiIcon {
+	return &GravityUiIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" fill-rule="evenodd" d="M8 8.5c1.776 0 3.515-.263 4.87-.888A5.64 5.64 0 0 0 14 6.931V8c0 2-2.686 3-6 3s-6-1-6-3V6.93c.35.275.736.501 1.13.682C4.485 8.237 6.224 8.5 8 8.5M14 4c0 2-2.686 3-6 3S2 6 2 4c0-.336.076-.643.217-.923C2.92 1.692 5.242 1 8 1c.828 0 1.618.063 2.335.188C12.49 1.563 14 2.5 14 4M8 15c3.314 0 6-1 6-3v-1.07c-.35.275-.736.501-1.13.683c-1.355.623-3.094.887-4.87.887c-1.776 0-3.515-.264-4.87-.887A5.701 5.701 0 0 1 2 10.93V12c0 2 2.686 3 6 3" clip-rule="evenodd"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func DatabaseMagnifier(children ...ElementRenderer) *GravityUiIcon {
 	return &GravityUiIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<path fill="currentColor" fill-rule="evenodd" d="M11.615 4.888c.814-.375.885-.714.885-.888c0-.174-.071-.513-.885-.888C10.8 2.737 9.538 2.5 8 2.5c-1.538 0-2.799.237-3.615.612c-.814.375-.885.714-.885.888c0 .174.071.513.885.888C5.2 5.263 6.462 5.5 8 5.5c1.538 0 2.799-.237 3.615-.612m.885 1.235C11.4 6.708 9.792 7 8 7c-1.792 0-3.4-.292-4.5-.877V8c0 .174.071.513.885.888C5.2 9.263 6.462 9.5 8 9.5h.04c-.187.463-.29.968-.29 1.498c-1.691-.026-3.202-.318-4.25-.875V12c0 .174.071.513.885.887c.816.377 2.077.613 3.615.613c.211 0 .417-.005.617-.013a4.007 4.007 0 0 0 1.848 1.302C9.713 14.93 8.879 15 8 15c-3.314 0-6-1-6-3V4c0-2 2.686-3 6-3s6 1 6 3v3.692a3.978 3.978 0 0 0-1.5-.622zm-.75 6.377a1.5 1.5 0 1 0 0-3a1.5 1.5 0 0 0 0 3m0 1.5c.556 0 1.077-.151 1.524-.415l1.446 1.445a.75.75 0 1 0 1.06-1.06l-1.445-1.446A3 3 0 1 0 11.75 14" clip-rule="evenodd"/>`),
+			Text(`<path fill="currentColor" fill-rule="evenodd" d="M11.615 4.888c.814-.375.885-.714.885-.888c0-.174-.071-.513-.885-.888C10.8 2.737 9.538 2.5 8 2.5c-1.538 0-2.799.237-3.615.612c-.814.375-.885.714-.885.888c0 .174.071.513.885.888C5.2 5.263 6.462 5.5 8 5.5c1.538 0 2.799-.237 3.615-.612m.885 1.235C11.4 6.708 9.792 7 8 7c-1.792 0-3.4-.292-4.5-.877V8c0 .174.071.513.885.888C5.2 9.263 6.462 9.5 8 9.5h.04c-.187.463-.29.968-.29 1.498c-1.691-.026-3.202-.318-4.25-.875V12c0 .174.071.513.885.887c.816.377 2.077.613 3.615.613c.211 0 .417-.005.617-.013a4.008 4.008 0 0 0 1.848 1.302C9.713 14.93 8.879 15 8 15c-3.314 0-6-1-6-3V4c0-2 2.686-3 6-3s6 1 6 3v3.692a3.978 3.978 0 0 0-1.5-.622zm-.75 6.377a1.5 1.5 0 1 0 0-3a1.5 1.5 0 0 0 0 3m0 1.5c.556 0 1.077-.152 1.524-.415l1.446 1.445a.75.75 0 1 0 1.06-1.06l-1.445-1.446A3 3 0 1 0 11.75 14" clip-rule="evenodd"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -2712,6 +2775,14 @@ func Databases(children ...ElementRenderer) *GravityUiIcon {
 	return &GravityUiIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="currentColor" fill-rule="evenodd" d="M13.499 10.04c.492-.252.501-.446.501-.54V5.462c-.796.359-1.848.538-3 .538a9.467 9.467 0 0 1-1.606-.13c.07.195.106.405.106.63v3.864c.428.086.932.136 1.5.136c1.107 0 1.971-.19 2.499-.46M8 8.462V12.5c0 .094-.009.288-.501.54c-.528.27-1.392.46-2.499.46c-1.107 0-1.971-.19-2.499-.46C2.01 12.788 2 12.594 2 12.5V8.462C2.796 8.821 3.847 9 5 9s2.204-.18 3-.538M8 6.5c0-.093-.009-.288-.501-.54C6.97 5.69 6.107 5.5 5 5.5c-1.107 0-1.971.19-2.499.46C2.01 6.212 2 6.407 2 6.5c0 .093.009.288.501.54c.528.27 1.392.46 2.499.46c1.107 0 1.971-.19 2.499-.46C7.99 6.788 8 6.593 8 6.5m-7.5 0C.5 4.833 2.515 4 5 4c.526 0 1.03.037 1.5.112V3.5C6.5 1.833 8.515 1 11 1s4.5.833 4.5 2.5v6c0 1.667-2.015 2.5-4.5 2.5a9.56 9.56 0 0 1-1.5-.112v.612C9.5 14.167 7.485 15 5 15S.5 14.167.5 12.5zm7.5-3c0 .094.009.288.501.54c.528.27 1.392.46 2.499.46c1.107 0 1.971-.19 2.499-.46c.492-.252.501-.446.501-.54c0-.094-.009-.288-.501-.54c-.528-.27-1.392-.46-2.499-.46c-1.107 0-1.971.19-2.499.46C8.01 3.212 8 3.406 8 3.5" clip-rule="evenodd"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func Delete(children ...ElementRenderer) *GravityUiIcon {
+	return &GravityUiIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" fill-rule="evenodd" d="M5.442 3.5H12.5A1.5 1.5 0 0 1 14 5v6a1.5 1.5 0 0 1-1.5 1.5H5.442a1.5 1.5 0 0 1-1.171-.563L1.796 8.844a1.35 1.35 0 0 1 0-1.688l2.475-3.093A1.5 1.5 0 0 1 5.44 3.5Zm-2.343-.374A3 3 0 0 1 5.442 2H12.5a3 3 0 0 1 3 3v6a3 3 0 0 1-3 3H5.442a3 3 0 0 1-2.343-1.126L.625 9.781a2.85 2.85 0 0 1 0-3.562zM7.28 5.47a.75.75 0 0 0-1.06 1.06L7.69 8L6.22 9.47a.75.75 0 1 0 1.06 1.06l1.47-1.47l1.47 1.47a.75.75 0 1 0 1.06-1.06L9.81 8l1.47-1.47a.75.75 0 0 0-1.06-1.06L8.75 6.94z" clip-rule="evenodd"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -2727,7 +2798,7 @@ func Diamond(children ...ElementRenderer) *GravityUiIcon {
 func DiamondExclamation(children ...ElementRenderer) *GravityUiIcon {
 	return &GravityUiIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none"><g clip-path="url(#gravityUiDiamondExclamation0)"><path fill="currentColor" fill-rule="evenodd" d="M14.01 6.94L9.06 1.99a1.5 1.5 0 0 0-2.12 0L1.99 6.94a1.5 1.5 0 0 0 0 2.12l4.95 4.95a1.5 1.5 0 0 0 2.12 0l4.95-4.95a1.5 1.5 0 0 0 0-2.12M10.121.928a3 3 0 0 0-4.242 0l-4.95 4.95a3 3 0 0 0 0 4.242l4.95 4.95a3 3 0 0 0 4.242 0l4.95-4.95a3 3 0 0 0 0-4.242zM9 10.5a1 1 0 1 1-2 0a1 1 0 0 1 2 0M8.75 5a.75.75 0 1 0-1.5 0v2.5a.75.75 0 1 0 1.5 0z" clip-rule="evenodd"/></g><defs><clipPath id="gravityUiDiamondExclamation0"><path fill="currentColor" d="M0 0h16v16H0z"/></clipPath></defs></g>`),
+			Text(`<path fill="currentColor" fill-rule="evenodd" d="M14.01 6.94L9.06 1.99a1.5 1.5 0 0 0-2.12 0L1.99 6.94a1.5 1.5 0 0 0 0 2.12l4.95 4.95a1.5 1.5 0 0 0 2.12 0l4.95-4.95a1.5 1.5 0 0 0 0-2.12M10.121.928a3 3 0 0 0-4.242 0l-4.95 4.95a3 3 0 0 0 0 4.242l4.95 4.95a3 3 0 0 0 4.242 0l4.95-4.95a3 3 0 0 0 0-4.242zM9 10.5a1 1 0 1 1-2 0a1 1 0 0 1 2 0M8.75 5a.75.75 0 1 0-1.5 0v2.5a.75.75 0 1 0 1.5 0z" clip-rule="evenodd"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -2904,6 +2975,22 @@ func EyeSlash(children ...ElementRenderer) *GravityUiIcon {
 	return &GravityUiIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="currentColor" fill-rule="evenodd" d="M3.03 1.97a.75.75 0 0 0-1.06 1.06l.83.83A8.206 8.206 0 0 0 .5 6.876l-.26.585a1.328 1.328 0 0 0 0 1.079l.26.585a8.208 8.208 0 0 0 11.434 3.87l1.036 1.035a.75.75 0 1 0 1.06-1.06zm7.788 9.908l-1.294-1.293a3 3 0 0 1-4.109-4.109L3.866 4.927A6.707 6.707 0 0 0 1.87 7.486L1.641 8l.23.515a6.708 6.708 0 0 0 8.947 3.363M6.55 7.611A1.502 1.502 0 0 0 8.389 9.45zm1.658-2.604l2.784 2.784a3 3 0 0 0-2.784-2.784m5.92 3.508a6.704 6.704 0 0 1-.915 1.496l1.065 1.066A8.203 8.203 0 0 0 15.5 9.125l.26-.585a1.328 1.328 0 0 0 0-1.08l-.26-.584A8.208 8.208 0 0 0 5.572 2.37L6.81 3.61a6.708 6.708 0 0 1 7.32 3.877l.228.514l-.228.515Z" clip-rule="evenodd"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func EyesLookLeft(children ...ElementRenderer) *GravityUiIcon {
+	return &GravityUiIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" fill-rule="evenodd" d="M6 8c0 1.75-.335 3.094-.816 3.944C4.721 12.764 4.217 13 3.75 13c-.467 0-.97-.237-1.434-1.056c-.272-.48-.496-1.116-.64-1.895c.283.289.647.451 1.074.451C3.826 10.5 4.5 9.47 4.5 8s-.674-2.5-1.75-2.5a1.47 1.47 0 0 0-1.075.45c.145-.778.37-1.415.64-1.894C2.78 3.236 3.284 3 3.75 3c.467 0 .97.237 1.434 1.056C5.665 4.906 6 6.25 6 8m1.5 0c0 3.822-1.445 6.5-3.75 6.5C1.445 14.5 0 11.822 0 8s1.445-6.5 3.75-6.5C6.055 1.5 7.5 4.178 7.5 8m7 0c0 1.75-.335 3.094-.816 3.944c-.463.82-.967 1.056-1.434 1.056c-.467 0-.97-.237-1.434-1.056c-.272-.48-.496-1.116-.64-1.895c.283.289.647.451 1.074.451C12.326 10.5 13 9.47 13 8s-.674-2.5-1.75-2.5a1.47 1.47 0 0 0-1.075.45c.145-.778.37-1.415.64-1.894C11.28 3.236 11.784 3 12.25 3c.467 0 .97.237 1.434 1.056c.481.85.816 2.195.816 3.944M16 8c0 3.822-1.445 6.5-3.75 6.5c-2.305 0-3.75-2.678-3.75-6.5s1.445-6.5 3.75-6.5C14.555 1.5 16 4.178 16 8" clip-rule="evenodd"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func EyesLookRight(children ...ElementRenderer) *GravityUiIcon {
+	return &GravityUiIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" fill-rule="evenodd" d="M4.75 5.5c.427 0 .791.163 1.075.45c-.145-.778-.37-1.415-.64-1.894C4.72 3.236 4.216 3 3.75 3c-.467 0-.97.237-1.434 1.056C1.835 4.906 1.5 6.25 1.5 8s.335 3.094.816 3.944c.463.82.967 1.056 1.434 1.056c.467 0 .97-.237 1.434-1.056c.272-.48.496-1.116.64-1.895a1.47 1.47 0 0 1-1.074.451C3.674 10.5 3 9.47 3 8s.674-2.5 1.75-2.5M7.5 8c0 3.822-1.445 6.5-3.75 6.5C1.445 14.5 0 11.822 0 8s1.445-6.5 3.75-6.5C6.055 1.5 7.5 4.178 7.5 8m6.825 2.05c-.145.778-.37 1.415-.64 1.894c-.464.82-.968 1.056-1.435 1.056c-.467 0-.97-.237-1.434-1.056C10.335 11.094 10 9.75 10 8s.335-3.094.816-3.944C11.279 3.236 11.783 3 12.25 3c.467 0 .97.237 1.434 1.056c.272.48.496 1.116.64 1.895A1.47 1.47 0 0 0 13.25 5.5c-1.076 0-1.75 1.03-1.75 2.5s.674 2.5 1.75 2.5a1.47 1.47 0 0 0 1.075-.45M16 8c0 3.822-1.445 6.5-3.75 6.5c-2.305 0-3.75-2.678-3.75-6.5s1.445-6.5 3.75-6.5C14.555 1.5 16 4.178 16 8" clip-rule="evenodd"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -3228,6 +3315,14 @@ func FolderArrowUpIn(children ...ElementRenderer) *GravityUiIcon {
 	}
 }
 
+func FolderCheck(children ...ElementRenderer) *GravityUiIcon {
+	return &GravityUiIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" fill-rule="evenodd" d="m6.44 4.06l.439.44H12.5A1.5 1.5 0 0 1 14 6v5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 11V4.5A1.5 1.5 0 0 1 3.5 3h1.257a1.5 1.5 0 0 1 1.061.44l.621.62ZM.5 4.5a3 3 0 0 1 3-3h1.257a3 3 0 0 1 2.122.879L7.5 3h5a3 3 0 0 1 3 3v5a3 3 0 0 1-3 3h-9a3 3 0 0 1-3-3zm10.35 2.45a.75.75 0 1 0-1.2-.9L7.469 8.958L6.28 7.77a.75.75 0 0 0-1.06 1.06l1.8 1.8a.75.75 0 0 0 1.13-.08z" clip-rule="evenodd"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func FolderCode(children ...ElementRenderer) *GravityUiIcon {
 	return &GravityUiIcon{
 		SVGSVGElement: SVG_SVG(
@@ -3296,6 +3391,14 @@ func FolderOpen(children ...ElementRenderer) *GravityUiIcon {
 	return &GravityUiIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="currentColor" fill-rule="evenodd" d="m6.379 4.5l-.44-.44l-.621-.62A1.5 1.5 0 0 0 4.258 3H3a1.5 1.5 0 0 0-1.5 1.5v5.25l1.376-2.293A3 3 0 0 1 5.45 6h7.05A1.5 1.5 0 0 0 11 4.5zM14 6.026V6a3 3 0 0 0-3-3H7l-.621-.621A3 3 0 0 0 4.257 1.5H3a3 3 0 0 0-3 3V11a3 3 0 0 0 3 3h8.301a3 3 0 0 0 2.573-1.457l1.791-2.985A2.349 2.349 0 0 0 14 6.026M10 12.5h1.301a1.5 1.5 0 0 0 1.287-.728l1.791-2.986l1.286.772l-1.286-.772a.85.85 0 0 0-.728-1.286H5.449a1.5 1.5 0 0 0-1.287.728l-1.791 2.986a.85.85 0 0 0 .728 1.286z" clip-rule="evenodd"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func FolderOpenFill(children ...ElementRenderer) *GravityUiIcon {
+	return &GravityUiIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" fill-rule="evenodd" d="M0 4.5a3 3 0 0 1 3-3h1.257a3 3 0 0 1 2.122.879L7 3h4a3 3 0 0 1 3 3H5.449a3 3 0 0 0-2.573 1.457L1.43 9.867a.75.75 0 0 0 1.287.772l1.446-2.41A1.5 1.5 0 0 1 5.45 7.5h9.376a1.175 1.175 0 0 1 1.008 1.779l-1.96 3.264A3 3 0 0 1 11.302 14H2.94A3 3 0 0 1 0 11z" clip-rule="evenodd"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -3380,6 +3483,14 @@ func Funnel(children ...ElementRenderer) *GravityUiIcon {
 	}
 }
 
+func FunnelXmark(children ...ElementRenderer) *GravityUiIcon {
+	return &GravityUiIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" fill-rule="evenodd" d="M10.615 4.888c.814-.375.885-.714.885-.888c0-.174-.071-.513-.885-.888C9.8 2.737 8.538 2.5 7 2.5c-1.538 0-2.799.237-3.615.612c-.814.375-.885.714-.885.888c0 .174.071.513.885.888C4.2 5.263 5.462 5.5 7 5.5c1.538 0 2.799-.237 3.615-.612M7 7c1.114 0 2.158-.113 3.052-.34l-1.98 2.905c-.21.308-.322.672-.322 1.044V13a.861.861 0 0 1-.3.684c-.201.175-.528.316-.95.316a1.3 1.3 0 0 1-.25-.02v-3.37c0-.373-.112-.737-.322-1.045L3.948 6.66C4.842 6.887 5.886 7 7 7m6-3c0-2-2.686-3-6-3S1 2 1 4c0 .652.196 1.288.563 1.826L4.69 10.41c.04.059.061.128.061.2v3.89s.25 1 1.75 1s2.75-1 2.75-2.5v-2.39c0-.072.021-.141.061-.2l3.126-4.584A3.242 3.242 0 0 0 13 4m-6.88 9.936c-.01-.005-.014-.009-.013-.01zm7.13-2.247l-1.22-1.22a.75.75 0 1 0-1.06 1.061l1.22 1.22l-1.22 1.22a.75.75 0 1 0 1.06 1.06l1.22-1.22l1.22 1.22a.75.75 0 1 0 1.06-1.06l-1.22-1.22l1.22-1.22a.75.75 0 1 0-1.06-1.06z" clip-rule="evenodd"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func Gear(children ...ElementRenderer) *GravityUiIcon {
 	return &GravityUiIcon{
 		SVGSVGElement: SVG_SVG(
@@ -3399,7 +3510,7 @@ func GearBranches(children ...ElementRenderer) *GravityUiIcon {
 func GearDot(children ...ElementRenderer) *GravityUiIcon {
 	return &GravityUiIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"><path d="M7.199 2A.199.199 0 0 0 7 2.199c0 1.808-1.958 2.939-3.524 2.034a.199.199 0 0 0-.272.073l-.8 1.388a.199.199 0 0 0 .072.271c1.566.905 1.566 3.165 0 4.07a.199.199 0 0 0-.073.271l.801 1.388a.199.199 0 0 0 .272.073C5.042 10.862 7 11.993 7 13.8c0 .11.089.199.199.199H8.8c.11 0 .199-.089.199-.199c0-1.808 1.958-2.939 3.524-2.034a.199.199 0 0 0 .271-.073l.802-1.388a.199.199 0 0 0-.073-.271c-1.303-.753-1.516-2.434-.665-3.5a.75.75 0 0 1 1.172.936a.852.852 0 0 0 .243 1.265a1.7 1.7 0 0 1 .622 2.32l-.802 1.388a1.699 1.699 0 0 1-2.32.622a.85.85 0 0 0-1.274.735c0 .938-.76 1.699-1.699 1.699H7.2c-.938 0-1.699-.76-1.699-1.699a.85.85 0 0 0-1.274-.735a1.698 1.698 0 0 1-2.32-.622l-.802-1.388a1.699 1.699 0 0 1 .622-2.32a.85.85 0 0 0 0-1.472a1.699 1.699 0 0 1-.622-2.32l.801-1.388a1.699 1.699 0 0 1 2.32-.622A.85.85 0 0 0 5.5 2.2c0-.94.76-1.7 1.699-1.7H9.3a.75.75 0 1 1 0 1.5H7.2Zm.8 7.5a1.5 1.5 0 1 0 0-3a1.5 1.5 0 0 0 0 3M8 11a3 3 0 1 0 0-6a3 3 0 0 0 0 6"/><path d="M12.5 5.5a2 2 0 1 0 0-4a2 2 0 0 0 0 4"/></g>`),
+			Text(`<g fill="none"><g fill="currentColor" fill-rule="evenodd" clip-path="url(#gravityUiGearDot0)" clip-rule="evenodd"><path d="M7.199 2A.199.199 0 0 0 7 2.199c0 1.808-1.958 2.939-3.524 2.034a.199.199 0 0 0-.272.073l-.8 1.388a.199.199 0 0 0 .072.271c1.566.905 1.566 3.165 0 4.07a.199.199 0 0 0-.073.271l.801 1.388a.199.199 0 0 0 .272.073C5.042 10.862 7 11.993 7 13.8c0 .11.089.199.199.199H8.8c.11 0 .199-.089.199-.199c0-1.808 1.958-2.939 3.524-2.034a.199.199 0 0 0 .271-.073l.802-1.388a.199.199 0 0 0-.073-.271c-1.303-.753-1.516-2.434-.665-3.5a.75.75 0 0 1 1.172.936a.852.852 0 0 0 .243 1.265a1.7 1.7 0 0 1 .622 2.32l-.802 1.388a1.699 1.699 0 0 1-2.32.622a.85.85 0 0 0-1.274.735c0 .938-.76 1.699-1.699 1.699H7.2c-.938 0-1.699-.76-1.699-1.699a.85.85 0 0 0-1.274-.735a1.698 1.698 0 0 1-2.32-.622l-.802-1.388a1.699 1.699 0 0 1 .622-2.32a.85.85 0 0 0 0-1.472a1.699 1.699 0 0 1-.622-2.32l.801-1.388a1.699 1.699 0 0 1 2.32-.622A.85.85 0 0 0 5.5 2.2c0-.94.76-1.7 1.699-1.7H9.3a.75.75 0 1 1 0 1.5H7.2Zm.8 7.5a1.5 1.5 0 1 0 0-3a1.5 1.5 0 0 0 0 3M8 11a3 3 0 1 0 0-6a3 3 0 0 0 0 6"/><path d="M12.5 5.5a2 2 0 1 0 0-4a2 2 0 0 0 0 4"/></g><defs><clipPath id="gravityUiGearDot0"><path fill="currentColor" d="M0 0h16v16H0z"/></clipPath></defs></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -3455,7 +3566,7 @@ func GeoPolygons(children ...ElementRenderer) *GravityUiIcon {
 func Ghost(children ...ElementRenderer) *GravityUiIcon {
 	return &GravityUiIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<path fill="currentColor" fill-rule="evenodd" d="M13.277 11.702L13.5 12V8a5.5 5.5 0 1 0-11 0v4.547l1.956-1.63a1.801 1.801 0 0 1 2.537.231l1.935 2.323a.08.08 0 0 0 .125-.001l1.45-1.811a1.755 1.755 0 0 1 2.774.043m-3.052 2.705l.686-.859h.001l.144-.18l.618-.772a.255.255 0 0 1 .402.006l.593.79l.139.185v.001l.392.522a1 1 0 0 0 1.8-.6V8A7 7 0 1 0 1 8v5.399a1.101 1.101 0 0 0 1.806.846l2.61-2.175a.301.301 0 0 1 .424.038l1.936 2.323a1.58 1.58 0 0 0 2.449-.024M7 8a.75.75 0 0 0 .75-.75v-1a.75.75 0 0 0-1.5 0v1c0 .414.336.75.75.75m4 0a.75.75 0 0 0 .75-.75v-1a.75.75 0 0 0-1.5 0v1c0 .414.336.75.75.75" clip-rule="evenodd"/>`),
+			Text(`<path fill="currentColor" fill-rule="evenodd" d="M13.277 11.702L13.5 12V8a5.5 5.5 0 1 0-11 0v4.547l1.956-1.63a1.801 1.801 0 0 1 2.537.231l1.935 2.323a.08.08 0 0 0 .125-.001l1.45-1.811a1.755 1.755 0 0 1 2.774.043m-3.052 2.705l.686-.859h.001l.144-.18l.618-.772a.255.255 0 0 1 .402.006l.593.79l.139.185v.001l.392.522a1 1 0 0 0 1.8-.6V8A7 7 0 1 0 1 8v5.399a1.101 1.101 0 0 0 1.806.846l2.61-2.175a.301.301 0 0 1 .424.038l1.936 2.323a1.58 1.58 0 0 0 2.449-.024M7 8a.75.75 0 0 0 .75-.75v-1a.75.75 0 1 0-1.5 0v1c0 .414.336.75.75.75m4 0a.75.75 0 0 0 .75-.75v-1a.75.75 0 0 0-1.5 0v1c0 .414.336.75.75.75" clip-rule="evenodd"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -3472,6 +3583,14 @@ func Globe(children ...ElementRenderer) *GravityUiIcon {
 	return &GravityUiIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="currentColor" fill-rule="evenodd" d="M9.208 12.346c-.485 1-.953 1.154-1.208 1.154s-.723-.154-1.208-1.154c-.372-.768-.647-1.858-.749-3.187a20.77 20.77 0 0 0 3.914 0c-.102 1.329-.377 2.419-.75 3.187Zm.788-4.699C9.358 7.714 8.69 7.75 8 7.75s-1.358-.036-1.996-.103c.037-1.696.343-3.075.788-3.993C7.277 2.654 7.745 2.5 8 2.5s.723.154 1.208 1.154c.445.918.75 2.297.788 3.993m1.478 1.306c-.085 1.516-.375 2.848-.836 3.874a5.501 5.501 0 0 0 2.843-4.364c-.621.199-1.295.364-2.007.49m1.918-2.043c-.572.204-1.21.379-1.901.514c-.056-1.671-.354-3.14-.853-4.251a5.508 5.508 0 0 1 2.754 3.737m-8.883.514c.056-1.671.354-3.14.853-4.251A5.508 5.508 0 0 0 2.608 6.91c.572.204 1.21.379 1.901.514M2.52 8.463a5.501 5.501 0 0 0 2.843 4.364c-.46-1.026-.75-2.358-.836-3.874a15.535 15.535 0 0 1-2.007-.49M15 8A7 7 0 1 0 1 8a7 7 0 0 0 14 0" clip-rule="evenodd"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func Gpu(children ...ElementRenderer) *GravityUiIcon {
+	return &GravityUiIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="none"><g clip-path="url(#gravityUiGpu0)"><path fill="currentColor" fill-rule="evenodd" d="M0 1.25A.75.75 0 0 1 .75.5h.5A2.25 2.25 0 0 1 3.5 2.75V3H13a3 3 0 0 1 3 3v4a3 3 0 0 1-3 3H3.5v1.25a.75.75 0 0 1-1.5 0V2.75A.75.75 0 0 0 1.25 2h-.5A.75.75 0 0 1 0 1.25M13 4.5H3.5v7H13a1.5 1.5 0 0 0 1.5-1.5V6A1.5 1.5 0 0 0 13 4.5M8.5 8a1 1 0 1 1-2 0a1 1 0 0 1 2 0M10 8a2.5 2.5 0 1 1-5 0a2.5 2.5 0 0 1 5 0" clip-rule="evenodd"/></g><defs><clipPath id="gravityUiGpu0"><path fill="currentColor" d="M0 0h16v16H0z"/></clipPath></defs></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -3535,7 +3654,7 @@ func HandPointDown(children ...ElementRenderer) *GravityUiIcon {
 func HandPointLeft(children ...ElementRenderer) *GravityUiIcon {
 	return &GravityUiIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none"><g clip-path="url(#gravityUiHandPointLeft0)"><path fill="currentColor" fill-rule="evenodd" d="m13.5 6l-2.906-3.737a1.978 1.978 0 0 0-3.48 1.694L7.375 5H1.942a1.942 1.942 0 0 0-.421 3.838L4.5 9.5l.457 2.744a3 3 0 0 0 3.732 2.405L13 13.5zm-5.197 7.2l3.272-.872l.39-5.858L9.41 3.184a.478.478 0 0 0-.84.41l.26 1.042l.466 1.864H1.942a.442.442 0 0 0-.096.874l2.98.662l.987.22l.167.997l.457 2.744A1.5 1.5 0 0 0 8.303 13.2m7.195.103a.75.75 0 0 1-1.496-.106l.5-7a.75.75 0 0 1 1.496.106z" clip-rule="evenodd"/></g><defs><clipPath id="gravityUiHandPointLeft0"><path fill="currentColor" d="M0 0h16v16H0z"/></clipPath></defs></g>`),
+			Text(`<g fill="none"><g clip-path="url(#gravityUiHandPointLeft0)"><path fill="currentColor" fill-rule="evenodd" d="m13.5 6l-2.906-3.737a1.978 1.978 0 0 0-3.48 1.694L7.375 5H1.942a1.942 1.942 0 0 0-.421 3.838L4.5 9.5l.457 2.744a3 3 0 0 0 3.733 2.405L13 13.5zm-5.197 7.2l3.272-.872l.39-5.858L9.41 3.184a.478.478 0 0 0-.84.41l.26 1.042l.466 1.864H1.942a.442.442 0 0 0-.096.874l2.98.662l.987.22l.167.997l.457 2.744A1.5 1.5 0 0 0 8.303 13.2m7.195.103a.75.75 0 0 1-1.496-.106l.5-7a.75.75 0 1 1 1.496.106z" clip-rule="evenodd"/></g><defs><clipPath id="gravityUiHandPointLeft0"><path fill="currentColor" d="M0 0h16v16H0z"/></clipPath></defs></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -3551,7 +3670,7 @@ func HandPointRight(children ...ElementRenderer) *GravityUiIcon {
 func HandPointUp(children ...ElementRenderer) *GravityUiIcon {
 	return &GravityUiIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none"><g clip-path="url(#gravityUiHandPointUp0)"><path fill="currentColor" fill-rule="evenodd" d="m6 13.5l-3.737-2.906a1.978 1.978 0 0 1 1.694-3.48L5 7.375V1.942a1.942 1.942 0 0 1 3.838-.421L9.5 4.5l2.744.457a3 3 0 0 1 2.405 3.732L13.5 13zm7.2-5.197l-.872 3.272l-5.858.39L3.184 9.41a.478.478 0 0 1 .41-.84l1.042.26l1.864.466V1.942a.442.442 0 0 1 .874-.096l.662 2.98l.22.987l.997.167l2.744.457A1.5 1.5 0 0 1 13.2 8.303m.103 7.195a.75.75 0 0 0-.106-1.496l-7 .5a.75.75 0 0 0 .106 1.496z" clip-rule="evenodd"/></g><defs><clipPath id="gravityUiHandPointUp0"><path fill="currentColor" d="M0 0h16v16H0z"/></clipPath></defs></g>`),
+			Text(`<g fill="none"><g clip-path="url(#gravityUiHandPointUp0)"><path fill="currentColor" fill-rule="evenodd" d="m6 13.5l-3.737-2.906a1.978 1.978 0 0 1 1.694-3.48L5 7.375V1.942a1.942 1.942 0 0 1 3.838-.421L9.5 4.5l2.744.457a3 3 0 0 1 2.405 3.733L13.5 13zm7.2-5.197l-.872 3.272l-5.858.39L3.184 9.41a.478.478 0 0 1 .41-.84l1.042.26l1.864.466V1.942a.442.442 0 0 1 .874-.096l.662 2.98l.22.987l.997.167l2.744.457A1.5 1.5 0 0 1 13.2 8.303m.103 7.195a.75.75 0 0 0-.106-1.496l-7 .5a.75.75 0 1 0 .106 1.496z" clip-rule="evenodd"/></g><defs><clipPath id="gravityUiHandPointUp0"><path fill="currentColor" d="M0 0h16v16H0z"/></clipPath></defs></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -3703,7 +3822,7 @@ func House(children ...ElementRenderer) *GravityUiIcon {
 func Italic(children ...ElementRenderer) *GravityUiIcon {
 	return &GravityUiIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<path fill="currentColor" fill-rule="evenodd" d="M7.25 2a.75.75 0 0 0 0 1.5h1.317l-2.7 9H4.25a.75.75 0 1 0 0 1.5h4.5a.75.75 0 0 0 0-1.5H7.433l2.7-9h1.617a.75.75 0 0 0 0-1.5z" clip-rule="evenodd"/>`),
+			Text(`<path fill="currentColor" fill-rule="evenodd" d="M7.25 2a.75.75 0 0 0 0 1.5h1.317l-2.7 9H4.25a.75.75 0 0 0 0 1.5h4.5a.75.75 0 0 0 0-1.5H7.433l2.7-9h1.617a.75.75 0 0 0 0-1.5z" clip-rule="evenodd"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -3812,6 +3931,14 @@ func LayoutHeaderCellsLarge(children ...ElementRenderer) *GravityUiIcon {
 	}
 }
 
+func LayoutHeaderCellsLargeFill(children ...ElementRenderer) *GravityUiIcon {
+	return &GravityUiIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" fill-rule="evenodd" d="M13.5 6H8.75v2.5h4.75zM7.25 6H2.5v2.5h4.75zM1 6V5a3 3 0 0 1 3-3h8a3 3 0 0 1 3 3v6a3 3 0 0 1-3 3H4a3 3 0 0 1-3-3zm7.75 4h4.75v1a1.5 1.5 0 0 1-1.5 1.5H8.75zM2.5 10h4.75v2.5H4A1.5 1.5 0 0 1 2.5 11z" clip-rule="evenodd"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func LayoutHeaderCellsLargeLetterD(children ...ElementRenderer) *GravityUiIcon {
 	return &GravityUiIcon{
 		SVGSVGElement: SVG_SVG(
@@ -3903,7 +4030,7 @@ func LayoutSideContentRight(children ...ElementRenderer) *GravityUiIcon {
 func LayoutSplitColumns(children ...ElementRenderer) *GravityUiIcon {
 	return &GravityUiIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<path fill="currentColor" fill-rule="evenodd" d="M5 12.5H3a1 1 0 0 1-1-1v-7a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1M3 14h2a2.5 2.5 0 0 0 2.5-2.5v-7A2.5 2.5 0 0 0 5 2H3A2.5 2.5 0 0 0 .5 4.5v7A2.5 2.5 0 0 0 3 14m10-1.5h-2a1 1 0 0 1-1-1v-7a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1M11 14h2a2.5 2.5 0 0 0 2.5-2.5v-7A2.5 2.5 0 0 0 13 2h-2a2.5 2.5 0 0 0-2.5 2.5v7A2.5 2.5 0 0 0 11 14" clip-rule="evenodd"/>`),
+			Text(`<g fill="none"><g clip-path="url(#gravityUiLayoutSplitColumns0)"><path fill="currentColor" fill-rule="evenodd" d="M5 12.5H3a1 1 0 0 1-1-1v-7a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1M3 14h2a2.5 2.5 0 0 0 2.5-2.5v-7A2.5 2.5 0 0 0 5 2H3A2.5 2.5 0 0 0 .5 4.5v7A2.5 2.5 0 0 0 3 14m10-1.5h-2a1 1 0 0 1-1-1v-7a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1M11 14h2a2.5 2.5 0 0 0 2.5-2.5v-7A2.5 2.5 0 0 0 13 2h-2a2.5 2.5 0 0 0-2.5 2.5v7A2.5 2.5 0 0 0 11 14" clip-rule="evenodd"/></g><defs><clipPath id="gravityUiLayoutSplitColumns0"><path fill="currentColor" d="M0 0h16v16H0z"/></clipPath></defs></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -3911,7 +4038,7 @@ func LayoutSplitColumns(children ...ElementRenderer) *GravityUiIcon {
 func LayoutSplitColumnsThree(children ...ElementRenderer) *GravityUiIcon {
 	return &GravityUiIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<path fill="currentColor" fill-rule="evenodd" d="M2.5 12.5H3a.5.5 0 0 0 .5-.5V4a.5.5 0 0 0-.5-.5h-.5A.5.5 0 0 0 2 4v8a.5.5 0 0 0 .5.5M3 14h-.5a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2H3a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2m4.75-1.5h.5a.5.5 0 0 0 .5-.5V4a.5.5 0 0 0-.5-.5h-.5a.5.5 0 0 0-.5.5v8a.5.5 0 0 0 .5.5m.5 1.5h-.5a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h.5a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2m5.25-1.5H13a.5.5 0 0 1-.5-.5V4a.5.5 0 0 1 .5-.5h.5a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-.5.5M13 14h.5a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H13a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2" clip-rule="evenodd"/>`),
+			Text(`<g fill="none"><g clip-path="url(#gravityUiLayoutSplitColumns30)"><path fill="currentColor" fill-rule="evenodd" d="M2.5 12.5H3a.5.5 0 0 0 .5-.5V4a.5.5 0 0 0-.5-.5h-.5A.5.5 0 0 0 2 4v8a.5.5 0 0 0 .5.5M3 14h-.5a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2H3a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2m4.75-1.5h.5a.5.5 0 0 0 .5-.5V4a.5.5 0 0 0-.5-.5h-.5a.5.5 0 0 0-.5.5v8a.5.5 0 0 0 .5.5m.5 1.5h-.5a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h.5a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2m5.25-1.5H13a.5.5 0 0 1-.5-.5V4a.5.5 0 0 1 .5-.5h.5a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-.5.5M13 14h.5a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H13a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2" clip-rule="evenodd"/></g><defs><clipPath id="gravityUiLayoutSplitColumns30"><path fill="currentColor" d="M0 0h16v16H0z"/></clipPath></defs></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -3927,7 +4054,7 @@ func LayoutSplitRows(children ...ElementRenderer) *GravityUiIcon {
 func LayoutSplitSideContentLeft(children ...ElementRenderer) *GravityUiIcon {
 	return &GravityUiIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<path fill="currentColor" fill-rule="evenodd" d="M3 12.5h-.5A.5.5 0 0 1 2 12V4a.5.5 0 0 1 .5-.5H3a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-.5.5M2.5 14H3a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2h-.5a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2M13 12.5H8.5a1 1 0 0 1-1-1v-7a1 1 0 0 1 1-1H13a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1M8.5 14H13a2.5 2.5 0 0 0 2.5-2.5v-7A2.5 2.5 0 0 0 13 2H8.5A2.5 2.5 0 0 0 6 4.5v7A2.5 2.5 0 0 0 8.5 14" clip-rule="evenodd"/>`),
+			Text(`<g fill="none"><g clip-path="url(#gravityUiLayoutSplitSideContentLeft0)"><path fill="currentColor" fill-rule="evenodd" d="M3 12.5h-.5A.5.5 0 0 1 2 12V4a.5.5 0 0 1 .5-.5H3a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-.5.5M2.5 14H3a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2h-.5a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2M13 12.5H8.5a1 1 0 0 1-1-1v-7a1 1 0 0 1 1-1H13a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1M8.5 14H13a2.5 2.5 0 0 0 2.5-2.5v-7A2.5 2.5 0 0 0 13 2H8.5A2.5 2.5 0 0 0 6 4.5v7A2.5 2.5 0 0 0 8.5 14" clip-rule="evenodd"/></g><defs><clipPath id="gravityUiLayoutSplitSideContentLeft0"><path fill="currentColor" d="M0 0h16v16H0z"/></clipPath></defs></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -3935,7 +4062,7 @@ func LayoutSplitSideContentLeft(children ...ElementRenderer) *GravityUiIcon {
 func LayoutSplitSideContentRight(children ...ElementRenderer) *GravityUiIcon {
 	return &GravityUiIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<path fill="currentColor" fill-rule="evenodd" d="M3 12.5h4.5a1 1 0 0 0 1-1v-7a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1M7.5 14H3a2.5 2.5 0 0 1-2.5-2.5v-7A2.5 2.5 0 0 1 3 2h4.5A2.5 2.5 0 0 1 10 4.5v7A2.5 2.5 0 0 1 7.5 14m5.5-1.5h.5a.5.5 0 0 0 .5-.5V4a.5.5 0 0 0-.5-.5H13a.5.5 0 0 0-.5.5v8a.5.5 0 0 0 .5.5m.5 1.5H13a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h.5a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2" clip-rule="evenodd"/>`),
+			Text(`<g fill="none"><g clip-path="url(#gravityUiLayoutSplitSideContentRight0)"><path fill="currentColor" fill-rule="evenodd" d="M3 12.5h4.5a1 1 0 0 0 1-1v-7a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1M7.5 14H3a2.5 2.5 0 0 1-2.5-2.5v-7A2.5 2.5 0 0 1 3 2h4.5A2.5 2.5 0 0 1 10 4.5v7A2.5 2.5 0 0 1 7.5 14m5.5-1.5h.5a.5.5 0 0 0 .5-.5V4a.5.5 0 0 0-.5-.5H13a.5.5 0 0 0-.5.5v8a.5.5 0 0 0 .5.5m.5 1.5H13a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h.5a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2" clip-rule="evenodd"/></g><defs><clipPath id="gravityUiLayoutSplitSideContentRight0"><path fill="currentColor" d="M0 0h16v16H0z"/></clipPath></defs></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -4060,6 +4187,14 @@ func LogoDocker(children ...ElementRenderer) *GravityUiIcon {
 	}
 }
 
+func LogoDrawIo(children ...ElementRenderer) *GravityUiIcon {
+	return &GravityUiIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" fill-rule="evenodd" d="M11 12.5h2a.5.5 0 0 0 .5-.5v-2a.5.5 0 0 0-.5-.5h-2a.5.5 0 0 0-.5.5v2a.5.5 0 0 0 .5.5m2 1.5a2 2 0 0 0 2-2v-2a2 2 0 0 0-2-2h-1.85l-.847-1.482A2 2 0 0 0 11 5V3a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v2c0 .607.27 1.151.697 1.518L4.85 8H3a2 2 0 0 0-2 2v2a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2v-2c0-.607-.27-1.151-.697-1.518L7.15 7h1.7l.848 1.482C9.27 8.85 9 9.392 9 10v2a2 2 0 0 0 2 2zM3 12.5h2a.5.5 0 0 0 .5-.5v-2a.5.5 0 0 0-.5-.5H3a.5.5 0 0 0-.5.5v2a.5.5 0 0 0 .5.5m6-7H7a.5.5 0 0 1-.5-.5V3a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5" clip-rule="evenodd"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func LogoFacebook(children ...ElementRenderer) *GravityUiIcon {
 	return &GravityUiIcon{
 		SVGSVGElement: SVG_SVG(
@@ -4096,6 +4231,14 @@ func LogoMarkdown(children ...ElementRenderer) *GravityUiIcon {
 	return &GravityUiIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="currentColor" fill-rule="evenodd" d="M3.443 4.699A1.294 1.294 0 0 0 1 5.294v5.956a.75.75 0 0 0 1.5 0V6.139l1.834 3.54a.75.75 0 0 0 1.332 0L7.5 6.138v5.111a.75.75 0 0 0 1.5 0V5.294A1.294 1.294 0 0 0 6.557 4.7L5 7.703L3.443 4.7Zm9.807.051a.75.75 0 0 0-1.5 0v4.69l-.47-.47a.75.75 0 1 0-1.06 1.06l1.75 1.75a.75.75 0 0 0 1.06 0l1.75-1.75a.75.75 0 1 0-1.06-1.06l-.47.47z" clip-rule="evenodd"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func LogoMermaid(children ...ElementRenderer) *GravityUiIcon {
+	return &GravityUiIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" fill-rule="evenodd" d="M11.5 12.5A1.5 1.5 0 0 1 10 14H6a1.5 1.5 0 0 1-1.5-1.5v-.823a3.114 3.114 0 0 0-1.35-2.566A6.114 6.114 0 0 1 .5 4.073V3A1.5 1.5 0 0 1 2 1.5h.666A6.425 6.425 0 0 1 8 4.343A6.425 6.425 0 0 1 13.334 1.5H14A1.5 1.5 0 0 1 15.5 3v1.073a6.114 6.114 0 0 1-2.65 5.038a3.114 3.114 0 0 0-1.35 2.566zm-8-9.43a4.924 4.924 0 0 1 3.738 3.025c.275.688 1.249.688 1.524 0A4.924 4.924 0 0 1 13.334 3H14v1.073a4.614 4.614 0 0 1-2 3.802c-1.252.86-2 2.283-2 3.802v.823H6v-.823c0-1.52-.748-2.941-2-3.802a4.614 4.614 0 0 1-2-3.802V3h.666c.283 0 .562.024.834.07" clip-rule="evenodd"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -4168,6 +4311,14 @@ func LogoYandexCloud(children ...ElementRenderer) *GravityUiIcon {
 	return &GravityUiIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="currentColor" fill-rule="evenodd" d="M2.5 8a5.5 5.5 0 0 1 5.492-5.5c1.318.032 1.88.796 2.02 1.48c.027.137.02.389-.027.713a7.242 7.242 0 0 1-.042.26l-1.759.308h-.001c-.838.144-1.537.432-2.068.933c-.535.504-.829 1.155-.98 1.887l-.444 2.146a.734.734 0 0 0-.009.043l-.02.098c-.034.168-.091.444-.132.725c-.047.325-.09.763-.025 1.154A5.489 5.489 0 0 1 2.5 8m5.501 7a7 7 0 0 0 .002-14h-.006a7 7 0 0 0 .001 14zm.007-1.5c-1.318-.032-1.88-.796-2.02-1.48c-.027-.137-.02-.389.027-.713a7.25 7.25 0 0 1 .042-.26l1.759-.308h.001c.838-.144 1.537-.432 2.068-.933c.535-.504.829-1.155.98-1.887l.444-2.146a.857.857 0 0 0 .009-.043c.005-.026.011-.059.02-.097c.034-.17.092-.446.132-.726c.047-.325.09-.763.024-1.154A5.5 5.5 0 0 1 8.008 13.5M9.62 6.532l-1.18.207h-.002c-.652.112-1.044.31-1.295.547c-.247.233-.43.57-.539 1.098L6.38 9.468l1.18-.207h.002c.652-.112 1.044-.31 1.295-.547c.247-.233.43-.57.539-1.098z" clip-rule="evenodd"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func LogoYandexMessenger(children ...ElementRenderer) *GravityUiIcon {
+	return &GravityUiIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" fill-rule="evenodd" d="m3.585 11.965l-.716.148a1.863 1.863 0 0 1-1.792-3.036L2 8l-.923-1.077A1.863 1.863 0 0 1 2.87 3.887l.716.148l-.07-.303a1.822 1.822 0 0 1 2.64-2.014l8.293 4.466a2 2 0 0 1 1.052 1.76v.111a2 2 0 0 1-1.052 1.761l-8.293 4.466a1.822 1.822 0 0 1-2.64-2.014l.07-.303Zm1.617-.334l-.225.974a.322.322 0 0 0 .466.356l1.625-.875l3.895-1.647zm5.761-6.07L7.068 3.914l-1.625-.875a.322.322 0 0 0-.466.356l.225.974zM3.14 8.976L3.976 8l-.837-.976l-.923-1.077a.363.363 0 0 1 .349-.591l11.162 2.309a.342.342 0 0 1 0 .67l-11.162 2.31a.363.363 0 0 1-.349-.592l.923-1.077Z" clip-rule="evenodd"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -4324,6 +4475,14 @@ func Moon(children ...ElementRenderer) *GravityUiIcon {
 	}
 }
 
+func Mug(children ...ElementRenderer) *GravityUiIcon {
+	return &GravityUiIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" fill-rule="evenodd" d="M10.123 5.357c.712-.37.877-.75.877-1.107s-.165-.736-.877-1.107C9.373 2.752 8.2 2.5 6.75 2.5c-1.45 0-2.622.252-3.373.643c-.712.37-.877.75-.877 1.107s.165.736.877 1.107C4.127 5.748 5.3 6 6.75 6c1.45 0 2.622-.252 3.373-.643M6.75 7.5c1.684 0 3.198-.305 4.25-.914v5.164c0 .357-.165.736-.877 1.107c-.75.391-1.924.643-3.373.643c-1.45 0-2.622-.252-3.373-.643c-.712-.37-.877-.75-.877-1.107V6.586c1.052.61 2.566.914 4.25.914m5.75-3.25C12.5 2.083 9.926 1 6.75 1S1 2.083 1 4.25v7.5C1 13.917 3.574 15 6.75 15s5.75-1.083 5.75-3.25v-1.182c.068-.026.134-.053.2-.08c.616-.256 1.27-.613 1.791-1.112c.534-.512 1.01-1.256 1.01-2.218c0-.437-.097-.89-.345-1.304a2.38 2.38 0 0 0-.956-.89c-.562-.292-1.185-.358-1.7-.352zm0 1.862v2.82c.86-.425 1.501-1.016 1.501-1.774c0-.806-.652-1.058-1.501-1.046" clip-rule="evenodd"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func MusicNote(children ...ElementRenderer) *GravityUiIcon {
 	return &GravityUiIcon{
 		SVGSVGElement: SVG_SVG(
@@ -4399,7 +4558,7 @@ func ObjectAlignCenterVertical(children ...ElementRenderer) *GravityUiIcon {
 func ObjectAlignJustifyHorizontal(children ...ElementRenderer) *GravityUiIcon {
 	return &GravityUiIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<path fill="currentColor" fill-rule="evenodd" d="M14.25 15a.75.75 0 0 1-.75-.75V1.75a.75.75 0 0 1 1.5 0v12.5a.75.75 0 0 1-.75.75M11 9V7a1 1 0 0 0-1-1H6a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1m1.5-2A2.5 2.5 0 0 0 10 4.5H6A2.5 2.5 0 0 0 3.5 7v2A2.5 2.5 0 0 0 6 11.5h4A2.5 2.5 0 0 0 12.5 9zM1 14.25a.75.75 0 0 0 1.5 0V1.75a.75.75 0 0 0-1.5 0z" clip-rule="evenodd"/>`),
+			Text(`<path fill="currentColor" fill-rule="evenodd" d="M14.25 15a.75.75 0 0 1-.75-.75V1.75a.75.75 0 1 1 1.5 0v12.5a.75.75 0 0 1-.75.75M11 9V7a1 1 0 0 0-1-1H6a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1m1.5-2A2.5 2.5 0 0 0 10 4.5H6A2.5 2.5 0 0 0 3.5 7v2A2.5 2.5 0 0 0 6 11.5h4A2.5 2.5 0 0 0 12.5 9zM1 14.25a.75.75 0 0 0 1.5 0V1.75a.75.75 0 1 0-1.5 0z" clip-rule="evenodd"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -4636,6 +4795,14 @@ func PersonPencil(children ...ElementRenderer) *GravityUiIcon {
 	}
 }
 
+func PersonPlanetEarth(children ...ElementRenderer) *GravityUiIcon {
+	return &GravityUiIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" fill-rule="evenodd" d="M7 6.5a2 2 0 1 0 0-4a2 2 0 0 0 0 4M7 8a3.5 3.5 0 1 0 0-7a3.5 3.5 0 0 0 0 7m3.229 3.909l-.702-.28a2.5 2.5 0 0 1 3.339-1.975c-.121.185-.303.33-.523.403l-.035.012a.951.951 0 0 0 0 1.805l.46.154a.66.66 0 0 1 .383.331a.66.66 0 0 0 .957.254l.365-.242a2.5 2.5 0 0 1-2.4 2.128a.768.768 0 0 0 .041-.247v-.08a.686.686 0 0 0-.685-.686a.686.686 0 0 1-.686-.686v-.132a.818.818 0 0 0-.514-.76ZM12 16a4 4 0 1 0 0-8a4 4 0 0 0 0 8M6.25 8.525c.414-.028.75.31.75.725c0 .414-.336.747-.75.78c-1.369.107-2.567.5-3.43 1.011c-1.1.65-1.32 1.255-1.32 1.459a1 1 0 0 0 1 1h3.75a.75.75 0 0 1 0 1.5H2.5A2.5 2.5 0 0 1 0 12.5c0-1.868 2.75-3.737 6.25-3.975" clip-rule="evenodd"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func PersonPlus(children ...ElementRenderer) *GravityUiIcon {
 	return &GravityUiIcon{
 		SVGSVGElement: SVG_SVG(
@@ -4671,7 +4838,7 @@ func PersonXmark(children ...ElementRenderer) *GravityUiIcon {
 func Persons(children ...ElementRenderer) *GravityUiIcon {
 	return &GravityUiIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none"><g clip-path="url(#gravityUiPersons0)"><path fill="currentColor" fill-rule="evenodd" d="M5.5 6a1.5 1.5 0 1 0 0-3a1.5 1.5 0 0 0 0 3m0 1.5a3 3 0 1 0 0-6a3 3 0 0 0 0 6m-3.029 2.886c-.777.54-.971 1.063-.971 1.306c0 .446.362.808.808.808h6.384a.808.808 0 0 0 .808-.808c0-.244-.194-.767-.971-1.306C7.792 9.875 6.719 9.5 5.5 9.5c-1.218 0-2.292.375-3.029.886M0 11.692C0 9.846 2.475 8 5.5 8c1.18 0 2.278.281 3.177.734A5.671 5.671 0 0 1 11.5 8c2.475 0 4.5 1.538 4.5 3.077A1.923 1.923 0 0 1 14.077 13h-3.483c-.416.604-1.113 1-1.902 1H2.308A2.308 2.308 0 0 1 0 11.692m10.991-.192h3.086c.234 0 .423-.19.423-.423c0-.103-.096-.472-.688-.89c-.554-.393-1.375-.687-2.312-.687c-.517 0-.999.09-1.42.236c.526.534.854 1.146.911 1.764M12.5 5a1 1 0 1 1-2 0a1 1 0 0 1 2 0M14 5a2.5 2.5 0 1 1-5 0a2.5 2.5 0 0 1 5 0" clip-rule="evenodd"/></g><defs><clipPath id="gravityUiPersons0"><path fill="currentColor" d="M0 0h16v16H0z"/></clipPath></defs></g>`),
+			Text(`<path fill="currentColor" fill-rule="evenodd" d="M5.5 6a1.5 1.5 0 1 0 0-3a1.5 1.5 0 0 0 0 3m0 1.5a3 3 0 1 0 0-6a3 3 0 0 0 0 6m-3.029 2.886c-.777.54-.971 1.063-.971 1.306c0 .446.362.808.808.808h6.384a.808.808 0 0 0 .808-.808c0-.244-.194-.767-.971-1.306C7.792 9.875 6.719 9.5 5.5 9.5c-1.218 0-2.292.375-3.029.886M0 11.692C0 9.846 2.475 8 5.5 8c1.18 0 2.278.281 3.177.734A5.671 5.671 0 0 1 11.5 8c2.475 0 4.5 1.538 4.5 3.077A1.923 1.923 0 0 1 14.077 13h-3.483c-.416.604-1.113 1-1.902 1H2.308A2.308 2.308 0 0 1 0 11.692m10.991-.192h3.086c.234 0 .423-.19.423-.423c0-.103-.096-.472-.688-.89c-.554-.393-1.375-.687-2.312-.687c-.517 0-.999.09-1.42.236c.526.534.854 1.146.911 1.764M12.5 5a1 1 0 1 1-2 0a1 1 0 0 1 2 0M14 5a2.5 2.5 0 1 1-5 0a2.5 2.5 0 0 1 5 0" clip-rule="evenodd"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -4732,6 +4899,22 @@ func PinSlashFill(children ...ElementRenderer) *GravityUiIcon {
 	}
 }
 
+func Pipeline(children ...ElementRenderer) *GravityUiIcon {
+	return &GravityUiIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" fill-rule="evenodd" d="M0 1.75A.75.75 0 0 1 .75 1h6a.75.75 0 0 1 0 1.5H6.5v2.25a.5.5 0 0 0 .5.5h2.25A5.75 5.75 0 0 1 15 11v2.5h.25a.75.75 0 0 1 0 1.5h-6a.75.75 0 0 1 0-1.5h.25v-2.25a.5.5 0 0 0-.5-.5H6.75A5.75 5.75 0 0 1 1 5V2.5H.75A.75.75 0 0 1 0 1.75M11 13.5h2.5V11a4.25 4.25 0 0 0-4.25-4.25h-.5v2.5H9a2 2 0 0 1 2 2zm-8.5-11H5v2.25a2 2 0 0 0 2 2h.25v2.5h-.5A4.25 4.25 0 0 1 2.5 5z" clip-rule="evenodd"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func PlanetEarth(children ...ElementRenderer) *GravityUiIcon {
+	return &GravityUiIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" fill-rule="evenodd" d="M8 13.5c1.63 0 3.094-.709 4.101-1.835A2.501 2.501 0 0 1 10.25 9.25V9a.75.75 0 0 0-.75-.75a2.25 2.25 0 0 1 0-4.5a.75.75 0 0 0 .75-.75v-.02a5.502 5.502 0 0 0-7.471 3.287A2.25 2.25 0 0 1 4.75 8.5c0 .414.336.75.75.75a2.25 2.25 0 0 1 1.265 4.11c.397.092.81.14 1.235.14m-3.491-1.25H5.5a.75.75 0 0 0 0-1.5A2.25 2.25 0 0 1 3.25 8.5a.75.75 0 0 0-.744-.75a5.489 5.489 0 0 0 2.003 4.5m8.241-2h.27A5.48 5.48 0 0 0 13.5 8c0-1.665-.74-3.158-1.91-4.166A2.25 2.25 0 0 1 9.5 5.25a.75.75 0 0 0 0 1.5A2.25 2.25 0 0 1 11.75 9v.25a1 1 0 0 0 1 1M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14" clip-rule="evenodd"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func Play(children ...ElementRenderer) *GravityUiIcon {
 	return &GravityUiIcon{
 		SVGSVGElement: SVG_SVG(
@@ -4751,7 +4934,7 @@ func PlayFill(children ...ElementRenderer) *GravityUiIcon {
 func PlugConnection(children ...ElementRenderer) *GravityUiIcon {
 	return &GravityUiIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none"><g clip-path="url(#gravityUiPlugConnection0)"><path fill="currentColor" fill-rule="evenodd" d="M15.53 1.53A.75.75 0 0 0 14.47.47l-1.29 1.29a4.243 4.243 0 0 0-5.423.483l-.58.58a.958.958 0 0 0 0 1.354l4.646 4.646a.958.958 0 0 0 1.354 0l.58-.58a4.243 4.243 0 0 0 .484-5.423zm-8.5 4.94a.75.75 0 0 1 0 1.06L5.78 8.78l1.44 1.44l1.25-1.25a.75.75 0 0 1 1.06 1.06l-1.25 1.25l.543.543a.958.958 0 0 1 0 1.354l-.58.58a4.243 4.243 0 0 1-5.423.484l-1.29 1.29A.75.75 0 0 1 .47 14.47l1.29-1.29a4.243 4.243 0 0 1 .483-5.423l.58-.58a.958.958 0 0 1 1.354 0l.543.543l1.25-1.25a.75.75 0 0 1 1.06 0M3.5 8.62l-.197.197a2.743 2.743 0 0 0 3.879 3.879l.197-.197L3.5 8.621Zm9.197-1.439l-.197.197L8.621 3.5l.197-.197a2.743 2.743 0 0 1 3.879 3.879Z" clip-rule="evenodd"/></g><defs><clipPath id="gravityUiPlugConnection0"><path fill="currentColor" d="M0 0h16v16H0z"/></clipPath></defs></g>`),
+			Text(`<path fill="currentColor" fill-rule="evenodd" d="M15.53 1.53A.75.75 0 0 0 14.47.47l-1.29 1.29a4.243 4.243 0 0 0-5.423.483l-.58.58a.958.958 0 0 0 0 1.354l4.646 4.646a.958.958 0 0 0 1.354 0l.58-.58a4.243 4.243 0 0 0 .484-5.423zm-8.5 4.94a.75.75 0 0 1 0 1.06L5.78 8.78l1.44 1.44l1.25-1.25a.75.75 0 0 1 1.06 1.06l-1.25 1.25l.543.543a.958.958 0 0 1 0 1.354l-.58.58a4.243 4.243 0 0 1-5.423.484l-1.29 1.29A.75.75 0 0 1 .47 14.47l1.29-1.29a4.243 4.243 0 0 1 .483-5.423l.58-.58a.958.958 0 0 1 1.354 0l.543.543l1.25-1.25a.75.75 0 0 1 1.06 0M3.5 8.62l-.197.197a2.743 2.743 0 0 0 3.879 3.879l.197-.197L3.5 8.621Zm9.197-1.439l-.197.197L8.621 3.5l.197-.197a2.743 2.743 0 0 1 3.879 3.879Z" clip-rule="evenodd"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -4791,7 +4974,7 @@ func Printer(children ...ElementRenderer) *GravityUiIcon {
 func Pulse(children ...ElementRenderer) *GravityUiIcon {
 	return &GravityUiIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<path fill="currentColor" fill-rule="evenodd" d="M9.235 1a.75.75 0 0 1 .74.56l2.034 7.726l1.09-1.908A.75.75 0 0 1 13.75 7h1.5a.75.75 0 0 1 0 1.5h-1.065l-1.784 3.122a.75.75 0 0 1-1.376-.181l-1.71-6.496l-2.083 9.466a.75.75 0 0 1-1.446.07L3.544 7.55l-.65 1.085A.75.75 0 0 1 2.25 9H.75a.75.75 0 1 1 0-1.5h1.075l1.282-2.136a.75.75 0 0 1 1.357.155l1.898 5.868l2.156-9.798A.75.75 0 0 1 9.235 1" clip-rule="evenodd"/>`),
+			Text(`<g fill="none"><g clip-path="url(#gravityUiPulse0)"><path fill="currentColor" fill-rule="evenodd" d="M9.235 1a.75.75 0 0 1 .74.56l2.034 7.726l1.09-1.908A.75.75 0 0 1 13.75 7h1.5a.75.75 0 0 1 0 1.5h-1.065l-1.784 3.122a.75.75 0 0 1-1.376-.181l-1.71-6.496l-2.083 9.466a.75.75 0 0 1-1.446.07L3.544 7.55l-.65 1.085A.75.75 0 0 1 2.25 9H.75a.75.75 0 1 1 0-1.5h1.075l1.282-2.136a.75.75 0 0 1 1.357.155l1.898 5.868l2.156-9.798A.75.75 0 0 1 9.235 1" clip-rule="evenodd"/></g><defs><clipPath id="gravityUiPulse0"><path fill="currentColor" d="M0 0h16v16H0z"/></clipPath></defs></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -4839,7 +5022,7 @@ func Receipt(children ...ElementRenderer) *GravityUiIcon {
 func RectanglePulse(children ...ElementRenderer) *GravityUiIcon {
 	return &GravityUiIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<path fill="currentColor" fill-rule="evenodd" d="M12.5 12.5h-9A1.5 1.5 0 0 1 2 11V9h3a.75.75 0 0 0 .648-.372l1.02-1.748l1.9 4.18a.75.75 0 0 0 1.33.068L11.43 8.5H14V11a1.5 1.5 0 0 1-1.5 1.5M14 7h-3a.75.75 0 0 0-.648.372L9.332 9.12l-1.9-4.18a.75.75 0 0 0-1.33-.068L4.57 7.5H2V5a1.5 1.5 0 0 1 1.5-1.5h9A1.5 1.5 0 0 1 14 5zM3.5 14h9a3 3 0 0 0 3-3V5a3 3 0 0 0-3-3h-9a3 3 0 0 0-3 3v6a3 3 0 0 0 3 3" clip-rule="evenodd"/>`),
+			Text(`<g fill="none"><g clip-path="url(#gravityUiRectanglePulse0)"><path fill="currentColor" fill-rule="evenodd" d="M12.5 12.5h-9A1.5 1.5 0 0 1 2 11V9h3a.75.75 0 0 0 .648-.372l1.02-1.748l1.9 4.18a.75.75 0 0 0 1.33.068L11.43 8.5H14V11a1.5 1.5 0 0 1-1.5 1.5M14 7h-3a.75.75 0 0 0-.648.372L9.332 9.12l-1.9-4.18a.75.75 0 0 0-1.33-.068L4.57 7.5H2V5a1.5 1.5 0 0 1 1.5-1.5h9A1.5 1.5 0 0 1 14 5zM3.5 14h9a3 3 0 0 0 3-3V5a3 3 0 0 0-3-3h-9a3 3 0 0 0-3 3v6a3 3 0 0 0 3 3" clip-rule="evenodd"/></g><defs><clipPath id="gravityUiRectanglePulse0"><path fill="currentColor" d="M0 0h16v16H0z"/></clipPath></defs></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -5044,6 +5227,14 @@ func Smartphone(children ...ElementRenderer) *GravityUiIcon {
 	}
 }
 
+func Snail(children ...ElementRenderer) *GravityUiIcon {
+	return &GravityUiIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" fill-rule="evenodd" d="M13.864 1.107a.75.75 0 1 1 .768 1.29a1.982 1.982 0 0 0-.397.414c-.205.287-.432.748-.477 1.44a2.112 2.112 0 0 1 .388 2.78l-.028.043a2.277 2.277 0 0 0-.266 1.982l.471 1.414A3.44 3.44 0 0 1 11.06 15H2.332A1.333 1.333 0 0 1 1 13.667c0-1.223.822-2.253 1.944-2.568C2.344 10.27 2 9.15 2 8c0-1.412.458-2.674 1.349-3.587C4.243 3.498 5.509 3 7 3c1.522 0 2.643.802 3.246 1.93c.105-.169.23-.323.37-.46a3.463 3.463 0 0 1-.36-2a3.254 3.254 0 0 1 .293-.999l.036-.069l.013-.023l.005-.008l.002-.004l.001-.001v-.002a.75.75 0 1 1 1.285.778a1.762 1.762 0 0 0-.146.513a1.95 1.95 0 0 0 .207 1.132c.115-.02.232-.03.351-.034a4.122 4.122 0 0 1 .712-1.814a3.48 3.48 0 0 1 .548-.607a2.664 2.664 0 0 1 .263-.201l.022-.015l.01-.005l.003-.002l.002-.001zM7.75 10.75c.877 0 1.57-.38 2.06-.94a5.188 5.188 0 0 0 1.165-2.169L11.401 6a.998.998 0 0 1 1.09-.74a.6.6 0 0 1 .509.595a.63.63 0 0 1-.102.344l-.028.043a3.776 3.776 0 0 0-.44 3.289l.47 1.413a1.941 1.941 0 0 1-1.84 2.556H2.511c.08-.565.567-1 1.155-1h.678a.905.905 0 0 0 .436-1.7C4.131 10.438 3.5 9.374 3.5 8c0-1.088.348-1.95.922-2.538C4.993 4.877 5.852 4.5 7 4.5c1.346 0 2.25 1.056 2.25 2.5c0 .639-.162 1.235-.437 1.646c-.26.39-.604.604-1.063.604c-.87 0-1.25-.568-1.25-1c0-.551.38-.75.5-.75A.75.75 0 0 0 7 6C5.89 6 5 7.04 5 8.25c0 1.329 1.12 2.5 2.75 2.5" clip-rule="evenodd"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func Snowflake(children ...ElementRenderer) *GravityUiIcon {
 	return &GravityUiIcon{
 		SVGSVGElement: SVG_SVG(
@@ -5212,6 +5403,14 @@ func SquareHashtag(children ...ElementRenderer) *GravityUiIcon {
 	}
 }
 
+func SquareLetterP(children ...ElementRenderer) *GravityUiIcon {
+	return &GravityUiIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" fill-rule="evenodd" d="M4.5 3h7A1.5 1.5 0 0 1 13 4.5v7a1.5 1.5 0 0 1-1.5 1.5h-7A1.5 1.5 0 0 1 3 11.5v-7A1.5 1.5 0 0 1 4.5 3m-3 1.5a3 3 0 0 1 3-3h7a3 3 0 0 1 3 3v7a3 3 0 0 1-3 3h-7a3 3 0 0 1-3-3zm5.25 0a.75.75 0 0 0-.75.75v5.5a.75.75 0 0 0 1.5 0V9.5h.75a2.5 2.5 0 0 0 0-5zM8.25 8H7.5V6h.75a1 1 0 0 1 0 2" clip-rule="evenodd"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func SquareLetterT(children ...ElementRenderer) *GravityUiIcon {
 	return &GravityUiIcon{
 		SVGSVGElement: SVG_SVG(
@@ -5367,7 +5566,7 @@ func TagRuble(children ...ElementRenderer) *GravityUiIcon {
 func Tags(children ...ElementRenderer) *GravityUiIcon {
 	return &GravityUiIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none"><g clip-path="url(#gravityUiTags0)"><path fill="currentColor" fill-rule="evenodd" d="m10.884 6.995l-4.12 4.12a.75.75 0 0 1-1.055.005L1.906 7.395a.75.75 0 0 1-.011-1.06l4.118-4.21a1.25 1.25 0 0 1 .894-.375H10.5a.75.75 0 0 1 .75.75v3.61c0 .332-.132.65-.366.885M4.94 1.077A2.75 2.75 0 0 1 6.907.25H10.5a2.25 2.25 0 0 1 2.25 2.25v.75h.75a2.25 2.25 0 0 1 2.25 2.25v3.61c0 .73-.29 1.43-.806 1.946l-4.12 4.12a2.25 2.25 0 0 1-3.165.016l-3.803-3.726a2.264 2.264 0 0 1-.286-.341L.856 8.466a2.25 2.25 0 0 1-.033-3.18l4.118-4.21Zm2.242 11.548a2.25 2.25 0 0 0 .642-.45L11.52 8.48a1.25 1.25 0 0 0 1.206-2.01c.015-.118.023-.237.023-.358V4.75h.75a.75.75 0 0 1 .75.75v3.61c0 .332-.132.65-.366.885l-4.12 4.12a.75.75 0 0 1-1.055.005zM8.75 5.5a1.25 1.25 0 1 1 0-2.5a1.25 1.25 0 0 1 0 2.5" clip-rule="evenodd"/></g><defs><clipPath id="gravityUiTags0"><path fill="currentColor" d="M0 0h16v16H0z"/></clipPath></defs></g>`),
+			Text(`<path fill="currentColor" fill-rule="evenodd" d="m10.884 6.995l-4.12 4.12a.75.75 0 0 1-1.055.005L1.906 7.395a.75.75 0 0 1-.011-1.06l4.118-4.21a1.25 1.25 0 0 1 .894-.375H10.5a.75.75 0 0 1 .75.75v3.61c0 .332-.132.65-.366.885M4.94 1.077A2.75 2.75 0 0 1 6.907.25H10.5a2.25 2.25 0 0 1 2.25 2.25v.75h.75a2.25 2.25 0 0 1 2.25 2.25v3.61c0 .73-.29 1.43-.806 1.946l-4.12 4.12a2.25 2.25 0 0 1-3.165.016l-3.803-3.726a2.264 2.264 0 0 1-.286-.341L.856 8.466a2.25 2.25 0 0 1-.033-3.18l4.118-4.21Zm2.242 11.548a2.25 2.25 0 0 0 .642-.45L11.52 8.48a1.25 1.25 0 0 0 1.206-2.01c.015-.118.023-.237.023-.358V4.75h.75a.75.75 0 0 1 .75.75v3.61c0 .332-.132.65-.366.885l-4.12 4.12a.75.75 0 0 1-1.055.005zM8.75 5.5a1.25 1.25 0 1 1 0-2.5a1.25 1.25 0 0 1 0 2.5" clip-rule="evenodd"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -5376,6 +5575,14 @@ func Target(children ...ElementRenderer) *GravityUiIcon {
 	return &GravityUiIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="currentColor" fill-rule="evenodd" d="M8 13.5a5.5 5.5 0 1 0 0-11a5.5 5.5 0 0 0 0 11M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14m0-4.5a2.5 2.5 0 1 0 0-5a2.5 2.5 0 0 0 0 5M8 12a4 4 0 1 0 0-8a4 4 0 0 0 0 8m0-3a1 1 0 1 0 0-2a1 1 0 0 0 0 2" clip-rule="evenodd"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func TargetDart(children ...ElementRenderer) *GravityUiIcon {
+	return &GravityUiIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" fill-rule="evenodd" d="M13.293 0c.39 0 .707.317.707.707V2h1.293a.707.707 0 0 1 .5 1.207l-1.46 1.46A1.138 1.138 0 0 1 13.53 5h-1.47L8.53 8.53a.75.75 0 0 1-1.06-1.06L11 3.94V2.47c0-.301.12-.59.333-.804l1.46-1.46a.707.707 0 0 1 .5-.207ZM2.5 8a5.5 5.5 0 0 1 6.598-5.39a.75.75 0 0 0 .298-1.47A7 7 0 1 0 14.86 6.6a.75.75 0 0 0-1.47.299A5.5 5.5 0 1 1 2.5 8m5.364-2.496a.75.75 0 0 0-.08-1.498A4 4 0 1 0 11.988 8.3a.75.75 0 0 0-1.496-.111a2.5 2.5 0 1 1-2.63-2.686Z" clip-rule="evenodd"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -5527,7 +5734,7 @@ func Timeline(children ...ElementRenderer) *GravityUiIcon {
 func Timestamps(children ...ElementRenderer) *GravityUiIcon {
 	return &GravityUiIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none"><g clip-path="url(#gravityUiTimestamps0)"><path fill="currentColor" fill-rule="evenodd" d="M14.5 12.75a2.75 2.75 0 0 0-2-2.646V8.75h2.25a.75.75 0 0 0 0-1.5h-6V5.896a2.752 2.752 0 0 0 2-2.646a2.75 2.75 0 1 0-3.5 2.646V7.25h-6a.75.75 0 0 0 0 1.5H3.5v1.354a2.752 2.752 0 0 0-2 2.646A2.75 2.75 0 1 0 5 10.104V8.75h6v1.354a2.751 2.751 0 1 0 3.5 2.646M11.75 14a1.25 1.25 0 1 0 0-2.5a1.25 1.25 0 0 0 0 2.5M8 4.5A1.25 1.25 0 1 0 8 2a1.25 1.25 0 0 0 0 2.5M4.25 14a1.25 1.25 0 1 0 0-2.5a1.25 1.25 0 0 0 0 2.5" clip-rule="evenodd"/></g><defs><clipPath id="gravityUiTimestamps0"><path fill="currentColor" d="M0 0h16v16H0z"/></clipPath></defs></g>`),
+			Text(`<path fill="currentColor" fill-rule="evenodd" d="M14.5 12.75a2.75 2.75 0 0 0-2-2.646V8.75h2.25a.75.75 0 0 0 0-1.5h-6V5.896a2.752 2.752 0 0 0 2-2.646a2.75 2.75 0 1 0-3.5 2.646V7.25h-6a.75.75 0 0 0 0 1.5H3.5v1.354a2.752 2.752 0 0 0-2 2.646A2.75 2.75 0 1 0 5 10.104V8.75h6v1.354a2.751 2.751 0 1 0 3.5 2.646M11.75 14a1.25 1.25 0 1 0 0-2.5a1.25 1.25 0 0 0 0 2.5M8 4.5A1.25 1.25 0 1 0 8 2a1.25 1.25 0 0 0 0 2.5M4.25 14a1.25 1.25 0 1 0 0-2.5a1.25 1.25 0 0 0 0 2.5" clip-rule="evenodd"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -5695,7 +5902,7 @@ func Vault(children ...ElementRenderer) *GravityUiIcon {
 func VectorCircle(children ...ElementRenderer) *GravityUiIcon {
 	return &GravityUiIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="none"><g clip-path="url(#gravityUiVectorCircle0)"><path fill="currentColor" fill-rule="evenodd" d="M8 5.5a2.74 2.74 0 0 1-1.444-.409a2.764 2.764 0 0 1-.914-.925c-.6.37-1.106.877-1.476 1.476a2.749 2.749 0 0 1 0 4.716c.37.6.877 1.106 1.476 1.476a2.749 2.749 0 0 1 4.716 0c.6-.37 1.106-.877 1.476-1.476l-.028-.017a2.748 2.748 0 0 1 .028-4.699a4.524 4.524 0 0 0-1.476-1.476l-.017.028A2.748 2.748 0 0 1 8 5.5m2.749-2.835a2.75 2.75 0 0 0-5.498 0a6.026 6.026 0 0 0-2.586 2.586a2.75 2.75 0 0 0 0 5.498a6.026 6.026 0 0 0 2.586 2.586a2.749 2.749 0 0 0 5.09 1.359c.245-.398.393-.862.408-1.36a6.027 6.027 0 0 0 2.586-2.585A2.749 2.749 0 0 0 16 8a2.75 2.75 0 0 0-2.665-2.749a6.027 6.027 0 0 0-2.586-2.586M9.25 2.75a1.25 1.25 0 1 1-2.5 0a1.25 1.25 0 0 1 2.5 0M4 8a1.25 1.25 0 1 1-2.5 0A1.25 1.25 0 0 1 4 8m5.25 5.25a1.25 1.25 0 1 1-2.5 0a1.25 1.25 0 0 1 2.5 0m4-4a1.25 1.25 0 1 0 0-2.5a1.25 1.25 0 0 0 0 2.5" clip-rule="evenodd"/></g><defs><clipPath id="gravityUiVectorCircle0"><path fill="currentColor" d="M0 0h16v16H0z"/></clipPath></defs></g>`),
+			Text(`<path fill="currentColor" fill-rule="evenodd" d="M8 5.5a2.74 2.74 0 0 1-1.444-.409a2.764 2.764 0 0 1-.914-.925c-.6.37-1.106.877-1.476 1.476a2.749 2.749 0 0 1 0 4.716c.37.6.877 1.106 1.476 1.476a2.749 2.749 0 0 1 4.716 0c.6-.37 1.106-.877 1.476-1.476l-.028-.017a2.748 2.748 0 0 1 .028-4.699a4.524 4.524 0 0 0-1.476-1.476l-.017.028A2.748 2.748 0 0 1 8 5.5m2.749-2.835a2.75 2.75 0 0 0-5.498 0a6.026 6.026 0 0 0-2.586 2.586a2.75 2.75 0 0 0 0 5.498a6.026 6.026 0 0 0 2.586 2.586a2.749 2.749 0 0 0 5.09 1.359c.245-.398.393-.862.408-1.36a6.027 6.027 0 0 0 2.586-2.585A2.749 2.749 0 0 0 16 8a2.75 2.75 0 0 0-2.665-2.749a6.027 6.027 0 0 0-2.586-2.586M9.25 2.75a1.25 1.25 0 1 1-2.5 0a1.25 1.25 0 0 1 2.5 0M4 8a1.25 1.25 0 1 1-2.5 0A1.25 1.25 0 0 1 4 8m5.25 5.25a1.25 1.25 0 1 1-2.5 0a1.25 1.25 0 0 1 2.5 0m4-4a1.25 1.25 0 1 0 0-2.5a1.25 1.25 0 0 0 0 2.5" clip-rule="evenodd"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }

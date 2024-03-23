@@ -1783,35 +1783,6 @@ func (e *DFNElement) DATASTAR_HEADERRemove() *DFNElement {
 	return e
 }
 
-// Sets the URL for fetch requests
-
-func (e *DFNElement) DATASTAR_FETCH_URL(expression string) *DFNElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-
-	key := "data-fetch-url"
-
-	e.StringAttributes.Set(key, expression)
-	return e
-}
-
-func (e *DFNElement) IfDATASTAR_FETCH_URL(condition bool, expression string) *DFNElement {
-	if condition {
-		e.DATASTAR_FETCH_URL(expression)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_FETCH_URL from the element.
-func (e *DFNElement) DATASTAR_FETCH_URLRemove() *DFNElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-fetch-url")
-	return e
-}
-
 // Sets the indicator selector for fetch requests
 
 func (e *DFNElement) DATASTAR_FETCH_INDICATOR(expression string) *DFNElement {

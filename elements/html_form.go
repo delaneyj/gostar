@@ -2068,35 +2068,6 @@ func (e *FORMElement) DATASTAR_HEADERRemove() *FORMElement {
 	return e
 }
 
-// Sets the URL for fetch requests
-
-func (e *FORMElement) DATASTAR_FETCH_URL(expression string) *FORMElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-
-	key := "data-fetch-url"
-
-	e.StringAttributes.Set(key, expression)
-	return e
-}
-
-func (e *FORMElement) IfDATASTAR_FETCH_URL(condition bool, expression string) *FORMElement {
-	if condition {
-		e.DATASTAR_FETCH_URL(expression)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_FETCH_URL from the element.
-func (e *FORMElement) DATASTAR_FETCH_URLRemove() *FORMElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-fetch-url")
-	return e
-}
-
 // Sets the indicator selector for fetch requests
 
 func (e *FORMElement) DATASTAR_FETCH_INDICATOR(expression string) *FORMElement {

@@ -72,12 +72,6 @@ var DatastarExtensions = []*pb.Attribute{
 		Type:        AttributeTypeCustom(true, AttributeTypeString()),
 	},
 	{
-		Name:        "DatastarFetchURL",
-		Key:         "fetch-url",
-		Description: "Sets the URL for fetch requests",
-		Type:        AttributeTypeCustom(false, AttributeTypeString()),
-	},
-	{
 		Name:        "DatastarFetchIndicator",
 		Key:         "fetch-indicator",
 		Description: "Sets the indicator selector for fetch requests",

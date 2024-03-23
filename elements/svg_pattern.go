@@ -755,35 +755,6 @@ func (e *SVGPATTERNElement) DATASTAR_HEADERRemove() *SVGPATTERNElement {
 	return e
 }
 
-// Sets the URL for fetch requests
-
-func (e *SVGPATTERNElement) DATASTAR_FETCH_URL(expression string) *SVGPATTERNElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-
-	key := "data-fetch-url"
-
-	e.StringAttributes.Set(key, expression)
-	return e
-}
-
-func (e *SVGPATTERNElement) IfDATASTAR_FETCH_URL(condition bool, expression string) *SVGPATTERNElement {
-	if condition {
-		e.DATASTAR_FETCH_URL(expression)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_FETCH_URL from the element.
-func (e *SVGPATTERNElement) DATASTAR_FETCH_URLRemove() *SVGPATTERNElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-fetch-url")
-	return e
-}
-
 // Sets the indicator selector for fetch requests
 
 func (e *SVGPATTERNElement) DATASTAR_FETCH_INDICATOR(expression string) *SVGPATTERNElement {

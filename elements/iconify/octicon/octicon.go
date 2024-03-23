@@ -5,7 +5,7 @@ import (
 )
 
 const (
-	IconifyVersion = "19.8.0"
+	IconifyVersion = "19.9.0"
 	hAttr          = "1em"
 	viewbox        = "0 0 0 0"
 	fill           = "currentColor"

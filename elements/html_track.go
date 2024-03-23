@@ -1975,35 +1975,6 @@ func (e *TRACKElement) DATASTAR_HEADERRemove() *TRACKElement {
 	return e
 }
 
-// Sets the URL for fetch requests
-
-func (e *TRACKElement) DATASTAR_FETCH_URL(expression string) *TRACKElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-
-	key := "data-fetch-url"
-
-	e.StringAttributes.Set(key, expression)
-	return e
-}
-
-func (e *TRACKElement) IfDATASTAR_FETCH_URL(condition bool, expression string) *TRACKElement {
-	if condition {
-		e.DATASTAR_FETCH_URL(expression)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_FETCH_URL from the element.
-func (e *TRACKElement) DATASTAR_FETCH_URLRemove() *TRACKElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-fetch-url")
-	return e
-}
-
 // Sets the indicator selector for fetch requests
 
 func (e *TRACKElement) DATASTAR_FETCH_INDICATOR(expression string) *TRACKElement {

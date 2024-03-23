@@ -86,6 +86,7 @@ var IconLookup = map[string]CodiconIconFn{
 	"cloudDownload":                        CloudDownload,
 	"cloudUpload":                          CloudUpload,
 	"code":                                 Code,
+	"codeOss":                              CodeOss,
 	"coffee":                               Coffee,
 	"collapseAll":                          CollapseAll,
 	"colorMode":                            ColorMode,
@@ -99,6 +100,7 @@ var IconLookup = map[string]CodiconIconFn{
 	"compassDot":                           CompassDot,
 	"copilot":                              Copilot,
 	"copy":                                 Copy,
+	"coverage":                             Coverage,
 	"creditCard":                           CreditCard,
 	"dash":                                 Dash,
 	"dashboard":                            Dashboard,
@@ -196,12 +198,17 @@ var IconLookup = map[string]CodiconIconFn{
 	"gitPullRequestDraft":                  GitPullRequestDraft,
 	"gitPullRequestGoToChanges":            GitPullRequestGoToChanges,
 	"gitPullRequestNewChanges":             GitPullRequestNewChanges,
+	"gitStash":                             GitStash,
+	"gitStashApply":                        GitStashApply,
+	"gitStashPop":                          GitStashPop,
 	"github":                               Github,
 	"githubAction":                         GithubAction,
 	"githubAlt":                            GithubAlt,
 	"githubInverted":                       GithubInverted,
+	"githubProject":                        GithubProject,
 	"globe":                                Globe,
 	"goToFile":                             GoToFile,
+	"goToSearch":                           GoToSearch,
 	"grabber":                              Grabber,
 	"graph":                                Graph,
 	"graphLeft":                            GraphLeft,
@@ -270,6 +277,8 @@ var IconLookup = map[string]CodiconIconFn{
 	"mailRead":                             MailRead,
 	"map":                                  Map,
 	"mapFilled":                            MapFilled,
+	"mapVertical":                          MapVertical,
+	"mapVerticalFilled":                    MapVerticalFilled,
 	"markdown":                             Markdown,
 	"megaphone":                            Megaphone,
 	"mention":                              Mention,
@@ -335,6 +344,7 @@ var IconLookup = map[string]CodiconIconFn{
 	"reply":                                Reply,
 	"repo":                                 Repo,
 	"repoClone":                            RepoClone,
+	"repoFetch":                            RepoFetch,
 	"repoForcePush":                        RepoForcePush,
 	"repoForked":                           RepoForked,
 	"repoPull":                             RepoPull,
@@ -349,7 +359,9 @@ var IconLookup = map[string]CodiconIconFn{
 	"ruby":                                 Ruby,
 	"runAbove":                             RunAbove,
 	"runAll":                               RunAll,
+	"runAllCoverage":                       RunAllCoverage,
 	"runBelow":                             RunBelow,
+	"runCoverage":                          RunCoverage,
 	"runErrors":                            RunErrors,
 	"save":                                 Save,
 	"saveAll":                              SaveAll,
@@ -454,6 +466,8 @@ var IconLookup = map[string]CodiconIconFn{
 	"vmOutline":                            VmOutline,
 	"vmRunning":                            VmRunning,
 	"vr":                                   Vr,
+	"vscode":                               Vscode,
+	"vscodeInsiders":                       VscodeInsiders,
 	"wand":                                 Wand,
 	"warning":                              Warning,
 	"watch":                                Watch,
@@ -1012,6 +1026,14 @@ func Code(children ...ElementRenderer) *CodiconIcon {
 	}
 }
 
+func CodeOss(children ...ElementRenderer) *CodiconIcon {
+	return &CodiconIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="currentColor"><path d="M5 2h1v11H5zm2 1h4v1H7zm2 2h4v1H9zm0 2h4v1H9zm0 2h4v1H9zm-2 2h4v1H7z"/><path d="M2 1L1 2v5h1V2h12v11H2V7H1v6l1 1h12l1-1V2l-1-1z"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func Coffee(children ...ElementRenderer) *CodiconIcon {
 	return &CodiconIcon{
 		SVGSVGElement: SVG_SVG(
@@ -1112,6 +1134,14 @@ func Copy(children ...ElementRenderer) *CodiconIcon {
 	return &CodiconIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<g fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"><path d="m4 4l1-1h5.414L14 6.586V14l-1 1H5l-1-1zm9 3l-3-3H5v10h8z"/><path d="M3 1L2 2v10l1 1V2h6.414l-1-1z"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func Coverage(children ...ElementRenderer) *CodiconIcon {
+	return &CodiconIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="currentColor"><path fill-rule="evenodd" d="m8.884 8.32l-2.5 3l-.738.034l-1.5-1.5l.708-.708l1.112 1.113l2.15-2.58z" clip-rule="evenodd"/><path d="M11.98 9.97a3.5 3.5 0 0 0-3.806-5.71a5.488 5.488 0 0 0-1.506-.257a4.5 4.5 0 1 1 4.973 7.457c.179-.47.295-.97.34-1.49"/><path fill-rule="evenodd" d="M6.5 13a3.5 3.5 0 1 1 0-7a3.5 3.5 0 0 1 0 7m0 1a4.5 4.5 0 1 0 0-9a4.5 4.5 0 0 0 0 9" clip-rule="evenodd"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -1892,6 +1922,30 @@ func GitPullRequestNewChanges(children ...ElementRenderer) *CodiconIcon {
 	}
 }
 
+func GitStash(children ...ElementRenderer) *CodiconIcon {
+	return &CodiconIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="currentColor"><path fill-rule="evenodd" d="M7 6.793V1h1v5.793l2.647-2.647l.707.708l-3.5 3.5h-.707l-3.5-3.5l.707-.708z" clip-rule="evenodd"/><path d="m1.5 9l-.5.5v5l.5.5h12l.5-.5v-5l-.5-.5H9.95a2.5 2.5 0 0 1-4.9 0zm9.163 1H13v4H2v-4h2.337a3.5 3.5 0 0 0 6.326 0"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func GitStashApply(children ...ElementRenderer) *CodiconIcon {
+	return &CodiconIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="currentColor"><path fill-rule="evenodd" d="M7 3.207V5h1V3.207l2.647 2.647l.707-.708l-3.5-3.5h-.707l-3.5 3.5l.707.708z" clip-rule="evenodd"/><path d="m1.5 9l-.5.5v5l.5.5h12l.5-.5v-5l-.5-.5H9.95a2.5 2.5 0 0 1-4.9 0zm9.163 1H13v4H2v-4h2.337a3.5 3.5 0 0 0 6.326 0M7 6h1v1H7zm0 2h1v1H7z"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func GitStashPop(children ...ElementRenderer) *CodiconIcon {
+	return &CodiconIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="currentColor"><path fill-rule="evenodd" d="M7 3.207V9h1V3.207l2.647 2.647l.707-.708l-3.5-3.5h-.707l-3.5 3.5l.707.708z" clip-rule="evenodd"/><path d="m1.5 9l-.5.5v5l.5.5h12l.5-.5v-5l-.5-.5H9.95a2.5 2.5 0 0 1-4.9 0zm9.163 1H13v4H2v-4h2.337a3.5 3.5 0 0 0 6.326 0"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func Github(children ...ElementRenderer) *CodiconIcon {
 	return &CodiconIcon{
 		SVGSVGElement: SVG_SVG(
@@ -1924,6 +1978,14 @@ func GithubInverted(children ...ElementRenderer) *CodiconIcon {
 	}
 }
 
+func GithubProject(children ...ElementRenderer) *CodiconIcon {
+	return &CodiconIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"><path d="M6 13h1V7h6V6H7V3H6v3H3v1h3z"/><path d="M2.5 2h11l.5.5v11l-.5.5h-11l-.5-.5v-11zM3 13h10V3H3z"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func Globe(children ...ElementRenderer) *CodiconIcon {
 	return &CodiconIcon{
 		SVGSVGElement: SVG_SVG(
@@ -1936,6 +1998,14 @@ func GoToFile(children ...ElementRenderer) *CodiconIcon {
 	return &CodiconIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="currentColor" fill-rule="evenodd" d="m6 5.914l2.06-2.06v-.708L5.915 1l-.707.707l.043.043l.25.25l1 1h-3a2.5 2.5 0 0 0 0 5H4V7h-.5a1.5 1.5 0 1 1 0-3h3L5.207 5.293L5.914 6zM11 2H8.328l-1-1H12l.71.29l3 3L16 5v9l-1 1H6l-1-1V6.5l1 .847V14h9V6h-4zm1 0v3h3z" clip-rule="evenodd"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func GoToSearch(children ...ElementRenderer) *CodiconIcon {
+	return &CodiconIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="currentColor"><path d="M4.8 10.15L1 13.84l.75.66l3.78-3.67z"/><path d="M4 9a5.5 5.5 0 1 0 3.644-7.856l.872.872A4.5 4.5 0 1 1 5.158 9z"/><path d="M8.06 3.854L5.915 6l-.707-.707L6.5 4h-3a1.5 1.5 0 0 0 0 3H4v1h-.5a2.5 2.5 0 1 1 0-5h3L5.207 1.707L5.914 1l2.147 2.146z"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -2484,6 +2554,22 @@ func MapFilled(children ...ElementRenderer) *CodiconIcon {
 	}
 }
 
+func MapVertical(children ...ElementRenderer) *CodiconIcon {
+	return &CodiconIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M5.777 2.5h6.32l-1.874 3h-6.32zm-1.875 4h6.32l1.876 3h-6.32zM11.09 6l2.334-3.735L13 1.5H5.5l-.424.235l-2.5 4v.53L4.91 10l-2.334 3.735L3 14.5h7.5l.424-.235l2.5-4v-.53zm-5.313 4.5h6.32l-1.874 3h-6.32z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func MapVerticalFilled(children ...ElementRenderer) *CodiconIcon {
+	return &CodiconIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M5.5 2H13l-2.187 3.5h-7.5zm7.188 7.5h-7.5l-1.875-3h7.5zm0 1h-7.5L3 14h7.5z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func Markdown(children ...ElementRenderer) *CodiconIcon {
 	return &CodiconIcon{
 		SVGSVGElement: SVG_SVG(
@@ -2527,7 +2613,7 @@ func Merge(children ...ElementRenderer) *CodiconIcon {
 func Mic(children ...ElementRenderer) *CodiconIcon {
 	return &CodiconIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="currentColor"><path d="M8 1a3 3 0 0 0-3 3v4a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3m2 7a2 2 0 1 1-4 0V4a2 2 0 1 1 4 0z"/><path d="M11.696 9.53A4 4 0 0 0 12 8h1a5.001 5.001 0 0 1-4.5 4.975V15h-1v-2.025A4.997 4.997 0 0 1 3 8h1a4.002 4.002 0 0 0 4 4a4 4 0 0 0 3.695-2.47"/></g>`),
+			Text(`<g fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"><path d="M5.5 8.5v-4a2.5 2.5 0 0 1 5 0v4a2.5 2.5 0 1 1-5 0M8 1a3.5 3.5 0 0 0-3.5 3.5v4a3.5 3.5 0 0 0 7 0v-4A3.5 3.5 0 0 0 8 1m-.5 15v-2h1v2z"/><path d="M7.5 14a5 5 0 0 1-5-5h1a4 4 0 0 0 4 4h1a4 4 0 0 0 4-4h1a5 5 0 0 1-5 5z"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -2535,7 +2621,7 @@ func Mic(children ...ElementRenderer) *CodiconIcon {
 func MicFilled(children ...ElementRenderer) *CodiconIcon {
 	return &CodiconIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<g fill="currentColor"><path d="M8 1a3 3 0 0 0-3 3v4a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3"/><path d="M11.696 9.53A4 4 0 0 0 12 8h1a5.001 5.001 0 0 1-4.5 4.975V15h-1v-2.025A4.997 4.997 0 0 1 3 8h1a4.002 4.002 0 0 0 4 4a4 4 0 0 0 3.695-2.47"/></g>`),
+			Text(`<g fill="currentColor"><path d="M5 4.5a3 3 0 0 1 6 0v4a3 3 0 1 1-6 0z"/><path fill-rule="evenodd" d="M7.5 16v-2h1v2zm0-2a5 5 0 0 1-5-5h1a4 4 0 0 0 4 4h1a4 4 0 0 0 4-4h1a5 5 0 0 1-5 5z" clip-rule="evenodd"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -3004,10 +3090,18 @@ func RepoClone(children ...ElementRenderer) *CodiconIcon {
 	}
 }
 
+func RepoFetch(children ...ElementRenderer) *CodiconIcon {
+	return &CodiconIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="currentColor"><rect width="1" height="1" x="8" y="4" rx=".5"/><rect width="1" height="1" x="8" y="6" rx=".5"/><rect width="1" height="1" x="8" y="2" rx=".5"/><rect width="1" height="1" x="8" rx=".5"/><path fill-rule="evenodd" d="M8 6.44h1l3.647-3.647l.707.707l-4.5 4.5h-.707l-4.5-4.5l.707-.707zM5.035 12H2v1h3.035a3.5 3.5 0 0 0 6.93 0H15v-1h-3.035a3.501 3.501 0 0 0-6.93 0m5.965.5a2.5 2.5 0 1 1-5 0a2.5 2.5 0 0 1 5 0" clip-rule="evenodd"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func RepoForcePush(children ...ElementRenderer) *CodiconIcon {
 	return &CodiconIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<path fill="currentColor" fill-rule="evenodd" d="M3.74 1h9.76l.5.5v12l-.5.5H10v-1h3v-2h-3v-1h3V2H4v8h3v1H3.74a.74.74 0 0 0-.74.75v.5a.74.74 0 0 0 .74.75H7v1H3.74A1.74 1.74 0 0 1 2 12.25v-9.5A1.74 1.74 0 0 1 3.74 1m1.6 4.83l.71.7L8 4.58v1.45L5.38 8.65l.71.7l1.92-1.92V15h1V7.328l2.03 2.022l.7-.7L9 5.9V4.538l2 1.992l.7-.7L8.88 3h-.71z" clip-rule="evenodd"/>`),
+			Text(`<g fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"><path d="M8 2.56v.94h1v-.94l3.647 3.647l.707-.707l-4.5-4.5h-.707l-4.5 4.5l.707.707z"/><path d="M8 5.56V8h1V5.56l3.647 3.647l.707-.707l-4.5-4.5h-.707l-4.5 4.5l.707.707z"/><path d="M5.035 12H2v1h3.035a3.5 3.5 0 0 0 6.93 0H15v-1h-3.035a3.501 3.501 0 0 0-6.93 0m5.965.5a2.5 2.5 0 1 1-5 0a2.5 2.5 0 0 1 5 0"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -3023,7 +3117,7 @@ func RepoForked(children ...ElementRenderer) *CodiconIcon {
 func RepoPull(children ...ElementRenderer) *CodiconIcon {
 	return &CodiconIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<path fill="currentColor" fill-rule="evenodd" d="M13 1.5V3h-1V2H3v8h10v3.5l-.5.5H8v-1h4v-2H2.735a.72.72 0 0 0-.285.06a.74.74 0 0 0-.4.4a.93.93 0 0 0-.05.29v.5a.93.93 0 0 0 .05.29a.74.74 0 0 0 .4.4c.091.04.19.06.29.06H3v1h-.26a1.9 1.9 0 0 1-.67-.13a1.77 1.77 0 0 1-.94-.95a1.7 1.7 0 0 1-.13-.67v-9.5a1.7 1.7 0 0 1 .13-.62a1.77 1.77 0 0 1 .94-1A1.9 1.9 0 0 1 2.74 1h9.76zM2 10.17V2.748zM5 3H4v1h1zm0 2H4v1h1zM4 7h1v1H4zm8.07-3.61l-.7.71l1.92 1.92H7v1h6.39l-2.02 2.03l.7.7l2.83-2.82v-.71zM5.5 13.49L4.28 15H4v-3h3v3h-.28z" clip-rule="evenodd"/>`),
+			Text(`<path fill="currentColor" fill-rule="evenodd" d="M5.035 12H2v1h3.035a3.5 3.5 0 0 0 6.93 0H15v-1h-3.035a3.501 3.501 0 0 0-6.93 0m5.965.5a2.5 2.5 0 1 1-5 0a2.5 2.5 0 0 1 5 0M8 6.44V0h1v6.44l3.647-3.647l.707.707l-4.5 4.5h-.707l-4.5-4.5l.707-.707z" clip-rule="evenodd"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -3031,7 +3125,7 @@ func RepoPull(children ...ElementRenderer) *CodiconIcon {
 func RepoPush(children ...ElementRenderer) *CodiconIcon {
 	return &CodiconIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<path fill="currentColor" fill-rule="evenodd" d="M13.5 1H3.74A1.74 1.74 0 0 0 2 2.75v9.5A1.74 1.74 0 0 0 3.74 14H7v-1H3.74a.74.74 0 0 1-.74-.75v-.5a.74.74 0 0 1 .74-.75H7v-1H4V2h9v8h-3v1h3v2h-3v1h3.5l.5-.5v-12zM3 2.73a.75.75 0 0 0 0 .02v7.42zM6 3H5v1h1zm-.62 5.65l.71.7l1.92-1.92V15h1V7.328l2.03 2.022l.7-.7l-2.82-2.83h-.71zM5 5h1v1H5z" clip-rule="evenodd"/>`),
+			Text(`<path fill="currentColor" fill-rule="evenodd" d="M8 2.56V8h1V2.56l3.647 3.647l.707-.707l-4.5-4.5h-.707l-4.5 4.5l.707.707zM5.035 12H2v1h3.035a3.5 3.5 0 0 0 6.93 0H15v-1h-3.035a3.501 3.501 0 0 0-6.93 0m5.965.5a2.5 2.5 0 1 1-5 0a2.5 2.5 0 0 1 5 0" clip-rule="evenodd"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -3116,10 +3210,26 @@ func RunAll(children ...ElementRenderer) *CodiconIcon {
 	}
 }
 
+func RunAllCoverage(children ...ElementRenderer) *CodiconIcon {
+	return &CodiconIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="currentColor"><path d="m9 13.35l6.78-4.52V8L7 2.147V3.35l7.6 5.07L9 12.148z"/><path d="M3 2.41L3.78 2l9 6v.83L9 11.35v-1.2l2.6-1.73L4 3.35V7H3z"/><path fill-rule="evenodd" d="M4.872 7.808c-.85-.053-1.705.159-2.403.641c-.753.485-1.233 1.184-1.499 2.03c-.269.81-.213 1.72.106 2.518a3.774 3.774 0 0 0 1.658 1.873c.756.432 1.616.537 2.467.378c.861-.162 1.61-.645 2.143-1.285l.005-.006c.529-.687.852-1.489.852-2.352a3.882 3.882 0 0 0-1.066-2.72l-.006-.005c-.585-.585-1.388-1.018-2.257-1.072M2.951 9.183c.512-.373 1.172-.517 1.792-.47h.001c.656.048 1.22.328 1.697.804c.516.516.803 1.274.803 2.038v.014c.047.649-.183 1.26-.566 1.789c-.426.518-.993.85-1.61.991a2.512 2.512 0 0 1-1.83-.282c-.572-.333-1-.808-1.288-1.43c-.28-.607-.282-1.265-.091-1.885v-.004a2.865 2.865 0 0 1 1.092-1.565m3.403 1.67l-2 2h-.708l-1-1l.708-.707l.646.647l1.646-1.647z" clip-rule="evenodd"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
 func RunBelow(children ...ElementRenderer) *CodiconIcon {
 	return &CodiconIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<path fill="currentColor" d="m1.8 1.01l-.78.41v12l.78.42l9-6v-.83zm.22 11.48V2.36l7.6 5.07zM12.85 15h-.71l-2.5-2.5l.71-.71L12 13.44V8h1v5.45l1.65-1.65l.71.71z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func RunCoverage(children ...ElementRenderer) *CodiconIcon {
+	return &CodiconIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<g fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"><path d="M5 2.41L5.78 2l9 6v.83L9 12.683v-1.2l4.6-3.063L6 3.35V7H5z"/><path d="M4.872 7.808c-.85-.053-1.705.159-2.403.641c-.753.485-1.233 1.184-1.499 2.03c-.269.81-.213 1.72.106 2.518a3.774 3.774 0 0 0 1.658 1.873c.756.432 1.616.537 2.467.378c.861-.162 1.61-.645 2.143-1.285l.005-.006c.529-.687.852-1.489.852-2.352a3.882 3.882 0 0 0-1.066-2.72l-.006-.005c-.585-.585-1.388-1.018-2.257-1.072M2.951 9.183c.512-.373 1.172-.517 1.792-.47h.001c.656.048 1.22.328 1.697.804c.516.516.803 1.274.803 2.038v.014c.047.649-.183 1.26-.566 1.789c-.426.518-.993.85-1.61.991a2.512 2.512 0 0 1-1.83-.282c-.572-.333-1-.808-1.288-1.43c-.28-.607-.282-1.265-.091-1.885v-.004a2.865 2.865 0 0 1 1.092-1.565m3.403 1.67l-2 2h-.708l-1-1l.708-.707l.646.647l1.646-1.647z"/></g>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -3231,7 +3341,7 @@ func ServerProcess(children ...ElementRenderer) *CodiconIcon {
 func Settings(children ...ElementRenderer) *CodiconIcon {
 	return &CodiconIcon{
 		SVGSVGElement: SVG_SVG(
-			Text(`<path fill="currentColor" fill-rule="evenodd" d="M3.5 2h-1v5h1zm6.1 5H6.4L6 6.45v-1L6.4 5h3.2l.4.5v1zm-5 3H1.4L1 9.5v-1l.4-.5h3.2l.4.5v1zm3.9-8h-1v2h1zm-1 6h1v6h-1zm-4 3h-1v3h1zm7.9 0h3.19l.4-.5v-.95l-.4-.5H11.4l-.4.5v.95zm2.1-9h-1v6h1zm-1 10h1v2h-1z" clip-rule="evenodd"/>`),
+			Text(`<path fill="currentColor" d="M6 9.5A2 2 0 0 1 7.937 11H13.5a.5.5 0 0 1 .09.992L13.5 12l-5.563.001a2 2 0 0 1-3.874 0L2.5 12a.5.5 0 0 1-.09-.992L2.5 11h1.563A2 2 0 0 1 6 9.5m0 1a1 1 0 1 0 0 2a1 1 0 0 0 0-2m4-8A2 2 0 0 1 11.937 4H13.5a.5.5 0 0 1 .09.992L13.5 5l-1.563.001a2 2 0 0 1-3.874 0L2.5 5a.5.5 0 0 1-.09-.992L2.5 4h5.563A2 2 0 0 1 10 2.5m0 1a1 1 0 1 0 0 2a1 1 0 0 0 0-2"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }
@@ -3952,6 +4062,22 @@ func Vr(children ...ElementRenderer) *CodiconIcon {
 	return &CodiconIcon{
 		SVGSVGElement: SVG_SVG(
 			Text(`<g fill="currentColor"><path fill-rule="evenodd" d="M4 3h8a3 3 0 0 1 3 3v4a3 3 0 0 1-3 3h-.394a3 3 0 0 1-1.665-.504l-.832-.555a2 2 0 0 0-2.218 0l-.832.555A3 3 0 0 1 4.394 13H4a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3m0 1a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h.394a2 2 0 0 0 1.11-.336l.832-.555a3 3 0 0 1 3.328 0l.832.555a2 2 0 0 0 1.11.336H12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z" clip-rule="evenodd"/><path d="M0 7h1v3H0zm15 0h1v3h-1zM6.5 8a.5.5 0 0 1 0 1H4a.5.5 0 0 1 0-1zM12 8a.5.5 0 0 1 0 1H9.5a.5.5 0 0 1 0-1z"/></g>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func Vscode(children ...ElementRenderer) *CodiconIcon {
+	return &CodiconIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="M10.863 13.92a.805.805 0 0 1-.923-.159L4.816 9.063l-2.232 1.703a.539.539 0 0 1-.691-.031l-.716-.655a.547.547 0 0 1 0-.805L3.112 7.5L1.177 5.725a.547.547 0 0 1 0-.805l.716-.655a.539.539 0 0 1 .691-.03l2.232 1.702L9.94 1.24a.806.806 0 0 1 .923-.158l2.677 1.294c.281.136.46.422.46.736V8h-3.248V4.534L6.864 7.5l3.888 2.966V8H14v3.889c0 .314-.179.6-.46.736z"/>`),
+		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
+	}
+}
+
+func VscodeInsiders(children ...ElementRenderer) *CodiconIcon {
+	return &CodiconIcon{
+		SVGSVGElement: SVG_SVG(
+			Text(`<path fill="currentColor" d="m9.785 1.38l-4.22 3.87l2.123 1.621L10 5.107V2c0-.234-.08-.45-.215-.62M10 9.893L2.584 4.234a.539.539 0 0 0-.691.031l-.716.655a.545.545 0 0 0 0 .805l8.608 7.894A.996.996 0 0 0 10 13zm.753-8.856c.158.286.247.614.247.963v11c0 .35-.09.678-.247.963a.807.807 0 0 0 .11-.043l2.677-1.295a.817.817 0 0 0 .46-.736V3.11c0-.314-.179-.6-.46-.736L10.863 1.08a.807.807 0 0 0-.11-.043M1.177 9.275l1.195-1.097l1.637 1.5l-1.425 1.088a.539.539 0 0 1-.691-.031l-.716-.655a.547.547 0 0 1 0-.805"/>`),
 		).HEIGHT(hAttr).VIEW_BOX(viewbox).IfChildren(len(children) > 0, children...),
 	}
 }

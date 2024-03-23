@@ -1821,35 +1821,6 @@ func (e *DIALOGElement) DATASTAR_HEADERRemove() *DIALOGElement {
 	return e
 }
 
-// Sets the URL for fetch requests
-
-func (e *DIALOGElement) DATASTAR_FETCH_URL(expression string) *DIALOGElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-
-	key := "data-fetch-url"
-
-	e.StringAttributes.Set(key, expression)
-	return e
-}
-
-func (e *DIALOGElement) IfDATASTAR_FETCH_URL(condition bool, expression string) *DIALOGElement {
-	if condition {
-		e.DATASTAR_FETCH_URL(expression)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_FETCH_URL from the element.
-func (e *DIALOGElement) DATASTAR_FETCH_URLRemove() *DIALOGElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-fetch-url")
-	return e
-}
-
 // Sets the indicator selector for fetch requests
 
 func (e *DIALOGElement) DATASTAR_FETCH_INDICATOR(expression string) *DIALOGElement {
