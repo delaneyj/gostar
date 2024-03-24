@@ -182,7 +182,7 @@ type customDataKeyModifier func() string
 func customDataKey(key string, modifiers ...customDataKeyModifier) string {
 	sb := strings.Builder{}
 	sb.WriteString(key)
-	for i, m := range modifiers {
+	for _, m := range modifiers {
 		sb.WriteRune('.')
 		sb.WriteString(m())
 	}
