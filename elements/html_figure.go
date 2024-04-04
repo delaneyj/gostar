@@ -1558,9 +1558,9 @@ func (e *FIGUREElement) TRANSLATERemove(c FigureTranslateChoice) *FIGUREElement 
 	return e
 }
 
-// Merges the store with the given object
+// Merges the singleton store with the given object
 
-func (e *FIGUREElement) DATASTAR_MERGE_STORE(v any) *FIGUREElement {
+func (e *FIGUREElement) DATASTA_STORE(v any) *FIGUREElement {
 	if e.CustomDataAttributes == nil {
 		e.CustomDataAttributes = treemap.New[string, string]()
 	}
@@ -1568,7 +1568,7 @@ func (e *FIGUREElement) DATASTAR_MERGE_STORE(v any) *FIGUREElement {
 	if err != nil {
 		panic(err)
 	}
-	e.CustomDataAttributes.Set("merge-store", html.EscapeString(string(b)))
+	e.CustomDataAttributes.Set("store", html.EscapeString(string(b)))
 	return e
 }
 

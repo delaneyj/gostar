@@ -1637,9 +1637,9 @@ func (e *BASEElement) TRANSLATERemove(c BaseTranslateChoice) *BASEElement {
 	return e
 }
 
-// Merges the store with the given object
+// Merges the singleton store with the given object
 
-func (e *BASEElement) DATASTAR_MERGE_STORE(v any) *BASEElement {
+func (e *BASEElement) DATASTA_STORE(v any) *BASEElement {
 	if e.CustomDataAttributes == nil {
 		e.CustomDataAttributes = treemap.New[string, string]()
 	}
@@ -1647,7 +1647,7 @@ func (e *BASEElement) DATASTAR_MERGE_STORE(v any) *BASEElement {
 	if err != nil {
 		panic(err)
 	}
-	e.CustomDataAttributes.Set("merge-store", html.EscapeString(string(b)))
+	e.CustomDataAttributes.Set("store", html.EscapeString(string(b)))
 	return e
 }
 

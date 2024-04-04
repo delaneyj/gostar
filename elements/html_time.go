@@ -1598,9 +1598,9 @@ func (e *TIMEElement) TRANSLATERemove(c TimeTranslateChoice) *TIMEElement {
 	return e
 }
 
-// Merges the store with the given object
+// Merges the singleton store with the given object
 
-func (e *TIMEElement) DATASTAR_MERGE_STORE(v any) *TIMEElement {
+func (e *TIMEElement) DATASTA_STORE(v any) *TIMEElement {
 	if e.CustomDataAttributes == nil {
 		e.CustomDataAttributes = treemap.New[string, string]()
 	}
@@ -1608,7 +1608,7 @@ func (e *TIMEElement) DATASTAR_MERGE_STORE(v any) *TIMEElement {
 	if err != nil {
 		panic(err)
 	}
-	e.CustomDataAttributes.Set("merge-store", html.EscapeString(string(b)))
+	e.CustomDataAttributes.Set("store", html.EscapeString(string(b)))
 	return e
 }
 

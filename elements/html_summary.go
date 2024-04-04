@@ -1559,9 +1559,9 @@ func (e *SUMMARYElement) TRANSLATERemove(c SummaryTranslateChoice) *SUMMARYEleme
 	return e
 }
 
-// Merges the store with the given object
+// Merges the singleton store with the given object
 
-func (e *SUMMARYElement) DATASTAR_MERGE_STORE(v any) *SUMMARYElement {
+func (e *SUMMARYElement) DATASTA_STORE(v any) *SUMMARYElement {
 	if e.CustomDataAttributes == nil {
 		e.CustomDataAttributes = treemap.New[string, string]()
 	}
@@ -1569,7 +1569,7 @@ func (e *SUMMARYElement) DATASTAR_MERGE_STORE(v any) *SUMMARYElement {
 	if err != nil {
 		panic(err)
 	}
-	e.CustomDataAttributes.Set("merge-store", html.EscapeString(string(b)))
+	e.CustomDataAttributes.Set("store", html.EscapeString(string(b)))
 	return e
 }
 

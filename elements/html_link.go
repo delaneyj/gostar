@@ -1972,9 +1972,9 @@ func (e *LINKElement) TRANSLATERemove(c LinkTranslateChoice) *LINKElement {
 	return e
 }
 
-// Merges the store with the given object
+// Merges the singleton store with the given object
 
-func (e *LINKElement) DATASTAR_MERGE_STORE(v any) *LINKElement {
+func (e *LINKElement) DATASTA_STORE(v any) *LINKElement {
 	if e.CustomDataAttributes == nil {
 		e.CustomDataAttributes = treemap.New[string, string]()
 	}
@@ -1982,7 +1982,7 @@ func (e *LINKElement) DATASTAR_MERGE_STORE(v any) *LINKElement {
 	if err != nil {
 		panic(err)
 	}
-	e.CustomDataAttributes.Set("merge-store", html.EscapeString(string(b)))
+	e.CustomDataAttributes.Set("store", html.EscapeString(string(b)))
 	return e
 }
 

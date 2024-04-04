@@ -1557,9 +1557,9 @@ func (e *ASIDEElement) TRANSLATERemove(c AsideTranslateChoice) *ASIDEElement {
 	return e
 }
 
-// Merges the store with the given object
+// Merges the singleton store with the given object
 
-func (e *ASIDEElement) DATASTAR_MERGE_STORE(v any) *ASIDEElement {
+func (e *ASIDEElement) DATASTA_STORE(v any) *ASIDEElement {
 	if e.CustomDataAttributes == nil {
 		e.CustomDataAttributes = treemap.New[string, string]()
 	}
@@ -1567,7 +1567,7 @@ func (e *ASIDEElement) DATASTAR_MERGE_STORE(v any) *ASIDEElement {
 	if err != nil {
 		panic(err)
 	}
-	e.CustomDataAttributes.Set("merge-store", html.EscapeString(string(b)))
+	e.CustomDataAttributes.Set("store", html.EscapeString(string(b)))
 	return e
 }
 

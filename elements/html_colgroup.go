@@ -1581,9 +1581,9 @@ func (e *COLGROUPElement) TRANSLATERemove(c ColgroupTranslateChoice) *COLGROUPEl
 	return e
 }
 
-// Merges the store with the given object
+// Merges the singleton store with the given object
 
-func (e *COLGROUPElement) DATASTAR_MERGE_STORE(v any) *COLGROUPElement {
+func (e *COLGROUPElement) DATASTA_STORE(v any) *COLGROUPElement {
 	if e.CustomDataAttributes == nil {
 		e.CustomDataAttributes = treemap.New[string, string]()
 	}
@@ -1591,7 +1591,7 @@ func (e *COLGROUPElement) DATASTAR_MERGE_STORE(v any) *COLGROUPElement {
 	if err != nil {
 		panic(err)
 	}
-	e.CustomDataAttributes.Set("merge-store", html.EscapeString(string(b)))
+	e.CustomDataAttributes.Set("store", html.EscapeString(string(b)))
 	return e
 }
 

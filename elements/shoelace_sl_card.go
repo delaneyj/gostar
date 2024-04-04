@@ -162,9 +162,9 @@ func (e *SLCARDElement) CustomDataRemove(key string) *SLCARDElement {
 	return e
 }
 
-// Merges the store with the given object
+// Merges the singleton store with the given object
 
-func (e *SLCARDElement) DATASTAR_MERGE_STORE(v any) *SLCARDElement {
+func (e *SLCARDElement) DATASTA_STORE(v any) *SLCARDElement {
 	if e.CustomDataAttributes == nil {
 		e.CustomDataAttributes = treemap.New[string, string]()
 	}
@@ -172,7 +172,7 @@ func (e *SLCARDElement) DATASTAR_MERGE_STORE(v any) *SLCARDElement {
 	if err != nil {
 		panic(err)
 	}
-	e.CustomDataAttributes.Set("merge-store", html.EscapeString(string(b)))
+	e.CustomDataAttributes.Set("store", html.EscapeString(string(b)))
 	return e
 }
 

@@ -1559,9 +1559,9 @@ func (e *CITEElement) TRANSLATERemove(c CiteTranslateChoice) *CITEElement {
 	return e
 }
 
-// Merges the store with the given object
+// Merges the singleton store with the given object
 
-func (e *CITEElement) DATASTAR_MERGE_STORE(v any) *CITEElement {
+func (e *CITEElement) DATASTA_STORE(v any) *CITEElement {
 	if e.CustomDataAttributes == nil {
 		e.CustomDataAttributes = treemap.New[string, string]()
 	}
@@ -1569,7 +1569,7 @@ func (e *CITEElement) DATASTAR_MERGE_STORE(v any) *CITEElement {
 	if err != nil {
 		panic(err)
 	}
-	e.CustomDataAttributes.Set("merge-store", html.EscapeString(string(b)))
+	e.CustomDataAttributes.Set("store", html.EscapeString(string(b)))
 	return e
 }
 

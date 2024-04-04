@@ -449,9 +449,9 @@ func (e *SVGFEDROPSHADOWElement) STYLERemove(keys ...string) *SVGFEDROPSHADOWEle
 	return e
 }
 
-// Merges the store with the given object
+// Merges the singleton store with the given object
 
-func (e *SVGFEDROPSHADOWElement) DATASTAR_MERGE_STORE(v any) *SVGFEDROPSHADOWElement {
+func (e *SVGFEDROPSHADOWElement) DATASTA_STORE(v any) *SVGFEDROPSHADOWElement {
 	if e.CustomDataAttributes == nil {
 		e.CustomDataAttributes = treemap.New[string, string]()
 	}
@@ -459,7 +459,7 @@ func (e *SVGFEDROPSHADOWElement) DATASTAR_MERGE_STORE(v any) *SVGFEDROPSHADOWEle
 	if err != nil {
 		panic(err)
 	}
-	e.CustomDataAttributes.Set("merge-store", html.EscapeString(string(b)))
+	e.CustomDataAttributes.Set("store", html.EscapeString(string(b)))
 	return e
 }
 

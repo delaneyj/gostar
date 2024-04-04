@@ -614,9 +614,9 @@ func (e *MathMLMPHANTOMElement) TABINDEXRemove(i int) *MathMLMPHANTOMElement {
 	return e
 }
 
-// Merges the store with the given object
+// Merges the singleton store with the given object
 
-func (e *MathMLMPHANTOMElement) DATASTAR_MERGE_STORE(v any) *MathMLMPHANTOMElement {
+func (e *MathMLMPHANTOMElement) DATASTA_STORE(v any) *MathMLMPHANTOMElement {
 	if e.CustomDataAttributes == nil {
 		e.CustomDataAttributes = treemap.New[string, string]()
 	}
@@ -624,7 +624,7 @@ func (e *MathMLMPHANTOMElement) DATASTAR_MERGE_STORE(v any) *MathMLMPHANTOMEleme
 	if err != nil {
 		panic(err)
 	}
-	e.CustomDataAttributes.Set("merge-store", html.EscapeString(string(b)))
+	e.CustomDataAttributes.Set("store", html.EscapeString(string(b)))
 	return e
 }
 

@@ -1609,9 +1609,9 @@ func (e *CANVASElement) TRANSLATERemove(c CanvasTranslateChoice) *CANVASElement 
 	return e
 }
 
-// Merges the store with the given object
+// Merges the singleton store with the given object
 
-func (e *CANVASElement) DATASTAR_MERGE_STORE(v any) *CANVASElement {
+func (e *CANVASElement) DATASTA_STORE(v any) *CANVASElement {
 	if e.CustomDataAttributes == nil {
 		e.CustomDataAttributes = treemap.New[string, string]()
 	}
@@ -1619,7 +1619,7 @@ func (e *CANVASElement) DATASTAR_MERGE_STORE(v any) *CANVASElement {
 	if err != nil {
 		panic(err)
 	}
-	e.CustomDataAttributes.Set("merge-store", html.EscapeString(string(b)))
+	e.CustomDataAttributes.Set("store", html.EscapeString(string(b)))
 	return e
 }
 

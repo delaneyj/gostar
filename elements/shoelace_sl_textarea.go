@@ -852,9 +852,9 @@ func (e *SLTEXTAREAElement) DEFAULT_VALUERemoveF(format string, args ...any) *SL
 	return e.DEFAULT_VALUERemove(fmt.Sprintf(format, args...))
 }
 
-// Merges the store with the given object
+// Merges the singleton store with the given object
 
-func (e *SLTEXTAREAElement) DATASTAR_MERGE_STORE(v any) *SLTEXTAREAElement {
+func (e *SLTEXTAREAElement) DATASTA_STORE(v any) *SLTEXTAREAElement {
 	if e.CustomDataAttributes == nil {
 		e.CustomDataAttributes = treemap.New[string, string]()
 	}
@@ -862,7 +862,7 @@ func (e *SLTEXTAREAElement) DATASTAR_MERGE_STORE(v any) *SLTEXTAREAElement {
 	if err != nil {
 		panic(err)
 	}
-	e.CustomDataAttributes.Set("merge-store", html.EscapeString(string(b)))
+	e.CustomDataAttributes.Set("store", html.EscapeString(string(b)))
 	return e
 }
 

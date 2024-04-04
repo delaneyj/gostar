@@ -201,9 +201,9 @@ func (e *SLOPTIONElement) VALUERemoveF(format string, args ...any) *SLOPTIONElem
 	return e.VALUERemove(fmt.Sprintf(format, args...))
 }
 
-// Merges the store with the given object
+// Merges the singleton store with the given object
 
-func (e *SLOPTIONElement) DATASTAR_MERGE_STORE(v any) *SLOPTIONElement {
+func (e *SLOPTIONElement) DATASTA_STORE(v any) *SLOPTIONElement {
 	if e.CustomDataAttributes == nil {
 		e.CustomDataAttributes = treemap.New[string, string]()
 	}
@@ -211,7 +211,7 @@ func (e *SLOPTIONElement) DATASTAR_MERGE_STORE(v any) *SLOPTIONElement {
 	if err != nil {
 		panic(err)
 	}
-	e.CustomDataAttributes.Set("merge-store", html.EscapeString(string(b)))
+	e.CustomDataAttributes.Set("store", html.EscapeString(string(b)))
 	return e
 }
 

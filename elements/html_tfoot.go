@@ -1557,9 +1557,9 @@ func (e *TFOOTElement) TRANSLATERemove(c TfootTranslateChoice) *TFOOTElement {
 	return e
 }
 
-// Merges the store with the given object
+// Merges the singleton store with the given object
 
-func (e *TFOOTElement) DATASTAR_MERGE_STORE(v any) *TFOOTElement {
+func (e *TFOOTElement) DATASTA_STORE(v any) *TFOOTElement {
 	if e.CustomDataAttributes == nil {
 		e.CustomDataAttributes = treemap.New[string, string]()
 	}
@@ -1567,7 +1567,7 @@ func (e *TFOOTElement) DATASTAR_MERGE_STORE(v any) *TFOOTElement {
 	if err != nil {
 		panic(err)
 	}
-	e.CustomDataAttributes.Set("merge-store", html.EscapeString(string(b)))
+	e.CustomDataAttributes.Set("store", html.EscapeString(string(b)))
 	return e
 }
 

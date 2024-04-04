@@ -201,9 +201,9 @@ func (e *SLBUTTONGROUPElement) LABELRemoveF(format string, args ...any) *SLBUTTO
 	return e.LABELRemove(fmt.Sprintf(format, args...))
 }
 
-// Merges the store with the given object
+// Merges the singleton store with the given object
 
-func (e *SLBUTTONGROUPElement) DATASTAR_MERGE_STORE(v any) *SLBUTTONGROUPElement {
+func (e *SLBUTTONGROUPElement) DATASTA_STORE(v any) *SLBUTTONGROUPElement {
 	if e.CustomDataAttributes == nil {
 		e.CustomDataAttributes = treemap.New[string, string]()
 	}
@@ -211,7 +211,7 @@ func (e *SLBUTTONGROUPElement) DATASTAR_MERGE_STORE(v any) *SLBUTTONGROUPElement
 	if err != nil {
 		panic(err)
 	}
-	e.CustomDataAttributes.Set("merge-store", html.EscapeString(string(b)))
+	e.CustomDataAttributes.Set("store", html.EscapeString(string(b)))
 	return e
 }
 

@@ -1562,9 +1562,9 @@ func (e *SPANElement) TRANSLATERemove(c SpanTranslateChoice) *SPANElement {
 	return e
 }
 
-// Merges the store with the given object
+// Merges the singleton store with the given object
 
-func (e *SPANElement) DATASTAR_MERGE_STORE(v any) *SPANElement {
+func (e *SPANElement) DATASTA_STORE(v any) *SPANElement {
 	if e.CustomDataAttributes == nil {
 		e.CustomDataAttributes = treemap.New[string, string]()
 	}
@@ -1572,7 +1572,7 @@ func (e *SPANElement) DATASTAR_MERGE_STORE(v any) *SPANElement {
 	if err != nil {
 		panic(err)
 	}
-	e.CustomDataAttributes.Set("merge-store", html.EscapeString(string(b)))
+	e.CustomDataAttributes.Set("store", html.EscapeString(string(b)))
 	return e
 }
 

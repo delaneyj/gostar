@@ -1558,9 +1558,9 @@ func (e *NOSCRIPTElement) TRANSLATERemove(c NoscriptTranslateChoice) *NOSCRIPTEl
 	return e
 }
 
-// Merges the store with the given object
+// Merges the singleton store with the given object
 
-func (e *NOSCRIPTElement) DATASTAR_MERGE_STORE(v any) *NOSCRIPTElement {
+func (e *NOSCRIPTElement) DATASTA_STORE(v any) *NOSCRIPTElement {
 	if e.CustomDataAttributes == nil {
 		e.CustomDataAttributes = treemap.New[string, string]()
 	}
@@ -1568,7 +1568,7 @@ func (e *NOSCRIPTElement) DATASTAR_MERGE_STORE(v any) *NOSCRIPTElement {
 	if err != nil {
 		panic(err)
 	}
-	e.CustomDataAttributes.Set("merge-store", html.EscapeString(string(b)))
+	e.CustomDataAttributes.Set("store", html.EscapeString(string(b)))
 	return e
 }
 

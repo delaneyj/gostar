@@ -491,9 +491,9 @@ func (e *SVGLINEARGRADIENTElement) STYLERemove(keys ...string) *SVGLINEARGRADIEN
 	return e
 }
 
-// Merges the store with the given object
+// Merges the singleton store with the given object
 
-func (e *SVGLINEARGRADIENTElement) DATASTAR_MERGE_STORE(v any) *SVGLINEARGRADIENTElement {
+func (e *SVGLINEARGRADIENTElement) DATASTA_STORE(v any) *SVGLINEARGRADIENTElement {
 	if e.CustomDataAttributes == nil {
 		e.CustomDataAttributes = treemap.New[string, string]()
 	}
@@ -501,7 +501,7 @@ func (e *SVGLINEARGRADIENTElement) DATASTAR_MERGE_STORE(v any) *SVGLINEARGRADIEN
 	if err != nil {
 		panic(err)
 	}
-	e.CustomDataAttributes.Set("merge-store", html.EscapeString(string(b)))
+	e.CustomDataAttributes.Set("store", html.EscapeString(string(b)))
 	return e
 }
 

@@ -1069,9 +1069,9 @@ func (e *SLINPUTElement) SPELLCHECKRemove(b bool) *SLINPUTElement {
 	return e
 }
 
-// Merges the store with the given object
+// Merges the singleton store with the given object
 
-func (e *SLINPUTElement) DATASTAR_MERGE_STORE(v any) *SLINPUTElement {
+func (e *SLINPUTElement) DATASTA_STORE(v any) *SLINPUTElement {
 	if e.CustomDataAttributes == nil {
 		e.CustomDataAttributes = treemap.New[string, string]()
 	}
@@ -1079,7 +1079,7 @@ func (e *SLINPUTElement) DATASTAR_MERGE_STORE(v any) *SLINPUTElement {
 	if err != nil {
 		panic(err)
 	}
-	e.CustomDataAttributes.Set("merge-store", html.EscapeString(string(b)))
+	e.CustomDataAttributes.Set("store", html.EscapeString(string(b)))
 	return e
 }
 

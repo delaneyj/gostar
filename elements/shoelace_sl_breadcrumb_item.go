@@ -201,9 +201,9 @@ func (e *SLBREADCRUMBITEMElement) HREFRemoveF(format string, args ...any) *SLBRE
 	return e.HREFRemove(fmt.Sprintf(format, args...))
 }
 
-// Merges the store with the given object
+// Merges the singleton store with the given object
 
-func (e *SLBREADCRUMBITEMElement) DATASTAR_MERGE_STORE(v any) *SLBREADCRUMBITEMElement {
+func (e *SLBREADCRUMBITEMElement) DATASTA_STORE(v any) *SLBREADCRUMBITEMElement {
 	if e.CustomDataAttributes == nil {
 		e.CustomDataAttributes = treemap.New[string, string]()
 	}
@@ -211,7 +211,7 @@ func (e *SLBREADCRUMBITEMElement) DATASTAR_MERGE_STORE(v any) *SLBREADCRUMBITEME
 	if err != nil {
 		panic(err)
 	}
-	e.CustomDataAttributes.Set("merge-store", html.EscapeString(string(b)))
+	e.CustomDataAttributes.Set("store", html.EscapeString(string(b)))
 	return e
 }
 
