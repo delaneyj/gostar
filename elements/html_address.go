@@ -1559,7 +1559,7 @@ func (e *ADDRESSElement) TRANSLATERemove(c AddressTranslateChoice) *ADDRESSEleme
 
 // Merges the singleton store with the given object
 
-func (e *ADDRESSElement) DATASTA_STORE(v any) *ADDRESSElement {
+func (e *ADDRESSElement) DATASTAR_STORE(v any) *ADDRESSElement {
 	if e.CustomDataAttributes == nil {
 		e.CustomDataAttributes = treemap.New[string, string]()
 	}

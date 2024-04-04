@@ -1655,7 +1655,7 @@ func (e *METERElement) TRANSLATERemove(c MeterTranslateChoice) *METERElement {
 
 // Merges the singleton store with the given object
 
-func (e *METERElement) DATASTA_STORE(v any) *METERElement {
+func (e *METERElement) DATASTAR_STORE(v any) *METERElement {
 	if e.CustomDataAttributes == nil {
 		e.CustomDataAttributes = treemap.New[string, string]()
 	}

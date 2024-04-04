@@ -1560,7 +1560,7 @@ func (e *BDOElement) TRANSLATERemove(c BdoTranslateChoice) *BDOElement {
 
 // Merges the singleton store with the given object
 
-func (e *BDOElement) DATASTA_STORE(v any) *BDOElement {
+func (e *BDOElement) DATASTAR_STORE(v any) *BDOElement {
 	if e.CustomDataAttributes == nil {
 		e.CustomDataAttributes = treemap.New[string, string]()
 	}

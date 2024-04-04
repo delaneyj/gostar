@@ -1601,7 +1601,7 @@ func (e *QElement) TRANSLATERemove(c QTranslateChoice) *QElement {
 
 // Merges the singleton store with the given object
 
-func (e *QElement) DATASTA_STORE(v any) *QElement {
+func (e *QElement) DATASTAR_STORE(v any) *QElement {
 	if e.CustomDataAttributes == nil {
 		e.CustomDataAttributes = treemap.New[string, string]()
 	}

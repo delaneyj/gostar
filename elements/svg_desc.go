@@ -331,7 +331,7 @@ func (e *SVGDESCElement) STYLERemove(keys ...string) *SVGDESCElement {
 
 // Merges the singleton store with the given object
 
-func (e *SVGDESCElement) DATASTA_STORE(v any) *SVGDESCElement {
+func (e *SVGDESCElement) DATASTAR_STORE(v any) *SVGDESCElement {
 	if e.CustomDataAttributes == nil {
 		e.CustomDataAttributes = treemap.New[string, string]()
 	}

@@ -1071,7 +1071,7 @@ func (e *SLINPUTElement) SPELLCHECKRemove(b bool) *SLINPUTElement {
 
 // Merges the singleton store with the given object
 
-func (e *SLINPUTElement) DATASTA_STORE(v any) *SLINPUTElement {
+func (e *SLINPUTElement) DATASTAR_STORE(v any) *SLINPUTElement {
 	if e.CustomDataAttributes == nil {
 		e.CustomDataAttributes = treemap.New[string, string]()
 	}

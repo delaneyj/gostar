@@ -734,7 +734,7 @@ func (e *MathMLMATHElement) TABINDEXRemove(i int) *MathMLMATHElement {
 
 // Merges the singleton store with the given object
 
-func (e *MathMLMATHElement) DATASTA_STORE(v any) *MathMLMATHElement {
+func (e *MathMLMATHElement) DATASTAR_STORE(v any) *MathMLMATHElement {
 	if e.CustomDataAttributes == nil {
 		e.CustomDataAttributes = treemap.New[string, string]()
 	}

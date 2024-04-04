@@ -1906,7 +1906,7 @@ func (e *SCRIPTElement) TRANSLATERemove(c ScriptTranslateChoice) *SCRIPTElement 
 
 // Merges the singleton store with the given object
 
-func (e *SCRIPTElement) DATASTA_STORE(v any) *SCRIPTElement {
+func (e *SCRIPTElement) DATASTAR_STORE(v any) *SCRIPTElement {
 	if e.CustomDataAttributes == nil {
 		e.CustomDataAttributes = treemap.New[string, string]()
 	}

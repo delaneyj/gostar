@@ -1591,7 +1591,7 @@ func (e *MENUElement) TRANSLATERemove(c MenuTranslateChoice) *MENUElement {
 
 // Merges the singleton store with the given object
 
-func (e *MENUElement) DATASTA_STORE(v any) *MENUElement {
+func (e *MENUElement) DATASTAR_STORE(v any) *MENUElement {
 	if e.CustomDataAttributes == nil {
 		e.CustomDataAttributes = treemap.New[string, string]()
 	}

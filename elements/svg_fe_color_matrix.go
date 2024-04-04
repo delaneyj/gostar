@@ -445,7 +445,7 @@ func (e *SVGFECOLORMATRIXElement) STYLERemove(keys ...string) *SVGFECOLORMATRIXE
 
 // Merges the singleton store with the given object
 
-func (e *SVGFECOLORMATRIXElement) DATASTA_STORE(v any) *SVGFECOLORMATRIXElement {
+func (e *SVGFECOLORMATRIXElement) DATASTAR_STORE(v any) *SVGFECOLORMATRIXElement {
 	if e.CustomDataAttributes == nil {
 		e.CustomDataAttributes = treemap.New[string, string]()
 	}

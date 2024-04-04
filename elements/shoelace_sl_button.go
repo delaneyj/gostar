@@ -489,7 +489,7 @@ func (e *SLBUTTONElement) DISABLEDRemove(b bool) *SLBUTTONElement {
 
 // Merges the singleton store with the given object
 
-func (e *SLBUTTONElement) DATASTA_STORE(v any) *SLBUTTONElement {
+func (e *SLBUTTONElement) DATASTAR_STORE(v any) *SLBUTTONElement {
 	if e.CustomDataAttributes == nil {
 		e.CustomDataAttributes = treemap.New[string, string]()
 	}

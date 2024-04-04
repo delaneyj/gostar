@@ -1562,7 +1562,7 @@ func (e *DIVElement) TRANSLATERemove(c DivTranslateChoice) *DIVElement {
 
 // Merges the singleton store with the given object
 
-func (e *DIVElement) DATASTA_STORE(v any) *DIVElement {
+func (e *DIVElement) DATASTAR_STORE(v any) *DIVElement {
 	if e.CustomDataAttributes == nil {
 		e.CustomDataAttributes = treemap.New[string, string]()
 	}

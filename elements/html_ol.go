@@ -1655,7 +1655,7 @@ func (e *OLElement) TRANSLATERemove(c OlTranslateChoice) *OLElement {
 
 // Merges the singleton store with the given object
 
-func (e *OLElement) DATASTA_STORE(v any) *OLElement {
+func (e *OLElement) DATASTAR_STORE(v any) *OLElement {
 	if e.CustomDataAttributes == nil {
 		e.CustomDataAttributes = treemap.New[string, string]()
 	}

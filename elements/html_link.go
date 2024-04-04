@@ -1974,7 +1974,7 @@ func (e *LINKElement) TRANSLATERemove(c LinkTranslateChoice) *LINKElement {
 
 // Merges the singleton store with the given object
 
-func (e *LINKElement) DATASTA_STORE(v any) *LINKElement {
+func (e *LINKElement) DATASTAR_STORE(v any) *LINKElement {
 	if e.CustomDataAttributes == nil {
 		e.CustomDataAttributes = treemap.New[string, string]()
 	}

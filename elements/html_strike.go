@@ -1559,7 +1559,7 @@ func (e *STRIKEElement) TRANSLATERemove(c StrikeTranslateChoice) *STRIKEElement 
 
 // Merges the singleton store with the given object
 
-func (e *STRIKEElement) DATASTA_STORE(v any) *STRIKEElement {
+func (e *STRIKEElement) DATASTAR_STORE(v any) *STRIKEElement {
 	if e.CustomDataAttributes == nil {
 		e.CustomDataAttributes = treemap.New[string, string]()
 	}

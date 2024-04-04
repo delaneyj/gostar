@@ -470,7 +470,7 @@ func (e *SVGFESPOTLIGHTElement) STYLERemove(keys ...string) *SVGFESPOTLIGHTEleme
 
 // Merges the singleton store with the given object
 
-func (e *SVGFESPOTLIGHTElement) DATASTA_STORE(v any) *SVGFESPOTLIGHTElement {
+func (e *SVGFESPOTLIGHTElement) DATASTAR_STORE(v any) *SVGFESPOTLIGHTElement {
 	if e.CustomDataAttributes == nil {
 		e.CustomDataAttributes = treemap.New[string, string]()
 	}

@@ -450,7 +450,7 @@ func (e *SVGFEDIFFUSELIGHTINGElement) STYLERemove(keys ...string) *SVGFEDIFFUSEL
 
 // Merges the singleton store with the given object
 
-func (e *SVGFEDIFFUSELIGHTINGElement) DATASTA_STORE(v any) *SVGFEDIFFUSELIGHTINGElement {
+func (e *SVGFEDIFFUSELIGHTINGElement) DATASTAR_STORE(v any) *SVGFEDIFFUSELIGHTINGElement {
 	if e.CustomDataAttributes == nil {
 		e.CustomDataAttributes = treemap.New[string, string]()
 	}

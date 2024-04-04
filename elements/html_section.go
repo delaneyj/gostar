@@ -1561,7 +1561,7 @@ func (e *SECTIONElement) TRANSLATERemove(c SectionTranslateChoice) *SECTIONEleme
 
 // Merges the singleton store with the given object
 
-func (e *SECTIONElement) DATASTA_STORE(v any) *SECTIONElement {
+func (e *SECTIONElement) DATASTAR_STORE(v any) *SECTIONElement {
 	if e.CustomDataAttributes == nil {
 		e.CustomDataAttributes = treemap.New[string, string]()
 	}

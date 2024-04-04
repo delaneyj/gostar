@@ -1559,7 +1559,7 @@ func (e *SAMPElement) TRANSLATERemove(c SampTranslateChoice) *SAMPElement {
 
 // Merges the singleton store with the given object
 
-func (e *SAMPElement) DATASTA_STORE(v any) *SAMPElement {
+func (e *SAMPElement) DATASTAR_STORE(v any) *SAMPElement {
 	if e.CustomDataAttributes == nil {
 		e.CustomDataAttributes = treemap.New[string, string]()
 	}

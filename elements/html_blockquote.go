@@ -1604,7 +1604,7 @@ func (e *BLOCKQUOTEElement) TRANSLATERemove(c BlockquoteTranslateChoice) *BLOCKQ
 
 // Merges the singleton store with the given object
 
-func (e *BLOCKQUOTEElement) DATASTA_STORE(v any) *BLOCKQUOTEElement {
+func (e *BLOCKQUOTEElement) DATASTAR_STORE(v any) *BLOCKQUOTEElement {
 	if e.CustomDataAttributes == nil {
 		e.CustomDataAttributes = treemap.New[string, string]()
 	}

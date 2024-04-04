@@ -1638,7 +1638,7 @@ func (e *LABELElement) TRANSLATERemove(c LabelTranslateChoice) *LABELElement {
 
 // Merges the singleton store with the given object
 
-func (e *LABELElement) DATASTA_STORE(v any) *LABELElement {
+func (e *LABELElement) DATASTAR_STORE(v any) *LABELElement {
 	if e.CustomDataAttributes == nil {
 		e.CustomDataAttributes = treemap.New[string, string]()
 	}

@@ -468,7 +468,7 @@ func (e *SVGFETURBULENCEElement) STYLERemove(keys ...string) *SVGFETURBULENCEEle
 
 // Merges the singleton store with the given object
 
-func (e *SVGFETURBULENCEElement) DATASTA_STORE(v any) *SVGFETURBULENCEElement {
+func (e *SVGFETURBULENCEElement) DATASTAR_STORE(v any) *SVGFETURBULENCEElement {
 	if e.CustomDataAttributes == nil {
 		e.CustomDataAttributes = treemap.New[string, string]()
 	}

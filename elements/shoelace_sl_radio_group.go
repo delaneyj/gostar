@@ -385,7 +385,7 @@ func (e *SLRADIOGROUPElement) REQUIREDRemove(b bool) *SLRADIOGROUPElement {
 
 // Merges the singleton store with the given object
 
-func (e *SLRADIOGROUPElement) DATASTA_STORE(v any) *SLRADIOGROUPElement {
+func (e *SLRADIOGROUPElement) DATASTAR_STORE(v any) *SLRADIOGROUPElement {
 	if e.CustomDataAttributes == nil {
 		e.CustomDataAttributes = treemap.New[string, string]()
 	}

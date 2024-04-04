@@ -854,7 +854,7 @@ func (e *SLTEXTAREAElement) DEFAULT_VALUERemoveF(format string, args ...any) *SL
 
 // Merges the singleton store with the given object
 
-func (e *SLTEXTAREAElement) DATASTA_STORE(v any) *SLTEXTAREAElement {
+func (e *SLTEXTAREAElement) DATASTAR_STORE(v any) *SLTEXTAREAElement {
 	if e.CustomDataAttributes == nil {
 		e.CustomDataAttributes = treemap.New[string, string]()
 	}

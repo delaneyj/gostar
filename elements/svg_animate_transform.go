@@ -1110,7 +1110,7 @@ func (e *SVGANIMATETRANSFORMElement) STYLERemove(keys ...string) *SVGANIMATETRAN
 
 // Merges the singleton store with the given object
 
-func (e *SVGANIMATETRANSFORMElement) DATASTA_STORE(v any) *SVGANIMATETRANSFORMElement {
+func (e *SVGANIMATETRANSFORMElement) DATASTAR_STORE(v any) *SVGANIMATETRANSFORMElement {
 	if e.CustomDataAttributes == nil {
 		e.CustomDataAttributes = treemap.New[string, string]()
 	}

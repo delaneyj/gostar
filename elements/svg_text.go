@@ -460,7 +460,7 @@ func (e *SVGTEXTElement) STYLERemove(keys ...string) *SVGTEXTElement {
 
 // Merges the singleton store with the given object
 
-func (e *SVGTEXTElement) DATASTA_STORE(v any) *SVGTEXTElement {
+func (e *SVGTEXTElement) DATASTAR_STORE(v any) *SVGTEXTElement {
 	if e.CustomDataAttributes == nil {
 		e.CustomDataAttributes = treemap.New[string, string]()
 	}

@@ -379,7 +379,7 @@ func (e *SLCHECKBOXElement) REQUIREDRemove(b bool) *SLCHECKBOXElement {
 
 // Merges the singleton store with the given object
 
-func (e *SLCHECKBOXElement) DATASTA_STORE(v any) *SLCHECKBOXElement {
+func (e *SLCHECKBOXElement) DATASTAR_STORE(v any) *SLCHECKBOXElement {
 	if e.CustomDataAttributes == nil {
 		e.CustomDataAttributes = treemap.New[string, string]()
 	}

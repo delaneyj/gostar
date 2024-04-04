@@ -1559,7 +1559,7 @@ func (e *H1Element) TRANSLATERemove(c H1TranslateChoice) *H1Element {
 
 // Merges the singleton store with the given object
 
-func (e *H1Element) DATASTA_STORE(v any) *H1Element {
+func (e *H1Element) DATASTAR_STORE(v any) *H1Element {
 	if e.CustomDataAttributes == nil {
 		e.CustomDataAttributes = treemap.New[string, string]()
 	}

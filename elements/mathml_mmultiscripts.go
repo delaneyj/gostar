@@ -617,7 +617,7 @@ func (e *MathMLMMULTISCRIPTSElement) TABINDEXRemove(i int) *MathMLMMULTISCRIPTSE
 
 // Merges the singleton store with the given object
 
-func (e *MathMLMMULTISCRIPTSElement) DATASTA_STORE(v any) *MathMLMMULTISCRIPTSElement {
+func (e *MathMLMMULTISCRIPTSElement) DATASTAR_STORE(v any) *MathMLMMULTISCRIPTSElement {
 	if e.CustomDataAttributes == nil {
 		e.CustomDataAttributes = treemap.New[string, string]()
 	}

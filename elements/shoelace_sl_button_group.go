@@ -203,7 +203,7 @@ func (e *SLBUTTONGROUPElement) LABELRemoveF(format string, args ...any) *SLBUTTO
 
 // Merges the singleton store with the given object
 
-func (e *SLBUTTONGROUPElement) DATASTA_STORE(v any) *SLBUTTONGROUPElement {
+func (e *SLBUTTONGROUPElement) DATASTAR_STORE(v any) *SLBUTTONGROUPElement {
 	if e.CustomDataAttributes == nil {
 		e.CustomDataAttributes = treemap.New[string, string]()
 	}

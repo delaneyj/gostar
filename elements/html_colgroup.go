@@ -1583,7 +1583,7 @@ func (e *COLGROUPElement) TRANSLATERemove(c ColgroupTranslateChoice) *COLGROUPEl
 
 // Merges the singleton store with the given object
 
-func (e *COLGROUPElement) DATASTA_STORE(v any) *COLGROUPElement {
+func (e *COLGROUPElement) DATASTAR_STORE(v any) *COLGROUPElement {
 	if e.CustomDataAttributes == nil {
 		e.CustomDataAttributes = treemap.New[string, string]()
 	}

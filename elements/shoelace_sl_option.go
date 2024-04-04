@@ -203,7 +203,7 @@ func (e *SLOPTIONElement) VALUERemoveF(format string, args ...any) *SLOPTIONElem
 
 // Merges the singleton store with the given object
 
-func (e *SLOPTIONElement) DATASTA_STORE(v any) *SLOPTIONElement {
+func (e *SLOPTIONElement) DATASTAR_STORE(v any) *SLOPTIONElement {
 	if e.CustomDataAttributes == nil {
 		e.CustomDataAttributes = treemap.New[string, string]()
 	}

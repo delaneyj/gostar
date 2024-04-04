@@ -1583,7 +1583,7 @@ func (e *LIElement) TRANSLATERemove(c LiTranslateChoice) *LIElement {
 
 // Merges the singleton store with the given object
 
-func (e *LIElement) DATASTA_STORE(v any) *LIElement {
+func (e *LIElement) DATASTAR_STORE(v any) *LIElement {
 	if e.CustomDataAttributes == nil {
 		e.CustomDataAttributes = treemap.New[string, string]()
 	}

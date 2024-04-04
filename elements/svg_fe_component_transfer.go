@@ -374,7 +374,7 @@ func (e *SVGFECOMPONENTTRANSFERElement) STYLERemove(keys ...string) *SVGFECOMPON
 
 // Merges the singleton store with the given object
 
-func (e *SVGFECOMPONENTTRANSFERElement) DATASTA_STORE(v any) *SVGFECOMPONENTTRANSFERElement {
+func (e *SVGFECOMPONENTTRANSFERElement) DATASTAR_STORE(v any) *SVGFECOMPONENTTRANSFERElement {
 	if e.CustomDataAttributes == nil {
 		e.CustomDataAttributes = treemap.New[string, string]()
 	}

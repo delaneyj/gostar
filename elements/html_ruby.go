@@ -1559,7 +1559,7 @@ func (e *RUBYElement) TRANSLATERemove(c RubyTranslateChoice) *RUBYElement {
 
 // Merges the singleton store with the given object
 
-func (e *RUBYElement) DATASTA_STORE(v any) *RUBYElement {
+func (e *RUBYElement) DATASTAR_STORE(v any) *RUBYElement {
 	if e.CustomDataAttributes == nil {
 		e.CustomDataAttributes = treemap.New[string, string]()
 	}

@@ -559,7 +559,7 @@ func (e *SLSELECTElement) PLACEMENTRemove(c SLSelectPlacementChoice) *SLSELECTEl
 
 // Merges the singleton store with the given object
 
-func (e *SLSELECTElement) DATASTA_STORE(v any) *SLSELECTElement {
+func (e *SLSELECTElement) DATASTAR_STORE(v any) *SLSELECTElement {
 	if e.CustomDataAttributes == nil {
 		e.CustomDataAttributes = treemap.New[string, string]()
 	}

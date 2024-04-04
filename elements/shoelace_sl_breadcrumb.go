@@ -164,7 +164,7 @@ func (e *SLBREADCRUMBElement) CustomDataRemove(key string) *SLBREADCRUMBElement 
 
 // Merges the singleton store with the given object
 
-func (e *SLBREADCRUMBElement) DATASTA_STORE(v any) *SLBREADCRUMBElement {
+func (e *SLBREADCRUMBElement) DATASTAR_STORE(v any) *SLBREADCRUMBElement {
 	if e.CustomDataAttributes == nil {
 		e.CustomDataAttributes = treemap.New[string, string]()
 	}

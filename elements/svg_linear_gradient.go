@@ -493,7 +493,7 @@ func (e *SVGLINEARGRADIENTElement) STYLERemove(keys ...string) *SVGLINEARGRADIEN
 
 // Merges the singleton store with the given object
 
-func (e *SVGLINEARGRADIENTElement) DATASTA_STORE(v any) *SVGLINEARGRADIENTElement {
+func (e *SVGLINEARGRADIENTElement) DATASTAR_STORE(v any) *SVGLINEARGRADIENTElement {
 	if e.CustomDataAttributes == nil {
 		e.CustomDataAttributes = treemap.New[string, string]()
 	}

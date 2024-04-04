@@ -203,7 +203,7 @@ func (e *SLBREADCRUMBITEMElement) HREFRemoveF(format string, args ...any) *SLBRE
 
 // Merges the singleton store with the given object
 
-func (e *SLBREADCRUMBITEMElement) DATASTA_STORE(v any) *SLBREADCRUMBITEMElement {
+func (e *SLBREADCRUMBITEMElement) DATASTAR_STORE(v any) *SLBREADCRUMBITEMElement {
 	if e.CustomDataAttributes == nil {
 		e.CustomDataAttributes = treemap.New[string, string]()
 	}

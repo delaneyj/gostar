@@ -380,7 +380,7 @@ func (e *SVGCIRCLEElement) STYLERemove(keys ...string) *SVGCIRCLEElement {
 
 // Merges the singleton store with the given object
 
-func (e *SVGCIRCLEElement) DATASTA_STORE(v any) *SVGCIRCLEElement {
+func (e *SVGCIRCLEElement) DATASTAR_STORE(v any) *SVGCIRCLEElement {
 	if e.CustomDataAttributes == nil {
 		e.CustomDataAttributes = treemap.New[string, string]()
 	}

@@ -396,7 +396,7 @@ func (e *SVGELLIPSEElement) STYLERemove(keys ...string) *SVGELLIPSEElement {
 
 // Merges the singleton store with the given object
 
-func (e *SVGELLIPSEElement) DATASTA_STORE(v any) *SVGELLIPSEElement {
+func (e *SVGELLIPSEElement) DATASTAR_STORE(v any) *SVGELLIPSEElement {
 	if e.CustomDataAttributes == nil {
 		e.CustomDataAttributes = treemap.New[string, string]()
 	}

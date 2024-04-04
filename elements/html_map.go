@@ -1599,7 +1599,7 @@ func (e *MAPElement) TRANSLATERemove(c MapTranslateChoice) *MAPElement {
 
 // Merges the singleton store with the given object
 
-func (e *MAPElement) DATASTA_STORE(v any) *MAPElement {
+func (e *MAPElement) DATASTAR_STORE(v any) *MAPElement {
 	if e.CustomDataAttributes == nil {
 		e.CustomDataAttributes = treemap.New[string, string]()
 	}

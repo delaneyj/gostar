@@ -468,7 +468,7 @@ func (e *SVGFESPECULARLIGHTINGElement) STYLERemove(keys ...string) *SVGFESPECULA
 
 // Merges the singleton store with the given object
 
-func (e *SVGFESPECULARLIGHTINGElement) DATASTA_STORE(v any) *SVGFESPECULARLIGHTINGElement {
+func (e *SVGFESPECULARLIGHTINGElement) DATASTAR_STORE(v any) *SVGFESPECULARLIGHTINGElement {
 	if e.CustomDataAttributes == nil {
 		e.CustomDataAttributes = treemap.New[string, string]()
 	}

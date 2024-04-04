@@ -305,7 +305,7 @@ func (e *SLRADIOBUTTONElement) PILLRemove(b bool) *SLRADIOBUTTONElement {
 
 // Merges the singleton store with the given object
 
-func (e *SLRADIOBUTTONElement) DATASTA_STORE(v any) *SLRADIOBUTTONElement {
+func (e *SLRADIOBUTTONElement) DATASTAR_STORE(v any) *SLRADIOBUTTONElement {
 	if e.CustomDataAttributes == nil {
 		e.CustomDataAttributes = treemap.New[string, string]()
 	}

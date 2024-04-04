@@ -1561,7 +1561,7 @@ func (e *CITEElement) TRANSLATERemove(c CiteTranslateChoice) *CITEElement {
 
 // Merges the singleton store with the given object
 
-func (e *CITEElement) DATASTA_STORE(v any) *CITEElement {
+func (e *CITEElement) DATASTAR_STORE(v any) *CITEElement {
 	if e.CustomDataAttributes == nil {
 		e.CustomDataAttributes = treemap.New[string, string]()
 	}

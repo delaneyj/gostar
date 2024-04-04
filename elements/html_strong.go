@@ -1560,7 +1560,7 @@ func (e *STRONGElement) TRANSLATERemove(c StrongTranslateChoice) *STRONGElement 
 
 // Merges the singleton store with the given object
 
-func (e *STRONGElement) DATASTA_STORE(v any) *STRONGElement {
+func (e *STRONGElement) DATASTAR_STORE(v any) *STRONGElement {
 	if e.CustomDataAttributes == nil {
 		e.CustomDataAttributes = treemap.New[string, string]()
 	}

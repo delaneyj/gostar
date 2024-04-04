@@ -1584,7 +1584,7 @@ func (e *COLElement) TRANSLATERemove(c ColTranslateChoice) *COLElement {
 
 // Merges the singleton store with the given object
 
-func (e *COLElement) DATASTA_STORE(v any) *COLElement {
+func (e *COLElement) DATASTAR_STORE(v any) *COLElement {
 	if e.CustomDataAttributes == nil {
 		e.CustomDataAttributes = treemap.New[string, string]()
 	}

@@ -1637,7 +1637,7 @@ func (e *OPTGROUPElement) TRANSLATERemove(c OptgroupTranslateChoice) *OPTGROUPEl
 
 // Merges the singleton store with the given object
 
-func (e *OPTGROUPElement) DATASTA_STORE(v any) *OPTGROUPElement {
+func (e *OPTGROUPElement) DATASTAR_STORE(v any) *OPTGROUPElement {
 	if e.CustomDataAttributes == nil {
 		e.CustomDataAttributes = treemap.New[string, string]()
 	}

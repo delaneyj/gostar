@@ -1599,7 +1599,7 @@ func (e *DIALOGElement) TRANSLATERemove(c DialogTranslateChoice) *DIALOGElement 
 
 // Merges the singleton store with the given object
 
-func (e *DIALOGElement) DATASTA_STORE(v any) *DIALOGElement {
+func (e *DIALOGElement) DATASTAR_STORE(v any) *DIALOGElement {
 	if e.CustomDataAttributes == nil {
 		e.CustomDataAttributes = treemap.New[string, string]()
 	}

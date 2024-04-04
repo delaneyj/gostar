@@ -494,7 +494,7 @@ func (e *SVGFEDISPLACEMENTMAPElement) STYLERemove(keys ...string) *SVGFEDISPLACE
 
 // Merges the singleton store with the given object
 
-func (e *SVGFEDISPLACEMENTMAPElement) DATASTA_STORE(v any) *SVGFEDISPLACEMENTMAPElement {
+func (e *SVGFEDISPLACEMENTMAPElement) DATASTAR_STORE(v any) *SVGFEDISPLACEMENTMAPElement {
 	if e.CustomDataAttributes == nil {
 		e.CustomDataAttributes = treemap.New[string, string]()
 	}

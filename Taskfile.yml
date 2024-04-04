@@ -3,7 +3,7 @@
 version: "3"
 
 vars:
-  VERSION: 0.7.0
+  VERSION: 0.7.1
 
 interval: 1000ms
 

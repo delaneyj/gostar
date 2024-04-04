@@ -617,7 +617,7 @@ func (e *MathMLMPRESCRIPTSElement) TABINDEXRemove(i int) *MathMLMPRESCRIPTSEleme
 
 // Merges the singleton store with the given object
 
-func (e *MathMLMPRESCRIPTSElement) DATASTA_STORE(v any) *MathMLMPRESCRIPTSElement {
+func (e *MathMLMPRESCRIPTSElement) DATASTAR_STORE(v any) *MathMLMPRESCRIPTSElement {
 	if e.CustomDataAttributes == nil {
 		e.CustomDataAttributes = treemap.New[string, string]()
 	}

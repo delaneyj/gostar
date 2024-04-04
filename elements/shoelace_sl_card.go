@@ -164,7 +164,7 @@ func (e *SLCARDElement) CustomDataRemove(key string) *SLCARDElement {
 
 // Merges the singleton store with the given object
 
-func (e *SLCARDElement) DATASTA_STORE(v any) *SLCARDElement {
+func (e *SLCARDElement) DATASTAR_STORE(v any) *SLCARDElement {
 	if e.CustomDataAttributes == nil {
 		e.CustomDataAttributes = treemap.New[string, string]()
 	}

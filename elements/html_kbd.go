@@ -1560,7 +1560,7 @@ func (e *KBDElement) TRANSLATERemove(c KbdTranslateChoice) *KBDElement {
 
 // Merges the singleton store with the given object
 
-func (e *KBDElement) DATASTA_STORE(v any) *KBDElement {
+func (e *KBDElement) DATASTAR_STORE(v any) *KBDElement {
 	if e.CustomDataAttributes == nil {
 		e.CustomDataAttributes = treemap.New[string, string]()
 	}

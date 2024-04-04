@@ -1600,7 +1600,7 @@ func (e *TIMEElement) TRANSLATERemove(c TimeTranslateChoice) *TIMEElement {
 
 // Merges the singleton store with the given object
 
-func (e *TIMEElement) DATASTA_STORE(v any) *TIMEElement {
+func (e *TIMEElement) DATASTAR_STORE(v any) *TIMEElement {
 	if e.CustomDataAttributes == nil {
 		e.CustomDataAttributes = treemap.New[string, string]()
 	}

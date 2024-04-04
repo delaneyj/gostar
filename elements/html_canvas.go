@@ -1611,7 +1611,7 @@ func (e *CANVASElement) TRANSLATERemove(c CanvasTranslateChoice) *CANVASElement 
 
 // Merges the singleton store with the given object
 
-func (e *CANVASElement) DATASTA_STORE(v any) *CANVASElement {
+func (e *CANVASElement) DATASTAR_STORE(v any) *CANVASElement {
 	if e.CustomDataAttributes == nil {
 		e.CustomDataAttributes = treemap.New[string, string]()
 	}

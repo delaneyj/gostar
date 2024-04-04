@@ -1559,7 +1559,7 @@ func (e *LEGENDElement) TRANSLATERemove(c LegendTranslateChoice) *LEGENDElement 
 
 // Merges the singleton store with the given object
 
-func (e *LEGENDElement) DATASTA_STORE(v any) *LEGENDElement {
+func (e *LEGENDElement) DATASTAR_STORE(v any) *LEGENDElement {
 	if e.CustomDataAttributes == nil {
 		e.CustomDataAttributes = treemap.New[string, string]()
 	}

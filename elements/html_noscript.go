@@ -1560,7 +1560,7 @@ func (e *NOSCRIPTElement) TRANSLATERemove(c NoscriptTranslateChoice) *NOSCRIPTEl
 
 // Merges the singleton store with the given object
 
-func (e *NOSCRIPTElement) DATASTA_STORE(v any) *NOSCRIPTElement {
+func (e *NOSCRIPTElement) DATASTAR_STORE(v any) *NOSCRIPTElement {
 	if e.CustomDataAttributes == nil {
 		e.CustomDataAttributes = treemap.New[string, string]()
 	}

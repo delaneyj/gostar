@@ -1559,7 +1559,7 @@ func (e *WBRElement) TRANSLATERemove(c WbrTranslateChoice) *WBRElement {
 
 // Merges the singleton store with the given object
 
-func (e *WBRElement) DATASTA_STORE(v any) *WBRElement {
+func (e *WBRElement) DATASTAR_STORE(v any) *WBRElement {
 	if e.CustomDataAttributes == nil {
 		e.CustomDataAttributes = treemap.New[string, string]()
 	}

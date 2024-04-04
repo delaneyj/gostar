@@ -1690,7 +1690,7 @@ func (e *EMBEDElement) TRANSLATERemove(c EmbedTranslateChoice) *EMBEDElement {
 
 // Merges the singleton store with the given object
 
-func (e *EMBEDElement) DATASTA_STORE(v any) *EMBEDElement {
+func (e *EMBEDElement) DATASTAR_STORE(v any) *EMBEDElement {
 	if e.CustomDataAttributes == nil {
 		e.CustomDataAttributes = treemap.New[string, string]()
 	}

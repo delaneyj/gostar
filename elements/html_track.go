@@ -1753,7 +1753,7 @@ func (e *TRACKElement) TRANSLATERemove(c TrackTranslateChoice) *TRACKElement {
 
 // Merges the singleton store with the given object
 
-func (e *TRACKElement) DATASTA_STORE(v any) *TRACKElement {
+func (e *TRACKElement) DATASTAR_STORE(v any) *TRACKElement {
 	if e.CustomDataAttributes == nil {
 		e.CustomDataAttributes = treemap.New[string, string]()
 	}

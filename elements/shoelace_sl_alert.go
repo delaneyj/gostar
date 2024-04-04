@@ -291,7 +291,7 @@ func (e *SLALERTElement) DURATIONRemove() *SLALERTElement {
 
 // Merges the singleton store with the given object
 
-func (e *SLALERTElement) DATASTA_STORE(v any) *SLALERTElement {
+func (e *SLALERTElement) DATASTAR_STORE(v any) *SLALERTElement {
 	if e.CustomDataAttributes == nil {
 		e.CustomDataAttributes = treemap.New[string, string]()
 	}

@@ -1562,7 +1562,7 @@ func (e *NAVElement) TRANSLATERemove(c NavTranslateChoice) *NAVElement {
 
 // Merges the singleton store with the given object
 
-func (e *NAVElement) DATASTA_STORE(v any) *NAVElement {
+func (e *NAVElement) DATASTAR_STORE(v any) *NAVElement {
 	if e.CustomDataAttributes == nil {
 		e.CustomDataAttributes = treemap.New[string, string]()
 	}

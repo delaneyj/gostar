@@ -1559,7 +1559,7 @@ func (e *CAPTIONElement) TRANSLATERemove(c CaptionTranslateChoice) *CAPTIONEleme
 
 // Merges the singleton store with the given object
 
-func (e *CAPTIONElement) DATASTA_STORE(v any) *CAPTIONElement {
+func (e *CAPTIONElement) DATASTAR_STORE(v any) *CAPTIONElement {
 	if e.CustomDataAttributes == nil {
 		e.CustomDataAttributes = treemap.New[string, string]()
 	}

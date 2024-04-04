@@ -1796,7 +1796,7 @@ func (e *AUDIOElement) TRANSLATERemove(c AudioTranslateChoice) *AUDIOElement {
 
 // Merges the singleton store with the given object
 
-func (e *AUDIOElement) DATASTA_STORE(v any) *AUDIOElement {
+func (e *AUDIOElement) DATASTAR_STORE(v any) *AUDIOElement {
 	if e.CustomDataAttributes == nil {
 		e.CustomDataAttributes = treemap.New[string, string]()
 	}

@@ -1997,7 +1997,7 @@ func (e *BUTTONElement) TRANSLATERemove(c ButtonTranslateChoice) *BUTTONElement 
 
 // Merges the singleton store with the given object
 
-func (e *BUTTONElement) DATASTA_STORE(v any) *BUTTONElement {
+func (e *BUTTONElement) DATASTAR_STORE(v any) *BUTTONElement {
 	if e.CustomDataAttributes == nil {
 		e.CustomDataAttributes = treemap.New[string, string]()
 	}

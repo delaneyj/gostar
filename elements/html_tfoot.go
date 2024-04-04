@@ -1559,7 +1559,7 @@ func (e *TFOOTElement) TRANSLATERemove(c TfootTranslateChoice) *TFOOTElement {
 
 // Merges the singleton store with the given object
 
-func (e *TFOOTElement) DATASTA_STORE(v any) *TFOOTElement {
+func (e *TFOOTElement) DATASTAR_STORE(v any) *TFOOTElement {
 	if e.CustomDataAttributes == nil {
 		e.CustomDataAttributes = treemap.New[string, string]()
 	}

@@ -1600,7 +1600,7 @@ func (e *SLOTElement) TRANSLATERemove(c SlotTranslateChoice) *SLOTElement {
 
 // Merges the singleton store with the given object
 
-func (e *SLOTElement) DATASTA_STORE(v any) *SLOTElement {
+func (e *SLOTElement) DATASTAR_STORE(v any) *SLOTElement {
 	if e.CustomDataAttributes == nil {
 		e.CustomDataAttributes = treemap.New[string, string]()
 	}

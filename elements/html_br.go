@@ -1559,7 +1559,7 @@ func (e *BRElement) TRANSLATERemove(c BrTranslateChoice) *BRElement {
 
 // Merges the singleton store with the given object
 
-func (e *BRElement) DATASTA_STORE(v any) *BRElement {
+func (e *BRElement) DATASTAR_STORE(v any) *BRElement {
 	if e.CustomDataAttributes == nil {
 		e.CustomDataAttributes = treemap.New[string, string]()
 	}

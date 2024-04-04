@@ -1003,7 +1003,7 @@ func (e *SVGANIMATEMOTIONElement) STYLERemove(keys ...string) *SVGANIMATEMOTIONE
 
 // Merges the singleton store with the given object
 
-func (e *SVGANIMATEMOTIONElement) DATASTA_STORE(v any) *SVGANIMATEMOTIONElement {
+func (e *SVGANIMATEMOTIONElement) DATASTAR_STORE(v any) *SVGANIMATEMOTIONElement {
 	if e.CustomDataAttributes == nil {
 		e.CustomDataAttributes = treemap.New[string, string]()
 	}

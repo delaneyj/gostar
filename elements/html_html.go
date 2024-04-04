@@ -1560,7 +1560,7 @@ func (e *HTMLElement) TRANSLATERemove(c HtmlTranslateChoice) *HTMLElement {
 
 // Merges the singleton store with the given object
 
-func (e *HTMLElement) DATASTA_STORE(v any) *HTMLElement {
+func (e *HTMLElement) DATASTAR_STORE(v any) *HTMLElement {
 	if e.CustomDataAttributes == nil {
 		e.CustomDataAttributes = treemap.New[string, string]()
 	}

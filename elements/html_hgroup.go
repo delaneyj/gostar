@@ -1560,7 +1560,7 @@ func (e *HGROUPElement) TRANSLATERemove(c HgroupTranslateChoice) *HGROUPElement 
 
 // Merges the singleton store with the given object
 
-func (e *HGROUPElement) DATASTA_STORE(v any) *HGROUPElement {
+func (e *HGROUPElement) DATASTAR_STORE(v any) *HGROUPElement {
 	if e.CustomDataAttributes == nil {
 		e.CustomDataAttributes = treemap.New[string, string]()
 	}

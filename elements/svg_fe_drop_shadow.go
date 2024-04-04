@@ -451,7 +451,7 @@ func (e *SVGFEDROPSHADOWElement) STYLERemove(keys ...string) *SVGFEDROPSHADOWEle
 
 // Merges the singleton store with the given object
 
-func (e *SVGFEDROPSHADOWElement) DATASTA_STORE(v any) *SVGFEDROPSHADOWElement {
+func (e *SVGFEDROPSHADOWElement) DATASTAR_STORE(v any) *SVGFEDROPSHADOWElement {
 	if e.CustomDataAttributes == nil {
 		e.CustomDataAttributes = treemap.New[string, string]()
 	}

@@ -1561,7 +1561,7 @@ func (e *CODEElement) TRANSLATERemove(c CodeTranslateChoice) *CODEElement {
 
 // Merges the singleton store with the given object
 
-func (e *CODEElement) DATASTA_STORE(v any) *CODEElement {
+func (e *CODEElement) DATASTAR_STORE(v any) *CODEElement {
 	if e.CustomDataAttributes == nil {
 		e.CustomDataAttributes = treemap.New[string, string]()
 	}

@@ -1591,7 +1591,7 @@ func (e *PROGRESSElement) TRANSLATERemove(c ProgressTranslateChoice) *PROGRESSEl
 
 // Merges the singleton store with the given object
 
-func (e *PROGRESSElement) DATASTA_STORE(v any) *PROGRESSElement {
+func (e *PROGRESSElement) DATASTAR_STORE(v any) *PROGRESSElement {
 	if e.CustomDataAttributes == nil {
 		e.CustomDataAttributes = treemap.New[string, string]()
 	}

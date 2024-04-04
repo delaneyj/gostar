@@ -1561,7 +1561,7 @@ func (e *SUMMARYElement) TRANSLATERemove(c SummaryTranslateChoice) *SUMMARYEleme
 
 // Merges the singleton store with the given object
 
-func (e *SUMMARYElement) DATASTA_STORE(v any) *SUMMARYElement {
+func (e *SUMMARYElement) DATASTAR_STORE(v any) *SUMMARYElement {
 	if e.CustomDataAttributes == nil {
 		e.CustomDataAttributes = treemap.New[string, string]()
 	}

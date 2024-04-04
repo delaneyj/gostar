@@ -484,7 +484,7 @@ func (e *SVGRADIALGRADIENTElement) STYLERemove(keys ...string) *SVGRADIALGRADIEN
 
 // Merges the singleton store with the given object
 
-func (e *SVGRADIALGRADIENTElement) DATASTA_STORE(v any) *SVGRADIALGRADIENTElement {
+func (e *SVGRADIALGRADIENTElement) DATASTAR_STORE(v any) *SVGRADIALGRADIENTElement {
 	if e.CustomDataAttributes == nil {
 		e.CustomDataAttributes = treemap.New[string, string]()
 	}

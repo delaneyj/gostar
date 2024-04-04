@@ -1846,7 +1846,7 @@ func (e *FORMElement) TRANSLATERemove(c FormTranslateChoice) *FORMElement {
 
 // Merges the singleton store with the given object
 
-func (e *FORMElement) DATASTA_STORE(v any) *FORMElement {
+func (e *FORMElement) DATASTAR_STORE(v any) *FORMElement {
 	if e.CustomDataAttributes == nil {
 		e.CustomDataAttributes = treemap.New[string, string]()
 	}

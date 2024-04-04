@@ -1559,7 +1559,7 @@ func (e *FIELDSETElement) TRANSLATERemove(c FieldsetTranslateChoice) *FIELDSETEl
 
 // Merges the singleton store with the given object
 
-func (e *FIELDSETElement) DATASTA_STORE(v any) *FIELDSETElement {
+func (e *FIELDSETElement) DATASTAR_STORE(v any) *FIELDSETElement {
 	if e.CustomDataAttributes == nil {
 		e.CustomDataAttributes = treemap.New[string, string]()
 	}

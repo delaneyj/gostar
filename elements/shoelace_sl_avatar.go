@@ -334,7 +334,7 @@ func (e *SLAVATARElement) SHAPERemove(c SLAvatarShapeChoice) *SLAVATARElement {
 
 // Merges the singleton store with the given object
 
-func (e *SLAVATARElement) DATASTA_STORE(v any) *SLAVATARElement {
+func (e *SLAVATARElement) DATASTAR_STORE(v any) *SLAVATARElement {
 	if e.CustomDataAttributes == nil {
 		e.CustomDataAttributes = treemap.New[string, string]()
 	}

@@ -1637,7 +1637,7 @@ func (e *PARAMElement) TRANSLATERemove(c ParamTranslateChoice) *PARAMElement {
 
 // Merges the singleton store with the given object
 
-func (e *PARAMElement) DATASTA_STORE(v any) *PARAMElement {
+func (e *PARAMElement) DATASTAR_STORE(v any) *PARAMElement {
 	if e.CustomDataAttributes == nil {
 		e.CustomDataAttributes = treemap.New[string, string]()
 	}

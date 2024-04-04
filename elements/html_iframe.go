@@ -1932,7 +1932,7 @@ func (e *IFRAMEElement) TRANSLATERemove(c IframeTranslateChoice) *IFRAMEElement 
 
 // Merges the singleton store with the given object
 
-func (e *IFRAMEElement) DATASTA_STORE(v any) *IFRAMEElement {
+func (e *IFRAMEElement) DATASTAR_STORE(v any) *IFRAMEElement {
 	if e.CustomDataAttributes == nil {
 		e.CustomDataAttributes = treemap.New[string, string]()
 	}

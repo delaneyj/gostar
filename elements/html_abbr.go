@@ -1541,7 +1541,7 @@ func (e *ABBRElement) TRANSLATERemove(c AbbrTranslateChoice) *ABBRElement {
 
 // Merges the singleton store with the given object
 
-func (e *ABBRElement) DATASTA_STORE(v any) *ABBRElement {
+func (e *ABBRElement) DATASTAR_STORE(v any) *ABBRElement {
 	if e.CustomDataAttributes == nil {
 		e.CustomDataAttributes = treemap.New[string, string]()
 	}

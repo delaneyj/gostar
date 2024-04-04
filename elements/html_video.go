@@ -1939,7 +1939,7 @@ func (e *VIDEOElement) TRANSLATERemove(c VideoTranslateChoice) *VIDEOElement {
 
 // Merges the singleton store with the given object
 
-func (e *VIDEOElement) DATASTA_STORE(v any) *VIDEOElement {
+func (e *VIDEOElement) DATASTAR_STORE(v any) *VIDEOElement {
 	if e.CustomDataAttributes == nil {
 		e.CustomDataAttributes = treemap.New[string, string]()
 	}

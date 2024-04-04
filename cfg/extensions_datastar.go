@@ -5,7 +5,7 @@ import pb "github.com/delaneyj/gostar/cfg/gen/specs/v1"
 var DatastarExtensions = []*pb.Attribute{
 	// Core
 	{
-		Name:        "DatastaStore",
+		Name:        "DatastarStore",
 		Key:         "store",
 		Description: "Merges the singleton store with the given object",
 		Type:        AttributeTypeCustom(false, AttributeTypeJSON()),

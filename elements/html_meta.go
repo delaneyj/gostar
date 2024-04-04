@@ -1718,7 +1718,7 @@ func (e *METAElement) TRANSLATERemove(c MetaTranslateChoice) *METAElement {
 
 // Merges the singleton store with the given object
 
-func (e *METAElement) DATASTA_STORE(v any) *METAElement {
+func (e *METAElement) DATASTAR_STORE(v any) *METAElement {
 	if e.CustomDataAttributes == nil {
 		e.CustomDataAttributes = treemap.New[string, string]()
 	}

@@ -1992,7 +1992,7 @@ func (e *IMGElement) TRANSLATERemove(c ImgTranslateChoice) *IMGElement {
 
 // Merges the singleton store with the given object
 
-func (e *IMGElement) DATASTA_STORE(v any) *IMGElement {
+func (e *IMGElement) DATASTAR_STORE(v any) *IMGElement {
 	if e.CustomDataAttributes == nil {
 		e.CustomDataAttributes = treemap.New[string, string]()
 	}

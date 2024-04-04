@@ -1638,7 +1638,7 @@ func (e *STYLEElement) TRANSLATERemove(c StyleTranslateChoice) *STYLEElement {
 
 // Merges the singleton store with the given object
 
-func (e *STYLEElement) DATASTA_STORE(v any) *STYLEElement {
+func (e *STYLEElement) DATASTAR_STORE(v any) *STYLEElement {
 	if e.CustomDataAttributes == nil {
 		e.CustomDataAttributes = treemap.New[string, string]()
 	}

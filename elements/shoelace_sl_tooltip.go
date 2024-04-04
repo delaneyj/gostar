@@ -249,7 +249,7 @@ func (e *SLTOOLTIPElement) PLACEMENTRemove(c SLTooltipPlacementChoice) *SLTOOLTI
 
 // Merges the singleton store with the given object
 
-func (e *SLTOOLTIPElement) DATASTA_STORE(v any) *SLTOOLTIPElement {
+func (e *SLTOOLTIPElement) DATASTAR_STORE(v any) *SLTOOLTIPElement {
 	if e.CustomDataAttributes == nil {
 		e.CustomDataAttributes = treemap.New[string, string]()
 	}
