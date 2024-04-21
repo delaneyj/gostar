@@ -2060,6 +2060,110 @@ var HTML = &pb.Namespace{
 		},
 
 		{
+			Tag:         "textarea",
+			Description: `The HTML <textarea> element represents a multi-line plain-text editing control, useful when you want to allow users to enter a sizeable amount of free-form text, for example a comment on a review or feedback form.`,
+			Attributes: []*pb.Attribute{
+				{
+					Key:         "autocapitalize",
+					Description: "Controls whether and how text input is automatically capitalized as it is entered/edited by the user.",
+					Type: AttributeTypeChoices(
+						AttributeTypeChoice("off", "No autocapitalization is applied (all letters default to lowercase)."),
+						AttributeTypeChoice("none", "No autocapitalization is applied (all letters default to lowercase)."),
+						AttributeTypeChoice("on", "Text input is automatically capitalized following the rules of the current language."),
+						AttributeTypeChoice("sentences", "Text input is automatically capitalized following the rules of the current language for sentence capitalization."),
+						AttributeTypeChoice("words", "Text input is automatically capitalized following the rules of the current language for word capitalization."),
+						AttributeTypeChoice("characters", "Text input is automatically capitalized following the rules of the current language for character capitalization."),
+					),
+				},
+				{
+					Key:         "autocomplete",
+					Description: "Hint for form autofill feature.",
+					Type: AttributeTypeChoices(
+						AttributeTypeChoice("on", "The browser is allowed to automatically complete the input. (Default)"),
+						AttributeTypeChoice("off", "The browser must not automatically complete the input."),
+					),
+				},
+				{
+					Key:         "autofocus",
+					Description: "Automatically focus the form control when the page is loaded.",
+					Type:        AttributeTypeBool(),
+				},
+				{
+					Key:         "cols",
+					Description: "Visible width of the text control, in average character widths.",
+					Type:        AttributeTypeInt(),
+				},
+				{
+					Key:         "dirname",
+					Description: "Name of form field to use for sending the element's directionality in form submission.",
+					Type:        AttributeTypeString(),
+				},
+				{
+					Key:         "disabled",
+					Description: "Whether the form control is disabled.",
+					Type:        AttributeTypeBool(),
+				},
+				{
+					Key:         "form",
+					Description: "Associates the control with a form element.",
+					Type:        AttributeTypeString(),
+				},
+				{
+					Key:         "maxlength",
+					Description: "Maximum length of value.",
+					Type:        AttributeTypeInt(),
+				},
+				{
+					Key:         "minlength",
+					Description: "Minimum length of value.",
+					Type:        AttributeTypeInt(),
+				},
+				{
+					Key:         "name",
+					Description: "Name of the element to use for form submission and in the form.elements API.",
+					Type:        AttributeTypeString(),
+				},
+				{
+					Key:         "placeholder",
+					Description: "User-visible label to give the user an idea of what to type.",
+					Type:        AttributeTypeString(),
+				},
+				{
+					Key:         "readonly",
+					Description: "Whether to allow the value to be edited by the user.",
+					Type:        AttributeTypeBool(),
+				},
+				{
+					Key:         "required",
+					Description: "Whether the control is required for form submission.",
+					Type:        AttributeTypeBool(),
+				},
+				{
+					Key:         "rows",
+					Description: "Visible number of lines in the control.",
+					Type:        AttributeTypeInt(),
+				},
+				{
+					Key:         "spellcheck",
+					Description: "Whether the element is to have its spelling and grammar checked.",
+					Type: AttributeTypeChoices(
+						AttributeTypeChoice("true", "Spelling and grammar check is performed."),
+						AttributeTypeChoice("false", "Spelling and grammar check is not performed."),
+						AttributeTypeChoice("default", "Spelling and grammar check is performed according to the element's parent setting."),
+					),
+				},
+				{
+					Key:         "wrap",
+					Description: "How the value of the form control is to be wrapped for form submission.",
+					Type: AttributeTypeChoices(
+						AttributeTypeChoice("hard", "The browser automatically inserts line breaks (CR+LF) so that each line has no more than the width of the control."),
+						AttributeTypeChoice("soft", "The browser ensures that all line breaks in the value consist of a CR+LF pair, but does not insert any additional line breaks."),
+					),
+				},
+			},
+		},
+
+		{
 			Tag:         "tfoot",
 			Description: "The HTML <tfoot> element defines a set of rows summarizing the columns of the table.",
 		},
