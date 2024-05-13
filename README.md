@@ -15,10 +15,10 @@ Instead of creating HTML using string concatenation or templates, Gostar allows 
 
 Just import the package.  I prefer dot imports so I don't have to type the package name over and over.  All HTML tags and attributes are uppercase to avoid collisions with Go keywords and make explicit what is a DSL.
 
-
 ```go
-import . "github.com/delaneyj/gostar/elements/html"
+import . "github.com/delaneyj/gostar/elements"
 ```
+
 Since everything is `just` fluent functions you can compose them together to create more complex HTML structures.  You can also create your own fluent functions to create reusable HTML components.
 
 ```go
