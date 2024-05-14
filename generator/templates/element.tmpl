@@ -6,6 +6,7 @@ package elements
 import(
     "fmt"
     "time"
+    "golang.org/x/net/html"
     "github.com/igrmk/treemap/v2"
     "github.com/goccy/go-json"
     "github.com/samber/lo"
@@ -623,5 +624,3 @@ func (e *{{$elStructName}}) CustomDataRemove(key string) *{{$elStructName}} {
         !!!No handler for type {{.Type}}.
     {{end}}
 {{end}}
-
-
