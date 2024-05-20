@@ -4,5 +4,5 @@ deps:
   - remote: buf.build
     owner: bufbuild
     repository: protovalidate
-    commit: f05a6f4403ce4327bae4f50f281c3ed0
-    digest: shake256:668a0661b8df44d41839194896329330965fc215f3d2f88057fd60eeb759c2daf6cc6edfdd13b2a653d49fe2896ebedcb1a33c4c5b2dd10919f03ffb7fc52ae6
+    commit: 46a4cf4ba1094a34bcd89a6c67163b4b
+    digest: shake256:436ce453801917c11bc7b21d66bcfae87da2aceb804a041487be1e51dc9fbc219e61ea6a552db7a7aa6d63bb5efd0f3ed5fe3d4c42d4f750d0eb35f14144e3b6
