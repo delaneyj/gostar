@@ -10,7 +10,6 @@ var Default = &pb.Namespaces{
 		HTML,
 		SVG,
 		MathML,
-		ShoelaceExtensions,
 	},
 	Attributes: lo.Flatten([][]*pb.Attribute{
 		DatastarExtensions,

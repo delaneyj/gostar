@@ -8,7 +8,6 @@ import (
 
 	"github.com/delaneyj/gostar/cfg"
 	"github.com/delaneyj/gostar/generator"
-	"github.com/delaneyj/gostar/generator/iconify"
 )
 
 func main() {
@@ -29,9 +28,9 @@ func run(ctx context.Context) error {
 		return fmt.Errorf("failed to generate all: %w", err)
 	}
 
-	if err := iconify.GenerateIconify(ctx, "./tmp", "./elements"); err != nil {
-		return fmt.Errorf("failed to generate iconify: %w", err)
-	}
+	// if err := iconify.GenerateIconify(ctx, "./tmp", "./elements"); err != nil {
+	// 	return fmt.Errorf("failed to generate iconify: %w", err)
+	// }
 
 	// pkgs, err := mdn.ScrapePackages(ctx, "./tmp")
 	// if err != nil {
