@@ -777,6 +777,23 @@ var HTML = &pb.Namespace{
 		{
 			Tag:         "fieldset",
 			Description: "The HTML <fieldset> element is used to group several controls as well as labels (<label>) within a web form.",
+			Attributes: []*pb.Attribute{
+				{
+					Key:         "disabled",
+					Description: "If this Boolean attribute is set, all form controls that are descendants of the <fieldset>, are disabled, meaning they are not editable and won't be submitted along with the <form>.",
+					Type:        AttributeTypeBool(),
+				},
+				{
+					Key:         "form",
+					Description: "This attribute takes the value of the id attribute of a <form> element you want the <fieldset> to be part of, even if it is not inside the form.",
+					Type:        AttributeTypeString(),
+				},
+				{
+					Key:         "name",
+					Description: "The name associated with the group.",
+					Type:        AttributeTypeString(),
+				},
+			},
 		},
 
 		{

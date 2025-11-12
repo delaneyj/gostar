@@ -164,6 +164,127 @@ func (e *FIELDSETElement) CustomDataRemove(key string) *FIELDSETElement {
 	return e
 }
 
+// If this Boolean attribute is set, all form controls that are descendants of the
+// <fieldset>, are disabled, meaning they are not editable and won't be submitted
+// along with the <form>.
+func (e *FIELDSETElement) DISABLED() *FIELDSETElement {
+	e.DISABLEDSet(true)
+	return e
+}
+
+func (e *FIELDSETElement) IfDISABLED(condition bool) *FIELDSETElement {
+	if condition {
+		e.DISABLEDSet(true)
+	}
+	return e
+}
+
+// Set the attribute DISABLED to the value b explicitly.
+func (e *FIELDSETElement) DISABLEDSet(b bool) *FIELDSETElement {
+	if e.BoolAttributes == nil {
+		e.BoolAttributes = treemap.New[string, bool]()
+	}
+	e.BoolAttributes.Set("disabled", b)
+	return e
+}
+
+func (e *FIELDSETElement) IfSetDISABLED(condition bool, b bool) *FIELDSETElement {
+	if condition {
+		e.DISABLEDSet(b)
+	}
+	return e
+}
+
+// Remove the attribute DISABLED from the element.
+func (e *FIELDSETElement) DISABLEDRemove(b bool) *FIELDSETElement {
+	if e.BoolAttributes == nil {
+		return e
+	}
+	e.BoolAttributes.Del("disabled")
+	return e
+}
+
+// This attribute takes the value of the id attribute of a <form> element you want
+// the <fieldset> to be part of, even if it is not inside the form.
+func (e *FIELDSETElement) FORM(s string) *FIELDSETElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	e.StringAttributes.Set("form", s)
+	return e
+}
+
+func (e *FIELDSETElement) FORMF(format string, args ...any) *FIELDSETElement {
+	return e.FORM(fmt.Sprintf(format, args...))
+}
+
+func (e *FIELDSETElement) IfFORM(condition bool, s string) *FIELDSETElement {
+	if condition {
+		e.FORM(s)
+	}
+	return e
+}
+
+func (e *FIELDSETElement) IfFORMF(condition bool, format string, args ...any) *FIELDSETElement {
+	if condition {
+		e.FORM(fmt.Sprintf(format, args...))
+	}
+	return e
+}
+
+// Remove the attribute FORM from the element.
+func (e *FIELDSETElement) FORMRemove(s string) *FIELDSETElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("form")
+	return e
+}
+
+func (e *FIELDSETElement) FORMRemoveF(format string, args ...any) *FIELDSETElement {
+	return e.FORMRemove(fmt.Sprintf(format, args...))
+}
+
+// The name associated with the group.
+func (e *FIELDSETElement) NAME(s string) *FIELDSETElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+	e.StringAttributes.Set("name", s)
+	return e
+}
+
+func (e *FIELDSETElement) NAMEF(format string, args ...any) *FIELDSETElement {
+	return e.NAME(fmt.Sprintf(format, args...))
+}
+
+func (e *FIELDSETElement) IfNAME(condition bool, s string) *FIELDSETElement {
+	if condition {
+		e.NAME(s)
+	}
+	return e
+}
+
+func (e *FIELDSETElement) IfNAMEF(condition bool, format string, args ...any) *FIELDSETElement {
+	if condition {
+		e.NAME(fmt.Sprintf(format, args...))
+	}
+	return e
+}
+
+// Remove the attribute NAME from the element.
+func (e *FIELDSETElement) NAMERemove(s string) *FIELDSETElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+	e.StringAttributes.Del("name")
+	return e
+}
+
+func (e *FIELDSETElement) NAMERemoveF(format string, args ...any) *FIELDSETElement {
+	return e.NAMERemove(fmt.Sprintf(format, args...))
+}
+
 // The accesskey global attribute provides a hint for generating a keyboard
 // shortcut for the current element
 // The attribute value must consist of a single printable character (which
