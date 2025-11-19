@@ -5,10 +5,8 @@ package elements
 
 import (
 	"fmt"
-	"html"
 	"time"
 
-	"github.com/goccy/go-json"
 	"github.com/igrmk/treemap/v2"
 	"github.com/samber/lo"
 )
@@ -173,10 +171,12 @@ func (e *SVGTEXTPATHElement) HREF(s string) *SVGTEXTPATHElement {
 	return e
 }
 
+// A URI reference to the path to render along.
 func (e *SVGTEXTPATHElement) HREFF(format string, args ...any) *SVGTEXTPATHElement {
 	return e.HREF(fmt.Sprintf(format, args...))
 }
 
+// A URI reference to the path to render along.
 func (e *SVGTEXTPATHElement) IfHREF(condition bool, s string) *SVGTEXTPATHElement {
 	if condition {
 		e.HREF(s)
@@ -184,6 +184,7 @@ func (e *SVGTEXTPATHElement) IfHREF(condition bool, s string) *SVGTEXTPATHElemen
 	return e
 }
 
+// A URI reference to the path to render along.
 func (e *SVGTEXTPATHElement) IfHREFF(condition bool, format string, args ...any) *SVGTEXTPATHElement {
 	if condition {
 		e.HREF(fmt.Sprintf(format, args...))
@@ -191,6 +192,7 @@ func (e *SVGTEXTPATHElement) IfHREFF(condition bool, format string, args ...any)
 	return e
 }
 
+// A URI reference to the path to render along.
 // Remove the attribute HREF from the element.
 func (e *SVGTEXTPATHElement) HREFRemove(s string) *SVGTEXTPATHElement {
 	if e.StringAttributes == nil {
@@ -200,6 +202,7 @@ func (e *SVGTEXTPATHElement) HREFRemove(s string) *SVGTEXTPATHElement {
 	return e
 }
 
+// A URI reference to the path to render along.
 func (e *SVGTEXTPATHElement) HREFRemoveF(format string, args ...any) *SVGTEXTPATHElement {
 	return e.HREFRemove(fmt.Sprintf(format, args...))
 }
@@ -214,10 +217,14 @@ func (e *SVGTEXTPATHElement) START_OFFSET(s string) *SVGTEXTPATHElement {
 	return e
 }
 
+// Indicates an offset from the start of the path, where the first character is
+// rendered.
 func (e *SVGTEXTPATHElement) START_OFFSETF(format string, args ...any) *SVGTEXTPATHElement {
 	return e.START_OFFSET(fmt.Sprintf(format, args...))
 }
 
+// Indicates an offset from the start of the path, where the first character is
+// rendered.
 func (e *SVGTEXTPATHElement) IfSTART_OFFSET(condition bool, s string) *SVGTEXTPATHElement {
 	if condition {
 		e.START_OFFSET(s)
@@ -225,6 +232,8 @@ func (e *SVGTEXTPATHElement) IfSTART_OFFSET(condition bool, s string) *SVGTEXTPA
 	return e
 }
 
+// Indicates an offset from the start of the path, where the first character is
+// rendered.
 func (e *SVGTEXTPATHElement) IfSTART_OFFSETF(condition bool, format string, args ...any) *SVGTEXTPATHElement {
 	if condition {
 		e.START_OFFSET(fmt.Sprintf(format, args...))
@@ -232,6 +241,8 @@ func (e *SVGTEXTPATHElement) IfSTART_OFFSETF(condition bool, format string, args
 	return e
 }
 
+// Indicates an offset from the start of the path, where the first character is
+// rendered.
 // Remove the attribute START_OFFSET from the element.
 func (e *SVGTEXTPATHElement) START_OFFSETRemove(s string) *SVGTEXTPATHElement {
 	if e.StringAttributes == nil {
@@ -241,6 +252,8 @@ func (e *SVGTEXTPATHElement) START_OFFSETRemove(s string) *SVGTEXTPATHElement {
 	return e
 }
 
+// Indicates an offset from the start of the path, where the first character is
+// rendered.
 func (e *SVGTEXTPATHElement) START_OFFSETRemoveF(format string, args ...any) *SVGTEXTPATHElement {
 	return e.START_OFFSETRemove(fmt.Sprintf(format, args...))
 }
@@ -263,6 +276,7 @@ const (
 	SVGTextPathMethod_stretch SVGTextPathMethodChoice = "stretch"
 )
 
+// Indicates the method by which text should be rendered along the path.
 // Remove the attribute METHOD from the element.
 func (e *SVGTEXTPATHElement) METHODRemove(c SVGTextPathMethodChoice) *SVGTEXTPATHElement {
 	if e.StringAttributes == nil {
@@ -290,6 +304,7 @@ const (
 	SVGTextPathSpacing_exact SVGTextPathSpacingChoice = "exact"
 )
 
+// Indicates the spacing behavior between characters.
 // Remove the attribute SPACING from the element.
 func (e *SVGTEXTPATHElement) SPACINGRemove(c SVGTextPathSpacingChoice) *SVGTEXTPATHElement {
 	if e.StringAttributes == nil {
@@ -308,10 +323,12 @@ func (e *SVGTEXTPATHElement) ID(s string) *SVGTEXTPATHElement {
 	return e
 }
 
+// Specifies a unique id for an element
 func (e *SVGTEXTPATHElement) IDF(format string, args ...any) *SVGTEXTPATHElement {
 	return e.ID(fmt.Sprintf(format, args...))
 }
 
+// Specifies a unique id for an element
 func (e *SVGTEXTPATHElement) IfID(condition bool, s string) *SVGTEXTPATHElement {
 	if condition {
 		e.ID(s)
@@ -319,6 +336,7 @@ func (e *SVGTEXTPATHElement) IfID(condition bool, s string) *SVGTEXTPATHElement 
 	return e
 }
 
+// Specifies a unique id for an element
 func (e *SVGTEXTPATHElement) IfIDF(condition bool, format string, args ...any) *SVGTEXTPATHElement {
 	if condition {
 		e.ID(fmt.Sprintf(format, args...))
@@ -326,6 +344,7 @@ func (e *SVGTEXTPATHElement) IfIDF(condition bool, format string, args ...any) *
 	return e
 }
 
+// Specifies a unique id for an element
 // Remove the attribute ID from the element.
 func (e *SVGTEXTPATHElement) IDRemove(s string) *SVGTEXTPATHElement {
 	if e.StringAttributes == nil {
@@ -335,6 +354,7 @@ func (e *SVGTEXTPATHElement) IDRemove(s string) *SVGTEXTPATHElement {
 	return e
 }
 
+// Specifies a unique id for an element
 func (e *SVGTEXTPATHElement) IDRemoveF(format string, args ...any) *SVGTEXTPATHElement {
 	return e.IDRemove(fmt.Sprintf(format, args...))
 }
@@ -354,6 +374,8 @@ func (e *SVGTEXTPATHElement) CLASS(s ...string) *SVGTEXTPATHElement {
 	return e
 }
 
+// Specifies one or more classnames for an element (refers to a class in a style
+// sheet)
 func (e *SVGTEXTPATHElement) IfCLASS(condition bool, s ...string) *SVGTEXTPATHElement {
 	if condition {
 		e.CLASS(s...)
@@ -361,6 +383,8 @@ func (e *SVGTEXTPATHElement) IfCLASS(condition bool, s ...string) *SVGTEXTPATHEl
 	return e
 }
 
+// Specifies one or more classnames for an element (refers to a class in a style
+// sheet)
 // Remove the attribute CLASS from the element.
 func (e *SVGTEXTPATHElement) CLASSRemove(s ...string) *SVGTEXTPATHElement {
 	if e.DelimitedStrings == nil {
@@ -379,6 +403,7 @@ func (e *SVGTEXTPATHElement) STYLEF(k string, format string, args ...any) *SVGTE
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+// Specifies an inline CSS style for an element
 func (e *SVGTEXTPATHElement) IfSTYLE(condition bool, k string, v string) *SVGTEXTPATHElement {
 	if condition {
 		e.STYLE(k, v)
@@ -386,6 +411,7 @@ func (e *SVGTEXTPATHElement) IfSTYLE(condition bool, k string, v string) *SVGTEX
 	return e
 }
 
+// Specifies an inline CSS style for an element
 func (e *SVGTEXTPATHElement) STYLE(k string, v string) *SVGTEXTPATHElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -399,6 +425,7 @@ func (e *SVGTEXTPATHElement) STYLE(k string, v string) *SVGTEXTPATHElement {
 	return e
 }
 
+// Specifies an inline CSS style for an element
 func (e *SVGTEXTPATHElement) IfSTYLEF(condition bool, k string, format string, args ...any) *SVGTEXTPATHElement {
 	if condition {
 		e.STYLE(k, fmt.Sprintf(format, args...))
@@ -406,6 +433,7 @@ func (e *SVGTEXTPATHElement) IfSTYLEF(condition bool, k string, format string, a
 	return e
 }
 
+// Specifies an inline CSS style for an element
 // Add the attributes in the map to the element.
 func (e *SVGTEXTPATHElement) STYLEMap(m map[string]string) *SVGTEXTPATHElement {
 	if e.KVStrings == nil {
@@ -422,6 +450,7 @@ func (e *SVGTEXTPATHElement) STYLEMap(m map[string]string) *SVGTEXTPATHElement {
 	return e
 }
 
+// Specifies an inline CSS style for an element
 // Add pairs of attributes to the element.
 func (e *SVGTEXTPATHElement) STYLEPairs(pairs ...string) *SVGTEXTPATHElement {
 	if len(pairs)%2 != 0 {
@@ -443,6 +472,7 @@ func (e *SVGTEXTPATHElement) STYLEPairs(pairs ...string) *SVGTEXTPATHElement {
 	return e
 }
 
+// Specifies an inline CSS style for an element
 func (e *SVGTEXTPATHElement) IfSTYLEPairs(condition bool, pairs ...string) *SVGTEXTPATHElement {
 	if condition {
 		e.STYLEPairs(pairs...)
@@ -450,6 +480,7 @@ func (e *SVGTEXTPATHElement) IfSTYLEPairs(condition bool, pairs ...string) *SVGT
 	return e
 }
 
+// Specifies an inline CSS style for an element
 // Remove the attribute STYLE from the element.
 func (e *SVGTEXTPATHElement) STYLERemove(keys ...string) *SVGTEXTPATHElement {
 	if e.KVStrings == nil {
@@ -465,62 +496,75 @@ func (e *SVGTEXTPATHElement) STYLERemove(keys ...string) *SVGTEXTPATHElement {
 	return e
 }
 
-// Merges the singleton store with the given object
-
-func (e *SVGTEXTPATHElement) DATASTAR_STORE(v any) *SVGTEXTPATHElement {
-	if e.CustomDataAttributes == nil {
-		e.CustomDataAttributes = treemap.New[string, string]()
-	}
-	b, err := json.Marshal(v)
-	if err != nil {
-		panic(err)
-	}
-	e.CustomDataAttributes.Set("store", html.EscapeString(string(b)))
-	return e
-}
-
-// Sets the reference of the element
-
-func (e *SVGTEXTPATHElement) DATASTAR_REF(expression string) *SVGTEXTPATHElement {
+// Sets the value of any HTML attribute to an expression, and keeps it in sync.
+//
+// See: https://data-star.dev/reference/attributes#data-attr
+func (e *SVGTEXTPATHElement) DATASTAR_ATTR(key string, expression string) *SVGTEXTPATHElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "data-ref"
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	key = fmt.Sprintf("data-attr%s", suffix)
 
 	e.StringAttributes.Set(key, expression)
 	return e
 }
 
-func (e *SVGTEXTPATHElement) IfDATASTAR_REF(condition bool, expression string) *SVGTEXTPATHElement {
+// Sets the value of any HTML attribute to an expression, and keeps it in sync.
+//
+// See: https://data-star.dev/reference/attributes#data-attr
+func (e *SVGTEXTPATHElement) IfDATASTAR_ATTR(condition bool, key string, expression string) *SVGTEXTPATHElement {
 	if condition {
-		e.DATASTAR_REF(expression)
+		e.DATASTAR_ATTR(key, expression)
 	}
 	return e
 }
 
-// Remove the attribute DATASTAR_REF from the element.
-func (e *SVGTEXTPATHElement) DATASTAR_REFRemove() *SVGTEXTPATHElement {
+// Sets the value of any HTML attribute to an expression, and keeps it in sync.
+//
+// See: https://data-star.dev/reference/attributes#data-attr
+// Remove the attribute DATASTAR_ATTR from the element.
+func (e *SVGTEXTPATHElement) DATASTAR_ATTRRemove(key string) *SVGTEXTPATHElement {
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("data-ref")
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	e.StringAttributes.Del("data-attr" + suffix)
+
 	return e
 }
 
-// Sets the value of the element
-
+// Creates a signal (if one doesn’t already exist) and sets up two-way data
+// binding between it and an element’s value.
+//
+// See: https://data-star.dev/reference/attributes#data-bind
 func (e *SVGTEXTPATHElement) DATASTAR_BIND(key string, expression string) *SVGTEXTPATHElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key = fmt.Sprintf("data-bind-%s", key)
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	key = fmt.Sprintf("data-bind%s", suffix)
 
 	e.StringAttributes.Set(key, expression)
 	return e
 }
 
+// Creates a signal (if one doesn’t already exist) and sets up two-way data
+// binding between it and an element’s value.
+//
+// See: https://data-star.dev/reference/attributes#data-bind
 func (e *SVGTEXTPATHElement) IfDATASTAR_BIND(condition bool, key string, expression string) *SVGTEXTPATHElement {
 	if condition {
 		e.DATASTAR_BIND(key, expression)
@@ -528,46 +572,1525 @@ func (e *SVGTEXTPATHElement) IfDATASTAR_BIND(condition bool, key string, express
 	return e
 }
 
+// Creates a signal (if one doesn’t already exist) and sets up two-way data
+// binding between it and an element’s value.
+//
+// See: https://data-star.dev/reference/attributes#data-bind
 // Remove the attribute DATASTAR_BIND from the element.
-func (e *SVGTEXTPATHElement) DATASTAR_BINDRemove() *SVGTEXTPATHElement {
+func (e *SVGTEXTPATHElement) DATASTAR_BINDRemove(key string) *SVGTEXTPATHElement {
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("data-bind")
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	e.StringAttributes.Del("data-bind" + suffix)
+
 	return e
 }
 
-// Sets the value of the element
+type SVGTextPathClassMod customDataKeyModifier
 
-func (e *SVGTEXTPATHElement) DATASTAR_MODEL(expression string) *SVGTEXTPATHElement {
+// Converts the casing of the signal name.
+//   - 'camel' – Camel case: 'mySignal' (default)
+//   - 'kebab' – Kebab case: 'my-signal'
+//   - 'snake' – Snake case: 'my_signal'
+//   - 'pascal' – Pascal case: 'MySignal'
+func SVGTextPathClassModCase(
+	s string,
+) SVGTextPathClassMod {
+	return func() string {
+		return fmt.Sprintf("case.%s", s)
+	}
+}
+
+// Adds or removes a class to or from an element based on an expression.
+func (e *SVGTEXTPATHElement) DATASTAR_CLASS(key string, expression string, modifiers ...SVGTextPathClassMod) *SVGTEXTPATHElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "data-model"
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	key = fmt.Sprintf("data-class%s", suffix)
+
+	customMods := lo.Map(modifiers, func(m SVGTextPathClassMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Adds or removes a class to or from an element based on an expression.
+func (e *SVGTEXTPATHElement) IfDATASTAR_CLASS(condition bool, key string, expression string, modifiers ...SVGTextPathClassMod) *SVGTEXTPATHElement {
+	if condition {
+		e.DATASTAR_CLASS(key, expression, modifiers...)
+	}
+	return e
+}
+
+// Adds or removes a class to or from an element based on an expression.
+// Remove the attribute DATASTAR_CLASS from the element.
+func (e *SVGTEXTPATHElement) DATASTAR_CLASSRemove(key string) *SVGTEXTPATHElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	e.StringAttributes.Del("data-class" + suffix)
+
+	return e
+}
+
+type SVGTextPathComputedMod customDataKeyModifier
+
+// Converts the casing of the signal name.
+//   - 'camel' – Camel case: 'mySignal' (default)
+//   - 'kebab' – Kebab case: 'my-signal'
+//   - 'snake' – Snake case: 'my_signal'
+//   - 'pascal' – Pascal case: 'MySignal'
+func SVGTextPathComputedModCase(
+	s string,
+) SVGTextPathComputedMod {
+	return func() string {
+		return fmt.Sprintf("case.%s", s)
+	}
+}
+
+// Creates a signal that is computed based on an expression
+// The computed signal is read-only, and its value is automatically updated when
+// any signals in the expression are updated.
+//
+// See: https://data-star.dev/reference/attributes#data-computed
+func (e *SVGTEXTPATHElement) DATASTAR_COMPUTED(key string, expression string, modifiers ...SVGTextPathComputedMod) *SVGTEXTPATHElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	key = fmt.Sprintf("data-computed%s", suffix)
+
+	customMods := lo.Map(modifiers, func(m SVGTextPathComputedMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Creates a signal that is computed based on an expression
+// The computed signal is read-only, and its value is automatically updated when
+// any signals in the expression are updated.
+//
+// See: https://data-star.dev/reference/attributes#data-computed
+func (e *SVGTEXTPATHElement) IfDATASTAR_COMPUTED(condition bool, key string, expression string, modifiers ...SVGTextPathComputedMod) *SVGTEXTPATHElement {
+	if condition {
+		e.DATASTAR_COMPUTED(key, expression, modifiers...)
+	}
+	return e
+}
+
+// Creates a signal that is computed based on an expression
+// The computed signal is read-only, and its value is automatically updated when
+// any signals in the expression are updated.
+//
+// See: https://data-star.dev/reference/attributes#data-computed
+// Remove the attribute DATASTAR_COMPUTED from the element.
+func (e *SVGTEXTPATHElement) DATASTAR_COMPUTEDRemove(key string) *SVGTEXTPATHElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	e.StringAttributes.Del("data-computed" + suffix)
+
+	return e
+}
+
+// Executes an expression on page load and whenever any signals in the expression
+// change
+// This is useful for performing side effects, such as updating other signals,
+// making requests to the backend, or manipulating the DOM.
+//
+// See: https://data-star.dev/reference/attributes#data-effect
+func (e *SVGTEXTPATHElement) DATASTAR_EFFECT(expression string) *SVGTEXTPATHElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-effect"
 
 	e.StringAttributes.Set(key, expression)
 	return e
 }
 
-func (e *SVGTEXTPATHElement) IfDATASTAR_MODEL(condition bool, expression string) *SVGTEXTPATHElement {
+// Executes an expression on page load and whenever any signals in the expression
+// change
+// This is useful for performing side effects, such as updating other signals,
+// making requests to the backend, or manipulating the DOM.
+//
+// See: https://data-star.dev/reference/attributes#data-effect
+func (e *SVGTEXTPATHElement) IfDATASTAR_EFFECT(condition bool, expression string) *SVGTEXTPATHElement {
 	if condition {
-		e.DATASTAR_MODEL(expression)
+		e.DATASTAR_EFFECT(expression)
 	}
 	return e
 }
 
-// Remove the attribute DATASTAR_MODEL from the element.
-func (e *SVGTEXTPATHElement) DATASTAR_MODELRemove() *SVGTEXTPATHElement {
+// Executes an expression on page load and whenever any signals in the expression
+// change
+// This is useful for performing side effects, such as updating other signals,
+// making requests to the backend, or manipulating the DOM.
+//
+// See: https://data-star.dev/reference/attributes#data-effect
+// Remove the attribute DATASTAR_EFFECT from the element.
+func (e *SVGTEXTPATHElement) DATASTAR_EFFECTRemove() *SVGTEXTPATHElement {
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("data-model")
+
+	e.StringAttributes.Del("data-effect")
+
 	return e
 }
 
-// Sets the textContent of the element
+type SVGTextPathIgnoreMod customDataKeyModifier
 
+// Only ignore the element itself, not its descendants.
+func SVGTextPathIgnoreModSelf() SVGTextPathIgnoreMod {
+	return func() string {
+		return "self"
+	}
+}
+
+// Datastar walks the entire DOM and applies plugins to each element it encounters
+// It's possible to tell Datastar to ignore an element and its descendants by
+// placing a data-ignore attribute on it
+// This can be useful for preventing naming conflicts with third-party libraries,
+// or when you are unable to escape user input.
+//
+// See: https://data-star.dev/reference/attributes#data-ignore
+func (e *SVGTEXTPATHElement) DATASTAR_IGNORESet(b bool, modifiers ...SVGTextPathIgnoreMod) *SVGTEXTPATHElement {
+	key := customDataKey("data-ignore")
+	customMods := lo.Map(modifiers, func(m SVGTextPathIgnoreMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	if e.BoolAttributes == nil {
+		e.BoolAttributes = treemap.New[string, bool]()
+	}
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+// Datastar walks the entire DOM and applies plugins to each element it encounters
+// It's possible to tell Datastar to ignore an element and its descendants by
+// placing a data-ignore attribute on it
+// This can be useful for preventing naming conflicts with third-party libraries,
+// or when you are unable to escape user input.
+//
+// See: https://data-star.dev/reference/attributes#data-ignore
+func (e *SVGTEXTPATHElement) DATASTAR_IGNORE(modifiers ...SVGTextPathIgnoreMod) *SVGTEXTPATHElement {
+	return e.DATASTAR_IGNORESet(true, modifiers...)
+}
+
+// Similar to the data-ignore attribute, the data-ignore-morph attribute tells the
+// PatchElements watcher to skip processing an element and its children when
+// morphing elements
+// This can be useful for preventing conflicts with third-party libraries that
+// manipulate the DOM, or when you are unable to escape user input.
+//
+// See: https://data-star.dev/reference/attributes#data-ignore-morph
+func (e *SVGTEXTPATHElement) DATASTAR_IGNORE_MORPHSet(b bool) *SVGTEXTPATHElement {
+	key := "data-ignore-morph"
+	if e.BoolAttributes == nil {
+		e.BoolAttributes = treemap.New[string, bool]()
+	}
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+// Similar to the data-ignore attribute, the data-ignore-morph attribute tells the
+// PatchElements watcher to skip processing an element and its children when
+// morphing elements
+// This can be useful for preventing conflicts with third-party libraries that
+// manipulate the DOM, or when you are unable to escape user input.
+//
+// See: https://data-star.dev/reference/attributes#data-ignore-morph
+func (e *SVGTEXTPATHElement) DATASTAR_IGNORE_MORPH() *SVGTEXTPATHElement {
+	return e.DATASTAR_IGNORE_MORPHSet(true)
+}
+
+type SVGTextPathIndicatorMod customDataKeyModifier
+
+// Converts the casing of the signal name.
+//   - 'camel' – Camel case: 'mySignal' (default)
+//   - 'kebab' – Kebab case: 'my-signal'
+//   - 'snake' – Snake case: 'my_signal'
+//   - 'pascal' – Pascal case: 'MySignal'
+func SVGTextPathIndicatorModCase(
+	s string,
+) SVGTextPathIndicatorMod {
+	return func() string {
+		return fmt.Sprintf("case.%s", s)
+	}
+}
+
+// Creates a signal and sets its value to true while a fetch request is in flight,
+// otherwise false
+// The signal can be used to show a loading indicator.
+//
+// See: https://data-star.dev/reference/attributes#data-indicator
+func (e *SVGTEXTPATHElement) DATASTAR_INDICATOR(expression string, modifiers ...SVGTextPathIndicatorMod) *SVGTEXTPATHElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-indicator"
+
+	customMods := lo.Map(modifiers, func(m SVGTextPathIndicatorMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Creates a signal and sets its value to true while a fetch request is in flight,
+// otherwise false
+// The signal can be used to show a loading indicator.
+//
+// See: https://data-star.dev/reference/attributes#data-indicator
+func (e *SVGTEXTPATHElement) IfDATASTAR_INDICATOR(condition bool, expression string, modifiers ...SVGTextPathIndicatorMod) *SVGTEXTPATHElement {
+	if condition {
+		e.DATASTAR_INDICATOR(expression, modifiers...)
+	}
+	return e
+}
+
+// Creates a signal and sets its value to true while a fetch request is in flight,
+// otherwise false
+// The signal can be used to show a loading indicator.
+//
+// See: https://data-star.dev/reference/attributes#data-indicator
+// Remove the attribute DATASTAR_INDICATOR from the element.
+func (e *SVGTEXTPATHElement) DATASTAR_INDICATORRemove() *SVGTEXTPATHElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-indicator")
+
+	return e
+}
+
+type SVGTextPathInitMod customDataKeyModifier
+
+// Delay the event listener in milliseconds.
+func SVGTextPathInitModDelayMs(
+	d time.Duration,
+) SVGTextPathInitMod {
+	return func() string {
+		return fmt.Sprintf("delay.%dms", d.Milliseconds())
+	}
+}
+
+// Delay the event listener in seconds.
+func SVGTextPathInitModDelaySec(
+	d time.Duration,
+) SVGTextPathInitMod {
+	return func() string {
+		return fmt.Sprintf("delay.%ds", int(d.Seconds()))
+	}
+}
+
+// Wraps the expression in 'document.startViewTransition()' when the View
+// Transition API is available.
+func SVGTextPathInitModViewTransition() SVGTextPathInitMod {
+	return func() string {
+		return "viewtransition"
+	}
+}
+
+// Runs an expression when the attribute is initialized
+// This can happen on page load, when an element is patched into the DOM, and any
+// time the attribute is modified (via a backend action or otherwise).
+//
+// See: https://data-star.dev/reference/attributes#data-indicator
+func (e *SVGTEXTPATHElement) DATASTAR_INIT(expression string, modifiers ...SVGTextPathInitMod) *SVGTEXTPATHElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-init"
+
+	customMods := lo.Map(modifiers, func(m SVGTextPathInitMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Runs an expression when the attribute is initialized
+// This can happen on page load, when an element is patched into the DOM, and any
+// time the attribute is modified (via a backend action or otherwise).
+//
+// See: https://data-star.dev/reference/attributes#data-indicator
+func (e *SVGTEXTPATHElement) IfDATASTAR_INIT(condition bool, expression string, modifiers ...SVGTextPathInitMod) *SVGTEXTPATHElement {
+	if condition {
+		e.DATASTAR_INIT(expression, modifiers...)
+	}
+	return e
+}
+
+// Runs an expression when the attribute is initialized
+// This can happen on page load, when an element is patched into the DOM, and any
+// time the attribute is modified (via a backend action or otherwise).
+//
+// See: https://data-star.dev/reference/attributes#data-indicator
+// Remove the attribute DATASTAR_INIT from the element.
+func (e *SVGTEXTPATHElement) DATASTAR_INITRemove() *SVGTEXTPATHElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-init")
+
+	return e
+}
+
+type SVGTextPathJsonSignalsMod customDataKeyModifier
+
+// Outputs a more compact JSON format without extra whitespace
+// Useful for displaying filtered data inline.
+func SVGTextPathJsonSignalsModTerse() SVGTextPathJsonSignalsMod {
+	return func() string {
+		return "terse"
+	}
+}
+
+// Sets the text content of an element to a reactive JSON stringified version of
+// signals
+// Useful when troubleshooting an issue.
+//
+// See: https://data-star.dev/reference/attributes#data-json-signals
+func (e *SVGTEXTPATHElement) DATASTAR_JSON_SIGNALS(expression string, modifiers ...SVGTextPathJsonSignalsMod) *SVGTEXTPATHElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-json-signals"
+
+	customMods := lo.Map(modifiers, func(m SVGTextPathJsonSignalsMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Sets the text content of an element to a reactive JSON stringified version of
+// signals
+// Useful when troubleshooting an issue.
+//
+// See: https://data-star.dev/reference/attributes#data-json-signals
+func (e *SVGTEXTPATHElement) IfDATASTAR_JSON_SIGNALS(condition bool, expression string, modifiers ...SVGTextPathJsonSignalsMod) *SVGTEXTPATHElement {
+	if condition {
+		e.DATASTAR_JSON_SIGNALS(expression, modifiers...)
+	}
+	return e
+}
+
+// Sets the text content of an element to a reactive JSON stringified version of
+// signals
+// Useful when troubleshooting an issue.
+//
+// See: https://data-star.dev/reference/attributes#data-json-signals
+// Remove the attribute DATASTAR_JSON_SIGNALS from the element.
+func (e *SVGTEXTPATHElement) DATASTAR_JSON_SIGNALSRemove() *SVGTEXTPATHElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-json-signals")
+
+	return e
+}
+
+type SVGTextPathOnMod customDataKeyModifier
+
+// Only run the expression once
+// Only works with built-in events.
+func SVGTextPathOnModOnce() SVGTextPathOnMod {
+	return func() string {
+		return "once"
+	}
+}
+
+// Do not call preventDefault on the event listener
+// Only works with built-in events.
+func SVGTextPathOnModPassive() SVGTextPathOnMod {
+	return func() string {
+		return "passive"
+	}
+}
+
+// Use capture event listener
+// Only works with built-in events.
+func SVGTextPathOnModCapture() SVGTextPathOnMod {
+	return func() string {
+		return "capture"
+	}
+}
+
+// Converts the casing of the signal name.
+//   - 'camel' – Camel case: 'mySignal' (default)
+//   - 'kebab' – Kebab case: 'my-signal'
+//   - 'snake' – Snake case: 'my_signal'
+//   - 'pascal' – Pascal case: 'MySignal'
+func SVGTextPathOnModCase(
+	s string,
+) SVGTextPathOnMod {
+	return func() string {
+		return fmt.Sprintf("case.%s", s)
+	}
+}
+
+// Delay the event listener in milliseconds.
+func SVGTextPathOnModDelayMs(
+	d time.Duration,
+) SVGTextPathOnMod {
+	return func() string {
+		return fmt.Sprintf("delay.%dms", d.Milliseconds())
+	}
+}
+
+// Delay the event listener in seconds.
+func SVGTextPathOnModDelaySec(
+	d time.Duration,
+) SVGTextPathOnMod {
+	return func() string {
+		return fmt.Sprintf("delay.%ds", int(d.Seconds()))
+	}
+}
+
+// Debounces the event handler
+func SVGTextPathOnModDebounceMs(
+	d time.Duration,
+) SVGTextPathOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms", d.Milliseconds())
+	}
+}
+
+// Debounce the event listener in milliseconds with leading edge.
+func SVGTextPathOnModDebounceMsLeading(
+	d time.Duration,
+) SVGTextPathOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms.leading", d.Milliseconds())
+	}
+}
+
+// Debounce the event listener in milliseconds without trailing edge.
+func SVGTextPathOnModDebounceMsNoTrailing(
+	d time.Duration,
+) SVGTextPathOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms.notrailing", d.Milliseconds())
+	}
+}
+
+// Debounces the event handler
+func SVGTextPathOnModDebounceSec(
+	d time.Duration,
+) SVGTextPathOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds", int(d.Seconds()))
+	}
+}
+
+// Debounce the event listener in seconds with leading edge.
+func SVGTextPathOnModDebounceSecLeading(
+	d time.Duration,
+) SVGTextPathOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds.leading", int(d.Seconds()))
+	}
+}
+
+// Debounce the event listener in seconds without trailing edge.
+func SVGTextPathOnModDebounceSecNoTrailing(
+	d time.Duration,
+) SVGTextPathOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds.notrailing", int(d.Seconds()))
+	}
+}
+
+// Throttles the event handler
+func SVGTextPathOnModThrottleMs(
+	d time.Duration,
+) SVGTextPathOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms", d.Milliseconds())
+	}
+}
+
+// Throttle the event listener in milliseconds without leading edge.
+func SVGTextPathOnModThrottleMsNoLeading(
+	d time.Duration,
+) SVGTextPathOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms.noleading", d.Milliseconds())
+	}
+}
+
+// Throttle the event listener in milliseconds with trailing edge.
+func SVGTextPathOnModThrottleMsTrailing(
+	d time.Duration,
+) SVGTextPathOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms.trailing", d.Milliseconds())
+	}
+}
+
+// Throttles the event listener in seconds.
+func SVGTextPathOnModThrottleSec(
+	d time.Duration,
+) SVGTextPathOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds", int(d.Seconds()))
+	}
+}
+
+// Throttle the event listener in seconds without leading edge.
+func SVGTextPathOnModThrottleSecNoLeading(
+	d time.Duration,
+) SVGTextPathOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds.noleading", int(d.Seconds()))
+	}
+}
+
+// Throttle the event listener in seconds with trailing edge.
+func SVGTextPathOnModThrottleSecTrailing(
+	d time.Duration,
+) SVGTextPathOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds.trailing", int(d.Seconds()))
+	}
+}
+
+// Wraps the expression in 'document.startViewTransition()' when the View
+// Transition API is available.
+func SVGTextPathOnModViewTransition() SVGTextPathOnMod {
+	return func() string {
+		return "viewtransition"
+	}
+}
+
+// Attaches the event listener to the 'window' element.
+func SVGTextPathOnModWindow() SVGTextPathOnMod {
+	return func() string {
+		return "window"
+	}
+}
+
+// Calls 'preventDefault' on the event listener.
+func SVGTextPathOnModPrevent() SVGTextPathOnMod {
+	return func() string {
+		return "prevent"
+	}
+}
+
+// Triggers when the event is outside the element.
+func SVGTextPathOnModOutside() SVGTextPathOnMod {
+	return func() string {
+		return "outside"
+	}
+}
+
+// Calls 'stopPropagation' on the event listener.
+func SVGTextPathOnModStop() SVGTextPathOnMod {
+	return func() string {
+		return "stop"
+	}
+}
+
+// Attaches an event listener to an element, executing an expression whenever the
+// event is triggered.
+//
+// See: https://data-star.dev/reference/attributes#data-on
+func (e *SVGTEXTPATHElement) DATASTAR_ON(key string, expression string, modifiers ...SVGTextPathOnMod) *SVGTEXTPATHElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	key = fmt.Sprintf("data-on%s", suffix)
+
+	customMods := lo.Map(modifiers, func(m SVGTextPathOnMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Attaches an event listener to an element, executing an expression whenever the
+// event is triggered.
+//
+// See: https://data-star.dev/reference/attributes#data-on
+func (e *SVGTEXTPATHElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SVGTextPathOnMod) *SVGTEXTPATHElement {
+	if condition {
+		e.DATASTAR_ON(key, expression, modifiers...)
+	}
+	return e
+}
+
+// Attaches an event listener to an element, executing an expression whenever the
+// event is triggered.
+//
+// See: https://data-star.dev/reference/attributes#data-on
+// Remove the attribute DATASTAR_ON from the element.
+func (e *SVGTEXTPATHElement) DATASTAR_ONRemove(key string) *SVGTEXTPATHElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	e.StringAttributes.Del("data-on" + suffix)
+
+	return e
+}
+
+type SVGTextPathOnIntersectMod customDataKeyModifier
+
+// Only run the expression once
+// Only works with built-in events.
+func SVGTextPathOnIntersectModOnce() SVGTextPathOnIntersectMod {
+	return func() string {
+		return "once"
+	}
+}
+
+// Trigger when half of the element is visible.
+func SVGTextPathOnIntersectModHalf() SVGTextPathOnIntersectMod {
+	return func() string {
+		return "half"
+	}
+}
+
+// Trigger when the full element is visible.
+func SVGTextPathOnIntersectModFull() SVGTextPathOnIntersectMod {
+	return func() string {
+		return "full"
+	}
+}
+
+// Delay the event listener in milliseconds.
+func SVGTextPathOnIntersectModDelayMs(
+	d time.Duration,
+) SVGTextPathOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("delay.%dms", d.Milliseconds())
+	}
+}
+
+// Delay the event listener in seconds.
+func SVGTextPathOnIntersectModDelaySec(
+	d time.Duration,
+) SVGTextPathOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("delay.%ds", int(d.Seconds()))
+	}
+}
+
+// Debounces the event handler
+func SVGTextPathOnIntersectModDebounceMs(
+	d time.Duration,
+) SVGTextPathOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms", d.Milliseconds())
+	}
+}
+
+// Debounce the event listener in milliseconds with leading edge.
+func SVGTextPathOnIntersectModDebounceMsLeading(
+	d time.Duration,
+) SVGTextPathOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms.leading", d.Milliseconds())
+	}
+}
+
+// Debounce the event listener in milliseconds without trailing edge.
+func SVGTextPathOnIntersectModDebounceMsNoTrailing(
+	d time.Duration,
+) SVGTextPathOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms.notrailing", d.Milliseconds())
+	}
+}
+
+// Debounces the event handler
+func SVGTextPathOnIntersectModDebounceSec(
+	d time.Duration,
+) SVGTextPathOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds", int(d.Seconds()))
+	}
+}
+
+// Debounce the event listener in seconds with leading edge.
+func SVGTextPathOnIntersectModDebounceSecLeading(
+	d time.Duration,
+) SVGTextPathOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds.leading", int(d.Seconds()))
+	}
+}
+
+// Debounce the event listener in seconds without trailing edge.
+func SVGTextPathOnIntersectModDebounceSecNoTrailing(
+	d time.Duration,
+) SVGTextPathOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds.notrailing", int(d.Seconds()))
+	}
+}
+
+// Throttles the event handler
+func SVGTextPathOnIntersectModThrottleMs(
+	d time.Duration,
+) SVGTextPathOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms", d.Milliseconds())
+	}
+}
+
+// Throttle the event listener in milliseconds without leading edge.
+func SVGTextPathOnIntersectModThrottleMsNoLeading(
+	d time.Duration,
+) SVGTextPathOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms.noleading", d.Milliseconds())
+	}
+}
+
+// Throttle the event listener in milliseconds with trailing edge.
+func SVGTextPathOnIntersectModThrottleMsTrailing(
+	d time.Duration,
+) SVGTextPathOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms.trailing", d.Milliseconds())
+	}
+}
+
+// Throttles the event listener in seconds.
+func SVGTextPathOnIntersectModThrottleSec(
+	d time.Duration,
+) SVGTextPathOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds", int(d.Seconds()))
+	}
+}
+
+// Throttle the event listener in seconds without leading edge.
+func SVGTextPathOnIntersectModThrottleSecNoLeading(
+	d time.Duration,
+) SVGTextPathOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds.noleading", int(d.Seconds()))
+	}
+}
+
+// Throttle the event listener in seconds with trailing edge.
+func SVGTextPathOnIntersectModThrottleSecTrailing(
+	d time.Duration,
+) SVGTextPathOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds.trailing", int(d.Seconds()))
+	}
+}
+
+// Wraps the expression in 'document.startViewTransition()' when the View
+// Transition API is available.
+func SVGTextPathOnIntersectModViewTransition() SVGTextPathOnIntersectMod {
+	return func() string {
+		return "viewtransition"
+	}
+}
+
+// Runs an expression when the element intersects with the viewport.
+func (e *SVGTEXTPATHElement) DATASTAR_ON_INTERSECT(expression string, modifiers ...SVGTextPathOnIntersectMod) *SVGTEXTPATHElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-on-intersect"
+
+	customMods := lo.Map(modifiers, func(m SVGTextPathOnIntersectMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Runs an expression when the element intersects with the viewport.
+func (e *SVGTEXTPATHElement) IfDATASTAR_ON_INTERSECT(condition bool, expression string, modifiers ...SVGTextPathOnIntersectMod) *SVGTEXTPATHElement {
+	if condition {
+		e.DATASTAR_ON_INTERSECT(expression, modifiers...)
+	}
+	return e
+}
+
+// Runs an expression when the element intersects with the viewport.
+// Remove the attribute DATASTAR_ON_INTERSECT from the element.
+func (e *SVGTEXTPATHElement) DATASTAR_ON_INTERSECTRemove() *SVGTEXTPATHElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-on-intersect")
+
+	return e
+}
+
+type SVGTextPathOnIntervalMod customDataKeyModifier
+
+// Sets the interval duration in milliseconds.
+func SVGTextPathOnIntervalModDurationMs(
+	d time.Duration,
+) SVGTextPathOnIntervalMod {
+	return func() string {
+		return fmt.Sprintf("duration.%dms", d.Milliseconds())
+	}
+}
+
+// Sets the interval duration in milliseconds
+// Execute the first interval immediately.
+func SVGTextPathOnIntervalModDurationMsLeading(
+	d time.Duration,
+) SVGTextPathOnIntervalMod {
+	return func() string {
+		return fmt.Sprintf("duration.%dms.leading", d.Milliseconds())
+	}
+}
+
+// Sets the interval duration in seconds.
+func SVGTextPathOnIntervalModDurationSec(
+	d time.Duration,
+) SVGTextPathOnIntervalMod {
+	return func() string {
+		return fmt.Sprintf("duration.%ds", int(d.Seconds()))
+	}
+}
+
+// Sets the interval duration in seconds
+// Execute the first interval immediately.
+func SVGTextPathOnIntervalModDurationSecLeading(
+	d time.Duration,
+) SVGTextPathOnIntervalMod {
+	return func() string {
+		return fmt.Sprintf("duration.%ds.leading", int(d.Seconds()))
+	}
+}
+
+// Wraps the expression in 'document.startViewTransition()' when the View
+// Transition API is available.
+func SVGTextPathOnIntervalModViewTransition() SVGTextPathOnIntervalMod {
+	return func() string {
+		return "viewtransition"
+	}
+}
+
+// Runs an expression at a regular interval
+// The interval duration defaults to one second and can be modified using the
+// '__duration' modifier.
+//
+// See: https://data-star.dev/reference/attributes#data-on-interval
+func (e *SVGTEXTPATHElement) DATASTAR_ON_INTERVAL(expression string, modifiers ...SVGTextPathOnIntervalMod) *SVGTEXTPATHElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-on-interval"
+
+	customMods := lo.Map(modifiers, func(m SVGTextPathOnIntervalMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Runs an expression at a regular interval
+// The interval duration defaults to one second and can be modified using the
+// '__duration' modifier.
+//
+// See: https://data-star.dev/reference/attributes#data-on-interval
+func (e *SVGTEXTPATHElement) IfDATASTAR_ON_INTERVAL(condition bool, expression string, modifiers ...SVGTextPathOnIntervalMod) *SVGTEXTPATHElement {
+	if condition {
+		e.DATASTAR_ON_INTERVAL(expression, modifiers...)
+	}
+	return e
+}
+
+// Runs an expression at a regular interval
+// The interval duration defaults to one second and can be modified using the
+// '__duration' modifier.
+//
+// See: https://data-star.dev/reference/attributes#data-on-interval
+// Remove the attribute DATASTAR_ON_INTERVAL from the element.
+func (e *SVGTEXTPATHElement) DATASTAR_ON_INTERVALRemove() *SVGTEXTPATHElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-on-interval")
+
+	return e
+}
+
+type SVGTextPathOnSignalPatchMod customDataKeyModifier
+
+// Delay the event listener in milliseconds.
+func SVGTextPathOnSignalPatchModDelayMs(
+	d time.Duration,
+) SVGTextPathOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("delay.%dms", d.Milliseconds())
+	}
+}
+
+// Delay the event listener in seconds.
+func SVGTextPathOnSignalPatchModDelaySec(
+	d time.Duration,
+) SVGTextPathOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("delay.%ds", int(d.Seconds()))
+	}
+}
+
+// Debounces the event handler
+func SVGTextPathOnSignalPatchModDebounceMs(
+	d time.Duration,
+) SVGTextPathOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms", d.Milliseconds())
+	}
+}
+
+// Debounce the event listener in milliseconds with leading edge.
+func SVGTextPathOnSignalPatchModDebounceMsLeading(
+	d time.Duration,
+) SVGTextPathOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms.leading", d.Milliseconds())
+	}
+}
+
+// Debounce the event listener in milliseconds without trailing edge.
+func SVGTextPathOnSignalPatchModDebounceMsNoTrailing(
+	d time.Duration,
+) SVGTextPathOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms.notrailing", d.Milliseconds())
+	}
+}
+
+// Debounces the event handler
+func SVGTextPathOnSignalPatchModDebounceSec(
+	d time.Duration,
+) SVGTextPathOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds", int(d.Seconds()))
+	}
+}
+
+// Debounce the event listener in seconds with leading edge.
+func SVGTextPathOnSignalPatchModDebounceSecLeading(
+	d time.Duration,
+) SVGTextPathOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds.leading", int(d.Seconds()))
+	}
+}
+
+// Debounce the event listener in seconds without trailing edge.
+func SVGTextPathOnSignalPatchModDebounceSecNoTrailing(
+	d time.Duration,
+) SVGTextPathOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds.notrailing", int(d.Seconds()))
+	}
+}
+
+// Throttles the event handler
+func SVGTextPathOnSignalPatchModThrottleMs(
+	d time.Duration,
+) SVGTextPathOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms", d.Milliseconds())
+	}
+}
+
+// Throttle the event listener in milliseconds without leading edge.
+func SVGTextPathOnSignalPatchModThrottleMsNoLeading(
+	d time.Duration,
+) SVGTextPathOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms.noleading", d.Milliseconds())
+	}
+}
+
+// Throttle the event listener in milliseconds with trailing edge.
+func SVGTextPathOnSignalPatchModThrottleMsTrailing(
+	d time.Duration,
+) SVGTextPathOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms.trailing", d.Milliseconds())
+	}
+}
+
+// Throttles the event listener in seconds.
+func SVGTextPathOnSignalPatchModThrottleSec(
+	d time.Duration,
+) SVGTextPathOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds", int(d.Seconds()))
+	}
+}
+
+// Throttle the event listener in seconds without leading edge.
+func SVGTextPathOnSignalPatchModThrottleSecNoLeading(
+	d time.Duration,
+) SVGTextPathOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds.noleading", int(d.Seconds()))
+	}
+}
+
+// Throttle the event listener in seconds with trailing edge.
+func SVGTextPathOnSignalPatchModThrottleSecTrailing(
+	d time.Duration,
+) SVGTextPathOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds.trailing", int(d.Seconds()))
+	}
+}
+
+// Runs an expression whenever any signals are patched
+// This is useful for tracking changes, updating computed values, or triggering
+// side effects when data updates.
+//
+// See: https://data-star.dev/reference/attributes#data-on-signal-patch
+func (e *SVGTEXTPATHElement) DATASTAR_ON_SIGNAL_PATCH(expression string, modifiers ...SVGTextPathOnSignalPatchMod) *SVGTEXTPATHElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-on-signal-patch"
+
+	customMods := lo.Map(modifiers, func(m SVGTextPathOnSignalPatchMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Runs an expression whenever any signals are patched
+// This is useful for tracking changes, updating computed values, or triggering
+// side effects when data updates.
+//
+// See: https://data-star.dev/reference/attributes#data-on-signal-patch
+func (e *SVGTEXTPATHElement) IfDATASTAR_ON_SIGNAL_PATCH(condition bool, expression string, modifiers ...SVGTextPathOnSignalPatchMod) *SVGTEXTPATHElement {
+	if condition {
+		e.DATASTAR_ON_SIGNAL_PATCH(expression, modifiers...)
+	}
+	return e
+}
+
+// Runs an expression whenever any signals are patched
+// This is useful for tracking changes, updating computed values, or triggering
+// side effects when data updates.
+//
+// See: https://data-star.dev/reference/attributes#data-on-signal-patch
+// Remove the attribute DATASTAR_ON_SIGNAL_PATCH from the element.
+func (e *SVGTEXTPATHElement) DATASTAR_ON_SIGNAL_PATCHRemove() *SVGTEXTPATHElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-on-signal-patch")
+
+	return e
+}
+
+// Filters which signals to watch when using the data-on-signal-patch attribute.
+//
+// The data-on-signal-patch-filter attribute accepts an object with include and/or
+// exclude properties that are regular expressions.
+//
+// See: https://data-star.dev/reference/attributes#data-on-signal-patch-filter
+func (e *SVGTEXTPATHElement) DATASTAR_ON_SIGNAL_PATCH_FILTER(expression string) *SVGTEXTPATHElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-on-signal-patch-filter"
+
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Filters which signals to watch when using the data-on-signal-patch attribute.
+//
+// The data-on-signal-patch-filter attribute accepts an object with include and/or
+// exclude properties that are regular expressions.
+//
+// See: https://data-star.dev/reference/attributes#data-on-signal-patch-filter
+func (e *SVGTEXTPATHElement) IfDATASTAR_ON_SIGNAL_PATCH_FILTER(condition bool, expression string) *SVGTEXTPATHElement {
+	if condition {
+		e.DATASTAR_ON_SIGNAL_PATCH_FILTER(expression)
+	}
+	return e
+}
+
+// Filters which signals to watch when using the data-on-signal-patch attribute.
+//
+// The data-on-signal-patch-filter attribute accepts an object with include and/or
+// exclude properties that are regular expressions.
+//
+// See: https://data-star.dev/reference/attributes#data-on-signal-patch-filter
+// Remove the attribute DATASTAR_ON_SIGNAL_PATCH_FILTER from the element.
+func (e *SVGTEXTPATHElement) DATASTAR_ON_SIGNAL_PATCH_FILTERRemove() *SVGTEXTPATHElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-on-signal-patch-filter")
+
+	return e
+}
+
+// Preserves the value of an attribute when morphing DOM elements.
+//
+// See: https://data-star.dev/reference/attributes#data-preserve-attr
+func (e *SVGTEXTPATHElement) DATASTAR_PRESERVE_ATTR(expression string) *SVGTEXTPATHElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-preserve-attr"
+
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Preserves the value of an attribute when morphing DOM elements.
+//
+// See: https://data-star.dev/reference/attributes#data-preserve-attr
+func (e *SVGTEXTPATHElement) IfDATASTAR_PRESERVE_ATTR(condition bool, expression string) *SVGTEXTPATHElement {
+	if condition {
+		e.DATASTAR_PRESERVE_ATTR(expression)
+	}
+	return e
+}
+
+// Preserves the value of an attribute when morphing DOM elements.
+//
+// See: https://data-star.dev/reference/attributes#data-preserve-attr
+// Remove the attribute DATASTAR_PRESERVE_ATTR from the element.
+func (e *SVGTEXTPATHElement) DATASTAR_PRESERVE_ATTRRemove() *SVGTEXTPATHElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-preserve-attr")
+
+	return e
+}
+
+type SVGTextPathRefMod customDataKeyModifier
+
+// Converts the casing of the signal name.
+//   - 'camel' – Camel case: 'mySignal' (default)
+//   - 'kebab' – Kebab case: 'my-signal'
+//   - 'snake' – Snake case: 'my_signal'
+//   - 'pascal' – Pascal case: 'MySignal'
+func SVGTextPathRefModCase(
+	s string,
+) SVGTextPathRefMod {
+	return func() string {
+		return fmt.Sprintf("case.%s", s)
+	}
+}
+
+// Creates a new signal that is a reference to the element on which the data
+// attribute is placed.
+//
+// See: https://data-star.dev/reference/attributes#data-ref
+func (e *SVGTEXTPATHElement) DATASTAR_REF(expression string, modifiers ...SVGTextPathRefMod) *SVGTEXTPATHElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-ref"
+
+	customMods := lo.Map(modifiers, func(m SVGTextPathRefMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Creates a new signal that is a reference to the element on which the data
+// attribute is placed.
+//
+// See: https://data-star.dev/reference/attributes#data-ref
+func (e *SVGTEXTPATHElement) IfDATASTAR_REF(condition bool, expression string, modifiers ...SVGTextPathRefMod) *SVGTEXTPATHElement {
+	if condition {
+		e.DATASTAR_REF(expression, modifiers...)
+	}
+	return e
+}
+
+// Creates a new signal that is a reference to the element on which the data
+// attribute is placed.
+//
+// See: https://data-star.dev/reference/attributes#data-ref
+// Remove the attribute DATASTAR_REF from the element.
+func (e *SVGTEXTPATHElement) DATASTAR_REFRemove() *SVGTEXTPATHElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-ref")
+
+	return e
+}
+
+// Shows or hides an element based on whether an expression evaluates to 'true' or
+// 'false'
+// For anything with custom requirements, use 'data-class' instead.
+//
+// See: https://data-star.dev/reference/attributes#data-show
+func (e *SVGTEXTPATHElement) DATASTAR_SHOW(expression string) *SVGTEXTPATHElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-show"
+
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Shows or hides an element based on whether an expression evaluates to 'true' or
+// 'false'
+// For anything with custom requirements, use 'data-class' instead.
+//
+// See: https://data-star.dev/reference/attributes#data-show
+func (e *SVGTEXTPATHElement) IfDATASTAR_SHOW(condition bool, expression string) *SVGTEXTPATHElement {
+	if condition {
+		e.DATASTAR_SHOW(expression)
+	}
+	return e
+}
+
+// Shows or hides an element based on whether an expression evaluates to 'true' or
+// 'false'
+// For anything with custom requirements, use 'data-class' instead.
+//
+// See: https://data-star.dev/reference/attributes#data-show
+// Remove the attribute DATASTAR_SHOW from the element.
+func (e *SVGTEXTPATHElement) DATASTAR_SHOWRemove() *SVGTEXTPATHElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-show")
+
+	return e
+}
+
+type SVGTextPathSignalsMod customDataKeyModifier
+
+// Converts the casing of the signal name.
+//   - 'camel' – Camel case: 'mySignal' (default)
+//   - 'kebab' – Kebab case: 'my-signal'
+//   - 'snake' – Snake case: 'my_signal'
+//   - 'pascal' – Pascal case: 'MySignal'
+func SVGTextPathSignalsModCase(
+	s string,
+) SVGTextPathSignalsMod {
+	return func() string {
+		return fmt.Sprintf("case.%s", s)
+	}
+}
+
+// Only patches signals if their keys do not already exist
+// This is useful for setting defaults without overwriting existing values.
+func SVGTextPathSignalsModIfMissing() SVGTextPathSignalsMod {
+	return func() string {
+		return "ifmissing"
+	}
+}
+
+// Patches (adds, updates or removes) one or more signals into the existing
+// signals
+// Values defined later in the DOM tree override those defined earlier.
+//
+// See: https://data-star.dev/reference/attributes#data-signals
+func (e *SVGTEXTPATHElement) DATASTAR_SIGNALS(key string, expression string, modifiers ...SVGTextPathSignalsMod) *SVGTEXTPATHElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	key = fmt.Sprintf("data-signals%s", suffix)
+
+	customMods := lo.Map(modifiers, func(m SVGTextPathSignalsMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Patches (adds, updates or removes) one or more signals into the existing
+// signals
+// Values defined later in the DOM tree override those defined earlier.
+//
+// See: https://data-star.dev/reference/attributes#data-signals
+func (e *SVGTEXTPATHElement) IfDATASTAR_SIGNALS(condition bool, key string, expression string, modifiers ...SVGTextPathSignalsMod) *SVGTEXTPATHElement {
+	if condition {
+		e.DATASTAR_SIGNALS(key, expression, modifiers...)
+	}
+	return e
+}
+
+// Patches (adds, updates or removes) one or more signals into the existing
+// signals
+// Values defined later in the DOM tree override those defined earlier.
+//
+// See: https://data-star.dev/reference/attributes#data-signals
+// Remove the attribute DATASTAR_SIGNALS from the element.
+func (e *SVGTEXTPATHElement) DATASTAR_SIGNALSRemove(key string) *SVGTEXTPATHElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	e.StringAttributes.Del("data-signals" + suffix)
+
+	return e
+}
+
+type SVGTextPathStyleMod customDataKeyModifier
+
+// Converts the casing of the signal name.
+//   - 'camel' – Camel case: 'mySignal' (default)
+//   - 'kebab' – Kebab case: 'my-signal'
+//   - 'snake' – Snake case: 'my_signal'
+//   - 'pascal' – Pascal case: 'MySignal'
+func SVGTextPathStyleModCase(
+	s string,
+) SVGTextPathStyleMod {
+	return func() string {
+		return fmt.Sprintf("case.%s", s)
+	}
+}
+
+// Sets the value of inline CSS styles on an element based on an expression, and
+// keeps them in sync.
+//
+// See: https://data-star.dev/reference/attributes#data-style
+func (e *SVGTEXTPATHElement) DATASTAR_STYLE(key string, expression string, modifiers ...SVGTextPathStyleMod) *SVGTEXTPATHElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	key = fmt.Sprintf("data-style%s", suffix)
+
+	customMods := lo.Map(modifiers, func(m SVGTextPathStyleMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Sets the value of inline CSS styles on an element based on an expression, and
+// keeps them in sync.
+//
+// See: https://data-star.dev/reference/attributes#data-style
+func (e *SVGTEXTPATHElement) IfDATASTAR_STYLE(condition bool, key string, expression string, modifiers ...SVGTextPathStyleMod) *SVGTEXTPATHElement {
+	if condition {
+		e.DATASTAR_STYLE(key, expression, modifiers...)
+	}
+	return e
+}
+
+// Sets the value of inline CSS styles on an element based on an expression, and
+// keeps them in sync.
+//
+// See: https://data-star.dev/reference/attributes#data-style
+// Remove the attribute DATASTAR_STYLE from the element.
+func (e *SVGTEXTPATHElement) DATASTAR_STYLERemove(key string) *SVGTEXTPATHElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	e.StringAttributes.Del("data-style" + suffix)
+
+	return e
+}
+
+// Binds the text content of an element to an expression.
+//
+// See: https://data-star.dev/reference/attributes#data-text
 func (e *SVGTEXTPATHElement) DATASTAR_TEXT(expression string) *SVGTEXTPATHElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
@@ -579,6 +2102,9 @@ func (e *SVGTEXTPATHElement) DATASTAR_TEXT(expression string) *SVGTEXTPATHElemen
 	return e
 }
 
+// Binds the text content of an element to an expression.
+//
+// See: https://data-star.dev/reference/attributes#data-text
 func (e *SVGTEXTPATHElement) IfDATASTAR_TEXT(condition bool, expression string) *SVGTEXTPATHElement {
 	if condition {
 		e.DATASTAR_TEXT(expression)
@@ -586,228 +2112,16 @@ func (e *SVGTEXTPATHElement) IfDATASTAR_TEXT(condition bool, expression string) 
 	return e
 }
 
+// Binds the text content of an element to an expression.
+//
+// See: https://data-star.dev/reference/attributes#data-text
 // Remove the attribute DATASTAR_TEXT from the element.
 func (e *SVGTEXTPATHElement) DATASTAR_TEXTRemove() *SVGTEXTPATHElement {
 	if e.StringAttributes == nil {
 		return e
 	}
+
 	e.StringAttributes.Del("data-text")
-	return e
-}
 
-// Sets the event handler of the element
-
-type SVGTextPathOnMod customDataKeyModifier
-
-// Debounces the event handler
-func SVGTextPathOnModDebounce(
-	d time.Duration,
-) SVGTextPathOnMod {
-	return func() string {
-		return fmt.Sprintf("debounce_%dms", d.Milliseconds())
-	}
-}
-
-// Throttles the event handler
-func SVGTextPathOnModThrottle(
-	d time.Duration,
-) SVGTextPathOnMod {
-	return func() string {
-		return fmt.Sprintf("throttle_%dms", d.Milliseconds())
-	}
-}
-
-func (e *SVGTEXTPATHElement) DATASTAR_ON(key string, expression string, modifiers ...SVGTextPathOnMod) *SVGTEXTPATHElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-
-	key = fmt.Sprintf("data-on-%s", key)
-
-	customMods := lo.Map(modifiers, func(m SVGTextPathOnMod, i int) customDataKeyModifier {
-		return customDataKeyModifier(m)
-	})
-	key = customDataKey(key, customMods...)
-	e.StringAttributes.Set(key, expression)
-	return e
-}
-
-func (e *SVGTEXTPATHElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SVGTextPathOnMod) *SVGTEXTPATHElement {
-	if condition {
-		e.DATASTAR_ON(key, expression, modifiers...)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_ON from the element.
-func (e *SVGTEXTPATHElement) DATASTAR_ONRemove() *SVGTEXTPATHElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-on")
-	return e
-}
-
-// Sets the focus of the element
-
-func (e *SVGTEXTPATHElement) DATASTAR_FOCUSSet(b bool) *SVGTEXTPATHElement {
-	key := "data-focus"
-	e.BoolAttributes.Set(key, b)
-	return e
-}
-
-func (e *SVGTEXTPATHElement) DATASTAR_FOCUS() *SVGTEXTPATHElement {
-	return e.DATASTAR_FOCUSSet(true)
-}
-
-// Sets the header of for fetch requests
-
-func (e *SVGTEXTPATHElement) DATASTAR_HEADER(key string, expression string) *SVGTEXTPATHElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-
-	key = fmt.Sprintf("data-header-%s", key)
-
-	e.StringAttributes.Set(key, expression)
-	return e
-}
-
-func (e *SVGTEXTPATHElement) IfDATASTAR_HEADER(condition bool, key string, expression string) *SVGTEXTPATHElement {
-	if condition {
-		e.DATASTAR_HEADER(key, expression)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_HEADER from the element.
-func (e *SVGTEXTPATHElement) DATASTAR_HEADERRemove() *SVGTEXTPATHElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-header")
-	return e
-}
-
-// Sets the indicator selector for fetch requests
-
-func (e *SVGTEXTPATHElement) DATASTAR_FETCH_INDICATOR(expression string) *SVGTEXTPATHElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-
-	key := "data-fetch-indicator"
-
-	e.StringAttributes.Set(key, expression)
-	return e
-}
-
-func (e *SVGTEXTPATHElement) IfDATASTAR_FETCH_INDICATOR(condition bool, expression string) *SVGTEXTPATHElement {
-	if condition {
-		e.DATASTAR_FETCH_INDICATOR(expression)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_FETCH_INDICATOR from the element.
-func (e *SVGTEXTPATHElement) DATASTAR_FETCH_INDICATORRemove() *SVGTEXTPATHElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-fetch-indicator")
-	return e
-}
-
-// Sets the visibility of the element
-
-func (e *SVGTEXTPATHElement) DATASTAR_SHOWSet(b bool) *SVGTEXTPATHElement {
-	key := "data-show"
-	e.BoolAttributes.Set(key, b)
-	return e
-}
-
-func (e *SVGTEXTPATHElement) DATASTAR_SHOW() *SVGTEXTPATHElement {
-	return e.DATASTAR_SHOWSet(true)
-}
-
-// Triggers the callback when the element intersects the viewport
-
-func (e *SVGTEXTPATHElement) DATASTAR_INTERSECTS(expression string) *SVGTEXTPATHElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-
-	key := "data-intersects"
-
-	e.StringAttributes.Set(key, expression)
-	return e
-}
-
-func (e *SVGTEXTPATHElement) IfDATASTAR_INTERSECTS(condition bool, expression string) *SVGTEXTPATHElement {
-	if condition {
-		e.DATASTAR_INTERSECTS(expression)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_INTERSECTS from the element.
-func (e *SVGTEXTPATHElement) DATASTAR_INTERSECTSRemove() *SVGTEXTPATHElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-intersects")
-	return e
-}
-
-// Teleports the element to the given selector
-
-func (e *SVGTEXTPATHElement) DATASTAR_TELEPORTSet(b bool) *SVGTEXTPATHElement {
-	key := "data-teleport"
-	e.BoolAttributes.Set(key, b)
-	return e
-}
-
-func (e *SVGTEXTPATHElement) DATASTAR_TELEPORT() *SVGTEXTPATHElement {
-	return e.DATASTAR_TELEPORTSet(true)
-}
-
-// Scrolls the element into view
-
-func (e *SVGTEXTPATHElement) DATASTAR_SCROLL_INTO_VIEWSet(b bool) *SVGTEXTPATHElement {
-	key := "data-scroll-into-view"
-	e.BoolAttributes.Set(key, b)
-	return e
-}
-
-func (e *SVGTEXTPATHElement) DATASTAR_SCROLL_INTO_VIEW() *SVGTEXTPATHElement {
-	return e.DATASTAR_SCROLL_INTO_VIEWSet(true)
-}
-
-// Setup the ViewTransitionAPI for the element
-
-func (e *SVGTEXTPATHElement) DATASTAR_VIEW_TRANSITION(expression string) *SVGTEXTPATHElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-
-	key := "data-view-transition"
-
-	e.StringAttributes.Set(key, expression)
-	return e
-}
-
-func (e *SVGTEXTPATHElement) IfDATASTAR_VIEW_TRANSITION(condition bool, expression string) *SVGTEXTPATHElement {
-	if condition {
-		e.DATASTAR_VIEW_TRANSITION(expression)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_VIEW_TRANSITION from the element.
-func (e *SVGTEXTPATHElement) DATASTAR_VIEW_TRANSITIONRemove() *SVGTEXTPATHElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-view-transition")
 	return e
 }

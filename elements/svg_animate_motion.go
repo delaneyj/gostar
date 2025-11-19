@@ -5,10 +5,8 @@ package elements
 
 import (
 	"fmt"
-	"html"
 	"time"
 
-	"github.com/goccy/go-json"
 	"github.com/igrmk/treemap/v2"
 	"github.com/samber/lo"
 )
@@ -186,6 +184,7 @@ const (
 	SVGAnimateMotionAccumulate_sum SVGAnimateMotionAccumulateChoice = "sum"
 )
 
+// Controls whether or not the animation is cumulative.
 // Remove the attribute ACCUMULATE from the element.
 func (e *SVGANIMATEMOTIONElement) ACCUMULATERemove(c SVGAnimateMotionAccumulateChoice) *SVGANIMATEMOTIONElement {
 	if e.StringAttributes == nil {
@@ -215,6 +214,7 @@ const (
 	SVGAnimateMotionAdditive_sum SVGAnimateMotionAdditiveChoice = "sum"
 )
 
+// Controls whether or not the animation is additive.
 // Remove the attribute ADDITIVE from the element.
 func (e *SVGANIMATEMOTIONElement) ADDITIVERemove(c SVGAnimateMotionAdditiveChoice) *SVGANIMATEMOTIONElement {
 	if e.StringAttributes == nil {
@@ -233,10 +233,12 @@ func (e *SVGANIMATEMOTIONElement) BEGIN(s string) *SVGANIMATEMOTIONElement {
 	return e
 }
 
+// Defines when the animation should begin.
 func (e *SVGANIMATEMOTIONElement) BEGINF(format string, args ...any) *SVGANIMATEMOTIONElement {
 	return e.BEGIN(fmt.Sprintf(format, args...))
 }
 
+// Defines when the animation should begin.
 func (e *SVGANIMATEMOTIONElement) IfBEGIN(condition bool, s string) *SVGANIMATEMOTIONElement {
 	if condition {
 		e.BEGIN(s)
@@ -244,6 +246,7 @@ func (e *SVGANIMATEMOTIONElement) IfBEGIN(condition bool, s string) *SVGANIMATEM
 	return e
 }
 
+// Defines when the animation should begin.
 func (e *SVGANIMATEMOTIONElement) IfBEGINF(condition bool, format string, args ...any) *SVGANIMATEMOTIONElement {
 	if condition {
 		e.BEGIN(fmt.Sprintf(format, args...))
@@ -251,6 +254,7 @@ func (e *SVGANIMATEMOTIONElement) IfBEGINF(condition bool, format string, args .
 	return e
 }
 
+// Defines when the animation should begin.
 // Remove the attribute BEGIN from the element.
 func (e *SVGANIMATEMOTIONElement) BEGINRemove(s string) *SVGANIMATEMOTIONElement {
 	if e.StringAttributes == nil {
@@ -260,6 +264,7 @@ func (e *SVGANIMATEMOTIONElement) BEGINRemove(s string) *SVGANIMATEMOTIONElement
 	return e
 }
 
+// Defines when the animation should begin.
 func (e *SVGANIMATEMOTIONElement) BEGINRemoveF(format string, args ...any) *SVGANIMATEMOTIONElement {
 	return e.BEGINRemove(fmt.Sprintf(format, args...))
 }
@@ -273,10 +278,12 @@ func (e *SVGANIMATEMOTIONElement) BY(s string) *SVGANIMATEMOTIONElement {
 	return e
 }
 
+// Defines a relative offset value for the animation.
 func (e *SVGANIMATEMOTIONElement) BYF(format string, args ...any) *SVGANIMATEMOTIONElement {
 	return e.BY(fmt.Sprintf(format, args...))
 }
 
+// Defines a relative offset value for the animation.
 func (e *SVGANIMATEMOTIONElement) IfBY(condition bool, s string) *SVGANIMATEMOTIONElement {
 	if condition {
 		e.BY(s)
@@ -284,6 +291,7 @@ func (e *SVGANIMATEMOTIONElement) IfBY(condition bool, s string) *SVGANIMATEMOTI
 	return e
 }
 
+// Defines a relative offset value for the animation.
 func (e *SVGANIMATEMOTIONElement) IfBYF(condition bool, format string, args ...any) *SVGANIMATEMOTIONElement {
 	if condition {
 		e.BY(fmt.Sprintf(format, args...))
@@ -291,6 +299,7 @@ func (e *SVGANIMATEMOTIONElement) IfBYF(condition bool, format string, args ...a
 	return e
 }
 
+// Defines a relative offset value for the animation.
 // Remove the attribute BY from the element.
 func (e *SVGANIMATEMOTIONElement) BYRemove(s string) *SVGANIMATEMOTIONElement {
 	if e.StringAttributes == nil {
@@ -300,6 +309,7 @@ func (e *SVGANIMATEMOTIONElement) BYRemove(s string) *SVGANIMATEMOTIONElement {
 	return e
 }
 
+// Defines a relative offset value for the animation.
 func (e *SVGANIMATEMOTIONElement) BYRemoveF(format string, args ...any) *SVGANIMATEMOTIONElement {
 	return e.BYRemove(fmt.Sprintf(format, args...))
 }
@@ -329,6 +339,7 @@ const (
 	SVGAnimateMotionCalcMode_spline SVGAnimateMotionCalcModeChoice = "spline"
 )
 
+// Defines the pacing of the animation.
 // Remove the attribute CALC_MODE from the element.
 func (e *SVGANIMATEMOTIONElement) CALC_MODERemove(c SVGAnimateMotionCalcModeChoice) *SVGANIMATEMOTIONElement {
 	if e.StringAttributes == nil {
@@ -347,10 +358,12 @@ func (e *SVGANIMATEMOTIONElement) DUR(s string) *SVGANIMATEMOTIONElement {
 	return e
 }
 
+// Defines the duration of the animation.
 func (e *SVGANIMATEMOTIONElement) DURF(format string, args ...any) *SVGANIMATEMOTIONElement {
 	return e.DUR(fmt.Sprintf(format, args...))
 }
 
+// Defines the duration of the animation.
 func (e *SVGANIMATEMOTIONElement) IfDUR(condition bool, s string) *SVGANIMATEMOTIONElement {
 	if condition {
 		e.DUR(s)
@@ -358,6 +371,7 @@ func (e *SVGANIMATEMOTIONElement) IfDUR(condition bool, s string) *SVGANIMATEMOT
 	return e
 }
 
+// Defines the duration of the animation.
 func (e *SVGANIMATEMOTIONElement) IfDURF(condition bool, format string, args ...any) *SVGANIMATEMOTIONElement {
 	if condition {
 		e.DUR(fmt.Sprintf(format, args...))
@@ -365,6 +379,7 @@ func (e *SVGANIMATEMOTIONElement) IfDURF(condition bool, format string, args ...
 	return e
 }
 
+// Defines the duration of the animation.
 // Remove the attribute DUR from the element.
 func (e *SVGANIMATEMOTIONElement) DURRemove(s string) *SVGANIMATEMOTIONElement {
 	if e.StringAttributes == nil {
@@ -374,6 +389,7 @@ func (e *SVGANIMATEMOTIONElement) DURRemove(s string) *SVGANIMATEMOTIONElement {
 	return e
 }
 
+// Defines the duration of the animation.
 func (e *SVGANIMATEMOTIONElement) DURRemoveF(format string, args ...any) *SVGANIMATEMOTIONElement {
 	return e.DURRemove(fmt.Sprintf(format, args...))
 }
@@ -387,10 +403,12 @@ func (e *SVGANIMATEMOTIONElement) END(s string) *SVGANIMATEMOTIONElement {
 	return e
 }
 
+// Defines when the animation should end.
 func (e *SVGANIMATEMOTIONElement) ENDF(format string, args ...any) *SVGANIMATEMOTIONElement {
 	return e.END(fmt.Sprintf(format, args...))
 }
 
+// Defines when the animation should end.
 func (e *SVGANIMATEMOTIONElement) IfEND(condition bool, s string) *SVGANIMATEMOTIONElement {
 	if condition {
 		e.END(s)
@@ -398,6 +416,7 @@ func (e *SVGANIMATEMOTIONElement) IfEND(condition bool, s string) *SVGANIMATEMOT
 	return e
 }
 
+// Defines when the animation should end.
 func (e *SVGANIMATEMOTIONElement) IfENDF(condition bool, format string, args ...any) *SVGANIMATEMOTIONElement {
 	if condition {
 		e.END(fmt.Sprintf(format, args...))
@@ -405,6 +424,7 @@ func (e *SVGANIMATEMOTIONElement) IfENDF(condition bool, format string, args ...
 	return e
 }
 
+// Defines when the animation should end.
 // Remove the attribute END from the element.
 func (e *SVGANIMATEMOTIONElement) ENDRemove(s string) *SVGANIMATEMOTIONElement {
 	if e.StringAttributes == nil {
@@ -414,6 +434,7 @@ func (e *SVGANIMATEMOTIONElement) ENDRemove(s string) *SVGANIMATEMOTIONElement {
 	return e
 }
 
+// Defines when the animation should end.
 func (e *SVGANIMATEMOTIONElement) ENDRemoveF(format string, args ...any) *SVGANIMATEMOTIONElement {
 	return e.ENDRemove(fmt.Sprintf(format, args...))
 }
@@ -436,6 +457,7 @@ const (
 	SVGAnimateMotionFill_remove SVGAnimateMotionFillChoice = "remove"
 )
 
+// Defines the fill behavior for the animation.
 // Remove the attribute FILL from the element.
 func (e *SVGANIMATEMOTIONElement) FILLRemove(c SVGAnimateMotionFillChoice) *SVGANIMATEMOTIONElement {
 	if e.StringAttributes == nil {
@@ -454,10 +476,12 @@ func (e *SVGANIMATEMOTIONElement) FROM(s string) *SVGANIMATEMOTIONElement {
 	return e
 }
 
+// Defines the initial value of the attribute.
 func (e *SVGANIMATEMOTIONElement) FROMF(format string, args ...any) *SVGANIMATEMOTIONElement {
 	return e.FROM(fmt.Sprintf(format, args...))
 }
 
+// Defines the initial value of the attribute.
 func (e *SVGANIMATEMOTIONElement) IfFROM(condition bool, s string) *SVGANIMATEMOTIONElement {
 	if condition {
 		e.FROM(s)
@@ -465,6 +489,7 @@ func (e *SVGANIMATEMOTIONElement) IfFROM(condition bool, s string) *SVGANIMATEMO
 	return e
 }
 
+// Defines the initial value of the attribute.
 func (e *SVGANIMATEMOTIONElement) IfFROMF(condition bool, format string, args ...any) *SVGANIMATEMOTIONElement {
 	if condition {
 		e.FROM(fmt.Sprintf(format, args...))
@@ -472,6 +497,7 @@ func (e *SVGANIMATEMOTIONElement) IfFROMF(condition bool, format string, args ..
 	return e
 }
 
+// Defines the initial value of the attribute.
 // Remove the attribute FROM from the element.
 func (e *SVGANIMATEMOTIONElement) FROMRemove(s string) *SVGANIMATEMOTIONElement {
 	if e.StringAttributes == nil {
@@ -481,6 +507,7 @@ func (e *SVGANIMATEMOTIONElement) FROMRemove(s string) *SVGANIMATEMOTIONElement 
 	return e
 }
 
+// Defines the initial value of the attribute.
 func (e *SVGANIMATEMOTIONElement) FROMRemoveF(format string, args ...any) *SVGANIMATEMOTIONElement {
 	return e.FROMRemove(fmt.Sprintf(format, args...))
 }
@@ -494,10 +521,12 @@ func (e *SVGANIMATEMOTIONElement) KEY_SPLINES(s string) *SVGANIMATEMOTIONElement
 	return e
 }
 
+// Defines the values for a cubic Bézier function that controls interval pacing.
 func (e *SVGANIMATEMOTIONElement) KEY_SPLINESF(format string, args ...any) *SVGANIMATEMOTIONElement {
 	return e.KEY_SPLINES(fmt.Sprintf(format, args...))
 }
 
+// Defines the values for a cubic Bézier function that controls interval pacing.
 func (e *SVGANIMATEMOTIONElement) IfKEY_SPLINES(condition bool, s string) *SVGANIMATEMOTIONElement {
 	if condition {
 		e.KEY_SPLINES(s)
@@ -505,6 +534,7 @@ func (e *SVGANIMATEMOTIONElement) IfKEY_SPLINES(condition bool, s string) *SVGAN
 	return e
 }
 
+// Defines the values for a cubic Bézier function that controls interval pacing.
 func (e *SVGANIMATEMOTIONElement) IfKEY_SPLINESF(condition bool, format string, args ...any) *SVGANIMATEMOTIONElement {
 	if condition {
 		e.KEY_SPLINES(fmt.Sprintf(format, args...))
@@ -512,6 +542,7 @@ func (e *SVGANIMATEMOTIONElement) IfKEY_SPLINESF(condition bool, format string, 
 	return e
 }
 
+// Defines the values for a cubic Bézier function that controls interval pacing.
 // Remove the attribute KEY_SPLINES from the element.
 func (e *SVGANIMATEMOTIONElement) KEY_SPLINESRemove(s string) *SVGANIMATEMOTIONElement {
 	if e.StringAttributes == nil {
@@ -521,6 +552,7 @@ func (e *SVGANIMATEMOTIONElement) KEY_SPLINESRemove(s string) *SVGANIMATEMOTIONE
 	return e
 }
 
+// Defines the values for a cubic Bézier function that controls interval pacing.
 func (e *SVGANIMATEMOTIONElement) KEY_SPLINESRemoveF(format string, args ...any) *SVGANIMATEMOTIONElement {
 	return e.KEY_SPLINESRemove(fmt.Sprintf(format, args...))
 }
@@ -534,10 +566,12 @@ func (e *SVGANIMATEMOTIONElement) KEY_TIMES(s string) *SVGANIMATEMOTIONElement {
 	return e
 }
 
+// Defines when the animation should take place in terms of time fractions.
 func (e *SVGANIMATEMOTIONElement) KEY_TIMESF(format string, args ...any) *SVGANIMATEMOTIONElement {
 	return e.KEY_TIMES(fmt.Sprintf(format, args...))
 }
 
+// Defines when the animation should take place in terms of time fractions.
 func (e *SVGANIMATEMOTIONElement) IfKEY_TIMES(condition bool, s string) *SVGANIMATEMOTIONElement {
 	if condition {
 		e.KEY_TIMES(s)
@@ -545,6 +579,7 @@ func (e *SVGANIMATEMOTIONElement) IfKEY_TIMES(condition bool, s string) *SVGANIM
 	return e
 }
 
+// Defines when the animation should take place in terms of time fractions.
 func (e *SVGANIMATEMOTIONElement) IfKEY_TIMESF(condition bool, format string, args ...any) *SVGANIMATEMOTIONElement {
 	if condition {
 		e.KEY_TIMES(fmt.Sprintf(format, args...))
@@ -552,6 +587,7 @@ func (e *SVGANIMATEMOTIONElement) IfKEY_TIMESF(condition bool, format string, ar
 	return e
 }
 
+// Defines when the animation should take place in terms of time fractions.
 // Remove the attribute KEY_TIMES from the element.
 func (e *SVGANIMATEMOTIONElement) KEY_TIMESRemove(s string) *SVGANIMATEMOTIONElement {
 	if e.StringAttributes == nil {
@@ -561,6 +597,7 @@ func (e *SVGANIMATEMOTIONElement) KEY_TIMESRemove(s string) *SVGANIMATEMOTIONEle
 	return e
 }
 
+// Defines when the animation should take place in terms of time fractions.
 func (e *SVGANIMATEMOTIONElement) KEY_TIMESRemoveF(format string, args ...any) *SVGANIMATEMOTIONElement {
 	return e.KEY_TIMESRemove(fmt.Sprintf(format, args...))
 }
@@ -574,10 +611,12 @@ func (e *SVGANIMATEMOTIONElement) MAX(s string) *SVGANIMATEMOTIONElement {
 	return e
 }
 
+// Defines the maximum value allowed for the attribute.
 func (e *SVGANIMATEMOTIONElement) MAXF(format string, args ...any) *SVGANIMATEMOTIONElement {
 	return e.MAX(fmt.Sprintf(format, args...))
 }
 
+// Defines the maximum value allowed for the attribute.
 func (e *SVGANIMATEMOTIONElement) IfMAX(condition bool, s string) *SVGANIMATEMOTIONElement {
 	if condition {
 		e.MAX(s)
@@ -585,6 +624,7 @@ func (e *SVGANIMATEMOTIONElement) IfMAX(condition bool, s string) *SVGANIMATEMOT
 	return e
 }
 
+// Defines the maximum value allowed for the attribute.
 func (e *SVGANIMATEMOTIONElement) IfMAXF(condition bool, format string, args ...any) *SVGANIMATEMOTIONElement {
 	if condition {
 		e.MAX(fmt.Sprintf(format, args...))
@@ -592,6 +632,7 @@ func (e *SVGANIMATEMOTIONElement) IfMAXF(condition bool, format string, args ...
 	return e
 }
 
+// Defines the maximum value allowed for the attribute.
 // Remove the attribute MAX from the element.
 func (e *SVGANIMATEMOTIONElement) MAXRemove(s string) *SVGANIMATEMOTIONElement {
 	if e.StringAttributes == nil {
@@ -601,6 +642,7 @@ func (e *SVGANIMATEMOTIONElement) MAXRemove(s string) *SVGANIMATEMOTIONElement {
 	return e
 }
 
+// Defines the maximum value allowed for the attribute.
 func (e *SVGANIMATEMOTIONElement) MAXRemoveF(format string, args ...any) *SVGANIMATEMOTIONElement {
 	return e.MAXRemove(fmt.Sprintf(format, args...))
 }
@@ -614,10 +656,12 @@ func (e *SVGANIMATEMOTIONElement) MIN(s string) *SVGANIMATEMOTIONElement {
 	return e
 }
 
+// Defines the minimum value allowed for the attribute.
 func (e *SVGANIMATEMOTIONElement) MINF(format string, args ...any) *SVGANIMATEMOTIONElement {
 	return e.MIN(fmt.Sprintf(format, args...))
 }
 
+// Defines the minimum value allowed for the attribute.
 func (e *SVGANIMATEMOTIONElement) IfMIN(condition bool, s string) *SVGANIMATEMOTIONElement {
 	if condition {
 		e.MIN(s)
@@ -625,6 +669,7 @@ func (e *SVGANIMATEMOTIONElement) IfMIN(condition bool, s string) *SVGANIMATEMOT
 	return e
 }
 
+// Defines the minimum value allowed for the attribute.
 func (e *SVGANIMATEMOTIONElement) IfMINF(condition bool, format string, args ...any) *SVGANIMATEMOTIONElement {
 	if condition {
 		e.MIN(fmt.Sprintf(format, args...))
@@ -632,6 +677,7 @@ func (e *SVGANIMATEMOTIONElement) IfMINF(condition bool, format string, args ...
 	return e
 }
 
+// Defines the minimum value allowed for the attribute.
 // Remove the attribute MIN from the element.
 func (e *SVGANIMATEMOTIONElement) MINRemove(s string) *SVGANIMATEMOTIONElement {
 	if e.StringAttributes == nil {
@@ -641,6 +687,7 @@ func (e *SVGANIMATEMOTIONElement) MINRemove(s string) *SVGANIMATEMOTIONElement {
 	return e
 }
 
+// Defines the minimum value allowed for the attribute.
 func (e *SVGANIMATEMOTIONElement) MINRemoveF(format string, args ...any) *SVGANIMATEMOTIONElement {
 	return e.MINRemove(fmt.Sprintf(format, args...))
 }
@@ -654,10 +701,12 @@ func (e *SVGANIMATEMOTIONElement) REPEAT_COUNT(s string) *SVGANIMATEMOTIONElemen
 	return e
 }
 
+// Defines the number of times the animation should repeat.
 func (e *SVGANIMATEMOTIONElement) REPEAT_COUNTF(format string, args ...any) *SVGANIMATEMOTIONElement {
 	return e.REPEAT_COUNT(fmt.Sprintf(format, args...))
 }
 
+// Defines the number of times the animation should repeat.
 func (e *SVGANIMATEMOTIONElement) IfREPEAT_COUNT(condition bool, s string) *SVGANIMATEMOTIONElement {
 	if condition {
 		e.REPEAT_COUNT(s)
@@ -665,6 +714,7 @@ func (e *SVGANIMATEMOTIONElement) IfREPEAT_COUNT(condition bool, s string) *SVGA
 	return e
 }
 
+// Defines the number of times the animation should repeat.
 func (e *SVGANIMATEMOTIONElement) IfREPEAT_COUNTF(condition bool, format string, args ...any) *SVGANIMATEMOTIONElement {
 	if condition {
 		e.REPEAT_COUNT(fmt.Sprintf(format, args...))
@@ -672,6 +722,7 @@ func (e *SVGANIMATEMOTIONElement) IfREPEAT_COUNTF(condition bool, format string,
 	return e
 }
 
+// Defines the number of times the animation should repeat.
 // Remove the attribute REPEAT_COUNT from the element.
 func (e *SVGANIMATEMOTIONElement) REPEAT_COUNTRemove(s string) *SVGANIMATEMOTIONElement {
 	if e.StringAttributes == nil {
@@ -681,6 +732,7 @@ func (e *SVGANIMATEMOTIONElement) REPEAT_COUNTRemove(s string) *SVGANIMATEMOTION
 	return e
 }
 
+// Defines the number of times the animation should repeat.
 func (e *SVGANIMATEMOTIONElement) REPEAT_COUNTRemoveF(format string, args ...any) *SVGANIMATEMOTIONElement {
 	return e.REPEAT_COUNTRemove(fmt.Sprintf(format, args...))
 }
@@ -694,10 +746,12 @@ func (e *SVGANIMATEMOTIONElement) REPEAT_DUR(s string) *SVGANIMATEMOTIONElement 
 	return e
 }
 
+// Defines the duration for repeating an animation.
 func (e *SVGANIMATEMOTIONElement) REPEAT_DURF(format string, args ...any) *SVGANIMATEMOTIONElement {
 	return e.REPEAT_DUR(fmt.Sprintf(format, args...))
 }
 
+// Defines the duration for repeating an animation.
 func (e *SVGANIMATEMOTIONElement) IfREPEAT_DUR(condition bool, s string) *SVGANIMATEMOTIONElement {
 	if condition {
 		e.REPEAT_DUR(s)
@@ -705,6 +759,7 @@ func (e *SVGANIMATEMOTIONElement) IfREPEAT_DUR(condition bool, s string) *SVGANI
 	return e
 }
 
+// Defines the duration for repeating an animation.
 func (e *SVGANIMATEMOTIONElement) IfREPEAT_DURF(condition bool, format string, args ...any) *SVGANIMATEMOTIONElement {
 	if condition {
 		e.REPEAT_DUR(fmt.Sprintf(format, args...))
@@ -712,6 +767,7 @@ func (e *SVGANIMATEMOTIONElement) IfREPEAT_DURF(condition bool, format string, a
 	return e
 }
 
+// Defines the duration for repeating an animation.
 // Remove the attribute REPEAT_DUR from the element.
 func (e *SVGANIMATEMOTIONElement) REPEAT_DURRemove(s string) *SVGANIMATEMOTIONElement {
 	if e.StringAttributes == nil {
@@ -721,6 +777,7 @@ func (e *SVGANIMATEMOTIONElement) REPEAT_DURRemove(s string) *SVGANIMATEMOTIONEl
 	return e
 }
 
+// Defines the duration for repeating an animation.
 func (e *SVGANIMATEMOTIONElement) REPEAT_DURRemoveF(format string, args ...any) *SVGANIMATEMOTIONElement {
 	return e.REPEAT_DURRemove(fmt.Sprintf(format, args...))
 }
@@ -746,6 +803,7 @@ const (
 	SVGAnimateMotionRestart_whenNotActive SVGAnimateMotionRestartChoice = "whenNotActive"
 )
 
+// Defines if an animation should restart after it completes.
 // Remove the attribute RESTART from the element.
 func (e *SVGANIMATEMOTIONElement) RESTARTRemove(c SVGAnimateMotionRestartChoice) *SVGANIMATEMOTIONElement {
 	if e.StringAttributes == nil {
@@ -764,10 +822,12 @@ func (e *SVGANIMATEMOTIONElement) TO(s string) *SVGANIMATEMOTIONElement {
 	return e
 }
 
+// Defines the ending value of the attribute.
 func (e *SVGANIMATEMOTIONElement) TOF(format string, args ...any) *SVGANIMATEMOTIONElement {
 	return e.TO(fmt.Sprintf(format, args...))
 }
 
+// Defines the ending value of the attribute.
 func (e *SVGANIMATEMOTIONElement) IfTO(condition bool, s string) *SVGANIMATEMOTIONElement {
 	if condition {
 		e.TO(s)
@@ -775,6 +835,7 @@ func (e *SVGANIMATEMOTIONElement) IfTO(condition bool, s string) *SVGANIMATEMOTI
 	return e
 }
 
+// Defines the ending value of the attribute.
 func (e *SVGANIMATEMOTIONElement) IfTOF(condition bool, format string, args ...any) *SVGANIMATEMOTIONElement {
 	if condition {
 		e.TO(fmt.Sprintf(format, args...))
@@ -782,6 +843,7 @@ func (e *SVGANIMATEMOTIONElement) IfTOF(condition bool, format string, args ...a
 	return e
 }
 
+// Defines the ending value of the attribute.
 // Remove the attribute TO from the element.
 func (e *SVGANIMATEMOTIONElement) TORemove(s string) *SVGANIMATEMOTIONElement {
 	if e.StringAttributes == nil {
@@ -791,6 +853,7 @@ func (e *SVGANIMATEMOTIONElement) TORemove(s string) *SVGANIMATEMOTIONElement {
 	return e
 }
 
+// Defines the ending value of the attribute.
 func (e *SVGANIMATEMOTIONElement) TORemoveF(format string, args ...any) *SVGANIMATEMOTIONElement {
 	return e.TORemove(fmt.Sprintf(format, args...))
 }
@@ -804,10 +867,12 @@ func (e *SVGANIMATEMOTIONElement) VALUES(s string) *SVGANIMATEMOTIONElement {
 	return e
 }
 
+// Defines a list of discrete values to interpolate.
 func (e *SVGANIMATEMOTIONElement) VALUESF(format string, args ...any) *SVGANIMATEMOTIONElement {
 	return e.VALUES(fmt.Sprintf(format, args...))
 }
 
+// Defines a list of discrete values to interpolate.
 func (e *SVGANIMATEMOTIONElement) IfVALUES(condition bool, s string) *SVGANIMATEMOTIONElement {
 	if condition {
 		e.VALUES(s)
@@ -815,6 +880,7 @@ func (e *SVGANIMATEMOTIONElement) IfVALUES(condition bool, s string) *SVGANIMATE
 	return e
 }
 
+// Defines a list of discrete values to interpolate.
 func (e *SVGANIMATEMOTIONElement) IfVALUESF(condition bool, format string, args ...any) *SVGANIMATEMOTIONElement {
 	if condition {
 		e.VALUES(fmt.Sprintf(format, args...))
@@ -822,6 +888,7 @@ func (e *SVGANIMATEMOTIONElement) IfVALUESF(condition bool, format string, args 
 	return e
 }
 
+// Defines a list of discrete values to interpolate.
 // Remove the attribute VALUES from the element.
 func (e *SVGANIMATEMOTIONElement) VALUESRemove(s string) *SVGANIMATEMOTIONElement {
 	if e.StringAttributes == nil {
@@ -831,6 +898,7 @@ func (e *SVGANIMATEMOTIONElement) VALUESRemove(s string) *SVGANIMATEMOTIONElemen
 	return e
 }
 
+// Defines a list of discrete values to interpolate.
 func (e *SVGANIMATEMOTIONElement) VALUESRemoveF(format string, args ...any) *SVGANIMATEMOTIONElement {
 	return e.VALUESRemove(fmt.Sprintf(format, args...))
 }
@@ -844,10 +912,12 @@ func (e *SVGANIMATEMOTIONElement) ID(s string) *SVGANIMATEMOTIONElement {
 	return e
 }
 
+// Specifies a unique id for an element
 func (e *SVGANIMATEMOTIONElement) IDF(format string, args ...any) *SVGANIMATEMOTIONElement {
 	return e.ID(fmt.Sprintf(format, args...))
 }
 
+// Specifies a unique id for an element
 func (e *SVGANIMATEMOTIONElement) IfID(condition bool, s string) *SVGANIMATEMOTIONElement {
 	if condition {
 		e.ID(s)
@@ -855,6 +925,7 @@ func (e *SVGANIMATEMOTIONElement) IfID(condition bool, s string) *SVGANIMATEMOTI
 	return e
 }
 
+// Specifies a unique id for an element
 func (e *SVGANIMATEMOTIONElement) IfIDF(condition bool, format string, args ...any) *SVGANIMATEMOTIONElement {
 	if condition {
 		e.ID(fmt.Sprintf(format, args...))
@@ -862,6 +933,7 @@ func (e *SVGANIMATEMOTIONElement) IfIDF(condition bool, format string, args ...a
 	return e
 }
 
+// Specifies a unique id for an element
 // Remove the attribute ID from the element.
 func (e *SVGANIMATEMOTIONElement) IDRemove(s string) *SVGANIMATEMOTIONElement {
 	if e.StringAttributes == nil {
@@ -871,6 +943,7 @@ func (e *SVGANIMATEMOTIONElement) IDRemove(s string) *SVGANIMATEMOTIONElement {
 	return e
 }
 
+// Specifies a unique id for an element
 func (e *SVGANIMATEMOTIONElement) IDRemoveF(format string, args ...any) *SVGANIMATEMOTIONElement {
 	return e.IDRemove(fmt.Sprintf(format, args...))
 }
@@ -890,6 +963,8 @@ func (e *SVGANIMATEMOTIONElement) CLASS(s ...string) *SVGANIMATEMOTIONElement {
 	return e
 }
 
+// Specifies one or more classnames for an element (refers to a class in a style
+// sheet)
 func (e *SVGANIMATEMOTIONElement) IfCLASS(condition bool, s ...string) *SVGANIMATEMOTIONElement {
 	if condition {
 		e.CLASS(s...)
@@ -897,6 +972,8 @@ func (e *SVGANIMATEMOTIONElement) IfCLASS(condition bool, s ...string) *SVGANIMA
 	return e
 }
 
+// Specifies one or more classnames for an element (refers to a class in a style
+// sheet)
 // Remove the attribute CLASS from the element.
 func (e *SVGANIMATEMOTIONElement) CLASSRemove(s ...string) *SVGANIMATEMOTIONElement {
 	if e.DelimitedStrings == nil {
@@ -915,6 +992,7 @@ func (e *SVGANIMATEMOTIONElement) STYLEF(k string, format string, args ...any) *
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+// Specifies an inline CSS style for an element
 func (e *SVGANIMATEMOTIONElement) IfSTYLE(condition bool, k string, v string) *SVGANIMATEMOTIONElement {
 	if condition {
 		e.STYLE(k, v)
@@ -922,6 +1000,7 @@ func (e *SVGANIMATEMOTIONElement) IfSTYLE(condition bool, k string, v string) *S
 	return e
 }
 
+// Specifies an inline CSS style for an element
 func (e *SVGANIMATEMOTIONElement) STYLE(k string, v string) *SVGANIMATEMOTIONElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -935,6 +1014,7 @@ func (e *SVGANIMATEMOTIONElement) STYLE(k string, v string) *SVGANIMATEMOTIONEle
 	return e
 }
 
+// Specifies an inline CSS style for an element
 func (e *SVGANIMATEMOTIONElement) IfSTYLEF(condition bool, k string, format string, args ...any) *SVGANIMATEMOTIONElement {
 	if condition {
 		e.STYLE(k, fmt.Sprintf(format, args...))
@@ -942,6 +1022,7 @@ func (e *SVGANIMATEMOTIONElement) IfSTYLEF(condition bool, k string, format stri
 	return e
 }
 
+// Specifies an inline CSS style for an element
 // Add the attributes in the map to the element.
 func (e *SVGANIMATEMOTIONElement) STYLEMap(m map[string]string) *SVGANIMATEMOTIONElement {
 	if e.KVStrings == nil {
@@ -958,6 +1039,7 @@ func (e *SVGANIMATEMOTIONElement) STYLEMap(m map[string]string) *SVGANIMATEMOTIO
 	return e
 }
 
+// Specifies an inline CSS style for an element
 // Add pairs of attributes to the element.
 func (e *SVGANIMATEMOTIONElement) STYLEPairs(pairs ...string) *SVGANIMATEMOTIONElement {
 	if len(pairs)%2 != 0 {
@@ -979,6 +1061,7 @@ func (e *SVGANIMATEMOTIONElement) STYLEPairs(pairs ...string) *SVGANIMATEMOTIONE
 	return e
 }
 
+// Specifies an inline CSS style for an element
 func (e *SVGANIMATEMOTIONElement) IfSTYLEPairs(condition bool, pairs ...string) *SVGANIMATEMOTIONElement {
 	if condition {
 		e.STYLEPairs(pairs...)
@@ -986,6 +1069,7 @@ func (e *SVGANIMATEMOTIONElement) IfSTYLEPairs(condition bool, pairs ...string) 
 	return e
 }
 
+// Specifies an inline CSS style for an element
 // Remove the attribute STYLE from the element.
 func (e *SVGANIMATEMOTIONElement) STYLERemove(keys ...string) *SVGANIMATEMOTIONElement {
 	if e.KVStrings == nil {
@@ -1001,62 +1085,75 @@ func (e *SVGANIMATEMOTIONElement) STYLERemove(keys ...string) *SVGANIMATEMOTIONE
 	return e
 }
 
-// Merges the singleton store with the given object
-
-func (e *SVGANIMATEMOTIONElement) DATASTAR_STORE(v any) *SVGANIMATEMOTIONElement {
-	if e.CustomDataAttributes == nil {
-		e.CustomDataAttributes = treemap.New[string, string]()
-	}
-	b, err := json.Marshal(v)
-	if err != nil {
-		panic(err)
-	}
-	e.CustomDataAttributes.Set("store", html.EscapeString(string(b)))
-	return e
-}
-
-// Sets the reference of the element
-
-func (e *SVGANIMATEMOTIONElement) DATASTAR_REF(expression string) *SVGANIMATEMOTIONElement {
+// Sets the value of any HTML attribute to an expression, and keeps it in sync.
+//
+// See: https://data-star.dev/reference/attributes#data-attr
+func (e *SVGANIMATEMOTIONElement) DATASTAR_ATTR(key string, expression string) *SVGANIMATEMOTIONElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "data-ref"
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	key = fmt.Sprintf("data-attr%s", suffix)
 
 	e.StringAttributes.Set(key, expression)
 	return e
 }
 
-func (e *SVGANIMATEMOTIONElement) IfDATASTAR_REF(condition bool, expression string) *SVGANIMATEMOTIONElement {
+// Sets the value of any HTML attribute to an expression, and keeps it in sync.
+//
+// See: https://data-star.dev/reference/attributes#data-attr
+func (e *SVGANIMATEMOTIONElement) IfDATASTAR_ATTR(condition bool, key string, expression string) *SVGANIMATEMOTIONElement {
 	if condition {
-		e.DATASTAR_REF(expression)
+		e.DATASTAR_ATTR(key, expression)
 	}
 	return e
 }
 
-// Remove the attribute DATASTAR_REF from the element.
-func (e *SVGANIMATEMOTIONElement) DATASTAR_REFRemove() *SVGANIMATEMOTIONElement {
+// Sets the value of any HTML attribute to an expression, and keeps it in sync.
+//
+// See: https://data-star.dev/reference/attributes#data-attr
+// Remove the attribute DATASTAR_ATTR from the element.
+func (e *SVGANIMATEMOTIONElement) DATASTAR_ATTRRemove(key string) *SVGANIMATEMOTIONElement {
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("data-ref")
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	e.StringAttributes.Del("data-attr" + suffix)
+
 	return e
 }
 
-// Sets the value of the element
-
+// Creates a signal (if one doesn’t already exist) and sets up two-way data
+// binding between it and an element’s value.
+//
+// See: https://data-star.dev/reference/attributes#data-bind
 func (e *SVGANIMATEMOTIONElement) DATASTAR_BIND(key string, expression string) *SVGANIMATEMOTIONElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key = fmt.Sprintf("data-bind-%s", key)
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	key = fmt.Sprintf("data-bind%s", suffix)
 
 	e.StringAttributes.Set(key, expression)
 	return e
 }
 
+// Creates a signal (if one doesn’t already exist) and sets up two-way data
+// binding between it and an element’s value.
+//
+// See: https://data-star.dev/reference/attributes#data-bind
 func (e *SVGANIMATEMOTIONElement) IfDATASTAR_BIND(condition bool, key string, expression string) *SVGANIMATEMOTIONElement {
 	if condition {
 		e.DATASTAR_BIND(key, expression)
@@ -1064,46 +1161,1525 @@ func (e *SVGANIMATEMOTIONElement) IfDATASTAR_BIND(condition bool, key string, ex
 	return e
 }
 
+// Creates a signal (if one doesn’t already exist) and sets up two-way data
+// binding between it and an element’s value.
+//
+// See: https://data-star.dev/reference/attributes#data-bind
 // Remove the attribute DATASTAR_BIND from the element.
-func (e *SVGANIMATEMOTIONElement) DATASTAR_BINDRemove() *SVGANIMATEMOTIONElement {
+func (e *SVGANIMATEMOTIONElement) DATASTAR_BINDRemove(key string) *SVGANIMATEMOTIONElement {
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("data-bind")
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	e.StringAttributes.Del("data-bind" + suffix)
+
 	return e
 }
 
-// Sets the value of the element
+type SVGAnimateMotionClassMod customDataKeyModifier
 
-func (e *SVGANIMATEMOTIONElement) DATASTAR_MODEL(expression string) *SVGANIMATEMOTIONElement {
+// Converts the casing of the signal name.
+//   - 'camel' – Camel case: 'mySignal' (default)
+//   - 'kebab' – Kebab case: 'my-signal'
+//   - 'snake' – Snake case: 'my_signal'
+//   - 'pascal' – Pascal case: 'MySignal'
+func SVGAnimateMotionClassModCase(
+	s string,
+) SVGAnimateMotionClassMod {
+	return func() string {
+		return fmt.Sprintf("case.%s", s)
+	}
+}
+
+// Adds or removes a class to or from an element based on an expression.
+func (e *SVGANIMATEMOTIONElement) DATASTAR_CLASS(key string, expression string, modifiers ...SVGAnimateMotionClassMod) *SVGANIMATEMOTIONElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "data-model"
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	key = fmt.Sprintf("data-class%s", suffix)
+
+	customMods := lo.Map(modifiers, func(m SVGAnimateMotionClassMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Adds or removes a class to or from an element based on an expression.
+func (e *SVGANIMATEMOTIONElement) IfDATASTAR_CLASS(condition bool, key string, expression string, modifiers ...SVGAnimateMotionClassMod) *SVGANIMATEMOTIONElement {
+	if condition {
+		e.DATASTAR_CLASS(key, expression, modifiers...)
+	}
+	return e
+}
+
+// Adds or removes a class to or from an element based on an expression.
+// Remove the attribute DATASTAR_CLASS from the element.
+func (e *SVGANIMATEMOTIONElement) DATASTAR_CLASSRemove(key string) *SVGANIMATEMOTIONElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	e.StringAttributes.Del("data-class" + suffix)
+
+	return e
+}
+
+type SVGAnimateMotionComputedMod customDataKeyModifier
+
+// Converts the casing of the signal name.
+//   - 'camel' – Camel case: 'mySignal' (default)
+//   - 'kebab' – Kebab case: 'my-signal'
+//   - 'snake' – Snake case: 'my_signal'
+//   - 'pascal' – Pascal case: 'MySignal'
+func SVGAnimateMotionComputedModCase(
+	s string,
+) SVGAnimateMotionComputedMod {
+	return func() string {
+		return fmt.Sprintf("case.%s", s)
+	}
+}
+
+// Creates a signal that is computed based on an expression
+// The computed signal is read-only, and its value is automatically updated when
+// any signals in the expression are updated.
+//
+// See: https://data-star.dev/reference/attributes#data-computed
+func (e *SVGANIMATEMOTIONElement) DATASTAR_COMPUTED(key string, expression string, modifiers ...SVGAnimateMotionComputedMod) *SVGANIMATEMOTIONElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	key = fmt.Sprintf("data-computed%s", suffix)
+
+	customMods := lo.Map(modifiers, func(m SVGAnimateMotionComputedMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Creates a signal that is computed based on an expression
+// The computed signal is read-only, and its value is automatically updated when
+// any signals in the expression are updated.
+//
+// See: https://data-star.dev/reference/attributes#data-computed
+func (e *SVGANIMATEMOTIONElement) IfDATASTAR_COMPUTED(condition bool, key string, expression string, modifiers ...SVGAnimateMotionComputedMod) *SVGANIMATEMOTIONElement {
+	if condition {
+		e.DATASTAR_COMPUTED(key, expression, modifiers...)
+	}
+	return e
+}
+
+// Creates a signal that is computed based on an expression
+// The computed signal is read-only, and its value is automatically updated when
+// any signals in the expression are updated.
+//
+// See: https://data-star.dev/reference/attributes#data-computed
+// Remove the attribute DATASTAR_COMPUTED from the element.
+func (e *SVGANIMATEMOTIONElement) DATASTAR_COMPUTEDRemove(key string) *SVGANIMATEMOTIONElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	e.StringAttributes.Del("data-computed" + suffix)
+
+	return e
+}
+
+// Executes an expression on page load and whenever any signals in the expression
+// change
+// This is useful for performing side effects, such as updating other signals,
+// making requests to the backend, or manipulating the DOM.
+//
+// See: https://data-star.dev/reference/attributes#data-effect
+func (e *SVGANIMATEMOTIONElement) DATASTAR_EFFECT(expression string) *SVGANIMATEMOTIONElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-effect"
 
 	e.StringAttributes.Set(key, expression)
 	return e
 }
 
-func (e *SVGANIMATEMOTIONElement) IfDATASTAR_MODEL(condition bool, expression string) *SVGANIMATEMOTIONElement {
+// Executes an expression on page load and whenever any signals in the expression
+// change
+// This is useful for performing side effects, such as updating other signals,
+// making requests to the backend, or manipulating the DOM.
+//
+// See: https://data-star.dev/reference/attributes#data-effect
+func (e *SVGANIMATEMOTIONElement) IfDATASTAR_EFFECT(condition bool, expression string) *SVGANIMATEMOTIONElement {
 	if condition {
-		e.DATASTAR_MODEL(expression)
+		e.DATASTAR_EFFECT(expression)
 	}
 	return e
 }
 
-// Remove the attribute DATASTAR_MODEL from the element.
-func (e *SVGANIMATEMOTIONElement) DATASTAR_MODELRemove() *SVGANIMATEMOTIONElement {
+// Executes an expression on page load and whenever any signals in the expression
+// change
+// This is useful for performing side effects, such as updating other signals,
+// making requests to the backend, or manipulating the DOM.
+//
+// See: https://data-star.dev/reference/attributes#data-effect
+// Remove the attribute DATASTAR_EFFECT from the element.
+func (e *SVGANIMATEMOTIONElement) DATASTAR_EFFECTRemove() *SVGANIMATEMOTIONElement {
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("data-model")
+
+	e.StringAttributes.Del("data-effect")
+
 	return e
 }
 
-// Sets the textContent of the element
+type SVGAnimateMotionIgnoreMod customDataKeyModifier
 
+// Only ignore the element itself, not its descendants.
+func SVGAnimateMotionIgnoreModSelf() SVGAnimateMotionIgnoreMod {
+	return func() string {
+		return "self"
+	}
+}
+
+// Datastar walks the entire DOM and applies plugins to each element it encounters
+// It's possible to tell Datastar to ignore an element and its descendants by
+// placing a data-ignore attribute on it
+// This can be useful for preventing naming conflicts with third-party libraries,
+// or when you are unable to escape user input.
+//
+// See: https://data-star.dev/reference/attributes#data-ignore
+func (e *SVGANIMATEMOTIONElement) DATASTAR_IGNORESet(b bool, modifiers ...SVGAnimateMotionIgnoreMod) *SVGANIMATEMOTIONElement {
+	key := customDataKey("data-ignore")
+	customMods := lo.Map(modifiers, func(m SVGAnimateMotionIgnoreMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	if e.BoolAttributes == nil {
+		e.BoolAttributes = treemap.New[string, bool]()
+	}
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+// Datastar walks the entire DOM and applies plugins to each element it encounters
+// It's possible to tell Datastar to ignore an element and its descendants by
+// placing a data-ignore attribute on it
+// This can be useful for preventing naming conflicts with third-party libraries,
+// or when you are unable to escape user input.
+//
+// See: https://data-star.dev/reference/attributes#data-ignore
+func (e *SVGANIMATEMOTIONElement) DATASTAR_IGNORE(modifiers ...SVGAnimateMotionIgnoreMod) *SVGANIMATEMOTIONElement {
+	return e.DATASTAR_IGNORESet(true, modifiers...)
+}
+
+// Similar to the data-ignore attribute, the data-ignore-morph attribute tells the
+// PatchElements watcher to skip processing an element and its children when
+// morphing elements
+// This can be useful for preventing conflicts with third-party libraries that
+// manipulate the DOM, or when you are unable to escape user input.
+//
+// See: https://data-star.dev/reference/attributes#data-ignore-morph
+func (e *SVGANIMATEMOTIONElement) DATASTAR_IGNORE_MORPHSet(b bool) *SVGANIMATEMOTIONElement {
+	key := "data-ignore-morph"
+	if e.BoolAttributes == nil {
+		e.BoolAttributes = treemap.New[string, bool]()
+	}
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+// Similar to the data-ignore attribute, the data-ignore-morph attribute tells the
+// PatchElements watcher to skip processing an element and its children when
+// morphing elements
+// This can be useful for preventing conflicts with third-party libraries that
+// manipulate the DOM, or when you are unable to escape user input.
+//
+// See: https://data-star.dev/reference/attributes#data-ignore-morph
+func (e *SVGANIMATEMOTIONElement) DATASTAR_IGNORE_MORPH() *SVGANIMATEMOTIONElement {
+	return e.DATASTAR_IGNORE_MORPHSet(true)
+}
+
+type SVGAnimateMotionIndicatorMod customDataKeyModifier
+
+// Converts the casing of the signal name.
+//   - 'camel' – Camel case: 'mySignal' (default)
+//   - 'kebab' – Kebab case: 'my-signal'
+//   - 'snake' – Snake case: 'my_signal'
+//   - 'pascal' – Pascal case: 'MySignal'
+func SVGAnimateMotionIndicatorModCase(
+	s string,
+) SVGAnimateMotionIndicatorMod {
+	return func() string {
+		return fmt.Sprintf("case.%s", s)
+	}
+}
+
+// Creates a signal and sets its value to true while a fetch request is in flight,
+// otherwise false
+// The signal can be used to show a loading indicator.
+//
+// See: https://data-star.dev/reference/attributes#data-indicator
+func (e *SVGANIMATEMOTIONElement) DATASTAR_INDICATOR(expression string, modifiers ...SVGAnimateMotionIndicatorMod) *SVGANIMATEMOTIONElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-indicator"
+
+	customMods := lo.Map(modifiers, func(m SVGAnimateMotionIndicatorMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Creates a signal and sets its value to true while a fetch request is in flight,
+// otherwise false
+// The signal can be used to show a loading indicator.
+//
+// See: https://data-star.dev/reference/attributes#data-indicator
+func (e *SVGANIMATEMOTIONElement) IfDATASTAR_INDICATOR(condition bool, expression string, modifiers ...SVGAnimateMotionIndicatorMod) *SVGANIMATEMOTIONElement {
+	if condition {
+		e.DATASTAR_INDICATOR(expression, modifiers...)
+	}
+	return e
+}
+
+// Creates a signal and sets its value to true while a fetch request is in flight,
+// otherwise false
+// The signal can be used to show a loading indicator.
+//
+// See: https://data-star.dev/reference/attributes#data-indicator
+// Remove the attribute DATASTAR_INDICATOR from the element.
+func (e *SVGANIMATEMOTIONElement) DATASTAR_INDICATORRemove() *SVGANIMATEMOTIONElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-indicator")
+
+	return e
+}
+
+type SVGAnimateMotionInitMod customDataKeyModifier
+
+// Delay the event listener in milliseconds.
+func SVGAnimateMotionInitModDelayMs(
+	d time.Duration,
+) SVGAnimateMotionInitMod {
+	return func() string {
+		return fmt.Sprintf("delay.%dms", d.Milliseconds())
+	}
+}
+
+// Delay the event listener in seconds.
+func SVGAnimateMotionInitModDelaySec(
+	d time.Duration,
+) SVGAnimateMotionInitMod {
+	return func() string {
+		return fmt.Sprintf("delay.%ds", int(d.Seconds()))
+	}
+}
+
+// Wraps the expression in 'document.startViewTransition()' when the View
+// Transition API is available.
+func SVGAnimateMotionInitModViewTransition() SVGAnimateMotionInitMod {
+	return func() string {
+		return "viewtransition"
+	}
+}
+
+// Runs an expression when the attribute is initialized
+// This can happen on page load, when an element is patched into the DOM, and any
+// time the attribute is modified (via a backend action or otherwise).
+//
+// See: https://data-star.dev/reference/attributes#data-indicator
+func (e *SVGANIMATEMOTIONElement) DATASTAR_INIT(expression string, modifiers ...SVGAnimateMotionInitMod) *SVGANIMATEMOTIONElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-init"
+
+	customMods := lo.Map(modifiers, func(m SVGAnimateMotionInitMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Runs an expression when the attribute is initialized
+// This can happen on page load, when an element is patched into the DOM, and any
+// time the attribute is modified (via a backend action or otherwise).
+//
+// See: https://data-star.dev/reference/attributes#data-indicator
+func (e *SVGANIMATEMOTIONElement) IfDATASTAR_INIT(condition bool, expression string, modifiers ...SVGAnimateMotionInitMod) *SVGANIMATEMOTIONElement {
+	if condition {
+		e.DATASTAR_INIT(expression, modifiers...)
+	}
+	return e
+}
+
+// Runs an expression when the attribute is initialized
+// This can happen on page load, when an element is patched into the DOM, and any
+// time the attribute is modified (via a backend action or otherwise).
+//
+// See: https://data-star.dev/reference/attributes#data-indicator
+// Remove the attribute DATASTAR_INIT from the element.
+func (e *SVGANIMATEMOTIONElement) DATASTAR_INITRemove() *SVGANIMATEMOTIONElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-init")
+
+	return e
+}
+
+type SVGAnimateMotionJsonSignalsMod customDataKeyModifier
+
+// Outputs a more compact JSON format without extra whitespace
+// Useful for displaying filtered data inline.
+func SVGAnimateMotionJsonSignalsModTerse() SVGAnimateMotionJsonSignalsMod {
+	return func() string {
+		return "terse"
+	}
+}
+
+// Sets the text content of an element to a reactive JSON stringified version of
+// signals
+// Useful when troubleshooting an issue.
+//
+// See: https://data-star.dev/reference/attributes#data-json-signals
+func (e *SVGANIMATEMOTIONElement) DATASTAR_JSON_SIGNALS(expression string, modifiers ...SVGAnimateMotionJsonSignalsMod) *SVGANIMATEMOTIONElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-json-signals"
+
+	customMods := lo.Map(modifiers, func(m SVGAnimateMotionJsonSignalsMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Sets the text content of an element to a reactive JSON stringified version of
+// signals
+// Useful when troubleshooting an issue.
+//
+// See: https://data-star.dev/reference/attributes#data-json-signals
+func (e *SVGANIMATEMOTIONElement) IfDATASTAR_JSON_SIGNALS(condition bool, expression string, modifiers ...SVGAnimateMotionJsonSignalsMod) *SVGANIMATEMOTIONElement {
+	if condition {
+		e.DATASTAR_JSON_SIGNALS(expression, modifiers...)
+	}
+	return e
+}
+
+// Sets the text content of an element to a reactive JSON stringified version of
+// signals
+// Useful when troubleshooting an issue.
+//
+// See: https://data-star.dev/reference/attributes#data-json-signals
+// Remove the attribute DATASTAR_JSON_SIGNALS from the element.
+func (e *SVGANIMATEMOTIONElement) DATASTAR_JSON_SIGNALSRemove() *SVGANIMATEMOTIONElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-json-signals")
+
+	return e
+}
+
+type SVGAnimateMotionOnMod customDataKeyModifier
+
+// Only run the expression once
+// Only works with built-in events.
+func SVGAnimateMotionOnModOnce() SVGAnimateMotionOnMod {
+	return func() string {
+		return "once"
+	}
+}
+
+// Do not call preventDefault on the event listener
+// Only works with built-in events.
+func SVGAnimateMotionOnModPassive() SVGAnimateMotionOnMod {
+	return func() string {
+		return "passive"
+	}
+}
+
+// Use capture event listener
+// Only works with built-in events.
+func SVGAnimateMotionOnModCapture() SVGAnimateMotionOnMod {
+	return func() string {
+		return "capture"
+	}
+}
+
+// Converts the casing of the signal name.
+//   - 'camel' – Camel case: 'mySignal' (default)
+//   - 'kebab' – Kebab case: 'my-signal'
+//   - 'snake' – Snake case: 'my_signal'
+//   - 'pascal' – Pascal case: 'MySignal'
+func SVGAnimateMotionOnModCase(
+	s string,
+) SVGAnimateMotionOnMod {
+	return func() string {
+		return fmt.Sprintf("case.%s", s)
+	}
+}
+
+// Delay the event listener in milliseconds.
+func SVGAnimateMotionOnModDelayMs(
+	d time.Duration,
+) SVGAnimateMotionOnMod {
+	return func() string {
+		return fmt.Sprintf("delay.%dms", d.Milliseconds())
+	}
+}
+
+// Delay the event listener in seconds.
+func SVGAnimateMotionOnModDelaySec(
+	d time.Duration,
+) SVGAnimateMotionOnMod {
+	return func() string {
+		return fmt.Sprintf("delay.%ds", int(d.Seconds()))
+	}
+}
+
+// Debounces the event handler
+func SVGAnimateMotionOnModDebounceMs(
+	d time.Duration,
+) SVGAnimateMotionOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms", d.Milliseconds())
+	}
+}
+
+// Debounce the event listener in milliseconds with leading edge.
+func SVGAnimateMotionOnModDebounceMsLeading(
+	d time.Duration,
+) SVGAnimateMotionOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms.leading", d.Milliseconds())
+	}
+}
+
+// Debounce the event listener in milliseconds without trailing edge.
+func SVGAnimateMotionOnModDebounceMsNoTrailing(
+	d time.Duration,
+) SVGAnimateMotionOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms.notrailing", d.Milliseconds())
+	}
+}
+
+// Debounces the event handler
+func SVGAnimateMotionOnModDebounceSec(
+	d time.Duration,
+) SVGAnimateMotionOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds", int(d.Seconds()))
+	}
+}
+
+// Debounce the event listener in seconds with leading edge.
+func SVGAnimateMotionOnModDebounceSecLeading(
+	d time.Duration,
+) SVGAnimateMotionOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds.leading", int(d.Seconds()))
+	}
+}
+
+// Debounce the event listener in seconds without trailing edge.
+func SVGAnimateMotionOnModDebounceSecNoTrailing(
+	d time.Duration,
+) SVGAnimateMotionOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds.notrailing", int(d.Seconds()))
+	}
+}
+
+// Throttles the event handler
+func SVGAnimateMotionOnModThrottleMs(
+	d time.Duration,
+) SVGAnimateMotionOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms", d.Milliseconds())
+	}
+}
+
+// Throttle the event listener in milliseconds without leading edge.
+func SVGAnimateMotionOnModThrottleMsNoLeading(
+	d time.Duration,
+) SVGAnimateMotionOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms.noleading", d.Milliseconds())
+	}
+}
+
+// Throttle the event listener in milliseconds with trailing edge.
+func SVGAnimateMotionOnModThrottleMsTrailing(
+	d time.Duration,
+) SVGAnimateMotionOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms.trailing", d.Milliseconds())
+	}
+}
+
+// Throttles the event listener in seconds.
+func SVGAnimateMotionOnModThrottleSec(
+	d time.Duration,
+) SVGAnimateMotionOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds", int(d.Seconds()))
+	}
+}
+
+// Throttle the event listener in seconds without leading edge.
+func SVGAnimateMotionOnModThrottleSecNoLeading(
+	d time.Duration,
+) SVGAnimateMotionOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds.noleading", int(d.Seconds()))
+	}
+}
+
+// Throttle the event listener in seconds with trailing edge.
+func SVGAnimateMotionOnModThrottleSecTrailing(
+	d time.Duration,
+) SVGAnimateMotionOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds.trailing", int(d.Seconds()))
+	}
+}
+
+// Wraps the expression in 'document.startViewTransition()' when the View
+// Transition API is available.
+func SVGAnimateMotionOnModViewTransition() SVGAnimateMotionOnMod {
+	return func() string {
+		return "viewtransition"
+	}
+}
+
+// Attaches the event listener to the 'window' element.
+func SVGAnimateMotionOnModWindow() SVGAnimateMotionOnMod {
+	return func() string {
+		return "window"
+	}
+}
+
+// Calls 'preventDefault' on the event listener.
+func SVGAnimateMotionOnModPrevent() SVGAnimateMotionOnMod {
+	return func() string {
+		return "prevent"
+	}
+}
+
+// Triggers when the event is outside the element.
+func SVGAnimateMotionOnModOutside() SVGAnimateMotionOnMod {
+	return func() string {
+		return "outside"
+	}
+}
+
+// Calls 'stopPropagation' on the event listener.
+func SVGAnimateMotionOnModStop() SVGAnimateMotionOnMod {
+	return func() string {
+		return "stop"
+	}
+}
+
+// Attaches an event listener to an element, executing an expression whenever the
+// event is triggered.
+//
+// See: https://data-star.dev/reference/attributes#data-on
+func (e *SVGANIMATEMOTIONElement) DATASTAR_ON(key string, expression string, modifiers ...SVGAnimateMotionOnMod) *SVGANIMATEMOTIONElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	key = fmt.Sprintf("data-on%s", suffix)
+
+	customMods := lo.Map(modifiers, func(m SVGAnimateMotionOnMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Attaches an event listener to an element, executing an expression whenever the
+// event is triggered.
+//
+// See: https://data-star.dev/reference/attributes#data-on
+func (e *SVGANIMATEMOTIONElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SVGAnimateMotionOnMod) *SVGANIMATEMOTIONElement {
+	if condition {
+		e.DATASTAR_ON(key, expression, modifiers...)
+	}
+	return e
+}
+
+// Attaches an event listener to an element, executing an expression whenever the
+// event is triggered.
+//
+// See: https://data-star.dev/reference/attributes#data-on
+// Remove the attribute DATASTAR_ON from the element.
+func (e *SVGANIMATEMOTIONElement) DATASTAR_ONRemove(key string) *SVGANIMATEMOTIONElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	e.StringAttributes.Del("data-on" + suffix)
+
+	return e
+}
+
+type SVGAnimateMotionOnIntersectMod customDataKeyModifier
+
+// Only run the expression once
+// Only works with built-in events.
+func SVGAnimateMotionOnIntersectModOnce() SVGAnimateMotionOnIntersectMod {
+	return func() string {
+		return "once"
+	}
+}
+
+// Trigger when half of the element is visible.
+func SVGAnimateMotionOnIntersectModHalf() SVGAnimateMotionOnIntersectMod {
+	return func() string {
+		return "half"
+	}
+}
+
+// Trigger when the full element is visible.
+func SVGAnimateMotionOnIntersectModFull() SVGAnimateMotionOnIntersectMod {
+	return func() string {
+		return "full"
+	}
+}
+
+// Delay the event listener in milliseconds.
+func SVGAnimateMotionOnIntersectModDelayMs(
+	d time.Duration,
+) SVGAnimateMotionOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("delay.%dms", d.Milliseconds())
+	}
+}
+
+// Delay the event listener in seconds.
+func SVGAnimateMotionOnIntersectModDelaySec(
+	d time.Duration,
+) SVGAnimateMotionOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("delay.%ds", int(d.Seconds()))
+	}
+}
+
+// Debounces the event handler
+func SVGAnimateMotionOnIntersectModDebounceMs(
+	d time.Duration,
+) SVGAnimateMotionOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms", d.Milliseconds())
+	}
+}
+
+// Debounce the event listener in milliseconds with leading edge.
+func SVGAnimateMotionOnIntersectModDebounceMsLeading(
+	d time.Duration,
+) SVGAnimateMotionOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms.leading", d.Milliseconds())
+	}
+}
+
+// Debounce the event listener in milliseconds without trailing edge.
+func SVGAnimateMotionOnIntersectModDebounceMsNoTrailing(
+	d time.Duration,
+) SVGAnimateMotionOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms.notrailing", d.Milliseconds())
+	}
+}
+
+// Debounces the event handler
+func SVGAnimateMotionOnIntersectModDebounceSec(
+	d time.Duration,
+) SVGAnimateMotionOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds", int(d.Seconds()))
+	}
+}
+
+// Debounce the event listener in seconds with leading edge.
+func SVGAnimateMotionOnIntersectModDebounceSecLeading(
+	d time.Duration,
+) SVGAnimateMotionOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds.leading", int(d.Seconds()))
+	}
+}
+
+// Debounce the event listener in seconds without trailing edge.
+func SVGAnimateMotionOnIntersectModDebounceSecNoTrailing(
+	d time.Duration,
+) SVGAnimateMotionOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds.notrailing", int(d.Seconds()))
+	}
+}
+
+// Throttles the event handler
+func SVGAnimateMotionOnIntersectModThrottleMs(
+	d time.Duration,
+) SVGAnimateMotionOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms", d.Milliseconds())
+	}
+}
+
+// Throttle the event listener in milliseconds without leading edge.
+func SVGAnimateMotionOnIntersectModThrottleMsNoLeading(
+	d time.Duration,
+) SVGAnimateMotionOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms.noleading", d.Milliseconds())
+	}
+}
+
+// Throttle the event listener in milliseconds with trailing edge.
+func SVGAnimateMotionOnIntersectModThrottleMsTrailing(
+	d time.Duration,
+) SVGAnimateMotionOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms.trailing", d.Milliseconds())
+	}
+}
+
+// Throttles the event listener in seconds.
+func SVGAnimateMotionOnIntersectModThrottleSec(
+	d time.Duration,
+) SVGAnimateMotionOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds", int(d.Seconds()))
+	}
+}
+
+// Throttle the event listener in seconds without leading edge.
+func SVGAnimateMotionOnIntersectModThrottleSecNoLeading(
+	d time.Duration,
+) SVGAnimateMotionOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds.noleading", int(d.Seconds()))
+	}
+}
+
+// Throttle the event listener in seconds with trailing edge.
+func SVGAnimateMotionOnIntersectModThrottleSecTrailing(
+	d time.Duration,
+) SVGAnimateMotionOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds.trailing", int(d.Seconds()))
+	}
+}
+
+// Wraps the expression in 'document.startViewTransition()' when the View
+// Transition API is available.
+func SVGAnimateMotionOnIntersectModViewTransition() SVGAnimateMotionOnIntersectMod {
+	return func() string {
+		return "viewtransition"
+	}
+}
+
+// Runs an expression when the element intersects with the viewport.
+func (e *SVGANIMATEMOTIONElement) DATASTAR_ON_INTERSECT(expression string, modifiers ...SVGAnimateMotionOnIntersectMod) *SVGANIMATEMOTIONElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-on-intersect"
+
+	customMods := lo.Map(modifiers, func(m SVGAnimateMotionOnIntersectMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Runs an expression when the element intersects with the viewport.
+func (e *SVGANIMATEMOTIONElement) IfDATASTAR_ON_INTERSECT(condition bool, expression string, modifiers ...SVGAnimateMotionOnIntersectMod) *SVGANIMATEMOTIONElement {
+	if condition {
+		e.DATASTAR_ON_INTERSECT(expression, modifiers...)
+	}
+	return e
+}
+
+// Runs an expression when the element intersects with the viewport.
+// Remove the attribute DATASTAR_ON_INTERSECT from the element.
+func (e *SVGANIMATEMOTIONElement) DATASTAR_ON_INTERSECTRemove() *SVGANIMATEMOTIONElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-on-intersect")
+
+	return e
+}
+
+type SVGAnimateMotionOnIntervalMod customDataKeyModifier
+
+// Sets the interval duration in milliseconds.
+func SVGAnimateMotionOnIntervalModDurationMs(
+	d time.Duration,
+) SVGAnimateMotionOnIntervalMod {
+	return func() string {
+		return fmt.Sprintf("duration.%dms", d.Milliseconds())
+	}
+}
+
+// Sets the interval duration in milliseconds
+// Execute the first interval immediately.
+func SVGAnimateMotionOnIntervalModDurationMsLeading(
+	d time.Duration,
+) SVGAnimateMotionOnIntervalMod {
+	return func() string {
+		return fmt.Sprintf("duration.%dms.leading", d.Milliseconds())
+	}
+}
+
+// Sets the interval duration in seconds.
+func SVGAnimateMotionOnIntervalModDurationSec(
+	d time.Duration,
+) SVGAnimateMotionOnIntervalMod {
+	return func() string {
+		return fmt.Sprintf("duration.%ds", int(d.Seconds()))
+	}
+}
+
+// Sets the interval duration in seconds
+// Execute the first interval immediately.
+func SVGAnimateMotionOnIntervalModDurationSecLeading(
+	d time.Duration,
+) SVGAnimateMotionOnIntervalMod {
+	return func() string {
+		return fmt.Sprintf("duration.%ds.leading", int(d.Seconds()))
+	}
+}
+
+// Wraps the expression in 'document.startViewTransition()' when the View
+// Transition API is available.
+func SVGAnimateMotionOnIntervalModViewTransition() SVGAnimateMotionOnIntervalMod {
+	return func() string {
+		return "viewtransition"
+	}
+}
+
+// Runs an expression at a regular interval
+// The interval duration defaults to one second and can be modified using the
+// '__duration' modifier.
+//
+// See: https://data-star.dev/reference/attributes#data-on-interval
+func (e *SVGANIMATEMOTIONElement) DATASTAR_ON_INTERVAL(expression string, modifiers ...SVGAnimateMotionOnIntervalMod) *SVGANIMATEMOTIONElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-on-interval"
+
+	customMods := lo.Map(modifiers, func(m SVGAnimateMotionOnIntervalMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Runs an expression at a regular interval
+// The interval duration defaults to one second and can be modified using the
+// '__duration' modifier.
+//
+// See: https://data-star.dev/reference/attributes#data-on-interval
+func (e *SVGANIMATEMOTIONElement) IfDATASTAR_ON_INTERVAL(condition bool, expression string, modifiers ...SVGAnimateMotionOnIntervalMod) *SVGANIMATEMOTIONElement {
+	if condition {
+		e.DATASTAR_ON_INTERVAL(expression, modifiers...)
+	}
+	return e
+}
+
+// Runs an expression at a regular interval
+// The interval duration defaults to one second and can be modified using the
+// '__duration' modifier.
+//
+// See: https://data-star.dev/reference/attributes#data-on-interval
+// Remove the attribute DATASTAR_ON_INTERVAL from the element.
+func (e *SVGANIMATEMOTIONElement) DATASTAR_ON_INTERVALRemove() *SVGANIMATEMOTIONElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-on-interval")
+
+	return e
+}
+
+type SVGAnimateMotionOnSignalPatchMod customDataKeyModifier
+
+// Delay the event listener in milliseconds.
+func SVGAnimateMotionOnSignalPatchModDelayMs(
+	d time.Duration,
+) SVGAnimateMotionOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("delay.%dms", d.Milliseconds())
+	}
+}
+
+// Delay the event listener in seconds.
+func SVGAnimateMotionOnSignalPatchModDelaySec(
+	d time.Duration,
+) SVGAnimateMotionOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("delay.%ds", int(d.Seconds()))
+	}
+}
+
+// Debounces the event handler
+func SVGAnimateMotionOnSignalPatchModDebounceMs(
+	d time.Duration,
+) SVGAnimateMotionOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms", d.Milliseconds())
+	}
+}
+
+// Debounce the event listener in milliseconds with leading edge.
+func SVGAnimateMotionOnSignalPatchModDebounceMsLeading(
+	d time.Duration,
+) SVGAnimateMotionOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms.leading", d.Milliseconds())
+	}
+}
+
+// Debounce the event listener in milliseconds without trailing edge.
+func SVGAnimateMotionOnSignalPatchModDebounceMsNoTrailing(
+	d time.Duration,
+) SVGAnimateMotionOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms.notrailing", d.Milliseconds())
+	}
+}
+
+// Debounces the event handler
+func SVGAnimateMotionOnSignalPatchModDebounceSec(
+	d time.Duration,
+) SVGAnimateMotionOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds", int(d.Seconds()))
+	}
+}
+
+// Debounce the event listener in seconds with leading edge.
+func SVGAnimateMotionOnSignalPatchModDebounceSecLeading(
+	d time.Duration,
+) SVGAnimateMotionOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds.leading", int(d.Seconds()))
+	}
+}
+
+// Debounce the event listener in seconds without trailing edge.
+func SVGAnimateMotionOnSignalPatchModDebounceSecNoTrailing(
+	d time.Duration,
+) SVGAnimateMotionOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds.notrailing", int(d.Seconds()))
+	}
+}
+
+// Throttles the event handler
+func SVGAnimateMotionOnSignalPatchModThrottleMs(
+	d time.Duration,
+) SVGAnimateMotionOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms", d.Milliseconds())
+	}
+}
+
+// Throttle the event listener in milliseconds without leading edge.
+func SVGAnimateMotionOnSignalPatchModThrottleMsNoLeading(
+	d time.Duration,
+) SVGAnimateMotionOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms.noleading", d.Milliseconds())
+	}
+}
+
+// Throttle the event listener in milliseconds with trailing edge.
+func SVGAnimateMotionOnSignalPatchModThrottleMsTrailing(
+	d time.Duration,
+) SVGAnimateMotionOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms.trailing", d.Milliseconds())
+	}
+}
+
+// Throttles the event listener in seconds.
+func SVGAnimateMotionOnSignalPatchModThrottleSec(
+	d time.Duration,
+) SVGAnimateMotionOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds", int(d.Seconds()))
+	}
+}
+
+// Throttle the event listener in seconds without leading edge.
+func SVGAnimateMotionOnSignalPatchModThrottleSecNoLeading(
+	d time.Duration,
+) SVGAnimateMotionOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds.noleading", int(d.Seconds()))
+	}
+}
+
+// Throttle the event listener in seconds with trailing edge.
+func SVGAnimateMotionOnSignalPatchModThrottleSecTrailing(
+	d time.Duration,
+) SVGAnimateMotionOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds.trailing", int(d.Seconds()))
+	}
+}
+
+// Runs an expression whenever any signals are patched
+// This is useful for tracking changes, updating computed values, or triggering
+// side effects when data updates.
+//
+// See: https://data-star.dev/reference/attributes#data-on-signal-patch
+func (e *SVGANIMATEMOTIONElement) DATASTAR_ON_SIGNAL_PATCH(expression string, modifiers ...SVGAnimateMotionOnSignalPatchMod) *SVGANIMATEMOTIONElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-on-signal-patch"
+
+	customMods := lo.Map(modifiers, func(m SVGAnimateMotionOnSignalPatchMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Runs an expression whenever any signals are patched
+// This is useful for tracking changes, updating computed values, or triggering
+// side effects when data updates.
+//
+// See: https://data-star.dev/reference/attributes#data-on-signal-patch
+func (e *SVGANIMATEMOTIONElement) IfDATASTAR_ON_SIGNAL_PATCH(condition bool, expression string, modifiers ...SVGAnimateMotionOnSignalPatchMod) *SVGANIMATEMOTIONElement {
+	if condition {
+		e.DATASTAR_ON_SIGNAL_PATCH(expression, modifiers...)
+	}
+	return e
+}
+
+// Runs an expression whenever any signals are patched
+// This is useful for tracking changes, updating computed values, or triggering
+// side effects when data updates.
+//
+// See: https://data-star.dev/reference/attributes#data-on-signal-patch
+// Remove the attribute DATASTAR_ON_SIGNAL_PATCH from the element.
+func (e *SVGANIMATEMOTIONElement) DATASTAR_ON_SIGNAL_PATCHRemove() *SVGANIMATEMOTIONElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-on-signal-patch")
+
+	return e
+}
+
+// Filters which signals to watch when using the data-on-signal-patch attribute.
+//
+// The data-on-signal-patch-filter attribute accepts an object with include and/or
+// exclude properties that are regular expressions.
+//
+// See: https://data-star.dev/reference/attributes#data-on-signal-patch-filter
+func (e *SVGANIMATEMOTIONElement) DATASTAR_ON_SIGNAL_PATCH_FILTER(expression string) *SVGANIMATEMOTIONElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-on-signal-patch-filter"
+
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Filters which signals to watch when using the data-on-signal-patch attribute.
+//
+// The data-on-signal-patch-filter attribute accepts an object with include and/or
+// exclude properties that are regular expressions.
+//
+// See: https://data-star.dev/reference/attributes#data-on-signal-patch-filter
+func (e *SVGANIMATEMOTIONElement) IfDATASTAR_ON_SIGNAL_PATCH_FILTER(condition bool, expression string) *SVGANIMATEMOTIONElement {
+	if condition {
+		e.DATASTAR_ON_SIGNAL_PATCH_FILTER(expression)
+	}
+	return e
+}
+
+// Filters which signals to watch when using the data-on-signal-patch attribute.
+//
+// The data-on-signal-patch-filter attribute accepts an object with include and/or
+// exclude properties that are regular expressions.
+//
+// See: https://data-star.dev/reference/attributes#data-on-signal-patch-filter
+// Remove the attribute DATASTAR_ON_SIGNAL_PATCH_FILTER from the element.
+func (e *SVGANIMATEMOTIONElement) DATASTAR_ON_SIGNAL_PATCH_FILTERRemove() *SVGANIMATEMOTIONElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-on-signal-patch-filter")
+
+	return e
+}
+
+// Preserves the value of an attribute when morphing DOM elements.
+//
+// See: https://data-star.dev/reference/attributes#data-preserve-attr
+func (e *SVGANIMATEMOTIONElement) DATASTAR_PRESERVE_ATTR(expression string) *SVGANIMATEMOTIONElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-preserve-attr"
+
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Preserves the value of an attribute when morphing DOM elements.
+//
+// See: https://data-star.dev/reference/attributes#data-preserve-attr
+func (e *SVGANIMATEMOTIONElement) IfDATASTAR_PRESERVE_ATTR(condition bool, expression string) *SVGANIMATEMOTIONElement {
+	if condition {
+		e.DATASTAR_PRESERVE_ATTR(expression)
+	}
+	return e
+}
+
+// Preserves the value of an attribute when morphing DOM elements.
+//
+// See: https://data-star.dev/reference/attributes#data-preserve-attr
+// Remove the attribute DATASTAR_PRESERVE_ATTR from the element.
+func (e *SVGANIMATEMOTIONElement) DATASTAR_PRESERVE_ATTRRemove() *SVGANIMATEMOTIONElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-preserve-attr")
+
+	return e
+}
+
+type SVGAnimateMotionRefMod customDataKeyModifier
+
+// Converts the casing of the signal name.
+//   - 'camel' – Camel case: 'mySignal' (default)
+//   - 'kebab' – Kebab case: 'my-signal'
+//   - 'snake' – Snake case: 'my_signal'
+//   - 'pascal' – Pascal case: 'MySignal'
+func SVGAnimateMotionRefModCase(
+	s string,
+) SVGAnimateMotionRefMod {
+	return func() string {
+		return fmt.Sprintf("case.%s", s)
+	}
+}
+
+// Creates a new signal that is a reference to the element on which the data
+// attribute is placed.
+//
+// See: https://data-star.dev/reference/attributes#data-ref
+func (e *SVGANIMATEMOTIONElement) DATASTAR_REF(expression string, modifiers ...SVGAnimateMotionRefMod) *SVGANIMATEMOTIONElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-ref"
+
+	customMods := lo.Map(modifiers, func(m SVGAnimateMotionRefMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Creates a new signal that is a reference to the element on which the data
+// attribute is placed.
+//
+// See: https://data-star.dev/reference/attributes#data-ref
+func (e *SVGANIMATEMOTIONElement) IfDATASTAR_REF(condition bool, expression string, modifiers ...SVGAnimateMotionRefMod) *SVGANIMATEMOTIONElement {
+	if condition {
+		e.DATASTAR_REF(expression, modifiers...)
+	}
+	return e
+}
+
+// Creates a new signal that is a reference to the element on which the data
+// attribute is placed.
+//
+// See: https://data-star.dev/reference/attributes#data-ref
+// Remove the attribute DATASTAR_REF from the element.
+func (e *SVGANIMATEMOTIONElement) DATASTAR_REFRemove() *SVGANIMATEMOTIONElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-ref")
+
+	return e
+}
+
+// Shows or hides an element based on whether an expression evaluates to 'true' or
+// 'false'
+// For anything with custom requirements, use 'data-class' instead.
+//
+// See: https://data-star.dev/reference/attributes#data-show
+func (e *SVGANIMATEMOTIONElement) DATASTAR_SHOW(expression string) *SVGANIMATEMOTIONElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-show"
+
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Shows or hides an element based on whether an expression evaluates to 'true' or
+// 'false'
+// For anything with custom requirements, use 'data-class' instead.
+//
+// See: https://data-star.dev/reference/attributes#data-show
+func (e *SVGANIMATEMOTIONElement) IfDATASTAR_SHOW(condition bool, expression string) *SVGANIMATEMOTIONElement {
+	if condition {
+		e.DATASTAR_SHOW(expression)
+	}
+	return e
+}
+
+// Shows or hides an element based on whether an expression evaluates to 'true' or
+// 'false'
+// For anything with custom requirements, use 'data-class' instead.
+//
+// See: https://data-star.dev/reference/attributes#data-show
+// Remove the attribute DATASTAR_SHOW from the element.
+func (e *SVGANIMATEMOTIONElement) DATASTAR_SHOWRemove() *SVGANIMATEMOTIONElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-show")
+
+	return e
+}
+
+type SVGAnimateMotionSignalsMod customDataKeyModifier
+
+// Converts the casing of the signal name.
+//   - 'camel' – Camel case: 'mySignal' (default)
+//   - 'kebab' – Kebab case: 'my-signal'
+//   - 'snake' – Snake case: 'my_signal'
+//   - 'pascal' – Pascal case: 'MySignal'
+func SVGAnimateMotionSignalsModCase(
+	s string,
+) SVGAnimateMotionSignalsMod {
+	return func() string {
+		return fmt.Sprintf("case.%s", s)
+	}
+}
+
+// Only patches signals if their keys do not already exist
+// This is useful for setting defaults without overwriting existing values.
+func SVGAnimateMotionSignalsModIfMissing() SVGAnimateMotionSignalsMod {
+	return func() string {
+		return "ifmissing"
+	}
+}
+
+// Patches (adds, updates or removes) one or more signals into the existing
+// signals
+// Values defined later in the DOM tree override those defined earlier.
+//
+// See: https://data-star.dev/reference/attributes#data-signals
+func (e *SVGANIMATEMOTIONElement) DATASTAR_SIGNALS(key string, expression string, modifiers ...SVGAnimateMotionSignalsMod) *SVGANIMATEMOTIONElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	key = fmt.Sprintf("data-signals%s", suffix)
+
+	customMods := lo.Map(modifiers, func(m SVGAnimateMotionSignalsMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Patches (adds, updates or removes) one or more signals into the existing
+// signals
+// Values defined later in the DOM tree override those defined earlier.
+//
+// See: https://data-star.dev/reference/attributes#data-signals
+func (e *SVGANIMATEMOTIONElement) IfDATASTAR_SIGNALS(condition bool, key string, expression string, modifiers ...SVGAnimateMotionSignalsMod) *SVGANIMATEMOTIONElement {
+	if condition {
+		e.DATASTAR_SIGNALS(key, expression, modifiers...)
+	}
+	return e
+}
+
+// Patches (adds, updates or removes) one or more signals into the existing
+// signals
+// Values defined later in the DOM tree override those defined earlier.
+//
+// See: https://data-star.dev/reference/attributes#data-signals
+// Remove the attribute DATASTAR_SIGNALS from the element.
+func (e *SVGANIMATEMOTIONElement) DATASTAR_SIGNALSRemove(key string) *SVGANIMATEMOTIONElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	e.StringAttributes.Del("data-signals" + suffix)
+
+	return e
+}
+
+type SVGAnimateMotionStyleMod customDataKeyModifier
+
+// Converts the casing of the signal name.
+//   - 'camel' – Camel case: 'mySignal' (default)
+//   - 'kebab' – Kebab case: 'my-signal'
+//   - 'snake' – Snake case: 'my_signal'
+//   - 'pascal' – Pascal case: 'MySignal'
+func SVGAnimateMotionStyleModCase(
+	s string,
+) SVGAnimateMotionStyleMod {
+	return func() string {
+		return fmt.Sprintf("case.%s", s)
+	}
+}
+
+// Sets the value of inline CSS styles on an element based on an expression, and
+// keeps them in sync.
+//
+// See: https://data-star.dev/reference/attributes#data-style
+func (e *SVGANIMATEMOTIONElement) DATASTAR_STYLE(key string, expression string, modifiers ...SVGAnimateMotionStyleMod) *SVGANIMATEMOTIONElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	key = fmt.Sprintf("data-style%s", suffix)
+
+	customMods := lo.Map(modifiers, func(m SVGAnimateMotionStyleMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Sets the value of inline CSS styles on an element based on an expression, and
+// keeps them in sync.
+//
+// See: https://data-star.dev/reference/attributes#data-style
+func (e *SVGANIMATEMOTIONElement) IfDATASTAR_STYLE(condition bool, key string, expression string, modifiers ...SVGAnimateMotionStyleMod) *SVGANIMATEMOTIONElement {
+	if condition {
+		e.DATASTAR_STYLE(key, expression, modifiers...)
+	}
+	return e
+}
+
+// Sets the value of inline CSS styles on an element based on an expression, and
+// keeps them in sync.
+//
+// See: https://data-star.dev/reference/attributes#data-style
+// Remove the attribute DATASTAR_STYLE from the element.
+func (e *SVGANIMATEMOTIONElement) DATASTAR_STYLERemove(key string) *SVGANIMATEMOTIONElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	e.StringAttributes.Del("data-style" + suffix)
+
+	return e
+}
+
+// Binds the text content of an element to an expression.
+//
+// See: https://data-star.dev/reference/attributes#data-text
 func (e *SVGANIMATEMOTIONElement) DATASTAR_TEXT(expression string) *SVGANIMATEMOTIONElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
@@ -1115,6 +2691,9 @@ func (e *SVGANIMATEMOTIONElement) DATASTAR_TEXT(expression string) *SVGANIMATEMO
 	return e
 }
 
+// Binds the text content of an element to an expression.
+//
+// See: https://data-star.dev/reference/attributes#data-text
 func (e *SVGANIMATEMOTIONElement) IfDATASTAR_TEXT(condition bool, expression string) *SVGANIMATEMOTIONElement {
 	if condition {
 		e.DATASTAR_TEXT(expression)
@@ -1122,228 +2701,16 @@ func (e *SVGANIMATEMOTIONElement) IfDATASTAR_TEXT(condition bool, expression str
 	return e
 }
 
+// Binds the text content of an element to an expression.
+//
+// See: https://data-star.dev/reference/attributes#data-text
 // Remove the attribute DATASTAR_TEXT from the element.
 func (e *SVGANIMATEMOTIONElement) DATASTAR_TEXTRemove() *SVGANIMATEMOTIONElement {
 	if e.StringAttributes == nil {
 		return e
 	}
+
 	e.StringAttributes.Del("data-text")
-	return e
-}
 
-// Sets the event handler of the element
-
-type SVGAnimateMotionOnMod customDataKeyModifier
-
-// Debounces the event handler
-func SVGAnimateMotionOnModDebounce(
-	d time.Duration,
-) SVGAnimateMotionOnMod {
-	return func() string {
-		return fmt.Sprintf("debounce_%dms", d.Milliseconds())
-	}
-}
-
-// Throttles the event handler
-func SVGAnimateMotionOnModThrottle(
-	d time.Duration,
-) SVGAnimateMotionOnMod {
-	return func() string {
-		return fmt.Sprintf("throttle_%dms", d.Milliseconds())
-	}
-}
-
-func (e *SVGANIMATEMOTIONElement) DATASTAR_ON(key string, expression string, modifiers ...SVGAnimateMotionOnMod) *SVGANIMATEMOTIONElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-
-	key = fmt.Sprintf("data-on-%s", key)
-
-	customMods := lo.Map(modifiers, func(m SVGAnimateMotionOnMod, i int) customDataKeyModifier {
-		return customDataKeyModifier(m)
-	})
-	key = customDataKey(key, customMods...)
-	e.StringAttributes.Set(key, expression)
-	return e
-}
-
-func (e *SVGANIMATEMOTIONElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SVGAnimateMotionOnMod) *SVGANIMATEMOTIONElement {
-	if condition {
-		e.DATASTAR_ON(key, expression, modifiers...)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_ON from the element.
-func (e *SVGANIMATEMOTIONElement) DATASTAR_ONRemove() *SVGANIMATEMOTIONElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-on")
-	return e
-}
-
-// Sets the focus of the element
-
-func (e *SVGANIMATEMOTIONElement) DATASTAR_FOCUSSet(b bool) *SVGANIMATEMOTIONElement {
-	key := "data-focus"
-	e.BoolAttributes.Set(key, b)
-	return e
-}
-
-func (e *SVGANIMATEMOTIONElement) DATASTAR_FOCUS() *SVGANIMATEMOTIONElement {
-	return e.DATASTAR_FOCUSSet(true)
-}
-
-// Sets the header of for fetch requests
-
-func (e *SVGANIMATEMOTIONElement) DATASTAR_HEADER(key string, expression string) *SVGANIMATEMOTIONElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-
-	key = fmt.Sprintf("data-header-%s", key)
-
-	e.StringAttributes.Set(key, expression)
-	return e
-}
-
-func (e *SVGANIMATEMOTIONElement) IfDATASTAR_HEADER(condition bool, key string, expression string) *SVGANIMATEMOTIONElement {
-	if condition {
-		e.DATASTAR_HEADER(key, expression)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_HEADER from the element.
-func (e *SVGANIMATEMOTIONElement) DATASTAR_HEADERRemove() *SVGANIMATEMOTIONElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-header")
-	return e
-}
-
-// Sets the indicator selector for fetch requests
-
-func (e *SVGANIMATEMOTIONElement) DATASTAR_FETCH_INDICATOR(expression string) *SVGANIMATEMOTIONElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-
-	key := "data-fetch-indicator"
-
-	e.StringAttributes.Set(key, expression)
-	return e
-}
-
-func (e *SVGANIMATEMOTIONElement) IfDATASTAR_FETCH_INDICATOR(condition bool, expression string) *SVGANIMATEMOTIONElement {
-	if condition {
-		e.DATASTAR_FETCH_INDICATOR(expression)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_FETCH_INDICATOR from the element.
-func (e *SVGANIMATEMOTIONElement) DATASTAR_FETCH_INDICATORRemove() *SVGANIMATEMOTIONElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-fetch-indicator")
-	return e
-}
-
-// Sets the visibility of the element
-
-func (e *SVGANIMATEMOTIONElement) DATASTAR_SHOWSet(b bool) *SVGANIMATEMOTIONElement {
-	key := "data-show"
-	e.BoolAttributes.Set(key, b)
-	return e
-}
-
-func (e *SVGANIMATEMOTIONElement) DATASTAR_SHOW() *SVGANIMATEMOTIONElement {
-	return e.DATASTAR_SHOWSet(true)
-}
-
-// Triggers the callback when the element intersects the viewport
-
-func (e *SVGANIMATEMOTIONElement) DATASTAR_INTERSECTS(expression string) *SVGANIMATEMOTIONElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-
-	key := "data-intersects"
-
-	e.StringAttributes.Set(key, expression)
-	return e
-}
-
-func (e *SVGANIMATEMOTIONElement) IfDATASTAR_INTERSECTS(condition bool, expression string) *SVGANIMATEMOTIONElement {
-	if condition {
-		e.DATASTAR_INTERSECTS(expression)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_INTERSECTS from the element.
-func (e *SVGANIMATEMOTIONElement) DATASTAR_INTERSECTSRemove() *SVGANIMATEMOTIONElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-intersects")
-	return e
-}
-
-// Teleports the element to the given selector
-
-func (e *SVGANIMATEMOTIONElement) DATASTAR_TELEPORTSet(b bool) *SVGANIMATEMOTIONElement {
-	key := "data-teleport"
-	e.BoolAttributes.Set(key, b)
-	return e
-}
-
-func (e *SVGANIMATEMOTIONElement) DATASTAR_TELEPORT() *SVGANIMATEMOTIONElement {
-	return e.DATASTAR_TELEPORTSet(true)
-}
-
-// Scrolls the element into view
-
-func (e *SVGANIMATEMOTIONElement) DATASTAR_SCROLL_INTO_VIEWSet(b bool) *SVGANIMATEMOTIONElement {
-	key := "data-scroll-into-view"
-	e.BoolAttributes.Set(key, b)
-	return e
-}
-
-func (e *SVGANIMATEMOTIONElement) DATASTAR_SCROLL_INTO_VIEW() *SVGANIMATEMOTIONElement {
-	return e.DATASTAR_SCROLL_INTO_VIEWSet(true)
-}
-
-// Setup the ViewTransitionAPI for the element
-
-func (e *SVGANIMATEMOTIONElement) DATASTAR_VIEW_TRANSITION(expression string) *SVGANIMATEMOTIONElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-
-	key := "data-view-transition"
-
-	e.StringAttributes.Set(key, expression)
-	return e
-}
-
-func (e *SVGANIMATEMOTIONElement) IfDATASTAR_VIEW_TRANSITION(condition bool, expression string) *SVGANIMATEMOTIONElement {
-	if condition {
-		e.DATASTAR_VIEW_TRANSITION(expression)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_VIEW_TRANSITION from the element.
-func (e *SVGANIMATEMOTIONElement) DATASTAR_VIEW_TRANSITIONRemove() *SVGANIMATEMOTIONElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-view-transition")
 	return e
 }

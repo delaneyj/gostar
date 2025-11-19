@@ -98,8 +98,14 @@ func AttributeTypeJSON() *pb.Attribute_Type {
 	}}
 }
 
-func AttributeTypeDuration() *pb.Attribute_Type {
+func AttributeTypeDurationMs() *pb.Attribute_Type {
 	return &pb.Attribute_Type{Type: &pb.Attribute_Type_DurationMs{
 		DurationMs: true,
+	}}
+}
+
+func AttributeTypeDurationSec() *pb.Attribute_Type {
+	return &pb.Attribute_Type{Type: &pb.Attribute_Type_DurationSec{
+		DurationSec: true,
 	}}
 }

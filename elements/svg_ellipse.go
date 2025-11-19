@@ -5,10 +5,8 @@ package elements
 
 import (
 	"fmt"
-	"html"
 	"time"
 
-	"github.com/goccy/go-json"
 	"github.com/igrmk/treemap/v2"
 	"github.com/samber/lo"
 )
@@ -173,6 +171,7 @@ func (e *SVGELLIPSEElement) CX(f float64) *SVGELLIPSEElement {
 	return e
 }
 
+// The x-axis coordinate of the center of the ellipse.
 func (e *SVGELLIPSEElement) IfCX(condition bool, f float64) *SVGELLIPSEElement {
 	if condition {
 		e.CX(f)
@@ -189,6 +188,7 @@ func (e *SVGELLIPSEElement) CY(f float64) *SVGELLIPSEElement {
 	return e
 }
 
+// The y-axis coordinate of the center of the ellipse.
 func (e *SVGELLIPSEElement) IfCY(condition bool, f float64) *SVGELLIPSEElement {
 	if condition {
 		e.CY(f)
@@ -205,6 +205,7 @@ func (e *SVGELLIPSEElement) RX(f float64) *SVGELLIPSEElement {
 	return e
 }
 
+// The x-axis radius of the ellipse.
 func (e *SVGELLIPSEElement) IfRX(condition bool, f float64) *SVGELLIPSEElement {
 	if condition {
 		e.RX(f)
@@ -221,6 +222,7 @@ func (e *SVGELLIPSEElement) RY(f float64) *SVGELLIPSEElement {
 	return e
 }
 
+// The y-axis radius of the ellipse.
 func (e *SVGELLIPSEElement) IfRY(condition bool, f float64) *SVGELLIPSEElement {
 	if condition {
 		e.RY(f)
@@ -237,10 +239,12 @@ func (e *SVGELLIPSEElement) ID(s string) *SVGELLIPSEElement {
 	return e
 }
 
+// Specifies a unique id for an element
 func (e *SVGELLIPSEElement) IDF(format string, args ...any) *SVGELLIPSEElement {
 	return e.ID(fmt.Sprintf(format, args...))
 }
 
+// Specifies a unique id for an element
 func (e *SVGELLIPSEElement) IfID(condition bool, s string) *SVGELLIPSEElement {
 	if condition {
 		e.ID(s)
@@ -248,6 +252,7 @@ func (e *SVGELLIPSEElement) IfID(condition bool, s string) *SVGELLIPSEElement {
 	return e
 }
 
+// Specifies a unique id for an element
 func (e *SVGELLIPSEElement) IfIDF(condition bool, format string, args ...any) *SVGELLIPSEElement {
 	if condition {
 		e.ID(fmt.Sprintf(format, args...))
@@ -255,6 +260,7 @@ func (e *SVGELLIPSEElement) IfIDF(condition bool, format string, args ...any) *S
 	return e
 }
 
+// Specifies a unique id for an element
 // Remove the attribute ID from the element.
 func (e *SVGELLIPSEElement) IDRemove(s string) *SVGELLIPSEElement {
 	if e.StringAttributes == nil {
@@ -264,6 +270,7 @@ func (e *SVGELLIPSEElement) IDRemove(s string) *SVGELLIPSEElement {
 	return e
 }
 
+// Specifies a unique id for an element
 func (e *SVGELLIPSEElement) IDRemoveF(format string, args ...any) *SVGELLIPSEElement {
 	return e.IDRemove(fmt.Sprintf(format, args...))
 }
@@ -283,6 +290,8 @@ func (e *SVGELLIPSEElement) CLASS(s ...string) *SVGELLIPSEElement {
 	return e
 }
 
+// Specifies one or more classnames for an element (refers to a class in a style
+// sheet)
 func (e *SVGELLIPSEElement) IfCLASS(condition bool, s ...string) *SVGELLIPSEElement {
 	if condition {
 		e.CLASS(s...)
@@ -290,6 +299,8 @@ func (e *SVGELLIPSEElement) IfCLASS(condition bool, s ...string) *SVGELLIPSEElem
 	return e
 }
 
+// Specifies one or more classnames for an element (refers to a class in a style
+// sheet)
 // Remove the attribute CLASS from the element.
 func (e *SVGELLIPSEElement) CLASSRemove(s ...string) *SVGELLIPSEElement {
 	if e.DelimitedStrings == nil {
@@ -308,6 +319,7 @@ func (e *SVGELLIPSEElement) STYLEF(k string, format string, args ...any) *SVGELL
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+// Specifies an inline CSS style for an element
 func (e *SVGELLIPSEElement) IfSTYLE(condition bool, k string, v string) *SVGELLIPSEElement {
 	if condition {
 		e.STYLE(k, v)
@@ -315,6 +327,7 @@ func (e *SVGELLIPSEElement) IfSTYLE(condition bool, k string, v string) *SVGELLI
 	return e
 }
 
+// Specifies an inline CSS style for an element
 func (e *SVGELLIPSEElement) STYLE(k string, v string) *SVGELLIPSEElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -328,6 +341,7 @@ func (e *SVGELLIPSEElement) STYLE(k string, v string) *SVGELLIPSEElement {
 	return e
 }
 
+// Specifies an inline CSS style for an element
 func (e *SVGELLIPSEElement) IfSTYLEF(condition bool, k string, format string, args ...any) *SVGELLIPSEElement {
 	if condition {
 		e.STYLE(k, fmt.Sprintf(format, args...))
@@ -335,6 +349,7 @@ func (e *SVGELLIPSEElement) IfSTYLEF(condition bool, k string, format string, ar
 	return e
 }
 
+// Specifies an inline CSS style for an element
 // Add the attributes in the map to the element.
 func (e *SVGELLIPSEElement) STYLEMap(m map[string]string) *SVGELLIPSEElement {
 	if e.KVStrings == nil {
@@ -351,6 +366,7 @@ func (e *SVGELLIPSEElement) STYLEMap(m map[string]string) *SVGELLIPSEElement {
 	return e
 }
 
+// Specifies an inline CSS style for an element
 // Add pairs of attributes to the element.
 func (e *SVGELLIPSEElement) STYLEPairs(pairs ...string) *SVGELLIPSEElement {
 	if len(pairs)%2 != 0 {
@@ -372,6 +388,7 @@ func (e *SVGELLIPSEElement) STYLEPairs(pairs ...string) *SVGELLIPSEElement {
 	return e
 }
 
+// Specifies an inline CSS style for an element
 func (e *SVGELLIPSEElement) IfSTYLEPairs(condition bool, pairs ...string) *SVGELLIPSEElement {
 	if condition {
 		e.STYLEPairs(pairs...)
@@ -379,6 +396,7 @@ func (e *SVGELLIPSEElement) IfSTYLEPairs(condition bool, pairs ...string) *SVGEL
 	return e
 }
 
+// Specifies an inline CSS style for an element
 // Remove the attribute STYLE from the element.
 func (e *SVGELLIPSEElement) STYLERemove(keys ...string) *SVGELLIPSEElement {
 	if e.KVStrings == nil {
@@ -394,62 +412,75 @@ func (e *SVGELLIPSEElement) STYLERemove(keys ...string) *SVGELLIPSEElement {
 	return e
 }
 
-// Merges the singleton store with the given object
-
-func (e *SVGELLIPSEElement) DATASTAR_STORE(v any) *SVGELLIPSEElement {
-	if e.CustomDataAttributes == nil {
-		e.CustomDataAttributes = treemap.New[string, string]()
-	}
-	b, err := json.Marshal(v)
-	if err != nil {
-		panic(err)
-	}
-	e.CustomDataAttributes.Set("store", html.EscapeString(string(b)))
-	return e
-}
-
-// Sets the reference of the element
-
-func (e *SVGELLIPSEElement) DATASTAR_REF(expression string) *SVGELLIPSEElement {
+// Sets the value of any HTML attribute to an expression, and keeps it in sync.
+//
+// See: https://data-star.dev/reference/attributes#data-attr
+func (e *SVGELLIPSEElement) DATASTAR_ATTR(key string, expression string) *SVGELLIPSEElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "data-ref"
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	key = fmt.Sprintf("data-attr%s", suffix)
 
 	e.StringAttributes.Set(key, expression)
 	return e
 }
 
-func (e *SVGELLIPSEElement) IfDATASTAR_REF(condition bool, expression string) *SVGELLIPSEElement {
+// Sets the value of any HTML attribute to an expression, and keeps it in sync.
+//
+// See: https://data-star.dev/reference/attributes#data-attr
+func (e *SVGELLIPSEElement) IfDATASTAR_ATTR(condition bool, key string, expression string) *SVGELLIPSEElement {
 	if condition {
-		e.DATASTAR_REF(expression)
+		e.DATASTAR_ATTR(key, expression)
 	}
 	return e
 }
 
-// Remove the attribute DATASTAR_REF from the element.
-func (e *SVGELLIPSEElement) DATASTAR_REFRemove() *SVGELLIPSEElement {
+// Sets the value of any HTML attribute to an expression, and keeps it in sync.
+//
+// See: https://data-star.dev/reference/attributes#data-attr
+// Remove the attribute DATASTAR_ATTR from the element.
+func (e *SVGELLIPSEElement) DATASTAR_ATTRRemove(key string) *SVGELLIPSEElement {
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("data-ref")
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	e.StringAttributes.Del("data-attr" + suffix)
+
 	return e
 }
 
-// Sets the value of the element
-
+// Creates a signal (if one doesn’t already exist) and sets up two-way data
+// binding between it and an element’s value.
+//
+// See: https://data-star.dev/reference/attributes#data-bind
 func (e *SVGELLIPSEElement) DATASTAR_BIND(key string, expression string) *SVGELLIPSEElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key = fmt.Sprintf("data-bind-%s", key)
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	key = fmt.Sprintf("data-bind%s", suffix)
 
 	e.StringAttributes.Set(key, expression)
 	return e
 }
 
+// Creates a signal (if one doesn’t already exist) and sets up two-way data
+// binding between it and an element’s value.
+//
+// See: https://data-star.dev/reference/attributes#data-bind
 func (e *SVGELLIPSEElement) IfDATASTAR_BIND(condition bool, key string, expression string) *SVGELLIPSEElement {
 	if condition {
 		e.DATASTAR_BIND(key, expression)
@@ -457,46 +488,1525 @@ func (e *SVGELLIPSEElement) IfDATASTAR_BIND(condition bool, key string, expressi
 	return e
 }
 
+// Creates a signal (if one doesn’t already exist) and sets up two-way data
+// binding between it and an element’s value.
+//
+// See: https://data-star.dev/reference/attributes#data-bind
 // Remove the attribute DATASTAR_BIND from the element.
-func (e *SVGELLIPSEElement) DATASTAR_BINDRemove() *SVGELLIPSEElement {
+func (e *SVGELLIPSEElement) DATASTAR_BINDRemove(key string) *SVGELLIPSEElement {
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("data-bind")
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	e.StringAttributes.Del("data-bind" + suffix)
+
 	return e
 }
 
-// Sets the value of the element
+type SVGEllipseClassMod customDataKeyModifier
 
-func (e *SVGELLIPSEElement) DATASTAR_MODEL(expression string) *SVGELLIPSEElement {
+// Converts the casing of the signal name.
+//   - 'camel' – Camel case: 'mySignal' (default)
+//   - 'kebab' – Kebab case: 'my-signal'
+//   - 'snake' – Snake case: 'my_signal'
+//   - 'pascal' – Pascal case: 'MySignal'
+func SVGEllipseClassModCase(
+	s string,
+) SVGEllipseClassMod {
+	return func() string {
+		return fmt.Sprintf("case.%s", s)
+	}
+}
+
+// Adds or removes a class to or from an element based on an expression.
+func (e *SVGELLIPSEElement) DATASTAR_CLASS(key string, expression string, modifiers ...SVGEllipseClassMod) *SVGELLIPSEElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "data-model"
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	key = fmt.Sprintf("data-class%s", suffix)
+
+	customMods := lo.Map(modifiers, func(m SVGEllipseClassMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Adds or removes a class to or from an element based on an expression.
+func (e *SVGELLIPSEElement) IfDATASTAR_CLASS(condition bool, key string, expression string, modifiers ...SVGEllipseClassMod) *SVGELLIPSEElement {
+	if condition {
+		e.DATASTAR_CLASS(key, expression, modifiers...)
+	}
+	return e
+}
+
+// Adds or removes a class to or from an element based on an expression.
+// Remove the attribute DATASTAR_CLASS from the element.
+func (e *SVGELLIPSEElement) DATASTAR_CLASSRemove(key string) *SVGELLIPSEElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	e.StringAttributes.Del("data-class" + suffix)
+
+	return e
+}
+
+type SVGEllipseComputedMod customDataKeyModifier
+
+// Converts the casing of the signal name.
+//   - 'camel' – Camel case: 'mySignal' (default)
+//   - 'kebab' – Kebab case: 'my-signal'
+//   - 'snake' – Snake case: 'my_signal'
+//   - 'pascal' – Pascal case: 'MySignal'
+func SVGEllipseComputedModCase(
+	s string,
+) SVGEllipseComputedMod {
+	return func() string {
+		return fmt.Sprintf("case.%s", s)
+	}
+}
+
+// Creates a signal that is computed based on an expression
+// The computed signal is read-only, and its value is automatically updated when
+// any signals in the expression are updated.
+//
+// See: https://data-star.dev/reference/attributes#data-computed
+func (e *SVGELLIPSEElement) DATASTAR_COMPUTED(key string, expression string, modifiers ...SVGEllipseComputedMod) *SVGELLIPSEElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	key = fmt.Sprintf("data-computed%s", suffix)
+
+	customMods := lo.Map(modifiers, func(m SVGEllipseComputedMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Creates a signal that is computed based on an expression
+// The computed signal is read-only, and its value is automatically updated when
+// any signals in the expression are updated.
+//
+// See: https://data-star.dev/reference/attributes#data-computed
+func (e *SVGELLIPSEElement) IfDATASTAR_COMPUTED(condition bool, key string, expression string, modifiers ...SVGEllipseComputedMod) *SVGELLIPSEElement {
+	if condition {
+		e.DATASTAR_COMPUTED(key, expression, modifiers...)
+	}
+	return e
+}
+
+// Creates a signal that is computed based on an expression
+// The computed signal is read-only, and its value is automatically updated when
+// any signals in the expression are updated.
+//
+// See: https://data-star.dev/reference/attributes#data-computed
+// Remove the attribute DATASTAR_COMPUTED from the element.
+func (e *SVGELLIPSEElement) DATASTAR_COMPUTEDRemove(key string) *SVGELLIPSEElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	e.StringAttributes.Del("data-computed" + suffix)
+
+	return e
+}
+
+// Executes an expression on page load and whenever any signals in the expression
+// change
+// This is useful for performing side effects, such as updating other signals,
+// making requests to the backend, or manipulating the DOM.
+//
+// See: https://data-star.dev/reference/attributes#data-effect
+func (e *SVGELLIPSEElement) DATASTAR_EFFECT(expression string) *SVGELLIPSEElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-effect"
 
 	e.StringAttributes.Set(key, expression)
 	return e
 }
 
-func (e *SVGELLIPSEElement) IfDATASTAR_MODEL(condition bool, expression string) *SVGELLIPSEElement {
+// Executes an expression on page load and whenever any signals in the expression
+// change
+// This is useful for performing side effects, such as updating other signals,
+// making requests to the backend, or manipulating the DOM.
+//
+// See: https://data-star.dev/reference/attributes#data-effect
+func (e *SVGELLIPSEElement) IfDATASTAR_EFFECT(condition bool, expression string) *SVGELLIPSEElement {
 	if condition {
-		e.DATASTAR_MODEL(expression)
+		e.DATASTAR_EFFECT(expression)
 	}
 	return e
 }
 
-// Remove the attribute DATASTAR_MODEL from the element.
-func (e *SVGELLIPSEElement) DATASTAR_MODELRemove() *SVGELLIPSEElement {
+// Executes an expression on page load and whenever any signals in the expression
+// change
+// This is useful for performing side effects, such as updating other signals,
+// making requests to the backend, or manipulating the DOM.
+//
+// See: https://data-star.dev/reference/attributes#data-effect
+// Remove the attribute DATASTAR_EFFECT from the element.
+func (e *SVGELLIPSEElement) DATASTAR_EFFECTRemove() *SVGELLIPSEElement {
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("data-model")
+
+	e.StringAttributes.Del("data-effect")
+
 	return e
 }
 
-// Sets the textContent of the element
+type SVGEllipseIgnoreMod customDataKeyModifier
 
+// Only ignore the element itself, not its descendants.
+func SVGEllipseIgnoreModSelf() SVGEllipseIgnoreMod {
+	return func() string {
+		return "self"
+	}
+}
+
+// Datastar walks the entire DOM and applies plugins to each element it encounters
+// It's possible to tell Datastar to ignore an element and its descendants by
+// placing a data-ignore attribute on it
+// This can be useful for preventing naming conflicts with third-party libraries,
+// or when you are unable to escape user input.
+//
+// See: https://data-star.dev/reference/attributes#data-ignore
+func (e *SVGELLIPSEElement) DATASTAR_IGNORESet(b bool, modifiers ...SVGEllipseIgnoreMod) *SVGELLIPSEElement {
+	key := customDataKey("data-ignore")
+	customMods := lo.Map(modifiers, func(m SVGEllipseIgnoreMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	if e.BoolAttributes == nil {
+		e.BoolAttributes = treemap.New[string, bool]()
+	}
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+// Datastar walks the entire DOM and applies plugins to each element it encounters
+// It's possible to tell Datastar to ignore an element and its descendants by
+// placing a data-ignore attribute on it
+// This can be useful for preventing naming conflicts with third-party libraries,
+// or when you are unable to escape user input.
+//
+// See: https://data-star.dev/reference/attributes#data-ignore
+func (e *SVGELLIPSEElement) DATASTAR_IGNORE(modifiers ...SVGEllipseIgnoreMod) *SVGELLIPSEElement {
+	return e.DATASTAR_IGNORESet(true, modifiers...)
+}
+
+// Similar to the data-ignore attribute, the data-ignore-morph attribute tells the
+// PatchElements watcher to skip processing an element and its children when
+// morphing elements
+// This can be useful for preventing conflicts with third-party libraries that
+// manipulate the DOM, or when you are unable to escape user input.
+//
+// See: https://data-star.dev/reference/attributes#data-ignore-morph
+func (e *SVGELLIPSEElement) DATASTAR_IGNORE_MORPHSet(b bool) *SVGELLIPSEElement {
+	key := "data-ignore-morph"
+	if e.BoolAttributes == nil {
+		e.BoolAttributes = treemap.New[string, bool]()
+	}
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+// Similar to the data-ignore attribute, the data-ignore-morph attribute tells the
+// PatchElements watcher to skip processing an element and its children when
+// morphing elements
+// This can be useful for preventing conflicts with third-party libraries that
+// manipulate the DOM, or when you are unable to escape user input.
+//
+// See: https://data-star.dev/reference/attributes#data-ignore-morph
+func (e *SVGELLIPSEElement) DATASTAR_IGNORE_MORPH() *SVGELLIPSEElement {
+	return e.DATASTAR_IGNORE_MORPHSet(true)
+}
+
+type SVGEllipseIndicatorMod customDataKeyModifier
+
+// Converts the casing of the signal name.
+//   - 'camel' – Camel case: 'mySignal' (default)
+//   - 'kebab' – Kebab case: 'my-signal'
+//   - 'snake' – Snake case: 'my_signal'
+//   - 'pascal' – Pascal case: 'MySignal'
+func SVGEllipseIndicatorModCase(
+	s string,
+) SVGEllipseIndicatorMod {
+	return func() string {
+		return fmt.Sprintf("case.%s", s)
+	}
+}
+
+// Creates a signal and sets its value to true while a fetch request is in flight,
+// otherwise false
+// The signal can be used to show a loading indicator.
+//
+// See: https://data-star.dev/reference/attributes#data-indicator
+func (e *SVGELLIPSEElement) DATASTAR_INDICATOR(expression string, modifiers ...SVGEllipseIndicatorMod) *SVGELLIPSEElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-indicator"
+
+	customMods := lo.Map(modifiers, func(m SVGEllipseIndicatorMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Creates a signal and sets its value to true while a fetch request is in flight,
+// otherwise false
+// The signal can be used to show a loading indicator.
+//
+// See: https://data-star.dev/reference/attributes#data-indicator
+func (e *SVGELLIPSEElement) IfDATASTAR_INDICATOR(condition bool, expression string, modifiers ...SVGEllipseIndicatorMod) *SVGELLIPSEElement {
+	if condition {
+		e.DATASTAR_INDICATOR(expression, modifiers...)
+	}
+	return e
+}
+
+// Creates a signal and sets its value to true while a fetch request is in flight,
+// otherwise false
+// The signal can be used to show a loading indicator.
+//
+// See: https://data-star.dev/reference/attributes#data-indicator
+// Remove the attribute DATASTAR_INDICATOR from the element.
+func (e *SVGELLIPSEElement) DATASTAR_INDICATORRemove() *SVGELLIPSEElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-indicator")
+
+	return e
+}
+
+type SVGEllipseInitMod customDataKeyModifier
+
+// Delay the event listener in milliseconds.
+func SVGEllipseInitModDelayMs(
+	d time.Duration,
+) SVGEllipseInitMod {
+	return func() string {
+		return fmt.Sprintf("delay.%dms", d.Milliseconds())
+	}
+}
+
+// Delay the event listener in seconds.
+func SVGEllipseInitModDelaySec(
+	d time.Duration,
+) SVGEllipseInitMod {
+	return func() string {
+		return fmt.Sprintf("delay.%ds", int(d.Seconds()))
+	}
+}
+
+// Wraps the expression in 'document.startViewTransition()' when the View
+// Transition API is available.
+func SVGEllipseInitModViewTransition() SVGEllipseInitMod {
+	return func() string {
+		return "viewtransition"
+	}
+}
+
+// Runs an expression when the attribute is initialized
+// This can happen on page load, when an element is patched into the DOM, and any
+// time the attribute is modified (via a backend action or otherwise).
+//
+// See: https://data-star.dev/reference/attributes#data-indicator
+func (e *SVGELLIPSEElement) DATASTAR_INIT(expression string, modifiers ...SVGEllipseInitMod) *SVGELLIPSEElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-init"
+
+	customMods := lo.Map(modifiers, func(m SVGEllipseInitMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Runs an expression when the attribute is initialized
+// This can happen on page load, when an element is patched into the DOM, and any
+// time the attribute is modified (via a backend action or otherwise).
+//
+// See: https://data-star.dev/reference/attributes#data-indicator
+func (e *SVGELLIPSEElement) IfDATASTAR_INIT(condition bool, expression string, modifiers ...SVGEllipseInitMod) *SVGELLIPSEElement {
+	if condition {
+		e.DATASTAR_INIT(expression, modifiers...)
+	}
+	return e
+}
+
+// Runs an expression when the attribute is initialized
+// This can happen on page load, when an element is patched into the DOM, and any
+// time the attribute is modified (via a backend action or otherwise).
+//
+// See: https://data-star.dev/reference/attributes#data-indicator
+// Remove the attribute DATASTAR_INIT from the element.
+func (e *SVGELLIPSEElement) DATASTAR_INITRemove() *SVGELLIPSEElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-init")
+
+	return e
+}
+
+type SVGEllipseJsonSignalsMod customDataKeyModifier
+
+// Outputs a more compact JSON format without extra whitespace
+// Useful for displaying filtered data inline.
+func SVGEllipseJsonSignalsModTerse() SVGEllipseJsonSignalsMod {
+	return func() string {
+		return "terse"
+	}
+}
+
+// Sets the text content of an element to a reactive JSON stringified version of
+// signals
+// Useful when troubleshooting an issue.
+//
+// See: https://data-star.dev/reference/attributes#data-json-signals
+func (e *SVGELLIPSEElement) DATASTAR_JSON_SIGNALS(expression string, modifiers ...SVGEllipseJsonSignalsMod) *SVGELLIPSEElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-json-signals"
+
+	customMods := lo.Map(modifiers, func(m SVGEllipseJsonSignalsMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Sets the text content of an element to a reactive JSON stringified version of
+// signals
+// Useful when troubleshooting an issue.
+//
+// See: https://data-star.dev/reference/attributes#data-json-signals
+func (e *SVGELLIPSEElement) IfDATASTAR_JSON_SIGNALS(condition bool, expression string, modifiers ...SVGEllipseJsonSignalsMod) *SVGELLIPSEElement {
+	if condition {
+		e.DATASTAR_JSON_SIGNALS(expression, modifiers...)
+	}
+	return e
+}
+
+// Sets the text content of an element to a reactive JSON stringified version of
+// signals
+// Useful when troubleshooting an issue.
+//
+// See: https://data-star.dev/reference/attributes#data-json-signals
+// Remove the attribute DATASTAR_JSON_SIGNALS from the element.
+func (e *SVGELLIPSEElement) DATASTAR_JSON_SIGNALSRemove() *SVGELLIPSEElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-json-signals")
+
+	return e
+}
+
+type SVGEllipseOnMod customDataKeyModifier
+
+// Only run the expression once
+// Only works with built-in events.
+func SVGEllipseOnModOnce() SVGEllipseOnMod {
+	return func() string {
+		return "once"
+	}
+}
+
+// Do not call preventDefault on the event listener
+// Only works with built-in events.
+func SVGEllipseOnModPassive() SVGEllipseOnMod {
+	return func() string {
+		return "passive"
+	}
+}
+
+// Use capture event listener
+// Only works with built-in events.
+func SVGEllipseOnModCapture() SVGEllipseOnMod {
+	return func() string {
+		return "capture"
+	}
+}
+
+// Converts the casing of the signal name.
+//   - 'camel' – Camel case: 'mySignal' (default)
+//   - 'kebab' – Kebab case: 'my-signal'
+//   - 'snake' – Snake case: 'my_signal'
+//   - 'pascal' – Pascal case: 'MySignal'
+func SVGEllipseOnModCase(
+	s string,
+) SVGEllipseOnMod {
+	return func() string {
+		return fmt.Sprintf("case.%s", s)
+	}
+}
+
+// Delay the event listener in milliseconds.
+func SVGEllipseOnModDelayMs(
+	d time.Duration,
+) SVGEllipseOnMod {
+	return func() string {
+		return fmt.Sprintf("delay.%dms", d.Milliseconds())
+	}
+}
+
+// Delay the event listener in seconds.
+func SVGEllipseOnModDelaySec(
+	d time.Duration,
+) SVGEllipseOnMod {
+	return func() string {
+		return fmt.Sprintf("delay.%ds", int(d.Seconds()))
+	}
+}
+
+// Debounces the event handler
+func SVGEllipseOnModDebounceMs(
+	d time.Duration,
+) SVGEllipseOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms", d.Milliseconds())
+	}
+}
+
+// Debounce the event listener in milliseconds with leading edge.
+func SVGEllipseOnModDebounceMsLeading(
+	d time.Duration,
+) SVGEllipseOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms.leading", d.Milliseconds())
+	}
+}
+
+// Debounce the event listener in milliseconds without trailing edge.
+func SVGEllipseOnModDebounceMsNoTrailing(
+	d time.Duration,
+) SVGEllipseOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms.notrailing", d.Milliseconds())
+	}
+}
+
+// Debounces the event handler
+func SVGEllipseOnModDebounceSec(
+	d time.Duration,
+) SVGEllipseOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds", int(d.Seconds()))
+	}
+}
+
+// Debounce the event listener in seconds with leading edge.
+func SVGEllipseOnModDebounceSecLeading(
+	d time.Duration,
+) SVGEllipseOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds.leading", int(d.Seconds()))
+	}
+}
+
+// Debounce the event listener in seconds without trailing edge.
+func SVGEllipseOnModDebounceSecNoTrailing(
+	d time.Duration,
+) SVGEllipseOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds.notrailing", int(d.Seconds()))
+	}
+}
+
+// Throttles the event handler
+func SVGEllipseOnModThrottleMs(
+	d time.Duration,
+) SVGEllipseOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms", d.Milliseconds())
+	}
+}
+
+// Throttle the event listener in milliseconds without leading edge.
+func SVGEllipseOnModThrottleMsNoLeading(
+	d time.Duration,
+) SVGEllipseOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms.noleading", d.Milliseconds())
+	}
+}
+
+// Throttle the event listener in milliseconds with trailing edge.
+func SVGEllipseOnModThrottleMsTrailing(
+	d time.Duration,
+) SVGEllipseOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms.trailing", d.Milliseconds())
+	}
+}
+
+// Throttles the event listener in seconds.
+func SVGEllipseOnModThrottleSec(
+	d time.Duration,
+) SVGEllipseOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds", int(d.Seconds()))
+	}
+}
+
+// Throttle the event listener in seconds without leading edge.
+func SVGEllipseOnModThrottleSecNoLeading(
+	d time.Duration,
+) SVGEllipseOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds.noleading", int(d.Seconds()))
+	}
+}
+
+// Throttle the event listener in seconds with trailing edge.
+func SVGEllipseOnModThrottleSecTrailing(
+	d time.Duration,
+) SVGEllipseOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds.trailing", int(d.Seconds()))
+	}
+}
+
+// Wraps the expression in 'document.startViewTransition()' when the View
+// Transition API is available.
+func SVGEllipseOnModViewTransition() SVGEllipseOnMod {
+	return func() string {
+		return "viewtransition"
+	}
+}
+
+// Attaches the event listener to the 'window' element.
+func SVGEllipseOnModWindow() SVGEllipseOnMod {
+	return func() string {
+		return "window"
+	}
+}
+
+// Calls 'preventDefault' on the event listener.
+func SVGEllipseOnModPrevent() SVGEllipseOnMod {
+	return func() string {
+		return "prevent"
+	}
+}
+
+// Triggers when the event is outside the element.
+func SVGEllipseOnModOutside() SVGEllipseOnMod {
+	return func() string {
+		return "outside"
+	}
+}
+
+// Calls 'stopPropagation' on the event listener.
+func SVGEllipseOnModStop() SVGEllipseOnMod {
+	return func() string {
+		return "stop"
+	}
+}
+
+// Attaches an event listener to an element, executing an expression whenever the
+// event is triggered.
+//
+// See: https://data-star.dev/reference/attributes#data-on
+func (e *SVGELLIPSEElement) DATASTAR_ON(key string, expression string, modifiers ...SVGEllipseOnMod) *SVGELLIPSEElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	key = fmt.Sprintf("data-on%s", suffix)
+
+	customMods := lo.Map(modifiers, func(m SVGEllipseOnMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Attaches an event listener to an element, executing an expression whenever the
+// event is triggered.
+//
+// See: https://data-star.dev/reference/attributes#data-on
+func (e *SVGELLIPSEElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SVGEllipseOnMod) *SVGELLIPSEElement {
+	if condition {
+		e.DATASTAR_ON(key, expression, modifiers...)
+	}
+	return e
+}
+
+// Attaches an event listener to an element, executing an expression whenever the
+// event is triggered.
+//
+// See: https://data-star.dev/reference/attributes#data-on
+// Remove the attribute DATASTAR_ON from the element.
+func (e *SVGELLIPSEElement) DATASTAR_ONRemove(key string) *SVGELLIPSEElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	e.StringAttributes.Del("data-on" + suffix)
+
+	return e
+}
+
+type SVGEllipseOnIntersectMod customDataKeyModifier
+
+// Only run the expression once
+// Only works with built-in events.
+func SVGEllipseOnIntersectModOnce() SVGEllipseOnIntersectMod {
+	return func() string {
+		return "once"
+	}
+}
+
+// Trigger when half of the element is visible.
+func SVGEllipseOnIntersectModHalf() SVGEllipseOnIntersectMod {
+	return func() string {
+		return "half"
+	}
+}
+
+// Trigger when the full element is visible.
+func SVGEllipseOnIntersectModFull() SVGEllipseOnIntersectMod {
+	return func() string {
+		return "full"
+	}
+}
+
+// Delay the event listener in milliseconds.
+func SVGEllipseOnIntersectModDelayMs(
+	d time.Duration,
+) SVGEllipseOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("delay.%dms", d.Milliseconds())
+	}
+}
+
+// Delay the event listener in seconds.
+func SVGEllipseOnIntersectModDelaySec(
+	d time.Duration,
+) SVGEllipseOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("delay.%ds", int(d.Seconds()))
+	}
+}
+
+// Debounces the event handler
+func SVGEllipseOnIntersectModDebounceMs(
+	d time.Duration,
+) SVGEllipseOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms", d.Milliseconds())
+	}
+}
+
+// Debounce the event listener in milliseconds with leading edge.
+func SVGEllipseOnIntersectModDebounceMsLeading(
+	d time.Duration,
+) SVGEllipseOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms.leading", d.Milliseconds())
+	}
+}
+
+// Debounce the event listener in milliseconds without trailing edge.
+func SVGEllipseOnIntersectModDebounceMsNoTrailing(
+	d time.Duration,
+) SVGEllipseOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms.notrailing", d.Milliseconds())
+	}
+}
+
+// Debounces the event handler
+func SVGEllipseOnIntersectModDebounceSec(
+	d time.Duration,
+) SVGEllipseOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds", int(d.Seconds()))
+	}
+}
+
+// Debounce the event listener in seconds with leading edge.
+func SVGEllipseOnIntersectModDebounceSecLeading(
+	d time.Duration,
+) SVGEllipseOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds.leading", int(d.Seconds()))
+	}
+}
+
+// Debounce the event listener in seconds without trailing edge.
+func SVGEllipseOnIntersectModDebounceSecNoTrailing(
+	d time.Duration,
+) SVGEllipseOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds.notrailing", int(d.Seconds()))
+	}
+}
+
+// Throttles the event handler
+func SVGEllipseOnIntersectModThrottleMs(
+	d time.Duration,
+) SVGEllipseOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms", d.Milliseconds())
+	}
+}
+
+// Throttle the event listener in milliseconds without leading edge.
+func SVGEllipseOnIntersectModThrottleMsNoLeading(
+	d time.Duration,
+) SVGEllipseOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms.noleading", d.Milliseconds())
+	}
+}
+
+// Throttle the event listener in milliseconds with trailing edge.
+func SVGEllipseOnIntersectModThrottleMsTrailing(
+	d time.Duration,
+) SVGEllipseOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms.trailing", d.Milliseconds())
+	}
+}
+
+// Throttles the event listener in seconds.
+func SVGEllipseOnIntersectModThrottleSec(
+	d time.Duration,
+) SVGEllipseOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds", int(d.Seconds()))
+	}
+}
+
+// Throttle the event listener in seconds without leading edge.
+func SVGEllipseOnIntersectModThrottleSecNoLeading(
+	d time.Duration,
+) SVGEllipseOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds.noleading", int(d.Seconds()))
+	}
+}
+
+// Throttle the event listener in seconds with trailing edge.
+func SVGEllipseOnIntersectModThrottleSecTrailing(
+	d time.Duration,
+) SVGEllipseOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds.trailing", int(d.Seconds()))
+	}
+}
+
+// Wraps the expression in 'document.startViewTransition()' when the View
+// Transition API is available.
+func SVGEllipseOnIntersectModViewTransition() SVGEllipseOnIntersectMod {
+	return func() string {
+		return "viewtransition"
+	}
+}
+
+// Runs an expression when the element intersects with the viewport.
+func (e *SVGELLIPSEElement) DATASTAR_ON_INTERSECT(expression string, modifiers ...SVGEllipseOnIntersectMod) *SVGELLIPSEElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-on-intersect"
+
+	customMods := lo.Map(modifiers, func(m SVGEllipseOnIntersectMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Runs an expression when the element intersects with the viewport.
+func (e *SVGELLIPSEElement) IfDATASTAR_ON_INTERSECT(condition bool, expression string, modifiers ...SVGEllipseOnIntersectMod) *SVGELLIPSEElement {
+	if condition {
+		e.DATASTAR_ON_INTERSECT(expression, modifiers...)
+	}
+	return e
+}
+
+// Runs an expression when the element intersects with the viewport.
+// Remove the attribute DATASTAR_ON_INTERSECT from the element.
+func (e *SVGELLIPSEElement) DATASTAR_ON_INTERSECTRemove() *SVGELLIPSEElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-on-intersect")
+
+	return e
+}
+
+type SVGEllipseOnIntervalMod customDataKeyModifier
+
+// Sets the interval duration in milliseconds.
+func SVGEllipseOnIntervalModDurationMs(
+	d time.Duration,
+) SVGEllipseOnIntervalMod {
+	return func() string {
+		return fmt.Sprintf("duration.%dms", d.Milliseconds())
+	}
+}
+
+// Sets the interval duration in milliseconds
+// Execute the first interval immediately.
+func SVGEllipseOnIntervalModDurationMsLeading(
+	d time.Duration,
+) SVGEllipseOnIntervalMod {
+	return func() string {
+		return fmt.Sprintf("duration.%dms.leading", d.Milliseconds())
+	}
+}
+
+// Sets the interval duration in seconds.
+func SVGEllipseOnIntervalModDurationSec(
+	d time.Duration,
+) SVGEllipseOnIntervalMod {
+	return func() string {
+		return fmt.Sprintf("duration.%ds", int(d.Seconds()))
+	}
+}
+
+// Sets the interval duration in seconds
+// Execute the first interval immediately.
+func SVGEllipseOnIntervalModDurationSecLeading(
+	d time.Duration,
+) SVGEllipseOnIntervalMod {
+	return func() string {
+		return fmt.Sprintf("duration.%ds.leading", int(d.Seconds()))
+	}
+}
+
+// Wraps the expression in 'document.startViewTransition()' when the View
+// Transition API is available.
+func SVGEllipseOnIntervalModViewTransition() SVGEllipseOnIntervalMod {
+	return func() string {
+		return "viewtransition"
+	}
+}
+
+// Runs an expression at a regular interval
+// The interval duration defaults to one second and can be modified using the
+// '__duration' modifier.
+//
+// See: https://data-star.dev/reference/attributes#data-on-interval
+func (e *SVGELLIPSEElement) DATASTAR_ON_INTERVAL(expression string, modifiers ...SVGEllipseOnIntervalMod) *SVGELLIPSEElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-on-interval"
+
+	customMods := lo.Map(modifiers, func(m SVGEllipseOnIntervalMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Runs an expression at a regular interval
+// The interval duration defaults to one second and can be modified using the
+// '__duration' modifier.
+//
+// See: https://data-star.dev/reference/attributes#data-on-interval
+func (e *SVGELLIPSEElement) IfDATASTAR_ON_INTERVAL(condition bool, expression string, modifiers ...SVGEllipseOnIntervalMod) *SVGELLIPSEElement {
+	if condition {
+		e.DATASTAR_ON_INTERVAL(expression, modifiers...)
+	}
+	return e
+}
+
+// Runs an expression at a regular interval
+// The interval duration defaults to one second and can be modified using the
+// '__duration' modifier.
+//
+// See: https://data-star.dev/reference/attributes#data-on-interval
+// Remove the attribute DATASTAR_ON_INTERVAL from the element.
+func (e *SVGELLIPSEElement) DATASTAR_ON_INTERVALRemove() *SVGELLIPSEElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-on-interval")
+
+	return e
+}
+
+type SVGEllipseOnSignalPatchMod customDataKeyModifier
+
+// Delay the event listener in milliseconds.
+func SVGEllipseOnSignalPatchModDelayMs(
+	d time.Duration,
+) SVGEllipseOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("delay.%dms", d.Milliseconds())
+	}
+}
+
+// Delay the event listener in seconds.
+func SVGEllipseOnSignalPatchModDelaySec(
+	d time.Duration,
+) SVGEllipseOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("delay.%ds", int(d.Seconds()))
+	}
+}
+
+// Debounces the event handler
+func SVGEllipseOnSignalPatchModDebounceMs(
+	d time.Duration,
+) SVGEllipseOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms", d.Milliseconds())
+	}
+}
+
+// Debounce the event listener in milliseconds with leading edge.
+func SVGEllipseOnSignalPatchModDebounceMsLeading(
+	d time.Duration,
+) SVGEllipseOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms.leading", d.Milliseconds())
+	}
+}
+
+// Debounce the event listener in milliseconds without trailing edge.
+func SVGEllipseOnSignalPatchModDebounceMsNoTrailing(
+	d time.Duration,
+) SVGEllipseOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms.notrailing", d.Milliseconds())
+	}
+}
+
+// Debounces the event handler
+func SVGEllipseOnSignalPatchModDebounceSec(
+	d time.Duration,
+) SVGEllipseOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds", int(d.Seconds()))
+	}
+}
+
+// Debounce the event listener in seconds with leading edge.
+func SVGEllipseOnSignalPatchModDebounceSecLeading(
+	d time.Duration,
+) SVGEllipseOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds.leading", int(d.Seconds()))
+	}
+}
+
+// Debounce the event listener in seconds without trailing edge.
+func SVGEllipseOnSignalPatchModDebounceSecNoTrailing(
+	d time.Duration,
+) SVGEllipseOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds.notrailing", int(d.Seconds()))
+	}
+}
+
+// Throttles the event handler
+func SVGEllipseOnSignalPatchModThrottleMs(
+	d time.Duration,
+) SVGEllipseOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms", d.Milliseconds())
+	}
+}
+
+// Throttle the event listener in milliseconds without leading edge.
+func SVGEllipseOnSignalPatchModThrottleMsNoLeading(
+	d time.Duration,
+) SVGEllipseOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms.noleading", d.Milliseconds())
+	}
+}
+
+// Throttle the event listener in milliseconds with trailing edge.
+func SVGEllipseOnSignalPatchModThrottleMsTrailing(
+	d time.Duration,
+) SVGEllipseOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms.trailing", d.Milliseconds())
+	}
+}
+
+// Throttles the event listener in seconds.
+func SVGEllipseOnSignalPatchModThrottleSec(
+	d time.Duration,
+) SVGEllipseOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds", int(d.Seconds()))
+	}
+}
+
+// Throttle the event listener in seconds without leading edge.
+func SVGEllipseOnSignalPatchModThrottleSecNoLeading(
+	d time.Duration,
+) SVGEllipseOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds.noleading", int(d.Seconds()))
+	}
+}
+
+// Throttle the event listener in seconds with trailing edge.
+func SVGEllipseOnSignalPatchModThrottleSecTrailing(
+	d time.Duration,
+) SVGEllipseOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds.trailing", int(d.Seconds()))
+	}
+}
+
+// Runs an expression whenever any signals are patched
+// This is useful for tracking changes, updating computed values, or triggering
+// side effects when data updates.
+//
+// See: https://data-star.dev/reference/attributes#data-on-signal-patch
+func (e *SVGELLIPSEElement) DATASTAR_ON_SIGNAL_PATCH(expression string, modifiers ...SVGEllipseOnSignalPatchMod) *SVGELLIPSEElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-on-signal-patch"
+
+	customMods := lo.Map(modifiers, func(m SVGEllipseOnSignalPatchMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Runs an expression whenever any signals are patched
+// This is useful for tracking changes, updating computed values, or triggering
+// side effects when data updates.
+//
+// See: https://data-star.dev/reference/attributes#data-on-signal-patch
+func (e *SVGELLIPSEElement) IfDATASTAR_ON_SIGNAL_PATCH(condition bool, expression string, modifiers ...SVGEllipseOnSignalPatchMod) *SVGELLIPSEElement {
+	if condition {
+		e.DATASTAR_ON_SIGNAL_PATCH(expression, modifiers...)
+	}
+	return e
+}
+
+// Runs an expression whenever any signals are patched
+// This is useful for tracking changes, updating computed values, or triggering
+// side effects when data updates.
+//
+// See: https://data-star.dev/reference/attributes#data-on-signal-patch
+// Remove the attribute DATASTAR_ON_SIGNAL_PATCH from the element.
+func (e *SVGELLIPSEElement) DATASTAR_ON_SIGNAL_PATCHRemove() *SVGELLIPSEElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-on-signal-patch")
+
+	return e
+}
+
+// Filters which signals to watch when using the data-on-signal-patch attribute.
+//
+// The data-on-signal-patch-filter attribute accepts an object with include and/or
+// exclude properties that are regular expressions.
+//
+// See: https://data-star.dev/reference/attributes#data-on-signal-patch-filter
+func (e *SVGELLIPSEElement) DATASTAR_ON_SIGNAL_PATCH_FILTER(expression string) *SVGELLIPSEElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-on-signal-patch-filter"
+
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Filters which signals to watch when using the data-on-signal-patch attribute.
+//
+// The data-on-signal-patch-filter attribute accepts an object with include and/or
+// exclude properties that are regular expressions.
+//
+// See: https://data-star.dev/reference/attributes#data-on-signal-patch-filter
+func (e *SVGELLIPSEElement) IfDATASTAR_ON_SIGNAL_PATCH_FILTER(condition bool, expression string) *SVGELLIPSEElement {
+	if condition {
+		e.DATASTAR_ON_SIGNAL_PATCH_FILTER(expression)
+	}
+	return e
+}
+
+// Filters which signals to watch when using the data-on-signal-patch attribute.
+//
+// The data-on-signal-patch-filter attribute accepts an object with include and/or
+// exclude properties that are regular expressions.
+//
+// See: https://data-star.dev/reference/attributes#data-on-signal-patch-filter
+// Remove the attribute DATASTAR_ON_SIGNAL_PATCH_FILTER from the element.
+func (e *SVGELLIPSEElement) DATASTAR_ON_SIGNAL_PATCH_FILTERRemove() *SVGELLIPSEElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-on-signal-patch-filter")
+
+	return e
+}
+
+// Preserves the value of an attribute when morphing DOM elements.
+//
+// See: https://data-star.dev/reference/attributes#data-preserve-attr
+func (e *SVGELLIPSEElement) DATASTAR_PRESERVE_ATTR(expression string) *SVGELLIPSEElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-preserve-attr"
+
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Preserves the value of an attribute when morphing DOM elements.
+//
+// See: https://data-star.dev/reference/attributes#data-preserve-attr
+func (e *SVGELLIPSEElement) IfDATASTAR_PRESERVE_ATTR(condition bool, expression string) *SVGELLIPSEElement {
+	if condition {
+		e.DATASTAR_PRESERVE_ATTR(expression)
+	}
+	return e
+}
+
+// Preserves the value of an attribute when morphing DOM elements.
+//
+// See: https://data-star.dev/reference/attributes#data-preserve-attr
+// Remove the attribute DATASTAR_PRESERVE_ATTR from the element.
+func (e *SVGELLIPSEElement) DATASTAR_PRESERVE_ATTRRemove() *SVGELLIPSEElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-preserve-attr")
+
+	return e
+}
+
+type SVGEllipseRefMod customDataKeyModifier
+
+// Converts the casing of the signal name.
+//   - 'camel' – Camel case: 'mySignal' (default)
+//   - 'kebab' – Kebab case: 'my-signal'
+//   - 'snake' – Snake case: 'my_signal'
+//   - 'pascal' – Pascal case: 'MySignal'
+func SVGEllipseRefModCase(
+	s string,
+) SVGEllipseRefMod {
+	return func() string {
+		return fmt.Sprintf("case.%s", s)
+	}
+}
+
+// Creates a new signal that is a reference to the element on which the data
+// attribute is placed.
+//
+// See: https://data-star.dev/reference/attributes#data-ref
+func (e *SVGELLIPSEElement) DATASTAR_REF(expression string, modifiers ...SVGEllipseRefMod) *SVGELLIPSEElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-ref"
+
+	customMods := lo.Map(modifiers, func(m SVGEllipseRefMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Creates a new signal that is a reference to the element on which the data
+// attribute is placed.
+//
+// See: https://data-star.dev/reference/attributes#data-ref
+func (e *SVGELLIPSEElement) IfDATASTAR_REF(condition bool, expression string, modifiers ...SVGEllipseRefMod) *SVGELLIPSEElement {
+	if condition {
+		e.DATASTAR_REF(expression, modifiers...)
+	}
+	return e
+}
+
+// Creates a new signal that is a reference to the element on which the data
+// attribute is placed.
+//
+// See: https://data-star.dev/reference/attributes#data-ref
+// Remove the attribute DATASTAR_REF from the element.
+func (e *SVGELLIPSEElement) DATASTAR_REFRemove() *SVGELLIPSEElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-ref")
+
+	return e
+}
+
+// Shows or hides an element based on whether an expression evaluates to 'true' or
+// 'false'
+// For anything with custom requirements, use 'data-class' instead.
+//
+// See: https://data-star.dev/reference/attributes#data-show
+func (e *SVGELLIPSEElement) DATASTAR_SHOW(expression string) *SVGELLIPSEElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-show"
+
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Shows or hides an element based on whether an expression evaluates to 'true' or
+// 'false'
+// For anything with custom requirements, use 'data-class' instead.
+//
+// See: https://data-star.dev/reference/attributes#data-show
+func (e *SVGELLIPSEElement) IfDATASTAR_SHOW(condition bool, expression string) *SVGELLIPSEElement {
+	if condition {
+		e.DATASTAR_SHOW(expression)
+	}
+	return e
+}
+
+// Shows or hides an element based on whether an expression evaluates to 'true' or
+// 'false'
+// For anything with custom requirements, use 'data-class' instead.
+//
+// See: https://data-star.dev/reference/attributes#data-show
+// Remove the attribute DATASTAR_SHOW from the element.
+func (e *SVGELLIPSEElement) DATASTAR_SHOWRemove() *SVGELLIPSEElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-show")
+
+	return e
+}
+
+type SVGEllipseSignalsMod customDataKeyModifier
+
+// Converts the casing of the signal name.
+//   - 'camel' – Camel case: 'mySignal' (default)
+//   - 'kebab' – Kebab case: 'my-signal'
+//   - 'snake' – Snake case: 'my_signal'
+//   - 'pascal' – Pascal case: 'MySignal'
+func SVGEllipseSignalsModCase(
+	s string,
+) SVGEllipseSignalsMod {
+	return func() string {
+		return fmt.Sprintf("case.%s", s)
+	}
+}
+
+// Only patches signals if their keys do not already exist
+// This is useful for setting defaults without overwriting existing values.
+func SVGEllipseSignalsModIfMissing() SVGEllipseSignalsMod {
+	return func() string {
+		return "ifmissing"
+	}
+}
+
+// Patches (adds, updates or removes) one or more signals into the existing
+// signals
+// Values defined later in the DOM tree override those defined earlier.
+//
+// See: https://data-star.dev/reference/attributes#data-signals
+func (e *SVGELLIPSEElement) DATASTAR_SIGNALS(key string, expression string, modifiers ...SVGEllipseSignalsMod) *SVGELLIPSEElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	key = fmt.Sprintf("data-signals%s", suffix)
+
+	customMods := lo.Map(modifiers, func(m SVGEllipseSignalsMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Patches (adds, updates or removes) one or more signals into the existing
+// signals
+// Values defined later in the DOM tree override those defined earlier.
+//
+// See: https://data-star.dev/reference/attributes#data-signals
+func (e *SVGELLIPSEElement) IfDATASTAR_SIGNALS(condition bool, key string, expression string, modifiers ...SVGEllipseSignalsMod) *SVGELLIPSEElement {
+	if condition {
+		e.DATASTAR_SIGNALS(key, expression, modifiers...)
+	}
+	return e
+}
+
+// Patches (adds, updates or removes) one or more signals into the existing
+// signals
+// Values defined later in the DOM tree override those defined earlier.
+//
+// See: https://data-star.dev/reference/attributes#data-signals
+// Remove the attribute DATASTAR_SIGNALS from the element.
+func (e *SVGELLIPSEElement) DATASTAR_SIGNALSRemove(key string) *SVGELLIPSEElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	e.StringAttributes.Del("data-signals" + suffix)
+
+	return e
+}
+
+type SVGEllipseStyleMod customDataKeyModifier
+
+// Converts the casing of the signal name.
+//   - 'camel' – Camel case: 'mySignal' (default)
+//   - 'kebab' – Kebab case: 'my-signal'
+//   - 'snake' – Snake case: 'my_signal'
+//   - 'pascal' – Pascal case: 'MySignal'
+func SVGEllipseStyleModCase(
+	s string,
+) SVGEllipseStyleMod {
+	return func() string {
+		return fmt.Sprintf("case.%s", s)
+	}
+}
+
+// Sets the value of inline CSS styles on an element based on an expression, and
+// keeps them in sync.
+//
+// See: https://data-star.dev/reference/attributes#data-style
+func (e *SVGELLIPSEElement) DATASTAR_STYLE(key string, expression string, modifiers ...SVGEllipseStyleMod) *SVGELLIPSEElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	key = fmt.Sprintf("data-style%s", suffix)
+
+	customMods := lo.Map(modifiers, func(m SVGEllipseStyleMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Sets the value of inline CSS styles on an element based on an expression, and
+// keeps them in sync.
+//
+// See: https://data-star.dev/reference/attributes#data-style
+func (e *SVGELLIPSEElement) IfDATASTAR_STYLE(condition bool, key string, expression string, modifiers ...SVGEllipseStyleMod) *SVGELLIPSEElement {
+	if condition {
+		e.DATASTAR_STYLE(key, expression, modifiers...)
+	}
+	return e
+}
+
+// Sets the value of inline CSS styles on an element based on an expression, and
+// keeps them in sync.
+//
+// See: https://data-star.dev/reference/attributes#data-style
+// Remove the attribute DATASTAR_STYLE from the element.
+func (e *SVGELLIPSEElement) DATASTAR_STYLERemove(key string) *SVGELLIPSEElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	e.StringAttributes.Del("data-style" + suffix)
+
+	return e
+}
+
+// Binds the text content of an element to an expression.
+//
+// See: https://data-star.dev/reference/attributes#data-text
 func (e *SVGELLIPSEElement) DATASTAR_TEXT(expression string) *SVGELLIPSEElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
@@ -508,6 +2018,9 @@ func (e *SVGELLIPSEElement) DATASTAR_TEXT(expression string) *SVGELLIPSEElement 
 	return e
 }
 
+// Binds the text content of an element to an expression.
+//
+// See: https://data-star.dev/reference/attributes#data-text
 func (e *SVGELLIPSEElement) IfDATASTAR_TEXT(condition bool, expression string) *SVGELLIPSEElement {
 	if condition {
 		e.DATASTAR_TEXT(expression)
@@ -515,228 +2028,16 @@ func (e *SVGELLIPSEElement) IfDATASTAR_TEXT(condition bool, expression string) *
 	return e
 }
 
+// Binds the text content of an element to an expression.
+//
+// See: https://data-star.dev/reference/attributes#data-text
 // Remove the attribute DATASTAR_TEXT from the element.
 func (e *SVGELLIPSEElement) DATASTAR_TEXTRemove() *SVGELLIPSEElement {
 	if e.StringAttributes == nil {
 		return e
 	}
+
 	e.StringAttributes.Del("data-text")
-	return e
-}
 
-// Sets the event handler of the element
-
-type SVGEllipseOnMod customDataKeyModifier
-
-// Debounces the event handler
-func SVGEllipseOnModDebounce(
-	d time.Duration,
-) SVGEllipseOnMod {
-	return func() string {
-		return fmt.Sprintf("debounce_%dms", d.Milliseconds())
-	}
-}
-
-// Throttles the event handler
-func SVGEllipseOnModThrottle(
-	d time.Duration,
-) SVGEllipseOnMod {
-	return func() string {
-		return fmt.Sprintf("throttle_%dms", d.Milliseconds())
-	}
-}
-
-func (e *SVGELLIPSEElement) DATASTAR_ON(key string, expression string, modifiers ...SVGEllipseOnMod) *SVGELLIPSEElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-
-	key = fmt.Sprintf("data-on-%s", key)
-
-	customMods := lo.Map(modifiers, func(m SVGEllipseOnMod, i int) customDataKeyModifier {
-		return customDataKeyModifier(m)
-	})
-	key = customDataKey(key, customMods...)
-	e.StringAttributes.Set(key, expression)
-	return e
-}
-
-func (e *SVGELLIPSEElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SVGEllipseOnMod) *SVGELLIPSEElement {
-	if condition {
-		e.DATASTAR_ON(key, expression, modifiers...)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_ON from the element.
-func (e *SVGELLIPSEElement) DATASTAR_ONRemove() *SVGELLIPSEElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-on")
-	return e
-}
-
-// Sets the focus of the element
-
-func (e *SVGELLIPSEElement) DATASTAR_FOCUSSet(b bool) *SVGELLIPSEElement {
-	key := "data-focus"
-	e.BoolAttributes.Set(key, b)
-	return e
-}
-
-func (e *SVGELLIPSEElement) DATASTAR_FOCUS() *SVGELLIPSEElement {
-	return e.DATASTAR_FOCUSSet(true)
-}
-
-// Sets the header of for fetch requests
-
-func (e *SVGELLIPSEElement) DATASTAR_HEADER(key string, expression string) *SVGELLIPSEElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-
-	key = fmt.Sprintf("data-header-%s", key)
-
-	e.StringAttributes.Set(key, expression)
-	return e
-}
-
-func (e *SVGELLIPSEElement) IfDATASTAR_HEADER(condition bool, key string, expression string) *SVGELLIPSEElement {
-	if condition {
-		e.DATASTAR_HEADER(key, expression)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_HEADER from the element.
-func (e *SVGELLIPSEElement) DATASTAR_HEADERRemove() *SVGELLIPSEElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-header")
-	return e
-}
-
-// Sets the indicator selector for fetch requests
-
-func (e *SVGELLIPSEElement) DATASTAR_FETCH_INDICATOR(expression string) *SVGELLIPSEElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-
-	key := "data-fetch-indicator"
-
-	e.StringAttributes.Set(key, expression)
-	return e
-}
-
-func (e *SVGELLIPSEElement) IfDATASTAR_FETCH_INDICATOR(condition bool, expression string) *SVGELLIPSEElement {
-	if condition {
-		e.DATASTAR_FETCH_INDICATOR(expression)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_FETCH_INDICATOR from the element.
-func (e *SVGELLIPSEElement) DATASTAR_FETCH_INDICATORRemove() *SVGELLIPSEElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-fetch-indicator")
-	return e
-}
-
-// Sets the visibility of the element
-
-func (e *SVGELLIPSEElement) DATASTAR_SHOWSet(b bool) *SVGELLIPSEElement {
-	key := "data-show"
-	e.BoolAttributes.Set(key, b)
-	return e
-}
-
-func (e *SVGELLIPSEElement) DATASTAR_SHOW() *SVGELLIPSEElement {
-	return e.DATASTAR_SHOWSet(true)
-}
-
-// Triggers the callback when the element intersects the viewport
-
-func (e *SVGELLIPSEElement) DATASTAR_INTERSECTS(expression string) *SVGELLIPSEElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-
-	key := "data-intersects"
-
-	e.StringAttributes.Set(key, expression)
-	return e
-}
-
-func (e *SVGELLIPSEElement) IfDATASTAR_INTERSECTS(condition bool, expression string) *SVGELLIPSEElement {
-	if condition {
-		e.DATASTAR_INTERSECTS(expression)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_INTERSECTS from the element.
-func (e *SVGELLIPSEElement) DATASTAR_INTERSECTSRemove() *SVGELLIPSEElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-intersects")
-	return e
-}
-
-// Teleports the element to the given selector
-
-func (e *SVGELLIPSEElement) DATASTAR_TELEPORTSet(b bool) *SVGELLIPSEElement {
-	key := "data-teleport"
-	e.BoolAttributes.Set(key, b)
-	return e
-}
-
-func (e *SVGELLIPSEElement) DATASTAR_TELEPORT() *SVGELLIPSEElement {
-	return e.DATASTAR_TELEPORTSet(true)
-}
-
-// Scrolls the element into view
-
-func (e *SVGELLIPSEElement) DATASTAR_SCROLL_INTO_VIEWSet(b bool) *SVGELLIPSEElement {
-	key := "data-scroll-into-view"
-	e.BoolAttributes.Set(key, b)
-	return e
-}
-
-func (e *SVGELLIPSEElement) DATASTAR_SCROLL_INTO_VIEW() *SVGELLIPSEElement {
-	return e.DATASTAR_SCROLL_INTO_VIEWSet(true)
-}
-
-// Setup the ViewTransitionAPI for the element
-
-func (e *SVGELLIPSEElement) DATASTAR_VIEW_TRANSITION(expression string) *SVGELLIPSEElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-
-	key := "data-view-transition"
-
-	e.StringAttributes.Set(key, expression)
-	return e
-}
-
-func (e *SVGELLIPSEElement) IfDATASTAR_VIEW_TRANSITION(condition bool, expression string) *SVGELLIPSEElement {
-	if condition {
-		e.DATASTAR_VIEW_TRANSITION(expression)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_VIEW_TRANSITION from the element.
-func (e *SVGELLIPSEElement) DATASTAR_VIEW_TRANSITIONRemove() *SVGELLIPSEElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-view-transition")
 	return e
 }

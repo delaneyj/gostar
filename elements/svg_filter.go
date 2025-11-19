@@ -5,10 +5,8 @@ package elements
 
 import (
 	"fmt"
-	"html"
 	"time"
 
-	"github.com/goccy/go-json"
 	"github.com/igrmk/treemap/v2"
 	"github.com/samber/lo"
 )
@@ -185,6 +183,7 @@ const (
 	SVGFilterFilterUnits_objectBoundingBox SVGFilterFilterUnitsChoice = "objectBoundingBox"
 )
 
+// The coordinate system for attributes x, y, width and height.
 // Remove the attribute FILTER_UNITS from the element.
 func (e *SVGFILTERElement) FILTER_UNITSRemove(c SVGFilterFilterUnitsChoice) *SVGFILTERElement {
 	if e.StringAttributes == nil {
@@ -212,6 +211,7 @@ const (
 	SVGFilterPrimitiveUnits_objectBoundingBox SVGFilterPrimitiveUnitsChoice = "objectBoundingBox"
 )
 
+// The coordinate system for the various length values within the filter.
 // Remove the attribute PRIMITIVE_UNITS from the element.
 func (e *SVGFILTERElement) PRIMITIVE_UNITSRemove(c SVGFilterPrimitiveUnitsChoice) *SVGFILTERElement {
 	if e.StringAttributes == nil {
@@ -230,10 +230,12 @@ func (e *SVGFILTERElement) X(s string) *SVGFILTERElement {
 	return e
 }
 
+// The x attribute indicates where the left edge of the filter is placed.
 func (e *SVGFILTERElement) XF(format string, args ...any) *SVGFILTERElement {
 	return e.X(fmt.Sprintf(format, args...))
 }
 
+// The x attribute indicates where the left edge of the filter is placed.
 func (e *SVGFILTERElement) IfX(condition bool, s string) *SVGFILTERElement {
 	if condition {
 		e.X(s)
@@ -241,6 +243,7 @@ func (e *SVGFILTERElement) IfX(condition bool, s string) *SVGFILTERElement {
 	return e
 }
 
+// The x attribute indicates where the left edge of the filter is placed.
 func (e *SVGFILTERElement) IfXF(condition bool, format string, args ...any) *SVGFILTERElement {
 	if condition {
 		e.X(fmt.Sprintf(format, args...))
@@ -248,6 +251,7 @@ func (e *SVGFILTERElement) IfXF(condition bool, format string, args ...any) *SVG
 	return e
 }
 
+// The x attribute indicates where the left edge of the filter is placed.
 // Remove the attribute X from the element.
 func (e *SVGFILTERElement) XRemove(s string) *SVGFILTERElement {
 	if e.StringAttributes == nil {
@@ -257,6 +261,7 @@ func (e *SVGFILTERElement) XRemove(s string) *SVGFILTERElement {
 	return e
 }
 
+// The x attribute indicates where the left edge of the filter is placed.
 func (e *SVGFILTERElement) XRemoveF(format string, args ...any) *SVGFILTERElement {
 	return e.XRemove(fmt.Sprintf(format, args...))
 }
@@ -270,10 +275,12 @@ func (e *SVGFILTERElement) Y(s string) *SVGFILTERElement {
 	return e
 }
 
+// The y attribute indicates where the top edge of the filter is placed.
 func (e *SVGFILTERElement) YF(format string, args ...any) *SVGFILTERElement {
 	return e.Y(fmt.Sprintf(format, args...))
 }
 
+// The y attribute indicates where the top edge of the filter is placed.
 func (e *SVGFILTERElement) IfY(condition bool, s string) *SVGFILTERElement {
 	if condition {
 		e.Y(s)
@@ -281,6 +288,7 @@ func (e *SVGFILTERElement) IfY(condition bool, s string) *SVGFILTERElement {
 	return e
 }
 
+// The y attribute indicates where the top edge of the filter is placed.
 func (e *SVGFILTERElement) IfYF(condition bool, format string, args ...any) *SVGFILTERElement {
 	if condition {
 		e.Y(fmt.Sprintf(format, args...))
@@ -288,6 +296,7 @@ func (e *SVGFILTERElement) IfYF(condition bool, format string, args ...any) *SVG
 	return e
 }
 
+// The y attribute indicates where the top edge of the filter is placed.
 // Remove the attribute Y from the element.
 func (e *SVGFILTERElement) YRemove(s string) *SVGFILTERElement {
 	if e.StringAttributes == nil {
@@ -297,6 +306,7 @@ func (e *SVGFILTERElement) YRemove(s string) *SVGFILTERElement {
 	return e
 }
 
+// The y attribute indicates where the top edge of the filter is placed.
 func (e *SVGFILTERElement) YRemoveF(format string, args ...any) *SVGFILTERElement {
 	return e.YRemove(fmt.Sprintf(format, args...))
 }
@@ -310,10 +320,12 @@ func (e *SVGFILTERElement) WIDTH(s string) *SVGFILTERElement {
 	return e
 }
 
+// The width attribute indicates the width of the filter primitive box.
 func (e *SVGFILTERElement) WIDTHF(format string, args ...any) *SVGFILTERElement {
 	return e.WIDTH(fmt.Sprintf(format, args...))
 }
 
+// The width attribute indicates the width of the filter primitive box.
 func (e *SVGFILTERElement) IfWIDTH(condition bool, s string) *SVGFILTERElement {
 	if condition {
 		e.WIDTH(s)
@@ -321,6 +333,7 @@ func (e *SVGFILTERElement) IfWIDTH(condition bool, s string) *SVGFILTERElement {
 	return e
 }
 
+// The width attribute indicates the width of the filter primitive box.
 func (e *SVGFILTERElement) IfWIDTHF(condition bool, format string, args ...any) *SVGFILTERElement {
 	if condition {
 		e.WIDTH(fmt.Sprintf(format, args...))
@@ -328,6 +341,7 @@ func (e *SVGFILTERElement) IfWIDTHF(condition bool, format string, args ...any) 
 	return e
 }
 
+// The width attribute indicates the width of the filter primitive box.
 // Remove the attribute WIDTH from the element.
 func (e *SVGFILTERElement) WIDTHRemove(s string) *SVGFILTERElement {
 	if e.StringAttributes == nil {
@@ -337,6 +351,7 @@ func (e *SVGFILTERElement) WIDTHRemove(s string) *SVGFILTERElement {
 	return e
 }
 
+// The width attribute indicates the width of the filter primitive box.
 func (e *SVGFILTERElement) WIDTHRemoveF(format string, args ...any) *SVGFILTERElement {
 	return e.WIDTHRemove(fmt.Sprintf(format, args...))
 }
@@ -350,10 +365,12 @@ func (e *SVGFILTERElement) HEIGHT(s string) *SVGFILTERElement {
 	return e
 }
 
+// The height attribute indicates the height of the filter primitive box.
 func (e *SVGFILTERElement) HEIGHTF(format string, args ...any) *SVGFILTERElement {
 	return e.HEIGHT(fmt.Sprintf(format, args...))
 }
 
+// The height attribute indicates the height of the filter primitive box.
 func (e *SVGFILTERElement) IfHEIGHT(condition bool, s string) *SVGFILTERElement {
 	if condition {
 		e.HEIGHT(s)
@@ -361,6 +378,7 @@ func (e *SVGFILTERElement) IfHEIGHT(condition bool, s string) *SVGFILTERElement 
 	return e
 }
 
+// The height attribute indicates the height of the filter primitive box.
 func (e *SVGFILTERElement) IfHEIGHTF(condition bool, format string, args ...any) *SVGFILTERElement {
 	if condition {
 		e.HEIGHT(fmt.Sprintf(format, args...))
@@ -368,6 +386,7 @@ func (e *SVGFILTERElement) IfHEIGHTF(condition bool, format string, args ...any)
 	return e
 }
 
+// The height attribute indicates the height of the filter primitive box.
 // Remove the attribute HEIGHT from the element.
 func (e *SVGFILTERElement) HEIGHTRemove(s string) *SVGFILTERElement {
 	if e.StringAttributes == nil {
@@ -377,6 +396,7 @@ func (e *SVGFILTERElement) HEIGHTRemove(s string) *SVGFILTERElement {
 	return e
 }
 
+// The height attribute indicates the height of the filter primitive box.
 func (e *SVGFILTERElement) HEIGHTRemoveF(format string, args ...any) *SVGFILTERElement {
 	return e.HEIGHTRemove(fmt.Sprintf(format, args...))
 }
@@ -390,10 +410,12 @@ func (e *SVGFILTERElement) ID(s string) *SVGFILTERElement {
 	return e
 }
 
+// Specifies a unique id for an element
 func (e *SVGFILTERElement) IDF(format string, args ...any) *SVGFILTERElement {
 	return e.ID(fmt.Sprintf(format, args...))
 }
 
+// Specifies a unique id for an element
 func (e *SVGFILTERElement) IfID(condition bool, s string) *SVGFILTERElement {
 	if condition {
 		e.ID(s)
@@ -401,6 +423,7 @@ func (e *SVGFILTERElement) IfID(condition bool, s string) *SVGFILTERElement {
 	return e
 }
 
+// Specifies a unique id for an element
 func (e *SVGFILTERElement) IfIDF(condition bool, format string, args ...any) *SVGFILTERElement {
 	if condition {
 		e.ID(fmt.Sprintf(format, args...))
@@ -408,6 +431,7 @@ func (e *SVGFILTERElement) IfIDF(condition bool, format string, args ...any) *SV
 	return e
 }
 
+// Specifies a unique id for an element
 // Remove the attribute ID from the element.
 func (e *SVGFILTERElement) IDRemove(s string) *SVGFILTERElement {
 	if e.StringAttributes == nil {
@@ -417,6 +441,7 @@ func (e *SVGFILTERElement) IDRemove(s string) *SVGFILTERElement {
 	return e
 }
 
+// Specifies a unique id for an element
 func (e *SVGFILTERElement) IDRemoveF(format string, args ...any) *SVGFILTERElement {
 	return e.IDRemove(fmt.Sprintf(format, args...))
 }
@@ -436,6 +461,8 @@ func (e *SVGFILTERElement) CLASS(s ...string) *SVGFILTERElement {
 	return e
 }
 
+// Specifies one or more classnames for an element (refers to a class in a style
+// sheet)
 func (e *SVGFILTERElement) IfCLASS(condition bool, s ...string) *SVGFILTERElement {
 	if condition {
 		e.CLASS(s...)
@@ -443,6 +470,8 @@ func (e *SVGFILTERElement) IfCLASS(condition bool, s ...string) *SVGFILTERElemen
 	return e
 }
 
+// Specifies one or more classnames for an element (refers to a class in a style
+// sheet)
 // Remove the attribute CLASS from the element.
 func (e *SVGFILTERElement) CLASSRemove(s ...string) *SVGFILTERElement {
 	if e.DelimitedStrings == nil {
@@ -461,6 +490,7 @@ func (e *SVGFILTERElement) STYLEF(k string, format string, args ...any) *SVGFILT
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+// Specifies an inline CSS style for an element
 func (e *SVGFILTERElement) IfSTYLE(condition bool, k string, v string) *SVGFILTERElement {
 	if condition {
 		e.STYLE(k, v)
@@ -468,6 +498,7 @@ func (e *SVGFILTERElement) IfSTYLE(condition bool, k string, v string) *SVGFILTE
 	return e
 }
 
+// Specifies an inline CSS style for an element
 func (e *SVGFILTERElement) STYLE(k string, v string) *SVGFILTERElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -481,6 +512,7 @@ func (e *SVGFILTERElement) STYLE(k string, v string) *SVGFILTERElement {
 	return e
 }
 
+// Specifies an inline CSS style for an element
 func (e *SVGFILTERElement) IfSTYLEF(condition bool, k string, format string, args ...any) *SVGFILTERElement {
 	if condition {
 		e.STYLE(k, fmt.Sprintf(format, args...))
@@ -488,6 +520,7 @@ func (e *SVGFILTERElement) IfSTYLEF(condition bool, k string, format string, arg
 	return e
 }
 
+// Specifies an inline CSS style for an element
 // Add the attributes in the map to the element.
 func (e *SVGFILTERElement) STYLEMap(m map[string]string) *SVGFILTERElement {
 	if e.KVStrings == nil {
@@ -504,6 +537,7 @@ func (e *SVGFILTERElement) STYLEMap(m map[string]string) *SVGFILTERElement {
 	return e
 }
 
+// Specifies an inline CSS style for an element
 // Add pairs of attributes to the element.
 func (e *SVGFILTERElement) STYLEPairs(pairs ...string) *SVGFILTERElement {
 	if len(pairs)%2 != 0 {
@@ -525,6 +559,7 @@ func (e *SVGFILTERElement) STYLEPairs(pairs ...string) *SVGFILTERElement {
 	return e
 }
 
+// Specifies an inline CSS style for an element
 func (e *SVGFILTERElement) IfSTYLEPairs(condition bool, pairs ...string) *SVGFILTERElement {
 	if condition {
 		e.STYLEPairs(pairs...)
@@ -532,6 +567,7 @@ func (e *SVGFILTERElement) IfSTYLEPairs(condition bool, pairs ...string) *SVGFIL
 	return e
 }
 
+// Specifies an inline CSS style for an element
 // Remove the attribute STYLE from the element.
 func (e *SVGFILTERElement) STYLERemove(keys ...string) *SVGFILTERElement {
 	if e.KVStrings == nil {
@@ -547,62 +583,75 @@ func (e *SVGFILTERElement) STYLERemove(keys ...string) *SVGFILTERElement {
 	return e
 }
 
-// Merges the singleton store with the given object
-
-func (e *SVGFILTERElement) DATASTAR_STORE(v any) *SVGFILTERElement {
-	if e.CustomDataAttributes == nil {
-		e.CustomDataAttributes = treemap.New[string, string]()
-	}
-	b, err := json.Marshal(v)
-	if err != nil {
-		panic(err)
-	}
-	e.CustomDataAttributes.Set("store", html.EscapeString(string(b)))
-	return e
-}
-
-// Sets the reference of the element
-
-func (e *SVGFILTERElement) DATASTAR_REF(expression string) *SVGFILTERElement {
+// Sets the value of any HTML attribute to an expression, and keeps it in sync.
+//
+// See: https://data-star.dev/reference/attributes#data-attr
+func (e *SVGFILTERElement) DATASTAR_ATTR(key string, expression string) *SVGFILTERElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "data-ref"
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	key = fmt.Sprintf("data-attr%s", suffix)
 
 	e.StringAttributes.Set(key, expression)
 	return e
 }
 
-func (e *SVGFILTERElement) IfDATASTAR_REF(condition bool, expression string) *SVGFILTERElement {
+// Sets the value of any HTML attribute to an expression, and keeps it in sync.
+//
+// See: https://data-star.dev/reference/attributes#data-attr
+func (e *SVGFILTERElement) IfDATASTAR_ATTR(condition bool, key string, expression string) *SVGFILTERElement {
 	if condition {
-		e.DATASTAR_REF(expression)
+		e.DATASTAR_ATTR(key, expression)
 	}
 	return e
 }
 
-// Remove the attribute DATASTAR_REF from the element.
-func (e *SVGFILTERElement) DATASTAR_REFRemove() *SVGFILTERElement {
+// Sets the value of any HTML attribute to an expression, and keeps it in sync.
+//
+// See: https://data-star.dev/reference/attributes#data-attr
+// Remove the attribute DATASTAR_ATTR from the element.
+func (e *SVGFILTERElement) DATASTAR_ATTRRemove(key string) *SVGFILTERElement {
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("data-ref")
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	e.StringAttributes.Del("data-attr" + suffix)
+
 	return e
 }
 
-// Sets the value of the element
-
+// Creates a signal (if one doesn’t already exist) and sets up two-way data
+// binding between it and an element’s value.
+//
+// See: https://data-star.dev/reference/attributes#data-bind
 func (e *SVGFILTERElement) DATASTAR_BIND(key string, expression string) *SVGFILTERElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key = fmt.Sprintf("data-bind-%s", key)
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	key = fmt.Sprintf("data-bind%s", suffix)
 
 	e.StringAttributes.Set(key, expression)
 	return e
 }
 
+// Creates a signal (if one doesn’t already exist) and sets up two-way data
+// binding between it and an element’s value.
+//
+// See: https://data-star.dev/reference/attributes#data-bind
 func (e *SVGFILTERElement) IfDATASTAR_BIND(condition bool, key string, expression string) *SVGFILTERElement {
 	if condition {
 		e.DATASTAR_BIND(key, expression)
@@ -610,46 +659,1525 @@ func (e *SVGFILTERElement) IfDATASTAR_BIND(condition bool, key string, expressio
 	return e
 }
 
+// Creates a signal (if one doesn’t already exist) and sets up two-way data
+// binding between it and an element’s value.
+//
+// See: https://data-star.dev/reference/attributes#data-bind
 // Remove the attribute DATASTAR_BIND from the element.
-func (e *SVGFILTERElement) DATASTAR_BINDRemove() *SVGFILTERElement {
+func (e *SVGFILTERElement) DATASTAR_BINDRemove(key string) *SVGFILTERElement {
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("data-bind")
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	e.StringAttributes.Del("data-bind" + suffix)
+
 	return e
 }
 
-// Sets the value of the element
+type SVGFilterClassMod customDataKeyModifier
 
-func (e *SVGFILTERElement) DATASTAR_MODEL(expression string) *SVGFILTERElement {
+// Converts the casing of the signal name.
+//   - 'camel' – Camel case: 'mySignal' (default)
+//   - 'kebab' – Kebab case: 'my-signal'
+//   - 'snake' – Snake case: 'my_signal'
+//   - 'pascal' – Pascal case: 'MySignal'
+func SVGFilterClassModCase(
+	s string,
+) SVGFilterClassMod {
+	return func() string {
+		return fmt.Sprintf("case.%s", s)
+	}
+}
+
+// Adds or removes a class to or from an element based on an expression.
+func (e *SVGFILTERElement) DATASTAR_CLASS(key string, expression string, modifiers ...SVGFilterClassMod) *SVGFILTERElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "data-model"
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	key = fmt.Sprintf("data-class%s", suffix)
+
+	customMods := lo.Map(modifiers, func(m SVGFilterClassMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Adds or removes a class to or from an element based on an expression.
+func (e *SVGFILTERElement) IfDATASTAR_CLASS(condition bool, key string, expression string, modifiers ...SVGFilterClassMod) *SVGFILTERElement {
+	if condition {
+		e.DATASTAR_CLASS(key, expression, modifiers...)
+	}
+	return e
+}
+
+// Adds or removes a class to or from an element based on an expression.
+// Remove the attribute DATASTAR_CLASS from the element.
+func (e *SVGFILTERElement) DATASTAR_CLASSRemove(key string) *SVGFILTERElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	e.StringAttributes.Del("data-class" + suffix)
+
+	return e
+}
+
+type SVGFilterComputedMod customDataKeyModifier
+
+// Converts the casing of the signal name.
+//   - 'camel' – Camel case: 'mySignal' (default)
+//   - 'kebab' – Kebab case: 'my-signal'
+//   - 'snake' – Snake case: 'my_signal'
+//   - 'pascal' – Pascal case: 'MySignal'
+func SVGFilterComputedModCase(
+	s string,
+) SVGFilterComputedMod {
+	return func() string {
+		return fmt.Sprintf("case.%s", s)
+	}
+}
+
+// Creates a signal that is computed based on an expression
+// The computed signal is read-only, and its value is automatically updated when
+// any signals in the expression are updated.
+//
+// See: https://data-star.dev/reference/attributes#data-computed
+func (e *SVGFILTERElement) DATASTAR_COMPUTED(key string, expression string, modifiers ...SVGFilterComputedMod) *SVGFILTERElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	key = fmt.Sprintf("data-computed%s", suffix)
+
+	customMods := lo.Map(modifiers, func(m SVGFilterComputedMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Creates a signal that is computed based on an expression
+// The computed signal is read-only, and its value is automatically updated when
+// any signals in the expression are updated.
+//
+// See: https://data-star.dev/reference/attributes#data-computed
+func (e *SVGFILTERElement) IfDATASTAR_COMPUTED(condition bool, key string, expression string, modifiers ...SVGFilterComputedMod) *SVGFILTERElement {
+	if condition {
+		e.DATASTAR_COMPUTED(key, expression, modifiers...)
+	}
+	return e
+}
+
+// Creates a signal that is computed based on an expression
+// The computed signal is read-only, and its value is automatically updated when
+// any signals in the expression are updated.
+//
+// See: https://data-star.dev/reference/attributes#data-computed
+// Remove the attribute DATASTAR_COMPUTED from the element.
+func (e *SVGFILTERElement) DATASTAR_COMPUTEDRemove(key string) *SVGFILTERElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	e.StringAttributes.Del("data-computed" + suffix)
+
+	return e
+}
+
+// Executes an expression on page load and whenever any signals in the expression
+// change
+// This is useful for performing side effects, such as updating other signals,
+// making requests to the backend, or manipulating the DOM.
+//
+// See: https://data-star.dev/reference/attributes#data-effect
+func (e *SVGFILTERElement) DATASTAR_EFFECT(expression string) *SVGFILTERElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-effect"
 
 	e.StringAttributes.Set(key, expression)
 	return e
 }
 
-func (e *SVGFILTERElement) IfDATASTAR_MODEL(condition bool, expression string) *SVGFILTERElement {
+// Executes an expression on page load and whenever any signals in the expression
+// change
+// This is useful for performing side effects, such as updating other signals,
+// making requests to the backend, or manipulating the DOM.
+//
+// See: https://data-star.dev/reference/attributes#data-effect
+func (e *SVGFILTERElement) IfDATASTAR_EFFECT(condition bool, expression string) *SVGFILTERElement {
 	if condition {
-		e.DATASTAR_MODEL(expression)
+		e.DATASTAR_EFFECT(expression)
 	}
 	return e
 }
 
-// Remove the attribute DATASTAR_MODEL from the element.
-func (e *SVGFILTERElement) DATASTAR_MODELRemove() *SVGFILTERElement {
+// Executes an expression on page load and whenever any signals in the expression
+// change
+// This is useful for performing side effects, such as updating other signals,
+// making requests to the backend, or manipulating the DOM.
+//
+// See: https://data-star.dev/reference/attributes#data-effect
+// Remove the attribute DATASTAR_EFFECT from the element.
+func (e *SVGFILTERElement) DATASTAR_EFFECTRemove() *SVGFILTERElement {
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("data-model")
+
+	e.StringAttributes.Del("data-effect")
+
 	return e
 }
 
-// Sets the textContent of the element
+type SVGFilterIgnoreMod customDataKeyModifier
 
+// Only ignore the element itself, not its descendants.
+func SVGFilterIgnoreModSelf() SVGFilterIgnoreMod {
+	return func() string {
+		return "self"
+	}
+}
+
+// Datastar walks the entire DOM and applies plugins to each element it encounters
+// It's possible to tell Datastar to ignore an element and its descendants by
+// placing a data-ignore attribute on it
+// This can be useful for preventing naming conflicts with third-party libraries,
+// or when you are unable to escape user input.
+//
+// See: https://data-star.dev/reference/attributes#data-ignore
+func (e *SVGFILTERElement) DATASTAR_IGNORESet(b bool, modifiers ...SVGFilterIgnoreMod) *SVGFILTERElement {
+	key := customDataKey("data-ignore")
+	customMods := lo.Map(modifiers, func(m SVGFilterIgnoreMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	if e.BoolAttributes == nil {
+		e.BoolAttributes = treemap.New[string, bool]()
+	}
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+// Datastar walks the entire DOM and applies plugins to each element it encounters
+// It's possible to tell Datastar to ignore an element and its descendants by
+// placing a data-ignore attribute on it
+// This can be useful for preventing naming conflicts with third-party libraries,
+// or when you are unable to escape user input.
+//
+// See: https://data-star.dev/reference/attributes#data-ignore
+func (e *SVGFILTERElement) DATASTAR_IGNORE(modifiers ...SVGFilterIgnoreMod) *SVGFILTERElement {
+	return e.DATASTAR_IGNORESet(true, modifiers...)
+}
+
+// Similar to the data-ignore attribute, the data-ignore-morph attribute tells the
+// PatchElements watcher to skip processing an element and its children when
+// morphing elements
+// This can be useful for preventing conflicts with third-party libraries that
+// manipulate the DOM, or when you are unable to escape user input.
+//
+// See: https://data-star.dev/reference/attributes#data-ignore-morph
+func (e *SVGFILTERElement) DATASTAR_IGNORE_MORPHSet(b bool) *SVGFILTERElement {
+	key := "data-ignore-morph"
+	if e.BoolAttributes == nil {
+		e.BoolAttributes = treemap.New[string, bool]()
+	}
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+// Similar to the data-ignore attribute, the data-ignore-morph attribute tells the
+// PatchElements watcher to skip processing an element and its children when
+// morphing elements
+// This can be useful for preventing conflicts with third-party libraries that
+// manipulate the DOM, or when you are unable to escape user input.
+//
+// See: https://data-star.dev/reference/attributes#data-ignore-morph
+func (e *SVGFILTERElement) DATASTAR_IGNORE_MORPH() *SVGFILTERElement {
+	return e.DATASTAR_IGNORE_MORPHSet(true)
+}
+
+type SVGFilterIndicatorMod customDataKeyModifier
+
+// Converts the casing of the signal name.
+//   - 'camel' – Camel case: 'mySignal' (default)
+//   - 'kebab' – Kebab case: 'my-signal'
+//   - 'snake' – Snake case: 'my_signal'
+//   - 'pascal' – Pascal case: 'MySignal'
+func SVGFilterIndicatorModCase(
+	s string,
+) SVGFilterIndicatorMod {
+	return func() string {
+		return fmt.Sprintf("case.%s", s)
+	}
+}
+
+// Creates a signal and sets its value to true while a fetch request is in flight,
+// otherwise false
+// The signal can be used to show a loading indicator.
+//
+// See: https://data-star.dev/reference/attributes#data-indicator
+func (e *SVGFILTERElement) DATASTAR_INDICATOR(expression string, modifiers ...SVGFilterIndicatorMod) *SVGFILTERElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-indicator"
+
+	customMods := lo.Map(modifiers, func(m SVGFilterIndicatorMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Creates a signal and sets its value to true while a fetch request is in flight,
+// otherwise false
+// The signal can be used to show a loading indicator.
+//
+// See: https://data-star.dev/reference/attributes#data-indicator
+func (e *SVGFILTERElement) IfDATASTAR_INDICATOR(condition bool, expression string, modifiers ...SVGFilterIndicatorMod) *SVGFILTERElement {
+	if condition {
+		e.DATASTAR_INDICATOR(expression, modifiers...)
+	}
+	return e
+}
+
+// Creates a signal and sets its value to true while a fetch request is in flight,
+// otherwise false
+// The signal can be used to show a loading indicator.
+//
+// See: https://data-star.dev/reference/attributes#data-indicator
+// Remove the attribute DATASTAR_INDICATOR from the element.
+func (e *SVGFILTERElement) DATASTAR_INDICATORRemove() *SVGFILTERElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-indicator")
+
+	return e
+}
+
+type SVGFilterInitMod customDataKeyModifier
+
+// Delay the event listener in milliseconds.
+func SVGFilterInitModDelayMs(
+	d time.Duration,
+) SVGFilterInitMod {
+	return func() string {
+		return fmt.Sprintf("delay.%dms", d.Milliseconds())
+	}
+}
+
+// Delay the event listener in seconds.
+func SVGFilterInitModDelaySec(
+	d time.Duration,
+) SVGFilterInitMod {
+	return func() string {
+		return fmt.Sprintf("delay.%ds", int(d.Seconds()))
+	}
+}
+
+// Wraps the expression in 'document.startViewTransition()' when the View
+// Transition API is available.
+func SVGFilterInitModViewTransition() SVGFilterInitMod {
+	return func() string {
+		return "viewtransition"
+	}
+}
+
+// Runs an expression when the attribute is initialized
+// This can happen on page load, when an element is patched into the DOM, and any
+// time the attribute is modified (via a backend action or otherwise).
+//
+// See: https://data-star.dev/reference/attributes#data-indicator
+func (e *SVGFILTERElement) DATASTAR_INIT(expression string, modifiers ...SVGFilterInitMod) *SVGFILTERElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-init"
+
+	customMods := lo.Map(modifiers, func(m SVGFilterInitMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Runs an expression when the attribute is initialized
+// This can happen on page load, when an element is patched into the DOM, and any
+// time the attribute is modified (via a backend action or otherwise).
+//
+// See: https://data-star.dev/reference/attributes#data-indicator
+func (e *SVGFILTERElement) IfDATASTAR_INIT(condition bool, expression string, modifiers ...SVGFilterInitMod) *SVGFILTERElement {
+	if condition {
+		e.DATASTAR_INIT(expression, modifiers...)
+	}
+	return e
+}
+
+// Runs an expression when the attribute is initialized
+// This can happen on page load, when an element is patched into the DOM, and any
+// time the attribute is modified (via a backend action or otherwise).
+//
+// See: https://data-star.dev/reference/attributes#data-indicator
+// Remove the attribute DATASTAR_INIT from the element.
+func (e *SVGFILTERElement) DATASTAR_INITRemove() *SVGFILTERElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-init")
+
+	return e
+}
+
+type SVGFilterJsonSignalsMod customDataKeyModifier
+
+// Outputs a more compact JSON format without extra whitespace
+// Useful for displaying filtered data inline.
+func SVGFilterJsonSignalsModTerse() SVGFilterJsonSignalsMod {
+	return func() string {
+		return "terse"
+	}
+}
+
+// Sets the text content of an element to a reactive JSON stringified version of
+// signals
+// Useful when troubleshooting an issue.
+//
+// See: https://data-star.dev/reference/attributes#data-json-signals
+func (e *SVGFILTERElement) DATASTAR_JSON_SIGNALS(expression string, modifiers ...SVGFilterJsonSignalsMod) *SVGFILTERElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-json-signals"
+
+	customMods := lo.Map(modifiers, func(m SVGFilterJsonSignalsMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Sets the text content of an element to a reactive JSON stringified version of
+// signals
+// Useful when troubleshooting an issue.
+//
+// See: https://data-star.dev/reference/attributes#data-json-signals
+func (e *SVGFILTERElement) IfDATASTAR_JSON_SIGNALS(condition bool, expression string, modifiers ...SVGFilterJsonSignalsMod) *SVGFILTERElement {
+	if condition {
+		e.DATASTAR_JSON_SIGNALS(expression, modifiers...)
+	}
+	return e
+}
+
+// Sets the text content of an element to a reactive JSON stringified version of
+// signals
+// Useful when troubleshooting an issue.
+//
+// See: https://data-star.dev/reference/attributes#data-json-signals
+// Remove the attribute DATASTAR_JSON_SIGNALS from the element.
+func (e *SVGFILTERElement) DATASTAR_JSON_SIGNALSRemove() *SVGFILTERElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-json-signals")
+
+	return e
+}
+
+type SVGFilterOnMod customDataKeyModifier
+
+// Only run the expression once
+// Only works with built-in events.
+func SVGFilterOnModOnce() SVGFilterOnMod {
+	return func() string {
+		return "once"
+	}
+}
+
+// Do not call preventDefault on the event listener
+// Only works with built-in events.
+func SVGFilterOnModPassive() SVGFilterOnMod {
+	return func() string {
+		return "passive"
+	}
+}
+
+// Use capture event listener
+// Only works with built-in events.
+func SVGFilterOnModCapture() SVGFilterOnMod {
+	return func() string {
+		return "capture"
+	}
+}
+
+// Converts the casing of the signal name.
+//   - 'camel' – Camel case: 'mySignal' (default)
+//   - 'kebab' – Kebab case: 'my-signal'
+//   - 'snake' – Snake case: 'my_signal'
+//   - 'pascal' – Pascal case: 'MySignal'
+func SVGFilterOnModCase(
+	s string,
+) SVGFilterOnMod {
+	return func() string {
+		return fmt.Sprintf("case.%s", s)
+	}
+}
+
+// Delay the event listener in milliseconds.
+func SVGFilterOnModDelayMs(
+	d time.Duration,
+) SVGFilterOnMod {
+	return func() string {
+		return fmt.Sprintf("delay.%dms", d.Milliseconds())
+	}
+}
+
+// Delay the event listener in seconds.
+func SVGFilterOnModDelaySec(
+	d time.Duration,
+) SVGFilterOnMod {
+	return func() string {
+		return fmt.Sprintf("delay.%ds", int(d.Seconds()))
+	}
+}
+
+// Debounces the event handler
+func SVGFilterOnModDebounceMs(
+	d time.Duration,
+) SVGFilterOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms", d.Milliseconds())
+	}
+}
+
+// Debounce the event listener in milliseconds with leading edge.
+func SVGFilterOnModDebounceMsLeading(
+	d time.Duration,
+) SVGFilterOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms.leading", d.Milliseconds())
+	}
+}
+
+// Debounce the event listener in milliseconds without trailing edge.
+func SVGFilterOnModDebounceMsNoTrailing(
+	d time.Duration,
+) SVGFilterOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms.notrailing", d.Milliseconds())
+	}
+}
+
+// Debounces the event handler
+func SVGFilterOnModDebounceSec(
+	d time.Duration,
+) SVGFilterOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds", int(d.Seconds()))
+	}
+}
+
+// Debounce the event listener in seconds with leading edge.
+func SVGFilterOnModDebounceSecLeading(
+	d time.Duration,
+) SVGFilterOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds.leading", int(d.Seconds()))
+	}
+}
+
+// Debounce the event listener in seconds without trailing edge.
+func SVGFilterOnModDebounceSecNoTrailing(
+	d time.Duration,
+) SVGFilterOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds.notrailing", int(d.Seconds()))
+	}
+}
+
+// Throttles the event handler
+func SVGFilterOnModThrottleMs(
+	d time.Duration,
+) SVGFilterOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms", d.Milliseconds())
+	}
+}
+
+// Throttle the event listener in milliseconds without leading edge.
+func SVGFilterOnModThrottleMsNoLeading(
+	d time.Duration,
+) SVGFilterOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms.noleading", d.Milliseconds())
+	}
+}
+
+// Throttle the event listener in milliseconds with trailing edge.
+func SVGFilterOnModThrottleMsTrailing(
+	d time.Duration,
+) SVGFilterOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms.trailing", d.Milliseconds())
+	}
+}
+
+// Throttles the event listener in seconds.
+func SVGFilterOnModThrottleSec(
+	d time.Duration,
+) SVGFilterOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds", int(d.Seconds()))
+	}
+}
+
+// Throttle the event listener in seconds without leading edge.
+func SVGFilterOnModThrottleSecNoLeading(
+	d time.Duration,
+) SVGFilterOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds.noleading", int(d.Seconds()))
+	}
+}
+
+// Throttle the event listener in seconds with trailing edge.
+func SVGFilterOnModThrottleSecTrailing(
+	d time.Duration,
+) SVGFilterOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds.trailing", int(d.Seconds()))
+	}
+}
+
+// Wraps the expression in 'document.startViewTransition()' when the View
+// Transition API is available.
+func SVGFilterOnModViewTransition() SVGFilterOnMod {
+	return func() string {
+		return "viewtransition"
+	}
+}
+
+// Attaches the event listener to the 'window' element.
+func SVGFilterOnModWindow() SVGFilterOnMod {
+	return func() string {
+		return "window"
+	}
+}
+
+// Calls 'preventDefault' on the event listener.
+func SVGFilterOnModPrevent() SVGFilterOnMod {
+	return func() string {
+		return "prevent"
+	}
+}
+
+// Triggers when the event is outside the element.
+func SVGFilterOnModOutside() SVGFilterOnMod {
+	return func() string {
+		return "outside"
+	}
+}
+
+// Calls 'stopPropagation' on the event listener.
+func SVGFilterOnModStop() SVGFilterOnMod {
+	return func() string {
+		return "stop"
+	}
+}
+
+// Attaches an event listener to an element, executing an expression whenever the
+// event is triggered.
+//
+// See: https://data-star.dev/reference/attributes#data-on
+func (e *SVGFILTERElement) DATASTAR_ON(key string, expression string, modifiers ...SVGFilterOnMod) *SVGFILTERElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	key = fmt.Sprintf("data-on%s", suffix)
+
+	customMods := lo.Map(modifiers, func(m SVGFilterOnMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Attaches an event listener to an element, executing an expression whenever the
+// event is triggered.
+//
+// See: https://data-star.dev/reference/attributes#data-on
+func (e *SVGFILTERElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SVGFilterOnMod) *SVGFILTERElement {
+	if condition {
+		e.DATASTAR_ON(key, expression, modifiers...)
+	}
+	return e
+}
+
+// Attaches an event listener to an element, executing an expression whenever the
+// event is triggered.
+//
+// See: https://data-star.dev/reference/attributes#data-on
+// Remove the attribute DATASTAR_ON from the element.
+func (e *SVGFILTERElement) DATASTAR_ONRemove(key string) *SVGFILTERElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	e.StringAttributes.Del("data-on" + suffix)
+
+	return e
+}
+
+type SVGFilterOnIntersectMod customDataKeyModifier
+
+// Only run the expression once
+// Only works with built-in events.
+func SVGFilterOnIntersectModOnce() SVGFilterOnIntersectMod {
+	return func() string {
+		return "once"
+	}
+}
+
+// Trigger when half of the element is visible.
+func SVGFilterOnIntersectModHalf() SVGFilterOnIntersectMod {
+	return func() string {
+		return "half"
+	}
+}
+
+// Trigger when the full element is visible.
+func SVGFilterOnIntersectModFull() SVGFilterOnIntersectMod {
+	return func() string {
+		return "full"
+	}
+}
+
+// Delay the event listener in milliseconds.
+func SVGFilterOnIntersectModDelayMs(
+	d time.Duration,
+) SVGFilterOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("delay.%dms", d.Milliseconds())
+	}
+}
+
+// Delay the event listener in seconds.
+func SVGFilterOnIntersectModDelaySec(
+	d time.Duration,
+) SVGFilterOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("delay.%ds", int(d.Seconds()))
+	}
+}
+
+// Debounces the event handler
+func SVGFilterOnIntersectModDebounceMs(
+	d time.Duration,
+) SVGFilterOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms", d.Milliseconds())
+	}
+}
+
+// Debounce the event listener in milliseconds with leading edge.
+func SVGFilterOnIntersectModDebounceMsLeading(
+	d time.Duration,
+) SVGFilterOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms.leading", d.Milliseconds())
+	}
+}
+
+// Debounce the event listener in milliseconds without trailing edge.
+func SVGFilterOnIntersectModDebounceMsNoTrailing(
+	d time.Duration,
+) SVGFilterOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms.notrailing", d.Milliseconds())
+	}
+}
+
+// Debounces the event handler
+func SVGFilterOnIntersectModDebounceSec(
+	d time.Duration,
+) SVGFilterOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds", int(d.Seconds()))
+	}
+}
+
+// Debounce the event listener in seconds with leading edge.
+func SVGFilterOnIntersectModDebounceSecLeading(
+	d time.Duration,
+) SVGFilterOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds.leading", int(d.Seconds()))
+	}
+}
+
+// Debounce the event listener in seconds without trailing edge.
+func SVGFilterOnIntersectModDebounceSecNoTrailing(
+	d time.Duration,
+) SVGFilterOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds.notrailing", int(d.Seconds()))
+	}
+}
+
+// Throttles the event handler
+func SVGFilterOnIntersectModThrottleMs(
+	d time.Duration,
+) SVGFilterOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms", d.Milliseconds())
+	}
+}
+
+// Throttle the event listener in milliseconds without leading edge.
+func SVGFilterOnIntersectModThrottleMsNoLeading(
+	d time.Duration,
+) SVGFilterOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms.noleading", d.Milliseconds())
+	}
+}
+
+// Throttle the event listener in milliseconds with trailing edge.
+func SVGFilterOnIntersectModThrottleMsTrailing(
+	d time.Duration,
+) SVGFilterOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms.trailing", d.Milliseconds())
+	}
+}
+
+// Throttles the event listener in seconds.
+func SVGFilterOnIntersectModThrottleSec(
+	d time.Duration,
+) SVGFilterOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds", int(d.Seconds()))
+	}
+}
+
+// Throttle the event listener in seconds without leading edge.
+func SVGFilterOnIntersectModThrottleSecNoLeading(
+	d time.Duration,
+) SVGFilterOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds.noleading", int(d.Seconds()))
+	}
+}
+
+// Throttle the event listener in seconds with trailing edge.
+func SVGFilterOnIntersectModThrottleSecTrailing(
+	d time.Duration,
+) SVGFilterOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds.trailing", int(d.Seconds()))
+	}
+}
+
+// Wraps the expression in 'document.startViewTransition()' when the View
+// Transition API is available.
+func SVGFilterOnIntersectModViewTransition() SVGFilterOnIntersectMod {
+	return func() string {
+		return "viewtransition"
+	}
+}
+
+// Runs an expression when the element intersects with the viewport.
+func (e *SVGFILTERElement) DATASTAR_ON_INTERSECT(expression string, modifiers ...SVGFilterOnIntersectMod) *SVGFILTERElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-on-intersect"
+
+	customMods := lo.Map(modifiers, func(m SVGFilterOnIntersectMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Runs an expression when the element intersects with the viewport.
+func (e *SVGFILTERElement) IfDATASTAR_ON_INTERSECT(condition bool, expression string, modifiers ...SVGFilterOnIntersectMod) *SVGFILTERElement {
+	if condition {
+		e.DATASTAR_ON_INTERSECT(expression, modifiers...)
+	}
+	return e
+}
+
+// Runs an expression when the element intersects with the viewport.
+// Remove the attribute DATASTAR_ON_INTERSECT from the element.
+func (e *SVGFILTERElement) DATASTAR_ON_INTERSECTRemove() *SVGFILTERElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-on-intersect")
+
+	return e
+}
+
+type SVGFilterOnIntervalMod customDataKeyModifier
+
+// Sets the interval duration in milliseconds.
+func SVGFilterOnIntervalModDurationMs(
+	d time.Duration,
+) SVGFilterOnIntervalMod {
+	return func() string {
+		return fmt.Sprintf("duration.%dms", d.Milliseconds())
+	}
+}
+
+// Sets the interval duration in milliseconds
+// Execute the first interval immediately.
+func SVGFilterOnIntervalModDurationMsLeading(
+	d time.Duration,
+) SVGFilterOnIntervalMod {
+	return func() string {
+		return fmt.Sprintf("duration.%dms.leading", d.Milliseconds())
+	}
+}
+
+// Sets the interval duration in seconds.
+func SVGFilterOnIntervalModDurationSec(
+	d time.Duration,
+) SVGFilterOnIntervalMod {
+	return func() string {
+		return fmt.Sprintf("duration.%ds", int(d.Seconds()))
+	}
+}
+
+// Sets the interval duration in seconds
+// Execute the first interval immediately.
+func SVGFilterOnIntervalModDurationSecLeading(
+	d time.Duration,
+) SVGFilterOnIntervalMod {
+	return func() string {
+		return fmt.Sprintf("duration.%ds.leading", int(d.Seconds()))
+	}
+}
+
+// Wraps the expression in 'document.startViewTransition()' when the View
+// Transition API is available.
+func SVGFilterOnIntervalModViewTransition() SVGFilterOnIntervalMod {
+	return func() string {
+		return "viewtransition"
+	}
+}
+
+// Runs an expression at a regular interval
+// The interval duration defaults to one second and can be modified using the
+// '__duration' modifier.
+//
+// See: https://data-star.dev/reference/attributes#data-on-interval
+func (e *SVGFILTERElement) DATASTAR_ON_INTERVAL(expression string, modifiers ...SVGFilterOnIntervalMod) *SVGFILTERElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-on-interval"
+
+	customMods := lo.Map(modifiers, func(m SVGFilterOnIntervalMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Runs an expression at a regular interval
+// The interval duration defaults to one second and can be modified using the
+// '__duration' modifier.
+//
+// See: https://data-star.dev/reference/attributes#data-on-interval
+func (e *SVGFILTERElement) IfDATASTAR_ON_INTERVAL(condition bool, expression string, modifiers ...SVGFilterOnIntervalMod) *SVGFILTERElement {
+	if condition {
+		e.DATASTAR_ON_INTERVAL(expression, modifiers...)
+	}
+	return e
+}
+
+// Runs an expression at a regular interval
+// The interval duration defaults to one second and can be modified using the
+// '__duration' modifier.
+//
+// See: https://data-star.dev/reference/attributes#data-on-interval
+// Remove the attribute DATASTAR_ON_INTERVAL from the element.
+func (e *SVGFILTERElement) DATASTAR_ON_INTERVALRemove() *SVGFILTERElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-on-interval")
+
+	return e
+}
+
+type SVGFilterOnSignalPatchMod customDataKeyModifier
+
+// Delay the event listener in milliseconds.
+func SVGFilterOnSignalPatchModDelayMs(
+	d time.Duration,
+) SVGFilterOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("delay.%dms", d.Milliseconds())
+	}
+}
+
+// Delay the event listener in seconds.
+func SVGFilterOnSignalPatchModDelaySec(
+	d time.Duration,
+) SVGFilterOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("delay.%ds", int(d.Seconds()))
+	}
+}
+
+// Debounces the event handler
+func SVGFilterOnSignalPatchModDebounceMs(
+	d time.Duration,
+) SVGFilterOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms", d.Milliseconds())
+	}
+}
+
+// Debounce the event listener in milliseconds with leading edge.
+func SVGFilterOnSignalPatchModDebounceMsLeading(
+	d time.Duration,
+) SVGFilterOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms.leading", d.Milliseconds())
+	}
+}
+
+// Debounce the event listener in milliseconds without trailing edge.
+func SVGFilterOnSignalPatchModDebounceMsNoTrailing(
+	d time.Duration,
+) SVGFilterOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms.notrailing", d.Milliseconds())
+	}
+}
+
+// Debounces the event handler
+func SVGFilterOnSignalPatchModDebounceSec(
+	d time.Duration,
+) SVGFilterOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds", int(d.Seconds()))
+	}
+}
+
+// Debounce the event listener in seconds with leading edge.
+func SVGFilterOnSignalPatchModDebounceSecLeading(
+	d time.Duration,
+) SVGFilterOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds.leading", int(d.Seconds()))
+	}
+}
+
+// Debounce the event listener in seconds without trailing edge.
+func SVGFilterOnSignalPatchModDebounceSecNoTrailing(
+	d time.Duration,
+) SVGFilterOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds.notrailing", int(d.Seconds()))
+	}
+}
+
+// Throttles the event handler
+func SVGFilterOnSignalPatchModThrottleMs(
+	d time.Duration,
+) SVGFilterOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms", d.Milliseconds())
+	}
+}
+
+// Throttle the event listener in milliseconds without leading edge.
+func SVGFilterOnSignalPatchModThrottleMsNoLeading(
+	d time.Duration,
+) SVGFilterOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms.noleading", d.Milliseconds())
+	}
+}
+
+// Throttle the event listener in milliseconds with trailing edge.
+func SVGFilterOnSignalPatchModThrottleMsTrailing(
+	d time.Duration,
+) SVGFilterOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms.trailing", d.Milliseconds())
+	}
+}
+
+// Throttles the event listener in seconds.
+func SVGFilterOnSignalPatchModThrottleSec(
+	d time.Duration,
+) SVGFilterOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds", int(d.Seconds()))
+	}
+}
+
+// Throttle the event listener in seconds without leading edge.
+func SVGFilterOnSignalPatchModThrottleSecNoLeading(
+	d time.Duration,
+) SVGFilterOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds.noleading", int(d.Seconds()))
+	}
+}
+
+// Throttle the event listener in seconds with trailing edge.
+func SVGFilterOnSignalPatchModThrottleSecTrailing(
+	d time.Duration,
+) SVGFilterOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds.trailing", int(d.Seconds()))
+	}
+}
+
+// Runs an expression whenever any signals are patched
+// This is useful for tracking changes, updating computed values, or triggering
+// side effects when data updates.
+//
+// See: https://data-star.dev/reference/attributes#data-on-signal-patch
+func (e *SVGFILTERElement) DATASTAR_ON_SIGNAL_PATCH(expression string, modifiers ...SVGFilterOnSignalPatchMod) *SVGFILTERElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-on-signal-patch"
+
+	customMods := lo.Map(modifiers, func(m SVGFilterOnSignalPatchMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Runs an expression whenever any signals are patched
+// This is useful for tracking changes, updating computed values, or triggering
+// side effects when data updates.
+//
+// See: https://data-star.dev/reference/attributes#data-on-signal-patch
+func (e *SVGFILTERElement) IfDATASTAR_ON_SIGNAL_PATCH(condition bool, expression string, modifiers ...SVGFilterOnSignalPatchMod) *SVGFILTERElement {
+	if condition {
+		e.DATASTAR_ON_SIGNAL_PATCH(expression, modifiers...)
+	}
+	return e
+}
+
+// Runs an expression whenever any signals are patched
+// This is useful for tracking changes, updating computed values, or triggering
+// side effects when data updates.
+//
+// See: https://data-star.dev/reference/attributes#data-on-signal-patch
+// Remove the attribute DATASTAR_ON_SIGNAL_PATCH from the element.
+func (e *SVGFILTERElement) DATASTAR_ON_SIGNAL_PATCHRemove() *SVGFILTERElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-on-signal-patch")
+
+	return e
+}
+
+// Filters which signals to watch when using the data-on-signal-patch attribute.
+//
+// The data-on-signal-patch-filter attribute accepts an object with include and/or
+// exclude properties that are regular expressions.
+//
+// See: https://data-star.dev/reference/attributes#data-on-signal-patch-filter
+func (e *SVGFILTERElement) DATASTAR_ON_SIGNAL_PATCH_FILTER(expression string) *SVGFILTERElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-on-signal-patch-filter"
+
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Filters which signals to watch when using the data-on-signal-patch attribute.
+//
+// The data-on-signal-patch-filter attribute accepts an object with include and/or
+// exclude properties that are regular expressions.
+//
+// See: https://data-star.dev/reference/attributes#data-on-signal-patch-filter
+func (e *SVGFILTERElement) IfDATASTAR_ON_SIGNAL_PATCH_FILTER(condition bool, expression string) *SVGFILTERElement {
+	if condition {
+		e.DATASTAR_ON_SIGNAL_PATCH_FILTER(expression)
+	}
+	return e
+}
+
+// Filters which signals to watch when using the data-on-signal-patch attribute.
+//
+// The data-on-signal-patch-filter attribute accepts an object with include and/or
+// exclude properties that are regular expressions.
+//
+// See: https://data-star.dev/reference/attributes#data-on-signal-patch-filter
+// Remove the attribute DATASTAR_ON_SIGNAL_PATCH_FILTER from the element.
+func (e *SVGFILTERElement) DATASTAR_ON_SIGNAL_PATCH_FILTERRemove() *SVGFILTERElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-on-signal-patch-filter")
+
+	return e
+}
+
+// Preserves the value of an attribute when morphing DOM elements.
+//
+// See: https://data-star.dev/reference/attributes#data-preserve-attr
+func (e *SVGFILTERElement) DATASTAR_PRESERVE_ATTR(expression string) *SVGFILTERElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-preserve-attr"
+
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Preserves the value of an attribute when morphing DOM elements.
+//
+// See: https://data-star.dev/reference/attributes#data-preserve-attr
+func (e *SVGFILTERElement) IfDATASTAR_PRESERVE_ATTR(condition bool, expression string) *SVGFILTERElement {
+	if condition {
+		e.DATASTAR_PRESERVE_ATTR(expression)
+	}
+	return e
+}
+
+// Preserves the value of an attribute when morphing DOM elements.
+//
+// See: https://data-star.dev/reference/attributes#data-preserve-attr
+// Remove the attribute DATASTAR_PRESERVE_ATTR from the element.
+func (e *SVGFILTERElement) DATASTAR_PRESERVE_ATTRRemove() *SVGFILTERElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-preserve-attr")
+
+	return e
+}
+
+type SVGFilterRefMod customDataKeyModifier
+
+// Converts the casing of the signal name.
+//   - 'camel' – Camel case: 'mySignal' (default)
+//   - 'kebab' – Kebab case: 'my-signal'
+//   - 'snake' – Snake case: 'my_signal'
+//   - 'pascal' – Pascal case: 'MySignal'
+func SVGFilterRefModCase(
+	s string,
+) SVGFilterRefMod {
+	return func() string {
+		return fmt.Sprintf("case.%s", s)
+	}
+}
+
+// Creates a new signal that is a reference to the element on which the data
+// attribute is placed.
+//
+// See: https://data-star.dev/reference/attributes#data-ref
+func (e *SVGFILTERElement) DATASTAR_REF(expression string, modifiers ...SVGFilterRefMod) *SVGFILTERElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-ref"
+
+	customMods := lo.Map(modifiers, func(m SVGFilterRefMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Creates a new signal that is a reference to the element on which the data
+// attribute is placed.
+//
+// See: https://data-star.dev/reference/attributes#data-ref
+func (e *SVGFILTERElement) IfDATASTAR_REF(condition bool, expression string, modifiers ...SVGFilterRefMod) *SVGFILTERElement {
+	if condition {
+		e.DATASTAR_REF(expression, modifiers...)
+	}
+	return e
+}
+
+// Creates a new signal that is a reference to the element on which the data
+// attribute is placed.
+//
+// See: https://data-star.dev/reference/attributes#data-ref
+// Remove the attribute DATASTAR_REF from the element.
+func (e *SVGFILTERElement) DATASTAR_REFRemove() *SVGFILTERElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-ref")
+
+	return e
+}
+
+// Shows or hides an element based on whether an expression evaluates to 'true' or
+// 'false'
+// For anything with custom requirements, use 'data-class' instead.
+//
+// See: https://data-star.dev/reference/attributes#data-show
+func (e *SVGFILTERElement) DATASTAR_SHOW(expression string) *SVGFILTERElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-show"
+
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Shows or hides an element based on whether an expression evaluates to 'true' or
+// 'false'
+// For anything with custom requirements, use 'data-class' instead.
+//
+// See: https://data-star.dev/reference/attributes#data-show
+func (e *SVGFILTERElement) IfDATASTAR_SHOW(condition bool, expression string) *SVGFILTERElement {
+	if condition {
+		e.DATASTAR_SHOW(expression)
+	}
+	return e
+}
+
+// Shows or hides an element based on whether an expression evaluates to 'true' or
+// 'false'
+// For anything with custom requirements, use 'data-class' instead.
+//
+// See: https://data-star.dev/reference/attributes#data-show
+// Remove the attribute DATASTAR_SHOW from the element.
+func (e *SVGFILTERElement) DATASTAR_SHOWRemove() *SVGFILTERElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-show")
+
+	return e
+}
+
+type SVGFilterSignalsMod customDataKeyModifier
+
+// Converts the casing of the signal name.
+//   - 'camel' – Camel case: 'mySignal' (default)
+//   - 'kebab' – Kebab case: 'my-signal'
+//   - 'snake' – Snake case: 'my_signal'
+//   - 'pascal' – Pascal case: 'MySignal'
+func SVGFilterSignalsModCase(
+	s string,
+) SVGFilterSignalsMod {
+	return func() string {
+		return fmt.Sprintf("case.%s", s)
+	}
+}
+
+// Only patches signals if their keys do not already exist
+// This is useful for setting defaults without overwriting existing values.
+func SVGFilterSignalsModIfMissing() SVGFilterSignalsMod {
+	return func() string {
+		return "ifmissing"
+	}
+}
+
+// Patches (adds, updates or removes) one or more signals into the existing
+// signals
+// Values defined later in the DOM tree override those defined earlier.
+//
+// See: https://data-star.dev/reference/attributes#data-signals
+func (e *SVGFILTERElement) DATASTAR_SIGNALS(key string, expression string, modifiers ...SVGFilterSignalsMod) *SVGFILTERElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	key = fmt.Sprintf("data-signals%s", suffix)
+
+	customMods := lo.Map(modifiers, func(m SVGFilterSignalsMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Patches (adds, updates or removes) one or more signals into the existing
+// signals
+// Values defined later in the DOM tree override those defined earlier.
+//
+// See: https://data-star.dev/reference/attributes#data-signals
+func (e *SVGFILTERElement) IfDATASTAR_SIGNALS(condition bool, key string, expression string, modifiers ...SVGFilterSignalsMod) *SVGFILTERElement {
+	if condition {
+		e.DATASTAR_SIGNALS(key, expression, modifiers...)
+	}
+	return e
+}
+
+// Patches (adds, updates or removes) one or more signals into the existing
+// signals
+// Values defined later in the DOM tree override those defined earlier.
+//
+// See: https://data-star.dev/reference/attributes#data-signals
+// Remove the attribute DATASTAR_SIGNALS from the element.
+func (e *SVGFILTERElement) DATASTAR_SIGNALSRemove(key string) *SVGFILTERElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	e.StringAttributes.Del("data-signals" + suffix)
+
+	return e
+}
+
+type SVGFilterStyleMod customDataKeyModifier
+
+// Converts the casing of the signal name.
+//   - 'camel' – Camel case: 'mySignal' (default)
+//   - 'kebab' – Kebab case: 'my-signal'
+//   - 'snake' – Snake case: 'my_signal'
+//   - 'pascal' – Pascal case: 'MySignal'
+func SVGFilterStyleModCase(
+	s string,
+) SVGFilterStyleMod {
+	return func() string {
+		return fmt.Sprintf("case.%s", s)
+	}
+}
+
+// Sets the value of inline CSS styles on an element based on an expression, and
+// keeps them in sync.
+//
+// See: https://data-star.dev/reference/attributes#data-style
+func (e *SVGFILTERElement) DATASTAR_STYLE(key string, expression string, modifiers ...SVGFilterStyleMod) *SVGFILTERElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	key = fmt.Sprintf("data-style%s", suffix)
+
+	customMods := lo.Map(modifiers, func(m SVGFilterStyleMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Sets the value of inline CSS styles on an element based on an expression, and
+// keeps them in sync.
+//
+// See: https://data-star.dev/reference/attributes#data-style
+func (e *SVGFILTERElement) IfDATASTAR_STYLE(condition bool, key string, expression string, modifiers ...SVGFilterStyleMod) *SVGFILTERElement {
+	if condition {
+		e.DATASTAR_STYLE(key, expression, modifiers...)
+	}
+	return e
+}
+
+// Sets the value of inline CSS styles on an element based on an expression, and
+// keeps them in sync.
+//
+// See: https://data-star.dev/reference/attributes#data-style
+// Remove the attribute DATASTAR_STYLE from the element.
+func (e *SVGFILTERElement) DATASTAR_STYLERemove(key string) *SVGFILTERElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	e.StringAttributes.Del("data-style" + suffix)
+
+	return e
+}
+
+// Binds the text content of an element to an expression.
+//
+// See: https://data-star.dev/reference/attributes#data-text
 func (e *SVGFILTERElement) DATASTAR_TEXT(expression string) *SVGFILTERElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
@@ -661,6 +2189,9 @@ func (e *SVGFILTERElement) DATASTAR_TEXT(expression string) *SVGFILTERElement {
 	return e
 }
 
+// Binds the text content of an element to an expression.
+//
+// See: https://data-star.dev/reference/attributes#data-text
 func (e *SVGFILTERElement) IfDATASTAR_TEXT(condition bool, expression string) *SVGFILTERElement {
 	if condition {
 		e.DATASTAR_TEXT(expression)
@@ -668,228 +2199,16 @@ func (e *SVGFILTERElement) IfDATASTAR_TEXT(condition bool, expression string) *S
 	return e
 }
 
+// Binds the text content of an element to an expression.
+//
+// See: https://data-star.dev/reference/attributes#data-text
 // Remove the attribute DATASTAR_TEXT from the element.
 func (e *SVGFILTERElement) DATASTAR_TEXTRemove() *SVGFILTERElement {
 	if e.StringAttributes == nil {
 		return e
 	}
+
 	e.StringAttributes.Del("data-text")
-	return e
-}
 
-// Sets the event handler of the element
-
-type SVGFilterOnMod customDataKeyModifier
-
-// Debounces the event handler
-func SVGFilterOnModDebounce(
-	d time.Duration,
-) SVGFilterOnMod {
-	return func() string {
-		return fmt.Sprintf("debounce_%dms", d.Milliseconds())
-	}
-}
-
-// Throttles the event handler
-func SVGFilterOnModThrottle(
-	d time.Duration,
-) SVGFilterOnMod {
-	return func() string {
-		return fmt.Sprintf("throttle_%dms", d.Milliseconds())
-	}
-}
-
-func (e *SVGFILTERElement) DATASTAR_ON(key string, expression string, modifiers ...SVGFilterOnMod) *SVGFILTERElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-
-	key = fmt.Sprintf("data-on-%s", key)
-
-	customMods := lo.Map(modifiers, func(m SVGFilterOnMod, i int) customDataKeyModifier {
-		return customDataKeyModifier(m)
-	})
-	key = customDataKey(key, customMods...)
-	e.StringAttributes.Set(key, expression)
-	return e
-}
-
-func (e *SVGFILTERElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SVGFilterOnMod) *SVGFILTERElement {
-	if condition {
-		e.DATASTAR_ON(key, expression, modifiers...)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_ON from the element.
-func (e *SVGFILTERElement) DATASTAR_ONRemove() *SVGFILTERElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-on")
-	return e
-}
-
-// Sets the focus of the element
-
-func (e *SVGFILTERElement) DATASTAR_FOCUSSet(b bool) *SVGFILTERElement {
-	key := "data-focus"
-	e.BoolAttributes.Set(key, b)
-	return e
-}
-
-func (e *SVGFILTERElement) DATASTAR_FOCUS() *SVGFILTERElement {
-	return e.DATASTAR_FOCUSSet(true)
-}
-
-// Sets the header of for fetch requests
-
-func (e *SVGFILTERElement) DATASTAR_HEADER(key string, expression string) *SVGFILTERElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-
-	key = fmt.Sprintf("data-header-%s", key)
-
-	e.StringAttributes.Set(key, expression)
-	return e
-}
-
-func (e *SVGFILTERElement) IfDATASTAR_HEADER(condition bool, key string, expression string) *SVGFILTERElement {
-	if condition {
-		e.DATASTAR_HEADER(key, expression)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_HEADER from the element.
-func (e *SVGFILTERElement) DATASTAR_HEADERRemove() *SVGFILTERElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-header")
-	return e
-}
-
-// Sets the indicator selector for fetch requests
-
-func (e *SVGFILTERElement) DATASTAR_FETCH_INDICATOR(expression string) *SVGFILTERElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-
-	key := "data-fetch-indicator"
-
-	e.StringAttributes.Set(key, expression)
-	return e
-}
-
-func (e *SVGFILTERElement) IfDATASTAR_FETCH_INDICATOR(condition bool, expression string) *SVGFILTERElement {
-	if condition {
-		e.DATASTAR_FETCH_INDICATOR(expression)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_FETCH_INDICATOR from the element.
-func (e *SVGFILTERElement) DATASTAR_FETCH_INDICATORRemove() *SVGFILTERElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-fetch-indicator")
-	return e
-}
-
-// Sets the visibility of the element
-
-func (e *SVGFILTERElement) DATASTAR_SHOWSet(b bool) *SVGFILTERElement {
-	key := "data-show"
-	e.BoolAttributes.Set(key, b)
-	return e
-}
-
-func (e *SVGFILTERElement) DATASTAR_SHOW() *SVGFILTERElement {
-	return e.DATASTAR_SHOWSet(true)
-}
-
-// Triggers the callback when the element intersects the viewport
-
-func (e *SVGFILTERElement) DATASTAR_INTERSECTS(expression string) *SVGFILTERElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-
-	key := "data-intersects"
-
-	e.StringAttributes.Set(key, expression)
-	return e
-}
-
-func (e *SVGFILTERElement) IfDATASTAR_INTERSECTS(condition bool, expression string) *SVGFILTERElement {
-	if condition {
-		e.DATASTAR_INTERSECTS(expression)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_INTERSECTS from the element.
-func (e *SVGFILTERElement) DATASTAR_INTERSECTSRemove() *SVGFILTERElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-intersects")
-	return e
-}
-
-// Teleports the element to the given selector
-
-func (e *SVGFILTERElement) DATASTAR_TELEPORTSet(b bool) *SVGFILTERElement {
-	key := "data-teleport"
-	e.BoolAttributes.Set(key, b)
-	return e
-}
-
-func (e *SVGFILTERElement) DATASTAR_TELEPORT() *SVGFILTERElement {
-	return e.DATASTAR_TELEPORTSet(true)
-}
-
-// Scrolls the element into view
-
-func (e *SVGFILTERElement) DATASTAR_SCROLL_INTO_VIEWSet(b bool) *SVGFILTERElement {
-	key := "data-scroll-into-view"
-	e.BoolAttributes.Set(key, b)
-	return e
-}
-
-func (e *SVGFILTERElement) DATASTAR_SCROLL_INTO_VIEW() *SVGFILTERElement {
-	return e.DATASTAR_SCROLL_INTO_VIEWSet(true)
-}
-
-// Setup the ViewTransitionAPI for the element
-
-func (e *SVGFILTERElement) DATASTAR_VIEW_TRANSITION(expression string) *SVGFILTERElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-
-	key := "data-view-transition"
-
-	e.StringAttributes.Set(key, expression)
-	return e
-}
-
-func (e *SVGFILTERElement) IfDATASTAR_VIEW_TRANSITION(condition bool, expression string) *SVGFILTERElement {
-	if condition {
-		e.DATASTAR_VIEW_TRANSITION(expression)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_VIEW_TRANSITION from the element.
-func (e *SVGFILTERElement) DATASTAR_VIEW_TRANSITIONRemove() *SVGFILTERElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-view-transition")
 	return e
 }

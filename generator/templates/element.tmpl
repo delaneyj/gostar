@@ -165,8 +165,8 @@ func (e *{{$elStructName}}) CustomDataRemove(key string) *{{$elStructName}} {
 }
 
 {{range .Element.Attributes}}
-    {{ .Description | comments }}
     {{ if .Type | attrIsString -}}
+        {{ .Description | comments }}
         func(e *{{$elStructName}}) {{.Name}}(s string) *{{$elStructName}}{
             if e.StringAttributes == nil {
                 e.StringAttributes = treemap.New[string,string]()
@@ -175,10 +175,12 @@ func (e *{{$elStructName}}) CustomDataRemove(key string) *{{$elStructName}} {
             return e
         }
 
+        {{ .Description | comments }}
         func(e *{{$elStructName}}) {{.Name}}F(format string, args ...any) *{{$elStructName}}{
             return e.{{.Name}}(fmt.Sprintf(format, args...))
         }
 
+        {{ .Description | comments }}
         func(e *{{$elStructName}}) If{{.Name}}(condition bool, s string) *{{$elStructName}}{
             if condition {
                 e.{{.Name}}(s)
@@ -186,6 +188,7 @@ func (e *{{$elStructName}}) CustomDataRemove(key string) *{{$elStructName}} {
             return e
         }
 
+        {{ .Description | comments }}
         func(e *{{$elStructName}}) If{{.Name}}F(condition bool, format string, args ...any) *{{$elStructName}}{
             if condition {
                 e.{{.Name}}(fmt.Sprintf(format, args...))
@@ -193,6 +196,7 @@ func (e *{{$elStructName}}) CustomDataRemove(key string) *{{$elStructName}} {
             return e
         }
 
+        {{ .Description | comments }}
         // Remove the attribute {{.Name}} from the element.
         func(e *{{$elStructName}}) {{.Name}}Remove(s string) *{{$elStructName}}{
             if e.StringAttributes == nil {
@@ -202,12 +206,14 @@ func (e *{{$elStructName}}) CustomDataRemove(key string) *{{$elStructName}} {
             return e
         }
 
+        {{ .Description | comments }}
         func(e *{{$elStructName}}) {{.Name}}RemoveF(format string, args ...any) *{{$elStructName}}{
             return e.{{.Name}}Remove(fmt.Sprintf(format, args...))
         }
 
 
     {{ else if .Type | attrIsDelimited -}}
+        {{ .Description | comments }}
         func(e *{{$elStructName}}) {{.Name}}(s ...string) *{{$elStructName}}{
             if e.DelimitedStrings == nil {
                 e.DelimitedStrings = treemap.New[string,*DelimitedBuilder[string]]()
@@ -221,6 +227,7 @@ func (e *{{$elStructName}}) CustomDataRemove(key string) *{{$elStructName}} {
             return e
         }
 
+        {{ .Description | comments }}
         func(e *{{$elStructName}}) If{{.Name}}(condition bool, s ...string) *{{$elStructName}}{
             if condition {
                 e.{{.Name}}(s...)
@@ -228,6 +235,7 @@ func (e *{{$elStructName}}) CustomDataRemove(key string) *{{$elStructName}} {
             return e
         }
 
+        {{ .Description | comments }}
         // Remove the attribute {{.Name}} from the element.
         func(e *{{$elStructName}}) {{.Name}}Remove(s ...string) *{{$elStructName}}{
             if e.DelimitedStrings == nil {
@@ -242,10 +250,12 @@ func (e *{{$elStructName}}) CustomDataRemove(key string) *{{$elStructName}} {
         }
 
     {{ else if .Type | attrIsKV -}}
+        {{ .Description | comments }}
         func (e *{{$elStructName}}) {{.Name}}F(k string, format string, args ...any) *{{$elStructName}} {
             return e.{{.Name}}(k, fmt.Sprintf(format, args...))
         }
 
+        {{ .Description | comments }}
         func (e *{{$elStructName}}) If{{.Name}}(condition bool, k string, v string) *{{$elStructName}} {
             if condition {
                 e.{{.Name}}(k, v)
@@ -253,6 +263,7 @@ func (e *{{$elStructName}}) CustomDataRemove(key string) *{{$elStructName}} {
             return e
         }
 
+        {{ .Description | comments }}
         func (e *{{$elStructName}}) {{.Name}}(k string, v string) *{{$elStructName}} {
             if e.KVStrings == nil {
                 e.KVStrings = treemap.New[string,*KVBuilder]()
@@ -266,6 +277,7 @@ func (e *{{$elStructName}}) CustomDataRemove(key string) *{{$elStructName}} {
             return e
         }
 
+        {{ .Description | comments }}
         func (e *{{$elStructName}}) If{{.Name}}F(condition bool, k string, format string, args ...any) *{{$elStructName}} {
             if condition {
                 e.{{.Name}}(k, fmt.Sprintf(format, args...))
@@ -273,6 +285,7 @@ func (e *{{$elStructName}}) CustomDataRemove(key string) *{{$elStructName}} {
             return e
         }
 
+        {{ .Description | comments }}
         // Add the attributes in the map to the element.
         func (e *{{$elStructName}}) {{.Name}}Map(m map[string]string) *{{$elStructName}} {
             if e.KVStrings == nil {
@@ -289,6 +302,7 @@ func (e *{{$elStructName}}) CustomDataRemove(key string) *{{$elStructName}} {
             return e
         }
 
+        {{ .Description | comments }}
         // Add pairs of attributes to the element.
         func (e *{{$elStructName}}) {{.Name}}Pairs(pairs ...string) *{{$elStructName}} {
             if len(pairs) % 2 != 0 {
@@ -310,6 +324,7 @@ func (e *{{$elStructName}}) CustomDataRemove(key string) *{{$elStructName}} {
             return e
         }
 
+        {{ .Description | comments }}
         func (e *{{$elStructName}}) If{{.Name}}Pairs(condition bool, pairs ...string) *{{$elStructName}} {
             if condition {
                 e.{{.Name}}Pairs(pairs...)
@@ -317,6 +332,7 @@ func (e *{{$elStructName}}) CustomDataRemove(key string) *{{$elStructName}} {
             return e
         }
 
+        {{ .Description | comments }}
         // Remove the attribute {{.Name}} from the element.
         func (e *{{$elStructName}}) {{.Name}}Remove(keys ...string) *{{$elStructName}} {
             if e.KVStrings == nil {
@@ -334,6 +350,7 @@ func (e *{{$elStructName}}) CustomDataRemove(key string) *{{$elStructName}} {
 
     {{ else if .Type | attrIsChoices -}}
         {{ $choicePrefix := (printf "%s%s%s" $.Namespace.Prefix ($.Element.Name | pascal) (.Key | pascal)) -}}
+        {{ .Description | comments }}
         func(e *{{$elStructName}}) {{.Name}}(c {{$choicePrefix}}Choice) *{{$elStructName}}{
             if e.StringAttributes == nil {
                 e.StringAttributes = treemap.New[string,string]()
@@ -350,6 +367,7 @@ func (e *{{$elStructName}}) CustomDataRemove(key string) *{{$elStructName}} {
         {{ end -}}
         )
 
+        {{ .Description | comments }}
         // Remove the attribute {{.Name}} from the element.
         func(e *{{$elStructName}}) {{.Name}}Remove(c {{$choicePrefix}}Choice) *{{$elStructName}}{
             if e.StringAttributes == nil {
@@ -360,6 +378,7 @@ func (e *{{$elStructName}}) CustomDataRemove(key string) *{{$elStructName}} {
         }
         {{ else if .Type | attrIsInt -}}
 
+        {{ .Description | comments }}
         func(e *{{$elStructName}}) {{.Name}}(i int) *{{$elStructName}}{
             if e.IntAttributes == nil {
                 e.IntAttributes = treemap.New[string,int]()
@@ -368,6 +387,7 @@ func (e *{{$elStructName}}) CustomDataRemove(key string) *{{$elStructName}} {
             return e
         }
 
+        {{ .Description | comments }}
         func (e *{{$elStructName}}) If{{.Name}}(condition bool, i int) *{{$elStructName}} {
             if condition {
                 e.{{.Name}}(i)
@@ -375,6 +395,7 @@ func (e *{{$elStructName}}) CustomDataRemove(key string) *{{$elStructName}} {
             return e
         }
 
+        {{ .Description | comments }}
         // Remove the attribute {{.Name}} from the element.
         func(e *{{$elStructName}}) {{.Name}}Remove(i int) *{{$elStructName}}{
             if e.IntAttributes == nil {
@@ -384,6 +405,7 @@ func (e *{{$elStructName}}) CustomDataRemove(key string) *{{$elStructName}} {
             return e
         }
         {{ else if .Type | attrIsNumber -}}
+        {{ .Description | comments }}
         func(e *{{$elStructName}}) {{.Name}}(f float64) *{{$elStructName}}{
             if e.FloatAttributes == nil {
                 e.FloatAttributes = treemap.New[string,float64]()
@@ -392,6 +414,7 @@ func (e *{{$elStructName}}) CustomDataRemove(key string) *{{$elStructName}} {
             return e
         }
 
+        {{ .Description | comments }}
         func (e *{{$elStructName}}) If{{.Name}}(condition bool, f float64) *{{$elStructName}} {
             if condition {
                 e.{{.Name}}(f)
@@ -400,11 +423,13 @@ func (e *{{$elStructName}}) CustomDataRemove(key string) *{{$elStructName}} {
         }
 
     {{ else if .Type | attrIsBool -}}
+        {{ .Description | comments }}
         func(e *{{$elStructName}}) {{.Name}}() *{{$elStructName}}{
             e.{{.Name}}Set(true)
             return e
         }
 
+        {{ .Description | comments }}
         func(e *{{$elStructName}}) If{{.Name}}(condition bool) *{{$elStructName}} {
             if condition {
                 e.{{.Name}}Set(true)
@@ -412,6 +437,7 @@ func (e *{{$elStructName}}) CustomDataRemove(key string) *{{$elStructName}} {
             return e
         }
 
+        {{ .Description | comments }}
         // Set the attribute {{.Name}} to the value b explicitly.
         func(e *{{$elStructName}}) {{.Name}}Set(b bool) *{{$elStructName}}{
             if e.BoolAttributes == nil {
@@ -421,6 +447,7 @@ func (e *{{$elStructName}}) CustomDataRemove(key string) *{{$elStructName}} {
             return e
         }
 
+        {{ .Description | comments }}
         func (e *{{$elStructName}}) IfSet{{.Name}}(condition bool, b bool) *{{$elStructName}} {
             if condition {
                 e.{{.Name}}Set(b)
@@ -429,6 +456,7 @@ func (e *{{$elStructName}}) CustomDataRemove(key string) *{{$elStructName}} {
         }
 
         // Remove the attribute {{.Name}} from the element.
+        {{ .Description | comments }}
         func(e *{{$elStructName}}) {{.Name}}Remove(b bool) *{{$elStructName}}{
             if e.BoolAttributes == nil {
                 return e
@@ -438,6 +466,7 @@ func (e *{{$elStructName}}) CustomDataRemove(key string) *{{$elStructName}} {
         }
 
     {{ else if .Type | attrIsRune -}}
+        {{ .Description | comments }}
         func(e *{{$elStructName}}) {{.Name}}(r rune) *{{$elStructName}}{
             if e.StringAttributes == nil {
                 e.StringAttributes = treemap.New[string,string]()
@@ -446,6 +475,7 @@ func (e *{{$elStructName}}) CustomDataRemove(key string) *{{$elStructName}} {
             return e
         }
 
+        {{ .Description | comments }}
         func(e *{{$elStructName}}) If{{.Name}}(condition bool, r rune) *{{$elStructName}}{
             if condition {
                 e.{{.Name}}(r)
@@ -453,6 +483,7 @@ func (e *{{$elStructName}}) CustomDataRemove(key string) *{{$elStructName}} {
             return e
         }
 
+        {{ .Description | comments }}
         // Remove the attribute {{.Name}} from the element.
         func(e *{{$elStructName}}) {{.Name}}Remove() *{{$elStructName}}{
             if e.StringAttributes == nil {
@@ -463,6 +494,7 @@ func (e *{{$elStructName}}) CustomDataRemove(key string) *{{$elStructName}} {
         }
 
     {{ else if .Type | attrIsDuration -}}
+        {{ .Description | comments }}
         func(e *{{$elStructName}}) {{.Name}}(d time.Duration) *{{$elStructName}}{
             if e.StringAttributes == nil {
                 e.StringAttributes = treemap.New[string,string]()
@@ -471,6 +503,7 @@ func (e *{{$elStructName}}) CustomDataRemove(key string) *{{$elStructName}} {
             return e
         }
 
+        {{ .Description | comments }}
         func(e *{{$elStructName}}) If{{.Name}}(condition bool, d time.Duration) *{{$elStructName}}{
             if condition {
                 e.{{.Name}}(d)
@@ -478,6 +511,7 @@ func (e *{{$elStructName}}) CustomDataRemove(key string) *{{$elStructName}} {
             return e
         }
 
+        {{ .Description | comments }}
         // Remove the attribute {{.Name}} from the element.
         func(e *{{$elStructName}}) {{.Name}}Remove() *{{$elStructName}}{
             if e.StringAttributes == nil {
@@ -490,7 +524,7 @@ func (e *{{$elStructName}}) CustomDataRemove(key string) *{{$elStructName}} {
     {{ else if .Type | attrIsCustom -}}
         {{ $custom := .Type.Type.Custom -}}
         {{ $customType := $custom.Type}}
-        {{ $modTypeName := printf "%s%s%sMod" $.Namespace.Prefix ($.Element.Name | pascal) (.Key | pascal) -}}
+        {{ $modTypeName := printf "%s%s%sMod" $.Namespace.Prefix ($.Element.Name | pascal) (.Key | TrimDatastarPrefix | pascal) -}}
         {{ if $custom.Modifiers -}}
             type {{$modTypeName}} customDataKeyModifier
 
@@ -503,7 +537,7 @@ func (e *{{$elStructName}}) CustomDataRemove(key string) *{{$elStructName}} {
                 {{- else if $modType | attrIsString }}
                     s string,
                 {{- else if $modType | attrIsBool }}
-                    b bool,
+
                 {{- else if $modType | attrIsInt }}
                     i int,
                 {{- else if $modType | attrIsNumber }}
@@ -515,12 +549,14 @@ func (e *{{$elStructName}}) CustomDataRemove(key string) *{{$elStructName}} {
                 {{end }}
             ) {{$modTypeName}} {
                 return func() string {
-                    {{- if $modType | attrIsDuration -}}
+                    {{- if $modType | attrIsDurationMs -}}
                         return fmt.Sprintf("{{$mod.Prefix}}%d{{$mod.Suffix}}", d.Milliseconds())
+                    {{- else if $modType | attrIsDurationSec -}}
+                        return fmt.Sprintf("{{$mod.Prefix}}%d{{$mod.Suffix}}", int(d.Seconds()))
                     {{- else if $modType | attrIsString -}}
                         return fmt.Sprintf("{{$mod.Prefix}}%s{{$mod.Suffix}}", s)
                     {{- else if $modType | attrIsBool -}}
-                        return fmt.Sprintf("{{$mod.Prefix}}%t{{$mod.Suffix}}", b)
+                        return "{{$mod.Prefix}}"
                     {{- else if $modType | attrIsInt -}}
                         return fmt.Sprintf("{{$mod.Prefix}}%d{{$mod.Suffix}}", i)
                     {{- else if $modType | attrIsNumber -}}
@@ -535,12 +571,17 @@ func (e *{{$elStructName}}) CustomDataRemove(key string) *{{$elStructName}} {
             {{end}}
         {{ end -}}
         {{ if $customType | attrIsString -}}
+            {{ .Description | comments }}
             func(e *{{$elStructName}}) {{.Name}}({{if $custom.HasKey}}key string, {{end}}expression string{{if $custom.Modifiers}}, modifiers ...{{$modTypeName}}{{end}}) *{{$elStructName}}{
                 if e.StringAttributes == nil {
                     e.StringAttributes = treemap.New[string,string]()
                 }
                 {{if $custom.HasKey}}
-                key =  fmt.Sprintf("data-{{.Key}}-%s", key)
+                suffix := key
+                if suffix != "" {
+                    suffix = ":" + suffix
+                }
+                key = fmt.Sprintf("data-{{.Key | TrimDatastarPrefix }}%s", suffix)
                 {{else}}
                 key := "data-{{.Key}}"
                 {{end}}
@@ -548,12 +589,13 @@ func (e *{{$elStructName}}) CustomDataRemove(key string) *{{$elStructName}} {
                 customMods := lo.Map(modifiers, func(m {{$modTypeName}}, i int) customDataKeyModifier  {
                     return customDataKeyModifier(m)
                 })
-                key = customDataKey(key{{if $custom.Modifiers}}, customMods...{{end}})
+                key = customDataKey(key, customMods...)
                 {{- end}}
                 e.StringAttributes.Set(key, expression)
                 return e
             }
 
+            {{ .Description | comments }}
             func(e *{{$elStructName}}) If{{.Name}}(condition bool, {{if $custom.HasKey}}key string, {{end}}expression string{{if $custom.Modifiers}}, modifiers ...{{$modTypeName}}{{end}}) *{{$elStructName}}{
                 if condition {
                     e.{{.Name}}({{if $custom.HasKey}}key, {{end}} expression, {{if $custom.Modifiers}} modifiers...{{end}})
@@ -561,16 +603,26 @@ func (e *{{$elStructName}}) CustomDataRemove(key string) *{{$elStructName}} {
                 return e
             }
 
+            {{ .Description | comments }}
             // Remove the attribute {{.Name}} from the element.
-            func(e *{{$elStructName}}) {{.Name}}Remove() *{{$elStructName}}{
+            func(e *{{$elStructName}}) {{.Name}}Remove({{if $custom.HasKey}}key string{{end}}) *{{$elStructName}}{
                 if e.StringAttributes == nil {
                     return e
                 }
-                e.StringAttributes.Del("data-{{.Key}}")
+                {{if $custom.HasKey}}
+                  suffix := key
+                  if suffix != "" {
+                      suffix = ":" + suffix
+                  }
+                  e.StringAttributes.Del("data-{{.Key | TrimDatastarPrefix }}" + suffix)
+                {{else}}
+                  e.StringAttributes.Del("data-{{.Key | TrimDatastarPrefix}}")
+                {{end}}
                 return e
             }
 
         {{ else if $customType | attrIsJson -}}
+            {{ .Description | comments }}
             func(e *{{$elStructName}}) {{.Name}}(v any{{if $custom.Modifiers}}, modifiers ...{{$modTypeName}}{{end}}) *{{$elStructName}}{
                 if e.CustomDataAttributes == nil {
                     e.CustomDataAttributes = treemap.New[string,string]()
@@ -590,31 +642,45 @@ func (e *{{$elStructName}}) CustomDataRemove(key string) *{{$elStructName}} {
             }
 
         {{else if $customType | attrIsDuration -}}
+            {{ .Description | comments }}
             func(e *{{$elStructName}}) {{.Name}}(d time.Duration{{if $custom.Modifiers}}, modifiers ...{{$modTypeName}}{{end}}) *{{$elStructName}}{
                 {{- if $custom.Modifiers}}
-                key := customDataKey("data-{{.Key}}"{{if $custom.Modifiers}}, modifiers...{{end}})
+                  key := customDataKey("data-{{.Key}}", modifiers...)
                 {{- else}}
-                key := "data-{{.Key}}"
+                  key := "data-{{.Key}}"
                 {{- end}}
                 if e.IntAttributes == nil {
                     e.IntAttributes = treemap.New[string,int]()
                 }
-                e.IntAttributes.Set(key, d.Milliseconds())
+                {{- if $customType | attrIsDurationMs }}
+                  e.IntAttributes.Set(key, d.Milliseconds())
+                {{- else if $customType | attrIsDurationSec }}
+                  e.IntAttributes.Set(key, d.Seconds())
+                {{- end}}
                 return e
             }
 
         {{ else if $customType | attrIsBool -}}
+            {{ .Description | comments }}
             func(e *{{$elStructName}}) {{.Name}}Set(b bool{{if $custom.Modifiers}}, modifiers ...{{$modTypeName}}{{end}}) *{{$elStructName}}{
                 {{- if $custom.Modifiers}}
-                key := customDataKey("data-{{.Key}}"{{if $custom.Modifiers}}, modifiers...{{end}})
+                key := customDataKey("data-{{.Key}}")
+                customMods := lo.Map(modifiers, func(m {{$modTypeName}}, i int) customDataKeyModifier  {
+                    return customDataKeyModifier(m)
+                })
+                key = customDataKey(key, customMods...)
                 {{- else}}
                 key := "data-{{.Key}}"
                 {{- end}}
+                if e.BoolAttributes == nil {
+                    e.BoolAttributes = treemap.New[string,bool]()
+                }
                 e.BoolAttributes.Set(key, b)
                 return e
             }
 
-            func(e *{{$elStructName}}) {{.Name}}({{if $custom.Modifiers}}, modifiers ...{$modTypeName}}{{end}}) *{{$elStructName}}{
+            {{ .Description | comments }}
+            func(e *{{$elStructName}}) {{.Name}}({{if $custom.Modifiers}}modifiers ...{{$modTypeName}}{{end}}) *{{$elStructName}}{
                 return e.{{.Name}}Set(true{{if $custom.Modifiers}}, modifiers...{{end}})
             }
         {{ else -}}

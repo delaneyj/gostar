@@ -5,10 +5,8 @@ package elements
 
 import (
 	"fmt"
-	"html"
 	"time"
 
-	"github.com/goccy/go-json"
 	"github.com/igrmk/treemap/v2"
 	"github.com/samber/lo"
 )
@@ -171,6 +169,8 @@ func (e *BUTTONElement) AUTOFOCUS() *BUTTONElement {
 	return e
 }
 
+// A Boolean attribute which, if present, indicates that the button should be
+// focused as soon as the page is loaded.
 func (e *BUTTONElement) IfAUTOFOCUS(condition bool) *BUTTONElement {
 	if condition {
 		e.AUTOFOCUSSet(true)
@@ -178,6 +178,8 @@ func (e *BUTTONElement) IfAUTOFOCUS(condition bool) *BUTTONElement {
 	return e
 }
 
+// A Boolean attribute which, if present, indicates that the button should be
+// focused as soon as the page is loaded.
 // Set the attribute AUTOFOCUS to the value b explicitly.
 func (e *BUTTONElement) AUTOFOCUSSet(b bool) *BUTTONElement {
 	if e.BoolAttributes == nil {
@@ -187,6 +189,8 @@ func (e *BUTTONElement) AUTOFOCUSSet(b bool) *BUTTONElement {
 	return e
 }
 
+// A Boolean attribute which, if present, indicates that the button should be
+// focused as soon as the page is loaded.
 func (e *BUTTONElement) IfSetAUTOFOCUS(condition bool, b bool) *BUTTONElement {
 	if condition {
 		e.AUTOFOCUSSet(b)
@@ -195,6 +199,8 @@ func (e *BUTTONElement) IfSetAUTOFOCUS(condition bool, b bool) *BUTTONElement {
 }
 
 // Remove the attribute AUTOFOCUS from the element.
+// A Boolean attribute which, if present, indicates that the button should be
+// focused as soon as the page is loaded.
 func (e *BUTTONElement) AUTOFOCUSRemove(b bool) *BUTTONElement {
 	if e.BoolAttributes == nil {
 		return e
@@ -209,6 +215,7 @@ func (e *BUTTONElement) DISABLED() *BUTTONElement {
 	return e
 }
 
+// A Boolean attribute which is present if the button is disabled.
 func (e *BUTTONElement) IfDISABLED(condition bool) *BUTTONElement {
 	if condition {
 		e.DISABLEDSet(true)
@@ -216,6 +223,7 @@ func (e *BUTTONElement) IfDISABLED(condition bool) *BUTTONElement {
 	return e
 }
 
+// A Boolean attribute which is present if the button is disabled.
 // Set the attribute DISABLED to the value b explicitly.
 func (e *BUTTONElement) DISABLEDSet(b bool) *BUTTONElement {
 	if e.BoolAttributes == nil {
@@ -225,6 +233,7 @@ func (e *BUTTONElement) DISABLEDSet(b bool) *BUTTONElement {
 	return e
 }
 
+// A Boolean attribute which is present if the button is disabled.
 func (e *BUTTONElement) IfSetDISABLED(condition bool, b bool) *BUTTONElement {
 	if condition {
 		e.DISABLEDSet(b)
@@ -233,6 +242,7 @@ func (e *BUTTONElement) IfSetDISABLED(condition bool, b bool) *BUTTONElement {
 }
 
 // Remove the attribute DISABLED from the element.
+// A Boolean attribute which is present if the button is disabled.
 func (e *BUTTONElement) DISABLEDRemove(b bool) *BUTTONElement {
 	if e.BoolAttributes == nil {
 		return e
@@ -250,10 +260,12 @@ func (e *BUTTONElement) FORM(s string) *BUTTONElement {
 	return e
 }
 
+// The id of the form with which to associate the element.
 func (e *BUTTONElement) FORMF(format string, args ...any) *BUTTONElement {
 	return e.FORM(fmt.Sprintf(format, args...))
 }
 
+// The id of the form with which to associate the element.
 func (e *BUTTONElement) IfFORM(condition bool, s string) *BUTTONElement {
 	if condition {
 		e.FORM(s)
@@ -261,6 +273,7 @@ func (e *BUTTONElement) IfFORM(condition bool, s string) *BUTTONElement {
 	return e
 }
 
+// The id of the form with which to associate the element.
 func (e *BUTTONElement) IfFORMF(condition bool, format string, args ...any) *BUTTONElement {
 	if condition {
 		e.FORM(fmt.Sprintf(format, args...))
@@ -268,6 +281,7 @@ func (e *BUTTONElement) IfFORMF(condition bool, format string, args ...any) *BUT
 	return e
 }
 
+// The id of the form with which to associate the element.
 // Remove the attribute FORM from the element.
 func (e *BUTTONElement) FORMRemove(s string) *BUTTONElement {
 	if e.StringAttributes == nil {
@@ -277,6 +291,7 @@ func (e *BUTTONElement) FORMRemove(s string) *BUTTONElement {
 	return e
 }
 
+// The id of the form with which to associate the element.
 func (e *BUTTONElement) FORMRemoveF(format string, args ...any) *BUTTONElement {
 	return e.FORMRemove(fmt.Sprintf(format, args...))
 }
@@ -291,10 +306,14 @@ func (e *BUTTONElement) FORMACTION(s string) *BUTTONElement {
 	return e
 }
 
+// The URI of a program that processes the information submitted by the button
+// If specified, it overrides the action attribute of the button's form owner.
 func (e *BUTTONElement) FORMACTIONF(format string, args ...any) *BUTTONElement {
 	return e.FORMACTION(fmt.Sprintf(format, args...))
 }
 
+// The URI of a program that processes the information submitted by the button
+// If specified, it overrides the action attribute of the button's form owner.
 func (e *BUTTONElement) IfFORMACTION(condition bool, s string) *BUTTONElement {
 	if condition {
 		e.FORMACTION(s)
@@ -302,6 +321,8 @@ func (e *BUTTONElement) IfFORMACTION(condition bool, s string) *BUTTONElement {
 	return e
 }
 
+// The URI of a program that processes the information submitted by the button
+// If specified, it overrides the action attribute of the button's form owner.
 func (e *BUTTONElement) IfFORMACTIONF(condition bool, format string, args ...any) *BUTTONElement {
 	if condition {
 		e.FORMACTION(fmt.Sprintf(format, args...))
@@ -309,6 +330,8 @@ func (e *BUTTONElement) IfFORMACTIONF(condition bool, format string, args ...any
 	return e
 }
 
+// The URI of a program that processes the information submitted by the button
+// If specified, it overrides the action attribute of the button's form owner.
 // Remove the attribute FORMACTION from the element.
 func (e *BUTTONElement) FORMACTIONRemove(s string) *BUTTONElement {
 	if e.StringAttributes == nil {
@@ -318,6 +341,8 @@ func (e *BUTTONElement) FORMACTIONRemove(s string) *BUTTONElement {
 	return e
 }
 
+// The URI of a program that processes the information submitted by the button
+// If specified, it overrides the action attribute of the button's form owner.
 func (e *BUTTONElement) FORMACTIONRemoveF(format string, args ...any) *BUTTONElement {
 	return e.FORMACTIONRemove(fmt.Sprintf(format, args...))
 }
@@ -344,6 +369,8 @@ const (
 	ButtonFormenctype_text_plain ButtonFormenctypeChoice = "text/plain"
 )
 
+// If the button is a submit button, this attribute specifies the type of content
+// that is used to submit the form to the server.
 // Remove the attribute FORMENCTYPE from the element.
 func (e *BUTTONElement) FORMENCTYPERemove(c ButtonFormenctypeChoice) *BUTTONElement {
 	if e.StringAttributes == nil {
@@ -379,6 +406,9 @@ const (
 	ButtonFormmethod_dialog ButtonFormmethodChoice = "dialog"
 )
 
+// If the button is a submit button, this attribute specifies the HTTP method that
+// the browser uses to submit the form
+// Possible values are:
 // Remove the attribute FORMMETHOD from the element.
 func (e *BUTTONElement) FORMMETHODRemove(c ButtonFormmethodChoice) *BUTTONElement {
 	if e.StringAttributes == nil {
@@ -397,6 +427,10 @@ func (e *BUTTONElement) FORMNOVALIDATE() *BUTTONElement {
 	return e
 }
 
+// If the button is a submit button, this Boolean attribute specifies that the
+// form is not to be validated when it is submitted
+// If this attribute is specified, it overrides the novalidate attribute of the
+// button's form owner.
 func (e *BUTTONElement) IfFORMNOVALIDATE(condition bool) *BUTTONElement {
 	if condition {
 		e.FORMNOVALIDATESet(true)
@@ -404,6 +438,10 @@ func (e *BUTTONElement) IfFORMNOVALIDATE(condition bool) *BUTTONElement {
 	return e
 }
 
+// If the button is a submit button, this Boolean attribute specifies that the
+// form is not to be validated when it is submitted
+// If this attribute is specified, it overrides the novalidate attribute of the
+// button's form owner.
 // Set the attribute FORMNOVALIDATE to the value b explicitly.
 func (e *BUTTONElement) FORMNOVALIDATESet(b bool) *BUTTONElement {
 	if e.BoolAttributes == nil {
@@ -413,6 +451,10 @@ func (e *BUTTONElement) FORMNOVALIDATESet(b bool) *BUTTONElement {
 	return e
 }
 
+// If the button is a submit button, this Boolean attribute specifies that the
+// form is not to be validated when it is submitted
+// If this attribute is specified, it overrides the novalidate attribute of the
+// button's form owner.
 func (e *BUTTONElement) IfSetFORMNOVALIDATE(condition bool, b bool) *BUTTONElement {
 	if condition {
 		e.FORMNOVALIDATESet(b)
@@ -421,6 +463,10 @@ func (e *BUTTONElement) IfSetFORMNOVALIDATE(condition bool, b bool) *BUTTONEleme
 }
 
 // Remove the attribute FORMNOVALIDATE from the element.
+// If the button is a submit button, this Boolean attribute specifies that the
+// form is not to be validated when it is submitted
+// If this attribute is specified, it overrides the novalidate attribute of the
+// button's form owner.
 func (e *BUTTONElement) FORMNOVALIDATERemove(b bool) *BUTTONElement {
 	if e.BoolAttributes == nil {
 		return e
@@ -462,6 +508,14 @@ const (
 	ButtonFormtarget__top ButtonFormtargetChoice = "_top"
 )
 
+// If the button is a submit button, this attribute is a name or keyword
+// indicating where to display the response that is received after submitting the
+// form
+// This is a name of, or keyword for, a browsing context (for example, tab,
+// window, or inline frame)
+// If this attribute is specified, it overrides the target attribute of the
+// button's form owner
+// The following keywords have special meanings:
 // Remove the attribute FORMTARGET from the element.
 func (e *BUTTONElement) FORMTARGETRemove(c ButtonFormtargetChoice) *BUTTONElement {
 	if e.StringAttributes == nil {
@@ -480,10 +534,12 @@ func (e *BUTTONElement) NAME(s string) *BUTTONElement {
 	return e
 }
 
+// The name of the button, which is submitted with the form data.
 func (e *BUTTONElement) NAMEF(format string, args ...any) *BUTTONElement {
 	return e.NAME(fmt.Sprintf(format, args...))
 }
 
+// The name of the button, which is submitted with the form data.
 func (e *BUTTONElement) IfNAME(condition bool, s string) *BUTTONElement {
 	if condition {
 		e.NAME(s)
@@ -491,6 +547,7 @@ func (e *BUTTONElement) IfNAME(condition bool, s string) *BUTTONElement {
 	return e
 }
 
+// The name of the button, which is submitted with the form data.
 func (e *BUTTONElement) IfNAMEF(condition bool, format string, args ...any) *BUTTONElement {
 	if condition {
 		e.NAME(fmt.Sprintf(format, args...))
@@ -498,6 +555,7 @@ func (e *BUTTONElement) IfNAMEF(condition bool, format string, args ...any) *BUT
 	return e
 }
 
+// The name of the button, which is submitted with the form data.
 // Remove the attribute NAME from the element.
 func (e *BUTTONElement) NAMERemove(s string) *BUTTONElement {
 	if e.StringAttributes == nil {
@@ -507,6 +565,7 @@ func (e *BUTTONElement) NAMERemove(s string) *BUTTONElement {
 	return e
 }
 
+// The name of the button, which is submitted with the form data.
 func (e *BUTTONElement) NAMERemoveF(format string, args ...any) *BUTTONElement {
 	return e.NAMERemove(fmt.Sprintf(format, args...))
 }
@@ -522,10 +581,16 @@ func (e *BUTTONElement) POPOVERTARGET(s string) *BUTTONElement {
 	return e
 }
 
+// Turns a <button> element into a popover control button; takes the ID of the
+// popover element to control as its value
+// See the Popover API landing page for more details.
 func (e *BUTTONElement) POPOVERTARGETF(format string, args ...any) *BUTTONElement {
 	return e.POPOVERTARGET(fmt.Sprintf(format, args...))
 }
 
+// Turns a <button> element into a popover control button; takes the ID of the
+// popover element to control as its value
+// See the Popover API landing page for more details.
 func (e *BUTTONElement) IfPOPOVERTARGET(condition bool, s string) *BUTTONElement {
 	if condition {
 		e.POPOVERTARGET(s)
@@ -533,6 +598,9 @@ func (e *BUTTONElement) IfPOPOVERTARGET(condition bool, s string) *BUTTONElement
 	return e
 }
 
+// Turns a <button> element into a popover control button; takes the ID of the
+// popover element to control as its value
+// See the Popover API landing page for more details.
 func (e *BUTTONElement) IfPOPOVERTARGETF(condition bool, format string, args ...any) *BUTTONElement {
 	if condition {
 		e.POPOVERTARGET(fmt.Sprintf(format, args...))
@@ -540,6 +608,9 @@ func (e *BUTTONElement) IfPOPOVERTARGETF(condition bool, format string, args ...
 	return e
 }
 
+// Turns a <button> element into a popover control button; takes the ID of the
+// popover element to control as its value
+// See the Popover API landing page for more details.
 // Remove the attribute POPOVERTARGET from the element.
 func (e *BUTTONElement) POPOVERTARGETRemove(s string) *BUTTONElement {
 	if e.StringAttributes == nil {
@@ -549,6 +620,9 @@ func (e *BUTTONElement) POPOVERTARGETRemove(s string) *BUTTONElement {
 	return e
 }
 
+// Turns a <button> element into a popover control button; takes the ID of the
+// popover element to control as its value
+// See the Popover API landing page for more details.
 func (e *BUTTONElement) POPOVERTARGETRemoveF(format string, args ...any) *BUTTONElement {
 	return e.POPOVERTARGETRemove(fmt.Sprintf(format, args...))
 }
@@ -574,6 +648,8 @@ const (
 	ButtonPopovertargetaction_hide ButtonPopovertargetactionChoice = "hide"
 )
 
+// Specifies the action to take when the popover control button is clicked
+// Possible values are:
 // Remove the attribute POPOVERTARGETACTION from the element.
 func (e *BUTTONElement) POPOVERTARGETACTIONRemove(c ButtonPopovertargetactionChoice) *BUTTONElement {
 	if e.StringAttributes == nil {
@@ -608,6 +684,8 @@ const (
 	ButtonType_submit ButtonTypeChoice = "submit"
 )
 
+// The type of the button
+// Possible values are:
 // Remove the attribute TYPE from the element.
 func (e *BUTTONElement) TYPERemove(c ButtonTypeChoice) *BUTTONElement {
 	if e.StringAttributes == nil {
@@ -628,10 +706,16 @@ func (e *BUTTONElement) VALUE(s string) *BUTTONElement {
 	return e
 }
 
+// The initial value of the button
+// This attribute is optional except when the value of the type attribute is radio
+// or checkbox.
 func (e *BUTTONElement) VALUEF(format string, args ...any) *BUTTONElement {
 	return e.VALUE(fmt.Sprintf(format, args...))
 }
 
+// The initial value of the button
+// This attribute is optional except when the value of the type attribute is radio
+// or checkbox.
 func (e *BUTTONElement) IfVALUE(condition bool, s string) *BUTTONElement {
 	if condition {
 		e.VALUE(s)
@@ -639,6 +723,9 @@ func (e *BUTTONElement) IfVALUE(condition bool, s string) *BUTTONElement {
 	return e
 }
 
+// The initial value of the button
+// This attribute is optional except when the value of the type attribute is radio
+// or checkbox.
 func (e *BUTTONElement) IfVALUEF(condition bool, format string, args ...any) *BUTTONElement {
 	if condition {
 		e.VALUE(fmt.Sprintf(format, args...))
@@ -646,6 +733,9 @@ func (e *BUTTONElement) IfVALUEF(condition bool, format string, args ...any) *BU
 	return e
 }
 
+// The initial value of the button
+// This attribute is optional except when the value of the type attribute is radio
+// or checkbox.
 // Remove the attribute VALUE from the element.
 func (e *BUTTONElement) VALUERemove(s string) *BUTTONElement {
 	if e.StringAttributes == nil {
@@ -655,6 +745,9 @@ func (e *BUTTONElement) VALUERemove(s string) *BUTTONElement {
 	return e
 }
 
+// The initial value of the button
+// This attribute is optional except when the value of the type attribute is radio
+// or checkbox.
 func (e *BUTTONElement) VALUERemoveF(format string, args ...any) *BUTTONElement {
 	return e.VALUERemove(fmt.Sprintf(format, args...))
 }
@@ -671,6 +764,10 @@ func (e *BUTTONElement) ACCESSKEY(r rune) *BUTTONElement {
 	return e
 }
 
+// The accesskey global attribute provides a hint for generating a keyboard
+// shortcut for the current element
+// The attribute value must consist of a single printable character (which
+// includes accented and other characters that can be generated by the keyboard).
 func (e *BUTTONElement) IfACCESSKEY(condition bool, r rune) *BUTTONElement {
 	if condition {
 		e.ACCESSKEY(r)
@@ -678,6 +775,10 @@ func (e *BUTTONElement) IfACCESSKEY(condition bool, r rune) *BUTTONElement {
 	return e
 }
 
+// The accesskey global attribute provides a hint for generating a keyboard
+// shortcut for the current element
+// The attribute value must consist of a single printable character (which
+// includes accented and other characters that can be generated by the keyboard).
 // Remove the attribute ACCESSKEY from the element.
 func (e *BUTTONElement) ACCESSKEYRemove() *BUTTONElement {
 	if e.StringAttributes == nil {
@@ -726,6 +827,20 @@ const (
 	ButtonAutocapitalize_characters ButtonAutocapitalizeChoice = "characters"
 )
 
+// The autocapitalize global attribute is an enumerated attribute that controls
+// whether and how text input is automatically capitalized as it is entered/edited
+// by the user
+// autocapitalize can be set on <input> and <textarea> elements, and on their
+// containing <form> elements
+// When autocapitalize is set on a <form> element, it sets the autocapitalize
+// behavior for all contained <input>s and <textarea>s, overriding any
+// autocapitalize values set on contained elements
+// autocapitalize has no effect on the url, email, or password <input> types,
+// where autocapitalization is never enabled
+// Where autocapitalize is not specified, the adopted default behavior varies
+// between browsers
+// For example: Chrome and Safari default to on/sentences Firefox defaults to
+// off/none.
 // Remove the attribute AUTOCAPITALIZE from the element.
 func (e *BUTTONElement) AUTOCAPITALIZERemove(c ButtonAutocapitalizeChoice) *BUTTONElement {
 	if e.StringAttributes == nil {
@@ -753,6 +868,11 @@ func (e *BUTTONElement) CLASS(s ...string) *BUTTONElement {
 	return e
 }
 
+// The class global attribute is a space-separated list of the case-sensitive
+// classes of the element
+// Classes allow CSS and JavaScript to select and access specific elements via the
+// class selectors or functions like the DOM method
+// document.getElementsByClassName.
 func (e *BUTTONElement) IfCLASS(condition bool, s ...string) *BUTTONElement {
 	if condition {
 		e.CLASS(s...)
@@ -760,6 +880,11 @@ func (e *BUTTONElement) IfCLASS(condition bool, s ...string) *BUTTONElement {
 	return e
 }
 
+// The class global attribute is a space-separated list of the case-sensitive
+// classes of the element
+// Classes allow CSS and JavaScript to select and access specific elements via the
+// class selectors or functions like the DOM method
+// document.getElementsByClassName.
 // Remove the attribute CLASS from the element.
 func (e *BUTTONElement) CLASSRemove(s ...string) *BUTTONElement {
 	if e.DelimitedStrings == nil {
@@ -798,6 +923,9 @@ const (
 	ButtonContenteditable_plaintext_only ButtonContenteditableChoice = "plaintext-only"
 )
 
+// The contenteditable global attribute is an enumerated attribute indicating if
+// the element should be editable by the user
+// If so, the browser modifies its widget to allow editing.
 // Remove the attribute CONTENTEDITABLE from the element.
 func (e *BUTTONElement) CONTENTEDITABLERemove(c ButtonContenteditableChoice) *BUTTONElement {
 	if e.StringAttributes == nil {
@@ -846,6 +974,21 @@ const (
 	ButtonDir_auto ButtonDirChoice = "auto"
 )
 
+// The dir global attribute is an enumerated attribute that indicates the
+// directionality of the element's text
+// Note: This attribute is mandatory for the <bdo> element where it has a
+// different semantic meaning
+// This attribute is not inherited by the <bdi> element
+// If not set, its value is auto
+// This attribute can be overridden by the CSS properties direction and
+// unicode-bidi, if a CSS page is active and the element supports these properties
+// As the directionality of the text is semantically related to its content and
+// not to its presentation, it is recommended that web developers use this
+// attribute instead of the related CSS properties when possible
+// That way, the text will display correctly even on a browser that doesn't
+// support CSS or has the CSS deactivated
+// The auto value should be used for data with an unknown directionality, like
+// data coming from user input, eventually stored in a database.
 // Remove the attribute DIR from the element.
 func (e *BUTTONElement) DIRRemove(c ButtonDirChoice) *BUTTONElement {
 	if e.StringAttributes == nil {
@@ -883,6 +1026,9 @@ const (
 	ButtonDraggable_auto ButtonDraggableChoice = "auto"
 )
 
+// The draggable global attribute is an enumerated attribute that indicates
+// whether the element can be dragged, either with native browser behavior or the
+// HTML Drag and Drop API.
 // Remove the attribute DRAGGABLE from the element.
 func (e *BUTTONElement) DRAGGABLERemove(c ButtonDraggableChoice) *BUTTONElement {
 	if e.StringAttributes == nil {
@@ -923,6 +1069,8 @@ const (
 	ButtonEnterkeyhint_send ButtonEnterkeyhintChoice = "send"
 )
 
+// The enterkeyhint global attribute is an enumerated attribute defining what
+// action label (or icon) to present for the enter key on virtual keyboards.
 // Remove the attribute ENTERKEYHINT from the element.
 func (e *BUTTONElement) ENTERKEYHINTRemove(c ButtonEnterkeyhintChoice) *BUTTONElement {
 	if e.StringAttributes == nil {
@@ -965,6 +1113,26 @@ func (e *BUTTONElement) EXPORTPARTS(s ...string) *BUTTONElement {
 	return e
 }
 
+// The exportparts global attribute allows you to select and style elements
+// existing in nested shadow trees, by exporting their part names
+// The shadow tree is an isolated structure where identifiers, classes, and styles
+// cannot be reached by selectors or queries belonging to a regular DOM
+// To apply a style to an element living in a shadow tree, by CSS rule created
+// outside of it, part global attribute has to be used
+// It has to be assigned to an element present in Shadow Tree, and its value
+// should be some identifier
+// Rules present outside of the shadow tree, must use the ::part pseudo-element,
+// containing the same identifier as the argument
+// The global attribute part makes the element visible on just a single level of
+// depth
+// When the shadow tree is nested, parts will be visible only to the parent of the
+// shadow tree but not to its ancestor
+// Exporting parts further down is exactly what exportparts attribute is for
+// Attribute exportparts must be placed on a shadow Host, which is the element to
+// which the shadow tree is attached
+// The value of the attribute should be a comma-separated list of part names
+// present in the shadow tree and which should be made available via a DOM outside
+// of the current structure.
 func (e *BUTTONElement) IfEXPORTPARTS(condition bool, s ...string) *BUTTONElement {
 	if condition {
 		e.EXPORTPARTS(s...)
@@ -972,6 +1140,26 @@ func (e *BUTTONElement) IfEXPORTPARTS(condition bool, s ...string) *BUTTONElemen
 	return e
 }
 
+// The exportparts global attribute allows you to select and style elements
+// existing in nested shadow trees, by exporting their part names
+// The shadow tree is an isolated structure where identifiers, classes, and styles
+// cannot be reached by selectors or queries belonging to a regular DOM
+// To apply a style to an element living in a shadow tree, by CSS rule created
+// outside of it, part global attribute has to be used
+// It has to be assigned to an element present in Shadow Tree, and its value
+// should be some identifier
+// Rules present outside of the shadow tree, must use the ::part pseudo-element,
+// containing the same identifier as the argument
+// The global attribute part makes the element visible on just a single level of
+// depth
+// When the shadow tree is nested, parts will be visible only to the parent of the
+// shadow tree but not to its ancestor
+// Exporting parts further down is exactly what exportparts attribute is for
+// Attribute exportparts must be placed on a shadow Host, which is the element to
+// which the shadow tree is attached
+// The value of the attribute should be a comma-separated list of part names
+// present in the shadow tree and which should be made available via a DOM outside
+// of the current structure.
 // Remove the attribute EXPORTPARTS from the element.
 func (e *BUTTONElement) EXPORTPARTSRemove(s ...string) *BUTTONElement {
 	if e.DelimitedStrings == nil {
@@ -1026,6 +1214,21 @@ const (
 	ButtonHidden_until_found ButtonHiddenChoice = "until-found"
 )
 
+// The hidden global attribute is a Boolean attribute indicating that the element
+// is not yet, or is no longer, relevant
+// For example, it can be used to hide elements of the page that can't be used
+// until the login process has been completed
+// Note that browsers typically implement hidden until found using
+// content-visibility: hidden
+// This means that unlike elements in the hidden state, elements in the hidden
+// until found state will have generated boxes, meaning that: the element will
+// participate in page layout margin, borders, padding, and background for the
+// element will be rendered
+// Also, the element needs to be affected by layout containment in order to be
+// revealed
+// This means that if the element in the hidden until found state has a display
+// value of none, contents, or inline, then the element will not be revealed by
+// find in page or fragment navigation.
 // Remove the attribute HIDDEN from the element.
 func (e *BUTTONElement) HIDDENRemove(c ButtonHiddenChoice) *BUTTONElement {
 	if e.StringAttributes == nil {
@@ -1047,10 +1250,18 @@ func (e *BUTTONElement) ID(s string) *BUTTONElement {
 	return e
 }
 
+// The id global attribute defines a unique identifier (ID) which must be unique
+// in the whole document
+// Its purpose is to identify the element when linking (using a fragment
+// identifier), scripting, or styling (with CSS).
 func (e *BUTTONElement) IDF(format string, args ...any) *BUTTONElement {
 	return e.ID(fmt.Sprintf(format, args...))
 }
 
+// The id global attribute defines a unique identifier (ID) which must be unique
+// in the whole document
+// Its purpose is to identify the element when linking (using a fragment
+// identifier), scripting, or styling (with CSS).
 func (e *BUTTONElement) IfID(condition bool, s string) *BUTTONElement {
 	if condition {
 		e.ID(s)
@@ -1058,6 +1269,10 @@ func (e *BUTTONElement) IfID(condition bool, s string) *BUTTONElement {
 	return e
 }
 
+// The id global attribute defines a unique identifier (ID) which must be unique
+// in the whole document
+// Its purpose is to identify the element when linking (using a fragment
+// identifier), scripting, or styling (with CSS).
 func (e *BUTTONElement) IfIDF(condition bool, format string, args ...any) *BUTTONElement {
 	if condition {
 		e.ID(fmt.Sprintf(format, args...))
@@ -1065,6 +1280,10 @@ func (e *BUTTONElement) IfIDF(condition bool, format string, args ...any) *BUTTO
 	return e
 }
 
+// The id global attribute defines a unique identifier (ID) which must be unique
+// in the whole document
+// Its purpose is to identify the element when linking (using a fragment
+// identifier), scripting, or styling (with CSS).
 // Remove the attribute ID from the element.
 func (e *BUTTONElement) IDRemove(s string) *BUTTONElement {
 	if e.StringAttributes == nil {
@@ -1074,6 +1293,10 @@ func (e *BUTTONElement) IDRemove(s string) *BUTTONElement {
 	return e
 }
 
+// The id global attribute defines a unique identifier (ID) which must be unique
+// in the whole document
+// Its purpose is to identify the element when linking (using a fragment
+// identifier), scripting, or styling (with CSS).
 func (e *BUTTONElement) IDRemoveF(format string, args ...any) *BUTTONElement {
 	return e.IDRemove(fmt.Sprintf(format, args...))
 }
@@ -1095,6 +1318,18 @@ func (e *BUTTONElement) INERT() *BUTTONElement {
 	return e
 }
 
+// The inert global attribute is a Boolean attribute indicating that the browser
+// will ignore the element
+// With the inert attribute, all of the element's flat tree descendants (such as
+// modal <dialog>s) that don't otherwise escape inertness are ignored
+// The inert attribute also makes the browser ignore input events sent by the
+// user, including focus-related events and events from assistive technologies
+// Specifically, inert does the following: Prevents the click event from being
+// fired when the user clicks on the element
+// Prevents the focus event from being raised by preventing the element from
+// gaining focus
+// Hides the element and its content from assistive technologies by excluding them
+// from the accessibility tree.
 func (e *BUTTONElement) IfINERT(condition bool) *BUTTONElement {
 	if condition {
 		e.INERTSet(true)
@@ -1102,6 +1337,18 @@ func (e *BUTTONElement) IfINERT(condition bool) *BUTTONElement {
 	return e
 }
 
+// The inert global attribute is a Boolean attribute indicating that the browser
+// will ignore the element
+// With the inert attribute, all of the element's flat tree descendants (such as
+// modal <dialog>s) that don't otherwise escape inertness are ignored
+// The inert attribute also makes the browser ignore input events sent by the
+// user, including focus-related events and events from assistive technologies
+// Specifically, inert does the following: Prevents the click event from being
+// fired when the user clicks on the element
+// Prevents the focus event from being raised by preventing the element from
+// gaining focus
+// Hides the element and its content from assistive technologies by excluding them
+// from the accessibility tree.
 // Set the attribute INERT to the value b explicitly.
 func (e *BUTTONElement) INERTSet(b bool) *BUTTONElement {
 	if e.BoolAttributes == nil {
@@ -1111,6 +1358,18 @@ func (e *BUTTONElement) INERTSet(b bool) *BUTTONElement {
 	return e
 }
 
+// The inert global attribute is a Boolean attribute indicating that the browser
+// will ignore the element
+// With the inert attribute, all of the element's flat tree descendants (such as
+// modal <dialog>s) that don't otherwise escape inertness are ignored
+// The inert attribute also makes the browser ignore input events sent by the
+// user, including focus-related events and events from assistive technologies
+// Specifically, inert does the following: Prevents the click event from being
+// fired when the user clicks on the element
+// Prevents the focus event from being raised by preventing the element from
+// gaining focus
+// Hides the element and its content from assistive technologies by excluding them
+// from the accessibility tree.
 func (e *BUTTONElement) IfSetINERT(condition bool, b bool) *BUTTONElement {
 	if condition {
 		e.INERTSet(b)
@@ -1119,6 +1378,18 @@ func (e *BUTTONElement) IfSetINERT(condition bool, b bool) *BUTTONElement {
 }
 
 // Remove the attribute INERT from the element.
+// The inert global attribute is a Boolean attribute indicating that the browser
+// will ignore the element
+// With the inert attribute, all of the element's flat tree descendants (such as
+// modal <dialog>s) that don't otherwise escape inertness are ignored
+// The inert attribute also makes the browser ignore input events sent by the
+// user, including focus-related events and events from assistive technologies
+// Specifically, inert does the following: Prevents the click event from being
+// fired when the user clicks on the element
+// Prevents the focus event from being raised by preventing the element from
+// gaining focus
+// Hides the element and its content from assistive technologies by excluding them
+// from the accessibility tree.
 func (e *BUTTONElement) INERTRemove(b bool) *BUTTONElement {
 	if e.BoolAttributes == nil {
 		return e
@@ -1187,6 +1458,17 @@ const (
 	ButtonInputmode_url ButtonInputmodeChoice = "url"
 )
 
+// The inputmode global attribute is an enumerated attribute that hints at the
+// type of data that might be entered by the user while editing the element or its
+// contents
+// This allows a browser to display an appropriate virtual keyboard
+// It is used primarily on <input> elements, but is usable on any element in
+// contenteditable mode
+// It's important to understand that the inputmode attribute doesn't cause any
+// validity requirements to be enforced on input
+// To require that input conforms to a particular data type, choose an appropriate
+// <input> element type
+// For specific guidance on choosing <input> types, see the Values section.
 // Remove the attribute INPUTMODE from the element.
 func (e *BUTTONElement) INPUTMODERemove(c ButtonInputmodeChoice) *BUTTONElement {
 	if e.StringAttributes == nil {
@@ -1210,10 +1492,22 @@ func (e *BUTTONElement) IS(s string) *BUTTONElement {
 	return e
 }
 
+// The is global attribute allows you to specify that a standard HTML element
+// should behave like a defined custom built-in element (see Using custom elements
+// for more details)
+// This attribute can only be used if the specified custom element name has been
+// successfully defined in the current document, and extends the element type it
+// is being applied to.
 func (e *BUTTONElement) ISF(format string, args ...any) *BUTTONElement {
 	return e.IS(fmt.Sprintf(format, args...))
 }
 
+// The is global attribute allows you to specify that a standard HTML element
+// should behave like a defined custom built-in element (see Using custom elements
+// for more details)
+// This attribute can only be used if the specified custom element name has been
+// successfully defined in the current document, and extends the element type it
+// is being applied to.
 func (e *BUTTONElement) IfIS(condition bool, s string) *BUTTONElement {
 	if condition {
 		e.IS(s)
@@ -1221,6 +1515,12 @@ func (e *BUTTONElement) IfIS(condition bool, s string) *BUTTONElement {
 	return e
 }
 
+// The is global attribute allows you to specify that a standard HTML element
+// should behave like a defined custom built-in element (see Using custom elements
+// for more details)
+// This attribute can only be used if the specified custom element name has been
+// successfully defined in the current document, and extends the element type it
+// is being applied to.
 func (e *BUTTONElement) IfISF(condition bool, format string, args ...any) *BUTTONElement {
 	if condition {
 		e.IS(fmt.Sprintf(format, args...))
@@ -1228,6 +1528,12 @@ func (e *BUTTONElement) IfISF(condition bool, format string, args ...any) *BUTTO
 	return e
 }
 
+// The is global attribute allows you to specify that a standard HTML element
+// should behave like a defined custom built-in element (see Using custom elements
+// for more details)
+// This attribute can only be used if the specified custom element name has been
+// successfully defined in the current document, and extends the element type it
+// is being applied to.
 // Remove the attribute IS from the element.
 func (e *BUTTONElement) ISRemove(s string) *BUTTONElement {
 	if e.StringAttributes == nil {
@@ -1237,6 +1543,12 @@ func (e *BUTTONElement) ISRemove(s string) *BUTTONElement {
 	return e
 }
 
+// The is global attribute allows you to specify that a standard HTML element
+// should behave like a defined custom built-in element (see Using custom elements
+// for more details)
+// This attribute can only be used if the specified custom element name has been
+// successfully defined in the current document, and extends the element type it
+// is being applied to.
 func (e *BUTTONElement) ISRemoveF(format string, args ...any) *BUTTONElement {
 	return e.ISRemove(fmt.Sprintf(format, args...))
 }
@@ -1262,10 +1574,36 @@ func (e *BUTTONElement) ITEMID(s string) *BUTTONElement {
 	return e
 }
 
+// The itemid global attribute provides microdata in the form of a unique, global
+// identifier of an item.
+//
+//	An itemid attribute can only be specified for an element that has both
+//
+// itemscope and itemtype attributes
+// Also, itemid can only be specified on elements that possess an itemscope
+// attribute whose corresponding itemtype refers to or defines a vocabulary that
+// supports global identifiers
+// The exact meaning of an itemtype's global identifier is provided by the
+// definition of that identifier within the specified vocabulary
+// The vocabulary defines whether several items with the same global identifier
+// can coexist and, if so, how items with the same identifier are handled.
 func (e *BUTTONElement) ITEMIDF(format string, args ...any) *BUTTONElement {
 	return e.ITEMID(fmt.Sprintf(format, args...))
 }
 
+// The itemid global attribute provides microdata in the form of a unique, global
+// identifier of an item.
+//
+//	An itemid attribute can only be specified for an element that has both
+//
+// itemscope and itemtype attributes
+// Also, itemid can only be specified on elements that possess an itemscope
+// attribute whose corresponding itemtype refers to or defines a vocabulary that
+// supports global identifiers
+// The exact meaning of an itemtype's global identifier is provided by the
+// definition of that identifier within the specified vocabulary
+// The vocabulary defines whether several items with the same global identifier
+// can coexist and, if so, how items with the same identifier are handled.
 func (e *BUTTONElement) IfITEMID(condition bool, s string) *BUTTONElement {
 	if condition {
 		e.ITEMID(s)
@@ -1273,6 +1611,19 @@ func (e *BUTTONElement) IfITEMID(condition bool, s string) *BUTTONElement {
 	return e
 }
 
+// The itemid global attribute provides microdata in the form of a unique, global
+// identifier of an item.
+//
+//	An itemid attribute can only be specified for an element that has both
+//
+// itemscope and itemtype attributes
+// Also, itemid can only be specified on elements that possess an itemscope
+// attribute whose corresponding itemtype refers to or defines a vocabulary that
+// supports global identifiers
+// The exact meaning of an itemtype's global identifier is provided by the
+// definition of that identifier within the specified vocabulary
+// The vocabulary defines whether several items with the same global identifier
+// can coexist and, if so, how items with the same identifier are handled.
 func (e *BUTTONElement) IfITEMIDF(condition bool, format string, args ...any) *BUTTONElement {
 	if condition {
 		e.ITEMID(fmt.Sprintf(format, args...))
@@ -1280,6 +1631,19 @@ func (e *BUTTONElement) IfITEMIDF(condition bool, format string, args ...any) *B
 	return e
 }
 
+// The itemid global attribute provides microdata in the form of a unique, global
+// identifier of an item.
+//
+//	An itemid attribute can only be specified for an element that has both
+//
+// itemscope and itemtype attributes
+// Also, itemid can only be specified on elements that possess an itemscope
+// attribute whose corresponding itemtype refers to or defines a vocabulary that
+// supports global identifiers
+// The exact meaning of an itemtype's global identifier is provided by the
+// definition of that identifier within the specified vocabulary
+// The vocabulary defines whether several items with the same global identifier
+// can coexist and, if so, how items with the same identifier are handled.
 // Remove the attribute ITEMID from the element.
 func (e *BUTTONElement) ITEMIDRemove(s string) *BUTTONElement {
 	if e.StringAttributes == nil {
@@ -1289,6 +1653,19 @@ func (e *BUTTONElement) ITEMIDRemove(s string) *BUTTONElement {
 	return e
 }
 
+// The itemid global attribute provides microdata in the form of a unique, global
+// identifier of an item.
+//
+//	An itemid attribute can only be specified for an element that has both
+//
+// itemscope and itemtype attributes
+// Also, itemid can only be specified on elements that possess an itemscope
+// attribute whose corresponding itemtype refers to or defines a vocabulary that
+// supports global identifiers
+// The exact meaning of an itemtype's global identifier is provided by the
+// definition of that identifier within the specified vocabulary
+// The vocabulary defines whether several items with the same global identifier
+// can coexist and, if so, how items with the same identifier are handled.
 func (e *BUTTONElement) ITEMIDRemoveF(format string, args ...any) *BUTTONElement {
 	return e.ITEMIDRemove(fmt.Sprintf(format, args...))
 }
@@ -1309,10 +1686,26 @@ func (e *BUTTONElement) ITEMPROP(s string) *BUTTONElement {
 	return e
 }
 
+// The itemprop global attribute is used to add properties to an item
+// Every HTML element can have an itemprop attribute specified, and an itemprop
+// consists of a name-value pair
+// Each name-value pair is called a property, and a group of one or more
+// properties forms an item
+// Property values are either a string or a URL and can be associated with a very
+// wide range of elements including <audio>, <embed>, <iframe>, <img>, <link>,
+// <object>, <source>, <track>, and <video>.
 func (e *BUTTONElement) ITEMPROPF(format string, args ...any) *BUTTONElement {
 	return e.ITEMPROP(fmt.Sprintf(format, args...))
 }
 
+// The itemprop global attribute is used to add properties to an item
+// Every HTML element can have an itemprop attribute specified, and an itemprop
+// consists of a name-value pair
+// Each name-value pair is called a property, and a group of one or more
+// properties forms an item
+// Property values are either a string or a URL and can be associated with a very
+// wide range of elements including <audio>, <embed>, <iframe>, <img>, <link>,
+// <object>, <source>, <track>, and <video>.
 func (e *BUTTONElement) IfITEMPROP(condition bool, s string) *BUTTONElement {
 	if condition {
 		e.ITEMPROP(s)
@@ -1320,6 +1713,14 @@ func (e *BUTTONElement) IfITEMPROP(condition bool, s string) *BUTTONElement {
 	return e
 }
 
+// The itemprop global attribute is used to add properties to an item
+// Every HTML element can have an itemprop attribute specified, and an itemprop
+// consists of a name-value pair
+// Each name-value pair is called a property, and a group of one or more
+// properties forms an item
+// Property values are either a string or a URL and can be associated with a very
+// wide range of elements including <audio>, <embed>, <iframe>, <img>, <link>,
+// <object>, <source>, <track>, and <video>.
 func (e *BUTTONElement) IfITEMPROPF(condition bool, format string, args ...any) *BUTTONElement {
 	if condition {
 		e.ITEMPROP(fmt.Sprintf(format, args...))
@@ -1327,6 +1728,14 @@ func (e *BUTTONElement) IfITEMPROPF(condition bool, format string, args ...any) 
 	return e
 }
 
+// The itemprop global attribute is used to add properties to an item
+// Every HTML element can have an itemprop attribute specified, and an itemprop
+// consists of a name-value pair
+// Each name-value pair is called a property, and a group of one or more
+// properties forms an item
+// Property values are either a string or a URL and can be associated with a very
+// wide range of elements including <audio>, <embed>, <iframe>, <img>, <link>,
+// <object>, <source>, <track>, and <video>.
 // Remove the attribute ITEMPROP from the element.
 func (e *BUTTONElement) ITEMPROPRemove(s string) *BUTTONElement {
 	if e.StringAttributes == nil {
@@ -1336,6 +1745,14 @@ func (e *BUTTONElement) ITEMPROPRemove(s string) *BUTTONElement {
 	return e
 }
 
+// The itemprop global attribute is used to add properties to an item
+// Every HTML element can have an itemprop attribute specified, and an itemprop
+// consists of a name-value pair
+// Each name-value pair is called a property, and a group of one or more
+// properties forms an item
+// Property values are either a string or a URL and can be associated with a very
+// wide range of elements including <audio>, <embed>, <iframe>, <img>, <link>,
+// <object>, <source>, <track>, and <video>.
 func (e *BUTTONElement) ITEMPROPRemoveF(format string, args ...any) *BUTTONElement {
 	return e.ITEMPROPRemove(fmt.Sprintf(format, args...))
 }
@@ -1353,10 +1770,20 @@ func (e *BUTTONElement) ITEMREF(s string) *BUTTONElement {
 	return e
 }
 
+// Properties that are not descendants of an element with the itemscope attribute
+// can be associated with an item using the global attribute itemref
+// itemref provides a list of element IDs (not itemids) elsewhere in the document,
+// with additional properties The itemref attribute can only be specified on
+// elements that have an itemscope attribute specified.
 func (e *BUTTONElement) ITEMREFF(format string, args ...any) *BUTTONElement {
 	return e.ITEMREF(fmt.Sprintf(format, args...))
 }
 
+// Properties that are not descendants of an element with the itemscope attribute
+// can be associated with an item using the global attribute itemref
+// itemref provides a list of element IDs (not itemids) elsewhere in the document,
+// with additional properties The itemref attribute can only be specified on
+// elements that have an itemscope attribute specified.
 func (e *BUTTONElement) IfITEMREF(condition bool, s string) *BUTTONElement {
 	if condition {
 		e.ITEMREF(s)
@@ -1364,6 +1791,11 @@ func (e *BUTTONElement) IfITEMREF(condition bool, s string) *BUTTONElement {
 	return e
 }
 
+// Properties that are not descendants of an element with the itemscope attribute
+// can be associated with an item using the global attribute itemref
+// itemref provides a list of element IDs (not itemids) elsewhere in the document,
+// with additional properties The itemref attribute can only be specified on
+// elements that have an itemscope attribute specified.
 func (e *BUTTONElement) IfITEMREFF(condition bool, format string, args ...any) *BUTTONElement {
 	if condition {
 		e.ITEMREF(fmt.Sprintf(format, args...))
@@ -1371,6 +1803,11 @@ func (e *BUTTONElement) IfITEMREFF(condition bool, format string, args ...any) *
 	return e
 }
 
+// Properties that are not descendants of an element with the itemscope attribute
+// can be associated with an item using the global attribute itemref
+// itemref provides a list of element IDs (not itemids) elsewhere in the document,
+// with additional properties The itemref attribute can only be specified on
+// elements that have an itemscope attribute specified.
 // Remove the attribute ITEMREF from the element.
 func (e *BUTTONElement) ITEMREFRemove(s string) *BUTTONElement {
 	if e.StringAttributes == nil {
@@ -1380,6 +1817,11 @@ func (e *BUTTONElement) ITEMREFRemove(s string) *BUTTONElement {
 	return e
 }
 
+// Properties that are not descendants of an element with the itemscope attribute
+// can be associated with an item using the global attribute itemref
+// itemref provides a list of element IDs (not itemids) elsewhere in the document,
+// with additional properties The itemref attribute can only be specified on
+// elements that have an itemscope attribute specified.
 func (e *BUTTONElement) ITEMREFRemoveF(format string, args ...any) *BUTTONElement {
 	return e.ITEMREFRemove(fmt.Sprintf(format, args...))
 }
@@ -1397,6 +1839,14 @@ func (e *BUTTONElement) ITEMSCOPE() *BUTTONElement {
 	return e
 }
 
+// The itemscope global attribute is used to add an item to a microdata DOM tree
+// Every HTML element can have an itemscope attribute specified, and an itemscope
+// consists of a name-value pair
+// Each name-value pair is called a property, and a group of one or more
+// properties forms an item
+// Property values are either a string or a URL and can be associated with a very
+// wide range of elements including <audio>, <embed>, <iframe>, <img>, <link>,
+// <object>, <source>, <track>, and <video>.
 func (e *BUTTONElement) IfITEMSCOPE(condition bool) *BUTTONElement {
 	if condition {
 		e.ITEMSCOPESet(true)
@@ -1404,6 +1854,14 @@ func (e *BUTTONElement) IfITEMSCOPE(condition bool) *BUTTONElement {
 	return e
 }
 
+// The itemscope global attribute is used to add an item to a microdata DOM tree
+// Every HTML element can have an itemscope attribute specified, and an itemscope
+// consists of a name-value pair
+// Each name-value pair is called a property, and a group of one or more
+// properties forms an item
+// Property values are either a string or a URL and can be associated with a very
+// wide range of elements including <audio>, <embed>, <iframe>, <img>, <link>,
+// <object>, <source>, <track>, and <video>.
 // Set the attribute ITEMSCOPE to the value b explicitly.
 func (e *BUTTONElement) ITEMSCOPESet(b bool) *BUTTONElement {
 	if e.BoolAttributes == nil {
@@ -1413,6 +1871,14 @@ func (e *BUTTONElement) ITEMSCOPESet(b bool) *BUTTONElement {
 	return e
 }
 
+// The itemscope global attribute is used to add an item to a microdata DOM tree
+// Every HTML element can have an itemscope attribute specified, and an itemscope
+// consists of a name-value pair
+// Each name-value pair is called a property, and a group of one or more
+// properties forms an item
+// Property values are either a string or a URL and can be associated with a very
+// wide range of elements including <audio>, <embed>, <iframe>, <img>, <link>,
+// <object>, <source>, <track>, and <video>.
 func (e *BUTTONElement) IfSetITEMSCOPE(condition bool, b bool) *BUTTONElement {
 	if condition {
 		e.ITEMSCOPESet(b)
@@ -1421,6 +1887,14 @@ func (e *BUTTONElement) IfSetITEMSCOPE(condition bool, b bool) *BUTTONElement {
 }
 
 // Remove the attribute ITEMSCOPE from the element.
+// The itemscope global attribute is used to add an item to a microdata DOM tree
+// Every HTML element can have an itemscope attribute specified, and an itemscope
+// consists of a name-value pair
+// Each name-value pair is called a property, and a group of one or more
+// properties forms an item
+// Property values are either a string or a URL and can be associated with a very
+// wide range of elements including <audio>, <embed>, <iframe>, <img>, <link>,
+// <object>, <source>, <track>, and <video>.
 func (e *BUTTONElement) ITEMSCOPERemove(b bool) *BUTTONElement {
 	if e.BoolAttributes == nil {
 		return e
@@ -1445,10 +1919,26 @@ func (e *BUTTONElement) ITEMTYPE(s string) *BUTTONElement {
 	return e
 }
 
+// The itemtype global attribute is used to add types to an item
+// Every HTML element can have an itemtype attribute specified, and an itemtype
+// consists of a name-value pair
+// Each name-value pair is called a property, and a group of one or more
+// properties forms an item
+// Property values are either a string or a URL and can be associated with a very
+// wide range of elements including <audio>, <embed>, <iframe>, <img>, <link>,
+// <object>, <source>, <track>, and <video>.
 func (e *BUTTONElement) ITEMTYPEF(format string, args ...any) *BUTTONElement {
 	return e.ITEMTYPE(fmt.Sprintf(format, args...))
 }
 
+// The itemtype global attribute is used to add types to an item
+// Every HTML element can have an itemtype attribute specified, and an itemtype
+// consists of a name-value pair
+// Each name-value pair is called a property, and a group of one or more
+// properties forms an item
+// Property values are either a string or a URL and can be associated with a very
+// wide range of elements including <audio>, <embed>, <iframe>, <img>, <link>,
+// <object>, <source>, <track>, and <video>.
 func (e *BUTTONElement) IfITEMTYPE(condition bool, s string) *BUTTONElement {
 	if condition {
 		e.ITEMTYPE(s)
@@ -1456,6 +1946,14 @@ func (e *BUTTONElement) IfITEMTYPE(condition bool, s string) *BUTTONElement {
 	return e
 }
 
+// The itemtype global attribute is used to add types to an item
+// Every HTML element can have an itemtype attribute specified, and an itemtype
+// consists of a name-value pair
+// Each name-value pair is called a property, and a group of one or more
+// properties forms an item
+// Property values are either a string or a URL and can be associated with a very
+// wide range of elements including <audio>, <embed>, <iframe>, <img>, <link>,
+// <object>, <source>, <track>, and <video>.
 func (e *BUTTONElement) IfITEMTYPEF(condition bool, format string, args ...any) *BUTTONElement {
 	if condition {
 		e.ITEMTYPE(fmt.Sprintf(format, args...))
@@ -1463,6 +1961,14 @@ func (e *BUTTONElement) IfITEMTYPEF(condition bool, format string, args ...any) 
 	return e
 }
 
+// The itemtype global attribute is used to add types to an item
+// Every HTML element can have an itemtype attribute specified, and an itemtype
+// consists of a name-value pair
+// Each name-value pair is called a property, and a group of one or more
+// properties forms an item
+// Property values are either a string or a URL and can be associated with a very
+// wide range of elements including <audio>, <embed>, <iframe>, <img>, <link>,
+// <object>, <source>, <track>, and <video>.
 // Remove the attribute ITEMTYPE from the element.
 func (e *BUTTONElement) ITEMTYPERemove(s string) *BUTTONElement {
 	if e.StringAttributes == nil {
@@ -1472,6 +1978,14 @@ func (e *BUTTONElement) ITEMTYPERemove(s string) *BUTTONElement {
 	return e
 }
 
+// The itemtype global attribute is used to add types to an item
+// Every HTML element can have an itemtype attribute specified, and an itemtype
+// consists of a name-value pair
+// Each name-value pair is called a property, and a group of one or more
+// properties forms an item
+// Property values are either a string or a URL and can be associated with a very
+// wide range of elements including <audio>, <embed>, <iframe>, <img>, <link>,
+// <object>, <source>, <track>, and <video>.
 func (e *BUTTONElement) ITEMTYPERemoveF(format string, args ...any) *BUTTONElement {
 	return e.ITEMTYPERemove(fmt.Sprintf(format, args...))
 }
@@ -1490,10 +2004,22 @@ func (e *BUTTONElement) LANG(s string) *BUTTONElement {
 	return e
 }
 
+// The lang global attribute helps define the language of an element: the language
+// that non-editable elements are written in or the language that editable
+// elements should be written in by the user
+// The tag contains one single entry value in the format defines in the Tags for
+// Identifying Languages (BCP47) IETF document
+// xml:lang has priority over it.
 func (e *BUTTONElement) LANGF(format string, args ...any) *BUTTONElement {
 	return e.LANG(fmt.Sprintf(format, args...))
 }
 
+// The lang global attribute helps define the language of an element: the language
+// that non-editable elements are written in or the language that editable
+// elements should be written in by the user
+// The tag contains one single entry value in the format defines in the Tags for
+// Identifying Languages (BCP47) IETF document
+// xml:lang has priority over it.
 func (e *BUTTONElement) IfLANG(condition bool, s string) *BUTTONElement {
 	if condition {
 		e.LANG(s)
@@ -1501,6 +2027,12 @@ func (e *BUTTONElement) IfLANG(condition bool, s string) *BUTTONElement {
 	return e
 }
 
+// The lang global attribute helps define the language of an element: the language
+// that non-editable elements are written in or the language that editable
+// elements should be written in by the user
+// The tag contains one single entry value in the format defines in the Tags for
+// Identifying Languages (BCP47) IETF document
+// xml:lang has priority over it.
 func (e *BUTTONElement) IfLANGF(condition bool, format string, args ...any) *BUTTONElement {
 	if condition {
 		e.LANG(fmt.Sprintf(format, args...))
@@ -1508,6 +2040,12 @@ func (e *BUTTONElement) IfLANGF(condition bool, format string, args ...any) *BUT
 	return e
 }
 
+// The lang global attribute helps define the language of an element: the language
+// that non-editable elements are written in or the language that editable
+// elements should be written in by the user
+// The tag contains one single entry value in the format defines in the Tags for
+// Identifying Languages (BCP47) IETF document
+// xml:lang has priority over it.
 // Remove the attribute LANG from the element.
 func (e *BUTTONElement) LANGRemove(s string) *BUTTONElement {
 	if e.StringAttributes == nil {
@@ -1517,6 +2055,12 @@ func (e *BUTTONElement) LANGRemove(s string) *BUTTONElement {
 	return e
 }
 
+// The lang global attribute helps define the language of an element: the language
+// that non-editable elements are written in or the language that editable
+// elements should be written in by the user
+// The tag contains one single entry value in the format defines in the Tags for
+// Identifying Languages (BCP47) IETF document
+// xml:lang has priority over it.
 func (e *BUTTONElement) LANGRemoveF(format string, args ...any) *BUTTONElement {
 	return e.LANGRemove(fmt.Sprintf(format, args...))
 }
@@ -1533,10 +2077,18 @@ func (e *BUTTONElement) NONCE(s string) *BUTTONElement {
 	return e
 }
 
+// The nonce global attribute is a unique identifier used to declare inline
+// scripts and style elements to be used in a specific document
+// It is a cryptographic nonce (number used once) that is used by Content Security
+// Policy to determine whether or not a given inline script is allowed to execute.
 func (e *BUTTONElement) NONCEF(format string, args ...any) *BUTTONElement {
 	return e.NONCE(fmt.Sprintf(format, args...))
 }
 
+// The nonce global attribute is a unique identifier used to declare inline
+// scripts and style elements to be used in a specific document
+// It is a cryptographic nonce (number used once) that is used by Content Security
+// Policy to determine whether or not a given inline script is allowed to execute.
 func (e *BUTTONElement) IfNONCE(condition bool, s string) *BUTTONElement {
 	if condition {
 		e.NONCE(s)
@@ -1544,6 +2096,10 @@ func (e *BUTTONElement) IfNONCE(condition bool, s string) *BUTTONElement {
 	return e
 }
 
+// The nonce global attribute is a unique identifier used to declare inline
+// scripts and style elements to be used in a specific document
+// It is a cryptographic nonce (number used once) that is used by Content Security
+// Policy to determine whether or not a given inline script is allowed to execute.
 func (e *BUTTONElement) IfNONCEF(condition bool, format string, args ...any) *BUTTONElement {
 	if condition {
 		e.NONCE(fmt.Sprintf(format, args...))
@@ -1551,6 +2107,10 @@ func (e *BUTTONElement) IfNONCEF(condition bool, format string, args ...any) *BU
 	return e
 }
 
+// The nonce global attribute is a unique identifier used to declare inline
+// scripts and style elements to be used in a specific document
+// It is a cryptographic nonce (number used once) that is used by Content Security
+// Policy to determine whether or not a given inline script is allowed to execute.
 // Remove the attribute NONCE from the element.
 func (e *BUTTONElement) NONCERemove(s string) *BUTTONElement {
 	if e.StringAttributes == nil {
@@ -1560,6 +2120,10 @@ func (e *BUTTONElement) NONCERemove(s string) *BUTTONElement {
 	return e
 }
 
+// The nonce global attribute is a unique identifier used to declare inline
+// scripts and style elements to be used in a specific document
+// It is a cryptographic nonce (number used once) that is used by Content Security
+// Policy to determine whether or not a given inline script is allowed to execute.
 func (e *BUTTONElement) NONCERemoveF(format string, args ...any) *BUTTONElement {
 	return e.NONCERemove(fmt.Sprintf(format, args...))
 }
@@ -1581,6 +2145,10 @@ func (e *BUTTONElement) PART(s ...string) *BUTTONElement {
 	return e
 }
 
+// The part global attribute contains a space-separated list of the part names of
+// the element
+// Part names allows CSS to select and style specific elements in a shadow tree
+// via the ::part pseudo-element.
 func (e *BUTTONElement) IfPART(condition bool, s ...string) *BUTTONElement {
 	if condition {
 		e.PART(s...)
@@ -1588,6 +2156,10 @@ func (e *BUTTONElement) IfPART(condition bool, s ...string) *BUTTONElement {
 	return e
 }
 
+// The part global attribute contains a space-separated list of the part names of
+// the element
+// Part names allows CSS to select and style specific elements in a shadow tree
+// via the ::part pseudo-element.
 // Remove the attribute PART from the element.
 func (e *BUTTONElement) PARTRemove(s ...string) *BUTTONElement {
 	if e.DelimitedStrings == nil {
@@ -1634,6 +2206,15 @@ const (
 	ButtonPopover_manual ButtonPopoverChoice = "manual"
 )
 
+// The popover global attribute is used to designate an element as a popover
+// element
+// Popover elements are hidden via display: none until opened via an
+// invoking/control element (i.e
+// a <button> or <input type="button"> with a popovertarget attribute) or a
+// HTMLElement.showPopover() call
+// When open, popover elements will appear above all other elements in the top
+// layer, and won't be influenced by parent elements' position or overflow
+// styling.
 // Remove the attribute POPOVER from the element.
 func (e *BUTTONElement) POPOVERRemove(c ButtonPopoverChoice) *BUTTONElement {
 	if e.StringAttributes == nil {
@@ -1656,10 +2237,20 @@ func (e *BUTTONElement) ROLE(s string) *BUTTONElement {
 	return e
 }
 
+// The role global attribute is used to define the purpose or state of an element
+// to the browser, in order to facilitate assistive technology such as screen
+// readers
+// It is a simple string value that can be used to describe the role of an
+// element.
 func (e *BUTTONElement) ROLEF(format string, args ...any) *BUTTONElement {
 	return e.ROLE(fmt.Sprintf(format, args...))
 }
 
+// The role global attribute is used to define the purpose or state of an element
+// to the browser, in order to facilitate assistive technology such as screen
+// readers
+// It is a simple string value that can be used to describe the role of an
+// element.
 func (e *BUTTONElement) IfROLE(condition bool, s string) *BUTTONElement {
 	if condition {
 		e.ROLE(s)
@@ -1667,6 +2258,11 @@ func (e *BUTTONElement) IfROLE(condition bool, s string) *BUTTONElement {
 	return e
 }
 
+// The role global attribute is used to define the purpose or state of an element
+// to the browser, in order to facilitate assistive technology such as screen
+// readers
+// It is a simple string value that can be used to describe the role of an
+// element.
 func (e *BUTTONElement) IfROLEF(condition bool, format string, args ...any) *BUTTONElement {
 	if condition {
 		e.ROLE(fmt.Sprintf(format, args...))
@@ -1674,6 +2270,11 @@ func (e *BUTTONElement) IfROLEF(condition bool, format string, args ...any) *BUT
 	return e
 }
 
+// The role global attribute is used to define the purpose or state of an element
+// to the browser, in order to facilitate assistive technology such as screen
+// readers
+// It is a simple string value that can be used to describe the role of an
+// element.
 // Remove the attribute ROLE from the element.
 func (e *BUTTONElement) ROLERemove(s string) *BUTTONElement {
 	if e.StringAttributes == nil {
@@ -1683,6 +2284,11 @@ func (e *BUTTONElement) ROLERemove(s string) *BUTTONElement {
 	return e
 }
 
+// The role global attribute is used to define the purpose or state of an element
+// to the browser, in order to facilitate assistive technology such as screen
+// readers
+// It is a simple string value that can be used to describe the role of an
+// element.
 func (e *BUTTONElement) ROLERemoveF(format string, args ...any) *BUTTONElement {
 	return e.ROLERemove(fmt.Sprintf(format, args...))
 }
@@ -1699,10 +2305,18 @@ func (e *BUTTONElement) SLOT(s string) *BUTTONElement {
 	return e
 }
 
+// The slot global attribute assigns a slot in a shadow DOM shadow tree to an
+// element: An element with a slot attribute is assigned to the slot created by
+// the <slot> element whose name attribute's value matches that slot attribute's
+// value.
 func (e *BUTTONElement) SLOTF(format string, args ...any) *BUTTONElement {
 	return e.SLOT(fmt.Sprintf(format, args...))
 }
 
+// The slot global attribute assigns a slot in a shadow DOM shadow tree to an
+// element: An element with a slot attribute is assigned to the slot created by
+// the <slot> element whose name attribute's value matches that slot attribute's
+// value.
 func (e *BUTTONElement) IfSLOT(condition bool, s string) *BUTTONElement {
 	if condition {
 		e.SLOT(s)
@@ -1710,6 +2324,10 @@ func (e *BUTTONElement) IfSLOT(condition bool, s string) *BUTTONElement {
 	return e
 }
 
+// The slot global attribute assigns a slot in a shadow DOM shadow tree to an
+// element: An element with a slot attribute is assigned to the slot created by
+// the <slot> element whose name attribute's value matches that slot attribute's
+// value.
 func (e *BUTTONElement) IfSLOTF(condition bool, format string, args ...any) *BUTTONElement {
 	if condition {
 		e.SLOT(fmt.Sprintf(format, args...))
@@ -1717,6 +2335,10 @@ func (e *BUTTONElement) IfSLOTF(condition bool, format string, args ...any) *BUT
 	return e
 }
 
+// The slot global attribute assigns a slot in a shadow DOM shadow tree to an
+// element: An element with a slot attribute is assigned to the slot created by
+// the <slot> element whose name attribute's value matches that slot attribute's
+// value.
 // Remove the attribute SLOT from the element.
 func (e *BUTTONElement) SLOTRemove(s string) *BUTTONElement {
 	if e.StringAttributes == nil {
@@ -1726,6 +2348,10 @@ func (e *BUTTONElement) SLOTRemove(s string) *BUTTONElement {
 	return e
 }
 
+// The slot global attribute assigns a slot in a shadow DOM shadow tree to an
+// element: An element with a slot attribute is assigned to the slot created by
+// the <slot> element whose name attribute's value matches that slot attribute's
+// value.
 func (e *BUTTONElement) SLOTRemoveF(format string, args ...any) *BUTTONElement {
 	return e.SLOTRemove(fmt.Sprintf(format, args...))
 }
@@ -1763,6 +2389,20 @@ const (
 	ButtonSpellcheck_false ButtonSpellcheckChoice = "false"
 )
 
+// The spellcheck global attribute is an enumerated attribute that defines whether
+// the element may be checked for spelling errors
+// If this attribute is not set, its default value is element-type and
+// browser-defined
+// This default value may also be inherited, which means that the element content
+// will be checked for spelling errors only if its nearest ancestor has a
+// spellcheck state of true
+// Security and privacy concerns Using spellchecking can have consequences for
+// users' security and privacy
+// The specification does not regulate how spellchecking is done and the content
+// of the element may be sent to a third party for spellchecking results (see
+// enhanced spellchecking and "spell-jacking")
+// You should consider setting spellcheck to false for elements that can contain
+// sensitive information.
 // Remove the attribute SPELLCHECK from the element.
 func (e *BUTTONElement) SPELLCHECKRemove(c ButtonSpellcheckChoice) *BUTTONElement {
 	if e.StringAttributes == nil {
@@ -1779,6 +2419,9 @@ func (e *BUTTONElement) STYLEF(k string, format string, args ...any) *BUTTONElem
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+// The style global attribute is used to add styles to an element, such as color,
+// font, size, and more
+// Styles are written in CSS.
 func (e *BUTTONElement) IfSTYLE(condition bool, k string, v string) *BUTTONElement {
 	if condition {
 		e.STYLE(k, v)
@@ -1786,6 +2429,9 @@ func (e *BUTTONElement) IfSTYLE(condition bool, k string, v string) *BUTTONEleme
 	return e
 }
 
+// The style global attribute is used to add styles to an element, such as color,
+// font, size, and more
+// Styles are written in CSS.
 func (e *BUTTONElement) STYLE(k string, v string) *BUTTONElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -1799,6 +2445,9 @@ func (e *BUTTONElement) STYLE(k string, v string) *BUTTONElement {
 	return e
 }
 
+// The style global attribute is used to add styles to an element, such as color,
+// font, size, and more
+// Styles are written in CSS.
 func (e *BUTTONElement) IfSTYLEF(condition bool, k string, format string, args ...any) *BUTTONElement {
 	if condition {
 		e.STYLE(k, fmt.Sprintf(format, args...))
@@ -1806,6 +2455,9 @@ func (e *BUTTONElement) IfSTYLEF(condition bool, k string, format string, args .
 	return e
 }
 
+// The style global attribute is used to add styles to an element, such as color,
+// font, size, and more
+// Styles are written in CSS.
 // Add the attributes in the map to the element.
 func (e *BUTTONElement) STYLEMap(m map[string]string) *BUTTONElement {
 	if e.KVStrings == nil {
@@ -1822,6 +2474,9 @@ func (e *BUTTONElement) STYLEMap(m map[string]string) *BUTTONElement {
 	return e
 }
 
+// The style global attribute is used to add styles to an element, such as color,
+// font, size, and more
+// Styles are written in CSS.
 // Add pairs of attributes to the element.
 func (e *BUTTONElement) STYLEPairs(pairs ...string) *BUTTONElement {
 	if len(pairs)%2 != 0 {
@@ -1843,6 +2498,9 @@ func (e *BUTTONElement) STYLEPairs(pairs ...string) *BUTTONElement {
 	return e
 }
 
+// The style global attribute is used to add styles to an element, such as color,
+// font, size, and more
+// Styles are written in CSS.
 func (e *BUTTONElement) IfSTYLEPairs(condition bool, pairs ...string) *BUTTONElement {
 	if condition {
 		e.STYLEPairs(pairs...)
@@ -1850,6 +2508,9 @@ func (e *BUTTONElement) IfSTYLEPairs(condition bool, pairs ...string) *BUTTONEle
 	return e
 }
 
+// The style global attribute is used to add styles to an element, such as color,
+// font, size, and more
+// Styles are written in CSS.
 // Remove the attribute STYLE from the element.
 func (e *BUTTONElement) STYLERemove(keys ...string) *BUTTONElement {
 	if e.KVStrings == nil {
@@ -1887,6 +2548,20 @@ func (e *BUTTONElement) TABINDEX(i int) *BUTTONElement {
 	return e
 }
 
+// The tabindex global attribute indicates if its element can be focused, and
+// if/where it participates in sequential keyboard navigation (usually with the
+// Tab key, hence the name)
+// It accepts an integer as a value, with different results depending on the
+// integer's value: a negative value (usually tabindex="-1") means that the
+// element should be focusable, but should not be reachable via sequential
+// keyboard navigation; a value of 0 (tabindex="0") means that the element should
+// be focusable and reachable via sequential keyboard navigation, but its relative
+// order is defined by the platform convention; a positive value means should be
+// focusable and reachable via sequential keyboard navigation; its relative order
+// is defined by the value of the attribute: the sequential follow the increasing
+// number of the tabindex
+// If several elements share the same tabindex, their relative order follows their
+// relative position in the document.
 func (e *BUTTONElement) IfTABINDEX(condition bool, i int) *BUTTONElement {
 	if condition {
 		e.TABINDEX(i)
@@ -1894,6 +2569,20 @@ func (e *BUTTONElement) IfTABINDEX(condition bool, i int) *BUTTONElement {
 	return e
 }
 
+// The tabindex global attribute indicates if its element can be focused, and
+// if/where it participates in sequential keyboard navigation (usually with the
+// Tab key, hence the name)
+// It accepts an integer as a value, with different results depending on the
+// integer's value: a negative value (usually tabindex="-1") means that the
+// element should be focusable, but should not be reachable via sequential
+// keyboard navigation; a value of 0 (tabindex="0") means that the element should
+// be focusable and reachable via sequential keyboard navigation, but its relative
+// order is defined by the platform convention; a positive value means should be
+// focusable and reachable via sequential keyboard navigation; its relative order
+// is defined by the value of the attribute: the sequential follow the increasing
+// number of the tabindex
+// If several elements share the same tabindex, their relative order follows their
+// relative position in the document.
 // Remove the attribute TABINDEX from the element.
 func (e *BUTTONElement) TABINDEXRemove(i int) *BUTTONElement {
 	if e.IntAttributes == nil {
@@ -1932,10 +2621,52 @@ func (e *BUTTONElement) TITLE(s string) *BUTTONElement {
 	return e
 }
 
+// The title global attribute contains text representing advisory information
+// related to the element it belongs to
+// Such information can typically, but not necessarily, be presented to the user
+// as a tooltip
+// The main use of the title attribute is to label <iframe> elements for assistive
+// technology
+// The title attribute may also be used to label controls in data tables
+// The title attribute, when added to <link rel="stylesheet">, creates an
+// alternate stylesheet
+// When defining an alternative style sheet with <link rel="alternate"> the
+// attribute is required and must be set to a non-empty string
+// If included on the <abbr> opening tag, the title must be a full expansion of
+// the abbreviation or acronym
+// Instead of using title, when possible, provide an expansion of the abbreviation
+// or acronym in plain text on first use, using the <abbr> to mark up the
+// abbreviation
+// This enables all users know what name or term the abbreviation or acronym
+// shortens while providing a hint to user agents on how to announce the content
+// While title can be used to provide a programmatically associated label for an
+// <input> element, this is not good practice
+// Use a <label> instead.
 func (e *BUTTONElement) TITLEF(format string, args ...any) *BUTTONElement {
 	return e.TITLE(fmt.Sprintf(format, args...))
 }
 
+// The title global attribute contains text representing advisory information
+// related to the element it belongs to
+// Such information can typically, but not necessarily, be presented to the user
+// as a tooltip
+// The main use of the title attribute is to label <iframe> elements for assistive
+// technology
+// The title attribute may also be used to label controls in data tables
+// The title attribute, when added to <link rel="stylesheet">, creates an
+// alternate stylesheet
+// When defining an alternative style sheet with <link rel="alternate"> the
+// attribute is required and must be set to a non-empty string
+// If included on the <abbr> opening tag, the title must be a full expansion of
+// the abbreviation or acronym
+// Instead of using title, when possible, provide an expansion of the abbreviation
+// or acronym in plain text on first use, using the <abbr> to mark up the
+// abbreviation
+// This enables all users know what name or term the abbreviation or acronym
+// shortens while providing a hint to user agents on how to announce the content
+// While title can be used to provide a programmatically associated label for an
+// <input> element, this is not good practice
+// Use a <label> instead.
 func (e *BUTTONElement) IfTITLE(condition bool, s string) *BUTTONElement {
 	if condition {
 		e.TITLE(s)
@@ -1943,6 +2674,27 @@ func (e *BUTTONElement) IfTITLE(condition bool, s string) *BUTTONElement {
 	return e
 }
 
+// The title global attribute contains text representing advisory information
+// related to the element it belongs to
+// Such information can typically, but not necessarily, be presented to the user
+// as a tooltip
+// The main use of the title attribute is to label <iframe> elements for assistive
+// technology
+// The title attribute may also be used to label controls in data tables
+// The title attribute, when added to <link rel="stylesheet">, creates an
+// alternate stylesheet
+// When defining an alternative style sheet with <link rel="alternate"> the
+// attribute is required and must be set to a non-empty string
+// If included on the <abbr> opening tag, the title must be a full expansion of
+// the abbreviation or acronym
+// Instead of using title, when possible, provide an expansion of the abbreviation
+// or acronym in plain text on first use, using the <abbr> to mark up the
+// abbreviation
+// This enables all users know what name or term the abbreviation or acronym
+// shortens while providing a hint to user agents on how to announce the content
+// While title can be used to provide a programmatically associated label for an
+// <input> element, this is not good practice
+// Use a <label> instead.
 func (e *BUTTONElement) IfTITLEF(condition bool, format string, args ...any) *BUTTONElement {
 	if condition {
 		e.TITLE(fmt.Sprintf(format, args...))
@@ -1950,6 +2702,27 @@ func (e *BUTTONElement) IfTITLEF(condition bool, format string, args ...any) *BU
 	return e
 }
 
+// The title global attribute contains text representing advisory information
+// related to the element it belongs to
+// Such information can typically, but not necessarily, be presented to the user
+// as a tooltip
+// The main use of the title attribute is to label <iframe> elements for assistive
+// technology
+// The title attribute may also be used to label controls in data tables
+// The title attribute, when added to <link rel="stylesheet">, creates an
+// alternate stylesheet
+// When defining an alternative style sheet with <link rel="alternate"> the
+// attribute is required and must be set to a non-empty string
+// If included on the <abbr> opening tag, the title must be a full expansion of
+// the abbreviation or acronym
+// Instead of using title, when possible, provide an expansion of the abbreviation
+// or acronym in plain text on first use, using the <abbr> to mark up the
+// abbreviation
+// This enables all users know what name or term the abbreviation or acronym
+// shortens while providing a hint to user agents on how to announce the content
+// While title can be used to provide a programmatically associated label for an
+// <input> element, this is not good practice
+// Use a <label> instead.
 // Remove the attribute TITLE from the element.
 func (e *BUTTONElement) TITLERemove(s string) *BUTTONElement {
 	if e.StringAttributes == nil {
@@ -1959,6 +2732,27 @@ func (e *BUTTONElement) TITLERemove(s string) *BUTTONElement {
 	return e
 }
 
+// The title global attribute contains text representing advisory information
+// related to the element it belongs to
+// Such information can typically, but not necessarily, be presented to the user
+// as a tooltip
+// The main use of the title attribute is to label <iframe> elements for assistive
+// technology
+// The title attribute may also be used to label controls in data tables
+// The title attribute, when added to <link rel="stylesheet">, creates an
+// alternate stylesheet
+// When defining an alternative style sheet with <link rel="alternate"> the
+// attribute is required and must be set to a non-empty string
+// If included on the <abbr> opening tag, the title must be a full expansion of
+// the abbreviation or acronym
+// Instead of using title, when possible, provide an expansion of the abbreviation
+// or acronym in plain text on first use, using the <abbr> to mark up the
+// abbreviation
+// This enables all users know what name or term the abbreviation or acronym
+// shortens while providing a hint to user agents on how to announce the content
+// While title can be used to provide a programmatically associated label for an
+// <input> element, this is not good practice
+// Use a <label> instead.
 func (e *BUTTONElement) TITLERemoveF(format string, args ...any) *BUTTONElement {
 	return e.TITLERemove(fmt.Sprintf(format, args...))
 }
@@ -1986,6 +2780,10 @@ const (
 	ButtonTranslate_no ButtonTranslateChoice = "no"
 )
 
+// The translate global attribute is an enumerated attribute that is used to
+// specify whether an element's attribute values and the values of its Text node
+// children are to be translated when the page is localized, or whether to leave
+// them unchanged.
 // Remove the attribute TRANSLATE from the element.
 func (e *BUTTONElement) TRANSLATERemove(c ButtonTranslateChoice) *BUTTONElement {
 	if e.StringAttributes == nil {
@@ -1995,62 +2793,75 @@ func (e *BUTTONElement) TRANSLATERemove(c ButtonTranslateChoice) *BUTTONElement 
 	return e
 }
 
-// Merges the singleton store with the given object
-
-func (e *BUTTONElement) DATASTAR_STORE(v any) *BUTTONElement {
-	if e.CustomDataAttributes == nil {
-		e.CustomDataAttributes = treemap.New[string, string]()
-	}
-	b, err := json.Marshal(v)
-	if err != nil {
-		panic(err)
-	}
-	e.CustomDataAttributes.Set("store", html.EscapeString(string(b)))
-	return e
-}
-
-// Sets the reference of the element
-
-func (e *BUTTONElement) DATASTAR_REF(expression string) *BUTTONElement {
+// Sets the value of any HTML attribute to an expression, and keeps it in sync.
+//
+// See: https://data-star.dev/reference/attributes#data-attr
+func (e *BUTTONElement) DATASTAR_ATTR(key string, expression string) *BUTTONElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "data-ref"
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	key = fmt.Sprintf("data-attr%s", suffix)
 
 	e.StringAttributes.Set(key, expression)
 	return e
 }
 
-func (e *BUTTONElement) IfDATASTAR_REF(condition bool, expression string) *BUTTONElement {
+// Sets the value of any HTML attribute to an expression, and keeps it in sync.
+//
+// See: https://data-star.dev/reference/attributes#data-attr
+func (e *BUTTONElement) IfDATASTAR_ATTR(condition bool, key string, expression string) *BUTTONElement {
 	if condition {
-		e.DATASTAR_REF(expression)
+		e.DATASTAR_ATTR(key, expression)
 	}
 	return e
 }
 
-// Remove the attribute DATASTAR_REF from the element.
-func (e *BUTTONElement) DATASTAR_REFRemove() *BUTTONElement {
+// Sets the value of any HTML attribute to an expression, and keeps it in sync.
+//
+// See: https://data-star.dev/reference/attributes#data-attr
+// Remove the attribute DATASTAR_ATTR from the element.
+func (e *BUTTONElement) DATASTAR_ATTRRemove(key string) *BUTTONElement {
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("data-ref")
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	e.StringAttributes.Del("data-attr" + suffix)
+
 	return e
 }
 
-// Sets the value of the element
-
+// Creates a signal (if one doesn’t already exist) and sets up two-way data
+// binding between it and an element’s value.
+//
+// See: https://data-star.dev/reference/attributes#data-bind
 func (e *BUTTONElement) DATASTAR_BIND(key string, expression string) *BUTTONElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key = fmt.Sprintf("data-bind-%s", key)
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	key = fmt.Sprintf("data-bind%s", suffix)
 
 	e.StringAttributes.Set(key, expression)
 	return e
 }
 
+// Creates a signal (if one doesn’t already exist) and sets up two-way data
+// binding between it and an element’s value.
+//
+// See: https://data-star.dev/reference/attributes#data-bind
 func (e *BUTTONElement) IfDATASTAR_BIND(condition bool, key string, expression string) *BUTTONElement {
 	if condition {
 		e.DATASTAR_BIND(key, expression)
@@ -2058,46 +2869,1525 @@ func (e *BUTTONElement) IfDATASTAR_BIND(condition bool, key string, expression s
 	return e
 }
 
+// Creates a signal (if one doesn’t already exist) and sets up two-way data
+// binding between it and an element’s value.
+//
+// See: https://data-star.dev/reference/attributes#data-bind
 // Remove the attribute DATASTAR_BIND from the element.
-func (e *BUTTONElement) DATASTAR_BINDRemove() *BUTTONElement {
+func (e *BUTTONElement) DATASTAR_BINDRemove(key string) *BUTTONElement {
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("data-bind")
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	e.StringAttributes.Del("data-bind" + suffix)
+
 	return e
 }
 
-// Sets the value of the element
+type ButtonClassMod customDataKeyModifier
 
-func (e *BUTTONElement) DATASTAR_MODEL(expression string) *BUTTONElement {
+// Converts the casing of the signal name.
+//   - 'camel' – Camel case: 'mySignal' (default)
+//   - 'kebab' – Kebab case: 'my-signal'
+//   - 'snake' – Snake case: 'my_signal'
+//   - 'pascal' – Pascal case: 'MySignal'
+func ButtonClassModCase(
+	s string,
+) ButtonClassMod {
+	return func() string {
+		return fmt.Sprintf("case.%s", s)
+	}
+}
+
+// Adds or removes a class to or from an element based on an expression.
+func (e *BUTTONElement) DATASTAR_CLASS(key string, expression string, modifiers ...ButtonClassMod) *BUTTONElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "data-model"
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	key = fmt.Sprintf("data-class%s", suffix)
+
+	customMods := lo.Map(modifiers, func(m ButtonClassMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Adds or removes a class to or from an element based on an expression.
+func (e *BUTTONElement) IfDATASTAR_CLASS(condition bool, key string, expression string, modifiers ...ButtonClassMod) *BUTTONElement {
+	if condition {
+		e.DATASTAR_CLASS(key, expression, modifiers...)
+	}
+	return e
+}
+
+// Adds or removes a class to or from an element based on an expression.
+// Remove the attribute DATASTAR_CLASS from the element.
+func (e *BUTTONElement) DATASTAR_CLASSRemove(key string) *BUTTONElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	e.StringAttributes.Del("data-class" + suffix)
+
+	return e
+}
+
+type ButtonComputedMod customDataKeyModifier
+
+// Converts the casing of the signal name.
+//   - 'camel' – Camel case: 'mySignal' (default)
+//   - 'kebab' – Kebab case: 'my-signal'
+//   - 'snake' – Snake case: 'my_signal'
+//   - 'pascal' – Pascal case: 'MySignal'
+func ButtonComputedModCase(
+	s string,
+) ButtonComputedMod {
+	return func() string {
+		return fmt.Sprintf("case.%s", s)
+	}
+}
+
+// Creates a signal that is computed based on an expression
+// The computed signal is read-only, and its value is automatically updated when
+// any signals in the expression are updated.
+//
+// See: https://data-star.dev/reference/attributes#data-computed
+func (e *BUTTONElement) DATASTAR_COMPUTED(key string, expression string, modifiers ...ButtonComputedMod) *BUTTONElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	key = fmt.Sprintf("data-computed%s", suffix)
+
+	customMods := lo.Map(modifiers, func(m ButtonComputedMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Creates a signal that is computed based on an expression
+// The computed signal is read-only, and its value is automatically updated when
+// any signals in the expression are updated.
+//
+// See: https://data-star.dev/reference/attributes#data-computed
+func (e *BUTTONElement) IfDATASTAR_COMPUTED(condition bool, key string, expression string, modifiers ...ButtonComputedMod) *BUTTONElement {
+	if condition {
+		e.DATASTAR_COMPUTED(key, expression, modifiers...)
+	}
+	return e
+}
+
+// Creates a signal that is computed based on an expression
+// The computed signal is read-only, and its value is automatically updated when
+// any signals in the expression are updated.
+//
+// See: https://data-star.dev/reference/attributes#data-computed
+// Remove the attribute DATASTAR_COMPUTED from the element.
+func (e *BUTTONElement) DATASTAR_COMPUTEDRemove(key string) *BUTTONElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	e.StringAttributes.Del("data-computed" + suffix)
+
+	return e
+}
+
+// Executes an expression on page load and whenever any signals in the expression
+// change
+// This is useful for performing side effects, such as updating other signals,
+// making requests to the backend, or manipulating the DOM.
+//
+// See: https://data-star.dev/reference/attributes#data-effect
+func (e *BUTTONElement) DATASTAR_EFFECT(expression string) *BUTTONElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-effect"
 
 	e.StringAttributes.Set(key, expression)
 	return e
 }
 
-func (e *BUTTONElement) IfDATASTAR_MODEL(condition bool, expression string) *BUTTONElement {
+// Executes an expression on page load and whenever any signals in the expression
+// change
+// This is useful for performing side effects, such as updating other signals,
+// making requests to the backend, or manipulating the DOM.
+//
+// See: https://data-star.dev/reference/attributes#data-effect
+func (e *BUTTONElement) IfDATASTAR_EFFECT(condition bool, expression string) *BUTTONElement {
 	if condition {
-		e.DATASTAR_MODEL(expression)
+		e.DATASTAR_EFFECT(expression)
 	}
 	return e
 }
 
-// Remove the attribute DATASTAR_MODEL from the element.
-func (e *BUTTONElement) DATASTAR_MODELRemove() *BUTTONElement {
+// Executes an expression on page load and whenever any signals in the expression
+// change
+// This is useful for performing side effects, such as updating other signals,
+// making requests to the backend, or manipulating the DOM.
+//
+// See: https://data-star.dev/reference/attributes#data-effect
+// Remove the attribute DATASTAR_EFFECT from the element.
+func (e *BUTTONElement) DATASTAR_EFFECTRemove() *BUTTONElement {
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("data-model")
+
+	e.StringAttributes.Del("data-effect")
+
 	return e
 }
 
-// Sets the textContent of the element
+type ButtonIgnoreMod customDataKeyModifier
 
+// Only ignore the element itself, not its descendants.
+func ButtonIgnoreModSelf() ButtonIgnoreMod {
+	return func() string {
+		return "self"
+	}
+}
+
+// Datastar walks the entire DOM and applies plugins to each element it encounters
+// It's possible to tell Datastar to ignore an element and its descendants by
+// placing a data-ignore attribute on it
+// This can be useful for preventing naming conflicts with third-party libraries,
+// or when you are unable to escape user input.
+//
+// See: https://data-star.dev/reference/attributes#data-ignore
+func (e *BUTTONElement) DATASTAR_IGNORESet(b bool, modifiers ...ButtonIgnoreMod) *BUTTONElement {
+	key := customDataKey("data-ignore")
+	customMods := lo.Map(modifiers, func(m ButtonIgnoreMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	if e.BoolAttributes == nil {
+		e.BoolAttributes = treemap.New[string, bool]()
+	}
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+// Datastar walks the entire DOM and applies plugins to each element it encounters
+// It's possible to tell Datastar to ignore an element and its descendants by
+// placing a data-ignore attribute on it
+// This can be useful for preventing naming conflicts with third-party libraries,
+// or when you are unable to escape user input.
+//
+// See: https://data-star.dev/reference/attributes#data-ignore
+func (e *BUTTONElement) DATASTAR_IGNORE(modifiers ...ButtonIgnoreMod) *BUTTONElement {
+	return e.DATASTAR_IGNORESet(true, modifiers...)
+}
+
+// Similar to the data-ignore attribute, the data-ignore-morph attribute tells the
+// PatchElements watcher to skip processing an element and its children when
+// morphing elements
+// This can be useful for preventing conflicts with third-party libraries that
+// manipulate the DOM, or when you are unable to escape user input.
+//
+// See: https://data-star.dev/reference/attributes#data-ignore-morph
+func (e *BUTTONElement) DATASTAR_IGNORE_MORPHSet(b bool) *BUTTONElement {
+	key := "data-ignore-morph"
+	if e.BoolAttributes == nil {
+		e.BoolAttributes = treemap.New[string, bool]()
+	}
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+// Similar to the data-ignore attribute, the data-ignore-morph attribute tells the
+// PatchElements watcher to skip processing an element and its children when
+// morphing elements
+// This can be useful for preventing conflicts with third-party libraries that
+// manipulate the DOM, or when you are unable to escape user input.
+//
+// See: https://data-star.dev/reference/attributes#data-ignore-morph
+func (e *BUTTONElement) DATASTAR_IGNORE_MORPH() *BUTTONElement {
+	return e.DATASTAR_IGNORE_MORPHSet(true)
+}
+
+type ButtonIndicatorMod customDataKeyModifier
+
+// Converts the casing of the signal name.
+//   - 'camel' – Camel case: 'mySignal' (default)
+//   - 'kebab' – Kebab case: 'my-signal'
+//   - 'snake' – Snake case: 'my_signal'
+//   - 'pascal' – Pascal case: 'MySignal'
+func ButtonIndicatorModCase(
+	s string,
+) ButtonIndicatorMod {
+	return func() string {
+		return fmt.Sprintf("case.%s", s)
+	}
+}
+
+// Creates a signal and sets its value to true while a fetch request is in flight,
+// otherwise false
+// The signal can be used to show a loading indicator.
+//
+// See: https://data-star.dev/reference/attributes#data-indicator
+func (e *BUTTONElement) DATASTAR_INDICATOR(expression string, modifiers ...ButtonIndicatorMod) *BUTTONElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-indicator"
+
+	customMods := lo.Map(modifiers, func(m ButtonIndicatorMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Creates a signal and sets its value to true while a fetch request is in flight,
+// otherwise false
+// The signal can be used to show a loading indicator.
+//
+// See: https://data-star.dev/reference/attributes#data-indicator
+func (e *BUTTONElement) IfDATASTAR_INDICATOR(condition bool, expression string, modifiers ...ButtonIndicatorMod) *BUTTONElement {
+	if condition {
+		e.DATASTAR_INDICATOR(expression, modifiers...)
+	}
+	return e
+}
+
+// Creates a signal and sets its value to true while a fetch request is in flight,
+// otherwise false
+// The signal can be used to show a loading indicator.
+//
+// See: https://data-star.dev/reference/attributes#data-indicator
+// Remove the attribute DATASTAR_INDICATOR from the element.
+func (e *BUTTONElement) DATASTAR_INDICATORRemove() *BUTTONElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-indicator")
+
+	return e
+}
+
+type ButtonInitMod customDataKeyModifier
+
+// Delay the event listener in milliseconds.
+func ButtonInitModDelayMs(
+	d time.Duration,
+) ButtonInitMod {
+	return func() string {
+		return fmt.Sprintf("delay.%dms", d.Milliseconds())
+	}
+}
+
+// Delay the event listener in seconds.
+func ButtonInitModDelaySec(
+	d time.Duration,
+) ButtonInitMod {
+	return func() string {
+		return fmt.Sprintf("delay.%ds", int(d.Seconds()))
+	}
+}
+
+// Wraps the expression in 'document.startViewTransition()' when the View
+// Transition API is available.
+func ButtonInitModViewTransition() ButtonInitMod {
+	return func() string {
+		return "viewtransition"
+	}
+}
+
+// Runs an expression when the attribute is initialized
+// This can happen on page load, when an element is patched into the DOM, and any
+// time the attribute is modified (via a backend action or otherwise).
+//
+// See: https://data-star.dev/reference/attributes#data-indicator
+func (e *BUTTONElement) DATASTAR_INIT(expression string, modifiers ...ButtonInitMod) *BUTTONElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-init"
+
+	customMods := lo.Map(modifiers, func(m ButtonInitMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Runs an expression when the attribute is initialized
+// This can happen on page load, when an element is patched into the DOM, and any
+// time the attribute is modified (via a backend action or otherwise).
+//
+// See: https://data-star.dev/reference/attributes#data-indicator
+func (e *BUTTONElement) IfDATASTAR_INIT(condition bool, expression string, modifiers ...ButtonInitMod) *BUTTONElement {
+	if condition {
+		e.DATASTAR_INIT(expression, modifiers...)
+	}
+	return e
+}
+
+// Runs an expression when the attribute is initialized
+// This can happen on page load, when an element is patched into the DOM, and any
+// time the attribute is modified (via a backend action or otherwise).
+//
+// See: https://data-star.dev/reference/attributes#data-indicator
+// Remove the attribute DATASTAR_INIT from the element.
+func (e *BUTTONElement) DATASTAR_INITRemove() *BUTTONElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-init")
+
+	return e
+}
+
+type ButtonJsonSignalsMod customDataKeyModifier
+
+// Outputs a more compact JSON format without extra whitespace
+// Useful for displaying filtered data inline.
+func ButtonJsonSignalsModTerse() ButtonJsonSignalsMod {
+	return func() string {
+		return "terse"
+	}
+}
+
+// Sets the text content of an element to a reactive JSON stringified version of
+// signals
+// Useful when troubleshooting an issue.
+//
+// See: https://data-star.dev/reference/attributes#data-json-signals
+func (e *BUTTONElement) DATASTAR_JSON_SIGNALS(expression string, modifiers ...ButtonJsonSignalsMod) *BUTTONElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-json-signals"
+
+	customMods := lo.Map(modifiers, func(m ButtonJsonSignalsMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Sets the text content of an element to a reactive JSON stringified version of
+// signals
+// Useful when troubleshooting an issue.
+//
+// See: https://data-star.dev/reference/attributes#data-json-signals
+func (e *BUTTONElement) IfDATASTAR_JSON_SIGNALS(condition bool, expression string, modifiers ...ButtonJsonSignalsMod) *BUTTONElement {
+	if condition {
+		e.DATASTAR_JSON_SIGNALS(expression, modifiers...)
+	}
+	return e
+}
+
+// Sets the text content of an element to a reactive JSON stringified version of
+// signals
+// Useful when troubleshooting an issue.
+//
+// See: https://data-star.dev/reference/attributes#data-json-signals
+// Remove the attribute DATASTAR_JSON_SIGNALS from the element.
+func (e *BUTTONElement) DATASTAR_JSON_SIGNALSRemove() *BUTTONElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-json-signals")
+
+	return e
+}
+
+type ButtonOnMod customDataKeyModifier
+
+// Only run the expression once
+// Only works with built-in events.
+func ButtonOnModOnce() ButtonOnMod {
+	return func() string {
+		return "once"
+	}
+}
+
+// Do not call preventDefault on the event listener
+// Only works with built-in events.
+func ButtonOnModPassive() ButtonOnMod {
+	return func() string {
+		return "passive"
+	}
+}
+
+// Use capture event listener
+// Only works with built-in events.
+func ButtonOnModCapture() ButtonOnMod {
+	return func() string {
+		return "capture"
+	}
+}
+
+// Converts the casing of the signal name.
+//   - 'camel' – Camel case: 'mySignal' (default)
+//   - 'kebab' – Kebab case: 'my-signal'
+//   - 'snake' – Snake case: 'my_signal'
+//   - 'pascal' – Pascal case: 'MySignal'
+func ButtonOnModCase(
+	s string,
+) ButtonOnMod {
+	return func() string {
+		return fmt.Sprintf("case.%s", s)
+	}
+}
+
+// Delay the event listener in milliseconds.
+func ButtonOnModDelayMs(
+	d time.Duration,
+) ButtonOnMod {
+	return func() string {
+		return fmt.Sprintf("delay.%dms", d.Milliseconds())
+	}
+}
+
+// Delay the event listener in seconds.
+func ButtonOnModDelaySec(
+	d time.Duration,
+) ButtonOnMod {
+	return func() string {
+		return fmt.Sprintf("delay.%ds", int(d.Seconds()))
+	}
+}
+
+// Debounces the event handler
+func ButtonOnModDebounceMs(
+	d time.Duration,
+) ButtonOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms", d.Milliseconds())
+	}
+}
+
+// Debounce the event listener in milliseconds with leading edge.
+func ButtonOnModDebounceMsLeading(
+	d time.Duration,
+) ButtonOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms.leading", d.Milliseconds())
+	}
+}
+
+// Debounce the event listener in milliseconds without trailing edge.
+func ButtonOnModDebounceMsNoTrailing(
+	d time.Duration,
+) ButtonOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms.notrailing", d.Milliseconds())
+	}
+}
+
+// Debounces the event handler
+func ButtonOnModDebounceSec(
+	d time.Duration,
+) ButtonOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds", int(d.Seconds()))
+	}
+}
+
+// Debounce the event listener in seconds with leading edge.
+func ButtonOnModDebounceSecLeading(
+	d time.Duration,
+) ButtonOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds.leading", int(d.Seconds()))
+	}
+}
+
+// Debounce the event listener in seconds without trailing edge.
+func ButtonOnModDebounceSecNoTrailing(
+	d time.Duration,
+) ButtonOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds.notrailing", int(d.Seconds()))
+	}
+}
+
+// Throttles the event handler
+func ButtonOnModThrottleMs(
+	d time.Duration,
+) ButtonOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms", d.Milliseconds())
+	}
+}
+
+// Throttle the event listener in milliseconds without leading edge.
+func ButtonOnModThrottleMsNoLeading(
+	d time.Duration,
+) ButtonOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms.noleading", d.Milliseconds())
+	}
+}
+
+// Throttle the event listener in milliseconds with trailing edge.
+func ButtonOnModThrottleMsTrailing(
+	d time.Duration,
+) ButtonOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms.trailing", d.Milliseconds())
+	}
+}
+
+// Throttles the event listener in seconds.
+func ButtonOnModThrottleSec(
+	d time.Duration,
+) ButtonOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds", int(d.Seconds()))
+	}
+}
+
+// Throttle the event listener in seconds without leading edge.
+func ButtonOnModThrottleSecNoLeading(
+	d time.Duration,
+) ButtonOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds.noleading", int(d.Seconds()))
+	}
+}
+
+// Throttle the event listener in seconds with trailing edge.
+func ButtonOnModThrottleSecTrailing(
+	d time.Duration,
+) ButtonOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds.trailing", int(d.Seconds()))
+	}
+}
+
+// Wraps the expression in 'document.startViewTransition()' when the View
+// Transition API is available.
+func ButtonOnModViewTransition() ButtonOnMod {
+	return func() string {
+		return "viewtransition"
+	}
+}
+
+// Attaches the event listener to the 'window' element.
+func ButtonOnModWindow() ButtonOnMod {
+	return func() string {
+		return "window"
+	}
+}
+
+// Calls 'preventDefault' on the event listener.
+func ButtonOnModPrevent() ButtonOnMod {
+	return func() string {
+		return "prevent"
+	}
+}
+
+// Triggers when the event is outside the element.
+func ButtonOnModOutside() ButtonOnMod {
+	return func() string {
+		return "outside"
+	}
+}
+
+// Calls 'stopPropagation' on the event listener.
+func ButtonOnModStop() ButtonOnMod {
+	return func() string {
+		return "stop"
+	}
+}
+
+// Attaches an event listener to an element, executing an expression whenever the
+// event is triggered.
+//
+// See: https://data-star.dev/reference/attributes#data-on
+func (e *BUTTONElement) DATASTAR_ON(key string, expression string, modifiers ...ButtonOnMod) *BUTTONElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	key = fmt.Sprintf("data-on%s", suffix)
+
+	customMods := lo.Map(modifiers, func(m ButtonOnMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Attaches an event listener to an element, executing an expression whenever the
+// event is triggered.
+//
+// See: https://data-star.dev/reference/attributes#data-on
+func (e *BUTTONElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...ButtonOnMod) *BUTTONElement {
+	if condition {
+		e.DATASTAR_ON(key, expression, modifiers...)
+	}
+	return e
+}
+
+// Attaches an event listener to an element, executing an expression whenever the
+// event is triggered.
+//
+// See: https://data-star.dev/reference/attributes#data-on
+// Remove the attribute DATASTAR_ON from the element.
+func (e *BUTTONElement) DATASTAR_ONRemove(key string) *BUTTONElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	e.StringAttributes.Del("data-on" + suffix)
+
+	return e
+}
+
+type ButtonOnIntersectMod customDataKeyModifier
+
+// Only run the expression once
+// Only works with built-in events.
+func ButtonOnIntersectModOnce() ButtonOnIntersectMod {
+	return func() string {
+		return "once"
+	}
+}
+
+// Trigger when half of the element is visible.
+func ButtonOnIntersectModHalf() ButtonOnIntersectMod {
+	return func() string {
+		return "half"
+	}
+}
+
+// Trigger when the full element is visible.
+func ButtonOnIntersectModFull() ButtonOnIntersectMod {
+	return func() string {
+		return "full"
+	}
+}
+
+// Delay the event listener in milliseconds.
+func ButtonOnIntersectModDelayMs(
+	d time.Duration,
+) ButtonOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("delay.%dms", d.Milliseconds())
+	}
+}
+
+// Delay the event listener in seconds.
+func ButtonOnIntersectModDelaySec(
+	d time.Duration,
+) ButtonOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("delay.%ds", int(d.Seconds()))
+	}
+}
+
+// Debounces the event handler
+func ButtonOnIntersectModDebounceMs(
+	d time.Duration,
+) ButtonOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms", d.Milliseconds())
+	}
+}
+
+// Debounce the event listener in milliseconds with leading edge.
+func ButtonOnIntersectModDebounceMsLeading(
+	d time.Duration,
+) ButtonOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms.leading", d.Milliseconds())
+	}
+}
+
+// Debounce the event listener in milliseconds without trailing edge.
+func ButtonOnIntersectModDebounceMsNoTrailing(
+	d time.Duration,
+) ButtonOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms.notrailing", d.Milliseconds())
+	}
+}
+
+// Debounces the event handler
+func ButtonOnIntersectModDebounceSec(
+	d time.Duration,
+) ButtonOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds", int(d.Seconds()))
+	}
+}
+
+// Debounce the event listener in seconds with leading edge.
+func ButtonOnIntersectModDebounceSecLeading(
+	d time.Duration,
+) ButtonOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds.leading", int(d.Seconds()))
+	}
+}
+
+// Debounce the event listener in seconds without trailing edge.
+func ButtonOnIntersectModDebounceSecNoTrailing(
+	d time.Duration,
+) ButtonOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds.notrailing", int(d.Seconds()))
+	}
+}
+
+// Throttles the event handler
+func ButtonOnIntersectModThrottleMs(
+	d time.Duration,
+) ButtonOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms", d.Milliseconds())
+	}
+}
+
+// Throttle the event listener in milliseconds without leading edge.
+func ButtonOnIntersectModThrottleMsNoLeading(
+	d time.Duration,
+) ButtonOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms.noleading", d.Milliseconds())
+	}
+}
+
+// Throttle the event listener in milliseconds with trailing edge.
+func ButtonOnIntersectModThrottleMsTrailing(
+	d time.Duration,
+) ButtonOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms.trailing", d.Milliseconds())
+	}
+}
+
+// Throttles the event listener in seconds.
+func ButtonOnIntersectModThrottleSec(
+	d time.Duration,
+) ButtonOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds", int(d.Seconds()))
+	}
+}
+
+// Throttle the event listener in seconds without leading edge.
+func ButtonOnIntersectModThrottleSecNoLeading(
+	d time.Duration,
+) ButtonOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds.noleading", int(d.Seconds()))
+	}
+}
+
+// Throttle the event listener in seconds with trailing edge.
+func ButtonOnIntersectModThrottleSecTrailing(
+	d time.Duration,
+) ButtonOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds.trailing", int(d.Seconds()))
+	}
+}
+
+// Wraps the expression in 'document.startViewTransition()' when the View
+// Transition API is available.
+func ButtonOnIntersectModViewTransition() ButtonOnIntersectMod {
+	return func() string {
+		return "viewtransition"
+	}
+}
+
+// Runs an expression when the element intersects with the viewport.
+func (e *BUTTONElement) DATASTAR_ON_INTERSECT(expression string, modifiers ...ButtonOnIntersectMod) *BUTTONElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-on-intersect"
+
+	customMods := lo.Map(modifiers, func(m ButtonOnIntersectMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Runs an expression when the element intersects with the viewport.
+func (e *BUTTONElement) IfDATASTAR_ON_INTERSECT(condition bool, expression string, modifiers ...ButtonOnIntersectMod) *BUTTONElement {
+	if condition {
+		e.DATASTAR_ON_INTERSECT(expression, modifiers...)
+	}
+	return e
+}
+
+// Runs an expression when the element intersects with the viewport.
+// Remove the attribute DATASTAR_ON_INTERSECT from the element.
+func (e *BUTTONElement) DATASTAR_ON_INTERSECTRemove() *BUTTONElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-on-intersect")
+
+	return e
+}
+
+type ButtonOnIntervalMod customDataKeyModifier
+
+// Sets the interval duration in milliseconds.
+func ButtonOnIntervalModDurationMs(
+	d time.Duration,
+) ButtonOnIntervalMod {
+	return func() string {
+		return fmt.Sprintf("duration.%dms", d.Milliseconds())
+	}
+}
+
+// Sets the interval duration in milliseconds
+// Execute the first interval immediately.
+func ButtonOnIntervalModDurationMsLeading(
+	d time.Duration,
+) ButtonOnIntervalMod {
+	return func() string {
+		return fmt.Sprintf("duration.%dms.leading", d.Milliseconds())
+	}
+}
+
+// Sets the interval duration in seconds.
+func ButtonOnIntervalModDurationSec(
+	d time.Duration,
+) ButtonOnIntervalMod {
+	return func() string {
+		return fmt.Sprintf("duration.%ds", int(d.Seconds()))
+	}
+}
+
+// Sets the interval duration in seconds
+// Execute the first interval immediately.
+func ButtonOnIntervalModDurationSecLeading(
+	d time.Duration,
+) ButtonOnIntervalMod {
+	return func() string {
+		return fmt.Sprintf("duration.%ds.leading", int(d.Seconds()))
+	}
+}
+
+// Wraps the expression in 'document.startViewTransition()' when the View
+// Transition API is available.
+func ButtonOnIntervalModViewTransition() ButtonOnIntervalMod {
+	return func() string {
+		return "viewtransition"
+	}
+}
+
+// Runs an expression at a regular interval
+// The interval duration defaults to one second and can be modified using the
+// '__duration' modifier.
+//
+// See: https://data-star.dev/reference/attributes#data-on-interval
+func (e *BUTTONElement) DATASTAR_ON_INTERVAL(expression string, modifiers ...ButtonOnIntervalMod) *BUTTONElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-on-interval"
+
+	customMods := lo.Map(modifiers, func(m ButtonOnIntervalMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Runs an expression at a regular interval
+// The interval duration defaults to one second and can be modified using the
+// '__duration' modifier.
+//
+// See: https://data-star.dev/reference/attributes#data-on-interval
+func (e *BUTTONElement) IfDATASTAR_ON_INTERVAL(condition bool, expression string, modifiers ...ButtonOnIntervalMod) *BUTTONElement {
+	if condition {
+		e.DATASTAR_ON_INTERVAL(expression, modifiers...)
+	}
+	return e
+}
+
+// Runs an expression at a regular interval
+// The interval duration defaults to one second and can be modified using the
+// '__duration' modifier.
+//
+// See: https://data-star.dev/reference/attributes#data-on-interval
+// Remove the attribute DATASTAR_ON_INTERVAL from the element.
+func (e *BUTTONElement) DATASTAR_ON_INTERVALRemove() *BUTTONElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-on-interval")
+
+	return e
+}
+
+type ButtonOnSignalPatchMod customDataKeyModifier
+
+// Delay the event listener in milliseconds.
+func ButtonOnSignalPatchModDelayMs(
+	d time.Duration,
+) ButtonOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("delay.%dms", d.Milliseconds())
+	}
+}
+
+// Delay the event listener in seconds.
+func ButtonOnSignalPatchModDelaySec(
+	d time.Duration,
+) ButtonOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("delay.%ds", int(d.Seconds()))
+	}
+}
+
+// Debounces the event handler
+func ButtonOnSignalPatchModDebounceMs(
+	d time.Duration,
+) ButtonOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms", d.Milliseconds())
+	}
+}
+
+// Debounce the event listener in milliseconds with leading edge.
+func ButtonOnSignalPatchModDebounceMsLeading(
+	d time.Duration,
+) ButtonOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms.leading", d.Milliseconds())
+	}
+}
+
+// Debounce the event listener in milliseconds without trailing edge.
+func ButtonOnSignalPatchModDebounceMsNoTrailing(
+	d time.Duration,
+) ButtonOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms.notrailing", d.Milliseconds())
+	}
+}
+
+// Debounces the event handler
+func ButtonOnSignalPatchModDebounceSec(
+	d time.Duration,
+) ButtonOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds", int(d.Seconds()))
+	}
+}
+
+// Debounce the event listener in seconds with leading edge.
+func ButtonOnSignalPatchModDebounceSecLeading(
+	d time.Duration,
+) ButtonOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds.leading", int(d.Seconds()))
+	}
+}
+
+// Debounce the event listener in seconds without trailing edge.
+func ButtonOnSignalPatchModDebounceSecNoTrailing(
+	d time.Duration,
+) ButtonOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds.notrailing", int(d.Seconds()))
+	}
+}
+
+// Throttles the event handler
+func ButtonOnSignalPatchModThrottleMs(
+	d time.Duration,
+) ButtonOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms", d.Milliseconds())
+	}
+}
+
+// Throttle the event listener in milliseconds without leading edge.
+func ButtonOnSignalPatchModThrottleMsNoLeading(
+	d time.Duration,
+) ButtonOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms.noleading", d.Milliseconds())
+	}
+}
+
+// Throttle the event listener in milliseconds with trailing edge.
+func ButtonOnSignalPatchModThrottleMsTrailing(
+	d time.Duration,
+) ButtonOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms.trailing", d.Milliseconds())
+	}
+}
+
+// Throttles the event listener in seconds.
+func ButtonOnSignalPatchModThrottleSec(
+	d time.Duration,
+) ButtonOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds", int(d.Seconds()))
+	}
+}
+
+// Throttle the event listener in seconds without leading edge.
+func ButtonOnSignalPatchModThrottleSecNoLeading(
+	d time.Duration,
+) ButtonOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds.noleading", int(d.Seconds()))
+	}
+}
+
+// Throttle the event listener in seconds with trailing edge.
+func ButtonOnSignalPatchModThrottleSecTrailing(
+	d time.Duration,
+) ButtonOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds.trailing", int(d.Seconds()))
+	}
+}
+
+// Runs an expression whenever any signals are patched
+// This is useful for tracking changes, updating computed values, or triggering
+// side effects when data updates.
+//
+// See: https://data-star.dev/reference/attributes#data-on-signal-patch
+func (e *BUTTONElement) DATASTAR_ON_SIGNAL_PATCH(expression string, modifiers ...ButtonOnSignalPatchMod) *BUTTONElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-on-signal-patch"
+
+	customMods := lo.Map(modifiers, func(m ButtonOnSignalPatchMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Runs an expression whenever any signals are patched
+// This is useful for tracking changes, updating computed values, or triggering
+// side effects when data updates.
+//
+// See: https://data-star.dev/reference/attributes#data-on-signal-patch
+func (e *BUTTONElement) IfDATASTAR_ON_SIGNAL_PATCH(condition bool, expression string, modifiers ...ButtonOnSignalPatchMod) *BUTTONElement {
+	if condition {
+		e.DATASTAR_ON_SIGNAL_PATCH(expression, modifiers...)
+	}
+	return e
+}
+
+// Runs an expression whenever any signals are patched
+// This is useful for tracking changes, updating computed values, or triggering
+// side effects when data updates.
+//
+// See: https://data-star.dev/reference/attributes#data-on-signal-patch
+// Remove the attribute DATASTAR_ON_SIGNAL_PATCH from the element.
+func (e *BUTTONElement) DATASTAR_ON_SIGNAL_PATCHRemove() *BUTTONElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-on-signal-patch")
+
+	return e
+}
+
+// Filters which signals to watch when using the data-on-signal-patch attribute.
+//
+// The data-on-signal-patch-filter attribute accepts an object with include and/or
+// exclude properties that are regular expressions.
+//
+// See: https://data-star.dev/reference/attributes#data-on-signal-patch-filter
+func (e *BUTTONElement) DATASTAR_ON_SIGNAL_PATCH_FILTER(expression string) *BUTTONElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-on-signal-patch-filter"
+
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Filters which signals to watch when using the data-on-signal-patch attribute.
+//
+// The data-on-signal-patch-filter attribute accepts an object with include and/or
+// exclude properties that are regular expressions.
+//
+// See: https://data-star.dev/reference/attributes#data-on-signal-patch-filter
+func (e *BUTTONElement) IfDATASTAR_ON_SIGNAL_PATCH_FILTER(condition bool, expression string) *BUTTONElement {
+	if condition {
+		e.DATASTAR_ON_SIGNAL_PATCH_FILTER(expression)
+	}
+	return e
+}
+
+// Filters which signals to watch when using the data-on-signal-patch attribute.
+//
+// The data-on-signal-patch-filter attribute accepts an object with include and/or
+// exclude properties that are regular expressions.
+//
+// See: https://data-star.dev/reference/attributes#data-on-signal-patch-filter
+// Remove the attribute DATASTAR_ON_SIGNAL_PATCH_FILTER from the element.
+func (e *BUTTONElement) DATASTAR_ON_SIGNAL_PATCH_FILTERRemove() *BUTTONElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-on-signal-patch-filter")
+
+	return e
+}
+
+// Preserves the value of an attribute when morphing DOM elements.
+//
+// See: https://data-star.dev/reference/attributes#data-preserve-attr
+func (e *BUTTONElement) DATASTAR_PRESERVE_ATTR(expression string) *BUTTONElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-preserve-attr"
+
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Preserves the value of an attribute when morphing DOM elements.
+//
+// See: https://data-star.dev/reference/attributes#data-preserve-attr
+func (e *BUTTONElement) IfDATASTAR_PRESERVE_ATTR(condition bool, expression string) *BUTTONElement {
+	if condition {
+		e.DATASTAR_PRESERVE_ATTR(expression)
+	}
+	return e
+}
+
+// Preserves the value of an attribute when morphing DOM elements.
+//
+// See: https://data-star.dev/reference/attributes#data-preserve-attr
+// Remove the attribute DATASTAR_PRESERVE_ATTR from the element.
+func (e *BUTTONElement) DATASTAR_PRESERVE_ATTRRemove() *BUTTONElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-preserve-attr")
+
+	return e
+}
+
+type ButtonRefMod customDataKeyModifier
+
+// Converts the casing of the signal name.
+//   - 'camel' – Camel case: 'mySignal' (default)
+//   - 'kebab' – Kebab case: 'my-signal'
+//   - 'snake' – Snake case: 'my_signal'
+//   - 'pascal' – Pascal case: 'MySignal'
+func ButtonRefModCase(
+	s string,
+) ButtonRefMod {
+	return func() string {
+		return fmt.Sprintf("case.%s", s)
+	}
+}
+
+// Creates a new signal that is a reference to the element on which the data
+// attribute is placed.
+//
+// See: https://data-star.dev/reference/attributes#data-ref
+func (e *BUTTONElement) DATASTAR_REF(expression string, modifiers ...ButtonRefMod) *BUTTONElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-ref"
+
+	customMods := lo.Map(modifiers, func(m ButtonRefMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Creates a new signal that is a reference to the element on which the data
+// attribute is placed.
+//
+// See: https://data-star.dev/reference/attributes#data-ref
+func (e *BUTTONElement) IfDATASTAR_REF(condition bool, expression string, modifiers ...ButtonRefMod) *BUTTONElement {
+	if condition {
+		e.DATASTAR_REF(expression, modifiers...)
+	}
+	return e
+}
+
+// Creates a new signal that is a reference to the element on which the data
+// attribute is placed.
+//
+// See: https://data-star.dev/reference/attributes#data-ref
+// Remove the attribute DATASTAR_REF from the element.
+func (e *BUTTONElement) DATASTAR_REFRemove() *BUTTONElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-ref")
+
+	return e
+}
+
+// Shows or hides an element based on whether an expression evaluates to 'true' or
+// 'false'
+// For anything with custom requirements, use 'data-class' instead.
+//
+// See: https://data-star.dev/reference/attributes#data-show
+func (e *BUTTONElement) DATASTAR_SHOW(expression string) *BUTTONElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-show"
+
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Shows or hides an element based on whether an expression evaluates to 'true' or
+// 'false'
+// For anything with custom requirements, use 'data-class' instead.
+//
+// See: https://data-star.dev/reference/attributes#data-show
+func (e *BUTTONElement) IfDATASTAR_SHOW(condition bool, expression string) *BUTTONElement {
+	if condition {
+		e.DATASTAR_SHOW(expression)
+	}
+	return e
+}
+
+// Shows or hides an element based on whether an expression evaluates to 'true' or
+// 'false'
+// For anything with custom requirements, use 'data-class' instead.
+//
+// See: https://data-star.dev/reference/attributes#data-show
+// Remove the attribute DATASTAR_SHOW from the element.
+func (e *BUTTONElement) DATASTAR_SHOWRemove() *BUTTONElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-show")
+
+	return e
+}
+
+type ButtonSignalsMod customDataKeyModifier
+
+// Converts the casing of the signal name.
+//   - 'camel' – Camel case: 'mySignal' (default)
+//   - 'kebab' – Kebab case: 'my-signal'
+//   - 'snake' – Snake case: 'my_signal'
+//   - 'pascal' – Pascal case: 'MySignal'
+func ButtonSignalsModCase(
+	s string,
+) ButtonSignalsMod {
+	return func() string {
+		return fmt.Sprintf("case.%s", s)
+	}
+}
+
+// Only patches signals if their keys do not already exist
+// This is useful for setting defaults without overwriting existing values.
+func ButtonSignalsModIfMissing() ButtonSignalsMod {
+	return func() string {
+		return "ifmissing"
+	}
+}
+
+// Patches (adds, updates or removes) one or more signals into the existing
+// signals
+// Values defined later in the DOM tree override those defined earlier.
+//
+// See: https://data-star.dev/reference/attributes#data-signals
+func (e *BUTTONElement) DATASTAR_SIGNALS(key string, expression string, modifiers ...ButtonSignalsMod) *BUTTONElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	key = fmt.Sprintf("data-signals%s", suffix)
+
+	customMods := lo.Map(modifiers, func(m ButtonSignalsMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Patches (adds, updates or removes) one or more signals into the existing
+// signals
+// Values defined later in the DOM tree override those defined earlier.
+//
+// See: https://data-star.dev/reference/attributes#data-signals
+func (e *BUTTONElement) IfDATASTAR_SIGNALS(condition bool, key string, expression string, modifiers ...ButtonSignalsMod) *BUTTONElement {
+	if condition {
+		e.DATASTAR_SIGNALS(key, expression, modifiers...)
+	}
+	return e
+}
+
+// Patches (adds, updates or removes) one or more signals into the existing
+// signals
+// Values defined later in the DOM tree override those defined earlier.
+//
+// See: https://data-star.dev/reference/attributes#data-signals
+// Remove the attribute DATASTAR_SIGNALS from the element.
+func (e *BUTTONElement) DATASTAR_SIGNALSRemove(key string) *BUTTONElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	e.StringAttributes.Del("data-signals" + suffix)
+
+	return e
+}
+
+type ButtonStyleMod customDataKeyModifier
+
+// Converts the casing of the signal name.
+//   - 'camel' – Camel case: 'mySignal' (default)
+//   - 'kebab' – Kebab case: 'my-signal'
+//   - 'snake' – Snake case: 'my_signal'
+//   - 'pascal' – Pascal case: 'MySignal'
+func ButtonStyleModCase(
+	s string,
+) ButtonStyleMod {
+	return func() string {
+		return fmt.Sprintf("case.%s", s)
+	}
+}
+
+// Sets the value of inline CSS styles on an element based on an expression, and
+// keeps them in sync.
+//
+// See: https://data-star.dev/reference/attributes#data-style
+func (e *BUTTONElement) DATASTAR_STYLE(key string, expression string, modifiers ...ButtonStyleMod) *BUTTONElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	key = fmt.Sprintf("data-style%s", suffix)
+
+	customMods := lo.Map(modifiers, func(m ButtonStyleMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Sets the value of inline CSS styles on an element based on an expression, and
+// keeps them in sync.
+//
+// See: https://data-star.dev/reference/attributes#data-style
+func (e *BUTTONElement) IfDATASTAR_STYLE(condition bool, key string, expression string, modifiers ...ButtonStyleMod) *BUTTONElement {
+	if condition {
+		e.DATASTAR_STYLE(key, expression, modifiers...)
+	}
+	return e
+}
+
+// Sets the value of inline CSS styles on an element based on an expression, and
+// keeps them in sync.
+//
+// See: https://data-star.dev/reference/attributes#data-style
+// Remove the attribute DATASTAR_STYLE from the element.
+func (e *BUTTONElement) DATASTAR_STYLERemove(key string) *BUTTONElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	e.StringAttributes.Del("data-style" + suffix)
+
+	return e
+}
+
+// Binds the text content of an element to an expression.
+//
+// See: https://data-star.dev/reference/attributes#data-text
 func (e *BUTTONElement) DATASTAR_TEXT(expression string) *BUTTONElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
@@ -2109,6 +4399,9 @@ func (e *BUTTONElement) DATASTAR_TEXT(expression string) *BUTTONElement {
 	return e
 }
 
+// Binds the text content of an element to an expression.
+//
+// See: https://data-star.dev/reference/attributes#data-text
 func (e *BUTTONElement) IfDATASTAR_TEXT(condition bool, expression string) *BUTTONElement {
 	if condition {
 		e.DATASTAR_TEXT(expression)
@@ -2116,228 +4409,16 @@ func (e *BUTTONElement) IfDATASTAR_TEXT(condition bool, expression string) *BUTT
 	return e
 }
 
+// Binds the text content of an element to an expression.
+//
+// See: https://data-star.dev/reference/attributes#data-text
 // Remove the attribute DATASTAR_TEXT from the element.
 func (e *BUTTONElement) DATASTAR_TEXTRemove() *BUTTONElement {
 	if e.StringAttributes == nil {
 		return e
 	}
+
 	e.StringAttributes.Del("data-text")
-	return e
-}
 
-// Sets the event handler of the element
-
-type ButtonOnMod customDataKeyModifier
-
-// Debounces the event handler
-func ButtonOnModDebounce(
-	d time.Duration,
-) ButtonOnMod {
-	return func() string {
-		return fmt.Sprintf("debounce_%dms", d.Milliseconds())
-	}
-}
-
-// Throttles the event handler
-func ButtonOnModThrottle(
-	d time.Duration,
-) ButtonOnMod {
-	return func() string {
-		return fmt.Sprintf("throttle_%dms", d.Milliseconds())
-	}
-}
-
-func (e *BUTTONElement) DATASTAR_ON(key string, expression string, modifiers ...ButtonOnMod) *BUTTONElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-
-	key = fmt.Sprintf("data-on-%s", key)
-
-	customMods := lo.Map(modifiers, func(m ButtonOnMod, i int) customDataKeyModifier {
-		return customDataKeyModifier(m)
-	})
-	key = customDataKey(key, customMods...)
-	e.StringAttributes.Set(key, expression)
-	return e
-}
-
-func (e *BUTTONElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...ButtonOnMod) *BUTTONElement {
-	if condition {
-		e.DATASTAR_ON(key, expression, modifiers...)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_ON from the element.
-func (e *BUTTONElement) DATASTAR_ONRemove() *BUTTONElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-on")
-	return e
-}
-
-// Sets the focus of the element
-
-func (e *BUTTONElement) DATASTAR_FOCUSSet(b bool) *BUTTONElement {
-	key := "data-focus"
-	e.BoolAttributes.Set(key, b)
-	return e
-}
-
-func (e *BUTTONElement) DATASTAR_FOCUS() *BUTTONElement {
-	return e.DATASTAR_FOCUSSet(true)
-}
-
-// Sets the header of for fetch requests
-
-func (e *BUTTONElement) DATASTAR_HEADER(key string, expression string) *BUTTONElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-
-	key = fmt.Sprintf("data-header-%s", key)
-
-	e.StringAttributes.Set(key, expression)
-	return e
-}
-
-func (e *BUTTONElement) IfDATASTAR_HEADER(condition bool, key string, expression string) *BUTTONElement {
-	if condition {
-		e.DATASTAR_HEADER(key, expression)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_HEADER from the element.
-func (e *BUTTONElement) DATASTAR_HEADERRemove() *BUTTONElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-header")
-	return e
-}
-
-// Sets the indicator selector for fetch requests
-
-func (e *BUTTONElement) DATASTAR_FETCH_INDICATOR(expression string) *BUTTONElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-
-	key := "data-fetch-indicator"
-
-	e.StringAttributes.Set(key, expression)
-	return e
-}
-
-func (e *BUTTONElement) IfDATASTAR_FETCH_INDICATOR(condition bool, expression string) *BUTTONElement {
-	if condition {
-		e.DATASTAR_FETCH_INDICATOR(expression)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_FETCH_INDICATOR from the element.
-func (e *BUTTONElement) DATASTAR_FETCH_INDICATORRemove() *BUTTONElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-fetch-indicator")
-	return e
-}
-
-// Sets the visibility of the element
-
-func (e *BUTTONElement) DATASTAR_SHOWSet(b bool) *BUTTONElement {
-	key := "data-show"
-	e.BoolAttributes.Set(key, b)
-	return e
-}
-
-func (e *BUTTONElement) DATASTAR_SHOW() *BUTTONElement {
-	return e.DATASTAR_SHOWSet(true)
-}
-
-// Triggers the callback when the element intersects the viewport
-
-func (e *BUTTONElement) DATASTAR_INTERSECTS(expression string) *BUTTONElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-
-	key := "data-intersects"
-
-	e.StringAttributes.Set(key, expression)
-	return e
-}
-
-func (e *BUTTONElement) IfDATASTAR_INTERSECTS(condition bool, expression string) *BUTTONElement {
-	if condition {
-		e.DATASTAR_INTERSECTS(expression)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_INTERSECTS from the element.
-func (e *BUTTONElement) DATASTAR_INTERSECTSRemove() *BUTTONElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-intersects")
-	return e
-}
-
-// Teleports the element to the given selector
-
-func (e *BUTTONElement) DATASTAR_TELEPORTSet(b bool) *BUTTONElement {
-	key := "data-teleport"
-	e.BoolAttributes.Set(key, b)
-	return e
-}
-
-func (e *BUTTONElement) DATASTAR_TELEPORT() *BUTTONElement {
-	return e.DATASTAR_TELEPORTSet(true)
-}
-
-// Scrolls the element into view
-
-func (e *BUTTONElement) DATASTAR_SCROLL_INTO_VIEWSet(b bool) *BUTTONElement {
-	key := "data-scroll-into-view"
-	e.BoolAttributes.Set(key, b)
-	return e
-}
-
-func (e *BUTTONElement) DATASTAR_SCROLL_INTO_VIEW() *BUTTONElement {
-	return e.DATASTAR_SCROLL_INTO_VIEWSet(true)
-}
-
-// Setup the ViewTransitionAPI for the element
-
-func (e *BUTTONElement) DATASTAR_VIEW_TRANSITION(expression string) *BUTTONElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-
-	key := "data-view-transition"
-
-	e.StringAttributes.Set(key, expression)
-	return e
-}
-
-func (e *BUTTONElement) IfDATASTAR_VIEW_TRANSITION(condition bool, expression string) *BUTTONElement {
-	if condition {
-		e.DATASTAR_VIEW_TRANSITION(expression)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_VIEW_TRANSITION from the element.
-func (e *BUTTONElement) DATASTAR_VIEW_TRANSITIONRemove() *BUTTONElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-view-transition")
 	return e
 }

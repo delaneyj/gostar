@@ -5,10 +5,8 @@ package elements
 
 import (
 	"fmt"
-	"html"
 	"time"
 
-	"github.com/goccy/go-json"
 	"github.com/igrmk/treemap/v2"
 	"github.com/samber/lo"
 )
@@ -176,10 +174,12 @@ func (e *SVGPOLYLINEElement) POINTS(s string) *SVGPOLYLINEElement {
 	return e
 }
 
+// A list of points, each of which is a coordinate pair.
 func (e *SVGPOLYLINEElement) POINTSF(format string, args ...any) *SVGPOLYLINEElement {
 	return e.POINTS(fmt.Sprintf(format, args...))
 }
 
+// A list of points, each of which is a coordinate pair.
 func (e *SVGPOLYLINEElement) IfPOINTS(condition bool, s string) *SVGPOLYLINEElement {
 	if condition {
 		e.POINTS(s)
@@ -187,6 +187,7 @@ func (e *SVGPOLYLINEElement) IfPOINTS(condition bool, s string) *SVGPOLYLINEElem
 	return e
 }
 
+// A list of points, each of which is a coordinate pair.
 func (e *SVGPOLYLINEElement) IfPOINTSF(condition bool, format string, args ...any) *SVGPOLYLINEElement {
 	if condition {
 		e.POINTS(fmt.Sprintf(format, args...))
@@ -194,6 +195,7 @@ func (e *SVGPOLYLINEElement) IfPOINTSF(condition bool, format string, args ...an
 	return e
 }
 
+// A list of points, each of which is a coordinate pair.
 // Remove the attribute POINTS from the element.
 func (e *SVGPOLYLINEElement) POINTSRemove(s string) *SVGPOLYLINEElement {
 	if e.StringAttributes == nil {
@@ -203,6 +205,7 @@ func (e *SVGPOLYLINEElement) POINTSRemove(s string) *SVGPOLYLINEElement {
 	return e
 }
 
+// A list of points, each of which is a coordinate pair.
 func (e *SVGPOLYLINEElement) POINTSRemoveF(format string, args ...any) *SVGPOLYLINEElement {
 	return e.POINTSRemove(fmt.Sprintf(format, args...))
 }
@@ -216,10 +219,12 @@ func (e *SVGPOLYLINEElement) ID(s string) *SVGPOLYLINEElement {
 	return e
 }
 
+// Specifies a unique id for an element
 func (e *SVGPOLYLINEElement) IDF(format string, args ...any) *SVGPOLYLINEElement {
 	return e.ID(fmt.Sprintf(format, args...))
 }
 
+// Specifies a unique id for an element
 func (e *SVGPOLYLINEElement) IfID(condition bool, s string) *SVGPOLYLINEElement {
 	if condition {
 		e.ID(s)
@@ -227,6 +232,7 @@ func (e *SVGPOLYLINEElement) IfID(condition bool, s string) *SVGPOLYLINEElement 
 	return e
 }
 
+// Specifies a unique id for an element
 func (e *SVGPOLYLINEElement) IfIDF(condition bool, format string, args ...any) *SVGPOLYLINEElement {
 	if condition {
 		e.ID(fmt.Sprintf(format, args...))
@@ -234,6 +240,7 @@ func (e *SVGPOLYLINEElement) IfIDF(condition bool, format string, args ...any) *
 	return e
 }
 
+// Specifies a unique id for an element
 // Remove the attribute ID from the element.
 func (e *SVGPOLYLINEElement) IDRemove(s string) *SVGPOLYLINEElement {
 	if e.StringAttributes == nil {
@@ -243,6 +250,7 @@ func (e *SVGPOLYLINEElement) IDRemove(s string) *SVGPOLYLINEElement {
 	return e
 }
 
+// Specifies a unique id for an element
 func (e *SVGPOLYLINEElement) IDRemoveF(format string, args ...any) *SVGPOLYLINEElement {
 	return e.IDRemove(fmt.Sprintf(format, args...))
 }
@@ -262,6 +270,8 @@ func (e *SVGPOLYLINEElement) CLASS(s ...string) *SVGPOLYLINEElement {
 	return e
 }
 
+// Specifies one or more classnames for an element (refers to a class in a style
+// sheet)
 func (e *SVGPOLYLINEElement) IfCLASS(condition bool, s ...string) *SVGPOLYLINEElement {
 	if condition {
 		e.CLASS(s...)
@@ -269,6 +279,8 @@ func (e *SVGPOLYLINEElement) IfCLASS(condition bool, s ...string) *SVGPOLYLINEEl
 	return e
 }
 
+// Specifies one or more classnames for an element (refers to a class in a style
+// sheet)
 // Remove the attribute CLASS from the element.
 func (e *SVGPOLYLINEElement) CLASSRemove(s ...string) *SVGPOLYLINEElement {
 	if e.DelimitedStrings == nil {
@@ -287,6 +299,7 @@ func (e *SVGPOLYLINEElement) STYLEF(k string, format string, args ...any) *SVGPO
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+// Specifies an inline CSS style for an element
 func (e *SVGPOLYLINEElement) IfSTYLE(condition bool, k string, v string) *SVGPOLYLINEElement {
 	if condition {
 		e.STYLE(k, v)
@@ -294,6 +307,7 @@ func (e *SVGPOLYLINEElement) IfSTYLE(condition bool, k string, v string) *SVGPOL
 	return e
 }
 
+// Specifies an inline CSS style for an element
 func (e *SVGPOLYLINEElement) STYLE(k string, v string) *SVGPOLYLINEElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -307,6 +321,7 @@ func (e *SVGPOLYLINEElement) STYLE(k string, v string) *SVGPOLYLINEElement {
 	return e
 }
 
+// Specifies an inline CSS style for an element
 func (e *SVGPOLYLINEElement) IfSTYLEF(condition bool, k string, format string, args ...any) *SVGPOLYLINEElement {
 	if condition {
 		e.STYLE(k, fmt.Sprintf(format, args...))
@@ -314,6 +329,7 @@ func (e *SVGPOLYLINEElement) IfSTYLEF(condition bool, k string, format string, a
 	return e
 }
 
+// Specifies an inline CSS style for an element
 // Add the attributes in the map to the element.
 func (e *SVGPOLYLINEElement) STYLEMap(m map[string]string) *SVGPOLYLINEElement {
 	if e.KVStrings == nil {
@@ -330,6 +346,7 @@ func (e *SVGPOLYLINEElement) STYLEMap(m map[string]string) *SVGPOLYLINEElement {
 	return e
 }
 
+// Specifies an inline CSS style for an element
 // Add pairs of attributes to the element.
 func (e *SVGPOLYLINEElement) STYLEPairs(pairs ...string) *SVGPOLYLINEElement {
 	if len(pairs)%2 != 0 {
@@ -351,6 +368,7 @@ func (e *SVGPOLYLINEElement) STYLEPairs(pairs ...string) *SVGPOLYLINEElement {
 	return e
 }
 
+// Specifies an inline CSS style for an element
 func (e *SVGPOLYLINEElement) IfSTYLEPairs(condition bool, pairs ...string) *SVGPOLYLINEElement {
 	if condition {
 		e.STYLEPairs(pairs...)
@@ -358,6 +376,7 @@ func (e *SVGPOLYLINEElement) IfSTYLEPairs(condition bool, pairs ...string) *SVGP
 	return e
 }
 
+// Specifies an inline CSS style for an element
 // Remove the attribute STYLE from the element.
 func (e *SVGPOLYLINEElement) STYLERemove(keys ...string) *SVGPOLYLINEElement {
 	if e.KVStrings == nil {
@@ -373,62 +392,75 @@ func (e *SVGPOLYLINEElement) STYLERemove(keys ...string) *SVGPOLYLINEElement {
 	return e
 }
 
-// Merges the singleton store with the given object
-
-func (e *SVGPOLYLINEElement) DATASTAR_STORE(v any) *SVGPOLYLINEElement {
-	if e.CustomDataAttributes == nil {
-		e.CustomDataAttributes = treemap.New[string, string]()
-	}
-	b, err := json.Marshal(v)
-	if err != nil {
-		panic(err)
-	}
-	e.CustomDataAttributes.Set("store", html.EscapeString(string(b)))
-	return e
-}
-
-// Sets the reference of the element
-
-func (e *SVGPOLYLINEElement) DATASTAR_REF(expression string) *SVGPOLYLINEElement {
+// Sets the value of any HTML attribute to an expression, and keeps it in sync.
+//
+// See: https://data-star.dev/reference/attributes#data-attr
+func (e *SVGPOLYLINEElement) DATASTAR_ATTR(key string, expression string) *SVGPOLYLINEElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "data-ref"
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	key = fmt.Sprintf("data-attr%s", suffix)
 
 	e.StringAttributes.Set(key, expression)
 	return e
 }
 
-func (e *SVGPOLYLINEElement) IfDATASTAR_REF(condition bool, expression string) *SVGPOLYLINEElement {
+// Sets the value of any HTML attribute to an expression, and keeps it in sync.
+//
+// See: https://data-star.dev/reference/attributes#data-attr
+func (e *SVGPOLYLINEElement) IfDATASTAR_ATTR(condition bool, key string, expression string) *SVGPOLYLINEElement {
 	if condition {
-		e.DATASTAR_REF(expression)
+		e.DATASTAR_ATTR(key, expression)
 	}
 	return e
 }
 
-// Remove the attribute DATASTAR_REF from the element.
-func (e *SVGPOLYLINEElement) DATASTAR_REFRemove() *SVGPOLYLINEElement {
+// Sets the value of any HTML attribute to an expression, and keeps it in sync.
+//
+// See: https://data-star.dev/reference/attributes#data-attr
+// Remove the attribute DATASTAR_ATTR from the element.
+func (e *SVGPOLYLINEElement) DATASTAR_ATTRRemove(key string) *SVGPOLYLINEElement {
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("data-ref")
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	e.StringAttributes.Del("data-attr" + suffix)
+
 	return e
 }
 
-// Sets the value of the element
-
+// Creates a signal (if one doesn’t already exist) and sets up two-way data
+// binding between it and an element’s value.
+//
+// See: https://data-star.dev/reference/attributes#data-bind
 func (e *SVGPOLYLINEElement) DATASTAR_BIND(key string, expression string) *SVGPOLYLINEElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key = fmt.Sprintf("data-bind-%s", key)
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	key = fmt.Sprintf("data-bind%s", suffix)
 
 	e.StringAttributes.Set(key, expression)
 	return e
 }
 
+// Creates a signal (if one doesn’t already exist) and sets up two-way data
+// binding between it and an element’s value.
+//
+// See: https://data-star.dev/reference/attributes#data-bind
 func (e *SVGPOLYLINEElement) IfDATASTAR_BIND(condition bool, key string, expression string) *SVGPOLYLINEElement {
 	if condition {
 		e.DATASTAR_BIND(key, expression)
@@ -436,46 +468,1525 @@ func (e *SVGPOLYLINEElement) IfDATASTAR_BIND(condition bool, key string, express
 	return e
 }
 
+// Creates a signal (if one doesn’t already exist) and sets up two-way data
+// binding between it and an element’s value.
+//
+// See: https://data-star.dev/reference/attributes#data-bind
 // Remove the attribute DATASTAR_BIND from the element.
-func (e *SVGPOLYLINEElement) DATASTAR_BINDRemove() *SVGPOLYLINEElement {
+func (e *SVGPOLYLINEElement) DATASTAR_BINDRemove(key string) *SVGPOLYLINEElement {
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("data-bind")
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	e.StringAttributes.Del("data-bind" + suffix)
+
 	return e
 }
 
-// Sets the value of the element
+type SVGPolylineClassMod customDataKeyModifier
 
-func (e *SVGPOLYLINEElement) DATASTAR_MODEL(expression string) *SVGPOLYLINEElement {
+// Converts the casing of the signal name.
+//   - 'camel' – Camel case: 'mySignal' (default)
+//   - 'kebab' – Kebab case: 'my-signal'
+//   - 'snake' – Snake case: 'my_signal'
+//   - 'pascal' – Pascal case: 'MySignal'
+func SVGPolylineClassModCase(
+	s string,
+) SVGPolylineClassMod {
+	return func() string {
+		return fmt.Sprintf("case.%s", s)
+	}
+}
+
+// Adds or removes a class to or from an element based on an expression.
+func (e *SVGPOLYLINEElement) DATASTAR_CLASS(key string, expression string, modifiers ...SVGPolylineClassMod) *SVGPOLYLINEElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "data-model"
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	key = fmt.Sprintf("data-class%s", suffix)
+
+	customMods := lo.Map(modifiers, func(m SVGPolylineClassMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Adds or removes a class to or from an element based on an expression.
+func (e *SVGPOLYLINEElement) IfDATASTAR_CLASS(condition bool, key string, expression string, modifiers ...SVGPolylineClassMod) *SVGPOLYLINEElement {
+	if condition {
+		e.DATASTAR_CLASS(key, expression, modifiers...)
+	}
+	return e
+}
+
+// Adds or removes a class to or from an element based on an expression.
+// Remove the attribute DATASTAR_CLASS from the element.
+func (e *SVGPOLYLINEElement) DATASTAR_CLASSRemove(key string) *SVGPOLYLINEElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	e.StringAttributes.Del("data-class" + suffix)
+
+	return e
+}
+
+type SVGPolylineComputedMod customDataKeyModifier
+
+// Converts the casing of the signal name.
+//   - 'camel' – Camel case: 'mySignal' (default)
+//   - 'kebab' – Kebab case: 'my-signal'
+//   - 'snake' – Snake case: 'my_signal'
+//   - 'pascal' – Pascal case: 'MySignal'
+func SVGPolylineComputedModCase(
+	s string,
+) SVGPolylineComputedMod {
+	return func() string {
+		return fmt.Sprintf("case.%s", s)
+	}
+}
+
+// Creates a signal that is computed based on an expression
+// The computed signal is read-only, and its value is automatically updated when
+// any signals in the expression are updated.
+//
+// See: https://data-star.dev/reference/attributes#data-computed
+func (e *SVGPOLYLINEElement) DATASTAR_COMPUTED(key string, expression string, modifiers ...SVGPolylineComputedMod) *SVGPOLYLINEElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	key = fmt.Sprintf("data-computed%s", suffix)
+
+	customMods := lo.Map(modifiers, func(m SVGPolylineComputedMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Creates a signal that is computed based on an expression
+// The computed signal is read-only, and its value is automatically updated when
+// any signals in the expression are updated.
+//
+// See: https://data-star.dev/reference/attributes#data-computed
+func (e *SVGPOLYLINEElement) IfDATASTAR_COMPUTED(condition bool, key string, expression string, modifiers ...SVGPolylineComputedMod) *SVGPOLYLINEElement {
+	if condition {
+		e.DATASTAR_COMPUTED(key, expression, modifiers...)
+	}
+	return e
+}
+
+// Creates a signal that is computed based on an expression
+// The computed signal is read-only, and its value is automatically updated when
+// any signals in the expression are updated.
+//
+// See: https://data-star.dev/reference/attributes#data-computed
+// Remove the attribute DATASTAR_COMPUTED from the element.
+func (e *SVGPOLYLINEElement) DATASTAR_COMPUTEDRemove(key string) *SVGPOLYLINEElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	e.StringAttributes.Del("data-computed" + suffix)
+
+	return e
+}
+
+// Executes an expression on page load and whenever any signals in the expression
+// change
+// This is useful for performing side effects, such as updating other signals,
+// making requests to the backend, or manipulating the DOM.
+//
+// See: https://data-star.dev/reference/attributes#data-effect
+func (e *SVGPOLYLINEElement) DATASTAR_EFFECT(expression string) *SVGPOLYLINEElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-effect"
 
 	e.StringAttributes.Set(key, expression)
 	return e
 }
 
-func (e *SVGPOLYLINEElement) IfDATASTAR_MODEL(condition bool, expression string) *SVGPOLYLINEElement {
+// Executes an expression on page load and whenever any signals in the expression
+// change
+// This is useful for performing side effects, such as updating other signals,
+// making requests to the backend, or manipulating the DOM.
+//
+// See: https://data-star.dev/reference/attributes#data-effect
+func (e *SVGPOLYLINEElement) IfDATASTAR_EFFECT(condition bool, expression string) *SVGPOLYLINEElement {
 	if condition {
-		e.DATASTAR_MODEL(expression)
+		e.DATASTAR_EFFECT(expression)
 	}
 	return e
 }
 
-// Remove the attribute DATASTAR_MODEL from the element.
-func (e *SVGPOLYLINEElement) DATASTAR_MODELRemove() *SVGPOLYLINEElement {
+// Executes an expression on page load and whenever any signals in the expression
+// change
+// This is useful for performing side effects, such as updating other signals,
+// making requests to the backend, or manipulating the DOM.
+//
+// See: https://data-star.dev/reference/attributes#data-effect
+// Remove the attribute DATASTAR_EFFECT from the element.
+func (e *SVGPOLYLINEElement) DATASTAR_EFFECTRemove() *SVGPOLYLINEElement {
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("data-model")
+
+	e.StringAttributes.Del("data-effect")
+
 	return e
 }
 
-// Sets the textContent of the element
+type SVGPolylineIgnoreMod customDataKeyModifier
 
+// Only ignore the element itself, not its descendants.
+func SVGPolylineIgnoreModSelf() SVGPolylineIgnoreMod {
+	return func() string {
+		return "self"
+	}
+}
+
+// Datastar walks the entire DOM and applies plugins to each element it encounters
+// It's possible to tell Datastar to ignore an element and its descendants by
+// placing a data-ignore attribute on it
+// This can be useful for preventing naming conflicts with third-party libraries,
+// or when you are unable to escape user input.
+//
+// See: https://data-star.dev/reference/attributes#data-ignore
+func (e *SVGPOLYLINEElement) DATASTAR_IGNORESet(b bool, modifiers ...SVGPolylineIgnoreMod) *SVGPOLYLINEElement {
+	key := customDataKey("data-ignore")
+	customMods := lo.Map(modifiers, func(m SVGPolylineIgnoreMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	if e.BoolAttributes == nil {
+		e.BoolAttributes = treemap.New[string, bool]()
+	}
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+// Datastar walks the entire DOM and applies plugins to each element it encounters
+// It's possible to tell Datastar to ignore an element and its descendants by
+// placing a data-ignore attribute on it
+// This can be useful for preventing naming conflicts with third-party libraries,
+// or when you are unable to escape user input.
+//
+// See: https://data-star.dev/reference/attributes#data-ignore
+func (e *SVGPOLYLINEElement) DATASTAR_IGNORE(modifiers ...SVGPolylineIgnoreMod) *SVGPOLYLINEElement {
+	return e.DATASTAR_IGNORESet(true, modifiers...)
+}
+
+// Similar to the data-ignore attribute, the data-ignore-morph attribute tells the
+// PatchElements watcher to skip processing an element and its children when
+// morphing elements
+// This can be useful for preventing conflicts with third-party libraries that
+// manipulate the DOM, or when you are unable to escape user input.
+//
+// See: https://data-star.dev/reference/attributes#data-ignore-morph
+func (e *SVGPOLYLINEElement) DATASTAR_IGNORE_MORPHSet(b bool) *SVGPOLYLINEElement {
+	key := "data-ignore-morph"
+	if e.BoolAttributes == nil {
+		e.BoolAttributes = treemap.New[string, bool]()
+	}
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+// Similar to the data-ignore attribute, the data-ignore-morph attribute tells the
+// PatchElements watcher to skip processing an element and its children when
+// morphing elements
+// This can be useful for preventing conflicts with third-party libraries that
+// manipulate the DOM, or when you are unable to escape user input.
+//
+// See: https://data-star.dev/reference/attributes#data-ignore-morph
+func (e *SVGPOLYLINEElement) DATASTAR_IGNORE_MORPH() *SVGPOLYLINEElement {
+	return e.DATASTAR_IGNORE_MORPHSet(true)
+}
+
+type SVGPolylineIndicatorMod customDataKeyModifier
+
+// Converts the casing of the signal name.
+//   - 'camel' – Camel case: 'mySignal' (default)
+//   - 'kebab' – Kebab case: 'my-signal'
+//   - 'snake' – Snake case: 'my_signal'
+//   - 'pascal' – Pascal case: 'MySignal'
+func SVGPolylineIndicatorModCase(
+	s string,
+) SVGPolylineIndicatorMod {
+	return func() string {
+		return fmt.Sprintf("case.%s", s)
+	}
+}
+
+// Creates a signal and sets its value to true while a fetch request is in flight,
+// otherwise false
+// The signal can be used to show a loading indicator.
+//
+// See: https://data-star.dev/reference/attributes#data-indicator
+func (e *SVGPOLYLINEElement) DATASTAR_INDICATOR(expression string, modifiers ...SVGPolylineIndicatorMod) *SVGPOLYLINEElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-indicator"
+
+	customMods := lo.Map(modifiers, func(m SVGPolylineIndicatorMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Creates a signal and sets its value to true while a fetch request is in flight,
+// otherwise false
+// The signal can be used to show a loading indicator.
+//
+// See: https://data-star.dev/reference/attributes#data-indicator
+func (e *SVGPOLYLINEElement) IfDATASTAR_INDICATOR(condition bool, expression string, modifiers ...SVGPolylineIndicatorMod) *SVGPOLYLINEElement {
+	if condition {
+		e.DATASTAR_INDICATOR(expression, modifiers...)
+	}
+	return e
+}
+
+// Creates a signal and sets its value to true while a fetch request is in flight,
+// otherwise false
+// The signal can be used to show a loading indicator.
+//
+// See: https://data-star.dev/reference/attributes#data-indicator
+// Remove the attribute DATASTAR_INDICATOR from the element.
+func (e *SVGPOLYLINEElement) DATASTAR_INDICATORRemove() *SVGPOLYLINEElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-indicator")
+
+	return e
+}
+
+type SVGPolylineInitMod customDataKeyModifier
+
+// Delay the event listener in milliseconds.
+func SVGPolylineInitModDelayMs(
+	d time.Duration,
+) SVGPolylineInitMod {
+	return func() string {
+		return fmt.Sprintf("delay.%dms", d.Milliseconds())
+	}
+}
+
+// Delay the event listener in seconds.
+func SVGPolylineInitModDelaySec(
+	d time.Duration,
+) SVGPolylineInitMod {
+	return func() string {
+		return fmt.Sprintf("delay.%ds", int(d.Seconds()))
+	}
+}
+
+// Wraps the expression in 'document.startViewTransition()' when the View
+// Transition API is available.
+func SVGPolylineInitModViewTransition() SVGPolylineInitMod {
+	return func() string {
+		return "viewtransition"
+	}
+}
+
+// Runs an expression when the attribute is initialized
+// This can happen on page load, when an element is patched into the DOM, and any
+// time the attribute is modified (via a backend action or otherwise).
+//
+// See: https://data-star.dev/reference/attributes#data-indicator
+func (e *SVGPOLYLINEElement) DATASTAR_INIT(expression string, modifiers ...SVGPolylineInitMod) *SVGPOLYLINEElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-init"
+
+	customMods := lo.Map(modifiers, func(m SVGPolylineInitMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Runs an expression when the attribute is initialized
+// This can happen on page load, when an element is patched into the DOM, and any
+// time the attribute is modified (via a backend action or otherwise).
+//
+// See: https://data-star.dev/reference/attributes#data-indicator
+func (e *SVGPOLYLINEElement) IfDATASTAR_INIT(condition bool, expression string, modifiers ...SVGPolylineInitMod) *SVGPOLYLINEElement {
+	if condition {
+		e.DATASTAR_INIT(expression, modifiers...)
+	}
+	return e
+}
+
+// Runs an expression when the attribute is initialized
+// This can happen on page load, when an element is patched into the DOM, and any
+// time the attribute is modified (via a backend action or otherwise).
+//
+// See: https://data-star.dev/reference/attributes#data-indicator
+// Remove the attribute DATASTAR_INIT from the element.
+func (e *SVGPOLYLINEElement) DATASTAR_INITRemove() *SVGPOLYLINEElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-init")
+
+	return e
+}
+
+type SVGPolylineJsonSignalsMod customDataKeyModifier
+
+// Outputs a more compact JSON format without extra whitespace
+// Useful for displaying filtered data inline.
+func SVGPolylineJsonSignalsModTerse() SVGPolylineJsonSignalsMod {
+	return func() string {
+		return "terse"
+	}
+}
+
+// Sets the text content of an element to a reactive JSON stringified version of
+// signals
+// Useful when troubleshooting an issue.
+//
+// See: https://data-star.dev/reference/attributes#data-json-signals
+func (e *SVGPOLYLINEElement) DATASTAR_JSON_SIGNALS(expression string, modifiers ...SVGPolylineJsonSignalsMod) *SVGPOLYLINEElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-json-signals"
+
+	customMods := lo.Map(modifiers, func(m SVGPolylineJsonSignalsMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Sets the text content of an element to a reactive JSON stringified version of
+// signals
+// Useful when troubleshooting an issue.
+//
+// See: https://data-star.dev/reference/attributes#data-json-signals
+func (e *SVGPOLYLINEElement) IfDATASTAR_JSON_SIGNALS(condition bool, expression string, modifiers ...SVGPolylineJsonSignalsMod) *SVGPOLYLINEElement {
+	if condition {
+		e.DATASTAR_JSON_SIGNALS(expression, modifiers...)
+	}
+	return e
+}
+
+// Sets the text content of an element to a reactive JSON stringified version of
+// signals
+// Useful when troubleshooting an issue.
+//
+// See: https://data-star.dev/reference/attributes#data-json-signals
+// Remove the attribute DATASTAR_JSON_SIGNALS from the element.
+func (e *SVGPOLYLINEElement) DATASTAR_JSON_SIGNALSRemove() *SVGPOLYLINEElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-json-signals")
+
+	return e
+}
+
+type SVGPolylineOnMod customDataKeyModifier
+
+// Only run the expression once
+// Only works with built-in events.
+func SVGPolylineOnModOnce() SVGPolylineOnMod {
+	return func() string {
+		return "once"
+	}
+}
+
+// Do not call preventDefault on the event listener
+// Only works with built-in events.
+func SVGPolylineOnModPassive() SVGPolylineOnMod {
+	return func() string {
+		return "passive"
+	}
+}
+
+// Use capture event listener
+// Only works with built-in events.
+func SVGPolylineOnModCapture() SVGPolylineOnMod {
+	return func() string {
+		return "capture"
+	}
+}
+
+// Converts the casing of the signal name.
+//   - 'camel' – Camel case: 'mySignal' (default)
+//   - 'kebab' – Kebab case: 'my-signal'
+//   - 'snake' – Snake case: 'my_signal'
+//   - 'pascal' – Pascal case: 'MySignal'
+func SVGPolylineOnModCase(
+	s string,
+) SVGPolylineOnMod {
+	return func() string {
+		return fmt.Sprintf("case.%s", s)
+	}
+}
+
+// Delay the event listener in milliseconds.
+func SVGPolylineOnModDelayMs(
+	d time.Duration,
+) SVGPolylineOnMod {
+	return func() string {
+		return fmt.Sprintf("delay.%dms", d.Milliseconds())
+	}
+}
+
+// Delay the event listener in seconds.
+func SVGPolylineOnModDelaySec(
+	d time.Duration,
+) SVGPolylineOnMod {
+	return func() string {
+		return fmt.Sprintf("delay.%ds", int(d.Seconds()))
+	}
+}
+
+// Debounces the event handler
+func SVGPolylineOnModDebounceMs(
+	d time.Duration,
+) SVGPolylineOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms", d.Milliseconds())
+	}
+}
+
+// Debounce the event listener in milliseconds with leading edge.
+func SVGPolylineOnModDebounceMsLeading(
+	d time.Duration,
+) SVGPolylineOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms.leading", d.Milliseconds())
+	}
+}
+
+// Debounce the event listener in milliseconds without trailing edge.
+func SVGPolylineOnModDebounceMsNoTrailing(
+	d time.Duration,
+) SVGPolylineOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms.notrailing", d.Milliseconds())
+	}
+}
+
+// Debounces the event handler
+func SVGPolylineOnModDebounceSec(
+	d time.Duration,
+) SVGPolylineOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds", int(d.Seconds()))
+	}
+}
+
+// Debounce the event listener in seconds with leading edge.
+func SVGPolylineOnModDebounceSecLeading(
+	d time.Duration,
+) SVGPolylineOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds.leading", int(d.Seconds()))
+	}
+}
+
+// Debounce the event listener in seconds without trailing edge.
+func SVGPolylineOnModDebounceSecNoTrailing(
+	d time.Duration,
+) SVGPolylineOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds.notrailing", int(d.Seconds()))
+	}
+}
+
+// Throttles the event handler
+func SVGPolylineOnModThrottleMs(
+	d time.Duration,
+) SVGPolylineOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms", d.Milliseconds())
+	}
+}
+
+// Throttle the event listener in milliseconds without leading edge.
+func SVGPolylineOnModThrottleMsNoLeading(
+	d time.Duration,
+) SVGPolylineOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms.noleading", d.Milliseconds())
+	}
+}
+
+// Throttle the event listener in milliseconds with trailing edge.
+func SVGPolylineOnModThrottleMsTrailing(
+	d time.Duration,
+) SVGPolylineOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms.trailing", d.Milliseconds())
+	}
+}
+
+// Throttles the event listener in seconds.
+func SVGPolylineOnModThrottleSec(
+	d time.Duration,
+) SVGPolylineOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds", int(d.Seconds()))
+	}
+}
+
+// Throttle the event listener in seconds without leading edge.
+func SVGPolylineOnModThrottleSecNoLeading(
+	d time.Duration,
+) SVGPolylineOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds.noleading", int(d.Seconds()))
+	}
+}
+
+// Throttle the event listener in seconds with trailing edge.
+func SVGPolylineOnModThrottleSecTrailing(
+	d time.Duration,
+) SVGPolylineOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds.trailing", int(d.Seconds()))
+	}
+}
+
+// Wraps the expression in 'document.startViewTransition()' when the View
+// Transition API is available.
+func SVGPolylineOnModViewTransition() SVGPolylineOnMod {
+	return func() string {
+		return "viewtransition"
+	}
+}
+
+// Attaches the event listener to the 'window' element.
+func SVGPolylineOnModWindow() SVGPolylineOnMod {
+	return func() string {
+		return "window"
+	}
+}
+
+// Calls 'preventDefault' on the event listener.
+func SVGPolylineOnModPrevent() SVGPolylineOnMod {
+	return func() string {
+		return "prevent"
+	}
+}
+
+// Triggers when the event is outside the element.
+func SVGPolylineOnModOutside() SVGPolylineOnMod {
+	return func() string {
+		return "outside"
+	}
+}
+
+// Calls 'stopPropagation' on the event listener.
+func SVGPolylineOnModStop() SVGPolylineOnMod {
+	return func() string {
+		return "stop"
+	}
+}
+
+// Attaches an event listener to an element, executing an expression whenever the
+// event is triggered.
+//
+// See: https://data-star.dev/reference/attributes#data-on
+func (e *SVGPOLYLINEElement) DATASTAR_ON(key string, expression string, modifiers ...SVGPolylineOnMod) *SVGPOLYLINEElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	key = fmt.Sprintf("data-on%s", suffix)
+
+	customMods := lo.Map(modifiers, func(m SVGPolylineOnMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Attaches an event listener to an element, executing an expression whenever the
+// event is triggered.
+//
+// See: https://data-star.dev/reference/attributes#data-on
+func (e *SVGPOLYLINEElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SVGPolylineOnMod) *SVGPOLYLINEElement {
+	if condition {
+		e.DATASTAR_ON(key, expression, modifiers...)
+	}
+	return e
+}
+
+// Attaches an event listener to an element, executing an expression whenever the
+// event is triggered.
+//
+// See: https://data-star.dev/reference/attributes#data-on
+// Remove the attribute DATASTAR_ON from the element.
+func (e *SVGPOLYLINEElement) DATASTAR_ONRemove(key string) *SVGPOLYLINEElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	e.StringAttributes.Del("data-on" + suffix)
+
+	return e
+}
+
+type SVGPolylineOnIntersectMod customDataKeyModifier
+
+// Only run the expression once
+// Only works with built-in events.
+func SVGPolylineOnIntersectModOnce() SVGPolylineOnIntersectMod {
+	return func() string {
+		return "once"
+	}
+}
+
+// Trigger when half of the element is visible.
+func SVGPolylineOnIntersectModHalf() SVGPolylineOnIntersectMod {
+	return func() string {
+		return "half"
+	}
+}
+
+// Trigger when the full element is visible.
+func SVGPolylineOnIntersectModFull() SVGPolylineOnIntersectMod {
+	return func() string {
+		return "full"
+	}
+}
+
+// Delay the event listener in milliseconds.
+func SVGPolylineOnIntersectModDelayMs(
+	d time.Duration,
+) SVGPolylineOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("delay.%dms", d.Milliseconds())
+	}
+}
+
+// Delay the event listener in seconds.
+func SVGPolylineOnIntersectModDelaySec(
+	d time.Duration,
+) SVGPolylineOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("delay.%ds", int(d.Seconds()))
+	}
+}
+
+// Debounces the event handler
+func SVGPolylineOnIntersectModDebounceMs(
+	d time.Duration,
+) SVGPolylineOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms", d.Milliseconds())
+	}
+}
+
+// Debounce the event listener in milliseconds with leading edge.
+func SVGPolylineOnIntersectModDebounceMsLeading(
+	d time.Duration,
+) SVGPolylineOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms.leading", d.Milliseconds())
+	}
+}
+
+// Debounce the event listener in milliseconds without trailing edge.
+func SVGPolylineOnIntersectModDebounceMsNoTrailing(
+	d time.Duration,
+) SVGPolylineOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms.notrailing", d.Milliseconds())
+	}
+}
+
+// Debounces the event handler
+func SVGPolylineOnIntersectModDebounceSec(
+	d time.Duration,
+) SVGPolylineOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds", int(d.Seconds()))
+	}
+}
+
+// Debounce the event listener in seconds with leading edge.
+func SVGPolylineOnIntersectModDebounceSecLeading(
+	d time.Duration,
+) SVGPolylineOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds.leading", int(d.Seconds()))
+	}
+}
+
+// Debounce the event listener in seconds without trailing edge.
+func SVGPolylineOnIntersectModDebounceSecNoTrailing(
+	d time.Duration,
+) SVGPolylineOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds.notrailing", int(d.Seconds()))
+	}
+}
+
+// Throttles the event handler
+func SVGPolylineOnIntersectModThrottleMs(
+	d time.Duration,
+) SVGPolylineOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms", d.Milliseconds())
+	}
+}
+
+// Throttle the event listener in milliseconds without leading edge.
+func SVGPolylineOnIntersectModThrottleMsNoLeading(
+	d time.Duration,
+) SVGPolylineOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms.noleading", d.Milliseconds())
+	}
+}
+
+// Throttle the event listener in milliseconds with trailing edge.
+func SVGPolylineOnIntersectModThrottleMsTrailing(
+	d time.Duration,
+) SVGPolylineOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms.trailing", d.Milliseconds())
+	}
+}
+
+// Throttles the event listener in seconds.
+func SVGPolylineOnIntersectModThrottleSec(
+	d time.Duration,
+) SVGPolylineOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds", int(d.Seconds()))
+	}
+}
+
+// Throttle the event listener in seconds without leading edge.
+func SVGPolylineOnIntersectModThrottleSecNoLeading(
+	d time.Duration,
+) SVGPolylineOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds.noleading", int(d.Seconds()))
+	}
+}
+
+// Throttle the event listener in seconds with trailing edge.
+func SVGPolylineOnIntersectModThrottleSecTrailing(
+	d time.Duration,
+) SVGPolylineOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds.trailing", int(d.Seconds()))
+	}
+}
+
+// Wraps the expression in 'document.startViewTransition()' when the View
+// Transition API is available.
+func SVGPolylineOnIntersectModViewTransition() SVGPolylineOnIntersectMod {
+	return func() string {
+		return "viewtransition"
+	}
+}
+
+// Runs an expression when the element intersects with the viewport.
+func (e *SVGPOLYLINEElement) DATASTAR_ON_INTERSECT(expression string, modifiers ...SVGPolylineOnIntersectMod) *SVGPOLYLINEElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-on-intersect"
+
+	customMods := lo.Map(modifiers, func(m SVGPolylineOnIntersectMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Runs an expression when the element intersects with the viewport.
+func (e *SVGPOLYLINEElement) IfDATASTAR_ON_INTERSECT(condition bool, expression string, modifiers ...SVGPolylineOnIntersectMod) *SVGPOLYLINEElement {
+	if condition {
+		e.DATASTAR_ON_INTERSECT(expression, modifiers...)
+	}
+	return e
+}
+
+// Runs an expression when the element intersects with the viewport.
+// Remove the attribute DATASTAR_ON_INTERSECT from the element.
+func (e *SVGPOLYLINEElement) DATASTAR_ON_INTERSECTRemove() *SVGPOLYLINEElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-on-intersect")
+
+	return e
+}
+
+type SVGPolylineOnIntervalMod customDataKeyModifier
+
+// Sets the interval duration in milliseconds.
+func SVGPolylineOnIntervalModDurationMs(
+	d time.Duration,
+) SVGPolylineOnIntervalMod {
+	return func() string {
+		return fmt.Sprintf("duration.%dms", d.Milliseconds())
+	}
+}
+
+// Sets the interval duration in milliseconds
+// Execute the first interval immediately.
+func SVGPolylineOnIntervalModDurationMsLeading(
+	d time.Duration,
+) SVGPolylineOnIntervalMod {
+	return func() string {
+		return fmt.Sprintf("duration.%dms.leading", d.Milliseconds())
+	}
+}
+
+// Sets the interval duration in seconds.
+func SVGPolylineOnIntervalModDurationSec(
+	d time.Duration,
+) SVGPolylineOnIntervalMod {
+	return func() string {
+		return fmt.Sprintf("duration.%ds", int(d.Seconds()))
+	}
+}
+
+// Sets the interval duration in seconds
+// Execute the first interval immediately.
+func SVGPolylineOnIntervalModDurationSecLeading(
+	d time.Duration,
+) SVGPolylineOnIntervalMod {
+	return func() string {
+		return fmt.Sprintf("duration.%ds.leading", int(d.Seconds()))
+	}
+}
+
+// Wraps the expression in 'document.startViewTransition()' when the View
+// Transition API is available.
+func SVGPolylineOnIntervalModViewTransition() SVGPolylineOnIntervalMod {
+	return func() string {
+		return "viewtransition"
+	}
+}
+
+// Runs an expression at a regular interval
+// The interval duration defaults to one second and can be modified using the
+// '__duration' modifier.
+//
+// See: https://data-star.dev/reference/attributes#data-on-interval
+func (e *SVGPOLYLINEElement) DATASTAR_ON_INTERVAL(expression string, modifiers ...SVGPolylineOnIntervalMod) *SVGPOLYLINEElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-on-interval"
+
+	customMods := lo.Map(modifiers, func(m SVGPolylineOnIntervalMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Runs an expression at a regular interval
+// The interval duration defaults to one second and can be modified using the
+// '__duration' modifier.
+//
+// See: https://data-star.dev/reference/attributes#data-on-interval
+func (e *SVGPOLYLINEElement) IfDATASTAR_ON_INTERVAL(condition bool, expression string, modifiers ...SVGPolylineOnIntervalMod) *SVGPOLYLINEElement {
+	if condition {
+		e.DATASTAR_ON_INTERVAL(expression, modifiers...)
+	}
+	return e
+}
+
+// Runs an expression at a regular interval
+// The interval duration defaults to one second and can be modified using the
+// '__duration' modifier.
+//
+// See: https://data-star.dev/reference/attributes#data-on-interval
+// Remove the attribute DATASTAR_ON_INTERVAL from the element.
+func (e *SVGPOLYLINEElement) DATASTAR_ON_INTERVALRemove() *SVGPOLYLINEElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-on-interval")
+
+	return e
+}
+
+type SVGPolylineOnSignalPatchMod customDataKeyModifier
+
+// Delay the event listener in milliseconds.
+func SVGPolylineOnSignalPatchModDelayMs(
+	d time.Duration,
+) SVGPolylineOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("delay.%dms", d.Milliseconds())
+	}
+}
+
+// Delay the event listener in seconds.
+func SVGPolylineOnSignalPatchModDelaySec(
+	d time.Duration,
+) SVGPolylineOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("delay.%ds", int(d.Seconds()))
+	}
+}
+
+// Debounces the event handler
+func SVGPolylineOnSignalPatchModDebounceMs(
+	d time.Duration,
+) SVGPolylineOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms", d.Milliseconds())
+	}
+}
+
+// Debounce the event listener in milliseconds with leading edge.
+func SVGPolylineOnSignalPatchModDebounceMsLeading(
+	d time.Duration,
+) SVGPolylineOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms.leading", d.Milliseconds())
+	}
+}
+
+// Debounce the event listener in milliseconds without trailing edge.
+func SVGPolylineOnSignalPatchModDebounceMsNoTrailing(
+	d time.Duration,
+) SVGPolylineOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms.notrailing", d.Milliseconds())
+	}
+}
+
+// Debounces the event handler
+func SVGPolylineOnSignalPatchModDebounceSec(
+	d time.Duration,
+) SVGPolylineOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds", int(d.Seconds()))
+	}
+}
+
+// Debounce the event listener in seconds with leading edge.
+func SVGPolylineOnSignalPatchModDebounceSecLeading(
+	d time.Duration,
+) SVGPolylineOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds.leading", int(d.Seconds()))
+	}
+}
+
+// Debounce the event listener in seconds without trailing edge.
+func SVGPolylineOnSignalPatchModDebounceSecNoTrailing(
+	d time.Duration,
+) SVGPolylineOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds.notrailing", int(d.Seconds()))
+	}
+}
+
+// Throttles the event handler
+func SVGPolylineOnSignalPatchModThrottleMs(
+	d time.Duration,
+) SVGPolylineOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms", d.Milliseconds())
+	}
+}
+
+// Throttle the event listener in milliseconds without leading edge.
+func SVGPolylineOnSignalPatchModThrottleMsNoLeading(
+	d time.Duration,
+) SVGPolylineOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms.noleading", d.Milliseconds())
+	}
+}
+
+// Throttle the event listener in milliseconds with trailing edge.
+func SVGPolylineOnSignalPatchModThrottleMsTrailing(
+	d time.Duration,
+) SVGPolylineOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms.trailing", d.Milliseconds())
+	}
+}
+
+// Throttles the event listener in seconds.
+func SVGPolylineOnSignalPatchModThrottleSec(
+	d time.Duration,
+) SVGPolylineOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds", int(d.Seconds()))
+	}
+}
+
+// Throttle the event listener in seconds without leading edge.
+func SVGPolylineOnSignalPatchModThrottleSecNoLeading(
+	d time.Duration,
+) SVGPolylineOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds.noleading", int(d.Seconds()))
+	}
+}
+
+// Throttle the event listener in seconds with trailing edge.
+func SVGPolylineOnSignalPatchModThrottleSecTrailing(
+	d time.Duration,
+) SVGPolylineOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds.trailing", int(d.Seconds()))
+	}
+}
+
+// Runs an expression whenever any signals are patched
+// This is useful for tracking changes, updating computed values, or triggering
+// side effects when data updates.
+//
+// See: https://data-star.dev/reference/attributes#data-on-signal-patch
+func (e *SVGPOLYLINEElement) DATASTAR_ON_SIGNAL_PATCH(expression string, modifiers ...SVGPolylineOnSignalPatchMod) *SVGPOLYLINEElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-on-signal-patch"
+
+	customMods := lo.Map(modifiers, func(m SVGPolylineOnSignalPatchMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Runs an expression whenever any signals are patched
+// This is useful for tracking changes, updating computed values, or triggering
+// side effects when data updates.
+//
+// See: https://data-star.dev/reference/attributes#data-on-signal-patch
+func (e *SVGPOLYLINEElement) IfDATASTAR_ON_SIGNAL_PATCH(condition bool, expression string, modifiers ...SVGPolylineOnSignalPatchMod) *SVGPOLYLINEElement {
+	if condition {
+		e.DATASTAR_ON_SIGNAL_PATCH(expression, modifiers...)
+	}
+	return e
+}
+
+// Runs an expression whenever any signals are patched
+// This is useful for tracking changes, updating computed values, or triggering
+// side effects when data updates.
+//
+// See: https://data-star.dev/reference/attributes#data-on-signal-patch
+// Remove the attribute DATASTAR_ON_SIGNAL_PATCH from the element.
+func (e *SVGPOLYLINEElement) DATASTAR_ON_SIGNAL_PATCHRemove() *SVGPOLYLINEElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-on-signal-patch")
+
+	return e
+}
+
+// Filters which signals to watch when using the data-on-signal-patch attribute.
+//
+// The data-on-signal-patch-filter attribute accepts an object with include and/or
+// exclude properties that are regular expressions.
+//
+// See: https://data-star.dev/reference/attributes#data-on-signal-patch-filter
+func (e *SVGPOLYLINEElement) DATASTAR_ON_SIGNAL_PATCH_FILTER(expression string) *SVGPOLYLINEElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-on-signal-patch-filter"
+
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Filters which signals to watch when using the data-on-signal-patch attribute.
+//
+// The data-on-signal-patch-filter attribute accepts an object with include and/or
+// exclude properties that are regular expressions.
+//
+// See: https://data-star.dev/reference/attributes#data-on-signal-patch-filter
+func (e *SVGPOLYLINEElement) IfDATASTAR_ON_SIGNAL_PATCH_FILTER(condition bool, expression string) *SVGPOLYLINEElement {
+	if condition {
+		e.DATASTAR_ON_SIGNAL_PATCH_FILTER(expression)
+	}
+	return e
+}
+
+// Filters which signals to watch when using the data-on-signal-patch attribute.
+//
+// The data-on-signal-patch-filter attribute accepts an object with include and/or
+// exclude properties that are regular expressions.
+//
+// See: https://data-star.dev/reference/attributes#data-on-signal-patch-filter
+// Remove the attribute DATASTAR_ON_SIGNAL_PATCH_FILTER from the element.
+func (e *SVGPOLYLINEElement) DATASTAR_ON_SIGNAL_PATCH_FILTERRemove() *SVGPOLYLINEElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-on-signal-patch-filter")
+
+	return e
+}
+
+// Preserves the value of an attribute when morphing DOM elements.
+//
+// See: https://data-star.dev/reference/attributes#data-preserve-attr
+func (e *SVGPOLYLINEElement) DATASTAR_PRESERVE_ATTR(expression string) *SVGPOLYLINEElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-preserve-attr"
+
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Preserves the value of an attribute when morphing DOM elements.
+//
+// See: https://data-star.dev/reference/attributes#data-preserve-attr
+func (e *SVGPOLYLINEElement) IfDATASTAR_PRESERVE_ATTR(condition bool, expression string) *SVGPOLYLINEElement {
+	if condition {
+		e.DATASTAR_PRESERVE_ATTR(expression)
+	}
+	return e
+}
+
+// Preserves the value of an attribute when morphing DOM elements.
+//
+// See: https://data-star.dev/reference/attributes#data-preserve-attr
+// Remove the attribute DATASTAR_PRESERVE_ATTR from the element.
+func (e *SVGPOLYLINEElement) DATASTAR_PRESERVE_ATTRRemove() *SVGPOLYLINEElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-preserve-attr")
+
+	return e
+}
+
+type SVGPolylineRefMod customDataKeyModifier
+
+// Converts the casing of the signal name.
+//   - 'camel' – Camel case: 'mySignal' (default)
+//   - 'kebab' – Kebab case: 'my-signal'
+//   - 'snake' – Snake case: 'my_signal'
+//   - 'pascal' – Pascal case: 'MySignal'
+func SVGPolylineRefModCase(
+	s string,
+) SVGPolylineRefMod {
+	return func() string {
+		return fmt.Sprintf("case.%s", s)
+	}
+}
+
+// Creates a new signal that is a reference to the element on which the data
+// attribute is placed.
+//
+// See: https://data-star.dev/reference/attributes#data-ref
+func (e *SVGPOLYLINEElement) DATASTAR_REF(expression string, modifiers ...SVGPolylineRefMod) *SVGPOLYLINEElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-ref"
+
+	customMods := lo.Map(modifiers, func(m SVGPolylineRefMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Creates a new signal that is a reference to the element on which the data
+// attribute is placed.
+//
+// See: https://data-star.dev/reference/attributes#data-ref
+func (e *SVGPOLYLINEElement) IfDATASTAR_REF(condition bool, expression string, modifiers ...SVGPolylineRefMod) *SVGPOLYLINEElement {
+	if condition {
+		e.DATASTAR_REF(expression, modifiers...)
+	}
+	return e
+}
+
+// Creates a new signal that is a reference to the element on which the data
+// attribute is placed.
+//
+// See: https://data-star.dev/reference/attributes#data-ref
+// Remove the attribute DATASTAR_REF from the element.
+func (e *SVGPOLYLINEElement) DATASTAR_REFRemove() *SVGPOLYLINEElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-ref")
+
+	return e
+}
+
+// Shows or hides an element based on whether an expression evaluates to 'true' or
+// 'false'
+// For anything with custom requirements, use 'data-class' instead.
+//
+// See: https://data-star.dev/reference/attributes#data-show
+func (e *SVGPOLYLINEElement) DATASTAR_SHOW(expression string) *SVGPOLYLINEElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-show"
+
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Shows or hides an element based on whether an expression evaluates to 'true' or
+// 'false'
+// For anything with custom requirements, use 'data-class' instead.
+//
+// See: https://data-star.dev/reference/attributes#data-show
+func (e *SVGPOLYLINEElement) IfDATASTAR_SHOW(condition bool, expression string) *SVGPOLYLINEElement {
+	if condition {
+		e.DATASTAR_SHOW(expression)
+	}
+	return e
+}
+
+// Shows or hides an element based on whether an expression evaluates to 'true' or
+// 'false'
+// For anything with custom requirements, use 'data-class' instead.
+//
+// See: https://data-star.dev/reference/attributes#data-show
+// Remove the attribute DATASTAR_SHOW from the element.
+func (e *SVGPOLYLINEElement) DATASTAR_SHOWRemove() *SVGPOLYLINEElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-show")
+
+	return e
+}
+
+type SVGPolylineSignalsMod customDataKeyModifier
+
+// Converts the casing of the signal name.
+//   - 'camel' – Camel case: 'mySignal' (default)
+//   - 'kebab' – Kebab case: 'my-signal'
+//   - 'snake' – Snake case: 'my_signal'
+//   - 'pascal' – Pascal case: 'MySignal'
+func SVGPolylineSignalsModCase(
+	s string,
+) SVGPolylineSignalsMod {
+	return func() string {
+		return fmt.Sprintf("case.%s", s)
+	}
+}
+
+// Only patches signals if their keys do not already exist
+// This is useful for setting defaults without overwriting existing values.
+func SVGPolylineSignalsModIfMissing() SVGPolylineSignalsMod {
+	return func() string {
+		return "ifmissing"
+	}
+}
+
+// Patches (adds, updates or removes) one or more signals into the existing
+// signals
+// Values defined later in the DOM tree override those defined earlier.
+//
+// See: https://data-star.dev/reference/attributes#data-signals
+func (e *SVGPOLYLINEElement) DATASTAR_SIGNALS(key string, expression string, modifiers ...SVGPolylineSignalsMod) *SVGPOLYLINEElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	key = fmt.Sprintf("data-signals%s", suffix)
+
+	customMods := lo.Map(modifiers, func(m SVGPolylineSignalsMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Patches (adds, updates or removes) one or more signals into the existing
+// signals
+// Values defined later in the DOM tree override those defined earlier.
+//
+// See: https://data-star.dev/reference/attributes#data-signals
+func (e *SVGPOLYLINEElement) IfDATASTAR_SIGNALS(condition bool, key string, expression string, modifiers ...SVGPolylineSignalsMod) *SVGPOLYLINEElement {
+	if condition {
+		e.DATASTAR_SIGNALS(key, expression, modifiers...)
+	}
+	return e
+}
+
+// Patches (adds, updates or removes) one or more signals into the existing
+// signals
+// Values defined later in the DOM tree override those defined earlier.
+//
+// See: https://data-star.dev/reference/attributes#data-signals
+// Remove the attribute DATASTAR_SIGNALS from the element.
+func (e *SVGPOLYLINEElement) DATASTAR_SIGNALSRemove(key string) *SVGPOLYLINEElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	e.StringAttributes.Del("data-signals" + suffix)
+
+	return e
+}
+
+type SVGPolylineStyleMod customDataKeyModifier
+
+// Converts the casing of the signal name.
+//   - 'camel' – Camel case: 'mySignal' (default)
+//   - 'kebab' – Kebab case: 'my-signal'
+//   - 'snake' – Snake case: 'my_signal'
+//   - 'pascal' – Pascal case: 'MySignal'
+func SVGPolylineStyleModCase(
+	s string,
+) SVGPolylineStyleMod {
+	return func() string {
+		return fmt.Sprintf("case.%s", s)
+	}
+}
+
+// Sets the value of inline CSS styles on an element based on an expression, and
+// keeps them in sync.
+//
+// See: https://data-star.dev/reference/attributes#data-style
+func (e *SVGPOLYLINEElement) DATASTAR_STYLE(key string, expression string, modifiers ...SVGPolylineStyleMod) *SVGPOLYLINEElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	key = fmt.Sprintf("data-style%s", suffix)
+
+	customMods := lo.Map(modifiers, func(m SVGPolylineStyleMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Sets the value of inline CSS styles on an element based on an expression, and
+// keeps them in sync.
+//
+// See: https://data-star.dev/reference/attributes#data-style
+func (e *SVGPOLYLINEElement) IfDATASTAR_STYLE(condition bool, key string, expression string, modifiers ...SVGPolylineStyleMod) *SVGPOLYLINEElement {
+	if condition {
+		e.DATASTAR_STYLE(key, expression, modifiers...)
+	}
+	return e
+}
+
+// Sets the value of inline CSS styles on an element based on an expression, and
+// keeps them in sync.
+//
+// See: https://data-star.dev/reference/attributes#data-style
+// Remove the attribute DATASTAR_STYLE from the element.
+func (e *SVGPOLYLINEElement) DATASTAR_STYLERemove(key string) *SVGPOLYLINEElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	e.StringAttributes.Del("data-style" + suffix)
+
+	return e
+}
+
+// Binds the text content of an element to an expression.
+//
+// See: https://data-star.dev/reference/attributes#data-text
 func (e *SVGPOLYLINEElement) DATASTAR_TEXT(expression string) *SVGPOLYLINEElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
@@ -487,6 +1998,9 @@ func (e *SVGPOLYLINEElement) DATASTAR_TEXT(expression string) *SVGPOLYLINEElemen
 	return e
 }
 
+// Binds the text content of an element to an expression.
+//
+// See: https://data-star.dev/reference/attributes#data-text
 func (e *SVGPOLYLINEElement) IfDATASTAR_TEXT(condition bool, expression string) *SVGPOLYLINEElement {
 	if condition {
 		e.DATASTAR_TEXT(expression)
@@ -494,228 +2008,16 @@ func (e *SVGPOLYLINEElement) IfDATASTAR_TEXT(condition bool, expression string) 
 	return e
 }
 
+// Binds the text content of an element to an expression.
+//
+// See: https://data-star.dev/reference/attributes#data-text
 // Remove the attribute DATASTAR_TEXT from the element.
 func (e *SVGPOLYLINEElement) DATASTAR_TEXTRemove() *SVGPOLYLINEElement {
 	if e.StringAttributes == nil {
 		return e
 	}
+
 	e.StringAttributes.Del("data-text")
-	return e
-}
 
-// Sets the event handler of the element
-
-type SVGPolylineOnMod customDataKeyModifier
-
-// Debounces the event handler
-func SVGPolylineOnModDebounce(
-	d time.Duration,
-) SVGPolylineOnMod {
-	return func() string {
-		return fmt.Sprintf("debounce_%dms", d.Milliseconds())
-	}
-}
-
-// Throttles the event handler
-func SVGPolylineOnModThrottle(
-	d time.Duration,
-) SVGPolylineOnMod {
-	return func() string {
-		return fmt.Sprintf("throttle_%dms", d.Milliseconds())
-	}
-}
-
-func (e *SVGPOLYLINEElement) DATASTAR_ON(key string, expression string, modifiers ...SVGPolylineOnMod) *SVGPOLYLINEElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-
-	key = fmt.Sprintf("data-on-%s", key)
-
-	customMods := lo.Map(modifiers, func(m SVGPolylineOnMod, i int) customDataKeyModifier {
-		return customDataKeyModifier(m)
-	})
-	key = customDataKey(key, customMods...)
-	e.StringAttributes.Set(key, expression)
-	return e
-}
-
-func (e *SVGPOLYLINEElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SVGPolylineOnMod) *SVGPOLYLINEElement {
-	if condition {
-		e.DATASTAR_ON(key, expression, modifiers...)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_ON from the element.
-func (e *SVGPOLYLINEElement) DATASTAR_ONRemove() *SVGPOLYLINEElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-on")
-	return e
-}
-
-// Sets the focus of the element
-
-func (e *SVGPOLYLINEElement) DATASTAR_FOCUSSet(b bool) *SVGPOLYLINEElement {
-	key := "data-focus"
-	e.BoolAttributes.Set(key, b)
-	return e
-}
-
-func (e *SVGPOLYLINEElement) DATASTAR_FOCUS() *SVGPOLYLINEElement {
-	return e.DATASTAR_FOCUSSet(true)
-}
-
-// Sets the header of for fetch requests
-
-func (e *SVGPOLYLINEElement) DATASTAR_HEADER(key string, expression string) *SVGPOLYLINEElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-
-	key = fmt.Sprintf("data-header-%s", key)
-
-	e.StringAttributes.Set(key, expression)
-	return e
-}
-
-func (e *SVGPOLYLINEElement) IfDATASTAR_HEADER(condition bool, key string, expression string) *SVGPOLYLINEElement {
-	if condition {
-		e.DATASTAR_HEADER(key, expression)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_HEADER from the element.
-func (e *SVGPOLYLINEElement) DATASTAR_HEADERRemove() *SVGPOLYLINEElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-header")
-	return e
-}
-
-// Sets the indicator selector for fetch requests
-
-func (e *SVGPOLYLINEElement) DATASTAR_FETCH_INDICATOR(expression string) *SVGPOLYLINEElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-
-	key := "data-fetch-indicator"
-
-	e.StringAttributes.Set(key, expression)
-	return e
-}
-
-func (e *SVGPOLYLINEElement) IfDATASTAR_FETCH_INDICATOR(condition bool, expression string) *SVGPOLYLINEElement {
-	if condition {
-		e.DATASTAR_FETCH_INDICATOR(expression)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_FETCH_INDICATOR from the element.
-func (e *SVGPOLYLINEElement) DATASTAR_FETCH_INDICATORRemove() *SVGPOLYLINEElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-fetch-indicator")
-	return e
-}
-
-// Sets the visibility of the element
-
-func (e *SVGPOLYLINEElement) DATASTAR_SHOWSet(b bool) *SVGPOLYLINEElement {
-	key := "data-show"
-	e.BoolAttributes.Set(key, b)
-	return e
-}
-
-func (e *SVGPOLYLINEElement) DATASTAR_SHOW() *SVGPOLYLINEElement {
-	return e.DATASTAR_SHOWSet(true)
-}
-
-// Triggers the callback when the element intersects the viewport
-
-func (e *SVGPOLYLINEElement) DATASTAR_INTERSECTS(expression string) *SVGPOLYLINEElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-
-	key := "data-intersects"
-
-	e.StringAttributes.Set(key, expression)
-	return e
-}
-
-func (e *SVGPOLYLINEElement) IfDATASTAR_INTERSECTS(condition bool, expression string) *SVGPOLYLINEElement {
-	if condition {
-		e.DATASTAR_INTERSECTS(expression)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_INTERSECTS from the element.
-func (e *SVGPOLYLINEElement) DATASTAR_INTERSECTSRemove() *SVGPOLYLINEElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-intersects")
-	return e
-}
-
-// Teleports the element to the given selector
-
-func (e *SVGPOLYLINEElement) DATASTAR_TELEPORTSet(b bool) *SVGPOLYLINEElement {
-	key := "data-teleport"
-	e.BoolAttributes.Set(key, b)
-	return e
-}
-
-func (e *SVGPOLYLINEElement) DATASTAR_TELEPORT() *SVGPOLYLINEElement {
-	return e.DATASTAR_TELEPORTSet(true)
-}
-
-// Scrolls the element into view
-
-func (e *SVGPOLYLINEElement) DATASTAR_SCROLL_INTO_VIEWSet(b bool) *SVGPOLYLINEElement {
-	key := "data-scroll-into-view"
-	e.BoolAttributes.Set(key, b)
-	return e
-}
-
-func (e *SVGPOLYLINEElement) DATASTAR_SCROLL_INTO_VIEW() *SVGPOLYLINEElement {
-	return e.DATASTAR_SCROLL_INTO_VIEWSet(true)
-}
-
-// Setup the ViewTransitionAPI for the element
-
-func (e *SVGPOLYLINEElement) DATASTAR_VIEW_TRANSITION(expression string) *SVGPOLYLINEElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-
-	key := "data-view-transition"
-
-	e.StringAttributes.Set(key, expression)
-	return e
-}
-
-func (e *SVGPOLYLINEElement) IfDATASTAR_VIEW_TRANSITION(condition bool, expression string) *SVGPOLYLINEElement {
-	if condition {
-		e.DATASTAR_VIEW_TRANSITION(expression)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_VIEW_TRANSITION from the element.
-func (e *SVGPOLYLINEElement) DATASTAR_VIEW_TRANSITIONRemove() *SVGPOLYLINEElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-view-transition")
 	return e
 }

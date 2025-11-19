@@ -244,6 +244,15 @@ func (m *Attribute_Type_DurationMs) CloneVT() isAttribute_Type_Type {
 	return r
 }
 
+func (m *Attribute_Type_DurationSec) CloneVT() isAttribute_Type_Type {
+	if m == nil {
+		return (*Attribute_Type_DurationSec)(nil)
+	}
+	r := new(Attribute_Type_DurationSec)
+	r.DurationSec = m.DurationSec
+	return r
+}
+
 func (m *Attribute) CloneVT() *Attribute {
 	if m == nil {
 		return (*Attribute)(nil)
@@ -738,6 +747,23 @@ func (this *Attribute_Type_DurationMs) EqualVT(thatIface isAttribute_Type_Type) 
 		return false
 	}
 	if this.DurationMs != that.DurationMs {
+		return false
+	}
+	return true
+}
+
+func (this *Attribute_Type_DurationSec) EqualVT(thatIface isAttribute_Type_Type) bool {
+	that, ok := thatIface.(*Attribute_Type_DurationSec)
+	if !ok {
+		return false
+	}
+	if this == that {
+		return true
+	}
+	if this == nil && that != nil || this != nil && that == nil {
+		return false
+	}
+	if this.DurationSec != that.DurationSec {
 		return false
 	}
 	return true
@@ -1439,6 +1465,23 @@ func (m *Attribute_Type_DurationMs) MarshalToSizedBufferVT(dAtA []byte) (int, er
 	dAtA[i] = 0x58
 	return len(dAtA) - i, nil
 }
+func (m *Attribute_Type_DurationSec) MarshalToVT(dAtA []byte) (int, error) {
+	size := m.SizeVT()
+	return m.MarshalToSizedBufferVT(dAtA[:size])
+}
+
+func (m *Attribute_Type_DurationSec) MarshalToSizedBufferVT(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	i--
+	if m.DurationSec {
+		dAtA[i] = 1
+	} else {
+		dAtA[i] = 0
+	}
+	i--
+	dAtA[i] = 0x60
+	return len(dAtA) - i, nil
+}
 func (m *Attribute) MarshalVT() (dAtA []byte, err error) {
 	if m == nil {
 		return nil, nil
@@ -2026,6 +2069,13 @@ func (m *Attribute_Type) MarshalToSizedBufferVTStrict(dAtA []byte) (int, error) 
 		i -= len(m.unknownFields)
 		copy(dAtA[i:], m.unknownFields)
 	}
+	if msg, ok := m.Type.(*Attribute_Type_DurationSec); ok {
+		size, err := msg.MarshalToSizedBufferVTStrict(dAtA[:i])
+		if err != nil {
+			return 0, err
+		}
+		i -= size
+	}
 	if msg, ok := m.Type.(*Attribute_Type_DurationMs); ok {
 		size, err := msg.MarshalToSizedBufferVTStrict(dAtA[:i])
 		if err != nil {
@@ -2294,6 +2344,23 @@ func (m *Attribute_Type_DurationMs) MarshalToSizedBufferVTStrict(dAtA []byte) (i
 	}
 	i--
 	dAtA[i] = 0x58
+	return len(dAtA) - i, nil
+}
+func (m *Attribute_Type_DurationSec) MarshalToVTStrict(dAtA []byte) (int, error) {
+	size := m.SizeVT()
+	return m.MarshalToSizedBufferVTStrict(dAtA[:size])
+}
+
+func (m *Attribute_Type_DurationSec) MarshalToSizedBufferVTStrict(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	i--
+	if m.DurationSec {
+		dAtA[i] = 1
+	} else {
+		dAtA[i] = 0
+	}
+	i--
+	dAtA[i] = 0x60
 	return len(dAtA) - i, nil
 }
 func (m *Attribute) MarshalVTStrict() (dAtA []byte, err error) {
@@ -2794,6 +2861,15 @@ func (m *Attribute_Type_Json) SizeVT() (n int) {
 	return n
 }
 func (m *Attribute_Type_DurationMs) SizeVT() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	n += 2
+	return n
+}
+func (m *Attribute_Type_DurationSec) SizeVT() (n int) {
 	if m == nil {
 		return 0
 	}
@@ -3949,6 +4025,27 @@ func (m *Attribute_Type) UnmarshalVT(dAtA []byte) error {
 			}
 			b := bool(v != 0)
 			m.Type = &Attribute_Type_DurationMs{DurationMs: b}
+		case 12:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field DurationSec", wireType)
+			}
+			var v int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return protohelpers.ErrIntOverflow
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				v |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			b := bool(v != 0)
+			m.Type = &Attribute_Type_DurationSec{DurationSec: b}
 		default:
 			iNdEx = preIndex
 			skippy, err := protohelpers.Skip(dAtA[iNdEx:])
@@ -5763,6 +5860,27 @@ func (m *Attribute_Type) UnmarshalVTUnsafe(dAtA []byte) error {
 			}
 			b := bool(v != 0)
 			m.Type = &Attribute_Type_DurationMs{DurationMs: b}
+		case 12:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field DurationSec", wireType)
+			}
+			var v int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return protohelpers.ErrIntOverflow
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				v |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			b := bool(v != 0)
+			m.Type = &Attribute_Type_DurationSec{DurationSec: b}
 		default:
 			iNdEx = preIndex
 			skippy, err := protohelpers.Skip(dAtA[iNdEx:])

@@ -105,7 +105,7 @@ type AttributeMultiError []error
 
 // Error returns a concatenation of all the error messages it wraps.
 func (m AttributeMultiError) Error() string {
-	var msgs []string
+	msgs := make([]string, 0, len(m))
 	for _, err := range m {
 		msgs = append(msgs, err.Error())
 	}
@@ -245,7 +245,7 @@ type ElementMultiError []error
 
 // Error returns a concatenation of all the error messages it wraps.
 func (m ElementMultiError) Error() string {
-	var msgs []string
+	msgs := make([]string, 0, len(m))
 	for _, err := range m {
 		msgs = append(msgs, err.Error())
 	}
@@ -418,7 +418,7 @@ type NamespaceMultiError []error
 
 // Error returns a concatenation of all the error messages it wraps.
 func (m NamespaceMultiError) Error() string {
-	var msgs []string
+	msgs := make([]string, 0, len(m))
 	for _, err := range m {
 		msgs = append(msgs, err.Error())
 	}
@@ -585,7 +585,7 @@ type NamespacesMultiError []error
 
 // Error returns a concatenation of all the error messages it wraps.
 func (m NamespacesMultiError) Error() string {
-	var msgs []string
+	msgs := make([]string, 0, len(m))
 	for _, err := range m {
 		msgs = append(msgs, err.Error())
 	}
@@ -688,7 +688,7 @@ type Attribute_KVMultiError []error
 
 // Error returns a concatenation of all the error messages it wraps.
 func (m Attribute_KVMultiError) Error() string {
-	var msgs []string
+	msgs := make([]string, 0, len(m))
 	for _, err := range m {
 		msgs = append(msgs, err.Error())
 	}
@@ -792,7 +792,7 @@ type Attribute_ChoiceMultiError []error
 
 // Error returns a concatenation of all the error messages it wraps.
 func (m Attribute_ChoiceMultiError) Error() string {
-	var msgs []string
+	msgs := make([]string, 0, len(m))
 	for _, err := range m {
 		msgs = append(msgs, err.Error())
 	}
@@ -926,7 +926,7 @@ type Attribute_ChoicesMultiError []error
 
 // Error returns a concatenation of all the error messages it wraps.
 func (m Attribute_ChoicesMultiError) Error() string {
-	var msgs []string
+	msgs := make([]string, 0, len(m))
 	for _, err := range m {
 		msgs = append(msgs, err.Error())
 	}
@@ -1095,7 +1095,7 @@ type Attribute_CustomMultiError []error
 
 // Error returns a concatenation of all the error messages it wraps.
 func (m Attribute_CustomMultiError) Error() string {
-	var msgs []string
+	msgs := make([]string, 0, len(m))
 	for _, err := range m {
 		msgs = append(msgs, err.Error())
 	}
@@ -1401,6 +1401,18 @@ func (m *Attribute_Type) validate(all bool) error {
 			errors = append(errors, err)
 		}
 		// no validation rules for DurationMs
+	case *Attribute_Type_DurationSec:
+		if v == nil {
+			err := Attribute_TypeValidationError{
+				field:  "Type",
+				reason: "oneof value cannot be a typed-nil",
+			}
+			if !all {
+				return err
+			}
+			errors = append(errors, err)
+		}
+		// no validation rules for DurationSec
 	default:
 		_ = v // ensures v is used
 	}
@@ -1419,7 +1431,7 @@ type Attribute_TypeMultiError []error
 
 // Error returns a concatenation of all the error messages it wraps.
 func (m Attribute_TypeMultiError) Error() string {
-	var msgs []string
+	msgs := make([]string, 0, len(m))
 	for _, err := range m {
 		msgs = append(msgs, err.Error())
 	}
@@ -1556,7 +1568,7 @@ type Attribute_Custom_ModifierMultiError []error
 
 // Error returns a concatenation of all the error messages it wraps.
 func (m Attribute_Custom_ModifierMultiError) Error() string {
-	var msgs []string
+	msgs := make([]string, 0, len(m))
 	for _, err := range m {
 		msgs = append(msgs, err.Error())
 	}

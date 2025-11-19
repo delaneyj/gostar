@@ -5,10 +5,8 @@ package elements
 
 import (
 	"fmt"
-	"html"
 	"time"
 
-	"github.com/goccy/go-json"
 	"github.com/igrmk/treemap/v2"
 	"github.com/samber/lo"
 )
@@ -173,10 +171,12 @@ func (e *SVGFECONVOLVEMATRIXElement) IN(s string) *SVGFECONVOLVEMATRIXElement {
 	return e
 }
 
+// The input for this filter.
 func (e *SVGFECONVOLVEMATRIXElement) INF(format string, args ...any) *SVGFECONVOLVEMATRIXElement {
 	return e.IN(fmt.Sprintf(format, args...))
 }
 
+// The input for this filter.
 func (e *SVGFECONVOLVEMATRIXElement) IfIN(condition bool, s string) *SVGFECONVOLVEMATRIXElement {
 	if condition {
 		e.IN(s)
@@ -184,6 +184,7 @@ func (e *SVGFECONVOLVEMATRIXElement) IfIN(condition bool, s string) *SVGFECONVOL
 	return e
 }
 
+// The input for this filter.
 func (e *SVGFECONVOLVEMATRIXElement) IfINF(condition bool, format string, args ...any) *SVGFECONVOLVEMATRIXElement {
 	if condition {
 		e.IN(fmt.Sprintf(format, args...))
@@ -191,6 +192,7 @@ func (e *SVGFECONVOLVEMATRIXElement) IfINF(condition bool, format string, args .
 	return e
 }
 
+// The input for this filter.
 // Remove the attribute IN from the element.
 func (e *SVGFECONVOLVEMATRIXElement) INRemove(s string) *SVGFECONVOLVEMATRIXElement {
 	if e.StringAttributes == nil {
@@ -200,6 +202,7 @@ func (e *SVGFECONVOLVEMATRIXElement) INRemove(s string) *SVGFECONVOLVEMATRIXElem
 	return e
 }
 
+// The input for this filter.
 func (e *SVGFECONVOLVEMATRIXElement) INRemoveF(format string, args ...any) *SVGFECONVOLVEMATRIXElement {
 	return e.INRemove(fmt.Sprintf(format, args...))
 }
@@ -213,10 +216,12 @@ func (e *SVGFECONVOLVEMATRIXElement) ORDER(s string) *SVGFECONVOLVEMATRIXElement
 	return e
 }
 
+// The number of cells in each dimension for 'kernelMatrix'
 func (e *SVGFECONVOLVEMATRIXElement) ORDERF(format string, args ...any) *SVGFECONVOLVEMATRIXElement {
 	return e.ORDER(fmt.Sprintf(format, args...))
 }
 
+// The number of cells in each dimension for 'kernelMatrix'
 func (e *SVGFECONVOLVEMATRIXElement) IfORDER(condition bool, s string) *SVGFECONVOLVEMATRIXElement {
 	if condition {
 		e.ORDER(s)
@@ -224,6 +229,7 @@ func (e *SVGFECONVOLVEMATRIXElement) IfORDER(condition bool, s string) *SVGFECON
 	return e
 }
 
+// The number of cells in each dimension for 'kernelMatrix'
 func (e *SVGFECONVOLVEMATRIXElement) IfORDERF(condition bool, format string, args ...any) *SVGFECONVOLVEMATRIXElement {
 	if condition {
 		e.ORDER(fmt.Sprintf(format, args...))
@@ -231,6 +237,7 @@ func (e *SVGFECONVOLVEMATRIXElement) IfORDERF(condition bool, format string, arg
 	return e
 }
 
+// The number of cells in each dimension for 'kernelMatrix'
 // Remove the attribute ORDER from the element.
 func (e *SVGFECONVOLVEMATRIXElement) ORDERRemove(s string) *SVGFECONVOLVEMATRIXElement {
 	if e.StringAttributes == nil {
@@ -240,6 +247,7 @@ func (e *SVGFECONVOLVEMATRIXElement) ORDERRemove(s string) *SVGFECONVOLVEMATRIXE
 	return e
 }
 
+// The number of cells in each dimension for 'kernelMatrix'
 func (e *SVGFECONVOLVEMATRIXElement) ORDERRemoveF(format string, args ...any) *SVGFECONVOLVEMATRIXElement {
 	return e.ORDERRemove(fmt.Sprintf(format, args...))
 }
@@ -253,10 +261,12 @@ func (e *SVGFECONVOLVEMATRIXElement) KERNEL_MATRIX(s string) *SVGFECONVOLVEMATRI
 	return e
 }
 
+// A list of numbers that make up the kernel matrix for the convolution.
 func (e *SVGFECONVOLVEMATRIXElement) KERNEL_MATRIXF(format string, args ...any) *SVGFECONVOLVEMATRIXElement {
 	return e.KERNEL_MATRIX(fmt.Sprintf(format, args...))
 }
 
+// A list of numbers that make up the kernel matrix for the convolution.
 func (e *SVGFECONVOLVEMATRIXElement) IfKERNEL_MATRIX(condition bool, s string) *SVGFECONVOLVEMATRIXElement {
 	if condition {
 		e.KERNEL_MATRIX(s)
@@ -264,6 +274,7 @@ func (e *SVGFECONVOLVEMATRIXElement) IfKERNEL_MATRIX(condition bool, s string) *
 	return e
 }
 
+// A list of numbers that make up the kernel matrix for the convolution.
 func (e *SVGFECONVOLVEMATRIXElement) IfKERNEL_MATRIXF(condition bool, format string, args ...any) *SVGFECONVOLVEMATRIXElement {
 	if condition {
 		e.KERNEL_MATRIX(fmt.Sprintf(format, args...))
@@ -271,6 +282,7 @@ func (e *SVGFECONVOLVEMATRIXElement) IfKERNEL_MATRIXF(condition bool, format str
 	return e
 }
 
+// A list of numbers that make up the kernel matrix for the convolution.
 // Remove the attribute KERNEL_MATRIX from the element.
 func (e *SVGFECONVOLVEMATRIXElement) KERNEL_MATRIXRemove(s string) *SVGFECONVOLVEMATRIXElement {
 	if e.StringAttributes == nil {
@@ -280,6 +292,7 @@ func (e *SVGFECONVOLVEMATRIXElement) KERNEL_MATRIXRemove(s string) *SVGFECONVOLV
 	return e
 }
 
+// A list of numbers that make up the kernel matrix for the convolution.
 func (e *SVGFECONVOLVEMATRIXElement) KERNEL_MATRIXRemoveF(format string, args ...any) *SVGFECONVOLVEMATRIXElement {
 	return e.KERNEL_MATRIXRemove(fmt.Sprintf(format, args...))
 }
@@ -294,6 +307,8 @@ func (e *SVGFECONVOLVEMATRIXElement) DIVISOR(f float64) *SVGFECONVOLVEMATRIXElem
 	return e
 }
 
+// The divisor attribute specifies the value by which to divide the result of
+// applying the convolution operator.
 func (e *SVGFECONVOLVEMATRIXElement) IfDIVISOR(condition bool, f float64) *SVGFECONVOLVEMATRIXElement {
 	if condition {
 		e.DIVISOR(f)
@@ -312,6 +327,9 @@ func (e *SVGFECONVOLVEMATRIXElement) BIAS(f float64) *SVGFECONVOLVEMATRIXElement
 	return e
 }
 
+// The bias attribute shifts the range of the filter
+// After applying the matrix operation, this bias value is added to each
+// component.
 func (e *SVGFECONVOLVEMATRIXElement) IfBIAS(condition bool, f float64) *SVGFECONVOLVEMATRIXElement {
 	if condition {
 		e.BIAS(f)
@@ -329,6 +347,8 @@ func (e *SVGFECONVOLVEMATRIXElement) TARGET_X(f float64) *SVGFECONVOLVEMATRIXEle
 	return e
 }
 
+// The targetX attribute determines the positioning in X of the convolution matrix
+// relative to a given target pixel in the input image.
 func (e *SVGFECONVOLVEMATRIXElement) IfTARGET_X(condition bool, f float64) *SVGFECONVOLVEMATRIXElement {
 	if condition {
 		e.TARGET_X(f)
@@ -346,6 +366,8 @@ func (e *SVGFECONVOLVEMATRIXElement) TARGET_Y(f float64) *SVGFECONVOLVEMATRIXEle
 	return e
 }
 
+// The targetY attribute determines the positioning in Y of the convolution matrix
+// relative to a given target pixel in the input image.
 func (e *SVGFECONVOLVEMATRIXElement) IfTARGET_Y(condition bool, f float64) *SVGFECONVOLVEMATRIXElement {
 	if condition {
 		e.TARGET_Y(f)
@@ -377,6 +399,9 @@ const (
 	SVGFeConvolveMatrixEdgeMode_none SVGFeConvolveMatrixEdgeModeChoice = "none"
 )
 
+// The edgeMode attribute determines how to extend the input image as necessary
+// with color values so that the matrix operations can be applied when the kernel
+// is positioned at or near the edge of the input image.
 // Remove the attribute EDGE_MODE from the element.
 func (e *SVGFECONVOLVEMATRIXElement) EDGE_MODERemove(c SVGFeConvolveMatrixEdgeModeChoice) *SVGFECONVOLVEMATRIXElement {
 	if e.StringAttributes == nil {
@@ -397,10 +422,16 @@ func (e *SVGFECONVOLVEMATRIXElement) KERNEL_UNIT_LENGTH(s string) *SVGFECONVOLVE
 	return e
 }
 
+// The kernelUnitLength attribute defines the intended distance in current filter
+// units (i.e., units as determined by the value of attribute 'primitiveUnits')
+// for dx and dy in the surface normal calculation formulas.
 func (e *SVGFECONVOLVEMATRIXElement) KERNEL_UNIT_LENGTHF(format string, args ...any) *SVGFECONVOLVEMATRIXElement {
 	return e.KERNEL_UNIT_LENGTH(fmt.Sprintf(format, args...))
 }
 
+// The kernelUnitLength attribute defines the intended distance in current filter
+// units (i.e., units as determined by the value of attribute 'primitiveUnits')
+// for dx and dy in the surface normal calculation formulas.
 func (e *SVGFECONVOLVEMATRIXElement) IfKERNEL_UNIT_LENGTH(condition bool, s string) *SVGFECONVOLVEMATRIXElement {
 	if condition {
 		e.KERNEL_UNIT_LENGTH(s)
@@ -408,6 +439,9 @@ func (e *SVGFECONVOLVEMATRIXElement) IfKERNEL_UNIT_LENGTH(condition bool, s stri
 	return e
 }
 
+// The kernelUnitLength attribute defines the intended distance in current filter
+// units (i.e., units as determined by the value of attribute 'primitiveUnits')
+// for dx and dy in the surface normal calculation formulas.
 func (e *SVGFECONVOLVEMATRIXElement) IfKERNEL_UNIT_LENGTHF(condition bool, format string, args ...any) *SVGFECONVOLVEMATRIXElement {
 	if condition {
 		e.KERNEL_UNIT_LENGTH(fmt.Sprintf(format, args...))
@@ -415,6 +449,9 @@ func (e *SVGFECONVOLVEMATRIXElement) IfKERNEL_UNIT_LENGTHF(condition bool, forma
 	return e
 }
 
+// The kernelUnitLength attribute defines the intended distance in current filter
+// units (i.e., units as determined by the value of attribute 'primitiveUnits')
+// for dx and dy in the surface normal calculation formulas.
 // Remove the attribute KERNEL_UNIT_LENGTH from the element.
 func (e *SVGFECONVOLVEMATRIXElement) KERNEL_UNIT_LENGTHRemove(s string) *SVGFECONVOLVEMATRIXElement {
 	if e.StringAttributes == nil {
@@ -424,6 +461,9 @@ func (e *SVGFECONVOLVEMATRIXElement) KERNEL_UNIT_LENGTHRemove(s string) *SVGFECO
 	return e
 }
 
+// The kernelUnitLength attribute defines the intended distance in current filter
+// units (i.e., units as determined by the value of attribute 'primitiveUnits')
+// for dx and dy in the surface normal calculation formulas.
 func (e *SVGFECONVOLVEMATRIXElement) KERNEL_UNIT_LENGTHRemoveF(format string, args ...any) *SVGFECONVOLVEMATRIXElement {
 	return e.KERNEL_UNIT_LENGTHRemove(fmt.Sprintf(format, args...))
 }
@@ -435,6 +475,8 @@ func (e *SVGFECONVOLVEMATRIXElement) PRESERVE_ALPHA() *SVGFECONVOLVEMATRIXElemen
 	return e
 }
 
+// The preserveAlpha attribute indicates how the convolution will handle the alpha
+// channel of the input image.
 func (e *SVGFECONVOLVEMATRIXElement) IfPRESERVE_ALPHA(condition bool) *SVGFECONVOLVEMATRIXElement {
 	if condition {
 		e.PRESERVE_ALPHASet(true)
@@ -442,6 +484,8 @@ func (e *SVGFECONVOLVEMATRIXElement) IfPRESERVE_ALPHA(condition bool) *SVGFECONV
 	return e
 }
 
+// The preserveAlpha attribute indicates how the convolution will handle the alpha
+// channel of the input image.
 // Set the attribute PRESERVE_ALPHA to the value b explicitly.
 func (e *SVGFECONVOLVEMATRIXElement) PRESERVE_ALPHASet(b bool) *SVGFECONVOLVEMATRIXElement {
 	if e.BoolAttributes == nil {
@@ -451,6 +495,8 @@ func (e *SVGFECONVOLVEMATRIXElement) PRESERVE_ALPHASet(b bool) *SVGFECONVOLVEMAT
 	return e
 }
 
+// The preserveAlpha attribute indicates how the convolution will handle the alpha
+// channel of the input image.
 func (e *SVGFECONVOLVEMATRIXElement) IfSetPRESERVE_ALPHA(condition bool, b bool) *SVGFECONVOLVEMATRIXElement {
 	if condition {
 		e.PRESERVE_ALPHASet(b)
@@ -459,6 +505,8 @@ func (e *SVGFECONVOLVEMATRIXElement) IfSetPRESERVE_ALPHA(condition bool, b bool)
 }
 
 // Remove the attribute PRESERVE_ALPHA from the element.
+// The preserveAlpha attribute indicates how the convolution will handle the alpha
+// channel of the input image.
 func (e *SVGFECONVOLVEMATRIXElement) PRESERVE_ALPHARemove(b bool) *SVGFECONVOLVEMATRIXElement {
 	if e.BoolAttributes == nil {
 		return e
@@ -476,10 +524,12 @@ func (e *SVGFECONVOLVEMATRIXElement) ID(s string) *SVGFECONVOLVEMATRIXElement {
 	return e
 }
 
+// Specifies a unique id for an element
 func (e *SVGFECONVOLVEMATRIXElement) IDF(format string, args ...any) *SVGFECONVOLVEMATRIXElement {
 	return e.ID(fmt.Sprintf(format, args...))
 }
 
+// Specifies a unique id for an element
 func (e *SVGFECONVOLVEMATRIXElement) IfID(condition bool, s string) *SVGFECONVOLVEMATRIXElement {
 	if condition {
 		e.ID(s)
@@ -487,6 +537,7 @@ func (e *SVGFECONVOLVEMATRIXElement) IfID(condition bool, s string) *SVGFECONVOL
 	return e
 }
 
+// Specifies a unique id for an element
 func (e *SVGFECONVOLVEMATRIXElement) IfIDF(condition bool, format string, args ...any) *SVGFECONVOLVEMATRIXElement {
 	if condition {
 		e.ID(fmt.Sprintf(format, args...))
@@ -494,6 +545,7 @@ func (e *SVGFECONVOLVEMATRIXElement) IfIDF(condition bool, format string, args .
 	return e
 }
 
+// Specifies a unique id for an element
 // Remove the attribute ID from the element.
 func (e *SVGFECONVOLVEMATRIXElement) IDRemove(s string) *SVGFECONVOLVEMATRIXElement {
 	if e.StringAttributes == nil {
@@ -503,6 +555,7 @@ func (e *SVGFECONVOLVEMATRIXElement) IDRemove(s string) *SVGFECONVOLVEMATRIXElem
 	return e
 }
 
+// Specifies a unique id for an element
 func (e *SVGFECONVOLVEMATRIXElement) IDRemoveF(format string, args ...any) *SVGFECONVOLVEMATRIXElement {
 	return e.IDRemove(fmt.Sprintf(format, args...))
 }
@@ -522,6 +575,8 @@ func (e *SVGFECONVOLVEMATRIXElement) CLASS(s ...string) *SVGFECONVOLVEMATRIXElem
 	return e
 }
 
+// Specifies one or more classnames for an element (refers to a class in a style
+// sheet)
 func (e *SVGFECONVOLVEMATRIXElement) IfCLASS(condition bool, s ...string) *SVGFECONVOLVEMATRIXElement {
 	if condition {
 		e.CLASS(s...)
@@ -529,6 +584,8 @@ func (e *SVGFECONVOLVEMATRIXElement) IfCLASS(condition bool, s ...string) *SVGFE
 	return e
 }
 
+// Specifies one or more classnames for an element (refers to a class in a style
+// sheet)
 // Remove the attribute CLASS from the element.
 func (e *SVGFECONVOLVEMATRIXElement) CLASSRemove(s ...string) *SVGFECONVOLVEMATRIXElement {
 	if e.DelimitedStrings == nil {
@@ -547,6 +604,7 @@ func (e *SVGFECONVOLVEMATRIXElement) STYLEF(k string, format string, args ...any
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+// Specifies an inline CSS style for an element
 func (e *SVGFECONVOLVEMATRIXElement) IfSTYLE(condition bool, k string, v string) *SVGFECONVOLVEMATRIXElement {
 	if condition {
 		e.STYLE(k, v)
@@ -554,6 +612,7 @@ func (e *SVGFECONVOLVEMATRIXElement) IfSTYLE(condition bool, k string, v string)
 	return e
 }
 
+// Specifies an inline CSS style for an element
 func (e *SVGFECONVOLVEMATRIXElement) STYLE(k string, v string) *SVGFECONVOLVEMATRIXElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -567,6 +626,7 @@ func (e *SVGFECONVOLVEMATRIXElement) STYLE(k string, v string) *SVGFECONVOLVEMAT
 	return e
 }
 
+// Specifies an inline CSS style for an element
 func (e *SVGFECONVOLVEMATRIXElement) IfSTYLEF(condition bool, k string, format string, args ...any) *SVGFECONVOLVEMATRIXElement {
 	if condition {
 		e.STYLE(k, fmt.Sprintf(format, args...))
@@ -574,6 +634,7 @@ func (e *SVGFECONVOLVEMATRIXElement) IfSTYLEF(condition bool, k string, format s
 	return e
 }
 
+// Specifies an inline CSS style for an element
 // Add the attributes in the map to the element.
 func (e *SVGFECONVOLVEMATRIXElement) STYLEMap(m map[string]string) *SVGFECONVOLVEMATRIXElement {
 	if e.KVStrings == nil {
@@ -590,6 +651,7 @@ func (e *SVGFECONVOLVEMATRIXElement) STYLEMap(m map[string]string) *SVGFECONVOLV
 	return e
 }
 
+// Specifies an inline CSS style for an element
 // Add pairs of attributes to the element.
 func (e *SVGFECONVOLVEMATRIXElement) STYLEPairs(pairs ...string) *SVGFECONVOLVEMATRIXElement {
 	if len(pairs)%2 != 0 {
@@ -611,6 +673,7 @@ func (e *SVGFECONVOLVEMATRIXElement) STYLEPairs(pairs ...string) *SVGFECONVOLVEM
 	return e
 }
 
+// Specifies an inline CSS style for an element
 func (e *SVGFECONVOLVEMATRIXElement) IfSTYLEPairs(condition bool, pairs ...string) *SVGFECONVOLVEMATRIXElement {
 	if condition {
 		e.STYLEPairs(pairs...)
@@ -618,6 +681,7 @@ func (e *SVGFECONVOLVEMATRIXElement) IfSTYLEPairs(condition bool, pairs ...strin
 	return e
 }
 
+// Specifies an inline CSS style for an element
 // Remove the attribute STYLE from the element.
 func (e *SVGFECONVOLVEMATRIXElement) STYLERemove(keys ...string) *SVGFECONVOLVEMATRIXElement {
 	if e.KVStrings == nil {
@@ -633,62 +697,75 @@ func (e *SVGFECONVOLVEMATRIXElement) STYLERemove(keys ...string) *SVGFECONVOLVEM
 	return e
 }
 
-// Merges the singleton store with the given object
-
-func (e *SVGFECONVOLVEMATRIXElement) DATASTAR_STORE(v any) *SVGFECONVOLVEMATRIXElement {
-	if e.CustomDataAttributes == nil {
-		e.CustomDataAttributes = treemap.New[string, string]()
-	}
-	b, err := json.Marshal(v)
-	if err != nil {
-		panic(err)
-	}
-	e.CustomDataAttributes.Set("store", html.EscapeString(string(b)))
-	return e
-}
-
-// Sets the reference of the element
-
-func (e *SVGFECONVOLVEMATRIXElement) DATASTAR_REF(expression string) *SVGFECONVOLVEMATRIXElement {
+// Sets the value of any HTML attribute to an expression, and keeps it in sync.
+//
+// See: https://data-star.dev/reference/attributes#data-attr
+func (e *SVGFECONVOLVEMATRIXElement) DATASTAR_ATTR(key string, expression string) *SVGFECONVOLVEMATRIXElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "data-ref"
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	key = fmt.Sprintf("data-attr%s", suffix)
 
 	e.StringAttributes.Set(key, expression)
 	return e
 }
 
-func (e *SVGFECONVOLVEMATRIXElement) IfDATASTAR_REF(condition bool, expression string) *SVGFECONVOLVEMATRIXElement {
+// Sets the value of any HTML attribute to an expression, and keeps it in sync.
+//
+// See: https://data-star.dev/reference/attributes#data-attr
+func (e *SVGFECONVOLVEMATRIXElement) IfDATASTAR_ATTR(condition bool, key string, expression string) *SVGFECONVOLVEMATRIXElement {
 	if condition {
-		e.DATASTAR_REF(expression)
+		e.DATASTAR_ATTR(key, expression)
 	}
 	return e
 }
 
-// Remove the attribute DATASTAR_REF from the element.
-func (e *SVGFECONVOLVEMATRIXElement) DATASTAR_REFRemove() *SVGFECONVOLVEMATRIXElement {
+// Sets the value of any HTML attribute to an expression, and keeps it in sync.
+//
+// See: https://data-star.dev/reference/attributes#data-attr
+// Remove the attribute DATASTAR_ATTR from the element.
+func (e *SVGFECONVOLVEMATRIXElement) DATASTAR_ATTRRemove(key string) *SVGFECONVOLVEMATRIXElement {
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("data-ref")
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	e.StringAttributes.Del("data-attr" + suffix)
+
 	return e
 }
 
-// Sets the value of the element
-
+// Creates a signal (if one doesn’t already exist) and sets up two-way data
+// binding between it and an element’s value.
+//
+// See: https://data-star.dev/reference/attributes#data-bind
 func (e *SVGFECONVOLVEMATRIXElement) DATASTAR_BIND(key string, expression string) *SVGFECONVOLVEMATRIXElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key = fmt.Sprintf("data-bind-%s", key)
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	key = fmt.Sprintf("data-bind%s", suffix)
 
 	e.StringAttributes.Set(key, expression)
 	return e
 }
 
+// Creates a signal (if one doesn’t already exist) and sets up two-way data
+// binding between it and an element’s value.
+//
+// See: https://data-star.dev/reference/attributes#data-bind
 func (e *SVGFECONVOLVEMATRIXElement) IfDATASTAR_BIND(condition bool, key string, expression string) *SVGFECONVOLVEMATRIXElement {
 	if condition {
 		e.DATASTAR_BIND(key, expression)
@@ -696,46 +773,1525 @@ func (e *SVGFECONVOLVEMATRIXElement) IfDATASTAR_BIND(condition bool, key string,
 	return e
 }
 
+// Creates a signal (if one doesn’t already exist) and sets up two-way data
+// binding between it and an element’s value.
+//
+// See: https://data-star.dev/reference/attributes#data-bind
 // Remove the attribute DATASTAR_BIND from the element.
-func (e *SVGFECONVOLVEMATRIXElement) DATASTAR_BINDRemove() *SVGFECONVOLVEMATRIXElement {
+func (e *SVGFECONVOLVEMATRIXElement) DATASTAR_BINDRemove(key string) *SVGFECONVOLVEMATRIXElement {
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("data-bind")
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	e.StringAttributes.Del("data-bind" + suffix)
+
 	return e
 }
 
-// Sets the value of the element
+type SVGFeConvolveMatrixClassMod customDataKeyModifier
 
-func (e *SVGFECONVOLVEMATRIXElement) DATASTAR_MODEL(expression string) *SVGFECONVOLVEMATRIXElement {
+// Converts the casing of the signal name.
+//   - 'camel' – Camel case: 'mySignal' (default)
+//   - 'kebab' – Kebab case: 'my-signal'
+//   - 'snake' – Snake case: 'my_signal'
+//   - 'pascal' – Pascal case: 'MySignal'
+func SVGFeConvolveMatrixClassModCase(
+	s string,
+) SVGFeConvolveMatrixClassMod {
+	return func() string {
+		return fmt.Sprintf("case.%s", s)
+	}
+}
+
+// Adds or removes a class to or from an element based on an expression.
+func (e *SVGFECONVOLVEMATRIXElement) DATASTAR_CLASS(key string, expression string, modifiers ...SVGFeConvolveMatrixClassMod) *SVGFECONVOLVEMATRIXElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "data-model"
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	key = fmt.Sprintf("data-class%s", suffix)
+
+	customMods := lo.Map(modifiers, func(m SVGFeConvolveMatrixClassMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Adds or removes a class to or from an element based on an expression.
+func (e *SVGFECONVOLVEMATRIXElement) IfDATASTAR_CLASS(condition bool, key string, expression string, modifiers ...SVGFeConvolveMatrixClassMod) *SVGFECONVOLVEMATRIXElement {
+	if condition {
+		e.DATASTAR_CLASS(key, expression, modifiers...)
+	}
+	return e
+}
+
+// Adds or removes a class to or from an element based on an expression.
+// Remove the attribute DATASTAR_CLASS from the element.
+func (e *SVGFECONVOLVEMATRIXElement) DATASTAR_CLASSRemove(key string) *SVGFECONVOLVEMATRIXElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	e.StringAttributes.Del("data-class" + suffix)
+
+	return e
+}
+
+type SVGFeConvolveMatrixComputedMod customDataKeyModifier
+
+// Converts the casing of the signal name.
+//   - 'camel' – Camel case: 'mySignal' (default)
+//   - 'kebab' – Kebab case: 'my-signal'
+//   - 'snake' – Snake case: 'my_signal'
+//   - 'pascal' – Pascal case: 'MySignal'
+func SVGFeConvolveMatrixComputedModCase(
+	s string,
+) SVGFeConvolveMatrixComputedMod {
+	return func() string {
+		return fmt.Sprintf("case.%s", s)
+	}
+}
+
+// Creates a signal that is computed based on an expression
+// The computed signal is read-only, and its value is automatically updated when
+// any signals in the expression are updated.
+//
+// See: https://data-star.dev/reference/attributes#data-computed
+func (e *SVGFECONVOLVEMATRIXElement) DATASTAR_COMPUTED(key string, expression string, modifiers ...SVGFeConvolveMatrixComputedMod) *SVGFECONVOLVEMATRIXElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	key = fmt.Sprintf("data-computed%s", suffix)
+
+	customMods := lo.Map(modifiers, func(m SVGFeConvolveMatrixComputedMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Creates a signal that is computed based on an expression
+// The computed signal is read-only, and its value is automatically updated when
+// any signals in the expression are updated.
+//
+// See: https://data-star.dev/reference/attributes#data-computed
+func (e *SVGFECONVOLVEMATRIXElement) IfDATASTAR_COMPUTED(condition bool, key string, expression string, modifiers ...SVGFeConvolveMatrixComputedMod) *SVGFECONVOLVEMATRIXElement {
+	if condition {
+		e.DATASTAR_COMPUTED(key, expression, modifiers...)
+	}
+	return e
+}
+
+// Creates a signal that is computed based on an expression
+// The computed signal is read-only, and its value is automatically updated when
+// any signals in the expression are updated.
+//
+// See: https://data-star.dev/reference/attributes#data-computed
+// Remove the attribute DATASTAR_COMPUTED from the element.
+func (e *SVGFECONVOLVEMATRIXElement) DATASTAR_COMPUTEDRemove(key string) *SVGFECONVOLVEMATRIXElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	e.StringAttributes.Del("data-computed" + suffix)
+
+	return e
+}
+
+// Executes an expression on page load and whenever any signals in the expression
+// change
+// This is useful for performing side effects, such as updating other signals,
+// making requests to the backend, or manipulating the DOM.
+//
+// See: https://data-star.dev/reference/attributes#data-effect
+func (e *SVGFECONVOLVEMATRIXElement) DATASTAR_EFFECT(expression string) *SVGFECONVOLVEMATRIXElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-effect"
 
 	e.StringAttributes.Set(key, expression)
 	return e
 }
 
-func (e *SVGFECONVOLVEMATRIXElement) IfDATASTAR_MODEL(condition bool, expression string) *SVGFECONVOLVEMATRIXElement {
+// Executes an expression on page load and whenever any signals in the expression
+// change
+// This is useful for performing side effects, such as updating other signals,
+// making requests to the backend, or manipulating the DOM.
+//
+// See: https://data-star.dev/reference/attributes#data-effect
+func (e *SVGFECONVOLVEMATRIXElement) IfDATASTAR_EFFECT(condition bool, expression string) *SVGFECONVOLVEMATRIXElement {
 	if condition {
-		e.DATASTAR_MODEL(expression)
+		e.DATASTAR_EFFECT(expression)
 	}
 	return e
 }
 
-// Remove the attribute DATASTAR_MODEL from the element.
-func (e *SVGFECONVOLVEMATRIXElement) DATASTAR_MODELRemove() *SVGFECONVOLVEMATRIXElement {
+// Executes an expression on page load and whenever any signals in the expression
+// change
+// This is useful for performing side effects, such as updating other signals,
+// making requests to the backend, or manipulating the DOM.
+//
+// See: https://data-star.dev/reference/attributes#data-effect
+// Remove the attribute DATASTAR_EFFECT from the element.
+func (e *SVGFECONVOLVEMATRIXElement) DATASTAR_EFFECTRemove() *SVGFECONVOLVEMATRIXElement {
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("data-model")
+
+	e.StringAttributes.Del("data-effect")
+
 	return e
 }
 
-// Sets the textContent of the element
+type SVGFeConvolveMatrixIgnoreMod customDataKeyModifier
 
+// Only ignore the element itself, not its descendants.
+func SVGFeConvolveMatrixIgnoreModSelf() SVGFeConvolveMatrixIgnoreMod {
+	return func() string {
+		return "self"
+	}
+}
+
+// Datastar walks the entire DOM and applies plugins to each element it encounters
+// It's possible to tell Datastar to ignore an element and its descendants by
+// placing a data-ignore attribute on it
+// This can be useful for preventing naming conflicts with third-party libraries,
+// or when you are unable to escape user input.
+//
+// See: https://data-star.dev/reference/attributes#data-ignore
+func (e *SVGFECONVOLVEMATRIXElement) DATASTAR_IGNORESet(b bool, modifiers ...SVGFeConvolveMatrixIgnoreMod) *SVGFECONVOLVEMATRIXElement {
+	key := customDataKey("data-ignore")
+	customMods := lo.Map(modifiers, func(m SVGFeConvolveMatrixIgnoreMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	if e.BoolAttributes == nil {
+		e.BoolAttributes = treemap.New[string, bool]()
+	}
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+// Datastar walks the entire DOM and applies plugins to each element it encounters
+// It's possible to tell Datastar to ignore an element and its descendants by
+// placing a data-ignore attribute on it
+// This can be useful for preventing naming conflicts with third-party libraries,
+// or when you are unable to escape user input.
+//
+// See: https://data-star.dev/reference/attributes#data-ignore
+func (e *SVGFECONVOLVEMATRIXElement) DATASTAR_IGNORE(modifiers ...SVGFeConvolveMatrixIgnoreMod) *SVGFECONVOLVEMATRIXElement {
+	return e.DATASTAR_IGNORESet(true, modifiers...)
+}
+
+// Similar to the data-ignore attribute, the data-ignore-morph attribute tells the
+// PatchElements watcher to skip processing an element and its children when
+// morphing elements
+// This can be useful for preventing conflicts with third-party libraries that
+// manipulate the DOM, or when you are unable to escape user input.
+//
+// See: https://data-star.dev/reference/attributes#data-ignore-morph
+func (e *SVGFECONVOLVEMATRIXElement) DATASTAR_IGNORE_MORPHSet(b bool) *SVGFECONVOLVEMATRIXElement {
+	key := "data-ignore-morph"
+	if e.BoolAttributes == nil {
+		e.BoolAttributes = treemap.New[string, bool]()
+	}
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+// Similar to the data-ignore attribute, the data-ignore-morph attribute tells the
+// PatchElements watcher to skip processing an element and its children when
+// morphing elements
+// This can be useful for preventing conflicts with third-party libraries that
+// manipulate the DOM, or when you are unable to escape user input.
+//
+// See: https://data-star.dev/reference/attributes#data-ignore-morph
+func (e *SVGFECONVOLVEMATRIXElement) DATASTAR_IGNORE_MORPH() *SVGFECONVOLVEMATRIXElement {
+	return e.DATASTAR_IGNORE_MORPHSet(true)
+}
+
+type SVGFeConvolveMatrixIndicatorMod customDataKeyModifier
+
+// Converts the casing of the signal name.
+//   - 'camel' – Camel case: 'mySignal' (default)
+//   - 'kebab' – Kebab case: 'my-signal'
+//   - 'snake' – Snake case: 'my_signal'
+//   - 'pascal' – Pascal case: 'MySignal'
+func SVGFeConvolveMatrixIndicatorModCase(
+	s string,
+) SVGFeConvolveMatrixIndicatorMod {
+	return func() string {
+		return fmt.Sprintf("case.%s", s)
+	}
+}
+
+// Creates a signal and sets its value to true while a fetch request is in flight,
+// otherwise false
+// The signal can be used to show a loading indicator.
+//
+// See: https://data-star.dev/reference/attributes#data-indicator
+func (e *SVGFECONVOLVEMATRIXElement) DATASTAR_INDICATOR(expression string, modifiers ...SVGFeConvolveMatrixIndicatorMod) *SVGFECONVOLVEMATRIXElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-indicator"
+
+	customMods := lo.Map(modifiers, func(m SVGFeConvolveMatrixIndicatorMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Creates a signal and sets its value to true while a fetch request is in flight,
+// otherwise false
+// The signal can be used to show a loading indicator.
+//
+// See: https://data-star.dev/reference/attributes#data-indicator
+func (e *SVGFECONVOLVEMATRIXElement) IfDATASTAR_INDICATOR(condition bool, expression string, modifiers ...SVGFeConvolveMatrixIndicatorMod) *SVGFECONVOLVEMATRIXElement {
+	if condition {
+		e.DATASTAR_INDICATOR(expression, modifiers...)
+	}
+	return e
+}
+
+// Creates a signal and sets its value to true while a fetch request is in flight,
+// otherwise false
+// The signal can be used to show a loading indicator.
+//
+// See: https://data-star.dev/reference/attributes#data-indicator
+// Remove the attribute DATASTAR_INDICATOR from the element.
+func (e *SVGFECONVOLVEMATRIXElement) DATASTAR_INDICATORRemove() *SVGFECONVOLVEMATRIXElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-indicator")
+
+	return e
+}
+
+type SVGFeConvolveMatrixInitMod customDataKeyModifier
+
+// Delay the event listener in milliseconds.
+func SVGFeConvolveMatrixInitModDelayMs(
+	d time.Duration,
+) SVGFeConvolveMatrixInitMod {
+	return func() string {
+		return fmt.Sprintf("delay.%dms", d.Milliseconds())
+	}
+}
+
+// Delay the event listener in seconds.
+func SVGFeConvolveMatrixInitModDelaySec(
+	d time.Duration,
+) SVGFeConvolveMatrixInitMod {
+	return func() string {
+		return fmt.Sprintf("delay.%ds", int(d.Seconds()))
+	}
+}
+
+// Wraps the expression in 'document.startViewTransition()' when the View
+// Transition API is available.
+func SVGFeConvolveMatrixInitModViewTransition() SVGFeConvolveMatrixInitMod {
+	return func() string {
+		return "viewtransition"
+	}
+}
+
+// Runs an expression when the attribute is initialized
+// This can happen on page load, when an element is patched into the DOM, and any
+// time the attribute is modified (via a backend action or otherwise).
+//
+// See: https://data-star.dev/reference/attributes#data-indicator
+func (e *SVGFECONVOLVEMATRIXElement) DATASTAR_INIT(expression string, modifiers ...SVGFeConvolveMatrixInitMod) *SVGFECONVOLVEMATRIXElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-init"
+
+	customMods := lo.Map(modifiers, func(m SVGFeConvolveMatrixInitMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Runs an expression when the attribute is initialized
+// This can happen on page load, when an element is patched into the DOM, and any
+// time the attribute is modified (via a backend action or otherwise).
+//
+// See: https://data-star.dev/reference/attributes#data-indicator
+func (e *SVGFECONVOLVEMATRIXElement) IfDATASTAR_INIT(condition bool, expression string, modifiers ...SVGFeConvolveMatrixInitMod) *SVGFECONVOLVEMATRIXElement {
+	if condition {
+		e.DATASTAR_INIT(expression, modifiers...)
+	}
+	return e
+}
+
+// Runs an expression when the attribute is initialized
+// This can happen on page load, when an element is patched into the DOM, and any
+// time the attribute is modified (via a backend action or otherwise).
+//
+// See: https://data-star.dev/reference/attributes#data-indicator
+// Remove the attribute DATASTAR_INIT from the element.
+func (e *SVGFECONVOLVEMATRIXElement) DATASTAR_INITRemove() *SVGFECONVOLVEMATRIXElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-init")
+
+	return e
+}
+
+type SVGFeConvolveMatrixJsonSignalsMod customDataKeyModifier
+
+// Outputs a more compact JSON format without extra whitespace
+// Useful for displaying filtered data inline.
+func SVGFeConvolveMatrixJsonSignalsModTerse() SVGFeConvolveMatrixJsonSignalsMod {
+	return func() string {
+		return "terse"
+	}
+}
+
+// Sets the text content of an element to a reactive JSON stringified version of
+// signals
+// Useful when troubleshooting an issue.
+//
+// See: https://data-star.dev/reference/attributes#data-json-signals
+func (e *SVGFECONVOLVEMATRIXElement) DATASTAR_JSON_SIGNALS(expression string, modifiers ...SVGFeConvolveMatrixJsonSignalsMod) *SVGFECONVOLVEMATRIXElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-json-signals"
+
+	customMods := lo.Map(modifiers, func(m SVGFeConvolveMatrixJsonSignalsMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Sets the text content of an element to a reactive JSON stringified version of
+// signals
+// Useful when troubleshooting an issue.
+//
+// See: https://data-star.dev/reference/attributes#data-json-signals
+func (e *SVGFECONVOLVEMATRIXElement) IfDATASTAR_JSON_SIGNALS(condition bool, expression string, modifiers ...SVGFeConvolveMatrixJsonSignalsMod) *SVGFECONVOLVEMATRIXElement {
+	if condition {
+		e.DATASTAR_JSON_SIGNALS(expression, modifiers...)
+	}
+	return e
+}
+
+// Sets the text content of an element to a reactive JSON stringified version of
+// signals
+// Useful when troubleshooting an issue.
+//
+// See: https://data-star.dev/reference/attributes#data-json-signals
+// Remove the attribute DATASTAR_JSON_SIGNALS from the element.
+func (e *SVGFECONVOLVEMATRIXElement) DATASTAR_JSON_SIGNALSRemove() *SVGFECONVOLVEMATRIXElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-json-signals")
+
+	return e
+}
+
+type SVGFeConvolveMatrixOnMod customDataKeyModifier
+
+// Only run the expression once
+// Only works with built-in events.
+func SVGFeConvolveMatrixOnModOnce() SVGFeConvolveMatrixOnMod {
+	return func() string {
+		return "once"
+	}
+}
+
+// Do not call preventDefault on the event listener
+// Only works with built-in events.
+func SVGFeConvolveMatrixOnModPassive() SVGFeConvolveMatrixOnMod {
+	return func() string {
+		return "passive"
+	}
+}
+
+// Use capture event listener
+// Only works with built-in events.
+func SVGFeConvolveMatrixOnModCapture() SVGFeConvolveMatrixOnMod {
+	return func() string {
+		return "capture"
+	}
+}
+
+// Converts the casing of the signal name.
+//   - 'camel' – Camel case: 'mySignal' (default)
+//   - 'kebab' – Kebab case: 'my-signal'
+//   - 'snake' – Snake case: 'my_signal'
+//   - 'pascal' – Pascal case: 'MySignal'
+func SVGFeConvolveMatrixOnModCase(
+	s string,
+) SVGFeConvolveMatrixOnMod {
+	return func() string {
+		return fmt.Sprintf("case.%s", s)
+	}
+}
+
+// Delay the event listener in milliseconds.
+func SVGFeConvolveMatrixOnModDelayMs(
+	d time.Duration,
+) SVGFeConvolveMatrixOnMod {
+	return func() string {
+		return fmt.Sprintf("delay.%dms", d.Milliseconds())
+	}
+}
+
+// Delay the event listener in seconds.
+func SVGFeConvolveMatrixOnModDelaySec(
+	d time.Duration,
+) SVGFeConvolveMatrixOnMod {
+	return func() string {
+		return fmt.Sprintf("delay.%ds", int(d.Seconds()))
+	}
+}
+
+// Debounces the event handler
+func SVGFeConvolveMatrixOnModDebounceMs(
+	d time.Duration,
+) SVGFeConvolveMatrixOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms", d.Milliseconds())
+	}
+}
+
+// Debounce the event listener in milliseconds with leading edge.
+func SVGFeConvolveMatrixOnModDebounceMsLeading(
+	d time.Duration,
+) SVGFeConvolveMatrixOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms.leading", d.Milliseconds())
+	}
+}
+
+// Debounce the event listener in milliseconds without trailing edge.
+func SVGFeConvolveMatrixOnModDebounceMsNoTrailing(
+	d time.Duration,
+) SVGFeConvolveMatrixOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms.notrailing", d.Milliseconds())
+	}
+}
+
+// Debounces the event handler
+func SVGFeConvolveMatrixOnModDebounceSec(
+	d time.Duration,
+) SVGFeConvolveMatrixOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds", int(d.Seconds()))
+	}
+}
+
+// Debounce the event listener in seconds with leading edge.
+func SVGFeConvolveMatrixOnModDebounceSecLeading(
+	d time.Duration,
+) SVGFeConvolveMatrixOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds.leading", int(d.Seconds()))
+	}
+}
+
+// Debounce the event listener in seconds without trailing edge.
+func SVGFeConvolveMatrixOnModDebounceSecNoTrailing(
+	d time.Duration,
+) SVGFeConvolveMatrixOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds.notrailing", int(d.Seconds()))
+	}
+}
+
+// Throttles the event handler
+func SVGFeConvolveMatrixOnModThrottleMs(
+	d time.Duration,
+) SVGFeConvolveMatrixOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms", d.Milliseconds())
+	}
+}
+
+// Throttle the event listener in milliseconds without leading edge.
+func SVGFeConvolveMatrixOnModThrottleMsNoLeading(
+	d time.Duration,
+) SVGFeConvolveMatrixOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms.noleading", d.Milliseconds())
+	}
+}
+
+// Throttle the event listener in milliseconds with trailing edge.
+func SVGFeConvolveMatrixOnModThrottleMsTrailing(
+	d time.Duration,
+) SVGFeConvolveMatrixOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms.trailing", d.Milliseconds())
+	}
+}
+
+// Throttles the event listener in seconds.
+func SVGFeConvolveMatrixOnModThrottleSec(
+	d time.Duration,
+) SVGFeConvolveMatrixOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds", int(d.Seconds()))
+	}
+}
+
+// Throttle the event listener in seconds without leading edge.
+func SVGFeConvolveMatrixOnModThrottleSecNoLeading(
+	d time.Duration,
+) SVGFeConvolveMatrixOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds.noleading", int(d.Seconds()))
+	}
+}
+
+// Throttle the event listener in seconds with trailing edge.
+func SVGFeConvolveMatrixOnModThrottleSecTrailing(
+	d time.Duration,
+) SVGFeConvolveMatrixOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds.trailing", int(d.Seconds()))
+	}
+}
+
+// Wraps the expression in 'document.startViewTransition()' when the View
+// Transition API is available.
+func SVGFeConvolveMatrixOnModViewTransition() SVGFeConvolveMatrixOnMod {
+	return func() string {
+		return "viewtransition"
+	}
+}
+
+// Attaches the event listener to the 'window' element.
+func SVGFeConvolveMatrixOnModWindow() SVGFeConvolveMatrixOnMod {
+	return func() string {
+		return "window"
+	}
+}
+
+// Calls 'preventDefault' on the event listener.
+func SVGFeConvolveMatrixOnModPrevent() SVGFeConvolveMatrixOnMod {
+	return func() string {
+		return "prevent"
+	}
+}
+
+// Triggers when the event is outside the element.
+func SVGFeConvolveMatrixOnModOutside() SVGFeConvolveMatrixOnMod {
+	return func() string {
+		return "outside"
+	}
+}
+
+// Calls 'stopPropagation' on the event listener.
+func SVGFeConvolveMatrixOnModStop() SVGFeConvolveMatrixOnMod {
+	return func() string {
+		return "stop"
+	}
+}
+
+// Attaches an event listener to an element, executing an expression whenever the
+// event is triggered.
+//
+// See: https://data-star.dev/reference/attributes#data-on
+func (e *SVGFECONVOLVEMATRIXElement) DATASTAR_ON(key string, expression string, modifiers ...SVGFeConvolveMatrixOnMod) *SVGFECONVOLVEMATRIXElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	key = fmt.Sprintf("data-on%s", suffix)
+
+	customMods := lo.Map(modifiers, func(m SVGFeConvolveMatrixOnMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Attaches an event listener to an element, executing an expression whenever the
+// event is triggered.
+//
+// See: https://data-star.dev/reference/attributes#data-on
+func (e *SVGFECONVOLVEMATRIXElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SVGFeConvolveMatrixOnMod) *SVGFECONVOLVEMATRIXElement {
+	if condition {
+		e.DATASTAR_ON(key, expression, modifiers...)
+	}
+	return e
+}
+
+// Attaches an event listener to an element, executing an expression whenever the
+// event is triggered.
+//
+// See: https://data-star.dev/reference/attributes#data-on
+// Remove the attribute DATASTAR_ON from the element.
+func (e *SVGFECONVOLVEMATRIXElement) DATASTAR_ONRemove(key string) *SVGFECONVOLVEMATRIXElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	e.StringAttributes.Del("data-on" + suffix)
+
+	return e
+}
+
+type SVGFeConvolveMatrixOnIntersectMod customDataKeyModifier
+
+// Only run the expression once
+// Only works with built-in events.
+func SVGFeConvolveMatrixOnIntersectModOnce() SVGFeConvolveMatrixOnIntersectMod {
+	return func() string {
+		return "once"
+	}
+}
+
+// Trigger when half of the element is visible.
+func SVGFeConvolveMatrixOnIntersectModHalf() SVGFeConvolveMatrixOnIntersectMod {
+	return func() string {
+		return "half"
+	}
+}
+
+// Trigger when the full element is visible.
+func SVGFeConvolveMatrixOnIntersectModFull() SVGFeConvolveMatrixOnIntersectMod {
+	return func() string {
+		return "full"
+	}
+}
+
+// Delay the event listener in milliseconds.
+func SVGFeConvolveMatrixOnIntersectModDelayMs(
+	d time.Duration,
+) SVGFeConvolveMatrixOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("delay.%dms", d.Milliseconds())
+	}
+}
+
+// Delay the event listener in seconds.
+func SVGFeConvolveMatrixOnIntersectModDelaySec(
+	d time.Duration,
+) SVGFeConvolveMatrixOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("delay.%ds", int(d.Seconds()))
+	}
+}
+
+// Debounces the event handler
+func SVGFeConvolveMatrixOnIntersectModDebounceMs(
+	d time.Duration,
+) SVGFeConvolveMatrixOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms", d.Milliseconds())
+	}
+}
+
+// Debounce the event listener in milliseconds with leading edge.
+func SVGFeConvolveMatrixOnIntersectModDebounceMsLeading(
+	d time.Duration,
+) SVGFeConvolveMatrixOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms.leading", d.Milliseconds())
+	}
+}
+
+// Debounce the event listener in milliseconds without trailing edge.
+func SVGFeConvolveMatrixOnIntersectModDebounceMsNoTrailing(
+	d time.Duration,
+) SVGFeConvolveMatrixOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms.notrailing", d.Milliseconds())
+	}
+}
+
+// Debounces the event handler
+func SVGFeConvolveMatrixOnIntersectModDebounceSec(
+	d time.Duration,
+) SVGFeConvolveMatrixOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds", int(d.Seconds()))
+	}
+}
+
+// Debounce the event listener in seconds with leading edge.
+func SVGFeConvolveMatrixOnIntersectModDebounceSecLeading(
+	d time.Duration,
+) SVGFeConvolveMatrixOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds.leading", int(d.Seconds()))
+	}
+}
+
+// Debounce the event listener in seconds without trailing edge.
+func SVGFeConvolveMatrixOnIntersectModDebounceSecNoTrailing(
+	d time.Duration,
+) SVGFeConvolveMatrixOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds.notrailing", int(d.Seconds()))
+	}
+}
+
+// Throttles the event handler
+func SVGFeConvolveMatrixOnIntersectModThrottleMs(
+	d time.Duration,
+) SVGFeConvolveMatrixOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms", d.Milliseconds())
+	}
+}
+
+// Throttle the event listener in milliseconds without leading edge.
+func SVGFeConvolveMatrixOnIntersectModThrottleMsNoLeading(
+	d time.Duration,
+) SVGFeConvolveMatrixOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms.noleading", d.Milliseconds())
+	}
+}
+
+// Throttle the event listener in milliseconds with trailing edge.
+func SVGFeConvolveMatrixOnIntersectModThrottleMsTrailing(
+	d time.Duration,
+) SVGFeConvolveMatrixOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms.trailing", d.Milliseconds())
+	}
+}
+
+// Throttles the event listener in seconds.
+func SVGFeConvolveMatrixOnIntersectModThrottleSec(
+	d time.Duration,
+) SVGFeConvolveMatrixOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds", int(d.Seconds()))
+	}
+}
+
+// Throttle the event listener in seconds without leading edge.
+func SVGFeConvolveMatrixOnIntersectModThrottleSecNoLeading(
+	d time.Duration,
+) SVGFeConvolveMatrixOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds.noleading", int(d.Seconds()))
+	}
+}
+
+// Throttle the event listener in seconds with trailing edge.
+func SVGFeConvolveMatrixOnIntersectModThrottleSecTrailing(
+	d time.Duration,
+) SVGFeConvolveMatrixOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds.trailing", int(d.Seconds()))
+	}
+}
+
+// Wraps the expression in 'document.startViewTransition()' when the View
+// Transition API is available.
+func SVGFeConvolveMatrixOnIntersectModViewTransition() SVGFeConvolveMatrixOnIntersectMod {
+	return func() string {
+		return "viewtransition"
+	}
+}
+
+// Runs an expression when the element intersects with the viewport.
+func (e *SVGFECONVOLVEMATRIXElement) DATASTAR_ON_INTERSECT(expression string, modifiers ...SVGFeConvolveMatrixOnIntersectMod) *SVGFECONVOLVEMATRIXElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-on-intersect"
+
+	customMods := lo.Map(modifiers, func(m SVGFeConvolveMatrixOnIntersectMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Runs an expression when the element intersects with the viewport.
+func (e *SVGFECONVOLVEMATRIXElement) IfDATASTAR_ON_INTERSECT(condition bool, expression string, modifiers ...SVGFeConvolveMatrixOnIntersectMod) *SVGFECONVOLVEMATRIXElement {
+	if condition {
+		e.DATASTAR_ON_INTERSECT(expression, modifiers...)
+	}
+	return e
+}
+
+// Runs an expression when the element intersects with the viewport.
+// Remove the attribute DATASTAR_ON_INTERSECT from the element.
+func (e *SVGFECONVOLVEMATRIXElement) DATASTAR_ON_INTERSECTRemove() *SVGFECONVOLVEMATRIXElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-on-intersect")
+
+	return e
+}
+
+type SVGFeConvolveMatrixOnIntervalMod customDataKeyModifier
+
+// Sets the interval duration in milliseconds.
+func SVGFeConvolveMatrixOnIntervalModDurationMs(
+	d time.Duration,
+) SVGFeConvolveMatrixOnIntervalMod {
+	return func() string {
+		return fmt.Sprintf("duration.%dms", d.Milliseconds())
+	}
+}
+
+// Sets the interval duration in milliseconds
+// Execute the first interval immediately.
+func SVGFeConvolveMatrixOnIntervalModDurationMsLeading(
+	d time.Duration,
+) SVGFeConvolveMatrixOnIntervalMod {
+	return func() string {
+		return fmt.Sprintf("duration.%dms.leading", d.Milliseconds())
+	}
+}
+
+// Sets the interval duration in seconds.
+func SVGFeConvolveMatrixOnIntervalModDurationSec(
+	d time.Duration,
+) SVGFeConvolveMatrixOnIntervalMod {
+	return func() string {
+		return fmt.Sprintf("duration.%ds", int(d.Seconds()))
+	}
+}
+
+// Sets the interval duration in seconds
+// Execute the first interval immediately.
+func SVGFeConvolveMatrixOnIntervalModDurationSecLeading(
+	d time.Duration,
+) SVGFeConvolveMatrixOnIntervalMod {
+	return func() string {
+		return fmt.Sprintf("duration.%ds.leading", int(d.Seconds()))
+	}
+}
+
+// Wraps the expression in 'document.startViewTransition()' when the View
+// Transition API is available.
+func SVGFeConvolveMatrixOnIntervalModViewTransition() SVGFeConvolveMatrixOnIntervalMod {
+	return func() string {
+		return "viewtransition"
+	}
+}
+
+// Runs an expression at a regular interval
+// The interval duration defaults to one second and can be modified using the
+// '__duration' modifier.
+//
+// See: https://data-star.dev/reference/attributes#data-on-interval
+func (e *SVGFECONVOLVEMATRIXElement) DATASTAR_ON_INTERVAL(expression string, modifiers ...SVGFeConvolveMatrixOnIntervalMod) *SVGFECONVOLVEMATRIXElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-on-interval"
+
+	customMods := lo.Map(modifiers, func(m SVGFeConvolveMatrixOnIntervalMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Runs an expression at a regular interval
+// The interval duration defaults to one second and can be modified using the
+// '__duration' modifier.
+//
+// See: https://data-star.dev/reference/attributes#data-on-interval
+func (e *SVGFECONVOLVEMATRIXElement) IfDATASTAR_ON_INTERVAL(condition bool, expression string, modifiers ...SVGFeConvolveMatrixOnIntervalMod) *SVGFECONVOLVEMATRIXElement {
+	if condition {
+		e.DATASTAR_ON_INTERVAL(expression, modifiers...)
+	}
+	return e
+}
+
+// Runs an expression at a regular interval
+// The interval duration defaults to one second and can be modified using the
+// '__duration' modifier.
+//
+// See: https://data-star.dev/reference/attributes#data-on-interval
+// Remove the attribute DATASTAR_ON_INTERVAL from the element.
+func (e *SVGFECONVOLVEMATRIXElement) DATASTAR_ON_INTERVALRemove() *SVGFECONVOLVEMATRIXElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-on-interval")
+
+	return e
+}
+
+type SVGFeConvolveMatrixOnSignalPatchMod customDataKeyModifier
+
+// Delay the event listener in milliseconds.
+func SVGFeConvolveMatrixOnSignalPatchModDelayMs(
+	d time.Duration,
+) SVGFeConvolveMatrixOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("delay.%dms", d.Milliseconds())
+	}
+}
+
+// Delay the event listener in seconds.
+func SVGFeConvolveMatrixOnSignalPatchModDelaySec(
+	d time.Duration,
+) SVGFeConvolveMatrixOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("delay.%ds", int(d.Seconds()))
+	}
+}
+
+// Debounces the event handler
+func SVGFeConvolveMatrixOnSignalPatchModDebounceMs(
+	d time.Duration,
+) SVGFeConvolveMatrixOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms", d.Milliseconds())
+	}
+}
+
+// Debounce the event listener in milliseconds with leading edge.
+func SVGFeConvolveMatrixOnSignalPatchModDebounceMsLeading(
+	d time.Duration,
+) SVGFeConvolveMatrixOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms.leading", d.Milliseconds())
+	}
+}
+
+// Debounce the event listener in milliseconds without trailing edge.
+func SVGFeConvolveMatrixOnSignalPatchModDebounceMsNoTrailing(
+	d time.Duration,
+) SVGFeConvolveMatrixOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms.notrailing", d.Milliseconds())
+	}
+}
+
+// Debounces the event handler
+func SVGFeConvolveMatrixOnSignalPatchModDebounceSec(
+	d time.Duration,
+) SVGFeConvolveMatrixOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds", int(d.Seconds()))
+	}
+}
+
+// Debounce the event listener in seconds with leading edge.
+func SVGFeConvolveMatrixOnSignalPatchModDebounceSecLeading(
+	d time.Duration,
+) SVGFeConvolveMatrixOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds.leading", int(d.Seconds()))
+	}
+}
+
+// Debounce the event listener in seconds without trailing edge.
+func SVGFeConvolveMatrixOnSignalPatchModDebounceSecNoTrailing(
+	d time.Duration,
+) SVGFeConvolveMatrixOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds.notrailing", int(d.Seconds()))
+	}
+}
+
+// Throttles the event handler
+func SVGFeConvolveMatrixOnSignalPatchModThrottleMs(
+	d time.Duration,
+) SVGFeConvolveMatrixOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms", d.Milliseconds())
+	}
+}
+
+// Throttle the event listener in milliseconds without leading edge.
+func SVGFeConvolveMatrixOnSignalPatchModThrottleMsNoLeading(
+	d time.Duration,
+) SVGFeConvolveMatrixOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms.noleading", d.Milliseconds())
+	}
+}
+
+// Throttle the event listener in milliseconds with trailing edge.
+func SVGFeConvolveMatrixOnSignalPatchModThrottleMsTrailing(
+	d time.Duration,
+) SVGFeConvolveMatrixOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms.trailing", d.Milliseconds())
+	}
+}
+
+// Throttles the event listener in seconds.
+func SVGFeConvolveMatrixOnSignalPatchModThrottleSec(
+	d time.Duration,
+) SVGFeConvolveMatrixOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds", int(d.Seconds()))
+	}
+}
+
+// Throttle the event listener in seconds without leading edge.
+func SVGFeConvolveMatrixOnSignalPatchModThrottleSecNoLeading(
+	d time.Duration,
+) SVGFeConvolveMatrixOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds.noleading", int(d.Seconds()))
+	}
+}
+
+// Throttle the event listener in seconds with trailing edge.
+func SVGFeConvolveMatrixOnSignalPatchModThrottleSecTrailing(
+	d time.Duration,
+) SVGFeConvolveMatrixOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds.trailing", int(d.Seconds()))
+	}
+}
+
+// Runs an expression whenever any signals are patched
+// This is useful for tracking changes, updating computed values, or triggering
+// side effects when data updates.
+//
+// See: https://data-star.dev/reference/attributes#data-on-signal-patch
+func (e *SVGFECONVOLVEMATRIXElement) DATASTAR_ON_SIGNAL_PATCH(expression string, modifiers ...SVGFeConvolveMatrixOnSignalPatchMod) *SVGFECONVOLVEMATRIXElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-on-signal-patch"
+
+	customMods := lo.Map(modifiers, func(m SVGFeConvolveMatrixOnSignalPatchMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Runs an expression whenever any signals are patched
+// This is useful for tracking changes, updating computed values, or triggering
+// side effects when data updates.
+//
+// See: https://data-star.dev/reference/attributes#data-on-signal-patch
+func (e *SVGFECONVOLVEMATRIXElement) IfDATASTAR_ON_SIGNAL_PATCH(condition bool, expression string, modifiers ...SVGFeConvolveMatrixOnSignalPatchMod) *SVGFECONVOLVEMATRIXElement {
+	if condition {
+		e.DATASTAR_ON_SIGNAL_PATCH(expression, modifiers...)
+	}
+	return e
+}
+
+// Runs an expression whenever any signals are patched
+// This is useful for tracking changes, updating computed values, or triggering
+// side effects when data updates.
+//
+// See: https://data-star.dev/reference/attributes#data-on-signal-patch
+// Remove the attribute DATASTAR_ON_SIGNAL_PATCH from the element.
+func (e *SVGFECONVOLVEMATRIXElement) DATASTAR_ON_SIGNAL_PATCHRemove() *SVGFECONVOLVEMATRIXElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-on-signal-patch")
+
+	return e
+}
+
+// Filters which signals to watch when using the data-on-signal-patch attribute.
+//
+// The data-on-signal-patch-filter attribute accepts an object with include and/or
+// exclude properties that are regular expressions.
+//
+// See: https://data-star.dev/reference/attributes#data-on-signal-patch-filter
+func (e *SVGFECONVOLVEMATRIXElement) DATASTAR_ON_SIGNAL_PATCH_FILTER(expression string) *SVGFECONVOLVEMATRIXElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-on-signal-patch-filter"
+
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Filters which signals to watch when using the data-on-signal-patch attribute.
+//
+// The data-on-signal-patch-filter attribute accepts an object with include and/or
+// exclude properties that are regular expressions.
+//
+// See: https://data-star.dev/reference/attributes#data-on-signal-patch-filter
+func (e *SVGFECONVOLVEMATRIXElement) IfDATASTAR_ON_SIGNAL_PATCH_FILTER(condition bool, expression string) *SVGFECONVOLVEMATRIXElement {
+	if condition {
+		e.DATASTAR_ON_SIGNAL_PATCH_FILTER(expression)
+	}
+	return e
+}
+
+// Filters which signals to watch when using the data-on-signal-patch attribute.
+//
+// The data-on-signal-patch-filter attribute accepts an object with include and/or
+// exclude properties that are regular expressions.
+//
+// See: https://data-star.dev/reference/attributes#data-on-signal-patch-filter
+// Remove the attribute DATASTAR_ON_SIGNAL_PATCH_FILTER from the element.
+func (e *SVGFECONVOLVEMATRIXElement) DATASTAR_ON_SIGNAL_PATCH_FILTERRemove() *SVGFECONVOLVEMATRIXElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-on-signal-patch-filter")
+
+	return e
+}
+
+// Preserves the value of an attribute when morphing DOM elements.
+//
+// See: https://data-star.dev/reference/attributes#data-preserve-attr
+func (e *SVGFECONVOLVEMATRIXElement) DATASTAR_PRESERVE_ATTR(expression string) *SVGFECONVOLVEMATRIXElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-preserve-attr"
+
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Preserves the value of an attribute when morphing DOM elements.
+//
+// See: https://data-star.dev/reference/attributes#data-preserve-attr
+func (e *SVGFECONVOLVEMATRIXElement) IfDATASTAR_PRESERVE_ATTR(condition bool, expression string) *SVGFECONVOLVEMATRIXElement {
+	if condition {
+		e.DATASTAR_PRESERVE_ATTR(expression)
+	}
+	return e
+}
+
+// Preserves the value of an attribute when morphing DOM elements.
+//
+// See: https://data-star.dev/reference/attributes#data-preserve-attr
+// Remove the attribute DATASTAR_PRESERVE_ATTR from the element.
+func (e *SVGFECONVOLVEMATRIXElement) DATASTAR_PRESERVE_ATTRRemove() *SVGFECONVOLVEMATRIXElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-preserve-attr")
+
+	return e
+}
+
+type SVGFeConvolveMatrixRefMod customDataKeyModifier
+
+// Converts the casing of the signal name.
+//   - 'camel' – Camel case: 'mySignal' (default)
+//   - 'kebab' – Kebab case: 'my-signal'
+//   - 'snake' – Snake case: 'my_signal'
+//   - 'pascal' – Pascal case: 'MySignal'
+func SVGFeConvolveMatrixRefModCase(
+	s string,
+) SVGFeConvolveMatrixRefMod {
+	return func() string {
+		return fmt.Sprintf("case.%s", s)
+	}
+}
+
+// Creates a new signal that is a reference to the element on which the data
+// attribute is placed.
+//
+// See: https://data-star.dev/reference/attributes#data-ref
+func (e *SVGFECONVOLVEMATRIXElement) DATASTAR_REF(expression string, modifiers ...SVGFeConvolveMatrixRefMod) *SVGFECONVOLVEMATRIXElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-ref"
+
+	customMods := lo.Map(modifiers, func(m SVGFeConvolveMatrixRefMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Creates a new signal that is a reference to the element on which the data
+// attribute is placed.
+//
+// See: https://data-star.dev/reference/attributes#data-ref
+func (e *SVGFECONVOLVEMATRIXElement) IfDATASTAR_REF(condition bool, expression string, modifiers ...SVGFeConvolveMatrixRefMod) *SVGFECONVOLVEMATRIXElement {
+	if condition {
+		e.DATASTAR_REF(expression, modifiers...)
+	}
+	return e
+}
+
+// Creates a new signal that is a reference to the element on which the data
+// attribute is placed.
+//
+// See: https://data-star.dev/reference/attributes#data-ref
+// Remove the attribute DATASTAR_REF from the element.
+func (e *SVGFECONVOLVEMATRIXElement) DATASTAR_REFRemove() *SVGFECONVOLVEMATRIXElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-ref")
+
+	return e
+}
+
+// Shows or hides an element based on whether an expression evaluates to 'true' or
+// 'false'
+// For anything with custom requirements, use 'data-class' instead.
+//
+// See: https://data-star.dev/reference/attributes#data-show
+func (e *SVGFECONVOLVEMATRIXElement) DATASTAR_SHOW(expression string) *SVGFECONVOLVEMATRIXElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-show"
+
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Shows or hides an element based on whether an expression evaluates to 'true' or
+// 'false'
+// For anything with custom requirements, use 'data-class' instead.
+//
+// See: https://data-star.dev/reference/attributes#data-show
+func (e *SVGFECONVOLVEMATRIXElement) IfDATASTAR_SHOW(condition bool, expression string) *SVGFECONVOLVEMATRIXElement {
+	if condition {
+		e.DATASTAR_SHOW(expression)
+	}
+	return e
+}
+
+// Shows or hides an element based on whether an expression evaluates to 'true' or
+// 'false'
+// For anything with custom requirements, use 'data-class' instead.
+//
+// See: https://data-star.dev/reference/attributes#data-show
+// Remove the attribute DATASTAR_SHOW from the element.
+func (e *SVGFECONVOLVEMATRIXElement) DATASTAR_SHOWRemove() *SVGFECONVOLVEMATRIXElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-show")
+
+	return e
+}
+
+type SVGFeConvolveMatrixSignalsMod customDataKeyModifier
+
+// Converts the casing of the signal name.
+//   - 'camel' – Camel case: 'mySignal' (default)
+//   - 'kebab' – Kebab case: 'my-signal'
+//   - 'snake' – Snake case: 'my_signal'
+//   - 'pascal' – Pascal case: 'MySignal'
+func SVGFeConvolveMatrixSignalsModCase(
+	s string,
+) SVGFeConvolveMatrixSignalsMod {
+	return func() string {
+		return fmt.Sprintf("case.%s", s)
+	}
+}
+
+// Only patches signals if their keys do not already exist
+// This is useful for setting defaults without overwriting existing values.
+func SVGFeConvolveMatrixSignalsModIfMissing() SVGFeConvolveMatrixSignalsMod {
+	return func() string {
+		return "ifmissing"
+	}
+}
+
+// Patches (adds, updates or removes) one or more signals into the existing
+// signals
+// Values defined later in the DOM tree override those defined earlier.
+//
+// See: https://data-star.dev/reference/attributes#data-signals
+func (e *SVGFECONVOLVEMATRIXElement) DATASTAR_SIGNALS(key string, expression string, modifiers ...SVGFeConvolveMatrixSignalsMod) *SVGFECONVOLVEMATRIXElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	key = fmt.Sprintf("data-signals%s", suffix)
+
+	customMods := lo.Map(modifiers, func(m SVGFeConvolveMatrixSignalsMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Patches (adds, updates or removes) one or more signals into the existing
+// signals
+// Values defined later in the DOM tree override those defined earlier.
+//
+// See: https://data-star.dev/reference/attributes#data-signals
+func (e *SVGFECONVOLVEMATRIXElement) IfDATASTAR_SIGNALS(condition bool, key string, expression string, modifiers ...SVGFeConvolveMatrixSignalsMod) *SVGFECONVOLVEMATRIXElement {
+	if condition {
+		e.DATASTAR_SIGNALS(key, expression, modifiers...)
+	}
+	return e
+}
+
+// Patches (adds, updates or removes) one or more signals into the existing
+// signals
+// Values defined later in the DOM tree override those defined earlier.
+//
+// See: https://data-star.dev/reference/attributes#data-signals
+// Remove the attribute DATASTAR_SIGNALS from the element.
+func (e *SVGFECONVOLVEMATRIXElement) DATASTAR_SIGNALSRemove(key string) *SVGFECONVOLVEMATRIXElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	e.StringAttributes.Del("data-signals" + suffix)
+
+	return e
+}
+
+type SVGFeConvolveMatrixStyleMod customDataKeyModifier
+
+// Converts the casing of the signal name.
+//   - 'camel' – Camel case: 'mySignal' (default)
+//   - 'kebab' – Kebab case: 'my-signal'
+//   - 'snake' – Snake case: 'my_signal'
+//   - 'pascal' – Pascal case: 'MySignal'
+func SVGFeConvolveMatrixStyleModCase(
+	s string,
+) SVGFeConvolveMatrixStyleMod {
+	return func() string {
+		return fmt.Sprintf("case.%s", s)
+	}
+}
+
+// Sets the value of inline CSS styles on an element based on an expression, and
+// keeps them in sync.
+//
+// See: https://data-star.dev/reference/attributes#data-style
+func (e *SVGFECONVOLVEMATRIXElement) DATASTAR_STYLE(key string, expression string, modifiers ...SVGFeConvolveMatrixStyleMod) *SVGFECONVOLVEMATRIXElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	key = fmt.Sprintf("data-style%s", suffix)
+
+	customMods := lo.Map(modifiers, func(m SVGFeConvolveMatrixStyleMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Sets the value of inline CSS styles on an element based on an expression, and
+// keeps them in sync.
+//
+// See: https://data-star.dev/reference/attributes#data-style
+func (e *SVGFECONVOLVEMATRIXElement) IfDATASTAR_STYLE(condition bool, key string, expression string, modifiers ...SVGFeConvolveMatrixStyleMod) *SVGFECONVOLVEMATRIXElement {
+	if condition {
+		e.DATASTAR_STYLE(key, expression, modifiers...)
+	}
+	return e
+}
+
+// Sets the value of inline CSS styles on an element based on an expression, and
+// keeps them in sync.
+//
+// See: https://data-star.dev/reference/attributes#data-style
+// Remove the attribute DATASTAR_STYLE from the element.
+func (e *SVGFECONVOLVEMATRIXElement) DATASTAR_STYLERemove(key string) *SVGFECONVOLVEMATRIXElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	e.StringAttributes.Del("data-style" + suffix)
+
+	return e
+}
+
+// Binds the text content of an element to an expression.
+//
+// See: https://data-star.dev/reference/attributes#data-text
 func (e *SVGFECONVOLVEMATRIXElement) DATASTAR_TEXT(expression string) *SVGFECONVOLVEMATRIXElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
@@ -747,6 +2303,9 @@ func (e *SVGFECONVOLVEMATRIXElement) DATASTAR_TEXT(expression string) *SVGFECONV
 	return e
 }
 
+// Binds the text content of an element to an expression.
+//
+// See: https://data-star.dev/reference/attributes#data-text
 func (e *SVGFECONVOLVEMATRIXElement) IfDATASTAR_TEXT(condition bool, expression string) *SVGFECONVOLVEMATRIXElement {
 	if condition {
 		e.DATASTAR_TEXT(expression)
@@ -754,228 +2313,16 @@ func (e *SVGFECONVOLVEMATRIXElement) IfDATASTAR_TEXT(condition bool, expression 
 	return e
 }
 
+// Binds the text content of an element to an expression.
+//
+// See: https://data-star.dev/reference/attributes#data-text
 // Remove the attribute DATASTAR_TEXT from the element.
 func (e *SVGFECONVOLVEMATRIXElement) DATASTAR_TEXTRemove() *SVGFECONVOLVEMATRIXElement {
 	if e.StringAttributes == nil {
 		return e
 	}
+
 	e.StringAttributes.Del("data-text")
-	return e
-}
 
-// Sets the event handler of the element
-
-type SVGFeConvolveMatrixOnMod customDataKeyModifier
-
-// Debounces the event handler
-func SVGFeConvolveMatrixOnModDebounce(
-	d time.Duration,
-) SVGFeConvolveMatrixOnMod {
-	return func() string {
-		return fmt.Sprintf("debounce_%dms", d.Milliseconds())
-	}
-}
-
-// Throttles the event handler
-func SVGFeConvolveMatrixOnModThrottle(
-	d time.Duration,
-) SVGFeConvolveMatrixOnMod {
-	return func() string {
-		return fmt.Sprintf("throttle_%dms", d.Milliseconds())
-	}
-}
-
-func (e *SVGFECONVOLVEMATRIXElement) DATASTAR_ON(key string, expression string, modifiers ...SVGFeConvolveMatrixOnMod) *SVGFECONVOLVEMATRIXElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-
-	key = fmt.Sprintf("data-on-%s", key)
-
-	customMods := lo.Map(modifiers, func(m SVGFeConvolveMatrixOnMod, i int) customDataKeyModifier {
-		return customDataKeyModifier(m)
-	})
-	key = customDataKey(key, customMods...)
-	e.StringAttributes.Set(key, expression)
-	return e
-}
-
-func (e *SVGFECONVOLVEMATRIXElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SVGFeConvolveMatrixOnMod) *SVGFECONVOLVEMATRIXElement {
-	if condition {
-		e.DATASTAR_ON(key, expression, modifiers...)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_ON from the element.
-func (e *SVGFECONVOLVEMATRIXElement) DATASTAR_ONRemove() *SVGFECONVOLVEMATRIXElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-on")
-	return e
-}
-
-// Sets the focus of the element
-
-func (e *SVGFECONVOLVEMATRIXElement) DATASTAR_FOCUSSet(b bool) *SVGFECONVOLVEMATRIXElement {
-	key := "data-focus"
-	e.BoolAttributes.Set(key, b)
-	return e
-}
-
-func (e *SVGFECONVOLVEMATRIXElement) DATASTAR_FOCUS() *SVGFECONVOLVEMATRIXElement {
-	return e.DATASTAR_FOCUSSet(true)
-}
-
-// Sets the header of for fetch requests
-
-func (e *SVGFECONVOLVEMATRIXElement) DATASTAR_HEADER(key string, expression string) *SVGFECONVOLVEMATRIXElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-
-	key = fmt.Sprintf("data-header-%s", key)
-
-	e.StringAttributes.Set(key, expression)
-	return e
-}
-
-func (e *SVGFECONVOLVEMATRIXElement) IfDATASTAR_HEADER(condition bool, key string, expression string) *SVGFECONVOLVEMATRIXElement {
-	if condition {
-		e.DATASTAR_HEADER(key, expression)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_HEADER from the element.
-func (e *SVGFECONVOLVEMATRIXElement) DATASTAR_HEADERRemove() *SVGFECONVOLVEMATRIXElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-header")
-	return e
-}
-
-// Sets the indicator selector for fetch requests
-
-func (e *SVGFECONVOLVEMATRIXElement) DATASTAR_FETCH_INDICATOR(expression string) *SVGFECONVOLVEMATRIXElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-
-	key := "data-fetch-indicator"
-
-	e.StringAttributes.Set(key, expression)
-	return e
-}
-
-func (e *SVGFECONVOLVEMATRIXElement) IfDATASTAR_FETCH_INDICATOR(condition bool, expression string) *SVGFECONVOLVEMATRIXElement {
-	if condition {
-		e.DATASTAR_FETCH_INDICATOR(expression)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_FETCH_INDICATOR from the element.
-func (e *SVGFECONVOLVEMATRIXElement) DATASTAR_FETCH_INDICATORRemove() *SVGFECONVOLVEMATRIXElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-fetch-indicator")
-	return e
-}
-
-// Sets the visibility of the element
-
-func (e *SVGFECONVOLVEMATRIXElement) DATASTAR_SHOWSet(b bool) *SVGFECONVOLVEMATRIXElement {
-	key := "data-show"
-	e.BoolAttributes.Set(key, b)
-	return e
-}
-
-func (e *SVGFECONVOLVEMATRIXElement) DATASTAR_SHOW() *SVGFECONVOLVEMATRIXElement {
-	return e.DATASTAR_SHOWSet(true)
-}
-
-// Triggers the callback when the element intersects the viewport
-
-func (e *SVGFECONVOLVEMATRIXElement) DATASTAR_INTERSECTS(expression string) *SVGFECONVOLVEMATRIXElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-
-	key := "data-intersects"
-
-	e.StringAttributes.Set(key, expression)
-	return e
-}
-
-func (e *SVGFECONVOLVEMATRIXElement) IfDATASTAR_INTERSECTS(condition bool, expression string) *SVGFECONVOLVEMATRIXElement {
-	if condition {
-		e.DATASTAR_INTERSECTS(expression)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_INTERSECTS from the element.
-func (e *SVGFECONVOLVEMATRIXElement) DATASTAR_INTERSECTSRemove() *SVGFECONVOLVEMATRIXElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-intersects")
-	return e
-}
-
-// Teleports the element to the given selector
-
-func (e *SVGFECONVOLVEMATRIXElement) DATASTAR_TELEPORTSet(b bool) *SVGFECONVOLVEMATRIXElement {
-	key := "data-teleport"
-	e.BoolAttributes.Set(key, b)
-	return e
-}
-
-func (e *SVGFECONVOLVEMATRIXElement) DATASTAR_TELEPORT() *SVGFECONVOLVEMATRIXElement {
-	return e.DATASTAR_TELEPORTSet(true)
-}
-
-// Scrolls the element into view
-
-func (e *SVGFECONVOLVEMATRIXElement) DATASTAR_SCROLL_INTO_VIEWSet(b bool) *SVGFECONVOLVEMATRIXElement {
-	key := "data-scroll-into-view"
-	e.BoolAttributes.Set(key, b)
-	return e
-}
-
-func (e *SVGFECONVOLVEMATRIXElement) DATASTAR_SCROLL_INTO_VIEW() *SVGFECONVOLVEMATRIXElement {
-	return e.DATASTAR_SCROLL_INTO_VIEWSet(true)
-}
-
-// Setup the ViewTransitionAPI for the element
-
-func (e *SVGFECONVOLVEMATRIXElement) DATASTAR_VIEW_TRANSITION(expression string) *SVGFECONVOLVEMATRIXElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-
-	key := "data-view-transition"
-
-	e.StringAttributes.Set(key, expression)
-	return e
-}
-
-func (e *SVGFECONVOLVEMATRIXElement) IfDATASTAR_VIEW_TRANSITION(condition bool, expression string) *SVGFECONVOLVEMATRIXElement {
-	if condition {
-		e.DATASTAR_VIEW_TRANSITION(expression)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_VIEW_TRANSITION from the element.
-func (e *SVGFECONVOLVEMATRIXElement) DATASTAR_VIEW_TRANSITIONRemove() *SVGFECONVOLVEMATRIXElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-view-transition")
 	return e
 }

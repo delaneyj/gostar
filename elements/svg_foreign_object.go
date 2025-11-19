@@ -5,10 +5,8 @@ package elements
 
 import (
 	"fmt"
-	"html"
 	"time"
 
-	"github.com/goccy/go-json"
 	"github.com/igrmk/treemap/v2"
 	"github.com/samber/lo"
 )
@@ -176,10 +174,14 @@ func (e *SVGFOREIGNOBJECTElement) X(s string) *SVGFOREIGNOBJECTElement {
 	return e
 }
 
+// The x-axis coordinate of the side of the rectangular region which is closest to
+// the user.
 func (e *SVGFOREIGNOBJECTElement) XF(format string, args ...any) *SVGFOREIGNOBJECTElement {
 	return e.X(fmt.Sprintf(format, args...))
 }
 
+// The x-axis coordinate of the side of the rectangular region which is closest to
+// the user.
 func (e *SVGFOREIGNOBJECTElement) IfX(condition bool, s string) *SVGFOREIGNOBJECTElement {
 	if condition {
 		e.X(s)
@@ -187,6 +189,8 @@ func (e *SVGFOREIGNOBJECTElement) IfX(condition bool, s string) *SVGFOREIGNOBJEC
 	return e
 }
 
+// The x-axis coordinate of the side of the rectangular region which is closest to
+// the user.
 func (e *SVGFOREIGNOBJECTElement) IfXF(condition bool, format string, args ...any) *SVGFOREIGNOBJECTElement {
 	if condition {
 		e.X(fmt.Sprintf(format, args...))
@@ -194,6 +198,8 @@ func (e *SVGFOREIGNOBJECTElement) IfXF(condition bool, format string, args ...an
 	return e
 }
 
+// The x-axis coordinate of the side of the rectangular region which is closest to
+// the user.
 // Remove the attribute X from the element.
 func (e *SVGFOREIGNOBJECTElement) XRemove(s string) *SVGFOREIGNOBJECTElement {
 	if e.StringAttributes == nil {
@@ -203,6 +209,8 @@ func (e *SVGFOREIGNOBJECTElement) XRemove(s string) *SVGFOREIGNOBJECTElement {
 	return e
 }
 
+// The x-axis coordinate of the side of the rectangular region which is closest to
+// the user.
 func (e *SVGFOREIGNOBJECTElement) XRemoveF(format string, args ...any) *SVGFOREIGNOBJECTElement {
 	return e.XRemove(fmt.Sprintf(format, args...))
 }
@@ -217,10 +225,14 @@ func (e *SVGFOREIGNOBJECTElement) Y(s string) *SVGFOREIGNOBJECTElement {
 	return e
 }
 
+// The y-axis coordinate of the side of the rectangular region which is closest to
+// the user.
 func (e *SVGFOREIGNOBJECTElement) YF(format string, args ...any) *SVGFOREIGNOBJECTElement {
 	return e.Y(fmt.Sprintf(format, args...))
 }
 
+// The y-axis coordinate of the side of the rectangular region which is closest to
+// the user.
 func (e *SVGFOREIGNOBJECTElement) IfY(condition bool, s string) *SVGFOREIGNOBJECTElement {
 	if condition {
 		e.Y(s)
@@ -228,6 +240,8 @@ func (e *SVGFOREIGNOBJECTElement) IfY(condition bool, s string) *SVGFOREIGNOBJEC
 	return e
 }
 
+// The y-axis coordinate of the side of the rectangular region which is closest to
+// the user.
 func (e *SVGFOREIGNOBJECTElement) IfYF(condition bool, format string, args ...any) *SVGFOREIGNOBJECTElement {
 	if condition {
 		e.Y(fmt.Sprintf(format, args...))
@@ -235,6 +249,8 @@ func (e *SVGFOREIGNOBJECTElement) IfYF(condition bool, format string, args ...an
 	return e
 }
 
+// The y-axis coordinate of the side of the rectangular region which is closest to
+// the user.
 // Remove the attribute Y from the element.
 func (e *SVGFOREIGNOBJECTElement) YRemove(s string) *SVGFOREIGNOBJECTElement {
 	if e.StringAttributes == nil {
@@ -244,6 +260,8 @@ func (e *SVGFOREIGNOBJECTElement) YRemove(s string) *SVGFOREIGNOBJECTElement {
 	return e
 }
 
+// The y-axis coordinate of the side of the rectangular region which is closest to
+// the user.
 func (e *SVGFOREIGNOBJECTElement) YRemoveF(format string, args ...any) *SVGFOREIGNOBJECTElement {
 	return e.YRemove(fmt.Sprintf(format, args...))
 }
@@ -257,10 +275,12 @@ func (e *SVGFOREIGNOBJECTElement) WIDTH(s string) *SVGFOREIGNOBJECTElement {
 	return e
 }
 
+// The width of the rectangular region.
 func (e *SVGFOREIGNOBJECTElement) WIDTHF(format string, args ...any) *SVGFOREIGNOBJECTElement {
 	return e.WIDTH(fmt.Sprintf(format, args...))
 }
 
+// The width of the rectangular region.
 func (e *SVGFOREIGNOBJECTElement) IfWIDTH(condition bool, s string) *SVGFOREIGNOBJECTElement {
 	if condition {
 		e.WIDTH(s)
@@ -268,6 +288,7 @@ func (e *SVGFOREIGNOBJECTElement) IfWIDTH(condition bool, s string) *SVGFOREIGNO
 	return e
 }
 
+// The width of the rectangular region.
 func (e *SVGFOREIGNOBJECTElement) IfWIDTHF(condition bool, format string, args ...any) *SVGFOREIGNOBJECTElement {
 	if condition {
 		e.WIDTH(fmt.Sprintf(format, args...))
@@ -275,6 +296,7 @@ func (e *SVGFOREIGNOBJECTElement) IfWIDTHF(condition bool, format string, args .
 	return e
 }
 
+// The width of the rectangular region.
 // Remove the attribute WIDTH from the element.
 func (e *SVGFOREIGNOBJECTElement) WIDTHRemove(s string) *SVGFOREIGNOBJECTElement {
 	if e.StringAttributes == nil {
@@ -284,6 +306,7 @@ func (e *SVGFOREIGNOBJECTElement) WIDTHRemove(s string) *SVGFOREIGNOBJECTElement
 	return e
 }
 
+// The width of the rectangular region.
 func (e *SVGFOREIGNOBJECTElement) WIDTHRemoveF(format string, args ...any) *SVGFOREIGNOBJECTElement {
 	return e.WIDTHRemove(fmt.Sprintf(format, args...))
 }
@@ -297,10 +320,12 @@ func (e *SVGFOREIGNOBJECTElement) HEIGHT(s string) *SVGFOREIGNOBJECTElement {
 	return e
 }
 
+// The height of the rectangular region.
 func (e *SVGFOREIGNOBJECTElement) HEIGHTF(format string, args ...any) *SVGFOREIGNOBJECTElement {
 	return e.HEIGHT(fmt.Sprintf(format, args...))
 }
 
+// The height of the rectangular region.
 func (e *SVGFOREIGNOBJECTElement) IfHEIGHT(condition bool, s string) *SVGFOREIGNOBJECTElement {
 	if condition {
 		e.HEIGHT(s)
@@ -308,6 +333,7 @@ func (e *SVGFOREIGNOBJECTElement) IfHEIGHT(condition bool, s string) *SVGFOREIGN
 	return e
 }
 
+// The height of the rectangular region.
 func (e *SVGFOREIGNOBJECTElement) IfHEIGHTF(condition bool, format string, args ...any) *SVGFOREIGNOBJECTElement {
 	if condition {
 		e.HEIGHT(fmt.Sprintf(format, args...))
@@ -315,6 +341,7 @@ func (e *SVGFOREIGNOBJECTElement) IfHEIGHTF(condition bool, format string, args 
 	return e
 }
 
+// The height of the rectangular region.
 // Remove the attribute HEIGHT from the element.
 func (e *SVGFOREIGNOBJECTElement) HEIGHTRemove(s string) *SVGFOREIGNOBJECTElement {
 	if e.StringAttributes == nil {
@@ -324,6 +351,7 @@ func (e *SVGFOREIGNOBJECTElement) HEIGHTRemove(s string) *SVGFOREIGNOBJECTElemen
 	return e
 }
 
+// The height of the rectangular region.
 func (e *SVGFOREIGNOBJECTElement) HEIGHTRemoveF(format string, args ...any) *SVGFOREIGNOBJECTElement {
 	return e.HEIGHTRemove(fmt.Sprintf(format, args...))
 }
@@ -338,10 +366,14 @@ func (e *SVGFOREIGNOBJECTElement) REQUIRED_EXTENSIONS(s string) *SVGFOREIGNOBJEC
 	return e
 }
 
+// A space-separated list of required extensions, indicating that the parent SVG
+// document must include the specified extensions for this element to be valid.
 func (e *SVGFOREIGNOBJECTElement) REQUIRED_EXTENSIONSF(format string, args ...any) *SVGFOREIGNOBJECTElement {
 	return e.REQUIRED_EXTENSIONS(fmt.Sprintf(format, args...))
 }
 
+// A space-separated list of required extensions, indicating that the parent SVG
+// document must include the specified extensions for this element to be valid.
 func (e *SVGFOREIGNOBJECTElement) IfREQUIRED_EXTENSIONS(condition bool, s string) *SVGFOREIGNOBJECTElement {
 	if condition {
 		e.REQUIRED_EXTENSIONS(s)
@@ -349,6 +381,8 @@ func (e *SVGFOREIGNOBJECTElement) IfREQUIRED_EXTENSIONS(condition bool, s string
 	return e
 }
 
+// A space-separated list of required extensions, indicating that the parent SVG
+// document must include the specified extensions for this element to be valid.
 func (e *SVGFOREIGNOBJECTElement) IfREQUIRED_EXTENSIONSF(condition bool, format string, args ...any) *SVGFOREIGNOBJECTElement {
 	if condition {
 		e.REQUIRED_EXTENSIONS(fmt.Sprintf(format, args...))
@@ -356,6 +390,8 @@ func (e *SVGFOREIGNOBJECTElement) IfREQUIRED_EXTENSIONSF(condition bool, format 
 	return e
 }
 
+// A space-separated list of required extensions, indicating that the parent SVG
+// document must include the specified extensions for this element to be valid.
 // Remove the attribute REQUIRED_EXTENSIONS from the element.
 func (e *SVGFOREIGNOBJECTElement) REQUIRED_EXTENSIONSRemove(s string) *SVGFOREIGNOBJECTElement {
 	if e.StringAttributes == nil {
@@ -365,6 +401,8 @@ func (e *SVGFOREIGNOBJECTElement) REQUIRED_EXTENSIONSRemove(s string) *SVGFOREIG
 	return e
 }
 
+// A space-separated list of required extensions, indicating that the parent SVG
+// document must include the specified extensions for this element to be valid.
 func (e *SVGFOREIGNOBJECTElement) REQUIRED_EXTENSIONSRemoveF(format string, args ...any) *SVGFOREIGNOBJECTElement {
 	return e.REQUIRED_EXTENSIONSRemove(fmt.Sprintf(format, args...))
 }
@@ -380,10 +418,16 @@ func (e *SVGFOREIGNOBJECTElement) REQUIRED_FEATURES(s string) *SVGFOREIGNOBJECTE
 	return e
 }
 
+// A space-separated list of required features, indicating that the parent SVG
+// document must include support for all of the specified features for this
+// element to be valid.
 func (e *SVGFOREIGNOBJECTElement) REQUIRED_FEATURESF(format string, args ...any) *SVGFOREIGNOBJECTElement {
 	return e.REQUIRED_FEATURES(fmt.Sprintf(format, args...))
 }
 
+// A space-separated list of required features, indicating that the parent SVG
+// document must include support for all of the specified features for this
+// element to be valid.
 func (e *SVGFOREIGNOBJECTElement) IfREQUIRED_FEATURES(condition bool, s string) *SVGFOREIGNOBJECTElement {
 	if condition {
 		e.REQUIRED_FEATURES(s)
@@ -391,6 +435,9 @@ func (e *SVGFOREIGNOBJECTElement) IfREQUIRED_FEATURES(condition bool, s string) 
 	return e
 }
 
+// A space-separated list of required features, indicating that the parent SVG
+// document must include support for all of the specified features for this
+// element to be valid.
 func (e *SVGFOREIGNOBJECTElement) IfREQUIRED_FEATURESF(condition bool, format string, args ...any) *SVGFOREIGNOBJECTElement {
 	if condition {
 		e.REQUIRED_FEATURES(fmt.Sprintf(format, args...))
@@ -398,6 +445,9 @@ func (e *SVGFOREIGNOBJECTElement) IfREQUIRED_FEATURESF(condition bool, format st
 	return e
 }
 
+// A space-separated list of required features, indicating that the parent SVG
+// document must include support for all of the specified features for this
+// element to be valid.
 // Remove the attribute REQUIRED_FEATURES from the element.
 func (e *SVGFOREIGNOBJECTElement) REQUIRED_FEATURESRemove(s string) *SVGFOREIGNOBJECTElement {
 	if e.StringAttributes == nil {
@@ -407,6 +457,9 @@ func (e *SVGFOREIGNOBJECTElement) REQUIRED_FEATURESRemove(s string) *SVGFOREIGNO
 	return e
 }
 
+// A space-separated list of required features, indicating that the parent SVG
+// document must include support for all of the specified features for this
+// element to be valid.
 func (e *SVGFOREIGNOBJECTElement) REQUIRED_FEATURESRemoveF(format string, args ...any) *SVGFOREIGNOBJECTElement {
 	return e.REQUIRED_FEATURESRemove(fmt.Sprintf(format, args...))
 }
@@ -422,10 +475,16 @@ func (e *SVGFOREIGNOBJECTElement) SYSTEM_LANGUAGE(s string) *SVGFOREIGNOBJECTEle
 	return e
 }
 
+// A space-separated list of language codes, indicating that the parent SVG
+// document must include support for all of the specified languages for this
+// element to be valid.
 func (e *SVGFOREIGNOBJECTElement) SYSTEM_LANGUAGEF(format string, args ...any) *SVGFOREIGNOBJECTElement {
 	return e.SYSTEM_LANGUAGE(fmt.Sprintf(format, args...))
 }
 
+// A space-separated list of language codes, indicating that the parent SVG
+// document must include support for all of the specified languages for this
+// element to be valid.
 func (e *SVGFOREIGNOBJECTElement) IfSYSTEM_LANGUAGE(condition bool, s string) *SVGFOREIGNOBJECTElement {
 	if condition {
 		e.SYSTEM_LANGUAGE(s)
@@ -433,6 +492,9 @@ func (e *SVGFOREIGNOBJECTElement) IfSYSTEM_LANGUAGE(condition bool, s string) *S
 	return e
 }
 
+// A space-separated list of language codes, indicating that the parent SVG
+// document must include support for all of the specified languages for this
+// element to be valid.
 func (e *SVGFOREIGNOBJECTElement) IfSYSTEM_LANGUAGEF(condition bool, format string, args ...any) *SVGFOREIGNOBJECTElement {
 	if condition {
 		e.SYSTEM_LANGUAGE(fmt.Sprintf(format, args...))
@@ -440,6 +502,9 @@ func (e *SVGFOREIGNOBJECTElement) IfSYSTEM_LANGUAGEF(condition bool, format stri
 	return e
 }
 
+// A space-separated list of language codes, indicating that the parent SVG
+// document must include support for all of the specified languages for this
+// element to be valid.
 // Remove the attribute SYSTEM_LANGUAGE from the element.
 func (e *SVGFOREIGNOBJECTElement) SYSTEM_LANGUAGERemove(s string) *SVGFOREIGNOBJECTElement {
 	if e.StringAttributes == nil {
@@ -449,6 +514,9 @@ func (e *SVGFOREIGNOBJECTElement) SYSTEM_LANGUAGERemove(s string) *SVGFOREIGNOBJ
 	return e
 }
 
+// A space-separated list of language codes, indicating that the parent SVG
+// document must include support for all of the specified languages for this
+// element to be valid.
 func (e *SVGFOREIGNOBJECTElement) SYSTEM_LANGUAGERemoveF(format string, args ...any) *SVGFOREIGNOBJECTElement {
 	return e.SYSTEM_LANGUAGERemove(fmt.Sprintf(format, args...))
 }
@@ -462,10 +530,12 @@ func (e *SVGFOREIGNOBJECTElement) ID(s string) *SVGFOREIGNOBJECTElement {
 	return e
 }
 
+// Specifies a unique id for an element
 func (e *SVGFOREIGNOBJECTElement) IDF(format string, args ...any) *SVGFOREIGNOBJECTElement {
 	return e.ID(fmt.Sprintf(format, args...))
 }
 
+// Specifies a unique id for an element
 func (e *SVGFOREIGNOBJECTElement) IfID(condition bool, s string) *SVGFOREIGNOBJECTElement {
 	if condition {
 		e.ID(s)
@@ -473,6 +543,7 @@ func (e *SVGFOREIGNOBJECTElement) IfID(condition bool, s string) *SVGFOREIGNOBJE
 	return e
 }
 
+// Specifies a unique id for an element
 func (e *SVGFOREIGNOBJECTElement) IfIDF(condition bool, format string, args ...any) *SVGFOREIGNOBJECTElement {
 	if condition {
 		e.ID(fmt.Sprintf(format, args...))
@@ -480,6 +551,7 @@ func (e *SVGFOREIGNOBJECTElement) IfIDF(condition bool, format string, args ...a
 	return e
 }
 
+// Specifies a unique id for an element
 // Remove the attribute ID from the element.
 func (e *SVGFOREIGNOBJECTElement) IDRemove(s string) *SVGFOREIGNOBJECTElement {
 	if e.StringAttributes == nil {
@@ -489,6 +561,7 @@ func (e *SVGFOREIGNOBJECTElement) IDRemove(s string) *SVGFOREIGNOBJECTElement {
 	return e
 }
 
+// Specifies a unique id for an element
 func (e *SVGFOREIGNOBJECTElement) IDRemoveF(format string, args ...any) *SVGFOREIGNOBJECTElement {
 	return e.IDRemove(fmt.Sprintf(format, args...))
 }
@@ -508,6 +581,8 @@ func (e *SVGFOREIGNOBJECTElement) CLASS(s ...string) *SVGFOREIGNOBJECTElement {
 	return e
 }
 
+// Specifies one or more classnames for an element (refers to a class in a style
+// sheet)
 func (e *SVGFOREIGNOBJECTElement) IfCLASS(condition bool, s ...string) *SVGFOREIGNOBJECTElement {
 	if condition {
 		e.CLASS(s...)
@@ -515,6 +590,8 @@ func (e *SVGFOREIGNOBJECTElement) IfCLASS(condition bool, s ...string) *SVGFOREI
 	return e
 }
 
+// Specifies one or more classnames for an element (refers to a class in a style
+// sheet)
 // Remove the attribute CLASS from the element.
 func (e *SVGFOREIGNOBJECTElement) CLASSRemove(s ...string) *SVGFOREIGNOBJECTElement {
 	if e.DelimitedStrings == nil {
@@ -533,6 +610,7 @@ func (e *SVGFOREIGNOBJECTElement) STYLEF(k string, format string, args ...any) *
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+// Specifies an inline CSS style for an element
 func (e *SVGFOREIGNOBJECTElement) IfSTYLE(condition bool, k string, v string) *SVGFOREIGNOBJECTElement {
 	if condition {
 		e.STYLE(k, v)
@@ -540,6 +618,7 @@ func (e *SVGFOREIGNOBJECTElement) IfSTYLE(condition bool, k string, v string) *S
 	return e
 }
 
+// Specifies an inline CSS style for an element
 func (e *SVGFOREIGNOBJECTElement) STYLE(k string, v string) *SVGFOREIGNOBJECTElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -553,6 +632,7 @@ func (e *SVGFOREIGNOBJECTElement) STYLE(k string, v string) *SVGFOREIGNOBJECTEle
 	return e
 }
 
+// Specifies an inline CSS style for an element
 func (e *SVGFOREIGNOBJECTElement) IfSTYLEF(condition bool, k string, format string, args ...any) *SVGFOREIGNOBJECTElement {
 	if condition {
 		e.STYLE(k, fmt.Sprintf(format, args...))
@@ -560,6 +640,7 @@ func (e *SVGFOREIGNOBJECTElement) IfSTYLEF(condition bool, k string, format stri
 	return e
 }
 
+// Specifies an inline CSS style for an element
 // Add the attributes in the map to the element.
 func (e *SVGFOREIGNOBJECTElement) STYLEMap(m map[string]string) *SVGFOREIGNOBJECTElement {
 	if e.KVStrings == nil {
@@ -576,6 +657,7 @@ func (e *SVGFOREIGNOBJECTElement) STYLEMap(m map[string]string) *SVGFOREIGNOBJEC
 	return e
 }
 
+// Specifies an inline CSS style for an element
 // Add pairs of attributes to the element.
 func (e *SVGFOREIGNOBJECTElement) STYLEPairs(pairs ...string) *SVGFOREIGNOBJECTElement {
 	if len(pairs)%2 != 0 {
@@ -597,6 +679,7 @@ func (e *SVGFOREIGNOBJECTElement) STYLEPairs(pairs ...string) *SVGFOREIGNOBJECTE
 	return e
 }
 
+// Specifies an inline CSS style for an element
 func (e *SVGFOREIGNOBJECTElement) IfSTYLEPairs(condition bool, pairs ...string) *SVGFOREIGNOBJECTElement {
 	if condition {
 		e.STYLEPairs(pairs...)
@@ -604,6 +687,7 @@ func (e *SVGFOREIGNOBJECTElement) IfSTYLEPairs(condition bool, pairs ...string) 
 	return e
 }
 
+// Specifies an inline CSS style for an element
 // Remove the attribute STYLE from the element.
 func (e *SVGFOREIGNOBJECTElement) STYLERemove(keys ...string) *SVGFOREIGNOBJECTElement {
 	if e.KVStrings == nil {
@@ -619,62 +703,75 @@ func (e *SVGFOREIGNOBJECTElement) STYLERemove(keys ...string) *SVGFOREIGNOBJECTE
 	return e
 }
 
-// Merges the singleton store with the given object
-
-func (e *SVGFOREIGNOBJECTElement) DATASTAR_STORE(v any) *SVGFOREIGNOBJECTElement {
-	if e.CustomDataAttributes == nil {
-		e.CustomDataAttributes = treemap.New[string, string]()
-	}
-	b, err := json.Marshal(v)
-	if err != nil {
-		panic(err)
-	}
-	e.CustomDataAttributes.Set("store", html.EscapeString(string(b)))
-	return e
-}
-
-// Sets the reference of the element
-
-func (e *SVGFOREIGNOBJECTElement) DATASTAR_REF(expression string) *SVGFOREIGNOBJECTElement {
+// Sets the value of any HTML attribute to an expression, and keeps it in sync.
+//
+// See: https://data-star.dev/reference/attributes#data-attr
+func (e *SVGFOREIGNOBJECTElement) DATASTAR_ATTR(key string, expression string) *SVGFOREIGNOBJECTElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "data-ref"
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	key = fmt.Sprintf("data-attr%s", suffix)
 
 	e.StringAttributes.Set(key, expression)
 	return e
 }
 
-func (e *SVGFOREIGNOBJECTElement) IfDATASTAR_REF(condition bool, expression string) *SVGFOREIGNOBJECTElement {
+// Sets the value of any HTML attribute to an expression, and keeps it in sync.
+//
+// See: https://data-star.dev/reference/attributes#data-attr
+func (e *SVGFOREIGNOBJECTElement) IfDATASTAR_ATTR(condition bool, key string, expression string) *SVGFOREIGNOBJECTElement {
 	if condition {
-		e.DATASTAR_REF(expression)
+		e.DATASTAR_ATTR(key, expression)
 	}
 	return e
 }
 
-// Remove the attribute DATASTAR_REF from the element.
-func (e *SVGFOREIGNOBJECTElement) DATASTAR_REFRemove() *SVGFOREIGNOBJECTElement {
+// Sets the value of any HTML attribute to an expression, and keeps it in sync.
+//
+// See: https://data-star.dev/reference/attributes#data-attr
+// Remove the attribute DATASTAR_ATTR from the element.
+func (e *SVGFOREIGNOBJECTElement) DATASTAR_ATTRRemove(key string) *SVGFOREIGNOBJECTElement {
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("data-ref")
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	e.StringAttributes.Del("data-attr" + suffix)
+
 	return e
 }
 
-// Sets the value of the element
-
+// Creates a signal (if one doesn’t already exist) and sets up two-way data
+// binding between it and an element’s value.
+//
+// See: https://data-star.dev/reference/attributes#data-bind
 func (e *SVGFOREIGNOBJECTElement) DATASTAR_BIND(key string, expression string) *SVGFOREIGNOBJECTElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key = fmt.Sprintf("data-bind-%s", key)
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	key = fmt.Sprintf("data-bind%s", suffix)
 
 	e.StringAttributes.Set(key, expression)
 	return e
 }
 
+// Creates a signal (if one doesn’t already exist) and sets up two-way data
+// binding between it and an element’s value.
+//
+// See: https://data-star.dev/reference/attributes#data-bind
 func (e *SVGFOREIGNOBJECTElement) IfDATASTAR_BIND(condition bool, key string, expression string) *SVGFOREIGNOBJECTElement {
 	if condition {
 		e.DATASTAR_BIND(key, expression)
@@ -682,46 +779,1525 @@ func (e *SVGFOREIGNOBJECTElement) IfDATASTAR_BIND(condition bool, key string, ex
 	return e
 }
 
+// Creates a signal (if one doesn’t already exist) and sets up two-way data
+// binding between it and an element’s value.
+//
+// See: https://data-star.dev/reference/attributes#data-bind
 // Remove the attribute DATASTAR_BIND from the element.
-func (e *SVGFOREIGNOBJECTElement) DATASTAR_BINDRemove() *SVGFOREIGNOBJECTElement {
+func (e *SVGFOREIGNOBJECTElement) DATASTAR_BINDRemove(key string) *SVGFOREIGNOBJECTElement {
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("data-bind")
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	e.StringAttributes.Del("data-bind" + suffix)
+
 	return e
 }
 
-// Sets the value of the element
+type SVGForeignObjectClassMod customDataKeyModifier
 
-func (e *SVGFOREIGNOBJECTElement) DATASTAR_MODEL(expression string) *SVGFOREIGNOBJECTElement {
+// Converts the casing of the signal name.
+//   - 'camel' – Camel case: 'mySignal' (default)
+//   - 'kebab' – Kebab case: 'my-signal'
+//   - 'snake' – Snake case: 'my_signal'
+//   - 'pascal' – Pascal case: 'MySignal'
+func SVGForeignObjectClassModCase(
+	s string,
+) SVGForeignObjectClassMod {
+	return func() string {
+		return fmt.Sprintf("case.%s", s)
+	}
+}
+
+// Adds or removes a class to or from an element based on an expression.
+func (e *SVGFOREIGNOBJECTElement) DATASTAR_CLASS(key string, expression string, modifiers ...SVGForeignObjectClassMod) *SVGFOREIGNOBJECTElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "data-model"
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	key = fmt.Sprintf("data-class%s", suffix)
+
+	customMods := lo.Map(modifiers, func(m SVGForeignObjectClassMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Adds or removes a class to or from an element based on an expression.
+func (e *SVGFOREIGNOBJECTElement) IfDATASTAR_CLASS(condition bool, key string, expression string, modifiers ...SVGForeignObjectClassMod) *SVGFOREIGNOBJECTElement {
+	if condition {
+		e.DATASTAR_CLASS(key, expression, modifiers...)
+	}
+	return e
+}
+
+// Adds or removes a class to or from an element based on an expression.
+// Remove the attribute DATASTAR_CLASS from the element.
+func (e *SVGFOREIGNOBJECTElement) DATASTAR_CLASSRemove(key string) *SVGFOREIGNOBJECTElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	e.StringAttributes.Del("data-class" + suffix)
+
+	return e
+}
+
+type SVGForeignObjectComputedMod customDataKeyModifier
+
+// Converts the casing of the signal name.
+//   - 'camel' – Camel case: 'mySignal' (default)
+//   - 'kebab' – Kebab case: 'my-signal'
+//   - 'snake' – Snake case: 'my_signal'
+//   - 'pascal' – Pascal case: 'MySignal'
+func SVGForeignObjectComputedModCase(
+	s string,
+) SVGForeignObjectComputedMod {
+	return func() string {
+		return fmt.Sprintf("case.%s", s)
+	}
+}
+
+// Creates a signal that is computed based on an expression
+// The computed signal is read-only, and its value is automatically updated when
+// any signals in the expression are updated.
+//
+// See: https://data-star.dev/reference/attributes#data-computed
+func (e *SVGFOREIGNOBJECTElement) DATASTAR_COMPUTED(key string, expression string, modifiers ...SVGForeignObjectComputedMod) *SVGFOREIGNOBJECTElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	key = fmt.Sprintf("data-computed%s", suffix)
+
+	customMods := lo.Map(modifiers, func(m SVGForeignObjectComputedMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Creates a signal that is computed based on an expression
+// The computed signal is read-only, and its value is automatically updated when
+// any signals in the expression are updated.
+//
+// See: https://data-star.dev/reference/attributes#data-computed
+func (e *SVGFOREIGNOBJECTElement) IfDATASTAR_COMPUTED(condition bool, key string, expression string, modifiers ...SVGForeignObjectComputedMod) *SVGFOREIGNOBJECTElement {
+	if condition {
+		e.DATASTAR_COMPUTED(key, expression, modifiers...)
+	}
+	return e
+}
+
+// Creates a signal that is computed based on an expression
+// The computed signal is read-only, and its value is automatically updated when
+// any signals in the expression are updated.
+//
+// See: https://data-star.dev/reference/attributes#data-computed
+// Remove the attribute DATASTAR_COMPUTED from the element.
+func (e *SVGFOREIGNOBJECTElement) DATASTAR_COMPUTEDRemove(key string) *SVGFOREIGNOBJECTElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	e.StringAttributes.Del("data-computed" + suffix)
+
+	return e
+}
+
+// Executes an expression on page load and whenever any signals in the expression
+// change
+// This is useful for performing side effects, such as updating other signals,
+// making requests to the backend, or manipulating the DOM.
+//
+// See: https://data-star.dev/reference/attributes#data-effect
+func (e *SVGFOREIGNOBJECTElement) DATASTAR_EFFECT(expression string) *SVGFOREIGNOBJECTElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-effect"
 
 	e.StringAttributes.Set(key, expression)
 	return e
 }
 
-func (e *SVGFOREIGNOBJECTElement) IfDATASTAR_MODEL(condition bool, expression string) *SVGFOREIGNOBJECTElement {
+// Executes an expression on page load and whenever any signals in the expression
+// change
+// This is useful for performing side effects, such as updating other signals,
+// making requests to the backend, or manipulating the DOM.
+//
+// See: https://data-star.dev/reference/attributes#data-effect
+func (e *SVGFOREIGNOBJECTElement) IfDATASTAR_EFFECT(condition bool, expression string) *SVGFOREIGNOBJECTElement {
 	if condition {
-		e.DATASTAR_MODEL(expression)
+		e.DATASTAR_EFFECT(expression)
 	}
 	return e
 }
 
-// Remove the attribute DATASTAR_MODEL from the element.
-func (e *SVGFOREIGNOBJECTElement) DATASTAR_MODELRemove() *SVGFOREIGNOBJECTElement {
+// Executes an expression on page load and whenever any signals in the expression
+// change
+// This is useful for performing side effects, such as updating other signals,
+// making requests to the backend, or manipulating the DOM.
+//
+// See: https://data-star.dev/reference/attributes#data-effect
+// Remove the attribute DATASTAR_EFFECT from the element.
+func (e *SVGFOREIGNOBJECTElement) DATASTAR_EFFECTRemove() *SVGFOREIGNOBJECTElement {
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("data-model")
+
+	e.StringAttributes.Del("data-effect")
+
 	return e
 }
 
-// Sets the textContent of the element
+type SVGForeignObjectIgnoreMod customDataKeyModifier
 
+// Only ignore the element itself, not its descendants.
+func SVGForeignObjectIgnoreModSelf() SVGForeignObjectIgnoreMod {
+	return func() string {
+		return "self"
+	}
+}
+
+// Datastar walks the entire DOM and applies plugins to each element it encounters
+// It's possible to tell Datastar to ignore an element and its descendants by
+// placing a data-ignore attribute on it
+// This can be useful for preventing naming conflicts with third-party libraries,
+// or when you are unable to escape user input.
+//
+// See: https://data-star.dev/reference/attributes#data-ignore
+func (e *SVGFOREIGNOBJECTElement) DATASTAR_IGNORESet(b bool, modifiers ...SVGForeignObjectIgnoreMod) *SVGFOREIGNOBJECTElement {
+	key := customDataKey("data-ignore")
+	customMods := lo.Map(modifiers, func(m SVGForeignObjectIgnoreMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	if e.BoolAttributes == nil {
+		e.BoolAttributes = treemap.New[string, bool]()
+	}
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+// Datastar walks the entire DOM and applies plugins to each element it encounters
+// It's possible to tell Datastar to ignore an element and its descendants by
+// placing a data-ignore attribute on it
+// This can be useful for preventing naming conflicts with third-party libraries,
+// or when you are unable to escape user input.
+//
+// See: https://data-star.dev/reference/attributes#data-ignore
+func (e *SVGFOREIGNOBJECTElement) DATASTAR_IGNORE(modifiers ...SVGForeignObjectIgnoreMod) *SVGFOREIGNOBJECTElement {
+	return e.DATASTAR_IGNORESet(true, modifiers...)
+}
+
+// Similar to the data-ignore attribute, the data-ignore-morph attribute tells the
+// PatchElements watcher to skip processing an element and its children when
+// morphing elements
+// This can be useful for preventing conflicts with third-party libraries that
+// manipulate the DOM, or when you are unable to escape user input.
+//
+// See: https://data-star.dev/reference/attributes#data-ignore-morph
+func (e *SVGFOREIGNOBJECTElement) DATASTAR_IGNORE_MORPHSet(b bool) *SVGFOREIGNOBJECTElement {
+	key := "data-ignore-morph"
+	if e.BoolAttributes == nil {
+		e.BoolAttributes = treemap.New[string, bool]()
+	}
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+// Similar to the data-ignore attribute, the data-ignore-morph attribute tells the
+// PatchElements watcher to skip processing an element and its children when
+// morphing elements
+// This can be useful for preventing conflicts with third-party libraries that
+// manipulate the DOM, or when you are unable to escape user input.
+//
+// See: https://data-star.dev/reference/attributes#data-ignore-morph
+func (e *SVGFOREIGNOBJECTElement) DATASTAR_IGNORE_MORPH() *SVGFOREIGNOBJECTElement {
+	return e.DATASTAR_IGNORE_MORPHSet(true)
+}
+
+type SVGForeignObjectIndicatorMod customDataKeyModifier
+
+// Converts the casing of the signal name.
+//   - 'camel' – Camel case: 'mySignal' (default)
+//   - 'kebab' – Kebab case: 'my-signal'
+//   - 'snake' – Snake case: 'my_signal'
+//   - 'pascal' – Pascal case: 'MySignal'
+func SVGForeignObjectIndicatorModCase(
+	s string,
+) SVGForeignObjectIndicatorMod {
+	return func() string {
+		return fmt.Sprintf("case.%s", s)
+	}
+}
+
+// Creates a signal and sets its value to true while a fetch request is in flight,
+// otherwise false
+// The signal can be used to show a loading indicator.
+//
+// See: https://data-star.dev/reference/attributes#data-indicator
+func (e *SVGFOREIGNOBJECTElement) DATASTAR_INDICATOR(expression string, modifiers ...SVGForeignObjectIndicatorMod) *SVGFOREIGNOBJECTElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-indicator"
+
+	customMods := lo.Map(modifiers, func(m SVGForeignObjectIndicatorMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Creates a signal and sets its value to true while a fetch request is in flight,
+// otherwise false
+// The signal can be used to show a loading indicator.
+//
+// See: https://data-star.dev/reference/attributes#data-indicator
+func (e *SVGFOREIGNOBJECTElement) IfDATASTAR_INDICATOR(condition bool, expression string, modifiers ...SVGForeignObjectIndicatorMod) *SVGFOREIGNOBJECTElement {
+	if condition {
+		e.DATASTAR_INDICATOR(expression, modifiers...)
+	}
+	return e
+}
+
+// Creates a signal and sets its value to true while a fetch request is in flight,
+// otherwise false
+// The signal can be used to show a loading indicator.
+//
+// See: https://data-star.dev/reference/attributes#data-indicator
+// Remove the attribute DATASTAR_INDICATOR from the element.
+func (e *SVGFOREIGNOBJECTElement) DATASTAR_INDICATORRemove() *SVGFOREIGNOBJECTElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-indicator")
+
+	return e
+}
+
+type SVGForeignObjectInitMod customDataKeyModifier
+
+// Delay the event listener in milliseconds.
+func SVGForeignObjectInitModDelayMs(
+	d time.Duration,
+) SVGForeignObjectInitMod {
+	return func() string {
+		return fmt.Sprintf("delay.%dms", d.Milliseconds())
+	}
+}
+
+// Delay the event listener in seconds.
+func SVGForeignObjectInitModDelaySec(
+	d time.Duration,
+) SVGForeignObjectInitMod {
+	return func() string {
+		return fmt.Sprintf("delay.%ds", int(d.Seconds()))
+	}
+}
+
+// Wraps the expression in 'document.startViewTransition()' when the View
+// Transition API is available.
+func SVGForeignObjectInitModViewTransition() SVGForeignObjectInitMod {
+	return func() string {
+		return "viewtransition"
+	}
+}
+
+// Runs an expression when the attribute is initialized
+// This can happen on page load, when an element is patched into the DOM, and any
+// time the attribute is modified (via a backend action or otherwise).
+//
+// See: https://data-star.dev/reference/attributes#data-indicator
+func (e *SVGFOREIGNOBJECTElement) DATASTAR_INIT(expression string, modifiers ...SVGForeignObjectInitMod) *SVGFOREIGNOBJECTElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-init"
+
+	customMods := lo.Map(modifiers, func(m SVGForeignObjectInitMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Runs an expression when the attribute is initialized
+// This can happen on page load, when an element is patched into the DOM, and any
+// time the attribute is modified (via a backend action or otherwise).
+//
+// See: https://data-star.dev/reference/attributes#data-indicator
+func (e *SVGFOREIGNOBJECTElement) IfDATASTAR_INIT(condition bool, expression string, modifiers ...SVGForeignObjectInitMod) *SVGFOREIGNOBJECTElement {
+	if condition {
+		e.DATASTAR_INIT(expression, modifiers...)
+	}
+	return e
+}
+
+// Runs an expression when the attribute is initialized
+// This can happen on page load, when an element is patched into the DOM, and any
+// time the attribute is modified (via a backend action or otherwise).
+//
+// See: https://data-star.dev/reference/attributes#data-indicator
+// Remove the attribute DATASTAR_INIT from the element.
+func (e *SVGFOREIGNOBJECTElement) DATASTAR_INITRemove() *SVGFOREIGNOBJECTElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-init")
+
+	return e
+}
+
+type SVGForeignObjectJsonSignalsMod customDataKeyModifier
+
+// Outputs a more compact JSON format without extra whitespace
+// Useful for displaying filtered data inline.
+func SVGForeignObjectJsonSignalsModTerse() SVGForeignObjectJsonSignalsMod {
+	return func() string {
+		return "terse"
+	}
+}
+
+// Sets the text content of an element to a reactive JSON stringified version of
+// signals
+// Useful when troubleshooting an issue.
+//
+// See: https://data-star.dev/reference/attributes#data-json-signals
+func (e *SVGFOREIGNOBJECTElement) DATASTAR_JSON_SIGNALS(expression string, modifiers ...SVGForeignObjectJsonSignalsMod) *SVGFOREIGNOBJECTElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-json-signals"
+
+	customMods := lo.Map(modifiers, func(m SVGForeignObjectJsonSignalsMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Sets the text content of an element to a reactive JSON stringified version of
+// signals
+// Useful when troubleshooting an issue.
+//
+// See: https://data-star.dev/reference/attributes#data-json-signals
+func (e *SVGFOREIGNOBJECTElement) IfDATASTAR_JSON_SIGNALS(condition bool, expression string, modifiers ...SVGForeignObjectJsonSignalsMod) *SVGFOREIGNOBJECTElement {
+	if condition {
+		e.DATASTAR_JSON_SIGNALS(expression, modifiers...)
+	}
+	return e
+}
+
+// Sets the text content of an element to a reactive JSON stringified version of
+// signals
+// Useful when troubleshooting an issue.
+//
+// See: https://data-star.dev/reference/attributes#data-json-signals
+// Remove the attribute DATASTAR_JSON_SIGNALS from the element.
+func (e *SVGFOREIGNOBJECTElement) DATASTAR_JSON_SIGNALSRemove() *SVGFOREIGNOBJECTElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-json-signals")
+
+	return e
+}
+
+type SVGForeignObjectOnMod customDataKeyModifier
+
+// Only run the expression once
+// Only works with built-in events.
+func SVGForeignObjectOnModOnce() SVGForeignObjectOnMod {
+	return func() string {
+		return "once"
+	}
+}
+
+// Do not call preventDefault on the event listener
+// Only works with built-in events.
+func SVGForeignObjectOnModPassive() SVGForeignObjectOnMod {
+	return func() string {
+		return "passive"
+	}
+}
+
+// Use capture event listener
+// Only works with built-in events.
+func SVGForeignObjectOnModCapture() SVGForeignObjectOnMod {
+	return func() string {
+		return "capture"
+	}
+}
+
+// Converts the casing of the signal name.
+//   - 'camel' – Camel case: 'mySignal' (default)
+//   - 'kebab' – Kebab case: 'my-signal'
+//   - 'snake' – Snake case: 'my_signal'
+//   - 'pascal' – Pascal case: 'MySignal'
+func SVGForeignObjectOnModCase(
+	s string,
+) SVGForeignObjectOnMod {
+	return func() string {
+		return fmt.Sprintf("case.%s", s)
+	}
+}
+
+// Delay the event listener in milliseconds.
+func SVGForeignObjectOnModDelayMs(
+	d time.Duration,
+) SVGForeignObjectOnMod {
+	return func() string {
+		return fmt.Sprintf("delay.%dms", d.Milliseconds())
+	}
+}
+
+// Delay the event listener in seconds.
+func SVGForeignObjectOnModDelaySec(
+	d time.Duration,
+) SVGForeignObjectOnMod {
+	return func() string {
+		return fmt.Sprintf("delay.%ds", int(d.Seconds()))
+	}
+}
+
+// Debounces the event handler
+func SVGForeignObjectOnModDebounceMs(
+	d time.Duration,
+) SVGForeignObjectOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms", d.Milliseconds())
+	}
+}
+
+// Debounce the event listener in milliseconds with leading edge.
+func SVGForeignObjectOnModDebounceMsLeading(
+	d time.Duration,
+) SVGForeignObjectOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms.leading", d.Milliseconds())
+	}
+}
+
+// Debounce the event listener in milliseconds without trailing edge.
+func SVGForeignObjectOnModDebounceMsNoTrailing(
+	d time.Duration,
+) SVGForeignObjectOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms.notrailing", d.Milliseconds())
+	}
+}
+
+// Debounces the event handler
+func SVGForeignObjectOnModDebounceSec(
+	d time.Duration,
+) SVGForeignObjectOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds", int(d.Seconds()))
+	}
+}
+
+// Debounce the event listener in seconds with leading edge.
+func SVGForeignObjectOnModDebounceSecLeading(
+	d time.Duration,
+) SVGForeignObjectOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds.leading", int(d.Seconds()))
+	}
+}
+
+// Debounce the event listener in seconds without trailing edge.
+func SVGForeignObjectOnModDebounceSecNoTrailing(
+	d time.Duration,
+) SVGForeignObjectOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds.notrailing", int(d.Seconds()))
+	}
+}
+
+// Throttles the event handler
+func SVGForeignObjectOnModThrottleMs(
+	d time.Duration,
+) SVGForeignObjectOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms", d.Milliseconds())
+	}
+}
+
+// Throttle the event listener in milliseconds without leading edge.
+func SVGForeignObjectOnModThrottleMsNoLeading(
+	d time.Duration,
+) SVGForeignObjectOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms.noleading", d.Milliseconds())
+	}
+}
+
+// Throttle the event listener in milliseconds with trailing edge.
+func SVGForeignObjectOnModThrottleMsTrailing(
+	d time.Duration,
+) SVGForeignObjectOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms.trailing", d.Milliseconds())
+	}
+}
+
+// Throttles the event listener in seconds.
+func SVGForeignObjectOnModThrottleSec(
+	d time.Duration,
+) SVGForeignObjectOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds", int(d.Seconds()))
+	}
+}
+
+// Throttle the event listener in seconds without leading edge.
+func SVGForeignObjectOnModThrottleSecNoLeading(
+	d time.Duration,
+) SVGForeignObjectOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds.noleading", int(d.Seconds()))
+	}
+}
+
+// Throttle the event listener in seconds with trailing edge.
+func SVGForeignObjectOnModThrottleSecTrailing(
+	d time.Duration,
+) SVGForeignObjectOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds.trailing", int(d.Seconds()))
+	}
+}
+
+// Wraps the expression in 'document.startViewTransition()' when the View
+// Transition API is available.
+func SVGForeignObjectOnModViewTransition() SVGForeignObjectOnMod {
+	return func() string {
+		return "viewtransition"
+	}
+}
+
+// Attaches the event listener to the 'window' element.
+func SVGForeignObjectOnModWindow() SVGForeignObjectOnMod {
+	return func() string {
+		return "window"
+	}
+}
+
+// Calls 'preventDefault' on the event listener.
+func SVGForeignObjectOnModPrevent() SVGForeignObjectOnMod {
+	return func() string {
+		return "prevent"
+	}
+}
+
+// Triggers when the event is outside the element.
+func SVGForeignObjectOnModOutside() SVGForeignObjectOnMod {
+	return func() string {
+		return "outside"
+	}
+}
+
+// Calls 'stopPropagation' on the event listener.
+func SVGForeignObjectOnModStop() SVGForeignObjectOnMod {
+	return func() string {
+		return "stop"
+	}
+}
+
+// Attaches an event listener to an element, executing an expression whenever the
+// event is triggered.
+//
+// See: https://data-star.dev/reference/attributes#data-on
+func (e *SVGFOREIGNOBJECTElement) DATASTAR_ON(key string, expression string, modifiers ...SVGForeignObjectOnMod) *SVGFOREIGNOBJECTElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	key = fmt.Sprintf("data-on%s", suffix)
+
+	customMods := lo.Map(modifiers, func(m SVGForeignObjectOnMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Attaches an event listener to an element, executing an expression whenever the
+// event is triggered.
+//
+// See: https://data-star.dev/reference/attributes#data-on
+func (e *SVGFOREIGNOBJECTElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SVGForeignObjectOnMod) *SVGFOREIGNOBJECTElement {
+	if condition {
+		e.DATASTAR_ON(key, expression, modifiers...)
+	}
+	return e
+}
+
+// Attaches an event listener to an element, executing an expression whenever the
+// event is triggered.
+//
+// See: https://data-star.dev/reference/attributes#data-on
+// Remove the attribute DATASTAR_ON from the element.
+func (e *SVGFOREIGNOBJECTElement) DATASTAR_ONRemove(key string) *SVGFOREIGNOBJECTElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	e.StringAttributes.Del("data-on" + suffix)
+
+	return e
+}
+
+type SVGForeignObjectOnIntersectMod customDataKeyModifier
+
+// Only run the expression once
+// Only works with built-in events.
+func SVGForeignObjectOnIntersectModOnce() SVGForeignObjectOnIntersectMod {
+	return func() string {
+		return "once"
+	}
+}
+
+// Trigger when half of the element is visible.
+func SVGForeignObjectOnIntersectModHalf() SVGForeignObjectOnIntersectMod {
+	return func() string {
+		return "half"
+	}
+}
+
+// Trigger when the full element is visible.
+func SVGForeignObjectOnIntersectModFull() SVGForeignObjectOnIntersectMod {
+	return func() string {
+		return "full"
+	}
+}
+
+// Delay the event listener in milliseconds.
+func SVGForeignObjectOnIntersectModDelayMs(
+	d time.Duration,
+) SVGForeignObjectOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("delay.%dms", d.Milliseconds())
+	}
+}
+
+// Delay the event listener in seconds.
+func SVGForeignObjectOnIntersectModDelaySec(
+	d time.Duration,
+) SVGForeignObjectOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("delay.%ds", int(d.Seconds()))
+	}
+}
+
+// Debounces the event handler
+func SVGForeignObjectOnIntersectModDebounceMs(
+	d time.Duration,
+) SVGForeignObjectOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms", d.Milliseconds())
+	}
+}
+
+// Debounce the event listener in milliseconds with leading edge.
+func SVGForeignObjectOnIntersectModDebounceMsLeading(
+	d time.Duration,
+) SVGForeignObjectOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms.leading", d.Milliseconds())
+	}
+}
+
+// Debounce the event listener in milliseconds without trailing edge.
+func SVGForeignObjectOnIntersectModDebounceMsNoTrailing(
+	d time.Duration,
+) SVGForeignObjectOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms.notrailing", d.Milliseconds())
+	}
+}
+
+// Debounces the event handler
+func SVGForeignObjectOnIntersectModDebounceSec(
+	d time.Duration,
+) SVGForeignObjectOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds", int(d.Seconds()))
+	}
+}
+
+// Debounce the event listener in seconds with leading edge.
+func SVGForeignObjectOnIntersectModDebounceSecLeading(
+	d time.Duration,
+) SVGForeignObjectOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds.leading", int(d.Seconds()))
+	}
+}
+
+// Debounce the event listener in seconds without trailing edge.
+func SVGForeignObjectOnIntersectModDebounceSecNoTrailing(
+	d time.Duration,
+) SVGForeignObjectOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds.notrailing", int(d.Seconds()))
+	}
+}
+
+// Throttles the event handler
+func SVGForeignObjectOnIntersectModThrottleMs(
+	d time.Duration,
+) SVGForeignObjectOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms", d.Milliseconds())
+	}
+}
+
+// Throttle the event listener in milliseconds without leading edge.
+func SVGForeignObjectOnIntersectModThrottleMsNoLeading(
+	d time.Duration,
+) SVGForeignObjectOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms.noleading", d.Milliseconds())
+	}
+}
+
+// Throttle the event listener in milliseconds with trailing edge.
+func SVGForeignObjectOnIntersectModThrottleMsTrailing(
+	d time.Duration,
+) SVGForeignObjectOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms.trailing", d.Milliseconds())
+	}
+}
+
+// Throttles the event listener in seconds.
+func SVGForeignObjectOnIntersectModThrottleSec(
+	d time.Duration,
+) SVGForeignObjectOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds", int(d.Seconds()))
+	}
+}
+
+// Throttle the event listener in seconds without leading edge.
+func SVGForeignObjectOnIntersectModThrottleSecNoLeading(
+	d time.Duration,
+) SVGForeignObjectOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds.noleading", int(d.Seconds()))
+	}
+}
+
+// Throttle the event listener in seconds with trailing edge.
+func SVGForeignObjectOnIntersectModThrottleSecTrailing(
+	d time.Duration,
+) SVGForeignObjectOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds.trailing", int(d.Seconds()))
+	}
+}
+
+// Wraps the expression in 'document.startViewTransition()' when the View
+// Transition API is available.
+func SVGForeignObjectOnIntersectModViewTransition() SVGForeignObjectOnIntersectMod {
+	return func() string {
+		return "viewtransition"
+	}
+}
+
+// Runs an expression when the element intersects with the viewport.
+func (e *SVGFOREIGNOBJECTElement) DATASTAR_ON_INTERSECT(expression string, modifiers ...SVGForeignObjectOnIntersectMod) *SVGFOREIGNOBJECTElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-on-intersect"
+
+	customMods := lo.Map(modifiers, func(m SVGForeignObjectOnIntersectMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Runs an expression when the element intersects with the viewport.
+func (e *SVGFOREIGNOBJECTElement) IfDATASTAR_ON_INTERSECT(condition bool, expression string, modifiers ...SVGForeignObjectOnIntersectMod) *SVGFOREIGNOBJECTElement {
+	if condition {
+		e.DATASTAR_ON_INTERSECT(expression, modifiers...)
+	}
+	return e
+}
+
+// Runs an expression when the element intersects with the viewport.
+// Remove the attribute DATASTAR_ON_INTERSECT from the element.
+func (e *SVGFOREIGNOBJECTElement) DATASTAR_ON_INTERSECTRemove() *SVGFOREIGNOBJECTElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-on-intersect")
+
+	return e
+}
+
+type SVGForeignObjectOnIntervalMod customDataKeyModifier
+
+// Sets the interval duration in milliseconds.
+func SVGForeignObjectOnIntervalModDurationMs(
+	d time.Duration,
+) SVGForeignObjectOnIntervalMod {
+	return func() string {
+		return fmt.Sprintf("duration.%dms", d.Milliseconds())
+	}
+}
+
+// Sets the interval duration in milliseconds
+// Execute the first interval immediately.
+func SVGForeignObjectOnIntervalModDurationMsLeading(
+	d time.Duration,
+) SVGForeignObjectOnIntervalMod {
+	return func() string {
+		return fmt.Sprintf("duration.%dms.leading", d.Milliseconds())
+	}
+}
+
+// Sets the interval duration in seconds.
+func SVGForeignObjectOnIntervalModDurationSec(
+	d time.Duration,
+) SVGForeignObjectOnIntervalMod {
+	return func() string {
+		return fmt.Sprintf("duration.%ds", int(d.Seconds()))
+	}
+}
+
+// Sets the interval duration in seconds
+// Execute the first interval immediately.
+func SVGForeignObjectOnIntervalModDurationSecLeading(
+	d time.Duration,
+) SVGForeignObjectOnIntervalMod {
+	return func() string {
+		return fmt.Sprintf("duration.%ds.leading", int(d.Seconds()))
+	}
+}
+
+// Wraps the expression in 'document.startViewTransition()' when the View
+// Transition API is available.
+func SVGForeignObjectOnIntervalModViewTransition() SVGForeignObjectOnIntervalMod {
+	return func() string {
+		return "viewtransition"
+	}
+}
+
+// Runs an expression at a regular interval
+// The interval duration defaults to one second and can be modified using the
+// '__duration' modifier.
+//
+// See: https://data-star.dev/reference/attributes#data-on-interval
+func (e *SVGFOREIGNOBJECTElement) DATASTAR_ON_INTERVAL(expression string, modifiers ...SVGForeignObjectOnIntervalMod) *SVGFOREIGNOBJECTElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-on-interval"
+
+	customMods := lo.Map(modifiers, func(m SVGForeignObjectOnIntervalMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Runs an expression at a regular interval
+// The interval duration defaults to one second and can be modified using the
+// '__duration' modifier.
+//
+// See: https://data-star.dev/reference/attributes#data-on-interval
+func (e *SVGFOREIGNOBJECTElement) IfDATASTAR_ON_INTERVAL(condition bool, expression string, modifiers ...SVGForeignObjectOnIntervalMod) *SVGFOREIGNOBJECTElement {
+	if condition {
+		e.DATASTAR_ON_INTERVAL(expression, modifiers...)
+	}
+	return e
+}
+
+// Runs an expression at a regular interval
+// The interval duration defaults to one second and can be modified using the
+// '__duration' modifier.
+//
+// See: https://data-star.dev/reference/attributes#data-on-interval
+// Remove the attribute DATASTAR_ON_INTERVAL from the element.
+func (e *SVGFOREIGNOBJECTElement) DATASTAR_ON_INTERVALRemove() *SVGFOREIGNOBJECTElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-on-interval")
+
+	return e
+}
+
+type SVGForeignObjectOnSignalPatchMod customDataKeyModifier
+
+// Delay the event listener in milliseconds.
+func SVGForeignObjectOnSignalPatchModDelayMs(
+	d time.Duration,
+) SVGForeignObjectOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("delay.%dms", d.Milliseconds())
+	}
+}
+
+// Delay the event listener in seconds.
+func SVGForeignObjectOnSignalPatchModDelaySec(
+	d time.Duration,
+) SVGForeignObjectOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("delay.%ds", int(d.Seconds()))
+	}
+}
+
+// Debounces the event handler
+func SVGForeignObjectOnSignalPatchModDebounceMs(
+	d time.Duration,
+) SVGForeignObjectOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms", d.Milliseconds())
+	}
+}
+
+// Debounce the event listener in milliseconds with leading edge.
+func SVGForeignObjectOnSignalPatchModDebounceMsLeading(
+	d time.Duration,
+) SVGForeignObjectOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms.leading", d.Milliseconds())
+	}
+}
+
+// Debounce the event listener in milliseconds without trailing edge.
+func SVGForeignObjectOnSignalPatchModDebounceMsNoTrailing(
+	d time.Duration,
+) SVGForeignObjectOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms.notrailing", d.Milliseconds())
+	}
+}
+
+// Debounces the event handler
+func SVGForeignObjectOnSignalPatchModDebounceSec(
+	d time.Duration,
+) SVGForeignObjectOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds", int(d.Seconds()))
+	}
+}
+
+// Debounce the event listener in seconds with leading edge.
+func SVGForeignObjectOnSignalPatchModDebounceSecLeading(
+	d time.Duration,
+) SVGForeignObjectOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds.leading", int(d.Seconds()))
+	}
+}
+
+// Debounce the event listener in seconds without trailing edge.
+func SVGForeignObjectOnSignalPatchModDebounceSecNoTrailing(
+	d time.Duration,
+) SVGForeignObjectOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds.notrailing", int(d.Seconds()))
+	}
+}
+
+// Throttles the event handler
+func SVGForeignObjectOnSignalPatchModThrottleMs(
+	d time.Duration,
+) SVGForeignObjectOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms", d.Milliseconds())
+	}
+}
+
+// Throttle the event listener in milliseconds without leading edge.
+func SVGForeignObjectOnSignalPatchModThrottleMsNoLeading(
+	d time.Duration,
+) SVGForeignObjectOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms.noleading", d.Milliseconds())
+	}
+}
+
+// Throttle the event listener in milliseconds with trailing edge.
+func SVGForeignObjectOnSignalPatchModThrottleMsTrailing(
+	d time.Duration,
+) SVGForeignObjectOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms.trailing", d.Milliseconds())
+	}
+}
+
+// Throttles the event listener in seconds.
+func SVGForeignObjectOnSignalPatchModThrottleSec(
+	d time.Duration,
+) SVGForeignObjectOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds", int(d.Seconds()))
+	}
+}
+
+// Throttle the event listener in seconds without leading edge.
+func SVGForeignObjectOnSignalPatchModThrottleSecNoLeading(
+	d time.Duration,
+) SVGForeignObjectOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds.noleading", int(d.Seconds()))
+	}
+}
+
+// Throttle the event listener in seconds with trailing edge.
+func SVGForeignObjectOnSignalPatchModThrottleSecTrailing(
+	d time.Duration,
+) SVGForeignObjectOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds.trailing", int(d.Seconds()))
+	}
+}
+
+// Runs an expression whenever any signals are patched
+// This is useful for tracking changes, updating computed values, or triggering
+// side effects when data updates.
+//
+// See: https://data-star.dev/reference/attributes#data-on-signal-patch
+func (e *SVGFOREIGNOBJECTElement) DATASTAR_ON_SIGNAL_PATCH(expression string, modifiers ...SVGForeignObjectOnSignalPatchMod) *SVGFOREIGNOBJECTElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-on-signal-patch"
+
+	customMods := lo.Map(modifiers, func(m SVGForeignObjectOnSignalPatchMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Runs an expression whenever any signals are patched
+// This is useful for tracking changes, updating computed values, or triggering
+// side effects when data updates.
+//
+// See: https://data-star.dev/reference/attributes#data-on-signal-patch
+func (e *SVGFOREIGNOBJECTElement) IfDATASTAR_ON_SIGNAL_PATCH(condition bool, expression string, modifiers ...SVGForeignObjectOnSignalPatchMod) *SVGFOREIGNOBJECTElement {
+	if condition {
+		e.DATASTAR_ON_SIGNAL_PATCH(expression, modifiers...)
+	}
+	return e
+}
+
+// Runs an expression whenever any signals are patched
+// This is useful for tracking changes, updating computed values, or triggering
+// side effects when data updates.
+//
+// See: https://data-star.dev/reference/attributes#data-on-signal-patch
+// Remove the attribute DATASTAR_ON_SIGNAL_PATCH from the element.
+func (e *SVGFOREIGNOBJECTElement) DATASTAR_ON_SIGNAL_PATCHRemove() *SVGFOREIGNOBJECTElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-on-signal-patch")
+
+	return e
+}
+
+// Filters which signals to watch when using the data-on-signal-patch attribute.
+//
+// The data-on-signal-patch-filter attribute accepts an object with include and/or
+// exclude properties that are regular expressions.
+//
+// See: https://data-star.dev/reference/attributes#data-on-signal-patch-filter
+func (e *SVGFOREIGNOBJECTElement) DATASTAR_ON_SIGNAL_PATCH_FILTER(expression string) *SVGFOREIGNOBJECTElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-on-signal-patch-filter"
+
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Filters which signals to watch when using the data-on-signal-patch attribute.
+//
+// The data-on-signal-patch-filter attribute accepts an object with include and/or
+// exclude properties that are regular expressions.
+//
+// See: https://data-star.dev/reference/attributes#data-on-signal-patch-filter
+func (e *SVGFOREIGNOBJECTElement) IfDATASTAR_ON_SIGNAL_PATCH_FILTER(condition bool, expression string) *SVGFOREIGNOBJECTElement {
+	if condition {
+		e.DATASTAR_ON_SIGNAL_PATCH_FILTER(expression)
+	}
+	return e
+}
+
+// Filters which signals to watch when using the data-on-signal-patch attribute.
+//
+// The data-on-signal-patch-filter attribute accepts an object with include and/or
+// exclude properties that are regular expressions.
+//
+// See: https://data-star.dev/reference/attributes#data-on-signal-patch-filter
+// Remove the attribute DATASTAR_ON_SIGNAL_PATCH_FILTER from the element.
+func (e *SVGFOREIGNOBJECTElement) DATASTAR_ON_SIGNAL_PATCH_FILTERRemove() *SVGFOREIGNOBJECTElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-on-signal-patch-filter")
+
+	return e
+}
+
+// Preserves the value of an attribute when morphing DOM elements.
+//
+// See: https://data-star.dev/reference/attributes#data-preserve-attr
+func (e *SVGFOREIGNOBJECTElement) DATASTAR_PRESERVE_ATTR(expression string) *SVGFOREIGNOBJECTElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-preserve-attr"
+
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Preserves the value of an attribute when morphing DOM elements.
+//
+// See: https://data-star.dev/reference/attributes#data-preserve-attr
+func (e *SVGFOREIGNOBJECTElement) IfDATASTAR_PRESERVE_ATTR(condition bool, expression string) *SVGFOREIGNOBJECTElement {
+	if condition {
+		e.DATASTAR_PRESERVE_ATTR(expression)
+	}
+	return e
+}
+
+// Preserves the value of an attribute when morphing DOM elements.
+//
+// See: https://data-star.dev/reference/attributes#data-preserve-attr
+// Remove the attribute DATASTAR_PRESERVE_ATTR from the element.
+func (e *SVGFOREIGNOBJECTElement) DATASTAR_PRESERVE_ATTRRemove() *SVGFOREIGNOBJECTElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-preserve-attr")
+
+	return e
+}
+
+type SVGForeignObjectRefMod customDataKeyModifier
+
+// Converts the casing of the signal name.
+//   - 'camel' – Camel case: 'mySignal' (default)
+//   - 'kebab' – Kebab case: 'my-signal'
+//   - 'snake' – Snake case: 'my_signal'
+//   - 'pascal' – Pascal case: 'MySignal'
+func SVGForeignObjectRefModCase(
+	s string,
+) SVGForeignObjectRefMod {
+	return func() string {
+		return fmt.Sprintf("case.%s", s)
+	}
+}
+
+// Creates a new signal that is a reference to the element on which the data
+// attribute is placed.
+//
+// See: https://data-star.dev/reference/attributes#data-ref
+func (e *SVGFOREIGNOBJECTElement) DATASTAR_REF(expression string, modifiers ...SVGForeignObjectRefMod) *SVGFOREIGNOBJECTElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-ref"
+
+	customMods := lo.Map(modifiers, func(m SVGForeignObjectRefMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Creates a new signal that is a reference to the element on which the data
+// attribute is placed.
+//
+// See: https://data-star.dev/reference/attributes#data-ref
+func (e *SVGFOREIGNOBJECTElement) IfDATASTAR_REF(condition bool, expression string, modifiers ...SVGForeignObjectRefMod) *SVGFOREIGNOBJECTElement {
+	if condition {
+		e.DATASTAR_REF(expression, modifiers...)
+	}
+	return e
+}
+
+// Creates a new signal that is a reference to the element on which the data
+// attribute is placed.
+//
+// See: https://data-star.dev/reference/attributes#data-ref
+// Remove the attribute DATASTAR_REF from the element.
+func (e *SVGFOREIGNOBJECTElement) DATASTAR_REFRemove() *SVGFOREIGNOBJECTElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-ref")
+
+	return e
+}
+
+// Shows or hides an element based on whether an expression evaluates to 'true' or
+// 'false'
+// For anything with custom requirements, use 'data-class' instead.
+//
+// See: https://data-star.dev/reference/attributes#data-show
+func (e *SVGFOREIGNOBJECTElement) DATASTAR_SHOW(expression string) *SVGFOREIGNOBJECTElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-show"
+
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Shows or hides an element based on whether an expression evaluates to 'true' or
+// 'false'
+// For anything with custom requirements, use 'data-class' instead.
+//
+// See: https://data-star.dev/reference/attributes#data-show
+func (e *SVGFOREIGNOBJECTElement) IfDATASTAR_SHOW(condition bool, expression string) *SVGFOREIGNOBJECTElement {
+	if condition {
+		e.DATASTAR_SHOW(expression)
+	}
+	return e
+}
+
+// Shows or hides an element based on whether an expression evaluates to 'true' or
+// 'false'
+// For anything with custom requirements, use 'data-class' instead.
+//
+// See: https://data-star.dev/reference/attributes#data-show
+// Remove the attribute DATASTAR_SHOW from the element.
+func (e *SVGFOREIGNOBJECTElement) DATASTAR_SHOWRemove() *SVGFOREIGNOBJECTElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-show")
+
+	return e
+}
+
+type SVGForeignObjectSignalsMod customDataKeyModifier
+
+// Converts the casing of the signal name.
+//   - 'camel' – Camel case: 'mySignal' (default)
+//   - 'kebab' – Kebab case: 'my-signal'
+//   - 'snake' – Snake case: 'my_signal'
+//   - 'pascal' – Pascal case: 'MySignal'
+func SVGForeignObjectSignalsModCase(
+	s string,
+) SVGForeignObjectSignalsMod {
+	return func() string {
+		return fmt.Sprintf("case.%s", s)
+	}
+}
+
+// Only patches signals if their keys do not already exist
+// This is useful for setting defaults without overwriting existing values.
+func SVGForeignObjectSignalsModIfMissing() SVGForeignObjectSignalsMod {
+	return func() string {
+		return "ifmissing"
+	}
+}
+
+// Patches (adds, updates or removes) one or more signals into the existing
+// signals
+// Values defined later in the DOM tree override those defined earlier.
+//
+// See: https://data-star.dev/reference/attributes#data-signals
+func (e *SVGFOREIGNOBJECTElement) DATASTAR_SIGNALS(key string, expression string, modifiers ...SVGForeignObjectSignalsMod) *SVGFOREIGNOBJECTElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	key = fmt.Sprintf("data-signals%s", suffix)
+
+	customMods := lo.Map(modifiers, func(m SVGForeignObjectSignalsMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Patches (adds, updates or removes) one or more signals into the existing
+// signals
+// Values defined later in the DOM tree override those defined earlier.
+//
+// See: https://data-star.dev/reference/attributes#data-signals
+func (e *SVGFOREIGNOBJECTElement) IfDATASTAR_SIGNALS(condition bool, key string, expression string, modifiers ...SVGForeignObjectSignalsMod) *SVGFOREIGNOBJECTElement {
+	if condition {
+		e.DATASTAR_SIGNALS(key, expression, modifiers...)
+	}
+	return e
+}
+
+// Patches (adds, updates or removes) one or more signals into the existing
+// signals
+// Values defined later in the DOM tree override those defined earlier.
+//
+// See: https://data-star.dev/reference/attributes#data-signals
+// Remove the attribute DATASTAR_SIGNALS from the element.
+func (e *SVGFOREIGNOBJECTElement) DATASTAR_SIGNALSRemove(key string) *SVGFOREIGNOBJECTElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	e.StringAttributes.Del("data-signals" + suffix)
+
+	return e
+}
+
+type SVGForeignObjectStyleMod customDataKeyModifier
+
+// Converts the casing of the signal name.
+//   - 'camel' – Camel case: 'mySignal' (default)
+//   - 'kebab' – Kebab case: 'my-signal'
+//   - 'snake' – Snake case: 'my_signal'
+//   - 'pascal' – Pascal case: 'MySignal'
+func SVGForeignObjectStyleModCase(
+	s string,
+) SVGForeignObjectStyleMod {
+	return func() string {
+		return fmt.Sprintf("case.%s", s)
+	}
+}
+
+// Sets the value of inline CSS styles on an element based on an expression, and
+// keeps them in sync.
+//
+// See: https://data-star.dev/reference/attributes#data-style
+func (e *SVGFOREIGNOBJECTElement) DATASTAR_STYLE(key string, expression string, modifiers ...SVGForeignObjectStyleMod) *SVGFOREIGNOBJECTElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	key = fmt.Sprintf("data-style%s", suffix)
+
+	customMods := lo.Map(modifiers, func(m SVGForeignObjectStyleMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Sets the value of inline CSS styles on an element based on an expression, and
+// keeps them in sync.
+//
+// See: https://data-star.dev/reference/attributes#data-style
+func (e *SVGFOREIGNOBJECTElement) IfDATASTAR_STYLE(condition bool, key string, expression string, modifiers ...SVGForeignObjectStyleMod) *SVGFOREIGNOBJECTElement {
+	if condition {
+		e.DATASTAR_STYLE(key, expression, modifiers...)
+	}
+	return e
+}
+
+// Sets the value of inline CSS styles on an element based on an expression, and
+// keeps them in sync.
+//
+// See: https://data-star.dev/reference/attributes#data-style
+// Remove the attribute DATASTAR_STYLE from the element.
+func (e *SVGFOREIGNOBJECTElement) DATASTAR_STYLERemove(key string) *SVGFOREIGNOBJECTElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	e.StringAttributes.Del("data-style" + suffix)
+
+	return e
+}
+
+// Binds the text content of an element to an expression.
+//
+// See: https://data-star.dev/reference/attributes#data-text
 func (e *SVGFOREIGNOBJECTElement) DATASTAR_TEXT(expression string) *SVGFOREIGNOBJECTElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
@@ -733,6 +2309,9 @@ func (e *SVGFOREIGNOBJECTElement) DATASTAR_TEXT(expression string) *SVGFOREIGNOB
 	return e
 }
 
+// Binds the text content of an element to an expression.
+//
+// See: https://data-star.dev/reference/attributes#data-text
 func (e *SVGFOREIGNOBJECTElement) IfDATASTAR_TEXT(condition bool, expression string) *SVGFOREIGNOBJECTElement {
 	if condition {
 		e.DATASTAR_TEXT(expression)
@@ -740,228 +2319,16 @@ func (e *SVGFOREIGNOBJECTElement) IfDATASTAR_TEXT(condition bool, expression str
 	return e
 }
 
+// Binds the text content of an element to an expression.
+//
+// See: https://data-star.dev/reference/attributes#data-text
 // Remove the attribute DATASTAR_TEXT from the element.
 func (e *SVGFOREIGNOBJECTElement) DATASTAR_TEXTRemove() *SVGFOREIGNOBJECTElement {
 	if e.StringAttributes == nil {
 		return e
 	}
+
 	e.StringAttributes.Del("data-text")
-	return e
-}
 
-// Sets the event handler of the element
-
-type SVGForeignObjectOnMod customDataKeyModifier
-
-// Debounces the event handler
-func SVGForeignObjectOnModDebounce(
-	d time.Duration,
-) SVGForeignObjectOnMod {
-	return func() string {
-		return fmt.Sprintf("debounce_%dms", d.Milliseconds())
-	}
-}
-
-// Throttles the event handler
-func SVGForeignObjectOnModThrottle(
-	d time.Duration,
-) SVGForeignObjectOnMod {
-	return func() string {
-		return fmt.Sprintf("throttle_%dms", d.Milliseconds())
-	}
-}
-
-func (e *SVGFOREIGNOBJECTElement) DATASTAR_ON(key string, expression string, modifiers ...SVGForeignObjectOnMod) *SVGFOREIGNOBJECTElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-
-	key = fmt.Sprintf("data-on-%s", key)
-
-	customMods := lo.Map(modifiers, func(m SVGForeignObjectOnMod, i int) customDataKeyModifier {
-		return customDataKeyModifier(m)
-	})
-	key = customDataKey(key, customMods...)
-	e.StringAttributes.Set(key, expression)
-	return e
-}
-
-func (e *SVGFOREIGNOBJECTElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SVGForeignObjectOnMod) *SVGFOREIGNOBJECTElement {
-	if condition {
-		e.DATASTAR_ON(key, expression, modifiers...)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_ON from the element.
-func (e *SVGFOREIGNOBJECTElement) DATASTAR_ONRemove() *SVGFOREIGNOBJECTElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-on")
-	return e
-}
-
-// Sets the focus of the element
-
-func (e *SVGFOREIGNOBJECTElement) DATASTAR_FOCUSSet(b bool) *SVGFOREIGNOBJECTElement {
-	key := "data-focus"
-	e.BoolAttributes.Set(key, b)
-	return e
-}
-
-func (e *SVGFOREIGNOBJECTElement) DATASTAR_FOCUS() *SVGFOREIGNOBJECTElement {
-	return e.DATASTAR_FOCUSSet(true)
-}
-
-// Sets the header of for fetch requests
-
-func (e *SVGFOREIGNOBJECTElement) DATASTAR_HEADER(key string, expression string) *SVGFOREIGNOBJECTElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-
-	key = fmt.Sprintf("data-header-%s", key)
-
-	e.StringAttributes.Set(key, expression)
-	return e
-}
-
-func (e *SVGFOREIGNOBJECTElement) IfDATASTAR_HEADER(condition bool, key string, expression string) *SVGFOREIGNOBJECTElement {
-	if condition {
-		e.DATASTAR_HEADER(key, expression)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_HEADER from the element.
-func (e *SVGFOREIGNOBJECTElement) DATASTAR_HEADERRemove() *SVGFOREIGNOBJECTElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-header")
-	return e
-}
-
-// Sets the indicator selector for fetch requests
-
-func (e *SVGFOREIGNOBJECTElement) DATASTAR_FETCH_INDICATOR(expression string) *SVGFOREIGNOBJECTElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-
-	key := "data-fetch-indicator"
-
-	e.StringAttributes.Set(key, expression)
-	return e
-}
-
-func (e *SVGFOREIGNOBJECTElement) IfDATASTAR_FETCH_INDICATOR(condition bool, expression string) *SVGFOREIGNOBJECTElement {
-	if condition {
-		e.DATASTAR_FETCH_INDICATOR(expression)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_FETCH_INDICATOR from the element.
-func (e *SVGFOREIGNOBJECTElement) DATASTAR_FETCH_INDICATORRemove() *SVGFOREIGNOBJECTElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-fetch-indicator")
-	return e
-}
-
-// Sets the visibility of the element
-
-func (e *SVGFOREIGNOBJECTElement) DATASTAR_SHOWSet(b bool) *SVGFOREIGNOBJECTElement {
-	key := "data-show"
-	e.BoolAttributes.Set(key, b)
-	return e
-}
-
-func (e *SVGFOREIGNOBJECTElement) DATASTAR_SHOW() *SVGFOREIGNOBJECTElement {
-	return e.DATASTAR_SHOWSet(true)
-}
-
-// Triggers the callback when the element intersects the viewport
-
-func (e *SVGFOREIGNOBJECTElement) DATASTAR_INTERSECTS(expression string) *SVGFOREIGNOBJECTElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-
-	key := "data-intersects"
-
-	e.StringAttributes.Set(key, expression)
-	return e
-}
-
-func (e *SVGFOREIGNOBJECTElement) IfDATASTAR_INTERSECTS(condition bool, expression string) *SVGFOREIGNOBJECTElement {
-	if condition {
-		e.DATASTAR_INTERSECTS(expression)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_INTERSECTS from the element.
-func (e *SVGFOREIGNOBJECTElement) DATASTAR_INTERSECTSRemove() *SVGFOREIGNOBJECTElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-intersects")
-	return e
-}
-
-// Teleports the element to the given selector
-
-func (e *SVGFOREIGNOBJECTElement) DATASTAR_TELEPORTSet(b bool) *SVGFOREIGNOBJECTElement {
-	key := "data-teleport"
-	e.BoolAttributes.Set(key, b)
-	return e
-}
-
-func (e *SVGFOREIGNOBJECTElement) DATASTAR_TELEPORT() *SVGFOREIGNOBJECTElement {
-	return e.DATASTAR_TELEPORTSet(true)
-}
-
-// Scrolls the element into view
-
-func (e *SVGFOREIGNOBJECTElement) DATASTAR_SCROLL_INTO_VIEWSet(b bool) *SVGFOREIGNOBJECTElement {
-	key := "data-scroll-into-view"
-	e.BoolAttributes.Set(key, b)
-	return e
-}
-
-func (e *SVGFOREIGNOBJECTElement) DATASTAR_SCROLL_INTO_VIEW() *SVGFOREIGNOBJECTElement {
-	return e.DATASTAR_SCROLL_INTO_VIEWSet(true)
-}
-
-// Setup the ViewTransitionAPI for the element
-
-func (e *SVGFOREIGNOBJECTElement) DATASTAR_VIEW_TRANSITION(expression string) *SVGFOREIGNOBJECTElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-
-	key := "data-view-transition"
-
-	e.StringAttributes.Set(key, expression)
-	return e
-}
-
-func (e *SVGFOREIGNOBJECTElement) IfDATASTAR_VIEW_TRANSITION(condition bool, expression string) *SVGFOREIGNOBJECTElement {
-	if condition {
-		e.DATASTAR_VIEW_TRANSITION(expression)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_VIEW_TRANSITION from the element.
-func (e *SVGFOREIGNOBJECTElement) DATASTAR_VIEW_TRANSITIONRemove() *SVGFOREIGNOBJECTElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-view-transition")
 	return e
 }

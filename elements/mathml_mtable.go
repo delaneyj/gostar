@@ -5,10 +5,8 @@ package elements
 
 import (
 	"fmt"
-	"html"
 	"time"
 
-	"github.com/goccy/go-json"
 	"github.com/igrmk/treemap/v2"
 	"github.com/samber/lo"
 )
@@ -180,6 +178,10 @@ func (e *MathMLMTABLEElement) CLASS(s ...string) *MathMLMTABLEElement {
 	return e
 }
 
+// Assigns a class name or set of class names to an element
+// You may assign the same class name or names to any number of elements
+// If you specify multiple class names, they must be separated by whitespace
+// characters.
 func (e *MathMLMTABLEElement) IfCLASS(condition bool, s ...string) *MathMLMTABLEElement {
 	if condition {
 		e.CLASS(s...)
@@ -187,6 +189,10 @@ func (e *MathMLMTABLEElement) IfCLASS(condition bool, s ...string) *MathMLMTABLE
 	return e
 }
 
+// Assigns a class name or set of class names to an element
+// You may assign the same class name or names to any number of elements
+// If you specify multiple class names, they must be separated by whitespace
+// characters.
 // Remove the attribute CLASS from the element.
 func (e *MathMLMTABLEElement) CLASSRemove(s ...string) *MathMLMTABLEElement {
 	if e.DelimitedStrings == nil {
@@ -221,6 +227,10 @@ const (
 	MathMLMtableDir_rtl MathMLMtableDirChoice = "rtl"
 )
 
+// This attribute specifies the text directionality of the element, merely
+// indicating what direction the text flows when surrounded by text with inherent
+// directionality (such as Arabic or Hebrew)
+// Possible values are ltr (left-to-right) and rtl (right-to-left).
 // Remove the attribute DIR from the element.
 func (e *MathMLMTABLEElement) DIRRemove(c MathMLMtableDirChoice) *MathMLMTABLEElement {
 	if e.StringAttributes == nil {
@@ -250,6 +260,9 @@ const (
 	MathMLMtableDisplaystyle_false MathMLMtableDisplaystyleChoice = "false"
 )
 
+// This attribute specifies whether the element should be rendered using
+// displaystyle rules or not
+// Possible values are true and false.
 // Remove the attribute DISPLAYSTYLE from the element.
 func (e *MathMLMTABLEElement) DISPLAYSTYLERemove(c MathMLMtableDisplaystyleChoice) *MathMLMTABLEElement {
 	if e.StringAttributes == nil {
@@ -269,10 +282,14 @@ func (e *MathMLMTABLEElement) ID(s string) *MathMLMTABLEElement {
 	return e
 }
 
+// This attribute assigns a name to an element
+// This name must be unique in a document.
 func (e *MathMLMTABLEElement) IDF(format string, args ...any) *MathMLMTABLEElement {
 	return e.ID(fmt.Sprintf(format, args...))
 }
 
+// This attribute assigns a name to an element
+// This name must be unique in a document.
 func (e *MathMLMTABLEElement) IfID(condition bool, s string) *MathMLMTABLEElement {
 	if condition {
 		e.ID(s)
@@ -280,6 +297,8 @@ func (e *MathMLMTABLEElement) IfID(condition bool, s string) *MathMLMTABLEElemen
 	return e
 }
 
+// This attribute assigns a name to an element
+// This name must be unique in a document.
 func (e *MathMLMTABLEElement) IfIDF(condition bool, format string, args ...any) *MathMLMTABLEElement {
 	if condition {
 		e.ID(fmt.Sprintf(format, args...))
@@ -287,6 +306,8 @@ func (e *MathMLMTABLEElement) IfIDF(condition bool, format string, args ...any) 
 	return e
 }
 
+// This attribute assigns a name to an element
+// This name must be unique in a document.
 // Remove the attribute ID from the element.
 func (e *MathMLMTABLEElement) IDRemove(s string) *MathMLMTABLEElement {
 	if e.StringAttributes == nil {
@@ -296,6 +317,8 @@ func (e *MathMLMTABLEElement) IDRemove(s string) *MathMLMTABLEElement {
 	return e
 }
 
+// This attribute assigns a name to an element
+// This name must be unique in a document.
 func (e *MathMLMTABLEElement) IDRemoveF(format string, args ...any) *MathMLMTABLEElement {
 	return e.IDRemove(fmt.Sprintf(format, args...))
 }
@@ -311,10 +334,16 @@ func (e *MathMLMTABLEElement) MATHBACKGROUND(s string) *MathMLMTABLEElement {
 	return e
 }
 
+// This attribute specifies the background color of the element
+// Possible values are a color name or a color specification in the format defined
+// in the CSS3 Color Module [CSS3COLOR].
 func (e *MathMLMTABLEElement) MATHBACKGROUNDF(format string, args ...any) *MathMLMTABLEElement {
 	return e.MATHBACKGROUND(fmt.Sprintf(format, args...))
 }
 
+// This attribute specifies the background color of the element
+// Possible values are a color name or a color specification in the format defined
+// in the CSS3 Color Module [CSS3COLOR].
 func (e *MathMLMTABLEElement) IfMATHBACKGROUND(condition bool, s string) *MathMLMTABLEElement {
 	if condition {
 		e.MATHBACKGROUND(s)
@@ -322,6 +351,9 @@ func (e *MathMLMTABLEElement) IfMATHBACKGROUND(condition bool, s string) *MathML
 	return e
 }
 
+// This attribute specifies the background color of the element
+// Possible values are a color name or a color specification in the format defined
+// in the CSS3 Color Module [CSS3COLOR].
 func (e *MathMLMTABLEElement) IfMATHBACKGROUNDF(condition bool, format string, args ...any) *MathMLMTABLEElement {
 	if condition {
 		e.MATHBACKGROUND(fmt.Sprintf(format, args...))
@@ -329,6 +361,9 @@ func (e *MathMLMTABLEElement) IfMATHBACKGROUNDF(condition bool, format string, a
 	return e
 }
 
+// This attribute specifies the background color of the element
+// Possible values are a color name or a color specification in the format defined
+// in the CSS3 Color Module [CSS3COLOR].
 // Remove the attribute MATHBACKGROUND from the element.
 func (e *MathMLMTABLEElement) MATHBACKGROUNDRemove(s string) *MathMLMTABLEElement {
 	if e.StringAttributes == nil {
@@ -338,6 +373,9 @@ func (e *MathMLMTABLEElement) MATHBACKGROUNDRemove(s string) *MathMLMTABLEElemen
 	return e
 }
 
+// This attribute specifies the background color of the element
+// Possible values are a color name or a color specification in the format defined
+// in the CSS3 Color Module [CSS3COLOR].
 func (e *MathMLMTABLEElement) MATHBACKGROUNDRemoveF(format string, args ...any) *MathMLMTABLEElement {
 	return e.MATHBACKGROUNDRemove(fmt.Sprintf(format, args...))
 }
@@ -353,10 +391,16 @@ func (e *MathMLMTABLEElement) MATHCOLOR(s string) *MathMLMTABLEElement {
 	return e
 }
 
+// This attribute specifies the color of the element
+// Possible values are a color name or a color specification in the format defined
+// in the CSS3 Color Module [CSS3COLOR].
 func (e *MathMLMTABLEElement) MATHCOLORF(format string, args ...any) *MathMLMTABLEElement {
 	return e.MATHCOLOR(fmt.Sprintf(format, args...))
 }
 
+// This attribute specifies the color of the element
+// Possible values are a color name or a color specification in the format defined
+// in the CSS3 Color Module [CSS3COLOR].
 func (e *MathMLMTABLEElement) IfMATHCOLOR(condition bool, s string) *MathMLMTABLEElement {
 	if condition {
 		e.MATHCOLOR(s)
@@ -364,6 +408,9 @@ func (e *MathMLMTABLEElement) IfMATHCOLOR(condition bool, s string) *MathMLMTABL
 	return e
 }
 
+// This attribute specifies the color of the element
+// Possible values are a color name or a color specification in the format defined
+// in the CSS3 Color Module [CSS3COLOR].
 func (e *MathMLMTABLEElement) IfMATHCOLORF(condition bool, format string, args ...any) *MathMLMTABLEElement {
 	if condition {
 		e.MATHCOLOR(fmt.Sprintf(format, args...))
@@ -371,6 +418,9 @@ func (e *MathMLMTABLEElement) IfMATHCOLORF(condition bool, format string, args .
 	return e
 }
 
+// This attribute specifies the color of the element
+// Possible values are a color name or a color specification in the format defined
+// in the CSS3 Color Module [CSS3COLOR].
 // Remove the attribute MATHCOLOR from the element.
 func (e *MathMLMTABLEElement) MATHCOLORRemove(s string) *MathMLMTABLEElement {
 	if e.StringAttributes == nil {
@@ -380,6 +430,9 @@ func (e *MathMLMTABLEElement) MATHCOLORRemove(s string) *MathMLMTABLEElement {
 	return e
 }
 
+// This attribute specifies the color of the element
+// Possible values are a color name or a color specification in the format defined
+// in the CSS3 Color Module [CSS3COLOR].
 func (e *MathMLMTABLEElement) MATHCOLORRemoveF(format string, args ...any) *MathMLMTABLEElement {
 	return e.MATHCOLORRemove(fmt.Sprintf(format, args...))
 }
@@ -394,10 +447,14 @@ func (e *MathMLMTABLEElement) MATHSIZE_STR(s string) *MathMLMTABLEElement {
 	return e
 }
 
+// This attribute specifies the size of the element
+// Possible values are a dimension or a dimensionless number.
 func (e *MathMLMTABLEElement) MATHSIZE_STRF(format string, args ...any) *MathMLMTABLEElement {
 	return e.MATHSIZE_STR(fmt.Sprintf(format, args...))
 }
 
+// This attribute specifies the size of the element
+// Possible values are a dimension or a dimensionless number.
 func (e *MathMLMTABLEElement) IfMATHSIZE_STR(condition bool, s string) *MathMLMTABLEElement {
 	if condition {
 		e.MATHSIZE_STR(s)
@@ -405,6 +462,8 @@ func (e *MathMLMTABLEElement) IfMATHSIZE_STR(condition bool, s string) *MathMLMT
 	return e
 }
 
+// This attribute specifies the size of the element
+// Possible values are a dimension or a dimensionless number.
 func (e *MathMLMTABLEElement) IfMATHSIZE_STRF(condition bool, format string, args ...any) *MathMLMTABLEElement {
 	if condition {
 		e.MATHSIZE_STR(fmt.Sprintf(format, args...))
@@ -412,6 +471,8 @@ func (e *MathMLMTABLEElement) IfMATHSIZE_STRF(condition bool, format string, arg
 	return e
 }
 
+// This attribute specifies the size of the element
+// Possible values are a dimension or a dimensionless number.
 // Remove the attribute MATHSIZE_STR from the element.
 func (e *MathMLMTABLEElement) MATHSIZE_STRRemove(s string) *MathMLMTABLEElement {
 	if e.StringAttributes == nil {
@@ -421,6 +482,8 @@ func (e *MathMLMTABLEElement) MATHSIZE_STRRemove(s string) *MathMLMTABLEElement 
 	return e
 }
 
+// This attribute specifies the size of the element
+// Possible values are a dimension or a dimensionless number.
 func (e *MathMLMTABLEElement) MATHSIZE_STRRemoveF(format string, args ...any) *MathMLMTABLEElement {
 	return e.MATHSIZE_STRRemove(fmt.Sprintf(format, args...))
 }
@@ -437,10 +500,18 @@ func (e *MathMLMTABLEElement) NONCE(s string) *MathMLMTABLEElement {
 	return e
 }
 
+// This attribute declares a cryptographic nonce (number used once) that should be
+// used by the server processing the element’s submission, and the resulting
+// resource must be delivered with a Content-Security-Policy nonce attribute
+// matching the value of the nonce attribute.
 func (e *MathMLMTABLEElement) NONCEF(format string, args ...any) *MathMLMTABLEElement {
 	return e.NONCE(fmt.Sprintf(format, args...))
 }
 
+// This attribute declares a cryptographic nonce (number used once) that should be
+// used by the server processing the element’s submission, and the resulting
+// resource must be delivered with a Content-Security-Policy nonce attribute
+// matching the value of the nonce attribute.
 func (e *MathMLMTABLEElement) IfNONCE(condition bool, s string) *MathMLMTABLEElement {
 	if condition {
 		e.NONCE(s)
@@ -448,6 +519,10 @@ func (e *MathMLMTABLEElement) IfNONCE(condition bool, s string) *MathMLMTABLEEle
 	return e
 }
 
+// This attribute declares a cryptographic nonce (number used once) that should be
+// used by the server processing the element’s submission, and the resulting
+// resource must be delivered with a Content-Security-Policy nonce attribute
+// matching the value of the nonce attribute.
 func (e *MathMLMTABLEElement) IfNONCEF(condition bool, format string, args ...any) *MathMLMTABLEElement {
 	if condition {
 		e.NONCE(fmt.Sprintf(format, args...))
@@ -455,6 +530,10 @@ func (e *MathMLMTABLEElement) IfNONCEF(condition bool, format string, args ...an
 	return e
 }
 
+// This attribute declares a cryptographic nonce (number used once) that should be
+// used by the server processing the element’s submission, and the resulting
+// resource must be delivered with a Content-Security-Policy nonce attribute
+// matching the value of the nonce attribute.
 // Remove the attribute NONCE from the element.
 func (e *MathMLMTABLEElement) NONCERemove(s string) *MathMLMTABLEElement {
 	if e.StringAttributes == nil {
@@ -464,6 +543,10 @@ func (e *MathMLMTABLEElement) NONCERemove(s string) *MathMLMTABLEElement {
 	return e
 }
 
+// This attribute declares a cryptographic nonce (number used once) that should be
+// used by the server processing the element’s submission, and the resulting
+// resource must be delivered with a Content-Security-Policy nonce attribute
+// matching the value of the nonce attribute.
 func (e *MathMLMTABLEElement) NONCERemoveF(format string, args ...any) *MathMLMTABLEElement {
 	return e.NONCERemove(fmt.Sprintf(format, args...))
 }
@@ -478,6 +561,8 @@ func (e *MathMLMTABLEElement) SCRIPTLEVEL(i int) *MathMLMTABLEElement {
 	return e
 }
 
+// This attribute specifies the script level of the element
+// Possible values are an integer between 0 and 7, inclusive.
 func (e *MathMLMTABLEElement) IfSCRIPTLEVEL(condition bool, i int) *MathMLMTABLEElement {
 	if condition {
 		e.SCRIPTLEVEL(i)
@@ -485,6 +570,8 @@ func (e *MathMLMTABLEElement) IfSCRIPTLEVEL(condition bool, i int) *MathMLMTABLE
 	return e
 }
 
+// This attribute specifies the script level of the element
+// Possible values are an integer between 0 and 7, inclusive.
 // Remove the attribute SCRIPTLEVEL from the element.
 func (e *MathMLMTABLEElement) SCRIPTLEVELRemove(i int) *MathMLMTABLEElement {
 	if e.IntAttributes == nil {
@@ -500,6 +587,8 @@ func (e *MathMLMTABLEElement) STYLEF(k string, format string, args ...any) *Math
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+// This attribute offers advisory information about the element for which it is
+// set.
 func (e *MathMLMTABLEElement) IfSTYLE(condition bool, k string, v string) *MathMLMTABLEElement {
 	if condition {
 		e.STYLE(k, v)
@@ -507,6 +596,8 @@ func (e *MathMLMTABLEElement) IfSTYLE(condition bool, k string, v string) *MathM
 	return e
 }
 
+// This attribute offers advisory information about the element for which it is
+// set.
 func (e *MathMLMTABLEElement) STYLE(k string, v string) *MathMLMTABLEElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -520,6 +611,8 @@ func (e *MathMLMTABLEElement) STYLE(k string, v string) *MathMLMTABLEElement {
 	return e
 }
 
+// This attribute offers advisory information about the element for which it is
+// set.
 func (e *MathMLMTABLEElement) IfSTYLEF(condition bool, k string, format string, args ...any) *MathMLMTABLEElement {
 	if condition {
 		e.STYLE(k, fmt.Sprintf(format, args...))
@@ -527,6 +620,8 @@ func (e *MathMLMTABLEElement) IfSTYLEF(condition bool, k string, format string, 
 	return e
 }
 
+// This attribute offers advisory information about the element for which it is
+// set.
 // Add the attributes in the map to the element.
 func (e *MathMLMTABLEElement) STYLEMap(m map[string]string) *MathMLMTABLEElement {
 	if e.KVStrings == nil {
@@ -543,6 +638,8 @@ func (e *MathMLMTABLEElement) STYLEMap(m map[string]string) *MathMLMTABLEElement
 	return e
 }
 
+// This attribute offers advisory information about the element for which it is
+// set.
 // Add pairs of attributes to the element.
 func (e *MathMLMTABLEElement) STYLEPairs(pairs ...string) *MathMLMTABLEElement {
 	if len(pairs)%2 != 0 {
@@ -564,6 +661,8 @@ func (e *MathMLMTABLEElement) STYLEPairs(pairs ...string) *MathMLMTABLEElement {
 	return e
 }
 
+// This attribute offers advisory information about the element for which it is
+// set.
 func (e *MathMLMTABLEElement) IfSTYLEPairs(condition bool, pairs ...string) *MathMLMTABLEElement {
 	if condition {
 		e.STYLEPairs(pairs...)
@@ -571,6 +670,8 @@ func (e *MathMLMTABLEElement) IfSTYLEPairs(condition bool, pairs ...string) *Mat
 	return e
 }
 
+// This attribute offers advisory information about the element for which it is
+// set.
 // Remove the attribute STYLE from the element.
 func (e *MathMLMTABLEElement) STYLERemove(keys ...string) *MathMLMTABLEElement {
 	if e.KVStrings == nil {
@@ -598,6 +699,10 @@ func (e *MathMLMTABLEElement) TABINDEX(i int) *MathMLMTABLEElement {
 	return e
 }
 
+// This attribute specifies the position of the current element in the tabbing
+// order for the current document
+// This value must be a number between 0 and 32767
+// User agents should ignore leading zeros.
 func (e *MathMLMTABLEElement) IfTABINDEX(condition bool, i int) *MathMLMTABLEElement {
 	if condition {
 		e.TABINDEX(i)
@@ -605,6 +710,10 @@ func (e *MathMLMTABLEElement) IfTABINDEX(condition bool, i int) *MathMLMTABLEEle
 	return e
 }
 
+// This attribute specifies the position of the current element in the tabbing
+// order for the current document
+// This value must be a number between 0 and 32767
+// User agents should ignore leading zeros.
 // Remove the attribute TABINDEX from the element.
 func (e *MathMLMTABLEElement) TABINDEXRemove(i int) *MathMLMTABLEElement {
 	if e.IntAttributes == nil {
@@ -614,62 +723,75 @@ func (e *MathMLMTABLEElement) TABINDEXRemove(i int) *MathMLMTABLEElement {
 	return e
 }
 
-// Merges the singleton store with the given object
-
-func (e *MathMLMTABLEElement) DATASTAR_STORE(v any) *MathMLMTABLEElement {
-	if e.CustomDataAttributes == nil {
-		e.CustomDataAttributes = treemap.New[string, string]()
-	}
-	b, err := json.Marshal(v)
-	if err != nil {
-		panic(err)
-	}
-	e.CustomDataAttributes.Set("store", html.EscapeString(string(b)))
-	return e
-}
-
-// Sets the reference of the element
-
-func (e *MathMLMTABLEElement) DATASTAR_REF(expression string) *MathMLMTABLEElement {
+// Sets the value of any HTML attribute to an expression, and keeps it in sync.
+//
+// See: https://data-star.dev/reference/attributes#data-attr
+func (e *MathMLMTABLEElement) DATASTAR_ATTR(key string, expression string) *MathMLMTABLEElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "data-ref"
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	key = fmt.Sprintf("data-attr%s", suffix)
 
 	e.StringAttributes.Set(key, expression)
 	return e
 }
 
-func (e *MathMLMTABLEElement) IfDATASTAR_REF(condition bool, expression string) *MathMLMTABLEElement {
+// Sets the value of any HTML attribute to an expression, and keeps it in sync.
+//
+// See: https://data-star.dev/reference/attributes#data-attr
+func (e *MathMLMTABLEElement) IfDATASTAR_ATTR(condition bool, key string, expression string) *MathMLMTABLEElement {
 	if condition {
-		e.DATASTAR_REF(expression)
+		e.DATASTAR_ATTR(key, expression)
 	}
 	return e
 }
 
-// Remove the attribute DATASTAR_REF from the element.
-func (e *MathMLMTABLEElement) DATASTAR_REFRemove() *MathMLMTABLEElement {
+// Sets the value of any HTML attribute to an expression, and keeps it in sync.
+//
+// See: https://data-star.dev/reference/attributes#data-attr
+// Remove the attribute DATASTAR_ATTR from the element.
+func (e *MathMLMTABLEElement) DATASTAR_ATTRRemove(key string) *MathMLMTABLEElement {
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("data-ref")
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	e.StringAttributes.Del("data-attr" + suffix)
+
 	return e
 }
 
-// Sets the value of the element
-
+// Creates a signal (if one doesn’t already exist) and sets up two-way data
+// binding between it and an element’s value.
+//
+// See: https://data-star.dev/reference/attributes#data-bind
 func (e *MathMLMTABLEElement) DATASTAR_BIND(key string, expression string) *MathMLMTABLEElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key = fmt.Sprintf("data-bind-%s", key)
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	key = fmt.Sprintf("data-bind%s", suffix)
 
 	e.StringAttributes.Set(key, expression)
 	return e
 }
 
+// Creates a signal (if one doesn’t already exist) and sets up two-way data
+// binding between it and an element’s value.
+//
+// See: https://data-star.dev/reference/attributes#data-bind
 func (e *MathMLMTABLEElement) IfDATASTAR_BIND(condition bool, key string, expression string) *MathMLMTABLEElement {
 	if condition {
 		e.DATASTAR_BIND(key, expression)
@@ -677,46 +799,1525 @@ func (e *MathMLMTABLEElement) IfDATASTAR_BIND(condition bool, key string, expres
 	return e
 }
 
+// Creates a signal (if one doesn’t already exist) and sets up two-way data
+// binding between it and an element’s value.
+//
+// See: https://data-star.dev/reference/attributes#data-bind
 // Remove the attribute DATASTAR_BIND from the element.
-func (e *MathMLMTABLEElement) DATASTAR_BINDRemove() *MathMLMTABLEElement {
+func (e *MathMLMTABLEElement) DATASTAR_BINDRemove(key string) *MathMLMTABLEElement {
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("data-bind")
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	e.StringAttributes.Del("data-bind" + suffix)
+
 	return e
 }
 
-// Sets the value of the element
+type MathMLMtableClassMod customDataKeyModifier
 
-func (e *MathMLMTABLEElement) DATASTAR_MODEL(expression string) *MathMLMTABLEElement {
+// Converts the casing of the signal name.
+//   - 'camel' – Camel case: 'mySignal' (default)
+//   - 'kebab' – Kebab case: 'my-signal'
+//   - 'snake' – Snake case: 'my_signal'
+//   - 'pascal' – Pascal case: 'MySignal'
+func MathMLMtableClassModCase(
+	s string,
+) MathMLMtableClassMod {
+	return func() string {
+		return fmt.Sprintf("case.%s", s)
+	}
+}
+
+// Adds or removes a class to or from an element based on an expression.
+func (e *MathMLMTABLEElement) DATASTAR_CLASS(key string, expression string, modifiers ...MathMLMtableClassMod) *MathMLMTABLEElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "data-model"
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	key = fmt.Sprintf("data-class%s", suffix)
+
+	customMods := lo.Map(modifiers, func(m MathMLMtableClassMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Adds or removes a class to or from an element based on an expression.
+func (e *MathMLMTABLEElement) IfDATASTAR_CLASS(condition bool, key string, expression string, modifiers ...MathMLMtableClassMod) *MathMLMTABLEElement {
+	if condition {
+		e.DATASTAR_CLASS(key, expression, modifiers...)
+	}
+	return e
+}
+
+// Adds or removes a class to or from an element based on an expression.
+// Remove the attribute DATASTAR_CLASS from the element.
+func (e *MathMLMTABLEElement) DATASTAR_CLASSRemove(key string) *MathMLMTABLEElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	e.StringAttributes.Del("data-class" + suffix)
+
+	return e
+}
+
+type MathMLMtableComputedMod customDataKeyModifier
+
+// Converts the casing of the signal name.
+//   - 'camel' – Camel case: 'mySignal' (default)
+//   - 'kebab' – Kebab case: 'my-signal'
+//   - 'snake' – Snake case: 'my_signal'
+//   - 'pascal' – Pascal case: 'MySignal'
+func MathMLMtableComputedModCase(
+	s string,
+) MathMLMtableComputedMod {
+	return func() string {
+		return fmt.Sprintf("case.%s", s)
+	}
+}
+
+// Creates a signal that is computed based on an expression
+// The computed signal is read-only, and its value is automatically updated when
+// any signals in the expression are updated.
+//
+// See: https://data-star.dev/reference/attributes#data-computed
+func (e *MathMLMTABLEElement) DATASTAR_COMPUTED(key string, expression string, modifiers ...MathMLMtableComputedMod) *MathMLMTABLEElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	key = fmt.Sprintf("data-computed%s", suffix)
+
+	customMods := lo.Map(modifiers, func(m MathMLMtableComputedMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Creates a signal that is computed based on an expression
+// The computed signal is read-only, and its value is automatically updated when
+// any signals in the expression are updated.
+//
+// See: https://data-star.dev/reference/attributes#data-computed
+func (e *MathMLMTABLEElement) IfDATASTAR_COMPUTED(condition bool, key string, expression string, modifiers ...MathMLMtableComputedMod) *MathMLMTABLEElement {
+	if condition {
+		e.DATASTAR_COMPUTED(key, expression, modifiers...)
+	}
+	return e
+}
+
+// Creates a signal that is computed based on an expression
+// The computed signal is read-only, and its value is automatically updated when
+// any signals in the expression are updated.
+//
+// See: https://data-star.dev/reference/attributes#data-computed
+// Remove the attribute DATASTAR_COMPUTED from the element.
+func (e *MathMLMTABLEElement) DATASTAR_COMPUTEDRemove(key string) *MathMLMTABLEElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	e.StringAttributes.Del("data-computed" + suffix)
+
+	return e
+}
+
+// Executes an expression on page load and whenever any signals in the expression
+// change
+// This is useful for performing side effects, such as updating other signals,
+// making requests to the backend, or manipulating the DOM.
+//
+// See: https://data-star.dev/reference/attributes#data-effect
+func (e *MathMLMTABLEElement) DATASTAR_EFFECT(expression string) *MathMLMTABLEElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-effect"
 
 	e.StringAttributes.Set(key, expression)
 	return e
 }
 
-func (e *MathMLMTABLEElement) IfDATASTAR_MODEL(condition bool, expression string) *MathMLMTABLEElement {
+// Executes an expression on page load and whenever any signals in the expression
+// change
+// This is useful for performing side effects, such as updating other signals,
+// making requests to the backend, or manipulating the DOM.
+//
+// See: https://data-star.dev/reference/attributes#data-effect
+func (e *MathMLMTABLEElement) IfDATASTAR_EFFECT(condition bool, expression string) *MathMLMTABLEElement {
 	if condition {
-		e.DATASTAR_MODEL(expression)
+		e.DATASTAR_EFFECT(expression)
 	}
 	return e
 }
 
-// Remove the attribute DATASTAR_MODEL from the element.
-func (e *MathMLMTABLEElement) DATASTAR_MODELRemove() *MathMLMTABLEElement {
+// Executes an expression on page load and whenever any signals in the expression
+// change
+// This is useful for performing side effects, such as updating other signals,
+// making requests to the backend, or manipulating the DOM.
+//
+// See: https://data-star.dev/reference/attributes#data-effect
+// Remove the attribute DATASTAR_EFFECT from the element.
+func (e *MathMLMTABLEElement) DATASTAR_EFFECTRemove() *MathMLMTABLEElement {
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("data-model")
+
+	e.StringAttributes.Del("data-effect")
+
 	return e
 }
 
-// Sets the textContent of the element
+type MathMLMtableIgnoreMod customDataKeyModifier
 
+// Only ignore the element itself, not its descendants.
+func MathMLMtableIgnoreModSelf() MathMLMtableIgnoreMod {
+	return func() string {
+		return "self"
+	}
+}
+
+// Datastar walks the entire DOM and applies plugins to each element it encounters
+// It's possible to tell Datastar to ignore an element and its descendants by
+// placing a data-ignore attribute on it
+// This can be useful for preventing naming conflicts with third-party libraries,
+// or when you are unable to escape user input.
+//
+// See: https://data-star.dev/reference/attributes#data-ignore
+func (e *MathMLMTABLEElement) DATASTAR_IGNORESet(b bool, modifiers ...MathMLMtableIgnoreMod) *MathMLMTABLEElement {
+	key := customDataKey("data-ignore")
+	customMods := lo.Map(modifiers, func(m MathMLMtableIgnoreMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	if e.BoolAttributes == nil {
+		e.BoolAttributes = treemap.New[string, bool]()
+	}
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+// Datastar walks the entire DOM and applies plugins to each element it encounters
+// It's possible to tell Datastar to ignore an element and its descendants by
+// placing a data-ignore attribute on it
+// This can be useful for preventing naming conflicts with third-party libraries,
+// or when you are unable to escape user input.
+//
+// See: https://data-star.dev/reference/attributes#data-ignore
+func (e *MathMLMTABLEElement) DATASTAR_IGNORE(modifiers ...MathMLMtableIgnoreMod) *MathMLMTABLEElement {
+	return e.DATASTAR_IGNORESet(true, modifiers...)
+}
+
+// Similar to the data-ignore attribute, the data-ignore-morph attribute tells the
+// PatchElements watcher to skip processing an element and its children when
+// morphing elements
+// This can be useful for preventing conflicts with third-party libraries that
+// manipulate the DOM, or when you are unable to escape user input.
+//
+// See: https://data-star.dev/reference/attributes#data-ignore-morph
+func (e *MathMLMTABLEElement) DATASTAR_IGNORE_MORPHSet(b bool) *MathMLMTABLEElement {
+	key := "data-ignore-morph"
+	if e.BoolAttributes == nil {
+		e.BoolAttributes = treemap.New[string, bool]()
+	}
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+// Similar to the data-ignore attribute, the data-ignore-morph attribute tells the
+// PatchElements watcher to skip processing an element and its children when
+// morphing elements
+// This can be useful for preventing conflicts with third-party libraries that
+// manipulate the DOM, or when you are unable to escape user input.
+//
+// See: https://data-star.dev/reference/attributes#data-ignore-morph
+func (e *MathMLMTABLEElement) DATASTAR_IGNORE_MORPH() *MathMLMTABLEElement {
+	return e.DATASTAR_IGNORE_MORPHSet(true)
+}
+
+type MathMLMtableIndicatorMod customDataKeyModifier
+
+// Converts the casing of the signal name.
+//   - 'camel' – Camel case: 'mySignal' (default)
+//   - 'kebab' – Kebab case: 'my-signal'
+//   - 'snake' – Snake case: 'my_signal'
+//   - 'pascal' – Pascal case: 'MySignal'
+func MathMLMtableIndicatorModCase(
+	s string,
+) MathMLMtableIndicatorMod {
+	return func() string {
+		return fmt.Sprintf("case.%s", s)
+	}
+}
+
+// Creates a signal and sets its value to true while a fetch request is in flight,
+// otherwise false
+// The signal can be used to show a loading indicator.
+//
+// See: https://data-star.dev/reference/attributes#data-indicator
+func (e *MathMLMTABLEElement) DATASTAR_INDICATOR(expression string, modifiers ...MathMLMtableIndicatorMod) *MathMLMTABLEElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-indicator"
+
+	customMods := lo.Map(modifiers, func(m MathMLMtableIndicatorMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Creates a signal and sets its value to true while a fetch request is in flight,
+// otherwise false
+// The signal can be used to show a loading indicator.
+//
+// See: https://data-star.dev/reference/attributes#data-indicator
+func (e *MathMLMTABLEElement) IfDATASTAR_INDICATOR(condition bool, expression string, modifiers ...MathMLMtableIndicatorMod) *MathMLMTABLEElement {
+	if condition {
+		e.DATASTAR_INDICATOR(expression, modifiers...)
+	}
+	return e
+}
+
+// Creates a signal and sets its value to true while a fetch request is in flight,
+// otherwise false
+// The signal can be used to show a loading indicator.
+//
+// See: https://data-star.dev/reference/attributes#data-indicator
+// Remove the attribute DATASTAR_INDICATOR from the element.
+func (e *MathMLMTABLEElement) DATASTAR_INDICATORRemove() *MathMLMTABLEElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-indicator")
+
+	return e
+}
+
+type MathMLMtableInitMod customDataKeyModifier
+
+// Delay the event listener in milliseconds.
+func MathMLMtableInitModDelayMs(
+	d time.Duration,
+) MathMLMtableInitMod {
+	return func() string {
+		return fmt.Sprintf("delay.%dms", d.Milliseconds())
+	}
+}
+
+// Delay the event listener in seconds.
+func MathMLMtableInitModDelaySec(
+	d time.Duration,
+) MathMLMtableInitMod {
+	return func() string {
+		return fmt.Sprintf("delay.%ds", int(d.Seconds()))
+	}
+}
+
+// Wraps the expression in 'document.startViewTransition()' when the View
+// Transition API is available.
+func MathMLMtableInitModViewTransition() MathMLMtableInitMod {
+	return func() string {
+		return "viewtransition"
+	}
+}
+
+// Runs an expression when the attribute is initialized
+// This can happen on page load, when an element is patched into the DOM, and any
+// time the attribute is modified (via a backend action or otherwise).
+//
+// See: https://data-star.dev/reference/attributes#data-indicator
+func (e *MathMLMTABLEElement) DATASTAR_INIT(expression string, modifiers ...MathMLMtableInitMod) *MathMLMTABLEElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-init"
+
+	customMods := lo.Map(modifiers, func(m MathMLMtableInitMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Runs an expression when the attribute is initialized
+// This can happen on page load, when an element is patched into the DOM, and any
+// time the attribute is modified (via a backend action or otherwise).
+//
+// See: https://data-star.dev/reference/attributes#data-indicator
+func (e *MathMLMTABLEElement) IfDATASTAR_INIT(condition bool, expression string, modifiers ...MathMLMtableInitMod) *MathMLMTABLEElement {
+	if condition {
+		e.DATASTAR_INIT(expression, modifiers...)
+	}
+	return e
+}
+
+// Runs an expression when the attribute is initialized
+// This can happen on page load, when an element is patched into the DOM, and any
+// time the attribute is modified (via a backend action or otherwise).
+//
+// See: https://data-star.dev/reference/attributes#data-indicator
+// Remove the attribute DATASTAR_INIT from the element.
+func (e *MathMLMTABLEElement) DATASTAR_INITRemove() *MathMLMTABLEElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-init")
+
+	return e
+}
+
+type MathMLMtableJsonSignalsMod customDataKeyModifier
+
+// Outputs a more compact JSON format without extra whitespace
+// Useful for displaying filtered data inline.
+func MathMLMtableJsonSignalsModTerse() MathMLMtableJsonSignalsMod {
+	return func() string {
+		return "terse"
+	}
+}
+
+// Sets the text content of an element to a reactive JSON stringified version of
+// signals
+// Useful when troubleshooting an issue.
+//
+// See: https://data-star.dev/reference/attributes#data-json-signals
+func (e *MathMLMTABLEElement) DATASTAR_JSON_SIGNALS(expression string, modifiers ...MathMLMtableJsonSignalsMod) *MathMLMTABLEElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-json-signals"
+
+	customMods := lo.Map(modifiers, func(m MathMLMtableJsonSignalsMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Sets the text content of an element to a reactive JSON stringified version of
+// signals
+// Useful when troubleshooting an issue.
+//
+// See: https://data-star.dev/reference/attributes#data-json-signals
+func (e *MathMLMTABLEElement) IfDATASTAR_JSON_SIGNALS(condition bool, expression string, modifiers ...MathMLMtableJsonSignalsMod) *MathMLMTABLEElement {
+	if condition {
+		e.DATASTAR_JSON_SIGNALS(expression, modifiers...)
+	}
+	return e
+}
+
+// Sets the text content of an element to a reactive JSON stringified version of
+// signals
+// Useful when troubleshooting an issue.
+//
+// See: https://data-star.dev/reference/attributes#data-json-signals
+// Remove the attribute DATASTAR_JSON_SIGNALS from the element.
+func (e *MathMLMTABLEElement) DATASTAR_JSON_SIGNALSRemove() *MathMLMTABLEElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-json-signals")
+
+	return e
+}
+
+type MathMLMtableOnMod customDataKeyModifier
+
+// Only run the expression once
+// Only works with built-in events.
+func MathMLMtableOnModOnce() MathMLMtableOnMod {
+	return func() string {
+		return "once"
+	}
+}
+
+// Do not call preventDefault on the event listener
+// Only works with built-in events.
+func MathMLMtableOnModPassive() MathMLMtableOnMod {
+	return func() string {
+		return "passive"
+	}
+}
+
+// Use capture event listener
+// Only works with built-in events.
+func MathMLMtableOnModCapture() MathMLMtableOnMod {
+	return func() string {
+		return "capture"
+	}
+}
+
+// Converts the casing of the signal name.
+//   - 'camel' – Camel case: 'mySignal' (default)
+//   - 'kebab' – Kebab case: 'my-signal'
+//   - 'snake' – Snake case: 'my_signal'
+//   - 'pascal' – Pascal case: 'MySignal'
+func MathMLMtableOnModCase(
+	s string,
+) MathMLMtableOnMod {
+	return func() string {
+		return fmt.Sprintf("case.%s", s)
+	}
+}
+
+// Delay the event listener in milliseconds.
+func MathMLMtableOnModDelayMs(
+	d time.Duration,
+) MathMLMtableOnMod {
+	return func() string {
+		return fmt.Sprintf("delay.%dms", d.Milliseconds())
+	}
+}
+
+// Delay the event listener in seconds.
+func MathMLMtableOnModDelaySec(
+	d time.Duration,
+) MathMLMtableOnMod {
+	return func() string {
+		return fmt.Sprintf("delay.%ds", int(d.Seconds()))
+	}
+}
+
+// Debounces the event handler
+func MathMLMtableOnModDebounceMs(
+	d time.Duration,
+) MathMLMtableOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms", d.Milliseconds())
+	}
+}
+
+// Debounce the event listener in milliseconds with leading edge.
+func MathMLMtableOnModDebounceMsLeading(
+	d time.Duration,
+) MathMLMtableOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms.leading", d.Milliseconds())
+	}
+}
+
+// Debounce the event listener in milliseconds without trailing edge.
+func MathMLMtableOnModDebounceMsNoTrailing(
+	d time.Duration,
+) MathMLMtableOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms.notrailing", d.Milliseconds())
+	}
+}
+
+// Debounces the event handler
+func MathMLMtableOnModDebounceSec(
+	d time.Duration,
+) MathMLMtableOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds", int(d.Seconds()))
+	}
+}
+
+// Debounce the event listener in seconds with leading edge.
+func MathMLMtableOnModDebounceSecLeading(
+	d time.Duration,
+) MathMLMtableOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds.leading", int(d.Seconds()))
+	}
+}
+
+// Debounce the event listener in seconds without trailing edge.
+func MathMLMtableOnModDebounceSecNoTrailing(
+	d time.Duration,
+) MathMLMtableOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds.notrailing", int(d.Seconds()))
+	}
+}
+
+// Throttles the event handler
+func MathMLMtableOnModThrottleMs(
+	d time.Duration,
+) MathMLMtableOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms", d.Milliseconds())
+	}
+}
+
+// Throttle the event listener in milliseconds without leading edge.
+func MathMLMtableOnModThrottleMsNoLeading(
+	d time.Duration,
+) MathMLMtableOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms.noleading", d.Milliseconds())
+	}
+}
+
+// Throttle the event listener in milliseconds with trailing edge.
+func MathMLMtableOnModThrottleMsTrailing(
+	d time.Duration,
+) MathMLMtableOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms.trailing", d.Milliseconds())
+	}
+}
+
+// Throttles the event listener in seconds.
+func MathMLMtableOnModThrottleSec(
+	d time.Duration,
+) MathMLMtableOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds", int(d.Seconds()))
+	}
+}
+
+// Throttle the event listener in seconds without leading edge.
+func MathMLMtableOnModThrottleSecNoLeading(
+	d time.Duration,
+) MathMLMtableOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds.noleading", int(d.Seconds()))
+	}
+}
+
+// Throttle the event listener in seconds with trailing edge.
+func MathMLMtableOnModThrottleSecTrailing(
+	d time.Duration,
+) MathMLMtableOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds.trailing", int(d.Seconds()))
+	}
+}
+
+// Wraps the expression in 'document.startViewTransition()' when the View
+// Transition API is available.
+func MathMLMtableOnModViewTransition() MathMLMtableOnMod {
+	return func() string {
+		return "viewtransition"
+	}
+}
+
+// Attaches the event listener to the 'window' element.
+func MathMLMtableOnModWindow() MathMLMtableOnMod {
+	return func() string {
+		return "window"
+	}
+}
+
+// Calls 'preventDefault' on the event listener.
+func MathMLMtableOnModPrevent() MathMLMtableOnMod {
+	return func() string {
+		return "prevent"
+	}
+}
+
+// Triggers when the event is outside the element.
+func MathMLMtableOnModOutside() MathMLMtableOnMod {
+	return func() string {
+		return "outside"
+	}
+}
+
+// Calls 'stopPropagation' on the event listener.
+func MathMLMtableOnModStop() MathMLMtableOnMod {
+	return func() string {
+		return "stop"
+	}
+}
+
+// Attaches an event listener to an element, executing an expression whenever the
+// event is triggered.
+//
+// See: https://data-star.dev/reference/attributes#data-on
+func (e *MathMLMTABLEElement) DATASTAR_ON(key string, expression string, modifiers ...MathMLMtableOnMod) *MathMLMTABLEElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	key = fmt.Sprintf("data-on%s", suffix)
+
+	customMods := lo.Map(modifiers, func(m MathMLMtableOnMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Attaches an event listener to an element, executing an expression whenever the
+// event is triggered.
+//
+// See: https://data-star.dev/reference/attributes#data-on
+func (e *MathMLMTABLEElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...MathMLMtableOnMod) *MathMLMTABLEElement {
+	if condition {
+		e.DATASTAR_ON(key, expression, modifiers...)
+	}
+	return e
+}
+
+// Attaches an event listener to an element, executing an expression whenever the
+// event is triggered.
+//
+// See: https://data-star.dev/reference/attributes#data-on
+// Remove the attribute DATASTAR_ON from the element.
+func (e *MathMLMTABLEElement) DATASTAR_ONRemove(key string) *MathMLMTABLEElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	e.StringAttributes.Del("data-on" + suffix)
+
+	return e
+}
+
+type MathMLMtableOnIntersectMod customDataKeyModifier
+
+// Only run the expression once
+// Only works with built-in events.
+func MathMLMtableOnIntersectModOnce() MathMLMtableOnIntersectMod {
+	return func() string {
+		return "once"
+	}
+}
+
+// Trigger when half of the element is visible.
+func MathMLMtableOnIntersectModHalf() MathMLMtableOnIntersectMod {
+	return func() string {
+		return "half"
+	}
+}
+
+// Trigger when the full element is visible.
+func MathMLMtableOnIntersectModFull() MathMLMtableOnIntersectMod {
+	return func() string {
+		return "full"
+	}
+}
+
+// Delay the event listener in milliseconds.
+func MathMLMtableOnIntersectModDelayMs(
+	d time.Duration,
+) MathMLMtableOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("delay.%dms", d.Milliseconds())
+	}
+}
+
+// Delay the event listener in seconds.
+func MathMLMtableOnIntersectModDelaySec(
+	d time.Duration,
+) MathMLMtableOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("delay.%ds", int(d.Seconds()))
+	}
+}
+
+// Debounces the event handler
+func MathMLMtableOnIntersectModDebounceMs(
+	d time.Duration,
+) MathMLMtableOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms", d.Milliseconds())
+	}
+}
+
+// Debounce the event listener in milliseconds with leading edge.
+func MathMLMtableOnIntersectModDebounceMsLeading(
+	d time.Duration,
+) MathMLMtableOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms.leading", d.Milliseconds())
+	}
+}
+
+// Debounce the event listener in milliseconds without trailing edge.
+func MathMLMtableOnIntersectModDebounceMsNoTrailing(
+	d time.Duration,
+) MathMLMtableOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms.notrailing", d.Milliseconds())
+	}
+}
+
+// Debounces the event handler
+func MathMLMtableOnIntersectModDebounceSec(
+	d time.Duration,
+) MathMLMtableOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds", int(d.Seconds()))
+	}
+}
+
+// Debounce the event listener in seconds with leading edge.
+func MathMLMtableOnIntersectModDebounceSecLeading(
+	d time.Duration,
+) MathMLMtableOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds.leading", int(d.Seconds()))
+	}
+}
+
+// Debounce the event listener in seconds without trailing edge.
+func MathMLMtableOnIntersectModDebounceSecNoTrailing(
+	d time.Duration,
+) MathMLMtableOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds.notrailing", int(d.Seconds()))
+	}
+}
+
+// Throttles the event handler
+func MathMLMtableOnIntersectModThrottleMs(
+	d time.Duration,
+) MathMLMtableOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms", d.Milliseconds())
+	}
+}
+
+// Throttle the event listener in milliseconds without leading edge.
+func MathMLMtableOnIntersectModThrottleMsNoLeading(
+	d time.Duration,
+) MathMLMtableOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms.noleading", d.Milliseconds())
+	}
+}
+
+// Throttle the event listener in milliseconds with trailing edge.
+func MathMLMtableOnIntersectModThrottleMsTrailing(
+	d time.Duration,
+) MathMLMtableOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms.trailing", d.Milliseconds())
+	}
+}
+
+// Throttles the event listener in seconds.
+func MathMLMtableOnIntersectModThrottleSec(
+	d time.Duration,
+) MathMLMtableOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds", int(d.Seconds()))
+	}
+}
+
+// Throttle the event listener in seconds without leading edge.
+func MathMLMtableOnIntersectModThrottleSecNoLeading(
+	d time.Duration,
+) MathMLMtableOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds.noleading", int(d.Seconds()))
+	}
+}
+
+// Throttle the event listener in seconds with trailing edge.
+func MathMLMtableOnIntersectModThrottleSecTrailing(
+	d time.Duration,
+) MathMLMtableOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds.trailing", int(d.Seconds()))
+	}
+}
+
+// Wraps the expression in 'document.startViewTransition()' when the View
+// Transition API is available.
+func MathMLMtableOnIntersectModViewTransition() MathMLMtableOnIntersectMod {
+	return func() string {
+		return "viewtransition"
+	}
+}
+
+// Runs an expression when the element intersects with the viewport.
+func (e *MathMLMTABLEElement) DATASTAR_ON_INTERSECT(expression string, modifiers ...MathMLMtableOnIntersectMod) *MathMLMTABLEElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-on-intersect"
+
+	customMods := lo.Map(modifiers, func(m MathMLMtableOnIntersectMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Runs an expression when the element intersects with the viewport.
+func (e *MathMLMTABLEElement) IfDATASTAR_ON_INTERSECT(condition bool, expression string, modifiers ...MathMLMtableOnIntersectMod) *MathMLMTABLEElement {
+	if condition {
+		e.DATASTAR_ON_INTERSECT(expression, modifiers...)
+	}
+	return e
+}
+
+// Runs an expression when the element intersects with the viewport.
+// Remove the attribute DATASTAR_ON_INTERSECT from the element.
+func (e *MathMLMTABLEElement) DATASTAR_ON_INTERSECTRemove() *MathMLMTABLEElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-on-intersect")
+
+	return e
+}
+
+type MathMLMtableOnIntervalMod customDataKeyModifier
+
+// Sets the interval duration in milliseconds.
+func MathMLMtableOnIntervalModDurationMs(
+	d time.Duration,
+) MathMLMtableOnIntervalMod {
+	return func() string {
+		return fmt.Sprintf("duration.%dms", d.Milliseconds())
+	}
+}
+
+// Sets the interval duration in milliseconds
+// Execute the first interval immediately.
+func MathMLMtableOnIntervalModDurationMsLeading(
+	d time.Duration,
+) MathMLMtableOnIntervalMod {
+	return func() string {
+		return fmt.Sprintf("duration.%dms.leading", d.Milliseconds())
+	}
+}
+
+// Sets the interval duration in seconds.
+func MathMLMtableOnIntervalModDurationSec(
+	d time.Duration,
+) MathMLMtableOnIntervalMod {
+	return func() string {
+		return fmt.Sprintf("duration.%ds", int(d.Seconds()))
+	}
+}
+
+// Sets the interval duration in seconds
+// Execute the first interval immediately.
+func MathMLMtableOnIntervalModDurationSecLeading(
+	d time.Duration,
+) MathMLMtableOnIntervalMod {
+	return func() string {
+		return fmt.Sprintf("duration.%ds.leading", int(d.Seconds()))
+	}
+}
+
+// Wraps the expression in 'document.startViewTransition()' when the View
+// Transition API is available.
+func MathMLMtableOnIntervalModViewTransition() MathMLMtableOnIntervalMod {
+	return func() string {
+		return "viewtransition"
+	}
+}
+
+// Runs an expression at a regular interval
+// The interval duration defaults to one second and can be modified using the
+// '__duration' modifier.
+//
+// See: https://data-star.dev/reference/attributes#data-on-interval
+func (e *MathMLMTABLEElement) DATASTAR_ON_INTERVAL(expression string, modifiers ...MathMLMtableOnIntervalMod) *MathMLMTABLEElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-on-interval"
+
+	customMods := lo.Map(modifiers, func(m MathMLMtableOnIntervalMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Runs an expression at a regular interval
+// The interval duration defaults to one second and can be modified using the
+// '__duration' modifier.
+//
+// See: https://data-star.dev/reference/attributes#data-on-interval
+func (e *MathMLMTABLEElement) IfDATASTAR_ON_INTERVAL(condition bool, expression string, modifiers ...MathMLMtableOnIntervalMod) *MathMLMTABLEElement {
+	if condition {
+		e.DATASTAR_ON_INTERVAL(expression, modifiers...)
+	}
+	return e
+}
+
+// Runs an expression at a regular interval
+// The interval duration defaults to one second and can be modified using the
+// '__duration' modifier.
+//
+// See: https://data-star.dev/reference/attributes#data-on-interval
+// Remove the attribute DATASTAR_ON_INTERVAL from the element.
+func (e *MathMLMTABLEElement) DATASTAR_ON_INTERVALRemove() *MathMLMTABLEElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-on-interval")
+
+	return e
+}
+
+type MathMLMtableOnSignalPatchMod customDataKeyModifier
+
+// Delay the event listener in milliseconds.
+func MathMLMtableOnSignalPatchModDelayMs(
+	d time.Duration,
+) MathMLMtableOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("delay.%dms", d.Milliseconds())
+	}
+}
+
+// Delay the event listener in seconds.
+func MathMLMtableOnSignalPatchModDelaySec(
+	d time.Duration,
+) MathMLMtableOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("delay.%ds", int(d.Seconds()))
+	}
+}
+
+// Debounces the event handler
+func MathMLMtableOnSignalPatchModDebounceMs(
+	d time.Duration,
+) MathMLMtableOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms", d.Milliseconds())
+	}
+}
+
+// Debounce the event listener in milliseconds with leading edge.
+func MathMLMtableOnSignalPatchModDebounceMsLeading(
+	d time.Duration,
+) MathMLMtableOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms.leading", d.Milliseconds())
+	}
+}
+
+// Debounce the event listener in milliseconds without trailing edge.
+func MathMLMtableOnSignalPatchModDebounceMsNoTrailing(
+	d time.Duration,
+) MathMLMtableOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms.notrailing", d.Milliseconds())
+	}
+}
+
+// Debounces the event handler
+func MathMLMtableOnSignalPatchModDebounceSec(
+	d time.Duration,
+) MathMLMtableOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds", int(d.Seconds()))
+	}
+}
+
+// Debounce the event listener in seconds with leading edge.
+func MathMLMtableOnSignalPatchModDebounceSecLeading(
+	d time.Duration,
+) MathMLMtableOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds.leading", int(d.Seconds()))
+	}
+}
+
+// Debounce the event listener in seconds without trailing edge.
+func MathMLMtableOnSignalPatchModDebounceSecNoTrailing(
+	d time.Duration,
+) MathMLMtableOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds.notrailing", int(d.Seconds()))
+	}
+}
+
+// Throttles the event handler
+func MathMLMtableOnSignalPatchModThrottleMs(
+	d time.Duration,
+) MathMLMtableOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms", d.Milliseconds())
+	}
+}
+
+// Throttle the event listener in milliseconds without leading edge.
+func MathMLMtableOnSignalPatchModThrottleMsNoLeading(
+	d time.Duration,
+) MathMLMtableOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms.noleading", d.Milliseconds())
+	}
+}
+
+// Throttle the event listener in milliseconds with trailing edge.
+func MathMLMtableOnSignalPatchModThrottleMsTrailing(
+	d time.Duration,
+) MathMLMtableOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms.trailing", d.Milliseconds())
+	}
+}
+
+// Throttles the event listener in seconds.
+func MathMLMtableOnSignalPatchModThrottleSec(
+	d time.Duration,
+) MathMLMtableOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds", int(d.Seconds()))
+	}
+}
+
+// Throttle the event listener in seconds without leading edge.
+func MathMLMtableOnSignalPatchModThrottleSecNoLeading(
+	d time.Duration,
+) MathMLMtableOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds.noleading", int(d.Seconds()))
+	}
+}
+
+// Throttle the event listener in seconds with trailing edge.
+func MathMLMtableOnSignalPatchModThrottleSecTrailing(
+	d time.Duration,
+) MathMLMtableOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds.trailing", int(d.Seconds()))
+	}
+}
+
+// Runs an expression whenever any signals are patched
+// This is useful for tracking changes, updating computed values, or triggering
+// side effects when data updates.
+//
+// See: https://data-star.dev/reference/attributes#data-on-signal-patch
+func (e *MathMLMTABLEElement) DATASTAR_ON_SIGNAL_PATCH(expression string, modifiers ...MathMLMtableOnSignalPatchMod) *MathMLMTABLEElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-on-signal-patch"
+
+	customMods := lo.Map(modifiers, func(m MathMLMtableOnSignalPatchMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Runs an expression whenever any signals are patched
+// This is useful for tracking changes, updating computed values, or triggering
+// side effects when data updates.
+//
+// See: https://data-star.dev/reference/attributes#data-on-signal-patch
+func (e *MathMLMTABLEElement) IfDATASTAR_ON_SIGNAL_PATCH(condition bool, expression string, modifiers ...MathMLMtableOnSignalPatchMod) *MathMLMTABLEElement {
+	if condition {
+		e.DATASTAR_ON_SIGNAL_PATCH(expression, modifiers...)
+	}
+	return e
+}
+
+// Runs an expression whenever any signals are patched
+// This is useful for tracking changes, updating computed values, or triggering
+// side effects when data updates.
+//
+// See: https://data-star.dev/reference/attributes#data-on-signal-patch
+// Remove the attribute DATASTAR_ON_SIGNAL_PATCH from the element.
+func (e *MathMLMTABLEElement) DATASTAR_ON_SIGNAL_PATCHRemove() *MathMLMTABLEElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-on-signal-patch")
+
+	return e
+}
+
+// Filters which signals to watch when using the data-on-signal-patch attribute.
+//
+// The data-on-signal-patch-filter attribute accepts an object with include and/or
+// exclude properties that are regular expressions.
+//
+// See: https://data-star.dev/reference/attributes#data-on-signal-patch-filter
+func (e *MathMLMTABLEElement) DATASTAR_ON_SIGNAL_PATCH_FILTER(expression string) *MathMLMTABLEElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-on-signal-patch-filter"
+
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Filters which signals to watch when using the data-on-signal-patch attribute.
+//
+// The data-on-signal-patch-filter attribute accepts an object with include and/or
+// exclude properties that are regular expressions.
+//
+// See: https://data-star.dev/reference/attributes#data-on-signal-patch-filter
+func (e *MathMLMTABLEElement) IfDATASTAR_ON_SIGNAL_PATCH_FILTER(condition bool, expression string) *MathMLMTABLEElement {
+	if condition {
+		e.DATASTAR_ON_SIGNAL_PATCH_FILTER(expression)
+	}
+	return e
+}
+
+// Filters which signals to watch when using the data-on-signal-patch attribute.
+//
+// The data-on-signal-patch-filter attribute accepts an object with include and/or
+// exclude properties that are regular expressions.
+//
+// See: https://data-star.dev/reference/attributes#data-on-signal-patch-filter
+// Remove the attribute DATASTAR_ON_SIGNAL_PATCH_FILTER from the element.
+func (e *MathMLMTABLEElement) DATASTAR_ON_SIGNAL_PATCH_FILTERRemove() *MathMLMTABLEElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-on-signal-patch-filter")
+
+	return e
+}
+
+// Preserves the value of an attribute when morphing DOM elements.
+//
+// See: https://data-star.dev/reference/attributes#data-preserve-attr
+func (e *MathMLMTABLEElement) DATASTAR_PRESERVE_ATTR(expression string) *MathMLMTABLEElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-preserve-attr"
+
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Preserves the value of an attribute when morphing DOM elements.
+//
+// See: https://data-star.dev/reference/attributes#data-preserve-attr
+func (e *MathMLMTABLEElement) IfDATASTAR_PRESERVE_ATTR(condition bool, expression string) *MathMLMTABLEElement {
+	if condition {
+		e.DATASTAR_PRESERVE_ATTR(expression)
+	}
+	return e
+}
+
+// Preserves the value of an attribute when morphing DOM elements.
+//
+// See: https://data-star.dev/reference/attributes#data-preserve-attr
+// Remove the attribute DATASTAR_PRESERVE_ATTR from the element.
+func (e *MathMLMTABLEElement) DATASTAR_PRESERVE_ATTRRemove() *MathMLMTABLEElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-preserve-attr")
+
+	return e
+}
+
+type MathMLMtableRefMod customDataKeyModifier
+
+// Converts the casing of the signal name.
+//   - 'camel' – Camel case: 'mySignal' (default)
+//   - 'kebab' – Kebab case: 'my-signal'
+//   - 'snake' – Snake case: 'my_signal'
+//   - 'pascal' – Pascal case: 'MySignal'
+func MathMLMtableRefModCase(
+	s string,
+) MathMLMtableRefMod {
+	return func() string {
+		return fmt.Sprintf("case.%s", s)
+	}
+}
+
+// Creates a new signal that is a reference to the element on which the data
+// attribute is placed.
+//
+// See: https://data-star.dev/reference/attributes#data-ref
+func (e *MathMLMTABLEElement) DATASTAR_REF(expression string, modifiers ...MathMLMtableRefMod) *MathMLMTABLEElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-ref"
+
+	customMods := lo.Map(modifiers, func(m MathMLMtableRefMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Creates a new signal that is a reference to the element on which the data
+// attribute is placed.
+//
+// See: https://data-star.dev/reference/attributes#data-ref
+func (e *MathMLMTABLEElement) IfDATASTAR_REF(condition bool, expression string, modifiers ...MathMLMtableRefMod) *MathMLMTABLEElement {
+	if condition {
+		e.DATASTAR_REF(expression, modifiers...)
+	}
+	return e
+}
+
+// Creates a new signal that is a reference to the element on which the data
+// attribute is placed.
+//
+// See: https://data-star.dev/reference/attributes#data-ref
+// Remove the attribute DATASTAR_REF from the element.
+func (e *MathMLMTABLEElement) DATASTAR_REFRemove() *MathMLMTABLEElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-ref")
+
+	return e
+}
+
+// Shows or hides an element based on whether an expression evaluates to 'true' or
+// 'false'
+// For anything with custom requirements, use 'data-class' instead.
+//
+// See: https://data-star.dev/reference/attributes#data-show
+func (e *MathMLMTABLEElement) DATASTAR_SHOW(expression string) *MathMLMTABLEElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-show"
+
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Shows or hides an element based on whether an expression evaluates to 'true' or
+// 'false'
+// For anything with custom requirements, use 'data-class' instead.
+//
+// See: https://data-star.dev/reference/attributes#data-show
+func (e *MathMLMTABLEElement) IfDATASTAR_SHOW(condition bool, expression string) *MathMLMTABLEElement {
+	if condition {
+		e.DATASTAR_SHOW(expression)
+	}
+	return e
+}
+
+// Shows or hides an element based on whether an expression evaluates to 'true' or
+// 'false'
+// For anything with custom requirements, use 'data-class' instead.
+//
+// See: https://data-star.dev/reference/attributes#data-show
+// Remove the attribute DATASTAR_SHOW from the element.
+func (e *MathMLMTABLEElement) DATASTAR_SHOWRemove() *MathMLMTABLEElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-show")
+
+	return e
+}
+
+type MathMLMtableSignalsMod customDataKeyModifier
+
+// Converts the casing of the signal name.
+//   - 'camel' – Camel case: 'mySignal' (default)
+//   - 'kebab' – Kebab case: 'my-signal'
+//   - 'snake' – Snake case: 'my_signal'
+//   - 'pascal' – Pascal case: 'MySignal'
+func MathMLMtableSignalsModCase(
+	s string,
+) MathMLMtableSignalsMod {
+	return func() string {
+		return fmt.Sprintf("case.%s", s)
+	}
+}
+
+// Only patches signals if their keys do not already exist
+// This is useful for setting defaults without overwriting existing values.
+func MathMLMtableSignalsModIfMissing() MathMLMtableSignalsMod {
+	return func() string {
+		return "ifmissing"
+	}
+}
+
+// Patches (adds, updates or removes) one or more signals into the existing
+// signals
+// Values defined later in the DOM tree override those defined earlier.
+//
+// See: https://data-star.dev/reference/attributes#data-signals
+func (e *MathMLMTABLEElement) DATASTAR_SIGNALS(key string, expression string, modifiers ...MathMLMtableSignalsMod) *MathMLMTABLEElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	key = fmt.Sprintf("data-signals%s", suffix)
+
+	customMods := lo.Map(modifiers, func(m MathMLMtableSignalsMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Patches (adds, updates or removes) one or more signals into the existing
+// signals
+// Values defined later in the DOM tree override those defined earlier.
+//
+// See: https://data-star.dev/reference/attributes#data-signals
+func (e *MathMLMTABLEElement) IfDATASTAR_SIGNALS(condition bool, key string, expression string, modifiers ...MathMLMtableSignalsMod) *MathMLMTABLEElement {
+	if condition {
+		e.DATASTAR_SIGNALS(key, expression, modifiers...)
+	}
+	return e
+}
+
+// Patches (adds, updates or removes) one or more signals into the existing
+// signals
+// Values defined later in the DOM tree override those defined earlier.
+//
+// See: https://data-star.dev/reference/attributes#data-signals
+// Remove the attribute DATASTAR_SIGNALS from the element.
+func (e *MathMLMTABLEElement) DATASTAR_SIGNALSRemove(key string) *MathMLMTABLEElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	e.StringAttributes.Del("data-signals" + suffix)
+
+	return e
+}
+
+type MathMLMtableStyleMod customDataKeyModifier
+
+// Converts the casing of the signal name.
+//   - 'camel' – Camel case: 'mySignal' (default)
+//   - 'kebab' – Kebab case: 'my-signal'
+//   - 'snake' – Snake case: 'my_signal'
+//   - 'pascal' – Pascal case: 'MySignal'
+func MathMLMtableStyleModCase(
+	s string,
+) MathMLMtableStyleMod {
+	return func() string {
+		return fmt.Sprintf("case.%s", s)
+	}
+}
+
+// Sets the value of inline CSS styles on an element based on an expression, and
+// keeps them in sync.
+//
+// See: https://data-star.dev/reference/attributes#data-style
+func (e *MathMLMTABLEElement) DATASTAR_STYLE(key string, expression string, modifiers ...MathMLMtableStyleMod) *MathMLMTABLEElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	key = fmt.Sprintf("data-style%s", suffix)
+
+	customMods := lo.Map(modifiers, func(m MathMLMtableStyleMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Sets the value of inline CSS styles on an element based on an expression, and
+// keeps them in sync.
+//
+// See: https://data-star.dev/reference/attributes#data-style
+func (e *MathMLMTABLEElement) IfDATASTAR_STYLE(condition bool, key string, expression string, modifiers ...MathMLMtableStyleMod) *MathMLMTABLEElement {
+	if condition {
+		e.DATASTAR_STYLE(key, expression, modifiers...)
+	}
+	return e
+}
+
+// Sets the value of inline CSS styles on an element based on an expression, and
+// keeps them in sync.
+//
+// See: https://data-star.dev/reference/attributes#data-style
+// Remove the attribute DATASTAR_STYLE from the element.
+func (e *MathMLMTABLEElement) DATASTAR_STYLERemove(key string) *MathMLMTABLEElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	e.StringAttributes.Del("data-style" + suffix)
+
+	return e
+}
+
+// Binds the text content of an element to an expression.
+//
+// See: https://data-star.dev/reference/attributes#data-text
 func (e *MathMLMTABLEElement) DATASTAR_TEXT(expression string) *MathMLMTABLEElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
@@ -728,6 +2329,9 @@ func (e *MathMLMTABLEElement) DATASTAR_TEXT(expression string) *MathMLMTABLEElem
 	return e
 }
 
+// Binds the text content of an element to an expression.
+//
+// See: https://data-star.dev/reference/attributes#data-text
 func (e *MathMLMTABLEElement) IfDATASTAR_TEXT(condition bool, expression string) *MathMLMTABLEElement {
 	if condition {
 		e.DATASTAR_TEXT(expression)
@@ -735,228 +2339,16 @@ func (e *MathMLMTABLEElement) IfDATASTAR_TEXT(condition bool, expression string)
 	return e
 }
 
+// Binds the text content of an element to an expression.
+//
+// See: https://data-star.dev/reference/attributes#data-text
 // Remove the attribute DATASTAR_TEXT from the element.
 func (e *MathMLMTABLEElement) DATASTAR_TEXTRemove() *MathMLMTABLEElement {
 	if e.StringAttributes == nil {
 		return e
 	}
+
 	e.StringAttributes.Del("data-text")
-	return e
-}
 
-// Sets the event handler of the element
-
-type MathMLMtableOnMod customDataKeyModifier
-
-// Debounces the event handler
-func MathMLMtableOnModDebounce(
-	d time.Duration,
-) MathMLMtableOnMod {
-	return func() string {
-		return fmt.Sprintf("debounce_%dms", d.Milliseconds())
-	}
-}
-
-// Throttles the event handler
-func MathMLMtableOnModThrottle(
-	d time.Duration,
-) MathMLMtableOnMod {
-	return func() string {
-		return fmt.Sprintf("throttle_%dms", d.Milliseconds())
-	}
-}
-
-func (e *MathMLMTABLEElement) DATASTAR_ON(key string, expression string, modifiers ...MathMLMtableOnMod) *MathMLMTABLEElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-
-	key = fmt.Sprintf("data-on-%s", key)
-
-	customMods := lo.Map(modifiers, func(m MathMLMtableOnMod, i int) customDataKeyModifier {
-		return customDataKeyModifier(m)
-	})
-	key = customDataKey(key, customMods...)
-	e.StringAttributes.Set(key, expression)
-	return e
-}
-
-func (e *MathMLMTABLEElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...MathMLMtableOnMod) *MathMLMTABLEElement {
-	if condition {
-		e.DATASTAR_ON(key, expression, modifiers...)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_ON from the element.
-func (e *MathMLMTABLEElement) DATASTAR_ONRemove() *MathMLMTABLEElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-on")
-	return e
-}
-
-// Sets the focus of the element
-
-func (e *MathMLMTABLEElement) DATASTAR_FOCUSSet(b bool) *MathMLMTABLEElement {
-	key := "data-focus"
-	e.BoolAttributes.Set(key, b)
-	return e
-}
-
-func (e *MathMLMTABLEElement) DATASTAR_FOCUS() *MathMLMTABLEElement {
-	return e.DATASTAR_FOCUSSet(true)
-}
-
-// Sets the header of for fetch requests
-
-func (e *MathMLMTABLEElement) DATASTAR_HEADER(key string, expression string) *MathMLMTABLEElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-
-	key = fmt.Sprintf("data-header-%s", key)
-
-	e.StringAttributes.Set(key, expression)
-	return e
-}
-
-func (e *MathMLMTABLEElement) IfDATASTAR_HEADER(condition bool, key string, expression string) *MathMLMTABLEElement {
-	if condition {
-		e.DATASTAR_HEADER(key, expression)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_HEADER from the element.
-func (e *MathMLMTABLEElement) DATASTAR_HEADERRemove() *MathMLMTABLEElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-header")
-	return e
-}
-
-// Sets the indicator selector for fetch requests
-
-func (e *MathMLMTABLEElement) DATASTAR_FETCH_INDICATOR(expression string) *MathMLMTABLEElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-
-	key := "data-fetch-indicator"
-
-	e.StringAttributes.Set(key, expression)
-	return e
-}
-
-func (e *MathMLMTABLEElement) IfDATASTAR_FETCH_INDICATOR(condition bool, expression string) *MathMLMTABLEElement {
-	if condition {
-		e.DATASTAR_FETCH_INDICATOR(expression)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_FETCH_INDICATOR from the element.
-func (e *MathMLMTABLEElement) DATASTAR_FETCH_INDICATORRemove() *MathMLMTABLEElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-fetch-indicator")
-	return e
-}
-
-// Sets the visibility of the element
-
-func (e *MathMLMTABLEElement) DATASTAR_SHOWSet(b bool) *MathMLMTABLEElement {
-	key := "data-show"
-	e.BoolAttributes.Set(key, b)
-	return e
-}
-
-func (e *MathMLMTABLEElement) DATASTAR_SHOW() *MathMLMTABLEElement {
-	return e.DATASTAR_SHOWSet(true)
-}
-
-// Triggers the callback when the element intersects the viewport
-
-func (e *MathMLMTABLEElement) DATASTAR_INTERSECTS(expression string) *MathMLMTABLEElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-
-	key := "data-intersects"
-
-	e.StringAttributes.Set(key, expression)
-	return e
-}
-
-func (e *MathMLMTABLEElement) IfDATASTAR_INTERSECTS(condition bool, expression string) *MathMLMTABLEElement {
-	if condition {
-		e.DATASTAR_INTERSECTS(expression)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_INTERSECTS from the element.
-func (e *MathMLMTABLEElement) DATASTAR_INTERSECTSRemove() *MathMLMTABLEElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-intersects")
-	return e
-}
-
-// Teleports the element to the given selector
-
-func (e *MathMLMTABLEElement) DATASTAR_TELEPORTSet(b bool) *MathMLMTABLEElement {
-	key := "data-teleport"
-	e.BoolAttributes.Set(key, b)
-	return e
-}
-
-func (e *MathMLMTABLEElement) DATASTAR_TELEPORT() *MathMLMTABLEElement {
-	return e.DATASTAR_TELEPORTSet(true)
-}
-
-// Scrolls the element into view
-
-func (e *MathMLMTABLEElement) DATASTAR_SCROLL_INTO_VIEWSet(b bool) *MathMLMTABLEElement {
-	key := "data-scroll-into-view"
-	e.BoolAttributes.Set(key, b)
-	return e
-}
-
-func (e *MathMLMTABLEElement) DATASTAR_SCROLL_INTO_VIEW() *MathMLMTABLEElement {
-	return e.DATASTAR_SCROLL_INTO_VIEWSet(true)
-}
-
-// Setup the ViewTransitionAPI for the element
-
-func (e *MathMLMTABLEElement) DATASTAR_VIEW_TRANSITION(expression string) *MathMLMTABLEElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-
-	key := "data-view-transition"
-
-	e.StringAttributes.Set(key, expression)
-	return e
-}
-
-func (e *MathMLMTABLEElement) IfDATASTAR_VIEW_TRANSITION(condition bool, expression string) *MathMLMTABLEElement {
-	if condition {
-		e.DATASTAR_VIEW_TRANSITION(expression)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_VIEW_TRANSITION from the element.
-func (e *MathMLMTABLEElement) DATASTAR_VIEW_TRANSITIONRemove() *MathMLMTABLEElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-view-transition")
 	return e
 }

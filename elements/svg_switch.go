@@ -5,10 +5,8 @@ package elements
 
 import (
 	"fmt"
-	"html"
 	"time"
 
-	"github.com/goccy/go-json"
 	"github.com/igrmk/treemap/v2"
 	"github.com/samber/lo"
 )
@@ -180,10 +178,16 @@ func (e *SVGSWITCHElement) REQUIRED_FEATURES(s string) *SVGSWITCHElement {
 	return e
 }
 
+// A space-separated list of required features, indicating that the parent SVG
+// document must include support for all of the specified features for this
+// element to be valid.
 func (e *SVGSWITCHElement) REQUIRED_FEATURESF(format string, args ...any) *SVGSWITCHElement {
 	return e.REQUIRED_FEATURES(fmt.Sprintf(format, args...))
 }
 
+// A space-separated list of required features, indicating that the parent SVG
+// document must include support for all of the specified features for this
+// element to be valid.
 func (e *SVGSWITCHElement) IfREQUIRED_FEATURES(condition bool, s string) *SVGSWITCHElement {
 	if condition {
 		e.REQUIRED_FEATURES(s)
@@ -191,6 +195,9 @@ func (e *SVGSWITCHElement) IfREQUIRED_FEATURES(condition bool, s string) *SVGSWI
 	return e
 }
 
+// A space-separated list of required features, indicating that the parent SVG
+// document must include support for all of the specified features for this
+// element to be valid.
 func (e *SVGSWITCHElement) IfREQUIRED_FEATURESF(condition bool, format string, args ...any) *SVGSWITCHElement {
 	if condition {
 		e.REQUIRED_FEATURES(fmt.Sprintf(format, args...))
@@ -198,6 +205,9 @@ func (e *SVGSWITCHElement) IfREQUIRED_FEATURESF(condition bool, format string, a
 	return e
 }
 
+// A space-separated list of required features, indicating that the parent SVG
+// document must include support for all of the specified features for this
+// element to be valid.
 // Remove the attribute REQUIRED_FEATURES from the element.
 func (e *SVGSWITCHElement) REQUIRED_FEATURESRemove(s string) *SVGSWITCHElement {
 	if e.StringAttributes == nil {
@@ -207,6 +217,9 @@ func (e *SVGSWITCHElement) REQUIRED_FEATURESRemove(s string) *SVGSWITCHElement {
 	return e
 }
 
+// A space-separated list of required features, indicating that the parent SVG
+// document must include support for all of the specified features for this
+// element to be valid.
 func (e *SVGSWITCHElement) REQUIRED_FEATURESRemoveF(format string, args ...any) *SVGSWITCHElement {
 	return e.REQUIRED_FEATURESRemove(fmt.Sprintf(format, args...))
 }
@@ -221,10 +234,14 @@ func (e *SVGSWITCHElement) REQUIRED_EXTENSIONS(s string) *SVGSWITCHElement {
 	return e
 }
 
+// A space-separated list of required extensions, indicating that the parent SVG
+// document must include the specified extensions for this element to be valid.
 func (e *SVGSWITCHElement) REQUIRED_EXTENSIONSF(format string, args ...any) *SVGSWITCHElement {
 	return e.REQUIRED_EXTENSIONS(fmt.Sprintf(format, args...))
 }
 
+// A space-separated list of required extensions, indicating that the parent SVG
+// document must include the specified extensions for this element to be valid.
 func (e *SVGSWITCHElement) IfREQUIRED_EXTENSIONS(condition bool, s string) *SVGSWITCHElement {
 	if condition {
 		e.REQUIRED_EXTENSIONS(s)
@@ -232,6 +249,8 @@ func (e *SVGSWITCHElement) IfREQUIRED_EXTENSIONS(condition bool, s string) *SVGS
 	return e
 }
 
+// A space-separated list of required extensions, indicating that the parent SVG
+// document must include the specified extensions for this element to be valid.
 func (e *SVGSWITCHElement) IfREQUIRED_EXTENSIONSF(condition bool, format string, args ...any) *SVGSWITCHElement {
 	if condition {
 		e.REQUIRED_EXTENSIONS(fmt.Sprintf(format, args...))
@@ -239,6 +258,8 @@ func (e *SVGSWITCHElement) IfREQUIRED_EXTENSIONSF(condition bool, format string,
 	return e
 }
 
+// A space-separated list of required extensions, indicating that the parent SVG
+// document must include the specified extensions for this element to be valid.
 // Remove the attribute REQUIRED_EXTENSIONS from the element.
 func (e *SVGSWITCHElement) REQUIRED_EXTENSIONSRemove(s string) *SVGSWITCHElement {
 	if e.StringAttributes == nil {
@@ -248,6 +269,8 @@ func (e *SVGSWITCHElement) REQUIRED_EXTENSIONSRemove(s string) *SVGSWITCHElement
 	return e
 }
 
+// A space-separated list of required extensions, indicating that the parent SVG
+// document must include the specified extensions for this element to be valid.
 func (e *SVGSWITCHElement) REQUIRED_EXTENSIONSRemoveF(format string, args ...any) *SVGSWITCHElement {
 	return e.REQUIRED_EXTENSIONSRemove(fmt.Sprintf(format, args...))
 }
@@ -263,10 +286,16 @@ func (e *SVGSWITCHElement) SYSTEM_LANGUAGE(s string) *SVGSWITCHElement {
 	return e
 }
 
+// A space-separated list of language codes, indicating that the parent SVG
+// document must include support for all of the specified languages for this
+// element to be valid.
 func (e *SVGSWITCHElement) SYSTEM_LANGUAGEF(format string, args ...any) *SVGSWITCHElement {
 	return e.SYSTEM_LANGUAGE(fmt.Sprintf(format, args...))
 }
 
+// A space-separated list of language codes, indicating that the parent SVG
+// document must include support for all of the specified languages for this
+// element to be valid.
 func (e *SVGSWITCHElement) IfSYSTEM_LANGUAGE(condition bool, s string) *SVGSWITCHElement {
 	if condition {
 		e.SYSTEM_LANGUAGE(s)
@@ -274,6 +303,9 @@ func (e *SVGSWITCHElement) IfSYSTEM_LANGUAGE(condition bool, s string) *SVGSWITC
 	return e
 }
 
+// A space-separated list of language codes, indicating that the parent SVG
+// document must include support for all of the specified languages for this
+// element to be valid.
 func (e *SVGSWITCHElement) IfSYSTEM_LANGUAGEF(condition bool, format string, args ...any) *SVGSWITCHElement {
 	if condition {
 		e.SYSTEM_LANGUAGE(fmt.Sprintf(format, args...))
@@ -281,6 +313,9 @@ func (e *SVGSWITCHElement) IfSYSTEM_LANGUAGEF(condition bool, format string, arg
 	return e
 }
 
+// A space-separated list of language codes, indicating that the parent SVG
+// document must include support for all of the specified languages for this
+// element to be valid.
 // Remove the attribute SYSTEM_LANGUAGE from the element.
 func (e *SVGSWITCHElement) SYSTEM_LANGUAGERemove(s string) *SVGSWITCHElement {
 	if e.StringAttributes == nil {
@@ -290,6 +325,9 @@ func (e *SVGSWITCHElement) SYSTEM_LANGUAGERemove(s string) *SVGSWITCHElement {
 	return e
 }
 
+// A space-separated list of language codes, indicating that the parent SVG
+// document must include support for all of the specified languages for this
+// element to be valid.
 func (e *SVGSWITCHElement) SYSTEM_LANGUAGERemoveF(format string, args ...any) *SVGSWITCHElement {
 	return e.SYSTEM_LANGUAGERemove(fmt.Sprintf(format, args...))
 }
@@ -303,10 +341,12 @@ func (e *SVGSWITCHElement) ID(s string) *SVGSWITCHElement {
 	return e
 }
 
+// Specifies a unique id for an element
 func (e *SVGSWITCHElement) IDF(format string, args ...any) *SVGSWITCHElement {
 	return e.ID(fmt.Sprintf(format, args...))
 }
 
+// Specifies a unique id for an element
 func (e *SVGSWITCHElement) IfID(condition bool, s string) *SVGSWITCHElement {
 	if condition {
 		e.ID(s)
@@ -314,6 +354,7 @@ func (e *SVGSWITCHElement) IfID(condition bool, s string) *SVGSWITCHElement {
 	return e
 }
 
+// Specifies a unique id for an element
 func (e *SVGSWITCHElement) IfIDF(condition bool, format string, args ...any) *SVGSWITCHElement {
 	if condition {
 		e.ID(fmt.Sprintf(format, args...))
@@ -321,6 +362,7 @@ func (e *SVGSWITCHElement) IfIDF(condition bool, format string, args ...any) *SV
 	return e
 }
 
+// Specifies a unique id for an element
 // Remove the attribute ID from the element.
 func (e *SVGSWITCHElement) IDRemove(s string) *SVGSWITCHElement {
 	if e.StringAttributes == nil {
@@ -330,6 +372,7 @@ func (e *SVGSWITCHElement) IDRemove(s string) *SVGSWITCHElement {
 	return e
 }
 
+// Specifies a unique id for an element
 func (e *SVGSWITCHElement) IDRemoveF(format string, args ...any) *SVGSWITCHElement {
 	return e.IDRemove(fmt.Sprintf(format, args...))
 }
@@ -349,6 +392,8 @@ func (e *SVGSWITCHElement) CLASS(s ...string) *SVGSWITCHElement {
 	return e
 }
 
+// Specifies one or more classnames for an element (refers to a class in a style
+// sheet)
 func (e *SVGSWITCHElement) IfCLASS(condition bool, s ...string) *SVGSWITCHElement {
 	if condition {
 		e.CLASS(s...)
@@ -356,6 +401,8 @@ func (e *SVGSWITCHElement) IfCLASS(condition bool, s ...string) *SVGSWITCHElemen
 	return e
 }
 
+// Specifies one or more classnames for an element (refers to a class in a style
+// sheet)
 // Remove the attribute CLASS from the element.
 func (e *SVGSWITCHElement) CLASSRemove(s ...string) *SVGSWITCHElement {
 	if e.DelimitedStrings == nil {
@@ -374,6 +421,7 @@ func (e *SVGSWITCHElement) STYLEF(k string, format string, args ...any) *SVGSWIT
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+// Specifies an inline CSS style for an element
 func (e *SVGSWITCHElement) IfSTYLE(condition bool, k string, v string) *SVGSWITCHElement {
 	if condition {
 		e.STYLE(k, v)
@@ -381,6 +429,7 @@ func (e *SVGSWITCHElement) IfSTYLE(condition bool, k string, v string) *SVGSWITC
 	return e
 }
 
+// Specifies an inline CSS style for an element
 func (e *SVGSWITCHElement) STYLE(k string, v string) *SVGSWITCHElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -394,6 +443,7 @@ func (e *SVGSWITCHElement) STYLE(k string, v string) *SVGSWITCHElement {
 	return e
 }
 
+// Specifies an inline CSS style for an element
 func (e *SVGSWITCHElement) IfSTYLEF(condition bool, k string, format string, args ...any) *SVGSWITCHElement {
 	if condition {
 		e.STYLE(k, fmt.Sprintf(format, args...))
@@ -401,6 +451,7 @@ func (e *SVGSWITCHElement) IfSTYLEF(condition bool, k string, format string, arg
 	return e
 }
 
+// Specifies an inline CSS style for an element
 // Add the attributes in the map to the element.
 func (e *SVGSWITCHElement) STYLEMap(m map[string]string) *SVGSWITCHElement {
 	if e.KVStrings == nil {
@@ -417,6 +468,7 @@ func (e *SVGSWITCHElement) STYLEMap(m map[string]string) *SVGSWITCHElement {
 	return e
 }
 
+// Specifies an inline CSS style for an element
 // Add pairs of attributes to the element.
 func (e *SVGSWITCHElement) STYLEPairs(pairs ...string) *SVGSWITCHElement {
 	if len(pairs)%2 != 0 {
@@ -438,6 +490,7 @@ func (e *SVGSWITCHElement) STYLEPairs(pairs ...string) *SVGSWITCHElement {
 	return e
 }
 
+// Specifies an inline CSS style for an element
 func (e *SVGSWITCHElement) IfSTYLEPairs(condition bool, pairs ...string) *SVGSWITCHElement {
 	if condition {
 		e.STYLEPairs(pairs...)
@@ -445,6 +498,7 @@ func (e *SVGSWITCHElement) IfSTYLEPairs(condition bool, pairs ...string) *SVGSWI
 	return e
 }
 
+// Specifies an inline CSS style for an element
 // Remove the attribute STYLE from the element.
 func (e *SVGSWITCHElement) STYLERemove(keys ...string) *SVGSWITCHElement {
 	if e.KVStrings == nil {
@@ -460,62 +514,75 @@ func (e *SVGSWITCHElement) STYLERemove(keys ...string) *SVGSWITCHElement {
 	return e
 }
 
-// Merges the singleton store with the given object
-
-func (e *SVGSWITCHElement) DATASTAR_STORE(v any) *SVGSWITCHElement {
-	if e.CustomDataAttributes == nil {
-		e.CustomDataAttributes = treemap.New[string, string]()
-	}
-	b, err := json.Marshal(v)
-	if err != nil {
-		panic(err)
-	}
-	e.CustomDataAttributes.Set("store", html.EscapeString(string(b)))
-	return e
-}
-
-// Sets the reference of the element
-
-func (e *SVGSWITCHElement) DATASTAR_REF(expression string) *SVGSWITCHElement {
+// Sets the value of any HTML attribute to an expression, and keeps it in sync.
+//
+// See: https://data-star.dev/reference/attributes#data-attr
+func (e *SVGSWITCHElement) DATASTAR_ATTR(key string, expression string) *SVGSWITCHElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "data-ref"
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	key = fmt.Sprintf("data-attr%s", suffix)
 
 	e.StringAttributes.Set(key, expression)
 	return e
 }
 
-func (e *SVGSWITCHElement) IfDATASTAR_REF(condition bool, expression string) *SVGSWITCHElement {
+// Sets the value of any HTML attribute to an expression, and keeps it in sync.
+//
+// See: https://data-star.dev/reference/attributes#data-attr
+func (e *SVGSWITCHElement) IfDATASTAR_ATTR(condition bool, key string, expression string) *SVGSWITCHElement {
 	if condition {
-		e.DATASTAR_REF(expression)
+		e.DATASTAR_ATTR(key, expression)
 	}
 	return e
 }
 
-// Remove the attribute DATASTAR_REF from the element.
-func (e *SVGSWITCHElement) DATASTAR_REFRemove() *SVGSWITCHElement {
+// Sets the value of any HTML attribute to an expression, and keeps it in sync.
+//
+// See: https://data-star.dev/reference/attributes#data-attr
+// Remove the attribute DATASTAR_ATTR from the element.
+func (e *SVGSWITCHElement) DATASTAR_ATTRRemove(key string) *SVGSWITCHElement {
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("data-ref")
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	e.StringAttributes.Del("data-attr" + suffix)
+
 	return e
 }
 
-// Sets the value of the element
-
+// Creates a signal (if one doesn’t already exist) and sets up two-way data
+// binding between it and an element’s value.
+//
+// See: https://data-star.dev/reference/attributes#data-bind
 func (e *SVGSWITCHElement) DATASTAR_BIND(key string, expression string) *SVGSWITCHElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key = fmt.Sprintf("data-bind-%s", key)
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	key = fmt.Sprintf("data-bind%s", suffix)
 
 	e.StringAttributes.Set(key, expression)
 	return e
 }
 
+// Creates a signal (if one doesn’t already exist) and sets up two-way data
+// binding between it and an element’s value.
+//
+// See: https://data-star.dev/reference/attributes#data-bind
 func (e *SVGSWITCHElement) IfDATASTAR_BIND(condition bool, key string, expression string) *SVGSWITCHElement {
 	if condition {
 		e.DATASTAR_BIND(key, expression)
@@ -523,46 +590,1525 @@ func (e *SVGSWITCHElement) IfDATASTAR_BIND(condition bool, key string, expressio
 	return e
 }
 
+// Creates a signal (if one doesn’t already exist) and sets up two-way data
+// binding between it and an element’s value.
+//
+// See: https://data-star.dev/reference/attributes#data-bind
 // Remove the attribute DATASTAR_BIND from the element.
-func (e *SVGSWITCHElement) DATASTAR_BINDRemove() *SVGSWITCHElement {
+func (e *SVGSWITCHElement) DATASTAR_BINDRemove(key string) *SVGSWITCHElement {
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("data-bind")
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	e.StringAttributes.Del("data-bind" + suffix)
+
 	return e
 }
 
-// Sets the value of the element
+type SVGSwitchClassMod customDataKeyModifier
 
-func (e *SVGSWITCHElement) DATASTAR_MODEL(expression string) *SVGSWITCHElement {
+// Converts the casing of the signal name.
+//   - 'camel' – Camel case: 'mySignal' (default)
+//   - 'kebab' – Kebab case: 'my-signal'
+//   - 'snake' – Snake case: 'my_signal'
+//   - 'pascal' – Pascal case: 'MySignal'
+func SVGSwitchClassModCase(
+	s string,
+) SVGSwitchClassMod {
+	return func() string {
+		return fmt.Sprintf("case.%s", s)
+	}
+}
+
+// Adds or removes a class to or from an element based on an expression.
+func (e *SVGSWITCHElement) DATASTAR_CLASS(key string, expression string, modifiers ...SVGSwitchClassMod) *SVGSWITCHElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "data-model"
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	key = fmt.Sprintf("data-class%s", suffix)
+
+	customMods := lo.Map(modifiers, func(m SVGSwitchClassMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Adds or removes a class to or from an element based on an expression.
+func (e *SVGSWITCHElement) IfDATASTAR_CLASS(condition bool, key string, expression string, modifiers ...SVGSwitchClassMod) *SVGSWITCHElement {
+	if condition {
+		e.DATASTAR_CLASS(key, expression, modifiers...)
+	}
+	return e
+}
+
+// Adds or removes a class to or from an element based on an expression.
+// Remove the attribute DATASTAR_CLASS from the element.
+func (e *SVGSWITCHElement) DATASTAR_CLASSRemove(key string) *SVGSWITCHElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	e.StringAttributes.Del("data-class" + suffix)
+
+	return e
+}
+
+type SVGSwitchComputedMod customDataKeyModifier
+
+// Converts the casing of the signal name.
+//   - 'camel' – Camel case: 'mySignal' (default)
+//   - 'kebab' – Kebab case: 'my-signal'
+//   - 'snake' – Snake case: 'my_signal'
+//   - 'pascal' – Pascal case: 'MySignal'
+func SVGSwitchComputedModCase(
+	s string,
+) SVGSwitchComputedMod {
+	return func() string {
+		return fmt.Sprintf("case.%s", s)
+	}
+}
+
+// Creates a signal that is computed based on an expression
+// The computed signal is read-only, and its value is automatically updated when
+// any signals in the expression are updated.
+//
+// See: https://data-star.dev/reference/attributes#data-computed
+func (e *SVGSWITCHElement) DATASTAR_COMPUTED(key string, expression string, modifiers ...SVGSwitchComputedMod) *SVGSWITCHElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	key = fmt.Sprintf("data-computed%s", suffix)
+
+	customMods := lo.Map(modifiers, func(m SVGSwitchComputedMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Creates a signal that is computed based on an expression
+// The computed signal is read-only, and its value is automatically updated when
+// any signals in the expression are updated.
+//
+// See: https://data-star.dev/reference/attributes#data-computed
+func (e *SVGSWITCHElement) IfDATASTAR_COMPUTED(condition bool, key string, expression string, modifiers ...SVGSwitchComputedMod) *SVGSWITCHElement {
+	if condition {
+		e.DATASTAR_COMPUTED(key, expression, modifiers...)
+	}
+	return e
+}
+
+// Creates a signal that is computed based on an expression
+// The computed signal is read-only, and its value is automatically updated when
+// any signals in the expression are updated.
+//
+// See: https://data-star.dev/reference/attributes#data-computed
+// Remove the attribute DATASTAR_COMPUTED from the element.
+func (e *SVGSWITCHElement) DATASTAR_COMPUTEDRemove(key string) *SVGSWITCHElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	e.StringAttributes.Del("data-computed" + suffix)
+
+	return e
+}
+
+// Executes an expression on page load and whenever any signals in the expression
+// change
+// This is useful for performing side effects, such as updating other signals,
+// making requests to the backend, or manipulating the DOM.
+//
+// See: https://data-star.dev/reference/attributes#data-effect
+func (e *SVGSWITCHElement) DATASTAR_EFFECT(expression string) *SVGSWITCHElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-effect"
 
 	e.StringAttributes.Set(key, expression)
 	return e
 }
 
-func (e *SVGSWITCHElement) IfDATASTAR_MODEL(condition bool, expression string) *SVGSWITCHElement {
+// Executes an expression on page load and whenever any signals in the expression
+// change
+// This is useful for performing side effects, such as updating other signals,
+// making requests to the backend, or manipulating the DOM.
+//
+// See: https://data-star.dev/reference/attributes#data-effect
+func (e *SVGSWITCHElement) IfDATASTAR_EFFECT(condition bool, expression string) *SVGSWITCHElement {
 	if condition {
-		e.DATASTAR_MODEL(expression)
+		e.DATASTAR_EFFECT(expression)
 	}
 	return e
 }
 
-// Remove the attribute DATASTAR_MODEL from the element.
-func (e *SVGSWITCHElement) DATASTAR_MODELRemove() *SVGSWITCHElement {
+// Executes an expression on page load and whenever any signals in the expression
+// change
+// This is useful for performing side effects, such as updating other signals,
+// making requests to the backend, or manipulating the DOM.
+//
+// See: https://data-star.dev/reference/attributes#data-effect
+// Remove the attribute DATASTAR_EFFECT from the element.
+func (e *SVGSWITCHElement) DATASTAR_EFFECTRemove() *SVGSWITCHElement {
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("data-model")
+
+	e.StringAttributes.Del("data-effect")
+
 	return e
 }
 
-// Sets the textContent of the element
+type SVGSwitchIgnoreMod customDataKeyModifier
 
+// Only ignore the element itself, not its descendants.
+func SVGSwitchIgnoreModSelf() SVGSwitchIgnoreMod {
+	return func() string {
+		return "self"
+	}
+}
+
+// Datastar walks the entire DOM and applies plugins to each element it encounters
+// It's possible to tell Datastar to ignore an element and its descendants by
+// placing a data-ignore attribute on it
+// This can be useful for preventing naming conflicts with third-party libraries,
+// or when you are unable to escape user input.
+//
+// See: https://data-star.dev/reference/attributes#data-ignore
+func (e *SVGSWITCHElement) DATASTAR_IGNORESet(b bool, modifiers ...SVGSwitchIgnoreMod) *SVGSWITCHElement {
+	key := customDataKey("data-ignore")
+	customMods := lo.Map(modifiers, func(m SVGSwitchIgnoreMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	if e.BoolAttributes == nil {
+		e.BoolAttributes = treemap.New[string, bool]()
+	}
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+// Datastar walks the entire DOM and applies plugins to each element it encounters
+// It's possible to tell Datastar to ignore an element and its descendants by
+// placing a data-ignore attribute on it
+// This can be useful for preventing naming conflicts with third-party libraries,
+// or when you are unable to escape user input.
+//
+// See: https://data-star.dev/reference/attributes#data-ignore
+func (e *SVGSWITCHElement) DATASTAR_IGNORE(modifiers ...SVGSwitchIgnoreMod) *SVGSWITCHElement {
+	return e.DATASTAR_IGNORESet(true, modifiers...)
+}
+
+// Similar to the data-ignore attribute, the data-ignore-morph attribute tells the
+// PatchElements watcher to skip processing an element and its children when
+// morphing elements
+// This can be useful for preventing conflicts with third-party libraries that
+// manipulate the DOM, or when you are unable to escape user input.
+//
+// See: https://data-star.dev/reference/attributes#data-ignore-morph
+func (e *SVGSWITCHElement) DATASTAR_IGNORE_MORPHSet(b bool) *SVGSWITCHElement {
+	key := "data-ignore-morph"
+	if e.BoolAttributes == nil {
+		e.BoolAttributes = treemap.New[string, bool]()
+	}
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+// Similar to the data-ignore attribute, the data-ignore-morph attribute tells the
+// PatchElements watcher to skip processing an element and its children when
+// morphing elements
+// This can be useful for preventing conflicts with third-party libraries that
+// manipulate the DOM, or when you are unable to escape user input.
+//
+// See: https://data-star.dev/reference/attributes#data-ignore-morph
+func (e *SVGSWITCHElement) DATASTAR_IGNORE_MORPH() *SVGSWITCHElement {
+	return e.DATASTAR_IGNORE_MORPHSet(true)
+}
+
+type SVGSwitchIndicatorMod customDataKeyModifier
+
+// Converts the casing of the signal name.
+//   - 'camel' – Camel case: 'mySignal' (default)
+//   - 'kebab' – Kebab case: 'my-signal'
+//   - 'snake' – Snake case: 'my_signal'
+//   - 'pascal' – Pascal case: 'MySignal'
+func SVGSwitchIndicatorModCase(
+	s string,
+) SVGSwitchIndicatorMod {
+	return func() string {
+		return fmt.Sprintf("case.%s", s)
+	}
+}
+
+// Creates a signal and sets its value to true while a fetch request is in flight,
+// otherwise false
+// The signal can be used to show a loading indicator.
+//
+// See: https://data-star.dev/reference/attributes#data-indicator
+func (e *SVGSWITCHElement) DATASTAR_INDICATOR(expression string, modifiers ...SVGSwitchIndicatorMod) *SVGSWITCHElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-indicator"
+
+	customMods := lo.Map(modifiers, func(m SVGSwitchIndicatorMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Creates a signal and sets its value to true while a fetch request is in flight,
+// otherwise false
+// The signal can be used to show a loading indicator.
+//
+// See: https://data-star.dev/reference/attributes#data-indicator
+func (e *SVGSWITCHElement) IfDATASTAR_INDICATOR(condition bool, expression string, modifiers ...SVGSwitchIndicatorMod) *SVGSWITCHElement {
+	if condition {
+		e.DATASTAR_INDICATOR(expression, modifiers...)
+	}
+	return e
+}
+
+// Creates a signal and sets its value to true while a fetch request is in flight,
+// otherwise false
+// The signal can be used to show a loading indicator.
+//
+// See: https://data-star.dev/reference/attributes#data-indicator
+// Remove the attribute DATASTAR_INDICATOR from the element.
+func (e *SVGSWITCHElement) DATASTAR_INDICATORRemove() *SVGSWITCHElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-indicator")
+
+	return e
+}
+
+type SVGSwitchInitMod customDataKeyModifier
+
+// Delay the event listener in milliseconds.
+func SVGSwitchInitModDelayMs(
+	d time.Duration,
+) SVGSwitchInitMod {
+	return func() string {
+		return fmt.Sprintf("delay.%dms", d.Milliseconds())
+	}
+}
+
+// Delay the event listener in seconds.
+func SVGSwitchInitModDelaySec(
+	d time.Duration,
+) SVGSwitchInitMod {
+	return func() string {
+		return fmt.Sprintf("delay.%ds", int(d.Seconds()))
+	}
+}
+
+// Wraps the expression in 'document.startViewTransition()' when the View
+// Transition API is available.
+func SVGSwitchInitModViewTransition() SVGSwitchInitMod {
+	return func() string {
+		return "viewtransition"
+	}
+}
+
+// Runs an expression when the attribute is initialized
+// This can happen on page load, when an element is patched into the DOM, and any
+// time the attribute is modified (via a backend action or otherwise).
+//
+// See: https://data-star.dev/reference/attributes#data-indicator
+func (e *SVGSWITCHElement) DATASTAR_INIT(expression string, modifiers ...SVGSwitchInitMod) *SVGSWITCHElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-init"
+
+	customMods := lo.Map(modifiers, func(m SVGSwitchInitMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Runs an expression when the attribute is initialized
+// This can happen on page load, when an element is patched into the DOM, and any
+// time the attribute is modified (via a backend action or otherwise).
+//
+// See: https://data-star.dev/reference/attributes#data-indicator
+func (e *SVGSWITCHElement) IfDATASTAR_INIT(condition bool, expression string, modifiers ...SVGSwitchInitMod) *SVGSWITCHElement {
+	if condition {
+		e.DATASTAR_INIT(expression, modifiers...)
+	}
+	return e
+}
+
+// Runs an expression when the attribute is initialized
+// This can happen on page load, when an element is patched into the DOM, and any
+// time the attribute is modified (via a backend action or otherwise).
+//
+// See: https://data-star.dev/reference/attributes#data-indicator
+// Remove the attribute DATASTAR_INIT from the element.
+func (e *SVGSWITCHElement) DATASTAR_INITRemove() *SVGSWITCHElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-init")
+
+	return e
+}
+
+type SVGSwitchJsonSignalsMod customDataKeyModifier
+
+// Outputs a more compact JSON format without extra whitespace
+// Useful for displaying filtered data inline.
+func SVGSwitchJsonSignalsModTerse() SVGSwitchJsonSignalsMod {
+	return func() string {
+		return "terse"
+	}
+}
+
+// Sets the text content of an element to a reactive JSON stringified version of
+// signals
+// Useful when troubleshooting an issue.
+//
+// See: https://data-star.dev/reference/attributes#data-json-signals
+func (e *SVGSWITCHElement) DATASTAR_JSON_SIGNALS(expression string, modifiers ...SVGSwitchJsonSignalsMod) *SVGSWITCHElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-json-signals"
+
+	customMods := lo.Map(modifiers, func(m SVGSwitchJsonSignalsMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Sets the text content of an element to a reactive JSON stringified version of
+// signals
+// Useful when troubleshooting an issue.
+//
+// See: https://data-star.dev/reference/attributes#data-json-signals
+func (e *SVGSWITCHElement) IfDATASTAR_JSON_SIGNALS(condition bool, expression string, modifiers ...SVGSwitchJsonSignalsMod) *SVGSWITCHElement {
+	if condition {
+		e.DATASTAR_JSON_SIGNALS(expression, modifiers...)
+	}
+	return e
+}
+
+// Sets the text content of an element to a reactive JSON stringified version of
+// signals
+// Useful when troubleshooting an issue.
+//
+// See: https://data-star.dev/reference/attributes#data-json-signals
+// Remove the attribute DATASTAR_JSON_SIGNALS from the element.
+func (e *SVGSWITCHElement) DATASTAR_JSON_SIGNALSRemove() *SVGSWITCHElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-json-signals")
+
+	return e
+}
+
+type SVGSwitchOnMod customDataKeyModifier
+
+// Only run the expression once
+// Only works with built-in events.
+func SVGSwitchOnModOnce() SVGSwitchOnMod {
+	return func() string {
+		return "once"
+	}
+}
+
+// Do not call preventDefault on the event listener
+// Only works with built-in events.
+func SVGSwitchOnModPassive() SVGSwitchOnMod {
+	return func() string {
+		return "passive"
+	}
+}
+
+// Use capture event listener
+// Only works with built-in events.
+func SVGSwitchOnModCapture() SVGSwitchOnMod {
+	return func() string {
+		return "capture"
+	}
+}
+
+// Converts the casing of the signal name.
+//   - 'camel' – Camel case: 'mySignal' (default)
+//   - 'kebab' – Kebab case: 'my-signal'
+//   - 'snake' – Snake case: 'my_signal'
+//   - 'pascal' – Pascal case: 'MySignal'
+func SVGSwitchOnModCase(
+	s string,
+) SVGSwitchOnMod {
+	return func() string {
+		return fmt.Sprintf("case.%s", s)
+	}
+}
+
+// Delay the event listener in milliseconds.
+func SVGSwitchOnModDelayMs(
+	d time.Duration,
+) SVGSwitchOnMod {
+	return func() string {
+		return fmt.Sprintf("delay.%dms", d.Milliseconds())
+	}
+}
+
+// Delay the event listener in seconds.
+func SVGSwitchOnModDelaySec(
+	d time.Duration,
+) SVGSwitchOnMod {
+	return func() string {
+		return fmt.Sprintf("delay.%ds", int(d.Seconds()))
+	}
+}
+
+// Debounces the event handler
+func SVGSwitchOnModDebounceMs(
+	d time.Duration,
+) SVGSwitchOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms", d.Milliseconds())
+	}
+}
+
+// Debounce the event listener in milliseconds with leading edge.
+func SVGSwitchOnModDebounceMsLeading(
+	d time.Duration,
+) SVGSwitchOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms.leading", d.Milliseconds())
+	}
+}
+
+// Debounce the event listener in milliseconds without trailing edge.
+func SVGSwitchOnModDebounceMsNoTrailing(
+	d time.Duration,
+) SVGSwitchOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms.notrailing", d.Milliseconds())
+	}
+}
+
+// Debounces the event handler
+func SVGSwitchOnModDebounceSec(
+	d time.Duration,
+) SVGSwitchOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds", int(d.Seconds()))
+	}
+}
+
+// Debounce the event listener in seconds with leading edge.
+func SVGSwitchOnModDebounceSecLeading(
+	d time.Duration,
+) SVGSwitchOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds.leading", int(d.Seconds()))
+	}
+}
+
+// Debounce the event listener in seconds without trailing edge.
+func SVGSwitchOnModDebounceSecNoTrailing(
+	d time.Duration,
+) SVGSwitchOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds.notrailing", int(d.Seconds()))
+	}
+}
+
+// Throttles the event handler
+func SVGSwitchOnModThrottleMs(
+	d time.Duration,
+) SVGSwitchOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms", d.Milliseconds())
+	}
+}
+
+// Throttle the event listener in milliseconds without leading edge.
+func SVGSwitchOnModThrottleMsNoLeading(
+	d time.Duration,
+) SVGSwitchOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms.noleading", d.Milliseconds())
+	}
+}
+
+// Throttle the event listener in milliseconds with trailing edge.
+func SVGSwitchOnModThrottleMsTrailing(
+	d time.Duration,
+) SVGSwitchOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms.trailing", d.Milliseconds())
+	}
+}
+
+// Throttles the event listener in seconds.
+func SVGSwitchOnModThrottleSec(
+	d time.Duration,
+) SVGSwitchOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds", int(d.Seconds()))
+	}
+}
+
+// Throttle the event listener in seconds without leading edge.
+func SVGSwitchOnModThrottleSecNoLeading(
+	d time.Duration,
+) SVGSwitchOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds.noleading", int(d.Seconds()))
+	}
+}
+
+// Throttle the event listener in seconds with trailing edge.
+func SVGSwitchOnModThrottleSecTrailing(
+	d time.Duration,
+) SVGSwitchOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds.trailing", int(d.Seconds()))
+	}
+}
+
+// Wraps the expression in 'document.startViewTransition()' when the View
+// Transition API is available.
+func SVGSwitchOnModViewTransition() SVGSwitchOnMod {
+	return func() string {
+		return "viewtransition"
+	}
+}
+
+// Attaches the event listener to the 'window' element.
+func SVGSwitchOnModWindow() SVGSwitchOnMod {
+	return func() string {
+		return "window"
+	}
+}
+
+// Calls 'preventDefault' on the event listener.
+func SVGSwitchOnModPrevent() SVGSwitchOnMod {
+	return func() string {
+		return "prevent"
+	}
+}
+
+// Triggers when the event is outside the element.
+func SVGSwitchOnModOutside() SVGSwitchOnMod {
+	return func() string {
+		return "outside"
+	}
+}
+
+// Calls 'stopPropagation' on the event listener.
+func SVGSwitchOnModStop() SVGSwitchOnMod {
+	return func() string {
+		return "stop"
+	}
+}
+
+// Attaches an event listener to an element, executing an expression whenever the
+// event is triggered.
+//
+// See: https://data-star.dev/reference/attributes#data-on
+func (e *SVGSWITCHElement) DATASTAR_ON(key string, expression string, modifiers ...SVGSwitchOnMod) *SVGSWITCHElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	key = fmt.Sprintf("data-on%s", suffix)
+
+	customMods := lo.Map(modifiers, func(m SVGSwitchOnMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Attaches an event listener to an element, executing an expression whenever the
+// event is triggered.
+//
+// See: https://data-star.dev/reference/attributes#data-on
+func (e *SVGSWITCHElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SVGSwitchOnMod) *SVGSWITCHElement {
+	if condition {
+		e.DATASTAR_ON(key, expression, modifiers...)
+	}
+	return e
+}
+
+// Attaches an event listener to an element, executing an expression whenever the
+// event is triggered.
+//
+// See: https://data-star.dev/reference/attributes#data-on
+// Remove the attribute DATASTAR_ON from the element.
+func (e *SVGSWITCHElement) DATASTAR_ONRemove(key string) *SVGSWITCHElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	e.StringAttributes.Del("data-on" + suffix)
+
+	return e
+}
+
+type SVGSwitchOnIntersectMod customDataKeyModifier
+
+// Only run the expression once
+// Only works with built-in events.
+func SVGSwitchOnIntersectModOnce() SVGSwitchOnIntersectMod {
+	return func() string {
+		return "once"
+	}
+}
+
+// Trigger when half of the element is visible.
+func SVGSwitchOnIntersectModHalf() SVGSwitchOnIntersectMod {
+	return func() string {
+		return "half"
+	}
+}
+
+// Trigger when the full element is visible.
+func SVGSwitchOnIntersectModFull() SVGSwitchOnIntersectMod {
+	return func() string {
+		return "full"
+	}
+}
+
+// Delay the event listener in milliseconds.
+func SVGSwitchOnIntersectModDelayMs(
+	d time.Duration,
+) SVGSwitchOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("delay.%dms", d.Milliseconds())
+	}
+}
+
+// Delay the event listener in seconds.
+func SVGSwitchOnIntersectModDelaySec(
+	d time.Duration,
+) SVGSwitchOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("delay.%ds", int(d.Seconds()))
+	}
+}
+
+// Debounces the event handler
+func SVGSwitchOnIntersectModDebounceMs(
+	d time.Duration,
+) SVGSwitchOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms", d.Milliseconds())
+	}
+}
+
+// Debounce the event listener in milliseconds with leading edge.
+func SVGSwitchOnIntersectModDebounceMsLeading(
+	d time.Duration,
+) SVGSwitchOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms.leading", d.Milliseconds())
+	}
+}
+
+// Debounce the event listener in milliseconds without trailing edge.
+func SVGSwitchOnIntersectModDebounceMsNoTrailing(
+	d time.Duration,
+) SVGSwitchOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms.notrailing", d.Milliseconds())
+	}
+}
+
+// Debounces the event handler
+func SVGSwitchOnIntersectModDebounceSec(
+	d time.Duration,
+) SVGSwitchOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds", int(d.Seconds()))
+	}
+}
+
+// Debounce the event listener in seconds with leading edge.
+func SVGSwitchOnIntersectModDebounceSecLeading(
+	d time.Duration,
+) SVGSwitchOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds.leading", int(d.Seconds()))
+	}
+}
+
+// Debounce the event listener in seconds without trailing edge.
+func SVGSwitchOnIntersectModDebounceSecNoTrailing(
+	d time.Duration,
+) SVGSwitchOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds.notrailing", int(d.Seconds()))
+	}
+}
+
+// Throttles the event handler
+func SVGSwitchOnIntersectModThrottleMs(
+	d time.Duration,
+) SVGSwitchOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms", d.Milliseconds())
+	}
+}
+
+// Throttle the event listener in milliseconds without leading edge.
+func SVGSwitchOnIntersectModThrottleMsNoLeading(
+	d time.Duration,
+) SVGSwitchOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms.noleading", d.Milliseconds())
+	}
+}
+
+// Throttle the event listener in milliseconds with trailing edge.
+func SVGSwitchOnIntersectModThrottleMsTrailing(
+	d time.Duration,
+) SVGSwitchOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms.trailing", d.Milliseconds())
+	}
+}
+
+// Throttles the event listener in seconds.
+func SVGSwitchOnIntersectModThrottleSec(
+	d time.Duration,
+) SVGSwitchOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds", int(d.Seconds()))
+	}
+}
+
+// Throttle the event listener in seconds without leading edge.
+func SVGSwitchOnIntersectModThrottleSecNoLeading(
+	d time.Duration,
+) SVGSwitchOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds.noleading", int(d.Seconds()))
+	}
+}
+
+// Throttle the event listener in seconds with trailing edge.
+func SVGSwitchOnIntersectModThrottleSecTrailing(
+	d time.Duration,
+) SVGSwitchOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds.trailing", int(d.Seconds()))
+	}
+}
+
+// Wraps the expression in 'document.startViewTransition()' when the View
+// Transition API is available.
+func SVGSwitchOnIntersectModViewTransition() SVGSwitchOnIntersectMod {
+	return func() string {
+		return "viewtransition"
+	}
+}
+
+// Runs an expression when the element intersects with the viewport.
+func (e *SVGSWITCHElement) DATASTAR_ON_INTERSECT(expression string, modifiers ...SVGSwitchOnIntersectMod) *SVGSWITCHElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-on-intersect"
+
+	customMods := lo.Map(modifiers, func(m SVGSwitchOnIntersectMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Runs an expression when the element intersects with the viewport.
+func (e *SVGSWITCHElement) IfDATASTAR_ON_INTERSECT(condition bool, expression string, modifiers ...SVGSwitchOnIntersectMod) *SVGSWITCHElement {
+	if condition {
+		e.DATASTAR_ON_INTERSECT(expression, modifiers...)
+	}
+	return e
+}
+
+// Runs an expression when the element intersects with the viewport.
+// Remove the attribute DATASTAR_ON_INTERSECT from the element.
+func (e *SVGSWITCHElement) DATASTAR_ON_INTERSECTRemove() *SVGSWITCHElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-on-intersect")
+
+	return e
+}
+
+type SVGSwitchOnIntervalMod customDataKeyModifier
+
+// Sets the interval duration in milliseconds.
+func SVGSwitchOnIntervalModDurationMs(
+	d time.Duration,
+) SVGSwitchOnIntervalMod {
+	return func() string {
+		return fmt.Sprintf("duration.%dms", d.Milliseconds())
+	}
+}
+
+// Sets the interval duration in milliseconds
+// Execute the first interval immediately.
+func SVGSwitchOnIntervalModDurationMsLeading(
+	d time.Duration,
+) SVGSwitchOnIntervalMod {
+	return func() string {
+		return fmt.Sprintf("duration.%dms.leading", d.Milliseconds())
+	}
+}
+
+// Sets the interval duration in seconds.
+func SVGSwitchOnIntervalModDurationSec(
+	d time.Duration,
+) SVGSwitchOnIntervalMod {
+	return func() string {
+		return fmt.Sprintf("duration.%ds", int(d.Seconds()))
+	}
+}
+
+// Sets the interval duration in seconds
+// Execute the first interval immediately.
+func SVGSwitchOnIntervalModDurationSecLeading(
+	d time.Duration,
+) SVGSwitchOnIntervalMod {
+	return func() string {
+		return fmt.Sprintf("duration.%ds.leading", int(d.Seconds()))
+	}
+}
+
+// Wraps the expression in 'document.startViewTransition()' when the View
+// Transition API is available.
+func SVGSwitchOnIntervalModViewTransition() SVGSwitchOnIntervalMod {
+	return func() string {
+		return "viewtransition"
+	}
+}
+
+// Runs an expression at a regular interval
+// The interval duration defaults to one second and can be modified using the
+// '__duration' modifier.
+//
+// See: https://data-star.dev/reference/attributes#data-on-interval
+func (e *SVGSWITCHElement) DATASTAR_ON_INTERVAL(expression string, modifiers ...SVGSwitchOnIntervalMod) *SVGSWITCHElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-on-interval"
+
+	customMods := lo.Map(modifiers, func(m SVGSwitchOnIntervalMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Runs an expression at a regular interval
+// The interval duration defaults to one second and can be modified using the
+// '__duration' modifier.
+//
+// See: https://data-star.dev/reference/attributes#data-on-interval
+func (e *SVGSWITCHElement) IfDATASTAR_ON_INTERVAL(condition bool, expression string, modifiers ...SVGSwitchOnIntervalMod) *SVGSWITCHElement {
+	if condition {
+		e.DATASTAR_ON_INTERVAL(expression, modifiers...)
+	}
+	return e
+}
+
+// Runs an expression at a regular interval
+// The interval duration defaults to one second and can be modified using the
+// '__duration' modifier.
+//
+// See: https://data-star.dev/reference/attributes#data-on-interval
+// Remove the attribute DATASTAR_ON_INTERVAL from the element.
+func (e *SVGSWITCHElement) DATASTAR_ON_INTERVALRemove() *SVGSWITCHElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-on-interval")
+
+	return e
+}
+
+type SVGSwitchOnSignalPatchMod customDataKeyModifier
+
+// Delay the event listener in milliseconds.
+func SVGSwitchOnSignalPatchModDelayMs(
+	d time.Duration,
+) SVGSwitchOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("delay.%dms", d.Milliseconds())
+	}
+}
+
+// Delay the event listener in seconds.
+func SVGSwitchOnSignalPatchModDelaySec(
+	d time.Duration,
+) SVGSwitchOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("delay.%ds", int(d.Seconds()))
+	}
+}
+
+// Debounces the event handler
+func SVGSwitchOnSignalPatchModDebounceMs(
+	d time.Duration,
+) SVGSwitchOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms", d.Milliseconds())
+	}
+}
+
+// Debounce the event listener in milliseconds with leading edge.
+func SVGSwitchOnSignalPatchModDebounceMsLeading(
+	d time.Duration,
+) SVGSwitchOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms.leading", d.Milliseconds())
+	}
+}
+
+// Debounce the event listener in milliseconds without trailing edge.
+func SVGSwitchOnSignalPatchModDebounceMsNoTrailing(
+	d time.Duration,
+) SVGSwitchOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms.notrailing", d.Milliseconds())
+	}
+}
+
+// Debounces the event handler
+func SVGSwitchOnSignalPatchModDebounceSec(
+	d time.Duration,
+) SVGSwitchOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds", int(d.Seconds()))
+	}
+}
+
+// Debounce the event listener in seconds with leading edge.
+func SVGSwitchOnSignalPatchModDebounceSecLeading(
+	d time.Duration,
+) SVGSwitchOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds.leading", int(d.Seconds()))
+	}
+}
+
+// Debounce the event listener in seconds without trailing edge.
+func SVGSwitchOnSignalPatchModDebounceSecNoTrailing(
+	d time.Duration,
+) SVGSwitchOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds.notrailing", int(d.Seconds()))
+	}
+}
+
+// Throttles the event handler
+func SVGSwitchOnSignalPatchModThrottleMs(
+	d time.Duration,
+) SVGSwitchOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms", d.Milliseconds())
+	}
+}
+
+// Throttle the event listener in milliseconds without leading edge.
+func SVGSwitchOnSignalPatchModThrottleMsNoLeading(
+	d time.Duration,
+) SVGSwitchOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms.noleading", d.Milliseconds())
+	}
+}
+
+// Throttle the event listener in milliseconds with trailing edge.
+func SVGSwitchOnSignalPatchModThrottleMsTrailing(
+	d time.Duration,
+) SVGSwitchOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms.trailing", d.Milliseconds())
+	}
+}
+
+// Throttles the event listener in seconds.
+func SVGSwitchOnSignalPatchModThrottleSec(
+	d time.Duration,
+) SVGSwitchOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds", int(d.Seconds()))
+	}
+}
+
+// Throttle the event listener in seconds without leading edge.
+func SVGSwitchOnSignalPatchModThrottleSecNoLeading(
+	d time.Duration,
+) SVGSwitchOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds.noleading", int(d.Seconds()))
+	}
+}
+
+// Throttle the event listener in seconds with trailing edge.
+func SVGSwitchOnSignalPatchModThrottleSecTrailing(
+	d time.Duration,
+) SVGSwitchOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds.trailing", int(d.Seconds()))
+	}
+}
+
+// Runs an expression whenever any signals are patched
+// This is useful for tracking changes, updating computed values, or triggering
+// side effects when data updates.
+//
+// See: https://data-star.dev/reference/attributes#data-on-signal-patch
+func (e *SVGSWITCHElement) DATASTAR_ON_SIGNAL_PATCH(expression string, modifiers ...SVGSwitchOnSignalPatchMod) *SVGSWITCHElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-on-signal-patch"
+
+	customMods := lo.Map(modifiers, func(m SVGSwitchOnSignalPatchMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Runs an expression whenever any signals are patched
+// This is useful for tracking changes, updating computed values, or triggering
+// side effects when data updates.
+//
+// See: https://data-star.dev/reference/attributes#data-on-signal-patch
+func (e *SVGSWITCHElement) IfDATASTAR_ON_SIGNAL_PATCH(condition bool, expression string, modifiers ...SVGSwitchOnSignalPatchMod) *SVGSWITCHElement {
+	if condition {
+		e.DATASTAR_ON_SIGNAL_PATCH(expression, modifiers...)
+	}
+	return e
+}
+
+// Runs an expression whenever any signals are patched
+// This is useful for tracking changes, updating computed values, or triggering
+// side effects when data updates.
+//
+// See: https://data-star.dev/reference/attributes#data-on-signal-patch
+// Remove the attribute DATASTAR_ON_SIGNAL_PATCH from the element.
+func (e *SVGSWITCHElement) DATASTAR_ON_SIGNAL_PATCHRemove() *SVGSWITCHElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-on-signal-patch")
+
+	return e
+}
+
+// Filters which signals to watch when using the data-on-signal-patch attribute.
+//
+// The data-on-signal-patch-filter attribute accepts an object with include and/or
+// exclude properties that are regular expressions.
+//
+// See: https://data-star.dev/reference/attributes#data-on-signal-patch-filter
+func (e *SVGSWITCHElement) DATASTAR_ON_SIGNAL_PATCH_FILTER(expression string) *SVGSWITCHElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-on-signal-patch-filter"
+
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Filters which signals to watch when using the data-on-signal-patch attribute.
+//
+// The data-on-signal-patch-filter attribute accepts an object with include and/or
+// exclude properties that are regular expressions.
+//
+// See: https://data-star.dev/reference/attributes#data-on-signal-patch-filter
+func (e *SVGSWITCHElement) IfDATASTAR_ON_SIGNAL_PATCH_FILTER(condition bool, expression string) *SVGSWITCHElement {
+	if condition {
+		e.DATASTAR_ON_SIGNAL_PATCH_FILTER(expression)
+	}
+	return e
+}
+
+// Filters which signals to watch when using the data-on-signal-patch attribute.
+//
+// The data-on-signal-patch-filter attribute accepts an object with include and/or
+// exclude properties that are regular expressions.
+//
+// See: https://data-star.dev/reference/attributes#data-on-signal-patch-filter
+// Remove the attribute DATASTAR_ON_SIGNAL_PATCH_FILTER from the element.
+func (e *SVGSWITCHElement) DATASTAR_ON_SIGNAL_PATCH_FILTERRemove() *SVGSWITCHElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-on-signal-patch-filter")
+
+	return e
+}
+
+// Preserves the value of an attribute when morphing DOM elements.
+//
+// See: https://data-star.dev/reference/attributes#data-preserve-attr
+func (e *SVGSWITCHElement) DATASTAR_PRESERVE_ATTR(expression string) *SVGSWITCHElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-preserve-attr"
+
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Preserves the value of an attribute when morphing DOM elements.
+//
+// See: https://data-star.dev/reference/attributes#data-preserve-attr
+func (e *SVGSWITCHElement) IfDATASTAR_PRESERVE_ATTR(condition bool, expression string) *SVGSWITCHElement {
+	if condition {
+		e.DATASTAR_PRESERVE_ATTR(expression)
+	}
+	return e
+}
+
+// Preserves the value of an attribute when morphing DOM elements.
+//
+// See: https://data-star.dev/reference/attributes#data-preserve-attr
+// Remove the attribute DATASTAR_PRESERVE_ATTR from the element.
+func (e *SVGSWITCHElement) DATASTAR_PRESERVE_ATTRRemove() *SVGSWITCHElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-preserve-attr")
+
+	return e
+}
+
+type SVGSwitchRefMod customDataKeyModifier
+
+// Converts the casing of the signal name.
+//   - 'camel' – Camel case: 'mySignal' (default)
+//   - 'kebab' – Kebab case: 'my-signal'
+//   - 'snake' – Snake case: 'my_signal'
+//   - 'pascal' – Pascal case: 'MySignal'
+func SVGSwitchRefModCase(
+	s string,
+) SVGSwitchRefMod {
+	return func() string {
+		return fmt.Sprintf("case.%s", s)
+	}
+}
+
+// Creates a new signal that is a reference to the element on which the data
+// attribute is placed.
+//
+// See: https://data-star.dev/reference/attributes#data-ref
+func (e *SVGSWITCHElement) DATASTAR_REF(expression string, modifiers ...SVGSwitchRefMod) *SVGSWITCHElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-ref"
+
+	customMods := lo.Map(modifiers, func(m SVGSwitchRefMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Creates a new signal that is a reference to the element on which the data
+// attribute is placed.
+//
+// See: https://data-star.dev/reference/attributes#data-ref
+func (e *SVGSWITCHElement) IfDATASTAR_REF(condition bool, expression string, modifiers ...SVGSwitchRefMod) *SVGSWITCHElement {
+	if condition {
+		e.DATASTAR_REF(expression, modifiers...)
+	}
+	return e
+}
+
+// Creates a new signal that is a reference to the element on which the data
+// attribute is placed.
+//
+// See: https://data-star.dev/reference/attributes#data-ref
+// Remove the attribute DATASTAR_REF from the element.
+func (e *SVGSWITCHElement) DATASTAR_REFRemove() *SVGSWITCHElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-ref")
+
+	return e
+}
+
+// Shows or hides an element based on whether an expression evaluates to 'true' or
+// 'false'
+// For anything with custom requirements, use 'data-class' instead.
+//
+// See: https://data-star.dev/reference/attributes#data-show
+func (e *SVGSWITCHElement) DATASTAR_SHOW(expression string) *SVGSWITCHElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-show"
+
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Shows or hides an element based on whether an expression evaluates to 'true' or
+// 'false'
+// For anything with custom requirements, use 'data-class' instead.
+//
+// See: https://data-star.dev/reference/attributes#data-show
+func (e *SVGSWITCHElement) IfDATASTAR_SHOW(condition bool, expression string) *SVGSWITCHElement {
+	if condition {
+		e.DATASTAR_SHOW(expression)
+	}
+	return e
+}
+
+// Shows or hides an element based on whether an expression evaluates to 'true' or
+// 'false'
+// For anything with custom requirements, use 'data-class' instead.
+//
+// See: https://data-star.dev/reference/attributes#data-show
+// Remove the attribute DATASTAR_SHOW from the element.
+func (e *SVGSWITCHElement) DATASTAR_SHOWRemove() *SVGSWITCHElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-show")
+
+	return e
+}
+
+type SVGSwitchSignalsMod customDataKeyModifier
+
+// Converts the casing of the signal name.
+//   - 'camel' – Camel case: 'mySignal' (default)
+//   - 'kebab' – Kebab case: 'my-signal'
+//   - 'snake' – Snake case: 'my_signal'
+//   - 'pascal' – Pascal case: 'MySignal'
+func SVGSwitchSignalsModCase(
+	s string,
+) SVGSwitchSignalsMod {
+	return func() string {
+		return fmt.Sprintf("case.%s", s)
+	}
+}
+
+// Only patches signals if their keys do not already exist
+// This is useful for setting defaults without overwriting existing values.
+func SVGSwitchSignalsModIfMissing() SVGSwitchSignalsMod {
+	return func() string {
+		return "ifmissing"
+	}
+}
+
+// Patches (adds, updates or removes) one or more signals into the existing
+// signals
+// Values defined later in the DOM tree override those defined earlier.
+//
+// See: https://data-star.dev/reference/attributes#data-signals
+func (e *SVGSWITCHElement) DATASTAR_SIGNALS(key string, expression string, modifiers ...SVGSwitchSignalsMod) *SVGSWITCHElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	key = fmt.Sprintf("data-signals%s", suffix)
+
+	customMods := lo.Map(modifiers, func(m SVGSwitchSignalsMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Patches (adds, updates or removes) one or more signals into the existing
+// signals
+// Values defined later in the DOM tree override those defined earlier.
+//
+// See: https://data-star.dev/reference/attributes#data-signals
+func (e *SVGSWITCHElement) IfDATASTAR_SIGNALS(condition bool, key string, expression string, modifiers ...SVGSwitchSignalsMod) *SVGSWITCHElement {
+	if condition {
+		e.DATASTAR_SIGNALS(key, expression, modifiers...)
+	}
+	return e
+}
+
+// Patches (adds, updates or removes) one or more signals into the existing
+// signals
+// Values defined later in the DOM tree override those defined earlier.
+//
+// See: https://data-star.dev/reference/attributes#data-signals
+// Remove the attribute DATASTAR_SIGNALS from the element.
+func (e *SVGSWITCHElement) DATASTAR_SIGNALSRemove(key string) *SVGSWITCHElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	e.StringAttributes.Del("data-signals" + suffix)
+
+	return e
+}
+
+type SVGSwitchStyleMod customDataKeyModifier
+
+// Converts the casing of the signal name.
+//   - 'camel' – Camel case: 'mySignal' (default)
+//   - 'kebab' – Kebab case: 'my-signal'
+//   - 'snake' – Snake case: 'my_signal'
+//   - 'pascal' – Pascal case: 'MySignal'
+func SVGSwitchStyleModCase(
+	s string,
+) SVGSwitchStyleMod {
+	return func() string {
+		return fmt.Sprintf("case.%s", s)
+	}
+}
+
+// Sets the value of inline CSS styles on an element based on an expression, and
+// keeps them in sync.
+//
+// See: https://data-star.dev/reference/attributes#data-style
+func (e *SVGSWITCHElement) DATASTAR_STYLE(key string, expression string, modifiers ...SVGSwitchStyleMod) *SVGSWITCHElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	key = fmt.Sprintf("data-style%s", suffix)
+
+	customMods := lo.Map(modifiers, func(m SVGSwitchStyleMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Sets the value of inline CSS styles on an element based on an expression, and
+// keeps them in sync.
+//
+// See: https://data-star.dev/reference/attributes#data-style
+func (e *SVGSWITCHElement) IfDATASTAR_STYLE(condition bool, key string, expression string, modifiers ...SVGSwitchStyleMod) *SVGSWITCHElement {
+	if condition {
+		e.DATASTAR_STYLE(key, expression, modifiers...)
+	}
+	return e
+}
+
+// Sets the value of inline CSS styles on an element based on an expression, and
+// keeps them in sync.
+//
+// See: https://data-star.dev/reference/attributes#data-style
+// Remove the attribute DATASTAR_STYLE from the element.
+func (e *SVGSWITCHElement) DATASTAR_STYLERemove(key string) *SVGSWITCHElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	e.StringAttributes.Del("data-style" + suffix)
+
+	return e
+}
+
+// Binds the text content of an element to an expression.
+//
+// See: https://data-star.dev/reference/attributes#data-text
 func (e *SVGSWITCHElement) DATASTAR_TEXT(expression string) *SVGSWITCHElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
@@ -574,6 +2120,9 @@ func (e *SVGSWITCHElement) DATASTAR_TEXT(expression string) *SVGSWITCHElement {
 	return e
 }
 
+// Binds the text content of an element to an expression.
+//
+// See: https://data-star.dev/reference/attributes#data-text
 func (e *SVGSWITCHElement) IfDATASTAR_TEXT(condition bool, expression string) *SVGSWITCHElement {
 	if condition {
 		e.DATASTAR_TEXT(expression)
@@ -581,228 +2130,16 @@ func (e *SVGSWITCHElement) IfDATASTAR_TEXT(condition bool, expression string) *S
 	return e
 }
 
+// Binds the text content of an element to an expression.
+//
+// See: https://data-star.dev/reference/attributes#data-text
 // Remove the attribute DATASTAR_TEXT from the element.
 func (e *SVGSWITCHElement) DATASTAR_TEXTRemove() *SVGSWITCHElement {
 	if e.StringAttributes == nil {
 		return e
 	}
+
 	e.StringAttributes.Del("data-text")
-	return e
-}
 
-// Sets the event handler of the element
-
-type SVGSwitchOnMod customDataKeyModifier
-
-// Debounces the event handler
-func SVGSwitchOnModDebounce(
-	d time.Duration,
-) SVGSwitchOnMod {
-	return func() string {
-		return fmt.Sprintf("debounce_%dms", d.Milliseconds())
-	}
-}
-
-// Throttles the event handler
-func SVGSwitchOnModThrottle(
-	d time.Duration,
-) SVGSwitchOnMod {
-	return func() string {
-		return fmt.Sprintf("throttle_%dms", d.Milliseconds())
-	}
-}
-
-func (e *SVGSWITCHElement) DATASTAR_ON(key string, expression string, modifiers ...SVGSwitchOnMod) *SVGSWITCHElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-
-	key = fmt.Sprintf("data-on-%s", key)
-
-	customMods := lo.Map(modifiers, func(m SVGSwitchOnMod, i int) customDataKeyModifier {
-		return customDataKeyModifier(m)
-	})
-	key = customDataKey(key, customMods...)
-	e.StringAttributes.Set(key, expression)
-	return e
-}
-
-func (e *SVGSWITCHElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SVGSwitchOnMod) *SVGSWITCHElement {
-	if condition {
-		e.DATASTAR_ON(key, expression, modifiers...)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_ON from the element.
-func (e *SVGSWITCHElement) DATASTAR_ONRemove() *SVGSWITCHElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-on")
-	return e
-}
-
-// Sets the focus of the element
-
-func (e *SVGSWITCHElement) DATASTAR_FOCUSSet(b bool) *SVGSWITCHElement {
-	key := "data-focus"
-	e.BoolAttributes.Set(key, b)
-	return e
-}
-
-func (e *SVGSWITCHElement) DATASTAR_FOCUS() *SVGSWITCHElement {
-	return e.DATASTAR_FOCUSSet(true)
-}
-
-// Sets the header of for fetch requests
-
-func (e *SVGSWITCHElement) DATASTAR_HEADER(key string, expression string) *SVGSWITCHElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-
-	key = fmt.Sprintf("data-header-%s", key)
-
-	e.StringAttributes.Set(key, expression)
-	return e
-}
-
-func (e *SVGSWITCHElement) IfDATASTAR_HEADER(condition bool, key string, expression string) *SVGSWITCHElement {
-	if condition {
-		e.DATASTAR_HEADER(key, expression)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_HEADER from the element.
-func (e *SVGSWITCHElement) DATASTAR_HEADERRemove() *SVGSWITCHElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-header")
-	return e
-}
-
-// Sets the indicator selector for fetch requests
-
-func (e *SVGSWITCHElement) DATASTAR_FETCH_INDICATOR(expression string) *SVGSWITCHElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-
-	key := "data-fetch-indicator"
-
-	e.StringAttributes.Set(key, expression)
-	return e
-}
-
-func (e *SVGSWITCHElement) IfDATASTAR_FETCH_INDICATOR(condition bool, expression string) *SVGSWITCHElement {
-	if condition {
-		e.DATASTAR_FETCH_INDICATOR(expression)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_FETCH_INDICATOR from the element.
-func (e *SVGSWITCHElement) DATASTAR_FETCH_INDICATORRemove() *SVGSWITCHElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-fetch-indicator")
-	return e
-}
-
-// Sets the visibility of the element
-
-func (e *SVGSWITCHElement) DATASTAR_SHOWSet(b bool) *SVGSWITCHElement {
-	key := "data-show"
-	e.BoolAttributes.Set(key, b)
-	return e
-}
-
-func (e *SVGSWITCHElement) DATASTAR_SHOW() *SVGSWITCHElement {
-	return e.DATASTAR_SHOWSet(true)
-}
-
-// Triggers the callback when the element intersects the viewport
-
-func (e *SVGSWITCHElement) DATASTAR_INTERSECTS(expression string) *SVGSWITCHElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-
-	key := "data-intersects"
-
-	e.StringAttributes.Set(key, expression)
-	return e
-}
-
-func (e *SVGSWITCHElement) IfDATASTAR_INTERSECTS(condition bool, expression string) *SVGSWITCHElement {
-	if condition {
-		e.DATASTAR_INTERSECTS(expression)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_INTERSECTS from the element.
-func (e *SVGSWITCHElement) DATASTAR_INTERSECTSRemove() *SVGSWITCHElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-intersects")
-	return e
-}
-
-// Teleports the element to the given selector
-
-func (e *SVGSWITCHElement) DATASTAR_TELEPORTSet(b bool) *SVGSWITCHElement {
-	key := "data-teleport"
-	e.BoolAttributes.Set(key, b)
-	return e
-}
-
-func (e *SVGSWITCHElement) DATASTAR_TELEPORT() *SVGSWITCHElement {
-	return e.DATASTAR_TELEPORTSet(true)
-}
-
-// Scrolls the element into view
-
-func (e *SVGSWITCHElement) DATASTAR_SCROLL_INTO_VIEWSet(b bool) *SVGSWITCHElement {
-	key := "data-scroll-into-view"
-	e.BoolAttributes.Set(key, b)
-	return e
-}
-
-func (e *SVGSWITCHElement) DATASTAR_SCROLL_INTO_VIEW() *SVGSWITCHElement {
-	return e.DATASTAR_SCROLL_INTO_VIEWSet(true)
-}
-
-// Setup the ViewTransitionAPI for the element
-
-func (e *SVGSWITCHElement) DATASTAR_VIEW_TRANSITION(expression string) *SVGSWITCHElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-
-	key := "data-view-transition"
-
-	e.StringAttributes.Set(key, expression)
-	return e
-}
-
-func (e *SVGSWITCHElement) IfDATASTAR_VIEW_TRANSITION(condition bool, expression string) *SVGSWITCHElement {
-	if condition {
-		e.DATASTAR_VIEW_TRANSITION(expression)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_VIEW_TRANSITION from the element.
-func (e *SVGSWITCHElement) DATASTAR_VIEW_TRANSITIONRemove() *SVGSWITCHElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-view-transition")
 	return e
 }

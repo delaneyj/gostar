@@ -5,10 +5,8 @@ package elements
 
 import (
 	"fmt"
-	"html"
 	"time"
 
-	"github.com/goccy/go-json"
 	"github.com/igrmk/treemap/v2"
 	"github.com/samber/lo"
 )
@@ -176,10 +174,18 @@ func (e *SVGFEFLOODElement) FLOOD_COLOR(s string) *SVGFEFLOODElement {
 	return e
 }
 
+// The flood-color attribute indicates what color to use to flood the current
+// filter primitive subregion defined through the <feFlood> element
+// If attribute 'flood-color' is not specified, then the effect is as if a value
+// of black were specified.
 func (e *SVGFEFLOODElement) FLOOD_COLORF(format string, args ...any) *SVGFEFLOODElement {
 	return e.FLOOD_COLOR(fmt.Sprintf(format, args...))
 }
 
+// The flood-color attribute indicates what color to use to flood the current
+// filter primitive subregion defined through the <feFlood> element
+// If attribute 'flood-color' is not specified, then the effect is as if a value
+// of black were specified.
 func (e *SVGFEFLOODElement) IfFLOOD_COLOR(condition bool, s string) *SVGFEFLOODElement {
 	if condition {
 		e.FLOOD_COLOR(s)
@@ -187,6 +193,10 @@ func (e *SVGFEFLOODElement) IfFLOOD_COLOR(condition bool, s string) *SVGFEFLOODE
 	return e
 }
 
+// The flood-color attribute indicates what color to use to flood the current
+// filter primitive subregion defined through the <feFlood> element
+// If attribute 'flood-color' is not specified, then the effect is as if a value
+// of black were specified.
 func (e *SVGFEFLOODElement) IfFLOOD_COLORF(condition bool, format string, args ...any) *SVGFEFLOODElement {
 	if condition {
 		e.FLOOD_COLOR(fmt.Sprintf(format, args...))
@@ -194,6 +204,10 @@ func (e *SVGFEFLOODElement) IfFLOOD_COLORF(condition bool, format string, args .
 	return e
 }
 
+// The flood-color attribute indicates what color to use to flood the current
+// filter primitive subregion defined through the <feFlood> element
+// If attribute 'flood-color' is not specified, then the effect is as if a value
+// of black were specified.
 // Remove the attribute FLOOD_COLOR from the element.
 func (e *SVGFEFLOODElement) FLOOD_COLORRemove(s string) *SVGFEFLOODElement {
 	if e.StringAttributes == nil {
@@ -203,6 +217,10 @@ func (e *SVGFEFLOODElement) FLOOD_COLORRemove(s string) *SVGFEFLOODElement {
 	return e
 }
 
+// The flood-color attribute indicates what color to use to flood the current
+// filter primitive subregion defined through the <feFlood> element
+// If attribute 'flood-color' is not specified, then the effect is as if a value
+// of black were specified.
 func (e *SVGFEFLOODElement) FLOOD_COLORRemoveF(format string, args ...any) *SVGFEFLOODElement {
 	return e.FLOOD_COLORRemove(fmt.Sprintf(format, args...))
 }
@@ -217,6 +235,8 @@ func (e *SVGFEFLOODElement) FLOOD_OPACITY(f float64) *SVGFEFLOODElement {
 	return e
 }
 
+// The flood-opacity attribute indicates the opacity value to use across the
+// current filter primitive subregion defined through the <feFlood> element.
 func (e *SVGFEFLOODElement) IfFLOOD_OPACITY(condition bool, f float64) *SVGFEFLOODElement {
 	if condition {
 		e.FLOOD_OPACITY(f)
@@ -233,10 +253,12 @@ func (e *SVGFEFLOODElement) ID(s string) *SVGFEFLOODElement {
 	return e
 }
 
+// Specifies a unique id for an element
 func (e *SVGFEFLOODElement) IDF(format string, args ...any) *SVGFEFLOODElement {
 	return e.ID(fmt.Sprintf(format, args...))
 }
 
+// Specifies a unique id for an element
 func (e *SVGFEFLOODElement) IfID(condition bool, s string) *SVGFEFLOODElement {
 	if condition {
 		e.ID(s)
@@ -244,6 +266,7 @@ func (e *SVGFEFLOODElement) IfID(condition bool, s string) *SVGFEFLOODElement {
 	return e
 }
 
+// Specifies a unique id for an element
 func (e *SVGFEFLOODElement) IfIDF(condition bool, format string, args ...any) *SVGFEFLOODElement {
 	if condition {
 		e.ID(fmt.Sprintf(format, args...))
@@ -251,6 +274,7 @@ func (e *SVGFEFLOODElement) IfIDF(condition bool, format string, args ...any) *S
 	return e
 }
 
+// Specifies a unique id for an element
 // Remove the attribute ID from the element.
 func (e *SVGFEFLOODElement) IDRemove(s string) *SVGFEFLOODElement {
 	if e.StringAttributes == nil {
@@ -260,6 +284,7 @@ func (e *SVGFEFLOODElement) IDRemove(s string) *SVGFEFLOODElement {
 	return e
 }
 
+// Specifies a unique id for an element
 func (e *SVGFEFLOODElement) IDRemoveF(format string, args ...any) *SVGFEFLOODElement {
 	return e.IDRemove(fmt.Sprintf(format, args...))
 }
@@ -279,6 +304,8 @@ func (e *SVGFEFLOODElement) CLASS(s ...string) *SVGFEFLOODElement {
 	return e
 }
 
+// Specifies one or more classnames for an element (refers to a class in a style
+// sheet)
 func (e *SVGFEFLOODElement) IfCLASS(condition bool, s ...string) *SVGFEFLOODElement {
 	if condition {
 		e.CLASS(s...)
@@ -286,6 +313,8 @@ func (e *SVGFEFLOODElement) IfCLASS(condition bool, s ...string) *SVGFEFLOODElem
 	return e
 }
 
+// Specifies one or more classnames for an element (refers to a class in a style
+// sheet)
 // Remove the attribute CLASS from the element.
 func (e *SVGFEFLOODElement) CLASSRemove(s ...string) *SVGFEFLOODElement {
 	if e.DelimitedStrings == nil {
@@ -304,6 +333,7 @@ func (e *SVGFEFLOODElement) STYLEF(k string, format string, args ...any) *SVGFEF
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+// Specifies an inline CSS style for an element
 func (e *SVGFEFLOODElement) IfSTYLE(condition bool, k string, v string) *SVGFEFLOODElement {
 	if condition {
 		e.STYLE(k, v)
@@ -311,6 +341,7 @@ func (e *SVGFEFLOODElement) IfSTYLE(condition bool, k string, v string) *SVGFEFL
 	return e
 }
 
+// Specifies an inline CSS style for an element
 func (e *SVGFEFLOODElement) STYLE(k string, v string) *SVGFEFLOODElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -324,6 +355,7 @@ func (e *SVGFEFLOODElement) STYLE(k string, v string) *SVGFEFLOODElement {
 	return e
 }
 
+// Specifies an inline CSS style for an element
 func (e *SVGFEFLOODElement) IfSTYLEF(condition bool, k string, format string, args ...any) *SVGFEFLOODElement {
 	if condition {
 		e.STYLE(k, fmt.Sprintf(format, args...))
@@ -331,6 +363,7 @@ func (e *SVGFEFLOODElement) IfSTYLEF(condition bool, k string, format string, ar
 	return e
 }
 
+// Specifies an inline CSS style for an element
 // Add the attributes in the map to the element.
 func (e *SVGFEFLOODElement) STYLEMap(m map[string]string) *SVGFEFLOODElement {
 	if e.KVStrings == nil {
@@ -347,6 +380,7 @@ func (e *SVGFEFLOODElement) STYLEMap(m map[string]string) *SVGFEFLOODElement {
 	return e
 }
 
+// Specifies an inline CSS style for an element
 // Add pairs of attributes to the element.
 func (e *SVGFEFLOODElement) STYLEPairs(pairs ...string) *SVGFEFLOODElement {
 	if len(pairs)%2 != 0 {
@@ -368,6 +402,7 @@ func (e *SVGFEFLOODElement) STYLEPairs(pairs ...string) *SVGFEFLOODElement {
 	return e
 }
 
+// Specifies an inline CSS style for an element
 func (e *SVGFEFLOODElement) IfSTYLEPairs(condition bool, pairs ...string) *SVGFEFLOODElement {
 	if condition {
 		e.STYLEPairs(pairs...)
@@ -375,6 +410,7 @@ func (e *SVGFEFLOODElement) IfSTYLEPairs(condition bool, pairs ...string) *SVGFE
 	return e
 }
 
+// Specifies an inline CSS style for an element
 // Remove the attribute STYLE from the element.
 func (e *SVGFEFLOODElement) STYLERemove(keys ...string) *SVGFEFLOODElement {
 	if e.KVStrings == nil {
@@ -390,62 +426,75 @@ func (e *SVGFEFLOODElement) STYLERemove(keys ...string) *SVGFEFLOODElement {
 	return e
 }
 
-// Merges the singleton store with the given object
-
-func (e *SVGFEFLOODElement) DATASTAR_STORE(v any) *SVGFEFLOODElement {
-	if e.CustomDataAttributes == nil {
-		e.CustomDataAttributes = treemap.New[string, string]()
-	}
-	b, err := json.Marshal(v)
-	if err != nil {
-		panic(err)
-	}
-	e.CustomDataAttributes.Set("store", html.EscapeString(string(b)))
-	return e
-}
-
-// Sets the reference of the element
-
-func (e *SVGFEFLOODElement) DATASTAR_REF(expression string) *SVGFEFLOODElement {
+// Sets the value of any HTML attribute to an expression, and keeps it in sync.
+//
+// See: https://data-star.dev/reference/attributes#data-attr
+func (e *SVGFEFLOODElement) DATASTAR_ATTR(key string, expression string) *SVGFEFLOODElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "data-ref"
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	key = fmt.Sprintf("data-attr%s", suffix)
 
 	e.StringAttributes.Set(key, expression)
 	return e
 }
 
-func (e *SVGFEFLOODElement) IfDATASTAR_REF(condition bool, expression string) *SVGFEFLOODElement {
+// Sets the value of any HTML attribute to an expression, and keeps it in sync.
+//
+// See: https://data-star.dev/reference/attributes#data-attr
+func (e *SVGFEFLOODElement) IfDATASTAR_ATTR(condition bool, key string, expression string) *SVGFEFLOODElement {
 	if condition {
-		e.DATASTAR_REF(expression)
+		e.DATASTAR_ATTR(key, expression)
 	}
 	return e
 }
 
-// Remove the attribute DATASTAR_REF from the element.
-func (e *SVGFEFLOODElement) DATASTAR_REFRemove() *SVGFEFLOODElement {
+// Sets the value of any HTML attribute to an expression, and keeps it in sync.
+//
+// See: https://data-star.dev/reference/attributes#data-attr
+// Remove the attribute DATASTAR_ATTR from the element.
+func (e *SVGFEFLOODElement) DATASTAR_ATTRRemove(key string) *SVGFEFLOODElement {
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("data-ref")
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	e.StringAttributes.Del("data-attr" + suffix)
+
 	return e
 }
 
-// Sets the value of the element
-
+// Creates a signal (if one doesn’t already exist) and sets up two-way data
+// binding between it and an element’s value.
+//
+// See: https://data-star.dev/reference/attributes#data-bind
 func (e *SVGFEFLOODElement) DATASTAR_BIND(key string, expression string) *SVGFEFLOODElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key = fmt.Sprintf("data-bind-%s", key)
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	key = fmt.Sprintf("data-bind%s", suffix)
 
 	e.StringAttributes.Set(key, expression)
 	return e
 }
 
+// Creates a signal (if one doesn’t already exist) and sets up two-way data
+// binding between it and an element’s value.
+//
+// See: https://data-star.dev/reference/attributes#data-bind
 func (e *SVGFEFLOODElement) IfDATASTAR_BIND(condition bool, key string, expression string) *SVGFEFLOODElement {
 	if condition {
 		e.DATASTAR_BIND(key, expression)
@@ -453,46 +502,1525 @@ func (e *SVGFEFLOODElement) IfDATASTAR_BIND(condition bool, key string, expressi
 	return e
 }
 
+// Creates a signal (if one doesn’t already exist) and sets up two-way data
+// binding between it and an element’s value.
+//
+// See: https://data-star.dev/reference/attributes#data-bind
 // Remove the attribute DATASTAR_BIND from the element.
-func (e *SVGFEFLOODElement) DATASTAR_BINDRemove() *SVGFEFLOODElement {
+func (e *SVGFEFLOODElement) DATASTAR_BINDRemove(key string) *SVGFEFLOODElement {
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("data-bind")
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	e.StringAttributes.Del("data-bind" + suffix)
+
 	return e
 }
 
-// Sets the value of the element
+type SVGFeFloodClassMod customDataKeyModifier
 
-func (e *SVGFEFLOODElement) DATASTAR_MODEL(expression string) *SVGFEFLOODElement {
+// Converts the casing of the signal name.
+//   - 'camel' – Camel case: 'mySignal' (default)
+//   - 'kebab' – Kebab case: 'my-signal'
+//   - 'snake' – Snake case: 'my_signal'
+//   - 'pascal' – Pascal case: 'MySignal'
+func SVGFeFloodClassModCase(
+	s string,
+) SVGFeFloodClassMod {
+	return func() string {
+		return fmt.Sprintf("case.%s", s)
+	}
+}
+
+// Adds or removes a class to or from an element based on an expression.
+func (e *SVGFEFLOODElement) DATASTAR_CLASS(key string, expression string, modifiers ...SVGFeFloodClassMod) *SVGFEFLOODElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "data-model"
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	key = fmt.Sprintf("data-class%s", suffix)
+
+	customMods := lo.Map(modifiers, func(m SVGFeFloodClassMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Adds or removes a class to or from an element based on an expression.
+func (e *SVGFEFLOODElement) IfDATASTAR_CLASS(condition bool, key string, expression string, modifiers ...SVGFeFloodClassMod) *SVGFEFLOODElement {
+	if condition {
+		e.DATASTAR_CLASS(key, expression, modifiers...)
+	}
+	return e
+}
+
+// Adds or removes a class to or from an element based on an expression.
+// Remove the attribute DATASTAR_CLASS from the element.
+func (e *SVGFEFLOODElement) DATASTAR_CLASSRemove(key string) *SVGFEFLOODElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	e.StringAttributes.Del("data-class" + suffix)
+
+	return e
+}
+
+type SVGFeFloodComputedMod customDataKeyModifier
+
+// Converts the casing of the signal name.
+//   - 'camel' – Camel case: 'mySignal' (default)
+//   - 'kebab' – Kebab case: 'my-signal'
+//   - 'snake' – Snake case: 'my_signal'
+//   - 'pascal' – Pascal case: 'MySignal'
+func SVGFeFloodComputedModCase(
+	s string,
+) SVGFeFloodComputedMod {
+	return func() string {
+		return fmt.Sprintf("case.%s", s)
+	}
+}
+
+// Creates a signal that is computed based on an expression
+// The computed signal is read-only, and its value is automatically updated when
+// any signals in the expression are updated.
+//
+// See: https://data-star.dev/reference/attributes#data-computed
+func (e *SVGFEFLOODElement) DATASTAR_COMPUTED(key string, expression string, modifiers ...SVGFeFloodComputedMod) *SVGFEFLOODElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	key = fmt.Sprintf("data-computed%s", suffix)
+
+	customMods := lo.Map(modifiers, func(m SVGFeFloodComputedMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Creates a signal that is computed based on an expression
+// The computed signal is read-only, and its value is automatically updated when
+// any signals in the expression are updated.
+//
+// See: https://data-star.dev/reference/attributes#data-computed
+func (e *SVGFEFLOODElement) IfDATASTAR_COMPUTED(condition bool, key string, expression string, modifiers ...SVGFeFloodComputedMod) *SVGFEFLOODElement {
+	if condition {
+		e.DATASTAR_COMPUTED(key, expression, modifiers...)
+	}
+	return e
+}
+
+// Creates a signal that is computed based on an expression
+// The computed signal is read-only, and its value is automatically updated when
+// any signals in the expression are updated.
+//
+// See: https://data-star.dev/reference/attributes#data-computed
+// Remove the attribute DATASTAR_COMPUTED from the element.
+func (e *SVGFEFLOODElement) DATASTAR_COMPUTEDRemove(key string) *SVGFEFLOODElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	e.StringAttributes.Del("data-computed" + suffix)
+
+	return e
+}
+
+// Executes an expression on page load and whenever any signals in the expression
+// change
+// This is useful for performing side effects, such as updating other signals,
+// making requests to the backend, or manipulating the DOM.
+//
+// See: https://data-star.dev/reference/attributes#data-effect
+func (e *SVGFEFLOODElement) DATASTAR_EFFECT(expression string) *SVGFEFLOODElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-effect"
 
 	e.StringAttributes.Set(key, expression)
 	return e
 }
 
-func (e *SVGFEFLOODElement) IfDATASTAR_MODEL(condition bool, expression string) *SVGFEFLOODElement {
+// Executes an expression on page load and whenever any signals in the expression
+// change
+// This is useful for performing side effects, such as updating other signals,
+// making requests to the backend, or manipulating the DOM.
+//
+// See: https://data-star.dev/reference/attributes#data-effect
+func (e *SVGFEFLOODElement) IfDATASTAR_EFFECT(condition bool, expression string) *SVGFEFLOODElement {
 	if condition {
-		e.DATASTAR_MODEL(expression)
+		e.DATASTAR_EFFECT(expression)
 	}
 	return e
 }
 
-// Remove the attribute DATASTAR_MODEL from the element.
-func (e *SVGFEFLOODElement) DATASTAR_MODELRemove() *SVGFEFLOODElement {
+// Executes an expression on page load and whenever any signals in the expression
+// change
+// This is useful for performing side effects, such as updating other signals,
+// making requests to the backend, or manipulating the DOM.
+//
+// See: https://data-star.dev/reference/attributes#data-effect
+// Remove the attribute DATASTAR_EFFECT from the element.
+func (e *SVGFEFLOODElement) DATASTAR_EFFECTRemove() *SVGFEFLOODElement {
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("data-model")
+
+	e.StringAttributes.Del("data-effect")
+
 	return e
 }
 
-// Sets the textContent of the element
+type SVGFeFloodIgnoreMod customDataKeyModifier
 
+// Only ignore the element itself, not its descendants.
+func SVGFeFloodIgnoreModSelf() SVGFeFloodIgnoreMod {
+	return func() string {
+		return "self"
+	}
+}
+
+// Datastar walks the entire DOM and applies plugins to each element it encounters
+// It's possible to tell Datastar to ignore an element and its descendants by
+// placing a data-ignore attribute on it
+// This can be useful for preventing naming conflicts with third-party libraries,
+// or when you are unable to escape user input.
+//
+// See: https://data-star.dev/reference/attributes#data-ignore
+func (e *SVGFEFLOODElement) DATASTAR_IGNORESet(b bool, modifiers ...SVGFeFloodIgnoreMod) *SVGFEFLOODElement {
+	key := customDataKey("data-ignore")
+	customMods := lo.Map(modifiers, func(m SVGFeFloodIgnoreMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	if e.BoolAttributes == nil {
+		e.BoolAttributes = treemap.New[string, bool]()
+	}
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+// Datastar walks the entire DOM and applies plugins to each element it encounters
+// It's possible to tell Datastar to ignore an element and its descendants by
+// placing a data-ignore attribute on it
+// This can be useful for preventing naming conflicts with third-party libraries,
+// or when you are unable to escape user input.
+//
+// See: https://data-star.dev/reference/attributes#data-ignore
+func (e *SVGFEFLOODElement) DATASTAR_IGNORE(modifiers ...SVGFeFloodIgnoreMod) *SVGFEFLOODElement {
+	return e.DATASTAR_IGNORESet(true, modifiers...)
+}
+
+// Similar to the data-ignore attribute, the data-ignore-morph attribute tells the
+// PatchElements watcher to skip processing an element and its children when
+// morphing elements
+// This can be useful for preventing conflicts with third-party libraries that
+// manipulate the DOM, or when you are unable to escape user input.
+//
+// See: https://data-star.dev/reference/attributes#data-ignore-morph
+func (e *SVGFEFLOODElement) DATASTAR_IGNORE_MORPHSet(b bool) *SVGFEFLOODElement {
+	key := "data-ignore-morph"
+	if e.BoolAttributes == nil {
+		e.BoolAttributes = treemap.New[string, bool]()
+	}
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+// Similar to the data-ignore attribute, the data-ignore-morph attribute tells the
+// PatchElements watcher to skip processing an element and its children when
+// morphing elements
+// This can be useful for preventing conflicts with third-party libraries that
+// manipulate the DOM, or when you are unable to escape user input.
+//
+// See: https://data-star.dev/reference/attributes#data-ignore-morph
+func (e *SVGFEFLOODElement) DATASTAR_IGNORE_MORPH() *SVGFEFLOODElement {
+	return e.DATASTAR_IGNORE_MORPHSet(true)
+}
+
+type SVGFeFloodIndicatorMod customDataKeyModifier
+
+// Converts the casing of the signal name.
+//   - 'camel' – Camel case: 'mySignal' (default)
+//   - 'kebab' – Kebab case: 'my-signal'
+//   - 'snake' – Snake case: 'my_signal'
+//   - 'pascal' – Pascal case: 'MySignal'
+func SVGFeFloodIndicatorModCase(
+	s string,
+) SVGFeFloodIndicatorMod {
+	return func() string {
+		return fmt.Sprintf("case.%s", s)
+	}
+}
+
+// Creates a signal and sets its value to true while a fetch request is in flight,
+// otherwise false
+// The signal can be used to show a loading indicator.
+//
+// See: https://data-star.dev/reference/attributes#data-indicator
+func (e *SVGFEFLOODElement) DATASTAR_INDICATOR(expression string, modifiers ...SVGFeFloodIndicatorMod) *SVGFEFLOODElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-indicator"
+
+	customMods := lo.Map(modifiers, func(m SVGFeFloodIndicatorMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Creates a signal and sets its value to true while a fetch request is in flight,
+// otherwise false
+// The signal can be used to show a loading indicator.
+//
+// See: https://data-star.dev/reference/attributes#data-indicator
+func (e *SVGFEFLOODElement) IfDATASTAR_INDICATOR(condition bool, expression string, modifiers ...SVGFeFloodIndicatorMod) *SVGFEFLOODElement {
+	if condition {
+		e.DATASTAR_INDICATOR(expression, modifiers...)
+	}
+	return e
+}
+
+// Creates a signal and sets its value to true while a fetch request is in flight,
+// otherwise false
+// The signal can be used to show a loading indicator.
+//
+// See: https://data-star.dev/reference/attributes#data-indicator
+// Remove the attribute DATASTAR_INDICATOR from the element.
+func (e *SVGFEFLOODElement) DATASTAR_INDICATORRemove() *SVGFEFLOODElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-indicator")
+
+	return e
+}
+
+type SVGFeFloodInitMod customDataKeyModifier
+
+// Delay the event listener in milliseconds.
+func SVGFeFloodInitModDelayMs(
+	d time.Duration,
+) SVGFeFloodInitMod {
+	return func() string {
+		return fmt.Sprintf("delay.%dms", d.Milliseconds())
+	}
+}
+
+// Delay the event listener in seconds.
+func SVGFeFloodInitModDelaySec(
+	d time.Duration,
+) SVGFeFloodInitMod {
+	return func() string {
+		return fmt.Sprintf("delay.%ds", int(d.Seconds()))
+	}
+}
+
+// Wraps the expression in 'document.startViewTransition()' when the View
+// Transition API is available.
+func SVGFeFloodInitModViewTransition() SVGFeFloodInitMod {
+	return func() string {
+		return "viewtransition"
+	}
+}
+
+// Runs an expression when the attribute is initialized
+// This can happen on page load, when an element is patched into the DOM, and any
+// time the attribute is modified (via a backend action or otherwise).
+//
+// See: https://data-star.dev/reference/attributes#data-indicator
+func (e *SVGFEFLOODElement) DATASTAR_INIT(expression string, modifiers ...SVGFeFloodInitMod) *SVGFEFLOODElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-init"
+
+	customMods := lo.Map(modifiers, func(m SVGFeFloodInitMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Runs an expression when the attribute is initialized
+// This can happen on page load, when an element is patched into the DOM, and any
+// time the attribute is modified (via a backend action or otherwise).
+//
+// See: https://data-star.dev/reference/attributes#data-indicator
+func (e *SVGFEFLOODElement) IfDATASTAR_INIT(condition bool, expression string, modifiers ...SVGFeFloodInitMod) *SVGFEFLOODElement {
+	if condition {
+		e.DATASTAR_INIT(expression, modifiers...)
+	}
+	return e
+}
+
+// Runs an expression when the attribute is initialized
+// This can happen on page load, when an element is patched into the DOM, and any
+// time the attribute is modified (via a backend action or otherwise).
+//
+// See: https://data-star.dev/reference/attributes#data-indicator
+// Remove the attribute DATASTAR_INIT from the element.
+func (e *SVGFEFLOODElement) DATASTAR_INITRemove() *SVGFEFLOODElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-init")
+
+	return e
+}
+
+type SVGFeFloodJsonSignalsMod customDataKeyModifier
+
+// Outputs a more compact JSON format without extra whitespace
+// Useful for displaying filtered data inline.
+func SVGFeFloodJsonSignalsModTerse() SVGFeFloodJsonSignalsMod {
+	return func() string {
+		return "terse"
+	}
+}
+
+// Sets the text content of an element to a reactive JSON stringified version of
+// signals
+// Useful when troubleshooting an issue.
+//
+// See: https://data-star.dev/reference/attributes#data-json-signals
+func (e *SVGFEFLOODElement) DATASTAR_JSON_SIGNALS(expression string, modifiers ...SVGFeFloodJsonSignalsMod) *SVGFEFLOODElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-json-signals"
+
+	customMods := lo.Map(modifiers, func(m SVGFeFloodJsonSignalsMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Sets the text content of an element to a reactive JSON stringified version of
+// signals
+// Useful when troubleshooting an issue.
+//
+// See: https://data-star.dev/reference/attributes#data-json-signals
+func (e *SVGFEFLOODElement) IfDATASTAR_JSON_SIGNALS(condition bool, expression string, modifiers ...SVGFeFloodJsonSignalsMod) *SVGFEFLOODElement {
+	if condition {
+		e.DATASTAR_JSON_SIGNALS(expression, modifiers...)
+	}
+	return e
+}
+
+// Sets the text content of an element to a reactive JSON stringified version of
+// signals
+// Useful when troubleshooting an issue.
+//
+// See: https://data-star.dev/reference/attributes#data-json-signals
+// Remove the attribute DATASTAR_JSON_SIGNALS from the element.
+func (e *SVGFEFLOODElement) DATASTAR_JSON_SIGNALSRemove() *SVGFEFLOODElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-json-signals")
+
+	return e
+}
+
+type SVGFeFloodOnMod customDataKeyModifier
+
+// Only run the expression once
+// Only works with built-in events.
+func SVGFeFloodOnModOnce() SVGFeFloodOnMod {
+	return func() string {
+		return "once"
+	}
+}
+
+// Do not call preventDefault on the event listener
+// Only works with built-in events.
+func SVGFeFloodOnModPassive() SVGFeFloodOnMod {
+	return func() string {
+		return "passive"
+	}
+}
+
+// Use capture event listener
+// Only works with built-in events.
+func SVGFeFloodOnModCapture() SVGFeFloodOnMod {
+	return func() string {
+		return "capture"
+	}
+}
+
+// Converts the casing of the signal name.
+//   - 'camel' – Camel case: 'mySignal' (default)
+//   - 'kebab' – Kebab case: 'my-signal'
+//   - 'snake' – Snake case: 'my_signal'
+//   - 'pascal' – Pascal case: 'MySignal'
+func SVGFeFloodOnModCase(
+	s string,
+) SVGFeFloodOnMod {
+	return func() string {
+		return fmt.Sprintf("case.%s", s)
+	}
+}
+
+// Delay the event listener in milliseconds.
+func SVGFeFloodOnModDelayMs(
+	d time.Duration,
+) SVGFeFloodOnMod {
+	return func() string {
+		return fmt.Sprintf("delay.%dms", d.Milliseconds())
+	}
+}
+
+// Delay the event listener in seconds.
+func SVGFeFloodOnModDelaySec(
+	d time.Duration,
+) SVGFeFloodOnMod {
+	return func() string {
+		return fmt.Sprintf("delay.%ds", int(d.Seconds()))
+	}
+}
+
+// Debounces the event handler
+func SVGFeFloodOnModDebounceMs(
+	d time.Duration,
+) SVGFeFloodOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms", d.Milliseconds())
+	}
+}
+
+// Debounce the event listener in milliseconds with leading edge.
+func SVGFeFloodOnModDebounceMsLeading(
+	d time.Duration,
+) SVGFeFloodOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms.leading", d.Milliseconds())
+	}
+}
+
+// Debounce the event listener in milliseconds without trailing edge.
+func SVGFeFloodOnModDebounceMsNoTrailing(
+	d time.Duration,
+) SVGFeFloodOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms.notrailing", d.Milliseconds())
+	}
+}
+
+// Debounces the event handler
+func SVGFeFloodOnModDebounceSec(
+	d time.Duration,
+) SVGFeFloodOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds", int(d.Seconds()))
+	}
+}
+
+// Debounce the event listener in seconds with leading edge.
+func SVGFeFloodOnModDebounceSecLeading(
+	d time.Duration,
+) SVGFeFloodOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds.leading", int(d.Seconds()))
+	}
+}
+
+// Debounce the event listener in seconds without trailing edge.
+func SVGFeFloodOnModDebounceSecNoTrailing(
+	d time.Duration,
+) SVGFeFloodOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds.notrailing", int(d.Seconds()))
+	}
+}
+
+// Throttles the event handler
+func SVGFeFloodOnModThrottleMs(
+	d time.Duration,
+) SVGFeFloodOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms", d.Milliseconds())
+	}
+}
+
+// Throttle the event listener in milliseconds without leading edge.
+func SVGFeFloodOnModThrottleMsNoLeading(
+	d time.Duration,
+) SVGFeFloodOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms.noleading", d.Milliseconds())
+	}
+}
+
+// Throttle the event listener in milliseconds with trailing edge.
+func SVGFeFloodOnModThrottleMsTrailing(
+	d time.Duration,
+) SVGFeFloodOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms.trailing", d.Milliseconds())
+	}
+}
+
+// Throttles the event listener in seconds.
+func SVGFeFloodOnModThrottleSec(
+	d time.Duration,
+) SVGFeFloodOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds", int(d.Seconds()))
+	}
+}
+
+// Throttle the event listener in seconds without leading edge.
+func SVGFeFloodOnModThrottleSecNoLeading(
+	d time.Duration,
+) SVGFeFloodOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds.noleading", int(d.Seconds()))
+	}
+}
+
+// Throttle the event listener in seconds with trailing edge.
+func SVGFeFloodOnModThrottleSecTrailing(
+	d time.Duration,
+) SVGFeFloodOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds.trailing", int(d.Seconds()))
+	}
+}
+
+// Wraps the expression in 'document.startViewTransition()' when the View
+// Transition API is available.
+func SVGFeFloodOnModViewTransition() SVGFeFloodOnMod {
+	return func() string {
+		return "viewtransition"
+	}
+}
+
+// Attaches the event listener to the 'window' element.
+func SVGFeFloodOnModWindow() SVGFeFloodOnMod {
+	return func() string {
+		return "window"
+	}
+}
+
+// Calls 'preventDefault' on the event listener.
+func SVGFeFloodOnModPrevent() SVGFeFloodOnMod {
+	return func() string {
+		return "prevent"
+	}
+}
+
+// Triggers when the event is outside the element.
+func SVGFeFloodOnModOutside() SVGFeFloodOnMod {
+	return func() string {
+		return "outside"
+	}
+}
+
+// Calls 'stopPropagation' on the event listener.
+func SVGFeFloodOnModStop() SVGFeFloodOnMod {
+	return func() string {
+		return "stop"
+	}
+}
+
+// Attaches an event listener to an element, executing an expression whenever the
+// event is triggered.
+//
+// See: https://data-star.dev/reference/attributes#data-on
+func (e *SVGFEFLOODElement) DATASTAR_ON(key string, expression string, modifiers ...SVGFeFloodOnMod) *SVGFEFLOODElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	key = fmt.Sprintf("data-on%s", suffix)
+
+	customMods := lo.Map(modifiers, func(m SVGFeFloodOnMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Attaches an event listener to an element, executing an expression whenever the
+// event is triggered.
+//
+// See: https://data-star.dev/reference/attributes#data-on
+func (e *SVGFEFLOODElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SVGFeFloodOnMod) *SVGFEFLOODElement {
+	if condition {
+		e.DATASTAR_ON(key, expression, modifiers...)
+	}
+	return e
+}
+
+// Attaches an event listener to an element, executing an expression whenever the
+// event is triggered.
+//
+// See: https://data-star.dev/reference/attributes#data-on
+// Remove the attribute DATASTAR_ON from the element.
+func (e *SVGFEFLOODElement) DATASTAR_ONRemove(key string) *SVGFEFLOODElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	e.StringAttributes.Del("data-on" + suffix)
+
+	return e
+}
+
+type SVGFeFloodOnIntersectMod customDataKeyModifier
+
+// Only run the expression once
+// Only works with built-in events.
+func SVGFeFloodOnIntersectModOnce() SVGFeFloodOnIntersectMod {
+	return func() string {
+		return "once"
+	}
+}
+
+// Trigger when half of the element is visible.
+func SVGFeFloodOnIntersectModHalf() SVGFeFloodOnIntersectMod {
+	return func() string {
+		return "half"
+	}
+}
+
+// Trigger when the full element is visible.
+func SVGFeFloodOnIntersectModFull() SVGFeFloodOnIntersectMod {
+	return func() string {
+		return "full"
+	}
+}
+
+// Delay the event listener in milliseconds.
+func SVGFeFloodOnIntersectModDelayMs(
+	d time.Duration,
+) SVGFeFloodOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("delay.%dms", d.Milliseconds())
+	}
+}
+
+// Delay the event listener in seconds.
+func SVGFeFloodOnIntersectModDelaySec(
+	d time.Duration,
+) SVGFeFloodOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("delay.%ds", int(d.Seconds()))
+	}
+}
+
+// Debounces the event handler
+func SVGFeFloodOnIntersectModDebounceMs(
+	d time.Duration,
+) SVGFeFloodOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms", d.Milliseconds())
+	}
+}
+
+// Debounce the event listener in milliseconds with leading edge.
+func SVGFeFloodOnIntersectModDebounceMsLeading(
+	d time.Duration,
+) SVGFeFloodOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms.leading", d.Milliseconds())
+	}
+}
+
+// Debounce the event listener in milliseconds without trailing edge.
+func SVGFeFloodOnIntersectModDebounceMsNoTrailing(
+	d time.Duration,
+) SVGFeFloodOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms.notrailing", d.Milliseconds())
+	}
+}
+
+// Debounces the event handler
+func SVGFeFloodOnIntersectModDebounceSec(
+	d time.Duration,
+) SVGFeFloodOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds", int(d.Seconds()))
+	}
+}
+
+// Debounce the event listener in seconds with leading edge.
+func SVGFeFloodOnIntersectModDebounceSecLeading(
+	d time.Duration,
+) SVGFeFloodOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds.leading", int(d.Seconds()))
+	}
+}
+
+// Debounce the event listener in seconds without trailing edge.
+func SVGFeFloodOnIntersectModDebounceSecNoTrailing(
+	d time.Duration,
+) SVGFeFloodOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds.notrailing", int(d.Seconds()))
+	}
+}
+
+// Throttles the event handler
+func SVGFeFloodOnIntersectModThrottleMs(
+	d time.Duration,
+) SVGFeFloodOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms", d.Milliseconds())
+	}
+}
+
+// Throttle the event listener in milliseconds without leading edge.
+func SVGFeFloodOnIntersectModThrottleMsNoLeading(
+	d time.Duration,
+) SVGFeFloodOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms.noleading", d.Milliseconds())
+	}
+}
+
+// Throttle the event listener in milliseconds with trailing edge.
+func SVGFeFloodOnIntersectModThrottleMsTrailing(
+	d time.Duration,
+) SVGFeFloodOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms.trailing", d.Milliseconds())
+	}
+}
+
+// Throttles the event listener in seconds.
+func SVGFeFloodOnIntersectModThrottleSec(
+	d time.Duration,
+) SVGFeFloodOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds", int(d.Seconds()))
+	}
+}
+
+// Throttle the event listener in seconds without leading edge.
+func SVGFeFloodOnIntersectModThrottleSecNoLeading(
+	d time.Duration,
+) SVGFeFloodOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds.noleading", int(d.Seconds()))
+	}
+}
+
+// Throttle the event listener in seconds with trailing edge.
+func SVGFeFloodOnIntersectModThrottleSecTrailing(
+	d time.Duration,
+) SVGFeFloodOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds.trailing", int(d.Seconds()))
+	}
+}
+
+// Wraps the expression in 'document.startViewTransition()' when the View
+// Transition API is available.
+func SVGFeFloodOnIntersectModViewTransition() SVGFeFloodOnIntersectMod {
+	return func() string {
+		return "viewtransition"
+	}
+}
+
+// Runs an expression when the element intersects with the viewport.
+func (e *SVGFEFLOODElement) DATASTAR_ON_INTERSECT(expression string, modifiers ...SVGFeFloodOnIntersectMod) *SVGFEFLOODElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-on-intersect"
+
+	customMods := lo.Map(modifiers, func(m SVGFeFloodOnIntersectMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Runs an expression when the element intersects with the viewport.
+func (e *SVGFEFLOODElement) IfDATASTAR_ON_INTERSECT(condition bool, expression string, modifiers ...SVGFeFloodOnIntersectMod) *SVGFEFLOODElement {
+	if condition {
+		e.DATASTAR_ON_INTERSECT(expression, modifiers...)
+	}
+	return e
+}
+
+// Runs an expression when the element intersects with the viewport.
+// Remove the attribute DATASTAR_ON_INTERSECT from the element.
+func (e *SVGFEFLOODElement) DATASTAR_ON_INTERSECTRemove() *SVGFEFLOODElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-on-intersect")
+
+	return e
+}
+
+type SVGFeFloodOnIntervalMod customDataKeyModifier
+
+// Sets the interval duration in milliseconds.
+func SVGFeFloodOnIntervalModDurationMs(
+	d time.Duration,
+) SVGFeFloodOnIntervalMod {
+	return func() string {
+		return fmt.Sprintf("duration.%dms", d.Milliseconds())
+	}
+}
+
+// Sets the interval duration in milliseconds
+// Execute the first interval immediately.
+func SVGFeFloodOnIntervalModDurationMsLeading(
+	d time.Duration,
+) SVGFeFloodOnIntervalMod {
+	return func() string {
+		return fmt.Sprintf("duration.%dms.leading", d.Milliseconds())
+	}
+}
+
+// Sets the interval duration in seconds.
+func SVGFeFloodOnIntervalModDurationSec(
+	d time.Duration,
+) SVGFeFloodOnIntervalMod {
+	return func() string {
+		return fmt.Sprintf("duration.%ds", int(d.Seconds()))
+	}
+}
+
+// Sets the interval duration in seconds
+// Execute the first interval immediately.
+func SVGFeFloodOnIntervalModDurationSecLeading(
+	d time.Duration,
+) SVGFeFloodOnIntervalMod {
+	return func() string {
+		return fmt.Sprintf("duration.%ds.leading", int(d.Seconds()))
+	}
+}
+
+// Wraps the expression in 'document.startViewTransition()' when the View
+// Transition API is available.
+func SVGFeFloodOnIntervalModViewTransition() SVGFeFloodOnIntervalMod {
+	return func() string {
+		return "viewtransition"
+	}
+}
+
+// Runs an expression at a regular interval
+// The interval duration defaults to one second and can be modified using the
+// '__duration' modifier.
+//
+// See: https://data-star.dev/reference/attributes#data-on-interval
+func (e *SVGFEFLOODElement) DATASTAR_ON_INTERVAL(expression string, modifiers ...SVGFeFloodOnIntervalMod) *SVGFEFLOODElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-on-interval"
+
+	customMods := lo.Map(modifiers, func(m SVGFeFloodOnIntervalMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Runs an expression at a regular interval
+// The interval duration defaults to one second and can be modified using the
+// '__duration' modifier.
+//
+// See: https://data-star.dev/reference/attributes#data-on-interval
+func (e *SVGFEFLOODElement) IfDATASTAR_ON_INTERVAL(condition bool, expression string, modifiers ...SVGFeFloodOnIntervalMod) *SVGFEFLOODElement {
+	if condition {
+		e.DATASTAR_ON_INTERVAL(expression, modifiers...)
+	}
+	return e
+}
+
+// Runs an expression at a regular interval
+// The interval duration defaults to one second and can be modified using the
+// '__duration' modifier.
+//
+// See: https://data-star.dev/reference/attributes#data-on-interval
+// Remove the attribute DATASTAR_ON_INTERVAL from the element.
+func (e *SVGFEFLOODElement) DATASTAR_ON_INTERVALRemove() *SVGFEFLOODElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-on-interval")
+
+	return e
+}
+
+type SVGFeFloodOnSignalPatchMod customDataKeyModifier
+
+// Delay the event listener in milliseconds.
+func SVGFeFloodOnSignalPatchModDelayMs(
+	d time.Duration,
+) SVGFeFloodOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("delay.%dms", d.Milliseconds())
+	}
+}
+
+// Delay the event listener in seconds.
+func SVGFeFloodOnSignalPatchModDelaySec(
+	d time.Duration,
+) SVGFeFloodOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("delay.%ds", int(d.Seconds()))
+	}
+}
+
+// Debounces the event handler
+func SVGFeFloodOnSignalPatchModDebounceMs(
+	d time.Duration,
+) SVGFeFloodOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms", d.Milliseconds())
+	}
+}
+
+// Debounce the event listener in milliseconds with leading edge.
+func SVGFeFloodOnSignalPatchModDebounceMsLeading(
+	d time.Duration,
+) SVGFeFloodOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms.leading", d.Milliseconds())
+	}
+}
+
+// Debounce the event listener in milliseconds without trailing edge.
+func SVGFeFloodOnSignalPatchModDebounceMsNoTrailing(
+	d time.Duration,
+) SVGFeFloodOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms.notrailing", d.Milliseconds())
+	}
+}
+
+// Debounces the event handler
+func SVGFeFloodOnSignalPatchModDebounceSec(
+	d time.Duration,
+) SVGFeFloodOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds", int(d.Seconds()))
+	}
+}
+
+// Debounce the event listener in seconds with leading edge.
+func SVGFeFloodOnSignalPatchModDebounceSecLeading(
+	d time.Duration,
+) SVGFeFloodOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds.leading", int(d.Seconds()))
+	}
+}
+
+// Debounce the event listener in seconds without trailing edge.
+func SVGFeFloodOnSignalPatchModDebounceSecNoTrailing(
+	d time.Duration,
+) SVGFeFloodOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds.notrailing", int(d.Seconds()))
+	}
+}
+
+// Throttles the event handler
+func SVGFeFloodOnSignalPatchModThrottleMs(
+	d time.Duration,
+) SVGFeFloodOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms", d.Milliseconds())
+	}
+}
+
+// Throttle the event listener in milliseconds without leading edge.
+func SVGFeFloodOnSignalPatchModThrottleMsNoLeading(
+	d time.Duration,
+) SVGFeFloodOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms.noleading", d.Milliseconds())
+	}
+}
+
+// Throttle the event listener in milliseconds with trailing edge.
+func SVGFeFloodOnSignalPatchModThrottleMsTrailing(
+	d time.Duration,
+) SVGFeFloodOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms.trailing", d.Milliseconds())
+	}
+}
+
+// Throttles the event listener in seconds.
+func SVGFeFloodOnSignalPatchModThrottleSec(
+	d time.Duration,
+) SVGFeFloodOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds", int(d.Seconds()))
+	}
+}
+
+// Throttle the event listener in seconds without leading edge.
+func SVGFeFloodOnSignalPatchModThrottleSecNoLeading(
+	d time.Duration,
+) SVGFeFloodOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds.noleading", int(d.Seconds()))
+	}
+}
+
+// Throttle the event listener in seconds with trailing edge.
+func SVGFeFloodOnSignalPatchModThrottleSecTrailing(
+	d time.Duration,
+) SVGFeFloodOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds.trailing", int(d.Seconds()))
+	}
+}
+
+// Runs an expression whenever any signals are patched
+// This is useful for tracking changes, updating computed values, or triggering
+// side effects when data updates.
+//
+// See: https://data-star.dev/reference/attributes#data-on-signal-patch
+func (e *SVGFEFLOODElement) DATASTAR_ON_SIGNAL_PATCH(expression string, modifiers ...SVGFeFloodOnSignalPatchMod) *SVGFEFLOODElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-on-signal-patch"
+
+	customMods := lo.Map(modifiers, func(m SVGFeFloodOnSignalPatchMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Runs an expression whenever any signals are patched
+// This is useful for tracking changes, updating computed values, or triggering
+// side effects when data updates.
+//
+// See: https://data-star.dev/reference/attributes#data-on-signal-patch
+func (e *SVGFEFLOODElement) IfDATASTAR_ON_SIGNAL_PATCH(condition bool, expression string, modifiers ...SVGFeFloodOnSignalPatchMod) *SVGFEFLOODElement {
+	if condition {
+		e.DATASTAR_ON_SIGNAL_PATCH(expression, modifiers...)
+	}
+	return e
+}
+
+// Runs an expression whenever any signals are patched
+// This is useful for tracking changes, updating computed values, or triggering
+// side effects when data updates.
+//
+// See: https://data-star.dev/reference/attributes#data-on-signal-patch
+// Remove the attribute DATASTAR_ON_SIGNAL_PATCH from the element.
+func (e *SVGFEFLOODElement) DATASTAR_ON_SIGNAL_PATCHRemove() *SVGFEFLOODElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-on-signal-patch")
+
+	return e
+}
+
+// Filters which signals to watch when using the data-on-signal-patch attribute.
+//
+// The data-on-signal-patch-filter attribute accepts an object with include and/or
+// exclude properties that are regular expressions.
+//
+// See: https://data-star.dev/reference/attributes#data-on-signal-patch-filter
+func (e *SVGFEFLOODElement) DATASTAR_ON_SIGNAL_PATCH_FILTER(expression string) *SVGFEFLOODElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-on-signal-patch-filter"
+
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Filters which signals to watch when using the data-on-signal-patch attribute.
+//
+// The data-on-signal-patch-filter attribute accepts an object with include and/or
+// exclude properties that are regular expressions.
+//
+// See: https://data-star.dev/reference/attributes#data-on-signal-patch-filter
+func (e *SVGFEFLOODElement) IfDATASTAR_ON_SIGNAL_PATCH_FILTER(condition bool, expression string) *SVGFEFLOODElement {
+	if condition {
+		e.DATASTAR_ON_SIGNAL_PATCH_FILTER(expression)
+	}
+	return e
+}
+
+// Filters which signals to watch when using the data-on-signal-patch attribute.
+//
+// The data-on-signal-patch-filter attribute accepts an object with include and/or
+// exclude properties that are regular expressions.
+//
+// See: https://data-star.dev/reference/attributes#data-on-signal-patch-filter
+// Remove the attribute DATASTAR_ON_SIGNAL_PATCH_FILTER from the element.
+func (e *SVGFEFLOODElement) DATASTAR_ON_SIGNAL_PATCH_FILTERRemove() *SVGFEFLOODElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-on-signal-patch-filter")
+
+	return e
+}
+
+// Preserves the value of an attribute when morphing DOM elements.
+//
+// See: https://data-star.dev/reference/attributes#data-preserve-attr
+func (e *SVGFEFLOODElement) DATASTAR_PRESERVE_ATTR(expression string) *SVGFEFLOODElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-preserve-attr"
+
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Preserves the value of an attribute when morphing DOM elements.
+//
+// See: https://data-star.dev/reference/attributes#data-preserve-attr
+func (e *SVGFEFLOODElement) IfDATASTAR_PRESERVE_ATTR(condition bool, expression string) *SVGFEFLOODElement {
+	if condition {
+		e.DATASTAR_PRESERVE_ATTR(expression)
+	}
+	return e
+}
+
+// Preserves the value of an attribute when morphing DOM elements.
+//
+// See: https://data-star.dev/reference/attributes#data-preserve-attr
+// Remove the attribute DATASTAR_PRESERVE_ATTR from the element.
+func (e *SVGFEFLOODElement) DATASTAR_PRESERVE_ATTRRemove() *SVGFEFLOODElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-preserve-attr")
+
+	return e
+}
+
+type SVGFeFloodRefMod customDataKeyModifier
+
+// Converts the casing of the signal name.
+//   - 'camel' – Camel case: 'mySignal' (default)
+//   - 'kebab' – Kebab case: 'my-signal'
+//   - 'snake' – Snake case: 'my_signal'
+//   - 'pascal' – Pascal case: 'MySignal'
+func SVGFeFloodRefModCase(
+	s string,
+) SVGFeFloodRefMod {
+	return func() string {
+		return fmt.Sprintf("case.%s", s)
+	}
+}
+
+// Creates a new signal that is a reference to the element on which the data
+// attribute is placed.
+//
+// See: https://data-star.dev/reference/attributes#data-ref
+func (e *SVGFEFLOODElement) DATASTAR_REF(expression string, modifiers ...SVGFeFloodRefMod) *SVGFEFLOODElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-ref"
+
+	customMods := lo.Map(modifiers, func(m SVGFeFloodRefMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Creates a new signal that is a reference to the element on which the data
+// attribute is placed.
+//
+// See: https://data-star.dev/reference/attributes#data-ref
+func (e *SVGFEFLOODElement) IfDATASTAR_REF(condition bool, expression string, modifiers ...SVGFeFloodRefMod) *SVGFEFLOODElement {
+	if condition {
+		e.DATASTAR_REF(expression, modifiers...)
+	}
+	return e
+}
+
+// Creates a new signal that is a reference to the element on which the data
+// attribute is placed.
+//
+// See: https://data-star.dev/reference/attributes#data-ref
+// Remove the attribute DATASTAR_REF from the element.
+func (e *SVGFEFLOODElement) DATASTAR_REFRemove() *SVGFEFLOODElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-ref")
+
+	return e
+}
+
+// Shows or hides an element based on whether an expression evaluates to 'true' or
+// 'false'
+// For anything with custom requirements, use 'data-class' instead.
+//
+// See: https://data-star.dev/reference/attributes#data-show
+func (e *SVGFEFLOODElement) DATASTAR_SHOW(expression string) *SVGFEFLOODElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-show"
+
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Shows or hides an element based on whether an expression evaluates to 'true' or
+// 'false'
+// For anything with custom requirements, use 'data-class' instead.
+//
+// See: https://data-star.dev/reference/attributes#data-show
+func (e *SVGFEFLOODElement) IfDATASTAR_SHOW(condition bool, expression string) *SVGFEFLOODElement {
+	if condition {
+		e.DATASTAR_SHOW(expression)
+	}
+	return e
+}
+
+// Shows or hides an element based on whether an expression evaluates to 'true' or
+// 'false'
+// For anything with custom requirements, use 'data-class' instead.
+//
+// See: https://data-star.dev/reference/attributes#data-show
+// Remove the attribute DATASTAR_SHOW from the element.
+func (e *SVGFEFLOODElement) DATASTAR_SHOWRemove() *SVGFEFLOODElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-show")
+
+	return e
+}
+
+type SVGFeFloodSignalsMod customDataKeyModifier
+
+// Converts the casing of the signal name.
+//   - 'camel' – Camel case: 'mySignal' (default)
+//   - 'kebab' – Kebab case: 'my-signal'
+//   - 'snake' – Snake case: 'my_signal'
+//   - 'pascal' – Pascal case: 'MySignal'
+func SVGFeFloodSignalsModCase(
+	s string,
+) SVGFeFloodSignalsMod {
+	return func() string {
+		return fmt.Sprintf("case.%s", s)
+	}
+}
+
+// Only patches signals if their keys do not already exist
+// This is useful for setting defaults without overwriting existing values.
+func SVGFeFloodSignalsModIfMissing() SVGFeFloodSignalsMod {
+	return func() string {
+		return "ifmissing"
+	}
+}
+
+// Patches (adds, updates or removes) one or more signals into the existing
+// signals
+// Values defined later in the DOM tree override those defined earlier.
+//
+// See: https://data-star.dev/reference/attributes#data-signals
+func (e *SVGFEFLOODElement) DATASTAR_SIGNALS(key string, expression string, modifiers ...SVGFeFloodSignalsMod) *SVGFEFLOODElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	key = fmt.Sprintf("data-signals%s", suffix)
+
+	customMods := lo.Map(modifiers, func(m SVGFeFloodSignalsMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Patches (adds, updates or removes) one or more signals into the existing
+// signals
+// Values defined later in the DOM tree override those defined earlier.
+//
+// See: https://data-star.dev/reference/attributes#data-signals
+func (e *SVGFEFLOODElement) IfDATASTAR_SIGNALS(condition bool, key string, expression string, modifiers ...SVGFeFloodSignalsMod) *SVGFEFLOODElement {
+	if condition {
+		e.DATASTAR_SIGNALS(key, expression, modifiers...)
+	}
+	return e
+}
+
+// Patches (adds, updates or removes) one or more signals into the existing
+// signals
+// Values defined later in the DOM tree override those defined earlier.
+//
+// See: https://data-star.dev/reference/attributes#data-signals
+// Remove the attribute DATASTAR_SIGNALS from the element.
+func (e *SVGFEFLOODElement) DATASTAR_SIGNALSRemove(key string) *SVGFEFLOODElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	e.StringAttributes.Del("data-signals" + suffix)
+
+	return e
+}
+
+type SVGFeFloodStyleMod customDataKeyModifier
+
+// Converts the casing of the signal name.
+//   - 'camel' – Camel case: 'mySignal' (default)
+//   - 'kebab' – Kebab case: 'my-signal'
+//   - 'snake' – Snake case: 'my_signal'
+//   - 'pascal' – Pascal case: 'MySignal'
+func SVGFeFloodStyleModCase(
+	s string,
+) SVGFeFloodStyleMod {
+	return func() string {
+		return fmt.Sprintf("case.%s", s)
+	}
+}
+
+// Sets the value of inline CSS styles on an element based on an expression, and
+// keeps them in sync.
+//
+// See: https://data-star.dev/reference/attributes#data-style
+func (e *SVGFEFLOODElement) DATASTAR_STYLE(key string, expression string, modifiers ...SVGFeFloodStyleMod) *SVGFEFLOODElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	key = fmt.Sprintf("data-style%s", suffix)
+
+	customMods := lo.Map(modifiers, func(m SVGFeFloodStyleMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Sets the value of inline CSS styles on an element based on an expression, and
+// keeps them in sync.
+//
+// See: https://data-star.dev/reference/attributes#data-style
+func (e *SVGFEFLOODElement) IfDATASTAR_STYLE(condition bool, key string, expression string, modifiers ...SVGFeFloodStyleMod) *SVGFEFLOODElement {
+	if condition {
+		e.DATASTAR_STYLE(key, expression, modifiers...)
+	}
+	return e
+}
+
+// Sets the value of inline CSS styles on an element based on an expression, and
+// keeps them in sync.
+//
+// See: https://data-star.dev/reference/attributes#data-style
+// Remove the attribute DATASTAR_STYLE from the element.
+func (e *SVGFEFLOODElement) DATASTAR_STYLERemove(key string) *SVGFEFLOODElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	e.StringAttributes.Del("data-style" + suffix)
+
+	return e
+}
+
+// Binds the text content of an element to an expression.
+//
+// See: https://data-star.dev/reference/attributes#data-text
 func (e *SVGFEFLOODElement) DATASTAR_TEXT(expression string) *SVGFEFLOODElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
@@ -504,6 +2032,9 @@ func (e *SVGFEFLOODElement) DATASTAR_TEXT(expression string) *SVGFEFLOODElement 
 	return e
 }
 
+// Binds the text content of an element to an expression.
+//
+// See: https://data-star.dev/reference/attributes#data-text
 func (e *SVGFEFLOODElement) IfDATASTAR_TEXT(condition bool, expression string) *SVGFEFLOODElement {
 	if condition {
 		e.DATASTAR_TEXT(expression)
@@ -511,228 +2042,16 @@ func (e *SVGFEFLOODElement) IfDATASTAR_TEXT(condition bool, expression string) *
 	return e
 }
 
+// Binds the text content of an element to an expression.
+//
+// See: https://data-star.dev/reference/attributes#data-text
 // Remove the attribute DATASTAR_TEXT from the element.
 func (e *SVGFEFLOODElement) DATASTAR_TEXTRemove() *SVGFEFLOODElement {
 	if e.StringAttributes == nil {
 		return e
 	}
+
 	e.StringAttributes.Del("data-text")
-	return e
-}
 
-// Sets the event handler of the element
-
-type SVGFeFloodOnMod customDataKeyModifier
-
-// Debounces the event handler
-func SVGFeFloodOnModDebounce(
-	d time.Duration,
-) SVGFeFloodOnMod {
-	return func() string {
-		return fmt.Sprintf("debounce_%dms", d.Milliseconds())
-	}
-}
-
-// Throttles the event handler
-func SVGFeFloodOnModThrottle(
-	d time.Duration,
-) SVGFeFloodOnMod {
-	return func() string {
-		return fmt.Sprintf("throttle_%dms", d.Milliseconds())
-	}
-}
-
-func (e *SVGFEFLOODElement) DATASTAR_ON(key string, expression string, modifiers ...SVGFeFloodOnMod) *SVGFEFLOODElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-
-	key = fmt.Sprintf("data-on-%s", key)
-
-	customMods := lo.Map(modifiers, func(m SVGFeFloodOnMod, i int) customDataKeyModifier {
-		return customDataKeyModifier(m)
-	})
-	key = customDataKey(key, customMods...)
-	e.StringAttributes.Set(key, expression)
-	return e
-}
-
-func (e *SVGFEFLOODElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SVGFeFloodOnMod) *SVGFEFLOODElement {
-	if condition {
-		e.DATASTAR_ON(key, expression, modifiers...)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_ON from the element.
-func (e *SVGFEFLOODElement) DATASTAR_ONRemove() *SVGFEFLOODElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-on")
-	return e
-}
-
-// Sets the focus of the element
-
-func (e *SVGFEFLOODElement) DATASTAR_FOCUSSet(b bool) *SVGFEFLOODElement {
-	key := "data-focus"
-	e.BoolAttributes.Set(key, b)
-	return e
-}
-
-func (e *SVGFEFLOODElement) DATASTAR_FOCUS() *SVGFEFLOODElement {
-	return e.DATASTAR_FOCUSSet(true)
-}
-
-// Sets the header of for fetch requests
-
-func (e *SVGFEFLOODElement) DATASTAR_HEADER(key string, expression string) *SVGFEFLOODElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-
-	key = fmt.Sprintf("data-header-%s", key)
-
-	e.StringAttributes.Set(key, expression)
-	return e
-}
-
-func (e *SVGFEFLOODElement) IfDATASTAR_HEADER(condition bool, key string, expression string) *SVGFEFLOODElement {
-	if condition {
-		e.DATASTAR_HEADER(key, expression)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_HEADER from the element.
-func (e *SVGFEFLOODElement) DATASTAR_HEADERRemove() *SVGFEFLOODElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-header")
-	return e
-}
-
-// Sets the indicator selector for fetch requests
-
-func (e *SVGFEFLOODElement) DATASTAR_FETCH_INDICATOR(expression string) *SVGFEFLOODElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-
-	key := "data-fetch-indicator"
-
-	e.StringAttributes.Set(key, expression)
-	return e
-}
-
-func (e *SVGFEFLOODElement) IfDATASTAR_FETCH_INDICATOR(condition bool, expression string) *SVGFEFLOODElement {
-	if condition {
-		e.DATASTAR_FETCH_INDICATOR(expression)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_FETCH_INDICATOR from the element.
-func (e *SVGFEFLOODElement) DATASTAR_FETCH_INDICATORRemove() *SVGFEFLOODElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-fetch-indicator")
-	return e
-}
-
-// Sets the visibility of the element
-
-func (e *SVGFEFLOODElement) DATASTAR_SHOWSet(b bool) *SVGFEFLOODElement {
-	key := "data-show"
-	e.BoolAttributes.Set(key, b)
-	return e
-}
-
-func (e *SVGFEFLOODElement) DATASTAR_SHOW() *SVGFEFLOODElement {
-	return e.DATASTAR_SHOWSet(true)
-}
-
-// Triggers the callback when the element intersects the viewport
-
-func (e *SVGFEFLOODElement) DATASTAR_INTERSECTS(expression string) *SVGFEFLOODElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-
-	key := "data-intersects"
-
-	e.StringAttributes.Set(key, expression)
-	return e
-}
-
-func (e *SVGFEFLOODElement) IfDATASTAR_INTERSECTS(condition bool, expression string) *SVGFEFLOODElement {
-	if condition {
-		e.DATASTAR_INTERSECTS(expression)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_INTERSECTS from the element.
-func (e *SVGFEFLOODElement) DATASTAR_INTERSECTSRemove() *SVGFEFLOODElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-intersects")
-	return e
-}
-
-// Teleports the element to the given selector
-
-func (e *SVGFEFLOODElement) DATASTAR_TELEPORTSet(b bool) *SVGFEFLOODElement {
-	key := "data-teleport"
-	e.BoolAttributes.Set(key, b)
-	return e
-}
-
-func (e *SVGFEFLOODElement) DATASTAR_TELEPORT() *SVGFEFLOODElement {
-	return e.DATASTAR_TELEPORTSet(true)
-}
-
-// Scrolls the element into view
-
-func (e *SVGFEFLOODElement) DATASTAR_SCROLL_INTO_VIEWSet(b bool) *SVGFEFLOODElement {
-	key := "data-scroll-into-view"
-	e.BoolAttributes.Set(key, b)
-	return e
-}
-
-func (e *SVGFEFLOODElement) DATASTAR_SCROLL_INTO_VIEW() *SVGFEFLOODElement {
-	return e.DATASTAR_SCROLL_INTO_VIEWSet(true)
-}
-
-// Setup the ViewTransitionAPI for the element
-
-func (e *SVGFEFLOODElement) DATASTAR_VIEW_TRANSITION(expression string) *SVGFEFLOODElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-
-	key := "data-view-transition"
-
-	e.StringAttributes.Set(key, expression)
-	return e
-}
-
-func (e *SVGFEFLOODElement) IfDATASTAR_VIEW_TRANSITION(condition bool, expression string) *SVGFEFLOODElement {
-	if condition {
-		e.DATASTAR_VIEW_TRANSITION(expression)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_VIEW_TRANSITION from the element.
-func (e *SVGFEFLOODElement) DATASTAR_VIEW_TRANSITIONRemove() *SVGFEFLOODElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-view-transition")
 	return e
 }

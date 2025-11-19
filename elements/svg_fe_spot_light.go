@@ -5,10 +5,8 @@ package elements
 
 import (
 	"fmt"
-	"html"
 	"time"
 
-	"github.com/goccy/go-json"
 	"github.com/igrmk/treemap/v2"
 	"github.com/samber/lo"
 )
@@ -174,6 +172,8 @@ func (e *SVGFESPOTLIGHTElement) X(f float64) *SVGFESPOTLIGHTElement {
 	return e
 }
 
+// The x attribute indicates the x location of the light source in the coordinate
+// system established by attribute 'primitiveUnits' on the <filter> element.
 func (e *SVGFESPOTLIGHTElement) IfX(condition bool, f float64) *SVGFESPOTLIGHTElement {
 	if condition {
 		e.X(f)
@@ -191,6 +191,8 @@ func (e *SVGFESPOTLIGHTElement) Y(f float64) *SVGFESPOTLIGHTElement {
 	return e
 }
 
+// The y attribute indicates the y location of the light source in the coordinate
+// system established by attribute 'primitiveUnits' on the <filter> element.
 func (e *SVGFESPOTLIGHTElement) IfY(condition bool, f float64) *SVGFESPOTLIGHTElement {
 	if condition {
 		e.Y(f)
@@ -208,6 +210,8 @@ func (e *SVGFESPOTLIGHTElement) Z(f float64) *SVGFESPOTLIGHTElement {
 	return e
 }
 
+// The z attribute indicates the z location of the light source in the coordinate
+// system established by attribute 'primitiveUnits' on the <filter> element.
 func (e *SVGFESPOTLIGHTElement) IfZ(condition bool, f float64) *SVGFESPOTLIGHTElement {
 	if condition {
 		e.Z(f)
@@ -226,6 +230,9 @@ func (e *SVGFESPOTLIGHTElement) POINTS_AT_X(f float64) *SVGFESPOTLIGHTElement {
 	return e
 }
 
+// The pointsAtX attribute indicates the x location in the coordinate system
+// established by attribute 'primitiveUnits' on the <filter> element of the point
+// at which the light source is pointing.
 func (e *SVGFESPOTLIGHTElement) IfPOINTS_AT_X(condition bool, f float64) *SVGFESPOTLIGHTElement {
 	if condition {
 		e.POINTS_AT_X(f)
@@ -244,6 +251,9 @@ func (e *SVGFESPOTLIGHTElement) POINTS_AT_Y(f float64) *SVGFESPOTLIGHTElement {
 	return e
 }
 
+// The pointsAtY attribute indicates the y location in the coordinate system
+// established by attribute 'primitiveUnits' on the <filter> element of the point
+// at which the light source is pointing.
 func (e *SVGFESPOTLIGHTElement) IfPOINTS_AT_Y(condition bool, f float64) *SVGFESPOTLIGHTElement {
 	if condition {
 		e.POINTS_AT_Y(f)
@@ -262,6 +272,9 @@ func (e *SVGFESPOTLIGHTElement) POINTS_AT_Z(f float64) *SVGFESPOTLIGHTElement {
 	return e
 }
 
+// The pointsAtZ attribute indicates the z location in the coordinate system
+// established by attribute 'primitiveUnits' on the <filter> element of the point
+// at which the light source is pointing.
 func (e *SVGFESPOTLIGHTElement) IfPOINTS_AT_Z(condition bool, f float64) *SVGFESPOTLIGHTElement {
 	if condition {
 		e.POINTS_AT_Z(f)
@@ -278,6 +291,7 @@ func (e *SVGFESPOTLIGHTElement) SPECULAR_EXPONENT(f float64) *SVGFESPOTLIGHTElem
 	return e
 }
 
+// The specularExponent attribute represents the specular reflection constant.
 func (e *SVGFESPOTLIGHTElement) IfSPECULAR_EXPONENT(condition bool, f float64) *SVGFESPOTLIGHTElement {
 	if condition {
 		e.SPECULAR_EXPONENT(f)
@@ -295,6 +309,8 @@ func (e *SVGFESPOTLIGHTElement) LIMITING_CONE_ANGLE(f float64) *SVGFESPOTLIGHTEl
 	return e
 }
 
+// The limitingConeAngle attribute represents the angle in degrees between the
+// spot light axis and the spot light cone.
 func (e *SVGFESPOTLIGHTElement) IfLIMITING_CONE_ANGLE(condition bool, f float64) *SVGFESPOTLIGHTElement {
 	if condition {
 		e.LIMITING_CONE_ANGLE(f)
@@ -311,10 +327,12 @@ func (e *SVGFESPOTLIGHTElement) ID(s string) *SVGFESPOTLIGHTElement {
 	return e
 }
 
+// Specifies a unique id for an element
 func (e *SVGFESPOTLIGHTElement) IDF(format string, args ...any) *SVGFESPOTLIGHTElement {
 	return e.ID(fmt.Sprintf(format, args...))
 }
 
+// Specifies a unique id for an element
 func (e *SVGFESPOTLIGHTElement) IfID(condition bool, s string) *SVGFESPOTLIGHTElement {
 	if condition {
 		e.ID(s)
@@ -322,6 +340,7 @@ func (e *SVGFESPOTLIGHTElement) IfID(condition bool, s string) *SVGFESPOTLIGHTEl
 	return e
 }
 
+// Specifies a unique id for an element
 func (e *SVGFESPOTLIGHTElement) IfIDF(condition bool, format string, args ...any) *SVGFESPOTLIGHTElement {
 	if condition {
 		e.ID(fmt.Sprintf(format, args...))
@@ -329,6 +348,7 @@ func (e *SVGFESPOTLIGHTElement) IfIDF(condition bool, format string, args ...any
 	return e
 }
 
+// Specifies a unique id for an element
 // Remove the attribute ID from the element.
 func (e *SVGFESPOTLIGHTElement) IDRemove(s string) *SVGFESPOTLIGHTElement {
 	if e.StringAttributes == nil {
@@ -338,6 +358,7 @@ func (e *SVGFESPOTLIGHTElement) IDRemove(s string) *SVGFESPOTLIGHTElement {
 	return e
 }
 
+// Specifies a unique id for an element
 func (e *SVGFESPOTLIGHTElement) IDRemoveF(format string, args ...any) *SVGFESPOTLIGHTElement {
 	return e.IDRemove(fmt.Sprintf(format, args...))
 }
@@ -357,6 +378,8 @@ func (e *SVGFESPOTLIGHTElement) CLASS(s ...string) *SVGFESPOTLIGHTElement {
 	return e
 }
 
+// Specifies one or more classnames for an element (refers to a class in a style
+// sheet)
 func (e *SVGFESPOTLIGHTElement) IfCLASS(condition bool, s ...string) *SVGFESPOTLIGHTElement {
 	if condition {
 		e.CLASS(s...)
@@ -364,6 +387,8 @@ func (e *SVGFESPOTLIGHTElement) IfCLASS(condition bool, s ...string) *SVGFESPOTL
 	return e
 }
 
+// Specifies one or more classnames for an element (refers to a class in a style
+// sheet)
 // Remove the attribute CLASS from the element.
 func (e *SVGFESPOTLIGHTElement) CLASSRemove(s ...string) *SVGFESPOTLIGHTElement {
 	if e.DelimitedStrings == nil {
@@ -382,6 +407,7 @@ func (e *SVGFESPOTLIGHTElement) STYLEF(k string, format string, args ...any) *SV
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+// Specifies an inline CSS style for an element
 func (e *SVGFESPOTLIGHTElement) IfSTYLE(condition bool, k string, v string) *SVGFESPOTLIGHTElement {
 	if condition {
 		e.STYLE(k, v)
@@ -389,6 +415,7 @@ func (e *SVGFESPOTLIGHTElement) IfSTYLE(condition bool, k string, v string) *SVG
 	return e
 }
 
+// Specifies an inline CSS style for an element
 func (e *SVGFESPOTLIGHTElement) STYLE(k string, v string) *SVGFESPOTLIGHTElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -402,6 +429,7 @@ func (e *SVGFESPOTLIGHTElement) STYLE(k string, v string) *SVGFESPOTLIGHTElement
 	return e
 }
 
+// Specifies an inline CSS style for an element
 func (e *SVGFESPOTLIGHTElement) IfSTYLEF(condition bool, k string, format string, args ...any) *SVGFESPOTLIGHTElement {
 	if condition {
 		e.STYLE(k, fmt.Sprintf(format, args...))
@@ -409,6 +437,7 @@ func (e *SVGFESPOTLIGHTElement) IfSTYLEF(condition bool, k string, format string
 	return e
 }
 
+// Specifies an inline CSS style for an element
 // Add the attributes in the map to the element.
 func (e *SVGFESPOTLIGHTElement) STYLEMap(m map[string]string) *SVGFESPOTLIGHTElement {
 	if e.KVStrings == nil {
@@ -425,6 +454,7 @@ func (e *SVGFESPOTLIGHTElement) STYLEMap(m map[string]string) *SVGFESPOTLIGHTEle
 	return e
 }
 
+// Specifies an inline CSS style for an element
 // Add pairs of attributes to the element.
 func (e *SVGFESPOTLIGHTElement) STYLEPairs(pairs ...string) *SVGFESPOTLIGHTElement {
 	if len(pairs)%2 != 0 {
@@ -446,6 +476,7 @@ func (e *SVGFESPOTLIGHTElement) STYLEPairs(pairs ...string) *SVGFESPOTLIGHTEleme
 	return e
 }
 
+// Specifies an inline CSS style for an element
 func (e *SVGFESPOTLIGHTElement) IfSTYLEPairs(condition bool, pairs ...string) *SVGFESPOTLIGHTElement {
 	if condition {
 		e.STYLEPairs(pairs...)
@@ -453,6 +484,7 @@ func (e *SVGFESPOTLIGHTElement) IfSTYLEPairs(condition bool, pairs ...string) *S
 	return e
 }
 
+// Specifies an inline CSS style for an element
 // Remove the attribute STYLE from the element.
 func (e *SVGFESPOTLIGHTElement) STYLERemove(keys ...string) *SVGFESPOTLIGHTElement {
 	if e.KVStrings == nil {
@@ -468,62 +500,75 @@ func (e *SVGFESPOTLIGHTElement) STYLERemove(keys ...string) *SVGFESPOTLIGHTEleme
 	return e
 }
 
-// Merges the singleton store with the given object
-
-func (e *SVGFESPOTLIGHTElement) DATASTAR_STORE(v any) *SVGFESPOTLIGHTElement {
-	if e.CustomDataAttributes == nil {
-		e.CustomDataAttributes = treemap.New[string, string]()
-	}
-	b, err := json.Marshal(v)
-	if err != nil {
-		panic(err)
-	}
-	e.CustomDataAttributes.Set("store", html.EscapeString(string(b)))
-	return e
-}
-
-// Sets the reference of the element
-
-func (e *SVGFESPOTLIGHTElement) DATASTAR_REF(expression string) *SVGFESPOTLIGHTElement {
+// Sets the value of any HTML attribute to an expression, and keeps it in sync.
+//
+// See: https://data-star.dev/reference/attributes#data-attr
+func (e *SVGFESPOTLIGHTElement) DATASTAR_ATTR(key string, expression string) *SVGFESPOTLIGHTElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "data-ref"
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	key = fmt.Sprintf("data-attr%s", suffix)
 
 	e.StringAttributes.Set(key, expression)
 	return e
 }
 
-func (e *SVGFESPOTLIGHTElement) IfDATASTAR_REF(condition bool, expression string) *SVGFESPOTLIGHTElement {
+// Sets the value of any HTML attribute to an expression, and keeps it in sync.
+//
+// See: https://data-star.dev/reference/attributes#data-attr
+func (e *SVGFESPOTLIGHTElement) IfDATASTAR_ATTR(condition bool, key string, expression string) *SVGFESPOTLIGHTElement {
 	if condition {
-		e.DATASTAR_REF(expression)
+		e.DATASTAR_ATTR(key, expression)
 	}
 	return e
 }
 
-// Remove the attribute DATASTAR_REF from the element.
-func (e *SVGFESPOTLIGHTElement) DATASTAR_REFRemove() *SVGFESPOTLIGHTElement {
+// Sets the value of any HTML attribute to an expression, and keeps it in sync.
+//
+// See: https://data-star.dev/reference/attributes#data-attr
+// Remove the attribute DATASTAR_ATTR from the element.
+func (e *SVGFESPOTLIGHTElement) DATASTAR_ATTRRemove(key string) *SVGFESPOTLIGHTElement {
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("data-ref")
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	e.StringAttributes.Del("data-attr" + suffix)
+
 	return e
 }
 
-// Sets the value of the element
-
+// Creates a signal (if one doesn’t already exist) and sets up two-way data
+// binding between it and an element’s value.
+//
+// See: https://data-star.dev/reference/attributes#data-bind
 func (e *SVGFESPOTLIGHTElement) DATASTAR_BIND(key string, expression string) *SVGFESPOTLIGHTElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key = fmt.Sprintf("data-bind-%s", key)
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	key = fmt.Sprintf("data-bind%s", suffix)
 
 	e.StringAttributes.Set(key, expression)
 	return e
 }
 
+// Creates a signal (if one doesn’t already exist) and sets up two-way data
+// binding between it and an element’s value.
+//
+// See: https://data-star.dev/reference/attributes#data-bind
 func (e *SVGFESPOTLIGHTElement) IfDATASTAR_BIND(condition bool, key string, expression string) *SVGFESPOTLIGHTElement {
 	if condition {
 		e.DATASTAR_BIND(key, expression)
@@ -531,46 +576,1525 @@ func (e *SVGFESPOTLIGHTElement) IfDATASTAR_BIND(condition bool, key string, expr
 	return e
 }
 
+// Creates a signal (if one doesn’t already exist) and sets up two-way data
+// binding between it and an element’s value.
+//
+// See: https://data-star.dev/reference/attributes#data-bind
 // Remove the attribute DATASTAR_BIND from the element.
-func (e *SVGFESPOTLIGHTElement) DATASTAR_BINDRemove() *SVGFESPOTLIGHTElement {
+func (e *SVGFESPOTLIGHTElement) DATASTAR_BINDRemove(key string) *SVGFESPOTLIGHTElement {
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("data-bind")
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	e.StringAttributes.Del("data-bind" + suffix)
+
 	return e
 }
 
-// Sets the value of the element
+type SVGFeSpotLightClassMod customDataKeyModifier
 
-func (e *SVGFESPOTLIGHTElement) DATASTAR_MODEL(expression string) *SVGFESPOTLIGHTElement {
+// Converts the casing of the signal name.
+//   - 'camel' – Camel case: 'mySignal' (default)
+//   - 'kebab' – Kebab case: 'my-signal'
+//   - 'snake' – Snake case: 'my_signal'
+//   - 'pascal' – Pascal case: 'MySignal'
+func SVGFeSpotLightClassModCase(
+	s string,
+) SVGFeSpotLightClassMod {
+	return func() string {
+		return fmt.Sprintf("case.%s", s)
+	}
+}
+
+// Adds or removes a class to or from an element based on an expression.
+func (e *SVGFESPOTLIGHTElement) DATASTAR_CLASS(key string, expression string, modifiers ...SVGFeSpotLightClassMod) *SVGFESPOTLIGHTElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "data-model"
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	key = fmt.Sprintf("data-class%s", suffix)
+
+	customMods := lo.Map(modifiers, func(m SVGFeSpotLightClassMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Adds or removes a class to or from an element based on an expression.
+func (e *SVGFESPOTLIGHTElement) IfDATASTAR_CLASS(condition bool, key string, expression string, modifiers ...SVGFeSpotLightClassMod) *SVGFESPOTLIGHTElement {
+	if condition {
+		e.DATASTAR_CLASS(key, expression, modifiers...)
+	}
+	return e
+}
+
+// Adds or removes a class to or from an element based on an expression.
+// Remove the attribute DATASTAR_CLASS from the element.
+func (e *SVGFESPOTLIGHTElement) DATASTAR_CLASSRemove(key string) *SVGFESPOTLIGHTElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	e.StringAttributes.Del("data-class" + suffix)
+
+	return e
+}
+
+type SVGFeSpotLightComputedMod customDataKeyModifier
+
+// Converts the casing of the signal name.
+//   - 'camel' – Camel case: 'mySignal' (default)
+//   - 'kebab' – Kebab case: 'my-signal'
+//   - 'snake' – Snake case: 'my_signal'
+//   - 'pascal' – Pascal case: 'MySignal'
+func SVGFeSpotLightComputedModCase(
+	s string,
+) SVGFeSpotLightComputedMod {
+	return func() string {
+		return fmt.Sprintf("case.%s", s)
+	}
+}
+
+// Creates a signal that is computed based on an expression
+// The computed signal is read-only, and its value is automatically updated when
+// any signals in the expression are updated.
+//
+// See: https://data-star.dev/reference/attributes#data-computed
+func (e *SVGFESPOTLIGHTElement) DATASTAR_COMPUTED(key string, expression string, modifiers ...SVGFeSpotLightComputedMod) *SVGFESPOTLIGHTElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	key = fmt.Sprintf("data-computed%s", suffix)
+
+	customMods := lo.Map(modifiers, func(m SVGFeSpotLightComputedMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Creates a signal that is computed based on an expression
+// The computed signal is read-only, and its value is automatically updated when
+// any signals in the expression are updated.
+//
+// See: https://data-star.dev/reference/attributes#data-computed
+func (e *SVGFESPOTLIGHTElement) IfDATASTAR_COMPUTED(condition bool, key string, expression string, modifiers ...SVGFeSpotLightComputedMod) *SVGFESPOTLIGHTElement {
+	if condition {
+		e.DATASTAR_COMPUTED(key, expression, modifiers...)
+	}
+	return e
+}
+
+// Creates a signal that is computed based on an expression
+// The computed signal is read-only, and its value is automatically updated when
+// any signals in the expression are updated.
+//
+// See: https://data-star.dev/reference/attributes#data-computed
+// Remove the attribute DATASTAR_COMPUTED from the element.
+func (e *SVGFESPOTLIGHTElement) DATASTAR_COMPUTEDRemove(key string) *SVGFESPOTLIGHTElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	e.StringAttributes.Del("data-computed" + suffix)
+
+	return e
+}
+
+// Executes an expression on page load and whenever any signals in the expression
+// change
+// This is useful for performing side effects, such as updating other signals,
+// making requests to the backend, or manipulating the DOM.
+//
+// See: https://data-star.dev/reference/attributes#data-effect
+func (e *SVGFESPOTLIGHTElement) DATASTAR_EFFECT(expression string) *SVGFESPOTLIGHTElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-effect"
 
 	e.StringAttributes.Set(key, expression)
 	return e
 }
 
-func (e *SVGFESPOTLIGHTElement) IfDATASTAR_MODEL(condition bool, expression string) *SVGFESPOTLIGHTElement {
+// Executes an expression on page load and whenever any signals in the expression
+// change
+// This is useful for performing side effects, such as updating other signals,
+// making requests to the backend, or manipulating the DOM.
+//
+// See: https://data-star.dev/reference/attributes#data-effect
+func (e *SVGFESPOTLIGHTElement) IfDATASTAR_EFFECT(condition bool, expression string) *SVGFESPOTLIGHTElement {
 	if condition {
-		e.DATASTAR_MODEL(expression)
+		e.DATASTAR_EFFECT(expression)
 	}
 	return e
 }
 
-// Remove the attribute DATASTAR_MODEL from the element.
-func (e *SVGFESPOTLIGHTElement) DATASTAR_MODELRemove() *SVGFESPOTLIGHTElement {
+// Executes an expression on page load and whenever any signals in the expression
+// change
+// This is useful for performing side effects, such as updating other signals,
+// making requests to the backend, or manipulating the DOM.
+//
+// See: https://data-star.dev/reference/attributes#data-effect
+// Remove the attribute DATASTAR_EFFECT from the element.
+func (e *SVGFESPOTLIGHTElement) DATASTAR_EFFECTRemove() *SVGFESPOTLIGHTElement {
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("data-model")
+
+	e.StringAttributes.Del("data-effect")
+
 	return e
 }
 
-// Sets the textContent of the element
+type SVGFeSpotLightIgnoreMod customDataKeyModifier
 
+// Only ignore the element itself, not its descendants.
+func SVGFeSpotLightIgnoreModSelf() SVGFeSpotLightIgnoreMod {
+	return func() string {
+		return "self"
+	}
+}
+
+// Datastar walks the entire DOM and applies plugins to each element it encounters
+// It's possible to tell Datastar to ignore an element and its descendants by
+// placing a data-ignore attribute on it
+// This can be useful for preventing naming conflicts with third-party libraries,
+// or when you are unable to escape user input.
+//
+// See: https://data-star.dev/reference/attributes#data-ignore
+func (e *SVGFESPOTLIGHTElement) DATASTAR_IGNORESet(b bool, modifiers ...SVGFeSpotLightIgnoreMod) *SVGFESPOTLIGHTElement {
+	key := customDataKey("data-ignore")
+	customMods := lo.Map(modifiers, func(m SVGFeSpotLightIgnoreMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	if e.BoolAttributes == nil {
+		e.BoolAttributes = treemap.New[string, bool]()
+	}
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+// Datastar walks the entire DOM and applies plugins to each element it encounters
+// It's possible to tell Datastar to ignore an element and its descendants by
+// placing a data-ignore attribute on it
+// This can be useful for preventing naming conflicts with third-party libraries,
+// or when you are unable to escape user input.
+//
+// See: https://data-star.dev/reference/attributes#data-ignore
+func (e *SVGFESPOTLIGHTElement) DATASTAR_IGNORE(modifiers ...SVGFeSpotLightIgnoreMod) *SVGFESPOTLIGHTElement {
+	return e.DATASTAR_IGNORESet(true, modifiers...)
+}
+
+// Similar to the data-ignore attribute, the data-ignore-morph attribute tells the
+// PatchElements watcher to skip processing an element and its children when
+// morphing elements
+// This can be useful for preventing conflicts with third-party libraries that
+// manipulate the DOM, or when you are unable to escape user input.
+//
+// See: https://data-star.dev/reference/attributes#data-ignore-morph
+func (e *SVGFESPOTLIGHTElement) DATASTAR_IGNORE_MORPHSet(b bool) *SVGFESPOTLIGHTElement {
+	key := "data-ignore-morph"
+	if e.BoolAttributes == nil {
+		e.BoolAttributes = treemap.New[string, bool]()
+	}
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+// Similar to the data-ignore attribute, the data-ignore-morph attribute tells the
+// PatchElements watcher to skip processing an element and its children when
+// morphing elements
+// This can be useful for preventing conflicts with third-party libraries that
+// manipulate the DOM, or when you are unable to escape user input.
+//
+// See: https://data-star.dev/reference/attributes#data-ignore-morph
+func (e *SVGFESPOTLIGHTElement) DATASTAR_IGNORE_MORPH() *SVGFESPOTLIGHTElement {
+	return e.DATASTAR_IGNORE_MORPHSet(true)
+}
+
+type SVGFeSpotLightIndicatorMod customDataKeyModifier
+
+// Converts the casing of the signal name.
+//   - 'camel' – Camel case: 'mySignal' (default)
+//   - 'kebab' – Kebab case: 'my-signal'
+//   - 'snake' – Snake case: 'my_signal'
+//   - 'pascal' – Pascal case: 'MySignal'
+func SVGFeSpotLightIndicatorModCase(
+	s string,
+) SVGFeSpotLightIndicatorMod {
+	return func() string {
+		return fmt.Sprintf("case.%s", s)
+	}
+}
+
+// Creates a signal and sets its value to true while a fetch request is in flight,
+// otherwise false
+// The signal can be used to show a loading indicator.
+//
+// See: https://data-star.dev/reference/attributes#data-indicator
+func (e *SVGFESPOTLIGHTElement) DATASTAR_INDICATOR(expression string, modifiers ...SVGFeSpotLightIndicatorMod) *SVGFESPOTLIGHTElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-indicator"
+
+	customMods := lo.Map(modifiers, func(m SVGFeSpotLightIndicatorMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Creates a signal and sets its value to true while a fetch request is in flight,
+// otherwise false
+// The signal can be used to show a loading indicator.
+//
+// See: https://data-star.dev/reference/attributes#data-indicator
+func (e *SVGFESPOTLIGHTElement) IfDATASTAR_INDICATOR(condition bool, expression string, modifiers ...SVGFeSpotLightIndicatorMod) *SVGFESPOTLIGHTElement {
+	if condition {
+		e.DATASTAR_INDICATOR(expression, modifiers...)
+	}
+	return e
+}
+
+// Creates a signal and sets its value to true while a fetch request is in flight,
+// otherwise false
+// The signal can be used to show a loading indicator.
+//
+// See: https://data-star.dev/reference/attributes#data-indicator
+// Remove the attribute DATASTAR_INDICATOR from the element.
+func (e *SVGFESPOTLIGHTElement) DATASTAR_INDICATORRemove() *SVGFESPOTLIGHTElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-indicator")
+
+	return e
+}
+
+type SVGFeSpotLightInitMod customDataKeyModifier
+
+// Delay the event listener in milliseconds.
+func SVGFeSpotLightInitModDelayMs(
+	d time.Duration,
+) SVGFeSpotLightInitMod {
+	return func() string {
+		return fmt.Sprintf("delay.%dms", d.Milliseconds())
+	}
+}
+
+// Delay the event listener in seconds.
+func SVGFeSpotLightInitModDelaySec(
+	d time.Duration,
+) SVGFeSpotLightInitMod {
+	return func() string {
+		return fmt.Sprintf("delay.%ds", int(d.Seconds()))
+	}
+}
+
+// Wraps the expression in 'document.startViewTransition()' when the View
+// Transition API is available.
+func SVGFeSpotLightInitModViewTransition() SVGFeSpotLightInitMod {
+	return func() string {
+		return "viewtransition"
+	}
+}
+
+// Runs an expression when the attribute is initialized
+// This can happen on page load, when an element is patched into the DOM, and any
+// time the attribute is modified (via a backend action or otherwise).
+//
+// See: https://data-star.dev/reference/attributes#data-indicator
+func (e *SVGFESPOTLIGHTElement) DATASTAR_INIT(expression string, modifiers ...SVGFeSpotLightInitMod) *SVGFESPOTLIGHTElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-init"
+
+	customMods := lo.Map(modifiers, func(m SVGFeSpotLightInitMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Runs an expression when the attribute is initialized
+// This can happen on page load, when an element is patched into the DOM, and any
+// time the attribute is modified (via a backend action or otherwise).
+//
+// See: https://data-star.dev/reference/attributes#data-indicator
+func (e *SVGFESPOTLIGHTElement) IfDATASTAR_INIT(condition bool, expression string, modifiers ...SVGFeSpotLightInitMod) *SVGFESPOTLIGHTElement {
+	if condition {
+		e.DATASTAR_INIT(expression, modifiers...)
+	}
+	return e
+}
+
+// Runs an expression when the attribute is initialized
+// This can happen on page load, when an element is patched into the DOM, and any
+// time the attribute is modified (via a backend action or otherwise).
+//
+// See: https://data-star.dev/reference/attributes#data-indicator
+// Remove the attribute DATASTAR_INIT from the element.
+func (e *SVGFESPOTLIGHTElement) DATASTAR_INITRemove() *SVGFESPOTLIGHTElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-init")
+
+	return e
+}
+
+type SVGFeSpotLightJsonSignalsMod customDataKeyModifier
+
+// Outputs a more compact JSON format without extra whitespace
+// Useful for displaying filtered data inline.
+func SVGFeSpotLightJsonSignalsModTerse() SVGFeSpotLightJsonSignalsMod {
+	return func() string {
+		return "terse"
+	}
+}
+
+// Sets the text content of an element to a reactive JSON stringified version of
+// signals
+// Useful when troubleshooting an issue.
+//
+// See: https://data-star.dev/reference/attributes#data-json-signals
+func (e *SVGFESPOTLIGHTElement) DATASTAR_JSON_SIGNALS(expression string, modifiers ...SVGFeSpotLightJsonSignalsMod) *SVGFESPOTLIGHTElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-json-signals"
+
+	customMods := lo.Map(modifiers, func(m SVGFeSpotLightJsonSignalsMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Sets the text content of an element to a reactive JSON stringified version of
+// signals
+// Useful when troubleshooting an issue.
+//
+// See: https://data-star.dev/reference/attributes#data-json-signals
+func (e *SVGFESPOTLIGHTElement) IfDATASTAR_JSON_SIGNALS(condition bool, expression string, modifiers ...SVGFeSpotLightJsonSignalsMod) *SVGFESPOTLIGHTElement {
+	if condition {
+		e.DATASTAR_JSON_SIGNALS(expression, modifiers...)
+	}
+	return e
+}
+
+// Sets the text content of an element to a reactive JSON stringified version of
+// signals
+// Useful when troubleshooting an issue.
+//
+// See: https://data-star.dev/reference/attributes#data-json-signals
+// Remove the attribute DATASTAR_JSON_SIGNALS from the element.
+func (e *SVGFESPOTLIGHTElement) DATASTAR_JSON_SIGNALSRemove() *SVGFESPOTLIGHTElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-json-signals")
+
+	return e
+}
+
+type SVGFeSpotLightOnMod customDataKeyModifier
+
+// Only run the expression once
+// Only works with built-in events.
+func SVGFeSpotLightOnModOnce() SVGFeSpotLightOnMod {
+	return func() string {
+		return "once"
+	}
+}
+
+// Do not call preventDefault on the event listener
+// Only works with built-in events.
+func SVGFeSpotLightOnModPassive() SVGFeSpotLightOnMod {
+	return func() string {
+		return "passive"
+	}
+}
+
+// Use capture event listener
+// Only works with built-in events.
+func SVGFeSpotLightOnModCapture() SVGFeSpotLightOnMod {
+	return func() string {
+		return "capture"
+	}
+}
+
+// Converts the casing of the signal name.
+//   - 'camel' – Camel case: 'mySignal' (default)
+//   - 'kebab' – Kebab case: 'my-signal'
+//   - 'snake' – Snake case: 'my_signal'
+//   - 'pascal' – Pascal case: 'MySignal'
+func SVGFeSpotLightOnModCase(
+	s string,
+) SVGFeSpotLightOnMod {
+	return func() string {
+		return fmt.Sprintf("case.%s", s)
+	}
+}
+
+// Delay the event listener in milliseconds.
+func SVGFeSpotLightOnModDelayMs(
+	d time.Duration,
+) SVGFeSpotLightOnMod {
+	return func() string {
+		return fmt.Sprintf("delay.%dms", d.Milliseconds())
+	}
+}
+
+// Delay the event listener in seconds.
+func SVGFeSpotLightOnModDelaySec(
+	d time.Duration,
+) SVGFeSpotLightOnMod {
+	return func() string {
+		return fmt.Sprintf("delay.%ds", int(d.Seconds()))
+	}
+}
+
+// Debounces the event handler
+func SVGFeSpotLightOnModDebounceMs(
+	d time.Duration,
+) SVGFeSpotLightOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms", d.Milliseconds())
+	}
+}
+
+// Debounce the event listener in milliseconds with leading edge.
+func SVGFeSpotLightOnModDebounceMsLeading(
+	d time.Duration,
+) SVGFeSpotLightOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms.leading", d.Milliseconds())
+	}
+}
+
+// Debounce the event listener in milliseconds without trailing edge.
+func SVGFeSpotLightOnModDebounceMsNoTrailing(
+	d time.Duration,
+) SVGFeSpotLightOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms.notrailing", d.Milliseconds())
+	}
+}
+
+// Debounces the event handler
+func SVGFeSpotLightOnModDebounceSec(
+	d time.Duration,
+) SVGFeSpotLightOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds", int(d.Seconds()))
+	}
+}
+
+// Debounce the event listener in seconds with leading edge.
+func SVGFeSpotLightOnModDebounceSecLeading(
+	d time.Duration,
+) SVGFeSpotLightOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds.leading", int(d.Seconds()))
+	}
+}
+
+// Debounce the event listener in seconds without trailing edge.
+func SVGFeSpotLightOnModDebounceSecNoTrailing(
+	d time.Duration,
+) SVGFeSpotLightOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds.notrailing", int(d.Seconds()))
+	}
+}
+
+// Throttles the event handler
+func SVGFeSpotLightOnModThrottleMs(
+	d time.Duration,
+) SVGFeSpotLightOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms", d.Milliseconds())
+	}
+}
+
+// Throttle the event listener in milliseconds without leading edge.
+func SVGFeSpotLightOnModThrottleMsNoLeading(
+	d time.Duration,
+) SVGFeSpotLightOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms.noleading", d.Milliseconds())
+	}
+}
+
+// Throttle the event listener in milliseconds with trailing edge.
+func SVGFeSpotLightOnModThrottleMsTrailing(
+	d time.Duration,
+) SVGFeSpotLightOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms.trailing", d.Milliseconds())
+	}
+}
+
+// Throttles the event listener in seconds.
+func SVGFeSpotLightOnModThrottleSec(
+	d time.Duration,
+) SVGFeSpotLightOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds", int(d.Seconds()))
+	}
+}
+
+// Throttle the event listener in seconds without leading edge.
+func SVGFeSpotLightOnModThrottleSecNoLeading(
+	d time.Duration,
+) SVGFeSpotLightOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds.noleading", int(d.Seconds()))
+	}
+}
+
+// Throttle the event listener in seconds with trailing edge.
+func SVGFeSpotLightOnModThrottleSecTrailing(
+	d time.Duration,
+) SVGFeSpotLightOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds.trailing", int(d.Seconds()))
+	}
+}
+
+// Wraps the expression in 'document.startViewTransition()' when the View
+// Transition API is available.
+func SVGFeSpotLightOnModViewTransition() SVGFeSpotLightOnMod {
+	return func() string {
+		return "viewtransition"
+	}
+}
+
+// Attaches the event listener to the 'window' element.
+func SVGFeSpotLightOnModWindow() SVGFeSpotLightOnMod {
+	return func() string {
+		return "window"
+	}
+}
+
+// Calls 'preventDefault' on the event listener.
+func SVGFeSpotLightOnModPrevent() SVGFeSpotLightOnMod {
+	return func() string {
+		return "prevent"
+	}
+}
+
+// Triggers when the event is outside the element.
+func SVGFeSpotLightOnModOutside() SVGFeSpotLightOnMod {
+	return func() string {
+		return "outside"
+	}
+}
+
+// Calls 'stopPropagation' on the event listener.
+func SVGFeSpotLightOnModStop() SVGFeSpotLightOnMod {
+	return func() string {
+		return "stop"
+	}
+}
+
+// Attaches an event listener to an element, executing an expression whenever the
+// event is triggered.
+//
+// See: https://data-star.dev/reference/attributes#data-on
+func (e *SVGFESPOTLIGHTElement) DATASTAR_ON(key string, expression string, modifiers ...SVGFeSpotLightOnMod) *SVGFESPOTLIGHTElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	key = fmt.Sprintf("data-on%s", suffix)
+
+	customMods := lo.Map(modifiers, func(m SVGFeSpotLightOnMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Attaches an event listener to an element, executing an expression whenever the
+// event is triggered.
+//
+// See: https://data-star.dev/reference/attributes#data-on
+func (e *SVGFESPOTLIGHTElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SVGFeSpotLightOnMod) *SVGFESPOTLIGHTElement {
+	if condition {
+		e.DATASTAR_ON(key, expression, modifiers...)
+	}
+	return e
+}
+
+// Attaches an event listener to an element, executing an expression whenever the
+// event is triggered.
+//
+// See: https://data-star.dev/reference/attributes#data-on
+// Remove the attribute DATASTAR_ON from the element.
+func (e *SVGFESPOTLIGHTElement) DATASTAR_ONRemove(key string) *SVGFESPOTLIGHTElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	e.StringAttributes.Del("data-on" + suffix)
+
+	return e
+}
+
+type SVGFeSpotLightOnIntersectMod customDataKeyModifier
+
+// Only run the expression once
+// Only works with built-in events.
+func SVGFeSpotLightOnIntersectModOnce() SVGFeSpotLightOnIntersectMod {
+	return func() string {
+		return "once"
+	}
+}
+
+// Trigger when half of the element is visible.
+func SVGFeSpotLightOnIntersectModHalf() SVGFeSpotLightOnIntersectMod {
+	return func() string {
+		return "half"
+	}
+}
+
+// Trigger when the full element is visible.
+func SVGFeSpotLightOnIntersectModFull() SVGFeSpotLightOnIntersectMod {
+	return func() string {
+		return "full"
+	}
+}
+
+// Delay the event listener in milliseconds.
+func SVGFeSpotLightOnIntersectModDelayMs(
+	d time.Duration,
+) SVGFeSpotLightOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("delay.%dms", d.Milliseconds())
+	}
+}
+
+// Delay the event listener in seconds.
+func SVGFeSpotLightOnIntersectModDelaySec(
+	d time.Duration,
+) SVGFeSpotLightOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("delay.%ds", int(d.Seconds()))
+	}
+}
+
+// Debounces the event handler
+func SVGFeSpotLightOnIntersectModDebounceMs(
+	d time.Duration,
+) SVGFeSpotLightOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms", d.Milliseconds())
+	}
+}
+
+// Debounce the event listener in milliseconds with leading edge.
+func SVGFeSpotLightOnIntersectModDebounceMsLeading(
+	d time.Duration,
+) SVGFeSpotLightOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms.leading", d.Milliseconds())
+	}
+}
+
+// Debounce the event listener in milliseconds without trailing edge.
+func SVGFeSpotLightOnIntersectModDebounceMsNoTrailing(
+	d time.Duration,
+) SVGFeSpotLightOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms.notrailing", d.Milliseconds())
+	}
+}
+
+// Debounces the event handler
+func SVGFeSpotLightOnIntersectModDebounceSec(
+	d time.Duration,
+) SVGFeSpotLightOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds", int(d.Seconds()))
+	}
+}
+
+// Debounce the event listener in seconds with leading edge.
+func SVGFeSpotLightOnIntersectModDebounceSecLeading(
+	d time.Duration,
+) SVGFeSpotLightOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds.leading", int(d.Seconds()))
+	}
+}
+
+// Debounce the event listener in seconds without trailing edge.
+func SVGFeSpotLightOnIntersectModDebounceSecNoTrailing(
+	d time.Duration,
+) SVGFeSpotLightOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds.notrailing", int(d.Seconds()))
+	}
+}
+
+// Throttles the event handler
+func SVGFeSpotLightOnIntersectModThrottleMs(
+	d time.Duration,
+) SVGFeSpotLightOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms", d.Milliseconds())
+	}
+}
+
+// Throttle the event listener in milliseconds without leading edge.
+func SVGFeSpotLightOnIntersectModThrottleMsNoLeading(
+	d time.Duration,
+) SVGFeSpotLightOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms.noleading", d.Milliseconds())
+	}
+}
+
+// Throttle the event listener in milliseconds with trailing edge.
+func SVGFeSpotLightOnIntersectModThrottleMsTrailing(
+	d time.Duration,
+) SVGFeSpotLightOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms.trailing", d.Milliseconds())
+	}
+}
+
+// Throttles the event listener in seconds.
+func SVGFeSpotLightOnIntersectModThrottleSec(
+	d time.Duration,
+) SVGFeSpotLightOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds", int(d.Seconds()))
+	}
+}
+
+// Throttle the event listener in seconds without leading edge.
+func SVGFeSpotLightOnIntersectModThrottleSecNoLeading(
+	d time.Duration,
+) SVGFeSpotLightOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds.noleading", int(d.Seconds()))
+	}
+}
+
+// Throttle the event listener in seconds with trailing edge.
+func SVGFeSpotLightOnIntersectModThrottleSecTrailing(
+	d time.Duration,
+) SVGFeSpotLightOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds.trailing", int(d.Seconds()))
+	}
+}
+
+// Wraps the expression in 'document.startViewTransition()' when the View
+// Transition API is available.
+func SVGFeSpotLightOnIntersectModViewTransition() SVGFeSpotLightOnIntersectMod {
+	return func() string {
+		return "viewtransition"
+	}
+}
+
+// Runs an expression when the element intersects with the viewport.
+func (e *SVGFESPOTLIGHTElement) DATASTAR_ON_INTERSECT(expression string, modifiers ...SVGFeSpotLightOnIntersectMod) *SVGFESPOTLIGHTElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-on-intersect"
+
+	customMods := lo.Map(modifiers, func(m SVGFeSpotLightOnIntersectMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Runs an expression when the element intersects with the viewport.
+func (e *SVGFESPOTLIGHTElement) IfDATASTAR_ON_INTERSECT(condition bool, expression string, modifiers ...SVGFeSpotLightOnIntersectMod) *SVGFESPOTLIGHTElement {
+	if condition {
+		e.DATASTAR_ON_INTERSECT(expression, modifiers...)
+	}
+	return e
+}
+
+// Runs an expression when the element intersects with the viewport.
+// Remove the attribute DATASTAR_ON_INTERSECT from the element.
+func (e *SVGFESPOTLIGHTElement) DATASTAR_ON_INTERSECTRemove() *SVGFESPOTLIGHTElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-on-intersect")
+
+	return e
+}
+
+type SVGFeSpotLightOnIntervalMod customDataKeyModifier
+
+// Sets the interval duration in milliseconds.
+func SVGFeSpotLightOnIntervalModDurationMs(
+	d time.Duration,
+) SVGFeSpotLightOnIntervalMod {
+	return func() string {
+		return fmt.Sprintf("duration.%dms", d.Milliseconds())
+	}
+}
+
+// Sets the interval duration in milliseconds
+// Execute the first interval immediately.
+func SVGFeSpotLightOnIntervalModDurationMsLeading(
+	d time.Duration,
+) SVGFeSpotLightOnIntervalMod {
+	return func() string {
+		return fmt.Sprintf("duration.%dms.leading", d.Milliseconds())
+	}
+}
+
+// Sets the interval duration in seconds.
+func SVGFeSpotLightOnIntervalModDurationSec(
+	d time.Duration,
+) SVGFeSpotLightOnIntervalMod {
+	return func() string {
+		return fmt.Sprintf("duration.%ds", int(d.Seconds()))
+	}
+}
+
+// Sets the interval duration in seconds
+// Execute the first interval immediately.
+func SVGFeSpotLightOnIntervalModDurationSecLeading(
+	d time.Duration,
+) SVGFeSpotLightOnIntervalMod {
+	return func() string {
+		return fmt.Sprintf("duration.%ds.leading", int(d.Seconds()))
+	}
+}
+
+// Wraps the expression in 'document.startViewTransition()' when the View
+// Transition API is available.
+func SVGFeSpotLightOnIntervalModViewTransition() SVGFeSpotLightOnIntervalMod {
+	return func() string {
+		return "viewtransition"
+	}
+}
+
+// Runs an expression at a regular interval
+// The interval duration defaults to one second and can be modified using the
+// '__duration' modifier.
+//
+// See: https://data-star.dev/reference/attributes#data-on-interval
+func (e *SVGFESPOTLIGHTElement) DATASTAR_ON_INTERVAL(expression string, modifiers ...SVGFeSpotLightOnIntervalMod) *SVGFESPOTLIGHTElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-on-interval"
+
+	customMods := lo.Map(modifiers, func(m SVGFeSpotLightOnIntervalMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Runs an expression at a regular interval
+// The interval duration defaults to one second and can be modified using the
+// '__duration' modifier.
+//
+// See: https://data-star.dev/reference/attributes#data-on-interval
+func (e *SVGFESPOTLIGHTElement) IfDATASTAR_ON_INTERVAL(condition bool, expression string, modifiers ...SVGFeSpotLightOnIntervalMod) *SVGFESPOTLIGHTElement {
+	if condition {
+		e.DATASTAR_ON_INTERVAL(expression, modifiers...)
+	}
+	return e
+}
+
+// Runs an expression at a regular interval
+// The interval duration defaults to one second and can be modified using the
+// '__duration' modifier.
+//
+// See: https://data-star.dev/reference/attributes#data-on-interval
+// Remove the attribute DATASTAR_ON_INTERVAL from the element.
+func (e *SVGFESPOTLIGHTElement) DATASTAR_ON_INTERVALRemove() *SVGFESPOTLIGHTElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-on-interval")
+
+	return e
+}
+
+type SVGFeSpotLightOnSignalPatchMod customDataKeyModifier
+
+// Delay the event listener in milliseconds.
+func SVGFeSpotLightOnSignalPatchModDelayMs(
+	d time.Duration,
+) SVGFeSpotLightOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("delay.%dms", d.Milliseconds())
+	}
+}
+
+// Delay the event listener in seconds.
+func SVGFeSpotLightOnSignalPatchModDelaySec(
+	d time.Duration,
+) SVGFeSpotLightOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("delay.%ds", int(d.Seconds()))
+	}
+}
+
+// Debounces the event handler
+func SVGFeSpotLightOnSignalPatchModDebounceMs(
+	d time.Duration,
+) SVGFeSpotLightOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms", d.Milliseconds())
+	}
+}
+
+// Debounce the event listener in milliseconds with leading edge.
+func SVGFeSpotLightOnSignalPatchModDebounceMsLeading(
+	d time.Duration,
+) SVGFeSpotLightOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms.leading", d.Milliseconds())
+	}
+}
+
+// Debounce the event listener in milliseconds without trailing edge.
+func SVGFeSpotLightOnSignalPatchModDebounceMsNoTrailing(
+	d time.Duration,
+) SVGFeSpotLightOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms.notrailing", d.Milliseconds())
+	}
+}
+
+// Debounces the event handler
+func SVGFeSpotLightOnSignalPatchModDebounceSec(
+	d time.Duration,
+) SVGFeSpotLightOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds", int(d.Seconds()))
+	}
+}
+
+// Debounce the event listener in seconds with leading edge.
+func SVGFeSpotLightOnSignalPatchModDebounceSecLeading(
+	d time.Duration,
+) SVGFeSpotLightOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds.leading", int(d.Seconds()))
+	}
+}
+
+// Debounce the event listener in seconds without trailing edge.
+func SVGFeSpotLightOnSignalPatchModDebounceSecNoTrailing(
+	d time.Duration,
+) SVGFeSpotLightOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds.notrailing", int(d.Seconds()))
+	}
+}
+
+// Throttles the event handler
+func SVGFeSpotLightOnSignalPatchModThrottleMs(
+	d time.Duration,
+) SVGFeSpotLightOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms", d.Milliseconds())
+	}
+}
+
+// Throttle the event listener in milliseconds without leading edge.
+func SVGFeSpotLightOnSignalPatchModThrottleMsNoLeading(
+	d time.Duration,
+) SVGFeSpotLightOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms.noleading", d.Milliseconds())
+	}
+}
+
+// Throttle the event listener in milliseconds with trailing edge.
+func SVGFeSpotLightOnSignalPatchModThrottleMsTrailing(
+	d time.Duration,
+) SVGFeSpotLightOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms.trailing", d.Milliseconds())
+	}
+}
+
+// Throttles the event listener in seconds.
+func SVGFeSpotLightOnSignalPatchModThrottleSec(
+	d time.Duration,
+) SVGFeSpotLightOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds", int(d.Seconds()))
+	}
+}
+
+// Throttle the event listener in seconds without leading edge.
+func SVGFeSpotLightOnSignalPatchModThrottleSecNoLeading(
+	d time.Duration,
+) SVGFeSpotLightOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds.noleading", int(d.Seconds()))
+	}
+}
+
+// Throttle the event listener in seconds with trailing edge.
+func SVGFeSpotLightOnSignalPatchModThrottleSecTrailing(
+	d time.Duration,
+) SVGFeSpotLightOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds.trailing", int(d.Seconds()))
+	}
+}
+
+// Runs an expression whenever any signals are patched
+// This is useful for tracking changes, updating computed values, or triggering
+// side effects when data updates.
+//
+// See: https://data-star.dev/reference/attributes#data-on-signal-patch
+func (e *SVGFESPOTLIGHTElement) DATASTAR_ON_SIGNAL_PATCH(expression string, modifiers ...SVGFeSpotLightOnSignalPatchMod) *SVGFESPOTLIGHTElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-on-signal-patch"
+
+	customMods := lo.Map(modifiers, func(m SVGFeSpotLightOnSignalPatchMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Runs an expression whenever any signals are patched
+// This is useful for tracking changes, updating computed values, or triggering
+// side effects when data updates.
+//
+// See: https://data-star.dev/reference/attributes#data-on-signal-patch
+func (e *SVGFESPOTLIGHTElement) IfDATASTAR_ON_SIGNAL_PATCH(condition bool, expression string, modifiers ...SVGFeSpotLightOnSignalPatchMod) *SVGFESPOTLIGHTElement {
+	if condition {
+		e.DATASTAR_ON_SIGNAL_PATCH(expression, modifiers...)
+	}
+	return e
+}
+
+// Runs an expression whenever any signals are patched
+// This is useful for tracking changes, updating computed values, or triggering
+// side effects when data updates.
+//
+// See: https://data-star.dev/reference/attributes#data-on-signal-patch
+// Remove the attribute DATASTAR_ON_SIGNAL_PATCH from the element.
+func (e *SVGFESPOTLIGHTElement) DATASTAR_ON_SIGNAL_PATCHRemove() *SVGFESPOTLIGHTElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-on-signal-patch")
+
+	return e
+}
+
+// Filters which signals to watch when using the data-on-signal-patch attribute.
+//
+// The data-on-signal-patch-filter attribute accepts an object with include and/or
+// exclude properties that are regular expressions.
+//
+// See: https://data-star.dev/reference/attributes#data-on-signal-patch-filter
+func (e *SVGFESPOTLIGHTElement) DATASTAR_ON_SIGNAL_PATCH_FILTER(expression string) *SVGFESPOTLIGHTElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-on-signal-patch-filter"
+
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Filters which signals to watch when using the data-on-signal-patch attribute.
+//
+// The data-on-signal-patch-filter attribute accepts an object with include and/or
+// exclude properties that are regular expressions.
+//
+// See: https://data-star.dev/reference/attributes#data-on-signal-patch-filter
+func (e *SVGFESPOTLIGHTElement) IfDATASTAR_ON_SIGNAL_PATCH_FILTER(condition bool, expression string) *SVGFESPOTLIGHTElement {
+	if condition {
+		e.DATASTAR_ON_SIGNAL_PATCH_FILTER(expression)
+	}
+	return e
+}
+
+// Filters which signals to watch when using the data-on-signal-patch attribute.
+//
+// The data-on-signal-patch-filter attribute accepts an object with include and/or
+// exclude properties that are regular expressions.
+//
+// See: https://data-star.dev/reference/attributes#data-on-signal-patch-filter
+// Remove the attribute DATASTAR_ON_SIGNAL_PATCH_FILTER from the element.
+func (e *SVGFESPOTLIGHTElement) DATASTAR_ON_SIGNAL_PATCH_FILTERRemove() *SVGFESPOTLIGHTElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-on-signal-patch-filter")
+
+	return e
+}
+
+// Preserves the value of an attribute when morphing DOM elements.
+//
+// See: https://data-star.dev/reference/attributes#data-preserve-attr
+func (e *SVGFESPOTLIGHTElement) DATASTAR_PRESERVE_ATTR(expression string) *SVGFESPOTLIGHTElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-preserve-attr"
+
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Preserves the value of an attribute when morphing DOM elements.
+//
+// See: https://data-star.dev/reference/attributes#data-preserve-attr
+func (e *SVGFESPOTLIGHTElement) IfDATASTAR_PRESERVE_ATTR(condition bool, expression string) *SVGFESPOTLIGHTElement {
+	if condition {
+		e.DATASTAR_PRESERVE_ATTR(expression)
+	}
+	return e
+}
+
+// Preserves the value of an attribute when morphing DOM elements.
+//
+// See: https://data-star.dev/reference/attributes#data-preserve-attr
+// Remove the attribute DATASTAR_PRESERVE_ATTR from the element.
+func (e *SVGFESPOTLIGHTElement) DATASTAR_PRESERVE_ATTRRemove() *SVGFESPOTLIGHTElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-preserve-attr")
+
+	return e
+}
+
+type SVGFeSpotLightRefMod customDataKeyModifier
+
+// Converts the casing of the signal name.
+//   - 'camel' – Camel case: 'mySignal' (default)
+//   - 'kebab' – Kebab case: 'my-signal'
+//   - 'snake' – Snake case: 'my_signal'
+//   - 'pascal' – Pascal case: 'MySignal'
+func SVGFeSpotLightRefModCase(
+	s string,
+) SVGFeSpotLightRefMod {
+	return func() string {
+		return fmt.Sprintf("case.%s", s)
+	}
+}
+
+// Creates a new signal that is a reference to the element on which the data
+// attribute is placed.
+//
+// See: https://data-star.dev/reference/attributes#data-ref
+func (e *SVGFESPOTLIGHTElement) DATASTAR_REF(expression string, modifiers ...SVGFeSpotLightRefMod) *SVGFESPOTLIGHTElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-ref"
+
+	customMods := lo.Map(modifiers, func(m SVGFeSpotLightRefMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Creates a new signal that is a reference to the element on which the data
+// attribute is placed.
+//
+// See: https://data-star.dev/reference/attributes#data-ref
+func (e *SVGFESPOTLIGHTElement) IfDATASTAR_REF(condition bool, expression string, modifiers ...SVGFeSpotLightRefMod) *SVGFESPOTLIGHTElement {
+	if condition {
+		e.DATASTAR_REF(expression, modifiers...)
+	}
+	return e
+}
+
+// Creates a new signal that is a reference to the element on which the data
+// attribute is placed.
+//
+// See: https://data-star.dev/reference/attributes#data-ref
+// Remove the attribute DATASTAR_REF from the element.
+func (e *SVGFESPOTLIGHTElement) DATASTAR_REFRemove() *SVGFESPOTLIGHTElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-ref")
+
+	return e
+}
+
+// Shows or hides an element based on whether an expression evaluates to 'true' or
+// 'false'
+// For anything with custom requirements, use 'data-class' instead.
+//
+// See: https://data-star.dev/reference/attributes#data-show
+func (e *SVGFESPOTLIGHTElement) DATASTAR_SHOW(expression string) *SVGFESPOTLIGHTElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-show"
+
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Shows or hides an element based on whether an expression evaluates to 'true' or
+// 'false'
+// For anything with custom requirements, use 'data-class' instead.
+//
+// See: https://data-star.dev/reference/attributes#data-show
+func (e *SVGFESPOTLIGHTElement) IfDATASTAR_SHOW(condition bool, expression string) *SVGFESPOTLIGHTElement {
+	if condition {
+		e.DATASTAR_SHOW(expression)
+	}
+	return e
+}
+
+// Shows or hides an element based on whether an expression evaluates to 'true' or
+// 'false'
+// For anything with custom requirements, use 'data-class' instead.
+//
+// See: https://data-star.dev/reference/attributes#data-show
+// Remove the attribute DATASTAR_SHOW from the element.
+func (e *SVGFESPOTLIGHTElement) DATASTAR_SHOWRemove() *SVGFESPOTLIGHTElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-show")
+
+	return e
+}
+
+type SVGFeSpotLightSignalsMod customDataKeyModifier
+
+// Converts the casing of the signal name.
+//   - 'camel' – Camel case: 'mySignal' (default)
+//   - 'kebab' – Kebab case: 'my-signal'
+//   - 'snake' – Snake case: 'my_signal'
+//   - 'pascal' – Pascal case: 'MySignal'
+func SVGFeSpotLightSignalsModCase(
+	s string,
+) SVGFeSpotLightSignalsMod {
+	return func() string {
+		return fmt.Sprintf("case.%s", s)
+	}
+}
+
+// Only patches signals if their keys do not already exist
+// This is useful for setting defaults without overwriting existing values.
+func SVGFeSpotLightSignalsModIfMissing() SVGFeSpotLightSignalsMod {
+	return func() string {
+		return "ifmissing"
+	}
+}
+
+// Patches (adds, updates or removes) one or more signals into the existing
+// signals
+// Values defined later in the DOM tree override those defined earlier.
+//
+// See: https://data-star.dev/reference/attributes#data-signals
+func (e *SVGFESPOTLIGHTElement) DATASTAR_SIGNALS(key string, expression string, modifiers ...SVGFeSpotLightSignalsMod) *SVGFESPOTLIGHTElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	key = fmt.Sprintf("data-signals%s", suffix)
+
+	customMods := lo.Map(modifiers, func(m SVGFeSpotLightSignalsMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Patches (adds, updates or removes) one or more signals into the existing
+// signals
+// Values defined later in the DOM tree override those defined earlier.
+//
+// See: https://data-star.dev/reference/attributes#data-signals
+func (e *SVGFESPOTLIGHTElement) IfDATASTAR_SIGNALS(condition bool, key string, expression string, modifiers ...SVGFeSpotLightSignalsMod) *SVGFESPOTLIGHTElement {
+	if condition {
+		e.DATASTAR_SIGNALS(key, expression, modifiers...)
+	}
+	return e
+}
+
+// Patches (adds, updates or removes) one or more signals into the existing
+// signals
+// Values defined later in the DOM tree override those defined earlier.
+//
+// See: https://data-star.dev/reference/attributes#data-signals
+// Remove the attribute DATASTAR_SIGNALS from the element.
+func (e *SVGFESPOTLIGHTElement) DATASTAR_SIGNALSRemove(key string) *SVGFESPOTLIGHTElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	e.StringAttributes.Del("data-signals" + suffix)
+
+	return e
+}
+
+type SVGFeSpotLightStyleMod customDataKeyModifier
+
+// Converts the casing of the signal name.
+//   - 'camel' – Camel case: 'mySignal' (default)
+//   - 'kebab' – Kebab case: 'my-signal'
+//   - 'snake' – Snake case: 'my_signal'
+//   - 'pascal' – Pascal case: 'MySignal'
+func SVGFeSpotLightStyleModCase(
+	s string,
+) SVGFeSpotLightStyleMod {
+	return func() string {
+		return fmt.Sprintf("case.%s", s)
+	}
+}
+
+// Sets the value of inline CSS styles on an element based on an expression, and
+// keeps them in sync.
+//
+// See: https://data-star.dev/reference/attributes#data-style
+func (e *SVGFESPOTLIGHTElement) DATASTAR_STYLE(key string, expression string, modifiers ...SVGFeSpotLightStyleMod) *SVGFESPOTLIGHTElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	key = fmt.Sprintf("data-style%s", suffix)
+
+	customMods := lo.Map(modifiers, func(m SVGFeSpotLightStyleMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Sets the value of inline CSS styles on an element based on an expression, and
+// keeps them in sync.
+//
+// See: https://data-star.dev/reference/attributes#data-style
+func (e *SVGFESPOTLIGHTElement) IfDATASTAR_STYLE(condition bool, key string, expression string, modifiers ...SVGFeSpotLightStyleMod) *SVGFESPOTLIGHTElement {
+	if condition {
+		e.DATASTAR_STYLE(key, expression, modifiers...)
+	}
+	return e
+}
+
+// Sets the value of inline CSS styles on an element based on an expression, and
+// keeps them in sync.
+//
+// See: https://data-star.dev/reference/attributes#data-style
+// Remove the attribute DATASTAR_STYLE from the element.
+func (e *SVGFESPOTLIGHTElement) DATASTAR_STYLERemove(key string) *SVGFESPOTLIGHTElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	e.StringAttributes.Del("data-style" + suffix)
+
+	return e
+}
+
+// Binds the text content of an element to an expression.
+//
+// See: https://data-star.dev/reference/attributes#data-text
 func (e *SVGFESPOTLIGHTElement) DATASTAR_TEXT(expression string) *SVGFESPOTLIGHTElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
@@ -582,6 +2106,9 @@ func (e *SVGFESPOTLIGHTElement) DATASTAR_TEXT(expression string) *SVGFESPOTLIGHT
 	return e
 }
 
+// Binds the text content of an element to an expression.
+//
+// See: https://data-star.dev/reference/attributes#data-text
 func (e *SVGFESPOTLIGHTElement) IfDATASTAR_TEXT(condition bool, expression string) *SVGFESPOTLIGHTElement {
 	if condition {
 		e.DATASTAR_TEXT(expression)
@@ -589,228 +2116,16 @@ func (e *SVGFESPOTLIGHTElement) IfDATASTAR_TEXT(condition bool, expression strin
 	return e
 }
 
+// Binds the text content of an element to an expression.
+//
+// See: https://data-star.dev/reference/attributes#data-text
 // Remove the attribute DATASTAR_TEXT from the element.
 func (e *SVGFESPOTLIGHTElement) DATASTAR_TEXTRemove() *SVGFESPOTLIGHTElement {
 	if e.StringAttributes == nil {
 		return e
 	}
+
 	e.StringAttributes.Del("data-text")
-	return e
-}
 
-// Sets the event handler of the element
-
-type SVGFeSpotLightOnMod customDataKeyModifier
-
-// Debounces the event handler
-func SVGFeSpotLightOnModDebounce(
-	d time.Duration,
-) SVGFeSpotLightOnMod {
-	return func() string {
-		return fmt.Sprintf("debounce_%dms", d.Milliseconds())
-	}
-}
-
-// Throttles the event handler
-func SVGFeSpotLightOnModThrottle(
-	d time.Duration,
-) SVGFeSpotLightOnMod {
-	return func() string {
-		return fmt.Sprintf("throttle_%dms", d.Milliseconds())
-	}
-}
-
-func (e *SVGFESPOTLIGHTElement) DATASTAR_ON(key string, expression string, modifiers ...SVGFeSpotLightOnMod) *SVGFESPOTLIGHTElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-
-	key = fmt.Sprintf("data-on-%s", key)
-
-	customMods := lo.Map(modifiers, func(m SVGFeSpotLightOnMod, i int) customDataKeyModifier {
-		return customDataKeyModifier(m)
-	})
-	key = customDataKey(key, customMods...)
-	e.StringAttributes.Set(key, expression)
-	return e
-}
-
-func (e *SVGFESPOTLIGHTElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SVGFeSpotLightOnMod) *SVGFESPOTLIGHTElement {
-	if condition {
-		e.DATASTAR_ON(key, expression, modifiers...)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_ON from the element.
-func (e *SVGFESPOTLIGHTElement) DATASTAR_ONRemove() *SVGFESPOTLIGHTElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-on")
-	return e
-}
-
-// Sets the focus of the element
-
-func (e *SVGFESPOTLIGHTElement) DATASTAR_FOCUSSet(b bool) *SVGFESPOTLIGHTElement {
-	key := "data-focus"
-	e.BoolAttributes.Set(key, b)
-	return e
-}
-
-func (e *SVGFESPOTLIGHTElement) DATASTAR_FOCUS() *SVGFESPOTLIGHTElement {
-	return e.DATASTAR_FOCUSSet(true)
-}
-
-// Sets the header of for fetch requests
-
-func (e *SVGFESPOTLIGHTElement) DATASTAR_HEADER(key string, expression string) *SVGFESPOTLIGHTElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-
-	key = fmt.Sprintf("data-header-%s", key)
-
-	e.StringAttributes.Set(key, expression)
-	return e
-}
-
-func (e *SVGFESPOTLIGHTElement) IfDATASTAR_HEADER(condition bool, key string, expression string) *SVGFESPOTLIGHTElement {
-	if condition {
-		e.DATASTAR_HEADER(key, expression)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_HEADER from the element.
-func (e *SVGFESPOTLIGHTElement) DATASTAR_HEADERRemove() *SVGFESPOTLIGHTElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-header")
-	return e
-}
-
-// Sets the indicator selector for fetch requests
-
-func (e *SVGFESPOTLIGHTElement) DATASTAR_FETCH_INDICATOR(expression string) *SVGFESPOTLIGHTElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-
-	key := "data-fetch-indicator"
-
-	e.StringAttributes.Set(key, expression)
-	return e
-}
-
-func (e *SVGFESPOTLIGHTElement) IfDATASTAR_FETCH_INDICATOR(condition bool, expression string) *SVGFESPOTLIGHTElement {
-	if condition {
-		e.DATASTAR_FETCH_INDICATOR(expression)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_FETCH_INDICATOR from the element.
-func (e *SVGFESPOTLIGHTElement) DATASTAR_FETCH_INDICATORRemove() *SVGFESPOTLIGHTElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-fetch-indicator")
-	return e
-}
-
-// Sets the visibility of the element
-
-func (e *SVGFESPOTLIGHTElement) DATASTAR_SHOWSet(b bool) *SVGFESPOTLIGHTElement {
-	key := "data-show"
-	e.BoolAttributes.Set(key, b)
-	return e
-}
-
-func (e *SVGFESPOTLIGHTElement) DATASTAR_SHOW() *SVGFESPOTLIGHTElement {
-	return e.DATASTAR_SHOWSet(true)
-}
-
-// Triggers the callback when the element intersects the viewport
-
-func (e *SVGFESPOTLIGHTElement) DATASTAR_INTERSECTS(expression string) *SVGFESPOTLIGHTElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-
-	key := "data-intersects"
-
-	e.StringAttributes.Set(key, expression)
-	return e
-}
-
-func (e *SVGFESPOTLIGHTElement) IfDATASTAR_INTERSECTS(condition bool, expression string) *SVGFESPOTLIGHTElement {
-	if condition {
-		e.DATASTAR_INTERSECTS(expression)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_INTERSECTS from the element.
-func (e *SVGFESPOTLIGHTElement) DATASTAR_INTERSECTSRemove() *SVGFESPOTLIGHTElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-intersects")
-	return e
-}
-
-// Teleports the element to the given selector
-
-func (e *SVGFESPOTLIGHTElement) DATASTAR_TELEPORTSet(b bool) *SVGFESPOTLIGHTElement {
-	key := "data-teleport"
-	e.BoolAttributes.Set(key, b)
-	return e
-}
-
-func (e *SVGFESPOTLIGHTElement) DATASTAR_TELEPORT() *SVGFESPOTLIGHTElement {
-	return e.DATASTAR_TELEPORTSet(true)
-}
-
-// Scrolls the element into view
-
-func (e *SVGFESPOTLIGHTElement) DATASTAR_SCROLL_INTO_VIEWSet(b bool) *SVGFESPOTLIGHTElement {
-	key := "data-scroll-into-view"
-	e.BoolAttributes.Set(key, b)
-	return e
-}
-
-func (e *SVGFESPOTLIGHTElement) DATASTAR_SCROLL_INTO_VIEW() *SVGFESPOTLIGHTElement {
-	return e.DATASTAR_SCROLL_INTO_VIEWSet(true)
-}
-
-// Setup the ViewTransitionAPI for the element
-
-func (e *SVGFESPOTLIGHTElement) DATASTAR_VIEW_TRANSITION(expression string) *SVGFESPOTLIGHTElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-
-	key := "data-view-transition"
-
-	e.StringAttributes.Set(key, expression)
-	return e
-}
-
-func (e *SVGFESPOTLIGHTElement) IfDATASTAR_VIEW_TRANSITION(condition bool, expression string) *SVGFESPOTLIGHTElement {
-	if condition {
-		e.DATASTAR_VIEW_TRANSITION(expression)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_VIEW_TRANSITION from the element.
-func (e *SVGFESPOTLIGHTElement) DATASTAR_VIEW_TRANSITIONRemove() *SVGFESPOTLIGHTElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-view-transition")
 	return e
 }

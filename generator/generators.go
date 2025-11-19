@@ -30,7 +30,7 @@ func GenerateAll(ctx context.Context, outPath string, namespaces *pb.Namespaces)
 	if err := os.RemoveAll(outPath); err != nil {
 		return fmt.Errorf("failed to remove output path: %w", err)
 	}
-	if err := os.MkdirAll(outPath, 0755); err != nil {
+	if err := os.MkdirAll(outPath, 0o755); err != nil {
 		return fmt.Errorf("failed to create output path: %w", err)
 	}
 
@@ -113,8 +113,28 @@ func GenerateAll(ctx context.Context, outPath string, namespaces *pb.Namespaces)
 		switch attr.Type.(type) {
 		case *pb.Attribute_Type_DurationMs:
 			return true
+		case *pb.Attribute_Type_DurationSec:
+			return true
+		}
+
+		return false
+	}
+	fm["attrIsDurationMs"] = func(attr *pb.Attribute_Type) bool {
+		switch attr.Type.(type) {
+		case *pb.Attribute_Type_DurationMs:
+			return true
 		}
 		return false
+	}
+	fm["attrIsDurationSec"] = func(attr *pb.Attribute_Type) bool {
+		switch attr.Type.(type) {
+		case *pb.Attribute_Type_DurationSec:
+			return true
+		}
+		return false
+	}
+	fm["TrimDatastarPrefix"] = func(s string) string {
+		return strings.TrimPrefix(s, "datastar-")
 	}
 
 	templs, err = template.New("base").Funcs(fm).ParseFS(templatesFS, "templates/*.tmpl")

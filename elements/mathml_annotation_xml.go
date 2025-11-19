@@ -5,10 +5,8 @@ package elements
 
 import (
 	"fmt"
-	"html"
 	"time"
 
-	"github.com/goccy/go-json"
 	"github.com/igrmk/treemap/v2"
 	"github.com/samber/lo"
 )
@@ -186,6 +184,8 @@ const (
 	MathMLAnnotationXmlEncoding_application_x_tex MathMLAnnotationXmlEncodingChoice = "application/x-tex"
 )
 
+// This attribute specifies the encoding used for the text content of the element
+// Possible values are text/plain, text/html, and application/x-tex.
 // Remove the attribute ENCODING from the element.
 func (e *MathMLANNOTATION_XMLElement) ENCODINGRemove(c MathMLAnnotationXmlEncodingChoice) *MathMLANNOTATION_XMLElement {
 	if e.StringAttributes == nil {
@@ -204,10 +204,12 @@ func (e *MathMLANNOTATION_XMLElement) NAME(s string) *MathMLANNOTATION_XMLElemen
 	return e
 }
 
+// This attribute specifies the name of the annotation.
 func (e *MathMLANNOTATION_XMLElement) NAMEF(format string, args ...any) *MathMLANNOTATION_XMLElement {
 	return e.NAME(fmt.Sprintf(format, args...))
 }
 
+// This attribute specifies the name of the annotation.
 func (e *MathMLANNOTATION_XMLElement) IfNAME(condition bool, s string) *MathMLANNOTATION_XMLElement {
 	if condition {
 		e.NAME(s)
@@ -215,6 +217,7 @@ func (e *MathMLANNOTATION_XMLElement) IfNAME(condition bool, s string) *MathMLAN
 	return e
 }
 
+// This attribute specifies the name of the annotation.
 func (e *MathMLANNOTATION_XMLElement) IfNAMEF(condition bool, format string, args ...any) *MathMLANNOTATION_XMLElement {
 	if condition {
 		e.NAME(fmt.Sprintf(format, args...))
@@ -222,6 +225,7 @@ func (e *MathMLANNOTATION_XMLElement) IfNAMEF(condition bool, format string, arg
 	return e
 }
 
+// This attribute specifies the name of the annotation.
 // Remove the attribute NAME from the element.
 func (e *MathMLANNOTATION_XMLElement) NAMERemove(s string) *MathMLANNOTATION_XMLElement {
 	if e.StringAttributes == nil {
@@ -231,6 +235,7 @@ func (e *MathMLANNOTATION_XMLElement) NAMERemove(s string) *MathMLANNOTATION_XML
 	return e
 }
 
+// This attribute specifies the name of the annotation.
 func (e *MathMLANNOTATION_XMLElement) NAMERemoveF(format string, args ...any) *MathMLANNOTATION_XMLElement {
 	return e.NAMERemove(fmt.Sprintf(format, args...))
 }
@@ -252,6 +257,10 @@ func (e *MathMLANNOTATION_XMLElement) CLASS(s ...string) *MathMLANNOTATION_XMLEl
 	return e
 }
 
+// Assigns a class name or set of class names to an element
+// You may assign the same class name or names to any number of elements
+// If you specify multiple class names, they must be separated by whitespace
+// characters.
 func (e *MathMLANNOTATION_XMLElement) IfCLASS(condition bool, s ...string) *MathMLANNOTATION_XMLElement {
 	if condition {
 		e.CLASS(s...)
@@ -259,6 +268,10 @@ func (e *MathMLANNOTATION_XMLElement) IfCLASS(condition bool, s ...string) *Math
 	return e
 }
 
+// Assigns a class name or set of class names to an element
+// You may assign the same class name or names to any number of elements
+// If you specify multiple class names, they must be separated by whitespace
+// characters.
 // Remove the attribute CLASS from the element.
 func (e *MathMLANNOTATION_XMLElement) CLASSRemove(s ...string) *MathMLANNOTATION_XMLElement {
 	if e.DelimitedStrings == nil {
@@ -293,6 +306,10 @@ const (
 	MathMLAnnotationXmlDir_rtl MathMLAnnotationXmlDirChoice = "rtl"
 )
 
+// This attribute specifies the text directionality of the element, merely
+// indicating what direction the text flows when surrounded by text with inherent
+// directionality (such as Arabic or Hebrew)
+// Possible values are ltr (left-to-right) and rtl (right-to-left).
 // Remove the attribute DIR from the element.
 func (e *MathMLANNOTATION_XMLElement) DIRRemove(c MathMLAnnotationXmlDirChoice) *MathMLANNOTATION_XMLElement {
 	if e.StringAttributes == nil {
@@ -322,6 +339,9 @@ const (
 	MathMLAnnotationXmlDisplaystyle_false MathMLAnnotationXmlDisplaystyleChoice = "false"
 )
 
+// This attribute specifies whether the element should be rendered using
+// displaystyle rules or not
+// Possible values are true and false.
 // Remove the attribute DISPLAYSTYLE from the element.
 func (e *MathMLANNOTATION_XMLElement) DISPLAYSTYLERemove(c MathMLAnnotationXmlDisplaystyleChoice) *MathMLANNOTATION_XMLElement {
 	if e.StringAttributes == nil {
@@ -341,10 +361,14 @@ func (e *MathMLANNOTATION_XMLElement) ID(s string) *MathMLANNOTATION_XMLElement 
 	return e
 }
 
+// This attribute assigns a name to an element
+// This name must be unique in a document.
 func (e *MathMLANNOTATION_XMLElement) IDF(format string, args ...any) *MathMLANNOTATION_XMLElement {
 	return e.ID(fmt.Sprintf(format, args...))
 }
 
+// This attribute assigns a name to an element
+// This name must be unique in a document.
 func (e *MathMLANNOTATION_XMLElement) IfID(condition bool, s string) *MathMLANNOTATION_XMLElement {
 	if condition {
 		e.ID(s)
@@ -352,6 +376,8 @@ func (e *MathMLANNOTATION_XMLElement) IfID(condition bool, s string) *MathMLANNO
 	return e
 }
 
+// This attribute assigns a name to an element
+// This name must be unique in a document.
 func (e *MathMLANNOTATION_XMLElement) IfIDF(condition bool, format string, args ...any) *MathMLANNOTATION_XMLElement {
 	if condition {
 		e.ID(fmt.Sprintf(format, args...))
@@ -359,6 +385,8 @@ func (e *MathMLANNOTATION_XMLElement) IfIDF(condition bool, format string, args 
 	return e
 }
 
+// This attribute assigns a name to an element
+// This name must be unique in a document.
 // Remove the attribute ID from the element.
 func (e *MathMLANNOTATION_XMLElement) IDRemove(s string) *MathMLANNOTATION_XMLElement {
 	if e.StringAttributes == nil {
@@ -368,6 +396,8 @@ func (e *MathMLANNOTATION_XMLElement) IDRemove(s string) *MathMLANNOTATION_XMLEl
 	return e
 }
 
+// This attribute assigns a name to an element
+// This name must be unique in a document.
 func (e *MathMLANNOTATION_XMLElement) IDRemoveF(format string, args ...any) *MathMLANNOTATION_XMLElement {
 	return e.IDRemove(fmt.Sprintf(format, args...))
 }
@@ -383,10 +413,16 @@ func (e *MathMLANNOTATION_XMLElement) MATHBACKGROUND(s string) *MathMLANNOTATION
 	return e
 }
 
+// This attribute specifies the background color of the element
+// Possible values are a color name or a color specification in the format defined
+// in the CSS3 Color Module [CSS3COLOR].
 func (e *MathMLANNOTATION_XMLElement) MATHBACKGROUNDF(format string, args ...any) *MathMLANNOTATION_XMLElement {
 	return e.MATHBACKGROUND(fmt.Sprintf(format, args...))
 }
 
+// This attribute specifies the background color of the element
+// Possible values are a color name or a color specification in the format defined
+// in the CSS3 Color Module [CSS3COLOR].
 func (e *MathMLANNOTATION_XMLElement) IfMATHBACKGROUND(condition bool, s string) *MathMLANNOTATION_XMLElement {
 	if condition {
 		e.MATHBACKGROUND(s)
@@ -394,6 +430,9 @@ func (e *MathMLANNOTATION_XMLElement) IfMATHBACKGROUND(condition bool, s string)
 	return e
 }
 
+// This attribute specifies the background color of the element
+// Possible values are a color name or a color specification in the format defined
+// in the CSS3 Color Module [CSS3COLOR].
 func (e *MathMLANNOTATION_XMLElement) IfMATHBACKGROUNDF(condition bool, format string, args ...any) *MathMLANNOTATION_XMLElement {
 	if condition {
 		e.MATHBACKGROUND(fmt.Sprintf(format, args...))
@@ -401,6 +440,9 @@ func (e *MathMLANNOTATION_XMLElement) IfMATHBACKGROUNDF(condition bool, format s
 	return e
 }
 
+// This attribute specifies the background color of the element
+// Possible values are a color name or a color specification in the format defined
+// in the CSS3 Color Module [CSS3COLOR].
 // Remove the attribute MATHBACKGROUND from the element.
 func (e *MathMLANNOTATION_XMLElement) MATHBACKGROUNDRemove(s string) *MathMLANNOTATION_XMLElement {
 	if e.StringAttributes == nil {
@@ -410,6 +452,9 @@ func (e *MathMLANNOTATION_XMLElement) MATHBACKGROUNDRemove(s string) *MathMLANNO
 	return e
 }
 
+// This attribute specifies the background color of the element
+// Possible values are a color name or a color specification in the format defined
+// in the CSS3 Color Module [CSS3COLOR].
 func (e *MathMLANNOTATION_XMLElement) MATHBACKGROUNDRemoveF(format string, args ...any) *MathMLANNOTATION_XMLElement {
 	return e.MATHBACKGROUNDRemove(fmt.Sprintf(format, args...))
 }
@@ -425,10 +470,16 @@ func (e *MathMLANNOTATION_XMLElement) MATHCOLOR(s string) *MathMLANNOTATION_XMLE
 	return e
 }
 
+// This attribute specifies the color of the element
+// Possible values are a color name or a color specification in the format defined
+// in the CSS3 Color Module [CSS3COLOR].
 func (e *MathMLANNOTATION_XMLElement) MATHCOLORF(format string, args ...any) *MathMLANNOTATION_XMLElement {
 	return e.MATHCOLOR(fmt.Sprintf(format, args...))
 }
 
+// This attribute specifies the color of the element
+// Possible values are a color name or a color specification in the format defined
+// in the CSS3 Color Module [CSS3COLOR].
 func (e *MathMLANNOTATION_XMLElement) IfMATHCOLOR(condition bool, s string) *MathMLANNOTATION_XMLElement {
 	if condition {
 		e.MATHCOLOR(s)
@@ -436,6 +487,9 @@ func (e *MathMLANNOTATION_XMLElement) IfMATHCOLOR(condition bool, s string) *Mat
 	return e
 }
 
+// This attribute specifies the color of the element
+// Possible values are a color name or a color specification in the format defined
+// in the CSS3 Color Module [CSS3COLOR].
 func (e *MathMLANNOTATION_XMLElement) IfMATHCOLORF(condition bool, format string, args ...any) *MathMLANNOTATION_XMLElement {
 	if condition {
 		e.MATHCOLOR(fmt.Sprintf(format, args...))
@@ -443,6 +497,9 @@ func (e *MathMLANNOTATION_XMLElement) IfMATHCOLORF(condition bool, format string
 	return e
 }
 
+// This attribute specifies the color of the element
+// Possible values are a color name or a color specification in the format defined
+// in the CSS3 Color Module [CSS3COLOR].
 // Remove the attribute MATHCOLOR from the element.
 func (e *MathMLANNOTATION_XMLElement) MATHCOLORRemove(s string) *MathMLANNOTATION_XMLElement {
 	if e.StringAttributes == nil {
@@ -452,6 +509,9 @@ func (e *MathMLANNOTATION_XMLElement) MATHCOLORRemove(s string) *MathMLANNOTATIO
 	return e
 }
 
+// This attribute specifies the color of the element
+// Possible values are a color name or a color specification in the format defined
+// in the CSS3 Color Module [CSS3COLOR].
 func (e *MathMLANNOTATION_XMLElement) MATHCOLORRemoveF(format string, args ...any) *MathMLANNOTATION_XMLElement {
 	return e.MATHCOLORRemove(fmt.Sprintf(format, args...))
 }
@@ -466,10 +526,14 @@ func (e *MathMLANNOTATION_XMLElement) MATHSIZE_STR(s string) *MathMLANNOTATION_X
 	return e
 }
 
+// This attribute specifies the size of the element
+// Possible values are a dimension or a dimensionless number.
 func (e *MathMLANNOTATION_XMLElement) MATHSIZE_STRF(format string, args ...any) *MathMLANNOTATION_XMLElement {
 	return e.MATHSIZE_STR(fmt.Sprintf(format, args...))
 }
 
+// This attribute specifies the size of the element
+// Possible values are a dimension or a dimensionless number.
 func (e *MathMLANNOTATION_XMLElement) IfMATHSIZE_STR(condition bool, s string) *MathMLANNOTATION_XMLElement {
 	if condition {
 		e.MATHSIZE_STR(s)
@@ -477,6 +541,8 @@ func (e *MathMLANNOTATION_XMLElement) IfMATHSIZE_STR(condition bool, s string) *
 	return e
 }
 
+// This attribute specifies the size of the element
+// Possible values are a dimension or a dimensionless number.
 func (e *MathMLANNOTATION_XMLElement) IfMATHSIZE_STRF(condition bool, format string, args ...any) *MathMLANNOTATION_XMLElement {
 	if condition {
 		e.MATHSIZE_STR(fmt.Sprintf(format, args...))
@@ -484,6 +550,8 @@ func (e *MathMLANNOTATION_XMLElement) IfMATHSIZE_STRF(condition bool, format str
 	return e
 }
 
+// This attribute specifies the size of the element
+// Possible values are a dimension or a dimensionless number.
 // Remove the attribute MATHSIZE_STR from the element.
 func (e *MathMLANNOTATION_XMLElement) MATHSIZE_STRRemove(s string) *MathMLANNOTATION_XMLElement {
 	if e.StringAttributes == nil {
@@ -493,6 +561,8 @@ func (e *MathMLANNOTATION_XMLElement) MATHSIZE_STRRemove(s string) *MathMLANNOTA
 	return e
 }
 
+// This attribute specifies the size of the element
+// Possible values are a dimension or a dimensionless number.
 func (e *MathMLANNOTATION_XMLElement) MATHSIZE_STRRemoveF(format string, args ...any) *MathMLANNOTATION_XMLElement {
 	return e.MATHSIZE_STRRemove(fmt.Sprintf(format, args...))
 }
@@ -509,10 +579,18 @@ func (e *MathMLANNOTATION_XMLElement) NONCE(s string) *MathMLANNOTATION_XMLEleme
 	return e
 }
 
+// This attribute declares a cryptographic nonce (number used once) that should be
+// used by the server processing the element’s submission, and the resulting
+// resource must be delivered with a Content-Security-Policy nonce attribute
+// matching the value of the nonce attribute.
 func (e *MathMLANNOTATION_XMLElement) NONCEF(format string, args ...any) *MathMLANNOTATION_XMLElement {
 	return e.NONCE(fmt.Sprintf(format, args...))
 }
 
+// This attribute declares a cryptographic nonce (number used once) that should be
+// used by the server processing the element’s submission, and the resulting
+// resource must be delivered with a Content-Security-Policy nonce attribute
+// matching the value of the nonce attribute.
 func (e *MathMLANNOTATION_XMLElement) IfNONCE(condition bool, s string) *MathMLANNOTATION_XMLElement {
 	if condition {
 		e.NONCE(s)
@@ -520,6 +598,10 @@ func (e *MathMLANNOTATION_XMLElement) IfNONCE(condition bool, s string) *MathMLA
 	return e
 }
 
+// This attribute declares a cryptographic nonce (number used once) that should be
+// used by the server processing the element’s submission, and the resulting
+// resource must be delivered with a Content-Security-Policy nonce attribute
+// matching the value of the nonce attribute.
 func (e *MathMLANNOTATION_XMLElement) IfNONCEF(condition bool, format string, args ...any) *MathMLANNOTATION_XMLElement {
 	if condition {
 		e.NONCE(fmt.Sprintf(format, args...))
@@ -527,6 +609,10 @@ func (e *MathMLANNOTATION_XMLElement) IfNONCEF(condition bool, format string, ar
 	return e
 }
 
+// This attribute declares a cryptographic nonce (number used once) that should be
+// used by the server processing the element’s submission, and the resulting
+// resource must be delivered with a Content-Security-Policy nonce attribute
+// matching the value of the nonce attribute.
 // Remove the attribute NONCE from the element.
 func (e *MathMLANNOTATION_XMLElement) NONCERemove(s string) *MathMLANNOTATION_XMLElement {
 	if e.StringAttributes == nil {
@@ -536,6 +622,10 @@ func (e *MathMLANNOTATION_XMLElement) NONCERemove(s string) *MathMLANNOTATION_XM
 	return e
 }
 
+// This attribute declares a cryptographic nonce (number used once) that should be
+// used by the server processing the element’s submission, and the resulting
+// resource must be delivered with a Content-Security-Policy nonce attribute
+// matching the value of the nonce attribute.
 func (e *MathMLANNOTATION_XMLElement) NONCERemoveF(format string, args ...any) *MathMLANNOTATION_XMLElement {
 	return e.NONCERemove(fmt.Sprintf(format, args...))
 }
@@ -550,6 +640,8 @@ func (e *MathMLANNOTATION_XMLElement) SCRIPTLEVEL(i int) *MathMLANNOTATION_XMLEl
 	return e
 }
 
+// This attribute specifies the script level of the element
+// Possible values are an integer between 0 and 7, inclusive.
 func (e *MathMLANNOTATION_XMLElement) IfSCRIPTLEVEL(condition bool, i int) *MathMLANNOTATION_XMLElement {
 	if condition {
 		e.SCRIPTLEVEL(i)
@@ -557,6 +649,8 @@ func (e *MathMLANNOTATION_XMLElement) IfSCRIPTLEVEL(condition bool, i int) *Math
 	return e
 }
 
+// This attribute specifies the script level of the element
+// Possible values are an integer between 0 and 7, inclusive.
 // Remove the attribute SCRIPTLEVEL from the element.
 func (e *MathMLANNOTATION_XMLElement) SCRIPTLEVELRemove(i int) *MathMLANNOTATION_XMLElement {
 	if e.IntAttributes == nil {
@@ -572,6 +666,8 @@ func (e *MathMLANNOTATION_XMLElement) STYLEF(k string, format string, args ...an
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+// This attribute offers advisory information about the element for which it is
+// set.
 func (e *MathMLANNOTATION_XMLElement) IfSTYLE(condition bool, k string, v string) *MathMLANNOTATION_XMLElement {
 	if condition {
 		e.STYLE(k, v)
@@ -579,6 +675,8 @@ func (e *MathMLANNOTATION_XMLElement) IfSTYLE(condition bool, k string, v string
 	return e
 }
 
+// This attribute offers advisory information about the element for which it is
+// set.
 func (e *MathMLANNOTATION_XMLElement) STYLE(k string, v string) *MathMLANNOTATION_XMLElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -592,6 +690,8 @@ func (e *MathMLANNOTATION_XMLElement) STYLE(k string, v string) *MathMLANNOTATIO
 	return e
 }
 
+// This attribute offers advisory information about the element for which it is
+// set.
 func (e *MathMLANNOTATION_XMLElement) IfSTYLEF(condition bool, k string, format string, args ...any) *MathMLANNOTATION_XMLElement {
 	if condition {
 		e.STYLE(k, fmt.Sprintf(format, args...))
@@ -599,6 +699,8 @@ func (e *MathMLANNOTATION_XMLElement) IfSTYLEF(condition bool, k string, format 
 	return e
 }
 
+// This attribute offers advisory information about the element for which it is
+// set.
 // Add the attributes in the map to the element.
 func (e *MathMLANNOTATION_XMLElement) STYLEMap(m map[string]string) *MathMLANNOTATION_XMLElement {
 	if e.KVStrings == nil {
@@ -615,6 +717,8 @@ func (e *MathMLANNOTATION_XMLElement) STYLEMap(m map[string]string) *MathMLANNOT
 	return e
 }
 
+// This attribute offers advisory information about the element for which it is
+// set.
 // Add pairs of attributes to the element.
 func (e *MathMLANNOTATION_XMLElement) STYLEPairs(pairs ...string) *MathMLANNOTATION_XMLElement {
 	if len(pairs)%2 != 0 {
@@ -636,6 +740,8 @@ func (e *MathMLANNOTATION_XMLElement) STYLEPairs(pairs ...string) *MathMLANNOTAT
 	return e
 }
 
+// This attribute offers advisory information about the element for which it is
+// set.
 func (e *MathMLANNOTATION_XMLElement) IfSTYLEPairs(condition bool, pairs ...string) *MathMLANNOTATION_XMLElement {
 	if condition {
 		e.STYLEPairs(pairs...)
@@ -643,6 +749,8 @@ func (e *MathMLANNOTATION_XMLElement) IfSTYLEPairs(condition bool, pairs ...stri
 	return e
 }
 
+// This attribute offers advisory information about the element for which it is
+// set.
 // Remove the attribute STYLE from the element.
 func (e *MathMLANNOTATION_XMLElement) STYLERemove(keys ...string) *MathMLANNOTATION_XMLElement {
 	if e.KVStrings == nil {
@@ -670,6 +778,10 @@ func (e *MathMLANNOTATION_XMLElement) TABINDEX(i int) *MathMLANNOTATION_XMLEleme
 	return e
 }
 
+// This attribute specifies the position of the current element in the tabbing
+// order for the current document
+// This value must be a number between 0 and 32767
+// User agents should ignore leading zeros.
 func (e *MathMLANNOTATION_XMLElement) IfTABINDEX(condition bool, i int) *MathMLANNOTATION_XMLElement {
 	if condition {
 		e.TABINDEX(i)
@@ -677,6 +789,10 @@ func (e *MathMLANNOTATION_XMLElement) IfTABINDEX(condition bool, i int) *MathMLA
 	return e
 }
 
+// This attribute specifies the position of the current element in the tabbing
+// order for the current document
+// This value must be a number between 0 and 32767
+// User agents should ignore leading zeros.
 // Remove the attribute TABINDEX from the element.
 func (e *MathMLANNOTATION_XMLElement) TABINDEXRemove(i int) *MathMLANNOTATION_XMLElement {
 	if e.IntAttributes == nil {
@@ -686,62 +802,75 @@ func (e *MathMLANNOTATION_XMLElement) TABINDEXRemove(i int) *MathMLANNOTATION_XM
 	return e
 }
 
-// Merges the singleton store with the given object
-
-func (e *MathMLANNOTATION_XMLElement) DATASTAR_STORE(v any) *MathMLANNOTATION_XMLElement {
-	if e.CustomDataAttributes == nil {
-		e.CustomDataAttributes = treemap.New[string, string]()
-	}
-	b, err := json.Marshal(v)
-	if err != nil {
-		panic(err)
-	}
-	e.CustomDataAttributes.Set("store", html.EscapeString(string(b)))
-	return e
-}
-
-// Sets the reference of the element
-
-func (e *MathMLANNOTATION_XMLElement) DATASTAR_REF(expression string) *MathMLANNOTATION_XMLElement {
+// Sets the value of any HTML attribute to an expression, and keeps it in sync.
+//
+// See: https://data-star.dev/reference/attributes#data-attr
+func (e *MathMLANNOTATION_XMLElement) DATASTAR_ATTR(key string, expression string) *MathMLANNOTATION_XMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "data-ref"
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	key = fmt.Sprintf("data-attr%s", suffix)
 
 	e.StringAttributes.Set(key, expression)
 	return e
 }
 
-func (e *MathMLANNOTATION_XMLElement) IfDATASTAR_REF(condition bool, expression string) *MathMLANNOTATION_XMLElement {
+// Sets the value of any HTML attribute to an expression, and keeps it in sync.
+//
+// See: https://data-star.dev/reference/attributes#data-attr
+func (e *MathMLANNOTATION_XMLElement) IfDATASTAR_ATTR(condition bool, key string, expression string) *MathMLANNOTATION_XMLElement {
 	if condition {
-		e.DATASTAR_REF(expression)
+		e.DATASTAR_ATTR(key, expression)
 	}
 	return e
 }
 
-// Remove the attribute DATASTAR_REF from the element.
-func (e *MathMLANNOTATION_XMLElement) DATASTAR_REFRemove() *MathMLANNOTATION_XMLElement {
+// Sets the value of any HTML attribute to an expression, and keeps it in sync.
+//
+// See: https://data-star.dev/reference/attributes#data-attr
+// Remove the attribute DATASTAR_ATTR from the element.
+func (e *MathMLANNOTATION_XMLElement) DATASTAR_ATTRRemove(key string) *MathMLANNOTATION_XMLElement {
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("data-ref")
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	e.StringAttributes.Del("data-attr" + suffix)
+
 	return e
 }
 
-// Sets the value of the element
-
+// Creates a signal (if one doesn’t already exist) and sets up two-way data
+// binding between it and an element’s value.
+//
+// See: https://data-star.dev/reference/attributes#data-bind
 func (e *MathMLANNOTATION_XMLElement) DATASTAR_BIND(key string, expression string) *MathMLANNOTATION_XMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key = fmt.Sprintf("data-bind-%s", key)
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	key = fmt.Sprintf("data-bind%s", suffix)
 
 	e.StringAttributes.Set(key, expression)
 	return e
 }
 
+// Creates a signal (if one doesn’t already exist) and sets up two-way data
+// binding between it and an element’s value.
+//
+// See: https://data-star.dev/reference/attributes#data-bind
 func (e *MathMLANNOTATION_XMLElement) IfDATASTAR_BIND(condition bool, key string, expression string) *MathMLANNOTATION_XMLElement {
 	if condition {
 		e.DATASTAR_BIND(key, expression)
@@ -749,46 +878,1525 @@ func (e *MathMLANNOTATION_XMLElement) IfDATASTAR_BIND(condition bool, key string
 	return e
 }
 
+// Creates a signal (if one doesn’t already exist) and sets up two-way data
+// binding between it and an element’s value.
+//
+// See: https://data-star.dev/reference/attributes#data-bind
 // Remove the attribute DATASTAR_BIND from the element.
-func (e *MathMLANNOTATION_XMLElement) DATASTAR_BINDRemove() *MathMLANNOTATION_XMLElement {
+func (e *MathMLANNOTATION_XMLElement) DATASTAR_BINDRemove(key string) *MathMLANNOTATION_XMLElement {
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("data-bind")
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	e.StringAttributes.Del("data-bind" + suffix)
+
 	return e
 }
 
-// Sets the value of the element
+type MathMLAnnotationXmlClassMod customDataKeyModifier
 
-func (e *MathMLANNOTATION_XMLElement) DATASTAR_MODEL(expression string) *MathMLANNOTATION_XMLElement {
+// Converts the casing of the signal name.
+//   - 'camel' – Camel case: 'mySignal' (default)
+//   - 'kebab' – Kebab case: 'my-signal'
+//   - 'snake' – Snake case: 'my_signal'
+//   - 'pascal' – Pascal case: 'MySignal'
+func MathMLAnnotationXmlClassModCase(
+	s string,
+) MathMLAnnotationXmlClassMod {
+	return func() string {
+		return fmt.Sprintf("case.%s", s)
+	}
+}
+
+// Adds or removes a class to or from an element based on an expression.
+func (e *MathMLANNOTATION_XMLElement) DATASTAR_CLASS(key string, expression string, modifiers ...MathMLAnnotationXmlClassMod) *MathMLANNOTATION_XMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "data-model"
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	key = fmt.Sprintf("data-class%s", suffix)
+
+	customMods := lo.Map(modifiers, func(m MathMLAnnotationXmlClassMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Adds or removes a class to or from an element based on an expression.
+func (e *MathMLANNOTATION_XMLElement) IfDATASTAR_CLASS(condition bool, key string, expression string, modifiers ...MathMLAnnotationXmlClassMod) *MathMLANNOTATION_XMLElement {
+	if condition {
+		e.DATASTAR_CLASS(key, expression, modifiers...)
+	}
+	return e
+}
+
+// Adds or removes a class to or from an element based on an expression.
+// Remove the attribute DATASTAR_CLASS from the element.
+func (e *MathMLANNOTATION_XMLElement) DATASTAR_CLASSRemove(key string) *MathMLANNOTATION_XMLElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	e.StringAttributes.Del("data-class" + suffix)
+
+	return e
+}
+
+type MathMLAnnotationXmlComputedMod customDataKeyModifier
+
+// Converts the casing of the signal name.
+//   - 'camel' – Camel case: 'mySignal' (default)
+//   - 'kebab' – Kebab case: 'my-signal'
+//   - 'snake' – Snake case: 'my_signal'
+//   - 'pascal' – Pascal case: 'MySignal'
+func MathMLAnnotationXmlComputedModCase(
+	s string,
+) MathMLAnnotationXmlComputedMod {
+	return func() string {
+		return fmt.Sprintf("case.%s", s)
+	}
+}
+
+// Creates a signal that is computed based on an expression
+// The computed signal is read-only, and its value is automatically updated when
+// any signals in the expression are updated.
+//
+// See: https://data-star.dev/reference/attributes#data-computed
+func (e *MathMLANNOTATION_XMLElement) DATASTAR_COMPUTED(key string, expression string, modifiers ...MathMLAnnotationXmlComputedMod) *MathMLANNOTATION_XMLElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	key = fmt.Sprintf("data-computed%s", suffix)
+
+	customMods := lo.Map(modifiers, func(m MathMLAnnotationXmlComputedMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Creates a signal that is computed based on an expression
+// The computed signal is read-only, and its value is automatically updated when
+// any signals in the expression are updated.
+//
+// See: https://data-star.dev/reference/attributes#data-computed
+func (e *MathMLANNOTATION_XMLElement) IfDATASTAR_COMPUTED(condition bool, key string, expression string, modifiers ...MathMLAnnotationXmlComputedMod) *MathMLANNOTATION_XMLElement {
+	if condition {
+		e.DATASTAR_COMPUTED(key, expression, modifiers...)
+	}
+	return e
+}
+
+// Creates a signal that is computed based on an expression
+// The computed signal is read-only, and its value is automatically updated when
+// any signals in the expression are updated.
+//
+// See: https://data-star.dev/reference/attributes#data-computed
+// Remove the attribute DATASTAR_COMPUTED from the element.
+func (e *MathMLANNOTATION_XMLElement) DATASTAR_COMPUTEDRemove(key string) *MathMLANNOTATION_XMLElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	e.StringAttributes.Del("data-computed" + suffix)
+
+	return e
+}
+
+// Executes an expression on page load and whenever any signals in the expression
+// change
+// This is useful for performing side effects, such as updating other signals,
+// making requests to the backend, or manipulating the DOM.
+//
+// See: https://data-star.dev/reference/attributes#data-effect
+func (e *MathMLANNOTATION_XMLElement) DATASTAR_EFFECT(expression string) *MathMLANNOTATION_XMLElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-effect"
 
 	e.StringAttributes.Set(key, expression)
 	return e
 }
 
-func (e *MathMLANNOTATION_XMLElement) IfDATASTAR_MODEL(condition bool, expression string) *MathMLANNOTATION_XMLElement {
+// Executes an expression on page load and whenever any signals in the expression
+// change
+// This is useful for performing side effects, such as updating other signals,
+// making requests to the backend, or manipulating the DOM.
+//
+// See: https://data-star.dev/reference/attributes#data-effect
+func (e *MathMLANNOTATION_XMLElement) IfDATASTAR_EFFECT(condition bool, expression string) *MathMLANNOTATION_XMLElement {
 	if condition {
-		e.DATASTAR_MODEL(expression)
+		e.DATASTAR_EFFECT(expression)
 	}
 	return e
 }
 
-// Remove the attribute DATASTAR_MODEL from the element.
-func (e *MathMLANNOTATION_XMLElement) DATASTAR_MODELRemove() *MathMLANNOTATION_XMLElement {
+// Executes an expression on page load and whenever any signals in the expression
+// change
+// This is useful for performing side effects, such as updating other signals,
+// making requests to the backend, or manipulating the DOM.
+//
+// See: https://data-star.dev/reference/attributes#data-effect
+// Remove the attribute DATASTAR_EFFECT from the element.
+func (e *MathMLANNOTATION_XMLElement) DATASTAR_EFFECTRemove() *MathMLANNOTATION_XMLElement {
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("data-model")
+
+	e.StringAttributes.Del("data-effect")
+
 	return e
 }
 
-// Sets the textContent of the element
+type MathMLAnnotationXmlIgnoreMod customDataKeyModifier
 
+// Only ignore the element itself, not its descendants.
+func MathMLAnnotationXmlIgnoreModSelf() MathMLAnnotationXmlIgnoreMod {
+	return func() string {
+		return "self"
+	}
+}
+
+// Datastar walks the entire DOM and applies plugins to each element it encounters
+// It's possible to tell Datastar to ignore an element and its descendants by
+// placing a data-ignore attribute on it
+// This can be useful for preventing naming conflicts with third-party libraries,
+// or when you are unable to escape user input.
+//
+// See: https://data-star.dev/reference/attributes#data-ignore
+func (e *MathMLANNOTATION_XMLElement) DATASTAR_IGNORESet(b bool, modifiers ...MathMLAnnotationXmlIgnoreMod) *MathMLANNOTATION_XMLElement {
+	key := customDataKey("data-ignore")
+	customMods := lo.Map(modifiers, func(m MathMLAnnotationXmlIgnoreMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	if e.BoolAttributes == nil {
+		e.BoolAttributes = treemap.New[string, bool]()
+	}
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+// Datastar walks the entire DOM and applies plugins to each element it encounters
+// It's possible to tell Datastar to ignore an element and its descendants by
+// placing a data-ignore attribute on it
+// This can be useful for preventing naming conflicts with third-party libraries,
+// or when you are unable to escape user input.
+//
+// See: https://data-star.dev/reference/attributes#data-ignore
+func (e *MathMLANNOTATION_XMLElement) DATASTAR_IGNORE(modifiers ...MathMLAnnotationXmlIgnoreMod) *MathMLANNOTATION_XMLElement {
+	return e.DATASTAR_IGNORESet(true, modifiers...)
+}
+
+// Similar to the data-ignore attribute, the data-ignore-morph attribute tells the
+// PatchElements watcher to skip processing an element and its children when
+// morphing elements
+// This can be useful for preventing conflicts with third-party libraries that
+// manipulate the DOM, or when you are unable to escape user input.
+//
+// See: https://data-star.dev/reference/attributes#data-ignore-morph
+func (e *MathMLANNOTATION_XMLElement) DATASTAR_IGNORE_MORPHSet(b bool) *MathMLANNOTATION_XMLElement {
+	key := "data-ignore-morph"
+	if e.BoolAttributes == nil {
+		e.BoolAttributes = treemap.New[string, bool]()
+	}
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+// Similar to the data-ignore attribute, the data-ignore-morph attribute tells the
+// PatchElements watcher to skip processing an element and its children when
+// morphing elements
+// This can be useful for preventing conflicts with third-party libraries that
+// manipulate the DOM, or when you are unable to escape user input.
+//
+// See: https://data-star.dev/reference/attributes#data-ignore-morph
+func (e *MathMLANNOTATION_XMLElement) DATASTAR_IGNORE_MORPH() *MathMLANNOTATION_XMLElement {
+	return e.DATASTAR_IGNORE_MORPHSet(true)
+}
+
+type MathMLAnnotationXmlIndicatorMod customDataKeyModifier
+
+// Converts the casing of the signal name.
+//   - 'camel' – Camel case: 'mySignal' (default)
+//   - 'kebab' – Kebab case: 'my-signal'
+//   - 'snake' – Snake case: 'my_signal'
+//   - 'pascal' – Pascal case: 'MySignal'
+func MathMLAnnotationXmlIndicatorModCase(
+	s string,
+) MathMLAnnotationXmlIndicatorMod {
+	return func() string {
+		return fmt.Sprintf("case.%s", s)
+	}
+}
+
+// Creates a signal and sets its value to true while a fetch request is in flight,
+// otherwise false
+// The signal can be used to show a loading indicator.
+//
+// See: https://data-star.dev/reference/attributes#data-indicator
+func (e *MathMLANNOTATION_XMLElement) DATASTAR_INDICATOR(expression string, modifiers ...MathMLAnnotationXmlIndicatorMod) *MathMLANNOTATION_XMLElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-indicator"
+
+	customMods := lo.Map(modifiers, func(m MathMLAnnotationXmlIndicatorMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Creates a signal and sets its value to true while a fetch request is in flight,
+// otherwise false
+// The signal can be used to show a loading indicator.
+//
+// See: https://data-star.dev/reference/attributes#data-indicator
+func (e *MathMLANNOTATION_XMLElement) IfDATASTAR_INDICATOR(condition bool, expression string, modifiers ...MathMLAnnotationXmlIndicatorMod) *MathMLANNOTATION_XMLElement {
+	if condition {
+		e.DATASTAR_INDICATOR(expression, modifiers...)
+	}
+	return e
+}
+
+// Creates a signal and sets its value to true while a fetch request is in flight,
+// otherwise false
+// The signal can be used to show a loading indicator.
+//
+// See: https://data-star.dev/reference/attributes#data-indicator
+// Remove the attribute DATASTAR_INDICATOR from the element.
+func (e *MathMLANNOTATION_XMLElement) DATASTAR_INDICATORRemove() *MathMLANNOTATION_XMLElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-indicator")
+
+	return e
+}
+
+type MathMLAnnotationXmlInitMod customDataKeyModifier
+
+// Delay the event listener in milliseconds.
+func MathMLAnnotationXmlInitModDelayMs(
+	d time.Duration,
+) MathMLAnnotationXmlInitMod {
+	return func() string {
+		return fmt.Sprintf("delay.%dms", d.Milliseconds())
+	}
+}
+
+// Delay the event listener in seconds.
+func MathMLAnnotationXmlInitModDelaySec(
+	d time.Duration,
+) MathMLAnnotationXmlInitMod {
+	return func() string {
+		return fmt.Sprintf("delay.%ds", int(d.Seconds()))
+	}
+}
+
+// Wraps the expression in 'document.startViewTransition()' when the View
+// Transition API is available.
+func MathMLAnnotationXmlInitModViewTransition() MathMLAnnotationXmlInitMod {
+	return func() string {
+		return "viewtransition"
+	}
+}
+
+// Runs an expression when the attribute is initialized
+// This can happen on page load, when an element is patched into the DOM, and any
+// time the attribute is modified (via a backend action or otherwise).
+//
+// See: https://data-star.dev/reference/attributes#data-indicator
+func (e *MathMLANNOTATION_XMLElement) DATASTAR_INIT(expression string, modifiers ...MathMLAnnotationXmlInitMod) *MathMLANNOTATION_XMLElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-init"
+
+	customMods := lo.Map(modifiers, func(m MathMLAnnotationXmlInitMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Runs an expression when the attribute is initialized
+// This can happen on page load, when an element is patched into the DOM, and any
+// time the attribute is modified (via a backend action or otherwise).
+//
+// See: https://data-star.dev/reference/attributes#data-indicator
+func (e *MathMLANNOTATION_XMLElement) IfDATASTAR_INIT(condition bool, expression string, modifiers ...MathMLAnnotationXmlInitMod) *MathMLANNOTATION_XMLElement {
+	if condition {
+		e.DATASTAR_INIT(expression, modifiers...)
+	}
+	return e
+}
+
+// Runs an expression when the attribute is initialized
+// This can happen on page load, when an element is patched into the DOM, and any
+// time the attribute is modified (via a backend action or otherwise).
+//
+// See: https://data-star.dev/reference/attributes#data-indicator
+// Remove the attribute DATASTAR_INIT from the element.
+func (e *MathMLANNOTATION_XMLElement) DATASTAR_INITRemove() *MathMLANNOTATION_XMLElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-init")
+
+	return e
+}
+
+type MathMLAnnotationXmlJsonSignalsMod customDataKeyModifier
+
+// Outputs a more compact JSON format without extra whitespace
+// Useful for displaying filtered data inline.
+func MathMLAnnotationXmlJsonSignalsModTerse() MathMLAnnotationXmlJsonSignalsMod {
+	return func() string {
+		return "terse"
+	}
+}
+
+// Sets the text content of an element to a reactive JSON stringified version of
+// signals
+// Useful when troubleshooting an issue.
+//
+// See: https://data-star.dev/reference/attributes#data-json-signals
+func (e *MathMLANNOTATION_XMLElement) DATASTAR_JSON_SIGNALS(expression string, modifiers ...MathMLAnnotationXmlJsonSignalsMod) *MathMLANNOTATION_XMLElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-json-signals"
+
+	customMods := lo.Map(modifiers, func(m MathMLAnnotationXmlJsonSignalsMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Sets the text content of an element to a reactive JSON stringified version of
+// signals
+// Useful when troubleshooting an issue.
+//
+// See: https://data-star.dev/reference/attributes#data-json-signals
+func (e *MathMLANNOTATION_XMLElement) IfDATASTAR_JSON_SIGNALS(condition bool, expression string, modifiers ...MathMLAnnotationXmlJsonSignalsMod) *MathMLANNOTATION_XMLElement {
+	if condition {
+		e.DATASTAR_JSON_SIGNALS(expression, modifiers...)
+	}
+	return e
+}
+
+// Sets the text content of an element to a reactive JSON stringified version of
+// signals
+// Useful when troubleshooting an issue.
+//
+// See: https://data-star.dev/reference/attributes#data-json-signals
+// Remove the attribute DATASTAR_JSON_SIGNALS from the element.
+func (e *MathMLANNOTATION_XMLElement) DATASTAR_JSON_SIGNALSRemove() *MathMLANNOTATION_XMLElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-json-signals")
+
+	return e
+}
+
+type MathMLAnnotationXmlOnMod customDataKeyModifier
+
+// Only run the expression once
+// Only works with built-in events.
+func MathMLAnnotationXmlOnModOnce() MathMLAnnotationXmlOnMod {
+	return func() string {
+		return "once"
+	}
+}
+
+// Do not call preventDefault on the event listener
+// Only works with built-in events.
+func MathMLAnnotationXmlOnModPassive() MathMLAnnotationXmlOnMod {
+	return func() string {
+		return "passive"
+	}
+}
+
+// Use capture event listener
+// Only works with built-in events.
+func MathMLAnnotationXmlOnModCapture() MathMLAnnotationXmlOnMod {
+	return func() string {
+		return "capture"
+	}
+}
+
+// Converts the casing of the signal name.
+//   - 'camel' – Camel case: 'mySignal' (default)
+//   - 'kebab' – Kebab case: 'my-signal'
+//   - 'snake' – Snake case: 'my_signal'
+//   - 'pascal' – Pascal case: 'MySignal'
+func MathMLAnnotationXmlOnModCase(
+	s string,
+) MathMLAnnotationXmlOnMod {
+	return func() string {
+		return fmt.Sprintf("case.%s", s)
+	}
+}
+
+// Delay the event listener in milliseconds.
+func MathMLAnnotationXmlOnModDelayMs(
+	d time.Duration,
+) MathMLAnnotationXmlOnMod {
+	return func() string {
+		return fmt.Sprintf("delay.%dms", d.Milliseconds())
+	}
+}
+
+// Delay the event listener in seconds.
+func MathMLAnnotationXmlOnModDelaySec(
+	d time.Duration,
+) MathMLAnnotationXmlOnMod {
+	return func() string {
+		return fmt.Sprintf("delay.%ds", int(d.Seconds()))
+	}
+}
+
+// Debounces the event handler
+func MathMLAnnotationXmlOnModDebounceMs(
+	d time.Duration,
+) MathMLAnnotationXmlOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms", d.Milliseconds())
+	}
+}
+
+// Debounce the event listener in milliseconds with leading edge.
+func MathMLAnnotationXmlOnModDebounceMsLeading(
+	d time.Duration,
+) MathMLAnnotationXmlOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms.leading", d.Milliseconds())
+	}
+}
+
+// Debounce the event listener in milliseconds without trailing edge.
+func MathMLAnnotationXmlOnModDebounceMsNoTrailing(
+	d time.Duration,
+) MathMLAnnotationXmlOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms.notrailing", d.Milliseconds())
+	}
+}
+
+// Debounces the event handler
+func MathMLAnnotationXmlOnModDebounceSec(
+	d time.Duration,
+) MathMLAnnotationXmlOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds", int(d.Seconds()))
+	}
+}
+
+// Debounce the event listener in seconds with leading edge.
+func MathMLAnnotationXmlOnModDebounceSecLeading(
+	d time.Duration,
+) MathMLAnnotationXmlOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds.leading", int(d.Seconds()))
+	}
+}
+
+// Debounce the event listener in seconds without trailing edge.
+func MathMLAnnotationXmlOnModDebounceSecNoTrailing(
+	d time.Duration,
+) MathMLAnnotationXmlOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds.notrailing", int(d.Seconds()))
+	}
+}
+
+// Throttles the event handler
+func MathMLAnnotationXmlOnModThrottleMs(
+	d time.Duration,
+) MathMLAnnotationXmlOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms", d.Milliseconds())
+	}
+}
+
+// Throttle the event listener in milliseconds without leading edge.
+func MathMLAnnotationXmlOnModThrottleMsNoLeading(
+	d time.Duration,
+) MathMLAnnotationXmlOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms.noleading", d.Milliseconds())
+	}
+}
+
+// Throttle the event listener in milliseconds with trailing edge.
+func MathMLAnnotationXmlOnModThrottleMsTrailing(
+	d time.Duration,
+) MathMLAnnotationXmlOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms.trailing", d.Milliseconds())
+	}
+}
+
+// Throttles the event listener in seconds.
+func MathMLAnnotationXmlOnModThrottleSec(
+	d time.Duration,
+) MathMLAnnotationXmlOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds", int(d.Seconds()))
+	}
+}
+
+// Throttle the event listener in seconds without leading edge.
+func MathMLAnnotationXmlOnModThrottleSecNoLeading(
+	d time.Duration,
+) MathMLAnnotationXmlOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds.noleading", int(d.Seconds()))
+	}
+}
+
+// Throttle the event listener in seconds with trailing edge.
+func MathMLAnnotationXmlOnModThrottleSecTrailing(
+	d time.Duration,
+) MathMLAnnotationXmlOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds.trailing", int(d.Seconds()))
+	}
+}
+
+// Wraps the expression in 'document.startViewTransition()' when the View
+// Transition API is available.
+func MathMLAnnotationXmlOnModViewTransition() MathMLAnnotationXmlOnMod {
+	return func() string {
+		return "viewtransition"
+	}
+}
+
+// Attaches the event listener to the 'window' element.
+func MathMLAnnotationXmlOnModWindow() MathMLAnnotationXmlOnMod {
+	return func() string {
+		return "window"
+	}
+}
+
+// Calls 'preventDefault' on the event listener.
+func MathMLAnnotationXmlOnModPrevent() MathMLAnnotationXmlOnMod {
+	return func() string {
+		return "prevent"
+	}
+}
+
+// Triggers when the event is outside the element.
+func MathMLAnnotationXmlOnModOutside() MathMLAnnotationXmlOnMod {
+	return func() string {
+		return "outside"
+	}
+}
+
+// Calls 'stopPropagation' on the event listener.
+func MathMLAnnotationXmlOnModStop() MathMLAnnotationXmlOnMod {
+	return func() string {
+		return "stop"
+	}
+}
+
+// Attaches an event listener to an element, executing an expression whenever the
+// event is triggered.
+//
+// See: https://data-star.dev/reference/attributes#data-on
+func (e *MathMLANNOTATION_XMLElement) DATASTAR_ON(key string, expression string, modifiers ...MathMLAnnotationXmlOnMod) *MathMLANNOTATION_XMLElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	key = fmt.Sprintf("data-on%s", suffix)
+
+	customMods := lo.Map(modifiers, func(m MathMLAnnotationXmlOnMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Attaches an event listener to an element, executing an expression whenever the
+// event is triggered.
+//
+// See: https://data-star.dev/reference/attributes#data-on
+func (e *MathMLANNOTATION_XMLElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...MathMLAnnotationXmlOnMod) *MathMLANNOTATION_XMLElement {
+	if condition {
+		e.DATASTAR_ON(key, expression, modifiers...)
+	}
+	return e
+}
+
+// Attaches an event listener to an element, executing an expression whenever the
+// event is triggered.
+//
+// See: https://data-star.dev/reference/attributes#data-on
+// Remove the attribute DATASTAR_ON from the element.
+func (e *MathMLANNOTATION_XMLElement) DATASTAR_ONRemove(key string) *MathMLANNOTATION_XMLElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	e.StringAttributes.Del("data-on" + suffix)
+
+	return e
+}
+
+type MathMLAnnotationXmlOnIntersectMod customDataKeyModifier
+
+// Only run the expression once
+// Only works with built-in events.
+func MathMLAnnotationXmlOnIntersectModOnce() MathMLAnnotationXmlOnIntersectMod {
+	return func() string {
+		return "once"
+	}
+}
+
+// Trigger when half of the element is visible.
+func MathMLAnnotationXmlOnIntersectModHalf() MathMLAnnotationXmlOnIntersectMod {
+	return func() string {
+		return "half"
+	}
+}
+
+// Trigger when the full element is visible.
+func MathMLAnnotationXmlOnIntersectModFull() MathMLAnnotationXmlOnIntersectMod {
+	return func() string {
+		return "full"
+	}
+}
+
+// Delay the event listener in milliseconds.
+func MathMLAnnotationXmlOnIntersectModDelayMs(
+	d time.Duration,
+) MathMLAnnotationXmlOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("delay.%dms", d.Milliseconds())
+	}
+}
+
+// Delay the event listener in seconds.
+func MathMLAnnotationXmlOnIntersectModDelaySec(
+	d time.Duration,
+) MathMLAnnotationXmlOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("delay.%ds", int(d.Seconds()))
+	}
+}
+
+// Debounces the event handler
+func MathMLAnnotationXmlOnIntersectModDebounceMs(
+	d time.Duration,
+) MathMLAnnotationXmlOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms", d.Milliseconds())
+	}
+}
+
+// Debounce the event listener in milliseconds with leading edge.
+func MathMLAnnotationXmlOnIntersectModDebounceMsLeading(
+	d time.Duration,
+) MathMLAnnotationXmlOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms.leading", d.Milliseconds())
+	}
+}
+
+// Debounce the event listener in milliseconds without trailing edge.
+func MathMLAnnotationXmlOnIntersectModDebounceMsNoTrailing(
+	d time.Duration,
+) MathMLAnnotationXmlOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms.notrailing", d.Milliseconds())
+	}
+}
+
+// Debounces the event handler
+func MathMLAnnotationXmlOnIntersectModDebounceSec(
+	d time.Duration,
+) MathMLAnnotationXmlOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds", int(d.Seconds()))
+	}
+}
+
+// Debounce the event listener in seconds with leading edge.
+func MathMLAnnotationXmlOnIntersectModDebounceSecLeading(
+	d time.Duration,
+) MathMLAnnotationXmlOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds.leading", int(d.Seconds()))
+	}
+}
+
+// Debounce the event listener in seconds without trailing edge.
+func MathMLAnnotationXmlOnIntersectModDebounceSecNoTrailing(
+	d time.Duration,
+) MathMLAnnotationXmlOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds.notrailing", int(d.Seconds()))
+	}
+}
+
+// Throttles the event handler
+func MathMLAnnotationXmlOnIntersectModThrottleMs(
+	d time.Duration,
+) MathMLAnnotationXmlOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms", d.Milliseconds())
+	}
+}
+
+// Throttle the event listener in milliseconds without leading edge.
+func MathMLAnnotationXmlOnIntersectModThrottleMsNoLeading(
+	d time.Duration,
+) MathMLAnnotationXmlOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms.noleading", d.Milliseconds())
+	}
+}
+
+// Throttle the event listener in milliseconds with trailing edge.
+func MathMLAnnotationXmlOnIntersectModThrottleMsTrailing(
+	d time.Duration,
+) MathMLAnnotationXmlOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms.trailing", d.Milliseconds())
+	}
+}
+
+// Throttles the event listener in seconds.
+func MathMLAnnotationXmlOnIntersectModThrottleSec(
+	d time.Duration,
+) MathMLAnnotationXmlOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds", int(d.Seconds()))
+	}
+}
+
+// Throttle the event listener in seconds without leading edge.
+func MathMLAnnotationXmlOnIntersectModThrottleSecNoLeading(
+	d time.Duration,
+) MathMLAnnotationXmlOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds.noleading", int(d.Seconds()))
+	}
+}
+
+// Throttle the event listener in seconds with trailing edge.
+func MathMLAnnotationXmlOnIntersectModThrottleSecTrailing(
+	d time.Duration,
+) MathMLAnnotationXmlOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds.trailing", int(d.Seconds()))
+	}
+}
+
+// Wraps the expression in 'document.startViewTransition()' when the View
+// Transition API is available.
+func MathMLAnnotationXmlOnIntersectModViewTransition() MathMLAnnotationXmlOnIntersectMod {
+	return func() string {
+		return "viewtransition"
+	}
+}
+
+// Runs an expression when the element intersects with the viewport.
+func (e *MathMLANNOTATION_XMLElement) DATASTAR_ON_INTERSECT(expression string, modifiers ...MathMLAnnotationXmlOnIntersectMod) *MathMLANNOTATION_XMLElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-on-intersect"
+
+	customMods := lo.Map(modifiers, func(m MathMLAnnotationXmlOnIntersectMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Runs an expression when the element intersects with the viewport.
+func (e *MathMLANNOTATION_XMLElement) IfDATASTAR_ON_INTERSECT(condition bool, expression string, modifiers ...MathMLAnnotationXmlOnIntersectMod) *MathMLANNOTATION_XMLElement {
+	if condition {
+		e.DATASTAR_ON_INTERSECT(expression, modifiers...)
+	}
+	return e
+}
+
+// Runs an expression when the element intersects with the viewport.
+// Remove the attribute DATASTAR_ON_INTERSECT from the element.
+func (e *MathMLANNOTATION_XMLElement) DATASTAR_ON_INTERSECTRemove() *MathMLANNOTATION_XMLElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-on-intersect")
+
+	return e
+}
+
+type MathMLAnnotationXmlOnIntervalMod customDataKeyModifier
+
+// Sets the interval duration in milliseconds.
+func MathMLAnnotationXmlOnIntervalModDurationMs(
+	d time.Duration,
+) MathMLAnnotationXmlOnIntervalMod {
+	return func() string {
+		return fmt.Sprintf("duration.%dms", d.Milliseconds())
+	}
+}
+
+// Sets the interval duration in milliseconds
+// Execute the first interval immediately.
+func MathMLAnnotationXmlOnIntervalModDurationMsLeading(
+	d time.Duration,
+) MathMLAnnotationXmlOnIntervalMod {
+	return func() string {
+		return fmt.Sprintf("duration.%dms.leading", d.Milliseconds())
+	}
+}
+
+// Sets the interval duration in seconds.
+func MathMLAnnotationXmlOnIntervalModDurationSec(
+	d time.Duration,
+) MathMLAnnotationXmlOnIntervalMod {
+	return func() string {
+		return fmt.Sprintf("duration.%ds", int(d.Seconds()))
+	}
+}
+
+// Sets the interval duration in seconds
+// Execute the first interval immediately.
+func MathMLAnnotationXmlOnIntervalModDurationSecLeading(
+	d time.Duration,
+) MathMLAnnotationXmlOnIntervalMod {
+	return func() string {
+		return fmt.Sprintf("duration.%ds.leading", int(d.Seconds()))
+	}
+}
+
+// Wraps the expression in 'document.startViewTransition()' when the View
+// Transition API is available.
+func MathMLAnnotationXmlOnIntervalModViewTransition() MathMLAnnotationXmlOnIntervalMod {
+	return func() string {
+		return "viewtransition"
+	}
+}
+
+// Runs an expression at a regular interval
+// The interval duration defaults to one second and can be modified using the
+// '__duration' modifier.
+//
+// See: https://data-star.dev/reference/attributes#data-on-interval
+func (e *MathMLANNOTATION_XMLElement) DATASTAR_ON_INTERVAL(expression string, modifiers ...MathMLAnnotationXmlOnIntervalMod) *MathMLANNOTATION_XMLElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-on-interval"
+
+	customMods := lo.Map(modifiers, func(m MathMLAnnotationXmlOnIntervalMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Runs an expression at a regular interval
+// The interval duration defaults to one second and can be modified using the
+// '__duration' modifier.
+//
+// See: https://data-star.dev/reference/attributes#data-on-interval
+func (e *MathMLANNOTATION_XMLElement) IfDATASTAR_ON_INTERVAL(condition bool, expression string, modifiers ...MathMLAnnotationXmlOnIntervalMod) *MathMLANNOTATION_XMLElement {
+	if condition {
+		e.DATASTAR_ON_INTERVAL(expression, modifiers...)
+	}
+	return e
+}
+
+// Runs an expression at a regular interval
+// The interval duration defaults to one second and can be modified using the
+// '__duration' modifier.
+//
+// See: https://data-star.dev/reference/attributes#data-on-interval
+// Remove the attribute DATASTAR_ON_INTERVAL from the element.
+func (e *MathMLANNOTATION_XMLElement) DATASTAR_ON_INTERVALRemove() *MathMLANNOTATION_XMLElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-on-interval")
+
+	return e
+}
+
+type MathMLAnnotationXmlOnSignalPatchMod customDataKeyModifier
+
+// Delay the event listener in milliseconds.
+func MathMLAnnotationXmlOnSignalPatchModDelayMs(
+	d time.Duration,
+) MathMLAnnotationXmlOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("delay.%dms", d.Milliseconds())
+	}
+}
+
+// Delay the event listener in seconds.
+func MathMLAnnotationXmlOnSignalPatchModDelaySec(
+	d time.Duration,
+) MathMLAnnotationXmlOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("delay.%ds", int(d.Seconds()))
+	}
+}
+
+// Debounces the event handler
+func MathMLAnnotationXmlOnSignalPatchModDebounceMs(
+	d time.Duration,
+) MathMLAnnotationXmlOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms", d.Milliseconds())
+	}
+}
+
+// Debounce the event listener in milliseconds with leading edge.
+func MathMLAnnotationXmlOnSignalPatchModDebounceMsLeading(
+	d time.Duration,
+) MathMLAnnotationXmlOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms.leading", d.Milliseconds())
+	}
+}
+
+// Debounce the event listener in milliseconds without trailing edge.
+func MathMLAnnotationXmlOnSignalPatchModDebounceMsNoTrailing(
+	d time.Duration,
+) MathMLAnnotationXmlOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms.notrailing", d.Milliseconds())
+	}
+}
+
+// Debounces the event handler
+func MathMLAnnotationXmlOnSignalPatchModDebounceSec(
+	d time.Duration,
+) MathMLAnnotationXmlOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds", int(d.Seconds()))
+	}
+}
+
+// Debounce the event listener in seconds with leading edge.
+func MathMLAnnotationXmlOnSignalPatchModDebounceSecLeading(
+	d time.Duration,
+) MathMLAnnotationXmlOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds.leading", int(d.Seconds()))
+	}
+}
+
+// Debounce the event listener in seconds without trailing edge.
+func MathMLAnnotationXmlOnSignalPatchModDebounceSecNoTrailing(
+	d time.Duration,
+) MathMLAnnotationXmlOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds.notrailing", int(d.Seconds()))
+	}
+}
+
+// Throttles the event handler
+func MathMLAnnotationXmlOnSignalPatchModThrottleMs(
+	d time.Duration,
+) MathMLAnnotationXmlOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms", d.Milliseconds())
+	}
+}
+
+// Throttle the event listener in milliseconds without leading edge.
+func MathMLAnnotationXmlOnSignalPatchModThrottleMsNoLeading(
+	d time.Duration,
+) MathMLAnnotationXmlOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms.noleading", d.Milliseconds())
+	}
+}
+
+// Throttle the event listener in milliseconds with trailing edge.
+func MathMLAnnotationXmlOnSignalPatchModThrottleMsTrailing(
+	d time.Duration,
+) MathMLAnnotationXmlOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms.trailing", d.Milliseconds())
+	}
+}
+
+// Throttles the event listener in seconds.
+func MathMLAnnotationXmlOnSignalPatchModThrottleSec(
+	d time.Duration,
+) MathMLAnnotationXmlOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds", int(d.Seconds()))
+	}
+}
+
+// Throttle the event listener in seconds without leading edge.
+func MathMLAnnotationXmlOnSignalPatchModThrottleSecNoLeading(
+	d time.Duration,
+) MathMLAnnotationXmlOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds.noleading", int(d.Seconds()))
+	}
+}
+
+// Throttle the event listener in seconds with trailing edge.
+func MathMLAnnotationXmlOnSignalPatchModThrottleSecTrailing(
+	d time.Duration,
+) MathMLAnnotationXmlOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds.trailing", int(d.Seconds()))
+	}
+}
+
+// Runs an expression whenever any signals are patched
+// This is useful for tracking changes, updating computed values, or triggering
+// side effects when data updates.
+//
+// See: https://data-star.dev/reference/attributes#data-on-signal-patch
+func (e *MathMLANNOTATION_XMLElement) DATASTAR_ON_SIGNAL_PATCH(expression string, modifiers ...MathMLAnnotationXmlOnSignalPatchMod) *MathMLANNOTATION_XMLElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-on-signal-patch"
+
+	customMods := lo.Map(modifiers, func(m MathMLAnnotationXmlOnSignalPatchMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Runs an expression whenever any signals are patched
+// This is useful for tracking changes, updating computed values, or triggering
+// side effects when data updates.
+//
+// See: https://data-star.dev/reference/attributes#data-on-signal-patch
+func (e *MathMLANNOTATION_XMLElement) IfDATASTAR_ON_SIGNAL_PATCH(condition bool, expression string, modifiers ...MathMLAnnotationXmlOnSignalPatchMod) *MathMLANNOTATION_XMLElement {
+	if condition {
+		e.DATASTAR_ON_SIGNAL_PATCH(expression, modifiers...)
+	}
+	return e
+}
+
+// Runs an expression whenever any signals are patched
+// This is useful for tracking changes, updating computed values, or triggering
+// side effects when data updates.
+//
+// See: https://data-star.dev/reference/attributes#data-on-signal-patch
+// Remove the attribute DATASTAR_ON_SIGNAL_PATCH from the element.
+func (e *MathMLANNOTATION_XMLElement) DATASTAR_ON_SIGNAL_PATCHRemove() *MathMLANNOTATION_XMLElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-on-signal-patch")
+
+	return e
+}
+
+// Filters which signals to watch when using the data-on-signal-patch attribute.
+//
+// The data-on-signal-patch-filter attribute accepts an object with include and/or
+// exclude properties that are regular expressions.
+//
+// See: https://data-star.dev/reference/attributes#data-on-signal-patch-filter
+func (e *MathMLANNOTATION_XMLElement) DATASTAR_ON_SIGNAL_PATCH_FILTER(expression string) *MathMLANNOTATION_XMLElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-on-signal-patch-filter"
+
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Filters which signals to watch when using the data-on-signal-patch attribute.
+//
+// The data-on-signal-patch-filter attribute accepts an object with include and/or
+// exclude properties that are regular expressions.
+//
+// See: https://data-star.dev/reference/attributes#data-on-signal-patch-filter
+func (e *MathMLANNOTATION_XMLElement) IfDATASTAR_ON_SIGNAL_PATCH_FILTER(condition bool, expression string) *MathMLANNOTATION_XMLElement {
+	if condition {
+		e.DATASTAR_ON_SIGNAL_PATCH_FILTER(expression)
+	}
+	return e
+}
+
+// Filters which signals to watch when using the data-on-signal-patch attribute.
+//
+// The data-on-signal-patch-filter attribute accepts an object with include and/or
+// exclude properties that are regular expressions.
+//
+// See: https://data-star.dev/reference/attributes#data-on-signal-patch-filter
+// Remove the attribute DATASTAR_ON_SIGNAL_PATCH_FILTER from the element.
+func (e *MathMLANNOTATION_XMLElement) DATASTAR_ON_SIGNAL_PATCH_FILTERRemove() *MathMLANNOTATION_XMLElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-on-signal-patch-filter")
+
+	return e
+}
+
+// Preserves the value of an attribute when morphing DOM elements.
+//
+// See: https://data-star.dev/reference/attributes#data-preserve-attr
+func (e *MathMLANNOTATION_XMLElement) DATASTAR_PRESERVE_ATTR(expression string) *MathMLANNOTATION_XMLElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-preserve-attr"
+
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Preserves the value of an attribute when morphing DOM elements.
+//
+// See: https://data-star.dev/reference/attributes#data-preserve-attr
+func (e *MathMLANNOTATION_XMLElement) IfDATASTAR_PRESERVE_ATTR(condition bool, expression string) *MathMLANNOTATION_XMLElement {
+	if condition {
+		e.DATASTAR_PRESERVE_ATTR(expression)
+	}
+	return e
+}
+
+// Preserves the value of an attribute when morphing DOM elements.
+//
+// See: https://data-star.dev/reference/attributes#data-preserve-attr
+// Remove the attribute DATASTAR_PRESERVE_ATTR from the element.
+func (e *MathMLANNOTATION_XMLElement) DATASTAR_PRESERVE_ATTRRemove() *MathMLANNOTATION_XMLElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-preserve-attr")
+
+	return e
+}
+
+type MathMLAnnotationXmlRefMod customDataKeyModifier
+
+// Converts the casing of the signal name.
+//   - 'camel' – Camel case: 'mySignal' (default)
+//   - 'kebab' – Kebab case: 'my-signal'
+//   - 'snake' – Snake case: 'my_signal'
+//   - 'pascal' – Pascal case: 'MySignal'
+func MathMLAnnotationXmlRefModCase(
+	s string,
+) MathMLAnnotationXmlRefMod {
+	return func() string {
+		return fmt.Sprintf("case.%s", s)
+	}
+}
+
+// Creates a new signal that is a reference to the element on which the data
+// attribute is placed.
+//
+// See: https://data-star.dev/reference/attributes#data-ref
+func (e *MathMLANNOTATION_XMLElement) DATASTAR_REF(expression string, modifiers ...MathMLAnnotationXmlRefMod) *MathMLANNOTATION_XMLElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-ref"
+
+	customMods := lo.Map(modifiers, func(m MathMLAnnotationXmlRefMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Creates a new signal that is a reference to the element on which the data
+// attribute is placed.
+//
+// See: https://data-star.dev/reference/attributes#data-ref
+func (e *MathMLANNOTATION_XMLElement) IfDATASTAR_REF(condition bool, expression string, modifiers ...MathMLAnnotationXmlRefMod) *MathMLANNOTATION_XMLElement {
+	if condition {
+		e.DATASTAR_REF(expression, modifiers...)
+	}
+	return e
+}
+
+// Creates a new signal that is a reference to the element on which the data
+// attribute is placed.
+//
+// See: https://data-star.dev/reference/attributes#data-ref
+// Remove the attribute DATASTAR_REF from the element.
+func (e *MathMLANNOTATION_XMLElement) DATASTAR_REFRemove() *MathMLANNOTATION_XMLElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-ref")
+
+	return e
+}
+
+// Shows or hides an element based on whether an expression evaluates to 'true' or
+// 'false'
+// For anything with custom requirements, use 'data-class' instead.
+//
+// See: https://data-star.dev/reference/attributes#data-show
+func (e *MathMLANNOTATION_XMLElement) DATASTAR_SHOW(expression string) *MathMLANNOTATION_XMLElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-show"
+
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Shows or hides an element based on whether an expression evaluates to 'true' or
+// 'false'
+// For anything with custom requirements, use 'data-class' instead.
+//
+// See: https://data-star.dev/reference/attributes#data-show
+func (e *MathMLANNOTATION_XMLElement) IfDATASTAR_SHOW(condition bool, expression string) *MathMLANNOTATION_XMLElement {
+	if condition {
+		e.DATASTAR_SHOW(expression)
+	}
+	return e
+}
+
+// Shows or hides an element based on whether an expression evaluates to 'true' or
+// 'false'
+// For anything with custom requirements, use 'data-class' instead.
+//
+// See: https://data-star.dev/reference/attributes#data-show
+// Remove the attribute DATASTAR_SHOW from the element.
+func (e *MathMLANNOTATION_XMLElement) DATASTAR_SHOWRemove() *MathMLANNOTATION_XMLElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-show")
+
+	return e
+}
+
+type MathMLAnnotationXmlSignalsMod customDataKeyModifier
+
+// Converts the casing of the signal name.
+//   - 'camel' – Camel case: 'mySignal' (default)
+//   - 'kebab' – Kebab case: 'my-signal'
+//   - 'snake' – Snake case: 'my_signal'
+//   - 'pascal' – Pascal case: 'MySignal'
+func MathMLAnnotationXmlSignalsModCase(
+	s string,
+) MathMLAnnotationXmlSignalsMod {
+	return func() string {
+		return fmt.Sprintf("case.%s", s)
+	}
+}
+
+// Only patches signals if their keys do not already exist
+// This is useful for setting defaults without overwriting existing values.
+func MathMLAnnotationXmlSignalsModIfMissing() MathMLAnnotationXmlSignalsMod {
+	return func() string {
+		return "ifmissing"
+	}
+}
+
+// Patches (adds, updates or removes) one or more signals into the existing
+// signals
+// Values defined later in the DOM tree override those defined earlier.
+//
+// See: https://data-star.dev/reference/attributes#data-signals
+func (e *MathMLANNOTATION_XMLElement) DATASTAR_SIGNALS(key string, expression string, modifiers ...MathMLAnnotationXmlSignalsMod) *MathMLANNOTATION_XMLElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	key = fmt.Sprintf("data-signals%s", suffix)
+
+	customMods := lo.Map(modifiers, func(m MathMLAnnotationXmlSignalsMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Patches (adds, updates or removes) one or more signals into the existing
+// signals
+// Values defined later in the DOM tree override those defined earlier.
+//
+// See: https://data-star.dev/reference/attributes#data-signals
+func (e *MathMLANNOTATION_XMLElement) IfDATASTAR_SIGNALS(condition bool, key string, expression string, modifiers ...MathMLAnnotationXmlSignalsMod) *MathMLANNOTATION_XMLElement {
+	if condition {
+		e.DATASTAR_SIGNALS(key, expression, modifiers...)
+	}
+	return e
+}
+
+// Patches (adds, updates or removes) one or more signals into the existing
+// signals
+// Values defined later in the DOM tree override those defined earlier.
+//
+// See: https://data-star.dev/reference/attributes#data-signals
+// Remove the attribute DATASTAR_SIGNALS from the element.
+func (e *MathMLANNOTATION_XMLElement) DATASTAR_SIGNALSRemove(key string) *MathMLANNOTATION_XMLElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	e.StringAttributes.Del("data-signals" + suffix)
+
+	return e
+}
+
+type MathMLAnnotationXmlStyleMod customDataKeyModifier
+
+// Converts the casing of the signal name.
+//   - 'camel' – Camel case: 'mySignal' (default)
+//   - 'kebab' – Kebab case: 'my-signal'
+//   - 'snake' – Snake case: 'my_signal'
+//   - 'pascal' – Pascal case: 'MySignal'
+func MathMLAnnotationXmlStyleModCase(
+	s string,
+) MathMLAnnotationXmlStyleMod {
+	return func() string {
+		return fmt.Sprintf("case.%s", s)
+	}
+}
+
+// Sets the value of inline CSS styles on an element based on an expression, and
+// keeps them in sync.
+//
+// See: https://data-star.dev/reference/attributes#data-style
+func (e *MathMLANNOTATION_XMLElement) DATASTAR_STYLE(key string, expression string, modifiers ...MathMLAnnotationXmlStyleMod) *MathMLANNOTATION_XMLElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	key = fmt.Sprintf("data-style%s", suffix)
+
+	customMods := lo.Map(modifiers, func(m MathMLAnnotationXmlStyleMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Sets the value of inline CSS styles on an element based on an expression, and
+// keeps them in sync.
+//
+// See: https://data-star.dev/reference/attributes#data-style
+func (e *MathMLANNOTATION_XMLElement) IfDATASTAR_STYLE(condition bool, key string, expression string, modifiers ...MathMLAnnotationXmlStyleMod) *MathMLANNOTATION_XMLElement {
+	if condition {
+		e.DATASTAR_STYLE(key, expression, modifiers...)
+	}
+	return e
+}
+
+// Sets the value of inline CSS styles on an element based on an expression, and
+// keeps them in sync.
+//
+// See: https://data-star.dev/reference/attributes#data-style
+// Remove the attribute DATASTAR_STYLE from the element.
+func (e *MathMLANNOTATION_XMLElement) DATASTAR_STYLERemove(key string) *MathMLANNOTATION_XMLElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	e.StringAttributes.Del("data-style" + suffix)
+
+	return e
+}
+
+// Binds the text content of an element to an expression.
+//
+// See: https://data-star.dev/reference/attributes#data-text
 func (e *MathMLANNOTATION_XMLElement) DATASTAR_TEXT(expression string) *MathMLANNOTATION_XMLElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
@@ -800,6 +2408,9 @@ func (e *MathMLANNOTATION_XMLElement) DATASTAR_TEXT(expression string) *MathMLAN
 	return e
 }
 
+// Binds the text content of an element to an expression.
+//
+// See: https://data-star.dev/reference/attributes#data-text
 func (e *MathMLANNOTATION_XMLElement) IfDATASTAR_TEXT(condition bool, expression string) *MathMLANNOTATION_XMLElement {
 	if condition {
 		e.DATASTAR_TEXT(expression)
@@ -807,228 +2418,16 @@ func (e *MathMLANNOTATION_XMLElement) IfDATASTAR_TEXT(condition bool, expression
 	return e
 }
 
+// Binds the text content of an element to an expression.
+//
+// See: https://data-star.dev/reference/attributes#data-text
 // Remove the attribute DATASTAR_TEXT from the element.
 func (e *MathMLANNOTATION_XMLElement) DATASTAR_TEXTRemove() *MathMLANNOTATION_XMLElement {
 	if e.StringAttributes == nil {
 		return e
 	}
+
 	e.StringAttributes.Del("data-text")
-	return e
-}
 
-// Sets the event handler of the element
-
-type MathMLAnnotationXmlOnMod customDataKeyModifier
-
-// Debounces the event handler
-func MathMLAnnotationXmlOnModDebounce(
-	d time.Duration,
-) MathMLAnnotationXmlOnMod {
-	return func() string {
-		return fmt.Sprintf("debounce_%dms", d.Milliseconds())
-	}
-}
-
-// Throttles the event handler
-func MathMLAnnotationXmlOnModThrottle(
-	d time.Duration,
-) MathMLAnnotationXmlOnMod {
-	return func() string {
-		return fmt.Sprintf("throttle_%dms", d.Milliseconds())
-	}
-}
-
-func (e *MathMLANNOTATION_XMLElement) DATASTAR_ON(key string, expression string, modifiers ...MathMLAnnotationXmlOnMod) *MathMLANNOTATION_XMLElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-
-	key = fmt.Sprintf("data-on-%s", key)
-
-	customMods := lo.Map(modifiers, func(m MathMLAnnotationXmlOnMod, i int) customDataKeyModifier {
-		return customDataKeyModifier(m)
-	})
-	key = customDataKey(key, customMods...)
-	e.StringAttributes.Set(key, expression)
-	return e
-}
-
-func (e *MathMLANNOTATION_XMLElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...MathMLAnnotationXmlOnMod) *MathMLANNOTATION_XMLElement {
-	if condition {
-		e.DATASTAR_ON(key, expression, modifiers...)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_ON from the element.
-func (e *MathMLANNOTATION_XMLElement) DATASTAR_ONRemove() *MathMLANNOTATION_XMLElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-on")
-	return e
-}
-
-// Sets the focus of the element
-
-func (e *MathMLANNOTATION_XMLElement) DATASTAR_FOCUSSet(b bool) *MathMLANNOTATION_XMLElement {
-	key := "data-focus"
-	e.BoolAttributes.Set(key, b)
-	return e
-}
-
-func (e *MathMLANNOTATION_XMLElement) DATASTAR_FOCUS() *MathMLANNOTATION_XMLElement {
-	return e.DATASTAR_FOCUSSet(true)
-}
-
-// Sets the header of for fetch requests
-
-func (e *MathMLANNOTATION_XMLElement) DATASTAR_HEADER(key string, expression string) *MathMLANNOTATION_XMLElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-
-	key = fmt.Sprintf("data-header-%s", key)
-
-	e.StringAttributes.Set(key, expression)
-	return e
-}
-
-func (e *MathMLANNOTATION_XMLElement) IfDATASTAR_HEADER(condition bool, key string, expression string) *MathMLANNOTATION_XMLElement {
-	if condition {
-		e.DATASTAR_HEADER(key, expression)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_HEADER from the element.
-func (e *MathMLANNOTATION_XMLElement) DATASTAR_HEADERRemove() *MathMLANNOTATION_XMLElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-header")
-	return e
-}
-
-// Sets the indicator selector for fetch requests
-
-func (e *MathMLANNOTATION_XMLElement) DATASTAR_FETCH_INDICATOR(expression string) *MathMLANNOTATION_XMLElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-
-	key := "data-fetch-indicator"
-
-	e.StringAttributes.Set(key, expression)
-	return e
-}
-
-func (e *MathMLANNOTATION_XMLElement) IfDATASTAR_FETCH_INDICATOR(condition bool, expression string) *MathMLANNOTATION_XMLElement {
-	if condition {
-		e.DATASTAR_FETCH_INDICATOR(expression)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_FETCH_INDICATOR from the element.
-func (e *MathMLANNOTATION_XMLElement) DATASTAR_FETCH_INDICATORRemove() *MathMLANNOTATION_XMLElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-fetch-indicator")
-	return e
-}
-
-// Sets the visibility of the element
-
-func (e *MathMLANNOTATION_XMLElement) DATASTAR_SHOWSet(b bool) *MathMLANNOTATION_XMLElement {
-	key := "data-show"
-	e.BoolAttributes.Set(key, b)
-	return e
-}
-
-func (e *MathMLANNOTATION_XMLElement) DATASTAR_SHOW() *MathMLANNOTATION_XMLElement {
-	return e.DATASTAR_SHOWSet(true)
-}
-
-// Triggers the callback when the element intersects the viewport
-
-func (e *MathMLANNOTATION_XMLElement) DATASTAR_INTERSECTS(expression string) *MathMLANNOTATION_XMLElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-
-	key := "data-intersects"
-
-	e.StringAttributes.Set(key, expression)
-	return e
-}
-
-func (e *MathMLANNOTATION_XMLElement) IfDATASTAR_INTERSECTS(condition bool, expression string) *MathMLANNOTATION_XMLElement {
-	if condition {
-		e.DATASTAR_INTERSECTS(expression)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_INTERSECTS from the element.
-func (e *MathMLANNOTATION_XMLElement) DATASTAR_INTERSECTSRemove() *MathMLANNOTATION_XMLElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-intersects")
-	return e
-}
-
-// Teleports the element to the given selector
-
-func (e *MathMLANNOTATION_XMLElement) DATASTAR_TELEPORTSet(b bool) *MathMLANNOTATION_XMLElement {
-	key := "data-teleport"
-	e.BoolAttributes.Set(key, b)
-	return e
-}
-
-func (e *MathMLANNOTATION_XMLElement) DATASTAR_TELEPORT() *MathMLANNOTATION_XMLElement {
-	return e.DATASTAR_TELEPORTSet(true)
-}
-
-// Scrolls the element into view
-
-func (e *MathMLANNOTATION_XMLElement) DATASTAR_SCROLL_INTO_VIEWSet(b bool) *MathMLANNOTATION_XMLElement {
-	key := "data-scroll-into-view"
-	e.BoolAttributes.Set(key, b)
-	return e
-}
-
-func (e *MathMLANNOTATION_XMLElement) DATASTAR_SCROLL_INTO_VIEW() *MathMLANNOTATION_XMLElement {
-	return e.DATASTAR_SCROLL_INTO_VIEWSet(true)
-}
-
-// Setup the ViewTransitionAPI for the element
-
-func (e *MathMLANNOTATION_XMLElement) DATASTAR_VIEW_TRANSITION(expression string) *MathMLANNOTATION_XMLElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-
-	key := "data-view-transition"
-
-	e.StringAttributes.Set(key, expression)
-	return e
-}
-
-func (e *MathMLANNOTATION_XMLElement) IfDATASTAR_VIEW_TRANSITION(condition bool, expression string) *MathMLANNOTATION_XMLElement {
-	if condition {
-		e.DATASTAR_VIEW_TRANSITION(expression)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_VIEW_TRANSITION from the element.
-func (e *MathMLANNOTATION_XMLElement) DATASTAR_VIEW_TRANSITIONRemove() *MathMLANNOTATION_XMLElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-view-transition")
 	return e
 }

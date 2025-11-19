@@ -5,10 +5,8 @@ package elements
 
 import (
 	"fmt"
-	"html"
 	"time"
 
-	"github.com/goccy/go-json"
 	"github.com/igrmk/treemap/v2"
 	"github.com/samber/lo"
 )
@@ -173,6 +171,7 @@ func (e *SVGTSPANElement) X(f float64) *SVGTSPANElement {
 	return e
 }
 
+// The x-axis coordinate of the current text position.
 func (e *SVGTSPANElement) IfX(condition bool, f float64) *SVGTSPANElement {
 	if condition {
 		e.X(f)
@@ -189,6 +188,7 @@ func (e *SVGTSPANElement) Y(f float64) *SVGTSPANElement {
 	return e
 }
 
+// The y-axis coordinate of the current text position.
 func (e *SVGTSPANElement) IfY(condition bool, f float64) *SVGTSPANElement {
 	if condition {
 		e.Y(f)
@@ -205,6 +205,7 @@ func (e *SVGTSPANElement) DX(f float64) *SVGTSPANElement {
 	return e
 }
 
+// The x-axis coordinate of the current text position.
 func (e *SVGTSPANElement) IfDX(condition bool, f float64) *SVGTSPANElement {
 	if condition {
 		e.DX(f)
@@ -221,6 +222,7 @@ func (e *SVGTSPANElement) DY(f float64) *SVGTSPANElement {
 	return e
 }
 
+// The y-axis coordinate of the current text position.
 func (e *SVGTSPANElement) IfDY(condition bool, f float64) *SVGTSPANElement {
 	if condition {
 		e.DY(f)
@@ -237,6 +239,7 @@ func (e *SVGTSPANElement) ROTATE(f float64) *SVGTSPANElement {
 	return e
 }
 
+// The rotation angle about the current text position.
 func (e *SVGTSPANElement) IfROTATE(condition bool, f float64) *SVGTSPANElement {
 	if condition {
 		e.ROTATE(f)
@@ -253,10 +256,12 @@ func (e *SVGTSPANElement) ID(s string) *SVGTSPANElement {
 	return e
 }
 
+// Specifies a unique id for an element
 func (e *SVGTSPANElement) IDF(format string, args ...any) *SVGTSPANElement {
 	return e.ID(fmt.Sprintf(format, args...))
 }
 
+// Specifies a unique id for an element
 func (e *SVGTSPANElement) IfID(condition bool, s string) *SVGTSPANElement {
 	if condition {
 		e.ID(s)
@@ -264,6 +269,7 @@ func (e *SVGTSPANElement) IfID(condition bool, s string) *SVGTSPANElement {
 	return e
 }
 
+// Specifies a unique id for an element
 func (e *SVGTSPANElement) IfIDF(condition bool, format string, args ...any) *SVGTSPANElement {
 	if condition {
 		e.ID(fmt.Sprintf(format, args...))
@@ -271,6 +277,7 @@ func (e *SVGTSPANElement) IfIDF(condition bool, format string, args ...any) *SVG
 	return e
 }
 
+// Specifies a unique id for an element
 // Remove the attribute ID from the element.
 func (e *SVGTSPANElement) IDRemove(s string) *SVGTSPANElement {
 	if e.StringAttributes == nil {
@@ -280,6 +287,7 @@ func (e *SVGTSPANElement) IDRemove(s string) *SVGTSPANElement {
 	return e
 }
 
+// Specifies a unique id for an element
 func (e *SVGTSPANElement) IDRemoveF(format string, args ...any) *SVGTSPANElement {
 	return e.IDRemove(fmt.Sprintf(format, args...))
 }
@@ -299,6 +307,8 @@ func (e *SVGTSPANElement) CLASS(s ...string) *SVGTSPANElement {
 	return e
 }
 
+// Specifies one or more classnames for an element (refers to a class in a style
+// sheet)
 func (e *SVGTSPANElement) IfCLASS(condition bool, s ...string) *SVGTSPANElement {
 	if condition {
 		e.CLASS(s...)
@@ -306,6 +316,8 @@ func (e *SVGTSPANElement) IfCLASS(condition bool, s ...string) *SVGTSPANElement 
 	return e
 }
 
+// Specifies one or more classnames for an element (refers to a class in a style
+// sheet)
 // Remove the attribute CLASS from the element.
 func (e *SVGTSPANElement) CLASSRemove(s ...string) *SVGTSPANElement {
 	if e.DelimitedStrings == nil {
@@ -324,6 +336,7 @@ func (e *SVGTSPANElement) STYLEF(k string, format string, args ...any) *SVGTSPAN
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+// Specifies an inline CSS style for an element
 func (e *SVGTSPANElement) IfSTYLE(condition bool, k string, v string) *SVGTSPANElement {
 	if condition {
 		e.STYLE(k, v)
@@ -331,6 +344,7 @@ func (e *SVGTSPANElement) IfSTYLE(condition bool, k string, v string) *SVGTSPANE
 	return e
 }
 
+// Specifies an inline CSS style for an element
 func (e *SVGTSPANElement) STYLE(k string, v string) *SVGTSPANElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -344,6 +358,7 @@ func (e *SVGTSPANElement) STYLE(k string, v string) *SVGTSPANElement {
 	return e
 }
 
+// Specifies an inline CSS style for an element
 func (e *SVGTSPANElement) IfSTYLEF(condition bool, k string, format string, args ...any) *SVGTSPANElement {
 	if condition {
 		e.STYLE(k, fmt.Sprintf(format, args...))
@@ -351,6 +366,7 @@ func (e *SVGTSPANElement) IfSTYLEF(condition bool, k string, format string, args
 	return e
 }
 
+// Specifies an inline CSS style for an element
 // Add the attributes in the map to the element.
 func (e *SVGTSPANElement) STYLEMap(m map[string]string) *SVGTSPANElement {
 	if e.KVStrings == nil {
@@ -367,6 +383,7 @@ func (e *SVGTSPANElement) STYLEMap(m map[string]string) *SVGTSPANElement {
 	return e
 }
 
+// Specifies an inline CSS style for an element
 // Add pairs of attributes to the element.
 func (e *SVGTSPANElement) STYLEPairs(pairs ...string) *SVGTSPANElement {
 	if len(pairs)%2 != 0 {
@@ -388,6 +405,7 @@ func (e *SVGTSPANElement) STYLEPairs(pairs ...string) *SVGTSPANElement {
 	return e
 }
 
+// Specifies an inline CSS style for an element
 func (e *SVGTSPANElement) IfSTYLEPairs(condition bool, pairs ...string) *SVGTSPANElement {
 	if condition {
 		e.STYLEPairs(pairs...)
@@ -395,6 +413,7 @@ func (e *SVGTSPANElement) IfSTYLEPairs(condition bool, pairs ...string) *SVGTSPA
 	return e
 }
 
+// Specifies an inline CSS style for an element
 // Remove the attribute STYLE from the element.
 func (e *SVGTSPANElement) STYLERemove(keys ...string) *SVGTSPANElement {
 	if e.KVStrings == nil {
@@ -410,62 +429,75 @@ func (e *SVGTSPANElement) STYLERemove(keys ...string) *SVGTSPANElement {
 	return e
 }
 
-// Merges the singleton store with the given object
-
-func (e *SVGTSPANElement) DATASTAR_STORE(v any) *SVGTSPANElement {
-	if e.CustomDataAttributes == nil {
-		e.CustomDataAttributes = treemap.New[string, string]()
-	}
-	b, err := json.Marshal(v)
-	if err != nil {
-		panic(err)
-	}
-	e.CustomDataAttributes.Set("store", html.EscapeString(string(b)))
-	return e
-}
-
-// Sets the reference of the element
-
-func (e *SVGTSPANElement) DATASTAR_REF(expression string) *SVGTSPANElement {
+// Sets the value of any HTML attribute to an expression, and keeps it in sync.
+//
+// See: https://data-star.dev/reference/attributes#data-attr
+func (e *SVGTSPANElement) DATASTAR_ATTR(key string, expression string) *SVGTSPANElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "data-ref"
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	key = fmt.Sprintf("data-attr%s", suffix)
 
 	e.StringAttributes.Set(key, expression)
 	return e
 }
 
-func (e *SVGTSPANElement) IfDATASTAR_REF(condition bool, expression string) *SVGTSPANElement {
+// Sets the value of any HTML attribute to an expression, and keeps it in sync.
+//
+// See: https://data-star.dev/reference/attributes#data-attr
+func (e *SVGTSPANElement) IfDATASTAR_ATTR(condition bool, key string, expression string) *SVGTSPANElement {
 	if condition {
-		e.DATASTAR_REF(expression)
+		e.DATASTAR_ATTR(key, expression)
 	}
 	return e
 }
 
-// Remove the attribute DATASTAR_REF from the element.
-func (e *SVGTSPANElement) DATASTAR_REFRemove() *SVGTSPANElement {
+// Sets the value of any HTML attribute to an expression, and keeps it in sync.
+//
+// See: https://data-star.dev/reference/attributes#data-attr
+// Remove the attribute DATASTAR_ATTR from the element.
+func (e *SVGTSPANElement) DATASTAR_ATTRRemove(key string) *SVGTSPANElement {
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("data-ref")
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	e.StringAttributes.Del("data-attr" + suffix)
+
 	return e
 }
 
-// Sets the value of the element
-
+// Creates a signal (if one doesn’t already exist) and sets up two-way data
+// binding between it and an element’s value.
+//
+// See: https://data-star.dev/reference/attributes#data-bind
 func (e *SVGTSPANElement) DATASTAR_BIND(key string, expression string) *SVGTSPANElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key = fmt.Sprintf("data-bind-%s", key)
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	key = fmt.Sprintf("data-bind%s", suffix)
 
 	e.StringAttributes.Set(key, expression)
 	return e
 }
 
+// Creates a signal (if one doesn’t already exist) and sets up two-way data
+// binding between it and an element’s value.
+//
+// See: https://data-star.dev/reference/attributes#data-bind
 func (e *SVGTSPANElement) IfDATASTAR_BIND(condition bool, key string, expression string) *SVGTSPANElement {
 	if condition {
 		e.DATASTAR_BIND(key, expression)
@@ -473,46 +505,1525 @@ func (e *SVGTSPANElement) IfDATASTAR_BIND(condition bool, key string, expression
 	return e
 }
 
+// Creates a signal (if one doesn’t already exist) and sets up two-way data
+// binding between it and an element’s value.
+//
+// See: https://data-star.dev/reference/attributes#data-bind
 // Remove the attribute DATASTAR_BIND from the element.
-func (e *SVGTSPANElement) DATASTAR_BINDRemove() *SVGTSPANElement {
+func (e *SVGTSPANElement) DATASTAR_BINDRemove(key string) *SVGTSPANElement {
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("data-bind")
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	e.StringAttributes.Del("data-bind" + suffix)
+
 	return e
 }
 
-// Sets the value of the element
+type SVGTspanClassMod customDataKeyModifier
 
-func (e *SVGTSPANElement) DATASTAR_MODEL(expression string) *SVGTSPANElement {
+// Converts the casing of the signal name.
+//   - 'camel' – Camel case: 'mySignal' (default)
+//   - 'kebab' – Kebab case: 'my-signal'
+//   - 'snake' – Snake case: 'my_signal'
+//   - 'pascal' – Pascal case: 'MySignal'
+func SVGTspanClassModCase(
+	s string,
+) SVGTspanClassMod {
+	return func() string {
+		return fmt.Sprintf("case.%s", s)
+	}
+}
+
+// Adds or removes a class to or from an element based on an expression.
+func (e *SVGTSPANElement) DATASTAR_CLASS(key string, expression string, modifiers ...SVGTspanClassMod) *SVGTSPANElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "data-model"
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	key = fmt.Sprintf("data-class%s", suffix)
+
+	customMods := lo.Map(modifiers, func(m SVGTspanClassMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Adds or removes a class to or from an element based on an expression.
+func (e *SVGTSPANElement) IfDATASTAR_CLASS(condition bool, key string, expression string, modifiers ...SVGTspanClassMod) *SVGTSPANElement {
+	if condition {
+		e.DATASTAR_CLASS(key, expression, modifiers...)
+	}
+	return e
+}
+
+// Adds or removes a class to or from an element based on an expression.
+// Remove the attribute DATASTAR_CLASS from the element.
+func (e *SVGTSPANElement) DATASTAR_CLASSRemove(key string) *SVGTSPANElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	e.StringAttributes.Del("data-class" + suffix)
+
+	return e
+}
+
+type SVGTspanComputedMod customDataKeyModifier
+
+// Converts the casing of the signal name.
+//   - 'camel' – Camel case: 'mySignal' (default)
+//   - 'kebab' – Kebab case: 'my-signal'
+//   - 'snake' – Snake case: 'my_signal'
+//   - 'pascal' – Pascal case: 'MySignal'
+func SVGTspanComputedModCase(
+	s string,
+) SVGTspanComputedMod {
+	return func() string {
+		return fmt.Sprintf("case.%s", s)
+	}
+}
+
+// Creates a signal that is computed based on an expression
+// The computed signal is read-only, and its value is automatically updated when
+// any signals in the expression are updated.
+//
+// See: https://data-star.dev/reference/attributes#data-computed
+func (e *SVGTSPANElement) DATASTAR_COMPUTED(key string, expression string, modifiers ...SVGTspanComputedMod) *SVGTSPANElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	key = fmt.Sprintf("data-computed%s", suffix)
+
+	customMods := lo.Map(modifiers, func(m SVGTspanComputedMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Creates a signal that is computed based on an expression
+// The computed signal is read-only, and its value is automatically updated when
+// any signals in the expression are updated.
+//
+// See: https://data-star.dev/reference/attributes#data-computed
+func (e *SVGTSPANElement) IfDATASTAR_COMPUTED(condition bool, key string, expression string, modifiers ...SVGTspanComputedMod) *SVGTSPANElement {
+	if condition {
+		e.DATASTAR_COMPUTED(key, expression, modifiers...)
+	}
+	return e
+}
+
+// Creates a signal that is computed based on an expression
+// The computed signal is read-only, and its value is automatically updated when
+// any signals in the expression are updated.
+//
+// See: https://data-star.dev/reference/attributes#data-computed
+// Remove the attribute DATASTAR_COMPUTED from the element.
+func (e *SVGTSPANElement) DATASTAR_COMPUTEDRemove(key string) *SVGTSPANElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	e.StringAttributes.Del("data-computed" + suffix)
+
+	return e
+}
+
+// Executes an expression on page load and whenever any signals in the expression
+// change
+// This is useful for performing side effects, such as updating other signals,
+// making requests to the backend, or manipulating the DOM.
+//
+// See: https://data-star.dev/reference/attributes#data-effect
+func (e *SVGTSPANElement) DATASTAR_EFFECT(expression string) *SVGTSPANElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-effect"
 
 	e.StringAttributes.Set(key, expression)
 	return e
 }
 
-func (e *SVGTSPANElement) IfDATASTAR_MODEL(condition bool, expression string) *SVGTSPANElement {
+// Executes an expression on page load and whenever any signals in the expression
+// change
+// This is useful for performing side effects, such as updating other signals,
+// making requests to the backend, or manipulating the DOM.
+//
+// See: https://data-star.dev/reference/attributes#data-effect
+func (e *SVGTSPANElement) IfDATASTAR_EFFECT(condition bool, expression string) *SVGTSPANElement {
 	if condition {
-		e.DATASTAR_MODEL(expression)
+		e.DATASTAR_EFFECT(expression)
 	}
 	return e
 }
 
-// Remove the attribute DATASTAR_MODEL from the element.
-func (e *SVGTSPANElement) DATASTAR_MODELRemove() *SVGTSPANElement {
+// Executes an expression on page load and whenever any signals in the expression
+// change
+// This is useful for performing side effects, such as updating other signals,
+// making requests to the backend, or manipulating the DOM.
+//
+// See: https://data-star.dev/reference/attributes#data-effect
+// Remove the attribute DATASTAR_EFFECT from the element.
+func (e *SVGTSPANElement) DATASTAR_EFFECTRemove() *SVGTSPANElement {
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("data-model")
+
+	e.StringAttributes.Del("data-effect")
+
 	return e
 }
 
-// Sets the textContent of the element
+type SVGTspanIgnoreMod customDataKeyModifier
 
+// Only ignore the element itself, not its descendants.
+func SVGTspanIgnoreModSelf() SVGTspanIgnoreMod {
+	return func() string {
+		return "self"
+	}
+}
+
+// Datastar walks the entire DOM and applies plugins to each element it encounters
+// It's possible to tell Datastar to ignore an element and its descendants by
+// placing a data-ignore attribute on it
+// This can be useful for preventing naming conflicts with third-party libraries,
+// or when you are unable to escape user input.
+//
+// See: https://data-star.dev/reference/attributes#data-ignore
+func (e *SVGTSPANElement) DATASTAR_IGNORESet(b bool, modifiers ...SVGTspanIgnoreMod) *SVGTSPANElement {
+	key := customDataKey("data-ignore")
+	customMods := lo.Map(modifiers, func(m SVGTspanIgnoreMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	if e.BoolAttributes == nil {
+		e.BoolAttributes = treemap.New[string, bool]()
+	}
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+// Datastar walks the entire DOM and applies plugins to each element it encounters
+// It's possible to tell Datastar to ignore an element and its descendants by
+// placing a data-ignore attribute on it
+// This can be useful for preventing naming conflicts with third-party libraries,
+// or when you are unable to escape user input.
+//
+// See: https://data-star.dev/reference/attributes#data-ignore
+func (e *SVGTSPANElement) DATASTAR_IGNORE(modifiers ...SVGTspanIgnoreMod) *SVGTSPANElement {
+	return e.DATASTAR_IGNORESet(true, modifiers...)
+}
+
+// Similar to the data-ignore attribute, the data-ignore-morph attribute tells the
+// PatchElements watcher to skip processing an element and its children when
+// morphing elements
+// This can be useful for preventing conflicts with third-party libraries that
+// manipulate the DOM, or when you are unable to escape user input.
+//
+// See: https://data-star.dev/reference/attributes#data-ignore-morph
+func (e *SVGTSPANElement) DATASTAR_IGNORE_MORPHSet(b bool) *SVGTSPANElement {
+	key := "data-ignore-morph"
+	if e.BoolAttributes == nil {
+		e.BoolAttributes = treemap.New[string, bool]()
+	}
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+// Similar to the data-ignore attribute, the data-ignore-morph attribute tells the
+// PatchElements watcher to skip processing an element and its children when
+// morphing elements
+// This can be useful for preventing conflicts with third-party libraries that
+// manipulate the DOM, or when you are unable to escape user input.
+//
+// See: https://data-star.dev/reference/attributes#data-ignore-morph
+func (e *SVGTSPANElement) DATASTAR_IGNORE_MORPH() *SVGTSPANElement {
+	return e.DATASTAR_IGNORE_MORPHSet(true)
+}
+
+type SVGTspanIndicatorMod customDataKeyModifier
+
+// Converts the casing of the signal name.
+//   - 'camel' – Camel case: 'mySignal' (default)
+//   - 'kebab' – Kebab case: 'my-signal'
+//   - 'snake' – Snake case: 'my_signal'
+//   - 'pascal' – Pascal case: 'MySignal'
+func SVGTspanIndicatorModCase(
+	s string,
+) SVGTspanIndicatorMod {
+	return func() string {
+		return fmt.Sprintf("case.%s", s)
+	}
+}
+
+// Creates a signal and sets its value to true while a fetch request is in flight,
+// otherwise false
+// The signal can be used to show a loading indicator.
+//
+// See: https://data-star.dev/reference/attributes#data-indicator
+func (e *SVGTSPANElement) DATASTAR_INDICATOR(expression string, modifiers ...SVGTspanIndicatorMod) *SVGTSPANElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-indicator"
+
+	customMods := lo.Map(modifiers, func(m SVGTspanIndicatorMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Creates a signal and sets its value to true while a fetch request is in flight,
+// otherwise false
+// The signal can be used to show a loading indicator.
+//
+// See: https://data-star.dev/reference/attributes#data-indicator
+func (e *SVGTSPANElement) IfDATASTAR_INDICATOR(condition bool, expression string, modifiers ...SVGTspanIndicatorMod) *SVGTSPANElement {
+	if condition {
+		e.DATASTAR_INDICATOR(expression, modifiers...)
+	}
+	return e
+}
+
+// Creates a signal and sets its value to true while a fetch request is in flight,
+// otherwise false
+// The signal can be used to show a loading indicator.
+//
+// See: https://data-star.dev/reference/attributes#data-indicator
+// Remove the attribute DATASTAR_INDICATOR from the element.
+func (e *SVGTSPANElement) DATASTAR_INDICATORRemove() *SVGTSPANElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-indicator")
+
+	return e
+}
+
+type SVGTspanInitMod customDataKeyModifier
+
+// Delay the event listener in milliseconds.
+func SVGTspanInitModDelayMs(
+	d time.Duration,
+) SVGTspanInitMod {
+	return func() string {
+		return fmt.Sprintf("delay.%dms", d.Milliseconds())
+	}
+}
+
+// Delay the event listener in seconds.
+func SVGTspanInitModDelaySec(
+	d time.Duration,
+) SVGTspanInitMod {
+	return func() string {
+		return fmt.Sprintf("delay.%ds", int(d.Seconds()))
+	}
+}
+
+// Wraps the expression in 'document.startViewTransition()' when the View
+// Transition API is available.
+func SVGTspanInitModViewTransition() SVGTspanInitMod {
+	return func() string {
+		return "viewtransition"
+	}
+}
+
+// Runs an expression when the attribute is initialized
+// This can happen on page load, when an element is patched into the DOM, and any
+// time the attribute is modified (via a backend action or otherwise).
+//
+// See: https://data-star.dev/reference/attributes#data-indicator
+func (e *SVGTSPANElement) DATASTAR_INIT(expression string, modifiers ...SVGTspanInitMod) *SVGTSPANElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-init"
+
+	customMods := lo.Map(modifiers, func(m SVGTspanInitMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Runs an expression when the attribute is initialized
+// This can happen on page load, when an element is patched into the DOM, and any
+// time the attribute is modified (via a backend action or otherwise).
+//
+// See: https://data-star.dev/reference/attributes#data-indicator
+func (e *SVGTSPANElement) IfDATASTAR_INIT(condition bool, expression string, modifiers ...SVGTspanInitMod) *SVGTSPANElement {
+	if condition {
+		e.DATASTAR_INIT(expression, modifiers...)
+	}
+	return e
+}
+
+// Runs an expression when the attribute is initialized
+// This can happen on page load, when an element is patched into the DOM, and any
+// time the attribute is modified (via a backend action or otherwise).
+//
+// See: https://data-star.dev/reference/attributes#data-indicator
+// Remove the attribute DATASTAR_INIT from the element.
+func (e *SVGTSPANElement) DATASTAR_INITRemove() *SVGTSPANElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-init")
+
+	return e
+}
+
+type SVGTspanJsonSignalsMod customDataKeyModifier
+
+// Outputs a more compact JSON format without extra whitespace
+// Useful for displaying filtered data inline.
+func SVGTspanJsonSignalsModTerse() SVGTspanJsonSignalsMod {
+	return func() string {
+		return "terse"
+	}
+}
+
+// Sets the text content of an element to a reactive JSON stringified version of
+// signals
+// Useful when troubleshooting an issue.
+//
+// See: https://data-star.dev/reference/attributes#data-json-signals
+func (e *SVGTSPANElement) DATASTAR_JSON_SIGNALS(expression string, modifiers ...SVGTspanJsonSignalsMod) *SVGTSPANElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-json-signals"
+
+	customMods := lo.Map(modifiers, func(m SVGTspanJsonSignalsMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Sets the text content of an element to a reactive JSON stringified version of
+// signals
+// Useful when troubleshooting an issue.
+//
+// See: https://data-star.dev/reference/attributes#data-json-signals
+func (e *SVGTSPANElement) IfDATASTAR_JSON_SIGNALS(condition bool, expression string, modifiers ...SVGTspanJsonSignalsMod) *SVGTSPANElement {
+	if condition {
+		e.DATASTAR_JSON_SIGNALS(expression, modifiers...)
+	}
+	return e
+}
+
+// Sets the text content of an element to a reactive JSON stringified version of
+// signals
+// Useful when troubleshooting an issue.
+//
+// See: https://data-star.dev/reference/attributes#data-json-signals
+// Remove the attribute DATASTAR_JSON_SIGNALS from the element.
+func (e *SVGTSPANElement) DATASTAR_JSON_SIGNALSRemove() *SVGTSPANElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-json-signals")
+
+	return e
+}
+
+type SVGTspanOnMod customDataKeyModifier
+
+// Only run the expression once
+// Only works with built-in events.
+func SVGTspanOnModOnce() SVGTspanOnMod {
+	return func() string {
+		return "once"
+	}
+}
+
+// Do not call preventDefault on the event listener
+// Only works with built-in events.
+func SVGTspanOnModPassive() SVGTspanOnMod {
+	return func() string {
+		return "passive"
+	}
+}
+
+// Use capture event listener
+// Only works with built-in events.
+func SVGTspanOnModCapture() SVGTspanOnMod {
+	return func() string {
+		return "capture"
+	}
+}
+
+// Converts the casing of the signal name.
+//   - 'camel' – Camel case: 'mySignal' (default)
+//   - 'kebab' – Kebab case: 'my-signal'
+//   - 'snake' – Snake case: 'my_signal'
+//   - 'pascal' – Pascal case: 'MySignal'
+func SVGTspanOnModCase(
+	s string,
+) SVGTspanOnMod {
+	return func() string {
+		return fmt.Sprintf("case.%s", s)
+	}
+}
+
+// Delay the event listener in milliseconds.
+func SVGTspanOnModDelayMs(
+	d time.Duration,
+) SVGTspanOnMod {
+	return func() string {
+		return fmt.Sprintf("delay.%dms", d.Milliseconds())
+	}
+}
+
+// Delay the event listener in seconds.
+func SVGTspanOnModDelaySec(
+	d time.Duration,
+) SVGTspanOnMod {
+	return func() string {
+		return fmt.Sprintf("delay.%ds", int(d.Seconds()))
+	}
+}
+
+// Debounces the event handler
+func SVGTspanOnModDebounceMs(
+	d time.Duration,
+) SVGTspanOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms", d.Milliseconds())
+	}
+}
+
+// Debounce the event listener in milliseconds with leading edge.
+func SVGTspanOnModDebounceMsLeading(
+	d time.Duration,
+) SVGTspanOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms.leading", d.Milliseconds())
+	}
+}
+
+// Debounce the event listener in milliseconds without trailing edge.
+func SVGTspanOnModDebounceMsNoTrailing(
+	d time.Duration,
+) SVGTspanOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms.notrailing", d.Milliseconds())
+	}
+}
+
+// Debounces the event handler
+func SVGTspanOnModDebounceSec(
+	d time.Duration,
+) SVGTspanOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds", int(d.Seconds()))
+	}
+}
+
+// Debounce the event listener in seconds with leading edge.
+func SVGTspanOnModDebounceSecLeading(
+	d time.Duration,
+) SVGTspanOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds.leading", int(d.Seconds()))
+	}
+}
+
+// Debounce the event listener in seconds without trailing edge.
+func SVGTspanOnModDebounceSecNoTrailing(
+	d time.Duration,
+) SVGTspanOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds.notrailing", int(d.Seconds()))
+	}
+}
+
+// Throttles the event handler
+func SVGTspanOnModThrottleMs(
+	d time.Duration,
+) SVGTspanOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms", d.Milliseconds())
+	}
+}
+
+// Throttle the event listener in milliseconds without leading edge.
+func SVGTspanOnModThrottleMsNoLeading(
+	d time.Duration,
+) SVGTspanOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms.noleading", d.Milliseconds())
+	}
+}
+
+// Throttle the event listener in milliseconds with trailing edge.
+func SVGTspanOnModThrottleMsTrailing(
+	d time.Duration,
+) SVGTspanOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms.trailing", d.Milliseconds())
+	}
+}
+
+// Throttles the event listener in seconds.
+func SVGTspanOnModThrottleSec(
+	d time.Duration,
+) SVGTspanOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds", int(d.Seconds()))
+	}
+}
+
+// Throttle the event listener in seconds without leading edge.
+func SVGTspanOnModThrottleSecNoLeading(
+	d time.Duration,
+) SVGTspanOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds.noleading", int(d.Seconds()))
+	}
+}
+
+// Throttle the event listener in seconds with trailing edge.
+func SVGTspanOnModThrottleSecTrailing(
+	d time.Duration,
+) SVGTspanOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds.trailing", int(d.Seconds()))
+	}
+}
+
+// Wraps the expression in 'document.startViewTransition()' when the View
+// Transition API is available.
+func SVGTspanOnModViewTransition() SVGTspanOnMod {
+	return func() string {
+		return "viewtransition"
+	}
+}
+
+// Attaches the event listener to the 'window' element.
+func SVGTspanOnModWindow() SVGTspanOnMod {
+	return func() string {
+		return "window"
+	}
+}
+
+// Calls 'preventDefault' on the event listener.
+func SVGTspanOnModPrevent() SVGTspanOnMod {
+	return func() string {
+		return "prevent"
+	}
+}
+
+// Triggers when the event is outside the element.
+func SVGTspanOnModOutside() SVGTspanOnMod {
+	return func() string {
+		return "outside"
+	}
+}
+
+// Calls 'stopPropagation' on the event listener.
+func SVGTspanOnModStop() SVGTspanOnMod {
+	return func() string {
+		return "stop"
+	}
+}
+
+// Attaches an event listener to an element, executing an expression whenever the
+// event is triggered.
+//
+// See: https://data-star.dev/reference/attributes#data-on
+func (e *SVGTSPANElement) DATASTAR_ON(key string, expression string, modifiers ...SVGTspanOnMod) *SVGTSPANElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	key = fmt.Sprintf("data-on%s", suffix)
+
+	customMods := lo.Map(modifiers, func(m SVGTspanOnMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Attaches an event listener to an element, executing an expression whenever the
+// event is triggered.
+//
+// See: https://data-star.dev/reference/attributes#data-on
+func (e *SVGTSPANElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SVGTspanOnMod) *SVGTSPANElement {
+	if condition {
+		e.DATASTAR_ON(key, expression, modifiers...)
+	}
+	return e
+}
+
+// Attaches an event listener to an element, executing an expression whenever the
+// event is triggered.
+//
+// See: https://data-star.dev/reference/attributes#data-on
+// Remove the attribute DATASTAR_ON from the element.
+func (e *SVGTSPANElement) DATASTAR_ONRemove(key string) *SVGTSPANElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	e.StringAttributes.Del("data-on" + suffix)
+
+	return e
+}
+
+type SVGTspanOnIntersectMod customDataKeyModifier
+
+// Only run the expression once
+// Only works with built-in events.
+func SVGTspanOnIntersectModOnce() SVGTspanOnIntersectMod {
+	return func() string {
+		return "once"
+	}
+}
+
+// Trigger when half of the element is visible.
+func SVGTspanOnIntersectModHalf() SVGTspanOnIntersectMod {
+	return func() string {
+		return "half"
+	}
+}
+
+// Trigger when the full element is visible.
+func SVGTspanOnIntersectModFull() SVGTspanOnIntersectMod {
+	return func() string {
+		return "full"
+	}
+}
+
+// Delay the event listener in milliseconds.
+func SVGTspanOnIntersectModDelayMs(
+	d time.Duration,
+) SVGTspanOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("delay.%dms", d.Milliseconds())
+	}
+}
+
+// Delay the event listener in seconds.
+func SVGTspanOnIntersectModDelaySec(
+	d time.Duration,
+) SVGTspanOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("delay.%ds", int(d.Seconds()))
+	}
+}
+
+// Debounces the event handler
+func SVGTspanOnIntersectModDebounceMs(
+	d time.Duration,
+) SVGTspanOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms", d.Milliseconds())
+	}
+}
+
+// Debounce the event listener in milliseconds with leading edge.
+func SVGTspanOnIntersectModDebounceMsLeading(
+	d time.Duration,
+) SVGTspanOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms.leading", d.Milliseconds())
+	}
+}
+
+// Debounce the event listener in milliseconds without trailing edge.
+func SVGTspanOnIntersectModDebounceMsNoTrailing(
+	d time.Duration,
+) SVGTspanOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms.notrailing", d.Milliseconds())
+	}
+}
+
+// Debounces the event handler
+func SVGTspanOnIntersectModDebounceSec(
+	d time.Duration,
+) SVGTspanOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds", int(d.Seconds()))
+	}
+}
+
+// Debounce the event listener in seconds with leading edge.
+func SVGTspanOnIntersectModDebounceSecLeading(
+	d time.Duration,
+) SVGTspanOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds.leading", int(d.Seconds()))
+	}
+}
+
+// Debounce the event listener in seconds without trailing edge.
+func SVGTspanOnIntersectModDebounceSecNoTrailing(
+	d time.Duration,
+) SVGTspanOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds.notrailing", int(d.Seconds()))
+	}
+}
+
+// Throttles the event handler
+func SVGTspanOnIntersectModThrottleMs(
+	d time.Duration,
+) SVGTspanOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms", d.Milliseconds())
+	}
+}
+
+// Throttle the event listener in milliseconds without leading edge.
+func SVGTspanOnIntersectModThrottleMsNoLeading(
+	d time.Duration,
+) SVGTspanOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms.noleading", d.Milliseconds())
+	}
+}
+
+// Throttle the event listener in milliseconds with trailing edge.
+func SVGTspanOnIntersectModThrottleMsTrailing(
+	d time.Duration,
+) SVGTspanOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms.trailing", d.Milliseconds())
+	}
+}
+
+// Throttles the event listener in seconds.
+func SVGTspanOnIntersectModThrottleSec(
+	d time.Duration,
+) SVGTspanOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds", int(d.Seconds()))
+	}
+}
+
+// Throttle the event listener in seconds without leading edge.
+func SVGTspanOnIntersectModThrottleSecNoLeading(
+	d time.Duration,
+) SVGTspanOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds.noleading", int(d.Seconds()))
+	}
+}
+
+// Throttle the event listener in seconds with trailing edge.
+func SVGTspanOnIntersectModThrottleSecTrailing(
+	d time.Duration,
+) SVGTspanOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds.trailing", int(d.Seconds()))
+	}
+}
+
+// Wraps the expression in 'document.startViewTransition()' when the View
+// Transition API is available.
+func SVGTspanOnIntersectModViewTransition() SVGTspanOnIntersectMod {
+	return func() string {
+		return "viewtransition"
+	}
+}
+
+// Runs an expression when the element intersects with the viewport.
+func (e *SVGTSPANElement) DATASTAR_ON_INTERSECT(expression string, modifiers ...SVGTspanOnIntersectMod) *SVGTSPANElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-on-intersect"
+
+	customMods := lo.Map(modifiers, func(m SVGTspanOnIntersectMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Runs an expression when the element intersects with the viewport.
+func (e *SVGTSPANElement) IfDATASTAR_ON_INTERSECT(condition bool, expression string, modifiers ...SVGTspanOnIntersectMod) *SVGTSPANElement {
+	if condition {
+		e.DATASTAR_ON_INTERSECT(expression, modifiers...)
+	}
+	return e
+}
+
+// Runs an expression when the element intersects with the viewport.
+// Remove the attribute DATASTAR_ON_INTERSECT from the element.
+func (e *SVGTSPANElement) DATASTAR_ON_INTERSECTRemove() *SVGTSPANElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-on-intersect")
+
+	return e
+}
+
+type SVGTspanOnIntervalMod customDataKeyModifier
+
+// Sets the interval duration in milliseconds.
+func SVGTspanOnIntervalModDurationMs(
+	d time.Duration,
+) SVGTspanOnIntervalMod {
+	return func() string {
+		return fmt.Sprintf("duration.%dms", d.Milliseconds())
+	}
+}
+
+// Sets the interval duration in milliseconds
+// Execute the first interval immediately.
+func SVGTspanOnIntervalModDurationMsLeading(
+	d time.Duration,
+) SVGTspanOnIntervalMod {
+	return func() string {
+		return fmt.Sprintf("duration.%dms.leading", d.Milliseconds())
+	}
+}
+
+// Sets the interval duration in seconds.
+func SVGTspanOnIntervalModDurationSec(
+	d time.Duration,
+) SVGTspanOnIntervalMod {
+	return func() string {
+		return fmt.Sprintf("duration.%ds", int(d.Seconds()))
+	}
+}
+
+// Sets the interval duration in seconds
+// Execute the first interval immediately.
+func SVGTspanOnIntervalModDurationSecLeading(
+	d time.Duration,
+) SVGTspanOnIntervalMod {
+	return func() string {
+		return fmt.Sprintf("duration.%ds.leading", int(d.Seconds()))
+	}
+}
+
+// Wraps the expression in 'document.startViewTransition()' when the View
+// Transition API is available.
+func SVGTspanOnIntervalModViewTransition() SVGTspanOnIntervalMod {
+	return func() string {
+		return "viewtransition"
+	}
+}
+
+// Runs an expression at a regular interval
+// The interval duration defaults to one second and can be modified using the
+// '__duration' modifier.
+//
+// See: https://data-star.dev/reference/attributes#data-on-interval
+func (e *SVGTSPANElement) DATASTAR_ON_INTERVAL(expression string, modifiers ...SVGTspanOnIntervalMod) *SVGTSPANElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-on-interval"
+
+	customMods := lo.Map(modifiers, func(m SVGTspanOnIntervalMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Runs an expression at a regular interval
+// The interval duration defaults to one second and can be modified using the
+// '__duration' modifier.
+//
+// See: https://data-star.dev/reference/attributes#data-on-interval
+func (e *SVGTSPANElement) IfDATASTAR_ON_INTERVAL(condition bool, expression string, modifiers ...SVGTspanOnIntervalMod) *SVGTSPANElement {
+	if condition {
+		e.DATASTAR_ON_INTERVAL(expression, modifiers...)
+	}
+	return e
+}
+
+// Runs an expression at a regular interval
+// The interval duration defaults to one second and can be modified using the
+// '__duration' modifier.
+//
+// See: https://data-star.dev/reference/attributes#data-on-interval
+// Remove the attribute DATASTAR_ON_INTERVAL from the element.
+func (e *SVGTSPANElement) DATASTAR_ON_INTERVALRemove() *SVGTSPANElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-on-interval")
+
+	return e
+}
+
+type SVGTspanOnSignalPatchMod customDataKeyModifier
+
+// Delay the event listener in milliseconds.
+func SVGTspanOnSignalPatchModDelayMs(
+	d time.Duration,
+) SVGTspanOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("delay.%dms", d.Milliseconds())
+	}
+}
+
+// Delay the event listener in seconds.
+func SVGTspanOnSignalPatchModDelaySec(
+	d time.Duration,
+) SVGTspanOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("delay.%ds", int(d.Seconds()))
+	}
+}
+
+// Debounces the event handler
+func SVGTspanOnSignalPatchModDebounceMs(
+	d time.Duration,
+) SVGTspanOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms", d.Milliseconds())
+	}
+}
+
+// Debounce the event listener in milliseconds with leading edge.
+func SVGTspanOnSignalPatchModDebounceMsLeading(
+	d time.Duration,
+) SVGTspanOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms.leading", d.Milliseconds())
+	}
+}
+
+// Debounce the event listener in milliseconds without trailing edge.
+func SVGTspanOnSignalPatchModDebounceMsNoTrailing(
+	d time.Duration,
+) SVGTspanOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms.notrailing", d.Milliseconds())
+	}
+}
+
+// Debounces the event handler
+func SVGTspanOnSignalPatchModDebounceSec(
+	d time.Duration,
+) SVGTspanOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds", int(d.Seconds()))
+	}
+}
+
+// Debounce the event listener in seconds with leading edge.
+func SVGTspanOnSignalPatchModDebounceSecLeading(
+	d time.Duration,
+) SVGTspanOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds.leading", int(d.Seconds()))
+	}
+}
+
+// Debounce the event listener in seconds without trailing edge.
+func SVGTspanOnSignalPatchModDebounceSecNoTrailing(
+	d time.Duration,
+) SVGTspanOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds.notrailing", int(d.Seconds()))
+	}
+}
+
+// Throttles the event handler
+func SVGTspanOnSignalPatchModThrottleMs(
+	d time.Duration,
+) SVGTspanOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms", d.Milliseconds())
+	}
+}
+
+// Throttle the event listener in milliseconds without leading edge.
+func SVGTspanOnSignalPatchModThrottleMsNoLeading(
+	d time.Duration,
+) SVGTspanOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms.noleading", d.Milliseconds())
+	}
+}
+
+// Throttle the event listener in milliseconds with trailing edge.
+func SVGTspanOnSignalPatchModThrottleMsTrailing(
+	d time.Duration,
+) SVGTspanOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms.trailing", d.Milliseconds())
+	}
+}
+
+// Throttles the event listener in seconds.
+func SVGTspanOnSignalPatchModThrottleSec(
+	d time.Duration,
+) SVGTspanOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds", int(d.Seconds()))
+	}
+}
+
+// Throttle the event listener in seconds without leading edge.
+func SVGTspanOnSignalPatchModThrottleSecNoLeading(
+	d time.Duration,
+) SVGTspanOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds.noleading", int(d.Seconds()))
+	}
+}
+
+// Throttle the event listener in seconds with trailing edge.
+func SVGTspanOnSignalPatchModThrottleSecTrailing(
+	d time.Duration,
+) SVGTspanOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds.trailing", int(d.Seconds()))
+	}
+}
+
+// Runs an expression whenever any signals are patched
+// This is useful for tracking changes, updating computed values, or triggering
+// side effects when data updates.
+//
+// See: https://data-star.dev/reference/attributes#data-on-signal-patch
+func (e *SVGTSPANElement) DATASTAR_ON_SIGNAL_PATCH(expression string, modifiers ...SVGTspanOnSignalPatchMod) *SVGTSPANElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-on-signal-patch"
+
+	customMods := lo.Map(modifiers, func(m SVGTspanOnSignalPatchMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Runs an expression whenever any signals are patched
+// This is useful for tracking changes, updating computed values, or triggering
+// side effects when data updates.
+//
+// See: https://data-star.dev/reference/attributes#data-on-signal-patch
+func (e *SVGTSPANElement) IfDATASTAR_ON_SIGNAL_PATCH(condition bool, expression string, modifiers ...SVGTspanOnSignalPatchMod) *SVGTSPANElement {
+	if condition {
+		e.DATASTAR_ON_SIGNAL_PATCH(expression, modifiers...)
+	}
+	return e
+}
+
+// Runs an expression whenever any signals are patched
+// This is useful for tracking changes, updating computed values, or triggering
+// side effects when data updates.
+//
+// See: https://data-star.dev/reference/attributes#data-on-signal-patch
+// Remove the attribute DATASTAR_ON_SIGNAL_PATCH from the element.
+func (e *SVGTSPANElement) DATASTAR_ON_SIGNAL_PATCHRemove() *SVGTSPANElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-on-signal-patch")
+
+	return e
+}
+
+// Filters which signals to watch when using the data-on-signal-patch attribute.
+//
+// The data-on-signal-patch-filter attribute accepts an object with include and/or
+// exclude properties that are regular expressions.
+//
+// See: https://data-star.dev/reference/attributes#data-on-signal-patch-filter
+func (e *SVGTSPANElement) DATASTAR_ON_SIGNAL_PATCH_FILTER(expression string) *SVGTSPANElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-on-signal-patch-filter"
+
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Filters which signals to watch when using the data-on-signal-patch attribute.
+//
+// The data-on-signal-patch-filter attribute accepts an object with include and/or
+// exclude properties that are regular expressions.
+//
+// See: https://data-star.dev/reference/attributes#data-on-signal-patch-filter
+func (e *SVGTSPANElement) IfDATASTAR_ON_SIGNAL_PATCH_FILTER(condition bool, expression string) *SVGTSPANElement {
+	if condition {
+		e.DATASTAR_ON_SIGNAL_PATCH_FILTER(expression)
+	}
+	return e
+}
+
+// Filters which signals to watch when using the data-on-signal-patch attribute.
+//
+// The data-on-signal-patch-filter attribute accepts an object with include and/or
+// exclude properties that are regular expressions.
+//
+// See: https://data-star.dev/reference/attributes#data-on-signal-patch-filter
+// Remove the attribute DATASTAR_ON_SIGNAL_PATCH_FILTER from the element.
+func (e *SVGTSPANElement) DATASTAR_ON_SIGNAL_PATCH_FILTERRemove() *SVGTSPANElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-on-signal-patch-filter")
+
+	return e
+}
+
+// Preserves the value of an attribute when morphing DOM elements.
+//
+// See: https://data-star.dev/reference/attributes#data-preserve-attr
+func (e *SVGTSPANElement) DATASTAR_PRESERVE_ATTR(expression string) *SVGTSPANElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-preserve-attr"
+
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Preserves the value of an attribute when morphing DOM elements.
+//
+// See: https://data-star.dev/reference/attributes#data-preserve-attr
+func (e *SVGTSPANElement) IfDATASTAR_PRESERVE_ATTR(condition bool, expression string) *SVGTSPANElement {
+	if condition {
+		e.DATASTAR_PRESERVE_ATTR(expression)
+	}
+	return e
+}
+
+// Preserves the value of an attribute when morphing DOM elements.
+//
+// See: https://data-star.dev/reference/attributes#data-preserve-attr
+// Remove the attribute DATASTAR_PRESERVE_ATTR from the element.
+func (e *SVGTSPANElement) DATASTAR_PRESERVE_ATTRRemove() *SVGTSPANElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-preserve-attr")
+
+	return e
+}
+
+type SVGTspanRefMod customDataKeyModifier
+
+// Converts the casing of the signal name.
+//   - 'camel' – Camel case: 'mySignal' (default)
+//   - 'kebab' – Kebab case: 'my-signal'
+//   - 'snake' – Snake case: 'my_signal'
+//   - 'pascal' – Pascal case: 'MySignal'
+func SVGTspanRefModCase(
+	s string,
+) SVGTspanRefMod {
+	return func() string {
+		return fmt.Sprintf("case.%s", s)
+	}
+}
+
+// Creates a new signal that is a reference to the element on which the data
+// attribute is placed.
+//
+// See: https://data-star.dev/reference/attributes#data-ref
+func (e *SVGTSPANElement) DATASTAR_REF(expression string, modifiers ...SVGTspanRefMod) *SVGTSPANElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-ref"
+
+	customMods := lo.Map(modifiers, func(m SVGTspanRefMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Creates a new signal that is a reference to the element on which the data
+// attribute is placed.
+//
+// See: https://data-star.dev/reference/attributes#data-ref
+func (e *SVGTSPANElement) IfDATASTAR_REF(condition bool, expression string, modifiers ...SVGTspanRefMod) *SVGTSPANElement {
+	if condition {
+		e.DATASTAR_REF(expression, modifiers...)
+	}
+	return e
+}
+
+// Creates a new signal that is a reference to the element on which the data
+// attribute is placed.
+//
+// See: https://data-star.dev/reference/attributes#data-ref
+// Remove the attribute DATASTAR_REF from the element.
+func (e *SVGTSPANElement) DATASTAR_REFRemove() *SVGTSPANElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-ref")
+
+	return e
+}
+
+// Shows or hides an element based on whether an expression evaluates to 'true' or
+// 'false'
+// For anything with custom requirements, use 'data-class' instead.
+//
+// See: https://data-star.dev/reference/attributes#data-show
+func (e *SVGTSPANElement) DATASTAR_SHOW(expression string) *SVGTSPANElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-show"
+
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Shows or hides an element based on whether an expression evaluates to 'true' or
+// 'false'
+// For anything with custom requirements, use 'data-class' instead.
+//
+// See: https://data-star.dev/reference/attributes#data-show
+func (e *SVGTSPANElement) IfDATASTAR_SHOW(condition bool, expression string) *SVGTSPANElement {
+	if condition {
+		e.DATASTAR_SHOW(expression)
+	}
+	return e
+}
+
+// Shows or hides an element based on whether an expression evaluates to 'true' or
+// 'false'
+// For anything with custom requirements, use 'data-class' instead.
+//
+// See: https://data-star.dev/reference/attributes#data-show
+// Remove the attribute DATASTAR_SHOW from the element.
+func (e *SVGTSPANElement) DATASTAR_SHOWRemove() *SVGTSPANElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-show")
+
+	return e
+}
+
+type SVGTspanSignalsMod customDataKeyModifier
+
+// Converts the casing of the signal name.
+//   - 'camel' – Camel case: 'mySignal' (default)
+//   - 'kebab' – Kebab case: 'my-signal'
+//   - 'snake' – Snake case: 'my_signal'
+//   - 'pascal' – Pascal case: 'MySignal'
+func SVGTspanSignalsModCase(
+	s string,
+) SVGTspanSignalsMod {
+	return func() string {
+		return fmt.Sprintf("case.%s", s)
+	}
+}
+
+// Only patches signals if their keys do not already exist
+// This is useful for setting defaults without overwriting existing values.
+func SVGTspanSignalsModIfMissing() SVGTspanSignalsMod {
+	return func() string {
+		return "ifmissing"
+	}
+}
+
+// Patches (adds, updates or removes) one or more signals into the existing
+// signals
+// Values defined later in the DOM tree override those defined earlier.
+//
+// See: https://data-star.dev/reference/attributes#data-signals
+func (e *SVGTSPANElement) DATASTAR_SIGNALS(key string, expression string, modifiers ...SVGTspanSignalsMod) *SVGTSPANElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	key = fmt.Sprintf("data-signals%s", suffix)
+
+	customMods := lo.Map(modifiers, func(m SVGTspanSignalsMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Patches (adds, updates or removes) one or more signals into the existing
+// signals
+// Values defined later in the DOM tree override those defined earlier.
+//
+// See: https://data-star.dev/reference/attributes#data-signals
+func (e *SVGTSPANElement) IfDATASTAR_SIGNALS(condition bool, key string, expression string, modifiers ...SVGTspanSignalsMod) *SVGTSPANElement {
+	if condition {
+		e.DATASTAR_SIGNALS(key, expression, modifiers...)
+	}
+	return e
+}
+
+// Patches (adds, updates or removes) one or more signals into the existing
+// signals
+// Values defined later in the DOM tree override those defined earlier.
+//
+// See: https://data-star.dev/reference/attributes#data-signals
+// Remove the attribute DATASTAR_SIGNALS from the element.
+func (e *SVGTSPANElement) DATASTAR_SIGNALSRemove(key string) *SVGTSPANElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	e.StringAttributes.Del("data-signals" + suffix)
+
+	return e
+}
+
+type SVGTspanStyleMod customDataKeyModifier
+
+// Converts the casing of the signal name.
+//   - 'camel' – Camel case: 'mySignal' (default)
+//   - 'kebab' – Kebab case: 'my-signal'
+//   - 'snake' – Snake case: 'my_signal'
+//   - 'pascal' – Pascal case: 'MySignal'
+func SVGTspanStyleModCase(
+	s string,
+) SVGTspanStyleMod {
+	return func() string {
+		return fmt.Sprintf("case.%s", s)
+	}
+}
+
+// Sets the value of inline CSS styles on an element based on an expression, and
+// keeps them in sync.
+//
+// See: https://data-star.dev/reference/attributes#data-style
+func (e *SVGTSPANElement) DATASTAR_STYLE(key string, expression string, modifiers ...SVGTspanStyleMod) *SVGTSPANElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	key = fmt.Sprintf("data-style%s", suffix)
+
+	customMods := lo.Map(modifiers, func(m SVGTspanStyleMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Sets the value of inline CSS styles on an element based on an expression, and
+// keeps them in sync.
+//
+// See: https://data-star.dev/reference/attributes#data-style
+func (e *SVGTSPANElement) IfDATASTAR_STYLE(condition bool, key string, expression string, modifiers ...SVGTspanStyleMod) *SVGTSPANElement {
+	if condition {
+		e.DATASTAR_STYLE(key, expression, modifiers...)
+	}
+	return e
+}
+
+// Sets the value of inline CSS styles on an element based on an expression, and
+// keeps them in sync.
+//
+// See: https://data-star.dev/reference/attributes#data-style
+// Remove the attribute DATASTAR_STYLE from the element.
+func (e *SVGTSPANElement) DATASTAR_STYLERemove(key string) *SVGTSPANElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	e.StringAttributes.Del("data-style" + suffix)
+
+	return e
+}
+
+// Binds the text content of an element to an expression.
+//
+// See: https://data-star.dev/reference/attributes#data-text
 func (e *SVGTSPANElement) DATASTAR_TEXT(expression string) *SVGTSPANElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
@@ -524,6 +2035,9 @@ func (e *SVGTSPANElement) DATASTAR_TEXT(expression string) *SVGTSPANElement {
 	return e
 }
 
+// Binds the text content of an element to an expression.
+//
+// See: https://data-star.dev/reference/attributes#data-text
 func (e *SVGTSPANElement) IfDATASTAR_TEXT(condition bool, expression string) *SVGTSPANElement {
 	if condition {
 		e.DATASTAR_TEXT(expression)
@@ -531,228 +2045,16 @@ func (e *SVGTSPANElement) IfDATASTAR_TEXT(condition bool, expression string) *SV
 	return e
 }
 
+// Binds the text content of an element to an expression.
+//
+// See: https://data-star.dev/reference/attributes#data-text
 // Remove the attribute DATASTAR_TEXT from the element.
 func (e *SVGTSPANElement) DATASTAR_TEXTRemove() *SVGTSPANElement {
 	if e.StringAttributes == nil {
 		return e
 	}
+
 	e.StringAttributes.Del("data-text")
-	return e
-}
 
-// Sets the event handler of the element
-
-type SVGTspanOnMod customDataKeyModifier
-
-// Debounces the event handler
-func SVGTspanOnModDebounce(
-	d time.Duration,
-) SVGTspanOnMod {
-	return func() string {
-		return fmt.Sprintf("debounce_%dms", d.Milliseconds())
-	}
-}
-
-// Throttles the event handler
-func SVGTspanOnModThrottle(
-	d time.Duration,
-) SVGTspanOnMod {
-	return func() string {
-		return fmt.Sprintf("throttle_%dms", d.Milliseconds())
-	}
-}
-
-func (e *SVGTSPANElement) DATASTAR_ON(key string, expression string, modifiers ...SVGTspanOnMod) *SVGTSPANElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-
-	key = fmt.Sprintf("data-on-%s", key)
-
-	customMods := lo.Map(modifiers, func(m SVGTspanOnMod, i int) customDataKeyModifier {
-		return customDataKeyModifier(m)
-	})
-	key = customDataKey(key, customMods...)
-	e.StringAttributes.Set(key, expression)
-	return e
-}
-
-func (e *SVGTSPANElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SVGTspanOnMod) *SVGTSPANElement {
-	if condition {
-		e.DATASTAR_ON(key, expression, modifiers...)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_ON from the element.
-func (e *SVGTSPANElement) DATASTAR_ONRemove() *SVGTSPANElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-on")
-	return e
-}
-
-// Sets the focus of the element
-
-func (e *SVGTSPANElement) DATASTAR_FOCUSSet(b bool) *SVGTSPANElement {
-	key := "data-focus"
-	e.BoolAttributes.Set(key, b)
-	return e
-}
-
-func (e *SVGTSPANElement) DATASTAR_FOCUS() *SVGTSPANElement {
-	return e.DATASTAR_FOCUSSet(true)
-}
-
-// Sets the header of for fetch requests
-
-func (e *SVGTSPANElement) DATASTAR_HEADER(key string, expression string) *SVGTSPANElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-
-	key = fmt.Sprintf("data-header-%s", key)
-
-	e.StringAttributes.Set(key, expression)
-	return e
-}
-
-func (e *SVGTSPANElement) IfDATASTAR_HEADER(condition bool, key string, expression string) *SVGTSPANElement {
-	if condition {
-		e.DATASTAR_HEADER(key, expression)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_HEADER from the element.
-func (e *SVGTSPANElement) DATASTAR_HEADERRemove() *SVGTSPANElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-header")
-	return e
-}
-
-// Sets the indicator selector for fetch requests
-
-func (e *SVGTSPANElement) DATASTAR_FETCH_INDICATOR(expression string) *SVGTSPANElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-
-	key := "data-fetch-indicator"
-
-	e.StringAttributes.Set(key, expression)
-	return e
-}
-
-func (e *SVGTSPANElement) IfDATASTAR_FETCH_INDICATOR(condition bool, expression string) *SVGTSPANElement {
-	if condition {
-		e.DATASTAR_FETCH_INDICATOR(expression)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_FETCH_INDICATOR from the element.
-func (e *SVGTSPANElement) DATASTAR_FETCH_INDICATORRemove() *SVGTSPANElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-fetch-indicator")
-	return e
-}
-
-// Sets the visibility of the element
-
-func (e *SVGTSPANElement) DATASTAR_SHOWSet(b bool) *SVGTSPANElement {
-	key := "data-show"
-	e.BoolAttributes.Set(key, b)
-	return e
-}
-
-func (e *SVGTSPANElement) DATASTAR_SHOW() *SVGTSPANElement {
-	return e.DATASTAR_SHOWSet(true)
-}
-
-// Triggers the callback when the element intersects the viewport
-
-func (e *SVGTSPANElement) DATASTAR_INTERSECTS(expression string) *SVGTSPANElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-
-	key := "data-intersects"
-
-	e.StringAttributes.Set(key, expression)
-	return e
-}
-
-func (e *SVGTSPANElement) IfDATASTAR_INTERSECTS(condition bool, expression string) *SVGTSPANElement {
-	if condition {
-		e.DATASTAR_INTERSECTS(expression)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_INTERSECTS from the element.
-func (e *SVGTSPANElement) DATASTAR_INTERSECTSRemove() *SVGTSPANElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-intersects")
-	return e
-}
-
-// Teleports the element to the given selector
-
-func (e *SVGTSPANElement) DATASTAR_TELEPORTSet(b bool) *SVGTSPANElement {
-	key := "data-teleport"
-	e.BoolAttributes.Set(key, b)
-	return e
-}
-
-func (e *SVGTSPANElement) DATASTAR_TELEPORT() *SVGTSPANElement {
-	return e.DATASTAR_TELEPORTSet(true)
-}
-
-// Scrolls the element into view
-
-func (e *SVGTSPANElement) DATASTAR_SCROLL_INTO_VIEWSet(b bool) *SVGTSPANElement {
-	key := "data-scroll-into-view"
-	e.BoolAttributes.Set(key, b)
-	return e
-}
-
-func (e *SVGTSPANElement) DATASTAR_SCROLL_INTO_VIEW() *SVGTSPANElement {
-	return e.DATASTAR_SCROLL_INTO_VIEWSet(true)
-}
-
-// Setup the ViewTransitionAPI for the element
-
-func (e *SVGTSPANElement) DATASTAR_VIEW_TRANSITION(expression string) *SVGTSPANElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-
-	key := "data-view-transition"
-
-	e.StringAttributes.Set(key, expression)
-	return e
-}
-
-func (e *SVGTSPANElement) IfDATASTAR_VIEW_TRANSITION(condition bool, expression string) *SVGTSPANElement {
-	if condition {
-		e.DATASTAR_VIEW_TRANSITION(expression)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_VIEW_TRANSITION from the element.
-func (e *SVGTSPANElement) DATASTAR_VIEW_TRANSITIONRemove() *SVGTSPANElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-view-transition")
 	return e
 }

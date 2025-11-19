@@ -5,10 +5,8 @@ package elements
 
 import (
 	"fmt"
-	"html"
 	"time"
 
-	"github.com/goccy/go-json"
 	"github.com/igrmk/treemap/v2"
 	"github.com/samber/lo"
 )
@@ -174,10 +172,12 @@ func (e *OBJECTElement) DATA(s string) *OBJECTElement {
 	return e
 }
 
+// Address of the resource.
 func (e *OBJECTElement) DATAF(format string, args ...any) *OBJECTElement {
 	return e.DATA(fmt.Sprintf(format, args...))
 }
 
+// Address of the resource.
 func (e *OBJECTElement) IfDATA(condition bool, s string) *OBJECTElement {
 	if condition {
 		e.DATA(s)
@@ -185,6 +185,7 @@ func (e *OBJECTElement) IfDATA(condition bool, s string) *OBJECTElement {
 	return e
 }
 
+// Address of the resource.
 func (e *OBJECTElement) IfDATAF(condition bool, format string, args ...any) *OBJECTElement {
 	if condition {
 		e.DATA(fmt.Sprintf(format, args...))
@@ -192,6 +193,7 @@ func (e *OBJECTElement) IfDATAF(condition bool, format string, args ...any) *OBJ
 	return e
 }
 
+// Address of the resource.
 // Remove the attribute DATA from the element.
 func (e *OBJECTElement) DATARemove(s string) *OBJECTElement {
 	if e.StringAttributes == nil {
@@ -201,6 +203,7 @@ func (e *OBJECTElement) DATARemove(s string) *OBJECTElement {
 	return e
 }
 
+// Address of the resource.
 func (e *OBJECTElement) DATARemoveF(format string, args ...any) *OBJECTElement {
 	return e.DATARemove(fmt.Sprintf(format, args...))
 }
@@ -214,10 +217,12 @@ func (e *OBJECTElement) FORM(s string) *OBJECTElement {
 	return e
 }
 
+// Associates the control with a form element.
 func (e *OBJECTElement) FORMF(format string, args ...any) *OBJECTElement {
 	return e.FORM(fmt.Sprintf(format, args...))
 }
 
+// Associates the control with a form element.
 func (e *OBJECTElement) IfFORM(condition bool, s string) *OBJECTElement {
 	if condition {
 		e.FORM(s)
@@ -225,6 +230,7 @@ func (e *OBJECTElement) IfFORM(condition bool, s string) *OBJECTElement {
 	return e
 }
 
+// Associates the control with a form element.
 func (e *OBJECTElement) IfFORMF(condition bool, format string, args ...any) *OBJECTElement {
 	if condition {
 		e.FORM(fmt.Sprintf(format, args...))
@@ -232,6 +238,7 @@ func (e *OBJECTElement) IfFORMF(condition bool, format string, args ...any) *OBJ
 	return e
 }
 
+// Associates the control with a form element.
 // Remove the attribute FORM from the element.
 func (e *OBJECTElement) FORMRemove(s string) *OBJECTElement {
 	if e.StringAttributes == nil {
@@ -241,6 +248,7 @@ func (e *OBJECTElement) FORMRemove(s string) *OBJECTElement {
 	return e
 }
 
+// Associates the control with a form element.
 func (e *OBJECTElement) FORMRemoveF(format string, args ...any) *OBJECTElement {
 	return e.FORMRemove(fmt.Sprintf(format, args...))
 }
@@ -254,6 +262,7 @@ func (e *OBJECTElement) HEIGHT(i int) *OBJECTElement {
 	return e
 }
 
+// Height of the element.
 func (e *OBJECTElement) IfHEIGHT(condition bool, i int) *OBJECTElement {
 	if condition {
 		e.HEIGHT(i)
@@ -261,6 +270,7 @@ func (e *OBJECTElement) IfHEIGHT(condition bool, i int) *OBJECTElement {
 	return e
 }
 
+// Height of the element.
 // Remove the attribute HEIGHT from the element.
 func (e *OBJECTElement) HEIGHTRemove(i int) *OBJECTElement {
 	if e.IntAttributes == nil {
@@ -279,10 +289,12 @@ func (e *OBJECTElement) NAME(s string) *OBJECTElement {
 	return e
 }
 
+// Name of the element to use for form submission and in the form.elements API.
 func (e *OBJECTElement) NAMEF(format string, args ...any) *OBJECTElement {
 	return e.NAME(fmt.Sprintf(format, args...))
 }
 
+// Name of the element to use for form submission and in the form.elements API.
 func (e *OBJECTElement) IfNAME(condition bool, s string) *OBJECTElement {
 	if condition {
 		e.NAME(s)
@@ -290,6 +302,7 @@ func (e *OBJECTElement) IfNAME(condition bool, s string) *OBJECTElement {
 	return e
 }
 
+// Name of the element to use for form submission and in the form.elements API.
 func (e *OBJECTElement) IfNAMEF(condition bool, format string, args ...any) *OBJECTElement {
 	if condition {
 		e.NAME(fmt.Sprintf(format, args...))
@@ -297,6 +310,7 @@ func (e *OBJECTElement) IfNAMEF(condition bool, format string, args ...any) *OBJ
 	return e
 }
 
+// Name of the element to use for form submission and in the form.elements API.
 // Remove the attribute NAME from the element.
 func (e *OBJECTElement) NAMERemove(s string) *OBJECTElement {
 	if e.StringAttributes == nil {
@@ -306,6 +320,7 @@ func (e *OBJECTElement) NAMERemove(s string) *OBJECTElement {
 	return e
 }
 
+// Name of the element to use for form submission and in the form.elements API.
 func (e *OBJECTElement) NAMERemoveF(format string, args ...any) *OBJECTElement {
 	return e.NAMERemove(fmt.Sprintf(format, args...))
 }
@@ -319,10 +334,12 @@ func (e *OBJECTElement) TYPE(s string) *OBJECTElement {
 	return e
 }
 
+// Type of embedded resource.
 func (e *OBJECTElement) TYPEF(format string, args ...any) *OBJECTElement {
 	return e.TYPE(fmt.Sprintf(format, args...))
 }
 
+// Type of embedded resource.
 func (e *OBJECTElement) IfTYPE(condition bool, s string) *OBJECTElement {
 	if condition {
 		e.TYPE(s)
@@ -330,6 +347,7 @@ func (e *OBJECTElement) IfTYPE(condition bool, s string) *OBJECTElement {
 	return e
 }
 
+// Type of embedded resource.
 func (e *OBJECTElement) IfTYPEF(condition bool, format string, args ...any) *OBJECTElement {
 	if condition {
 		e.TYPE(fmt.Sprintf(format, args...))
@@ -337,6 +355,7 @@ func (e *OBJECTElement) IfTYPEF(condition bool, format string, args ...any) *OBJ
 	return e
 }
 
+// Type of embedded resource.
 // Remove the attribute TYPE from the element.
 func (e *OBJECTElement) TYPERemove(s string) *OBJECTElement {
 	if e.StringAttributes == nil {
@@ -346,6 +365,7 @@ func (e *OBJECTElement) TYPERemove(s string) *OBJECTElement {
 	return e
 }
 
+// Type of embedded resource.
 func (e *OBJECTElement) TYPERemoveF(format string, args ...any) *OBJECTElement {
 	return e.TYPERemove(fmt.Sprintf(format, args...))
 }
@@ -357,6 +377,8 @@ func (e *OBJECTElement) TYPEMUSTMATCH() *OBJECTElement {
 	return e
 }
 
+// Whether the type attribute and the Content-Type value need to match for the
+// resource to be used.
 func (e *OBJECTElement) IfTYPEMUSTMATCH(condition bool) *OBJECTElement {
 	if condition {
 		e.TYPEMUSTMATCHSet(true)
@@ -364,6 +386,8 @@ func (e *OBJECTElement) IfTYPEMUSTMATCH(condition bool) *OBJECTElement {
 	return e
 }
 
+// Whether the type attribute and the Content-Type value need to match for the
+// resource to be used.
 // Set the attribute TYPEMUSTMATCH to the value b explicitly.
 func (e *OBJECTElement) TYPEMUSTMATCHSet(b bool) *OBJECTElement {
 	if e.BoolAttributes == nil {
@@ -373,6 +397,8 @@ func (e *OBJECTElement) TYPEMUSTMATCHSet(b bool) *OBJECTElement {
 	return e
 }
 
+// Whether the type attribute and the Content-Type value need to match for the
+// resource to be used.
 func (e *OBJECTElement) IfSetTYPEMUSTMATCH(condition bool, b bool) *OBJECTElement {
 	if condition {
 		e.TYPEMUSTMATCHSet(b)
@@ -381,6 +407,8 @@ func (e *OBJECTElement) IfSetTYPEMUSTMATCH(condition bool, b bool) *OBJECTElemen
 }
 
 // Remove the attribute TYPEMUSTMATCH from the element.
+// Whether the type attribute and the Content-Type value need to match for the
+// resource to be used.
 func (e *OBJECTElement) TYPEMUSTMATCHRemove(b bool) *OBJECTElement {
 	if e.BoolAttributes == nil {
 		return e
@@ -398,10 +426,12 @@ func (e *OBJECTElement) USEMAP(s string) *OBJECTElement {
 	return e
 }
 
+// Name of image map to use.
 func (e *OBJECTElement) USEMAPF(format string, args ...any) *OBJECTElement {
 	return e.USEMAP(fmt.Sprintf(format, args...))
 }
 
+// Name of image map to use.
 func (e *OBJECTElement) IfUSEMAP(condition bool, s string) *OBJECTElement {
 	if condition {
 		e.USEMAP(s)
@@ -409,6 +439,7 @@ func (e *OBJECTElement) IfUSEMAP(condition bool, s string) *OBJECTElement {
 	return e
 }
 
+// Name of image map to use.
 func (e *OBJECTElement) IfUSEMAPF(condition bool, format string, args ...any) *OBJECTElement {
 	if condition {
 		e.USEMAP(fmt.Sprintf(format, args...))
@@ -416,6 +447,7 @@ func (e *OBJECTElement) IfUSEMAPF(condition bool, format string, args ...any) *O
 	return e
 }
 
+// Name of image map to use.
 // Remove the attribute USEMAP from the element.
 func (e *OBJECTElement) USEMAPRemove(s string) *OBJECTElement {
 	if e.StringAttributes == nil {
@@ -425,6 +457,7 @@ func (e *OBJECTElement) USEMAPRemove(s string) *OBJECTElement {
 	return e
 }
 
+// Name of image map to use.
 func (e *OBJECTElement) USEMAPRemoveF(format string, args ...any) *OBJECTElement {
 	return e.USEMAPRemove(fmt.Sprintf(format, args...))
 }
@@ -438,6 +471,7 @@ func (e *OBJECTElement) WIDTH(i int) *OBJECTElement {
 	return e
 }
 
+// Width of the element.
 func (e *OBJECTElement) IfWIDTH(condition bool, i int) *OBJECTElement {
 	if condition {
 		e.WIDTH(i)
@@ -445,6 +479,7 @@ func (e *OBJECTElement) IfWIDTH(condition bool, i int) *OBJECTElement {
 	return e
 }
 
+// Width of the element.
 // Remove the attribute WIDTH from the element.
 func (e *OBJECTElement) WIDTHRemove(i int) *OBJECTElement {
 	if e.IntAttributes == nil {
@@ -466,6 +501,10 @@ func (e *OBJECTElement) ACCESSKEY(r rune) *OBJECTElement {
 	return e
 }
 
+// The accesskey global attribute provides a hint for generating a keyboard
+// shortcut for the current element
+// The attribute value must consist of a single printable character (which
+// includes accented and other characters that can be generated by the keyboard).
 func (e *OBJECTElement) IfACCESSKEY(condition bool, r rune) *OBJECTElement {
 	if condition {
 		e.ACCESSKEY(r)
@@ -473,6 +512,10 @@ func (e *OBJECTElement) IfACCESSKEY(condition bool, r rune) *OBJECTElement {
 	return e
 }
 
+// The accesskey global attribute provides a hint for generating a keyboard
+// shortcut for the current element
+// The attribute value must consist of a single printable character (which
+// includes accented and other characters that can be generated by the keyboard).
 // Remove the attribute ACCESSKEY from the element.
 func (e *OBJECTElement) ACCESSKEYRemove() *OBJECTElement {
 	if e.StringAttributes == nil {
@@ -521,6 +564,20 @@ const (
 	ObjectAutocapitalize_characters ObjectAutocapitalizeChoice = "characters"
 )
 
+// The autocapitalize global attribute is an enumerated attribute that controls
+// whether and how text input is automatically capitalized as it is entered/edited
+// by the user
+// autocapitalize can be set on <input> and <textarea> elements, and on their
+// containing <form> elements
+// When autocapitalize is set on a <form> element, it sets the autocapitalize
+// behavior for all contained <input>s and <textarea>s, overriding any
+// autocapitalize values set on contained elements
+// autocapitalize has no effect on the url, email, or password <input> types,
+// where autocapitalization is never enabled
+// Where autocapitalize is not specified, the adopted default behavior varies
+// between browsers
+// For example: Chrome and Safari default to on/sentences Firefox defaults to
+// off/none.
 // Remove the attribute AUTOCAPITALIZE from the element.
 func (e *OBJECTElement) AUTOCAPITALIZERemove(c ObjectAutocapitalizeChoice) *OBJECTElement {
 	if e.StringAttributes == nil {
@@ -555,6 +612,26 @@ func (e *OBJECTElement) AUTOFOCUS() *OBJECTElement {
 	return e
 }
 
+// The autofocus global attribute is a Boolean attribute indicating that an
+// element should be focused on page load, or when the <dialog> that it is part of
+// is displayed.
+//
+//	Accessibility concerns Automatically focusing a form control can confuse
+//
+// visually-impaired people using screen-reading technology and people with
+// cognitive impairments
+// When autofocus is assigned, screen-readers "teleport" their user to the form
+// control without warning them beforehand.
+//
+//	Use careful consideration for accessibility when applying the autofocus
+//
+// attribute
+// Automatically focusing on a control can cause the page to scroll on load
+// The focus can also cause dynamic keyboards to display on some touch devices
+// While a screen reader will announce the label of the form control receiving
+// focus, the screen reader will not announce anything before the label, and the
+// sighted user on a small device will equally miss the context created by the
+// preceding content.
 func (e *OBJECTElement) IfAUTOFOCUS(condition bool) *OBJECTElement {
 	if condition {
 		e.AUTOFOCUSSet(true)
@@ -562,6 +639,26 @@ func (e *OBJECTElement) IfAUTOFOCUS(condition bool) *OBJECTElement {
 	return e
 }
 
+// The autofocus global attribute is a Boolean attribute indicating that an
+// element should be focused on page load, or when the <dialog> that it is part of
+// is displayed.
+//
+//	Accessibility concerns Automatically focusing a form control can confuse
+//
+// visually-impaired people using screen-reading technology and people with
+// cognitive impairments
+// When autofocus is assigned, screen-readers "teleport" their user to the form
+// control without warning them beforehand.
+//
+//	Use careful consideration for accessibility when applying the autofocus
+//
+// attribute
+// Automatically focusing on a control can cause the page to scroll on load
+// The focus can also cause dynamic keyboards to display on some touch devices
+// While a screen reader will announce the label of the form control receiving
+// focus, the screen reader will not announce anything before the label, and the
+// sighted user on a small device will equally miss the context created by the
+// preceding content.
 // Set the attribute AUTOFOCUS to the value b explicitly.
 func (e *OBJECTElement) AUTOFOCUSSet(b bool) *OBJECTElement {
 	if e.BoolAttributes == nil {
@@ -571,6 +668,26 @@ func (e *OBJECTElement) AUTOFOCUSSet(b bool) *OBJECTElement {
 	return e
 }
 
+// The autofocus global attribute is a Boolean attribute indicating that an
+// element should be focused on page load, or when the <dialog> that it is part of
+// is displayed.
+//
+//	Accessibility concerns Automatically focusing a form control can confuse
+//
+// visually-impaired people using screen-reading technology and people with
+// cognitive impairments
+// When autofocus is assigned, screen-readers "teleport" their user to the form
+// control without warning them beforehand.
+//
+//	Use careful consideration for accessibility when applying the autofocus
+//
+// attribute
+// Automatically focusing on a control can cause the page to scroll on load
+// The focus can also cause dynamic keyboards to display on some touch devices
+// While a screen reader will announce the label of the form control receiving
+// focus, the screen reader will not announce anything before the label, and the
+// sighted user on a small device will equally miss the context created by the
+// preceding content.
 func (e *OBJECTElement) IfSetAUTOFOCUS(condition bool, b bool) *OBJECTElement {
 	if condition {
 		e.AUTOFOCUSSet(b)
@@ -579,6 +696,26 @@ func (e *OBJECTElement) IfSetAUTOFOCUS(condition bool, b bool) *OBJECTElement {
 }
 
 // Remove the attribute AUTOFOCUS from the element.
+// The autofocus global attribute is a Boolean attribute indicating that an
+// element should be focused on page load, or when the <dialog> that it is part of
+// is displayed.
+//
+//	Accessibility concerns Automatically focusing a form control can confuse
+//
+// visually-impaired people using screen-reading technology and people with
+// cognitive impairments
+// When autofocus is assigned, screen-readers "teleport" their user to the form
+// control without warning them beforehand.
+//
+//	Use careful consideration for accessibility when applying the autofocus
+//
+// attribute
+// Automatically focusing on a control can cause the page to scroll on load
+// The focus can also cause dynamic keyboards to display on some touch devices
+// While a screen reader will announce the label of the form control receiving
+// focus, the screen reader will not announce anything before the label, and the
+// sighted user on a small device will equally miss the context created by the
+// preceding content.
 func (e *OBJECTElement) AUTOFOCUSRemove(b bool) *OBJECTElement {
 	if e.BoolAttributes == nil {
 		return e
@@ -605,6 +742,11 @@ func (e *OBJECTElement) CLASS(s ...string) *OBJECTElement {
 	return e
 }
 
+// The class global attribute is a space-separated list of the case-sensitive
+// classes of the element
+// Classes allow CSS and JavaScript to select and access specific elements via the
+// class selectors or functions like the DOM method
+// document.getElementsByClassName.
 func (e *OBJECTElement) IfCLASS(condition bool, s ...string) *OBJECTElement {
 	if condition {
 		e.CLASS(s...)
@@ -612,6 +754,11 @@ func (e *OBJECTElement) IfCLASS(condition bool, s ...string) *OBJECTElement {
 	return e
 }
 
+// The class global attribute is a space-separated list of the case-sensitive
+// classes of the element
+// Classes allow CSS and JavaScript to select and access specific elements via the
+// class selectors or functions like the DOM method
+// document.getElementsByClassName.
 // Remove the attribute CLASS from the element.
 func (e *OBJECTElement) CLASSRemove(s ...string) *OBJECTElement {
 	if e.DelimitedStrings == nil {
@@ -650,6 +797,9 @@ const (
 	ObjectContenteditable_plaintext_only ObjectContenteditableChoice = "plaintext-only"
 )
 
+// The contenteditable global attribute is an enumerated attribute indicating if
+// the element should be editable by the user
+// If so, the browser modifies its widget to allow editing.
 // Remove the attribute CONTENTEDITABLE from the element.
 func (e *OBJECTElement) CONTENTEDITABLERemove(c ObjectContenteditableChoice) *OBJECTElement {
 	if e.StringAttributes == nil {
@@ -698,6 +848,21 @@ const (
 	ObjectDir_auto ObjectDirChoice = "auto"
 )
 
+// The dir global attribute is an enumerated attribute that indicates the
+// directionality of the element's text
+// Note: This attribute is mandatory for the <bdo> element where it has a
+// different semantic meaning
+// This attribute is not inherited by the <bdi> element
+// If not set, its value is auto
+// This attribute can be overridden by the CSS properties direction and
+// unicode-bidi, if a CSS page is active and the element supports these properties
+// As the directionality of the text is semantically related to its content and
+// not to its presentation, it is recommended that web developers use this
+// attribute instead of the related CSS properties when possible
+// That way, the text will display correctly even on a browser that doesn't
+// support CSS or has the CSS deactivated
+// The auto value should be used for data with an unknown directionality, like
+// data coming from user input, eventually stored in a database.
 // Remove the attribute DIR from the element.
 func (e *OBJECTElement) DIRRemove(c ObjectDirChoice) *OBJECTElement {
 	if e.StringAttributes == nil {
@@ -735,6 +900,9 @@ const (
 	ObjectDraggable_auto ObjectDraggableChoice = "auto"
 )
 
+// The draggable global attribute is an enumerated attribute that indicates
+// whether the element can be dragged, either with native browser behavior or the
+// HTML Drag and Drop API.
 // Remove the attribute DRAGGABLE from the element.
 func (e *OBJECTElement) DRAGGABLERemove(c ObjectDraggableChoice) *OBJECTElement {
 	if e.StringAttributes == nil {
@@ -775,6 +943,8 @@ const (
 	ObjectEnterkeyhint_send ObjectEnterkeyhintChoice = "send"
 )
 
+// The enterkeyhint global attribute is an enumerated attribute defining what
+// action label (or icon) to present for the enter key on virtual keyboards.
 // Remove the attribute ENTERKEYHINT from the element.
 func (e *OBJECTElement) ENTERKEYHINTRemove(c ObjectEnterkeyhintChoice) *OBJECTElement {
 	if e.StringAttributes == nil {
@@ -817,6 +987,26 @@ func (e *OBJECTElement) EXPORTPARTS(s ...string) *OBJECTElement {
 	return e
 }
 
+// The exportparts global attribute allows you to select and style elements
+// existing in nested shadow trees, by exporting their part names
+// The shadow tree is an isolated structure where identifiers, classes, and styles
+// cannot be reached by selectors or queries belonging to a regular DOM
+// To apply a style to an element living in a shadow tree, by CSS rule created
+// outside of it, part global attribute has to be used
+// It has to be assigned to an element present in Shadow Tree, and its value
+// should be some identifier
+// Rules present outside of the shadow tree, must use the ::part pseudo-element,
+// containing the same identifier as the argument
+// The global attribute part makes the element visible on just a single level of
+// depth
+// When the shadow tree is nested, parts will be visible only to the parent of the
+// shadow tree but not to its ancestor
+// Exporting parts further down is exactly what exportparts attribute is for
+// Attribute exportparts must be placed on a shadow Host, which is the element to
+// which the shadow tree is attached
+// The value of the attribute should be a comma-separated list of part names
+// present in the shadow tree and which should be made available via a DOM outside
+// of the current structure.
 func (e *OBJECTElement) IfEXPORTPARTS(condition bool, s ...string) *OBJECTElement {
 	if condition {
 		e.EXPORTPARTS(s...)
@@ -824,6 +1014,26 @@ func (e *OBJECTElement) IfEXPORTPARTS(condition bool, s ...string) *OBJECTElemen
 	return e
 }
 
+// The exportparts global attribute allows you to select and style elements
+// existing in nested shadow trees, by exporting their part names
+// The shadow tree is an isolated structure where identifiers, classes, and styles
+// cannot be reached by selectors or queries belonging to a regular DOM
+// To apply a style to an element living in a shadow tree, by CSS rule created
+// outside of it, part global attribute has to be used
+// It has to be assigned to an element present in Shadow Tree, and its value
+// should be some identifier
+// Rules present outside of the shadow tree, must use the ::part pseudo-element,
+// containing the same identifier as the argument
+// The global attribute part makes the element visible on just a single level of
+// depth
+// When the shadow tree is nested, parts will be visible only to the parent of the
+// shadow tree but not to its ancestor
+// Exporting parts further down is exactly what exportparts attribute is for
+// Attribute exportparts must be placed on a shadow Host, which is the element to
+// which the shadow tree is attached
+// The value of the attribute should be a comma-separated list of part names
+// present in the shadow tree and which should be made available via a DOM outside
+// of the current structure.
 // Remove the attribute EXPORTPARTS from the element.
 func (e *OBJECTElement) EXPORTPARTSRemove(s ...string) *OBJECTElement {
 	if e.DelimitedStrings == nil {
@@ -878,6 +1088,21 @@ const (
 	ObjectHidden_until_found ObjectHiddenChoice = "until-found"
 )
 
+// The hidden global attribute is a Boolean attribute indicating that the element
+// is not yet, or is no longer, relevant
+// For example, it can be used to hide elements of the page that can't be used
+// until the login process has been completed
+// Note that browsers typically implement hidden until found using
+// content-visibility: hidden
+// This means that unlike elements in the hidden state, elements in the hidden
+// until found state will have generated boxes, meaning that: the element will
+// participate in page layout margin, borders, padding, and background for the
+// element will be rendered
+// Also, the element needs to be affected by layout containment in order to be
+// revealed
+// This means that if the element in the hidden until found state has a display
+// value of none, contents, or inline, then the element will not be revealed by
+// find in page or fragment navigation.
 // Remove the attribute HIDDEN from the element.
 func (e *OBJECTElement) HIDDENRemove(c ObjectHiddenChoice) *OBJECTElement {
 	if e.StringAttributes == nil {
@@ -899,10 +1124,18 @@ func (e *OBJECTElement) ID(s string) *OBJECTElement {
 	return e
 }
 
+// The id global attribute defines a unique identifier (ID) which must be unique
+// in the whole document
+// Its purpose is to identify the element when linking (using a fragment
+// identifier), scripting, or styling (with CSS).
 func (e *OBJECTElement) IDF(format string, args ...any) *OBJECTElement {
 	return e.ID(fmt.Sprintf(format, args...))
 }
 
+// The id global attribute defines a unique identifier (ID) which must be unique
+// in the whole document
+// Its purpose is to identify the element when linking (using a fragment
+// identifier), scripting, or styling (with CSS).
 func (e *OBJECTElement) IfID(condition bool, s string) *OBJECTElement {
 	if condition {
 		e.ID(s)
@@ -910,6 +1143,10 @@ func (e *OBJECTElement) IfID(condition bool, s string) *OBJECTElement {
 	return e
 }
 
+// The id global attribute defines a unique identifier (ID) which must be unique
+// in the whole document
+// Its purpose is to identify the element when linking (using a fragment
+// identifier), scripting, or styling (with CSS).
 func (e *OBJECTElement) IfIDF(condition bool, format string, args ...any) *OBJECTElement {
 	if condition {
 		e.ID(fmt.Sprintf(format, args...))
@@ -917,6 +1154,10 @@ func (e *OBJECTElement) IfIDF(condition bool, format string, args ...any) *OBJEC
 	return e
 }
 
+// The id global attribute defines a unique identifier (ID) which must be unique
+// in the whole document
+// Its purpose is to identify the element when linking (using a fragment
+// identifier), scripting, or styling (with CSS).
 // Remove the attribute ID from the element.
 func (e *OBJECTElement) IDRemove(s string) *OBJECTElement {
 	if e.StringAttributes == nil {
@@ -926,6 +1167,10 @@ func (e *OBJECTElement) IDRemove(s string) *OBJECTElement {
 	return e
 }
 
+// The id global attribute defines a unique identifier (ID) which must be unique
+// in the whole document
+// Its purpose is to identify the element when linking (using a fragment
+// identifier), scripting, or styling (with CSS).
 func (e *OBJECTElement) IDRemoveF(format string, args ...any) *OBJECTElement {
 	return e.IDRemove(fmt.Sprintf(format, args...))
 }
@@ -947,6 +1192,18 @@ func (e *OBJECTElement) INERT() *OBJECTElement {
 	return e
 }
 
+// The inert global attribute is a Boolean attribute indicating that the browser
+// will ignore the element
+// With the inert attribute, all of the element's flat tree descendants (such as
+// modal <dialog>s) that don't otherwise escape inertness are ignored
+// The inert attribute also makes the browser ignore input events sent by the
+// user, including focus-related events and events from assistive technologies
+// Specifically, inert does the following: Prevents the click event from being
+// fired when the user clicks on the element
+// Prevents the focus event from being raised by preventing the element from
+// gaining focus
+// Hides the element and its content from assistive technologies by excluding them
+// from the accessibility tree.
 func (e *OBJECTElement) IfINERT(condition bool) *OBJECTElement {
 	if condition {
 		e.INERTSet(true)
@@ -954,6 +1211,18 @@ func (e *OBJECTElement) IfINERT(condition bool) *OBJECTElement {
 	return e
 }
 
+// The inert global attribute is a Boolean attribute indicating that the browser
+// will ignore the element
+// With the inert attribute, all of the element's flat tree descendants (such as
+// modal <dialog>s) that don't otherwise escape inertness are ignored
+// The inert attribute also makes the browser ignore input events sent by the
+// user, including focus-related events and events from assistive technologies
+// Specifically, inert does the following: Prevents the click event from being
+// fired when the user clicks on the element
+// Prevents the focus event from being raised by preventing the element from
+// gaining focus
+// Hides the element and its content from assistive technologies by excluding them
+// from the accessibility tree.
 // Set the attribute INERT to the value b explicitly.
 func (e *OBJECTElement) INERTSet(b bool) *OBJECTElement {
 	if e.BoolAttributes == nil {
@@ -963,6 +1232,18 @@ func (e *OBJECTElement) INERTSet(b bool) *OBJECTElement {
 	return e
 }
 
+// The inert global attribute is a Boolean attribute indicating that the browser
+// will ignore the element
+// With the inert attribute, all of the element's flat tree descendants (such as
+// modal <dialog>s) that don't otherwise escape inertness are ignored
+// The inert attribute also makes the browser ignore input events sent by the
+// user, including focus-related events and events from assistive technologies
+// Specifically, inert does the following: Prevents the click event from being
+// fired when the user clicks on the element
+// Prevents the focus event from being raised by preventing the element from
+// gaining focus
+// Hides the element and its content from assistive technologies by excluding them
+// from the accessibility tree.
 func (e *OBJECTElement) IfSetINERT(condition bool, b bool) *OBJECTElement {
 	if condition {
 		e.INERTSet(b)
@@ -971,6 +1252,18 @@ func (e *OBJECTElement) IfSetINERT(condition bool, b bool) *OBJECTElement {
 }
 
 // Remove the attribute INERT from the element.
+// The inert global attribute is a Boolean attribute indicating that the browser
+// will ignore the element
+// With the inert attribute, all of the element's flat tree descendants (such as
+// modal <dialog>s) that don't otherwise escape inertness are ignored
+// The inert attribute also makes the browser ignore input events sent by the
+// user, including focus-related events and events from assistive technologies
+// Specifically, inert does the following: Prevents the click event from being
+// fired when the user clicks on the element
+// Prevents the focus event from being raised by preventing the element from
+// gaining focus
+// Hides the element and its content from assistive technologies by excluding them
+// from the accessibility tree.
 func (e *OBJECTElement) INERTRemove(b bool) *OBJECTElement {
 	if e.BoolAttributes == nil {
 		return e
@@ -1039,6 +1332,17 @@ const (
 	ObjectInputmode_url ObjectInputmodeChoice = "url"
 )
 
+// The inputmode global attribute is an enumerated attribute that hints at the
+// type of data that might be entered by the user while editing the element or its
+// contents
+// This allows a browser to display an appropriate virtual keyboard
+// It is used primarily on <input> elements, but is usable on any element in
+// contenteditable mode
+// It's important to understand that the inputmode attribute doesn't cause any
+// validity requirements to be enforced on input
+// To require that input conforms to a particular data type, choose an appropriate
+// <input> element type
+// For specific guidance on choosing <input> types, see the Values section.
 // Remove the attribute INPUTMODE from the element.
 func (e *OBJECTElement) INPUTMODERemove(c ObjectInputmodeChoice) *OBJECTElement {
 	if e.StringAttributes == nil {
@@ -1062,10 +1366,22 @@ func (e *OBJECTElement) IS(s string) *OBJECTElement {
 	return e
 }
 
+// The is global attribute allows you to specify that a standard HTML element
+// should behave like a defined custom built-in element (see Using custom elements
+// for more details)
+// This attribute can only be used if the specified custom element name has been
+// successfully defined in the current document, and extends the element type it
+// is being applied to.
 func (e *OBJECTElement) ISF(format string, args ...any) *OBJECTElement {
 	return e.IS(fmt.Sprintf(format, args...))
 }
 
+// The is global attribute allows you to specify that a standard HTML element
+// should behave like a defined custom built-in element (see Using custom elements
+// for more details)
+// This attribute can only be used if the specified custom element name has been
+// successfully defined in the current document, and extends the element type it
+// is being applied to.
 func (e *OBJECTElement) IfIS(condition bool, s string) *OBJECTElement {
 	if condition {
 		e.IS(s)
@@ -1073,6 +1389,12 @@ func (e *OBJECTElement) IfIS(condition bool, s string) *OBJECTElement {
 	return e
 }
 
+// The is global attribute allows you to specify that a standard HTML element
+// should behave like a defined custom built-in element (see Using custom elements
+// for more details)
+// This attribute can only be used if the specified custom element name has been
+// successfully defined in the current document, and extends the element type it
+// is being applied to.
 func (e *OBJECTElement) IfISF(condition bool, format string, args ...any) *OBJECTElement {
 	if condition {
 		e.IS(fmt.Sprintf(format, args...))
@@ -1080,6 +1402,12 @@ func (e *OBJECTElement) IfISF(condition bool, format string, args ...any) *OBJEC
 	return e
 }
 
+// The is global attribute allows you to specify that a standard HTML element
+// should behave like a defined custom built-in element (see Using custom elements
+// for more details)
+// This attribute can only be used if the specified custom element name has been
+// successfully defined in the current document, and extends the element type it
+// is being applied to.
 // Remove the attribute IS from the element.
 func (e *OBJECTElement) ISRemove(s string) *OBJECTElement {
 	if e.StringAttributes == nil {
@@ -1089,6 +1417,12 @@ func (e *OBJECTElement) ISRemove(s string) *OBJECTElement {
 	return e
 }
 
+// The is global attribute allows you to specify that a standard HTML element
+// should behave like a defined custom built-in element (see Using custom elements
+// for more details)
+// This attribute can only be used if the specified custom element name has been
+// successfully defined in the current document, and extends the element type it
+// is being applied to.
 func (e *OBJECTElement) ISRemoveF(format string, args ...any) *OBJECTElement {
 	return e.ISRemove(fmt.Sprintf(format, args...))
 }
@@ -1114,10 +1448,36 @@ func (e *OBJECTElement) ITEMID(s string) *OBJECTElement {
 	return e
 }
 
+// The itemid global attribute provides microdata in the form of a unique, global
+// identifier of an item.
+//
+//	An itemid attribute can only be specified for an element that has both
+//
+// itemscope and itemtype attributes
+// Also, itemid can only be specified on elements that possess an itemscope
+// attribute whose corresponding itemtype refers to or defines a vocabulary that
+// supports global identifiers
+// The exact meaning of an itemtype's global identifier is provided by the
+// definition of that identifier within the specified vocabulary
+// The vocabulary defines whether several items with the same global identifier
+// can coexist and, if so, how items with the same identifier are handled.
 func (e *OBJECTElement) ITEMIDF(format string, args ...any) *OBJECTElement {
 	return e.ITEMID(fmt.Sprintf(format, args...))
 }
 
+// The itemid global attribute provides microdata in the form of a unique, global
+// identifier of an item.
+//
+//	An itemid attribute can only be specified for an element that has both
+//
+// itemscope and itemtype attributes
+// Also, itemid can only be specified on elements that possess an itemscope
+// attribute whose corresponding itemtype refers to or defines a vocabulary that
+// supports global identifiers
+// The exact meaning of an itemtype's global identifier is provided by the
+// definition of that identifier within the specified vocabulary
+// The vocabulary defines whether several items with the same global identifier
+// can coexist and, if so, how items with the same identifier are handled.
 func (e *OBJECTElement) IfITEMID(condition bool, s string) *OBJECTElement {
 	if condition {
 		e.ITEMID(s)
@@ -1125,6 +1485,19 @@ func (e *OBJECTElement) IfITEMID(condition bool, s string) *OBJECTElement {
 	return e
 }
 
+// The itemid global attribute provides microdata in the form of a unique, global
+// identifier of an item.
+//
+//	An itemid attribute can only be specified for an element that has both
+//
+// itemscope and itemtype attributes
+// Also, itemid can only be specified on elements that possess an itemscope
+// attribute whose corresponding itemtype refers to or defines a vocabulary that
+// supports global identifiers
+// The exact meaning of an itemtype's global identifier is provided by the
+// definition of that identifier within the specified vocabulary
+// The vocabulary defines whether several items with the same global identifier
+// can coexist and, if so, how items with the same identifier are handled.
 func (e *OBJECTElement) IfITEMIDF(condition bool, format string, args ...any) *OBJECTElement {
 	if condition {
 		e.ITEMID(fmt.Sprintf(format, args...))
@@ -1132,6 +1505,19 @@ func (e *OBJECTElement) IfITEMIDF(condition bool, format string, args ...any) *O
 	return e
 }
 
+// The itemid global attribute provides microdata in the form of a unique, global
+// identifier of an item.
+//
+//	An itemid attribute can only be specified for an element that has both
+//
+// itemscope and itemtype attributes
+// Also, itemid can only be specified on elements that possess an itemscope
+// attribute whose corresponding itemtype refers to or defines a vocabulary that
+// supports global identifiers
+// The exact meaning of an itemtype's global identifier is provided by the
+// definition of that identifier within the specified vocabulary
+// The vocabulary defines whether several items with the same global identifier
+// can coexist and, if so, how items with the same identifier are handled.
 // Remove the attribute ITEMID from the element.
 func (e *OBJECTElement) ITEMIDRemove(s string) *OBJECTElement {
 	if e.StringAttributes == nil {
@@ -1141,6 +1527,19 @@ func (e *OBJECTElement) ITEMIDRemove(s string) *OBJECTElement {
 	return e
 }
 
+// The itemid global attribute provides microdata in the form of a unique, global
+// identifier of an item.
+//
+//	An itemid attribute can only be specified for an element that has both
+//
+// itemscope and itemtype attributes
+// Also, itemid can only be specified on elements that possess an itemscope
+// attribute whose corresponding itemtype refers to or defines a vocabulary that
+// supports global identifiers
+// The exact meaning of an itemtype's global identifier is provided by the
+// definition of that identifier within the specified vocabulary
+// The vocabulary defines whether several items with the same global identifier
+// can coexist and, if so, how items with the same identifier are handled.
 func (e *OBJECTElement) ITEMIDRemoveF(format string, args ...any) *OBJECTElement {
 	return e.ITEMIDRemove(fmt.Sprintf(format, args...))
 }
@@ -1161,10 +1560,26 @@ func (e *OBJECTElement) ITEMPROP(s string) *OBJECTElement {
 	return e
 }
 
+// The itemprop global attribute is used to add properties to an item
+// Every HTML element can have an itemprop attribute specified, and an itemprop
+// consists of a name-value pair
+// Each name-value pair is called a property, and a group of one or more
+// properties forms an item
+// Property values are either a string or a URL and can be associated with a very
+// wide range of elements including <audio>, <embed>, <iframe>, <img>, <link>,
+// <object>, <source>, <track>, and <video>.
 func (e *OBJECTElement) ITEMPROPF(format string, args ...any) *OBJECTElement {
 	return e.ITEMPROP(fmt.Sprintf(format, args...))
 }
 
+// The itemprop global attribute is used to add properties to an item
+// Every HTML element can have an itemprop attribute specified, and an itemprop
+// consists of a name-value pair
+// Each name-value pair is called a property, and a group of one or more
+// properties forms an item
+// Property values are either a string or a URL and can be associated with a very
+// wide range of elements including <audio>, <embed>, <iframe>, <img>, <link>,
+// <object>, <source>, <track>, and <video>.
 func (e *OBJECTElement) IfITEMPROP(condition bool, s string) *OBJECTElement {
 	if condition {
 		e.ITEMPROP(s)
@@ -1172,6 +1587,14 @@ func (e *OBJECTElement) IfITEMPROP(condition bool, s string) *OBJECTElement {
 	return e
 }
 
+// The itemprop global attribute is used to add properties to an item
+// Every HTML element can have an itemprop attribute specified, and an itemprop
+// consists of a name-value pair
+// Each name-value pair is called a property, and a group of one or more
+// properties forms an item
+// Property values are either a string or a URL and can be associated with a very
+// wide range of elements including <audio>, <embed>, <iframe>, <img>, <link>,
+// <object>, <source>, <track>, and <video>.
 func (e *OBJECTElement) IfITEMPROPF(condition bool, format string, args ...any) *OBJECTElement {
 	if condition {
 		e.ITEMPROP(fmt.Sprintf(format, args...))
@@ -1179,6 +1602,14 @@ func (e *OBJECTElement) IfITEMPROPF(condition bool, format string, args ...any) 
 	return e
 }
 
+// The itemprop global attribute is used to add properties to an item
+// Every HTML element can have an itemprop attribute specified, and an itemprop
+// consists of a name-value pair
+// Each name-value pair is called a property, and a group of one or more
+// properties forms an item
+// Property values are either a string or a URL and can be associated with a very
+// wide range of elements including <audio>, <embed>, <iframe>, <img>, <link>,
+// <object>, <source>, <track>, and <video>.
 // Remove the attribute ITEMPROP from the element.
 func (e *OBJECTElement) ITEMPROPRemove(s string) *OBJECTElement {
 	if e.StringAttributes == nil {
@@ -1188,6 +1619,14 @@ func (e *OBJECTElement) ITEMPROPRemove(s string) *OBJECTElement {
 	return e
 }
 
+// The itemprop global attribute is used to add properties to an item
+// Every HTML element can have an itemprop attribute specified, and an itemprop
+// consists of a name-value pair
+// Each name-value pair is called a property, and a group of one or more
+// properties forms an item
+// Property values are either a string or a URL and can be associated with a very
+// wide range of elements including <audio>, <embed>, <iframe>, <img>, <link>,
+// <object>, <source>, <track>, and <video>.
 func (e *OBJECTElement) ITEMPROPRemoveF(format string, args ...any) *OBJECTElement {
 	return e.ITEMPROPRemove(fmt.Sprintf(format, args...))
 }
@@ -1205,10 +1644,20 @@ func (e *OBJECTElement) ITEMREF(s string) *OBJECTElement {
 	return e
 }
 
+// Properties that are not descendants of an element with the itemscope attribute
+// can be associated with an item using the global attribute itemref
+// itemref provides a list of element IDs (not itemids) elsewhere in the document,
+// with additional properties The itemref attribute can only be specified on
+// elements that have an itemscope attribute specified.
 func (e *OBJECTElement) ITEMREFF(format string, args ...any) *OBJECTElement {
 	return e.ITEMREF(fmt.Sprintf(format, args...))
 }
 
+// Properties that are not descendants of an element with the itemscope attribute
+// can be associated with an item using the global attribute itemref
+// itemref provides a list of element IDs (not itemids) elsewhere in the document,
+// with additional properties The itemref attribute can only be specified on
+// elements that have an itemscope attribute specified.
 func (e *OBJECTElement) IfITEMREF(condition bool, s string) *OBJECTElement {
 	if condition {
 		e.ITEMREF(s)
@@ -1216,6 +1665,11 @@ func (e *OBJECTElement) IfITEMREF(condition bool, s string) *OBJECTElement {
 	return e
 }
 
+// Properties that are not descendants of an element with the itemscope attribute
+// can be associated with an item using the global attribute itemref
+// itemref provides a list of element IDs (not itemids) elsewhere in the document,
+// with additional properties The itemref attribute can only be specified on
+// elements that have an itemscope attribute specified.
 func (e *OBJECTElement) IfITEMREFF(condition bool, format string, args ...any) *OBJECTElement {
 	if condition {
 		e.ITEMREF(fmt.Sprintf(format, args...))
@@ -1223,6 +1677,11 @@ func (e *OBJECTElement) IfITEMREFF(condition bool, format string, args ...any) *
 	return e
 }
 
+// Properties that are not descendants of an element with the itemscope attribute
+// can be associated with an item using the global attribute itemref
+// itemref provides a list of element IDs (not itemids) elsewhere in the document,
+// with additional properties The itemref attribute can only be specified on
+// elements that have an itemscope attribute specified.
 // Remove the attribute ITEMREF from the element.
 func (e *OBJECTElement) ITEMREFRemove(s string) *OBJECTElement {
 	if e.StringAttributes == nil {
@@ -1232,6 +1691,11 @@ func (e *OBJECTElement) ITEMREFRemove(s string) *OBJECTElement {
 	return e
 }
 
+// Properties that are not descendants of an element with the itemscope attribute
+// can be associated with an item using the global attribute itemref
+// itemref provides a list of element IDs (not itemids) elsewhere in the document,
+// with additional properties The itemref attribute can only be specified on
+// elements that have an itemscope attribute specified.
 func (e *OBJECTElement) ITEMREFRemoveF(format string, args ...any) *OBJECTElement {
 	return e.ITEMREFRemove(fmt.Sprintf(format, args...))
 }
@@ -1249,6 +1713,14 @@ func (e *OBJECTElement) ITEMSCOPE() *OBJECTElement {
 	return e
 }
 
+// The itemscope global attribute is used to add an item to a microdata DOM tree
+// Every HTML element can have an itemscope attribute specified, and an itemscope
+// consists of a name-value pair
+// Each name-value pair is called a property, and a group of one or more
+// properties forms an item
+// Property values are either a string or a URL and can be associated with a very
+// wide range of elements including <audio>, <embed>, <iframe>, <img>, <link>,
+// <object>, <source>, <track>, and <video>.
 func (e *OBJECTElement) IfITEMSCOPE(condition bool) *OBJECTElement {
 	if condition {
 		e.ITEMSCOPESet(true)
@@ -1256,6 +1728,14 @@ func (e *OBJECTElement) IfITEMSCOPE(condition bool) *OBJECTElement {
 	return e
 }
 
+// The itemscope global attribute is used to add an item to a microdata DOM tree
+// Every HTML element can have an itemscope attribute specified, and an itemscope
+// consists of a name-value pair
+// Each name-value pair is called a property, and a group of one or more
+// properties forms an item
+// Property values are either a string or a URL and can be associated with a very
+// wide range of elements including <audio>, <embed>, <iframe>, <img>, <link>,
+// <object>, <source>, <track>, and <video>.
 // Set the attribute ITEMSCOPE to the value b explicitly.
 func (e *OBJECTElement) ITEMSCOPESet(b bool) *OBJECTElement {
 	if e.BoolAttributes == nil {
@@ -1265,6 +1745,14 @@ func (e *OBJECTElement) ITEMSCOPESet(b bool) *OBJECTElement {
 	return e
 }
 
+// The itemscope global attribute is used to add an item to a microdata DOM tree
+// Every HTML element can have an itemscope attribute specified, and an itemscope
+// consists of a name-value pair
+// Each name-value pair is called a property, and a group of one or more
+// properties forms an item
+// Property values are either a string or a URL and can be associated with a very
+// wide range of elements including <audio>, <embed>, <iframe>, <img>, <link>,
+// <object>, <source>, <track>, and <video>.
 func (e *OBJECTElement) IfSetITEMSCOPE(condition bool, b bool) *OBJECTElement {
 	if condition {
 		e.ITEMSCOPESet(b)
@@ -1273,6 +1761,14 @@ func (e *OBJECTElement) IfSetITEMSCOPE(condition bool, b bool) *OBJECTElement {
 }
 
 // Remove the attribute ITEMSCOPE from the element.
+// The itemscope global attribute is used to add an item to a microdata DOM tree
+// Every HTML element can have an itemscope attribute specified, and an itemscope
+// consists of a name-value pair
+// Each name-value pair is called a property, and a group of one or more
+// properties forms an item
+// Property values are either a string or a URL and can be associated with a very
+// wide range of elements including <audio>, <embed>, <iframe>, <img>, <link>,
+// <object>, <source>, <track>, and <video>.
 func (e *OBJECTElement) ITEMSCOPERemove(b bool) *OBJECTElement {
 	if e.BoolAttributes == nil {
 		return e
@@ -1297,10 +1793,26 @@ func (e *OBJECTElement) ITEMTYPE(s string) *OBJECTElement {
 	return e
 }
 
+// The itemtype global attribute is used to add types to an item
+// Every HTML element can have an itemtype attribute specified, and an itemtype
+// consists of a name-value pair
+// Each name-value pair is called a property, and a group of one or more
+// properties forms an item
+// Property values are either a string or a URL and can be associated with a very
+// wide range of elements including <audio>, <embed>, <iframe>, <img>, <link>,
+// <object>, <source>, <track>, and <video>.
 func (e *OBJECTElement) ITEMTYPEF(format string, args ...any) *OBJECTElement {
 	return e.ITEMTYPE(fmt.Sprintf(format, args...))
 }
 
+// The itemtype global attribute is used to add types to an item
+// Every HTML element can have an itemtype attribute specified, and an itemtype
+// consists of a name-value pair
+// Each name-value pair is called a property, and a group of one or more
+// properties forms an item
+// Property values are either a string or a URL and can be associated with a very
+// wide range of elements including <audio>, <embed>, <iframe>, <img>, <link>,
+// <object>, <source>, <track>, and <video>.
 func (e *OBJECTElement) IfITEMTYPE(condition bool, s string) *OBJECTElement {
 	if condition {
 		e.ITEMTYPE(s)
@@ -1308,6 +1820,14 @@ func (e *OBJECTElement) IfITEMTYPE(condition bool, s string) *OBJECTElement {
 	return e
 }
 
+// The itemtype global attribute is used to add types to an item
+// Every HTML element can have an itemtype attribute specified, and an itemtype
+// consists of a name-value pair
+// Each name-value pair is called a property, and a group of one or more
+// properties forms an item
+// Property values are either a string or a URL and can be associated with a very
+// wide range of elements including <audio>, <embed>, <iframe>, <img>, <link>,
+// <object>, <source>, <track>, and <video>.
 func (e *OBJECTElement) IfITEMTYPEF(condition bool, format string, args ...any) *OBJECTElement {
 	if condition {
 		e.ITEMTYPE(fmt.Sprintf(format, args...))
@@ -1315,6 +1835,14 @@ func (e *OBJECTElement) IfITEMTYPEF(condition bool, format string, args ...any) 
 	return e
 }
 
+// The itemtype global attribute is used to add types to an item
+// Every HTML element can have an itemtype attribute specified, and an itemtype
+// consists of a name-value pair
+// Each name-value pair is called a property, and a group of one or more
+// properties forms an item
+// Property values are either a string or a URL and can be associated with a very
+// wide range of elements including <audio>, <embed>, <iframe>, <img>, <link>,
+// <object>, <source>, <track>, and <video>.
 // Remove the attribute ITEMTYPE from the element.
 func (e *OBJECTElement) ITEMTYPERemove(s string) *OBJECTElement {
 	if e.StringAttributes == nil {
@@ -1324,6 +1852,14 @@ func (e *OBJECTElement) ITEMTYPERemove(s string) *OBJECTElement {
 	return e
 }
 
+// The itemtype global attribute is used to add types to an item
+// Every HTML element can have an itemtype attribute specified, and an itemtype
+// consists of a name-value pair
+// Each name-value pair is called a property, and a group of one or more
+// properties forms an item
+// Property values are either a string or a URL and can be associated with a very
+// wide range of elements including <audio>, <embed>, <iframe>, <img>, <link>,
+// <object>, <source>, <track>, and <video>.
 func (e *OBJECTElement) ITEMTYPERemoveF(format string, args ...any) *OBJECTElement {
 	return e.ITEMTYPERemove(fmt.Sprintf(format, args...))
 }
@@ -1342,10 +1878,22 @@ func (e *OBJECTElement) LANG(s string) *OBJECTElement {
 	return e
 }
 
+// The lang global attribute helps define the language of an element: the language
+// that non-editable elements are written in or the language that editable
+// elements should be written in by the user
+// The tag contains one single entry value in the format defines in the Tags for
+// Identifying Languages (BCP47) IETF document
+// xml:lang has priority over it.
 func (e *OBJECTElement) LANGF(format string, args ...any) *OBJECTElement {
 	return e.LANG(fmt.Sprintf(format, args...))
 }
 
+// The lang global attribute helps define the language of an element: the language
+// that non-editable elements are written in or the language that editable
+// elements should be written in by the user
+// The tag contains one single entry value in the format defines in the Tags for
+// Identifying Languages (BCP47) IETF document
+// xml:lang has priority over it.
 func (e *OBJECTElement) IfLANG(condition bool, s string) *OBJECTElement {
 	if condition {
 		e.LANG(s)
@@ -1353,6 +1901,12 @@ func (e *OBJECTElement) IfLANG(condition bool, s string) *OBJECTElement {
 	return e
 }
 
+// The lang global attribute helps define the language of an element: the language
+// that non-editable elements are written in or the language that editable
+// elements should be written in by the user
+// The tag contains one single entry value in the format defines in the Tags for
+// Identifying Languages (BCP47) IETF document
+// xml:lang has priority over it.
 func (e *OBJECTElement) IfLANGF(condition bool, format string, args ...any) *OBJECTElement {
 	if condition {
 		e.LANG(fmt.Sprintf(format, args...))
@@ -1360,6 +1914,12 @@ func (e *OBJECTElement) IfLANGF(condition bool, format string, args ...any) *OBJ
 	return e
 }
 
+// The lang global attribute helps define the language of an element: the language
+// that non-editable elements are written in or the language that editable
+// elements should be written in by the user
+// The tag contains one single entry value in the format defines in the Tags for
+// Identifying Languages (BCP47) IETF document
+// xml:lang has priority over it.
 // Remove the attribute LANG from the element.
 func (e *OBJECTElement) LANGRemove(s string) *OBJECTElement {
 	if e.StringAttributes == nil {
@@ -1369,6 +1929,12 @@ func (e *OBJECTElement) LANGRemove(s string) *OBJECTElement {
 	return e
 }
 
+// The lang global attribute helps define the language of an element: the language
+// that non-editable elements are written in or the language that editable
+// elements should be written in by the user
+// The tag contains one single entry value in the format defines in the Tags for
+// Identifying Languages (BCP47) IETF document
+// xml:lang has priority over it.
 func (e *OBJECTElement) LANGRemoveF(format string, args ...any) *OBJECTElement {
 	return e.LANGRemove(fmt.Sprintf(format, args...))
 }
@@ -1385,10 +1951,18 @@ func (e *OBJECTElement) NONCE(s string) *OBJECTElement {
 	return e
 }
 
+// The nonce global attribute is a unique identifier used to declare inline
+// scripts and style elements to be used in a specific document
+// It is a cryptographic nonce (number used once) that is used by Content Security
+// Policy to determine whether or not a given inline script is allowed to execute.
 func (e *OBJECTElement) NONCEF(format string, args ...any) *OBJECTElement {
 	return e.NONCE(fmt.Sprintf(format, args...))
 }
 
+// The nonce global attribute is a unique identifier used to declare inline
+// scripts and style elements to be used in a specific document
+// It is a cryptographic nonce (number used once) that is used by Content Security
+// Policy to determine whether or not a given inline script is allowed to execute.
 func (e *OBJECTElement) IfNONCE(condition bool, s string) *OBJECTElement {
 	if condition {
 		e.NONCE(s)
@@ -1396,6 +1970,10 @@ func (e *OBJECTElement) IfNONCE(condition bool, s string) *OBJECTElement {
 	return e
 }
 
+// The nonce global attribute is a unique identifier used to declare inline
+// scripts and style elements to be used in a specific document
+// It is a cryptographic nonce (number used once) that is used by Content Security
+// Policy to determine whether or not a given inline script is allowed to execute.
 func (e *OBJECTElement) IfNONCEF(condition bool, format string, args ...any) *OBJECTElement {
 	if condition {
 		e.NONCE(fmt.Sprintf(format, args...))
@@ -1403,6 +1981,10 @@ func (e *OBJECTElement) IfNONCEF(condition bool, format string, args ...any) *OB
 	return e
 }
 
+// The nonce global attribute is a unique identifier used to declare inline
+// scripts and style elements to be used in a specific document
+// It is a cryptographic nonce (number used once) that is used by Content Security
+// Policy to determine whether or not a given inline script is allowed to execute.
 // Remove the attribute NONCE from the element.
 func (e *OBJECTElement) NONCERemove(s string) *OBJECTElement {
 	if e.StringAttributes == nil {
@@ -1412,6 +1994,10 @@ func (e *OBJECTElement) NONCERemove(s string) *OBJECTElement {
 	return e
 }
 
+// The nonce global attribute is a unique identifier used to declare inline
+// scripts and style elements to be used in a specific document
+// It is a cryptographic nonce (number used once) that is used by Content Security
+// Policy to determine whether or not a given inline script is allowed to execute.
 func (e *OBJECTElement) NONCERemoveF(format string, args ...any) *OBJECTElement {
 	return e.NONCERemove(fmt.Sprintf(format, args...))
 }
@@ -1433,6 +2019,10 @@ func (e *OBJECTElement) PART(s ...string) *OBJECTElement {
 	return e
 }
 
+// The part global attribute contains a space-separated list of the part names of
+// the element
+// Part names allows CSS to select and style specific elements in a shadow tree
+// via the ::part pseudo-element.
 func (e *OBJECTElement) IfPART(condition bool, s ...string) *OBJECTElement {
 	if condition {
 		e.PART(s...)
@@ -1440,6 +2030,10 @@ func (e *OBJECTElement) IfPART(condition bool, s ...string) *OBJECTElement {
 	return e
 }
 
+// The part global attribute contains a space-separated list of the part names of
+// the element
+// Part names allows CSS to select and style specific elements in a shadow tree
+// via the ::part pseudo-element.
 // Remove the attribute PART from the element.
 func (e *OBJECTElement) PARTRemove(s ...string) *OBJECTElement {
 	if e.DelimitedStrings == nil {
@@ -1486,6 +2080,15 @@ const (
 	ObjectPopover_manual ObjectPopoverChoice = "manual"
 )
 
+// The popover global attribute is used to designate an element as a popover
+// element
+// Popover elements are hidden via display: none until opened via an
+// invoking/control element (i.e
+// a <button> or <input type="button"> with a popovertarget attribute) or a
+// HTMLElement.showPopover() call
+// When open, popover elements will appear above all other elements in the top
+// layer, and won't be influenced by parent elements' position or overflow
+// styling.
 // Remove the attribute POPOVER from the element.
 func (e *OBJECTElement) POPOVERRemove(c ObjectPopoverChoice) *OBJECTElement {
 	if e.StringAttributes == nil {
@@ -1508,10 +2111,20 @@ func (e *OBJECTElement) ROLE(s string) *OBJECTElement {
 	return e
 }
 
+// The role global attribute is used to define the purpose or state of an element
+// to the browser, in order to facilitate assistive technology such as screen
+// readers
+// It is a simple string value that can be used to describe the role of an
+// element.
 func (e *OBJECTElement) ROLEF(format string, args ...any) *OBJECTElement {
 	return e.ROLE(fmt.Sprintf(format, args...))
 }
 
+// The role global attribute is used to define the purpose or state of an element
+// to the browser, in order to facilitate assistive technology such as screen
+// readers
+// It is a simple string value that can be used to describe the role of an
+// element.
 func (e *OBJECTElement) IfROLE(condition bool, s string) *OBJECTElement {
 	if condition {
 		e.ROLE(s)
@@ -1519,6 +2132,11 @@ func (e *OBJECTElement) IfROLE(condition bool, s string) *OBJECTElement {
 	return e
 }
 
+// The role global attribute is used to define the purpose or state of an element
+// to the browser, in order to facilitate assistive technology such as screen
+// readers
+// It is a simple string value that can be used to describe the role of an
+// element.
 func (e *OBJECTElement) IfROLEF(condition bool, format string, args ...any) *OBJECTElement {
 	if condition {
 		e.ROLE(fmt.Sprintf(format, args...))
@@ -1526,6 +2144,11 @@ func (e *OBJECTElement) IfROLEF(condition bool, format string, args ...any) *OBJ
 	return e
 }
 
+// The role global attribute is used to define the purpose or state of an element
+// to the browser, in order to facilitate assistive technology such as screen
+// readers
+// It is a simple string value that can be used to describe the role of an
+// element.
 // Remove the attribute ROLE from the element.
 func (e *OBJECTElement) ROLERemove(s string) *OBJECTElement {
 	if e.StringAttributes == nil {
@@ -1535,6 +2158,11 @@ func (e *OBJECTElement) ROLERemove(s string) *OBJECTElement {
 	return e
 }
 
+// The role global attribute is used to define the purpose or state of an element
+// to the browser, in order to facilitate assistive technology such as screen
+// readers
+// It is a simple string value that can be used to describe the role of an
+// element.
 func (e *OBJECTElement) ROLERemoveF(format string, args ...any) *OBJECTElement {
 	return e.ROLERemove(fmt.Sprintf(format, args...))
 }
@@ -1551,10 +2179,18 @@ func (e *OBJECTElement) SLOT(s string) *OBJECTElement {
 	return e
 }
 
+// The slot global attribute assigns a slot in a shadow DOM shadow tree to an
+// element: An element with a slot attribute is assigned to the slot created by
+// the <slot> element whose name attribute's value matches that slot attribute's
+// value.
 func (e *OBJECTElement) SLOTF(format string, args ...any) *OBJECTElement {
 	return e.SLOT(fmt.Sprintf(format, args...))
 }
 
+// The slot global attribute assigns a slot in a shadow DOM shadow tree to an
+// element: An element with a slot attribute is assigned to the slot created by
+// the <slot> element whose name attribute's value matches that slot attribute's
+// value.
 func (e *OBJECTElement) IfSLOT(condition bool, s string) *OBJECTElement {
 	if condition {
 		e.SLOT(s)
@@ -1562,6 +2198,10 @@ func (e *OBJECTElement) IfSLOT(condition bool, s string) *OBJECTElement {
 	return e
 }
 
+// The slot global attribute assigns a slot in a shadow DOM shadow tree to an
+// element: An element with a slot attribute is assigned to the slot created by
+// the <slot> element whose name attribute's value matches that slot attribute's
+// value.
 func (e *OBJECTElement) IfSLOTF(condition bool, format string, args ...any) *OBJECTElement {
 	if condition {
 		e.SLOT(fmt.Sprintf(format, args...))
@@ -1569,6 +2209,10 @@ func (e *OBJECTElement) IfSLOTF(condition bool, format string, args ...any) *OBJ
 	return e
 }
 
+// The slot global attribute assigns a slot in a shadow DOM shadow tree to an
+// element: An element with a slot attribute is assigned to the slot created by
+// the <slot> element whose name attribute's value matches that slot attribute's
+// value.
 // Remove the attribute SLOT from the element.
 func (e *OBJECTElement) SLOTRemove(s string) *OBJECTElement {
 	if e.StringAttributes == nil {
@@ -1578,6 +2222,10 @@ func (e *OBJECTElement) SLOTRemove(s string) *OBJECTElement {
 	return e
 }
 
+// The slot global attribute assigns a slot in a shadow DOM shadow tree to an
+// element: An element with a slot attribute is assigned to the slot created by
+// the <slot> element whose name attribute's value matches that slot attribute's
+// value.
 func (e *OBJECTElement) SLOTRemoveF(format string, args ...any) *OBJECTElement {
 	return e.SLOTRemove(fmt.Sprintf(format, args...))
 }
@@ -1615,6 +2263,20 @@ const (
 	ObjectSpellcheck_false ObjectSpellcheckChoice = "false"
 )
 
+// The spellcheck global attribute is an enumerated attribute that defines whether
+// the element may be checked for spelling errors
+// If this attribute is not set, its default value is element-type and
+// browser-defined
+// This default value may also be inherited, which means that the element content
+// will be checked for spelling errors only if its nearest ancestor has a
+// spellcheck state of true
+// Security and privacy concerns Using spellchecking can have consequences for
+// users' security and privacy
+// The specification does not regulate how spellchecking is done and the content
+// of the element may be sent to a third party for spellchecking results (see
+// enhanced spellchecking and "spell-jacking")
+// You should consider setting spellcheck to false for elements that can contain
+// sensitive information.
 // Remove the attribute SPELLCHECK from the element.
 func (e *OBJECTElement) SPELLCHECKRemove(c ObjectSpellcheckChoice) *OBJECTElement {
 	if e.StringAttributes == nil {
@@ -1631,6 +2293,9 @@ func (e *OBJECTElement) STYLEF(k string, format string, args ...any) *OBJECTElem
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+// The style global attribute is used to add styles to an element, such as color,
+// font, size, and more
+// Styles are written in CSS.
 func (e *OBJECTElement) IfSTYLE(condition bool, k string, v string) *OBJECTElement {
 	if condition {
 		e.STYLE(k, v)
@@ -1638,6 +2303,9 @@ func (e *OBJECTElement) IfSTYLE(condition bool, k string, v string) *OBJECTEleme
 	return e
 }
 
+// The style global attribute is used to add styles to an element, such as color,
+// font, size, and more
+// Styles are written in CSS.
 func (e *OBJECTElement) STYLE(k string, v string) *OBJECTElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -1651,6 +2319,9 @@ func (e *OBJECTElement) STYLE(k string, v string) *OBJECTElement {
 	return e
 }
 
+// The style global attribute is used to add styles to an element, such as color,
+// font, size, and more
+// Styles are written in CSS.
 func (e *OBJECTElement) IfSTYLEF(condition bool, k string, format string, args ...any) *OBJECTElement {
 	if condition {
 		e.STYLE(k, fmt.Sprintf(format, args...))
@@ -1658,6 +2329,9 @@ func (e *OBJECTElement) IfSTYLEF(condition bool, k string, format string, args .
 	return e
 }
 
+// The style global attribute is used to add styles to an element, such as color,
+// font, size, and more
+// Styles are written in CSS.
 // Add the attributes in the map to the element.
 func (e *OBJECTElement) STYLEMap(m map[string]string) *OBJECTElement {
 	if e.KVStrings == nil {
@@ -1674,6 +2348,9 @@ func (e *OBJECTElement) STYLEMap(m map[string]string) *OBJECTElement {
 	return e
 }
 
+// The style global attribute is used to add styles to an element, such as color,
+// font, size, and more
+// Styles are written in CSS.
 // Add pairs of attributes to the element.
 func (e *OBJECTElement) STYLEPairs(pairs ...string) *OBJECTElement {
 	if len(pairs)%2 != 0 {
@@ -1695,6 +2372,9 @@ func (e *OBJECTElement) STYLEPairs(pairs ...string) *OBJECTElement {
 	return e
 }
 
+// The style global attribute is used to add styles to an element, such as color,
+// font, size, and more
+// Styles are written in CSS.
 func (e *OBJECTElement) IfSTYLEPairs(condition bool, pairs ...string) *OBJECTElement {
 	if condition {
 		e.STYLEPairs(pairs...)
@@ -1702,6 +2382,9 @@ func (e *OBJECTElement) IfSTYLEPairs(condition bool, pairs ...string) *OBJECTEle
 	return e
 }
 
+// The style global attribute is used to add styles to an element, such as color,
+// font, size, and more
+// Styles are written in CSS.
 // Remove the attribute STYLE from the element.
 func (e *OBJECTElement) STYLERemove(keys ...string) *OBJECTElement {
 	if e.KVStrings == nil {
@@ -1739,6 +2422,20 @@ func (e *OBJECTElement) TABINDEX(i int) *OBJECTElement {
 	return e
 }
 
+// The tabindex global attribute indicates if its element can be focused, and
+// if/where it participates in sequential keyboard navigation (usually with the
+// Tab key, hence the name)
+// It accepts an integer as a value, with different results depending on the
+// integer's value: a negative value (usually tabindex="-1") means that the
+// element should be focusable, but should not be reachable via sequential
+// keyboard navigation; a value of 0 (tabindex="0") means that the element should
+// be focusable and reachable via sequential keyboard navigation, but its relative
+// order is defined by the platform convention; a positive value means should be
+// focusable and reachable via sequential keyboard navigation; its relative order
+// is defined by the value of the attribute: the sequential follow the increasing
+// number of the tabindex
+// If several elements share the same tabindex, their relative order follows their
+// relative position in the document.
 func (e *OBJECTElement) IfTABINDEX(condition bool, i int) *OBJECTElement {
 	if condition {
 		e.TABINDEX(i)
@@ -1746,6 +2443,20 @@ func (e *OBJECTElement) IfTABINDEX(condition bool, i int) *OBJECTElement {
 	return e
 }
 
+// The tabindex global attribute indicates if its element can be focused, and
+// if/where it participates in sequential keyboard navigation (usually with the
+// Tab key, hence the name)
+// It accepts an integer as a value, with different results depending on the
+// integer's value: a negative value (usually tabindex="-1") means that the
+// element should be focusable, but should not be reachable via sequential
+// keyboard navigation; a value of 0 (tabindex="0") means that the element should
+// be focusable and reachable via sequential keyboard navigation, but its relative
+// order is defined by the platform convention; a positive value means should be
+// focusable and reachable via sequential keyboard navigation; its relative order
+// is defined by the value of the attribute: the sequential follow the increasing
+// number of the tabindex
+// If several elements share the same tabindex, their relative order follows their
+// relative position in the document.
 // Remove the attribute TABINDEX from the element.
 func (e *OBJECTElement) TABINDEXRemove(i int) *OBJECTElement {
 	if e.IntAttributes == nil {
@@ -1784,10 +2495,52 @@ func (e *OBJECTElement) TITLE(s string) *OBJECTElement {
 	return e
 }
 
+// The title global attribute contains text representing advisory information
+// related to the element it belongs to
+// Such information can typically, but not necessarily, be presented to the user
+// as a tooltip
+// The main use of the title attribute is to label <iframe> elements for assistive
+// technology
+// The title attribute may also be used to label controls in data tables
+// The title attribute, when added to <link rel="stylesheet">, creates an
+// alternate stylesheet
+// When defining an alternative style sheet with <link rel="alternate"> the
+// attribute is required and must be set to a non-empty string
+// If included on the <abbr> opening tag, the title must be a full expansion of
+// the abbreviation or acronym
+// Instead of using title, when possible, provide an expansion of the abbreviation
+// or acronym in plain text on first use, using the <abbr> to mark up the
+// abbreviation
+// This enables all users know what name or term the abbreviation or acronym
+// shortens while providing a hint to user agents on how to announce the content
+// While title can be used to provide a programmatically associated label for an
+// <input> element, this is not good practice
+// Use a <label> instead.
 func (e *OBJECTElement) TITLEF(format string, args ...any) *OBJECTElement {
 	return e.TITLE(fmt.Sprintf(format, args...))
 }
 
+// The title global attribute contains text representing advisory information
+// related to the element it belongs to
+// Such information can typically, but not necessarily, be presented to the user
+// as a tooltip
+// The main use of the title attribute is to label <iframe> elements for assistive
+// technology
+// The title attribute may also be used to label controls in data tables
+// The title attribute, when added to <link rel="stylesheet">, creates an
+// alternate stylesheet
+// When defining an alternative style sheet with <link rel="alternate"> the
+// attribute is required and must be set to a non-empty string
+// If included on the <abbr> opening tag, the title must be a full expansion of
+// the abbreviation or acronym
+// Instead of using title, when possible, provide an expansion of the abbreviation
+// or acronym in plain text on first use, using the <abbr> to mark up the
+// abbreviation
+// This enables all users know what name or term the abbreviation or acronym
+// shortens while providing a hint to user agents on how to announce the content
+// While title can be used to provide a programmatically associated label for an
+// <input> element, this is not good practice
+// Use a <label> instead.
 func (e *OBJECTElement) IfTITLE(condition bool, s string) *OBJECTElement {
 	if condition {
 		e.TITLE(s)
@@ -1795,6 +2548,27 @@ func (e *OBJECTElement) IfTITLE(condition bool, s string) *OBJECTElement {
 	return e
 }
 
+// The title global attribute contains text representing advisory information
+// related to the element it belongs to
+// Such information can typically, but not necessarily, be presented to the user
+// as a tooltip
+// The main use of the title attribute is to label <iframe> elements for assistive
+// technology
+// The title attribute may also be used to label controls in data tables
+// The title attribute, when added to <link rel="stylesheet">, creates an
+// alternate stylesheet
+// When defining an alternative style sheet with <link rel="alternate"> the
+// attribute is required and must be set to a non-empty string
+// If included on the <abbr> opening tag, the title must be a full expansion of
+// the abbreviation or acronym
+// Instead of using title, when possible, provide an expansion of the abbreviation
+// or acronym in plain text on first use, using the <abbr> to mark up the
+// abbreviation
+// This enables all users know what name or term the abbreviation or acronym
+// shortens while providing a hint to user agents on how to announce the content
+// While title can be used to provide a programmatically associated label for an
+// <input> element, this is not good practice
+// Use a <label> instead.
 func (e *OBJECTElement) IfTITLEF(condition bool, format string, args ...any) *OBJECTElement {
 	if condition {
 		e.TITLE(fmt.Sprintf(format, args...))
@@ -1802,6 +2576,27 @@ func (e *OBJECTElement) IfTITLEF(condition bool, format string, args ...any) *OB
 	return e
 }
 
+// The title global attribute contains text representing advisory information
+// related to the element it belongs to
+// Such information can typically, but not necessarily, be presented to the user
+// as a tooltip
+// The main use of the title attribute is to label <iframe> elements for assistive
+// technology
+// The title attribute may also be used to label controls in data tables
+// The title attribute, when added to <link rel="stylesheet">, creates an
+// alternate stylesheet
+// When defining an alternative style sheet with <link rel="alternate"> the
+// attribute is required and must be set to a non-empty string
+// If included on the <abbr> opening tag, the title must be a full expansion of
+// the abbreviation or acronym
+// Instead of using title, when possible, provide an expansion of the abbreviation
+// or acronym in plain text on first use, using the <abbr> to mark up the
+// abbreviation
+// This enables all users know what name or term the abbreviation or acronym
+// shortens while providing a hint to user agents on how to announce the content
+// While title can be used to provide a programmatically associated label for an
+// <input> element, this is not good practice
+// Use a <label> instead.
 // Remove the attribute TITLE from the element.
 func (e *OBJECTElement) TITLERemove(s string) *OBJECTElement {
 	if e.StringAttributes == nil {
@@ -1811,6 +2606,27 @@ func (e *OBJECTElement) TITLERemove(s string) *OBJECTElement {
 	return e
 }
 
+// The title global attribute contains text representing advisory information
+// related to the element it belongs to
+// Such information can typically, but not necessarily, be presented to the user
+// as a tooltip
+// The main use of the title attribute is to label <iframe> elements for assistive
+// technology
+// The title attribute may also be used to label controls in data tables
+// The title attribute, when added to <link rel="stylesheet">, creates an
+// alternate stylesheet
+// When defining an alternative style sheet with <link rel="alternate"> the
+// attribute is required and must be set to a non-empty string
+// If included on the <abbr> opening tag, the title must be a full expansion of
+// the abbreviation or acronym
+// Instead of using title, when possible, provide an expansion of the abbreviation
+// or acronym in plain text on first use, using the <abbr> to mark up the
+// abbreviation
+// This enables all users know what name or term the abbreviation or acronym
+// shortens while providing a hint to user agents on how to announce the content
+// While title can be used to provide a programmatically associated label for an
+// <input> element, this is not good practice
+// Use a <label> instead.
 func (e *OBJECTElement) TITLERemoveF(format string, args ...any) *OBJECTElement {
 	return e.TITLERemove(fmt.Sprintf(format, args...))
 }
@@ -1838,6 +2654,10 @@ const (
 	ObjectTranslate_no ObjectTranslateChoice = "no"
 )
 
+// The translate global attribute is an enumerated attribute that is used to
+// specify whether an element's attribute values and the values of its Text node
+// children are to be translated when the page is localized, or whether to leave
+// them unchanged.
 // Remove the attribute TRANSLATE from the element.
 func (e *OBJECTElement) TRANSLATERemove(c ObjectTranslateChoice) *OBJECTElement {
 	if e.StringAttributes == nil {
@@ -1847,62 +2667,75 @@ func (e *OBJECTElement) TRANSLATERemove(c ObjectTranslateChoice) *OBJECTElement 
 	return e
 }
 
-// Merges the singleton store with the given object
-
-func (e *OBJECTElement) DATASTAR_STORE(v any) *OBJECTElement {
-	if e.CustomDataAttributes == nil {
-		e.CustomDataAttributes = treemap.New[string, string]()
-	}
-	b, err := json.Marshal(v)
-	if err != nil {
-		panic(err)
-	}
-	e.CustomDataAttributes.Set("store", html.EscapeString(string(b)))
-	return e
-}
-
-// Sets the reference of the element
-
-func (e *OBJECTElement) DATASTAR_REF(expression string) *OBJECTElement {
+// Sets the value of any HTML attribute to an expression, and keeps it in sync.
+//
+// See: https://data-star.dev/reference/attributes#data-attr
+func (e *OBJECTElement) DATASTAR_ATTR(key string, expression string) *OBJECTElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "data-ref"
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	key = fmt.Sprintf("data-attr%s", suffix)
 
 	e.StringAttributes.Set(key, expression)
 	return e
 }
 
-func (e *OBJECTElement) IfDATASTAR_REF(condition bool, expression string) *OBJECTElement {
+// Sets the value of any HTML attribute to an expression, and keeps it in sync.
+//
+// See: https://data-star.dev/reference/attributes#data-attr
+func (e *OBJECTElement) IfDATASTAR_ATTR(condition bool, key string, expression string) *OBJECTElement {
 	if condition {
-		e.DATASTAR_REF(expression)
+		e.DATASTAR_ATTR(key, expression)
 	}
 	return e
 }
 
-// Remove the attribute DATASTAR_REF from the element.
-func (e *OBJECTElement) DATASTAR_REFRemove() *OBJECTElement {
+// Sets the value of any HTML attribute to an expression, and keeps it in sync.
+//
+// See: https://data-star.dev/reference/attributes#data-attr
+// Remove the attribute DATASTAR_ATTR from the element.
+func (e *OBJECTElement) DATASTAR_ATTRRemove(key string) *OBJECTElement {
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("data-ref")
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	e.StringAttributes.Del("data-attr" + suffix)
+
 	return e
 }
 
-// Sets the value of the element
-
+// Creates a signal (if one doesn’t already exist) and sets up two-way data
+// binding between it and an element’s value.
+//
+// See: https://data-star.dev/reference/attributes#data-bind
 func (e *OBJECTElement) DATASTAR_BIND(key string, expression string) *OBJECTElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key = fmt.Sprintf("data-bind-%s", key)
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	key = fmt.Sprintf("data-bind%s", suffix)
 
 	e.StringAttributes.Set(key, expression)
 	return e
 }
 
+// Creates a signal (if one doesn’t already exist) and sets up two-way data
+// binding between it and an element’s value.
+//
+// See: https://data-star.dev/reference/attributes#data-bind
 func (e *OBJECTElement) IfDATASTAR_BIND(condition bool, key string, expression string) *OBJECTElement {
 	if condition {
 		e.DATASTAR_BIND(key, expression)
@@ -1910,46 +2743,1525 @@ func (e *OBJECTElement) IfDATASTAR_BIND(condition bool, key string, expression s
 	return e
 }
 
+// Creates a signal (if one doesn’t already exist) and sets up two-way data
+// binding between it and an element’s value.
+//
+// See: https://data-star.dev/reference/attributes#data-bind
 // Remove the attribute DATASTAR_BIND from the element.
-func (e *OBJECTElement) DATASTAR_BINDRemove() *OBJECTElement {
+func (e *OBJECTElement) DATASTAR_BINDRemove(key string) *OBJECTElement {
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("data-bind")
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	e.StringAttributes.Del("data-bind" + suffix)
+
 	return e
 }
 
-// Sets the value of the element
+type ObjectClassMod customDataKeyModifier
 
-func (e *OBJECTElement) DATASTAR_MODEL(expression string) *OBJECTElement {
+// Converts the casing of the signal name.
+//   - 'camel' – Camel case: 'mySignal' (default)
+//   - 'kebab' – Kebab case: 'my-signal'
+//   - 'snake' – Snake case: 'my_signal'
+//   - 'pascal' – Pascal case: 'MySignal'
+func ObjectClassModCase(
+	s string,
+) ObjectClassMod {
+	return func() string {
+		return fmt.Sprintf("case.%s", s)
+	}
+}
+
+// Adds or removes a class to or from an element based on an expression.
+func (e *OBJECTElement) DATASTAR_CLASS(key string, expression string, modifiers ...ObjectClassMod) *OBJECTElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "data-model"
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	key = fmt.Sprintf("data-class%s", suffix)
+
+	customMods := lo.Map(modifiers, func(m ObjectClassMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Adds or removes a class to or from an element based on an expression.
+func (e *OBJECTElement) IfDATASTAR_CLASS(condition bool, key string, expression string, modifiers ...ObjectClassMod) *OBJECTElement {
+	if condition {
+		e.DATASTAR_CLASS(key, expression, modifiers...)
+	}
+	return e
+}
+
+// Adds or removes a class to or from an element based on an expression.
+// Remove the attribute DATASTAR_CLASS from the element.
+func (e *OBJECTElement) DATASTAR_CLASSRemove(key string) *OBJECTElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	e.StringAttributes.Del("data-class" + suffix)
+
+	return e
+}
+
+type ObjectComputedMod customDataKeyModifier
+
+// Converts the casing of the signal name.
+//   - 'camel' – Camel case: 'mySignal' (default)
+//   - 'kebab' – Kebab case: 'my-signal'
+//   - 'snake' – Snake case: 'my_signal'
+//   - 'pascal' – Pascal case: 'MySignal'
+func ObjectComputedModCase(
+	s string,
+) ObjectComputedMod {
+	return func() string {
+		return fmt.Sprintf("case.%s", s)
+	}
+}
+
+// Creates a signal that is computed based on an expression
+// The computed signal is read-only, and its value is automatically updated when
+// any signals in the expression are updated.
+//
+// See: https://data-star.dev/reference/attributes#data-computed
+func (e *OBJECTElement) DATASTAR_COMPUTED(key string, expression string, modifiers ...ObjectComputedMod) *OBJECTElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	key = fmt.Sprintf("data-computed%s", suffix)
+
+	customMods := lo.Map(modifiers, func(m ObjectComputedMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Creates a signal that is computed based on an expression
+// The computed signal is read-only, and its value is automatically updated when
+// any signals in the expression are updated.
+//
+// See: https://data-star.dev/reference/attributes#data-computed
+func (e *OBJECTElement) IfDATASTAR_COMPUTED(condition bool, key string, expression string, modifiers ...ObjectComputedMod) *OBJECTElement {
+	if condition {
+		e.DATASTAR_COMPUTED(key, expression, modifiers...)
+	}
+	return e
+}
+
+// Creates a signal that is computed based on an expression
+// The computed signal is read-only, and its value is automatically updated when
+// any signals in the expression are updated.
+//
+// See: https://data-star.dev/reference/attributes#data-computed
+// Remove the attribute DATASTAR_COMPUTED from the element.
+func (e *OBJECTElement) DATASTAR_COMPUTEDRemove(key string) *OBJECTElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	e.StringAttributes.Del("data-computed" + suffix)
+
+	return e
+}
+
+// Executes an expression on page load and whenever any signals in the expression
+// change
+// This is useful for performing side effects, such as updating other signals,
+// making requests to the backend, or manipulating the DOM.
+//
+// See: https://data-star.dev/reference/attributes#data-effect
+func (e *OBJECTElement) DATASTAR_EFFECT(expression string) *OBJECTElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-effect"
 
 	e.StringAttributes.Set(key, expression)
 	return e
 }
 
-func (e *OBJECTElement) IfDATASTAR_MODEL(condition bool, expression string) *OBJECTElement {
+// Executes an expression on page load and whenever any signals in the expression
+// change
+// This is useful for performing side effects, such as updating other signals,
+// making requests to the backend, or manipulating the DOM.
+//
+// See: https://data-star.dev/reference/attributes#data-effect
+func (e *OBJECTElement) IfDATASTAR_EFFECT(condition bool, expression string) *OBJECTElement {
 	if condition {
-		e.DATASTAR_MODEL(expression)
+		e.DATASTAR_EFFECT(expression)
 	}
 	return e
 }
 
-// Remove the attribute DATASTAR_MODEL from the element.
-func (e *OBJECTElement) DATASTAR_MODELRemove() *OBJECTElement {
+// Executes an expression on page load and whenever any signals in the expression
+// change
+// This is useful for performing side effects, such as updating other signals,
+// making requests to the backend, or manipulating the DOM.
+//
+// See: https://data-star.dev/reference/attributes#data-effect
+// Remove the attribute DATASTAR_EFFECT from the element.
+func (e *OBJECTElement) DATASTAR_EFFECTRemove() *OBJECTElement {
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("data-model")
+
+	e.StringAttributes.Del("data-effect")
+
 	return e
 }
 
-// Sets the textContent of the element
+type ObjectIgnoreMod customDataKeyModifier
 
+// Only ignore the element itself, not its descendants.
+func ObjectIgnoreModSelf() ObjectIgnoreMod {
+	return func() string {
+		return "self"
+	}
+}
+
+// Datastar walks the entire DOM and applies plugins to each element it encounters
+// It's possible to tell Datastar to ignore an element and its descendants by
+// placing a data-ignore attribute on it
+// This can be useful for preventing naming conflicts with third-party libraries,
+// or when you are unable to escape user input.
+//
+// See: https://data-star.dev/reference/attributes#data-ignore
+func (e *OBJECTElement) DATASTAR_IGNORESet(b bool, modifiers ...ObjectIgnoreMod) *OBJECTElement {
+	key := customDataKey("data-ignore")
+	customMods := lo.Map(modifiers, func(m ObjectIgnoreMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	if e.BoolAttributes == nil {
+		e.BoolAttributes = treemap.New[string, bool]()
+	}
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+// Datastar walks the entire DOM and applies plugins to each element it encounters
+// It's possible to tell Datastar to ignore an element and its descendants by
+// placing a data-ignore attribute on it
+// This can be useful for preventing naming conflicts with third-party libraries,
+// or when you are unable to escape user input.
+//
+// See: https://data-star.dev/reference/attributes#data-ignore
+func (e *OBJECTElement) DATASTAR_IGNORE(modifiers ...ObjectIgnoreMod) *OBJECTElement {
+	return e.DATASTAR_IGNORESet(true, modifiers...)
+}
+
+// Similar to the data-ignore attribute, the data-ignore-morph attribute tells the
+// PatchElements watcher to skip processing an element and its children when
+// morphing elements
+// This can be useful for preventing conflicts with third-party libraries that
+// manipulate the DOM, or when you are unable to escape user input.
+//
+// See: https://data-star.dev/reference/attributes#data-ignore-morph
+func (e *OBJECTElement) DATASTAR_IGNORE_MORPHSet(b bool) *OBJECTElement {
+	key := "data-ignore-morph"
+	if e.BoolAttributes == nil {
+		e.BoolAttributes = treemap.New[string, bool]()
+	}
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+// Similar to the data-ignore attribute, the data-ignore-morph attribute tells the
+// PatchElements watcher to skip processing an element and its children when
+// morphing elements
+// This can be useful for preventing conflicts with third-party libraries that
+// manipulate the DOM, or when you are unable to escape user input.
+//
+// See: https://data-star.dev/reference/attributes#data-ignore-morph
+func (e *OBJECTElement) DATASTAR_IGNORE_MORPH() *OBJECTElement {
+	return e.DATASTAR_IGNORE_MORPHSet(true)
+}
+
+type ObjectIndicatorMod customDataKeyModifier
+
+// Converts the casing of the signal name.
+//   - 'camel' – Camel case: 'mySignal' (default)
+//   - 'kebab' – Kebab case: 'my-signal'
+//   - 'snake' – Snake case: 'my_signal'
+//   - 'pascal' – Pascal case: 'MySignal'
+func ObjectIndicatorModCase(
+	s string,
+) ObjectIndicatorMod {
+	return func() string {
+		return fmt.Sprintf("case.%s", s)
+	}
+}
+
+// Creates a signal and sets its value to true while a fetch request is in flight,
+// otherwise false
+// The signal can be used to show a loading indicator.
+//
+// See: https://data-star.dev/reference/attributes#data-indicator
+func (e *OBJECTElement) DATASTAR_INDICATOR(expression string, modifiers ...ObjectIndicatorMod) *OBJECTElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-indicator"
+
+	customMods := lo.Map(modifiers, func(m ObjectIndicatorMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Creates a signal and sets its value to true while a fetch request is in flight,
+// otherwise false
+// The signal can be used to show a loading indicator.
+//
+// See: https://data-star.dev/reference/attributes#data-indicator
+func (e *OBJECTElement) IfDATASTAR_INDICATOR(condition bool, expression string, modifiers ...ObjectIndicatorMod) *OBJECTElement {
+	if condition {
+		e.DATASTAR_INDICATOR(expression, modifiers...)
+	}
+	return e
+}
+
+// Creates a signal and sets its value to true while a fetch request is in flight,
+// otherwise false
+// The signal can be used to show a loading indicator.
+//
+// See: https://data-star.dev/reference/attributes#data-indicator
+// Remove the attribute DATASTAR_INDICATOR from the element.
+func (e *OBJECTElement) DATASTAR_INDICATORRemove() *OBJECTElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-indicator")
+
+	return e
+}
+
+type ObjectInitMod customDataKeyModifier
+
+// Delay the event listener in milliseconds.
+func ObjectInitModDelayMs(
+	d time.Duration,
+) ObjectInitMod {
+	return func() string {
+		return fmt.Sprintf("delay.%dms", d.Milliseconds())
+	}
+}
+
+// Delay the event listener in seconds.
+func ObjectInitModDelaySec(
+	d time.Duration,
+) ObjectInitMod {
+	return func() string {
+		return fmt.Sprintf("delay.%ds", int(d.Seconds()))
+	}
+}
+
+// Wraps the expression in 'document.startViewTransition()' when the View
+// Transition API is available.
+func ObjectInitModViewTransition() ObjectInitMod {
+	return func() string {
+		return "viewtransition"
+	}
+}
+
+// Runs an expression when the attribute is initialized
+// This can happen on page load, when an element is patched into the DOM, and any
+// time the attribute is modified (via a backend action or otherwise).
+//
+// See: https://data-star.dev/reference/attributes#data-indicator
+func (e *OBJECTElement) DATASTAR_INIT(expression string, modifiers ...ObjectInitMod) *OBJECTElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-init"
+
+	customMods := lo.Map(modifiers, func(m ObjectInitMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Runs an expression when the attribute is initialized
+// This can happen on page load, when an element is patched into the DOM, and any
+// time the attribute is modified (via a backend action or otherwise).
+//
+// See: https://data-star.dev/reference/attributes#data-indicator
+func (e *OBJECTElement) IfDATASTAR_INIT(condition bool, expression string, modifiers ...ObjectInitMod) *OBJECTElement {
+	if condition {
+		e.DATASTAR_INIT(expression, modifiers...)
+	}
+	return e
+}
+
+// Runs an expression when the attribute is initialized
+// This can happen on page load, when an element is patched into the DOM, and any
+// time the attribute is modified (via a backend action or otherwise).
+//
+// See: https://data-star.dev/reference/attributes#data-indicator
+// Remove the attribute DATASTAR_INIT from the element.
+func (e *OBJECTElement) DATASTAR_INITRemove() *OBJECTElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-init")
+
+	return e
+}
+
+type ObjectJsonSignalsMod customDataKeyModifier
+
+// Outputs a more compact JSON format without extra whitespace
+// Useful for displaying filtered data inline.
+func ObjectJsonSignalsModTerse() ObjectJsonSignalsMod {
+	return func() string {
+		return "terse"
+	}
+}
+
+// Sets the text content of an element to a reactive JSON stringified version of
+// signals
+// Useful when troubleshooting an issue.
+//
+// See: https://data-star.dev/reference/attributes#data-json-signals
+func (e *OBJECTElement) DATASTAR_JSON_SIGNALS(expression string, modifiers ...ObjectJsonSignalsMod) *OBJECTElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-json-signals"
+
+	customMods := lo.Map(modifiers, func(m ObjectJsonSignalsMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Sets the text content of an element to a reactive JSON stringified version of
+// signals
+// Useful when troubleshooting an issue.
+//
+// See: https://data-star.dev/reference/attributes#data-json-signals
+func (e *OBJECTElement) IfDATASTAR_JSON_SIGNALS(condition bool, expression string, modifiers ...ObjectJsonSignalsMod) *OBJECTElement {
+	if condition {
+		e.DATASTAR_JSON_SIGNALS(expression, modifiers...)
+	}
+	return e
+}
+
+// Sets the text content of an element to a reactive JSON stringified version of
+// signals
+// Useful when troubleshooting an issue.
+//
+// See: https://data-star.dev/reference/attributes#data-json-signals
+// Remove the attribute DATASTAR_JSON_SIGNALS from the element.
+func (e *OBJECTElement) DATASTAR_JSON_SIGNALSRemove() *OBJECTElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-json-signals")
+
+	return e
+}
+
+type ObjectOnMod customDataKeyModifier
+
+// Only run the expression once
+// Only works with built-in events.
+func ObjectOnModOnce() ObjectOnMod {
+	return func() string {
+		return "once"
+	}
+}
+
+// Do not call preventDefault on the event listener
+// Only works with built-in events.
+func ObjectOnModPassive() ObjectOnMod {
+	return func() string {
+		return "passive"
+	}
+}
+
+// Use capture event listener
+// Only works with built-in events.
+func ObjectOnModCapture() ObjectOnMod {
+	return func() string {
+		return "capture"
+	}
+}
+
+// Converts the casing of the signal name.
+//   - 'camel' – Camel case: 'mySignal' (default)
+//   - 'kebab' – Kebab case: 'my-signal'
+//   - 'snake' – Snake case: 'my_signal'
+//   - 'pascal' – Pascal case: 'MySignal'
+func ObjectOnModCase(
+	s string,
+) ObjectOnMod {
+	return func() string {
+		return fmt.Sprintf("case.%s", s)
+	}
+}
+
+// Delay the event listener in milliseconds.
+func ObjectOnModDelayMs(
+	d time.Duration,
+) ObjectOnMod {
+	return func() string {
+		return fmt.Sprintf("delay.%dms", d.Milliseconds())
+	}
+}
+
+// Delay the event listener in seconds.
+func ObjectOnModDelaySec(
+	d time.Duration,
+) ObjectOnMod {
+	return func() string {
+		return fmt.Sprintf("delay.%ds", int(d.Seconds()))
+	}
+}
+
+// Debounces the event handler
+func ObjectOnModDebounceMs(
+	d time.Duration,
+) ObjectOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms", d.Milliseconds())
+	}
+}
+
+// Debounce the event listener in milliseconds with leading edge.
+func ObjectOnModDebounceMsLeading(
+	d time.Duration,
+) ObjectOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms.leading", d.Milliseconds())
+	}
+}
+
+// Debounce the event listener in milliseconds without trailing edge.
+func ObjectOnModDebounceMsNoTrailing(
+	d time.Duration,
+) ObjectOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms.notrailing", d.Milliseconds())
+	}
+}
+
+// Debounces the event handler
+func ObjectOnModDebounceSec(
+	d time.Duration,
+) ObjectOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds", int(d.Seconds()))
+	}
+}
+
+// Debounce the event listener in seconds with leading edge.
+func ObjectOnModDebounceSecLeading(
+	d time.Duration,
+) ObjectOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds.leading", int(d.Seconds()))
+	}
+}
+
+// Debounce the event listener in seconds without trailing edge.
+func ObjectOnModDebounceSecNoTrailing(
+	d time.Duration,
+) ObjectOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds.notrailing", int(d.Seconds()))
+	}
+}
+
+// Throttles the event handler
+func ObjectOnModThrottleMs(
+	d time.Duration,
+) ObjectOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms", d.Milliseconds())
+	}
+}
+
+// Throttle the event listener in milliseconds without leading edge.
+func ObjectOnModThrottleMsNoLeading(
+	d time.Duration,
+) ObjectOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms.noleading", d.Milliseconds())
+	}
+}
+
+// Throttle the event listener in milliseconds with trailing edge.
+func ObjectOnModThrottleMsTrailing(
+	d time.Duration,
+) ObjectOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms.trailing", d.Milliseconds())
+	}
+}
+
+// Throttles the event listener in seconds.
+func ObjectOnModThrottleSec(
+	d time.Duration,
+) ObjectOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds", int(d.Seconds()))
+	}
+}
+
+// Throttle the event listener in seconds without leading edge.
+func ObjectOnModThrottleSecNoLeading(
+	d time.Duration,
+) ObjectOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds.noleading", int(d.Seconds()))
+	}
+}
+
+// Throttle the event listener in seconds with trailing edge.
+func ObjectOnModThrottleSecTrailing(
+	d time.Duration,
+) ObjectOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds.trailing", int(d.Seconds()))
+	}
+}
+
+// Wraps the expression in 'document.startViewTransition()' when the View
+// Transition API is available.
+func ObjectOnModViewTransition() ObjectOnMod {
+	return func() string {
+		return "viewtransition"
+	}
+}
+
+// Attaches the event listener to the 'window' element.
+func ObjectOnModWindow() ObjectOnMod {
+	return func() string {
+		return "window"
+	}
+}
+
+// Calls 'preventDefault' on the event listener.
+func ObjectOnModPrevent() ObjectOnMod {
+	return func() string {
+		return "prevent"
+	}
+}
+
+// Triggers when the event is outside the element.
+func ObjectOnModOutside() ObjectOnMod {
+	return func() string {
+		return "outside"
+	}
+}
+
+// Calls 'stopPropagation' on the event listener.
+func ObjectOnModStop() ObjectOnMod {
+	return func() string {
+		return "stop"
+	}
+}
+
+// Attaches an event listener to an element, executing an expression whenever the
+// event is triggered.
+//
+// See: https://data-star.dev/reference/attributes#data-on
+func (e *OBJECTElement) DATASTAR_ON(key string, expression string, modifiers ...ObjectOnMod) *OBJECTElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	key = fmt.Sprintf("data-on%s", suffix)
+
+	customMods := lo.Map(modifiers, func(m ObjectOnMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Attaches an event listener to an element, executing an expression whenever the
+// event is triggered.
+//
+// See: https://data-star.dev/reference/attributes#data-on
+func (e *OBJECTElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...ObjectOnMod) *OBJECTElement {
+	if condition {
+		e.DATASTAR_ON(key, expression, modifiers...)
+	}
+	return e
+}
+
+// Attaches an event listener to an element, executing an expression whenever the
+// event is triggered.
+//
+// See: https://data-star.dev/reference/attributes#data-on
+// Remove the attribute DATASTAR_ON from the element.
+func (e *OBJECTElement) DATASTAR_ONRemove(key string) *OBJECTElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	e.StringAttributes.Del("data-on" + suffix)
+
+	return e
+}
+
+type ObjectOnIntersectMod customDataKeyModifier
+
+// Only run the expression once
+// Only works with built-in events.
+func ObjectOnIntersectModOnce() ObjectOnIntersectMod {
+	return func() string {
+		return "once"
+	}
+}
+
+// Trigger when half of the element is visible.
+func ObjectOnIntersectModHalf() ObjectOnIntersectMod {
+	return func() string {
+		return "half"
+	}
+}
+
+// Trigger when the full element is visible.
+func ObjectOnIntersectModFull() ObjectOnIntersectMod {
+	return func() string {
+		return "full"
+	}
+}
+
+// Delay the event listener in milliseconds.
+func ObjectOnIntersectModDelayMs(
+	d time.Duration,
+) ObjectOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("delay.%dms", d.Milliseconds())
+	}
+}
+
+// Delay the event listener in seconds.
+func ObjectOnIntersectModDelaySec(
+	d time.Duration,
+) ObjectOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("delay.%ds", int(d.Seconds()))
+	}
+}
+
+// Debounces the event handler
+func ObjectOnIntersectModDebounceMs(
+	d time.Duration,
+) ObjectOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms", d.Milliseconds())
+	}
+}
+
+// Debounce the event listener in milliseconds with leading edge.
+func ObjectOnIntersectModDebounceMsLeading(
+	d time.Duration,
+) ObjectOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms.leading", d.Milliseconds())
+	}
+}
+
+// Debounce the event listener in milliseconds without trailing edge.
+func ObjectOnIntersectModDebounceMsNoTrailing(
+	d time.Duration,
+) ObjectOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms.notrailing", d.Milliseconds())
+	}
+}
+
+// Debounces the event handler
+func ObjectOnIntersectModDebounceSec(
+	d time.Duration,
+) ObjectOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds", int(d.Seconds()))
+	}
+}
+
+// Debounce the event listener in seconds with leading edge.
+func ObjectOnIntersectModDebounceSecLeading(
+	d time.Duration,
+) ObjectOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds.leading", int(d.Seconds()))
+	}
+}
+
+// Debounce the event listener in seconds without trailing edge.
+func ObjectOnIntersectModDebounceSecNoTrailing(
+	d time.Duration,
+) ObjectOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds.notrailing", int(d.Seconds()))
+	}
+}
+
+// Throttles the event handler
+func ObjectOnIntersectModThrottleMs(
+	d time.Duration,
+) ObjectOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms", d.Milliseconds())
+	}
+}
+
+// Throttle the event listener in milliseconds without leading edge.
+func ObjectOnIntersectModThrottleMsNoLeading(
+	d time.Duration,
+) ObjectOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms.noleading", d.Milliseconds())
+	}
+}
+
+// Throttle the event listener in milliseconds with trailing edge.
+func ObjectOnIntersectModThrottleMsTrailing(
+	d time.Duration,
+) ObjectOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms.trailing", d.Milliseconds())
+	}
+}
+
+// Throttles the event listener in seconds.
+func ObjectOnIntersectModThrottleSec(
+	d time.Duration,
+) ObjectOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds", int(d.Seconds()))
+	}
+}
+
+// Throttle the event listener in seconds without leading edge.
+func ObjectOnIntersectModThrottleSecNoLeading(
+	d time.Duration,
+) ObjectOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds.noleading", int(d.Seconds()))
+	}
+}
+
+// Throttle the event listener in seconds with trailing edge.
+func ObjectOnIntersectModThrottleSecTrailing(
+	d time.Duration,
+) ObjectOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds.trailing", int(d.Seconds()))
+	}
+}
+
+// Wraps the expression in 'document.startViewTransition()' when the View
+// Transition API is available.
+func ObjectOnIntersectModViewTransition() ObjectOnIntersectMod {
+	return func() string {
+		return "viewtransition"
+	}
+}
+
+// Runs an expression when the element intersects with the viewport.
+func (e *OBJECTElement) DATASTAR_ON_INTERSECT(expression string, modifiers ...ObjectOnIntersectMod) *OBJECTElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-on-intersect"
+
+	customMods := lo.Map(modifiers, func(m ObjectOnIntersectMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Runs an expression when the element intersects with the viewport.
+func (e *OBJECTElement) IfDATASTAR_ON_INTERSECT(condition bool, expression string, modifiers ...ObjectOnIntersectMod) *OBJECTElement {
+	if condition {
+		e.DATASTAR_ON_INTERSECT(expression, modifiers...)
+	}
+	return e
+}
+
+// Runs an expression when the element intersects with the viewport.
+// Remove the attribute DATASTAR_ON_INTERSECT from the element.
+func (e *OBJECTElement) DATASTAR_ON_INTERSECTRemove() *OBJECTElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-on-intersect")
+
+	return e
+}
+
+type ObjectOnIntervalMod customDataKeyModifier
+
+// Sets the interval duration in milliseconds.
+func ObjectOnIntervalModDurationMs(
+	d time.Duration,
+) ObjectOnIntervalMod {
+	return func() string {
+		return fmt.Sprintf("duration.%dms", d.Milliseconds())
+	}
+}
+
+// Sets the interval duration in milliseconds
+// Execute the first interval immediately.
+func ObjectOnIntervalModDurationMsLeading(
+	d time.Duration,
+) ObjectOnIntervalMod {
+	return func() string {
+		return fmt.Sprintf("duration.%dms.leading", d.Milliseconds())
+	}
+}
+
+// Sets the interval duration in seconds.
+func ObjectOnIntervalModDurationSec(
+	d time.Duration,
+) ObjectOnIntervalMod {
+	return func() string {
+		return fmt.Sprintf("duration.%ds", int(d.Seconds()))
+	}
+}
+
+// Sets the interval duration in seconds
+// Execute the first interval immediately.
+func ObjectOnIntervalModDurationSecLeading(
+	d time.Duration,
+) ObjectOnIntervalMod {
+	return func() string {
+		return fmt.Sprintf("duration.%ds.leading", int(d.Seconds()))
+	}
+}
+
+// Wraps the expression in 'document.startViewTransition()' when the View
+// Transition API is available.
+func ObjectOnIntervalModViewTransition() ObjectOnIntervalMod {
+	return func() string {
+		return "viewtransition"
+	}
+}
+
+// Runs an expression at a regular interval
+// The interval duration defaults to one second and can be modified using the
+// '__duration' modifier.
+//
+// See: https://data-star.dev/reference/attributes#data-on-interval
+func (e *OBJECTElement) DATASTAR_ON_INTERVAL(expression string, modifiers ...ObjectOnIntervalMod) *OBJECTElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-on-interval"
+
+	customMods := lo.Map(modifiers, func(m ObjectOnIntervalMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Runs an expression at a regular interval
+// The interval duration defaults to one second and can be modified using the
+// '__duration' modifier.
+//
+// See: https://data-star.dev/reference/attributes#data-on-interval
+func (e *OBJECTElement) IfDATASTAR_ON_INTERVAL(condition bool, expression string, modifiers ...ObjectOnIntervalMod) *OBJECTElement {
+	if condition {
+		e.DATASTAR_ON_INTERVAL(expression, modifiers...)
+	}
+	return e
+}
+
+// Runs an expression at a regular interval
+// The interval duration defaults to one second and can be modified using the
+// '__duration' modifier.
+//
+// See: https://data-star.dev/reference/attributes#data-on-interval
+// Remove the attribute DATASTAR_ON_INTERVAL from the element.
+func (e *OBJECTElement) DATASTAR_ON_INTERVALRemove() *OBJECTElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-on-interval")
+
+	return e
+}
+
+type ObjectOnSignalPatchMod customDataKeyModifier
+
+// Delay the event listener in milliseconds.
+func ObjectOnSignalPatchModDelayMs(
+	d time.Duration,
+) ObjectOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("delay.%dms", d.Milliseconds())
+	}
+}
+
+// Delay the event listener in seconds.
+func ObjectOnSignalPatchModDelaySec(
+	d time.Duration,
+) ObjectOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("delay.%ds", int(d.Seconds()))
+	}
+}
+
+// Debounces the event handler
+func ObjectOnSignalPatchModDebounceMs(
+	d time.Duration,
+) ObjectOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms", d.Milliseconds())
+	}
+}
+
+// Debounce the event listener in milliseconds with leading edge.
+func ObjectOnSignalPatchModDebounceMsLeading(
+	d time.Duration,
+) ObjectOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms.leading", d.Milliseconds())
+	}
+}
+
+// Debounce the event listener in milliseconds without trailing edge.
+func ObjectOnSignalPatchModDebounceMsNoTrailing(
+	d time.Duration,
+) ObjectOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms.notrailing", d.Milliseconds())
+	}
+}
+
+// Debounces the event handler
+func ObjectOnSignalPatchModDebounceSec(
+	d time.Duration,
+) ObjectOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds", int(d.Seconds()))
+	}
+}
+
+// Debounce the event listener in seconds with leading edge.
+func ObjectOnSignalPatchModDebounceSecLeading(
+	d time.Duration,
+) ObjectOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds.leading", int(d.Seconds()))
+	}
+}
+
+// Debounce the event listener in seconds without trailing edge.
+func ObjectOnSignalPatchModDebounceSecNoTrailing(
+	d time.Duration,
+) ObjectOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds.notrailing", int(d.Seconds()))
+	}
+}
+
+// Throttles the event handler
+func ObjectOnSignalPatchModThrottleMs(
+	d time.Duration,
+) ObjectOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms", d.Milliseconds())
+	}
+}
+
+// Throttle the event listener in milliseconds without leading edge.
+func ObjectOnSignalPatchModThrottleMsNoLeading(
+	d time.Duration,
+) ObjectOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms.noleading", d.Milliseconds())
+	}
+}
+
+// Throttle the event listener in milliseconds with trailing edge.
+func ObjectOnSignalPatchModThrottleMsTrailing(
+	d time.Duration,
+) ObjectOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms.trailing", d.Milliseconds())
+	}
+}
+
+// Throttles the event listener in seconds.
+func ObjectOnSignalPatchModThrottleSec(
+	d time.Duration,
+) ObjectOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds", int(d.Seconds()))
+	}
+}
+
+// Throttle the event listener in seconds without leading edge.
+func ObjectOnSignalPatchModThrottleSecNoLeading(
+	d time.Duration,
+) ObjectOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds.noleading", int(d.Seconds()))
+	}
+}
+
+// Throttle the event listener in seconds with trailing edge.
+func ObjectOnSignalPatchModThrottleSecTrailing(
+	d time.Duration,
+) ObjectOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds.trailing", int(d.Seconds()))
+	}
+}
+
+// Runs an expression whenever any signals are patched
+// This is useful for tracking changes, updating computed values, or triggering
+// side effects when data updates.
+//
+// See: https://data-star.dev/reference/attributes#data-on-signal-patch
+func (e *OBJECTElement) DATASTAR_ON_SIGNAL_PATCH(expression string, modifiers ...ObjectOnSignalPatchMod) *OBJECTElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-on-signal-patch"
+
+	customMods := lo.Map(modifiers, func(m ObjectOnSignalPatchMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Runs an expression whenever any signals are patched
+// This is useful for tracking changes, updating computed values, or triggering
+// side effects when data updates.
+//
+// See: https://data-star.dev/reference/attributes#data-on-signal-patch
+func (e *OBJECTElement) IfDATASTAR_ON_SIGNAL_PATCH(condition bool, expression string, modifiers ...ObjectOnSignalPatchMod) *OBJECTElement {
+	if condition {
+		e.DATASTAR_ON_SIGNAL_PATCH(expression, modifiers...)
+	}
+	return e
+}
+
+// Runs an expression whenever any signals are patched
+// This is useful for tracking changes, updating computed values, or triggering
+// side effects when data updates.
+//
+// See: https://data-star.dev/reference/attributes#data-on-signal-patch
+// Remove the attribute DATASTAR_ON_SIGNAL_PATCH from the element.
+func (e *OBJECTElement) DATASTAR_ON_SIGNAL_PATCHRemove() *OBJECTElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-on-signal-patch")
+
+	return e
+}
+
+// Filters which signals to watch when using the data-on-signal-patch attribute.
+//
+// The data-on-signal-patch-filter attribute accepts an object with include and/or
+// exclude properties that are regular expressions.
+//
+// See: https://data-star.dev/reference/attributes#data-on-signal-patch-filter
+func (e *OBJECTElement) DATASTAR_ON_SIGNAL_PATCH_FILTER(expression string) *OBJECTElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-on-signal-patch-filter"
+
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Filters which signals to watch when using the data-on-signal-patch attribute.
+//
+// The data-on-signal-patch-filter attribute accepts an object with include and/or
+// exclude properties that are regular expressions.
+//
+// See: https://data-star.dev/reference/attributes#data-on-signal-patch-filter
+func (e *OBJECTElement) IfDATASTAR_ON_SIGNAL_PATCH_FILTER(condition bool, expression string) *OBJECTElement {
+	if condition {
+		e.DATASTAR_ON_SIGNAL_PATCH_FILTER(expression)
+	}
+	return e
+}
+
+// Filters which signals to watch when using the data-on-signal-patch attribute.
+//
+// The data-on-signal-patch-filter attribute accepts an object with include and/or
+// exclude properties that are regular expressions.
+//
+// See: https://data-star.dev/reference/attributes#data-on-signal-patch-filter
+// Remove the attribute DATASTAR_ON_SIGNAL_PATCH_FILTER from the element.
+func (e *OBJECTElement) DATASTAR_ON_SIGNAL_PATCH_FILTERRemove() *OBJECTElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-on-signal-patch-filter")
+
+	return e
+}
+
+// Preserves the value of an attribute when morphing DOM elements.
+//
+// See: https://data-star.dev/reference/attributes#data-preserve-attr
+func (e *OBJECTElement) DATASTAR_PRESERVE_ATTR(expression string) *OBJECTElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-preserve-attr"
+
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Preserves the value of an attribute when morphing DOM elements.
+//
+// See: https://data-star.dev/reference/attributes#data-preserve-attr
+func (e *OBJECTElement) IfDATASTAR_PRESERVE_ATTR(condition bool, expression string) *OBJECTElement {
+	if condition {
+		e.DATASTAR_PRESERVE_ATTR(expression)
+	}
+	return e
+}
+
+// Preserves the value of an attribute when morphing DOM elements.
+//
+// See: https://data-star.dev/reference/attributes#data-preserve-attr
+// Remove the attribute DATASTAR_PRESERVE_ATTR from the element.
+func (e *OBJECTElement) DATASTAR_PRESERVE_ATTRRemove() *OBJECTElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-preserve-attr")
+
+	return e
+}
+
+type ObjectRefMod customDataKeyModifier
+
+// Converts the casing of the signal name.
+//   - 'camel' – Camel case: 'mySignal' (default)
+//   - 'kebab' – Kebab case: 'my-signal'
+//   - 'snake' – Snake case: 'my_signal'
+//   - 'pascal' – Pascal case: 'MySignal'
+func ObjectRefModCase(
+	s string,
+) ObjectRefMod {
+	return func() string {
+		return fmt.Sprintf("case.%s", s)
+	}
+}
+
+// Creates a new signal that is a reference to the element on which the data
+// attribute is placed.
+//
+// See: https://data-star.dev/reference/attributes#data-ref
+func (e *OBJECTElement) DATASTAR_REF(expression string, modifiers ...ObjectRefMod) *OBJECTElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-ref"
+
+	customMods := lo.Map(modifiers, func(m ObjectRefMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Creates a new signal that is a reference to the element on which the data
+// attribute is placed.
+//
+// See: https://data-star.dev/reference/attributes#data-ref
+func (e *OBJECTElement) IfDATASTAR_REF(condition bool, expression string, modifiers ...ObjectRefMod) *OBJECTElement {
+	if condition {
+		e.DATASTAR_REF(expression, modifiers...)
+	}
+	return e
+}
+
+// Creates a new signal that is a reference to the element on which the data
+// attribute is placed.
+//
+// See: https://data-star.dev/reference/attributes#data-ref
+// Remove the attribute DATASTAR_REF from the element.
+func (e *OBJECTElement) DATASTAR_REFRemove() *OBJECTElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-ref")
+
+	return e
+}
+
+// Shows or hides an element based on whether an expression evaluates to 'true' or
+// 'false'
+// For anything with custom requirements, use 'data-class' instead.
+//
+// See: https://data-star.dev/reference/attributes#data-show
+func (e *OBJECTElement) DATASTAR_SHOW(expression string) *OBJECTElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-show"
+
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Shows or hides an element based on whether an expression evaluates to 'true' or
+// 'false'
+// For anything with custom requirements, use 'data-class' instead.
+//
+// See: https://data-star.dev/reference/attributes#data-show
+func (e *OBJECTElement) IfDATASTAR_SHOW(condition bool, expression string) *OBJECTElement {
+	if condition {
+		e.DATASTAR_SHOW(expression)
+	}
+	return e
+}
+
+// Shows or hides an element based on whether an expression evaluates to 'true' or
+// 'false'
+// For anything with custom requirements, use 'data-class' instead.
+//
+// See: https://data-star.dev/reference/attributes#data-show
+// Remove the attribute DATASTAR_SHOW from the element.
+func (e *OBJECTElement) DATASTAR_SHOWRemove() *OBJECTElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-show")
+
+	return e
+}
+
+type ObjectSignalsMod customDataKeyModifier
+
+// Converts the casing of the signal name.
+//   - 'camel' – Camel case: 'mySignal' (default)
+//   - 'kebab' – Kebab case: 'my-signal'
+//   - 'snake' – Snake case: 'my_signal'
+//   - 'pascal' – Pascal case: 'MySignal'
+func ObjectSignalsModCase(
+	s string,
+) ObjectSignalsMod {
+	return func() string {
+		return fmt.Sprintf("case.%s", s)
+	}
+}
+
+// Only patches signals if their keys do not already exist
+// This is useful for setting defaults without overwriting existing values.
+func ObjectSignalsModIfMissing() ObjectSignalsMod {
+	return func() string {
+		return "ifmissing"
+	}
+}
+
+// Patches (adds, updates or removes) one or more signals into the existing
+// signals
+// Values defined later in the DOM tree override those defined earlier.
+//
+// See: https://data-star.dev/reference/attributes#data-signals
+func (e *OBJECTElement) DATASTAR_SIGNALS(key string, expression string, modifiers ...ObjectSignalsMod) *OBJECTElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	key = fmt.Sprintf("data-signals%s", suffix)
+
+	customMods := lo.Map(modifiers, func(m ObjectSignalsMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Patches (adds, updates or removes) one or more signals into the existing
+// signals
+// Values defined later in the DOM tree override those defined earlier.
+//
+// See: https://data-star.dev/reference/attributes#data-signals
+func (e *OBJECTElement) IfDATASTAR_SIGNALS(condition bool, key string, expression string, modifiers ...ObjectSignalsMod) *OBJECTElement {
+	if condition {
+		e.DATASTAR_SIGNALS(key, expression, modifiers...)
+	}
+	return e
+}
+
+// Patches (adds, updates or removes) one or more signals into the existing
+// signals
+// Values defined later in the DOM tree override those defined earlier.
+//
+// See: https://data-star.dev/reference/attributes#data-signals
+// Remove the attribute DATASTAR_SIGNALS from the element.
+func (e *OBJECTElement) DATASTAR_SIGNALSRemove(key string) *OBJECTElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	e.StringAttributes.Del("data-signals" + suffix)
+
+	return e
+}
+
+type ObjectStyleMod customDataKeyModifier
+
+// Converts the casing of the signal name.
+//   - 'camel' – Camel case: 'mySignal' (default)
+//   - 'kebab' – Kebab case: 'my-signal'
+//   - 'snake' – Snake case: 'my_signal'
+//   - 'pascal' – Pascal case: 'MySignal'
+func ObjectStyleModCase(
+	s string,
+) ObjectStyleMod {
+	return func() string {
+		return fmt.Sprintf("case.%s", s)
+	}
+}
+
+// Sets the value of inline CSS styles on an element based on an expression, and
+// keeps them in sync.
+//
+// See: https://data-star.dev/reference/attributes#data-style
+func (e *OBJECTElement) DATASTAR_STYLE(key string, expression string, modifiers ...ObjectStyleMod) *OBJECTElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	key = fmt.Sprintf("data-style%s", suffix)
+
+	customMods := lo.Map(modifiers, func(m ObjectStyleMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Sets the value of inline CSS styles on an element based on an expression, and
+// keeps them in sync.
+//
+// See: https://data-star.dev/reference/attributes#data-style
+func (e *OBJECTElement) IfDATASTAR_STYLE(condition bool, key string, expression string, modifiers ...ObjectStyleMod) *OBJECTElement {
+	if condition {
+		e.DATASTAR_STYLE(key, expression, modifiers...)
+	}
+	return e
+}
+
+// Sets the value of inline CSS styles on an element based on an expression, and
+// keeps them in sync.
+//
+// See: https://data-star.dev/reference/attributes#data-style
+// Remove the attribute DATASTAR_STYLE from the element.
+func (e *OBJECTElement) DATASTAR_STYLERemove(key string) *OBJECTElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	e.StringAttributes.Del("data-style" + suffix)
+
+	return e
+}
+
+// Binds the text content of an element to an expression.
+//
+// See: https://data-star.dev/reference/attributes#data-text
 func (e *OBJECTElement) DATASTAR_TEXT(expression string) *OBJECTElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
@@ -1961,6 +4273,9 @@ func (e *OBJECTElement) DATASTAR_TEXT(expression string) *OBJECTElement {
 	return e
 }
 
+// Binds the text content of an element to an expression.
+//
+// See: https://data-star.dev/reference/attributes#data-text
 func (e *OBJECTElement) IfDATASTAR_TEXT(condition bool, expression string) *OBJECTElement {
 	if condition {
 		e.DATASTAR_TEXT(expression)
@@ -1968,228 +4283,16 @@ func (e *OBJECTElement) IfDATASTAR_TEXT(condition bool, expression string) *OBJE
 	return e
 }
 
+// Binds the text content of an element to an expression.
+//
+// See: https://data-star.dev/reference/attributes#data-text
 // Remove the attribute DATASTAR_TEXT from the element.
 func (e *OBJECTElement) DATASTAR_TEXTRemove() *OBJECTElement {
 	if e.StringAttributes == nil {
 		return e
 	}
+
 	e.StringAttributes.Del("data-text")
-	return e
-}
 
-// Sets the event handler of the element
-
-type ObjectOnMod customDataKeyModifier
-
-// Debounces the event handler
-func ObjectOnModDebounce(
-	d time.Duration,
-) ObjectOnMod {
-	return func() string {
-		return fmt.Sprintf("debounce_%dms", d.Milliseconds())
-	}
-}
-
-// Throttles the event handler
-func ObjectOnModThrottle(
-	d time.Duration,
-) ObjectOnMod {
-	return func() string {
-		return fmt.Sprintf("throttle_%dms", d.Milliseconds())
-	}
-}
-
-func (e *OBJECTElement) DATASTAR_ON(key string, expression string, modifiers ...ObjectOnMod) *OBJECTElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-
-	key = fmt.Sprintf("data-on-%s", key)
-
-	customMods := lo.Map(modifiers, func(m ObjectOnMod, i int) customDataKeyModifier {
-		return customDataKeyModifier(m)
-	})
-	key = customDataKey(key, customMods...)
-	e.StringAttributes.Set(key, expression)
-	return e
-}
-
-func (e *OBJECTElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...ObjectOnMod) *OBJECTElement {
-	if condition {
-		e.DATASTAR_ON(key, expression, modifiers...)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_ON from the element.
-func (e *OBJECTElement) DATASTAR_ONRemove() *OBJECTElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-on")
-	return e
-}
-
-// Sets the focus of the element
-
-func (e *OBJECTElement) DATASTAR_FOCUSSet(b bool) *OBJECTElement {
-	key := "data-focus"
-	e.BoolAttributes.Set(key, b)
-	return e
-}
-
-func (e *OBJECTElement) DATASTAR_FOCUS() *OBJECTElement {
-	return e.DATASTAR_FOCUSSet(true)
-}
-
-// Sets the header of for fetch requests
-
-func (e *OBJECTElement) DATASTAR_HEADER(key string, expression string) *OBJECTElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-
-	key = fmt.Sprintf("data-header-%s", key)
-
-	e.StringAttributes.Set(key, expression)
-	return e
-}
-
-func (e *OBJECTElement) IfDATASTAR_HEADER(condition bool, key string, expression string) *OBJECTElement {
-	if condition {
-		e.DATASTAR_HEADER(key, expression)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_HEADER from the element.
-func (e *OBJECTElement) DATASTAR_HEADERRemove() *OBJECTElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-header")
-	return e
-}
-
-// Sets the indicator selector for fetch requests
-
-func (e *OBJECTElement) DATASTAR_FETCH_INDICATOR(expression string) *OBJECTElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-
-	key := "data-fetch-indicator"
-
-	e.StringAttributes.Set(key, expression)
-	return e
-}
-
-func (e *OBJECTElement) IfDATASTAR_FETCH_INDICATOR(condition bool, expression string) *OBJECTElement {
-	if condition {
-		e.DATASTAR_FETCH_INDICATOR(expression)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_FETCH_INDICATOR from the element.
-func (e *OBJECTElement) DATASTAR_FETCH_INDICATORRemove() *OBJECTElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-fetch-indicator")
-	return e
-}
-
-// Sets the visibility of the element
-
-func (e *OBJECTElement) DATASTAR_SHOWSet(b bool) *OBJECTElement {
-	key := "data-show"
-	e.BoolAttributes.Set(key, b)
-	return e
-}
-
-func (e *OBJECTElement) DATASTAR_SHOW() *OBJECTElement {
-	return e.DATASTAR_SHOWSet(true)
-}
-
-// Triggers the callback when the element intersects the viewport
-
-func (e *OBJECTElement) DATASTAR_INTERSECTS(expression string) *OBJECTElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-
-	key := "data-intersects"
-
-	e.StringAttributes.Set(key, expression)
-	return e
-}
-
-func (e *OBJECTElement) IfDATASTAR_INTERSECTS(condition bool, expression string) *OBJECTElement {
-	if condition {
-		e.DATASTAR_INTERSECTS(expression)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_INTERSECTS from the element.
-func (e *OBJECTElement) DATASTAR_INTERSECTSRemove() *OBJECTElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-intersects")
-	return e
-}
-
-// Teleports the element to the given selector
-
-func (e *OBJECTElement) DATASTAR_TELEPORTSet(b bool) *OBJECTElement {
-	key := "data-teleport"
-	e.BoolAttributes.Set(key, b)
-	return e
-}
-
-func (e *OBJECTElement) DATASTAR_TELEPORT() *OBJECTElement {
-	return e.DATASTAR_TELEPORTSet(true)
-}
-
-// Scrolls the element into view
-
-func (e *OBJECTElement) DATASTAR_SCROLL_INTO_VIEWSet(b bool) *OBJECTElement {
-	key := "data-scroll-into-view"
-	e.BoolAttributes.Set(key, b)
-	return e
-}
-
-func (e *OBJECTElement) DATASTAR_SCROLL_INTO_VIEW() *OBJECTElement {
-	return e.DATASTAR_SCROLL_INTO_VIEWSet(true)
-}
-
-// Setup the ViewTransitionAPI for the element
-
-func (e *OBJECTElement) DATASTAR_VIEW_TRANSITION(expression string) *OBJECTElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-
-	key := "data-view-transition"
-
-	e.StringAttributes.Set(key, expression)
-	return e
-}
-
-func (e *OBJECTElement) IfDATASTAR_VIEW_TRANSITION(condition bool, expression string) *OBJECTElement {
-	if condition {
-		e.DATASTAR_VIEW_TRANSITION(expression)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_VIEW_TRANSITION from the element.
-func (e *OBJECTElement) DATASTAR_VIEW_TRANSITIONRemove() *OBJECTElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-view-transition")
 	return e
 }

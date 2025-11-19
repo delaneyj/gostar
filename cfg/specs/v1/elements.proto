@@ -43,6 +43,7 @@ message Attribute {
       Custom custom = 9;
       bool json = 10;
       bool duration_ms = 11;
+      bool duration_sec = 12;
     }
   }
   string key = 1;

@@ -5,10 +5,8 @@ package elements
 
 import (
 	"fmt"
-	"html"
 	"time"
 
-	"github.com/goccy/go-json"
 	"github.com/igrmk/treemap/v2"
 	"github.com/samber/lo"
 )
@@ -183,6 +181,10 @@ func (e *MathMLMERRORElement) CLASS(s ...string) *MathMLMERRORElement {
 	return e
 }
 
+// Assigns a class name or set of class names to an element
+// You may assign the same class name or names to any number of elements
+// If you specify multiple class names, they must be separated by whitespace
+// characters.
 func (e *MathMLMERRORElement) IfCLASS(condition bool, s ...string) *MathMLMERRORElement {
 	if condition {
 		e.CLASS(s...)
@@ -190,6 +192,10 @@ func (e *MathMLMERRORElement) IfCLASS(condition bool, s ...string) *MathMLMERROR
 	return e
 }
 
+// Assigns a class name or set of class names to an element
+// You may assign the same class name or names to any number of elements
+// If you specify multiple class names, they must be separated by whitespace
+// characters.
 // Remove the attribute CLASS from the element.
 func (e *MathMLMERRORElement) CLASSRemove(s ...string) *MathMLMERRORElement {
 	if e.DelimitedStrings == nil {
@@ -224,6 +230,10 @@ const (
 	MathMLMerrorDir_rtl MathMLMerrorDirChoice = "rtl"
 )
 
+// This attribute specifies the text directionality of the element, merely
+// indicating what direction the text flows when surrounded by text with inherent
+// directionality (such as Arabic or Hebrew)
+// Possible values are ltr (left-to-right) and rtl (right-to-left).
 // Remove the attribute DIR from the element.
 func (e *MathMLMERRORElement) DIRRemove(c MathMLMerrorDirChoice) *MathMLMERRORElement {
 	if e.StringAttributes == nil {
@@ -253,6 +263,9 @@ const (
 	MathMLMerrorDisplaystyle_false MathMLMerrorDisplaystyleChoice = "false"
 )
 
+// This attribute specifies whether the element should be rendered using
+// displaystyle rules or not
+// Possible values are true and false.
 // Remove the attribute DISPLAYSTYLE from the element.
 func (e *MathMLMERRORElement) DISPLAYSTYLERemove(c MathMLMerrorDisplaystyleChoice) *MathMLMERRORElement {
 	if e.StringAttributes == nil {
@@ -272,10 +285,14 @@ func (e *MathMLMERRORElement) ID(s string) *MathMLMERRORElement {
 	return e
 }
 
+// This attribute assigns a name to an element
+// This name must be unique in a document.
 func (e *MathMLMERRORElement) IDF(format string, args ...any) *MathMLMERRORElement {
 	return e.ID(fmt.Sprintf(format, args...))
 }
 
+// This attribute assigns a name to an element
+// This name must be unique in a document.
 func (e *MathMLMERRORElement) IfID(condition bool, s string) *MathMLMERRORElement {
 	if condition {
 		e.ID(s)
@@ -283,6 +300,8 @@ func (e *MathMLMERRORElement) IfID(condition bool, s string) *MathMLMERRORElemen
 	return e
 }
 
+// This attribute assigns a name to an element
+// This name must be unique in a document.
 func (e *MathMLMERRORElement) IfIDF(condition bool, format string, args ...any) *MathMLMERRORElement {
 	if condition {
 		e.ID(fmt.Sprintf(format, args...))
@@ -290,6 +309,8 @@ func (e *MathMLMERRORElement) IfIDF(condition bool, format string, args ...any) 
 	return e
 }
 
+// This attribute assigns a name to an element
+// This name must be unique in a document.
 // Remove the attribute ID from the element.
 func (e *MathMLMERRORElement) IDRemove(s string) *MathMLMERRORElement {
 	if e.StringAttributes == nil {
@@ -299,6 +320,8 @@ func (e *MathMLMERRORElement) IDRemove(s string) *MathMLMERRORElement {
 	return e
 }
 
+// This attribute assigns a name to an element
+// This name must be unique in a document.
 func (e *MathMLMERRORElement) IDRemoveF(format string, args ...any) *MathMLMERRORElement {
 	return e.IDRemove(fmt.Sprintf(format, args...))
 }
@@ -314,10 +337,16 @@ func (e *MathMLMERRORElement) MATHBACKGROUND(s string) *MathMLMERRORElement {
 	return e
 }
 
+// This attribute specifies the background color of the element
+// Possible values are a color name or a color specification in the format defined
+// in the CSS3 Color Module [CSS3COLOR].
 func (e *MathMLMERRORElement) MATHBACKGROUNDF(format string, args ...any) *MathMLMERRORElement {
 	return e.MATHBACKGROUND(fmt.Sprintf(format, args...))
 }
 
+// This attribute specifies the background color of the element
+// Possible values are a color name or a color specification in the format defined
+// in the CSS3 Color Module [CSS3COLOR].
 func (e *MathMLMERRORElement) IfMATHBACKGROUND(condition bool, s string) *MathMLMERRORElement {
 	if condition {
 		e.MATHBACKGROUND(s)
@@ -325,6 +354,9 @@ func (e *MathMLMERRORElement) IfMATHBACKGROUND(condition bool, s string) *MathML
 	return e
 }
 
+// This attribute specifies the background color of the element
+// Possible values are a color name or a color specification in the format defined
+// in the CSS3 Color Module [CSS3COLOR].
 func (e *MathMLMERRORElement) IfMATHBACKGROUNDF(condition bool, format string, args ...any) *MathMLMERRORElement {
 	if condition {
 		e.MATHBACKGROUND(fmt.Sprintf(format, args...))
@@ -332,6 +364,9 @@ func (e *MathMLMERRORElement) IfMATHBACKGROUNDF(condition bool, format string, a
 	return e
 }
 
+// This attribute specifies the background color of the element
+// Possible values are a color name or a color specification in the format defined
+// in the CSS3 Color Module [CSS3COLOR].
 // Remove the attribute MATHBACKGROUND from the element.
 func (e *MathMLMERRORElement) MATHBACKGROUNDRemove(s string) *MathMLMERRORElement {
 	if e.StringAttributes == nil {
@@ -341,6 +376,9 @@ func (e *MathMLMERRORElement) MATHBACKGROUNDRemove(s string) *MathMLMERRORElemen
 	return e
 }
 
+// This attribute specifies the background color of the element
+// Possible values are a color name or a color specification in the format defined
+// in the CSS3 Color Module [CSS3COLOR].
 func (e *MathMLMERRORElement) MATHBACKGROUNDRemoveF(format string, args ...any) *MathMLMERRORElement {
 	return e.MATHBACKGROUNDRemove(fmt.Sprintf(format, args...))
 }
@@ -356,10 +394,16 @@ func (e *MathMLMERRORElement) MATHCOLOR(s string) *MathMLMERRORElement {
 	return e
 }
 
+// This attribute specifies the color of the element
+// Possible values are a color name or a color specification in the format defined
+// in the CSS3 Color Module [CSS3COLOR].
 func (e *MathMLMERRORElement) MATHCOLORF(format string, args ...any) *MathMLMERRORElement {
 	return e.MATHCOLOR(fmt.Sprintf(format, args...))
 }
 
+// This attribute specifies the color of the element
+// Possible values are a color name or a color specification in the format defined
+// in the CSS3 Color Module [CSS3COLOR].
 func (e *MathMLMERRORElement) IfMATHCOLOR(condition bool, s string) *MathMLMERRORElement {
 	if condition {
 		e.MATHCOLOR(s)
@@ -367,6 +411,9 @@ func (e *MathMLMERRORElement) IfMATHCOLOR(condition bool, s string) *MathMLMERRO
 	return e
 }
 
+// This attribute specifies the color of the element
+// Possible values are a color name or a color specification in the format defined
+// in the CSS3 Color Module [CSS3COLOR].
 func (e *MathMLMERRORElement) IfMATHCOLORF(condition bool, format string, args ...any) *MathMLMERRORElement {
 	if condition {
 		e.MATHCOLOR(fmt.Sprintf(format, args...))
@@ -374,6 +421,9 @@ func (e *MathMLMERRORElement) IfMATHCOLORF(condition bool, format string, args .
 	return e
 }
 
+// This attribute specifies the color of the element
+// Possible values are a color name or a color specification in the format defined
+// in the CSS3 Color Module [CSS3COLOR].
 // Remove the attribute MATHCOLOR from the element.
 func (e *MathMLMERRORElement) MATHCOLORRemove(s string) *MathMLMERRORElement {
 	if e.StringAttributes == nil {
@@ -383,6 +433,9 @@ func (e *MathMLMERRORElement) MATHCOLORRemove(s string) *MathMLMERRORElement {
 	return e
 }
 
+// This attribute specifies the color of the element
+// Possible values are a color name or a color specification in the format defined
+// in the CSS3 Color Module [CSS3COLOR].
 func (e *MathMLMERRORElement) MATHCOLORRemoveF(format string, args ...any) *MathMLMERRORElement {
 	return e.MATHCOLORRemove(fmt.Sprintf(format, args...))
 }
@@ -397,10 +450,14 @@ func (e *MathMLMERRORElement) MATHSIZE_STR(s string) *MathMLMERRORElement {
 	return e
 }
 
+// This attribute specifies the size of the element
+// Possible values are a dimension or a dimensionless number.
 func (e *MathMLMERRORElement) MATHSIZE_STRF(format string, args ...any) *MathMLMERRORElement {
 	return e.MATHSIZE_STR(fmt.Sprintf(format, args...))
 }
 
+// This attribute specifies the size of the element
+// Possible values are a dimension or a dimensionless number.
 func (e *MathMLMERRORElement) IfMATHSIZE_STR(condition bool, s string) *MathMLMERRORElement {
 	if condition {
 		e.MATHSIZE_STR(s)
@@ -408,6 +465,8 @@ func (e *MathMLMERRORElement) IfMATHSIZE_STR(condition bool, s string) *MathMLME
 	return e
 }
 
+// This attribute specifies the size of the element
+// Possible values are a dimension or a dimensionless number.
 func (e *MathMLMERRORElement) IfMATHSIZE_STRF(condition bool, format string, args ...any) *MathMLMERRORElement {
 	if condition {
 		e.MATHSIZE_STR(fmt.Sprintf(format, args...))
@@ -415,6 +474,8 @@ func (e *MathMLMERRORElement) IfMATHSIZE_STRF(condition bool, format string, arg
 	return e
 }
 
+// This attribute specifies the size of the element
+// Possible values are a dimension or a dimensionless number.
 // Remove the attribute MATHSIZE_STR from the element.
 func (e *MathMLMERRORElement) MATHSIZE_STRRemove(s string) *MathMLMERRORElement {
 	if e.StringAttributes == nil {
@@ -424,6 +485,8 @@ func (e *MathMLMERRORElement) MATHSIZE_STRRemove(s string) *MathMLMERRORElement 
 	return e
 }
 
+// This attribute specifies the size of the element
+// Possible values are a dimension or a dimensionless number.
 func (e *MathMLMERRORElement) MATHSIZE_STRRemoveF(format string, args ...any) *MathMLMERRORElement {
 	return e.MATHSIZE_STRRemove(fmt.Sprintf(format, args...))
 }
@@ -440,10 +503,18 @@ func (e *MathMLMERRORElement) NONCE(s string) *MathMLMERRORElement {
 	return e
 }
 
+// This attribute declares a cryptographic nonce (number used once) that should be
+// used by the server processing the element’s submission, and the resulting
+// resource must be delivered with a Content-Security-Policy nonce attribute
+// matching the value of the nonce attribute.
 func (e *MathMLMERRORElement) NONCEF(format string, args ...any) *MathMLMERRORElement {
 	return e.NONCE(fmt.Sprintf(format, args...))
 }
 
+// This attribute declares a cryptographic nonce (number used once) that should be
+// used by the server processing the element’s submission, and the resulting
+// resource must be delivered with a Content-Security-Policy nonce attribute
+// matching the value of the nonce attribute.
 func (e *MathMLMERRORElement) IfNONCE(condition bool, s string) *MathMLMERRORElement {
 	if condition {
 		e.NONCE(s)
@@ -451,6 +522,10 @@ func (e *MathMLMERRORElement) IfNONCE(condition bool, s string) *MathMLMERROREle
 	return e
 }
 
+// This attribute declares a cryptographic nonce (number used once) that should be
+// used by the server processing the element’s submission, and the resulting
+// resource must be delivered with a Content-Security-Policy nonce attribute
+// matching the value of the nonce attribute.
 func (e *MathMLMERRORElement) IfNONCEF(condition bool, format string, args ...any) *MathMLMERRORElement {
 	if condition {
 		e.NONCE(fmt.Sprintf(format, args...))
@@ -458,6 +533,10 @@ func (e *MathMLMERRORElement) IfNONCEF(condition bool, format string, args ...an
 	return e
 }
 
+// This attribute declares a cryptographic nonce (number used once) that should be
+// used by the server processing the element’s submission, and the resulting
+// resource must be delivered with a Content-Security-Policy nonce attribute
+// matching the value of the nonce attribute.
 // Remove the attribute NONCE from the element.
 func (e *MathMLMERRORElement) NONCERemove(s string) *MathMLMERRORElement {
 	if e.StringAttributes == nil {
@@ -467,6 +546,10 @@ func (e *MathMLMERRORElement) NONCERemove(s string) *MathMLMERRORElement {
 	return e
 }
 
+// This attribute declares a cryptographic nonce (number used once) that should be
+// used by the server processing the element’s submission, and the resulting
+// resource must be delivered with a Content-Security-Policy nonce attribute
+// matching the value of the nonce attribute.
 func (e *MathMLMERRORElement) NONCERemoveF(format string, args ...any) *MathMLMERRORElement {
 	return e.NONCERemove(fmt.Sprintf(format, args...))
 }
@@ -481,6 +564,8 @@ func (e *MathMLMERRORElement) SCRIPTLEVEL(i int) *MathMLMERRORElement {
 	return e
 }
 
+// This attribute specifies the script level of the element
+// Possible values are an integer between 0 and 7, inclusive.
 func (e *MathMLMERRORElement) IfSCRIPTLEVEL(condition bool, i int) *MathMLMERRORElement {
 	if condition {
 		e.SCRIPTLEVEL(i)
@@ -488,6 +573,8 @@ func (e *MathMLMERRORElement) IfSCRIPTLEVEL(condition bool, i int) *MathMLMERROR
 	return e
 }
 
+// This attribute specifies the script level of the element
+// Possible values are an integer between 0 and 7, inclusive.
 // Remove the attribute SCRIPTLEVEL from the element.
 func (e *MathMLMERRORElement) SCRIPTLEVELRemove(i int) *MathMLMERRORElement {
 	if e.IntAttributes == nil {
@@ -503,6 +590,8 @@ func (e *MathMLMERRORElement) STYLEF(k string, format string, args ...any) *Math
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+// This attribute offers advisory information about the element for which it is
+// set.
 func (e *MathMLMERRORElement) IfSTYLE(condition bool, k string, v string) *MathMLMERRORElement {
 	if condition {
 		e.STYLE(k, v)
@@ -510,6 +599,8 @@ func (e *MathMLMERRORElement) IfSTYLE(condition bool, k string, v string) *MathM
 	return e
 }
 
+// This attribute offers advisory information about the element for which it is
+// set.
 func (e *MathMLMERRORElement) STYLE(k string, v string) *MathMLMERRORElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -523,6 +614,8 @@ func (e *MathMLMERRORElement) STYLE(k string, v string) *MathMLMERRORElement {
 	return e
 }
 
+// This attribute offers advisory information about the element for which it is
+// set.
 func (e *MathMLMERRORElement) IfSTYLEF(condition bool, k string, format string, args ...any) *MathMLMERRORElement {
 	if condition {
 		e.STYLE(k, fmt.Sprintf(format, args...))
@@ -530,6 +623,8 @@ func (e *MathMLMERRORElement) IfSTYLEF(condition bool, k string, format string, 
 	return e
 }
 
+// This attribute offers advisory information about the element for which it is
+// set.
 // Add the attributes in the map to the element.
 func (e *MathMLMERRORElement) STYLEMap(m map[string]string) *MathMLMERRORElement {
 	if e.KVStrings == nil {
@@ -546,6 +641,8 @@ func (e *MathMLMERRORElement) STYLEMap(m map[string]string) *MathMLMERRORElement
 	return e
 }
 
+// This attribute offers advisory information about the element for which it is
+// set.
 // Add pairs of attributes to the element.
 func (e *MathMLMERRORElement) STYLEPairs(pairs ...string) *MathMLMERRORElement {
 	if len(pairs)%2 != 0 {
@@ -567,6 +664,8 @@ func (e *MathMLMERRORElement) STYLEPairs(pairs ...string) *MathMLMERRORElement {
 	return e
 }
 
+// This attribute offers advisory information about the element for which it is
+// set.
 func (e *MathMLMERRORElement) IfSTYLEPairs(condition bool, pairs ...string) *MathMLMERRORElement {
 	if condition {
 		e.STYLEPairs(pairs...)
@@ -574,6 +673,8 @@ func (e *MathMLMERRORElement) IfSTYLEPairs(condition bool, pairs ...string) *Mat
 	return e
 }
 
+// This attribute offers advisory information about the element for which it is
+// set.
 // Remove the attribute STYLE from the element.
 func (e *MathMLMERRORElement) STYLERemove(keys ...string) *MathMLMERRORElement {
 	if e.KVStrings == nil {
@@ -601,6 +702,10 @@ func (e *MathMLMERRORElement) TABINDEX(i int) *MathMLMERRORElement {
 	return e
 }
 
+// This attribute specifies the position of the current element in the tabbing
+// order for the current document
+// This value must be a number between 0 and 32767
+// User agents should ignore leading zeros.
 func (e *MathMLMERRORElement) IfTABINDEX(condition bool, i int) *MathMLMERRORElement {
 	if condition {
 		e.TABINDEX(i)
@@ -608,6 +713,10 @@ func (e *MathMLMERRORElement) IfTABINDEX(condition bool, i int) *MathMLMERROREle
 	return e
 }
 
+// This attribute specifies the position of the current element in the tabbing
+// order for the current document
+// This value must be a number between 0 and 32767
+// User agents should ignore leading zeros.
 // Remove the attribute TABINDEX from the element.
 func (e *MathMLMERRORElement) TABINDEXRemove(i int) *MathMLMERRORElement {
 	if e.IntAttributes == nil {
@@ -617,62 +726,75 @@ func (e *MathMLMERRORElement) TABINDEXRemove(i int) *MathMLMERRORElement {
 	return e
 }
 
-// Merges the singleton store with the given object
-
-func (e *MathMLMERRORElement) DATASTAR_STORE(v any) *MathMLMERRORElement {
-	if e.CustomDataAttributes == nil {
-		e.CustomDataAttributes = treemap.New[string, string]()
-	}
-	b, err := json.Marshal(v)
-	if err != nil {
-		panic(err)
-	}
-	e.CustomDataAttributes.Set("store", html.EscapeString(string(b)))
-	return e
-}
-
-// Sets the reference of the element
-
-func (e *MathMLMERRORElement) DATASTAR_REF(expression string) *MathMLMERRORElement {
+// Sets the value of any HTML attribute to an expression, and keeps it in sync.
+//
+// See: https://data-star.dev/reference/attributes#data-attr
+func (e *MathMLMERRORElement) DATASTAR_ATTR(key string, expression string) *MathMLMERRORElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "data-ref"
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	key = fmt.Sprintf("data-attr%s", suffix)
 
 	e.StringAttributes.Set(key, expression)
 	return e
 }
 
-func (e *MathMLMERRORElement) IfDATASTAR_REF(condition bool, expression string) *MathMLMERRORElement {
+// Sets the value of any HTML attribute to an expression, and keeps it in sync.
+//
+// See: https://data-star.dev/reference/attributes#data-attr
+func (e *MathMLMERRORElement) IfDATASTAR_ATTR(condition bool, key string, expression string) *MathMLMERRORElement {
 	if condition {
-		e.DATASTAR_REF(expression)
+		e.DATASTAR_ATTR(key, expression)
 	}
 	return e
 }
 
-// Remove the attribute DATASTAR_REF from the element.
-func (e *MathMLMERRORElement) DATASTAR_REFRemove() *MathMLMERRORElement {
+// Sets the value of any HTML attribute to an expression, and keeps it in sync.
+//
+// See: https://data-star.dev/reference/attributes#data-attr
+// Remove the attribute DATASTAR_ATTR from the element.
+func (e *MathMLMERRORElement) DATASTAR_ATTRRemove(key string) *MathMLMERRORElement {
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("data-ref")
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	e.StringAttributes.Del("data-attr" + suffix)
+
 	return e
 }
 
-// Sets the value of the element
-
+// Creates a signal (if one doesn’t already exist) and sets up two-way data
+// binding between it and an element’s value.
+//
+// See: https://data-star.dev/reference/attributes#data-bind
 func (e *MathMLMERRORElement) DATASTAR_BIND(key string, expression string) *MathMLMERRORElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key = fmt.Sprintf("data-bind-%s", key)
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	key = fmt.Sprintf("data-bind%s", suffix)
 
 	e.StringAttributes.Set(key, expression)
 	return e
 }
 
+// Creates a signal (if one doesn’t already exist) and sets up two-way data
+// binding between it and an element’s value.
+//
+// See: https://data-star.dev/reference/attributes#data-bind
 func (e *MathMLMERRORElement) IfDATASTAR_BIND(condition bool, key string, expression string) *MathMLMERRORElement {
 	if condition {
 		e.DATASTAR_BIND(key, expression)
@@ -680,46 +802,1525 @@ func (e *MathMLMERRORElement) IfDATASTAR_BIND(condition bool, key string, expres
 	return e
 }
 
+// Creates a signal (if one doesn’t already exist) and sets up two-way data
+// binding between it and an element’s value.
+//
+// See: https://data-star.dev/reference/attributes#data-bind
 // Remove the attribute DATASTAR_BIND from the element.
-func (e *MathMLMERRORElement) DATASTAR_BINDRemove() *MathMLMERRORElement {
+func (e *MathMLMERRORElement) DATASTAR_BINDRemove(key string) *MathMLMERRORElement {
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("data-bind")
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	e.StringAttributes.Del("data-bind" + suffix)
+
 	return e
 }
 
-// Sets the value of the element
+type MathMLMerrorClassMod customDataKeyModifier
 
-func (e *MathMLMERRORElement) DATASTAR_MODEL(expression string) *MathMLMERRORElement {
+// Converts the casing of the signal name.
+//   - 'camel' – Camel case: 'mySignal' (default)
+//   - 'kebab' – Kebab case: 'my-signal'
+//   - 'snake' – Snake case: 'my_signal'
+//   - 'pascal' – Pascal case: 'MySignal'
+func MathMLMerrorClassModCase(
+	s string,
+) MathMLMerrorClassMod {
+	return func() string {
+		return fmt.Sprintf("case.%s", s)
+	}
+}
+
+// Adds or removes a class to or from an element based on an expression.
+func (e *MathMLMERRORElement) DATASTAR_CLASS(key string, expression string, modifiers ...MathMLMerrorClassMod) *MathMLMERRORElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "data-model"
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	key = fmt.Sprintf("data-class%s", suffix)
+
+	customMods := lo.Map(modifiers, func(m MathMLMerrorClassMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Adds or removes a class to or from an element based on an expression.
+func (e *MathMLMERRORElement) IfDATASTAR_CLASS(condition bool, key string, expression string, modifiers ...MathMLMerrorClassMod) *MathMLMERRORElement {
+	if condition {
+		e.DATASTAR_CLASS(key, expression, modifiers...)
+	}
+	return e
+}
+
+// Adds or removes a class to or from an element based on an expression.
+// Remove the attribute DATASTAR_CLASS from the element.
+func (e *MathMLMERRORElement) DATASTAR_CLASSRemove(key string) *MathMLMERRORElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	e.StringAttributes.Del("data-class" + suffix)
+
+	return e
+}
+
+type MathMLMerrorComputedMod customDataKeyModifier
+
+// Converts the casing of the signal name.
+//   - 'camel' – Camel case: 'mySignal' (default)
+//   - 'kebab' – Kebab case: 'my-signal'
+//   - 'snake' – Snake case: 'my_signal'
+//   - 'pascal' – Pascal case: 'MySignal'
+func MathMLMerrorComputedModCase(
+	s string,
+) MathMLMerrorComputedMod {
+	return func() string {
+		return fmt.Sprintf("case.%s", s)
+	}
+}
+
+// Creates a signal that is computed based on an expression
+// The computed signal is read-only, and its value is automatically updated when
+// any signals in the expression are updated.
+//
+// See: https://data-star.dev/reference/attributes#data-computed
+func (e *MathMLMERRORElement) DATASTAR_COMPUTED(key string, expression string, modifiers ...MathMLMerrorComputedMod) *MathMLMERRORElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	key = fmt.Sprintf("data-computed%s", suffix)
+
+	customMods := lo.Map(modifiers, func(m MathMLMerrorComputedMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Creates a signal that is computed based on an expression
+// The computed signal is read-only, and its value is automatically updated when
+// any signals in the expression are updated.
+//
+// See: https://data-star.dev/reference/attributes#data-computed
+func (e *MathMLMERRORElement) IfDATASTAR_COMPUTED(condition bool, key string, expression string, modifiers ...MathMLMerrorComputedMod) *MathMLMERRORElement {
+	if condition {
+		e.DATASTAR_COMPUTED(key, expression, modifiers...)
+	}
+	return e
+}
+
+// Creates a signal that is computed based on an expression
+// The computed signal is read-only, and its value is automatically updated when
+// any signals in the expression are updated.
+//
+// See: https://data-star.dev/reference/attributes#data-computed
+// Remove the attribute DATASTAR_COMPUTED from the element.
+func (e *MathMLMERRORElement) DATASTAR_COMPUTEDRemove(key string) *MathMLMERRORElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	e.StringAttributes.Del("data-computed" + suffix)
+
+	return e
+}
+
+// Executes an expression on page load and whenever any signals in the expression
+// change
+// This is useful for performing side effects, such as updating other signals,
+// making requests to the backend, or manipulating the DOM.
+//
+// See: https://data-star.dev/reference/attributes#data-effect
+func (e *MathMLMERRORElement) DATASTAR_EFFECT(expression string) *MathMLMERRORElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-effect"
 
 	e.StringAttributes.Set(key, expression)
 	return e
 }
 
-func (e *MathMLMERRORElement) IfDATASTAR_MODEL(condition bool, expression string) *MathMLMERRORElement {
+// Executes an expression on page load and whenever any signals in the expression
+// change
+// This is useful for performing side effects, such as updating other signals,
+// making requests to the backend, or manipulating the DOM.
+//
+// See: https://data-star.dev/reference/attributes#data-effect
+func (e *MathMLMERRORElement) IfDATASTAR_EFFECT(condition bool, expression string) *MathMLMERRORElement {
 	if condition {
-		e.DATASTAR_MODEL(expression)
+		e.DATASTAR_EFFECT(expression)
 	}
 	return e
 }
 
-// Remove the attribute DATASTAR_MODEL from the element.
-func (e *MathMLMERRORElement) DATASTAR_MODELRemove() *MathMLMERRORElement {
+// Executes an expression on page load and whenever any signals in the expression
+// change
+// This is useful for performing side effects, such as updating other signals,
+// making requests to the backend, or manipulating the DOM.
+//
+// See: https://data-star.dev/reference/attributes#data-effect
+// Remove the attribute DATASTAR_EFFECT from the element.
+func (e *MathMLMERRORElement) DATASTAR_EFFECTRemove() *MathMLMERRORElement {
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("data-model")
+
+	e.StringAttributes.Del("data-effect")
+
 	return e
 }
 
-// Sets the textContent of the element
+type MathMLMerrorIgnoreMod customDataKeyModifier
 
+// Only ignore the element itself, not its descendants.
+func MathMLMerrorIgnoreModSelf() MathMLMerrorIgnoreMod {
+	return func() string {
+		return "self"
+	}
+}
+
+// Datastar walks the entire DOM and applies plugins to each element it encounters
+// It's possible to tell Datastar to ignore an element and its descendants by
+// placing a data-ignore attribute on it
+// This can be useful for preventing naming conflicts with third-party libraries,
+// or when you are unable to escape user input.
+//
+// See: https://data-star.dev/reference/attributes#data-ignore
+func (e *MathMLMERRORElement) DATASTAR_IGNORESet(b bool, modifiers ...MathMLMerrorIgnoreMod) *MathMLMERRORElement {
+	key := customDataKey("data-ignore")
+	customMods := lo.Map(modifiers, func(m MathMLMerrorIgnoreMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	if e.BoolAttributes == nil {
+		e.BoolAttributes = treemap.New[string, bool]()
+	}
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+// Datastar walks the entire DOM and applies plugins to each element it encounters
+// It's possible to tell Datastar to ignore an element and its descendants by
+// placing a data-ignore attribute on it
+// This can be useful for preventing naming conflicts with third-party libraries,
+// or when you are unable to escape user input.
+//
+// See: https://data-star.dev/reference/attributes#data-ignore
+func (e *MathMLMERRORElement) DATASTAR_IGNORE(modifiers ...MathMLMerrorIgnoreMod) *MathMLMERRORElement {
+	return e.DATASTAR_IGNORESet(true, modifiers...)
+}
+
+// Similar to the data-ignore attribute, the data-ignore-morph attribute tells the
+// PatchElements watcher to skip processing an element and its children when
+// morphing elements
+// This can be useful for preventing conflicts with third-party libraries that
+// manipulate the DOM, or when you are unable to escape user input.
+//
+// See: https://data-star.dev/reference/attributes#data-ignore-morph
+func (e *MathMLMERRORElement) DATASTAR_IGNORE_MORPHSet(b bool) *MathMLMERRORElement {
+	key := "data-ignore-morph"
+	if e.BoolAttributes == nil {
+		e.BoolAttributes = treemap.New[string, bool]()
+	}
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+// Similar to the data-ignore attribute, the data-ignore-morph attribute tells the
+// PatchElements watcher to skip processing an element and its children when
+// morphing elements
+// This can be useful for preventing conflicts with third-party libraries that
+// manipulate the DOM, or when you are unable to escape user input.
+//
+// See: https://data-star.dev/reference/attributes#data-ignore-morph
+func (e *MathMLMERRORElement) DATASTAR_IGNORE_MORPH() *MathMLMERRORElement {
+	return e.DATASTAR_IGNORE_MORPHSet(true)
+}
+
+type MathMLMerrorIndicatorMod customDataKeyModifier
+
+// Converts the casing of the signal name.
+//   - 'camel' – Camel case: 'mySignal' (default)
+//   - 'kebab' – Kebab case: 'my-signal'
+//   - 'snake' – Snake case: 'my_signal'
+//   - 'pascal' – Pascal case: 'MySignal'
+func MathMLMerrorIndicatorModCase(
+	s string,
+) MathMLMerrorIndicatorMod {
+	return func() string {
+		return fmt.Sprintf("case.%s", s)
+	}
+}
+
+// Creates a signal and sets its value to true while a fetch request is in flight,
+// otherwise false
+// The signal can be used to show a loading indicator.
+//
+// See: https://data-star.dev/reference/attributes#data-indicator
+func (e *MathMLMERRORElement) DATASTAR_INDICATOR(expression string, modifiers ...MathMLMerrorIndicatorMod) *MathMLMERRORElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-indicator"
+
+	customMods := lo.Map(modifiers, func(m MathMLMerrorIndicatorMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Creates a signal and sets its value to true while a fetch request is in flight,
+// otherwise false
+// The signal can be used to show a loading indicator.
+//
+// See: https://data-star.dev/reference/attributes#data-indicator
+func (e *MathMLMERRORElement) IfDATASTAR_INDICATOR(condition bool, expression string, modifiers ...MathMLMerrorIndicatorMod) *MathMLMERRORElement {
+	if condition {
+		e.DATASTAR_INDICATOR(expression, modifiers...)
+	}
+	return e
+}
+
+// Creates a signal and sets its value to true while a fetch request is in flight,
+// otherwise false
+// The signal can be used to show a loading indicator.
+//
+// See: https://data-star.dev/reference/attributes#data-indicator
+// Remove the attribute DATASTAR_INDICATOR from the element.
+func (e *MathMLMERRORElement) DATASTAR_INDICATORRemove() *MathMLMERRORElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-indicator")
+
+	return e
+}
+
+type MathMLMerrorInitMod customDataKeyModifier
+
+// Delay the event listener in milliseconds.
+func MathMLMerrorInitModDelayMs(
+	d time.Duration,
+) MathMLMerrorInitMod {
+	return func() string {
+		return fmt.Sprintf("delay.%dms", d.Milliseconds())
+	}
+}
+
+// Delay the event listener in seconds.
+func MathMLMerrorInitModDelaySec(
+	d time.Duration,
+) MathMLMerrorInitMod {
+	return func() string {
+		return fmt.Sprintf("delay.%ds", int(d.Seconds()))
+	}
+}
+
+// Wraps the expression in 'document.startViewTransition()' when the View
+// Transition API is available.
+func MathMLMerrorInitModViewTransition() MathMLMerrorInitMod {
+	return func() string {
+		return "viewtransition"
+	}
+}
+
+// Runs an expression when the attribute is initialized
+// This can happen on page load, when an element is patched into the DOM, and any
+// time the attribute is modified (via a backend action or otherwise).
+//
+// See: https://data-star.dev/reference/attributes#data-indicator
+func (e *MathMLMERRORElement) DATASTAR_INIT(expression string, modifiers ...MathMLMerrorInitMod) *MathMLMERRORElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-init"
+
+	customMods := lo.Map(modifiers, func(m MathMLMerrorInitMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Runs an expression when the attribute is initialized
+// This can happen on page load, when an element is patched into the DOM, and any
+// time the attribute is modified (via a backend action or otherwise).
+//
+// See: https://data-star.dev/reference/attributes#data-indicator
+func (e *MathMLMERRORElement) IfDATASTAR_INIT(condition bool, expression string, modifiers ...MathMLMerrorInitMod) *MathMLMERRORElement {
+	if condition {
+		e.DATASTAR_INIT(expression, modifiers...)
+	}
+	return e
+}
+
+// Runs an expression when the attribute is initialized
+// This can happen on page load, when an element is patched into the DOM, and any
+// time the attribute is modified (via a backend action or otherwise).
+//
+// See: https://data-star.dev/reference/attributes#data-indicator
+// Remove the attribute DATASTAR_INIT from the element.
+func (e *MathMLMERRORElement) DATASTAR_INITRemove() *MathMLMERRORElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-init")
+
+	return e
+}
+
+type MathMLMerrorJsonSignalsMod customDataKeyModifier
+
+// Outputs a more compact JSON format without extra whitespace
+// Useful for displaying filtered data inline.
+func MathMLMerrorJsonSignalsModTerse() MathMLMerrorJsonSignalsMod {
+	return func() string {
+		return "terse"
+	}
+}
+
+// Sets the text content of an element to a reactive JSON stringified version of
+// signals
+// Useful when troubleshooting an issue.
+//
+// See: https://data-star.dev/reference/attributes#data-json-signals
+func (e *MathMLMERRORElement) DATASTAR_JSON_SIGNALS(expression string, modifiers ...MathMLMerrorJsonSignalsMod) *MathMLMERRORElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-json-signals"
+
+	customMods := lo.Map(modifiers, func(m MathMLMerrorJsonSignalsMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Sets the text content of an element to a reactive JSON stringified version of
+// signals
+// Useful when troubleshooting an issue.
+//
+// See: https://data-star.dev/reference/attributes#data-json-signals
+func (e *MathMLMERRORElement) IfDATASTAR_JSON_SIGNALS(condition bool, expression string, modifiers ...MathMLMerrorJsonSignalsMod) *MathMLMERRORElement {
+	if condition {
+		e.DATASTAR_JSON_SIGNALS(expression, modifiers...)
+	}
+	return e
+}
+
+// Sets the text content of an element to a reactive JSON stringified version of
+// signals
+// Useful when troubleshooting an issue.
+//
+// See: https://data-star.dev/reference/attributes#data-json-signals
+// Remove the attribute DATASTAR_JSON_SIGNALS from the element.
+func (e *MathMLMERRORElement) DATASTAR_JSON_SIGNALSRemove() *MathMLMERRORElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-json-signals")
+
+	return e
+}
+
+type MathMLMerrorOnMod customDataKeyModifier
+
+// Only run the expression once
+// Only works with built-in events.
+func MathMLMerrorOnModOnce() MathMLMerrorOnMod {
+	return func() string {
+		return "once"
+	}
+}
+
+// Do not call preventDefault on the event listener
+// Only works with built-in events.
+func MathMLMerrorOnModPassive() MathMLMerrorOnMod {
+	return func() string {
+		return "passive"
+	}
+}
+
+// Use capture event listener
+// Only works with built-in events.
+func MathMLMerrorOnModCapture() MathMLMerrorOnMod {
+	return func() string {
+		return "capture"
+	}
+}
+
+// Converts the casing of the signal name.
+//   - 'camel' – Camel case: 'mySignal' (default)
+//   - 'kebab' – Kebab case: 'my-signal'
+//   - 'snake' – Snake case: 'my_signal'
+//   - 'pascal' – Pascal case: 'MySignal'
+func MathMLMerrorOnModCase(
+	s string,
+) MathMLMerrorOnMod {
+	return func() string {
+		return fmt.Sprintf("case.%s", s)
+	}
+}
+
+// Delay the event listener in milliseconds.
+func MathMLMerrorOnModDelayMs(
+	d time.Duration,
+) MathMLMerrorOnMod {
+	return func() string {
+		return fmt.Sprintf("delay.%dms", d.Milliseconds())
+	}
+}
+
+// Delay the event listener in seconds.
+func MathMLMerrorOnModDelaySec(
+	d time.Duration,
+) MathMLMerrorOnMod {
+	return func() string {
+		return fmt.Sprintf("delay.%ds", int(d.Seconds()))
+	}
+}
+
+// Debounces the event handler
+func MathMLMerrorOnModDebounceMs(
+	d time.Duration,
+) MathMLMerrorOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms", d.Milliseconds())
+	}
+}
+
+// Debounce the event listener in milliseconds with leading edge.
+func MathMLMerrorOnModDebounceMsLeading(
+	d time.Duration,
+) MathMLMerrorOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms.leading", d.Milliseconds())
+	}
+}
+
+// Debounce the event listener in milliseconds without trailing edge.
+func MathMLMerrorOnModDebounceMsNoTrailing(
+	d time.Duration,
+) MathMLMerrorOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms.notrailing", d.Milliseconds())
+	}
+}
+
+// Debounces the event handler
+func MathMLMerrorOnModDebounceSec(
+	d time.Duration,
+) MathMLMerrorOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds", int(d.Seconds()))
+	}
+}
+
+// Debounce the event listener in seconds with leading edge.
+func MathMLMerrorOnModDebounceSecLeading(
+	d time.Duration,
+) MathMLMerrorOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds.leading", int(d.Seconds()))
+	}
+}
+
+// Debounce the event listener in seconds without trailing edge.
+func MathMLMerrorOnModDebounceSecNoTrailing(
+	d time.Duration,
+) MathMLMerrorOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds.notrailing", int(d.Seconds()))
+	}
+}
+
+// Throttles the event handler
+func MathMLMerrorOnModThrottleMs(
+	d time.Duration,
+) MathMLMerrorOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms", d.Milliseconds())
+	}
+}
+
+// Throttle the event listener in milliseconds without leading edge.
+func MathMLMerrorOnModThrottleMsNoLeading(
+	d time.Duration,
+) MathMLMerrorOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms.noleading", d.Milliseconds())
+	}
+}
+
+// Throttle the event listener in milliseconds with trailing edge.
+func MathMLMerrorOnModThrottleMsTrailing(
+	d time.Duration,
+) MathMLMerrorOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms.trailing", d.Milliseconds())
+	}
+}
+
+// Throttles the event listener in seconds.
+func MathMLMerrorOnModThrottleSec(
+	d time.Duration,
+) MathMLMerrorOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds", int(d.Seconds()))
+	}
+}
+
+// Throttle the event listener in seconds without leading edge.
+func MathMLMerrorOnModThrottleSecNoLeading(
+	d time.Duration,
+) MathMLMerrorOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds.noleading", int(d.Seconds()))
+	}
+}
+
+// Throttle the event listener in seconds with trailing edge.
+func MathMLMerrorOnModThrottleSecTrailing(
+	d time.Duration,
+) MathMLMerrorOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds.trailing", int(d.Seconds()))
+	}
+}
+
+// Wraps the expression in 'document.startViewTransition()' when the View
+// Transition API is available.
+func MathMLMerrorOnModViewTransition() MathMLMerrorOnMod {
+	return func() string {
+		return "viewtransition"
+	}
+}
+
+// Attaches the event listener to the 'window' element.
+func MathMLMerrorOnModWindow() MathMLMerrorOnMod {
+	return func() string {
+		return "window"
+	}
+}
+
+// Calls 'preventDefault' on the event listener.
+func MathMLMerrorOnModPrevent() MathMLMerrorOnMod {
+	return func() string {
+		return "prevent"
+	}
+}
+
+// Triggers when the event is outside the element.
+func MathMLMerrorOnModOutside() MathMLMerrorOnMod {
+	return func() string {
+		return "outside"
+	}
+}
+
+// Calls 'stopPropagation' on the event listener.
+func MathMLMerrorOnModStop() MathMLMerrorOnMod {
+	return func() string {
+		return "stop"
+	}
+}
+
+// Attaches an event listener to an element, executing an expression whenever the
+// event is triggered.
+//
+// See: https://data-star.dev/reference/attributes#data-on
+func (e *MathMLMERRORElement) DATASTAR_ON(key string, expression string, modifiers ...MathMLMerrorOnMod) *MathMLMERRORElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	key = fmt.Sprintf("data-on%s", suffix)
+
+	customMods := lo.Map(modifiers, func(m MathMLMerrorOnMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Attaches an event listener to an element, executing an expression whenever the
+// event is triggered.
+//
+// See: https://data-star.dev/reference/attributes#data-on
+func (e *MathMLMERRORElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...MathMLMerrorOnMod) *MathMLMERRORElement {
+	if condition {
+		e.DATASTAR_ON(key, expression, modifiers...)
+	}
+	return e
+}
+
+// Attaches an event listener to an element, executing an expression whenever the
+// event is triggered.
+//
+// See: https://data-star.dev/reference/attributes#data-on
+// Remove the attribute DATASTAR_ON from the element.
+func (e *MathMLMERRORElement) DATASTAR_ONRemove(key string) *MathMLMERRORElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	e.StringAttributes.Del("data-on" + suffix)
+
+	return e
+}
+
+type MathMLMerrorOnIntersectMod customDataKeyModifier
+
+// Only run the expression once
+// Only works with built-in events.
+func MathMLMerrorOnIntersectModOnce() MathMLMerrorOnIntersectMod {
+	return func() string {
+		return "once"
+	}
+}
+
+// Trigger when half of the element is visible.
+func MathMLMerrorOnIntersectModHalf() MathMLMerrorOnIntersectMod {
+	return func() string {
+		return "half"
+	}
+}
+
+// Trigger when the full element is visible.
+func MathMLMerrorOnIntersectModFull() MathMLMerrorOnIntersectMod {
+	return func() string {
+		return "full"
+	}
+}
+
+// Delay the event listener in milliseconds.
+func MathMLMerrorOnIntersectModDelayMs(
+	d time.Duration,
+) MathMLMerrorOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("delay.%dms", d.Milliseconds())
+	}
+}
+
+// Delay the event listener in seconds.
+func MathMLMerrorOnIntersectModDelaySec(
+	d time.Duration,
+) MathMLMerrorOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("delay.%ds", int(d.Seconds()))
+	}
+}
+
+// Debounces the event handler
+func MathMLMerrorOnIntersectModDebounceMs(
+	d time.Duration,
+) MathMLMerrorOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms", d.Milliseconds())
+	}
+}
+
+// Debounce the event listener in milliseconds with leading edge.
+func MathMLMerrorOnIntersectModDebounceMsLeading(
+	d time.Duration,
+) MathMLMerrorOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms.leading", d.Milliseconds())
+	}
+}
+
+// Debounce the event listener in milliseconds without trailing edge.
+func MathMLMerrorOnIntersectModDebounceMsNoTrailing(
+	d time.Duration,
+) MathMLMerrorOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms.notrailing", d.Milliseconds())
+	}
+}
+
+// Debounces the event handler
+func MathMLMerrorOnIntersectModDebounceSec(
+	d time.Duration,
+) MathMLMerrorOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds", int(d.Seconds()))
+	}
+}
+
+// Debounce the event listener in seconds with leading edge.
+func MathMLMerrorOnIntersectModDebounceSecLeading(
+	d time.Duration,
+) MathMLMerrorOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds.leading", int(d.Seconds()))
+	}
+}
+
+// Debounce the event listener in seconds without trailing edge.
+func MathMLMerrorOnIntersectModDebounceSecNoTrailing(
+	d time.Duration,
+) MathMLMerrorOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds.notrailing", int(d.Seconds()))
+	}
+}
+
+// Throttles the event handler
+func MathMLMerrorOnIntersectModThrottleMs(
+	d time.Duration,
+) MathMLMerrorOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms", d.Milliseconds())
+	}
+}
+
+// Throttle the event listener in milliseconds without leading edge.
+func MathMLMerrorOnIntersectModThrottleMsNoLeading(
+	d time.Duration,
+) MathMLMerrorOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms.noleading", d.Milliseconds())
+	}
+}
+
+// Throttle the event listener in milliseconds with trailing edge.
+func MathMLMerrorOnIntersectModThrottleMsTrailing(
+	d time.Duration,
+) MathMLMerrorOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms.trailing", d.Milliseconds())
+	}
+}
+
+// Throttles the event listener in seconds.
+func MathMLMerrorOnIntersectModThrottleSec(
+	d time.Duration,
+) MathMLMerrorOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds", int(d.Seconds()))
+	}
+}
+
+// Throttle the event listener in seconds without leading edge.
+func MathMLMerrorOnIntersectModThrottleSecNoLeading(
+	d time.Duration,
+) MathMLMerrorOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds.noleading", int(d.Seconds()))
+	}
+}
+
+// Throttle the event listener in seconds with trailing edge.
+func MathMLMerrorOnIntersectModThrottleSecTrailing(
+	d time.Duration,
+) MathMLMerrorOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds.trailing", int(d.Seconds()))
+	}
+}
+
+// Wraps the expression in 'document.startViewTransition()' when the View
+// Transition API is available.
+func MathMLMerrorOnIntersectModViewTransition() MathMLMerrorOnIntersectMod {
+	return func() string {
+		return "viewtransition"
+	}
+}
+
+// Runs an expression when the element intersects with the viewport.
+func (e *MathMLMERRORElement) DATASTAR_ON_INTERSECT(expression string, modifiers ...MathMLMerrorOnIntersectMod) *MathMLMERRORElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-on-intersect"
+
+	customMods := lo.Map(modifiers, func(m MathMLMerrorOnIntersectMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Runs an expression when the element intersects with the viewport.
+func (e *MathMLMERRORElement) IfDATASTAR_ON_INTERSECT(condition bool, expression string, modifiers ...MathMLMerrorOnIntersectMod) *MathMLMERRORElement {
+	if condition {
+		e.DATASTAR_ON_INTERSECT(expression, modifiers...)
+	}
+	return e
+}
+
+// Runs an expression when the element intersects with the viewport.
+// Remove the attribute DATASTAR_ON_INTERSECT from the element.
+func (e *MathMLMERRORElement) DATASTAR_ON_INTERSECTRemove() *MathMLMERRORElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-on-intersect")
+
+	return e
+}
+
+type MathMLMerrorOnIntervalMod customDataKeyModifier
+
+// Sets the interval duration in milliseconds.
+func MathMLMerrorOnIntervalModDurationMs(
+	d time.Duration,
+) MathMLMerrorOnIntervalMod {
+	return func() string {
+		return fmt.Sprintf("duration.%dms", d.Milliseconds())
+	}
+}
+
+// Sets the interval duration in milliseconds
+// Execute the first interval immediately.
+func MathMLMerrorOnIntervalModDurationMsLeading(
+	d time.Duration,
+) MathMLMerrorOnIntervalMod {
+	return func() string {
+		return fmt.Sprintf("duration.%dms.leading", d.Milliseconds())
+	}
+}
+
+// Sets the interval duration in seconds.
+func MathMLMerrorOnIntervalModDurationSec(
+	d time.Duration,
+) MathMLMerrorOnIntervalMod {
+	return func() string {
+		return fmt.Sprintf("duration.%ds", int(d.Seconds()))
+	}
+}
+
+// Sets the interval duration in seconds
+// Execute the first interval immediately.
+func MathMLMerrorOnIntervalModDurationSecLeading(
+	d time.Duration,
+) MathMLMerrorOnIntervalMod {
+	return func() string {
+		return fmt.Sprintf("duration.%ds.leading", int(d.Seconds()))
+	}
+}
+
+// Wraps the expression in 'document.startViewTransition()' when the View
+// Transition API is available.
+func MathMLMerrorOnIntervalModViewTransition() MathMLMerrorOnIntervalMod {
+	return func() string {
+		return "viewtransition"
+	}
+}
+
+// Runs an expression at a regular interval
+// The interval duration defaults to one second and can be modified using the
+// '__duration' modifier.
+//
+// See: https://data-star.dev/reference/attributes#data-on-interval
+func (e *MathMLMERRORElement) DATASTAR_ON_INTERVAL(expression string, modifiers ...MathMLMerrorOnIntervalMod) *MathMLMERRORElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-on-interval"
+
+	customMods := lo.Map(modifiers, func(m MathMLMerrorOnIntervalMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Runs an expression at a regular interval
+// The interval duration defaults to one second and can be modified using the
+// '__duration' modifier.
+//
+// See: https://data-star.dev/reference/attributes#data-on-interval
+func (e *MathMLMERRORElement) IfDATASTAR_ON_INTERVAL(condition bool, expression string, modifiers ...MathMLMerrorOnIntervalMod) *MathMLMERRORElement {
+	if condition {
+		e.DATASTAR_ON_INTERVAL(expression, modifiers...)
+	}
+	return e
+}
+
+// Runs an expression at a regular interval
+// The interval duration defaults to one second and can be modified using the
+// '__duration' modifier.
+//
+// See: https://data-star.dev/reference/attributes#data-on-interval
+// Remove the attribute DATASTAR_ON_INTERVAL from the element.
+func (e *MathMLMERRORElement) DATASTAR_ON_INTERVALRemove() *MathMLMERRORElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-on-interval")
+
+	return e
+}
+
+type MathMLMerrorOnSignalPatchMod customDataKeyModifier
+
+// Delay the event listener in milliseconds.
+func MathMLMerrorOnSignalPatchModDelayMs(
+	d time.Duration,
+) MathMLMerrorOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("delay.%dms", d.Milliseconds())
+	}
+}
+
+// Delay the event listener in seconds.
+func MathMLMerrorOnSignalPatchModDelaySec(
+	d time.Duration,
+) MathMLMerrorOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("delay.%ds", int(d.Seconds()))
+	}
+}
+
+// Debounces the event handler
+func MathMLMerrorOnSignalPatchModDebounceMs(
+	d time.Duration,
+) MathMLMerrorOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms", d.Milliseconds())
+	}
+}
+
+// Debounce the event listener in milliseconds with leading edge.
+func MathMLMerrorOnSignalPatchModDebounceMsLeading(
+	d time.Duration,
+) MathMLMerrorOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms.leading", d.Milliseconds())
+	}
+}
+
+// Debounce the event listener in milliseconds without trailing edge.
+func MathMLMerrorOnSignalPatchModDebounceMsNoTrailing(
+	d time.Duration,
+) MathMLMerrorOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms.notrailing", d.Milliseconds())
+	}
+}
+
+// Debounces the event handler
+func MathMLMerrorOnSignalPatchModDebounceSec(
+	d time.Duration,
+) MathMLMerrorOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds", int(d.Seconds()))
+	}
+}
+
+// Debounce the event listener in seconds with leading edge.
+func MathMLMerrorOnSignalPatchModDebounceSecLeading(
+	d time.Duration,
+) MathMLMerrorOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds.leading", int(d.Seconds()))
+	}
+}
+
+// Debounce the event listener in seconds without trailing edge.
+func MathMLMerrorOnSignalPatchModDebounceSecNoTrailing(
+	d time.Duration,
+) MathMLMerrorOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds.notrailing", int(d.Seconds()))
+	}
+}
+
+// Throttles the event handler
+func MathMLMerrorOnSignalPatchModThrottleMs(
+	d time.Duration,
+) MathMLMerrorOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms", d.Milliseconds())
+	}
+}
+
+// Throttle the event listener in milliseconds without leading edge.
+func MathMLMerrorOnSignalPatchModThrottleMsNoLeading(
+	d time.Duration,
+) MathMLMerrorOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms.noleading", d.Milliseconds())
+	}
+}
+
+// Throttle the event listener in milliseconds with trailing edge.
+func MathMLMerrorOnSignalPatchModThrottleMsTrailing(
+	d time.Duration,
+) MathMLMerrorOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms.trailing", d.Milliseconds())
+	}
+}
+
+// Throttles the event listener in seconds.
+func MathMLMerrorOnSignalPatchModThrottleSec(
+	d time.Duration,
+) MathMLMerrorOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds", int(d.Seconds()))
+	}
+}
+
+// Throttle the event listener in seconds without leading edge.
+func MathMLMerrorOnSignalPatchModThrottleSecNoLeading(
+	d time.Duration,
+) MathMLMerrorOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds.noleading", int(d.Seconds()))
+	}
+}
+
+// Throttle the event listener in seconds with trailing edge.
+func MathMLMerrorOnSignalPatchModThrottleSecTrailing(
+	d time.Duration,
+) MathMLMerrorOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds.trailing", int(d.Seconds()))
+	}
+}
+
+// Runs an expression whenever any signals are patched
+// This is useful for tracking changes, updating computed values, or triggering
+// side effects when data updates.
+//
+// See: https://data-star.dev/reference/attributes#data-on-signal-patch
+func (e *MathMLMERRORElement) DATASTAR_ON_SIGNAL_PATCH(expression string, modifiers ...MathMLMerrorOnSignalPatchMod) *MathMLMERRORElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-on-signal-patch"
+
+	customMods := lo.Map(modifiers, func(m MathMLMerrorOnSignalPatchMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Runs an expression whenever any signals are patched
+// This is useful for tracking changes, updating computed values, or triggering
+// side effects when data updates.
+//
+// See: https://data-star.dev/reference/attributes#data-on-signal-patch
+func (e *MathMLMERRORElement) IfDATASTAR_ON_SIGNAL_PATCH(condition bool, expression string, modifiers ...MathMLMerrorOnSignalPatchMod) *MathMLMERRORElement {
+	if condition {
+		e.DATASTAR_ON_SIGNAL_PATCH(expression, modifiers...)
+	}
+	return e
+}
+
+// Runs an expression whenever any signals are patched
+// This is useful for tracking changes, updating computed values, or triggering
+// side effects when data updates.
+//
+// See: https://data-star.dev/reference/attributes#data-on-signal-patch
+// Remove the attribute DATASTAR_ON_SIGNAL_PATCH from the element.
+func (e *MathMLMERRORElement) DATASTAR_ON_SIGNAL_PATCHRemove() *MathMLMERRORElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-on-signal-patch")
+
+	return e
+}
+
+// Filters which signals to watch when using the data-on-signal-patch attribute.
+//
+// The data-on-signal-patch-filter attribute accepts an object with include and/or
+// exclude properties that are regular expressions.
+//
+// See: https://data-star.dev/reference/attributes#data-on-signal-patch-filter
+func (e *MathMLMERRORElement) DATASTAR_ON_SIGNAL_PATCH_FILTER(expression string) *MathMLMERRORElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-on-signal-patch-filter"
+
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Filters which signals to watch when using the data-on-signal-patch attribute.
+//
+// The data-on-signal-patch-filter attribute accepts an object with include and/or
+// exclude properties that are regular expressions.
+//
+// See: https://data-star.dev/reference/attributes#data-on-signal-patch-filter
+func (e *MathMLMERRORElement) IfDATASTAR_ON_SIGNAL_PATCH_FILTER(condition bool, expression string) *MathMLMERRORElement {
+	if condition {
+		e.DATASTAR_ON_SIGNAL_PATCH_FILTER(expression)
+	}
+	return e
+}
+
+// Filters which signals to watch when using the data-on-signal-patch attribute.
+//
+// The data-on-signal-patch-filter attribute accepts an object with include and/or
+// exclude properties that are regular expressions.
+//
+// See: https://data-star.dev/reference/attributes#data-on-signal-patch-filter
+// Remove the attribute DATASTAR_ON_SIGNAL_PATCH_FILTER from the element.
+func (e *MathMLMERRORElement) DATASTAR_ON_SIGNAL_PATCH_FILTERRemove() *MathMLMERRORElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-on-signal-patch-filter")
+
+	return e
+}
+
+// Preserves the value of an attribute when morphing DOM elements.
+//
+// See: https://data-star.dev/reference/attributes#data-preserve-attr
+func (e *MathMLMERRORElement) DATASTAR_PRESERVE_ATTR(expression string) *MathMLMERRORElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-preserve-attr"
+
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Preserves the value of an attribute when morphing DOM elements.
+//
+// See: https://data-star.dev/reference/attributes#data-preserve-attr
+func (e *MathMLMERRORElement) IfDATASTAR_PRESERVE_ATTR(condition bool, expression string) *MathMLMERRORElement {
+	if condition {
+		e.DATASTAR_PRESERVE_ATTR(expression)
+	}
+	return e
+}
+
+// Preserves the value of an attribute when morphing DOM elements.
+//
+// See: https://data-star.dev/reference/attributes#data-preserve-attr
+// Remove the attribute DATASTAR_PRESERVE_ATTR from the element.
+func (e *MathMLMERRORElement) DATASTAR_PRESERVE_ATTRRemove() *MathMLMERRORElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-preserve-attr")
+
+	return e
+}
+
+type MathMLMerrorRefMod customDataKeyModifier
+
+// Converts the casing of the signal name.
+//   - 'camel' – Camel case: 'mySignal' (default)
+//   - 'kebab' – Kebab case: 'my-signal'
+//   - 'snake' – Snake case: 'my_signal'
+//   - 'pascal' – Pascal case: 'MySignal'
+func MathMLMerrorRefModCase(
+	s string,
+) MathMLMerrorRefMod {
+	return func() string {
+		return fmt.Sprintf("case.%s", s)
+	}
+}
+
+// Creates a new signal that is a reference to the element on which the data
+// attribute is placed.
+//
+// See: https://data-star.dev/reference/attributes#data-ref
+func (e *MathMLMERRORElement) DATASTAR_REF(expression string, modifiers ...MathMLMerrorRefMod) *MathMLMERRORElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-ref"
+
+	customMods := lo.Map(modifiers, func(m MathMLMerrorRefMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Creates a new signal that is a reference to the element on which the data
+// attribute is placed.
+//
+// See: https://data-star.dev/reference/attributes#data-ref
+func (e *MathMLMERRORElement) IfDATASTAR_REF(condition bool, expression string, modifiers ...MathMLMerrorRefMod) *MathMLMERRORElement {
+	if condition {
+		e.DATASTAR_REF(expression, modifiers...)
+	}
+	return e
+}
+
+// Creates a new signal that is a reference to the element on which the data
+// attribute is placed.
+//
+// See: https://data-star.dev/reference/attributes#data-ref
+// Remove the attribute DATASTAR_REF from the element.
+func (e *MathMLMERRORElement) DATASTAR_REFRemove() *MathMLMERRORElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-ref")
+
+	return e
+}
+
+// Shows or hides an element based on whether an expression evaluates to 'true' or
+// 'false'
+// For anything with custom requirements, use 'data-class' instead.
+//
+// See: https://data-star.dev/reference/attributes#data-show
+func (e *MathMLMERRORElement) DATASTAR_SHOW(expression string) *MathMLMERRORElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-show"
+
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Shows or hides an element based on whether an expression evaluates to 'true' or
+// 'false'
+// For anything with custom requirements, use 'data-class' instead.
+//
+// See: https://data-star.dev/reference/attributes#data-show
+func (e *MathMLMERRORElement) IfDATASTAR_SHOW(condition bool, expression string) *MathMLMERRORElement {
+	if condition {
+		e.DATASTAR_SHOW(expression)
+	}
+	return e
+}
+
+// Shows or hides an element based on whether an expression evaluates to 'true' or
+// 'false'
+// For anything with custom requirements, use 'data-class' instead.
+//
+// See: https://data-star.dev/reference/attributes#data-show
+// Remove the attribute DATASTAR_SHOW from the element.
+func (e *MathMLMERRORElement) DATASTAR_SHOWRemove() *MathMLMERRORElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-show")
+
+	return e
+}
+
+type MathMLMerrorSignalsMod customDataKeyModifier
+
+// Converts the casing of the signal name.
+//   - 'camel' – Camel case: 'mySignal' (default)
+//   - 'kebab' – Kebab case: 'my-signal'
+//   - 'snake' – Snake case: 'my_signal'
+//   - 'pascal' – Pascal case: 'MySignal'
+func MathMLMerrorSignalsModCase(
+	s string,
+) MathMLMerrorSignalsMod {
+	return func() string {
+		return fmt.Sprintf("case.%s", s)
+	}
+}
+
+// Only patches signals if their keys do not already exist
+// This is useful for setting defaults without overwriting existing values.
+func MathMLMerrorSignalsModIfMissing() MathMLMerrorSignalsMod {
+	return func() string {
+		return "ifmissing"
+	}
+}
+
+// Patches (adds, updates or removes) one or more signals into the existing
+// signals
+// Values defined later in the DOM tree override those defined earlier.
+//
+// See: https://data-star.dev/reference/attributes#data-signals
+func (e *MathMLMERRORElement) DATASTAR_SIGNALS(key string, expression string, modifiers ...MathMLMerrorSignalsMod) *MathMLMERRORElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	key = fmt.Sprintf("data-signals%s", suffix)
+
+	customMods := lo.Map(modifiers, func(m MathMLMerrorSignalsMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Patches (adds, updates or removes) one or more signals into the existing
+// signals
+// Values defined later in the DOM tree override those defined earlier.
+//
+// See: https://data-star.dev/reference/attributes#data-signals
+func (e *MathMLMERRORElement) IfDATASTAR_SIGNALS(condition bool, key string, expression string, modifiers ...MathMLMerrorSignalsMod) *MathMLMERRORElement {
+	if condition {
+		e.DATASTAR_SIGNALS(key, expression, modifiers...)
+	}
+	return e
+}
+
+// Patches (adds, updates or removes) one or more signals into the existing
+// signals
+// Values defined later in the DOM tree override those defined earlier.
+//
+// See: https://data-star.dev/reference/attributes#data-signals
+// Remove the attribute DATASTAR_SIGNALS from the element.
+func (e *MathMLMERRORElement) DATASTAR_SIGNALSRemove(key string) *MathMLMERRORElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	e.StringAttributes.Del("data-signals" + suffix)
+
+	return e
+}
+
+type MathMLMerrorStyleMod customDataKeyModifier
+
+// Converts the casing of the signal name.
+//   - 'camel' – Camel case: 'mySignal' (default)
+//   - 'kebab' – Kebab case: 'my-signal'
+//   - 'snake' – Snake case: 'my_signal'
+//   - 'pascal' – Pascal case: 'MySignal'
+func MathMLMerrorStyleModCase(
+	s string,
+) MathMLMerrorStyleMod {
+	return func() string {
+		return fmt.Sprintf("case.%s", s)
+	}
+}
+
+// Sets the value of inline CSS styles on an element based on an expression, and
+// keeps them in sync.
+//
+// See: https://data-star.dev/reference/attributes#data-style
+func (e *MathMLMERRORElement) DATASTAR_STYLE(key string, expression string, modifiers ...MathMLMerrorStyleMod) *MathMLMERRORElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	key = fmt.Sprintf("data-style%s", suffix)
+
+	customMods := lo.Map(modifiers, func(m MathMLMerrorStyleMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Sets the value of inline CSS styles on an element based on an expression, and
+// keeps them in sync.
+//
+// See: https://data-star.dev/reference/attributes#data-style
+func (e *MathMLMERRORElement) IfDATASTAR_STYLE(condition bool, key string, expression string, modifiers ...MathMLMerrorStyleMod) *MathMLMERRORElement {
+	if condition {
+		e.DATASTAR_STYLE(key, expression, modifiers...)
+	}
+	return e
+}
+
+// Sets the value of inline CSS styles on an element based on an expression, and
+// keeps them in sync.
+//
+// See: https://data-star.dev/reference/attributes#data-style
+// Remove the attribute DATASTAR_STYLE from the element.
+func (e *MathMLMERRORElement) DATASTAR_STYLERemove(key string) *MathMLMERRORElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	e.StringAttributes.Del("data-style" + suffix)
+
+	return e
+}
+
+// Binds the text content of an element to an expression.
+//
+// See: https://data-star.dev/reference/attributes#data-text
 func (e *MathMLMERRORElement) DATASTAR_TEXT(expression string) *MathMLMERRORElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
@@ -731,6 +2332,9 @@ func (e *MathMLMERRORElement) DATASTAR_TEXT(expression string) *MathMLMERRORElem
 	return e
 }
 
+// Binds the text content of an element to an expression.
+//
+// See: https://data-star.dev/reference/attributes#data-text
 func (e *MathMLMERRORElement) IfDATASTAR_TEXT(condition bool, expression string) *MathMLMERRORElement {
 	if condition {
 		e.DATASTAR_TEXT(expression)
@@ -738,228 +2342,16 @@ func (e *MathMLMERRORElement) IfDATASTAR_TEXT(condition bool, expression string)
 	return e
 }
 
+// Binds the text content of an element to an expression.
+//
+// See: https://data-star.dev/reference/attributes#data-text
 // Remove the attribute DATASTAR_TEXT from the element.
 func (e *MathMLMERRORElement) DATASTAR_TEXTRemove() *MathMLMERRORElement {
 	if e.StringAttributes == nil {
 		return e
 	}
+
 	e.StringAttributes.Del("data-text")
-	return e
-}
 
-// Sets the event handler of the element
-
-type MathMLMerrorOnMod customDataKeyModifier
-
-// Debounces the event handler
-func MathMLMerrorOnModDebounce(
-	d time.Duration,
-) MathMLMerrorOnMod {
-	return func() string {
-		return fmt.Sprintf("debounce_%dms", d.Milliseconds())
-	}
-}
-
-// Throttles the event handler
-func MathMLMerrorOnModThrottle(
-	d time.Duration,
-) MathMLMerrorOnMod {
-	return func() string {
-		return fmt.Sprintf("throttle_%dms", d.Milliseconds())
-	}
-}
-
-func (e *MathMLMERRORElement) DATASTAR_ON(key string, expression string, modifiers ...MathMLMerrorOnMod) *MathMLMERRORElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-
-	key = fmt.Sprintf("data-on-%s", key)
-
-	customMods := lo.Map(modifiers, func(m MathMLMerrorOnMod, i int) customDataKeyModifier {
-		return customDataKeyModifier(m)
-	})
-	key = customDataKey(key, customMods...)
-	e.StringAttributes.Set(key, expression)
-	return e
-}
-
-func (e *MathMLMERRORElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...MathMLMerrorOnMod) *MathMLMERRORElement {
-	if condition {
-		e.DATASTAR_ON(key, expression, modifiers...)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_ON from the element.
-func (e *MathMLMERRORElement) DATASTAR_ONRemove() *MathMLMERRORElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-on")
-	return e
-}
-
-// Sets the focus of the element
-
-func (e *MathMLMERRORElement) DATASTAR_FOCUSSet(b bool) *MathMLMERRORElement {
-	key := "data-focus"
-	e.BoolAttributes.Set(key, b)
-	return e
-}
-
-func (e *MathMLMERRORElement) DATASTAR_FOCUS() *MathMLMERRORElement {
-	return e.DATASTAR_FOCUSSet(true)
-}
-
-// Sets the header of for fetch requests
-
-func (e *MathMLMERRORElement) DATASTAR_HEADER(key string, expression string) *MathMLMERRORElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-
-	key = fmt.Sprintf("data-header-%s", key)
-
-	e.StringAttributes.Set(key, expression)
-	return e
-}
-
-func (e *MathMLMERRORElement) IfDATASTAR_HEADER(condition bool, key string, expression string) *MathMLMERRORElement {
-	if condition {
-		e.DATASTAR_HEADER(key, expression)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_HEADER from the element.
-func (e *MathMLMERRORElement) DATASTAR_HEADERRemove() *MathMLMERRORElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-header")
-	return e
-}
-
-// Sets the indicator selector for fetch requests
-
-func (e *MathMLMERRORElement) DATASTAR_FETCH_INDICATOR(expression string) *MathMLMERRORElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-
-	key := "data-fetch-indicator"
-
-	e.StringAttributes.Set(key, expression)
-	return e
-}
-
-func (e *MathMLMERRORElement) IfDATASTAR_FETCH_INDICATOR(condition bool, expression string) *MathMLMERRORElement {
-	if condition {
-		e.DATASTAR_FETCH_INDICATOR(expression)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_FETCH_INDICATOR from the element.
-func (e *MathMLMERRORElement) DATASTAR_FETCH_INDICATORRemove() *MathMLMERRORElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-fetch-indicator")
-	return e
-}
-
-// Sets the visibility of the element
-
-func (e *MathMLMERRORElement) DATASTAR_SHOWSet(b bool) *MathMLMERRORElement {
-	key := "data-show"
-	e.BoolAttributes.Set(key, b)
-	return e
-}
-
-func (e *MathMLMERRORElement) DATASTAR_SHOW() *MathMLMERRORElement {
-	return e.DATASTAR_SHOWSet(true)
-}
-
-// Triggers the callback when the element intersects the viewport
-
-func (e *MathMLMERRORElement) DATASTAR_INTERSECTS(expression string) *MathMLMERRORElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-
-	key := "data-intersects"
-
-	e.StringAttributes.Set(key, expression)
-	return e
-}
-
-func (e *MathMLMERRORElement) IfDATASTAR_INTERSECTS(condition bool, expression string) *MathMLMERRORElement {
-	if condition {
-		e.DATASTAR_INTERSECTS(expression)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_INTERSECTS from the element.
-func (e *MathMLMERRORElement) DATASTAR_INTERSECTSRemove() *MathMLMERRORElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-intersects")
-	return e
-}
-
-// Teleports the element to the given selector
-
-func (e *MathMLMERRORElement) DATASTAR_TELEPORTSet(b bool) *MathMLMERRORElement {
-	key := "data-teleport"
-	e.BoolAttributes.Set(key, b)
-	return e
-}
-
-func (e *MathMLMERRORElement) DATASTAR_TELEPORT() *MathMLMERRORElement {
-	return e.DATASTAR_TELEPORTSet(true)
-}
-
-// Scrolls the element into view
-
-func (e *MathMLMERRORElement) DATASTAR_SCROLL_INTO_VIEWSet(b bool) *MathMLMERRORElement {
-	key := "data-scroll-into-view"
-	e.BoolAttributes.Set(key, b)
-	return e
-}
-
-func (e *MathMLMERRORElement) DATASTAR_SCROLL_INTO_VIEW() *MathMLMERRORElement {
-	return e.DATASTAR_SCROLL_INTO_VIEWSet(true)
-}
-
-// Setup the ViewTransitionAPI for the element
-
-func (e *MathMLMERRORElement) DATASTAR_VIEW_TRANSITION(expression string) *MathMLMERRORElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-
-	key := "data-view-transition"
-
-	e.StringAttributes.Set(key, expression)
-	return e
-}
-
-func (e *MathMLMERRORElement) IfDATASTAR_VIEW_TRANSITION(condition bool, expression string) *MathMLMERRORElement {
-	if condition {
-		e.DATASTAR_VIEW_TRANSITION(expression)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_VIEW_TRANSITION from the element.
-func (e *MathMLMERRORElement) DATASTAR_VIEW_TRANSITIONRemove() *MathMLMERRORElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-view-transition")
 	return e
 }

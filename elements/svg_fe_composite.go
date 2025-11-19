@@ -5,10 +5,8 @@ package elements
 
 import (
 	"fmt"
-	"html"
 	"time"
 
-	"github.com/goccy/go-json"
 	"github.com/igrmk/treemap/v2"
 	"github.com/samber/lo"
 )
@@ -174,10 +172,12 @@ func (e *SVGFECOMPOSITEElement) IN(s string) *SVGFECOMPOSITEElement {
 	return e
 }
 
+// Input for the compositing operation.
 func (e *SVGFECOMPOSITEElement) INF(format string, args ...any) *SVGFECOMPOSITEElement {
 	return e.IN(fmt.Sprintf(format, args...))
 }
 
+// Input for the compositing operation.
 func (e *SVGFECOMPOSITEElement) IfIN(condition bool, s string) *SVGFECOMPOSITEElement {
 	if condition {
 		e.IN(s)
@@ -185,6 +185,7 @@ func (e *SVGFECOMPOSITEElement) IfIN(condition bool, s string) *SVGFECOMPOSITEEl
 	return e
 }
 
+// Input for the compositing operation.
 func (e *SVGFECOMPOSITEElement) IfINF(condition bool, format string, args ...any) *SVGFECOMPOSITEElement {
 	if condition {
 		e.IN(fmt.Sprintf(format, args...))
@@ -192,6 +193,7 @@ func (e *SVGFECOMPOSITEElement) IfINF(condition bool, format string, args ...any
 	return e
 }
 
+// Input for the compositing operation.
 // Remove the attribute IN from the element.
 func (e *SVGFECOMPOSITEElement) INRemove(s string) *SVGFECOMPOSITEElement {
 	if e.StringAttributes == nil {
@@ -201,6 +203,7 @@ func (e *SVGFECOMPOSITEElement) INRemove(s string) *SVGFECOMPOSITEElement {
 	return e
 }
 
+// Input for the compositing operation.
 func (e *SVGFECOMPOSITEElement) INRemoveF(format string, args ...any) *SVGFECOMPOSITEElement {
 	return e.INRemove(fmt.Sprintf(format, args...))
 }
@@ -214,10 +217,12 @@ func (e *SVGFECOMPOSITEElement) IN_2(s string) *SVGFECOMPOSITEElement {
 	return e
 }
 
+// Second input for the compositing operation.
 func (e *SVGFECOMPOSITEElement) IN_2F(format string, args ...any) *SVGFECOMPOSITEElement {
 	return e.IN_2(fmt.Sprintf(format, args...))
 }
 
+// Second input for the compositing operation.
 func (e *SVGFECOMPOSITEElement) IfIN_2(condition bool, s string) *SVGFECOMPOSITEElement {
 	if condition {
 		e.IN_2(s)
@@ -225,6 +230,7 @@ func (e *SVGFECOMPOSITEElement) IfIN_2(condition bool, s string) *SVGFECOMPOSITE
 	return e
 }
 
+// Second input for the compositing operation.
 func (e *SVGFECOMPOSITEElement) IfIN_2F(condition bool, format string, args ...any) *SVGFECOMPOSITEElement {
 	if condition {
 		e.IN_2(fmt.Sprintf(format, args...))
@@ -232,6 +238,7 @@ func (e *SVGFECOMPOSITEElement) IfIN_2F(condition bool, format string, args ...a
 	return e
 }
 
+// Second input for the compositing operation.
 // Remove the attribute IN_2 from the element.
 func (e *SVGFECOMPOSITEElement) IN_2Remove(s string) *SVGFECOMPOSITEElement {
 	if e.StringAttributes == nil {
@@ -241,6 +248,7 @@ func (e *SVGFECOMPOSITEElement) IN_2Remove(s string) *SVGFECOMPOSITEElement {
 	return e
 }
 
+// Second input for the compositing operation.
 func (e *SVGFECOMPOSITEElement) IN_2RemoveF(format string, args ...any) *SVGFECOMPOSITEElement {
 	return e.IN_2Remove(fmt.Sprintf(format, args...))
 }
@@ -275,6 +283,7 @@ const (
 	SVGFeCompositeOperator_arithmetic SVGFeCompositeOperatorChoice = "arithmetic"
 )
 
+// The type of compositing operation.
 // Remove the attribute OPERATOR from the element.
 func (e *SVGFECOMPOSITEElement) OPERATORRemove(c SVGFeCompositeOperatorChoice) *SVGFECOMPOSITEElement {
 	if e.StringAttributes == nil {
@@ -293,6 +302,7 @@ func (e *SVGFECOMPOSITEElement) K_1(f float64) *SVGFECOMPOSITEElement {
 	return e
 }
 
+// First value to use in the arithmetic operation.
 func (e *SVGFECOMPOSITEElement) IfK_1(condition bool, f float64) *SVGFECOMPOSITEElement {
 	if condition {
 		e.K_1(f)
@@ -309,6 +319,7 @@ func (e *SVGFECOMPOSITEElement) K_2(f float64) *SVGFECOMPOSITEElement {
 	return e
 }
 
+// Second value to use in the arithmetic operation.
 func (e *SVGFECOMPOSITEElement) IfK_2(condition bool, f float64) *SVGFECOMPOSITEElement {
 	if condition {
 		e.K_2(f)
@@ -325,6 +336,7 @@ func (e *SVGFECOMPOSITEElement) K_3(f float64) *SVGFECOMPOSITEElement {
 	return e
 }
 
+// Third value to use in the arithmetic operation.
 func (e *SVGFECOMPOSITEElement) IfK_3(condition bool, f float64) *SVGFECOMPOSITEElement {
 	if condition {
 		e.K_3(f)
@@ -341,6 +353,7 @@ func (e *SVGFECOMPOSITEElement) K_4(f float64) *SVGFECOMPOSITEElement {
 	return e
 }
 
+// Fourth value to use in the arithmetic operation.
 func (e *SVGFECOMPOSITEElement) IfK_4(condition bool, f float64) *SVGFECOMPOSITEElement {
 	if condition {
 		e.K_4(f)
@@ -357,10 +370,12 @@ func (e *SVGFECOMPOSITEElement) ID(s string) *SVGFECOMPOSITEElement {
 	return e
 }
 
+// Specifies a unique id for an element
 func (e *SVGFECOMPOSITEElement) IDF(format string, args ...any) *SVGFECOMPOSITEElement {
 	return e.ID(fmt.Sprintf(format, args...))
 }
 
+// Specifies a unique id for an element
 func (e *SVGFECOMPOSITEElement) IfID(condition bool, s string) *SVGFECOMPOSITEElement {
 	if condition {
 		e.ID(s)
@@ -368,6 +383,7 @@ func (e *SVGFECOMPOSITEElement) IfID(condition bool, s string) *SVGFECOMPOSITEEl
 	return e
 }
 
+// Specifies a unique id for an element
 func (e *SVGFECOMPOSITEElement) IfIDF(condition bool, format string, args ...any) *SVGFECOMPOSITEElement {
 	if condition {
 		e.ID(fmt.Sprintf(format, args...))
@@ -375,6 +391,7 @@ func (e *SVGFECOMPOSITEElement) IfIDF(condition bool, format string, args ...any
 	return e
 }
 
+// Specifies a unique id for an element
 // Remove the attribute ID from the element.
 func (e *SVGFECOMPOSITEElement) IDRemove(s string) *SVGFECOMPOSITEElement {
 	if e.StringAttributes == nil {
@@ -384,6 +401,7 @@ func (e *SVGFECOMPOSITEElement) IDRemove(s string) *SVGFECOMPOSITEElement {
 	return e
 }
 
+// Specifies a unique id for an element
 func (e *SVGFECOMPOSITEElement) IDRemoveF(format string, args ...any) *SVGFECOMPOSITEElement {
 	return e.IDRemove(fmt.Sprintf(format, args...))
 }
@@ -403,6 +421,8 @@ func (e *SVGFECOMPOSITEElement) CLASS(s ...string) *SVGFECOMPOSITEElement {
 	return e
 }
 
+// Specifies one or more classnames for an element (refers to a class in a style
+// sheet)
 func (e *SVGFECOMPOSITEElement) IfCLASS(condition bool, s ...string) *SVGFECOMPOSITEElement {
 	if condition {
 		e.CLASS(s...)
@@ -410,6 +430,8 @@ func (e *SVGFECOMPOSITEElement) IfCLASS(condition bool, s ...string) *SVGFECOMPO
 	return e
 }
 
+// Specifies one or more classnames for an element (refers to a class in a style
+// sheet)
 // Remove the attribute CLASS from the element.
 func (e *SVGFECOMPOSITEElement) CLASSRemove(s ...string) *SVGFECOMPOSITEElement {
 	if e.DelimitedStrings == nil {
@@ -428,6 +450,7 @@ func (e *SVGFECOMPOSITEElement) STYLEF(k string, format string, args ...any) *SV
 	return e.STYLE(k, fmt.Sprintf(format, args...))
 }
 
+// Specifies an inline CSS style for an element
 func (e *SVGFECOMPOSITEElement) IfSTYLE(condition bool, k string, v string) *SVGFECOMPOSITEElement {
 	if condition {
 		e.STYLE(k, v)
@@ -435,6 +458,7 @@ func (e *SVGFECOMPOSITEElement) IfSTYLE(condition bool, k string, v string) *SVG
 	return e
 }
 
+// Specifies an inline CSS style for an element
 func (e *SVGFECOMPOSITEElement) STYLE(k string, v string) *SVGFECOMPOSITEElement {
 	if e.KVStrings == nil {
 		e.KVStrings = treemap.New[string, *KVBuilder]()
@@ -448,6 +472,7 @@ func (e *SVGFECOMPOSITEElement) STYLE(k string, v string) *SVGFECOMPOSITEElement
 	return e
 }
 
+// Specifies an inline CSS style for an element
 func (e *SVGFECOMPOSITEElement) IfSTYLEF(condition bool, k string, format string, args ...any) *SVGFECOMPOSITEElement {
 	if condition {
 		e.STYLE(k, fmt.Sprintf(format, args...))
@@ -455,6 +480,7 @@ func (e *SVGFECOMPOSITEElement) IfSTYLEF(condition bool, k string, format string
 	return e
 }
 
+// Specifies an inline CSS style for an element
 // Add the attributes in the map to the element.
 func (e *SVGFECOMPOSITEElement) STYLEMap(m map[string]string) *SVGFECOMPOSITEElement {
 	if e.KVStrings == nil {
@@ -471,6 +497,7 @@ func (e *SVGFECOMPOSITEElement) STYLEMap(m map[string]string) *SVGFECOMPOSITEEle
 	return e
 }
 
+// Specifies an inline CSS style for an element
 // Add pairs of attributes to the element.
 func (e *SVGFECOMPOSITEElement) STYLEPairs(pairs ...string) *SVGFECOMPOSITEElement {
 	if len(pairs)%2 != 0 {
@@ -492,6 +519,7 @@ func (e *SVGFECOMPOSITEElement) STYLEPairs(pairs ...string) *SVGFECOMPOSITEEleme
 	return e
 }
 
+// Specifies an inline CSS style for an element
 func (e *SVGFECOMPOSITEElement) IfSTYLEPairs(condition bool, pairs ...string) *SVGFECOMPOSITEElement {
 	if condition {
 		e.STYLEPairs(pairs...)
@@ -499,6 +527,7 @@ func (e *SVGFECOMPOSITEElement) IfSTYLEPairs(condition bool, pairs ...string) *S
 	return e
 }
 
+// Specifies an inline CSS style for an element
 // Remove the attribute STYLE from the element.
 func (e *SVGFECOMPOSITEElement) STYLERemove(keys ...string) *SVGFECOMPOSITEElement {
 	if e.KVStrings == nil {
@@ -514,62 +543,75 @@ func (e *SVGFECOMPOSITEElement) STYLERemove(keys ...string) *SVGFECOMPOSITEEleme
 	return e
 }
 
-// Merges the singleton store with the given object
-
-func (e *SVGFECOMPOSITEElement) DATASTAR_STORE(v any) *SVGFECOMPOSITEElement {
-	if e.CustomDataAttributes == nil {
-		e.CustomDataAttributes = treemap.New[string, string]()
-	}
-	b, err := json.Marshal(v)
-	if err != nil {
-		panic(err)
-	}
-	e.CustomDataAttributes.Set("store", html.EscapeString(string(b)))
-	return e
-}
-
-// Sets the reference of the element
-
-func (e *SVGFECOMPOSITEElement) DATASTAR_REF(expression string) *SVGFECOMPOSITEElement {
+// Sets the value of any HTML attribute to an expression, and keeps it in sync.
+//
+// See: https://data-star.dev/reference/attributes#data-attr
+func (e *SVGFECOMPOSITEElement) DATASTAR_ATTR(key string, expression string) *SVGFECOMPOSITEElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "data-ref"
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	key = fmt.Sprintf("data-attr%s", suffix)
 
 	e.StringAttributes.Set(key, expression)
 	return e
 }
 
-func (e *SVGFECOMPOSITEElement) IfDATASTAR_REF(condition bool, expression string) *SVGFECOMPOSITEElement {
+// Sets the value of any HTML attribute to an expression, and keeps it in sync.
+//
+// See: https://data-star.dev/reference/attributes#data-attr
+func (e *SVGFECOMPOSITEElement) IfDATASTAR_ATTR(condition bool, key string, expression string) *SVGFECOMPOSITEElement {
 	if condition {
-		e.DATASTAR_REF(expression)
+		e.DATASTAR_ATTR(key, expression)
 	}
 	return e
 }
 
-// Remove the attribute DATASTAR_REF from the element.
-func (e *SVGFECOMPOSITEElement) DATASTAR_REFRemove() *SVGFECOMPOSITEElement {
+// Sets the value of any HTML attribute to an expression, and keeps it in sync.
+//
+// See: https://data-star.dev/reference/attributes#data-attr
+// Remove the attribute DATASTAR_ATTR from the element.
+func (e *SVGFECOMPOSITEElement) DATASTAR_ATTRRemove(key string) *SVGFECOMPOSITEElement {
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("data-ref")
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	e.StringAttributes.Del("data-attr" + suffix)
+
 	return e
 }
 
-// Sets the value of the element
-
+// Creates a signal (if one doesn’t already exist) and sets up two-way data
+// binding between it and an element’s value.
+//
+// See: https://data-star.dev/reference/attributes#data-bind
 func (e *SVGFECOMPOSITEElement) DATASTAR_BIND(key string, expression string) *SVGFECOMPOSITEElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key = fmt.Sprintf("data-bind-%s", key)
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	key = fmt.Sprintf("data-bind%s", suffix)
 
 	e.StringAttributes.Set(key, expression)
 	return e
 }
 
+// Creates a signal (if one doesn’t already exist) and sets up two-way data
+// binding between it and an element’s value.
+//
+// See: https://data-star.dev/reference/attributes#data-bind
 func (e *SVGFECOMPOSITEElement) IfDATASTAR_BIND(condition bool, key string, expression string) *SVGFECOMPOSITEElement {
 	if condition {
 		e.DATASTAR_BIND(key, expression)
@@ -577,46 +619,1525 @@ func (e *SVGFECOMPOSITEElement) IfDATASTAR_BIND(condition bool, key string, expr
 	return e
 }
 
+// Creates a signal (if one doesn’t already exist) and sets up two-way data
+// binding between it and an element’s value.
+//
+// See: https://data-star.dev/reference/attributes#data-bind
 // Remove the attribute DATASTAR_BIND from the element.
-func (e *SVGFECOMPOSITEElement) DATASTAR_BINDRemove() *SVGFECOMPOSITEElement {
+func (e *SVGFECOMPOSITEElement) DATASTAR_BINDRemove(key string) *SVGFECOMPOSITEElement {
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("data-bind")
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	e.StringAttributes.Del("data-bind" + suffix)
+
 	return e
 }
 
-// Sets the value of the element
+type SVGFeCompositeClassMod customDataKeyModifier
 
-func (e *SVGFECOMPOSITEElement) DATASTAR_MODEL(expression string) *SVGFECOMPOSITEElement {
+// Converts the casing of the signal name.
+//   - 'camel' – Camel case: 'mySignal' (default)
+//   - 'kebab' – Kebab case: 'my-signal'
+//   - 'snake' – Snake case: 'my_signal'
+//   - 'pascal' – Pascal case: 'MySignal'
+func SVGFeCompositeClassModCase(
+	s string,
+) SVGFeCompositeClassMod {
+	return func() string {
+		return fmt.Sprintf("case.%s", s)
+	}
+}
+
+// Adds or removes a class to or from an element based on an expression.
+func (e *SVGFECOMPOSITEElement) DATASTAR_CLASS(key string, expression string, modifiers ...SVGFeCompositeClassMod) *SVGFECOMPOSITEElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
 	}
 
-	key := "data-model"
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	key = fmt.Sprintf("data-class%s", suffix)
+
+	customMods := lo.Map(modifiers, func(m SVGFeCompositeClassMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Adds or removes a class to or from an element based on an expression.
+func (e *SVGFECOMPOSITEElement) IfDATASTAR_CLASS(condition bool, key string, expression string, modifiers ...SVGFeCompositeClassMod) *SVGFECOMPOSITEElement {
+	if condition {
+		e.DATASTAR_CLASS(key, expression, modifiers...)
+	}
+	return e
+}
+
+// Adds or removes a class to or from an element based on an expression.
+// Remove the attribute DATASTAR_CLASS from the element.
+func (e *SVGFECOMPOSITEElement) DATASTAR_CLASSRemove(key string) *SVGFECOMPOSITEElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	e.StringAttributes.Del("data-class" + suffix)
+
+	return e
+}
+
+type SVGFeCompositeComputedMod customDataKeyModifier
+
+// Converts the casing of the signal name.
+//   - 'camel' – Camel case: 'mySignal' (default)
+//   - 'kebab' – Kebab case: 'my-signal'
+//   - 'snake' – Snake case: 'my_signal'
+//   - 'pascal' – Pascal case: 'MySignal'
+func SVGFeCompositeComputedModCase(
+	s string,
+) SVGFeCompositeComputedMod {
+	return func() string {
+		return fmt.Sprintf("case.%s", s)
+	}
+}
+
+// Creates a signal that is computed based on an expression
+// The computed signal is read-only, and its value is automatically updated when
+// any signals in the expression are updated.
+//
+// See: https://data-star.dev/reference/attributes#data-computed
+func (e *SVGFECOMPOSITEElement) DATASTAR_COMPUTED(key string, expression string, modifiers ...SVGFeCompositeComputedMod) *SVGFECOMPOSITEElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	key = fmt.Sprintf("data-computed%s", suffix)
+
+	customMods := lo.Map(modifiers, func(m SVGFeCompositeComputedMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Creates a signal that is computed based on an expression
+// The computed signal is read-only, and its value is automatically updated when
+// any signals in the expression are updated.
+//
+// See: https://data-star.dev/reference/attributes#data-computed
+func (e *SVGFECOMPOSITEElement) IfDATASTAR_COMPUTED(condition bool, key string, expression string, modifiers ...SVGFeCompositeComputedMod) *SVGFECOMPOSITEElement {
+	if condition {
+		e.DATASTAR_COMPUTED(key, expression, modifiers...)
+	}
+	return e
+}
+
+// Creates a signal that is computed based on an expression
+// The computed signal is read-only, and its value is automatically updated when
+// any signals in the expression are updated.
+//
+// See: https://data-star.dev/reference/attributes#data-computed
+// Remove the attribute DATASTAR_COMPUTED from the element.
+func (e *SVGFECOMPOSITEElement) DATASTAR_COMPUTEDRemove(key string) *SVGFECOMPOSITEElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	e.StringAttributes.Del("data-computed" + suffix)
+
+	return e
+}
+
+// Executes an expression on page load and whenever any signals in the expression
+// change
+// This is useful for performing side effects, such as updating other signals,
+// making requests to the backend, or manipulating the DOM.
+//
+// See: https://data-star.dev/reference/attributes#data-effect
+func (e *SVGFECOMPOSITEElement) DATASTAR_EFFECT(expression string) *SVGFECOMPOSITEElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-effect"
 
 	e.StringAttributes.Set(key, expression)
 	return e
 }
 
-func (e *SVGFECOMPOSITEElement) IfDATASTAR_MODEL(condition bool, expression string) *SVGFECOMPOSITEElement {
+// Executes an expression on page load and whenever any signals in the expression
+// change
+// This is useful for performing side effects, such as updating other signals,
+// making requests to the backend, or manipulating the DOM.
+//
+// See: https://data-star.dev/reference/attributes#data-effect
+func (e *SVGFECOMPOSITEElement) IfDATASTAR_EFFECT(condition bool, expression string) *SVGFECOMPOSITEElement {
 	if condition {
-		e.DATASTAR_MODEL(expression)
+		e.DATASTAR_EFFECT(expression)
 	}
 	return e
 }
 
-// Remove the attribute DATASTAR_MODEL from the element.
-func (e *SVGFECOMPOSITEElement) DATASTAR_MODELRemove() *SVGFECOMPOSITEElement {
+// Executes an expression on page load and whenever any signals in the expression
+// change
+// This is useful for performing side effects, such as updating other signals,
+// making requests to the backend, or manipulating the DOM.
+//
+// See: https://data-star.dev/reference/attributes#data-effect
+// Remove the attribute DATASTAR_EFFECT from the element.
+func (e *SVGFECOMPOSITEElement) DATASTAR_EFFECTRemove() *SVGFECOMPOSITEElement {
 	if e.StringAttributes == nil {
 		return e
 	}
-	e.StringAttributes.Del("data-model")
+
+	e.StringAttributes.Del("data-effect")
+
 	return e
 }
 
-// Sets the textContent of the element
+type SVGFeCompositeIgnoreMod customDataKeyModifier
 
+// Only ignore the element itself, not its descendants.
+func SVGFeCompositeIgnoreModSelf() SVGFeCompositeIgnoreMod {
+	return func() string {
+		return "self"
+	}
+}
+
+// Datastar walks the entire DOM and applies plugins to each element it encounters
+// It's possible to tell Datastar to ignore an element and its descendants by
+// placing a data-ignore attribute on it
+// This can be useful for preventing naming conflicts with third-party libraries,
+// or when you are unable to escape user input.
+//
+// See: https://data-star.dev/reference/attributes#data-ignore
+func (e *SVGFECOMPOSITEElement) DATASTAR_IGNORESet(b bool, modifiers ...SVGFeCompositeIgnoreMod) *SVGFECOMPOSITEElement {
+	key := customDataKey("data-ignore")
+	customMods := lo.Map(modifiers, func(m SVGFeCompositeIgnoreMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	if e.BoolAttributes == nil {
+		e.BoolAttributes = treemap.New[string, bool]()
+	}
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+// Datastar walks the entire DOM and applies plugins to each element it encounters
+// It's possible to tell Datastar to ignore an element and its descendants by
+// placing a data-ignore attribute on it
+// This can be useful for preventing naming conflicts with third-party libraries,
+// or when you are unable to escape user input.
+//
+// See: https://data-star.dev/reference/attributes#data-ignore
+func (e *SVGFECOMPOSITEElement) DATASTAR_IGNORE(modifiers ...SVGFeCompositeIgnoreMod) *SVGFECOMPOSITEElement {
+	return e.DATASTAR_IGNORESet(true, modifiers...)
+}
+
+// Similar to the data-ignore attribute, the data-ignore-morph attribute tells the
+// PatchElements watcher to skip processing an element and its children when
+// morphing elements
+// This can be useful for preventing conflicts with third-party libraries that
+// manipulate the DOM, or when you are unable to escape user input.
+//
+// See: https://data-star.dev/reference/attributes#data-ignore-morph
+func (e *SVGFECOMPOSITEElement) DATASTAR_IGNORE_MORPHSet(b bool) *SVGFECOMPOSITEElement {
+	key := "data-ignore-morph"
+	if e.BoolAttributes == nil {
+		e.BoolAttributes = treemap.New[string, bool]()
+	}
+	e.BoolAttributes.Set(key, b)
+	return e
+}
+
+// Similar to the data-ignore attribute, the data-ignore-morph attribute tells the
+// PatchElements watcher to skip processing an element and its children when
+// morphing elements
+// This can be useful for preventing conflicts with third-party libraries that
+// manipulate the DOM, or when you are unable to escape user input.
+//
+// See: https://data-star.dev/reference/attributes#data-ignore-morph
+func (e *SVGFECOMPOSITEElement) DATASTAR_IGNORE_MORPH() *SVGFECOMPOSITEElement {
+	return e.DATASTAR_IGNORE_MORPHSet(true)
+}
+
+type SVGFeCompositeIndicatorMod customDataKeyModifier
+
+// Converts the casing of the signal name.
+//   - 'camel' – Camel case: 'mySignal' (default)
+//   - 'kebab' – Kebab case: 'my-signal'
+//   - 'snake' – Snake case: 'my_signal'
+//   - 'pascal' – Pascal case: 'MySignal'
+func SVGFeCompositeIndicatorModCase(
+	s string,
+) SVGFeCompositeIndicatorMod {
+	return func() string {
+		return fmt.Sprintf("case.%s", s)
+	}
+}
+
+// Creates a signal and sets its value to true while a fetch request is in flight,
+// otherwise false
+// The signal can be used to show a loading indicator.
+//
+// See: https://data-star.dev/reference/attributes#data-indicator
+func (e *SVGFECOMPOSITEElement) DATASTAR_INDICATOR(expression string, modifiers ...SVGFeCompositeIndicatorMod) *SVGFECOMPOSITEElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-indicator"
+
+	customMods := lo.Map(modifiers, func(m SVGFeCompositeIndicatorMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Creates a signal and sets its value to true while a fetch request is in flight,
+// otherwise false
+// The signal can be used to show a loading indicator.
+//
+// See: https://data-star.dev/reference/attributes#data-indicator
+func (e *SVGFECOMPOSITEElement) IfDATASTAR_INDICATOR(condition bool, expression string, modifiers ...SVGFeCompositeIndicatorMod) *SVGFECOMPOSITEElement {
+	if condition {
+		e.DATASTAR_INDICATOR(expression, modifiers...)
+	}
+	return e
+}
+
+// Creates a signal and sets its value to true while a fetch request is in flight,
+// otherwise false
+// The signal can be used to show a loading indicator.
+//
+// See: https://data-star.dev/reference/attributes#data-indicator
+// Remove the attribute DATASTAR_INDICATOR from the element.
+func (e *SVGFECOMPOSITEElement) DATASTAR_INDICATORRemove() *SVGFECOMPOSITEElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-indicator")
+
+	return e
+}
+
+type SVGFeCompositeInitMod customDataKeyModifier
+
+// Delay the event listener in milliseconds.
+func SVGFeCompositeInitModDelayMs(
+	d time.Duration,
+) SVGFeCompositeInitMod {
+	return func() string {
+		return fmt.Sprintf("delay.%dms", d.Milliseconds())
+	}
+}
+
+// Delay the event listener in seconds.
+func SVGFeCompositeInitModDelaySec(
+	d time.Duration,
+) SVGFeCompositeInitMod {
+	return func() string {
+		return fmt.Sprintf("delay.%ds", int(d.Seconds()))
+	}
+}
+
+// Wraps the expression in 'document.startViewTransition()' when the View
+// Transition API is available.
+func SVGFeCompositeInitModViewTransition() SVGFeCompositeInitMod {
+	return func() string {
+		return "viewtransition"
+	}
+}
+
+// Runs an expression when the attribute is initialized
+// This can happen on page load, when an element is patched into the DOM, and any
+// time the attribute is modified (via a backend action or otherwise).
+//
+// See: https://data-star.dev/reference/attributes#data-indicator
+func (e *SVGFECOMPOSITEElement) DATASTAR_INIT(expression string, modifiers ...SVGFeCompositeInitMod) *SVGFECOMPOSITEElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-init"
+
+	customMods := lo.Map(modifiers, func(m SVGFeCompositeInitMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Runs an expression when the attribute is initialized
+// This can happen on page load, when an element is patched into the DOM, and any
+// time the attribute is modified (via a backend action or otherwise).
+//
+// See: https://data-star.dev/reference/attributes#data-indicator
+func (e *SVGFECOMPOSITEElement) IfDATASTAR_INIT(condition bool, expression string, modifiers ...SVGFeCompositeInitMod) *SVGFECOMPOSITEElement {
+	if condition {
+		e.DATASTAR_INIT(expression, modifiers...)
+	}
+	return e
+}
+
+// Runs an expression when the attribute is initialized
+// This can happen on page load, when an element is patched into the DOM, and any
+// time the attribute is modified (via a backend action or otherwise).
+//
+// See: https://data-star.dev/reference/attributes#data-indicator
+// Remove the attribute DATASTAR_INIT from the element.
+func (e *SVGFECOMPOSITEElement) DATASTAR_INITRemove() *SVGFECOMPOSITEElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-init")
+
+	return e
+}
+
+type SVGFeCompositeJsonSignalsMod customDataKeyModifier
+
+// Outputs a more compact JSON format without extra whitespace
+// Useful for displaying filtered data inline.
+func SVGFeCompositeJsonSignalsModTerse() SVGFeCompositeJsonSignalsMod {
+	return func() string {
+		return "terse"
+	}
+}
+
+// Sets the text content of an element to a reactive JSON stringified version of
+// signals
+// Useful when troubleshooting an issue.
+//
+// See: https://data-star.dev/reference/attributes#data-json-signals
+func (e *SVGFECOMPOSITEElement) DATASTAR_JSON_SIGNALS(expression string, modifiers ...SVGFeCompositeJsonSignalsMod) *SVGFECOMPOSITEElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-json-signals"
+
+	customMods := lo.Map(modifiers, func(m SVGFeCompositeJsonSignalsMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Sets the text content of an element to a reactive JSON stringified version of
+// signals
+// Useful when troubleshooting an issue.
+//
+// See: https://data-star.dev/reference/attributes#data-json-signals
+func (e *SVGFECOMPOSITEElement) IfDATASTAR_JSON_SIGNALS(condition bool, expression string, modifiers ...SVGFeCompositeJsonSignalsMod) *SVGFECOMPOSITEElement {
+	if condition {
+		e.DATASTAR_JSON_SIGNALS(expression, modifiers...)
+	}
+	return e
+}
+
+// Sets the text content of an element to a reactive JSON stringified version of
+// signals
+// Useful when troubleshooting an issue.
+//
+// See: https://data-star.dev/reference/attributes#data-json-signals
+// Remove the attribute DATASTAR_JSON_SIGNALS from the element.
+func (e *SVGFECOMPOSITEElement) DATASTAR_JSON_SIGNALSRemove() *SVGFECOMPOSITEElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-json-signals")
+
+	return e
+}
+
+type SVGFeCompositeOnMod customDataKeyModifier
+
+// Only run the expression once
+// Only works with built-in events.
+func SVGFeCompositeOnModOnce() SVGFeCompositeOnMod {
+	return func() string {
+		return "once"
+	}
+}
+
+// Do not call preventDefault on the event listener
+// Only works with built-in events.
+func SVGFeCompositeOnModPassive() SVGFeCompositeOnMod {
+	return func() string {
+		return "passive"
+	}
+}
+
+// Use capture event listener
+// Only works with built-in events.
+func SVGFeCompositeOnModCapture() SVGFeCompositeOnMod {
+	return func() string {
+		return "capture"
+	}
+}
+
+// Converts the casing of the signal name.
+//   - 'camel' – Camel case: 'mySignal' (default)
+//   - 'kebab' – Kebab case: 'my-signal'
+//   - 'snake' – Snake case: 'my_signal'
+//   - 'pascal' – Pascal case: 'MySignal'
+func SVGFeCompositeOnModCase(
+	s string,
+) SVGFeCompositeOnMod {
+	return func() string {
+		return fmt.Sprintf("case.%s", s)
+	}
+}
+
+// Delay the event listener in milliseconds.
+func SVGFeCompositeOnModDelayMs(
+	d time.Duration,
+) SVGFeCompositeOnMod {
+	return func() string {
+		return fmt.Sprintf("delay.%dms", d.Milliseconds())
+	}
+}
+
+// Delay the event listener in seconds.
+func SVGFeCompositeOnModDelaySec(
+	d time.Duration,
+) SVGFeCompositeOnMod {
+	return func() string {
+		return fmt.Sprintf("delay.%ds", int(d.Seconds()))
+	}
+}
+
+// Debounces the event handler
+func SVGFeCompositeOnModDebounceMs(
+	d time.Duration,
+) SVGFeCompositeOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms", d.Milliseconds())
+	}
+}
+
+// Debounce the event listener in milliseconds with leading edge.
+func SVGFeCompositeOnModDebounceMsLeading(
+	d time.Duration,
+) SVGFeCompositeOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms.leading", d.Milliseconds())
+	}
+}
+
+// Debounce the event listener in milliseconds without trailing edge.
+func SVGFeCompositeOnModDebounceMsNoTrailing(
+	d time.Duration,
+) SVGFeCompositeOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms.notrailing", d.Milliseconds())
+	}
+}
+
+// Debounces the event handler
+func SVGFeCompositeOnModDebounceSec(
+	d time.Duration,
+) SVGFeCompositeOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds", int(d.Seconds()))
+	}
+}
+
+// Debounce the event listener in seconds with leading edge.
+func SVGFeCompositeOnModDebounceSecLeading(
+	d time.Duration,
+) SVGFeCompositeOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds.leading", int(d.Seconds()))
+	}
+}
+
+// Debounce the event listener in seconds without trailing edge.
+func SVGFeCompositeOnModDebounceSecNoTrailing(
+	d time.Duration,
+) SVGFeCompositeOnMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds.notrailing", int(d.Seconds()))
+	}
+}
+
+// Throttles the event handler
+func SVGFeCompositeOnModThrottleMs(
+	d time.Duration,
+) SVGFeCompositeOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms", d.Milliseconds())
+	}
+}
+
+// Throttle the event listener in milliseconds without leading edge.
+func SVGFeCompositeOnModThrottleMsNoLeading(
+	d time.Duration,
+) SVGFeCompositeOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms.noleading", d.Milliseconds())
+	}
+}
+
+// Throttle the event listener in milliseconds with trailing edge.
+func SVGFeCompositeOnModThrottleMsTrailing(
+	d time.Duration,
+) SVGFeCompositeOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms.trailing", d.Milliseconds())
+	}
+}
+
+// Throttles the event listener in seconds.
+func SVGFeCompositeOnModThrottleSec(
+	d time.Duration,
+) SVGFeCompositeOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds", int(d.Seconds()))
+	}
+}
+
+// Throttle the event listener in seconds without leading edge.
+func SVGFeCompositeOnModThrottleSecNoLeading(
+	d time.Duration,
+) SVGFeCompositeOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds.noleading", int(d.Seconds()))
+	}
+}
+
+// Throttle the event listener in seconds with trailing edge.
+func SVGFeCompositeOnModThrottleSecTrailing(
+	d time.Duration,
+) SVGFeCompositeOnMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds.trailing", int(d.Seconds()))
+	}
+}
+
+// Wraps the expression in 'document.startViewTransition()' when the View
+// Transition API is available.
+func SVGFeCompositeOnModViewTransition() SVGFeCompositeOnMod {
+	return func() string {
+		return "viewtransition"
+	}
+}
+
+// Attaches the event listener to the 'window' element.
+func SVGFeCompositeOnModWindow() SVGFeCompositeOnMod {
+	return func() string {
+		return "window"
+	}
+}
+
+// Calls 'preventDefault' on the event listener.
+func SVGFeCompositeOnModPrevent() SVGFeCompositeOnMod {
+	return func() string {
+		return "prevent"
+	}
+}
+
+// Triggers when the event is outside the element.
+func SVGFeCompositeOnModOutside() SVGFeCompositeOnMod {
+	return func() string {
+		return "outside"
+	}
+}
+
+// Calls 'stopPropagation' on the event listener.
+func SVGFeCompositeOnModStop() SVGFeCompositeOnMod {
+	return func() string {
+		return "stop"
+	}
+}
+
+// Attaches an event listener to an element, executing an expression whenever the
+// event is triggered.
+//
+// See: https://data-star.dev/reference/attributes#data-on
+func (e *SVGFECOMPOSITEElement) DATASTAR_ON(key string, expression string, modifiers ...SVGFeCompositeOnMod) *SVGFECOMPOSITEElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	key = fmt.Sprintf("data-on%s", suffix)
+
+	customMods := lo.Map(modifiers, func(m SVGFeCompositeOnMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Attaches an event listener to an element, executing an expression whenever the
+// event is triggered.
+//
+// See: https://data-star.dev/reference/attributes#data-on
+func (e *SVGFECOMPOSITEElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SVGFeCompositeOnMod) *SVGFECOMPOSITEElement {
+	if condition {
+		e.DATASTAR_ON(key, expression, modifiers...)
+	}
+	return e
+}
+
+// Attaches an event listener to an element, executing an expression whenever the
+// event is triggered.
+//
+// See: https://data-star.dev/reference/attributes#data-on
+// Remove the attribute DATASTAR_ON from the element.
+func (e *SVGFECOMPOSITEElement) DATASTAR_ONRemove(key string) *SVGFECOMPOSITEElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	e.StringAttributes.Del("data-on" + suffix)
+
+	return e
+}
+
+type SVGFeCompositeOnIntersectMod customDataKeyModifier
+
+// Only run the expression once
+// Only works with built-in events.
+func SVGFeCompositeOnIntersectModOnce() SVGFeCompositeOnIntersectMod {
+	return func() string {
+		return "once"
+	}
+}
+
+// Trigger when half of the element is visible.
+func SVGFeCompositeOnIntersectModHalf() SVGFeCompositeOnIntersectMod {
+	return func() string {
+		return "half"
+	}
+}
+
+// Trigger when the full element is visible.
+func SVGFeCompositeOnIntersectModFull() SVGFeCompositeOnIntersectMod {
+	return func() string {
+		return "full"
+	}
+}
+
+// Delay the event listener in milliseconds.
+func SVGFeCompositeOnIntersectModDelayMs(
+	d time.Duration,
+) SVGFeCompositeOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("delay.%dms", d.Milliseconds())
+	}
+}
+
+// Delay the event listener in seconds.
+func SVGFeCompositeOnIntersectModDelaySec(
+	d time.Duration,
+) SVGFeCompositeOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("delay.%ds", int(d.Seconds()))
+	}
+}
+
+// Debounces the event handler
+func SVGFeCompositeOnIntersectModDebounceMs(
+	d time.Duration,
+) SVGFeCompositeOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms", d.Milliseconds())
+	}
+}
+
+// Debounce the event listener in milliseconds with leading edge.
+func SVGFeCompositeOnIntersectModDebounceMsLeading(
+	d time.Duration,
+) SVGFeCompositeOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms.leading", d.Milliseconds())
+	}
+}
+
+// Debounce the event listener in milliseconds without trailing edge.
+func SVGFeCompositeOnIntersectModDebounceMsNoTrailing(
+	d time.Duration,
+) SVGFeCompositeOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms.notrailing", d.Milliseconds())
+	}
+}
+
+// Debounces the event handler
+func SVGFeCompositeOnIntersectModDebounceSec(
+	d time.Duration,
+) SVGFeCompositeOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds", int(d.Seconds()))
+	}
+}
+
+// Debounce the event listener in seconds with leading edge.
+func SVGFeCompositeOnIntersectModDebounceSecLeading(
+	d time.Duration,
+) SVGFeCompositeOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds.leading", int(d.Seconds()))
+	}
+}
+
+// Debounce the event listener in seconds without trailing edge.
+func SVGFeCompositeOnIntersectModDebounceSecNoTrailing(
+	d time.Duration,
+) SVGFeCompositeOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds.notrailing", int(d.Seconds()))
+	}
+}
+
+// Throttles the event handler
+func SVGFeCompositeOnIntersectModThrottleMs(
+	d time.Duration,
+) SVGFeCompositeOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms", d.Milliseconds())
+	}
+}
+
+// Throttle the event listener in milliseconds without leading edge.
+func SVGFeCompositeOnIntersectModThrottleMsNoLeading(
+	d time.Duration,
+) SVGFeCompositeOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms.noleading", d.Milliseconds())
+	}
+}
+
+// Throttle the event listener in milliseconds with trailing edge.
+func SVGFeCompositeOnIntersectModThrottleMsTrailing(
+	d time.Duration,
+) SVGFeCompositeOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms.trailing", d.Milliseconds())
+	}
+}
+
+// Throttles the event listener in seconds.
+func SVGFeCompositeOnIntersectModThrottleSec(
+	d time.Duration,
+) SVGFeCompositeOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds", int(d.Seconds()))
+	}
+}
+
+// Throttle the event listener in seconds without leading edge.
+func SVGFeCompositeOnIntersectModThrottleSecNoLeading(
+	d time.Duration,
+) SVGFeCompositeOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds.noleading", int(d.Seconds()))
+	}
+}
+
+// Throttle the event listener in seconds with trailing edge.
+func SVGFeCompositeOnIntersectModThrottleSecTrailing(
+	d time.Duration,
+) SVGFeCompositeOnIntersectMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds.trailing", int(d.Seconds()))
+	}
+}
+
+// Wraps the expression in 'document.startViewTransition()' when the View
+// Transition API is available.
+func SVGFeCompositeOnIntersectModViewTransition() SVGFeCompositeOnIntersectMod {
+	return func() string {
+		return "viewtransition"
+	}
+}
+
+// Runs an expression when the element intersects with the viewport.
+func (e *SVGFECOMPOSITEElement) DATASTAR_ON_INTERSECT(expression string, modifiers ...SVGFeCompositeOnIntersectMod) *SVGFECOMPOSITEElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-on-intersect"
+
+	customMods := lo.Map(modifiers, func(m SVGFeCompositeOnIntersectMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Runs an expression when the element intersects with the viewport.
+func (e *SVGFECOMPOSITEElement) IfDATASTAR_ON_INTERSECT(condition bool, expression string, modifiers ...SVGFeCompositeOnIntersectMod) *SVGFECOMPOSITEElement {
+	if condition {
+		e.DATASTAR_ON_INTERSECT(expression, modifiers...)
+	}
+	return e
+}
+
+// Runs an expression when the element intersects with the viewport.
+// Remove the attribute DATASTAR_ON_INTERSECT from the element.
+func (e *SVGFECOMPOSITEElement) DATASTAR_ON_INTERSECTRemove() *SVGFECOMPOSITEElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-on-intersect")
+
+	return e
+}
+
+type SVGFeCompositeOnIntervalMod customDataKeyModifier
+
+// Sets the interval duration in milliseconds.
+func SVGFeCompositeOnIntervalModDurationMs(
+	d time.Duration,
+) SVGFeCompositeOnIntervalMod {
+	return func() string {
+		return fmt.Sprintf("duration.%dms", d.Milliseconds())
+	}
+}
+
+// Sets the interval duration in milliseconds
+// Execute the first interval immediately.
+func SVGFeCompositeOnIntervalModDurationMsLeading(
+	d time.Duration,
+) SVGFeCompositeOnIntervalMod {
+	return func() string {
+		return fmt.Sprintf("duration.%dms.leading", d.Milliseconds())
+	}
+}
+
+// Sets the interval duration in seconds.
+func SVGFeCompositeOnIntervalModDurationSec(
+	d time.Duration,
+) SVGFeCompositeOnIntervalMod {
+	return func() string {
+		return fmt.Sprintf("duration.%ds", int(d.Seconds()))
+	}
+}
+
+// Sets the interval duration in seconds
+// Execute the first interval immediately.
+func SVGFeCompositeOnIntervalModDurationSecLeading(
+	d time.Duration,
+) SVGFeCompositeOnIntervalMod {
+	return func() string {
+		return fmt.Sprintf("duration.%ds.leading", int(d.Seconds()))
+	}
+}
+
+// Wraps the expression in 'document.startViewTransition()' when the View
+// Transition API is available.
+func SVGFeCompositeOnIntervalModViewTransition() SVGFeCompositeOnIntervalMod {
+	return func() string {
+		return "viewtransition"
+	}
+}
+
+// Runs an expression at a regular interval
+// The interval duration defaults to one second and can be modified using the
+// '__duration' modifier.
+//
+// See: https://data-star.dev/reference/attributes#data-on-interval
+func (e *SVGFECOMPOSITEElement) DATASTAR_ON_INTERVAL(expression string, modifiers ...SVGFeCompositeOnIntervalMod) *SVGFECOMPOSITEElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-on-interval"
+
+	customMods := lo.Map(modifiers, func(m SVGFeCompositeOnIntervalMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Runs an expression at a regular interval
+// The interval duration defaults to one second and can be modified using the
+// '__duration' modifier.
+//
+// See: https://data-star.dev/reference/attributes#data-on-interval
+func (e *SVGFECOMPOSITEElement) IfDATASTAR_ON_INTERVAL(condition bool, expression string, modifiers ...SVGFeCompositeOnIntervalMod) *SVGFECOMPOSITEElement {
+	if condition {
+		e.DATASTAR_ON_INTERVAL(expression, modifiers...)
+	}
+	return e
+}
+
+// Runs an expression at a regular interval
+// The interval duration defaults to one second and can be modified using the
+// '__duration' modifier.
+//
+// See: https://data-star.dev/reference/attributes#data-on-interval
+// Remove the attribute DATASTAR_ON_INTERVAL from the element.
+func (e *SVGFECOMPOSITEElement) DATASTAR_ON_INTERVALRemove() *SVGFECOMPOSITEElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-on-interval")
+
+	return e
+}
+
+type SVGFeCompositeOnSignalPatchMod customDataKeyModifier
+
+// Delay the event listener in milliseconds.
+func SVGFeCompositeOnSignalPatchModDelayMs(
+	d time.Duration,
+) SVGFeCompositeOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("delay.%dms", d.Milliseconds())
+	}
+}
+
+// Delay the event listener in seconds.
+func SVGFeCompositeOnSignalPatchModDelaySec(
+	d time.Duration,
+) SVGFeCompositeOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("delay.%ds", int(d.Seconds()))
+	}
+}
+
+// Debounces the event handler
+func SVGFeCompositeOnSignalPatchModDebounceMs(
+	d time.Duration,
+) SVGFeCompositeOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms", d.Milliseconds())
+	}
+}
+
+// Debounce the event listener in milliseconds with leading edge.
+func SVGFeCompositeOnSignalPatchModDebounceMsLeading(
+	d time.Duration,
+) SVGFeCompositeOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms.leading", d.Milliseconds())
+	}
+}
+
+// Debounce the event listener in milliseconds without trailing edge.
+func SVGFeCompositeOnSignalPatchModDebounceMsNoTrailing(
+	d time.Duration,
+) SVGFeCompositeOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%dms.notrailing", d.Milliseconds())
+	}
+}
+
+// Debounces the event handler
+func SVGFeCompositeOnSignalPatchModDebounceSec(
+	d time.Duration,
+) SVGFeCompositeOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds", int(d.Seconds()))
+	}
+}
+
+// Debounce the event listener in seconds with leading edge.
+func SVGFeCompositeOnSignalPatchModDebounceSecLeading(
+	d time.Duration,
+) SVGFeCompositeOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds.leading", int(d.Seconds()))
+	}
+}
+
+// Debounce the event listener in seconds without trailing edge.
+func SVGFeCompositeOnSignalPatchModDebounceSecNoTrailing(
+	d time.Duration,
+) SVGFeCompositeOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("debounce.%ds.notrailing", int(d.Seconds()))
+	}
+}
+
+// Throttles the event handler
+func SVGFeCompositeOnSignalPatchModThrottleMs(
+	d time.Duration,
+) SVGFeCompositeOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms", d.Milliseconds())
+	}
+}
+
+// Throttle the event listener in milliseconds without leading edge.
+func SVGFeCompositeOnSignalPatchModThrottleMsNoLeading(
+	d time.Duration,
+) SVGFeCompositeOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms.noleading", d.Milliseconds())
+	}
+}
+
+// Throttle the event listener in milliseconds with trailing edge.
+func SVGFeCompositeOnSignalPatchModThrottleMsTrailing(
+	d time.Duration,
+) SVGFeCompositeOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%dms.trailing", d.Milliseconds())
+	}
+}
+
+// Throttles the event listener in seconds.
+func SVGFeCompositeOnSignalPatchModThrottleSec(
+	d time.Duration,
+) SVGFeCompositeOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds", int(d.Seconds()))
+	}
+}
+
+// Throttle the event listener in seconds without leading edge.
+func SVGFeCompositeOnSignalPatchModThrottleSecNoLeading(
+	d time.Duration,
+) SVGFeCompositeOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds.noleading", int(d.Seconds()))
+	}
+}
+
+// Throttle the event listener in seconds with trailing edge.
+func SVGFeCompositeOnSignalPatchModThrottleSecTrailing(
+	d time.Duration,
+) SVGFeCompositeOnSignalPatchMod {
+	return func() string {
+		return fmt.Sprintf("throttle.%ds.trailing", int(d.Seconds()))
+	}
+}
+
+// Runs an expression whenever any signals are patched
+// This is useful for tracking changes, updating computed values, or triggering
+// side effects when data updates.
+//
+// See: https://data-star.dev/reference/attributes#data-on-signal-patch
+func (e *SVGFECOMPOSITEElement) DATASTAR_ON_SIGNAL_PATCH(expression string, modifiers ...SVGFeCompositeOnSignalPatchMod) *SVGFECOMPOSITEElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-on-signal-patch"
+
+	customMods := lo.Map(modifiers, func(m SVGFeCompositeOnSignalPatchMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Runs an expression whenever any signals are patched
+// This is useful for tracking changes, updating computed values, or triggering
+// side effects when data updates.
+//
+// See: https://data-star.dev/reference/attributes#data-on-signal-patch
+func (e *SVGFECOMPOSITEElement) IfDATASTAR_ON_SIGNAL_PATCH(condition bool, expression string, modifiers ...SVGFeCompositeOnSignalPatchMod) *SVGFECOMPOSITEElement {
+	if condition {
+		e.DATASTAR_ON_SIGNAL_PATCH(expression, modifiers...)
+	}
+	return e
+}
+
+// Runs an expression whenever any signals are patched
+// This is useful for tracking changes, updating computed values, or triggering
+// side effects when data updates.
+//
+// See: https://data-star.dev/reference/attributes#data-on-signal-patch
+// Remove the attribute DATASTAR_ON_SIGNAL_PATCH from the element.
+func (e *SVGFECOMPOSITEElement) DATASTAR_ON_SIGNAL_PATCHRemove() *SVGFECOMPOSITEElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-on-signal-patch")
+
+	return e
+}
+
+// Filters which signals to watch when using the data-on-signal-patch attribute.
+//
+// The data-on-signal-patch-filter attribute accepts an object with include and/or
+// exclude properties that are regular expressions.
+//
+// See: https://data-star.dev/reference/attributes#data-on-signal-patch-filter
+func (e *SVGFECOMPOSITEElement) DATASTAR_ON_SIGNAL_PATCH_FILTER(expression string) *SVGFECOMPOSITEElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-on-signal-patch-filter"
+
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Filters which signals to watch when using the data-on-signal-patch attribute.
+//
+// The data-on-signal-patch-filter attribute accepts an object with include and/or
+// exclude properties that are regular expressions.
+//
+// See: https://data-star.dev/reference/attributes#data-on-signal-patch-filter
+func (e *SVGFECOMPOSITEElement) IfDATASTAR_ON_SIGNAL_PATCH_FILTER(condition bool, expression string) *SVGFECOMPOSITEElement {
+	if condition {
+		e.DATASTAR_ON_SIGNAL_PATCH_FILTER(expression)
+	}
+	return e
+}
+
+// Filters which signals to watch when using the data-on-signal-patch attribute.
+//
+// The data-on-signal-patch-filter attribute accepts an object with include and/or
+// exclude properties that are regular expressions.
+//
+// See: https://data-star.dev/reference/attributes#data-on-signal-patch-filter
+// Remove the attribute DATASTAR_ON_SIGNAL_PATCH_FILTER from the element.
+func (e *SVGFECOMPOSITEElement) DATASTAR_ON_SIGNAL_PATCH_FILTERRemove() *SVGFECOMPOSITEElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-on-signal-patch-filter")
+
+	return e
+}
+
+// Preserves the value of an attribute when morphing DOM elements.
+//
+// See: https://data-star.dev/reference/attributes#data-preserve-attr
+func (e *SVGFECOMPOSITEElement) DATASTAR_PRESERVE_ATTR(expression string) *SVGFECOMPOSITEElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-preserve-attr"
+
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Preserves the value of an attribute when morphing DOM elements.
+//
+// See: https://data-star.dev/reference/attributes#data-preserve-attr
+func (e *SVGFECOMPOSITEElement) IfDATASTAR_PRESERVE_ATTR(condition bool, expression string) *SVGFECOMPOSITEElement {
+	if condition {
+		e.DATASTAR_PRESERVE_ATTR(expression)
+	}
+	return e
+}
+
+// Preserves the value of an attribute when morphing DOM elements.
+//
+// See: https://data-star.dev/reference/attributes#data-preserve-attr
+// Remove the attribute DATASTAR_PRESERVE_ATTR from the element.
+func (e *SVGFECOMPOSITEElement) DATASTAR_PRESERVE_ATTRRemove() *SVGFECOMPOSITEElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-preserve-attr")
+
+	return e
+}
+
+type SVGFeCompositeRefMod customDataKeyModifier
+
+// Converts the casing of the signal name.
+//   - 'camel' – Camel case: 'mySignal' (default)
+//   - 'kebab' – Kebab case: 'my-signal'
+//   - 'snake' – Snake case: 'my_signal'
+//   - 'pascal' – Pascal case: 'MySignal'
+func SVGFeCompositeRefModCase(
+	s string,
+) SVGFeCompositeRefMod {
+	return func() string {
+		return fmt.Sprintf("case.%s", s)
+	}
+}
+
+// Creates a new signal that is a reference to the element on which the data
+// attribute is placed.
+//
+// See: https://data-star.dev/reference/attributes#data-ref
+func (e *SVGFECOMPOSITEElement) DATASTAR_REF(expression string, modifiers ...SVGFeCompositeRefMod) *SVGFECOMPOSITEElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-ref"
+
+	customMods := lo.Map(modifiers, func(m SVGFeCompositeRefMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Creates a new signal that is a reference to the element on which the data
+// attribute is placed.
+//
+// See: https://data-star.dev/reference/attributes#data-ref
+func (e *SVGFECOMPOSITEElement) IfDATASTAR_REF(condition bool, expression string, modifiers ...SVGFeCompositeRefMod) *SVGFECOMPOSITEElement {
+	if condition {
+		e.DATASTAR_REF(expression, modifiers...)
+	}
+	return e
+}
+
+// Creates a new signal that is a reference to the element on which the data
+// attribute is placed.
+//
+// See: https://data-star.dev/reference/attributes#data-ref
+// Remove the attribute DATASTAR_REF from the element.
+func (e *SVGFECOMPOSITEElement) DATASTAR_REFRemove() *SVGFECOMPOSITEElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-ref")
+
+	return e
+}
+
+// Shows or hides an element based on whether an expression evaluates to 'true' or
+// 'false'
+// For anything with custom requirements, use 'data-class' instead.
+//
+// See: https://data-star.dev/reference/attributes#data-show
+func (e *SVGFECOMPOSITEElement) DATASTAR_SHOW(expression string) *SVGFECOMPOSITEElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	key := "data-show"
+
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Shows or hides an element based on whether an expression evaluates to 'true' or
+// 'false'
+// For anything with custom requirements, use 'data-class' instead.
+//
+// See: https://data-star.dev/reference/attributes#data-show
+func (e *SVGFECOMPOSITEElement) IfDATASTAR_SHOW(condition bool, expression string) *SVGFECOMPOSITEElement {
+	if condition {
+		e.DATASTAR_SHOW(expression)
+	}
+	return e
+}
+
+// Shows or hides an element based on whether an expression evaluates to 'true' or
+// 'false'
+// For anything with custom requirements, use 'data-class' instead.
+//
+// See: https://data-star.dev/reference/attributes#data-show
+// Remove the attribute DATASTAR_SHOW from the element.
+func (e *SVGFECOMPOSITEElement) DATASTAR_SHOWRemove() *SVGFECOMPOSITEElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	e.StringAttributes.Del("data-show")
+
+	return e
+}
+
+type SVGFeCompositeSignalsMod customDataKeyModifier
+
+// Converts the casing of the signal name.
+//   - 'camel' – Camel case: 'mySignal' (default)
+//   - 'kebab' – Kebab case: 'my-signal'
+//   - 'snake' – Snake case: 'my_signal'
+//   - 'pascal' – Pascal case: 'MySignal'
+func SVGFeCompositeSignalsModCase(
+	s string,
+) SVGFeCompositeSignalsMod {
+	return func() string {
+		return fmt.Sprintf("case.%s", s)
+	}
+}
+
+// Only patches signals if their keys do not already exist
+// This is useful for setting defaults without overwriting existing values.
+func SVGFeCompositeSignalsModIfMissing() SVGFeCompositeSignalsMod {
+	return func() string {
+		return "ifmissing"
+	}
+}
+
+// Patches (adds, updates or removes) one or more signals into the existing
+// signals
+// Values defined later in the DOM tree override those defined earlier.
+//
+// See: https://data-star.dev/reference/attributes#data-signals
+func (e *SVGFECOMPOSITEElement) DATASTAR_SIGNALS(key string, expression string, modifiers ...SVGFeCompositeSignalsMod) *SVGFECOMPOSITEElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	key = fmt.Sprintf("data-signals%s", suffix)
+
+	customMods := lo.Map(modifiers, func(m SVGFeCompositeSignalsMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Patches (adds, updates or removes) one or more signals into the existing
+// signals
+// Values defined later in the DOM tree override those defined earlier.
+//
+// See: https://data-star.dev/reference/attributes#data-signals
+func (e *SVGFECOMPOSITEElement) IfDATASTAR_SIGNALS(condition bool, key string, expression string, modifiers ...SVGFeCompositeSignalsMod) *SVGFECOMPOSITEElement {
+	if condition {
+		e.DATASTAR_SIGNALS(key, expression, modifiers...)
+	}
+	return e
+}
+
+// Patches (adds, updates or removes) one or more signals into the existing
+// signals
+// Values defined later in the DOM tree override those defined earlier.
+//
+// See: https://data-star.dev/reference/attributes#data-signals
+// Remove the attribute DATASTAR_SIGNALS from the element.
+func (e *SVGFECOMPOSITEElement) DATASTAR_SIGNALSRemove(key string) *SVGFECOMPOSITEElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	e.StringAttributes.Del("data-signals" + suffix)
+
+	return e
+}
+
+type SVGFeCompositeStyleMod customDataKeyModifier
+
+// Converts the casing of the signal name.
+//   - 'camel' – Camel case: 'mySignal' (default)
+//   - 'kebab' – Kebab case: 'my-signal'
+//   - 'snake' – Snake case: 'my_signal'
+//   - 'pascal' – Pascal case: 'MySignal'
+func SVGFeCompositeStyleModCase(
+	s string,
+) SVGFeCompositeStyleMod {
+	return func() string {
+		return fmt.Sprintf("case.%s", s)
+	}
+}
+
+// Sets the value of inline CSS styles on an element based on an expression, and
+// keeps them in sync.
+//
+// See: https://data-star.dev/reference/attributes#data-style
+func (e *SVGFECOMPOSITEElement) DATASTAR_STYLE(key string, expression string, modifiers ...SVGFeCompositeStyleMod) *SVGFECOMPOSITEElement {
+	if e.StringAttributes == nil {
+		e.StringAttributes = treemap.New[string, string]()
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	key = fmt.Sprintf("data-style%s", suffix)
+
+	customMods := lo.Map(modifiers, func(m SVGFeCompositeStyleMod, i int) customDataKeyModifier {
+		return customDataKeyModifier(m)
+	})
+	key = customDataKey(key, customMods...)
+	e.StringAttributes.Set(key, expression)
+	return e
+}
+
+// Sets the value of inline CSS styles on an element based on an expression, and
+// keeps them in sync.
+//
+// See: https://data-star.dev/reference/attributes#data-style
+func (e *SVGFECOMPOSITEElement) IfDATASTAR_STYLE(condition bool, key string, expression string, modifiers ...SVGFeCompositeStyleMod) *SVGFECOMPOSITEElement {
+	if condition {
+		e.DATASTAR_STYLE(key, expression, modifiers...)
+	}
+	return e
+}
+
+// Sets the value of inline CSS styles on an element based on an expression, and
+// keeps them in sync.
+//
+// See: https://data-star.dev/reference/attributes#data-style
+// Remove the attribute DATASTAR_STYLE from the element.
+func (e *SVGFECOMPOSITEElement) DATASTAR_STYLERemove(key string) *SVGFECOMPOSITEElement {
+	if e.StringAttributes == nil {
+		return e
+	}
+
+	suffix := key
+	if suffix != "" {
+		suffix = ":" + suffix
+	}
+	e.StringAttributes.Del("data-style" + suffix)
+
+	return e
+}
+
+// Binds the text content of an element to an expression.
+//
+// See: https://data-star.dev/reference/attributes#data-text
 func (e *SVGFECOMPOSITEElement) DATASTAR_TEXT(expression string) *SVGFECOMPOSITEElement {
 	if e.StringAttributes == nil {
 		e.StringAttributes = treemap.New[string, string]()
@@ -628,6 +2149,9 @@ func (e *SVGFECOMPOSITEElement) DATASTAR_TEXT(expression string) *SVGFECOMPOSITE
 	return e
 }
 
+// Binds the text content of an element to an expression.
+//
+// See: https://data-star.dev/reference/attributes#data-text
 func (e *SVGFECOMPOSITEElement) IfDATASTAR_TEXT(condition bool, expression string) *SVGFECOMPOSITEElement {
 	if condition {
 		e.DATASTAR_TEXT(expression)
@@ -635,228 +2159,16 @@ func (e *SVGFECOMPOSITEElement) IfDATASTAR_TEXT(condition bool, expression strin
 	return e
 }
 
+// Binds the text content of an element to an expression.
+//
+// See: https://data-star.dev/reference/attributes#data-text
 // Remove the attribute DATASTAR_TEXT from the element.
 func (e *SVGFECOMPOSITEElement) DATASTAR_TEXTRemove() *SVGFECOMPOSITEElement {
 	if e.StringAttributes == nil {
 		return e
 	}
+
 	e.StringAttributes.Del("data-text")
-	return e
-}
 
-// Sets the event handler of the element
-
-type SVGFeCompositeOnMod customDataKeyModifier
-
-// Debounces the event handler
-func SVGFeCompositeOnModDebounce(
-	d time.Duration,
-) SVGFeCompositeOnMod {
-	return func() string {
-		return fmt.Sprintf("debounce_%dms", d.Milliseconds())
-	}
-}
-
-// Throttles the event handler
-func SVGFeCompositeOnModThrottle(
-	d time.Duration,
-) SVGFeCompositeOnMod {
-	return func() string {
-		return fmt.Sprintf("throttle_%dms", d.Milliseconds())
-	}
-}
-
-func (e *SVGFECOMPOSITEElement) DATASTAR_ON(key string, expression string, modifiers ...SVGFeCompositeOnMod) *SVGFECOMPOSITEElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-
-	key = fmt.Sprintf("data-on-%s", key)
-
-	customMods := lo.Map(modifiers, func(m SVGFeCompositeOnMod, i int) customDataKeyModifier {
-		return customDataKeyModifier(m)
-	})
-	key = customDataKey(key, customMods...)
-	e.StringAttributes.Set(key, expression)
-	return e
-}
-
-func (e *SVGFECOMPOSITEElement) IfDATASTAR_ON(condition bool, key string, expression string, modifiers ...SVGFeCompositeOnMod) *SVGFECOMPOSITEElement {
-	if condition {
-		e.DATASTAR_ON(key, expression, modifiers...)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_ON from the element.
-func (e *SVGFECOMPOSITEElement) DATASTAR_ONRemove() *SVGFECOMPOSITEElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-on")
-	return e
-}
-
-// Sets the focus of the element
-
-func (e *SVGFECOMPOSITEElement) DATASTAR_FOCUSSet(b bool) *SVGFECOMPOSITEElement {
-	key := "data-focus"
-	e.BoolAttributes.Set(key, b)
-	return e
-}
-
-func (e *SVGFECOMPOSITEElement) DATASTAR_FOCUS() *SVGFECOMPOSITEElement {
-	return e.DATASTAR_FOCUSSet(true)
-}
-
-// Sets the header of for fetch requests
-
-func (e *SVGFECOMPOSITEElement) DATASTAR_HEADER(key string, expression string) *SVGFECOMPOSITEElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-
-	key = fmt.Sprintf("data-header-%s", key)
-
-	e.StringAttributes.Set(key, expression)
-	return e
-}
-
-func (e *SVGFECOMPOSITEElement) IfDATASTAR_HEADER(condition bool, key string, expression string) *SVGFECOMPOSITEElement {
-	if condition {
-		e.DATASTAR_HEADER(key, expression)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_HEADER from the element.
-func (e *SVGFECOMPOSITEElement) DATASTAR_HEADERRemove() *SVGFECOMPOSITEElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-header")
-	return e
-}
-
-// Sets the indicator selector for fetch requests
-
-func (e *SVGFECOMPOSITEElement) DATASTAR_FETCH_INDICATOR(expression string) *SVGFECOMPOSITEElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-
-	key := "data-fetch-indicator"
-
-	e.StringAttributes.Set(key, expression)
-	return e
-}
-
-func (e *SVGFECOMPOSITEElement) IfDATASTAR_FETCH_INDICATOR(condition bool, expression string) *SVGFECOMPOSITEElement {
-	if condition {
-		e.DATASTAR_FETCH_INDICATOR(expression)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_FETCH_INDICATOR from the element.
-func (e *SVGFECOMPOSITEElement) DATASTAR_FETCH_INDICATORRemove() *SVGFECOMPOSITEElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-fetch-indicator")
-	return e
-}
-
-// Sets the visibility of the element
-
-func (e *SVGFECOMPOSITEElement) DATASTAR_SHOWSet(b bool) *SVGFECOMPOSITEElement {
-	key := "data-show"
-	e.BoolAttributes.Set(key, b)
-	return e
-}
-
-func (e *SVGFECOMPOSITEElement) DATASTAR_SHOW() *SVGFECOMPOSITEElement {
-	return e.DATASTAR_SHOWSet(true)
-}
-
-// Triggers the callback when the element intersects the viewport
-
-func (e *SVGFECOMPOSITEElement) DATASTAR_INTERSECTS(expression string) *SVGFECOMPOSITEElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-
-	key := "data-intersects"
-
-	e.StringAttributes.Set(key, expression)
-	return e
-}
-
-func (e *SVGFECOMPOSITEElement) IfDATASTAR_INTERSECTS(condition bool, expression string) *SVGFECOMPOSITEElement {
-	if condition {
-		e.DATASTAR_INTERSECTS(expression)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_INTERSECTS from the element.
-func (e *SVGFECOMPOSITEElement) DATASTAR_INTERSECTSRemove() *SVGFECOMPOSITEElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-intersects")
-	return e
-}
-
-// Teleports the element to the given selector
-
-func (e *SVGFECOMPOSITEElement) DATASTAR_TELEPORTSet(b bool) *SVGFECOMPOSITEElement {
-	key := "data-teleport"
-	e.BoolAttributes.Set(key, b)
-	return e
-}
-
-func (e *SVGFECOMPOSITEElement) DATASTAR_TELEPORT() *SVGFECOMPOSITEElement {
-	return e.DATASTAR_TELEPORTSet(true)
-}
-
-// Scrolls the element into view
-
-func (e *SVGFECOMPOSITEElement) DATASTAR_SCROLL_INTO_VIEWSet(b bool) *SVGFECOMPOSITEElement {
-	key := "data-scroll-into-view"
-	e.BoolAttributes.Set(key, b)
-	return e
-}
-
-func (e *SVGFECOMPOSITEElement) DATASTAR_SCROLL_INTO_VIEW() *SVGFECOMPOSITEElement {
-	return e.DATASTAR_SCROLL_INTO_VIEWSet(true)
-}
-
-// Setup the ViewTransitionAPI for the element
-
-func (e *SVGFECOMPOSITEElement) DATASTAR_VIEW_TRANSITION(expression string) *SVGFECOMPOSITEElement {
-	if e.StringAttributes == nil {
-		e.StringAttributes = treemap.New[string, string]()
-	}
-
-	key := "data-view-transition"
-
-	e.StringAttributes.Set(key, expression)
-	return e
-}
-
-func (e *SVGFECOMPOSITEElement) IfDATASTAR_VIEW_TRANSITION(condition bool, expression string) *SVGFECOMPOSITEElement {
-	if condition {
-		e.DATASTAR_VIEW_TRANSITION(expression)
-	}
-	return e
-}
-
-// Remove the attribute DATASTAR_VIEW_TRANSITION from the element.
-func (e *SVGFECOMPOSITEElement) DATASTAR_VIEW_TRANSITIONRemove() *SVGFECOMPOSITEElement {
-	if e.StringAttributes == nil {
-		return e
-	}
-	e.StringAttributes.Del("data-view-transition")
 	return e
 }
