@@ -316,6 +316,9 @@ type Grouper struct {
 
 func (g *Grouper) Render(w io.Writer) error {
 	for _, child := range g.Children {
+		if child == nil {
+			continue
+		}
 		if err := child.Render(w); err != nil {
 			return fmt.Errorf("failed to build element: %w", err)
 		}
